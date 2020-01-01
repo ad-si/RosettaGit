@@ -13,7 +13,7 @@ tags = []
 {{task|Sorting}}
 Measure a relative performance of sorting algorithms implementations.
 
-Plot '''execution time vs. input sequence length''' dependencies for various implementation of sorting algorithm and different input sequence types ([[#Figures: log2( time in microseconds ) vs. log2( sequence length )|example figures]]). 
+Plot '''execution time vs. input sequence length''' dependencies for various implementation of sorting algorithm and different input sequence types ([[#Figures: log2( time in microseconds ) vs. log2( sequence length )|example figures]]).
 
 Consider three type of input sequences:
 * ones: sequence of all ''1'''s. Example: {1, 1, 1, 1, 1}
@@ -114,7 +114,7 @@ BogoSort(var)
 }
 
 BubbleSort(var)
-{ 
+{
 	StringSplit, array, var, `,
 	hasChanged = 1
 	size := array0
@@ -132,7 +132,7 @@ BubbleSort(var)
 				array%A_Index% := array%aj%
 				array%aj% := temp
 				hasChanged = 1
-			} 
+			}
 		}
 	}
 	Loop, % size
@@ -360,10 +360,10 @@ BuiltInSort(var) {
       INSTALL @lib$+"TIMERLIB"
       Sort% = FN_sortinit(0,0)
       Timer% = FN_ontimer(1000, PROCtimer, 1)
-      
+
       PRINT "Array size:", 1000, 10000, 100000
       @% = &2020A
-      
+
       FOR patt% = 1 TO 4
         CASE patt% OF
           WHEN 1: PRINT '"Data set to all ones:"
@@ -371,7 +371,7 @@ BuiltInSort(var) {
           WHEN 3: PRINT '"Data randomly shuffled:"
           WHEN 4: PRINT '"Data descending sequence:"
         ENDCASE
-        
+
         FOR type% = 1 TO 6
           CASE type% OF
             WHEN 1: PRINT "Internal (lib)";
@@ -381,20 +381,20 @@ BuiltInSort(var) {
             WHEN 5: PRINT "Bubblesort  ";
             WHEN 6: PRINT "Insertion sort";
           ENDCASE
-          
+
           FOR power% = 3 TO 5
             PROCsorttest(patt%, type%, 10^power%)
           NEXT
           PRINT
-          
+
         NEXT type%
       NEXT patt%
       END
-      
+
       DEF PROCsorttest(patt%, type%, size%)
       LOCAL a%(), C%, I%
       DIM a%(size%-1)
-      
+
       CASE patt% OF
         WHEN 1: a%() = 1 : a%() = 1
         WHEN 2: FOR I% = 0 TO size%-1 : a%(I%) = I% : NEXT
@@ -403,7 +403,7 @@ BuiltInSort(var) {
           FOR I% = size% TO 2 STEP -1 : SWAP a%(I%-1),a%(RND(I%)-1) : NEXT
         WHEN 4: FOR I% = 0 TO size%-1 : a%(I%) = size%-1-I% : NEXT
       ENDCASE
-      
+
       Start% = TIME
       ON ERROR LOCAL PRINT , "   >100.00" ; : ENDPROC
       CASE type% OF
@@ -415,17 +415,17 @@ BuiltInSort(var) {
         WHEN 6: PROCinsertionsort(a%(), size%)
       ENDCASE
       PRINT , (TIME - Start%)/100;
-      
+
       FOR I% = 0 TO size%-2
         IF a%(I%) > a%(I%+1) ERROR 100, "Sort failed!"
       NEXT
       ENDPROC
-      
+
       DEF PROCtimer
       Start% += 0
       IF (TIME - Start%) > 10000 ERROR 111, ""
       ENDPROC
-      
+
       DEF PROCbubblesort(a%(), n%)
       LOCAL i%, l%
       REPEAT
@@ -439,7 +439,7 @@ BuiltInSort(var) {
         n% = l%
       UNTIL l% = 0
       ENDPROC
-      
+
       DEF PROCinsertionsort(a%(), n%)
       LOCAL i%, j%, t%
       FOR i% = 1 TO n%-1
@@ -452,7 +452,7 @@ BuiltInSort(var) {
         a%(j%) = t%
       NEXT
       ENDPROC
-      
+
       DEF PROCquicksort(a%(), s%, n%)
       LOCAL l%, p%, r%, t%
       IF n% < 2 THEN ENDPROC
@@ -472,7 +472,7 @@ BuiltInSort(var) {
       IF s% < r% PROCquicksort(a%(), s%, r% - s% + 1)
       IF l% < t% PROCquicksort(a%(), l%, t% - l% + 1 )
       ENDPROC
-      
+
       DEF PROCshellsort(a%(), n%)
       LOCAL h%, i%, j%, k%
       h% = n%
@@ -489,7 +489,7 @@ BuiltInSort(var) {
         NEXT
       ENDWHILE
       ENDPROC
-      
+
       DEF PROCradixsort(a%(), n%, r%)
       LOCAL d%, e%, i%, l%, m%, b%(), bucket%()
       DIM b%(DIM(a%(),1)), bucket%(r%-1)
@@ -673,8 +673,8 @@ typedef struct seqdef seqdef_t;
 
 <tt>writetimings.c</tt>
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "writetimings.h"
@@ -758,7 +758,7 @@ int main()
 	       seqdefs[j].name);
       out = fopen(buf, "w");
       if ( out == NULL ) goto severe;
-      printf("Producing data for sort '%s', created data type '%s'\n", 
+      printf("Producing data for sort '%s', created data type '%s'\n",
 	     testpieces[i].name, seqdefs[j].name);
       for(k=0; datlengths[k] > 0; k++) {
 	printf("\tNumber of elements: %d\n", datlengths[k]);
@@ -784,8 +784,8 @@ This code produce several files with the following naming convention:
 * data_''algorithm''_''sequence''.dat
 Where ''algorithm'' is one of the following: insertion, merge, shell, quick, qsort (the quicksort in the libc library) (bubble sort became too slow for longest sequences). ''Sequence'' is ''c1'' (constant value 1), ''rr'' (reverse range), ''sr'' (shufled range). These data can be easily plotted by Gnuplot, which can also do fitting. Instead we do our fitting using [[Polynomial Fitting]].
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -1386,7 +1386,7 @@ D=:14
 
 plot =: 1 : '(=/ round@(u&.(*&(D%<:y))))i.y' NB. function plot size
 points =: 4 : '1(<"1|:|.round y*D%~<:x)}0$~2#x'  NB. size points x,:y
-   
+
 show =: [: |. [: '0'&~:@{:} ' ' ,: ":
 
 plt =: 3 : 0
@@ -1455,102 +1455,102 @@ for the curve fit requirement.
 
    NB. data is all 1
    show 30 plt l ,: & (0&{)"2 t
-                        5   4 _                       2 2  
-                          4                         2      
-                      5 _   6                     2        
-                    _   4 6                     2          
+                        5   4 _                       2 2
+                          4                         2
+                      5 _   6                     2
+                    _   4 6                     2
                       4 _                     _           3
-                  5 _   6                   2           3  
+                  5 _   6                   2           3
                       6                   _       _   3   1
-                _ 4                     2         3 3   1  
-                _   _                 _         3     1    
-              1   6                 2         _   _ 1      
-            _                     2         3   1          
-            _   _               2 _       _   _            
-          4                   2         3   1              
-        _ 5   6             2 _     3 _   _                
-      4 _   _             2       3     1                  
-    _                   _       3 _   _                    
-      5   6           2       3     1                      
-  4     _           _       3 _   1                        
-4   _             2       3     1 _                        
-    _ 6       2 _     3 3   1 1                            
-  5 6       2       3   _ 1   _                            
-          2 _     3 _   1                                  
-5 6 _   _       3     1 _                                  
-6     2       3 _   1                                      
-    2   _   _     1 _                                      
-  2 _   3 3     1                                          
-2     3       1 _                                          
-    3       _                                              
-  3 _   _ 1                                                
-3     1 1                                                  
+                _ 4                     2         3 3   1
+                _   _                 _         3     1
+              1   6                 2         _   _ 1
+            _                     2         3   1
+            _   _               2 _       _   _
+          4                   2         3   1
+        _ 5   6             2 _     3 _   _
+      4 _   _             2       3     1
+    _                   _       3 _   _
+      5   6           2       3     1
+  4     _           _       3 _   1
+4   _             2       3     1 _
+    _ 6       2 _     3 3   1 1
+  5 6       2       3   _ 1   _
+          2 _     3 _   1
+5 6 _   _       3     1 _
+6     2       3 _   1
+    2   _   _     1 _
+  2 _   3 3     1
+2     3       1 _
+    3       _
+  3 _   _ 1
+3     1 1
 
    NB. data is  reversed integer list
    show 30 plt l ,: & (1&{)"2 t
           6               4     3                         1
-                      5 4     3               2         1  
-        _           _ 4     3             _ 2         1    
-                    _     3               2         1      
-      6             4   _               2         _        
-                  1   3               _                    
-    _           _   _               2           1          
-    6           4 3               _           _            
-              1 _               2           1              
-  6         _ 3               2           _                
-            _               2 _         1                  
-6         1               2           _                    
-        _ 5             2           1                      
-      3               2 _         1                        
-    _ 4 _           2             _                        
-  3 _                           1                          
-3     5           2 _         1                            
-  4 _           2           1 _                            
-4   5         2 _         1                                
-            _           1                                  
-  5     _ 2           1 _                                  
-5   _   2           1                                      
-      2           1 _                                      
-    2                                                      
-  2             _                                          
-2             1                                            
-            _                                              
-        _ 1                                                
-    _   1                                                  
-      1                                                    
+                      5 4     3               2         1
+        _           _ 4     3             _ 2         1
+                    _     3               2         1
+      6             4   _               2         _
+                  1   3               _
+    _           _   _               2           1
+    6           4 3               _           _
+              1 _               2           1
+  6         _ 3               2           _
+            _               2 _         1
+6         1               2           _
+        _ 5             2           1
+      3               2 _         1
+    _ 4 _           2             _
+  3 _                           1
+3     5           2 _         1
+  4 _           2           1 _
+4   5         2 _         1
+            _           1
+  5     _ 2           1 _
+5   _   2           1
+      2           1 _
+    2
+  2             _
+2             1
+            _
+        _ 1
+    _   1
+      1
 
    NB. data is  random
    show 30 plt l ,: & (2&{)"2 t
-          6           5   4     3             2   1        
-                    _   4     3             2   1          
-        _           5 4     3             2   1            
-                    _     3             2   1              
-      6           5 4   _             _   _                
-                  4   3             2     1                
-    _           _   _             _   _ 1                  
-    6           4 3                   1                    
-              1 _               2   1                      
-  6         _ 3               _   _                        
-            _               2   1                          
-6         1               2   1                            
-        _ 5             _   1 _                            
-      3 _             2   1                                
-    _ 4 5           2   1                                  
-  3 _ 5           2 _ 1 _                                  
-3 4             2                                          
-    _         2 _   _                                      
-4           _     1                                        
-  5       2     _                                          
-        _     1                                            
-5   _ 2     _                                              
-    2     1                                                
-  2     _                                                  
-2   _ 1                                                    
-    1                                                      
-  1                                                        
-1                                                          
-                                                           
-                                                           
+          6           5   4     3             2   1
+                    _   4     3             2   1
+        _           5 4     3             2   1
+                    _     3             2   1
+      6           5 4   _             _   _
+                  4   3             2     1
+    _           _   _             _   _ 1
+    6           4 3                   1
+              1 _               2   1
+  6         _ 3               _   _
+            _               2   1
+6         1               2   1
+        _ 5             _   1 _
+      3 _             2   1
+    _ 4 5           2   1
+  3 _ 5           2 _ 1 _
+3 4             2
+    _         2 _   _
+4           _     1
+  5       2     _
+        _     1
+5   _ 2     _
+    2     1
+  2     _
+2   _ 1
+    1
+  1
+1
+
+
 
 ```
 
@@ -1755,7 +1755,7 @@ fun main(args: Array<String>) {
     for ((k, n) in lengths.withIndex()) {
         val seqs = listOf(onesSeq(n), ascendingSeq(n), shuffledSeq(n))
         repeat(runs) {
-            for (i in 0 until seqs.size) {           
+            for (i in 0 until seqs.size) {
                 for (j in 0 until sorts.size) {
                     val seq = seqs[i].copyOf()
                     totals[i][j][k] += measureNanoTime { sorts[j](seq) }
@@ -1848,12 +1848,12 @@ sequence left = {}, right = {}
     if n<2 then
         return x    -- already sorted (trivial case)
     end if
- 
+
     mid = floor((n+1)/2)
     midval = x[mid]
     x[mid] = x[1]
     midn = 1
- 
+
     for i=2 to n do
         xi = x[i]
         c = compare(xi,midval)
@@ -1865,7 +1865,7 @@ sequence left = {}, right = {}
             midn += 1
         end if
     end for
- 
+
     return quick_sort2(left) & repeat(midval,midn) & quick_sort2(right)
 end function
 
@@ -2082,7 +2082,7 @@ integer ds_index
 
 function idle_action_cb()
 atom best = -1, -- fastest last
-     besti = 0, -- 1..length(tests) 
+     besti = 0, -- 1..length(tests)
      bestt = 0, -- 1..length(tabtitles)
      len
 sequence todo
@@ -2213,7 +2213,7 @@ IupPlot is brilliant! It is actually quite fun to watch the graphs grow as you g
 There is a point where you realise you are currently wasting your life fretting over 0.015 seconds...
 
 The ultimate conclusion is, of course, that there are some differences, but as long as you weed out the really bad
-algorithms, and at least in the majority of cases, you will probably never notice whether sorting 800,000 items 
+algorithms, and at least in the majority of cases, you will probably never notice whether sorting 800,000 items
 takes 0.25s or 0.1s - more significant gains are likely to be found elsewhere.
 
 
@@ -2222,7 +2222,7 @@ takes 0.25s or 0.1s - more significant gains are likely to be found elsewhere.
 {{works with|Python|2.5}}
 
 ### Examples of sorting routines
- 
+
 
 ```python
 def builtinsort(x):
@@ -2264,14 +2264,14 @@ def shuffledrange(n):
     random.shuffle(x)
     return x
 ```
-    
+
 
 ### Write timings
 
 
 ```python
-def write_timings(npoints=10, maxN=10**4, sort_functions=(builtinsort,insertion_sort, qsort), 
-                  sequence_creators = (ones, range, shuffledrange)):    
+def write_timings(npoints=10, maxN=10**4, sort_functions=(builtinsort,insertion_sort, qsort),
+                  sequence_creators = (ones, range, shuffledrange)):
    Ns = range(2, maxN, maxN//npoints)
    for sort in sort_functions:
        for make_seq in sequence_creators:
@@ -2296,16 +2296,16 @@ def plotdd(dictplotdict):
               '1', '2', '3', '4', 'h', 'H', 'p', '|', '_')
    colors = list('bgrcmyk') # split string on distinct characters
    for npoints, plotdict in dictplotdict.iteritems():
-       for ttle, lst in plotdict.iteritems():            
-           pylab.hold(False)                                
+       for ttle, lst in plotdict.iteritems():
+           pylab.hold(False)
            for i, (label, polynom, x, y) in enumerate(sorted(lst,key=operator.itemgetter(0))):
                pylab.plot(x, y, colors[i % len(colors)] + symbols[i % len(symbols)], label='%s %s' % (polynom, label))
                pylab.hold(True)
                y = numpy.polyval(polynom, x)
-               pylab.plot(x, y, colors[i % len(colors)], label= '_nolegend_')                
+               pylab.plot(x, y, colors[i % len(colors)], label= '_nolegend_')
            pylab.legend(loc='upper left')
            pylab.xlabel(polynom.variable)
-           pylab.ylabel('log2( time in microseconds )')                
+           pylab.ylabel('log2( time in microseconds )')
            pylab.title(ttle, verticalalignment='bottom')
            figname = '_%(npoints)03d%(ttle)s' % vars()
            pylab.savefig(figname+'.png')
@@ -2329,10 +2329,10 @@ def plot_timings():
        print filename
        assert m, filename
        funcname, seqname, npoints, maxN = m.groups()
-       npoints, maxN = int(npoints), int(maxN)        
+       npoints, maxN = int(npoints), int(maxN)
        a = numpy.fromiter(itertools.imap(float, open(filename).read().split()), dtype='f')
        Ns = a[::2]  # sequences lengths
-       Ts = a[1::2] # corresponding times 
+       Ts = a[1::2] # corresponding times
        assert len(Ns) == len(Ts) == npoints
        assert max(Ns) <= maxN
        #
@@ -2350,7 +2350,7 @@ def plot_timings():
 ```
 
 
-===Figures: log2( time in microseconds ) vs. log2( sequence length )=== 
+===Figures: log2( time in microseconds ) vs. log2( sequence length )===
 [[File:Ones.png|300px|thumb|right|log(Time) vs. log(N): Relative performance on [1]*N as an input]]
 [[File:Range.png|300px|thumb|right|log(Time) vs. log(N): Relative performance on range(N) as an input]]
 [[File:Shuffledrange.png|300px|thumb|right|log(Time) vs. log(N): Relative performance on random permutation of range(N) as an input]]
@@ -2400,7 +2400,7 @@ Executing above script we get belowed figures.
 ### =shuffled range=
 
 [http://i28.tinypic.com/juclyu.png shuffledrange.png] (152KiB)
- builtinsort     - O(N)  
+ builtinsort     - O(N)
  insertion_sort  - O(N**4) ???
  qsort           - O(N*log(N))
  qsortranpart    - O(N) ???
@@ -2425,7 +2425,7 @@ class Array
     end
     ary
   end
-  
+
   def quick_sort
     return self  if size <= 1
     pivot = sample
@@ -2433,7 +2433,7 @@ class Array
     g.default = []
     g[-1].quick_sort + g[0] + g[1].quick_sort
   end
-  
+
   def shell_sort
     inc = size / 2
     while inc > 0
@@ -2449,7 +2449,7 @@ class Array
     end
     self
   end
-  
+
   def insertion_sort
     (1...size).each do |i|
       value = self[i]
@@ -2462,7 +2462,7 @@ class Array
     end
     self
   end
-  
+
   def bubble_sort
     (1...size).each do |i|
       (0...size-i).each do |j|
@@ -2722,7 +2722,7 @@ proc reversed n {
         lappend result $n
     }
     return $result
-}  
+}
 proc random n {
     for {set i 0} {$i < $n} {incr i} {
         lappend result [expr {int($n * rand())}]
@@ -2732,7 +2732,7 @@ proc random n {
 
 set algorithms {lsort quicksort shellsort insertionsort bubblesort mergesort}
 set sizes {1 10 100 1000 10000 100000}
-set types {ones reversed random} 
+set types {ones reversed random}
 set shapes {dot square cross triangleup triangledown x}
 set colours {red blue black brown yellow black}
 
@@ -2762,7 +2762,7 @@ foreach type $types {
         set errs [list]
         set thesetimes [list]
         $algo {} ;# call it once to ensure it's compiled
-        
+
         puts -nonewline [format "   %-13s" $algo]
         foreach size $sizes {
             # some implementations are just too slow

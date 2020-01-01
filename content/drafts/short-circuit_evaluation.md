@@ -29,7 +29,7 @@ Some languages will stop further computation of boolean equations as soon as the
 
 
 ;Task:
-Create two functions named   <code>a</code>   and   <code>b</code>,   that take and return the same boolean value. 
+Create two functions named   <code>a</code>   and   <code>b</code>,   that take and return the same boolean value.
 
 The functions should also print their name whenever they are called.
 
@@ -119,7 +119,7 @@ test:(
   PROC a = (BOOL a)BOOL: ( print(("a=",a,", ")); a),
        b = (BOOL b)BOOL: ( print(("b=",b,", ")); b);
 
-CO 
+CO
 # Valid for Algol 68 Rev0: using "user defined" operators #
 # Note: here BOOL is being automatically "procedured" to PROC BOOL #
   print(("T ORELSE F = ", a(TRUE) ORELSE b(FALSE), new line));
@@ -231,7 +231,7 @@ begin
     write( "---" );
     write( "or:  ", a( false ) or  b( true ) );
     write( "---" );
- 
+
 end.
 ```
 
@@ -239,19 +239,19 @@ end.
 
 ```txt
 
-and: 
-a:   true  
-b:   true    true  
+and:
+a:   true
+b:   true    true
 ---
-or:  
-a:   true    true  
+or:
+a:   true    true
 ---
-and: 
-a:  false   false  
+and:
+a:  false   false
 ---
-or:  
-a:  false  
-b:   true    true  
+or:
+a:  false
+b:   true    true
 ---
 
 ```
@@ -271,9 +271,9 @@ What AppleScript lacks, however, is a short-circuiting ternary operator like the
 
 ```AppleScript
 on run
-    
+
     map(test, {|and|, |or|})
-    
+
 end run
 
 -- test :: ((Bool, Bool) -> Bool) -> (Bool, Bool, Bool, Bool)
@@ -286,14 +286,14 @@ end test
 -- |and| :: (Bool, Bool) -> Bool
 on |and|(tuple)
     set {x, y} to tuple
-    
+
     a(x) and b(y)
 end |and|
 
 -- |or| :: (Bool, Bool) -> Bool
 on |or|(tuple)
     set {x, y} to tuple
-    
+
     a(x) or b(y)
 end |or|
 
@@ -378,10 +378,10 @@ b(p)
 
 ## AWK
 
-Short-circuit evalation is done in logical AND (&&) and logical OR (||) operators: 
+Short-circuit evalation is done in logical AND (&&) and logical OR (||) operators:
 
 ```AWK
-#!/usr/bin/awk -f 
+#!/usr/bin/awk -f
 BEGIN {
 	print (a(1) && b(1))
 	print (a(1) || b(1))
@@ -512,10 +512,10 @@ FUNCTION a
 
 ```dos
 %
-###  Batch Files have no booleans. 
+###  Batch Files have no booleans.
 %
 %
-###  I will instead use 1 as true and 0 as false. 
+###  I will instead use 1 as true and 0 as false.
 %
 
 @echo off
@@ -625,15 +625,15 @@ Short-circuit operators aren't implemented directly, but short-circuit AND can b
           PRINT
         NEXT:NEXT
       END
-      
+
       DEFFNa(bool%)
       PRINT "Function A used; ";
       =bool%
-      
+
       DEFFNb(bool%)
       PRINT "Function B used; ";
       =bool%
-      
+
       DEFFNboolstring(bool%)
       IF bool%=0 THEN ="FALSE" ELSE="TRUE"
 ```
@@ -737,8 +737,8 @@ I'm a
 
 Boolean operators <nowiki>&&</nowiki> and || are shortcircuit operators.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdbool.h>
 
 bool a(bool in)
@@ -766,7 +766,7 @@ int main()
   TEST(false, true, &&); // b is not evaluated
   TEST(true, false, ||); // b is not evaluated
   TEST(true, false, &&); // b is evaluated
-  TEST(false, false, ||); // b is evaluated 
+  TEST(false, false, ||); // b is evaluated
 
   return 0;
 }
@@ -778,8 +778,8 @@ int main()
 
 Just like C, boolean operators <nowiki>&&</nowiki> and || are shortcircuit operators.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 bool a(bool in)
 {
@@ -811,25 +811,25 @@ int main()
 {{out}}
 
 ```txt
-a 
+a
 false and false = false
-a 
-b 
+a
+b
 false or false = false
-a 
+a
 false and true = false
-a 
-b 
+a
+b
 false or true = true
-a 
-b 
+a
+b
 true and false = false
-a 
+a
 true or false = true
-a 
-b 
+a
+b
 true and true = true
-a 
+a
 true or true = true
 ```
 
@@ -906,25 +906,25 @@ True or True = True
 The print/println stuff in the doseq is kinda gross, but if you include them all in a single print, then the function traces are printed before the rest (since it has to evaluate them before calling print).
 
 ```Clojure
-(letfn [(a [bool] (print "(a)") bool)   
-        (b [bool] (print "(b)") bool)]  
+(letfn [(a [bool] (print "(a)") bool)
+        (b [bool] (print "(b)") bool)]
   (doseq [i [true false] j [true false]]
-    (print i "OR" j "= ")               
-    (println (or (a i) (b j)))          
-    (print i "AND" j " = ")             
+    (print i "OR" j "= ")
+    (println (or (a i) (b j)))
+    (print i "AND" j " = ")
     (println (and (a i) (b j)))))
 ```
 
 {{out}}
 
 ```txt
-true OR true = (a)true       
-true AND true  = (a)(b)true  
-true OR false = (a)true      
+true OR true = (a)true
+true AND true  = (a)(b)true
+true OR false = (a)true
 true AND false  = (a)(b)false
-false OR true = (a)(b)true   
-false AND true  = (a)false   
-false OR false = (a)(b)false 
+false OR true = (a)(b)true
+false AND true  = (a)false
+false OR false = (a)(b)false
 false AND false  = (a)false
 ```
 
@@ -942,32 +942,32 @@ false AND false  = (a)false
      (print 'b)
      F )
 
-(dolist (x '((nil nil) (nil T) (T T) (T nil))) 
-        (format t "~%(and ~S)" x) 
-        (and (a (car x)) (b (car(cdr x)))) 
-        (format t "~%(or ~S)" x) 
+(dolist (x '((nil nil) (nil T) (T T) (T nil)))
+        (format t "~%(and ~S)" x)
+        (and (a (car x)) (b (car(cdr x))))
+        (format t "~%(or ~S)" x)
         (or (a (car x)) (b (car(cdr x)))))
 ```
 
 {{out}}
  (and (NIL NIL))
- A 
+ A
  (or (NIL NIL))
- A 
- B 
+ A
+ B
  (and (NIL T))
- A 
+ A
  (or (NIL T))
- A 
- B 
+ A
+ B
  (and (T T))
- A 
- B 
+ A
+ B
  (or (T T))
- A 
+ A
  (and (T NIL))
- A 
- B 
+ A
+ B
  (or (T NIL))
  A
 
@@ -1083,12 +1083,12 @@ func a(v) {
   print(nameof(a), terminator: "")
   return v
 }
- 
+
 func b(v) {
   print(nameof(b), terminator: "")
   return v
 }
- 
+
 func test(i, j) {
   print("Testing a(\(i)) && b(\(j))")
   print("Trace: ", terminator: "")
@@ -1100,7 +1100,7 @@ func test(i, j) {
 
   print()
 }
- 
+
 test(false, false)
 test(false, true)
 test(true, false)
@@ -1171,13 +1171,13 @@ ELENA 4.1 :
 ```elena
 import system'routines;
 import extensions;
- 
+
 Func<bool, bool> a = (bool x){ console.writeLine:"a"; ^ x };
- 
+
 Func<bool, bool> b = (bool x){ console.writeLine:"b"; ^ x };
 
-const bool[] boolValues = new bool[]::( false, true ); 
-   
+const bool[] boolValues = new bool[]::( false, true );
+
 public program()
 {
     boolValues.forEach:(bool i)
@@ -1185,7 +1185,7 @@ public program()
         boolValues.forEach:(bool j)
         {
             console.printLine(i," and ",j," = ",a(i) && b(j));
- 
+
             console.writeLine();
             console.printLine(i," or ",j," = ",a(i) || b(j));
             console.writeLine()
@@ -1239,12 +1239,12 @@ defmodule Short_circuit do
     IO.puts "a( #{bool} ) called"
     bool
   end
-  
+
   defp b(bool) do
     IO.puts "b( #{bool} ) called"
     bool
   end
-  
+
   def task do
     Enum.each([true, false], fn i ->
       Enum.each([true, false], fn j ->
@@ -1509,11 +1509,11 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 : ENDIFS  BEGIN DUP WHILE postpone ENDIF REPEAT DROP ; immediate
 : ORELSE  s" ?DUP 0= IF"  evaluate ; immediate
 :  ANDIF  s" DUP IF DROP" evaluate ; immediate
- 
+
 : .bool IF ." true  " ELSE ." false " THEN ;
 : A  ." A=" DUP .bool ;
 : B  ." B=" DUP .bool ;
- 
+
 : test
   CR
   1 -1 DO 1 -1 DO
@@ -1562,18 +1562,18 @@ program Short_Circuit_Eval
 
   do i = 1, 2
     do j = 1, 2
-      write(*, "(a,l1,a,l1,a)") "Calculating x = a(", l(i), ") and b(", l(j), ")"   
+      write(*, "(a,l1,a,l1,a)") "Calculating x = a(", l(i), ") and b(", l(j), ")"
       ! a AND b
-      x = a(l(i))  
+      x = a(l(i))
       if(x) then
         x = b(l(j))
         write(*, "(a,l1)") "x = ", x
       else
         write(*, "(a,l1)") "x = ", x
       end if
-  
+
       write(*,*)
-      write(*, "(a,l1,a,l1,a)") "Calculating y = a(", l(i), ") or b(", l(j), ")"   
+      write(*, "(a,l1,a,l1,a)") "Calculating y = a(", l(i), ") or b(", l(j), ")"
       ! a OR b
       y = a(l(i))
       if(y) then
@@ -1599,7 +1599,7 @@ end function
 function b(value)
   logical :: b
   logical, intent(in) :: value
-  
+
   b = value
   write(*, "(a,l1,a)") "Called function b(", value, ")"
 end function
@@ -1612,35 +1612,35 @@ end program
 Calculating x = a(F) and b(F)
 Called function a(F)
 x = F
- 
+
 Calculating y = a(F) or b(F)
 Called function a(F)
 Called function b(F)
 y = F
- 
+
 Calculating x = a(F) and b(T)
 Called function a(F)
 x = F
- 
+
 Calculating y = a(F) or b(T)
 Called function a(F)
 Called function b(T)
 y = T
- 
+
 Calculating x = a(T) and b(F)
 Called function a(T)
 Called function b(F)
 x = F
- 
+
 Calculating y = a(T) or b(F)
 Called function a(T)
 y = T
- 
+
 Calculating x = a(T) and b(T)
 Called function a(T)
 Called function b(T)
 x = T
- 
+
 Calculating y = a(T) or b(T)
 Called function a(T)
 y = T
@@ -1918,7 +1918,7 @@ p && q = case p of
            _     -> case q of
                       False -> False
                       _     -> True
-                      
+
 p || q = case p of
            True -> True
            _    -> case q of
@@ -1928,14 +1928,14 @@ p || q = case p of
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-The entire concept of using 'boolean' values for logic control runs counter to the philosophy of Icon. Instead Icon has success (something that returns a result) and failure which is really a signal.  The concept is similar to that used in [[:Category:SNOBOL4|SNOBOL4]] and [[:Category:Lisp|Lisp]] and far more potent than passing around and testing booleans.  There is no way to pass around a 'false' value in that sense. Icon does have facilities for dealing with bits inside integers but these would not normally be used for control purposes.  Because failure is a signal control is always evaluated in a short-circuit manner. One consequence of this is that an expression "i < j" doesn't return a boolean value, instead it returns the value of j.  While this may seem odd at first it allows for elegant expressions like "i < j < k". Another benefit is that there is no need for programmers to devote effort to staying inside the bounds of any data type. For instance, if you loop and iterate beyond bounds the expression simply fails and the loop ends. 
+The entire concept of using 'boolean' values for logic control runs counter to the philosophy of Icon. Instead Icon has success (something that returns a result) and failure which is really a signal.  The concept is similar to that used in [[:Category:SNOBOL4|SNOBOL4]] and [[:Category:Lisp|Lisp]] and far more potent than passing around and testing booleans.  There is no way to pass around a 'false' value in that sense. Icon does have facilities for dealing with bits inside integers but these would not normally be used for control purposes.  Because failure is a signal control is always evaluated in a short-circuit manner. One consequence of this is that an expression "i < j" doesn't return a boolean value, instead it returns the value of j.  While this may seem odd at first it allows for elegant expressions like "i < j < k". Another benefit is that there is no need for programmers to devote effort to staying inside the bounds of any data type. For instance, if you loop and iterate beyond bounds the expression simply fails and the loop ends.
 
 While this task could be written literally, it would be more beneficial to show how an Icon programmer would approach the same problem.  Icon extends the idea short circuit evaluation with the ability for expressions to generate alternate results only if needed.  For more information see [[Icon%2BUnicon/Intro#Program_Flow_and_Control|Failure is an option, Everything Returns a Value Except when it Doesn't, and Goal-Directed Evaluation and Generators]].  Consequently some small liberties will be taken with this task:
 * Since any result means an expression succeeded and is hence true, we can use any value. In this example our choice will be determined by how we deal with 'false'.
 * The inability to pass a 'false' value is a challenge.  At first glance we might try &null, similar to Lisp, but there is no canonical true. Also &null produces a result, so strictly speaking it could be 'true' as well. A good example of this is that an expression like " not expr " returns null if 'expr' fails.
-* For this example we will define two procedures 'true' and 'false'.  Because Icon treats procedures as a data type we can assign them and invoke them indirectly via the variable name they are assigned to.  We can write " i := true " and later invoke 'true' via " i() ". 
+* For this example we will define two procedures 'true' and 'false'.  Because Icon treats procedures as a data type we can assign them and invoke them indirectly via the variable name they are assigned to.  We can write " i := true " and later invoke 'true' via " i() ".
 * Rather than have the tasks print their own name, we will just utilize built-in tracing which will be more informative.
-This use of procedures as values is somewhat contrived but serves us well for demonstration purposes. In practice this approach would be strained since failure results aren't re-captured as values (and can't easily be).  
+This use of procedures as values is somewhat contrived but serves us well for demonstration purposes. In practice this approach would be strained since failure results aren't re-captured as values (and can't easily be).
 
 ```Icon
 procedure main()
@@ -1951,7 +1951,7 @@ every (i := false | true ) & ( j := false | true) do {
 end
 
 procedure true()   #: succeeds always (returning null)
-return  
+return
 end
 
 procedure false()  #: fails always
@@ -2158,12 +2158,12 @@ Short-circuiting evaluation of boolean expressions has been the default since th
 
         return bool;
     }
-  
-  
+
+
     var x = a(false) && b(true),
         y = a(true) || b(false),
         z = true ? a(true) : b(false);
-    
+
   return [x, y, z];
 })();
 ```
@@ -2386,7 +2386,7 @@ end function
 function b( t)
     print ,"calls func b"
     b = t
-end function 
+end function
 ```
 
 {{out}}
@@ -2588,15 +2588,15 @@ False
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-Short-circuit evalation is done in logical AND (&&) and logical OR (||) operators: 
+Short-circuit evalation is done in logical AND (&&) and logical OR (||) operators:
 
 ```matlab
   function x=a(x)
-    printf('a: %i\n',x);	
-  end; 
+    printf('a: %i\n',x);
+  end;
   function x=b(x)
     printf('b: %i\n',x);
-  end; 
+  end;
 
   a(1) && b(1)
   a(0) && b(1)
@@ -2606,7 +2606,7 @@ Short-circuit evalation is done in logical AND (&&) and logical OR (||) operator
 
 {{out}}
 
-```matlab>  
+```matlab>
  a(1) && b(1);
   a: 1
   b: 1
@@ -2706,15 +2706,15 @@ USER>D SSEVAL3^ROSETTA
           SSEVAL1+1^ROSETTA +3
           SSEVAL2+1^ROSETTA +3
 TRUE
- 
+
 0 AND 1
           SSEVAL1+1^ROSETTA +3
 FALSE
- 
+
 1 OR 1
           SSEVAL1+1^ROSETTA +3
 TRUE
- 
+
 0 OR 1
           SSEVAL1+1^ROSETTA +3
           SSEVAL2+1^ROSETTA +3
@@ -2742,7 +2742,7 @@ class ShortCircuit
         WriteLine("b");
         x
     }
-    
+
     public static Main() : void
     {
         def t = true;
@@ -2752,10 +2752,10 @@ class ShortCircuit
         WriteLine("True  && False: {0}", a(t) && b(f));
         WriteLine("False && True : {0}", a(f) && b(t));
         WriteLine("False && False: {0}", a(f) && b(f));
-        WriteLine("True  || True : {0}", a(t) || b(t)); 
+        WriteLine("True  || True : {0}", a(t) || b(t));
         WriteLine("True  || False: {0}", a(t) || b(f));
         WriteLine("False || True : {0}", a(f) || b(t));
-        WriteLine("False || False: {0}", a(f) || b(f));   
+        WriteLine("False || False: {0}", a(f) || b(f));
     }
 }
 ```
@@ -2868,7 +2868,7 @@ let y = a(true) or b(true) # echoes "a called"
 
 ## Objeck
 
-In Objeck the Boolean operators <code>&</code> and <code>|</code> short circuit. 
+In Objeck the Boolean operators <code>&</code> and <code>|</code> short circuit.
 
 ```objeck
 class ShortCircuit {
@@ -2943,7 +2943,7 @@ let () =
 ```
 
 {{out}}
- 
+
 ### = Testing and =
 
  # testing (true && true)
@@ -2956,7 +2956,7 @@ let () =
   > function a called
  # testing (false && false)
   > function a called
- 
+
 ### = Testing or =
 
  # testing (true || true)
@@ -3251,7 +3251,7 @@ sub test {
            my ($x,$y) = /(.),(.)/;
            print my $str = "a($x) $op b($y)", ': ';
            eval $str; print "\n"; } }
-}    
+}
 
 # Test and display
 test();
@@ -3417,11 +3417,11 @@ int(0..1) b(int(0..1) i)
 }
 
 foreach(({ ({ false, false }),  ({ false, true }), ({ true, true }), ({ true, false }) });; array(int) args)
-{ 
-    write(" %d && %d\n", @args); 
+{
+    write(" %d && %d\n", @args);
     a(args[0]) && b(args[1]);
- 
-    write(" %d || %d\n", @args); 
+
+    write(" %d || %d\n", @args);
     a(args[0]) || b(args[1]);
 }
 ```
@@ -3500,36 +3500,36 @@ end short_circuit_evaluation;
 
 ```txt
 
-Evaluating x with <a> with 1 and <b> with 1 
-Procedure A called.     Procedure B called. 
+Evaluating x with <a> with 1 and <b> with 1
+Procedure A called.     Procedure B called.
 X='1'B;
 
-Evaluating y with <a> with 1 and <b> with 1 
-Procedure A called. 
+Evaluating y with <a> with 1 and <b> with 1
+Procedure A called.
 Y='1'B;
 
-Evaluating x with <a> with 1 and <b> with 0 
-Procedure A called.     Procedure B called. 
+Evaluating x with <a> with 1 and <b> with 0
+Procedure A called.     Procedure B called.
 X='0'B;
 
-Evaluating y with <a> with 1 and <b> with 0 
-Procedure A called. 
+Evaluating y with <a> with 1 and <b> with 0
+Procedure A called.
 Y='1'B;
 
-Evaluating x with <a> with 0 and <b> with 1 
-Procedure A called. 
+Evaluating x with <a> with 0 and <b> with 1
+Procedure A called.
 X='0'B;
 
-Evaluating y with <a> with 0 and <b> with 1 
-Procedure A called.     Procedure B called. 
+Evaluating y with <a> with 0 and <b> with 1
+Procedure A called.     Procedure B called.
 Y='1'B;
 
-Evaluating x with <a> with 0 and <b> with 0 
-Procedure A called. 
+Evaluating x with <a> with 0 and <b> with 0
+Procedure A called.
 X='0'B;
 
-Evaluating y with <a> with 0 and <b> with 0 
-Procedure A called.     Procedure B called. 
+Evaluating y with <a> with 0 and <b> with 0
+Procedure A called.     Procedure B called.
 Y='0'B;
 
 ```
@@ -3543,16 +3543,16 @@ PowerShell handles this natively.
 ```powershell
 #  Simulated fast function
 function a ( [boolean]$J ) { return $J }
- 
+
 #  Simulated slow function
 function b ( [boolean]$J ) { Sleep -Seconds 2; return $J }
- 
+
 #  These all short-circuit and do not evaluate the right hand function
 ( a $True  ) -or  ( b $False )
 ( a $True  ) -or  ( b $True  )
 ( a $False ) -and ( b $False )
 ( a $False ) -and ( b $True  )
- 
+
 #  Measure of execution time
 Measure-Command {
 ( a $True  ) -or  ( b $False )
@@ -3560,13 +3560,13 @@ Measure-Command {
 ( a $False ) -and ( b $False )
 ( a $False ) -and ( b $True  )
 } | Select TotalMilliseconds
- 
+
 #  These all appropriately do evaluate the right hand function
 ( a $False ) -or  ( b $False )
 ( a $False ) -or  ( b $True  )
 ( a $True  ) -and ( b $False )
 ( a $True  ) -and ( b $True  )
- 
+
 #  Measure of execution time
 Measure-Command {
 ( a $False ) -or  ( b $False )
@@ -3677,11 +3677,11 @@ true.
 
 ## PureBasic
 
-Logical '''And''' &amp; '''Or''' operators will not evaluate their right-hand expression if the outcome can be determined from the value of the left-hand expression. 
+Logical '''And''' &amp; '''Or''' operators will not evaluate their right-hand expression if the outcome can be determined from the value of the left-hand expression.
 
 ```PureBasic
 Procedure a(arg)
-  PrintN("  # Called function a("+Str(arg)+")")  
+  PrintN("  # Called function a("+Str(arg)+")")
   ProcedureReturn arg
 EndProcedure
 
@@ -3696,7 +3696,7 @@ For a=#False To #True
     PrintN(#CRLF$+"Calculating: x = a("+Str(a)+") And b("+Str(b)+")")
     x= a(a) And b(b)
     PrintN("Calculating: x = a("+Str(a)+") Or b("+Str(b)+")")
-    y= a(a) Or b(b) 
+    y= a(a) Or b(b)
   Next
 Next
 Input()
@@ -3752,7 +3752,7 @@ Pythons '''and''' and '''or''' binary, infix, boolean operators will not evaluat
 		print ("Calculating: y = a(i) or  b(j)")
 		y = a(i) or  b(j)
 
-		
+
 
 Calculating: x = a(i) and b(j)
   # Called function a(False) -> False
@@ -3789,7 +3789,7 @@ Pythons if ''expression'' can also be used to the same ends (but probably should
 		print ("Calculating: y = a(i) or  b(j) using y = b(j) if not a(i) else True")
 		y = b(j) if not a(i) else True
 
-		
+
 
 Calculating: x = a(i) and b(j) using x = b(j) if a(i) else False
   # Called function a(False) -> False
@@ -3839,32 +3839,32 @@ invisible(apply(tests, 1, function(row) {
 
 ```r
 a called
-a(1) || b(1) -> TRUE 
+a(1) || b(1) -> TRUE
 
 a called
 b called
-a(1) && b(1) -> TRUE 
+a(1) && b(1) -> TRUE
 
 a called
 b called
-a(0) || b(1) -> TRUE 
+a(0) || b(1) -> TRUE
 
 a called
-a(0) && b(1) -> FALSE 
+a(0) && b(1) -> FALSE
 
 a called
-a(1) || b(0) -> TRUE 
-
-a called
-b called
-a(1) && b(0) -> FALSE 
+a(1) || b(0) -> TRUE
 
 a called
 b called
-a(0) || b(0) -> FALSE 
+a(1) && b(0) -> FALSE
 
 a called
-a(0) && b(0) -> FALSE 
+b called
+a(0) || b(0) -> FALSE
+
+a called
+a(0) && b(0) -> FALSE
 ```
 
 Because R waits until function arguments are needed before evaluating them, user-defined functions can also short circuit.
@@ -3914,9 +3914,9 @@ b called
 (for* ([x '(#t #f)]
        [y '(#t #f)])
   (displayln `(and (a ,x) (b ,y)))
-  (and (a x) (b y)) 
+  (and (a x) (b y))
   (newline)
-  
+
   (displayln `(or (a ,x) (b ,y)))
   (or (a x) (b y))
   (newline))
@@ -3927,21 +3927,21 @@ b called
 ```txt
 
 (and (a #t) (b #t))
-a:#t b:#t 
+a:#t b:#t
 (or (a #t) (b #t))
-a:#t 
+a:#t
 (and (a #t) (b #f))
-a:#t b:#f 
+a:#t b:#f
 (or (a #t) (b #f))
-a:#t 
+a:#t
 (and (a #f) (b #t))
-a:#f 
+a:#f
 (or (a #f) (b #t))
-a:#f b:#t 
+a:#f b:#t
 (and (a #f) (b #f))
-a:#f 
+a:#f
 (or (a #f) (b #f))
-a:#f b:#f 
+a:#f b:#f
 
 ```
 
@@ -3949,7 +3949,7 @@ a:#f b:#f
 
 ## REXX
 
-The REXX language doesn't have native short circuits (it's specifically mentioned in the 
+The REXX language doesn't have native short circuits (it's specifically mentioned in the
 language specifications that short-circuiting is '''not''' supported).
 
 ```rexx
@@ -4022,28 +4022,28 @@ for k = 1 to 2
       word = ["AND","OR"]
       see "
 ### ===
- " + word[k] + " 
+ " + word[k] + "
 ### ========
 " + nl
       for i = 0 to 1
            for j = 0 to 1
                 see "a(" + i + ") " + word[k] +" b(" + j + ")" + nl
-                res =a(i)    
+                res =a(i)
                 if word[k] = "AND" and res != 0
                    res = b(j)
                 ok
-                if word[k] = "OR"  and res = 0 
+                if word[k] = "OR"  and res = 0
                    res = b(j)
                 ok
            next
       next
 next
- 
+
 func a(t)
         see char(9) + "calls func a" + nl
         a = t
         return a
- 
+
 func b(t)
         see char(9) + "calls func b" + nl
         b = t
@@ -4155,7 +4155,7 @@ for k = 1 to 2
 ao$ = word$("AND,OR",k,",")
 print "
 ### ===
- ";ao$;" 
+ ";ao$;"
 ### ========
 "
 for i = 0 to 1
@@ -4168,13 +4168,13 @@ if ao$ = "OR"  and res =  0 then res = b(j)
     next
 next
 next k
-end 
+end
 
 function a( t)
     print chr$(9);"calls func a"
     a = t
 end function
- 
+
 function b( t)
     print chr$(9);"calls func b"
     b = t
@@ -4276,15 +4276,15 @@ false or false == false
 
 ```sather
 class MAIN is
-  a(v:BOOL):BOOL is 
+  a(v:BOOL):BOOL is
     #OUT + "executing a\n";
-    return v; 
+    return v;
   end;
   b(v:BOOL):BOOL is
     #OUT + "executing b\n";
     return v;
   end;
-  
+
   main is
     x:BOOL;
 
@@ -4391,7 +4391,7 @@ b
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const func boolean: a (in boolean: aBool) is func
   result
     var boolean: result is FALSE;
@@ -4399,7 +4399,7 @@ const func boolean: a (in boolean: aBool) is func
     writeln("a");
     result := aBool;
   end func;
- 
+
 const func boolean: b (in boolean: aBool) is func
   result
     var boolean: result is FALSE;
@@ -4407,13 +4407,13 @@ const func boolean: b (in boolean: aBool) is func
     writeln("b");
     result := aBool;
   end func;
- 
+
 const proc: test (in boolean: param1, in boolean: param2) is func
   begin
     writeln(param1 <& " and " <& param2 <& " = " <& a(param1) and b(param2));
     writeln(param1 <& " or " <& param2 <& " = " <& a(param1) or b(param2));
   end func;
- 
+
 const proc: main is func
   begin
     test(FALSE, FALSE);
@@ -4576,19 +4576,19 @@ Smalltalk at: #b put: nil.
 a := [:x| 'executing a' displayNl. x].
 b := [:x| 'executing b' displayNl. x].
 
-('false and false = %1' % 
+('false and false = %1' %
   { (a value: false) and: [ b value: false ] })
     displayNl.
 
-('true or false = %1' % 
+('true or false = %1' %
   { (a value: true) or: [ b value: false ] })
     displayNl.
 
-('false or true = %1' % 
+('false or true = %1' %
   { (a value: false) or: [ b value: true ] })
     displayNl.
 
-('true and false = %1' % 
+('true and false = %1' %
   { (a value: true) and: [ b value: false ] })
     displayNl.
 ```
@@ -4615,18 +4615,18 @@ b_end
 *       # Test and display
         &fullscan = 1
         output(.out,1,'-[-r1]') ;* Macro Spitbol
-*       output(.out,1,'B','-')  ;* CSnobol 
+*       output(.out,1,'B','-')  ;* CSnobol
         define('nl()'):(nlx);nl output = :(return);nlx
- 
+
         out = 'T and T: '; null ? *a(1) *b(1); nl()
-        out = 'T and F: '; null ? *a(1) *b(0); nl() 
-        out = 'F and T: '; null ? *a(0) *b(1); nl() 
-        out = 'F and F: '; null ? *a(0) *b(0); nl() 
-        output = 
-        out = 'T or T: '; null ? *a(1) | *b(1); nl() 
-        out = 'T or F: '; null ? *a(1) | *b(0); nl() 
-        out = 'F or T: '; null ? *a(0) | *b(1); nl() 
-        out = 'F or F: '; null ? *a(0) | *b(0); nl() 
+        out = 'T and F: '; null ? *a(1) *b(0); nl()
+        out = 'F and T: '; null ? *a(0) *b(1); nl()
+        out = 'F and F: '; null ? *a(0) *b(0); nl()
+        output =
+        out = 'T or T: '; null ? *a(1) | *b(1); nl()
+        out = 'T or F: '; null ? *a(1) | *b(0); nl()
+        out = 'F or T: '; null ? *a(0) | *b(1); nl()
+        out = 'F or F: '; null ? *a(0) | *b(0); nl()
 end
 ```
 
@@ -4680,7 +4680,7 @@ test_this test_or;
 ```
 
 {{out}}
- 
+
 ### = Testing and =
 
  # testing (true andalso true)
@@ -4693,7 +4693,7 @@ test_this test_or;
   > function a called
  # testing (false andalso false)
   > function a called
- 
+
 ### = Testing or =
 
  # testing (true orelse true)
@@ -4784,11 +4784,11 @@ func test(i: Bool, j: Bool) {
   println("Testing a(\(i)) && b(\(j))")
   print("Trace:  ")
   println("\nResult: \(a(i) && b(j))")
-  
+
   println("Testing a(\(i)) || b(\(j))")
   print("Trace:  ")
   println("\nResult: \(a(i) || b(j))")
-  
+
   println()
 }
 
@@ -4937,7 +4937,7 @@ a(@i) or b(@j):
 {{out|Run}}
 
 ```txt
-$ txr short-circuit-bool.txr 
+$ txr short-circuit-bool.txr
 a(0) and b(0):
   a (0) called
 a(0) or b(0):
@@ -5260,15 +5260,15 @@ ENDFUNC
 
 ```txt
 
-Arg1	Arg2	Operation	Result	Calls     	
-F   	F   	AND      	F     	a()       	
-F   	T   	AND      	F     	a()       	
-T   	F   	AND      	F     	a(), b()  	
-T   	T   	AND      	T     	a(), b()  	
-F   	F   	OR       	F     	a(), b()  	
-F   	T   	OR       	T     	a(), b()  	
-T   	F   	OR       	T     	a()       	
-T   	T   	OR       	T     	a()       	
+Arg1	Arg2	Operation	Result	Calls
+F   	F   	AND      	F     	a()
+F   	T   	AND      	F     	a()
+T   	F   	AND      	F     	a(), b()
+T   	T   	AND      	T     	a(), b()
+F   	F   	OR       	F     	a(), b()
+F   	T   	OR       	T     	a(), b()
+T   	F   	OR       	T     	a()
+T   	T   	OR       	T     	a()
 
 ```
 

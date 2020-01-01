@@ -13,7 +13,7 @@ tags = []
 {{task|Basic language learning}}
 
 ;Task:
-Show how to explicitly allocate and deallocate blocks of memory in your language. 
+Show how to explicitly allocate and deallocate blocks of memory in your language.
 
 Show access to different types of memory (i.e., [[heap]], [[system stack|stack]], shared, foreign) if applicable.
 
@@ -25,29 +25,29 @@ Show access to different types of memory (i.e., [[heap]], [[system stack|stack]]
 
 
 ```360 Assembly
-                                                    
-* Request to Get Storage Managed by "GETMAIN" Supervisor Call (SVC 4) 
-       LA    1,PLIST       Point Reg 1 to GETMAIN/FREEMAIN Parm List 
-       SVC   4             Issue GETMAIN SVC 
-       LTR   15,15         Register 15 = 0? 
-       BZ    GOTSTG         Yes: Got Storage 
-*      [...]                 No: Handle GETMAIN Failure 
-GOTSTG L     2,STG@        Load Reg (any Reg) with Addr of Aquired Stg 
-*      [...]               Continue 
-* Request to Free Storage Managed by "FREEMAIN" Supervisor Call (SVC 5) 
-       LA    1,PLIST       Point Reg 1 to GETMAIN/FREEMAIN Parm List 
-       SVC   5             Issue FREEMAIN SVC 
-       LTR   15,15         Register 15 = 0? 
-       BZ    STGFRE         Yes: Storage Freed 
-*      [...]                 No: Handle FREEMAIN Failure 
-STGFRE EQU   *             Storage Freed 
+
+* Request to Get Storage Managed by "GETMAIN" Supervisor Call (SVC 4)
+       LA    1,PLIST       Point Reg 1 to GETMAIN/FREEMAIN Parm List
+       SVC   4             Issue GETMAIN SVC
+       LTR   15,15         Register 15 = 0?
+       BZ    GOTSTG         Yes: Got Storage
+*      [...]                 No: Handle GETMAIN Failure
+GOTSTG L     2,STG@        Load Reg (any Reg) with Addr of Aquired Stg
+*      [...]               Continue
+* Request to Free Storage Managed by "FREEMAIN" Supervisor Call (SVC 5)
+       LA    1,PLIST       Point Reg 1 to GETMAIN/FREEMAIN Parm List
+       SVC   5             Issue FREEMAIN SVC
+       LTR   15,15         Register 15 = 0?
+       BZ    STGFRE         Yes: Storage Freed
+*      [...]                 No: Handle FREEMAIN Failure
+STGFRE EQU   *             Storage Freed
 *      [...]               Continue
 *
-STG@   DS    A             Address of Stg Area (Aquired or to be Freed) 
-PLIST  EQU   *             10-Byte GETMAIN/FREEMAIN Parameter List 
-       DC    A(256)        Number of Bytes; Max=16777208 ((2**24)-8) 
+STG@   DS    A             Address of Stg Area (Aquired or to be Freed)
+PLIST  EQU   *             10-Byte GETMAIN/FREEMAIN Parameter List
+       DC    A(256)        Number of Bytes; Max=16777208 ((2**24)-8)
        DC    A(STG@)       Pointer to Address of Storage Area
-       DC    X'0000'       (Unconditional Request; Subpool 0) 
+       DC    X'0000'       (Unconditional Request; Subpool 0)
 
 ```
 
@@ -149,7 +149,7 @@ MODE MYSTRUCT = STRUCT(INT i, j, k, REAL r, COMPL c);
 
 
 ```algol68
-[666]MYSTRUCT pool; 
+[666]MYSTRUCT pool;
 INT new pool := LWB pool-1;
 REF MYSTRUCT p = pool[new pool +:=1];
 ```
@@ -229,7 +229,7 @@ Memory allocated from the heap is only freed on program termination or CLEAR.
       size% = 12345
       PROCstack(size%)
       END
-      
+
       DEF PROCstack(s%)
       LOCAL mem%
       DIM mem% LOCAL s%-1
@@ -243,15 +243,15 @@ Memory allocated from the stack is freed on exit from the FN or PROC.
 ## Bracmat
 
 As a rule, memory allocation and deallocation is done implicitly.
- 
+
 If Bracmat is linked as a library to a C or C++ program there may exist situations where explicitly allocating and deallocating memory is necessary, for example if a call-back C-function expects a pointer to a block of data. Another application of explicitly allocated memory is for storing data that may contain null bytes.
 
 The Bracmat functions <code>alc$</code> and <code>fre$</code> call the C-functions <code>malloc()</code> and <code>free()</code>, respectively. Writing and reading to and from allocated memory is done with the poke and peek functions <code>pok$</code> and <code>pee$</code>. These funtions write and read in chunks of 1 (default), 2 or 4 bytes. No need to say that all these low-level functions easily can create havoc and should be disabled in serious applications that don't need them. (There are compiler preprocessor macros to do that.)
 
 ```bracmat
 ( alc$2000:?p           {allocate 2000 bytes}
-& pok$(!p,123456789,4)  { poke a large value as a 4 byte integer } 
-& pok$(!p+4,0,4)        { poke zeros in the next 4 bytes } 
+& pok$(!p,123456789,4)  { poke a large value as a 4 byte integer }
+& pok$(!p+4,0,4)        { poke zeros in the next 4 bytes }
 & out$(pee$(!p,1))      { peek the first byte }
 & out$(pee$(!p+2,2))    { peek the short int located at the third and fourth byte }
 & out$(pee$(!p,4))      { peek the first four bytes }
@@ -278,8 +278,8 @@ The Bracmat functions <code>alc$</code> and <code>fre$</code> call the C-functio
 The functions <tt>malloc</tt>, <tt>calloc</tt> and <tt>realloc</tt> take memory from the heap. This memory ''should'' be released with <tt>free</tt> and it's suitable for sharing memory among threads.
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 
 /* size of "members", in bytes */
 #define SIZEOF_MEMB (sizeof(int))
@@ -329,7 +329,8 @@ int func()
 The libc provided by [[gcc]] (and present on other "systems" too) has the <tt>alloca</tt> function which allows to ask for memory on the stack explicitly; the memory is deallocated when the function that asked for the memory ends (it is, in practice, the same behaviour for automatic variables). The usage is the same as for functions like <tt>malloc</tt>
 
 
-```c>#include <alloca.h
+```c
+#include <alloca.h>
 
 int *funcA()
 {
@@ -351,7 +352,7 @@ int integers[NMEMB]; /* should be initialized with 0s */
 int funcB()
 {
   static int ints[NMEMB]; /* this is "static", i.e. the memory "survive" even
-                             when the function exits, but the symbol's scope is local */ 
+                             when the function exits, but the symbol's scope is local */
   return integers[0] + ints[0];
 }
 
@@ -411,8 +412,8 @@ public unsafe class Program
 
 While the C allocation functions are also available in C++, their use is discouraged. Instead, C++ provides <code>new</code> and <code>delete</code> for memory allocation and deallocation. Those function don't just allocate memory, but also initialize objects. Also, deallocation is coupled with destruction.
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 
 int main()
 {
@@ -454,8 +455,8 @@ int main()
 
 There's also a placement form of new, which allows to construct objects at an arbitrary adress (provided it is correctly aligned, and there's enough memory):
 
-```cpp>#include <new
-
+```cpp
+#include <new>
 
 int main()
 {
@@ -479,8 +480,8 @@ int* p = new(memory_for_p) int(3);
 
 Normally, new throws an exception if the allocation fails. there's a non-throwing variant which returns a null pointer instead:
 
-```cpp>#include <new
-
+```cpp
+#include <new>
 
 int* p = new(std::nothrow) int(3);
 ```
@@ -489,8 +490,8 @@ Note that the nothrow variant does <em>not</em> prevent any exceptions to be thr
 
 It is also possible to implement user-defined variations of operator new. One possibility is to define class-based operator new/operator delete:
 
-```cpp>#include <cstddef
-
+```cpp
+#include <cstddef>
 #include <cstdlib>
 #include <new>
 
@@ -612,7 +613,7 @@ This behavior can be observed with the (not good for actual use) code:
 (show-allocation)
 ```
 
-produces 
+produces
 
 ```txt
 
@@ -1143,7 +1144,7 @@ fun main(args: Array<String>) {
 }
 ```
 
-When this is run, notice that finalize() is not called - at least on my machine (running UBuntu 14.04, Oracle JDK 8): 
+When this is run, notice that finalize() is not called - at least on my machine (running UBuntu 14.04, Oracle JDK 8):
 {{out}}
 
 ```txt
@@ -1167,8 +1168,8 @@ Lingo does not allow direct memory allocation and has no direct access to memory
 -- Create a ByteArray of 100 Kb (pre-filled with 0 bytes)
 ba = byteArray(102400)
 
--- Lingo uses garbage-collection, so allocated memory is released when no more references exist. 
--- For the above variable ba, this can be achieved by calling: 
+-- Lingo uses garbage-collection, so allocated memory is released when no more references exist.
+-- For the above variable ba, this can be achieved by calling:
 ba = VOID
 ```
 
@@ -1206,7 +1207,7 @@ Module Checkit {
       }
       Print Error$  ' return message: Buffer Locked, wrong use of pointer
 }
-Checkit 
+Checkit
 
 ```
 
@@ -1245,19 +1246,19 @@ If desired, memory can be optimized/reclaimed somewhat by calling Share[] or Cle
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
-Matlab and Octave allocate memory when a new variable or a local variable is generated. Arrays are automatically extended as needed. However, extending the array might require to re-allocate the whole array. Therefore, pre-allocating memory can provide a significant performance improvement. 
+Matlab and Octave allocate memory when a new variable or a local variable is generated. Arrays are automatically extended as needed. However, extending the array might require to re-allocate the whole array. Therefore, pre-allocating memory can provide a significant performance improvement.
 
 
 ```MATLAB
- 
-   A = zeros(1000); 	% allocates memory for a 1000x1000 double precision matrix. 
-   clear A;		% deallocates memory 
+
+   A = zeros(1000); 	% allocates memory for a 1000x1000 double precision matrix.
+   clear A;		% deallocates memory
 
    b = zeros(1,100000);	% pre-allocate memory to improve performance
    for k=1:100000,
 	b(k) = 5*k*k-3*k+2;
-   end 
- 
+   end
+
 ```
 
 
@@ -1359,7 +1360,7 @@ Memory allocation in PARI is somewhat subtle. See section 4.2.5 (also skim 4.3 a
 
 
 
-###  Stack 
+###  Stack
 
 
 Variables declared in procedures and functions are allocated on the stack.
@@ -1367,7 +1368,7 @@ Variables declared in procedures and functions are allocated on the stack.
 Their scope is local to the respective procedure/function and their memory is freed with the end of the procedure/function.
 
 
-###  Heap 
+###  Heap
 
 
 Dynamicly created objects (dynamic arrays, class instantiations, ...) are allocated on the heap.
@@ -1526,7 +1527,7 @@ ctlvar='A';
  dcl list_top ptr            init (sysnull());
  dcl list_end ptr            init (addr(list_top));
  dcl i        fixed bin (31);
-                                                   
+
  dcl 1 list based(list_ptr),
        2 list_nxt  ptr            init (sysnull()),
        2 list_data fixed bin (31) init (i);
@@ -1550,7 +1551,7 @@ ctlvar='A';
  end mainprog;
 ```
 
- 
+
 Result:
 
 ```txt
@@ -1572,7 +1573,7 @@ Result:
 ;*buffer value is still valid if newBuffer wasn't able to be reallocated
 If *newBuffer <> 0
   *buffer = *newBuffer : *newBuffer = 0
-EndIf 
+EndIf
 
 FreeMemory(*buffer)
 
@@ -1686,7 +1687,7 @@ unsigned (long) integers.</p>
 	print a
 	del a
 
-	
+
 array('l')
 array('c', 'hello world')
 array('u', u'hello \u2641')
@@ -1835,7 +1836,7 @@ https://github.com/rust-lang/rust/issues/32838
 
 
 ```rust
-// we have to use `unsafe` here because 
+// we have to use `unsafe` here because
 // we will be dereferencing a raw pointer
 unsafe {
     use std::alloc::{Layout, alloc, dealloc};
@@ -1960,7 +1961,7 @@ You don't need to explicitly de-allocate memory.  When you leave a function whic
 
 
 ```snobol4>     newnode = </lang
-  
+
 
 SNOBOL4 automatically garbage collects released data items on an as-needed basis, and moves allocated items to consolidate all released space (so memory fragmentation is never a problem).  You can explicitly garbage collect if you really want to:
 
@@ -1980,8 +1981,8 @@ It just happens that it never actually is necessary to directly allocate memory 
 
 More commonly, a package written in [[C]] will be used to manage the memory on behalf of Tcl, with explicit memory management. Here is an example of such a package:
 
-```c>#include <tcl.h
-
+```c
+#include <tcl.h>
 
 /* A data structure used to enforce data safety */
 struct block {
@@ -2204,7 +2205,7 @@ This is a bare-bones implementation of a heap memory allocator for x86_64 Linux.
 
 
 ```x86asm
- 
+
 ; linux x86_64
 
 struc block
@@ -2240,7 +2241,7 @@ Allocate:
 
     ; this block is free, make
     ; sure it's big enough
-    mov bx, word [rdi + size] 
+    mov bx, word [rdi + size]
     mov rcx, qword [rsp] ; compare against our size arg
     cmp cx, bx
     jg skipBlock ; keep looking if not big enough
@@ -2268,10 +2269,10 @@ Allocate:
       syscall
       cmp rax, qword [break] ; if breakpoint has not increased,
       je allocFail           ; then memory could not be allocated
-      mov qword [break], rax 
+      mov qword [break], rax
       pop rax
       jmp initAndAllocate
-      
+
 
   firstAlloc:    ; extra work has to be done on first
     mov rax, 12  ; call to this subroutine

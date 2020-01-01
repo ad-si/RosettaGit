@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 
-''Reduce'' is a function or method that is used to take the values in an array or a list and apply a function to successive members of the list to produce (or reduce them to), a single value. 
+''Reduce'' is a function or method that is used to take the values in an array or a list and apply a function to successive members of the list to produce (or reduce them to), a single value.
 
 
 ;Task:
@@ -131,10 +131,10 @@ concatenation(strings) =  reduce in ABAP
 with Ada.Text_IO;
 
 procedure Catamorphism is
-   
+
    type Fun is access function (Left, Right: Natural) return Natural;
    type Arr is array(Natural range <>) of Natural;
-   
+
    function Fold_Left (F: Fun; A: Arr) return Natural is
       Result: Natural := A(A'First);
    begin
@@ -143,14 +143,14 @@ procedure Catamorphism is
       end loop;
       return Result;
    end Fold_Left;
-   
+
    function Max (L, R: Natural) return Natural is (if L > R then L else R);
-   function Min (L, R: Natural) return Natural is (if L < R then L else R);     
+   function Min (L, R: Natural) return Natural is (if L < R then L else R);
    function Add (Left, Right: Natural) return Natural is (Left + Right);
    function Mul (Left, Right: Natural) return Natural is (Left * Right);
-          
-   package NIO is new Ada.Text_IO.Integer_IO(Natural);   
-   
+
+   package NIO is new Ada.Text_IO.Integer_IO(Natural);
+
 begin
    NIO.Put(Fold_Left(Min'Access, (1,2,3,4)), Width => 3);
    NIO.Put(Fold_Left(Max'Access, (1,2,3,4)), Width => 3);
@@ -230,7 +230,7 @@ END
 
 {{Trans|JavaScript}}
 
-Iteratively implemented '''foldl''' and '''foldr''', using the same argument sequence as in the corresponding JavaScript array methods '''reduce()''' and '''reduceRight()'''. 
+Iteratively implemented '''foldl''' and '''foldr''', using the same argument sequence as in the corresponding JavaScript array methods '''reduce()''' and '''reduceRight()'''.
 
 (Note that to obtain first-class functions from user-defined AppleScript handlers, we have to 'lift' them into script objects).
 
@@ -284,7 +284,7 @@ on concat(xs)
             a & b
         end |λ|
     end script
-    
+
     if length of xs > 0 and class of (item 1 of xs) is string then
         set unit to ""
     else
@@ -300,7 +300,7 @@ on product(xs)
             a * b
         end |λ|
     end script
-    
+
     foldr(result, 1, xs)
 end product
 
@@ -311,7 +311,7 @@ on sum(xs)
             a + b
         end |λ|
     end script
-    
+
     foldl(result, 0, xs)
 end sum
 
@@ -319,16 +319,16 @@ end sum
 -- TEST -----------------------------------------------------------
 on run
     set xs to {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-    
+
     {sum(xs), product(xs), concat(xs)}
-    
+
     --> {55, 3628800, "10987654321"}
 end run
 
 
 -- GENERIC FUNCTION -----------------------------------------------
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -419,8 +419,8 @@ Output:
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef int (*intFn)(int, int);
 
@@ -460,8 +460,8 @@ int main(void)
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <numeric>
 #include <functional>
 #include <vector>
@@ -652,11 +652,11 @@ reduce f lst init:
 ```scheme
 
 ;; rem : the foldX family always need an initial value
-;; fold left a list 
+;; fold left a list
 (foldl + 0 (iota 10)) ;; 0 + 1 + .. + 9
   → 45
 
-;; fold left a sequence 
+;; fold left a sequence
 (lib 'sequences)
 (foldl * 1 [ 1 .. 10])
     → 362880 ;; 10!
@@ -683,17 +683,17 @@ import system'collections;
 import system'routines;
 import extensions;
 import extensions'text;
- 
+
 public program()
 {
     var numbers := new Range(1,10).summarize(new ArrayList());
- 
+
     var summary := numbers.accumulate(new Variable(0), (a,b => a + b));
- 
+
     var product := numbers.accumulate(new Variable(1), (a,b => a * b));
- 
+
     var concatenation := numbers.accumulate(new StringWriter(), (a,b => a.Printable + b.Printable));
- 
+
     console.printLine(summary," ",product," ",concatenation)
 }
 ```
@@ -735,14 +735,14 @@ iex(3)> Enum.reduce(10..-10, "", fn i,acc -> acc <> to_string(i) end)
 
 test() ->
 	Nums = lists:seq(1,10),
-	Summation = 
+	Summation =
 		lists:foldl(fun(X, Acc) -> X + Acc end, 0, Nums),
-	Product = 
+	Product =
 		lists:foldl(fun(X, Acc) -> X * Acc end, 1, Nums),
-	Concatenation = 
+	Concatenation =
 		lists:foldr(
-			fun(X, Acc) -> integer_to_list(X) ++ Acc end, 
-			"", 
+			fun(X, Acc) -> integer_to_list(X) ++ Acc end,
+			"",
 			Nums),
 	{Summation, Product, Concatenation}.
 
@@ -938,7 +938,7 @@ side-effects and returns nothing to the higher-order word.
 
 ## Fortran
 
-If Fortran were to offer the ability to pass a parameter "by name", as is used in [[Jensen's_Device#Fortran|Jensen's device]], then the code might be something like 
+If Fortran were to offer the ability to pass a parameter "by name", as is used in [[Jensen's_Device#Fortran|Jensen's device]], then the code might be something like
 ```Fortran
       SUBROUTINE FOLD(t,F,i,ist,lst)
        INTEGER t
@@ -959,7 +959,7 @@ Here is such an arrangement, in the style of F77 though somewhat affected by F90
 
 However, only programmer diligence in devising functions with the correct type of result and the correct type and number of parameters will evade mishaps. Note that the EXTERNAL statement does not specify the number or type of parameters. If the function is invoked multiple times within a subroutine, the compiler may check for consistency. This may cause trouble when [[Leonardo_numbers#Fortran|some parameters are optional]] so that different invocations do not match.
 
-The function's name is used as a working variable within the function (as well as it holding the function's value on exit) so that the expression <code>F(IFOLD,A(I))</code> is ''not'' a recursive invocation of function <code>IFOLD</code> because there are no (parameters) appended to the function's name. Earlier compilers did not allow such usage so that a separate working variable would be required. 
+The function's name is used as a working variable within the function (as well as it holding the function's value on exit) so that the expression <code>F(IFOLD,A(I))</code> is ''not'' a recursive invocation of function <code>IFOLD</code> because there are no (parameters) appended to the function's name. Earlier compilers did not allow such usage so that a separate working variable would be required.
 ```Fortran
       INTEGER FUNCTION IFOLD(F,A,N)	!"Catamorphism"...
        INTEGER F	!We're working only with integers.
@@ -1038,14 +1038,14 @@ To apply a function in the "catamorphic" style to the 6 values
 ```freebasic
 ' FB 1.05.0 Win64
 
-Type IntFunc As Function(As Integer, As Integer) As Integer  
- 
+Type IntFunc As Function(As Integer, As Integer) As Integer
+
 Function reduce(a() As Integer, f As IntFunc) As Integer
    '' if array is empty or function pointer is null, return 0 say
-   If UBound(a) = -1 OrElse f = 0 Then Return 0 
+   If UBound(a) = -1 OrElse f = 0 Then Return 0
    Dim result As Integer = a(LBound(a))
    For i As Integer = LBound(a) + 1 To UBound(a)
-     result = f(result, a(i)) 
+     result = f(result, a(i))
    Next
    Return result
 End Function
@@ -1211,7 +1211,7 @@ main =
   in (putStrLn . unlines)
        [ (show . getSum     . foldr (<>) mempty) (Sum     <$> xs)
        , (show . getProduct . foldr (<>) mempty) (Product <$> xs)
-       , (show .              foldr (<>) mempty) (show    <$> xs) 
+       , (show .              foldr (<>) mempty) (show    <$> xs)
        , (show .              foldr (<>) mempty) (words
                      "Love is one damned thing after each other")
        ]
@@ -1385,7 +1385,7 @@ Note that the JavaScript Array methods include a right fold ( '''.reduceRight()'
 
 
 ```txt
-["0 2 4 6 8 10 12 14 16 18 ", 
+["0 2 4 6 8 10 12 14 16 18 ",
 "18 16 14 12 10 8 6 4 2 0 "]
 ```
 
@@ -1475,7 +1475,7 @@ Maximum     : 5
 
 ## Logtalk
 
-The Logtalk standard library provides implementations of common meta-predicates such as fold left. The example that follow uses Logtalk's native support for lambda expressions to avoid the need for auxiliary predicates. 
+The Logtalk standard library provides implementations of common meta-predicates such as fold left. The example that follow uses Logtalk's native support for lambda expressions to avoid the need for auxiliary predicates.
 
 ```logtalk
 
@@ -1776,10 +1776,10 @@ IMPORT
   NPCT:Args,
   IntStr,
   Out;
-  
+
 TYPE
   BinaryFunc= PROCEDURE (x,y: LONGINT): LONGINT;
-  
+
 VAR
   data: POINTER TO ARRAY OF LONGINT;
   i: LONGINT;
@@ -1788,17 +1788,17 @@ VAR
   BEGIN
     RETURN x + y
   END Sum;
-  
+
   PROCEDURE Sub(x,y: LONGINT): LONGINT;
   BEGIN
     RETURN x - y;
   END Sub;
-  
+
   PROCEDURE Mul(x,y: LONGINT): LONGINT;
   BEGIN
     RETURN x * y;
   END Mul;
-  
+
   PROCEDURE Reduce(x: ARRAY OF LONGINT; f: BinaryFunc): LONGINT;
   VAR
     i,res: LONGINT;
@@ -1810,7 +1810,7 @@ VAR
     END;
     RETURN res
   END Reduce;
-  
+
   PROCEDURE InitData(VAR x: ARRAY OF LONGINT);
   VAR
     i, j: LONGINT;
@@ -1828,7 +1828,7 @@ VAR
       INC(j);INC(i)
     END
   END InitData;
-  
+
 BEGIN
   IF Args.Number() = 1 THEN
     Out.String("Invalid number of arguments. ");Out.Ln;
@@ -1873,7 +1873,7 @@ class Reducer {
   function : Add(a : Int, b : Int) ~ Int {
     return a + b;
   }
-  
+
   function : Mul(a : Int, b : Int) ~ Int {
     return a * b;
   }
@@ -1907,7 +1907,7 @@ val product : int = 3628800
 
 ## Oforth
 
-reduce is already defined into Collection class : 
+reduce is already defined into Collection class :
 
 
 ```Oforth
@@ -2001,7 +2001,7 @@ END.
 output
 
 ```txt
--5,-4,-3,-2,-1,1,1,2,3,4,5 
+-5,-4,-3,-2,-1,1,1,2,3,4,5
 1
 -11
 -1440
@@ -2088,7 +2088,7 @@ object res = s[1]
     for i=2 to length(s) do
         res = call_func(rid,{res,s[i]})
     end for
-    return res      
+    return res
 end function
 
 ?reduce(routine_id("add"),tagset(5))
@@ -2121,7 +2121,7 @@ end function
 (println
    (reduce + (1 2 3 4 5))
    (reduce * (1 2 3 4 5)) )
-      
+
 (bye)
 ```
 
@@ -2195,7 +2195,7 @@ Help on built-in function reduce in module __builtin__:
 
 reduce(...)
     reduce(function, sequence[, initial]) -> value
-    
+
     Apply a function of two arguments cumulatively to the items of a sequence,
     from left to right, so as to reduce the sequence to a single value.
     For example, reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) calculates
@@ -2205,7 +2205,7 @@ reduce(...)
 
 >>> reduce(add, listoflists, [])
 ['the', 'cat', 'sat', 'on', 'the', 'mat']
->>> 
+>>>
 ```
 
 
@@ -2302,8 +2302,8 @@ Reduce(function(x,acc){if (0==x%%3) c(x*x,acc) else acc}, 0:22,
 
 This REXX example is modeled after the Perl 6 example   (it is NOT a translation).
 
-Also, a   '''list'''   and   '''show'''   function were added, although they 
-aren't a catamorphism, as they don't produce or reduce the values to a   ''single''   value, but 
+Also, a   '''list'''   and   '''show'''   function were added, although they
+aren't a catamorphism, as they don't produce or reduce the values to a   ''single''   value, but
 are included here to help display the values in the list.
 
 ```rexx
@@ -2374,8 +2374,8 @@ prod: 3628800
 n = list(10)
 for i = 1 to 10
     n[i] = i
-next 
- 
+next
+
 see "  +: " + cat(10,"+") + nl+
     "  -: " + cat(10,"-") + nl +
     "  *: " + cat(10,"*") + nl +
@@ -2385,13 +2385,13 @@ see "  +: " + cat(10,"+") + nl+
     "max: " + cat(10,"max") + nl+
     "avg: " + cat(10,"avg") + nl +
     "cat: " + cat(10,"cat") + nl
- 
+
 func cat count,op
      cat = n[1]
      cat2 = ""
-     for i = 2 to count 
-         switch op 
-                on "+" cat +=  n[i] 
+     for i = 2 to count
+         switch op
+                on "+" cat +=  n[i]
                 on "-"  cat -=  n[i]
                 on "*" cat *=  n[i]
                 on "/" cat /=  n[i]
@@ -2401,7 +2401,7 @@ func cat count,op
                 on "avg" cat +=  n[i]
                 on "cat" cat2 += string(n[i])
           off
-     next 
+     next
 if op = "avg"  cat = cat / count ok
 if op = "cat"  decimals(0) cat = string(n[1])+cat2 ok
 return cat
@@ -2458,10 +2458,10 @@ print "cat: ";" ";cat(10,"cat")
 
 function cat(count,op$)
 cat = n(1)
-for i = 2 to count 
+for i = 2 to count
  if op$ = "+" 	then cat = cat + n(i)
  if op$ = "-" 	then cat = cat - n(i)
- if op$ = "*" 	then cat = cat * n(i) 
+ if op$ = "*" 	then cat = cat * n(i)
  if op$ = "/" 	then cat = cat / n(i)
  if op$ = "^" 	then cat = cat ^ n(i)
  if op$ = "max"	then cat = max(cat,n(i))
@@ -2821,12 +2821,12 @@ File("foo.zkl").reduce('+(1).fpM("0-"),0) //->5 (lines in file)
 60 LET o$="+": GO SUB 1000: PRINT tmp
 70 LET o$="-": GO SUB 1000: PRINT tmp
 80 LET o$="*": GO SUB 1000: PRINT tmp
-90 STOP 
+90 STOP
 1000 REM Reduce
 1010 LET tmp=a(1)
 1020 FOR i=2 TO 5
 1030 LET tmp=VAL ("tmp"+o$+"a(i)")
 1040 NEXT i
-1050 RETURN 
+1050 RETURN
 ```
 

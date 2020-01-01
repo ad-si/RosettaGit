@@ -15,7 +15,7 @@ tags = []
 {{omit from|GUISS}}
 
 ;Task:
-Implement a permutation sort, which proceeds by generating the possible permutations 
+Implement a permutation sort, which proceeds by generating the possible permutations
 of the input array/list until discovering the sorted one.
 
 Pseudocode:
@@ -49,8 +49,8 @@ function permutations(front:Array, permutable:Array):Array {
 }
 //returns the array if it's sorted, or null otherwise
 function isSorted(data:Array):Array {
-	for (var i:uint = 1; i < data.length; i++) 
-		if (data[i]<data[i-1]) 
+	for (var i:uint = 1; i < data.length; i++)
+		if (data[i]<data[i-1])
 			return null;
 	return data;
 }
@@ -115,7 +115,7 @@ NextPerm(v) { ; the lexicographically next LARGER permutation of v1..v%v0%
       t := %v%%i%, %v%%i% := %v%%j%, %v%%j% := t, ++i, --j
 }
 ```
- 
+
 
 
 ## BBC BASIC
@@ -124,7 +124,7 @@ NextPerm(v) { ; the lexicographically next LARGER permutation of v1..v%v0%
 ```bbcbasic
       DIM test(9)
       test() = 4, 65, 2, 31, 0, 99, 2, 83, 782, 1
-      
+
       perms% = 0
       WHILE NOT FNsorted(test())
         perms% += 1
@@ -132,7 +132,7 @@ NextPerm(v) { ; the lexicographically next LARGER permutation of v1..v%v0%
       ENDWHILE
       PRINT ;perms% " permutations required to sort "; DIM(test(),1)+1 " items."
       END
-      
+
       DEF PROCnextperm(a())
       LOCAL last%, maxindex%, p%
       maxindex% = DIM(a(),1)
@@ -152,7 +152,7 @@ NextPerm(v) { ; the lexicographically next LARGER permutation of v1..v%v0%
       SWAP a(p%), a(last%)
       PROCreverse(a(), p%+1, maxindex%)
       ENDPROC
-      
+
       DEF PROCreverse(a(), first%, last%)
       WHILE first% < last%
         SWAP a(first%), a(last%)
@@ -160,7 +160,7 @@ NextPerm(v) { ; the lexicographically next LARGER permutation of v1..v%v0%
         last% -= 1
       ENDWHILE
       ENDPROC
-      
+
       DEF FNsorted(d())
       LOCAL I%
       FOR I% = 1 TO DIM(d(),1)
@@ -183,8 +183,8 @@ NextPerm(v) { ; the lexicographically next LARGER permutation of v1..v%v0%
 
 Just keep generating [[wp:Permutation#Systematic_generation_of_all_permutations|next lexicographic permutation]] until the last one; it's sorted by definition.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -285,8 +285,8 @@ public static class PermutationSorter
 Since <tt>next_permutation</tt> already returns whether the resulting sequence is sorted, the code is quite simple:
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 
 template<typename ForwardIterator>
  void permutation_sort(ForwardIterator begin, ForwardIterator end)
@@ -373,8 +373,8 @@ find_matching_permutation = (a, f_match) ->
     if f_match permuted_array
       return permuted_array
   null
-  
-  
+
+
 do ->
   a = ['c', 'b', 'a', 'd']
   console.log 'input:', a
@@ -386,7 +386,7 @@ do ->
 
 {{out}}
 <lang>
-> coffee permute_sort.coffee 
+> coffee permute_sort.coffee
 input: [ 'c', 'b', 'a', 'd' ]
 [ 0, 1, 2, 3 ] [ 'c', 'b', 'a', 'd' ]
 [ 0, 1, 3, 2 ] [ 'c', 'b', 'd', 'a' ]
@@ -466,7 +466,7 @@ Evaluation took:
   98.34% CPU
   12,337,938,025 processor cycles
   611,094,240 bytes consed
-  
+
 (1 2 3 4 5 6 7 8 9 10)
 ```
 
@@ -548,7 +548,7 @@ void main() {
 }
 ```
 
-The output is the same. 
+The output is the same.
 Run-time about 1.04 seconds with ldc2 (the C++ entry with G++ takes about 0.4 seconds).
 
 
@@ -619,14 +619,14 @@ def permutationSort(flexList) {
 (define L (shuffle (iota 6)))
     → (1 5 4 2 0 3)
 
-(for ((p (in-permutations (length L )))) 
-    #:when (in-order (list-permute L p)) 
+(for ((p (in-permutations (length L ))))
+    #:when (in-order (list-permute L p))
        (writeln (list-permute L p)) #:break #t)
 
-    → (0 1 2 3 4 5)  
+    → (0 1 2 3 4 5)
 
 ```
- 
+
 
 
 ## Elixir
@@ -638,12 +638,12 @@ defmodule Sort do
   def permutation_sort(list) do
     Enum.find(permutation(list), fn [h|t] -> in_order?(t, h) end)
   end
-  
+
   defp permutation([]), do: [[]]
   defp permutation(list) do
     for x <- list, y <- permutation(list -- [x]), do: [x|y]
   end
-  
+
   defp in_order?([], _), do: true
   defp in_order?([h|_], pre) when h<pre, do: false
   defp in_order?([h|t], _), do: in_order?(t, h)
@@ -674,7 +674,7 @@ IN: rosetta-code.permutation-sort
 
 : permutation-sort ( seq -- seq' )
     [ [ before=? ] monotonic? ] find-permutation ;
-    
+
 { 10 2 6 8 1 4 3 } permutation-sort .
 "apple" permutation-sort print
 ```
@@ -832,7 +832,7 @@ makePermutation = { list, i ->
     if (n < 2) return list
     def fact = factorial(n-1)
     assert i < fact*n
-    
+
     def index = i.intdiv(fact)
     [list[index]] + makePermutation(list[0..<index] + list[(index+1)..<n], i % fact)
 }
@@ -919,16 +919,16 @@ procedure do_permute(l, i, n)
     else
         suspend l[i to n] <-> l[i] & do_permute(l, i+1, n)
  end
- 
+
  procedure permute(l)
     suspend do_permute(l, 1, *l)
  end
- 
+
  procedure sorted(l)
     local i
     if (i := 2 to *l & l[i] >= l[i-1]) then return &fail else return 1
  end
- 
+
  procedure main()
     local l
     l := [6,3,4,5,1]
@@ -955,13 +955,13 @@ Either way:
 
 ```j
    list =: 2 7 4 3 5 1 0 9 8 6
-   
-   ps list 
-2380483    
-   
+
+   ps list
+2380483
+
    2380483 A. list
 0 1 2 3 4 5 6 7 8 9
-   
+
    (A.~ps) list
 0 1 2 3 4 5 6 7 8 9
 ```
@@ -976,7 +976,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class PermutationSort 
+public class PermutationSort
 {
 	public static void main(String[] args)
 	{
@@ -994,16 +994,16 @@ public class PermutationSort
 				return x;
 		return a;
 	}
-	private static void permute(int[] a, int n, List<int[]> list) 
+	private static void permute(int[] a, int n, List<int[]> list)
 	{
-		if (n == 1) 
+		if (n == 1)
 		{
 			int[] b=new int[a.length];
 			System.arraycopy(a, 0, b, 0, a.length);
 			list.add(b);
 		    return;
 		}
-		for (int i = 0; i < n; i++) 
+		for (int i = 0; i < n; i++)
 		{
 		        swap(a, i, n-1);
 		        permute(a, n-1, list);
@@ -1047,9 +1047,9 @@ The following function generates a stream of permutations of an arbitrary JSON a
 def permutations:
   if length == 0 then []
   else
-    . as $in 
+    . as $in
     | range(0;length) as $i
-    | ($in|del(.[$i])|permutations) 
+    | ($in|del(.[$i])|permutations)
     | [$in[$i]] + .
   end ;
 ```
@@ -1246,7 +1246,7 @@ end
 -- Main procedure
 local list = {2,3,1}                 --\   Written to match task pseudocode,
 local nextPermutation = permute(list) --\  more idiomatic would be:
-while not inOrder(list) do             --\ 
+while not inOrder(list) do             --\
   list = nextPermutation()             --/   for p in permute(list) do
 end                                   --/       stuffWith(p)
 print(unpack(list))                  --/     end
@@ -1286,7 +1286,7 @@ end do:
 
 ## Mathematica
 
-Here is  a one-line solution. 
+Here is  a one-line solution.
 A custom order relation can be defined for the OrderedQ[] function.
 
 
@@ -1301,8 +1301,8 @@ PermutationSort[x_List] := NestWhile[RandomSample, x, Not[OrderedQ[#]] &]
 ```MATLAB
 function list = permutationSort(list)
 
-    permutations = perms(1:numel(list)); %Generate all permutations of the item indicies 
-    
+    permutations = perms(1:numel(list)); %Generate all permutations of the item indicies
+
     %Test every permutation of the indicies of the original list
     for i = (1:size(permutations,1))
         if issorted( list(permutations(i,:)) )
@@ -1336,7 +1336,7 @@ fn inOrder arr =
 	if arr.count < 2 then return true
 	else
 	(
-		local i = 1 
+		local i = 1
 		while i < arr.count do
 		(
 			if arr[i+1] < arr[i] do return false
@@ -1413,7 +1413,7 @@ class RSortingPermutationsort public
     status = isTrue
     loop ix = 1 while ix < ss.size()
       vleft  = Rexx ss.get(ix - 1)
-      vright = Rexx ss.get(ix)      
+      vright = Rexx ss.get(ix)
       if vleft.datatype('N') & vright.datatype('N')
       then vtest = vleft > vright  -- For numeric types we must use regular comparison.
       else vtest = vleft >> vright -- For non-numeric/mixed types we must do strict comparison.
@@ -1595,7 +1595,7 @@ sub psort {
                 $x->[$_] < $x->[$_ - 1] and return for 1 .. $#$x;
                 return 1
         }
-        
+
         for (0 .. $d) {
                 unshift @$x, splice @$x, $d, 1;
                 next if $x->[$d] < $x->[$d - 1];
@@ -1730,7 +1730,7 @@ function permute($items, $perms = array( )) {
              $res = permute($newitems, $newperms);
 			 if($res){
 				return $res;
-			 }		 		 
+			 }
          }
     }
 }
@@ -1815,10 +1815,10 @@ Function PermutationSort( [Object[]] $indata, $index = 0, $k = 0 )
 	ForEach-Object { $b = $_; 0..4 | Where-Object { -not ( $_ -match "$a|$b" ) } |
 		ForEach-Object { $c = $_; 0..4 | Where-Object { -not ( $_ -match "$a|$b|$c" ) } |
 			ForEach-Object { $d = $_; 0..4 | Where-Object { -not ( $_ -match "$a|$b|$c|$d" ) } |
-				ForEach-Object { $e=$_; "$( PermutationSort ( $a, $b, $c, $d, $e ) )" } 
-			} 
-		} 
-	} 
+				ForEach-Object { $e=$_; "$( PermutationSort ( $a, $b, $c, $d, $e ) )" }
+			}
+		}
+	}
 }
 $l = 8; PermutationSort ( 1..$l | ForEach-Object { $Rand = New-Object Random }{ $Rand.Next( 0, $l - 1 ) } )
 ```
@@ -1852,15 +1852,15 @@ Macro reverse(firstIndex, lastIndex)
     Swap cur(first), cur(last)
     first + 1
     last - 1
-  Wend 
+  Wend
 EndMacro
 
 Procedure nextPermutation(Array cur(1))
   Protected first, last, elementCount = ArraySize(cur())
   If elementCount < 2
     ProcedureReturn #False ;nothing to permute
-  EndIf 
-  
+  EndIf
+
   ;Find the lowest position pos such that [pos] < [pos+1]
   Protected pos = elementCount - 1
   While cur(pos) >= cur(pos + 1)
@@ -1868,7 +1868,7 @@ Procedure nextPermutation(Array cur(1))
     If pos < 0
       reverse(0, elementCount)
       ProcedureReturn #False ;no higher lexicographic permutations left, return lowest one instead
-    EndIf 
+    EndIf
   Wend
 
   ;Swap [pos] with the highest positional value that is larger than [pos]
@@ -1928,7 +1928,7 @@ perm_sort = lambda s: (p for p in permutations(s) if in_order(p)).next()
 
 
 ## R
-           
+
 {{libheader|e1071}}
 Warning: This function keeps all the possible permutations in memory at once, which becomes silly when x has 10 or more elements.
 
@@ -1940,7 +1940,7 @@ permutationsort <- function(x)
 
    perms <- permutations(length(x))
    i <- 1
-   while(!is.sorted(x)) 
+   while(!is.sorted(x))
    {
       x <- x[perms[i,]]
       i <- i + 1
@@ -2023,7 +2023,7 @@ pSort:  parse arg n,#.;  #=0                     /*generate  L  items (!)  permu
 ```txt
 
         element 1 before sort: ---Four horsemen of the Apocalypse---
-        element 2 before sort: 
+        element 2 before sort:
 ### ===============================
 
         element 3 before sort: Famine───black horse
@@ -2032,7 +2032,7 @@ pSort:  parse arg n,#.;  #=0                     /*generate  L  items (!)  permu
         element 6 before sort: Conquest [War]───white horse
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
         element 1  after sort: ---Four horsemen of the Apocalypse---
-        element 2  after sort: 
+        element 2  after sort:
 ### ===============================
 
         element 3  after sort: Conquest [War]───white horse
@@ -2053,14 +2053,14 @@ Permutation sort took  21  permutations to find the sorted list.
 
 # Project : Sorting algorithms/Permutation sort
 
-a = [4, 65, 2, 31, 0, 99, 2, 83, 782]  
+a = [4, 65, 2, 31, 0, 99, 2, 83, 782]
 result = []
 permute(a,1)
 
 for n = 1 to len(result)
      num = 0
      for m = 1 to len(result[n]) - 1
-          if result[n][m] <= result[n][m+1]  
+          if result[n][m] <= result[n][m+1]
              num = num + 1
           ok
      next
@@ -2068,10 +2068,10 @@ for n = 1 to len(result)
          nr = n
          exit
       ok
-next 
+next
 see "" + nr + " permutations required to sort " + len(a) + " items." + nl
 
-func permute(a,k) 
+func permute(a,k)
        if k = len(a)
           add(result,a)
        else
@@ -2109,7 +2109,7 @@ class Array
   def permutationsort
     permutation.each{|perm| return perm if perm.sorted?}
   end
-  
+
   def sorted?
     each_cons(2).all? {|a, b| a <= b}
   end

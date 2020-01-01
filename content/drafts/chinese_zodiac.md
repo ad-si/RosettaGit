@@ -133,33 +133,33 @@ XDEC     DS     CL12               temp for xdeco
 
 ```AppleScript
 on run
-    
+
     -- TRADITIONAL STRINGS ---------------------------------------------------
-    
+
     -- ts :: Array Int (String, String)            -- 天干 tiangan – 10 heavenly stems
     set ts to zip(chars("甲乙丙丁戊己庚辛壬癸"), ¬
         |words|("jiă yĭ bĭng dīng wù jĭ gēng xīn rén gŭi"))
-    
+
     -- ds :: Array Int (String, String)            -- 地支 dizhi – 12 terrestrial branches
     set ds to zip(chars("子丑寅卯辰巳午未申酉戌亥"), ¬
         |words|("zĭ chŏu yín măo chén sì wŭ wèi shēn yŏu xū hài"))
-    
+
     -- ws :: Array Int (String, String, String)    -- 五行 wuxing – 5 elements
     set ws to zip3(chars("木火土金水"), ¬
         |words|("mù huǒ tǔ jīn shuǐ"), ¬
         |words|("wood fire earth metal water"))
-    
+
     -- xs :: Array Int (String, String, String)    -- 十二生肖 shengxiao – 12 symbolic animals
     set xs to zip3(chars("鼠牛虎兔龍蛇馬羊猴鸡狗豬"), ¬
         |words|("shǔ niú hǔ tù lóng shé mǎ yáng hóu jī gǒu zhū"), ¬
         |words|("rat ox tiger rabbit dragon snake horse goat monkey rooster dog pig"))
-    
+
     -- ys :: Array Int (String, String)            -- 阴阳 yinyang
     set ys to zip(chars("阳阴"), |words|("yáng yīn"))
-    
-    
+
+
     -- TRADITIONAL CYCLES ----------------------------------------------------
-    
+
     script cycles
         on |λ|(y)
             set iYear to y - 4
@@ -170,18 +170,18 @@ on run
             set {hElem, pElem, eElem} to item ((iStem div 2) + 1) of ws
             set {hAnimal, pAnimal, eAnimal} to item (iBranch + 1) of xs
             set {hYinyang, pYinyang} to item ((iYear mod 2) + 1) of ys
-            
+
             {{show(y), hStem & hBranch, hElem, hAnimal, hYinyang}, ¬
                 {"", pStem & pBranch, pElem, pAnimal, pYinyang}, ¬
                 {"", show((iYear mod 60) + 1) & "/60", eElem, eAnimal, ""}}
         end |λ|
     end script
-    
+
     -- FORMATTING ------------------------------------------------------------
-    
+
     -- fieldWidths :: [[Int]]
     set fieldWidths to {{6, 10, 7, 8, 3}, {6, 11, 8, 8, 4}, {6, 11, 8, 8, 4}}
-    
+
     script showYear
         script widthStringPairs
             on |λ|(nscs)
@@ -189,7 +189,7 @@ on run
                 zip(ns, cs)
             end |λ|
         end script
-        
+
         script justifiedRow
             on |λ|(row)
                 script
@@ -198,18 +198,18 @@ on run
                         justifyLeft(n, space, s)
                     end |λ|
                 end script
-                
+
                 concat(map(result, row))
             end |λ|
         end script
-        
+
         on |λ|(y)
             unlines(map(justifiedRow, ¬
                 map(widthStringPairs, ¬
                     zip(fieldWidths, |λ|(y) of cycles))))
         end |λ|
     end script
-    
+
     -- TEST OUTPUT -----------------------------------------------------------
     intercalate("\n\n", map(showYear, {1935, 1938, 1968, 1972, 1976, 1984, 2017}))
 end run
@@ -285,7 +285,7 @@ on min(x, y)
     end if
 end min
 
--- minimum :: [a] -> a 
+-- minimum :: [a] -> a
 on minimum(xs)
     script min
         on |λ|(a, x)
@@ -296,11 +296,11 @@ on minimum(xs)
             end if
         end |λ|
     end script
-    
+
     foldl(min, missing value, xs)
 end minimum
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -313,7 +313,7 @@ on mReturn(f)
 end mReturn
 
 -- Egyptian multiplication - progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for binary 
+-- stages of doubling to an accumulator where needed for binary
 -- assembly of a target length
 
 -- replicate :: Int -> a -> [a]
@@ -321,7 +321,7 @@ on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -339,7 +339,7 @@ on show(e)
                 show(v)
             end |λ|
         end script
-        
+
         "[" & intercalate(", ", map(serialized, e)) & "]"
     else if c = record then
         script showField
@@ -348,7 +348,7 @@ on show(e)
                 "\"" & k & "\":" & show(ev)
             end |λ|
         end script
-        
+
         "{" & intercalate(", ", ¬
             map(showField, zip(allKeys(e), allValues(e)))) & "}"
     else if c = date then
@@ -395,7 +395,7 @@ on zip3(xs, ys, zs)
             [x, item i of ys, item i of zs]
         end |λ|
     end script
-    
+
     map(result, items 1 thru ¬
         minimum({length of xs, length of ys, length of zs}) of xs)
 end zip3
@@ -404,33 +404,33 @@ end zip3
 {{Out}}
 
 ```txt
-1935  乙亥        木      豬       阴  
-      yĭhài      mù      zhū     yīn 
-      12/60      wood    pig         
+1935  乙亥        木      豬       阴
+      yĭhài      mù      zhū     yīn
+      12/60      wood    pig
 
-1938  戊寅        土      虎       阳  
+1938  戊寅        土      虎       阳
       wùyín      tǔ      hǔ      yáng
-      15/60      earth   tiger       
+      15/60      earth   tiger
 
-1968  戊申        土      猴       阳  
+1968  戊申        土      猴       阳
       wùshēn     tǔ      hóu     yáng
-      45/60      earth   monkey      
+      45/60      earth   monkey
 
-1972  壬子        水      鼠       阳  
+1972  壬子        水      鼠       阳
       rénzĭ      shuǐ    shǔ     yáng
-      49/60      water   rat         
+      49/60      water   rat
 
-1976  丙辰        火      龍       阳  
+1976  丙辰        火      龍       阳
       bĭngchén   huǒ     lóng    yáng
-      53/60      fire    dragon      
+      53/60      fire    dragon
 
-1984  甲子        木      鼠       阳  
+1984  甲子        木      鼠       阳
       jiăzĭ      mù      shǔ     yáng
-      1/60       wood    rat         
+      1/60       wood    rat
 
-2017  丁酉        火      鸡       阴  
-      dīngyŏu    huǒ     jī      yīn 
-      34/60      fire    rooster     
+2017  丁酉        火      鸡       阴
+      dīngyŏu    huǒ     jī      yīn
+      34/60      fire    rooster
 ```
 
 
@@ -556,8 +556,8 @@ Cycle:   35 / 60
 
 {{trans|C++}}
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 #include <stdio.h>
 
 const char* animals[] = { "Rat","Ox","Tiger","Rabbit","Dragon","Snake","Horse","Goat","Monkey","Rooster","Dog","Pig" };
@@ -610,8 +610,8 @@ int main() {
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cmath>
 
 using namespace std;
@@ -921,33 +921,33 @@ void process(string[] years) {
 {{Out}}
 
 ```txt
-1935  乙亥        木      豬       阴  
-      yĭhài      mù      zhū     yīn 
-      12/60      wood    pig         
+1935  乙亥        木      豬       阴
+      yĭhài      mù      zhū     yīn
+      12/60      wood    pig
 
-1938  戊寅        土      虎       阳  
+1938  戊寅        土      虎       阳
       wùyín      tǔ      hǔ      yáng
-      15/60      earth   tiger       
+      15/60      earth   tiger
 
-1968  戊申        土      猴       阳  
+1968  戊申        土      猴       阳
       wùshēn     tǔ      hóu     yáng
-      45/60      earth   monkey      
+      45/60      earth   monkey
 
-1972  壬子        水      鼠       阳  
+1972  壬子        水      鼠       阳
       rénzĭ      shuǐ    shǔ     yáng
-      49/60      water   rat         
+      49/60      water   rat
 
-1976  丙辰        火      龍       阳  
+1976  丙辰        火      龍       阳
       bĭngchén   huǒ     lóng    yáng
-      53/60      fire    dragon      
+      53/60      fire    dragon
 
-1984  甲子        木      鼠       阳  
+1984  甲子        木      鼠       阳
       jiăzĭ      mù      shǔ     yáng
-      1/60       wood    rat         
+      1/60       wood    rat
 
-2017  丁酉        火      鸡       阴  
-      dīngyŏu    huǒ     jī      yīn 
-      34/60      fire    rooster     
+2017  丁酉        火      鸡       阴
+      dīngyŏu    huǒ     jī      yīn
+      34/60      fire    rooster
 ```
 
 
@@ -962,17 +962,17 @@ let animals = ["Rat";"Ox";"Tiger";"Rabbit";"Dragon";"Snake";"Horse";"Goat";"Monk
 let elements = ["Wood";"Fire";"Earth";"Metal";"Water"]
 let years = [1935;1938;1968;1972;1976;1984;1985;2017]
 
-let getZodiac(year: int) = 
+let getZodiac(year: int) =
     let animal = animals.Item((year-4)%12)
     let element = elements.Item(((year-4)%10)/2)
     let yy = if year%2 = 0 then "(Yang)" else "(Yin)"
-    
+
     String.Format("{0} is the year of the {1} {2} {3}", year, element, animal, yy)
 
 [<EntryPoint>]
 let main argv =
     let mutable string = ""
-    for i in years do 
+    for i in years do
         string <- getZodiac(i)
         printf "%s" string
         Console.ReadLine() |> ignore
@@ -1181,33 +1181,33 @@ main = mapM_ putStrLn $ showYear <$> [1935, 1938, 1968, 1972, 1976, 1984, 2017]
 {{Out}}
 
 ```txt
-1935  乙亥        木      豬       阴  
-      yĭhài      mù      zhū     yīn 
-      12/60      wood    pig         
+1935  乙亥        木      豬       阴
+      yĭhài      mù      zhū     yīn
+      12/60      wood    pig
 
-1938  戊寅        土      虎       阳  
+1938  戊寅        土      虎       阳
       wùyín      tǔ      hǔ      yáng
-      15/60      earth   tiger       
+      15/60      earth   tiger
 
-1968  戊申        土      猴       阳  
+1968  戊申        土      猴       阳
       wùshēn     tǔ      hóu     yáng
-      45/60      earth   monkey      
+      45/60      earth   monkey
 
-1972  壬子        水      鼠       阳  
+1972  壬子        水      鼠       阳
       rénzĭ      shuǐ    shǔ     yáng
-      49/60      water   rat         
+      49/60      water   rat
 
-1976  丙辰        火      龍       阳  
+1976  丙辰        火      龍       阳
       bĭngchén   huǒ     lóng    yáng
-      53/60      fire    dragon      
+      53/60      fire    dragon
 
-1984  甲子        木      鼠       阳  
+1984  甲子        木      鼠       阳
       jiăzĭ      mù      shǔ     yáng
-      1/60       wood    rat         
+      1/60       wood    rat
 
-2017  丁酉        火      鸡       阴  
-      dīngyŏu    huǒ     jī      yīn 
-      34/60      fire    rooster   
+2017  丁酉        火      鸡       阴
+      dīngyŏu    huǒ     jī      yīn
+      34/60      fire    rooster
 ```
 
 
@@ -1237,11 +1237,11 @@ main = mapM_ putStrLn $ showYear <$> [1935, 1938, 1968, 1972, 1976, 1984, 2017]
    chinese_zodiac =: 3 : ';:inv(<":y),(ELEMENTS cz y),(ANIMALS cz y),(<''(''),(YINYANG cz y),(<'')'')'
 
    chinese_zodiac&>YEARS
-1935 Wood Pig ( yin )     
-1938 Earth Tiger ( yang ) 
+1935 Wood Pig ( yin )
+1938 Earth Tiger ( yang )
 1968 Earth Monkey ( yang )
-1972 Water Rat ( yang )   
-1976 Fire Dragon ( yang ) 
+1972 Water Rat ( yang )
+1976 Fire Dragon ( yang )
 2017 Fire Rooster ( yin )
 
 
@@ -1251,12 +1251,12 @@ main = mapM_ putStrLn $ showYear <$> [1935, 1938, 1968, 1972, 1976, 1984, 2017]
    ELEMENTS=: ;/ _4 |. CELESTIAL
 
    chinese_zodiac&>YEARS
-1935 乙 亥 ( yin ) 
+1935 乙 亥 ( yin )
 1938 戊 寅 ( yang )
 1968 戊 申 ( yang )
 1972 壬 子 ( yang )
 1976 丙 辰 ( yang )
-2017 丁 酉 ( yin ) 
+2017 丁 酉 ( yin )
 
 ```
 
@@ -1464,33 +1464,33 @@ public class Zodiac {
 {{Out}}
 
 ```txt
-1935  乙亥        木      豬       阴  
-      yĭhài      mù      zhū     yīn 
-      12/60      wood    pig         
+1935  乙亥        木      豬       阴
+      yĭhài      mù      zhū     yīn
+      12/60      wood    pig
 
-1938  戊寅        土      虎       阳  
+1938  戊寅        土      虎       阳
       wùyín      tǔ      hǔ      yáng
-      15/60      earth   tiger       
+      15/60      earth   tiger
 
-1968  戊申        土      猴       阳  
+1968  戊申        土      猴       阳
       wùshēn     tǔ      hóu     yáng
-      45/60      earth   monkey      
+      45/60      earth   monkey
 
-1972  壬子        水      鼠       阳  
+1972  壬子        水      鼠       阳
       rénzĭ      shuǐ    shǔ     yáng
-      49/60      water   rat         
+      49/60      water   rat
 
-1976  丙辰        火      龍       阳  
+1976  丙辰        火      龍       阳
       bĭngchén   huǒ     lóng    yáng
-      53/60      fire    dragon      
+      53/60      fire    dragon
 
-1984  甲子        木      鼠       阳  
+1984  甲子        木      鼠       阳
       jiăzĭ      mù      shǔ     yáng
-      1/60       wood    rat         
+      1/60       wood    rat
 
-2017  丁酉        火      鸡       阴  
-      dīngyŏu    huǒ     jī      yīn 
-      34/60      fire    rooster   
+2017  丁酉        火      鸡       阴
+      dīngyŏu    huǒ     jī      yīn
+      34/60      fire    rooster
 ```
 
 
@@ -1591,7 +1591,7 @@ class ChineseZodiac(val year: Int) {
     val animal : String
     val aspect : String
     val cycle  : Int
-               
+
     private companion object {
         val animals  = listOf("Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake",
                               "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig")
@@ -1602,7 +1602,7 @@ class ChineseZodiac(val year: Int) {
         val sNames   = listOf("jiă", "yĭ", "bĭng", "dīng", "wù", "jĭ", "gēng", "xīn", "rén", "gŭi")
         val bNames   = listOf("zĭ", "chŏu", "yín", "măo", "chén", "sì", "wŭ", "wèi", "shēn", "yŏu",  "xū", "hài")
         val fmt      = "%d    %c%c   %-9s  %-7s  %-7s   %-6s %02d/60"
-    } 
+    }
 
     init {
         val y = year - 4
@@ -1615,17 +1615,17 @@ class ChineseZodiac(val year: Int) {
         element = elements[s / 2]
         animal  = animals[b]
         aspect  = aspects[s % 2]
-        cycle   = y % 60 + 1 
+        cycle   = y % 60 + 1
     }
 
-    override fun toString() = 
+    override fun toString() =
         fmt.format(year, stem, branch, sName + "-" + bName, element, animal, aspect, cycle)
 }
 
 fun main(args: Array<String>) {
     val years = intArrayOf(1935, 1938, 1968, 1972, 1976, 1984, 2017)
     println("Year  Chinese  Pinyin     Element  Animal   Aspect  Cycle")
-    println("----  -------  ---------  -------  -------  ------  -----") 
+    println("----  -------  ---------  -------  -------  ------  -----")
     for (year in years) println(ChineseZodiac(year))
 }
 ```
@@ -1710,10 +1710,10 @@ zodiac(2017)
 
 zodiac:=proc(year::integer)
 	local year60,yinyang,animal,element;
-	year60:= (year-3) mod 60;								 
+	year60:= (year-3) mod 60;
 	yinyang:=["Yin","Yang"];
 	animal:=["Pig","Rat","Ox","Tiger","Rabbit","Dragon","Snake","Horse","Goat","Monkey","Rooster","Dog"];
-	element:=["Water","Wood","Wood","Fire","Fire","Earth","Earth","Metal","Metal","Water"];										 
+	element:=["Water","Wood","Wood","Fire","Fire","Earth","Earth","Metal","Metal","Water"];
 	return sprintf("%a",cat(year," is the year of the ",element[(year60 mod 10)+1]," ",animal[(year60 mod 12)+1]," (",yinyang[(year60 mod 2)+1],")"));
 end proc:
 
@@ -1883,13 +1883,13 @@ constant animals = {"Rat","Ox","Tiger","Rabbit","Dragon","Snake","Horse","Goat",
          elements = {"Wood","Fire","Earth","Metal","Water"},
          yinyang = {"yang","yin"},
          years = {1935,1938,1968,1972,1976,2018}
- 
+
 for i=1 to length(years) do
     integer year = years[i],
             cycle = mod(year-4,60)
     string element = elements[floor(mod(cycle,10)/2)+1],
            animal = animals[mod(cycle,12)+1],
-           yy = yinyang[mod(cycle,2)+1]        
+           yy = yinyang[mod(cycle,2)+1]
     printf(1,"%d: %s %s; %s, year %d of the cycle.\n",
              {year,element,animal,yy,cycle+1})
 end for
@@ -2017,11 +2017,11 @@ function Get-ChineseZodiac
 
 Year Element Animal Aspect YearOfCycle ASCII     Chinese
 ---- ------- ------ ------ ----------- -----     -------
-1935 Wood    Pig    yin             12 yĭ-hài    乙亥     
-1938 Earth   Tiger  yang            15 wù-yín    戊寅     
-1968 Earth   Monkey yang            45 wù-shēn   戊申     
-1972 Water   Rat    yang            49 rén-zĭ    壬子     
-1976 Fire    Dragon yang            53 bĭng-chén 丙辰     
+1935 Wood    Pig    yin             12 yĭ-hài    乙亥
+1938 Earth   Tiger  yang            15 wù-yín    戊寅
+1968 Earth   Monkey yang            45 wù-shēn   戊申
+1972 Water   Rat    yang            49 rén-zĭ    壬子
+1976 Fire    Dragon yang            53 bĭng-chén 丙辰
 
 ```
 
@@ -2124,7 +2124,7 @@ Procedure.s ChineseZodiac(n.i)
          b_pinyin$        = StringField(PeekS(?Branch),branch_number,"\"),
          animal$          = StringField(PeekS(?Zodiac_animal),branch_number,"\"),
          aspect$          = StringField(PeekS(?Aspect),aspect_number,"\"),
-         YearOfCycle$     = Str(index)  
+         YearOfCycle$     = Str(index)
   ProcedureReturn Str(n)+#SPC+
                          LSet(element$,7,#SPC)+#SPC+
                          LSet(animal$,7,#SPC)+#SPC+
@@ -2142,21 +2142,21 @@ If OpenWindow(0,#PB_Ignore,#PB_Ignore,600,400,"Chinese Zodiac",#PB_Window_Screen
   AddGadgetItem(0,-1,ChineseZodiac(1935))
   AddGadgetItem(0,-1,ChineseZodiac(1938))
   AddGadgetItem(0,-1,ChineseZodiac(1968))
-  AddGadgetItem(0,-1,ChineseZodiac(1972))  
+  AddGadgetItem(0,-1,ChineseZodiac(1972))
   AddGadgetItem(0,-1,ChineseZodiac(1976))
   AddGadgetItem(0,-1,ChineseZodiac(1984))
-  AddGadgetItem(0,-1,ChineseZodiac(Year(Date()))) 
+  AddGadgetItem(0,-1,ChineseZodiac(Year(Date())))
   Repeat : Until WaitWindowEvent() = #PB_Event_CloseWindow
 EndIf
 
 DataSection
-  Celestial_stem: : Data.u $7532, $4E59, $4E19, $4E01, $620A, $5DF1, $5E9A, $8F9B, $58EC, $7678  
-  Terrestrial_branch: : Data.u $5B50, $4E11, $5BC5, $536F, $8FB0, $5DF3, $5348, $672A, $7533, $9149, $620C, $4EA5  
-  Zodiac_animal: : Data.s "Rat\Ox\Tiger\Rabbit\Dragon\Snake\Horse\Goat\Monkey\Rooster\Dog\Pig"  
-  Element: : Data.s "Wood\Fire\Earth\Metal\Water"  
-  Aspect: : Data.s "yang\yin"  
-  Stem: : Data.s "jiă\yĭ\bĭng\dīng\wù\jĭ\gēng\xīn\rén\gŭi"  
-  Branch: : Data.s "zĭ\chŏu\yín\măo\chén\sì\wŭ\wèi\shēn\yŏu\xū\hài"  
+  Celestial_stem: : Data.u $7532, $4E59, $4E19, $4E01, $620A, $5DF1, $5E9A, $8F9B, $58EC, $7678
+  Terrestrial_branch: : Data.u $5B50, $4E11, $5BC5, $536F, $8FB0, $5DF3, $5348, $672A, $7533, $9149, $620C, $4EA5
+  Zodiac_animal: : Data.s "Rat\Ox\Tiger\Rabbit\Dragon\Snake\Horse\Goat\Monkey\Rooster\Dog\Pig"
+  Element: : Data.s "Wood\Fire\Earth\Metal\Water"
+  Aspect: : Data.s "yang\yin"
+  Stem: : Data.s "jiă\yĭ\bĭng\dīng\wù\jĭ\gēng\xīn\rén\gŭi"
+  Branch: : Data.s "zĭ\chŏu\yín\măo\chén\sì\wŭ\wèi\shēn\yŏu\xū\hài"
 EndDataSection
 ```
 
@@ -2415,20 +2415,20 @@ if __name__ == '__main__':
 ```
 
 {{Out}}
-{| class="wikitable" 
+{| class="wikitable"
 |style="width:70px; "|1935
 |style="width:70px; "|乙亥
 |style="width:70px; "|木
 |style="width:70px; "|豬
 |style="width:70px; "|阴
 |-
-| 
+|
 |yĭhài
 |mù
 |zhū
 |yīn
 |-
-| 
+|
 |12/60
 |wood
 |pig
@@ -2436,20 +2436,20 @@ if __name__ == '__main__':
 |}
 
 
-{| class="wikitable" 
+{| class="wikitable"
 |style="width:70px; "|1938
 |style="width:70px; "|戊寅
 |style="width:70px; "|土
 |style="width:70px; "|虎
 |style="width:70px; "|阳
 |-
-| 
+|
 |wùyín
 |tǔ
 |hǔ
 |yáng
 |-
-| 
+|
 |15/60
 |earth
 |tiger
@@ -2457,20 +2457,20 @@ if __name__ == '__main__':
 |}
 
 
-{| class="wikitable" 
+{| class="wikitable"
 |style="width:70px; "|1949
 |style="width:70px; "|己丑
 |style="width:70px; "|土
 |style="width:70px; "|牛
 |style="width:70px; "|阴
 |-
-| 
+|
 |jĭchŏu
 |tǔ
 |niú
 |yīn
 |-
-| 
+|
 |26/60
 |earth
 |ox
@@ -2478,20 +2478,20 @@ if __name__ == '__main__':
 |}
 
 
-{| class="wikitable" 
+{| class="wikitable"
 |style="width:70px; "|1968
 |style="width:70px; "|戊申
 |style="width:70px; "|土
 |style="width:70px; "|猴
 |style="width:70px; "|阳
 |-
-| 
+|
 |wùshēn
 |tǔ
 |hóu
 |yáng
 |-
-| 
+|
 |45/60
 |earth
 |monkey
@@ -2499,20 +2499,20 @@ if __name__ == '__main__':
 |}
 
 
-{| class="wikitable" 
+{| class="wikitable"
 |style="width:70px; "|1972
 |style="width:70px; "|壬子
 |style="width:70px; "|水
 |style="width:70px; "|鼠
 |style="width:70px; "|阳
 |-
-| 
+|
 |rénzĭ
 |shuǐ
 |shǔ
 |yáng
 |-
-| 
+|
 |49/60
 |water
 |rat
@@ -2520,20 +2520,20 @@ if __name__ == '__main__':
 |}
 
 
-{| class="wikitable" 
+{| class="wikitable"
 |style="width:70px; "|1976
 |style="width:70px; "|丙辰
 |style="width:70px; "|火
 |style="width:70px; "|龍
 |style="width:70px; "|阳
 |-
-| 
+|
 |bĭngchén
 |huǒ
 |lóng
 |yáng
 |-
-| 
+|
 |53/60
 |fire
 |dragon
@@ -2541,20 +2541,20 @@ if __name__ == '__main__':
 |}
 
 
-{| class="wikitable" 
+{| class="wikitable"
 |style="width:70px; "|2019
 |style="width:70px; "|己亥
 |style="width:70px; "|土
 |style="width:70px; "|豬
 |style="width:70px; "|阴
 |-
-| 
+|
 |jĭhài
 |tǔ
 |zhū
 |yīn
 |-
-| 
+|
 |36/60
 |earth
 |pig
@@ -2574,24 +2574,24 @@ if __name__ == '__main__':
 
 ; Any CE Year that was the first of a 60-year cycle
 (define base-year 1984)
- 
+
 (define celestial-stems '("甲" "乙" "丙" "丁" "戊" "己" "庚" "辛" "壬" "癸"))
- 
+
 (define terrestrial-branches '("子" "丑" "寅" "卯" "辰" "巳" "午" "未" "申" "酉" "戌" "亥"))
- 
+
 (define zodiac-animals
   '("Rat" "Ox" "Tiger" "Rabbit" "Dragon" "Snake" "Horse" "Goat" "Monkey" "Rooster" "Dog" "Pig"))
- 
+
 (define elements '("Wood" "Fire" "Earth" "Metal" "Water"))
- 
+
 (define aspects '("yang" "yin"))
- 
+
 (define pinyin
   (map cons
        (append celestial-stems terrestrial-branches)
        (list "jiă" "yĭ" "bĭng" "dīng" "wù" "jĭ" "gēng" "xīn" "rén" "gŭi"
              "zĭ" "chŏu" "yín" "măo" "chén" "sì" "wŭ" "wèi" "shēn" "yŏu" "xū" "hài")))
- 
+
 (define (this-year) (date-year (current-date)))
 
 (define (pinyin-for han) (cdr (assoc han pinyin)))
@@ -2604,10 +2604,10 @@ if __name__ == '__main__':
          (element-number (quotient stem-number 2))
          (aspect-number  (modulo cycle-year (length aspects)))
          (branch-number  (modulo cycle-year (length terrestrial-branches)))
-         (element        (list-ref elements element-number)) 
+         (element        (list-ref elements element-number))
          (zodiac-animal  (list-ref zodiac-animals branch-number))
          (aspect         (list-ref aspects aspect-number)))
-    (let-values (([stem-han stem-pinyin]     (han/pinyin-nth stem-number celestial-stems))                  
+    (let-values (([stem-han stem-pinyin]     (han/pinyin-nth stem-number celestial-stems))
                  ([branch-han branch-pinyin] (han/pinyin-nth branch-number terrestrial-branches)))
       (list ce-year stem-han branch-han stem-pinyin branch-pinyin element zodiac-animal aspect))))
 
@@ -2633,7 +2633,7 @@ if __name__ == '__main__':
 
 ## Ruby
 
-This is written as a command-line tool that takes a list of CE year numbers as arguments and outputs their information; if no arguments are supplied, it displays the information for the current year. 
+This is written as a command-line tool that takes a list of CE year numbers as arguments and outputs their information; if no arguments are supplied, it displays the information for the current year.
 
 
 ```ruby
@@ -2837,7 +2837,7 @@ object Zodiac extends App {
 
   for (year <- years) {
     println(year
-      + " is the year of the " + elements(math.floor((year - 4) % 10 / 2).toInt) + " " 
+      + " is the year of the " + elements(math.floor((year - 4) % 10 / 2).toInt) + " "
       + animals((year - 4) % 12)
       + " (" + getYY(year) + "). "
       + elementChars(year % 2)(math.floor((year - 4) % 10 / 2).toInt)
@@ -2951,11 +2951,11 @@ func zodiac(year) {
 	DATA "甲","乙","丙","丁","戊","己","庚","辛","壬","癸"
 	DECLARE celestial$(10)
 	MAT READ celestial$
-	
+
 	DATA "子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"
 	DECLARE terrestrial$(12)
 	MAT READ terrestrial$
-	
+
 	DATA "Rat","Ox","Tiger","Rabbit","Dragon","Snake","Horse","Goat","Monkey","Rooster","Dog","Pig"
 	DECLARE animals$(12)
 	MAT READ animals$
@@ -2967,56 +2967,56 @@ func zodiac(year) {
 	DATA "yang","yin"
 	DECLARE aspects$(2)
 	MAT READ aspects$
-	
+
 	DATA "jiă","yĭ","bĭng","dīng","wù","jĭ","gēng","xīn","rén","gŭi"
 	DATA "zĭ","chŏu","yín","măo","chén","sì","wŭ","wèi","shēn","yŏu","xū","hài"
 	DECLARE celestialpinyin$(UBOUND(celestial$(),1))
 	DECLARE terrestrialpinyin$(UBOUND(terrestrial$(),1))
 	MAT READ celestialpinyin$
 	MAT READ terrestrialpinyin$
-	
+
 	DATA 1935,1938,1931,1961,1963,1991,1993,1996,2001
 	DECLARE years(9)
 	MAT READ years
-	
-	DECLARE _base = 4	 
-	DECLARE _year 
-	DECLARE cycleyear 
-	DECLARE stemnumber 
-	DECLARE stemhan$    
-	DECLARE stempinyin$ 
-	DECLARE elementnumber 
-	DECLARE element$       
-	DECLARE branchnumber 
-	DECLARE branchhan$    
-	DECLARE branchpinyin$ 
-	DECLARE animal$       
-	DECLARE aspectnumber 
-	DECLARE aspect$       
-	DECLARE index 
-	
-	DECLARE i 
+
+	DECLARE _base = 4
+	DECLARE _year
+	DECLARE cycleyear
+	DECLARE stemnumber
+	DECLARE stemhan$
+	DECLARE stempinyin$
+	DECLARE elementnumber
+	DECLARE element$
+	DECLARE branchnumber
+	DECLARE branchhan$
+	DECLARE branchpinyin$
+	DECLARE animal$
+	DECLARE aspectnumber
+	DECLARE aspect$
+	DECLARE index
+
+	DECLARE i
 	DECLARE top = ubound(years(),1)
 	FOR i = 1 TO top
 		_year = years(i)
 		cycleyear = _year - _base
-		stemnumber = MOD(cycleyear, 10) 
+		stemnumber = MOD(cycleyear, 10)
 		stemhan$    = celestial$(stemnumber + 1)
 		stempinyin$ = celestialpinyin$(stemnumber + 1)
 		elementnumber = div(stemnumber, 2) + 1
 		element$       = elements$(elementnumber)
-		branchnumber = MOD(cycleyear, 12)		
+		branchnumber = MOD(cycleyear, 12)
 		branchhan$    = terrestrial$(branchnumber + 1)
 		branchpinyin$ = terrestrialpinyin$(branchnumber + 1)
 		animal$       = animals$(branchnumber + 1)
 		aspectnumber = MOD(cycleyear, 2)
 		aspect$       = aspects$(aspectnumber + 1)
-		index = MOD(cycleyear, 60) + 1		
-		PRINT _year; 
+		index = MOD(cycleyear, 60) + 1
+		PRINT _year;
 		PRINT TAB(5);stemhan$+branchhan$;
 		PRINT TAB(12);stempinyin$;"-";branchpinyin$;
 		PRINT TAB(25);element$;" ";animal$;" ("+aspect$+")";
-		PRINT TAB(50);"year";index;"of the cycle"		
+		PRINT TAB(50);"year";index;"of the cycle"
 	NEXT
 
 ```
@@ -3089,21 +3089,21 @@ http://rosettacode.org/wiki/Chinese_zodiac
     tiangan⦂ String[][]: ¤ · 10 celestial stems
      ¤ "甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"
      ¤ "jiă", "yĭ", "bĭng", "dīng", "wù", "jĭ", "gēng", "xīn", "rén", "gŭi"
-     
+
     dizhi⦂ String[][]: ¤ · 12 terrestrial branches
      ¤ "子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"
      ¤ "zĭ", "chŏu", "yín", "măo", "chén", "sì", "wŭ", "wèi", "shēn", "yŏu", "xū", "hài"
-     
+
     wuxing⦂ String[][]: ¤ · 5 traditional elements
      ¤ "木", "火", "土", "金", "水"
      ¤ "mù", "huǒ", "tǔ", "jīn", "shuǐ"
      ¤ "wood", "fire", "earth", "metal", "water"
-     
+
     shengxiao⦂ String[][]: ¤ · 12 animal deities
      ¤ "鼠", "牛", "虎", "兔", "龍", "蛇", "馬", "羊", "猴", "鸡", "狗", "豬"
      ¤ "shǔ", "niú", "hǔ", "tù", "lóng", "shé", "mǎ", "yáng", "hóu", "jī", "gǒu", "zhū"
      ¤ "rat", "ox", "tiger", "rabbit", "dragon", "snake", "horse", "goat", "monkey", "rooster", "dog", "pig"
-     
+
     yinyang⦂ String[][]: ¤ · 2 fundamental principles
      ¤ "阳", "阴"
      ¤ "yáng", "yīn"
@@ -3145,7 +3145,7 @@ for i = LBound(Years) to UBound(Years)
 	nn       =          ((xYear - 4) mod 60) + 1
 	msgbox xYear & " is the year of the " & yElement & " " &  yAnimal & " (" &  yYinYang & ").",, _
 		   xYear & " : " & nn & "/60"
-next 
+next
 ```
 
 {{out}}
@@ -3241,7 +3241,7 @@ fcn ceToChineseZodiac(ce_year){	// --> list of strings
    ;
 
    const BASE=4;
- 
+
    cycle_year:=ce_year - BASE;
 
    cycle_year,aspect    := ce_year - BASE,         aspects[cycle_year%2];

@@ -100,7 +100,7 @@ procedure Avglen is
             Num := Random.Random(seed); exit when bits(Num);
             bits(Num) := True; count := count + 1;
          end loop;
-      end loop;   
+      end loop;
       return Long_Float(count)/Long_Float(TESTS);
    end Experimental;
 
@@ -152,7 +152,7 @@ end Avglen;
       @% = &2040A
       MAX_N = 20
       TIMES = 1000000
-      
+
       FOR n = 1 TO MAX_N
         avg = FNtest(n, TIMES)
         theory = FNanalytical(n)
@@ -160,14 +160,14 @@ end Avglen;
         PRINT STR$(n), avg, theory, diff "%"
       NEXT
       END
-      
+
       DEF FNanalytical(n)
       LOCAL i, s
       FOR i = 1 TO n
         s += FNfactorial(n) / n^i / FNfactorial(n-i)
       NEXT
       = s
-      
+
       DEF FNtest(n, times)
       LOCAL i, b, c, x
       FOR i = 1 TO times
@@ -179,7 +179,7 @@ end Avglen;
         ENDWHILE
       NEXT
       = c / times
-      
+
       DEF FNfactorial(n)
       IF n=1 OR n=0 THEN =1 ELSE = n * FNfactorial(n-1)
 ```
@@ -217,8 +217,8 @@ end Avglen;
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
@@ -311,8 +311,8 @@ int main(void) {
 
 Partial translation of C using stl and std.
 
-```cpp>#include <random
-
+```cpp
+#include <random>
 #include <vector>
 #include <iostream>
 
@@ -598,17 +598,17 @@ void main() {
 ```scheme
 
 (lib 'math) ;; Σ aka (sigma f(n)  nfrom nto)
-    
+
 (define (f-count  N (times 100000))
     (define count 0)
     (for ((i times))
-    
-    ;; new  random f mapping from  0..N-1 to 0..N-1 
-    ;; (f n) is NOT (random N) 
+
+    ;; new  random f mapping from  0..N-1 to 0..N-1
+    ;; (f n) is NOT (random N)
     ;; because each call (f n) must return the same value
-    
+
     (define f (build-vector N  (lambda(i) (random N))))
-    
+
     (define hits (make-vector N))
         (define n 0)
         (while (zero? [hits n])
@@ -616,10 +616,10 @@ void main() {
             (vector+= hits n 1)
             (set! n [f n])))
     (// count times))
-    
+
 (define (f-anal N)
     (Σ  (lambda(i) (// (! N) (! (- N i)) (^  N i))) 1 N))
-    
+
 (decimals 5)
 (define (f-print (maxN 21))
 	(for ((N (in-range 1 maxN)))
@@ -654,7 +654,7 @@ void main() {
  18    4.99903    5.00706       0.16 %
  19    5.15873     5.1522       0.13 %
  20    5.30243    5.29358       0.17 %
- 
+
 ```
 
 
@@ -669,14 +669,14 @@ void main() {
 defmodule RC do
   def factorial(0), do: 1
   def factorial(n), do: Enum.reduce(1..n, 1, &(&1 * &2))
-  
+
   def loop_length(n), do: loop_length(n, MapSet.new)
-  
+
   defp loop_length(n, set) do
     r = :rand.uniform(n)
     if r in set, do: MapSet.size(set), else: loop_length(n, MapSet.put(set, r))
   end
-  
+
   def task(runs) do
     IO.puts " N    average   analytical   (error) "
     IO.puts "
@@ -736,7 +736,7 @@ RC.task(runs)
 ```fsharp
 open System
 
-let gamma z = 
+let gamma z =
     let lanczosCoefficients = [76.18009172947146;-86.50532032941677;24.01409824083091;-1.231739572450155;0.1208650973866179e-2;-0.5395239384953e-5]
     let rec sumCoefficients acc i coefficients =
         match coefficients with
@@ -764,19 +764,19 @@ let trial n =
         x := 1 <<< r.Next(n)
     !count
 
- 
+
 let tested n times = (float (Seq.sum (seq { for i in 1 .. times do yield (trial n) }))) / (float times)
- 
+
 let results = seq {
     for n in 1 .. 20 do
         let avg = tested n 1000000
         let theory = expected n
         yield n, avg, theory
     }
- 
+
 
 [<EntryPoint>]
-let main argv = 
+let main argv =
     printfn " N     average   analytical   (error)"
     printfn "------------------------------------"
     results
@@ -1388,13 +1388,13 @@ end function
 
 ```mathematica
 Grid@Prepend[
-  Table[{n, #[[1]], #[[2]], 
+  Table[{n, #[[1]], #[[2]],
       Row[{Round[10000 Abs[#[[1]] - #[[2]]]/#[[2]]]/100., "%"}]} &@
     N[{Mean[Array[
-        Length@NestWhileList[#, 1, UnsameQ[##] &, All] - 1 &[# /. 
-            MapIndexed[#2[[1]] -> #1 &, 
-             RandomInteger[{1, n}, n]] &] &, 10000]], 
-      Sum[n! n^(n - k - 1)/(n - k)!, {k, n}]/n^(n - 1)}, 5], {n, 1, 
+        Length@NestWhileList[#, 1, UnsameQ[##] &, All] - 1 &[# /.
+            MapIndexed[#2[[1]] -> #1 &,
+             RandomInteger[{1, n}, n]] &] &, 10000]],
+      Sum[n! n^(n - k - 1)/(n - k)!, {k, n}]/n^(n - 1)}, 5], {n, 1,
     20}], {"N", "average", "analytical", "error"}]
 ```
 
@@ -1433,20 +1433,20 @@ N	average	analytical	error
 ```nim
 import random, math, strfmt
 randomize()
- 
+
 const
   maxN = 20
   times = 1_000_000
- 
+
 proc factorial(n: int): float =
   result = 1
   for i in 1 .. n:
     result *= i.float
- 
+
 proc expected(n: int): float =
   for i in 1 .. n:
     result += factorial(n) / pow(n.float, i.float) / factorial(n - i)
- 
+
 proc test(n, times: int): int =
   for i in 1 .. times:
     var
@@ -1456,7 +1456,7 @@ proc test(n, times: int): int =
       inc result
       bits = bits or x
       x = 1 shl random(n)
- 
+
 echo " n\tavg\texp.\tdiff"
 echo "-------------------------------"
 for n in 1 .. maxN:
@@ -1577,7 +1577,7 @@ END AvgLoopLen.
 
 ```txt
 
-        Averages  Analytical  Diff%     
+        Averages  Analytical  Diff%
   1:     1.0000     1.0000    0.0000
   2:     1.5015     1.5000    0.0993
   3:     1.8868     1.8889    0.1085
@@ -1686,7 +1686,7 @@ for my $n (1 .. $MAX) {
  N    empiric      theoric     (error)
 
 ###   =========  ============  ======
- 
+
   1     1.0000        1.0000   ( 0.00%)
   2     1.4950        1.5000   (-0.33%)
   3     1.9190        1.8889   ( 1.59%)
@@ -1718,22 +1718,22 @@ for my $n (1 .. $MAX) {
 ```perl6
 constant MAX_N  = 20;
 constant TRIALS = 100;
- 
+
 for 1 .. MAX_N -> $N {
     my $empiric = TRIALS R/ [+] find-loop(random-mapping($N)).elems xx TRIALS;
     my $theoric = [+]
         map -> $k { $N ** ($k + 1) R/ [*] flat $k**2, $N - $k + 1 .. $N }, 1 .. $N;
- 
+
     FIRST say " N    empiric      theoric      (error)";
     FIRST say "
 ###   =========  ============  ======
 ";
- 
+
     printf "%3d  %9.4f  %12.4f    (%4.2f%%)\n",
             $N,  $empiric,
                         $theoric, 100 * abs($theoric - $empiric) / $theoric;
 }
- 
+
 sub random-mapping { hash .list Z=> .roll given ^$^size }
 sub find-loop { 0, | %^mapping{*} ...^ { (%){$_}++ } }
 ```
@@ -1783,7 +1783,7 @@ atom sum = 0
     end for
     return sum
 end function
- 
+
 function test(integer n)
 integer count = 0, x, bits
     for i=1 to ITER do
@@ -1797,10 +1797,10 @@ integer count = 0, x, bits
     end for
     return count/ITER
 end function
- 
+
 atom av, ex
     puts(1," n     avg.     exp.  (error%)\n");
-    puts(1,"==   
+    puts(1,"==
 ### ===   ======  =====
 \n");
     for n=1 to MAX do
@@ -1815,7 +1815,7 @@ atom av, ex
 ```txt
 
  n     avg.     exp.  (error%)
-==   
+==
 ### ===   ======  =====
 
  1   1.0000   1.0000  (0.000%)
@@ -1853,13 +1853,13 @@ atom av, ex
 
 (de fact (N)
    (if (=0 N) 1 (apply * (range 1 N))) )
-            
+
 (de analytical (N)
    (sum
       '((I)
-         (/ 
-            (* (fact N) 1.0) 
-            (** N I) 
+         (/
+            (* (fact N) 1.0)
+            (** N I)
             (fact (- N I)) ) )
       (range 1 N) ) )
 
@@ -1882,12 +1882,12 @@ atom av, ex
          (tab F
             I
             (round A 4)
-            (round B 4) 
-            (round 
+            (round B 4)
+            (round
                (*
-                  (abs (- (*/ A 1.0 B) 1.0)) 
-                  100 ) 
-               2 ) ) ) ) ) 
+                  (abs (- (*/ A 1.0 B) 1.0))
+                  100 )
+               2 ) ) ) ) )
 
 (bye)
 ```
@@ -1905,11 +1905,11 @@ function Get-AnalyticalLoopAverage ( [int]$N )
     #  Expected loop average = sum from i = 1 to N of N! / (N-i)! / N^(N-i+1)
     #  Equivalently, Expected loop average = sum from i = 1 to N of F(i)
     #    where F(N) = 1, and F(i) = F(i+1)*i/N
- 
+
     $LoopAverage = $Fi = 1
- 
+
     If ( $N -eq 1 ) { return $LoopAverage }
- 
+
     ForEach ( $i in ($N-1)..1 )
         {
         $Fi *= $i / $N
@@ -1917,20 +1917,20 @@ function Get-AnalyticalLoopAverage ( [int]$N )
         }
     return $LoopAverage
     }
- 
+
 function Get-ExperimentalLoopAverage ( [int]$N, [int]$Tests = 100000 )
     {
     If ( $N -eq 1 ) { return 1 }
- 
+
     #  Using 0 through N-1 instead of 1 through N for speed and simplicity
     $NMO = $N - 1
- 
+
     #  Create array to hold mapping function
     $F = New-Object int[] ( $N )
- 
+
     $Count = 0
     $Random = New-Object System.Random
- 
+
     ForEach ( $Test in 1..$Tests )
         {
         #  Map each number to a random number
@@ -1938,7 +1938,7 @@ function Get-ExperimentalLoopAverage ( [int]$N, [int]$Tests = 100000 )
             {
             $F[$i] = $Random.Next( $N )
             }
- 
+
         #  For each number...
         ForEach ( $i in 0..$NMO )
             {
@@ -1946,7 +1946,7 @@ function Get-ExperimentalLoopAverage ( [int]$N, [int]$Tests = 100000 )
             $List = @()
             $Count++
             $List += $X = $i
- 
+
             #  If loop does not yet exist in list...
             While ( $F[$X] -notin $List )
                 {
@@ -1985,8 +1985,8 @@ ForEach ( $N in 1..20 )
 
 ```txt
 
-N  Analytical Experimental Error (%) 
--  ---------- ------------ --------- 
+N  Analytical Experimental Error (%)
+-  ---------- ------------ ---------
  1 1.00000000 1.00000000   0.00000000
  2 1.50000000 1.49985500   0.00966667
  3 1.88888889 1.88713000   0.09311765
@@ -2089,12 +2089,12 @@ expected <- function(size) {
 
 knuth <- function(size) {
   v <- sample(1:size, size, replace = TRUE)
-  
+
   visit <- vector('logical',size)
   place <- 1
   visit[[1]] <- TRUE
   steps <- 0
-  
+
   repeat {
     place <- v[[place]]
     steps <- steps + 1
@@ -2112,7 +2112,7 @@ for (num in 1:20) {
   average <- mean(replicate(1e6, knuth(num)))
   analytical <- expected(num)
   error <- abs(average/analytical-1)*100
-  
+
   cat(sprintf("%3d%11.4f%14.4f  ( %4.4f%%)\n", num, round(average,4), round(analytical,4), round(error,2)))
 }
 
@@ -2221,7 +2221,7 @@ for (num in 1:20) {
 
 ## REXX
 
-This REXX program automatically adjusts the precision (decimal digits) to be used based on the size of the 
+This REXX program automatically adjusts the precision (decimal digits) to be used based on the size of the
 
 factorial (product) for   '''RUNS'''.
 
@@ -2314,7 +2314,7 @@ fmtD:  parse arg y,d;     d=word(d 4, 1);    y=format(y, , d);     parse var  y 
         38     7.4089     7.4088     0.0013
         39     7.5052     7.5096     0.0586
         40     7.6151     7.6091     0.0789
-        ═══  ═════════  ═════════  ═════════ 
+        ═══  ═════════  ═════════  ═════════
 
 ```
 
@@ -2358,7 +2358,7 @@ end
 
 ```txt
 
- N    average    exp.        diff   
+ N    average    exp.        diff
 
 ###   ========  ========  ========
 
@@ -2473,7 +2473,7 @@ fn empirical(n: u32, trials: u32, rng: &mut ThreadRng) -> f64 {
 
 ```
 
-{{out}} 
+{{out}}
 Using default arguments:
 
 ```txt
@@ -2599,11 +2599,11 @@ n          avg         exp      diff
 (define (analytical-function n)
   (define (factorial n)
     (fold * 1 (iota n 1)))
-  ; 
+  ;
   (fold (lambda (i sum)
           (+ sum
              (/ (factorial n) (expt n i) (factorial (- n i)))))
-        0 
+        0
         (iota n 1)))
 
 (define (simulation n runs)
@@ -2629,11 +2629,11 @@ n          avg         exp      diff
 (display "
 ###  ========= ========= ======
 \n")
-(for-each 
+(for-each
   (lambda (n)
     (let ((simulation (inexact (simulation n 10000)))
           (formula (inexact (analytical-function n))))
-      (display 
+      (display
         (string-append
           " "
           (string-pad-right (number->string n) 3)
@@ -2642,7 +2642,7 @@ n          avg         exp      diff
           "   "
           (string-pad-right (number->string formula) 6)
           "   ("
-          (string-pad-right 
+          (string-pad-right
             (number->string (* 100 (/ (- simulation formula) formula)))
             5)
           "%)"))
@@ -2656,7 +2656,7 @@ n          avg         exp      diff
 
 ```txt
 
- N   average   formula   (error) 
+ N   average   formula   (error)
 
 ###  ========= ========= ======
 
@@ -3021,24 +3021,24 @@ end
 {{out}}
 
 ```txt
- n      avg     exp.    diff                                                    
------------------------------                                                   
- 1   1.0000   1.0000  0.000%                                                    
- 2   1.5008   1.5000  0.056%                                                    
- 3   1.8879   1.8889 -0.051%                                                    
- 4   2.2208   2.2188  0.091%                                                    
- 5   2.5127   2.5104  0.093%                                                    
- 6   2.7759   2.7747  0.044%                                                    
- 7   3.0175   3.0181 -0.023%                                                    
- 8   3.2425   3.2450 -0.079%                                                    
- 9   3.4571   3.4583 -0.034%                                                    
-10   3.6613   3.6602  0.029%                                                    
-11   3.8493   3.8524 -0.081%                                                    
-12   4.0384   4.0361  0.058%                                                    
-13   4.2133   4.2123  0.023%                                                    
-14   4.3804   4.3820 -0.037%                                                    
-15   4.5475   4.5458  0.038%                                                    
-16   4.7049   4.7043  0.014%                                                    
+ n      avg     exp.    diff
+-----------------------------
+ 1   1.0000   1.0000  0.000%
+ 2   1.5008   1.5000  0.056%
+ 3   1.8879   1.8889 -0.051%
+ 4   2.2208   2.2188  0.091%
+ 5   2.5127   2.5104  0.093%
+ 6   2.7759   2.7747  0.044%
+ 7   3.0175   3.0181 -0.023%
+ 8   3.2425   3.2450 -0.079%
+ 9   3.4571   3.4583 -0.034%
+10   3.6613   3.6602  0.029%
+11   3.8493   3.8524 -0.081%
+12   4.0384   4.0361  0.058%
+13   4.2133   4.2123  0.023%
+14   4.3804   4.3820 -0.037%
+15   4.5475   4.5458  0.038%
+16   4.7049   4.7043  0.014%
 17   4.8575   4.8579 -0.008%
 18   5.0088   5.0071  0.035%
 19   5.1533   5.1522  0.021%
@@ -3054,7 +3054,7 @@ end
 ```vb
 Const MAX = 20
 Const ITER = 1000000
- 
+
 Function expected(n As Long) As Double
     Dim sum As Double
     For i = 1 To n
@@ -3062,7 +3062,7 @@ Function expected(n As Long) As Double
     Next i
     expected = sum
 End Function
- 
+
 Function test(n As Long) As Double
     Dim count As Long
     Dim x As Long, bits As Long
@@ -3077,11 +3077,11 @@ Function test(n As Long) As Double
     Next i
     test = count / ITER
 End Function
- 
+
 Public Sub main()
     Dim n As Long
     Debug.Print " n     avg.     exp.  (error%)"
-    Debug.Print "==   
+    Debug.Print "==
 ### ===   ======  =====
 "
     For n = 1 To MAX
@@ -3096,7 +3096,7 @@ End Sub
 
 ```txt
  n     avg.     exp.  (error%)
-==   
+==
 ### ===   ======  =====
 
  1  1,0000   1,0000  (0,000%)

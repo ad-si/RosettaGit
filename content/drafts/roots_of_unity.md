@@ -272,8 +272,8 @@ For high n's, this may repeat the root of 1 + 0*i.
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 int main()
@@ -341,8 +341,8 @@ Output:
 ## C++
 
 
-```cpp>#include <complex
-
+```cpp
+#include <complex>
 #include <cmath>
 #include <iostream>
 
@@ -364,7 +364,7 @@ int main()
 
 ## CoffeeScript
 
-Most of the effort here is in formatting the results, and the output is still a bit clumsy. 
+Most of the effort here is in formatting the results, and the output is still a bit clumsy.
 
 ```coffeescript
 # Find the n nth-roots of 1
@@ -373,7 +373,7 @@ nth_roots_of_unity = (n) ->
 
 complex_unit_vector = (rad) ->
   new Complex(Math.cos(rad), Math.sin(rad))
-  
+
 class Complex
   constructor: (@real, @imag) ->
   toString: ->
@@ -389,7 +389,7 @@ class Complex
       "#{fmt real}"
     else
       "#{fmt imag}i"
-      
+
 do ->
   for n in [2..5]
     console.log "---1 to the 1/#{n}"
@@ -401,7 +401,7 @@ output
 
 ```txt
 
-> coffee nth_roots.coffee 
+> coffee nth_roots.coffee
 ---1 to the 1/2
 -1.000
 1.000
@@ -447,7 +447,7 @@ require "complex"
 def roots_of_unity(n)
   (0...n).map { |k| (2 * Math::PI * k / n).i.exp }
 end
- 
+
 p roots_of_unity(3)
 
 ```
@@ -607,7 +607,7 @@ require fsl/complex.fs
 ```fortran
 PROGRAM Roots
 
-  COMPLEX :: root 
+  COMPLEX :: root
   INTEGER :: i, n
   REAL :: angle, pi
 
@@ -627,11 +627,11 @@ END PROGRAM Roots
 ```
 
 Output
- 2: +1.0000+0.0000j  -1.0000+0.0000j   
- 3: +1.0000+0.0000j  -0.5000+0.8660j  -0.5000-0.8660j   
- 4: +1.0000+0.0000j  +0.0000+1.0000j  -1.0000+0.0000j  +0.0000-1.0000j   
- 5: +1.0000+0.0000j  +0.3090+0.9511j  -0.8090+0.5878j  -0.8090-0.5878j  +0.3090-0.9511j   
- 6: +1.0000+0.0000j  +0.5000+0.8660j  -0.5000+0.8660j  -1.0000+0.0000j  -0.5000-0.8660j  +0.5000-0.8660j 
+ 2: +1.0000+0.0000j  -1.0000+0.0000j
+ 3: +1.0000+0.0000j  -0.5000+0.8660j  -0.5000-0.8660j
+ 4: +1.0000+0.0000j  +0.0000+1.0000j  -1.0000+0.0000j  +0.0000-1.0000j
+ 5: +1.0000+0.0000j  +0.3090+0.9511j  -0.8090+0.5878j  -0.8090-0.5878j  +0.3090-0.9511j
+ 6: +1.0000+0.0000j  +0.5000+0.8660j  -0.5000+0.8660j  -1.0000+0.0000j  -0.5000-0.8660j  +0.5000-0.8660j
  7: +1.0000+0.0000j  +0.6235+0.7818j  -0.2225+0.9749j  -0.9010+0.4339j  -0.9010-0.4339j  -0.2225-0.9749j  +0.6235-0.7818j
 
 ===Exp + Array-valued Statement===
@@ -643,7 +643,7 @@ program unity
      complex, parameter :: i = (0, 1)
      complex, dimension(0:7-1) :: unit_circle
      integer :: n, j
-     
+
      do n = 2, 7
           !!!! KEY STEP, does all the calculations in one statement !!!!
         unit_circle(0:n-1) = exp(2*i*pi/n * (/ (j, j=0, n-1) /) )
@@ -702,7 +702,7 @@ print using "-##.#####"; real;using "-##.#####"; imag; "i";
 if root <> n-1 then print ",";
 next
 print
-next 
+next
 
 ```
 
@@ -1008,9 +1008,9 @@ public class Test {
 
 
 ```txt
-2: ( 1.000000, 0.000000) (-1.000000, 0.000000) 
-3: ( 1.000000, 0.000000) (-0.500000, 0.866025) (-0.500000,-0.866025) 
-4: ( 1.000000, 0.000000) ( 0.000000, 1.000000) (-1.000000, 0.000000) ( 0.000000,-1.000000) 
+2: ( 1.000000, 0.000000) (-1.000000, 0.000000)
+3: ( 1.000000, 0.000000) (-0.500000, 0.866025) (-0.500000,-0.866025)
+4: ( 1.000000, 0.000000) ( 0.000000, 1.000000) (-1.000000, 0.000000) ( 0.000000,-1.000000)
 5: ( 1.000000, 0.000000) ( 0.309017, 0.951057) (-0.809017, 0.587785) (-0.809017,-0.587785) ( 0.309017,-0.951057)
 ```
 
@@ -1353,7 +1353,7 @@ function z = rootsOfUnity(n)
 
     assert(n >= 1,'n >= 1');
     z = roots([1 zeros(1,n-1) -1]);
-    
+
 end
 ```
 
@@ -1366,7 +1366,7 @@ ans =
 
  -0.500000000000000 + 0.866025403784439i
  -0.500000000000000 - 0.866025403784439i
-  1.000000000000000  
+  1.000000000000000
 ```
 
 
@@ -1619,12 +1619,12 @@ Output:
 
 ```txt
 
-2:  1.00000 0.00000i -1.00000 0.00000i 
-3:  1.00000 0.00000i -0.50000 0.86603i -0.50000-0.86603i 
-4:  1.00000 0.00000i  0.00000 1.00000i -1.00000 0.00000i -0.00000-1.00000i 
-5:  1.00000 0.00000i  0.30902 0.95106i -0.80902 0.58779i -0.80902-0.58779i  0.30902-0.95106i 
-6:  1.00000 0.00000i  0.50000 0.86603i -0.50000 0.86603i -1.00000-0.00000i -0.50000-0.86603i  0.50000-0.86603i 
-7:  1.00000 0.00000i  0.62349 0.78183i -0.22252 0.97493i -0.90097 0.43388i -0.90097-0.43388i -0.22252-0.97493i  0.62349-0.78183i 
+2:  1.00000 0.00000i -1.00000 0.00000i
+3:  1.00000 0.00000i -0.50000 0.86603i -0.50000-0.86603i
+4:  1.00000 0.00000i  0.00000 1.00000i -1.00000 0.00000i -0.00000-1.00000i
+5:  1.00000 0.00000i  0.30902 0.95106i -0.80902 0.58779i -0.80902-0.58779i  0.30902-0.95106i
+6:  1.00000 0.00000i  0.50000 0.86603i -0.50000 0.86603i -1.00000-0.00000i -0.50000-0.86603i  0.50000-0.86603i
+7:  1.00000 0.00000i  0.62349 0.78183i -0.22252 0.97493i -0.90097 0.43388i -0.90097-0.43388i -0.22252-0.97493i  0.62349-0.78183i
 
 ```
 
@@ -1640,7 +1640,7 @@ The <code>root()</code> function returns a list of the N many N'th roots of any 
 
 ```perl
 use Math::Complex;
- 
+
 foreach my $n (2 .. 10) {
   printf "%2d", $n;
   my @roots = root(1,$n);
@@ -1747,16 +1747,16 @@ complex_roots:
    end;
 end complex_roots;
 
-   1.00000000+0.00000000I   
-   0.80901700+0.58778524I   
-   0.30901697+0.95105654I   
-  -0.30901703+0.95105648I   
-  -0.80901706+0.58778518I   
-  -1.00000000-0.00000008I   
-  -0.80901694-0.58778536I   
-  -0.30901709-0.95105648I   
-   0.30901712-0.95105648I   
-   0.80901724-0.58778494I   
+   1.00000000+0.00000000I
+   0.80901700+0.58778524I
+   0.30901697+0.95105654I
+  -0.30901703+0.95105648I
+  -0.80901706+0.58778518I
+  -1.00000000-0.00000008I
+  -0.80901694-0.58778536I
+  -0.30901709-0.95105648I
+   0.30901712-0.95105648I
+   0.80901724-0.58778494I
 ```
 
 
@@ -1794,10 +1794,10 @@ For n = 2 To 10
   angle = 0
   PrintN(Str(n))
   For i = 1 To n
-    x.f = Cos(Radian(angle))    
-    y.f = Sin(Radian(angle)) 
+    x.f = Cos(Radian(angle))
+    y.f = Sin(Radian(angle))
     PrintN( Str(i) + ":  " + StrF(x, 6) +  " / " + StrF(y, 6))
-    angle = angle + (360 / n) 
+    angle = angle + (360 / n)
   Next
 Next
 Input()
@@ -1919,7 +1919,7 @@ REXX doesn't have complex arithmetic, so the (real) values of   '''cos'''   and 
 
 Also, REXX doesn't have the   '''pi'''   constant defined, nor a   '''sin'''   or   '''cos'''   function, so they are included below within the REXX program.
 
-Note:   this REXX version only   ''displays''   '''5'''   significant digits past the decimal point,   but this can be overridden by specifying the 2<sup>nd</sup> argument when invoking the REXX program.  
+Note:   this REXX version only   ''displays''   '''5'''   significant digits past the decimal point,   but this can be overridden by specifying the 2<sup>nd</sup> argument when invoking the REXX program.
 (See the value of the REXX variable   '''frac''',   4<sup>th</sup> line).
 
 ```rexx
@@ -2100,7 +2100,7 @@ sin: procedure; parse arg x;     x= r2r(x);                numeric fuzz min(5, d
 
 decimals(4)
 for n = 2 to 5
-    see string(n) + " : " 
+    see string(n) + " : "
     for root = 0 to n-1
         real = cos(2*3.14 * root / n)
         imag = sin(2*3.14 * root / n)
@@ -2108,7 +2108,7 @@ for n = 2 to 5
         if root != n-1 see ", " ok
     next
     see nl
-next 
+next
 
 ```
 
@@ -2177,7 +2177,7 @@ FOR n = 2 TO 5
      IF root <> n-1 then PRINT "," ;
   NEXT
   PRINT
-NEXT 
+NEXT
 
 ```
 
@@ -2554,7 +2554,7 @@ foreach n,i in ([1..9],n){
    else if(n==2*i)   c = -1;
    else if(3*n==4*i) s = -1;
    else a,c,s:=PI2*i/n,a.cos(),a.sin();
- 
+
    if(c) print("%.2g".fmt(c));
    print( (s==1 and "i") or (s==-1 and "-i" or (s and "%+.2gi" or"")).fmt(s));
    print( (i==n-1) and "\n" or ",  ");

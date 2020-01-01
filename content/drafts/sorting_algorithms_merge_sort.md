@@ -16,22 +16,22 @@ tags = []
 
 The   '''merge sort'''   is a recursive sort of order   <big> n*log(n). </big>
 
-It is notable for having a worst case and average complexity of   <big> ''O(n*log(n))'', </big>   and a best case complexity of   <big> ''O(n)''   </big> (for pre-sorted input). 
+It is notable for having a worst case and average complexity of   <big> ''O(n*log(n))'', </big>   and a best case complexity of   <big> ''O(n)''   </big> (for pre-sorted input).
 
-The basic idea is to split the collection into smaller groups by halving it until the groups only have one element or no elements   (which are both entirely sorted groups). 
+The basic idea is to split the collection into smaller groups by halving it until the groups only have one element or no elements   (which are both entirely sorted groups).
 
 Then merge the groups back together so that their elements are in order.
- 
+
 This is how the algorithm gets its   ''divide and conquer''   description.
 
 
 ;Task:
-Write a function to sort a collection of integers using the merge sort. 
+Write a function to sort a collection of integers using the merge sort.
 
 
-The merge sort algorithm comes in two parts: 
-    a sort function     and 
-    a merge function 
+The merge sort algorithm comes in two parts:
+    a sort function     and
+    a merge function
 
 The functions in pseudocode look like this:
  '''function''' ''mergesort''(m)
@@ -46,12 +46,12 @@ The functions in pseudocode look like this:
             '''add''' x '''to''' right
         left = mergesort(left)
         right = mergesort(right)
-        '''if''' last(left) ≤ first(right) 
+        '''if''' last(left) ≤ first(right)
            '''append''' right '''to''' left
            '''return''' left
         result = merge(left, right)
         '''return''' result
- 
+
  '''function''' ''merge''(left,right)
     '''var''' list result
     '''while''' length(left) > 0 and length(right) > 0
@@ -61,9 +61,9 @@ The functions in pseudocode look like this:
         '''else'''
             '''append''' first(right) '''to''' result
             right = rest(right)
-    '''if''' length(left) > 0 
+    '''if''' length(left) > 0
         '''append''' rest(left) '''to''' result
-    '''if''' length(right) > 0 
+    '''if''' length(right) > 0
         '''append''' rest(right) '''to''' result
     '''return''' result
 
@@ -81,7 +81,7 @@ Note:   better performance can be expected if, rather than recursing until   <bi
 ## 360 Assembly
 
 {{trans|BBC BASIC}}
-The program uses ASM structured macros and two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible. 
+The program uses ASM structured macros and two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible.
 
 ```360asm
 *      Merge sort                  19/06/2016
@@ -103,7 +103,7 @@ MAIN   CSECT
          SLA   R1,2                  .
          L     R2,A-4(R1)            a(i)
          XDECO R2,XDEC               edit a(i)
-         MVC   0(4,RPGI),XDEC+8      output a(i) 
+         MVC   0(4,RPGI),XDEC+8      output a(i)
          LA    RPGI,4(RPGI)          pgi=pgi+4
          LA    RI,1(RI)              i=i+1
        ENDDO   ,                   end do
@@ -149,7 +149,7 @@ SPLIT  STM     R14,R12,12(R13)     save all registers
            MVC 0(4,R3),TEMP            a(iend)=temp
          ENDIF ,                     end if
          B     RETURN                return
-       ENDIF   ,                   end if 
+       ENDIF   ,                   end if
        LR      RMIDDL,REND         iend
        SR      RMIDDL,RSTART       iend-istart
        SRA     RMIDDL,1            (iend-istart)/2
@@ -165,7 +165,7 @@ SPLIT  STM     R14,R12,12(R13)     save all registers
        LR      R3,REND             iend
        BAL     R14,MERGE           call merge(istart,imiddl,iend)
 RETURN L       R13,SAVEXB+4        restore caller's savearea address
-       XR      R15,R15             set return code to 0        
+       XR      R15,R15             set return code to 0
        LA      R0,72               amount of storage to free
        FREEMAIN A=(R10),LV=(R0)    free allocated storage
        L       R14,12(R13)         restore caller's return address
@@ -194,7 +194,7 @@ MERGE  STM     R1,R3,JSTART        jstart=r1,jmiddl=r2,jend=r3
        LA      RJ,1(RJ)            j=jmiddl+1
        L       RK,JSTART           k=jstart
        DO UNTIL=(CR,RI,EQ,RBS,OR,  do until i=bs or                    X
-               C,RJ,GT,JEND)                j>jend  
+               C,RJ,GT,JEND)                j>jend
          LR    R1,RI                 i
          SLA   R1,2                  .
          L     R4,B-4(R1)            r4=b(i)
@@ -205,14 +205,14 @@ MERGE  STM     R1,R3,JSTART        jstart=r1,jmiddl=r2,jend=r3
          SLA   R9,2                  r9 for a(k)
          IF CR,R4,LE,R3 THEN         if b(i)<=a(j)
            ST  R4,A-4(R9)              a(k)=b(i)
-           LA  RI,1(RI)                i=i+1 
+           LA  RI,1(RI)                i=i+1
          ELSE  ,                     else
            ST  R3,A-4(R9)              a(k)=a(j)
            LA  RJ,1(RJ)                j=j+1
          ENDIF ,                     end if
          LA    RK,1(RK)              k=k+1
-       ENDDO   ,                   end do  
-       DO WHILE=(CR,RI,LT,RBS)     do while i<bs 
+       ENDDO   ,                   end do
+       DO WHILE=(CR,RI,LT,RBS)     do while i<bs
          LR    R1,RI                 i
          SLA   R1,2                  .
          L     R2,B-4(R1)            b(i)
@@ -224,14 +224,14 @@ MERGE  STM     R1,R3,JSTART        jstart=r1,jmiddl=r2,jend=r3
        ENDDO   ,                   end do
        BR      R14                 return to caller
 *      ------- ------------------  ------------------------------------
-       LTORG   
+       LTORG
 SAVEXA DS      18F                 savearea of main
 NN     EQU     ((B-A)/L'A)         number of items
 A      DC F'4',F'65',F'2',F'-31',F'0',F'99',F'2',F'83',F'782',F'1'
        DC F'45',F'82',F'69',F'82',F'104',F'58',F'88',F'112',F'89',F'74'
 B      DS      (NN/2+1)F           merge sort static storage
 TEMP   DS      F                   for swap
-JSTART DS      F                   jstart 
+JSTART DS      F                   jstart
 JMIDDL DS      F                   jmiddl
 JEND   DS      F                   jend
 PG     DC      CL80' '             buffer
@@ -381,11 +381,11 @@ end MergeSort;
 
 ```ada
 package body Mergesort is
-   
+
    -----------
    -- Merge --
    -----------
-   
+
    function Merge(Left, Right : Collection_Type) return Collection_Type is
       Result : Collection_Type(Left'First..Right'Last);
       Left_Index : Index_Type := Left'First;
@@ -410,7 +410,7 @@ package body Mergesort is
       end if;
       return Result;
    end Merge;
-   
+
    ----------
    -- Sort --
    ----------
@@ -448,7 +448,7 @@ The following code provides an usage example for the generic package defined abo
 
 ```ada
 with Ada.Text_Io; use Ada.Text_Io;
-with Mergesort; 
+with Mergesort;
 
 procedure Mergesort_Test is
    type List_Type is array(Positive range <>) of Integer;
@@ -460,7 +460,7 @@ procedure Mergesort_Test is
       end loop;
       New_Line;
    end Print;
-   
+
    List : List_Type := (1, 5, 2, 7, 3, 9, 4, 6);
 begin
    Print(List);
@@ -482,7 +482,7 @@ end Mergesort_Test;
 ## ALGOL 68
 
 {{trans|python}}
-Below are two variants of the same routine.  If copying the DATA type to 
+Below are two variants of the same routine.  If copying the DATA type to
 a different memory location is expensive, then the optimised version should
 be used as the DATA elements are handled indirectly.
 
@@ -509,7 +509,7 @@ PROC flex merge = ([]DATA in left, in right)[]DATA:(
     FOR index TO UPB result DO
         # change the direction of this comparison to change the direction of the sort #
         IF LWB right > UPB right THEN
-            result[index:] := left; 
+            result[index:] := left;
             stop iteration
         ELIF LWB left > UPB left THEN
             result[index:] := right;
@@ -538,7 +538,7 @@ print((merge sort(char array data), new line));
 
 ```
 
-Optimised version: 
+Optimised version:
 # avoids FLEX array copies and manipulations
 # avoids type DATA memory copies, useful in cases where DATA is a large STRUCT
 
@@ -561,7 +561,7 @@ PROC opt merge = ([]REF DATA left, right)[]REF DATA:(
     FOR index TO UPB result DO
         # change the direction of this comparison to change the direction of the sort #
         IF index right > UPB right THEN
-            result[index:] := left[index left:]; 
+            result[index:] := left[index left:];
             stop iteration
         ELIF index left > UPB left THEN
             result[index:] := right[index right:];
@@ -645,10 +645,10 @@ Return
         Sorts an array by first recursively splitting it down to its
         individual elements and then merging those elements in their
         correct order.
-       
+
     Parameters
         Array   The array to be sorted
-       
+
     Returns
         The sorted array
 */
@@ -664,7 +664,7 @@ MergeSort(Array)
             Right.Insert(Array.Remove(Middle-- + 1)), Left.Insert(Array.Remove(1))
         If (Array.MaxIndex())
             Right.Insert(Array.Remove(1))
-       
+
         Left := MergeSort(Left), Right := MergeSort(Right)
 
         ; If all the Right values are greater than all the
@@ -684,7 +684,7 @@ MergeSort(Array)
 
         Loop % Right.MaxIndex()
             Array.Insert(Right.Remove(1))
-           
+
         Return Array
     }
 ```
@@ -824,8 +824,8 @@ END
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 void merge (int *a, int n, int m) {
@@ -879,8 +879,8 @@ int main () {
 ## C++
 
 
-```cpp>#include <iterator
-
+```cpp
+#include <iterator>
 #include <algorithm> // for std::inplace_merge
 #include <functional> // for std::less
 
@@ -1266,7 +1266,7 @@ Cobol cannot do recursion, so this version simulates recursion. The working stor
       ******************************************************************
        E-000.
            IF WS-OUT(WS-STACK-TOP - 1)
-              GO TO E-010. 
+              GO TO E-010.
 
            MOVE WS-START(WS-STACK-TOP - 1) TO WC-START.
            MOVE WS-END(WS-STACK-TOP - 1)   TO WC-END.
@@ -1347,7 +1347,7 @@ Cobol cannot do recursion, so this version simulates recursion. The working stor
            SET WB-IX-2 TO WC-MIDDLE.
            SET WB-IX-2 UP BY 1.
            SET WD-IX   TO 1.
-          
+
            PERFORM HB-MERGE UNTIL WD-IX > WD-FH-MAX OR WB-IX-2 > WC-END.
 
            PERFORM HC-COPY-BACK UNTIL WD-IX > WD-FH-MAX.
@@ -1406,7 +1406,7 @@ merge_sort = (arr) ->
   while true
     if p1 >= arr1.length
       if p2 >= arr2.length
-        return result 
+        return result
       result.push arr2[p2]
       p2 += 1
     else if p2 >= arr2.length or arr1[p1] < arr2[p2]
@@ -1424,7 +1424,7 @@ do ->
 
 ```txt
 
-> coffee mergesort.coffee 
+> coffee mergesort.coffee
 [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
 
 ```
@@ -1463,7 +1463,7 @@ def merge_sort(a : Array(Int32)) : Array(Int32)
   rt = merge_sort(a[m .. -1])
   return merge(lt, rt)
 end
- 
+
 def merge(lt : Array(Int32), rt : Array(Int32)) : Array(Int32)
   result = Array(Int32).new
   until lt.empty? || rt.empty?
@@ -1471,7 +1471,7 @@ def merge(lt : Array(Int32), rt : Array(Int32)) : Array(Int32)
   end
   return result + lt + rt
 end
- 
+
 a = [7, 6, 5, 9, 8, 4, 3, 1, 2, 0]
 puts merge_sort(a) # => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
@@ -1504,7 +1504,7 @@ intMerge (x:xs) (y:ys) zs =
    if (x > y) then intMerge (x:xs) ys us & zs =:= y:us
               else intMerge xs (y:ys) vs & zs =:= x:vs
    where us,vs free
-  
+
 firsthalf  xs = take (length xs `div` 2) xs
 secondhalf xs = drop (length xs `div` 2) xs
 
@@ -1540,8 +1540,8 @@ void main() {
 
 ### Alternative Version
 
-This in-place version allocates the auxiliary memory on the stack, 
-making life easier for the garbage collector, 
+This in-place version allocates the auxiliary memory on the stack,
+making life easier for the garbage collector,
 but with risk of stack overflow (same output):
 
 ```d
@@ -2011,12 +2011,12 @@ another multi-process version (number of processes == number of processor cores)
 
 merge_sort(List) -> m(List, erlang:system_info(schedulers)).
 
-m([L],_) -> [L]; 
-m(L, N) when N > 1  -> 
+m([L],_) -> [L];
+m(L, N) when N > 1  ->
     {L1,L2} = lists:split(length(L) div 2, L),
     {Parent, Ref} = {self(), make_ref()},
-    spawn(fun()-> Parent ! {l1, Ref, m(L1, N-2)} end), 
-    spawn(fun()-> Parent ! {l2, Ref, m(L2, N-2)} end), 
+    spawn(fun()-> Parent ! {l1, Ref, m(L1, N-2)} end),
+    spawn(fun()-> Parent ! {l2, Ref, m(L2, N-2)} end),
     {L1R, L2R} = receive_results(Ref, undefined, undefined),
     lists:merge(L1R, L2R);
 m(L, _) -> {L1,L2} = lists:split(length(L) div 2, L), lists:merge(m(L1, 0), m(L2, 0)).
@@ -2207,7 +2207,7 @@ let rec merge l1 l2 =
         | (x::tx,y::ty) ->
             if x <= y then x::merge tx l2
             else y::merge l1 ty
-let rec mergesort list = 
+let rec mergesort list =
     match list with
         | [] -> []
         | [x] -> [x]
@@ -2268,7 +2268,7 @@ This is an in-place mergesort which works on arrays of integers.
 : mergesort ( right left -- right left )
   2dup cell+ <= if exit then
   swap 2dup mid recurse rot recurse merge ;
-  
+
 : sort ( addr len -- )  cells over + swap mergesort 2drop ;
 
 create test 8 , 1 , 5 , 3 , 9 , 0 , 2 , 7 , 6 , 4 ,
@@ -2378,18 +2378,18 @@ End Sub
 Sub topDownMerge(a() As Integer, iBegin As Integer, iMiddle As Integer, iEnd As Integer, b() As Integer)
   Dim i As Integer = iBegin
   Dim j As Integer = iMiddle
-    
+
   ' While there are elements in the left or right runs...
-  For k As Integer = iBegin To iEnd - 1 
+  For k As Integer = iBegin To iEnd - 1
   ' If left run head exists and is <= existing right run head.
     If i < iMiddle AndAlso (j >= iEnd OrElse a(i) <= a(j)) Then
       b(k) = a(i)
       i += 1
     Else
       b(k) = a(j)
-      j += 1    
+      j += 1
     End If
-  Next 
+  Next
 End Sub
 
 ' Sort the given run of array a() using array b() as a source.
@@ -2405,9 +2405,9 @@ Sub topDownSplitMerge(b() As Integer, iBegin As Integer, iEnd As Integer, a() As
   topDownMerge(b(), iBegin, iMiddle, iEnd, a())
 End Sub
 
-' Array a() has the items to sort; array b() is a work array (empty initially).      
+' Array a() has the items to sort; array b() is a work array (empty initially).
 Sub topDownMergeSort(a() As Integer, b() As Integer, n As Integer)
-  copyArray(a(), 0, n, b())  '' duplicate array a() into b()           
+  copyArray(a(), 0, n, b())  '' duplicate array a() into b()
   topDownSplitMerge(b(), 0, n, a())  '' sort data from b() into a()
 End Sub
 
@@ -2470,7 +2470,7 @@ def
   merge( x:xs, y:ys )
     | x <= y          =  x : merge( xs, y:ys )
     | otherwise       =  y : merge( x:xs, ys )
-    
+
 println( sort([94, 37, 16, 56, 72, 48, 17, 27, 58, 67]) )
 println( sort(['Sofía', 'Alysha', 'Sophia', 'Maya', 'Emma', 'Olivia', 'Emily']) )
 ```
@@ -2560,15 +2560,15 @@ mergeSort = { List list ->
 
     def n = list.size()
     if (n < 2) return list
-    
+
     def middle = n.intdiv(2)
     def left = [] + list[0..<middle]
     def right = [] + list[middle..<n]
     left = mergeSort(left)
     right = mergeSort(right)
-    
+
     if (left[-1] <= right[0]) return left + right
-    
+
     merge(left, right)
 }
 ```
@@ -2739,7 +2739,7 @@ lst mergeSortInPlace println # ==> list(-2, -1, 3, 5, 9, 15)
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main()                                                         #: demonstrate various ways to sort a list and string 
+procedure main()                                                         #: demonstrate various ways to sort a list and string
    demosort(mergesort,[3, 14, 1, 5, 9, 2, 6, 3],"qwerty")
 end
 
@@ -2747,18 +2747,18 @@ procedure mergesort(X,op,lower,upper)                                    #: retu
 local middle
 
    if /lower := 1 then {                                                 # top level call setup
-      upper := *X   
+      upper := *X
       op := sortop(op,X)                                                 # select how and what we sort
       }
-	  
+
    if upper ~= lower then {                                              # sort all sections with 2 or more elements
       X := mergesort(X,op,lower,middle := lower + (upper - lower) / 2)
       X := mergesort(X,op,middle+1,upper)
-   
+
       if op(X[middle+1],X[middle]) then                                  # @middle+1 < @middle merge if halves reversed
          X := merge(X,op,lower,middle,upper)
-   }	  
-   return X                                                              
+   }
+   return X
 end
 
 procedure merge(X,op,lower,middle,upper)                                 # merge two list sections within a larger list
@@ -2767,8 +2767,8 @@ local p1,p2,add
    p1 := lower
    p2 := middle + 1
    add := if type(X) ~== "string" then put else "||"                     # extend X, strings require X := add (until ||:= is invocable)
- 
-   while p1 <= middle & p2 <= upper do 
+
+   while p1 <= middle & p2 <= upper do
       if op(X[p1],X[p2]) then {                                          # @p1 < @p2
          X := add(X,X[p1])                                               # extend X temporarily (rather than use a separate temporary list)
          p1 +:= 1
@@ -2777,24 +2777,24 @@ local p1,p2,add
          X := add(X,X[p2])                                               # extend X temporarily
          p2 +:= 1
          }
-		 
+
    while X := add(X,X[middle >= p1]) do p1 +:= 1                         # and rest of lower or ...
-   while X := add(X,X[upper  >= p2]) do p2 +:= 1                         # ... upper trailers if any 
-   
+   while X := add(X,X[upper  >= p2]) do p2 +:= 1                         # ... upper trailers if any
+
    if type(X) ~== "string" then                                          # pull section's sorted elements from extension
       every X[upper to lower by -1] := pull(X)
-   else	  
+   else
       (X[lower+:(upper-lower+1)] := X[0-:(upper-lower+1)])[0-:(upper-lower+1)] := ""
-   
-   return X 
+
+   return X
 end
 ```
 
 
-Note: This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'sortop', and 'demosort' in Bubble Sort]]. 
+Note: This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'sortop', and 'demosort' in Bubble Sort]].
 The full demosort exercises the named sort of a list with op = "numeric", "string", ">>" (lexically gt, descending),">" (numerically gt, descending), a custom comparator, and also a string.
 
-{{out}} Abbreviated sample 
+{{out}} Abbreviated sample
 
 ```txt
 Sorting Demo using procedure mergesort
@@ -2818,7 +2818,7 @@ split     =: </.~ 0 1$~#
 mergeSort =: merge & $: &>/ @ split ` ] @. (1>:#)
 ```
 
-This version is usable for relative small arrays due to stack limitations for the recursive verb 'merge'. 
+This version is usable for relative small arrays due to stack limitations for the recursive verb 'merge'.
 For larger arrays replace 'merge' with the following explicit non-recursive version:
 
 ```j
@@ -2828,15 +2828,15 @@ merge=: 4 : 0
  ra=.y
  z=.i.0
  while. la *@*&# ra do.
-  if. la  >&{. ra do. 
+  if. la  >&{. ra do.
     z=.z,{.ra
     ra=.}.ra
   else.
     z=.z,{.la
-    la=.}.la 
+    la=.}.la
   end.
  end.
- z,la,ra  
+ z,la,ra
 )
 ```
 
@@ -2959,7 +2959,7 @@ def merge:
     | if   0 == ($x|length) then .[2] + $y
       elif 0 == ($y|length) then .[2] + $x
       else
-        (if $x[0] <= $y[0] then [$x[1:], $y,     .[2] + [$x[0] ]] 
+        (if $x[0] <= $y[0] then [$x[1:], $y,     .[2] + [$x[0] ]]
          else                   [$x,     $y[1:], .[2] + [$y[0] ]]
          end) | m
       end;
@@ -3241,13 +3241,13 @@ merge(Xs, [], Xs).
 ```Lua
 function getLower(a,b)
   local i,j=1,1
-  return function() 
+  return function()
     if not b[j] or a[i] and a[i]<b[j] then
       i=i+1; return a[i-1]
     else
       j=j+1; return b[j-1]
     end
-  end  
+  end
 end
 
 function merge(a,b)
@@ -3322,7 +3322,7 @@ module checkit {
 		}
 		\\ left and right are pointers to stack objects
 		\\ here we pass by value the pointer not the data
-		function merge(left as stack, right as stack) {			
+		function merge(left as stack, right as stack) {
 			result=stack
 			while len(left) > 0 and len(right) > 0
 				if stackitem(left,1) <= stackitem(right) then
@@ -3335,7 +3335,7 @@ module checkit {
 			if len(left) > 0 then result=stack:= !result,!left
 			=result
 		}
-		function mergedown(left as stack, right as stack) {			
+		function mergedown(left as stack, right as stack) {
 			result=stack
 			while len(left) > 0 and len(right) > 0
 				if stackitem(left,1) > stackitem(right) then
@@ -3352,12 +3352,12 @@ module checkit {
 	k=stack:=7, 5, 2, 6, 1, 4, 2, 6, 3
 	print merge.sort(k)
 	print len(k)=0   ' we have to use merge.sort(stack(k)) to pass a copy of k
-	
+
 	\\ input array  (arr is a pointer to array)
 	arr=(10,8,9,7,5,6,2,3,0,1)
 	\\ stack(array pointer) return a stack with a copy of array items
 	\\ array(stack pointer) return an array, empty the stack
-	
+
 	arr2=array(merge.sort(stack(arr)))
 	Print type$(arr2)
 	Dim a()
@@ -3374,7 +3374,7 @@ module checkit {
 	\\ so now p (which use the outer pointer)
 	\\ still points to a()
 	print p   ' p point to a()
-	
+
 }
 checkit
 
@@ -3386,7 +3386,7 @@ checkit
 
 <lang>merge := proc(arr, left, mid, right)
 	local i, j, k, n1, n2, L, R;
-	n1 := mid-left+1: 
+	n1 := mid-left+1:
 	n2 := right-mid:
 	L := Array(1..n1):
 	R := Array(1..n2):
@@ -3439,12 +3439,12 @@ arr;
 MergeSort[m_List] := Module[{middle},
   If[Length[m] >= 2,
    middle = Ceiling[Length[m]/2];
-   Apply[Merge, 
+   Apply[Merge,
     Map[MergeSort, Partition[m, middle, middle, {1, 1}, {}]]],
    m
    ]
   ]
-  
+
 Merge[left_List, right_List] := Module[
   {leftIndex = 1, rightIndex = 1},
   Table[
@@ -3471,15 +3471,15 @@ function list = mergeSort(list)
         middle = ceil(numel(list) / 2);
         left = list(1:middle);
         right = list(middle+1:end);
-        
+
         left = mergeSort(left);
         right = mergeSort(right);
-        
+
         if left(end) <= right(1)
             list = [left right];
             return
         end
-        
+
         %merge(left,right)
         counter = 1;
         while (numel(left) > 0) && (numel(right) > 0)
@@ -3489,8 +3489,8 @@ function list = mergeSort(list)
             else
                 list(counter) = right(1);
                 right(1) = [];
-            end           
-            counter = counter + 1;   
+            end
+            counter = counter + 1;
         end
 
         if numel(left) > 0
@@ -3498,7 +3498,7 @@ function list = mergeSort(list)
         elseif numel(right) > 0
             list(counter:end) = right;
         end
-        %end merge        
+        %end merge
     end %if
 end %mergeSort
 ```
@@ -3584,7 +3584,7 @@ fn _merge a b =
 	(
 		if a[1] <= b[1] then
 		(
-			append result a[1] 
+			append result a[1]
 			a = for i in 2 to a.count collect a[i]
 		)
 		else
@@ -3640,9 +3640,9 @@ This version of a sort will sort a list of any type for which there is an orderi
 :- import_module int, exception.
 
 merge_sort(U) = S :- merge_sort(U, S).
- 
+
 merge_sort(U, S) :- merge_sort(list.length(U), U, S).
- 
+
 :- pred merge_sort(int::in, list(T)::in, list(T)::out) is det.
 merge_sort(L, U, S) :-
     ( L > 1 ->
@@ -3653,13 +3653,13 @@ merge_sort(L, U, S) :-
             merge_sort.merge(SF, SB, S)
         ; throw(split_error) )
     ; S = U ).
- 
+
 :- pred split(int::in, list(T)::in, list(T)::out, list(T)::out) is semidet.
 split(N, L, S, E) :-
     ( N = 0 -> S = [], E = L
     ; N > 0, L = [H | L1], S = [H | S1],
       split(N - 1, L1, S1, E) ).
- 
+
 :- pred merge(list(T)::in, list(T)::in, list(T)::out) is det.
 merge([], [], []).
 merge([X|Xs], [], [X|Xs]).
@@ -3814,10 +3814,10 @@ module Mergesort
                 |(x::[], xs, ys) => (x::xs, ys)
                 |([], xs, ys) => (xs, ys)
             }
-            
+
             loop(xs, [], [])
         }
-        
+
         def merge(xs, ys) {
             def loop(res, xs, ys) {
                 |(res, [], []) => res.Reverse()
@@ -3828,16 +3828,16 @@ module Mergesort
             }
             loop ([], xs, ys)
         }
-        
+
         def ms(xs) {
             |[] => []
             |[x] => [x]
             |_ => { def (left, right) = split(xs); merge(ms(left), ms(right)) }
         }
-        
+
         ms(sort_me.NToList())
     }
-    
+
     Main() : void
     {
         def test1 = MergeSort([1, 5, 9, 2, 7, 8, 4, 6, 3]);
@@ -4010,7 +4010,7 @@ program MergeSortDemo;
 
 type
   TIntArray = array of integer;
- 
+
 function merge(left, right: TIntArray): TIntArray;
   var
     i, j: integer;
@@ -4071,7 +4071,7 @@ function mergeSort(m: TIntArray): TIntArray;
 var
   data: TIntArray;
   i: integer;
-  
+
 begin
   setlength(data, 8);
   Randomize;
@@ -4110,7 +4110,7 @@ uses "only" one halfsized temporary array for merging, which are set to the righ
 small sized fields are sorted via insertion sort.
 Only an array of Pointers is sorted, so no complex data transfers are needed.Sort for X,Y or whatever is easy to implement.
 
-Works with ( Turbo -) Delphi  too. 
+Works with ( Turbo -) Delphi  too.
 
 ```pascal
 {$IFDEF FPC}
@@ -4129,17 +4129,17 @@ type
                   myTag,
                   myOrgIdx : LongInt;
                 end;
-                
+
   tpDataElem = ^tDataElem;
   tData = array of tDataElem;
- 
+
   tSortData = array of tpDataElem;
   tCompFunc = function(A,B:tpDataElem):integer;
 var
   Data    : tData;
   Sortdata,
   tmpData : tSortData;
- 
+
 procedure InitData(var D:tData;cnt: LongWord);
 var
   i,k: LongInt;
@@ -4161,7 +4161,7 @@ begin
     end;
   end;
 end;
- 
+
 procedure FreeData(var D:tData);
 begin
   Setlength(tmpData,0);
@@ -4174,40 +4174,40 @@ var
   lcA,lcB: String;
 Begin
   lcA := lowercase(A^.myText);
-  lcB := lowercase(B^.myText);  
-  result := ORD(lcA > lcB)-ORD(lcA < lcB);  
-end;  
+  lcB := lowercase(B^.myText);
+  result := ORD(lcA > lcB)-ORD(lcA < lcB);
+end;
 
 function myCompText(A,B:tpDataElem):integer;
-{sort an array (or list) of strings in order of descending length, 
+{sort an array (or list) of strings in order of descending length,
   and in ascending lexicographic order for strings of equal length.}
 var
   lA,lB:integer;
-  
+
 Begin
   lA := Length(A^.myText);
   lB := Length(B^.myText);
-  result := ORD(lA<lB)-ORD(lA>lB);  
+  result := ORD(lA<lB)-ORD(lA>lB);
   IF result = 0 then
     result := CompLowercase(A,B);
 end;
- 
+
 function myCompX(A,B:tpDataElem):integer;
 //same as sign without jumps in assembler code
 begin
   result := ORD(A^.myX > B^.myX)-ORD(A^.myX < B^.myX);
 end;
- 
+
 function myCompY(A,B:tpDataElem):integer;
 Begin
   result := ORD(A^.myY > B^.myY)-ORD(A^.myY < B^.myY);
 end;
- 
+
 function myCompTag(A,B:tpDataElem):integer;
 Begin
   result := ORD(A^.myTag > B^.myTag)-ORD(A^.myTag < B^.myTag);
 end;
- 
+
 procedure InsertionSort(left,right:integer;var a: tSortData;CompFunc: tCompFunc);
 var
    Pivot : tpDataElem;
@@ -4225,8 +4225,8 @@ begin
    A[j] :=PiVot;// s.o.
  end;
 end;
- 
- 
+
+
 procedure mergesort(left,right:integer;var a: tSortData;CompFunc: tCompFunc);
 var
   i,j,k,mid :integer;
@@ -4247,7 +4247,7 @@ begin
     //already sorted ?
     IF CompFunc(A[Mid],A[Mid+1])<0 then
       exit;
- 
+
     //##########  Merge  ##########
     //copy lower half to temporary array
     move(A[left],tmpData[0],(mid-left+1)*SizeOf(Pointer));
@@ -4278,19 +4278,19 @@ begin
       end;
   end;
 end;
- 
+
 var
   T1,T0: TDateTime;
   i : integer;
 Begin
   randomize;
   InitData(Data,1*1000*1000);
- 
+
   T0 := Time;
   mergesort(Low(SortData),High(SortData),SortData,@myCompText);
   T1 := Time;
   Writeln('myText ',FormatDateTime('NN:SS.ZZZ',T1-T0));
-//  For i := 0 to High(Data) do  Write(SortData[i].myText);  writeln;  
+//  For i := 0 to High(Data) do  Write(SortData[i].myText);  writeln;
   T0 := Time;
   mergesort(Low(SortData),High(SortData),SortData,@myCompX);
   T1 := Time;
@@ -4299,17 +4299,17 @@ Begin
   For i := 1 to High(Data) do
     IF myCompX(SortData[i-1],SortData[i]) = 1 then
       Write(i:8);
- 
+
   T0 := Time;
   mergesort(Low(SortData),High(SortData),SortData,@myCompY);
   T1 := Time;
   Writeln('myY    ',FormatDateTime('NN:SS.ZZZ',T1-T0));
- 
+
   T0 := Time;
   mergesort(Low(SortData),High(SortData),SortData,@myCompTag);
   T1 := Time;
   Writeln('myTag  ',FormatDateTime('NN:SS.ZZZ',T1-T0));
- 
+
   FreeData (Data);
 end.
 
@@ -4406,7 +4406,7 @@ sequence result = {}
     end while
     return result & left & right
 end function
- 
+
 function mergesort(sequence m)
 sequence left, right
 integer middle
@@ -4423,10 +4423,10 @@ integer middle
     end if
     return merge(left, right)
 end function
- 
+
 constant s = shuffle(tagset(10))
 ? s
-? mergesort(s) 
+? mergesort(s)
 ```
 
 {{out}}
@@ -4520,7 +4520,7 @@ PicoLisp's built-in sort routine uses merge sort. This is a high level implement
 ```pli
 MERGE: PROCEDURE (A,LA,B,LB,C);
 
-/* Merge A(1:LA) with B(1:LB), putting the result in C 
+/* Merge A(1:LA) with B(1:LB), putting the result in C
    B and C may share the same memory, but not with A.
 */
    DECLARE (A(*),B(*),C(*)) BYADDR POINTER;
@@ -4580,7 +4580,7 @@ function MergeSort([object[]] $SortInput)
 {
 	# The base case exits for minimal lists that are sorted by definition
 	if ($SortInput.Length -le 1) {return $SortInput}
-	
+
 	# Divide and conquer
 	[int] $midPoint = $SortInput.Length/2
 	# The @() operators ensure a single result remains typed as an array
@@ -4606,7 +4606,7 @@ function MergeSort([object[]] $SortInput)
 			else {$right = @()}
 		}
 	}
-	
+
 	# If we get here, either $left or $right is an empty array (or both are empty!).  Since the
 	# rest of the unmerged array is already sorted, we can simply string together what we have.
 	# This line outputs the concatenated result.  An explicit 'return' statement is not needed.
@@ -4660,7 +4660,7 @@ EndProcedure
 Procedure merge(List m(), List ma(), List mb())
   FirstElement(m())
   Protected ma_elementExists = FirstElement(ma())
-  Protected mb_elementExists = FirstElement(mb()) 
+  Protected mb_elementExists = FirstElement(mb())
   Repeat
     If ma() <= mb()
       m() = ma(): NextElement(m())
@@ -4685,27 +4685,27 @@ EndProcedure
 Procedure mergesort(List m())
   Protected NewList ma()
   Protected NewList mb()
-  
+
   If ListSize(m()) > 1
     Protected current, middle = (ListSize(m()) / 2 ) - 1
-    
+
     FirstElement(m())
     While current <= middle
       AddElement(ma())
       ma() = m()
       NextElement(m()): current + 1
     Wend
-    
+
     PreviousElement(m())
     While NextElement(m())
       AddElement(mb())
       mb() = m()
     Wend
-    
+
     mergesort(ma())
     mergesort(mb())
     LastElement(ma()): FirstElement(mb())
-    If ma() <= mb() 
+    If ma() <= mb()
       FirstElement(m())
       FirstElement(ma())
       Repeat
@@ -4714,21 +4714,21 @@ Procedure mergesort(List m())
       Repeat
         m() = mb(): NextElement(m())
       Until Not NextElement(mb())
-    Else 
+    Else
       merge(m(), ma(), mb())
-    EndIf 
-  EndIf 
+    EndIf
+  EndIf
 EndProcedure
-  
+
 If OpenConsole()
   Define i
   NewList x()
-  
+
   For i = 1 To 21: AddElement(x()): x() = Random(60): Next
   display(x())
   mergesort(x())
   display(x())
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -4789,7 +4789,7 @@ def merge(left, right):
 
 
 ## R
-           
+
 
 ```r
 mergesort <- function(m)
@@ -4807,13 +4807,13 @@ mergesort <- function(m)
          {
             result <- c(result, right[1])
             right <- right[-1]
-         }         
+         }
       }
       if(length(left) > 0) result <- c(result, left)
       if(length(right) > 0) result <- c(result, right)
       result
    }
-   
+
    len <- length(m)
    if(len <= 1) m else
    {
@@ -4828,7 +4828,7 @@ mergesort <- function(m)
       } else
       {
          merge_(left, right)
-      } 
+      }
    }
 }
 mergesort(c(4, 65, 2, -31, 0, 99, 83, 782, 1)) # -31   0   1   2   4  65  83  99 782
@@ -4872,7 +4872,7 @@ This variation is bottom up:
   (match xss
     [(list)    '()]
     [(list xs) xss]
-    [(list xs ys zss ...) 
+    [(list xs ys zss ...)
      (merge* (cons (merge xs ys) (merge* zss)))]))
 
 (define (merge xs ys)
@@ -4990,7 +4990,7 @@ mergeTo!:  procedure expose @. !.; parse arg L,n,T; if n==1  then do; !.T=@.L; r
 ```txt
 
              element 1 before sort: ---The seven deadly sins---
-             element 2 before sort: 
+             element 2 before sort:
 ### =====================
 
              element 3 before sort: pride
@@ -5002,7 +5002,7 @@ mergeTo!:  procedure expose @. !.; parse arg L,n,T; if n==1  then do; !.T=@.L; r
              element 9 before sort: lust
 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
              element 1  after sort: ---The seven deadly sins---
-             element 2  after sort: 
+             element 2  after sort:
 ### =====================
 
              element 3  after sort: avarice
@@ -5023,7 +5023,7 @@ mergeTo!:  procedure expose @. !.; parse arg L,n,T; if n==1  then do; !.T=@.L; r
 ```ruby
 def merge_sort(m)
   return m if m.length <= 1
-  
+
   middle = m.length / 2
   left = merge_sort(m[0...middle])
   right = merge_sort(m[middle..-1])
@@ -5053,9 +5053,9 @@ class Array
     middle = length / 2
     left  = self[0...middle].mergesort(&comparitor)
     right = self[middle..-1].mergesort(&comparitor)
-    merge(left, right, comparitor) 
+    merge(left, right, comparitor)
   end
-  
+
   private
   def merge(left, right, comparitor)
     result = []
@@ -5124,18 +5124,18 @@ The sort algorithm :
 fn merge_sort_rec<T: Copy + Ord>(x: &mut [T]) {
 	let n = x.len();
 	let m = n / 2;
-	
+
 	if n <= 1 {
 		return;
 	}
-	
+
 	merge_sort_rec(&mut x[0..m]);
 	merge_sort_rec(&mut x[m..n]);
-		
+
 	let mut y: Vec<T> = x.to_vec();
-	
+
 	merge(&x[0..m], &x[m..n], &mut y[..]);
-	
+
 	x.copy_from_slice(&y);
 }
 
@@ -5156,7 +5156,7 @@ fn merge_sort<T: Copy + PartialOrd>(x: &mut [T]) {
 			if i + len >= n {
 				y[i..].copy_from_slice(&x[i..]);
 			} else if i + 2 * len > n {
-				merge(&x[i..i+len], &x[i+len..], &mut y[i..]);				
+				merge(&x[i..i+len], &x[i+len..], &mut y[i..]);
 			} else {
 				merge(&x[i..i+len], &x[i+len..i+2*len], &mut y[i..i+2*len]);
 			}
@@ -5172,7 +5172,7 @@ fn merge_sort<T: Copy + PartialOrd>(x: &mut [T]) {
 			if i + len >= n {
 				x[i..].copy_from_slice(&y[i..]);
 			} else if i + 2 * len > n {
-				merge(&y[i..i+len], &y[i+len..], &mut x[i..]);				
+				merge(&y[i..i+len], &y[i+len..], &mut x[i..]);
 			} else {
 				merge(&y[i..i+len], &y[i+len..i+2*len], &mut x[i..i+2*len]);
 			}
@@ -5379,10 +5379,10 @@ func mergeSort(_ array: [Int]) -> [Int] {
   func merge(left: [Int], right: [Int]) -> [Int] {
     var leftIndex = 0
     var rightIndex = 0
-  
+
     var merged = [Int]()
     merged.reserveCapacity(left.count + right.count)
-  
+
     while leftIndex < left.count && rightIndex < right.count {
       if left[leftIndex] < right[rightIndex] {
         merged.append(left[leftIndex])
@@ -5397,17 +5397,17 @@ func mergeSort(_ array: [Int]) -> [Int] {
         rightIndex += 1
       }
     }
-  
+
     while leftIndex < left.count {
       merged.append(left[leftIndex])
       leftIndex += 1
     }
-  
+
     while rightIndex < right.count {
       merged.append(right[rightIndex])
       rightIndex += 1
     }
-  
+
     return merged
   }
 
@@ -5437,13 +5437,13 @@ templates mergesort
      $@...] !
   end merge
   $ -> #
- 
+
   <[](0..1)> $!
   <>
     def half: $::length / 2;
     [$(1..$half) -> mergesort, $($half+1..-1) -> mergesort] -> merge !
 end mergesort
- 
+
 [4,5,3,8,1,2,6,7,9,8,5] -> mergesort -> !OUT::write
 
 ```
@@ -5620,7 +5620,7 @@ it then extracts one element from list2, splits the list1 with it, joins the old
    [mergei
        uncons [swap [>] split] dip
        [[*m] e2 [*a1] b1 a2 : [*m *a1 e2] b1 a2] view].
-    
+
    [a b : [] a b] view
    [size zero?] [pop concat]
        [mergei]
@@ -5679,7 +5679,7 @@ for I:= 0 to 10-1 do [IntOut(0, A(I));  ChOut(0, ^ )];
 
 ```txt
 
--5 1 1 2 3 4 4 5 6 9 
+-5 1 1 2 3 4 4 5 6 9
 
 ```
 

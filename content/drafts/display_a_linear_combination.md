@@ -15,7 +15,7 @@ tags = []
 ;Task:
 Display a finite [[wp:linear combination|linear combination]] in an infinite vector basis <big><math>(e_1, e_2,\ldots)</math></big>.
 
-Write a function that, when given a finite list of scalars <big><math>(\alpha^1,\alpha^2,\ldots)</math></big>, 
+Write a function that, when given a finite list of scalars <big><math>(\alpha^1,\alpha^2,\ldots)</math></big>,
 creates a string representing the linear combination <big><math>\sum_i\alpha^i e_i</math></big> in an explicit format often used in mathematics, that is:
 
 :<big><math>\alpha^{i_1}e_{i_1}\pm|\alpha^{i_2}|e_{i_2}\pm|\alpha^{i_3}|e_{i_3}\pm\ldots</math></big>
@@ -26,11 +26,11 @@ where <big><math>\alpha^{i_k}\neq 0</math></big>
 
 
 The output must comply to the following rules:
-*   don't show null terms, unless the whole combination is null. 
+*   don't show null terms, unless the whole combination is null.
 :::::::  '''e(1)'''     is fine,     '''e(1) + 0*e(3)'''     or     '''e(1) + 0'''     is wrong.
-*   don't show scalars when they are equal to one or minus one. 
+*   don't show scalars when they are equal to one or minus one.
 :::::::  '''e(3)'''     is fine,     '''1*e(3)'''     is wrong.
-*   don't prefix by a minus sign if it follows a preceding term.   Instead you use subtraction. 
+*   don't prefix by a minus sign if it follows a preceding term.   Instead you use subtraction.
 :::::::  '''e(4) - e(5)'''     is fine,     '''e(4) + -e(5)'''     is wrong.
 
 
@@ -102,25 +102,25 @@ Accepts vector coefficients from the command line, prints usage syntax if invoke
 
 int main(int argC, char* argV[])
 {
-	
+
 	int i,zeroCount= 0,firstNonZero = -1;
 	double* vector;
-	
+
 	if(argC == 1){
 		printf("Usage : %s <Vector component coefficients seperated by single space>",argV[0]);
 	}
-	
+
 	else{
-		
+
 		printf("Vector for [");
 		for(i=1;i<argC;i++){
 			printf("%s,",argV[i]);
 		}
 		printf("\b] -> ");
-		
-		
+
+
 		vector = (double*)malloc((argC-1)*sizeof(double));
-		
+
 		for(i=1;i<=argC;i++){
 			vector[i-1] = atof(argV[i]);
 			if(vector[i-1]==0.0)
@@ -132,7 +132,7 @@ int main(int argC, char* argV[])
 		if(zeroCount == argC){
 			printf("0");
 		}
-		
+
 		else{
 			for(i=0;i<argC;i++){
 				if(i==firstNonZero && vector[i]==1)
@@ -152,13 +152,13 @@ int main(int argC, char* argV[])
 				else if(i!=0 && vector[i]!=0 && fabs(vector[i])-abs(vector[i])>0.0)
 					printf("%c %lf e%d ",(vector[i]<0)?'-':'+',fabs(vector[i]),i+1);
 				else if(i!=0 && vector[i]!=0 && fabs(vector[i])-abs(vector[i])==0.0)
-					printf("%c %ld e%d ",(vector[i]<0)?'-':'+',labs(vector[i]),i+1);				
+					printf("%c %ld e%d ",(vector[i]<0)?'-':'+',labs(vector[i]),i+1);
 			}
 		}
 	}
-	
+
 	free(vector);
-	
+
 	return 0;
 }
 
@@ -199,8 +199,8 @@ Vector for [-1] -> - e1
 
 {{trans|D}}
 
-```cpp>#include <iomanip
-
+```cpp
+#include <iomanip>
 #include <iostream>
 #include <sstream>
 #include <vector>
@@ -466,20 +466,20 @@ void main() {
 ;; build an html string from list of coeffs
 
 (define (linear->html coeffs)
-    (define plus #f) 
-    (or* 
+    (define plus #f)
+    (or*
     (for/fold (html "") ((a coeffs) (i (in-naturals 1)))
       (unless (zero? a)
  		(set! plus (if plus "+" "")))
       (string-append html
-	 (cond 
+	 (cond
 	  ((= a 1)  (format "%a e<sub>%d</sub> " plus i))
 	  ((= a -1) (format "- e<sub>%d</sub> " i))
 	  ((> a 0)  (format "%a %d*e<sub>%d</sub> " plus a i))
 	  ((< a 0)  (format "- %d*e<sub>%d</sub> " (abs a) i))
 	  (else ""))))
      "0"))
-	
+
 (define linears '((1 2 3)
    (0 1 2 3)
    (1 0 3 4)
@@ -490,26 +490,26 @@ void main() {
    (-1 -1 -1)
    (-1 -2 0 -3)
    (-1)))
-   
+
 (define (task linears)
     (html-print ;; send string to stdout
     (for/string ((linear linears))
-      (format "%a -> <span style='color:blue'>%a</span> 
+      (format "%a -> <span style='color:blue'>%a</span>
 " linear (linear->html linear)))))
 
 ```
 
 {{out}}
-(1 2 3) -> <span style='color:blue'> e<sub>1</sub> + 2*e<sub>2</sub> + 3*e<sub>3</sub> </span> 
-(0 1 2 3) -> <span style='color:blue'> e<sub>2</sub> + 2*e<sub>3</sub> + 3*e<sub>4</sub> </span> 
-(1 0 3 4) -> <span style='color:blue'> e<sub>1</sub> + 3*e<sub>3</sub> + 4*e<sub>4</sub> </span> 
-(1 2 0) -> <span style='color:blue'> e<sub>1</sub> + 2*e<sub>2</sub> </span> 
-(0 0 0) -> <span style='color:blue'>0</span> 
-(0) -> <span style='color:blue'>0</span> 
-(1 1 1) -> <span style='color:blue'> e<sub>1</sub> + e<sub>2</sub> + e<sub>3</sub> </span> 
-(-1 -1 -1) -> <span style='color:blue'>- e<sub>1</sub> - e<sub>2</sub> - e<sub>3</sub> </span> 
-(-1 -2 0 -3) -> <span style='color:blue'>- e<sub>1</sub> - 2*e<sub>2</sub> - 3*e<sub>4</sub> </span> 
-(-1) -> <span style='color:blue'>- e<sub>1</sub> </span> 
+(1 2 3) -> <span style='color:blue'> e<sub>1</sub> + 2*e<sub>2</sub> + 3*e<sub>3</sub> </span>
+(0 1 2 3) -> <span style='color:blue'> e<sub>2</sub> + 2*e<sub>3</sub> + 3*e<sub>4</sub> </span>
+(1 0 3 4) -> <span style='color:blue'> e<sub>1</sub> + 3*e<sub>3</sub> + 4*e<sub>4</sub> </span>
+(1 2 0) -> <span style='color:blue'> e<sub>1</sub> + 2*e<sub>2</sub> </span>
+(0 0 0) -> <span style='color:blue'>0</span>
+(0) -> <span style='color:blue'>0</span>
+(1 1 1) -> <span style='color:blue'> e<sub>1</sub> + e<sub>2</sub> + e<sub>3</sub> </span>
+(-1 -1 -1) -> <span style='color:blue'>- e<sub>1</sub> - e<sub>2</sub> - e<sub>3</sub> </span>
+(-1 -2 0 -3) -> <span style='color:blue'>- e<sub>1</sub> - 2*e<sub>2</sub> - 3*e<sub>4</sub> </span>
+(-1) -> <span style='color:blue'>- e<sub>1</sub> </span>
 
 
 
@@ -537,7 +537,7 @@ defmodule Linear_combination do
   end
 end
 
-coeffs = 
+coeffs =
   [ [1, 2, 3],
     [0, 1, 2, 3],
     [1, 0, 3, 4],
@@ -603,7 +603,7 @@ let fN g =
 
 ```fsharp
 
-fN [1;2;3]                                                  
+fN [1;2;3]
 
 ```
 
@@ -648,7 +648,7 @@ e(1)+3e(3)+4e(4)
 
 ```fsharp
 
-fN[1;2;0]  
+fN[1;2;0]
 
 ```
 
@@ -678,7 +678,7 @@ fN[0;0;0]
 
 ```fsharp
 
-fN[0]  
+fN[0]
 
 ```
 
@@ -738,7 +738,7 @@ fN[-1;-2;0;-3]
 
 ```fsharp
 
-fN[1]  
+fN[1]
 
 ```
 
@@ -767,11 +767,11 @@ MATCH-VARS: ?a ?b ;
         { -1 ?a } => [ ?a    "-e(%d)"   sprintf ]
         { ?a ?b } => [ ?a ?b "%d*e(%d)" sprintf ]
     } match-cond ;
-    
+
 : linear-combo ( seq -- str )
     [ choose-term ] map-index harvest " + " join
     R/ \+ -/ "- " re-replace [ "0" ] when-empty ;
-    
+
 { { 1 2 3 } { 0 1 2 3 } { 1 0 3 4 } { 1 2 0 } { 0 0 0 } { 0 }
   { 1 1 1 } { -1 -1 -1 } { -1 -2 0 -3 } { -1 } }
 [ dup linear-combo "%-14u  ->  %s\n" printf ] each
@@ -1023,8 +1023,8 @@ end
         [0, 1, 2, 3] -> 1 * e(2) + 2 * e(3) + 3 * e(4)
         [1, 0, 3, 4] -> 1 * e(1) + 3 * e(3) + 4 * e(4)
            [1, 2, 0] -> 1 * e(1) + 2 * e(2)
-           [0, 0, 0] -> 
-                 [0] -> 
+           [0, 0, 0] ->
+                 [0] ->
            [1, 1, 1] -> 1 * e(1) + 1 * e(2) + 1 * e(3)
         [-1, -1, -1] -> -1 * e(1) + -1 * e(2) + -1 * e(3)
      [-1, -2, 0, -3] -> -1 * e(1) + -2 * e(2) + -3 * e(4)
@@ -1039,7 +1039,7 @@ end
 ```scala
 // version 1.1.2
 
-fun linearCombo(c: IntArray): String { 
+fun linearCombo(c: IntArray): String {
     val sb = StringBuilder()
     for ((i, n) in c.withIndex()) {
         if (n == 0) continue
@@ -1056,7 +1056,7 @@ fun linearCombo(c: IntArray): String {
     return if(sb.isEmpty()) "0" else sb.toString()
 }
 
-fun main(args: Array<String>) { 
+fun main(args: Array<String>) {
     val combos = arrayOf(
         intArrayOf(1, 2, 3),
         intArrayOf(0, 1, 2, 3),
@@ -1216,8 +1216,8 @@ sub linear-combination(@coeff) {
     .subst(/<|w>1\*/, '', :g)
         || '0'
 }
- 
-say linear-combination($_) for 
+
+say linear-combination($_) for
 [1, 2, 3],
 [0, 1, 2, 3],
 [1, 0, 3, 4],
@@ -1273,7 +1273,7 @@ function linear_combination(sequence f)
     if res="" then res = "0" end if
     return res
 end function
- 
+
 constant tests = {{1,2,3},
                   {0,1,2,3},
                   {1,0,3,4},
@@ -1475,7 +1475,7 @@ for n=1 to len(scalars)
                  str = str + "" + scalar + "*e" + m
               ok
            ok
-        ok   
+        ok
     next
     if str = ""
        str = "0"
@@ -1589,12 +1589,12 @@ tests.each { |t|
    0 1 2 3 -> e(2)+2*e(3)+3*e(4)
    1 0 3 4 -> e(1)+3*e(3)+4*e(4)
      1 2 0 -> e(1)+2*e(2)
-     0 0 0 -> 0         
-         0 -> 0         
+     0 0 0 -> 0
+         0 -> 0
      1 1 1 -> e(1)+e(2)+e(3)
   -1 -1 -1 -> -e(1)-e(2)-e(3)
 -1 -2 0 -3 -> -e(1)-2*e(2)-3*e(4)
-        -1 -> -e(1)     
+        -1 -> -e(1)
 ```
 
 
@@ -1651,12 +1651,12 @@ foreach test {
    0 1 2 3 -> e(2)+2*e(3)+3*e(4)
    1 0 3 4 -> e(1)+3*e(3)+4*e(4)
      1 2 0 -> e(1)+2*e(2)
-     0 0 0 -> 0         
-         0 -> 0         
+     0 0 0 -> 0
+         0 -> 0
      1 1 1 -> e(1)+e(2)+e(3)
   -1 -1 -1 -> -e(1)-e(2)-e(3)
 -1 -2 0 -3 -> -e(1)-2*e(2)-3*e(4)
-        -1 -> -e(1)     
+        -1 -> -e(1)
 ```
 
 

@@ -15,13 +15,13 @@ Many programming languages allow for introspection of the current call stack env
 
 
 ;Task:
-Print out (in a manner considered suitable for the platform) the current call stack. 
+Print out (in a manner considered suitable for the platform) the current call stack.
 
-The amount of information printed for each frame on the call stack is not constrained, but should include at least the name of the function or method at that level of the stack frame. 
+The amount of information printed for each frame on the call stack is not constrained, but should include at least the name of the function or method at that level of the stack frame.
 
 You may explicitly add a call to produce the stack trace to the (example) code being instrumented for examination.
 
-The task should allow the program to continue after generating the stack trace. 
+The task should allow the program to continue after generating the stack trace.
 
 The task report here must include the trace from a sample program.
 
@@ -47,23 +47,23 @@ procedure Test_Stack_Trace is
    begin
       GNAT.Traceback.Call_Chain (Trace, Length);
       Put_Line (GNAT.Traceback.Symbolic.Symbolic_Traceback (Trace (1..Length)));
-   end Call_Stack; 
+   end Call_Stack;
 
    procedure Inner (K : Integer) is
    begin
       Call_Stack;
    end Inner;
- 
+
    procedure Middle (X, Y : Integer) is
    begin
       Inner (X * Y);
    end Middle;
- 
+
    procedure Outer (A, B, C : Integer) is
    begin
      Middle (A + B, B + C);
    end Outer;
-   
+
 begin
   Outer (2,3,5);
 end Test_Stack_Trace;
@@ -102,7 +102,7 @@ ListLines can be turned on or off... with:
 ```autohotkey
 f()
 return
- 
+
 f()
 {
 return g()
@@ -122,7 +122,7 @@ msgbox, variable bindings
 Output:
 
 ```autohotkey
-001: f()  
+001: f()
 006: Return,g()
 011: ListLines (0.05)
 012: MsgBox,lines recently executed (3.81)
@@ -192,7 +192,7 @@ The error handler displays error number followed by call stack.
  310   PRINT "bar"
  320   x = 1/0
  390 END PROC
- 
+
  500 ON ERROR GOTO 1100
  510 foo 3
  520 STOP
@@ -228,7 +228,7 @@ End of stack
 ## C
 
 
-###  Using GNU extensions 
+###  Using GNU extensions
 
 {{works with|POSIX}}
 
@@ -239,8 +239,8 @@ The <tt>backtrace*</tt> functions are a GNU extension to the standard C library.
 In order to be able to see the symbols, we need to link with an option telling to export symbols names in the dynamic section (for ELF and targets supporting it); for gcc, it means using the option <tt>-rdynamic</tt> (or <tt>-export-dynamic</tt> in the GNU linker). Otherwise we see only addresses. Static functions will always have their names "hidden".
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -299,7 +299,7 @@ Sample output on my system:
 
 
 
-###  Using no extensions 
+###  Using no extensions
 
 Sometimes microcomputers do not come with any kind of debug or stack tracing routines.  Typically a program would "just hang" somewhere, or crash the gadget.  This then requires manually "wolf fencing" of the bug with ''printf'' statements to identify the C source file, then the procedure, and then the line at the point of system crash.
 
@@ -307,7 +307,7 @@ The following macros and procedures provide an alternative way of doing this tro
 
 The steps are:
 * #include "stack_trace.h" in the suspect C source code.
-* Change the initial and last { and } of each procedure in the code to BEGIN(proc_name) and END.  
+* Change the initial and last { and } of each procedure in the code to BEGIN(proc_name) and END.
 * #define STACK_TRACE_ON and assign stack_trace.on to TRUE
 * Recompile and run....
 
@@ -355,7 +355,7 @@ goodbye_cruel_world.c:8:   --- (depth 2) ---
 #include <stddef.h>
 #endif
 
-typedef struct stack_trace_frame_s { 
+typedef struct stack_trace_frame_s {
   const char *file_name;
   int file_line;
   const char *proc_name;
@@ -402,8 +402,8 @@ void print_stack_trace();
 
 '''==> stack_trace.c <=='''
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stddef.h>
 
 #define STACK_TRACE_ON
@@ -414,12 +414,12 @@ void print_stack_trace();
 #define stack_trace_diag_fmt " %s[0x%x], stack(depth:%d, size:%u)\n"
 #define stack_trace_fmt "%s:%d:\t%s[0x%x]\t--- stack(depth:%d, size:%u) ---\n"
 
-stack_trace_t stack_trace  = { 
+stack_trace_t stack_trace  = {
     FALSE, /* default: stack_trace.on == FALSE */
-    { std_cc_diag_fmt""indent_fmt"BEGIN"stack_trace_diag_fmt, 
-      stack_trace_fmt, 
-      std_cc_diag_fmt""indent_fmt"RETURN"stack_trace_diag_fmt, 
-      std_cc_diag_fmt""indent_fmt"EXIT"stack_trace_diag_fmt, 
+    { std_cc_diag_fmt""indent_fmt"BEGIN"stack_trace_diag_fmt,
+      stack_trace_fmt,
+      std_cc_diag_fmt""indent_fmt"RETURN"stack_trace_diag_fmt,
+      std_cc_diag_fmt""indent_fmt"EXIT"stack_trace_diag_fmt,
       std_cc_diag_fmt""indent_fmt"END"stack_trace_diag_fmt },
     { 0, (stack_trace_frame_t*)NULL, (stack_trace_frame_t*)NULL }, /* stack */
     { 19, 2, 20, "                   " } /* indent wrap */
@@ -429,7 +429,7 @@ void stack_trace_begin(const char *fmt, stack_trace_frame_t *this){
   if(stack_trace.on){
     fprintf(stderr, fmt,
       this->file_name, this->file_line,  /* file details */
-      stack_trace.indent.prefix+stack_trace.indent.lwb,  
+      stack_trace.indent.prefix+stack_trace.indent.lwb,
       this->proc_name, this->proc_addr,  /* procedure details */
       stack_trace.stack.depth, (unsigned)stack_trace.stack.lwb-(unsigned)this);
     stack_trace.indent.lwb =
@@ -452,9 +452,9 @@ void stack_trace_end(const char *fmt, int line){
     stack_trace.indent.lwb =
         ( stack_trace.indent.lwb + stack_trace.indent.by ) % stack_trace.indent.upb;
     stack_trace_frame_t *this = stack_trace.stack.upb;
-    fprintf(stderr, fmt, 
+    fprintf(stderr, fmt,
       this->file_name, this->file_line,  /* file details */
-      stack_trace.indent.prefix+stack_trace.indent.lwb,  
+      stack_trace.indent.prefix+stack_trace.indent.lwb,
       this->proc_name, this->proc_addr,  /* procedure details */
       stack_trace.stack.depth, (unsigned)stack_trace.stack.lwb-(unsigned)this);
   }
@@ -466,7 +466,7 @@ void print_indent(){
     /* fprintf(stderr, "STACK_TRACE_ON not #defined during compilation\n"); */
   } else {
     stack_trace_frame_t *this = stack_trace.stack.upb;
-    fprintf(stderr, std_cc_diag_fmt""indent_fmt, 
+    fprintf(stderr, std_cc_diag_fmt""indent_fmt,
       this->file_name, this->file_line,  /* file details */
       stack_trace.indent.prefix+stack_trace.indent.lwb
     );
@@ -496,8 +496,8 @@ void print_stack_trace() {
 The following code demonstrates the usage of the macros.  Note that the initial and last curly brackets have been changed to BEGIN(procedure_name) and END.  This is sometimes called '''macro magic''' and is unfashionable.
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 #define STACK_TRACE_ON /* compile in these "stack_trace" routines */
@@ -508,17 +508,17 @@ BEGIN(inner)
    print_indent(); printf("*** Now dump the stack ***\n");
    print_stack_trace();
 END
- 
+
 void middle(int x, int y)
 BEGIN(middle)
   inner(x*y);
 END
- 
+
 void outer(int a, int b, int c)
 BEGIN(outer)
   middle(a+b, b+c);
 END
- 
+
 int main()
 BEGIN(main)
   stack_trace.on = TRUE; /* turn on runtime tracing */
@@ -592,7 +592,7 @@ at Program.Main()
 
 {{works with|Java|1.6+}}
 
-[http://docs.oracle.com/javase/8/docs/api/java/lang/management/ThreadMXBean.html ThreadMXBean] can be used to show you the stack of all live threads. 
+[http://docs.oracle.com/javase/8/docs/api/java/lang/management/ThreadMXBean.html ThreadMXBean] can be used to show you the stack of all live threads.
 
 
 ```clojure
@@ -758,24 +758,24 @@ ELENA 4.0 :
 
 ```elena
 import extensions;
- 
+
 public singleton program
 {
     inner()
     {
         console.printLine(new CallStack())
     }
- 
+
     middle()
     {
         self.inner()
     }
- 
+
     outer()
     {
         self.middle()
     }
- 
+
     // program entry point
     closure()
     {
@@ -809,17 +809,17 @@ defmodule Stack_traces do
     {:ok, a} = outer
     IO.inspect a
   end
-  
-  defp outer do 
+
+  defp outer do
     {:ok, a} = middle
     {:ok, a}
-  end 
-  
+  end
+
   defp middle do
     {:ok, a} = inner
     {:ok, a}
   end
-  
+
   defp inner do
     try do
       throw(42)
@@ -864,15 +864,15 @@ main() ->
 	{ok,A} = outer(),
 	io:format("~p\n", [A]).
 
-outer() -> 
+outer() ->
 	{ok,A} = middle(),
 	{ok,A}.
 
-middle() -> 
+middle() ->
 	{ok,A} = inner(),
 	{ok,A}.
 
-inner() -> 
+inner() ->
 	try throw(42) catch 42 -> {ok,erlang:get_stacktrace()} end.
 ```
 
@@ -1071,70 +1071,70 @@ trace.each {
 
 
 Output:
-<pre style="height:45ex;overflow:scroll;">className                                                          fileName                           lineNumber  methodName                       nativeMethod  
------------------------------------------------------------------  ---------------------------------  ----------  -------------------------------  ------------  
-java.lang.Thread                                                   Thread.java                        1479        getStackTrace                    false         
-sun.reflect.NativeMethodAccessorImpl                               NativeMethodAccessorImpl.java      -2          invoke0                          true          
-sun.reflect.NativeMethodAccessorImpl                               NativeMethodAccessorImpl.java      39          invoke                           false         
-sun.reflect.DelegatingMethodAccessorImpl                           DelegatingMethodAccessorImpl.java  25          invoke                           false         
-java.lang.reflect.Method                                           Method.java                        597         invoke                           false         
-org.codehaus.groovy.reflection.CachedMethod                        CachedMethod.java                  90          invoke                           false         
-groovy.lang.MetaMethod                                             MetaMethod.java                    233         doMethodInvoke                   false         
-groovy.lang.MetaClassImpl$GetBeanMethodMetaProperty                MetaClassImpl.java                 3465        getProperty                      false         
-org.codehaus.groovy.runtime.callsite.GetEffectivePojoPropertySite  GetEffectivePojoPropertySite.java  61          getProperty                      false         
-org.codehaus.groovy.runtime.callsite.AbstractCallSite              AbstractCallSite.java              227         callGetProperty                  false         
-ConsoleScript38$_run_closure1                                      ConsoleScript38                    1           doCall                           false         
-sun.reflect.NativeMethodAccessorImpl                               NativeMethodAccessorImpl.java      -2          invoke0                          true          
-sun.reflect.NativeMethodAccessorImpl                               NativeMethodAccessorImpl.java      39          invoke                           false         
-sun.reflect.DelegatingMethodAccessorImpl                           DelegatingMethodAccessorImpl.java  25          invoke                           false         
-java.lang.reflect.Method                                           Method.java                        597         invoke                           false         
-org.codehaus.groovy.reflection.CachedMethod                        CachedMethod.java                  90          invoke                           false         
-groovy.lang.MetaMethod                                             MetaMethod.java                    233         doMethodInvoke                   false         
-org.codehaus.groovy.runtime.metaclass.ClosureMetaClass             ClosureMetaClass.java              272         invokeMethod                     false         
-groovy.lang.MetaClassImpl                                          MetaClassImpl.java                 885         invokeMethod                     false         
-org.codehaus.groovy.runtime.callsite.PogoMetaClassSite             PogoMetaClassSite.java             66          callCurrent                      false         
-org.codehaus.groovy.runtime.callsite.CallSiteArray                 CallSiteArray.java                 46          defaultCallCurrent               false         
-org.codehaus.groovy.runtime.callsite.AbstractCallSite              AbstractCallSite.java              133         callCurrent                      false         
-org.codehaus.groovy.runtime.callsite.AbstractCallSite              AbstractCallSite.java              141         callCurrent                      false         
-ConsoleScript38$_run_closure1                                      ConsoleScript38                    -1          doCall                           false         
-sun.reflect.NativeMethodAccessorImpl                               NativeMethodAccessorImpl.java      -2          invoke0                          true          
-sun.reflect.NativeMethodAccessorImpl                               NativeMethodAccessorImpl.java      39          invoke                           false         
-sun.reflect.DelegatingMethodAccessorImpl                           DelegatingMethodAccessorImpl.java  25          invoke                           false         
-java.lang.reflect.Method                                           Method.java                        597         invoke                           false         
-org.codehaus.groovy.reflection.CachedMethod                        CachedMethod.java                  90          invoke                           false         
-groovy.lang.MetaMethod                                             MetaMethod.java                    233         doMethodInvoke                   false         
-org.codehaus.groovy.runtime.metaclass.ClosureMetaClass             ClosureMetaClass.java              272         invokeMethod                     false         
-groovy.lang.MetaClassImpl                                          MetaClassImpl.java                 885         invokeMethod                     false         
-org.codehaus.groovy.runtime.callsite.PogoMetaClassSite             PogoMetaClassSite.java             39          call                             false         
-org.codehaus.groovy.runtime.callsite.CallSiteArray                 CallSiteArray.java                 42          defaultCall                      false         
-org.codehaus.groovy.runtime.callsite.AbstractCallSite              AbstractCallSite.java              108         call                             false         
-org.codehaus.groovy.runtime.callsite.AbstractCallSite              AbstractCallSite.java              112         call                             false         
-ConsoleScript38                                                    ConsoleScript38                    3           run                              false         
-groovy.lang.GroovyShell                                            GroovyShell.java                   266         runScriptOrMainOrTestOrRunnable  false         
-groovy.lang.GroovyShell                                            GroovyShell.java                   517         run                              false         
-groovy.lang.GroovyShell                                            GroovyShell.java                   172         run                              false         
-groovy.lang.GroovyShell$run                                        null                               -1          call                             false         
-groovy.ui.Console$_runScriptImpl_closure16                         Console.groovy                     910         doCall                           false         
-sun.reflect.GeneratedMethodAccessor232                             null                               -1          invoke                           false         
-sun.reflect.DelegatingMethodAccessorImpl                           DelegatingMethodAccessorImpl.java  25          invoke                           false         
-java.lang.reflect.Method                                           Method.java                        597         invoke                           false         
-org.codehaus.groovy.reflection.CachedMethod                        CachedMethod.java                  90          invoke                           false         
-groovy.lang.MetaMethod                                             MetaMethod.java                    233         doMethodInvoke                   false         
-org.codehaus.groovy.runtime.metaclass.ClosureMetaClass             ClosureMetaClass.java              272         invokeMethod                     false         
-groovy.lang.MetaClassImpl                                          MetaClassImpl.java                 885         invokeMethod                     false         
-org.codehaus.groovy.runtime.callsite.PogoMetaClassSite             PogoMetaClassSite.java             66          callCurrent                      false         
-org.codehaus.groovy.runtime.callsite.AbstractCallSite              AbstractCallSite.java              141         callCurrent                      false         
-groovy.ui.Console$_runScriptImpl_closure16                         Console.groovy                     -1          doCall                           false         
-sun.reflect.GeneratedMethodAccessor231                             null                               -1          invoke                           false         
-sun.reflect.DelegatingMethodAccessorImpl                           DelegatingMethodAccessorImpl.java  25          invoke                           false         
-java.lang.reflect.Method                                           Method.java                        597         invoke                           false         
-org.codehaus.groovy.reflection.CachedMethod                        CachedMethod.java                  90          invoke                           false         
-groovy.lang.MetaMethod                                             MetaMethod.java                    233         doMethodInvoke                   false         
-org.codehaus.groovy.runtime.metaclass.ClosureMetaClass             ClosureMetaClass.java              272         invokeMethod                     false         
-groovy.lang.MetaClassImpl                                          MetaClassImpl.java                 885         invokeMethod                     false         
-groovy.lang.Closure                                                Closure.java                       405         call                             false         
-groovy.lang.Closure                                                Closure.java                       399         call                             false         
-groovy.lang.Closure                                                Closure.java                       483         run                              false         
+<pre style="height:45ex;overflow:scroll;">className                                                          fileName                           lineNumber  methodName                       nativeMethod
+-----------------------------------------------------------------  ---------------------------------  ----------  -------------------------------  ------------
+java.lang.Thread                                                   Thread.java                        1479        getStackTrace                    false
+sun.reflect.NativeMethodAccessorImpl                               NativeMethodAccessorImpl.java      -2          invoke0                          true
+sun.reflect.NativeMethodAccessorImpl                               NativeMethodAccessorImpl.java      39          invoke                           false
+sun.reflect.DelegatingMethodAccessorImpl                           DelegatingMethodAccessorImpl.java  25          invoke                           false
+java.lang.reflect.Method                                           Method.java                        597         invoke                           false
+org.codehaus.groovy.reflection.CachedMethod                        CachedMethod.java                  90          invoke                           false
+groovy.lang.MetaMethod                                             MetaMethod.java                    233         doMethodInvoke                   false
+groovy.lang.MetaClassImpl$GetBeanMethodMetaProperty                MetaClassImpl.java                 3465        getProperty                      false
+org.codehaus.groovy.runtime.callsite.GetEffectivePojoPropertySite  GetEffectivePojoPropertySite.java  61          getProperty                      false
+org.codehaus.groovy.runtime.callsite.AbstractCallSite              AbstractCallSite.java              227         callGetProperty                  false
+ConsoleScript38$_run_closure1                                      ConsoleScript38                    1           doCall                           false
+sun.reflect.NativeMethodAccessorImpl                               NativeMethodAccessorImpl.java      -2          invoke0                          true
+sun.reflect.NativeMethodAccessorImpl                               NativeMethodAccessorImpl.java      39          invoke                           false
+sun.reflect.DelegatingMethodAccessorImpl                           DelegatingMethodAccessorImpl.java  25          invoke                           false
+java.lang.reflect.Method                                           Method.java                        597         invoke                           false
+org.codehaus.groovy.reflection.CachedMethod                        CachedMethod.java                  90          invoke                           false
+groovy.lang.MetaMethod                                             MetaMethod.java                    233         doMethodInvoke                   false
+org.codehaus.groovy.runtime.metaclass.ClosureMetaClass             ClosureMetaClass.java              272         invokeMethod                     false
+groovy.lang.MetaClassImpl                                          MetaClassImpl.java                 885         invokeMethod                     false
+org.codehaus.groovy.runtime.callsite.PogoMetaClassSite             PogoMetaClassSite.java             66          callCurrent                      false
+org.codehaus.groovy.runtime.callsite.CallSiteArray                 CallSiteArray.java                 46          defaultCallCurrent               false
+org.codehaus.groovy.runtime.callsite.AbstractCallSite              AbstractCallSite.java              133         callCurrent                      false
+org.codehaus.groovy.runtime.callsite.AbstractCallSite              AbstractCallSite.java              141         callCurrent                      false
+ConsoleScript38$_run_closure1                                      ConsoleScript38                    -1          doCall                           false
+sun.reflect.NativeMethodAccessorImpl                               NativeMethodAccessorImpl.java      -2          invoke0                          true
+sun.reflect.NativeMethodAccessorImpl                               NativeMethodAccessorImpl.java      39          invoke                           false
+sun.reflect.DelegatingMethodAccessorImpl                           DelegatingMethodAccessorImpl.java  25          invoke                           false
+java.lang.reflect.Method                                           Method.java                        597         invoke                           false
+org.codehaus.groovy.reflection.CachedMethod                        CachedMethod.java                  90          invoke                           false
+groovy.lang.MetaMethod                                             MetaMethod.java                    233         doMethodInvoke                   false
+org.codehaus.groovy.runtime.metaclass.ClosureMetaClass             ClosureMetaClass.java              272         invokeMethod                     false
+groovy.lang.MetaClassImpl                                          MetaClassImpl.java                 885         invokeMethod                     false
+org.codehaus.groovy.runtime.callsite.PogoMetaClassSite             PogoMetaClassSite.java             39          call                             false
+org.codehaus.groovy.runtime.callsite.CallSiteArray                 CallSiteArray.java                 42          defaultCall                      false
+org.codehaus.groovy.runtime.callsite.AbstractCallSite              AbstractCallSite.java              108         call                             false
+org.codehaus.groovy.runtime.callsite.AbstractCallSite              AbstractCallSite.java              112         call                             false
+ConsoleScript38                                                    ConsoleScript38                    3           run                              false
+groovy.lang.GroovyShell                                            GroovyShell.java                   266         runScriptOrMainOrTestOrRunnable  false
+groovy.lang.GroovyShell                                            GroovyShell.java                   517         run                              false
+groovy.lang.GroovyShell                                            GroovyShell.java                   172         run                              false
+groovy.lang.GroovyShell$run                                        null                               -1          call                             false
+groovy.ui.Console$_runScriptImpl_closure16                         Console.groovy                     910         doCall                           false
+sun.reflect.GeneratedMethodAccessor232                             null                               -1          invoke                           false
+sun.reflect.DelegatingMethodAccessorImpl                           DelegatingMethodAccessorImpl.java  25          invoke                           false
+java.lang.reflect.Method                                           Method.java                        597         invoke                           false
+org.codehaus.groovy.reflection.CachedMethod                        CachedMethod.java                  90          invoke                           false
+groovy.lang.MetaMethod                                             MetaMethod.java                    233         doMethodInvoke                   false
+org.codehaus.groovy.runtime.metaclass.ClosureMetaClass             ClosureMetaClass.java              272         invokeMethod                     false
+groovy.lang.MetaClassImpl                                          MetaClassImpl.java                 885         invokeMethod                     false
+org.codehaus.groovy.runtime.callsite.PogoMetaClassSite             PogoMetaClassSite.java             66          callCurrent                      false
+org.codehaus.groovy.runtime.callsite.AbstractCallSite              AbstractCallSite.java              141         callCurrent                      false
+groovy.ui.Console$_runScriptImpl_closure16                         Console.groovy                     -1          doCall                           false
+sun.reflect.GeneratedMethodAccessor231                             null                               -1          invoke                           false
+sun.reflect.DelegatingMethodAccessorImpl                           DelegatingMethodAccessorImpl.java  25          invoke                           false
+java.lang.reflect.Method                                           Method.java                        597         invoke                           false
+org.codehaus.groovy.reflection.CachedMethod                        CachedMethod.java                  90          invoke                           false
+groovy.lang.MetaMethod                                             MetaMethod.java                    233         doMethodInvoke                   false
+org.codehaus.groovy.runtime.metaclass.ClosureMetaClass             ClosureMetaClass.java              272         invokeMethod                     false
+groovy.lang.MetaClassImpl                                          MetaClassImpl.java                 885         invokeMethod                     false
+groovy.lang.Closure                                                Closure.java                       405         call                             false
+groovy.lang.Closure                                                Closure.java                       399         call                             false
+groovy.lang.Closure                                                Closure.java                       483         run                              false
 java.lang.Thread                                                   Thread.java                        662         run                              false
 ```
 
@@ -1400,22 +1400,22 @@ By default Lasso tracks the file path, line and column numbers. You can create a
 // Define our own trace method
 define trace => {
     local(gb) = givenblock
-    
+
     // Set a depth counter
     var(::_tracedepth)->isnota(::integer) ? $_tracedepth = 0
     handle => {$_tracedepth--}
-    
+
     // Only output when supplied a capture
     #gb ? stdoutnl(
         // Indent
-        ('\t' * $_tracedepth++) +                     
-        
+        ('\t' * $_tracedepth++) +
+
         // Type + Method
-        #gb->self->type + '.' + #gb->calledname +     
-        
+        #gb->self->type + '.' + #gb->calledname +
+
         // Call site file
-        ': ' + #gb->home->callsite_file +             
-        
+        ': ' + #gb->home->callsite_file +
+
         // Line number and column number
         ' (line '+#gb->home->callsite_line + ', col ' + #gb->home->callsite_col +')'
     )
@@ -1560,7 +1560,9 @@ Stack trace:
 
 =={{header|Objective-C}}==
 
-```objc>#include <execinfo.h
+```objc
+#include <execinfo.h>
+```
 
 
 void *frames[128];
@@ -1605,7 +1607,7 @@ outputs:
  Raised by primitive operation at file "test.ml", line 4, characters 14-21
 
 
-###  By Environment Variable 
+###  By Environment Variable
 
 Another way is to set the environment variable '''OCAMLRUNPARAM''' to '''b''', for example you can add in your ~/.bashrc file this line:
  export OCAMLRUNPARAM='b'
@@ -1628,7 +1630,7 @@ outputs:
 ## Oforth
 
 
-Stack trace is only available : 
+Stack trace is only available :
 
 1) When an exception is raised
 
@@ -1840,7 +1842,7 @@ Hello from &g at Print a Stack Trace line 3
 	main::f() called at Print a Stack Trace line 6
 ```
 
-  
+
 
 ## Perl 6
 
@@ -1925,9 +1927,9 @@ one(0)
 one(1)
 ```
 
-During compilation, the symbol table entries hold an integer ternary tree index rather than a string name, and normally 
+During compilation, the symbol table entries hold an integer ternary tree index rather than a string name, and normally
 things are left like that during interpretation (the proper string names are always written out when an executable is
-created) unless and until a fatal error occurs, or the compiler has evidence that they might be needed, such as that 
+created) unless and until a fatal error occurs, or the compiler has evidence that they might be needed, such as that
 unresolved routine_id("dummy"). The -1 in the output below is that call failing to find any such routine.
 {{Out}}
 
@@ -2160,11 +2162,11 @@ Sample output from a session in the Idle IDE:
 
 ```R
 foo <- function()
-{   
+{
    bar <- function()
    {
      sys.calls()
-   }  
+   }
    bar()
 }
 
@@ -2187,13 +2189,13 @@ foo()
 
 ```txt
 
-Tracing foo() on entry 
+Tracing foo() on entry
 
-Enter a frame number, or 0 to exit   
+Enter a frame number, or 0 to exit
 
 1: foo()
 
-Selection: 
+Selection:
 
 ```
 
@@ -2498,7 +2500,7 @@ The following #printCurrentStack is already defined in the base slate image but 
 slate[1]> d@(Debugger traits) printCurrentStack &limit: limit &stream: out &showLocation: showLocation
 [
   d clone `>> [baseFramePointer: (d interpreter framePointerOf: #printCurrentStack).
-               buildFrames. 
+               buildFrames.
                printBacktrace &limit: limit &stream: out &showLocation: showLocation ]
 ].
 Defining function 'printCurrentStack' on: 'Debugger traits'
@@ -2511,7 +2513,7 @@ The output from calling the function:
 
 ```slate
 slate[2]> Debugger printCurrentStack.
-Backtrace (method @ source): 
+Backtrace (method @ source):
 frame: 0        [printCurrentStack &limit: &stream: &showLocation:] @ stdin:0
 frame: 1        [evaluateIn: &optionals:] @ src/mobius/syntax.slate:180
 frame: 2        [(arity: 0)] @ src/lib/repl.slate:155
@@ -2590,7 +2592,7 @@ proc middle {x y} {
 }
 proc inner k {
     printStackTrace
-} 
+}
 outer 2 3 5
 ```
 
@@ -2624,7 +2626,7 @@ stackTrace just returns a string. You don't get to futz with the stack.
 
 F
 Stack trace for VM#1 ():
-   Cmd.f@stackTrace addr:4  args(0) reg(0) 
+   Cmd.f@stackTrace addr:4  args(0) reg(0)
    Cmd.__constructor addr:3  args(0) reg(0) R
    startup.__constructor addr:2242  args(0) reg(1) ER
    startup.__constructor addr:2178  args(0) reg(22)

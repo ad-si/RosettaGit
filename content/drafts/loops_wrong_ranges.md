@@ -130,10 +130,10 @@ Start equal stop equal zero: zero increment     :    0   0   0   0   0   0   0  
 
 ## C
 
-C's 'for' statement appears to fit the bill here and so we use it directly to generate the required ranges of numbers though, as some of the ranges will be infinite, we limit the output to a maximum of 10 numbers. 
+C's 'for' statement appears to fit the bill here and so we use it directly to generate the required ranges of numbers though, as some of the ranges will be infinite, we limit the output to a maximum of 10 numbers.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -642,7 +642,7 @@ collect(0:0:0)    # fails
 
 ## Kotlin
 
-Although Kotlin's 'for' statement can deal with a range of integers, the increment must be positive and so it cannot be used for this task. We therefore use instead a 'while' statement to generate the same sequence as a C language 'for' statement would (limited to a maximum of 10 elements as some sequences will be infinite) and wrap it in a function. 
+Although Kotlin's 'for' statement can deal with a range of integers, the increment must be positive and so it cannot be used for this task. We therefore use instead a 'while' statement to generate the same sequence as a C language 'for' statement would (limited to a maximum of 10 elements as some sequences will be infinite) and wrap it in a function.
 
 ```scala
 // Version 1.2.70
@@ -777,11 +777,11 @@ start:   0  stop:   0  incr:   0 |    0   0   0   0   0   0   0   0   0   0
 
 It would be odd to call ANY of these sequences "wrong" in Perl 6. Perl 6 specifically has built in capability of working with infinite sequences. Just because a sequence is infinite, doesn't mean you can't define it, work with it or use values from it. Sure, if you try to reify the whole thing you may be waiting a while, but there is nothing preventing you from using a portion of it.
 
-Perl 6 sequence definitions ''specifically'' allow "ending points" that may never occur in the sequence. Since that is the case, you don't even really '''need''' to specify a stop value. You can just say stop at "whatever". Whatever is spelled "'''*'''" in Perl 6. 
+Perl 6 sequence definitions ''specifically'' allow "ending points" that may never occur in the sequence. Since that is the case, you don't even really '''need''' to specify a stop value. You can just say stop at "whatever". Whatever is spelled "'''*'''" in Perl 6.
 
-There is additional syntax you can add to stop at the nearest value, last value previous or first value successor to the "stop value" (Note I didn't say less than or greater than the stop value since the sequence can be ascending, descending or non-monotonic). 
+There is additional syntax you can add to stop at the nearest value, last value previous or first value successor to the "stop value" (Note I didn't say less than or greater than the stop value since the sequence can be ascending, descending or non-monotonic).
 
-Also note: The iterator function for the sequence is literally a function. It is any expression that produces a value. These sequences all use simple arithmatic increments but that is not a limitation of the sequence operator.  
+Also note: The iterator function for the sequence is literally a function. It is any expression that produces a value. These sequences all use simple arithmatic increments but that is not a limitation of the sequence operator.
 
 
 ```perl6
@@ -934,7 +934,7 @@ Python has the [https://docs.python.org/3/library/functions.html#func-range rang
 
 ```python
 import re
-from itertools import islice # To limit execution if it would generate huge values 
+from itertools import islice # To limit execution if it would generate huge values
 # list(islice('ABCDEFG', 2)) --> ['A', 'B']
 # list(islice('ABCDEFG', 4)) --> ['A', 'B', 'C', 'D']
 
@@ -949,7 +949,7 @@ start 	stop 	increment 	Comment
 2 	2 	1 	Start equal stop: positive increment
 2 	2 	-1 	Start equal stop: negative increment
 2 	2 	0 	Start equal stop: zero increment
-0 	0 	0 	Start equal stop equal zero: zero increment 
+0 	0 	0 	Start equal stop equal zero: zero increment
 '''
 
 table = [re.split(r'\s\s+', line.strip()) for line in data.strip().split('\n')]
@@ -958,7 +958,7 @@ for _start, _stop, _increment, comment in table[1:]:
     start, stop, increment = [int(x) for x in (_start, _stop, _increment)]
     print(f'{comment.upper()}:\n  range({start}, {stop}, {increment})')
     values = None
-    try: 
+    try:
         values = list(islice(range(start, stop, increment), 999))
     except ValueError as e:
         print('  !!ERROR!!', e)
@@ -1197,13 +1197,13 @@ To illustrate, a representation of the ArithmicSequence and it's size are shown.
 ```ruby
 examples = [
      [ -2,    2,    1],
-     [ -2,    2,    0], 
+     [ -2,    2,    0],
      [ -2,    2,   -1],
-     [ -2,    2,   10], 
-     [  2,   -2,    1], 
-     [  2,    2,    1], 
-     [  2,    2,   -1], 
-     [  2,    2,    0], 
+     [ -2,    2,   10],
+     [  2,   -2,    1],
+     [  2,    2,    1],
+     [  2,    2,   -1],
+     [  2,    2,    0],
      [  0,    0,    0]
      ]
 
@@ -1348,13 +1348,13 @@ Normal
 -2   2   0  | -2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,
 Zero increment
 
--2   2  -1  | 
+-2   2  -1  |
 Increments away from stop value
 
 -2   2   10  | -2,
 First increment is beyond stop value
 
-2  -2   1  | 
+2  -2   1  |
 Start more than stop: positive increment
 
 2   2   1  | 2,
@@ -1458,7 +1458,7 @@ fcn looper([(start,stop,increment)]){
 }
 println("start stop  increment");
 T( T(-2,2,1),T(-2,2,0),T(-2,2,-1),T(-2,2,10),T( 2,-2,1),
-   T( 2,2,1),T( 2,2,-1),T( 2,2,0),T( 0,0,0), 
+   T( 2,2,1),T( 2,2,-1),T( 2,2,0),T( 0,0,0),
    T(0.0, (0.0).pi, 0.7853981633974483), T("a","e",1), T("e","a",1) )
 .apply2(looper);  // apply2 is apply (map) without saving results
 ```
@@ -1468,18 +1468,18 @@ T( T(-2,2,1),T(-2,2,0),T(-2,2,-1),T(-2,2,10),T( 2,-2,1),
 ```txt
 
 start stop  increment
-  -2    2	 1 --> -2 -1 0 1 2 
+  -2    2	 1 --> -2 -1 0 1 2
   -2    2	 0 --> ValueError(range: step == 0)
-  -2    2	-1 --> 
-  -2    2	10 --> -2 
-   2   -2	 1 --> 
-   2    2	 1 --> 2 
-   2    2	-1 --> 2 
+  -2    2	-1 -->
+  -2    2	10 --> -2
+   2   -2	 1 -->
+   2    2	 1 --> 2
+   2    2	-1 --> 2
    2    2	 0 --> ValueError(range: step == 0)
    0    0	 0 --> ValueError(range: step == 0)
-   0  3.14159	 0 --> 0 0.785398 1.5708 2.35619 3.14159 
-   a    e	 1 --> a b c d e 
-   e    a	 1 --> 
+   0  3.14159	 0 --> 0 0.785398 1.5708 2.35619 3.14159
+   a    e	 1 --> a b c d e
+   e    a	 1 -->
 
 ```
 

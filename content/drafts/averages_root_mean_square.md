@@ -63,7 +63,7 @@ with Ada.Numerics.Elementary_Functions;
 use Ada.Numerics.Elementary_Functions;
 procedure calcrms is
 	type float_arr is array(1..10) of Float;
-	
+
 	function rms(nums : float_arr) return Float is
 		sum : Float := 0.0;
 		begin
@@ -107,11 +107,11 @@ PROC crude rms = ([]RMSFIELD v)RMSFIELD: (
   FOR i FROM LWB v TO UPB v DO sum +:= v[i]**2 OD;
   rms field sqrt(sum / (UPB v - LWB v + 1))
 );
- 
+
 PROC rms = ([]RMSFIELD v)RMSFIELD: (
 # round off error accumulated at standard precision #
   RMSFIELD sum := 0, round off error:= 0;
-  FOR i FROM LWB v TO UPB v DO 
+  FOR i FROM LWB v TO UPB v DO
     RMSFIELD org = sum, prod = v[i]**2;
     sum +:= prod;
     round off error +:= sum - org - prod
@@ -169,7 +169,7 @@ end.
 
 ```txt
 
-rms of 1 .. 10:     6.2048  
+rms of 1 .. 10:     6.2048
 
 ```
 
@@ -200,16 +200,16 @@ on rootMeanSquare(xs)
             a + x * x
         end |λ|
     end script
-    
+
     (foldl(result, 0, xs) / (length of xs)) ^ (1 / 2)
 end rootMeanSquare
 
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     rootMeanSquare({1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    
+
     -- > 6.204836822995
 end run
 
@@ -228,7 +228,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -330,7 +330,7 @@ Message box shows:
 # computes RMS of the 1st column of a data file
 {
     x  = $1;   # value of 1st column
-    S += x*x;  
+    S += x*x;
     N++;
 }
 
@@ -431,10 +431,10 @@ See also: [[#BBC BASIC|BBC BASIC]], [[#Liberty BASIC|Liberty BASIC]], [[#PureBas
 ```bbcbasic
       DIM array(9)
       array() = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-      
+
       PRINT FNrms(array())
       END
-      
+
       DEF FNrms(a()) = MOD(a()) / SQR(DIM(a(),1)+1)
 ```
 
@@ -443,8 +443,8 @@ See also: [[#BBC BASIC|BBC BASIC]], [[#Liberty BASIC|Liberty BASIC]], [[#PureBas
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 double rms(double *v, int n)
@@ -481,7 +481,7 @@ namespace rms
         }
 
         private static double rootMeanSquare(int[] x)
-        {            
+        {
             double sum = 0;
             for (int i = 0; i < x.Length; i++)
             {
@@ -523,8 +523,8 @@ namespace rms
 ## C++
 
 
-```Cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 #include <cmath>
 #include <numeric>
@@ -615,7 +615,7 @@ MULTIPLICATION-PARAGRAPH.
     root_mean_square = (ary) ->
         sum_of_squares = ary.reduce ((s,x) -> s + x*x), 0
         return Math.sqrt(sum_of_squares / ary.length)
-     
+
     alert root_mean_square([1..10])
 ```
 
@@ -761,7 +761,7 @@ def RMS := makeMean(0, fn b,x { b+x**2 }, fn acc,n { (acc/n).sqrt() })
 
 ```scheme
 
-(define (rms xs) 
+(define (rms xs)
     (sqrt (// (for/sum ((x xs)) (* x x)) (length xs))))
 
 (rms (range 1 11))
@@ -779,7 +779,7 @@ ELENA 4.x :
 import extensions;
 import system'routines;
 import system'math;
- 
+
 extension op
 {
     get RootMeanSquare()
@@ -787,7 +787,7 @@ extension op
         ^ (self.selectBy:(x => x * x).summarize(new Real()) / self.Length).sqrt()
     }
 }
- 
+
 public program()
 {
     console.printLine(new Range(1, 10).RootMeanSquare)
@@ -1207,7 +1207,7 @@ sum = 0
 DO i = 1, 10
    sum = sum + i^2
 ENDDO
-WRITE(ClipBoard) "RMS(1..10) = ", (sum/10)^0.5 
+WRITE(ClipBoard) "RMS(1..10) = ", (sum/10)^0.5
 ```
 
 RMS(1..10) = 6.204836823
@@ -1325,20 +1325,20 @@ print( root_mean_square([1,2,3,4,5,6,7,8,9,10]) ); // ==> 6.2048368229954285
 ```JavaScript
 (() => {
     'use strict';
- 
- 
+
+
     // rootMeanSquare :: [Num] -> Real
-    const rootMeanSquare = xs => 
+    const rootMeanSquare = xs =>
        Math.sqrt(
             xs.reduce(
                 (a, x) => (a + x * x),
                 0
            ) / xs.length
         );
- 
-     
+
+
     return rootMeanSquare([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-    
+
      // -> 6.2048368229954285
 })();
 ```
@@ -1364,7 +1364,7 @@ def rms: length as $length
 ```
 With this definition, the following program would compute the rms of each array in a file or stream of numeric arrays:
 ```jq>rms</lang
- 
+
 
 ## Julia
 
@@ -1380,7 +1380,7 @@ or shorter with using Statistics (and as spoken: root-mean-square)
 sqrt(mean(A.^2.))
 ```
 
-or the implicit allocation of a new array by <code>A.^2.</code> can be avoided by using <code>sum</code> as a higher-order function: 
+or the implicit allocation of a new array by <code>A.^2.</code> can be avoided by using <code>sum</code> as a higher-order function:
 ```julia
 sqrt(sum(x -> x*x, A) / length(A))
 ```
@@ -1399,7 +1399,7 @@ end
 
 ```
 
-Potentially even better is to use the built-in <code>norm</code> function, which computes the square root of the sum of the squares of the entries of <code>A</code> in a way that avoids the possibility of spurious floating-point overflow (if the entries of <code>A</code> are so large that they may overflow if squared): 
+Potentially even better is to use the built-in <code>norm</code> function, which computes the square root of the sum of the squares of the entries of <code>A</code> in a way that avoids the possibility of spurious floating-point overflow (if the entries of <code>A</code> are so large that they may overflow if squared):
 ```julia
 norm(A) / sqrt(length(A))
 ```
@@ -1429,7 +1429,7 @@ fun quadraticMean(vector: Array<Double>) : Double {
     val sum = vector.sumByDouble { it * it }
     return Math.sqrt(sum / vector.size)
 }
-   
+
 fun main(args: Array<String>) {
     val vector = Array(10, { (it + 1).toDouble() })
     print("Quadratic mean of numbers 1 to 10 is ${quadraticMean(vector)}")
@@ -1558,7 +1558,7 @@ The above will give the precise solution <math>\sqrt{\frac{77}{2}}</math>, to do
 
 
 ```MATLAB
-function rms = quadraticMean(list)    
+function rms = quadraticMean(list)
     rms = sqrt(mean(list.^2));
 end
 ```
@@ -1638,7 +1638,7 @@ func rms(d: TRange): float
     var count = 1;
     return sqrt(reduce( (a: float, b: float) { count += 1; return a + b * b; }, d) / count);
 }
- 
+
 func main(): void
 {
     println(rms(1 .. 11));
@@ -1671,7 +1671,7 @@ module RMS
         def sum = x.Map(fun (x) {x*x}).FoldLeft(0, _+_);
         Sqrt((sum :> double) / x.Length)
     }
-    
+
     Main() : void
     {
         WriteLine("RMS of [1 .. 10]: {0:g6}", RMS($[1 .. 10]));
@@ -1719,11 +1719,11 @@ RMS of values from 1 to 10: 6.204836822995428
 ```nim
 from math import sqrt, sum
 from sequtils import mapIt
- 
+
 proc qmean(num: seq[float]): float =
   result = num.mapIt(it * it).sum
   result = sqrt(result / float(num.len))
- 
+
 echo qmean(@[1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0])
 ```
 
@@ -1744,7 +1744,7 @@ IMPORT ML := MathL, Out;
 VAR
 	nums: ARRAY 10 OF LONGREAL;
 	i: INTEGER;
-	
+
 PROCEDURE Rms(a: ARRAY OF LONGREAL): LONGREAL;
 VAR
 	i: INTEGER;
@@ -1756,7 +1756,7 @@ BEGIN
 	END;
 	RETURN ML.Sqrt(s / LEN(a))
 END Rms;
-	
+
 BEGIN
 	FOR i := 0 TO LEN(nums) - 1 DO
 		nums[i] := i + 1
@@ -1785,14 +1785,14 @@ bundle Default {
       values := [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0];
       RootSquareMean(values)->PrintLine();
     }
-    
+
     function : native : RootSquareMean(values : Float[]) ~ Float {
       sum := 0.0;
       each(i : values) {
         x := values[i]->Power(2.0);
         sum += values[i]->Power(2.0);
       };
-      
+
       return (sum / values->Size())->SquareRoot();
     }
   }
@@ -1891,7 +1891,7 @@ declare
       /
       {Int.toFloat {Length Xs}}}
   end
-in 
+in
   {Show {RMS {List.number 1 10 1}}}
 ```
 
@@ -1978,7 +1978,7 @@ atom sqsum = 0
     end for
     return sqrt(sqsum/length(s))
 end function
- 
+
 ? rms({1,2,3,4,5,6,7,8,9,10})
 ```
 
@@ -2138,7 +2138,7 @@ function get-rms([float[]]$nums){
    return [math]::sqrt($sqsum/$nums.count)
 }
 
-get-rms @(1..10) 
+get-rms @(1..10)
 ```
 
 
@@ -2152,17 +2152,17 @@ NewList MyList()  ; To hold a unknown amount of numbers to calculate
 If OpenConsole()
   Define.d result
   Define i, sum_of_squares
-  
+
   ;Populate a random amounts of numbers to calculate
   For i=0 To (Random(45)+5) ; max elements is unknown to the program
     AddElement(MyList())
     MyList()=Random(15)  ; Put in a random number
   Next
 
-  Print("Averages/Root mean square"+#CRLF$+"of : ")  
+  Print("Averages/Root mean square"+#CRLF$+"of : ")
 
   ; Calculate square of each element, print each & add them together
-  ForEach MyList()  
+  ForEach MyList()
     Print(Str(MyList())+" ")             ; Present to our user
     sum_of_squares+MyList()*MyList()     ; Sum the squares, e.g
   Next
@@ -2170,7 +2170,7 @@ If OpenConsole()
   ;Present the result
   result=Sqr(sum_of_squares/ListSize(MyList()))
   PrintN(#CRLF$+"= "+StrD(result))
-  
+
   PrintN("Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2251,7 +2251,7 @@ Usage:
 
 ```R>
  RMS(1:10)
-[1] 6.204837 
+[1] 6.204837
 ```
 
 
@@ -2278,11 +2278,11 @@ This particular   '''sqrt'''   function was programmed for speed, as it has two 
 :::*   the initial guess (for the square root)
 :::*   the number of (increasing) decimal digits used during the computations
 
-The   '''sqrt'''   code was optimized to use the minimum amount of digits (precision) for each iteration of the 
+The   '''sqrt'''   code was optimized to use the minimum amount of digits (precision) for each iteration of the
 
 calculation as well as a reasonable attempt at providing a first-guess square root by essentially halving
 
-the number using logarithmic (base ten) arithmetic.   
+the number using logarithmic (base ten) arithmetic.
 
 ```rexx
 /*REXX program computes and displays the  root mean square (RMS)  of a number sequence. */
@@ -2376,7 +2376,7 @@ valueList$   = "1 2 3 4 5 6 7 8 9 10"
 while word$(valueList$,i +1) <> ""             ' grab values from list
   thisValue  = val(word$(valueList$,i +1))     ' turn values into numbers
   sumSquares = sumSquares + thisValue ^ 2      ' sum up the squares
-  i = i +1                                     ' 
+  i = i +1                                     '
 wend
 print "List of Values:";valueList$;" containing ";i;" values"
 print "Root Mean Square =";(sumSquares/i)^0.5
@@ -2442,7 +2442,7 @@ class MAIN is
 
   main is
     #OUT + irrms(1, 10) + "\n";
-  end; 
+  end;
 end;
 ```
 
@@ -2615,7 +2615,7 @@ end
 
 
 ```sml
-fun rms(v: real vector) = 
+fun rms(v: real vector) =
   let
     val v' = Vector.map (fn x => x*x) v
     val sum = Vector.foldl op+ 0.0 v'
@@ -2724,20 +2724,20 @@ Valac probably needs to have the flag "-X -lm" added to include the C Math libra
 double rms(double[] list){
 	double sum_squares = 0;
 	double mean;
-	
+
 	foreach ( double number in list){
 		sum_squares += (number * number);
 	}
-	
+
 	mean = Math.sqrt(sum_squares / (double) list.length);
-	
+
 	return mean;
 } // end rms
 
 public static void main(){
 	double[] list = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 	double mean = rms(list);
-	
+
 	stdout.printf("%s\n", mean.to_string());
 }
 ```
@@ -2798,7 +2798,7 @@ Output:
 
 ```txt
 
- 6.20483682299543 
+ 6.20483682299543
 
 ```
 

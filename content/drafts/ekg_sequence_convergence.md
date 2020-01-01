@@ -13,16 +13,16 @@ tags = []
 {{task}}
 
 The sequence is from the natural numbers and is defined by:
-* <code>a(1) = 1</code>; 
+* <code>a(1) = 1</code>;
 * <code>a(2) = Start = 2</code>;
 * for n > 2, <code>a(n)</code> shares at least one prime factor with <code>a(n-1)</code> and is the ''smallest'' such natural number ''not already used''.
 
 
 The sequence is called the [http://oeis.org/A064740 EKG sequence] (after its visual similarity to an electrocardiogram when graphed).
 
-Variants of the sequence can be generated starting 1, N where N is any natural number larger than one. For the purposes of this task let us call: 
+Variants of the sequence can be generated starting 1, N where N is any natural number larger than one. For the purposes of this task let us call:
 * The sequence described above , starting <code>1, 2, ...</code> the <code>EKG(2)</code> sequence;
-* the sequence starting <code>1, 3, ...</code> the <code>EKG(3)</code> sequence; 
+* the sequence starting <code>1, 3, ...</code> the <code>EKG(3)</code> sequence;
 * ... the sequence starting <code>1, N, ...</code> the <code>EKG(N)</code> sequence.
 
 
@@ -56,8 +56,8 @@ If an algorithm that keeps track of the minimum amount of numbers and their corr
 
 {{trans|Go}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 #define TRUE 1
@@ -92,7 +92,7 @@ int gcd(int a, int b) {
 
 bool areSame(int s[], int t[], size_t len) {
     int i;
-    qsort(s, len, sizeof(int), compareInts);    
+    qsort(s, len, sizeof(int), compareInts);
     qsort(t, len, sizeof(int), compareInts);
     for (i = 0; i < len; ++i) {
         if (s[i] != t[i]) return FALSE;
@@ -121,7 +121,7 @@ int main() {
         for (i = 0; i < 30; ++i) printf("%d ", ekg[s][i]);
         printf("\b]\n");
     }
-    
+
     // now compare EKG5 and EKG7 for convergence
     for (i = 2; i < LIMIT; ++i) {
         if (ekg[1][i] == ekg[2][i] && areSame(ekg[1], ekg[2], i)) {
@@ -161,7 +161,7 @@ This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_f
 // Generate EKG Sequences. Nigel Galloway: December 6th., 2018
 let EKG            n=seq{
   let fN,fG=let    i=System.Collections.Generic.Dictionary<int,int>()
-            let fN g=(if not (i.ContainsKey g) then i.[g]<-g);(g,i.[g]) 
+            let fN g=(if not (i.ContainsKey g) then i.[g]<-g);(g,i.[g])
             ((fun  e->i.[e]<-i.[e]+e), (fun  l->l|>List.map fN))
   let fU           l= pCache|>Seq.takeWhile(fun n->n<=l)|>Seq.filter(fun n->l%n=0)|>List.ofSeq
   let rec EKG l (α,β)=seq{let b=fU β in if (β=n||β<snd((fG b|>List.maxBy snd))) then fN α;        yield! EKG l (fG l|>List.minBy snd)
@@ -285,7 +285,7 @@ func main() {
             }
         }
         fmt.Printf("EKG(%2d): %v\n", start, ekg[s][:30])
-    }   
+    }
 
     // now compare EKG5 and EKG7 for convergence
     for i := 2; i < limit; i++ {
@@ -521,7 +521,7 @@ fun main(args: Array<String>) {
             }
         }
         System.out.printf("EKG(%2d): %s\n", start, ekg[s].slice(0 until 30))
-    }   
+    }
 
     // now compare EKG5 and EKG7 for convergence
     for (i in 2 until LIMIT) {
@@ -670,7 +670,7 @@ for s=1 to length(starts) do
     end for
     printf(1,fmt,starts[s]&ekg[s][1..min(LIMIT,30)])
 end for
- 
+
 -- now compare EKG5 and EKG7 for convergence
 constant EKG5 = find(5,starts),
          EKG7 = find(7,starts)
@@ -715,7 +715,7 @@ from math import gcd
 
 def EKG_gen(start=2):
     """\
-    Generate the next term of the EKG together with the minimum cache of 
+    Generate the next term of the EKG together with the minimum cache of
     numbers left in its production; (the "state" of the generator).
     Using math.gcd
     """
@@ -875,7 +875,7 @@ ekg: procedure expose $; parse arg x 1 z,,_
 ```
 
 {{out|output|text=  when using the default inputs:}}
-<!--    (output is shown   '''<sup>5</sup>/<sub>6</sub>'''   size.)   !--> 
+<!--    (output is shown   '''<sup>5</sup>/<sub>6</sub>'''   size.)   !-->
 <pre style="font-size:84%">
 (start  2):  1  2  4  6  3  9 12  8 10  5 15 18 14  7 21 24 16 20 22 11 33 27 30 25 35 28 26 13 39 36 32 34 17 51 42 38 19 57 45 40 44 46 23 69 48 50 52 54 56 49
 

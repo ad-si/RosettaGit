@@ -13,7 +13,7 @@ tags = []
 {{task|Arithmetic operations}}
 
 Write functions to calculate the definite integral of a function <big><big> {{math|1=''ƒ(x)''}} </big></big> using ''all'' five of the following methods:
-:* [[wp:Rectangle_method|rectangular]] 
+:* [[wp:Rectangle_method|rectangular]]
 :**  left
 :**  right
 :**  midpoint
@@ -21,7 +21,7 @@ Write functions to calculate the definite integral of a function <big><big> {{ma
 :* [[wp:Simpson%27s_rule|Simpson's]]
 :** composite
 
-Your functions should take in the upper and lower bounds ({{math|''a''}} and {{math|''b''}}), and the number of approximations to make in that range ({{math|''n''}}). 
+Your functions should take in the upper and lower bounds ({{math|''a''}} and {{math|''b''}}), and the number of approximations to make in that range ({{math|''n''}}).
 
 Assume that your example already has a function that gives values for <big> {{math|1=''ƒ(x)''}} </big>.
 
@@ -34,7 +34,7 @@ Simpson's method is defined by the following pseudo-code:
      h := (b - a) / n
      sum1 := f(a + h/2)
      sum2 := 0
- 
+
      loop on i from 1 to (n - 1)
          sum1 := sum1 + f(a + h * i + h/2)
          sum2 := sum2 + f(a + h * i)
@@ -62,7 +62,7 @@ Demonstrate your function by showing the results for:
 Integration functions:
 
 ```ActionScript
-function leftRect(f:Function, a:Number, b:Number, n:uint):Number 
+function leftRect(f:Function, a:Number, b:Number, n:uint):Number
 {
 	var sum:Number = 0;
 	var dx:Number = (b-a)/n;
@@ -348,7 +348,7 @@ BEGIN
       x +:= h
    OD;
    sum
-END # left rect #; 
+END # left rect #;
 
 #################
 ## right rect  ##
@@ -384,7 +384,7 @@ END # mid rect #;
 
 ###############
 ## trapezium ##
-############### 
+###############
 
 PROC trapezium = (F f, LONG REAL a, b, INT n) LONG REAL:
 BEGIN
@@ -396,11 +396,11 @@ BEGIN
       x +:= 1
    OD;
    (b - a) / (2 * n) * sum
-END # trapezium #; 
+END # trapezium #;
 
 #############
 ## simpson ##
-############# 
+#############
 
 PROC simpson = (F f, LONG REAL a, b, INT n) LONG REAL:
 BEGIN
@@ -506,7 +506,7 @@ fun(x) { ; linear test function
    Return x
 }
 ```
- 
+
 
 
 ## BASIC
@@ -576,7 +576,7 @@ END FUNCTION
 ```bbcbasic
       *FLOAT64
       @% = 12 : REM Column width
-      
+
       PRINT "Function     Range          L-Rect      R-Rect      M-Rect      Trapeze     Simpson"
       FOR func% = 1 TO 4
         READ x$, l, h, s%
@@ -584,12 +584,12 @@ END FUNCTION
         PRINT FNmrect(x$, l, h, s%) FNtrapeze(x$, l, h, s%) FNsimpson(x$, l, h, s%)
       NEXT
       END
-      
+
       DATA "x^3", 0,    1,     100
       DATA "1/x", 1,  100,    1000
       DATA "x",   0, 5000, 5000000
       DATA "x",   0, 6000, 6000000
-      
+
       DEF FNlrect(x$, a, b, n%)
       LOCAL i%, d, s, x
       d = (b - a) / n%
@@ -599,7 +599,7 @@ END FUNCTION
         x += d
       NEXT
       = s
-      
+
       DEF FNrrect(x$, a, b, n%)
       LOCAL i%, d, s, x
       d = (b - a) / n%
@@ -609,7 +609,7 @@ END FUNCTION
         s += d * EVAL(x$)
       NEXT
       = s
-      
+
       DEF FNmrect(x$, a, b, n%)
       LOCAL i%, d, s, x
       d = (b - a) / n%
@@ -620,7 +620,7 @@ END FUNCTION
         x += d/2
       NEXT
       = s
-      
+
       DEF FNtrapeze(x$, a, b, n%)
       LOCAL i%, d, f, s, x
       d = (b - a) / n%
@@ -631,7 +631,7 @@ END FUNCTION
         s += d * EVAL(x$)
       NEXT
       = s
-      
+
       DEF FNsimpson(x$, a, b, n%)
       LOCAL i%, d, f, s1, s2, x
       d = (b - a) / n%
@@ -664,8 +664,8 @@ x           0 - 6000        17999997    18000003    18000000    18000000    1800
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -714,7 +714,7 @@ double int_simpson(double from, double to, double n, double (*func)())
    int i;
 
    double x;
-   
+
    for(i = 0;i < n;i++)
       sum1 += func(from + h * i + h / 2.0);
 
@@ -768,26 +768,26 @@ int main()
 {
      int i, j;
      double ic;
-     
-     pfunc f[5] = { 
+
+     pfunc f[5] = {
        int_leftrect, int_rightrect,
        int_midrect,  int_trapezium,
-       int_simpson 
+       int_simpson
      };
      const char *names[5] = {
        "leftrect", "rightrect", "midrect",
-       "trapezium", "simpson" 
+       "trapezium", "simpson"
      };
      rfunc rf[] = { f1, f2, f3, f3 };
      rfunc If[] = { f1a, f2a, f3a, f3a };
-     double ivals[] = { 
+     double ivals[] = {
        0.0, 1.0,
        1.0, 100.0,
        0.0, 5000.0,
        0.0, 6000.0
      };
      double approx[] = { 100.0, 1000.0, 5000000.0, 6000000.0 };
-          
+
      for(j=0; j < (sizeof(rf) / sizeof(rfunc)); j++)
      {
        for(i=0; i < 5 ; i++)
@@ -1210,13 +1210,13 @@ functions =
   cube: (x) -> x*x*x
   reciprocal: (x) -> 1/x
   identity: (x) -> x
- 
+
 sum = (list) -> list.reduce ((a, b) -> a+b), 0
- 
+
 integrate = (f, a, b, steps, meth) ->
    h = (b-a) / steps
    h * sum(meth(f, a+i*h, h) for i in [0...steps])
- 
+
 # Tests
 tests = [
   [0, 1, 100, 'cube']
@@ -1237,7 +1237,7 @@ for test in tests
 
 output
 <lang>
-> coffee numerical_integration.coffee 
+> coffee numerical_integration.coffee
 -- tests for cube with 100 steps from 0 to 1
 left_rect 0.24502500000000005
 mid_rect 0.24998750000000006
@@ -1610,36 +1610,36 @@ pragma.enable("accumulator")
 def leftRect(f, x, h) {
   return f(x)
 }
- 
+
 def midRect(f, x, h) {
   return f(x + h/2)
 }
- 
+
 def rightRect(f, x, h) {
   return f(x + h)
 }
- 
+
 def trapezium(f, x, h) {
   return (f(x) + f(x+h)) / 2
 }
- 
+
 def simpson(f, x, h) {
   return (f(x) + 4 * f(x + h / 2) + f(x+h)) / 6
 }
- 
+
 def integrate(f, a, b, steps, meth) {
    def h := (b-a) / steps
    return h * accum 0 for i in 0..!steps { _ + meth(f, a+i*h, h) }
 }
 ```
 
- 
+
 
 ```e
-? integrate(fn x { x ** 2 }, 3.0, 7.0, 30, simpson) 
+? integrate(fn x { x ** 2 }, 3.0, 7.0, 30, simpson)
 # value: 105.33333333333334
 
-? integrate(fn x { x ** 9 }, 0, 1, 300, simpson) 
+? integrate(fn x { x ** 9 }, 0, 1, 300, simpson)
 # value: 0.10000000002160479
 ```
 
@@ -1651,13 +1651,13 @@ def integrate(f, a, b, steps, meth) {
 ```elixir
 defmodule Numerical do
   @funs  ~w(leftrect midrect rightrect trapezium simpson)a
- 
+
   def  leftrect(f, left,_right), do: f.(left)
   def   midrect(f, left, right), do: f.((left+right)/2)
   def rightrect(f,_left, right), do: f.(right)
   def trapezium(f, left, right), do: (f.(left)+f.(right))/2
   def   simpson(f, left, right), do: (f.(left) + 4*f.((left+right)/2.0) + f.(right)) / 6.0
- 
+
   def integrate(f, a, b, steps) when is_integer(steps) do
     delta = (b - a) / steps
     Enum.each(@funs, fn fun ->
@@ -1669,19 +1669,19 @@ defmodule Numerical do
     end)
   end
 end
- 
+
 f1 = fn x -> x * x * x end
 IO.puts "f(x) = x^3, where x is [0,1], with 100 approximations."
 Numerical.integrate(f1, 0, 1, 100)
- 
+
 f2 = fn x -> 1 / x end
 IO.puts "\nf(x) = 1/x, where x is [1,100], with 1,000 approximations. "
 Numerical.integrate(f2, 1, 100, 1000)
- 
+
 f3 = fn x -> x end
 IO.puts "\nf(x) = x, where x is [0,5000], with 5,000,000 approximations."
 Numerical.integrate(f3, 0, 5000, 5_000_000)
- 
+
 f4 = fn x -> x end
 IO.puts "\nf(x) = x, where x is [0,6000], with 6,000,000 approximations."
 Numerical.integrate(f4, 0, 6000, 6_000_000)
@@ -1871,7 +1871,7 @@ defer method ( fn F: x -- fn[x] )
   dup fdup  left
   dup fover mid 4e f* f+
       fswap right f+  6e f/ ;
-     
+
 : set-step ( n F: a b -- n F: a )
   fover f- dup 0 d>f f/ step f! ;
 
@@ -2004,7 +2004,7 @@ program IntegrationTest
 
   print *, integrate(afun, 0., 3**(1/3.), method='simpson')
   print *, integrate(afun, 0., 3**(1/3.), method='leftrect')
-  print *, integrate(afun, 0., 3**(1/3.), method='midrect')  
+  print *, integrate(afun, 0., 3**(1/3.), method='midrect')
   print *, integrate(afun, 0., 3**(1/3.), method='rightrect')
   print *, integrate(afun, 0., 3**(1/3.), method='trapezoid')
 
@@ -2018,7 +2018,7 @@ The FunctionHolder module:
 ```fortran
 module FunctionHolder
   implicit none
-  
+
 contains
 
   pure function afun(x)
@@ -2027,7 +2027,7 @@ contains
 
     afun = x**2
   end function afun
-  
+
 end module FunctionHolder
 ```
 
@@ -2167,7 +2167,7 @@ End
 {{out}}
 
 ```txt
-function   range      steps  leftrect      midrect       rightrect     trap          simpson 
+function   range      steps  leftrect      midrect       rightrect     trap          simpson
 f(x) = x^3 0 - 1        100  0.2450250000  0.2499875000  0.2550250000  0.2500250000  0.2500000000
 f(x) = 1/x 1 - 100     1000  4.6549910575  4.6047625487  4.5569810575  4.6059860575  4.6051703850
 f(x) = x   0 - 5000 5000000  12499997.501  12500000.001  12500002.501  12500000.001  12500000.000
@@ -2563,7 +2563,7 @@ f(x) = x, where x is [0,6000], with 6,000,000 approximations. The exact result i
 ## Haskell
 
 
-Different approach from most of the other examples: First, the function ''f'' might be expensive to calculate, and so it should not be evaluated several times. So, ideally, we want to have positions ''x'' and weights ''w'' for each method and then just calculate the approximation of the integral by 
+Different approach from most of the other examples: First, the function ''f'' might be expensive to calculate, and so it should not be evaluated several times. So, ideally, we want to have positions ''x'' and weights ''w'' for each method and then just calculate the approximation of the integral by
 
 
 ```haskell
@@ -2574,7 +2574,7 @@ approx f xs ws = sum [w * f x | (x,w) <- zip xs ws]
 Second, let's to generalize all integration methods into one scheme. The methods can all be characterized by the coefficients ''vs'' they use in a particular interval. These will be fractions, and for terseness, we extract the denominator as an extra argument ''v''.
 
 Now there are the closed formulas (which include the endpoints) and the open formulas (which exclude them). Let's do the open formulas first, because then the coefficients don't overlap:
- 
+
 
 ```haskell>integrateOpen :: Fractional a =
  a -> [a] -> (a -> a) -> a -> a -> Int -> a
@@ -2588,7 +2588,7 @@ integrateOpen v vs f a b n = approx f xs ws * h / v where
 
 
 Similarly for the closed formulas, but we need an additional function ''overlap'' which sums the coefficients overlapping at the interior interval boundaries:
- 
+
 
 ```haskell>integrateClosed :: Fractional a =
  a -> [a] -> (a -> a) -> a -> a -> Int -> a
@@ -2612,10 +2612,10 @@ And now we can just define
 
 
 ```haskell
-intLeftRect  = integrateClosed  1 [1,0]     
-intRightRect = integrateClosed  1 [0,1]     
-intMidRect   = integrateOpen    1 [1]  
-intTrapezium = integrateClosed  2 [1,1]   
+intLeftRect  = integrateClosed  1 [1,0]
+intRightRect = integrateClosed  1 [0,1]
+intMidRect   = integrateOpen    1 [1]
+intTrapezium = integrateClosed  2 [1,1]
 intSimpson   = integrateClosed  3 [1,4,1]
 ```
 
@@ -2632,15 +2632,15 @@ intOpen2     = integrateOpen    3 [8,-4,8]
 
 Some examples:
 
- *Main> intLeftRect  (\x -> x*x) 0 1 10  
+ *Main> intLeftRect  (\x -> x*x) 0 1 10
  0.2850000000000001
- *Main> intRightRect (\x -> x*x) 0 1 10  
+ *Main> intRightRect (\x -> x*x) 0 1 10
  0.38500000000000006
- *Main> intMidRect   (\x -> x*x) 0 1 10 
+ *Main> intMidRect   (\x -> x*x) 0 1 10
  0.3325
- *Main> intTrapezium (\x -> x*x) 0 1 10 
+ *Main> intTrapezium (\x -> x*x) 0 1 10
  0.3350000000000001
- *Main> intSimpson   (\x -> x*x) 0 1 10 
+ *Main> intSimpson   (\x -> x*x) 0 1 10
  0.3333333333333334
 
 The whole program:
@@ -2804,7 +2804,7 @@ simpson  =: adverb def '6 %~ +/ 1 1 4 * u y, -:+/y'
    Ir=: rectangle integrate
    It=: trapezium integrate
    Is=: simpson integrate
-   
+
    ^&3 Ir 0 1 100
 0.249987
    ^&3 It 0 1 100
@@ -2837,7 +2837,7 @@ simpson  =: adverb def '6 %~ +/ 1 1 4 * u y, -:+/y'
 Integrate <code>square</code> (<code>*:</code>) from 0 to &pi; in 10 steps using various methods.
 
 ```j
-   *: rectangle integrate 0 1p1 10        
+   *: rectangle integrate 0 1p1 10
 10.3095869962
    *: trapezium integrate 0 1p1 10
 10.3871026879
@@ -2874,7 +2874,7 @@ That is: <math>0x^0 + 0x^1 + 0x^2 + \tfrac{1}{3}x^3</math>
 So to integrate <math>x^2</math> from 0 to &pi; :
 
 ```j
-   0 0 1 (0&p..@[ -~/@:p. ]) 0 1p1 
+   0 0 1 (0&p..@[ -~/@:p. ]) 0 1p1
 10.3354255601
 ```
 
@@ -2900,22 +2900,22 @@ class NumericalIntegration
   {
     double eval(double n);
   }
-  
+
   public static double rectangularLeft(double a, double b, int n, FPFunction f)
   {
     return rectangular(a, b, n, f, 0);
   }
-  
+
   public static double rectangularMidpoint(double a, double b, int n, FPFunction f)
   {
     return rectangular(a, b, n, f, 1);
   }
-  
+
   public static double rectangularRight(double a, double b, int n, FPFunction f)
   {
     return rectangular(a, b, n, f, 2);
   }
-  
+
   public static double trapezium(double a, double b, int n, FPFunction f)
   {
     double range = checkParamsGetRange(a, b, n);
@@ -2929,7 +2929,7 @@ class NumericalIntegration
     sum += (f.eval(a) + f.eval(b)) / 2.0;
     return sum * range / nFloat;
   }
-  
+
   public static double simpsons(double a, double b, int n, FPFunction f)
   {
     double range = checkParamsGetRange(a, b, n);
@@ -2945,7 +2945,7 @@ class NumericalIntegration
     }
     return (f.eval(a) + f.eval(b) + sum1 * 4.0 + sum2 * 2.0) * range / (nFloat * 6.0);
   }
-  
+
   private static double rectangular(double a, double b, int n, FPFunction f, int mode)
   {
     double range = checkParamsGetRange(a, b, n);
@@ -2959,7 +2959,7 @@ class NumericalIntegration
     }
     return sum * range / nFloat;
   }
-  
+
   private static double checkParamsGetRange(double a, double b, int n)
   {
     if (n <= 0)
@@ -2969,8 +2969,8 @@ class NumericalIntegration
       throw new IllegalArgumentException("Invalid range");
     return range;
   }
-  
-  
+
+
   private static void testFunction(String fname, double a, double b, int n, FPFunction f)
   {
     System.out.println("Testing function \"" + fname + "\", a=" + a + ", b=" + b + ", n=" + n);
@@ -2982,7 +2982,7 @@ class NumericalIntegration
     System.out.println();
     return;
   }
-  
+
   public static void main(String[] args)
   {
     testFunction("x^3", 0.0, 1.0, 100, new FPFunction() {
@@ -2991,28 +2991,28 @@ class NumericalIntegration
         }
       }
     );
-    
+
     testFunction("1/x", 1.0, 100.0, 1000, new FPFunction() {
         public double eval(double n) {
           return 1.0 / n;
         }
       }
     );
-    
+
     testFunction("x", 0.0, 5000.0, 5000000, new FPFunction() {
         public double eval(double n) {
           return n;
         }
       }
     );
-    
+
     testFunction("x", 0.0, 6000.0, 6000000, new FPFunction() {
         public double eval(double n) {
           return n;
         }
       }
     );
-    
+
     return;
   }
 }
@@ -3332,7 +3332,7 @@ function leftRect( f, a, b, n )
     local h = (b - a) / n
     local x = a
     local sum = 0
-    
+
     for i = 1, 100 do
         sum = sum + a + f(x)
         x = x + h
@@ -3345,12 +3345,12 @@ function rightRect( f, a, b, n )
     local h = (b - a) / n
     local x = b
     local sum = 0
-    
+
     for i = 1, 100 do
         sum = sum + a + f(x)
         x = x - h
     end
-    
+
     return sum * h
 end
 
@@ -3358,7 +3358,7 @@ function midRect( f, a, b, n )
     local h = (b - a) / n
     local x = a + h/2
     local sum = 0
-    
+
     for i = 1, 100 do
         sum = sum + a + f(x)
         x = x + h
@@ -3371,7 +3371,7 @@ function trapezium( f, a, b, n )
     local h = (b - a) / n
     local x = a
     local sum = 0
-    
+
     for i = 1, 100 do
         sum = sum + f(x)*2
         x = x + h
@@ -3388,7 +3388,7 @@ function simpson( f, a, b, n )
     for i = 1, n-1 do
         sum1 = sum1 + f(a + h * i + h/2)
         sum2 = sum2 + f(a + h * i)
-    end    
+    end
 
     return (h/6) * (f(a) + f(b) + 4*sum1 + 2*sum2)
 end
@@ -3396,7 +3396,7 @@ end
 
 int_methods = { leftRect, rightRect, midRect, trapezium, simpson }
 for i = 1, 5 do
-    print( int_methods[i]( function(x) return x^3 end, 0, 1, 100 ) ) 
+    print( int_methods[i]( function(x) return x^3 end, 0, 1, 100 ) )
     print( int_methods[i]( function(x) return 1/x end, 1, 100, 1000 ) )
     print( int_methods[i]( function(x) return x end, 0, 5000, 5000000 ) )
     print( int_methods[i]( function(x) return x end, 0, 6000, 6000000 ) )
@@ -3409,30 +3409,30 @@ end
 
 
 ```Mathematica
-leftRect[f_, a_Real, b_Real, N_Integer] := 
+leftRect[f_, a_Real, b_Real, N_Integer] :=
  Module[{sum = 0, dx = (b - a)/N, x = a, n = N} ,
   For[n = N, n > 0, n--, x += dx; sum += f[x];];
   Return [ sum*dx ]]
 
-rightRect[f_, a_Real, b_Real, N_Integer] := 
+rightRect[f_, a_Real, b_Real, N_Integer] :=
  Module[{sum = 0, dx = (b - a)/N, x = a + (b - a)/N, n = N} ,
   For[n = N, n > 0, n--, x += dx; sum += f[x];];
   Return [ sum*dx ]]
 
-midRect[f_, a_Real, b_Real, N_Integer] := 
+midRect[f_, a_Real, b_Real, N_Integer] :=
  Module[{sum = 0, dx = (b - a)/N, x = a + (b - a)/(2 N), n = N} ,
   For[n = N, n > 0, n--, x += dx; sum += f[x];];
   Return [ sum*dx ]]
 
-trapezium[f_, a_Real, b_Real, N_Integer] := 
+trapezium[f_, a_Real, b_Real, N_Integer] :=
  Module[{sum = f[a], dx = (b - a)/N, x = a, n = N} ,
   For[n = 1, n < N, n++, x += dx; sum += 2 f[x];];
   sum += f[b];
   Return [ 0.5*sum*dx ]]
 
-simpson[f_, a_Real, b_Real, N_Integer] := 
+simpson[f_, a_Real, b_Real, N_Integer] :=
  Module[{sum1 = f[a + (b - a)/(2 N)], sum2 = 0, dx = (b - a)/N, x = a, n = N} ,
-  For[n = 1, n < N, n++, sum1 += f[a + dx*n + dx/2]; 
+  For[n = 1, n < N, n++, sum1 += f[a + dx*n + dx/2];
    sum2 += f[a + dx*n];];
   Return [(dx/6)*(f[a] + f[b] + 4*sum1 + 2*sum2)]]
 ```
@@ -3445,7 +3445,7 @@ h[x_] := x
 Compare[t_] := Apply[ #1, t] & /@ {leftRect, rightRect, midRect, trapezium, simpson}
 
 AccountingForm[
- Compare /@ {{f, 0., 1., 100}, {g, 1., 100., 1000}, 
+ Compare /@ {{f, 0., 1., 100}, {g, 1., 100., 1000},
 {h, 0., 5000., 5000000}, {h, 0., 6000., 6000000}}]
 
 ->
@@ -3469,7 +3469,7 @@ function integral = leftRectIntegration(f,a,b,n)
     width = (b-a)/n; %calculate the width of each devision
     x = linspace(a,b,n); %define x-axis
     integral = width * sum( f(x(1:n-1)) );
-    
+
 end
 ```
 
@@ -3483,7 +3483,7 @@ function integral = rightRectIntegration(f,a,b,n)
     width = (b-a)/n; %calculate the width of each devision
     x = linspace(a,b,n); %define x-axis
     integral = width * sum( f(x(2:n)) );
-    
+
 end
 ```
 
@@ -3497,7 +3497,7 @@ function integral = midPointRectIntegration(f,a,b,n)
     width = (b-a)/n; %calculate the width of each devision
     x = linspace(a,b,n); %define x-axis
     integral = width * sum( f( (x(1:n-1)+x(2:n))/2 ) );
-    
+
 end
 ```
 
@@ -3510,7 +3510,7 @@ function integral = trapezoidalIntegration(f,a,b,n)
     format long;
     x = linspace(a,b,n); %define x-axis
     integral = trapz( x,f(x) );
-    
+
 end
 ```
 
@@ -3576,7 +3576,7 @@ ans =
 right_rect(e, x, a, b, n) := block([h: (b - a) / n, s: 0],
    for i from 1 thru n do s: s + subst(x = a + i * h, e),
    s * h)$
-   
+
 left_rect(e, x, a, b, n) := block([h: (b - a) / n, s: 0],
    for i from 1 thru n do s: s + subst(x = a + (i - 1) * h, e),
    s * h)$
@@ -3737,7 +3737,7 @@ let functions = [
 ```
 and finally iterate the integration over both lists:
 ```ocaml
-let () = 
+let () =
   List.iter (fun (s,f,lo,hi,n) ->
     Printf.printf "Testing function %s:\n" s;
     List.iter (fun (name,meth) ->
@@ -4044,36 +4044,36 @@ sub leftrect(&f, $a, $b, $n) {
     my $h = ($b - $a) / $n;
     $h * [+] do f($_) for $a, $a+$h ... $b-$h;
 }
- 
+
 sub rightrect(&f, $a, $b, $n) {
     my $h = ($b - $a) / $n;
     $h * [+] do f($_) for $a+$h, $a+$h+$h ... $b;
 }
- 
+
 sub midrect(&f, $a, $b, $n) {
     my $h = ($b - $a) / $n;
     $h * [+] do f($_) for $a+$h/2, $a+$h+$h/2 ... $b-$h/2;
 }
- 
+
 sub trapez(&f, $a, $b, $n) {
     my $h = ($b - $a) / $n;
     my $partial-sum += f($_) * 2 for $a+$h, $a+$h+$h ... $b-$h;
     $h / 2 * [+] f($a), f($b), $partial-sum;
 }
- 
+
 sub simpsons(&f, $a, $b, $n) {
     my $h = ($b - $a) / $n;
     my $h2 = $h/2;
     my $sum1 = f($a + $h2);
     my $sum2 = 0;
- 
+
     for $a+$h, *+$h ... $b-$h {
         $sum1 += f($_ + $h2);
         $sum2 += f($_);
     }
     ($h / 6) * (f($a) + f($b) + 4*$sum1 + 2*$sum2);
 }
- 
+
 sub integrate($f, $a, $b, $n, $exact) {
     my @r0;
     my $e = 0.000001;
@@ -4092,7 +4092,7 @@ sub integrate($f, $a, $b, $n, $exact) {
     await $p1, $p2, $p3, $p4, $p5;
     @r0, @r1, @r2, @r3, @r4, @r5;
 }
- 
+
 .say for integrate '{ $_ ** 3 }', 0,     1,       100,       0.25; say '';
 .say for integrate '1 / *',       1,   100,      1000,   log(100); say '';
 .say for integrate '*.self',      0, 5_000, 5_000_000, 12_500_000; say '';
@@ -4169,7 +4169,7 @@ end function
 function cubed(atom x)
     return power(x,3)
 end function
- 
+
 function recip(atom x)
     return 1/x
 end function
@@ -4180,7 +4180,7 @@ end function
 
 function integrate(integer m_id, integer f_id, atom a, atom b, integer steps)
 atom accum = 0,
-     h = (b-a)/steps 
+     h = (b-a)/steps
     for i=0 to steps-1 do
         accum += call_func(m_id,{f_id,a+h*i,h})
     end for
@@ -4267,7 +4267,7 @@ end f;
          when (3) do; N = 5000000; a = 0; b = 5000; end;
          when (4) do; N = 6000000; a = 0; b = 6000; end;
       end;
-   
+
       dx = (b-a)/float(N);
 
       /* Rectangle method, left-side */
@@ -4316,7 +4316,7 @@ end integrals;
 
 ```txt
 
-     Rectangle-left           Rectangle-mid            Rectangle-right        Trapezoid                 Simpson 
+     Rectangle-left           Rectangle-mid            Rectangle-right        Trapezoid                 Simpson
   2.450250000000000E-0001  2.499875000000000E-0001  2.550250000000000E-0001   2.500250000000000E-0001   2.500000000000000E-0001
   4.654991057514676E+0000  4.604762548678375E+0000  4.556981057514676E+0000   4.605986057514676E+0000   4.605170384957142E+0000
   1.249999750000000E+0007  1.250000000000000E+0007  1.250000250000000E+0007   1.250000000000000E+0007   1.250000000000000E+0007
@@ -4429,14 +4429,14 @@ EndProcedure
 
 ;- Set up functions to integrate
 Procedure.d Test1(n.d)
-  ProcedureReturn n*n*n  
+  ProcedureReturn n*n*n
 EndProcedure
 
 Procedure.d Test2(n.d)
-  ProcedureReturn 1/n  
+  ProcedureReturn 1/n
 EndProcedure
 
-; This function should be integrated as a integer function, but for 
+; This function should be integrated as a integer function, but for
 ; comparably this will stay as a float.
 Procedure.d Test3(n.d)
   ProcedureReturn n
@@ -4478,7 +4478,7 @@ Answer$+"Mid      ="+StrD(MidIntegral   (0,6000,6000000,@Test3()))+#CRLF$
 Answer$+"Right    ="+StrD(RightIntegral (0,6000,6000000,@Test3()))+#CRLF$
 Answer$+"Trapezium="+StrD(Trapezium     (0,6000,6000000,@Test3()))+#CRLF$
 Answer$+"Simpson  ="+StrD(Simpson       (0,6000,6000000,@Test3()))
-MessageRequester("Answer should be 18,000,000",Answer$) 
+MessageRequester("Answer should be 18,000,000",Answer$)
 ```
 
 
@@ -4519,32 +4519,32 @@ from fractions import Fraction
 
 def left_rect(f,x,h):
   return f(x)
- 
+
 def mid_rect(f,x,h):
   return f(x + h/2)
- 
+
 def right_rect(f,x,h):
   return f(x+h)
- 
+
 def trapezium(f,x,h):
   return (f(x) + f(x+h))/2.0
- 
+
 def simpson(f,x,h):
   return (f(x) + 4*f(x + h/2) + f(x+h))/6.0
- 
+
 def cube(x):
   return x*x*x
- 
+
 def reciprocal(x):
   return 1/x
- 
+
 def identity(x):
   return x
- 
+
 def integrate( f, a, b, steps, meth):
    h = (b-a)/steps
    ival = h * sum(meth(f, a+i*h, h) for i in range(steps))
-   return ival  
+   return ival
 
 # Tests
 for a, b, steps, func in ((0., 1., 100, cube), (1., 100., 1000, reciprocal)):
@@ -4571,7 +4571,7 @@ for a, b, steps, func in ((0., 5000., 5000000, identity),
               (func.__name__, rule.__name__, a, b, steps,
                float(integrate( func, a, b, steps, rule))))
 ```
-  
+
 
 '''Tests'''
 
@@ -4724,7 +4724,7 @@ integrate.trapezoid <- function(f, a, b, n) {
 }
 
 integrate.simpsons <- function(f, a, b, n) {
-  h <- (b-a)/n 
+  h <- (b-a)/n
   x <- seq(a, b, len=n+1)
   fx <- f(x)
   sum(fx[-length(x)] + 4*f(x[-1]-h/2) + fx[-1]) * h/6
@@ -4759,7 +4759,7 @@ integrate.trapezoid(f1,0,1,100) # 0.250025
   (define h (/ (- b a) steps))
   (* h (for/sum ([i steps])
          (meth f (+ a (* h i)) h))))
- 
+
 (define (left-rect f x h) (f x))
 (define (mid-rect f x h)  (f (+ x (/ h 2))))
 (define (right-rect f x h)(f (+ x h)))
@@ -4818,7 +4818,7 @@ simpson:	17999999.999999993
 
 ## REXX
 
-Note:   there was virtually no difference between   '''numeric digits 9'''   (the default) and   '''numeric digits 20'''.     
+Note:   there was virtually no difference between   '''numeric digits 9'''   (the default) and   '''numeric digits 20'''.
 
 ```rexx
 /*REXX pgm performs numerical integration using 5 different algorithms and show results.*/
@@ -4921,49 +4921,49 @@ for p = 1 to 4
      d2 = data[p][2]
      d3 = data[p][3]
      d4 = data[p][4]
-     see "" + d1 + "   " + d2  + " - " + d3  + "   " + lrect(d1, d2, d3, d4) + "   " + rrect(d1, d2, d3, d4) 
+     see "" + d1 + "   " + d2  + " - " + d3  + "   " + lrect(d1, d2, d3, d4) + "   " + rrect(d1, d2, d3, d4)
      see "  " + mrect(d1, d2, d3, d4) + "   " + trapeze(d1, d2, d3, d4) + "   " + simpson(d1, d2, d3, d4) + nl
 next
- 
+
 func lrect(x2, a, b, n)
        s = 0
        d = (b - a) / n
        x = a
        for i = 1 to n
-       eval("result = " + x2)       
+       eval("result = " + x2)
             s = s + d * result
             x = x + d
        next
        return s
- 
+
 func rrect(x2, a, b, n)
        s = 0
        d = (b - a) / n
        x = a
        for i = 1 to n
             x = x + d
-            eval("result = " + x2)  
+            eval("result = " + x2)
             s = s + d *result
        next
        return s
- 
+
 func mrect(x2, a, b, n)
        s = 0
        d = (b - a) / n
        x = a
        for i = 1 to n
             x = x + d/2
-            eval("result = " + x2)  
+            eval("result = " + x2)
             s = s + d * result
             x =  x +d/2
        next
        return s
- 
+
 func trapeze(x2, a, b, n)
        s = 0
        d = (b - a) / n
        x = b
-       eval("result = " + x2)  
+       eval("result = " + x2)
        f = result
        x = a
        eval("result = " + x2)
@@ -4974,15 +4974,15 @@ func trapeze(x2, a, b, n)
             s = s + d * result
        next
        return s
- 
+
 func simpson(x2, a, b, n)
         s1 = 0
         s = 0
         d = (b - a) / n
-        x = b 
-        eval("result = " + x2)  
+        x = b
+        eval("result = " + x2)
         f = result
-        x = a + d/2 
+        x = a + d/2
        eval("result = " + x2)
         s1 = result
         for i = 1 to n-1
@@ -5021,23 +5021,23 @@ x            0 - 6000       17999997    18000003    18000000    18000000    1800
 def leftrect(f, left, right)
   f.call(left)
 end
- 
+
 def midrect(f, left, right)
   f.call((left+right)/2.0)
 end
- 
+
 def rightrect(f, left, right)
   f.call(right)
 end
- 
+
 def trapezium(f, left, right)
   (f.call(left) + f.call(right)) / 2.0
 end
- 
+
 def simpson(f, left, right)
   (f.call(left) + 4*f.call((left+right)/2.0) + f.call(right)) / 6.0
 end
- 
+
 def integrate(f, a, b, steps, method)
   delta = 1.0 * (b - a) / steps
   total = 0.0
@@ -5048,11 +5048,11 @@ def integrate(f, a, b, steps, method)
   end
   total
 end
- 
+
 def square(x)
   x**2
 end
- 
+
 def def_int(f, a, b)
   l = case f.to_s
       when /sin>/
@@ -5062,11 +5062,11 @@ def def_int(f, a, b)
       end
   l.call(b) - l.call(a)
 end
- 
+
 a = 0
 b = Math::PI
 steps = 10
- 
+
 for func in [method(:square), Math.method(:sin)]
   puts "integral of #{func} from #{a} to #{b} in #{steps} steps"
   actual = def_int(func, a, b)
@@ -5141,7 +5141,7 @@ fn main() {
 
 
 ```scala
-object NumericalIntegration {  
+object NumericalIntegration {
   def leftRect(f:Double=>Double, a:Double, b:Double)=f(a)
   def midRect(f:Double=>Double, a:Double, b:Double)=f((a+b)/2)
   def rightRect(f:Double=>Double, a:Double, b:Double)=f(b)
@@ -5151,8 +5151,8 @@ object NumericalIntegration {
   def fn1(x:Double)=x*x*x
   def fn2(x:Double)=1/x
   def fn3(x:Double)=x
-  
-  type Method = (Double=>Double, Double, Double) => Double 
+
+  type Method = (Double=>Double, Double, Double) => Double
   def integrate(f:Double=>Double, a:Double, b:Double, steps:Double, m:Method)={
     val delta:Double=(b-a)/steps
     delta*(a until b by delta).foldLeft(0.0)((s,x) => s+m(f, x, x+delta))
@@ -5165,7 +5165,7 @@ object NumericalIntegration {
     println("trapezoid          : %f".format(integrate(f, a, b, steps, trapezoid)))
     println("simpson            : %f".format(integrate(f, a, b, steps, simpson)))
   }
-  
+
   def main(args: Array[String]): Unit = {
     print(fn1, 0, 1, 100)
     println("------")
@@ -5311,28 +5311,28 @@ import <Utilities/Sequence.sl>;
 integrateLeft(f, a, b, n) :=
     let
         h := (b - a) / n;
-        vals[x] := f(x) foreach x within (0 ... (n-1)) * h + a; 
+        vals[x] := f(x) foreach x within (0 ... (n-1)) * h + a;
     in
         h * sum(vals);
 
 integrateRight(f, a, b, n) :=
     let
         h := (b - a) / n;
-        vals[x] := f(x+h) foreach x within (0 ... (n-1)) * h + a; 
+        vals[x] := f(x+h) foreach x within (0 ... (n-1)) * h + a;
     in
         h * sum(vals);
 
 integrateMidpoint(f, a, b, n) :=
     let
         h := (b - a) / n;
-        vals[x] := f(x+h/2.0) foreach x within (0 ... (n-1)) * h + a; 
+        vals[x] := f(x+h/2.0) foreach x within (0 ... (n-1)) * h + a;
     in
         h * sum(vals);
 
 integrateTrapezium(f, a, b, n) :=
     let
         h := (b - a) / n;
-        vals[i] := 2.0 * f(a + i * h) foreach i within 1 ... n-1; 
+        vals[i] := 2.0 * f(a + i * h) foreach i within 1 ... n-1;
     in
         h * (sum(vals) + f(a) + f(b)) / 2.0;
 
@@ -5348,7 +5348,7 @@ xCubed(x) := x^3;
 xInverse(x) := 1/x;
 identity(x) := x;
 
-tests[method] := 
+tests[method] :=
     [method(xCubed, 0.0, 1.0, 100),
      method(xInverse, 1.0, 100.0, 1000),
      method(identity, 0.0, 5000.0, 5000000),
@@ -5356,7 +5356,7 @@ tests[method] :=
      foreach method within [integrateLeft, integrateRight, integrateMidpoint, integrateTrapezium, integrateSimpsons];
 
 //String manipulation for ouput display.
-main := 
+main :=
     let
         heading := [["Func", "Range\t", "L-Rect\t", "R-Rect\t", "M-Rect\t", "Trapezium", "Simpson"]];
         ranges := [["0 - 1\t", "1 - 100\t", "0 - 5000", "0 - 6000"]];
@@ -5698,7 +5698,7 @@ An explicit numerical integration program should be written here. [[Category:TI-
 
 A higher order function parameterized by a method <math>m</math> returns
 a function that integrates by that method. The method <math>m</math> is meant to
-specify whether it's rectangular, trapezoidal, etc.. 
+specify whether it's rectangular, trapezoidal, etc..
 The integrating function constructed from a given method takes a quadruple <math>(f,a,b,n)</math> containing
 the integrand <math>f</math>, the bounds <math>(a,b)</math>, and the number of intervals <math>n</math>.
 
@@ -5814,7 +5814,7 @@ Sub Test()
         Array("Midpoint    ", Array(0.5), Array(1)), _
         Array("Trapez.     ", Array(0, 1), Array(0.5, 0.5)), _
         Array("Simpson     ", Array(0, 0.5, 1), Array(1 / 6, 4 / 6, 1 / 6)))
-        
+
     For i = 1 To UBound(fun)
         f = fun(i)
         Debug.Print f(1)
@@ -5909,13 +5909,13 @@ fcn integrate(F,f,a,b,steps){
    h:=(b - a) / steps;
    h*(0).reduce(steps,'wrap(s,i){ F(f, h*i + a, h) + s },0.0);
 }
- 
+
 fcn rectangularLeft(f,x)    { f(x) }
 fcn rectangularMiddle(f,x,h){ f(x+h/2) }
 fcn rectangularRight(f,x,h) { f(x+h) }
 fcn trapezium(f,x,h)        { (f(x) + f(x+h))/2 }
 fcn simpson(f,x,h)	    { (f(x) + 4.0*f(x+h/2) + f(x+h))/6 }
- 
+
 args:=T( T(fcn(x){ x.pow(3) }, 0.0, 1.0,   10),
          T(fcn(x){ 1.0 / x },  1.0, 100.0, 1000),
          T(fcn(x){ x },        0.0, 5000.0, 0d5_000_000),

@@ -14,9 +14,9 @@ tags = []
 {{clarify task}}
 
 ;Task:
-The first line contains the number of lines to follow, followed by that number of lines of text on   STDIN. 
+The first line contains the number of lines to follow, followed by that number of lines of text on   STDIN.
 
-Write to   STDOUT   each line of input by passing it to a method as an intermediate step. The code should demonstrate these 3 things. 
+Write to   STDOUT   each line of input by passing it to a method as an intermediate step. The code should demonstrate these 3 things.
 
 
 ;Sample input with corresponding output:
@@ -28,7 +28,7 @@ Write to   STDOUT   each line of input by passing it to a method as an intermedi
 3
 hello
 hello world
-Pack my Box with 5 dozen liquor jugs 
+Pack my Box with 5 dozen liquor jugs
 
 ```
 
@@ -46,7 +46,7 @@ Pack my Box with 5 dozen liquor jugs
 
 
 ;Related tasks:
-*   [[Input/Output for Pairs of Numbers]] 
+*   [[Input/Output for Pairs of Numbers]]
 *   [[File/Input and Output]]
 
 
@@ -162,31 +162,31 @@ line 3 is the longest
 #include<stdlib.h>
 #include<stdio.h>
 
-#define LEN 100 /* Max string length */ 
+#define LEN 100 /* Max string length */
 
 int main()
 {
 	char **list;
 	int num, i;
-	
+
 	scanf("%d",&num);
-	
+
 	list = (char**)malloc(num*sizeof(char*));
-	
+
 	for(i=0;i<num;i++)
 	{
-	   list[i] = (char*)malloc(LEN*sizeof(char));  
+	   list[i] = (char*)malloc(LEN*sizeof(char));
 	   fflush(stdin);
 	   fgets(list[i],LEN,stdin);
-	} 
-	
+	}
+
 	printf("\n");
-	
+
 	for(i=0;i<num;i++)
 	{
 		printf("%s",list[i]);
 	}
-	
+
 	return 0;
 }
 
@@ -219,15 +219,15 @@ void main() {
 Sub printLines(lines() As String)
   For i As Integer = LBound(lines) To UBound(lines)
     Print lines(i)
-  Next 
+  Next
 End Sub
 
-Dim As UInteger n 
+Dim As UInteger n
 Input "", n
 Dim lines(1 To n) As String
 For i As Integer = 1 To  n
   Line Input lines(i)
-Next 
+Next
 Print
 printLines lines()
 Sleep
@@ -274,7 +274,7 @@ var
 	line: string;
 begin
 	readLn(numberOfLines);
-	
+
 	for numberOfLines := numberOfLines downto 1 do
 	begin
 		readLn(line);
@@ -414,7 +414,7 @@ What does it do before this?
 ;
 ```
  is "raze".
-The fork 
+The fork
 ```txt
 (; (1!:2) 4:)
 ```
@@ -454,7 +454,7 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		int n = Integer.parseInt(in.nextLine());  //doesn't use nextInt() so nextLine doesn't just read newline character
-		for(int i=0; i<n; i++){		
+		for(int i=0; i<n; i++){
 			String word = in.nextLine();
 			doStuff(word);
 		}
@@ -551,7 +551,7 @@ class Rosetta {
         in->Close();
       };
     };
-  
+
     if(args->Size() = 1) {
       in := FileReader->New(args[0]);
       i := in->ReadString()->ToInt();
@@ -570,22 +570,22 @@ class Rosetta {
 
 This task is not possible to implement directly in GP: for <code>input()</code> to take a string the user would have to wrap it in quotes (and escape quotes and newlines). One must use PARI:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <pari/pari.h>
 
 int main(void);
- 
+
 int
 main()
 {
   int i, n, s;
   GEN vec;
-  
+
   // 1 MB stack, not using prime table
   pari_init(1000000, 0);
-  
+
   scanf("%d", &n);
   GEN vec = cgetg(n+1, t_VEC);
 
@@ -632,7 +632,7 @@ Verbose version:
 sub do-stuff ($line) {
     say $line;
 }
- 
+
 my $n = +get;
 for ^$n {
     my $line = get;
@@ -731,23 +731,23 @@ for x in range(linecount):
 
 ```Prolog
 
-number_of_lines(Num) :-	
-	current_input(In), 
+number_of_lines(Num) :-
+	current_input(In),
 	read_line_to_codes(In, Line),
 	number_codes(Num, Line).
-	
-input_lines_for_num(0, ListOfLines)	:-	
+
+input_lines_for_num(0, ListOfLines)	:-
 	format('~nThe lines you entered were: ~n~n'),
-	maplist(format('~w~n'), ListOfLines).	
+	maplist(format('~w~n'), ListOfLines).
 input_lines_for_num(Num, CurrentLines) :-
 	Num > 0,
 	Num1 is Num - 1,
-	current_input(In), 
+	current_input(In),
 	read_line_to_codes(In, Line),
 	atom_codes(LineAsAtom, Line),
 	append(CurrentLines, [LineAsAtom], MoreLines),
 	input_lines_for_num(Num1, MoreLines).
-	
+
 lines :-
 	number_of_lines(Num),
 	input_lines_for_num(Num, []).
@@ -791,7 +791,7 @@ false.
 
 (define line-count (string->number ;only reads numbers
                     (string-trim
-                     (read-line)))) 
+                     (read-line))))
 
 (for ([i (in-range line-count)])
   (do-stuff (read-line)))
@@ -801,7 +801,7 @@ false.
 
 ## REXX
 
-Programming note:   this method was chosen because the standard input may be identical to the standard output. 
+Programming note:   this method was chosen because the standard input may be identical to the standard output.
 
 ```rexx
 /*REXX program writes a number of lines from the default input file (C.L.).   */
@@ -838,18 +838,18 @@ ccc
 
 see "n = "
 give n
-lines = list(number(n)) 
+lines = list(number(n))
 for i = 1 to  n
     see "lines[" + i + "] = " + nl
     give lines[i]
-next 
+next
 see nl
 printlines(lines)
 
 func printlines(lines)
      for i = 1 to len(lines)
          see lines[i] + nl
-     next 
+     next
 
 ```
 
@@ -860,7 +860,7 @@ Input:
 3
 hello
 hello world
-Pack my Box with 5 dozen liquor jugs 
+Pack my Box with 5 dozen liquor jugs
 
 ```
 
@@ -870,7 +870,7 @@ Output:
 
 hello
 hello world
-Pack my Box with 5 dozen liquor jugs 
+Pack my Box with 5 dozen liquor jugs
 
 ```
 

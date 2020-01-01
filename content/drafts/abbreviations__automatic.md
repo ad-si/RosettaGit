@@ -310,8 +310,8 @@ NG
 
 {{trans|C#}}
 
-```cpp>#include <iomanip
-
+```cpp
+#include <iomanip>
 #include <iostream>
 #include <fstream>
 #include <map>
@@ -686,7 +686,7 @@ It uses the standard library split-sequence to split the string into words.
 2 zondag maandag dinsdag woensdag donderdag vrijdag zaterdag
 2 Diman^co Lundo Mardo Merkredo ^Jaùdo Vendredo Sabato
 1 pÜhapäev esmaspäev teisipäev kolmapäev neljapäev reede laupäev
-1 
+1
 7 Diu_prima Diu_sequima Diu_tritima Diu_quartima Diu_quintima Diu_sextima Diu_sabbata
 2 sunnudagur mánadagur tÿsdaguy mikudagur hósdagur friggjadagur leygardagur
 2 Yek_Sham'beh Do_Sham'beh Seh_Sham'beh Cha'har_Sham'beh Panj_Sham'beh Jom'eh Sham'beh
@@ -933,13 +933,13 @@ uniq(_, L, Acc) ->
     %  list of abbrevs, starting with substring 1,1:
     TempSet = sets:from_list( Abbr ),
     TempSize = sets:size(TempSet),
-    if 
-      TempSize =:= 7 -> 
+    if
+      TempSize =:= 7 ->
         uniq(TempSet,Acc);
       true  -> uniq(0, L, Acc+1)
      end.
 
-read_lines(Device, Acc) when Acc < 19 -> 
+read_lines(Device, Acc) when Acc < 19 ->
    case file:read_line(Device) of
     {ok, Line} ->
       Tokenized = string:tokens(Line," "),
@@ -949,9 +949,9 @@ read_lines(Device, Acc) when Acc < 19 ->
        io:fwrite("~p~n",["Done"])
     end;
 
-read_lines(Device, 19) -> 
+read_lines(Device, 19) ->
        io:fwrite("~p~n",["Done"]).
-    
+
 
 main() ->
   {ok, Device} = (file:open("weekdays.txt", read)),
@@ -1034,7 +1034,7 @@ IN: rosetta-code.abbreviations-automatic
 : map-head ( seq n -- seq' ) [ short head ] curry map ;
 
 : unique? ( seq n -- ? ) map-head all-unique? ;
-    
+
 : (abbr-length) ( seq -- n )
     1 [ 2dup unique? ] [ 1 + ] until nip ;
 
@@ -1090,7 +1090,7 @@ abbr                Days of the week
   2  zondag maandag dinsdag woensdag donderdag vrijdag zaterdag
   2  Diman^co Lundo Mardo Merkredo ^Jaùdo Vendredo Sabato
   1  pÜhapäev esmaspäev teisipäev kolmapäev neljapäev reede laupäev
- ""  
+ ""
   7  Diu_prima Diu_sequima Diu_tritima Diu_quartima Diu_quintima Diu_sextima Diu_sabbata
   2  sunnudagur mánadagur tÿsdaguy mikudagur hósdagur friggjadagur leygardagur
   2  Yek_Sham'beh Do_Sham'beh Seh_Sham'beh Cha'har_Sham'beh Panj_Sham'beh Jom'eh Sham'beh
@@ -1345,11 +1345,11 @@ Al_Ahad Al_Ithinin Al_Tholatha'a Al_Arbia'a Al_Kamis Al_Gomia'a Al_Sabit
 )
 
    auto_abbreviate DAY_NAMES
-2 Sunday Monday Tuesday Wednesday Thursday Friday Saturday                
-2 Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag               
-4 E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë              
-0                                                                         
-2 Ehud Segno Maksegno Erob Hamus Arbe Kedame                              
+2 Sunday Monday Tuesday Wednesday Thursday Friday Saturday
+2 Sondag Maandag Dinsdag Woensdag Donderdag Vrydag Saterdag
+4 E_djelë E_hënë E_martë E_mërkurë E_enjte E_premte E_shtunë
+0
+2 Ehud Segno Maksegno Erob Hamus Arbe Kedame
 5 Al_Ahad Al_Ithinin Al_Tholatha'a Al_Arbia'a Al_Kamis Al_Gomia'a Al_Sabit
 
 ```
@@ -1640,7 +1640,7 @@ function processweek(txt)
                 end
                 println(" => ", abbrev, ", which are length ", i)
                 break
-            elseif i == minlen 
+            elseif i == minlen
                 println(" => Could not find abbreviations for the week")
             end
         end
@@ -1700,7 +1700,7 @@ fun main(args: Array<String>) {
             }
             len++
         }
-    }  
+    }
 }
 ```
 
@@ -1732,7 +1732,7 @@ fun main(args: Array<String>) {
  2  zondag maandag dinsdag woensdag donderdag vrijdag zaterdag
  2  Diman^co Lundo Mardo Merkredo ^Jaùdo Vendredo Sabato
  1  pÜhapäev esmaspäev teisipäev kolmapäev neljapäev reede laupäev
-    
+
  7  Diu_prima Diu_sequima Diu_tritima Diu_quartima Diu_quintima Diu_sextima Diu_sabbata
  2  sunnudagur mánadagur tÿsdaguy mikudagur hósdagur friggjadagur leygardagur
  2  Yek_Sham'beh Do_Sham'beh Seh_Sham'beh Cha'har_Sham'beh Panj_Sham'beh Jom'eh Sham'beh
@@ -1991,7 +1991,7 @@ class Abbreviations  {
     leaving {
       reader->Close();
     };
-    
+
     cache := StringMap->New();
     line := reader->ReadString();
     while(line <> Nil) {
@@ -2016,7 +2016,7 @@ class Abbreviations  {
             sd : String;
             if(len >= day->Size()) {
               sd := day;
-            } 
+            }
             else {
               sd := day->SubString(len);
             };
@@ -2226,7 +2226,7 @@ sub auto-abbreviate ( Str $string ) {
 23) 2  zondag maandag dinsdag woensdag donderdag vrijdag zaterdag
 24) 2  Diman^co Lundo Mardo Merkredo ^Jaùdo Vendredo Sabato
 25) 1  pÜhapäev esmaspäev teisipäev kolmapäev neljapäev reede laupäev
-26) Nil  
+26) Nil
 27) 7  Diu_prima Diu_sequima Diu_tritima Diu_quartima Diu_quintima Diu_sextima Diu_sabbata
 28) 2  sunnudagur mánadagur tÿsdaguy mikudagur hósdagur friggjadagur leygardagur
 29) 2  Yek_Sham'beh Do_Sham'beh Seh_Sham'beh Cha'har_Sham'beh Panj_Sham'beh Jom'eh Sham'beh
@@ -2660,8 +2660,8 @@ if __name__ == '__main__':
 
 
 
-Composition of existing generics – just one new function. 
-(An optimisation for higher levels of code reuse, faster code development, and easier refactoring). 
+Composition of existing generics – just one new function.
+(An optimisation for higher levels of code reuse, faster code development, and easier refactoring).
 
 The generic primitives are curried, allowing for more flexible composition:
 {{Works with|Python|3}}
@@ -2962,8 +2962,8 @@ abbrev                                 days of the week
 
 
 ```ruby
-require "abbrev" 
- 
+require "abbrev"
+
 File.read("daynames.txt").each_line do |line|
   next if line.strip.empty?
   abbr = line.split.abbrev.invert
@@ -3696,10 +3696,10 @@ close #a
 
 sub buscar(s$)
     local n, d, i, j, s, a$, b$, r$(1)
-    
+
     n = token(s$, r$())
     d = 1
-    
+
     repeat
         s = true
         for i = 1 to n
@@ -3723,7 +3723,7 @@ zkl doesn't grok UTF-8 so I'm using a byte by byte check. It works surprisingly 
 
 ```zkl
 nds:=File("daysOfWeek.txt").read().howza(11)	// stripped lines
-.pump(List,Void.Filter,fcn(day){ 
+.pump(List,Void.Filter,fcn(day){
    d,N,m := day.split(),d.len(),(0).max(d.apply("len"));  // N==7
    foreach n in ([1..m]){
       ds:=d.apply("get",0,n);  // ("Su","Mo","Tu","We","Th","Fr","Sa")

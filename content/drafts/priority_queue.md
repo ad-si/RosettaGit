@@ -111,14 +111,14 @@ end Priority_Queues;
 /* example structure  item  */
     .struct  0
 item_priority:                     @ priority
-    .struct  item_priority + 4 
+    .struct  item_priority + 4
 item_address:                      @ string address
-    .struct  item_address + 4 
+    .struct  item_address + 4
 item_fin:
 /* example structure heap  */
     .struct  0
 heap_size:                         @ heap size
-    .struct  heap_size + 4 
+    .struct  heap_size + 4
 heap_items:                        @ structure of items
     .struct  heap_items + (item_fin * NBMAXIELEMENTS)
 heap_fin:
@@ -144,15 +144,15 @@ szCarriageReturn:  .asciz "\n"
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 .align 4
-Queue1:                .skip heap_fin      @ queue memory place 
+Queue1:                .skip heap_fin      @ queue memory place
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                       @ entry of program 
+.global main
+main:                                       @ entry of program
     ldr r0,iAdrQueue1                       @ queue structure address
     bl isEmpty
     cmp r0,#0
@@ -231,8 +231,8 @@ main:                                       @ entry of program
 99:
     @ error
     ldr r0,iAdrszMessError
-    bl affichageMess       
-100:                                        @ standard end of the program 
+    bl affichageMess
+100:                                        @ standard end of the program
     mov r0, #0                              @ return code
     mov r7, #EXIT                           @ request to exit program
     svc #0                                  @ perform the system call
@@ -251,7 +251,7 @@ iAdrszCarriageReturn:     .int szCarriageReturn
 iAdrsMessPriority:        .int sMessPriority
 
 /******************************************************************/
-/*     test if queue empty                                        */ 
+/*     test if queue empty                                        */
 /******************************************************************/
 /* r0 contains the address of queue structure */
 isEmpty:
@@ -260,10 +260,10 @@ isEmpty:
     cmp r1,#0
     moveq r0,#1                             @ empty queue
     movne r0,#0                             @ not empty
-    pop {r1,lr}                             @ restaur registers 
-    bx lr                                   @ return  
+    pop {r1,lr}                             @ restaur registers
+    bx lr                                   @ return
 /******************************************************************/
-/*     add item  in queue                                         */ 
+/*     add item  in queue                                         */
 /******************************************************************/
 /* r0 contains the address of queue structure */
 /* r1 contains the priority of item           */
@@ -313,10 +313,10 @@ pushQueue:
     bge 100f
     str r3,[r0,#heap_size]                  @ store new size
 100:
-    pop {r1-r9,lr}                          @ restaur registers 
-    bx lr                                   @ return 
+    pop {r1-r9,lr}                          @ restaur registers
+    bx lr                                   @ return
 /******************************************************************/
-/*     swap two elements of table                                  */ 
+/*     swap two elements of table                                  */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the first index */
@@ -340,9 +340,9 @@ exchange:
 
 100:
     pop {r3-r6,lr}
-    bx lr                                              @ return 
+    bx lr                                              @ return
 /******************************************************************/
-/*     move one element of table                                  */ 
+/*     move one element of table                                  */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the origin index */
@@ -362,11 +362,11 @@ moveItem:
 
 100:
     pop {r3-r6,lr}
-    bx lr                                   @ return 
+    bx lr                                   @ return
 
 
 /******************************************************************/
-/*     pop queue                                                  */ 
+/*     pop queue                                                  */
 /******************************************************************/
 /* r0 contains the address of queue structure */
 /* r0 return priority        */
@@ -386,7 +386,7 @@ popQueue:
     ldr r3,[r0,#heap_size]                  @ heap size
     sub r7,r3,#1                            @ last item
     mov r1,r7
-    mov r2,#0                               @ first item 
+    mov r2,#0                               @ first item
     bl moveItem                             @ move last item in first item
 
     cmp r7,#1                               @ one only item ?
@@ -402,12 +402,12 @@ popQueue:
     cmp r6,r7                               @ current index > last index
     bgt 2f                                  @ yes
                                             @ no compar priority current item last item
-    mov r1,#item_fin            
+    mov r1,#item_fin
     mul r1,r6,r1
     add r1,r0
     add r1,#heap_items                      @ address of current item structure
     ldr r1,[r1,#item_priority]
-    mov r10,#item_fin 
+    mov r10,#item_fin
     mul r10,r5,r10
     add r10,r0
     add r10,#heap_items                     @ address of last item structure
@@ -423,7 +423,7 @@ popQueue:
     add r1,r0
     add r1,#heap_items                     @ address of item structure
     ldr r1,[r1,#item_priority]
-    mov r2,#item_fin 
+    mov r2,#item_fin
     mul r2,r5,r2
     add r2,r0
     add r2,#heap_items                     @ address of item structure
@@ -442,47 +442,47 @@ popQueue:
     mov r0,r8                              @ return priority
     mov r1,r9                              @ return string address
 100:
-    pop {r2-r10,lr}                        @ restaur registers 
-    bx lr                                  @ return  
+    pop {r2-r10,lr}                        @ restaur registers
+    bx lr                                  @ return
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                   @ save  registres
-    mov r2,#0                               @ counter length 
-1:                                          @ loop length calculation 
-    ldrb r1,[r0,r2]                         @ read octet start position + index 
-    cmp r1,#0                               @ if 0 its over 
-    addne r2,r2,#1                          @ else add 1 in the length 
-    bne 1b                                  @ and loop 
-                                            @ so here r2 contains the length of the message 
-    mov r1,r0                               @ address message in r1 
-    mov r0,#STDOUT                          @ code to write to the standard output Linux 
-    mov r7, #WRITE                          @ code call system "write" 
-    svc #0                                  @ call systeme 
-    pop {r0,r1,r2,r7,lr}                    @ restaur registers */ 
-    bx lr                                   @ return  
+    mov r2,#0                               @ counter length
+1:                                          @ loop length calculation
+    ldrb r1,[r0,r2]                         @ read octet start position + index
+    cmp r1,#0                               @ if 0 its over
+    addne r2,r2,#1                          @ else add 1 in the length
+    bne 1b                                  @ and loop
+                                            @ so here r2 contains the length of the message
+    mov r1,r0                               @ address message in r1
+    mov r0,#STDOUT                          @ code to write to the standard output Linux
+    mov r7, #WRITE                          @ code call system "write"
+    svc #0                                  @ call systeme
+    pop {r0,r1,r2,r7,lr}                    @ restaur registers */
+    bx lr                                   @ return
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                         @ save registers 
+    push {r1-r4,lr}                         @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 1:                                          @ start loop
     bl divisionpar10                        @ r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                              @ digit
     strb r1,[r3,r2]                         @ store digit on area
-    cmp r0,#0                               @ stop if quotient = 0 
-    subne r2,#1                               @ previous position    
+    cmp r0,#0                               @ stop if quotient = 0
+    subne r2,#1                               @ previous position
     bne 1b                                  @ else loop
                                             @ end replaces digit in front of area
     mov r4,#0
 2:
-    ldrb r1,[r3,r2] 
+    ldrb r1,[r3,r2]
     strb r1,[r3,r4]                         @ store in area begin
     add r4,#1
     add r2,#1                               @ previous position
@@ -495,27 +495,27 @@ conversion10:
     cmp r4,#LGZONECAL                       @ end
     ble 3b
 100:
-    pop {r1-r4,lr}                          @ restaur registres 
+    pop {r1-r4,lr}                          @ restaur registres
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
     push {r2-r4}                           @ save registers  */
-    mov r4,r0  
+    mov r4,r0
     mov r3,#0x6667                         @ r3 <- magic_number  lower
     movt r3,#0x6666                        @ r3 <- magic_number  upper
-    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) 
+    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0)
     mov r2, r2, ASR #2                     @ r2 <- r2 >> 2
     mov r1, r0, LSR #31                    @ r1 <- r0 >> 31
-    add r0, r2, r1                         @ r0 <- r2 + r1 
-    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5 
+    add r0, r2, r1                         @ r0 <- r2 + r1
+    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                   @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2-r4}
     bx lr                                  @ return
@@ -542,7 +542,7 @@ Priority : 5           : Make tea
 
 ```AutoHotkey
 ;-----------------------------------
-PQ_TopItem(Queue,Task:=""){					; remove and return top priority item 
+PQ_TopItem(Queue,Task:=""){					; remove and return top priority item
 	TopPriority := PQ_TopPriority(Queue)
 	for T, P in Queue
 		if (P = TopPriority) && ((T=Task)||!Task)
@@ -633,7 +633,7 @@ ExitApp
 
 ## Axiom
 
-Axiom already has a heap domain for ordered sets. 
+Axiom already has a heap domain for ordered sets.
 We define a domain for ordered key-entry pairs and then define a priority queue using the heap domain over the pairs:
 
 ```Axiom
@@ -661,7 +661,7 @@ PriorityQueue(Key:OrderedSet,Entry:SetCategory): Exports == Implementation where
     heap : List S  -> %
     setelt: (%,Key,Entry) -> Entry
   Implementation == Heap(S) add
-    setelt(x:%,key:Key,entry:Entry) == 
+    setelt(x:%,key:Key,entry:Entry) ==
       insert!(construct(key,entry)$S,x)
       entry
 ```
@@ -716,7 +716,7 @@ goto:eof
 
 :pop
 set queu >nul 2>nul
-if %errorlevel% equ 1 (set order=-1&set item=no more items & goto:eof)  
+if %errorlevel% equ 1 (set order=-1&set item=no more items & goto:eof)
 for /f "tokens=1,2 delims==" %%a in ('set queu') do set %%a=& set order=%%a& set item=%%~b& goto:next
 :next
 set order= %order:~-3%
@@ -741,8 +741,8 @@ goto:eof
 
 Using a dynamic array as a binary heap.  Stores integer priority and a character pointer.  Supports push and pop.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct {
@@ -779,11 +779,11 @@ char *pop (heap_t *h) {
         return NULL;
     }
     char *data = h->nodes[1].data;
-    
+
     h->nodes[1] = h->nodes[h->len];
-    
+
     h->len--;
-    
+
     i = 1;
     while (i!=h->len+1) {
         k = h->len+1;
@@ -833,8 +833,8 @@ Make tea
 The C++ standard library contains the <code>std::priority_queue</code> opaque data structure. It implements a max-heap.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <queue>
 #include <utility>
@@ -870,12 +870,12 @@ int main() {
 ```
 
 
-Alternately, you can use a pre-existing container of yours 
+Alternately, you can use a pre-existing container of yours
 and use the heap operations to manipulate it:
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -1126,7 +1126,7 @@ The above class code offers a full set of static methods and properties:
   4.  "peekMin" to retrieve the lowest priority key/value pair entry as a Tuple (possibly null for empty queues),
   5.  "push" to insert an entry,
   6.  "deleteMin" to remove the lowest priority entry,
-  7.  "replaceMin" to replace the lowest priority and adjust the queue according to the value (faster than a "deleteMin" followed by a "push"), 
+  7.  "replaceMin" to replace the lowest priority and adjust the queue according to the value (faster than a "deleteMin" followed by a "push"),
   8.  "adjust" to apply a function to every key/value entry pair and reheapify the result,
   9.  "merge" to merge two queues into a single reheapified result,
   10. "fromSeq" to build a queue from a sequence of key/value pair tuples,
@@ -1278,7 +1278,7 @@ user=> p
 user=> (assoc p "Tax return" 2)
 {"Solve RC tasks" 1, "Tax return" 2, "Clear drains" 3, "Feed cat" 4, "Make tea" 5}
 
-; peek to get first item, pop to give you back the priority-map with the first item removed 
+; peek to get first item, pop to give you back the priority-map with the first item removed
 user=> (peek p)
 ["Solve RC tasks" 1]
 
@@ -1298,13 +1298,13 @@ PriorityQueue = ->
   # Use closure style for object creation (so no "new" required).
   # Private variables are toward top.
   h = []
-  
+
   better = (a, b) ->
     h[a].priority < h[b].priority
-  
+
   swap = (a, b) ->
     [h[a], h[b]] = [h[b], h[a]]
-      
+
   sift_down = ->
     max = h.length
     n = 0
@@ -1317,7 +1317,7 @@ PriorityQueue = ->
       return if best == n
       swap n, best
       n = best
-      
+
   sift_up = ->
     n = h.length - 1
     while n > 0
@@ -1325,7 +1325,7 @@ PriorityQueue = ->
       return if better parent, n
       swap n, parent
       n = parent
- 
+
   # now return the public interface, which is an object that only
   # has functions on it
   self =
@@ -1338,7 +1338,7 @@ PriorityQueue = ->
         value: value
       h.push elem
       sift_up()
-      
+
     pop: ->
       throw Error("cannot pop from empty queue") if h.length == 0
       value = h[0].value
@@ -1349,7 +1349,7 @@ PriorityQueue = ->
       value
 
 # test
-do ->     
+do ->
   pq = PriorityQueue()
   pq.push 3, "Clear drains"
   pq.push 4, "Feed cat"
@@ -1359,12 +1359,12 @@ do ->
 
   while pq.size() > 0
     console.log pq.pop()
-    
+
   # test high performance
   for n in [1..100000]
     priority = Math.random()
     pq.push priority, priority
-  
+
   v = pq.pop()
   console.log "First random element was #{v}"
   while pq.size() > 0
@@ -1379,7 +1379,7 @@ do ->
 output
 
 <lang>
-> coffee priority_queue.coffee 
+> coffee priority_queue.coffee
 Solve RC tasks
 Tax return
 Clear drains
@@ -1406,12 +1406,12 @@ TYPE
     p-: LONGINT; (* Priority *)
     value-: Boxes.Object
   END;
-  
+
   PQueue* = POINTER TO RECORD
     a: POINTER TO ARRAY OF Rank;
     size-: LONGINT;
   END;
-  
+
   PROCEDURE NewRank*(p: LONGINT; v: Boxes.Object): Rank;
   VAR
     r: Rank;
@@ -1419,7 +1419,7 @@ TYPE
     NEW(r);r.p := p;r.value := v;
     RETURN r
   END NewRank;
-  
+
   PROCEDURE NewPQueue*(cap: LONGINT): PQueue;
   VAR
     pq: PQueue;
@@ -1428,7 +1428,7 @@ TYPE
     NEW(pq.a,cap);pq.a[0] := NewRank(MIN(INTEGER),NIL);
     RETURN pq
   END NewPQueue;
-  
+
   PROCEDURE (pq: PQueue) Push*(r:Rank), NEW;
   VAR
     i: LONGINT;
@@ -1440,7 +1440,7 @@ TYPE
     END;
     pq.a[i] := r
   END Push;
-  
+
   PROCEDURE (pq: PQueue) Pop*(): Rank,NEW;
   VAR
     r,y: Rank;
@@ -1457,12 +1457,12 @@ TYPE
     pq.a[i] := y;
     RETURN r
   END Pop;
-  
+
   PROCEDURE (pq: PQueue) IsEmpty*(): BOOLEAN,NEW;
   BEGIN
     RETURN pq.size = 0
   END IsEmpty;
-  
+
   PROCEDURE Test*;
   VAR
     pq: PQueue;
@@ -1484,7 +1484,7 @@ TYPE
     ShowRank(pq.Pop());
     ShowRank(pq.Pop());
   END Test;
-  
+
 END PQueues.
 
 ```
@@ -1498,14 +1498,14 @@ DEFINITION PQueues;
   IMPORT Boxes;
 
   TYPE
-    PQueue = POINTER TO RECORD 
+    PQueue = POINTER TO RECORD
       size-: LONGINT;
       (pq: PQueue) IsEmpty (): BOOLEAN, NEW;
       (pq: PQueue) Pop (): Rank, NEW;
       (pq: PQueue) Push (r: Rank), NEW
     END;
 
-    Rank = POINTER TO RECORD 
+    Rank = POINTER TO RECORD
       p-: LONGINT;
       value-: Boxes.Object
     END;
@@ -1602,26 +1602,26 @@ We use the built-in binary tree library. Each tree node has a datum (key . value
 ```elixir
 defmodule Priority do
   def create, do: :gb_trees.empty
- 
+
   def insert( element, priority, queue ), do: :gb_trees.enter( priority, element, queue )
- 
+
   def peek( queue ) do
     {_priority, element, _new_queue} = :gb_trees.take_smallest( queue )
     element
   end
-  
+
   def task do
     items = [{3, "Clear drains"}, {4, "Feed cat"}, {5, "Make tea"}, {1, "Solve RC tasks"}, {2, "Tax return"}]
     queue = Enum.reduce(items, create, fn({priority, element}, acc) -> insert( element, priority, acc ) end)
     IO.puts "peek priority: #{peek( queue )}"
     Enum.reduce(1..length(items), queue, fn(_n, q) -> write_top( q ) end)
   end
-  
+
   def top( queue ) do
     {_priority, element, new_queue} = :gb_trees.take_smallest( queue )
     {element, new_queue}
   end
-  
+
   defp write_top( q ) do
     {element, new_queue} = top( q )
     IO.puts "top priority: #{element}"
@@ -1689,7 +1689,7 @@ write_top( Q ) ->
 
 ```txt
 
-12> priority_queue:task(). 
+12> priority_queue:task().
 peek priority: "Solve RC tasks"
 top priority: "Solve RC tasks"
 top priority: "Tax return"
@@ -1848,14 +1848,14 @@ module PriorityQ =
   let isEmpty = function | Mt -> true
                          | _  -> false
 
-  // Return number of elements in the priority queue. 
-  // /O(log(n)^2)/ 
+  // Return number of elements in the priority queue.
+  // /O(log(n)^2)/
   let rec size = function
-    | Mt -> 0 
+    | Mt -> 0
     | Br(_, ll, rr) ->
         let n = size rr
-        // rest n p q, where n = size ll, and size ll - size rr = 0 or 1 
-        // returns 1 + size ll - size rr. 
+        // rest n p q, where n = size ll, and size ll - size rr = 0 or 1
+        // returns 1 + size ll - size rr.
         let rec rest n pl pr =
           match pl with
             | Mt -> 1
@@ -1865,14 +1865,14 @@ module PriorityQ =
                   | Br(_, prl, prr) ->
                       let nm1 = n - 1 in let d = nm1 >>> 1
                       if (nm1 &&& 1) = 0
-                        then rest d pll prl // subtree sizes: (d or d+1), d; d, d 
-                        else rest d plr prr // subtree sizes: d+1, (d or d+1); d+1, d 
+                        then rest d pll prl // subtree sizes: (d or d+1), d; d, d
+                        else rest d plr prr // subtree sizes: d+1, (d or d+1); d+1, d
         2 * n + rest n ll rr
 
   let peekMin = function | Br(kv, _, _) -> Some(kv.k, kv.v)
                          | _            -> None
 
-  let rec push wk wv = 
+  let rec push wk wv =
     function | Mt -> Br(HeapEntry(wk, wv), Mt, Mt)
              | Br(vkv, ll, rr) ->
                  if wk <= vkv.k then
@@ -1891,12 +1891,12 @@ module PriorityQ =
                   if wk <= vkvl.k && wk <= vkvr.k then Br(HeapEntry(wk, wv), pl, pr)
                   elif vkvl.k <= vkvr.k then Br(vkvl, sift pll plr, pr)
                   else Br(vkvr, pl, sift prl prr)
-    sift pql pqr                                        
+    sift pql pqr
 
   let replaceMin wk wv = function | Mt -> Mt
                                   | Br(_, ll, rr) -> siftdown wk wv ll rr
 
-  let deleteMin = function 
+  let deleteMin = function
         | Mt -> Mt
         | Br(_, ll, Mt) -> ll
         | Br(vkv, ll, rr) ->
@@ -1907,16 +1907,16 @@ module PriorityQ =
                                      | Br(vkv, pl, pr) -> let kvd, pqd = leftrem pl
                                                           kvd, Br(vkv, pr, pqd)
           let (kvd, pqd) = leftrem ll
-          siftdown kvd.k kvd.v rr pqd; 
+          siftdown kvd.k kvd.v rr pqd;
 
   let adjust f pq =
-        let rec adj = function 
+        let rec adj = function
               | Mt -> Mt
               | Br(vkv, ll, rr) -> let nk, nv = f vkv.k vkv.v
                                    siftdown nk nv (adj ll) (adj rr)
         adj pq
 
-  let fromSeq sq = 
+  let fromSeq sq =
     if Seq.isEmpty sq then Mt
     else let nmrtr = sq.GetEnumerator()
          let rec build lvl = if lvl = 0 || not (nmrtr.MoveNext()) then Mt
@@ -2033,7 +2033,7 @@ module PriorityQ =
       else pq.[i] <- HeapEntry(nk, nv)
     adj 0; pq
 
-  let fromSeq sq = 
+  let fromSeq sq =
     if Seq.isEmpty sq then empty
     else let pq = new MinHeapTree<_>(sq |> Seq.map (fun (k, v) -> HeapEntry(k, v)))
          let sz = pq.Count in let lkv = pq.[sz - 1]
@@ -2154,7 +2154,7 @@ Factor has priority queues implemented in the library: documentation is availabl
     { 5 "Make tea" }
     { 1 "Solve RC tasks" }
     { 2 "Tax return" }
-  } swap heap-push-all 
+  } swap heap-push-all
 ] [
   [ print ] slurp-heap
 ] bi
@@ -2203,9 +2203,9 @@ subroutine siftdown(this, a)
   parent = a
   do while(parent*2 <= this%n)
     child = parent*2
-    if (child + 1 <= this%n) then 
+    if (child + 1 <= this%n) then
       if (x(child+1)%priority > x(child)%priority ) then
-        child = child +1 
+        child = child +1
       end if
     end if
     if (x(parent)%priority < x(child)%priority) then
@@ -2213,8 +2213,8 @@ subroutine siftdown(this, a)
       parent = child
     else
       exit
-    end if  
-  end do      
+    end if
+  end do
   end associate
 end subroutine
 
@@ -2236,7 +2236,7 @@ subroutine enqueue(this, priority, task)
   integer                     :: i
   x%priority = priority
   x%task = task
-  this%n = this%n +1  
+  this%n = this%n +1
   if (.not.allocated(this%buf)) allocate(this%buf(1))
   if (size(this%buf)<this%n) then
     allocate(tmp(2*size(this%buf)))
@@ -2245,19 +2245,19 @@ subroutine enqueue(this, priority, task)
   end if
   this%buf(this%n) = x
   i = this%n
-  do 
+  do
     i = i / 2
     if (i==0) exit
     call this%siftdown(i)
   end do
 end subroutine
-end module 
+end module
 
 program main
   use priority_queue_mod
 
   type (queue) :: q
-  type (node)  :: x 
+  type (node)  :: x
 
   call q%enqueue(3, "Clear drains")
   call q%enqueue(4, "Feed cat")
@@ -2265,7 +2265,7 @@ program main
   call q%enqueue(1, "Solve RC tasks")
   call q%enqueue(2, "Tax return")
 
-  do while (q%n >0) 
+  do while (q%n >0)
     x = q%top()
     print "(g0,a,a)", x%priority, " -> ", trim(x%task)
   end do
@@ -2296,7 +2296,7 @@ def comparator( Task(a, _), Task(b, _) )
   | a > b     = -1
   | a < b     =  1
   | otherwise =  0
-  
+
 q = PriorityQueue( ordering(comparator) )
 
 q.enqueue(
@@ -2371,7 +2371,7 @@ func main() {
     // enqueue
     heap.Push(pq, Task{2, "Tax return"})
 
-    for pq.Len() != 0 { 
+    for pq.Len() != 0 {
         // dequeue
         fmt.Println(heap.Pop(pq))
     }
@@ -2520,12 +2520,12 @@ emptyPQ = MinHeapEmpty
 isEmptyPQ :: PriorityQ kv -> Bool
 isEmptyPQ Mt = True
 isEmptyPQ _  = False
- 
+
 sizePQ :: (Ord kv) => MinHeap kv -> Int
 sizePQ MinHeapEmpty = 0
 sizePQ (MinHeapLeaf _) = 1
 sizePQ (MinHeapNode _ cnt _ _) = cnt
- 
+
 peekMinPQ :: MinHeap kv -> Maybe kv
 peekMinPQ MinHeapEmpty = Nothing
 peekMinPQ (MinHeapLeaf v) = Just v
@@ -2558,7 +2558,7 @@ siftdown kv cnt lft rght = replace cnt lft rght where
           then MinHeapNode kv 2 ll MinHeapEmpty
           else MinHeapNode vl 2 (MinHeapLeaf kv) MinHeapEmpty }
     MinHeapLeaf vr ->
-      case ll of 
+      case ll of
         MinHeapLeaf vl -> if vl <= vr
           then if kv <= vl then MinHeapNode kv cc ll rr
                else MinHeapNode vl cc (MinHeapLeaf kv) rr
@@ -2620,12 +2620,12 @@ fromListPQ xs = let (_, pq) = build 1 xs in pq where
                                  else build (nlvl + 1) xrl in
                            let cnt = sizePQ pql + sizePQ pqr + 1 in
                            (xrr, siftdown x cnt pql pqr)
- 
+
 popMinPQ :: (Ord kv) => MinHeap kv -> Maybe (kv, MinHeap kv)
 popMinPQ pq = case peekMinPQ pq of
                 Nothing -> Nothing
                 Just v -> Just (v, deleteMinPQ pq)
- 
+
 toListPQ :: (Ord kv) => MinHeap kv -> [kv]
 toListPQ = unfoldr f where
   f MinHeapEmpty = Nothing
@@ -2653,20 +2653,20 @@ isEmptyPQ _  = False
 -- The size function isn't from the ML code, but an implementation was
 -- suggested by Bertram Felgenhauer on Haskell Cafe, so it is included.
 
--- Return number of elements in the priority queue. 
--- /O(log(n)^2)/ 
-sizePQ :: PriorityQ k v -> Int 
-sizePQ Mt = 0 
-sizePQ (Br _ _ pl pr) = 2 * n + rest n pl pr where 
-  n = sizePQ pr 
-  -- rest n p q, where n = sizePQ q, and sizePQ p - sizePQ q = 0 or 1 
-  -- returns 1 + sizePQ p - sizePQ q. 
-  rest :: Int -> PriorityQ k v -> PriorityQ k v -> Int 
-  rest 0 Mt _ = 1 
-  rest 0 _  _ = 2 
-  rest n (Br _ _ ll lr) (Br _ _ rl rr) = case r of 
-      0 -> rest d ll rl -- subtree sizes: (d or d+1), d; d, d 
-      1 -> rest d lr rr -- subtree sizes: d+1, (d or d+1); d+1, d 
+-- Return number of elements in the priority queue.
+-- /O(log(n)^2)/
+sizePQ :: PriorityQ k v -> Int
+sizePQ Mt = 0
+sizePQ (Br _ _ pl pr) = 2 * n + rest n pl pr where
+  n = sizePQ pr
+  -- rest n p q, where n = sizePQ q, and sizePQ p - sizePQ q = 0 or 1
+  -- returns 1 + sizePQ p - sizePQ q.
+  rest :: Int -> PriorityQ k v -> PriorityQ k v -> Int
+  rest 0 Mt _ = 1
+  rest 0 _  _ = 2
+  rest n (Br _ _ ll lr) (Br _ _ rl rr) = case r of
+      0 -> rest d ll rl -- subtree sizes: (d or d+1), d; d, d
+      1 -> rest d lr rr -- subtree sizes: d+1, (d or d+1); d+1, d
     where m1 = n - 1
           d = m1 `shiftR` 1
           r = m1 .&. 1
@@ -2680,7 +2680,7 @@ pushPQ wk wv Mt           = Br wk wv Mt Mt
 pushPQ wk wv (Br vk vv pl pr)
              | wk <= vk   = Br wk wv (pushPQ vk vv pr) pl
              | otherwise  = Br vk vv (pushPQ wk wv pr) pl
- 
+
 siftdown :: Ord k => k -> v -> PriorityQ k v -> PriorityQ k v -> PriorityQ k v
 siftdown wk wv Mt _          = Br wk wv Mt Mt
 siftdown wk wv (pl @ (Br vk vv _ _)) Mt
@@ -2690,7 +2690,7 @@ siftdown wk wv (pl @ (Br vkl vvl pll plr)) (pr @ (Br vkr vvr prl prr))
     | wk <= vkl && wk <= vkr = Br wk wv pl pr
     | vkl <= vkr             = Br vkl vvl (siftdown wk wv pll plr) pr
     | otherwise              = Br vkr vvr pl (siftdown wk wv prl prr)
- 
+
 replaceMinPQ :: Ord k => k -> v -> PriorityQ k v -> PriorityQ k v
 replaceMinPQ wk wv Mt             = Mt
 replaceMinPQ wk wv (Br _ _ pl pr) = siftdown wk wv pl pr
@@ -2700,7 +2700,7 @@ deleteMinPQ Mt             = Mt
 deleteMinPQ (Br _ _ pr Mt) = pr
 deleteMinPQ (Br _ _ pl pr) = let (k, v, npl) = leftrem pl in
                              siftdown k v pr npl where
-  leftrem (Br k v Mt Mt)             = (k, v, Mt) 
+  leftrem (Br k v Mt Mt)             = (k, v, Mt)
   leftrem (Br vk vv (Br k v _ _) Mt) = (k, v, Br vk vv Mt Mt)
   leftrem (Br vk vv pl pr)           = let (k, v, npl) = leftrem pl in
                                        (k, v, Br vk vv pr npl)
@@ -2900,9 +2900,9 @@ Example:
    >topN__Q 1
 make tea
    >topN__Q 4
-feed cat     
-clear drains 
-tax return   
+feed cat
+clear drains
+tax return
 solve rc task
 ```
 
@@ -2969,7 +2969,7 @@ The special key "priorities" is used to store the priorities in a sorted array. 
 
 We assume that if an item of a given priority is already in the priority queue, there is no need to add it again.
 ```jq
-# In the following, pq stands for "priority queue".  
+# In the following, pq stands for "priority queue".
 
 # Add an item with the given priority (an integer,
 # or a string representing an integer)
@@ -2999,7 +2999,7 @@ def pq_pop:
 def pq_peep:
   .priorities as $keys
   | if ($keys|length) == 0 then null
-    else (.[$keys[0]])[0] 
+    else (.[$keys[0]])[0]
     end ;
 
 # Add a bunch of tasks, presented as an array of arrays
@@ -3154,7 +3154,7 @@ Task(priority=5, name=Make tea)
 
         #store->removeFirst&size > 0
             ? return #retVal
-        
+
         // Need to find next priority
         .`store`->remove(.`cur_priority`)
 
@@ -3414,7 +3414,7 @@ Module UnOrderedArray {
                   =.Level
             }
       }
-      
+
       Class Item { X, S$
             Module Item { Read .X, .S$}
       }
@@ -3422,7 +3422,7 @@ Module UnOrderedArray {
             M=Queue.Peek() : Print "Item ";M.X, M.S$
       }
       Comp=Lambda -> { Read A,B : =COMPARE(A.X,B.X)}
-      
+
       Queue=PriorityQueue(100,Comp)
       Queue.Add Item(3, "Clear drains")
       Call Local PrintTop()
@@ -3441,7 +3441,7 @@ Module UnOrderedArray {
             Print "Size="; Queue.Size()
             If Queue.Size()=0 Then exit
             Call Local PrintTop()
-      }     
+      }
 }
 UnOrderedArray
 
@@ -3471,7 +3471,7 @@ Module PriorityQueue {
                    while t<=b {
                          t1=m
                         m=(b+t) div 2
-                        if m=0 then  m=t1 : exit 
+                        if m=0 then  m=t1 : exit
                         If comp(stackitem(m),n) then t=m+1:  continue
                         b=m-1
                         m=b
@@ -3479,18 +3479,18 @@ Module PriorityQueue {
                   if m>1 then shiftback m
             }
       }
-      
+
       n=each(a)
       while n {
             InsertPq b, array(n), &comp
       }
-      
+
       n1=each(b)
       while n1 {
             m=stackitem(n1)
             Print array(m, 0), array$(m, 1)
       }
-      
+
       \\ Peek topitem (without popping)
       Print Array$(stackitem(b), 1)
       \\ Pop item
@@ -3503,7 +3503,7 @@ Module PriorityQueue {
             stack a {
                   =Array$(stackitem(), 1)
                    drop
-            }      
+            }
       }
       Print Peek$(b)
       Print Pop$(b)
@@ -3550,7 +3550,7 @@ Module PriorityQueueForGroups {
                    while t<=b {
                          t1=m
                         m=(b+t) div 2
-                        if m=0 then  m=t1 : exit 
+                        if m=0 then  m=t1 : exit
                         If comp(stackitem(m),n) then t=m+1:  continue
                         b=m-1
                         m=b
@@ -3569,20 +3569,20 @@ Module PriorityQueueForGroups {
       }
       Function Peek$(a) {m=stackitem(a) : =m.s$}
       Print Peek$(b)
-      
+
       Function Pop$(a) {
             stack a {
                   m=stackitem()
                   =m.s$
                    drop
-            }      
+            }
       }
       Function IsEmpty(a) {
               =len(a)=0
       }
       While not isEmpty(b) {
             Print Pop$(b)
-      }     
+      }
 }
 PriorityQueueForGroups
 
@@ -3594,15 +3594,15 @@ PriorityQueueForGroups
 
 
 ```mathematica
-push = Function[{queue, priority, item}, 
+push = Function[{queue, priority, item},
    queue = SortBy[Append[queue, {priority, item}], First], HoldFirst];
-pop = Function[queue, 
-   If[Length@queue == 0, Null, 
-    With[{item = queue[[-1, 2]]}, queue = Most@queue; item]], 
+pop = Function[queue,
+   If[Length@queue == 0, Null,
+    With[{item = queue[[-1, 2]]}, queue = Most@queue; item]],
    HoldFirst];
-peek = Function[queue, 
+peek = Function[queue,
    If[Length@queue == 0, Null, Max[queue[[All, 1]]]], HoldFirst];
-merge = Function[{queue1, queue2}, 
+merge = Function[{queue1, queue2},
    SortBy[Join[queue1, queue2], First], HoldAll];
 ```
 
@@ -3673,7 +3673,7 @@ pqueue_push(pq, x, p) := block(
    else pq@q: sort(cons([p, [x]], q)),
    'done
 )$
-      
+
 pqueue_pop(pq) := block(
    [q: pq@q, v, x],
    if emptyp(q) then 'fail else (
@@ -3886,7 +3886,7 @@ while pq.len() > 0:
 import tables
 
 var
-  pq = initTable[int, string]() 
+  pq = initTable[int, string]()
 
 proc main() =
   pq.add(3, "Clear drains")
@@ -3896,10 +3896,10 @@ proc main() =
   pq.add(2, "Tax return")
 
   for i in countUp(1,5):
-    if pq.hasKey(i): 
+    if pq.hasKey(i):
       echo i, ": ", pq[i]
       pq.del(i)
-    
+
 main()
 ```
 
@@ -4113,7 +4113,7 @@ Solve RC tasks
 
 ## Perl 6
 
-This is a rather simple implementation. It requires the priority to be a positive integer value, with lower values being higher priority. There isn't a hard limit on how many priority levels you can have, though more than a few dozen is probably not practical. 
+This is a rather simple implementation. It requires the priority to be a positive integer value, with lower values being higher priority. There isn't a hard limit on how many priority levels you can have, though more than a few dozen is probably not practical.
 
 The tasks are stored internally as an array of FIFO buffers, so multiple tasks of the same priority level will be returned in the order they were stored.
 
@@ -4132,7 +4132,7 @@ class PriorityQueue {
 }
 
 my $pq = PriorityQueue.new;
- 
+
 for (
     3, 'Clear drains',
     4, 'Feed cat',
@@ -4145,7 +4145,7 @@ for (
 ) -> $priority, $task {
     $pq.insert( $priority, $task );
 }
- 
+
 say $pq.get until $pq.is-empty;
 ```
 
@@ -4261,7 +4261,7 @@ constant PRIORITY = 2
 procedure pq_add(sequence item)
 -- item is {object data, object priority}
     integer n = length(pq)+1,
-            m = floor(n/2) 
+            m = floor(n/2)
     pq &= 0
     -- append at end, then up heap
     while m>0 and item[PRIORITY]<pq[m][PRIORITY] do
@@ -4271,17 +4271,17 @@ procedure pq_add(sequence item)
     end while
     pq[n] = item
 end procedure
- 
+
 function pq_pop()
     sequence result = pq[1]
- 
+
     integer qn = length(pq),
             n = 1,
             m = 2
     while m<qn do
         if m+1<qn and pq[m][PRIORITY]>pq[m+1][PRIORITY] then
             m += 1
-        end if 
+        end if
         if pq[qn][PRIORITY]<=pq[m][PRIORITY] then exit end if
         pq[n] = pq[m]
         n = m
@@ -4301,7 +4301,7 @@ for i=1 to length(set) do
     pq_add(set[i])
     pq_add(set[rand(length(set))])
 end for
- 
+
 while length(pq) do
     ?pq_pop()
 end while
@@ -4344,7 +4344,7 @@ $pq->insert('Tax return', 2);
 
 // This line causes extract() to return both the data and priority (in an associative array),
 // Otherwise it would just return the data
-$pq->setExtractFlags(SplPriorityQueue::EXTR_BOTH); 
+$pq->setExtractFlags(SplPriorityQueue::EXTR_BOTH);
 
 while (!$pq->isEmpty()) {
     print_r($pq->extract());
@@ -4392,7 +4392,7 @@ The difference between <code>SplHeap</code> and <code>SplPriorityQueue</code> is
 ```php
 <?php
 $pq = new SplMinHeap;
- 
+
 $pq->insert(array(3, 'Clear drains'));
 $pq->insert(array(4, 'Feed cat'));
 $pq->insert(array(5, 'Make tea'));
@@ -4515,10 +4515,10 @@ priority-queue :-
 
   % we can create a priority queue from a list
   list_to_heap(TL0, Heap0),
-  
+
   % alternatively we can start from an empty queue
   % get from empty_heap/1.
-  
+
   % now we add the other elements
   add_to_heap(Heap0, 5, 'Make tea', Heap1),
   add_to_heap(Heap1, 1, 'Solve RC tasks', Heap2),
@@ -4566,8 +4566,8 @@ true.
 
 ## PureBasic
 
-The priority queue is implemented using a binary heap array and a map.  
-The map stores the elements of a given priority in a FIFO list.  
+The priority queue is implemented using a binary heap array and a map.
+The map stores the elements of a given priority in a FIFO list.
 Priorities can be any signed 32 value.
 
 ```purebasic
@@ -4596,9 +4596,9 @@ Procedure insertPQ(*PQ.priorityQueue, description.s, p)
     Protected *tl.taskList = AddMapElement(*PQ\heapMap(), Str(p))
     AddElement(*tl\description())
     *tl\description() = description
-     
+
     Protected pos = *PQ\heapItemCount
-    
+
     *PQ\heapItemCount + 1
     If *PQ\heapItemCount > *PQ\maxHeapSize
       Select *PQ\maxHeapSize
@@ -4608,16 +4608,16 @@ Procedure insertPQ(*PQ.priorityQueue, description.s, p)
           *PQ\maxHeapSize * 2
       EndSelect
       Redim *PQ\heap.task(*PQ\maxHeapSize)
-    EndIf 
-    
+    EndIf
+
     While pos > 0 And p < *PQ\heap((pos - 1) / 2)\Priority
       *PQ\heap(pos) = *PQ\heap((pos - 1) / 2)
       pos = (pos - 1) / 2
     Wend
-    
+
     *PQ\heap(pos)\tl = *tl
     *PQ\heap(pos)\Priority = p
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure.s removePQ(*PQ.priorityQueue)
@@ -4628,36 +4628,36 @@ Procedure.s removePQ(*PQ.priorityQueue)
     DeleteElement(*tl\description())
   Else
     DeleteMapElement(*PQ\heapMap(), Str(*PQ\heap(0)\Priority))
-   
+
     *PQ\heapItemCount - 1
     *PQ\heap(0) = *PQ\heap(*PQ\heapItemCount)
-    
+
     Protected pos
     Repeat
       Protected child1 = 2 * pos + 1
       Protected child2 = 2 * pos + 2
       If child1 >= *PQ\heapItemCount
-        Break 
+        Break
       EndIf
-      
+
       Protected smallestChild
       If child2 >= *PQ\heapItemCount
-        smallestChild = child1 
+        smallestChild = child1
       ElseIf *PQ\heap(child1)\Priority <= *PQ\heap(child2)\Priority
-        smallestChild = child1 
+        smallestChild = child1
       Else
-        smallestChild = child2 
+        smallestChild = child2
       EndIf
-      
+
       If (*PQ\heap(smallestChild)\Priority >= *PQ\heap(pos)\Priority)
-        Break 
+        Break
       EndIf
       Swap *PQ\heap(pos)\tl, *PQ\heap(smallestChild)\tl
       Swap *PQ\heap(pos)\Priority, *PQ\heap(smallestChild)\Priority
       pos = smallestChild
     ForEver
-  EndIf 
-  
+  EndIf
+
   ProcedureReturn description
 EndProcedure
 
@@ -4666,7 +4666,7 @@ Procedure isEmptyPQ(*PQ.priorityQueue) ;returns 1 if empty, otherwise returns 0
     ProcedureReturn 0
   EndIf
   ProcedureReturn 1
-EndProcedure  
+EndProcedure
 
 If OpenConsole()
   Define PQ.priorityQueue
@@ -4682,11 +4682,11 @@ If OpenConsole()
   insertPQ(PQ, "Exercise", 9)
   insertPQ(PQ, "Answer Phone 4", 8)
   insertPQ(PQ, "Tax return", 2)
-   
+
   While Not isEmptyPQ(PQ)
     PrintN(removePQ(PQ))
   Wend
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -4726,17 +4726,17 @@ The data structures in the "queue" module are synchronized multi-producer, multi
 >>> for item in ((3, "Clear drains"), (4, "Feed cat"), (5, "Make tea"), (1, "Solve RC tasks"), (2, "Tax return")):
   pq.put(item)
 
-  
+
 >>> while not pq.empty():
   print(pq.get_nowait())
 
-  
+
 (1, 'Solve RC tasks')
 (2, 'Tax return')
 (3, 'Clear drains')
 (4, 'Feed cat')
 (5, 'Make tea')
->>> 
+>>>
 ```
 
 
@@ -4749,40 +4749,40 @@ Help on class PriorityQueue in module queue:
 
 class PriorityQueue(Queue)
  |  Variant of Queue that retrieves open entries in priority order (lowest first).
- |  
+ |
  |  Entries are typically tuples of the form:  (priority number, data).
- |  
+ |
  |  Method resolution order:
  |      PriorityQueue
  |      Queue
  |      builtins.object
- |  
+ |
  |  Methods inherited from Queue:
- |  
+ |
  |  __init__(self, maxsize=0)
- |  
+ |
  |  empty(self)
  |      Return True if the queue is empty, False otherwise (not reliable!).
- |      
+ |
  |      This method is likely to be removed at some point.  Use qsize() == 0
  |      as a direct substitute, but be aware that either approach risks a race
  |      condition where a queue can grow before the result of empty() or
  |      qsize() can be used.
- |      
+ |
  |      To create code that needs to wait for all queued tasks to be
  |      completed, the preferred technique is to use the join() method.
- |  
+ |
  |  full(self)
  |      Return True if the queue is full, False otherwise (not reliable!).
- |      
+ |
  |      This method is likely to be removed at some point.  Use qsize() >= n
  |      as a direct substitute, but be aware that either approach risks a race
  |      condition where a queue can shrink before the result of full() or
  |      qsize() can be used.
- |  
+ |
  |  get(self, block=True, timeout=None)
  |      Remove and return an item from the queue.
- |      
+ |
  |      If optional args 'block' is true and 'timeout' is None (the default),
  |      block if necessary until an item is available. If 'timeout' is
  |      a positive number, it blocks at most 'timeout' seconds and raises
@@ -4790,25 +4790,25 @@ class PriorityQueue(Queue)
  |      Otherwise ('block' is false), return an item if one is immediately
  |      available, else raise the Empty exception ('timeout' is ignored
  |      in that case).
- |  
+ |
  |  get_nowait(self)
  |      Remove and return an item from the queue without blocking.
- |      
+ |
  |      Only get an item if one is immediately available. Otherwise
  |      raise the Empty exception.
- |  
+ |
  |  join(self)
  |      Blocks until all items in the Queue have been gotten and processed.
- |      
+ |
  |      The count of unfinished tasks goes up whenever an item is added to the
  |      queue. The count goes down whenever a consumer thread calls task_done()
  |      to indicate the item was retrieved and all work on it is complete.
- |      
+ |
  |      When the count of unfinished tasks drops to zero, join() unblocks.
- |  
+ |
  |  put(self, item, block=True, timeout=None)
  |      Put an item into the queue.
- |      
+ |
  |      If optional args 'block' is true and 'timeout' is None (the default),
  |      block if necessary until a free slot is available. If 'timeout' is
  |      a positive number, it blocks at most 'timeout' seconds and raises
@@ -4816,40 +4816,40 @@ class PriorityQueue(Queue)
  |      Otherwise ('block' is false), put an item on the queue if a free slot
  |      is immediately available, else raise the Full exception ('timeout'
  |      is ignored in that case).
- |  
+ |
  |  put_nowait(self, item)
  |      Put an item into the queue without blocking.
- |      
+ |
  |      Only enqueue the item if a free slot is immediately available.
  |      Otherwise raise the Full exception.
- |  
+ |
  |  qsize(self)
  |      Return the approximate size of the queue (not reliable!).
- |  
+ |
  |  task_done(self)
  |      Indicate that a formerly enqueued task is complete.
- |      
+ |
  |      Used by Queue consumer threads.  For each get() used to fetch a task,
  |      a subsequent call to task_done() tells the queue that the processing
  |      on the task is complete.
- |      
+ |
  |      If a join() is currently blocking, it will resume when all items
  |      have been processed (meaning that a task_done() call was received
  |      for every item that had been put() into the queue).
- |      
+ |
  |      Raises a ValueError if called more times than there were items
  |      placed in the queue.
- |  
+ |
  |  ----------------------------------------------------------------------
  |  Data descriptors inherited from Queue:
- |  
+ |
  |  __dict__
  |      dictionary for instance variables (if defined)
- |  
+ |
  |  __weakref__
  |      list of weak references to the object (if defined)
 
->>> 
+>>>
 ```
 
 
@@ -4867,13 +4867,13 @@ Although one can use the heappush method to add items individually to a heap sim
 >>> while items:
   print(heappop(items))
 
-  
+
 (1, 'Solve RC tasks')
 (2, 'Tax return')
 (3, 'Clear drains')
 (4, 'Feed cat')
 (5, 'Make tea')
->>> 
+>>>
 ```
 
 
@@ -4891,9 +4891,9 @@ DESCRIPTION
     all k, counting elements from 0.  For the sake of comparison,
     non-existing elements are considered to be infinite.  The interesting
     property of a heap is that a[0] is always its smallest element.
-    
+
     Usage:
-    
+
     heap = []            # creates an empty heap
     heappush(heap, item) # pushes a new item on the heap
     item = heappop(heap) # pops the smallest item from the heap
@@ -4901,15 +4901,15 @@ DESCRIPTION
     heapify(x)           # transforms list into a heap, in-place, in linear time
     item = heapreplace(heap, item) # pops and returns smallest item, and adds
                                    # new item; the heap size is unchanged
-    
+
     Our API differs from textbook heap algorithms as follows:
-    
+
     - We use 0-based indexing.  This makes the relationship between the
       index for a node and the indexes for its children slightly less
       obvious, but is more suitable since Python uses 0-based indexing.
-    
+
     - Our heappop() method returns the smallest item, not the largest.
-    
+
     These two make it possible to view the heap as a regular Python list
     without surprises: heap[0] is the smallest item, and heap.sort()
     maintains the heap invariant!
@@ -4917,47 +4917,47 @@ DESCRIPTION
 FUNCTIONS
     heapify(...)
         Transform list into a heap, in-place, in O(len(heap)) time.
-    
+
     heappop(...)
         Pop the smallest item off the heap, maintaining the heap invariant.
-    
+
     heappush(...)
         Push item onto heap, maintaining the heap invariant.
-    
+
     heappushpop(...)
         Push item on the heap, then pop and return the smallest item
         from the heap. The combined action runs more efficiently than
         heappush() followed by a separate call to heappop().
-    
+
     heapreplace(...)
         Pop and return the current smallest value, and add the new item.
-        
+
         This is more efficient than heappop() followed by heappush(), and can be
         more appropriate when using a fixed-size heap.  Note that the value
         returned may be larger than item!  That constrains reasonable uses of
         this routine unless written as part of a conditional replacement:
-        
+
             if item > heap[0]:
                 item = heapreplace(heap, item)
-    
+
     merge(*iterables)
         Merge multiple sorted inputs into a single sorted output.
-        
+
         Similar to sorted(itertools.chain(*iterables)) but returns a generator,
         does not pull the data into memory all at once, and assumes that each of
         the input streams is already sorted (smallest to largest).
-        
+
         >>> list(merge([1,3,5,7], [0,2,4,8], [5,10,15,20], [], [25]))
         [0, 1, 2, 3, 4, 5, 5, 7, 8, 10, 15, 20, 25]
-    
+
     nlargest(n, iterable, key=None)
         Find the n largest elements in a dataset.
-        
+
         Equivalent to:  sorted(iterable, key=key, reverse=True)[:n]
-    
+
     nsmallest(n, iterable, key=None)
         Find the n smallest elements in a dataset.
-        
+
         Equivalent to:  sorted(iterable, key=key)[:n]
 
 DATA
@@ -4968,7 +4968,7 @@ FILE
     c:\python32\lib\heapq.py
 
 
->>> 
+>>>
 ```
 
 
@@ -5007,10 +5007,10 @@ while(!pq$empty()) {
 ```
 With output:
 ```R
-1 : Solve RC tasks 
-2 : Tax return 
-3 : Clear drains 
-4 : Feed cat 
+1 : Solve RC tasks
+2 : Tax return
+3 : Clear drains
+4 : Feed cat
 5 : Make tea
 ```
 A similar implementation using R5 classes:
@@ -5051,11 +5051,11 @@ This solution implements priority queues on top of heaps.
 
 (define pq (make-heap (λ(x y) (<= (second x) (second y)))))
 
-(define (insert! x pri) 
+(define (insert! x pri)
   (heap-add! pq (list pri x)))
 
 (define (remove-min!)
-  (begin0 
+  (begin0
     (first (heap-min pq))
     (heap-remove-min! pq)))
 
@@ -5092,7 +5092,7 @@ Output:
 
 ### version 1
 
-Programming note:   this REXX version allows any number (with or without decimals, say, '''5.7''') for the priority, including negative numbers. 
+Programming note:   this REXX version allows any number (with or without decimals, say, '''5.7''') for the priority, including negative numbers.
 
 ```rexx
 /*REXX program implements a  priority queue   with  insert/display/delete  the top task.*/
@@ -5222,12 +5222,12 @@ class PriorityQueueNaive
     data.each {|priority, item| @q[priority] << item}  if data
     @priorities = @q.keys.sort
   end
-  
+
   def push(priority, item)
     @q[priority] << item
     @priorities = @q.keys.sort
   end
-  
+
   def pop
     p = @priorities[0]
     item = @q[p].shift
@@ -5237,36 +5237,36 @@ class PriorityQueueNaive
     end
     item
   end
-  
+
   def peek
     unless empty?
       @q[@priorities[0]][0]
     end
   end
-  
+
   def empty?
     @priorities.empty?
   end
-  
+
   def each
     @q.each do |priority, items|
       items.each {|item| yield priority, item}
     end
   end
-  
+
   def dup
     @q.each_with_object(self.class.new) do |(priority, items), obj|
       items.each {|item| obj.push(priority, item)}
     end
   end
-  
+
   def merge(other)
     raise TypeError  unless self.class == other.class
     pq = dup
     other.each {|priority, item| pq.push(priority, item)}
     pq                  # return a new object
   end
-  
+
   def inspect
     @q.inspect
   end
@@ -5284,7 +5284,7 @@ test = [
 
 pq = PriorityQueueNaive.new
 test.each {|pr, str| pq.push(pr, str) }
-until pq.empty? 
+until pq.empty?
   puts pq.pop
 end
 
@@ -5324,7 +5324,7 @@ Feed cat
 Make tea
 eat biscuit
 drink tea
-peek : 
+peek :
 
 ```
 
@@ -5347,7 +5347,7 @@ sqliteconnect #mem, ":memory:"
 #mem execute("INSERT INTO queue VALUES (2,'Tax return')")
 
 '--------------- insert priority between 4 and 5 -----------------
-#mem execute("INSERT INTO queue VALUES (4.5,'My Special Project')") 
+#mem execute("INSERT INTO queue VALUES (4.5,'My Special Project')")
 
 what$ = " -------------- Find first priority ---------------------"
 mem$ = "SELECT * FROM queue ORDER BY priority LIMIT 1"
@@ -6003,7 +6003,7 @@ class PQ{
 
 ```zkl
 pq:=PQ();
-foreach x in 
+foreach x in
       (T("Clear drains",3, "Feed cat",4, "Make tea",5, "Solve RC tasks",1, "Tax return",2,
          "Clean room",10,"Wash cat",10)){
    pq.add(x,__xWalker.next())

@@ -16,12 +16,12 @@ tags = []
 {{omit from|PARI/GP|No standard date handling library}}
 
 A company decides that whenever Xmas falls on a Sunday they will give their workers all extra paid holidays so that, together with any public holidays, workers will not have to work the following week (between the 25th of December and the first of January).
- 
+
 
 ;Task:
 '''In what years between 2008 and 2121 will the 25th of December be a Sunday?'''
 
-Using any standard date handling libraries of your programming language; 
+Using any standard date handling libraries of your programming language;
 compare the dates calculated with the output of other languages to discover any anomalies in the handling of dates which may be due to, for example, overflow in types used to represent dates/times similar to   [[wp:Y2k#See_also|y2k]]   type problems.
 
 
@@ -48,7 +48,7 @@ print((2008..2121).filter(y -> Time(y, 12, 25).strftime(‘%w’) == ‘0’))
 ## 360 Assembly
 
 {{trans|REXX}}
-The program uses two ASSIST macro (XDECO,XPRNT) to keep the code as short as possible. 
+The program uses two ASSIST macro (XDECO,XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Day of the week           06/07/2016
@@ -179,24 +179,24 @@ Action! does not have a standard library providing a day of week function, there
 Byte FUNC DayOfWeek(BYTE day, month CARD year BYTE century)
 CARD weekday
 BYTE ARRAY index=[0 3 2 5 0 3 5 1 4 6 2 4]
-     
+
 IF year < 100  THEN
-   year = year + century * 100 
-FI             
+   year = year + century * 100
+FI
 
 IF year < 1753 THEN RETURN(7) FI
 
 IF month < 3 THEN
-   year==-1    
+   year==-1
 FI
 
-month = index(month-1)  
-weekday=year + year/4 - year/100 + year/400 + month + day     
+month = index(month-1)
+weekday=year + year/4 - year/100 + year/400 + month + day
 weekday = weekday MOD 7
 RETURN (weekday)
 
 PROC main()
-CARD y     
+CARD y
 PrintE("December 25 is a Sunday in:")
 FOR y = 2008 to 2121
 DO
@@ -204,7 +204,7 @@ IF DayOfWeek(25, 12, y)=0 THEN
 PrintCE(y)
 FI
 OD
-RETURN                                             
+RETURN
 
 ```
 
@@ -240,7 +240,7 @@ December 25 is a Sunday in:
 ```ada
 with Ada.Calendar.Formatting;  use Ada.Calendar.Formatting;
 with Ada.Text_IO;              use Ada.Text_IO;
- 
+
 procedure Yuletide is
 begin
    for Year in 2008..2121 loop
@@ -422,7 +422,7 @@ on run
             end tell
         end |λ|
     end script
-    
+
     filter(xmasOnSunday, enumFromTo(2008, 2121))
 end run
 
@@ -455,7 +455,7 @@ on filter(f, xs)
     end tell
 end filter
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -471,7 +471,7 @@ end mReturn
 {{Out}}
 
 ```AppleScript
-{2011, 2016, 2022, 2033, 2039, 2044, 2050, 2061, 2067, 
+{2011, 2016, 2022, 2033, 2039, 2044, 2050, 2061, 2067,
 2072, 2078, 2089, 2095, 2101, 2107, 2112, 2118}
 ```
 
@@ -597,7 +597,7 @@ BEGIN {
 
 ## BASIC
 
-<b>Works with:</b> FreeBASIC 
+<b>Works with:</b> FreeBASIC
 
 This program needs the modulo function because there is a bug in the built in modulo function.
 
@@ -714,7 +714,7 @@ For yr As Integer = 2008 To 2121
   EndIf
 Next
 
-' empty keyboard buffer 
+' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "hit any key to end program"
 Sleep
@@ -755,9 +755,9 @@ Dim As Double a
 For yr As Integer = 2008 To 2121
   a = DateSerial (yr, 12, 25)
   If Weekday(a) = 1 Then Print Format(a, "dd-mm-yyyy")   ' 1 = sunday, 2 = monday ...
-Next                                                      
+Next
 
-' empty keyboard buffer 
+' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "hit any key to end program"
 Sleep
@@ -792,7 +792,7 @@ End
 110 PRINT "The years between 2008 and 2121 will the 25th of December be a Sunday:"
 120 FOR Y=2008 TO 2121
 130   IF DAYWEEK(Y,12,25)=0 THEN PRINT "Dec 25,";Y
-140 NEXT 
+140 NEXT
 150 DEF DAYWEEK(Y,M,D)
 160   LET A=INT((14-M)/12):LET Y=Y-A
 170   LET W=D+INT((13*(M+12*A-2)-1)/5)+Y+INT(Y/4)-INT(Y/100)+INT(Y/400)
@@ -917,7 +917,7 @@ Dec 25, 2118 is a Sunday.
 
 ```bbcbasic
       INSTALL @lib$+"DATELIB"
-      
+
       FOR year% = 2008 TO 2121
         IF FN_dow(FN_mjd(25, 12, year%)) = 0 THEN
           PRINT "Christmas Day is a Sunday in "; year%
@@ -964,7 +964,7 @@ quit
 Befunge doesn't have any standard date-handling functionality, so we calculate the day of the week directly using a simple variation of the Zeller rule.
 
 
-```befunge>8 
+```befunge>8
 :"2("*+::::4/+\"d"/-\45v
 @_^#`"y": +1$<_v#%7+1+/*:*<
 >:#,_>$:.55+,^ >0" ,52 ceD"
@@ -1022,7 +1022,7 @@ Dec 25, 2118
   ' ( !y:~>2121
     & (   wday$(!y,12,25):0
         & put$(str$(!y "-12-25\n"))
-      | 
+      |
       )
     & 1+!y:?y
     )
@@ -1058,8 +1058,8 @@ Dec 25, 2118
 Because of problems with various C libraries (such as ''time_t'' overflowing during 2038, or strptime() or mktime() not filling in ''tm_wday''), this program uses [http://mathforum.org/library/drmath/view/62324.html Zeller's Rule] to calculate day of week.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 /* Calculate day of week in proleptic Gregorian calendar. Sunday == 0. */
 int wday(int year, int month, int day)
@@ -1301,74 +1301,74 @@ Without Date Intrinsic Functions
 
 ```Cobol
 
-       identification division.            
-       program-id. dowtest.                
-       data division.                      
-       working-storage section.            
-       01  ws-inp-date   pic x(08).        
-       01  filler redefines ws-inp-date.   
-         03  ws-inp-year  pic 9(04).       
-       01  ws-dow        pic 9(05).              
-       procedure division.                       
-           move '00001225' to ws-inp-date        
-           perform test before                   
-           varying ws-inp-year from 2008 by +1   
-           until ws-inp-year > 2121            
-             call "todow" using                  
-                 by reference ws-inp-date        
-                 by reference ws-dow             
-                 if ws-dow = 1 then                  
-                   display 'year=' ws-inp-year 
-                 end-if                              
-           end-perform                           
-           stop run.                             
-                                                 
-       end program dowtest.                      
-                                                 
-       identification division.                  
-       program-id.  todow.                       
-       environment division.                         
-       input-output section.                         
-       file-control.                                 
-       data division.                                
-       file section.                                 
-       working-storage section.  
+       identification division.
+       program-id. dowtest.
+       data division.
+       working-storage section.
+       01  ws-inp-date   pic x(08).
+       01  filler redefines ws-inp-date.
+         03  ws-inp-year  pic 9(04).
+       01  ws-dow        pic 9(05).
+       procedure division.
+           move '00001225' to ws-inp-date
+           perform test before
+           varying ws-inp-year from 2008 by +1
+           until ws-inp-year > 2121
+             call "todow" using
+                 by reference ws-inp-date
+                 by reference ws-dow
+                 if ws-dow = 1 then
+                   display 'year=' ws-inp-year
+                 end-if
+           end-perform
+           stop run.
+
+       end program dowtest.
+
+       identification division.
+       program-id.  todow.
+       environment division.
+       input-output section.
+       file-control.
+       data division.
+       file section.
+       working-storage section.
        01 tally pic 9(05).
-       01  wms-work-area.                            
-         03  wms-year       pic 9(04).               
-         03  wms-month      pic 9(02).               
-         03  wms-csys       pic 9(01) value 1.  
+       01  wms-work-area.
+         03  wms-year       pic 9(04).
+         03  wms-month      pic 9(02).
+         03  wms-csys       pic 9(01) value 1.
          03  wms-sum        pic 9(05).
-       linkage section.                              
-       01  lkip-date.                                
-         03  lkip-date-year     pic 9(04).           
-         03  lkip-date-month    pic 9(02).           
-         03  lkip-date-day      pic 9(02).           
-       01  lkop-dow             pic 9(05).           
-         88  lkop-sunday                   value 1.  
-       procedure division using                      
-           by reference lkip-date                    
-           by reference lkop-dow                     
-           .                                                            
-                                                                        
-           if lkip-date-month < 3                                       
-             compute wms-month = lkip-date-month + 12                   
-             compute wms-year  = lkip-date-year - 1                     
-           else                                                         
-             compute wms-month = lkip-date-month                        
-             compute wms-year  = lkip-date-year                         
-           end-if                                                       
-                                                                        
-          compute wms-sum    =                           
-                          ( lkip-date-day + 2 * wms-month + wms-year    
-                          + function integer (6 * (wms-month + 1) / 10) 
-                          + function integer ( wms-year / 4   )         
-                          - function integer ( wms-year / 100 )         
-                          + function integer ( wms-year / 400 )         
-                          + wms-csys )                             
+       linkage section.
+       01  lkip-date.
+         03  lkip-date-year     pic 9(04).
+         03  lkip-date-month    pic 9(02).
+         03  lkip-date-day      pic 9(02).
+       01  lkop-dow             pic 9(05).
+         88  lkop-sunday                   value 1.
+       procedure division using
+           by reference lkip-date
+           by reference lkop-dow
+           .
+
+           if lkip-date-month < 3
+             compute wms-month = lkip-date-month + 12
+             compute wms-year  = lkip-date-year - 1
+           else
+             compute wms-month = lkip-date-month
+             compute wms-year  = lkip-date-year
+           end-if
+
+          compute wms-sum    =
+                          ( lkip-date-day + 2 * wms-month + wms-year
+                          + function integer (6 * (wms-month + 1) / 10)
+                          + function integer ( wms-year / 4   )
+                          - function integer ( wms-year / 100 )
+                          + function integer ( wms-year / 400 )
+                          + wms-csys )
          compute lkop-dow = function mod (wms-sum, 7) + 1
-                          .                                             
-       end program todow. 
+                          .
+       end program todow.
 
 ```
 
@@ -1592,7 +1592,7 @@ outputyears := '';
   end;
   //CONSOLE
   //writeln(outputyears);
-  //GUI 
+  //GUI
   form1.label1.caption := outputyears;
 end;
 ```
@@ -1617,7 +1617,7 @@ Procedure called with year range to test and outputs a space-delimited array of 
 //In what years between 2008 and 2121 will the 25th of December be a Sunday?
 
 IMPORT STD;
-  
+
 BaseYear := 2008;
 EndYear  := 2121;
 
@@ -1634,7 +1634,7 @@ END;
 YearDS := DATASET(EndYear-BaseYear,FindDate(COUNTER));
 OUTPUT(YearDS(DayofWeek=0),{Year});
 
-/* Outputs: 
+/* Outputs:
    2011
    2016
    2022
@@ -1811,7 +1811,7 @@ Dec 25, 2118
 
 --Day of the week task from Rosetta Code wiki
 --User:Lnettnay
-   
+
 --In what years between 2008 and 2121 will the 25th of December be a Sunday
 
 include std/datetime.e
@@ -1926,14 +1926,14 @@ Forth has only TIME&DATE, which does not give day of week. Many public Forth Jul
   swap dup 4 / + +
   swap 1+ 13 5 */ + +
   ( in zeller 0=sat, so -2 to 0= mon, then mod, then 1+ for 1=mon)
-  2- 7 mod 1+ ;  
-  
+  2- 7 mod 1+ ;
+
 : yuletide
   ." December 25 is Sunday in "
   2122 2008 do
     25 12 i weekday
     7 = if i . then
-  loop cr ; 
+  loop cr ;
 
 ```
 
@@ -1992,23 +1992,23 @@ Based on Forth example
 
 ```fortran
 PROGRAM YULETIDE
- 
+
 IMPLICIT NONE
-  
+
 INTEGER :: day, year
- 
+
 WRITE(*, "(A)", ADVANCE="NO") "25th of December is a Sunday in"
 DO year = 2008, 2121
    day = Day_of_week(25, 12, year)
    IF (day == 1) WRITE(*, "(I5)", ADVANCE="NO") year
 END DO
-  
+
 CONTAINS
- 
+
 FUNCTION Day_of_week(d, m, y)
    INTEGER :: Day_of_week, j, k, mm, yy
    INTEGER, INTENT(IN) :: d, m, y
-  
+
    mm=m
    yy=y
    IF(mm.le.2) THEN
@@ -2019,7 +2019,7 @@ FUNCTION Day_of_week(d, m, y)
    k = MOD(yy, 100)
    Day_of_week = MOD(d + ((mm+1)*26)/10 + k + k/4 + j/4 + 5*j, 7)
 END FUNCTION Day_of_week
-  
+
 END PROGRAM YULETIDE
 ```
 
@@ -2194,7 +2194,7 @@ main =
   mapM_
     putStrLn
     [ "25 December " ++ show year ++ " is Sunday"
-    | year <- [2008 .. 2121] 
+    | year <- [2008 .. 2121]
     , isXmasSunday year ]
 ```
 
@@ -2227,7 +2227,7 @@ The built-in System.Time module can overflow at the Unix epoch in 2038:
 
 ```haskell
 import System.Time
- 
+
 isXmasSunday :: Int -> Bool
 isXmasSunday year = ctWDay cal == Sunday
   where
@@ -2253,7 +2253,7 @@ main =
   mapM_
     putStrLn
     [ "25 December " ++ show year ++ " is Sunday"
-    | year <- [2008 .. 2121] 
+    | year <- [2008 .. 2121]
     , isXmasSunday year ]
 ```
 
@@ -2309,7 +2309,7 @@ END
 
 ```txt
 No anomalies detected for the first million years :-)
-Dec 25 = Sunday in 
+Dec 25 = Sunday in
 5 ... 2011 2016 2022 2033 2039 2044 2050 2061 2067
       2072 2078 2089 2095 2101 2107 2112 2118 ... 999994
 
@@ -2331,7 +2331,7 @@ end
 
 
 {{libheader|Icon Programming Library}}
-[http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn datetime provides dayoweek] 
+[http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn datetime provides dayoweek]
 
 
 ```Icon
@@ -2375,8 +2375,8 @@ procedure dayoweek(day, month, year)	#: day of the week
    month := integer(month)
    M := if (year % 4) = 0 then ml_code[month] else m_code[month]
 
-   return d_code[(C + Y + M + day) % 7 + 1] 
-   
+   return d_code[(C + Y + M + day) % 7 + 1]
+
 end
 ```
 
@@ -2520,7 +2520,7 @@ for (var year = 2008; year <= 2121; year++){
 {{Out}}
 
 ```txt
-[2011, 2016, 2022, 2033, 2039, 2044, 2050, 2061, 2067, 
+[2011, 2016, 2022, 2033, 2039, 2044, 2050, 2061, 2067,
 2072, 2078, 2089, 2095, 2101, 2107, 2112, 2118]
 ```
 
@@ -2576,7 +2576,7 @@ for (var year = 2008; year <= 2121; year++){
 ```jq
 # Use Zeller's Congruence to determine the day of the week, given
 # year, month and day as integers in the conventional way.
-# If iso == "iso" or "ISO", then emit an integer in 1 -- 7 where 
+# If iso == "iso" or "ISO", then emit an integer in 1 -- 7 where
 # 1 represents Monday, 2 Tuesday, etc;
 # otherwise emit 0 for Saturday, 1 for Sunday, etc.
 #
@@ -2585,10 +2585,10 @@ def day_of_week(year; month; day; iso):
     [month + 12, year - 1]
   else
     [month, year]
-  end 
+  end
   | day + (13*(.[0] + 1)/5|floor)
     +  (.[1]%100)       + ((.[1]%100)/4|floor)
-    +  (.[1]/400|floor) - 2*(.[1]/100|floor) 
+    +  (.[1]/400|floor) - 2*(.[1]/100|floor)
   | if iso == "iso" or iso == "ISO" then 1 + ((. + 5) % 7)
     else . % 7
     end;
@@ -2673,7 +2673,7 @@ foreach(println, year.(xmas))
 {{out}}
 
 ```txt
-Years from 2008 to 2121 having Christmas on Sunday: 
+Years from 2008 to 2121 having Christmas on Sunday:
 2011
 2016
 2022
@@ -2884,16 +2884,16 @@ Output
 
 
 ```Logo
-; Determine if a Gregorian calendar year is leap 
+; Determine if a Gregorian calendar year is leap
 to leap? :year
-  output (and 
+  output (and
     equal? 0 modulo :year 4
     not member? modulo :year 400 [100 200 300]
   )
 end
 
-; Convert Gregorian calendar date to a simple day count from 
-; day 1 = January 1, 1 CE 
+; Convert Gregorian calendar date to a simple day count from
+; day 1 = January 1, 1 CE
 to day_number :year :month :day
   local "elapsed make "elapsed difference :year 1
   output (sum  product 365 :elapsed
@@ -2971,7 +2971,7 @@ end
 
 
 
-###  Without external modules 
+###  Without external modules
 
 Same output as above
 
@@ -2994,14 +2994,14 @@ Str$( number, format$) use Visual Basic 6 format
 ```M2000 Interpreter
 
 Print "December 25 is a Sunday in:"
-For Year=2008 to 2121 { 
+For Year=2008 to 2121 {
       if  Str$(Date("25/12/"+str$(Year,"")),"w")="1" Then {
             Print Year
       }
 }
 \\ is the same with this:
 Print "December 25 is a Sunday in:"
-For Year=2008 to 2121 { 
+For Year=2008 to 2121 {
       if  Str$(Date(str$(Year,"")+"-12-25"),"w")="1" Then {
             Print Year
       }
@@ -3137,7 +3137,7 @@ gives back:
 ```Matlab
   t  = datenum([[2008:2121]',repmat([12,25,0,0,0], 2121-2007, 1)]);
   t  = t(strmatch('Sunday', datestr(t,'dddd')), :);
-  datestr(t,'yyyy')		
+  datestr(t,'yyyy')
 
 ```
 
@@ -3210,7 +3210,7 @@ BEGIN
     TRY
       time := Date.ToTime(date);
     EXCEPT
-    | Date.Error => 
+    | Date.Error =>
       IO.Put(Fmt.Int(year) & " is the last year we can specify\n");
       EXIT;
     END;
@@ -3284,7 +3284,7 @@ DOWHOLIDAY
 Usage:
 ```txt
 USER>D ^DOW
- 
+
 The following years have Christmas on a Sunday: 2011, 2016, 2022, 2033, 2039, 2044, 2050, 2061, 2067, 2072, 2078, 2089, 2095, 2101, 2107, 2112, 2118
 
 ```
@@ -3558,7 +3558,7 @@ for year in 2008..2121:
 {{out}}
 
 ```txt
-2011 2016 2022 2033 2039 2044 2050 2061 2067 2072 2078 2089 2095 2101 2107 2112 2118 
+2011 2016 2022 2033 2039 2044 2050 2061 2067 2072 2078 2089 2095 2101 2107 2112 2118
 ```
 
 
@@ -3615,7 +3615,7 @@ MODULE DaysOfWeek; (** AUTHOR ""; PURPOSE ""; *)
 
 IMPORT
 	Out := KernelLog, Dates;
-	
+
 PROCEDURE Do*;
 VAR
 	date: Dates.DateTime;
@@ -3672,18 +3672,18 @@ int main()
    @autoreleasepool {
       for(NSUInteger i=2008; i<2121; i++)
       {
-         NSCalendarDate *d = [[NSCalendarDate alloc] 
+         NSCalendarDate *d = [[NSCalendarDate alloc]
                               initWithYear: i
                               month: 12
                               day: 25
-                              hour: 0 minute: 0 second:0 
+                              hour: 0 minute: 0 second:0
                               timeZone: [NSTimeZone timeZoneWithAbbreviation:@"CET"] ];
          if ( [d dayOfWeek] == 0 )
-         {  
+         {
             printf("25 Dec %u is Sunday\n", i);
          }
       }
-   
+
    }
    return 0;
 }
@@ -3744,7 +3744,7 @@ with _ -> ()
 ```
 
 
-{{out}} of a run on a 32 bit machine 
+{{out}} of a run on a 32 bit machine
 
 ```txt
 
@@ -3758,7 +3758,7 @@ with _ -> ()
 
 
 
-###  With a dedicated library 
+###  With a dedicated library
 
 
 {{libheader|OCaml Calendar Library}}
@@ -3775,10 +3775,10 @@ let list_make_seq first last =
     else aux (pred i) (i::acc)
   in
   aux last []
- 
+
 let print_date (year, month, day) =
   Printf.printf "%d-%02d-%02d\n" year month day
- 
+
 let () =
   let years = list_make_seq 2008 2121 in
   let years = List.filter (fun year ->
@@ -3938,7 +3938,7 @@ English dialect variable-length space-padded opcodes
 			<# say capture>Christmas Day <# say value foriteration>...</#> is a Sunday</#><# say keyword>__Newline</#>
 		</#>
 	</#>
-	
+
 </#>
 ```
 
@@ -4037,7 +4037,7 @@ or shorter:
 
 use DateTime;
 use strict;
- 
+
 for (2008 .. 2121) {
   print "25 Dec $_ is Sunday\n"
     if DateTime->new(year => $_, month => 12, day => 25)->day_of_week == 7;
@@ -4303,8 +4303,8 @@ Satisfy the task requirement:
 
 ```txt
 
-Year DayOfWeek Christmas  DaysOff                                            
----- --------- ---------  -------                                            
+Year DayOfWeek Christmas  DaysOff
+---- --------- ---------  -------
 2011    Sunday 12/25/2011 {12/26/2011, 12/27/2011, 12/28/2011, 12/29/2011...}
 2016    Sunday 12/25/2016 {12/26/2016, 12/27/2016, 12/28/2016, 12/29/2016...}
 2022    Sunday 12/25/2022 {12/26/2022, 12/27/2022, 12/28/2022, 12/29/2022...}
@@ -4337,8 +4337,8 @@ Get-ChristmasHoliday -Year (2008..2121 | Get-Random)
 
 ```txt
 
-Year DayOfWeek Christmas  DaysOff                 
----- --------- ---------  -------                 
+Year DayOfWeek Christmas  DaysOff
+---- --------- ---------  -------
 2110  Thursday 12/25/2110 {12/24/2110, 12/25/2110}
 
 ```
@@ -4397,7 +4397,7 @@ main() :-
 christmas_days_falling_on_sunday(StartYear, EndYear, SundayList) :-
     numlist(StartYear, EndYear, YearRangeList),
     include(is_christmas_day_a_sunday, YearRangeList, SundayList).
-    
+
 is_christmas_day_a_sunday(Year) :-
     Date = date(Year, 12, 25),
     day_of_the_week(Date, DayOfTheWeek),
@@ -4647,9 +4647,9 @@ print "version 2"
 
 d: to-date [25 12 2008]
 while [d <= 25/12/2121 ] [
-  if 7 = d/weekday [ 
-    print rejoin [d/day '. d/month '. d/year ] 
-  ] 
+  if 7 = d/weekday [
+    print rejoin [d/day '. d/month '. d/year ]
+  ]
   d/year: d/year + 1
 ]
 
@@ -4692,7 +4692,7 @@ version 2
 25.12.2107
 25.12.2112
 25.12.2118
->> 
+>>
 
 ```
 
@@ -4748,7 +4748,7 @@ The extended DATE parameters (arguments 2 and 3) are only supported by the newer
 
 ### using DATE iso
 
-Works with Regina REXX only. 
+Works with Regina REXX only.
 Works with ooRexx
 
 The extended DATE parameters (arguments 2 and 3) are only supported by the newer REXX interpreters.
@@ -4802,7 +4802,7 @@ December 25th, 2118 falls on a Sunday.
 
 
 
-### old school DOW 
+### old school DOW
 
 This DOW (day-of-week) version will work with any version of a REXX interpreter.
 
@@ -4855,7 +4855,7 @@ December 25th, 2118 falls on a Sunday.
 
 for n = 2008 to 2121
     if n < 2100 leap = n - 1900 else leap = n - 1904 ok
-    m = (((n-1900)%7) + floor(leap/4) + 27) % 7 
+    m = (((n-1900)%7) + floor(leap/4) + 27) % 7
     if m = 4 see "25 Dec " + n + nl ok
 next
 
@@ -5223,7 +5223,7 @@ const proc: main is func
   begin
     for year range 2008 to 2122 do
       if dayOfWeek(date(year, 12, 25)) = 7 then
-        writeln("Christmas comes on a sunday in " <& year);   
+        writeln("Christmas comes on a sunday in " <& year);
       end if;
     end for;
   end func;
@@ -5341,12 +5341,12 @@ SQL has good support for date functions; care must be taken with NLS settings (g
 
 ```sql
 select extract(year from dt) as year_with_xmas_on_sunday
-from   ( 
+from   (
          select  add_months(date '2008-12-25', 12 * (level - 1)) as dt
          from    dual
          connect by level <= 2121 - 2008 + 1
        )
-       
+
 where  to_char(dt, 'Dy', 'nls_date_language=English') = 'Sun'
 order  by 1
 ;
@@ -5418,7 +5418,7 @@ list if dow(mdy(12,25,year))==0, noobs sep(0)
 
 
 
-###  Mata 
+###  Mata
 
 
 
@@ -5475,7 +5475,7 @@ fun yearsOfSundayXmas(fromYear, toYear) =
     ()
   else
     let
-      val d = Date.date {year=fromYear, month=Date.Dec, day=25, 
+      val d = Date.date {year=fromYear, month=Date.Dec, day=25,
               hour=0, minute=0, second=0,
                       offset=SOME Time.zeroTime}
       val wd = Date.weekDay d
@@ -5767,7 +5767,7 @@ The <code>cal</code> command is a tradition since Version 6 AT&T UNIX. This solu
 
 
 ```txt
-$ cal 12 2011 
+$ cal 12 2011
    December 2011
 Su Mo Tu We Th Fr Sa
              1  2  3
@@ -5775,7 +5775,7 @@ Su Mo Tu We Th Fr Sa
 11 12 13 14 15 16 17
 18 19 20 21 22 23 24
 25 26 27 28 29 30 31
-                    
+
 ```
 
 
@@ -5838,21 +5838,21 @@ sunday_years = ~&zS sep` * =]'Sun'*~ christmases
 {{out}}
 
 ```txt
-2011                            
-2016                            
-2022                            
-2033                            
-2039                            
-2044                            
-2050                            
-2061                            
-2067                            
-2072                            
-2078                            
-2089                            
-2095                            
-2101                            
-2107                            
+2011
+2016
+2022
+2033
+2039
+2044
+2050
+2061
+2067
+2072
+2078
+2089
+2095
+2101
+2107
 2112
 2118
 ```
@@ -5956,12 +5956,12 @@ for (#3 = 2008; #3 < 2122; #3++) {
 ```visualfoxpro
 
 local i as dword
- 	
-for i := 2008 upto 2121  
-	if DOW(ConDate(i, 12, 25)) = 1   
+
+for i := 2008 upto 2121
+	if DOW(ConDate(i, 12, 25)) = 1
 		? AsString(i)
-	endif              
-next i 
+	endif
+next i
 
 ```
 
@@ -5983,7 +5983,7 @@ next i
 !-&y = 0 `.getDay. @new Date[y 11 25] @range[2008 2121]
 ```
 
-Returns: 
+Returns:
 ```txt
 [2011 2016 2022 2033 2039 2044 2050 2061 2067 2072 2078 2089 2095 2101 2107 2112 2118]
 ```
@@ -6053,9 +6053,9 @@ sub wd(m, d, y)
   End If
   Return mod((y + int(y / 4) - int(y / 100) + int(y / 400) + d + int((153 * m + 8) / 5)), 7)
 End sub
- 
+
 // ------=< MAIN >=------
- 
+
 For yr = 2008 To 2121
   If wd(12, 25, yr) = 0 Then
     Print "Dec 25 ", yr
@@ -6142,16 +6142,16 @@ end Main.
 {{trans|BASIC}}
 
 ```zxbasic
-10 CLS 
+10 CLS
 20 FOR y=2008 TO 2121
 30 LET year=y: LET m=12: LET d=25: GO SUB 1000
 40 IF wd=0 THEN PRINT d;" ";m;" ";y
 50 NEXT y
-60 STOP 
+60 STOP
 1000 REM week day
 1010 IF m=1 OR m=2 THEN LET m=m+12: LET year=year-1
 1020 LET wd=FN m(year+INT (year/4)-INT (year/100)+INT (year/400)+d+INT ((153*m+8)/5),7)
-1030 RETURN 
+1030 RETURN
 1100 DEF FN m(a,b)=a-INT (a/b)*b
 ```
 

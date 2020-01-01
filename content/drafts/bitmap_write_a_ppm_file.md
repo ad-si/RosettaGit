@@ -85,7 +85,7 @@ do {
 
 ```AutoHotkey
 
-cyan := color(0,255,255) ; r,g,b 
+cyan := color(0,255,255) ; r,g,b
 cyanppm := Bitmap(10, 10, cyan) ; width, height, background-color
 Bitmap_write_ppm3(cyanppm, "cyan.ppm")
 run, cyan.ppm
@@ -106,7 +106,7 @@ file.write("P3`n"  ;  `n = \n in ahk
     loop % bitmap.width
     {
       width := A_Index
-      color := bitmap[height, width] 
+      color := bitmap[height, width]
       file.Write(color.R . " ")
       file.Write(color.G . " ")
       file.Write(color.B . " ")
@@ -150,17 +150,17 @@ close(outfile);
 ```bbcbasic
       Width% = 200
       Height% = 200
-      
+
       VDU 23,22,Width%;Height%;8,16,16,128
       *display c:\lena
-      
+
       f% = OPENOUT("c:\lena.ppm")
       IF f%=0 ERROR 100, "Failed to open output file"
       BPUT #f%, "P6"
       BPUT #f%, "# Created using BBC BASIC"
       BPUT #f%, STR$(Width%) + " " +STR$(Height%)
       BPUT #f%, "255"
-      
+
       FOR y% = Height%-1 TO 0 STEP -1
         FOR x% = 0 TO Width%-1
           rgb% = FNgetpixel(x%,y%)
@@ -170,9 +170,9 @@ close(outfile);
         NEXT
       NEXT y%
       CLOSE#f%
-      
+
       END
-      
+
       DEF FNgetpixel(x%,y%)
       LOCAL col%
       col% = TINT(x%*2,y%*2)
@@ -185,10 +185,10 @@ close(outfile);
 ## C
 
 
-This is one file program which writes one color in each step : 
+This is one file program which writes one color in each step :
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 
 int main(void)
@@ -215,11 +215,11 @@ int main(void)
 
 
 
-This program writes whole array in one step : 
+This program writes whole array in one step :
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -261,7 +261,7 @@ int main()
 
 
 Here is a program which uses imglib library. One must create files imglib.h and imglib.c using code from category [[:Category:Raster graphics operations| Raster graphics operations]]. Start from [[Bitmap| bitmap page]]
-This program writes whole array in one step. 
+This program writes whole array in one step.
 
 Interface:
 
@@ -327,25 +327,25 @@ class PPMWriter
 
 ```lisp
 (defun write-rgb-buffer-to-ppm-file (filename buffer)
-  (with-open-file (stream filename 
+  (with-open-file (stream filename
 			  :element-type '(unsigned-byte 8)
-			  :direction :output 
+			  :direction :output
 			  :if-does-not-exist :create
 			  :if-exists :supersede)
     (let* ((dimensions (array-dimensions buffer))
 	   (width (first dimensions))
 	   (height (second dimensions))
-	   (header (format nil "P6~A~D ~D~A255~A" 
+	   (header (format nil "P6~A~D ~D~A255~A"
 			   #\newline
 			   width height #\newline
 			   #\newline)))
-      (loop 
-	 :for char :across header 
+      (loop
+	 :for char :across header
 	 :do (write-byte (char-code char) stream)) #| Assumes char-codes match ASCII |#
-      
-      (loop 
+
+      (loop
 	 :for x :upfrom 0 :below width
-	 :do (loop :for y :upfrom 0 :below height 
+	 :do (loop :for y :upfrom 0 :below height
 		:do (let ((pixel (rgb-pixel buffer x y)))
 		      (let ((red (rgb-pixel-red pixel))
 			    (green (rgb-pixel-green pixel))
@@ -548,7 +548,7 @@ contains
     write(u, '(A2)') 'P6'
     write(u, '(I0,'' '',I0)') img%width, img%height
     write(u, '(A)') '255'
-    
+
     do j=1, img%height
        do i=1, img%width
           write(u, '(3A1)', advance='no') achar(img%red(i,j)), achar(img%green(i,j)), &
@@ -1012,13 +1012,13 @@ Module Checkit {
             if m>0 then m=4-m  ' add some bytes to raster line
             m+=len(rgb) *x
             Structure rasterline {
-                  { 
+                  {
                         pad as byte*m
-                  }   
+                  }
                   \\ union pad+hline
                   hline as rgb*x
             }
- 
+
             Structure Raster {
                   magic as integer*4
                   w as integer*4
@@ -1038,7 +1038,7 @@ Module Checkit {
                   c-!
                   Return Pad, 0:=c as long
                   Return Image1, 0!where:=Eval(Pad, 2) as byte, 0!where+1:=Eval(Pad, 1) as byte, 0!where+2:=Eval(Pad, 0) as byte
- 
+
             }
             GetPixel=Lambda Image1,aLines=Len(Raster)-Len(Rasterline), blines=-Len(Rasterline) (x,y) ->{
                   where=alines+3*x+blines*y
@@ -1053,7 +1053,7 @@ Module Checkit {
                   } Else Error "Can't Copy Image"
             }
             Export2File=Lambda Image1, x, y (f) -> {
-                  \\ use this between open and close 
+                  \\ use this between open and close
                   Print #f, "P3"
                   Print #f,"# Created using M2000 Interpreter"
                   Print #f, x;" ";y
@@ -1072,7 +1072,7 @@ Module Checkit {
                         Print #f
                         m=where mod 4
                         if m<>0 then where+=4-m
-                  }            
+                  }
             }
             Group Bitmap {
                   SetPixel=SetPixel
@@ -1083,7 +1083,7 @@ Module Checkit {
             }
             =Bitmap
       }
- 
+
       A=Bitmap(10, 10)
       Call A.SetPixel(5,5, color(128,0,255))
       Open "A2.PPM" for Output as #F
@@ -1197,9 +1197,9 @@ Module PPMbinaryP6 {
                                           }
                                           iF eof(f) then Error E$
                                     } until getV=false
-                              }  else Error "Not a P6 ppm" 
+                              }  else Error "Not a P6 ppm"
                         }
-                  } else Error "No proper arguments" 
+                  } else Error "No proper arguments"
                   if x<1 or y<1 then  Error "Wrong dimensions"
                   structure rgb {
                         red as byte
@@ -1210,9 +1210,9 @@ Module PPMbinaryP6 {
                   if m>0 then m=4-m  ' add some bytes to raster line
                   m+=len(rgb) *x
                   Structure rasterline {
-                        { 
+                        {
                               pad as byte*m
-                        }   
+                        }
                         \\ union pad+hline
                         hline as rgb*x
                   }
@@ -1254,7 +1254,7 @@ Module PPMbinaryP6 {
                         } Else Error "Can't Copy Image"
                   }
                   Export2File=Lambda Image1, x, y (f) -> {
-                        \\ use this between open and close 
+                        \\ use this between open and close
                         Print #f, "P6";chr$(10);
                         Print #f,"# Created using M2000 Interpreter";chr$(10);
                         Print #f, x;" ";y;" 255";chr$(10);
@@ -1272,7 +1272,7 @@ Module PPMbinaryP6 {
                               }
                               m=where mod 4
                               if m<>0 then where+=4-m
-                        } 
+                        }
                   }
                   if valid(F) then {
                         x0=x-1
@@ -1283,12 +1283,12 @@ Module PPMbinaryP6 {
                                           Get #f, Pad1  ' Read binary
                                           \\ reverse rgb
                                           Push Eval(pad1, 2)
-                                          Return pad1, 2:=Eval(pad1, 0), 0:=Number                                    
+                                          Return pad1, 2:=Eval(pad1, 0), 0:=Number
                                           Return Image1, 0!linesB!where:=Eval$(Pad1)
                                           where+=3
                                     }
                                     m=where mod 4
-                                    if m<>0 then where+=4-m                                   
+                                    if m<>0 then where+=4-m
                               }
                   }
                   Group Bitmap {
@@ -1305,10 +1305,10 @@ Module PPMbinaryP6 {
             Open "A.PPM" for Output as #F
                   Call A.ToFile(F)
             Close #f
-            
+
             Print "Saved"
             Open "A.PPM" for Input as #F
-                  C=Bitmap(f)     
+                  C=Bitmap(f)
                   Copy 400*twipsx,200*twipsy use C.Image$()
             Close #f
          }
@@ -1390,7 +1390,7 @@ PROCEDURE Create(imgfile: Pathname.T; img: Bitmap.T) =
     Wr.PutChar(imgfilewr, '\n');
     Wr.Flush(imgfilewr);
   END Create;
-  
+
 BEGIN
 END PPM.
 ```
@@ -1769,7 +1769,7 @@ ppmfileout = io.StringIO('')
 
 def writeppmp3(self, f):
     self.writeppm(f, ppmformat='P3')
-        
+
 def writeppm(self, f, ppmformat='P6'):
     assert ppmformat in ['P3', 'P6'], 'Format wrong'
     magic = ppmformat + '\n'
@@ -1858,12 +1858,12 @@ write.pnm(theimage, filename)
   (define width (send bitmap get-width))
   (define buffer (make-bytes (* width height 4))) ;buffer for storing argb data
   (send bitmap get-argb-pixels 0 0 width height buffer) ;copy pixels
-  (parameterize ([current-output-port output-port]) 
-    (printf "P3\n~a ~a\n255" width height) ;header 
+  (parameterize ([current-output-port output-port])
+    (printf "P3\n~a ~a\n255" width height) ;header
     (for ([i (* width height)])
       (define pixel-position (* 4 i))
       (when (= (modulo i width) 0) (printf "\n")) ;end of row
-      (printf "~s ~s ~s " 
+      (printf "~s ~s ~s "
               (bytes-ref buffer (+ pixel-position 1)) ;r
               (bytes-ref buffer (+ pixel-position 2)) ;g
               (bytes-ref buffer (+ pixel-position 3)))))) ;b
@@ -1879,8 +1879,8 @@ write.pnm(theimage, filename)
   (define width (send bitmap get-width))
   (define buffer (make-bytes (* width height 4))) ;buffer for storing argb data
   (send bitmap get-argb-pixels 0 0 width height buffer) ;copy pixels
-  (parameterize ([current-output-port output-port]) 
-    (printf "P6\n~a ~a\n255\n" width height) ;header 
+  (parameterize ([current-output-port output-port])
+    (printf "P6\n~a ~a\n255\n" width height) ;header
     (for ([i (* width height)])
       (define pixel-position (* 4 i))
       (write-byte (bytes-ref buffer (+ pixel-position 1))) ; r
@@ -1891,7 +1891,7 @@ write.pnm(theimage, filename)
   (lambda (out)
     (bitmap->ppm bm out)))
 
-;or any other output port 
+;or any other output port
 
 
 ```
@@ -2105,7 +2105,7 @@ Example using definitions in [[Basic bitmap storage#Scheme]]:
 $ include "seed7_05.s7i";
   include "draw.s7i";
   include "color.s7i";
- 
+
 const proc: writePPM (in string: fileName, in PRIMITIVE_WINDOW: aWindow) is func
   local
     var file: ppmFile is STD_NULL;
@@ -2403,7 +2403,7 @@ File("foo.ppm","wb").write(ppm);  // File.stdout isn't binary, let GC close file
 
 $ zkl bbb < lena.bmp
 512 x 512
-$ ls -l foo.ppm 
+$ ls -l foo.ppm
 -rw-r--r-- 1 craigd craigd 786476 Aug 30 01:31 foo.ppm
 
 ```

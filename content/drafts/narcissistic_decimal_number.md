@@ -15,15 +15,15 @@ tags = []
 A   [http://mathworld.wolfram.com/NarcissisticNumber.html Narcissistic decimal number]   is a non-negative integer,   <math>n</math>,   that is equal to the sum of the   <math>m</math>-th   powers of each of the digits in the decimal representation of   <math>n</math>,   where   <math>m</math>   is the number of digits in the decimal representation of   <math>n</math>.
 
 
-Narcissistic (decimal) numbers are sometimes called   '''Armstrong'''   numbers, named after Michael F. Armstrong. 
+Narcissistic (decimal) numbers are sometimes called   '''Armstrong'''   numbers, named after Michael F. Armstrong.
 
 They are also known as   '''Plus Perfect'''   numbers.
 
 
 ;An example:
-::::*   if   <math>n</math>   is   '''153''' 
-::::*   then   <math>m</math>,   (the number of decimal digits)   is   '''3''' 
-::::*   we have   <big> 1<sup>3</sup> + 5<sup>3</sup> + 3<sup>3</sup>   =   1 + 125 + 27   =   '''153''' </big> 
+::::*   if   <math>n</math>   is   '''153'''
+::::*   then   <math>m</math>,   (the number of decimal digits)   is   '''3'''
+::::*   we have   <big> 1<sup>3</sup> + 5<sup>3</sup> + 3<sup>3</sup>   =   1 + 125 + 27   =   '''153''' </big>
 ::::*   and so   '''153'''   is a narcissistic decimal number
 
 
@@ -32,7 +32,7 @@ Generate and show here the first   '''25'''   narcissistic decimal numbers.
 
 
 
-Note:   <math>0^1 = 0</math>,   the first in the series. 
+Note:   <math>0^1 = 0</math>,   the first in the series.
 
 
 ;See also:
@@ -52,7 +52,7 @@ Note:   <math>0^1 = 0</math>,   the first in the series.
 with Ada.Text_IO;
 
 procedure Narcissistic is
-   
+
    function Is_Narcissistic(N: Natural) return Boolean is
       Decimals: Natural := 1;
       M: Natural := N;
@@ -69,9 +69,9 @@ procedure Narcissistic is
       end loop;
       return Sum=N;
    end Is_Narcissistic;
-   
+
    Count, Current: Natural := 0;
-   
+
 begin
    while Count < 25 loop
       if Is_Narcissistic(Current) then
@@ -291,7 +291,7 @@ end.
 
 ```txt
 
-0 1 2 3 4 5 6 7 8 9 153 370 371 407 1634 8208 9474 54748 92727 93084 548834 1741725 4210818 9800817 9926315 
+0 1 2 3 4 5 6 7 8 9 153 370 371 407 1634 8208 9474 54748 92727 93084 548834 1741725 4210818 9800817 9926315
 
 ```
 
@@ -332,7 +332,7 @@ on powerSum(e, ns)
             a + x ^ e
         end |λ|
     end script
-    
+
     foldl(result, 0, ns) as integer
 end powerSum
 
@@ -344,7 +344,7 @@ on narcissiOfLength(nDigits)
         end |λ|
     end script
     set powers to map(nthPower, enumFromTo(0, 9))
-    
+
     script combn
         on digitTree(n, parents)
             if n > 0 then
@@ -358,11 +358,11 @@ on narcissiOfLength(nDigits)
                                     {d, p + intSum}
                                 end |λ|
                             end script
-                            
+
                             map(addPower, items 1 thru (digit + 1) of powers)
                         end |λ|
                     end script
-                    
+
                     set nodes to concatMap(nextLayer, parents)
                 else
                     set nodes to powers
@@ -374,12 +374,12 @@ on narcissiOfLength(nDigits)
                         isDaffodil(nDigits, item 2 of pair)
                     end |λ|
                 end script
-                
+
                 filter(result, parents)
             end if
         end digitTree
     end script
-    
+
     script snd
         on |λ|(ab)
             item 2 of ab
@@ -391,16 +391,16 @@ end narcissiOfLength
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     {0} & concatMap(narcissiOfLength, enumFromTo(1, 5))
     -- 4 seconds, 20 narcissi
-    
-    -- {0} & concatMap(narcissiOfLength, enumFromTo(1, 6)) 
+
+    -- {0} & concatMap(narcissiOfLength, enumFromTo(1, 6))
     -- 103 seconds, 21 narcissi
-    
+
     -- {0} & concatMap(narcissiOfLength, enumFromTo(1, 7))
     -- 13.75 minutes, 25 narcissi
-    
+
 end run
 
 
@@ -469,7 +469,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -521,7 +521,7 @@ Narc(m)
 				Sum += Powers%A_LoopField%
 			Loop, 10
 			{
-				
+
 				if (Lower + (Index := A_Index-1) == Sum + Powers%Index%)
 				{
 					Out .= Lower+Index . (Mod(++Found,5) ? ", " : "`n")
@@ -623,8 +623,8 @@ For a much longer but faster solution, see [[Narcissistic decimal number/C]].
 
 The following prints the first 25 numbers, though not in order...
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <gmp.h>
 
 #define MAX_LEN 81
@@ -996,9 +996,9 @@ static class Program
                                                     case 0:
                                                         {
                                                             d = new int[10]; foreach (char c in bs) d[c - 48] += 1;
-                                                            if (n9 == d[9] && n8 == d[8] && n7 == d[7] && 
-                                                                n6 == d[6] && n5 == d[5] && n4 == d[4] && 
-                                                                n3 == d[3] && n2 == d[2] && n1 == d[1] && 
+                                                            if (n9 == d[9] && n8 == d[8] && n7 == d[7] &&
+                                                                n6 == d[6] && n5 == d[5] && n4 == d[4] &&
+                                                                n3 == d[3] && n2 == d[2] && n1 == d[1] &&
                                                                 n - n9 - n8 - n7 - n6 - n5 - n4 - n3 - n2 - n1 == d[0])
                                                                 res.Add(BigInteger.Parse(new string(bs)));
                                                             break;
@@ -1016,7 +1016,7 @@ static class Program
 Next_n:     if (only1) {
                 Console.Write("{0} ", n); lock (resu) resu.AddRange(res); return;
             } else {
-                res.Sort(); Console.WriteLine("{2,3} {0,3}: {1}", 
+                res.Sort(); Console.WriteLine("{2,3} {0,3}: {1}",
                 Math.Ceiling((DateTime.Now - st).TotalSeconds), string.Join(" ", res), n); res.Clear();
             }
         }
@@ -1271,7 +1271,7 @@ by Average-user
        PROGRAM-ID. NARCISSIST-NUMS.
        DATA DIVISION.
        WORKING-STORAGE SECTION.
- 
+
            01 num-length PIC 9(2) value 0.
            01 in-sum PIC  9(9) value 0.
            01 counter PIC  9(9) value 0.
@@ -1280,52 +1280,52 @@ by Average-user
            01 temp PIC  9(9) value 0.
            01 modulo PIC  9(9) value 0.
            01 answer PIC  9 .
- 
+
        PROCEDURE DIVISION.
        MAIN-PROCEDURE.
            DISPLAY "the first 20 narcissist numbers:" .
- 
+
            MOVE 20 TO counter.
            PERFORM UNTIL counter=0
- 
+
                PERFORM 000-NARCISSIST-PARA
- 
-                   IF answer = 1 
+
+                   IF answer = 1
                        SUBTRACT 1 from counter
                        GIVING counter
                        MOVE current-number TO narcissist
                        DISPLAY narcissist
                    END-IF
- 
+
                    ADD 1 TO current-number
- 
+
                END-PERFORM
- 
+
             STOP RUN.
- 
+
        000-NARCISSIST-PARA.
- 
+
              MOVE ZERO TO in-sum.
              MOVE current-number TO temp.
              COMPUTE num-length =1+  FUNCTION Log10(temp)
- 
+
              PERFORM  UNTIL temp=0
- 
+
                   DIVIDE temp BY 10 GIVING temp
                             REMAINDER  modulo
- 
+
                   COMPUTE modulo=modulo**num-length
                   ADD modulo to in-sum GIVING in-sum
- 
+
             END-PERFORM.
- 
+
                IF current-number=in-sum
                    MOVE 1 TO answer
                    ELSE MOVE 0 TO answer
                END-IF.
- 
+
        END PROGRAM NARCISSIST-NUMS.
-       
+
 
 ```
 
@@ -1389,31 +1389,31 @@ the first 20 narcissist numbers:
 
 CL-USER> (start)
 
-0 
-1 
-2 
-3 
-4 
-5 
-6 
-7 
-8 
-9 
-153 
-370 
-371 
-407 
-1634 
-8208 
-9474 
-54748 
-92727 
-93084 
-548834 
-1741725 
-4210818 
-9800817 
-9926315 
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+153
+370
+371
+407
+1634
+8208
+9474
+54748
+92727
+93084
+548834
+1741725
+4210818
+9800817
+9926315
 NIL
 
 ```
@@ -1593,14 +1593,14 @@ defmodule RC do
       end)
     end)
   end
-  
+
   defp divsum(0, _, sum), do: sum
   defp divsum(n, digitPowers, sum) do
     divsum(div(n,10), digitPowers, sum+elem(digitPowers,rem(n,10)))
   end
-  
+
   defp power(n, m), do: power(n, m, 1)
-  
+
   defp power(_, 0, pow), do: pow
   defp power(n, m, pow), do: power(n, m-1, pow*n)
 end
@@ -1717,13 +1717,13 @@ math.text.utils prettyprint sequences ;
 IN: rosetta-code.narcissistic-decimal-number
 
 : digit-count ( n -- count ) log10 floor >integer 1 + ;
-    
+
 : narcissist? ( n -- ? ) dup [ 1 digit-groups ]
     [ digit-count [ ^ ] curry ] bi map-sum = ;
-    
+
 : first25 ( -- seq ) 25 0 lfrom [ narcissist? ] lfilter
     ltake list>array ;
-    
+
 : main ( -- ) first25 [ pprint bl ] each ;
 
 MAIN: main
@@ -1758,9 +1758,9 @@ MAIN: main
  : zero.divmod                         \ /mod that returns zero if number is zero
 	   dup
 	   0 = if drop 0 else
-           /mod 
+           /mod
 	   then ;
-	  
+
  : zero.div                            \ division that returns zero if divisor is zero
 	 dup
 	 0 = if drop else
@@ -1774,7 +1774,7 @@ MAIN: main
 	  dup 0 <= if drop 1 else
 	  dup 1 = if drop 10 else
 	  10 swap
-	  1 do 
+	  1 do
 	  10 *
 	  loop then then ;
 
@@ -1788,46 +1788,46 @@ MAIN: main
 
  : to.pow                           \ nth power of positive numbers ( n m -- n^m )
 	 swap dup rot
-	 dup 0 <= if 
-	 2drop drop 1 
-	 else 
-	 0 do 
+	 dup 0 <= if
+	 2drop drop 1
+	 else
+	 0 do
 	 swap dup rot *
-	 loop 
-	 swap zero.div 
+	 loop
+	 swap zero.div
 	 then ;
-	
- : num.pow                        \ raises each digit to the power of (number of digits) 
+
+ : num.pow                        \ raises each digit to the power of (number of digits)
 	 depth 1 - 0 do
 	 next.last depth 1 - to.pow
 	 loop ;
-	
- : add.num 
+
+ : add.num
 	 depth 2 > if
 	 begin
 	 +
 	 depth 2 = until then ;
-	
+
  : narc.check
-	split.div 
-        num.pow 
+	split.div
+        num.pow
         add.num ;
-	
+
  : narc.num 0 { a b }              \  ( m -- n1 n2 n3 ... nm )
-	 page                      \ displays m narcissistic decimal numbers... 
+	 page                      \ displays m narcissistic decimal numbers...
 	 999999999 0 do            \ ...beginning with 0
 	 a b = if leave then
-	 i narc.check = if 
+	 i narc.check = if
 	 i . cr b 1 + to b
 	 then
 	 loop
 	 ;
-	
+
  25 narc.num
 
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 
@@ -1872,13 +1872,13 @@ MAIN: main
 ' normal version: 14-03-2017
 ' compile with: fbc -s console
 ' can go up to 18 digits (ulongint is 64bit), above 18 overflow will occur
- 
+
 Dim As Integer n, n0, n1, n2, n3, n4, n5, n6, n7, n8, n9, a, b
 Dim As Integer d()
 Dim As ULongInt d2pow(0 To 9) = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 Dim As ULongInt x
 Dim As String str_x
- 
+
 For n = 1 To 7
   For n9 = n To 0 Step -1
     For n8 = n-n9 To 0 Step -1
@@ -1890,25 +1890,25 @@ For n = 1 To 7
                 For n2 = n-n9-n8-n7-n6-n5-n4-n3 To 0 Step -1
                   For n1 = n-n9-n8-n7-n6-n5-n4-n3-n2 To 0 Step -1
                     n0 = n-n9-n8-n7-n6-n5-n4-n3-n2-n1
- 
+
                     x = n1 + n2*d2pow(2) + n3*d2pow(3) + n4*d2pow(4) + n5*d2pow(5)_
                            + n6*d2pow(6) + n7*d2pow(7) + n8*d2pow(8) + n9*d2pow(9)
- 
+
                     str_x = Str(x)
                     If Len(str_x) = n Then
- 
+
                       ReDim d(10)
                       For a = 0 To n-1
                         d(Str_x[a]- Asc("0")) += 1
                       Next a
- 
+
                       If n0 = d(0) AndAlso n1 = d(1) AndAlso n2 = d(2) AndAlso n3 = d(3)_
                                    AndAlso n4 = d(4) AndAlso n5 = d(5) AndAlso n6 = d(6)_
                                    AndAlso n7 = d(7) AndAlso n8 = d(8) AndAlso n9 = d(9) Then
                         Print x
                       End If
                     End If
- 
+
                   Next n1
                 Next n2
               Next n3
@@ -1918,14 +1918,14 @@ For n = 1 To 7
       Next n7
     Next n8
   Next n9
- 
+
   For a As Integer = 2 To 9
     d2pow(a) = d2pow(a) * a
   Next a
- 
+
 Next n
- 
-' empty keyboard buffer 
+
+' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "hit any key to end program"
 Sleep
@@ -2072,7 +2072,7 @@ For n = 1 To max
   ' label1:
 Next n
 
-' empty keyboard buffer 
+' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "hit any key to end program"
 Sleep
@@ -2258,7 +2258,7 @@ func main() {
 
 =={{header|GW-BASIC}}==
 {{trans|FreeBASIC}}
-Maximum for N (double) is14 digits, there are no 15 digits numbers 
+Maximum for N (double) is14 digits, there are no 15 digits numbers
 
 ```qbasic
 1 DEFINT A-W : DEFDBL X-Z : DIM D(9) : DIM X2(9) : KEY OFF : CLS
@@ -2279,7 +2279,7 @@ Maximum for N (double) is14 digits, there are no 15 digits numbers
 16 IF LEN(S$) < N THEN GOTO 25
 17 IF LEN(S$) <> N THEN GOTO 24
 18 FOR A = 0 TO 9 : D(A) = 0 : NEXT A
-19 FOR A = 0 TO N-1 
+19 FOR A = 0 TO N-1
 20 B = ASC(MID$(S$,A+1,1))-48
 21 D(B) = D(B) + 1
 22 NEXT A
@@ -2451,11 +2451,11 @@ isNarc=: (= +/@(] ^ #)@getDigits)"0  NB. test numbers for Narcissism
 public class Narc{
 	public static boolean isNarc(long x){
 		if(x < 0) return false;
-		
+
 		String xStr = Long.toString(x);
 		int m = xStr.length();
 		long sum = 0;
-		
+
 		for(char c : xStr.toCharArray()){
 			sum += Math.pow(Character.digit(c, 10), m);
 		}
@@ -2476,7 +2476,7 @@ public class Narc{
 {{out}}
 
 ```txt
-0 1 2 3 4 5 6 7 8 9 153 370 371 407 1634 8208 9474 54748 92727 93084 548834 1741725 4210818 9800817 9926315 
+0 1 2 3 4 5 6 7 8 9 153 370 371 407 1634 8208 9474 54748 92727 93084 548834 1741725 4210818 9800817 9926315
 ```
 
 
@@ -2489,12 +2489,12 @@ import java.util.stream.IntStream;
 public class NarcissisticNumbers {
     static int numbersToCalculate = 25;
     static int numbersCalculated = 0;
-    
+
     public static void main(String[] args) {
         IntStream.iterate(0, n -> n + 1).limit(Integer.MAX_VALUE).boxed().forEach(i -> {
             int length = i.toString().length();
             int addedDigits = 0;
-            
+
             for (int count = 0; count < length; count++) {
                 int value = Integer.parseInt(String.valueOf(i.toString().charAt(count)));
                 addedDigits += Math.pow(value, length);
@@ -2516,7 +2516,7 @@ public class NarcissisticNumbers {
 {{out}}
 
 ```txt
-0 1 2 3 4 5 6 7 8 9 153 370 371 407 1634 8208 9474 54748 92727 93084 548834 1741725 4210818 9800817 9926315 
+0 1 2 3 4 5 6 7 8 9 153 370 371 407 1634 8208 9474 54748 92727 93084 548834 1741725 4210818 9800817 9926315
 ```
 
 
@@ -2544,14 +2544,14 @@ function isNarc(x) {
     return sum == x;
 }
 function main(){
-    var n = []; 
+    var n = [];
     for (var x = 0, count = 0; count < 25; x++){
         if (isNarc(x)){
             n.push(x);
             count++;
         }
     }
-    return n.join(' '); 
+    return n.join(' ');
 }
 ```
 
@@ -2570,32 +2570,32 @@ function main(){
 ```JavaScript
 (() => {
     'use strict';
- 
+
     // digits :: Int -> [Int]
     const digits = n => n.toString()
         .split('')
         .map(x => parseInt(x, 10));
- 
+
     // pow :: Int -> Int -> Int
     const pow = Math.pow;
- 
+
     // isNarc :: Int -> Bool
     const isNarc = n => {
         const
             ds = digits(n),
             len = ds.length;
- 
+
         return ds.reduce((a, x) =>
             a + pow(x, len), 0) === n;
     };
- 
+
     // until :: (a -> Bool) -> (a -> a) -> a -> a
     const until = (p, f, x) => {
         let v = x;
         while (!p(v)) v = f(v);
         return v;
     };
- 
+
     return until(
             x => x.narc.length > 24,
             x => ({
@@ -2797,7 +2797,7 @@ def is_narcissistic:
 ```jq
 # If your jq has "while", then feel free to omit the following definition:
 def while(cond; update):
-  def _while:  if cond then ., (update | _while) else empty end; 
+  def _while:  if cond then ., (update | _while) else empty end;
   _while;
 
 # The first k narcissistic numbers, beginning with 0:
@@ -2866,7 +2866,7 @@ function isnarcissist(n, b=10)
     m = length(d)
     n == mapreduce((x)->x^m, +, d)
 end
- 
+
 function findnarcissist(verbose=false)
     goal = 25
     ncnt = 0
@@ -2929,7 +2929,7 @@ fun isNarcissistic(n: Int): Boolean {
     if (n < 0) throw IllegalArgumentException("Argument must be non-negative")
     var nn = n
     val digits = mutableListOf<Int>()
-    val powers = IntArray(10) { 1 } 
+    val powers = IntArray(10) { 1 }
     while (nn > 0) {
        digits.add(nn % 10)
        for (i in 1..9) powers[i] *= i // no need to calculate powers[0]
@@ -2950,7 +2950,7 @@ fun main(args: Array<String>) {
         }
         i++
     }
-    while (count < 25)    
+    while (count < 25)
 }
 ```
 
@@ -3038,9 +3038,9 @@ NDN;
 
 ```Mathematica
 narc[1] = 0;
-narc[n_] := 
-  narc[n] = 
-   NestWhile[# + 1 &, narc[n - 1] + 1, 
+narc[n_] :=
+  narc[n] =
+   NestWhile[# + 1 &, narc[n - 1] + 1,
     Plus @@ (IntegerDigits[#]^IntegerLength[#]) != # &];
 narc /@ Range[25]
 ```
@@ -3093,7 +3093,7 @@ end
 | i m |
    n 0 while( n ) [ n 10 /mod ->n swap 1 + ] ->m
    0 m loop: i [ swap m pow + ] == ;
- 
+
 : genNarcissistic(n)
 | l |
    ListBuffer new dup ->l
@@ -3227,15 +3227,15 @@ end.
 ```txt
 
  time ./NdN
- length  1: 1 2 3 4 5 6 7 8 9 
- length  2: 
- length  3: 153 370 370 371 407 
- length  4: 1634 8208 9474 
- length  5: 54748 92727 93084 
- length  6: 548834 
- length  7: 1741725 4210818 9800817 9926315 
- length  8: 24678050 24678050 24678051 88593477 
- length  9: 146511208 472335975 534494836 912985153 
+ length  1: 1 2 3 4 5 6 7 8 9
+ length  2:
+ length  3: 153 370 370 371 407
+ length  4: 1634 8208 9474
+ length  5: 54748 92727 93084
+ length  6: 548834
+ length  7: 1741725 4210818 9800817 9926315
+ length  8: 24678050 24678050 24678051 88593477
+ length  9: 146511208 472335975 534494836 912985153
 
 real	0m1.000s
 ```
@@ -3394,16 +3394,16 @@ end while
 ```PicoLisp
 (let (C 25 N 0 L 1)
    (loop
-      (when 
+      (when
          (=
             N
             (sum ** (mapcar format (chop N)) (need L L)) )
          (println N)
          (dec 'C) )
-      (inc 'N)   
+      (inc 'N)
       (setq L (length N))
       (T (=0 C) 'done) ) )
-      
+
 (bye)
 ```
 
@@ -3503,7 +3503,7 @@ end while
        27 narcissistic:    24678051              0  16:12:16.959
        28 narcissistic:    88593477         365838  16:18:22.797
        29 narcissistic:   146511208         276228  16:22:59.025
-       30 narcissistic:   472335975        1682125  16:51:01.150 
+       30 narcissistic:   472335975        1682125  16:51:01.150
 ```
 
 
@@ -3602,7 +3602,7 @@ Precompiled powers
        27 narcissistic:    24678051              0  00:43:05.049
        28 narcissistic:    88593477         237960  00:47:03.009
        29 narcissistic:   146511208         199768  00:50:22.777
-       30 narcissistic:   472335975        1221384  01:10:44.161 
+       30 narcissistic:   472335975        1221384  01:10:44.161
 ```
 
 
@@ -3681,7 +3681,7 @@ def narcissists():
 
 for i, n in enumerate(islice(narcissists(), 25), 1):
     print(n, end=' ')
-    if i % 5 == 0: print() 
+    if i % 5 == 0: print()
 print()
 ```
 
@@ -3689,10 +3689,10 @@ print()
 {{out}}
 
 ```txt
-0 1 2 3 4 
-5 6 7 8 9 
-153 370 371 407 1634 
-8208 9474 54748 92727 93084 
+0 1 2 3 4
+5 6 7 8 9
+153 370 371 407 1634
+8208 9474 54748 92727 93084
 548834 1741725 4210818 9800817 9926315
 ```
 
@@ -3843,7 +3843,7 @@ length 14: 28116440335967
 
 (module+ test
   (require rackunit)
-  ; example given at head of task  
+  ; example given at head of task
   (check-true (narcissitic? 153))
   ; rip off the first 12 (and 0, since Armstrong numbers seem to be postivie) from
   ; http://oeis.org/A005188 for testing
@@ -3917,15 +3917,15 @@ This version uses lists of digits, rather than numbers themselves.
            (4 4) (4 5) (4 6) (4 7) (4 8) (4 9)
            (5 5) (5 6) (5 7) (5 8) (5 9) (6 6) (6 7) (6 8) (6 9)
            (7 7) (7 8) (7 9) (8 8) (8 9) (9 9)))
-  
+
   (check-equal? (integer->digits-list 0) null)
   (check-equal? (integer->digits-list 7) '(7))
   (check-equal? (integer->digits-list 10) '(1 0))
-  
+
   (check-equal? (narcissitic-numbers-of-length 1) '(1 2 3 4 5 6 7 8 9))
   (check-equal? (narcissitic-numbers-of-length 2) '())
   (check-equal? (narcissitic-numbers-of-length 3) '(153 370 371 407))
-  
+
   (check-equal? (narcissitic-numbers-of-length<= 1) '(0 1 2 3 4 5 6 7 8 9))
   (check-equal? (narcissitic-numbers-of-length<= 3) '(0 1 2 3 4 5 6 7 8 9 153 370 371 407)))
 ```
@@ -3993,7 +3993,7 @@ N=min(N, 89)                                     /*there are only  89  narcissis
        22  narcissistic: 1741725
        23  narcissistic: 4210818
        24  narcissistic: 9800817
-       25  narcissistic: 9926315 
+       25  narcissistic: 9926315
 
 ```
 
@@ -4001,8 +4001,8 @@ N=min(N, 89)                                     /*there are only  89  narcissis
 
 ### optimized
 
-This REXX version is optimized to pre-compute all the ten (single) digits raised to all possible powers (there are 
-only 39 possible widths/powers of narcissistic numbers). 
+This REXX version is optimized to pre-compute all the ten (single) digits raised to all possible powers (there are
+only 39 possible widths/powers of narcissistic numbers).
 
 It is about   '''77%'''   faster then 1<sup>st</sup> REXX version.
 
@@ -4032,10 +4032,10 @@ N=min(N, 89)                                     /*there are only  89  narcissis
      end   /*j*/                                 /*stick a fork in it,  we're all done. */
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 ===optimized, unrolled===
-This REXX version is further optimized by unrolling part of the   '''do'''   loop that sums the decimal digits. 
+This REXX version is further optimized by unrolling part of the   '''do'''   loop that sums the decimal digits.
 
 The unrolling also necessitated the special handling of one─ and two─digit narcissistic numbers.
 
@@ -4077,10 +4077,10 @@ tell: #=# + 1                                    /*bump the counter for narcissi
       return                                     /*return to invoker & keep on truckin'.*/
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 ===optimized, 3-digit chunks===
-This REXX version is further optimized by pre-computing the narcissistic sums of all two-digit and three-digit numbers   (and also including those with leading zeros). 
+This REXX version is further optimized by pre-computing the narcissistic sums of all two-digit and three-digit numbers   (and also including those with leading zeros).
 
 It     is about     '''65%'''   faster then 3<sup>rd</sup> REXX version,   and
 
@@ -4133,7 +4133,7 @@ tell: #=# + 1                                    /*bump the counter for narcissi
 
 {{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
-Further optimization could be utilized by increasing the chunk size to four or five decimal digits, but with an accompanying increase in the size of the pre-computed values. 
+Further optimization could be utilized by increasing the chunk size to four or five decimal digits, but with an accompanying increase in the size of the pre-computed values.
 
 
 
@@ -4148,9 +4148,9 @@ count = 0
 size = 15
 while count != size
       m = isNarc(n)
-      if m=1 see "" + n + " is narcisstic" + nl 
+      if m=1 see "" + n + " is narcisstic" + nl
          count = count + 1 ok
-      n = n + 1 
+      n = n + 1
 end
 
 func isNarc n
@@ -4175,7 +4175,7 @@ func isNarc n
 class Integer
   def narcissistic?
     return false if negative?
-    digs = self.digits    
+    digs = self.digits
     m    = digs.size
     digs.map{|d| d**m}.sum == self
   end
@@ -4225,7 +4225,7 @@ puts 0.step.lazy.select(&:narcissistic?).first(25)
 
 ```Scala
 object NDN extends App {
-  
+
   val narc: Int => Int = n => (n.toString map (_.asDigit) map (math.pow(_, n.toString.size)) sum) toInt
   val isNarc: Int => Boolean = i => i == narc(i)
 

@@ -41,15 +41,15 @@ while !File.AtEOF
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <wchar.h>
 #include <stdlib.h>
 #include <locale.h>
 
 int main(void)
 {
-    /* If your native locale doesn't use UTF-8 encoding 
+    /* If your native locale doesn't use UTF-8 encoding
      * you need to replace the empty string with a
      * locale like "en_US.utf8"
      */
@@ -186,7 +186,7 @@ r = InputStreamReader( FileInputStream('input.txt'), 'UTF-8' )
 
 while (ch = r.read()) != -1
   print( chr(ch) )
-	
+
 r.close()
 ```
 
@@ -230,7 +230,7 @@ Reading a file a character at a time is antithetical not only to the architectur
 First, we know that the first 8-bit value in a utf-8 sequence tells us the length of the sequence needed to represent that character. Specifically: we can convert that value to binary, and count the number of leading 1s to find the length of the character (except the length is always at least 1 character long).
 
 
-```J>u8len=: 1 
+```J>u8len=: 1
 . 0 i.~ (8#2)#:a.&i.
 ```
 
@@ -537,7 +537,7 @@ end
 
 ## M2000 Interpreter
 
-from revision 27, version 9.3, of M2000 Environment, Chinese 长 letter displayed in console (as displayed in editor) 
+from revision 27, version 9.3, of M2000 Environment, Chinese 长 letter displayed in console (as displayed in editor)
 
 
 ```M2000 Interpreter
@@ -578,7 +578,7 @@ Module checkit {
            Try ok {
                   If Binary.And(mrk, 0xE0)=0xC0 then {
                         Get #f,one
-                        Return Bytes, 1:=Eval$(one, 0,1) 
+                        Return Bytes, 1:=Eval$(one, 0,1)
                         ch$=Eval$(Bytes, 0, 2)
                   } Else.if Binary.And(mrk, 0xF0)=0xE0 then {
                         Get #f,two
@@ -645,7 +645,7 @@ Module checkit {
            Try ok {
                   If Binary.And(mrk, 0xE0)=0xC0 then {
                         Get #f,one
-                        Return Bytes, 1:=Eval$(one, 0,1) 
+                        Return Bytes, 1:=Eval$(one, 0,1)
                         ch$=Eval$(Bytes, 0, 2)
                   } Else.if Binary.And(mrk, 0xF0)=0xE0 then {
                         Get #f,two
@@ -779,7 +779,7 @@ method formatCodePoint(ix, cc, cp) private static
     'utf-8="'x_utf8'"'         -
     'name="'cpName'"'
   return fmt
-  
+
 -- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 method runSample(arg) public static
   parse arg fileNames
@@ -849,7 +849,7 @@ got character ⼥ [U+2f25]
 
 ## Perl 6
 
-Perl 6 has a built in method .getc to get a single character from an open file handle. File handles default to UTF-8, so they will handle multi-byte characters correctly. 
+Perl 6 has a built in method .getc to get a single character from an open file handle. File handles default to UTF-8, so they will handle multi-byte characters correctly.
 
 To read a single character at a time from the Standard Input terminal; $*IN in Perl 6:
 
@@ -875,7 +875,7 @@ print $_ while defined $_ = $in.getc;
 Generally I use utf8_to_utf32() on whole lines when I want to do character-counting.
 
 You can find that routine in builtins/utfconv.e, and here is a modified copy that reads
-precisely one unicode character from a file. If there is a genuine demand for it, I 
+precisely one unicode character from a file. If there is a genuine demand for it, I
 could easily add this to that file permanently, and document/autoinclude it properly.
 
 ```Phix
@@ -1007,7 +1007,7 @@ Pico Lisp uses UTF-8 until told otherwise.
 
 ```PicoLisp
 
-(in "wordlist" 
+(in "wordlist"
   (while (char)
     (process @))
 
@@ -1052,11 +1052,11 @@ Python 3 simplifies the handling of text files since you can specify an encoding
 def get_next_character(f):
     """Reads one character from the given textfile"""
     c = f.read(1)
-    while c: 
+    while c:
         yield c
         c = f.read(1)
 
-# Usage: 
+# Usage:
 with open("input.txt", encoding="utf-8") as f:
     for c in get_next_character(f):
         print(c, sep="", end="")
@@ -1096,7 +1096,7 @@ Output:
 
 REXX doesn't support UTF8 encoded wide characters, just bytes.
 
-The task's requirement stated that '''EOF''' was to be returned upon reaching the end-of-file, so this programming example was written as a subroutine (procedure). 
+The task's requirement stated that '''EOF''' was to be returned upon reaching the end-of-file, so this programming example was written as a subroutine (procedure).
 
 Note that displaying of characters that may modify screen behavior such as tab usage, backspaces, line feeds, carriage returns, "bells" and others are suppressed, but their hexadecimal equivalents are displayed.
 

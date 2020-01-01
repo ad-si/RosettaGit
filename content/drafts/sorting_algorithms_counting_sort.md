@@ -98,7 +98,7 @@ end Counting_Sort;
 
  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
  51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97
- 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 
+ 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132
  133 134 135 136 137 138 139 140
 
 
@@ -110,10 +110,10 @@ end Counting_Sort;
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
 
-{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}} 
+{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
 
 
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}} 
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}}
 
 ```algol68
 PROC counting sort mm = (REF[]INT array, INT min, max)VOID:
@@ -182,7 +182,7 @@ CountingSort(ints,min,max) {
    Return SubStr(t,2)
 }
 ```
- 
+
 
 
 ## BASIC256
@@ -244,7 +244,7 @@ print
       NEXT
       PRINT
       END
-      
+
       DEF PROCcountingsort(a%(), l%, h%)
       LOCAL i%, z%, c%()
       DIM c%(h% - l%)
@@ -274,8 +274,8 @@ print
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 void counting_sort_mm(int *array, int n, int min, int max)
@@ -292,7 +292,7 @@ void counting_sort_mm(int *array, int n, int min, int max)
     for(j = 0; j < count[i - min]; j++) {
       array[z++] = i;
     }
-  } 
+  }
 
   free(count);
 }
@@ -300,7 +300,7 @@ void counting_sort_mm(int *array, int n, int min, int max)
 void min_max(int *array, int n, int *min, int *max)
 {
   int i;
-  
+
   *min = *max = array[0];
   for(i=1; i < n; i++) {
     if ( array[i] < *min ) {
@@ -339,13 +339,13 @@ int main()
 
 #include <iostream>
 #include <time.h>
- 
+
 //------------------------------------------------------------------------------
 using namespace std;
- 
+
 //------------------------------------------------------------------------------
 const int MAX = 30;
- 
+
 //------------------------------------------------------------------------------
 class cSort
 {
@@ -355,9 +355,9 @@ public:
 	int mi, mx, z = 0; findMinMax( arr, len, mi, mx );
 	int nlen = ( mx - mi ) + 1; int* temp = new int[nlen];
 	memset( temp, 0, nlen * sizeof( int ) );
- 
+
 	for( int i = 0; i < len; i++ ) temp[arr[i] - mi]++;
- 
+
 	for( int i = mi; i <= mx; i++ )
 	{
 	    while( temp[i - mi] )
@@ -366,10 +366,10 @@ public:
 		temp[i - mi]--;
 	    }
 	}
- 
+
 	delete [] temp;
     }
- 
+
 private:
     void findMinMax( int* arr, int len, int& mi, int& mx )
     {
@@ -387,23 +387,23 @@ int main( int argc, char* argv[] )
     srand( time( NULL ) ); int arr[MAX];
     for( int i = 0; i < MAX; i++ )
 	arr[i] = rand() % 140 - rand() % 40 + 1;
- 
+
     for( int i = 0; i < MAX; i++ )
 	cout << arr[i] << ", ";
     cout << endl << endl;
- 
+
     cSort s; s.sort( arr, MAX );
- 
+
     for( int i = 0; i < MAX; i++ )
 	cout << arr[i] << ", ";
     cout << endl << endl;
- 
+
     return system( "pause" );
 }
 //------------------------------------------------------------------------------
 
 ```
- 
+
 {{out}}
 
 ```txt
@@ -418,13 +418,13 @@ int main( int argc, char* argv[] )
 
 
 
-###  Alternate version 
+###  Alternate version
 
 Uses C++11. Compile with
  g++ -std=c++11 counting.cpp
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iterator>
 #include <iostream>
 #include <vector>
@@ -490,14 +490,14 @@ namespace CountingSort
             int z = 0;
 
             for (int i = 0; i < count.Length; i++) { count[i] = 0; }
-            for (int i = 0; i < arr.Length; i++) { count[arr[i] - min]++; }           
+            for (int i = 0; i < arr.Length; i++) { count[arr[i] - min]++; }
 
             for (int i = min; i <= max; i++)
             {
                 while (count[i - min]-- > 0)
                 {
                     arr[z] = i;
-                    z++;                    
+                    z++;
                 }
             }
             return arr;
@@ -743,38 +743,38 @@ ELENA 4.x :
 ```elena
 import extensions;
 import system'routines;
- 
+
 extension op
 {
     countingSort()
         = self.clone().countingSort(self.MinimalMember, self.MaximalMember);
- 
+
     countingSort(int min, int max)
     {
         int[] count := new int[](max - min + 1);
         int z := 0;
- 
+
         count.populate:(int i => 0);
- 
+
         for(int i := 0, i < self.Length, i += 1) { count[self[i] - min] := count[self[i] - min] + 1 };
- 
+
         for(int i := min, i <= max, i += 1)
         {
             while (count[i - min] > 0)
             {
                 self[z] := i;
                 z += 1;
- 
+
                 count[i - min] := count[i - min] - 1
             }
         }
     }
 }
- 
+
 public program()
 {
     var list := new Range(0, 10).selectBy:(i => randomGenerator.eval(10)).toArray();
- 
+
     console.printLine("before:", list.asEnumerable());
     console.printLine("after :", list.countingSort().asEnumerable())
 }
@@ -911,7 +911,7 @@ Function findMax(array() As Integer) As Integer
   If length = 0 Then Return 0 '' say
   If length = 1 Then Return array(LBound(array))
   Dim max As Integer = LBound(array)
-  For i As Integer = LBound(array) + 1 To UBound(array) 
+  For i As Integer = LBound(array) + 1 To UBound(array)
     If array(i) > max Then max = array(i)
   Next
   Return max
@@ -922,7 +922,7 @@ Function findMin(array() As Integer) As Integer
   If length = 0 Then Return 0 '' say
   If length = 1 Then Return array(LBound(array))
   Dim min As Integer = LBound(array)
-  For i As Integer = LBound(array) + 1 To UBound(array) 
+  For i As Integer = LBound(array) + 1 To UBound(array)
     If array(i) < min Then min = array(i)
   Next
   Return min
@@ -940,7 +940,7 @@ Sub countingSort(array() As Integer, min As Integer, max As Integer)
     While count(i - min) > 0
       array(z) = i
       z += 1
-      count(i - min) -= 1  
+      count(i - min) -= 1
     Wend
   Next
 End Sub
@@ -1134,7 +1134,7 @@ We use lists for input and output rather than arrays, since lists are used more 
 
 ```haskell
 import Data.Array
- 
+
 countingSort :: (Ix n) => [n] -> n -> n -> [n]
 countingSort l lo hi = concatMap (uncurry $ flip replicate) count
   where count = assocs . accumArray (+) 0 (lo, hi) . map (\i -> (i, 1)) $ l
@@ -1174,7 +1174,7 @@ l countingSortInPlace println # ==> list(-4, 1, 2, 3, 5)
 ```
 
 
-A more functional-like version: 
+A more functional-like version:
 
 ```io
 List do(
@@ -1208,11 +1208,11 @@ The following example is hopefully in the spirit of a counting sort using a hash
 
 
 ```Icon
-procedure main()                                         #: demonstrate various ways to sort a list and string 
-   write("Sorting Demo using ",image(countingsort))                
+procedure main()                                         #: demonstrate various ways to sort a list and string
+   write("Sorting Demo using ",image(countingsort))
    writes("  on list : ")
    writex(UL)
-   displaysort(countingsort,copy(UL))           
+   displaysort(countingsort,copy(UL))
 end
 
 procedure countingsort(X)                                #: return sorted list (integers only)
@@ -1234,7 +1234,7 @@ end
 ```
 
 
-Note: This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'display sort', and 'writex' from Bubble Sort]]. 
+Note: This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'display sort', and 'writex' from Bubble Sort]].
 
 Sample output:
 ```txt
@@ -1275,7 +1275,7 @@ Sorting Demo using procedure countingsort
 360   LET T=-INF
 370   FOR I=LBOUND(A) TO UBOUND(A)
 380     LET T=MAX(A(I),T)
-390   NEXT 
+390   NEXT
 400   LET FMAX=T
 410 END DEF
 420 DEF COUNTINGSORT(REF A)
@@ -1283,7 +1283,7 @@ Sorting Demo using procedure countingsort
 440   NUMERIC COUNT(0 TO MX-MN)
 450   FOR I=0 TO UBOUND(COUNT)
 460     LET COUNT(I)=0
-470   NEXT 
+470   NEXT
 480   FOR I=Z TO UBOUND(A)
 490     LET COUNT(A(I)-MN)=COUNT(A(I)-MN)+1
 500   NEXT
@@ -1393,21 +1393,21 @@ public static void countingSort(int[] array, int min, int max){
 ```javascript
 var countSort = function(arr, min, max) {
     var i, z = 0, count = [];
-    
+
     for (i = min; i <= max; i++) {
         count[i] = 0;
     }
-    
+
     for (i=0; i < arr.length; i++) {
         count[arr[i]]++;
     }
-    
+
     for (i = min; i <= max; i++) {
         while (count[i]-- > 0) {
             arr[z++] = i;
         }
     }
-    
+
 }
 ```
 
@@ -1456,7 +1456,7 @@ def countingSort(min; max):
         ($i|tostring) as $s
         | if $hash[$s] == null then .
           else reduce range(0; $hash[$s]) as $j (.; . + [$i])
-          end 
+          end
       );
 ```
 
@@ -1524,13 +1524,13 @@ println("# unsorted integers: $v\n -> sorted integers: $(countsort(v))")
 // version 1.1.0
 
 fun countingSort(array: IntArray) {
-    if (array.isEmpty()) return 
+    if (array.isEmpty()) return
     val min = array.min()!!
     val max = array.max()!!
     val count = IntArray(max - min + 1)  // all elements zero by default
     for (number in array) count[number - min]++
     var z = 0
-    for (i in min..max) 
+    for (i in min..max)
         while (count[i - min] > 0) {
             array[z++] = i
             count[i - min]--
@@ -1603,11 +1603,11 @@ function CountingSort( f )
     for i = min, max do
         count[i] = 0
     end
-    
+
     for i = 1, #f do
         count[ f[i] ] = count[ f[i] ] + 1
     end
-    
+
     local z = 1
     for i = min, max do
         while count[i] > 0 do
@@ -1616,7 +1616,7 @@ function CountingSort( f )
             count[i] = count[i] - 1
         end
     end
-    
+
 end
 
 
@@ -1682,14 +1682,14 @@ show(`a')
 countingSort[list_] := Module[{minElem, maxElem, count, z, number},
   minElem = Min[list]; maxElem = Max[list];
   count = ConstantArray[0, (maxElem - minElem + 1)];
-  For[number = 1, number < Length[list], number++, 
+  For[number = 1, number < Length[list], number++,
    count[[number - minElem + 1]] = count[[number - minElem + 1]] + 1;] ;
   z = 1;
-  For[i = minElem, i < maxElem, i++, 
+  For[i = minElem, i < maxElem, i++,
    While[count[[i - minElem + 1]] > 0,
     list[[z]] = i; z++;
     count[[i - minElem + 1]] = count[[i - minElem + 1]] - 1;]
-   ];   
+   ];
   ]
 ```
 
@@ -1710,23 +1710,23 @@ function list = countingSort(list)
 
     minElem = min(list);
     maxElem = max(list);
-    
+
     count = zeros((maxElem-minElem+1),1);
-    
+
     for number = list
         count(number - minElem + 1) = count(number - minElem + 1) + 1;
     end
-    
+
     z = 1;
-    
-    for i = (minElem:maxElem)     
+
+    for i = (minElem:maxElem)
         while( count(i-minElem +1) > 0)
             list(z) = i;
             z = z+1;
             count(i - minElem + 1) = count(i - minElem + 1) - 1;
         end
     end
-    
+
 end %countingSort
 ```
 
@@ -1766,7 +1766,7 @@ fn countingSort arr =
 			z += 1
 			count[i-minVal+1] = count[i-minVal+1] - 1
 		)
-		
+
 	)
 	return arr
 )
@@ -1834,8 +1834,8 @@ Output:
 
 ```txt
 
-Unsorted: 80 10 40 60 50 30 20 70 
-Sorted: 10 20 30 40 50 60 70 80 
+Unsorted: 80 10 40 60 50 30 20 70
+Sorted: 10 20 30 40 50 60 70 80
 
 ```
 
@@ -1856,7 +1856,7 @@ import java.util.List
 
 icounts = [int -
       1,   3,   6,   2,   7,  13,  20,  12,  21,  11 -
-  ,  22,  10,  23,   9,  24,   8,  25,  43,  62,  42 - 
+  ,  22,  10,  23,   9,  24,   8,  25,  43,  62,  42 -
   ,  63,  41,  18,  42,  17,  43,  16,  44,  15,  45 -
   ,  14,  46,  79, 113,  78, 114,  77,  39,  78,  38 -
 ]
@@ -1975,8 +1975,8 @@ method getMinMax(icounts) public constant
 method runSample(arg) public static
 parse arg icounts
 if icounts = '' then -
-  icounts = - 
-    ' 1   3   6   2   7  13  20  12  21  11  22  10  23   9  24   8  25  43  62  42' - 
+  icounts = -
+    ' 1   3   6   2   7  13  20  12  21  11  22  10  23   9  24   8  25  43  62  42' -
     '63  41  18  42  17  43  16  44  15  45  14  46  79 113  78 114  77  39  78  38' -
     '0  -200 -6  -10 -0' -
     ''
@@ -2042,7 +2042,7 @@ bundle Default {
         values[i]->PrintLine();
       };
     }
-      
+
     function : CountingSort(array : Int[], min : Int, max : Int) ~ Nil {
       count := Int->New[max - min + 1];
       each(i : array) {
@@ -2050,16 +2050,16 @@ bundle Default {
         v := count[number - min];
         count[number - min] := v + 1;
       };
-  
+
       z := 0;
       for(i := min; i <= max; i += 1;) {
-        while(count[i - min] > 0) {  
+        while(count[i - min] > 0) {
           array[z] := i;
           z += 1;
           v := count[i - min]
-          count[i - min] := v - 1;          
+          count[i - min] := v - 1;
         };
-      };      
+      };
     }
   }
 }
@@ -2083,7 +2083,7 @@ let counting_sort_array arr lo hi =
 
 ## Octave
 
-This implements the same algorithm but in a more compact way (using the same loop to count and to ''update'' the sorted vector). This implementation is ''elegant'' (and possible since the sort is not done "in place"), but not so efficient on machines that can't parallelize some operations (the vector <tt>arr</tt> is scanned for every value between <tt>minval</tt> and <tt>maxval</tt>) 
+This implements the same algorithm but in a more compact way (using the same loop to count and to ''update'' the sorted vector). This implementation is ''elegant'' (and possible since the sort is not done "in place"), but not so efficient on machines that can't parallelize some operations (the vector <tt>arr</tt> is scanned for every value between <tt>minval</tt> and <tt>maxval</tt>)
 
 ```octave
 function r = counting_sort(arr, minval, maxval)
@@ -2212,8 +2212,8 @@ end;
 var
    ages	: Array[0..99] of Integer;
    i	: Integer;
-   
-begin 
+
+begin
    { testing }
    for i := 0 to 99 do
       ages[i] := 139 - i;
@@ -2236,10 +2236,10 @@ use strict;
 sub counting_sort
 {
     my ($a, $min, $max) = @_;
- 
+
     my @cnt = (0) x ($max - $min + 1);
     $cnt[$_ - $min]++ foreach @$a;
- 
+
     my $i = $min;
     @$a = map {($i++) x $_} @cnt;
 }
@@ -2251,7 +2251,7 @@ Testing:
 
 ```perl
 my @ages = map {int(rand(140))} 1 .. 100;
- 
+
 counting_sort(\@ages, 0, 140);
 print join("\n", @ages), "\n";
 ```
@@ -2339,7 +2339,7 @@ function counting_sort(&$arr, $min, $max)
 
   foreach($arr as $number)
   {
-    $count[$number]++; 
+    $count[$number]++;
   }
   $z = 0;
   for($i = $min; $i <= $max; $i++) {
@@ -2438,7 +2438,7 @@ end count_sort;
 ```PowerShell
 
 function countingSort($array) {
-    $minmax = $array | Measure-Object -Minimum -Maximum 
+    $minmax = $array | Measure-Object -Minimum -Maximum
     $min, $max = $minmax.Minimum, $minmax.Maximum
     $count = @(0) * ($max - $min  + 1)
     foreach ($number in $array) {
@@ -2526,7 +2526,7 @@ def countingSort(a, min, max):
     cnt = [0] * (max - min + 1)
     for x in a:
         cnt[x - min] += 1
- 
+
     return [x for x, n in enumerate(cnt, start=min)
               for i in xrange(n)]
 ```
@@ -2786,14 +2786,14 @@ see countingSort(aList, 1, 782)
 
 func countingSort f, min, max
      count = list(max-min+1)
-     for i = min to max 
+     for i = min to max
          count[i] = 0
      next
- 
+
      for i = 1 to len(f)
          count[ f[i] ] = count[ f[i] ] + 1
      next
- 
+
      z = 1
      for i = min to max
          while count[i] > 0
@@ -2816,7 +2816,7 @@ class Array
   def counting_sort!
     replace counting_sort
   end
-  
+
   def counting_sort
     min, max = minmax
     count = Array.new(max - min + 1, 0)
@@ -2895,7 +2895,7 @@ fn main() {
 
 ```scala
 def countSort(input: List[Int], min: Int, max: Int): List[Int] =
-  input.foldLeft(Array.fill(max - min + 1)(0)) { (arr, n) => 
+  input.foldLeft(Array.fill(max - min + 1)(0)) { (arr, n) =>
     arr(n - min) += 1
     arr
   }.zipWithIndex.foldLeft(List[Int]()) {
@@ -2908,7 +2908,7 @@ It's better (i.e. slightly faster) to reverse the frequencies list before proces
 
 ```scala
 def countSort(input: List[Int], min: Int, max: Int): List[Int] =
-  input.foldLeft(Array.fill(max - min + 1)(0)) { (arr, n) => 
+  input.foldLeft(Array.fill(max - min + 1)(0)) { (arr, n) =>
     arr(n - min) += 1
     arr
   }.zipWithIndex.reverse.foldLeft(List[Int]()) {
@@ -3080,7 +3080,7 @@ Private Function countingSort(array_ As Variant, mina As Long, maxa As Long) As 
     Next i
     countingSort = array_
 End Function
- 
+
 Public Sub main()
     s = [{5, 3, 1, 7, 4, 1, 1, 20}]
     Debug.Print Join(countingSort(s, WorksheetFunction.Min(s), WorksheetFunction.Max(s)), ", ")
@@ -3131,7 +3131,7 @@ function countingSort( a )
 	redim count( max - min + 1 )
 	dim i
 	dim z
-	for i = 0 to ubound( a )  
+	for i = 0 to ubound( a )
 		count( a(i) - min ) = count( a( i ) - min ) + 1
 	next
 	z = 0
@@ -3207,7 +3207,7 @@ for I:= 0 to 10-1 do [IntOut(0, A(I));  ChOut(0, ^ )];
 
 ```txt
 
--5 1 1 2 3 4 4 5 6 9 
+-5 1 1 2 3 4 4 5 6 9
 
 ```
 

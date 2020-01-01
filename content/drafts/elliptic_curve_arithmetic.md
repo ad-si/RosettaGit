@@ -12,27 +12,27 @@ tags = []
 
 {{draft task}}
 
-[[wp:Elliptic curve|Elliptic curve]]s   are sometimes used in   [[wp:cryptography|cryptography]]   as a way to perform   [[wp:digital signature|digital signature]]s. 
+[[wp:Elliptic curve|Elliptic curve]]s   are sometimes used in   [[wp:cryptography|cryptography]]   as a way to perform   [[wp:digital signature|digital signature]]s.
 
-The purpose of this task is to implement a simplified (without modular arithmetic) version of the elliptic curve arithmetic which is required by the   [[wp:ECDSA|elliptic curve DSA]]   protocol. 
+The purpose of this task is to implement a simplified (without modular arithmetic) version of the elliptic curve arithmetic which is required by the   [[wp:ECDSA|elliptic curve DSA]]   protocol.
 
 In a nutshell, an elliptic curve is a bi-dimensional curve defined by the following relation between the '''x''' and '''y''' coordinates of any point on the curve:
 
 ::::   <big><big><math>y^2 = x^3 + a x + b</math></big></big>
 
-'''a''' and '''b''' are arbitrary parameters that define the specific curve which is used.  
+'''a''' and '''b''' are arbitrary parameters that define the specific curve which is used.
 
 For this particular task, we'll use the following parameters:
 
 ::::   <big> a=0<b>,</b>   b=7 </big>
 
-The most interesting thing about elliptic curves is the fact that it is possible to define a   [[wp:group|group]]   structure on it.  
+The most interesting thing about elliptic curves is the fact that it is possible to define a   [[wp:group|group]]   structure on it.
 
 To do so we define an   [[wp:internal composition|internal composition]]   rule with an additive notation '''+''',   such that for any three distinct points '''P''', '''Q''' and '''R''' on the curve, whenever these points are aligned, we have:
 
-::::   <big> P + Q + R = 0 </big> 
+::::   <big> P + Q + R = 0 </big>
 
-Here   <big>'''0'''</big>   (zero)   is the ''infinity point'',   for which the '''x''' and '''y''' values are not defined.   It's basically the same kind of point which defines the horizon in   [[wp:projective geometry|projective geometry]].  
+Here   <big>'''0'''</big>   (zero)   is the ''infinity point'',   for which the '''x''' and '''y''' values are not defined.   It's basically the same kind of point which defines the horizon in   [[wp:projective geometry|projective geometry]].
 
 We'll also assume here that this infinity point is unique and defines the   [[wp:identity element|neutral element]]   of the addition.
 
@@ -44,13 +44,13 @@ Considering the symmetry of the curve around the x-axis, it's easy to convince o
 
 '''S''' is thus defined as the symmetric of '''R''' towards the '''x''' axis.
 
-The task consists in defining the addition which, for any two points of the curve, returns the sum of these two points.   You will pick two random points on the curve, compute their sum and show that the symmetric of the sum is aligned with the two initial points. 
+The task consists in defining the addition which, for any two points of the curve, returns the sum of these two points.   You will pick two random points on the curve, compute their sum and show that the symmetric of the sum is aligned with the two initial points.
 
 You will use the '''a''' and '''b''' parameters of secp256k1, i.e.  respectively zero and seven.
 
 ''Hint'':   You might need to define a "doubling" function, that returns '''P+P''' for any given point '''P'''.
 
-''Extra credit'':   define the full elliptic curve arithmetic (still not modular, though) by defining a "multiply" function that returns, 
+''Extra credit'':   define the full elliptic curve arithmetic (still not modular, though) by defining a "multiply" function that returns,
 
 for any point '''P''' and integer '''n''',   the point '''P + P + ... + P'''     ('''n''' times).
 
@@ -61,8 +61,8 @@ for any point '''P''' and integer '''n''',   the point '''P + P + ... + P'''    
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 #define C 7
@@ -283,7 +283,7 @@ a * 12345 = (10.759, 35.387)
 	[ry (- (* L (- p.x rx)) p.y)]
 	)
 	(pt rx ry))))
-	
+
 ;; p + q
 (define (E-add p q)
 (cond
@@ -297,7 +297,7 @@ a * 12345 = (10.759, 35.387)
  	[ry (- (* L (- p.x rx)) p.y)]
  	)
  	(pt rx ry))]))
- 	
+
  ;; (E-add* a b c ...)
 (define (E-add* . pts) (foldl E-add (E-zero) pts))
 
@@ -308,14 +308,14 @@ a * 12345 = (10.759, 35.387)
 		(set! p (E-dbl p))
 		(set! i (* i 2)))
 	r)
-	
+
 ;; make points from x or y
 (define (Ey.pt y  (c 7))
 	(pt (expt (- (* y y) c) 1/3 ) y))
 (define (Ex.pt x  (c 7))
 	(pt x (sqrt (+ ( * x x x ) c))))
 
-	
+
 ;; Check floating point precision
 ;; P * n is not always P+P+P+P....P
 
@@ -363,7 +363,7 @@ multiplication a x 10       → #<pt> (0.3797 -2.6561)
 	(define P (Ey.pt 0))
 	(define Q (Ex.pt 0))
 	(define R (E-add P Q))
-	
+
 	(plot-clear)
 	(plot-xy Ellie -10 -10) ;; curve
 	(plot-axis 0 0 "red")
@@ -463,7 +463,7 @@ func from_y(y float64) pt {
         y: y,
     }
 }
-    
+
 func main() {
     a := from_y(1)
     b := from_y(2)
@@ -627,7 +627,7 @@ associativity a b x1 x2 x3 =
   let p = elliptic a b
   in (p x1 <> p x2) <> p x3 == p x1 <> (p x2 <> p x3)
 
-commutativity a b x1 x2 = 
+commutativity a b x1 x2 =
   let p = elliptic a b
   in p x1 <> p x2 == p x2 <> p x1
 ```
@@ -652,11 +652,11 @@ Follows the C contribution.
 
 ```j
 zero=: _j_
- 
+
 isZero=: 1e20 < |@{.@+.
- 
+
 neg=: +
- 
+
 dbl=: monad define
   'p_x p_y'=. +. p=. y
   if. isZero p do. p return. end.
@@ -664,7 +664,7 @@ dbl=: monad define
   r=. (L*L) - 2*p_x
   r j. (L * p_x-r) - p_y
 )
- 
+
 add=: dyad define
   'p_x p_y'=. +. p=. x
   'q_x q_y'=. +. q=. y
@@ -688,8 +688,8 @@ mul=: dyad define
 )
 
 NB. C is 7
-from=: j.~ [:(* * 3 |@%: ]) _7 0 1 p. ] 
- 
+from=: j.~ [:(* * 3 |@%: ]) _7 0 1 p. ]
+
 show=: monad define
   if. isZero y do. 'Zero' else.
     'a b'=. ":each +.y
@@ -700,13 +700,13 @@ show=: monad define
 task=: 3 :0
   a=. from 1
   b=. from 2
- 
+
   echo 'a         = ', show a
   echo 'b         = ', show b
   echo 'c = a + b = ', show c =. a add b
   echo 'd = -c    = ', show d =. neg c
   echo 'c + d     = ', show c add d
-  echo 'a + b + d = ', show add/ a, b, d 
+  echo 'a + b + d = ', show add/ a, b, d
   echo 'a * 12345 = ', show a mul 12345
 )
 ```
@@ -1159,7 +1159,7 @@ checking alignment:  8.88178419700125e-16
 
 ```Phix
 constant X=1, Y=2, bCoeff=7, INF = 1e300*1e300
- 
+
 type point(object pt)
     return sequence(pt) and length(pt)=2 and atom(pt[X]) and atom(pt[Y])
 end type
@@ -1172,7 +1172,7 @@ end function
 function is_zero(point p)
     return p[X]>1e20 or p[X]<-1e20
 end function
- 
+
 function neg(point p)
     p = {p[X], -p[Y]}
     return p
@@ -1187,7 +1187,7 @@ point r = p
     end if
     return r
 end function
- 
+
 function add(point p, point q)
     if p==q then return dbl(p) end if
     if is_zero(p) then return q end if
@@ -1197,7 +1197,7 @@ function add(point p, point q)
     point r = {x, L*(p[X]-x)-p[Y]}
     return r
 end function
- 
+
 function mul(point p, integer n)
 point r = zero()
 integer i = 1
@@ -1208,11 +1208,11 @@ integer i = 1
     end while
     return r
 end function
- 
+
 procedure show(string s, point p)
     puts(1, s&iff(is_zero(p)?"Zero\n":sprintf("(%.3f, %.3f)\n", p)))
 end procedure
- 
+
 function cbrt(atom c)
     return iff(c>=0?power(c,1/3):-power(-c,1/3))
 end function
@@ -1221,14 +1221,14 @@ function from_y(atom y)
     point r = {cbrt(y*y-bCoeff), y}
     return r
 end function
- 
+
 point a, b, c, d
- 
+
     a = from_y(1)
     b = from_y(2)
     c = add(a, b)
     d = neg(c)
- 
+
     show("a = ", a)
     show("b = ", b)
     show("c = a + b = ", c)
@@ -1377,7 +1377,7 @@ a * 12345 = (10.759, 35.387)
                [(or (== p q) (ε? (- px qx)))
                 (done (/ (+ (* 3 px px) a) (* 2 py)) px py qx)]
                [(done (/ (- py qy) (- px qx)) px py qx)])]))
-(define (⊗ p n) 
+(define (⊗ p n)
   (cond [(= n 0)       zero]
         [(= n 1)       p]
         [(= n 2)       (⊕ p p)]
@@ -1423,9 +1423,9 @@ p*12345 #(10.758570529320806 35.387434774282106)
 
 ## REXX
 
-REXX doesn't have any higher math functions, so a cube root   ('''cbrt''')   function was included here as well as a 
+REXX doesn't have any higher math functions, so a cube root   ('''cbrt''')   function was included here as well as a
 
-general purpose '''root'''   (and accompanying '''rootG''', and '''rootI''')   functions. 
+general purpose '''root'''   (and accompanying '''rootG''', and '''rootI''')   functions.
 
 Also, some code was added to have the output better aligned   (for instance, negative and positive numbers).
 

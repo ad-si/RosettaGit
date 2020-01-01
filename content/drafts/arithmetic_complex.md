@@ -13,24 +13,24 @@ tags = []
 {{task|Arithmetic operations}}
 
 A   '''[[wp:Complex number|complex number]]'''   is a number which can be written as:
-<big><math>a + b \times i</math></big> 
+<big><math>a + b \times i</math></big>
 (sometimes shown as:
 <big><math>b + a \times i</math></big>
-where   <big><math>a</math></big>   and   <big><math>b</math></big>  are real numbers,   and   [[wp:Imaginary_unit|<big><math>i</math></big>]]   is   <big>&radic;{{overline| -1 }}</big> 
+where   <big><math>a</math></big>   and   <big><math>b</math></big>  are real numbers,   and   [[wp:Imaginary_unit|<big><math>i</math></big>]]   is   <big>&radic;{{overline| -1 }}</big>
 
 
 Typically, complex numbers are represented as a pair of real numbers called the "imaginary part" and "real part",   where the imaginary part is the number to be multiplied by <big><math>i</math></big>.
 
 
 ;Task:
-* Show addition, multiplication, negation, and inversion of complex numbers in separate functions. (Subtraction and division operations can be made with pairs of these operations.) 
+* Show addition, multiplication, negation, and inversion of complex numbers in separate functions. (Subtraction and division operations can be made with pairs of these operations.)
 * Print the results for each operation tested.
 * ''Optional:'' Show complex conjugation.
 
 
 
-By definition, the   [[wp:complex conjugate|complex conjugate]]   of 
-<big><math>a + bi</math></big> 
+By definition, the   [[wp:complex conjugate|complex conjugate]]   of
+<big><math>a + bi</math></big>
 is
 <big><math>a - bi</math></big>
 
@@ -56,22 +56,22 @@ procedure Complex_Operations is
    -- conjugation, exponentiation, and absolute value, as well as
    -- basic comparison operations.
    -- Ada provides a second pre-defined package for sin, cos, tan, cot,
-   -- arcsin, arccos, arctan, arccot, and the hyperbolic versions of 
+   -- arcsin, arccos, arctan, arccot, and the hyperbolic versions of
    -- those trigonometric functions.
-   
+
    -- The package Ada.Numerics.Generic_Complex_Types requires definition
    -- with the real type to be used in the complex type definition.
-   
+
    package Complex_Types is new Ada.Numerics.Generic_Complex_Types (Long_Float);
    use Complex_Types;
    package Complex_IO is new Ada.Text_IO.Complex_IO (Complex_Types);
    use Complex_IO;
    use Ada.Text_IO;
-   
+
    A : Complex := Compose_From_Cartesian (Re => 1.0, Im => 1.0);
    B : Complex := Compose_From_Polar (Modulus => 1.0, Argument => 3.14159);
    C : Complex;
-  
+
 begin
    -- Addition
    C := A + B;
@@ -106,16 +106,16 @@ end Complex_Operations;
 ```algol68
 main:(
   FORMAT compl fmt = $g(-7,5)"⊥"g(-7,5)$;
-  
+
   PROC compl operations = VOID: (
     LONG COMPL a = 1.0 ⊥ 1.0;
     LONG COMPL b = 3.14159 ⊥ 1.2;
-  
+
     LONG COMPL c;
-  
+
     printf(($x"a="f(compl fmt)l$,a));
     printf(($x"b="f(compl fmt)l$,b));
-  
+
     # addition #
     c := a + b;
     printf(($x"a+b="f(compl fmt)l$,c));
@@ -128,7 +128,7 @@ main:(
     # negation #
     c := -a;
     printf(($x"-a="f(compl fmt)l$,c))
-  ); 
+  );
   compl operations
 )
 ```
@@ -219,7 +219,7 @@ conj c :   1.00  -2.00I
 App Inventor has native support for complex numbers.
 
 The linked image gives a few examples of complex arithmetic and a custom complex conjugate function.
- 
+
 [https://lh4.googleusercontent.com/-4M57lWIh_r8/Uuqgoec-hrI/AAAAAAAAJ74/2oj_5eelUR4/w1197-h766-no/Capture.PNG View the blocks and app screen...]
 
 
@@ -276,7 +276,7 @@ Cinv(ByRef C, ByRef A) {
    NumPut(-Cim(A)/d,C,8,"double")
 }
 ```
- 
+
 
 
 ## BASIC
@@ -349,11 +349,11 @@ END SUB
 
 ```bbcbasic
       DIM Complex{r, i}
-      
+
       DIM a{} = Complex{} : a.r = 1.0 : a.i = 1.0
       DIM b{} = Complex{} : b.r = PI# : b.i = 1.2
       DIM o{} = Complex{}
-      
+
       PROCcomplexadd(o{}, a{}, b{})
       PRINT "Result of addition is " FNcomplexshow(o{})
       PROCcomplexmul(o{}, a{}, b{})
@@ -363,28 +363,28 @@ END SUB
       PROCcomplexinv(o{}, a{})
       PRINT "Result of inversion is " ; FNcomplexshow(o{})
       END
-      
+
       DEF PROCcomplexadd(dst{}, one{}, two{})
       dst.r = one.r + two.r
       dst.i = one.i + two.i
       ENDPROC
-      
+
       DEF PROCcomplexmul(dst{}, one{}, two{})
       dst.r = one.r*two.r - one.i*two.i
       dst.i = one.i*two.r + one.r*two.i
       ENDPROC
-      
+
       DEF PROCcomplexneg(dst{}, src{})
       dst.r = -src.r
       dst.i = -src.i
       ENDPROC
-      
+
       DEF PROCcomplexinv(dst{}, src{})
       LOCAL denom : denom = src.r^2 + src.i^ 2
       dst.r = src.r / denom
       dst.i = -src.i / denom
       ENDPROC
-      
+
       DEF FNcomplexshow(src{})
       IF src.i >= 0 THEN = STR$(src.r) + " + " +STR$(src.i) + "i"
       = STR$(src.r) + " - " + STR$(-src.i) + "i"
@@ -403,7 +403,7 @@ Result of inversion is 0.5 - 0.5i
 
 ## Bracmat
 
-Bracmat recognizes the symbol <code>i</code> as the square root of <code>-1</code>. The results of the functions below are not necessarily of the form <code>a+b*i</code>, but as the last example shows, Bracmat nevertheless can work out that two different representations of the same mathematical object, when subtracted from each other, give zero. You may wonder why in the functions <code>multiply</code> and <code>negate</code> there are terms <code>1</code> and <code>-1</code>. These terms are a trick to force Bracmat to expand the products. As it is more costly to factorize a sum than to expand a product into a sum, Bracmat retains isolated products. However, when in combination with a non-zero term, the product is expanded. 
+Bracmat recognizes the symbol <code>i</code> as the square root of <code>-1</code>. The results of the functions below are not necessarily of the form <code>a+b*i</code>, but as the last example shows, Bracmat nevertheless can work out that two different representations of the same mathematical object, when subtracted from each other, give zero. You may wonder why in the functions <code>multiply</code> and <code>negate</code> there are terms <code>1</code> and <code>-1</code>. These terms are a trick to force Bracmat to expand the products. As it is more costly to factorize a sum than to expand a product into a sum, Bracmat retains isolated products. However, when in combination with a non-zero term, the product is expanded.
 
 ```bracmat
   (add=a b.!arg:(?a,?b)&!a+!b)
@@ -457,8 +457,8 @@ sin$x minus conjugate sin$x = 0
 {{works with|C99}}
 The more recent [[C99]] standard has built-in complex number primitive types, which can be declared with float, double, or long double precision. To use these types and their associated library functions, you must include the <complex.h> header. (Note: this is a ''different'' header than the <complex> templates that are defined by [[C++]].) [http://www.opengroup.org/onlinepubs/009695399/basedefs/complex.h.html] [http://publib.boulder.ibm.com/infocenter/pseries/v5r3/index.jsp?topic=/com.ibm.vacpp7a.doc/language/ref/clrc03complex_types.htm]
 
-```c>#include <complex.h
-
+```c
+#include <complex.h>
 #include <stdio.h>
 
 void cprint(double complex c)
@@ -541,15 +541,15 @@ Complex conj(Complex a){
 }
 
 void put(Complex c)
-{ 
+{
         printf("%lf%+lfI", c.real, c.imag);
-} 
+}
 
 void complex_ops(void)
-{ 
+{
   Complex a = { 1.0,     1.0 };
   Complex b = { 3.14159, 1.2 };
-  
+
   printf("\na=");   put(a);
   printf("\nb=");   put(b);
   printf("\na+b="); put(add(a,b));
@@ -595,7 +595,7 @@ public struct ComplexNumber
 {
     public static readonly ComplexNumber i = new ComplexNumber(0.0, 1.0);
     public static readonly ComplexNumber Zero = new ComplexNumber(0.0, 0.0);
-    
+
     public double Re;
     public double Im;
 
@@ -801,8 +801,8 @@ class Program
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <complex>
 using std::complex;
 
@@ -846,7 +846,7 @@ clojure.algo.generic.arithmetic to make a Complex number type.
         :else     [r (if (neg? i) "-" "+") i "i"]))))
 
 (defmethod ga/+ [Complex Complex]
-  [x y] (map->Complex (merge-with + x y))) 
+  [x y] (map->Complex (merge-with + x y)))
 
 (defmethod ga/+ [Complex Number] ; reals become y + 0i
   [{:keys [r i]} y] (->Complex (+ r y) i))
@@ -912,11 +912,11 @@ method-id. Main static.
 procedure division.
     declare a as type Complex = new Complex(1, 1)
     declare b as type Complex = new Complex(3.14159, 1.25)
-    
+
     display "a = " a
     display "b = " b
     display space
-    
+
     declare result as type Complex = a + b
     display "a + b = " result
     move (a - b) to result
@@ -928,12 +928,12 @@ procedure division.
     move (- b) to result
     display "-b = " result
     display space
-    
+
     display "Inverse of b: " type Complex::Inverse(b)
     display "Conjugate of b: " type Complex::Conjugate(b)
 end method.
-end class.      
-      
+end class.
+
 class-id Complex.
 
 01  Real                               float-long property.
@@ -992,7 +992,7 @@ end operator.
 operator-id / .
 procedure division using value a as type Complex, b as type Complex
         returning c as type Complex.
-    set c to new Complex()        
+    set c to new Complex()
     declare b-norm as float-long = type Complex::Norm(b)
     compute c::Real = (a::Real * b::Real + a::Imag * b::Imag) / b-norm
     compute c::Imag = (a::Imag * b::Real - a::Real * b::Imag) / b-norm
@@ -1050,27 +1050,27 @@ class Complex
       "#{@r} + #{@i}i"
     else
       "#{@r} - #{-1 * @i}i"
-      
+
 # test
 do ->
   a = new Complex(5, 3)
   b = new Complex(4, -3)
-  
+
   sum = a.plus b
   console.log "(#{a}) + (#{b}) = #{sum}"
-  
+
   product = a.times b
   console.log "(#{a}) * (#{b}) = #{product}"
-  
+
   negation = b.negation()
   console.log "-1 * (#{b}) = #{negation}"
-  
+
   diff = a.plus negation
   console.log "(#{a}) - (#{b}) = #{diff}"
-  
+
   inverse = b.inverse()
   console.log "1 / (#{b}) = #{inverse}"
-  
+
   quotient = product.times inverse
   console.log "(#{product}) / (#{b}) = #{quotient}"
 
@@ -1081,7 +1081,7 @@ do ->
 
 ```txt
 
-> coffee complex.coffee 
+> coffee complex.coffee
 (5 + 3i) + (4 - 3i) = 9
 (5 + 3i) * (4 - 3i) = 29 - 3i
 -1 * (4 - 3i) = -4 + 3i
@@ -1161,7 +1161,7 @@ TYPE
         ComplexDesc = RECORD
                 r-,i-: REAL;
         END;
- 
+
 VAR
         r,x,y: Complex;
 
@@ -1177,17 +1177,17 @@ PROCEDURE (x: Complex) Add*(y: Complex): Complex,NEW;
 BEGIN
         RETURN New(x.r + y.r,x.i + y.i)
 END Add;
- 
+
 PROCEDURE ( x: Complex) Sub*( y: Complex): Complex, NEW;
 BEGIN
         RETURN New(x.r - y.r,x.i - y.i)
 END Sub;
- 
+
 PROCEDURE ( x: Complex) Mul*( y: Complex): Complex, NEW;
 BEGIN
         RETURN New(x.r*y.r - x.i*y.i,x.r*y.i + x.i*y.r)
 END Mul;
- 
+
 PROCEDURE ( x: Complex) Div*( y: Complex): Complex, NEW;
 VAR
         d: REAL;
@@ -1195,7 +1195,7 @@ BEGIN
         d := y.r * y.r + y.i * y.i;
         RETURN New((x.r*y.r + x.i*y.i)/d,(x.i*y.r - x.r*y.i)/d)
 END Div;
- 
+
 (* Reciprocal *)
 PROCEDURE (x: Complex) Rec*(): Complex,NEW;
 VAR
@@ -1204,13 +1204,13 @@ BEGIN
         d := x.r * x.r + x.i * x.i;
         RETURN New(x.r/d,(-1.0 * x.i)/d);
 END Rec;
- 
+
 (* Conjugate *)
 PROCEDURE (x: Complex) Con*(): Complex,NEW;
 BEGIN
         RETURN New(x.r, (-1.0) * x.i);
 END Con;
- 
+
 PROCEDURE (x: Complex) Out(),NEW;
 BEGIN
 	   StdLog.String("Complex(");
@@ -1222,9 +1222,9 @@ PROCEDURE Do*;
 BEGIN
         x := New(1.5,3);
         y := New(1.0,1.0);
- 
+
         StdLog.String("x: ");x.Out();StdLog.Ln;
-        StdLog.String("y: ");y.Out();StdLog.Ln;        
+        StdLog.String("y: ");y.Out();StdLog.Ln;
         r := x.Add(y);
         StdLog.String("x + y: ");r.Out();StdLog.Ln;
         r := x.Sub(y);
@@ -1239,7 +1239,7 @@ BEGIN
         StdLog.String("x': ");r.Out();StdLog.Ln;
 END Do;
 
-END Complex. 
+END Complex.
 
 ```
 
@@ -1271,8 +1271,8 @@ import std.stdio, std.complex;
 void main() {
     auto x = complex(1, 1); // complex of doubles on default
     auto y = complex(3.14159, 1.2);
-     
-    writeln(x + y);   // addition  
+
+    writeln(x + y);   // addition
     writeln(x * y);   // multiplication
     writeln(1.0 / x); // inversion
     writeln(-x);      // negation
@@ -1300,22 +1300,22 @@ class complex {
 
   num real=0;
   num imag=0;
-  
+
   complex(num r,num i){
     this.real=r;
     this.imag=i;
-  } 
+  }
 
-  
+
   complex add(complex b){
     return new complex(this.real + b.real, this.imag + b.imag);
   }
-  
+
   complex mult(complex b){
     //FOIL of (a+bi)(c+di) with i*i = -1
     return new complex(this.real * b.real - this.imag * b.imag, this.real * b.imag + this.imag * b.real);
   }
-  
+
   complex inv(){
     //1/(a+bi) * (a-bi)/(a-bi) = 1/(a+bi) but it's more workable
     num denom = real * real + imag * imag;
@@ -1323,16 +1323,16 @@ class complex {
     double i= -imag/denom;
     return new complex( r,-i);
   }
-  
+
   complex neg(){
     return new complex(-real, -imag);
   }
-  
+
   complex conj(){
     return new complex(real, -imag);
   }
-  
- 
+
+
 String toString(){
   return    this.real.toString()+' + '+ this.imag.toString()+'*i';
 }
@@ -1378,65 +1378,65 @@ Complex numbers are part of the language. No special library is needed.
 ```elixir
 defmodule Complex do
   import Kernel, except: [abs: 1, div: 2]
-  
+
   defstruct real: 0, imag: 0
-  
+
   def new(real, imag) do
     %__MODULE__{real: real, imag: imag}
   end
-  
+
   def add(a, b) do
     {a, b} = convert(a, b)
     new(a.real + b.real, a.imag + b.imag)
   end
-  
+
   def sub(a, b) do
     {a, b} = convert(a, b)
     new(a.real - b.real, a.imag - b.imag)
   end
-  
+
   def mul(a, b) do
     {a, b} = convert(a, b)
     new(a.real*b.real - a.imag*b.imag, a.imag*b.real + a.real*b.imag)
   end
-  
+
   def div(a, b) do
     {a, b} = convert(a, b)
     divisor = abs2(b)
     new((a.real*b.real + a.imag*b.imag) / divisor,
         (a.imag*b.real - a.real*b.imag) / divisor)
   end
-  
+
   def neg(a) do
     a = convert(a)
     new(-a.real, -a.imag)
   end
-  
+
   def inv(a) do
     a = convert(a)
     divisor = abs2(a)
     new(a.real / divisor, -a.imag / divisor)
   end
-  
+
   def conj(a) do
     a = convert(a)
     new(a.real, -a.imag)
   end
-  
+
   def abs(a) do
     :math.sqrt(abs2(a))
   end
-  
+
   defp abs2(a) do
     a = convert(a)
     a.real*a.real + a.imag*a.imag
   end
-  
+
   defp convert(a) when is_number(a), do: new(a, 0)
   defp convert(%__MODULE__{} = a), do: a
-  
+
   defp convert(a, b), do: {convert(a), convert(b)}
-  
+
   def task do
     a = new(1, 3)
     b = new(5, 2)
@@ -1498,53 +1498,53 @@ conj(a) : 1-3j
 calculate() ->
     A = #complex{real=1, img=3},
     B = #complex{real=5, img=2},
-    
+
     Sum = add (A, B),
     print (Sum),
-    
+
     Product = multiply (A, B),
     print (Product),
-    
+
     Negation = negation (A),
     print (Negation),
-    
+
     Inversion = inverse (A),
     print (Inversion),
-    
+
     Conjugate = conjugate (A),
     print (Conjugate).
-    
+
 add (A, B) ->
     RealPart = A#complex.real + B#complex.real,
     ImgPart = A#complex.img + B#complex.img,
     #complex{real=RealPart, img=ImgPart}.
-    
+
 multiply (A, B) ->
     RealPart = (A#complex.real * B#complex.real) - (A#complex.img * B#complex.img),
     ImgPart = (A#complex.real * B#complex.img) + (B#complex.real * A#complex.img),
     #complex{real=RealPart, img=ImgPart}.
-    
+
 negation (A) ->
     #complex{real=-A#complex.real, img=-A#complex.img}.
-    
+
 inverse (A) ->
     C = conjugate (A),
     Mod = (A#complex.real * A#complex.real) + (A#complex.img * A#complex.img),
     RealPart = C#complex.real / Mod,
     ImgPart = C#complex.img / Mod,
     #complex{real=RealPart, img=ImgPart}.
-    
+
 conjugate (A) ->
     RealPart = A#complex.real,
     ImgPart = -A#complex.img,
     #complex{real=RealPart, img=ImgPart}.
-    
+
 print (A) ->
     if A#complex.img < 0 ->
         io:format("Ans = ~p~pi~n", [A#complex.real, A#complex.img]);
        true ->
         io:format("Ans = ~p+~pi~n", [A#complex.real, A#complex.img])
-    end. 
+    end.
 ```
 
 {{out}}
@@ -1684,7 +1684,7 @@ function scomplex(complex a)
     else
         s = {}
     end if
-    
+
     if a[IMAG] != 0 then
         if a[IMAG] = 1 then
             s &= "+i"
@@ -1694,7 +1694,7 @@ function scomplex(complex a)
             s &= sprintf("%+gi",a[IMAG])
         end if
     end if
-    
+
     if length(s) = 0 then
         return "0"
     else
@@ -1776,7 +1776,7 @@ G1:
 ```
 
 
-E1 will have the negation of D1's value 
+E1 will have the negation of D1's value
 
 <lang>
 1+2i	3+5i	4+7i	-7+11i	7-11i	0,0411764705882353+0,0647058823529412i	4-7i
@@ -1896,7 +1896,7 @@ In ANSI FORTRAN 66 or later, COMPLEX is a built-in data type with full access to
 program cdemo
     complex :: a = (5,3), b = (0.5, 6.0)      ! complex initializer
     complex :: absum, abprod, aneg, ainv
-    
+
     absum  = a + b
     abprod = a * b
     aneg   = -a
@@ -1917,7 +1917,7 @@ program cdemo2
     integer, parameter :: n = 50
     integer :: j
     complex, dimension(0:n-1) :: unit_circle
-    
+
     abdiff = a - b
     abquot = a / b
     abpow  = a ** b
@@ -1931,10 +1931,10 @@ program cdemo2
     aconj = conjg(a)              ! Complex conjugate (same as real(a) - i*imag(a))
     p2cart = rho * exp(i * theta) ! Euler's polar complex notation to cartesian complex notation
                                   !   conversion (use CEXP before Fortran 90)
- 
+
     ! The following creates an array of N evenly spaced points around the complex unit circle
     ! useful for FFT calculations, among other things
-    unit_circle = exp(2*i*pi/n * (/ (j, j=0, n-1) /) ) 
+    unit_circle = exp(2*i*pi/n * (/ (j, j=0, n-1) /) )
 end program cdemo2
 ```
 
@@ -1947,11 +1947,11 @@ end program cdemo2
 ' FB 1.05.0 Win64
 
 Type Complex
-  As Double real, imag 
+  As Double real, imag
   Declare Constructor(real As Double, imag As Double)
   Declare Function invert() As Complex
   Declare Function conjugate() As Complex
-  Declare Operator cast() As String  
+  Declare Operator cast() As String
 End Type
 
 Constructor Complex(real As Double, imag As Double)
@@ -1962,20 +1962,20 @@ End Constructor
 Function Complex.invert() As Complex
   Dim denom As Double = real * real + imag * imag
   Return Complex(real / denom, -imag / denom)
-End Function 
+End Function
 
 Function Complex.conjugate() As Complex
   Return Complex(real, -imag)
 End Function
 
 Operator Complex.Cast() As String
-  If imag >= 0 Then 
+  If imag >= 0 Then
     Return Str(real) + "+" + Str(imag) + "j"
   End If
-  Return Str(real) + Str(imag) + "j" 
+  Return Str(real) + Str(imag) + "j"
 End Operator
 
-Operator - (c As Complex) As Complex 
+Operator - (c As Complex) As Complex
   Return Complex(-c.real, -c.imag)
 End Operator
 
@@ -1992,7 +1992,7 @@ Operator * (c1 As Complex, c2 As Complex) As Complex
 End Operator
 
 Operator / (c1 As Complex, c2 As Complex) As Complex
-  Return c1 * c2.invert 
+  Return c1 * c2.invert
 End Operator
 
 Var x = Complex(1, 3)
@@ -2294,7 +2294,7 @@ class ComplexCategory {
     static Complex multiply (Number a, Complex b) { b * a }
     static Complex div (Number a, Complex b) { ([a] as Complex) / b  }
     static Complex power (Number a, Complex b) { ([a] as Complex) ** b }
-    
+
     static <T> T asType (Number a, Class<T> type) {
         type == Complex \
             ? [a] as Complex
@@ -2424,7 +2424,7 @@ import Data.Complex
 main = do
   let a = 1.0 :+ 2.0    -- complex number 1+2i
   let b = 4             -- complex number 4+0i
-  -- 'b' is inferred to be complex because it's used in 
+  -- 'b' is inferred to be complex because it's used in
   -- arithmetic with 'a' below.
   putStrLn $ "Add:      " ++ show (a + b)
   putStrLn $ "Subtract: " ++ show (a - b)
@@ -2459,7 +2459,7 @@ Icon doesn't provide native support for complex numbers.  Support is included in
 procedure main()
 
 SetupComplex()
-a := complex(1,2)   
+a := complex(1,2)
 b := complex(3,4)
 
 c := complex(&pi,1.5)
@@ -2482,7 +2482,7 @@ end
 
 Icon doesn't allow for operator overloading but procedures can be overloaded as was done here to allow 'complex' to behave more robustly.
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/complex.icn provides complex number support] supplemented by the code below.
 
 ```Icon
@@ -2490,17 +2490,17 @@ Icon doesn't allow for operator overloading but procedures can be overloaded as 
 link complex                            # for complex number support
 
 procedure SetupComplex()                #: used to setup safe complex
-COMPLEX()				#  replace complex record constructor	
+COMPLEX()				#  replace complex record constructor
 SetupComplex := 1                       #  never call here again
 return
 end
 
 procedure COMPLEX(rpart,ipart)          #: new safe record constructor and coercion
 initial complex :=: COMPLEX             # get in front of record constructor
-return if /ipart & (type(rpart) == "complex") 
+return if /ipart & (type(rpart) == "complex")
    then rpart                           #                  already complex
    else COMPLEX( real(\rpart | 0.0), real(\ipart|0) )    # create a new complex number
-end        
+end
 
 procedure cpxneg(z)                     #: negate z
    z := complex(z)                      # coerce
@@ -2516,7 +2516,7 @@ procedure cpxinv(z)                     #: inverse of z
 end
 ```
 
-To take full advantage of the overloaded 'complex' procedure, 
+To take full advantage of the overloaded 'complex' procedure,
 the other cpxxxx procedures would need to be rewritten or overloaded.
 
 {{out}}
@@ -2656,23 +2656,23 @@ function Complex(r, i) {
 
 Complex.add = function() {
 	var num = arguments[0];
-	
+
 	for(var i = 1, ilim = arguments.length; i < ilim; i += 1){
 		num.r += arguments[i].r;
 		num.i += arguments[i].i;
 	}
-	
+
 	return num;
 }
 
 Complex.multiply = function() {
 	var num = arguments[0];
-	
+
 	for(var i = 1, ilim = arguments.length; i < ilim; i += 1){
 		num.r = (num.r * arguments[i].r) - (num.i * arguments[i].i);
 		num.i = (num.i * arguments[i].r) - (num.r * arguments[i].i);
 	}
-	
+
 	return num;
 }
 
@@ -2695,10 +2695,10 @@ Complex.conjugate = function(z) {
 Complex.prototype.toString = function() {
 	return this.r === 0 && this.i === 0
           ? "0"
-          : (this.r !== 0 ? this.r : "") 
-          + ((this.r !== 0 || this.i < 0) && this.i !== 0 
-              ? (this.i > 0 ? "+" : "-") 
-              : "" ) + ( this.i !== 0 ? Math.abs(this.i) + "i" : "" ); 
+          : (this.r !== 0 ? this.r : "")
+          + ((this.r !== 0 || this.i < 0) && this.i !== 0
+              ? (this.i > 0 ? "+" : "-")
+              : "" ) + ( this.i !== 0 ? Math.abs(this.i) + "i" : "" );
 }
 
 Complex.prototype.getMod = function() {
@@ -2726,7 +2726,7 @@ def plus(x; y):
     elif (y|type) == "number" then plus(y;x)
     else [ x[0] + y[0], x[1] + y[1] ]
     end;
- 
+
 def multiply(x; y):
     if (x|type) == "number" then
        if  (y|type) == "number" then [ x*y, 0 ]
@@ -2740,7 +2740,7 @@ def multiply(x; y):
 def negate(x): multiply(-1; x);
 
 def minus(x; y): plus(x; multiply(-1; y));
- 
+
 def conjugate(z):
   if (z|type) == "number" then [z, 0]
   else  [z[0], -(z[1]) ]
@@ -2762,7 +2762,7 @@ def exp(z):
   elif z[0] == 0 then expi(z[1])  # for efficiency
   else multiply( (z[0]|exp); expi(z[1]) )
   end ;
- 
+
 def test(x;y):
   "x =      \( x )",
   "y =      \( y )",
@@ -3166,7 +3166,7 @@ y x  =>  -5 + 10 I
 y/x  => 11/5 - (2 I)/5
 x^3  =>  -11 - 2 I
 y^4  =>  -527 - 336 I
-x^y  =>  (1 + 2 I)^(3 + 4 I)    
+x^y  =>  (1 + 2 I)^(3 + 4 I)
 N[x^y]  =>  0.12901 + 0.0339241 I
 ```
 
@@ -3180,7 +3180,7 @@ ArcSin  ArcCos  ArcTan  ArcCsc  ArcSec  ArcCot
 Sinh  Cosh  Tanh  Csch  Sech  Coth
 ArcSinh  ArcCosh  ArcTanh  ArcCsch  ArcSech  ArcCoth
 Sinc
-Haversine  InverseHaversine 
+Haversine  InverseHaversine
 Factorial  Gamma  PolyGamma  LogGamma
 Erf  BarnesG  Hyperfactorial  Zeta  ProductLog  RamanujanTauL
 ```
@@ -3434,12 +3434,12 @@ module RCComplex
         when (c.Imaginary < 0) sign = '-';
         $"$(c.Real) $sign $(Math.Abs(c.Imaginary))i"
     }
-    
+
     Main() : void
     {
         def complex1 = Complex(1.0, 1.0);
         def complex2 = Complex(3.14159, 1.2);
-        
+
         WriteLine(Add(complex1, complex2).PrettyPrint());
         WriteLine(Multiply(complex1, complex2).PrettyPrint());
         WriteLine(Negate(complex2).PrettyPrint());
@@ -3469,7 +3469,7 @@ module RCComplex
 import complex
 var a: Complex = (1.0,1.0)
 var b: Complex = (3.1415,1.2)
- 
+
 echo("a    : " & $a)
 echo("b    : " & $b)
 echo("a + b: " & $(a + b))
@@ -3506,7 +3506,7 @@ TYPE
         ComplexDesc = RECORD
                 r-,i-: REAL;
         END;
-       
+
 PROCEDURE (CONST x: Complex) Add*(CONST y: Complex): Complex;
 BEGIN
         RETURN New(x.r + y.r,x.i + y.i)
@@ -3567,9 +3567,9 @@ VAR
 BEGIN
         x := New(1.5,3);
         y := New(1.0,1.0);
-       
+
         Out.String("x: ");x.Out(Files.stdout);Out.Ln;
-        Out.String("y: ");y.Out(Files.stdout);Out.Ln;        
+        Out.String("y: ");y.Out(Files.stdout);Out.Ln;
         r := x.Add(y);
         Out.String("x + y: ");r.Out(Files.stdout);Out.Ln;
         r := x.Sub(y);
@@ -3582,8 +3582,8 @@ BEGIN
         Out.String("1 / y: ");r.Out(Files.stdout);Out.Ln;
         r := x.Con();
         Out.String("x': ");r.Out(Files.stdout);Out.Ln;
-       
-END Complex. 
+
+END Complex.
 
 ```
 
@@ -3675,19 +3675,19 @@ disp( real(z2) ); % 1.5
 
 ```Oforth
 Object Class new: Complex(re, im)
- 
+
 Complex method: re  @re ;
 Complex method: im  @im ;
- 
+
 Complex method: initialize   := im := re ;
 Complex method: <<  '(' <<c @re << ',' <<c @im << ')' <<c  ;
- 
+
 0 1 Complex new const: I
- 
+
 Complex method: ==(c -- b )
     c re @re == c im @im == and ;
 
-Complex method: norm -- f 
+Complex method: norm -- f
     @re sq @im sq + sqrt ;
 
 Complex method: conj -- c
@@ -3696,18 +3696,18 @@ Complex method: conj -- c
 Complex method: +(c -- d )
     c re @re +  c im @im + Complex new ;
 
-Complex method: -(c -- d )   
+Complex method: -(c -- d )
     c re @re -  c im @im - Complex new ;
- 
-Complex method: *(c -- d)  
+
+Complex method: *(c -- d)
     c re @re * c im @im * -  c re @im * @re c im * + Complex new ;
 
-Complex method: inv  
+Complex method: inv
 | n |
    @re sq @im sq + >float ->n
    @re n /   @im neg n / Complex new
 ;
- 
+
 Complex method: /( c -- d )
    c self inv * ;
 
@@ -3716,10 +3716,10 @@ Float   method: >complex  self 0 Complex new ;
 ```
 
 
-Usage : 
+Usage :
 
 
-```Oforth>3.2 
+```Oforth>3.2
 complex I * 2 >complex + .cr
 2 3 Complex new  1.2 >complex + .cr
 2 3 Complex new  1.2 >complex * .cr
@@ -4036,7 +4036,7 @@ method power(double n)
   else
     an = atan(b.y,b.x)
   end if
-  an  *= n 
+  an  *= n
   a.x  = mg * cos(an)
   a.y  = mg * sin(an)
 end method
@@ -4047,7 +4047,7 @@ end method
 
 end class
 
-'#recordof complexop  
+'#recordof complexop
 
 '====
 'TEST
@@ -4299,7 +4299,7 @@ atom ar, ai
     if ar!=0 then
         s = sprintf("%g",ar)
     end if
-    
+
     if ai!=0 then
         if ai=1 then
             s &= "+i"
@@ -4309,7 +4309,7 @@ atom ar, ai
             s &= sprintf("%+gi",ai)
         end if
     end if
-    
+
     if length(s)=0 then
         return "0"
     end if
@@ -4478,17 +4478,17 @@ Complex numbers can be represented as 2 element vectors ( arrays ). Thus, a+bi c
 /x exch def
 /y exch def
 /z [0 0] def
-z 0 x 0 get y 0 get add put 
+z 0 x 0 get y 0 get add put
 z 1 x 1 get y 1 get add put
 z pstack
-}def 
+}def
 
 %Subtracting one complex number from another
 /subcomp{
 /x exch def
 /y exch def
 /z [0 0] def
-z 0 x 0 get y 0 get sub put 
+z 0 x 0 get y 0 get sub put
 z 1 x 1 get y 1 get sub put
 z pstack
 }def
@@ -4498,7 +4498,7 @@ z pstack
 /x exch def
 /y exch def
 /z [0 0] def
-z 0 x 0 get y 0 get mul x 1 get y 1 get mul sub  put 
+z 0 x 0 get y 0 get mul x 1 get y 1 get mul sub  put
 z 1 x 1 get y 0 get mul x 0 get y 1 get mul add put
 z pstack
 }def
@@ -4640,7 +4640,7 @@ Structure Complex
   imag.d
 EndStructure
 
-Procedure Add_Complex(*A.Complex, *B.Complex) 
+Procedure Add_Complex(*A.Complex, *B.Complex)
   Protected *R.Complex=AllocateMemory(SizeOf(Complex))
   If *R
     *R\real=*A\real+*B\real
@@ -4679,7 +4679,7 @@ EndProcedure
 
 Procedure ShowAndFree(Header$, *Complex.Complex)
   If *Complex
-    Protected.d i=*Complex\imag, r=*Complex\real 
+    Protected.d i=*Complex\imag, r=*Complex\real
     Print(LSet(Header$,7))
     Print("= "+StrD(r,3))
     If i>=0:  Print(" + ")
@@ -4731,7 +4731,7 @@ EndIf
 1.5
 >>> z1.imag
 3.0
->>> 
+>>>
 ```
 
 
@@ -4744,16 +4744,16 @@ EndIf
 ```rsplus
 z1 <- 1.5 + 3i
 z2 <- 1.5 + 1.5i
-print(z1 + z2)   #  3+4.5i                    
-print(z1 - z2)   #  0+1.5i               
-print(z1 * z2)   #  -2.25+6.75i          
-print(z1 / z2)   #  1.5+0.5i             
-print(-z1)       #  -1.5-3i              
-print(Conj(z1))  #  1.5-3i               
-print(abs(z1))   #  3.354102             
-print(z1^z2)     #  -1.102483-0.383064i  
-print(exp(z1))   #  -4.436839+0.632456i  
-print(Re(z1))    #  1.5                  
+print(z1 + z2)   #  3+4.5i
+print(z1 - z2)   #  0+1.5i
+print(z1 * z2)   #  -2.25+6.75i
+print(z1 / z2)   #  1.5+0.5i
+print(-z1)       #  -1.5-3i
+print(Conj(z1))  #  1.5-3i
+print(abs(z1))   #  3.354102
+print(z1^z2)     #  -1.102483-0.383064i
+print(exp(z1))   #  -4.436839+0.632456i
+print(Re(z1))    #  1.5
 print(Im(z1))    #  3
 ```
 
@@ -4860,7 +4860,7 @@ b = 3.14159 + 1.25 * i
 c = '1/2+3/4i'.to_c     # 3. Use the .to_c method from String, result ((1/2)+(3/4)*i)
 
 #Ruby 2.1 introduced a suffix to create a complex:
-c =  1.0/2+3/4i         # (0.5-(3/4)*i) 
+c =  1.0/2+3/4i         # (0.5-(3/4)*i)
 
 # Operations:
 puts a + b              # addition
@@ -4933,17 +4933,17 @@ package org.rosettacode
 
 package object ArithmeticComplex {
   val i = Complex(0, 1)
-  
+
   implicit def fromDouble(d: Double) = Complex(d)
   implicit def fromInt(i: Int) = Complex(i.toDouble)
-}  
+}
 
 package ArithmeticComplex {
   case class Complex(real: Double = 0.0, imag: Double = 0.0) {
-    def this(s: String) = 
-      this("[\\d.]+(?!i)".r findFirstIn s getOrElse "0" toDouble, 
+    def this(s: String) =
+      this("[\\d.]+(?!i)".r findFirstIn s getOrElse "0" toDouble,
            "[\\d.]+(?=i)".r findFirstIn s getOrElse "0" toDouble)
-    
+
     def +(b: Complex) = Complex(real + b.real, imag + b.imag)
     def -(b: Complex) = Complex(real - b.real, imag - b.imag)
     def *(b: Complex) = Complex(real * b.real - imag * b.imag, real * b.imag + imag * b.real)
@@ -4955,10 +4955,10 @@ package ArithmeticComplex {
     def unary_- = Complex(-real, -imag)
     lazy val abs = math.hypot(real, imag)
     override def toString = real + " + " + imag + "i"
-    
+
     def i = { require(imag == 0.0); Complex(imag = real) }
   }
-  
+
   object Complex {
     def apply(s: String) = new Complex(s)
     def fromPolar(rho:Double, theta:Double) = Complex(rho*math.cos(theta), rho*math.sin(theta))
@@ -5055,7 +5055,7 @@ const proc: main is func
 ```ruby
 var a = 1:1                 # Complex(1, 1)
 var b = 3.14159:1.25        # Complex(3.14159, 1.25)
- 
+
 [   a + b,                  # addition
     a * b,                  # multiplication
     -a,                     # negation
@@ -5170,7 +5170,7 @@ print x1,x2
         define('addx(x1,x2)a,b,c,d') :(addx_end)
 addx    a = r(x1); b = i(x1); c = r(x2); d = i(x2)
         addx = complex(a + c, b + d) :(return)
-addx_end       
+addx_end
 
 *       # Multiplication
         define('multx(x1,x2)a,b,c,d') :(multx_end)
@@ -5193,9 +5193,9 @@ invx_end
         define('printx(x)sign') :(printx_end)
 printx  sign = ge(i(x),0) '+'
         printx = r(x) sign i(x) 'i' :(return)
-printx_end        
-        
-*       # Test and display        
+printx_end
+
+*       # Test and display
         a = complex(1,1)
         b = complex(3.14159, 1.2)
         output = printx( addx(a,b) )
@@ -5225,9 +5225,9 @@ end
 (* Signature for complex numbers *)
 signature COMPLEX = sig
  type num
- 
+
  val complex : real * real -> num
- 
+
  val negative : num -> num
  val plus : num -> num -> num
  val minus : num -> num -> num
@@ -5239,9 +5239,9 @@ end;
 (* Actual implementation *)
 structure Complex :> COMPLEX = struct
   type num = real * real
-  
+
   fun complex (a, b) = (a, b)
-  
+
   fun negative (a, b) = (Real.~a, Real.~b)
   fun plus (a1, b1) (a2, b2) = (Real.+ (a1, a2), Real.+(b1, b2))
   fun minus i1 i2 = plus i1 (negative i2)
@@ -5252,7 +5252,7 @@ structure Complex :> COMPLEX = struct
     in
       (a / denom, ~b / denom)
     end
-  
+
   fun print_number (a, b) =
     print (Real.toString(a) ^ " + " ^ Real.toString(b) ^ "i\n")
 end;
@@ -5331,38 +5331,38 @@ Use a struct to create a complex number type in Swift. Math Operations can be ad
 ```swift
 
 public struct Complex {
-    
+
     public let real : Double
     public let imaginary : Double
-    
+
     public init(real inReal:Double, imaginary inImaginary:Double) {
         real = inReal
         imaginary = inImaginary
     }
-    
+
     public static var i : Complex = Complex(real:0, imaginary: 1)
     public static var zero : Complex = Complex(real: 0, imaginary: 0)
-    
+
     public var negate : Complex {
         return Complex(real: -real, imaginary: -imaginary)
     }
-    
+
     public var invert : Complex {
         let d = (real*real + imaginary*imaginary)
         return Complex(real: real/d, imaginary: -imaginary/d)
     }
-    
+
     public var conjugate : Complex {
         return Complex(real: real, imaginary: -imaginary)
     }
-    
+
 }
 public func + (left: Complex, right: Complex) -> Complex {
-    
+
     return Complex(real: left.real+right.real, imaginary: left.imaginary+right.imaginary)
 }
 public func * (left: Complex, right: Complex) -> Complex {
-    
+
     return Complex(real: left.real*right.real - left.imaginary*right.imaginary,
         imaginary: left.real*right.imaginary+left.imaginary*right.real)
 }
@@ -5387,11 +5387,11 @@ Make the Complex Number struct printable and easier to debug by adding making it
 
 
 extension Complex : CustomStringConvertible {
-    
+
     public var description : String {
-        
+
         guard real != 0 || imaginary != 0 else { return "0" }
-        
+
         let rs : String = real != 0 ? "\(real)" : ""
         let iS : String
         let sign : String
@@ -5463,11 +5463,11 @@ re^Θi: Displays imaginary numbers in Polar Coordinates.
 
 =={{header|TI-89 BASIC}}==
 
-TI-89 BASIC has built-in complex number support; the normal arithmetic operators + - * / are used. 
+TI-89 BASIC has built-in complex number support; the normal arithmetic operators + - * / are used.
 
 :Character set note: the symbol for the imaginary unit is not the normal "i" but a different character (Unicode: U+F02F "<span style="font-family: 'TI Uni';"></span>" (private use area); this character should display with the "TI Uni" font). Also, U+3013 EN DASH “<span style="font-family: 'TI Uni';">–</span>”, displayed on the TI as a superscript minus, is used for the minus sign on numbers, distinct from ASCII "-" used for subtraction.
 
-The choice of examples here is {{trans|Common Lisp}}. 
+The choice of examples here is {{trans|Common Lisp}}.
 
 <!--lang ti89b--><pre style="font-family: 'TI Uni';">■ √(–1)                    
 ■ ^2                     —1
@@ -5500,7 +5500,7 @@ typeset -T Complex_t=(
     float real=0
     float imag=0
 
-    function to_s { 
+    function to_s {
         print -- "${_.real} + ${_.imag} i"
     }
 
@@ -5517,12 +5517,12 @@ typeset -T Complex_t=(
             (( _.imag += other.imag ))
         done
     }
-    
+
     function negate {
         (( _.real *= -1 ))
         (( _.imag *= -1 ))
     }
-    
+
     function conjugate {
         (( _.imag *= -1 ))
     }
@@ -5591,7 +5591,7 @@ v = 9.545e-01-3.305e+00j
 
 #cast %jL
 
-examples = 
+examples =
 
 <
    complex..add (u,v),
@@ -5833,7 +5833,7 @@ GSL.Z(3,4).conjugate().println();    // (3.00-4.00i)
 
 module Numbers;
 type
-	{public,immutable} 
+	{public,immutable}
 	Complex = record
 		re,im: real;
 	end Complex;
@@ -5968,9 +5968,9 @@ end Main.
 170 LET o(r)=a(r)/denom
 180 LET o(i)=-a(i)/denom
 190 PRINT "Result of inversion is:": GO SUB 1000
-200 STOP 
-1000 IF o(i)>=0 THEN PRINT o(r);" + ";o(i);"i": RETURN 
-1010 PRINT o(r);" - ";-o(i);"i": RETURN 
+200 STOP
+1000 IF o(i)>=0 THEN PRINT o(r);" + ";o(i);"i": RETURN
+1010 PRINT o(r);" - ";-o(i);"i": RETURN
 
 ```
 

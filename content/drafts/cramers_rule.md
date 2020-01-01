@@ -252,8 +252,8 @@ int main(int argc, char **argv) {
 
 {{trans|C#}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -687,9 +687,9 @@ w = 2, x = -12, y = -4, z = 1
 	(for/vector [(i (matrix-col-num A))]
 		(set! X (matrix-set-col! (array-copy A) i B))
 		(// (determinant X) ∆)))
-		
+
 (define (task)
-	(define A (list->array 
+	(define A (list->array
   	'( 2 -1 5 1 3 2 2 -6 1 3 3 -1 5 -2 -3 3) 4 4))
 	(define B #(-3 -32 -47 49))
 	(writeln "Solving A * X = B")
@@ -704,13 +704,13 @@ w = 2, x = -12, y = -4, z = 1
 ```txt
 
 (task)
-Solving A * X = B    
-  2   -1   5    1  
-  3   2    2    -6 
-  1   3    3    -1 
-  5   -2   -3   3  
-B =      #( -3 -32 -47 49)    
-X =      #( 2 -12 -4 1)    
+Solving A * X = B
+  2   -1   5    1
+  3   2    2    -6
+  1   3    3    -1
+  5   -2   -3   3
+B =      #( -3 -32 -47 49)
+X =      #( 2 -12 -4 1)
 
 ```
 
@@ -759,11 +759,11 @@ And further on, "Having hinted darkly at my computational fundamentalism, it is 
 
 Since this problem requires use of Cramer's rule, one might as well be hung for a sheep instead of a lamb, so the traditions of Old Fortran and heavy computation will be ignored and the fearsome RECURSIVE specification employed so that the determinants will be calculated recursively, all the way down to N = 1 even though the N = 2 case is easy. This requires F90 and later. Similarly, the MODULE protocol will be employed, even though there is no significant context to share. The alternative method for calculating a determinant involves generating permutations, a tiresome process.
 
-Array passing via the modern arrangements of F90 is a source of novel difficulty to set against the slight convenience of not having to pass an additional parameter, N. Explicitly, at least. There are "secret" additional parameters when an array is being passed in the modern way, which are referred to by the new SIZE function. Anyway, for an order N square matrix, the array ''must'' be declared A(N,N), and specifically not something like A(100,100) with usage only of elements up to N = 7, say, because the locations in storage of elements in use would be quite different from those used by an array declared A(7,7). This means that the array must be re-declared for each different size usage, a tiresome and error-inviting task. One-dimensional arrays do not have this problem, but they do have to be "long enough" so B and X might as well be included. This also means that the auxiliary matrices needed within the routines have to be made the right size, and fortunately they can be declared in a way that requests this without the blather of ALLOCATE, this being a protocol introduced by Algol in the 1960s. Unfortunately, there is no scheme such as in pl/i to declare AUX "like" A, so some grotesquery results. And in the case of function DET which needs an array of order N - 1, when its recursion bottoms out with N = 1 it will have declared MINOR(0,0), a rather odd situation that fortunately evokes no complaint, and a test run in which its "value" was written out by WRITE (6,*) MINOR produced a blank line: no complaint there either, presumably because zero elements were being sent forth and so there was no improper access of ... nothing. 
+Array passing via the modern arrangements of F90 is a source of novel difficulty to set against the slight convenience of not having to pass an additional parameter, N. Explicitly, at least. There are "secret" additional parameters when an array is being passed in the modern way, which are referred to by the new SIZE function. Anyway, for an order N square matrix, the array ''must'' be declared A(N,N), and specifically not something like A(100,100) with usage only of elements up to N = 7, say, because the locations in storage of elements in use would be quite different from those used by an array declared A(7,7). This means that the array must be re-declared for each different size usage, a tiresome and error-inviting task. One-dimensional arrays do not have this problem, but they do have to be "long enough" so B and X might as well be included. This also means that the auxiliary matrices needed within the routines have to be made the right size, and fortunately they can be declared in a way that requests this without the blather of ALLOCATE, this being a protocol introduced by Algol in the 1960s. Unfortunately, there is no scheme such as in pl/i to declare AUX "like" A, so some grotesquery results. And in the case of function DET which needs an array of order N - 1, when its recursion bottoms out with N = 1 it will have declared MINOR(0,0), a rather odd situation that fortunately evokes no complaint, and a test run in which its "value" was written out by WRITE (6,*) MINOR produced a blank line: no complaint there either, presumably because zero elements were being sent forth and so there was no improper access of ... nothing.
 
 With matrices, there is a problem all the way from the start in 1958. Everyone agrees that a matrix should be indexed as A(''row'',''column'') and that when written out, rows should run down the page and columns across. This is unexceptional and the F90 function MATMUL follows this usage. However, Fortran has always stored its array elements in what is called "column major" order, which is to say that element A(1,1) is followed by element A(2,1) in storage, not A(1,2). Thus, if an array is written (or read) by something like <code>WRITE (6,*) A</code>, consecutive elements, written along a line, will be A(1,1), A(2,1), A(3,1), ... So, subroutine SHOWMATRIX is employed to write the matrix out in the desired form, and to read the values into the array, an explicit loop is used to place them where expected rather than just <code>READ(INF,*) A</code>
 
-Similarly, if instead a DATA statement were used to initialise the array for the example problem, and it looked something like 
+Similarly, if instead a DATA statement were used to initialise the array for the example problem, and it looked something like
 ```Fortran
       DATA A/2, -1,  5,  1
      1       3,  2,  2, -6
@@ -881,7 +881,7 @@ Complaints.
 
 Closedown.
   100 WRITE (6,*) "That was interesting."	!Quite.
-      END	!Open files are closed, allocated memory is released. 
+      END	!Open files are closed, allocated memory is released.
 ```
 
 
@@ -1053,35 +1053,35 @@ s_permutations = flip zip (cycle [1, -1]) . (foldl aux [[]])
           f (insertEv x item)
         insertEv x [] = [[x]]
         insertEv x l@(y:ys) = (x:l) :  map (y:) (insertEv x ys)
- 
+
 foldlZipWith::(a -> b -> c) -> (d -> c -> d) -> d -> [a] -> [b]  -> d
 foldlZipWith _ _ u [] _          = u
 foldlZipWith _ _ u _ []          = u
 foldlZipWith f g u (x:xs) (y:ys) = foldlZipWith f g (g u (f x y)) xs ys
- 
+
 foldl1ZipWith::(a -> b -> c) -> (c -> c -> c) -> [a] -> [b] -> c
 foldl1ZipWith _ _ [] _          = error "First list is empty"
 foldl1ZipWith _ _ _ []          = error "Second list is empty"
 foldl1ZipWith f g (x:xs) (y:ys) = foldlZipWith f g (f x y) xs ys
- 
+
 multAdd::(a -> b -> c) -> (c -> c -> c) -> [[a]] -> [[b]] -> [[c]]
 multAdd f g xs ys = map (\us -> foldl1ZipWith (\u vs -> map (f u) vs) (zipWith g) us ys) xs
- 
+
 mult:: Num a => [[a]] -> [[a]] -> [[a]]
 mult xs ys = multAdd (*) (+) xs ys
- 
+
 elemPos::[[a]] -> Int -> Int -> a
 elemPos ms i j = (ms !! i) !! j
- 
+
 prod:: Num a => ([[a]] -> Int -> Int -> a) -> [[a]] -> [Int] -> a
 prod f ms = product.zipWith (f ms) [0..]
- 
+
 s_determinant:: Num a => ([[a]] -> Int -> Int -> a) -> [[a]] -> [([Int],Int)] -> a
 s_determinant f ms = sum.map (\(is,s) -> fromIntegral s * prod f ms is)
- 
+
 elemCramerPos::Int -> Int -> [[a]] -> [[a]] -> Int -> Int -> a
 elemCramerPos l k ks ms i j = if j /= l then elemPos ms i j else elemPos ks i k
- 
+
 solveCramer:: [[Rational]] -> [[Rational]] -> [[Rational]]
 solveCramer ms ks = xs
   where
@@ -1095,7 +1095,7 @@ solveCramer ms ks = xs
   d = s_determinant elemPos ms ps
 matI::(Num a) => Int -> [[a]]
 matI n = [ [fromIntegral.fromEnum $ i == j | i <- [1..n]] | j <- [1..n]]
- 
+
 task::[[Rational]] -> [[Rational]] -> IO()
 task a b = do
   let x         = solveCramer a b
@@ -1129,7 +1129,7 @@ task a b = do
   mapM_ print z
   putStrLn "test: z == x ="
   print $ z == x
-  
+
 main = do
   let a  = [[2,-1, 5, 1]
            ,[3, 2, 2,-6]
@@ -1169,7 +1169,7 @@ verification: y = a * x = mult a x =
 [(-32) % 1]
 [(-47) % 1]
 [49 % 1]
-test: y == b = 
+test: y == b =
 True
 identity matrix: identity =
 [1 % 1,0 % 1,0 % 1,0 % 1]
@@ -1186,7 +1186,7 @@ verification: h = a * a1 = mult a a1 =
 [0 % 1,1 % 1,0 % 1,0 % 1]
 [0 % 1,0 % 1,1 % 1,0 % 1]
 [0 % 1,0 % 1,0 % 1,1 % 1]
-test: h == identity = 
+test: h == identity =
 True
 z = a1 * b = mult a1 b =
 [2 % 1]
@@ -1222,13 +1222,13 @@ determinant ls = if null ls then 0 else pivot 1 (zip ls [(0::Int)..])
 
 solveCramer::(Fractional a, Ord a) => [[a]] -> [[a]] -> [[a]]
 solveCramer as bs = if 0 == d then [] else ans bs
-  where 
+  where
   d = determinant as
   ans = transpose.map go.transpose
     where
     ms = zip [0..] (transpose as)
     go us =  [ (/d) $ determinant [if i /= j then vs else us | (j,vs) <- ms] | (i,_) <- ms]
-    
+
 matI::(Num a) => Int -> [[a]]
 matI n = [ [fromIntegral.fromEnum $ i == j | i <- [1..n]] | j <- [1..n]]
 
@@ -1236,15 +1236,15 @@ foldlZipWith::(a -> b -> c) -> (d -> c -> d) -> d -> [a] -> [b]  -> d
 foldlZipWith _ _ u [] _          = u
 foldlZipWith _ _ u _ []          = u
 foldlZipWith f g u (x:xs) (y:ys) = foldlZipWith f g (g u (f x y)) xs ys
- 
+
 foldl1ZipWith::(a -> b -> c) -> (c -> c -> c) -> [a] -> [b] -> c
 foldl1ZipWith _ _ [] _          = error "First list is empty"
 foldl1ZipWith _ _ _ []          = error "Second list is empty"
 foldl1ZipWith f g (x:xs) (y:ys) = foldlZipWith f g (f x y) xs ys
- 
+
 multAdd::(a -> b -> c) -> (c -> c -> c) -> [[a]] -> [[b]] -> [[c]]
 multAdd f g xs ys = map (\us -> foldl1ZipWith (\u vs -> map (f u) vs) (zipWith g) us ys) xs
- 
+
 mult:: Num a => [[a]] -> [[a]] -> [[a]]
 mult xs ys = multAdd (*) (+) xs ys
 
@@ -1281,7 +1281,7 @@ task a b = do
   mapM_ print z
   putStrLn "test: z == x ="
   print $ z == x
- 
+
 main = do
   let a  = [[2,-1, 5, 1]
            ,[3, 2, 2,-6]
@@ -1321,7 +1321,7 @@ verification: y = a * x = mult a x =
 [(-32) % 1]
 [(-47) % 1]
 [49 % 1]
-test: y == b = 
+test: y == b =
 True
 identity matrix: identity =
 [1 % 1,0 % 1,0 % 1,0 % 1]
@@ -1338,7 +1338,7 @@ verification: h = a * a1 = mult a a1 =
 [0 % 1,1 % 1,0 % 1,0 % 1]
 [0 % 1,0 % 1,1 % 1,0 % 1]
 [0 % 1,0 % 1,0 % 1,1 % 1]
-test: h == identity = 
+test: h == identity =
 True
 z = a1 * b = mult a1 b =
 [2 % 1]
@@ -1631,10 +1631,10 @@ local function cramer(mat, vec)
   assert(#mat == #mat[1], "Matrix is not square!")
   -- Check if vector has the same size of the matrix
   assert(#mat == #vec, "Vector has not the same size of the matrix!")
-	
+
   local size = #mat
   local main_det = matrix.det(mat)
-  
+
   local aux_mats = {}
   local dets = {}
   local result = {}
@@ -1644,14 +1644,14 @@ local function cramer(mat, vec)
     for j = 1, size do
       aux_mats[i][j][i] = vec[j]
     end
-    
+
     -- Calculate the auxiliary determinants
     dets[i] = matrix.det(aux_mats[i])
-    
+
     -- Calculate results
     result[i] = dets[i]/main_det
   end
-  
+
   return result
 end
 
@@ -1684,7 +1684,7 @@ Result: 2, -12, -4, 1
 A := Matrix([[2,-1,5,1],[3,2,2,-6],[1,3,3,-1],[5,-2,-3,3]]):
 w := LinearAlgebra:-Determinant(Matrix([[-3,-1,5,1],[-32,2,2,-6],[-47,3,3,-1],[49,-2,-3,3]]))/ LinearAlgebra:-Determinant(A);
 x := LinearAlgebra:-Determinant(Matrix([[2,-3,5,1],[3,-32,2,-6],[1,-47,3,-1],[5,49,-3,3]]))/LinearAlgebra:-Determinant(A);
-y := LinearAlgebra:-Determinant(Matrix([[2,-1,-3,1],[3,2,-32,-6],[1,3,-47,-1],[5,-2,49,3]]))/LinearAlgebra:-Determinant(A); 
+y := LinearAlgebra:-Determinant(Matrix([[2,-1,-3,1],[3,2,-32,-6],[1,3,-47,-1],[5,-2,49,3]]))/LinearAlgebra:-Determinant(A);
 z := LinearAlgebra:-Determinant(Matrix([[2,-1,5,-3],[3,2,2,-32],[1,3,3,-47],[5,-2,-3,49]]))/LinearAlgebra:-Determinant(A);
 ```
 
@@ -1868,7 +1868,7 @@ constant inf = 1e300*1e300,
 
 function det(sequence a)
 atom res = 1
- 
+
     for j=1 to length(a) do
         integer i_max = j
         for i=j+1 to length(a) do
@@ -1880,12 +1880,12 @@ atom res = 1
             {a[i_max],a[j]} = {a[j],a[i_max]}
             res *= -1
         end if
- 
+
         if abs(a[j][j]) < 1e-12 then
             puts(1,"Singular matrix!")
             return nan
         end if
- 
+
         for i=j+1 to length(a) do
             atom mult = -a[i][j] / a[j][j]
             for k=1 to length(a) do
@@ -1893,20 +1893,20 @@ atom res = 1
             end for
         end for
     end for
- 
+
     for i=1 to length(a) do
         res *= a[i][i]
     end for
     return res
 end function
- 
+
 function cramer_solve(sequence a, atom det_a, sequence b, integer var)
     for i=1 to length(a) do
       a[i][var] = b[i]
     end for
     return det(a)/det_a
 end function
- 
+
 sequence a = {{2,-1, 5, 1},
               {3, 2, 2,-6},
               {1, 3, 3,-1},
@@ -2008,7 +2008,7 @@ results(X) :-
 ```txt
 
 | ?- results(X).
-X = [2.0,-12.0,-4.0,1.0] ? 
+X = [2.0,-12.0,-4.0,1.0] ?
 yes
 
 ```
@@ -2245,7 +2245,7 @@ z = 1
 
 ```ruby
 require 'matrix'
- 
+
 def cramers_rule(a, terms)
   raise ArgumentError, " Matrix not square"  unless a.square?
   cols = a.to_a.transpose

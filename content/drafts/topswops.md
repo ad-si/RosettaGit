@@ -15,17 +15,17 @@ tags = []
 Topswops is a card game created by John Conway in the 1970's.
 
 
-Assume you have a particular permutation of a set of   n   cards numbered   1..n   on both of their faces, for example the arrangement of four cards given by   [2, 4, 1, 3]   where the leftmost card is on top. 
+Assume you have a particular permutation of a set of   n   cards numbered   1..n   on both of their faces, for example the arrangement of four cards given by   [2, 4, 1, 3]   where the leftmost card is on top.
 
-A round is composed of reversing the first   m   cards where   m   is the value of the topmost card. 
+A round is composed of reversing the first   m   cards where   m   is the value of the topmost card.
 
-Rounds are repeated until the topmost card is the number   1   and the number of swaps is recorded. 
+Rounds are repeated until the topmost card is the number   1   and the number of swaps is recorded.
 
 
 For our example the swaps produce:
 
 ```txt
-    
+
     [2, 4, 1, 3]    # Initial shuffle
     [4, 2, 1, 3]
     [3, 1, 2, 4]
@@ -59,7 +59,7 @@ The task is to generate and show here a table of   <code> n </code>   vs   <code
 
 ## 360 Assembly
 
-The program uses two ASSIST macro (XDECO,XPRNT) to keep the code as short as possible. 
+The program uses two ASSIST macro (XDECO,XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Topswops optimized        12/07/2016
@@ -119,7 +119,7 @@ NOTGT    BAL    R14,NEXTPERM       call nextperm
          LA     R1,1(R1)           +1                                 *
          ST     R1,N               n=n+1                              *
          B      LOOPN              ===------------------------------==*
-ELOOPN   L      R13,4(0,R13)       epilog 
+ELOOPN   L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    " restore
          XR     R15,R15            " rc=0
          BR     R14                exit
@@ -170,7 +170,7 @@ JJNE0    LA     R7,1(R8)           j=jj+1
          SLA    R2,2               r@p(j)
          LR     R3,R8              jj
          SLA    R3,2               r@p(jj)
-LOOPJ3   L      R0,P-4(R2)         p(j)  ----------------------+                     
+LOOPJ3   L      R0,P-4(R2)         p(j)  ----------------------+
          C      R0,P-4(R3)         do j=jj+1 while p(j)<p(jj)  |
          BNL    ELOOPJ3
          LA     R2,4(R2)           r@p(j)=r@p(j)+4
@@ -213,18 +213,18 @@ This is a straightforward approach that counts the number of swaps for each perm
 with Ada.Integer_Text_IO, Generic_Perm;
 
 procedure Topswaps is
-   
+
    function Topswaps(Size: Positive) return Natural is
       package Perms is new Generic_Perm(Size);
       P: Perms.Permutation;
       Done: Boolean;
       Max: Natural;
-      
+
       function Swapper_Calls(P: Perms.Permutation) return Natural is
 	 Q: Perms.Permutation := P;
 	 I: Perms.Element := P(1);
       begin
-	 if I = 1 then 
+	 if I = 1 then
 	    return 0;
 	 else
 	    for Idx in 1 .. I loop
@@ -233,7 +233,7 @@ procedure Topswaps is
 	    return 1 + Swapper_Calls(Q);
 	 end if;
       end Swapper_Calls;
-      
+
    begin
       Perms.Set_To_First(P, Done);
       Max:= Swapper_Calls(P);
@@ -243,7 +243,7 @@ procedure Topswaps is
       end loop;
       return Max;
    end Topswaps;
-   
+
 begin
    for I in 1 .. 10 loop
       Ada.Integer_Text_IO.Put(Item => Topswaps(I), Width => 3);
@@ -269,7 +269,7 @@ Topswops(Obj, n){
 		if (i <=n)
 			res := val (A_Index=1?"":",") res
 		else
-			res .= "," val 
+			res .= "," val
 	}
 	Loop, Parse, res, `,
 		R[A_Index]:= A_LoopField
@@ -310,8 +310,8 @@ Outputs:
 
 An algorithm that doesn't go through all permutations, per Knuth tAoCP 7.2.1.2 exercise 107 (possible bad implementation on my part notwithstanding):
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 typedef struct { char v[16]; } deck;
@@ -370,7 +370,7 @@ The code contains critical small loops, which can be manually unrolled for those
 #define MAX_CPUS 8 // increase this if you got more CPUs/cores
 
 typedef struct { char v[16]; } deck;
- 
+
 int n, best[16];
 
 // Update a shared variable by spinlock.  Since this program really only
@@ -385,7 +385,7 @@ int n, best[16];
 void tryswaps(deck *a, int f, int s, int d) {
 #define A a->v
 #define B b->v
- 
+
 	while (best[n] < d) {
 		int t = best[n];
 		SWAP_OR_RETRY(best[n], t, d);
@@ -397,7 +397,7 @@ void tryswaps(deck *a, int f, int s, int d) {
 			break;							\
 		if (d + best[15-x] <= best[n]) return;				\
 		s = 14 - x
- 
+
 	switch (15 - s) {
 		TEST(0);  TEST(1);  TEST(2);  TEST(3);  TEST(4);
 		TEST(5);  TEST(6);  TEST(7);  TEST(8);  TEST(9);
@@ -405,18 +405,18 @@ void tryswaps(deck *a, int f, int s, int d) {
 		return;
 	}
 #undef TEST
- 
+
 	deck *b = a + 1;
 	*b = *a;
 	d++;
- 
+
 #define FLIP(x)							\
 	if (A[x] == x || ((A[x] == -1) && !(f & (1<<x)))) {	\
 		B[0] = x;					\
 		for (int j = x; j--; ) B[x-j] = A[j];		\
 		tryswaps(b, f|(1<<x), s, d); }			\
 	if (s == x) return;
- 
+
 	FLIP(1);  FLIP(2);  FLIP(3);  FLIP(4);  FLIP(5);
 	FLIP(6);  FLIP(7);  FLIP(8);  FLIP(9);  FLIP(10);
 	FLIP(11); FLIP(12); FLIP(13); FLIP(14); FLIP(15);
@@ -474,7 +474,7 @@ int main(void) {
 
 		printf("%2d: %2d\n", n, best[n]);
 	}
- 
+
 	return 0;
 }
 ```
@@ -803,15 +803,15 @@ end
 
 ```txt
 
-0 
-1 
-2 
-4 
-7 
-10 
-16 
-22 
-30 
+0
+1
+2
+4
+7
+10
+16
+22
+30
 38
 
 ```
@@ -826,12 +826,12 @@ end
 defmodule Topswops do
   def get_1_first( [1 | _t] ), do: 0
   def get_1_first( list ), do: 1 + get_1_first( swap(list) )
-  
+
   defp swap( [n | _t]=list ) do
     {swaps, remains} = Enum.split( list, n )
     Enum.reverse( swaps, remains )
   end
-  
+
   def task do
     IO.puts "N\ttopswaps"
     Enum.map(1..10, fn n -> {n, permute(Enum.to_list(1..n))} end)
@@ -839,9 +839,9 @@ defmodule Topswops do
     |> Enum.map(fn {n, n_swops} -> {n, Enum.max(n_swops)} end)
     |> Enum.each(fn {n, max} -> IO.puts "#{n}\t#{max}" end)
   end
-  
+
   def get_1_first_many( n_permutations ), do: (for x <- n_permutations, do: get_1_first(x))
-  
+
   defp permute([]), do: [[]]
   defp permute(list), do: for x <- list, y <- permute(list -- [x]), do: [x|y]
 end
@@ -886,7 +886,7 @@ get_1_first( List ) -> 1 + get_1_first( swap(List) ).
 swap( [N | _T]=List ) ->
 	{Swaps, Remains} = lists:split( N, List ),
 	lists:reverse( Swaps ) ++ Remains.
-	
+
 task() ->
 	Permutations = [{X, permute:permute(lists:seq(1, X))} || X <- lists:seq(1, 10)],
 	Swops = [{N, get_1_first_many(N_permutations)} || {N, N_permutations} <- Permutations],
@@ -978,7 +978,7 @@ MAIN: main
 ```Fortran
 module top
 implicit none
-contains 
+contains
 recursive function f(x) result(m)
   integer :: n, m, x(:),y(size(x)), fst
   fst = x(1)
@@ -1030,7 +1030,7 @@ do i = 1,10
     m = max(m, f(p(j,:)))
   end do
   print "(i3,a,i3)", i,": ",m
-end do  
+end do
 end program
 
 ```
@@ -1555,7 +1555,7 @@ fun trySwaps(deck: IntArray, f: Int, d: Int, n: Int) {
         }
         else if (deck2[i] != i) continue
         deck2[0] = i
-        for (j in i - 1 downTo 0) deck2[i - j] = deck[j]  
+        for (j in i - 1 downTo 0) deck2[i - j] = deck[j]
         trySwaps(deck2, f or k, d + 1, n)
     }
 }
@@ -1610,7 +1610,7 @@ function permute (list)
     end
     return coroutine.wrap(function() perm(list, #list) end)
 end
- 
+
 -- Perform one topswop round on table t
 function swap (t)
     local new, limit = {}, t[1]
@@ -1623,7 +1623,7 @@ function swap (t)
     end
     return new
 end
- 
+
 -- Find the most swaps needed for any starting permutation of n cards
 function topswops (n)
     local numTab, highest, count = {}, 0
@@ -1638,7 +1638,7 @@ function topswops (n)
     end
     return highest
 end
- 
+
 -- Main procedure
 for i = 1, 10 do print(i, topswops(i)) end
 ```
@@ -1667,7 +1667,7 @@ An exhaustive search of all possible permutations is done
 ```Mathematica
 flip[a_] :=
  Block[{a1 = First@a},
-  If[a1 == Length@a, Reverse[a], 
+  If[a1 == Length@a, Reverse[a],
    Join[Reverse[a[[;; a1]]], a[[a1 + 1 ;;]]]]]
 
 swaps[a_] := Length@FixedPointList[flip, a] - 2
@@ -2085,7 +2085,7 @@ This solution uses cards numbered from 0..n-1 and variable p0 is introduced as a
 8 22
 9 30
 10 38
->>> 
+>>>
 ```
 
 
@@ -2168,7 +2168,7 @@ Using iterpc package for optimization
 
 ```R
 
-topswops <- function(x){ 
+topswops <- function(x){
   i <- 0
   while(x[1] != 1){
     first <- x[1]
@@ -2312,7 +2312,7 @@ swops:  parse arg z;   do u=1;    parse var z t .;     if \datatype(t, 'W')  the
 ```
 
 Some older REXXes don't have a '''changestr''' bif, so one is included here   ───►   [[CHANGESTR.REX]].
- 
+
 {{out|output|text=  when using the default input:}}
 
 ```txt
@@ -2463,7 +2463,7 @@ object Fannkuch extends App {
  Pfannkuchen(9)	= 30
  Pfannkuchen(10)	= 38
  Successfully completed without errors. [total 7401 ms]
- 
+
  Process finished with exit code 0
 
 
@@ -2551,7 +2551,7 @@ else [\determine number of topswops to get card 1 at beginning
                 I:= I+1;  J:= J-1;
                 ];
             C:= C+1;
-            ];  
+            ];
      if C>Max then Max:= C;
      ];
 ];
@@ -2592,7 +2592,7 @@ else [\determine number of topswops to get card 1 at beginning
 ```XPL0
 code CrLf=9, IntOut=11, Text=12;
 int  N, D, Best(16);
- 
+
 proc TrySwaps(A, F, S);
 int  A, F, S;
 int  B(16), I, J, K;

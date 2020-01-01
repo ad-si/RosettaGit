@@ -13,13 +13,13 @@ tags = []
 {{requires|Concurrency}}
 [[Category:Encyclopedia]]
 
-A '''mutex''' (''abbreviated'' '''Mut'''ually '''Ex'''clusive access) is a synchronization object, a variant of [[semaphore]] with ''k''=1. 
-A mutex is said to be seized by a [[task]] decreasing ''k''. 
-It is released when the task restores ''k''. Mutexes are typically used to protect a shared resource from concurrent access. 
+A '''mutex''' (''abbreviated'' '''Mut'''ually '''Ex'''clusive access) is a synchronization object, a variant of [[semaphore]] with ''k''=1.
+A mutex is said to be seized by a [[task]] decreasing ''k''.
+It is released when the task restores ''k''. Mutexes are typically used to protect a shared resource from concurrent access.
 A [[task]] seizes (or acquires) the mutex, then accesses the resource, and after that releases the mutex.
 
-A mutex is a low-level synchronization primitive exposed to deadlocking. A deadlock can occur with just two tasks and two mutexes (if each task attempts to acquire both mutexes, but in the opposite order). 
-Entering the deadlock is usually aggravated by a [[race condition]] state, which leads to sporadic hangups, which are very difficult to track down. 
+A mutex is a low-level synchronization primitive exposed to deadlocking. A deadlock can occur with just two tasks and two mutexes (if each task attempts to acquire both mutexes, but in the opposite order).
+Entering the deadlock is usually aggravated by a [[race condition]] state, which leads to sporadic hangups, which are very difficult to track down.
 
 =Variants of mutexes=
 
@@ -99,15 +99,15 @@ It is also possible to implement mutex as a monitor task.
 ```bbcbasic
       REM Create mutex:
       SYS "CreateMutex", 0, 0, 0 TO hMutex%
-      
+
       REM Wait to acquire mutex:
       REPEAT
         SYS "WaitForSingleObject", hMutex%, 1 TO res%
       UNTIL res% = 0
-      
+
       REM Release mutex:
       SYS "ReleaseMutex", hMutex%
-      
+
       REM Free mutex:
       SYS "CloseHandle", hMutex%
 ```
@@ -154,8 +154,8 @@ CloseHandle(hMutex);
 Creating a mutex:
 
 
-```c>#include <pthread.h
-
+```c
+#include <pthread.h>
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 ```
@@ -325,11 +325,11 @@ def makeMutex() {
     # The mutex is available (released) if available is resolved, otherwise it
     # has been seized/locked. The specific value of available is irrelevant.
     var available := null
-    
+
     # The interface to the mutex is a function, taking a function (action)
-    # to be executed. 
+    # to be executed.
     def mutex(action) {
-        # By assigning available to our promise here, the mutex remains 
+        # By assigning available to our promise here, the mutex remains
         # unavailable to the /next/ caller until /this/ action has gotten
         # its turn /and/ resolved its returned value.
         available := Ref.whenResolved(available, fn _ { action <- () })
@@ -374,11 +374,11 @@ than the intended 2.
 
 This time, we use the mutex to protect the action.
 
-? for _ in 0..1 { 
->     mutex(fn { 
->         when (def v := (&value) <- get()) -> { 
+? for _ in 0..1 {
+>     mutex(fn {
+>         when (def v := (&value) <- get()) -> {
 >             (&value) <- put(v + 1)
->         } 
+>         }
 >     })
 > }
 
@@ -444,15 +444,15 @@ print_slow( X ) ->
 ```txt
 
 27> mutex:task().
-Print 2:  1 2 3    
-Print 1:  1 2 3    
-Print 3:  1 2 3    
-Print 2:  1 2 3    
-Print 1:  1 2 3    
-Print 3:  1 2 3    
-Print 2:  1 2 3    
-Print 1:  1 2 3    
-Print 3:  1 2 3    
+Print 2:  1 2 3
+Print 1:  1 2 3
+Print 3:  1 2 3
+Print 2:  1 2 3
+Print 1:  1 2 3
+Print 3:  1 2 3
+Print 2:  1 2 3
+Print 1:  1 2 3
+Print 3:  1 2 3
 
 ```
 
@@ -505,14 +505,14 @@ func main() {
 
 ```
 
-Read-write mutex is provided by the <tt>sync.RWMutex</tt> type.  
+Read-write mutex is provided by the <tt>sync.RWMutex</tt> type.
 For a code example using a RWMutex, see [[Atomic updates#RWMutex]].
 
 
 ### Channels
 
-If a mutex is exactly what you need, sync.Mutex is there.  
-As soon as things start getting complicated though, Go channels offer a much clearer alternative.  
+If a mutex is exactly what you need, sync.Mutex is there.
+As soon as things start getting complicated though, Go channels offer a much clearer alternative.
 As a gateway from mutexes to channels, here is the above program implemented with channels:
 
 ```go
@@ -590,7 +590,7 @@ The following code uses features exclusive to Unicon.
 
    x: = mutex()  # create and return a mutex handle for sharing between threads needing to synchronize with each other
 
-   lock(x)       # lock mutex x   
+   lock(x)       # lock mutex x
 
    trylock(x))   # non-blocking lock, succeeds only if there are no other thread already in the critical region
 
@@ -789,7 +789,7 @@ Module CheckIt {
                   PhoneBooth.leave
                   m.Unlock
                   Thread This Erase
-            } as K 
+            } as K
             Read M$
             Thread K Execute Static N$=M$,  C=0, Max=RANDOM(5,8)
             Thread K interval Random(300, 2000)
@@ -803,8 +803,8 @@ Module CheckIt {
                   If not Service then if Keypress(32)  Then if m.lock() then Service=true : Continue
                   if PhoneBooth.NowUser$<>"" Then  {
                         Print "Phone:";PhoneBooth.NowUser$
-                  } Else.if Service then Print "Service Time"      
-            }  
+                  } Else.if Service then Print "Service Time"
+            }
       }
 }
 CheckIt
@@ -815,7 +815,7 @@ CheckIt
 
 ## Nim
 
-For mutexes (called locks in Nim) threads support is required, 
+For mutexes (called locks in Nim) threads support is required,
 so compile using <code>nim --threads:on c mutex</code>
 
 Creating a mutex:
@@ -853,7 +853,7 @@ if ([m tryLock]) { // acquire a lock -- does not block if not acquired
 } else {
   // already locked, does not block
 }
-  
+
 [m unlock];
 ```
 
@@ -895,7 +895,7 @@ Mutex.lock m;  (* locks in blocking mode *)
 if (Mutex.try_lock m)
 then ...  (* did the lock *)
 else ...  (* already locked, do not block *)
- 
+
 Mutex.unlock m;
 ```
 
@@ -918,8 +918,8 @@ import: parallel
    "I get the mutex !" .
    2000 sleep
    "Now I release the mutex" println
-   1 mut send drop ;  
- 
+   1 mut send drop ;
+
 : mymutex
 | mut |
    Channel new dup send(1) drop ->mut
@@ -1049,7 +1049,7 @@ Define Mutex
 
 If OpenConsole()
   Define thread1, thread2, thread3
-  
+
   Mutex = CreateMutex()
   thread1 = CreateThread(@ThreadedTask(), 1):  Delay(5)
   thread2 = CreateThread(@ThreadedTask(), 2):  Delay(5)
@@ -1057,26 +1057,26 @@ If OpenConsole()
   WaitThread(thread1)
   WaitThread(thread2)
   WaitThread(thread3)
-  
+
   PrintN(#CRLF$+"Press ENTER to exit"): Input()
   FreeMutex(Mutex)
   CloseConsole()
 EndIf
 
-Procedure ThreadedTask(*MyArgument)     
+Procedure ThreadedTask(*MyArgument)
   Shared Mutex
   Protected a, b
-  For a = 1 To 3     
-    LockMutex(Mutex) 
+  For a = 1 To 3
+    LockMutex(Mutex)
     ; Without Lock-/UnLockMutex() here the output from the parallel threads would be all mixed.
     ; Reading/Writing to shared memory resources are a common use for Mutextes i PureBasic
     PrintN("Thread "+Str(*MyArgument)+": Print 3 numbers in a row:")
     For b = 1 To 3
       Delay(75)
       PrintN("Thread "+Str(*MyArgument)+" : "+Str(b))
-    Next          
-    UnlockMutex(Mutex) 
-  Next    
+    Next
+    UnlockMutex(Mutex)
+  Next
 EndProcedure
 ```
 
@@ -1084,9 +1084,9 @@ EndProcedure
 
 ## Python
 
-Demonstrating semaphores.  
-Note that semaphores can be considered as a multiple version of mutex; 
-while a mutex allows a singular exclusive access to code or resources, 
+Demonstrating semaphores.
+Note that semaphores can be considered as a multiple version of mutex;
+while a mutex allows a singular exclusive access to code or resources,
 a semaphore grants access to a number of threads up to certain value.
 
 
@@ -1128,7 +1128,7 @@ for i in range(1, 5):
 ## Racket
 
 
-Racket has semaphores which can be used as mutexes in the usual way.  
+Racket has semaphores which can be used as mutexes in the usual way.
 With other language features this can be used to implement new features -- for example, here is how we would implement a protected-by-a-mutex function:
 
 ```racket
@@ -1158,8 +1158,8 @@ and it is now easy to turn this into a macro for definitions of such functions:
 ```
 
 
-But more than just linguistic features, Racket has many additional synchronization tools in its VM.  
-Some notable examples: 
+But more than just linguistic features, Racket has many additional synchronization tools in its VM.
+Some notable examples:
 OS semaphore for use with OS threads, green threads, lightweight OS threads, and heavyweight OS threads, synchronization channels, thread mailboxes, CML-style event handling, generic synchronizeable event objects, non-blocking IO, etc, etc.
 
 
@@ -1249,7 +1249,7 @@ thread::rwmutex destroy $rw
 
 ## zkl
 
-zkl has two mutex objects, Lock (mutex) and WriteLock a mutex that allows multiple readers but only one writer. 
+zkl has two mutex objects, Lock (mutex) and WriteLock a mutex that allows multiple readers but only one writer.
 The critical keyword fences code to ensure the lock is released when the code is done.
 
 ```zkl

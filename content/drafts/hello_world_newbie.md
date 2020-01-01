@@ -14,8 +14,8 @@ tags = []
 {{omit from|ABAP|There's no newbie friendly way to install ABAP. It's part of the enterprise NetWeaver Application Server.}}
 
 ;Task:
-Guide a new user of a language through the steps necessary 
-to install the programming language and selection of a [[Editor|text editor]] if needed, 
+Guide a new user of a language through the steps necessary
+to install the programming language and selection of a [[Editor|text editor]] if needed,
 to run the languages' example in the [[Hello world/Text]] task.
 * Assume the language-newbie is a programmer in another language.
 * Assume the language-newbie is competent in installing software for the platform.
@@ -45,7 +45,7 @@ While algol68g is available for Mac OS X, this example currently does not provid
 
 3. Use your favorite [[Editor|text editor]].
 
-3. Open the text editor and type the following: 
+3. Open the text editor and type the following:
 ```algol68
 main: (
   printf($"Goodbye, World!"l$)
@@ -65,8 +65,8 @@ The output will appear in the command prompt/terminal.
 ## ARM Assembly
 
 {{works with|as|Raspberry Pi}}
-{  
-   create file helloword.s   
+{
+   create file helloword.s
    compile it with : as -o helloword.o helloword.s
    link  it with   : ld -o helloword helloword.o -e main
    execute it      :  helloword
@@ -78,21 +78,21 @@ The output will appear in the command prompt/terminal.
 /* ARM assembly Raspberry PI  */
 /*  program helloword.s   */
 .data
-szMessage: .asciz "Hello world. \n"   
+szMessage: .asciz "Hello world. \n"
 .equ LGMESSAGE, . -  szMessage  @ compute length of message
 .text
-.global main 
-main:	
+.global main
+main:
 	mov r0, #1                  @ output std linux
     ldr r1, iAdrMessage         @ adresse of message
-    mov r2, #LGMESSAGE          @ sizeof(message) 
-    mov r7, #4                  @ select system call 'write' 
-    swi #0                      @ perform the system call 
- 
+    mov r2, #LGMESSAGE          @ sizeof(message)
+    mov r7, #4                  @ select system call 'write'
+    swi #0                      @ perform the system call
+
     mov r0, #0                  @ return code
 	mov r7, #1              @ request to exit program
-    swi 0 
-iAdrMessage: .int szMessage	
+    swi 0
+iAdrMessage: .int szMessage
 }
 
 ```
@@ -101,16 +101,16 @@ iAdrMessage: .int szMessage
 
 ## AutoHotkey
 
-The [http://ahkscript.org/docs/Tutorial.htm Tutorial and Overview], which is part of the [http://ahkscript.org/docs/AutoHotkey.htm AutoHotkey Documentation], 
-covers the basics of AutoHotkey. 
-The documentation is available online and is included as a .chm help file 
+The [http://ahkscript.org/docs/Tutorial.htm Tutorial and Overview], which is part of the [http://ahkscript.org/docs/AutoHotkey.htm AutoHotkey Documentation],
+covers the basics of AutoHotkey.
+The documentation is available online and is included as a .chm help file
 with installation. Installation and "Hello World" are summarized here.
 
 1) [http://ahkscript.org/download/ahk-install.exe Download] and install AutoHotkey.
 
 2) Download and install the [http://fincs.ahk4.net/scite4ahk/ SciTE4AutoHotkey] editor (recommended), or use your favorite [[Editor|texteditor]].
 
-3) Open the text editor and type the following: 
+3) Open the text editor and type the following:
 ```AutoHotkey
 MsgBox, Hello World!
 ```
@@ -126,10 +126,10 @@ MsgBox, Hello World!
 ## AWK
 
 
-###  AWK on Linux 
+###  AWK on Linux
 
 AWK is a standard tool in Unix / most Linux-distributions.
-So, it should be already installed. 
+So, it should be already installed.
 
 To run awk, either provide code on shell (using single quotes).
 
@@ -140,26 +140,26 @@ Or put code to file and load it from file.
  $ awk -f hello-world.awk
 
 
-###  AWK on Windows 
+###  AWK on Windows
 
 Select one of the [[:Category:AWK Implementations|awk-implementations]] to download.
 
-E.g. [http://gnuwin32.sourceforge.net/packages.html gnuwin32.sourceforge.net] provides gawk, mawk and nawk. 
+E.g. [http://gnuwin32.sourceforge.net/packages.html gnuwin32.sourceforge.net] provides gawk, mawk and nawk.
 
-The most current gawk is at [http://ftp.gnu.org/gnu/gawk gnu.org], but only as source. 
+The most current gawk is at [http://ftp.gnu.org/gnu/gawk gnu.org], but only as source.
 
 To get a ready-made executable, look at [http://code.google.com/p/gnu-on-windows/downloads/list code.google.com] - gawk v4.1.0 currently.
 
 Download, extract the executable file and "install" it.
 
-In most cases, installation can be done by just 
+In most cases, installation can be done by just
 moving that exe-file to a convincent place,
 e.g. a directory that is already in the PATH.
 
 Otherwise, the PATH can be changed in the Windows-Systemsettings,
 under environment-variables.
 
-Alternatively, keep the awk-program in the same directory 
+Alternatively, keep the awk-program in the same directory
 as the scripts you are going to write / run.
 
 Try to run it, from a commandline:
@@ -173,7 +173,7 @@ to display its version-number.
 To do a simple calculation, try a one-liner like this:
   awk "BEGIN{ print 17/4 }"
 
-Note the use of double-quotes, and curly-braces. 
+Note the use of double-quotes, and curly-braces.
 
 Using the windows-commandline, single-quotes cannot be used.
 
@@ -185,12 +185,12 @@ As a workaround, you can assign variables just before the script:
 So in most cases, running scripts from files is easier.
   awk -f hello.awk
 
-Where hello.awk contains 
+Where hello.awk contains
 
 ```awk
 BEGIN {
   print "Hello" 3-1 "U", sprintf("%c",33)
-} 
+}
 ```
 
 {{Out}}
@@ -339,8 +339,8 @@ Install <code>gcc</code>
 
 ### =All Distributions=
 
-After you have installed <code>gcc</code> using instructions above. 
-Create <code>helloworld.c</code>. 
+After you have installed <code>gcc</code> using instructions above.
+Create <code>helloworld.c</code>.
 This uses <code>HERE</code> document and <code>bash</code>, the standard shell.
  $ cat > helloworld.c <<HERE
  #include &lt;stdio.h&gt;
@@ -363,8 +363,8 @@ Run it
 
 Create text file <code>helloworld.cpp</code>
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 int main() {
     using namespace std;
     cout << "Hello, World!" << endl;
@@ -606,23 +606,23 @@ Hello world!
 ## EchoLisp
 
 
-###  Requirements and installation 
+###  Requirements and installation
 
 You need a computer running an up-to-date browser, such as FireFox, Chrome, Opera, ...
-No installation needed. To run EchoLisp, follow this link : [http://www.echolalie.org/echolisp EchoLisp]. 
+No installation needed. To run EchoLisp, follow this link : [http://www.echolalie.org/echolisp EchoLisp].
 
-###  Hello World 
+###  Hello World
 
 
 ```lisp
 
 ;; This is a comment
-;; Type in the following -uncommented- line in the input text area, and press [RETURN] 
+;; Type in the following -uncommented- line in the input text area, and press [RETURN]
 ;; or click onto the "Eval" button
-;; Auto-completion : You will notice that after "(di" , EchoLisp proposes "(display" : 
+;; Auto-completion : You will notice that after "(di" , EchoLisp proposes "(display" :
 ;; Press the [TAB] key to accept
 
-(display "Hello, World" "color:blue") 
+(display "Hello, World" "color:blue")
 
 ```
 
@@ -644,9 +644,9 @@ The first thing to know are the "apropos", "usage", and "help" functions. Exampl
 ;; "apropos" abbreviation is "ap"
 ;; 'special' forms (you will learn that later) are flagged with 👀
 ;; 1:2 is the number or arguments. min 1, max 2
-(ap list) →  #(👀 for*/list:2:n  👀 for/list:2:n  alist?:1  circular-list:1:n  list->stack:2 
- list->vector:1  list-index:2  list-ref:2  list-sort:2  list-tail:2  list:1:n  list?:1 
- maplist:2  set-plist!:2  stack->list:1  stream->list:1:2  string->list:1  sublist:3 
+(ap list) →  #(👀 for*/list:2:n  👀 for/list:2:n  alist?:1  circular-list:1:n  list->stack:2
+ list->vector:1  list-index:2  list-ref:2  list-sort:2  list-tail:2  list:1:n  list?:1
+ maplist:2  set-plist!:2  stack->list:1  stream->list:1:2  string->list:1  sublist:3
  symbol-plist:1  vector->list:1 )
 
 ;; Or you can press the "Help" button.
@@ -657,7 +657,7 @@ The first thing to know are the "apropos", "usage", and "help" functions. Exampl
 ```
 
 
-###  Editing 
+###  Editing
 
 Functions are provided to save data, functions definitions, in the browser local storage, without leaving the read-eval-print loop. However you can edit files, using any text file editor - UTF-8 compatible - and load/eval them with the "Load" button. TextWrangler is a good choice on Mac OS/X. It supports syntax hiliting for source lisp files. In any case, the EchoLisp team is ready to help you.
 
@@ -672,7 +672,7 @@ If it is the present day, Nishio Hirokazu's browser-based simulator allows you t
 ## Eiffel
 
 
-###  Example 
+###  Example
 
 # Download and install Eiffel GPL on your Windows computer.
 # Open Eiffel, creating a new Basic command line project (follow the wizard).
@@ -682,9 +682,9 @@ The resulting program will be a simple "Hello World!" program:
 
 ```eiffel
 
-class 
+class
    APPLICATION
-create 
+create
    make
 feature
    make
@@ -698,31 +698,31 @@ end
 
 Where the following notes apply:
 
-* 
+*
 ```eiffel>class APPLICATION ... end</lang
  defines the simplest form of an Eiffel "class".
-* 
+*
 ```eiffel>create make</lang
  defines a "creation procedure" (i.e. constructor) for the class <b>{APPLICATION}</b>.
-* 
+*
 ```eiffel>make do ... end
 ```
  is the implementation of the constructor specified with the <b
 `create'</b> keyword (above).
-* 
+*
 ```eiffel
 print ( ... )
 ```
- is a feature inherited from class <b>{ANY}</b>—a class from which all Eiffel classes inherit (e.g. like {APPLICATION}). In the example the 
+ is a feature inherited from class <b>{ANY}</b>—a class from which all Eiffel classes inherit (e.g. like {APPLICATION}). In the example the
 ```eiffel>inherit ANY</lang
  has been left out as it is implied by default.
 
 
-###  Supported Platforms 
+###  Supported Platforms
 
 Windows, Linux, Mac, and others.
 
-###  Supporting Notes 
+###  Supporting Notes
 
 See [[http://www.eiffel.org| Eiffel-org]] for more information.
 <p>An example of "Hello World!" is on the home page. You can try Eiffel by clicking the "Play with Eiffel" button on the "Hello World!" example on the home page.</p>
@@ -732,7 +732,7 @@ See [[http://www.eiffel.org| Eiffel-org]] for more information.
 ## Erlang
 
 
-###  Erlang on Linux 
+###  Erlang on Linux
 
 
 Here is a summary:
@@ -802,10 +802,10 @@ ok
 
 
 
-###  Linux 
+###  Linux
 
-* install gfortran 
-For Debian-based GNU Linux OS: 
+* install gfortran
+For Debian-based GNU Linux OS:
 
 ```txt
 
@@ -814,7 +814,7 @@ sudo apt-get install gfortran
 ```
 
 For RPM-based GNU Linux OS:
- 
+
 ```txt
 
 su -c "yum install gcc-gfortran"
@@ -856,7 +856,7 @@ end
 
 ```
 
-and finally hit Ctrl^D in terminal. 
+and finally hit Ctrl^D in terminal.
 * Compile hello.f90 source code into executable hello.x binary using gfortran compiler
 
 ```txt
@@ -879,25 +879,25 @@ gfortran hello.f90 -o hello.x
 
 
 
-###  Requirements 
+###  Requirements
 
 Macintosh OS X v10.4 or newer
 
 === Download FutureBasic (FB) ===
-FutureBasic is freeware and is commonly called simply "FB" by its developers. The lastest version of FutureBasic can be downloaded from: http://4toc.com/fb/index.htm. The FB site also contains installation instructions, example files, older versions, and other helpful information. 
+FutureBasic is freeware and is commonly called simply "FB" by its developers. The lastest version of FutureBasic can be downloaded from: http://4toc.com/fb/index.htm. The FB site also contains installation instructions, example files, older versions, and other helpful information.
 
 
-###  FB Support Group 
+###  FB Support Group
 
 An active list group of developers who are knowledgable, friendly and helpful to both seasoned and newcomer coders can be found at: http://freegroups.net/groups/futurebasic/. Answers to any of a host of questions about FB are answered quickly by this small, but dedicated group of developers.
 
 
-###  FB on Wikipedia 
+###  FB on Wikipedia
 
 The FB Wikipedia page describing FB's journey from one of earliest commercial Macintosh compilers to its current freeware status can be visited at: https://en.wikipedia.org/wiki/FutureBASIC. This page may not have the latest information about FB, so the authoritative source for the latest information is the FB web  site and list group listed above.
 
- 
-###  Your First Program 
+
+###  Your First Program
 
 When you have downloaded and installed FB, you will want to compile your first program, the traditional "Hello, World!"
 
@@ -925,36 +925,36 @@ Enjoy your first program!
 
 ## Go
 
-Currently supported platforms are FreeBSD, Linux, Mac OS X, and Windows.  
-From the landing page http://golang.org click the blue box "Download Go" 
-(under the big gopher drawing.)  
-This takes you to [http://golang.org/doc/install Getting Started], 
+Currently supported platforms are FreeBSD, Linux, Mac OS X, and Windows.
+From the landing page http://golang.org click the blue box "Download Go"
+(under the big gopher drawing.)
+This takes you to [http://golang.org/doc/install Getting Started],
 a fairly concise page that is very close to satisfying this task.
 
-The first section, Download, has a link to a downloads page 
-but also mentions two other options, building from source and using GCC.  
-I personally like building from source and have found it usually goes without a hitch.  GCC isn't just C anymore and includes a number of language front ends.  
-Go is one of them.  
-There are links there to separate pages of instructions for building 
+The first section, Download, has a link to a downloads page
+but also mentions two other options, building from source and using GCC.
+I personally like building from source and have found it usually goes without a hitch.  GCC isn't just C anymore and includes a number of language front ends.
+Go is one of them.
+There are links there to separate pages of instructions for building
 from source and using GCC.
 
-Continuing with instructions for the precompiled binaries though, there is a section "System Requirements" and then a section "Install the Go tools", which means tools including the Go compiler.  You need to follow some steps here.  
-Follow the instructions for your operating system.  (The steps are few, standard, 
-and easy.)  Pay attention to the paragraph "Installing to a custom location" 
-if you are installing on a system where you do not have root or sudo access.  
-Setting GOROOT as described is essential in this case.  
-If you are installing to the standard location, you should not set 
-this environment variable.  
+Continuing with instructions for the precompiled binaries though, there is a section "System Requirements" and then a section "Install the Go tools", which means tools including the Go compiler.  You need to follow some steps here.
+Follow the instructions for your operating system.  (The steps are few, standard,
+and easy.)  Pay attention to the paragraph "Installing to a custom location"
+if you are installing on a system where you do not have root or sudo access.
+Setting GOROOT as described is essential in this case.
+If you are installing to the standard location, you should not set
+this environment variable.
 (Setting it when it doesn't need to be set can lead to problems.  Just don't.)
 
-You're ready to test the installation with Hello World!  
-The RC Task mentions [[Editor|texteditor]]s.  
-You will want an editor that can edit Unicode UTF-8.  
-Go source is specified to be UTF-8 and before long you will want an editor 
-that does this.  
-This task is all ASCII however, and any editor that can save plain ASCII text 
-will do for the moment.  
-Actually you probably don't even need an editor.  
+You're ready to test the installation with Hello World!
+The RC Task mentions [[Editor|texteditor]]s.
+You will want an editor that can edit Unicode UTF-8.
+Go source is specified to be UTF-8 and before long you will want an editor
+that does this.
+This task is all ASCII however, and any editor that can save plain ASCII text
+will do for the moment.
+Actually you probably don't even need an editor.
 From a Linux command line for example, you can type
 
 ```txt
@@ -963,7 +963,7 @@ $ cat >hello.go
 
 ```
 
-Cut and paste the code from [[Hello_world/Text#Go]], press ^D, 
+Cut and paste the code from [[Hello_world/Text#Go]], press ^D,
 and you should have the program.  To run it type
 
 ```txt
@@ -972,8 +972,8 @@ $ go run hello.go
 
 ```
 
-This compiles to a temporary executable file and runs it, 
-displaying output right there in the same window.  
+This compiles to a temporary executable file and runs it,
+displaying output right there in the same window.
 If you want a copy to give to your friends,
 
 ```txt
@@ -984,9 +984,9 @@ $ go build hello.go
 
 will create an executable called hello in the current directory.
 
-This completes the RC task, but if at any point in the future 
-you will use Go for more than Hello World, you really really 
-should continue through the next section "Set up your work environment."  
+This completes the RC task, but if at any point in the future
+you will use Go for more than Hello World, you really really
+should continue through the next section "Set up your work environment."
 This covers setting GOPATH, which is essential to standard workflow with Go.
 
 
@@ -1051,7 +1051,7 @@ Hello, World!
 
 ===Non-Linux operating systems===
 
-If you are using another operating system (e. g. Mac OS X), 
+If you are using another operating system (e. g. Mac OS X),
 the easiest way to get Haskell is to install the [http://www.haskell.org/platform/ Haskell Platform].
 
 
@@ -1213,7 +1213,7 @@ ending with the .jq suffix.
 
 ### Editors
 
-Any text editor can be used for JSON and jq programs.  
+Any text editor can be used for JSON and jq programs.
 
 An editor such as Emacs or Aquamacs is particularly helpful as these support
 shell windows.  In addition, most distributions come with "js-mode" which can be
@@ -1239,7 +1239,7 @@ def binary_digits:
 
 
 ## Julia
- 
+
 
 ```txt
 
@@ -1311,10 +1311,10 @@ Hello, World!
 
 ## Locomotive Basic
 
-Either use a browser-based CPC emulator (http://www.cpcbox.com/) or download 
-a binary for your platform. 
-A list of emulators is available at http://cpcwiki.eu/index.php/Emulators. 
-JavaCPC (http://sourceforge.net/projects/javacpc/) or WinAPE (http://www.winape.net/) are particularly recommended. 
+Either use a browser-based CPC emulator (http://www.cpcbox.com/) or download
+a binary for your platform.
+A list of emulators is available at http://cpcwiki.eu/index.php/Emulators.
+JavaCPC (http://sourceforge.net/projects/javacpc/) or WinAPE (http://www.winape.net/) are particularly recommended.
 An advantage of native emulators is that they tend to have copy-and-paste functionality, so you can edit programs in external [[Editor|texteditor]]s.
 
 In the emulator, type
@@ -1329,7 +1329,7 @@ run
 
 ## Lua
 
-Without installing anything, lua-programs can be run online at the [http://www.lua.org/demo.html live demo]. 
+Without installing anything, lua-programs can be run online at the [http://www.lua.org/demo.html live demo].
 
 It includes some demo-programs, such as
 
@@ -1480,9 +1480,9 @@ print "Hello World!"
 ## Monte
 
 
-Follow the directions at http://monte.readthedocs.org/en/latest/intro.html#where-do-i-start to set up your Monte environment. 
+Follow the directions at http://monte.readthedocs.org/en/latest/intro.html#where-do-i-start to set up your Monte environment.
 
-Then 
+Then
 
 $ bin/monte monte/src/examples/hello.mt
 
@@ -1504,11 +1504,11 @@ sayHello()
 
 Download MontiLang binaries for windows or linux from http://montilang.ml, or from the releases page of https://github.com/lduck11007/MontiLang. Alternatively, you can easily build from source for easy customization with the instructions on Github.
 
-To run MontiLang, open a shell by typing 
+To run MontiLang, open a shell by typing
 ```MontiLang>monti</lang
- in the terminal, or run a program by specifying 
+ in the terminal, or run a program by specifying
 ```MontiLang>monti file.mt</lang
- For documentation on the language, see file 'Documentation.mt' in /examples on github. 
+ For documentation on the language, see file 'Documentation.mt' in /examples on github.
 
 Here is a simple Hello World program in MontiLang
 
@@ -1527,12 +1527,12 @@ Here is a simple Hello World program in MontiLang
 ### Nemerle on Windows
 
 The installer available on Nemerle.org includes Visual Studio integration.
-If you use Visual Studio, this gives syntax highlighting, name completion, etc.  
+If you use Visual Studio, this gives syntax highlighting, name completion, etc.
 Otherwise, you can use your favorite [[Editor|texteditor]] or [[IDE]].
 
 In your text editor, type (or copy/paste):
   using System.Console;
- 
+
   class Hello {
       static Main() : void {
           WriteLine("Goodbye, world.");
@@ -1542,10 +1542,10 @@ In your text editor, type (or copy/paste):
 or, more concisely:
   System.Console.WriteLine("Goodbye, world.")
 
-Save this file as "hello.n" (or whatever you like, 
+Save this file as "hello.n" (or whatever you like,
 but the example below assumes this name)
 
-Now, either run it from within your IDE, 
+Now, either run it from within your IDE,
 or open a console window and type:
     c:\>ncc hello.n
 (this assumes ncc.exe is in your path, where it should be if you used the installer)
@@ -1602,19 +1602,19 @@ Download: On Linux, Ocaml should be available in your package manager.
 
 Create file: 'hello.ml'
 
-Type in file: 
+Type in file:
 ```ocaml
 print_string "Hello world!\n";;
 ```
 
 
-Compile with: 
+Compile with:
 ```Shell
 ocamlc -o hello hello.ml
 ```
 
 
-Run as: 
+Run as:
 ```Shell>./hello</lang
 
 
@@ -1631,7 +1631,7 @@ Set OFORTH_PATH environnement variable value to this directory. You can also add
 
 Create file "hello.of"
 
-Type in file: 
+Type in file:
 
 
 ```Oforth
@@ -1639,11 +1639,11 @@ Type in file:
 ```
 
 
-Run as: 
+Run as:
 ```Shell>oforth hello.of</lang
 
 
-Or you can use oforth command line directly : 
+Or you can use oforth command line directly :
 
 
 ```Shell
@@ -1659,13 +1659,13 @@ Prerequisites: Perl
 
 Download: https://bitbucket.org/parelang/pare/downloads/pare
 
-Create file 'hello.l': 
+Create file 'hello.l':
 ```Pare
 (print "hello world")
 ```
 
- 
-Run: 
+
+Run:
 ```Shell>perl pare hello.l</lang
 
 
@@ -1693,7 +1693,7 @@ or
 
 ### PARI/GP on Linux
 
-Install PARI/GP with an appropriate package manager: [http://rpmfind.net/linux/rpm2html/search.php?query=pari-gp RPM], [http://joysofprogramming.com/install-pari-gp-ubuntu/ apt], etc. 
+Install PARI/GP with an appropriate package manager: [http://rpmfind.net/linux/rpm2html/search.php?query=pari-gp RPM], [http://joysofprogramming.com/install-pari-gp-ubuntu/ apt], etc.
 Alternately, [http://math.crg4.com/software.html#pari install it from source].
 
 
@@ -1705,21 +1705,21 @@ Open a [[Editor|texteditor]] of your choice and type
 print("Hello, world!")
 ```
 
-Save the file in your PARI working directory and start the program, either in a console (command: <code>gp</code>) or in the GUI in Windows (by double-clicking the shortcut). Type <code>\r filename</code> to read in the program. (If you saved the file with a .gp extension, you can leave it off here.)  
+Save the file in your PARI working directory and start the program, either in a console (command: <code>gp</code>) or in the GUI in Windows (by double-clicking the shortcut). Type <code>\r filename</code> to read in the program. (If you saved the file with a .gp extension, you can leave it off here.)
 The program executes, displaying "Hello, world!".
 
 
 ## Perl
 
-See [http://www.perl.org/get.html Download Perl Distributions] 
+See [http://www.perl.org/get.html Download Perl Distributions]
 
 ```perl
 =head1 Obtaining perl
 
-On the majority of UNIX and UNIX-like operating systems 
-(Linux, Solaris, AIX, HPUX, et cetera), perl will already be installed. 
-Mac OS X also ships with perl. 
-Note that "Perl" refers to the language 
+On the majority of UNIX and UNIX-like operating systems
+(Linux, Solaris, AIX, HPUX, et cetera), perl will already be installed.
+Mac OS X also ships with perl.
+Note that "Perl" refers to the language
 while "perl" refers to the interpreter used to run Perl programs.
 
 Windows does not ship with perl. Instead, you will have to install one of
@@ -1736,7 +1736,7 @@ modules from CPAN, without the need for binary packages.
 =item DWIM Perl for Windows
 
 L<DWIM Perl for Windows|http://dwimperl.com/windows.html>: A 100% Open Source
-Perl for Windows, based on Strawberry Perl. 
+Perl for Windows, based on Strawberry Perl.
 It aims to include as many useful CPAN modules as possible.
 
 =item ActiveState Perl
@@ -1750,14 +1750,14 @@ L<http://www.perl.org/get.html>.
 
 Once perl is installed, the task of printing "Hello, World!" is quite simple.
 From the command line, first check if your environment's C<PATH> variable
-knows where to find perl. 
-On most systems, this can be achieved by entering C<which perl>; 
-if it spits out something like F</usr/bin/perl>, you're good to go! 
+knows where to find perl.
+On most systems, this can be achieved by entering C<which perl>;
+if it spits out something like F</usr/bin/perl>, you're good to go!
 If it tells you
 
     which: no perl in (...)
 
-it means you need to add perl to your environment's C<PATH> variable. 
+it means you need to add perl to your environment's C<PATH> variable.
 This is done on most systems by entering
 
     export PATH=$PATH:[...]
@@ -1765,17 +1765,17 @@ This is done on most systems by entering
 where [...] is the full path to your perl installation (usually /usr/bin/perl).
 
 If you do not have the C<which> command, you can probably just type C<perl>
-to see if it fires up the perl interpreter. 
-If it does, press Ctrl+D to exit it and proceed. 
+to see if it fires up the perl interpreter.
+If it does, press Ctrl+D to exit it and proceed.
 Otherwise, perform the steps above to add perl to your PATH variable.
 
-Once perl is installed, one-liners can be executed from the command line 
+Once perl is installed, one-liners can be executed from the command line
 by invoking perl with the C<-e> switch.
     $ perl -e 'print "Hello, World!\n";'
 To create a script file that's more permanent, it can be put in a text file.
-The name can be anything, but F<.pl> is encouraged. 
-The #!/usr/bin/perl at the beginning is called the shebang line; 
-if the operating system supports it, it tells where to find the perl interpreter. 
+The name can be anything, but F<.pl> is encouraged.
+The #!/usr/bin/perl at the beginning is called the shebang line;
+if the operating system supports it, it tells where to find the perl interpreter.
 If the script is run with C<perl>, this line will be ignored--
 this is for invoking the file as an executable.
 
@@ -1805,14 +1805,14 @@ If you do run into problems installing Rakudo, (or any perl 6 compiler, or have 
 Once you have your compiler installed, open a terminal window and type:
 
   perl6 -e'say "Hello World!"'
-  
-or, under Windows cmd.exe, 
+
+or, under Windows cmd.exe,
 
   perl6 -e"say 'Hello World!'"
 
 and press enter.
 
-Alternately, type 
+Alternately, type
 
   echo say 'Hello World!' > hw.p6
 
@@ -1831,7 +1831,7 @@ Installing and running Phix is as just about as straightforward as it could poss
 
 Download Phix from http://phix.x10.mx/download.php (16MB)
 
-Full documentation is available at http://phix.x10.mx/docs/html/phix.htm as well as being included in the 
+Full documentation is available at http://phix.x10.mx/docs/html/phix.htm as well as being included in the
 download as a chm file, along with all the files that was originally generated from.
 
 '''Windows'''
@@ -1847,7 +1847,7 @@ An editor/ide is provided, simply run "pw edita". The F1 key provides context-se
 
 (A cross platform editor is currently in progress, try "pw edix" to run that.)
 
-Enter the following: 
+Enter the following:
 ```Phix
 puts(1,"Hello world!")
 ```
@@ -1866,10 +1866,10 @@ Extract from the plain zip to $HOME\phix, and open a terminal there.
 Install a suitable program to view docs/phix/phix.chm, or run "./phix docs/phix/makephix" to populate
 docs/phix/html with the plain html files.
 
-An (in-progress) editor/ide is provided, simply run "./phix edix" from that directory, though further 
+An (in-progress) editor/ide is provided, simply run "./phix edix" from that directory, though further
 steps may be required to install IUP, see demo/pGUI/lnx/installation.txt, otherwise any editor will do.
 
-Enter the following: 
+Enter the following:
 ```Phix
 puts(1,"Hello world!")
 ```
@@ -1898,9 +1898,9 @@ echo 'Hello, world!';
 ```
 
 
-If Apache is running on your local computer and you saved the file in htdocs, open a 
+If Apache is running on your local computer and you saved the file in htdocs, open a
 web browser and go to http://localhost/hello.php.  You should see the phrase in a basic
-font displayed in the window.  
+font displayed in the window.
 
 From the command line, simply type
 
@@ -1955,7 +1955,7 @@ $ ./pil +
 ===Non-POSIX systems===
 On non-POSIX systems only limited implementations of PicoLisp are available.
 
-If Java 1.6 is installed, get and unpack either the tarball given in 
+If Java 1.6 is installed, get and unpack either the tarball given in
 "Other POSIX systems", or just "software-lab.de/ersatz.tgz", and run
 
 ```txt
@@ -2020,7 +2020,7 @@ To make the "HelloWorld" code in a script file, copypaste the code (select one) 
 To execute the script, open the PowerShell console, [[wp:Cd_(command)|go to the directory of the script file]], then type <code>./<filename></code>.
 
 
-'''Using the Windows PowerShell ISE:''' 
+'''Using the Windows PowerShell ISE:'''
 
 It is  '''recommended''' to use the PowerShell ISE if you are new to PowerShell. Copypaste the code (select one) above, then run the code by clicking the play button or by pressing F5.
 
@@ -2032,7 +2032,7 @@ To learn the basic syntaxes and details of PowerShell, Open the PowerShell ISE, 
 
 ## Python
 
-Pythons official home site is [http://www.python.org/ http://www.python.org/]. 
+Pythons official home site is [http://www.python.org/ http://www.python.org/].
 It will point you to everything Python.
 
 
@@ -2040,31 +2040,31 @@ It will point you to everything Python.
 
 (Tested on Windows 7 but should be similar for XP & Vista ).
 
-You need to download and install Python. 
-Use the latest Windows installer for Windows 
-(64bit if you have a 64bit Windows installation). 
+You need to download and install Python.
+Use the latest Windows installer for Windows
+(64bit if you have a 64bit Windows installation).
 It is a standard Windows click-through installer with an Open-source compatable license.
 
 Once installed, use the new start-menu entry to open the "Idle (Python GUI)" application, which opens a GUI window with a command line and cursor at the bottom. This window displays program output and is a [[wp:REPL|REPL]] for Python.
 
-Use the File->New window item of the GUI to bring up new blank window 
-and copy the text from [[Hello world/Text#Python]] into it, 
-i.e. 
+Use the File->New window item of the GUI to bring up new blank window
+and copy the text from [[Hello world/Text#Python]] into it,
+i.e.
 ```python
 print "Goodbye, World!"
 ```
 
-use the File menu to save the file with a name hello.py, 
-(remember the .py extension). 
-Use the "<code>Run -> Run module</code>" menu item 
-from the hello.py Idle editor window to pop the Idle Python shell window to the front whilst executing the program. 
+use the File menu to save the file with a name hello.py,
+(remember the .py extension).
+Use the "<code>Run -> Run module</code>" menu item
+from the hello.py Idle editor window to pop the Idle Python shell window to the front whilst executing the program.
 The output of the program appears in this shell window as the line:
 
 ```txt
 Goodbye, World!
 ```
 
-(Followed by a prompt that is part of the REPL of the IDE 
+(Followed by a prompt that is part of the REPL of the IDE
 rather than programmed by the hello.py file).
 
 
@@ -2082,12 +2082,12 @@ You can also execute scripts by including a shebang and using the chmod command 
 
 ### Python on GNU/Linux
 
-On most Linux distribution, just install the package named <code>python</code> 
+On most Linux distribution, just install the package named <code>python</code>
 with the package manager.
 
-If you are using a mainstream Linux distribution, installing Idle 
-along with Python gives you a GUI and two ways of working with your code. 
-The easiest is through Idle, see the Windows instructions above for details. 
+If you are using a mainstream Linux distribution, installing Idle
+along with Python gives you a GUI and two ways of working with your code.
+The easiest is through Idle, see the Windows instructions above for details.
 The other is outlined below:
 
 A script can be executed with the command:
@@ -2150,9 +2150,9 @@ Create a plain text file and enter the following text:
 
 class HelloWorld
 	**Prints "Goodbye, World!"**
-	
+
 	on start
-		
+
 		print "Goodbye, World!"
 
 ```
@@ -2189,17 +2189,17 @@ Install Racket from [http://racket-lang.org/ the Racket home page].
 
 On Windows and OS X when you have a 64 bit platform, you can install either the 64 bit Racket or the 32 bit one, the installer page will not try to detect this, since both options can be used.  The choice will usually not make much difference; a quick summary is that with the 64 bit version you can use much more space (in 32 bit mode there's a 4gb limit), but things are going to run a bit slower due to Racket shuffling more memory around.  (This is not Racket-specific, of course.)
 
-On Linux, you can often find a Racket package for your distribution flavor.  
-From the Racket web page you can find a few installers built on different Linux distros, and one of them might fit you even if you're on a different one.  
-The Racket installers come in shell-script form, which you can just run in a terminal (<tt>sh installer.sh</tt> would do it).  The first question that the installer will ask you is whether you want a unix-style distribution, with files spread across standard directories -- the recommendation is to not do this, and instead install Racket in a single directory.  
+On Linux, you can often find a Racket package for your distribution flavor.
+From the Racket web page you can find a few installers built on different Linux distros, and one of them might fit you even if you're on a different one.
+The Racket installers come in shell-script form, which you can just run in a terminal (<tt>sh installer.sh</tt> would do it).  The first question that the installer will ask you is whether you want a unix-style distribution, with files spread across standard directories -- the recommendation is to not do this, and instead install Racket in a single directory.
 This choice makes it much easier to try Racket quickly -- you can just remove the directory when you're done, you can easily have multiple versions installed, and you don't need write permission to system directories.
 
 
 ### Developing Racket Code
 
-Racket comes with DrRacket, an IDE that is specifically designed to make Racket work easy (and implemented in Racket).  
-However, you can use your own [[Editor|text editor]] if you're used to one.  
-See the [http://docs.racket-lang.org/guide/other-editors.html Racket Guide] section 
+Racket comes with DrRacket, an IDE that is specifically designed to make Racket work easy (and implemented in Racket).
+However, you can use your own [[Editor|text editor]] if you're used to one.
+See the [http://docs.racket-lang.org/guide/other-editors.html Racket Guide] section
 on working with different editors, and running Racket from the command line.
 
 As with Common Lisp, EMACS is a good editor to use for Racket code. Its inferior-lisp mode allows you to evaluate Racket expressions from within EMACS, however it doesn't provide debugging, symbol lookup, or other features that are available when editing Common Lisp code with EMACS.
@@ -2249,7 +2249,7 @@ requirements, but most involve just copying (usually) two files:
 * the REXX run-time library (the built-in functions and REXX statement executors).
 
 Note that some operating systems have REXX "built-in", so there
-isn't any installation necessary.  
+isn't any installation necessary.
 
 The "MVS" and "VM/CMS" IBM mainframe
 operating systems have REXX installed (indeed, built-into the operating
@@ -2260,21 +2260,21 @@ Note that MVS and VM/CMS are more-or-less generic terms in the IBM world.
 
 ### program creation
 
-<><>Next, create a REXX program. 
+<><>Next, create a REXX program.
 Most users use their favorite [[Editor|texteditor]] (for "plain text").
 
-Note that some operating systems require the first statement 
-to be a REXX-type comment, 
+Note that some operating systems require the first statement
+to be a REXX-type comment,
 
-another requires the first word in the comment to be the word REXX 
+another requires the first word in the comment to be the word REXX
 (in any case, upper/lower/mixed).
 
 Most REXX interpreters enforce the first of these two rules.
 
-The reason for this is that some operating systems have more than 
-one scripting language, 
+The reason for this is that some operating systems have more than
+one scripting language,
 
-and this [[wp:Shebang (Unix)|first record]] is used 
+and this [[wp:Shebang (Unix)|first record]] is used
 to invoke the appropriate interpreter.
 
 So, a <tt> Hello world! </tt> REXX program (two lines) could look like:
@@ -2284,13 +2284,13 @@ So, a <tt> Hello world! </tt> REXX program (two lines) could look like:
 say "Hello world!"
 ```
 
-The above program could be made into one statement 
+The above program could be made into one statement
 (since REXX comments are treated like whitespace).
 
 
 ### output
 
-The output (for the SAY instruction) will be shown 
+The output (for the SAY instruction) will be shown
 on the terminal screen (or window).
 
 ```txt
@@ -2306,7 +2306,7 @@ Hello world!
 
 To execute the program depends on the operating system.
 Just placing the program in a special library (or folder) and invoking
-the name of the REXX program will execute it. 
+the name of the REXX program will execute it.
 
 You could also invoke the name
 of the REXX interpreter followed by the name of the REXX program.
@@ -2318,12 +2318,12 @@ that is accessed (normally the 'A' minidisk is used).
 For Windows (in a DOS window), place the file "HELLO.REX" in the
 current directory (folder) or place the file in the folder that is
 specified for the REXX interpreter to use when the program can't be found
-in the current directory (CD).  
-Windows class of NT operating systems (NT, XP, and later) can be set up 
-so that whenever a program (file) that has an extension of (say) REX, 
-it will be executed (interpreted) by the REXX interpreter (EXE program).  
-It's possible to have a REXX program without a file extension (filetype), 
-but that would make it not obvious to what the file's purpose is 
+in the current directory (CD).
+Windows class of NT operating systems (NT, XP, and later) can be set up
+so that whenever a program (file) that has an extension of (say) REX,
+it will be executed (interpreted) by the REXX interpreter (EXE program).
+It's possible to have a REXX program without a file extension (filetype),
+but that would make it not obvious to what the file's purpose is
 and also it'll make it harder to invoke easily.
 
 
@@ -2408,7 +2408,7 @@ For windows you can download Ruby from [http://rubyforge.org/frs/?group_id=167] 
 
 2. Use your favorite [[Editor|text editor]].
 
-3. Open the text editor and type the following: 
+3. Open the text editor and type the following:
 ```Ruby
 
   puts "Hello World!!"
@@ -2514,7 +2514,7 @@ and then execute the installer
 ```
 
 It is highly probable that you need to install extra libraries in your OS in order to install Db2.
-Once you have installed Db2, you go to the instance directory 
+Once you have installed Db2, you go to the instance directory
 
 ```txt
 cd /opt/ibm/db2/V11.1/instance
@@ -2526,7 +2526,7 @@ And you create the instance associated with an existant user
 ./db2icrt -u db2inst1 db2inst
 ```
 
-Now, you have an instance, you change to that user 
+Now, you have an instance, you change to that user
 
 ```txt
 su - db2inst1
@@ -2538,7 +2538,7 @@ And create a database
 db2 create database test
 ```
 
-When the process has finished, you can connect to it 
+When the process has finished, you can connect to it
 
 ```txt
 db2 connect to test
@@ -2560,16 +2560,16 @@ db2 "select 'Hello World!' from sysibm.sysdummy1"
 
 ### =Installation=
 
-Currently supported platforms are Linux, Mac OS X, and Windows.  
-From the landing page http://pharo-project.org click the "Download" button 
-in the upper right hand corner. 
-You should see a new page with options for downloading a ZIP file 
-for your operating system. Unzip the downloaded file and open Pharo. 
+Currently supported platforms are Linux, Mac OS X, and Windows.
+From the landing page http://pharo-project.org click the "Download" button
+in the upper right hand corner.
+You should see a new page with options for downloading a ZIP file
+for your operating system. Unzip the downloaded file and open Pharo.
 You may see some windows open. You can read through them and then close them.
 
-Pharo is a live coding environment. You can inspect the entire system at any time using the tools provided. One such tool is called a Workspace. To open a Workspace, CTRL+click anywhere in the background of Pharo and select "Workspace" from the pop-up menu. A window titled "Workspace" will appear and that window should be empty. 
-To log output, you use the Transcript. You can open the Transcript by executing CTRL+click, then selecting Tools > Transcript from the pop-up menu. 
-Because Pharo is a live programming environment, you can also 
+Pharo is a live coding environment. You can inspect the entire system at any time using the tools provided. One such tool is called a Workspace. To open a Workspace, CTRL+click anywhere in the background of Pharo and select "Workspace" from the pop-up menu. A window titled "Workspace" will appear and that window should be empty.
+To log output, you use the Transcript. You can open the Transcript by executing CTRL+click, then selecting Tools > Transcript from the pop-up menu.
+Because Pharo is a live programming environment, you can also
 open the Transcript programmatically, which we will do in the next section.
 
 
@@ -2585,13 +2585,13 @@ Transcript show: 'Hello world'.
 ```
 
 
-This code will, when executed, open a new Transcript window 
+This code will, when executed, open a new Transcript window
 and then output "Hello world" to the Transcript.
 
 
 ### =Execution=
 
-To execute the code in the Workspace, select both lines, then CTRL+click in the Workspace and select "Do it" from the pop-up menu. 
+To execute the code in the Workspace, select both lines, then CTRL+click in the Workspace and select "Do it" from the pop-up menu.
 A new Transcript window should open and you should see "Hello world" in the Transcript.
 
 
@@ -2599,13 +2599,13 @@ A new Transcript window should open and you should see "Hello world" in the Tran
 
 
 
-###  Installation 
+###  Installation
 
 
 smart BASIC is an Apple iOS application for iPhones and iPads. It must be installed from the [https://itunes.apple.com/us/app/smart-basic-programming-language/id541447413?mt=8 Apple App Store].
 
 
-###  Programming 
+###  Programming
 
 
 <b>Code Editor</b>
@@ -2615,7 +2615,7 @@ The textual code editor is built into the application. To write your own program
 <li> Press the smart BASIC icon to run the program. A file list will be displayed.</li>
 <li> In the upper left corner, press the "+" symbol to create a new file. A New File name dialog box will appear.</li>
 <li> Enter a filename and press 'OK'. Filenames are automatically saved with the extension ".txt" The editor will then display a blank page for code entry.</li>
-<li> Your code is automatically saved when you run or exit the editor.</li> 
+<li> Your code is automatically saved when you run or exit the editor.</li>
 </ol>
 
 <b>Output</b>
@@ -2627,7 +2627,7 @@ Standard output is displayed upon running the application. To run your code, pre
 Optionally, an amazing feature of Smart BASIC is the ability to write your code in Apple's free Xcode IDE and compile the code to run in a simulator on your Mac computer or on your own iOS devices. The procedure for this is beyond the scope of this entry but details and code can be found in the Forum section titled "BASIC SDK for Xcode". It might sound complicated, but it's actually very easy and only takes a few simple steps to setup. You can download detailed, step-by-step instructions [https://dl.dropboxusercontent.com/u/24473770/Simple%20Procedure%20for%20Adding%20Smart%20BASIC%20to%20Xcode.pdf here].
 
 
-###  Documentation 
+###  Documentation
 
 
 smart BASIC has very detailed documentation installed within the application. There is also an excellent (free) PDF manual that may be downloaded directly from [https://www.dropbox.com/sh/zpsvd55g1iyjldj/AABN92ibmwUe8LgM0GCyu8M4a/Smart%20Basic%20Manual%205-7.pdf?dl=0 here] that includes current information from the smart BASIC [http://kibernetik.pro/forum/viewforum.php?f=2 Forum] (When registering at the Support Forum, the anti-spambot password is: "iOS").
@@ -2637,19 +2637,19 @@ smart BASIC has very detailed documentation installed within the application. Th
 
 
 
-###  Installation 
+###  Installation
 
 If you haven't installed Xcode already, then please go to the App Store for Mac and install the Xcode program. This will allow for Swift development on both OSX and IOS.
 
 
-###  Use the playground 
+###  Use the playground
 
 For most code examples, as from this site, you are able to enter them directly in a playground. That is start up Xcode, and either choose the playground from the default startup menu, or select ''File > New > Playground''.
 
-Within this window you are able to write code on the left hand side of the window, and the output is shown on the right hand side. If you have errors in your code, this might prevent the output, but in this case the window displays error icons and some explanations.  
+Within this window you are able to write code on the left hand side of the window, and the output is shown on the right hand side. If you have errors in your code, this might prevent the output, but in this case the window displays error icons and some explanations.
 
 
-###  Swift Tutorial and Example Playground 
+###  Swift Tutorial and Example Playground
 
 Downloading [https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.playground.zip GuidedTour.playground] from the book "The Swift Programming Language" available for free from [https://itunes.apple.com/book/swift-programming-language/id881256329 Apple book store], can be opened and this has a lot of examples of the basic structures and how to do different stuff in Swift.
 
@@ -2659,18 +2659,18 @@ Downloading [https://developer.apple.com/library/ios/documentation/Swift/Concept
 
 ### Installation
 
-Many operating systems come with a distribution of Tcl, though it is often 
-of an old version (Tcl 8.4 or occasionally before). 
-Some also provide Tcl 8.5; it is not normally a problem to have both 
-on your system at once, provided software is not coded to use a 
-version-less executable name. 
+Many operating systems come with a distribution of Tcl, though it is often
+of an old version (Tcl 8.4 or occasionally before).
+Some also provide Tcl 8.5; it is not normally a problem to have both
+on your system at once, provided software is not coded to use a
+version-less executable name.
 As of the time of writing, nothing comes with Tcl 8.6.
 
 
 ### =Installing Tcl 8.5 on Linux=
 
-Your distribution will probably include a package for 8.5 in its distribution, 
-often named something like “<tt>tcl8.5</tt>”. 
+Your distribution will probably include a package for 8.5 in its distribution,
+often named something like “<tt>tcl8.5</tt>”.
 Many of the tasks here on Rosetta Code also require [[:Category:Tcllib|Tcllib]], a collection of scripted Tcl packages; some distributions provide this as well.
 
 
@@ -2692,8 +2692,8 @@ Going to a command prompt and typing:
 tclsh8.5
 ```
 
-(or <code>tclsh85</code> on Windows) will start an interactive Tcl shell. 
-At the prompt, you can just type in Tcl commands and have them executed immediately. 
+(or <code>tclsh85</code> on Windows) will start an interactive Tcl shell.
+At the prompt, you can just type in Tcl commands and have them executed immediately.
 For example, if you type in this little program:
 
 ```tcl
@@ -2708,22 +2708,22 @@ Hello World
 
 before another prompt symbol. Congratulations! You've just run your first Tcl code.
 
-If you're using ActiveTcl, you can also try typing these examples 
-into the Tkcon prompt. 
+If you're using ActiveTcl, you can also try typing these examples
+into the Tkcon prompt.
 Tkcon's very slightly different, but for most Tcl programs it works just the same.
 
-When running Tcl 8.6, change the <tt>tclsh8.5</tt>/<tt>tclsh85</tt> to be <tt>tclsh8.6</tt>/<tt>tclsh86</tt>. 
-If you want the Tk package as well because you're working on writing a GUI, 
-it is often easier to use <tt>wish</tt> instead of <tt>tclsh</tt> 
-(with appropriate version number suffix), though it's still the same language. 
+When running Tcl 8.6, change the <tt>tclsh8.5</tt>/<tt>tclsh85</tt> to be <tt>tclsh8.6</tt>/<tt>tclsh86</tt>.
+If you want the Tk package as well because you're working on writing a GUI,
+it is often easier to use <tt>wish</tt> instead of <tt>tclsh</tt>
+(with appropriate version number suffix), though it's still the same language.
 It just has some extra commands.
 
 
 ### Running your first Tcl program
 
-Now save that same command in a text file called <code>hello.tcl</code>. 
-Any simple [[Editor|texteditor]] will do (but not a word processor!); 
-your author often uses [[Emacs]] for this, and it comes with automatic 
+Now save that same command in a text file called <code>hello.tcl</code>.
+Any simple [[Editor|texteditor]] will do (but not a word processor!);
+your author often uses [[Emacs]] for this, and it comes with automatic
 syntax highlighting for Tcl code.
 
 To run that saved code, type one of these:
@@ -2734,15 +2734,15 @@ The code in the file will be executed (printing the message to the screen) and t
 
 ### Going Further
 
-If you're writing a larger program, you might want to use an IDE. 
-The main two IDEs for Tcl are ActiveState's Komodo (commercial) 
+If you're writing a larger program, you might want to use an IDE.
+The main two IDEs for Tcl are ActiveState's Komodo (commercial)
 and Eclipse with the appropriate DLTK module (free to use).
 
-For a range of interesting Tcl programs and techniques 
-beyond what is here on Rosetta Code, 
+For a range of interesting Tcl programs and techniques
+beyond what is here on Rosetta Code,
 check out [http://wiki.tcl.tk/ The Tcler's Wiki].
 
-Documentation for many versions of Tcl is [http://www.tcl.tk/man/ also online], 
+Documentation for many versions of Tcl is [http://www.tcl.tk/man/ also online],
 which can be a handy supplement to your system docs.
 
 =={{header|TI-83 Hex Assembly}}==
@@ -2754,12 +2754,12 @@ which can be a handy supplement to your system docs.
 * Now you need to enter the actual program code: We want to call the PutS system call (also known as B_CALL) with its argument "HL" being a pointer to the string "Hello, World!", then we want to exit. Note that there should be no spaces in the program at all. Newlines are allowed, but only after an even number of hex digits per line (0, 2, 4, ... are OK, but not 1, 3, 5, ...). There is no way to write comments in the program.
 * First, we'll load the memory location of our string to HL, so write "21XXXX". We'll replace "XXXX" with the actual memory location later because we haven't added the data section yet.
 * Next, make the PutS system call by typing "EF0A45". Here "EF" denotes a syscall and "0A45" represents the system call with address 0x450a, or _PUTS. The bytes are reversed because the TI-83 uses a Z80 processor which is little-endian. (You can find all known syscalls here: [http://wikiti.brandonw.net/index.php?title=Category:83Plus:BCALLs:By_Name])
-* Next, make the NewLine (0x452e) system call by typing "EF2E45". 
+* Next, make the NewLine (0x452e) system call by typing "EF2E45".
 * Next, write an exit instruction in the program by typing "C9".
 * Now, after the "C9", we'll start our data section. Now that we know where we're starting the data we should update our "21XXXX" line above. To get the "XXXX" number, simply count forward in hexadecimal from the beginning starting at 0x9d93, where the "AsmPrgm" token counts as two bytes and every other string of two consecutive hex characters/digits counts as one byte (there should always be an even number of hex characters/digits in the program). If you counted correctly, you should have gotten 0x9d9f, which after reversing the bytes for little-endian representation becomes 9F9D. So replace "XXXX" with "9F9D".
 * Finally, write the ASCII representation of the string "Hello, World!" at the very end of your program with a "00" at the end to terminate the string. This is "48656C6C6F2C20576F726C642100".
 * Exit the editor by pressing "QUIT" ("2nd" then "MODE").
-* Execute the program by going back to the catalog ("2nd" "0") and selecting the 7th entry, "Asm(", then pressing "PRGM" and selecting your program name, then closing the parens, so you should get (for example) "Asm(prgmHELLO)". 
+* Execute the program by going back to the catalog ("2nd" "0") and selecting the 7th entry, "Asm(", then pressing "PRGM" and selecting your program name, then closing the parens, so you should get (for example) "Asm(prgmHELLO)".
 
 The program should look like this when it's done:
 
@@ -2777,13 +2777,13 @@ PROGRAM:HELLO
 
 =={{header|TI-83 BASIC}}==
 
-The TI-8x series calculators have a built-in BASIC scripter. 
-To access this, press the "PRGM" key. 
-You can create a new program by selecting the "NEW" tab and pressing "ENTER". 
-You will be prompted to enter 8 alphanumeric characters for the name, 
-but it must start with a letter. 
-Most programming functions can be accessed by pressing the "PRGM" key, 
-and all functions can be viewed in alphabetical order by pressing "2nd" then "0". 
+The TI-8x series calculators have a built-in BASIC scripter.
+To access this, press the "PRGM" key.
+You can create a new program by selecting the "NEW" tab and pressing "ENTER".
+You will be prompted to enter 8 alphanumeric characters for the name,
+but it must start with a letter.
+Most programming functions can be accessed by pressing the "PRGM" key,
+and all functions can be viewed in alphabetical order by pressing "2nd" then "0".
 
 Type in code so your screen looks like this (where MYPROGRM is the name of your program):
 
@@ -2793,12 +2793,12 @@ PROGRAM:MYPROGRM
 ```
 
 
-Disp is found under the "I/O" tab of the menu from the "PRGM" key, 
-the "!" symbol can be found under the "PRB" tab of the menu from the "MATH" button, 
+Disp is found under the "I/O" tab of the menu from the "PRGM" key,
+the "!" symbol can be found under the "PRB" tab of the menu from the "MATH" button,
 and quotations are "ALPHA" then "+".
 
-When writing programs, it is much faster to know the shortcuts for certain 
-common functions. Any list in the TI OS can be selected from using the number keys, 
+When writing programs, it is much faster to know the shortcuts for certain
+common functions. Any list in the TI OS can be selected from using the number keys,
 so "Disp" for instance is "PRGM" then "3".
 
 to exit the editor, press "2nd" then "MODE", and to run the program press "PRGM" and select your program from under the "RUN" tab.
@@ -2835,7 +2835,7 @@ Visit http://www.zenkinetic.com/zklDownloads.html and download
 zkl_vm_src.zip:  http://www.zenkinetic.com/Documents/zkl_vm_src.zip.
 Other links of interest are zkl_tests.zip and the manual (zklManual.pdf).
 
- Extract to ~ 
+ Extract to ~
  Open a termninal
 
  Install clang (I do not like GCC) and ncurses (native on PC-BSD).
@@ -2852,7 +2852,7 @@ Other links of interest are zkl_tests.zip and the manual (zklManual.pdf).
  $ Bin/zkl
  # and you are off and running:
  zkl 1.12.34, released 2016-11-01
- zkl: "Hello World!" 
+ zkl: "Hello World!"
  Hello World!
  zkl: <control D>
  $
@@ -2867,7 +2867,7 @@ Other links of interest are zkl_tests.zip and the manual (zklManual.pdf).
 ## ZX Spectrum Basic
 
 
-The computer has a basic interpreter build into rom, 
+The computer has a basic interpreter build into rom,
 so there is no need to install an software before entering a program.
 Switch on the computer. You should see a message as follows:
 

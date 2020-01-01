@@ -56,7 +56,7 @@ For both implementations, the file format is as follows :
 <And so on for N bodies>
 
 ```
- 
+
 
 ### The Implementations
 
@@ -80,19 +80,19 @@ vector *positions,*velocities,*accelerations;
 
 vector addVectors(vector a,vector b){
 	vector c = {a.x+b.x,a.y+b.y,a.z+b.z};
-	
+
 	return c;
 }
 
 vector scaleVector(double b,vector a){
 	vector c = {b*a.x,b*a.y,b*a.z};
-	
+
 	return c;
 }
 
 vector subtractVectors(vector a,vector b){
 	vector c = {a.x-b.x,a.y-b.y,a.z-b.z};
-	
+
 	return c;
 }
 
@@ -103,26 +103,26 @@ double mod(vector a){
 void initiateSystem(char* fileName){
 	int i;
 	FILE* fp = fopen(fileName,"r");
-	
+
 	fscanf(fp,"%lf%d%d",&GravConstant,&bodies,&timeSteps);
 
 	masses = (double*)malloc(bodies*sizeof(double));
 	positions = (vector*)malloc(bodies*sizeof(vector));
 	velocities = (vector*)malloc(bodies*sizeof(vector));
 	accelerations = (vector*)malloc(bodies*sizeof(vector));
-	
+
 	for(i=0;i<bodies;i++){
 		fscanf(fp,"%lf",&masses[i]);
 		fscanf(fp,"%lf%lf%lf",&positions[i].x,&positions[i].y,&positions[i].z);
 		fscanf(fp,"%lf%lf%lf",&velocities[i].x,&velocities[i].y,&velocities[i].z);
 	}
-	
+
 	fclose(fp);
 }
 
 void resolveCollisions(){
 	int i,j;
-	
+
 	for(i=0;i<bodies-1;i++)
 		for(j=i+1;j<bodies;j++){
 			if(positions[i].x==positions[j].x && positions[i].y==positions[j].y && positions[i].z==positions[j].z){
@@ -135,7 +135,7 @@ void resolveCollisions(){
 
 void computeAccelerations(){
 	int i,j;
-	
+
 	for(i=0;i<bodies;i++){
 		accelerations[i].x = 0;
 		accelerations[i].y = 0;
@@ -150,14 +150,14 @@ void computeAccelerations(){
 
 void computeVelocities(){
 	int i;
-	
+
 	for(i=0;i<bodies;i++)
 		velocities[i] = addVectors(velocities[i],accelerations[i]);
 }
 
 void computePositions(){
 	int i;
-	
+
 	for(i=0;i<bodies;i++)
 		positions[i] = addVectors(positions[i],addVectors(velocities[i],scaleVector(0.5,accelerations[i])));
 }
@@ -172,7 +172,7 @@ void simulate(){
 int main(int argC,char* argV[])
 {
 	int i,j;
-	
+
 	if(argC!=2)
 		printf("Usage : %s <file name containing system configuration data>",argV[0]);
 	else{
@@ -212,7 +212,7 @@ Invocation and output (x,y,z denote position components in 3-space, vx,vy,vz den
 ```txt
 
 C:\rosettaCode>mggs.exe mggsData.txt
-Body   :     x              y               z           |           vx              vy              vz   
+Body   :     x              y               z           |           vx              vy              vz
 Cycle 1
 Body 1 : 0.010177	0.000179	0.000002	|	0.010354	0.000357	0.000004
 Body 2 : 0.998230	0.998232	0.020002	|	-0.003539	-0.003536	0.020004
@@ -359,19 +359,19 @@ vector *positions,*velocities,*accelerations;
 
 vector addVectors(vector a,vector b){
 	vector c = {a.x+b.x,a.y+b.y,a.z+b.z};
-	
+
 	return c;
 }
 
 vector scaleVector(double b,vector a){
 	vector c = {b*a.x,b*a.y,b*a.z};
-	
+
 	return c;
 }
 
 vector subtractVectors(vector a,vector b){
 	vector c = {a.x-b.x,a.y-b.y,a.z-b.z};
-	
+
 	return c;
 }
 
@@ -382,26 +382,26 @@ double mod(vector a){
 void initiateSystem(char* fileName){
 	int i;
 	FILE* fp = fopen(fileName,"r");
-	
+
 	fscanf(fp,"%lf%d%d",&GravConstant,&bodies,&timeSteps);
 
 	masses = (double*)malloc(bodies*sizeof(double));
 	positions = (vector*)malloc(bodies*sizeof(vector));
 	velocities = (vector*)malloc(bodies*sizeof(vector));
 	accelerations = (vector*)malloc(bodies*sizeof(vector));
-	
+
 	for(i=0;i<bodies;i++){
 		fscanf(fp,"%lf",&masses[i]);
 		fscanf(fp,"%lf%lf%lf",&positions[i].x,&positions[i].y,&positions[i].z);
 		fscanf(fp,"%lf%lf%lf",&velocities[i].x,&velocities[i].y,&velocities[i].z);
 	}
-	
+
 	fclose(fp);
 }
 
 void resolveCollisions(){
 	int i,j;
-	
+
 	for(i=0;i<bodies-1;i++)
 		for(j=i+1;j<bodies;j++){
 			if(positions[i].x==positions[j].x && positions[i].y==positions[j].y && positions[i].z==positions[j].z){
@@ -414,7 +414,7 @@ void resolveCollisions(){
 
 void computeAccelerations(){
 	int i,j;
-	
+
 	for(i=0;i<bodies;i++){
 		accelerations[i].x = 0;
 		accelerations[i].y = 0;
@@ -429,14 +429,14 @@ void computeAccelerations(){
 
 void computeVelocities(){
 	int i;
-	
+
 	for(i=0;i<bodies;i++)
 		velocities[i] = addVectors(velocities[i],accelerations[i]);
 }
 
 void computePositions(){
 	int i;
-	
+
 	for(i=0;i<bodies;i++)
 		positions[i] = addVectors(positions[i],addVectors(velocities[i],scaleVector(0.5,accelerations[i])));
 }
@@ -450,7 +450,7 @@ void simulate(){
 
 void plotOrbits(){
 	int i;
-	
+
 	for(i=0;i<bodies;i++)
 		putpixel(positions[i].x,positions[i].y,i%15 + 1);
 }
@@ -458,7 +458,7 @@ void plotOrbits(){
 int main(int argC,char* argV[])
 {
 	int i,j;
-	
+
 	if(argC!=4)
 		printf("Usage : %s <file name containing system configuration data and width and height of window>",argV[0]);
 	else{
@@ -485,8 +485,8 @@ And as in every experiment report/journal paper/whatever, time for some philosop
 
 {{trans|Java}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iomanip>
 #include <iostream>
 #include <fstream>
@@ -1372,12 +1372,12 @@ As stated, the task involves a general rendition of <math>F = ma</math>, in the 
 : <math>\vec d = \vec r_{i} - \vec r_{j}</math>
 : <math>\vec F_{ij} = - G \frac{m_i m_j}{|\vec d|^2} \frac{\vec d}{|\vec d|}</math>
 The bodies are presumed to be able to move freely (not sliding on a wire or across a surface, etc.) so at any position the forces can be calculated and thereby the accelerations, but, only via a function of position. What is desired however is to determine the positions as a function of time. Analysis of the formulae combine constraints that lead to the conclusion that the paths are conic sections: a circle, ellipse, parabola or hyperbola. Thus, for a small mass ''m'' in a circular orbit around a large mass ''M'', the force required to bend the path into a circle is directed towards the circle's centre and is given by
-: <math> F = m \frac{v^2}{r} = G \frac{M m}{r^2}</math> 
-where ''r'' is the radius of the orbit and ''v'' its orbital velocity. This assumes that the gravitational mass and inertial masses are the same - experimentally tested by Newton, and to great accuracy by Eötvös ''et seq''. For a constant-velocity circular orbit, the time for one orbit to complete is 
+: <math> F = m \frac{v^2}{r} = G \frac{M m}{r^2}</math>
+where ''r'' is the radius of the orbit and ''v'' its orbital velocity. This assumes that the gravitational mass and inertial masses are the same - experimentally tested by Newton, and to great accuracy by Eötvös ''et seq''. For a constant-velocity circular orbit, the time for one orbit to complete is
 : <math> T = \frac{2 \pi r}{v} </math>
 The value of ''m'' can be cancelled from both sides to give a limiting case where ''m'' is zero, a "test mass" (so this is almost a one-body problem) and
 : <math> T = 2 \pi \sqrt{ \frac{r^3}{GM}}</math>
-A fuller analysis allowing for elliptical orbits finds that 
+A fuller analysis allowing for elliptical orbits finds that
 : <math> T = 2 \pi \sqrt{ \frac{r^3}{G(M + m)}}</math>
 In the MKS system, G = 6·6742E-11 so for a one-second orbit around a one kilogram mass, r = 0·000119 metres, a tenth of a millimetre! A sphere of that radius has volume 7E-12 cubic metres so the density would have to be at least 1.4E+11 KG/cubic metre; osmium manages 2.25E+4, neutronium  4E+17. Alternatively, with two one-kilogram masses orbiting their centre of mass with r = 1 metre, T = 6·3 days... The force between the two spheres is just G, 6·6742E-11 Newtons. Preventing such a languid orbit from being disrupted by electrostatic forces (due to cosmic rays, radioactive disintegration, etc.) will be difficult. Determining G via an experiment in which two ''known'' masses orbit each other does not look promising.
 
@@ -1392,7 +1392,7 @@ The Fortran programme was written in the early 1990s and so employs F77. A F90 c
 
 The other area of interest was the performance of various methods for numerical approximation. The calculation effort is assessed on the basis of the number of evaluations of the differential equation required for each step: outside of textbook examples this is usually a large effort. Here for example it is proportional to the square of the number of bodies, and a globular cluster may contain not just hundreds but millions of stars... Thus, the first-order Euler method requires one calculation of accelerations per step, the second-order method two, and the Runge-Kutta method four. Only if the step size could be increased more than proportionally would higher-order methods be worthwhile - provided that accuracy was maintained! Error bounds can be calculated, both for an individual step and for the result after a sequence of steps, via the usual analysis for a polynomial solution function (and if it were a polynomial then numerical methods would not be needed) and as usual produces results that rely on there being an upper bound to a suitably high differential of the solution function over the interval. But in this problem, there is no such bound. Bodies, as points, can approach arbitrarily closely and the resulting accelerations are arbitrarily high, being 1/d<sup>2</sup> as d approaches zero. Thus, no assurances are available, and a common method is to run a calculation once with a given step size, then again with half the step size, at a painful cost. The irresponsible make a guess at a suitable step size and worry no further.
 
-All the straightforward methods attempt to assess the conditions over the step, perhaps briefly as with the Euler method using the conditions only at the start, whereas the classic fourth-order Runge-Kutta method first probes half a step forwards, uses those results to probe for a full step, then combines all results to make the full step. Such probing requires many evaluations. Rather than forgetting previous positions so painfully computed, the predictor-corrector methods instead rely on the recent past history as being a good indication of the near future - on the supposition of no step-discontinuities. This problem is slightly more difficult because it is second order (as for acceleration to velocity to position) rather than the first order (say, velocity to position) problems discussed in texts. Specifically, the predictor part is to fit a polynomial to the past few accelerations (e.g. at times t-2h, t-h and t) and integrate to obtain a provisional position for the ''end'' of the current time step at t+h. Evaluate the acceleration there and use it as the new value to perform the actual advance to the end of the time step, the corrector part. Since this is now the new position (and will differ from the provisional position based on polynomial extrapolation), recalculate the acceleration there to maintain coherence between position and acceleration. There are thus just two evaluations per step, and this applies even if more values are retained for higher-order extrapolation and integration methods. 
+All the straightforward methods attempt to assess the conditions over the step, perhaps briefly as with the Euler method using the conditions only at the start, whereas the classic fourth-order Runge-Kutta method first probes half a step forwards, uses those results to probe for a full step, then combines all results to make the full step. Such probing requires many evaluations. Rather than forgetting previous positions so painfully computed, the predictor-corrector methods instead rely on the recent past history as being a good indication of the near future - on the supposition of no step-discontinuities. This problem is slightly more difficult because it is second order (as for acceleration to velocity to position) rather than the first order (say, velocity to position) problems discussed in texts. Specifically, the predictor part is to fit a polynomial to the past few accelerations (e.g. at times t-2h, t-h and t) and integrate to obtain a provisional position for the ''end'' of the current time step at t+h. Evaluate the acceleration there and use it as the new value to perform the actual advance to the end of the time step, the corrector part. Since this is now the new position (and will differ from the provisional position based on polynomial extrapolation), recalculate the acceleration there to maintain coherence between position and acceleration. There are thus just two evaluations per step, and this applies even if more values are retained for higher-order extrapolation and integration methods.
 
 This could be reduced to one evaluation per step: as before use a polynomial fitted to the past accelerations to enable integration so as to determine the position at t+h. Calculate the acceleration for that position (at time t+h) to complete the step, ready to start the next. A sense of unease should arise at this, made clear by asking "Why bother with the corrector at all?" - but that would mean not involving the actual differential equation! The predictor step involves extrapolating a polynomial fit over t-2h, t-h and t (all being accepted solutions for the differential equation), to t+h but the predicted acceleration at time t+h is likely to match the differential equation's value at the new position determined from it only if the solution is a simple polynomial. Put another way, the second-order method employs the differential equation twice (at both ends of the step), and does much better than the first-order method with one evaluation.
 
@@ -1405,11 +1405,11 @@ On escalating to the Milne Predictor-Corrector method, there arose a large incre
 
 ### Organisation of arrays
 
-Aside from the details of the calculations and their method, organising the data structure is important. Accessing an array element is time-consuming, so a particular ploy was to de-reference the arrays: from three dimensions to two (via NEWT) and from two to one (via NEWTON) so that the indexing of the time-consuming computation would be simplified. In other words, the storage for X (position), V (velocity) and A (acceleration) are all 100 (to allow for N bodies) by 3 (for x, y, z components) by 14, this last being sufficient multiple sets of data for MILNE to juggle. It uses Runge-Kutta to initialise its march then proceeds, possibly doubling its step size (so discarding alternate saved historic position sets, thus needing to have eight so that it would be able to retain four) or halving its step size. Notably, for a circular orbit, MILNE developed coefficients equivalent to the first few terms of the series expansion of sine. From F90 there appear arrangements for manipulating arrays, and especially the FOR ALL statement, but their exact behaviour is poorly described. For instance, if the FOR ALL statement were to produce results in a work area then copy that to the destination area, performance may be impeded compared to the update-in-place of the straightforward statements due to the extra data transfer involved. 
+Aside from the details of the calculations and their method, organising the data structure is important. Accessing an array element is time-consuming, so a particular ploy was to de-reference the arrays: from three dimensions to two (via NEWT) and from two to one (via NEWTON) so that the indexing of the time-consuming computation would be simplified. In other words, the storage for X (position), V (velocity) and A (acceleration) are all 100 (to allow for N bodies) by 3 (for x, y, z components) by 14, this last being sufficient multiple sets of data for MILNE to juggle. It uses Runge-Kutta to initialise its march then proceeds, possibly doubling its step size (so discarding alternate saved historic position sets, thus needing to have eight so that it would be able to retain four) or halving its step size. Notably, for a circular orbit, MILNE developed coefficients equivalent to the first few terms of the series expansion of sine. From F90 there appear arrangements for manipulating arrays, and especially the FOR ALL statement, but their exact behaviour is poorly described. For instance, if the FOR ALL statement were to produce results in a work area then copy that to the destination area, performance may be impeded compared to the update-in-place of the straightforward statements due to the extra data transfer involved.
 
 The arrays are dimensioned as 100,3,14 rather than say 14,3,100 because Fortran orders array elements so that the first index varies most rapidly for adjacent elements in storage - some languages are the other way around and I have never seen an explanation for why this choice was made for Fortran, as it is unhelpful for matrix arithmetic. Thus, element (i,j,k) is followed by element (i + 1,j,k). Accordingly, as NEWTON works along the N bodies, the values for consecutive bodies are adjacent. It is presented with separate X, Y, Z arrays even though these are actually parts of the same big array, so that it may use one-dimensional array indexing (and with the same index for all) rather than the much slower two-dimensional indexing. However, the storage locations of these arrays have fixed relationships with each other. Specifically, each are one hundred elements apart so that Y(i) is one hundred elements along from X(i), and Z(i) another hundred along from Y(i). Thus, there could instead be an array XYZ of 300 elements with the code referencing XYZ(i) to obtain X(i), XYZ(i + 100) for Y(i), and XYZ(i + 200) for Z(i). This would have the obvious advantage of maintaining one-dimensional indexing, and gain the possibility that the compiler might generate code that uses one index register for all the accesses rather than three. This can be achieved for "free" - suppose the determination of the effective address (in memory of a datum) is of the form (base address of XYZ) + (index register: the offset). Rather than calculating offsets from (i) and (i + 100), and (i + 200) the equivalent would be to use an offset of (i) every time, but with (XYZ) and (XYZ + 100) and (XYZ + 200), these all being constants.
 
-This notion could also be extended to the 14 sets of 100 triples. In other words, any multi-dimensional array could be considered as equivalent to a single-dimension array of the same size, and indeed could be made so via an EQUIVALENCE statement. Thus, the notational and organisational conveniences of multi-dimensional arrays could be retained, with the use of single indexing reserved for places of desperate need for speed. However, in the absence of a PARAMETER statement to identify the various constants, any adjustment to the size and shape of the array will be difficult and simple mistakes will often be missed. Serious computational programmes often involve large and complex formulae, so the task is not small. Depending on one's ingenuity, there are many possible schemes to choose amongst and a great deal of time can vanish, possibly greater than any recovered by faster running... 
+This notion could also be extended to the 14 sets of 100 triples. In other words, any multi-dimensional array could be considered as equivalent to a single-dimension array of the same size, and indeed could be made so via an EQUIVALENCE statement. Thus, the notational and organisational conveniences of multi-dimensional arrays could be retained, with the use of single indexing reserved for places of desperate need for speed. However, in the absence of a PARAMETER statement to identify the various constants, any adjustment to the size and shape of the array will be difficult and simple mistakes will often be missed. Serious computational programmes often involve large and complex formulae, so the task is not small. Depending on one's ingenuity, there are many possible schemes to choose amongst and a great deal of time can vanish, possibly greater than any recovered by faster running...
 
 All of this could, and indeed should, be done via the compiler's analysis rather than have a human disappear down a rabbit hole. First Fortran (1958) engaged in intensive analysis, guided by a Monte Carlo simulation possibly assisted by the programmer supplying hints via the FREQUENCY statement and produced surprisingly cunning code - in part because the (debugged) compiler would engage in complex arithmetic that a human programmer would avoid due to the risk of making a mistake. Subsequent compilers are often praised, but inspection of the code is less impressive, and the task is not well done. For instance, simple changes to the source file result in faster-running programmes, and these changes should not have made any difference. Thus, NEWTON puts values from arrays into simple variables rather than reference the same array element for each usage: the compiler should be able to notice this. There is certainly talk about "invariant expressions" and the like, but, the run times ''are'' different. It is also possible that the code produced by the "optimising" compiler runs slower than that without the "optimising" active, despite the longer compile time. This is not just me: the British Meteorological Office has admitted to similar experiences, during a job interview.
 
@@ -2373,20 +2373,20 @@ The initial results...
 
 etc...
 
- T=  0.998000000000001     
+ T=  0.998000000000001
   1 0.00000 0.00000 0.00000 0.00000    0.00000-0.00002 0.00000 0.00002
   2 0.99995-0.01262 0.00000 1.00003    0.07901 6.28523 0.00000 6.28573
   3 0.99728-0.01296 0.00000 0.99736    0.10301 6.07537 0.00000 6.07625
- T=  0.999000000000001     
+ T=  0.999000000000001
   1 0.00000 0.00000 0.00000 0.00000    0.00000-0.00002 0.00000 0.00002
   2 1.00001-0.00633 0.00000 1.00003    0.03933 6.28558 0.00000 6.28570
   3 0.99737-0.00688 0.00000 0.99739    0.07940 6.07848 0.00000 6.07899
- T=   1.00000000000000     
+ T=   1.00000000000000
   1 0.00000 0.00000 0.00000 0.00000    0.00000-0.00002 0.00000 0.00002
   2 1.00003-0.00005 0.00000 1.00003   -0.00034 6.28565 0.00000 6.28565
   3 0.99744-0.00080 0.00000 0.99744    0.05550 6.08257 0.00000 6.08283
- Reached T=   1.00000000000000     
- Target  T=   1.00000000000000     
+ Reached T=   1.00000000000000
+ Target  T=   1.00000000000000
  Time step=  1.000000000000000E-003 Nstep=        1000
   1 0.00000 0.00000 0.00000 0.00000    0.00000-0.00002 0.00000 0.00002
   2 1.00003-0.00005 0.00000 1.00003   -0.00034 6.28565 0.00000 6.28565
@@ -2399,20 +2399,20 @@ Using instead the first-order method, a year into the calculation the results ar
 
 ```txt
 
- T=  0.998000000000001     
+ T=  0.998000000000001
   1 0.00000 0.00000 0.00000 0.00000    0.00000-0.00002 0.00000 0.00002
   2 1.02057-0.19728 0.00000 1.03947    1.16628 6.04742 0.00000 6.15886
   3 1.01296-0.09530 0.00000 1.01743    0.58893 6.20845 0.00000 6.23632
- T=  0.999000000000001     
+ T=  0.999000000000001
   1 0.00000 0.00000 0.00000 0.00000    0.00000-0.00002 0.00000 0.00002
   2 1.02172-0.19123 0.00000 1.03947    1.13041 6.05436 0.00000 6.15898
   3 1.01353-0.08909 0.00000 1.01744    0.55096 6.21201 0.00000 6.23640
- T=   1.00000000000000     
+ T=   1.00000000000000
   1 0.00000 0.00000 0.00000 0.00000    0.00000-0.00002 0.00000 0.00002
   2 1.02284-0.18518 0.00000 1.03946    1.09449 6.06108 0.00000 6.15911
   3 1.01406-0.08288 0.00000 1.01744    0.51297 6.21534 0.00000 6.23647
- Reached T=   1.00000000000000     
- Target  T=   1.00000000000000     
+ Reached T=   1.00000000000000
+ Target  T=   1.00000000000000
  Time step=  1.000000000000000E-003 Nstep=        1000
   1 0.00000 0.00000 0.00000 0.00000    0.00000-0.00002 0.00000 0.00002
   2 1.02284-0.18518 0.00000 1.03946    1.09449 6.06108 0.00000 6.15911
@@ -2439,8 +2439,8 @@ The earth and moon go wandering. With too large a step size, the situation betwe
   2 1.00003-0.00007 0.00000 1.00003    0.00061 6.28576 0.00000 6.28576
   3 0.99733 0.00007 0.00000 0.99733   -0.01260 6.07555 0.00000 6.07556
  DTmin=  3.906250000000000E-006 , DTmax=  2.000000000000000E-003
- Reached T=   1.00001171874997     
- Target  T=   1.00000000000000     
+ Reached T=   1.00001171874997
+ Target  T=   1.00000000000000
  Time step=  5.000000000000000E-004 Nstep=        1755
  Closest approach:   0.260123E-02
 
@@ -3345,8 +3345,8 @@ draw::{                                           / display callback
 ```
 
 <h4>3D</h4>
-<p>Although the animation is limited to two dimensions, 
-we can verify that the implementation really does support three, 
+<p>Although the animation is limited to two dimensions,
+we can verify that the implementation really does support three,
 by changing the axis of rotation in the initialization function:</p>
 
 ```J
@@ -3446,7 +3446,7 @@ class NBody(fileName: String) {
             }
         }
     }
- 
+
     private fun computeVelocities() {
         for (i in 0 until bodies) velocities[i] += accelerations[i]
     }
@@ -3478,7 +3478,7 @@ class NBody(fileName: String) {
             ))
         }
     }
-} 
+}
 
 fun main(args: Array<String>) {
     val fileName = "nbody.txt"
@@ -3629,7 +3629,7 @@ global mb = 6e24;       # mass of Earth
 global mc = 7.34e22;    # mass of the Moon
 
 function ret = ABCdot(ABC, t)
-global G au ma mb mc 
+global G au ma mb mc
 ret = ABC;
 ret(1:9) = ABC(10:18);
 
@@ -4937,7 +4937,7 @@ multi infix:<->(@a, @b) { @a Z- @b }
 multi infix:<*>($r, @a) { $r X* @a }
 multi infix:</>(@a, $r) { @a X/ $r }
 sub norm { sqrt [+] @_ X** 2 }
- 
+
 # Runge-Kutta stuff
 sub runge-kutta(&yp) {
     return -> \t, \y, \δt {
@@ -4948,16 +4948,16 @@ sub runge-kutta(&yp) {
         ($a + 2*($b + $c) + $d) / 6;
     }
 }
- 
+
 # gravitational constant
 constant G = 6.674e-11;
 # astronomical unit
 constant au = 150e9;
- 
+
 # time constants in seconds
 constant year = 365.25*24*60*60;
 constant month = 21*24*60*60;
- 
+
 # masses in kg
 constant $ma = 2e30;     # Sun
 constant $mb = 6e24;     # Earth
@@ -4967,11 +4967,11 @@ my &dABC = runge-kutta my &f = sub ( $t, @ABC ) {
     my @a = @ABC[0..2];
     my @b = @ABC[3..5];
     my @c = @ABC[6..8];
- 
-    my $ab = norm(@a - @b); 
+
+    my $ab = norm(@a - @b);
     my $ac = norm(@a - @c);
     my $bc = norm(@b - @c);
- 
+
     return [
         flat
         @ABC[@(9..17)],
@@ -4981,7 +4981,7 @@ my &dABC = runge-kutta my &f = sub ( $t, @ABC ) {
         $ma/$ac**3 * (@a - @c) + $mb/$bc**3 * (@b - @c);
     ];
 }
- 
+
 loop (
     my ($t, @ABC) = 0,
         0, 0, 0,                                 # Sun position
@@ -5031,7 +5031,7 @@ t = 0.19 : +3.252e-10 +4.102e-18 +0.000e+00 +1.500e+11 +5.674e+03 +0.000e+00 +1.
 
 ```Phix
 sequence origin = {0,0,0}
- 
+
 constant nbody = """
 0.01 3 20
 1
@@ -5045,13 +5045,13 @@ constant nbody = """
 0.01 -0.01 -0.01
 """
 
-sequence lines = split(nbody,"\n") 
+sequence lines = split(nbody,"\n")
 atom {{grav_constant,bodies,timeSteps}} = scanf(lines[1],"%f %f %f")
 sequence {masses, positions, velocities, accelerations} @= repeat(0,bodies)
 for i=1 to bodies do
-    {{masses[i]}} = scanf(lines[i*3-1],"%f")        
+    {{masses[i]}} = scanf(lines[i*3-1],"%f")
     {positions[i]} = scanf(lines[i*3],"%f %f %f")
-    {velocities[i]} = scanf(lines[i*3+1],"%f %f %f")        
+    {velocities[i]} = scanf(lines[i*3+1],"%f %f %f")
 end for
 printf(1,"Body   :      x          y          z    |")
 printf(1,"     vx         vy         vz\n")
@@ -5073,7 +5073,7 @@ procedure computeAccelerations()
         accelerations[i] = ai
     end for
 end procedure
- 
+
 procedure computePositions()
     positions = sq_add(positions,sq_add(velocities,sq_mul(accelerations,0.5)))
 end procedure
@@ -5098,14 +5098,14 @@ procedure simulate()
     computeVelocities()
     resolveCollisions()
 end procedure
- 
+
 procedure printResults()
     string fmt = "Body %d : %9.6f  %9.6f  %9.6f | %9.6f  %9.6f  %9.6f\n"
     for i=1 to bodies do
         printf(1,fmt,{i}&positions[i]&velocities[i])
     end for
 end procedure
- 
+
 for i=1 to timeSteps do
     printf(1,"\nCycle %d\n",i)
     simulate()

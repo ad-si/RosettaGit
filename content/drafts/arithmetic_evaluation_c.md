@@ -14,8 +14,8 @@ tags = []
 
 This is a LL(1) recursive descent parser. Only performs integer division. There is a function for every non-terminal in the grammar, save add_op and mult_op, which were lumped into term_tail and factor_tail respectively.
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <ctype.h>
 

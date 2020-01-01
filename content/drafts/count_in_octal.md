@@ -678,8 +678,8 @@ Stops when the user presses Ctrl-C or when the stack overflows. The solution is 
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -713,8 +713,8 @@ class Program
 This prevents an infinite loop by counting until the counter overflows and produces a 0 again. This could also be done with a for or while loop, but you'd have to print 0 (or the last number) outside the loop.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main()
 {

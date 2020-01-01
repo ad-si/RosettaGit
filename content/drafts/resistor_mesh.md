@@ -118,10 +118,10 @@ end ResistMesh;
       INSTALL @lib$+"ARRAYLIB"
       *FLOAT 64
       @% = &F0F
-      
+
       PRINT "Resistance = "; FNresistormesh(10, 10, 1, 1, 7, 6) " ohms"
       END
-      
+
       DEF FNresistormesh(ni%, nj%, ai%, aj%, bi%, bj%)
       LOCAL c%, i%, j%, k%, n%, A(), B()
       n% = ni% * nj%
@@ -159,13 +159,13 @@ Resistance = 1.60899124173071 ohms
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
- 
+
 #define S 10
 typedef struct { double v; int fixed; } node;
- 
+
 #define each(i, x) for(i = 0; i < x; i++)
 node **alloc2(int w, int h)
 {
@@ -174,13 +174,13 @@ node **alloc2(int w, int h)
 	each(i, h) a[i] = i ? a[i-1] + w : (node*)(a + h);
 	return a;
 }
- 
+
 void set_boundary(node **m)
 {
 	m[1][1].fixed =  1; m[1][1].v =  1;
 	m[6][7].fixed = -1; m[6][7].v = -1;
 }
- 
+
 double calc_diff(node **m, node **d, int w, int h)
 {
 	int i, j, n;
@@ -191,13 +191,13 @@ double calc_diff(node **m, node **d, int w, int h)
 		if (j) v += m[i][j-1].v, n++;
 		if (i+1 < h) v += m[i+1][j].v, n++;
 		if (j+1 < w) v += m[i][j+1].v, n++;
- 
+
 		d[i][j].v = v = m[i][j].v - v / n;
 		if (!m[i][j].fixed) total += v * v;
 	}
 	return total;
 }
- 
+
 double iter(node **m, int w, int h)
 {
 	node **d = alloc2(w, h);
@@ -210,15 +210,15 @@ double iter(node **m, int w, int h)
 		diff = calc_diff(m, d, w, h);
 		each(i,h) each(j, w) m[i][j].v -= d[i][j].v;
 	}
- 
+
 	each(i, h) each(j, w)
 		cur[ m[i][j].fixed + 1 ] += d[i][j].v *
 				(!!i + !!j + (i < h-1) + (j < w -1));
- 
+
 	free(d);
 	return (cur[2] - cur[0])/2;
 }
- 
+
 int main()
 {
 	node **mesh = alloc2(S, S);
@@ -233,8 +233,8 @@ int main()
 
 {{trans|C#}}
 
-```cpp>#include <iomanip
-
+```cpp
+#include <iomanip>
 #include <iostream>
 #include <vector>
 
@@ -590,18 +590,18 @@ We'll solve the linear system.  We'll write [[wp:Kirchhoff's circuit laws|Kirchh
 ```ERRE
 
  PROGRAM RESISTENCE_MESH
-  
+
  !$BASE=1
-  
+
  !$DYNAMIC
  DIM A[0,0]
-  
+
  BEGIN
-  
+
   N=10
   NN=N*N
   !$DIM A[NN,NN+1]
-   
+
   PRINT(CHR$(12);) !CLS
   ! generate matrix data
   NODE=0
@@ -626,19 +626,19 @@ We'll solve the linear system.  We'll write [[wp:Kirchhoff's circuit laws|Kirchh
         END IF
     END FOR
   END FOR
-   
+
   AR=2  AC=2  A=AC+N*(AR-1)
   BR=7  BC=8  B=BC+N*(BR-1)
   A[A,NN+1]=-1
   A[B,NN+1]=1
-   
+
   PRINT("Nodes ";A,B)
 
   ! solve linear system
-  ! using Gauss-Seidel method 
+  ! using Gauss-Seidel method
   ! with pivoting
   R=NN
-    
+
   FOR J=1 TO R DO
     FOR I=J TO R DO
       EXIT IF A[I,J]<>0
@@ -735,7 +735,7 @@ function solvePotentialX (A:cpx, i:index ,j:index)
 	B=cpxset(B,j|h'|0);
 	B=cpxset(B,[j,j,1]);
 	v=zeros(n,1); v[i]=1; v[j]=-1;
-	u=cpxfit(B,v); 
+	u=cpxfit(B,v);
 	f=(-f[i])*u[i]-cpxmult(A,u)[i];
 	return {u,2/f}
 endfunction
@@ -1246,9 +1246,9 @@ R = 1.608991241729889
 
 ## Julia
 
-We construct the matrix A that relates voltage v on each node to the injected current b via Av=b, and then we simply solve the linear system to find the resulting voltages (from unit currents at the indicated nodes, i and j) and hence the resistance.  
-We can write A=D<sup>T</sup>D in terms of the incidence matrix D of the resistor graph (see e.g. Strang, <i>Introduction to Linear Algebra</i>, 4th ed., sec. 8.2).  
-Because the graph is a rectangular grid, we can in turn write the incidence matrix D in terms of Kronecker products ⊗ (<code>kron</code> in Julia) of "one-dimensional" D<sub>1</sub> matrices (the incidence matrix of a 1d resistor network).  
+We construct the matrix A that relates voltage v on each node to the injected current b via Av=b, and then we simply solve the linear system to find the resulting voltages (from unit currents at the indicated nodes, i and j) and hence the resistance.
+We can write A=D<sup>T</sup>D in terms of the incidence matrix D of the resistor graph (see e.g. Strang, <i>Introduction to Linear Algebra</i>, 4th ed., sec. 8.2).
+Because the graph is a rectangular grid, we can in turn write the incidence matrix D in terms of Kronecker products ⊗ (<code>kron</code> in Julia) of "one-dimensional" D<sub>1</sub> matrices (the incidence matrix of a 1d resistor network).
 We use Julia's built-in sparse-matrix solvers (based on SuiteSparse) to solve the resulting sparse linear system efficiently
 
 ```julia
@@ -1269,7 +1269,7 @@ v[i] - v[j]
 
 ```
 
-One advantage of this formulation is that it is easy to generalize to non-constant resistance.  
+One advantage of this formulation is that it is easy to generalize to non-constant resistance.
 If we have a vector <code>y</code> of admittance (1/resistance) values on each resistor, then one simply replaces <code>D' * D</code> with <code>D' * spdiagm(y) * D</code>.
 
 
@@ -1299,9 +1299,9 @@ fun calcDiff(m: List2D<Node>, d: List2D<Node>, w: Int, h: Int): Double {
             var n = 0
             if (i > 0) { v += m[i - 1][j].v; n++ }
             if (j > 0) { v += m[i][j - 1].v; n++ }
-            if (i + 1 < h) { v += m[i + 1][j].v; n++ } 
+            if (i + 1 < h) { v += m[i + 1][j].v; n++ }
             if (j + 1 < w) { v += m[i][j + 1].v; n++ }
-            v = m[i][j].v - v / n 
+            v = m[i][j].v - v / n
             d[i][j].v = v
             if (m[i][j].fixed == 0) total += v * v
         }
@@ -1328,13 +1328,13 @@ fun iter(m: List2D<Node>, w: Int, h: Int): Double {
             if (i != 0) k++
             if (j != 0) k++
             if (i < h - 1) k++
-            if (j < w - 1) k++ 
+            if (j < w - 1) k++
             cur[m[i][j].fixed + 1] += d[i][j].v * k
         }
     }
-    return (cur[2] - cur[0]) / 2.0  
-} 
-                
+    return (cur[2] - cur[0]) / 2.0
+}
+
 fun main(args: Array<String>) {
     val mesh = List(S) { List(S) { Node(0.0, 0) } }
     val r = 2.0 / iter(mesh, S, S)
@@ -1359,30 +1359,30 @@ R = 1.608991241729889
 ```maxima
 /* Place a current souce between A and B, providing 1 A. Then we are really looking
    for the potential at A and B, since I = R (V(B) - V(A)) where I is given and we want R.
-   
+
    Atually, we will compute potential at each node, except A where we assume it's 0.
    Without with assumption, there would be infinitely many solutions since potential
    is known up to a constant. For A we will simply write the equation V(A) = 0, to
    keep the program simple.
-   
+
    Hence, for a general grid of p rows and q columns, there are n = p * q nodes,
    so n unknowns, and n equations. Write Kirchhoff's current law at each node.
    Be careful with the node A (equation A = 0) and the node B (there is a constant
    current to add, from the source, that will go in the constant terms of the system).
-   
+
    Finally, we have a n x n linear system of equations to solve. Simply use Maxima's
    builtin LU decomposition.
-   
+
    Since all computations are exact, the result will be also exact, written as a fraction.
    Also, the program can work with any grid, and any two nodes on the grid.
 
    For those who want more speed and less space, notice the system is sparse and necessarily
    symmetric, so one can use conjugate gradient or any other sparse symmetric solver. */
-   
-   
+
+
 /* Auxiliary function to get rid of the borders */
 ongrid(i, j, p, q) := is(i >= 1 and i <= p and j >= 1 and j <= q)$
-   
+
 grid_resistor(p, q, ai, aj, bi, bj) := block(
    [n: p * q, A, B, M, k, c, V],
    A: zeromatrix(n, n),
@@ -1428,7 +1428,7 @@ bfloat(%), fpprec = 40;
 {{trans|Maxima}}
 
 ```mathematica
-gridresistor[p_, q_, ai_, aj_, bi_, bj_] := 
+gridresistor[p_, q_, ai_, aj_, bi_, bj_] :=
   Block[{A, B, k, c, V}, A = ConstantArray[0, {p*q, p*q}];
    Do[k = (i - 1) q + j;
     If[{i, j} == {ai, aj}, A[[k, k]] = 1, c = 0;
@@ -1453,9 +1453,9 @@ N[gridresistor[10, 10, 2, 2, 8, 7], 40]
 {{works with|Mathematica|9.0}}
 
 ```mathematica
-graphresistor[g_, a_, b_] := 
+graphresistor[g_, a_, b_] :=
   LinearSolve[
-    SparseArray[{{a, a} -> 1, {i_, i_} :> Length@AdjacencyList[g, i], 
+    SparseArray[{{a, a} -> 1, {i_, i_} :> Length@AdjacencyList[g, i],
       Alternatives @@ Join[#, Reverse /@ #] &[
         List @@@ EdgeList[VertexDelete[g, a]]] -> -1}, {VertexCount[
        g], VertexCount[g]}], SparseArray[b -> 1, VertexCount[g]]][[b]];
@@ -1623,7 +1623,7 @@ end
 current = sparse(NN, 1);
 
 Ar = 2; Ac = 2; A = Ac + N*( Ar - 1 );
-Br = 7; Bc = 8; B = Bc + N*( Br - 1 ); 
+Br = 7; Bc = 8; B = Bc + N*( Br - 1 );
 current( A ) = -1;
 current( B ) = +1;
 
@@ -1742,7 +1742,7 @@ sub force-v(@v) {
     @v[1][1] =  1;
     @v[6][7] = -1;
 }
- 
+
 sub calc_diff(@v, @d, Int $w, Int $h) {
     my $total = 0;
     for (flat ^$h X ^$w) -> $i, $j {
@@ -1753,7 +1753,7 @@ sub calc_diff(@v, @d, Int $w, Int $h) {
     }
     return $total;
 }
- 
+
 sub iter(@v, Int $w, Int $h) {
     my @d = allocmesh($w, $h);
     my $diff = 1e10;
@@ -1774,7 +1774,7 @@ sub iter(@v, Int $w, Int $h) {
 
     return (@cur[2] - @cur[0]) / 2;
 }
- 
+
 my @mesh = allocmesh($S, $S);
 
 @fixed = allocmesh($S, $S);
@@ -2019,26 +2019,26 @@ This version avoids mutation... possibly a little more costly than C, but more f
 (define (mesh-R probes w h)
   (define h-1 (sub1 h))
   (define w-1 (sub1 w))
-  
+
   (define-syntax-rule (v2ref v r c) ; 2D vector ref
     (flvector-ref v (+ (* r w) c)))
-  
+
   (define w*h (* w h))
-  
+
   (define (alloc2 (v 0.))
     (make-flvector w*h v))
-  
+
   (define nghbrs (neighbours w h))
-  
+
   (match-define `((,fix+r ,fix+c) (,fix-r ,fix-c)) probes)
   (define fix+idx (+ fix+c (* fix+r w)))
   (define fix-idx (+ fix-c (* fix-r w)))
   (define fix-val
-    (match-lambda** 
+    (match-lambda**
      [((== fix+idx) _) 1.]
      [((== fix-idx) _) -1.]
      [(_ v) v]))
-  
+
   (define (calc-diff m)
     (define d
       (for*/flvector #:length w*h ((i (in-range h)) (j (in-range w)))
@@ -2047,24 +2047,24 @@ This version avoids mutation... possibly a little more costly than C, but more f
              (fi (zero? j) (v2ref m i (- j 1)) 0)
              (if (< i h-1) (v2ref m (+ i 1) j) 0)
              (if (< j w-1) (v2ref m i (+ j 1)) 0)))
-        (- (v2ref m i j) (/ v (nghbrs i j))))) 
-    
+        (- (v2ref m i j) (/ v (nghbrs i j)))))
+
     (define Δ
       (for/sum ((i (in-naturals)) (d.v (in-flvector d)) #:when (= (fix-val i 0.) 0.))
         (sqr d.v)))
-    
+
     (values d Δ))
-  
+
   (define final-d
     (let loop ((m (alloc2)) (d (alloc2)))
       (define m+ ; do this first will get the boundaries on
         (for/flvector #:length w*h ((j (in-naturals)) (m.v (in-flvector m)) (d.v (in-flvector d)))
           (fix-val j (- m.v d.v))))
-      
+
       (define-values (d- Δ) (calc-diff m+))
-      
+
       (if (< Δ 1e-24) d (loop m+ d-))))
-  
+
   (/ 2
      (/ (- (* (v2ref final-d fix+r fix+c) (nghbrs fix+r fix+c))
            (* (v2ref final-d fix-r fix-c) (nghbrs fix-r fix-c)))
@@ -2358,7 +2358,7 @@ real MV; int MF;
 [MF(1,1):= 1;  MV(1,1):= 1.0;
  MF(6,7):= -1; MV(6,7):= -1.0;
 ];
- 
+
 func real CalcDiff(MV, MF, DV, W, H);
 real MV; int MF; real DV; int W, H;
 int  I, J, N; real V, Total;
@@ -2375,7 +2375,7 @@ for I:= 0 to H-1 do
         ];
 return Total;
 ];
- 
+
 func real Iter(MV, MF, W, H);
 real MV; int MF, W, H;
 real DV, Diff, Cur; int I, J;
@@ -2396,7 +2396,7 @@ for I:= 0 to H-1 do
                                 \middle=4; side=3; corner=2
 return (Cur(2)-Cur(0))/2.0;
 ];
- 
+
 real MeshV(S,S); int MeshF(S,S);
 RlOut(0, 2.0 / Iter(MeshV, MeshF, S, S))
 ```
@@ -2420,7 +2420,7 @@ RlOut(0, 2.0 / Iter(MeshV, MeshF, S, S))
   N=10
   NN=N*N
   DIM A(NN,NN+1)
- 
+
   NODE=0
   FOR ROW=1 TO N
     FOR COL=1 TO N
@@ -2443,19 +2443,19 @@ RlOut(0, 2.0 / Iter(MeshV, MeshF, S, S))
         END IF
     NEXT
   NEXT
- 
+
   AR=2 : AC=2 : A=AC+N*(AR-1)
   BR=7 : BC=8 : B=BC+N*(BR-1)
   A(A,NN+1)=-1
   A(B,NN+1)=1
- 
+
   PRINT "Nodes ",A,B
- 
+
   // solve linear system
-  // using Gauss-Seidel method 
+  // using Gauss-Seidel method
   // with pivoting
   R=NN
- 
+
   FOR J=1 TO R
     FOR I=J TO R
       IF A(I,J)<>0 BREAK

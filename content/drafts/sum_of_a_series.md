@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Arithmetic operations}}
-Compute the   '''n'''<sup>th</sup>   term of a [[wp:Series (mathematics)|series]],   i.e. the sum of the   '''n'''   first terms  of the corresponding [[wp:sequence|sequence]].  
+Compute the   '''n'''<sup>th</sup>   term of a [[wp:Series (mathematics)|series]],   i.e. the sum of the   '''n'''   first terms  of the corresponding [[wp:sequence|sequence]].
 
 Informally this value, or its limit when   '''n'''   tends to infinity, is also called the ''sum of the series'', thus the title of this task.
 
@@ -43,7 +43,7 @@ SUMSER   CSECT
          LR     12,15              set addressability
          LR     10,14              save r14
          LE     4,=E'0'            s=0
-         LE     2,=E'1'            i=1 
+         LE     2,=E'1'            i=1
        DO WHILE=(CE,2,LE,=E'1000') do i=1 to 1000
          LER    0,2                  i
          MER    0,2                  *i
@@ -226,7 +226,7 @@ on seriesSum(f, xs)
             a + mf(x)
         end |λ|
     end script
-    
+
     foldl(go, 0, xs)
 end seriesSum
 
@@ -240,7 +240,7 @@ end inverseSquare
 
 on run
     seriesSum(inverseSquare, enumFromTo(1, 1000))
-    
+
     --> 1.643934566682
 end run
 
@@ -272,7 +272,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -357,11 +357,11 @@ define f(x) {
 
 define s(n) {
     auto i, s
-    
+
     for (i = 1; i <= n; i++) {
         s += f(i)
     }
-    
+
     return(s)
 }
 
@@ -430,8 +430,8 @@ p 1.to(1000).reduce 0 { sum, x | sum + 1.0 / x ^ 2 }  #Prints 1.6439345666816
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 double Invsqr(double n)
 {
@@ -442,12 +442,12 @@ int main (int argc, char *argv[])
 {
 	int i, start = 1, end = 1000;
 	double sum = 0.0;
-	
+
 	for( i = start; i <= end; i++)
-		sum += Invsqr((double)i);           
-	
+		sum += Invsqr((double)i);
+
 	printf("%16.14f\n", sum);
-	
+
 	return 0;
 }
 ```
@@ -457,8 +457,8 @@ int main (int argc, char *argv[])
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 double f(double x);
 
@@ -871,7 +871,7 @@ feature -- Access
 		do
 			Result := 1 / (k * k)
 		end
-	
+
 	sum_until (s: FUNCTION [ANY, TUPLE [INTEGER], REAL_64]; n: INTEGER): REAL_64
 			-- sum of the 'n' first terms of 's'
 		require
@@ -907,11 +907,11 @@ ELENA 4.x :
 ```elena
 import system'routines;
 import extensions;
- 
+
 public program()
 {
     var sum := new Range(1, 1000).selectBy:(x => 1.0r / (x * x)).summarize(new Real());
- 
+
     console.printLine:sum
 }
 ```
@@ -969,7 +969,7 @@ This is based on the [[BASIC]] example.
 
 function s( atom x )
 	return 1 / power( x, 2 )
-end function 
+end function
 
 function sum( atom low, atom high )
 	atom ret = 0.0
@@ -1162,7 +1162,7 @@ Change <code>1/k^2</code> to <code>1.0/k^2</code> to use floating-point math.
 The following function will do the task specified.
 
 ```fsharp
-let rec f (x : float) = 
+let rec f (x : float) =
     match x with
         | 0. -> x
         | x -> (1. / (x * x)) + f (x - 1.)
@@ -1180,7 +1180,7 @@ However this recursive function will run out of stack space eventually (try 1000
 ```fsharp
 #light
 let sum_series (max : float) =
-    let rec f (a:float, x : float) = 
+    let rec f (a:float, x : float) =
         match x with
             | 0. -> a
             | x -> f ((1. / (x * x) + a), x - 1.)
@@ -1395,7 +1395,7 @@ main = print $ seriesSum inverseSquare [1 .. 1000]
 ```hicest
 REAL :: a(1000)
         a = 1 / $^2
-        WRITE(ClipBoard, Format='F17.15') SUM(a) 
+        WRITE(ClipBoard, Format='F17.15') SUM(a)
 ```
 
 
@@ -1469,10 +1469,10 @@ The expression using <code>map</code> generates a list internally.  Using <code>
    NB. sum of reciprocals of squares of first thousand positive integers
    +/ % *: >: i. 1000
 1.64393
-   
+
    (*:o.1)%6       NB. pi squared over six, for comparison
 1.64493
-  
+
    1r6p2           NB.  As a constant (J has a rich constant notation)
 1.64493
 ```
@@ -1487,14 +1487,14 @@ public class Sum{
     public static double f(double x){
        return 1/(x*x);
     }
- 
+
     public static void main(String[] args){
        double start = 1;
        double end = 1000;
        double sum = 0;
- 
+
        for(double x = start;x <= end;x++) sum += f(x);
- 
+
        System.out.println("Sum of f(x) from " + start + " to " + end +" is " + sum);
     }
 }
@@ -1514,7 +1514,7 @@ function sum(a,b,fn) {
    for ( ; a <= b; a++) s += fn(a);
    return s;
 }
- 
+
  sum(1,1000, function(x) { return 1/(x*x) } )  // 1.64393456668156
 ```
 
@@ -1765,7 +1765,7 @@ sum_of_a_series(1000,1)
 
 
 
-###  With <code>lists:foldl</code> 
+###  With <code>lists:foldl</code>
 
 
 
@@ -1783,7 +1783,7 @@ sum_of_a_series(1000,1)
 
 
 
-###  With <code>lists:sum</code> 
+###  With <code>lists:sum</code>
 
 
 
@@ -1888,7 +1888,7 @@ print(sum)
 ## Lucid
 
 
-```lucid>series = ssum asa  n 
+```lucid>series = ssum asa  n
 = 1000
    where
          num = 1 fby num + 1;
@@ -1942,7 +1942,7 @@ Sum[1./x^2, {x, 1, 1000}]
 Other ways include (exact, approximate,exact,approximate):
 
 ```mathematica
-Total[Table[1/x^2, {x, 1, 1000}]]   
+Total[Table[1/x^2, {x, 1, 1000}]]
 Total[Table[1./x^2, {x, 1, 1000}]]
 Plus@@Table[1/x^2, {x, 1, 1000}]
 Plus@@Table[1./x^2, {x, 1, 1000}]
@@ -1954,7 +1954,7 @@ Plus@@Table[1./x^2, {x, 1, 1000}]
 
 
 ```matlab
-   sum([1:1000].^(-2)) 
+   sum([1:1000].^(-2))
 ```
 
 
@@ -2094,7 +2094,7 @@ BUF	OCTA	0,0,0		% print buffer
 	LOC	#1000
 	GREG	@
 
-// print floating point number in scientific format: 0.xxx...ey.. 
+// print floating point number in scientific format: 0.xxx...ey..
 // most of this routine is adopted from:
 // http://www.pspu.ru/personal/eremin/emmi/rom_subs/printreal.html
 // float number in z
@@ -2121,12 +2121,12 @@ Sign	BYTE	'-'
 	FLOT	$73,$73		% $73 = float 10^16
 	SET	$75,16		% set # decimals to 16
 8H	FCMP	$72,z,$73	% while z >= 10^16 do
-	BN	$72,9F		% 
-	FDIV	z,z,$74		%  z = z / 10.0 
+	BN	$72,9F		%
+	FDIV	z,z,$74		%  z = z / 10.0
 	ADD	$75,$75,1	%  incr exponent
 	JMP	8B		% wend
 9H	FDIV	$73,$73,$74	% 10^16 / 10.0
-5H	FCMP	$72,z,$73	% while z < 10^15 do 
+5H	FCMP	$72,z,$73	% while z < 10^15 do
 	BNN	$72,6F
 	FMUL	z,z,$74		%  z = z * 10.0
 	SUB	$75,$75,1	%  exp = exp - 1
@@ -2134,7 +2134,7 @@ Sign	BYTE	'-'
 NulPnt	BYTE	'0','.',#00
 6H	LDA	$255,NulPnt	% print '0.' to StdOut
 	TRAP	0,Fputs,StdOut
-	FIX	z,0,z		% convert float z to integer 
+	FIX	z,0,z		% convert float z to integer
 // print mantissa
 0H	GREG	#3030303030303030
 	STO	0B,BUF
@@ -2142,7 +2142,7 @@ NulPnt	BYTE	'0','.',#00
 	LDA	$255,BUF+16	% points after LSD
 				% repeat
 2H	SUB	$255,$255,1	%   move pointer down
-	DIV	z,z,10		%   (q,r) = divmod z 10 
+	DIV	z,z,10		%   (q,r) = divmod z 10
 	GET	t,rR		%   get remainder
 	INCL	t,'0'		%   convert to ascii digit
 	STBU	t,$255,0	%   store digit in buffer
@@ -2157,7 +2157,7 @@ Exp	BYTE	'e',#00
 	LDA	$255,BUF+2	% store print mask in buffer
 	CMP	$73,$75,0	% if exp neg then place - in buffer
 	BNN	$73,2F
-ExpSign	BYTE	'-'	
+ExpSign	BYTE	'-'
 	LDA	$255,ExpSign
 	TRAP	0,Fputs,StdOut
 	NEG	$75,$75		% make exp positive
@@ -2897,7 +2897,7 @@ Answer = 1.6439345666815615
 print ( sum(1.0 / (x * x) for x in range(1, 1001)) )
 ```
 
-		
+
 Or, as a generalised map, or fold / reduction – (see [[Catamorphism#Python]]):
 
 ```python
@@ -3141,7 +3141,7 @@ The sum of 1000000000 terms is: 1.6449340658482264369724151664793585225522832345
 
 ### sums with running significance
 
-This is a technique to show a   ''running significance''   (based on the previous calculation). 
+This is a technique to show a   ''running significance''   (based on the previous calculation).
 
 If the   '''old'''   REXX variable would be set to   '''1.64'''   (instead of   '''1'''), the first noise digits could be bypassed to make the display ''cleaner''.
 
@@ -3168,7 +3168,7 @@ say                                              /*display blank line for the se
 say 'The sum of'   right(N,w)    "terms is:"     /*display the  sum's  preamble line.   */
 say $                                            /*stick a fork in it,  we're all done. */
 ```
- 
+
 '''output'''   when using the input of   (one billion [limit], and one hundred decimal digits):   <tt>   1000000000   100 </tt>
 
 ```txt
@@ -3386,7 +3386,7 @@ say (1..1000 -> reduce { |a,b| a + (1 / b**2) })
 
 ## Slate
 
- 
+
 Manually coerce it to a float, otherwise you will get an exact (and slow) answer:
 
 
@@ -3415,7 +3415,7 @@ create table t1 (n real);
 insert into t1 (select generate_series(1,1000)::real);
 with tt as (
   select 1/(n*n) as recip from t1
-) select sum(recip) from tt; 
+) select sum(recip) from tt;
 
 ```
 
@@ -3423,7 +3423,7 @@ Result of select (with locale DE):
 
 ```txt
 
-       sum        
+       sum
 ------------------
  1.64393456668156
 (1 Zeile)
@@ -3453,11 +3453,11 @@ series(1000)-pi()^2/6
 
 func sumSeries(var n: Int) -> Double {
     var ret: Double = 0
-    
+
     for i in 1...n {
         ret += (1 / pow(Double(i), 2))
     }
-    
+
     return ret
 }
 
@@ -3472,7 +3472,7 @@ Swift also allows extension to datatypes.  Here's similar code using an extensio
 extension Int {
     func SumSeries() -> Double {
         var ret: Double = 0
-   
+
         for i in 1...self {
            ret += (1 / pow(Double(i), 2))
         }
@@ -3693,10 +3693,10 @@ output:
 public static void main(){
 	int i, start = 1, end = 1000;
 	double sum = 0.0;
-	
+
 	for(i = start; i<= end; i++)
 		sum += (1 / (double)(i * i));
-	
+
 	stdout.printf("%s\n", sum.to_string());
 }
 
@@ -3731,7 +3731,7 @@ End Sub
 {{out}}
 
 ```txt
- 1,64393456668156 
+ 1,64393456668156
 ```
 
 
@@ -3743,7 +3743,7 @@ End Sub
     for i=1 to 1000
         s=s+1/i^2
     next
-    wscript.echo s 
+    wscript.echo s
 ```
 
 {{out}}
@@ -3770,7 +3770,7 @@ End Sub
             s = s + 1 / i ^ 2
         Next 'i
         Console.WriteLine(s)
-    End Sub 
+    End Sub
 ```
 
 {{out}}

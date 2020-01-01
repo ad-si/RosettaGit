@@ -38,27 +38,27 @@ procedure Delegation is
       -- We need a common root for our stuff
       type Object is tagged null record;
       type Object_Ptr is access all Object'Class;
-      
+
       -- Objects that have operation thing
       type Substantial is new Object with null record;
       function Thing (X : Substantial) return String;
-      
+
       -- Delegator objects
       type Delegator is new Object with record
          Delegate : Object_Ptr;
       end record;
       function Operation (X : Delegator) return String;
-      
+
       No_Thing  : aliased Object;      -- Does not have thing
       Has_Thing : aliased Substantial; -- Has one
    end Things;
-      
+
    package body Things is
       function Thing (X : Substantial) return String is
       begin
          return "delegate implementation";
       end Thing;
-   
+
       function Operation (X : Delegator) return String is
       begin
          if X.Delegate /= null and then X.Delegate.all in Substantial'Class then
@@ -275,8 +275,8 @@ Delegate with a thing : delegate implementation
 
 As best you can do, without support for classes.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -354,9 +354,9 @@ int main()
     Delegate del2 = NewDelegate(NULL);
     Delegator theDelegator = NewDelegator( 14, "A stellar vista, Baby.");
 
-    printf("Delegator returns %s\n\n", 
+    printf("Delegator returns %s\n\n",
             Delegator_Operation( theDelegator, 3, NULL));
-    printf("Delegator returns %s\n\n", 
+    printf("Delegator returns %s\n\n",
             Delegator_Operation( theDelegator, 3, del1));
     printf("Delegator returns %s\n\n",
             Delegator_Operation( theDelegator, 3, del2));
@@ -444,7 +444,7 @@ public:
     virtual ~IDelegate() {}
 };
 
-//interface for delegates supporting thing 
+//interface for delegates supporting thing
 class IThing
 {
 public:
@@ -456,7 +456,7 @@ public:
 class DelegateA : virtual public IDelegate
 {
 };
- 
+
 // Handles Thing
 class DelegateB : public IThing, public IDelegate
 {
@@ -465,7 +465,7 @@ class DelegateB : public IThing, public IDelegate
         return "delegate implementation";
     }
 };
- 
+
 class Delegator
 {
 public:
@@ -475,26 +475,26 @@ public:
            if (IThing * pThing = dynamic_cast<IThing*>(Delegate.get()))
             //delegate provides IThing interface
             return pThing->Thing();
-        
+
         return "default implementation";
     }
- 
+
     shared_ptr<IDelegate> Delegate;
 };
- 
+
 int main()
 {
     shared_ptr<DelegateA> delegateA(new DelegateA());
     shared_ptr<DelegateB> delegateB(new DelegateB());
     Delegator delegator;
- 
+
     // No delegate
     std::cout << delegator.Operation() << std::endl;
- 
+
     // Delegate doesn't handle "Thing"
     delegator.Delegate = delegateA;
     std::cout << delegator.Operation() << std::endl;
- 
+
     // Delegate handles "Thing"
     delegator.Delegate = delegateB;
     std::cout << delegator.Operation() << std::endl;
@@ -560,9 +560,9 @@ Prints:
 class Delegator
   operation: ->
     if @delegate and typeof (@delegate.thing) is "function"
-      return @delegate.thing() 
+      return @delegate.thing()
     "default implementation"
-    
+
 class Delegate
   thing: ->
     "Delegate Implementation"
@@ -571,22 +571,22 @@ testDelegator = ->
   # Delegator with no delegate.
   a = new Delegator()
   console.log a.operation()
-  
+
   # Delegator with delegate not implementing "thing"
   a.delegate = "A delegate may be any object"
   console.log a.operation()
-  
+
   # Delegator with delegate that does implement "thing"
   a.delegate = new Delegate()
   console.log a.operation()
-  
+
 testDelegator()
 
 ```
 
 output
 <lang>
- > coffee foo.coffee 
+ > coffee foo.coffee
 default implementation
 default implementation
 Delegate Implementation
@@ -724,7 +724,7 @@ I didn't find a way to check for existing methods, so the version with Object do
 ```dart
 class Delegator {
   var delegate;
- 
+
   String operation() {
     if (delegate == null)
       return "default implementation";
@@ -890,47 +890,47 @@ Using multi methods:
 ```elena
 import extensions;
 import system'routines;
- 
+
 interface IOperable
 {
     abstract operate() {}
 }
- 
+
 class Operable : IOperable
 {
     constructor() {}
- 
+
     operate()
         = "delegate implementation";
 }
- 
+
 class Delegator
 {
     object theDelegate;
- 
+
     set Delegate(object)
     {
         theDelegate := object
     }
- 
+
     internal operate(operable)
         = "default implementation";
- 
+
     internal operate(IOperable operable)
         = operable.operate();
- 
+
     operate()
         <= operate(theDelegate);
 }
- 
+
 public program()
 {
     var delegator := new Delegator();
- 
+
     new::(nil, new Object(), new Operable()).forEach:(o)
     {
        delegator.Delegate := o;
- 
+
        console.printLine(delegator.operate())
     }
 }
@@ -945,25 +945,25 @@ import system'routines;
 class Operable
 {
     Operable = self;
-    
+
     operate()
         = "delegate implementation";
 }
- 
+
 class Delegator
 {
     prop object Delegate;
- 
+
     constructor()
     {
         Delegate := nil
     }
- 
+
     operate()
     {
         // if the object does not support "get&operable" message - returns nil
         var operable := Delegate.Operable \ back:nil;
-        
+
         if (nil == operable)
         {
             ^ "default implementation"
@@ -974,15 +974,15 @@ class Delegator
         }
     }
 }
- 
+
 public program()
 {
     var delegator := new Delegator();
- 
+
     new::(nil, new Object(), new Operable()).forEach:(o)
     {
        delegator.Delegate := o;
- 
+
        console.printLine(delegator.operate())
     }
 }
@@ -1008,15 +1008,15 @@ type Delegator() =
 
   // write-only property "Delegate"
   member x.Delegate with set(d:obj) = del <- d
-  
+
   member x.operation() =
     if del = null then
       defaultOperation()
     else
       match del.GetType().GetMethod("thing", [||]) with
       | null -> defaultOperation()
-      | thing -> thing.Invoke(del, [||]) :?> string 
-      
+      | thing -> thing.Invoke(del, [||]) :?> string
+
 type Delegate() =
   member x.thing() = "delegate implementation"
 
@@ -1054,7 +1054,7 @@ delegate slave
   :m !: ( n -- ) del ! ;m
   :m init: 0 del ! ;m
   :m default ." default implementation" ;m
-  :m operation 
+  :m operation
      del @ 0= if self default exit then
      del @ has-meth thing
      if del @ thing
@@ -1062,13 +1062,13 @@ delegate slave
      then ;m
 ;class
 
-delegator master 
- 
+delegator master
+
 \ First, without a delegate
 master operation \ => default implementation
 
 \ then with a delegate that does not implement "thing"
-object o  
+object o
 o master !:
 master operation \ => default implementation
 
@@ -1290,7 +1290,7 @@ public interface Delegator {
   public static Delegator new_() {
     return $Delegator.new_();
   }
- 
+
   public default String operation() {
     return Optional.ofNullable(delegate())
       .map(Thingable::thing)
@@ -1401,10 +1401,10 @@ function Delegate() {
 function testDelegator(){
   var a = new Delegator() ;
   document.write(a.operation() + "\n") ;
-  
-  a.delegate = 'A delegate may be any object' ; 
+
+  a.delegate = 'A delegate may be any object' ;
   document.write(a.operation() + "\n") ;
-  
+
   a.delegate = new Delegate() ;
   document.write(a.operation() + "\n") ;
 }
@@ -1466,7 +1466,7 @@ Delegates.operation(c) = "delegate implementation"
 
 Whilst Kotlin supports class delegation 'out of the box', the delegate and delegator both have to implement a particular interface and the delegate cannot be optional or null.
 
-The first two scenarios are not therefore strictly possible though the second can be simulated by passing a 'responds' parameter to the delegate class constructor. 
+The first two scenarios are not therefore strictly possible though the second can be simulated by passing a 'responds' parameter to the delegate class constructor.
 
 ```scala
 // version 1.1.51
@@ -1593,7 +1593,7 @@ We use prototypes instead of classes for simplicity.
 
 :- end_object.
 
-% define an interface for delegate objects 
+% define an interface for delegate objects
 
 :- protocol(delegate).
 
@@ -1667,7 +1667,7 @@ Module Checkit {
 			doc$<=ret$+{
 			}
 			=ret$
-		}	
+		}
 	class:
 		Module Delegator {
 				class none {}
@@ -1675,11 +1675,11 @@ Module Checkit {
 				If match("G") then .delegate->(group) else .delegate<=.null
 		}
 	}
-	 
+
 	Class Thing {
 		function operation$(a,b) {
 			=str$(a*b)
-		}	
+		}
 	}
 	Module CallbyReference (&z as group) {
 		Print Z.operation$(5,30)
@@ -1736,7 +1736,7 @@ Module Checkit {
 	A1=B1
 	CallbyReference2 &A1
 	CallbyValue2 A1
-	Group Something {		
+	Group Something {
 	}
 	B=Delegator(Something)
 	Print B.operation$(10,20)
@@ -1786,7 +1786,7 @@ No implementation
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-delegator[del_]@operate := 
+delegator[del_]@operate :=
   If[StringQ[del@operate], del@operate, "default implementation"];
 del1 = Null;
 del2@banana = "phone";
@@ -1846,7 +1846,7 @@ delegate implementation
 	# ... now there is method thing(s:Str)
 	F thing(s:Str) 'delegate implementation'
 	echo(a.operation())
-	
+
 }
 ```
 
@@ -1868,12 +1868,12 @@ delegate implementation
 interface Thingable {
   method : virtual : public : Thing() ~ String;
 }
- 
+
 class Delegator {
   @delegate : Thingable;
 
   New() {
-  }   
+  }
 
   method : public : SetDelegate(delegate : Thingable) ~ Nil {
     @delegate := delegate;
@@ -1891,7 +1891,7 @@ class Delegator {
 
 class Delegate implements Thingable {
   New() {
-  }   
+  }
 
   method : public : Thing() ~ String {
     return "delegate implementation";
@@ -1903,7 +1903,7 @@ class Example {
     # Without a delegate:
     a := Delegator->New();
     Runtime->Assert(a->Operation()->Equals("default implementation"));
- 
+
     # With a delegate:
     d := Delegate->New();
     a->SetDelegate(d);
@@ -2067,13 +2067,13 @@ int main() {
 
 ```Oforth
 Object Class new: Delegate1
- 
+
 Object Class new: Delegate2
 Delegate2 method: thing  "Delegate implementation" println ;
- 
+
 Object Class new: Delegator(delegate)
 Delegator method: initialize  := delegate ;
- 
+
 Delegator method: operation
    @delegate respondTo(#thing) ifTrue: [ @delegate thing return ]
    "Default implementation" println ;
@@ -2237,21 +2237,21 @@ declare
 	"default implementation"
      end
   end
- 
+
   class Delegate from BaseObject
      meth thing($)
 	"delegate Implementation"
      end
   end
- 
-  A = {New Delegator noop}  
+
+  A = {New Delegator noop}
 in
   {System.showInfo {A operation($)}}
 
   {A set({New BaseObject noop})}
   {System.showInfo {A operation($)}}
 
-  {A set({New Delegate noop})}  
+  {A set({New Delegate noop})}
   {System.showInfo {A operation($)}}
 ```
 
@@ -2345,7 +2345,7 @@ has delegate => (
 );
 
 sub operation {
-   
+
     my ($self) = @_;
     if( $self->hasDelegate  && $self->delegate->can('thing') ){
         return $self->delegate->thing() . $postfix; # we are know that delegate has thing.
@@ -2681,7 +2681,7 @@ follows the requirement of the task better.
   (define delegator-2 (new delegator%))
   (define non-thinging-delegate (new non-thinging-delegate%))
   (define thinging-delegate     (new thinging-delegate%))
-  
+
   (test
    (send delegator-1 operation) => "default implementation"
    (send delegator-2 operation) => "default implementation"
@@ -2792,7 +2792,7 @@ impl<T: Thingable> Thingable for Delegator<T> {
 fn main() {
     let d: Delegator<Delegate> = Delegator(None);
     println!("{}", d.thing());
-    
+
     let d: Delegator<Delegate> = Delegator(Some(Delegate {}));
     println!("{}", d.thing());
 }
@@ -2840,13 +2840,13 @@ impl<T: Thingable> Thingable for Delegator<T> {
 fn main() {
     let d: Delegator<i32> = Delegator(None);
     println!("{}", d.thing());
-    
+
     let d: Delegator<i32> = Delegator(Some(42));
     println!("{}", d.thing());
-    
+
     let d: Delegator<Delegate> = Delegator(None);
     println!("{}", d.thing());
-    
+
     let d: Delegator<Delegate> = Delegator(Some(Delegate {}));
     println!("{}", d.thing());
 }
@@ -2946,7 +2946,7 @@ say "Delegate: #{d.operation}"
 Definition of the thingy:
 
 ```smalltalk
-Object 
+Object
  subclass:#Thingy
  instanceVariableNames:''
 
@@ -2957,7 +2957,7 @@ thing
 Definition of the delegator:
 
 ```smalltalk
-Object 
+Object
  subclass:#Delegator
  instanceVariableNames:'delegate'
 
@@ -2965,7 +2965,7 @@ delegate:something
     delegate := something
 
 operation
-    ^ delegate 
+    ^ delegate
         perform:#thing ifNotUnderstood:'default implementation'.
 ```
 
@@ -3080,7 +3080,7 @@ oo::class create Delegator {
     constructor args {
         my delegate {*}$args
     }
-    
+
     method delegate args {
         if {[llength $args] == 0} {
             if {[info exists delegate]} {
@@ -3092,7 +3092,7 @@ oo::class create Delegator {
             return -code error "wrong # args: should be \"[self] delegate ?target?\""
         }
     }
-    
+
     method operation {} {
         try {
             set result [$delegate thing]
@@ -3189,7 +3189,7 @@ The resulting output:
 
 ```zkl
 class Thingable{ var thing; }
- 
+
 class Delegator{
    var delegate;
    fcn operation{
@@ -3197,11 +3197,11 @@ class Delegator{
       else "default implementation"
    }
 }
- 
+
 class Delegate(Thingable){ thing = "delegate implementation" }
 ```
 
- 
+
 
 ```zkl
     // Without a delegate:

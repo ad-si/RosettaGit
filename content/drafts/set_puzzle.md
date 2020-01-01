@@ -13,10 +13,10 @@ tags = []
 {{task|Cards}} [[Category:Puzzles]]
 {{omit from|GUISS}}
 
-Set Puzzles are created with a deck of cards from the [[wp:Set (game)|Set Game™]]. The object of the puzzle is to find sets of 3 cards in a rectangle of cards that have been dealt face up. 
+Set Puzzles are created with a deck of cards from the [[wp:Set (game)|Set Game™]]. The object of the puzzle is to find sets of 3 cards in a rectangle of cards that have been dealt face up.
 
 
-There are 81 cards in a deck. 
+There are 81 cards in a deck.
 Each card contains a unique variation of the following four features: ''color, symbol, number and shading''.
 
 * there are three colors:
@@ -41,7 +41,7 @@ Each card contains a unique variation of the following four features: ''color, s
 
 Three cards form a ''set'' if each feature is either the same on each card, or is different on each card. For instance: all 3 cards are red, all 3 cards have a different symbol, all 3 cards have a different number of symbols, all 3 cards are striped.
 
-There are two degrees of difficulty: [http://www.setgame.com/set/rules_basic.htm ''basic''] and [http://www.setgame.com/set/rules_advanced.htm ''advanced'']. The basic mode deals 9 cards, that contain exactly 4 sets; the advanced mode deals 12 cards that contain exactly 6 sets. 
+There are two degrees of difficulty: [http://www.setgame.com/set/rules_basic.htm ''basic''] and [http://www.setgame.com/set/rules_advanced.htm ''advanced'']. The basic mode deals 9 cards, that contain exactly 4 sets; the advanced mode deals 12 cards that contain exactly 6 sets.
 
 When creating sets you may use the same card more than once.
 
@@ -49,7 +49,7 @@ When creating sets you may use the same card more than once.
 
 
 ;Task
-Write code that deals the cards (9 or 12, depending on selected mode) from a shuffled deck in which the total number of sets that could be found is 4 (or 6, respectively); and print the contents of the cards and the sets. 
+Write code that deals the cards (9 or 12, depending on selected mode) from a shuffled deck in which the total number of sets that could be found is 4 (or 6, respectively); and print the contents of the cards and the sets.
 
 For instance:
 
@@ -117,22 +117,22 @@ We start with the specification of a package "Set_Puzzle.
 
 ```Ada
 package Set_Puzzle is
-   
+
    type Three is range 1..3;
    type Card is array(1 .. 4) of Three;
-   type Cards is array(Positive range <>) of Card;   
+   type Cards is array(Positive range <>) of Card;
    type Set is array(Three) of Positive;
-   
+
    procedure Deal_Cards(Dealt: out Cards);
    -- ouputs an array with disjoint cards
-   
+
    function To_String(C: Card) return String;
-   
+
    generic
       with procedure Do_something(C: Cards; S: Set);
    procedure Find_Sets(Given: Cards);
-   -- calls Do_Something once for each set it finds. 
-   
+   -- calls Do_Something once for each set it finds.
+
 end Set_Puzzle;
 ```
 
@@ -144,10 +144,10 @@ Now we implement the package "Set_Puzzle".
 with Ada.Numerics.Discrete_Random;
 
 package body Set_Puzzle is
-   
+
    package Rand is new Ada.Numerics.Discrete_Random(Three);
    R: Rand.Generator;
-   
+
    function Locate(Some: Cards; C: Card) return Natural is
       -- returns index of card C in Some, or 0 if not found
    begin
@@ -158,11 +158,11 @@ package body Set_Puzzle is
       end loop;
       return 0;
    end Locate;
-   
+
    procedure Deal_Cards(Dealt: out Cards) is
       function Random_Card return Card is
 	 (Rand.Random(R), Rand.Random(R), Rand.Random(R), Rand.Random(R));
-   begin 
+   begin
       for I in Dealt'Range loop
 	 -- draw a random card until different from all card previously drawn
 	 Dealt(I) := Random_Card; -- draw random card
@@ -172,14 +172,14 @@ package body Set_Puzzle is
 	 end loop;
       end loop;
    end Deal_Cards;
-      
+
    procedure Find_Sets(Given: Cards) is
       function To_Set(A, B: Card) return Card is
 	 -- returns the unique card C, which would make a set with A and B
 	 C: Card;
       begin
 	 for I in 1 .. 4 loop
-	    if A(I) = B(I) then 
+	    if A(I) = B(I) then
 	       C(I) := A(I); -- all three the same
 	    else
 	       C(I) := 6 - A(I) - B(I); -- all three different;
@@ -187,9 +187,9 @@ package body Set_Puzzle is
 	 end loop;
 	 return C;
       end To_Set;
-      
+
       X: Natural;
-      
+
    begin
       for I in Given'Range loop
 	 for J in Given'First .. I-1 loop
@@ -200,18 +200,18 @@ package body Set_Puzzle is
 	 end loop;
       end loop;
    end Find_Sets;
-	    
+
    function To_String(C: Card) return String is
-      
-      Col: constant array(Three) of String(1..6) 
+
+      Col: constant array(Three) of String(1..6)
 	:= ("Red   ", "Green ", "Purple");
-      Sym: constant array(Three) of String(1..8) 
+      Sym: constant array(Three) of String(1..8)
 	:= ("Oval    ", "Squiggle", "Diamond ");
-      Num: constant array(Three) of String(1..5) 
+      Num: constant array(Three) of String(1..5)
 	:= ("One  ", "Two  ", "Three");
-      Sha: constant array(Three) of String(1..7) 
+      Sha: constant array(Three) of String(1..7)
 	:= ("Solid  ", "Open   ", "Striped");
-      
+
    begin
       return (Col(C(1)) & " " & Sym(C(2)) & " " & Num(C(3)) & " " & Sha(C(4)));
    end To_String;
@@ -222,21 +222,21 @@ end Set_Puzzle;
 ```
 
 
-Finally, we write the main program, using the above package. It reads two parameters from the command line. The first parameter describes the number of cards, the second one the number of sets. Thus, for the basic mode one has to call "puzzle 9 4", for the advanced mode "puzzle 12 6", but the program would support any other combination of parameters just as well. 
+Finally, we write the main program, using the above package. It reads two parameters from the command line. The first parameter describes the number of cards, the second one the number of sets. Thus, for the basic mode one has to call "puzzle 9 4", for the advanced mode "puzzle 12 6", but the program would support any other combination of parameters just as well.
 
 
 ```Ada
 with Ada.Text_IO, Set_Puzzle, Ada.Command_Line;
 
 procedure Puzzle is
-   
+
    package TIO renames Ada.Text_IO;
-   
+
    Card_Count:     Positive := Positive'Value(Ada.Command_Line.Argument(1));
    Required_Sets:  Positive := Positive'Value(Ada.Command_Line.Argument(2));
-   
+
    Cards: Set_Puzzle.Cards(1 .. Card_Count);
-   
+
    function Cnt_Sets(C: Set_Puzzle.Cards) return Natural is
       Cnt: Natural := 0;
       procedure Count_Sets(C: Set_Puzzle.Cards; S: Set_Puzzle.Set) is
@@ -248,7 +248,7 @@ procedure Puzzle is
       CS(C);
       return Cnt;
    end Cnt_Sets;
-   
+
    procedure Print_Sets(C: Set_Puzzle.Cards) is
       procedure Print_A_Set(C: Set_Puzzle.Cards; S: Set_Puzzle.Set) is
       begin
@@ -266,14 +266,14 @@ begin
       Set_Puzzle.Deal_Cards(Cards);
       exit when Cnt_Sets(Cards) = Required_Sets;
    end loop;    -- until number of sets is as required
-   
-   for I in Cards'Range loop    -- print the cards 
+
+   for I in Cards'Range loop    -- print the cards
       if I < 10 then
          TIO.Put(" ");
       end if;
       TIO.Put_Line(Integer'Image(I) & " " & Set_Puzzle.To_String(Cards(I)));
    end loop;
-   
+
    Print_Sets(Cards);    -- print the sets
 end Puzzle;
 ```
@@ -285,29 +285,29 @@ end Puzzle;
 ```txt
 >./puzzle 9 4
   1 Red    Diamond  One   Striped
-  2 Green  Squiggle Two   Solid  
-  3 Red    Squiggle Three Open   
-  4 Green  Squiggle Three Solid  
-  5 Purple Oval     Two   Open   
+  2 Green  Squiggle Two   Solid
+  3 Red    Squiggle Three Open
+  4 Green  Squiggle Three Solid
+  5 Purple Oval     Two   Open
   6 Purple Squiggle One   Striped
-  7 Green  Squiggle One   Solid  
-  8 Purple Squiggle One   Solid  
-  9 Purple Diamond  Three Solid  
+  7 Green  Squiggle One   Solid
+  8 Purple Squiggle One   Solid
+  9 Purple Diamond  Three Solid
 ( 2, 3, 6 )  ( 1, 4, 5 )  ( 2, 4, 7 )  ( 5, 6, 9 )
 
 >./puzzle 12 6
-  1 Purple Diamond  One   Solid  
+  1 Purple Diamond  One   Solid
   2 Red    Diamond  One   Striped
   3 Red    Oval     Three Striped
-  4 Green  Oval     Two   Solid  
-  5 Red    Squiggle Three Solid  
-  6 Green  Squiggle Two   Solid  
+  4 Green  Oval     Two   Solid
+  5 Red    Squiggle Three Solid
+  6 Green  Squiggle Two   Solid
   7 Red    Squiggle Three Striped
-  8 Red    Squiggle Three Open   
+  8 Red    Squiggle Three Open
   9 Purple Squiggle One   Striped
- 10 Red    Diamond  Two   Solid  
- 11 Red    Squiggle One   Open   
- 12 Red    Oval     One   Solid  
+ 10 Red    Diamond  Two   Solid
+ 11 Red    Squiggle One   Open
+ 12 Red    Oval     One   Solid
 ( 1, 4, 5 )  ( 5, 7, 8 )  ( 6, 8, 9 )  ( 3, 10, 11 )  ( 5, 10, 12 )  ( 2, 11, 12 )
 ```
 
@@ -406,7 +406,7 @@ comb(n,t) { ; Generate all n choose t combinations of 1..n, lexicographically
 	Loop %t%
 		c%A_Index% := A_Index
 	i := t+1, c%i% := n+1
-	
+
 	Loop {
 		Loop %t%
 			i := t+1-A_Index, c .= c%i% " "
@@ -509,8 +509,8 @@ Set 6:
 
 Brute force. Each card is a unique number in the range of [0,81].  Randomly deal a hand of cards until exactly the required number of sets are found.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 char *names[4][3] = {
@@ -623,30 +623,30 @@ int main(void)
 #include <string>
 
 enum color {
-    red, green, purple 
+    red, green, purple
 };
 enum symbol {
-    oval, squiggle, diamond 
+    oval, squiggle, diamond
 };
 enum number {
-    one, two, three 
+    one, two, three
 };
 enum shading {
-    solid, open, striped 
+    solid, open, striped
 };
 class card {
 public:
     card( color c, symbol s, number n, shading h ) {
         clr = c; smb = s; nbr = n; shd = h;
     }
-    color getColor() { 
+    color getColor() {
         return clr;
     }
-    symbol getSymbol() { 
-        return smb; 
+    symbol getSymbol() {
+        return smb;
     }
     number getNumber() {
-        return nbr; 
+        return nbr;
     }
     shading getShading() {
         return shd;
@@ -675,9 +675,9 @@ public:
             for( size_t s = oval; s <= diamond; s++ ) {
                 for( size_t n = one; n <= three; n++ ) {
                     for( size_t h = solid; h <= striped; h++ ) {
-                        card crd( static_cast<color>  ( c ), 
-                                  static_cast<symbol> ( s ), 
-                                  static_cast<number> ( n ), 
+                        card crd( static_cast<color>  ( c ),
+                                  static_cast<symbol> ( s ),
+                                  static_cast<number> ( n ),
                                   static_cast<shading>( h ) );
                         _cards.push_back( crd );
                     }
@@ -727,7 +727,7 @@ void displayCardsSets( std::vector<card>& cards, std::vector<set>& sets ) {
     std::cout << "\n ** CONTAINING " << sets.size() << " SETS: **\n";
     for( std::vector<set>::iterator i = sets.begin(); i != sets.end(); i++ ) {
         for( size_t j = 0; j < ( *i ).index.size(); j++ ) {
-            std::cout << " " << std::setiosflags( std::ios::left ) << std::setw( 34 ) 
+            std::cout << " " << std::setiosflags( std::ios::left ) << std::setw( 34 )
                       << cards.at( ( *i ).index.at( j ) ).toString() << " : "
                       << std::resetiosflags( std::ios::left ) << std::setw( 2 ) << ( *i ).index.at( j ) + 1 << "\n";
         }
@@ -1196,28 +1196,28 @@ Containing:
    (for* ((i 81)(j 81)(k 81))
 	(vector-set! TRIPLES (+ i (* 81 j) (* 6561 k))
 		(check-set [DECK i] [DECK j] [DECK k]))))
-	
+
 ;; a deal is a list of cards id's.
 (define (show-deal deal)
    (for ((card deal)) (writeln [DECK card]))
    (for ((set (combinations deal 3)))
-     (when 
+     (when
      (check-set [DECK (first set)] [DECK (second set)][DECK (third set)])
      (writeln 'winner set))))
-		
+
 ;; rules of game here
 (define (check-set cards: a b c)
 	(for ((i (in-range 1 5))) ;; each feature
 	#:continue (and (= [a i] [b i]) (= [a i] [c i]))
 	#:continue (and (!= [a i] [b i]) (!= [a i] [c i]) (!= [b i][c i]))
 	#:break  #t =>  #f ))
-	
+
 ;; sets = list of triples (card-id card-id card-id)
 (define (count-sets sets )
 	(for/sum ((s sets))
     (if [TRIPLES ( + (first s) (* 81 (second s)) (* 6561 (third s)))]
     1 0)))
-				
+
 
 ;; task
 (make-triples)
@@ -1237,59 +1237,59 @@ Containing:
 ```txt
 
 (play) ;; The 9-4 game by default
-#( 13 red two squiggle open)    
-#( 54 purple one oval solid)    
-#( 2 red one oval striped)    
-#( 15 red two diamond solid)    
-#( 53 green three diamond striped)    
-#( 48 green three squiggle solid)    
-#( 41 green two squiggle striped)    
-#( 66 purple two squiggle solid)    
-#( 64 purple two oval open)    
-winner     (13 54 53)    
-winner     (13 41 66)    
-winner     (54 15 48)    
-winner     (15 41 64) 
+#( 13 red two squiggle open)
+#( 54 purple one oval solid)
+#( 2 red one oval striped)
+#( 15 red two diamond solid)
+#( 53 green three diamond striped)
+#( 48 green three squiggle solid)
+#( 41 green two squiggle striped)
+#( 66 purple two squiggle solid)
+#( 64 purple two oval open)
+winner     (13 54 53)
+winner     (13 41 66)
+winner     (54 15 48)
+winner     (15 41 64)
 ;; 10 deals
 
 (play 12 6)
-#( 43 green two diamond open)    
-#( 16 red two diamond open)    
-#( 79 purple three diamond open)    
-#( 63 purple two oval solid)    
-#( 60 purple one diamond solid)    
-#( 75 purple three squiggle solid)    
-#( 64 purple two oval open)    
-#( 71 purple two diamond striped)    
-#( 67 purple two squiggle open)    
-#( 34 green one diamond open)    
-#( 59 purple one squiggle striped)    
-#( 54 purple one oval solid)    
-winner     (16 79 34)    
-winner     (79 63 59)    
-winner     (79 60 71)    
-winner     (63 60 75)    
-winner     (63 71 67)    
-winner     (75 67 59)  
+#( 43 green two diamond open)
+#( 16 red two diamond open)
+#( 79 purple three diamond open)
+#( 63 purple two oval solid)
+#( 60 purple one diamond solid)
+#( 75 purple three squiggle solid)
+#( 64 purple two oval open)
+#( 71 purple two diamond striped)
+#( 67 purple two squiggle open)
+#( 34 green one diamond open)
+#( 59 purple one squiggle striped)
+#( 54 purple one oval solid)
+winner     (16 79 34)
+winner     (79 63 59)
+winner     (79 60 71)
+winner     (63 60 75)
+winner     (63 71 67)
+winner     (75 67 59)
 ;; 31 deals
 
 ;; the (9 6) game is more difficult
-#( 11 red two oval striped)    
-#( 9 red two oval solid)    
-#( 26 red three diamond striped)    
-#( 5 red one squiggle striped)    
-#( 60 purple one diamond solid)    
-#( 43 green two diamond open)    
-#( 10 red two oval open)    
-#( 67 purple two squiggle open)    
-#( 48 green three squiggle solid)    
-winner     (11 9 10)    
-winner     (11 26 5)    
-winner     (9 60 48)    
-winner     (26 60 43)    
-winner     (5 67 48)    
-winner     (43 10 67)    
-;; 17200 deals     
+#( 11 red two oval striped)
+#( 9 red two oval solid)
+#( 26 red three diamond striped)
+#( 5 red one squiggle striped)
+#( 60 purple one diamond solid)
+#( 43 green two diamond open)
+#( 10 red two oval open)
+#( 67 purple two squiggle open)
+#( 48 green three squiggle solid)
+winner     (11 9 10)
+winner     (11 26 5)
+winner     (9 60 48)
+winner     (26 60 43)
+winner     (5 67 48)
+winner     (43 10 67)
+;; 17200 deals
 
 ```
 
@@ -1308,7 +1308,7 @@ defmodule RC do
     IO.puts "Containing #{length(sets)} sets:"
     Enum.each(sets, fn set -> print_cards(set) end)
   end
-  
+
   defp get_puzzle_and_answer(hand_size, num_sets_goal, deck) do
     hand = Enum.take_random(deck, hand_size)
     sets = get_all_sets(hand)
@@ -1318,7 +1318,7 @@ defmodule RC do
       get_puzzle_and_answer(hand_size, num_sets_goal, deck)
     end
   end
-  
+
   defp get_all_sets(hand) do
     Enum.filter(comb(hand, 3), fn candidate ->
       List.flatten(candidate)
@@ -1327,24 +1327,24 @@ defmodule RC do
       |> Enum.all?(fn v -> length(v) != 2 end)
     end)
   end
-  
+
   defp print_cards(cards) do
     Enum.each(cards, fn card ->
       :io.format "  ~-8s  ~-8s  ~-8s  ~-8s~n", card
     end)
     IO.puts ""
   end
-  
+
   @colors   ~w(red green purple)a
   @symbols  ~w(oval squiggle diamond)a
   @numbers  ~w(one two three)a
   @shadings ~w(solid open striped)a
-  
+
   defp produce_deck do
     for color <- @colors, symbol <- @symbols, number <- @numbers, shading <- @shadings,
       do: [color, symbol, number, shading]
   end
-  
+
   defp comb(_, 0), do: [[]]
   defp comb([], _), do: []
   defp comb([h|t], m) do
@@ -1362,71 +1362,71 @@ RC.set_puzzle(12, 6)
 ```txt
 
 Dealt 9 cards:
-  green     oval      one       open    
-  red       oval      one       open    
-  red       oval      two       open    
-  green     diamond   two       striped 
-  green     diamond   three     open    
-  green     diamond   one       open    
-  purple    squiggle  one       open    
-  red       oval      three     solid   
-  red       oval      three     open    
+  green     oval      one       open
+  red       oval      one       open
+  red       oval      two       open
+  green     diamond   two       striped
+  green     diamond   three     open
+  green     diamond   one       open
+  purple    squiggle  one       open
+  red       oval      three     solid
+  red       oval      three     open
 
 Containing 4 sets:
-  red       oval      one       open    
-  red       oval      two       open    
-  red       oval      three     open    
+  red       oval      one       open
+  red       oval      two       open
+  red       oval      three     open
 
-  red       oval      one       open    
-  green     diamond   one       open    
-  purple    squiggle  one       open    
+  red       oval      one       open
+  green     diamond   one       open
+  purple    squiggle  one       open
 
-  red       oval      two       open    
-  green     diamond   three     open    
-  purple    squiggle  one       open    
+  red       oval      two       open
+  green     diamond   three     open
+  purple    squiggle  one       open
 
-  green     diamond   two       striped 
-  purple    squiggle  one       open    
-  red       oval      three     solid   
+  green     diamond   two       striped
+  purple    squiggle  one       open
+  red       oval      three     solid
 
 Dealt 12 cards:
-  purple    oval      one       open    
-  purple    diamond   two       open    
-  red       oval      three     striped 
-  purple    diamond   three     striped 
-  purple    oval      one       solid   
-  red       oval      two       open    
-  green     diamond   three     open    
-  green     squiggle  one       solid   
-  green     oval      three     striped 
-  red       diamond   two       solid   
-  red       diamond   one       solid   
-  green     squiggle  three     striped 
+  purple    oval      one       open
+  purple    diamond   two       open
+  red       oval      three     striped
+  purple    diamond   three     striped
+  purple    oval      one       solid
+  red       oval      two       open
+  green     diamond   three     open
+  green     squiggle  one       solid
+  green     oval      three     striped
+  red       diamond   two       solid
+  red       diamond   one       solid
+  green     squiggle  three     striped
 
 Containing 6 sets:
-  purple    oval      one       open    
-  red       diamond   two       solid   
-  green     squiggle  three     striped 
+  purple    oval      one       open
+  red       diamond   two       solid
+  green     squiggle  three     striped
 
-  purple    diamond   two       open    
-  red       oval      three     striped 
-  green     squiggle  one       solid   
+  purple    diamond   two       open
+  red       oval      three     striped
+  green     squiggle  one       solid
 
-  red       oval      three     striped 
-  purple    diamond   three     striped 
-  green     squiggle  three     striped 
+  red       oval      three     striped
+  purple    diamond   three     striped
+  green     squiggle  three     striped
 
-  purple    diamond   three     striped 
-  red       oval      two       open    
-  green     squiggle  one       solid   
+  purple    diamond   three     striped
+  red       oval      two       open
+  green     squiggle  one       solid
 
-  purple    oval      one       solid   
-  red       oval      two       open    
-  green     oval      three     striped 
+  purple    oval      one       solid
+  red       oval      two       open
+  green     oval      three     striped
 
-  purple    oval      one       solid   
-  green     squiggle  one       solid   
-  red       diamond   one       solid   
+  purple    oval      one       solid
+  green     squiggle  one       solid
+  red       diamond   one       solid
 
 ```
 
@@ -1602,7 +1602,7 @@ type Card = { Number: Number; Color: Color; Fill: Fill; Symbol: Symbol }
 let SetSize = 3
 
 type CardsGenerator() =
-    let _rand = Random()    
+    let _rand = Random()
 
     let shuffleInPlace data =
         Array.sortInPlaceBy (fun _ -> (_rand.Next(0, Array.length data))) data
@@ -1616,12 +1616,12 @@ type CardsGenerator() =
 
     let _cards = createCards()
 
-    member x.GetHand cardCount =        
+    member x.GetHand cardCount =
         shuffleInPlace _cards
         Seq.take cardCount _cards |> Seq.toList
 
 // Find all the combinations of n elements
-let rec combinations n items = 
+let rec combinations n items =
     match n, items with
     | 0, _  -> [[]]
     | _, [] -> []
@@ -1634,7 +1634,7 @@ let validCardSet (cards: Card list) =
         | _ -> false
 
     // Build and validate the feature lists
-    let isValid = cards |> List.fold (fun (ns, cs, fs, ss) c ->                                
+    let isValid = cards |> List.fold (fun (ns, cs, fs, ss) c ->
                                (c.Number::ns, c.Color::cs, c.Fill::fs, c.Symbol::ss)) ([], [], [], [])
                         |> fun (ns, cs, fs, ss) ->
                                (validFeature ns) && (validFeature cs) && (validFeature fs) && (validFeature ss)
@@ -1647,7 +1647,7 @@ let findSolution cardCount setCount =
     let rec search () =
         let hand = cardsGen.GetHand cardCount
         let foundSets = combinations SetSize hand |> List.choose validCardSet
-        
+
         if foundSets.Length = setCount then (hand, foundSets) else search()
 
     search()
@@ -1812,15 +1812,15 @@ Containing 4 sets:
 purple one   diamond  striped
 purple three diamond  striped
 purple two   diamond  striped
-                       
+
 purple three squiggle open
 purple one   oval     solid
 purple two   diamond  striped
-                       
+
 green  two   squiggle striped
 red    one   oval     striped
 purple three diamond  striped
-                       
+
 green  two   squiggle striped
 red    two   oval     striped
 purple two   diamond  striped
@@ -1843,23 +1843,23 @@ Containing 6 sets:
 green  one   oval     striped
 purple two   oval     solid
 red    three oval     open
-                       
+
 green  one   oval     striped
 purple one   squiggle striped
 red    one   diamond  striped
-                       
+
 red    two   diamond  open
 red    two   squiggle solid
 red    two   oval     striped
-                       
+
 purple two   oval     solid
 green  three squiggle open
 red    one   diamond  striped
-                       
+
 green  three squiggle open
 purple one   squiggle striped
 red    two   squiggle solid
-                       
+
 red    two   squiggle solid
 red    three oval     open
 red    one   diamond  striped
@@ -2093,9 +2093,9 @@ getHand n =
      let az = [minBound .. maxBound]
          deck =
            [ Card co sy ct sh
-           | co <- az 
-           , sy <- az 
-           , ct <- az 
+           | co <- az
+           , sy <- az
+           , ct <- az
            , sh <- az ]
          (a, (newGen, _)) = runState (replicateM n getCard) (gen, deck)
      in (a, newGen)
@@ -2226,7 +2226,7 @@ countSets=: #@:getSets
 
 set_puzzle=: verb define
  target=. <. -: y
- whilst. target ~: countSets Hand do. 
+ whilst. target ~: countSets Hand do.
    Hand=. y drawRandom Deck
  end.
  echo 'Dealt ',(": y),' Cards:'
@@ -2242,32 +2242,32 @@ set_puzzle=: verb define
 ```j
    set_puzzle 9
 Dealt 9 Cards:
-one, red, solid, oval         
-one, green, open, squiggle    
+one, red, solid, oval
+one, green, open, squiggle
 two, purple, striped, squiggle
-three, red, solid, squiggle   
-three, red, open, oval        
-three, green, solid, oval     
-three, green, open, diamond   
-three, purple, open, oval     
-three, purple, striped, oval  
+three, red, solid, squiggle
+three, red, open, oval
+three, green, solid, oval
+three, green, open, diamond
+three, purple, open, oval
+three, purple, striped, oval
 
 Found 4 Sets:
-three, red, solid, squiggle   
-three, green, open, diamond   
-three, purple, striped, oval  
+three, red, solid, squiggle
+three, green, open, diamond
+three, purple, striped, oval
 
-one, red, solid, oval         
+one, red, solid, oval
 two, purple, striped, squiggle
-three, green, open, diamond   
+three, green, open, diamond
 
-one, green, open, squiggle    
+one, green, open, squiggle
 two, purple, striped, squiggle
-three, red, solid, squiggle   
+three, red, solid, squiggle
 
-three, red, open, oval        
-three, green, solid, oval     
-three, purple, striped, oval  
+three, red, open, oval
+three, green, solid, oval
+three, purple, striped, oval
 ```
 
 
@@ -2467,9 +2467,9 @@ function SetGameTM(basic = true)
     setsneeded = div(drawsize, 2)
     setsof3 = Vector{Vector{NTuple{4, String}}}()
     draw = Vector{NTuple{4, String}}()
-    deck = collect(Iterators.product(["red", "green", "purple"], ["one", "two", "three"], 
+    deck = collect(Iterators.product(["red", "green", "purple"], ["one", "two", "three"],
         ["oval", "squiggle", "diamond"], ["solid", "open", "striped"]))
-        
+
     while length(setsof3) != setsneeded
         empty!(draw)
         empty!(setsof3)
@@ -2487,7 +2487,7 @@ function SetGameTM(basic = true)
             end
         end
     end
-    
+
     println("Dealt $drawsize cards:")
     for card in draw
         println("    $card")
@@ -2505,7 +2505,7 @@ SetGameTM()
 SetGameTM(false)
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
  Dealt 9 cards:
@@ -2518,24 +2518,24 @@ SetGameTM(false)
     ("green", "one", "squiggle", "striped")
     ("green", "two", "oval", "solid")
     ("purple", "two", "squiggle", "open")
- 
+
  Formed these cards into 4 sets:
     ("green", "three", "diamond", "open")
     ("green", "one", "squiggle", "striped")
     ("green", "two", "oval", "solid")
- 
+
     ("purple", "one", "diamond", "striped")
     ("purple", "three", "oval", "solid")
     ("purple", "two", "squiggle", "open")
- 
+
     ("purple", "one", "diamond", "striped")
     ("red", "one", "oval", "striped")
     ("green", "one", "squiggle", "striped")
- 
+
     ("purple", "three", "oval", "solid")
     ("red", "two", "diamond", "open")
     ("green", "one", "squiggle", "striped")
- 
+
  Dealt 12 cards:
     ("red", "one", "squiggle", "open")
     ("green", "one", "diamond", "striped")
@@ -2549,28 +2549,28 @@ SetGameTM(false)
     ("purple", "two", "diamond", "open")
     ("purple", "three", "diamond", "striped")
     ("purple", "two", "squiggle", "solid")
- 
+
  Formed these cards into 6 sets:
     ("red", "one", "squiggle", "open")
     ("green", "three", "squiggle", "striped")
     ("purple", "two", "squiggle", "solid")
- 
+
     ("red", "one", "squiggle", "open")
     ("green", "three", "oval", "open")
     ("purple", "two", "diamond", "open")
- 
+
     ("green", "one", "diamond", "striped")
     ("green", "three", "squiggle", "striped")
     ("green", "two", "oval", "striped")
- 
+
     ("green", "three", "squiggle", "striped")
     ("red", "one", "oval", "solid")
     ("purple", "two", "diamond", "open")
- 
+
     ("red", "one", "oval", "solid")
     ("purple", "two", "oval", "striped")
     ("green", "three", "oval", "open")
- 
+
     ("purple", "two", "oval", "striped")
     ("purple", "two", "diamond", "open")
     ("purple", "two", "squiggle", "solid")
@@ -2601,15 +2601,15 @@ class Card(
     val shading: Shading
 ) : Comparable<Card> {
 
-    private val value = 
+    private val value =
         color.ordinal * 27 + symbol.ordinal * 9 + number.ordinal * 3  + shading.ordinal
-  
+
     override fun compareTo(other: Card) = value.compareTo(other.value)
 
     override fun toString() = (
         color.name.padEnd(8)   +
         symbol.name.padEnd(10) +
-        number.name.padEnd(7)  + 
+        number.name.padEnd(7)  +
         shading.name.padEnd(7)
     ).toLowerCase()
 
@@ -2618,12 +2618,12 @@ class Card(
     }
 }
 
-fun createDeck() = 
+fun createDeck() =
     List<Card>(81) {
         val col = Color.values()  [it / 27]
         val sym = Symbol.values() [it / 9 % 3]
         val num = Number.values() [it / 3 % 3]
-        val shd = Shading.values()[it % 3] 
+        val shd = Shading.values()[it % 3]
         Card(col, sym, num, shd)
     }
 
@@ -2636,11 +2636,11 @@ fun playGame(degree: Degree) {
     outer@ while (true) {
         shuffle(deck)
         hand = deck.take(nCards).toTypedArray()
-        var count = 0  
+        var count = 0
         for (i in 0 until hand.size - 2) {
             for (j in i + 1 until hand.size - 1) {
                 for (k in j + 1 until hand.size) {
-                    val trio = arrayOf(hand[i], hand[j], hand[k]) 
+                    val trio = arrayOf(hand[i], hand[j], hand[k])
                     if (isSet(trio)) {
                         sets[count++] = trio
                         if (count == nSets) break@outer
@@ -2657,7 +2657,7 @@ fun playGame(degree: Degree) {
         s.sort()
         println(s.joinToString("\n"))
         println()
-    }  
+    }
 }
 
 fun isSet(trio: Array<Card>): Boolean {
@@ -2668,7 +2668,7 @@ fun isSet(trio: Array<Card>): Boolean {
     return (r1 + r2 + r3 + r4) == 0
 }
 
-fun main(args: Array<String>) {   
+fun main(args: Array<String>) {
     playGame(Degree.BASIC)
     println()
     playGame(Degree.ADVANCED)
@@ -2682,75 +2682,75 @@ Sample output:
 
 DEALT 9 CARDS:
 
-red     oval      three  solid  
-red     diamond   two    solid  
-green   oval      one    open   
-green   oval      three  open   
-green   squiggle  one    open   
-green   diamond   one    open   
+red     oval      three  solid
+red     diamond   two    solid
+green   oval      one    open
+green   oval      three  open
+green   squiggle  one    open
+green   diamond   one    open
 purple  oval      three  striped
-purple  squiggle  three  solid  
+purple  squiggle  three  solid
 purple  diamond   two    striped
 
 CONTAINING 4 SETS:
 
-red     oval      three  solid  
-green   squiggle  one    open   
+red     oval      three  solid
+green   squiggle  one    open
 purple  diamond   two    striped
 
-red     oval      three  solid  
-green   oval      three  open   
+red     oval      three  solid
+green   oval      three  open
 purple  oval      three  striped
 
-green   oval      one    open   
-green   squiggle  one    open   
-green   diamond   one    open   
+green   oval      one    open
+green   squiggle  one    open
+green   diamond   one    open
 
-red     diamond   two    solid  
-green   squiggle  one    open   
+red     diamond   two    solid
+green   squiggle  one    open
 purple  oval      three  striped
 
 
 DEALT 12 CARDS:
 
-red     squiggle  two    solid  
-red     diamond   two    solid  
-red     diamond   two    open   
+red     squiggle  two    solid
+red     diamond   two    solid
+red     diamond   two    open
 red     diamond   two    striped
-green   oval      one    open   
-green   oval      three  solid  
-green   oval      three  open   
-green   squiggle  one    solid  
+green   oval      one    open
+green   oval      three  solid
+green   oval      three  open
+green   squiggle  one    solid
 green   diamond   one    striped
-purple  oval      one    solid  
-purple  oval      three  open   
+purple  oval      one    solid
+purple  oval      three  open
 purple  squiggle  one    striped
 
 CONTAINING 6 SETS:
 
-red     diamond   two    open   
-green   oval      three  solid  
+red     diamond   two    open
+green   oval      three  solid
 purple  squiggle  one    striped
 
-red     diamond   two    solid  
-red     diamond   two    open   
+red     diamond   two    solid
+red     diamond   two    open
 red     diamond   two    striped
 
-red     diamond   two    solid  
-green   oval      three  open   
+red     diamond   two    solid
+green   oval      three  open
 purple  squiggle  one    striped
 
-red     squiggle  two    solid  
+red     squiggle  two    solid
 green   diamond   one    striped
-purple  oval      three  open   
+purple  oval      three  open
 
-green   oval      one    open   
-green   squiggle  one    solid  
+green   oval      one    open
+green   squiggle  one    solid
 green   diamond   one    striped
 
 red     diamond   two    striped
-green   squiggle  one    solid  
-purple  oval      three  open   
+green   squiggle  one    solid
+purple  oval      three  open
 
 ```
 
@@ -2776,7 +2776,7 @@ deal[{numDeal_, setNum_}] := Module[{cards, count = 0},
    While[count != setNum,
     cards = RandomSample[allCards, numDeal];
     count = Count[Subsets[cards, {3}], _?validSetQ]];
-   
+
    cards];
 
 Row[{Style[#2, #1], #3, #4}] & @@@ deal[{9, 4}]
@@ -3019,9 +3019,9 @@ enum Color (red => 0o1000, green =>  0o2000, purple => 0o4000);
 enum Count (one =>  0o100, two =>     0o200, three =>   0o400);
 enum Shape (oval =>  0o10, squiggle => 0o20, diamond =>  0o40);
 enum Style (solid =>  0o1, open =>      0o2, striped =>   0o4);
- 
+
 my @deck = Color.enums X Count.enums X Shape.enums X Style.enums;
- 
+
 sub MAIN($DRAW = 9, $GOAL = $DRAW div 2) {
     sub show-cards(@c) { { printf "%9s%7s%10s%9s\n", @c[$_;*]».key } for ^@c }
 
@@ -3100,7 +3100,7 @@ function comb(sequence pool, integer needed, sequence res={}, integer done=0, se
         res = comb(pool,needed,res,done,chosen)
     end if
     return res
-end function            
+end function
 
 constant m124 = {1,2,4}
 
@@ -3196,28 +3196,28 @@ with 4 sets
 
 ```python
 #!/usr/bin/python
-    
+
 from itertools import product, combinations
 from random import sample
- 
+
 ## Major constants
 features = [ 'green purple red'.split(),
              'one two three'.split(),
              'oval diamond squiggle'.split(),
              'open striped solid'.split() ]
-             
+
 deck = list(product(list(range(3)), repeat=4))
 
 dealt = 9
- 
+
 ## Functions
 def printcard(card):
     print(' '.join('%8s' % f[i] for f,i in zip(features, card)))
- 
+
 def getdeal(dealt=dealt):
     deal = sample(deck, dealt)
     return deal
- 
+
 def getsets(deal):
     good_feature_count = set([1, 3])
     sets = [ comb for comb in combinations(deal, 3)
@@ -3225,7 +3225,7 @@ def getsets(deal):
                      for feature in zip(*comb)]
                    ) ]
     return sets
- 
+
 def printit(deal, sets):
     print('Dealt %i cards:' % len(deal))
     for card in deal: printcard(card)
@@ -3233,14 +3233,14 @@ def printit(deal, sets):
     for s in sets:
         for card in s: printcard(card)
         print('')
- 
+
 if __name__ == '__main__':
     while True:
         deal = getdeal()
         sets = getsets(deal)
         if len(sets) == dealt / 2:
            break
-    printit(deal, sets) 
+    printit(deal, sets)
 
 ```
 
@@ -3387,15 +3387,15 @@ Containing 4 sets:
 
 ## REXX
 
-Language note:   each REXX implementation has its own method of determining a starter ''seed'' for generating 
+Language note:   each REXX implementation has its own method of determining a starter ''seed'' for generating
 
-pseudo-random numbers, and in addition, that starter seed may be dependent upon operating system factors, 
+pseudo-random numbers, and in addition, that starter seed may be dependent upon operating system factors,
 
 hardware architecture, and other things like the (local) date and time-of-day, and other such variables.
 
 The algorithm is also not the same for all REXX implementations.
 
-The particular set of cards dealt (show below) used Regina 3.90 under a Windows/XP environment.  
+The particular set of cards dealt (show below) used Regina 3.90 under a Windows/XP environment.
 
 ```rexx
 /*REXX program  finds  "sets" (solutions)  for the   SET  puzzle   (game).    */
@@ -3567,7 +3567,7 @@ NUMBERS  = %i(one two three)
 SHADINGS = %i(solid open striped)
 DECK = COLORS.product(SYMBOLS, NUMBERS, SHADINGS)
 
-def get_all_sets(hand) 
+def get_all_sets(hand)
   hand.combination(3).select do |candidate|
     grouped_features = candidate.flatten.group_by{|f| f}
     grouped_features.values.none?{|v| v.size == 2}
@@ -3604,71 +3604,71 @@ set_puzzle(12)
 ```txt
 
 Dealt 9 cards:
-  red       diamond   two       open    
-  red       squiggle  three     open    
-  red       diamond   two       striped 
-  red       diamond   two       solid   
-  red       oval      three     striped 
-  green     squiggle  three     open    
-  red       oval      three     open    
-  red       squiggle  one       striped 
-  red       oval      one       open    
+  red       diamond   two       open
+  red       squiggle  three     open
+  red       diamond   two       striped
+  red       diamond   two       solid
+  red       oval      three     striped
+  green     squiggle  three     open
+  red       oval      three     open
+  red       squiggle  one       striped
+  red       oval      one       open
 
 Containing 4 sets:
-  red       diamond   two       open    
-  red       squiggle  three     open    
-  red       oval      one       open    
+  red       diamond   two       open
+  red       squiggle  three     open
+  red       oval      one       open
 
-  red       diamond   two       open    
-  red       diamond   two       striped 
-  red       diamond   two       solid   
+  red       diamond   two       open
+  red       diamond   two       striped
+  red       diamond   two       solid
 
-  red       diamond   two       striped 
-  red       oval      three     striped 
-  red       squiggle  one       striped 
+  red       diamond   two       striped
+  red       oval      three     striped
+  red       squiggle  one       striped
 
-  red       diamond   two       solid   
-  red       oval      three     open    
-  red       squiggle  one       striped 
+  red       diamond   two       solid
+  red       oval      three     open
+  red       squiggle  one       striped
 
 Dealt 12 cards:
-  red       diamond   three     solid   
-  red       diamond   three     striped 
-  purple    squiggle  one       striped 
-  purple    oval      two       striped 
-  green     diamond   two       open    
-  purple    oval      three     open    
-  red       diamond   one       striped 
-  green     oval      one       solid   
-  purple    squiggle  two       solid   
-  green     oval      two       open    
-  red       oval      two       striped 
-  red       diamond   two       striped 
+  red       diamond   three     solid
+  red       diamond   three     striped
+  purple    squiggle  one       striped
+  purple    oval      two       striped
+  green     diamond   two       open
+  purple    oval      three     open
+  red       diamond   one       striped
+  green     oval      one       solid
+  purple    squiggle  two       solid
+  green     oval      two       open
+  red       oval      two       striped
+  red       diamond   two       striped
 
 Containing 6 sets:
-  red       diamond   three     solid   
-  purple    squiggle  one       striped 
-  green     oval      two       open    
+  red       diamond   three     solid
+  purple    squiggle  one       striped
+  green     oval      two       open
 
-  red       diamond   three     solid   
-  green     oval      one       solid   
-  purple    squiggle  two       solid   
+  red       diamond   three     solid
+  green     oval      one       solid
+  purple    squiggle  two       solid
 
-  red       diamond   three     striped 
-  red       diamond   one       striped 
-  red       diamond   two       striped 
+  red       diamond   three     striped
+  red       diamond   one       striped
+  red       diamond   two       striped
 
-  green     diamond   two       open    
-  purple    squiggle  two       solid   
-  red       oval      two       striped 
+  green     diamond   two       open
+  purple    squiggle  two       solid
+  red       oval      two       striped
 
-  purple    oval      three     open    
-  green     oval      one       solid   
-  red       oval      two       striped 
+  purple    oval      three     open
+  green     oval      one       solid
+  red       oval      two       striped
 
-  purple    squiggle  two       solid   
-  green     oval      two       open    
-  red       diamond   two       striped 
+  purple    squiggle  two       solid
+  green     oval      two       open
+  red       diamond   two       striped
 
 ```
 
@@ -3676,7 +3676,7 @@ Containing 6 sets:
 
 ## Tcl
 
-The principle behind this code is that the space of possible solutions is a substantial proportion of the space of possible hands, so picking a random hand and verifying that it is a solution, repeating until that verification succeeds, is a much quicker way to find a solution than a systematic search. 
+The principle behind this code is that the space of possible solutions is a substantial proportion of the space of possible hands, so picking a random hand and verifying that it is a solution, repeating until that verification succeeds, is a much quicker way to find a solution than a systematic search.
 It also makes the code substantially simpler.
 
 ```tcl
@@ -3902,7 +3902,7 @@ do{ N+=1;
 		    .sum(0) == 0 		    // all 4 feature sets good
 		 });
 }while(sets.len()!=nGoal);
- 
+
 println("Dealt %d cards %d times:".fmt(draw.len(),N));
 draw.pump(Void,fcn(card){ println(("%8s "*4).fmt(card.xplode())) });
 println("\nContaining:");
@@ -3914,32 +3914,32 @@ sets.pump(Void,fcn(card){ println((("%8s "*4 + "\n")*3).fmt(card.xplode())) });
 ```txt
 
 Dealt 9 cards 271 times:
-     red      one     oval    solid 
-   green      one  diamond  striped 
-     red      two     oval     open 
-  purple      two squiggle  striped 
-   green    three  diamond     open 
-  purple    three squiggle    solid 
-  purple      one  diamond  striped 
-   green    three squiggle    solid 
-   green      one squiggle     open 
+     red      one     oval    solid
+   green      one  diamond  striped
+     red      two     oval     open
+  purple      two squiggle  striped
+   green    three  diamond     open
+  purple    three squiggle    solid
+  purple      one  diamond  striped
+   green    three squiggle    solid
+   green      one squiggle     open
 
 Containing:
-     red      one     oval    solid 
-  purple      two squiggle  striped 
-   green    three  diamond     open 
+     red      one     oval    solid
+  purple      two squiggle  striped
+   green    three  diamond     open
 
-     red      one     oval    solid 
-  purple      one  diamond  striped 
-   green      one squiggle     open 
+     red      one     oval    solid
+  purple      one  diamond  striped
+   green      one squiggle     open
 
-   green      one  diamond  striped 
-     red      two     oval     open 
-  purple    three squiggle    solid 
+   green      one  diamond  striped
+     red      two     oval     open
+  purple    three squiggle    solid
 
-     red      two     oval     open 
-  purple      one  diamond  striped 
-   green    three squiggle    solid 
+     red      two     oval     open
+  purple      one  diamond  striped
+   green    three squiggle    solid
 
 ```
 

@@ -686,8 +686,8 @@ h.each_value { v |
 
 {{works with|C++11}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <map>
 #include <string>
 

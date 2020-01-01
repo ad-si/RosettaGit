@@ -12,9 +12,9 @@ tags = []
 
 {{task|Cellular automata}}
 
-[[wp:Langton's ant|Langton's ant]] is a cellular automaton that models an [https://en.wikipedia.org/wiki/Ant ant] sitting on a plane of cells, all of which are white initially, the ant facing in one of four directions. 
+[[wp:Langton's ant|Langton's ant]] is a cellular automaton that models an [https://en.wikipedia.org/wiki/Ant ant] sitting on a plane of cells, all of which are white initially, the ant facing in one of four directions.
 
-Each cell can either be black or white. 
+Each cell can either be black or white.
 
 The ant moves according to the color of the cell it is currently sitting in, with the following rules:
 ::#   If the cell is black, it changes to white and the ant turns left;
@@ -22,13 +22,13 @@ The ant moves according to the color of the cell it is currently sitting in, wit
 ::#   The ant then moves forward to the next cell, and repeat from step 1.
 
 
-This rather simple ruleset leads to an initially chaotic movement pattern, and after about 10000 steps, a cycle appears where the ant moves steadily away from the starting location in a diagonal corridor about 10 cells wide.  
+This rather simple ruleset leads to an initially chaotic movement pattern, and after about 10000 steps, a cycle appears where the ant moves steadily away from the starting location in a diagonal corridor about 10 cells wide.
 Conceptually the ant can then walk infinitely far away.
 
 
 ;Task:
 Start the ant near the center of a 100<small>x</small>100 field of cells, which is about big enough to contain the initial chaotic part of the movement.
-  
+
 Follow the movement rules for the ant, terminate when it moves out of the region, and show the cell colors it leaves behind.
 
 
@@ -110,57 +110,57 @@ end Langtons_Ant;
 ```
 
 Ouptut (to save space, I have removed the all-blank lines):
-<pre style="height:30ex;overflow:scroll">                                         ##  ############  ##                                       
-                                        #  ####          #  ##                                      
-                                       ###   ##            ## #                                     
-                                       # #  #         #  #    #                                     
-                                   ##  ## # #         ###       #                                   
-                                ### #  #   #     #     ## ##  ###                                   
-                                 # #  ###  ## #### ##   # #  # ##  ##                               
-                                 # ### ##  # ##  ### # #     ###   ###                              
-                               #     #   ##### # #  ####  #   ### # # #                             
-                              ### ##   # ####  ## ## ###### # ### #   #                             
-                              # ### # ## # # ## ## ## #   ##### ### ##                              
-                                  # #   # ## ###   #   # #  ####    # ##                            
-                               #  #         ## ##   #  ##     ## #     ##                           
-                              ###   # # ## ###  #  ##     #   ### ##  ## #                          
-                             #  ###  ##   ## ##   ###  #    #  ## ####   #                          
-                            ###   #   # #  # # #### ##  # ## ###  #     #                           
-                           #  ###  # ##    #  # ###  #      ### ## #  #  ##                         
-                          ###   #     # ## # ##  ##  ##### ####  #### ##   #                        
-                         #  ###  # # #  # ### # # ##      ##   # # #    #   #                       
-                        ###   #  ## ###  ## #   ##       #### ####   #      #                       
-                       #  ###  # #  #   ##  ########### #  ####  #    #    #                        
-                      ###   #  ##      # ####  ##  #########  #  ##    #  ##                        
-                     #  ###  # #   ##  # ##   ## ## ### ###   #  # ##  #### #                       
-                    ###   #  ##   #  # ###### ## # ## # #    ### ###   ##   #                       
-                   #  ###  # #   #     ##### # #####     # #  ## #    ##   #                        
-                  ###   #  ##    #     # ## ##### ##  # #   #  #  ## #  #  #                        
-                 #  ###  # #     #    #   #### #  ##### ##   ##########   ##                        
-                ###   #  ##      # ##   ##   #  #   ####  #   ## #### ##                            
-               #  ###  # #        ##### #  ##   ## #   #    # #  #  #  # #                          
-              ###   #  ##          ##  ## # # #    ## ## # # ##  #  ##  ##                          
-             #  ###  # #                 #  #    # ######## # # ##  #### #                          
-            ###   #  ##                  #  #   #       ## ##   #  #  ## #                          
-           #  ###  # #                    #  #  #      #  ##  ##   ## ####                          
-          ###   #  ##                      ##   #       ##  ##    #   # ###                         
-         #  ###  # #                            # ##  ####    #### ### ####                         
-        ###   #  ##                              ##  ####    ##  # ## # #  #                        
-       #  ###  # #                                ##    ##    ## ### ## #####                       
-      ###   #  ##                                                # ## #  ####                       
-     #  ###  # #                                                     ## ## ##                       
-    ###   #  ##                                                      ##                             
-   #  ###  # #                                                     # ##  #### #                     
-  ###   #  ##                                                     #  # ###  ###                     
- #  ###  # #                                                      # ## #  #  #                      
-###   #  ##                                                        ##      ##                       
-   ##  # #                                                          ##                              
-##  #  ##                                                                                           
- # # # #                                                                                            
-#### ##                                                                                             
-# ## #                                                                                              
- ####                                                                                               
-  ##                                                                                                
+<pre style="height:30ex;overflow:scroll">                                         ##  ############  ##
+                                        #  ####          #  ##
+                                       ###   ##            ## #
+                                       # #  #         #  #    #
+                                   ##  ## # #         ###       #
+                                ### #  #   #     #     ## ##  ###
+                                 # #  ###  ## #### ##   # #  # ##  ##
+                                 # ### ##  # ##  ### # #     ###   ###
+                               #     #   ##### # #  ####  #   ### # # #
+                              ### ##   # ####  ## ## ###### # ### #   #
+                              # ### # ## # # ## ## ## #   ##### ### ##
+                                  # #   # ## ###   #   # #  ####    # ##
+                               #  #         ## ##   #  ##     ## #     ##
+                              ###   # # ## ###  #  ##     #   ### ##  ## #
+                             #  ###  ##   ## ##   ###  #    #  ## ####   #
+                            ###   #   # #  # # #### ##  # ## ###  #     #
+                           #  ###  # ##    #  # ###  #      ### ## #  #  ##
+                          ###   #     # ## # ##  ##  ##### ####  #### ##   #
+                         #  ###  # # #  # ### # # ##      ##   # # #    #   #
+                        ###   #  ## ###  ## #   ##       #### ####   #      #
+                       #  ###  # #  #   ##  ########### #  ####  #    #    #
+                      ###   #  ##      # ####  ##  #########  #  ##    #  ##
+                     #  ###  # #   ##  # ##   ## ## ### ###   #  # ##  #### #
+                    ###   #  ##   #  # ###### ## # ## # #    ### ###   ##   #
+                   #  ###  # #   #     ##### # #####     # #  ## #    ##   #
+                  ###   #  ##    #     # ## ##### ##  # #   #  #  ## #  #  #
+                 #  ###  # #     #    #   #### #  ##### ##   ##########   ##
+                ###   #  ##      # ##   ##   #  #   ####  #   ## #### ##
+               #  ###  # #        ##### #  ##   ## #   #    # #  #  #  # #
+              ###   #  ##          ##  ## # # #    ## ## # # ##  #  ##  ##
+             #  ###  # #                 #  #    # ######## # # ##  #### #
+            ###   #  ##                  #  #   #       ## ##   #  #  ## #
+           #  ###  # #                    #  #  #      #  ##  ##   ## ####
+          ###   #  ##                      ##   #       ##  ##    #   # ###
+         #  ###  # #                            # ##  ####    #### ### ####
+        ###   #  ##                              ##  ####    ##  # ## # #  #
+       #  ###  # #                                ##    ##    ## ### ## #####
+      ###   #  ##                                                # ## #  ####
+     #  ###  # #                                                     ## ## ##
+    ###   #  ##                                                      ##
+   #  ###  # #                                                     # ##  #### #
+  ###   #  ##                                                     #  # ###  ###
+ #  ###  # #                                                      # ## #  #  #
+###   #  ##                                                        ##      ##
+   ##  # #                                                          ##
+##  #  ##
+ # # # #
+#### ##
+# ## #
+ ####
+  ##
 # Iteration: 11656
 
 ```
@@ -287,57 +287,57 @@ END
 ```txt
 
 After 11655 moves. Showing rows 28 to 78 columns 1 to 79
-                                         ##  ############  ##                  
-                                        #  ####          #  ##                 
-                                       ###   ##            ## #                
-                                       # #  #         #  #    #                
-                                   ##  ## # #         ###       #              
-                                ### #  #   #     #     ## ##  ###              
-                                 # #  ###  ## #### ##   # #  # ##  ##          
-                                 # ### ##  # ##  ### # #     ###   ###         
-                               #     #   ##### # #  ####  #   ### # # #        
-                              ### ##   # ####  ## ## ###### # ### #   #        
-                              # ### # ## # # ## ## ## #   ##### ### ##         
-                                  # #   # ## ###   #   # #  ####    # ##       
-                               #  #         ## ##   #  ##     ## #     ##      
-                              ###   # # ## ###  #  ##     #   ### ##  ## #     
-                             #  ###  ##   ## ##   ###  #    #  ## ####   #     
-                            ###   #   # #  # # #### ##  # ## ###  #     #      
-                           #  ###  # ##    #  # ###  #      ### ## #  #  ##    
-                          ###   #     # ## # ##  ##  ##### ####  #### ##   #   
-                         #  ###  # # #  # ### # # ##      ##   # # #    #   #  
-                        ###   #  ## ###  ## #   ##       #### ####   #      #  
-                       #  ###  # #  #   ##  ########### #  ####  #    #    #   
-                      ###   #  ##      # ####  ##  #########  #  ##    #  ##   
-                     #  ###  # #   ##  # ##   ## ## ### ###   #  # ##  #### #  
-                    ###   #  ##   #  # ###### ## # ## # #    ### ###   ##   #  
-                   #  ###  # #   #     ##### # #####     # #  ## #    ##   #   
-                  ###   #  ##    #     # ## ##### ##  # #   #  #  ## #  #  #   
-                 #  ###  # #     #    #   #### #  ##### ##   ##########   ##   
-                ###   #  ##      # ##   ##   #  #   ####  #   ## #### ##       
-               #  ###  # #        ##### #  ##   ## #   #    # #  #  #  # #     
-              ###   #  ##          ##  ## # # #    ## ## # # ##  #  ##  ##     
-             #  ###  # #                 #  #    # ######## # # ##  #### #     
-            ###   #  ##                  #  #   #       ## ##   #  #  ## #     
-           #  ###  # #                    #  #  #      #  ##  ##   ## ####     
-          ###   #  ##                      ##   #       ##  ##    #   # ###    
-         #  ###  # #                            # ##  ####    #### ### ####    
-        ###   #  ##                              ##  ####    ##  # ## # #  #   
-       #  ###  # #                                ##    ##    ## ### ## #####  
-      ###   #  ##                                                # ## #  ####  
-     #  ###  # #                                                     ## ## ##  
-    ###   #  ##                                                      ##        
+                                         ##  ############  ##
+                                        #  ####          #  ##
+                                       ###   ##            ## #
+                                       # #  #         #  #    #
+                                   ##  ## # #         ###       #
+                                ### #  #   #     #     ## ##  ###
+                                 # #  ###  ## #### ##   # #  # ##  ##
+                                 # ### ##  # ##  ### # #     ###   ###
+                               #     #   ##### # #  ####  #   ### # # #
+                              ### ##   # ####  ## ## ###### # ### #   #
+                              # ### # ## # # ## ## ## #   ##### ### ##
+                                  # #   # ## ###   #   # #  ####    # ##
+                               #  #         ## ##   #  ##     ## #     ##
+                              ###   # # ## ###  #  ##     #   ### ##  ## #
+                             #  ###  ##   ## ##   ###  #    #  ## ####   #
+                            ###   #   # #  # # #### ##  # ## ###  #     #
+                           #  ###  # ##    #  # ###  #      ### ## #  #  ##
+                          ###   #     # ## # ##  ##  ##### ####  #### ##   #
+                         #  ###  # # #  # ### # # ##      ##   # # #    #   #
+                        ###   #  ## ###  ## #   ##       #### ####   #      #
+                       #  ###  # #  #   ##  ########### #  ####  #    #    #
+                      ###   #  ##      # ####  ##  #########  #  ##    #  ##
+                     #  ###  # #   ##  # ##   ## ## ### ###   #  # ##  #### #
+                    ###   #  ##   #  # ###### ## # ## # #    ### ###   ##   #
+                   #  ###  # #   #     ##### # #####     # #  ## #    ##   #
+                  ###   #  ##    #     # ## ##### ##  # #   #  #  ## #  #  #
+                 #  ###  # #     #    #   #### #  ##### ##   ##########   ##
+                ###   #  ##      # ##   ##   #  #   ####  #   ## #### ##
+               #  ###  # #        ##### #  ##   ## #   #    # #  #  #  # #
+              ###   #  ##          ##  ## # # #    ## ## # # ##  #  ##  ##
+             #  ###  # #                 #  #    # ######## # # ##  #### #
+            ###   #  ##                  #  #   #       ## ##   #  #  ## #
+           #  ###  # #                    #  #  #      #  ##  ##   ## ####
+          ###   #  ##                      ##   #       ##  ##    #   # ###
+         #  ###  # #                            # ##  ####    #### ### ####
+        ###   #  ##                              ##  ####    ##  # ## # #  #
+       #  ###  # #                                ##    ##    ## ### ## #####
+      ###   #  ##                                                # ## #  ####
+     #  ###  # #                                                     ## ## ##
+    ###   #  ##                                                      ##
    #  ###  # #                                                     # ##  #### #
   ###   #  ##                                                     #  # ###  ###
- #  ###  # #                                                      # ## #  #  # 
-###   #  ##                                                        ##      ##  
-   ##  # #                                                          ##         
-##  #  ##                                                                      
- # # # #                                                                       
-#### ##                                                                        
-# ## #                                                                         
- ####                                                                          
-  ##                                                                           
+ #  ###  # #                                                      # ## #  #  #
+###   #  ##                                                        ##      ##
+   ##  # #                                                          ##
+##  #  ##
+ # # # #
+#### ##
+# ## #
+ ####
+  ##
 
 ```
 
@@ -566,8 +566,8 @@ function dumpGrid() {
 	printf( "Cells: %d  'black' cells: %d  Moves: %d\n\n", limit*limit, cSum, moveNr )
 }
 
-BEGIN { 
-	  print( "Langton's ant\n" ) 
+BEGIN {
+	  print( "Langton's ant\n" )
 
 	  limit  = 72
 	  for(x=1; x <= limit; x++) {
@@ -582,9 +582,9 @@ BEGIN {
 	  dir    =   1	# 1=up/north 2=right/east 3=down/south 4=left/west
 	  z      = "!"
 
-	  while( moveNr < 11200 ) { 
+	  while( moveNr < 11200 ) {
 		moveNr++
- 		ant() 
+ 		ant()
 		if(x<0 || x>limit) break
 		if(y<0 || y>limit) break
 
@@ -639,7 +639,7 @@ The output function <code>o</code> prints the resulting image (as a [[wp:Netpbm_
 ```bc
 define o() {
     auto i, j
-    
+
     "P1 "
     w
     h
@@ -649,7 +649,7 @@ define o() {
         }
     }
 }
-   
+
 define l(w, h, x, y) {
     auto a[], d, i, x[], y[]
 
@@ -659,7 +659,7 @@ define l(w, h, x, y) {
      *           3⇐ ⇒1
      *             ⇓
      *             2
-     * The arrays x[] and y[] contain the changes to the x and y direction for 
+     * The arrays x[] and y[] contain the changes to the x and y direction for
      * each value of d.
      */
     x[1] = 1
@@ -765,8 +765,8 @@ _::10g\v>00g+4%:00p::3\`\1-*50g+50p:2\-\0`*+::0\`\"c"`+50g:0\`\"c"`++#^
 
 Requires ANSI terminal.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -897,7 +897,7 @@ public:
 
 	hdc = CreateCompatibleDC( dc );
 	SelectObject( hdc, bmp );
-	ReleaseDC( GetConsoleWindow(), dc ); 
+	ReleaseDC( GetConsoleWindow(), dc );
 
 	width = w; height = h;
 
@@ -968,7 +968,7 @@ private:
 class Ant
 {
 public:
-    Ant() 
+    Ant()
     {
 	_bmp.create( BMP_SIZE, BMP_SIZE );
 	ZeroMemory( _grid, sizeof( _grid ) );
@@ -1016,7 +1016,7 @@ private:
 	}
 	switch( _facing )
 	{
-	    case NOR: 
+	    case NOR:
 		if( --_sy < 0 )
 		{
 		    if( INFINIT_RUN ) _sy = GRID_SIZE - 1;
@@ -1049,7 +1049,7 @@ private:
     void display()
     {
         _bmp.clear();
-		
+
         HBRUSH br; RECT rc;
         int xx, yy; HDC dc = _bmp.getDC();
 
@@ -1222,7 +1222,7 @@ namespace LangtonAnt
             IsBlack[ptCur.X, ptCur.Y] = !IsBlack[ptCur.X, ptCur.Y];
             MoveAnt();
             ptCur = new Point(_antPosition.X + _origin.X, _antPosition.Y + _origin.Y);
-            OutOfBounds = 
+            OutOfBounds =
                 ptCur.X < 0 ||
                 ptCur.X >= IsBlack.GetUpperBound(0) ||
                 ptCur.Y < 0 ||
@@ -1258,86 +1258,86 @@ Output:
 
 ```txt
 
-<Blank lines eliminated for efficiency>                          # #                                                                       
-                        ## # #                                                                      
-                       # ### ##                                                                     
-                      #### ### #                                                                    
-                      ##### #  ##                                                                   
-                       #   ## ## #                                                                  
-                        ###   #  ##                                                                 
-                         #   ## ## #                                                                
-                          ###   #  ##                                                               
-                           #   ## ## #                                                              
-                            ###   #  ##                                                             
-                             #   ## ## #                                                            
-                              ###   #  ##                                                           
-                               #   ## ## #                                                          
-                                ###   #  ##                                                         
-                                 #   ## ## #                                                        
-                                  ###   #  ##                                                       
-                                   #   ## ## #                                                      
-                                    ###   #  ##                                                     
-                                     #   ## ## #                                                    
-                                      ###   #  ##                                                   
-                                       #   ## ## #                                                  
-                                        ###   #  ##                                                 
-                                         #   ## ## #                                                
-                                          ###   #  ##                                               
-                                           #   ## ## #                                              
-                                            ###   #  ##                                             
-                                             #   ## ## #                                            
-                                              ###   #  ##                                           
-                                               #   ## ## #                                          
-                                                ###   #  ##                                         
-                                                 #   ## ## #  ##                                    
-                                                  ###   #  ##  ##                                   
-                                                   #   ## ##  ##   #                                
-                                             ####   ###   #   #  ###                                
-                                            #    #   #   ## ####   #                                
-                                           ###    #   # #      # ## #                               
-                                           ###    # ##     # ##  # ##                               
-                                            #    #   ## # #     ##                                  
-                                            # #      # #####  #   #                                 
-                                           #   #####          ## ######                             
-                                           ###  ##  # ## # # #   ## # ##                            
-                                         ##  # ####### #   #  ###    ## #                           
-                                        #  #  ###### ##   #  # ##   #   #                           
-                                       #    # # ## #  ###### #######   #                            
-                                       # #### ## # ####    ##  ## # ## #                            
-                                        #    ####   #  # ###### ##    ###                           
-                                           #   # ## # ### #  ##  ##   ###                           
-                                              #######    #  ## ## #     #                           
-                                      ####  ## ##  #### ## ## ##  #     #                           
-                                     #    # #   ### ## ###    # ####    #                           
-                                    ###       ### # # #####    # #      #                           
-                                    # #   ### #### ## #   ## ### ##     #                           
-                                          ## ##  ####    #### # # #     #                           
-                                     #    #  ##   ###  ###     ###      #                           
-                                     ##   ## ### ####  #      ###   ##  #                           
-                                     ## # ####     #   #  # ## ### ##   #                           
-                                    #### ##   ## ####  # #  #  #  ###   #                           
-                                    # ## ###  # # ## # #     # #     # #                            
-                                        # #  #    ## ##  # #  ### ##                                
-                                        ## #    #  ##### #    #    #  # #                           
-                                       # ## #  #    ## ## #  ###      ###                           
-                                     # #   #  #  #  #  ###   ##  ##    #                            
-                                    ### # ##### ###### ### ####### # ##                             
-                                    # # #    #####   ##  ##### #####                                
-                                      #  ##   #      #  # ##  ### ###                               
-                                   ####   ##### #########   # #                                     
-                              ##    #  #     ### # #   # ###  ###                                   
-                             #  #  #### ##   ### ##   ### ##     ##                                 
-                            ###    # ## # #####   #    #  #  ## ###                                 
-                            # ##### # #   ##  ##     #    #   #  #                                  
-                                ###### ####  ## #   #  ##  # # ##                                   
-                              ##      # ### ##  ####   #   ###                                      
-                               #  # #####  #   # ##   #  #  #                                       
-                               ## ### #######     #     # ##                                        
-                              # #  ## ##      #   ##    #                                           
-                             #  # ####        ###  ##  #                                            
-                             # ## ###            ##  ##                                             
-                              ##                                                                    
-                               ##                                                                   
+<Blank lines eliminated for efficiency>                          # #
+                        ## # #
+                       # ### ##
+                      #### ### #
+                      ##### #  ##
+                       #   ## ## #
+                        ###   #  ##
+                         #   ## ## #
+                          ###   #  ##
+                           #   ## ## #
+                            ###   #  ##
+                             #   ## ## #
+                              ###   #  ##
+                               #   ## ## #
+                                ###   #  ##
+                                 #   ## ## #
+                                  ###   #  ##
+                                   #   ## ## #
+                                    ###   #  ##
+                                     #   ## ## #
+                                      ###   #  ##
+                                       #   ## ## #
+                                        ###   #  ##
+                                         #   ## ## #
+                                          ###   #  ##
+                                           #   ## ## #
+                                            ###   #  ##
+                                             #   ## ## #
+                                              ###   #  ##
+                                               #   ## ## #
+                                                ###   #  ##
+                                                 #   ## ## #  ##
+                                                  ###   #  ##  ##
+                                                   #   ## ##  ##   #
+                                             ####   ###   #   #  ###
+                                            #    #   #   ## ####   #
+                                           ###    #   # #      # ## #
+                                           ###    # ##     # ##  # ##
+                                            #    #   ## # #     ##
+                                            # #      # #####  #   #
+                                           #   #####          ## ######
+                                           ###  ##  # ## # # #   ## # ##
+                                         ##  # ####### #   #  ###    ## #
+                                        #  #  ###### ##   #  # ##   #   #
+                                       #    # # ## #  ###### #######   #
+                                       # #### ## # ####    ##  ## # ## #
+                                        #    ####   #  # ###### ##    ###
+                                           #   # ## # ### #  ##  ##   ###
+                                              #######    #  ## ## #     #
+                                      ####  ## ##  #### ## ## ##  #     #
+                                     #    # #   ### ## ###    # ####    #
+                                    ###       ### # # #####    # #      #
+                                    # #   ### #### ## #   ## ### ##     #
+                                          ## ##  ####    #### # # #     #
+                                     #    #  ##   ###  ###     ###      #
+                                     ##   ## ### ####  #      ###   ##  #
+                                     ## # ####     #   #  # ## ### ##   #
+                                    #### ##   ## ####  # #  #  #  ###   #
+                                    # ## ###  # # ## # #     # #     # #
+                                        # #  #    ## ##  # #  ### ##
+                                        ## #    #  ##### #    #    #  # #
+                                       # ## #  #    ## ## #  ###      ###
+                                     # #   #  #  #  #  ###   ##  ##    #
+                                    ### # ##### ###### ### ####### # ##
+                                    # # #    #####   ##  ##### #####
+                                      #  ##   #      #  # ##  ### ###
+                                   ####   ##### #########   # #
+                              ##    #  #     ### # #   # ###  ###
+                             #  #  #### ##   ### ##   ### ##     ##
+                            ###    # ## # #####   #    #  #  ## ###
+                            # ##### # #   ##  ##     #    #   #  #
+                                ###### ####  ## #   #  ##  # # ##
+                              ##      # ### ##  ####   #   ###
+                               #  # #####  #   # ##   #  #  #
+                               ## ### #######     #     # ##
+                              # #  ## ##      #   ##    #
+                             #  # ####        ###  ##  #
+                             # ## ###            ##  ##
+                              ##
+                               ##
 
 ```
 
@@ -1354,11 +1354,11 @@ config const gridWidth: int = 100;
 class PBMWriter {
   var imgDomain: domain(2);
   var imgData: [imgDomain] int;
-  
+
   proc PBMWriter( height: int, width: int ){
     imgDomain = { 1..#height, 1..#width };
   }
-  
+
   proc this( i : int, j : int) ref : int{
     return this.imgData[ i, j ];
   }
@@ -1367,16 +1367,16 @@ class PBMWriter {
     var file = open(fileName, iomode.cw);
     var writingChannel = file.writer();
     writingChannel.write("P1\n", imgDomain.dim(1).size, " " ,imgDomain.dim(2).size,"\n");
-    
+
     for px in imgData {
       writingChannel.write( px, " " );
     }
-    
+
     writingChannel.write( "\n" );
     writingChannel.flush();
     writingChannel.close();
   }
-  
+
 }
 
 enum Color { white, black };
@@ -1396,24 +1396,24 @@ proc <=( left: 2*int, right: 2*int ){
 proc main{
   const gridDomain: domain(2) = {1..#gridHeight, 1..#gridWidth};
   var grid: [gridDomain] Color;
-  
+
   var antPos = ( gridHeight / 2, gridWidth / 2 );
   var antDir = (1,0); // start up;
-  
+
   while (0,0) < antPos && antPos <= (gridHeight, gridWidth ) {
     var currColor = grid[ antPos ];
     grid[antPos] = if currColor == Color.white then Color.black else Color.white ;
-    
+
     antDir = nextDirection( antDir, currColor == Color.black );
     antPos = antPos + antDir;
   }
-  
+
   var image = new PBMWriter( height = gridHeight, width = gridWidth );
-  
+
   for (i, j) in gridDomain {
     image[i,j] = if grid[gridHeight-j+1,gridHeight-i+1] == Color.black then 0 else 1;
   }
-  
+
   image.writeImage( "output.png" );
 }
 
@@ -1554,7 +1554,7 @@ class Ant
   constructor: (@world) ->
     @location = [0, 0]
     @direction = 'E'
-    
+
   move: =>
     [x, y] = @location
     if @world.is_set x, y
@@ -1570,13 +1570,13 @@ class Ant
 class BlackWhiteWorld
   constructor: ->
     @bits = {}
-    
+
   set: (x, y) ->
     @bits["#{x},#{y}"] = true
-    
+
   unset: (x, y) ->
     delete @bits["#{x},#{y}"]
-    
+
   is_set: (x, y) ->
     @bits["#{x},#{y}"]
 
@@ -1609,13 +1609,13 @@ Directions =
     return 'S' if dir == 'W'
     return 'E' if dir == 'S'
     'N'
-  
+
   right: (dir) ->
     return 'E' if dir == 'N'
     return 'S' if dir == 'E'
     return 'W' if dir == 'S'
     'N'
-    
+
   forward: (x, y, dir) ->
     return [x, y+1] if dir == 'N'
     return [x, y-1] if dir == 'S'
@@ -1636,7 +1636,7 @@ world.draw()
 output
 
 <lang>
-> coffee langstons_ant.coffee 
+> coffee langstons_ant.coffee
 Ant is at -24,46, direction W
 top left: -25, 47, bottom right: 22, -29
 _##__##_________________________________________
@@ -1728,7 +1728,7 @@ ______##________________________________________
 ```lisp
 (defmacro toggle (gv) `(setf  ,gv (not ,gv)))
 
-(defun langtons-ant (width height start-x start-y start-dir) 
+(defun langtons-ant (width height start-x start-y start-dir)
   (let ( (grid (make-array (list width height)))
          (x start-x)
          (y start-y)
@@ -1747,8 +1747,8 @@ ______##________________________________________
   )
 )
 
-(defun show-grid (grid) 
-  (destructuring-bind (width height) (array-dimensions grid) 
+(defun show-grid (grid)
+  (destructuring-bind (width height) (array-dimensions grid)
     (dotimes (y height)
       (dotimes (x width)
         (princ (if (aref grid x y) "#" ".")))
@@ -1915,14 +1915,14 @@ func Array.step(ant) {
     var leftTurn = this[ptCur.x][ptCur.y]
     ant.direction =
         if leftTurn  {
-            leftTurns[ant.direction] 
+            leftTurns[ant.direction]
         } else {
             rightTurns[ant.direction]
         }
     this[ptCur.x][ptCur.y] = !this[ptCur.x][ptCur.y]
     move(ant)
     ptCur = (x: ant.position.x + ant.origin.x, y: ant.position.y + ant.origin.y)
-    ant.outOfBounds = 
+    ant.outOfBounds =
         ptCur.x < 0 ||
         ptCur.x >= ant.width ||
         ptCur.y < 0 ||
@@ -2109,12 +2109,12 @@ We implement multi-colored ants, as depicted in the article. An ant is described
 (define (move iter x dir constant: plane turns cmax  width  xmax (cidx 0))
 	(while (> iter 0)
 	;; get color index of current square
-	(set! cidx (vector-ref plane x)) 
+	(set! cidx (vector-ref plane x))
 
-	;; turn	
-	(if (vector-ref turns cidx)  
+	;; turn
+	(if (vector-ref turns cidx)
 		(set! dir (if (= dir 3) 0 (1+ dir))) ;; right is #t
-		(set! dir (if (= dir 0) 3 (1- dir)))) 
+		(set! dir (if (= dir 0) 3 (1- dir))))
 
 	;; rotate colors
 	(set! cidx (if (= cidx cmax) 0 (1+ cidx)))
@@ -2122,29 +2122,29 @@ We implement multi-colored ants, as depicted in the article. An ant is described
 
 	;; move
 	;; x = v + h*width for a pixel at (h,v)
-	(set! x 
+	(set! x
 		(cond
 			((= dir 0) (1+ x))
 			((= dir 1) (+ x width))
 			((= dir 2) (1- x))
-			((= dir 3) (- x width)))) 
-		
+			((= dir 3) (- x width))))
+
 	(when (or (< x 0) (>= x xmax)) (set! iter -666)) ;; out of bounds
 	(set! iter (1- iter)))
 	iter)
-	
+
 ;; a color table of 16 colors
-(define colors 
+(define colors
    (list 0 (rgb 1 1 1) (rgb 1 0 0) (rgb 0 1 0) (rgb 0 0 1) (rgb 1 1 0) (rgb 1 0 1) (rgb 0 1 1)))
 (define colors (list->vector (append colors colors)))
 
 ;; transform color index into rgb color, using colors table.
 (define (colorize plane xmax)
-	(for ((x xmax)) 
+	(for ((x xmax))
 		(vector-set! plane x (vector-ref colors (vector-ref plane x))))
 	(vector->pixels plane)
 	xmax )
-	
+
 ;; ant's patterns
 (define turns #(#t #t #f #f #f #t #f #f #f #t #t #t))   ;; RRLLLRLLLRRR
 ;;(define turns #(#t #t #f #f #f #t #t #f)) ; RRLLLRRL
@@ -2157,7 +2157,7 @@ We implement multi-colored ants, as depicted in the article. An ant is described
 	(define plane (pixels->uint32-vector))
 	(define x (+ (quotient width 2) (* width (quotient height 2)))) ;; middle of plane
 	(define xmax (* width height))
-	
+
 	(move iter  x 0 plane turns (1- (vector-length turns)) width xmax)
 	(colorize plane xmax))
 
@@ -2175,27 +2175,27 @@ A straightforward implementation (assumes that we start with ant looking forward
 
 ```ela
 open list core generic
- 
+
 type Field = Field a
 type Color = White | Black
 type Direction = Lft | Fwd | Rgt | Bwd
 field s = Field [[White \\ _ <- [1..s]] \\ _ <- [1..s]]
- 
+
 isBlack Black = true
 isBlack _ = false
- 
+
 newfield xc yc (Field xs) = Field (newfield' 0 xs)
   where newfield' _ [] = []
-        newfield' n (x::xs) 
+        newfield' n (x::xs)
           | n == yc = row 0 x :: xs
           | else   = x :: newfield' (n+1) xs
           where row _ [] = []
-                row n (x::xs) 
+                row n (x::xs)
                   | n == xc = toggle x :: xs
                   | else    = x :: row (n+1) xs
                   where toggle White = Black
                         toggle Black = White
- 
+
 showPath (Field xs) = toString <| show' "" xs
   where show' sb [] = sb +> ""
         show' sb (x::xs) = show' (showRow sb x +> "\r\n") xs
@@ -2203,12 +2203,12 @@ showPath (Field xs) = toString <| show' "" xs
                 showRow sb (x::xs) = showRow (sb +> s) xs
                   where s | isBlack x = "#"
                           | else = "_"
- 
+
 move s xc yc = move' (Fwd,xc,yc) (field s)
-  where move' (pos,xc,yc)@coor fld 
+  where move' (pos,xc,yc)@coor fld
           | xc >= s || yc >= s || xc < 0 || yc < 0 = fld
           | else = fld |> newfield xc yc |> move' (matrix (dir fld) coor)
-          where dir (Field xs) 
+          where dir (Field xs)
                   | `isBlack` (xs:yc):xc = Lft
                   | else = Rgt
                 matrix Lft (pos,x,y) = go (left pos,x,y)
@@ -2309,7 +2309,7 @@ defmodule Langtons do
     {px, py} = {div(sizex,2), div(sizey,2)}     # start position
     move(MapSet.new, sizex, sizey, px, py, {1,0}, 0)
   end
-  
+
   defp move(plane, sx, sy, px, py, _, step) when px<0 or sx<px or py<0 or sy<py, do:
     print(plane, sx, sy, px, py, step)
   defp move(plane, sx, sy, px, py, dir, step) do
@@ -2318,10 +2318,10 @@ defmodule Langtons do
                           else: {MapSet.put(plane, {px,py}), turn_left(dir)}
     move(plane2, sx, sy, px+dx, py+dy, {dx,dy}, step+1)
   end
-  
+
   defp turn_right({dx, dy}), do: {dy, -dx}
   defp turn_left({dx, dy}), do: {-dy, dx}
-  
+
   defp print(plane, sx, sy, px, py, step) do
     IO.puts "out of bounds after #{step} moves: (#{px}, #{py})"
     Enum.each(0..sy, fn j ->
@@ -2447,13 +2447,13 @@ out of bounds after 11669 moves: (26, -1)
 
 ```elm
 import Maybe as M
-import Matrix 
+import Matrix
 import Time exposing (Time, every, second)
 import List exposing (..)
 import String exposing (join)
 import Html exposing (div, h1, text)
 import Html.App exposing (program)
-import Svg 
+import Svg
 import Svg.Attributes exposing (version, viewBox, cx, cy, r, x, y, x1, y1, x2, y2, fill,style, width, height, preserveAspectRatio)
 
 w = 700
@@ -2471,9 +2471,9 @@ type alias Model =
   }
 
 initModel : Int -> Int -> Model
-initModel cols rows = 
+initModel cols rows =
      { rows = rows
-     , cols = cols 
+     , cols = cols
      , boxes = Matrix.matrix rows cols (\location -> False)
      , location = (rows//2,cols//2)
      , direction = North
@@ -2498,43 +2498,43 @@ view model =
               , Svg.line [ x1Min, y1Max, x2Min, y2Min, borderLineStyle ] []
               ]
 
-    circleInBox (row,col) color = 
+    circleInBox (row,col) color =
       Svg.circle [ r "0.25"
       , fill (color)
       , cx (toString (toFloat col + 0.5))
       , cy (toString (toFloat row + 0.5))
-      ] [] 
+      ] []
 
     showUnvisited location box =
        if box then [circleInBox location "black" ]
               else []
 
-    unvisited = model.boxes 
-                  |> Matrix.mapWithLocation showUnvisited 
-                  |> Matrix.flatten 
+    unvisited = model.boxes
+                  |> Matrix.mapWithLocation showUnvisited
+                  |> Matrix.flatten
                   |> concat
 
-    maze = [ Svg.g [] <| borders ++ unvisited ] 
+    maze = [ Svg.g [] <| borders ++ unvisited ]
 
   in
-      div 
-          [] 
+      div
+          []
           [ h1 [] [text "Langton's Ant"]
-          , Svg.svg 
+          , Svg.svg
               [ version "1.1"
               , width (toString w)
               , height (toString h)
-              , viewBox (join " " 
+              , viewBox (join " "
                            [ 0          |> toString
                            , 0          |> toString
                            , model.cols |> toString
                            , model.rows |> toString ])
-              ] 
+              ]
               maze
           ]
 
 updateModel : Model -> Model
-updateModel model = 
+updateModel model =
       let current = model.location
           inBox =    snd current >= 0 && snd current < model.cols
                   && fst current >= 0 && fst current < model.rows
@@ -2548,31 +2548,31 @@ updateModel model =
                        (East, True) -> South
                        (South, True) -> West
                        (West, True) -> North
- 
+
                        (North, False) -> West
                        (East, False) -> North
                        (South, False) -> East
                        (West, False) -> South
- 
+
                next = case dir of
                         North -> (fst current+1, snd current)
                         South -> (fst current-1, snd current)
                         East -> (fst current, snd current+1)
                         West -> (fst current, snd current-1)
- 
-               boxes = Matrix.set current (not currentValue) model.boxes 
- 
+
+               boxes = Matrix.set current (not currentValue) model.boxes
+
            in {model | boxes=boxes, location=next, direction=dir}
 
-type Msg = Tick Time 
+type Msg = Tick Time
 
 subscriptions model = every (dt * second) Tick
 
 main =
-  let 
+  let
     update msg model = (updateModel model, Cmd.none)
     init = (initModel 100 100 , Cmd.none)
-  in program 
+  in program
        { init = init
        , view = view
        , update = update
@@ -2824,7 +2824,7 @@ while antData[1] > 0 and antData[1] < 100 and antData[2] > 0 and antData[2] < 10
         case 0 then
             antData[3] = 360
             break
-    end switch  
+    end switch
     --move ant based on its new facing, one square
     --first north, then south, east, west
     switch antData[3] do
@@ -2858,7 +2858,7 @@ for y=1 to 100 do
                 break
         end switch
     end for
-end for     
+end for
 
 printf(1,"\n%d Iterations\n",iterations)
 any_key()--wait for keypress, put default message 'press any key..'
@@ -2926,11 +2926,11 @@ class World
   }
 }
 
-enum class Direction 
-{ 
-  up (0, -1), 
-  down (0, 1), 
-  left (-1, 0), 
+enum class Direction
+{
+  up (0, -1),
+  down (0, 1),
+  left (-1, 0),
   right (1, 0)
 
   private new make (Int deltaX, Int deltaY)
@@ -2944,7 +2944,7 @@ enum class Direction
     if (this == up) return left
     if (this == down) return right
     if (this == left) return down
-    // if (this == right) 
+    // if (this == right)
     return up
   }
 
@@ -2953,7 +2953,7 @@ enum class Direction
     if (this == up) return right
     if (this == down) return left
     if (this == left) return up
-    // if (this == right) 
+    // if (this == right)
     return down
   }
 
@@ -3086,9 +3086,9 @@ All array manipulations were taken from Rosetta Code examples.
 
 ```forth
 
- 1 0 0 0                                                          \ pushes orientation of the ant to the stack. 
+ 1 0 0 0                                                          \ pushes orientation of the ant to the stack.
 
- 100 CONSTANT border                                              \ lenght of the side of the grid 
+ 100 CONSTANT border                                              \ lenght of the side of the grid
  border border * constant size                                    \ size of the grid
 
  variable antpos                                                  \ for storing position of the ant
@@ -3097,25 +3097,25 @@ All array manipulations were taken from Rosetta Code examples.
  create Grid size cells allot
  here constant GridEnd                                            \ creates an array to hold the grid
 
- : turn.left 
+ : turn.left
 	>r rot r> SWAP ;                                          \ rotates ant anti-clockwise
 
- : turn.right 
+ : turn.right
 	turn.left turn.left turn.left ;                           \ rotates ant clockwise
 
- : stop.ant 
+ : stop.ant
 	antpos @ DUP 0<  SWAP size > + ;                          \ checks if ant not out of bounds
 
- : call.pos 
+ : call.pos
 	Grid antpos @ cells + @ ;                                 \ pushes ant position to the stack
 
- : grid.add 
+ : grid.add
 	Grid antpos @ cells + @ -1 + Grid antpos @ cells + !   ;  \ pushes -1 to the current position of the ant on the grid
-	
- : swap.pos 
+
+ : swap.pos
 	call.pos dup * Grid antpos @ cells + ! ;                  \ multiplies current grid cell by itself to turn -1 into 1
 
- : swap.col 
+ : swap.col
 	grid.add swap.pos ;                                       \ changes current grid cell color
 
  : go.ant                                                         \ moves ant one step in the direction taken from the stack
@@ -3125,37 +3125,37 @@ All array manipulations were taken from Rosetta Code examples.
 	1 = IF antpos @ border - antpos ! DROP ELSE               \ here to the left
 	1 = IF antpos @ 1 - antpos ! ELSE                         \ and down
 
-	THEN THEN THEN THEN  ;                                
-	
+	THEN THEN THEN THEN  ;
+
  : step.ant                                                       \ preforms one full step.
 	 call.pos 1 = IF turn.left swap.col ELSE
-	 turn.right swap.col 
-	 
+	 turn.right swap.col
+
 	 THEN go.ant  ;
-	 
- : run.ant                                                        \ runs the ant until it leaves the grid                                                                                                  
+
+ : run.ant                                                        \ runs the ant until it leaves the grid
 	BEGIN
-	step.ant 
+	step.ant
 	stop.ant UNTIL ;
-	
+
  : square.draw                                                     \ draws an "*" if grid cell is one or " " if zero
 	1 = IF 42 EMIT ELSE 32 EMIT THEN ;
-		
-	
+
+
  : draw.grid                                                       \ draws grid on screen
-	PAGE                                                       \ clear sreen 
+	PAGE                                                       \ clear sreen
 	size 0 DO I
 	I border MOD 0= IF  CR  THEN                               \ breaks the grid into lines
 	Grid I cells + @ square.draw DROP
-	
-	LOOP ; 
-	
+
+	LOOP ;
+
  : langton.ant run.ant draw.grid ;                                 \ launches the ant, outputs the result
 
 
 ```
-	
-{{out}} 
+
+{{out}}
 <pre style="height:60ex;overflow:scroll">
 
                                                                     **
@@ -3252,12 +3252,12 @@ program Langtons_Ant
 
   integer, parameter :: csize = 100
   integer :: direction = 0, maxsteps = 20000
-  integer :: i, x, y  
+  integer :: i, x, y
   logical :: cells(csize,csize) = .true.
   logical :: cflag
-  
+
   x = csize / 2;   y = x
-  
+
   do i = 1, maxsteps
     cflag = cells(x,y)
     if(cflag) then
@@ -3267,7 +3267,7 @@ program Langtons_Ant
       direction = direction - 1
       if(direction == -1) direction = direction + 4
     end if
-  
+
     cells(x,y) = .not. cells(x,y)
 
     select case(direction)
@@ -3283,7 +3283,7 @@ program Langtons_Ant
 
     if(x < 1 .or. x > csize .or. y < 1 .or. y > csize) exit
   end do
-  
+
   do y = 1, csize
     do x = 1, csize
       if(cells(x,y)) then
@@ -3412,7 +3412,7 @@ Completed.
 
 
 Output is the same, except for orientation. Here I have stuck to (x,y) Cartesian orientation rather than lines (y) increasing downwards. Just for fun, + signs mark cells that have been trampled and then cleaned. But not to pure white... Notice that some interior cells have never been trampled.
-{{out}} 
+{{out}}
 <pre style="height:60ex;overflow:scroll">
 Step 11669 to (26,101) is out of bounds!
                          #+#
@@ -3603,7 +3603,7 @@ Repeat                                                              'Repeat loop
     If siDir = 1 Then Inc iCol                                      'Increase Column if facing East
     If siDir = 2 Then Inc iRow                                      'Increase Row if facing South
     If siDir = 3 Then Dec iCol                                      'Decrease Column if facing West
-  End If 
+  End If
 'Wait                                                                'This will allow you to see the Grid being populated. Rem it out for an instant result
   If hGridView[iRow, iCol].background = 0 Then                      'If the Background of the cell is black then.. Left Turn
     hGridView[iRow, iCol].background = -1                           'Make the Background white
@@ -3612,7 +3612,7 @@ Repeat                                                              'Repeat loop
     If siDir = 1 Then Inc iCol                                      'Increase Column if facing East
     If siDir = 2 Then Inc iRow                                      'Increase Row if facing South
     If siDir = 3 Then Dec iCol                                      'Decrease Column if facing West
-  End If 
+  End If
 Until siCount = 9660                                                'Loop 9660 times
 
 End
@@ -3620,9 +3620,9 @@ End
 Public Sub Direction(siDirection As Short, bWay As Boolean) As Byte 'To workout which way to go
 
 If bWay Then                                                        'If turning Right then
-  Inc siDirection                                                   'Increase siDirection e.g. 0 = North to 1 = East 
+  Inc siDirection                                                   'Increase siDirection e.g. 0 = North to 1 = East
 Else                                                                'Else if turning Left
-  Dec siDirection                                                   'Decrease siDirection e.g. 2 = South to 1 = East 
+  Dec siDirection                                                   'Decrease siDirection e.g. 2 = South to 1 = East
 End If
 
 If siDirection < 0 Then siDirection = 3                             'To address 0 - 1 = -1
@@ -3842,7 +3842,7 @@ In order to express the ant's algorithm literally we define two operators:
 
 
 ```Haskell
--- functional sequence 
+-- functional sequence
 (>>>) = flip (.)
 
 -- functional choice
@@ -3883,8 +3883,8 @@ Here is the solution of the task:
 
 ```Haskell
 task :: State -> State
-task = iterate step 
-   >>> dropWhile ((< 50) . distance . antPosition) 
+task = iterate step
+   >>> dropWhile ((< 50) . distance . antPosition)
    >>> getCells . head
   where distance (x,y) = max (abs x) (abs y)
 ```
@@ -3924,7 +3924,7 @@ main = simulate w white 500 initial draw (\_ _ -> step)
 ```Icon
 link graphics,printf
 
-procedure main(A) 
+procedure main(A)
    e := ( 0 < integer(\A[1])) | 100   # 100 or whole number from command line
    LangtonsAnt(e)
 end
@@ -3934,40 +3934,40 @@ record antrec(x,y,nesw)
 procedure LangtonsAnt(e)
    size  := sprintf("size=%d,%d",e,e)
    label := sprintf("Langton's Ant %dx%d [%d]",e,e,0)
-   &window := open(label,"g","bg=white",size) | 
-               stop("Unable to open window") 
+   &window := open(label,"g","bg=white",size) |
+               stop("Unable to open window")
 
    ant := antrec(e/2,e/2,?4%4)
    board := list(e)
    every !board := list(e,"w")
-   
+
    k := 0
    repeat {
       k +:= 1
       WAttrib("fg=red")
       DrawPoint(ant.x,ant.y)
-      
+
       cell := board[ant.x,ant.y]
       if cell == "w" then {                        # white cell
          WAttrib("fg=black")
          ant.nesw := (ant.nesw + 1) % 4            # . turn right
          }
       else {                                       # black cell
-         WAttrib( "fg=white")   
+         WAttrib( "fg=white")
          ant.nesw := (ant.nesw + 3) % 4            # . turn left = 3 x right
          }
-      board[ant.x,ant.y] := map(cell,"wb","bw")    # flip colour         
+      board[ant.x,ant.y] := map(cell,"wb","bw")    # flip colour
       DrawPoint(ant.x,ant.y)
-      
+
       case ant.nesw of {                           # go
          0: ant.y -:= 1                            # . north
          1: ant.x +:= 1                            # . east
          2: ant.y +:= 1                            # . south
          3: ant.x -:= 1                            # . west
          }
-         
+
       if 0 < ant.x <= e & 0 < ant.y <= e then next
-      else break      
+      else break
       }
    printf("Langton's Ant exited the field after %d rounds.\n",k)
    label := sprintf("label=Langton's Ant %dx%d [%d]",e,e,k)
@@ -3977,8 +3977,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 [http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics support (WDone)]
 
 
@@ -4002,106 +4002,106 @@ langton=:3 :0
 
 
 <pre style="font-size: 2px">   langton 100 100
-                          # #                                                                       
-                        ## # #                                                                      
-                       # ### ##                                                                     
-                      #### ### #                                                                    
-                      ##### #  ##                                                                   
-                       #   ## ## #                                                                  
-                        ###   #  ##                                                                 
-                         #   ## ## #                                                                
-                          ###   #  ##                                                               
-                           #   ## ## #                                                              
-                            ###   #  ##                                                             
-                             #   ## ## #                                                            
-                              ###   #  ##                                                           
-                               #   ## ## #                                                          
-                                ###   #  ##                                                         
-                                 #   ## ## #                                                        
-                                  ###   #  ##                                                       
-                                   #   ## ## #                                                      
-                                    ###   #  ##                                                     
-                                     #   ## ## #                                                    
-                                      ###   #  ##                                                   
-                                       #   ## ## #                                                  
-                                        ###   #  ##                                                 
-                                         #   ## ## #                                                
-                                          ###   #  ##                                               
-                                           #   ## ## #                                              
-                                            ###   #  ##                                             
-                                             #   ## ## #                                            
-                                              ###   #  ##                                           
-                                               #   ## ## #                                          
-                                                ###   #  ##                                         
-                                                 #   ## ## #  ##                                    
-                                                  ###   #  ##  ##                                   
-                                                   #   ## ##  ##   #                                
-                                             ####   ###   #   #  ###                                
-                                            #    #   #   ## ####   #                                
-                                           ###    #   # #      # ## #                               
-                                           ###    # ##     # ##  # ##                               
-                                            #    #   ## # #     ##                                  
-                                            # #      # #####  #   #                                 
-                                           #   #####          ## ######                             
-                                           ###  ##  # ## # # #   ## # ##                            
-                                         ##  # ####### #   #  ###    ## #                           
-                                        #  #  ###### ##   #  # ##   #   #                           
-                                       #    # # ## #  ###### #######   #                            
-                                       # #### ## # ####    ##  ## # ## #                            
-                                        #    ####   #  # ###### ##    ###                           
-                                           #   # ## # ### #  ##  ##   ###                           
-                                              #######    #  ## ## #     #                           
-                                      ####  ## ##  #### ## ## ##  #     #                           
-                                     #    # #   ### ## ###    # ####    #                           
-                                    ###       ### # # #####    # #      #                           
-                                    # #   ### #### ## #   ## ### ##     #                           
-                                          ## ##  ####    #### # # #     #                           
-                                     #    #  ##   ###  ###     ###      #                           
-                                     ##   ## ### ####  #      ###   ##  #                           
-                                     ## # ####     #   #  # ## ### ##   #                           
-                                    #### ##   ## ####  # #  #  #  ###   #                           
-                                    # ## ###  # # ## # #     # #     # #                            
-                                        # #  #    ## ##  # #  ### ##                                
-                                        ## #    #  ##### #    #    #  # #                           
-                                       # ## #  #    ## ## #  ###      ###                           
-                                     # #   #  #  #  #  ###   ##  ##    #                            
-                                    ### # ##### ###### ### ####### # ##                             
-                                    # # #    #####   ##  ##### #####                                
-                                      #  ##   #      #  # ##  ### ###                               
-                                   ####   ##### #########   # #                                     
-                              ##    #  #     ### # #   # ###  ###                                   
-                             #  #  #### ##   ### ##   ### ##     ##                                 
-                            ###    # ## # #####   #    #  #  ## ###                                 
-                            # ##### # #   ##  ##     #    #   #  #                                  
-                                ###### ####  ## #   #  ##  # # ##                                   
-                              ##      # ### ##  ####   #   ###                                      
-                               #  # #####  #   # ##   #  #  #                                       
-                               ## ### #######     #     # ##                                        
-                              # #  ## ##      #   ##    #                                           
-                             #  # ####        ###  ##  #                                            
-                             # ## ###            ##  ##                                             
-                              ##                                                                    
-                               ##                                                                   
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                   
+                          # #
+                        ## # #
+                       # ### ##
+                      #### ### #
+                      ##### #  ##
+                       #   ## ## #
+                        ###   #  ##
+                         #   ## ## #
+                          ###   #  ##
+                           #   ## ## #
+                            ###   #  ##
+                             #   ## ## #
+                              ###   #  ##
+                               #   ## ## #
+                                ###   #  ##
+                                 #   ## ## #
+                                  ###   #  ##
+                                   #   ## ## #
+                                    ###   #  ##
+                                     #   ## ## #
+                                      ###   #  ##
+                                       #   ## ## #
+                                        ###   #  ##
+                                         #   ## ## #
+                                          ###   #  ##
+                                           #   ## ## #
+                                            ###   #  ##
+                                             #   ## ## #
+                                              ###   #  ##
+                                               #   ## ## #
+                                                ###   #  ##
+                                                 #   ## ## #  ##
+                                                  ###   #  ##  ##
+                                                   #   ## ##  ##   #
+                                             ####   ###   #   #  ###
+                                            #    #   #   ## ####   #
+                                           ###    #   # #      # ## #
+                                           ###    # ##     # ##  # ##
+                                            #    #   ## # #     ##
+                                            # #      # #####  #   #
+                                           #   #####          ## ######
+                                           ###  ##  # ## # # #   ## # ##
+                                         ##  # ####### #   #  ###    ## #
+                                        #  #  ###### ##   #  # ##   #   #
+                                       #    # # ## #  ###### #######   #
+                                       # #### ## # ####    ##  ## # ## #
+                                        #    ####   #  # ###### ##    ###
+                                           #   # ## # ### #  ##  ##   ###
+                                              #######    #  ## ## #     #
+                                      ####  ## ##  #### ## ## ##  #     #
+                                     #    # #   ### ## ###    # ####    #
+                                    ###       ### # # #####    # #      #
+                                    # #   ### #### ## #   ## ### ##     #
+                                          ## ##  ####    #### # # #     #
+                                     #    #  ##   ###  ###     ###      #
+                                     ##   ## ### ####  #      ###   ##  #
+                                     ## # ####     #   #  # ## ### ##   #
+                                    #### ##   ## ####  # #  #  #  ###   #
+                                    # ## ###  # # ## # #     # #     # #
+                                        # #  #    ## ##  # #  ### ##
+                                        ## #    #  ##### #    #    #  # #
+                                       # ## #  #    ## ## #  ###      ###
+                                     # #   #  #  #  #  ###   ##  ##    #
+                                    ### # ##### ###### ### ####### # ##
+                                    # # #    #####   ##  ##### #####
+                                      #  ##   #      #  # ##  ### ###
+                                   ####   ##### #########   # #
+                              ##    #  #     ### # #   # ###  ###
+                             #  #  #### ##   ### ##   ### ##     ##
+                            ###    # ## # #####   #    #  #  ## ###
+                            # ##### # #   ##  ##     #    #   #  #
+                                ###### ####  ## #   #  ##  # # ##
+                              ##      # ### ##  ####   #   ###
+                               #  # #####  #   # ##   #  #  #
+                               ## ### #######     #     # ##
+                              # #  ## ##      #   ##    #
+                             #  # ####        ###  ##  #
+                             # ## ###            ##  ##
+                              ##
+                               ##
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 
@@ -4119,7 +4119,7 @@ import javax.swing.JPanel;
 public class Langton extends JFrame{
 	private JPanel planePanel;
 	private static final int ZOOM = 4;
-	
+
 	public Langton(final boolean[][] plane){
 		planePanel = new JPanel(){
 			@Override
@@ -4142,7 +4142,7 @@ public class Langton extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
-	
+
 	public static void main(String[] args){
 		new Langton(runAnt(100, 100));
 	}
@@ -4434,13 +4434,13 @@ updateWorld(world, ant, RUNS);
 
 ## jq
 
-In the following, the grid is boolean, and white is represented by true. 
+In the following, the grid is boolean, and white is represented by true.
 
 ```jq
 
-def matrix(m; n; init):  
+def matrix(m; n; init):
   if m == 0 then [range(0;n)] | map(init)
-  elif m > 0 then [range(0;m)][ range(0;m) ] = matrix(0;n;init) 
+  elif m > 0 then [range(0;m)][ range(0;m) ] = matrix(0;n;init)
   else error("matrix\(m);_;_) invalid")
   end;
 
@@ -4457,7 +4457,7 @@ def langtons_ant(grid_size):
 
   def flip(ant):
     # Flip the color of the current square
-    .[ant[0]][ant[1]] = (.[ant[0]][ant[1]] | not) 
+    .[ant[0]][ant[1]] = (.[ant[0]][ant[1]] | not)
   ;
 
   # input/output: the ant's state: [x, y, direction]
@@ -4478,7 +4478,7 @@ def langtons_ant(grid_size):
   def iterate:
     .[0] as $ant | .[1] as $grid
     # exit if the ant is outside the grid
-    | if $ant[0] < 1 or $ant[0] > grid_size 
+    | if $ant[0] < 1 or $ant[0] > grid_size
       or $ant[1] < 1 or $ant[1] > grid_size
       then [ $ant, $grid ]
       else
@@ -4489,12 +4489,12 @@ def langtons_ant(grid_size):
   ;
 
   ((grid_size/2) | floor | [ ., ., 0]) as $ant
-  | matrix(grid_size; grid_size; true) as $grid 
+  | matrix(grid_size; grid_size; true) as $grid
   | [$ant, $grid] | iterate
   | .[1]
   | printout
 ;
- 
+
 langtons_ant(100)
 ```
 
@@ -4644,7 +4644,7 @@ sub Quit handle$
     close #handle$
     end
     end sub
- 
+
 ```
 
 
@@ -4679,8 +4679,8 @@ for x = mx to 100
   next y
   print x
 next x
- 
- 
+
+
 ```
 
 
@@ -4722,7 +4722,7 @@ make "black 2
 make "sum sum :white :black
 make "chars [. #]
 make "origin quotient :size 2
-make "grid mdarray (list :size :size) 
+make "grid mdarray (list :size :size)
 make "directions [ [1 0] [0 1] [-1 0] [0 -1] ]
 
 repeat size [
@@ -4753,7 +4753,7 @@ while [(and (:x > 0) (:x <= :size) (:y > 0) (:y <= :size))] [
 ]
 
 repeat size [
-  local "y 
+  local "y
   local "blank
   make "y repcount
   make "blank "true
@@ -4900,7 +4900,7 @@ local world = (function (x, y)
 end)(world_x, world_y)
 
 -- directions: 0 up, clockwise
-local ant = { 
+local ant = {
 	x = math.floor(world_x / 2),
 	y = math.floor(world_y / 2),
 	dir = 0,
@@ -4950,7 +4950,7 @@ world.draw = function (self, ant)
 				win:attron(curses.color_pair(3))
 				win:mvaddch(i,j,"A")
 				--win:attroff(curses.color_pair(3))
-			elseif self[i][j] == 0 then 
+			elseif self[i][j] == 0 then
 				win:attron(curses.color_pair(1))
 				win:mvaddch(i,j," ")
 				--win:attroff(curses.color_pair(1))
@@ -5007,7 +5007,7 @@ Module Ant {
 			cd=(cd+if(clockwise->270,90)) mod 360
 			=cd  ' return a Direction Enum type
 	}
-	
+
 	dim rect(1 to N, 1 to N)=white
 	cx=N div 2
 	cy=N div 2
@@ -5016,10 +5016,10 @@ Module Ant {
 	endmove=False
 	while not endmove
 		movecell()
-	
+
 	end while
 	Disp()
-	
+
 	sub movecell()
 		select case rect(cx,cy)
 		case black
@@ -5151,11 +5151,11 @@ function u = langton_ant(n)
 	if nargin<1, n=100; end;
 	A = sparse(n,n);	% white
 	P = [n/2;n/2];	% Positon
-	D = 3;	         % index of direction 0-3 
+	D = 3;	         % index of direction 0-3
 	T = [1,0,-1,0;0,1,0,-1];	% 4 directions
 	k = 0;
 	while (1)
-		k = k+1;	
+		k = k+1;
 		a = A(P(1),P(2));
 		A(P(1),P(2)) = ~a;
 		if ( a )
@@ -5164,9 +5164,9 @@ function u = langton_ant(n)
 			D = mod(D-1,4);
 		end;
 		P = P+T(:,D+1);
-		
+
 		if (~mod(k,100)),spy(A);pause(.1);end;  %display after every 100 interations
-	end; 
+	end;
 end
 ```
 
@@ -5477,7 +5477,7 @@ my $move;
 for ($move = 0; $x >= 0 && $x < $size && $y >= 0 && $y < $size; $move++) {
   # toggle cell's value (white->black or black->white)
   if ($plane[$x][$y] = 1 - ($plane[$x][$y] ||= 0)) {
-        # if it's now true (black), then it was white, so turn right 
+        # if it's now true (black), then it was white, so turn right
         $dir = ($dir - 1) % @dirs;
   } else {
         # otherwise it was black, so turn left
@@ -5535,47 +5535,47 @@ for 0,2,4 ... $size - 2 -> $y {
 
 ```txt
 Out of bounds after 11669 moves at (-1, 26)
-            ▄▚▚                                   
-           ▟▟▜▟▚                                  
-           ▜▀▚▌▟▚                                 
-            ▜▘▗▌▟▚                                
-             ▜▘▗▌▟▚                               
-              ▜▘▗▌▟▚                              
-               ▜▘▗▌▟▚                             
-                ▜▘▗▌▟▚                            
-                 ▜▘▗▌▟▚                           
-                  ▜▘▗▌▟▚                          
-                   ▜▘▗▌▟▚                         
-                    ▜▘▗▌▟▚                        
-                     ▜▘▗▌▟▚                       
-                      ▜▘▗▌▟▚                      
-                       ▜▘▗▌▟▚                     
-                        ▜▘▗▌▟▚ ▄                  
-                         ▜▘▗▌▟▘▟▘▗                
-                      ▞▀▚ ▜▘▗▌▄▙▝▜                
-                     ▐█  ▌▄▘▘▗▗▞▐▚▌               
-                      ▌▖▝ ▐▚▙▙ ▖▀▖                
-                     ▐▄▝█▀▖▄▗▗▗▀▐▛▛▙              
-                    ▞▚▝▟██▜▞ ▞▗▜▌ ▞▘▌             
-                   ▐▗▄▌▙▜▐▄▛▀▜▞▜▛▛▄▐              
-                    ▘▗▝▜▚▖▌▟▞▛▜▌▜▖ █▌             
-                   ▄▄ ▄▜▛▜▙▖▟▗▛▟▘▌  ▌             
-                  ▟▖ ▘▘▄▛▌▛▟█▖ ▚▜▀  ▌             
-                  ▘▘ █▚▛▜▟▌▘▗█▞▛▞▌  ▌             
-                  ▐▖ ▙▐▙▗█▌▐▀  ▟▛ ▄ ▌             
-                  ▟▙▚▛▀▄▗▟▖▐▗▘▛▐▀▟▌ ▌             
-                  ▘▀▞▛▗▘▘█▐▞▗▗▝▟▖▄▝▝              
-                   ▗▜▞▖▗▘▝█▜▞▖▗▙ ▝ ▙▌             
-                  ▟▞▖▟▄▌▟▄▙▐█▗▟▙▟▚▗▞              
-                  ▘▌▚▖▝▛▀ ▐▘▞█▀▟▛█▖               
-               ▄ ▝▛▚ ▀▜▙▜▜▀▜▚▄▘▙▖                 
-              ▟▖▘▐▜▌▛▄▟▛▝▌ ▜▘▛▗▖▟▌                
-              ▘▀█▙▙▚▄▛▗▛▖ ▞▗▖▚▗▚▞                 
-               ▜ ▖▄▙▛▚▀▗▜▛ ▞▗▝▛                   
-               ▞▌▜▌█▀▀▘▖ ▙  ▌▀                    
-              ▐▗▌█▛    ▀▚▞▚▞                      
-               ▜▖                                 
-                                                  
+            ▄▚▚
+           ▟▟▜▟▚
+           ▜▀▚▌▟▚
+            ▜▘▗▌▟▚
+             ▜▘▗▌▟▚
+              ▜▘▗▌▟▚
+               ▜▘▗▌▟▚
+                ▜▘▗▌▟▚
+                 ▜▘▗▌▟▚
+                  ▜▘▗▌▟▚
+                   ▜▘▗▌▟▚
+                    ▜▘▗▌▟▚
+                     ▜▘▗▌▟▚
+                      ▜▘▗▌▟▚
+                       ▜▘▗▌▟▚
+                        ▜▘▗▌▟▚ ▄
+                         ▜▘▗▌▟▘▟▘▗
+                      ▞▀▚ ▜▘▗▌▄▙▝▜
+                     ▐█  ▌▄▘▘▗▗▞▐▚▌
+                      ▌▖▝ ▐▚▙▙ ▖▀▖
+                     ▐▄▝█▀▖▄▗▗▗▀▐▛▛▙
+                    ▞▚▝▟██▜▞ ▞▗▜▌ ▞▘▌
+                   ▐▗▄▌▙▜▐▄▛▀▜▞▜▛▛▄▐
+                    ▘▗▝▜▚▖▌▟▞▛▜▌▜▖ █▌
+                   ▄▄ ▄▜▛▜▙▖▟▗▛▟▘▌  ▌
+                  ▟▖ ▘▘▄▛▌▛▟█▖ ▚▜▀  ▌
+                  ▘▘ █▚▛▜▟▌▘▗█▞▛▞▌  ▌
+                  ▐▖ ▙▐▙▗█▌▐▀  ▟▛ ▄ ▌
+                  ▟▙▚▛▀▄▗▟▖▐▗▘▛▐▀▟▌ ▌
+                  ▘▀▞▛▗▘▘█▐▞▗▗▝▟▖▄▝▝
+                   ▗▜▞▖▗▘▝█▜▞▖▗▙ ▝ ▙▌
+                  ▟▞▖▟▄▌▟▄▙▐█▗▟▙▟▚▗▞
+                  ▘▌▚▖▝▛▀ ▐▘▞█▀▟▛█▖
+               ▄ ▝▛▚ ▀▜▙▜▜▀▜▚▄▘▙▖
+              ▟▖▘▐▜▌▛▄▟▛▝▌ ▜▘▛▗▖▟▌
+              ▘▀█▙▙▚▄▛▗▛▖ ▞▗▖▚▗▚▞
+               ▜ ▖▄▙▛▚▀▗▜▛ ▞▗▝▛
+               ▞▌▜▌█▀▀▘▖ ▙  ▌▀
+              ▐▗▌█▛    ▀▚▞▚▞
+               ▜▖
+
 
 ```
 
@@ -5589,7 +5589,7 @@ sequence grid = repeat(repeat(' ',100),100)
 integer aX = 50, aY = 50,
         gXY, angle = 1                      -- ' '/'#';  0,1,2,3 = NESW
 constant dX = {0,-1,0,1}                    -- (dY = reverse(dX))
- 
+
 while aX>=1 and aX<=100
   and aY>=1 and aY<=100 do
     gXY = grid[aX][aY]
@@ -5598,7 +5598,7 @@ while aX>=1 and aX<=100
     aX += dX[angle+1]
     aY += dX[4-angle]
 end while
- 
+
 puts(1,join(grid,"\n"))
 ```
 
@@ -5687,7 +5687,7 @@ $x = 50;
 $y = 70;
 $dir = 0; // 0-up, 1-left, 2-down, 3-right
 $field = array();
-$step_count = 0; 
+$step_count = 0;
 
 // LANGTON´S ANT PROCEDURE
 while(0 <= $x && $x <= width && 0 <= $y && $y <= height){
@@ -5709,7 +5709,7 @@ while(0 <= $x && $x <= width && 0 <= $y && $y <= height){
 // ARRAY TO IMAGE
 $img = imagecreatetruecolor(width, height);
 $white = imagecolorallocate($img, 255, 255, 255);
-for($x = 0; $x < width; $x++){	
+for($x = 0; $x < width; $x++){
 	for($y = 0; $y < height; $y++){
 		if(isset($field[$x][$y])){
 			imagesetpixel($img, $x, $y, $white);
@@ -5745,7 +5745,7 @@ This code pipes a PBM into ImageMagick's "display" to show the result:
       (until (or (le0 X) (le0 Y) (> X Width) (> Y Height))
          (let Cell (nth Field X Y)
             (setq Dir (% (+ (if (car Cell) 1 3) Dir) 4))
-            (set Cell (not (car Cell))) 
+            (set Cell (not (car Cell)))
             (case Dir
                (0 (inc 'X))
                (1 (inc 'Y))
@@ -5775,25 +5775,25 @@ $G = @()
 1..$Size | ForEach { $G += ,( @( 1 ) * $Size ) }
 
 $x = $y = $Size / 2
- 
+
 #  Direction of next move
 $Dx = 1
 $Dy = 0
- 
+
 #  While we are still on the grid...
 While ( $x -ge 0 -and $y -ge 0 -and $x -lt $Size -and $y -lt $Size )
     {
     #  Change direction
     $Dx, $Dy = ( $Dy * $G[$x][$y] ), -( $Dx * $G[$x][$y] )
- 
+
     #  Change state of current square
     $G[$x][$y] = -$G[$x][$y]
- 
+
     #  Move forward
     $x += $Dx
     $y += $Dy
     }
- 
+
 #  Convert to strings for output
 ForEach ( $Row in $G ) { ( $Row | ForEach { ( ' ', '', '#')[$_+1] } ) -join '' }
 
@@ -5805,12 +5805,12 @@ Default PowerShell console colors reverse the colors from black on white to whit
 ####################################################################################################
 ################################################################################################  ##
 ###############################################################################################    #
-############################################################################################## #  # 
-#############################################################################################  #    
+############################################################################################## #  #
+#############################################################################################  #
 ############################################################################################ # # # #
-###########################################################################################  ## ##  
+###########################################################################################  ## ##
 ##############################  ########################################################## # ##  ###
-#######################  ######  ########################################################  ## ###   
+#######################  ######  ########################################################  ## ###
 ###################### ## ## #  # ###################################################### # ##   ## #
 #####################   ##   # ## #####################################################  ## ###   ##
 ##################### #    ##  # ##################################################### # ##   ## ###
@@ -5905,10 +5905,10 @@ void draw() {
     count++;
     boolean pix=get(x,y)!=-1; //white =-1
     setBool(x,y,pix);
-  
+
     turn(pix);
     move();
-  
+
     if(x<0||y<0||x>=width||y>=height) {
       println("finished");
       noLoop();
@@ -6021,7 +6021,7 @@ Repeat
     If event = #PB_Event_CloseWindow
       quit = 1
       event = 0
-    EndIf 
+    EndIf
   Until event = 0
 
   StartDrawing(CanvasOutput(#canvasID))
@@ -6046,12 +6046,12 @@ Repeat
       ant\x + 1
   EndSelect
   antSteps + 1
-  
+
   If ant\x < 0 Or ant\x >= #planeWidth Or ant\y < 0 Or ant\y >= #planeHeight
     MessageRequester("Langton's ant status", "Out of bounds after " + Str(antSteps) + " steps.")
     quit = 1
-  EndIf    
-  
+  EndIf
+
   Delay(10) ;control animation speed and avoid hogging CPU
 Until quit = 1
 ```
@@ -6263,57 +6263,57 @@ This Racket program attempts to avoid mutation.
 Output (text):
 <pre style="height:60ex;overflow:scroll">
 
-                                         ##  ############  ##                                       
-                                        #::####::::::::::# :##                                      
-                                       ###:::##::::::::::::##:#                                     
-                                       #:#::#:::::::::#::#::::#                                     
-                                   ##  ##:#:#:::::::::###:::::::#                                   
-                                ###:#::#:::#:::::#:::::##:##::###                                   
-                                :#:#::###::##:####:##:::#:#::#:##  ##                               
-                                :#:###:##: #:##::###:#:#:::::###:::###                              
-                               #:::::#:::#####:#:#::####::#:::###:#:#:#                             
-                              ###:##:::#:####::##:##:######:#:###:#:::#                             
-                              #:###:#:##:#:#:##:##:##:#:::#####:###:##                              
-                                ::#:#:::#:##:###:::#:::#:#::####::::# ##                            
-                               #::#:::::::::##:##:::#::##:::::##:#::: :##                           
-                              ###:::#:#:##:###::#::##:::::#:::###:##::##:#                          
-                             #::###::##:::##:##:::###::#::::#::##:####:::#                          
-                            ###:::#:::#:#::#:#:####:##::#:##:###::#:::::#                           
-                           #::###::#:##::::#::#:###::#::::::###:##:#::#: ##                         
-                          ###:::#:::  #:##:#:##::##::#####:####::####:##:::#                        
-                         #::###::#:# #::#:###:#:#:##::::::##:::#:#:#::  #:::#                       
-                        ###:::#::## ###::##:#:::##:::::::####:####:::#::::::#                       
-                       #::###::#:#  #:::##::###########:#::####::#::: #::::#                        
-                      ###:::#::##     :#:####::##::#########::#::##::::#::##                        
-                     #::###::#:#   ## :#:##:::##:##:###:###:::#::#:##::####:#                       
-                    ###:::#::##   #::#:######:##:#:##:#:#::::###:###:::##:::#                       
-                   #::###::#:#   #:::::#####:#:#####:::::#:#::##:#::::##:::#                        
-                  ###:::#::##    #:::::#:##:#####:##::#:#:::#::#::##:# :#::#                        
-                 #::###::#:#     #::::#:::####:#::#####:##:::##########:::##                        
-                ###:::#::##      #:##:::##:::#::#:::####::#:::##:####:##:::                         
-               #::###::#:#        #####:#::##:::##:#:::#::::#:#::#::#::#:#:                         
-              ###:::#::##          ##  ## #:#:#::::##:##:#:#:##::#::##::##:                         
-             #::###::#:#                 #::#:   #:########:#:#:##::####:#:                         
-            ###:::#::##                  #::#:  #:::::::##:##:::#::#::##:#:                         
-           #::###::#:#                    #::#  #::::::#::##::##:::##:####:                         
-          ###:::#::##                      ##   #:::::::##::##::::#:::#:###                         
-         #::###::#:#                            #:##::####::::####:###:####                         
-        ###:::#::##                              ##: ####:   ##: #:##:#:#::#                        
-       #::###::#:#                                ##    ##    ## ###:##:#####                       
-      ###:::#::##                                                #:##:#::####                       
-     #::###::#:#                                                    :##:##:##                       
-    ###:::#::##                                                     :##::::::                       
-   #::###::#:#                                                     #:##::####:#                     
-  ###:::#::##                                                     #::#:###::###                     
- #::###::#:#                                                      #:##:#  #::#                      
-###:::#::##                                                        ##:     ##                       
-:::##::#:#                                                          ##                              
-##::#::##                                                                                           
- #:#:#:#                                                                                            
-####:##                                                                                             
-#:##:#                                                                                              
- ####                                                                                               
-  ##                                                                                                
+                                         ##  ############  ##
+                                        #::####::::::::::# :##
+                                       ###:::##::::::::::::##:#
+                                       #:#::#:::::::::#::#::::#
+                                   ##  ##:#:#:::::::::###:::::::#
+                                ###:#::#:::#:::::#:::::##:##::###
+                                :#:#::###::##:####:##:::#:#::#:##  ##
+                                :#:###:##: #:##::###:#:#:::::###:::###
+                               #:::::#:::#####:#:#::####::#:::###:#:#:#
+                              ###:##:::#:####::##:##:######:#:###:#:::#
+                              #:###:#:##:#:#:##:##:##:#:::#####:###:##
+                                ::#:#:::#:##:###:::#:::#:#::####::::# ##
+                               #::#:::::::::##:##:::#::##:::::##:#::: :##
+                              ###:::#:#:##:###::#::##:::::#:::###:##::##:#
+                             #::###::##:::##:##:::###::#::::#::##:####:::#
+                            ###:::#:::#:#::#:#:####:##::#:##:###::#:::::#
+                           #::###::#:##::::#::#:###::#::::::###:##:#::#: ##
+                          ###:::#:::  #:##:#:##::##::#####:####::####:##:::#
+                         #::###::#:# #::#:###:#:#:##::::::##:::#:#:#::  #:::#
+                        ###:::#::## ###::##:#:::##:::::::####:####:::#::::::#
+                       #::###::#:#  #:::##::###########:#::####::#::: #::::#
+                      ###:::#::##     :#:####::##::#########::#::##::::#::##
+                     #::###::#:#   ## :#:##:::##:##:###:###:::#::#:##::####:#
+                    ###:::#::##   #::#:######:##:#:##:#:#::::###:###:::##:::#
+                   #::###::#:#   #:::::#####:#:#####:::::#:#::##:#::::##:::#
+                  ###:::#::##    #:::::#:##:#####:##::#:#:::#::#::##:# :#::#
+                 #::###::#:#     #::::#:::####:#::#####:##:::##########:::##
+                ###:::#::##      #:##:::##:::#::#:::####::#:::##:####:##:::
+               #::###::#:#        #####:#::##:::##:#:::#::::#:#::#::#::#:#:
+              ###:::#::##          ##  ## #:#:#::::##:##:#:#:##::#::##::##:
+             #::###::#:#                 #::#:   #:########:#:#:##::####:#:
+            ###:::#::##                  #::#:  #:::::::##:##:::#::#::##:#:
+           #::###::#:#                    #::#  #::::::#::##::##:::##:####:
+          ###:::#::##                      ##   #:::::::##::##::::#:::#:###
+         #::###::#:#                            #:##::####::::####:###:####
+        ###:::#::##                              ##: ####:   ##: #:##:#:#::#
+       #::###::#:#                                ##    ##    ## ###:##:#####
+      ###:::#::##                                                #:##:#::####
+     #::###::#:#                                                    :##:##:##
+    ###:::#::##                                                     :##::::::
+   #::###::#:#                                                     #:##::####:#
+  ###:::#::##                                                     #::#:###::###
+ #::###::#:#                                                      #:##:#  #::#
+###:::#::##                                                        ##:     ##
+:::##::#:#                                                          ##
+##::#::##
+ #:#:#:#
+####:##
+#:##:#
+ ####
+  ##
 
 ```
 
@@ -6321,7 +6321,7 @@ Output (text):
 
 ## REXX
 
-This REXX program automatically justifies (or ''crops'') the '''left''', '''right''', '''top''' and '''bottom''' of the ant's walk field on 
+This REXX program automatically justifies (or ''crops'') the '''left''', '''right''', '''top''' and '''bottom''' of the ant's walk field on
 
 the screen to display the maximum area of the ant's path (walk).
 
@@ -6479,7 +6479,7 @@ The ant's walk starts at the   █   glyph   (in the middle of the "fist")   and
 load "guilib.ring"
 load "stdlib.ring"
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                    setwindowtitle("drawing using qpainter")
@@ -6512,21 +6512,21 @@ func draw
                setpen(pen)
 
         fieldsize=100
-        field = newlist(fieldsize,fieldsize)   
+        field = newlist(fieldsize,fieldsize)
         x=fieldsize/2
-        y=fieldsize/2  
+        y=fieldsize/2
         d=0
         while x<=fieldsize and x>=0 and y<=fieldsize and y>=0
                 if field[x][y]=0  field[x][y]=1 d-=1 else field[x][y]=0 d+=1 ok
-                drawpoint(x*2, y*2)     
-                d=(d+4) % 4 
-                switch d 
+                drawpoint(x*2, y*2)
+                d=(d+4) % 4
+                switch d
                         on 0 y+=1
                         on 1 x+=1
                         on 2 y-=1
                         on 3 x-=1
                 off
-        end 
+        end
 
         endpaint()
         }
@@ -6545,49 +6545,49 @@ Output:
 
 ```ruby
 class Ant
-  
+
   class OutOfBoundsException < StandardError; end
-  
+
   class Plane
     def initialize(x, y)
       @size_x, @size_y = x, y
       @cells = Array.new(y) {Array.new(x, :white)}
     end
-    
+
     def white?(px, py)
       @cells[py][px] == :white
     end
-    
+
     def toggle_colour(px, py)
       @cells[py][px] = (white?(px, py) ? :black : :white)
     end
-    
+
     def check_bounds(px, py)
       unless (0 <= px and px < @size_x) and (0 <= py and py < @size_y)
         raise OutOfBoundsException, "(#@size_x, #@size_y)"
       end
     end
-    
+
     def to_s
       @cells.collect {|row|
         row.collect {|cell| cell == :white ? "." : "#"}.join + "\n"
       }.join
     end
   end
-  
+
   dir_move = [[:north, [0,-1]], [:east, [1,0]], [:south, [0,1]], [:west, [-1,0]]]
   Move = Hash[dir_move]
   directions = dir_move.map{|dir, move| dir}       # [:north, :east, :south, :west]
   Right = Hash[ directions.zip(directions.rotate).to_a ]
   Left  = Right.invert
-  
+
   def initialize(size_x, size_y, pos_x=size_x/2, pos_y=size_y/2)
     @plane = Plane.new(size_x, size_y)
     @pos_x, @pos_y = pos_x, pos_y
     @direction = :south
     @plane.check_bounds(@pos_x, @pos_y)
   end
-  
+
   def run
     moves = 0
     loop do
@@ -6600,7 +6600,7 @@ class Ant
     end
     moves
   end
-  
+
   def move
     @plane.toggle_colour(@pos_x, @pos_y)
     advance
@@ -6610,18 +6610,18 @@ class Ant
       @direction = Left[@direction]
     end
   end
-  
+
   def advance
     dx, dy = Move[@direction]
     @pos_x += dx
     @pos_y += dy
     @plane.check_bounds(@pos_x, @pos_y)
   end
-  
+
   def position
     "(#@pos_x, #@pos_y)"
   end
-  
+
   def to_s
     @plane.to_s
   end
@@ -6746,7 +6746,7 @@ puts ant
 ```ruby
 class Ant
   MOVE = [[1,0], [0,1], [-1,0], [0,-1]]   # [0]:east, [1]:south, [2]:west, [3]:north
-  
+
   def initialize(size_x, size_y, pos_x=size_x/2, pos_y=size_y/2)
     @plane = Array.new(size_y) {Array.new(size_x, true)}  # true -> white, false -> black
     @sx, @sy = size_x, size_y
@@ -6755,7 +6755,7 @@ class Ant
     @moves = 0
     move  while (0 <= @px and @px < @sx) and (0 <= @py and @py < @sy)
   end
-  
+
   def move
     @moves += 1
     @direction = (@plane[@py][@px] ? @direction+1 : @direction-1) % 4
@@ -6763,7 +6763,7 @@ class Ant
     @px += MOVE[@direction][0]
     @py += MOVE[@direction][1]
   end
-  
+
   def to_s
     ["out of bounds after #{@moves} moves: (#@px, #@py)"] +
       (0...@sy).map {|y| (0...@sx).map {|x| @plane[y][x] ? "." : "#"}.join}
@@ -6796,7 +6796,7 @@ while (x>0) and (x<100) and (y>0) and (y<100)
  x          = x + (nxt = 2) - (nxt = 4)
  y          = y + (nxt = 3) - (nxt = 1)
  plane(x,y) = (plane(x,y) <> 1)
- minY       = min(y,minY)          ' find lowest and 
+ minY       = min(y,minY)          ' find lowest and
  maxY       = max(y,maxY)          '  highest y to prevent printing blank lines
 wend
 
@@ -6808,7 +6808,7 @@ for y = minY to maxY
   next x
   print y
 next y
-render #g 
+render #g
 #g "flush""
 ```
 
@@ -6993,16 +6993,16 @@ class Langton(matrix:Array[Array[Char]], ant:Ant) {
   import Langton._
   val rows=matrix.size
   val cols=matrix(0).size
-	
+
   def isValid = 0 <= ant.row && ant.row < cols && 0 <= ant.col  && ant.col < rows
   def isBlack=matrix(ant.row)(ant.col)==BLACK
   def changeColor(c:Char)={matrix(ant.row)(ant.col)=c; matrix}
-	
+
   def evolve():Langton={
     val (newCol, newAnt)=if(isBlack) (WHITE, ant.turnLeft) else (BLACK, ant.turnRight)
     new Langton(changeColor(newCol), newAnt.move)
   }
-  override def toString()=matrix map (_.mkString("")) mkString "\n"	
+  override def toString()=matrix map (_.mkString("")) mkString "\n"
 }
 
 case class Ant(row:Int, col:Int, d:Int=0) {
@@ -7020,7 +7020,7 @@ object Langton {
   val BLACK='#'
   val WHITE='.'
   def apply(x:Int=100, y:Int=100)=new Langton(Array.fill(y, x)(WHITE), Ant(x>>>1, y>>>1, 0))
-	
+
   def main(args: Array[String]): Unit = {
     var l=Langton(100,100)
     var moves=0
@@ -7147,7 +7147,7 @@ Output:
 $ include "seed7_05.s7i";
 
 const type: direction is new enum UP, RIGHT, DOWN, LEFT end enum;
- 
+
 const proc: main is func
   local
     const integer: width is 75;
@@ -7252,23 +7252,23 @@ next_step=%T;                       //step flag
 i=0;                                //step counter
 
 while next_step
-    
+
     col=grid(ant_pos(1),ant_pos(2));    //get cell color
-    
+
     if col then                         //if white cell
         grid(ant_pos(1),ant_pos(2))=~grid(ant_pos(1),ant_pos(2));  //switch color
         if head_direction=='N' then     //if head to N
             head_direction='E';         //turn right to E
             ant_pos(2)=ant_pos(2)+1;    //step forward
-            
+
         elseif head_direction=='E' then //if head to E
             head_direction='S';         //turn right to S
             ant_pos(1)=ant_pos(1)+1;    //step forward
-            
+
         elseif head_direction=='S' then //if head to S
             head_direction='W';         //turn right to W
             ant_pos(2)=ant_pos(2)-1;    //step forward
-            
+
         elseif head_direction=='W' then //if head to W
             head_direction='N';         //turn right to N
             ant_pos(1)=ant_pos(1)-1;    //step forward
@@ -7278,23 +7278,23 @@ while next_step
         if head_direction=='N' then     //if head to N
             head_direction='W';         //turn left to E
             ant_pos(2)=ant_pos(2)-1;    //step foward
-            
+
         elseif head_direction=='W' then //if head to W
            head_direction='S';          //turn left to S
             ant_pos(1)=ant_pos(1)+1;    //step forward
-            
+
         elseif head_direction=='S' then //if head to S
             head_direction='E';         //turn left to E
             ant_pos(2)=ant_pos(2)+1;    //step forward
-            
+
         elseif head_direction=='E' then //if head to E
             head_direction='N';         //turn left to N
             ant_pos(1)=ant_pos(1)-1;    //step forward
         end
     end
-    
+
     i=i+1;
-    
+
     if ant_pos(1)<1 | ant_pos(1)>100 | ant_pos(2)<0 | ant_pos(2)>100 then   //check ant's position
         disp("Out of bounds after "+string(i)+" steps");
         next_step=~next_step;                                               //break loop if out of bounds
@@ -7316,8 +7316,8 @@ disp(ascii_grid);
 
 {{out}}
 <pre style="font-size: 10px">
- Out of bounds after 11669 steps   
- 
+ Out of bounds after 11669 steps
+
 !                                                                                                                                                                                                                                                                                                            !
 !                                                                                                                                                                                                                                                                                                            !
 !                                                                                                                                                                                                                                                                                                            !
@@ -7583,31 +7583,31 @@ class Langton {
     var antPosition = Point(x:0, y:0)
     var outOfBounds = false
     var antDirection = Direction.East
-    
+
     init(width:Int, height:Int) {
         self.origin = Point(x:width / 2, y:height / 2)
         self.isBlack = Array(count: width, repeatedValue: Array(count: height, repeatedValue: false))
     }
-    
+
     func moveAnt() {
         self.antPosition.x += xInc[self.antDirection.rawValue]
         self.antPosition.y += yInc[self.antDirection.rawValue]
     }
-    
+
     func step() -> Point {
         if self.outOfBounds {
             println("Ant tried to move while out of bounds.")
             exit(0)
         }
-        
+
         var ptCur = Point(x:self.antPosition.x + self.origin.x, y:self.antPosition.y + self.origin.y)
         let black = self.isBlack[ptCur.x][ptCur.y]
         let direction = self.antDirection.rawValue
-        
+
         self.antDirection = (black ? self.leftTurn : self.rightTurn)[direction]
 
         self.isBlack[ptCur.x][ptCur.y] = !self.isBlack[ptCur.x][ptCur.y]
-        
+
         self.moveAnt()
         ptCur = Point(x:self.antPosition.x + self.origin.x, y:self.antPosition.y + self.origin.y)
         self.outOfBounds =
@@ -7615,7 +7615,7 @@ class Langton {
             ptCur.x >= self.isBlack.count ||
             ptCur.y < 0 ||
             ptCur.y >= self.isBlack[0].count
-        
+
         return self.antPosition
     }
 }
@@ -7638,86 +7638,86 @@ for row in 0 ..< WIDTH {
 Blank lines omitted
 
 ```txt
-                          # #                                                                       
-                        ## # #                                                                      
-                       # ### ##                                                                     
-                      #### ### #                                                                    
-                      ##### #  ##                                                                   
-                       #   ## ## #                                                                  
-                        ###   #  ##                                                                 
-                         #   ## ## #                                                                
-                          ###   #  ##                                                               
-                           #   ## ## #                                                              
-                            ###   #  ##                                                             
-                             #   ## ## #                                                            
-                              ###   #  ##                                                           
-                               #   ## ## #                                                          
-                                ###   #  ##                                                         
-                                 #   ## ## #                                                        
-                                  ###   #  ##                                                       
-                                   #   ## ## #                                                      
-                                    ###   #  ##                                                     
-                                     #   ## ## #                                                    
-                                      ###   #  ##                                                   
-                                       #   ## ## #                                                  
-                                        ###   #  ##                                                 
-                                         #   ## ## #                                                
-                                          ###   #  ##                                               
-                                           #   ## ## #                                              
-                                            ###   #  ##                                             
-                                             #   ## ## #                                            
-                                              ###   #  ##                                           
-                                               #   ## ## #                                          
-                                                ###   #  ##                                         
-                                                 #   ## ## #  ##                                    
-                                                  ###   #  ##  ##                                   
-                                                   #   ## ##  ##   #                                
-                                             ####   ###   #   #  ###                                
-                                            #    #   #   ## ####   #                                
-                                           ###    #   # #      # ## #                               
-                                           ###    # ##     # ##  # ##                               
-                                            #    #   ## # #     ##                                  
-                                            # #      # #####  #   #                                 
-                                           #   #####          ## ######                             
-                                           ###  ##  # ## # # #   ## # ##                            
-                                         ##  # ####### #   #  ###    ## #                           
-                                        #  #  ###### ##   #  # ##   #   #                           
-                                       #    # # ## #  ###### #######   #                            
-                                       # #### ## # ####    ##  ## # ## #                            
-                                        #    ####   #  # ###### ##    ###                           
-                                           #   # ## # ### #  ##  ##   ###                           
-                                              #######    #  ## ## #     #                           
-                                      ####  ## ##  #### ## ## ##  #     #                           
-                                     #    # #   ### ## ###    # ####    #                           
-                                    ###       ### # # #####    # #      #                           
-                                    # #   ### #### ## #   ## ### ##     #                           
-                                          ## ##  ####    #### # # #     #                           
-                                     #    #  ##   ###  ###     ###      #                           
-                                     ##   ## ### ####  #      ###   ##  #                           
-                                     ## # ####     #   #  # ## ### ##   #                           
-                                    #### ##   ## ####  # #  #  #  ###   #                           
-                                    # ## ###  # # ## # #     # #     # #                            
-                                        # #  #    ## ##  # #  ### ##                                
-                                        ## #    #  ##### #    #    #  # #                           
-                                       # ## #  #    ## ## #  ###      ###                           
-                                     # #   #  #  #  #  ###   ##  ##    #                            
-                                    ### # ##### ###### ### ####### # ##                             
-                                    # # #    #####   ##  ##### #####                                
-                                      #  ##   #      #  # ##  ### ###                               
-                                   ####   ##### #########   # #                                     
-                              ##    #  #     ### # #   # ###  ###                                   
-                             #  #  #### ##   ### ##   ### ##     ##                                 
-                            ###    # ## # #####   #    #  #  ## ###                                 
-                            # ##### # #   ##  ##     #    #   #  #                                  
-                                ###### ####  ## #   #  ##  # # ##                                   
-                              ##      # ### ##  ####   #   ###                                      
-                               #  # #####  #   # ##   #  #  #                                       
-                               ## ### #######     #     # ##                                        
-                              # #  ## ##      #   ##    #                                           
-                             #  # ####        ###  ##  #                                            
-                             # ## ###            ##  ##                                             
-                              ##                                                                    
-                               ##                                                                   
+                          # #
+                        ## # #
+                       # ### ##
+                      #### ### #
+                      ##### #  ##
+                       #   ## ## #
+                        ###   #  ##
+                         #   ## ## #
+                          ###   #  ##
+                           #   ## ## #
+                            ###   #  ##
+                             #   ## ## #
+                              ###   #  ##
+                               #   ## ## #
+                                ###   #  ##
+                                 #   ## ## #
+                                  ###   #  ##
+                                   #   ## ## #
+                                    ###   #  ##
+                                     #   ## ## #
+                                      ###   #  ##
+                                       #   ## ## #
+                                        ###   #  ##
+                                         #   ## ## #
+                                          ###   #  ##
+                                           #   ## ## #
+                                            ###   #  ##
+                                             #   ## ## #
+                                              ###   #  ##
+                                               #   ## ## #
+                                                ###   #  ##
+                                                 #   ## ## #  ##
+                                                  ###   #  ##  ##
+                                                   #   ## ##  ##   #
+                                             ####   ###   #   #  ###
+                                            #    #   #   ## ####   #
+                                           ###    #   # #      # ## #
+                                           ###    # ##     # ##  # ##
+                                            #    #   ## # #     ##
+                                            # #      # #####  #   #
+                                           #   #####          ## ######
+                                           ###  ##  # ## # # #   ## # ##
+                                         ##  # ####### #   #  ###    ## #
+                                        #  #  ###### ##   #  # ##   #   #
+                                       #    # # ## #  ###### #######   #
+                                       # #### ## # ####    ##  ## # ## #
+                                        #    ####   #  # ###### ##    ###
+                                           #   # ## # ### #  ##  ##   ###
+                                              #######    #  ## ## #     #
+                                      ####  ## ##  #### ## ## ##  #     #
+                                     #    # #   ### ## ###    # ####    #
+                                    ###       ### # # #####    # #      #
+                                    # #   ### #### ## #   ## ### ##     #
+                                          ## ##  ####    #### # # #     #
+                                     #    #  ##   ###  ###     ###      #
+                                     ##   ## ### ####  #      ###   ##  #
+                                     ## # ####     #   #  # ## ### ##   #
+                                    #### ##   ## ####  # #  #  #  ###   #
+                                    # ## ###  # # ## # #     # #     # #
+                                        # #  #    ## ##  # #  ### ##
+                                        ## #    #  ##### #    #    #  # #
+                                       # ## #  #    ## ## #  ###      ###
+                                     # #   #  #  #  #  ###   ##  ##    #
+                                    ### # ##### ###### ### ####### # ##
+                                    # # #    #####   ##  ##### #####
+                                      #  ##   #      #  # ##  ### ###
+                                   ####   ##### #########   # #
+                              ##    #  #     ### # #   # ###  ###
+                             #  #  #### ##   ### ##   ### ##     ##
+                            ###    # ## # #####   #    #  #  ## ###
+                            # ##### # #   ##  ##     #    #   #  #
+                                ###### ####  ## #   #  ##  # # ##
+                              ##      # ### ##  ####   #   ###
+                               #  # #####  #   # ##   #  #  #
+                               ## ### #######     #     # ##
+                              # #  ## ##      #   ##    #
+                             #  # ####        ###  ##  #
+                             # ## ###            ##  ##
+                              ##
+                               ##
 
 ```
 
@@ -7802,7 +7802,7 @@ Sub Ant()
 Dim TablDatas(1 To 200, 1 To 256) As String, sDir As String, sFile As String, Str As String
 Dim ColA As Integer, LigA As Long, ColF As Integer, LigF As Long, i As Long, j As Integer, Num As Long
 Dim Top As Boolean, Left As Boolean, Bottom As Boolean, Right As Boolean
-    
+
     'init variables
     Top = True
     LigF = 80
@@ -7816,7 +7816,7 @@ Dim Top As Boolean, Left As Boolean, Bottom As Boolean, Right As Boolean
     sDir = "C:\Users\yourname\Desktop\"
     'name txt file
     sFile = "Langton_Ant.txt"
-    
+
     'start
     For i = 1 To 15000
         LigA = LigF
@@ -7861,57 +7861,57 @@ End Sub
 {{out}}
 
 ```txt
-                                                                                                                                                                                                                                                                
-                                      ##  ############  ##                                                                                                                                                                                                      
-                                     ##  #          ####  #                                                                                                                                                                                                     
-                                    # ##            ##   ###                                                                                                                                                                                                    
-                                    #    #  #         #  # #                                                                                                                                                                                                    
-                                  #       ###         # # ##  ##                                                                                                                                                                                                
-                                  ###  ## ##     #     #   #  # ###                                                                                                                                                                                             
-                              ##  ## #  # #   ## #### ##  ###  # #                                                                                                                                                                                              
-                             ###   ###     # # ###  ## #  ## ### #                                                                                                                                                                                              
-                            # # # ###   #  ####  # # #####   #     #                                                                                                                                                                                            
-                            #   # ### # ###### ## ##  #### #   ## ###                                                                                                                                                                                           
-                             ## ### #####   # ## ## ## # # ## # ### #                                                                                                                                                                                           
-                           ## #    ####  # #   #   ### ## #   # #                                                                                                                                                                                               
-                          ##     # ##     ##  #   ## ##         #  #                                                                                                                                                                                            
-                         # ##  ## ###   #     ##  #  ### ## # #   ###                                                                                                                                                                                           
-                         #   #### ##  #    #  ###   ## ##   ##  ###  #                                                                                                                                                                                          
-                          #     #  ### ## #  ## #### # #  # #   #   ###                                                                                                                                                                                         
-                        ##  #  # ## ###      #  ### #  #    ## #  ###  #                                                                                                                                                                                        
-                       #   ## ####  #### #####  ##  ## # ## #     #   ###                                                                                                                                                                                       
-                      #   #    # # #   ##      ## # # ### #  # # #  ###  #                                                                                                                                                                                      
-                      #      #   #### ####       ##   # ##  ### ##  #   ###                                                                                                                                                                                     
-                       #    #    #  ####  # ###########  ##   #  # #  ###  #                                                                                                                                                                                    
-                       ##  #    ##  #  #########  ##  #### #      ##  #   ###                                                                                                                                                                                   
-                      # ####  ## #  #   ### ### ## ##   ## #  ##   # #  ###  #                                                                                                                                                                                  
-                      #   ##   ### ###    # # ## # ## ###### #  #   ##  #   ###                                                                                                                                                                                 
-                       #   ##    # ##  # #     ##### # #####     #   # #  ###  #                                                                                                                                                                                
-                       #  #  # ##  #  #   # #  ## ##### ## #     #    ##  #   ###                                                                                                                                                                               
-                       ##   ##########   ## #####  # ####   #    #     # #  ###  #                                                                                                                                                                              
-                           ## #### ##   #  ####   #  #   ##   ## #      ##  #   ###                                                                                                                                                                             
-                         # #  #  #  # #    #   # ##   ##  # #####        # #  ###  #                                                                                                                                                                            
-                         ##  ##  #  ## # # ## ##    # # # ##  ##          ##  #   ###                                                                                                                                                                           
-                         # ####  ## # # ######## #    #  #                 # #  ###  #                                                                                                                                                                          
-                         # ##  #  #   ## ##       #   #  #                  ##  #   ###                                                                                                                                                                         
-                         #### ##   ##  ##  #      #  #  #                    # #  ###  #                                                                                                                                                                        
-                        ### #   #    ##  ##       #   ##                      ##  #   ###                                                                                                                                                                       
-                        #### ### ####    ####  ## #                            # #  ###  #                                                                                                                                                                      
-                       #  # # ## #  ##    ####  ##                              ##  #   ###                                                                                                                                                                     
-                      ##### ## ### ##    ##    ##                                # #  ###  #                                                                                                                                                                    
-                      ####  # ## #                                                ##  #   ###                                                                                                                                                                   
-                      ## ## ##                                                     # #  ###  #                                                                                                                                                                  
-                            ##                                                      ##  #   ###                                                                                                                                                                 
-                    # ####  ## #                                                     # #  ###  #                                                                                                                                                                
-                    ###  ### #  #                                                     ##  #   ###                                                                                                                                                               
-                     #  #  # ## #                                                      # #  ###  #                                                                                                                                                              
-                      ##      ##                                                        ##  #   ###                                                                                                                                                             
-                             ##                                                          # #  ###  #                                                                                                                                                            
-                                                                                          ##  #   ###                                                                                                                                                           
-                                                                                           # #  ###  #                                                                                                                                                          
-                                                                                            ##  #   ###                                                                                                                                                         
-                                                                                             # #  ###  #                                                                                                                                                        
-                                                                                              ##  #   ###                                                                                                                                                       
+
+                                      ##  ############  ##
+                                     ##  #          ####  #
+                                    # ##            ##   ###
+                                    #    #  #         #  # #
+                                  #       ###         # # ##  ##
+                                  ###  ## ##     #     #   #  # ###
+                              ##  ## #  # #   ## #### ##  ###  # #
+                             ###   ###     # # ###  ## #  ## ### #
+                            # # # ###   #  ####  # # #####   #     #
+                            #   # ### # ###### ## ##  #### #   ## ###
+                             ## ### #####   # ## ## ## # # ## # ### #
+                           ## #    ####  # #   #   ### ## #   # #
+                          ##     # ##     ##  #   ## ##         #  #
+                         # ##  ## ###   #     ##  #  ### ## # #   ###
+                         #   #### ##  #    #  ###   ## ##   ##  ###  #
+                          #     #  ### ## #  ## #### # #  # #   #   ###
+                        ##  #  # ## ###      #  ### #  #    ## #  ###  #
+                       #   ## ####  #### #####  ##  ## # ## #     #   ###
+                      #   #    # # #   ##      ## # # ### #  # # #  ###  #
+                      #      #   #### ####       ##   # ##  ### ##  #   ###
+                       #    #    #  ####  # ###########  ##   #  # #  ###  #
+                       ##  #    ##  #  #########  ##  #### #      ##  #   ###
+                      # ####  ## #  #   ### ### ## ##   ## #  ##   # #  ###  #
+                      #   ##   ### ###    # # ## # ## ###### #  #   ##  #   ###
+                       #   ##    # ##  # #     ##### # #####     #   # #  ###  #
+                       #  #  # ##  #  #   # #  ## ##### ## #     #    ##  #   ###
+                       ##   ##########   ## #####  # ####   #    #     # #  ###  #
+                           ## #### ##   #  ####   #  #   ##   ## #      ##  #   ###
+                         # #  #  #  # #    #   # ##   ##  # #####        # #  ###  #
+                         ##  ##  #  ## # # ## ##    # # # ##  ##          ##  #   ###
+                         # ####  ## # # ######## #    #  #                 # #  ###  #
+                         # ##  #  #   ## ##       #   #  #                  ##  #   ###
+                         #### ##   ##  ##  #      #  #  #                    # #  ###  #
+                        ### #   #    ##  ##       #   ##                      ##  #   ###
+                        #### ### ####    ####  ## #                            # #  ###  #
+                       #  # # ## #  ##    ####  ##                              ##  #   ###
+                      ##### ## ### ##    ##    ##                                # #  ###  #
+                      ####  # ## #                                                ##  #   ###
+                      ## ## ##                                                     # #  ###  #
+                            ##                                                      ##  #   ###
+                    # ####  ## #                                                     # #  ###  #
+                    ###  ### #  #                                                     ##  #   ###
+                     #  #  # ## #                                                      # #  ###  #
+                      ##      ##                                                        ##  #   ###
+                             ##                                                          # #  ###  #
+                                                                                          ##  #   ###
+                                                                                           # #  ###  #
+                                                                                            ##  #   ###
+                                                                                             # #  ###  #
+                                                                                              ##  #   ###
 ```
 
 
@@ -7921,7 +7921,7 @@ End Sub
 
 ```vim
 " return character under cursor
-function! CurrChar() 
+function! CurrChar()
    return matchstr(getline('.'), '\%' . col('.') . 'c.')
 endfunction
 
@@ -7945,7 +7945,7 @@ function! LangtonClear(white, black)
   let b:directions = [ 'k', 'l', 'j', 'h' ]
   let b:direction = 0
   let b:white = a:white
-  let b:black = a:black 
+  let b:black = a:black
 endfunction
 
 " move the ant one step
@@ -7967,9 +7967,9 @@ endfunction
 function! RunLangton(...)
   let l:white='.'
   let l:black='@'
-  if a:0 > 0 
+  if a:0 > 0
     let l:white=a:1
-    if a:0 > 1 
+    if a:0 > 1
       let l:black=a:2
     endif
   endif
@@ -7992,98 +7992,98 @@ endfunction
 
 
 ```Whitespace
-   	  			   	  		
- 
-    		  	  
-		    	
-	  	 
-   		
-		    	
-	  	 
-   			  	  
-		    	
-	  	 
-    	
-		 
-    
-   	
-	  	 
-     
-		  
-     
- 
-		  	
-		  
-   	  			 			 	 
-
-   	
- 
-    		  	  
-	 		
-		 	 
- 
-    		  	  
-	 	 
-		 	 
-   		  	  
- 	  	
- 	  	
-	 			  	
-	  	 
-   		  	  
- 	  	
- 	  	
-	 	 	  	
-	  	 
- 
-	 	  	
-			   	
-	      	 
-	 		 	  	 
- 	  	
-		    	 
-	  
-   	 	
-	   	      	  
-	 		 
-	 	  	
-   	  			   	    
-	   				   
- 
- 	
-
-   	 
- 
-
- 
- 	  	
-   		
- 
- 			   	     
-	   	
-     	
-	    
-    		  	  
-	 		
-	  	 	
-
-   	  
- 
-    	  			   	    
-	  	
-		 		
- 
 
 
 
 
 
-   	 	
-   	 	 
-	
-  
- 
- 	  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 

@@ -526,8 +526,8 @@ END FUNCTION
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 typedef double (*deriv_f)(double, double);
@@ -586,8 +586,8 @@ Analytic:  100.000  59.727  39.728  29.797  24.865  22.416  21.200  20.596  20.2
 
 Translated from D
 
-```cpp>#include <iomanip
-
+```cpp
+#include <iomanip>
 #include <iostream>
 
 typedef double F(double,double);

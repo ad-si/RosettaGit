@@ -34,7 +34,7 @@ Task's requirements do not include graphical display or the ability to change pa
 
 
 ;Related tasks:
-*   See   [[Conway's Game of Life]] 
+*   See   [[Conway's Game of Life]]
 *   See   [[Wireworld]].
 
 
@@ -166,7 +166,7 @@ doplot:	LDY H2
 	AND PLOTC
 	EOR (GBASL),Y
 	STA (GBASL),Y
-noplot: 
+noplot:
 	LDY H2
 	INY
 	CPY #41
@@ -184,7 +184,7 @@ noplot:
 	LDA BTMH
 	EOR #$10
 	STA PLOTH
-	EOR #$10		
+	EOR #$10
 	STA MIDH
 	ADC #$00
 	STA BTMH
@@ -245,7 +245,7 @@ default:
 	RTS
 GBASCALC:
 	LDY #$00
-	STY GBASH		
+	STY GBASH
 	ASL
 	ASL
 	ASL
@@ -338,7 +338,7 @@ c64quit:
 	LDA #$00
 	STA $C6
 	LDA $D016 ; Screen control register #2
-	AND #$EF  ; Bit #4: 0 = Multicolor mode off. 
+	AND #$EF  ; Bit #4: 0 = Multicolor mode off.
 	STA $D016
 	LDA #21 ; default character set
 	STA $D018
@@ -359,7 +359,7 @@ c64yes:
 	LDA #$08  ; orange
 	STA $D023 ; Extra background color #2
 	LDA $D016 ; Screen control register #2
-	ORA #$10  ; Bit #4: 1 = Multicolor mode on. 
+	ORA #$10  ; Bit #4: 1 = Multicolor mode on.
 	STA $D016
 
 	LDA #$30  ; 0011 0000 $3000 charset page
@@ -531,9 +531,9 @@ procedure Forest_Fire is
             end case;
          end loop;
          New_Line;
-      end loop;      
+      end loop;
    end Put;
-   
+
    Dice   : Generator;
    Forest : Board := (1..10 => (1..40 => Empty));
 begin
@@ -722,36 +722,36 @@ TTTT T TTTT TT  T T TTT TT TTT  TT TTT T TT T  T    TTT TT T   TT
  TTT TTTTT  T T    T TTTT T   T TTT  TT  T  T TT T   T T TTT  T T
 T   T T T TT    T    #  T T   TTT T T  T  TTTTT T  TTT  TTTT TTTT
 TT     T  TT TTTTTTTTT TT  TT  T T  TT  T TT TTT TTT TTTT TT  TTT
- TT    TTTTTT  T  T  T T T T TT TT      TT  #T TTT  TT #TTTTTTTT 
-TT  TTT TTTTTTTTTT TT TTTTTT  TT T TT T TTT T TT T  TT #  T   T  
+ TT    TTTTTT  T  T  T T T T TT TT      TT  #T TTT  TT #TTTTTTTT
+TT  TTT TTTTTTTTTT TT TTTTTT  TT T TT T TTT T TT T  TT #  T   T
 -----------------------------------------------------------------
 TTTT T TTTT TT  T T TTT TT TTT  TT TTT T TT T  T    TTT TT T   TT
  TTT TTTTT  T T    T ##TT T   T TTT  TT  T  T TT T   T T TTT  T T
 T   T T T TT    T       T T   TTT T T  T  TTTTT T  TTT  TTTT TTTT
 TT     T  T# TTTTTTT## TT  TT  T T  TT  T T# #TT TTT T### TT  TTT
- TT    TTTTTT  T  T  T T T T TT TT      TTT  # TTT  TT  #TTTTTTT 
-TT  TTT TTTTTTTTTT TT TTTTTT  TT T TT T TTT # TT T  TT    T   T  
+ TT    TTTTTT  T  T  T T T T TT TT      TTT  # TTT  TT  #TTTTTTT
+TT  TTT TTTTTTTTTT TT TTTTTT  TT T TT T TTT # TT T  TT    T   T
 -----------------------------------------------------------------
 TTTT T TTTT TT  T T ### TT TTT  TT TTT T TT T  T    TTT TT T   TT
  TTT TTTTT  T T    T   #T T   T TTT  TT  T  T TT T   T T TT#  T T
 T   T T T ##    T       T T   TTT T T  T  ##### T  TT#  ##TT TTTT
 TT     T  #  TTTTTT#   TT  TT  T T  TT TT #   #T TTT #    TT  TTT
- TT    T#T###  T  T  # T T T TT TT      TT#    TTT  T#   #TTTTTT 
-TT  TTT TTTTTTTTTT TT TTTTTT  TT T TT T TTT   #T T  TTT   T   T  
+ TT    T#T###  T  T  # T T T TT TT      TT#    TTT  T#   #TTTTTT
+TT  TTT TTTTTTTTTT TT TTTTTT  TT T TT T TTT   #T T  TTT   T   T
 -----------------------------------------------------------------
 TTTT T TTTT TT  T T     #T TTT  TT TTT T TT T  T    TTT TT #   TT
  TTT TTTT#  # T    #    # T   T TTT  TT  #  # ## T   # # ##   T T
 T   T T T       T       # T   TTT T T  T        T  T#     ## TTTT
 TT     #     #TTTT#    TT  TT  T T  TT TT      # TTT      #T  TTT
- TT    # #     T  #    T T T TT TT      T#     #TT  #     #TTTTT 
-TT  TTT ######TTTT T# #TTTTT  TT T TT T T##    # T  ###   #   T  
+ TT    # #     T  #    T T T TT TT      T#     #TT  #     #TTTTT
+TT  TTT ######TTTT T# #TTTTT  TT T TT T T##    # T  ###   #   T
 -----------------------------------------------------------------
 #TTT T T### ##  T #      # TTT  TT TTT T ## #  #    ### ##     TT
  TTT TTT#     T           T   T TTT  TT          T            T T
 T   T # #       T         T   TTT T T  T       T#  #         TTTT
 TT            #TT#     ##  TT  T T  TT T#        TT#       #  TTT
- TT            T       # T T TT TT      #       #T         #TTTT 
-TT  TT#       #TT# #   #TTTT  TT T TT T #        T            T  
+ TT            T       # T T TT TT      #       #T         #TTTT
+TT  TT#       #TT# #   #TTTT  TT T TT T #        T            T
 -----------------------------------------------------------------
 
 ```
@@ -771,7 +771,7 @@ The size of the (square) map, probabilities, and characters which correspond to 
 ; T=Tree, #=Fire, O=Empty cell
 ; Size holds the width and height of the map and is used as the # of iterations in loops
 ; This will save the map as forest_fire.txt in its working directory
-; 
+;
 ### ================================================================================
 
 
@@ -786,11 +786,11 @@ Cell := "O"
 ; --Define probabilities--
     New_Tree := 5
     ; 20 percent chance (1 in 5). A random number will be generated from 1 to New_tree. If this number is 1,
-    ; A tree will be created in the current cell 
+    ; A tree will be created in the current cell
 
     Spontaneous := 10
     ; 10 percent chance (1 in 10). A random number will be generated from 1 to Spontaneous. If this number is 1,
-    ; and the current cell contains a tree, the tree in the current cell will become fire. 
+    ; and the current cell contains a tree, the tree in the current cell will become fire.
 
 
 GoSub, Generate
@@ -894,7 +894,7 @@ PredictFire(p_x,p_y){
     Global ; allows access to all frame1*_* variables (the pseudo-array)
     A := p_x-1
     B := p_y-1
-    C := p_x+1    
+    C := p_x+1
     D := p_y+1
     If ( Frame1%A%_%p_Y% = fire )
         return 1
@@ -1007,7 +1007,7 @@ N = 150 : M = 150 : P = 0.03 : F = 0.00003
 dim f(N+2,M+2) # 1 tree, 0 empty, 2 fire
 dim fn(N+2,M+2)
 graphsize N,M
-fastgraphics 
+fastgraphics
 
 for x = 1 to N
 	for y = 1 to M
@@ -1051,11 +1051,11 @@ end while
 ```bbcbasic
       VDU 23,22,400;400;16,16,16,128
       OFF
-      
+
       DIM old&(200,200), new&(200,200)
       p = 0.01
       f = 0.0001
-      
+
       REM 0 = empty, 1 = tree, 2 = burning
       REPEAT
         WAIT 10
@@ -1097,7 +1097,7 @@ Output:
 
 ```freebasic
 '[RC] Forest Fire
-'written for FreeBASIC 
+'written for FreeBASIC
 'Program code based on BASIC256 from Rosettacode website
 'http://rosettacode.org/wiki/Forest_fire#BASIC256
 '06-10-2016 updated/tweaked the code
@@ -1195,7 +1195,7 @@ Do
   If press = " " Then Sleep : press = InKey
   If press = "s" Then Sleep
   ' return to do loop up top until "esc" key is pressed.
-  ' clicking close windows "X", closes the window immediately 
+  ' clicking close windows "X", closes the window immediately
 Loop Until press = Chr(27) OrElse press = Chr(255)+"k"
 If press = Chr(255) + "k" Then End
 
@@ -1362,7 +1362,7 @@ RETURN
 
 ```PureBasic
 ; Some systems reports high CPU-load while running this code.
-; This may likely be due to the graphic driver used in the 
+; This may likely be due to the graphic driver used in the
 ; 2D-function Plot().
 ; If experiencing this problem, please reduce the #Width & #Height
 ; or activate the parameter #UnLoadCPU below with a parameter 1 or 2.
@@ -1419,7 +1419,7 @@ EndProcedure
 Procedure SpreadFire(x,y)
   Protected cnt=0, i, j
   For i=Limit(x-1, 0, #Width) To Limit(x+1, 0, #Width)
-    For j=Limit(y-1, 0, #Height) To Limit(y+1, 0, #Height) 
+    For j=Limit(y-1, 0, #Height) To Limit(y+1, 0, #Height)
       If Forest(i,j)>=#Tree
         Forest(i,j)=#Ignited
       EndIf
@@ -1467,7 +1467,7 @@ Procedure UpdateMap()
 EndProcedure
 
 Procedure PresentMap()
-  Protected x, y, c  
+  Protected x, y, c
   cnt+1
   SetWindowTitle(0,Title$+", time frame="+Str(cnt))
   StartDrawing(ImageOutput(1))
@@ -1526,7 +1526,7 @@ If OpenWindow(0, 10, 30, #Width, #Height, Title$, #PB_Window_MinimizeGadget)
           PresentMap()
       EndSelect
     ForEver
-  EndIf 
+  EndIf
 EndIf
 ```
 
@@ -1547,12 +1547,12 @@ Sub Run()
   Const ablaze = &cFF0000    //Using the &c numeric operator to indicate a color in hex
   Const alive = &c00FF00
   Const dead = &c804040
-  
+
   //Our forest
   Dim worldPic As New Picture(480, 480, 32)
   Dim newWorld(120, 120) As Integer
   Dim oldWorld(120, 120) As Integer
-  
+
   //Initialize forest
   Dim rand As New Random
   For x as Integer = 0 to 119
@@ -1569,7 +1569,7 @@ Sub Run()
     Next
   Next
   oldWorld = newWorld
-  
+
   //Burn, baby burn!
   While Window1.stop = False
     For x as Integer = 0 To 119
@@ -1939,7 +1939,7 @@ A screenshot of the program running can be found [http://www.edmundgriffiths.com
 
 ## Batch File
 
-Accepts command line arguments in the form of <code>m p f i</code> 
+Accepts command line arguments in the form of <code>m p f i</code>
 Where:
 
 ```txt
@@ -2054,7 +2054,7 @@ if %1==T (
     )
   )
   if !burn!==1 exit /b 2
-  
+
   set /a burnrandom=!random! %% 101
   if !burnrandom! leq %f% exit /b 2
   exit /b 1
@@ -2170,8 +2170,8 @@ exit /b
 {{libheader|SDL}}
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
@@ -2202,9 +2202,9 @@ exit /b
 #endif
 
 uint8_t *field[2], swapu;
-double prob_f = PROB_F, prob_p = PROB_P, prob_tree = PROB_TREE; 
+double prob_f = PROB_F, prob_p = PROB_P, prob_tree = PROB_TREE;
 
-enum cell_state { 
+enum cell_state {
   VOID, TREE, BURNING
 };
 
@@ -2346,7 +2346,7 @@ int main(int argc, char **argv)
     if (s != *argv) *p = t;
   }
 
-  printf("prob_f %lf\nprob_p %lf\nratio %lf\nprob_tree %lf\n", 
+  printf("prob_f %lf\nprob_p %lf\nratio %lf\nprob_tree %lf\n",
 	 prob_f, prob_p, prob_p/prob_f,
 	 prob_tree);
 
@@ -2426,8 +2426,8 @@ int main(int argc, char **argv)
 
 C99. Uncomment srand() for variaty, usleep() for slower speed.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h> // For time
@@ -2480,7 +2480,7 @@ show:	printf("\033[H");
 	//usleep(100000);
 	goto show;
 }
- 
+
 int main(int c, char **v)
 {
 	//srand(time(0));
@@ -2543,7 +2543,7 @@ public:
 
 	hdc = CreateCompatibleDC( dc );
 	SelectObject( hdc, bmp );
-	ReleaseDC( GetConsoleWindow(), dc ); 
+	ReleaseDC( GetConsoleWindow(), dc );
 
 	width = w; height = h;
 
@@ -2616,7 +2616,7 @@ class forest
 public:
     forest()
     {
-	_bmp.create( MAX_SIDE, MAX_SIDE ); 
+	_bmp.create( MAX_SIDE, MAX_SIDE );
 	initForest( 0.05f, 0.005f );
     }
 
@@ -2636,7 +2636,7 @@ public:
 
 private:
     float probRand() { return ( float )rand() / 32768.0f; }
-	
+
     void display()
     {
 	HDC bdc = _bmp.getDC();
@@ -2767,7 +2767,7 @@ private:
 	wcex.lpszClassName = "_FOREST_FIRE_";
 
 	RegisterClassEx( &wcex );
- 
+
 	return CreateWindow( "_FOREST_FIRE_", ".: Forest Fire -- PJorente :.", WS_SYSMENU, CW_USEDEFAULT, 0, MAX_SIDE, MAX_SIDE, NULL, NULL, _hInst, NULL );
     }
 
@@ -2888,15 +2888,15 @@ namespace ForestFire
             {
                 for (int c = 1; c < numCols - 1; c++)
                 {
-                    /* 
+                    /*
                      * Check the current cell.
-                     * 
+                     *
                      * If it's empty, give it a 1/p chance of becoming a tree.
-                     * 
+                     *
                      * If it's a tree, check to see if any neighbors are burning.
                      * If so, set the cell's state to burning, otherwise give it
                      * a 1/f chance of combusting.
-                     * 
+                     *
                      * If it's burning, set it to empty.
                      */
                     switch (state[r, c])
@@ -3147,7 +3147,7 @@ shared void run() {
                     %)
                 forest-row indicies-row))
          forest indicies)))
-                    
+
 (defn grow-new-trees [forest] (map (fn [forest-row]
                                      (map #(if (= % :grass)
                                              (tree-maker)
@@ -3225,14 +3225,14 @@ example output
                        88  empty       VALUE 0. *> Black
                        88  tree        VALUE 2. *> Green
                        88  burning     VALUE 4. *> Red
-                       
+
                    07  next-status     PIC 9.
                        88  empty       VALUE 0.
                        88  tree        VALUE 2.
                        88  burning     VALUE 4.
-    
+
        01  rand-num                    PIC 9999.
-        
+
        01  next-row                    PIC 9(4).
        01  next-col                    PIC 9(4).
 
@@ -3317,7 +3317,7 @@ example output
            *> Find the row and column of the bottom-right neighbour.
            COMPUTE next-row = FUNCTION MIN(row-index + 1, AREA-SIZE)
            COMPUTE next-col = FUNCTION MIN(col-index + 1, AREA-SIZE)
-           
+
            COMPUTE neighbours-row = FUNCTION MAX(row-index - 1, 1)
            COMPUTE neighbours-col = FUNCTION MAX(col-index - 1, 1)
 
@@ -3331,7 +3331,7 @@ example output
                            AND neighbours-col = col-index
                        EXIT PERFORM CYCLE
                    END-IF
-                   
+
                    IF burning OF current-status
                            (neighbours-row, neighbours-col)
                        SET burning OF next-status (row-index, col-index)
@@ -3384,7 +3384,7 @@ example output
 (defmacro with-gensyms (names &body body)
   `(let ,(mapcar (lambda (n) (list n '(gensym))) names)
 	 ,@body))
-	
+
 (defmacro traverse-grid (grid rowvar colvar (&rest after-cols) &body body)
   (with-gensyms (dims rows cols)
 	`(let* ((,dims (array-dimensions ,grid))
@@ -3460,73 +3460,73 @@ CL-USER>(simulate *forest* 5)
 ------ Initial forest ------
 TTTTT   TT
    TTT  TT
- TT T  T  
+ TT T  T
  TTTT T TT
 T TT  T  T
     T  TTT
   TTTT TTT
- T        
- T T T T  
+ T
+ T T T T
 TTT TTT  T
 
 ------ Generation 1 ------
 TTTTT   TT
    TTT  TT
- TT T  T  
+ TT T  T
  TTTT T TT
 T TT  T  T
     T  TTT
   TTTT TTT
- T        
- T T T T  
+ T
+ T T T T
 TTT TTT  T
 
 ------ Generation 2 ------
 TTTTT   TT
    TTT  TT
- TT T  T  
+ TT T  T
  TTTT T TT
 TTTT  T  T
     T  TTT
   TTT# TTT
- T        
- T T T T  
+ T
+ T T T T
 TTT TTT  T
 
 ------ Generation 3 ------
 TTTTT   TT
    TTT  TT
- TT T  T  
+ TT T  T
  TTTT T TT
 TTTT  T  T
     #  TTT
   TT#  TTT
- T        
- T T T T  
+ T
+ T T T T
 TTT TTT  T
 
 ------ Generation 4 ------
 TTTTT   TT
    TTT  TT
- TT T  TT 
+ TT T  TT
  TTTT T TT
 TTT#  T  T
        TTT
   T#   TTT
- T        
- T T T T  
+ T
+ T T T T
 TTT TTT  T
 
 ------ Generation 5 ------
 TTTTT   TT
    TTT  TT
- TT T  TT 
+ TT T  TT
  T### T TT
 TT#   T  T
        TTT
   #    TTT
- T        
- T T T T  
+ T
+ T T T T
 TTT TTT  T
 NIL
 
@@ -3602,39 +3602,39 @@ void main() @safe {
 ```txt
   T    T T#TT  T   TT  TT TTTT TT TTT T TT T# T T TT TT     TTTTT
 T TT  TT T    TTTTTTTTTT T TTT T T    T    TT    TTTTTTTT TTTT #T
-TT  T  TTTTTT TTTTT       TTT TTTT TTTT TTT T  T T T T  TT T TT  
-T TT T TT T TT T  TTTT   T T TT TTT    T  TT     T T   T TT    T 
+TT  T  TTTTTT TTTTT       TTT TTTT TTTT TTT T  T T T T  TT T TT
+T TT T TT T TT T  TTTT   T T TT TTT    T  TT     T T   T TT    T
  TTT   T  TTTT  T#  T T T  TTT  TT  TTTTT T      T  TT  T  T TT T
  TT TTTT  TTT  TTTTT T T T  T  TT  T TTT   T  T T   TT    TTT T T
- T  TTT T TT   T TTT#TT  T TT  TTTTTTTT  TTTT  TTTTT TTTT TTT    
-TT TTTTT TTTTTT TT  TT T TT T   TT  T   TT T TT TT  TTTT   TTTTT 
+ T  TTT T TT   T TTT#TT  T TT  TTTTTTTT  TTTT  TTTTT TTTT TTT
+TT TTTTT TTTTTT TT  TT T TT T   TT  T   TT T TT TT  TTTT   TTTTT
 
   T    T # #T  T   TT  TT TTTT TT TTT T TT #  T T TT TT     TT###
 T TT  TT #    TTTTTTTTTT T TTT T T    T    ##    TTTTTTTT TTTT  #
-TT  T  TTTTTT TTTTT       TTT TTTT TTTT TTT #  T T T T  TT T T#  
-T TT T TT T TT T  #TTT   T T TT TTT    T  TT     T T   T TTT   T 
+TT  T  TTTTTT TTTTT       TTT TTTT TTTT TTT #  T T T T  TT T T#
+T TT T TT T TT T  #TTT   T T TT TTT    T  TT     T T   T TTT   T
  TTT   T  TTTT  #   T T T  TTT  TT  TTTTT T      T  TT  T  T TT T
  TT TTTT  TTT  T#### # T T  T  TT  T TTT   T  T T   TT    TTT T T
- T  TTT T TT   T TT# #T  T TT  TTTTTTTT  TTTT  TTTTT TTTT TTT    
-TT TTTTT TTTTTT TT  ## T TT T   TT  T   TT T TT TT  TTTT   TTTTT 
+ T  TTT T TT   T TT# #T  T TT  TTTTTTTT  TTTT  TTTTT TTTT TTT
+TT TTTTT TTTTTT TT  ## T TT T   TT  T   TT T TT TT  TTTT   TTTTT
 
-  T    T    #  T   TT  TT TTTT TT TTT T TT    T T TT TT     T#   
-T TT  TT      TTTTTTTTTT T TTT T T    T          TTTTTTTT TTT#   
-TT  T  T###TT TTT##       TTT TTTT TTTT TT#    T T T T  #T T #   
-T TT T TT T TT #   #TT   T T TT TTT    T  T#     T T   T TTT   # 
+  T    T    #  T   TT  TT TTTT TT TTT T TT    T T TT TT     T#
+T TT  TT      TTTTTTTTTT T TTT T T    T          TTTTTTTT TTT#
+TT  T  T###TT TTT##       TTT TTTT TTTT TT#    T T T T  #T T #
+T TT T TT T TT #   #TT   T T TT TTT    T  T#     T T   T TTT   #
  TTT   T  TTTT      # # T  TTT  TT  TTTTT T      T  TT  T  T TT T
  TT TTTT  TTT  #       T T  #  TT  T TTT   T  T T   TT    TTT T T
- T  TTT T TT   # ##   #  T TT  TTTTTTTT  TTTT  TTTTT TTTT TTT    
-TT TTTTT TT#TTT TT     T TT T   TT  T   TT T TT TT  TTTT   TTTTT 
+ T  TTT T TT   # ##   #  T TT  TTTTTTTT  TTTT  TTTTT TTTT TTT
+TT TTTTT TT#TTT TT     T TT T   TT  T   TT T TT TT  TTTT   TTTTT
 
-  T    T       T   TT  TT TTTT TT TTT T TT    T T TT TT     #    
-T TT  T#      TT####TTTT T TTT T T    T          TTTTTT## TT#    
-TT  T  #   #T ###         TTT TTTT TTTT T#     T T T T   # T     
-T TT T ## # TT      ##   T T TT TTT    T  #      T T   # #TT     
+  T    T       T   TT  TT TTTT TT TTT T TT    T T TT TT     #
+T TT  T#      TT####TTTT T TTT T T    T          TTTTTT## TT#
+TT  T  #   #T ###         TTT TTTT TTTT T#     T T T T   # T
+T TT T ## # TT      ##   T T TT TTT    T  #      T T   # #TT
  TTT   T  TTTT          T  ###  TT  TTTTT #      T  TT  T  T T# #
  TT TTTT  TTT          # T     TT  T TTT   T  T T   TT    TTT T T
- T  TTT T ##             T ##  TTTTTTTT  TTTT  TTTTT TTTT TTT    
-TT TTTTT T# #T# ##     # TT T   TT  T   TT T TT TT  TTTT   TTTTT 
+ T  TTT T ##             T ##  TTTTTTTT  TTTT  TTTTT TTTT TTT
+TT TTTTT T# #T# ##     # TT T   TT  T   TT T TT TT  TTTT   TTTTT
 
 ```
 
@@ -4342,9 +4342,9 @@ module ForestFire =
     let height = 480           // height of the forest region
 
     let make_forest =
-        Array2D.init height width 
+        Array2D.init height width
             (fun _ _ -> if rnd.NextDouble() < initial_factor then Tree else Empty)
-    
+
     let count (forest:Cell[,]) row col =
         let mutable n = 0
         let h,w = forest.GetLength 0, forest.GetLength 1
@@ -4502,7 +4502,7 @@ CONSTANT: colors ${ GRAY GREEN RED }
 
 500 500 "Forest Fire" init-window 100 100 1/2 make-forest
 60 set-target-fps
-[ window-should-close ] [    
+[ window-should-close ] [
     begin-drawing
         BLACK clear-background dup draw-forest
     end-drawing
@@ -4545,7 +4545,7 @@ CREATE B  SIZE ALLOT  B SIZE ERASE
        J WIDTH * I + OVER +  \ calculate an offset
        DUP 0> OVER SIZE < AND IF
          >R OVER R> + C@     \ fetch state of the offset cell
-         FIRE = IF UNLOOP UNLOOP DROP DROP TRUE EXIT THEN 
+         FIRE = IF UNLOOP UNLOOP DROP DROP TRUE EXIT THEN
        ELSE DROP THEN
      LOOP
    LOOP  DROP DROP FALSE ;
@@ -4641,15 +4641,15 @@ contains
           if ( r <= res%prob_tree ) call cset(res, i, j, tree)
        end do
     end do
-    
+
   end function forestfire_new
-  
+
   ! destroy the field(s)
   subroutine forestfire_destroy(f)
     type(forestfire), intent(inout) :: f
 
     if ( allocated(f%field) ) deallocate(f%field)
-    
+
   end subroutine forestfire_destroy
 
   ! evolution
@@ -4711,19 +4711,19 @@ contains
     logical :: bcheck
     type(forestfire), intent(in) :: f
     integer, intent(in) :: i, j
-    
+
     bcheck = .false.
     if ( (i >= 1) .and. (i <= f%width) .and. &
          (j >= 1) .and. (j <= f%height) ) bcheck = .true.
- 
+
   end function bcheck
-    
+
 
   function get(f, i, j) result(r)
     integer :: r
     type(forestfire), intent(in) :: f
     integer, intent(in) :: i, j
-    
+
     if ( .not. bcheck(f, i, j) ) then
        r = empty
     else
@@ -4735,7 +4735,7 @@ contains
     integer :: r
     type(forestfire), intent(in) :: f
     integer, intent(in) :: i, j
-    
+
     if ( .not. bcheck(f, i, j) ) then
        r = empty
     else
@@ -4749,7 +4749,7 @@ contains
     integer, intent(in) :: i, j
 
     integer, dimension(3,3) :: s
-    
+
     s = f%field(f%swapu, i-1:i+1, j-1:j+1)
     s(2,2) = empty
     r = any(s == burning)
@@ -4763,11 +4763,11 @@ contains
     do j = 1, f%height
        do i = 1, f%width
           select case(get(f, i, j))
-          case (empty) 
+          case (empty)
              write(*,'(A)', advance='no') '.'
           case (tree)
              write(*,'(A)', advance='no') 'Y'
-          case (burning) 
+          case (burning)
              write(*,'(A)', advance='no') '*'
           end select
        end do
@@ -4795,7 +4795,7 @@ program ForestFireTest
      call forestfire_print(f)
      call forestfire_evolve(f)
   end do
-  
+
   call forestfire_destroy(f)
 
 end program ForestFireTest
@@ -4909,32 +4909,32 @@ data Cell
   | Tree
   | Fire
   deriving (Eq)
- 
+
 instance Show Cell where
   show Empty = " "
   show Tree = "T"
   show Fire = "$"
- 
+
 randomCell :: IO Cell
 randomCell = fmap ([Empty, Tree] !!) (randomRIO (0, 1) :: IO Int)
- 
+
 randomChance :: IO Double
 randomChance = randomRIO (0, 1.0) :: IO Double
- 
+
 rim :: a -> [[a]] -> [[a]]
 rim b = fmap (fb b) . (fb =<< rb)
   where
     fb = (.) <$> (:) <*> (flip (++) . return)
     rb = fst . unzip . zip (repeat b) . head
- 
+
 take3x3 :: [[a]] -> [[[a]]]
 take3x3 = concatMap (transpose . fmap take3) . take3
   where
     take3 = init . init . takeWhile (not . null) . fmap (take 3) . tails
- 
+
 list2Mat :: Int -> [a] -> [[a]]
 list2Mat n = takeWhile (not . null) . fmap (take n) . iterate (drop n)
- 
+
 evolveForest :: Int -> Int -> Int -> IO ()
 evolveForest m n k = do
   let s = m * n
@@ -4956,7 +4956,7 @@ evolveForest m n k = do
            mapM_ (putStrLn . concatMap show) $ list2Mat n xs
            nfs >>= evolve (i + 1)
   evolve 1 fs
- 
+
 main :: IO ()
 main = evolveForest 6 50 3
 ```
@@ -4965,27 +4965,27 @@ main = evolveForest 6 50 3
 
 ```txt
 >>>>>> 1:
-   TTT  TT TT     TTT T TTT  T   TT  T  TT  TTTT  
+   TTT  TT TT     TTT T TTT  T   TT  T  TT  TTTT
 TTTT  T T TT T      T  TTTTTTT T    T  TT T TT  TT
 TTTT TT   T TTTT T TT  T  TTTT T TT TT TT  T T TTT
 T  TT TTTT TTT TTT TT TT   TTTTTT  TTTT  T TTT TTT
  T T  TTT  T T T TT T    TT     TT  TT   T TTT  TT
-        T T TTT TT TT     T  TT  TTTTT  TT  TT  T 
+        T T TTT TT TT     T  TT  TTTTT  TT  TT  T
 
 >>>>>> 2:
-   TTT  TT TT     TTT T TTT  T T TT  T  T$  TTTT  
+   TTT  TT TT     TTT T TTT  T T TT  T  T$  TTTT
 TTTT  T T TTTT    T T  TTTTTTT T   TT  TT T TTT TT
 TTTT TT   T TTTT T TT  T  TTTT TTT$ TT TT TT T TTT
 T  TTTTTTT TTT TTTTTT TT   TTTTTTT TTTT  TTTTT TTT
  TTT TTTT TT T T TT T    TT     TT  TT   T TTT  TT
- T      T T TTT TT TT     T  TT  TTTTT  TT TTT  T 
+ T      T T TTT TT TT     T  TT  TTTTT  TT TTT  T
 >>>>>> 3:
-   TTT  TT TT     TTT T TTT  T T TT  T  $ TTTTTT  
+   TTT  TT TT     TTT T TTT  T T TT  T  $ TTTTTT
 TTTT  T T TTTT    T TT TTTTTTTTT T $T  T$T$ TTT TT
 TTTT TT   T TTTT T TT  T  TTTT TT$  TT TT TT T TTT
 T TTTTTTTT TTT TTTTTT TT   TTTTTT$ $TTT  TTTTT TTT
  TTT TTTT TT T T TT TT T TT     TT  TT   T TTT  TT
- T      T T TTT TT TT   T T  TT  TTTTTT TT TTT  T 
+ T      T T TTT TT TT   T T  TT  TTTTTT TT TTT  T
 ```
 
 
@@ -5004,13 +5004,13 @@ global Colours,Width,Height,ProbTree,ProbFire,ProbInitialTree,Forest,oldForest
 
 procedure main()             # forest fire
 
-    Height := 400            # Window height 
+    Height := 400            # Window height
     Width := 400             # Window width
     ProbInitialTree := .10   # intial probability of trees
     ProbTree := .01          # ongoing probability of trees
     ProbFire := ProbTree/50. # probability of fire
     Rounds := 500            # rounds to evolve
-    
+
     setup_forest()
     every 1 to Rounds do {
        show_forest()
@@ -5020,47 +5020,47 @@ procedure main()             # forest fire
            Width,Height,Rounds,ProbInitialTree,ProbTree,ProbFire,
            Rounds/(&time/1000.))  # stats
     WDone()
-end   
-    
+end
+
 procedure setup_forest()     #: setup the forest
-    
+
     Colours := table()       # define colours
     Colours[EDGE]  := "black"
     Colours[EMPTY] := "grey"
     Colours[TREE]  := "green"
     Colours[FIRE]  := "red"
-    
+
     WOpen("label=Forest Fire", "bg=black",
           "size=" || Width+2 || "," || Height+2) | # add for border
              stop("Unable to open Window")
     every !(Forest := list(Height)) := list(Width,EMPTY)  # default
-    every ( Forest[1,1 to Width]  | Forest[Height,1 to Width] | 
+    every ( Forest[1,1 to Width]  | Forest[Height,1 to Width] |
             Forest[1 to Height,1] | Forest[1 to Height,Width] ) := EDGE
-    every r := 2 to Height-1 & c := 2 to Width-1 do 
+    every r := 2 to Height-1 & c := 2 to Width-1 do
        if probability(ProbInitialTree) then Forest[r,c] := TREE
 end
 
 procedure show_forest()      #: show Forest - drawn changes only
    every r := 2 to *Forest-1 & c := 2 to *Forest[r]-1 do
       if /oldForest | oldForest[r,c] ~= Forest[r,c] then {
-         WAttrib("fg=" || Colours[Forest[r,c]]) 
+         WAttrib("fg=" || Colours[Forest[r,c]])
          DrawPoint(r,c)
       }
 end
 
 procedure evolve_forest()    #: evolve forest
-    old := oldForest := list(*Forest)     # freeze copy 
+    old := oldForest := list(*Forest)     # freeze copy
     every old[i := 1 to *Forest] := copy(Forest[i])  # deep copy
 
-    every r := 2 to *Forest-1 & c := 2 to *Forest[r]-1 do 
-       Forest[r,c] := case old[r,c] of {   # apply rules 
+    every r := 2 to *Forest-1 & c := 2 to *Forest[r]-1 do
+       Forest[r,c] := case old[r,c] of {   # apply rules
           FIRE : EMPTY
-          TREE : if probability(ProbFire) | 
-                  ( old[r-1, c-1 to c+1] | 
-                    old[r,c-1|c+1] | 
+          TREE : if probability(ProbFire) |
+                  ( old[r-1, c-1 to c+1] |
+                    old[r,c-1|c+1] |
                     old[r+1,c-1 to c+1] ) = FIRE then FIRE
           EMPTY: if probability(ProbTree) then TREE
-          }      
+          }
 end
 
 procedure probability(P)     #: succeed with probability P
@@ -5069,8 +5069,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
 [http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics]
 
 
@@ -5107,25 +5107,25 @@ Example use:
 
 ```j
    run 2
-          
- ##### #  
-    # #   
- ### #### 
-  # # # # 
-  ##### # 
- ##   # # 
-  #  #    
-  o##   # 
-          
-          
- ##### #  
-    # #   
- ### #### 
-  # # # # 
-  ##### # 
- ##   # # 
-  o  #    
-   o#   # 
+
+ ##### #
+    # #
+ ### ####
+  # # # #
+  ##### #
+ ##   # #
+  #  #
+  o##   #
+
+
+ ##### #
+    # #
+ ### ####
+  # # # #
+  ##### #
+ ##   # #
+  o  #
+   o#   #
 ```
 
 
@@ -5155,7 +5155,7 @@ public class Fire {
 	private static final double F = 0.2;
 	private static final double P = 0.4;
 	private static final double TREE_PROB = 0.5;
-	
+
 	private static List<String> process(List<String> land){
 		List<String> newLand = new LinkedList<String>();
 		for(int i = 0; i < land.size(); i++){
@@ -5219,7 +5219,7 @@ public class Fire {
 		}
 		return newRow;
 	}
-	
+
 	public static List<String> populate(int width, int height){
 		List<String> land = new LinkedList<String>();
 		for(;height > 0; height--){//height is just a copy anyway
@@ -5231,14 +5231,14 @@ public class Fire {
 		}
 		return land;
 	}
-	
+
 	//process the land n times
 	public static void processN(List<String> land, int n){
 		for(int i = 0;i < n; i++){
 			land = process(land);
 		}
 	}
-	
+
 	//process the land n times and print each step along the way
 	public static void processNPrint(List<String> land, int n){
 		for(int i = 0;i < n; i++){
@@ -5246,7 +5246,7 @@ public class Fire {
 			print(land);
 		}
 	}
-	
+
 	//print the land
 	public static void print(List<String> land){
 		for(String row: land){
@@ -5254,7 +5254,7 @@ public class Fire {
 		}
 		System.out.println();
 	}
-	
+
 	public static void main(String[] args){
 		List<String> land = Arrays.asList(".TTT.T.T.TTTT.T",
 				"T.T.T.TT..T.T..",
@@ -5273,9 +5273,9 @@ public class Fire {
 				".T.T.T....TT...");
 		print(land);
 		processNPrint(land, 10);
-		
+
 		System.out.println("Random land test:");
-		
+
 		land = populate(10, 10);
 		print(land);
 		processNPrint(land, 10);
@@ -5561,7 +5561,7 @@ Final output (epoch 100):
 ```txt
 🌲🌲🔥🌲 🌲🌲🌲🌲 🔥🌲🌲🔥🌲🌲🌲🌲🌲🔥🌲🌲🌲 🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲 🌲 🌲🌲🌲🔥 🌲🌲🌲🌲🔥🌲🌲
 🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲 🌲🌲🌲🌲 🔥🌲🌲 🌲🌲🔥🔥🌲🌲 🌲🌲🌲 🌲🌲🌲🌲
-🌲🌲🌲🌲🌲🔥🔥🌲   🌲🌲🌲 🔥🔥🌲🌲🌲 🌲  🌲🌲🌲🌲🌲🌲🌲🌲🔥🌲 🌲🌲 🌲🌲🌲 🌲🌲🌲🌲🌲🌲🌲 
+🌲🌲🌲🌲🌲🔥🔥🌲   🌲🌲🌲 🔥🔥🌲🌲🌲 🌲  🌲🌲🌲🌲🌲🌲🌲🌲🔥🌲 🌲🌲 🌲🌲🌲 🌲🌲🌲🌲🌲🌲🌲
 🌲🔥🌲 🌲🌲 🌲 🌲🌲🌲🌲 🌲🌲   🌲 🌲🌲🌲 🌲🌲 🌲 🌲🔥🌲🌲🌲🔥🔥🔥🌲🌲🌲🌲🌲🌲🌲🌲🌲🔥🌲🌲
  🌲🌲🌲 🔥🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🔥🌲🌲🌲🌲🌲 🌲🌲🌲🌲🌲🌲🌲🌲🌲🔥🌲🌲🌲🌲🌲🌲 🌲🌲🌲  🌲🌲
 🌲 🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲 🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲 🌲 🌲🌲🌲🌲🌲🌲🌲🔥🌲🌲🌲🌲🌲🌲🌲🌲 🌲🌲 🌲🌲
@@ -5571,24 +5571,24 @@ Final output (epoch 100):
 🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲 🌲🌲   🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🔥  🔥🌲🔥🌲🌲 🌲🌲🌲🌲🌲🌲🌲 🌲🌲🌲
  🌲 🔥 🌲🌲🌲🌲🌲🌲🌲🌲 🌲🌲 🌲🌲🌲🌲🌲🔥🌲 🌲 🌲🌲🌲 🌲🔥 🔥🔥🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲
 🌲🌲🌲🔥🌲🌲🌲🌲🌲🌲🌲🔥🌲🌲🌲🌲🌲🌲🌲🌲🌲 🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🔥🌲🌲🔥🌲🌲 🌲 🌲🌲🌲🌲🌲🌲
-🌲🌲🔥🌲🌲🌲 🌲 🔥🌲 🌲 🌲 🌲🌲🌲🔥🌲🌲🔥🌲🌲🌲🌲🔥🌲🌲🌲🌲🌲🌲🌲🌲 🌲🌲🌲🌲  🌲🌲🌲🌲🌲🌲 
+🌲🌲🔥🌲🌲🌲 🌲 🔥🌲 🌲 🌲 🌲🌲🌲🔥🌲🌲🔥🌲🌲🌲🌲🔥🌲🌲🌲🌲🌲🌲🌲🌲 🌲🌲🌲🌲  🌲🌲🌲🌲🌲🌲
 🌲 🌲🌲 🌲🌲🌲🌲  🌲 🔥🔥🌲🌲🌲🔥 🌲🌲 🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🔥 🌲🌲
 🌲🌲🌲🔥 🌲🌲🌲🌲🔥🌲🔥🌲 🌲🌲🌲🌲🌲🌲🌲🔥🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲 🌲🌲🌲🌲🌲🌲🔥🌲🌲
  🌲🌲🌲🌲🌲 🌲🌲🌲🌲🌲🌲 🌲🌲🌲 🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🔥🌲🔥 🌲🌲🌲🌲🌲🌲🔥   🌲🌲🌲  🔥🔥
-🌲 🌲🌲🌲🌲🌲🌲🌲🔥 🌲🌲🌲🌲 🌲🌲 🌲🌲🔥🌲🌲  🌲 🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🔥🌲  🔥🌲🔥🌲 
+🌲 🌲🌲🌲🌲🌲🌲🌲🔥 🌲🌲🌲🌲 🌲🌲 🌲🌲🔥🌲🌲  🌲 🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🔥🌲  🔥🌲🔥🌲
 🌲🌲🌲 🌲🌲🔥 🌲🌲🌲🌲🌲🌲🌲🌲🔥🌲🌲  🌲🔥 🌲🌲  🌲🌲🌲🔥🌲🌲🔥🌲 🔥🌲 🌲🌲🌲🌲🌲🌲🌲🌲 🌲
 🌲🌲🌲 🔥🌲🌲🌲🌲  🌲🌲 🌲 🌲🌲🌲 🌲🌲🌲🌲🌲 🌲🌲 🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲 🌲 🌲🌲🌲🌲🌲🌲🌲
-  🌲 🌲 🌲🌲  🌲🌲 🌲🌲  🌲 🌲🌲🌲🌲🌲🌲🌲  🌲  🌲  🌲🌲🌲 🌲🌲 🌲🌲🌲🌲 🌲 🌲 
-🌲🌲  🌲 🌲🌲🌲 🌲🌲    🌲  🌲🌲🌲🌲🌲 🌲🌲 🌲🌲  🌲🌲 🌲🌲 🌲🌲   🌲 🌲🌲🌲  
- 🌲🌲  🌲🌲 🌲🌲 🌲🌲  🌲🌲 🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲  🌲  🌲   🌲🌲🌲 🌲        
+  🌲 🌲 🌲🌲  🌲🌲 🌲🌲  🌲 🌲🌲🌲🌲🌲🌲🌲  🌲  🌲  🌲🌲🌲 🌲🌲 🌲🌲🌲🌲 🌲 🌲
+🌲🌲  🌲 🌲🌲🌲 🌲🌲    🌲  🌲🌲🌲🌲🌲 🌲🌲 🌲🌲  🌲🌲 🌲🌲 🌲🌲   🌲 🌲🌲🌲
+ 🌲🌲  🌲🌲 🌲🌲 🌲🌲  🌲🌲 🌲🌲🌲🌲🌲🌲🌲🌲🌲🌲  🌲  🌲   🌲🌲🌲 🌲
 🌲🌲🌲  🌲🌲🌲🌲  🌲 🌲  🌲 🌲🌲🌲🌲🌲   🌲🌲 🌲   🌲 🌲🌲  🌲🌲 🌲 🌲🌲  🌲🌲
-🌲🌲 🌲🌲🌲 🌲🌲🌲  🌲  🌲    🌲  🌲 🌲🌲   🌲  🌲🌲      🌲 🌲 🌲 🌲🌲 
- 🌲🌲 🌲      🌲🌲🌲🌲 🌲   🌲🌲  🌲🌲🌲🌲 🌲   🌲🌲🌲🌲  🌲    🌲🌲🌲🌲  
-🌲🌲  🌲🌲 🌲🌲🌲🌲🌲 🌲 🌲🌲 🌲🌲🌲🌲🌲  🌲 🌲 🌲🌲🌲 🌲🌲🌲   🌲 🌲🌲 🌲 🌲   
+🌲🌲 🌲🌲🌲 🌲🌲🌲  🌲  🌲    🌲  🌲 🌲🌲   🌲  🌲🌲      🌲 🌲 🌲 🌲🌲
+ 🌲🌲 🌲      🌲🌲🌲🌲 🌲   🌲🌲  🌲🌲🌲🌲 🌲   🌲🌲🌲🌲  🌲    🌲🌲🌲🌲
+🌲🌲  🌲🌲 🌲🌲🌲🌲🌲 🌲 🌲🌲 🌲🌲🌲🌲🌲  🌲 🌲 🌲🌲🌲 🌲🌲🌲   🌲 🌲🌲 🌲 🌲
       🌲 🌲🌲 🌲🌲   🌲   🌲🌲🌲🌲  🌲🌲 🌲 🌲🌲🌲 🌲🌲   🌲🌲🌲      🌲
 🌲🌲 🌲🌲  🌲    🌲  🌲🌲🌲🌲🌲 🌲🌲 🌲   🌲 🌲 🌲🌲 🌲  🌲🌲🌲🌲🌲🌲    🌲🌲
  🌲   🌲  🌲🌲 🌲🌲   🌲 🌲🌲 🌲🌲🌲 🌲    🌲 🌲   🌲  🌲🌲🌲🌲      🌲
-   🌲🌲🌲🌲🌲 🌲 🌲🌲   🌲  🌲 🌲🌲🌲   🌲🌲🌲     🌲 🌲🌲 🌲🌲 🌲 🌲🌲🌲🌲 
+   🌲🌲🌲🌲🌲 🌲 🌲🌲   🌲  🌲 🌲🌲🌲   🌲🌲🌲     🌲 🌲🌲 🌲🌲 🌲 🌲🌲🌲🌲
 
   1500 cell(s),   1089 tree(s),     73 currently burning ( 72.60%,   6.70%)
 ```
@@ -5647,7 +5647,7 @@ forest.draw = function (self)
 	for i = 1, #self do
 		for j = 1, #self[i] do
 			if self[i][j] == 0 then win:mvaddch(i,j," ")
-			elseif self[i][j] == 1 then 
+			elseif self[i][j] == 1 then
 				win:attron(curses.color_pair(1))
 				win:mvaddch(i,j,"Y")
 				win:attroff(curses.color_pair(1))
@@ -5725,32 +5725,32 @@ MatrixPlot[CellularAutomaton[{evolve, {}, {1, 1}}, {init, 0}, {{{300}}}], ColorR
 function forest_fire(f,p,N,M)
 % Forest fire
 if nargin<4;
-	M=200; 
+	M=200;
 end
 if nargin<3;
-	N=200; 
+	N=200;
 end
 if nargin<2;
-	p=.03; 
+	p=.03;
 end
 if nargin<1;
-	f=p*.0001; 
+	f=p*.0001;
 end
 
 % initialize;
-F = (rand(M,N) < p)+1;  % tree with probability p 
+F = (rand(M,N) < p)+1;  % tree with probability p
 S = ones(3); S(2,2)=0;  % surrounding
 
 textmap = ' T#';
 colormap([.5,.5,.5;0,1,0;1,0,0]);
 while(1)
-	image(F); pause(.1)    % uncomment for graphical output 
-	% disp(textmap(F));	pause;		  % uncomment for textual output 		
-	G = ((F==1).*((rand(M,N)<p)+1));  % grow tree 
+	image(F); pause(.1)    % uncomment for graphical output
+	% disp(textmap(F));	pause;		  % uncomment for textual output
+	G = ((F==1).*((rand(M,N)<p)+1));  % grow tree
 	G = G + (F==2) .* ((filter2(S,F==3)>0) + (rand(M,N)<f) + 2);  % burn tree if neighbor is burning or by chance f
 	G = G + (F==3);						 % empty after burn
 	F = G;
-end; 
+end;
 ```
 
 
@@ -5992,7 +5992,7 @@ step(M,p,f)={
 				if(random(1.)<p,"t"," ")
 			)
 		)
-	)	
+	)
 };
 burn(n,p,f)={
 	my(M=matrix(n,n,i,j,if(random(2)," ","t")),N);
@@ -6119,10 +6119,10 @@ my $RED = "\e[1;31m";
 my $YELLOW = "\e[1;33m";
 my $GREEN = "\e[1;32m";
 my $CLEAR = "\e[0m";
- 
+
 enum Cell-State <Empty Tree Heating Burning>;
 my @pix = '  ', $GREEN ~ '木', $YELLOW ~ '木', $RED ~ '木';
- 
+
 class Forest {
     has Rat $.p = 0.01;
     has Rat $.f = 0.001;
@@ -6137,7 +6137,7 @@ class Forest {
 	@!spot = [ (Bool.pick ?? Tree !! Empty) xx $!width ] xx $!height;
         self!init-neighbors;
     }
- 
+
     method !init-neighbors {
         for @!coords -> ($i, $j) {
             @!neighbors[$i][$j] = eager gather for
@@ -6149,7 +6149,7 @@ class Forest {
 	    }
 	}
     }
- 
+
     method step {
 	my @heat;
         for @!coords -> ($i, $j) {
@@ -6164,7 +6164,7 @@ class Forest {
 	    $_ = Heating for @!neighbors[$i][$j].grep(Tree);
 	}
     }
- 
+
     method show {
         for ^$!height -> $i {
             say @pix[@!spot[$i].list].join;
@@ -6370,7 +6370,7 @@ integer {w, h} = IupGetIntInt(canvas, "DRAWSIZE")
                     fnxy = EMPTY+(randomf()<P)  -- (EMPTY or TREE)
                 case TREE:
                     fnxy = TREE
-                    if f[x-1,y-1]=FIRE or f[x,y-1]=FIRE or f[x+1,y-1]=FIRE 
+                    if f[x-1,y-1]=FIRE or f[x,y-1]=FIRE or f[x+1,y-1]=FIRE
                     or f[x-1,y  ]=FIRE or (randomf()<F) or f[x+1,y  ]=FIRE
                     or f[x-1,y+1]=FIRE or f[x,y+1]=FIRE or f[x+1,y+1]=FIRE then
                         fnxy = FIRE
@@ -6502,7 +6502,7 @@ function getNextForest($oldForest) {
 
 function getNumBurningNeighbors($forest, $x, $y) {
     $burningNeighbors = mapForest([
-        'forest' => $forest, 
+        'forest' => $forest,
         'x1' => $x - 1, 'x2' => $x + 2,
         'y1' => $y - 1, 'y2' => $y + 2,
         'default' => 0,
@@ -6510,7 +6510,7 @@ function getNumBurningNeighbors($forest, $x, $y) {
             return $f[$y][$x] == BURN ? 1 : 0;
         }
     ]);
-    
+
     $numOnFire = 0;
     foreach ($burningNeighbors as $row) {
         $numOnFire += array_sum($row);
@@ -6521,7 +6521,7 @@ function getNumBurningNeighbors($forest, $x, $y) {
 
 function mapForest($params) {
     $p = array_merge([
-        'forest' => [], 
+        'forest' => [],
         'func' => function(){echo "default\n";},
         'x1' => 0,
         'x2' => WIDTH,
@@ -6529,7 +6529,7 @@ function mapForest($params) {
         'y2' => HEIGHT,
         'default' => BARE
     ], $params);
-    
+
     $newForest = [];
     for ($y = $p['y1']; $y < $p['y2']; $y++) {
         $newRow = [];
@@ -6701,7 +6701,7 @@ try:
     raw_input
 except:
     raw_input = input
-    
+
 import random
 
 
@@ -6733,7 +6733,7 @@ def quickprint(grid):
     print(('Of %6i cells, %6i are trees of which %6i are currently burning.'
           + ' (%6.3f%%, %6.3f%%)')
           % (ll, t, b, 100. * t / ll, 100. * b / ll))
-                
+
 
 def gnew(grid):
     newgrid = {}
@@ -6747,7 +6747,7 @@ def gnew(grid):
                 newgrid[(x,y)] = (burning
                                    if any(grid.get((x+dx,y+dy),space) == burning
                                             for dx,dy in hood)
-                                        or random.random()<= f 
+                                        or random.random()<= f
                                    else tree)
     return newgrid
 
@@ -6776,7 +6776,7 @@ if __name__ == '__main__':
 
 ```txt
 Of    225 cells,    108 are trees of which      0 are currently burning. (48.000%,  0.000%)
-Print/Quit/<int>/<return>      0: 
+Print/Quit/<int>/<return>      0:
 Of    225 cells,    114 are trees of which      1 are currently burning. (50.667%,  0.444%)
 Print/Quit/<int>/<return>      1: p
 .TTT.T.T.TTTT.T
@@ -6829,7 +6829,7 @@ TTT......BTTT.T
 ..T......BTTTTT
 .T.T.T....TT...
 Of    225 cells,    110 are trees of which      4 are currently burning. (48.889%,  1.778%)
-Print/Quit/<int>/<return>      4: 
+Print/Quit/<int>/<return>      4:
 ```
 
 
@@ -6874,10 +6874,10 @@ Print/Quit/<int>/<return>      4:
 (define (render-forest state)
   (for/fold
       ((scn (empty-scene
-             (* (vector-length state) 8)                         
+             (* (vector-length state) 8)
              (* (vector-length (vector-ref state 0)) 8)
              'black)))
-    
+
     ((rw state) (r# (in-naturals)))
     (for/fold
         ((scn scn))
@@ -6907,17 +6907,17 @@ photos I'll post them!
 
 ## REXX
 
-This version has been elided,   otherwise the size of the program (with all it's options and optional formatting) would 
+This version has been elided,   otherwise the size of the program (with all it's options and optional formatting) would
 
 probably be on the big side for general viewing, and maybe a wee bit complex to demonstrate how to program for this task.
 
 If repeatable results are desired, the   '''randSeed'''   variable can be set to a non-negative integer.
 
-Glyphs were chosen in an attempt to pictorialize a tree   (<big>↑</big>)   and also a fire   (<big>▒</big>).  
+Glyphs were chosen in an attempt to pictorialize a tree   (<big>↑</big>)   and also a fire   (<big>▒</big>).
 
-The choice of glyphs within the code page '''437'''   (DOS and/or under Windows) is rather limited. 
+The choice of glyphs within the code page '''437'''   (DOS and/or under Windows) is rather limited.
 
-There is one (OS) dependency:   use of the   '''CLS'''   (DOS) command which is used to clear the screen   (the original 
+There is one (OS) dependency:   use of the   '''CLS'''   (DOS) command which is used to clear the screen   (the original
 
 version examined the host environment and used the correct command to clear the terminal screen).
 
@@ -6983,9 +6983,9 @@ ignite?:           if substr($.r, c+1, 1) == fire!  then return 1   /*is  east o
 p:       return word(arg(1), 1)                  /*pick─a─word:  first  or  second word.*/
 ```
 
-This REXX program makes use of   '''scrSize'''   REXX program (or BIF)   which is used to determine the screen size of the terminal (console). 
+This REXX program makes use of   '''scrSize'''   REXX program (or BIF)   which is used to determine the screen size of the terminal (console).
 
-The   '''SCRSIZE.REX'''   REXX program is included here   ──►    [[SCRSIZE.REX]]. 
+The   '''SCRSIZE.REX'''   REXX program is included here   ──►    [[SCRSIZE.REX]].
 
 
 '''output'''   when using the defaults of:
@@ -7065,7 +7065,7 @@ load "stdlib.ring"
 
 paint = null
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("Forest fire")
@@ -7099,19 +7099,19 @@ func draw
 
 pregen = newlist(200,200)
 newgen = newlist(200,200)
- 
+
  for gen = 1 to 20
       see "gen = " + gen + nl
       for x = 1 to 199
            for y = 1 to 199
                  switch pregen[x][y]
                             on 0
-                                 if random(9)/10 > 0.099 
-                                    newgen[x][y] = 1 
+                                 if random(9)/10 > 0.099
+                                    newgen[x][y] = 1
                                     color = new qcolor()
                                     color.setrgb(0,128,0,255)
                                     pen.setcolor(color)
-                                    setpen(pen)    
+                                    setpen(pen)
                                     drawpoint(x,y)
                                  ok
                             on 2
@@ -7119,24 +7119,24 @@ newgen = newlist(200,200)
                                  color = new qcolor()
                                  color.setrgb(165,42,42,255)
                                  pen.setcolor(color)
-                                 setpen(pen)    
-                                 drawpoint(x,y)                    
+                                 setpen(pen)
+                                 drawpoint(x,y)
                             on 1
                                  if pregen[x][y] = 2 or pregen[x][y]   = 2 or pregen[x][y+1] = 2 or
                                     pregen[x][y]   = 2 or pregen[x][y+1]   = 2 or pregen[x+1][y] = 2 or
-                                    pregen[x+1][y]   = 2 or pregen[x+1][y+1] = 2 or random(9)/10 > 0.0999 
+                                    pregen[x+1][y]   = 2 or pregen[x+1][y+1] = 2 or random(9)/10 > 0.0999
                                     color = new qcolor()
-                                    color.setrgb(255,0,0,255) 
+                                    color.setrgb(255,0,0,255)
                                     pen.setcolor(color)
-                                    setpen(pen)    
+                                    setpen(pen)
                                     drawpoint(x,y)
                                     newgen[x][y] = 2
                                  ok
                  off
                  pregen[x][y] = newgen[x][y]
-           next 
-      next 
-next 
+           next
+      next
+next
 
         endpaint()
         }
@@ -7157,13 +7157,13 @@ https://www.dropbox.com/s/6rjho62odzyqaqc/ForestFire.jpg?dl=0
 class Forest_Fire
   Neighborhood = [-1,0,1].product([-1,0,1]) - [0,0]
   States = {empty:" ", tree:"T", fire:"#"}
-  
+
   def initialize(xsize, ysize=xsize, p=0.5, f=0.01)
     @xsize, @ysize, @p, @f = xsize, ysize, p, f
     @field = Array.new(xsize+1) {|i| Array.new(ysize+1, :empty)}
     @generation = 0
   end
-  
+
   def evolve
     @generation += 1
     work = @field.map{|row| row.map{|cell| cell}}
@@ -7182,11 +7182,11 @@ class Forest_Fire
     end
     @field = work
   end
-  
+
   def fire?(i,j)
     rand < @f or Neighborhood.any? {|di,dj| @field[i+di][j+dj] == :fire}
   end
-  
+
   def display
     puts "Generation : #@generation"
     puts @xsize.times.map{|i| @ysize.times.map{|j| States[@field[i][j]]}.join}
@@ -7204,20 +7204,20 @@ Sample Output:
 <pre style="height:64ex;overflow:scroll">
 Generation : 1
  TT TTTT  TT    TT  T T  T TTT
- T TTT    T   TTT T  T T T  T 
-TT   T TTT T T   T    T TTT T 
-T  TT T     T   TT   TTT T T  
- TTTT    TTTTTTT      TT   T  
-T  T  T  TT   T        TTT TT 
- TT TT TTT   TT TTT     T T   
-T   TTTTT   TT  TT T TTT   TT 
+ T TTT    T   TTT T  T T T  T
+TT   T TTT T T   T    T TTT T
+T  TT T     T   TT   TTT T T
+ TTTT    TTTTTTT      TT   T
+T  T  T  TT   T        TTT TT
+ TT TT TTT   TT TTT     T T
+T   TTTTT   TT  TT T TTT   TT
 T TTT    T T  T T T      TT  T
  TTTTT T  TT    TTT TT T T   T
 Generation : 2
 TTTTTTTT TTTT TTTTTTTTT  TTTTT
 T# TTTTTTTTT  TTTTTT T T T  TT
 TT   # TTTTT T T TTTTTTTTTT TT
-T  TTTTT T TT TTTTTT TTT TTT  
+T  TTTTT T TT TTTTTT TTT TTT
 TTTTTTT TTTTTTTT  T   TTT  TTT
 TTTT  T  TTT TTT   TT  TTTTTTT
  TT TT TTTT TTT TTTT TTTT TT T
@@ -7228,7 +7228,7 @@ Generation : 3
 ###TTTTT TTTT TTTTTTTTTTTTTTTT
 #  T####TTTTT TTTTTT TTTTTT TT
 ##TT   TTTTTTT TTTTTTTTTTTT TT
-TT T###T T TTTTTTTTTTTTTTTTT  
+TT T###T T TTTTTTTTTTTTTTTTT
 TTTTTTTTTTTTTTTTTTTT TTTTTTTTT
 TTTTT T  TTTTTTT TTTT  TTTTTTT
  TT TTTTTTT TTT TTTT TTTTTTT T
@@ -7294,24 +7294,24 @@ Generation : 9
   TT##T  TTT              #TTT
 T TT #  ##TTT#T       TTT #TTT
  #T  #    T    TTT   TTT  ####
-  T  ##  T#T  TTTT  TTTT      
-TT# #### #T   TT    TTT T T T 
-T # #TT## T    TTT T TTT TT T 
- TTT TTTTT  T T## #T  T TTT   
-    TT    T TT    #TTT###TTT  
-             T# T  #TT  #TTTT 
-#####   ###  T#T   # TT TTT   
+  T  ##  T#T  TTTT  TTTT
+TT# #### #T   TT    TTT T T T
+T # #TT## T    TTT T TTT TT T
+ TTT TTTTT  T T## #T  T TTT
+    TT    T TT    #TTT###TTT
+             T# T  #TT  #TTTT
+#####   ###  T#T   # TT TTT
 Generation : 10
   T#  # T##T  TTTT TTT     #TT
 #T##T     #T# #TTTTT  TTT  ###
-T # T TTTT#T  TTTT TTTTTTT    
-  # T  T # #T TTTT  TTTTT     
-T# T    T #TT TTT   TT# TTT T 
+T # T TTTT#T  TTTT TTTTTTT
+  # T  T # #T TTTT  TTTTT
+T# T    T #TT TTT   TT# TTT T
 T    ##   #TT  ###T#TTTTTTTTTT
 T### #####TTTT#  T #T # ##T TT
-   TTTTTTTTTT#TTT  ###   #TT  
-TTTT  TTTT T # TT T ## T #TTT 
-      T      # # TT  TT ##TTT 
+   TTTTTTTTTT#TTT  ###   #TT
+TTTT  TTTT T # TT T ## T #TTT
+      T      # # TT  TT ##TTT
 
 ```
 
@@ -7528,7 +7528,7 @@ class FORESTFIRE is
   create(w, h:INT):SAME is
     res ::= create(w, h, false);
     return res;
-  end; 
+  end;
 
   initfield is
     n ::= 0;
@@ -7564,13 +7564,13 @@ class FORESTFIRE is
   ofield:ARRAY{INT} is
     return fields[swapu.bxor(1)];
   end;
- 
+
   size:INT is
     return width*height;
   end;
 
   set(i, j, t:INT)
-    pre bcheck(i, j) 
+    pre bcheck(i, j)
   is
     ofield[j*width + i] := t;
   end;
@@ -7600,7 +7600,7 @@ class FORESTFIRE is
     if ~bcheck(i, j) then
       return empty;
     end;
-    return ofield[j*width + i];    
+    return ofield[j*width + i];
   end;
 
   burning_neighbor(i, j:INT):BOOL is
@@ -7621,7 +7621,7 @@ class FORESTFIRE is
 	case get(i, j)
         when burning then set(i, j, empty); bp := bp + 1;
         when empty then
-          if rnd.uniform > prob_p.fltd then 
+          if rnd.uniform > prob_p.fltd then
             set(i, j, empty);
           else
             set(i, j, tree);
@@ -7636,7 +7636,7 @@ class FORESTFIRE is
               set(i, j, burning);
             end;
           end;
-        else 
+        else
           #ERR + "corrupted field\n";
         end;
       end;
@@ -7665,7 +7665,7 @@ class FORESTFIRE is
     s := s + "\n";
     return s;
   end;
-  
+
 end;
 
 class MAIN is
@@ -7673,11 +7673,11 @@ class MAIN is
   main is
     forestfire ::= #FORESTFIRE(74, 40);
     -- #FORESTFIRE(74, 40, true) to have some extra info
-    -- (redirecting stderr to a file is a good idea!)    
+    -- (redirecting stderr to a file is a good idea!)
 
     #OUT + forestfire.str;
     -- evolve 1000 times
-    loop i ::= 1000.times!; 
+    loop i ::= 1000.times!;
       forestfire.evolve;
       -- ANSI clear screen sequence
       #OUT + 0x1b.char + "[H" + 0x1b.char + "[2J";
@@ -7707,11 +7707,11 @@ class Forest(matrix:Array[Array[Char]]){
     matrix(y)(x) match {
       case EMPTY => if (Random.nextDouble<p) TREE else EMPTY
       case BURNING => EMPTY
-      case TREE => if (neighbours(x, y).exists(_==BURNING)) BURNING 
+      case TREE => if (neighbours(x, y).exists(_==BURNING)) BURNING
                   else if (Random.nextDouble<f) BURNING else TREE
     }
   })
-  
+
   def neighbours(x:Int, y:Int)=matrix slice(y-1, y+2) map(_.slice(x-1, x+2)) flatten
   override def toString()=matrix map (_.mkString("")) mkString "\n"
 }
@@ -7994,37 +7994,37 @@ Sample output:
 
 ###  #     ####### ##  #  ## #####     # # # ###   ## #
 #  #      ##   #   ##### # ## #   #   ##   o ###  #  # #### # # #### #
-  # #######  ###   #####  ###  ####  #######  ###   ##  ## ####  # ## 
-# ###   ## ####       #     ##  #        #  #### # ### #  # ##  ##### 
- # #    ##  #     ##### ###  # ## # ##    ######    # ####     ## # # 
-    ### ### #   #####  # ###  ## # ### # ####### #### # # # #   #  #  
+  # #######  ###   #####  ###  ####  #######  ###   ##  ## ####  # ##
+# ###   ## ####       #     ##  #        #  #### # ### #  # ##  #####
+ # #    ##  #     ##### ###  # ## # ##    ######    # ####     ## # #
+    ### ### #   #####  # ###  ## # ### # ####### #### # # # #   #  #
  # # # # #  ####  ### #  ##  ##  ### #  ## # #   # #    # ## #   ## ##
 #####    ## ## #  #  # # ##   # ##  ###   # # #   ### ##    ## # ### #
 
 #  ### # ### #####  #  #  ####### ##  #  #o o####     # # # ###   ## #
 #  #  #   #o   #   ##### # ## ##  #   ##     ###  #  # #### # # #### #
-  # #######  ###   #####  ###  ####  #####oo  ###   ### ## ####  # ## 
-# ###   ## ####       #     ##  #        #  #### # ### #  # ##  ##### 
- # #    ##  #     ##### ###  # ## # ##    ######    # #o##     ## # # 
-    ### ### #   ###### # ###  ## # ### # ####### #### # # # #   #  #  
+  # #######  ###   #####  ###  ####  #####oo  ###   ### ## ####  # ##
+# ###   ## ####       #     ##  #        #  #### # ### #  # ##  #####
+ # #    ##  #     ##### ###  # ## # ##    ######    # #o##     ## # #
+    ### ### #   ###### # ###  ## # ### # ####### #### # # # #   #  #
  # # # # #  ####  ### #  ##  ##  ### #  ## # #   # #    # ## #   ## ##
 o####    ## ## #  #  # # ##   # ##  ###   # # #   ### ##  # ## # ### #
 
 #  ### # #oo o####  #  # ######## ##  #  o   o###    ## # # #o#   ## #
 #  #  #   o    #   ##### # ## ##  #   ##     o##  #  # #### # # ##o# #
-  # ######o  ###   #####  #### ####  ####o    ### # ### ## #### ## ## 
-#####   ## ####       #     ##  #     #  o  o### # ### o  # ##  ##### 
- # #    ##  ##    ##### ###  # ## # ##    ######    # o o#     ## # # 
-    ### #####   ###### # ###  ## # ### # ####### #### o o # # # o  #  
+  # ######o  ###   #####  #### ####  ####o    ### # ### ## #### ## ##
+#####   ## ####       #     ##  #     #  o  o### # ### o  # ##  #####
+ # #    ##  ##    ##### ###  # ## # ##    ######    # o o#     ## # #
+    ### #####   ###### # ###  ## # ### # ####### #### o o # # # o  #
  o # # # #  ####  #####  ## ###  ### #  ## # #   # #    # ## #   ## ##
  o###    ## ## #  #  # # ##   # ##  ###   # ###   ### ##  # ## # #o# #
 
 #  ### # o    o###  #  # ######## ##  #       o##    ## # # o o   oo##
 #  #  # #   #  #   ##### # ## ##  #   ##      o#  #  # #### o o #o o #
-  # #####o   ###   #####  #### ####  ###o     o## ####o o# #### #o o# 
+  # #####o   ###   #####  #### ####  ###o     o## ####o o# #### #o o#
 #####   #o o###       #    ###  #     #      o## # ##o    # ##  ######
- # #    ##  ##    ##### ###  # ## # ##    oooo##    #    o     oo # # 
-    ### #####   ###### #####  ## # ### # ####### ####     # # o    #  
+ # #    ##  ##    ##### ###  # ## # ##    oooo##    #    o     oo # #
+    ### #####   ###### #####  ## # ### # ####### ####     # # o    #
    # # # #  ####  #####  ## ###  ### #  ## # #   # #    o### #   oo ##
   o##    ## ## #  #  # # ##   # o#  ###   # ###   ######  # ## # o o #
 
@@ -8032,8 +8032,8 @@ o####    ## ## #  #  # # ##   # ##  ###   # # #   ### ##  # ## # ### #
 #  #  # o   #  o   ##### # ## ##  #   #o       o  #  o ooo#     o #  #
   # ####o    ###   #####  o### ####  ##o     # o# ##oo   o oooo#o   o#
 ######  o   o##    #  #    ###  #     #       oo # #o     o ##  ooooo#
- # #    oo  o# #  ##### ###  # ## # ##        o#   #o   #         # # 
-    ### #####   ###### #####  ## # ### # oooooo# ####     o #    # o  
+ # #    oo  o# #  ##### ###  # ## # ##        o#   #o   #         # #
+    ### #####   ###### #####  ## # ### # oooooo# ####     o #    # o
    o # # #  ####  #####  ## ###  o## #  ## # #   # #     o## o#    #o#
    o#    ## ## #  #  # # ##  ##  o  ###   # ### # #####o  # ## #     #
 

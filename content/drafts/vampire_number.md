@@ -23,8 +23,8 @@ An example of a Vampire number and its fangs: <code> 1260 : (21, 60) </code>
 
 
 ;Task:
-# Print the first 25 Vampire numbers and their fangs. 
-# Check if the following numbers are Vampire numbers and, if  so, print them and their fangs: 
+# Print the first 25 Vampire numbers and their fangs.
+# Check if the following numbers are Vampire numbers and, if  so, print them and their fangs:
 <big><code> 16758243290880,  24959017348650,  14593825548650 </code></big>
 
 
@@ -218,7 +218,7 @@ GetFangs(CurrentNumber) { ; requires CharSorter()
               )
         )
       &   R$(!len.0.!N.1 2 3 4 5 6 7 8 9)
-        : ( 
+        : (
           |   ?fangsList
             & out$(!N !fangsList)
             & 1+!count:?count
@@ -282,8 +282,8 @@ Output:
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <math.h>
@@ -421,7 +421,7 @@ namespace RosettaVampireNumber
             tens[0] = 1;
             for (i = 1; i < 20; i++)
                 tens[i] = tens[i - 1] * 10;
-            
+
             for (x = 1, n = 0; n < 25; x++)
             {
                 if ((j = fangs(x, f, tens)) == 0) continue;
@@ -442,7 +442,7 @@ namespace RosettaVampireNumber
 
         private static void show_fangs(ulong x, ulong[] f, int cnt)
         {
-            Console.Write(x); 
+            Console.Write(x);
             int i;
             for (i = 0; i < cnt; i++)
                 Console.Write(" = " + f[i] + " * " + (x / f[i]));
@@ -538,15 +538,15 @@ namespace RosettaVampireNumber
 ## C++
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <utility>
 #include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <cmath>
- 
+
 bool isVampireNumber( long number, std::vector<std::pair<long, long> > & solution ) {
    std::ostringstream numberstream ;
    numberstream << number ;
@@ -555,10 +555,10 @@ bool isVampireNumber( long number, std::vector<std::pair<long, long> > & solutio
    int fanglength = numberstring.length( ) / 2 ;
    long start = static_cast<long>( std::pow( 10 , fanglength - 1 ) ) ;
    long end = sqrt(number) ;
-   for ( long i = start ; i <= end ; i++ ) { 
+   for ( long i = start ; i <= end ; i++ ) {
       if ( number % i == 0 ) {
 	 long quotient = number / i ;
-	 if ( ( i % 10 == 0 ) && ( quotient % 10 == 0 ) ) 
+	 if ( ( i % 10 == 0 ) && ( quotient % 10 == 0 ) )
 	    continue ;
 	 numberstream.str( "" ) ; //clear the number stream
 	 numberstream << i << quotient ;
@@ -572,11 +572,11 @@ bool isVampireNumber( long number, std::vector<std::pair<long, long> > & solutio
    }
    return !solution.empty( ) ;
 }
- 
+
 void printOut( const std::pair<long, long> & solution ) {
    std::cout << "[ " << solution.first << " , " << solution.second << " ]" ;
 }
- 
+
 int main( ) {
    int vampireNumbersFound = 0 ;
    std::vector<std::pair<long , long> > solutions ;
@@ -590,8 +590,8 @@ int main( ) {
 	    std::cout << vampireNumbersFound << " :" << num << " is a vampire number! These are the fangs:\n" ;
 	    std::for_each( solutions.begin( ) , solutions.end( ) , printOut ) ;
 	    std::cout << "\n_______________" << std::endl ;
-	    solutions.clear( ) ;	    
-	    if ( vampireNumbersFound == 25 ) 
+	    solutions.clear( ) ;
+	    if ( vampireNumbersFound == 25 )
 	       break ;
 	 }
       }
@@ -601,7 +601,7 @@ int main( ) {
    testnumbers.push_back( 16758243290880 ) ;
    testnumbers.push_back( 24959017348650 ) ;
    testnumbers.push_back( 14593825548650 ) ;
-   for ( std::vector<long>::const_iterator svl = testnumbers.begin( ) ; 
+   for ( std::vector<long>::const_iterator svl = testnumbers.begin( ) ;
 	 svl != testnumbers.end( ) ; svl++ ) {
       if ( isVampireNumber( *svl , solutions ) ) {
 	 std::cout << *svl << " is a vampire number! The fangs:\n" ;
@@ -764,7 +764,7 @@ _______________
   "Is the `candidate' a vampire number?"
   (remove-if #'(lambda (pair)
                  (> (length (remove-if #'null (mapcar #'trailing-zerop pair)))
-                     1)) 
+                     1))
              (remove-if-not #'(lambda (pair)
                                 (string= (sort (copy-seq (write-to-string candidate))
                                                #'char<)
@@ -849,7 +849,7 @@ The number 24959017348650 is a vampire number with fangs:  2947050, 8469153;  29
 The two versions show two styles of D code: compact script-like mostly-functional code, and efficient lower-level code.
 ===High-Level Version===
 {{trans|Clojure}}
-(Runtime about 1.34 seconds with dmd.) 
+(Runtime about 1.34 seconds with dmd.)
 
 ```d
 import std.stdio, std.range, std.algorithm, std.typecons, std.conv;
@@ -1218,7 +1218,7 @@ defmodule Vampire do
     last  = :math.sqrt(n) |> round
     for i <- first .. last, rem(n, i) == 0, do: {i, div(n, i)}
   end
-  
+
   def vampire_factors(n) do
     if rem(char_len(n), 2) == 1 do
       []
@@ -1232,9 +1232,9 @@ defmodule Vampire do
       end)
     end
   end
-  
+
   defp char_len(n), do: length(to_char_list(n))
-  
+
   def task do
     Enum.reduce_while(Stream.iterate(1, &(&1+1)), 1, fn n, acc ->
       case vampire_factors(n) do
@@ -1308,38 +1308,38 @@ IN: rosetta-code.vampire-number
     log10 floor >integer 1 + ;
 
 : same-digits? ( n n1 n2 -- ? )
-    [ 1 digit-groups ] tri@ append [ histogram ] bi@ = ;    
+    [ 1 digit-groups ] tri@ append [ histogram ] bi@ = ;
 
 : half-len-factors ( n -- seq )
     [ divisors ] [ digits ] bi 2/ '[ digits _ = ] filter ;
-    
+
 : same-digit-factors ( n -- seq )
     dup half-len-factors 2 <combinations> [ first2 same-digits? ] with filter ;
-    
+
 : under-two-trailing-zeros? ( seq -- ? )
     [ 10 mod ] map [ 0 = ] count 2 < ;
-    
+
 : tentative-fangs ( n -- seq )
     same-digit-factors [ under-two-trailing-zeros? ] filter ;
-    
+
 : fangs ( n -- seq )
     [ tentative-fangs ] [ ] bi '[ product _ = ] filter ;
-    
+
 : vampire? ( n -- ? )
     { [ digits even? ] [ fangs empty? not ] } 1&& ;
-    
+
 : first25 ( -- seq )
     25 0 lfrom [ vampire? ] lfilter ltake list>array ;
-    
+
 : .vamp-with-fangs ( n -- )
     [ pprint bl ] [ fangs [ pprint bl ] each ] bi nl ;
-    
+
 : part1 ( -- )
     first25 [ .vamp-with-fangs ] each ;
-    
+
 : part2 ( -- ) { 16758243290880 24959017348650 14593825548650 }
     [ dup vampire? [ .vamp-with-fangs ] [ drop ] if ] each ;
-    
+
 : main ( -- ) part1 part2 ;
 
 MAIN: main
@@ -1401,20 +1401,20 @@ Function WithinString(n As Ulongint,f As Ulongint) As Integer
     Return -1
 End Function
 
-Sub AllFactors(N As Ulongint,factors() As Ulongint) 
+Sub AllFactors(N As Ulongint,factors() As Ulongint)
     Dim As String Sn=Str(n)
     Dim As Integer half=Len(sn)\2
     Redim factors(1 To 1)
     #macro bsort(array)
     For p1 As Integer  = 1 To Ubound(array) - 1
-        For p2 As Integer  = p1 + 1 To Ubound(array)  
+        For p2 As Integer  = p1 + 1 To Ubound(array)
             If array(p1)>array(p2) Then Swap array(p1),array(p2)
         Next p2
     Next p1
     #endmacro
-    
+
     Dim As Ulongint c
-    For i As Ulongint = 1 To Sqr(N)       
+    For i As Ulongint = 1 To Sqr(N)
         If N Mod i=0 Then
             If Len(Str(i))=half Then
                 If WithinString(N,i) Then
@@ -1423,7 +1423,7 @@ Sub AllFactors(N As Ulongint,factors() As Ulongint)
                     factors(c)=i
                 End If
             End If
-            If N <> i*i Then 
+            If N <> i*i Then
                 If Len(Str(n\i))=half Then
                     If WithinString(N,n\i) Then
                         c=c+1
@@ -1431,8 +1431,8 @@ Sub AllFactors(N As Ulongint,factors() As Ulongint)
                         factors(c)=n\i
                     End If
                 End If
-            End If 
-        End If 
+            End If
+        End If
     Next i
     bsort(factors)
 End Sub
@@ -1445,7 +1445,7 @@ Function VampireNumbers(N As Ulongint) As Integer
     For p1 As Integer = 1 To Ubound(Factor)
         For p2 As Integer=1 To Ubound(Factor)
             If Factor(p1)*Factor(p2)=n Then
-                If Factor(p1) Mod 10<>0 Or Factor(p2) Mod 10 <>0 Then 
+                If Factor(p1) Mod 10<>0 Or Factor(p2) Mod 10 <>0 Then
                     If WithinString(n,valulng(Str(Factor(p1))+Str(Factor(p2)))) Then
                         If LastFactor=Factor(p2) Then Exit For,For
                         flag=1
@@ -1475,7 +1475,7 @@ Do
     Var s=Str(n)
     If Len(s) Mod 2<>0 Then n=n*10
     If vampireNumbers(n) Then count=count+1
-Loop Until count=27 
+Loop Until count=27
 Print
 print "Individual tests:"
 print
@@ -1558,8 +1558,8 @@ Completed in  1.286374813709699 Seconds
 package main
 
 import (
-    "fmt" 
-    "math" 
+    "fmt"
+    "math"
 )
 
 func max(a, b uint64) uint64 {
@@ -1573,21 +1573,21 @@ func min(a, b uint64) uint64 {
     if a < b {
         return a
     }
-    return b 
+    return b
 }
-    
+
 func ndigits(x uint64) (n int) {
     for ; x > 0; x /= 10 {
-        n++ 
+        n++
     }
-    return 
+    return
 }
 
 func dtally(x uint64) (t uint64) {
     for ; x > 0; x /= 10 {
         t += 1 << (x % 10 * 6)
     }
-    return 
+    return
 }
 
 var tens [20]uint64
@@ -1906,7 +1906,7 @@ fangs =: (same_digits"0 1 # ]) pairs
 │1982736 8452080│2949705 8461530│  │
 │               │2947050 8469153│  │
 └───────────────┴───────────────┴──┘
-   
+
    fangs f.  NB. <laugh>
 ((10&(#.^:_1)@:[ -:&(/:~) ,&(10&(#.^:_1))/@:])"0 1 # ]) ((% ,. ]) (#~ (0 < [: # :[: 0 -.~ 10&|)"1)@:(((> <.@:%:)~ # ]) (((-: :[:@:(# :[:)@:(10&(#.^:_1))@:[ = # :[:@:(10&(#.^:_1))&>@:]) # ]) ([: ([: /:~ [: */"1 ([: x: [) ^"1 [: > [: , [: { [: <@:i.@>: ])/ __ q: ]))))
 
@@ -2856,7 +2856,7 @@ EndMacro
 Procedure.i Factor(number.i,counter.i)
   If number>0 And number>=counter*counter And number%counter=0
       ProcedureReturn counter
-  EndIf  
+  EndIf
   ProcedureReturn 0
 EndProcedure
 
@@ -2873,7 +2873,7 @@ Procedure.b IsVampire(f1.i,f2.i)
         a=Mid(a,2)
         d=RemoveString(d,Mid(d,i,1),#PB_String_NoCase,i,1)
       Else
-        ProcedureReturn #False        
+        ProcedureReturn #False
       EndIf
     Wend
     ProcedureReturn Bool(Len(d)=0)
@@ -2904,8 +2904,8 @@ VampireLoop:
     If IsVampire(m,j)
       c+1
       PrintN(RSet(Str(c),3," ")+". "+RSet(Str(i),10," ")+": ["+Str(j)+", "+Str(m)+"]")
-    EndIf    
-  Next  
+    EndIf
+  Next
 Return
 ```
 
@@ -2981,19 +2981,19 @@ def fac(n):
     [5, 5, 3, 2, 2, 2]
     >>> fac(1000)
     [5, 5, 5, 2, 2, 2]
-    >>>  
+    >>>
     '''
     step = lambda x: 1 + x*4 - (x//2)*2
     maxq = int(math.floor(math.sqrt(n)))
     d = 1
-    q = n % 2 == 0 and 2 or 3 
+    q = n % 2 == 0 and 2 or 3
     while q <= maxq and n % q != 0:
         q = step(d)
         d += 1
     res = []
     if q <= maxq:
         res.extend(fac(n//q))
-        res.extend(fac(q)) 
+        res.extend(fac(q))
     else: res=[n]
     return res
 
@@ -3004,7 +3004,7 @@ def fact(n):
     [(2, 3), (3, 1), (5, 2)]
     >>> fact(1000)
     [(2, 3), (5, 3)]
-    >>> 
+    >>>
     '''
     res = fac(n)
     return [(c, res.count(c)) for c in set(res)]
@@ -3020,7 +3020,7 @@ def divisors(n):
                (prime**power for prime, power in zip(primes, powergroup)),
                1)
         for powergroup in powers)
-    
+
 def vampire(n):
     fangsets = set( frozenset([d, n//d])
                     for d in divisors(n)
@@ -3028,7 +3028,7 @@ def vampire(n):
                         and sorted(str(d) + str(n//d)) == sorted(str(n))
                         and (str(d)[-1] == 0) + (str(n//d)[-1] == 0) <=1) )
     return sorted(tuple(sorted(fangs)) for fangs in fangsets)
-    
+
 
 if __name__ == '__main__':
     print('First 25 vampire numbers')
@@ -3169,7 +3169,7 @@ it's a good way to "find the first n numbers meeting predicate p?":
          (not (= 0 (modulo d 10) (modulo e 10)))
          (equal? digits-in-order-n
                  (string-sort-characters (string-append (number->string d) (number->string e))))))
-  
+
   (let* ((fangses (for*/list ((d (in-list (divisors n))) #:when (fangs-of-n? d (/ n d)))
                     (list d (/ n d)))))
     (and (not (null? fangses)) (cons n fangses))))
@@ -3377,18 +3377,18 @@ func vampire(listnum)
                if flag = 1
                    sum = sum + 1
                    total[sum][1] = num1
-                   total[sum][2] = num2                
+                   total[sum][2] = num2
                    see "" + listnum + ": [" + num1 + "," + num2 + "]" + nl
                 ok
              ok
             nextPermutation(list)
        next
- 
+
 func nextPermutation(a)
      elementcount = len(a)
      if elementcount < 1 then return ok
      pos = elementcount-1
-     while a[pos] >= a[pos+1] 
+     while a[pos] >= a[pos+1]
            pos -= 1
            if pos <= 0 permutationReverse(a, 1, elementcount)
               return ok
@@ -3401,7 +3401,7 @@ func nextPermutation(a)
      a[pos] = a[last]
      a[last] = temp
      permutationReverse(a, pos+1, elementcount)
- 
+
  func permutationReverse a, first, last
       while first < last
             temp = a[first]
@@ -3412,8 +3412,8 @@ func nextPermutation(a)
       end
 
 func fact(nr)
-        if nr = 1 
-           return 1 
+        if nr = 1
+           return 1
         else
            return nr * fact(nr-1)
         ok
@@ -3693,8 +3693,8 @@ object VampireNumbers extends App {
     val check: Pair[Long,Long] => Pair[Long,Long] = p => {
       val len: Long => Int = n => n.toString.size
       val (a,b) = p
-      if ((a%10==0)&&(b%10==0)) Pair(0,0) else 
-      if (len(a) != len(b)) Pair(0,0) else 
+      if ((a%10==0)&&(b%10==0)) Pair(0,0) else
+      if (len(a) != len(b)) Pair(0,0) else
       if (n.toString.toList.diff(a.toString.toList++b.toString.toList)!=Nil) Pair(0,0) else p
     }
     Pair(n,(pow(10,log10(sqrt(n).toLong).toLong).toLong+1 to sqrt(n).toLong).filter{i=>n%i==0}
@@ -3705,7 +3705,7 @@ object VampireNumbers extends App {
     val lb = new ListBuffer[Pair[Long,Seq[Pair[Long,Long]]]]
     while ((lb.size<25)&&(it.hasNext)) {
       checkVN(it.next) match {
-        case (n, Seq()) => 
+        case (n, Seq()) =>
         case p          => lb += p
       }
     }

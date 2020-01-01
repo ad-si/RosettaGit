@@ -103,7 +103,7 @@ on run
         on |λ|(x)
             set sqr to x * x
             set strSquare to sqr as text
-            
+
             if isCube(sqr) then
                 strSquare & " (also cube)"
             else
@@ -111,7 +111,7 @@ on run
             end if
         end |λ|
     end script
-    
+
     unlines(map(listing, ¬
         enumFromTo(1, 33)))
 end run
@@ -149,7 +149,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -285,8 +285,8 @@ function is_cube(x,  i) {
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 int main() {
@@ -321,8 +321,8 @@ Same as Ring example.
 
 {{trans|C}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cmath>
 
 int main() {
@@ -404,7 +404,7 @@ public static class SquareButNotCube
         foreach (var x in Merge().Take(33)) {
             WriteLine(x.isCube ? x.n + " (also cube)" : x.n + "");
         }
-        
+
         IEnumerable<int> Integers() {
             for (int i = 1; ;i++) yield return i;
         }
@@ -909,18 +909,18 @@ label n
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 PROGRAM "Square.bas"
 110 LET SQNOTCB,SQANDCB,SQNUM,CBNUM,CBN,SQN,D1=0:LET SQD,D2=1
-120 DO 
+120 DO
 130   LET SQN=SQN+1:LET SQNUM=SQNUM+SQD:LET SQD=SQD+2
 140   IF SQNUM>CBNUM THEN
 150     LET CBN=CBN+1:LET CBNUM=CBNUM+D2
 160     LET D1=D1+6:LET D2=D2+D1
-170   END IF 
+170   END IF
 180   IF SQNUM<>CBNUM THEN
 190     PRINT SQNUM:LET SQNOTCB=SQNOTCB+1
-200   ELSE 
+200   ELSE
 210     PRINT SQNUM,SQN;"*";SQN;"=";CBN;"*";CBN;"*";CBN
 220     LET SQANDCB=SQANDCB+1
-230   END IF 
+230   END IF
 240 LOOP UNTIL SQNOTCB>=30
 250 PRINT SQANDCB;"where numbers are square and cube."
 ```
@@ -986,7 +986,7 @@ public class SquaresCubes {
         long c = (long)Math.cbrt((double)n);
         return ((c * c * c) == n);
     }
-    
+
     public static void main(String... args) {
         long n = 1;
         int squareOnlyCount = 0;
@@ -1073,7 +1073,7 @@ Square: 1089
 
     // cubeRootInt :: Int -> Int
     const cubeRootInt = n => Math.round(Math.pow(n, 1 / 3));
-    
+
 
     // GENERIC FUNCTIONS ----------------------------------
 
@@ -1355,7 +1355,7 @@ var
   SqNum,
 
   cbN,
-  cbDelta1,  
+  cbDelta1,
   cbDelta2,
   CbNum,
 
@@ -1370,31 +1370,31 @@ begin
   cbN := 0;
   sqN := 0;
   sqDelta := 1;
-  cbDelta1 := 0;    
-  cbDelta2 := 1;  
-  repeat 
+  cbDelta1 := 0;
+  cbDelta2 := 1;
+  repeat
     inc(sqN);
     inc(sqNum,sqDelta);
-    inc(sqDelta,2);    
+    inc(sqDelta,2);
     IF sqNum>cbNum then
     Begin
       inc(cbN);
       cbNum := cbNum+cbDelta2;
-      inc(cbDelta1,6);// 0,6,12,18...      
-      inc(cbDelta2,cbDelta1);//1,7,19,35... 
-    end;  
-    IF sqNum <> cbNUm then 
-    Begin   
+      inc(cbDelta1,6);// 0,6,12,18...
+      inc(cbDelta2,cbDelta1);//1,7,19,35...
+    end;
+    IF sqNum <> cbNUm then
+    Begin
       writeln(sqNum :25);
       inc(CountSqNotCb);
-    end  
+    end
     else
     Begin
-      writeln(sqNum:25,sqN:10,'*',sqN,' = ',cbN,'*',cbN,'*',cbN); 
+      writeln(sqNum:25,sqN:10,'*',sqN,' = ',cbN,'*',cbN,'*',cbN);
       inc(CountSqANDCb);
-    end;  
+    end;
   until CountSqNotCb >= 30;//sqrt(High(NativeUint));
-  writeln(CountSqANDCb,' where numbers are square and cube '); 
+  writeln(CountSqANDCb,' where numbers are square and cube ');
 end.
 ```
 
@@ -1436,7 +1436,7 @@ end.
                      1089
 3 where numbers are square and cube
 
-// there are 1625 numbers which are square and cube < High(Uint64)     
+// there are 1625 numbers which are square and cube < High(Uint64)
 //18412815093994140625  4291015625*4291015625 = 2640625*2640625*2640625
 
 ```
@@ -1536,10 +1536,10 @@ put "\nFirst 15 positive integers that are both a square and a cube: \n", @squar
 {{out}}
 
 ```txt
-First 30 positive integers that are a square but not a cube: 
+First 30 positive integers that are a square but not a cube:
 4 9 16 25 36 49 81 100 121 144 169 196 225 256 289 324 361 400 441 484 529 576 625 676 784 841 900 961 1024 1089
 
-First 15 positive integers that are both a square and a cube: 
+First 15 positive integers that are both a square and a cube:
 1 64 729 4096 15625 46656 117649 262144 531441 1000000 1771561 2985984 4826809 7529536 11390625
 ```
 
@@ -1550,7 +1550,7 @@ First 15 positive integers that are both a square and a cube:
 
 ```Phix
 integer square = 1, squared = 1*1,
-        cube   = 1, cubed = 1*1*1, 
+        cube   = 1, cubed = 1*1*1,
         count  = 0
 
 while count<30 do
@@ -1562,7 +1562,7 @@ while count<30 do
         count += 1
         printf(1,"%d: %d\n",{square,squared})
     end if
-    square += 1     
+    square += 1
 end while
 
 printf(1,"\nThe first 15 positive integers that are both a square and a cube: \n")
@@ -1980,7 +1980,7 @@ Output:
 
 class PowIt
 	:next
-	
+
 	def initialize
 		@next = 1;
 	end
@@ -2183,7 +2183,7 @@ End Module
 
 ```zkl
 println("First 30 positive integers that are a square but not a cube:");
-squareButNotCube:=(1).walker(*).tweak(fcn(n){ 
+squareButNotCube:=(1).walker(*).tweak(fcn(n){
    sq,cr := n*n, sq.toFloat().pow(1.0/3).round(); // cube root(64)<4
    if(sq==cr*cr*cr) Void.Skip else sq
 });

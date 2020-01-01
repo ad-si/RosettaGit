@@ -29,22 +29,22 @@ The game should display all the player guesses and the results of that guess.
 Display(just an idea.):
 {| class="wikitable" border="1"
 |-
-! Feature !! Graphic Version !! Text Version 
+! Feature !! Graphic Version !! Text Version
 |-
 | Player guess
 | Colored circles
 | Alphabet letters
 |-
 |Correct color & position
-|Black circle 
+|Black circle
 |X
 |-
 |Correct color
-|White circle 
+|White circle
 |O
 |-
 |None
-|Gray circle 
+|Gray circle
 | -
 |-
 |}
@@ -301,8 +301,8 @@ You won, congratulations!
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <algorithm>
 #include <ctime>
 #include <string>
@@ -316,10 +316,10 @@ public:
         std::string color = "ABCDEFGHIJKLMNOPQRST";
 
         if( code_len < 4 ) code_len = 4; else if( code_len > 10 ) code_len = 10;
-        if( !rpt && clr_count < code_len ) clr_count = code_len; 
+        if( !rpt && clr_count < code_len ) clr_count = code_len;
         if( clr_count < 2 ) clr_count = 2; else if( clr_count > 20 ) clr_count = 20;
         if( guess_count < 7 ) guess_count = 7; else if( guess_count > 20 ) guess_count = 20;
-        
+
         codeLen = code_len; colorsCnt = clr_count; guessCnt = guess_count; repeatClr = rpt;
 
         for( size_t s = 0; s < colorsCnt; s++ ) {
@@ -394,11 +394,11 @@ private:
             g.push_back( *x );
         }
         guesses.push_back( g );
-        
+
         int black = 0, white = 0;
         std::vector<bool> gmatch( codeLen, false );
         std::vector<bool> cmatch( codeLen, false );
- 
+
         for( int i = 0; i < codeLen; i++ ) {
             if( a.at( i ) == combo.at( i ) ) {
                 gmatch[i] = true;
@@ -406,7 +406,7 @@ private:
                 black++;
             }
         }
- 
+
         for( int i = 0; i < codeLen; i++ ) {
             if (gmatch[i]) continue;
             for( int j = 0; j < codeLen; j++ ) {
@@ -418,7 +418,7 @@ private:
                 }
             }
         }
-       
+
         vecChar r;
         for( int b = 0; b < black; b++ ) r.push_back( 'X' );
         for( int w = 0; w < white; w++ ) r.push_back( 'O' );
@@ -492,7 +492,7 @@ You found the code: HBDA
 <lang>col[] = [ 902 990 171 229 960 808 ]
 len code[] 4
 len guess[] 4
-# 
+#
 subr init_vars
   row = 7
 .
@@ -1293,8 +1293,8 @@ function mastermindapp()
     colors = distinguishable_colors(numcolors)
     code = ccode(colors, numcolors, allowrep)
     guesshistory = Vector{Guess}()
-    
-    win = GtkWindow("Mastermind Game", 900, 750) |> (GtkFrame() |> (box = GtkBox(:v)))  
+
+    win = GtkWindow("Mastermind Game", 900, 750) |> (GtkFrame() |> (box = GtkBox(:v)))
     settingsbox = GtkBox(:h)
     playtoolbar = GtkToolbar()
 
@@ -1335,7 +1335,7 @@ function mastermindapp()
     map(w->push!(settingsbox, w),[clabel, setcolors, slabel, setcodelength,
         nlabel, setnumguesses, rlabel, allowrepeatcolor])
     map(w->push!(playtoolbar, w),[newgame, tryguess, eraselast])
-    
+
     scrwin = GtkScrolledWindow()
     can = GtkCanvas()
     set_gtk_property!(can, :expand, true)
@@ -1345,15 +1345,15 @@ function mastermindapp()
     currentguess = RGB[]
     guessesused = 0
     colorpositions = Point[]
-    
+
     function newgame!(w)
         empty!(guesshistory)
-        
+
         numcolors = Int(GAccessor.value(setcolors))
         codelength = Int(GAccessor.value(setcodelength))
         maxguesses = Int(GAccessor.value(setnumguesses))
         allowrep = Int(GAccessor.value(allowrepeatcolor))
-        
+
         colors = distinguishable_colors(numcolors)
         code = ccode(colors, codelength, allowrep == 1)
         empty!(currentguess)
@@ -1363,7 +1363,7 @@ function mastermindapp()
         draw(can)
     end
     signal_connect(newgame!, newgame, :clicked)
-       
+
     function saywon!()
         warn_dialog("You have WON the game!", win)
         gameover = true
@@ -1371,11 +1371,11 @@ function mastermindapp()
 
     function outofguesses!()
         warn_dialog("You have Run out of moves! Game over.", win)
-        gameover = true    
+        gameover = true
     end
-    
+
     can.mouse.button1press = @guarded (widget, event) -> begin
-        if !gameover && (i = findfirst(p -> 
+        if !gameover && (i = findfirst(p ->
             sqrt((p.x - event.x)^2 + (p.y - event.y)^2) < 20,
                 colorpositions)) != nothing
             if length(currentguess) < codelength
@@ -1390,7 +1390,7 @@ function mastermindapp()
             end
         end
     end
-    
+
     @guarded draw(can) do widget
         ctx = Gtk.getgc(can)
         select_font_face(ctx, "Courier", Cairo.FONT_SLANT_NORMAL, Cairo.FONT_WEIGHT_BOLD)
@@ -1460,7 +1460,7 @@ function mastermindapp()
 
     newgame!(win)
     Gtk.showall(win)
-   
+
     condition = Condition()
     endit(w) = notify(condition)
     signal_connect(endit, win, :destroy)
@@ -1502,8 +1502,8 @@ class Mastermind {
         this.codeLen = codeLen.coerceIn(4, 10)
         var cl = colorsCnt
         if (!repeatClr && cl < this.codeLen) cl = this.codeLen
-        this.colorsCnt = cl.coerceIn(2, 20)       
-        this.guessCnt = guessCnt.coerceIn(7, 20)    
+        this.colorsCnt = cl.coerceIn(2, 20)
+        this.guessCnt = guessCnt.coerceIn(7, 20)
         this.repeatClr = repeatClr
         this.colors = color.take(this.colorsCnt)
     }
@@ -1545,7 +1545,7 @@ class Mastermind {
     private fun getInput(): String {
         while (true) {
             print("Enter your guess ($colors): ")
-            val a = readLine()!!.toUpperCase().take(codeLen)          
+            val a = readLine()!!.toUpperCase().take(codeLen)
             if (a.all { it in colors } ) return a
         }
     }
@@ -1573,10 +1573,10 @@ class Mastermind {
                     break
                 }
             }
-        }   
+        }
         val r = mutableListOf<Char>()
         r.addAll("X".repeat(black).toList())
-        r.addAll("O".repeat(white).toList())    
+        r.addAll("O".repeat(white).toList())
         results.add(r.toCharArray())
         return black == codeLen
     }
@@ -1607,27 +1607,27 @@ Sample input/output (showing last 2 guesses only):
 Enter your guess (ABCDEFGH): hcgb
 
 --------------------------------
-1: A B C D  :  O - - - 
+1: A B C D  :  O - - -
 --------------------------------
-2: E F G H  :  X O O - 
+2: E F G H  :  X O O -
 --------------------------------
-3: E G F A  :  O O - - 
+3: E G F A  :  O O - -
 --------------------------------
-4: G F E A  :  O O - - 
+4: G F E A  :  O O - -
 --------------------------------
-5: F H G B  :  X X O - 
+5: F H G B  :  X X O -
 --------------------------------
-6: F B G C  :  X O - - 
+6: F B G C  :  X O - -
 --------------------------------
-7: F G A B  :  X O - - 
+7: F G A B  :  X O - -
 --------------------------------
-8: A H G C  :  X O - - 
+8: A H G C  :  X O - -
 --------------------------------
-9: G H D B  :  X O O - 
+9: G H D B  :  X O O -
 --------------------------------
-10: H A G B  :  X X X - 
+10: H A G B  :  X X X -
 --------------------------------
-11: H C G B  :  X X X - 
+11: H C G B  :  X X X -
 
 Enter your guess (ABCDEFGH): hegb
 
@@ -1694,11 +1694,11 @@ function play()
             err = true;
             while( err ) do
                 io.write( string.format( "\n-------------------------------\nYour guess (%s)?", opt ) )
-                inp = io.read():upper(); 
+                inp = io.read():upper();
                 if #inp == codeLen then
                     err = false;
                     for k = 1, #inp do
-                        if( nil == opt:find( inp:sub( k, k ) ) ) then 
+                        if( nil == opt:find( inp:sub( k, k ) ) ) then
                             err = true;
                             break;
                         end
@@ -1764,7 +1764,7 @@ Play again( Y/N )?
 ```perl
 use List::Util qw(any);
 
-print 'Enter pool size, puzzle size, attempts allowed: '; 
+print 'Enter pool size, puzzle size, attempts allowed: ';
 ($pool,$length,$tries) = split /\s+/, <>;
 $length =  4 if $length eq '' or $length < 3 or $length > 11;
 $pool   =  6 if $pool   eq '' or $pool   < 2 or $pool   > 21;
@@ -1841,7 +1841,7 @@ You win! The correct answer is: B D A C
 ## Perl 6
 
 {{works with|Rakudo|2017.01}}
-By default, plays classic Mastermind using letters in place of colors. ( 4 chosen from 6, no repeats, 10 guess limit. ) Pass in parameters to modify the game. Enter a string of --length (default 4) letters with or without spaces. Guesses accept lower or upper case.  
+By default, plays classic Mastermind using letters in place of colors. ( 4 chosen from 6, no repeats, 10 guess limit. ) Pass in parameters to modify the game. Enter a string of --length (default 4) letters with or without spaces. Guesses accept lower or upper case.
 
 ```perl6
 sub MAIN (
@@ -1940,22 +1940,22 @@ number of guesses allowed (1-20), and whether colours can be repeated
 (auto-ticked & greyed-out inactive when length>colours).
 
 Note that at the highest settings there are 10,240,000,000,000 possible
-answers: the (order n squared) analysis of that is simply not practical, 
-as indeed is simply building the initial list of all possible answers, 
-and therefore a fixed limit of 1,000,000 has been applied, which also 
+answers: the (order n squared) analysis of that is simply not practical,
+as indeed is simply building the initial list of all possible answers,
+and therefore a fixed limit of 1,000,000 has been applied, which also
 just about manages to keep the program responsive. Obviously, should the
 actual answer not be among those samples, it cannot possibly find it,
-and it will tell you in plain english when that occurs. You can always 
-trim the search space back to something more reasonable at any time, and 
-still play the game when that limit is breached, with weaker hints. 
+and it will tell you in plain english when that occurs. You can always
+trim the search space back to something more reasonable at any time, and
+still play the game when that limit is breached, with weaker hints.
 
 Conversely the lowest settings do not make for an interesting game, but
 proved quite useful when ironing out some bugs, so were left in.
 
-The Use button (disabled until something useful found) allows you to 
-take the best found (so far), displayed at the top of the colours frame. 
+The Use button (disabled until something useful found) allows you to
+take the best found (so far), displayed at the top of the colours frame.
 Obviously "1/1 (100%)" means that it has deduced the correct answer.
-Below that the colours frame shows all available colours, which can be 
+Below that the colours frame shows all available colours, which can be
 individually clicked in any order.
 
 Press Delete or click on the last peg (in the left-hand game frame)
@@ -1963,17 +1963,17 @@ to remove it, before the last one is placed, however once full your
 turn is immediately scored and cannot be undone.
 
 New Game, Help, and Exit buttons are assumed to be self-explanatory.
-Changing the option settings implicitly triggers a new game, except 
+Changing the option settings implicitly triggers a new game, except
 for the number of permitted guesses, pre-game-over. Reducing the
 number of guesses can also be used as a means of conceding.
 
-When a correct guess is entered or all guesses have been used the hint 
-and colours are replaced with "GAME OVER - YOU WIN/LOSE" under the 
+When a correct guess is entered or all guesses have been used the hint
+and colours are replaced with "GAME OVER - YOU WIN/LOSE" under the
 actual answer.
 """
 include pGUI.e
 
-Ihandle dlg, colours, codelen, maxgoes, repeats, progress, 
+Ihandle dlg, colours, codelen, maxgoes, repeats, progress,
         usehint, game_canvas, colour_canvas
 integer ncolours, ncodelen, nmaxgoes
 bool brepeats
@@ -2042,8 +2042,8 @@ procedure create_initial_set()
                 integer n = next[ndx]
                 while n<=ncolours do
                     n += 1
-                    if brepeats 
---                  or not find(n,next[1..ndx-1]) then 
+                    if brepeats
+--                  or not find(n,next[1..ndx-1]) then
                     or not find(n,next) then --(see below)
                         exit
                     end if
@@ -2060,7 +2060,7 @@ procedure create_initial_set()
                         --  ...   (20 other cases omitted)
                         --  {4,3,1,2} --> {4,3,2,_} --> {4,3,2,1}
                         --
-                        -- (probably sub-optimal, but insignificant 
+                        -- (probably sub-optimal, but insignificant
                         --  vs. the o(n^2) analysis which follows.)
                         --
                         for j=ndx+1 to length(next) do
@@ -2080,7 +2080,7 @@ procedure create_initial_set()
                 -- replace all next[ndx..$] later/above anyway, but
                 -- replacing with 0 means we can avoid those slices.
                 -- The next three all work: 1 is perfect for the
-                -- brepeats=true case, but brepeats=false needs the 
+                -- brepeats=true case, but brepeats=false needs the
                 -- above slices, while the 2nd & 3rd are equivalent
                 -- the latter is obviously somewhat faster, at the
                 -- cost of a wtf?!, without a comment such as this.
@@ -2140,7 +2140,7 @@ function idle_action()
                 IupUpdate(colour_canvas)
             end if
         end if
-    
+
         if done=length(initial_set) then
             IupSetStrAttribute(progress,"TITLE","%,d/%,d%s (100%%)",{is_done,to_do,samp})
             return IUP_IGNORE   -- (stop idle)
@@ -2204,7 +2204,7 @@ function redraw_cb(Ihandle ih, integer /*posx*/, integer /*posy*/)
     string title = IupGetAttribute(ih,"TITLE")
     if not find(title,{"Game","Colours"}) then ?9/0 end if
     integer {cw,ch} = IupGetIntInt(ih, "DRAWSIZE")
-    
+
     cdCanvas cddbuffer = IupGetAttributePtr(ih,"DBUFFER")
     IupGLMakeCurrent(ih)
     cdCanvasActivate(cddbuffer)
@@ -2274,7 +2274,7 @@ function redraw_cb(Ihandle ih, integer /*posx*/, integer /*posy*/)
             {} = cdCanvasTextAlignment(cddbuffer, CD_CENTER)
             string wl = iff(guesses[$]=secret?"WIN":"LOSE"),
                    msg = sprintf("GAME OVER - YOU %s",{wl})
-            cdCanvasText(cddbuffer, cw/2, ch/2, msg) 
+            cdCanvasText(cddbuffer, cw/2, ch/2, msg)
         else
             integer ch0 = ch
             ch -= mx
@@ -2361,7 +2361,7 @@ procedure add_move(integer i)
     if length(guesses[$])=ncodelen then
         sequence guest = guesses[$],
                  score = get_score(guest,secret)
-        scores = append(scores,score)   
+        scores = append(scores,score)
         if score!={ncodelen,0}  -- (not all black==game over)
         and length(guesses)<nmaxgoes then
             for i=excluded-1 to 1 by -1 do
@@ -2458,7 +2458,7 @@ constant cb_valuechanged = Icallback("valuechanged_cb")
 
 procedure main()
     IupOpen()
- 
+
     colours = IupText("SPIN=Yes, SPINMIN=1, SPINMAX=20, VALUE=6, RASTERSIZE=34x")
     codelen = IupText("SPIN=Yes, SPINMIN=1, SPINMAX=10, VALUE=4, RASTERSIZE=34x")
     maxgoes = IupText("SPIN=Yes, SPINMIN=1, SPINMAX=20, VALUE=7, RASTERSIZE=34x")
@@ -2923,7 +2923,7 @@ guesses  = 7
 repeat = false
 nr = 0
 
-if repeat 
+if repeat
    for n = 1 to len(colors)
         while true
                   rnd = random(len(colors)-1) + 1
@@ -2932,7 +2932,7 @@ if repeat
                      rands[rnd] = 1
                     exit
                   ok
-        end     
+        end
    next
 else
    for n = 1 to len(colors)
@@ -2953,7 +2953,7 @@ while true
          give testbegin
          for d = 1 to len(test)
                test[d] = testbegin[d]
-         next 
+         next
          flag = 1
          for n = 1 to len(test)
                if upper(test[n]) != master[n]
@@ -2966,18 +2966,18 @@ while true
             for x = 1 to len(master)
                   if upper(test[x]) = master[x]
                       places[1] = places[1] + 1
-                  ok                  
+                  ok
             next
             mastertemp = master
             for p = 1 to len(test)
                   pos = find(mastertemp, upper(test[p]))
-                  if pos > 0 
+                  if pos > 0
                      del(mastertemp, pos)
                      places[2] = places[2] + 1
                   ok
-            next 
+            next
          ok
-         place1 = places[1] 
+         place1 = places[1]
          place2 = places[2] - place1
          place3 = len(master) - (place1 + place2)
          showresult(test, place1, place2, place3)
@@ -2989,7 +2989,7 @@ see "Well done!" + nl
 see "End of game" + nl
 
 func showresult(test, place1, place2, place3)
-        see "" + nr + " : " 
+        see "" + nr + " : "
         for r = 1 to len(test)
              see test[r]
         next
@@ -3012,11 +3012,11 @@ Output:
 ```txt
 
 Your guess (ABCD)? BCDA
-1 : BCDA : X X O - 
+1 : BCDA : X X O -
 Your guess (ABCD)? BCDB
-2 : BCDB : X X X - 
+2 : BCDB : X X X -
 Your guess (ABCD)? BCBB
-3 : BCBB : X X X - 
+3 : BCBB : X X X -
 Your guess (ABCD)? BCAB
 Well done!
 End of game
@@ -3310,25 +3310,25 @@ class MasterMind{
 ```txt
 
 Enter your guess (ABCD): abcd
- 1: A B C D : X O O - 
+ 1: A B C D : X O O -
 Enter your guess (ABCD): abcc
- 1: A B C D : X O O - 
- 2: A B C C : O O - - 
+ 1: A B C D : X O O -
+ 2: A B C C : O O - -
 Enter your guess (ABCD): aaad
- 1: A B C D : X O O - 
- 2: A B C C : O O - - 
- 3: A A A D : X - - - 
+ 1: A B C D : X O O -
+ 2: A B C C : O O - -
+ 3: A A A D : X - - -
 Enter your guess (ABCD): bccd
- 1: A B C D : X O O - 
- 2: A B C C : O O - - 
- 3: A A A D : X - - - 
- 4: B C C D : X X O - 
+ 1: A B C D : X O O -
+ 2: A B C C : O O - -
+ 3: A A A D : X - - -
+ 4: B C C D : X X O -
 Enter your guess (ABCD): dcbd
- 1: A B C D : X O O - 
- 2: A B C C : O O - - 
- 3: A A A D : X - - - 
- 4: B C C D : X X O - 
- 5: D C B D : X X X X 
+ 1: A B C D : X O O -
+ 2: A B C C : O O - -
+ 3: A A A D : X - - -
+ 4: B C C D : X X O -
+ 5: D C B D : X X X X
 --------------------------------
 Very well done!
 You found the code: DCBD

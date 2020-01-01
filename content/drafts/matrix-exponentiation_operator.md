@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task|Matrices}}Most programming languages have a built-in implementation of exponentiation for integers and reals only.  
+{{task|Matrices}}Most programming languages have a built-in implementation of exponentiation for integers and reals only.
 Demonstrate how to implement matrix exponentiation as an operator.
 {{Omit From|Java}}
 
@@ -20,7 +20,7 @@ This is a generic solution for any natural power exponent. It will work with any
 
 ```ada
 with Ada.Text_IO;  use Ada.Text_IO;
- 
+
 procedure Test_Matrix is
    generic
       type Element is private;
@@ -80,7 +80,7 @@ procedure Test_Matrix is
             return R;
          end;
       end "**";
-      
+
       procedure Put (A : Matrix) is
       begin
          for I in A'Range (1) loop
@@ -91,10 +91,10 @@ procedure Test_Matrix is
          end loop;
       end Put;
    end Matrices;
-   
+
    package Integer_Matrices is new Matrices (Integer, 0, 1, Image => Integer'Image);
    use Integer_Matrices;
-   
+
    M : Matrix (1..2, 1..2) := ((3,2),(2,1));
 begin
    Put_Line ("M =");       Put (M);
@@ -313,7 +313,7 @@ Output:
 ```bbcbasic
       DIM matrix(1,1), output(1,1)
       matrix() = 3, 2, 2, 1
-      
+
       FOR power% = 0 TO 9
         PROCmatrixpower(matrix(), output(), power%)
         PRINT "matrix()^" ; power% " = "
@@ -325,7 +325,7 @@ Output:
         NEXT row%
       NEXT power%
       END
-      
+
       DEF PROCmatrixpower(src(), dst(), pow%)
       LOCAL i%
       dst() = 0
@@ -391,8 +391,8 @@ blsq ) {{1 1} {1 0}} 10 .*{mm}r[
 
 C doesn't support classes or allow operator overloading. The following is code that defines a function, <tt>SquareMtxPower</tt> that will raise a matrix to a positive integer power.
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -405,7 +405,7 @@ typedef struct squareMtxStruct {
 /* function for initializing row r of a new matrix */
 typedef void (*FillFunc)( double *cells, int r, int dim, void *ff_data);
 
-SquareMtx NewSquareMtx( int dim, FillFunc fillFunc, void *ff_data ) 
+SquareMtx NewSquareMtx( int dim, FillFunc fillFunc, void *ff_data )
 {
     SquareMtx sm = malloc(sizeof(struct squareMtxStruct));
     if (sm) {
@@ -438,7 +438,7 @@ void ffMatxSquare( double *cells, int rw, int dim, SquareMtx m0 )
     int col, ix;
     double sum;
     double *m0rw = m0->m[rw];
-    
+
     for (col = 0; col < dim; col++) {
         sum = 0.0;
         for (ix=0; ix<dim; ix++)
@@ -469,7 +469,7 @@ void MatxMul( SquareMtx mr, SquareMtx left, SquareMtx rigt)
     SquareMtx mplcnds[2];
     mplcnds[0] = left; mplcnds[1] = rigt;
 
-    for (rw = 0; rw < left->dim; rw++)  
+    for (rw = 0; rw < left->dim; rw++)
         ffMatxMulply( mr->m[rw], rw, left->dim, mplcnds);
 }
 
@@ -485,7 +485,7 @@ void ffCopy(double *cells, int rw, int dim, SquareMtx m1)
     for (col=0; col<dim; col++) cells[col] = m1->m[rw][col];
 }
 
-void FreeSquareMtx( SquareMtx m ) 
+void FreeSquareMtx( SquareMtx m )
 {
     free(m->m);
     free(m->cells);
@@ -506,13 +506,13 @@ SquareMtx SquareMtxPow( SquareMtx m0, int exp )
                 MatxMul( v1, v0, base0);
             else  {
                 mplcnds[0] = v0; mplcnds[1] = base0;
-                v1 = NewSquareMtx(m0->dim, ffMatxMulply, mplcnds); 
+                v1 = NewSquareMtx(m0->dim, ffMatxMulply, mplcnds);
             }
             {t = v0; v0=v1; v1 = t;}
         }
         if (base1)
             MatxMul( base1, base0, base0);
-        else 
+        else
             base1 = NewSquareMtx( m0->dim, ffMatxSquare, base0);
         t = base0; base0 = base1; base1 = t;
         exp = exp/2;
@@ -524,7 +524,7 @@ SquareMtx SquareMtxPow( SquareMtx m0, int exp )
 }
 
 FILE *fout;
-void SquareMtxPrint( SquareMtx mtx, const char *mn ) 
+void SquareMtxPrint( SquareMtx mtx, const char *mn )
 {
     int rw, col;
     int d = mtx->dim;
@@ -533,7 +533,7 @@ void SquareMtxPrint( SquareMtx mtx, const char *mn )
 
     for (rw=0; rw<d; rw++) {
         fprintf(fout, " |");
-        for(col=0; col<d; col++) 
+        for(col=0; col<d; col++)
             fprintf(fout, "%8.5f ",mtx->m[rw][col] );
         fprintf(fout, " |\n");
     }
@@ -609,8 +609,8 @@ m0^2 dim:3 =
 
 This is an implementation in C++.
 
-```cpp>#include <complex
-
+```cpp
+#include <complex>
 #include <cmath>
 #include <iostream>
 using namespace std;
@@ -674,7 +674,7 @@ This is the task part.
       if (n % 2 != 0)
         d = d * sq;
     return d;
-  } 
+  }
 };
 
 typedef SqMx<> M3;
@@ -763,7 +763,7 @@ public static class MatrixExponentation
             { 3, 2 },
             { 2, 1 }
         };
-        
+
         matrix.Pow(0).Print();
         matrix.Pow(1).Print();
         matrix.Pow(2).Print();
@@ -821,9 +821,9 @@ This Common Lisp implementation uses 2D Arrays to represent matrices, and checks
                                      :initial-element 0) rarr)
                    (n 0 (if (= n (1- m0-cols)) 0 (1+ n)))
                    (cc 0 (if (= n (1- m0-cols))
-                             (if (/= cc (1- m1-cols)) 
+                             (if (/= cc (1- m1-cols))
                                  (1+ cc) 0) cc))
-                   (cr 0 (if (and (= (1- m0-cols) n) 
+                   (cr 0 (if (and (= (1- m0-cols) n)
                                   (= (1- m1-cols) cc))
                              (1+ cr)
                              cr)))
@@ -890,7 +890,7 @@ Output (note that this lisp implementation uses single-precision floats for deci
                             '(( 1/2 -1/2  4    8)
                               (-3/4  7/3  8/5 -2)
                               (-5   17   20/3 -5/2)
-                              ( 3/2 -1   -7/3  6))))                            
+                              ( 3/2 -1   -7/3  6))))
  #2A((1/2 -1/2 4 8) (-3/4 7/3 8/5 -2) (-5 17 20/3 -5/2) (3/2 -1 -7/3 6))
  CL-USER> (matrix-expt 4x4-matrix 3)
  #2A((-233/8 182723/720 757/30 353/6)
@@ -942,52 +942,52 @@ for i in 0..n do {
  1 0 0
  0 1 0
  0 0 1
- 
+
  Order 1
  1 2 0
  0 3 1
  1 0 0
- 
+
  Order 2
  1 8 2
  1 9 3
  1 2 0
- 
+
  Order 3
  3 26 8
  4 29 9
  1 8 2
- 
+
  Order 4
  11 84 26
  13 95 29
  3 26 8
- 
+
  Order 5
  37 274 84
  42 311 95
  11 84 26
- 
+
  Order 6
  121 896 274
  137 1017 311
  37 274 84
- 
+
  Order 7
  395 2930 896
  448 3325 1017
  121 896 274
- 
+
  Order 8
  1291 9580 2930
  1465 10871 3325
  395 2930 896
- 
+
  Order 9
  4221 31322 9580
  4790 35543 10871
  1291 9580 2930
- 
+
  Order 10
  13801 102408 31322
  15661 116209 35543
@@ -1206,7 +1206,7 @@ USING: kernel math math.matrices sequences ;
 ```fortran
 module matmod
   implicit none
-   
+
 ! Overloading the ** operator does not work because the compiler cannot
 ! differentiate between matrix exponentiation and the elementwise raising
 ! of an array to a power therefore we define a new operator
@@ -1221,7 +1221,7 @@ function matrix_exp(m, n) result (res)
   integer, intent(in)  :: n
   real :: res(size(m,1),size(m,2))
   integer :: i
-   
+
   if(n == 0) then
     res = 0
     do i = 1, size(m,1)
@@ -1234,7 +1234,7 @@ function matrix_exp(m, n) result (res)
   do i = 2, n
     res = matmul(res, m)
   end do
-  
+
 end function matrix_exp
 end module matmod
 
@@ -1245,9 +1245,9 @@ program Matrix_exponentiation
   integer, parameter :: n = 3
   real, dimension(n,n) :: m1, m2
   integer :: i, j
-  
+
   m1 = reshape((/ (i, i = 1, n*n) /), (/ n, n /), order = (/ 2, 1 /))
- 
+
   do i = 0, 4
     m2 = m1 .matpow. i
     do j = 1, size(m2,1)
@@ -1265,19 +1265,19 @@ Output
       1.00000         0.00000         0.00000
       0.00000         1.00000         0.00000
       0.00000         0.00000         1.00000
- 
+
       1.00000         2.00000         3.00000
       4.00000         5.00000         6.00000
       7.00000         8.00000         9.00000
- 
+
       30.0000         36.0000         42.0000
       66.0000         81.0000         96.0000
       102.000         126.000         150.000
- 
+
       468.000         576.000         684.000
       1062.00         1305.00         1548.00
       1656.00         2034.00         2412.00
- 
+
       7560.00         9288.00         11016.0
       17118.0         21033.0         24948.0
       26676.0         32778.0         38880.0
@@ -1483,7 +1483,7 @@ Note: this implementation does not work for a power of 0.
 
 
 ```j
-mp=: +/ .*   NB. Matrix multiplication 
+mp=: +/ .*   NB. Matrix multiplication
 pow=: pow0=: 4 : 'mp&x^:y =i.#x'
 ```
 
@@ -1770,7 +1770,7 @@ operator fun Matrix.times(other: Matrix): Matrix {
 }
 
 fun identityMatrix(n: Int): Matrix {
-    require(n >= 1) 
+    require(n >= 1)
     val ident = Matrix(n) { Vector(n) }
     for (i in 0 until n) ident[i][i] = 1.0
     return ident
@@ -1789,7 +1789,7 @@ infix fun Matrix.pow(n : Int): Matrix {
         base *= base
     }
     return pow
-}  
+}
 
 fun printMatrix(m: Matrix, n: Int) {
     println("** Power of $n **")
@@ -1909,7 +1909,7 @@ Matrix = {}
 
 function Matrix.new( dim_y, dim_x )
     assert( dim_y and dim_x )
-    
+
     local matrix = {}
     local metatab = {}
     setmetatable( matrix, metatab )
@@ -1918,8 +1918,8 @@ function Matrix.new( dim_y, dim_x )
     metatab.__pow = Matrix.Pow
 
     matrix.dim_y = dim_y
-    matrix.dim_x = dim_x 
-    
+    matrix.dim_x = dim_x
+
     matrix.data = {}
     for i = 1, dim_y do
         matrix.data[i] = {}
@@ -1938,7 +1938,7 @@ end
 
 function Matrix.Add( m, n )
     assert( m.dim_x == n.dim_x and m.dim_y == n.dim_y )
- 
+
     local r = Matrix.new( m.dim_y, m.dim_x )
     for i = 1, m.dim_y do
         for j = 1, m.dim_x do
@@ -1950,7 +1950,7 @@ end
 
 function Matrix.Mul( m, n )
     assert( m.dim_x == n.dim_y )
-  
+
     local r = Matrix.new( m.dim_y, n.dim_x )
     for i = 1, m.dim_y do
         for j = 1, n.dim_x do
@@ -1965,10 +1965,10 @@ end
 
 function Matrix.Pow( m, p )
     assert( m.dim_x == m.dim_y )
-    
+
     local r = Matrix.new( m.dim_y, m.dim_x )
-    
-    if p == 0 then 
+
+    if p == 0 then
         for i = 1, m.dim_y do
             for j = 1, m.dim_x do
                 if i == j then
@@ -1983,14 +1983,14 @@ function Matrix.Pow( m, p )
             for j = 1, m.dim_x do
                 r.data[i][j] = m.data[i][j]
             end
-        end        
+        end
     else
         r = m
         for i = 2, p do
             r = r * m
         end
     end
-    
+
     return r
 end
 
@@ -2046,10 +2046,10 @@ Module CheckIt {
 			}
 		Module Print {
 			link .a to v()
-			for i=dimension(.a,1,0) to dimension(.a, 1,1) 
-			for j=dimension(.a,2,0) to dimension(.a, 2,1) 
+			for i=dimension(.a,1,0) to dimension(.a, 1,1)
+			for j=dimension(.a,2,0) to dimension(.a, 2,1)
 			print  v(i,j),: next j: print : next i
-				
+
 		}
 	Class:
 		\\ this module used as constructor, and not returned to final group (user object in M2000)
@@ -2063,7 +2063,7 @@ Module CheckIt {
 	Print "matrix():"
 	P=cArray(2,3,2,2,1)
 	P.Print
-	For i=0 to 9 
+	For i=0 to 9
 		Print "matrix()^"+str$(i,0)+"="
 		K=P.Power(i)
 		K.Print
@@ -2142,7 +2142,7 @@ If you want elementwise powers, you can use the elementwise <code>^~</code> oper
 
 ## Mathematica
 
-In Mathematica there is an distinction between powering elements wise and as a matrix. So m^2 will give m with each element squared. To do matrix exponentation we use the function MatrixPower. It can handle all types of numbers for the power (integers, floats, rationals, complex) but also symbols for the power, and all types for the matrix (numbers, symbols et cetera), and will always keep the result exact if the matrix and the exponent is exact. 
+In Mathematica there is an distinction between powering elements wise and as a matrix. So m^2 will give m with each element squared. To do matrix exponentation we use the function MatrixPower. It can handle all types of numbers for the power (integers, floats, rationals, complex) but also symbols for the power, and all types for the matrix (numbers, symbols et cetera), and will always keep the result exact if the matrix and the exponent is exact.
 
 ```Mathematica
 a = {{3, 2}, {4, 1}};
@@ -2765,33 +2765,33 @@ Using matrixMul from [[Matrix multiplication#Python]]
 	for row in data:
 		print ' '.join('%-5s' % ('%s' % cell) for cell in row)
 
-		
+
 >>> m = [[3,2], [2,1]]
 >>> for i in range(5):
 	print '\n%i:' % i
 	printtable( matrixExp(m, i) )
 
-	
+
 
 0:
-1     0    
-0     1    
+1     0
+0     1
 
 1:
-3     2    
-2     1    
+3     2
+2     1
 
 2:
-13    8    
-8     5    
+13    8
+8     5
 
 3:
-55    34   
-34    21   
+55    34
+34    21
 
 4:
-233   144  
-144   89   
+233   144
+144   89
 >>> printtable( matrixExp(m, 10) )
 1346269 832040
 832040 514229
@@ -2806,7 +2806,7 @@ class Mat(list) :
         A = self
         return Mat([[sum(A[i][k]*B[k][j] for k in range(len(B)))
                     for j in range(len(B[0])) ] for i in range(len(A))])
-    
+
 
 def identity(size):
     size = range(size)
@@ -3147,8 +3147,8 @@ class Matrix[T](matrix:Array[Array[T]])(implicit n: Numeric[T], m: ClassManifest
     case 2 => this * this
     case _ => List.fill(x)(this) reduceLeft (_*_)
   }
-	
-  def createIdentityMatrix=new Matrix(Array.tabulate(rows, cols)((row,col) => 
+
+  def createIdentityMatrix=new Matrix(Array.tabulate(rows, cols)((row,col) =>
     if (row == col) one else zero)
   )
 
@@ -3159,7 +3159,7 @@ object MatrixTest {
   def main(args:Array[String])={
     val m=new Matrix[BigInt](Array(Array(3,2), Array(2,1)))
     println("-- m --\n"+m)
-				
+
     Seq(0,1,2,3,4,10,20,50) foreach {x =>
       println("-- m**"+x+" --")
       println(m**x)
@@ -3220,10 +3220,10 @@ For simplicity, the matrix is represented as a list of lists, and no dimension c
   (apply + (map * row col)))
 
 (define (matrix-multiply m1 m2)
-  (map 
-    (lambda (row) 
-      (apply map (lambda col (row*col row col)) 
-        m2)) 
+  (map
+    (lambda (row)
+      (apply map (lambda col (row*col row col))
+        m2))
     m1))
 
 (define (matrix-exp mat exp)
@@ -3263,7 +3263,7 @@ $ include "seed7_05.s7i";
   include "float.s7i";
 
 const type: matrix is array array float;
- 
+
 const func string: str (in matrix: mat) is func
   result
     var string: stri is "";
@@ -3568,23 +3568,23 @@ proc identity {size} {
 
 ```txt
 % print_matrix [matrix_exp {{3 2} {2 1}} 1]
-3 2 
-2 1 
+3 2
+2 1
 % print_matrix [matrix_exp {{3 2} {2 1}} 0]
-1 0 
-0 1 
+1 0
+0 1
 % print_matrix [matrix_exp {{3 2} {2 1}} 2]
-13 8 
- 8 5 
+13 8
+ 8 5
 % print_matrix [matrix_exp {{3 2} {2 1}} 3]
-55 34 
-34 21 
+55 34
+34 21
 % print_matrix [matrix_exp {{3 2} {2 1}} 4]
-233 144 
-144  89 
+233 144
+144  89
 % print_matrix [matrix_exp {{3 2} {2 1}} 10]
-1346269 832040 
- 832040 514229 
+1346269 832040
+ 832040 514229
 
 ```
 
@@ -3721,18 +3721,18 @@ End Sub
 {{out}}
 
 ```txt
--1             2            
- 2            -3            
+-1             2
+ 2            -3
 
- 1             0            
- 0             1            
+ 1             0
+ 0             1
 
- 1346269       832040       
- 832040        514229       
+ 1346269       832040
+ 832040        514229
 
- 13801         102408        31322        
- 15661         116209        35543        
- 4221          31322         9580 
+ 13801         102408        31322
+ 15661         116209        35543
+ 4221          31322         9580
 ```
 
 {{omit from|Icon|no operator overloading}}

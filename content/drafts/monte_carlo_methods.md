@@ -12,21 +12,21 @@ tags = []
 
 {{task|Probability and statistics}}
 
-A '''Monte Carlo Simulation''' is a way of approximating the value of a function 
-where calculating the actual value is difficult or impossible. 
+A '''Monte Carlo Simulation''' is a way of approximating the value of a function
+where calculating the actual value is difficult or impossible.
 
-It uses random sampling to define constraints on the value 
+It uses random sampling to define constraints on the value
 and then makes a sort of "best guess."
 
-A simple Monte Carlo Simulation can be used to calculate the value for <big><math>\pi</math></big>. 
+A simple Monte Carlo Simulation can be used to calculate the value for <big><math>\pi</math></big>.
 
-If you had a circle and a square where the length of a side of the square 
-was the same as the diameter of the circle, the ratio of the area of the circle 
+If you had a circle and a square where the length of a side of the square
+was the same as the diameter of the circle, the ratio of the area of the circle
 to the area of the square would be <big><math>\pi/4</math></big>.
- 
-So, if you put this circle inside the square and select many random points 
-inside the square, the number of points inside the circle 
-divided by the number of points inside the square and the circle 
+
+So, if you put this circle inside the square and select many random points
+inside the square, the number of points inside the circle
+divided by the number of points inside the square and the circle
 would be approximately <big><math>\pi/4</math></big>.
 
 
@@ -35,8 +35,8 @@ Write a function to run a simulation like this, with a variable number of random
 
 Also, show the results of a few different sample sizes.
 
-For software where the number <big><math>\pi</math></big> is not built-in, 
-we give <big><math>\pi</math></big> as a number of digits: 
+For software where the number <big><math>\pi</math></big> is not built-in,
+we give <big><math>\pi</math></big> as a number of digits:
              3.141592653589793238462643383280
 
 
@@ -104,7 +104,7 @@ MONTECAR CSECT
          XR     R15,R15            rc=0
          BR     R14                exit
 RNDPK    EQU    *             ---- random number generator
-         ZAP    WP,RNDSEED         w=seed    
+         ZAP    WP,RNDSEED         w=seed
          MP     WP,RNDCNSTA        w*=cnsta
          AP     WP,RNDCNSTB        w+=cnstb
          MVC    RNDSEED,WP+8       seed=w mod 10**15
@@ -155,7 +155,7 @@ with Ada.Numerics.Float_Random;  use Ada.Numerics.Float_Random;
 
 procedure Test_Monte_Carlo is
    Dice : Generator;
-   
+
    function Pi (Throws : Positive) return Float is
       Inside : Natural := 0;
    begin
@@ -175,8 +175,8 @@ begin
 end Test_Monte_Carlo;
 ```
 
-The implementation uses built-in uniformly distributed on [0,1] random numbers. 
-Note that the accuracy of the result depends on the quality of the pseudo random generator: its circle length and correlation to the function being simulated. 
+The implementation uses built-in uniformly distributed on [0,1] random numbers.
+Note that the accuracy of the result depends on the quality of the pseudo random generator: its circle length and correlation to the function being simulated.
 {{out}}
 
 ```txt
@@ -195,9 +195,9 @@ Note that the accuracy of the result depends on the quality of the pseudo random
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}} 
+{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
 
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}} 
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}}
 
 ```algol68
 PROC pi = (INT throws)REAL:
@@ -237,17 +237,17 @@ Source: [http://www.autohotkey.com/forum/topic44657.html AutoHotkey forum] by La
 
 ```autohotkey
 
-MsgBox % MontePi(10000)   ; 3.154400 
-MsgBox % MontePi(100000)  ; 3.142040 
-MsgBox % MontePi(1000000) ; 3.142096 
+MsgBox % MontePi(10000)   ; 3.154400
+MsgBox % MontePi(100000)  ; 3.142040
+MsgBox % MontePi(1000000) ; 3.142096
 
-MontePi(n) { 
-   Loop %n% { 
-      Random x, -1, 1.0 
-      Random y, -1, 1.0 
-      p += x*x+y*y < 1 
-   } 
-   Return 4*p/n 
+MontePi(n) {
+   Loop %n% {
+      Random x, -1, 1.0
+      Random y, -1, 1.0
+      p += x*x+y*y < 1
+   }
+   Return 4*p/n
 }
 
 ```
@@ -262,7 +262,7 @@ MontePi(n) {
 # --- with command line argument "throws" ---
 
 BEGIN{ th=ARGV[1];
- for(i=0; i<th; i++) cin += (rand()^2 + rand()^2) < 1 
+ for(i=0; i<th; i++) cin += (rand()^2 + rand()^2) < 1
  printf("Pi = %8.5f\n",4*cin/th)
 }
 
@@ -328,7 +328,7 @@ END FUNCTION
       PRINT FNmontecarlo(1000000)
       PRINT FNmontecarlo(10000000)
       END
-      
+
       DEF FNmontecarlo(t%)
       LOCAL i%, n%
       FOR i% = 1 TO t%
@@ -354,11 +354,11 @@ END FUNCTION
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
- 
+
 double pi(double tolerance)
 {
 	double x, y, val, error;
@@ -404,7 +404,7 @@ int main()
 #include<math.h>
 #include<stdlib.h>
 #include<time.h>
- 
+
 using namespace std;
 int main(){
     int jmax=1000; // maximum value of HIT number. (Length of output file)
@@ -474,7 +474,7 @@ class Program {
 
 ```lisp
 (defn calc-pi [iterations]
-  (loop [x (rand) y (rand) in 0 total 1] 
+  (loop [x (rand) y (rand) in 0 total 1]
     (if (< total iterations)
       (recur (rand) (rand) (if (<= (+ (* x x) (* y y)) 1) (inc in) in) (inc total))
       (double (* (/ in total) 4)))))
@@ -498,12 +498,12 @@ class Program {
 
 
 ```lisp
-(defn experiment 
-  [] 
+(defn experiment
+  []
   (if (<= (+ (Math/pow (rand) 2) (Math/pow (rand) 2)) 1) 1 0))
 
-(defn pi-estimate 
-  [n] 
+(defn pi-estimate
+  [n]
   (* 4 (float (/ (reduce + (take n (repeatedly experiment))) n))))
 
 (pi-estimate 10000)
@@ -637,8 +637,8 @@ import 'dart:html';
 import 'dart:math' show Random;
 
 // We changed 5 lines of code to make this sample nicer on
-// the web (so that the execution waits for animation frame, 
-// the number gets updated in the DOM, and the program ends 
+// the web (so that the execution waits for animation frame,
+// the number gets updated in the DOM, and the program ends
 // after 500 iterations).
 
 main() async {
@@ -715,18 +715,18 @@ Some sample runs:
 
  ? pi(10)
  # value: 2.8
- 
+
  ? pi(10)
  # value: 2.0
- 
- ? pi(100) 
+
+ ? pi(100)
  # value: 2.96
- 
+
  ? pi(10000)
  # value: 3.1216
- 
+
  ? pi(100000)
- # value: 3.13088 
+ # value: 3.13088
 
  ? pi(100000)
  # value: 3.13848
@@ -815,7 +815,7 @@ monte(N,InCircle,NumPoints)->
     Xcoord = rand:uniform(),
     Ycoord = rand:uniform(),
     monte(N-1,
-          if Xcoord*Xcoord + Ycoord*Ycoord < 1 -> InCircle + 1; true -> InCircle end, 
+          if Xcoord*Xcoord + Ycoord*Ycoord < 1 -> InCircle + 1; true -> InCircle end,
           NumPoints + 1).
 
 main(N) -> io:format("PI: ~w~n", [ monte(N) ]).
@@ -826,7 +826,7 @@ main(N) -> io:format("PI: ~w~n", [ monte(N) ]).
 
 ```txt
 
-8> [monte:main(X) || X <- [10000,100000,100000,10000000] ].     
+8> [monte:main(X) || X <- [10000,100000,100000,10000000] ].
 PI: 3.136
 PI: 3.1464
 PI: 3.1412
@@ -936,8 +936,8 @@ END PROGRAM
 $  X:=random(1,n);
 $  Y:=random(1,n);
 $  if plot then
-$      plot2d(X,Y,>points,style="."); 
-$      plot2d("sqrt(1-x^2)",color=2,>add); 
+$      plot2d(X,Y,>points,style=".");
+$      plot2d("sqrt(1-x^2)",color=2,>add);
 $  endif
 $  return sum(X^2+Y^2<1)/n*4;
 $endfunction
@@ -1031,7 +1031,7 @@ class MontyCarlo
   static Float findPi (Int samples)
   {
     Int insideCircle := 0
-    samples.times 
+    samples.times
     {
       x := Float.random
       y := Float.random
@@ -1040,7 +1040,7 @@ class MontyCarlo
     return insideCircle * 4.0f / samples
   }
 
-  public static Void main () 
+  public static Void main ()
   {
     [100, 1000, 10000, 1000000, 10000000].each |sample|
     {
@@ -1070,14 +1070,14 @@ Sample size 10000000 gives PI as 3.1409272
 
 {{works with|GNU Forth}}
  include random.fs
- 
+
  10000 value r
- 
+
  : hit? ( -- ? )
    r random dup *
    r random dup * +
    r dup * < ;
- 
+
  : sims ( n -- hits )
    0 swap 0 do hit? if 1+ then loop ;
 
@@ -1094,16 +1094,16 @@ Sample size 10000000 gives PI as 3.1409272
 
 ```fortran
 MODULE Simulation
- 
+
    IMPLICIT NONE
- 
+
    CONTAINS
- 
+
    FUNCTION Pi(samples)
      REAL :: Pi
      REAL :: coords(2), length
      INTEGER :: i, in_circle, samples
-  
+
      in_circle = 0
      DO i=1, samples
        CALL RANDOM_NUMBER(coords)
@@ -1113,20 +1113,20 @@ MODULE Simulation
      END DO
      Pi = 4.0 * REAL(in_circle) / REAL(samples)
    END FUNCTION Pi
- 
+
  END MODULE Simulation
-  
+
  PROGRAM MONTE_CARLO
- 
-   USE Simulation 
-   
+
+   USE Simulation
+
    INTEGER :: n = 10000
- 
+
    DO WHILE (n <= 100000000)
      WRITE (*,*) n, Pi(n)
      n = n * 10
    END DO
-     
+
  END PROGRAM MONTE_CARLO
 ```
 
@@ -1302,7 +1302,7 @@ import (
 func getPi(numThrows int) float64 {
     inCircle := 0
     for i := 0; i < numThrows; i++ {
-        //a square with a side of length 2 centered at 0 has 
+        //a square with a side of length 2 centered at 0 has
         //x and y range of -1 to 1
         randX := rand.Float64()*2 - 1 //range -1 to 1
         randY := rand.Float64()*2 - 1 //range -1 to 1
@@ -1438,17 +1438,17 @@ end
 link printf
 
 procedure getPi(rounds)
-   incircle := 0. 
-   every 1 to rounds do 
-      if 1 > sqrt((?0 * 2 - 1) ^ 2 + (?0 * 2 - 1) ^ 2) then 
+   incircle := 0.
+   every 1 to rounds do
+      if 1 > sqrt((?0 * 2 - 1) ^ 2 + (?0 * 2 - 1) ^ 2) then
          incircle +:= 1
    return 4 * incircle / rounds
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
 
 {{out}}
 
@@ -1502,12 +1502,12 @@ public class MC {
 		System.out.println(getPi(1000000));
 		System.out.println(getPi(10000000));
 		System.out.println(getPi(100000000));
-		
+
 	}
 	public static double getPi(int numThrows){
 		int inCircle= 0;
 		for(int i= 0;i < numThrows;i++){
-			//a square with a side of length 2 centered at 0 has 
+			//a square with a side of length 2 centered at 0 has
 			//x and y range of -1 to 1
 			double randX= (Math.random() * 2) - 1;//range -1 to 1
 			double randY= (Math.random() * 2) - 1;//range -1 to 1
@@ -1556,7 +1556,7 @@ public interface MonteCarlo {
   }
 
   public static double range() {
-    //a square with a side of length 2 centered at 0 has 
+    //a square with a side of length 2 centered at 0 has
     //x and y range of -1 to 1
     return (random() * 2) - 1;
   }
@@ -1784,7 +1784,7 @@ fun mcPi(n: Int): Double {
     return 4.0 * inside / n
 }
 
-fun main(args: Array<String>) {   
+fun main(args: Array<String>) {
     println("Iterations -> Approx Pi  -> Error%")
     println("----------    ----------    ------")
     var n = 1_000
@@ -1809,7 +1809,7 @@ Iterations -> Approx Pi  -> Error%
    100000  -> 3.14468000 -> 0.0983
   1000000  -> 3.13982000 -> 0.0564
  10000000  -> 3.14182040 -> 0.0072
-100000000  -> 3.14160244 -> 0.0003    
+100000000  -> 3.14160244 -> 0.0003
 
 ```
 
@@ -1835,8 +1835,8 @@ function getPi(n)
     next
     getPi = 4*incircle/throws
 end function
- 
- 
+
+
 ```
 
 
@@ -1910,7 +1910,7 @@ show sim 1000000 10000  ; 3.140828
 
 ## LSL
 
-To test it yourself; rez a box on the ground, and add the following as a New Script.  
+To test it yourself; rez a box on the ground, and add the following as a New Script.
 (Be prepared to wait... LSL can be slow, but the Servers are typically running thousands of scripts in parallel so what do you expect?)
 
 ```LSL
@@ -1966,7 +1966,7 @@ function MonteCarlo ( n_throws )
     	if math.random()^2 + math.random()^2 <= 1.0 then
             n_inside = n_inside + 1
     	end
-    end    
+    end
 
     return 4 * n_inside / n_throws
 end
@@ -2044,15 +2044,15 @@ function piEstimate = monteCarloPi(numDarts)
 
     %The square has a sides of length 2, which means the circle has radius
     %1.
-    
+
     %Generate a table of random x-y value pairs in the range [0,1] sampled
     %from the uniform distribution for each axis.
     darts = rand(numDarts,2);
-    
+
     %Any darts that are in the circle will have position vector whose
     %length is less than or equal to 1 squared.
     dartsInside = ( sum(darts.^2,2) <= 1 );
-    
+
     piEstimate = 4*sum(dartsInside)/numDarts;
 
 end
@@ -2064,7 +2064,7 @@ Completely Vectorized:
 
 ```MATLAB
 function piEstimate = monteCarloPi(numDarts)
-    
+
     piEstimate = 4*sum( sum(rand(numDarts,2).^2,2) <= 1 )/numDarts;
 
 end
@@ -2094,7 +2094,7 @@ approx_pi(n):= block(
    r: x^2 + y^2,
    for r0 in r do if r0<1 then cin: cin + 1,
    4*cin/n);
- 
+
 float(approx_pi(100));
 ```
 
@@ -2226,7 +2226,7 @@ Since it runs slow, I've stopped it at the second iteration, obtaining:
 
 
 
-###  Much faster implementation 
+###  Much faster implementation
 
 
 
@@ -2501,20 +2501,20 @@ PS Home:\> 10,100,1e3,1e4,1e5,1e6 | ForEach-Object { Get-Pi $_ }
 
 ```PureBasic
 OpenConsole()
- 
+
 Procedure.d MonteCarloPi(throws.d)
 	inCircle.d = 0
 		For i = 1 To throws.d
 			randX.d = (Random(2147483647)/2147483647)*2-1
-			randY.d = (Random(2147483647)/2147483647)*2-1 
+			randY.d = (Random(2147483647)/2147483647)*2-1
 			dist.d  = Sqr(randX.d*randX.d + randY.d*randY.d)
-			If dist.d < 1 
+			If dist.d < 1
 				inCircle = inCircle + 1
 			EndIf
 		Next i
-	pi.d = (4 * inCircle / throws.d)	
+	pi.d = (4 * inCircle / throws.d)
 	ProcedureReturn pi.d
-	
+
 EndProcedure
 
 PrintN ("'built-in' #Pi         = " + StrD(#PI,20))
@@ -2537,7 +2537,7 @@ MonteCarloPi(1000000)  = 3.14349599999999980000
 MonteCarloPi(10000000) = 3.14127720000000020000
 Press any key
 ```
- 
+
 
 
 ## Python
@@ -2546,7 +2546,7 @@ Press any key
 ### At the interactive prompt
 
 Python 2.6rc2 (r26rc2:66507, Sep 18 2008, 14:27:33) [MSC v.1500 32 bit (Intel)] on win32
-IDLE 2.6rc2      
+IDLE 2.6rc2
 
 One use of the "sum" function is to count how many times something is true (because True = 1, False = 0):
 
@@ -2807,7 +2807,7 @@ decimals(8)
 see "monteCarlo(1000) = " + monteCarlo(1000) + nl
 see "monteCarlo(10000) = " + monteCarlo(10000) + nl
 see "monteCarlo(100000) = " + monteCarlo(100000) + nl
- 
+
 func monteCarlo t
      n=0
      for i = 1 to t
@@ -2839,7 +2839,7 @@ def approx_pi(throws)
   4.0 * times_inside / throws
 end
 
-[1000, 10_000, 100_000, 1_000_000, 10_000_000].each do |n| 
+[1000, 10_000, 100_000, 1_000_000, 10_000_000].each do |n|
    puts "%8d samples: PI = %s" % [n, approx_pi(n)]
 end
 ```
@@ -2925,8 +2925,8 @@ object MonteCarlo {
   def insideCircle(pt: (Double, Double)): Boolean = pt match {
     case (x, y) => (x * x) + (y * y) <= 1.0
   }
-  
-  /** Runs the simulation the specified number of times. Uses the result to 
+
+  /** Runs the simulation the specified number of times. Uses the result to
     * estimate a value of pi */
   def simulate(times: Int): Double = {
     val inside = Iterator.tabulate (times) (_ => (nextThrow, nextThrow)) count insideCircle
@@ -3024,7 +3024,7 @@ monteCarloHelper(n, generator, result) :=
 		x := xRand.Value/(generator.RandomMax + 1.0);
 		yRand := getRandom(xRand.Generator);
 		y := yRand.Value/(generator.RandomMax + 1.0);
-		
+
 		newResult := result + 1 when x^2 + y^2 < 1.0 else
 					 result;
 	in
@@ -3058,7 +3058,7 @@ monteCarloHelper(n, generator, result) :=
 		x := xRand.Value/(generator.RandomMax + 1.0);
 		yRand := getRandom(xRand.Generator);
 		y := yRand.Value/(generator.RandomMax + 1.0);
-		
+
 		newResult := result + 1 when x^2 + y^2 < 1.0 else
 					 result;
 	in
@@ -3134,16 +3134,16 @@ func mcpi(sampleSize size:Int) -> Double {
     var x = 0 as Double
     var y = 0 as Double
     var m = 0 as Double
-    
+
     for i in 0..<size {
         x = Double(arc4random()) / Double(UINT32_MAX)
         y = Double(arc4random()) / Double(UINT32_MAX)
-        
+
         if ((x * x) + (y * y) < 1) {
             m += 1
         }
     }
-    
+
     return (4.0 * m) / Double(size)
 }
 
@@ -3300,7 +3300,7 @@ return float(C)*4.0 / float(N);   \Acir/Asqr = pi*R^2/4*R^2 = pi/4
 
 ```zkl
 fcn monty(n){
-   inCircle:=0; 
+   inCircle:=0;
    do(n){
       x:=(0.0).random(1); y:=(0.0).random(1);
       if(x*x + y*y < 1.0) inCircle+=1;
@@ -3315,12 +3315,12 @@ Or, in a more functional style (using a reference for state info):
 fcn monty(n){
    4.0 * (1).pump(n,Void,fcn(r){
       x:=(0.0).random(1); y:=(0.0).random(1);
-      if(x*x + y*y < 1.0) r.inc(); 
+      if(x*x + y*y < 1.0) r.inc();
       r
    }.fp(Ref(0)) ).value/n;
 }
 ```
- 
+
 {{out}}
 
 ```txt

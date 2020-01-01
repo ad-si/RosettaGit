@@ -11,13 +11,13 @@ tags = []
 +++
 
 {{task}}
-The   [http://planetmath.org/properdivisor proper divisors]   of a positive integer '''N''' are those numbers, other than '''N''' itself, that divide '''N''' without remainder. 
+The   [http://planetmath.org/properdivisor proper divisors]   of a positive integer '''N''' are those numbers, other than '''N''' itself, that divide '''N''' without remainder.
 
 For '''N''' > 1 they will always include 1,   but for '''N''' == 1 there are no proper divisors.
 
 
 ;Examples:
-The proper divisors of     6     are   1, 2, and 3. 
+The proper divisors of     6     are   1, 2, and 3.
 
 The proper divisors of   100   are   1, 2, 4, 5, 10, 20, 25, and 50.
 
@@ -46,7 +46,7 @@ Show all output here.
 ## 360 Assembly
 
 {{trans|Rexx}}
-This program uses two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible. 
+This program uses two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Proper divisors           14/06/2016
@@ -56,7 +56,7 @@ PROPDIV  CSECT
          DC     17F'0'             savearea
          STM    R14,R12,12(R13)    prolog
          ST     R13,4(R15)         "
-         ST     R15,8(R13)         " 
+         ST     R15,8(R13)         "
          LR     R13,R15            "
          LA     R10,1              n=1
 LOOPN1   C      R10,=F'10'         do n=1 to 10
@@ -64,7 +64,7 @@ LOOPN1   C      R10,=F'10'         do n=1 to 10
          LR     R1,R10             n
          BAL    R14,PDIV           pdiv(n)
          ST     R0,NN              nn=pdiv(n)
-         MVC    PG,PGT             init buffer 
+         MVC    PG,PGT             init buffer
          LA     R11,PG             pgi=0
          XDECO  R10,XDEC           edit n
          MVC    0(3,R11),XDEC+9    output n
@@ -108,7 +108,7 @@ ELOOPN2  MVC    PG,PGR             init buffer
          XDECO  R1,XDEC            edit m
          MVC    PG+9(4),XDEC+8     output m
          XPRNT  PG,80              print buffer
-         L      R13,4(0,R13)       epilog 
+         L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
@@ -130,7 +130,7 @@ NOTONE   LR     R4,R1              x
          LA     R7,1(R7)           j=odd+1
 LOOPJ    LR     R5,R7              do j=odd+1 by odd
          MR     R4,R7              j*j
-         C      R5,X               while j*j<x 
+         C      R5,X               while j*j<x
          BNL    ELOOPJ
          L      R4,X               x
          SRDA   R4,32              .
@@ -207,11 +207,11 @@ XDEC     DS     CL12
 
 ## Ada
 
-The first part of the task is to ''create a routine to generate a list of the proper divisors''. To ease the re-use of this routine for other tasks, such as ''Abundant, Deficient and Perfect Number Classification'' 
+The first part of the task is to ''create a routine to generate a list of the proper divisors''. To ease the re-use of this routine for other tasks, such as ''Abundant, Deficient and Perfect Number Classification''
 [[http://rosettacode.org/wiki/Abundant,_deficient_and_perfect_number_classifications#Ada]],
 ''Abundant Odd Number''
-[[http://rosettacode.org/wiki/Abundant_odd_numbers#Ada]], 
-and ''Amicable Pairs'' 
+[[http://rosettacode.org/wiki/Abundant_odd_numbers#Ada]],
+and ''Amicable Pairs''
 [[http://rosettacode.org/wiki/Amicable_pairs#Ada]], we define this routine as a function of a generic package:
 
 
@@ -220,20 +220,20 @@ generic
    type Result_Type (<>) is limited private;
    None: Result_Type;
    with function One(X: Positive) return Result_Type;
-   with function Add(X, Y: Result_Type) return Result_Type 
+   with function Add(X, Y: Result_Type) return Result_Type
       is <>;
 package Generic_Divisors is
-  
+
   function Process
-    (N: Positive; First: Positive := 1) return Result_Type is      
-      (if First**2 > N or First = N then None 
-      elsif (N mod First)=0 then 
-	(if First = 1 or First*First = N 
+    (N: Positive; First: Positive := 1) return Result_Type is
+      (if First**2 > N or First = N then None
+      elsif (N mod First)=0 then
+	(if First = 1 or First*First = N
 	   then Add(One(First), Process(N, First+1))
-	   else Add(One(First), 
+	   else Add(One(First),
 		    Add(One((N/First)), Process(N, First+1))))
       else Process(N, First+1));
-      
+
 end Generic_Divisors;
 ```
 
@@ -245,19 +245,19 @@ Now we instantiate the ''generic package'' to solve the other two parts of the t
 with Ada.Text_IO, Ada.Containers.Generic_Array_Sort, Generic_Divisors;
 
 procedure Proper_Divisors is
-   
+
 begin
    -- show the proper divisors of the numbers 1 to 10 inclusive.
    declare
       type Pos_Arr is array(Positive range <>) of Positive;
       subtype Single_Pos_Arr is Pos_Arr(1 .. 1);
-      Empty: Pos_Arr(1 .. 0); 
-      
+      Empty: Pos_Arr(1 .. 0);
+
       function Arr(P: Positive) return Single_Pos_Arr is ((others => P));
-      
+
       package Divisor_List is new Generic_Divisors
 	(Result_Type => Pos_Arr, None => Empty, One => Arr, Add =>  "&");
-      
+
       procedure Sort is new Ada.Containers.Generic_Array_Sort
 	(Positive, Positive, Pos_Arr);
    begin
@@ -266,7 +266,7 @@ begin
 	    List: Pos_Arr := Divisor_List.Process(I);
 	 begin
 	    Ada.Text_IO.Put
-	      (Positive'Image(I) & " has" & 
+	      (Positive'Image(I) & " has" &
 		 Natural'Image(List'Length) & " proper divisors:");
 	    Sort(List);
 	    for Item of List loop
@@ -276,18 +276,18 @@ begin
 	 end;
       end loop;
    end;
-   
+
    -- find a number 1 .. 20,000 with the most proper divisors
    declare
       Number: Positive := 1;
       Number_Count: Natural := 0;
       Current_Count: Natural;
-      
+
       function Cnt(P: Positive) return Positive is (1);
-   
+
       package Divisor_Count is new Generic_Divisors
 	(Result_Type => Natural, None => 0, One => Cnt, Add =>  "+");
-      
+
    begin
       for Current in 1 .. 20_000 loop
 	 Current_Count := Divisor_Count.Process(Current);
@@ -297,10 +297,10 @@ begin
 	 end if;
       end loop;
       Ada.Text_IO.Put_Line
-	(Positive'Image(Number) & " has the maximum number of" & 
+	(Positive'Image(Number) & " has the maximum number of" &
 	   Natural'Image(Number_Count) & " proper divisors.");
    end;
-end Proper_Divisors; 
+end Proper_Divisors;
 ```
 
 
@@ -448,7 +448,7 @@ Algol-M's maximum allowed integer value of 16,383 prevented searching up to 20,0
 
 BEGIN
 
-% COMPUTE P MOD Q % 
+% COMPUTE P MOD Q %
 INTEGER FUNCTION MOD (P, Q);
 INTEGER P, Q;
 BEGIN
@@ -507,7 +507,7 @@ HIGHNUM := 1;
 FOR I := 1 STEP 1 UNTIL 10000 DO
   BEGIN
      NDIV := DIVISORS(I, FALSE);
-     IF NDIV > HIGHDIV THEN 
+     IF NDIV > HIGHDIV THEN
        BEGIN
          HIGHDIV := NDIV;
          HIGHNUM := I;
@@ -558,26 +558,26 @@ on properDivisors(n)
         set realRoot to n ^ (1 / 2)
         set intRoot to realRoot as integer
         set blnPerfectSquare to intRoot = realRoot
-        
-        -- isFactor :: Int -> Bool 
+
+        -- isFactor :: Int -> Bool
         script isFactor
             on |λ|(x)
                 n mod x = 0
             end |λ|
         end script
-        
+
         -- Factors up to square root of n,
         set lows to filter(isFactor, enumFromTo(1, intRoot))
-        
+
         -- and quotients of these factors beyond the square root,
-        
+
         -- integerQuotient :: Int -> Int
         script integerQuotient
             on |λ|(x)
                 (n / x) as integer
             end |λ|
         end script
-        
+
         -- excluding n itself (last item)
         items 1 thru -2 of (lows & map(integerQuotient, ¬
             items (1 + (blnPerfectSquare as integer)) thru -1 of reverse of lows))
@@ -593,12 +593,12 @@ on run
             {num:n, divisors:properDivisors(n)}
         end |λ|
     end script
-    
+
     -- maxDivisorCount :: Record -> Int -> Record
     script maxDivisorCount
         on |λ|(a, n)
             set intDivisors to length of properDivisors(n)
-            
+
             if intDivisors ≥ divisors of a then
                 {num:n, divisors:intDivisors}
             else
@@ -606,11 +606,11 @@ on run
             end if
         end |λ|
     end script
-    
+
     {oneToTen:map(numberAndDivisors, ¬
         enumFromTo(1, 10)), mostDivisors:foldl(maxDivisorCount, ¬
         {num:0, divisors:0}, enumFromTo(1, 20000))} ¬
-        
+
 end run
 
 
@@ -667,7 +667,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -683,10 +683,10 @@ end mReturn
 {{Out}}
 
 ```AppleScript
-{oneToTen:{{num:1, divisors:{1}}, {num:2, divisors:{1}}, {num:3, divisors:{1}}, 
-{num:4, divisors:{1, 2}}, {num:5, divisors:{1}}, {num:6, divisors:{1, 2, 3}}, 
-{num:7, divisors:{1}}, {num:8, divisors:{1, 2, 4}}, {num:9, divisors:{1, 3}}, 
-{num:10, divisors:{1, 2, 5}}}, 
+{oneToTen:{{num:1, divisors:{1}}, {num:2, divisors:{1}}, {num:3, divisors:{1}},
+{num:4, divisors:{1, 2}}, {num:5, divisors:{1}}, {num:6, divisors:{1, 2, 3}},
+{num:7, divisors:{1}}, {num:8, divisors:{1, 2, 4}}, {num:9, divisors:{1, 3}},
+{num:10, divisors:{1, 2, 5}}},
 mostDivisors:{num:18480, divisors:79}}
 ```
 
@@ -739,10 +739,10 @@ mostDivisors:{num:18480, divisors:79}}
   (prn (map [divisor _] (cut many-divisors 1)))
   many-divisors))
 
-;; Do the tasks 
+;; Do the tasks
 (div-lists 10 1)
-(div-lists 20000) 
-;; This took about 10 minutes on my machine. 
+(div-lists 20000)
+;; This took about 10 minutes on my machine.
 
 ```
 
@@ -958,16 +958,16 @@ int main(void)
 
 ```txt
 
-1: 
-2: 1 
-3: 1 
-4: 1 2 
-5: 1 
-6: 1 2 3 
-7: 1 
-8: 1 2 4 
-9: 1 3 
-10: 1 2 5 
+1:
+2: 1
+3: 1
+4: 1 2
+5: 1
+6: 1 2 3
+7: 1
+8: 1 2 4
+9: 1 3
+10: 1 2 5
 18480 with 79 divisors
 
 ```
@@ -981,11 +981,11 @@ There is no need to go through all the divisors if only the count is needed, thi
 
 #include <stdio.h>
 #include <stdbool.h>
- 
+
 int proper_divisors(const int n, bool print_flag)
 {
     int count = 0;
- 
+
     for (int i = 1; i < n; ++i) {
         if (n % i == 0) {
             count++;
@@ -993,50 +993,50 @@ int proper_divisors(const int n, bool print_flag)
                 printf("%d ", i);
         }
     }
- 
+
     if (print_flag)
         printf("\n");
- 
+
     return count;
 }
 
 int countProperDivisors(int n){
 	int prod = 1,i,count=0;
-	
+
 	while(n%2==0){
 		count++;
 		n /= 2;
 	}
-	
+
 	prod *= (1+count);
 
 	for(i=3;i*i<=n;i+=2){
 		count = 0;
-		
+
 		while(n%i==0){
 			count++;
 			n /= i;
 		}
-		
+
 		prod *= (1+count);
 	}
-	
+
 	if(n>2)
 		prod *= 2;
-	
+
 	return prod - 1;
 }
- 
+
 int main(void)
 {
     for (int i = 1; i <= 10; ++i) {
         printf("%d: ", i);
         proper_divisors(i, true);
     }
- 
+
     int max = 0;
     int max_i = 1;
- 
+
     for (int i = 1; i <= 20000; ++i) {
         int v = countProperDivisors(i);
         if (v >= max) {
@@ -1044,7 +1044,7 @@ int main(void)
             max_i = i;
         }
     }
- 
+
     printf("%d with %d divisors\n", max_i, max);
     return 0;
 }
@@ -1111,8 +1111,8 @@ namespace RosettaCode.ProperDivisors
 ## C++
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <iostream>
 #include <algorithm>
 
@@ -1131,7 +1131,7 @@ int main( ) {
    for ( int i = 1 ; i < 11 ; i++ ) {
       divisors =  properDivisors ( i ) ;
       std::cout << "Proper divisors of " << i << ":\n" ;
-      for ( int number : divisors ) { 
+      for ( int number : divisors ) {
 	 std::cout << number << " " ;
       }
       std::cout << std::endl ;
@@ -1147,7 +1147,7 @@ int main( ) {
    }
 
    std::cout << "Most divisors has " << corresponding_number <<
-      " , it has " << maxdivisors << " divisors!\n" ; 
+      " , it has " << maxdivisors << " divisors!\n" ;
    return 0 ;
 }
 
@@ -1160,23 +1160,23 @@ int main( ) {
 Proper divisors of 1:
 
 Proper divisors of 2:
-1 
+1
 Proper divisors of 3:
-1 
+1
 Proper divisors of 4:
-1 2 
+1 2
 Proper divisors of 5:
-1 
+1
 Proper divisors of 6:
-1 2 3 
+1 2 3
 Proper divisors of 7:
-1 
+1
 Proper divisors of 8:
-1 2 4 
+1 2 4
 Proper divisors of 9:
-1 3 
+1 3
 Proper divisors of 10:
-1 2 5 
+1 2 5
 Most divisors has 15120 , it has 79 divisors!
 
 ```
@@ -1188,24 +1188,24 @@ Most divisors has 15120 , it has 79 divisors!
 
 ```ceylon
 shared void run() {
-	
-	function divisors(Integer int) => 
-			if(int <= 1) 
-			then {} 
+
+	function divisors(Integer int) =>
+			if(int <= 1)
+			then {}
 			else (1..int / 2).filter((Integer element) => element.divides(int));
-	
+
 	for(i in 1..10) {
 		print("``i`` => ``divisors(i)``");
 	}
-	
+
 	value start = 1;
 	value end = 20k;
-	
-	value mostDivisors = 
+
+	value mostDivisors =
 			map {for(i in start..end) i->divisors(i).size}
 			.inverse()
 			.max(byKey(byIncreasing(Integer.magnitude)));
-	
+
 	print("the number(s) with the most divisors between ``start`` and ``end`` is/are:
 	       ``mostDivisors?.item else "nothing"`` with ``mostDivisors?.key else "no"`` divisors");
 }
@@ -1300,14 +1300,14 @@ Ideally, the smallest-divisor function would only try prime numbers instead of o
 ```lisp
 (defun proper-divisors-recursive (product &optional (results '(1)))
    "(int,list)->list::Function to find all proper divisors of a +ve integer."
-  
+
    (defun smallest-divisor (x)
       "int->int::Find the smallest divisor of an integer > 1."
       (if (evenp x) 2
           (do ((lim (truncate (sqrt x)))
                (sd 3 (+ sd 2)))
               ((or (integerp (/ x sd)) (> sd lim)) (if (> sd lim) x sd)))))
-   
+
    (defun pd-rec (fac)
       "(int,int)->nil::Recursive function to find proper divisors of a +ve integer"
       (when (not (member fac results))
@@ -1315,10 +1315,10 @@ Ideally, the smallest-divisor function would only try prime numbers instead of o
          (let ((hifac (/ fac (smallest-divisor fac))))
             (pd-rec hifac)
             (pd-rec (/ product hifac)))))
-    
+
    (pd-rec product)
    (butlast (sort (copy-list results) #'<)))
-  
+
 (defun task (method &optional (n 1) (most-pds '(0)))
    (dotimes (i 19999)
       (let ((npds (length (funcall method (incf n))))
@@ -1374,7 +1374,7 @@ BEGIN
 	i := 1;j := 0;
 	IF n >  1 THEN
 		WHILE (i < n) DO
-			IF (n MOD i) = 0 THEN 
+			IF (n MOD i) = 0 THEN
 				IF (j < LEN(r)) THEN r[j] := i END; INC(j)
 			END;
 			INC(i)
@@ -1398,7 +1398,7 @@ BEGIN
 		END;
 		StdLog.Ln
 	END;
-	
+
 	max := 0;idxMx := 0;
   FOR i := 1 TO 20000 DO
   	found := Pd(i,r);
@@ -1426,17 +1426,17 @@ END RosettaProperDivisor.
 
 ```txt
 
- 1[ 0]:> 
- 2[ 1]:>  1 
- 3[ 1]:>  1 
- 4[ 2]:>  1  2 
- 5[ 1]:>  1 
- 6[ 3]:>  1  2  3 
- 7[ 1]:>  1 
- 8[ 3]:>  1  2  4 
- 9[ 2]:>  1  3 
- 10[ 3]:>  1  2  5 
-Found:  2 Numbers with the longest proper divisors [ 79]: 
+ 1[ 0]:>
+ 2[ 1]:>  1
+ 3[ 1]:>  1
+ 4[ 2]:>  1  2
+ 5[ 1]:>  1
+ 6[ 3]:>  1  2  3
+ 7[ 1]:>  1
+ 8[ 3]:>  1  2  4
+ 9[ 2]:>  1  3
+ 10[ 3]:>  1  2  5
+Found:  2 Numbers with the longest proper divisors [ 79]:
  15120
  18480
 
@@ -1491,16 +1491,16 @@ func properDivs(n) {
 for i in 1..10 {
     print("\(i): \(properDivs(i).toArray())")
 }
- 
+
 var (num, max) = (0,0)
- 
+
 for i in 1..20000 {
     const count = properDivs(i).len()
-    if count > max { 
-        set (num, max) = (i, count) 
+    if count > max {
+        set (num, max) = (i, count)
     }
 }
- 
+
 print("\(num): \(max)")
 ```
 
@@ -1537,7 +1537,7 @@ print("\(num): \(max)")
     (1- (apply * (map (lambda(g) (1+ (length g))) (group (prime-factors n))))))
 
 (remember 'numdivs)
-	
+
 ;; prime powers
 ;; input : a list g of grouped prime factors ( 3 3 3 ..)
 ;; returns (1 3 9 27 ...)
@@ -1552,7 +1552,7 @@ print("\(num): \(max)")
 ;; remove n from the list
 
 (define (divs n)
-   (if (<= n 1) null 
+   (if (<= n 1) null
     (list-delete
         (for/fold (divs'(1)) ((g (map  ppows (group (prime-factors n)))))
 		    (for*/list ((a divs) (b g)) (* a b)))
@@ -1580,22 +1580,22 @@ print("\(num): \(max)")
 ```scheme
 
 (for ((i (in-range 1 11))) (writeln i (divs i)))
-1     null    
-2     (1)    
-3     (1)    
-4     (2 1)    
-5     (1)    
-6     (2 3 1)    
-7     (1)    
-8     (4 2 1)    
-9     (3 1)    
-10     (2 5 1)  
+1     null
+2     (1)
+3     (1)
+4     (2 1)
+5     (1)
+6     (2 3 1)
+7     (1)
+8     (4 2 1)
+9     (3 1)
+10     (2 5 1)
 
 
 (most-proper 20000)
     → ((18480 . 79) (15120 . 79))
 (most-proper 1_000_000)
-    → ((997920 . 239) (982800 . 239) (942480 . 239) (831600 . 239) (720720 . 239))  
+    → ((997920 . 239) (982800 . 239) (942480 . 239) (831600 . 239) (720720 . 239))
 
 (lib 'bigint)
 (numdivs 95952222101012742144)  → 666 ;; 🎩
@@ -1672,8 +1672,8 @@ end
 2: 1
 3: 1
 4: 1 2
-5: 1 
-6: 1 2 3 
+5: 1
+6: 1 2 3
 7: 1
 8: 1 2 4
 9: 1 3
@@ -1692,12 +1692,12 @@ end
 defmodule Proper do
   def divisors(1), do: []
   def divisors(n), do: [1 | divisors(2,n,:math.sqrt(n))] |> Enum.sort
-  
+
   defp divisors(k,_n,q) when k>q, do: []
   defp divisors(k,n,q) when rem(n,k)>0, do: divisors(k+1,n,q)
   defp divisors(k,n,q) when k * k == n, do: [k | divisors(k+1,n,q)]
   defp divisors(k,n,q)                , do: [k,div(n,k) | divisors(k+1,n,q)]
-  
+
   def most_divisors(limit) do
     {length,nums} = Enum.group_by(1..limit, fn n -> length(divisors(n)) end)
                     |> Enum.max_by(fn {length,_nums} -> length end)
@@ -1743,9 +1743,9 @@ divs(1) -> [];
 divs(N) -> lists:sort([1] ++ divisors(2,N,math:sqrt(N))).
 
 divisors(K,_N,Q) when K > Q -> [];
-divisors(K,N,Q) when N rem K =/= 0 -> 
+divisors(K,N,Q) when N rem K =/= 0 ->
     divisors(K+1,N,Q);
-divisors(K,N,Q) when K * K  == N -> 
+divisors(K,N,Q) when K * K  == N ->
     [K] ++ divisors(K+1,N,Q);
 divisors(K,N,Q) ->
     [K, N div K] ++ divisors(K+1,N,Q).
@@ -1754,9 +1754,9 @@ sumdivs(N) -> lists:sum(divs(N)).
 
 longest(Limit) -> longest(Limit,0,0,1).
 
-longest(L,Current,CurLeng,Acc) when Acc >= L -> 
+longest(L,Current,CurLeng,Acc) when Acc >= L ->
     io:format("With ~w, Number ~w has the most divisors~n", [CurLeng,Current]);
-longest(L,Current,CurLeng,Acc) ->     
+longest(L,Current,CurLeng,Acc) ->
     A = length(divs(Acc)),
     if A > CurLeng ->
         longest(L,Acc,A,Acc+1);
@@ -1768,7 +1768,7 @@ longest(L,Current,CurLeng,Acc) ->
 
 ```txt
 
-1> [io:format("X: ~w, N: ~w~n", [N,properdivs:divs(N)]) ||  N <- lists:seq(1,10)].                                      
+1> [io:format("X: ~w, N: ~w~n", [N,properdivs:divs(N)]) ||  N <- lists:seq(1,10)].
 X: 1, N: []
 X: 2, N: [1]
 X: 3, N: [1]
@@ -1801,7 +1801,7 @@ let mutable e=0
 let mutable f=0
 for k=1 to 10 do
     b <- 0
-    f <- k/2  
+    f <- k/2
     printf "divisor "
     for l=1 to f do
         if k%l=0 then
@@ -1818,9 +1818,9 @@ for i=1 to 20000 do
     if b=c then
          d <- 0
          d <- i
-    if c<b then     
+    if c<b then
         c <- b
-    
+
 printfn "%i has %i divisor" d c
 
 
@@ -1848,7 +1848,7 @@ let show (n,count,divs) =
 
 // use a sequence: we don't really need to hold this data, just iterate over it
 Seq.init 20000 ( ((+) 1) >> propDivDat)
-|> Seq.fold (fun a b ->match a,b with | (_,c1,_),(_,c2,_) when c2 > c1 -> b | _-> a) (0,0,[]) 
+|> Seq.fold (fun a b ->match a,b with | (_,c1,_),(_,c2,_) when c2 > c1 -> b | _-> a) (0,0,[])
 |> fun (n,count,_) -> (n,count,[]) |> show
 
 ```
@@ -1913,7 +1913,7 @@ Compiled using G95 compiler, run on x86 system under Puppy Linux
 
 ```Fortran
 
- 
+
       function icntprop(num  )
       icnt=0
       do i=1 , num-1
@@ -1924,21 +1924,21 @@ Compiled using G95 compiler, run on x86 system under Puppy Linux
           end do
       icntprop =  icnt
       end function
- 
+
       limit = 20000
       maxcnt = 0
       print *,'N   divisors'
       do j=1,limit,1
       if (j .lt. 11) print *,j
       icnt = icntprop(j)
- 
+
       if (icnt .gt. maxcnt) then
       maxcnt = icnt
       maxj = j
       end if
- 
+
       end do
- 
+
       print *,' '
       print *,' from 1 to ',limit
       print *,maxj,' has max proper divisors: ',maxcnt
@@ -1979,7 +1979,7 @@ Compiled using G95 compiler, run on x86 system under Puppy Linux
       1
       2
       5
- 
+
   from 1 to  20000
  15120  has max proper divisors:  79
 
@@ -1997,9 +1997,9 @@ Compiled using G95 compiler, run on x86 system under Puppy Linux
 Sub ListProperDivisors(limit As Integer)
   If limit < 1 Then Return
   For i As Integer = 1 To limit
-     Print Using "##"; i; 
+     Print Using "##"; i;
      Print " ->";
-     If i = 1 Then 
+     If i = 1 Then
        Print " (None)"
        Continue For
      End if
@@ -2167,7 +2167,7 @@ FUNCTION proper_divisors(n%)
       IF n% MOD i%=0
         f%(count%)=i%
         count%=count%+1
-        IF i%*i%<>n% ! root% is an integer, so check if i% is actual squa- lists:seq(1,10)].                                      
+        IF i%*i%<>n% ! root% is an integer, so check if i% is actual squa- lists:seq(1,10)].
 X: 1, N: []
 X: 2, N: [1]
 X: 3, N: [1]
@@ -2303,7 +2303,7 @@ The proper divisors of the following numbers are :
  9 ->  1 3
 10 ->  1 2 5
 
-The following number(s) <= 20000 have the most proper divisors, namely 79 
+The following number(s) <= 20000 have the most proper divisors, namely 79
 
 15120
 18480
@@ -2381,7 +2381,7 @@ main = do
     maximumBy (comparing snd) $
     (,) <*> (length . properDivisors) <$> [1 .. 20000]
 ```
- 
+
 {{Out}}
 
 ```txt
@@ -2424,15 +2424,15 @@ Proper divisors of numbers 1 through 10:
 
 ```J
    (,&": ' -- ' ,&": properDivisors)&>1+i.10
-1 --       
-2 -- 1     
-3 -- 1     
-4 -- 1 2   
-5 -- 1     
-6 -- 1 2 3 
-7 -- 1     
-8 -- 1 2 4 
-9 -- 1 3   
+1 --
+2 -- 1
+3 -- 1
+4 -- 1 2
+5 -- 1
+6 -- 1 2 3
+7 -- 1
+8 -- 1 2 4
+9 -- 1 3
 10 -- 1 2 5
 ```
 
@@ -2477,17 +2477,17 @@ public class Proper{
         for(int x = 2; x < n; x++){
             if(n % x == 0) divs.add(x);
         }
-        
+
         Collections.sort(divs);
-        
+
         return divs;
     }
-    
+
     public static void main(String[] args){
         for(int x = 1; x <= 10; x++){
             System.out.println(x + ": " + properDivs(x));
         }
-        
+
         int x = 0, count = 0;
         for(int n = 1; n <= 20000; n++){
             if(properDivs(n).size() > count){
@@ -2597,11 +2597,11 @@ public class Proper{
 
 })();
 ```
- 
+
 
 {{out}}
 
-{| class="wikitable" 
+{| class="wikitable"
 |-
 ! Number !! Proper Divisors !! Count
 |-
@@ -2647,7 +2647,7 @@ Most proper divisors below 20,000:
                 lows = range(1, intRoot)
                 .filter(x => (n % x) === 0);
 
-            // for perfect squares, we can drop 
+            // for perfect squares, we can drop
             // the head of the 'highs' list
             return lows.concat(lows
                     .map(x => n / x)
@@ -2697,9 +2697,9 @@ Most proper divisors below 20,000:
 ```JavaScript
 {
   "properDivisorsOf1to10":{
-    "1":[], "2":[1], "3":[1], "4":[1, 2], "5":[1], 
+    "1":[], "2":[1], "3":[1], "4":[1, 2], "5":[1],
     "6":[1, 2, 3], "7":[1], "8":[1, 2, 4], "9":[1, 3], "10":[1, 2, 5]
-  }, 
+  },
   "intMaxDivisorsUnder20k":{"max":18480, "divisors":79}
 }
 ```
@@ -2744,7 +2744,7 @@ def most_proper_divisors(n):
 "The pair consisting of the least number in the range 1 to 20,000 with",
 "the maximal number proper divisors together with the corresponding",
 "count of proper divisors is:",
-most_proper_divisors(20000) 
+most_proper_divisors(20000)
 ```
 
 {{out}}
@@ -2867,7 +2867,7 @@ fun countProperDivisors(n: Int): Int {
     return (1..n/2).count { (n % it) == 0 }
 }
 
-fun main(args: Array<String>) { 
+fun main(args: Array<String>) {
     println("The proper divisors of the following numbers are :\n")
     listProperDivisors(10)
     println()
@@ -2971,7 +2971,7 @@ print(answer .. " has " .. mostDivs .. " proper divisors.")
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 A Function that yields the proper divisors of an integer n:
 
@@ -3158,10 +3158,10 @@ class Proper{
     for(x := 1; x <= 10; x++;) {
       Print(x, ProperDivs(x));
     };
-        
+
     x := 0;
     count := 0;
-    
+
     for(n := 1; n <= 20000; n++;) {
       if(ProperDivs(n)->Size() > count) {
         x := n;
@@ -3173,22 +3173,22 @@ class Proper{
 
   function : ProperDivs(n : Int) ~ IntVector {
     divs := IntVector->New();
-        
+
     if(n = 1) {
       return divs;
     };
     divs->AddBack(1);
-        
+
     for(x := 2; x < n; x++;) {
-      if(n % x = 0) { 
+      if(n % x = 0) {
         divs->AddBack(x);
       };
     };
     divs->Sort();
-        
+
     return divs;
   }
-    
+
   function : Print(x : Int, result : IntVector) ~ Nil {
     "{$x}: "->Print();
     result->ToArray()->ToString()->PrintLine();
@@ -3225,23 +3225,23 @@ MODULE ProperDivisors;
 IMPORT
   Out;
 
-CONST 
+CONST
     initialSize = 128;
 TYPE
   Result* = POINTER TO ResultDesc;
-  ResultDesc = RECORD 
+  ResultDesc = RECORD
     found-: LONGINT; (* number of slots in pd *)
     pd-: POINTER TO ARRAY OF LONGINT;
     cap: LONGINT;   (* Capacity *)
   END;
-  
+
 VAR
   i,found,max,idxMx: LONGINT;
   mx: ARRAY 32 OF LONGINT;
   rs: Result;
 
   PROCEDURE (r: Result) Init(size: LONGINT);
-  BEGIN 
+  BEGIN
     r.found := 0;
     r.cap := size;
     NEW(r.pd,r.cap);
@@ -3250,7 +3250,7 @@ VAR
   PROCEDURE (r: Result) Add(n: LONGINT);
   BEGIN
     (* Out.String("--->");Out.LongInt(n,0);Out.String(" At: ");Out.LongInt(r.found,0);Out.Ln; *)
-    IF (r.found < LEN(r.pd^) - 1) THEN 
+    IF (r.found < LEN(r.pd^) - 1) THEN
       r.pd[r.found] := n;
     ELSE
       (* expand pd for more room *)
@@ -3274,7 +3274,7 @@ VAR
   END Show;
 
   PROCEDURE (r:Result) Reset();
-  BEGIN 
+  BEGIN
     r.found := 0;
   END Reset;
 
@@ -3282,7 +3282,7 @@ VAR
   VAR
     i: LONGINT;
   BEGIN
-    IF n > 1 THEN 
+    IF n > 1 THEN
       rs.Add(1);i := 2;
       WHILE (i < n) DO
         IF (n MOD i) = 0 THEN rs.Add(i) END;
@@ -3290,10 +3290,10 @@ VAR
       END
     END;
   END GetFor;
-  
+
 BEGIN
   NEW(rs);rs.Init(initialSize);
-  FOR i := 1 TO 10 DO 
+  FOR i := 1 TO 10 DO
     Out.LongInt(i,4);Out.Char(':');
     GetFor(i,rs);
     rs.Show();
@@ -3335,7 +3335,7 @@ END ProperDivisors.
    9:(Result:3-1,3)
   10:(Result:4-1,2,5)
  100:(Result:9-1,2,4,5,10,20,25,50)
-Found: 2 Numbers with most proper divisors 79: 
+Found: 2 Numbers with most proper divisors 79:
 15120
 18480
 
@@ -3395,7 +3395,7 @@ r=at=0; for(n=1,20000, t=numdiv(n); if(t>r, r=t; at=n)); [at, numdiv(t)-1]
 ## Pascal
 
 {{works with|Free Pascal}}
-Using prime factorisation 
+Using prime factorisation
 
 ```pascal
 {$IFDEF FPC}{$MODE DELPHI}{$ELSE}{$APPTYPE CONSOLE}{$ENDIF}
@@ -3621,7 +3621,7 @@ END.
 ```
 {{Output}}
 ```txt
- 
+
     1 :
     2 : 1
     3 : 1
@@ -3678,7 +3678,7 @@ say "$max $ind";
 {{out}}
 
 ```txt
-1: 
+1:
 2: 1
 3: 1
 4: 1 2
@@ -3701,7 +3701,7 @@ Note that the first code will choose the first max, while the second chooses the
 {{Works with|rakudo|2018.10}}
 Once your threshold is over 1000, the maximum proper divisors will always include 2, 3 and 5 as divisors, so only bother to check multiples of 2, 3 and 5.
 
-There really isn't any point in using concurrency for a limit of 20_000. The setup and bookkeeping drowns out any benefit. Really doesn't start to pay off until the limit is 50_000 and higher. Try swapping in the commented out race map iterator line below for comparison. 
+There really isn't any point in using concurrency for a limit of 20_000. The setup and bookkeeping drowns out any benefit. Really doesn't start to pay off until the limit is 50_000 and higher. Try swapping in the commented out race map iterator line below for comparison.
 
 ```perl6
 sub propdiv (\x) {
@@ -3772,7 +3772,7 @@ integer p = 2,
             hfactors = prepend(hfactors,hfactor)
         end if
         p += 1
-    end while 
+    end while
     return lfactors & hfactors
 end function
 ```
@@ -3786,7 +3786,7 @@ end for
 
 integer maxd = 0, k
 sequence candidates = {}
- 
+
     for i=1 to 20000 do
         k = length(factors(i,-1))
         if k>=maxd then
@@ -3798,7 +3798,7 @@ sequence candidates = {}
             end if
         end if
     end for
- 
+
     printf(1,"%d divisors:", maxd)
     ?candidates
     {} = wait_key()
@@ -3914,8 +3914,8 @@ They have 79 divisors.
          (make
             (for I N
                (and (=0 (% N I)) (link I)) ) ) ) ) )
-(de countdiv (N) 
-   (let C -1 
+(de countdiv (N)
+   (let C -1
       (for I N
          (and (=0 (% N I)) (inc 'C)) )
       C ) )
@@ -3958,7 +3958,7 @@ They have 79 divisors.
    (println
       (maxi
          factor
-         (range 1 20000) ) 
+         (range 1 20000) )
       @@ ) )
 ```
 
@@ -4142,7 +4142,7 @@ function eratosthenes ($n) {
         for($i = 3; $i -le $n; $i += 2) {
             if($prime[$i]) {$i}
         }
-        
+
     } else {
         Write-Error "$n is not greater than 1"
     }
@@ -4162,10 +4162,10 @@ function proper-divisor ($n) {
     if($n -ge 2) {
         $array = prime-decomposition $n
         $lim = $array.Count
-        function state($res, $i){  
+        function state($res, $i){
             if($i -lt $lim) {
                 state ($res) ($i + 1)
-                state ($res*$array[$i]) ($i + 1)   
+                state ($res*$array[$i]) ($i + 1)
             } elseif($res -lt $n) {$res}
         }
         state 1 0 | sort -Unique
@@ -4300,7 +4300,7 @@ Procedure.i CountProperDivisors(Number)
   Next
   ProcedureReturn count
 EndProcedure
-  
+
 Define n, count, most = 1, maxCount = 0
 If OpenConsole()
   PrintN("The proper divisors of the following numbers are : ")
@@ -4311,7 +4311,7 @@ If OpenConsole()
     Print(RSet(Str(n), 3) + " -> ")
     If ListSize(lst()) = 0
       Print("(None)")
-    Else  
+    Else
       ForEach lst()
         Print(Str(lst()) + " ")
       Next
@@ -4370,16 +4370,16 @@ A very literal interpretation
 ```python>>>
  def proper_divs2(n):
 ...     return {x for x in range(1, (n + 1) // 2 + 1) if n % x == 0 and n != x}
-... 
+...
 >>> [proper_divs2(n) for n in range(1, 11)]
 [set(), {1}, {1}, {1, 2}, {1}, {1, 2, 3}, {1}, {1, 2, 4}, {1, 3}, {1, 2, 5}]
->>> 
+>>>
 >>> n, length = max(((n, len(proper_divs2(n))) for n in range(1, 20001)), key=lambda pd: pd[1])
 >>> n
 15120
 >>> length
 79
->>> 
+>>>
 ```
 
 
@@ -4449,7 +4449,7 @@ def proper_divs(n):
 
 if __name__ == '__main__':
     rangemax = 20000
-    
+
     print([proper_divs(n) for n in range(1, 11)])
     print(*max(((n, len(proper_divs(n))) for n in range(1, 20001)), key=lambda pd: pd[1]))
 ```
@@ -4478,7 +4478,7 @@ V <- sapply(1:20000, Sigma, k = 0, proper = TRUE); ind <- which(V==max(V));
 cat("  *** max number of divisors:", max(V), "\n"," *** for the following indices:",ind, "\n");
 
 ```
- 
+
 
 {{Output}}
 
@@ -4486,8 +4486,8 @@ cat("  *** max number of divisors:", max(V), "\n"," *** for the following indice
 ```txt
 
 Loading required package: numbers
-  *** max number of divisors: 79 
-  *** for the following indices: 15120 18480 
+  *** max number of divisors: 79
+  *** for the following indices: 15120 18480
 
 ```
 
@@ -4497,7 +4497,7 @@ Loading required package: numbers
 
 
 
-###  Short version 
+###  Short version
 
 
 
@@ -4535,7 +4535,7 @@ proper divisors of: 10	(1 2 5)
 
 
 
-###  Long version 
+###  Long version
 
 
 The '''main''' module will only be executed when this file is executed. When used as a library, it will not be used.
@@ -4755,7 +4755,7 @@ When factoring                    2,000,000 integers,   this REXX version is abo
 
 When factoring                        20,000,000 integers,   this REXX version is about   '''38%'''   faster.
 
-It accomplishes a faster speed by incorporating the calculation of an   ''integer square root''   of an integer   (without using any floating point arithmetic).  
+It accomplishes a faster speed by incorporating the calculation of an   ''integer square root''   of an integer   (without using any floating point arithmetic).
 
 ```rexx
 /*REXX program finds proper divisors (and count) of integer ranges; finds the max count.*/
@@ -4806,7 +4806,7 @@ Pdivs: procedure; parse arg x 1 z,b;  x= abs(x);   if x==1  then return ''      
                         return  a   b            /*return the divisors  (both lists).   */
 ```
 
-{{out|output|text=  is identical to the 2<sup>nd</sup> REXX version when using the same inputs.}} 
+{{out|output|text=  is identical to the 2<sup>nd</sup> REXX version when using the same inputs.}}
 
 
 
@@ -4827,7 +4827,7 @@ for n=1 to limit
     see "" + n + " -> "
     for m=1 to n-1
         if n%m = 0
-           see " " + m 
+           see " " + m
         ok
     next
     see nl
@@ -5042,8 +5042,8 @@ end = count
 rem - main program begins here
 var i, ndiv, highdiv, highnum = integer
 
-print "Proper divisors of first 10 numbers:" 
-for i = 1 to 10 
+print "Proper divisors of first 10 numbers:"
+for i = 1 to 10
   print using "### : "; i;
   ndiv = divisors(i, true)
 next i
@@ -5051,7 +5051,7 @@ next i
 print "Searching for number with most divisors ..."
 highdiv = 1
 highnum = 1
-for i = 1 to 20000 
+for i = 1 to 20000
   ndiv = divisors(i, false)
   if ndiv > highdiv then
     begin
@@ -5116,7 +5116,7 @@ list.foreach( number => println(f"$number%5d    ${properDivisors(number).length}
 
 ```txt
     n   cnt   PROPER DIVISORS
-    1     0   
+    1     0
     2     1   1
     3     1   1
     4     2   1 2
@@ -5166,7 +5166,7 @@ def properDivisors(n: BigInt): List[BigInt] = {
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const proc: writeProperDivisors (in integer: n) is func
   local
     var integer: i is 0;
@@ -5219,16 +5219,16 @@ const proc: main is func
 
 ```txt
 
-1: 
-2: 1 
-3: 1 
-4: 1 2 
-5: 1 
-6: 1 2 3 
-7: 1 
-8: 1 2 4 
-9: 1 3 
-10: 1 2 5 
+1:
+2: 1
+3: 1
+4: 1 2
+5: 1
+6: 1 2 3
+7: 1
+8: 1 2 4
+9: 1 3
+10: 1 2 5
 15120 with 79 divisors
 
 ```
@@ -5300,20 +5300,20 @@ import func Darwin.sqrt
 func sqrt(x:Int) -> Int { return Int(sqrt(Double(x))) }
 
 func properDivs(n: Int) -> [Int] {
-    
+
     if n == 1 { return [] }
-    
+
     var result = [Int]()
-    
+
     for div in filter (1 ... sqrt(n), { n % $0 == 0 }) {
-        
+
         result.append(div)
 
         if n/div != div && n/div != n { result.append(n/div) }
     }
-    
+
     return sorted(result)
-    
+
 }
 ```
 
@@ -5327,7 +5327,7 @@ for i in 1...10 {
 var (num, max) = (0,0)
 
 for i in 1...20_000 {
-    
+
     let count = properDivs(i).count
     if (count > max) { (num, max) = (i, count) }
 }
@@ -5368,7 +5368,7 @@ sub proper_divisors(n)
 		for i = 1 to (n \ 2)
 			if n %% i = 0 then
 				_proper_divisors_count = _proper_divisors_count + 1
-				_proper_divisors(_proper_divisors_count) = i 
+				_proper_divisors(_proper_divisors_count) = i
 			end if
 		next
 	end if
@@ -5378,11 +5378,11 @@ end sub
 sub show_proper_divisors(n, tabbed)
 	dim cnt = proper_divisors(n)
 	print str$(n) + ":"; tab(4);"(" + str$(cnt) + " items) ";
-	dim j 
+	dim j
 	for j = 1 to cnt
 		if tabbed then
 			print str$(_proper_divisors(j)),
-		else 
+		else
 			print str$(_proper_divisors(j));
 		end if
 		if (j < cnt) then print ",";
@@ -5395,7 +5395,7 @@ for i = 1 to 10
     show_proper_divisors(i, false)
 next
 
-dim c 
+dim c
 dim maxindex = 0
 dim maxlength = 0
 for t = 1 to 20000
@@ -5437,7 +5437,7 @@ A maximum at 15120:(79 items) 1,2,3,4,5,6,7,8,9,10,12,14,15,16,18,20,21,24,27,28
 
 ## Tcl
 
-Note that if a number, <math>k</math>, greater than 1 divides <math>n</math> exactly, both <math>k</math> and <math>n/k</math> are 
+Note that if a number, <math>k</math>, greater than 1 divides <math>n</math> exactly, both <math>k</math> and <math>n/k</math> are
 proper divisors. (The raw answers are not sorted; the pretty-printer code sorts.)
 
 ```tcl
@@ -5526,7 +5526,7 @@ End Function
 {{out}}
 
 ```txt
-Proper divisor of 1 : 
+Proper divisor of 1 :
 Proper divisor of 2 : 1
 Proper divisor of 3 : 1
 Proper divisor of 4 : 1, 2
@@ -5595,7 +5595,7 @@ fcn properDivs(n){ [1.. (n + 1)/2 + 1].filter('wrap(x){ n%x==0 and n!=x }) }
 This version is MUCH faster (the output isn't ordered however):
 
 ```zkl
-fcn properDivs(n){ 
+fcn properDivs(n){
    if(n==1) return(T);
    ( pd:=[1..(n).toFloat().sqrt()].filter('wrap(x){ n%x==0 }) )
    .pump(pd,'wrap(pd){ if(pd!=1 and (y:=n/pd)!=pd ) y else Void.Skip })

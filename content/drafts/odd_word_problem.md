@@ -17,22 +17,22 @@ Write a program that solves the [http://c2.com/cgi/wiki?OddWordProblem odd word 
 
 
 ;Description:
-You are promised an input stream consisting of English letters and punctuations.  
+You are promised an input stream consisting of English letters and punctuations.
 
 It is guaranteed that:
 * the words (sequence of consecutive letters) are delimited by one and only one punctuation,
 * the stream will begin with a word,
-* the words will be at least one letter long,   and 
+* the words will be at least one letter long,   and
 * a full stop (a period, [<b>.</b>]) appears after, and only after, the last word.
 
 
 ;Example:
-A stream with six words: 
-:: <big><code>what,is,the;meaning,of:life.</code></big>   
+A stream with six words:
+:: <big><code>what,is,the;meaning,of:life.</code></big>
 
 
 The task is to reverse the letters in every other word while leaving punctuations intact, producing:
-:: <big><code>what,si,the;gninaem,of:efil.</code></big> 
+:: <big><code>what,si,the;gninaem,of:efil.</code></big>
 while observing the following restrictions:
 # Only I/O allowed is reading or writing one character at a time, which means: no reading in a string, no peeking ahead, no pushing characters back into the stream, and no storing characters in a global variable for later use;
 # You '''are not''' to explicitly save characters in a collection data structure, such as arrays, strings, hash tables, etc, for later reversal;
@@ -50,16 +50,16 @@ Work on both the   "life"   example given above, and also the text:
 ## Ada
 
 
-This is a rather straightforward approach, using recursion. 
+This is a rather straightforward approach, using recursion.
 
 
 ```Ada
 with Ada.Text_IO;
- 
+
 procedure Odd_Word_Problem is
- 
+
    use Ada.Text_IO; -- Get, Put, and Look_Ahead
- 
+
    function Current return Character is
       -- reads the current input character, without consuming it
       End_Of_Line: Boolean;
@@ -71,19 +71,19 @@ procedure Odd_Word_Problem is
       end if;
       return C;
    end Current;
- 
+
    procedure Skip is
       -- consumes the current input character
       C: Character;
    begin
       Get(C);
    end Skip;
- 
+
    function Is_Alpha(Ch: Character) return Boolean is
    begin
       return (Ch in  'a' .. 'z') or (Ch in 'A' .. 'Z');
    end Is_Alpha;
- 
+
    procedure Odd_Word(C: Character) is
    begin
       if Is_Alpha(C) then
@@ -92,7 +92,7 @@ procedure Odd_Word_Problem is
          Put(C);
       end if;
    end Odd_Word;
- 
+
 begin -- Odd_Word_Problem
    Put(Current);
    while Is_Alpha(Current) loop -- read an even word
@@ -116,10 +116,10 @@ Output:
 
 
 ```txt
-> ./odd_word_problem 
+> ./odd_word_problem
 what,is,the;meaning,of:life.
 what,si,the;gninaem,of:efil.
-> ./odd_word_problem 
+> ./odd_word_problem
 we,are;not,in,kansas;any,more.
 we,era;not,ni,kansas;yna,more.
 ```
@@ -295,12 +295,12 @@ This program uses recursion.
 user@host $ bacon odd_word
 Converting 'odd_word.bac'... done, 46 lines were processed in 0.003 seconds.
 Compiling 'odd_word.bac'... cc  -c odd_word.bac.c
-cc -o odd_word odd_word.bac.o -lbacon -lm 
+cc -o odd_word odd_word.bac.o -lbacon -lm
 Done, program 'odd_word' ready.
-user@host $ ./odd_word 
+user@host $ ./odd_word
 Enter string: what,is,the;meaning,of:life.
 what,si,the;gninaem,of:efil.
-user@host $ ./odd_word 
+user@host $ ./odd_word
 Enter string: we,are;not,in,kansas;any,more.
 we,era;not,ni,kansas;yna,more.
 
@@ -361,8 +361,8 @@ we,era;not,ni,kansas;yna,more.
 Using GCC nested function as closures.  This can only be passed up the stack, not the other way around.  It's also doable with <code>makecontext</code>, and may be possible with <code>setjmp</code>.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <ctype.h>
 
 int do_char(int odd, void (*f)(void))
@@ -408,8 +408,8 @@ int main()
 Tested with gcc 4.5, with "-std=c++0x" option.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cctype>
 #include <functional>
 
@@ -429,7 +429,7 @@ bool odd()
   }
 }
 
-bool even() 
+bool even()
 {
   while(true) {
     int c;
@@ -578,7 +578,7 @@ oddWord = (get, put) ->
 			put(c)
 			unless isWordChar(c)
 				return not isLastChar(c)
-	
+
 	# NB: (->) is a CoffeeScript idiom for no-op.
 	reverseWord = (outputPending = (->)) ->
 		c = get()
@@ -596,7 +596,7 @@ oddWord = (get, put) ->
 			outputPending()
 			put(c)
 			return not isLastChar(c)
-	
+
 	# Alternate between forward and reverse until one or the other reports that
 	# the end-of-input mark has been reached (causing a return of false).
 	continue while forwardWord() and reverseWord()
@@ -619,7 +619,7 @@ oddWord = (get, put) ->
 			put(c)
 			unless isWordChar(c)
 				return not isLastChar(c)
-	
+
 	reverseWord = (outputPending = (->)) ->
 		c = get()
 		if isWordChar(c)
@@ -630,7 +630,7 @@ oddWord = (get, put) ->
 			outputPending()
 			put(c)
 			return not isLastChar(c)
-	
+
 	continue while forwardWord() and reverseWord()
 ```
 
@@ -787,16 +787,16 @@ No character input stream in EchoLisp, which runs in a browser window. We simult
 (define (flop) ; reverses,  and returns first non-alpha after word, or EOF
 	(define c (read-char))
 	(if (string-alphabetic? c) (begin0 (flop) (write-char c)) c))
-	  
+
 (define (flip)
     (define c (read-char))
     (if (string-alphabetic? c) (begin (write-char c)  (flip)) c))
-    
+
 (define (task sentence)
 	 (init-streams sentence)
 	 (while (and (write-char (flip)) (write-char (flop))))
 	 output-stream )
- 
+
 
 
 ```
@@ -831,13 +831,13 @@ defmodule Odd_word do
     if t == true, do: handle(d, t, i, o), else: d
   end
   def handle(s, :rec, _, _), do: s
-  def handle(?., _, _, o), do: o.(?.); :done 
+  def handle(?., _, _, o), do: o.(?.); :done
   def handle(:eof, _, _, _), do: :done
   def handle(s, t, i, o) do
     o.(s)
     handle(i.(), not t, i, o)
   end
-  
+
   def main do
     i = fn() -> IO.getn("") end
     o = fn(s) -> IO.write(s) end
@@ -874,7 +874,7 @@ handle(S, T, I, O) when (((S >= $a) and (S =< $z)) or ((S >= $A) and (S =< $Z)))
     O(S),
     case T of true -> handle(D, T, I, O); _ -> D end;
 handle(S, rec, _, _) -> S;
-handle($., _, _, O) -> O($.), done; 
+handle($., _, _, O) -> O($.), done;
 handle(eof, _, _, _) -> done;
 handle(S, T, I, O) -> O(S), handle(I(), not T, I, O).
 
@@ -916,7 +916,7 @@ let rec forward () =
     Out c
     match c with
     | WordCharacter -> forward()
-    | OtherCharacter -> backward() 
+    | OtherCharacter -> backward()
 
 [<EntryPoint>]
 let main argv =
@@ -1047,9 +1047,9 @@ This solution uses recursion to read the backwards words, to output the characte
 
 ## Fortran
 
-By not allowing the use of arrays of characters to facilitate the reversing of texts, the obvious solution involves recursion with storage via the stack so that its last-on, first-off style will achieve the required goal. But alas, Fortran compilers were typically written for computers that did not employ a stack mechanism so recursion was not expected even after the introduction of Algol in the 1960s, and the failure of recursively-invoked routines to return correctly became accepted. The standard murmur was that "Fortran is not a recursive language" even though the language contains recursive definitions such as for arithmetic expressions. By contrast, the B6700 system ''did'' employ a hardware stack, and, without any fuss, recursion just worked. 
+By not allowing the use of arrays of characters to facilitate the reversing of texts, the obvious solution involves recursion with storage via the stack so that its last-on, first-off style will achieve the required goal. But alas, Fortran compilers were typically written for computers that did not employ a stack mechanism so recursion was not expected even after the introduction of Algol in the 1960s, and the failure of recursively-invoked routines to return correctly became accepted. The standard murmur was that "Fortran is not a recursive language" even though the language contains recursive definitions such as for arithmetic expressions. By contrast, the B6700 system ''did'' employ a hardware stack, and, without any fuss, recursion just worked.
 
-But with F90, the language definition was augmented by the menacing word RECURSIVE, and so... 
+But with F90, the language definition was augmented by the menacing word RECURSIVE, and so...
 ```Fortran
       MODULE ELUDOM	!Uses the call stack for auxiliary storage.
        INTEGER MSG,INF	!I/O unit numbers.
@@ -1138,7 +1138,7 @@ func owp(dst io.Writer, src io.Reader) {
         src.Read(bs)
         return bs[0]
     }
-    byte_out := func (b byte) { dst.Write([]byte{b}) }    
+    byte_out := func (b byte) { dst.Write([]byte{b}) }
     var odd func() byte
     odd = func() byte {
         s := byte_in()
@@ -1207,7 +1207,7 @@ func owp(dst io.Writer, src io.Reader) {
         src.Read(bs)
         return bs[0]
     }
-    byte_out := func (b byte) { dst.Write([]byte{b}) }    
+    byte_out := func (b byte) { dst.Write([]byte{b}) }
     odd := func() byte {
         for {
             b := byte_in()
@@ -1274,7 +1274,7 @@ func owp(dst io.Writer, src io.Reader) {
         _, err := src.Read(bs)
         return bs[0], err
     }
-    byte_out := func (b byte) { dst.Write([]byte{b}) }    
+    byte_out := func (b byte) { dst.Write([]byte{b}) }
 
     var f, r Coroutine
 
@@ -1429,12 +1429,12 @@ we,era;not,ni,kansas;yna,more.
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-The following recursive version is based on the non-deferred GO version.  A co-expression is used to turn the parameter to the wrapper into a character at a time stream. 
+The following recursive version is based on the non-deferred GO version.  A co-expression is used to turn the parameter to the wrapper into a character at a time stream.
 
 
 ```Icon
 procedure main()
-every OddWord(!["what,is,the;meaning,of:life.", 
+every OddWord(!["what,is,the;meaning,of:life.",
                 "we,are;not,in,kansas;any,more."])
 end
 
@@ -1442,18 +1442,18 @@ procedure OddWord(stream)                     #: wrapper for demonstration
    write("Input stream: ",stream)
    writes("Output stream: ") & eWord(create !stream,'.,;:') & write()
 end
-    
+
 procedure eWord(stream,marks)                 #: handle even words
-   repeat {                               
-      repeat 
+   repeat {
+      repeat
          writes(@stream) ? if ="." then return else if any(marks) then break
       if writes(oWord(stream,marks)) == '.' then return
       }
 end
 
-procedure oWord(stream,marks)                 #: handle odd words (reverse)   
+procedure oWord(stream,marks)                 #: handle odd words (reverse)
    if any(marks,s := @stream) then return s
-   return 1(oWord(stream,marks), writes(s))  
+   return 1(oWord(stream,marks), writes(s))
 end
 ```
 
@@ -1693,7 +1693,7 @@ fun doChar(odd: Boolean, f: Func?): Boolean {
     if (odd) {
         if (f != null) f()
         print(ch)
-    } 
+    }
     return ch != '.'
 }
 
@@ -1702,7 +1702,7 @@ fun main(args: Array<String>) {
         var b = true
         while (doChar(!b, null)) b = !b
         System.`in`.read() // remove '\n' from buffer
-        println("\n")        
+        println("\n")
     }
 }
 ```
@@ -1736,7 +1736,7 @@ define odd_word_processor(str::string) => {
 	)
 	while(#str->get(#pos) != '.' && #pos <= #str->size) => {
 		if(not #str->isAlpha(#pos)) => {
-			not #isodd ? #isodd = true | #isodd = false	
+			not #isodd ? #isodd = true | #isodd = false
 		}
 		if(#isodd) => {
 			#lastpos = 1
@@ -1752,21 +1752,21 @@ define odd_word_processor(str::string) => {
 				#opos = #pos+(#lastpos-#invpos)
 				#i = #str->get(#ipos)
 				#o = #str->get(#opos)
-				
+
 				//'switching '+#i+' and '+#o+'\r'
-				
+
 				//'insert '+#o+' at '+(#ipos)+'\r'
 				#str = string_insert(#str,-position=(#ipos),-text=#o)
-	
+
 				//'remove redundant pos '+(#ipos+1)+'\r'
 				#str->remove(#ipos+1,1)
-				
+
 				//'insert '+#i+' at '+(#opos)+'\r'
 				#str = string_insert(#str,-position=(#opos),-text=#i)
-	
+
 				//'remove redundant pos '+(#opos+1)+'\r'
 				#str->remove(#opos+1,1)
-				
+
 				#invpos++
 			}
 			#pos += #lastpos - 1
@@ -1816,7 +1816,7 @@ Module Checkit {
        global out$
        document out$
       Function PrepareStream$ (buf$) {
-            \\ get a temporary file 
+            \\ get a temporary file
             if buf$="" then {
                   class ref {
                          f
@@ -1852,7 +1852,7 @@ Module Checkit {
                   def r$
                   if not eof(#m=>f) then  r$=Input$(#m=>f,2)
                   =r$
-                  if r$="" or r$="." then close #m=>f : m=>f=-1000 
+                  if r$="" or r$="." then close #m=>f : m=>f=-1000
             }
       }
       Module Odd(c$) {
@@ -1862,7 +1862,7 @@ Module Checkit {
                  if one$="" then exit
                  if not one$ ~"[a-zA-Z]" Then last$=one$: exit
                  \\ print before
-                 Print one$; 
+                 Print one$;
                  out$<=one$
                  Call MyEven, c$, &last$
             }
@@ -1872,7 +1872,7 @@ Module Checkit {
                  if not one$ ~"[a-zA-Z]" Then last$=one$: exit
                  Call MyOdd, c$, &last$
                  \\ print after
-                 Print one$; 
+                 Print one$;
                   out$<=one$
             }
             Do {
@@ -1921,7 +1921,7 @@ Module OddWord {
             } Else {
                   If state Then state~
                   if odd then Print k$(); : k$=lambda$->""
-                  Print a$;      
+                  Print a$;
             }
       } until a$="."
       Print
@@ -2504,7 +2504,7 @@ Procedure oddWord()
   Else
     nextChar()
     oddWord()
-  EndIf 
+  EndIf
   Print(Chr(c))
 EndProcedure
 
@@ -2523,7 +2523,7 @@ Procedure oddWordProblem(inputStream.s)
     Print(Chr(*inputPtr\c))
     isOdd ! 1 ;toggle word indicator
     nextChar()
-  Wend 
+  Wend
 EndProcedure
 
 Define inputStream.s
@@ -2534,7 +2534,7 @@ If OpenConsole()
     inputStream = Input()
     oddWordProblem(inputStream) ;assume input is correct
   Until inputStream = ""
-   
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2598,7 +2598,7 @@ we,era;not,ni,kansas;yna,more.
 
 
 {{trans|Scheme}}
-In this version, the action of printing the terminating punctuation is put in a closure and returned by <code>odd()</code>. 
+In this version, the action of printing the terminating punctuation is put in a closure and returned by <code>odd()</code>.
 
 ```python
 from sys import stdin, stdout
@@ -2765,11 +2765,11 @@ readChar:    if arg(1)==''  then do;  x=charin(iFID);  #=#+1;  end  /*read the n
 
 The output is written to the terminal screen as well as to a couple of unique files.   Only the screen output is
 
-shown here, the output files mirror the display except for the headers   (''reading file:   xxx'')   and the writing 
+shown here, the output files mirror the display except for the headers   (''reading file:   xxx'')   and the writing
 
 (SAYing) of blank lines which helps keep the screen righteous after using the REXX   '''charout'''   BIF   which
 
-wrote to the terminal. 
+wrote to the terminal.
 
 ```txt
 
@@ -2963,7 +2963,7 @@ line input #f, a$
 oddW$  = ""                                      ' begin the result oddW with blank
 px     = 0                                       ' begin word search location with 0
 count  = 0                                       ' begin the word count to 0
-while x < len(a$)                                ' look at each character 
+while x < len(a$)                                ' look at each character
 	x    = instr(a$,",",px)                  ' search for comma (,)
 	if x = 0 then x = len(a$)                ' no more commas?
 	x1   = instr(a$,";",px)                  ' search for (;)
@@ -2984,7 +2984,7 @@ while x < len(a$)                                ' look at each character
 	px    = x + 1                            ' bump word search location for next while
 	count = count + 1                        ' count the words
 wend
-print a$;" -> ";oddW$                            ' print the original and result 
+print a$;" -> ";oddW$                            ' print the original and result
 next ii
 wend
 close #f
@@ -3216,7 +3216,7 @@ Output:
 ```txt
 
 what,si,the;gninaem,of:efil.Brian:
-we,era;not,ni,kansas;yna,more. 
+we,era;not,ni,kansas;yna,more.
 
 ```
 

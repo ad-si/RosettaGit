@@ -12,15 +12,15 @@ tags = []
 
 {{task}}
 
-There are four types of common coins in   [https://en.wikipedia.org/wiki/United_States US]   currency: 
+There are four types of common coins in   [https://en.wikipedia.org/wiki/United_States US]   currency:
 :::#   quarters   (25 cents)
 :::#   dimes   (10 cents)
-:::#   nickels   (5 cents),   and 
-:::#   pennies   (1 cent)  
+:::#   nickels   (5 cents),   and
+:::#   pennies   (1 cent)
 
 
 There are six ways to make change for 15 cents:
-:::#   A dime and a nickel 
+:::#   A dime and a nickel
 :::#   A dime and 5 pennies
 :::#   3 nickels
 :::#   2 nickels and 5 pennies
@@ -34,13 +34,13 @@ How many ways are there to make change for a dollar using these common coins?   
 
 
 ;Optional:
-Less common are dollar coins (100 cents);   and very rare are half dollars (50 cents).   With the addition of these two coins, how many ways are there to make change for $1000? 
+Less common are dollar coins (100 cents);   and very rare are half dollars (50 cents).   With the addition of these two coins, how many ways are there to make change for $1000?
 
 (Note:   the answer is larger than   2<sup>32</sup>).
 
 
 ;Reference:
-*   [http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-11.html#%_sec_Temp_52 an algorithm from MIT Press]. 
+*   [http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-11.html#%_sec_Temp_52 an algorithm from MIT Press].
 
 
 
@@ -214,7 +214,7 @@ This corresponds to a "naive" Haskell version; to do the larger problem will req
   Rosetta Code "Count the coins"
   This is a direct translation of a Haskell version, using an array rather than
   a list. LWB, UPB, and array slicing makes the mapping very simple:
- 
+
   LWB > UPB     <=> []
   LWB = UPB     <=> [x]
   a[LWB a]      <=> head xs
@@ -240,7 +240,7 @@ BEGIN
   END;
   [] INT denoms = (25, 10, 5, 1);
   print((ways to make change(denoms, 100), newline))
-END 
+END
 
 ```
 
@@ -332,7 +332,7 @@ function cc(amount, coins,    numPennies, numNickles, numQuarters, p, n, d, q, s
     numNickles = int(amount / 5)
     numDimes = int(amount / 10)
     numQuarters = int(amount / 25)
-    
+
     count = 0
     for (p = 0; p <= numPennies; p++) {
         for (n = 0; n <= numNickles; n++) {
@@ -353,7 +353,7 @@ function cc(amount, coins,    numPennies, numNickles, numQuarters, p, n, d, q, s
 Run time:
  time ./change-itr.awk
  242
- 
+
  real	0m0.065s
  user	0m0.063s
  sys	0m0.002s
@@ -394,10 +394,10 @@ function head(coins,    koins) {
 
 
 Run time:
- time ./change-rec.awk 
+ time ./change-rec.awk
  242
- 
- real	0m0.081s 
+
+ real	0m0.081s
  user	0m0.079s
  sys	0m0.002s
 
@@ -413,13 +413,13 @@ Non-recursive solution:
       uscoins%() = 1, 5, 10, 25
       PRINT FNchange(100, uscoins%()) " ways of making $1"
       PRINT FNchange(1000, uscoins%()) " ways of making $10"
-      
+
       DIM ukcoins%(7)
       ukcoins%() = 1, 2, 5, 10, 20, 50, 100, 200
       PRINT FNchange(100, ukcoins%()) " ways of making £1"
       PRINT FNchange(1000, ukcoins%()) " ways of making £10"
       END
-      
+
       DEF FNchange(sum%, coins%())
       LOCAL C%, D%, I%, N%, P%, Q%, S%, table()
       C% = 0
@@ -431,7 +431,7 @@ Non-recursive solution:
       C% *= N%
       DIM table(C%-1)
       FOR I% = 0 TO N%-1 : table(I%) = 1 : NEXT
-      
+
       P% = N%
       FOR S% = 1 TO sum%
         FOR I% = 0 TO N% - 1
@@ -463,8 +463,8 @@ Output (BBC BASIC does not have large enough integers for the optional task):
 
 Using some crude 128-bit integer type.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 
@@ -676,7 +676,7 @@ int main() {
   [amount denominations]
   (cc amount denominations))
 
-(count-change 15 denomination-kind) ; = 6 
+(count-change 15 denomination-kind) ; = 6
 ```
 
 
@@ -693,9 +693,9 @@ int main() {
        data division.
        working-storage section.
        77  i                      pic 9(3).
-       77  j                      pic 9(3).  
+       77  j                      pic 9(3).
        77  m                      pic 9(3) value 4.
-       77  n                      pic 9(3) value 100.  
+       77  n                      pic 9(3) value 100.
        77  edited-value           pic z(18).
        01  coins-table            value "01051025".
            05 coin                pic 9(2) occurs 4.
@@ -717,7 +717,7 @@ int main() {
                  add way(j - coin(i)) to way(j)
               end-perform
            end-perform
-           .           
+           .
 
 ```
 
@@ -742,7 +742,7 @@ changes = (amount, coins) ->
         for j from coin to amount
             ways[j] += ways[j - coin]
     ways[amount]
- 
+
 console.log changes 100, [1 5 10 25]
 ```
 
@@ -759,7 +759,7 @@ This example is based on the Spectrum ZX BASIC example found below. Direct copy 
 # It makes no sense to check with anything other than a multiple of 5 pennies, since the other denominations value a multiple of 5. Adding "step 5" to the penny for loop skips over a good portion of useless iteration. Result: about 9:44.
 # Not printing any of the individual results speeds up total time to 9:30.
 # Removing the specific variables used in the NEXT statements helps the interpreter speed up. Result: 9:10.
-# Now that the denominations were reordered, it makes sense that each sub-loop with the next lower denomination should loop only through the remaining money not accounted for by the larger denomination. Result: 2:12. 
+# Now that the denominations were reordered, it makes sense that each sub-loop with the next lower denomination should loop only through the remaining money not accounted for by the larger denomination. Result: 2:12.
 
 
 
@@ -1135,7 +1135,7 @@ void main() {
 
 ## Dart
 
-Simple recursive version plus cached version using a map.  
+Simple recursive version plus cached version using a map.
 
 ```Dart
 
@@ -1259,7 +1259,7 @@ Recursive solution using memoization, adapted from CommonLisp and Racket.
 ;; the function to memoize
 (define (sumways cents coins)
 	(+ (ways cents (cdr coins)) (ways (- cents (car coins)) coins)))
-	
+
 ;; accelerator : ways (cents, coins) = ways ((cents  - cents % 5) , coins)
 (define (ways cents coins)
   (cond ((null? coins) 0)
@@ -1283,30 +1283,30 @@ Recursive solution using memoization, adapted from CommonLisp and Racket.
 
 (define change '(100 50 25 10 5 1))
 (define c-1 (list-tail change -1))
-(for ((i (in-range 0 200001 20000))) 
+(for ((i (in-range 0 200001 20000)))
     (writeln i (time (ways i change)) (hash-count Hcoins)))
 
 
 ;; iterate cents = 20000, 40000, ..
 ;; cents ((time (msec) number-of-ways) number-of-entries-in-h-table
 
-20000      (350 4371565890901)         9398    
-40000      (245 138204514221801)       18798    
-60000      (230 1045248220992701)      28198    
-80000      (255 4395748062203601)      37598    
-100000     (234 13398445413854501)     46998    
-120000     (230 33312577651945401)     56398    
-140000     (292 71959878152476301)     65798    
-160000     (736 140236576291447201)     75198    
-180000     (237 252625397444858101)     84598    
-200000     (240 427707562988709001)     93998    
+20000      (350 4371565890901)         9398
+40000      (245 138204514221801)       18798
+60000      (230 1045248220992701)      28198
+80000      (255 4395748062203601)      37598
+100000     (234 13398445413854501)     46998
+120000     (230 33312577651945401)     56398
+140000     (292 71959878152476301)     65798
+160000     (736 140236576291447201)     75198
+180000     (237 252625397444858101)     84598
+200000     (240 427707562988709001)     93998
 
 ;; One can see that the time is linear, and the h-table size reasonably small
 
-change 
+change
     → (100 50 25 10 5 1)
 (ways 100000 change)
-    → 13398445413854501 
+    → 13398445413854501
 
 
 ```
@@ -1326,17 +1326,17 @@ defmodule Coins do
       |> Enum.max
       |> IO.inspect
   end
-  
+
   defp count([],_,vals), do: vals
   defp count([coin|coins],lim,vals) do
     count(coins,lim,ways(coin,coin,lim,vals))
   end
-  
+
   defp ways(num,_coin,lim,vals) when num > lim, do: vals
   defp ways(num, coin,lim,vals) do
     ways(num+1,coin,lim,ad(coin,num,vals))
   end
-  
+
   defp ad(a,b,c), do: Map.put(c,b,c[b]+c[b-a])
 end
 
@@ -1376,7 +1376,7 @@ count(_N,[],Cache) ->
     {0,Cache};
 count(N,[C|Cs]=Coins,Cache) ->
     case dict:is_key({N,length(Coins)},Cache) of
-        true -> 
+        true ->
             {dict:fetch({N,length(Coins)},Cache), Cache};
         false ->
             {N1,C1} = count(N-C,Coins,Cache),
@@ -1414,9 +1414,9 @@ let changes amount coins =
         for j = coin to amount do ways.[j] <- ways.[j] + ways.[j - coin]
     ) coins
     ways.[amount]
- 
+
 [<EntryPoint>]
-let main argv = 
+let main argv =
     printfn "%d" (changes    100 [25; 10; 5; 1]);
     printfn "%d" (changes 100000 [100; 50; 25; 10; 5; 1]);
     0
@@ -1521,7 +1521,7 @@ Or one could implement the algorithm like described in http://www.cdn.geeksforge
 
 ```factor
 
-USE: math.ranges 
+USE: math.ranges
 
 :: exchange-count ( seq val -- cnt )
   val 1 + 0 <array> :> tab
@@ -1531,7 +1531,7 @@ USE: math.ranges
     seq nth old!
     old val [a,b] [| j |
       j old - tab nth
-      j tab nth + 
+      j tab nth +
       j tab set-nth
     ] each
   ] each
@@ -1673,7 +1673,7 @@ for penny = 0 to 100
          for quarter = 0 to 4
             if penny + nickel * 5 + dime * 10 + quarter * 25 == 100
                print penny; " pennies "; nickel;" nickels "; dime; " dimes "; quarter; " quarters"
-               count++ 
+               count++
             end if
          next quarter
       next dime
@@ -1890,7 +1890,7 @@ count = foldr addCoin (1 : repeat 0)
     addCoin c oldlist = newlist
       where
         newlist = take c oldlist ++ zipWith (+) newlist (drop c oldlist)
- 
+
 main :: IO ()
 main = do
   print (count [25, 10, 5, 1] !! 100)
@@ -1911,7 +1911,7 @@ count =
         let (l, r) = splitAt x a
         in fix (mappend l . flip (zipWith (+)) r))
     (1 : repeat 0)
-    
+
 
 -- TEST -----------------------------------------------------------------------
 main :: IO ()
@@ -1944,14 +1944,14 @@ procedure main()
    CDN_coins      := [1,5,10,25,100,200]
    CDN_allcoins   := [1,5,10,25,50,100,200]
 
-   every trans := ![ [15,US_coins], 
-                     [100,US_coins], 
-                     [1000*100,US_allcoins] 
-                  ] do 
+   every trans := ![ [15,US_coins],
+                     [100,US_coins],
+                     [1000*100,US_allcoins]
+                  ] do
       printf("There are %i ways to count change for %i using %s coins.\n",CountCoins!trans,trans[1],ShowList(trans[2]))
 end
 
-procedure ShowList(L)            # helper list to string 
+procedure ShowList(L)            # helper list to string
 every (s := "[ ") ||:= !L || " "
 return s || "]"
 end
@@ -1974,18 +1974,18 @@ if type(coins) == "list" then {
 else {
    /coins := 1
    if value := S[coins] then {
-      every (count := 0) +:= CountCoins(amt - (0 to amt by value), coins + 1) 
+      every (count := 0) +:= CountCoins(amt - (0 to amt by value), coins + 1)
       return count
-      }   
-   else    
+      }
+   else
       return (amt ~= 0) | 1
    }
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 
 Output:
 ```txt
@@ -2012,7 +2012,7 @@ end
 procedure main(params)
 	money := params[1]
 	coins := [1,5,10,25]
-	
+
 	writes("Value of ", money, " can be changed by using a set of ")
 	every writes(coins[1 to *coins], " ")
 	write(" coins in ", count(coins, money), " different ways.")
@@ -2285,7 +2285,7 @@ def countcoins(target):
            | if $count == 0 then .
              else .[$b] += $count
              end
-           end ) ) 
+           end ) )
   | .[target] ;
 ```
 
@@ -2333,7 +2333,7 @@ changes(100000, [1, 5, 10, 25, 50, 100]) = 13398445413854501
 fun countCoins(c: IntArray, m: Int, n: Int): Long {
     val table = LongArray(n + 1)
     table[0] = 1
-    for (i in 0 until m) 
+    for (i in 0 until m)
         for (j in c[i]..n) table[j] += table[j - c[i]]
     return table[n]
 }
@@ -2341,7 +2341,7 @@ fun countCoins(c: IntArray, m: Int, n: Int): Long {
 fun main(args: Array<String>) {
     val c = intArrayOf(1, 5, 10, 25, 50, 100)
     println(countCoins(c, 4, 100))
-    println(countCoins(c, 6, 1000 * 100)) 
+    println(countCoins(c, 6, 1000 * 100))
 }
 ```
 
@@ -2522,31 +2522,31 @@ CountCoins[100000, {100, 50, 25, 10, 5}]
 %% Count_The_Coins
 clear;close all;clc;
 tic
- 
+
 for i = 1:2 % 1st loop is main challenge 2nd loop is optional challenge
     if (i == 1)
-        amount = 100;                       % Matlab indexes from 1 not 0, so we need to add 1 to our target value                        
-        amount = amount + 1;                    
+        amount = 100;                       % Matlab indexes from 1 not 0, so we need to add 1 to our target value
+        amount = amount + 1;
         coins = [1 5 10 25];                % Value of coins we can use
     else
-        amount = 100*1000;                  % Matlab indexes from 1 not 0, so we need to add 1 to our target value                        
-        amount = amount + 1; 
+        amount = 100*1000;                  % Matlab indexes from 1 not 0, so we need to add 1 to our target value
+        amount = amount + 1;
         coins = [1 5 10 25 50 100];         % Value of coins we can use
     end % End if
     ways = zeros(1,amount);                 % Preallocating for speed
     ways(1) = 1;                            % First solution is 1
- 
+
     % Solves from smallest sub problem to largest (bottom up approach of dynamic programming).
-    for j = 1:length(coins)                 
-        for K = coins(j)+1:amount           
-            ways(K) = ways(K) + ways(K-coins(j));   
+    for j = 1:length(coins)
+        for K = coins(j)+1:amount
+            ways(K) = ways(K) + ways(K-coins(j));
         end % End for
     end % End for
         if (i == 1)
             fprintf(‘Main Challenge: %d \n', ways(amount));
         else
             fprintf(‘Bonus Challenge: %d \n', ways(amount));
-        end % End if 
+        end % End if
 end % End for
 toc
 
@@ -2672,7 +2672,7 @@ Output:
 
 
 ```txt
-$ ocaml coins.ml 
+$ ocaml coins.ml
 242
 13398445413854501
 ```
@@ -2813,11 +2813,11 @@ function coin_count(sequence coins, integer amount)
     --  (nb: s[1] holds the solution for 0, s[n+1] for n)
     sequence s = repeat(0,amount+1)
     s[1] = 1
-    -- then for every coin that we can use, increase number of 
+    -- then for every coin that we can use, increase number of
     --  solutions by that previously found for the remainder.
     for c=1 to length(coins) do
         -- this inner loop is essentially behaving as if we had
-        -- called this routine with 1..amount, but skipping any 
+        -- called this routine with 1..amount, but skipping any
         -- less than the coin's value, hence coins[c]..amount.
         for n=coins[c] to amount do
             s[n+1] += s[n-coins[c]+1]
@@ -2842,7 +2842,7 @@ printf(1,"%d\n",coin_count({2,3},5))    -- (prints 1)
 --     and at 5: we added the previously found soln for 2.
 --     you can imagine at 6,9,12 etc all add in soln for 3,
 --     albeit by adding that as just added to the precessor.
--- [3] since we add no 3p solns when processing 2p, we do 
+-- [3] since we add no 3p solns when processing 2p, we do
 --     not count 2p+3p and 3p+2p as two solutions.
 
 --For N = 4 and S = {1,2,3}, there are four solutions: {1,1,1,1},{1,1,2},{2,2},{1,3}.
@@ -3032,7 +3032,7 @@ This works for the small numbers, but the optional task is just too slow with th
 
 ```Racket
 #lang racket
- 
+
 (define memos (make-hash))
 (define (ways-to-make-change cents coins)
   (cond [(or (empty? coins) (negative? cents)) 0]
@@ -3067,11 +3067,11 @@ This works for the small numbers, but the optional task is just too slow with th
 
 The recursive calls to the subroutine have been unrolled somewhat, this reduces the number of recursive calls substantially.
 
-These REXX versions also support fractional cents  (as in a   <big>½</big>-cent   and   <big>¼</big>-cent coins).   Any fractional coin can be 
+These REXX versions also support fractional cents  (as in a   <big>½</big>-cent   and   <big>¼</big>-cent coins).   Any fractional coin can be
 
 specified as a decimal fraction    (.5,    .25,   <b>···</b>).
 
-Support was included to allow specification of half-cent and quarter-cent coins as   '''1/2''' 
+Support was included to allow specification of half-cent and quarter-cent coins as   '''1/2'''
   and   '''1/4'''.
 
 The amount can be specified in cents (as a number), or in dollars (as for instance,   $1000).
@@ -3169,7 +3169,7 @@ MKchg:  procedure expose $. !.;  parse arg a,k               /*function is recur
         !.a.k=f + MKchg(a-$.k, k);       return !.a.k        /*compute, define, return. */
 ```
 
-'''output'''   when using the following input for the optional test case:  
+'''output'''   when using the following input for the optional test case:
 <tt> $1000   1   5   10   25   50   100 </tt>
 
 ```txt
@@ -3183,7 +3183,7 @@ ways to make change with coins of the following denominations:  1 5 10 25 50 100
 
 ### with error checking
 
-This REXX version is identical to the previous REXX version, but has error checking for the amount and the coins specified. 
+This REXX version is identical to the previous REXX version, but has error checking for the amount and the coins specified.
 
 ```rexx
 /*REXX program counts the number of ways to make change with coins from an given amount.*/
@@ -3241,7 +3241,7 @@ MKchg:  procedure expose $. !.;  parse arg a,k               /*function is recur
         !.a.k=f + MKchg(a-$.k, k);       return !.a.k        /*compute, define, return. */
 ```
 
-'''output'''   is the same as the previous REXX versions. 
+'''output'''   is the same as the previous REXX versions.
 
 
 
@@ -3253,17 +3253,17 @@ MKchg:  procedure expose $. !.;  parse arg a,k               /*function is recur
 
 penny = 1
 nickel = 1
-dime = 1 
+dime = 1
 quarter = 1
 count = 0
- 
+
 for penny = 0 to 100
     for nickel = 0 to 20
         for dime = 0 to 10
             for quarter = 0 to 4
                 if (penny + nickel * 5 + dime * 10 + quarter * 25) = 100
                    see "" + penny + " pennies " + nickel + " nickels " + dime + " dimes " + quarter + " quarters" + nl
-                   count = count + 1 
+                   count = count + 1
                 ok
             next
         next
@@ -3370,7 +3370,7 @@ for penny         = 0 to 100
       for quarter = 0 to 4
        if penny + nickel * 5 + dime * 10 + quarter * 25 = 100 then
         print penny;" pennies ";nickel;" nickels "; dime;" dimes ";quarter;" quarters"
-        count = count + 1 
+        count = count + 1
       end if
       next quarter
     next dime
@@ -3459,18 +3459,18 @@ Output:
 
 ```txt
 
-Obs penny nickel dime quarter 
-1 100 0 0 0 
-2 95 1 0 0 
-3 90 2 0 0 
-4 85 3 0 0 
-5 80 4 0 0 
+Obs penny nickel dime quarter
+1 100 0 0 0
+2 95 1 0 0
+3 90 2 0 0
+4 85 3 0 0
+5 80 4 0 0
 ...
-238 5 2 1 3 
-239 0 3 1 3 
-240 5 0 2 3 
-241 0 1 2 3 
-242 0 0 0 4 
+238 5 2 1 3
+239 0 3 1 3
+240 5 0 2 3
+241 0 1 2 3
+242 0 0 0 4
 
 ```
 
@@ -3488,9 +3488,9 @@ def countChange(amount: Int, coins:List[Int]) = {
 		  ways(j) =  ways(j) + ways(j - coin)
 		  )
 	ways(amount)
-  }       
+  }
 
-countChange (15, List(1, 5, 10, 25)) 
+countChange (15, List(1, 5, 10, 25))
 
 ```
 
@@ -3595,7 +3595,7 @@ disp(ways);
             ways(j+1) = ways(j+1) + ways(j + 1 - coin);
         end
     end
-    
+
     varargout=list(ways(length(ways)))
 endfunction
 
@@ -3620,7 +3620,7 @@ mprintf("%.0f, %.0f", a, b);
 ```seed7
 $ include "seed7_05.s7i";
   include "bigint.s7i";
- 
+
 const func bigInteger: changeCount (in integer: amountCents, in array integer: coins) is func
   result
     var bigInteger: waysToChange is 0_;
@@ -3647,7 +3647,7 @@ const func bigInteger: changeCount (in integer: amountCents, in array integer: c
     end for;
     waysToChange := t[pos - 1];
   end func;
- 
+
 const proc: main is func
   local
     const array integer: usCoins is [] (1, 5, 10, 25, 50, 100);
@@ -3984,8 +3984,8 @@ End Sub
 {{out}}
 
 ```txt
- 242 
- 13398445413854501 
+ 242
+ 13398445413854501
 ```
 
 
@@ -4042,7 +4042,7 @@ Private Function coin_count(coins As Variant, amount As Long) As Variant
 'return type will be Decimal
 Dim s() As Variant
 Dim n As Long, c As Long
-    
+
   ReDim s(amount + 1)
   s(1) = CDec(1)
   For c = LBound(coins) To UBound(coins)
@@ -4056,21 +4056,21 @@ End Function
 Sub Main()
 Dim us_common_coins As Variant
 Dim us_coins As Variant
-    
+
   'The next line creates 0-based array
   us_common_coins = Array(25, 10, 5, 1)
   Debug.Print coin_count(us_common_coins, 100)
-  
+
   us_coins = Array(100, 50, 25, 10, 5, 1)
   Debug.Print coin_count(us_coins, 100000)
-  
+
 End Sub
 ```
 
 {{out}}
 
 ```txt
- 242 
+ 242
  13398445413854501
 ```
 
@@ -4134,7 +4134,7 @@ Test with emulator at full speed for reasonable performance.
 ```zxbasic
 10 LET amount=100
 20 GO SUB 1000
-30 STOP 
+30 STOP
 1000 LET nPennies=amount
 1010 LET nNickles=INT (amount/5)
 1020 LET nDimes=INT (amount/10)
@@ -4151,6 +4151,6 @@ Test with emulator at full speed for reasonable performance.
 1130 NEXT n
 1140 NEXT p
 1150 PRINT count
-1160 RETURN 
+1160 RETURN
 ```
 

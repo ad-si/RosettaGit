@@ -10,18 +10,18 @@ categories = []
 tags = []
 +++
 
-{{task|Encryption}} 
+{{task|Encryption}}
 [[Category:String manipulation]]
 {{omit from|GUISS|would need to install an application that could do this}}
 {{omit from|Openscad}}
 
 ;Task:
-Implement a   [[wp:Vigen%C3%A8re_cipher|Vigenère cypher]],   both encryption and decryption. 
+Implement a   [[wp:Vigen%C3%A8re_cipher|Vigenère cypher]],   both encryption and decryption.
 
-The program should handle keys and text of unequal length, 
-and should capitalize everything and discard non-alphabetic characters. 
+The program should handle keys and text of unequal length,
+and should capitalize everything and discard non-alphabetic characters.
 
-(If your program handles non-alphabetic characters in another way, 
+(If your program handles non-alphabetic characters in another way,
 make a note of it.)
 
 
@@ -46,7 +46,7 @@ PROCEDURE Main IS
    SUBTYPE Alpha IS Character RANGE 'A' .. 'Z';
    TYPE Ring IS MOD (Alpha'Pos (Alpha'Last)-Alpha'Pos (Alpha'First) + 1);
    TYPE Seq IS ARRAY (Integer RANGE <>) OF Ring;
-   
+
    FUNCTION "+" (S, Key : Seq) RETURN Seq IS
       R : Seq (S'Range);
    BEGIN
@@ -55,16 +55,16 @@ PROCEDURE Main IS
       END LOOP;
       RETURN R;
    END "+";
-   
+
    FUNCTION "-" (S : Seq) RETURN Seq IS
       R : Seq (S'Range);
    BEGIN
       FOR I IN R'Range LOOP
          R (I) := - S (I);
-      END LOOP; 
+      END LOOP;
       RETURN R;
    END "-";
-   
+
    FUNCTION To_Seq (S : String) RETURN Seq IS
       R  : Seq (S'Range);
       I  : Integer := R'First;
@@ -77,7 +77,7 @@ PROCEDURE Main IS
       END LOOP;
       RETURN R (R'First .. I - 1);
    END To_Seq;
-   
+
    FUNCTION To_String (S : Seq ) RETURN String IS
       R : String (S'Range);
    BEGIN
@@ -86,7 +86,7 @@ PROCEDURE Main IS
       END LOOP;
       RETURN R;
    END To_String;
-   
+
    Input : Seq := To_Seq (Get_Line);
    Key : Seq := To_Seq (Get_Line);
    Crypt : Seq := Input + Key;
@@ -200,14 +200,14 @@ Lines <code>340,350,430,440</code> could probably been put into some DEF FN, but
 I have not used the DEF FN MOD(A) function in line <code>450</code> on purpose, as I still would have had to correct for a possible negative value.
 
 ```Applesoft BASIC
- 
+
   100 :
   110  REM  VIGENERE CIPHER
   120 :
   200  REM  SET-UP
   210 K$ = "LEMON": PRINT "KEY: "; K$
   220 PT$ = "ATTACK AT DAWN": PRINT "PLAIN TEXT: ";PT$
-  230  DEF  FN MOD(A) = A -  INT (A / 26) * 26 
+  230  DEF  FN MOD(A) = A -  INT (A / 26) * 26
   300  REM  ENCODING
   310 K = 1
   320  FOR I = 1 TO  LEN (PT$)
@@ -216,7 +216,7 @@ I have not used the DEF FN MOD(A) function in line <code>450</code> on purpose, 
   340 TV =  ASC ( MID$ (PT$,I,1)) - 65
   350 KV =  ASC ( MID$ (K$,K,1)) - 65
   360 CT$ = CT$ +  CHR$ ( FN MOD(TV + KV) + 65)
-  370 K = K + 1: IF K >  LEN (K$) THEN K = 1      
+  370 K = K + 1: IF K >  LEN (K$) THEN K = 1
   380  NEXT I
   390  PRINT "CIPHER TEXT: ";CT$
   400  REM  DECODING
@@ -228,7 +228,7 @@ I have not used the DEF FN MOD(A) function in line <code>450</code> on purpose, 
   460 DT$ = DT$ +  CHR$ (T + 65)
   470 K = K + 1: IF K >  LEN (K$) THEN K = 1
   480  NEXT I
-  490  PRINT "DECRYPTED TEXT: ";DT$ 
+  490  PRINT "DECRYPTED TEXT: ";DT$
 ```
 
 {{out}}
@@ -290,7 +290,7 @@ Decrypted  =BEWARETHEJABBERWOCKMYSONTHEJAWSTHATBITETHECLAWSTHATCATCH
       PRINT "Ciphertext = """ ciphertext$ """"
       PRINT "Decrypted  = """ FNdecrypt(ciphertext$, key$) """"
       END
-      
+
       DEF FNencrypt(plain$, key$)
       LOCAL i%, k%, n%, o$
       plain$ = FNupper(plain$)
@@ -303,7 +303,7 @@ Decrypted  =BEWARETHEJABBERWOCKMYSONTHEJAWSTHATBITETHECLAWSTHATCATCH
         ENDIF
       NEXT
       = o$
-      
+
       DEF FNdecrypt(cipher$, key$)
       LOCAL i%, k%, n%, o$
       cipher$ = FNupper(cipher$)
@@ -314,7 +314,7 @@ Decrypted  =BEWARETHEJABBERWOCKMYSONTHEJAWSTHATBITETHECLAWSTHATCATCH
         k% = (k% + 1) MOD LEN(key$)
       NEXT
       = o$
-      
+
       DEF FNupper(A$)
       LOCAL A%,C%
       FOR A% = 1 TO LEN(A$)
@@ -382,8 +382,8 @@ BEWARETHEJABBERWOCKMYSONTHEJAWSTHATBITETHECLAWSTHATCATCH
 
 This program skips non-alphabetical characters, preserves case, and when run with the <code>-d</code> command line flag, decrypts the message rather than encrypting.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
@@ -398,7 +398,7 @@ char *get_input(void);
 int main(int argc, char *argv[])
 {
     char const usage[] = "Usage: vinigere [-d] key";
-    char sign = 1; 
+    char sign = 1;
     char const plainmsg[] = "Plain text:  ";
     char const cryptmsg[] = "Cipher text: ";
     bool encrypt = true;
@@ -406,11 +406,11 @@ int main(int argc, char *argv[])
 
     while ((opt = getopt(argc, argv, "d")) != -1) {
         switch (opt) {
-        case 'd': 
+        case 'd':
             sign = -1;
             encrypt = false;
             break;
-        default: 
+        default:
             fprintf(stderr, "Unrecogized command line argument:'-%i'\n", opt);
             fprintf(stderr, "\n%s\n", usage);
             return 1;
@@ -429,7 +429,7 @@ int main(int argc, char *argv[])
     size_t const keylen = strlen(key);
     char shifts[keylen];
 
-    char const *restrict plaintext = NULL; 
+    char const *restrict plaintext = NULL;
     for (size_t i = 0; i < keylen; i++) {
         if (!(isalpha(key[i]))) {
             fprintf(stderr, "Invalid key\n");
@@ -516,8 +516,8 @@ Plain text:  Beware the Jabberwock, my son! The jaws that bite, the claws that c
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 using namespace std;
 
@@ -544,13 +544,13 @@ public:
     for(int i = 0, j = 0; i < text.length(); ++i)
     {
       char c = text[i];
-      
+
       if(c >= 'a' && c <= 'z')
         c += 'A' - 'a';
       else if(c < 'A' || c > 'Z')
         continue;
 
-      out += (c + key[j] - 2*'A') % 26 + 'A'; 
+      out += (c + key[j] - 2*'A') % 26 + 'A';
       j = (j + 1) % key.length();
     }
 
@@ -564,13 +564,13 @@ public:
     for(int i = 0, j = 0; i < text.length(); ++i)
     {
       char c = text[i];
-      
+
       if(c >= 'a' && c <= 'z')
         c += 'A' - 'a';
       else if(c < 'A' || c > 'Z')
         continue;
 
-      out += (c - key[j] + 26) % 26 + 'A'; 
+      out += (c - key[j] + 26) % 26 + 'A';
       j = (j + 1) % key.length();
     }
 
@@ -674,27 +674,27 @@ Decrypted: BEWARETHEJABBERWOCKMYSONTHEJAWSTHATBITETHECLAWSTHATCATCH
 
 ```ceylon
 shared void run() {
-    
+
     function normalize(String text) => text.uppercased.filter(Character.letter);
-    
+
     function crypt(String text, String key, Character(Character, Character) transform) => String {
         for ([a, b] in zipPairs(normalize(text), normalize(key).cycled))
         transform(a, b)
     };
-    
-    function encrypt(String clearText, String key) => 
-            crypt(clearText, key, (Character a, Character b) => 
+
+    function encrypt(String clearText, String key) =>
+            crypt(clearText, key, (Character a, Character b) =>
 				('A'.integer + ((a.integer + b.integer - 130) % 26)).character);
 
-    function decrypt(String cipherText, String key) => 
-            crypt(cipherText, key, (Character a, Character b) => 
+    function decrypt(String cipherText, String key) =>
+            crypt(cipherText, key, (Character a, Character b) =>
         		('A'.integer + ((a.integer - b.integer + 26) % 26)).character);
-    
+
     value key = "VIGENERECIPHER";
     value message = "Beware the Jabberwock, my son! The jaws that bite, the claws that catch!";
     value encrypted = encrypt(message, key);
     value decrypted = decrypt(encrypted, key);
-    
+
     print(encrypted);
     print(decrypted);
 }
@@ -762,21 +762,21 @@ Requires Clojure 1.2.
 ; Convert a string to a sequence of just the letters as uppercase chars
 (defn to-normalized-seq [str]
   (map #'first (re-seq #"[A-Z]" (string/upper-case str))))
-  
+
 ; add (op=+) or subtract (op=-) the numerical value of the key letter from the
-; text letter.  
-(defn crypt1 [op text key] 
+; text letter.
+(defn crypt1 [op text key]
   (from-num (apply op (list (to-num text) (to-num key)))))
 
 (defn crypt [op text key]
   (let [xcrypt1 (partial #'crypt1 op)]
     (apply #'str
-      (map xcrypt1 (to-normalized-seq text) 
+      (map xcrypt1 (to-normalized-seq text)
                    (cycle (to-normalized-seq key))))))
-   
+
 ; encipher a text
 (defn encrypt [plaintext key] (crypt #'+ plaintext key))
-      
+
 ; decipher a text
 (defn decrypt [ciphertext key] (crypt #'- ciphertext key))
 ```
@@ -822,25 +822,25 @@ code = (char) -> char.charCodeAt()
 encrypt = (text, key) ->
 	res = []
 	j = 0
-	
+
 	for c in text.toUpperCase()
 		continue if c < 'A' or c > 'Z'
-		
+
 		res.push ((code c) + (code key[j]) - 130) % 26 + 65
 		j = ++j % key.length
-	
+
 	String.fromCharCode res...
 
 decrypt = (text, key) ->
 	res = []
 	j = 0
-	
+
 	for c in text.toUpperCase()
 		continue if c < 'A' or c > 'Z'
-		
+
 		res.push ((code c) - (code key[j]) + 26) % 26 + 65
 		j = ++j % key.length
-	
+
 	String.fromCharCode res...
 
 # Trying it out
@@ -952,16 +952,16 @@ import system'text;
 import system'math;
 import system'routines;
 import extensions;
- 
+
 class VCipher
 {
     string encrypt(string txt, string pw, int d)
     {
         auto output := new TextBuilder();
         int pwi := 0;
- 
+
         string PW := pw.upperCase();
- 
+
         txt.upperCase().forEach:(t)
         {
             if(t >= $65)
@@ -976,18 +976,18 @@ class VCipher
                 if (pwi == PW.Length) { pwi := 0 }
             }
         };
- 
+
         ^ output.Value
     }
 }
- 
+
 public program()
 {
     var v := new VCipher();
- 
+
     var s0 := "Beware the Jabberwock, my son! The jaws that bite, the claws that catch!";
     var pw := "VIGENERECIPHER";
- 
+
     console.printLine(s0,newLine,pw,newLine);
     var s1 := v.encrypt(s0, pw, 1);
     console.printLine("Encrypted:",s1);
@@ -1021,11 +1021,11 @@ Press any key to continue..
 defmodule VigenereCipher do
   @base  ?A
   @size  ?Z - @base + 1
-  
+
   def encrypt(text, key), do: crypt(text, key, 1)
-  
+
   def decrypt(text, key), do: crypt(text, key, -1)
-  
+
   defp crypt(text, key, dir) do
     text = String.upcase(text) |> String.replace(~r/[^A-Z]/, "") |> to_char_list
     key_iterator = String.upcase(key) |> String.replace(~r/[^A-Z]/, "") |> to_char_list
@@ -1042,7 +1042,7 @@ plaintext = "Beware the Jabberwock, my son! The jaws that bite, the claws that c
 key = "Vigenere cipher"
 ciphertext = VigenereCipher.encrypt(plaintext, key)
 recovered  = VigenereCipher.decrypt(ciphertext, key)
- 
+
 IO.puts "Original: #{plaintext}"
 IO.puts "Encrypted: #{ciphertext}"
 IO.puts "Decrypted: #{recovered}"
@@ -1103,11 +1103,11 @@ decipher(C, K) -> from_pos(to_pos(C) - to_pos(K)).
 % extend a list by repeating it until it is at least N elements long
 cycle_to(N, List) when length(List) >= N -> List;
 cycle_to(N, List) -> append(List, cycle_to(N-length(List), List)).
-   
+
 % Encryption prep: reduce string to only its letters, in uppercase
 normalize(Str) -> toupper(filter(fun isalpha/1, Str)).
 
-crypt(RawText, RawKey, Func) -> 
+crypt(RawText, RawKey, Func) ->
   PlainText = normalize(RawText),
   zipwith(Func, PlainText, cycle_to(length(PlainText), normalize(RawKey))).
 
@@ -1121,7 +1121,7 @@ Demonstration code:
 ```erlang
 -module(testvigenere).
 -import(vigenere,[encrypt/2, decrypt/2]).
-main(_) -> 
+main(_) ->
   Key = "Vigenere cipher",
   CipherText = encrypt("Beware the Jabberwock, my son! The jaws that bite, the claws that catch!", Key),
   RecoveredText = decrypt(CipherText, Key),
@@ -1146,14 +1146,14 @@ IN: rosetta-code.vigenere-cipher
 
 : mult-pad ( key input -- x )
     [ length ] bi@ 2dup < [ swap ] when / ceiling ;
-    
+
 : lengthen-pad ( key input -- rep-key input )
     [ mult-pad ] 2keep [ <repetition> concat ] dip
     [ length ] keep [ head ] dip ;
-    
+
 : normalize ( str -- only-upper-letters )
     >upper [ LETTER? ] filter ;
-    
+
 : vigenere-encrypt ( key input -- ecrypted )
     [ normalize ] bi@ lengthen-pad
     [ [ CHAR: A - ] map ] bi@ [ + 26 mod CHAR: A + ] 2map ;
@@ -1161,7 +1161,7 @@ IN: rosetta-code.vigenere-cipher
 : vigenere-decrypt ( key input -- decrypted )
     [ normalize ] bi@ lengthen-pad [ [ CHAR: A - ] map ] bi@
     [ - 26 - abs 26 mod CHAR: A + ] 2map ;
-    
+
 : main ( -- )
     "Vigenere cipher" dup
     "Beware the Jabberwock, my son! The jaws that bite, the claws that catch!"
@@ -1192,7 +1192,7 @@ Decrypted: BEWARETHEJABBERWOCKMYSONTHEJAWSTHATBITETHECLAWSTHATCATCH
 ```fortran
 program vigenere_cipher
   implicit none
-  
+
   character(80) :: plaintext = "Beware the Jabberwock, my son! The jaws that bite, the claws that catch!", &
                    ciphertext = ""
   character(14) :: key = "VIGENERECIPHER"
@@ -1212,7 +1212,7 @@ subroutine encrypt(intxt, outtxt, k)
   integer :: chrn
   integer :: cp = 1, kp = 1
   integer :: i
-  
+
   outtxt = ""
   do i = 1, len(trim(intxt))
     select case(intxt(i:i))
@@ -1220,17 +1220,17 @@ subroutine encrypt(intxt, outtxt, k)
         select case(intxt(i:i))
           case("a":"z")
             chrn = iachar(intxt(i:i)) - 32
-   
+
           case default
             chrn = iachar(intxt(i:i))
-                         
+
         end select
-     
+
         outtxt(cp:cp) = achar(modulo(chrn + iachar(k(kp:kp)), 26) + 65)
         cp = cp + 1
         kp = kp + 1
         if(kp > len(k)) kp = kp - len(k)
- 
+
     end select
   end do
 end subroutine
@@ -1241,7 +1241,7 @@ subroutine decrypt(intxt, outtxt, k)
   integer :: chrn
   integer :: cp = 1, kp = 1
   integer :: i
-  
+
   outtxt = ""
   do i = 1, len(trim(intxt))
     chrn = iachar(intxt(i:i))
@@ -1455,15 +1455,15 @@ procedure main()
 end
 
 procedure Vignere(mode,ekey,ptext,alpha)   #: Vignere cipher
-   /alpha := &ucase                                              # default 
+   /alpha := &ucase                                              # default
    if *alpha ~= *cset(alpha) then runerr(205,alpha)              # no dups
    alpha ||:= alpha                                              # unobstructed
 
-   every ctext:="" & p:=ptext[i := 1 to *ptext] & k:=ekey[(i-1)%*ekey+1] do 
+   every ctext:="" & p:=ptext[i := 1 to *ptext] & k:=ekey[(i-1)%*ekey+1] do
       case mode of {
-         "e"|"encrypt": 
+         "e"|"encrypt":
             ctext||:=map(p,alpha[1+:*alpha/2],alpha[find(k,alpha)+:(*alpha/2)])
-         "d"|"decrypt": 
+         "d"|"decrypt":
             ctext||:=map(p,alpha[find(k,alpha)+:(*alpha/2)],alpha[1+:*alpha/2])
          default: runerr(205,mode)
       }
@@ -1476,10 +1476,10 @@ The following helper procedures will be of general use with classical cryptograp
 
 ```Icon
 
-link strings 
+link strings
 
-procedure NormalizeText(ptext,alpha)       #: text/case classical crypto helper 
-   /alpha := &ucase                                              # default 
+procedure NormalizeText(ptext,alpha)       #: text/case classical crypto helper
+   /alpha := &ucase                                              # default
    if &lcase === (alpha := cset(alpha)) then ptext := map(ptext) # lower
    if &ucase === alpha  then ptext := map(ptext,&lcase,&ucase)   # upper
    return deletec(ptext,&cset--alpha)                            # only alphas
@@ -1492,8 +1492,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec]
 
 {{out}}
 
@@ -1529,7 +1529,7 @@ vigEncryptRC=: 0 vig ALPHA preprocess
 vigDecryptRC=: 1 vig ALPHA preprocess
 ```
 
-  
+
 '''Example Use:'''
 
 ```j
@@ -1633,7 +1633,7 @@ From Javascript entry.
 function ordA(a:string):number {
     return a.charCodeAt(0) - 65;
 }
- 
+
 // vigenere
 function vigenereCipher(text:string, key:string, decode:boolean=false):string {
     var i = 0, b;
@@ -1669,7 +1669,7 @@ vigenere(enc, key, true) ==> THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOGTHELAZYDOGLAZYD
 {{out}}
 
 ```txt
-prompt$ jsish -u vigenereCipher.jsi 
+prompt$ jsish -u vigenereCipher.jsi
 [PASS] vigenereCipher.jsi
 ```
 
@@ -1797,7 +1797,7 @@ BEWARETHEJABBERWOCKMYSONTHEJAWSTHATBITETHECLAWSTHATCATCH
 
 ori$ = "Beware the Jabberwock, my son! The jaws that bite, the claws that catch!"
 key$ = filter$("vigenerecipher")
-print ori$ 
+print ori$
 print key$
 enc$ = encrypt$(ori$, key$)
 print enc$
@@ -1844,51 +1844,51 @@ function filter$(ori$)
         c$ = upper$(mid$(ori$,i,1))
         if instr("ABCDEFGHIJKLMNOPQRSTUVWXYZ", c$) then filter$ = filter$ + c$
     next
-end function 
+end function
 
 ```
 
- 
+
  Beware the Jabberwock, my son! The jaws that bite, the claws that catch!
  VIGENERECIPHER
  WMCEEIKLGRPIFVMEUGXQPWQVIOIAVEYXUEKFKBTALVXTGAFXYEVKPAGY
- BEWARETHEJABBERWOCKMYSONTHEJAWSTHATBITETHECLAWSTHATCATCH 
+ BEWARETHEJABBERWOCKMYSONTHEJAWSTHATBITETHECLAWSTHATCATCH
 
 
 ## Lua
 
 
 ```lua
-function Encrypt( _msg, _key )    
+function Encrypt( _msg, _key )
     local msg = { _msg:upper():byte( 1, -1 ) }
-    local key = { _key:upper():byte( 1, -1 ) }    
+    local key = { _key:upper():byte( 1, -1 ) }
     local enc = {}
 
     local j, k = 1, 1
-    for i = 1, #msg do    
+    for i = 1, #msg do
         if msg[i] >= string.byte('A') and msg[i] <= string.byte('Z') then
             enc[k] = ( msg[i] + key[j] - 2*string.byte('A') ) % 26 + string.byte('A')
-            
+
             k = k + 1
             if j == #key then j = 1 else j = j + 1 end
         end
     end
-    
+
     return string.char( unpack(enc) )
 end
 
 function Decrypt( _msg, _key )
     local msg = { _msg:byte( 1, -1 ) }
-    local key = { _key:upper():byte( 1, -1 ) }      
+    local key = { _key:upper():byte( 1, -1 ) }
     local dec = {}
 
     local j = 1
-    for i = 1, #msg do            
+    for i = 1, #msg do
        dec[i] = ( msg[i] - key[j] + 26 ) % 26 + string.byte('A')
-            
+
        if j == #key then j = 1 else j = j + 1 end
-    end    
-    
+    end
+
     return string.char( unpack(dec) )
 end
 
@@ -1917,33 +1917,33 @@ BEWARETHEJABBERWOCKMYSONTHEJAWSTHATBITETHECLAWSTHATCATCH
 ```Mathematica
 encode[text_String, key_String] :=
  Module[{textCode, keyCode},
-  textCode = 
+  textCode =
    Cases[ToCharacterCode[
       ToUpperCase@
        text], _?(IntervalMemberQ[Interval@{65, 90}, #] &)] - 65;
-  keyCode = 
+  keyCode =
    Cases[ToCharacterCode[
       ToUpperCase@
-       key], _?(IntervalMemberQ[Interval@{65, 90}, #] &)] - 65; 
-  keyCode = 
-   If[Length[textCode] < Length[keyCode], 
-    keyCode[[;; Length@textCode]], 
+       key], _?(IntervalMemberQ[Interval@{65, 90}, #] &)] - 65;
+  keyCode =
+   If[Length[textCode] < Length[keyCode],
+    keyCode[[;; Length@textCode]],
     PadRight[keyCode, Length@textCode, keyCode]];
   FromCharacterCode[Mod[textCode + keyCode, 26] + 65]]
 
 decode[text_String, key_String] :=
  Module[{textCode, keyCode},
-  textCode = 
+  textCode =
    Cases[ToCharacterCode[
       ToUpperCase@
        text], _?(IntervalMemberQ[Interval@{65, 90}, #] &)] - 65;
-  keyCode = 
+  keyCode =
    Cases[ToCharacterCode[
       ToUpperCase@
-       key], _?(IntervalMemberQ[Interval@{65, 90}, #] &)] - 65; 
-  keyCode = 
-   If[Length[textCode] < Length[keyCode], 
-    keyCode[[;; Length@textCode]], 
+       key], _?(IntervalMemberQ[Interval@{65, 90}, #] &)] - 65;
+  keyCode =
+   If[Length[textCode] < Length[keyCode],
+    keyCode[[;; Length@textCode]],
     PadRight[keyCode, Length@textCode, keyCode]];
   FromCharacterCode[Mod[textCode - keyCode, 26] + 65]]
 ```
@@ -2076,7 +2076,7 @@ method display(text) public static
 
 method sampledata() private static returns Rexx
 
-  NL = char('\n')  
+  NL = char('\n')
   antic_disposition = Rexx[]
 
   antic_disposition = [                                         -
@@ -2121,7 +2121,7 @@ method sampledata() private static returns Rexx
     loop l_ = 0 for antic_disposition.length
       melancholy_dane = melancholy_dane || antic_disposition[l_] || NL
       end l_
-    
+
     return melancholy_dane
 
 ```
@@ -2129,30 +2129,30 @@ method sampledata() private static returns Rexx
 
 {{out}}
 <pre style="height: 60ex; overflow:scroll">
-....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....| 
-LXFOP VEFRN HR 
- 
-....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....| 
-ATTAC KATDA WN 
- 
-....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....| 
-NGGNP XNGQN JA 
- 
-....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....| 
-ATTAC KATDA WN 
- 
-....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....| 
-BUUBD LBUEB XO 
- 
-....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....| 
-ATTAC KATDA WN 
- 
-....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....| 
-ABCDE FGHIJ KLMNO PQRST UVWXY Z 
- 
-....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....| 
-ABCDE FGHIJ KLMNO PQRST UVWXY Z 
- 
+....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....|
+LXFOP VEFRN HR
+
+....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....|
+ATTAC KATDA WN
+
+....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....|
+NGGNP XNGQN JA
+
+....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....|
+ATTAC KATDA WN
+
+....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....|
+BUUBD LBUEB XO
+
+....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....|
+ATTAC KATDA WN
+
+....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....|
+ABCDE FGHIJ KLMNO PQRST UVWXY Z
+
+....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....|
+ABCDE FGHIJ KLMNO PQRST UVWXY Z
+
 ....+....|....+....|....+....|....+....|....+....|....+....|....+....|....+....|
 AONPS KCFBG QFSYK EGUSK RLQGP WMXFV JJIHM HVGUS EYILQ CMGIY MZKRR YRWHR
 FVBAH QDPBC XANPH OWUSJ EOWYB TDLKX DLASQ VHZQI BDTFD HKQLV FHRON KRGYD
@@ -2417,7 +2417,7 @@ Do
       Exit
       End
     End
-  
+
   text = stringscrubber(text)
   key  = stringscrubber(key)
   code = ''
@@ -2568,7 +2568,7 @@ Do
   Do l_ = 1 for antic_disposition.0
     melancholy_dane = melancholy_dane || antic_disposition.l_ || NL
     End l_
-    
+
   Return melancholy_dane
 End
 Exit
@@ -2672,7 +2672,7 @@ FUNCTION uch(ch: CHAR): CHAR;
 		IF ch IN ['a'..'z'] THEN
 			uch := chr(ord(ch) AND $5F);
 	END;
-	
+
 // convert a string to uppercase
 FUNCTION ucase(str: STRING): STRING;
 	VAR i: BYTE;
@@ -2681,7 +2681,7 @@ FUNCTION ucase(str: STRING): STRING;
 		FOR i := 1 TO Length(str) DO
 			ucase := ucase + uch(str[i]);
 	END;
-	
+
 // construct a Vigenere-compatible string:
 // uppercase; no spaces or punctuation.
 FUNCTION vstr(pt: STRING): STRING;
@@ -2690,12 +2690,12 @@ FUNCTION vstr(pt: STRING): STRING;
 	BEGIN
 		vstr:= '';
 		s 	:= ucase(pt);
-		FOR c := 1 TO Length(s) DO BEGIN 
+		FOR c := 1 TO Length(s) DO BEGIN
 			IF s[c] IN ['A'..'Z'] THEN
 				vstr += s[c];
 		END;
 	END;
-	
+
 // construct a repeating Vigenere key
 FUNCTION vkey(pt, key: STRING): STRING;
 	VAR c,n: Cardinal;
@@ -2703,13 +2703,13 @@ FUNCTION vkey(pt, key: STRING): STRING;
 	BEGIN
 		k    := vstr(key);
 		vkey := '';
-		FOR c := 1 TO Length(pt) DO BEGIN   
+		FOR c := 1 TO Length(pt) DO BEGIN
 			n := c mod Length(k);
 			IF n>0 THEN vkey += k[n] ELSE vkey += k[Length(k)];
 		END;
 	END;
-	
-// Vigenere encipher	
+
+// Vigenere encipher
 FUNCTION enVig(pt,key:STRING): STRING;
 	VAR ct: STRING;
 		c,n	 : Cardinal;
@@ -2722,7 +2722,7 @@ FUNCTION enVig(pt,key:STRING): STRING;
 		END;
 		enVig := ct;
 	END;
-	
+
 // Vigenere decipher
 FUNCTION deVig(ct,key:STRING): STRING;
 	VAR pt	: STRING;
@@ -2735,9 +2735,9 @@ FUNCTION deVig(ct,key:STRING): STRING;
 			pt[c]:=chr(ord('A')+n);
 		END;
 		deVig := pt;
-	END;	
+	END;
 
-	
+
 VAR 	key: STRING = 'Vigenere cipher';
 		msg: STRING = 'Beware the Jabberwock! The jaws that bite, the claws that catch!';
 		vtx: STRING = '';
@@ -2900,12 +2900,12 @@ integer k = 1, ch
     end for
     return res
 end function
- 
+
 constant key = "LEMON",
          s = "ATTACK AT DAWN",
          e = Vigenere(s,key,ENCRYPT),
          d = Vigenere(e,key,DECRYPT)
- 
+
 printf(1,"Original: %s\nEncrypted: %s\nDecrypted: %s\n",{s,e,d})
 ```
 
@@ -3102,18 +3102,18 @@ function Get-VigenereCipher
     (
         [Parameter(Mandatory=$true)]
         [string] $Text,
- 
+
         [Parameter(Mandatory=$true)]
         [string] $Key,
- 
+
         [switch] $Decode
     )
- 
+
     begin
-    {    
+    {
         $map = [char]'A'..[char]'Z'
     }
- 
+
     process
     {
         $Key = $Key -replace '[^a-zA-Z]',''
@@ -3121,7 +3121,7 @@ function Get-VigenereCipher
 
         $keyChars = $Key.toUpper().ToCharArray()
         $Chars = $Text.toUpper().ToCharArray()
- 
+
         function encode
         {
 
@@ -3138,7 +3138,7 @@ function Get-VigenereCipher
             $Alpha[$NewIndex]
 
         }
- 
+
         function decode
         {
 
@@ -3157,7 +3157,7 @@ function Get-VigenereCipher
             $Alpha[$NewIndex]
         }
 
-        while ( $keyChars.Length -lt $Chars.Length ) 
+        while ( $keyChars.Length -lt $Chars.Length )
         {
             $keyChars = $keyChars + $keyChars
         }
@@ -3175,7 +3175,7 @@ function Get-VigenereCipher
             }
 
         }
- 
+
         $OutText
         $OutText = $null
     }
@@ -3229,14 +3229,14 @@ Procedure.s VC_encrypt(text.s, keyText.s, reverse = 0)
   Dim text(0)
   Dim keyText(0)
   If prepString(text, text()) < 0 Or prepString(keyText, keyText()) < 0: ProcedureReturn: EndIf ;exit, nothing to work with
-    
+
   Protected i, keyLength = ArraySize(keyText())
   If reverse
     For i = 0 To keyLength
       keyText(i) = 26 - keyText(i)
     Next
-  EndIf 
-  
+  EndIf
+
   Protected textLength = ArraySize(text()) ;zero-based length
   Protected result.s = Space(textLength + 1), *resultLetter.Character
   keyLength + 1 ;convert from zero-based to one-based count
@@ -3254,12 +3254,12 @@ EndProcedure
 
 If OpenConsole()
   Define VignereCipher.s, plainText.s, encryptedText.s, decryptedText.s
-  
+
   VignereCipher.s = "VIGNERECIPHER"
   plainText = "The quick brown fox jumped over the lazy dogs.": PrintN(RSet("Plain text = ", 17) + #DQUOTE$ + plainText + #DQUOTE$)
   encryptedText = VC_encrypt(plainText, VignereCipher): PrintN(RSet("Encrypted text = ", 17) + #DQUOTE$ + encryptedText + #DQUOTE$)
   decryptedText = VC_decrypt(encryptedText, VignereCipher): PrintN(RSet("Decrypted text = ", 17) + #DQUOTE$ + decryptedText + #DQUOTE$)
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -3381,7 +3381,7 @@ message(vigen("WMCEEIKLGRPIFVMEUGXQPWQVIOIAVEYXUEKFKBTALVXTGAFXYEVKPAGY", "vigen
 (define (encrypt msg key)
   (define cleaned
     (list->string
-     (for/list ([c (string-upcase msg)] 
+     (for/list ([c (string-upcase msg)]
                 #:when (char-alphabetic? c)) c)))
   (list->string
    (for/list ([c cleaned] [k (in-cycle key)])
@@ -3411,11 +3411,11 @@ message(vigen("WMCEEIKLGRPIFVMEUGXQPWQVIOIAVEYXUEKFKBTALVXTGAFXYEVKPAGY", "vigen
 
 note: this program is much longer than it needed to be - because i couldn't resist
 to add some more features to make it actually "useful" :-)  So not only can u encrypt any character (because the crypted message will be base 64 encoded), but it also includes a Gui.
-the Gui window has buttons to access the clipboard too - so u can get the original text from clipboard and put the crypted message back again. To execute it,simply  download the latest red.exe (about 1,1 MB size! ) from red-lang.org. This program can also be compiled to an .exe (+ red runtime.dll ) by simply execute 
+the Gui window has buttons to access the clipboard too - so u can get the original text from clipboard and put the crypted message back again. To execute it,simply  download the latest red.exe (about 1,1 MB size! ) from red-lang.org. This program can also be compiled to an .exe (+ red runtime.dll ) by simply execute
 ```txt
 red.exe -c vign1.red
 ```
- or 
+ or
 ```txt
 red.exe -r vign1.red
 ```
@@ -3427,7 +3427,7 @@ Red [needs: 'view]
 CRLF: copy "^M^/" ;; constant for 0D 0A line feed
 ;;------------------------------------
 crypt: func ["function to en- or decrypt message from textarea tx1"
-    /decrypt "decrypting switch/refinement" ][ 
+    /decrypt "decrypting switch/refinement" ][
 ;;------------------------------------
 
 ;; when decrypting we have to remove the superflous newlines
@@ -3449,10 +3449,10 @@ code: copy #{} ;; temp field to collect utf8 bytes when decrypting
 
 ;; loop over  length of binary! message ...
 repeat pos length? txt [
- k: to-integer key/(1 + modulo pos length? key)   ;; get corresponding key byte 
+ k: to-integer key/(1 + modulo pos length? key)   ;; get corresponding key byte
  c: to-integer txt/:pos       ;; get integer value from message byte at position pos
- 
- either decrypt [                         ;; decrypting ? 
+
+ either decrypt [                         ;; decrypting ?
     c:  modulo ( 256 + c - k ) 256      ;; compute original byte value
     case [
       ;; byte starting with 11.... ( >= 192 dec ) is utf8 startbyte
@@ -3460,11 +3460,11 @@ repeat pos length? txt [
         ( c >= 192 ) or ( c < 128 )  [    ;; starting utf8 sequence byte or below 128 normal ascii ?
             ;; append last code to buffer, maybe normal ascii or utf8 sequence...
             if not empty? code [ append bin to-char code ]  ;; save previous code first
-            code: append copy #{} c     ;; start new code 
+            code: append copy #{} c     ;; start new code
         ]
         true [ append code c ]  ;; otherwise utf8 follow up byte, append to startbyte
       ]
-  ][  
+  ][
     append bin modulo ( c + k ) 256   ;; encrypting , simply collect binary bytes
   ]
 ] ;; close repeat loop
@@ -3479,7 +3479,7 @@ either decrypt [                ;; collect utf-8 characters
         insert s newline
     ]
     tx2/text: head s    ;; reset s pointing to head again
-  ]  
+  ]
 ]
 ;----------------------------------------------------------
 ; start of program
@@ -3489,12 +3489,12 @@ view layout [title  "vigenere cyphre"	;Define nice GUI :- )
   backdrop silver      ;; define window background colour
   text "message:" pad 99x1 button "get-clip" [tx1/text: read-clipboard]
   ;; code in brackets will be executed, when button is clicked:
-  button "clear" [tx1/text: copy "" ] return  
+  button "clear" [tx1/text: copy "" ] return
   tx1: area  330x80 "" return
-  text 25x20  "Key:" key1:  field 290x20 "secretkey" return 
+  text 25x20  "Key:" key1:  field 290x20 "secretkey" return
   button "crypt" [crypt ]  button "decrypt" [crypt/decrypt ]
   button "swap" [tx1/text: copy tx2/text tx2/text: copy "" ] return
-  text "de-/encrypted message:" pad 50x1  button "copy clip"  [ write-clipboard tx2/text] 
+  text "de-/encrypted message:" pad 50x1  button "copy clip"  [ write-clipboard tx2/text]
   button "clear" [tx2/text: copy "" ] return
   tx2: area  330x100 return
   pad 270x1 button "Quit " [quit]
@@ -3503,17 +3503,17 @@ view layout [title  "vigenere cyphre"	;Define nice GUI :- )
 ```
 
 {{output}}
-the message 
+the message
 ```txt
 Beware the Jabberwock, my son! The jaws that bite, the claws that catch!
 ```
- with key "VIGENERECIPHER" translates to 
+ with key "VIGENERECIPHER" translates to
 ```txt
 i6y8r7e3ZbextWiPs7irrLfFtLWwb2m9wWXFxbdo
 ZaKtt2Wtqse7Zca+qrtlsK7Gqm9pxLCqcrm1qLzBZcatpL1wq6bGubFo
 ```
- 
-decrypting returns the original message 
+
+decrypting returns the original message
 ```txt
 Beware the Jabberwock, my son! The jaws that bite, the claws that catch!
 ```
@@ -3573,7 +3573,7 @@ re-cyphered text = PEOPLESOLVEPROBLEMSBYTRIALANDERRORJUDGEMENTHELPSPICKTHETRIAL
 This version supports all characters on the   IBM Model M   keyboard, including blanks,   but any other
 
 characters can be added as long as they're viewable.
-  
+
 Additional characters can be added by simply appending them to the   <big>'''@.1'''</big>   variable.
 
 ```rexx
@@ -3612,7 +3612,7 @@ Dcypher:  parse arg x;    dMsg=
 
    original text = Making things easy is just knowing the shortcuts. --- Gerard J. Schildberger
    cyphered text = ihyw2jCwvw0utGkdwyJpwPn89!Fo4s&p1uNwlhM6u2s1ixxsGF}"}MXxye8h/H?/QafgjbZcpecp
-re-cyphered text = Making things easy is just knowing the shortcuts. --- Gerard J. Schildberger   
+re-cyphered text = Making things easy is just knowing the shortcuts. --- Gerard J. Schildberger
 
 ```
 
@@ -3633,7 +3633,7 @@ see "plaintext  = " + plaintext + nl
 see "ciphertext = " + ciphertext + nl
 see "decrypted  = " + decrypt(ciphertext, key) + nl
 
- 
+
 func encrypt(plain, key)
         o = ""
         k = 0
@@ -3647,7 +3647,7 @@ func encrypt(plain, key)
              ok
         next
         return o
- 
+
 func decrypt(cipher, key)
         o = ""
         k = 0
@@ -3659,11 +3659,11 @@ func decrypt(cipher, key)
              k = (k + 1) % len(key)
         next
         return o
- 
+
 func fnupper(a)
         for aa = 1 to len(a)
              c = ascii(a[aa])
-            if c >= 97 and c <= 122 
+            if c >= 97 and c <= 122
                a[aa] = char(c-32)
            ok
         next
@@ -3689,18 +3689,18 @@ decrypted  = ATTACKATDAWN
 
 ```Ruby
 module VigenereCipher
-  
+
   BASE = 'A'.ord
   SIZE = 'Z'.ord - BASE + 1
-  
+
   def encrypt(text, key)
     crypt(text, key, :+)
   end
-  
+
   def decrypt(text, key)
     crypt(text, key, :-)
   end
-  
+
   def crypt(text, key, dir)
     text = text.upcase.gsub(/[^A-Z]/, '')
     key_iterator = key.upcase.gsub(/[^A-Z]/, '').chars.map{|c| c.ord - BASE}.cycle
@@ -3709,7 +3709,7 @@ module VigenereCipher
       ciphertext << ((char.ord - BASE).send(dir, offset) % SIZE + BASE).chr
     end
   end
-  
+
 end
 ```
 
@@ -3974,8 +3974,8 @@ Test:
 
 plain := 'Beware the Jabberwock, my son! The jaws that bite, the claws that catch!'.
 cypher := 'VIGENERECIPHER'.
-crypted := encrypt value:plain value:cypher.              
-plain2 := decrypt value:crypted value:cypher.           
+crypted := encrypt value:plain value:cypher.
+plain2 := decrypt value:crypted value:cypher.
 
 crypted -> 'WMCEEIKLGRPIFVMEUGXQPWQVIOIAVEYXUEKFKBTALVXTGAFXYEVKPAGY'
 plain2  -> 'BEWARETHEJABBERWOCKMYSONTHEJAWSTHATBITETHECLAWSTHATCATCH'
@@ -4235,9 +4235,9 @@ check: @check
 ```
 
 
-Here, the TXR pattern language is used to scan letters out of two arguments, 
-and convert them to upper case. 
-The embedded TXR Lisp dialect handles the Vigenère logic, 
+Here, the TXR pattern language is used to scan letters out of two arguments,
+and convert them to upper case.
+The embedded TXR Lisp dialect handles the Vigenère logic,
 in just a few lines of code.
 
 Lisp programmers may do a "double take" at what is going on here: yes <code>mapcar</code> can operate on strings and return strings in TXR Lisp. <code>(repeat key)</code> produces an infinite lazy list; but that's okay because <code>mapcar</code> stops after the shortest input runs out of items.
@@ -4400,7 +4400,7 @@ Decrypt:= "BEWARETHEJABBERWOCKMYSONTHEJAWSTHATBITETHECLAWSTHATCATCH"
 ```vb
 
 Function Encrypt(text,key)
-	text = OnlyCaps(text) 
+	text = OnlyCaps(text)
 	key = OnlyCaps(key)
 	j = 1
 	For i = 1 To Len(text)
@@ -4473,20 +4473,20 @@ const asca =65  'ascii(a)
 function filter(s)
     with new regexp
       .pattern="[^A-Z]"
-      .global=1 
-      filter=.replace(ucase(s),"") 
-     end with      
+      .global=1
+      filter=.replace(ucase(s),"")
+     end with
 end function
 
 function vigenere (s,k,sign)
-dim s1,i,a,b 
-  for i=0 to len(s)-1 
-    a=asc(mid(s,i+1,1))-asca 
-    b=sign * (asc(mid(k,(i mod len(k))+1,1))-asca) 
+dim s1,i,a,b
+  for i=0 to len(s)-1
+    a=asc(mid(s,i+1,1))-asca
+    b=sign * (asc(mid(k,(i mod len(k))+1,1))-asca)
     s1=s1 & chr(((a+b+26) mod 26) +asca)
   next
   vigenere=s1
-end function 
+end function
 
 function encrypt(s,k): encrypt=vigenere(s,k,1) :end function
 function decrypt(s,k): decrypt=vigenere(s,k,-1) :end function
@@ -4494,7 +4494,7 @@ function decrypt(s,k): decrypt=vigenere(s,k,-1) :end function
 'test--------------------------
 dim plaintext,filtered,key,encoded
 key="VIGENERECYPHER"
-plaintext = "Beware the Jabberwock, my son! The jaws that bite, the claws that catch!" 
+plaintext = "Beware the Jabberwock, my son! The jaws that bite, the claws that catch!"
 filtered= filter(plaintext)
 wscript.echo filtered
 encoded=encrypt(filtered,key)
@@ -4508,8 +4508,8 @@ wscript.echo decrypt(encoded,key)
 
 ## Vedit macro language
 
-Encrypts and then decrypts one line of text on current edit buffer, 
-starting from cursor location. 
+Encrypts and then decrypts one line of text on current edit buffer,
+starting from cursor location.
 The user enters the keyword (upper or lower case).
 
 ```vedit
@@ -4560,7 +4560,7 @@ Return
        #6 = (#6+1) % #2
     }
     Num_Pop(6,9)
-Return 
+Return
 ```
 
 
@@ -4649,7 +4649,7 @@ key := "Vigenere Cipher";
 
 println("Text: ", str);
 println("key:  ", key);
- 
+
 cod := encipher(str, key, True);  println("Code: ", cod);
 dec := encipher(cod, key, False); println("Back: ", dec);
 ```

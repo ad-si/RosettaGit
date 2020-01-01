@@ -13,15 +13,15 @@ tags = []
 {{task}}
 
 ;Task:
-Shuffle the characters of a string in such a way that as many of the character values are in a different position as possible. 
+Shuffle the characters of a string in such a way that as many of the character values are in a different position as possible.
 
 A shuffle that produces a randomized result among the best choices is to be preferred. A deterministic approach that produces the same sequence every time is acceptable as an alternative.
 
-Display the result as follows: 
+Display the result as follows:
 
- original string, shuffled string, (score) 
+ original string, shuffled string, (score)
 
-The score gives the number of positions whose character value did ''not'' change. 
+The score gives the number of positions whose character value did ''not'' change.
 
 
 ;Example:
@@ -54,7 +54,7 @@ with Ada.Text_IO;
 with Ada.Strings.Unbounded;
 
 procedure Best_Shuffle is
-   
+
    function Best_Shuffle (S : String) return String;
 
    function Best_Shuffle (S : String) return String is
@@ -125,19 +125,19 @@ Loop Parse, Words,`,
    out .= Score(A_LoopField, Shuffle(A_LoopField))
 MsgBox % clipboard := out
 
- 
+
 Shuffle(String)
 {
  Cord := String
  Length := StrLen(String)
  CharType := A_IsUnicode ? "UShort" : "UChar"
- 
+
  Loop, Parse, String  ; For each old character in String...
  {
   Char1 := SubStr(Cord, A_Index, 1)
   If (Char1 <> A_LoopField)  ; If new character already differs,
    Continue                  ;  do nothing.
- 
+
   Index1 := A_Index
   OldChar1 := A_LoopField
   Random, Index2, 1, Length  ; Starting at some random index,
@@ -147,7 +147,7 @@ Shuffle(String)
    {
     Char2 := SubStr(Cord, Index2, 1)
     OldChar2 := SubStr(String, Index2, 1)
- 
+
     ; If after the swap, the two new characters would differ from
     ; the two old characters, then do the swap.
     If (Char1 <> OldChar2) and (Char2 <> OldChar1)
@@ -293,7 +293,7 @@ function best_shuffle(out, s,    c, i, j, k, klen, p, pos, set, rlen, slen) {
 				i++
 				delete pos[c, set[c]]
 				set[c]--
-			}				
+			}
 		}
 	}
 
@@ -339,7 +339,7 @@ Output:
 
 
 ```bash
-$ awk -f best-shuffle.awk 
+$ awk -f best-shuffle.awk
 abracadabra, baarrcadaab, (0)
 seesaw, essewa, (0)
 elk, kel, (0)
@@ -364,7 +364,7 @@ The output might change if the <tt>for (c in set)</tt> loop iterates the array i
       a$ = "up"          : b$ = FNshuffle(a$) : PRINT a$ " -> " b$ FNsame(a$,b$)
       a$ = "a"           : b$ = FNshuffle(a$) : PRINT a$ " -> " b$ FNsame(a$,b$)
       END
-      
+
       DEF FNshuffle(s$)
       LOCAL i%, j%, l%, s%, t%, t$
       t$ = s$ : s% = !^s$ : t% = !^t$ : l% = LEN(t$)
@@ -380,7 +380,7 @@ The output might change if the <tt>for (c in set)</tt> loop iterates the array i
         NEXT
       NEXT i%
       = t$
-      
+
       DEF FNsame(s$, t$)
       LOCAL i%, n%
       FOR i% = 1 TO LEN(s$)
@@ -411,7 +411,7 @@ Not optimized:
 ```bracmat
 
     ( shuffle
-    =   m car cdr todo a z count string 
+    =   m car cdr todo a z count string
       .     !arg:(@(?:%?car ?cdr).?todo)
           & !Count:?count
           & (   @( !todo
@@ -507,8 +507,8 @@ This approach is totally deterministic, and is based on the final J implementati
 In essence: we form cyclic groups of character indices where each cyclic group is guaranteed to represent each character only once (two instances of the letter 'a' must have their indices in separate groups), and then we rotate each of the cyclic groups.  We then use the before/after version of these cycles to shuffle the original text.  The only way a character can be repeated, here, is when a cyclic group contains only one character index, and this can only happen when more than half of the text uses that character. This is C99 code.
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
@@ -640,8 +640,8 @@ xxxxx, xxxxx, (5)
 ### Version with random result
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -653,7 +653,7 @@ typedef struct letter_group_t {
 struct letter_group_t all_letters[26];
 letter_p letters[26];
 
-/* counts how many of each letter is in a string, used later 
+/* counts how many of each letter is in a string, used later
  * to generate permutations
  */
 int count_letters(const char *s)
@@ -760,8 +760,8 @@ seesaw -> ewsesa, overlap 0
 ### Deterministic method
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 #define FOR(x, y) for(x = 0; x < y; x++)
@@ -806,8 +806,8 @@ int main()
 {{works with|C++|11}}
 {{trans|Java}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <sstream>
 #include <algorithm>
 
@@ -879,7 +879,7 @@ For both solutions, a class is used to encapsulate the original string and to sc
 ShuffledString[] array = {"cat", "dog", "mouse"};
 ```
 
-Which will immediately shuffle each word. 
+Which will immediately shuffle each word.
 
 A sequential solution, which always produces the same output for the same input.
 
@@ -920,7 +920,7 @@ namespace BestShuffle_RC
         }
 
         //Determine if a swap between these two would put a letter in a "bad" place
-        //If true, a swap is OK. 
+        //If true, a swap is OK.
         private bool TrySwap(int pos1, int pos2)
         {
             if (original[pos1] == shuffled[pos2] || original[pos2] == shuffled[pos1])
@@ -929,7 +929,7 @@ namespace BestShuffle_RC
                 return true;
         }
 
-        //Constructor carries out calls Shuffle function. 
+        //Constructor carries out calls Shuffle function.
         public ShuffledString(string word)
         {
             original = word;
@@ -1053,7 +1053,7 @@ namespace BestShuffle_RC
         }
 
         //Determine if a swap between these two would put a letter in a "bad" place
-        //If true, a swap is OK. 
+        //If true, a swap is OK.
         private bool TrySwap(int pos1, int pos2)
         {
             if (original[pos1] == shuffled[pos2] || original[pos2] == shuffled[pos1])
@@ -1062,7 +1062,7 @@ namespace BestShuffle_RC
                 return true;
         }
 
-        //Constructor carries out calls Shuffle function. 
+        //Constructor carries out calls Shuffle function.
         public ShuffledString(string word)
         {
             original = word;
@@ -1258,7 +1258,7 @@ user> (->> ["abracadabra" "seesaw" "elk" "grrrrrr" "up" "a"]
                    (char/= (aref string i) (aref result j))
                    (char/= (aref string j) (aref result i)))
           (rotatef (aref result i) (aref result j)))))))
-                   
+
 (defun best-shuffle (list)
   (dolist (string list)
     (let ((shuffled (shuffle string)))
@@ -1308,24 +1308,24 @@ Output:
                    (incf (cdr x))
                    (when (char= (car x) (char tmpl l))
                      (decf overlap))))))
- 
+
       (loop while (plusp (length s)) do
             (let* ((c (char s 0))
                    (l (count c s)))
               (push (cons c l) tbl)
               (setf s (remove c s))))
- 
+
       (perm tbl (length str) (reverse str) '() 0))
     out))
- 
+
 (defun best-shuffle (str)
   "Algorithm: list all best shuffles, then pick one"
   (let ((c (all-best-shuffles str)))
     (elt c (random (length c)))))
- 
+
 (format t "All best shuffles:")
 (print (all-best-shuffles "seesaw"))
- 
+
 (format t "~%~%Random best shuffles:~%")
 (dolist (s (list "abracadabra" "seesaw" "elk" "grrrrrr" "up" "a"))
   (format t "~A: ~A~%" s (best-shuffle s)))
@@ -1370,7 +1370,7 @@ def best_shuffle(s)
       g[letter].empty? && g.delete letter # g.delete(letter) if g[letter].empty?
     end
   end
-  
+
   # Now fill in _new_ with _letters_ according to each position
   # in _pos_, but skip ahead in _letters_ if we can avoid
   # matching characters that way.
@@ -1603,19 +1603,19 @@ extension op
     {
         var original := self.toArray();
         var shuffled := self.toArray();
-    
+
         for (int i := 0, i < original.Length, i += 1) {
             for (int j := 0, j < original.Length, j += 1) {
                 if (i != j && original[i] != shuffled[j] && original[j] != shuffled[i])
                 {
                     shuffled.exchange(i,j)
-                }                
+                }
             }
         };
-    
+
         ^ shuffled.summarize(new StringWriter()).toString()
     }
-    
+
     score(originalText)
     {
         var shuffled := self.toArray();
@@ -1625,7 +1625,7 @@ extension op
         for (int i := 0, i < original.Length, i += 1) {
             if (original[i] == shuffled[i]) { score += 1 }
         };
-        
+
         ^ score
     }
 }
@@ -1921,7 +1921,7 @@ perfectShuffle lst | odd n = b : shuffle (zip bs a)
     n = length lst
     (a,b:bs) = splitAt (n `div` 2) lst
     shuffle = foldMap (\(x,y) -> [x,y])
-	
+
 shuffleP :: Eq a => [a] -> [a]
 shuffleP lst = swapShuffle lst $ perfectShuffle lst
 ```
@@ -1966,7 +1966,7 @@ randomShuffle lst = do
   let (a, x:b) = splitAt i lst
   xs <- randomShuffle $ a ++ b
   return (x:xs)
-  
+
 shuffleR :: Eq a => [a] -> IO [a]
 shuffleR lst = swapShuffle lst <$> randomShuffle lst
 ```
@@ -2042,7 +2042,7 @@ Here we define a new conduit <code>shuffleC</code> which uses a moving window of
 ```
 
 
-This program is good for real texts with high entropy. In case of homogeneous strings like <tt>"aaaaa.....bbbbb"</tt> it gives poor results for windows smaller then homogeneous regions. 
+This program is good for real texts with high entropy. In case of homogeneous strings like <tt>"aaaaa.....bbbbb"</tt> it gives poor results for windows smaller then homogeneous regions.
 
 The main goal of streaming solution is to be able to process data from any resources, so let's use it to shuffle texts being transferred from <tt>stdin</tt> to <tt>stdout</tt>.
 
@@ -2051,7 +2051,7 @@ Additional imports
 
 ```Haskell
 import Data.ByteString.Builder (charUtf8)
-import Data.ByteString.Char8 (ByteString, unpack, pack) 
+import Data.ByteString.Char8 (ByteString, unpack, pack)
 import Data.Conduit.ByteString.Builder (builderToByteString)
 import System.IO (stdin, stdout)
 ```
@@ -2067,7 +2067,7 @@ shuffleBS n s =
   =$ mapC charUtf8
   =$ builderToByteString
   $$ foldC
-          
+
 main :: IO ()
 main =
   sourceHandle stdin
@@ -2083,7 +2083,7 @@ $ ghc --make -O3 ./shuffle
 [1 of 1] Compiling Main             ( shuffle.hs, shuffle.o )
 Linking shuffle ...
 
-$ cat input.txt 
+$ cat input.txt
 Rosetta Code is a programming chrestomathy site. The idea is to present solutions to the same task in as many different languages as possible, to demonstrate how languages are similar and different, and to aid a person with a grounding in one approach to a problem in learning another. Rosetta Code currently has 823 tasks, 193 draft tasks, and is aware of 642 languages, though we do not (and cannot) have solutions to every task in every language.
 
 $ cat input.txt | ./shuffle
@@ -2092,7 +2092,7 @@ aeotdR s  aoiCtrpmmgi crn theemaysg srioT the tseo.dih psae re isltn ountstoeo  
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-The approach taken requires 2n memory and will run in O(n^2) time swapping once per final changed character.  The algorithm is concise and conceptually simple avoiding the lists of indices, sorting, cycles, groups, and special cases requiring rotation needed by many of the other solutions.  It proceeds through the entire string swapping characters ensuring that neither of the two characters are swapped with another instance of themselves in the ''original'' string.  
+The approach taken requires 2n memory and will run in O(n^2) time swapping once per final changed character.  The algorithm is concise and conceptually simple avoiding the lists of indices, sorting, cycles, groups, and special cases requiring rotation needed by many of the other solutions.  It proceeds through the entire string swapping characters ensuring that neither of the two characters are swapped with another instance of themselves in the ''original'' string.
 
 Additionally, this can be trivially modified to randomize the shuffle by uncommenting the line
 
@@ -2114,7 +2114,7 @@ procedure bestShuffle(s)
         every j := (1 to i-1) | (i+1 to *t) do
            if (t[i] ~== s[j]) & (s[i] ~== t[j]) then break t[i] :=: t[j]
     return t
-end        
+end
 
 procedure unchanged(s1,s2)      # Number of unchanged elements
     every (count := 0) +:= (s1[i := 1 to *s1] == s2[i], 1)
@@ -2171,10 +2171,10 @@ Example:
 ```j
    fmtBest&>;:'abracadabra seesaw elk grrrrrr up a'
 abracadabra, bdacararaab (0)
-seesaw, eawess (0)          
-elk, lke (0)                
-grrrrrr, rrrrrrg (5)        
-up, pu (0)                  
+seesaw, eawess (0)
+elk, lke (0)
+grrrrrr, rrrrrrg (5)
+up, pu (0)
 a, a (1)
 ```
 
@@ -2576,14 +2576,14 @@ a a 1
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-BestShuffle[data_] := 
+BestShuffle[data_] :=
  Flatten[{data,First[SortBy[
-     List[#, StringLength[data]-HammingDistance[#,data]] & /@ StringJoin /@ Permutations[StringSplit[data, ""]], Last]]}] 
+     List[#, StringLength[data]-HammingDistance[#,data]] & /@ StringJoin /@ Permutations[StringSplit[data, ""]], Last]]}]
 
-Print[#[[1]], "," #[[2]], ",(", #[[3]], ")"] & /@  BestShuffle /@ {"abracadabra","seesaw","elk","grrrrrr","up","a"} 
+Print[#[[1]], "," #[[2]], ",(", #[[3]], ")"] & /@  BestShuffle /@ {"abracadabra","seesaw","elk","grrrrrr","up","a"}
 
 ```
 
@@ -2634,7 +2634,7 @@ proc bestShuffle(str: string): string =
                 swap(chrs[i], chrs[j])
                 break
     return chrs.join("")
-    
+
 when isMainModule:
     let words = @["abracadabra", "seesaw", "grrrrrr", "pop", "up", "a", "antidisestablishmentarianism"];
     for w in words:
@@ -2728,9 +2728,9 @@ $ ocaml best_shuffle_string.ml
 
 ```pascal
 program BestShuffleDemo(output);
- 
+
 function BestShuffle(s: string): string;
-    
+
   var
     tmp: char;
     i, j: integer;
@@ -2747,7 +2747,7 @@ function BestShuffle(s: string): string;
         end;
     BestShuffle := t;
   end;
- 
+
 const
   original: array[1..6] of string =
     ('abracadabra', 'seesaw', 'elk', 'grrrrrr', 'up', 'a');
@@ -2772,7 +2772,7 @@ end.
 Output:
 
 ```txt
-% ./BestShuffle 
+% ./BestShuffle
 abracadabra, caadrbabaar, (0)
 seesaw, ewaess, (0)
 elk, kel, (0)
@@ -2803,7 +2803,7 @@ sub best_shuffle {
 
 	my @shuffled = shuffle split //, $original_word;
 	my $iterator = Algorithm::Permute->new(\@shuffled);
-	
+
 	while( my @array = $iterator->next ) {
 		my $word = join '', @array;
 		# For each letter which is the same in the two words,
@@ -2814,7 +2814,7 @@ sub best_shuffle {
 		($best_word, $best_score) = ($word, $score);
 		last if $score == 0;
 	}
-	
+
 	print "$original_word, $best_word, $best_score\n";
 }
 
@@ -2878,7 +2878,7 @@ sub best_shuffle {
 			last;
 		}
 	}
-	
+
 	my $word = join '', @t;
 
 	my $score = ($original_word ^ $word) =~ tr/\x00//;
@@ -2945,7 +2945,7 @@ a, a, (1)
 
 ```Phix
 constant tests = {"abracadabra", "seesaw", "elk", "grrrrrr", "up", "a"}
-string s,t 
+string s,t
     for test=1 to length(tests) do
         s = tests[test]
         t = shuffle(s)
@@ -2999,10 +2999,10 @@ foreach (split(' ', 'abracadabra seesaw pop grrrrrr up a') as $w)
 ';
 
 function bestShuffle($s1) {
-    $s2 = str_shuffle($s1); 
+    $s2 = str_shuffle($s1);
     for ($i = 0; $i < strlen($s2); $i++) {
         if ($s2[$i] != $s1[$i]) continue;
-        for ($j = 0; $j < strlen($s2); $j++) 
+        for ($j = 0; $j < strlen($s2); $j++)
             if ($i != $j && $s2[$i] != $s1[$j] && $s2[$j] != $s1[$i]) {
                 $t = $s2[$i];
                 $s2[$i] = $s2[$j];
@@ -3016,7 +3016,7 @@ function bestShuffle($s1) {
 function countSame($s1, $s2) {
     $cnt = 0;
     for ($i = 0; $i < strlen($s2); $i++)
-        if ($s1[$i] == $s2[$i]) 
+        if ($s1[$i] == $s2[$i])
             $cnt++;
     return "($cnt)";
 }
@@ -3144,16 +3144,16 @@ OUTPUT:
 
 ```txt
 
-abracadabra 
+abracadabra
 baaracadrab 0
 
-prrrrrr 
+prrrrrr
 rprrrrr 5
 
-tree 
+tree
 eert 0
 
-A 
+A
 A 1
 
 ```
@@ -3175,24 +3175,24 @@ function Get-BestScore ( [string]$String )
                     Group |
                     Sort Count -Descending |
                     Select -First 1 -ExpandProperty Count
- 
+
     #  Return count of most repeated character minus all other characters (math simplified)
     return [math]::Max( 0, 2 * $MostRepeats - $String.Length )
     }
- 
+
 function Get-BestShuffle ( [string]$String )
     {
     #  Convert to arrays of characters, one for comparison, one for manipulation
     $S1 = $String.ToCharArray()
     $S2 = $String.ToCharArray()
- 
+
     #  Calculate best possible score as our goal
     $BestScore = Get-BestScore $String
- 
+
     #  Unshuffled string has score equal to number of characters
     $Length = $String.Length
     $Score = $Length
- 
+
     #  While still striving for perfection...
     While ( $Score -gt $BestScore )
         {
@@ -3271,7 +3271,7 @@ best_shuffle(Str) :-
 comp(C, C1, S):-
 	(   C = C1 -> S = 1; S = 0).
 
-% this code was written by P.Caboche and can be found here : 
+% this code was written by P.Caboche and can be found here :
 % http://pcaboche.developpez.com/article/prolog/listes/?page=page_3#Lshuffle
 shuffle(List, Shuffled) :-
   length(List, Len),
@@ -3288,8 +3288,8 @@ shuffle(Len, List, [Elem|Tail]) :-
 
 
 % letters are sorted out then packed
-% If a letter is more numerous than the rest 
-% the min is the difference between the quantity of this letter and 
+% If a letter is more numerous than the rest
+% the min is the difference between the quantity of this letter and
 % the sum of the quantity of the other letters
 calcule_min(Str, Len, Min) :-
 	msort(Str, SS),
@@ -3325,7 +3325,7 @@ run(Var,[Other|RRest], [1,Var],[Other|RRest]):-
 ```
 
 
-output : 
+output :
 ```txt
  ?- test.
 abracadabra : brabaracaad (0)
@@ -3365,10 +3365,10 @@ Procedure.s shuffleWordLetters(word.s)
   For i = 1 To Len(word)
     originalLetters(i - 1) = Mid(word, i, 1)
   Next
-  
+
   Dim shuffledLetters.s(0)
   CopyArray(originalLetters(), shuffledLetters())
-  
+
   ;record original letters and their positions
   Protected curChar.s
   NewList letters.charInfo()
@@ -3384,22 +3384,22 @@ Procedure.s shuffleWordLetters(word.s)
         *wordInfo()\Char = curChar
         AddElement(*wordInfo()\position())
         *wordInfo()\position() = i
-      EndIf 
-    EndIf 
-  Next 
-  
+      EndIf
+    EndIf
+  Next
+
   ForEach letters()
     letters()\count = ListSize(letters()\Position())
   Next
-  
+
   SortStructuredList(letters(), #PB_Sort_Ascending, OffsetOf(charInfo\Char), #PB_Sort_String) ;extra sort step, not strictly necessary
   SortStructuredList(letters(), #PB_Sort_Descending, OffsetOf(charInfo\count), #PB_Sort_integer)
-  
+
   ;construct letter cycles
   FirstElement(letters())
   Protected maxLetterCount = letters()\count
   Dim letterCycles.cycle(maxLetterCount - 1)
-  
+
   Protected curCycleIndex
   ForEach letters()
     ForEach letters()\Position()
@@ -3409,9 +3409,9 @@ Procedure.s shuffleWordLetters(word.s)
         \cycle()\Position = letters()\position()
       EndWith
       curCycleIndex = (curCycleIndex + 1) % maxLetterCount
-    Next 
-  Next 
-  
+    Next
+  Next
+
   ;rotate letters in each cycle
   Protected isFirst, prevChar.s, pos_1
   For i = 0 To maxLetterCount - 1
@@ -3425,11 +3425,11 @@ Procedure.s shuffleWordLetters(word.s)
           isFirst = #False
         EndIf
         prevChar = \cycle()\Char
-      Next 
+      Next
       shuffledLetters(pos_1) = prevChar
     EndWith
-  Next 
-   
+  Next
+
   ;score and display shuffle
   Protected shuffledWord.s, ignored
   For i = 0 To ArraySize(shuffledLetters())
@@ -3438,11 +3438,11 @@ Procedure.s shuffleWordLetters(word.s)
       ignored + 1
     EndIf
   Next
-  
+
   PrintN(word + ", " + shuffledWord + ", (" + Str(ignored) + ")")
   ProcedureReturn shuffledWord
 EndProcedure
-  
+
 If OpenConsole()
   shuffleWordLetters("abracadabra")
   shuffleWordLetters("seesaw")
@@ -3450,7 +3450,7 @@ If OpenConsole()
   shuffleWordLetters("grrrrrr")
   shuffleWordLetters("up")
   shuffleWordLetters("a")
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -3499,7 +3499,7 @@ def best_shuffle(w):
 
 
 if __name__ == '__main__':
-    test_words = ('tree abracadabra seesaw elk grrrrrr up a ' 
+    test_words = ('tree abracadabra seesaw elk grrrrrr up a '
                   + 'antidisestablishmentarianism hounddogs').split()
     test_words += ['aardvarks are ant eaters', 'immediately', 'abba']
     for w in test_words:
@@ -3508,14 +3508,14 @@ if __name__ == '__main__':
 ```
 
 
-;Sample output 
-Two runs showing variability in shuffled results 
+;Sample output
+Two runs showing variability in shuffled results
 
 ```txt
->>> 
+>>>
 ### ============================= RESTART =============================
 
->>> 
+>>>
                          tree, eetr                          ,(0)
                   abracadabra, daaracbraab                   ,(0)
                        seesaw, asswee                        ,(0)
@@ -3528,10 +3528,10 @@ Two runs showing variability in shuffled results
      aardvarks are ant eaters, sesanretatva kra errada       ,(0)
                   immediately, tedlyaeiimm                   ,(0)
                          abba, baab                          ,(0)
->>> 
+>>>
 ### ============================= RESTART =============================
 
->>> 
+>>>
                          tree, eert                          ,(0)
                   abracadabra, bdacararaab                   ,(0)
                        seesaw, ewsase                        ,(0)
@@ -3544,7 +3544,7 @@ Two runs showing variability in shuffled results
      aardvarks are ant eaters, sretrnat a edseavra akar      ,(0)
                   immediately, litiaemmyed                   ,(0)
                          abba, baab                          ,(0)
->>> 
+>>>
 ```
 
 
@@ -3607,7 +3607,7 @@ for s in "abracadabra", "seesaw", "elk", "grrrrrr", "up", "a":
 ```
 
 
-Output: 
+Output:
 ```txt
 abracadabra, raabarabacd, (0)
 seesaw, wsaese, (0)
@@ -3749,19 +3749,19 @@ for n = 1 to len(test)
      bs   = bestshuffle(test[n])
      count = 0
      for p = 1 to len(test[n])
-          if substr(test[n],p,1) = substr(bs,p,1) 
+          if substr(test[n],p,1) = substr(bs,p,1)
              count = count + 1
           ok
-      next 
+      next
       see test[n] + " -> " + bs + " " + count + nl
 next
- 
+
 func bestshuffle(s1)
        s2 = s1
        for i = 1 to len(s2)
-            for j =  1 to len(s2) 
-                 if (i != j) and (s2[i] != s1[j]) and (s2[j] != s1[i]) 
-                    if j < i 
+            for j =  1 to len(s2)
+                 if (i != j) and (s2[i] != s1[j]) and (s2[j] != s1[i])
+                    if j < i
                        i1 = j
                        j1 = i
                     else
@@ -3770,8 +3770,8 @@ func bestshuffle(s1)
                     ok
                     s2 = left(s2,i1-1) + substr(s2,j1,1) + substr(s2,i1+1,(j1-i1)-1) + substr(s2,i1,1) + substr(s2,j1+1)
                  ok
-            next 
-       next 
+            next
+       next
        bestshuffle = s2
        return bestshuffle
 
@@ -3803,10 +3803,10 @@ def best_shuffle(s)
   pos = []
   # g["a"] = [2, 4] implies that s[2] == s[4] == "a"
   g = s.length.times.group_by { |i| s[i] }
-  
+
   # k sorts letters from low to high count
   k = g.sort_by { |k, v| v.length }.map { |k, v| k }
-  
+
   until g.empty?
     k.each do |letter|
       g[letter] or next
@@ -3814,7 +3814,7 @@ def best_shuffle(s)
       g[letter].empty? and g.delete letter
     end
   end
-  
+
   # Now fill in _new_ with _letters_ according to each position
   # in _pos_, but skip ahead in _letters_ if we can avoid
   # matching characters that way.
@@ -3825,7 +3825,7 @@ def best_shuffle(s)
     i += 1 while letters[i] == s[p] and i < (letters.length - 1)
     new[p] = letters.slice! i
   end
-  
+
   score = new.chars.zip(s.chars).count { |c, d| c == d }
   [new, score]
 end
@@ -3864,12 +3864,12 @@ while word$(list$,ii + 1," ") <> ""
   if mid$(w$,i,1) = mid$(bs$,i,1) then count = count + 1
  next i
  print  w$;" ";bs$;" ";count
-wend 
+wend
 
 function bestShuffle$(s1$)
    s2$   = s1$
    for i = 1 to len(s2$)
-        for j =  1 to len(s2$) 
+        for j =  1 to len(s2$)
             if (i <> j) and (mid$(s2$,i,1) <> mid$(s1$,j,1)) and (mid$(s2$,j,1) <> mid$(s1$,i,1)) then
             if j < i then i1 = j:j1 = i else i1 = i:j1 = j
             s2$ = left$(s2$,i1-1) + mid$(s2$,j1,1) + mid$(s2$,i1+1,(j1-i1)-1) + mid$(s2$,i1,1) + mid$(s2$,j1+1)
@@ -4498,7 +4498,7 @@ End Function
 
 Function GoodShuffle(t() As Long, Lim As Byte) As Boolean
 Dim i&, C&
-    
+
     For i = LBound(t) To UBound(t)
         If t(i) = i Then C = C + 1
     Next i
@@ -4649,7 +4649,7 @@ for C:= 1 to 1_000_000 do               \overkill? XPL0 is fast
         S:= 0;                          \compute score
         for I:= 0 to L-1 do
                 if W(I) = W0(I) then S:= S+1;
-        if S < SS then 
+        if S < SS then
                 [SS:= S;                \save best score and best shuffle
                 for I:= 0 to L do SW(I):= W(I);
                 ];
@@ -4698,7 +4698,7 @@ fcn bestShuffle(str){
 	    break;
 	 }
       }
-   } 
+   }
    return(s.concat(), s.zipWith('==,str).sum(0));
 }
 ```
@@ -4743,7 +4743,7 @@ a --> a (1)
 70 NEXT i
 80 PRINT w$;" ";b$;" ";count
 90 NEXT n
-100 STOP 
+100 STOP
 1000 REM Best shuffle
 1010 LET b$=w$
 1020 FOR i=1 TO LEN b$
@@ -4751,7 +4751,7 @@ a --> a (1)
 1040 IF (i<>j) AND (b$(i)<>w$(j)) AND (b$(j)<>w$(i)) THEN LET t$=b$(i): LET b$(i)=b$(j): LET b$(j)=t$
 1110 NEXT j
 1120 NEXT i
-1130 RETURN 
+1130 RETURN
 2000 DATA "abracadabra","seesaw","elk","grrrrrr","up","a"
 
 ```

@@ -564,8 +564,8 @@ Command line arguments are passed to main. Since the program name is also passed
 Be careful on systems that use Unicode or other multibyte character sets. You may need to use a type of _wchar* and multi-byte-character-set-aware versions of printf.
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 
 int main(int argc, char* argv[])
@@ -587,8 +587,8 @@ Command line arguments are passed the same way as in C.
 This example uses iostream. Traditional C I/O also works.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main(int argc, char* argv[])
 {

@@ -177,16 +177,16 @@ Output: 5.18737751764
 /* Initialized data */
 .data
 
-szFormat: .asciz "Result = %.8f \n" 
+szFormat: .asciz "Result = %.8f \n"
 .align 4
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
     mov r0,#1                                   @ first indice
     mov r1,#100                                 @ last indice
     adr r2,funcdiv                              @ address function
@@ -203,7 +203,7 @@ main:
 
 iAdrszFormat:             .int szFormat
 /******************************************************************/
-/*     function sum                                               */ 
+/*     function sum                                               */
 /******************************************************************/
 /* r0 contains begin  */
 /* r1 contains end */
@@ -211,7 +211,7 @@ iAdrszFormat:             .int szFormat
 
 /* r0 return result                      */
 funcSum:
-    push {r0,r3,lr}                       @ save  registers 
+    push {r0,r3,lr}                       @ save  registers
     mov r3,r0
     mov r0,#0                             @ init r0
     vmov s3,r0                            @ and s3
@@ -229,18 +229,18 @@ funcSum:
     pop {r0,r3,lr}                        @ restaur registers
     bx lr                                 @ return
 /******************************************************************/
-/*     compute 1/r0                                               */ 
+/*     compute 1/r0                                               */
 /******************************************************************/
 /* r0 contains the value                 */
 /* r0 return result                      */
 funcdiv:
-    push {r1,lr}                       @ save  registers 
+    push {r1,lr}                       @ save  registers
     vpush {s1}                         @ save float registers
     cmp r0,#0                          @ division by zero -> end
     beq 100f
     ldr r1,fUn                         @ load float constant 1.0
     vmov s0,r1                         @ in float register s3
-    vmov s1,r0                         @ 
+    vmov s1,r0                         @
     vcvt.f32.s32 s1, s1                @conversion in float single précision (32 bits)
     vdiv.f32 s0,s0,s1                  @ division 1/r0
                                        @ and return result in s0
@@ -263,14 +263,14 @@ fUn:                .float 1
 ```bbcbasic
       PRINT FNsum(j, 1, 100, FNreciprocal)
       END
-      
+
       DEF FNsum(RETURN i, lo, hi, RETURN func)
       LOCAL temp
       FOR i = lo TO hi
         temp += FN(^func)
       NEXT
       = temp
-      
+
       DEF FNreciprocal = 1/i
 ```
 
@@ -315,8 +315,8 @@ Output:
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int i;
 double sum(int *i, int lo, int hi, double (*term)()) {
@@ -339,9 +339,9 @@ Output: 5.18738
 {{works with|gcc}}
 Alternatively, C's macros provide a closer imitation of ALGOL's call-by-name semantics:
 
-```c>#include <stdio.h
+```c
+#include <stdio.h>
 
- 
 int i;
 
 #define sum(i, lo_byname, hi_byname, term)      \
@@ -367,8 +367,8 @@ Output: 5.187378
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int i;
 double sum(int &i, int lo, int hi, double (*term)()) {
@@ -397,7 +397,7 @@ Can be simulated via lambda expressions:
 using System;
 
 class JensensDevice
-{    
+{
     public static double Sum(ref int i, int lo, int hi, Func<double> term)
     {
         double temp = 0.0;
@@ -546,7 +546,7 @@ def sum(&i, lo, hi, &term) {   # bind i and term to passed slots
     }
     return temp
 }
-{ 
+{
     var i := null
     sum(&i, 1, 100, def _.get() { return 1/i })
 }
@@ -578,7 +578,7 @@ sum(1, 100, fn i { 1/i })
 ```elixir
 defmodule JensenDevice do
   def task, do: sum( 1, 100, fn i -> 1 / i end )
-  
+
   defp sum( i, high, _term ) when i > high, do: 0
   defp sum( i, high, term ) do
     temp = term.( i )
@@ -708,7 +708,7 @@ Fortran does not offer call-by-name in the manner of the Algol language. It pass
 
 Here, type declarations have been omitted to save space because they won't help - until there appears a "BY NAME" or some such phrasing. Although variable <code>I</code> in the calling routine will have its value adjusted as the DO-loop in SUM proceeds (the parameter being passed by reference), this won't affect the evaluation of 1.0/I, which will be performed once using whatever value is in the caller's variable (it is uninitialised, indeed, undeclared also and so by default an integer) then the function is invoked with the address of the location containing that result. The function will make many references to that result, obtaining the same value each time. The fact that the caller's <code>I</code> will be changed each time doesn't matter.
 
-Fortran does offer a facility to pass a function as a parameter using the EXTERNAL declaration, as follows - SUM is a F90 library function, so a name change to SUMJ: 
+Fortran does offer a facility to pass a function as a parameter using the EXTERNAL declaration, as follows - SUM is a F90 library function, so a name change to SUMJ:
 ```Fortran
       FUNCTION SUMJ(I,LO,HI,TERM)	!Attempt to follow Jensen's Device...
        INTEGER I	!Being by reference is workable.
@@ -851,7 +851,7 @@ Traditional call by name and reference are not features of Icon/Unicon. Procedur
 record mutable(value)   # record wrapper to provide mutable access to immutable types
 
 procedure main()
-    A := mutable()      
+    A := mutable()
     write( sum(A, 1, 100, create 1.0/A.value) )
 end
 
@@ -927,7 +927,7 @@ public class Jensen {
     static double sum(int lo, int hi, IntToDoubleFunction f) {
         return IntStream.rangeClosed(lo, hi).mapToDouble(f).sum();
     }
-        
+
     public static void main(String args[]) {
         System.out.println(sum(1, 100, (i -> 1.0/i)));
     }
@@ -1093,7 +1093,7 @@ Module Jensen`s_Device {
       Print Sum(&i, 1, 100, Lazy$(1/i))==5.1873775176392  ' true
       Print i=101 ' true
 }
-Jensen`s_Device  
+Jensen`s_Device
 
 ```
 
@@ -1114,7 +1114,7 @@ Module Jensen`s_Device {
       Print Sum(&i, 1, 100, Lazy$(1/i))=5.1873775176396202608051176755@  ' true
       Print i=101 ' true
 }
-Jensen`s_Device 
+Jensen`s_Device
 
 ```
 
@@ -1220,26 +1220,26 @@ mysum(1/n, n, 1, 10);
 import COM.ibm.netrexx.process.
 
 class JensensDevice
-  
+
   properties static
   interpreter=NetRexxA
-  exp=Rexx ""    
+  exp=Rexx ""
   termMethod=Method
-  
+
   method main(x=String[]) static
     say sum('i',1,100,'1/i')
-    
+
   method sum(i,lo,hi,term) static SIGNALS IOException,NoSuchMethodException,IllegalAccessException,InvocationTargetException
     sum=0
     loop iv=lo to hi
       sum=sum+termeval(i,iv,term)
     end
     return sum
-    
-  method termeval(i,iv,e) static returns Rexx SIGNALS IOException,NoSuchMethodException,IllegalAccessException,InvocationTargetException 
+
+  method termeval(i,iv,e) static returns Rexx SIGNALS IOException,NoSuchMethodException,IllegalAccessException,InvocationTargetException
     if e\=exp then interpreter=null
     exp=e
-    
+
     if interpreter=null then do
       termpgm='method term('i'=Rexx) static returns rexx;return' e
       fw=FileWriter("termpgm.nrx")
@@ -1251,9 +1251,9 @@ class JensensDevice
       classes=[interpreter.getClassObject('netrexx.lang', 'Rexx', 0)]
       termMethod=termClass.getMethod('term', classes)
     end
-    
+
     return Rexx termMethod.invoke(null,[iv])
-    
+
 
 ```
 
@@ -1408,7 +1408,7 @@ GP does not have pass-by-reference semantics for user-generated functions, thoug
 {$MODE objFPC}
 type
   tTerm = function(i: integer):real;
-  
+
 function term(i:integer):real;
 Begin
   term := 1/i;
@@ -1417,7 +1417,7 @@ end;
 function sum(var i: LongInt;
               lo,hi: integer;
               term:tTerm):real;
-             
+
 Begin
   result := 0;
   i := lo;
@@ -1425,7 +1425,7 @@ Begin
     result := result+term(i);
     inc(i);
     end;
-end;     
+end;
 
 var
   i : LongInt;
@@ -1448,7 +1448,7 @@ Out
 ```perl
 my $i;
 sub sum {
-    my ($i, $lo, $hi, $term) = @_; 
+    my ($i, $lo, $hi, $term) = @_;
     my $temp = 0;
     for ($$i = $lo; $$i <= $hi; $$i++) {
         $temp += $term->();
@@ -1466,7 +1466,7 @@ Or you can take advantage of the fact that elements of the @_ are aliases of the
 ```perl
 my $i;
 sub sum {
-    my (undef, $lo, $hi, $term) = @_; 
+    my (undef, $lo, $hi, $term) = @_;
     my $temp = 0;
     for ($_[0] = $lo; $_[0] <= $hi; $_[0]++) {
         $temp += $term->();
@@ -1502,7 +1502,7 @@ Note that the C-style "for" loop is pronounced "loop" in Perl 6, and is the only
 
 ## Phix
 
-Not really as asked for (implicit assumption replaced with explicit parameter) but this gives the required result. 
+Not really as asked for (implicit assumption replaced with explicit parameter) but this gives the required result.
 
 I could also have done what C and PHP are doing, though in Phix I'd have to explicitly assign the static var within the loop.
 
@@ -1516,9 +1516,9 @@ function sumr(integer lo, hi, rid)
     end for
     return res
 end function
- 
+
 function reciprocal(atom i) return 1/i end function
- 
+
 ?sumr(1, 100, routine_id("reciprocal"))
 ```
 
@@ -1744,7 +1744,7 @@ num: 5.18737751763962026080511767565825315790897212670845165317653395662
 
 ## REXX
 
-Note:   the 2<sup>nd</sup> and 3<sup>rd</sup> arguments for the   '''sum'''   function needn't be enclosed in quotes   (as they're numeric); 
+Note:   the 2<sup>nd</sup> and 3<sup>rd</sup> arguments for the   '''sum'''   function needn't be enclosed in quotes   (as they're numeric);
 
 they were enclosed just to be consistent with the other arguments.
 
@@ -2109,8 +2109,8 @@ End Sub
 
 ```txt
 
- 5,18737751763962 
- 338350 
+ 5,18737751763962
+ 338350
 -0,12717101366042
 
 ```
@@ -2203,13 +2203,13 @@ sum3(1,100, fcn(i){ 1.0/i }).println();
 30 LET lo=1: LET hi=100
 40 GO SUB 1000
 50 PRINT temp
-60 STOP 
+60 STOP
 1000 REM Evaluation
 1010 LET temp=0
 1020 FOR i=lo TO hi
 1030 LET temp=temp+VAL f$
 1040 NEXT i
-1050 RETURN 
+1050 RETURN
 
 ```
 

@@ -153,7 +153,7 @@ end maybe
 
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
-    -- 2nd class handler function lifted into 1st class script wrapper. 
+    -- 2nd class handler function lifted into 1st class script wrapper.
     if script is class of f then
         f
     else
@@ -165,14 +165,14 @@ end mReturn
 
 
 -- Egyptian multiplication - progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for binary 
+-- stages of doubling to an accumulator where needed for binary
 -- assembly of a target length
 -- replicate :: Int -> a -> [a]
 on replicate(n, a)
     set out to {}
     if 1 > n then return out
     set dbl to {a}
-    
+
     repeat while (1 < n)
         if 0 < (n mod 2) then set out to out & dbl
         set n to (n div 2)
@@ -236,8 +236,8 @@ terms 991-1000: 4 7 30 25 67 225 488 0 10 136
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 
 int main(int argc, const char *argv[]) {
@@ -314,13 +314,13 @@ Terms 991 to 1000 terms: (4 7 30 25 67 225 488 0 10 136)
 (defun VanEck (x) (reverse (VanEckh x 0 0 '(0))))
 
 (defun VanEckh (final index curr lst)
-	(if (eq index final) 
+	(if (eq index final)
 		lst
 		(VanEckh final (+ index 1) (howfar curr lst) (cons curr lst))))
 
 (defun howfar (x lst) (howfarh x lst 0))
 
-(defun howfarh (x lst runningtotal) 
+(defun howfarh (x lst runningtotal)
 	(cond
 		((null lst) 0)
 		((eq x (car lst)) (+ runningtotal 1))
@@ -404,7 +404,7 @@ ecK() |> Seq.take 50 |> Seq.iter(printf "%d "); printfn "";;
 
 ```txt
 
-0 0 1 0 2 0 2 2 1 6 0 5 0 2 6 5 4 0 5 3 0 3 2 9 0 4 9 3 6 14 0 6 3 5 15 0 5 3 5 2 17 0 6 11 0 3 8 0 3 3 
+0 0 1 0 2 0 2 2 1 6 0 5 0 2 6 5 4 0 5 3 0 3 2 9 0 4 9 3 6 14 0 6 3 5 15 0 5 3 5 2 17 0 6 11 0 3 8 0 3 3
 
 ```
 
@@ -420,7 +420,7 @@ ecK() |> Seq.skip 990 |> Seq.take 50|> Seq.iter(printf "%d "); printfn "";;
 
 ```txt
 
-4 7 30 25 67 225 488 0 10 136 61 0 4 12 72 0 4 4 1 24 41 385 0 7 22 25 22 2 84 68 282 464 0 10 25 9 151 697 0 6 41 20 257 539 0 6 6 1 29 465 
+4 7 30 25 67 225 488 0 10 136 61 0 4 12 72 0 4 4 1 24 41 385 0 7 22 25 22 2 84 68 282 464 0 10 25 9 151 697 0 6 41 20 257 539 0 6 6 1 29 465
 
 ```
 
@@ -495,7 +495,7 @@ Next i
 Print Chr(10) & "Terminos 991 al 1000: ";
 For i = 990 To 999
     Print a(i) &" ";
-Next i 
+Next i
 End
 
 ```
@@ -529,7 +529,7 @@ func main() {
             if a[m] == a[n] {
                 a[n+1] = n - m
                 break
-            }    
+            }
         }
     }
     fmt.Println("The first ten terms of the Van Eck sequence are:")
@@ -566,9 +566,9 @@ func main() {
     seen := make(map[int]int)
     for n := 0; n < max-1; n++ {
         if m, ok := seen[a[n]]; ok {
-            a[n+1] = n - m            
-        } 
-        seen[a[n]] = n          
+            a[n+1] = n - m
+        }
+        seen[a[n]] = n
     }
     fmt.Println("The first ten terms of the Van Eck sequence are:")
     fmt.Println(a[:10])
@@ -656,7 +656,7 @@ VanEck=. (, (<:@:# - }: i: {:))^:(]`0:)
 ```j
    VanEck 9
 0 0 1 0 2 0 2 2 1 6
-   
+
    990 }. VanEck 999
 4 7 30 25 67 225 488 0 10 136
 ```
@@ -1620,7 +1620,7 @@ N=10000 -> [7, 43, 190, 396, 2576, 3142, 0, 7, 7, 1]
 
 ### using a list
 
-This REXX version allows the specification of the   ''start''   and   ''end''   of the   ''Van Eck''   sequence   (to be displayed)   as 
+This REXX version allows the specification of the   ''start''   and   ''end''   of the   ''Van Eck''   sequence   (to be displayed)   as
 
 well as the initial starting element   (the default is zero).
 
@@ -1665,7 +1665,7 @@ terms  1  through  20  of the Van Eck sequence are:  6 0 0 1 0 2 0 2 2 1 6 10 0 
 
 ### using a dictionary
 
-This REXX version   (which uses a dictionary)   is about   '''20'''   times faster than using a list   (in finding the previous 
+This REXX version   (which uses a dictionary)   is about   '''20'''   times faster than using a list   (in finding the previous
 
 location of an "old" number (term).
 
@@ -1684,7 +1684,7 @@ if  $=='' |  $==","  then  $=   0                /* "      "         "   "   "  
 say 'terms '  LO  " through "  HI  ' of the Van Eck sequence are: '  subword($,LO,HI-LO+1)
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 

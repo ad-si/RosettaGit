@@ -14,7 +14,7 @@ tags = []
 
 {{task heading}}
 
-Write a program to find the [[wp:Mode (statistics)|mode]] value of a collection. 
+Write a program to find the [[wp:Mode (statistics)|mode]] value of a collection.
 
 The case where the collection is empty may be ignored. Care must be taken to handle the case where the mode is non-unique.
 
@@ -261,20 +261,20 @@ mode←{{s←⌈/⍵[;2]⋄⊃¨(↓⍵)∩{⍵,s}¨⍵[;1]}{⍺,≢⍵}⌸⍵}
 Source: [http://www.autohotkey.com/forum/post-276175.html#276175 AutoHotkey forum] by Laszlo
 
 ```autohotkey
-MsgBox % Mode("1 2 3") 
-MsgBox % Mode("1 2 0 3 0.0") 
-MsgBox % Mode("0.1 2.2 -0.1 0.22e1 2.20 0.1") 
+MsgBox % Mode("1 2 3")
+MsgBox % Mode("1 2 0 3 0.0")
+MsgBox % Mode("0.1 2.2 -0.1 0.22e1 2.20 0.1")
 
-Mode(a, d=" ") { ; the number that occurs most frequently in a list delimited by d (space) 
-   Sort a, ND%d% 
-   Loop Parse, a, %d% 
-      If (V != A_LoopField) { 
-         If (Ct > MxCt) 
-            MxV := V, MxCt := Ct 
-         V := A_LoopField, Ct := 1 
-      } 
-      Else Ct++ 
-   Return Ct>MxCt ? V : MxV 
+Mode(a, d=" ") { ; the number that occurs most frequently in a list delimited by d (space)
+   Sort a, ND%d%
+   Loop Parse, a, %d%
+      If (V != A_LoopField) {
+         If (Ct > MxCt)
+            MxV := V, MxCt := Ct
+         V := A_LoopField, Ct := 1
+      }
+      Else Ct++
+   Return Ct>MxCt ? V : MxV
 }
 ```
 
@@ -282,11 +282,11 @@ Mode(a, d=" ") { ; the number that occurs most frequently in a list delimited by
 
 ## AWK
 
-  	
+
 
 ```AWK
 #!/usr/bin/gawk -f
-{ 
+{
 	# compute histogram
 	histo[$1] += 1;
 };
@@ -294,25 +294,25 @@ Mode(a, d=" ") { ; the number that occurs most frequently in a list delimited by
 function mode(HIS) {
     # Computes the mode from Histogram A
     max = 0;
-    n = 0; 	
-    for (k in HIS) { 
+    n = 0;
+    for (k in HIS) {
 	val = HIS[k];
 	if (HIS[k] > max) {
-	    max = HIS[k]; 
+	    max = HIS[k];
             n = 1;
-	    List[n] = k;	 
+	    List[n] = k;
 	} else if (HIS[k] == max)	{
-		List[++n] = k; 	
+		List[++n] = k;
 	}
-    }	
+    }
 
-    for (k=1; k<=n; k++) { 
-        o = o""OFS""List[k]; 
-    }	
-    return o; 
+    for (k=1; k<=n; k++) {
+        o = o""OFS""List[k];
+    }
+    return o;
 }
 
-END { 
+END {
     print mode(histo);
 };
 ```
@@ -333,7 +333,7 @@ aa
 6
 7
 1
-as@mini10:~/src/RosettaCode$ ./mode.awk modedata.txt 
+as@mini10:~/src/RosettaCode$ ./mode.awk modedata.txt
  6 aa 3
 
 ```
@@ -347,7 +347,7 @@ as@mini10:~/src/RosettaCode$ ./mode.awk modedata.txt
       DIM a(10), b(4)
       a() = 1, 3, 6, 6, 6, 6, 7, 7, 12, 12, 17
       b() = 1, 2, 4, 4, 1
-      
+
       DIM modes(10)
       PRINT "Mode(s) of a() = " ;
       FOR i% = 1 TO FNmodes(a(), modes())
@@ -360,7 +360,7 @@ as@mini10:~/src/RosettaCode$ ./mode.awk modedata.txt
       NEXT
       PRINT
       END
-      
+
       DEF FNmodes(a(), m())
       LOCAL I%, J%, N%, c%(), max%
       N% = DIM(a(),1)
@@ -393,8 +393,8 @@ Mode(s) of b() = 1 4
 
 Using an array of doubles.  If another data type is desired, the <code>cmp_dbl</code> and <code>vcount</code> definitions should be changed accordingly.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct { double v; int c; } vcount;
@@ -469,8 +469,8 @@ got 2 modes:
 
 {{works with|g++|4.3.2}}
 
-```cpp>#include <iterator
-
+```cpp
+#include <iterator>
 #include <utility>
 #include <algorithm>
 #include <list>
@@ -555,34 +555,34 @@ namespace Test
 {
     class Program
     {
-     
+
         static void Main(string[] args)
         {
             /*
              * We Use Linq To Determine The Mode
              */
-            List<int> myList = new List<int>() { 1, 1, 2, 4, 4 }; 
+            List<int> myList = new List<int>() { 1, 1, 2, 4, 4 };
 
             var query =     from numbers in myList //select the numbers
                             group numbers by numbers //group them together so we can get the count
                             into groupedNumbers
                             select new { Number = groupedNumbers.Key, Count = groupedNumbers.Count() }; //so we got a query
-            //find the max of the occurence of the mode 
+            //find the max of the occurence of the mode
             int max = query.Max(g => g.Count);
             IEnumerable<int> modes = query.Where(x => x.Count == max).Select(x => x.Number);//match the frequence and select the number
             foreach (var item in modes)
             {
                 Console.WriteLine(item);
             }
-            
+
             Console.ReadLine();
         }
 
-             
-       
+
+
     }
-     
-    
+
+
 }
 
 ```
@@ -623,7 +623,7 @@ mode = (arr) ->
   for key, cnt of counts
     max = cnt if cnt > max
   (key for key, cnt of counts when cnt == max)
-  
+
 console.log mode [1, 2, 2, 2, 3, 3, 3, 4, 4]
 ```
 
@@ -760,11 +760,11 @@ extension op
         {
             countMap[item] := countMap[item] + 1
         };
-    
+
         countMap := countMap.Values.sort:(p,n => p > n);
-    
+
         var max := countMap.FirstMember;
-    
+
         ^ countMap
             .filterBy:(kv => max.equal(kv.Value))
             .selectBy:(kv => kv.Key)
@@ -777,8 +777,8 @@ public program()
     var array1 := new int[]::(1, 1, 2, 4, 4);
     var array2 := new int[]::(1, 3, 6, 6, 6, 6, 7, 7, 12, 12, 17);
     var array3 := new ::(1, "blue", 2, 7.5r, 5, "green", "red", 5, 2, "blue", "white");
-    
-    console 
+
+    console
         .printLine("mode of (",array1.asEnumerable(),") is (",array1.Mode,")")
         .printLine("mode of (",array2.asEnumerable(),") is (",array2.Mode,")")
         .printLine("mode of (",array3.asEnumerable(),") is (",array3.Mode,")")
@@ -969,14 +969,14 @@ function mode(sequence s)
             counts  = append(counts, 1)
         end if
     end for
-    
+
     max = counts[1]
     for i = 2 to length(counts) do
         if counts[i] > max then
             max = counts[i]
         end if
     end for
-    
+
     j = 1
     modes = {}
     while j <= length(s) do
@@ -1036,10 +1036,10 @@ val it : int list = [0; 2; 1]
 
 ## Factor
 
-Factor has the word <code>mode</code> in <code>math.statistics</code> vocabulary. 
+Factor has the word <code>mode</code> in <code>math.statistics</code> vocabulary.
 
 ```factor
-{ 11 9 4 9 4 9 } mode ! 9 
+{ 11 9 4 9 4 9 } mode ! 9
 ```
 
 
@@ -1107,7 +1107,7 @@ contains
        freq = 1
        idx = 0
        rs = 1         ! rs will be the number of different values
-       
+
        do i = 2, size(ta, 1)
           if ( ta(i-1) == ta(i) ) then
              freq(rs) = freq(rs) + 1
@@ -1117,7 +1117,7 @@ contains
           end if
        end do
        idx(rs) = i-1
-         
+
        ml = maxloc(freq(1:rs), 1)  ! index of the max value of freq
        tf = freq(ml)               ! the max frequency
        tm = ta(idx(ml))            ! the value with that freq
@@ -1136,7 +1136,7 @@ contains
                 exit
              end if
           end do
-                
+
           if ( present(otherslen) ) then
              otherslen = i
           end if
@@ -1160,10 +1160,10 @@ end program mode_test
 
 Sub quicksort(a() As Integer, first As Integer, last As Integer)
   Dim As Integer length = last - first + 1
-  If length < 2 Then Return 
+  If length < 2 Then Return
   Dim pivot As Integer = a(first + length\ 2)
-  Dim lft As Integer = first 
-  Dim rgt As Integer = last 
+  Dim lft As Integer = first
+  Dim rgt As Integer = last
   While lft <= rgt
     While a(lft) < pivot
       lft +=1
@@ -1175,7 +1175,7 @@ Sub quicksort(a() As Integer, first As Integer, last As Integer)
        Swap a(lft), a(rgt)
        lft += 1
        rgt -= 1
-    End If 
+    End If
   Wend
   quicksort(a(), first, rgt)
   quicksort(a(), lft, last)
@@ -1188,15 +1188,15 @@ Function mode(a() As Integer, m() As Integer, sorted As Boolean = false) As Inte
   Dim ub As Integer = UBound(a)
   If ub = -1 Then Return 0 '' empty array
   If Not sorted Then quicksort(a(), lb, ub)
-  Dim cValue As Integer = a(lb) 
+  Dim cValue As Integer = a(lb)
   Dim cCount As Integer = 1
   Dim cMax As Integer = 0
-  '' We iterate to the end of the array plus 1 to ensure the 
-  '' final value is dealt with properly  
+  '' We iterate to the end of the array plus 1 to ensure the
+  '' final value is dealt with properly
   For i As Integer = lb + 1 To ub + 1
-    If i <= ub AndAlso a(i) = cValue Then 
+    If i <= ub AndAlso a(i) = cValue Then
       cCount += 1
-    Else  
+    Else
       If cCount > cMax Then
         Erase m
         Redim m(1 To 1)
@@ -1204,7 +1204,7 @@ Function mode(a() As Integer, m() As Integer, sorted As Boolean = false) As Inte
         cMax = cCount
       ElseIf cCount = cMax Then
         Redim Preserve m(1 To UBound(m) + 1)
-        m(UBound(m)) = cValue    
+        m(UBound(m)) = cValue
       End If
       If i = ub + 1 Then Exit For
       cValue = a(i)
@@ -1215,7 +1215,7 @@ Function mode(a() As Integer, m() As Integer, sorted As Boolean = false) As Inte
 End Function
 
 Dim a(1 To 14) As Integer  = {1, 2, 3, 1, 2, 4, 2, 5, 2, 3, 3, 1, 3, 6}
-Dim m() As Integer '' to store the mode(s) 
+Dim m() As Integer '' to store the mode(s)
 Dim mCount As Integer = mode(a(), m())
 Print "The following are the modes which occur"; mCount; " times : "
 For i As Integer = LBound(m) To UBound(m) : Print m(i); " "; : Next
@@ -1550,7 +1550,7 @@ def mode(Iterable col) {
     assert col
     def m = [:]
     col.each {
-        m[it] = m[it] == null ? 1 : m[it] + 1 
+        m[it] = m[it] == null ? 1 : m[it] + 1
     }
     def keys = m.keySet().sort { -m[it] }
     keys.findAll { m[it] == m[keys[0]] }
@@ -1608,7 +1608,7 @@ end
 {{out|Sample outputs}}
 
 ```txt
-->am 3 1 4 1 5 9 7 6  
+->am 3 1 4 1 5 9 7 6
 1
 ->am 3 1 4 1 5 9 7 6 3
 3
@@ -1683,14 +1683,14 @@ function mode(ary) {
             counter[ary[i]] = 0;
         counter[ary[i]]++;
 
-        if (counter[ary[i]] == max) 
+        if (counter[ary[i]] == max)
             mode.push(ary[i]);
         else if (counter[ary[i]] > max) {
             max = counter[ary[i]];
             mode = [ary[i]];
         }
     }
-    return mode; 
+    return mode;
 }
 
 mode([1, 3, 6, 6, 6, 6, 7, 7, 12, 12, 17]);  // [6]
@@ -1717,7 +1717,7 @@ def modes:
 
 # mode/0 outputs a stream of the modal values;
 # if the input array is empty, the output stream is also empty.
-def mode: 
+def mode:
   if length == 0 then empty
   else modes as $modes
        | $modes[-1][1] as $count
@@ -1915,7 +1915,7 @@ function modes$(a$)
     case occurence = maxOccurence
         modes$ =  modes$; oldVal; " "
     end select
-end function 
+end function
 ```
 
 
@@ -1926,7 +1926,7 @@ end function
 Modes for 1 3 6 6 6 6 7 7 12 12 17
 6
 Modes for 1 2 4 4 1
-1 4 
+1 4
 
 ```
 
@@ -1985,9 +1985,9 @@ Module Checkit {
             m=1
             While not empty {
                  if islet then  {
-                       Read A$ 
+                       Read A$
                         if Exist(N, A$) then  {
-                             k=Eval(N) 
+                             k=Eval(N)
                              k++
                              if m=k then  {
                                   Append ALLMODES, A$
@@ -1999,7 +1999,7 @@ Module Checkit {
                   } else {
                         Read A
                         if Exist(N, A) then  {
-                             k=Eval(N) 
+                             k=Eval(N)
                              k++
                              if m=k then  {
                                   Append ALLMODES, A
@@ -2059,15 +2059,15 @@ Module Checkit {
                   For i%=0 to n%-1
                         If c%(i%) = max% Then Data a(i%)
                   Next i%
-            } 
+            }
             =Array([])
       }
       Dim m()
       m()=(2,3,43,234,234,3,324)
       Print GetMode(&m())  ' 3 234
       k=(1,2,1,2,1,2,3)
-      n=GetMode(&k) 
-      
+      n=GetMode(&k)
+
       ' iterate backward
       i=each(n, -1, 1)
       While i {
@@ -2086,7 +2086,7 @@ Checkit
 ## Maple
 
 The built-in function Statistics:-Mode can be used to compute a mode.
-When the mode is unique, it returns a numeric result and when there are multiple modes, it returns a set, as in the following example: 
+When the mode is unique, it returns a numeric result and when there are multiple modes, it returns a set, as in the following example:
 
 ```Maple
 Statistics:-Mode([1, 2.1, 2.1, 3]);
@@ -2329,7 +2329,7 @@ VAR
       Out.Int(k.value,0);Out.Ln;
     END;
   END Show;
-  
+
   PROCEDURE Mode(x: ARRAY OF LONGINT): LinkedList.LinkedList(Key);
   VAR
     d: Dictionary.Dictionary(Key,Val);
@@ -2342,10 +2342,10 @@ VAR
     d := NEW(Dictionary.Dictionary(Key,Val));
     FOR i := 0 TO LEN(x) - 1 DO
       k := NEW(Key,x[i]);
-      IF d.Lookup(k,v) THEN 
+      IF d.Lookup(k,v) THEN
         d.Set(k,NEW(Val,v.value + 1));
       ELSE
-        d.Set(k,NEW(Val,1))        
+        d.Set(k,NEW(Val,1))
       END
     END;
 
@@ -2354,7 +2354,7 @@ VAR
     iter := d.IterKeys();
     WHILE (iter.Next(k)) DO
       v := d.Get(k);
-      IF v.Cmp(max) > 0 THEN 
+      IF v.Cmp(max) > 0 THEN
         resp.Clear();
         resp.Append(k);max := v
       ELSIF v.Cmp(max) = 0 THEN
@@ -2405,12 +2405,12 @@ class Mode {
     Print(Mode([1, 3, 6, 6, 6, 6, 7, 7, 12, 12, 17]));
     Print(Mode([1, 2, 4, 4, 1]));
   }
-  
+
   function : Mode(coll : Int[]) ~ IntVector {
     seen := IntMap->New();
     max := 0;
     maxElems := IntVector->New();
-    
+
     each(i : coll) {
       value := coll[i];
 
@@ -2428,7 +2428,7 @@ class Mode {
         max := featched->Get();
         maxElems->Empty();
         maxElems->AddBack(value);
-      } 
+      }
       else if(featched->Get() = max) {
         maxElems->AddBack(value);
       };
@@ -2456,7 +2456,7 @@ class Mode {
 
 ```objc>#import <Foundation/Foundation.h
 
- 
+
 @interface NSArray (Mode)
 - (NSArray *)mode;
 @end
@@ -2528,7 +2528,7 @@ function m = mode2(v)
   % stack vals and c building a 2-rows matrix x
   x = cat(1,vals,c);
   % sort the second row (frequencies) into t (most frequent
-  % first) and take the "original indices" i ... 
+  % first) and take the "original indices" i ...
   [t, i] = sort(x(2,:), "descend");
   % ... so that we can use them to sort columns according
   % to frequencies
@@ -2758,7 +2758,7 @@ sequence res = {}
     end if
     return res
 end function
- 
+
 ?mode({1, 2, 5, -5, -9.5, 3.14159})
 ?mode({ 1, "blue", 2, 7.5, 5, "green", "red", 5, 2, "blue", "white" })
 ?mode({1, 2, 3, 1, 2, 4, 2, 5, 2, 3, 3, 1, 3, 6})
@@ -2904,16 +2904,16 @@ Procedure mean(Array InArray(1))
 
   Protected i, max, found
   Protected NewList MyDatas.MyMean()
-  
+
   Repeat
     found=#False
     ForEach MyDatas()
-      If InArray(i)=MyDatas()\Value 
+      If InArray(i)=MyDatas()\Value
         MyDatas()\Cnt+1
         found=#True
-        Break 
+        Break
       EndIf
-    Next 
+    Next
     If Not found
       AddElement(MyDatas())
       MyDatas()\Value=InArray(i)
@@ -2924,7 +2924,7 @@ Procedure mean(Array InArray(1))
     EndIf
     i+1
   Until i>ArraySize(InArray())
-  
+
   ForEach MyDatas()
     If MyDatas()\Cnt=max
       For i=1 To max
@@ -3241,11 +3241,11 @@ for i1 = 1 to modes(b,amodes)
      see "" + amodes [i1]  + " "
 next
 see nl
- 
+
 func modes(a,amodes)
        max = 0
        n = len(a)
-       if n = 0 
+       if n = 0
           amodes[1] = a[1]
           return 1
        ok
@@ -3275,10 +3275,10 @@ Output:
 
 ```txt
 
-mode(s) of a() = 
-6 
-mode(s) of b() = 
-1 4 
+mode(s) of a() =
+6
+mode(s) of b() =
+1 4
 
 ```
 
@@ -3319,7 +3319,7 @@ p mode_one_pass([1, 1, 2, 4, 4]) # => [1, 4]
 ```
 
 {{works with|Ruby|1.8.7}}
-If you just want one mode (instead of all of them), here's a one-liner for that: 
+If you just want one mode (instead of all of them), here's a one-liner for that:
 
 ```ruby
 def one_mode(ary)
@@ -3371,7 +3371,7 @@ fn mode(vs: Vec<i32>) -> Vec<i32> {
 {{out}}
 
 ```txt
-    
+
 Mode of vec1 is: [6]
 Mode of vec2 is: [1,4] // may also print [4, 1], vector has no order guarantee
 
@@ -3461,11 +3461,11 @@ def mode
     (define (helper collection counts)
         (if (null? collection)
             counts
-            (helper (remove (car collection) collection) 
-                    (cons (cons (car collection) 
+            (helper (remove (car collection) collection)
+                    (cons (cons (car collection)
                                 (appearances (car collection) collection)) counts))))
-    (map car 
-         (filter (lambda (x) (= (cdr x) (apply max (map cdr (helper collection '()))))) 
+    (map car
+         (filter (lambda (x) (= (cdr x) (apply max (map cdr (helper collection '())))))
                  (helper collection '())))
 ```
 
@@ -3529,7 +3529,7 @@ const proc: createModeFunction (in type: elemType) is func
 createModeFunction(integer);
 
 const proc: main is func
-  begin 
+  begin
     writeln(mode([] (1, 3, 6, 6, 6, 6, 7, 7, 12, 12, 17)));
     writeln(mode([] (1, 1, 2, 4, 4)));
   end func;
@@ -3615,7 +3615,7 @@ OrderedCollection extend [
   ]
 ].
 
-#( 1 3 6 6 6 6 7 7 12 12 17 ) asOrderedCollection 
+#( 1 3 6 6 6 6 7 7 12 12 17 ) asOrderedCollection
     mode displayNl.
 #( 1 1 2 4 4) asOrderedCollection
     mode displayNl.
@@ -3705,11 +3705,11 @@ Note that this works for any kind of value.
 
 {{works with|Swift|4}}
 
-This solution uses an extension of the Collection type to add a mode method. The only additional requirement of the Collection is that its Element conforms to Hashable. 
+This solution uses an extension of the Collection type to add a mode method. The only additional requirement of the Collection is that its Element conforms to Hashable.
 
 
 ```Swift
- 
+
 // Extend the Collection protocol. Any type that conforms to extension where its Element type conforms to Hashable will automatically gain this method.
 extension Collection where Element: Hashable {
 
@@ -3915,12 +3915,12 @@ Uses `predicate' to compare items."
 sub floor(x)
     return int(x + .05)
 end sub
- 
+
 SUB ASort$(matriz$())
     local last, gap, first, tempi$, tempj$, i, j
- 
+
     last = arraysize(matriz$(), 1)
- 
+
     gap = floor(last / 10) + 1
     while(TRUE)
 	first = gap + 1
@@ -3952,10 +3952,10 @@ END SUB
 
 sub getMode$(list$) // returns mode and count
 	local m$(1), n, i, mode$, count, maxM$, maxC
-	
+
 	n = token(list$, m$(), ", ")
 	ASort$(m$())
-	
+
 	for i = 1 to n
 		if m$(i) <> mode$ then
 			if count > maxC then
@@ -3968,7 +3968,7 @@ sub getMode$(list$) // returns mode and count
 			count = count + 1
 		end if
 	next i
-	
+
 	return maxM$ + "," + str$(maxC)
 end sub
 

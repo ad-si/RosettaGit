@@ -398,24 +398,24 @@ Coefficients:
 ```bbcbasic
       *FLOAT 64
       INSTALL @lib$+"ARRAYLIB"
-      
+
       DIM y(14), x(2,14), c(2)
       y() = 52.21, 53.12, 54.48, 55.84, 57.20, 58.57, 59.93, 61.29, \
       \     63.11, 64.47, 66.28, 68.10, 69.92, 72.19, 74.46
       x() =  1.47,  1.50,  1.52,  1.55,  1.57,  1.60,  1.63,  1.65, \
       \      1.68,  1.70,  1.73,  1.75,  1.78,  1.80,  1.83
-      
+
       FOR row% = DIM(x(),1) TO 0 STEP -1
         FOR col% = 0 TO DIM(x(),2)
           x(row%,col%) = x(0,col%) ^ row%
         NEXT
       NEXT row%
-      
+
       PROCmultipleregression(y(), x(), c())
       FOR i% = 0 TO DIM(c(),1) : PRINT c(i%) "  "; : NEXT
       PRINT
       END
-      
+
       DEF PROCmultipleregression(y(), x(), c())
       LOCAL m(), t()
       DIM m(DIM(x(),1), DIM(x(),1)), t(DIM(x(),2),DIM(x(),1))
@@ -440,8 +440,8 @@ Coefficients:
 ## C
 
 Using GNU gsl and c99, with the WP data
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <gsl/gsl_matrix.h>
 #include <gsl/gsl_math.h>
 #include <gsl/gsl_multifit.h>
@@ -577,7 +577,7 @@ To show an example of multiple regression, (polyfit x y n) from [[Polynomial reg
 (let ((x (make-array '(1 11) :initial-contents '((0 1 2 3 4 5 6 7 8 9 10))))
       (y (make-array '(1 11) :initial-contents '((1 6 17 34 57 86 121 162 209 262 321)))))
   (polyfit x y 2))
- 
+
 #2A((0.9999999999999759d0) (2.000000000000005d0) (3.0d0))
 ```
 
@@ -729,12 +729,12 @@ c 2 =   61.9603254
 * MR - multiple regression using the SLATEC library routine DHFTI
 *
 * Finds the nearest approximation to BETA in the system of linear equations:
-*                     
+*
 *              X(j,i) . BETA(i) = Y(j)
-* where   
-*                  1 ... j ... N  
+* where
+*                  1 ... j ... N
 *                  1 ... i ... K
-* and               
+* and
 *                  K .LE. N
 *
 * INPUT ARRAYS ARE DESTROYED!
@@ -753,11 +753,11 @@ c 2 =   61.9603254
        INTEGER K, N, IWORK
        DOUBLE PRECISION X, Y, DWORK
        DIMENSION X(N,K), Y(N), DWORK(N+2*K), IWORK(K)
-       
+
 *         local variables
        INTEGER I, J
        DOUBLE PRECISION TAU, TOT
-       
+
 *        maximum of all column sums of magnitudes
        TAU = 0.
        DO J = 1, K
@@ -768,14 +768,14 @@ c 2 =   61.9603254
          IF (TOT > TAU) TAU = TOT
        END DO
        TAU = TAU * EPSILON(TAU)        ! tolerance argument
-       
+
 *            call function
-       CALL DHFTI (X, N, N, K, Y, N, 1, TAU, 
+       CALL DHFTI (X, N, N, K, Y, N, 1, TAU,
      $  J, DWORK(1), DWORK(N+1), DWORK(N+K+1), IWORK)
        IF (J < K) PRINT *, 'mr: solution is rank deficient!'
        RETURN
       END  ! of MR
-      
+
 *-----------------------------------------------------------------------
       PROGRAM t_mr        ! polynomial regression example
        IMPLICIT NONE
@@ -784,7 +784,7 @@ c 2 =   61.9603254
        INTEGER IWORK(K), I, J
        DOUBLE PRECISION XIN(N), X(N,K), Y(N), DWORK(N+2*K)
 
-       DATA XIN / 1.47, 1.50, 1.52, 1.55, 1.57, 1.60, 1.63, 1.65, 1.68, 
+       DATA XIN / 1.47, 1.50, 1.52, 1.55, 1.57, 1.60, 1.63, 1.65, 1.68,
      $            1.70, 1.73, 1.75, 1.78, 1.80, 1.83 /
        DATA Y / 52.21, 53.12, 54.48, 55.84, 57.20, 58.57, 59.93, 61.29,
      $          63.11, 64.47, 66.28, 68.10, 69.92, 72.19, 74.46 /
@@ -798,7 +798,7 @@ c 2 =   61.9603254
 
 *               solve
        CALL MR (X, Y, N, K, DWORK, IWORK)
-       
+
 *               print result
   10   FORMAT ('beta: ', $)
   20   FORMAT (F12.4, $)
@@ -806,7 +806,7 @@ c 2 =   61.9603254
        PRINT 10
        DO J = 1, K
          PRINT 20, Y(J)
-       END DO       
+       END DO
        PRINT 30
        STOP 'program complete'
       END
@@ -949,7 +949,7 @@ import Numeric.LinearAlgebra
 import Numeric.LinearAlgebra.LAPACK
 
 m :: Matrix Double
-m = (3><3) 
+m = (3><3)
   [7.589183,1.703609,-4.477162,
     -4.597851,9.434889,-6.543450,
     0.4588202,-6.115153,1.331191]
@@ -1044,7 +1044,7 @@ To confirm:
    mp=: +/ .*                    NB. matrix product
                                  NB. %.X is matrix inverse of X
                                  NB. |:X is transpose of X
-   
+
    (%.(|:X) mp X) mp (|:X) mp y
 128.814 _143.163 61.9606
    xpy=: mp~ |:                  NB. Or factoring out "X prime y" (monadically "X prime X")
@@ -1084,8 +1084,8 @@ b = X \ y
 ```txt
 
 3-element Array{Float64,1}:
-  128.813 
- -143.162 
+  128.813
+ -143.162
    61.9603
 
 ```
@@ -1106,16 +1106,16 @@ Uses the IdentityMatrix from [[Matrix exponentiation operator#JavaScript]]
 Matrix.prototype.inverse = function() {
     if (this.height != this.width) {
         throw "can't invert a non-square matrix";
-    }   
+    }
 
     var I = new IdentityMatrix(this.height);
-    for (var i = 0; i < this.height; i++) 
+    for (var i = 0; i < this.height; i++)
         this.mtx[i] = this.mtx[i].concat(I.mtx[i])
     this.width *= 2;
 
     this.toReducedRowEchelonForm();
 
-    for (var i = 0; i < this.height; i++) 
+    for (var i = 0; i < this.height; i++)
         this.mtx[i].splice(0, this.height);
     this.width /= 2;
 
@@ -1140,7 +1140,7 @@ print();
 
 // the Tcl example
 y = new ColumnVector([
-    52.21, 53.12, 54.48, 55.84, 57.20, 58.57, 59.93, 61.29, 
+    52.21, 53.12, 54.48, 55.84, 57.20, 58.57, 59.93, 61.29,
     63.11, 64.47, 66.28, 68.10, 69.92, 72.19, 74.46
 ]);
 x = new Matrix(
@@ -1172,7 +1172,7 @@ As neither the JDK nor the Kotlin Standard Library has matrix operations built-i
 
 typealias Vector = DoubleArray
 typealias Matrix = Array<Vector>
- 
+
 operator fun Matrix.times(other: Matrix): Matrix {
     val rows1 = this.size
     val cols1 = this[0].size
@@ -1243,7 +1243,7 @@ fun Matrix.toReducedRowEchelonForm() {
            val div = this[r][lead]
            for (j in 0 until colCount) this[r][j] /= div
         }
- 
+
         for (k in 0 until rowCount) {
             if (k != r) {
                 val mult = this[k][lead]
@@ -1323,15 +1323,15 @@ b = y.PseudoInverse[X]
 ## MATLAB
 
 
-The slash and backslash operator can be used for solving this problem. Here some random data is generated. 
+The slash and backslash operator can be used for solving this problem. Here some random data is generated.
 
 
 ```Matlab
-  n=100; k=10; 
+  n=100; k=10;
   y = randn (1,n);  % generate random vector y
   X = randn (k,n);  % generate random matrix X
   b = y / X
-  b = 0.1457109  -0.0777564  -0.0712427  -0.0166193   0.0292955  -0.0079111   0.2265894  -0.0561589  -0.1752146  -0.2577663 
+  b = 0.1457109  -0.0777564  -0.0712427  -0.0166193   0.0292955  -0.0079111   0.2265894  -0.0561589  -0.1752146  -0.2577663
 ```
 
 
@@ -1341,7 +1341,7 @@ In its transposed form yt = Xt * bt, the backslash operator can be used.
 ```Matlab
   yt = y'; Xt = X';
   bt = Xt \ yt
-  bt = 
+  bt =
    0.1457109
   -0.0777564
   -0.0712427
@@ -1368,16 +1368,16 @@ Here is the example for estimating the polynomial fit
 ```
 
 
-Instead of "/", the slash operator, one can also write : 
+Instead of "/", the slash operator, one can also write :
 
 ```Matlab
- b = y * X' * inv(X * X') 
+ b = y * X' * inv(X * X')
 ```
 
-or 
+or
 
 ```Matlab
- b = y * pinv(X) 
+ b = y * pinv(X)
 ```
 
 
@@ -1469,23 +1469,23 @@ sequence x = {1.47,1.50,1.52,1.55,1.57,
          s = repeat(0,N),
          t = repeat(0,N),
          a = repeat(repeat(0,M+1),M)
- 
+
     for k=1 to 2*M do
         for i=1 to N do
             s[k] += power(x[i],k-1)
             if k<=M then t[k] += y[i]*power(x[i],k-1) end if
         end for
     end for
- 
+
     -- build linear system
- 
+
     for row=1 to M do
         for col=1 to M do
             a[row,col] = s[row+col-1]
         end for
         a[row,M+1] = t[row]
     end for
- 
+
     puts(1,"Linear system coefficents:\n")
     pp(a,{pp_Nest,1,pp_IntFmt,"%7.1f",pp_FltFmt,"%7.1f"})
 
@@ -1510,7 +1510,7 @@ sequence x = {1.47,1.50,1.52,1.55,1.57,
             end if
         end for
     end for
- 
+
     puts(1,"Solutions:\n")
     ?columnize(a,M+1)[1]
 ```
@@ -1667,7 +1667,7 @@ print(np.linalg.lstsq(X, y)[0])
 ## R
 
 
-R provides the lm() function for linear regression. 
+R provides the lm() function for linear regression.
 
 
 ```R
@@ -1687,13 +1687,13 @@ Call:
 lm(formula = y ~ x + I(x^2))
 
 Coefficients:
-(Intercept)            x       I(x^2)  
-     128.81      -143.16        61.96  
+(Intercept)            x       I(x^2)
+     128.81      -143.16        61.96
 
 ```
 
 
-A simple implementation of multiple regression in native R 
+A simple implementation of multiple regression in native R
 is useful to illustrate R's model description and linear algebra capabilities.
 
 
@@ -1730,8 +1730,8 @@ I(x^2)        61.96033
 
 
 
-A more efficient way to solve <math>(X'X)^{-1} X' y</math>, 
-than the method above, is to solve the linear system directly 
+A more efficient way to solve <math>(X'X)^{-1} X' y</math>,
+than the method above, is to solve the linear system directly
 and use the crossprod function:
 
 ```R
@@ -1908,12 +1908,12 @@ Akaike's information criterion and Bayesian information criterion
 
 Covariance matrix of coefficients of regress model
 
-        e(V) |         x1          x2          x3          x4       _cons 
+        e(V) |         x1          x2          x3          x4       _cons
 -------------+------------------------------------------------------------
-          x1 |  .00475492                                                 
-          x2 | -.00040258   .00486445                                     
-          x3 | -.00042516   .00017355   .00521125                         
-          x4 | -.00011915   -.0002568   .00054646   .00386583             
+          x1 |  .00475492
+          x2 | -.00040258   .00486445
+          x3 | -.00042516   .00017355   .00521125
+          x4 | -.00011915   -.0002568   .00054646   .00386583
        _cons |  .00030777  -.00031109  -.00023794   .00058926   .00487012
 
 . predict yhat, xb
@@ -1987,7 +1987,7 @@ regression_coefficients = lapack..dgelsd
 test program:
 
 ```Ursala
-x = 
+x =
 
 <
    <7.589183e+00,1.703609e+00,-4.477162e+00>,
@@ -2001,10 +2001,10 @@ y = <1.745005e+00,-4.448092e+00,-4.160842e+00>
 example = regression_coefficients(x,y)
 ```
 
-The matrix x needn't be square, and has one row for each data point. 
-The length of y must equal the number of rows in x, 
-and the number of coefficients returned will be the number of columns in x. 
-It would be more typical in practice to initialize x 
+The matrix x needn't be square, and has one row for each data point.
+The length of y must equal the number of rows in x,
+and the number of coefficients returned will be the number of columns in x.
+It would be more typical in practice to initialize x
 by evaluating a set of basis functions chosen to model some empirical data,
 but the regression solver is indifferent to the model.
 
@@ -2041,7 +2041,7 @@ GSL.Helpers.polyEval(v,height).format().println();
 ```txt
 
 128.81,-143.16,61.96
- 128.813 - 143.162x + 61.9603x^2 
+ 128.813 - 143.162x + 61.9603x^2
 52.25,53.48,54.36,55.77,56.77,58.37,60.08,61.28,63.18,64.50,66.58,68.03,70.30,71.87,74.33
 
 ```
@@ -2069,12 +2069,12 @@ fcn linsys(A,B){
 	  /L[k][k];
       }
    }
-   X   
+   X
 }
 fcn cholesky(mat){   // Cholesky decomposition task
    rows:=mat.len();
    r:=(0).pump(rows,List().write, (0).pump(rows,List,0.0).copy); // matrix of zeros
-   foreach i,j in (rows,i+1){ 
+   foreach i,j in (rows,i+1){
       s:=(0).reduce(j,'wrap(s,k){ s + r[i][k]*r[j][k] },0.0);
       r[i][j]=( if(i==j)(mat[i][i] - s).sqrt()
 	        else    1.0/r[j][j]*(mat[i][j] - s) );
@@ -2103,7 +2103,7 @@ fcn matMult(a,b){
    foreach i,j,k in (m,p,n){ ans[i][j]+=a[i][k]*b[k][j]; }
    ans
 }
-fcn transpose(M){ 
+fcn transpose(M){
    if(M.len()==1) M[0].pump(List,List.create); // 1 row --> n columns
    else M[0].zip(M.xplode(1));
 }

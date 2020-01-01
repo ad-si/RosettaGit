@@ -29,7 +29,7 @@ show how to make a parameterized SQL statement, set the parameters to the values
 
 ```forth
 \ assuming the var 'db' contains an opened database with a schema matching the problem:
-db @ 
+db @
 "UPDATE players SET name=?1,score=?2,active=?3 WHERE jerseyNum=?4"
 db:prepare var, stmt
 
@@ -100,12 +100,12 @@ Compile with:
 
 Tested with gcc version 4.9.2 (Raspbian 4.9.2-10) and SQLite 3.8.7.1
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <sqlite3.h>
 
-static const char* db_file = ":memory:"; // Create an in-memory database.  
+static const char* db_file = ":memory:"; // Create an in-memory database.
 
 void check_error(int result_code, sqlite3 *db);
 int select_callback(void* data, int column_count, char** columns, char** column_names);
@@ -117,11 +117,11 @@ int main(void) {
     char *insert_statements[4];
     sqlite3_stmt *compiled_statement;
     int i;
-    
+
     // Open the database.
     result_code = sqlite3_open(db_file, &db);
-    check_error(result_code, db);    
-    
+    check_error(result_code, db);
+
     // Create the players table in the database.
     sql = "create table players("
           "id integer primary key asc, "
@@ -130,9 +130,9 @@ int main(void) {
           "active integer, " // Store the bool value as integer (see https://sqlite.org/datatype3.html chapter 2.1).
           "jerseyNum integer);";
     result_code = sqlite3_exec(db, sql, NULL, NULL, NULL);
-    check_error(result_code, db);    
-        
-    // Insert some values into the players table.    
+    check_error(result_code, db);
+
+    // Insert some values into the players table.
     insert_statements[0] = "insert into players (name, score, active, jerseyNum) "
                                         "values ('Roethlisberger, Ben', 94.1, 1, 7);";
     insert_statements[1] = "insert into players (name, score, active, jerseyNum) "
@@ -141,33 +141,33 @@ int main(void) {
                                         "values ('Manning, Payton', 96.5, 0, 18);";
     insert_statements[3] = "insert into players (name, score, active, jerseyNum) "
                                         "values ('Doe, John', 15, 0, 99);";
-    
+
     for (i=0; i<4; i++) {
-        result_code = sqlite3_exec(db, insert_statements[i], NULL, NULL, NULL);        
-        check_error(result_code, db);    
+        result_code = sqlite3_exec(db, insert_statements[i], NULL, NULL, NULL);
+        check_error(result_code, db);
     }
-        
+
     // Display the contents of the players table.
     printf("Before update:\n");
     sql = "select * from players;";
     result_code = sqlite3_exec(db, sql, select_callback, NULL, NULL);
-    check_error(result_code, db);    
-    
+    check_error(result_code, db);
+
     // Prepare the parametrized SQL statement to update player #99.
     sql = "update players set name=?, score=?, active=? where jerseyNum=?;";
     result_code = sqlite3_prepare_v2(db, sql, -1, &compiled_statement, NULL);
-    check_error(result_code, db);    
-    
+    check_error(result_code, db);
+
     // Bind the values to the parameters (see https://sqlite.org/c3ref/bind_blob.html).
     result_code = sqlite3_bind_text(compiled_statement, 1, "Smith, Steve", -1, NULL);
-    check_error(result_code, db);    
+    check_error(result_code, db);
     result_code = sqlite3_bind_double(compiled_statement, 2, 42);
-    check_error(result_code, db);    
+    check_error(result_code, db);
     result_code = sqlite3_bind_int(compiled_statement, 3, 1);
-    check_error(result_code, db);    
+    check_error(result_code, db);
     result_code = sqlite3_bind_int(compiled_statement, 4, 99);
-    check_error(result_code, db);    
-    
+    check_error(result_code, db);
+
     // Evaluate the prepared SQL statement.
     result_code = sqlite3_step(compiled_statement);
     if (result_code != SQLITE_DONE) {
@@ -175,20 +175,20 @@ int main(void) {
         sqlite3_close(db);
         return result_code;
     }
-    
+
     // Destroy the prepared statement object.
     result_code = sqlite3_finalize(compiled_statement);
-    check_error(result_code, db);        
+    check_error(result_code, db);
 
     // Display the contents of the players table.
     printf("After update:\n");
     sql = "select * from players;";
     result_code = sqlite3_exec(db, sql, select_callback, NULL, NULL);
     check_error(result_code, db);
-    
+
     // Close the database connection.
-    sqlite3_close(db);        
-        
+    sqlite3_close(db);
+
     return EXIT_SUCCESS;
 }
 
@@ -208,7 +208,7 @@ void check_error(int result_code, sqlite3 *db) {
 /* This callback function prints the results of the select statement. */
 int select_callback(void* data, int column_count, char** columns, char** column_names) {
     int i;
-    
+
     for (i=0; i<column_count; i++) {
         printf(columns[i]);
         if (i < column_count-1) printf(" | ");
@@ -289,20 +289,20 @@ namespace ConsoleApplication1
 
 ```fsharp
 open System.Data.SqlClient
- 
+
 [<EntryPoint>]
-let main argv = 
+let main argv =
     use tConn = new SqlConnection("ConnectionString")
- 
+
     use tCommand = new SqlCommand()
     tCommand.Connection <- tConn
     tCommand.CommandText <- "UPDATE players SET name = @name, score = @score, active = @active WHERE jerseyNum = @jerseyNum"
- 
+
     tCommand.Parameters.Add(SqlParameter("@name", System.Data.SqlDbType.VarChar).Value = box "Smith, Steve") |> ignore
     tCommand.Parameters.Add(SqlParameter("@score", System.Data.SqlDbType.Int).Value = box 42) |> ignore
     tCommand.Parameters.Add(SqlParameter("@active", System.Data.SqlDbType.Bit).Value = box true) |> ignore
     tCommand.Parameters.Add(SqlParameter("@jerseyNum", System.Data.SqlDbType.Int).Value = box 99) |> ignore
- 
+
     tCommand.ExecuteNonQuery() |> ignore
     0
 ```
@@ -449,7 +449,7 @@ main() {
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
- 
+
 public class DBDemo{
    private String protocol; //set this to some connection protocol like "jdbc:sqlserver://"
    private String dbName;   //set this to the name of your database
@@ -457,14 +457,14 @@ public class DBDemo{
    private String password;
 
    PreparedStatement query;
- 
+
    public int setUpAndExecPS(){
       try {
          Connection conn = DriverManager.getConnection(protocol + dbName, username, password);
 
          query = conn.prepareStatement(
             "UPDATE players SET name = ?, score = ?, active = ? WHERE jerseyNum = ?");
- 
+
          query.setString(1, "Smith, Steve");//automatically sanitizes and adds quotes
          query.setInt(2, 42);
          query.setBoolean(3, true);
@@ -592,7 +592,7 @@ Parametrized_Sql
 {{incorrect|Mathematica|Executing a NON-parameterized update DML. This solution is exactly the opposite of the task. This example is what is explicitly warned in the task.}}
 
 ```Mathematica
-Needs["DatabaseLink`"]; 
+Needs["DatabaseLink`"];
 conn=OpenSQLConnection[JDBC["ODBC(DSN)", "testdb"], "Username" -> "John", "Password" -> "JohnsPassword"];
 SQLUpdate[conn,"players",{"name","score","active"},{"Smith, Steve", 42,"TRUE"},SQLColumn["jerseyNum"] = 99];
 CloseSQLConnection[conn];
@@ -610,7 +610,7 @@ options replace format comments java crossref symbols nobinary
 
 import java.sql.
 
--- 
+--
 ### =======================================================================
 
 class RParameterizedSQLSimple public
@@ -626,14 +626,14 @@ class RParameterizedSQLSimple public
     DBMODE_NOCREATE = ";create=false"
     DBMODE_SHUTDOWN = ";shutdown=true"
 
--- 
+--
 ### =======================================================================
 
 method RParameterizedSQLSimple()
   setConnexion(null)
   return
 
--- 
+--
 ### =======================================================================
 
 method createConnexion() inheritable returns Connection signals ClassNotFoundException, InstantiationException, IllegalAccessException
@@ -649,7 +649,7 @@ method createConnexion() inheritable returns Connection signals ClassNotFoundExc
 
   return getConnexion()
 
--- 
+--
 ### =======================================================================
 
 method shutdownConnexion() inheritable returns boolean signals SQLException
@@ -679,7 +679,7 @@ method shutdownConnexion() inheritable returns boolean signals SQLException
 
   return dbState
 
--- 
+--
 ### =======================================================================
 
 method loadDriver(xdriver = String) inheritable static signals ClassNotFoundException, InstantiationException, IllegalAccessException
@@ -705,7 +705,7 @@ method loadDriver(xdriver = String) inheritable static signals ClassNotFoundExce
 
   return
 
--- 
+--
 ### =======================================================================
 
 method updatePlayer(jerseyNum = int, name = String, score = int, active = boolean) binary inheritable returns int signals SQLException
@@ -727,7 +727,7 @@ method updatePlayer(jerseyNum = int, name = String, score = int, active = boolea
 
   return rowCt
 
--- 
+--
 ### =======================================================================
 
 method main(args = String[]) public static
@@ -735,12 +735,12 @@ method main(args = String[]) public static
   do
     tda = RParameterizedSQLSimple()
     tda.createConnexion()
-  
+
     if tda.getConnexion() \= null then do
         updated = tda.updatePlayer(99, "Smith, Steve", 42, isTrue)
         if updated > 0 then say "Update successful"
         else say "Update failed"
-  
+
       finally
         tda.shutdownConnexion()
       end
@@ -751,13 +751,13 @@ method main(args = String[]) public static
 
   return
 
--- 
+--
 ### =======================================================================
 
 method isTrue() public static returns boolean
   return 1 == 1
 
--- 
+--
 ### =======================================================================
 
 method isFalse() public static returns boolean
@@ -982,9 +982,9 @@ my $rows-affected = $update.execute("Smith, Steve",42,'true',99);
 ```Phix
 --
 -- demo\rosetta\Parametrized_SQL_statement.exw
--- 
+--
 include pSQLite.e
- 
+
 sqlite3 db = sqlite3_open(":memory:")
 
 integer res = sqlite3_exec(db,`create table players (name, score, active, jerseyNum)`)
@@ -995,7 +995,7 @@ res = sqlite3_exec(db,`insert into players values ('Manning, Payton',     96.5, 
 
 pp({"Before",sqlite3_get_table(db, "select * from players")},{pp_Nest,2})
 
-sqlite3_stmt pStmt = sqlite3_prepare(db, `update players set name=?, score=?, active=? where jerseyNum=?`) 
+sqlite3_stmt pStmt = sqlite3_prepare(db, `update players set name=?, score=?, active=? where jerseyNum=?`)
 sqlite3_bind_text(pStmt,1,"Smith, Steve")
 sqlite3_bind_double(pStmt,2,42)
 sqlite3_bind_int(pStmt,3,true)
@@ -1078,7 +1078,7 @@ Procedure CheckDatabaseUpdate(database, query$)
   If result = 0
     PrintN(DatabaseError())
   EndIf
-  
+
   ProcedureReturn result
 EndProcedure
 
@@ -1092,7 +1092,7 @@ If OpenConsole()
     CheckDatabaseUpdate(0, "INSERT INTO players VALUES ('Jello, Frank',0,'N',101)")
 
     Define name$, score, active$, jerseynum
-    name$ = "Smith, Steve"  
+    name$ = "Smith, Steve"
     score = 42
     active$ ="TRUE"
     jerseynum = 99
@@ -1101,7 +1101,7 @@ If OpenConsole()
     SetDatabaseString(0, 2, active$)
     SetDatabaseLong(0, 3, jerseynum)
     CheckDatabaseUpdate(0, "UPDATE players SET name = ?, score = ?, active = ? WHERE jerseyNum = ?")
-    
+
     ;display database contents
     If DatabaseQuery(0, "Select * from players")
       While NextDatabaseRow(0)
@@ -1112,15 +1112,15 @@ If OpenConsole()
         row$ = "['" + name$ + "', " + score + ", '" + active$ + "', " + jerseynum + "]"
         PrintN(row$)
       Wend
-    
+
       FinishDatabaseQuery(0)
     EndIf
-    
+
     CloseDatabase(0)
   Else
     PrintN("Can't open database !")
   EndIf
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -1276,8 +1276,8 @@ sqliteconnect #mem, ":memory:"
 #mem execute("INSERT INTO players VALUES ('Jello, Frank',0,'N',101)")
 sql$ = "
 UPDATE players
-   SET name = 'Smith, Steve', 
-   score   = 42, 
+   SET name = 'Smith, Steve',
+   score   = 42,
    active  = 'TRUE'
    WHERE jerseyNum = 99"
 #mem execute(sql$)
@@ -1288,7 +1288,7 @@ WHILE  #mem hasanswer()
 	score     = #row score()
 	active$   = #row active$()
 	jerseyNum = #row jerseyNum()
-	
+
 print name$;chr$(9);score;chr$(9);active$;chr$(9);jerseyNum
 WEND
 end
@@ -1454,7 +1454,7 @@ end;
 
 drop table players;
 
-create table players 
+create table players
 (
 NAME VARCHAR2(20),
 SCORE NUMBER,
@@ -1502,7 +1502,7 @@ Smith, Steve                 42 TRUE          99
 ## SQL PL
 
 {{works with|Db2 LUW}}
-The following example is indeed parameterized SQL with named placeholders and it prevents SQL injections, and the SQL performs very well, because the execution plan is also precompiled. 
+The following example is indeed parameterized SQL with named placeholders and it prevents SQL injections, and the SQL performs very well, because the execution plan is also precompiled.
 
 ```sql pl
 

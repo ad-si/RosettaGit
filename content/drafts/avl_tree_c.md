@@ -12,8 +12,8 @@ tags = []
 
 ==Code==
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -250,7 +250,7 @@ After deleting all values, tree is:
 
 
 
-###  Efficient AVL tree 
+###  Efficient AVL tree
 
 
 The following example implements an AVL tree ''without'' the need of calculating the height of the nodes (which can be quite time consuming if the tree gets large)!
@@ -289,8 +289,8 @@ void *Node_GetData (Node n);
 
 <tt>AvlTree.c</tt>
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include "AvlTree.h"
 
@@ -518,7 +518,7 @@ void Tree_Print (Tree t) {
 //
 Node Tree_FirstNode (Tree t) {
     Node node = t->root;
-      
+
     while ((node != NULL) && (node->left != NULL)) {
         node = node->left;
     }
@@ -894,8 +894,8 @@ Node Node_New (void *data, Node parent) {
 And here's the example which shows how to use the package. It creates in an endless loop random numbers between 0..999 and stores the number (the key) together with its square root (the value) in the tree. If an element with the given key is already in tree, it will be deleted.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <math.h>

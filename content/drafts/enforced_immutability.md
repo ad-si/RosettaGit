@@ -188,16 +188,16 @@ const char   foo     = 'a';
 const double pi      = 3.14159;
 const double minsize = 10;
 const double maxsize = 10;
- 
+
 // On pointers
 const int *       ptrToConst;      // The value is constant, but the pointer may change.
 int const *       ptrToConst;      // The value is constant, but the pointer may change. (Identical to the above.)
 int       * const constPtr;        // The pointer is constant, but the value may change.
-int const * const constPtrToConst; // Both the pointer and value are constant. 
- 
+int const * const constPtrToConst; // Both the pointer and value are constant.
+
 // On parameters
 int main(const int    argc, // note that here, the "const", applied to the integer argument itself,
-                            // is kind of pointless, as arguments are passed by value, so 
+                            // is kind of pointless, as arguments are passed by value, so
                             // it does not affect any code outside of the function
          const char** argv)
 {
@@ -214,8 +214,8 @@ It is possible to remove the <tt>const</tt> qualifier of the type a pointer poin
 
 In addition to the examples shown in [[#C|C]], you can create a class whose instances contain instance-specific const members, by initializing them in the class's constructor.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 class MyOtherClass
 {
@@ -247,7 +247,7 @@ class MyClass
 {
 private:
     int x;
-  
+
 public:
     int getX() const
     {
@@ -669,9 +669,9 @@ $define "1234"
 
 In J's values are immutable. Values external to J may be mutable - this is sometimes significant since J can have references to external values, which we use here with for <code>C</code>. The trick is that when a J variable name refers to an external resource, that association is necessarily tied to the name.
 
-The values associated with a J name can be modified, but that is a modification of the association, and the original value remains. 
+The values associated with a J name can be modified, but that is a modification of the association, and the original value remains.
 
-Note that J has a rich language for defining numeric constants. For example, 2*pi represented as a floating point number would be 2p1. 
+Note that J has a rich language for defining numeric constants. For example, 2*pi represented as a floating point number would be 2p1.
 
 
 ```j
@@ -812,7 +812,7 @@ Here are some examples:
 // version 1.1.0
 
 //  constant top level property
-const val N = 5  
+const val N = 5
 
 //  read-only top level property
 val letters = listOf('A', 'B', 'C', 'D', 'E') // 'listOf' creates here a List<Char) which is immutable
@@ -852,7 +852,7 @@ ABCDE
 
 ## Logtalk
 
-Logtalk supports both static and dynamic objects. Static objects are usually defined in source files. Object predicates are static by default. These objects can be defined locked against runtime modifications. For simplicity, the following example uses a prototype: 
+Logtalk supports both static and dynamic objects. Static objects are usually defined in source files. Object predicates are static by default. These objects can be defined locked against runtime modifications. For simplicity, the following example uses a prototype:
 
 ```logtalk
 
@@ -882,7 +882,7 @@ Tau = 2*Pi;Protect[Tau]
 {"Tau"}
 
 Tau = 2
-->Set::wrsym: Symbol Tau is Protected. 
+->Set::wrsym: Symbol Tau is Protected.
 ```
 
 
@@ -988,9 +988,9 @@ Here we can see that in the implementation the new type for immutable strings is
 
 Immutability is the default behaviour and Oforth uses immutability to limit side effects.
 
-There is nothing global and mutable like global variables, class attributes, ... 
+There is nothing global and mutable like global variables, class attributes, ...
 
-Global objects are : 
+Global objects are :
 
 - Words, which are immutable objects (classes, functions, methods, ...).
 
@@ -1000,7 +1000,7 @@ Functions or methods have only access to its parameters, to the data stack and t
 
 Oforth allows mutable objects but they remain local to a task and are not visible by other tasks (there is no need to synchronise tasks). Channels are the only way for tasks to communicate and mutable objects can't be sent into a channel.
 
-For user defined classes, if an attribute is immutable, its value can be set only during initialization and only with an immutable object. 
+For user defined classes, if an attribute is immutable, its value can be set only during initialization and only with an immutable object.
 
 All these rules are checked at runtime and exceptions are raised if a piece of code breaks those immutability rules.
 
@@ -1187,7 +1187,7 @@ but even this could be modified, e.g.:
 : (set (cdr pi) 3)
 -> 3
 
-: (pi)            
+: (pi)
 -> 3
 ```
 
@@ -1242,24 +1242,24 @@ However using an OO approach, PureBasic allows for creation of new variable clas
 ```PureBasic
 ;Enforced immutability Variable-Class
 
-Interface PBVariable    ; Interface for any value of this type 
+Interface PBVariable    ; Interface for any value of this type
   Get()         ; Get the current value
-  Set(Value.i)  ; Set (if allowed) a new value in this variable 
+  Set(Value.i)  ; Set (if allowed) a new value in this variable
   ToString.s()  ; Transferee the value to a string.
   Destroy()     ; Destructor
-EndInterface 
+EndInterface
 
-Structure PBV_Structure ; The *VTable structure  
+Structure PBV_Structure ; The *VTable structure
   Get.i
   Set.i
   ToString.i
   Destroy.i
-EndStructure 
+EndStructure
 
-Structure PBVar  
+Structure PBVar
   *VirtualTable.PBV_Structure
-  Value.i 
-EndStructure 
+  Value.i
+EndStructure
 
 ;- Functions for any PBVariable
 Procedure immutable_get(*Self.PBVar)
@@ -1288,13 +1288,13 @@ DataSection
 EndDataSection
 
 ;- Create-Class
-Procedure CreateImmutabe(Init.i=0) 
+Procedure CreateImmutabe(Init.i=0)
   Define *p.PBVar
   *p=AllocateMemory(SizeOf(PBVar))
   *p\VirtualTable = ?VTable
   *p\Value = Init
   ProcedureReturn *p
-EndProcedure 
+EndProcedure
 
 ;- **************
 ;- Test the Code
@@ -1311,7 +1311,7 @@ Debug *v2\ToString() ; = 24
 *v1\Set(314)  ; Try to change the value, which is not permitted
 *v2\Set(7)
 
-; Present the values again 
+; Present the values again
 Debug Str(*v1\Get()) ; = 0
 Debug Str(*v2\Get()) ; = 24
 
@@ -1344,12 +1344,12 @@ While classes are generally mutable, you can define immutability by overriding _
 	def __setattr__(self, *args):
 		raise TypeError(
 			"'Immut' object does not support item assignment")
-	
+
         __delattr__ = __setattr__
-	
+
         def __repr__(self):
 		return str(self.value)
-	
+
         def __init__(self, value):
                 # assign to the un-assignable the hard way.
 		super(Immut, self).__setattr__("value", value)
@@ -1455,7 +1455,7 @@ ser:       say;     say '***error***'  arg(2);     say;     exit arg(1)     /*er
 # Project : Enforced immutability
 
 x = 10
-assert( x = 10) 
+assert( x = 10)
 assert( x = 100 )
 
 ```
@@ -1464,7 +1464,7 @@ Output:
 
 ```txt
 
-Line 8 Assertion Failed! 
+Line 8 Assertion Failed!
 
 ```
 
@@ -1498,7 +1498,7 @@ puts msg.frozen?        #=> false
 puts msg2.frozen?       #=> true
 ```
 
-Since Ruby version 2.1 freezing strings can give a performance boost.  
+Since Ruby version 2.1 freezing strings can give a performance boost.
 There is no way to unfreeze a frozen object.
 The freeze can not be canceled but the object of approximately the same contents not to freeze up can be gotten if using Object#dup.
 
@@ -1538,7 +1538,7 @@ Similarly, references are immutable by default e.g.
 let mut x = 4;
 let y = &x;
 *y += 2 // Raises compiler error. Even though x is mutable, y is an immutable reference.
-let y = &mut x; 
+let y = &mut x;
 *y += 2// Works
 // Note that though y is now a mutable reference, y itself is still immutable e.g.
 let mut z = 5;
@@ -1656,7 +1656,7 @@ class ClassPoint {
   var x: Int
   var y: Int
 
-  init(x: Int, y: Int) { 
+  init(x: Int, y: Int) {
     self.x = x
     self.y = y
   }

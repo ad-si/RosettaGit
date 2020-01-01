@@ -22,7 +22,7 @@ Any representation of a binary tree is allowed, as long as the nodes are orderab
 
 
 We first specify a "Bin_Trees" package with standard subprograms to handle binary trees.
-The package is generic, which allows Data to be essentially of any type. 
+The package is generic, which allows Data to be essentially of any type.
 
 
 ```Ada
@@ -114,7 +114,7 @@ end Bin_Trees;
 ```
 
 
-Next, we specify and implement package that defines a task type for tree traversal. This allows us to run any number of tree traversals in parallel, even on the same tree. 
+Next, we specify and implement package that defines a task type for tree traversal. This allows us to run any number of tree traversals in parallel, even on the same tree.
 
 
 ```Ada
@@ -160,9 +160,9 @@ Next, we specify and implement package that defines a task type for tree travers
 ```
 
 
-When comparing two trees T1 and T2, we will define two tasks, a "Producer.Inorder_Task" and a "Consumer.Inorder_Task". The producer will write data items to a buffer, the consumer will read items from the buffer and compare them with its own data items. Both tasks will terminate when the consumer finds a data item different from the one written by the producer, or when either task has written its last item and the other one has items left. 
+When comparing two trees T1 and T2, we will define two tasks, a "Producer.Inorder_Task" and a "Consumer.Inorder_Task". The producer will write data items to a buffer, the consumer will read items from the buffer and compare them with its own data items. Both tasks will terminate when the consumer finds a data item different from the one written by the producer, or when either task has written its last item and the other one has items left.
 
-A third auxiliary task just waits until the consumer has finished and the result of the fringe comparison can be read. 
+A third auxiliary task just waits until the consumer has finished and the result of the fringe comparison can be read.
 
 
 ```Ada
@@ -331,7 +331,7 @@ end Main;
 ```
 
 
-Note that we do not call Destroy_Tree to reclaim the dynamic memory. In our case, this is not needed since the memory will be reclaimed at the end of Main, anyway. 
+Note that we do not call Destroy_Tree to reclaim the dynamic memory. In our case, this is not needed since the memory will be reclaimed at the end of Main, anyway.
 
 {{out}}
 
@@ -343,11 +343,11 @@ Tree( 3 ) is (e, (d, (c, , ), (a, , (b, , ))), (c, , (a, (d, , ), (b, , ))))
 Tree( 4 ) is (e, (c, , (a, (d, , ), (b, , ))), (d, (c, , ), (a, , (b, , ))))
 Tree( 5 ) is (e, (a, , (b, , )), (c, (d, , ), (d, (c, , ), (a, , (b, , )))))
 
-same( 1, 1 ); same( 1, 2 ); DIFF( 1, 3 ); DIFF( 1, 4 ); DIFF( 1, 5 ); 
-same( 2, 1 ); same( 2, 2 ); DIFF( 2, 3 ); DIFF( 2, 4 ); DIFF( 2, 5 ); 
-DIFF( 3, 1 ); DIFF( 3, 2 ); same( 3, 3 ); same( 3, 4 ); DIFF( 3, 5 ); 
-DIFF( 4, 1 ); DIFF( 4, 2 ); same( 4, 3 ); same( 4, 4 ); DIFF( 4, 5 ); 
-DIFF( 5, 1 ); DIFF( 5, 2 ); DIFF( 5, 3 ); DIFF( 5, 4 ); same( 5, 5 ); 
+same( 1, 1 ); same( 1, 2 ); DIFF( 1, 3 ); DIFF( 1, 4 ); DIFF( 1, 5 );
+same( 2, 1 ); same( 2, 2 ); DIFF( 2, 3 ); DIFF( 2, 4 ); DIFF( 2, 5 );
+DIFF( 3, 1 ); DIFF( 3, 2 ); same( 3, 3 ); same( 3, 4 ); DIFF( 3, 5 );
+DIFF( 4, 1 ); DIFF( 4, 2 ); same( 4, 3 ); same( 4, 4 ); DIFF( 4, 5 );
+DIFF( 5, 1 ); DIFF( 5, 2 ); DIFF( 5, 3 ); DIFF( 5, 4 ); same( 5, 5 );
 ```
 
 
@@ -356,7 +356,7 @@ DIFF( 5, 1 ); DIFF( 5, 2 ); DIFF( 5, 3 ); DIFF( 5, 4 ); same( 5, 5 );
 
 ```Bracmat
 ( ( T
-  =   
+  =
     .   ( next
         =   node stack rhs
           .   !arg:%?node ?stack
@@ -422,8 +422,8 @@ equal
 
 With rudimentary coroutine support based on ucontext.  I don't know if it will compile on anything other than GCC.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <ucontext.h>
 
@@ -704,7 +704,7 @@ False Compare worked
 
 ''fringe-seq'' produces a lazy sequence of the fringe values of a tree.
 It's patterned after the standard function ''tree-seq'': aside from the ''tree'' to walk,
-it takes 3 function arguments to handle a general tree structure. 
+it takes 3 function arguments to handle a general tree structure.
 ''branch?'' returns true for branch nodes -- nodes which could have children, whether they
 actually do or not.
 ''children'' returns the children of a branch node; ''content'' returns the content of a branch node.
@@ -734,7 +734,7 @@ Then we can use a general sequence-equality function:
 
 ```clojure
 (defn seq= [s1 s2]
-  (cond 
+  (cond
     (and (empty? s1) (empty? s2)) true
     (not= (empty? s1) (empty? s2)) false
     (= (first s1) (first s2)) (recur (rest s1) (rest s2))
@@ -1218,7 +1218,7 @@ end
 
 procedure genLeaves(t)
     suspend (*(node := preorder(t)) == 1, node[1])
-end   
+end
 
 procedure preorder(L)
     if \L then suspend L | preorder(L[2|3])
@@ -1301,35 +1301,35 @@ class SameFringe
     boolean isLeaf();
     T getData();
   }
-  
+
   public static class SimpleNode<T extends Comparable<? super T>> implements Node<T>
   {
     private final T data;
     public SimpleNode<T> left;
     public SimpleNode<T> right;
-    
+
     public SimpleNode(T data)
     {  this(data, null, null);  }
-    
+
     public SimpleNode(T data, SimpleNode<T> left, SimpleNode<T> right)
     {
       this.data = data;
       this.left = left;
       this.right = right;
     }
-    
+
     public Node<T> getLeft()
     {  return left;  }
-    
+
     public Node<T> getRight()
     {  return right;  }
-    
+
     public boolean isLeaf()
     {  return ((left == null) && (right == null));  }
-    
+
     public T getData()
     {  return data;  }
-    
+
     public SimpleNode<T> addToTree(T data)
     {
       int cmp = data.compareTo(this.data);
@@ -1346,7 +1346,7 @@ class SameFringe
       return right.addToTree(data);
     }
   }
-  
+
   public static <T extends Comparable<? super T>> boolean areLeavesSame(Node<T> node1, Node<T> node2)
   {
     Stack<Node<T>> stack1 = new Stack<Node<T>>();
@@ -1360,7 +1360,7 @@ class SameFringe
     // Return true if finished at same time
     return (node1 == null) && (node2 == null);
   }
-  
+
   private static <T extends Comparable<? super T>> Node<T> advanceToLeaf(Stack<Node<T>> stack)
   {
     while (!stack.isEmpty())
@@ -1377,7 +1377,7 @@ class SameFringe
     }
     return null;
   }
-  
+
   public static void main(String[] args)
   {
     SimpleNode<Integer> headNode1 = new SimpleNode<Integer>(35, new SimpleNode<Integer>(25, new SimpleNode<Integer>(15, new SimpleNode<Integer>(10), new SimpleNode<Integer>(20)), new SimpleNode<Integer>(30)), new SimpleNode<Integer>(45, new SimpleNode<Integer>(40), new SimpleNode<Integer>(50)));
@@ -1395,7 +1395,7 @@ class SameFringe
     System.out.println("areLeavesSame(1, 2)? " + areLeavesSame(headNode1, headNode2));
     System.out.println("areLeavesSame(2, 3)? " + areLeavesSame(headNode2, headNode3));
   }
-  
+
   public static void simpleWalk(Node<Integer> node)
   {
     if (node.isLeaf())
@@ -1445,7 +1445,7 @@ To accomplish the "same fringe" task efficiently in jq 1.4 without generating a 
 # "next" allows one to generate successive leaves, one at a time. This is accomplished
 # by ensuring that the non-null output of a call to "next" can also serve as input.
 #
-# "next" returns null if there are no more leaves, otherwise it returns [leaf, nodes] 
+# "next" returns null if there are no more leaves, otherwise it returns [leaf, nodes]
 # where "leaf" is the next leaf, and nodes is an array of nodes still to be traversed.
 # Input has the same form, but on input, "leaf" is ignored unless it is an array.
 def next:
@@ -1529,7 +1529,7 @@ end
 
 
 """
-    equalsfringe() uses a reduction to a lazy 1D list via 
+    equalsfringe() uses a reduction to a lazy 1D list via
     getleaflist() for its "equality" of fringes
 """
 getleaflist(tree::Int) = [tree]
@@ -1542,7 +1542,7 @@ equalsfringe(t1, t2) = (getleaflist(t1) == getleaflist(t2))
 a = 1 => 2 => 3 => 4 => 5 => 6 => 7 => 8
 b = 1 => (( 2 => 3 ) => (4 => (5 => ((6 => 7) => 8))))
 c = (((1 => 2) => 3) => 4) => 5 => 6 => 7 => 8
- 
+
 x = 1 => 2 => 3 => 4 => 5 => 6 => 7 => 8 => 9
 y = 0 => 2 => 3 => 4 => 5 => 6 => 7 => 8
 z = 1 => 2 => (4 => 3) => 5 => 6 => 7 => 8
@@ -1747,7 +1747,7 @@ True
 ```Phix
 --
 -- demo\rosetta\Same_Fringe.exw
--- 
+--
 ### ======================
 
 --
@@ -1966,7 +1966,7 @@ There is no output, which signifies success.
 
 
 
-###  Lazy Language 
+###  Lazy Language
 
 
 The same fringe problem is one of the classic cases where a lazy
@@ -2015,7 +2015,7 @@ raco test: (submod "/some/file.rkt" test)
 
 
 
-###  Channels and Threads 
+###  Channels and Threads
 
 
 This version flattens the trees into channels, and then compares the
@@ -2074,7 +2074,7 @@ running.
 
 
 
-###  Generators 
+###  Generators
 
 
 This version is very similar, except that now we use generators:
@@ -2102,7 +2102,7 @@ This version is very similar, except that now we use generators:
 
 
 
-###  Continuations 
+###  Continuations
 
 
 Finally, this is a more low-level solution, using continuation conreol
@@ -2141,7 +2141,7 @@ delimited continuation operator.
 
 
 
-### Version 1 using father node 
+### Version 1 using father node
 
 
 
@@ -2328,20 +2328,20 @@ Output:
 
 ```txt
 
- A = A                     
- B = B                     
- D = D                     
- G = G                     
- E = E                     
- C = C                     
- F = F                     
- First difference H <> * 
+ A = A
+ B = B
+ D = D
+ G = G
+ E = E
+ C = C
+ F = F
+ First difference H <> *
 
 ```
 
 
 
-### Version 2 without using father node 
+### Version 2 without using father node
 
 
 ```rexx
@@ -2583,7 +2583,7 @@ son:  procedure expose @.;    parse arg ?,son,dad,t;    LR= '_'?"SON"
       @.t.dad.LR= son;               return
 ```
 
-{{out|output}} 
+{{out|output}}
 
 ```txt
 
@@ -2815,14 +2815,14 @@ println("cTree and dTree ",sameFringe(cTree,dTree) and "have"or"don't have",
           " the same leaves.");
 
 fcn sameFringe(a,b){ same(G(genLeaves,a),G(genLeaves,b)) }
- 
+
 fcn same(g1,g2){ //(Generator,Generator)
    foreach n1,n2 in (g1.zip(g2)){ //-->(int,int) ...
       if(n1 != n2) return(); // == return(Void)
    }
    return(not (g2._next() or g2._next())); //-->False if g1 or g2 has leaves
 }
- 
+
 fcn genLeaves(tree){
    switch(tree.len()){ // (), (leaf), (node,left, [right])
       case(1){ vm.yield(tree[0]) } // leaf: int

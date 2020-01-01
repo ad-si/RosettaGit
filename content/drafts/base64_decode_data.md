@@ -12,9 +12,9 @@ tags = []
 
 {{task}}
 
-See [[Base64 encode data]]. 
+See [[Base64 encode data]].
 
-Now write a program that takes the output of the [[Base64 encode data]] task as input and regenerate the original file. 
+Now write a program that takes the output of the [[Base64 encode data]] task as input and regenerate the original file.
 
 When working on the VBA implementation I found several 'solutions' on the net, including one from the software maker himself, that showed output with incorrect padding. Obviously with incorrect padding in the output you can not decode correctly to the original file again.
 
@@ -46,8 +46,8 @@ To err is human, but to really foul things up you need a computer.
 
 {{trans|C++}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef unsigned char ubyte;
@@ -142,8 +142,8 @@ To err is human, but to really foul things up you need a computer.
 ## C++
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -807,14 +807,14 @@ To err is human, but to really foul things up you need a computer.
 
 ## Prolog
 
-In SWI-Prolog base64 is a built in predicate. https://www.swi-prolog.org/pldoc/doc_for?object=base64%3Abase64/2 
+In SWI-Prolog base64 is a built in predicate. https://www.swi-prolog.org/pldoc/doc_for?object=base64%3Abase64/2
 
-This predicate is reversable and can encode or decode. 
+This predicate is reversable and can encode or decode.
 {{out}}
 
 ```txt
 
-?- Encoded = 'VG8gZXJyIGlzIGh1bWFuLCBidXQgdG8gcmVhbGx5IGZvdWwgdGhpbmdzIHVwIHlvdSBuZWVkIGEgY29tcHV0ZXIuCiAgICAtLSBQYXVsIFIuIEVocmxpY2g=', 
+?- Encoded = 'VG8gZXJyIGlzIGh1bWFuLCBidXQgdG8gcmVhbGx5IGZvdWwgdGhpbmdzIHVwIHlvdSBuZWVkIGEgY29tcHV0ZXIuCiAgICAtLSBQYXVsIFIuIEVocmxpY2g=',
 base64(Plain, Encoded).
 
 Plain = 'To err is human, but to really foul things up you need a computer.\n    -- Paul R. Ehrlich'.
@@ -886,7 +886,7 @@ fn main() {
     let result = INPUT.chars()
         .filter(|&ch| ch != '=')                                //Filter '=' chars
         .map(|ch| {                                             //Map char values using Base64 Characters Table
-            let ascii = ch as i8;                           
+            let ascii = ch as i8;
             let convert = match ch {
                 '0' ... '9' => ascii + NUM_OFFSET,
                 'a' ... 'z' => ascii + LOWERCASE_OFFSET,
@@ -1036,11 +1036,11 @@ To err is human, but to really foul things up you need a computer.
 
 ## zkl
 
-Using shared libraries for cURL and message hashing: 
+Using shared libraries for cURL and message hashing:
 
 ```zkl
 var [const] MsgHash=Import("zklMsgHash"), Curl=Import("zklCurl");
- 
+
 icon:=Curl().get("http://rosettacode.org/favicon.ico"); //-->(Data(4,331),693,0)
 icon=icon[0][icon[1],*];	// remove header
 iconEncoded:=MsgHash.base64encode(icon);

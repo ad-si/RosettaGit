@@ -13,7 +13,7 @@ tags = []
 {{task}}
 A superpermutation of N different characters is a string consisting of an arrangement of multiple copies of those N different characters in which every permutation of those characters can be found as a substring.
 
-For example, representing the characters as A..Z, using N=2 we choose to use the first two characters 'AB'. 
+For example, representing the characters as A..Z, using N=2 we choose to use the first two characters 'AB'.
 
 The permutations of 'AB' are the two, (i.e. two-factorial), strings: 'AB' and 'BA'.
 
@@ -117,8 +117,8 @@ function r(n,  c) {
 
 Finding a string whose length follows [https://oeis.org/A007489 OEIS A007489]. Complexity is the length of output string.  It is know to be ''not'' optimal.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -795,7 +795,7 @@ var pos = 0
 fun factSum(n: Int): Int {
     var s = 0
     var x = 0
-    var f = 1    
+    var f = 1
     while (x < n) {
         f *= ++x
         s += f
@@ -817,16 +817,16 @@ fun r(n: Int): Boolean {
 fun superPerm(n: Int) {
     pos = n
     val len = factSum(n)
-    if (len > 0) sp = CharArray(len) 
+    if (len > 0) sp = CharArray(len)
     for (i in 0..n) count[i] = i
-    for (i in 1..n) sp[i - 1] = '0' + i 
+    for (i in 1..n) sp[i - 1] = '0' + i
     while (r(n)) {}
 }
 
 fun main(args: Array<String>) {
     for (n in 0 until MAX) {
         superPerm(n)
-        println("superPerm(${"%2d".format(n)}) len = ${sp.size}")       
+        println("superPerm(${"%2d".format(n)}) len = ${sp.size}")
     }
 }
 ```
@@ -916,7 +916,7 @@ class SuperPermutation {
     for(i := 1; i <= n; i += 1;) {
       @super[i - 1] := i + '0';
     };
-     
+
     do {
       r := R(n);
     }
@@ -1020,12 +1020,12 @@ for 1..8 -> $len {
 
 ```Phix
 constant nMax = 12
- 
+
 atom t0 = time()
 string superperm
 sequence count
 integer pos
- 
+
 function factSum(int n)
     integer s = 0, f = 1
     for i=1 to n do
@@ -1034,7 +1034,7 @@ function factSum(int n)
     end for
     return s
 end function
- 
+
 function r(int n)
     if (n == 0) then return false end if
     integer c = superperm[pos-n+1]
@@ -1057,13 +1057,13 @@ procedure superPerm(int n)
     if n=0 then
         if superperm!="" then ?9/0 end if
     elsif n<=9 then
-        -- (I estimate it would take at least 5 days to validate 
+        -- (I estimate it would take at least 5 days to validate
         --  superPerm(12), feel free to try it on your own time)
         for i=1 to factorial(n) do
             if not match(permute(i,chars),superperm) then ?9/0 end if
         end for
     end if
-end procedure 
+end procedure
 
 for n=0 to nMax do
     superPerm(n)
@@ -1131,7 +1131,7 @@ procedure superPerm(int n)
             if k>best then
                 best = k
                 bi = i
-            end if  
+            end if
         end for
         if match(perms[bi],res) then
             ?9/0 -- (sanity check)
@@ -1311,7 +1311,7 @@ for algo in [s_perm0, s_perm1, s_perm2, s_perm3_max, s_perm3_min]:
 print('\n###\n### Algorithms ordered by shortest superpermutations first\n###')
 print('\n'.join('%12s (%.3f)' % kv for kv in
                 sorted(weight.items(), key=lambda keyvalue: -keyvalue[1])))
-      
+
 print('\n###\n### Algorithms ordered by shortest runtime first\n###')
 print('\n'.join('%12s (%.3f)' % (k, v.total_seconds()) for k, v in
                 sorted(runtime.items(), key=lambda keyvalue: keyvalue[1])))
@@ -1330,7 +1330,7 @@ Generate a short Superpermutation of n characters A... as a string using various
 
     Uses greedy algorithm of adding another char (or two, or three, ...)
     until an unseen perm is formed in the last n chars
-    
+
   For N=1: SP length     1 Max:     1 Weight:  1.00
   For N=2: SP length     3 Max:     4 Weight:  0.56
   For N=3: SP length     9 Max:    18 Weight:  0.25
@@ -1346,7 +1346,7 @@ Generate a short Superpermutation of n characters A... as a string using various
 
     Uses algorithm of concatenating all perms in order if not already part
     of concatenation.
-    
+
   For N=1: SP length     1 Max:     1 Weight:  1.00
   For N=2: SP length     4 Max:     4 Weight:  1.00
   For N=3: SP length    15 Max:    18 Weight:  0.69
@@ -1362,7 +1362,7 @@ Generate a short Superpermutation of n characters A... as a string using various
 
     Uses algorithm of concatenating all perms in order first-last-nextfirst-
     nextlast... if not already part of concatenation.
-    
+
   For N=1: SP length     1 Max:     1 Weight:  1.00
   For N=2: SP length     4 Max:     4 Weight:  1.00
   For N=3: SP length    15 Max:    18 Weight:  0.69
@@ -1378,7 +1378,7 @@ Generate a short Superpermutation of n characters A... as a string using various
 
     Uses algorithm of concatenating all perms in order first,
     next_with_MOST_chars_in_same_position_as_last_n_chars, ...
-    
+
   For N=1: SP length     1 Max:     1 Weight:  1.00
   For N=2: SP length     4 Max:     4 Weight:  1.00
   For N=3: SP length    15 Max:    18 Weight:  0.69
@@ -1394,7 +1394,7 @@ Generate a short Superpermutation of n characters A... as a string using various
 
     Uses algorithm of concatenating all perms in order first,
     next_with_LEAST_chars_in_same_position_as_last_n_chars, ...
-    
+
   For N=1: SP length     1 Max:     1 Weight:  1.00
   For N=2: SP length     4 Max:     4 Weight:  1.00
   For N=3: SP length    15 Max:    18 Weight:  0.69
@@ -1688,7 +1688,7 @@ superpermutation(7) = 12137
 #A straight forward implementation of N. Johnston's algorithm. I prefer to look at this as 2n+1 where
 #the second n is first n reversed, and the 1 is always the second symbol. This algorithm will generate
 #just the left half of the result by setting l to [1,2] and looping from 3 to 6. For the purpose of
-#this task I am going to start from an empty array and generate the whole strings using just the 
+#this task I am going to start from an empty array and generate the whole strings using just the
 #rules.
 #
 #Nigel Galloway: December 16th., 2014
@@ -1821,14 +1821,14 @@ It crawls ...
 ```zkl
 const MAX = 12;
 var super=Data(), pos, cnt;  // global state, ick
- 
+
 fcn fact_sum(n){ // -->1! + 2! + ... + n!
    [1..n].reduce(fcn(s,n){ s + [2..n].reduce('*,1) },0)
 }
- 
+
 fcn r(n){
    if (not n) return(0);
- 
+
    c := super[pos - n];
    if (not (cnt[n]-=1)){
       cnt[n] = n;
@@ -1837,17 +1837,17 @@ fcn r(n){
    super[pos] = c; pos+=1;
    1
 }
- 
+
 fcn superperm(n){
    pos = n;
    len := fact_sum(n);
    super.fill(0,len);  // this is pretty close to recalloc()
- 
+
    cnt = (n+1).pump(List()); //-->(0,1,2,3,..n)
    foreach i in (n){ super[i] = i + 0x31; } //-->"1" ... "123456789:;"
    while (r(n)){}
 }
- 
+
 foreach n in (MAX){
    superperm(n);
    print("superperm(%2d) len = %d".fmt(n,super.len()));
@@ -1861,7 +1861,7 @@ foreach n in (MAX){
 
 ```txt
 
-superperm( 0) len = 0: 
+superperm( 0) len = 0:
 superperm( 1) len = 1: 1
 superperm( 2) len = 3: 121
 superperm( 3) len = 9: 123121321

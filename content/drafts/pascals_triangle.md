@@ -19,14 +19,14 @@ Its first few rows look like this:
     1 1
    1 2 1
   1 3 3 1
-where each element of each row is either 1 or the sum of the two elements right above it. 
+where each element of each row is either 1 or the sum of the two elements right above it.
 
 For example, the next row of the triangle would be:
 :::   '''1'''   (since the first element of each row doesn't have two elements above it)
 :::   '''4'''   (1 + 3)
 :::   '''6'''   (3 + 3)
 :::   '''4'''   (3 + 1)
-:::   '''1'''   (since the last element of each row doesn't have two elements above it) 
+:::   '''1'''   (since the last element of each row doesn't have two elements above it)
 
 So the triangle now looks like this:
      1
@@ -39,9 +39,9 @@ Each row   <tt> n </tt>   (starting with row   0   at the top) shows the coeffic
 
 
 ;Task:
-Write a function that prints out the first   <tt> n </tt>   rows of the triangle   (with   <tt> f(1) </tt>   yielding the row consisting of only the element '''1'''). 
+Write a function that prints out the first   <tt> n </tt>   rows of the triangle   (with   <tt> f(1) </tt>   yielding the row consisting of only the element '''1''').
 
-This can be done either by summing elements from the previous rows or using a binary coefficient or combination function. 
+This can be done either by summing elements from the previous rows or using a binary coefficient or combination function.
 
 Behavior for   <big><tt> n ≤ 0 </tt></big>   does not need to be uniform, but should be noted.
 
@@ -63,12 +63,12 @@ PASCAL   CSECT
          USING  PASCAL,R15         set base register
          LA     R7,1               n=1
 LOOPN    C      R7,=A(M)           do n=1 to m
-         BH     ELOOPN             if n>m then goto 
+         BH     ELOOPN             if n>m then goto
          MVC    U,=F'1'            u(1)=1
          LA     R8,PG              pgi=@pg
          LA     R6,1               i=1
 LOOPI    CR     R6,R7              do i=1 to n
-         BH     ELOOPI             if i>n then goto 
+         BH     ELOOPI             if i>n then goto
          LR     R1,R6              i
          SLA    R1,2               i*4
          L      R3,T-4(R1)         t(i)
@@ -124,14 +124,14 @@ One way, using array operations:
 
 ```forth
 
-\ print the array 
-: .arr \ a -- a 
+\ print the array
+: .arr \ a -- a
   ( . space ) a:each ;
 
 : pasc \ a --
   \ print the row
   .arr cr
-  dup 
+  dup
   \ create two rows from the first, one with a leading the other with a trailing 0
   [0] 0 a:insert swap 0 a:push
   \ add the arrays together to make the new one
@@ -152,19 +152,19 @@ Another way, using the relation between element 'n' and element 'n-1' in a row:
 
 \ one item in the row: n m
 : pascitem \ n m -- n
-	r@ swap 
-	ratio 
+	r@ swap
+	ratio
 	n:*/ n:round int
 	dup . space ;
 
 \ One row of Pascal's triangle
 : pascline \ n --
-	>r 1 int dup . space 
-	' pascitem 
+	>r 1 int dup . space
+	' pascitem
 	1 r@ loop rdrop drop cr ;
 
 \ Calculate the first 'n' rows of Pascal's triangle:
-: pasc \ n 
+: pasc \ n
 	' pascline 0 rot loop cr ;
 
 15 pasc
@@ -181,15 +181,15 @@ The specification of auxiliary package "Pascal". "First_Row" outputs a row with 
 
 ```ada
 package Pascal is
-   
+
    type Row is array (Natural range <>) of Natural;
-   
+
    function Length(R: Row) return Positive;
-   
+
    function First_Row(Max_Length: Positive) return Row;
-   
+
    function Next_Row(R: Row) return Row;
-   
+
 end Pascal;
 ```
 
@@ -199,13 +199,13 @@ The implementation of that auxiliary package "Pascal":
 
 ```Ada
 package body Pascal is
-   
+
    function First_Row(Max_Length: Positive) return Row is
       R: Row(0 .. Max_Length) := (0 | 1 => 1, others => 0);
    begin
       return R;
    end First_Row;
-   
+
    function Next_Row(R: Row) return Row is
       S: Row(R'Range);
    begin
@@ -217,27 +217,27 @@ package body Pascal is
       S(1) := 1;
       return S;
    end Next_Row;
-   
+
    function Length(R: Row) return Positive is
    begin
       return R(0);
    end Length;
-   
+
 end Pascal;
 ```
 
 
-The main program, using "Pascal". It prints the desired number of rows. The number is read from the command line. 
+The main program, using "Pascal". It prints the desired number of rows. The number is read from the command line.
 
 
 ```Ada
 with Ada.Text_IO, Ada.Integer_Text_IO, Ada.Command_Line, Pascal; use Pascal;
 
 procedure Triangle is
-   
+
    Number_Of_Rows: Positive := Integer'Value(Ada.Command_Line.Argument(1));
    Row: Pascal.Row := First_Row(Number_Of_Rows);
-      
+
 begin
    loop
       -- print one row
@@ -502,7 +502,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -520,14 +520,14 @@ on plus(a, b)
 end plus
 
 -- Egyptian multiplication - progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for binary 
+-- stages of doubling to an accumulator where needed for binary
 -- assembly of a target length
 -- replicate :: Int -> a -> [a]
 on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -599,12 +599,12 @@ end zipWith
 {{Out}}
 
 ```txt
-              1             
-            1   1           
-          1   2   1         
-        1   3   3   1       
-      1   4   6   4   1     
-   1   5   10   10   5   1  
+              1
+            1   1
+          1   2   1
+        1   3   3   1
+      1   4   6   4   1
+   1   5   10   10   5   1
 1   6   15   20   15   6   1
 ```
 
@@ -658,14 +658,14 @@ pascalstriangle(n=7) ; n rows of Pascal's triangle
 	Loop, % n
 		Loop, % row := A_Index
 			col := A_Index
-			, p[row, col] := row = 1 and col = 1 
-				? 1 
+			, p[row, col] := row = 1 and col = 1
+				? 1
 				: (p[row-1, col-1] = "" ; math operations on blanks return blanks; I want to assume zero
-					? 0 
+					? 0
 					: p[row-1, col-1])
-				+ (p[row-1, col] = "" 
-					? 0 
-					: p[row-1, col]) 
+				+ (p[row-1, col] = ""
+					? 0
+					: p[row-1, col])
 	Return p
 }
 ```
@@ -807,7 +807,7 @@ Press any key to continue . . .
 
 ```bbcbasic
       nrows% = 10
-      
+
       colwidth% = 4
       @% = colwidth% : REM Set column width
       FOR row% = 1 TO nrows%
@@ -852,16 +852,16 @@ v01*p00-1:g00.:<1p011p00:\-1_v#:<
 ```txt
 Number of rows: 10
 
-1  
-1  1  
-1  2  1  
-1  3  3  1  
-1  4  6  4  1  
-1  5  10  10  5  1  
-1  6  15  20  15  6  1  
-1  7  21  35  35  21  7  1  
-1  8  28  56  70  56  28  8  1  
-1  9  36  84  126  126  84  36  9  1  
+1
+1  1
+1  2  1
+1  3  3  1
+1  4  6  4  1
+1  5  10  10  5  1
+1  6  15  20  15  6  1
+1  7  21  35  35  21  7  1
+1  8  28  56  70  56  28  8  1
+1  9  36  84  126  126  84  36  9  1
 ```
 
 
@@ -943,8 +943,8 @@ blsq ) {1}{1 1}{^^2CO{p^?+}m[1+]1[+}15E!#s<-spbx#S
 {{trans|Fortran}}
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void pascaltriangle(unsigned int n)
 {
@@ -973,8 +973,8 @@ int main()
 ### Recursive
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define D 32
 int pascals(int *x, int *y, int d)
@@ -1024,8 +1024,8 @@ void triangleC(int nRows) {
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <algorithm>
 #include<cstdio>
 using namespace std;
@@ -1038,7 +1038,7 @@ void Pascal_Triangle(int size) {
 	for (i = 1; i <= size; i++) {
 		a[i][1] = a[1][i] = 1;
 	}
-	
+
 	//Generate the full Triangle
 	for (i = 2; i <= size; i++) {
 		for (j = 2; j <= size - i; j++) {
@@ -1049,14 +1049,14 @@ void Pascal_Triangle(int size) {
 		}
 	}
 
-	/* 
+	/*
 	  1 1 1 1
 	  1 2 3
 	  1 3
 	  1
-	 
+
 	first print as above format-->
-	 
+
 	for (i = 1; i < size; i++) {
 		for (j = 1; j < size; j++) {
 			if (a[i][j] == 0) {
@@ -1066,24 +1066,24 @@ void Pascal_Triangle(int size) {
 		}
 			cout<<"\n\n";
 	}*/
-	
-	// standard Pascal Triangle Format 
-	
+
+	// standard Pascal Triangle Format
+
 	int row,space;
 	for (i = 1; i < size; i++) {
 		space=row=i;
 		j=1;
-		
+
 		while(space<=size+(size-i)+1){
 			 cout<<" ";
 			 space++;
 		 }
-		
+
 		while(j<=i){
 			if (a[row][j] == 0){
 				   break;
 			   }
-			
+
 			if(j==1){
 				printf("%d",a[row--][j++]);
 			}
@@ -1092,13 +1092,13 @@ void Pascal_Triangle(int size) {
 		}
 			cout<<"\n\n";
 	}
-	
+
 }
 
 int main()
 {
 	//freopen("out.txt","w",stdout);
-	
+
 	int size;
 	cin>>size;
 	Pascal_Triangle(size);
@@ -1333,7 +1333,7 @@ using System.Collections.Generic;
 namespace RosettaCode
 {
 	public static class PascalsTriangle
-	{		
+	{
 		public static IEnumerable<BigInteger[]> GetTriangle(int quantityOfRows)
 		{
 			IEnumerable<BigInteger> range = Enumerable.Range(0, quantityOfRows).Select(num => new BigInteger(num));
@@ -1392,26 +1392,26 @@ static void Main()
 
 ```txt
 
-                                                           1                                                           
-                                                        1     1                                                        
-                                                     1     2     1                                                     
-                                                  1     3     3     1                                                  
-                                               1     4     6     4     1                                               
-                                            1     5    10    10     5     1                                            
-                                         1     6    15    20    15     6     1                                         
-                                      1     7    21    35    35    21     7     1                                      
-                                   1     8    28    56    70    56    28     8     1                                   
-                                1     9    36    84    126   126   84    36     9     1                                
-                             1    10    45    120   210   252   210   120   45    10     1                             
-                          1    11    55    165   330   462   462   330   165   55    11     1                          
-                       1    12    66    220   495   792   924   792   495   220   66    12     1                       
-                    1    13    78    286   715  1287  1716  1716  1287   715   286   78    13     1                    
-                 1    14    91    364  1001  2002  3003  3432  3003  2002  1001   364   91    14     1                 
-              1    15    105   455  1365  3003  5005  6435  6435  5005  3003  1365   455   105   15     1              
-           1    16    120   560  1820  4368  8008  11440 12870 11440 8008  4368  1820   560   120   16     1           
-        1    17    136   680  2380  6188  12376 19448 24310 24310 19448 12376 6188  2380   680   136   17     1        
-     1    18    153   816  3060  8568  18564 31824 43758 48620 43758 31824 18564 8568  3060   816   153   18     1     
-  1    19    171   969  3876  11628 27132 50388 75582 92378 92378 75582 50388 27132 11628 3876   969   171   19     1  
+                                                           1
+                                                        1     1
+                                                     1     2     1
+                                                  1     3     3     1
+                                               1     4     6     4     1
+                                            1     5    10    10     5     1
+                                         1     6    15    20    15     6     1
+                                      1     7    21    35    35    21     7     1
+                                   1     8    28    56    70    56    28     8     1
+                                1     9    36    84    126   126   84    36     9     1
+                             1    10    45    120   210   252   210   120   45    10     1
+                          1    11    55    165   330   462   462   330   165   55    11     1
+                       1    12    66    220   495   792   924   792   495   220   66    12     1
+                    1    13    78    286   715  1287  1716  1716  1287   715   286   78    13     1
+                 1    14    91    364  1001  2002  3003  3432  3003  2002  1001   364   91    14     1
+              1    15    105   455  1365  3003  5005  6435  6435  5005  3003  1365   455   105   15     1
+           1    16    120   560  1820  4368  8008  11440 12870 11440 8008  4368  1820   560   120   16     1
+        1    17    136   680  2380  6188  12376 19448 24310 24310 19448 12376 6188  2380   680   136   17     1
+     1    18    153   816  3060  8568  18564 31824 43758 48620 43758 31824 18564 8568  3060   816   153   18     1
+  1    19    171   969  3876  11628 27132 50388 75582 92378 92378 75582 50388 27132 11628 3876   969   171   19     1
 
 ```
 
@@ -1474,10 +1474,10 @@ Another short version which returns an infinite pascal triangle as a list, using
 
 ```lisp
 
-(def pascal 
-  (iterate #(concat [1] 
-                    (map + % (rest %)) 
-                    [1]) 
+(def pascal
+  (iterate #(concat [1]
+                    (map + % (rest %))
+                    [1])
            [1]))
 
 ```
@@ -1547,14 +1547,14 @@ pascal(7)
 
 ```txt
 
-> coffee pascal.coffee 
-                     1  
-                  1     1  
-               1     2     1  
-            1     3     3     1  
-         1     4     6     4     1  
-      1     5    10    10     5     1  
-   1     6    15    20    15     6     1  
+> coffee pascal.coffee
+                     1
+                  1     1
+               1     2     1
+            1     3     3     1
+         1     4     6     4     1
+      1     5    10    10     5     1
+   1     6    15    20    15     6     1
 
 ```
 
@@ -1599,7 +1599,7 @@ HOW MANY? 8
                1   2   1
              1   3   3   1
            1   4   6   4   1
-         1   5   10   10   5   1 
+         1   5   10   10   5   1
        1   6   15   20   15   6   1
      1   7   21   35   35   21   7   1
    1   8   28   56   70   56   28   8    1
@@ -1691,14 +1691,14 @@ For example:
 ```
 
 <lang>
-           1            
-          1 1           
-         1 2 1          
-        1 3 3 1         
-       1 4 6 4 1        
-     1 5 10 10 5 1      
-   1 6 15 20 15 6 1     
-  1 7 21 35 35 21 7 1   
+           1
+          1 1
+         1 2 1
+        1 3 3 1
+       1 4 6 4 1
+     1 5 10 10 5 1
+   1 6 15 20 15 6 1
+  1 7 21 35 35 21 7 1
 1 8 28 56 70 56 28 8 1
 
 ```
@@ -1733,22 +1733,22 @@ PROCEDURE GenFor*(p: LONGINT): Expansion;
 VAR
 	expA,expB: Expansion;
 	i,j: LONGINT;
-	
+
 	PROCEDURE Swap(VAR x,y: Expansion);
 	VAR
 		swap: Expansion;
 	BEGIN
 		swap := x; x := y; y := swap
 	END Swap;
-	
+
 BEGIN
 	ASSERT(p >= 0);
 	NEW(expA,p + 2);NEW(expB,p + 2);
 	FOR i := 0 TO p DO
-		IF i = 0 THEN expA[0] := 1 
+		IF i = 0 THEN expA[0] := 1
 		ELSE
 			FOR j := 0 TO i DO
-				IF j = 0 THEN 
+				IF j = 0 THEN
 					expB[j] := expA[j]
 				ELSE
 					expB[j] := expA[j - 1] + expA[j]
@@ -1873,8 +1873,8 @@ void main() {
 
 ### Alternative Version
 
-There is similarity between Pascal's triangle and [[Sierpinski triangle]]. 
-Their difference are the initial line and the operation that act on the line element to produce next line. 
+There is similarity between Pascal's triangle and [[Sierpinski triangle]].
+Their difference are the initial line and the operation that act on the line element to produce next line.
 The following is a generic pascal's triangle implementation for positive number of lines output (n).
 
 ```d
@@ -1969,9 +1969,9 @@ import 'dart:io';
 
 pascal(n) {
   if(n<=0) print("Not defined");
-  
+
   else if(n==1) print(1);
-  
+
   else {
     List<List<int>> matrix = new List<List<int>>();
     matrix.add(new List<int>());
@@ -2240,7 +2240,7 @@ end
 ```elixir
 defmodule Pascal do
   def triangle(n), do: triangle(n,[1])
-  
+
   def triangle(0,list), do: list
   def triangle(n,list) do
     IO.inspect list
@@ -2389,7 +2389,7 @@ let rec nextrow l =
     | []      -> []
     | h :: [] -> [1]
     | h :: t  -> h + t.Head :: nextrow t
-   
+
 let pascalTri n = List.scan(fun l i -> 1 :: nextrow l) [1] [1 .. n]
 
 for row in pascalTri(10) do
@@ -2451,7 +2451,7 @@ class Main
   Void print_pascal (Int n)  // no output for n <= 0
   {
     current_row := [1]
-    n.times 
+    n.times
     {
       echo (current_row.join(" "))
       current_row = next_row (current_row)
@@ -2573,16 +2573,16 @@ Sub pascalTriangle(n As UInteger)
         currRow(i) = 1
       Else
         currRow(j) = prevRow(j - 1) + prevRow(j)
-        Print Using "######"; currRow(j); "    "; 
+        Print Using "######"; currRow(j); "    ";
       End If
-    Next j 
+    Next j
     For j As UInteger = 1 To i
       prevRow(j) = currRow(j)
     Next j
   Next i
 End Sub
- 
-pascalTriangle(14)  
+
+pascalTriangle(14)
 Print
 Print "Press any key to quit"
 Sleep
@@ -2615,7 +2615,7 @@ Sleep
 ## FunL
 
 
-###  Summing from Previous Rows 
+###  Summing from Previous Rows
 
 {{trans|Scala}}
 
@@ -2629,7 +2629,7 @@ def
 
 
 
-###  Combinations 
+###  Combinations
 
 {{trans|Haskell}}
 
@@ -2689,7 +2689,7 @@ Pascal := function(n)
 	od;
 end;
 
-Pascal(9);  
+Pascal(9);
 # [ 1 ]
 # [ 1, 1 ]
 # [ 1, 2, 1 ]
@@ -2770,7 +2770,7 @@ Output:
 ## Groovy
 
 
-###  Recursive 
+###  Recursive
 
 In the spirit of the Haskell "think in whole lists" solution here is a list-driven, minimalist solution:
 
@@ -2794,21 +2794,21 @@ def count = 15
 {{out}}
 
 ```txt
- 1:                                                                 1  
- 2:                                                             1       1  
- 3:                                                         1       2       1  
- 4:                                                     1       3       3       1  
- 5:                                                 1       4       6       4       1  
- 6:                                             1       5      10      10       5       1  
- 7:                                         1       6      15      20      15       6       1  
- 8:                                     1       7      21      35      35      21       7       1  
- 9:                                 1       8      28      56      70      56      28       8       1  
-10:                             1       9      36      84     126     126      84      36       9       1  
-11:                         1      10      45     120     210     252     210     120      45      10       1  
-12:                     1      11      55     165     330     462     462     330     165      55      11       1  
-13:                 1      12      66     220     495     792     924     792     495     220      66      12       1  
-14:             1      13      78     286     715    1287    1716    1716    1287     715     286      78      13       1  
-15:         1      14      91     364    1001    2002    3003    3432    3003    2002    1001     364      91      14       1  
+ 1:                                                                 1
+ 2:                                                             1       1
+ 3:                                                         1       2       1
+ 4:                                                     1       3       3       1
+ 5:                                                 1       4       6       4       1
+ 6:                                             1       5      10      10       5       1
+ 7:                                         1       6      15      20      15       6       1
+ 8:                                     1       7      21      35      35      21       7       1
+ 9:                                 1       8      28      56      70      56      28       8       1
+10:                             1       9      36      84     126     126      84      36       9       1
+11:                         1      10      45     120     210     252     210     120      45      10       1
+12:                     1      11      55     165     330     462     462     330     165      55      11       1
+13:                 1      12      66     220     495     792     924     792     495     220      66      12       1
+14:             1      13      78     286     715    1287    1716    1716    1287     715     286      78      13       1
+15:         1      14      91     364    1001    2002    3003    3432    3003    2002    1001     364      91      14       1
 ```
 
 
@@ -2976,19 +2976,19 @@ END
 ```
 
 =={{header|Icon}} and {{header|Unicon}}==
-The code below is slightly modified from the library version of pascal which prints 0's to the full width of the carpet.  
+The code below is slightly modified from the library version of pascal which prints 0's to the full width of the carpet.
 It also presents the data as an isoceles triangle.
 
 ```Icon
 link math
- 
+
 procedure main(A)
-every n := !A do  {    # for each command line argument 
+every n := !A do  {    # for each command line argument
    n := integer(\n) | &null
    pascal(n)
    }
 end
- 
+
 procedure pascal(n)		#: Pascal triangle
    /n := 16
    write("width=", n, " height=", n)	# carpet header
@@ -3003,29 +3003,29 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/math.icn math provides binocoef] 
-[http://www.cs.arizona.edu/icon/library/src/procs/pascal.icn math provides the original version of pascal] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/math.icn math provides binocoef]
+[http://www.cs.arizona.edu/icon/library/src/procs/pascal.icn math provides the original version of pascal]
 
 Sample output:
 ```txt
 ->pascal 1 4 8
 width=1 height=1
- 1 
+ 1
 width=4 height=4
-       1 
-     1  1 
-    1  2  1 
-  1  3  3  1 
+       1
+     1  1
+    1  2  1
+  1  3  3  1
 width=8 height=8
-                 1  
-               1   1  
-             1   2   1  
-           1   3   3   1  
-         1   4   6   4   1  
-       1   5   10  10  5   1  
-     1   6   15  20  15  6   1  
-   1   7   21  35  35  21  7   1  
+                 1
+               1   1
+             1   2   1
+           1   3   3   1
+         1   4   6   4   1
+       1   5   10  10  5   1
+     1   6   15  20  15  6   1
+   1   7   21  35  35  21  7   1
 ->
 ```
 
@@ -3045,7 +3045,7 @@ Pro Pascal, n
 End
 
 Pro PascalRow, r
-  for i=0,(n_elements(r)-2) do begin 
+  for i=0,(n_elements(r)-2) do begin
     r[i]=r[i]+r[i+1]
   endfor
 r= [1, r]
@@ -3074,18 +3074,18 @@ End
 {{out}}
 
 ```txt
-                                         1 
-                                      1     1 
-                                   1     2     1 
-                                1     3     3     1 
-                             1     4     6     4     1 
-                          1     5    10    10     5     1 
-                       1     6    15    20    15     6     1 
-                    1     7    21    35    35    21     7     1 
-                 1     8    28    56    70    56    28     8     1 
-              1     9    36    84   126   126    84    36     9     1 
-           1    10    45   120   210   252   210   120    45    10     1 
-        1    11    55   165   330   462   462   330   165    55    11     1 
+                                         1
+                                      1     1
+                                   1     2     1
+                                1     3     3     1
+                             1     4     6     4     1
+                          1     5    10    10     5     1
+                       1     6    15    20    15     6     1
+                    1     7    21    35    35    21     7     1
+                 1     8    28    56    70    56    28     8     1
+              1     9    36    84   126   126    84    36     9     1
+           1    10    45   120   210   252   210   120    45    10     1
+        1    11    55   165   330   462   462   330   165    55    11     1
      1    12    66   220   495   792   924   792   495   220    66    12     1
 ```
 
@@ -3107,10 +3107,10 @@ End
 
 ```j
    ([: ":@-.&0"1 !~/~)@i. 5
-1        
-1 1      
-1 2 1    
-1 3 3 1  
+1
+1 1
+1 2 1
+1 3 3 1
 1 4 6 4 1
 ```
 
@@ -3118,10 +3118,10 @@ End
 
 ```j
    (-@|. |."_1 [: ":@-.&0"1 !~/~)@i. 5
-     1    
-    1 1   
-   1 2 1  
-  1 3 3 1 
+     1
+    1 1
+   1 2 1
+  1 3 3 1
  1 4 6 4 1
 ```
 
@@ -3200,7 +3200,7 @@ public class Pas{
 
 
 
-### Using arithmetic calculation of each row element 
+### Using arithmetic calculation of each row element
 
 This method is limited to 30 rows because of the limits of integer calculations (probably when calculating the multiplication). If m is declared as long then 62 rows can be printed.
 
@@ -3219,7 +3219,7 @@ public class Pascal {
 		}
 		System.out.println();
 	}
-	
+
 	public static void printPascal (int nRows) {
 		for(int i=1; i<=nRows; i++)
 			printPascalLine(i);
@@ -3318,7 +3318,7 @@ tri.print(16);
 Output:
 
 ```txt
-$ d8 pascal.js 
+$ d8 pascal.js
    1
   1 1
  1 2 1
@@ -3337,7 +3337,7 @@ $ d8 pascal.js
 
 ### =Functional=
 
-{{Trans|Haskell}} 
+{{Trans|Haskell}}
 
 ```JavaScript
 (function (n) {
@@ -3447,17 +3447,17 @@ $ d8 pascal.js
 {{Out}}
 {| class="wikitable" style="text-align:center;width:26em;height:26em;table-layout:fixed;"
 |-
-|  ||  ||  ||  ||  ||  || 1 ||  ||  ||  ||  ||  || 
+|  ||  ||  ||  ||  ||  || 1 ||  ||  ||  ||  ||  ||
 |-
-|  ||  ||  ||  ||  || 1 ||  || 1 ||  ||  ||  ||  || 
+|  ||  ||  ||  ||  || 1 ||  || 1 ||  ||  ||  ||  ||
 |-
-|  ||  ||  ||  || 1 ||  || 2 ||  || 1 ||  ||  ||  || 
+|  ||  ||  ||  || 1 ||  || 2 ||  || 1 ||  ||  ||  ||
 |-
-|  ||  ||  || 1 ||  || 3 ||  || 3 ||  || 1 ||  ||  || 
+|  ||  ||  || 1 ||  || 3 ||  || 3 ||  || 1 ||  ||  ||
 |-
-|  ||  || 1 ||  || 4 ||  || 6 ||  || 4 ||  || 1 ||  || 
+|  ||  || 1 ||  || 4 ||  || 6 ||  || 4 ||  || 1 ||  ||
 |-
-|  || 1 ||  || 5 ||  || 10 ||  || 10 ||  || 5 ||  || 1 || 
+|  || 1 ||  || 5 ||  || 10 ||  || 10 ||  || 5 ||  || 1 ||
 |-
 | 1 ||  || 6 ||  || 15 ||  || 20 ||  || 15 ||  || 6 ||  || 1
 |}
@@ -3598,12 +3598,12 @@ $ d8 pascal.js
 {{Out}}
 
 ```txt
-             1              
-           1   1            
-         1   2   1          
-       1   3   3   1        
-     1   4   6   4   1      
-  1   5   10   10   5   1   
+             1
+           1   1
+         1   2   1
+       1   3   3   1
+     1   4   6   4   1
+  1   5   10   10   5   1
 1   6   15   20   15   6   1
 ```
 
@@ -3646,14 +3646,14 @@ $ jq -c -n -f pascal_triangle.jq
 
 '''Using recurse/1'''
 
-Here is an equivalent implementation that uses the built-in filter, recurse/1, instead of the inner function.  
+Here is an equivalent implementation that uses the built-in filter, recurse/1, instead of the inner function.
 
 ```jq
 def pascal(n):
   if n <= 0 then empty
   else [1]
   | recurse( if length >= n then empty
-             else . as $in 
+             else . as $in
              | reduce range(0;length-1) as $i
                  ([1]; . + [ $in[$i] + $in[$i + 1] ]) + [1]
              end)
@@ -3682,8 +3682,8 @@ def pascal(n):
 
 pascal(4)
 1
-11    
-121      
+11
+121
 1331
 14641
 
@@ -3892,7 +3892,7 @@ Column[StringReplace[ToString /@ Replace[MatrixExp[SparseArray[
 {Band[{2,1}] -> Range[n-1]},{n,n}]],{x__,0..}->{x},2] ,{"{"|"}"|","->" "}], Center]
 ```
 
-[[File:MmaPascal.png]] 
+[[File:MmaPascal.png]]
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
@@ -3922,7 +3922,7 @@ ans =
 The binomial coefficients can be extracted from the Pascal triangle in this way:
 
 ```MATLAB
-  binomCoeff = diag(rot90(pascal(n)))', 
+  binomCoeff = diag(rot90(pascal(n)))',
 ```
 
 
@@ -3957,13 +3957,13 @@ Another way to get a formated pascals triangle is to use the convolution method:
 
 ```txt
 >>
-x = [1  1] ;      
-y = 1;                   
+x = [1  1] ;
+y = 1;
 for k=8:-1:1
-    fprintf(['%', num2str(k), 'c'], zeros(1,3)), 
-    fprintf('%6d', y), fprintf('\n')             
-   y = conv(y,x);                        
-                                         
+    fprintf(['%', num2str(k), 'c'], zeros(1,3)),
+    fprintf('%6d', y), fprintf('\n')
+   y = conv(y,x);
+
 end
 
 ```
@@ -4048,7 +4048,7 @@ For i = 0 To r - 1
   c = 1
   For k = 0 To i
     TextWindow.CursorLeft = (k + 1) * 4 - Text.GetLength(c)
-    TextWindow.Write(c)    
+    TextWindow.Write(c)
     c = c * (i - k) / (k + 1)
   EndFor
   TextWindow.WriteLine("")
@@ -4188,7 +4188,7 @@ Like J
 
 ```nial
 factorial is recur [ 0 =, 1 first, pass, product, -1 +]
-combination is fork [ > [first, second], 0 first, 
+combination is fork [ > [first, second], 0 first,
    / [factorial second, * [factorial - [second, first], factorial first] ]
 ]
 pascal is transpose each combination cart [pass, pass] tell
@@ -4375,7 +4375,7 @@ procedure Pascal(r : Integer);
       writeln;
    end;
 end;
- 
+
 begin
   Pascal(9)
 end.
@@ -4384,7 +4384,7 @@ end.
 Output:
 
 ```txt
-% ./PascalsTriangle 
+% ./PascalsTriangle
   1
   1  1
   1  2  1
@@ -4446,9 +4446,9 @@ This triangle is build using the 'sock' or 'hockey stick' pattern property. Here
 #!/usr/bin/perl
 use strict;
 use warnings;
- 
+
 {
-  my @tartaglia ;  
+  my @tartaglia ;
   sub tartaglia {
       my ($x,$y) = @_;
       if ($x == 0 or $y == 0)  { $tartaglia[$x][$y]=1 ; return 1};
@@ -4504,7 +4504,7 @@ which output
 
 {{works with|rakudo|2015-10-03}}
 
-###  using a lazy sequence generator 
+###  using a lazy sequence generator
 
 
 The following routine returns a lazy list of lines using the sequence operator (<tt>...</tt>).  With a lazy result you need not tell the routine how many you want; you can just use a slice subscript to get the first N lines:
@@ -4513,7 +4513,7 @@ The following routine returns a lazy list of lines using the sequence operator (
 sub pascal {
     [1], { [0, |$_ Z+ |$_, 0] } ... *
 }
- 
+
 .say for pascal[^10];
 ```
 
@@ -4523,7 +4523,7 @@ One problem with the routine above is that it might recalculate the sequence eac
 
 ```perl6
 constant @pascal = [1], -> $prev { [0, |$prev Z+ |$prev, 0] } ... *;
- 
+
 .say for @pascal[^10];
 ```
 
@@ -4531,7 +4531,7 @@ constant @pascal = [1], -> $prev { [0, |$prev Z+ |$prev, 0] } ... *;
 Since we use ordinary subscripting, non-positive inputs throw an index-out-of-bounds error.
 
 
-###  recursive 
+###  recursive
 
 
 {{trans|Haskell}}
@@ -4543,7 +4543,7 @@ multi sub pascal (Int $n where 2..*) {
     my @rows = pascal $n - 1;
     |@rows, [0, |@rows[*-1] Z+ |@rows[*-1], 0 ];
 }
- 
+
 .say for pascal 10;
 ```
 
@@ -4551,7 +4551,7 @@ multi sub pascal (Int $n where 2..*) {
 Non-positive inputs throw a multiple-dispatch error.
 
 
-###  iterative 
+###  iterative
 
 
 {{trans|Perl}}
@@ -4564,7 +4564,7 @@ sub pascal ($n where $n >= 1) {
        say @last;
    }
 }
- 
+
 pascal 10;
 ```
 
@@ -4637,7 +4637,7 @@ end for
 function tre($n) {
   $ck=1;
   $kn=$n+1;
-    
+
  if($kn%2==0) {
  $kn=$kn/2;
  $i=0;
@@ -4650,13 +4650,13 @@ function tre($n) {
   $i= 1;
 }
 
- for ($k = 1; $k <= $kn-1; $k++) { 
+ for ($k = 1; $k <= $kn-1; $k++) {
    $ck = $ck/$k*($n-$k+1);
    $arr[] = $ck;
    echo  "+" . $ck ;
- 
+
   }
- 
+
 
 if ($kn>1) {
   echo $arr[i];
@@ -4664,9 +4664,9 @@ if ($kn>1) {
  for ($i; $i<= $kn-1; $i++) {
  echo  "+" . $arr[$i]  ;
      }
- 
+
    }
- 
+
  }
  //set amount of strings here
  while ($n<=20) {
@@ -4674,8 +4674,8 @@ if ($kn>1) {
  echo tre($n);
  echo "<br/>";
 }
- 
- 
+
+
 ?>
 
 ```
@@ -5035,7 +5035,7 @@ pascal(_).
 
 ```PureBasic
 Procedure pascaltriangle( n.i)
- 
+
   For i=  0 To  n
        c = 1
        For k=0 To i
@@ -5046,7 +5046,7 @@ Procedure pascaltriangle( n.i)
   Next ;i
 
 EndProcedure
- 
+
 OpenConsole()
 Parameter.i = Val(ProgramParameter(0))
 pascaltriangle(Parameter);
@@ -5240,19 +5240,19 @@ if __name__ == '__main__':
 {{Out}}
 
 ```txt
-             1              
-           1   1            
-         1   2   1          
-       1   3   3   1        
-     1   4   6   4   1      
-  1   5   10   10   5   1   
+             1
+           1   1
+         1   2   1
+       1   3   3   1
+     1   4   6   4   1
+  1   5   10   10   5   1
 1   6   15   20   15   6   1
-             1              
-           1   1            
-         1   2   1          
-       1   3   3   1        
-     1   4   6   4   1      
-  1   5   10   10   5   1   
+             1
+           1   1
+         1   2   1
+       1   3   3   1
+     1   4   6   4   1
+  1   5   10   10   5   1
 1   6   15   20   15   6   1
 ```
 
@@ -5459,7 +5459,7 @@ There is no practical limit for this REXX version, triangles up to 46 rows have 
 generated (without wrapping) in a screen window with a width of 620 characters.
 
 If the number (of rows) specified is negative, the output is written to a (disk) file
-instead.   Triangles with over a 1,000 rows have easily been created.  
+instead.   Triangles with over a 1,000 rows have easily been created.
 The output file created (that is written to disk) is named     '''PASCALS.n'''
     where   '''n'''   is the absolute value of the number entered.
 
@@ -5591,7 +5591,7 @@ def pascal(n)
     yield ar = ar.each_cons(2).map(&:sum)
   end
 end
- 
+
 pascal(8){|row| puts row.join(" ").center(20)}
 ```
 
@@ -5599,14 +5599,14 @@ pascal(8){|row| puts row.join(" ").center(20)}
 
 ```txt
 
-         1          
-        1 1         
-       1 2 1        
-      1 3 3 1       
-     1 4 6 4 1      
-   1 5 10 10 5 1    
-  1 6 15 20 15 6 1  
-1 7 21 35 35 21 7 1 
+         1
+        1 1
+       1 2 1
+      1 3 3 1
+     1 4 6 4 1
+   1 5 10 10 5 1
+  1 6 15 20 15 6 1
+1 7 21 35 35 21 7 1
 
 ```
 
@@ -5704,7 +5704,7 @@ fn pascal_triangle(n: u64)
 
 ```scala
 
-  def tri(row: Int): List[Int] = 
+  def tri(row: Int): List[Int] =
     row match {
       case 1 => List(1)
       case n: Int => 1 +: ((tri(n - 1) zip tri(n - 1).tail) map { case (a, b) => a + b }) :+ 1
@@ -5754,7 +5754,7 @@ object Blaise extends App {
 ```scheme
 (define (next-row row)
   (map + (cons 0 row) (append row '(0))))
- 
+
 (define (triangle row rows)
   (if (= rows 0)
       '()
@@ -5917,7 +5917,7 @@ let waste = pascal(n:10)
 proc pascal_iterative n {
     if {$n < 1} {error "undefined behaviour for n < 1"}
     set row [list 1]
-    lappend rows $row    
+    lappend rows $row
     set i 1
     while {[incr i] <= $n} {
         set prev $row
@@ -6389,16 +6389,16 @@ End Sub 'pascaltriangle
 
 ```txt
 
-1 
-1 1 
-1 2 1 
-1 3 3 1 
-1 4 6 4 1 
-1 5 10 10 5 1 
-1 6 15 20 15 6 1 
-1 7 21 35 35 21 7 1 
-1 8 28 56 70 56 28 8 1 
-1 9 36 84 126 126 84 36 9 1 
+1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1
+1 5 10 10 5 1
+1 6 15 20 15 6 1
+1 7 21 35 35 21 7 1
+1 8 28 56 70 56 28 8 1
+1 9 36 84 126 126 84 36 9 1
 1 10 45 120 210 252 210 120 45 10 1
 
 ```
@@ -6457,13 +6457,13 @@ End Module
 {{out}}
 
 ```txt
-                                                           1                    
-                                                        1     1                 
-                                                     1     2     1              
-                                                  1     3     3     1           
-                                               1     4     6     4     1        
-                                            1     5     10    10    5     1     
-                                         1     6     15    20    15    6     1  
+                                                           1
+                                                        1     1
+                                                     1     2     1
+                                                  1     3     3     1
+                                               1     4     6     4     1
+                                            1     5     10    10    5     1
+                                         1     6     15    20    15    6     1
                                       1     7     21    35    35    21    7     1
                                    1     8     28    56    70    56    28    8     1
                                 1     9     36    84   126   126    84    36    9     1
@@ -6558,19 +6558,19 @@ Pascal(13)
 
 ```txt
 
-                         1  
-                       1   1  
-                     1   2   1  
-                   1   3   3   1  
-                 1   4   6   4   1  
-               1   5   10  10  5   1  
-             1   6   15  20  15  6   1  
-           1   7   21  35  35  21  7   1  
-         1   8   28  56  70  56  28  8   1  
-       1   9   36  84 126 126  84  36  9   1  
-     1   10  45 120 210 252 210 120  45  10  1  
-   1   11  55 165 330 462 462 330 165  55  11  1  
- 1   12  66 220 495 792 924 792 495 220  66  12  1  
+                         1
+                       1   1
+                     1   2   1
+                   1   3   3   1
+                 1   4   6   4   1
+               1   5   10  10  5   1
+             1   6   15  20  15  6   1
+           1   7   21  35  35  21  7   1
+         1   8   28  56  70  56  28  8   1
+       1   9   36  84 126 126  84  36  9   1
+     1   10  45 120 210 252 210 120  45  10  1
+   1   11  55 165 330 462 462 330 165  55  11  1
+ 1   12  66 220 495 792 924 792 495 220  66  12  1
 
 ```
 
@@ -6592,7 +6592,7 @@ fcn pascalTriangle(n){ // n<=0-->""
       println();
    }
 }
- 
+
 pascalTriangle(8);
 ```
 
@@ -6600,14 +6600,14 @@ pascalTriangle(8);
 
 ```txt
 
-                1 
-              1   1 
-            1   2   1 
-          1   3   3   1 
-        1   4   6   4   1 
-      1   5  10  10   5   1 
-    1   6  15  20  15   6   1 
-  1   7  21  35  35  21   7   1 
+                1
+              1   1
+            1   2   1
+          1   3   3   1
+        1   4   6   4   1
+      1   5  10  10   5   1
+    1   6  15  20  15   6   1
+  1   7  21  35  35  21   7   1
 
 ```
 
@@ -6637,7 +6637,7 @@ In edit mode insert:
 130 LET d(r+1)=1
 140 FOR i=2 TO r
 150 LET d(i)=c(i-1)+c(i)
-160 NEXT i 
+160 NEXT i
 165 IF r>=n THEN GO TO 200
 170 FOR i=1 TO r+1
 180 LET c(i)=d(i)
@@ -6654,14 +6654,14 @@ Then in command mode (basically don't put a number in front):
 
 ```txt
 
-        1 
-       1 1 
-      1 2 1 
-     1 3 3 1 
-    1 4 6 4 1 
-   1 5 10 10 5 1 
-  1 6 15 20 15 6 1 
- 1 7 21 35 35 21 7 1 
+        1
+       1 1
+      1 2 1
+     1 3 3 1
+    1 4 6 4 1
+   1 5 10 10 5 1
+  1 6 15 20 15 6 1
+ 1 7 21 35 35 21 7 1
 1 8 28 56 70 56 28 8 1
 
 ```

@@ -10,9 +10,9 @@ categories = []
 tags = []
 +++
 
-{{task}} 
+{{task}}
 
-Languages may have features for dealing specifically with empty strings 
+Languages may have features for dealing specifically with empty strings
 (those containing no characters).
 
 
@@ -284,15 +284,15 @@ szString:            .asciz ""   @ with zero final
 szString1:           .asciz "A"  @ with zero final
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* saves 2 registers */
 
-    @ load string 
+    @ load string
     ldr r1,iAdrszString
     ldrb r0,[r1]    @ load first byte of string
     cmp r0,#0        @ compar with zero ?
@@ -306,7 +306,7 @@ main:                /* entry of program  */
     bl affichageMess
 	/* second string */
 2:
-    @ load string 1 
+    @ load string 1
     ldr r1,iAdrszString1
     ldrb r0,[r1]        @ load first byte of string
     cmp r0,#0            @ compar with zero ?
@@ -330,11 +330,11 @@ iAdrszNotEmptyString:   .int szNotEmptyString
 iAdrszEmptyString:       .int szEmptyString
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -348,9 +348,9 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
-    bx lr	        			/* return  */  
-	
+    pop {fp,lr}    				/* restaur des  2 registres */
+    bx lr	        			/* return  */
+
 
 
 ```
@@ -392,18 +392,18 @@ If (var != "")
 
 ```awk
 #!/usr/bin/awk -f
-BEGIN { 
-  # Demonstrate how to assign an empty string to a variable. 
-  a=""; 
-  b="XYZ"; 
-  print "a = ",a;	
-  print "b = ",b;	
+BEGIN {
+  # Demonstrate how to assign an empty string to a variable.
+  a="";
+  b="XYZ";
+  print "a = ",a;
+  print "b = ",b;
   print "length(a)=",length(a);
   print "length(b)=",length(b);
   # Demonstrate how to check that a string is empty.
   print "Is a empty ?",length(a)==0;
   print "Is a not empty ?",length(a)!=0;
-  # Demonstrate how to check that a string is not empty.  
+  # Demonstrate how to check that a string is not empty.
   print "Is b empty ?",length(b)==0;
   print "Is b not empty ?",length(b)!=0;
 }
@@ -412,8 +412,8 @@ BEGIN {
 {{out}}
 
 ```txt
-$ awk -f R/tmp/string.awk 
-a =  
+$ awk -f R/tmp/string.awk
+a =
 b =  XYZ
 length(a)= 0
 length(b)= 3
@@ -519,10 +519,10 @@ if %var%@ neq @ echo Var is not a blank string.
 ```bbcbasic
       REM assign an empty string to a variable:
       var$ = ""
-      
+
       REM Check that a string is empty:
       IF var$ = "" THEN PRINT "String is empty"
-      
+
       REM Check that a string is not empty:
       IF var$ <> "" THEN PRINT "String is not empty"
 
@@ -582,7 +582,7 @@ if (str[0] == '\0') { ... }
 /* or equivalently use strlen function */
 if (strlen(str) == 0) { ... }
 /* or compare to a known empty string, same thing. "== 0" means strings are equal */
-if (strcmp(str, "") == 0) { ... } 
+if (strcmp(str, "") == 0) { ... }
 
 ```
 
@@ -591,8 +591,8 @@ if (strcmp(str, "") == 0) { ... }
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 
 // ...
 
@@ -628,7 +628,7 @@ class Program {
 
 '''Compiler:''' Roslyn C# (language version >= 6)
 
-Note: implementation information provided in comments was obtained reflecting .NET libraries and viewing the .NET Core reference source and may not be correct or remain relevant as time passes. 
+Note: implementation information provided in comments was obtained reflecting .NET libraries and viewing the .NET Core reference source and may not be correct or remain relevant as time passes.
 
 
 ```csharp
@@ -685,7 +685,7 @@ static class Program
         P((object)s == "");
 
         //#Object.ReferenceEquals(Object, Object)
-        // The previous line is semantically to the following, though it does not involve a method call. 
+        // The previous line is semantically to the following, though it does not involve a method call.
         P(object.ReferenceEquals(s, ""));
 
         //#String.op_Equality(String, String)
@@ -784,17 +784,17 @@ if !str.isEmpty() { }
 <lang Caché ObjectScript>EMPTYSTR
     ; Demonstrate how to assign an empty string to a variable.
     set x = ""
-    
+
       ; Demonstrate how to check that a string is empty.
       ; Length 0 is empty; equality/pattern check are 1=T, 0=F
       write !,"Assigned x to null value.  Tests: "
       write !,"String length: "_$length(x)_", Equals null: "_(x = "")_", Empty pattern: "_(x?."")    ; length 0 is empty
-      
+
       ; Demonstrate how to check that a string is not empty.  Same as above.
       set x = " "    ;assign to a space - not null
       write !!,"Assigned x to a single blank space.  Tests: "
       write !,"String length: "_$length(x)_", Equals null: "_(x = "")_", Empty pattern: "_(x?."")
-      
+
       quit
 ```
 
@@ -869,7 +869,7 @@ isEmptyString = (s) ->
   # (This returns false for non-strings as well.)
   return true if s instanceof String and s.length == 0
   s == ''
-  
+
 empties = ["", '', new String()]
 non_empties = [new String('yo'), 'foo', {}]
 console.log (isEmptyString(v) for v in empties) # [true, true, true]
@@ -918,7 +918,7 @@ BEGIN
 	s := 0X;
 	StdLog.String("Is 's' empty?:>  ");StdLog.Bool(s = 0X);StdLog.Ln;
 	StdLog.String("Is not 's' empty?:> ");StdLog.Bool(s # 0X);StdLog.Ln;
-	StdLog.Ln;	
+	StdLog.Ln;
 END Do;
 END EmptyString.
 
@@ -953,11 +953,11 @@ bool isEmptyNotNull(in string s) pure nothrow @safe {
 void main(){
     string s1 = null;
     string s2 = "";
-    
+
     // the content is the same
-    assert(!s1.length); 
+    assert(!s1.length);
     assert(!s2.length);
-    assert(s1 == "" && s1 == null); 
+    assert(s1 == "" && s1 == null);
     assert(s2 == "" && s2 == null);
     assert(s1 == s2);
 
@@ -967,9 +967,9 @@ void main(){
     assert(s1 !is s2);
     assert(s1.ptr == null);
     assert(*s2.ptr == '\0'); // D string literals are \0 terminated
-    
-    assert(s1.empty);    
-    assert(s2.isEmptyNotNull());    
+
+    assert(s1.empty);
+    assert(s2.isEmptyNotNull());
 }
 ```
 
@@ -1050,7 +1050,7 @@ if s = '' then
 
 s := 'hello';
 
-if s <> '' then 
+if s <> '' then
    PrintLn('not empty');
 ```
 
@@ -1076,14 +1076,14 @@ ELENA 4.x:
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     auto s := emptyString;
- 
+
     if (s.isEmpty())
         { console.printLine("'", s, "' is empty") };
- 
+
     if (s.isNonempty())
         { console.printLine("'", s, "' is not empty") }
 }
@@ -1106,7 +1106,7 @@ To check whether a given variable holds an empty string, either compare it to th
 ```elixir
 
 empty_string = ""
-not_empty_string = "a" 
+not_empty_string = "a"
 
 empty_string == ""
 # => true
@@ -1275,7 +1275,7 @@ Strings are represented as an addr-len pair on the stack. An empty string has le
 \ ? means the word returns a true/false flag on the stack
 
 : empty? ( c-addr u -- ? ) nip 0= ;
-: filled?  ( c-addr u -- ? ) empty? 0= ; 
+: filled?  ( c-addr u -- ? ) empty? 0= ;
 : =""      ( c-addr u -- ) drop 0 ;  \ It's OK to copy syntax from other languages
 
 ```
@@ -1318,7 +1318,7 @@ Such variables, or text literals, may be passed as a parameter to a subprogram, 
 
 Otherwise, you could employ the Fortran protocol that trailing spaces are irrelevant in text comparisons. Thus <code>TEXT .EQ. ""</code> would give ''true'' even though TEXT might contain thousands of space characters, and so would <code>TEXT .EQ. "  "</code> - thus an empty string is one containing nothing other than spaces.
 
-Alternatively, the programmer can be diligent, and associate an integer with every such CHARACTER variable, such as LTEXT for TEXT, to hold the current length of characters in use. Tests for empty strings and the like would thus be made by inspecting the value of LTEXT, which hopefully, would always contain correct values. 
+Alternatively, the programmer can be diligent, and associate an integer with every such CHARACTER variable, such as LTEXT for TEXT, to hold the current length of characters in use. Tests for empty strings and the like would thus be made by inspecting the value of LTEXT, which hopefully, would always contain correct values.
 
 With F90, compound data aggregates can be defined and as well procedures for operating on them, so that, after a great deal of syntactic struggle, a string data type will be available. F2000 standardised one such scheme whereby character variables are de-allocated and re-allocated with usage so that a statement such as <code>TEXT = "This" // "That"</code> would cause a de-allocation of whatever storage had been associated with TEXT followed by a re-allocation of storage for eight characters, the required size, and LEN(TEXT) would give 8.
 
@@ -1337,7 +1337,7 @@ Sub IsEmpty(s As String)
    End If
 End Sub
 
-Dim s As String  ' implicitly assigned an empty string 
+Dim s As String  ' implicitly assigned an empty string
 IsEmpty(s)
 Dim t As String = "" ' explicitly assigned an empty string
 IsEmpty(t)
@@ -1421,8 +1421,8 @@ Dim sTemp As String
 Dim siCount As Short
 
 For Each sTemp In sString
-  If sString[siCount] Then 
-    Print "String " & siCount & " = " & sString[siCount] 
+  If sString[siCount] Then
+    Print "String " & siCount & " = " & sString[siCount]
   Else
     Print "String " & siCount & " is empty"
   End If
@@ -1532,17 +1532,17 @@ if (StrLen(str)) { ... }
 ```i
 software {
 	s = ""
- 
+
 	// Can either compare the string to an empty string or
 	// test if the length is zero.
 	if s = "" or #s = 0
 		print("Empty string!")
 	end
- 
+
 	if s - "" or #s - 0
 		print("Not an empty string!")
 	end
-} 
+}
 
 ```
 
@@ -1552,21 +1552,21 @@ Icon and Unicon can produce empty strings in several ways:
 
 ```Icon
 s := ""                 # null string
-s := string('A'--'A')   # ... converted from cset difference 
+s := string('A'--'A')   # ... converted from cset difference
 s := char(0)[0:0]       # ... by slicing
 
 s1 == ""                # lexical comparison, could convert s1 to string
 s1 === ""               # comparison won't force conversion
-*s1 = 0                 # zero length, however, *x is polymorphic 
+*s1 = 0                 # zero length, however, *x is polymorphic
 *string(s1) = 0         # zero length string
 
-s1 ~== ""               # non null strings comparisons 
+s1 ~== ""               # non null strings comparisons
 s1 ~=== ""
 *string(s1) ~= 0
 
 s := &null              # NOT a null string, null type
 /s                      # test for null type
-\s                      # test for non-null type 
+\s                      # test for non-null type
 ```
 
 
@@ -1643,7 +1643,7 @@ Boolean(s)
 
 jq strings are JSON strings.  The empty string literal is simply <tt>""</tt>.  It can be assigned to a variable as illustrated by this example:
 ```jq
-"" as $x 
+"" as $x
 ```
 If s is a string or an array, then the additive "zero" for s can be created by writing s[0:0].  That is, if s is a string, then s[0:0] will yield the empty string.  This is useful when writing polymorphic functions.
 
@@ -2057,14 +2057,14 @@ Module Checkit {
             List
             \\ using current stack
       }
-      \\ we call always a local module, or a global, but not this module, 
+      \\ we call always a local module, or a global, but not this module,
       \\ no recursion for standard call for modules.
       \\ we have to use Call Checkit to call this module recursive
       Checkit
       What  \\ now what use old global a$
       Print a$<>""  ' true
       List
-      
+
       \\
       \\ Part 2:  Pass an empty string to a variable through stack of values
       \\
@@ -2133,12 +2133,12 @@ str=!="" (*test not empty*)
 
 
 ```Matlab
-   % Demonstrate how to assign an empty string to a variable. 
-    str = ''; 
+   % Demonstrate how to assign an empty string to a variable.
+    str = '';
     % Demonstrate how to check that a string is empty.
     isempty(str)
     (length(str)==0)
-    % Demonstrate how to check that a string is not empty. 
+    % Demonstrate how to check that a string is not empty.
     ~isempty(str)
     (length(str)>0)
 ```
@@ -2279,7 +2279,7 @@ options replace format comments java crossref symbols binary
 
 s1 = '' -- assignment
 s2 = "" -- equivalent to s1
-parse '.' . s3 . -- parsing a token that doesn't exist results in an empty string 
+parse '.' . s3 . -- parsing a token that doesn't exist results in an empty string
 
 strings = [s1, s2, s3, ' ']
 
@@ -2302,9 +2302,9 @@ return
 
 ```txt
 
-  0: "" is really empty 
-  1: "" is really empty 
-  2: "" is really empty 
+  0: "" is really empty
+  1: "" is really empty
+  2: "" is really empty
   3: " " looks empty but may not be
 
 ```
@@ -2411,7 +2411,7 @@ else
 
 define variable emptystring = "a" ;; Define global variable
 
-;; The ternary operator is #? 
+;; The ternary operator is #?
 return #?(emptystring = "",
                         "The string is empty.",
                         "The string is not empty.")
@@ -2569,7 +2569,7 @@ v=''
 w=' '
 if v=='' Then Say 'v contains the empty string'<
 If length(w)>0 Then Say 'Variable w does not contain the empty string'
-If w='' Then Say 'this is not a good test' 
+If w='' Then Say 'this is not a good test'
 ```
 
 {{out}}
@@ -2743,7 +2743,7 @@ Tests:
 
 ```PowerShell
 
-[String]::IsNullOrEmpty($alpha) 
+[String]::IsNullOrEmpty($alpha)
 [String]::IsNullOrEmpty($empty)
 
 ```
@@ -2783,7 +2783,7 @@ Procedure.s isStringEmpty(a.s)
     ProcedureReturn "String is not empty, it contains '" + a + "'."
   Else
     ProcedureReturn "String is empty, or null."
-  EndIf 
+  EndIf
 EndProcedure
 
 If OpenConsole()
@@ -2791,7 +2791,7 @@ If OpenConsole()
   Define b.s = "stuff"
   PrintN(isStringEmpty(a))
   PrintN(isStringEmpty(b))
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2879,7 +2879,7 @@ if (isEmpty(s)) print("string s is not empty");
 Red []
 s: copy ""   ;; assign empty string
 ?? s
-if empty? s [print "string is empty "]          ;; check if string is empty 
+if empty? s [print "string is empty "]          ;; check if string is empty
 s: "abc"
 prin s unless empty? s  [print " not empty"]
 
@@ -2889,9 +2889,9 @@ prin s unless empty? s  [print " not empty"]
 
 ```txt
 s: ""
-string is empty 
+string is empty
 abc not empty
->> 
+>>
 
 ```
 
@@ -2992,7 +2992,7 @@ if length(cod)\=0  then fish=cod                 /*a not-as-fast compare.       
 ```ring
 
 cStr = NULL # empty string
-if cStr = NULL 
+if cStr = NULL
    see "cstr is an empty string!" + nl
 else
    see "cstr is not empty string!" + nl
@@ -3055,7 +3055,7 @@ s[/./m]
 ```
 
 
-Note that we can '''not''' do the following, because the empty string is equivalent to true in Ruby ([[Boolean values#Ruby]]): 
+Note that we can '''not''' do the following, because the empty string is equivalent to true in Ruby ([[Boolean values#Ruby]]):
 
 ```ruby
 if s then puts "not empty" end  # This code is wrong!
@@ -3151,10 +3151,10 @@ s <> ""
 
 "Put an empty string in a slot called 'str'"
 str: ''.
- 
+
 "Check that string is empty"
 str isEmpty.
- 
+
 "Check that string is not empty"
 str isEmpty not.
 ```
@@ -3342,7 +3342,7 @@ s is an empty string
 
 
 If <code>a</code> is unbound, a binding is created, containing the empty string.
-If <code>a</code> is already bound, <code>bind</code> succeeds if <code>a</code> contains the empty string, and the pattern matching continues at the next directive. 
+If <code>a</code> is already bound, <code>bind</code> succeeds if <code>a</code> contains the empty string, and the pattern matching continues at the next directive.
 Or else a failure occurs, triggering backtracking behavior.
 
 
@@ -3495,7 +3495,7 @@ In .NET Core, functions defined in <code>Microsoft.VisualBasic</code> are only a
 Option Strict On
 
 Module Program
-    
+
     Sub Main()
         ' Equality is somewhat convoluted in .NET, and VB doesn't help by adding legacy means of comparison.
         ' The means above are the author's recommendation for each case.
@@ -3527,7 +3527,7 @@ Module Program
         P(s Is "")
 
         '#Object.ReferenceEquals(Object, Object)
-        ' The previous line is semantically to the following, though it does not involve a method call. 
+        ' The previous line is semantically to the following, though it does not involve a method call.
         P(Object.ReferenceEquals(s, ""))
 
         '#= Operator

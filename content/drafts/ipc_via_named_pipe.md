@@ -26,8 +26,8 @@ Possible issues:
 
 {{libheader|pthread}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -355,16 +355,16 @@ end
 Example run:
 
 {| class="wikitable"
-| style="vertical-align: top; width: 50%;" | 
+| style="vertical-align: top; width: 50%;" |
 ```txt
-$ ruby count.rb  
+$ ruby count.rb
 -- Opened 'in' pipe.
 -- Opened 'out' pipe.
 -- Counted 32 bytes.
 $
 ```
 
-| style="vertical-align: top; width: 50%;" | 
+| style="vertical-align: top; width: 50%;" |
 ```txt
 $ echo 'This is line 1.' > in
 $ echo 'This is line 2.' > in

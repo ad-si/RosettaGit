@@ -13,12 +13,12 @@ tags = []
 {{Task|Basic language learning}}[[Category:String manipulation]][[Category:Simple]]
 {{basic data operation}}
 {{omit from|NSIS}}{{omit from|BBC BASIC}}
-Given a string and defined variables or values, [[wp:String literal#Variable_interpolation|string interpolation]] is the replacement of defined character sequences in the string by values or variable values. 
+Given a string and defined variables or values, [[wp:String literal#Variable_interpolation|string interpolation]] is the replacement of defined character sequences in the string by values or variable values.
 : For example, given an original string of <code>"Mary had a X lamb."</code>, a value of "big", and if the language replaces X in its interpolation routine, then the result of its interpolation would be the string <code>"Mary had a big lamb"</code>.
 
 :(Languages usually include an infrequently used character or sequence of characters to indicate what is to be replaced such as "%", or "#" rather than "X").
 
-;The task is to: 
+;The task is to:
 # Use your languages inbuilt string interpolation abilities to interpolate a string missing the text <code>"little"</code> which is held in a variable, to produce the output string <code>"Mary had a little lamb"</code>.
 # If possible, give links to further documentation on your languages string interpolation features.
 
@@ -150,7 +150,7 @@ goto :eof
 :interpolate
 set pat=%~1
 set str=%~2
-set %3=!pat:X=%str%! 
+set %3=!pat:X=%str%!
 goto :eof
 ```
 
@@ -179,8 +179,8 @@ Use pattern matching to find the part of the string up to and the part of the st
 
 Include the <code><stdio.h></code> header to use the functions of the [[wp:Printf|printf]] family:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main() {
   const char *extra = "little";
@@ -194,8 +194,8 @@ int main() {
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 
 int main( ) {
@@ -231,7 +231,7 @@ string interpolate( const S& orig , const Args&... args)
    // populate vector from argument list
    auto va = {args...};
    vector<string> v{va};
-   
+
    size_t i = 1;
 
    for( string s: v)
@@ -248,7 +248,7 @@ string interpolate( const S& orig , const Args&... args)
 	       out.insert( pos, s);       // insert arg
 	     }
 
-	   i++;                           // next 
+	   i++;                           // next
 	 }
 	 catch( std::exception& e)
 	   {
@@ -515,7 +515,7 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     var s := "little";
@@ -581,7 +581,7 @@ printfn "Mary had a %s lamb." lambType
 
 
 ```factor
-USE: formatting 
+USE: formatting
 
 SYMBOL: little
 
@@ -595,7 +595,7 @@ I tried to be as specific as possible here. The challenge says to use a ''variab
 
 
 ```factor
-USE: formatting 
+USE: formatting
 
 CONSTANT: little "little"
 
@@ -674,7 +674,7 @@ contains
       new = string(1:idx-1)//ins//string(idx+len(place):len(string))
     end if
   end function inter
-  
+
 end program interpolate
 ```
 
@@ -695,7 +695,7 @@ as easily as if they were part of FB itself:
 Dim x As String = "big"
 Print "Mary had a "; x; " lamb"   '' FB's native Print statement
 x = "little"
-printf("Mary also had a %s lamb", x) 
+printf("Mary also had a %s lamb", x)
 Sleep
 ```
 
@@ -756,14 +756,14 @@ Mary had a little lamb
 ## Gastona
 
 This kind of string interpolation is indeed a strong feature in Gastona. We add one more
-indirection in the sample just to ilustrate it. 
+indirection in the sample just to ilustrate it.
 
 ```gastona
 #listix#
 
    <how>   //little
    <what>  //has a @<how> lamb
-   
+
    <main>  //Mary @<what>
 
 ```
@@ -848,7 +848,7 @@ Icon and Unicon are descended from a line of languages with a wealth of string m
   while s1 ?:= tab(find(s2)) || (=s2,s3) || tab(0)    # replaces all instances of s2 with s3, equivalent to replace
 ```
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/strings.icn Note the strings library includes convenient procedures for string replacement] such as replace(s1,s2,s3) which replaces all occurrences of s2 in s1 with s3 and replacem(s1,s2,s3,...) which replaces multiple pairs.
 
 
@@ -966,7 +966,7 @@ fun main(args: Array<String>) {
 
     // However if a simple variable is immediately followed by a letter, digit or underscore
     // it must be treated as an expression
-    println("Mary had a ${s}r lamb") // not $sr    
+    println("Mary had a ${s}r lamb") // not $sr
 }
 ```
 
@@ -1017,7 +1017,7 @@ put merge("Mary had a [[str]] lamb.")
 
 
 
-###  Variable names 
+###  Variable names
 
 
 There is no default support for automatic interpolation of variables names being used as placeholders within a string. However, interpolation is easily emulated by using the [string.gsub] function:
@@ -1030,7 +1030,7 @@ print( str )
 
 
 
-###  Literal characters 
+###  Literal characters
 
 
 Interpolation of literal characters escape sequences does occur within a string:
@@ -1196,7 +1196,7 @@ At 5:43:05 PM on Aug 22, 2011, there was a disturbance in the Force on planet 7.
 import strutils
 
 var str = "little"
-echo "Mary had a $# lamb" % [str]   
+echo "Mary had a $# lamb" % [str]
 # doesn't need an array for one substitution, but use an array for multiple substitutions
 ```
 
@@ -1453,7 +1453,7 @@ Atom = 'Mary had a $Extra lamb'.
 
 ## PureBasic
 
-The function [http://www.purebasic.com/documentation/string/replacestring.html ReplaceString()] is built-in and can have both constants and variables as parameters. 
+The function [http://www.purebasic.com/documentation/string/replacestring.html ReplaceString()] is built-in and can have both constants and variables as parameters.
 
 ```PureBasic
 ReplaceString("Mary had a X lamb.","X","little")
@@ -1466,7 +1466,7 @@ ReplaceString("Mary had a X lamb.","X","little")
 Define txt$, txtvar.s="little"
 
 ;Load datasegment into variable txt$
-Restore Mary 
+Restore Mary
 Read.s  txt$
 
 ; Replace X with "little" and store result in txt$
@@ -1532,7 +1532,7 @@ Using the new [https://docs.python.org/3/whatsnew/3.6.html#whatsnew36-pep498 f-s
  extra = 'little'
 >>> f'Mary had a {extra} lamb.'
 'Mary had a little lamb.'
->>> 
+>>>
 ```
 
 
@@ -1572,7 +1572,7 @@ reword str [size "little"]
 ## REXX
 
 
-Interpolation does not occur in literal strings, neither within   ''singlequote''   or   ''doublequote''   enclosures. 
+Interpolation does not occur in literal strings, neither within   ''singlequote''   or   ''doublequote''   enclosures.
 
 However, interpolation can be emulated using the   '''changestr'''   function:
 
@@ -1709,7 +1709,7 @@ object StringInterpolation extends App {
     // Pre Scala 2.10 indirect use of Java Class Formatter
     val originalFormatter = "Mary had a %s lamb,"
     println("V2.10- 1: " + originalFormatter format size)
-    // Above mentioned is Scala's postfix notation and equivalent for: 
+    // Above mentioned is Scala's postfix notation and equivalent for:
     println("V2.10- 2: " + originalFormatter.format(size))
     // Also possible
     printf(("V2.10- 3: " + originalFormatter + '\n').format(size))
@@ -1814,8 +1814,8 @@ Every statement in SNOBOL can is a subset of pattern replacement having a subjec
 ```snobol
         s1 = "Mary had a humongous lamb."
 	s2 = "humongous"
-        s3 = "little"           
-	s1 s2 = s3 
+        s3 = "little"
+	s1 s2 = s3
 end
 ```
 
@@ -1912,7 +1912,7 @@ PRINT sentence_new
 ```txt
 
 Mary had a X lamb.
-Mary had a little lamb. 
+Mary had a little lamb.
 
 ```
 
@@ -1980,7 +1980,7 @@ x = <'little'>
 main = -[Mary had a -[. ~& ]- lamb.]- x
 ```
 
-These operators are parsed like parentheses. 
+These operators are parsed like parentheses.
 {{out}}
 
 ```txt
@@ -2039,14 +2039,14 @@ End Function
 ////////////////////////////////////////////////////////////////////////////////////////
 //
 //  The @INTERPOLATE verb processes a string with imbedded blocks of code.  The code
-//  blocks are parsed and evaluated.  Any results are converted to a string, which 
+//  blocks are parsed and evaluated.  Any results are converted to a string, which
 //  is then inserted into the output string, replacing the code and braces.
-//  
+//
 // example: @INTERPOLATE "text{ @IF (x > y) then:{x} else:{y} }more text "
 //
 ////////////////////////////////////////////////////////////////////////////////////////
 
-@VAR v = "little"; 
+@VAR v = "little";
 
 @SAY (@INTERPOLATE "Mary had a { v } lamb");
 

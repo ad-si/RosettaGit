@@ -330,8 +330,8 @@ One option was to copy the code from the regular Hello World version and omit th
 
 In C, we do not get a newline unless we embed one:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int main(int argc, char *argv[]) {
@@ -366,8 +366,8 @@ class Program
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main() {
   std::cout << "Goodbye, World!";

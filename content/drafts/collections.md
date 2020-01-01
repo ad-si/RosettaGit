@@ -14,7 +14,7 @@ tags = []
 [[Category:Data Structures]]
 {{clarified-review}}
 
-Collections are abstractions to represent sets of values.  
+Collections are abstractions to represent sets of values.
 
 In statically-typed languages, the values are typically of a common data type.
 
@@ -60,13 +60,13 @@ START-OF-SELECTION.
 
 ## Ada
 
-Ada 95 and earlier offers arrays.  Ada 2005 adds the Ada.Containers package and its children.  Examples of Doubly Linked Lists and Vectors are given.  
+Ada 95 and earlier offers arrays.  Ada 2005 adds the Ada.Containers package and its children.  Examples of Doubly Linked Lists and Vectors are given.
 Ada 2005 also provides hashed and ordered Maps and Sets (not shown).
 
 
 ### anonymous arrays
 
-In Ada, arrays can be indexed on any range of discrete values.  The example below creates an anonymous array indexed from -3 to -1.  It initializes the three elements of the array at declaration.  Then it reverses their order in the array.  
+In Ada, arrays can be indexed on any range of discrete values.  The example below creates an anonymous array indexed from -3 to -1.  It initializes the three elements of the array at declaration.  Then it reverses their order in the array.
 
 
 
@@ -77,13 +77,13 @@ Anonymous arrays have no type associated with them that is accessible to the pro
 procedure Array_Collection is
 
    A : array (-3 .. -1) of Integer := (1, 2, 3);
-   
+
 begin
-   
+
    A (-3) := 3;
    A (-2) := 2;
    A (-1) := 1;
-   
+
 end Array_Collection;
 ```
 
@@ -99,13 +99,13 @@ procedure Array_Collection is
 
    type Array_Type is array (1 .. 3) of Integer;
    A : Array_Type := (1, 2, 3);
-   
+
 begin
-   
+
    A (1) := 3;
    A (2) := 2;
    A (3) := 1;
-   
+
 end Array_Collection;
 ```
 
@@ -122,13 +122,13 @@ procedure Array_Collection is
    type Array_Type is array (positive range <>) of Integer; -- may be indexed with any positive
                                                             -- Integer value
    A : Array_Type(1 .. 3);  -- creates an array of three integers, indexed from 1 to 3
-   
+
 begin
-   
+
    A (1) := 3;
    A (2) := 2;
    A (3) := 1;
-   
+
 end Array_Collection;
 ```
 
@@ -149,15 +149,15 @@ procedure Doubly_Linked_List is
 
    package DL_List_Pkg is new Doubly_Linked_Lists (Integer);
    use     DL_List_Pkg;
-   
+
    DL_List : List;
-   
+
 begin
-   
+
    DL_List.Append (1);
    DL_List.Append (2);
    DL_List.Append (3);
-   
+
 end Doubly_Linked_List;
 ```
 
@@ -178,15 +178,15 @@ procedure Vector_Example is
 
    package Vector_Pkg is new Vectors (Natural, Integer);
    use     Vector_Pkg;
-   
+
    V : Vector;
-   
+
 begin
-   
+
    V.Append (1);
    V.Append (2);
    V.Append (3);
-   
+
 end Vector_Example;
 ```
 
@@ -236,7 +236,7 @@ r_put(r, "key2", "a string");
 r["key3"] = .25;
 ```
 
-Retrieving values from a record: 
+Retrieving values from a record:
 
 ```aime
 r_query(r, "key1")
@@ -299,7 +299,7 @@ Access elements in a list
 ```apex
 
 List<Integer> myList = new List<Integer>(); // Define a new list
-myList.add(47);                    // Adds a second element of value 47 to the end 
+myList.add(47);                    // Adds a second element of value 47 to the end
                                        // of the list
 Integer i = myList.get(0);                   // Retrieves the element at index 0
 myList.set(0, 1);                           // Adds the integer 1 to the list at index 0
@@ -327,7 +327,7 @@ Defining a set:
 ```apex
 
 Set<String> s1 = new Set<String>{'a', 'b + c'}; // Defines a new set with two elements
-Set<String> s2 = new Set<String>(s1); // Defines a new set that contains the 
+Set<String> s2 = new Set<String>(s1); // Defines a new set that contains the
                                      // elements of the set created in the previous step
 
 ```
@@ -459,7 +459,7 @@ print dict
 
 
 ```arturo
-// define a new class-type dictionary 
+// define a new class-type dictionary
 Person #{
 	name ""
 	surname ""
@@ -622,7 +622,7 @@ Although not a native language feature, other types of collections such as linke
       PROCadd(list%, node{}, "Sue", 1950)
       PROClist(list%, node{})
       END
-      
+
       DEF PROCadd(RETURN l%, c{}, n$, y%)
       LOCAL p%
       DIM p% DIM(c{})-1
@@ -632,7 +632,7 @@ Although not a native language feature, other types of collections such as linke
       c.link% = l%
       l% = p%
       ENDPROC
-      
+
       DEF PROClist(l%, c{})
       WHILE l%
         !(^c{}+4) = l%
@@ -678,7 +678,7 @@ Another construct which can be seen as a collection is a malloced array.  The si
 
 int* ar;                  /* Collection<Integer> ar; */
 int arSize;
-arSize = (rand() % 6) + 1; 
+arSize = (rand() % 6) + 1;
 ar = calloc(arSize, sizeof(int) ); /* ar = new ArrayList<Integer>(arSize); */
 ar[0] = 1;                /* ar.set(0, 1); */
 
@@ -725,8 +725,8 @@ std::string strings[4]; // std::string is no POD, therefore all array members ar
 A vector is basically a resizable array. It is optimized for adding/removing elements on the end, and fast access to elements anywhere. Inserting elements at the beginning or in the middle is possible, but in general inefficient.
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 
 std::vector<int> v;       // empty vector
 v.push_back(5);           // insert a 5 at the end
@@ -740,8 +740,8 @@ v.insert(v.begin(), 7);   // insert a 7 at the beginning
 A deque is optimized for appending and removing elements on both ends ofd the array. Accessing random elements is still efficient, but slightly less than with vector.
 
 
-```cpp>#include <deque
-
+```cpp
+#include <deque>
 
 std::deque<int> d;        // empty deque
 d.push_back(5);           // insert a 5 at the end
@@ -756,8 +756,8 @@ d.insert(v.begin()+1, 6); // insert a 6 in the middle
 A list is optimized for insertion at an arbitrary place (provided you already have an iterator pointing to that place). Element access is efficient only in linear order.
 
 
-```cpp>#include <list
-
+```cpp
+#include <list>
 
 std::list<int> l;         // empty list
 l.push_back(5);           // insert a 5 at the end
@@ -774,8 +774,8 @@ l.insert(i, 6);           // insert a 6 in the middle
 A set keeps the inserted elements sorted, and also makes sure that each element occurs only once. Of course, if you want to put something into a set, it must be less-than-comparable, i.e. you must be able to compare which of two objects <tt>a</tt> and <tt>b</tt> is smaller using <tt>a<b</tt> (there's also a way to define sets with an user-defined order, in which case this restriction doesn't apply).
 
 
-```cpp>#include <set
-
+```cpp
+#include <set>
 
 std::set<int> s;          // empty set
 s.insert(5);              // insert a 5
@@ -790,8 +790,8 @@ s.insert(5);              // try to insert another 5 (will not change the set)
 A multiset is like a set, except the same element may occur multiple times.
 
 
-```cpp>#include <multiset
-
+```cpp
+#include <multiset>
 
 std::multiset<int> m;     // empty multiset
 m.insert(5);              // insert a 5
@@ -862,7 +862,7 @@ List<string> myList2 = new List<string>();
 
 ### Hashtable and Dictionary
 
-Hashtables represent a collection of key/value pairs that are organized based on the hash code of the key. 
+Hashtables represent a collection of key/value pairs that are organized based on the hash code of the key.
 Keys must be unique.
 
 ```csharp
@@ -1013,7 +1013,7 @@ collections.cob: 33: libcob: Subscript of 'sample-number' out of bounds: 3
 
 ```
 
- 
+
 
 ## Common Lisp
 
@@ -1269,7 +1269,7 @@ ELENA 4.1:
 // Weak array
 var stringArr := Array.allocate(5);
 stringArr[0] := "string";
-     
+
 // initialized array
 var intArray := new int[]::(1, 2, 3, 4, 5);
 
@@ -1284,7 +1284,7 @@ var intArray := new int[]::(1, 2, 3, 4, 5);
 
 //Create and initialize ArrayList
 var myAl := new system'collections'ArrayList().append:"Hello".append:"World".append:"!";
- 
+
 //Create and initialize List
 var myList := new system'collections'List().append:"Hello".append:"World".append:"!";
 
@@ -1452,7 +1452,7 @@ B{ 1 2 3 }      ! byte array
 "Hello" { } like ! { 72 101 108 108 111 }
 { 72 101 108 108 111 } "" like ! "Hello"
 
-! 
+!
 ### resizable sequences
 
 V{ 1 2 "foo" 3 }     ! vector
@@ -1468,7 +1468,7 @@ V{ 1 2 3 } { 4 5 6 } append! ! V{ 1 2 3 4 5 6 }
 ! Sequences are stacks
 V{ 1 2 3 } pop ! 3
 
-! 
+!
 ### associative mappings
 
 { { "hamburger" 150 } { "soda" 99 } { "fries" 99 } } ! alist
@@ -1478,16 +1478,16 @@ H{ { 1 "a" } { 2 "b" } } ! hash table
 3 "c" H{ { 1 "a" } { 2 "b" } } [ set-at ] keep
 ! H{ { 1 "a" } { 2 "b" } { "c" 3 } }
 
-! 
+!
 ### linked lists
 
 T{ cons-state f 1 +nil+ }               ! literal list syntax
 T{ cons-state { car 1 } { cdr +nil+ } } ! literal list syntax
                                         ! with car 1 and cdr nil
-                                        
+
 ! One method of manually constructing a list
 1 2 3 4 +nil+ cons cons cons cons
-                                        
+
 1 2 2list ! convenience word for list construction
           ! T{ cons-state
           !     { car 1 }
@@ -1597,7 +1597,7 @@ dcl-create dl              \ create a double linked list
 ```forth
 include ffl/hct.fs
 
-10 hct-create ht           \ create a hashtable with initial size 10 
+10 hct-create ht           \ create a hashtable with initial size 10
 
 1 s" one"   ht hct-insert  \ ht["one"] = 1
 2 s" two"   ht hct-insert  \ ht["two"] = 2
@@ -1612,14 +1612,14 @@ include ffl/hct.fs
 
 ### Standard
 
-The only facility for a collection more organised than a collection of separately-named variables (even if with a system for the names) is the array, which is a collection of items of identical type, indexed by an integer only, definitely not by a text as in say Snobol. Thus 
+The only facility for a collection more organised than a collection of separately-named variables (even if with a system for the names) is the array, which is a collection of items of identical type, indexed by an integer only, definitely not by a text as in say Snobol. Thus
 ```Fortran
  REAL A(36)   !Declares a one-dimensional array A(1), A(2), ... A(36)
   A(1) = 1           !Assigns a value to the first element.
   A(2) = 3*A(1) + 5  !The second element gets 8.
 ```
 
-With F90 came a large expansion in the facilities for manipulating arrays. They can now have any lower bound, as in <code>REAL A(-6:+12)</code> and their size can be defined at run time, not just compile time. Further, programmer-defined data aggregates can be defined via the TYPE statement, and arrays of such types can be manipulated. However, type-matching remains rigid: all elements of an array must be of the same type. So, 
+With F90 came a large expansion in the facilities for manipulating arrays. They can now have any lower bound, as in <code>REAL A(-6:+12)</code> and their size can be defined at run time, not just compile time. Further, programmer-defined data aggregates can be defined via the TYPE statement, and arrays of such types can be manipulated. However, type-matching remains rigid: all elements of an array must be of the same type. So,
 ```Fortran
  TYPE(MIXED)           !Name the "type".
   INTEGER COUNTER        !Its content is listed.
@@ -1652,7 +1652,7 @@ This can be fixed size or dynamic, have arbitrary lower and upper bounds, have u
 
 'create fixed size array of integers
 Dim a(1 To 5) As Integer = {1, 2, 3, 4, 5}
-Print a(2), a(4) 
+Print a(2), a(4)
 
 'create empty dynamic array of doubles
 Dim b() As Double
@@ -1664,7 +1664,7 @@ Print b(0), b(1)
 'create 2 dimensional fixed size array of bytes
 Dim c(1 To 2, 1 To 2) As Byte = {{1, 2}, {3, 4}}
 Print c(1, 1), c(2,2)
-Sleep 
+Sleep
 ```
 
 
@@ -1687,7 +1687,7 @@ Sleep
 ```gambas
 Public Sub Main()
 Dim siCount As Short
-Dim cCollection As Collection = ["0": "zero", "1": "one", "2": "two", "3": "three", "4": "four", 
+Dim cCollection As Collection = ["0": "zero", "1": "one", "2": "two", "3": "three", "4": "four",
                                  "5": "five", "6": "six", "7": "seven", "8": "eight", "9": "nine"]
 
 For siCount = 0 To 9
@@ -1993,14 +1993,14 @@ main = (print . S.toList) (S.intersection setA setB)
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-Icon and Unicon have a number of different types that could be considered collections.  For more information see [[Icon%2BUnicon/Intro#Data_Types|Introduction to Icon and Unicon on Rosetta - Data Types]].  
+Icon and Unicon have a number of different types that could be considered collections.  For more information see [[Icon%2BUnicon/Intro#Data_Types|Introduction to Icon and Unicon on Rosetta - Data Types]].
 
 Several data types could be considered collections:
 
 ```Icon
 #  Creation of collections:
  s := "abccd"                                   # string, an ordered collection of characters, immutable
- c := 'abcd'                                    # cset, an unordered collection of characters, immutable 
+ c := 'abcd'                                    # cset, an unordered collection of characters, immutable
  S := set()                                     # set, an unordered collection of unique values, mutable, contents may be of any type
  T := table()                                   # table, an associative array of values accessed via unordered keys, mutable, contents may be of any type
  L := []                                        # list, an ordered collection of values indexed by position 1..n or as stack/queue, mutable, contents may be of any type
@@ -2015,7 +2015,7 @@ Adding to these collections can be accomplished as follows:
 
  s ||:= "xyz"                                   # concatenation
  c ++:= 'xyz'                                   # union
- insert(S,"abc")                                # insert 
+ insert(S,"abc")                                # insert
  T["abc"] := "xyz"                              # insert create/overwrite
  put(L,1)                                       # put (extend), also push
  R.field1 := "xyz"                              # overwrite
@@ -2043,21 +2043,21 @@ J will, when possible without losing significance of the original value, implici
 
 ```j
    c =: 0 10 20 30 40 NB.  A collection
- 
+
    c, 50              NB.  Append 50 to the collection
 0 10 20 30 40 50
    _20 _10 , c        NB.  Prepend _20 _10 to the collection
 _20 _10 0 10 20 30 40
-  
+
    ,~  c               NB.  Self-append
 0 10 20 30 40 0 10 20 30 40
    ,:~  c              NB.  Duplicate
 0 10 20 30 40
 0 10 20 30 40
-  
+
    30 e. c             NB.  Is 30 in the collection?
 1
-   30 i.~c             NB.  Where? 
+   30 i.~c             NB.  Where?
 3
    30 80 e. c          NB.  Don't change anything to test multiple values -- collections are native.
 1 0
@@ -2068,19 +2068,19 @@ _20 _10 0 10 20 30 40
    |.c                 NB.  Reverse the collection
 40 30 20 10 0
    1+c                 NB.  Increment the collection
-1 11 21 31 41          
+1 11 21 31 41
    c%10                NB.  Decimate the collection (divide by 10)
 0 1 2 3 4
- 
+
    {. c                NB.  Give me the first item
 0
    {: c                NB.  And the last
 40
    3{.c                NB.  Give me the first 3 items
 0 10 20
-   3}.c                NB.  Throw away the first 3 items  
+   3}.c                NB.  Throw away the first 3 items
 30 40
-   _3{.c               NB.  Give me the last 3 items 
+   _3{.c               NB.  Give me the last 3 items
 20 30 40
    _3}.c               NB.  (Guess)
 0 10
@@ -2091,7 +2091,7 @@ _20 _10 0 10 20 30 40
    exists_map_  =:  verb def 'y e. keys'&boxopen
 
    exists_map_ 'bad key'
-0 
+0
    exists_map_ 'two';'bad key'
 1 0
 
@@ -2147,7 +2147,7 @@ When creating a List of any kind in Java (Arraylist or LinkedList), the type of 
 List arrayList = new ArrayList();
 arrayList.add(new Integer(0));
 // alternative with primitive autoboxed to an Integer object automatically
-arrayList.add(0); 
+arrayList.add(0);
 
 //other features of ArrayList
 //define the type in the arraylist, you can substitute a proprietary class in the "<>"
@@ -2368,7 +2368,7 @@ speak of the operation ".[0] = 10" as simply a filter that sets the element at 0
 
 ## Julia
 
-Julia has a wide variety of collections, including vectors, matrices, lists of Any data type, associative arrays, and bitsets. 
+Julia has a wide variety of collections, including vectors, matrices, lists of Any data type, associative arrays, and bitsets.
 There is a slicing notation and list comprehensions similar to those in Python, but the base index is by default 1, not 0. In Julia, a collection is a just variable length array:
 
 ```julia
@@ -2612,7 +2612,7 @@ Module CheckStack {
       \\ we can make a new stack merging other stacks
       A=Stack(A, stack:=5000,6000,7000)
       Print Len(A)=10
-      Stack A { 
+      Stack A {
             Shift 1,-Len(A)  ' Reverse order
             Stack ' Display
       }
@@ -2620,7 +2620,7 @@ Module CheckStack {
       Print Len(A)=2
       Flush  ' empty current stack
       Stack A  ' dump A to current stack
-      Print Stack.Size=2, Len(A)=0    
+      Print Stack.Size=2, Len(A)=0
 }
 CheckStack
 
@@ -2690,7 +2690,7 @@ Module Sets {
       }
       \\ sort is a Quick sort
       Sort Descending A as number
-      Print A   ' 40 20 10 
+      Print A   ' 40 20 10
       \\ For no unique keys
       \\ we can't delete from anywhere.
       \\ we can drop some keys from the end only
@@ -2735,7 +2735,7 @@ Module GetC {
       Method c, "Add", 100, "Hello"
       Method c, "Add", 2000, "There"
       \\ add a decimal number
-      
+
       Method c, "Add", aDecimal, "Zero"
       Method c, "count" as count
       Print count =3  ' we have three members
@@ -2874,25 +2874,25 @@ Sample Usage:
 ```MATLAB>>
  A = {2,'TPS Report'} %Declare cell-array and initialize
 
-A = 
+A =
 
     [2]    'TPS Report'
 
 >> A{2} = struct('make','honda','year',2003)
 
-A = 
+A =
 
     [2]    [1x1 struct]
 
 >> A{3} = {3,'HOVA'} %Create and assign A{3}
 
-A = 
+A =
 
     [2]    [1x1 struct]    {1x2 cell}
 
 >> A{2} %Get A{2}
 
-ans = 
+ans =
 
     make: 'honda'
     year: 2003
@@ -3126,7 +3126,7 @@ void show_collection(id coll)
 int main()
 {
   @autoreleasepool {
-  
+
     // create an empty set
     NSMutableSet *set = [[NSMutableSet alloc] init];
     // populate it
@@ -3224,7 +3224,7 @@ The [http://code.google.com/p/ocaml-extlib/ extlib] also provides a type [http:/
 
 
 Collection is a class.
-Into the lang package, subclasses are : 
+Into the lang package, subclasses are :
 
    Buffer		A collection of bytes
       Mem		A mutable collection of bytes
@@ -3238,7 +3238,7 @@ Into the lang package, subclasses are :
 
 There is no Array collection : an immutable array is a list (which is immutable) an a mutable array is a ListBuffer.
 
-A List (or a Pair) can be created using the following syntax : 
+A List (or a Pair) can be created using the following syntax :
 
 
 ```Oforth
@@ -3250,7 +3250,7 @@ In order to add values to a collection, you have to use a ListBuffer (a mutable 
 
 
 ```Oforth
-ListBuffer new dup add(10) dup add("aaa") dup add(Date now) dup add(1.3) println 
+ListBuffer new dup add(10) dup add("aaa") dup add(Date now) dup add(1.3) println
 ```
 
 
@@ -3475,9 +3475,9 @@ mapput(M, "key", "value");
 
 ## Pascal
 
-Different implementations of Pascal have various containers. 
+Different implementations of Pascal have various containers.
 
-### Array 
+### Array
 
 
 ```Pascal
@@ -3489,7 +3489,7 @@ end;
 ```
 
 
-### Dynamic Array 
+### Dynamic Array
 
 
 ```Pascal
@@ -3502,7 +3502,7 @@ end;
 ```
 
 
-### Record 
+### Record
 
 
 ```Pascal
@@ -3521,7 +3521,7 @@ end;
 
 
 
-### Set 
+### Set
 
 
 ```Pascal
@@ -3538,7 +3538,7 @@ end;
 
 
 
-### String 
+### String
 
 
 ```Pascal
@@ -3550,7 +3550,7 @@ end;
 ```
 
 
-### List 
+### List
 
 {{works with|Free_Pascal}}
 {{libheader|Classes}}
@@ -3877,9 +3877,9 @@ $jaggedArray[1][1] # returns 22
 $multiArray = New-Object -TypeName "System.Object[,]" -ArgumentList 6,6
 
 for ($i = 0; $i -lt 6; $i++)
-{ 
+{
     for ($j = 0; $j -lt 6; $j++)
-    { 
+    {
         $multiArray[$i,$j] = ($i + 1) * 10 + ($j + 1)
     }
 }
@@ -3975,10 +3975,10 @@ Traditionally Prolog supports only lists.
 ```prolog
 % create a list
 L = [a,b,c,d],
- 
+
 % prepend to the list
 L2 = [before_a|L],
- 
+
 % append to the list
 append(L2, ['Hello'], L3),
 
@@ -4005,7 +4005,7 @@ Dicts can be accessed using a special notation and can be added and removed from
 % create an empty dict call 'point'
 D1 = point{},
 
-% add a value	
+% add a value
 D2 = D1.put(x, 20).put(y, 30).put(z, 20),
 
 % update a value
@@ -4037,7 +4037,7 @@ D4 = point{x:25, y:30}.
 
 ### Arrays
 
-Creating an [http://www.purebasic.com/documentation/array/index.html Array] of 10 strings (could be any type). PureBasic starts the index with element 0. 
+Creating an [http://www.purebasic.com/documentation/array/index.html Array] of 10 strings (could be any type). PureBasic starts the index with element 0.
 
 ```PureBasic
 Dim Text.s(9)
@@ -4168,7 +4168,7 @@ array(1:24, dim=c(2,3,4)) #output not shown
 
 ### Lists
 
-Lists are collections of other variables (that can include other lists).  
+Lists are collections of other variables (that can include other lists).
 
 ```R
 list(a=123, b="abc", TRUE, 1:5, c=list(d=runif(5), e=5+6))
@@ -4183,7 +4183,7 @@ $b
 [[3]]
 [1] TRUE
 [[4]]
-[1] 1 2 3 4 5 
+[1] 1 2 3 4 5
 $c
 $c$d
 [1] 0.6013157 0.5011909 0.7106448 0.3882265 0.1274939
@@ -4398,7 +4398,7 @@ primes= words(primeList)          /*the  WORDS  BIF  counts the number of blankâ
 ```
 
 The use of lists (in the above manner) is suitable for words (or numbers) that do not have
-leading, embedded, or 
+leading, embedded, or
 
 trailing blanks as part of their value.
 
@@ -4714,7 +4714,7 @@ String slices are (<code>str</code>) are slices of Unicode characters. Plain <co
 
 ### =Vector=
 
-Vectors (<code>Vec<T></code>) are a growable list type. According to the Rust documentation, you want to use a Vector if: 
+Vectors (<code>Vec<T></code>) are a growable list type. According to the Rust documentation, you want to use a Vector if:
 
 * You want to collect items up to be processed or sent elsewhere later, and don't care about any properties of the actual values being stored.
 * You want a sequence of elements in a particular order, and will only be appending to (or near) the end.
@@ -4762,14 +4762,14 @@ A doubly-linked list. According to the Rust documentation, you should use it whe
 
 ### =HashMap=
 
-A hash map implementation which uses linear probing with Robin Hood bucket stealing. According to the Rust documentation, you should use it when: 
+A hash map implementation which uses linear probing with Robin Hood bucket stealing. According to the Rust documentation, you should use it when:
 * You want to associate arbitrary keys with an arbitrary value.
 * You want a cache.
 * You want a map, with no extra functionality.
 
 ### =BTreeMap=
 
-A map based on a B-Tree. According to the Rust documentation, you should use it when: 
+A map based on a B-Tree. According to the Rust documentation, you should use it when:
 * You're interested in what the smallest or largest key-value pair is.
 * You want to find the largest or smallest key that is smaller or larger than something.
 * You want to be able to get all of the entries in order on-demand.
@@ -4777,7 +4777,7 @@ A map based on a B-Tree. According to the Rust documentation, you should use it 
 
 ### =HashSet/BTreeSet=
 
-Set implementations that use an empty tuple <code>()</code> as the value of their respective maps (and implement different methods). They should be used when: 
+Set implementations that use an empty tuple <code>()</code> as the value of their respective maps (and implement different methods). They should be used when:
 * You just want to remember which keys you've seen.
 * There is no meaningful value to associate with your keys.
 * You just want a set.
@@ -4793,7 +4793,7 @@ A priority queue implemented with a binary heap. You should use it when
 
 {{libheader|Scala}}Scala has in his run-time library a rich set set of collections. Due to use of traits is this library easily realized and consistent. Collections provide the same operations on any type where it makes sense to do so. For instance, a string is conceptually a sequence of characters. Consequently, in Scala collections, strings support all sequence operations. The same holds for arrays.
 
-The collections are available in two flavors; immutable (these have no methods to modify or update) and mutable. With these properties they are also available in concurrent version for parallel processing. Switching between sequential and parallel can easily be done by adding a .seq or .par post-fix. 
+The collections are available in two flavors; immutable (these have no methods to modify or update) and mutable. With these properties they are also available in concurrent version for parallel processing. Switching between sequential and parallel can easily be done by adding a .seq or .par post-fix.
 
 These examples were taken from a Scala REPL session. The second lines are the REPL responces.
 ```Scala
@@ -5252,12 +5252,12 @@ Dictionary (
 
 ## Tcl
 
-Tcl has 3 fundamental collection types: list, array and dictionary.  
+Tcl has 3 fundamental collection types: list, array and dictionary.
 
-A Tcl list is called an array in other languages (an integer-indexed list of values). 
+A Tcl list is called an array in other languages (an integer-indexed list of values).
 
 ```tcl
-set c [list] ;# create an empty list 
+set c [list] ;# create an empty list
 # fill it
 lappend c 10 11 13
 set c [linsert $c 2 "twelve goes here"]
@@ -5352,7 +5352,7 @@ collection   = *
            2 = banana
            3 = orange
            4 = peaches
-           5 = apple 
+           5 = apple
 
 ```
 
@@ -5397,11 +5397,11 @@ done
 ```
 
 {{works with|ksh}}
-Change 
+Change
 ```bash
 declare -A
 ```
- to 
+ to
 ```bash
 typeset -A
 ```
@@ -5452,19 +5452,19 @@ x = {'a','b'}
 y = {'b','a'}
 z = {'a','b','a'}
 ```
-                         
+
 
 
 ### Modules
-                   
-                                
+
+
 Modules are lists in a particular form used to represent
 key:value pairs, with the key being a character string.
 
 ```Ursala
 m = <'foo': 1,'bar': 2,'baz': 3>
 ```
-                         
+
 A module or any list of pairs can be reified into a function
 (a.k.a., a hash or finite map) and used in any context where a function is usable,
 assuming the keys are mutually distinct.
@@ -5496,7 +5496,7 @@ representation wherein data are stored only in the leaves at a
 constant depth.
 
 ```Ursala
-x = 
+x =
 
 [
    4:0: 'foo',
@@ -5610,7 +5610,7 @@ loColl.Add(a3)
 
 FOR EACH o IN loColl FOXOBJECT
     ? o.Name, o.Legs
-ENDFOR	
+ENDFOR
 
 DEFINE CLASS animal As Custom
 Legs = 0

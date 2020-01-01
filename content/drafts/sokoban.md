@@ -33,8 +33,8 @@ For more information, see [http://www.sokobano.de/wiki/index.php?title=Main_Page
 
 Long, long, long C99 code (plus GNU C nested functions).  Doesn't output the movement keys, instead it animates the sequence for you.  Solution is move optimized.  For an even longer solution, see [[Sokoban/C]].
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -449,8 +449,8 @@ This heavily abuses the STL, including some of the newer features like regex and
 
 This performs a breadth-first search by moves, so the results should be a move-optimal solution.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <vector>
 #include <queue>
@@ -470,7 +470,7 @@ public:
   {
     regex pattern("([^\\n]+)\\n?");
     sregex_iterator end, iter(b.begin(), b.end(), pattern);
-    
+
     int w = 0;
     vector<string> data;
     for(; iter != end; ++iter){
@@ -511,7 +511,7 @@ public:
 
   bool move(int x, int y, int dx, int dy, vector<vector<char>> &data)
   {
-    if(sData[y+dy][x+dx] == '#' || data[y+dy][x+dx] != ' ') 
+    if(sData[y+dy][x+dx] == '#' || data[y+dy][x+dx] != ' ')
       return false;
 
     data[y][x] = ' ';
@@ -630,8 +630,8 @@ ulULLulDDurrrddlULrruLLrrUruLLLulD
 {{works with|GCC 4.6}}
 Alternative version, about twice faster (about 2.1 seconds runtime), same output.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <vector>
 #include <queue>
@@ -1589,7 +1589,7 @@ defmodule Sokoban do
     dead_zone = set_dead_zone(board, goal, dirs)
     {board, player, goal, lurd, dead_zone}
   end
-  
+
   defp normalize(level) do
     board = String.split(level, "\n", trim: true)
             |> Enum.map(&String.trim_trailing &1)
@@ -1597,7 +1597,7 @@ defmodule Sokoban do
     board = Enum.map(board, &String.pad_trailing(&1, leng)) |> Enum.join
     {leng, board}
   end
-  
+
   defp check_position(board) do
     board = String.codepoints(board)
     player = Enum.find_index(board, fn c -> c in ["@", "+"] end)
@@ -1605,7 +1605,7 @@ defmodule Sokoban do
            |> Enum.filter_map(fn {c,_} -> c in [".", "+", "*"] end, fn {_,i} -> i end)
     {player, goal}
   end
-  
+
   defp set_dead_zone(board, goal, dirs) do
     wall = String.replace(board, ~r/[^#]/, " ")
            |> String.codepoints
@@ -1614,7 +1614,7 @@ defmodule Sokoban do
     corner = search_corner(wall, goal, dirs)
     set_dead_zone(wall, dirs, goal, corner, corner)
   end
-  
+
   defp set_dead_zone(wall, dirs, goal, corner, dead) do
     dead2 = Enum.reduce(corner, dead, fn pos,acc ->
               Enum.reduce(dirs, acc, fn dir,acc2 ->
@@ -1625,13 +1625,13 @@ defmodule Sokoban do
     if dead == dead2, do: :lists.usort(dead),
                     else: set_dead_zone(wall, dirs, goal, corner, dead2)
   end
-  
+
   defp replace(string, replacement) do
     Enum.reduce(replacement, string, fn {a,b},str ->
       String.replace(str, a, b)
     end)
   end
-  
+
   defp search_corner(wall, goal, dirs) do
     Enum.reduce(wall, [], fn {i,c},corner ->
       if c == "#" or i in goal do
@@ -1645,7 +1645,7 @@ defmodule Sokoban do
       end
     end)
   end
-  
+
   defp check_side(wall, dirs, pos, dir, goal, dead, acc) do
     if wall[pos] == "#" or
       count_wall(wall, pos, dirs) == 0 or
@@ -1655,11 +1655,11 @@ defmodule Sokoban do
       if pos in dead, do: acc, else: check_side(wall, dirs, pos+dir, dir, goal, dead, [pos|acc])
     end
   end
-  
+
   defp count_wall(wall, pos, dirs) do
     Enum.count(dirs, fn dir -> wall[pos + dir] == "#" end)
   end
-  
+
   defp push_box(board, pos, dir, route, goal, dead_zone) do
     pos2dir = pos + 2 * dir
     if String.at(board, pos2dir) == " " and not pos2dir in dead_zone do
@@ -1676,40 +1676,40 @@ defmodule Sokoban do
       end
     end
   end
-  
+
   defp move_player(board, pos, dir) do
     board |> replace_at(pos, " ") |> replace_at(pos+dir, "@")
   end
-  
+
   defp replace_at(str, pos, c) do
     {left, right} = String.split_at(str, pos)
     {_, right} = String.split_at(right, 1)
     left <> c <> right
     # String.slice(str, 0, pos) <> c <> String.slice(str, pos+1..-1)
   end
-  
+
   defp solved?(board, goal) do
     Enum.all?(goal, fn g -> String.at(board, g) == "$" end)
   end
-  
+
   @pattern :sokoban_pattern_set
   @queue   :sokoban_queue
-  
+
   defp start_link do
     Agent.start_link(fn -> MapSet.new end, name: @pattern)
     Agent.start_link(fn -> :queue.new end, name: @queue)
   end
-  
+
   defp visited?(board) do
     Agent.get_and_update(@pattern, fn set ->
       {board in set, MapSet.put(set, board)}
     end)
   end
-  
+
   defp queue_in(data) do
     Agent.update(@queue, fn queue -> :queue.in(data, queue) end)
   end
-  
+
   defp queue_out do
     Agent.get_and_update(@queue, fn q ->
       case :queue.out(q) do
@@ -1718,7 +1718,7 @@ defmodule Sokoban do
       end
     end)
   end
-  
+
   def solve(level) do
     {board, player, goal, lurd, dead_zone} = setup(level)
     start_link
@@ -1726,7 +1726,7 @@ defmodule Sokoban do
     queue_in({board, player, ""})
     solve(goal, lurd, dead_zone)
   end
-  
+
   defp solve(goal, lurd, dead_zone) do
     case queue_out do
       {board, pos, route} ->
@@ -1807,13 +1807,13 @@ func main() {
 #######`
     fmt.Printf("level:%s\n", level)
     fmt.Printf("solution:\n%s\n", solve(level))
-}   
-    
+}
+
 func solve(board string) string {
     buffer = make([]byte, len(board))
     width := strings.Index(board[1:], "\n") + 1
     dirs := []struct {
-        move, push string 
+        move, push string
         dPos       int
     }{
         {"u", "U", -width},
@@ -2025,7 +2025,7 @@ solveGame (field, initState) =
     goals           = map fst $ filter ((== Goal) . snd) $ assocs field
     isSolved st     = all (st !) goals
     possibleActions = [Up, Down, Left, Right]
-    
+
     -- Breadth First Search of the game tree.
     bfs :: Seq.Seq (GameState, [Action]) -> Set.Set GameState -> Maybe [Action]
     bfs queue visited =
@@ -2455,7 +2455,7 @@ class Sokoban(board: List<String>) {
                         history.add(trial)
                     }
                 }
-            }          
+            }
         }
         return "No solution"
     }
@@ -2544,7 +2544,7 @@ let do_move (x,boxes) = function
 
 let init_pos bd =
    let p = ref 0 in
-   let q = ref [] in 
+   let q = ref [] in
    let check i c =
       if c = '$' || c = '*' then q := i::!q
       else if c = '@' then p := i in (
@@ -2742,7 +2742,7 @@ MAIN: while( @ftodo and @rtodo ) {
 			my @val = map vec($level, $_, 4), @loc;
 
 			next if $val[1] & WALL or ($val[1] & BOX and $val[2] & (BOX|WALL));
-			
+
 			my $new = $level;
 			vec($new, $loc[0], 4) -= PLAYER;
 			vec($new, $loc[1], 4) += PLAYER;
@@ -2754,7 +2754,7 @@ MAIN: while( @ftodo and @rtodo ) {
 			} else {
 				$nmoves = $moves . $udlr[$dir_num];
 			}
-			
+
 			next if exists $fseen{$new};
 			$fseen{$new} = $nmoves;
 
@@ -2770,7 +2770,7 @@ MAIN: while( @ftodo and @rtodo ) {
 		use vars qw(*ftodo *fnext);
 		(*ftodo, *fnext) = (\@fnext, \@ftodo);
 	} # end FORWARD
-	
+
 	BACKWARD: {
 		my ($moves, $level, $player) = @{pop @rtodo};
 		die "<$level>" unless vec($level, $player, 4) & PLAYER;
@@ -2877,8 +2877,8 @@ sub MAIN() {
     print $level;
     say 'solution:';
     say solve($level);
-}   
- 
+}
+
 class State {
     has Str $.board;
     has Str $.sol;
@@ -2899,7 +2899,7 @@ class State {
         }
         return $new;
     }
-     
+
     method push(Int $delta --> Str) {
         my $pos := $!pos + $delta;
         my $box := $pos + $delta;
@@ -2923,7 +2923,7 @@ class State {
         return $new;
     }
 }
- 
+
 sub solve(Str $start --> Str) {
     my $board = $start;
     my $width = $board.lines[0].chars + 1;
@@ -3164,7 +3164,7 @@ end if
 ```
 
 {{out}}
-Note that a full solution in LURD format would show as 48 moves, as opposed to 
+Note that a full solution in LURD format would show as 48 moves, as opposed to
 the move-optimal solutions of other entries of 34 moves, but both are 14 pushes.
 
 ```txt
@@ -3755,7 +3755,7 @@ cpu time: 88 real time: 83 gc time: 0
 # Sokoban Game  				   #
 #--------------------------------------------------#
 
-# Game Data 
+# Game Data
 
 	aPlayer = [ :Row = 3, :Col = 4 ]
 
@@ -3788,10 +3788,10 @@ cpu time: 88 real time: 83 gc time: 0
         aLevel = aLevel1
 	nActiveLevel = 1
 
-	# For Game Restart 
-		aLevel1Copy  = aLevel1 
+	# For Game Restart
+		aLevel1Copy  = aLevel1
 		aLevel2Copy  = aLevel2
-		aPlayerCopy = aPlayer 
+		aPlayerCopy = aPlayer
 
 	C_LEVEL_ROWSCOUNT = 10
 	C_LEVEL_COLSCOUNT = 14
@@ -3811,14 +3811,14 @@ cpu time: 88 real time: 83 gc time: 0
 		nRowDiff = 0
 		nColDiff = 0
 
-	# When the player win 
+	# When the player win
 		lPlayerWin = False
 
-load "gameengine.ring"        	
+load "gameengine.ring"
 
-func main          		
+func main
 
-	oGame = New Game      	
+	oGame = New Game
 	{
 
 		title = "Sokoban"
@@ -3837,22 +3837,22 @@ func main
 				"images/door.jpg",
 				"images/box.jpg",
 				"images/boxondoor.jpg",
-				"images/player.jpg"	# Player on Door 
+				"images/player.jpg"	# Player on Door
 			]
 
 			keypress = func oGame,oSelf,nkey {
-				# Avoid getting many keys in short time 
+				# Avoid getting many keys in short time
 					if (clock() - nKeyClock) < clockspersecond()/4 return ok
 					nKeyClock = Clock()
-				Switch nkey 
+				Switch nkey
 					on Key_Esc
 						oGame.Shutdown()
-					on Key_Space 
+					on Key_Space
 						# Restart the Level
 							if nActiveLevel = 1
-								aLevel = aLevel1Copy     
-							else 
-								aLevel = aLevel2Copy     
+								aLevel = aLevel1Copy
+							else
+								aLevel = aLevel2Copy
 							ok
 							aPlayer = aPlayerCopy
 							UpdateGameMap(oGame)
@@ -3880,7 +3880,7 @@ func main
 				off
 				if lPlayerWin = False
 					if CheckWin()
-						lPlayerWin = True 
+						lPlayerWin = True
 						DisplayYouWin(oGame)
 					ok
 				ok
@@ -3894,17 +3894,17 @@ func main
 			size = 20
 			file = "fonts/pirulen.ttf"
 			text = "Level:"
-			color = rgb(0,0,0)	
-		} 
+			color = rgb(0,0,0)
+		}
                 NewButton(oGame,180,550,150,30,"Level 1",:Click1)
                 NewButton(oGame,350,550,150,30,"Level 2",:Click2)
-	}    
+	}
 
 func MoveObject oGame,nObjectType,nNewRow,nNewCol
-	lMove = False 
+	lMove = False
 	switch nObjectType
 		on  C_PLAYER
-			switch aLevel[nNewRow][nNewCol] 
+			switch aLevel[nNewRow][nNewCol]
 				on C_EMPTY
 					aLevel[aPlayer[:row]][aPlayer[:col]] = C_EMPTY
 					aLevel[nNewRow][nNewCol] = C_PLAYER
@@ -3943,7 +3943,7 @@ func MoveObject oGame,nObjectType,nNewRow,nNewCol
 					ok
 			off
 		on  C_PLAYERONDOOR
-			switch aLevel[nNewRow][nNewCol] 
+			switch aLevel[nNewRow][nNewCol]
 				on C_EMPTY
 					aLevel[aPlayer[:row]][aPlayer[:col]] = C_DOOR
 					aLevel[nNewRow][nNewCol] = C_PLAYER
@@ -3982,7 +3982,7 @@ func MoveObject oGame,nObjectType,nNewRow,nNewCol
 					ok
 			off
 		on  C_BOX
-			switch aLevel[nNewRow][nNewCol] 
+			switch aLevel[nNewRow][nNewCol]
 				on C_EMPTY
 					aLevel[aCurrentBox[:row]][aCurrentBox[:col]] = C_EMPTY
 					aLevel[nNewRow][nNewCol] = C_BOX
@@ -4017,7 +4017,7 @@ func MoveObject oGame,nObjectType,nNewRow,nNewCol
 					ok
 			off
 		on  C_BOXONDOOR
-			switch aLevel[nNewRow][nNewCol] 
+			switch aLevel[nNewRow][nNewCol]
 				on C_EMPTY
 					aLevel[aCurrentBox[:row]][aCurrentBox[:col]] = C_DOOR
 					aLevel[nNewRow][nNewCol] = C_BOX
@@ -4056,10 +4056,10 @@ func MoveObject oGame,nObjectType,nNewRow,nNewCol
 	return lMove
 
 func UpdateGameMap oGame
-	# The Map is our first object in Game Objects 
+	# The Map is our first object in Game Objects
 		oGame.aObjects[1].aMap = aLevel
 
-func PlayerType 
+func PlayerType
 	# It could be (Player) or (Player on door)
 		return aLevel[aPlayer[:row]][aPlayer[:col]]
 
@@ -4068,10 +4068,10 @@ func CheckWin
 		if find(aRow,C_DOOR) or find(aRow,C_PLAYERONDOOR)
 			return False
 		ok
-	next 
+	next
 	return True
 
-func DisplayYouWin oGame 
+func DisplayYouWin oGame
 	oGame {
           text {
                 point = 400
@@ -4110,9 +4110,9 @@ func NewButton oGame,nX,nY,nWidth,nHeight,cText,cFunc
                     MouseY = aMouseList[GE_MOUSE_Y]
                     oSelf {
                         if MouseX >= x and MouseX <= X+270 and
-                           MouseY >= y and MouseY <= Y+40        
+                           MouseY >= y and MouseY <= Y+40
                                call EventCode(oGame,oSelf)
-                        ok  
+                        ok
                     }
                 ok
             }
@@ -4120,14 +4120,14 @@ func NewButton oGame,nX,nY,nWidth,nHeight,cText,cFunc
     }
     return len(oGame.aObjects)
 
-func Click1 oGame,oSelf 
+func Click1 oGame,oSelf
 	aLevel = aLevel1
 	nActiveLevel = 1
 	aPlayer = aPlayerCopy
 	UpdateGameMap(oGame)
 	lPlayerWin = False
 
-func Click2 oGame,oSelf 
+func Click2 oGame,oSelf
 	aLevel = aLevel2
 	nActiveLevel = 2
 	aPlayer = aPlayerCopy
@@ -4169,30 +4169,30 @@ class Sokoban
                  .map(&:last)
     @board = board.join.tr(' .@#$+*', '  @#$ $')
   end
-  
+
   def pos(x, y)
     y * @nrows + x
   end
-  
+
   def push(x, y, dx, dy, board)         # modify board
     return  if board[pos(x+2*dx, y+2*dy)] != ' '
     board[pos(x     , y     )] = ' '
     board[pos(x + dx, y + dy)] = '@'
     board[pos(x+2*dx, y+2*dy)] = '$'
   end
-  
+
   def solved?(board)
     @goal.all?{|i| board[i] == '$'}
   end
-  
+
   DIRS = [[0, -1, 'u', 'U'], [ 1, 0, 'r', 'R'], [0,  1, 'd', 'D'], [-1, 0, 'l', 'L']]
   def solve
     queue = [[@board, "", @px, @py]]
     visited = Set[@board]
-    
+
     until queue.empty?
       current, csol, x, y = queue.shift
-      
+
       for dx, dy, cmove, cpush in DIRS
         work = current.dup
         case work[pos(x+dx, y+dy)]      # next character
@@ -4272,7 +4272,7 @@ class Sokoban
     @dirs = @lurd.map(&:first)
     set_dead_zone(board.tr('^#', ' '))
   end
-  
+
   def set_dead_zone(wall)
     corner = search_corner(wall)
     @dead = corner.dup
@@ -4286,7 +4286,7 @@ class Sokoban
       end
     end until size == @dead.size
   end
-  
+
   def search_corner(wall)
     wall.size.times.with_object([]) do |i, corner|
       next  if wall[i] == '#' or @goal.include?(i)
@@ -4298,7 +4298,7 @@ class Sokoban
       end
     end
   end
-  
+
   def check_side(wall, pos, dir)
     wk = []
     until wall[pos] == '#' or count_wall(wall, pos) == 0 or @goal.include?(pos)
@@ -4308,11 +4308,11 @@ class Sokoban
     end
     []
   end
-  
+
   def count_wall(wall, pos)
     @dirs.count{|dir| wall[pos + dir] == '#'}
   end
-  
+
   def push_box(pos, dir, board)
     return board  if board[pos + 2*dir] != ' '
     board[pos        ] = ' '
@@ -4320,17 +4320,17 @@ class Sokoban
     board[pos + 2*dir] = '$'
     board
   end
-  
+
   def solved?(board)
     @goal.all?{|i| board[i] == '$'}
   end
-  
+
   def solve
     queue = [[@board, "", @player]]
     # When the key doesn't exist in Hash, it subscribes a key but it returns false.
     visited = Hash.new{|h,k| h[k]=true; false}
     visited[@board]                     # first subscription
-    
+
     until queue.empty?
       board, route, pos = queue.shift
       @lurd.each do |dir, move, push|
@@ -4451,7 +4451,7 @@ set level {
 puts [solveSokoban $level]
 ```
 
-Output: 
+Output:
 ```txt
 ulULLulDDurrrddlULrruLLrrUruLLLulD
 ```

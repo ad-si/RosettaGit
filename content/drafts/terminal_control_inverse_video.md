@@ -15,7 +15,7 @@ The task is to display a word in inverse video (or reverse video) followed by a 
 
 
 ## 6502 Assembly
- 
+
 {{works with|http://vice-emu.sourceforge.net/ VICE}}
 This example has been written for the C64 and uses the STROUT BASIC routine.
 Compile with the [http://turbo.style64.org/ Turbo Macro Pro cross assembler]:
@@ -45,19 +45,19 @@ strout          = $ab1e
 ; *** main ***
 
                 *=$02a8         ; sys 680
-                
+
                 lda #<str       ; Address of the message to print - low byte
                 ldy #>str       ; Address high byte
                 jsr strout      ; Print a null terminated string.
-                rts    
-                
+                rts
+
 ; *** data ***
 
 str             .byte $12       ; the REVERSE ON control code
                                 ; see https://en.wikipedia.org/wiki/PETSCII
                 .text "reversed"
                 .byte $92       ; the REVERSE OFF control code
-                .null " normal" ; null terminated string                
+                .null " normal" ; null terminated string
 
 ```
 
@@ -69,7 +69,7 @@ str             .byte $12       ; the REVERSE ON control code
 ```Ada
 with Ada.Text_IO; use  Ada.Text_IO;
 
-procedure Reverse_Video is 
+procedure Reverse_Video is
 
    Rev_Video  : String := Ascii.ESC & "[7m";
    Norm_Video : String := Ascii.ESC & "[m";
@@ -190,7 +190,7 @@ If OpenConsole()
   PrintN("Inverse Video")
   ConsoleColor(15, 0) ;use the colors white (background) and black (forground)
   PrintN("Normal Video")
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -207,7 +207,7 @@ x$ = shell$("tput mr
 echo 'foo'")
 
 ' ---------- bar is normal --------------
-x$ = shell$("tput me     
+x$ = shell$("tput me
 echo 'bar'")
 wait
 ```
@@ -263,8 +263,8 @@ Assuming a terminal with support for ANSI escape sequences.
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -530,7 +530,7 @@ say "normal";
 ```Phix
 --
 -- demo\rosetta\Inverse_Video.exw
--- 
+--
 ### ==========================
 
 --
@@ -579,7 +579,7 @@ print "\033[7mReversed\033[m Normal"
 
 #lang racket
 (require (planet neil/charterm:3:0))
- 
+
 (with-charterm
  (charterm-clear-screen)
  (charterm-cursor 0 0)

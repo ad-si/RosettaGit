@@ -14,7 +14,7 @@ tags = []
 [[Category:Date and time]]
 
 ;Task:
-Draw a clock.  
+Draw a clock.
 
 
 More specific:
@@ -27,8 +27,8 @@ More specific:
 
 ;Key points
 * animate simple object
-* timed event 
-* polling system resources 
+* timed event
+* polling system resources
 * code clarity
 
 
@@ -41,74 +41,74 @@ More specific:
 ```ActionScript
 
 package  {
-    
+
     import flash.display.Graphics;
     import flash.display.Shape;
     import flash.display.Sprite;
     import flash.events.Event;
     import flash.events.TimerEvent;
     import flash.utils.Timer;
-    
+
     public class Clock extends Sprite {
-        
+
         // Changes of hands (in degrees) per second
         private static const HOUR_HAND_CHANGE:Number = 1 / 120;  // 360 / (60 * 60 * 12)
         private static const MINUTE_HAND_CHANGE:Number = 0.1;      // 360 / (60 * 60)
         private static const SECOND_HAND_CHANGE:Number = 6;        // 360 / 60
-        
+
         private var _timer:Timer;
-        
+
         private var _hHand:Shape;
         private var _mHand:Shape;
         private var _sHand:Shape;
-        
+
         public function Clock() {
             if ( stage ) _init();
             else addEventListener(Event.ADDED_TO_STAGE, _init);
         }
-        
+
         private function _init(e:Event = null):void {
-            
+
             var i:uint;
-            
+
             var base:Shape = new Shape(), hHand:Shape = new Shape(), mHand:Shape = new Shape();
             var sHand:Shape = new Shape(), hub:Shape = new Shape();
-            
+
             var size:Number = 500;
             var c:Number = size / 2;
             x = 30;
             y = 30;
-            
+
             var baseGraphics:Graphics = base.graphics;
-            
+
             baseGraphics.lineStyle(5, 0xEE0000);
             baseGraphics.beginFill(0xFFDDDD);
             baseGraphics.drawCircle(c, c, c);
-            
+
             var uAngle:Number = Math.PI / 30;
-            
+
             var markerStart:Number = c - 30;
             var markerEnd:Number = c - 15;
-            
+
             var markerX1:Number, markerY1:Number, markerX2:Number, markerY2:Number;
             var angle:Number, angleSin:Number, angleCos:Number;
-            
+
             baseGraphics.endFill();
-            
+
             var isMajorMarker:Boolean = true;
-            
+
             for ( i = 0; i < 60; i++ ) {
                 // Draw the markers
-                
+
                 angle = uAngle * i;
                 angleSin = Math.sin(angle);
                 angleCos = Math.cos(angle);
-                
+
                 markerX1 = c + markerStart * angleCos;
                 markerY1 = c + markerStart * angleSin;
                 markerX2 = c + markerEnd * angleCos;
                 markerY2 = c + markerEnd * angleSin;
-                
+
                 if ( i % 5 == 0 ) {
                     baseGraphics.lineStyle(3, 0x000080);
                     isMajorMarker = true;
@@ -117,64 +117,64 @@ package  {
                     baseGraphics.lineStyle(1, 0x000080);
                     isMajorMarker = false;
                 }
-                
+
                 baseGraphics.moveTo(markerX1, markerY1);
                 baseGraphics.lineTo(markerX2, markerY2);
             }
-            
+
             addChild(base);
-            
+
             sHand.graphics.lineStyle(2, 0x00BB00);
             sHand.graphics.moveTo(0, 0);
             sHand.graphics.lineTo(0, 40 - c);
             sHand.x = sHand.y = c;
-            
+
             mHand.graphics.lineStyle(8, 0x444444);
             mHand.graphics.moveTo(0, 0);
             mHand.graphics.lineTo(0, 50 - c);
             mHand.x = mHand.y = c;
-            
+
             hHand.graphics.lineStyle(8, 0x777777);
             hHand.graphics.moveTo(0, 0);
             hHand.graphics.lineTo(0, 120 - c);
             hHand.x = hHand.y = c;
-            
+
             hub.graphics.lineStyle(4, 0x664444);
             hub.graphics.beginFill(0xCC9999);
             hub.graphics.drawCircle(c, c, 5);
-            
+
             _hHand = hHand;
             _mHand = mHand;
             _sHand = sHand;
-            
+
             addChild(mHand);
             addChild(hHand);
             addChild(sHand);
             addChild(hub);
-            
+
             var date:Date = new Date();
-            
+
             // Since millisecond precision is not needed, round it up to the nearest second.
             var seconds:Number = date.seconds + ((date.milliseconds > 500) ? 1 : 0);
             var minutes:Number = date.minutes + seconds / 60;
             var hours:Number = (date.hours + minutes / 60) % 12;
-            
+
             sHand.rotation = seconds * 6;
             mHand.rotation = minutes * 6;
             hHand.rotation = hours * 30;
-            
+
             _timer = new Timer(1000);  // 1 second = 1000 ms
             _timer.addEventListener(TimerEvent.TIMER, _onTimerTick);
             _timer.start();
-            
+
         }
-        
+
         private function _onTimerTick(e:TimerEvent):void {
             _hHand.rotation += HOUR_HAND_CHANGE;
             _mHand.rotation += MINUTE_HAND_CHANGE;
             _sHand.rotation += SECOND_HAND_CHANGE;
         }
-        
+
     }
 
 }
@@ -254,7 +254,7 @@ CenterX := CenterY := floor(ClockDiameter/2) ; Center x
    pPen := Gdip_CreatePen(0xc0008000, ceil((ClockDiameter//100)*2.3)) ; 2.3 % of total diameter is our pen width
    GoSub, DrawClockMarks
    Gdip_DeletePen(pPen)
-   
+
    ; The OnMessage will let us drag the clock
    OnMessage(0x201, "WM_LBUTTONDOWN")
    UpdateLayeredWindow(hwnd1, hdc, WALeft+((WAWidth-Width)//2), WATop+((WAHeight-Height)//2), Width, Height)
@@ -264,15 +264,15 @@ sec:
 ; prepare to empty previously drawn stuff
    Gdip_SetSmoothingMode(G, 1)   ; turn off aliasing
    Gdip_SetCompositingMode(G, 1) ; set to overdraw
-   
+
 ; delete previous graphic and redraw background
    Diameter := ceil(ClockDiameter - ClockDiameter*0.18)  ; 18 % less than clock's outer diameter
-   
+
    ; delete whatever has been drawn here
    pBrush := Gdip_BrushCreateSolid(0x00000000) ; fully transparent brush 'eraser'
    Gdip_FillEllipse(G, pBrush, CenterX-(Diameter//2), CenterY-(Diameter//2),Diameter, Diameter)
    Gdip_DeleteBrush(pBrush)
-   
+
    Gdip_SetCompositingMode(G, 0) ; switch off overdraw
    pBrush := Gdip_BrushCreateSolid(0x66008000)
    Gdip_FillEllipse(G, pBrush, CenterX-(Diameter//2), CenterY-(Diameter//2),Diameter, Diameter)
@@ -280,19 +280,19 @@ sec:
    pBrush := Gdip_BrushCreateSolid(0x80008000)
    Gdip_FillEllipse(G, pBrush, CenterX-(Diameter//2), CenterY-(Diameter//2),Diameter, Diameter)
    Gdip_DeleteBrush(pBrush)
-   
+
 ; Draw HoursPointer
    Gdip_SetSmoothingMode(G, 4)   ; turn on antialiasing
-   t := A_Hour*360//12 + (A_Min*360//60)//12 +90 
+   t := A_Hour*360//12 + (A_Min*360//60)//12 +90
    R1 := ClockDiameter//2-ceil((ClockDiameter//2)*0.5) ; outer position
    pPen := Gdip_CreatePen(0xa0008000, floor((ClockDiameter/100)*3.5))
    Gdip_DrawLine(G, pPen, CenterX, CenterY
       , ceil(CenterX - (R1 * Cos(t * Atan(1) * 4 / 180)))
       , ceil(CenterY - (R1 * Sin(t * Atan(1) * 4 / 180))))
    Gdip_DeletePen(pPen)
-   
+
 ; Draw MinutesPointer
-   t := A_Min*360//60+90 
+   t := A_Min*360//60+90
    R1 := ClockDiameter//2-ceil((ClockDiameter//2)*0.25) ; outer position
    pPen := Gdip_CreatePen(0xa0008000, floor((ClockDiameter/100)*2.7))
    Gdip_DrawLine(G, pPen, CenterX, CenterY
@@ -301,14 +301,14 @@ sec:
    Gdip_DeletePen(pPen)
 
 ; Draw SecondsPointer
-   t := A_Sec*360//60+90 
+   t := A_Sec*360//60+90
    R1 := ClockDiameter//2-ceil((ClockDiameter//2)*0.2) ; outer position
    pPen := Gdip_CreatePen(0xa000FF00, floor((ClockDiameter/100)*1.2))
    Gdip_DrawLine(G, pPen, CenterX, CenterY
       , ceil(CenterX - (R1 * Cos(t * Atan(1) * 4 / 180)))
       , ceil(CenterY - (R1 * Sin(t * Atan(1) * 4 / 180))))
    Gdip_DeletePen(pPen)
-   
+
    UpdateLayeredWindow(hwnd1, hdc) ;, xPos, yPos, ClockDiameter, ClockDiameter)
 return
 
@@ -613,20 +613,20 @@ goto :clock_loop
 
 Draws a crude clock in terminal.  C99, compiled with <code>gcc -std=c99</code>.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
 #include <sys/time.h>
- 
+
 #define PI 3.14159265
 const char * shades = " .:-*ca&#%@";
- 
+
 /* distance of (x, y) from line segment (0, 0)->(x0, y0) */
 double dist(double x, double y, double x0, double y0) {
 	double l = (x * x0 + y * y0) / (x0 * x0 + y0 * y0);
- 
+
 	if (l > 1) {
 		x -= x0;
 		y -= y0;
@@ -636,48 +636,48 @@ double dist(double x, double y, double x0, double y0) {
 	}
 	return sqrt(x * x + y * y);
 }
- 
+
 enum { sec = 0, min, hur }; // for subscripts
- 
+
 void draw(int size)
 {
 #	define for_i for(int i = 0; i < size; i++)
 #	define for_j for(int j = 0; j < size * 2; j++)
- 
+
 	double angle, cx = size / 2.;
 	double sx[3], sy[3], sw[3];
 	double fade[] = { 1, .35, .35 }; /* opacity of each arm */
 	struct timeval tv;
 	struct tm *t;
- 
+
 	/* set width of each arm */
 	sw[sec] = size * .02;
 	sw[min] = size * .03;
 	sw[hur] = size * .05;
- 
+
 every_second:
 	gettimeofday(&tv, 0);
 	t = localtime(&tv.tv_sec);
- 
+
 	angle = t->tm_sec * PI / 30;
 	sy[sec] = -cx * cos(angle);
 	sx[sec] =  cx * sin(angle);
- 
+
 	angle = (t->tm_min + t->tm_sec / 60.) / 30 * PI;
 	sy[min] = -cx * cos(angle) * .8;
 	sx[min] =  cx * sin(angle) * .8;
- 
+
 	angle = (t->tm_hour + t->tm_min / 60.) / 6 * PI;
 	sy[hur] = -cx * cos(angle) * .6;
 	sx[hur] =  cx * sin(angle) * .6;
- 
+
 	printf("\033[s"); /* save cursor position */
 	for_i {
 		printf("\033[%d;0H", i);  /* goto row i, col 0 */
 		double y = i - cx;
 		for_j {
 			double x = (j - 2 * cx) / 2;
- 
+
 			int pix = 0;
 			/* calcs how far the "pixel" is from each arm and set
 			 * shade, with some anti-aliasing.  It's ghetto, but much
@@ -694,12 +694,12 @@ every_second:
 		}
 	}
 	printf("\033[u"); /* restore cursor pos so you can bg the job -- value unclear */
- 
+
 	fflush(stdout);
 	sleep(1); /* sleep 1 can at times miss a second, but will catch up next update */
 	goto every_second;
 }
- 
+
 int main(int argc, char *argv[])
 {
 	int s;
@@ -820,7 +820,7 @@ public:
 
 	GetObject( bmp, sizeof( bitmap ), &bitmap );
 	DWORD* dwpBits = new DWORD[bitmap.bmWidth * bitmap.bmHeight];
-	
+
         ZeroMemory( dwpBits, bitmap.bmWidth * bitmap.bmHeight * sizeof( DWORD ) );
 	ZeroMemory( &infoheader, sizeof( BITMAPINFO ) );
 	ZeroMemory( &fileheader, sizeof( BITMAPFILEHEADER ) );
@@ -872,14 +872,14 @@ private:
 class clock
 {
 public:
-    clock()  
+    clock()
     {
 	_bmp.create( BMP_SIZE, BMP_SIZE );
 	_bmp.clear( 100 );
 	_bmp.setPenWidth( 2 );
 	_ang = DegToRadian( 6 );
     }
-	
+
     void setNow()
     {
 	GetLocalTime( &_sysTime );
@@ -917,7 +917,7 @@ private:
     {
 	float hp = DegToRadian( ( 30.0f * static_cast<float>( _sysTime.wMinute ) ) / 60.0f );
 	int h = ( _sysTime.wHour > 12 ? _sysTime.wHour - 12 : _sysTime.wHour ) * 5;
-		
+
 	_bmp.setPenWidth( 3 );
 	_bmp.setPenColor( RGB( 0, 0, 255 ) );
 	drawHand( dc, HOUR_LEN, ( _ang * static_cast<float>( 30 + h ) ) + hp );
@@ -1182,7 +1182,7 @@ public class Clock : Form
   a# = (sec + min * 60) / 10
   move 50 50
   line 50 + sin a# * 40 50 - cos a# * 40
-  # sec  
+  # sec
   linewidth 1
   color 700
   a# = sec * 6
@@ -1215,9 +1215,9 @@ timer 0
 open System.Text.RegularExpressions
 
 let numberTemplate = """
- _     _  _     _     __ _  _       
-/ \ /|  ) _)|_||_  /   /(_)(_) * 
-\_/  | /_ _)  | _)(_) / (_) /  * 
+ _     _  _     _     __ _  _
+/ \ /|  ) _)|_||_  /   /(_)(_) *
+\_/  | /_ _)  | _)(_) / (_) /  *
 """
 let g =
     numberTemplate.Split([|'\n';'\r'|], System.StringSplitOptions.RemoveEmptyEntries)
@@ -1297,10 +1297,10 @@ CREATE PDT ( -- addr) \ bit pattern descriptors for 0..9 and colon
 : ]PDT  ( 0..9 -- addr) [CHAR] 0 - 8 * PDT + ;
 
 : BIG.TYPE ( caddr len -- )
-    8 0 
+    8 0
     DO
         CR
-        2DUP BOUNDS 
+        2DUP BOUNDS
         ?DO
             I C@ ]PDT J + C@         \ PDT char, byte# J
             2 7 DO                   \ from bit# 7 to 2
@@ -1308,9 +1308,9 @@ CREATE PDT ( -- addr) \ bit pattern descriptors for 0..9 and colon
                 IF    [char] * EMIT  \ if true emit a character
                 ELSE  SPACE          \ else print space
                 THEN
-            -1 +LOOP  DROP           
-        LOOP                       
-    LOOP  
+            -1 +LOOP  DROP
+        LOOP
+    LOOP
     2DROP ;
 
 DECIMAL
@@ -1334,8 +1334,8 @@ CREATE SECONDS  0 , 0 ,   \ 2 CELLS, holds a double integer
 : ##:    ( -- ) # SEXTAL # DECIMAL [CHAR] : HOLD  ;
 : .TIME  ( d --) <#  ##: ##: # # #> BIG.TYPE ;
 
-: CLOCK  ( -- ) 
-         DECIMAL  \ set task's local radix 
+: CLOCK  ( -- )
+         DECIMAL  \ set task's local radix
          BEGIN
             1SEC
             0 0 AT-XY  SECONDS 2@ .TIME
@@ -1479,15 +1479,15 @@ Preview:
 ```txt
 
 
- 22222   33333           1     88888           1       1    
-2     2 3     3  ::     11    8     8  ::     11      11    
-      2       3  ::    1 1    8     8  ::    1 1     1 1    
-     2        3  ::      1    8     8  ::      1       1    
-    2      333           1     88888           1       1    
-   2          3  ::      1    8     8  ::      1       1    
-  2           3  ::      1    8     8  ::      1       1    
- 2      3     3  ::      1    8     8  ::      1       1    
-2222222  33333        1111111  88888        1111111 1111111 
+ 22222   33333           1     88888           1       1
+2     2 3     3  ::     11    8     8  ::     11      11
+      2       3  ::    1 1    8     8  ::    1 1     1 1
+     2        3  ::      1    8     8  ::      1       1
+    2      333           1     88888           1       1
+   2          3  ::      1    8     8  ::      1       1
+  2           3  ::      1    8     8  ::      1       1
+ 2      3     3  ::      1    8     8  ::      1       1
+2222222  33333        1111111  88888        1111111 1111111
 
 
 ```
@@ -1541,7 +1541,7 @@ For x = 0 To 174 Step 6
     Line clockdial, (x0 - x1, y0 - y1) - (x0 - x2, y0 - y2), 0
 Next
 
-'draw clock 
+'draw clock
 Do
     sys_time = Time
     hours   = (sys_time[0] - Asc("0")) * 10 + sys_time[1] - Asc("0")
@@ -1666,7 +1666,7 @@ if not $os.startsWith( 'Windows' )
 
   __   __     __   __          __
   __/ /  / .  __/    / . /__/    /
-/__  /__/ . /__     / .    /    / 
+/__  /__/ . /__     / .    /    /
 
 ```
 
@@ -1805,7 +1805,7 @@ The following html file, 'clock.html', should be in the same folder as the wsclo
       console.log( "CONNECTED" );
       ws.send( "READY" );
     };
-    /*ws.onclose = function( e ) { 
+    /*ws.onclose = function( e ) {
       console.log( "DISCONNECTED" );
     };*/
     ws.onmessage = function( e ) {
@@ -1854,7 +1854,7 @@ The following html file, 'clock.html', should be in the same folder as the wsclo
 
 <body>
     <h2>Clock</h2>
-	
+
   <canvas id="rim" width="512" height="512" style="position: absolute; left: 0; top: 0; z-index: 0;">
         Sorry, your browser does not support Canvas
   </canvas>
@@ -1867,7 +1867,7 @@ The following html file, 'clock.html', should be in the same folder as the wsclo
 	<canvas id="secondhand" width="512" height="512"style="position: absolute; left: 0; top: 0; z-index: 3;">
         Sorry, your browser does not support Canvas
   </canvas>
-	
+
 </body>
 </html>
 ```
@@ -2047,10 +2047,10 @@ procedure main(args)
     /xsize := /ysize := 200
     WIN := WOpen("size=" || xsize || "," || ysize, "label=Clock", "resize=on") | stop("Fenster geht nicht auf!", image(xsize), " - ", image(ysize))
     ziffernblatt()
-    
+
     repeat
     {   write(&time)
-        
+
         if *Pending(WIN) > 1 then while *Pending() > 0 do
         {   e := Event()
             ziffernblatt()
@@ -2058,19 +2058,19 @@ procedure main(args)
 
         Fg("#CFB53B")
         FillCircle(xsize/2, ysize/2, xsize/2 * 0.81)
-        Fg("black")        
+        Fg("black")
 
         clock := &clock
         sec  := clock[7:0]
         min  := clock[4:6]
         hour := clock[1:3]
-        
+
         if fontsize > 7 then
         {   #Fg("yellow")
             EraseArea(10,0, TextWidth(clock),WAttrib("fheight"))
             DrawString(10,fontsize, clock)
         }
-        
+
         draw_zeiger(hour, min, sec)
 
         WFlush()
@@ -2083,14 +2083,14 @@ procedure ziffernblatt()
         ysize := WAttrib("height")
         if xsize < ysize then ysize := xsize
         if ysize < xsize then xsize := ysize
-        
+
         EraseArea(0,0,WAttrib("width"),WAttrib("height"))
-                
+
         Fg("#CFB53B")
         FillCircle(xsize/2, ysize/2, xsize/2)
         Fg("black")
         fontsize := fontsize := 30 * xsize / 800.0
-                
+
         every i := 1 to 60 do
         {   winkel := 6 * i / 180.0 * &pi
             if i % 5 = 0 then
@@ -2111,13 +2111,13 @@ procedure ziffernblatt()
             if fontsize < 5 then if i % 5 = 0 then
             {   WAttrib("linewidth=1")
                 DrawLine(xsize/2 + laenge * xsize/2 * sin(winkel), ysize/2 - laenge * ysize/2 * cos(winkel), xsize/2 + 0.99 * xsize/2 * sin(winkel), ysize/2 - 0.99 * ysize/2 * cos(winkel))
-            }   
+            }
         }
         clock := &clock
         sec  := clock[7:0]
         min  := clock[4:6]
         hour := clock[1:3]
-        
+
         if fontsize > 7 then
         {   EraseArea(10,0, TextWidth(clock),WAttrib("fheight"))
             DrawString(10,fontsize, clock)
@@ -2128,7 +2128,7 @@ procedure ziffernblatt()
         FillCircle(xsize/2, ysize/2, 5)
         Fg("black")
         WAttrib("linewidth=2")
-    
+
         DrawCircle(xsize/2, ysize/2,5)
 
 end
@@ -2142,7 +2142,7 @@ procedure draw_zeiger(h, m, s)
     wh := 30 * ((h % 12) + m / 60.0 + s / 3600.0) / 180 * &pi
     wm := 6 * (m + s / 60.0) / 180.0 * &pi
     ws := 6 * s / 180.0 * &pi
-    
+
     draw(xsize/2 * 0.5, 5, wh) # Stundenzeiger
     draw(xsize/2 * 0.65, 3, wm) # Minutenzeiger
     draw(xsize/2 * 0.80, 1, ws) # Sekundenzeiger
@@ -2168,14 +2168,14 @@ procedure main(args)
     /xsize := /ysize := 200
     WIN := WOpen("size=" || xsize || "," || ysize, "label=Clock", "resize=on") | stop("Fenster geht nicht auf!", image(xsize), " - ", image(ysize))
     ziffernblatt()
-    
+
     TInit()
 
 #    clocker := create((right("0" || (0 to 23), 2) || ":" || right("0" || (0 to 59), 2) || ":" || right("0" || (0 to 59), 2)))  # simul_clock()
 
     repeat
     {   write(&time)
-        
+
         if *Pending(WIN) > 1 then
         {   while *Pending() > 0 do e := Event()
             ziffernblatt()
@@ -2183,13 +2183,13 @@ procedure main(args)
 
         Fg("#CFB53B")
         FillCircle(xsize/2, ysize/2, xsize/2 * 0.81)
-        Fg("black")        
+        Fg("black")
 
         clock := &clock #clock := @clocker
         sec  := clock[7:0]
         min  := clock[4:6]
         hour := clock[1:3]
-        
+
         if fontsize > 7 then
         {   altfg := Fg()
             Fg("blue")
@@ -2200,32 +2200,32 @@ procedure main(args)
             {   timezone := read(fh)
                 close(fh)
             }
-            
+
             erase := TextWidth(clock)
             erase <:= TextWidth(&date)
             erase <:= TextWidth(timezone)
 
             EraseArea(xsize/2 - erase / 2, ysize * 7 / 8, erase, WAttrib("fheight"))
             DrawString(xsize/2 - TextWidth(clock) / 2,ysize * 7 / 8 + WAttrib("fheight") - WAttrib("descent"), clock)
-            
+
             EraseArea(xsize/2 - erase / 2, ysize * 7 / 8 - WAttrib("fheight"), erase,WAttrib("fheight"))
             DrawString(xsize/2 - TextWidth(&date) / 2,ysize * 7 / 8 - WAttrib("fheight") + WAttrib("fheight") - WAttrib("descent"), &date)
-            
-            
+
+
             EraseArea(xsize/2 - erase / 2, ysize * 7 / 8 - 2 * WAttrib("fheight"), erase,WAttrib("fheight"))
             DrawString(xsize/2 - TextWidth(timezone) / 2,ysize * 7 / 8 - 2 * WAttrib("fheight") + WAttrib("fheight") - WAttrib("descent"), timezone)
-            
+
             Bg(altbg)
             Fg(altfg)
         }
-        
+
         draw_zeiger(hour, min, sec)
 
         Fg("#D4AF37")
         FillCircle(xsize/2, ysize/2, 5 * xsize / 400.0)
         Fg("black")
         WAttrib("linewidth=" || 2 * xsize / 400)
-    
+
         DrawCircle(xsize/2, ysize/2, 5 * xsize / 400.0)
 
         WAttrib("linewidth=1")
@@ -2240,21 +2240,21 @@ procedure ziffernblatt()
         ysize := WAttrib("height")
         if xsize < ysize then ysize := xsize
         if ysize < xsize then xsize := ysize
-        
+
         EraseArea(0,0,WAttrib("width"),WAttrib("height"))
-                
+
         Fg("#CFB53B")
         FillCircle(xsize/2, ysize/2, xsize/2)
         Fg("black")
         fontsize := fontsize := 30 * xsize / 800.0
         WAttrib("linewidth=1")
-        
+
         every i := 1 to 60 do
         {   winkel := 6 * i / 180.0 * &pi
             TX(xsize/2)
             TY(ysize/2)
             THeading(i * 6)
-    
+
             if i % 5 = 0 then
             {   laenge := 0.95
                 if fontsize > 15 then
@@ -2273,19 +2273,19 @@ procedure ziffernblatt()
                 if fontsize > 15 then WAttrib("linewidth=3")
                 if fontsize >  8 then WAttrib("linewidth=2")
                 if fontsize <  5 then WAttrib("linewidth=1")
-                 
+
             }
             if fontsize >= 5 then {TSkip(laenge * xsize/2); TDraw((0.99-laenge) * xsize / 2)}   #DrawLine(xsize/2 + laenge * xsize/2 * sin(winkel), ysize/2 - laenge * ysize/2 * cos(winkel), xsize/2 + 0.99 * xsize/2 * sin(winkel), ysize/2 - 0.99 * ysize/2 * cos(winkel))
             if fontsize < 5 then if i % 5 = 0 then
             {   WAttrib("linewidth=1")
                 TSkip(laenge * xsize/2); TDraw((0.99-laenge) * xsize / 2)  #DrawLine(xsize/2 + laenge * xsize/2 * sin(winkel), ysize/2 - laenge * ysize/2 * cos(winkel), xsize/2 + 0.99 * xsize/2 * sin(winkel), ysize/2 - 0.99 * ysize/2 * cos(winkel))
-            }   
+            }
         }
         clock := &clock
         sec  := clock[7:0]
         min  := clock[4:6]
         hour := clock[1:3]
-        
+
         #if fontsize > 7 then
         #{   EraseArea(10,0, TextWidth(clock),WAttrib("fheight"))
         #    DrawString(10,fontsize, clock)
@@ -2298,7 +2298,7 @@ procedure draw(zeiger, laenge, breite, winkel)
     WAttrib("linewidth=" || breite)
     TDraw(laenge)
     if zeiger == ("h" | "m" | "s") then
-    {   
+    {
         TSkip((0.05 + breite / 250.0) * xsize / 5)
         WAttrib("linewidth=1")
         TFPoly((0.05 + breite / 250.0) * xsize,3)
@@ -2309,7 +2309,7 @@ procedure draw(zeiger, laenge, breite, winkel)
         Fg("black")
     }
     WAttrib("linewidth=" || breite)
-    
+
     if zeiger == "r" then
     {   TSkip(0.025 * xsize)
         TCircle(0.05 * xsize)
@@ -2327,7 +2327,7 @@ procedure draw_zeiger(h, m, s)
     wh := 30 * ((h % 12) + m / 60.0 + s / 3600.0) #/ 180 * &pi
     wm := 6 * (m + s / 60.0) #/ 180.0 * &pi
     ws := 6 * s #/ 180.0 * &pi
-    
+
     draw("h", xsize/2 * 0.45,20 * xsize / 800, wh) # Stundenzeiger
     draw("r", xsize/2 * 0.15,20 * xsize / 800, wh - 180)
 
@@ -2370,7 +2370,7 @@ tic=: (>. draw Pass_y <.) ([: seconds 0 $ delay@1:)
 
 ```
 
-The result of 3.18... is the session time at which the example began. 
+The result of 3.18... is the session time at which the example began.
 
 ```txt
 
@@ -2549,7 +2549,7 @@ function init_clock() {
 
 
 
-###  digital 
+###  digital
 
 
 ```javascript
@@ -2584,10 +2584,10 @@ function init_clock() {
             [
                 [0, 0], [-1, 1], [-1, 7], [0, 8], [1, 7], [1, 1]
             ]
-        ];        
+        ];
 
         function Led(x, y, idx, ox, oy) {
-            // starting points in scalable units 
+            // starting points in scalable units
             this.x = x;
             this.y = y;
 
@@ -3000,7 +3000,7 @@ Graphics[{
 
 ```Matlab
   u = [0:360]*pi/180;
-  while(1) 
+  while(1)
      s = mod(now*60*24,1)*2*pi;
      plot([0,sin(s)],[0,cos(s)],'-',sin(u),cos(u),'k-');
      pause(1);
@@ -3223,7 +3223,7 @@ let () =
 -----
 
 
-###  GTK + Cairo 
+###  GTK + Cairo
 
 
 {{libheader|ocaml-cairo}}
@@ -3784,14 +3784,14 @@ my @chars = map {[ /(...)/g ]}
 while (1) {
     my @indices = map { ord($_) - ord('0') } split //,
                   sprintf("%02d:%02d:%02d", (localtime(time))[2,1,0]);
-    
+
     clear();
     for (0 .. $#chars) {
       position($x + $_, $y);
       print "@{$chars[$_]}[@indices]";
     }
     position(1, 1);
-    
+
     sleep 1;
 }
 
@@ -3804,9 +3804,9 @@ sub position { printf "\e[%d;%dH", shift, shift }
 
 ```txt
 
-     ╷ ┌─╴     ╶─┐ ┌─┐     ┌─┐ ┌─╴   
-     │ ├─┐  :  ┌─┘ │ │  :  │ │ └─┐   
-     ╵ └─┘     └─╴ └─┘     └─┘ ╶─┘   
+     ╷ ┌─╴     ╶─┐ ┌─┐     ┌─┐ ┌─╴
+     │ ├─┐  :  ┌─┘ │ │  :  │ │ └─┐
+     ╵ └─┘     └─╴ └─┘     └─┘ ╶─┘
 
 ```
 
@@ -3884,17 +3884,17 @@ end procedure
 procedure draw_clock(atom cx, cy, d)
 atom w = 2+floor(d/25)
     cdCanvasFont(cd_canvas, "Helvetica", CD_PLAIN, floor(d/15))
-    cdCanvasLineWidth(cd_canvas, w) 
-    cdCanvasArc(cd_canvas, cx, cy, d, d, 0, 360) 
+    cdCanvasLineWidth(cd_canvas, w)
+    cdCanvasArc(cd_canvas, cx, cy, d, d, 0, 360)
     d -= w+8
     w = 1+floor(d/50)
     for i=6 to 360 by 6 do
         integer h = remainder(i,30)=0
-        cdCanvasLineWidth(cd_canvas, floor(w*(1+h)/3)) 
+        cdCanvasLineWidth(cd_canvas, floor(w*(1+h)/3))
         atom a = PI-(i+90)*PI/180
         atom x1 = cos(a)*d/2, x2 = cos(a)*(d/2-w*(2+h)*.66)
         atom y1 = sin(a)*d/2, y2 = sin(a)*(d/2-w*(2+h)*.66)
-        cdCanvasLine(cd_canvas, cx+x1, cy+y1, cx+x2, cy+y2) 
+        cdCanvasLine(cd_canvas, cx+x1, cy+y1, cx+x2, cy+y2)
         if h then
             x1 = cos(a)*(d/2-w*4.5)
             y1 = sin(a)*(d/2-w*4.5)
@@ -3903,7 +3903,7 @@ atom w = 2+floor(d/25)
     end for
     atom {hour,mins,secs,msecs} = date(true)[DT_HOUR..DT_MSEC]
     if IupGetInt(hTimer,"TIME")<1000 then
-        -- (if showing once a second, always land on exact 
+        -- (if showing once a second, always land on exact
         --  seconds, ie completely ignore msecs, otherwise
         --  show smooth running (fractional) second hand.)
         secs += msecs/1000
@@ -3924,7 +3924,7 @@ integer r = floor(min(width,height)*0.9)
 integer cx = floor(width/2)
 integer cy = floor(height/2)
     cdCanvasActivate(cd_canvas)
-    cdCanvasClear(cd_canvas) 
+    cdCanvasClear(cd_canvas)
     draw_clock(cx,cy,r)
     cdCanvasFlush(cd_canvas)
     return IUP_DEFAULT
@@ -3945,7 +3945,7 @@ function map_cb(Ihandle ih)
     end if
     cdCanvasSetBackground(cd_canvas, CD_WHITE)
     cdCanvasSetForeground(cd_canvas, CD_BLACK)
-    {} = cdCanvasTextAlignment(cd_canvas, CD_CENTER) 
+    {} = cdCanvasTextAlignment(cd_canvas, CD_CENTER)
     return IUP_DEFAULT
 end function
 
@@ -4012,7 +4012,7 @@ This is an animated ASCII drawing of the "Berlin-Uhr", a clock built to display 
    (do 2
       (prin "|")
       (for I 4
-         (prin (if (> I N) "          |" " 
+         (prin (if (> I N) "          |" "
 ### ==
  |")) )
       (prinl) ) )
@@ -4059,39 +4059,39 @@ The six '#' characters in the "circle" on top toggle on/off every second. This i
                   \  ###  /
                    \_____/
 +----------+----------+----------+----------+
-| 
+|
 ### ==
- | 
+ |
 ### ==
- | 
+ |
 ### ==
  |          |
-| 
+|
 ### ==
- | 
+ |
 ### ==
- | 
+ |
 ### ==
  |          |
 +----------+----------+----------+----------+
-| 
+|
 ### ==
- | 
+ |
 ### ==
  |          |          |
-| 
+|
 ### ==
- | 
+ |
 ### ==
  |          |          |
 +-------------------------------------------+
 | = | = | # | = | = | # | = | = | # |   |   |
 | = | = | # | = | = | # | = | = | # |   |   |
 +-------------------------------------------+
-| 
+|
 ### ==
  |          |          |          |
-| 
+|
 ### ==
  |          |          |          |
 +----------+----------+----------+----------+
@@ -4153,7 +4153,7 @@ Repeat
       Circle(cx, cy, 4, c_blue)
     StopDrawing()
     SetGadgetState(#clock_gad, ImageID(#clockFace_img))
-  EndIf 
+  EndIf
 Until event = #PB_Event_CloseWindow
 ```
 
@@ -4203,7 +4203,7 @@ print secs(s)
 
 
 ==={{libheader|VPython}}===
-There is a 3D analog clock in the 
+There is a 3D analog clock in the
 [http://www.vpython.org/contents/contributed/cxvp_clock.py VPython contributed section]
 
 
@@ -4220,7 +4220,7 @@ Draws an analog clock in a new GUI window:
 (require racket/date slideshow/pict)
 
 (define (clock h m s [r 100])
-  (define (draw-hand length angle 
+  (define (draw-hand length angle
                      #:width [width 1]
                      #:color [color "black"])
     (dc (λ (dc dx dy)
@@ -4252,20 +4252,20 @@ Draws an analog clock in a new GUI window:
 
 (define f (new frame% [label "Clock"] [width 300] [height 300]))
 
-(define c 
+(define c
   (new canvas%
        [parent f]
-       [paint-callback 
+       [paint-callback
         (λ (c dc)
           (define date (current-date))
-          (draw-pict (clock (date-hour date) 
+          (draw-pict (clock (date-hour date)
                             (date-minute date)
                             (date-second date)
                             (/ (send c get-width) 2))
                      dc 0 0))]))
 
-(define t 
-  (new timer% 
+(define t
+  (new timer%
        [notify-callback (λ () (send c refresh-now))]
        [interval 1000]))
 
@@ -4281,24 +4281,24 @@ This REXX program draws a digital clock;   it shows the seconds if the terminal 
 
 The   '''$T.REX'''   program does the heavy lifting of actually creating the blocked characters.
 
-If using 
+If using
 :::* '''PC/REXX'''
 :::* '''Personal REXX'''
 :::* '''R4'''
 :::* '''ROO'''
 the color of the display can be specified.
 
-The   '''$CLOCK.REX'''   REXX program makes use of   '''$T.REX'''   REXX program which is used to display text and/or create big blocked characters. 
+The   '''$CLOCK.REX'''   REXX program makes use of   '''$T.REX'''   REXX program which is used to display text and/or create big blocked characters.
 
 The   '''$T.REX'''   REXX program is included here   ──►   [[$T.REX]].
 
 The help for the   '''$T.REX'''   REXX program is included here   ──►   [[$T.HEL]].
 
-The   '''$CLOCK.REX'''   REXX program makes use of   '''$ERR.REX'''   REXX program which is used to display error messages (via   '''$T.REX'''). 
+The   '''$CLOCK.REX'''   REXX program makes use of   '''$ERR.REX'''   REXX program which is used to display error messages (via   '''$T.REX''').
 
 The   '''$ERR'''   REXX program is included here   ──►   [[$ERR.REX]].
 
-This REXX program makes use of   '''SCRSIZE'''   REXX program (or BIF) which is used to determine the screen size of the terminal (console). 
+This REXX program makes use of   '''SCRSIZE'''   REXX program (or BIF) which is used to determine the screen size of the terminal (console).
 
 The   '''SCRSIZE.REX'''   REXX program is included here   ──►   [[SCRSIZE.REX]].
 
@@ -4370,7 +4370,7 @@ p:    return word(arg(1),1)
 syntax:!sigl=sigl;call er 13,!fid(2) !fid(3) !sigl !cal() condition('D') sourceline(!sigl)
 ```
 
-'''output''' 
+'''output'''
 
 ```txt
 
@@ -4389,7 +4389,7 @@ syntax:!sigl=sigl;call er 13,!fid(2) !fid(3) !sigl !cal() condition('D') sourcel
 
 ```
 
-'''output'''   (when the terminal screen is less then 109 bytes) 
+'''output'''   (when the terminal screen is less then 109 bytes)
 
 ```txt
 
@@ -4490,7 +4490,7 @@ Shoes.app(:title => "Berlin-Uhr Clock", :width => 209, :height => 300) do
     rect -13, 192, 105, 100, 10
     rect 110, 192, 105, 100, 10
   end.move(3,20)
-    
+
   animate(1) do
     now = Time.now
     @time.text = now.strftime("%H:%M:%S")
@@ -4502,7 +4502,7 @@ Shoes.app(:title => "Berlin-Uhr Clock", :width => 209, :height => 300) do
     11.times {|i| @mins_a[i].style(:fill => i < a ? (i%3==2 ? Red : Yellow) : Gray)}
     4.times  {|i| @mins_b[i].style(:fill => i < b ? Yellow : Gray)}
   end
-  
+
   keypress do |key|
     case key
     when :control_q, "\x11" then exit
@@ -4578,7 +4578,7 @@ se	= val(word$(a$,3,":"))
 
 ' put time on the clock - gimme a hand
 #g2 size(4)
-' second hand 
+' second hand
 n	= 60
 r	= 63
 p	= se
@@ -4807,22 +4807,22 @@ The program displays an analogue clock with three hands, updating once a second.
          (minute-angle (* mins (* 2 PI 1/60)))
          (hour-angle (* hours (* 2 PI 1/12))))
     (canvas 'create 'line ; second hand
-            100 100 
+            100 100
             (+ 100 (* 90 (sin second-angle)))
             (- 100 (* 90 (cos second-angle)))
             'width: 1 'tags: "hands")
     (canvas 'create 'line ; minute hand
-            100 100 
+            100 100
             (+ 100 (* 85 (sin minute-angle)))
             (- 100 (* 85 (cos minute-angle)))
-            'width: 3 
+            'width: 3
             'capstyle: "projecting"
             'tags: "hands")
     (canvas 'create 'line ; hour hand
-            100 100 
+            100 100
             (+ 100 (* 60 (sin hour-angle)))
             (- 100 (* 60 (cos hour-angle)))
-            'width: 7 
+            'width: 7
             'capstyle: "projecting"
             'tags: "hands"))
   (tk/after 1000 (lambda () (hands canvas))))
@@ -4838,7 +4838,7 @@ The program displays an analogue clock with three hands, updating once a second.
     (do ((h 1 (+ 1 h)))
       ((> h 12) )
       (let ((angle (- (/ PI 2) (* h PI 1/6))))
-        (canvas 'create 'text 
+        (canvas 'create 'text
                 (+ 100 (* 90 (cos angle)))
                 (- 100 (* 90 (sin angle)))
                 'text: (number->string h)
@@ -5087,7 +5087,7 @@ window origin "cc"
 sub digital_clock()
     local t$(1), void
     static as$
-    
+
     void = token(time$, t$(), "-")
 
     if t$(3) <> as$ then
@@ -5098,7 +5098,7 @@ end sub
 
 sub draw_clock(hour$, mint$, ssec$)
     local d$(1), void
-    
+
     void = token(date$, d$(), "-")
     clear window
     color 200, 255, 0

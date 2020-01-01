@@ -12,7 +12,7 @@ tags = []
 
 {{task|recursion}}
 
-Two functions are said to be mutually recursive if the first calls the second, 
+Two functions are said to be mutually recursive if the first calls the second,
 and in turn the second calls the first.
 
 Write two mutually recursive functions that compute members of the [[wp:Hofstadter sequence#Hofstadter Female and Male sequences|Hofstadter Female and Male sequences]] defined as:
@@ -27,7 +27,7 @@ M(n)&=n-F(M(n-1)), \quad n>0.
 </big>
 
 
-(If a language does not allow for a solution using mutually recursive functions 
+(If a language does not allow for a solution using mutually recursive functions
 then state this rather than give a solution by other means).
 
 
@@ -128,7 +128,7 @@ m(0 - 19): 0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 7, 8, 9, 9, 10, 11, 11, 12
 
 
 ```Ada
-with Ada.Text_Io; use Ada.Text_Io; 
+with Ada.Text_Io; use Ada.Text_Io;
 procedure Mutual_Recursion is
    function M(N : Integer) return Integer;
    function F(N : Integer) return Integer is
@@ -166,10 +166,10 @@ with Ada.Text_Io; use Ada.Text_Io;
 procedure Mutual_Recursion is
    function M(N: Natural) return Natural;
    function F(N: Natural) return Natural;
- 
+
    function M(N: Natural) return Natural is
        (if N = 0 then 0 else N – F(M(N–1)));
- 
+
    function F(N: Natural) return Natural is
        (if N =0 then 1 else N – M(F(N–1)));
 begin
@@ -180,7 +180,7 @@ begin
    for I in 0..19 loop
       Put_Line(Integer'Image(M(I)));
    end loop;
-   
+
 end Mutual_recursion;
 ```
 
@@ -252,11 +252,11 @@ PROC (INT)INT m; # ONLY required for ELLA ALGOL 68RS - an official subset OF ful
 PROC f = (INT n)INT:
   IF n = 0 THEN 1
   ELSE n - m(f(n-1)) FI;
- 
+
 m := (INT n)INT:
   IF n = 0 THEN 0
   ELSE n - f(m(n-1)) FI;
- 
+
 main:
 (
   FOR i FROM 0 TO 19 DO
@@ -335,7 +335,7 @@ end m
 -- TEST
 on run
     set xs to range(0, 19)
-    
+
     {map(f, xs), map(m, xs)}
 end run
 
@@ -354,7 +354,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -385,7 +385,7 @@ end range
 {{Out}}
 
 ```AppleScript
-{{1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6, 7, 8, 8, 9, 9, 10, 11, 11, 12}, 
+{{1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6, 7, 8, 8, 9, 9, 10, 11, 11, 12},
  {0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 7, 8, 9, 9, 10, 11, 11, 12}}
 ```
 
@@ -420,12 +420,12 @@ Return
 
 F(n)
 {
-  If (n == 0) 
+  If (n == 0)
     Return 1
   Else
     Return n - M(F(n-1))
 }
- 
+
 M(n)
 {
   If (n == 0)
@@ -433,13 +433,13 @@ M(n)
   Else
     Return n - F(M(n-1)) ;
 }
- 
+
 main()
 {
   i = 0
   While, i < 20
   {
-    male .= M(i) . "`n" 
+    male .= M(i) . "`n"
     female .= F(i) . "`n"
     i++
   }
@@ -483,8 +483,8 @@ BEGIN {
 
 ```txt
 
-$ awk -f mutual_recursion.awk 
-  1   1   2   2   3   3   4   5   5   6   6   7   8   8   9   9  10  11  11  12  13 
+$ awk -f mutual_recursion.awk
+  1   1   2   2   3   3   4   5   5   6   6   7   8   8   9   9  10  11  11  12  13
   0   0   1   2   2   3   4   4   5   6   6   7   7   8   9   9  10  11  11  12  12
 
 ```
@@ -572,9 +572,9 @@ END FUNCTION
       NEXT
       PRINT
       END
-      
+
       DEF FNf(n%) IF n% = 0 THEN = 1 ELSE = n% - FNm(FNf(n% - 1))
-      
+
       DEF FNm(n%) IF n% = 0 THEN = 0 ELSE = n% - FNf(FNm(n% - 1))
 ```
 
@@ -605,7 +605,7 @@ M sequence:
 210     LET F=1
 220   ELSE
 230     LET F=N-M(F(N-1))
-240   END IF 
+240   END IF
 250 END DEF
 260 DEF M(N)
 270   IF N=0 THEN
@@ -659,13 +659,13 @@ quit
 
 ```txt
 
-GNU bc mutual_recursion.bc 
+GNU bc mutual_recursion.bc
 bc 1.06.95
 Copyright 1991-1994, 1997, 1998, 2000, 2004, 2006 Free Software Foundation, Inc.
 This is free software with ABSOLUTELY NO WARRANTY.
-For details type `warranty'. 
-1 1 2 2 3 3 4 5 5 6 6 7 8 8 9 9 10 11 11 12 13 
-0 0 1 2 2 3 4 4 5 6 6 7 7 8 9 9 10 11 11 12 12 
+For details type `warranty'.
+1 1 2 2 3 3 4 5 5 6 6 7 8 8 9 9 10 11 11 12 13
+0 0 1 2 2 3 4 4 5 6 6 7 7 8 9 9 10 11 11 12 12
 
 ```
 
@@ -717,8 +717,8 @@ p 0.to(20).map! { n | male n }
 To let C see functions that will be used, it is enough to declare them. Normally this is done in a header file; in this example we do it directly in the code. If we do not declare them explicitly, they get an implicit declaration (if implicit declaration matches the use, everything's fine; but it is better however to write an explicit declaration)
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 /* let us declare our functions; indeed here we need
@@ -756,8 +756,8 @@ int main(void)
 
 C++ has prior declaration rules similar to those stated above for [[Mutual Recursion#C|C]], if we would use two functions. Instead here we define M and F as static (class) methods of a class, and specify the bodies inline in the declaration of the class. Inlined methods in the class can still call other methods or access fields in the class, no matter what order they are declared in, without any additional pre-declaration. This is possible because all the possible methods and fields are declared somewhere in the class declaration, which is known the first time the class declaration is parsed.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 #include <iterator>
 
@@ -889,7 +889,7 @@ shared void run() {
 
 
 ```lisp
-(declare F) ; forward reference 
+(declare F) ; forward reference
 
 (defn M [n]
   (if (zero? n)
@@ -911,10 +911,10 @@ shared void run() {
 
 F = (n) ->
   if n is 0 then 1 else n - M F n - 1
- 
+
 M = (n) ->
   if n is 0 then 0 else n - F M n - 1
- 
+
 console.log [0...20].map F
 console.log [0...20].map M
 
@@ -923,7 +923,7 @@ console.log [0...20].map M
 
 {{out}}
 <lang>
-> coffee mutual_recurse.coffee 
+> coffee mutual_recurse.coffee
 [ 1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6, 7, 8, 8, 9, 9, 10, 11, 11, 12 ]
 [ 0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 7, 8, 9, 9, 10, 11, 11, 12 ]
 
@@ -999,17 +999,17 @@ for i range 0 10:
 {{out}}
 
 ```txt
-0 1 
-0 1 
-1 2 
-2 2 
-2 3 
-3 3 
-4 4 
-4 5 
-5 5 
-6 6 
-6 6 
+0 1
+0 1
+1 2
+2 2
+2 3
+3 3
+4 4
+4 5
+5 5
+6 6
+6 6
 ```
 
 
@@ -1175,21 +1175,21 @@ ELENA 4.x :
 ```elena
 import extensions;
 import system'collections;
- 
+
 F = (n => (n == 0) ? 1 : (n - M(F(n-1))) );
 M = (n => (n == 0) ? 0 : (n - F(M(n-1))) );
- 
+
 public program()
 {
     var ra := new ArrayList();
     var rb := new ArrayList();
- 
+
     for(int i := 0, i <= 19, i += 1)
     {
         ra.append(F(i));
         rb.append(M(i))
     };
- 
+
     console.printLine(ra.asEnumerable());
     console.printLine(rb.asEnumerable())
 }
@@ -1212,9 +1212,9 @@ public program()
 ```elixir
 defmodule MutualRecursion do
   def f(0), do: 1
-  def f(n), do: n - m(f(n - 1)) 
+  def f(n), do: n - m(f(n - 1))
   def m(0), do: 0
-  def m(n), do: n - f(m(n - 1)) 
+  def m(n), do: n - f(m(n - 1))
 end
 
 IO.inspect Enum.map(0..19, fn n -> MutualRecursion.f(n) end)
@@ -1409,7 +1409,7 @@ contains
     end if
     r = n - f(m(n-1))
   end function m
-  
+
   pure recursive function f(n) result(r)
     integer :: r
     integer, intent(in) :: n
@@ -1435,15 +1435,15 @@ program testmutrec
   integer :: i
   integer, dimension(20) :: a = (/ (i, i=0,19) /), b = (/ (i, i=0,19) /)
   integer, dimension(20) :: ra, rb
-  
-  forall(i=1:20) 
+
+  forall(i=1:20)
      ra(i) = m(a(i))
      rb(i) = f(b(i))
   end forall
 
   write(*,'(20I3)') rb
   write(*,'(20I3)') ra
-  
+
 end program testmutrec
 ```
 
@@ -1476,7 +1476,7 @@ End Function
 Dim As Integer n = 24
 Print "n :";
 For i As Integer = 0 to n : Print Using "###"; i;    : Next
-Print 
+Print
 Print String(78, "-")
 Print "F :";
 For i As Integer = 0 To n : Print Using "###"; F(i); : Next
@@ -1570,9 +1570,9 @@ Haskell's definitions constructs (at the top level, or inside a <code>let</code>
 f 0 = 1
 f n | n > 0 = n - m (f $ n-1)
 
-m 0 = 0 
+m 0 = 0
 m n | n > 0 = n - f (m $ n-1)
- 
+
 main = do
        print $ map f [0..19]
        print $ map m [0..19]
@@ -1587,12 +1587,12 @@ every write(F(!arglist))   # F of all arguments
 end
 
 procedure F(n)
-if integer(n) >= 0 then 
+if integer(n) >= 0 then
    return (n = 0, 1) |  n - M(F(n-1))
 end
 
 procedure M(n)
-if integer(n) >= 0 then 
+if integer(n) >= 0 then
    return (0 = n) | n - F(M(n-1))
 end
 ```
@@ -1608,7 +1608,7 @@ mutual {
   F Z = (S Z)
   F (S n) = (S n) `minus` M(F(n))
 
-  M : Nat -> Nat 
+  M : Nat -> Nat
   M Z = Z
   M (S n) = (S n) `minus` F(M(n))
 }
@@ -1844,7 +1844,7 @@ julia> [F(i) for i = 0:19], [M(i) for i = 0:19]
 ```scala
 // version 1.0.6
 
-fun f(n: Int): Int = 
+fun f(n: Int): Int =
     when {
         n == 0 -> 1
         else   -> n - m(f(n - 1))
@@ -1862,10 +1862,10 @@ fun main(args: Array<String>) {
     for (i in 0..n) print("%3d".format(i))
     println()
     println("-".repeat(78))
-    print("F :") 
+    print("F :")
     for (i in 0..24) print("%3d".format(f(i)))
     println()
-    print("M :") 
+    print("M :")
     for (i in 0..24) print("%3d".format(m(i)))
     println()
 }
@@ -1974,15 +1974,15 @@ function F(n as long) as long
 		F =  1
 	elseif n > 0 Then
 		F = n - M(F(n - 1))
-	endif 
+	endif
 end function
- 
+
 function M(n)
 	if n = 0 Then
 		M = 0
 	elseif n > 0 Then
 		M = n - F(M(n - 1))
-	endif 
+	endif
 end function
 
 '// Hofstadter Female Male sequence demo routine
@@ -2010,12 +2010,12 @@ sub Hofstadter_Female_Male_Demo
 		out(" " + intformat(n, 2))
 	next n
 	outln
-	out("F(n) = " 
+	out("F(n) = "
 	for n = 0 to nmax
 		out(" " + intformat(F(n),2))
 	next n
 	outln
-	out("M(n) = " 
+	out("M(n) = "
 	for n = 0 to nmax
 		out(" " + intformat(M(n), 2))
 	next n
@@ -2149,14 +2149,14 @@ Module CheckSubs {
             one$=format$("{0::-3}",number)
             m(i)
             two$=format$("{0::-3}",number)
-      Next i 
+      Next i
       Print
       Print one$
       Print two$
       Sub f(x)
             if x<=0 then Push 1 : Exit sub
             f(x-1)  ' leave result to for m(x)
-            m()  
+            m()
             push x-number
       End Sub
       Sub m(x)
@@ -2164,19 +2164,19 @@ Module CheckSubs {
             m(x-1)
             f()
             push x-number
-      End Sub    
+      End Sub
 }
 CheckSubs
 
 Module Checkit {
       Function global f(n) {
             if n=0 then =1: exit
-            if n>0 then  =n-m(f(n-1))     
+            if n>0 then  =n-m(f(n-1))
       }
       Function global m(n) {
             if n=0 then =0
-            if n>0 then  =n-f(m(n-1)) 
-            
+            if n>0 then  =n-f(m(n-1))
+
       }
       Document one$, two$
       For i =0 to 20
@@ -2193,11 +2193,11 @@ Module Checkit2 {
       Group Alfa {
             function f(n) {
                   if n=0 then =1: exit
-                  if n>0 then  =n-.m(.f(n-1))     
+                  if n>0 then  =n-.m(.f(n-1))
             }
             function m(n) {
                   if n=0 then =0
-                  if n>0 then  =n-.f(.m(n-1))     
+                  if n>0 then  =n-.f(.m(n-1))
             }
       }
       Document one$, two$
@@ -2298,7 +2298,7 @@ m[n_]:=m[n]=n-f[m[n-1]]
 Example finding f(1) to f(30) and m(1) to m(30):
 
 ```Mathematica
-m /@ Range[30] 
+m /@ Range[30]
 f /@ Range[30]
 ```
 
@@ -2322,7 +2322,7 @@ function Fn = female(n)
         Fn = 1;
         return
     end
-    
+
     Fn = n - male(female(n-1));
 end
 ```
@@ -2332,12 +2332,12 @@ male.m:
 
 ```MATLAB
 function Mn = male(n)
-    
+
     if n == 0
         Mn = 0;
         return
     end
-    
+
     Mn = n - female(male(n-1));
 end
 ```
@@ -2442,9 +2442,9 @@ Ja	IS	$127
 // print 2 digits integer with trailing space to StdOut
 // reg $3 contains int to be printed
 bp	IS	$71
-0H	GREG	#0000000000203020 
+0H	GREG	#0000000000203020
 prtInt	STO	0B,buf		% initialize buffer
-	LDA	bp,buf+7	% points after LSD 
+	LDA	bp,buf+7	% points after LSD
 				% REPEAT
 1H	SUB	bp,bp,1		%  move buffer pointer
 	DIV	$3,$3,10		%  divmod (x,10)
@@ -2458,12 +2458,12 @@ prtInt	STO	0B,buf		% initialize buffer
 
 // Female function
 F	GET	$1,rJ		% save return addr
-	PBNZ	$0,1F		% if N != 0 then F N 
+	PBNZ	$0,1F		% if N != 0 then F N
 	INCL	$0,1		% F 0 = 1
 	PUT	rJ,$1		% restore return addr
 	POP	1,0		% return 1
 1H	SUBU	$3,$0,1		% N1 = N - 1
-	PUSHJ	$2,F		% do F (N - 1) 
+	PUSHJ	$2,F		% do F (N - 1)
 	ADDU	$3,$2,0		% place result in arg. reg.
 	PUSHJ	$2,M		% do M F ( N - 1)
 	PUT	rJ,$1		% restore ret addr
@@ -2527,13 +2527,13 @@ module Hofstadter
         |0 => 1
         |_ => n - M(F(n - 1))
     }
-    
+
     M(n : int) : int
     {
         |0 => 0
         |_ => n - F(M(n - 1))
     }
-    
+
     Main() : void
     {
         foreach (n in [0 .. 20]) Write("{0} ", F(n));
@@ -2626,11 +2626,11 @@ class MutualRecursion {
       m(i)->PrintLine();
     };
   }
-  
+
   function : f(n : Int) ~ Int {
     return n = 0 ? 1 : n - m(f(n - 1));
   }
-  
+
   function : m(n : Int) ~ Int {
     return n = 0 ? 0 : n - f(m(n - 1));
   }
@@ -2758,8 +2758,8 @@ The `letrec` indicates that the definitions can be recursive, and fact that we p
 Since Order is powered by the C preprocessor, definitions follow the same rule as CPP macros: they can appear in any order relative to each other as long as all are defined before the ORDER_PP block that calls them.
 
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8f                         \
 ORDER_PP_FN(8fn(8N,                             \
@@ -2844,7 +2844,7 @@ end;
 var
    i : Integer;
 
-begin 
+begin
    for i := 0 to 19 do begin
       write(F(i) : 4)
    end;
@@ -2875,8 +2875,8 @@ foreach my $sequence (\&F, \&M) {
 
 ```txt
 
-1 1 2 2 3 3 4 5 5 6 6 7 8 8 9 9 10 11 11 12 
-0 0 1 2 2 3 4 4 5 6 6 7 7 8 9 9 10 11 11 12 
+1 1 2 2 3 3 4 5 5 6 6 7 8 8 9 9 10 11 11 12
+0 0 1 2 2 3 4 4 5 6 6 7 7 8 9 9 10 11 11 12
 
 ```
 
@@ -3003,7 +3003,7 @@ M: procedure (n) returns (fixed) recursive;    /* 8/1/2010 */
 end M;
 
 F: procedure (n) returns (fixed) recursive;
-   declare n fixed; 
+   declare n fixed;
    if n <= 0 then return (1);
    else return ( n - M(F(n-1)) );
 end F;
@@ -3088,15 +3088,15 @@ function M($n) {
 
 ```prolog
 female(0,1).
-female(N,F) :- N>0, 
-	       N1 is N-1, 
+female(N,F) :- N>0,
+	       N1 is N-1,
 	       female(N1,R),
 	       male(R, R1),
 	       F is N-R1.
 
 male(0,0).
-male(N,F) :- N>0, 
-	     N1 is N-1, 
+male(N,F) :- N>0,
+	     N1 is N-1,
 	     male(N1,R),
 	     female(R, R1),
 	     F is N-R1.
@@ -3116,7 +3116,7 @@ mlist(S) :- for(X, 0, S), male(X, R), format('~d ', [R]), fail.
 
 ```txt
 | ?- flist(19).
-1 1 2 2 3 3 4 5 5 6 6 7 8 8 9 9 10 11 11 12 
+1 1 2 2 3 3 4 5 5 6 6 7 8 8 9 9 10 11 11 12
 
 no
 | ?- mlist(19).
@@ -3158,7 +3158,7 @@ Procedure F(n)
     ProcedureReturn 1
   ElseIf n > 0
     ProcedureReturn n - M(F(n - 1))
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure M(n)
@@ -3166,12 +3166,12 @@ Procedure M(n)
     ProcedureReturn 0
   ElseIf n > 0
     ProcedureReturn n - F(M(n - 1))
-  EndIf 
+  EndIf
 EndProcedure
 
 Define i
 If OpenConsole()
-  
+
   For i = 0 To 19
     Print(Str(F(i)))
     If i = 19
@@ -3179,7 +3179,7 @@ If OpenConsole()
     EndIf
     Print(", ")
   Next
-  
+
   PrintN("")
   For i = 0 To 19
     Print(Str(M(i)))
@@ -3187,8 +3187,8 @@ If OpenConsole()
       Continue
     EndIf
     Print(", ")
-  Next 
-      
+  Next
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -3276,7 +3276,7 @@ print ["F:" mold fs  crlf  "M:" mold ms]
 
 
 ```txt
-F: [1 1 2 2 3 3 4 5 5 6 6 7 8 8 9 9 10 11 11 12] 
+F: [1 1 2 2 3 3 4 5 5 6 6 7 8 8 9 9 10 11 11 12]
 M: [0 0 1 2 2 3 4 4 5 6 6 7 7 8 9 9 10 11 11 12]
 ```
 
@@ -3405,7 +3405,7 @@ Ms=  0  0  1  2  2  3  4  4  5  6  6  7  7  8  9  9 10 11 11 12 12 13 14 14 15 1
 
 
 ===with memoization, specific entry===
-This version is identical in function to the previous example, but it also can compute and 
+This version is identical in function to the previous example, but it also can compute and
 
 display a specific request (indicated by a negative number for the argument).
 
@@ -3459,18 +3459,18 @@ M(250000)= 154509
 see "F sequence : "
 for i = 0 to 20
     see "" + f(i) + " "
-next 
+next
 see nl
 see "M sequence : "
 for i = 0 to 20
     see "" + m(i) + " "
 next
- 
+
 func f n
      fr = 1
      if n != 0 fr = n - m(f(n - 1)) ok
      return fr
- 
+
 func m n
      mr = 0
      if n != 0 mr = n - f(m(n - 1)) ok
@@ -3520,12 +3520,12 @@ for i = 0 to 20
   print m(i);" ";
 next i
 end
- 
+
 function f(n)
  f = 1
  if n <> 0 then f = n - m(f(n - 1))
 end function
- 
+
 function m(n)
  m = 0
  if n <> 0 then m = n - f(m(n - 1))
@@ -3535,7 +3535,7 @@ end function
 {{out}}
 
 ```txt
-F sequence:1 1 2 2 3 3 4 5 5 6 6 7 8 8 9 9 10 11 11 12 13 
+F sequence:1 1 2 2 3 3 4 5 5 6 6 7 8 8 9 9 10 11 11 12 13
 M sequence:0 0 1 2 2 3 4 4 5 6 6 7 7 8 9 9 10 11 11 12 12
 ```
 
@@ -3591,7 +3591,7 @@ define f(n) {
   else if (n < 0) error("oops");
   return n - m(f(n - 1));
 }
-    
+
 define m(n) {
   if (n == 0) return 0;
   else if (n < 0) error("oops");
@@ -3712,7 +3712,7 @@ The <code>letrec</code> indicates that the definitions can be recursive, and fac
 $ include "seed7_05.s7i";
 
 const func integer: m (in integer: n) is forward;
- 
+
 const func integer: f (in integer: n) is func
   result
     var integer: res is 0;
@@ -3798,7 +3798,7 @@ Using block closure.
 F := [ :n |
   (n == 0)
     ifTrue: [ 1 ]
-    ifFalse: [ n - (M value: (F value: (n-1))) ]       
+    ifFalse: [ n - (M value: (F value: (n-1))) ]
 ].
 
 M := [ :n |
@@ -3833,7 +3833,7 @@ f_end
         define('m(n)') :(m_end)
 m       m = eq(n,0) 0 :s(return)
         m = n - f(m(n - 1)) :(return)
-m_end 
+m_end
 
 *       # Test and display
 L1      s1 = s1 m(i) ' ' ; s2 = s2 f(i) ' '
@@ -4215,8 +4215,8 @@ End Sub
 {{out}}
 
 ```txt
- 1  1  2  2  3  3  4  5  5  6  6  7  8  8  9  9  10  11  11  12  13 
- 0  0  1  2  2  3  4  4  5  6  6  7  7  8  9  9  10  11  11  12  12 
+ 1  1  2  2  3  3  4  5  5  6  6  7  8  8  9  9  10  11  11  12  13
+ 0  0  1  2  2  3  4  4  5  6  6  7  7  8  9  9  10  11  11  12  12
 ```
 
 
@@ -4292,7 +4292,7 @@ loop0
 
 	pop     edx
         pop     ecx
-	
+
 	inc	ecx
 	cmp	ecx, 20
 	jnz	loop0
@@ -4344,8 +4344,8 @@ CrLf(0);
 
 ```txt
 
-1 1 2 2 3 3 4 5 5 6 6 7 8 8 9 9 10 11 11 12 
-0 0 1 2 2 3 4 4 5 6 6 7 7 8 9 9 10 11 11 12 
+1 1 2 2 3 3 4 5 5 6 6 7 8 8 9 9 10 11 11 12
+0 0 1 2 2 3 4 4 5 6 6 7 7 8 9 9 10 11 11 12
 
 ```
 
@@ -4362,13 +4362,13 @@ sub F(n)
     return n - M(F(n-1))
 end sub
 
- 
+
 sub M(n)
    if n = 0 return 0
    return n - F(M(n-1))
 end sub
 
- 
+
 for i = 0 to 20
     print F(i) using "###";
 next

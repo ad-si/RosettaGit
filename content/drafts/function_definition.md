@@ -11,14 +11,14 @@ tags = []
 +++
 
 {{task|Basic language learning}}[[Category:Functions and subroutines]] [[Category:Simple]]
-A function is a body of code that returns a value. 
+A function is a body of code that returns a value.
 
 The value returned may depend on arguments provided to the function.
 
 
 ;Task:
 Write a definition of a function called "multiply" that takes two arguments and returns their product.
- 
+
 (Argument types should be chosen so as not to distract from showing how functions are created and values returned).
 
 
@@ -31,7 +31,7 @@ Write a definition of a function called "multiply" that takes two arguments and 
 
 ## 360 Assembly
 
-Linkage conventions are: register 1 : the parameter list, register 0 : the return value, 
+Linkage conventions are: register 1 : the parameter list, register 0 : the return value,
 and register 14 : the return address.
 
 ```360asm
@@ -58,12 +58,12 @@ RETURN   L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)
          XR     R15,R15            set return code
          BR     R14                return to caller
-*        
+*
 MULTPLIC EQU    *                  function MULTPLIC(X,Y)
          L      R2,0(R1)           R2=(A(X),A(Y))
-         XR     R4,R4              R4=0     
-         L      R5,0(R2)           R5=X    
-         L      R6,4(R2)           R6=Y    
+         XR     R4,R4              R4=0
+         L      R5,0(R2)           R5=X
+         L      R6,4(R2)           R6=Y
          MR     R4,R6              R4R5=R4R5*R6
          LR     R0,R5              R0=X*Y   (R0 return value)
          BR     R14                end function MULTPLIC
@@ -71,7 +71,7 @@ MULTPLIC EQU    *                  function MULTPLIC(X,Y)
 X        DS     F
 Y        DS     F
 Z        DS     F
-         YREGS  
+         YREGS
          END    DEFFUN
 ```
 
@@ -101,7 +101,7 @@ An alternative implementation that multiplies A by X and checks if A/X is zero.
 define    memory  1040
 
           JMP MAIN
- 
+
 MULTIPLY: STA memory   ; memory = A
           BEQ MUL_END  ; A = 0
           TXA          ; A = X
@@ -113,7 +113,7 @@ MUL_LOOP: DEX          ; X -= 1
           ADC memory   ; A += memory
           JMP MUL_LOOP
 MUL_END:  RTS
- 
+
 MAIN:     LDA #50
           LDX #5
           JSR MULTIPLY
@@ -131,7 +131,7 @@ mov a, #100
 mov b, #10
 call multiply
 ; at this point, the result of 100*10 = 1000 = 03e8h is stored in registers a and b
-; a = e8 
+; a = e8
 ; b = 03
 jmp $
 
@@ -239,13 +239,13 @@ multiply(real a, real b)
 
  '''begin'''
      '''comment''' Function definition;
-     
+
      '''integer''' '''procedure''' multiply(a,b);
      '''integer''' a,b;
      '''begin'''
          multiply:=a*b;
      '''end''';
-     
+
      '''integer''' c;
      c:=multiply(2,2);
      outinteger(1,c)
@@ -358,7 +358,7 @@ end
 
 Applesoft BASIC functions are unary meaning they only take one argument.  As the task asks for a multiply function which takes two arguments this poses a problem.  To get around this, the multiply function MU takes one argument as the offset into an array of parameters.
 
-Function names in Applesoft BASIC can be longer than two characters but only the first two characters are significant. Function names cannot contain any keywords.  
+Function names in Applesoft BASIC can be longer than two characters but only the first two characters are significant. Function names cannot contain any keywords.
 
 
 ```basic
@@ -410,13 +410,13 @@ szRetourLigne: .asciz "\n"
 szMessResult:  .ascii "Resultat : "      @ message result
 sMessValeur:   .fill 12, 1, ' '
                    .asciz "\n"
-/***********************   
+/***********************
 /* No Initialized data */
 /***********************/
 .bss
 
 .text
-.global main 
+.global main
 main:
     push {fp,lr}    /* save  2 registers */
 
@@ -424,7 +424,7 @@ main:
 	mov r0,#8
 	mov r1,#50
 	bl multiply             @ call function
-    ldr r1,iAdrsMessValeur                
+    ldr r1,iAdrsMessValeur
     bl conversion10S       @ call function with 2 parameter (r0,r1)
     ldr r0,iAdrszMessResult
     bl affichageMess            @ display message
@@ -434,24 +434,24 @@ main:
 100: /* end of  program */
     mov r7, #EXIT              @ request to exit program
     swi 0                       @ perform the system call
-iAdrsMessValeur: .int sMessValeur	
+iAdrsMessValeur: .int sMessValeur
 iAdrszMessResult: .int szMessResult
 /******************************************************************/
-/*   Function multiply              */ 
+/*   Function multiply              */
 /******************************************************************/
 /* r0 contains value 1 */
 /* r1 contains value 2 */
 /* r0 return résult   */
 multiply:
     mul r0,r1,r0
-    bx lr	        /* return function */	
-	
+    bx lr	        /* return function */
+
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -465,7 +465,7 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 
 
@@ -486,16 +486,16 @@ conversion10S:
     mov r4,#10   /* area length */
 1: /* conversion loop */
     bl divisionpar10 /* division  */
-    add r1,#48        /* add 48 at remainder for conversion ascii */	
+    add r1,#48        /* add 48 at remainder for conversion ascii */
     strb r1,[r2,r4]  /* store byte area r5 + position r4 */
     sub r4,r4,#1      /* previous position */
-    cmp r0,#0     
+    cmp r0,#0
     bne 1b	       /* loop if quotient not equal zéro */
     strb r5,[r2,r4]  /* store sign at current position  */
     subs r4,r4,#1   /* previous position */
     blt  100f         /* if r4 < 0  end  */
     /* else complete area with space */
-    mov r3,#' '   /* character space */	
+    mov r3,#' '   /* character space */
 2:
     strb r3,[r2,r4]  /* store  byte  */
     subs r4,r4,#1   /* previous position */
@@ -503,21 +503,21 @@ conversion10S:
 100:  /*  standard end of function  */
     pop {r0-r5}   /*restaur others registers */
     pop {fp,lr}   /* restaur des  2 registers frame et return  */
-    bx lr   
+    bx lr
 
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
-/* r0 retourne le quotient */	
+/* r0 retourne le quotient */
 /* r1 retourne le reste  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
    push {r2-r4}   /* save autres registres  */
-   mov r4,r0 
+   mov r4,r0
    ldr r3, .Ls_magic_number_10 /* r1 <- magic_number */
    smull r1, r2, r3, r0   /* r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) */
    mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
@@ -818,9 +818,10 @@ inline double multiply(double a, double b)
 
 If not only doubles, but numbers of arbitrary types are to be multiplied, a function template can be used:
 
-```cpp>template<typename Number
+```cpp
+template<typename Number>
 
-  Number multiply(Number a, Number b)
+Number multiply(Number a, Number b)
 {
    return a*b;
 }
@@ -856,7 +857,7 @@ Or with multiple arities (in the manner of the actual <tt>*</tt> function):
   ([] 1)
   ([x] x)
   ([x y] (* x y))
-  ([x y & more] 
+  ([x y & more]
     (reduce * (* x y) more)))
 
 (multiply 2 3 4 5)  ; 120
@@ -878,8 +879,8 @@ In COBOL, ''multiply'' is a reserved word, so the requirements must be relaxed t
        01  y   PIC 9(3) VALUE 2.
        01  z   PIC 9(9).
        PROCEDURE DIVISION.
-           CALL "myMultiply" USING 
-               BY CONTENT x, BY CONTENT y, 
+           CALL "myMultiply" USING
+               BY CONTENT x, BY CONTENT y,
                BY REFERENCE z.
            DISPLAY z.
            STOP RUN.
@@ -997,7 +998,7 @@ In Lisp we can express optimizations of calls to a function using compiler macro
 (define-compiler-macro multiply (&whole expr a b)
   (if (and (constantp a) (constantp b))
     (* (eval a) (eval b))
-    expr)) ;; no macro recursion if we just return expr; the job is done! 
+    expr)) ;; no macro recursion if we just return expr; the job is done!
 ```
 
 Lisp implementations do not have to honor compiler macros. Usually compilers make use of them, but evaluators do not.
@@ -1164,8 +1165,8 @@ multiply a b:
 
 
 ```dragon
-def multiply(a, b) { 
-  return a*b 
+def multiply(a, b) {
+  return a*b
 }
 ```
 
@@ -1250,7 +1251,7 @@ print res
 (multiply 1/3 666) → 222
 
 ;; a function is a lambda definition :
-multiply 
+multiply
      → (λ (_a _b) (#* _a _b))
 
 ;; The following is the same as (1) :
@@ -1262,12 +1263,12 @@ multiply
 ;; a function may be compiled
 (lib 'compile)
 (compile 'multiply "-float-verbose")
-    → 
+    →
 💡 [0]     compiling _🔶_multiply ((#* _a _b))
 ;; object code (javascript) :
 var ref,top = _blocks[_topblock];
 /* */return (
-/* */(_stack[top] *_stack[1 + top]) 
+/* */(_stack[top] *_stack[1 + top])
 /* */);
 
 multiply  → (λ (_a _b) (#🔶_multiply)) ;; compiled function
@@ -1284,7 +1285,7 @@ multiply = fn (A, B) {
     A * B
 }
 
-@public 
+@public
 run = fn () {
     io.format("~p~n", [multiply(2, 5)])
 }
@@ -1350,7 +1351,7 @@ defmodule RosettaCode do
   def multiply(x,y) do
     x * y
   end
-  
+
   def task, do: IO.puts multiply(3,5)
 end
 
@@ -1415,13 +1416,13 @@ A "docstring" can be added as follows.  This is shown by the Emacs help system a
 main() ->
 	K=multiply(3,4),
 	io :format("~p~n",[K]).
-	
+
 multiply(A,B) ->
-	case {A,B} of 
+	case {A,B} of
 		{A, B} -> A * B
 	end.
 ```
-		
+
 {{out}}
 
 ```txt
@@ -1435,14 +1436,14 @@ ok
 ## ERRE
 
 A statement function in ERRE is a '''single line''' function definition as in Fortran 77 or BASIC. These are useful in defining functions that can be expressed with a single formula. A statement function should appear in declaration part of the program. The format is simple - just type
- FUNCTION f(x,y,z,…) 
+ FUNCTION f(x,y,z,…)
     f=formula
  END FUNCTION
 
 The main features of function statement are:
 
 1) You can use relational operators, so it's possible to "compact" an IF THEN ELSE statement but not loop statements: you must use a procedure for these.
- 
+
 2) Functions can have their own identifier (integer, string, real,double).
 
 3) It's possible to declare function with no parameter: use FUNCTION f()........
@@ -1548,7 +1549,7 @@ m:      {binding the function to one of the 26 available symbol names}
 ```fantom
 class FunctionDefinition
 {
-  public static Void main () 
+  public static Void main ()
   {
     multiply := |Int a, Int b -> Int| { a * b }
     echo ("Multiply 2 and 4: ${multiply(2, 4)}")
@@ -1644,12 +1645,12 @@ end module elemFunc
 ```fortran
 program funcDemo
     use elemFunc
-    
+
     real :: a = 20.0, b = 30.0, c
     real, dimension(5) :: x = (/ 1.0, 2.0, 3.0, 4.0, 5.0 /), y = (/ 32.0, 16.0, 8.0, 4.0, 2.0 /), z
-    
+
     c = multiply(a,b)     ! works with either function definition above
-    
+
     z = multiply(x,y)     ! element-wise invocation only works with elemental function
 end program funcDemo
 ```
@@ -2053,28 +2054,28 @@ multiply := method(a,b,a*b)
 '1. Not Object Oriented Program
 
 DECLARE Multiply(N1:INT,N2:INT),INT
- 
+
 DEF A,B:INT
- 
+
 A=2:B=2
- 
+
 OPENCONSOLE
- 
+
 PRINT Multiply(A,B)
 
 PRINT
- 
-'When compiled as a console only program, a press any key to continue is automatic. 
+
+'When compiled as a console only program, a press any key to continue is automatic.
 CLOSECONSOLE
- 
+
 END
- 
+
 SUB Multiply(N1:INT,N2:INT),INT
- 
+
      DEF Product:INT
- 
+
      Product=N1*N2
- 
+
 RETURN Product
 ENDSUB
 
@@ -2127,9 +2128,9 @@ OPENCONSOLE
 
 PRINT"Sales total: ",:PRINT"$"+LTRIM$(STR$(Emp.m_SalesTotal))
 
-PRINT 
+PRINT
 
-CLOSECONSOLE 
+CLOSECONSOLE
 
 END
 
@@ -2194,8 +2195,8 @@ public class Math
 Function Declaration
 
 ```javascript
-function multiply(a, b) { 
-  return a*b; 
+function multiply(a, b) {
+  return a*b;
 }
 ```
 
@@ -2237,7 +2238,7 @@ Accessors
 var o = {
   get foo() {
     return 1;
-  }, 
+  },
   set bar(value) {
     // do things with value
   }
@@ -2405,7 +2406,7 @@ Using multiple dispatch, different functions will be invoked depending on the fu
 define multiply(a::integer,b::any) => #a * integer(#b)
 define multiply(a::decimal,b::any) => #a * decimal(#b)
 
-// Catch all signature 
+// Catch all signature
 define multiply(a::any,b::any) => decimal(#a) * decimal(#b)
 ```
 
@@ -2546,11 +2547,11 @@ Module Checkit {
       }
       Multiply 10, 5
       Print Number=50
-      
+
       Module Multiply {
             Push Number*Number
       }
-      
+
       Multiply 10, 5
       Print Number=50
       \\ push before call
@@ -2590,11 +2591,11 @@ Module Checkit {
             =a*b
       }
       Print Multiply(10, 5)=50
-      
+
       Function Multiply {
             =Number*Number
       }
-      
+
       Print Multiply(10, 5)=50
 
       Function Multiply {
@@ -2630,7 +2631,7 @@ Module Checkit {
       Print D=200, alfa=11,beta=19, Type$(D)="Decimal"
       \\ Using Match() to identify type of items at the top of stack
       Function MultiplyALot {
-            M=Stack 
+            M=Stack
             While Match("NN") {
                   mul=Number*Number
                   Stack M {
@@ -2639,7 +2640,7 @@ Module Checkit {
             }
             =Array(M)
       }
-      
+
       K=MultiplyALot(1,2,3,4,5,6,7,8,9,10)
       N=Each(K)
       While N {
@@ -2676,7 +2677,7 @@ Function List$ {
       =lambda$ A$() (x) -> {
             =A$(x)
       }
- 
+
 }
 \\ change definition/closures
 B$=List$("Hello", "Rosetta", "Function")
@@ -2827,7 +2828,7 @@ end
 
 ```txt
 
-function var int:multiply(a: var int,b: var int) = 
+function var int:multiply(a: var int,b: var int) =
     a*b;
 
 ```
@@ -3081,7 +3082,7 @@ Oberon-2 uses procedures, and has a special procedure called a "Function Procedu
 
 ```oberon2
 PROCEDURE Multiply(a, b: INTEGER): INTEGER;
- BEGIN 
+ BEGIN
     RETURN a * b;
  END Multiply;
 ```
@@ -3135,7 +3136,7 @@ If necessary, we can create a function with name multiply, but, it will just cal
 ```
 
 
-It is also possible to create a function with declared paramaters. In this case, if we define n parameters, n objects will be removed from the stack and stored into those parameters : 
+It is also possible to create a function with declared paramaters. In this case, if we define n parameters, n objects will be removed from the stack and stored into those parameters :
 
 
 ```Oforth
@@ -3196,7 +3197,7 @@ And only one definition of local named functions (with immediate calculation). T
 ```ooc
 
 multiply: func (a: Double, b: Double) -> Double {
-  a * b 
+  a * b
 }
 
 ```
@@ -3225,9 +3226,9 @@ multiply:
 ```oorexx
 
 say multiply(5, 6)
-::routine multiply  
+::routine multiply
     use arg x, y
-    return x *y 
+    return x *y
 ```
 
 
@@ -3243,7 +3244,7 @@ say multiply_long(123456789,987654321)
 ::routine multiply_long
     use arg x, y
     Numeric Digits (length(x)+length(y))
-    return x *y 
+    return x *y
 ```
 
 {{out}}
@@ -3500,7 +3501,7 @@ end PRODUCT;
 
 
 ```plsql
-FUNCTION multiply(p_arg1 NUMBER, p_arg2 NUMBER) RETURN NUMBER 
+FUNCTION multiply(p_arg1 NUMBER, p_arg2 NUMBER) RETURN NUMBER
 IS
   v_product NUMBER;
 BEGIN
@@ -3861,7 +3862,7 @@ multiply: return arg(1) * arg(2)    /*return the product of the two arguments.*/
 
 ### cleaner display
 
-Because REXX will return the same precision as the multiplicands, we can do some beautification with the resultant product. 
+Because REXX will return the same precision as the multiplicands, we can do some beautification with the resultant product.
 
 
 I.E.:             ''' 3.0 * 4.00 '''     yields the product:     '''12.000'''
@@ -4288,7 +4289,7 @@ fun multiply x y = x * y
 
 
 
-###  Ado 
+###  Ado
 
 Stata's macro language does not have functions, but commands. Output is usually saved as a "stored result" (but could also be saved in a global macro variable, in a scalar or matrix, in a dataset or simply printed to the Results window). See '''[https://www.stata.com/help.cgi?program program]''' and '''[https://www.stata.com/help.cgi?return]''' in Stata documentation.
 
@@ -4313,7 +4314,7 @@ di r(product)
 
 
 
-###  Mata 
+###  Mata
 
 Mata is the matrix language of Stata. Here is how to define a function
 
@@ -4453,7 +4454,7 @@ multiply() {
   # The return is given as a parameter to the return command
   return `expr "$1" \* "$2"`    # The backslash is required to suppress interpolation
 }
- 
+
 # Call the function
 multiply 3 4    # The function is invoked in statement context
 echo $?        # The dollarhook special variable gives the return value
@@ -4466,7 +4467,7 @@ return an exit code
 multiply() {
   return $(($1 * $2))
 }
- 
+
 multiply 5 6
 echo $?
 ```
@@ -4477,7 +4478,7 @@ echo the result
 multiply() {
   echo -n $(($1 * $2))
 }
- 
+
 echo $(multiply 5 6)
 ```
 
@@ -4515,7 +4516,7 @@ and this is the definition using pattern matching.
 multiply("a","b") = math..mul ("a","b")
 ```
 
- 
+
 
 ## V
 
@@ -4540,7 +4541,7 @@ V also allows internal bindings.
   a b *].
 ```
 
- 
+
 
 ## VBA
 
@@ -4588,7 +4589,7 @@ twosquared = multiply(2, 2)
 
 Function multiply(a As Integer, b As Integer) As Integer
     multiply = a * b
-End Function 
+End Function
 
 ```
 
@@ -4626,32 +4627,32 @@ def (multiply a b)
   a*b
 ```
 
- 
+
 
 ```python
 (multiply 3 4)
 => 12
 ```
 
- 
+
 Functions can also use keyword args.
- 
+
 
 ```python
 (multiply 3 :a 4)  # arg order doesn't matter here, but try subtract instead
 => 12
 ```
 
- 
+
 Finally, we can give parameters better keyword args using <em>aliases</em>:
- 
+
 
 ```python
 def (multiply a b|by)
   (* a b)
 ```
 
- 
+
 
 ```python
 multiply 3 :by 4
@@ -4699,21 +4700,21 @@ The <code>.type</code> directive is important for code which will go into a shar
 ```asm
 section .text
 global _start
- 
+
 _multiply_regs:
   mul ebx
   mov eax, ebx
   ret
- 
+
 _multiply_stack:
   enter 2,0
   mov eax, [esp+4]
   mov ebx, [esp+8]
   mul ebx
-  mov eax, ebx 
+  mov eax, ebx
   leave
   ret
- 
+
 _start:
   mov ax, 6  ;The number to multiply by
   mov ebx, 16 ;base number to multiply.
@@ -4803,7 +4804,7 @@ func Multiply(A, B);    \the characters in parentheses are only a comment
 int  A, B;              \the arguments are actually declared here, as integers
 return A*B;            \the default (undeclared) function type is integer
                         \no need to enclose a single statement in brackets
- 
+
 func real FloatMul(A, B); \floating point version
 real A, B;              \arguments are declared here as floating point (doubles)
 return A*B;
@@ -4821,16 +4822,16 @@ Templates are the closest things XSLT has to user defined functions. They can be
   <xsl:param name="b" select="3"/>
   <fo:block>product = <xsl:value-of select="$a * $b"/></fo:block>
 </xsl:template>
- 
+
 <xsl:call-template name="product">
   <xsl:with-param name="a">4</xsl:with-param>
   <xsl:with-param name="b">5</xsl:with-param>
 </xsl:call-template>
 ```
 
- 
+
 <xsl:call-template name="product"/>    &lt;-- using default parameters of 2 and 3 -->
- 
+
 
 ## Yorick
 
@@ -4885,6 +4886,6 @@ On the ZX Spectrum, function names are limited to one letter. Note that the func
 9950 DEF FN m(a,b)=a*b
 ```
 
- 
+
 {{omit from|GUISS}}
 {{omit from|TI-83 BASIC|Cannot define functions.}}

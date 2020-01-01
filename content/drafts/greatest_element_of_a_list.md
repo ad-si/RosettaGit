@@ -10,11 +10,11 @@ categories = []
 tags = []
 +++
 
-{{task|Arithmetic operations}} 
+{{task|Arithmetic operations}}
 [[Category:Simple]]
 
 ;Task:
-Create a function that returns the maximum value in a provided set of values, 
+Create a function that returns the maximum value in a provided set of values,
 
 where the number of values may not be known until run-time.
 
@@ -72,17 +72,17 @@ with Ada.Text_Io;
 procedure Max_Test isco
    -- substitute any array type with a scalar element
    type Flt_Array is array (Natural range <>) of Float;
-   
+
    -- Create an exception for the case of an empty array
    Empty_Array : Exception;
-   
+
    function Max(Item : Flt_Array) return Float is
       Max_Element : Float := Float'First;
    begin
-      if Item'Length = 0 then 
+      if Item'Length = 0 then
          raise Empty_Array;
       end if;
-  
+
       for I in Item'range loop
          if Item(I) > Max_Element then
             Max_Element := Item(I);
@@ -90,7 +90,7 @@ procedure Max_Test isco
       end loop;
       return Max_Element;
    end Max;
-    
+
    Buf : Flt_Array := (-275.0, -111.19, 0.0, -1234568.0, 3.14159, -3.14159);
 begin
    Ada.Text_IO.Put_Line(Float'Image(Max(Buf)));
@@ -247,7 +247,7 @@ end.
 
 ```txt
 
-          2397  
+          2397
 
 ```
 
@@ -270,7 +270,7 @@ LIST←2 4 6 3 8
 ⌈/LIST
 ```
 
-{{out}} 
+{{out}}
 ```txt
 8
 ```
@@ -315,16 +315,16 @@ on maximumByMay(f, xs)
             end if
         end |λ|
     end script
-    
+
     foldl1May(max, xs)
 end maximumByMay
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     set lstWords to ["alpha", "beta", "gamma", "delta", "epsilon", ¬
         "zeta", "eta", "theta", "iota", "kappa", "|λ|", "mu"]
-    
+
     set lstCities to [{name:"Shanghai", population:24.15}, ¬
         {name:"Karachi", population:23.5}, ¬
         {name:"Beijing", population:21.5}, ¬
@@ -332,21 +332,21 @@ on run
         {name:"Istanbul", population:14.4}, ¬
         {name:"Lagos", population:13.4}, ¬
         {name:"Tokyo", population:13.3}]
-    
+
     script population
         on |λ|(x)
             population of x
         end |λ|
     end script
-    
-    
+
+
     return catMaybes({¬
         maximumByMay(comparing(|length|), lstWords), ¬
         maximumByMay(comparing(|length|), {}), ¬
         maximumByMay(comparing(population), lstCities)})
-    
+
     --> {"epsilon", {name:"Shanghai", population:24.15}}
-    
+
 end run
 
 
@@ -442,7 +442,7 @@ on nothing(msg)
     {nothing:true, msg:msg}
 end nothing
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -530,7 +530,7 @@ sMessRank:   .fill 12, 1, ' '
                   .ascii " address (hexa) = "
 sMessAddress:   .fill 12, 1, ' '
                    .asciz "\n"
-				   
+
 tTableNumbers:    .int   50
                       .int 12
                       .int -1000
@@ -543,14 +543,14 @@ tTableNumbers:    .int   50
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                @ entry of program 
-    push {fp,lr}      @ saves 2 registers 
+.global main
+main:                @ entry of program
+    push {fp,lr}      @ saves 2 registers
 
     ldr r1,iAdrtTableNumbers
     mov r2,#0
@@ -566,25 +566,25 @@ main:                @ entry of program
 	movgt r3,r2
 	add r2,#1
 	b 1b
-	
+
 2:
     mov r0,r4
-    ldr r1,iAdrsMessValeur                
+    ldr r1,iAdrsMessValeur
     bl conversion10S       @ call conversion
     mov r0,r3
-    ldr r1,iAdrsMessRank                
+    ldr r1,iAdrsMessRank
     bl conversion10       @ call conversion
     ldr r0,iAdrtTableNumbers
     add r0,r3,lsl #2
-    ldr r1,iAdrsMessAddress                
+    ldr r1,iAdrsMessAddress
     bl conversion16       @ call conversion
     ldr r0,iAdrszMessResult
     bl affichageMess            @ display message
 
- 
 
 
-100:   @ standard end of the program 
+
+100:   @ standard end of the program
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
     mov r7, #EXIT              @ request to exit program
@@ -596,11 +596,11 @@ iAdrsMessAddress:     .int sMessAddress
 iAdrszMessResult:     .int szMessResult
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -614,55 +614,55 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 /******************************************************************/
-/*     Converting a register to hexadecimal                      */ 
+/*     Converting a register to hexadecimal                      */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 conversion16:
-    push {r1-r4,lr}    /* save registers */ 
+    push {r1-r4,lr}    /* save registers */
     mov r2,#28         @ start bit position
     mov r4,#0xF0000000    @ mask
     mov r3,r0      @ save entry value
 1:	   @ start loop
     and r0,r3,r4   @value register and mask
-    lsr r0,r2      @ move right 
+    lsr r0,r2      @ move right
     cmp r0,#10      @ compare value
-    addlt r0,#48        @ <10  ->digit	
+    addlt r0,#48        @ <10  ->digit
     addge r0,#55        @ >10  ->letter A-F
     strb r0,[r1],#1  @ store digit on area and + 1 in area address
     lsr r4,#4       @ shift mask 4 positions
     subs r2,#4         @  counter bits - 4 <= zero  ?
     bge 1b	          @  no -> loop
     @end
-    pop {r1-r4,lr}    @ restaur registres 
+    pop {r1-r4,lr}    @ restaur registres
     bx lr             @return
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 conversion10:
-    push {r1-r4,lr}    /* save registers */ 
+    push {r1-r4,lr}    /* save registers */
     mov r3,r1
     mov r2,#10
 
 1:	   @ start loop
     bl divisionpar10 @ r0 <- dividende. quotient ->r0 reste -> r1
-    add r1,#48        @ digit	
+    add r1,#48        @ digit
     strb r1,[r3,r2]  @ store digit on area
     sub r2,#1         @ previous position
     cmp r0,#0         @ stop if quotient = 0 */
     bne 1b	          @ else loop
     @ and move spaves in first on area
-    mov r1,#' '   @ space	
-2:	
+    mov r1,#' '   @ space
+2:
     strb r1,[r3,r2]  @ store space in area
     subs r2,#1       @ @ previous position
-    bge 2b           @ loop if r2 >= zéro 
+    bge 2b           @ loop if r2 >= zéro
 
-100:	
-    pop {r1-r4,lr}    @ restaur registres 
+100:
+    pop {r1-r4,lr}    @ restaur registres
     bx lr	          @return
 /***************************************************/
 /*  Converting a register to a signed decimal      */
@@ -672,10 +672,10 @@ conversion10S:
     push {r0-r4,lr}    @ save registers
     mov r2,r1       /* debut zone stockage */
     mov r3,#'+'     /* par defaut le signe est + */
-    cmp r0,#0       @ negative number ? 
+    cmp r0,#0       @ negative number ?
     movlt r3,#'-'   @ yes
     mvnlt r0,r0     @ number inversion
-    addlt r0,#1   
+    addlt r0,#1
     mov r4,#10       @ length area
 1:  @ start loop
     bl divisionpar10
@@ -683,32 +683,32 @@ conversion10S:
     strb r1,[r2,r4]  @ store digit on area
     sub r4,r4,#1      @ previous position
     cmp r0,#0          @ stop if quotient = 0
-    bne 1b	
+    bne 1b
 
-    strb r3,[r2,r4]  @ store signe 
+    strb r3,[r2,r4]  @ store signe
     subs r4,r4,#1    @ previous position
     blt  100f        @ if r4 < 0 -> end
 
-    mov r1,#' '   @ space	
+    mov r1,#' '   @ space
 2:
     strb r1,[r2,r4]  @store byte space
     subs r4,r4,#1    @ previous position
     bge 2b           @ loop if r4 > 0
-100: 
+100:
     pop {r0-r4,lr}   @ restaur registers
-    bx lr  
+    bx lr
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
    push {r2-r4}   /* save registers  */
-   mov r4,r0 
+   mov r4,r0
    ldr r3, .Ls_magic_number_10 /* r1 <- magic_number */
    smull r1, r2, r3, r0   /* r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) */
    mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
@@ -720,7 +720,7 @@ divisionpar10:
    bx lr                  /* leave function */
    .align 4
 .Ls_magic_number_10: .word 0x66666667
-	
+
 
 
 ```
@@ -745,7 +745,7 @@ print $(max arr)
 ## AutoHotkey
 
 
-###  CSV Data 
+###  CSV Data
 
 
 ```AutoHotkey
@@ -766,7 +766,7 @@ MsgBox Max = %x%
 ```
 
 
-###  True arrays 
+###  True arrays
 
 {{works with|AutoHotkey_L}}
 
@@ -1082,8 +1082,8 @@ blsq ) {88 99 77 66 55}>]
 
 This works well with floats.  Replace with double, int or what-have-you before passing a different data type.
 
-```c>#include <assert.h
-
+```c
+#include <assert.h>
 
 float max(unsigned int count, float values[]) {
      assert(count > 0);
@@ -1101,8 +1101,8 @@ The following macro can be used with any number and type of arguments, provided 
 
 {{works with|GCC}}
 
-```c>#include <stdarg.h
-
+```c
+#include <stdarg.h>
 
 #define MAX(A,...) ({ inline __typeof__ (A) _max_(__typeof__ (A) a, ...) {\
   va_list l; int i,c; const char *s = #__VA_ARGS__; __typeof__ (A) max = a;\
@@ -1125,8 +1125,8 @@ _max_((A),__VA_ARGS__);\
 A simple wrapper around the standard library function <tt>max_element()</tt>.
 Requires C++17.
 
-```cpp>#include <algorithm
-  //std::max_element
+```cpp
+#include <algorithm>  //std::max_element
 #include <iterator>   //std::begin and std::end
 #include <functional> //std::less
 
@@ -1265,9 +1265,9 @@ max2 = (list) ->
  for value in list
   maxVal = value if value > maxVal
  maxVal
- 
- 
- 
+
+
+
 # Test it
 a = [0,1,2,5,4];
 alert(max1(a)+". The answer is "+max2(a));
@@ -1304,7 +1304,7 @@ alert(max1(a)+". The answer is "+max2(a));
 
 ## Common Lisp
 
-The built-in Common Lisp function <tt>max</tt> takes the max of all its arguments. 
+The built-in Common Lisp function <tt>max</tt> takes the max of all its arguments.
 
 ```lisp
 (max 1 2 3 4)
@@ -1337,7 +1337,7 @@ BEGIN
 END Max;
 
 PROCEDURE DoMax*;
-VAR	
+VAR
 	sq: POINTER TO ARRAY OF INTEGER;
 	p: Args.Params;
 	i,n,done: INTEGER;
@@ -1403,7 +1403,7 @@ num findGreatestElement(List<num> list){
     if (element>greatestElement) {
       greatestElement = element;
     }
-  }  
+  }
   return greatestElement;
 }
 /* and this is a shorter version */
@@ -1550,7 +1550,7 @@ This function works for any value which responds to <code>[http://wiki.erights.o
 ```e
 pragma.enable("accumulator") # non-finalized syntax feature
 
-def max([first] + rest) { 
+def max([first] + rest) {
     return accum first for x in rest { _.max(x) }
 }
 ```
@@ -1630,10 +1630,10 @@ list_max = fn ([Head:Rest]) {
 
 list_max = fn ([], Res) {
   Res
-} 
+}
 fn ([Head:Rest], Max) when Head > Max {
   list_max(Rest, Head)
-} 
+}
 fn ([_Head:Rest], Max) {
   list_max(Rest, Max)
 }
@@ -1750,13 +1750,13 @@ ELENA 4.1 :
 
 ```elena
 import extensions;
- 
+
 extension op
 {
     get Maximal()
     {
         auto en := cast Enumerator(self.enumerator());
- 
+
         object maximal := nil;
         while (en.next())
         {
@@ -1764,17 +1764,17 @@ extension op
             if (nil == maximal)
             {
                 maximal := item
-            } 
+            }
             else if (maximal < item)
             {
                 maximal := item
             }
         };
- 
-        ^ maximal   
+
+        ^ maximal
     }
 }
- 
+
 public program()
 {
     console.printLine(new int[]::(1,2,3,4,20,10,9,8).Maximal)
@@ -1917,7 +1917,7 @@ a = aeval( {1,1234,62,234,12,34,6}, routine_id("biggest") )
 printf( 1, "%d\n", biggun )
 
 sequence s
-s = {"antelope", "dog", "cat", "cow", "wolf", "wolverine", "aardvark"} 
+s = {"antelope", "dog", "cat", "cow", "wolf", "wolverine", "aardvark"}
 biggun = "ant"
 a = aeval( s, routine_id("biggest") )
 printf( 1, "%s\n", {biggun} )
@@ -1970,7 +1970,7 @@ wolverine
 
 ## Excel
 
-Use the function MAX 
+Use the function MAX
 
 
 ```Excel
@@ -1989,7 +1989,7 @@ Use the function MAX
 
 =={{header|F_Sharp|F#}}==
 
-I generate a list of 10 random numbers at runtime then use F#'s built in function to find the maximum value of the list. 
+I generate a list of 10 random numbers at runtime then use F#'s built in function to find the maximum value of the list.
 
 
 ```fsharp
@@ -2005,7 +2005,7 @@ printfn "\nMax value of list is %d" (List.max G)
 
 ```txt
 
-401566008 1378437959 1806806326 2010005455 1973773308 1216833747 268836584 1963610340 2120237482 1412806752 
+401566008 1378437959 1806806326 2010005455 1973773308 1216833747 268836584 1963610340 2120237482 1412806752
 Max value of list is 2120237482
 
 ```
@@ -2041,7 +2041,7 @@ Has a built-in method to get maximum from a list.
 
 class Greatest
 {
-  public static Void main () 
+  public static Void main ()
   {
     Int[] values := [1,2,3,4,5,6,7,8,9]
     Int greatest := values.max
@@ -2084,10 +2084,10 @@ The intrinsic function <tt>maxval</tt> returns the maximum value of the elements
 
 ```fortran
 program test_maxval
- 
+
 integer,dimension(5),parameter :: x = [10,100,7,1,2]
 real,dimension(5),parameter :: y = [5.0,60.0,1.0,678.0,0.0]
- 
+
 write(*,'(I5)') maxval(x)
 write(*,'(F5.1)') maxval(y)
 
@@ -2105,7 +2105,7 @@ end program test_maxval
 ```
 
 
-The intrinsic function <tt>max</tt> accepts any number of arguments. 
+The intrinsic function <tt>max</tt> accepts any number of arguments.
 The type of these arguments can be integer, real, character, string of characters or arrays of these.
 
 ```fortran
@@ -2614,7 +2614,7 @@ end
 ```j>   >./</lang
 
 '''Example''':
-```J>   
+```J>
 ./ 1 2 3 2 1
 3
    >./''  NB.  Maximum value of an empty list = identity element (or neutral) of max = -∞
@@ -2682,7 +2682,7 @@ Math.max.apply(null, [ 0, 1, 2, 5, 4 ]); // 5
 
 
 ### ES 5 maxima beyond simple numeric data types
- 
+
 
 Math.max() serves well with simple numeric types, but for less restricted use we can write a generic '''maximumBy''' function which returns the maximum value from an array containing a series of any consistent data type, and which takes a type-specific comparison function as an argument.
 
@@ -2690,7 +2690,7 @@ Math.max() serves well with simple numeric types, but for less restricted use we
 ```JavaScript
 (function () {
 
-    // (a -> a -> Ordering) -> [a] -> a 
+    // (a -> a -> Ordering) -> [a] -> a
     function maximumBy(f, xs) {
         return xs.reduce(function (a, x) {
             return a === undefined ? x : (
@@ -2704,7 +2704,7 @@ Math.max() serves well with simple numeric types, but for less restricted use we
     //Ordering: (LT|EQ|GT)
     //  GT: 1 (or other positive n)
     //  EQ: 0
-    //  LT: -1 (or other negative n) 
+    //  LT: -1 (or other negative n)
 
     function wordSortFirst(a, b) {
         return a < b ? 1 : (a > b ? -1 : 0)
@@ -3211,7 +3211,7 @@ local values = {}
 -- Read in the first number from stdin
 local new_val = io.read"*n"
 -- Append all numbers passed in
--- until there are no more numbers (io.read'*n' = nil) 
+-- until there are no more numbers (io.read'*n' = nil)
 while new_val do
   values[#values+1] = new_val
   new_val = io.read"*n"
@@ -3237,7 +3237,7 @@ Module TestThis {
       Print Len(A)
       Print A
       Print A#max()
-      
+
       Print "Search an array"
       B=lambda->Random(1,100)
       Rem Dim A(1 to Random(1,10))<<B()
@@ -3245,10 +3245,10 @@ Module TestThis {
       Print Len(A())
       Print A()
       Print A()#max()
-      
+
       \\ #max() skip non numeric values
       Rem Print (1,"100",3)#max()=3
-      
+
       Print "Search an inventory list"
       Inventory C
       for i=1 to Random(1,10)
@@ -3258,7 +3258,7 @@ Module TestThis {
             \\ we can put a number as string
             if random(1,2)=1 then Append c, key:=B() else Append c, key:=str$(B())
       Next
-      
+
       \\ if inventory item is string with a number work fine
       Function MaxItem(a) {
             k=each(a,2)
@@ -3267,7 +3267,7 @@ Module TestThis {
                   \\ using stack of values
                   \\ over -equal to over 1 - copy value from 1 to top, means double the top value
                   \\ number - pop top value
-                  \\ drop -equal to drop 1 : drop top value 
+                  \\ drop -equal to drop 1 : drop top value
                   Push a(k^!): Over : If Number>val then Read Val else drop
                   Rem If a(k^!)>Val Then Val=a(k^!)
             end while
@@ -3276,7 +3276,7 @@ Module TestThis {
       Print Len(C)
       Print C
       Print MaxItem(C)
-      
+
       Print "Search a stack object"
       \\ a stack object is the same as the stack of values
       \\ which always is present
@@ -3301,7 +3301,7 @@ Module TestThis {
       }
       Print Len(D)
       Print D
-      Print MaxItemStack(D)     	
+      Print MaxItemStack(D)
 }
 TestThis
 
@@ -3330,7 +3330,7 @@ This is a built-in, polymorphic procedure in Maple.
 For numeric data in (multi-dimensional) rtables, a particularly flexible and powerful method for finding the maximum (and many other things) is the use of "rtable_scanblock".  The maximum of an Array is a built-in rtable_scanblock operation and can be found as follows.
 
 ```Maple>
- A := Array([1,2,4/5,3,11]): rtable_scanblock( A, [rtable_dims(A)], Maximum ); 
+ A := Array([1,2,4/5,3,11]): rtable_scanblock( A, [rtable_dims(A)], Maximum );
                                    11
 ```
 
@@ -3404,7 +3404,7 @@ MAXScript has a built-in function called amax(), which will return the maximum o
 The following custom function will return the maximum of the array supplied to it, or 'undefined' if an empty array is supplied.
 
 ```MAXScript
-fn MaxValue AnArray = 
+fn MaxValue AnArray =
 (
 	if AnArray.count != 0 then
 	(
@@ -3551,7 +3551,7 @@ Another way to do it.
 
 ```MontiLang
 2 5 3 12 9 9 56 2 ARR
-print 
+print
 LEN VAR l .
 0 VAR i .
 0
@@ -3585,9 +3585,9 @@ Usage:
 ```txt
 
 USER>SET V=","
- 
+
 USER>SET B="-1,-1000,1000,2.3E5,8A,""A"",F"
- 
+
 USER>W $$MV^ROSETTA(B,V)
 2.3E5
 
@@ -3654,16 +3654,16 @@ module SeqMax
     {
         $[s | s in seq].Fold(seq.First(), (x, y) => {if (x.CompareTo(y) > 0) x else y})
     }
-    
+
     Main() : void
     {
         def numbers = [1, 12, 3, -5, 6, 23];
         def letters = ['s', 'p', 'a', 'm'];
-        
+
         // using SeqMax() method (as task says to "create a function")
         WriteLine($"numbers.SeqMax() = $(numbers.SeqMax())");
         WriteLine($"letters.SeqMax() = $(letters.SeqMax())");
-        
+
         // using the already available Max() method
         WriteLine($"numbers.Max() = $(numbers.Max())");
         WriteLine($"letters.Max() = $(letters.Max())")
@@ -3734,7 +3734,7 @@ Max   Rexx:  274.457568703
 
 
 ## NewLISP
- 
+
 
 ```NewLISP
 (max 1 2 3 5 2 3 4)
@@ -3785,28 +3785,28 @@ IMPORT
   ADT:ArrayList,
   Object:Boxed,
   Out;
-  
+
 VAR
   a: ArrayList.ArrayList(Boxed.LongInt);
   max: Boxed.LongInt;
-  
-  
+
+
   PROCEDURE Max(al: ArrayList.ArrayList(Boxed.LongInt)): Boxed.LongInt;
   VAR
     i: LONGINT;
     item, max: Boxed.LongInt;
   BEGIN
     max := NEW(Boxed.LongInt,MIN(LONGINT));
-    
+
     i := 0;
     WHILE (i < al.size) DO
       item := al.Get(i);
       IF item.value > max.value THEN max := item END;
-      INC(i)  
+      INC(i)
     END;
     RETURN max
   END Max;
-  
+
 BEGIN
   a := NEW(ArrayList.ArrayList(Boxed.LongInt),5);
   a.Append(NEW(Boxed.LongInt,10));
@@ -3814,7 +3814,7 @@ BEGIN
   a.Append(NEW(Boxed.LongInt,4));
   a.Append(NEW(Boxed.LongInt,43));
   a.Append(NEW(Boxed.LongInt,9));
-  
+
   max := Max(a);
   Out.String("Max: ");Out.LongInt(max.value,4);Out.Ln
 END GreatestElement1.
@@ -3831,7 +3831,7 @@ IMPORT
   Out;
 VAR
   a: ARRAY 10 OF LONGINT;
-  
+
   PROCEDURE Max(a: ARRAY OF LONGINT): LONGINT;
   VAR
     i, max: LONGINT;
@@ -3840,7 +3840,7 @@ VAR
     FOR i := 0 TO LEN(a) - 1 DO
       IF a[i] > max THEN max := a[i] END;
     END;
-    
+
     RETURN max
   END Max;
 BEGIN
@@ -3849,7 +3849,7 @@ BEGIN
   a[2] := 4;
   a[3] := 43;
   a[4] := 9;
-  
+
   Out.String("Max: ");Out.LongInt(Max(a),4);Out.Ln
 END GreatestElement2.
 
@@ -3893,7 +3893,7 @@ which make sense a compare method (e.g. strings), that must be implemented.
 
 If there's no a known way of comparing two objects of the collection (or if the
 objects are not "NSNumber"), the the method return nil (the void object).
- 
+
 
 
 ```objc>#import <Foundation/Foundation.h
@@ -3932,7 +3932,7 @@ int main()
 {
   @autoreleasepool {
     NSArray *collection = @[@1, @2, @10, @5, @10.5];
-  
+
     NSLog(@"%@", [collection maximumValue]);
   }
   return 0;
@@ -4014,19 +4014,19 @@ Basics:
 
 -- routine that will work with any ordered collection or sets and bags containing numbers.
 ::routine listMax
-  use arg list 
+  use arg list
   items list~makearray   -- since we're dealing with different collection types, reduce to an array
   if items~isEmpty then return .nil   -- return a failure indicator.  could also raise an error, if desired
   largest = items[1]
 
- 
-  -- note, this method does call max one extra time.  This could also use the 
-  -- do i = 2 to items~size to avoid this
-  do item over items 
-     largest = max(item, largest) 
-  end  
 
-  return largest 
+  -- note, this method does call max one extra time.  This could also use the
+  -- do i = 2 to items~size to avoid this
+  do item over items
+     largest = max(item, largest)
+  end
+
+  return largest
 
 ```
 
@@ -4082,8 +4082,8 @@ vecmax(v)
 ## Pascal
 
 See [[Greatest_element_of_a_list#Delphi | Delphi]]
-{{works with | Free Pascal}} 
-or try this, for it shows the according position 
+{{works with | Free Pascal}}
+or try this, for it shows the according position
 
 ```pascal
 program GElemLIst;
@@ -4414,14 +4414,14 @@ max_list(L, V) :-
 Procedure.f Max (Array a.f(1))
    Protected last, i, ret.f
 
-   ret = a(0)   
+   ret = a(0)
    last = ArraySize(a())
    For i = 1 To last
       If ret < a(i)
          ret = a(i)
       EndIf
    Next
-   
+
    ProcedureReturn ret
 EndProcedure
 ```
@@ -4460,7 +4460,7 @@ max(values)
 
 Of course this assumes we have a list or tuple (or other sequence like object).  (One can even find the ''max()'' or ''min()'' character of a string since that's treated as a sequence of characters and there are "less than" and "greater than" operations (object methods) associate with those characters).
 
-If we truly were receiving a stream of data then in Python, such streams are usually iterable, meaning they have a way of generating one item at a time from the stream. 
+If we truly were receiving a stream of data then in Python, such streams are usually iterable, meaning they have a way of generating one item at a time from the stream.
 
 max(), (and min()), can take iterables and a key argument which takes a function that can transform each item into a type that we can compare, for example, if the stream were returning string representations of integers, one to a line, you could do
 
@@ -4512,7 +4512,7 @@ print(max(v)) # 100
 
 ## Racket
 
-The "max" function it built in and takes an arbitrary amount of arguments. 
+The "max" function it built in and takes an arbitrary amount of arguments.
 
 ```racket
 (max 12 9 8 17 1)
@@ -4564,7 +4564,7 @@ or with a "for" loop:
 ```vb
 functioni FindMax(...) as double
     dim x as integer
-        
+
     for x = 1 to ParamValCount
         IF ParamVal(x) > Result THEN Result = ParamVal(x)
     next
@@ -4599,7 +4599,7 @@ int: 4
 [ 1 2 3 4 ] max "%d\n" print
 ```
 
-{{out}} 
+{{out}}
 ```txt
 4
 ```
@@ -4630,7 +4630,7 @@ max: func [
 	"Find maximum value in a list."
 	values [series!] "List of values."
 ] [
-	first maximum-of values 
+	first maximum-of values
 ]
 
 print ["Max of"  mold d: [5 4 3 2 1]  "is"  max d]
@@ -4701,7 +4701,7 @@ the biggest value in a list of  25  numbers is:  98
 big=@.1                                          /*choose an initial biggest number.    */
                 do #=2  while @.#\==''           /*traipse through whole array of nums. */
                 big = max(big, @.#)              /*use a BIF to find the biggest number.*/
-                end   /*#*/ 
+                end   /*#*/
                                                  /*stick a fork in it,  we're all done. */
 say 'the biggest value in an array of '      #-1       " elements is: "           big
 ```
@@ -4733,7 +4733,7 @@ say '────────────────── The biggest value in
 
 Programming note:   the   '''max'''   BIF normalizes the number returned (eliding the leading superfluous zeroes).
 
-If this is undesirable, then the   '''do'''   loop (shown above) can be replaced with: 
+If this is undesirable, then the   '''do'''   loop (shown above) can be replaced with:
 
 ```rexx
 ···;                    do j=2  to #;  _=word($,j)
@@ -4746,7 +4746,7 @@ If this is undesirable, then the   '''do'''   loop (shown above) can be replaced
 ```txt
 
 ──────────────────  Please enter a list of numbers  (separated by blanks or commas):
--12  -3  0  1.1  1e2  99.2  00245                   ◄■■■■■■■■■■ user input 
+-12  -3  0  1.1  1e2  99.2  00245                   ◄■■■■■■■■■■ user input
 
 ────────────────── The biggest value in the list of  7  elements is:  245
 
@@ -4784,7 +4784,7 @@ Return max
 ```txt
 
 living
-8    
+8
 
 ```
 
@@ -4793,7 +4793,7 @@ living
 ```txt
 
 Walter
-8    
+8
 
 ```
 
@@ -4900,7 +4900,7 @@ assert(noSweat(1, 3, 12, 7) == 12)
 
 ## Scheme
 
-The built-in Scheme function <tt>max</tt> takes the max of all its arguments. 
+The built-in Scheme function <tt>max</tt> takes the max of all its arguments.
 
 ```scheme
 (max 1 2 3 4)
@@ -5217,7 +5217,7 @@ max() {
     shift
   done
   echo "$m"
-} 
+}
 
 max 10 9 11 57 1 12
 ```
@@ -5249,13 +5249,13 @@ The <code>max</code> function:
 def max (int<> list)
 	decl int max i
 	set max list<0>
-	
+
 	for (set i 1) (< i (- (size list) 1)) (inc i)
 		if (> list<i> max)
 			set max list<i>
 		end if
 	end for
-	
+
 	return max
 end max
 ```
@@ -5639,7 +5639,7 @@ Undefined
 
 ## Yorick
 
-The built-in function ''max'' does this. 
+The built-in function ''max'' does this.
 Interactive example:
 
 ```txt

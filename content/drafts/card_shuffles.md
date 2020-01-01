@@ -18,10 +18,10 @@ There are many techniques that people use to shuffle [[Playing cards|cards]] for
 
 
 ;Task
-Implement the (seemingly) more common techniques of the riffle shuffle and overhand shuffle for   ''n''   iterations. 
+Implement the (seemingly) more common techniques of the riffle shuffle and overhand shuffle for   ''n''   iterations.
 
 
-Implementing playing cards is not necessary if it would be easier to implement these shuffling methods for generic collections. 
+Implementing playing cards is not necessary if it would be easier to implement these shuffling methods for generic collections.
 
 Where possible, compare this to a standard/built-in shuffling procedure.
 
@@ -39,7 +39,7 @@ One iteration of the overhand shuffle is defined as:
 
 
 ;Bonus
-Implement other methods described in the Wikipedia 
+Implement other methods described in the Wikipedia
 article:   [https://en.wikipedia.org/wiki/Shuffling#Shuffling_techniques card shuffling].
 
 Allow for "human errors" of imperfect cutting and interleaving.
@@ -52,8 +52,8 @@ Allow for "human errors" of imperfect cutting and interleaving.
 
 {{trans|Modula-2}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
@@ -291,12 +291,12 @@ public:
 
 		while( len )
 		{
-		    if( fl ) 
+		    if( fl )
 		    {
 			tmp.push_front( *lHand.begin() );
 			lHand.erase( lHand.begin() );
 		    }
-		    else 
+		    else
 		    {
 			tmp.push_front( *rHand.begin() );
 			rHand.erase( rHand.begin() );
@@ -305,12 +305,12 @@ public:
 		}
 	    }
 
-	    if( lHand.size() < 1 ) 
+	    if( lHand.size() < 1 )
 	    {
 		for( std::deque<int>::iterator x = rHand.begin(); x != rHand.end(); x++ )
 		    tmp.push_front( *x );
 	    }
-	    if( rHand.size() < 1 ) 
+	    if( rHand.size() < 1 )
 	    {
 		for( std::deque<int>::iterator x = lHand.begin(); x != lHand.end(); x++ )
 		    tmp.push_front( *x );
@@ -377,7 +377,7 @@ void display( std::string t )
 int main( int argc, char* argv[] )
 {
     srand( static_cast<unsigned>( time( NULL ) ) );
-    riffle r; overhand o;	
+    riffle r; overhand o;
 
     fill(); r.shuffle( &cards, 10 ); display( "RIFFLE" );
     fill(); o.shuffle( &cards, 10 ); display( "OVERHAND" );
@@ -878,7 +878,7 @@ public class CardShuffles{
 
 		for(int n = 0; n < flips; n++){
 			//cut the deck at the middle +/- 10%, remove the second line of the formula for perfect cutting
-			int cutPoint = newList.size() / 2 
+			int cutPoint = newList.size() / 2
 				+ (rand.nextBoolean() ? -1 : 1 ) * rand.nextInt((int)(newList.size() * 0.1));
 
 			//split the deck
@@ -937,7 +937,7 @@ public class CardShuffles{
 
 			//move the cards back to the main hand
 			mainHand = otherHand;
-		}		
+		}
 		return mainHand;
 	}
 
@@ -1118,11 +1118,11 @@ fun riffle(deck: List<Int>, iterations: Int): List<Int> {
         val fromTop = r.nextBoolean() // choose to draw from top or bottom
         while (deck1.size > 0 && deck2.size > 0) {
             if (fromTop) {
-                pile.add(deck1.removeAt(0)) 
+                pile.add(deck1.removeAt(0))
                 pile.add(deck2.removeAt(0))
             }
             else {
-                pile.add(deck1.removeAt(deck1.lastIndex))           
+                pile.add(deck1.removeAt(deck1.lastIndex))
                 pile.add(deck2.removeAt(deck2.lastIndex))
             }
         }
@@ -1148,7 +1148,7 @@ fun overhand(deck: List<Int>, iterations: Int): List<Int> {
         pile2.clear()
     }
     return pile
-}    
+}
 
 fun main(args: Array<String>) {
     println("Starting deck:")
@@ -1957,10 +1957,10 @@ Racket has a built in <code>shuffle</code> function. Frankly, I'd go with that i
 ;; ---------------------------------------------------------------------------------------------------
 ;; TEST/OUTPUT
 (module+ test
-  (require typed/rackunit)  
+  (require typed/rackunit)
   (check-equal? (overhand-shuffle null 1) null)
   (check-equal? (overhand-shuffle '(a) 1) '(a))
-  (check-equal? (overhand-shuffle '(a b) 1) '(b a))  
+  (check-equal? (overhand-shuffle '(a b) 1) '(b a))
   (check-equal? (pure-riffle-shuffle '(1 2 3 4) 1) '(1 3 2 4))
   (error-print-width 80))
 
@@ -2004,9 +2004,9 @@ shuffle:                        (J♣ 2♠ 4♦ A♦ K♥ 6♦ 5♦ 8♣ 2♦ T�
 
 ## REXX
 
-A little extra effort was put into the '''create''' subroutine to build any sort of deck, even a multiple deck as in canasta and samba (with/without jokers).   Adding options for short decks, pinochle, schmear, six-handed 500, and the like would be prohibitive and muddy up the code and be distracting. 
+A little extra effort was put into the '''create''' subroutine to build any sort of deck, even a multiple deck as in canasta and samba (with/without jokers).   Adding options for short decks, pinochle, schmear, six-handed 500, and the like would be prohibitive and muddy up the code and be distracting.
 
-Six-handed 500 has additional cards of:   <big> ♣11   ♣12         ♠11   ♠12       ♦11   ♦12   ♦13       ♦11   ♦12   ♦13 </big>      
+Six-handed 500 has additional cards of:   <big> ♣11   ♣12         ♠11   ♠12       ♦11   ♦12   ♦13       ♦11   ♦12   ♦13 </big>
 
 ```rexx
 /*REXX program simulates various types of shuffling a deck of cards  (any kind of deck).*/

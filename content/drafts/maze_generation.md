@@ -463,12 +463,12 @@ Walk(S, x=0, y=0){
 		Random, y, 1, ErrorLevel//2
 		Random, x, 1, InStr(S, "`n")//2-1         ; Calculate height
 	}
-	
+
 	; --Obtain a list of its neighbors...
 	neighbors := x "," y+1 "`n" x "," y-1 "`n" x+1 "," y "`n" x-1 "," y
 	; --Randomize the list...
 	Sort neighbors, random
-	
+
 	; --Then for each neighbor...
 	Loop Parse, neighbors, `n
 	{
@@ -485,7 +485,7 @@ Walk(S, x=0, y=0){
 	}
 	return S
 }
-	
+
 ; Change a character in a string using x and y coordinates
 ChangeChar(s, x, y, c){
 	Loop Parse, s, `n
@@ -567,7 +567,7 @@ BEGIN {
 
     # Visit all the cells starting at a random point.
     visitCell(getRandX(), getRandY());
-    
+
     # Show the result.
     printMaze();
 }
@@ -583,13 +583,13 @@ function visitCell(x, y,    dirList, dir, nx, ny, ndir, pi) {
         ndir = substr(dirList, dir, 1);
         nx = getNextX(x, ndir);
         ny = getNextY(y, ndir);
-        
+
         # Visit an unvisited neighbor, removing the separating walls.
         if (wasVisited(nx, ny) == 0) {
             rmWall(x, y, ndir);
             rmWall(nx, ny, getOppositeDir(ndir));
             visitCell(nx, ny)
-        } 
+        }
     }
 }
 
@@ -1036,12 +1036,12 @@ This used a slightly modified version that outputs to a text file. (You can't co
       MazeWidth% = 11
       MazeHeight% = 9
       MazeCell% = 50
-      
+
       VDU 23,22,MazeWidth%*MazeCell%/2+3;MazeHeight%*MazeCell%/2+3;8,16,16,128
       VDU 23,23,3;0;0;0; : REM Line thickness
       PROCgeneratemaze(Maze&(), MazeWidth%, MazeHeight%, MazeCell%)
       END
-      
+
       DEF PROCgeneratemaze(RETURN m&(), w%, h%, s%)
       LOCAL x%, y%
       DIM m&(w%, h%)
@@ -1054,7 +1054,7 @@ This used a slightly modified version that outputs to a text file. (You can't co
       GCOL 15
       PROCcell(m&(), RND(w%)-1, y% = RND(h%)-1, w%, h%, s%)
       ENDPROC
-      
+
       DEF PROCcell(m&(), x%, y%, w%, h%, s%)
       LOCAL i%, p%, q%, r%
       m&(x%,y%) OR= &40 : REM Mark visited
@@ -1088,7 +1088,7 @@ This used a slightly modified version that outputs to a text file. (You can't co
 Dimensions are specified by the first two values pushed onto the stack - currently 20 (45*) by 16 (28*). Note, however, that the upper limit in a standard Befunge-93 implementation will be around 38 by 40 (1520 cells) due to the constrained page size.
 
 Also note that this requires an interpreter with working read-write memory support, which is suprisingly rare in online implementations. Padding the code page with extra blank lines or spaces can sometimes help. Using smaller dimensions might also be preferable, especially on slower implementations.
- 
+
 
 ```befunge
 45*28*10p00p020p030p006p0>20g30g00g*+::"P"%\"P"/6+gv>$\1v@v1::\+g02+*g00+g03-\<
@@ -1129,8 +1129,8 @@ Also note that this requires an interpreter with working read-write memory suppo
 
 Generation/solver in one. Requires UTF8 locale and unicode capable console.  If your console font line-drawing chars are single width, define DOUBLE_SPACE to 0.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
@@ -1349,7 +1349,7 @@ public:
 
 	hdc = CreateCompatibleDC( dc );
 	SelectObject( hdc, bmp );
-	ReleaseDC( GetConsoleWindow(), dc ); 
+	ReleaseDC( GetConsoleWindow(), dc );
 	width = w; height = h;
 
 	return true;
@@ -1421,9 +1421,9 @@ class mazeGenerator
 public:
     mazeGenerator()
     {
-	_world = 0; 
-	_bmp.create( BMP_SIZE, BMP_SIZE ); 
-	_bmp.setPenColor( RGB( 0, 255, 0 ) ); 
+	_world = 0;
+	_bmp.create( BMP_SIZE, BMP_SIZE );
+	_bmp.setPenColor( RGB( 0, 255, 0 ) );
     }
 
     ~mazeGenerator() { killArray(); }
@@ -1483,9 +1483,9 @@ private:
 	    for( int x = 0; x < _s; x++ )
 	    {
 		BYTE b = _world[x + yy];
-		int nx = x * CELL_SIZE, 
+		int nx = x * CELL_SIZE,
 		    ny = y * CELL_SIZE;
-				
+
 		if( !( b & NOR ) )
 		{
 		    MoveToEx( dc, nx, ny, NULL );
@@ -1887,34 +1887,34 @@ Sample output:
 {{out}}
 
 ```txt
-┌───────────┬───────────────┬───────┬───┐ 
-│           │               │       │   │ 
-├───╴   ╷   ╵   ┌───────────┤   ╷   │   │ 
-│       │       │           │   │   │   │ 
-│   ╷   └───┐   │   ╶───┐   ╵   │   │   │ 
-│   │       │   │       │       │   │   │ 
-│   └───┐   └───┴───╴   ├───────┤   │   │ 
-│       │               │       │   │   │ 
-│   ╷   └───────────────┼───╴   │   ╵   │ 
-│   │                   │       │       │ 
-├───┴───┐   ┌───────┐   ╵   ╷   ├───╴   │ 
-│       │   │       │       │   │       │ 
-│   ╷   ╵   │   ╷   ╵   ┌───┴───┘   ┌───┤ 
-│   │       │   │       │           │   │ 
-│   └───────┴───┴───────┤   ╶───────┤   │ 
-│                       │           │   │ 
-│   ╶───────┬───────┐   └───┬───╴   │   │ 
-│           │       │       │       │   │ 
-├───────╴   ╵   ╷   │   ╶───┘   ╶───┘   │ 
-│               │   │                   │ 
-└───────────────┴───┴───────────────────┘ 
+┌───────────┬───────────────┬───────┬───┐
+│           │               │       │   │
+├───╴   ╷   ╵   ┌───────────┤   ╷   │   │
+│       │       │           │   │   │   │
+│   ╷   └───┐   │   ╶───┐   ╵   │   │   │
+│   │       │   │       │       │   │   │
+│   └───┐   └───┴───╴   ├───────┤   │   │
+│       │               │       │   │   │
+│   ╷   └───────────────┼───╴   │   ╵   │
+│   │                   │       │       │
+├───┴───┐   ┌───────┐   ╵   ╷   ├───╴   │
+│       │   │       │       │   │       │
+│   ╷   ╵   │   ╷   ╵   ┌───┴───┘   ┌───┤
+│   │       │   │       │           │   │
+│   └───────┴───┴───────┤   ╶───────┤   │
+│                       │           │   │
+│   ╶───────┬───────┐   └───┬───╴   │   │
+│           │       │       │       │   │
+├───────╴   ╵   ╷   │   ╶───┘   ╶───┘   │
+│               │   │                   │
+└───────────────┴───┴───────────────────┘
 ```
 
 
 
 ## Commodore BASIC
 
-Written in Commodore BASIC V2 and tested on Commodore 64 and Commodore 128 hardware. (It will also run on the unexpanded Commodore VIC-20 if you reduce the maze size to 8x8.) Due to stack size limitations in the operating systems, this solution eschews recursive subroutine calls. Recursion is accomplished by conditional branching within the maze build routine and the use of an array-based stack for data elements.  
+Written in Commodore BASIC V2 and tested on Commodore 64 and Commodore 128 hardware. (It will also run on the unexpanded Commodore VIC-20 if you reduce the maze size to 8x8.) Due to stack size limitations in the operating systems, this solution eschews recursive subroutine calls. Recursion is accomplished by conditional branching within the maze build routine and the use of an array-based stack for data elements.
 
 
 ```BASIC
@@ -1983,25 +1983,25 @@ Written in Commodore BASIC V2 and tested on Commodore 64 and Commodore 128 hardw
 
 ```txt
 +--+--+--+--+--+--+--+--+--+--+
-:     :        :              :  
+:     :        :              :
 +  +  +  +  +--+  +--+--+--+  +
-:  :  :  :        :     :     :  
+:  :  :  :        :     :     :
 +  +  +  +--+  +--+  +  +  +--+
-:  :     :  :  :     :  :     :  
+:  :     :  :  :     :  :     :
 +  +--+--+  +  +  +--+  +--+  +
-:     :     :  :  :  :        :  
+:     :     :  :  :  :        :
 +--+  +  +--+--+  +  +--+--+  +
-:  :  :  :        :  :        :  
+:  :  :  :        :  :        :
 +  +  +  +  +--+--+  +  +--+--+
-:     :  :        :  :  :     :  
+:     :  :        :  :  :     :
 +  +--+  +--+--+  +  +  +  +  +
-:     :  :        :     :  :  :  
+:     :  :        :     :  :  :
 +  +--+  +  +--+--+  +--+--+  +
-:  :     :  :     :        :  :  
+:  :     :  :     :        :  :
 +  +  +--+  +  +--+--+--+  +  +
-:  :     :  :  :        :  :  :  
+:  :     :  :  :        :  :  :
 +  +--+  +  +  +  +  +--+  +  +
-:     :     :     :           :  
+:     :     :     :           :
 +--+--+--+--+--+--+--+--+--+--+
 ```
 
@@ -2083,7 +2083,7 @@ Another solution using unicode line drawing chars.  Assumes they are single widt
     (labels
       ((walk (y x)
 	     (setf (aref vis y x) 1)
-	     (loop 
+	     (loop
 	       (let (x2 y2)
 		 (loop for (dx dy) in '((-1 0) (1 0) (0 -1) (0 1))
 		       with cnt = 0 do
@@ -2214,11 +2214,11 @@ void main() @safe {
 
 ```easyprog.online
 size = 20
-# 
+#
 sz = 2 * size + 1
 # we only have one-dimensional arrays
 len f[] sz * sz
-# 
+#
 func make_maze . .
   # the maze is created by random walking around
   for i range len f[]
@@ -2287,7 +2287,7 @@ program MazeGen
 
     // First and last columns/rows are "dead" cells. Makes generating
     // a maze with border walls much easier. Therefore, a visible
-    // 20x20 maze has a maze size of 22. 	
+    // 20x20 maze has a maze size of 22.
     mazeSize int = 22;
 
     south boolean[][];
@@ -2363,13 +2363,13 @@ program MazeGen
 
             while(true)
                 r float = MathLib.random(); // Choose a random direction
-                
+
                 case
                     when(r < 0.25 && !visited[col][row + 1]) // Go south
                         south[col][row] = false; // South wall down
                         generate(col, row + 1);
                         exit while;
-                    when(r >= 0.25 && r < 0.50 && !visited[col + 1][row]) // Go east 
+                    when(r >= 0.25 && r < 0.50 && !visited[col + 1][row]) // Go east
                         west[col + 1][row] = false; // West wall of neighbor to the east down
                         generate(col + 1, row);
                         exit while;
@@ -2401,7 +2401,7 @@ program MazeGen
 
         line string;
 
-        // Iterate over wall arrays (skipping dead border cells as required). 
+        // Iterate over wall arrays (skipping dead border cells as required).
         // Construct a line at a time and output to console.
         for(row int from 1 to mazeSize - 1)
 
@@ -2440,25 +2440,25 @@ end
 ```txt
 
 +---+---+---+---+---+---+---+---+---+---+
-|   |                   |           |   |   
+|   |                   |           |   |
 +   +   +---+---+---+   +---+   +   +   +
-|   |       |   |   |       |   |       |   
+|   |       |   |   |       |   |       |
 +   +---+   +   +   +   +   +   +---+   +
-|       |       |   |   |   |   |       |   
+|       |       |   |   |   |   |       |
 +   +   +---+   +   +---+   +   +   +---+
-|   |       |   |   |       |   |       |   
+|   |       |   |   |       |   |       |
 +   +---+---+   +   +   +---+   +---+---+
-|   |           |   |   |       |       |   
+|   |           |   |   |       |       |
 +   +   +---+---+   +   +   +   +   +   +
-|   |   |   |       |   |   |       |   |   
+|   |   |   |       |   |   |       |   |
 +   +   +   +   +---+   +   +---+---+   +
-|       |   |           |   |       |   |   
+|       |   |           |   |       |   |
 +   +---+   +---+---+---+   +   +   +   +
-|   |                   |   |   |       |   
+|   |                   |   |   |       |
 +   +---+   +---+   +   +---+   +---+   +
-|       |   |       |           |   |   |   
+|       |   |       |           |   |   |
 +---+   +---+   +---+---+---+---+   +   +
-|               |                       |   
+|               |                       |
 +---+---+---+---+---+---+---+---+---+---+
 
 ```
@@ -2477,7 +2477,7 @@ defmodule Maze do
     print(maze, w, h)
     maze
   end
-  
+
   defp walk(map, x, y) do
     Enum.shuffle( [[x-1,y], [x,y+1], [x+1,y], [x,y-1]] )
     |> Enum.reduce(Map.put(map, {:vis, x, y}, false), fn [i,j],acc ->
@@ -2490,7 +2490,7 @@ defmodule Maze do
       end
     end)
   end
-  
+
   defp print(map, w, h) do
     Enum.each(1..h, fn j ->
       IO.puts Enum.map_join(1..w, fn i -> Map.get(map, {:hor, i, j}, "+---") end) <> "+"
@@ -2540,7 +2540,7 @@ Maze.generate(20, 10)
 ```elm
 import Maybe as M
 import Result as R
-import Matrix 
+import Matrix
 import Mouse
 import Random exposing (Seed)
 import Matrix.Random
@@ -2549,11 +2549,11 @@ import Set exposing (Set, fromList)
 import List exposing (..)
 import String exposing (join)
 import Html exposing (Html, br, input, h1, h2, text, div, button)
-import Html.Events as HE 
+import Html.Events as HE
 import Html.Attributes as HA
 import Html.App exposing (program)
 import Json.Decode  as JD
-import Svg 
+import Svg
 import Svg.Attributes exposing (version, viewBox, cx, cy, r, x, y, x1, y1, x2, y2, fill,points, style, width, height, preserveAspectRatio)
 
 minSide = 10
@@ -2584,20 +2584,20 @@ type alias Model =
 
 initdoors : Int -> Int -> Set Door
 initdoors rows cols =
-  let 
+  let
     pairs la lb = List.concatMap (\at -> List.map ((,) at) lb) la
-    downs = pairs (pairs [0..rows-2] [0..cols-1]) [down] 
-    rights = pairs (pairs [0..rows-1] [0..cols-2]) [right] 
+    downs = pairs (pairs [0..rows-2] [0..cols-1]) [down]
+    rights = pairs (pairs [0..rows-1] [0..cols-2]) [right]
   in downs ++ rights |> fromList
 
 initModel : Int -> Int -> Bool -> State -> Int -> Model
-initModel rows cols animate state starter = 
+initModel rows cols animate state starter =
   let rowGenerator = Random.int 0 (rows-1)
       colGenerator = Random.int 0 (cols-1)
       locationGenerator = Random.pair rowGenerator colGenerator
       (c, s)= Random.step locationGenerator (Random.initialSeed starter)
   in { rows = rows
-     , cols = cols 
+     , cols = cols
      , animate = animate
      , boxes = Matrix.matrix rows cols (\location -> state == Generating && location == c)
      , doors = initdoors rows cols
@@ -2610,7 +2610,7 @@ initModel rows cols animate state starter =
 view model =
   let
     borderLineStyle = style "stroke:green;stroke-width:0.3"
-    wallLineStyle = style "stroke:green;stroke-width:0.1" 
+    wallLineStyle = style "stroke:green;stroke-width:0.1"
 
     x1Min = x1 <| toString 0
     y1Min = y1 <| toString 0
@@ -2627,7 +2627,7 @@ view model =
               , Svg.line [ x1Min, y1Max, x2Min, y2Min, borderLineStyle ] []
               ]
 
-    doorToLine door = 
+    doorToLine door =
       let (deltaX1, deltaY1) = if (snd door == right) then (1,0) else (0,1)
           (row, column) = fst door
       in Svg.line [ x1 <| toString (column + deltaX1)
@@ -2638,66 +2638,66 @@ view model =
 
     doors = (List.map doorToLine <| Set.toList model.doors )
 
-    circleInBox (row,col) color = 
+    circleInBox (row,col) color =
       Svg.circle [ r "0.25"
       , fill (color)
       , cx (toString (toFloat col + 0.5))
       , cy (toString (toFloat row + 0.5))
-      ] [] 
+      ] []
 
     showUnvisited location box =
        if box then [] else [ circleInBox location "yellow" ]
 
-    unvisited = model.boxes 
-                  |> Matrix.mapWithLocation showUnvisited 
-                  |> Matrix.flatten 
+    unvisited = model.boxes
+                  |> Matrix.mapWithLocation showUnvisited
+                  |> Matrix.flatten
                   |> concat
 
-    current = 
+    current =
       case head model.current of
           Nothing -> []
           Just c -> [circleInBox c "black"]
 
-    maze = 
+    maze =
       if model.animate || model.state /= Generating
-      then [ Svg.g [] <| doors ++ borders ++ unvisited ++ current ] 
+      then [ Svg.g [] <| doors ++ borders ++ unvisited ++ current ]
       else [ Svg.g [] <| borders ]
   in
-    div 
+    div
       []
       [ h2 [centerTitle] [text "Maze Generator"]
-      , div 
-          [floatLeft] 
+      , div
+          [floatLeft]
           (  slider "rows" minSide maxSide model.rows SetRows
-          ++ [ br [] [] ] 
+          ++ [ br [] [] ]
 
           ++ slider "cols" minSide maxSide model.cols SetCols
           ++ [ br [] [] ]
 
-          ++ checkbox "Animate" model.animate SetAnimate 
+          ++ checkbox "Animate" model.animate SetAnimate
           ++ [ br [] [] ]
 
-          ++ [ button 
+          ++ [ button
                  [ HE.onClick Generate ]
-                 [ text "Generate"] 
+                 [ text "Generate"]
              ] )
-      , div 
-          [floatLeft] 
-          [ Svg.svg 
+      , div
+          [floatLeft]
+          [ Svg.svg
               [ version "1.1"
               , width (toString w)
               , height (toString h)
-              , viewBox (join " " 
+              , viewBox (join " "
                            [ 0          |> toString
                            , 0          |> toString
                            , model.cols |> toString
                            , model.rows |> toString ])
-              ] 
+              ]
               maze
           ]
-      ] 
+      ]
 
-checkbox label checked msg = 
+checkbox label checked msg =
   [ input
       [ HA.type' "checkbox"
       , HA.checked checked
@@ -2707,7 +2707,7 @@ checkbox label checked msg =
     , text label
   ]
 
-slider name min max current msg = 
+slider name min max current msg =
   [ input
     [ HA.value (if current >= min then current |> toString else "")
     , HE.on "input" (JD.map msg HE.targetValue )
@@ -2719,69 +2719,69 @@ slider name min max current msg =
   , text <| name ++ "=" ++ (current |> toString)
   ]
 
-floatLeft = HA.style [ ("float", "left") ] 
-centerTitle = HA.style [ ( "text-align", "center") ] 
+floatLeft = HA.style [ ("float", "left") ]
+centerTitle = HA.style [ ( "text-align", "center") ]
 
 unvisitedNeighbors : Model -> Matrix.Location -> List Matrix.Location
-unvisitedNeighbors model (row,col) = 
+unvisitedNeighbors model (row,col) =
   [(row, col-1), (row-1, col), (row, col+1), (row+1, col)]
     |> List.filter (\l -> fst l >= 0 && snd l >= 0 && fst l < model.rows && snd l < model.cols)
     |> List.filter (\l -> (Matrix.get l model.boxes) |> M.withDefault False |> not)
 
 updateModel' : Model -> Int -> Model
-updateModel' model t = 
+updateModel' model t =
   case head model.current of
     Nothing -> {model | state = Generated, seedStarter = t }
     Just prev ->
       let neighbors = unvisitedNeighbors model prev
       in if (length neighbors) > 0 then
            let (neighborIndex, seed) = Random.step (Random.int 0 (length neighbors-1)) model.seed
-               next = head (drop neighborIndex neighbors) |> M.withDefault (0,0) 
-               boxes = Matrix.set next True model.boxes 
+               next = head (drop neighborIndex neighbors) |> M.withDefault (0,0)
+               boxes = Matrix.set next True model.boxes
                dir = if fst prev == fst next then right else down
-               doorCell = if (  (dir == down)   && (fst prev < fst next))  
+               doorCell = if (  (dir == down)   && (fst prev < fst next))
                              || (dir == right ) && (snd prev < snd next) then prev else next
-               doors = Set.remove (doorCell, dir) model.doors 
+               doors = Set.remove (doorCell, dir) model.doors
            in {model | boxes=boxes, doors=doors, current=next :: model.current, seed=seed, seedStarter = t}
          else
-           let tailCurrent = tail model.current |> M.withDefault [] 
+           let tailCurrent = tail model.current |> M.withDefault []
            in updateModel' {model | current = tailCurrent} t
 
 updateModel : Msg -> Model -> Model
-updateModel msg model = 
+updateModel msg model =
   let stringToCellCount s =
     let v' = String.toInt s |> R.withDefault minSide
     in if v' < minSide then minSide else v'
-  in case msg of 
-       Tick tf -> 
+  in case msg of
+       Tick tf ->
          let t = truncate tf
-         in 
+         in
            if (model.state == Generating) then updateModel' model t
-           else { model | seedStarter = t } 
+           else { model | seedStarter = t }
 
-       Generate -> 
+       Generate ->
          initModel model.rows model.cols model.animate Generating model.seedStarter
 
-       SetRows countString -> 
+       SetRows countString ->
          initModel (stringToCellCount countString) model.cols model.animate Initial model.seedStarter
 
-       SetCols countString -> 
+       SetCols countString ->
          initModel model.rows (stringToCellCount countString) model.animate Initial model.seedStarter
 
-       SetAnimate b -> 
-         { model | animate = b } 
+       SetAnimate b ->
+         { model | animate = b }
 
-       NoOp -> model 
+       NoOp -> model
 
 type Msg = NoOp | Tick Time | Generate | SetRows String | SetCols String | SetAnimate Bool
 
 subscriptions model = every (dt * second) Tick
 
 main =
-  let 
+  let
     update msg model = (updateModel msg model, Cmd.none)
     init = (initModel 21 36 False Initial 0, Cmd.none)
-  in program 
+  in program
        { init = init
        , view = view
        , update = update
@@ -2981,7 +2981,7 @@ Starting at {10,5}
 
 Uses 2 digraph "objects": a) the 'matrix', a fully connected digraph of MxN vertices and b) the 'maze', an unconnected digraph, also MxN, that is populated while walking.
 
-Employs a faux Visitor pattern to populate the maze while traversing the matrix in depth-first order. 
+Employs a faux Visitor pattern to populate the maze while traversing the matrix in depth-first order.
 
 Vertices: 0 .. MxN - 1
 
@@ -3043,7 +3043,7 @@ has_neighbour(Maze, Row, Col, Direction) ->
     if
         V >= 0 ->
             Adjacent = adjacent_cell(Direction, V, Maze),
-            if 
+            if
                 length(Adjacent) > 0 ->
                     Neighbours = digraph:out_neighbours(Maze#maze.g, lists:nth(1, Adjacent)),
                     lists:member(V, Neighbours);
@@ -3135,7 +3135,7 @@ generate_default() ->
 |       |               |           |
 +---+---+---+---+---+---+---+---+---+
 ok
-9> 
+9>
 ```
 
 
@@ -3404,20 +3404,20 @@ type Maze(width, height) =
   let horizWalls = Array2D.create width height true
   // (x,y) -> is there a wall between (x,y) and (x,y+1)?
   let vertWalls = Array2D.create width height  true
-  
+
   let isLegalPoint (x,y) =
     x >= 0 && x < width && y >= 0 && y < height
-  
-  let neighbours (x,y) = 
+
+  let neighbours (x,y) =
     [(x-1,y);(x+1,y);(x,y-1);(x,y+1)] |> List.filter isLegalPoint
-    
+
   let removeWallBetween (x1,y1) (x2,y2) =
     if x1 <> x2 then
       horizWalls.[min x1 x2, y1] <- false
     else
       vertWalls.[x1, min y1 y2] <- false
- 
-  let rec visit (x,y as p) = 
+
+  let rec visit (x,y as p) =
     let rec loop ns =
       let (nx,ny) as n = choose ns
       if not visited.[nx,ny] then
@@ -3436,10 +3436,10 @@ type Maze(width, height) =
     ("+" + (String.replicate width "-+")) ::
     [for y in 0..(height-1) do
        yield "\n|"
-       for x in 0..(width-1) do 
+       for x in 0..(width-1) do
          yield if horizWalls.[x,y] then " |" else "  "
        yield "\n+"
-       for x in 0..(width-1) do 
+       for x in 0..(width-1) do
          yield if vertWalls.[x,y] then "-+" else " +"
     ]
     |> String.concat ""
@@ -3614,7 +3614,7 @@ Do
         key = ""
     End If
     If key = "N" Then Continue Do, Do
-    If key <> "" Then Exit Do, Do 
+    If key <> "" Then Exit Do, Do
     Loop
 Loop
 
@@ -3634,9 +3634,9 @@ import (
     "fmt"
     "math/rand"
     "time"
-)   
-    
-type maze struct { 
+)
+
+type maze struct {
     c  []byte   // cell contents
     h  []byte   // horizontal walls above cells
     v  []byte   // vertical walls to the left of cells
@@ -3665,13 +3665,13 @@ func (m *maze) String() string {
     hOpen := []byte("+   ")
     vWall := []byte("|   ")
     vOpen := []byte("    ")
-    rightCorner := []byte("+\n") 
+    rightCorner := []byte("+\n")
     rightWall := []byte("|\n")
     var b []byte
-    // for all rows 
+    // for all rows
     for r, hw := range m.h2 {
         // draw h walls
-        for _, h := range hw { 
+        for _, h := range hw {
             if h == '-' || r == 0 {
                 b = append(b, hWall...)
             } else {
@@ -3962,12 +3962,12 @@ procedure main(A)                               # generate rows x col maze
    WriteImage(mz.filename)                      # save file
    WAttrib(mz.window,"canvas=normal")           # show maze in hidden window
    until Event() == &lpress                     # wait for left mouse press
-   close(mz.window)                            
+   close(mz.window)
 end
 
 $define FINISH 64 # exit
 $define START  32 # entrance
-$define PATH  128 
+$define PATH  128
 $define SEEN   16 # bread crumbs for generator
 $define NORTH   8 # sides ...
 $define EAST    4
@@ -3976,36 +3976,36 @@ $define WEST    1
 $define EMPTY   0 # like new
 
 procedure GenerateMaze(r,c)                     #: Depth First Maze Generation
-static maze,h,w,rd 
+static maze,h,w,rd
    if /maze then {                              # BEGING - No maze yet
       /h := integer(1 < r) | runerr(r,205)      # valid size 2x2 or better
       /w := integer(1 < c) | runerr(r,205)
       every !(maze := list(h)) := list(w,EMPTY) # shinny new empty maze
-      start  := [?h,?w,?4-1,START]              # random [r,c] start & finish                 
+      start  := [?h,?w,?4-1,START]              # random [r,c] start & finish
       finish := [?h,?w,(start[3]+2)%4,FINISH]   # w/ opposite side exponent
       every x := start | finish do {
-         case x[3] := 2 ^ x[3] of {             # get side from exponent and 
+         case x[3] := 2 ^ x[3] of {             # get side from exponent and
             NORTH : x[1] := 1                   # project r,c to selected edge
             EAST  : x[2] := w
-            SOUTH : x[1] := h         
+            SOUTH : x[1] := h
             WEST  : x[2] := 1
-            }   
+            }
          maze[x[1],x[2]] +:= x[3] + x[4]        # transcribe s/f to maze
          }
-      rd := [NORTH, EAST, SOUTH, WEST]          # initial list of directions     
-      GenerateMaze(start[1],start[2])           # recurse through maze     
+      rd := [NORTH, EAST, SOUTH, WEST]          # initial list of directions
+      GenerateMaze(start[1],start[2])           # recurse through maze
       return 1(.maze,maze := &null)             # return maze, reset for next
    }
    else {         # ----------------------- recursed to clear insize of maze
       if iand(maze[r,c],SEEN) = 0 then {        # in bounds and not SEEN yet?
-         maze[r,c] +:= SEEN                     # Mark current cell as visited   
+         maze[r,c] +:= SEEN                     # Mark current cell as visited
          every !rd :=: ?rd                      # randomize list of directions
          every d := !rd do
             case d of {                         # try all, succeed & clear wall
                NORTH :  maze[r,c] +:= ( GenerateMaze(r-1,c), NORTH)
                EAST  :  maze[r,c] +:= ( GenerateMaze(r,c+1),  EAST)
                SOUTH :  maze[r,c] +:= ( GenerateMaze(r+1,c), SOUTH)
-               WEST  :  maze[r,c] +:= ( GenerateMaze(r,c-1),  WEST)   
+               WEST  :  maze[r,c] +:= ( GenerateMaze(r,c-1),  WEST)
                }
          return                                 # signal success to caller
          }
@@ -4024,7 +4024,7 @@ wh := (ch := (mh := *maze  ) * CELL) + 2 * BORDER   # win, cell, maze height
 ww := (cw := (mw := *maze[1]) * CELL) + 2 * BORDER  # win, cell, maze width
 
 wparms := [ sprintf("Maze %dx%d",*maze,*maze[1]),   # window parameters
-            "g","bg=white","canvas=hidden",      
+            "g","bg=white","canvas=hidden",
             sprintf("size=%d,%d",ww,wh),
             sprintf("dx=%d",BORDER),
             sprintf("dy=%d",BORDER)]
@@ -4038,18 +4038,18 @@ every DrawLine(0,y := 0 to ch by CELL,cw+1,y)       # . horizontals
 Fg("white")                                         # Set to erase lines
 every y := CELL*((r := 1 to mh)-1) & x := CELL*((c := 1 to mw)-1) do {
    WAttrib("dx="||x+BORDER,"dy="||y+BORDER)         # position @ cell r,c
-   if iand(maze[r,c],NORTH) > 0 then DrawLine(2,0,CELL-1,0)            
-   if iand(maze[r,c],EAST)  > 0 then DrawLine(CELL,2,CELL,CELL-1)        
-   if iand(maze[r,c],SOUTH) > 0 then DrawLine(2,CELL,CELL-1,CELL)                
-   if iand(maze[r,c],WEST)  > 0 then DrawLine(0,2,0,CELL-1)            
-   }   
+   if iand(maze[r,c],NORTH) > 0 then DrawLine(2,0,CELL-1,0)
+   if iand(maze[r,c],EAST)  > 0 then DrawLine(CELL,2,CELL,CELL-1)
+   if iand(maze[r,c],SOUTH) > 0 then DrawLine(2,CELL,CELL-1,CELL)
+   if iand(maze[r,c],WEST)  > 0 then DrawLine(0,2,0,CELL-1)
+   }
 
 return mazeinfo(&window,maze,sprintf("maze-%dx%d-%d.gif",r,c,&now))
 end
 ```
 
 Note: The underlying maze structure (matrix) is uni-directional from the start
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 
 
@@ -4115,7 +4115,7 @@ The result of <code>maze</code> is a pair of arrays: one for open "doors" in the
 +   +---+---+---+---+---+---+---+   +---+   +
 |   |   |   |       |       |       |   |   |
 +   +   +   +   +   +   +   +   +---+   +   +
-|       |       |       |       |            
+|       |       |       |       |
 +---+---+---+---+---+---+---+---+---+---+---+
 ```
 
@@ -4278,10 +4278,10 @@ function maze(x,y) {
 			unvisited[next[0]+1][next[1]+1]= false;
 			if (next[0] == here[0])
 				horiz[next[0]][(next[1]+here[1]-1)/2]= true;
-			else 
+			else
 				verti[(next[0]+here[0]-1)/2][next[1]]= true;
 			path.push(here = next);
-		} else 
+		} else
 			here = path.pop();
 	}
 	return {x: x, y: y, horiz: horiz, verti: verti};
@@ -4293,7 +4293,7 @@ function display(m) {
 		var line= [];
 		if (0 == j%2)
 			for (var k=0; k<m.y*4+1; k++)
-				if (0 == k%4) 
+				if (0 == k%4)
 					line[k]= '+';
 				else
 					if (j>0 && m.verti[j/2-1][Math.floor(k/4)])
@@ -4341,7 +4341,7 @@ Note that this implementation relies on javascript arrays being treatable as inf
 </body></html>
 <script type="text/javascript">
 /* ABOVE CODE GOES HERE */
-document.getElementById('out').innerHTML= display(maze(8,11)); 
+document.getElementById('out').innerHTML= display(maze(8,11));
 </script>
 ```
 
@@ -4363,7 +4363,7 @@ produced output:
 +   +---+---+   +---+---+   +   +---+---+   +
 |   |       |   |           |       |       |
 +   +   +   +---+   +---+---+   +   +   +---+
-|       |           |           |            
+|       |           |           |
 +---+---+---+---+---+---+---+---+---+---+---+
 ```
 
@@ -4389,7 +4389,7 @@ And replace the closing brace for this while loop with:
 To better see the progress, you might want a marker in place, showing the position being considered.  To do that, replace the line which reads <code>if (0 == k%4) {</code> with
 
 ```javascript
-				if (m.here && m.here[0]*2+1 == j && m.here[1]*4+2 == k) 
+				if (m.here && m.here[0]*2+1 == j && m.here[1]*4+2 == k)
 					line[k]= '#'
 				else if (0 == k%4) {
 ```
@@ -4400,7 +4400,7 @@ Note also that this display suggests an optimization.  You can replace the line 
 
 ```javascript
 			here= next;
-			if (1 < neighbors.length) 
+			if (1 < neighbors.length)
 				path.push(here);
 ```
 
@@ -4543,7 +4543,7 @@ This difers of the basic Javascript in that in NodeJS we take advantage of the a
 /*
  * Imported from http://rosettacode.org/wiki/Maze_generation#JavaScript
  * Added asynchronous behaviour to the maze generation.
- * 
+ *
  * Port by sigmasoldier
  */
 
@@ -4582,10 +4582,10 @@ function maze(x,y) {
 					unvisited[next[0]+1][next[1]+1]= false;
 					if (next[0] == here[0])
 						horiz[next[0]][(next[1]+here[1]-1)/2]= true;
-					else 
+					else
 						verti[(next[0]+here[0]-1)/2][next[1]]= true;
 					path.push(here = next);
-				} else 
+				} else
 					here = path.pop();
 			}
 			resolve({x: x, y: y, horiz: horiz, verti: verti});
@@ -4607,7 +4607,7 @@ function display(m, writeTo) {
 			let line = [];
 			if (0 == j%2)
 				for (let k=0; k<m.y*4+1; k++)
-					if (0 == k%4) 
+					if (0 == k%4)
 						line[k] = '+';
 					else
 						if (j>0 && m.verti[j/2-1][Math.floor(k/4)])
@@ -4984,14 +4984,14 @@ Module Maze {
               maze$(x%, y%) = "#"
           NEXT y%
       NEXT x%
-       
+
       currentx% = INT(RND * (width% - 1))
       currenty% = INT(RND * (height% - 1))
-      
+
       IF currentx% MOD 2 = 0 THEN currentx%++
       IF currenty% MOD 2 = 0 THEN currenty%++
       maze$(currentx%, currenty%) = " "
-       
+
       done% = 0
       WHILE done% = 0 {
           FOR i% = 0 TO 99
@@ -5019,8 +5019,8 @@ Module Maze {
               NEXT y%
           NEXT x%
       }
-       
-      
+
+
       FOR y% = 0 TO height%
           FOR x% = 0 TO width%
               PRINT maze$(x%, y%);
@@ -5075,7 +5075,7 @@ Module Maze2 {
                         forchoose=forchoose#val(random(0,status))
                         if status>0 then Push forchoose
                         OpenDoor(!Entry, !forchoose)
-                       Rem : ShowMaze()      
+                       Rem : ShowMaze()
                   } else exit
                   entry=forchoose
             } Always
@@ -5087,7 +5087,7 @@ Module Maze2 {
       Sub NewForChoose(x,y)
             Local x1=x-2, x2=x+2, y1=y-2, y2=y+2, arr=(,)
             Stack New {
-                  if include(x1,y) then if Maze$(x1,y)<>" " Then push (x1, y) 
+                  if include(x1,y) then if Maze$(x1,y)<>" " Then push (x1, y)
                   if include(x2,y) then if Maze$(x2,y)<>" " Then push (x2, y)
                   if include(x,y1) then if Maze$(x,y1)<>" " Then push (x, y1)
                   if include(x,y2) then if Maze$(x,y2)<>" " Then push (x, y2)
@@ -5098,10 +5098,10 @@ Module Maze2 {
             Local i
             if x1=x2 then {
                   y1+=y2<=>y1
-                  for i=y1 to y2 {maze$(x1, i)=" " } 
+                  for i=y1 to y2 {maze$(x1, i)=" " }
             }  Else {
                   x1+=x2<=>x1
-                  for i=x1 to x2 {maze$(i, y1)=" "}                   
+                  for i=x1 to x2 {maze$(i, y1)=" "}
             }
       End Sub
       Sub ShowMaze()
@@ -5111,7 +5111,7 @@ Module Maze2 {
             For j=1 to h+1 { Print @(10) : for i=1 to w+1 {Print maze$(i,j);}:Print}
             Print
             Refresh 100
-      End Sub     
+      End Sub
 }
 Maze2
 
@@ -5123,19 +5123,19 @@ Maze2
 
 
 ```mathematica
-MazeGraphics[m_, n_] := 
- Block[{$RecursionLimit = Infinity, 
-   unvisited = Tuples[Range /@ {m, n}], maze}, 
-  maze = Graphics[{Line[{{#, # - {0, 1}}, {#, # - {1, 0}}}] & /@ 
-      unvisited, 
-     Line[{{0, n}, {0, 0}, {m, 0}}]}]; {unvisited = 
-      DeleteCases[unvisited, #]; 
-     Do[If[MemberQ[unvisited, neighbor], 
+MazeGraphics[m_, n_] :=
+ Block[{$RecursionLimit = Infinity,
+   unvisited = Tuples[Range /@ {m, n}], maze},
+  maze = Graphics[{Line[{{#, # - {0, 1}}, {#, # - {1, 0}}}] & /@
+      unvisited,
+     Line[{{0, n}, {0, 0}, {m, 0}}]}]; {unvisited =
+      DeleteCases[unvisited, #];
+     Do[If[MemberQ[unvisited, neighbor],
        maze = DeleteCases[
-         maze, {#, 
+         maze, {#,
            neighbor - {1, 1}} | {neighbor, # - {1, 1}}, {5}]; #0@
-        neighbor], {neighbor, 
-       RandomSample@{# + {0, 1}, # - {0, 1}, # + {1, 0}, # - {1, 
+        neighbor], {neighbor,
+       RandomSample@{# + {0, 1}, # - {0, 1}, # + {1, 0}, # - {1,
            0}}}]} &@RandomChoice@unvisited; maze];
 maze = MazeGraphics[21, 13]
 ```
@@ -5149,15 +5149,15 @@ maze = MazeGraphics[21, 13]
 Here I generate a maze as a graph. Vertices of the graph are cells and edges of the graph are removed walls. This version is mush faster and is convenient to solve.
 
 ```mathematica
-MazeGraph[m_, n_] := 
- Block[{$RecursionLimit = Infinity, grid = GridGraph[{m, n}], 
-   unvisitedQ}, unvisitedQ[_] := True; 
+MazeGraph[m_, n_] :=
+ Block[{$RecursionLimit = Infinity, grid = GridGraph[{m, n}],
+   unvisitedQ}, unvisitedQ[_] := True;
   Graph[Range[m n], Reap[{unvisitedQ[#] = False;
         Do[
-         If[unvisitedQ[neighbor], 
-          Sow[# <-> neighbor]; #0@neighbor], {neighbor, 
+         If[unvisitedQ[neighbor],
+          Sow[# <-> neighbor]; #0@neighbor], {neighbor,
           RandomSample@AdjacencyList[grid, #]}]} &@
-      RandomChoice@VertexList@grid][[2, 1]], 
+      RandomChoice@VertexList@grid][[2, 1]],
    GraphLayout -> {"GridEmbedding", "Dimension" -> {m, n}}]];
 maze = MazeGraph[13, 21]
 ```
@@ -5188,9 +5188,9 @@ function M = makeMaze(n)
 
     currentCell = sub2ind(size(M),3,3);
     M(currentCell) = VISITED;
-    
+
     S = currentCell;
-    
+
     while (~isempty(S))
         moves = currentCell + 2*offsets;
         unvistedNeigbors = find(M(moves)==NotVISITED);
@@ -5203,7 +5203,7 @@ function M = makeMaze(n)
             if (any(M(newCell+2*offsets)==NotVISITED))
                 S = [S newCell];
             end
-            
+
             currentCell = newCell;
             M(currentCell) = VISITED;
         else
@@ -5552,12 +5552,12 @@ constant mapping = :OPEN(' '),
 		   :NESW< ┼ >,
 		   :TODO< x >,
 	          :TRIED< · >;
- 
+
 enum Sym (mapping.map: *.key);
 my @ch = mapping.map: *.value;
- 
+
 enum Direction <DeadEnd Up Right Down Left>;
- 
+
 sub gen_maze ( $X,
                $Y,
                $start_x = (^$X).pick * 2 + 1,
@@ -5572,7 +5572,7 @@ sub gen_maze ( $X,
     }
     push @maze, $[ flat NE, (EW, NEW) xx $X - 1, -NS, NW ];
     @maze[$start_y][$start_x] = OPEN;
- 
+
     my @stack;
     my $current = [$start_x, $start_y];
     loop {
@@ -5586,7 +5586,7 @@ sub gen_maze ( $X,
         }
     }
     return @maze;
- 
+
     sub pick_direction([$x,$y]) {
 	my @neighbors =
 	    (Up    if @maze[$y - 2][$x]),
@@ -5595,7 +5595,7 @@ sub gen_maze ( $X,
 	    (Right if @maze[$y][$x + 2]);
 	@neighbors.pick or DeadEnd;
     }
- 
+
     sub move ($dir, @cur) {
 	my ($x,$y) = @cur;
 	given $dir {
@@ -5603,23 +5603,23 @@ sub gen_maze ( $X,
 	    when Down  { @maze[++$y][$x] = OPEN; @maze[$y][$x-1] -= E; @maze[$y++][$x+1] -= W; }
 	    when Left  { @maze[$y][--$x] = OPEN; @maze[$y-1][$x] -= S; @maze[$y+1][$x--] -= N; }
 	    when Right { @maze[$y][++$x] = OPEN; @maze[$y-1][$x] -= S; @maze[$y+1][$x++] -= N; }
-	} 
+	}
 	@maze[$y][$x] = 0;
 	[$x,$y];
     }
 }
- 
+
 sub display (@maze) {
     for @maze -> @y {
 	for @y.rotor(2) -> ($w, $c) {
 	    print @ch[abs $w];
-	    if $c >= 0 { print @ch[$c] x 3 } 
+	    if $c >= 0 { print @ch[$c] x 3 }
 	    else { print ' ', @ch[abs $c], ' ' }
 	}
 	say @ch[@y[*-1]];
     }
 }
- 
+
 display gen_maze( 29, 19 );
 ```
 
@@ -5757,7 +5757,7 @@ Code inspired by the D and Python solutions (with the implementation of backtrac
 
 ```php
 <?php
-class Maze 
+class Maze
 {
     protected $width;
     protected $height;
@@ -5772,10 +5772,10 @@ class Maze
     {
         $this->width = $x;
         $this->height = $y;
-        $this->path = [];        
+        $this->path = [];
         $this->dirs = [ [0, -1], [0, 1], [-1, 0], [1, 0]]; // array of coordinates of N,S,W,E
-        $this->horWalls = []; // list of removed horizontal walls (---+)        
-        $this->vertWalls = [];// list of removed vertical walls (|)        
+        $this->horWalls = []; // list of removed horizontal walls (---+)
+        $this->vertWalls = [];// list of removed vertical walls (|)
         $this->isDebug = $debug; // debug flag
 
         // generate the maze:
@@ -5783,7 +5783,7 @@ class Maze
     }
 
     protected function generate()
-    {        
+    {
         $this->initMaze(); // init the stack and an unvisited grid
         // start from a random cell and then proceed recursively
         $this->walk(mt_rand(0, $this->width-1), mt_rand(0, $this->height-1));
@@ -5796,8 +5796,8 @@ class Maze
     public function printOut()
     {
         $this->log("Horizontal walls: %s", json_encode($this->horWalls));
-        $this->log("Vertical walls: %s", json_encode($this->vertWalls));        
-        
+        $this->log("Vertical walls: %s", json_encode($this->vertWalls));
+
         $northDoor = mt_rand(0,$this->width-1);
         $eastDoor = mt_rand(0, $this->height-1);
 
@@ -5807,7 +5807,7 @@ class Maze
         }
         $str .= PHP_EOL;
         for ($i=0; $i<$this->height; $i++) {
-            
+
             for ($j=0; $j<$this->width; $j++) {
                 $str .= (!empty($this->vertWalls[$j][$i]) ? $this->vertWalls[$j][$i] : '|   ');
             }
@@ -5833,12 +5833,12 @@ class Maze
     private function walk($x, $y)
     {
         $this->log('Entering cell %d,%d', $x, $y);
-        // mark current cell as visited     
-        $this->grid[$x][$y] = true; 
+        // mark current cell as visited
+        $this->grid[$x][$y] = true;
         // add cell to path
         $this->path[] = [$x, $y];
         // get list of all neighbors
-        $neighbors = $this->getNeighbors($x, $y);       
+        $neighbors = $this->getNeighbors($x, $y);
         $this->log("Valid neighbors: %s", json_encode($neighbors));
 
         if(empty($neighbors)) {
@@ -5849,7 +5849,7 @@ class Maze
                 $next = array_pop($this->path);
                 return $this->walk($next[0], $next[1]);
             }
-        } else {            
+        } else {
             // randomize neighbors, as per request
             shuffle($neighbors);
 
@@ -5864,13 +5864,13 @@ class Maze
                 if ($nextY == $y) {
                     $wallX = max($nextX, $x);
                     $this->log("New cell is on the same row (%d,%d), removing %d,%d vertical wall", $nextX, $nextY, $wallX, $y);
-                    $this->vertWalls[$wallX][$y] = "    ";              
+                    $this->vertWalls[$wallX][$y] = "    ";
                 }
                 return $this->walk($nextX, $nextY);
             }
         }
     }
-    
+
     /**
     * Initialize an empty grid of $width * $height dimensions
     */
@@ -5888,8 +5888,8 @@ class Maze
     * @param int $y
     * @return array
     */
-    private function getNeighbors($x, $y) 
-    {       
+    private function getNeighbors($x, $y)
+    {
         $neighbors = [];
         foreach ($this->dirs as $dir) {
             $nextX = $dir[0] + $x;
@@ -5923,7 +5923,7 @@ $maze->printOut();
 +---+---+---+   +   +---+   +   +   +   +
 |           |       |           |       |
 +   +---+---+---+---+   +---+---+---+---+
-|       |               |                 
+|       |               |
 +---+   +   +---+---+---+---+---+   +   +
 |       |   |           |           |   |
 +   +---+   +   +   +   +   +---+---+   +
@@ -6239,7 +6239,7 @@ NA=            75;
 ! B     !       !       !                   !       !       !  8
 +   +   +---+   +   +   +---+---+---+---+---+---+   +   +   +  9
 !   !               !                           !       !   ! 10
-+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+ 11            
++---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+ 11
 
 ```
 
@@ -6356,7 +6356,7 @@ Enumeration
   #visited ;used to index visited(x,y) in a given direction from current maze cell
   #maze    ;used to index maze() in a given direction from current maze cell
   #wall    ;used to index walls in maze() in a given direction from current maze cell
-  #numOffsets = #wall 
+  #numOffsets = #wall
   ;direction indexes
   #dir_ID = 0 ;identity value, produces no changes
   #firstDir
@@ -6364,7 +6364,7 @@ Enumeration
   #dir_E
   #dir_S
   #dir_W
-  #numDirs = #dir_W 
+  #numDirs = #dir_W
 EndEnumeration
 
 DataSection
@@ -6402,11 +6402,11 @@ Procedure makeDisplayMazeRow(Array mazeRow.mazeOutput(1), Array maze(2), y)
   ;modify mazeRow() to produce output of 2 strings showing the vertical walls above and horizontal walls across a given maze row
   Protected x, vWall.s, hWall.s
   Protected mazeWidth = ArraySize(maze(), 1), mazeHeight = ArraySize(maze(), 2)
-  
+
   vWall = "": hWall = ""
   For x = 0 To mazeWidth
-    If maze(x, y) & wallvalue(#dir_N): vWall + "+   ": Else: vWall + "+---": EndIf 
-    If maze(x, y) & wallvalue(#dir_W): hWall + "    ": Else: hWall + "|   ": EndIf 
+    If maze(x, y) & wallvalue(#dir_N): vWall + "+   ": Else: vWall + "+---": EndIf
+    If maze(x, y) & wallvalue(#dir_W): hWall + "    ": Else: hWall + "|   ": EndIf
   Next
   mazeRow(0)\vWall = Left(vWall, mazeWidth * #cellDWidth + 1)
   If y <> mazeHeight: mazeRow(0)\hWall = Left(hWall, mazeWidth * #cellDWidth + 1): Else: mazeRow(0)\hWall = "": EndIf
@@ -6415,7 +6415,7 @@ EndProcedure
 Procedure displayMaze(Array maze(2))
   Protected x, y, vWall.s, hWall.s, mazeHeight = ArraySize(maze(), 2)
   Protected Dim mazeRow.mazeOutput(0)
-  
+
   For y = 0 To mazeHeight
     makeDisplayMazeRow(mazeRow(), maze(), y)
     PrintN(mazeRow(0)\vWall): PrintN(mazeRow(0)\hWall)
@@ -6427,7 +6427,7 @@ Procedure generateMaze(Array maze(2), mazeWidth, mazeHeight)
                                   ;array includes an extra row and column for the right and bottom walls
   Dim visited(mazeWidth + 1, mazeHeight + 1) ;Each cell represents a cell of the maze, an extra line of cells are included
                                              ;as padding around the representative cells for easy border detection
-  
+
   Protected i
   ;mark outside border as already visited (off limits)
   For i = 0 To mazeWidth
@@ -6438,12 +6438,12 @@ Procedure generateMaze(Array maze(2), mazeWidth, mazeHeight)
     visited(0 + offset(#visited, #dir_W)\x, i + offset(#visited, #dir_W)\y) = #True
     visited(mazeWidth - 1 + offset(#visited, #dir_E)\x, i + offset(#visited, #dir_E)\y) = #True
   Next
-  
+
   ;generate maze
   Protected x = Random(mazeWidth - 1), y = Random (mazeHeight - 1), cellCount, nextCell
   visited(x + offset(#visited, #dir_ID)\x, y + offset(#visited, #dir_ID)\y) = #True
   PrintN("Maze of size " + Str(mazeWidth) + " x " + Str(mazeHeight) + ", generation started at " + Str(x) + " x " + Str(y))
-  
+
   NewList stack.POINT()
   Dim unvisited(#numDirs - #firstDir)
   Repeat
@@ -6451,27 +6451,27 @@ Procedure generateMaze(Array maze(2), mazeWidth, mazeHeight)
     For i = #firstDir To #numDirs
       If Not visited(x + offset(#visited, i)\x, y + offset(#visited, i)\y)
         unvisited(cellCount) = i: cellCount + 1
-      EndIf 
-    Next 
-    
+      EndIf
+    Next
+
     If cellCount
       nextCell = unvisited(Random(cellCount - 1))
       visited(x + offset(#visited, nextCell)\x, y + offset(#visited, nextCell)\y) = #True
       maze(x + offset(#wall, nextCell)\x, y + offset(#wall, nextCell)\y) | wallvalue(nextCell)
-      
+
       If cellCount > 1
         AddElement(stack())
         stack()\x = x: stack()\y = y
-      EndIf 
+      EndIf
       x + offset(#maze, nextCell)\x: y + offset(#maze, nextCell)\y
     ElseIf ListSize(stack()) > 0
       x = stack()\x: y = stack()\y
       DeleteElement(stack())
-    Else 
+    Else
       Break  ;end maze generation
-    EndIf 
+    EndIf
   ForEver
-  
+
   ; ;mark random entry and exit point
   ; x = Random(mazeWidth - 1): y = Random(mazeHeight - 1)
   ; maze(x, 0) | wallvalue(#dir_N): maze(mazeWidth, y) | wallvalue(#dir_E)
@@ -6483,7 +6483,7 @@ If OpenConsole()
   Define mazeWidth = Random(5) + 7: mazeHeight = Random(5) + 3
   generateMaze(maze(), mazeWidth, mazeHeight)
   displayMaze(maze())
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -6588,7 +6588,7 @@ Maze generator
 ;; managing cell properties
 (define (connections tbl c) (dict-ref tbl c '()))
 
-(define (connect! tbl c n) 
+(define (connect! tbl c n)
   (dict-set! tbl c (cons n (connections tbl c)))
   (dict-set! tbl n (cons c (connections tbl n))))
 
@@ -6600,7 +6600,7 @@ Maze generator
   (define tbl (make-hash))
   (define (visited? tbl c) (dict-has-key? tbl c))
   (define (neigbours c)
-    (filter 
+    (filter
      (match-lambda [(list i j) (and (<= 0 i (- N 1)) (<= 0 j (- M 1)))])
      (for/list ([d '((0 1) (0 -1) (-1 0) (1 0))]) (map + c d))))
   ; generate the maze
@@ -6614,7 +6614,7 @@ Maze generator
 ```
 
 
-Printing out the maze 
+Printing out the maze
 
 
 ```racket
@@ -6681,10 +6681,10 @@ public void make_maze(int w, int h){
 	vis = [[0 | _ <- [1..w]] | _ <- [1..h]];
 	ver = [["|  "| _ <- [1..w]] + ["|"] | _ <- [1..h]] + [[]];
 	hor = [["+--"| _ <- [1..w]] + ["+"] | _ <- [1..h + 1]];
- 
+
 	void walk(int x, int y){
 		vis[y][x] = 1;
- 
+
 		d = [<x - 1, y>, <x, y + 1>, <x + 1, y>, <x, y - 1>];
 		while (d != []){
 			<<xx, yy>, d> = takeOneFrom(d);
@@ -6695,10 +6695,10 @@ public void make_maze(int w, int h){
 			walk(xx, yy);
 			}
  	}
- 	
+
 	walk(arbInt(w), arbInt(h));
 	for (<a, b> <- zip(hor, ver)){
-		println(("" | it + "<z>" | z <- a)); 
+		println(("" | it + "<z>" | z <- a));
 		println(("" | it + "<z>" | z <- b));
 	}
 }
@@ -6741,7 +6741,7 @@ ok
 
 ### prettified maze version
 
-In order to preserve the aspect ratio (for most display terminals), several   '''changestr'''   invocations and 
+In order to preserve the aspect ratio (for most display terminals), several   '''changestr'''   invocations and
 
 some other instructions were added to increase the horizontal dimension (cell size).
 
@@ -7189,7 +7189,7 @@ show na=108
 |   |   |       |   |       |   |   |   |       |       |   |       |   | 10
 +   +   +   +---+---+---+   +   +   +   +---+---+---+   +   +   +---+   + 11
 |   |                           |   |                   |       |       | 12
-+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+ 13   
++---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+ 13
 
 ```
 
@@ -7201,7 +7201,7 @@ show na=108
 ```ruby
 class Maze
   DIRECTIONS = [ [1, 0], [-1, 0], [0, 1], [0, -1] ]
-  
+
   def initialize(width, height)
     @width   = width
     @height  = height
@@ -7209,7 +7209,7 @@ class Maze
     @start_y = 0
     @end_x   = rand(width)
     @end_y   = height - 1
-    
+
     # Which walls do exist? Default to "true". Both arrays are
     # one element bigger than they need to be. For example, the
     # @vertical_walls[x][y] is true if there is a wall between
@@ -7218,67 +7218,67 @@ class Maze
     @horizontal_walls = Array.new(width) { Array.new(height, true) }
     # Path for the solved maze.
     @path             = Array.new(width) { Array.new(height) }
-    
+
     # "Hack" to print the exit.
     @horizontal_walls[@end_x][@end_y] = false
-    
+
     # Generate the maze.
     generate
   end
-  
+
   # Print a nice ASCII maze.
   def print
     # Special handling: print the top line.
     puts @width.times.inject("+") {|str, x| str << (x == @start_x ? "   +" : "---+")}
-    
+
     # For each cell, print the right and bottom wall, if it exists.
     @height.times do |y|
       line = @width.times.inject("|") do |str, x|
         str << (@path[x][y] ? " * " : "   ") << (@vertical_walls[x][y] ? "|" : " ")
       end
       puts line
-      
+
       puts @width.times.inject("+") {|str, x| str << (@horizontal_walls[x][y] ? "---+" : "   +")}
     end
   end
-  
+
   private
-  
+
   # Reset the VISITED state of all cells.
   def reset_visiting_state
     @visited = Array.new(@width) { Array.new(@height) }
   end
-  
+
   # Is the given coordinate valid and the cell not yet visited?
   def move_valid?(x, y)
     (0...@width).cover?(x) && (0...@height).cover?(y) && !@visited[x][y]
   end
-  
+
   # Generate the maze.
   def generate
     reset_visiting_state
     generate_visit_cell(@start_x, @start_y)
   end
-  
+
   # Depth-first maze generation.
   def generate_visit_cell(x, y)
     # Mark cell as visited.
     @visited[x][y] = true
-    
+
     # Randomly get coordinates of surrounding cells (may be outside
     # of the maze range, will be sorted out later).
     coordinates = DIRECTIONS.shuffle.map { |dx, dy| [x + dx, y + dy] }
-    
+
     for new_x, new_y in coordinates
       next unless move_valid?(new_x, new_y)
-      
+
       # Recurse if it was possible to connect the current and
       # the cell (this recursion is the "depth-first" part).
       connect_cells(x, y, new_x, new_y)
       generate_visit_cell(new_x, new_y)
     end
   end
-  
+
   # Try to connect two cells. Returns whether it was valid to do so.
   def connect_cells(x1, y1, x2, y2)
     if x1 == x2
@@ -7360,8 +7360,8 @@ impl Maze {
 
     ///Inits the maze, with all the cells unvisited and all the walls active
     fn new() -> Maze {
-        Maze { 
-            cells: [[true; HEIGHT]; WIDTH], 
+        Maze {
+            cells: [[true; HEIGHT]; WIDTH],
             walls_h: [[true; WIDTH]; HEIGHT + 1],
             walls_v: [[true; WIDTH + 1]; HEIGHT],
             thread_rng: thread_rng(),
@@ -7379,7 +7379,7 @@ impl Maze {
         let limit = if from_top { WIDTH } else { HEIGHT };
         let door = self.thread_rng.gen_range(0, limit);
         let exit = self.thread_rng.gen_range(0, limit);
-        if from_top { 
+        if from_top {
             self.walls_h[0][door] = false;
             self.walls_h[HEIGHT][exit] = false;
         } else {
@@ -7392,7 +7392,7 @@ impl Maze {
     fn remove_wall(&mut self, cell1: &Cell, cell2: &Cell) {
         if cell1.row == cell2.row {
             self.walls_v[cell1.row][if cell1.col > cell2.col { cell1.col } else { cell2.col }] = false;
-        } else { 
+        } else {
             self.walls_h[if cell1.row > cell2.row { cell1.row } else { cell2.row }][cell1.col] = false;
         };
     }
@@ -7451,7 +7451,7 @@ impl Maze {
             Maze::paint_wall(h_walls, wall);
         }
         Maze::paint_close_wall(h_walls);
-    } 
+    }
 
     ///Paints the maze
     fn paint(&self) {
@@ -7476,37 +7476,37 @@ fn main() {
 
 ```txt
 +---+---+---+---+---+---+---+   +---+---+---+---+---+---+---+---+
-|           |           |                       |               |   
+|           |           |                       |               |
 +   +---+---+   +   +   +---+   +---+---+---+   +---+---+---+   +
-|           |   |   |   |       |       |   |           |       |   
+|           |   |   |   |       |       |   |           |       |
 +   +---+   +   +   +   +   +---+   +   +   +---+---+   +   +   +
-|       |   |   |   |       |       |               |       |   |   
+|       |   |   |   |       |       |               |       |   |
 +---+   +   +   +   +---+---+   +   +---+---+   +---+---+---+   +
-|       |       |   |   |       |   |   |       |               |   
+|       |       |   |   |       |   |   |       |               |
 +   +---+---+---+   +   +   +---+   +   +   +---+   +---+---+---+
-|               |   |       |   |   |           |   |           |   
+|               |   |       |   |   |           |   |           |
 +---+---+   +---+   +   +---+   +   +---+---+   +   +   +   +   +
-|           |       |   |       |           |   |   |   |   |   |   
+|           |       |   |       |           |   |   |   |   |   |
 +   +---+---+   +---+   +   +---+---+---+   +---+   +   +   +---+
-|   |       |   |       |               |       |   |   |       |   
+|   |       |   |       |               |       |   |   |       |
 +   +   +   +   +   +---+   +---+   +   +---+   +   +---+---+   +
-|   |   |   |   |       |       |   |       |   |   |       |   |   
+|   |   |   |   |       |       |   |       |   |   |       |   |
 +   +   +---+   +---+   +---+---+   +---+   +   +   +   +   +   +
-|   |   |       |   |   |           |       |   |   |   |   |   |   
+|   |   |       |   |   |           |       |   |   |   |   |   |
 +   +   +   +---+   +   +   +   +---+---+---+   +   +   +   +   +
-|   |   |   |       |   |   |   |           |   |       |       |   
+|   |   |   |       |   |   |   |           |   |       |       |
 +   +   +   +   +   +   +   +---+   +---+   +   +---+---+---+   +
-|       |   |   |       |   |       |           |   |           |   
+|       |   |   |       |   |       |           |   |           |
 +---+   +   +   +---+---+   +   +---+---+---+   +   +   +---+---+
-|       |   |           |   |               |   |   |   |       |   
+|       |   |           |   |               |   |   |   |       |
 +   +---+   +---+---+   +   +---+---+---+   +   +   +   +   +   +
-|       |       |   |           |   |       |   |   |   |   |   |   
+|       |       |   |           |   |       |   |   |   |   |   |
 +---+---+   +   +   +---+---+   +   +   +---+   +   +   +---+   +
-|       |   |   |           |   |   |   |           |       |   |   
+|       |   |   |           |   |   |   |           |       |   |
 +---+   +---+   +---+   +   +   +   +   +---+---+---+---+   +   +
-|   |       |       |   |   |       |                   |       |   
+|   |       |       |   |   |       |                   |       |
 +   +---+   +---+   +   +---+---+   +---+---+---+---+   +---+   +
-|                   |                               |           |   
+|                   |                               |           |
 +---+---+---+---+---+---+---+---+---+---+---+---+---+---+---+   +
 ```
 
@@ -7524,7 +7524,7 @@ object MazeTypes {
   case class Loc(val x: Int, val y: Int) {
     def +(that: Direction): Loc = Loc(x + that.dx, y + that.dy)
   }
-  
+
   case class Door(val from: Loc, to: Loc)
 
   val North = Direction(0,-1)
@@ -7538,7 +7538,7 @@ object MazeBuilder {
   import MazeTypes._
 
   def shuffle[T](set: Set[T]): List[T] = Random.shuffle(set.toList)
-  
+
   def buildImpl(current: Loc, grid: Grid): Grid = {
     var newgrid = grid.markVisited(current)
     val nbors = shuffle(grid.neighbors(current))
@@ -7549,32 +7549,32 @@ object MazeBuilder {
     }
     newgrid
   }
-    
+
   def build(width: Int, height: Int): Grid = {
     val exit = Loc(width-1, height-1)
     buildImpl(exit, new Grid(width, height, Set(), Set()))
-  }  
+  }
 }
 
 class Grid(val width: Int, val height: Int, val doors: Set[Door], val visited: Set[Loc]) {
 
-  def addDoor(door: Door): Grid = 
+  def addDoor(door: Door): Grid =
     new Grid(width, height, doors + door, visited)
-  
-  def markVisited(loc: Loc): Grid = 
+
+  def markVisited(loc: Loc): Grid =
     new Grid(width, height, doors, visited + loc)
-  
-  def isVisited(loc: Loc): Boolean = 
+
+  def isVisited(loc: Loc): Boolean =
     visited.contains(loc)
-    
-  def neighbors(current: Loc): Set[Loc] = 
+
+  def neighbors(current: Loc): Set[Loc] =
     directions.map(current + _).filter(inBounds(_)) -- visited
-    
+
   def printGrid(): List[String] = {
     (0 to height).toList.flatMap(y => printRow(y))
   }
-  
-  private def inBounds(loc: Loc): Boolean = 
+
+  private def inBounds(loc: Loc): Boolean =
     loc.x >= 0 && loc.x < width && loc.y >= 0 && loc.y < height
 
   private def printRow(y: Int): List[String] = {
@@ -7583,23 +7583,23 @@ class Grid(val width: Int, val height: Int, val doors: Set[Door], val visited: S
     val newRow = row :+ List("+", rightSide)
     List.transpose(newRow).map(_.mkString)
   }
-  
+
   private val entrance = Loc(0,0)
 
   private def printCell(loc: Loc): List[String] = {
-    if (loc.y == height) 
+    if (loc.y == height)
       List("+--")
     else List(
-      if (openNorth(loc)) "+  " else "+--", 
+      if (openNorth(loc)) "+  " else "+--",
       if (openWest(loc) || loc == entrance) "   " else "|  "
     )
   }
-  
+
   def openNorth(loc: Loc): Boolean = openInDirection(loc, North)
-  
+
   def openWest(loc: Loc): Boolean = openInDirection(loc, West)
-    
-  private def openInDirection(loc: Loc, dir: Direction): Boolean = 
+
+  private def openInDirection(loc: Loc, dir: Direction): Boolean =
     doors.contains(Door(loc, loc + dir)) || doors.contains(Door(loc + dir, loc))
 }
 ```
@@ -7637,7 +7637,7 @@ class Grid(val width: Int, val height: Int, val doors: Set[Door], val visited: S
 +  +  +--+--+  +  +--+--+--+--+--+--+  +--+  +
 |  |  |        |  |                    |  |  |
 +  +  +  +--+--+--+  +--+--+--+--+--+--+  +  +
-|     |                                   |   
+|     |                                   |
 +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 
 ```
@@ -7906,7 +7906,7 @@ class MazeGenerator {
         bottomEdge += "+"
         print(bottomEdge)
     }
-    
+
     func displayInts() {
         for j in 0..<y {
             var line = ""
@@ -8012,7 +8012,7 @@ oo::class create maze {
 		unvisited= $j $k [expr {$here ne [list $j $k]}]
 	    }
 	}
- 
+
 	while {0 < $n} {
 	    lassign $here hx hy
 	    set neighbours {}
@@ -8097,7 +8097,7 @@ puts [m view]
 +   +---+---+   +   +   +   +   +   +---+   +
 |       |   |       |       |   |       |   |
 +---+   +   +---+---+---+---+   +   +---+   +
-|                               |            
+|                               |
 +---+---+---+---+---+---+---+---+---+---+---+
 
 ```
@@ -8495,20 +8495,20 @@ Output:
 
 ```txt
 
-+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+  
-         |                 |        |                       |  
-+  +--+  +--+  +--+--+--+  +  +--+  +  +--+--+--+--+--+--+  +  
-|  |  |  |     |  |        |  |     |     |           |     |  
-+  +  +  +  +--+  +  +--+--+  +  +--+--+  +--+--+  +--+  +--+  
-|  |     |  |     |  |        |           |     |     |     |  
-+  +--+--+  +  +--+  +  +--+--+--+--+--+--+  +  +--+  +--+  +  
-|     |     |     |  |  |           |        |           |  |  
-+--+  +  +--+--+  +  +  +  +--+--+  +  +--+--+--+--+--+--+  +  
-|  |  |  |        |  |  |  |     |     |     |     |        |  
-+  +  +  +  +--+--+  +  +  +  +  +--+--+  +  +  +  +  +--+--+  
-|        |              |     |           |     |              
-+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+  
-                                                               
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+         |                 |        |                       |
++  +--+  +--+  +--+--+--+  +  +--+  +  +--+--+--+--+--+--+  +
+|  |  |  |     |  |        |  |     |     |           |     |
++  +  +  +  +--+  +  +--+--+  +  +--+--+  +--+--+  +--+  +--+
+|  |     |  |     |  |        |           |     |     |     |
++  +--+--+  +  +--+  +  +--+--+--+--+--+--+  +  +--+  +--+  +
+|     |     |     |  |  |           |        |           |  |
++--+  +  +--+--+  +  +  +  +--+--+  +  +--+--+--+--+--+--+  +
+|  |  |  |        |  |  |  |     |     |     |     |        |
++  +  +  +  +--+--+  +  +  +  +  +--+--+  +  +  +  +  +--+--+
+|        |              |     |           |     |
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+
 
 ```
 

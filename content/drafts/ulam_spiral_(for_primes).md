@@ -12,29 +12,29 @@ tags = []
 
 {{task|Prime Numbers}}
 
-An Ulam spiral (of primes) is a method of visualizing primes when expressed in a (normally counter-clockwise) outward spiral (usually starting at <big>'''1'''</big>),   constructed on a square grid, starting at the "center". 
+An Ulam spiral (of primes) is a method of visualizing primes when expressed in a (normally counter-clockwise) outward spiral (usually starting at <big>'''1'''</big>),   constructed on a square grid, starting at the "center".
 
-An Ulam spiral is also known as a   ''prime spiral''. 
+An Ulam spiral is also known as a   ''prime spiral''.
 
-The first grid (green) is shown with sequential integers,   starting at   <big>'''1'''</big>. 
+The first grid (green) is shown with sequential integers,   starting at   <big>'''1'''</big>.
 
-In an Ulam spiral of primes, only the primes are shown (usually indicated by some glyph such as a dot or asterisk),   and all non-primes as shown as a blank   (or some other whitespace). 
+In an Ulam spiral of primes, only the primes are shown (usually indicated by some glyph such as a dot or asterisk),   and all non-primes as shown as a blank   (or some other whitespace).
 
 Of course, the grid and border are not to be displayed (but they are displayed here when using these Wiki HTML tables).
 
-Normally, the spiral starts in the "center",   and the   2<sup>nd</sup>   number is to the viewer's right and the number spiral starts from there in a counter-clockwise direction. 
+Normally, the spiral starts in the "center",   and the   2<sup>nd</sup>   number is to the viewer's right and the number spiral starts from there in a counter-clockwise direction.
 
-There are other geometric shapes that are used as well, including clock-wise spirals. 
+There are other geometric shapes that are used as well, including clock-wise spirals.
 
 Also, some spirals (for the   2<sup>nd</sup>   number)   is viewed upwards from the   1<sup>st</sup>   number instead of to the right, but that is just a matter of orientation.
 
 Sometimes, the starting number can be specified to show more visual striking patterns (of prime densities).
 
-[A larger than necessary grid (numbers wise) is shown here to illustrate the pattern of numbers on the diagonals   (which may be used by the method to orientate the direction of spiral-construction algorithm within the example computer programs)]. 
+[A larger than necessary grid (numbers wise) is shown here to illustrate the pattern of numbers on the diagonals   (which may be used by the method to orientate the direction of spiral-construction algorithm within the example computer programs)].
 
-Then, in the next phase in the transformation of the Ulam prime spiral,   the non-primes are translated to blanks. 
+Then, in the next phase in the transformation of the Ulam prime spiral,   the non-primes are translated to blanks.
 
-In the orange grid below,   the primes are left intact,   and all non-primes are changed to blanks.  
+In the orange grid below,   the primes are left intact,   and all non-primes are changed to blanks.
 
 Then, in the final transformation of the Ulam spiral (the yellow grid),   translate the primes to a glyph such as a   <big><big><b> ∙ </b></big></big>   or some other suitable glyph.
 
@@ -105,11 +105,11 @@ Then, in the final transformation of the Ulam spiral (the yellow grid),   transl
 
 
 <br style="clear:both">
-The Ulam spiral becomes more visually obvious as the grid increases in size. 
+The Ulam spiral becomes more visually obvious as the grid increases in size.
 
 
 ;Task
-For any sized   <big>'''N x N'''</big>   grid,   construct and show an Ulam spiral (counter-clockwise) of primes starting at some specified initial number   (the default would be '''1'''),   with some suitably   ''dotty''   (glyph) representation to indicate primes,   and the absence of dots to indicate non-primes.   
+For any sized   <big>'''N x N'''</big>   grid,   construct and show an Ulam spiral (counter-clockwise) of primes starting at some specified initial number   (the default would be '''1'''),   with some suitably   ''dotty''   (glyph) representation to indicate primes,   and the absence of dots to indicate non-primes.
 
 You should demonstrate the generator by showing at Ulam prime spiral large enough to (almost) fill your terminal screen.
 
@@ -117,12 +117,12 @@ You should demonstrate the generator by showing at Ulam prime spiral large enoug
 ;Related tasks:
 *   [[Spiral matrix]]
 *   [[Zig-zag matrix]]
-*   [[Identity matrix]] 
+*   [[Identity matrix]]
 *   [[Sequence of primes by Trial Division]]
 
 
 ;See also
-* Wikipedia entry:          [http://en.wikipedia.org/wiki/Ulam_spiral Ulam spiral]  
+* Wikipedia entry:          [http://en.wikipedia.org/wiki/Ulam_spiral Ulam spiral]
 * MathWorld&trade; entry:   [http://mathworld.wolfram.com/PrimeSpiral.html Prime Spiral]
 
 
@@ -168,7 +168,7 @@ LOOPJ1   LA     R8,1(R8)           x=x+1
          BNE    NPRMJ1
          BAL    R14,SPIRALO        spiral(x,y)=o
 NPRMJ1   LA     R5,1(R5)           n=n+1
-         BCT    R7,LOOPJ1          next j 
+         BCT    R7,LOOPJ1          next j
 ELOOPJ1  LR     R7,R6              j=i; do j=1 to i
 LOOPJ2   BCTR   R9,0               y=y-1
          LR     R1,R5              n
@@ -177,7 +177,7 @@ LOOPJ2   BCTR   R9,0               y=y-1
          BNE    NPRMJ2
          BAL    R14,SPIRALO        spiral(x,y)=o
 NPRMJ2   LA     R5,1(R5)           n=n+1
-         BCT    R7,LOOPJ2          next j 
+         BCT    R7,LOOPJ2          next j
 ELOOPJ2  LR     R7,R6              j=i
          LA     R7,1(R7)           j=i+1; do j=1 to i+1
 LOOPJ3   BCTR   R8,0               x=x-1
@@ -187,7 +187,7 @@ LOOPJ3   BCTR   R8,0               x=x-1
          BNE    NPRMJ3
          BAL    R14,SPIRALO        spiral(x,y)=o
 NPRMJ3   LA     R5,1(R5)           n=n+1
-         BCT    R7,LOOPJ3          next j 
+         BCT    R7,LOOPJ3          next j
 ELOOPJ3  LR     R7,R6              j=i
          LA     R7,1(R7)           j=i+1; do j=1 to i+1
 LOOPJ4   LA     R9,1(R9)           y=y+1
@@ -197,7 +197,7 @@ LOOPJ4   LA     R9,1(R9)           y=y+1
          BNE    NPRMJ4
          BAL    R14,SPIRALO        spiral(x,y)=o
 NPRMJ4   LA     R5,1(R5)           n=n+1
-         BCT    R7,LOOPJ4          next j 
+         BCT    R7,LOOPJ4          next j
 ELOOPJ4  LA     R6,2(R6)           i=i+2
          B      LOOPI1
 ELOOPI1  LH     R7,NSIZE           j=nsize
@@ -209,7 +209,7 @@ LOOPJ5   LA     R8,1(R8)           x=x+1
          BNE    NPRMJ5
          BAL    R14,SPIRALO        spiral(x,y)=o
 NPRMJ5   LA     R5,1(R5)           n=n+1
-         BCT    R7,LOOPJ5          next j 
+         BCT    R7,LOOPJ5          next j
 ELOOPJ5  LA     R6,1               i=1
 LOOPI2   CH     R6,NSIZE           do i=1 to nsize
          BH     ELOOPI2
@@ -249,7 +249,7 @@ NOT2     C      R1,=F'2'           if nn<2
 RRZERO   SR     R0,R0              rr=0
          B      ELOOPII
 TAGII    LA     R0,1               rr=1
-         LA     R4,3               ii=3 
+         LA     R4,3               ii=3
 LOOPII   LR     R3,R4              ii
          MR     R2,R4              ii*ii
          CR     R3,R1              if ii*ii<=nn
@@ -319,7 +319,7 @@ The specification of package generic_ulam is as follows:
 
 ```Ada
 generic
-   Size: Positive; 
+   Size: Positive;
       -- determines the size of the square
    with function Represent(N: Natural) return String;
       -- this turns a number into a string to be printed
@@ -331,11 +331,11 @@ generic
    with procedure New_Line;
       -- the name says all
 package Generic_Ulam is
-   
+
    procedure Print_Spiral;
    -- calls Put_String(Represent(I)) N^2 times
    --       and New_Line N times
-   
+
 end Generic_Ulam;
 ```
 
@@ -344,7 +344,7 @@ Here is the implementation:
 
 ```Ada
 package body Generic_Ulam is
-   
+
    subtype Index is Natural range 0 .. Size-1;
    subtype Number is Positive range 1 .. Size**2;
 
@@ -358,14 +358,14 @@ package body Generic_Ulam is
       L: Natural := 2 * Natural'Max(MX, MY);
       D: Integer;
    begin
-      if Y >= X then 
+      if Y >= X then
          D := 3 * L + X + Y;
       else
          D := L - X - Y;
       end if;
       return (L-1) ** 2 + D;
    end Cell;
-   
+
    procedure Print_Spiral is
       N: Number;
    begin
@@ -377,37 +377,37 @@ package body Generic_Ulam is
          New_Line;
       end loop;
    end Print_Spiral;
-   
+
 end Generic_Ulam;
 ```
 
 
-The folowing implementation prints a 29*29 spiral with the primes represented as numbers, and a 10*10 spiral with the primes as boxes. It uses the generic function Prime_Numbers.Is_Prime, as specified in [[Prime decomposition#Ada]]. 
+The folowing implementation prints a 29*29 spiral with the primes represented as numbers, and a 10*10 spiral with the primes as boxes. It uses the generic function Prime_Numbers.Is_Prime, as specified in [[Prime decomposition#Ada]].
 
 
 ```Ada
 with Generic_Ulam, Ada.Text_IO, Prime_Numbers;
 
 procedure Ulam is
-   
+
    package P is new Prime_Numbers(Natural, 0, 1, 2);
-   
+
    function Vis(N: Natural) return String is
       (if P.Is_Prime(N) then " <>" else "   ");
-      
+
    function Num(N: Natural) return String is
-      (if P.Is_Prime(N) then 
+      (if P.Is_Prime(N) then
 	(if N < 10 then "  " elsif N < 100 then " " else "") & Natural'Image(N)
       else " ---");
-      
+
    procedure NL is
    begin
       Ada.Text_IO.New_Line;
    end NL;
-      
+
    package Numeric is new Generic_Ulam(29, Num,  Ada.Text_IO.Put, NL);
    package Visual  is new Generic_Ulam(10, Vis,  Ada.Text_IO.Put, NL);
-   
+
 begin
    Numeric.Print_Spiral;
    NL;
@@ -450,16 +450,16 @@ end Ulam;
  --- --- --- --- --- --- --- 709 --- --- --- --- --- --- --- --- --- 719 --- --- --- --- --- --- --- 727 --- --- ---
  --- --- --- --- --- --- --- --- 821 --- 823 --- --- --- 827 --- 829 --- --- --- --- --- --- --- --- --- 839 --- ---
 
-          <>                  
-             <>    <>         
+          <>
+             <>    <>
     <>                <>    <>
- <>    <>          <>         
-          <>    <>    <>      
-       <>       <> <>    <>   
-    <>    <>                  
- <>          <>               
+ <>    <>          <>
+          <>    <>    <>
+       <>       <> <>    <>
+    <>    <>
+ <>          <>
     <>          <>          <>
- <>                <>         
+ <>                <>
 ```
 
 
@@ -564,35 +564,35 @@ Run with a side-length of 29
 
 ```txt
 
-... ... ... ... ... ... ... ... ... ... ... ... 773 ... ... ... 769 ... ... ... ... ... ... ... 761 ... ... ... 757 
-... 677 ... ... ... 673 ... ... ... ... ... ... ... ... ... ... ... 661 ... 659 ... ... ... ... ... 653 ... ... ... 
-787 ... 577 ... ... ... ... ... 571 ... 569 ... ... ... ... ... 563 ... ... ... ... ... 557 ... ... ... ... ... ... 
-... ... ... ... ... ... ... ... ... 479 ... ... ... ... ... ... ... ... ... ... ... 467 ... ... ... 463 ... ... ... 
-... ... ... ... 401 ... ... ... 397 ... ... ... ... ... ... ... 389 ... ... ... ... ... 383 ... ... ... ... ... ... 
-... ... ... 487 ... ... ... ... ... ... ... ... ... 317 ... ... ... 313 ... 311 ... ... ... 307 ... 461 ... 647 ... 
-... ... ... ... ... ... 257 ... ... ... ... ... 251 ... ... ... ... ... ... ... ... ... 241 ... 379 ... ... ... 751 
-... 683 ... ... ... ... ... 197 ... ... ... 193 ... 191 ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... 
-... ... ... ... ... ... ... ... ... ... ... ... ... ... 139 ... 137 ... ... ... ... ... 239 ... ... ... 547 ... ... 
-... ... ... 491 ... ... ... 199 ... 101 ... ... ...  97 ... ... ... ... ... ... ... 181 ... ... ... 457 ... 643 ... 
-... ... ... ... ... ... ... ... ... ... ... ... ... ...  61 ...  59 ... ... ... 131 ... ... ... ... ... ... ... ... 
-... ... ... ... ... 331 ... ... ... 103 ...  37 ... ... ... ... ...  31 ...  89 ... 179 ... ... ... ... ... 641 ... 
-797 ... 587 ... 409 ... 263 ... 149 ...  67 ...  17 ... ... ...  13 ... ... ... ... ... ... ... 373 ... ... ... ... 
-... ... ... ... ... ... ... ... ... ... ... ... ...   5 ...   3 ...  29 ... ... ... ... ... ... ... ... ... ... ... 
-... ... ... ... ... ... ... ... 151 ... ... ...  19 ... ...   2  11 ...  53 ... 127 ... 233 ... ... ... 541 ... 743 
-... 691 ... ... ... ... ... ... ... 107 ...  41 ...   7 ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... 
-... ... ... ... ... ... ... ... ... ...  71 ... ... ...  23 ... ... ... ... ... ... ... ... ... ... ... ... ... ... 
-... ... ... 499 ... 337 ... ... ... 109 ...  43 ... ... ...  47 ... ... ...  83 ... 173 ... ... ... 449 ... ... ... 
-... ... 593 ... ... ... 269 ... ... ...  73 ... ... ... ... ...  79 ... ... ... ... ... 229 ... 367 ... ... ... 739 
-... ... ... ... ... ... ... ... ... ... ... 113 ... ... ... ... ... ... ... ... ... ... ... 293 ... ... ... ... ... 
-... ... ... ... ... ... 271 ... 157 ... ... ... ... ... 163 ... ... ... 167 ... ... ... 227 ... ... ... ... ... ... 
-... ... ... 503 ... ... ... 211 ... ... ... ... ... ... ... ... ... ... ... 223 ... ... ... ... ... ... ... 631 ... 
-... ... ... ... 419 ... ... ... ... ... 277 ... ... ... 281 ... 283 ... ... ... ... ... ... ... ... ... ... ... ... 
-... ... ... ... ... ... ... ... ... 347 ... 349 ... ... ... 353 ... ... ... ... ... 359 ... ... ... 443 ... ... ... 
-809 ... 599 ... 421 ... ... ... ... ... ... ... ... ... 431 ... 433 ... ... ... ... ... 439 ... ... ... ... ... 733 
-... 701 ... ... ... 509 ... ... ... ... ... ... ... ... ... ... ... 521 ... 523 ... ... ... ... ... ... ... ... ... 
-811 ... 601 ... ... ... ... ... 607 ... ... ... ... ... 613 ... ... ... 617 ... 619 ... ... ... ... ... ... ... ... 
-... ... ... ... ... ... ... 709 ... ... ... ... ... ... ... ... ... 719 ... ... ... ... ... ... ... 727 ... ... ... 
-... ... ... ... ... ... ... ... 821 ... 823 ... ... ... 827 ... 829 ... ... ... ... ... ... ... ... ... 839 ... ... 
+... ... ... ... ... ... ... ... ... ... ... ... 773 ... ... ... 769 ... ... ... ... ... ... ... 761 ... ... ... 757
+... 677 ... ... ... 673 ... ... ... ... ... ... ... ... ... ... ... 661 ... 659 ... ... ... ... ... 653 ... ... ...
+787 ... 577 ... ... ... ... ... 571 ... 569 ... ... ... ... ... 563 ... ... ... ... ... 557 ... ... ... ... ... ...
+... ... ... ... ... ... ... ... ... 479 ... ... ... ... ... ... ... ... ... ... ... 467 ... ... ... 463 ... ... ...
+... ... ... ... 401 ... ... ... 397 ... ... ... ... ... ... ... 389 ... ... ... ... ... 383 ... ... ... ... ... ...
+... ... ... 487 ... ... ... ... ... ... ... ... ... 317 ... ... ... 313 ... 311 ... ... ... 307 ... 461 ... 647 ...
+... ... ... ... ... ... 257 ... ... ... ... ... 251 ... ... ... ... ... ... ... ... ... 241 ... 379 ... ... ... 751
+... 683 ... ... ... ... ... 197 ... ... ... 193 ... 191 ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+... ... ... ... ... ... ... ... ... ... ... ... ... ... 139 ... 137 ... ... ... ... ... 239 ... ... ... 547 ... ...
+... ... ... 491 ... ... ... 199 ... 101 ... ... ...  97 ... ... ... ... ... ... ... 181 ... ... ... 457 ... 643 ...
+... ... ... ... ... ... ... ... ... ... ... ... ... ...  61 ...  59 ... ... ... 131 ... ... ... ... ... ... ... ...
+... ... ... ... ... 331 ... ... ... 103 ...  37 ... ... ... ... ...  31 ...  89 ... 179 ... ... ... ... ... 641 ...
+797 ... 587 ... 409 ... 263 ... 149 ...  67 ...  17 ... ... ...  13 ... ... ... ... ... ... ... 373 ... ... ... ...
+... ... ... ... ... ... ... ... ... ... ... ... ...   5 ...   3 ...  29 ... ... ... ... ... ... ... ... ... ... ...
+... ... ... ... ... ... ... ... 151 ... ... ...  19 ... ...   2  11 ...  53 ... 127 ... 233 ... ... ... 541 ... 743
+... 691 ... ... ... ... ... ... ... 107 ...  41 ...   7 ... ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+... ... ... ... ... ... ... ... ... ...  71 ... ... ...  23 ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+... ... ... 499 ... 337 ... ... ... 109 ...  43 ... ... ...  47 ... ... ...  83 ... 173 ... ... ... 449 ... ... ...
+... ... 593 ... ... ... 269 ... ... ...  73 ... ... ... ... ...  79 ... ... ... ... ... 229 ... 367 ... ... ... 739
+... ... ... ... ... ... ... ... ... ... ... 113 ... ... ... ... ... ... ... ... ... ... ... 293 ... ... ... ... ...
+... ... ... ... ... ... 271 ... 157 ... ... ... ... ... 163 ... ... ... 167 ... ... ... 227 ... ... ... ... ... ...
+... ... ... 503 ... ... ... 211 ... ... ... ... ... ... ... ... ... ... ... 223 ... ... ... ... ... ... ... 631 ...
+... ... ... ... 419 ... ... ... ... ... 277 ... ... ... 281 ... 283 ... ... ... ... ... ... ... ... ... ... ... ...
+... ... ... ... ... ... ... ... ... 347 ... 349 ... ... ... 353 ... ... ... ... ... 359 ... ... ... 443 ... ... ...
+809 ... 599 ... 421 ... ... ... ... ... ... ... ... ... 431 ... 433 ... ... ... ... ... 439 ... ... ... ... ... 733
+... 701 ... ... ... 509 ... ... ... ... ... ... ... ... ... ... ... 521 ... 523 ... ... ... ... ... ... ... ... ...
+811 ... 601 ... ... ... ... ... 607 ... ... ... ... ... 613 ... ... ... 617 ... 619 ... ... ... ... ... ... ... ...
+... ... ... ... ... ... ... 709 ... ... ... ... ... ... ... ... ... 719 ... ... ... ... ... ... ... 727 ... ... ...
+... ... ... ... ... ... ... ... 821 ... 823 ... ... ... 827 ... 829 ... ... ... ... ... ... ... ... ... 839 ... ...
 
 ............#...#.......#...#
 .#...#...........#.#.....#...
@@ -629,8 +629,8 @@ Run with a side-length of 29
 
 The following shows a spiral that's not necessarily square, which has questionable merit:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int isprime(int n)
@@ -667,11 +667,11 @@ int main(int c, char **v)
 ## C++
 
 
-###  parametric version 
+###  parametric version
 
 
-```cpp>#include <cmath
-
+```cpp
+#include <cmath>
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -700,7 +700,7 @@ private:
     bool isPrime( unsigned u ) {
         if( u < 4 ) return u > 1;
         if( !( u % 2 ) || !( u % 3 ) ) return false;
- 
+
         unsigned q = static_cast<unsigned>( sqrt( static_cast<long double>( u ) ) ),
                  c = 5;
         while( c <= q ) {
@@ -710,14 +710,14 @@ private:
         return true;
     }
     void arrange( unsigned s ) {
-        unsigned stp = 1, n = 1, posX = _mx >> 1, 
+        unsigned stp = 1, n = 1, posX = _mx >> 1,
                  posY = posX, stC = 0;
         int dx = 1, dy = 0;
-    
+
         while( posX < _mx && posY < _mx ) {
             _lst.at( posX + posY * _mx ) =  isPrime( s ) ? s : 0;
             s++;
-        
+
             if( dx ) {
                 posX += dx;
                 if( ++stC == stp ) {
@@ -828,7 +828,7 @@ int main( int argc, char* argv[] )
 
 
 
-###  generic version 
+###  generic version
 
 ulam.hpp
 
@@ -902,8 +902,8 @@ std::ostream& operator <<(std::ostream& os, const Ulam<SIZE>& u) {
 
 ulam.cpp
 
-```cpp>#include <cstdlib
-
+```cpp
+#include <cstdlib>
 #include <iostream>
 #include "ulam.hpp"
 
@@ -975,144 +975,144 @@ int main(const int argc, const char* argv[]) {
 
 > (ulam-spiral 139)
   *         *       *           *               *     *       *         *           *     *           *     * *   *                       *
-             *       *     *           *           *     *           *         *           *       *         *                       *     
+             *       *     *           *           *     *           *         *           *       *         *                       *
     *     *     *           *       *         *           *                   *     *         * *   *     * *                     *       *
-         * *           *         * *                             *   *             *         * *               * *     *   *               
-*     *                     *             *     *         *       *     *               *                       *     *     *       *   *  
- *           * *           *           *   *                             *     *     *       *     *                 *         *           
-        *               *       *     *     *   *             *   * *   * *   *                       *                         *     *    
-             *           *     *                 * *           *         *       *         *             *               *                 
-                *             *     *         *       *     *   *           *       *                     *             *   *       * *    
- * *   *   *     *   * *     *                           * *                           * *   *     * *     *     *   *                 *   
-      *     *     *   *     *                                   *                   *   * *         *             *     *                  
-             *     * *         *                   *               *     *       *     *               *     *             *     * *       
-    *     *       * *                             *   *     *     *       *   *       *   *                   *     *                      
-                   *     *             *   *                 *       *         *     *       *                 *           *               
-    *     *                       *           *       *   *       *     *         * *         * *           *               * *       *    
-     * *   * *               *   *                       *     * *   *     *       *     *     *           *     *   * *           *       
-                  *   *     *             *           *           *     *         *             *               * *                     *  
-     * *                               *         *     *       *     *               *       *         * *                   * *         * 
-*         *     *   *     *   *       *                     *       *                           * *               *                 *      
-                           *           *   *       *     *   *       *         * *     *                     *       *                     
+         * *           *         * *                             *   *             *         * *               * *     *   *
+*     *                     *             *     *         *       *     *               *                       *     *     *       *   *
+ *           * *           *           *   *                             *     *     *       *     *                 *         *
+        *               *       *     *     *   *             *   * *   * *   *                       *                         *     *
+             *           *     *                 * *           *         *       *         *             *               *
+                *             *     *         *       *     *   *           *       *                     *             *   *       * *
+ * *   *   *     *   * *     *                           * *                           * *   *     * *     *     *   *                 *
+      *     *     *   *     *                                   *                   *   * *         *             *     *
+             *     * *         *                   *               *     *       *     *               *     *             *     * *
+    *     *       * *                             *   *     *     *       *   *       *   *                   *     *
+                   *     *             *   *                 *       *         *     *       *                 *           *
+    *     *                       *           *       *   *       *     *         * *         * *           *               * *       *
+     * *   * *               *   *                       *     * *   *     *       *     *     *           *     *   * *           *
+                  *   *     *             *           *           *     *         *             *               * *                     *
+     * *                               *         *     *       *     *               *       *         * *                   * *         *
+*         *     *   *     *   *       *                     *       *                           * *               *                 *
+                           *           *   *       *     *   *       *         * *     *                     *       *
   * *   *     *               *   *     *           * *                 *     *   *     *           * *                       * *         *
-         *   *   * *       *     *     *             *     *                     *     * *   *             *   *       *               *   
-      *                           * *   *     * *                           * *     *           *         *       *         *              
-                         *     *           * *   *             *         * *               *       *         *       *       *             
-*   * * *   *       *           *   *     *                   *     *   * *         * *         *                 * *   *     * *     *    
-   *     *           *     *           *     *                 *   * *   *     *             *           *                           *     
+         *   *   * *       *     *     *             *     *                     *     * *   *             *   *       *               *
+      *                           * *   *     * *                           * *     *           *         *       *         *
+                         *     *           * *   *             *         * *               *       *         *       *       *
+*   * * *   *       *           *   *     *                   *     *   * *         * *         *                 * *   *     * *     *
+   *     *           *     *           *     *                 *   * *   *     *             *           *                           *
   *                               * *         * *     *   *       *     *     *         *       *         * *         * *                 *
- *     *   *                     *     * *   *             *     *         *                 *       *                 *         *         
-*     *           *               *           * *     *     *               *       *   * *   *                 *           *              
- *                 *   * *           * *   *                 *       *                             *         *   *     * *   *             
-      *   *   *     *   * * *             *       *   *     *       *   * *                       *         *       *     *   *            
-   *                             *   *                   *     *               * *         * *     *   *                       *     *     
-          *         *             *                               *         *       *   *     *     *         * *                 *     *  
- * *           *       * *             *             *     *     *               * *     *           *     *                 *             
-*           *                       *               * *         * *     *   *     *     *             *               *                 *  
-           * *   * *   *     *       *       *                 *   *     * *                 *             *     *       *         *       
-    *   *     *       * *   *   *         * *                 *     *     *   *     *                 * *         *                 *      
-               *     *     *               * *     *         *                       *                 *     *     *                 *     
-                *         * *           *                   *   *           * *     *   * *     *   * * *               * *         *      
-       *     *   *   * * *         *     *         *       *   *     *             *   * *           *         *                           
-                  *     *     *     *               * *   * *   *       *               *                                                  
-                                                             *       *   *       *     *           * *     * * * * * * *         * * * * * 
+ *     *   *                     *     * *   *             *     *         *                 *       *                 *         *
+*     *           *               *           * *     *     *               *       *   * *   *                 *           *
+ *                 *   * *           * *   *                 *       *                             *         *   *     * *   *
+      *   *   *     *   * * *             *       *   *     *       *   * *                       *         *       *     *   *
+   *                             *   *                   *     *               * *         * *     *   *                       *     *
+          *         *             *                               *         *       *   *     *     *         * *                 *     *
+ * *           *       * *             *             *     *     *               * *     *           *     *                 *
+*           *                       *               * *         * *     *   *     *     *             *               *                 *
+           * *   * *   *     *       *       *                 *   *     * *                 *             *     *       *         *
+    *   *     *       * *   *   *         * *                 *     *     *   *     *                 * *         *                 *
+               *     *     *               * *     *         *                       *                 *     *     *                 *
+                *         * *           *                   *   *           * *     *   * *     *   * * *               * *         *
+       *     *   *   * * *         *     *         *       *   *     *             *   * *           *         *
+                  *     *     *     *               * *   * *   *       *               *
+                                                             *       *   *       *     *           * *     * * * * * * *         * * * * *
   *   *   * * *     * *             *   *   *   *       *         * *                           *           * *           *     *     *   *
-                                 *               * *   *     * *           *         *           *                 *                       
+                                 *               * *   *     * *           *         *           *                 *
           *         *     * *         * *           * *           *                     *     * *             *   *   *         *       * *
- * *     * *         *   * * * *               *     *   *     * *   *     *             *           *     *               *               
-                                                *   *                       *                 *                       *           *     *  
-                 * *     *     *                       *     *       *   * *   *     *       * * *             *         *     *   *     * 
-      *         *   *     * *           *     *   *               *       *           *     *           *         *     * *           *    
-   *           *           *           *     *               * *   *     *                 *           *                 *                 
-  *     * *     *   * *         *     * *     *             *           *     *   * *   *       * *   *     *   *                   *   *  
-   *   *           *         *   *         *     *   *     *                                 * *                     * *     *   *     * * 
-      *     *           *           *     *           *     *   *           *       *   *     *           *     *                       *  
-           *           *       *   *     *             *                 *     * *       *       *       *         * * *                   
-    *                 * * *   * *   *       *     * *         *     *     *   *           *             *     *   *             *     *    
-         *     *     *     *                       *     *         * *   * *               *           *                 *                 
-    *         *                   *   *             *     *       *         *       * *     * * * * *     *   *                 *     *    
-               *   *         * *     * * *   *     *           * *   *     *     * *   *     *     *     * *         *     * *     *       
-                                                                * *           *   *                             *                 *        
-     *           *     * *   * *   *       *   * *   * *     *     * *         * * * *       * *     *   *   * *   *   *     *             
-  *   *       * * *               *         * * *   *     *   *     *   * *                     *           *       *     *   *            
-                                                                   * *   *     *     *                       *                 *           
+ * *     * *         *   * * * *               *     *   *     * *   *     *             *           *     *               *
+                                                *   *                       *                 *                       *           *     *
+                 * *     *     *                       *     *       *   * *   *     *       * * *             *         *     *   *     *
+      *         *   *     * *           *     *   *               *       *           *     *           *         *     * *           *
+   *           *           *           *     *               * *   *     *                 *           *                 *
+  *     * *     *   * *         *     * *     *             *           *     *   * *   *       * *   *     *   *                   *   *
+   *   *           *         *   *         *     *   *     *                                 * *                     * *     *   *     * *
+      *     *           *           *     *           *     *   *           *       *   *     *           *     *                       *
+           *           *       *   *     *             *                 *     * *       *       *       *         * * *
+    *                 * * *   * *   *       *     * *         *     *     *   *           *             *     *   *             *     *
+         *     *     *     *                       *     *         * *   * *               *           *                 *
+    *         *                   *   *             *     *       *         *       * *     * * * * *     *   *                 *     *
+               *   *         * *     * * *   *     *           * *   *     *     * *   *     *     *     * *         *     * *     *
+                                                                * *           *   *                             *                 *
+     *           *     * *   * *   *       *   * *   * *     *     * *         * * * *       * *     *   *   * *   *   *     *
+  *   *       * * *               *         * * *   *     *   *     *   * *                     *           *       *     *   *
+                                                                   * *   *     *     *                       *                 *
   * *           *     *           *     *         *     *       *           *   *     * *             * * * *         * *   *             *
- *   *         *     *   *     *   *       *       * *       *   *   *     * *         * *         *     * *                           *   
-      *     *     *                 *           *           *           *                     *     *     *                 *     *        
- *   * *     *   *           * *   *     *     *       *   * *     *     *   *   *     *     *   *   * *       * *                 * *     
-    *   *   * *       * *   *     *       * *   *   * *   *   * *   *   * *   * *   *     * *                       *   *                  
-                                                                     *   *                       *                 *                 *     
-                                                                      * * *       *       * *       * * *         *     *   *     *        
-     *   *   * *   *             * * * *       *     * * *   * * * **  *   *             *     *   * *           *         * *   * *   *   
-*                 *                 *     *           *           * * *                                                                    
-       *     *   *     *             *         * *         *       *   * * * * * * * *   *     * *   * *   *             * *   *     * *   
-          * * *     * *           * *               * * *     * * *     * *   *       *   * *     *     *   * *         * *         * *    
-   *                             *           *                 *   * *                                                                     
-  *           * *   *       *     *           *         * *   *       *   * *   *   *   *     * * *     *     *       *       *            
-                 * *         * *     * *   * * *   * *   *   *     * *                                                                     
-                  *                       *     *     *               * *   *     *                       *     *           *     *        
- *     *   *       *     *               *     * *     *   * *         *     *       * * * *       *   *   *         *   *             *   
-          *     *   *                 *                 * * *   * *   *         *   *     * *                                              
-                                 *           *               *     *       *   *     *     *           *           *     *                 
-        * *           *                     *     * *     *   *           *           * *   *             * *         *   *   *         *  
-   *                                 *           *           *     *     * *     * *   * *     *         *             *     *   * *     * 
-                              *     *                     *     * *           *   *     *           *     *                 *              
- *         * *                           *           * *   *       *   *               * *         *       * *         *         *     *   
-        * * *   * * *     *     *   * *   * * *             *   * *   *                                                                    
-               *           *           *           *     *           *   *     * *                     *                 *     *     *     
-              *       *     *     *   *             *     *                     * *     *       *     * *           *     *   * * * *      
- *                   *     * *       * *     * * *                 * *   *     * *     *     * *   * *                     * *             
-                  *           *                 *   *             *   * *   *     *                                                        
- *                 *         * *     *     *           *   *       *   *             *   *   * *       *     * *           *           *   
-*       *         * *           * *     * * * * *         *       *     *     *     *             *                 *         * *   *      
-         *                       *     *               *     *     *                 * *               *                 *           *     
-    *         *       *                 *               * *   * *         *           * *     *   * *       *   * * * * *         *   *    
-     *       * *                 * *                   * *   *       *     *     *   *         *   *     * *         *       *   *     * * 
-                                    *     *         *       *     *   *                             *                 *                    
-       *   *     *     * *     *   * *   *     * *   *       *     *     *   * *   *     *                           *             *     * 
+ *   *         *     *   *     *   *       *       * *       *   *   *     * *         * *         *     * *                           *
+      *     *     *                 *           *           *           *                     *     *     *                 *     *
+ *   * *     *   *           * *   *     *     *       *   * *     *     *   *   *     *     *   *   * *       * *                 * *
+    *   *   * *       * *   *     *       * *   *   * *   *   * *   *   * *   * *   *     * *                       *   *
+                                                                     *   *                       *                 *                 *
+                                                                      * * *       *       * *       * * *         *     *   *     *
+     *   *   * *   *             * * * *       *     * * *   * * * **  *   *             *     *   * *           *         * *   * *   *
+*                 *                 *     *           *           * * *
+       *     *   *     *             *         * *         *       *   * * * * * * * *   *     * *   * *   *             * *   *     * *
+          * * *     * *           * *               * * *     * * *     * *   *       *   * *     *     *   * *         * *         * *
+   *                             *           *                 *   * *
+  *           * *   *       *     *           *         * *   *       *   * *   *   *   *     * * *     *     *       *       *
+                 * *         * *     * *   * * *   * *   *   *     * *
+                  *                       *     *     *               * *   *     *                       *     *           *     *
+ *     *   *       *     *               *     * *     *   * *         *     *       * * * *       *   *   *         *   *             *
+          *     *   *                 *                 * * *   * *   *         *   *     * *
+                                 *           *               *     *       *   *     *     *           *           *     *
+        * *           *                     *     * *     *   *           *           * *   *             * *         *   *   *         *
+   *                                 *           *           *     *     * *     * *   * *     *         *             *     *   * *     *
+                              *     *                     *     * *           *   *     *           *     *                 *
+ *         * *                           *           * *   *       *   *               * *         *       * *         *         *     *
+        * * *   * * *     *     *   * *   * * *             *   * *   *
+               *           *           *           *     *           *   *     * *                     *                 *     *     *
+              *       *     *     *   *             *     *                     * *     *       *     * *           *     *   * * * *
+ *                   *     * *       * *     * * *                 * *   *     * *     *     * *   * *                     * *
+                  *           *                 *   *             *   * *   *     *
+ *                 *         * *     *     *           *   *       *   *             *   *   * *       *     * *           *           *
+*       *         * *           * *     * * * * *         *       *     *     *     *             *                 *         * *   *
+         *                       *     *               *     *     *                 * *               *                 *           *
+    *         *       *                 *               * *   * *         *           * *     *   * *       *   * * * * *         *   *
+     *       * *                 * *                   * *   *       *     *     *   *         *   *     * *         *       *   *     * *
+                                    *     *         *       *     *   *                             *                 *
+       *   *     *     * *     *   * *   *     * *   *       *     *     *   * *   *     *                           *             *     *
   *         *           *       *     *                   *       *         *     *     *       *     * *               *           *     *
-         *                 *           *   *     *                   *         * *               *                             *     *     
-        *                 *             *     *     *   *     * *           *   *           * *     *         * * *     * *           *    
-   * *   * *     *   *   * * * * *     *     *         * *           *         * *         *         *         * *         *     *         
-*                                   *           *   *     *                 * *         *                 *           *                    
-             *     *                                 * *     *               *     *           * *       * *     *       *   *       *     
+         *                 *           *   *     *                   *         * *               *                             *     *
+        *                 *             *     *     *   *     * *           *   *           * *     *         * * *     * *           *
+   * *   * *     *   *   * * * * *     *     *         * *           *         * *         *         *         * *         *     *
+*                                   *           *   *     *                 * *         *                 *           *
+             *     *                                 * *     *               *     *           * *       * *     *       *   *       *
   *       *   *     *           *         *                             *         * *         *       * *   * *           *         *     *
-                                       *     *               *       *     *     *                 *                                       
+                                       *     *               *       *     *     *                 *
   * *   *     * *     *     *     *                             *         *     *           *             * *     * * *               * * *
- *   * *     *     * * * * * *   *     *                           *     *             *   *       *       *     *                         
-                  *                 *     *   * *           *     *   * *     *                     *     *                 *           *  
-     *                         *         *     *                   *   * *     *                                     *   * *   * * * *     
-      * *       *   *     *   *   *                 *       *     *   *     *             *     *     *                   *         * *    
-                           *   *     *       *     *         *     * *     *     *     *         *       *                                 
+ *   * *     *     * * * * * *   *     *                           *     *             *   *       *       *     *
+                  *                 *     *   * *           *     *   * *     *                     *     *                 *           *
+     *                         *         *     *                   *   * *     *                                     *   * *   * * * *
+      * *       *   *     *   *   *                 *       *     *   *     *             *     *     *                   *         * *
+                           *   *     *       *     *         *     * *     *     *     *         *       *
     *     *     *     *   *           *     * *           *     *         * *         * *     *         *             *                   *
-       *               *       *     *       *     *   *           *     *       *           *   *             *       *   *     *     * * 
-      *                 *           *         * *               * *                 *                       *               *           *  
-           * *                       *   *       *     *   *       *   *             *     *   *             *     * * *                 * 
+       *               *       *     *       *     *   *           *     *       *           *   *             *       *   *     *     * *
+      *                 *           *         * *               * *                 *                       *               *           *
+           * *                       *   *       *     *   *       *   *             *     *   *             *     * * *                 *
       * *     *       * *     *                     *             *     *         *           *     * *   *       * *         *       *   *
-               *           *         * *                             *   *     * *           *   *             *               *           
-                          *     *       *                 *   *                   *   *           * *         *     *     * * *         *  
- *         *   * *         *     *   *             *     *   *           *       *     *           *   *     *               *     *   * * 
-      *           *     *         *           *     *       *   *                                   *             *         *     *        
-       *         * *     *               *     * *         *       *                 *     *                                     *         
-  *   * * *   *   *         *       *         * *   *     *             *           *                     *       *       *   * *   *      
-                           *     *   *     *             *                 *         *       *         *                       *           
-    *           *                 *         * *         * *   *                   *               *                           * *   *   *  
-           *                         *       *     *   *                   *   *           *                       *         *   *         
-                              *   *                         *   * *     *                     * *                       *   *     *        
-     *     * *   *             *     *               *     *       *   *     *     *       *     *         *           * *         *       
-    *   *         *   *     *       *   *     * *   *                 *           *     *       *     *     *   *                          
-                                     *             *               * *           *     *   *                   *         *     *           
-          *                     * *         *                 *             *   * *   *                 * *   *     *       *     * *      
- *   *   *           *         *                 * *   *             *     *                     *                 * *           *     *   
-*     *     *   *       *   *             *               *       *     *   *           *       *               * *         *              
-             *   *     * *     *         * *         *       *     *     *         * *                 *         * *           *   *     * 
+               *           *         * *                             *   *     * *           *   *             *               *
+                          *     *       *                 *   *                   *   *           * *         *     *     * * *         *
+ *         *   * *         *     *   *             *     *   *           *       *     *           *   *     *               *     *   * *
+      *           *     *         *           *     *       *   *                                   *             *         *     *
+       *         * *     *               *     * *         *       *                 *     *                                     *
+  *   * * *   *   *         *       *         * *   *     *             *           *                     *       *       *   * *   *
+                           *     *   *     *             *                 *         *       *         *                       *
+    *           *                 *         * *         * *   *                   *               *                           * *   *   *
+           *                         *       *     *   *                   *   *           *                       *         *   *
+                              *   *                         *   * *     *                     * *                       *   *     *
+     *     * *   *             *     *               *     *       *   *     *     *       *     *         *           * *         *
+    *   *         *   *     *       *   *     * *   *                 *           *     *       *     *     *   *
+                                     *             *               * *           *     *   *                   *         *     *
+          *                     * *         *                 *             *   * *   *                 * *   *     *       *     * *
+ *   *   *           *         *                 * *   *             *     *                     *                 * *           *     *
+*     *     *   *       *   *             *               *       *     *   *           *       *               * *         *
+             *   *     * *     *         * *         *       *     *     *         * *                 *         * *           *   *     *
                 *     *     *             *   *     *     *     *       *     *                                   *                 * *   *
-   *           *     *                           *                 *             *     *         *           * *     *           *         
-                    *                       *           *     * *           *                           *       *   *     *           * *  
-   *     *                 *   *     *     *       *         *       *                 *     *   * *   *       *               * *         
-      *         * *           *           *                 *         *           *     * *         * *     *         *                 *  
-       *   *       *                 *   *           *             *     *     *   *       *     *   *                   *           *     
-    * *   * *                           *           *             *     *                     *       *   *                 *     *        
+   *           *     *                           *                 *             *     *         *           * *     *           *
+                    *                       *           *     * *           *                           *       *   *     *           * *
+   *     *                 *   *     *     *       *         *       *                 *     *   * *   *       *               * *
+      *         * *           *           *                 *         *           *     * *         * *     *         *                 *
+       *   *       *                 *   *           *             *     *     *   *       *     *   *                   *           *
+    * *   * *                           *           *             *     *                     *       *   *                 *     *
 NIL
 
 ```
@@ -1163,41 +1163,41 @@ void main() {
 {{out}}
 
 ```txt
-        #   #                                           #           # 
-          #   #           #       #                       #           
-                                #       #   #       #                 
-                              #       #               #       #   #   
-        #       #                       #   #           #             
-      #   #           #   #           #           #                   
-#                       #                       #       #           # 
-  #           #       #               #           #                   
-    #       #                   #       #   #       #   #   #         
-  #               #           #                   #   #       #       
-        #           #       #   #                               #     
-                                  #   #           #       #       #   
-    #       #       #   #       #               #       #   #         
-                                  #   #       #                       
-#               #       #   #           #   #   #           #   #   # 
-  #   #   #   #   #   #   #   #       #               #               
-                                #   #   #                       #     
-                      #       #     # #   #   #   #       #   #   #   
-        #               #   #   #                                     
-                          #       #                                   
-    #       #   #       #   #       #       #   #       #       #   # 
-          #       #       #           #           #   #       #       
-                            #                       #                 
-                  #   #           #       #       #               #   
-#           #       #                       #               #         
-  #           #           #       #   #                               
-                        #   #       #           #       #           # 
-  #   #   #   #                   #   #           #           #   #   
-        #       #                       #   #                         
-      #   #           #           #       #   #                       
-#   #               #                   #               #           # 
-                      #   #       #   #                   #           
-                #       #           #           #                   # 
-          #   #           #                                   #       
-    #               #                       #       #           #     
+        #   #                                           #           #
+          #   #           #       #                       #
+                                #       #   #       #
+                              #       #               #       #   #
+        #       #                       #   #           #
+      #   #           #   #           #           #
+#                       #                       #       #           #
+  #           #       #               #           #
+    #       #                   #       #   #       #   #   #
+  #               #           #                   #   #       #
+        #           #       #   #                               #
+                                  #   #           #       #       #
+    #       #       #   #       #               #       #   #
+                                  #   #       #
+#               #       #   #           #   #   #           #   #   #
+  #   #   #   #   #   #   #   #       #               #
+                                #   #   #                       #
+                      #       #     # #   #   #   #       #   #   #
+        #               #   #   #
+                          #       #
+    #       #   #       #   #       #       #   #       #       #   #
+          #       #       #           #           #   #       #
+                            #                       #
+                  #   #           #       #       #               #
+#           #       #                       #               #
+  #           #           #       #   #
+                        #   #       #           #       #           #
+  #   #   #   #                   #   #           #           #   #
+        #       #                       #   #
+      #   #           #           #       #   #
+#   #               #                   #               #           #
+                      #   #       #   #                   #
+                #       #           #           #                   #
+          #   #           #                                   #
+    #               #                       #       #           #
 ```
 
 
@@ -1273,7 +1273,7 @@ defmodule Ulam do
     d = if y >= x, do: l*3 + x + y, else: l - x - y
     (l - 1)*(l - 1) + d + start - 1
   end
-  
+
   def show_spiral(n, symbol\\nil, start\\1) do
     IO.puts "\nN : #{n}"
     if symbol==nil, do: format = "~#{length(to_char_list(start + n*n - 1))}s "
@@ -1290,7 +1290,7 @@ defmodule Ulam do
       IO.puts ""
     end)
   end
-  
+
   defp prime(num), do: prime(Enum.to_list(2..num), [])
   defp prime([], p), do: Enum.reverse(p)
   defp prime([h|t], p), do: prime((for i <- t, rem(i,h)>0, do: i), [h|p])
@@ -1307,69 +1307,69 @@ Ulam.show_spiral(25, ["#"," "])
 ```txt
 
 N : 9
-            61    59       
-   37                31    
-67    17          13       
-          5     3    29    
-      19        2 11    53 
-   41     7                
-71          23             
-   43          47          
-73                79       
+            61    59
+   37                31
+67    17          13
+          5     3    29
+      19        2 11    53
+   41     7
+71          23
+   43          47
+73                79
 
 N : 25
-577                     571     569                     563                     557                 
-                            479                                             467             463     
-        401             397                             389                     383                 
-    487                                     317             313     311             307     461     
-                257                     251                                     241     379         
-                    197             193     191                                                     
-                                                139     137                     239             547 
-    491             199     101              97                             181             457     
-                                                 61      59             131                         
-            331             103      37                      31      89     179                     
-587     409     263     149      67      17              13                             373         
-                                              5       3      29                                     
-                        151              19           2  11      53     127     233             541 
-                            107      41       7                                                     
-                                 71              23                                                 
-    499     337             109      43              47              83     173             449     
-593             269              73                      79                     229     367         
-                                    113                                             293             
-                271     157                     163             167             227                 
-    503             211                                             223                             
-        419                     277             281     283                                         
-                            347     349             353                     359             443     
-599     421                                     431     433                     439                 
-            509                                             521     523                             
-601                     607                     613             617     619                         
+577                     571     569                     563                     557
+                            479                                             467             463
+        401             397                             389                     383
+    487                                     317             313     311             307     461
+                257                     251                                     241     379
+                    197             193     191
+                                                139     137                     239             547
+    491             199     101              97                             181             457
+                                                 61      59             131
+            331             103      37                      31      89     179
+587     409     263     149      67      17              13                             373
+                                              5       3      29
+                        151              19           2  11      53     127     233             541
+                            107      41       7
+                                 71              23
+    499     337             109      43              47              83     173             449
+593             269              73                      79                     229     367
+                                    113                                             293
+                271     157                     163             167             227
+    503             211                                             223
+        419                     277             281     283
+                            347     349             353                     359             443
+599     421                                     431     433                     439
+            509                                             521     523
+601                     607                     613             617     619
 
 N : 25
-#     # #     #     #    
-       #           #   # 
-  #   #       #     #    
- #         #   # #   # # 
-    #     #         # #  
-     #   # #             
+#     # #     #     #
+       #           #   #
+  #   #       #     #
+ #         #   # #   # #
+    #     #         # #
+     #   # #
             # #     #   #
- #   # #   #       #   # 
-            # #   #      
-   #   # #     # # #     
-# # # # # #   #       #  
-           # # #         
+ #   # #   #       #   #
+            # #   #
+   #   # #     # # #
+# # # # # #   #       #
+           # # #
       #   #  ## # # #   #
-       # # #             
-        #   #            
- # #   # #   #   # #   # 
-#   #   #     #     # #  
-         #           #   
-    # #     #   #   #    
- #   #           #       
-  #     #   # #          
-       # #   #     #   # 
-# #         # #     #    
-   #           # #       
-#     #     #   # #      
+       # # #
+        #   #
+ # #   # #   #   # #   #
+#   #   #     #     # #
+         #           #
+    # #     #   #   #
+ #   #           #
+  #     #   # #
+       # #   #     #   #
+# #         # #     #
+   #           # #
+#     #     #   # #
 
 ```
 
@@ -1522,27 +1522,27 @@ MAIN: ulam-demo
 
 ```txt
 
-o           o                       o                 o       
-                           o           o     o           o    
-      o                 o                             o     o 
-         o           o     o                                  
-                              o     o                 o       
-         o     o           o                       o          
-                              o     o           o             
-   o           o     o                 o     o     o          
-o     o     o     o     o           o                       o 
-                           o     o     o                      
-            o           o        o  o     o     o     o       
-               o     o     o                                  
-                  o           o                               
-   o           o     o           o           o     o          
-      o           o                 o                 o     o 
-                     o                                   o    
-      o     o                 o           o           o       
-         o                                   o                
-o                 o           o     o                         
-               o     o           o                 o          
-o                             o     o                 o       
+o           o                       o                 o
+                           o           o     o           o
+      o                 o                             o     o
+         o           o     o
+                              o     o                 o
+         o     o           o                       o
+                              o     o           o
+   o           o     o                 o     o     o
+o     o     o     o     o           o                       o
+                           o     o     o
+            o           o        o  o     o     o     o
+               o     o     o
+                  o           o
+   o           o     o           o           o     o
+      o           o                 o                 o     o
+                     o                                   o
+      o     o                 o           o           o
+         o                                   o
+o                 o           o     o
+               o     o           o                 o
+o                             o     o                 o
 
 ```
 
@@ -1564,94 +1564,94 @@ All array manipulations were taken from Rosetta Code examples.
 ```forth
 
  43 constant border                                                         \ grid size is border x border
- border border * constant size                                                    
+ border border * constant size
 
  variable crawler                                                           \ position of the crawler
 
  : set.crawler border 2 mod 0= if                                           \ positions the crawler in the middle of the grid
 	 size 2 / border 2/ + 1 - crawler !
-	 else 
+	 else
 	 size 2 / crawler ! then ;
-	
- set.crawler                                                                
- create Grid size cells allot                                               \ creates the grid
- here constant GridEnd                                                      \ used for debugging 
 
- : is.divisor                                                                       
+ set.crawler
+ create Grid size cells allot                                               \ creates the grid
+ here constant GridEnd                                                      \ used for debugging
+
+ : is.divisor
 	over 2over
 	mod 0= swap drop + ;
 
- : sub.one 
+ : sub.one
 	 swap 1 - swap ;
 
  : next.div
 	 is.divisor sub.one ;
- 
+
  : three.test                                                                \ counts divisors for numbers bigger than 2
-	 dup 0 
+	 dup 0
      begin
-	 next.div 
-     over 1 = until 
+	 next.div
+     over 1 = until
 	 swap drop
 	 swap drop 1 + ;
-	
+
  : not.prime                                                                 \ counts the number of divisors. Primes have exactly two.
     dup
-    2 < if drop true else 
+    2 < if drop true else
 	three.test then ;
 
  : sub.four                                                                   \ the crawler takes a number from the stack as direction
-	 dup 4 > if 4 - then ;                                                \ this word makes the number roll over.                                                                
+	 dup 4 > if 4 - then ;                                                \ this word makes the number roll over.
                                                                               \ 1-right 2-up 3-left 4-down
  : craw.left                                                                  \ rotates the crawler 90 degrees counter-clockwise
 	 1 + sub.four ;
 
- : scan.right 
+ : scan.right
 	 grid crawler @ 1 + cells + @ 0= ;                                    \ checks if cell to the right of the crawler is zero
 
- : scan.left 
+ : scan.left
 	 grid crawler @ 1 - cells + @ 0= ;                                    \ cell to the left
 
- : scan.up 
+ : scan.up
 	 grid crawler @ border - cells + @ 0= ;                               \ cell above
 
- : scan.down 
+ : scan.down
 	 grid crawler @ border + cells + @ 0= ;                               \ and cell below
 
- : crawler.go                                                                 \ moves crawler one cell ahead checks cell to the left... 
+ : crawler.go                                                                 \ moves crawler one cell ahead checks cell to the left...
 	 dup                                                                  \ ...of the direction the crawler is facing, if zero, turns
-	 1 = if crawler @ 1 + crawler ! scan.up if craw.left then else       
-	 dup 
+	 1 = if crawler @ 1 + crawler ! scan.up if craw.left then else
+	 dup
 	 2 = if crawler @ border - crawler ! scan.left if craw.left then else
-	 dup 
+	 dup
 	 3 = if crawler @ 1 - crawler ! scan.down if craw.left then else
-	 dup 
+	 dup
 	 4  = if crawler @ border + crawler ! scan.right if craw.left then else
-	
+
 	 then then then then ;
-	
+
  : run.crawler                                                              \ crawler moves through the grid and fills it with numbers
 	 border 2 < if 1 grid 0 cells + ! else                              \ if the grid is a single cell, puts 1 in it
-	 crawler @ border - crawler !	                                    \ crawler moves one step and turn before setting the first... 
+	 crawler @ border - crawler !	                                    \ crawler moves one step and turn before setting the first...
 	 4                                                                  \ ...number so it is repositioned one cell up facing down
   	 size -1 * 0 do  i
 	 i -1 * grid crawler @ cells + ! drop
 	 crawler.go
 	 -1 +loop then drop ;
- 
+
  : leave.primes                                                                    \ removes non-primes from the grid
 	 size 0 do i
 	 grid i cells + @ not.prime if 0 grid i cells + ! then drop
 	 loop ;
- 
+
  : star.draw1                                                                      \ draws a "*" where number is not zero
 	 0> if 42 emit else 32 emit
 	 then ;
- 
+
  : star.draw2
 	 0> if 42 emit 32 emit else 32 emit 32 emit                                 \ same but adds a space for better presentation
 	 then ;
- 
+
  : star.draw3
 	 0> if 32 emit 42 emit 32 emit else 32 emit 32 emit 32 emit                 \ adds two spaces
 	 then ;
@@ -1661,13 +1661,13 @@ All array manipulations were taken from Rosetta Code examples.
 	size 0 do i
 	i border mod 0= if  cr  then
 	grid i cells + @ star.draw2 drop                                             \ may use star.draw1 or 3 here
-	loop ; 
-	
+	loop ;
+
  : ulam.spiral run.crawler leave.primes draw.grid ;                                  \ draws the spiral. Execute this word to run.
 
 ```
-	
-{{out}} 
+
+{{out}}
 <pre style="height:60ex;overflow:scroll">
 
 
@@ -1732,10 +1732,10 @@ program ulam
   integer, parameter :: nsize = 49
   integer :: i, j, n, x, y
   integer :: a(nsize*nsize) = (/ (i, i = 1, nsize*nsize) /)
-  character(1)  :: spiral(nsize, nsize) = " " 
+  character(1)  :: spiral(nsize, nsize) = " "
   character(2)  :: sstr
   character(10) :: fmt
-  
+
   n = 1
   x = nsize / 2 + 1
   y = x
@@ -1786,7 +1786,7 @@ function isprime(number)
   logical :: isprime
   integer, intent(in) :: number
   integer :: i
- 
+
   if(number == 2) then
     isprime = .true.
   else if(number < 2 .or. mod(number,2) == 0) then
@@ -1931,55 +1931,55 @@ One could escalate to declaring function IsPrime to be PURE so that it may be us
 
 ```txt
 
-        *   *     *     *       *   * *          
-     * *           *         * *   * *           
-      * *                 *     *     *          
-         *     *     *     *       *         * * 
-*   *   *             *   *       *   *          
-           *     *   * *   *             *   *   
+        *   *     *     *       *   * *
+     * *           *         * *   * *
+      * *                 *     *     *
+         *     *     *     *       *         * *
+*   *   *             *   *       *   *
+           *     *   * *   *             *   *
 *     *     * *     *   * *                 * * *
-     *     * *                     *     *       
-            * *     *   *           *     *      
-                       *   * *   *             * 
-    * *               *   *       *   * *        
-     *     *   *           * *     *             
-    * *   * *     * *     *     *           *    
- *   * *           *           *   *     * *     
+     *     * *                     *     *
+            * *     *   *           *     *
+                       *   * *   *             *
+    * *               *   *       *   * *
+     *     *   *           * *     *
+    * *   * *     * *     *     *           *
+ *   * *           *           *   *     * *
   *     *     *   *       *     *               *
- * *     *   *         *   * *   * * *           
-  * * * *       *     *         * *   *     * *  
-           *     *   * *               *     *   
+ * *     *   *         *   * *   * * *
+  * * * *       *     *         * *   *     * *
+           *     *   * *               *     *
                         * *     *   *   * *   * *
-     *   *   *   * *   *       *   * *         * 
+     *   *   *   * *   *       *   * *         *
                         * *   *                 *
- * *   *       *   * *     * * *     * * *       
-    *   * * * * * * * *   *       *         * *  
-                       * * *           *         
-    *             *   *  ** * * *   * * *     *  
- * *       *       * * *                         
-                    *   *                        
- * *     *   * *   * *   *   * *   *   * *   *   
-*     *     *   *   *     *     * *   *       *  
-                     *           *           *   
-    * *         * *     *   *   *       * *      
-     * *     *   *           *       *     *     
-        *     *     *   * *                      
-                   * *   *     *   *     *   * * 
-*       * * * *         * *     *     * *   * *  
-           *   *           * *                   
+ * *   *       *   * *     * * *     * * *
+    *   * * * * * * * *   *       *         * *
+                       * * *           *
+    *             *   *  ** * * *   * * *     *
+ * *       *       * * *
+                    *   *
+ * *     *   * *   * *   *   * *   *   * *   *
+*     *     *   *   *     *     * *   *       *
+                     *           *           *
+    * *         * *     *   *   *       * *
+     * *     *   *           *       *     *
+        *     *     *   * *
+                   * *   *     *   *     *   * *
+*       * * * *         * *     *     * *   * *
+           *   *           * *
 *     *   * *     *     *   * *           *     *
- *     * *       *         *       *     *       
-  *               * *   * *         *     *      
-   *           *   *     *     *         * *     
-    *       * *     *                 *          
-     *   *       *           *   *     *         
-*                                 *     *   *    
-     *   * *   *     *           *             * 
+ *     * *       *         *       *     *
+  *               * *   * *         *     *
+   *           *   *     *     *         * *
+    *       * *     *                 *
+     *   *       *           *   *     *
+*                                 *     *   *
+     *   * *   *     *           *             *
   *                 *     *   * *               *
- *     *           *       *               *   * 
-*       *     *   * *   *       *     *          
-                 *                       *   *   
-    *             *     *   * *     *   *     *   
+ *     *           *       *               *   *
+*       *     *   * *   *       *     *
+                 *                       *   *
+    *             *     *   * *     *   *     *
 
 ```
 
@@ -2063,7 +2063,7 @@ Haskell encourages splitting the task into indepentend parts each having very cl
 1. preparation of data: a list of numbers is mapped into the list of symbols according to primality, or any other criterion.
 
 2. spooling the list of arbitrary data into the spiral, forming a table.
- 
+
 3. displaying arbitrary table at a console or graphically.
 
 As a program the given task then formulates as following:
@@ -2073,7 +2073,7 @@ As a program the given task then formulates as following:
 import Data.List
 import Data.Numbers.Primes
 
-ulam n representation = swirl n . map representation 
+ulam n representation = swirl n . map representation
 ```
 
 
@@ -2096,7 +2096,7 @@ spool = foldl (\table piece -> piece : rotate table) [[]]
 That's it!
 
 
-###  Textual output 
+###  Textual output
 
 
 Pretty printing the table of strings with given column width is simple:
@@ -2114,49 +2114,49 @@ showTable w = foldMap (putStrLn . foldMap pad)
 ```txt
 λ> showTable 3 $ ulam 10 show [1..]
 91 92 93 94 95 96 97 98 99 100
-90 57 58 59 60 61 62 63 64 65 
-89 56 31 32 33 34 35 36 37 66 
-88 55 30 13 14 15 16 17 38 67 
-87 54 29 12 3  4  5  18 39 68 
-86 53 28 11 2  1  6  19 40 69 
-85 52 27 10 9  8  7  20 41 70 
-84 51 26 25 24 23 22 21 42 71 
-83 50 49 48 47 46 45 44 43 72 
-82 81 80 79 78 77 76 75 74 73 
+90 57 58 59 60 61 62 63 64 65
+89 56 31 32 33 34 35 36 37 66
+88 55 30 13 14 15 16 17 38 67
+87 54 29 12 3  4  5  18 39 68
+86 53 28 11 2  1  6  19 40 69
+85 52 27 10 9  8  7  20 41 70
+84 51 26 25 24 23 22 21 42 71
+83 50 49 48 47 46 45 44 43 72
+82 81 80 79 78 77 76 75 74 73
 
 λ> showTable 3 $ ulam 10 (\x -> if isPrime x then show x else " . ") [1..]
- .  .  .  .  .  . 97  .  .  . 
- .  .  . 59  . 61  .  .  .  . 
-89  . 31  .  .  .  .  . 37  . 
- .  .  . 13  .  .  . 17  . 67 
- .  . 29  . 3   . 5   .  .  . 
- . 53  . 11 2   .  . 19  .  . 
- .  .  .  .  .  . 7   . 41  . 
- .  .  .  .  . 23  .  .  . 71 
-83  .  .  . 47  .  .  . 43  . 
- .  .  . 79  .  .  .  .  . 73 
+ .  .  .  .  .  . 97  .  .  .
+ .  .  . 59  . 61  .  .  .  .
+89  . 31  .  .  .  .  . 37  .
+ .  .  . 13  .  .  . 17  . 67
+ .  . 29  . 3   . 5   .  .  .
+ . 53  . 11 2   .  . 19  .  .
+ .  .  .  .  .  . 7   . 41  .
+ .  .  .  .  . 23  .  .  . 71
+83  .  .  . 47  .  .  . 43  .
+ .  .  . 79  .  .  .  .  . 73
 
 λ> showTable 2 $ ulam 20 (\x -> if isPrime x then "*" else "") [1..]
-    *           *               *       
-  *       *   *       *                 
-*   *                   *           *   
-                      *   *       *     
-    *           *   *                   
-      *               *       *   *     
-        *       *   *                   
-      *   *   *           *   *       * 
-*               *       *   *   *   *   
-              *   *   *                 
-    *   *   *   * *     *       *       
-                      *   *   *         
-                    *       *           
-      *   *       *       *   *       * 
-*   *           *           *       *   
-  *                       *             
-    *       *       *           *   *   
-          *                       *     
-                *   *       *           
-      *           *       *   *         
+    *           *               *
+  *       *   *       *
+*   *                   *           *
+                      *   *       *
+    *           *   *
+      *               *       *   *
+        *       *   *
+      *   *   *           *   *       *
+*               *       *   *   *   *
+              *   *   *
+    *   *   *   * *     *       *
+                      *   *   *
+                    *       *
+      *   *       *       *   *       *
+*   *           *           *       *
+  *                       *
+    *       *       *           *   *
+          *                       *
+                *   *       *
+      *           *       *   *
 ```
 
 
@@ -2165,30 +2165,30 @@ The high modularity of the program allows us easily to start from any number and
 
 ```txt
 λ> showTable 2 $ ulam 20 (\x -> if isPrime x then "*" else "") [3,5..]
-      *   *             *         *     
-*   * *           *         * *   *     
-  *     *   *       *   *     *       * 
-*     *     *     *   *     *           
-    *     * *     *   * *         *     
-  *               * *   * *     *   * * 
-*       * *             *   *     * * * 
-      *   * *     *   * *               
-  *           *   * *                   
-  *     *   * *   *   * * * * *         
-*   * *   * *   * * * *     *     *     
-                  * *   * *             
-* * * * *   * *     *   *       *     * 
-    * *   * *   *       *               
-            *     *     * *     *     * 
-* * *       * *     *   * *   * * * *   
-          *     *             *   *     
-        *     *   *     * *           * 
-*     *     * *     *     *         *   
-      *         *       *         *     
+      *   *             *         *
+*   * *           *         * *   *
+  *     *   *       *   *     *       *
+*     *     *     *   *     *
+    *     * *     *   * *         *
+  *               * *   * *     *   * *
+*       * *             *   *     * * *
+      *   * *     *   * *
+  *           *   * *
+  *     *   * *   *   * * * * *
+*   * *   * *   * * * *     *     *
+                  * *   * *
+* * * * *   * *     *   *       *     *
+    * *   * *   *       *
+            *     *     * *     *     *
+* * *       * *     *   * *   * * * *
+          *     *             *   *
+        *     *   *     * *           *
+*     *     * *     *     *         *
+      *         *       *         *
 ```
 
 
-Or we can form a spiral out of arbitrary data:   (''but that doesn't show the primes as this task requires''): 
+Or we can form a spiral out of arbitrary data:   (''but that doesn't show the primes as this task requires''):
 
 
 ```txt
@@ -2198,7 +2198,7 @@ m Suspendi
  .nsectets
 ttodolorus
 aic rem re
- l moL s  
+ l moL s
 se,uspiiac
 u tema tdo
 tgnicsipin
@@ -2207,7 +2207,7 @@ cel tauqes
 
 
 
-###  Graphical output 
+###  Graphical output
 
 
 Simple graphical output could be done using <code>Diagrams</code> framework:
@@ -2273,10 +2273,10 @@ And, finally, we want to use these values to select from a pair of characters:
 
 ```J
    (' o' {~ 1 p: *: - spiral) 5
-  o  
-   o 
+  o
+   o
 oo  o
- o o 
+ o o
 o   o
 ```
 
@@ -2305,34 +2305,34 @@ And here it is in action:
 
 ```J
    ulam 16
-          o                   o 
-o       o   o                   
-              o   o           o 
-o   o       o               o   
-              o   o       o     
-    o   o           o   o   o   
-  o   o   o       o             
-            o   o   o           
-  o       o     o o   o   o   o 
-    o   o   o                   
-      o       o                 
-    o   o       o       o   o   
-      o           o           o 
-        o                       
-  o           o       o       o 
-o                       o       
+          o                   o
+o       o   o
+              o   o           o
+o   o       o               o
+              o   o       o
+    o   o           o   o   o
+  o   o   o       o
+            o   o   o
+  o       o     o o   o   o   o
+    o   o   o
+      o       o
+    o   o       o       o   o
+      o           o           o
+        o
+  o           o       o       o
+o                       o
    9 ulam 12
-  o   o                 
-o   o       o   o       
-  o   o       o       o 
-        o   o       o   
-          o           o 
-o   o   o   o   o       
-              o   o     
-            o           
-  o   o   o       o     
-        o               
-      o           o   o 
+  o   o
+o   o       o   o
+  o   o       o       o
+        o   o       o
+          o           o
+o   o   o   o   o
+              o   o
+            o
+  o   o   o       o
+        o
+      o           o   o
 ```
 
 
@@ -2354,7 +2354,7 @@ public class Ulam{
 	enum Direction{
 		RIGHT, UP, LEFT, DOWN;
 	}
-	
+
 	private static String[][] genUlam(int n){
 		return genUlam(n, 1);
 	}
@@ -2378,7 +2378,7 @@ public class Ulam{
 			case DOWN:
 				if(spiral[y][x + 1] == null) dir = Direction.RIGHT; break;
 			}
-			
+
 			switch(dir){
 				case RIGHT:	x++; break;
 				case UP: 	y--; break;
@@ -2389,7 +2389,7 @@ public class Ulam{
 		}
 		return spiral;
 	}
-	
+
 	public static boolean isPrime(int a){
 		   if(a == 2) return true;
 		   if(a <= 1 || a % 2 == 0) return false;
@@ -2399,14 +2399,14 @@ public class Ulam{
 		   }
 		   return true;
 		}
-	
+
 	public static void main(String[] args){
 		String[][] ulam = genUlam(9);
 		for(String[] row : ulam){
 			System.out.println(Arrays.toString(row).replaceAll(",", ""));
 		}
 		System.out.println();
-		
+
 		for(String[] row : ulam){
 			System.out.println(Arrays.toString(row).replaceAll("\\[\\s+\\d+", "[  * ").replaceAll("\\s+\\d+", "   * ").replaceAll(",", ""));
 		}
@@ -2440,7 +2440,7 @@ public class Ulam{
 
 
 
-###  Large scale Ulam Spiral 
+###  Large scale Ulam Spiral
 
 [[File:ulam_large_java.gif|300px|thumb|right]]
 {{works with|Java|8}}
@@ -2517,7 +2517,7 @@ public class LargeUlamSpiral extends JPanel {
 
 
 
-###  Small scale Ulam Spiral 
+###  Small scale Ulam Spiral
 
 [[File:ulam_spiral_java.gif|300px|thumb|right]]
 {{works with|Java|8}}
@@ -2719,9 +2719,9 @@ function pspUlam() {
 </script></head>
 <body onload='rbSet();' style="font-family: arial, helvatica, sans-serif;">
   <b>Plot/print style:</b>
-  <input type="radio" onclick="rbCheck();" name="rb" id="rbDef"/><b>Plot</b> 
-  <input type="radio" onclick="rbCheck();" name="rb" id="rbAst"/><b>Print *</b> 
-  <input type="radio" onclick="rbCheck();" name="rb" id="rbNum"/><b>Print numbers</b> 
+  <input type="radio" onclick="rbCheck();" name="rb" id="rbDef"/><b>Plot</b>
+  <input type="radio" onclick="rbCheck();" name="rb" id="rbAst"/><b>Print *</b>
+  <input type="radio" onclick="rbCheck();" name="rb" id="rbNum"/><b>Print numbers</b>
   <input type="button" value="Plot it!" onclick="pspUlam();">
   <h3>Ulam Spiral</h3>
   <canvas id="cvsId" width="300" height="300" style="border: 2px inset;"></canvas>
@@ -2729,7 +2729,7 @@ function pspUlam() {
 </html>
 
 ```
- 
+
 {{Output}}
 
 
@@ -2752,8 +2752,8 @@ Plot, plus this:
 |     *       *      |
 |   *           *    |
 
- matrix 'signature': Matrix(11x11) 22 dots 
- 
+ matrix 'signature': Matrix(11x11) 22 dots
+
 Print prime numbers
 
 ### =============
@@ -2770,7 +2770,7 @@ Plot, plus this:
 |    71          23             |
 |       43          47          |
 |    73                79       |
- 
+
 plot:
 =====
 Plot, plus this:
@@ -2824,23 +2824,23 @@ mprint(M)
 {{out}}
 
 ```txt
-             ∙     ∙       
+             ∙     ∙
 
-    ∙                 ∙    
+    ∙                 ∙
 
- ∙     ∙           ∙       
+ ∙     ∙           ∙
 
-          ∙     ∙     ∙    
+          ∙     ∙     ∙
 
-       ∙        ∙  ∙     ∙ 
+       ∙        ∙  ∙     ∙
 
-    ∙     ∙                
+    ∙     ∙
 
- ∙           ∙             
+ ∙           ∙
 
-    ∙           ∙          
+    ∙           ∙
 
- ∙                 ∙       
+ ∙                 ∙
 ```
 
 
@@ -2925,17 +2925,17 @@ print(" *** Ulam spiral: ",n,"x",n," matrix, p-flag=",pflg);
 x=y=n\2+1; xmx=ymx=cnt=1; dir="R";
 for(i=1,n2,
     if(isprime(i), if(!insm(M,x,y), break); if(pflg==2, M[y,x]=i, M[y,x]=1));
-    if(dir=="R", if(xmx>0, x++;xmx--, dir="U";ymx=cnt;y--;ymx--); next); 
-    if(dir=="U", if(ymx>0, y--;ymx--, dir="L";cnt++;xmx=cnt;x--;xmx--); next); 
-    if(dir=="L", if(xmx>0, x--;xmx--, dir="D";ymx=cnt;y++;ymx--); next); 
-    if(dir=="D", if(ymx>0, y++;ymx--, dir="R";cnt++;xmx=cnt;x++;xmx--); next); 
+    if(dir=="R", if(xmx>0, x++;xmx--, dir="U";ymx=cnt;y--;ymx--); next);
+    if(dir=="U", if(ymx>0, y--;ymx--, dir="L";cnt++;xmx=cnt;x--;xmx--); next);
+    if(dir=="L", if(xmx>0, x--;xmx--, dir="D";ymx=cnt;y++;ymx--); next);
+    if(dir=="D", if(ymx>0, y++;ymx--, dir="R";cnt++;xmx=cnt;x++;xmx--); next);
    );\\fend
 \\Plot/Print according to the p-flag(0-real plot,1-"*",2-primes)
 if(pflg==0, plotmat(M));
-if(pflg==1, for(i=1,n, 
+if(pflg==1, for(i=1,n,
             for(j=1,n, if(M[i,j]==1, pch="*", pch=" ");
                        print1(" ",pch)); print(" ")));
-if(pflg==2, for(i=1,n, 
+if(pflg==2, for(i=1,n,
             for(j=1,n, if(M[i,j]==0, pch=pch2, pch=spad(Str(M[i,j]),sz,,1));
                        print1(" ",pch)); print(" ")));
 }
@@ -2948,7 +2948,7 @@ plotulamspir(200); \\ ULAMspiral2.png
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -2957,7 +2957,7 @@ plotulamspir(200); \\ ULAMspiral2.png
 
 > plotulamspir(9,1);
   *** Ulam spiral: 9x9 matrix, p-flag=1
-  
+
           *   *
     *           *
   *   *       *
@@ -2967,10 +2967,10 @@ plotulamspir(200); \\ ULAMspiral2.png
   *       *
     *       *
   *           *
- 
+
 > plotulamspir(9,2);
   *** Ulam spiral: 9x9 matrix, p-flag=2
- 
+
              61    59
     37                31
  67    17          13
@@ -2980,7 +2980,7 @@ plotulamspir(200); \\ ULAMspiral2.png
  71          23
     43          47
  73                79
- 
+
 > plotulamspir(100); \\ ULAMspiral1.png
   *** Ulam spiral: 101x101 matrix, p-flag=0
   *** matrix(101x101) 1252 DOTS
@@ -2997,7 +2997,7 @@ plotulamspir(200); \\ ULAMspiral2.png
 
 Rather than produce just splots, why not colour code them? Further, how about coding all the numbers according to the number of their first prime factor? The result looks a bit like a tartan rug. Alas, image files can't be presented, so a no show, but those with access to Turbo Pascal or similar can have a try. Amusingly enough, with black as colour zero reserved for N <= 1 (thus, the normal start square is black) and white as colour one for prime numbers, it becomes marginally convenient to regard two as the second prime... Without grid marking, finding the centre of the spiral is difficult, so showing N where it is a single digit helps. Encoding could be pressed forwards into different symbols, but enough already.
 
-In the first part of the source are some support routines, from way back in the 1980s, written when the mainframe terminals only offered capitals and the habit lingered. They are there only so as to facilitate some gestures towards checking. The remainder is simple enough, and uses complex numbers to follow the spiral, which of course have to be implemented via ad-hoc code as they're not supported by the compiler. The scheme could be recast into the (line,column) form, counting downwards for the screen line, but array(i,j) = (x,y) means less standing upside down when devising the arithmetic for the directions, at the cost of a "downto" loop for output. An even more tricky scheme would be to ascertain N from (line,column) as the lines were written rather than compute the whole spiral first. Such a function exists. 
+In the first part of the source are some support routines, from way back in the 1980s, written when the mainframe terminals only offered capitals and the habit lingered. They are there only so as to facilitate some gestures towards checking. The remainder is simple enough, and uses complex numbers to follow the spiral, which of course have to be implemented via ad-hoc code as they're not supported by the compiler. The scheme could be recast into the (line,column) form, counting downwards for the screen line, but array(i,j) = (x,y) means less standing upside down when devising the arithmetic for the directions, at the cost of a "downto" loop for output. An even more tricky scheme would be to ascertain N from (line,column) as the lines were written rather than compute the whole spiral first. Such a function exists.
 
 ```Pascal
 
@@ -3350,11 +3350,11 @@ function is_prime(integer n)
     end for
     return n>=2
 end function
- 
+
 function spiral(integer w, h, x, y)
     return iff(y?w+spiral(h-1,w,y-1,w-x-1):x)
 end function
- 
+
 integer w = 9, h = 9
 for i=h-1 to 0 by -1 do
     for j=w-1 to 0 by -1 do
@@ -3473,7 +3473,7 @@ function New-UlamSpiral ( [int]$N )
         {
         If ( -not ( $Primes | Where { $X % $_ -eq 0 } | Select -First 1 ) ) { $Primes += $X }
         }
- 
+
     #  Initialize variables
     $X = 0
     $Y = -1
@@ -3491,14 +3491,14 @@ function New-UlamSpiral ( [int]$N )
         {
         #  Set the vertical quarter spiral
         1..$M | ForEach { $X += $Sign; $A[$X,$Y] = --$i -in $Primes }
-        
+
         #  Curve the spiral
         $Sign = -$Sign
-        
+
         #  Set the horizontal quarter spiral
         1..$M | ForEach { $Y += $Sign; $A[$X,$Y] = --$i -in $Primes }
         }
-    
+
     #  Convert the array of booleans to text output of dots and spaces
     $Spiral = ForEach ( $X in 1..$N ) { ( 1..$N | ForEach { ( ' ', '.' )[$A[($X-1),($_-1)]] } ) -join '' }
     return $Spiral
@@ -3513,105 +3513,105 @@ New-UlamSpiral 100
 ```txt
 
                            .     .                 .       .         . .     .               .     .
-    .             .                                   .   .       .     .           .         .     
-         .     .   .           .     .       .           .   .     .             .   .     .        
-  .     .         . .           .   .                   .   .                 .       .     .       
-       .             .   .           . .     .   .                             . .         .        
-  . .       .   . .     .           .         .     .             .                     .     . .   
- . .     .             .   .     .             .   .       .   .     .       .   .                  
-          .                       .                 . .               . .         .           .     
-       .             .   .           .       .     .           .   .     .       .     .       .    
-.             .         .     . .         . .         .     .           . .     .           .   .   
-             .       .         .     .     .     . .     .         .     .       .     .   .        
-                .     .     .             .     .   .     .       .                 .   .   .     . 
- .                                     .     . .   .                   .     .         .            
-            .     .                     .     . .   .     .           . .   .     .                 
+    .             .                                   .   .       .     .           .         .
+         .     .   .           .     .       .           .   .     .             .   .     .
+  .     .         . .           .   .                   .   .                 .       .     .
+       .             .   .           . .     .   .                             . .         .
+  . .       .   . .     .           .         .     .             .                     .     . .
+ . .     .             .   .     .             .   .       .   .     .       .   .
+          .                       .                 . .               . .         .           .
+       .             .   .           .       .     .           .   .     .       .     .       .
+.             .         .     . .         . .         .     .           . .     .           .   .
+             .       .         .     .     .     . .     .         .     .       .     .   .
+                .     .     .             .     .   .     .       .                 .   .   .     .
+ .                                     .     . .   .                   .     .         .
+            .     .                     .     . .   .     .           . .   .     .
      .     .       .       .   .             .     .                           .     .   . . . . . .
-. . .     . .             .           .     .         .                             .     .     .   
-                   .                 .     .     .       .               .     .                    
-        . .   . .       .         . .         .                             .         .           . 
+. . .     . .             .           .     .         .                             .     .     .
+                   .                 .     .     .       .               .     .
+        . .   . .       .         . .         .                             .         .           .
      .     . .       . .           .     .               .     . .                                 .
-.           .                 .         . .                 .     .   .           .                 
-     . .         .         .         . .         .           . .         .     .     . . . . .   .  
-    . . .         .     . .           .   .           . .     .   .     .     .             .       
-                     .               . .         .                   .     .   .           .        
-              . .     .       .     .     .         .       .                   .     .       .     
- .                           .     .   . .   .     .     .       .   . .     .   . .   .     . .    
-.                 .                             .   .     .       .         .     .                 
- .         . .     .   .         .   .     .     .       .   . .                   . .              
-. . . .   .       . .   .     . .           .         . .   . .               .                 .   
-               .               . .                 .     .     .               .     .              
-  .                 .             .     .     .     .       .         . . . . .     . .           . 
+.           .                 .         . .                 .     .   .           .
+     . .         .         .         . .         .           . .         .     .     . . . . .   .
+    . . .         .     . .           .   .           . .     .   .     .     .             .
+                     .               . .         .                   .     .   .           .
+              . .     .       .     .     .         .       .                   .     .       .
+ .                           .     .   . .   .     .     .       .   . .     .   . .   .     . .
+.                 .                             .   .     .       .         .     .
+ .         . .     .   .         .   .     .     .       .   . .                   . .
+. . . .   .       . .   .     . .           .         . .   . .               .                 .
+               .               . .                 .     .     .               .     .
+  .                 .             .     .     .     .       .         . . . . .     . .           .
        . .     .       . .   .   .             .   .       .   .           .     .     . .         .
-                                    .     .   . .   .             .   .                 .           
-                 . .   . .     .     . .     .   . .                 . . .     . .       . .     .  
-  .           . .     .       .     . .                     .     .             .   .     .     .   
-               .                     . .     .   .           .     .           .           .        
-                                                .   . .   .             . . .   . .   .     .     . 
-         . .       .         . .               .   .       .   . .           .                      
-            .     .           .     .   .           . .     .                     .     .           
-             .         .     . .   . .     . .     .     .           .           .                  
-.         . .             .   . .           .           .   .     . .     .                     .   
-   .           .           .     .     .   .       .     .               .           .              
-                          . .     .   .         .   . .   . . .                 .                 . 
+                                    .     .   . .   .             .   .                 .
+                 . .   . .     .     . .     .   . .                 . . .     . .       . .     .
+  .           . .     .       .     . .                     .     .             .   .     .     .
+               .                     . .     .   .           .     .           .           .
+                                                .   . .   .             . . .   . .   .     .     .
+         . .       .         . .               .   .       .   . .           .
+            .     .           .     .   .           . .     .                     .     .
+             .         .     . .   . .     . .     .     .           .           .
+.         . .             .   . .           .           .   .     . .     .                     .
+   .           .           .     .     .   .       .     .               .           .
+                          . .     .   .         .   . .   . . .                 .                 .
  .         .   .   .       . . . .       .     .         . .   .     . .     .               .     .
-      .     .                       .     .   . .               .     .     .                       
+      .     .                       .     .   . .               .     .     .
                                                  . .     .   .   . .   . . .   . .     . .         .
-.       .     .     . . .     .   .   .   . .   .       .   . .         .           .     .       . 
-                                                 . .   .                 .           .              
-        . .   .     .     . .   .       .   . .     . . .     . . .               . .           . . 
-           .   . .   . .     .   . . . . . . . .   .       .         . .         .             .    
-                                                . . .           .           .     .                 
+.       .     .     . . .     .   .   .   . .   .       .   . .         .           .     .       .
+                                                 . .   .                 .           .
+        . .   .     .     . .   .       .   . .     . . .     . . .               . .           . .
+           .   . .   . .     .   . . . . . . . .   .       .         . .         .             .
+                                                . . .           .           .     .
      .           . .   .     .             .   .  .. . . .   . . .     .       . . . .             .
-    .         . . .       . .       .       . . .                                                   
-   .                 .                       .   .                                                  
-  .                       . .     .   . .   . .   .   . .   .   . .   .   . .       .     .   . .   
-     . .       . .   .   .     .     .   .   .     .     . .   .       .     .     .   . .          
-            .     .     .                     .           .           .           .                 
-           . .     .         . .         . .     .   .   .       . .       .       .   .     .   .  
-.         . . . .             . .     .   .           .       .     .         .     .           .   
-         .                       .     .     .   . .                                                
-  .       .           .                     . .   .     .   .     .   . . .         .               
-   .   . .   .   .     . .       . . . .         . .     .     . .   . .   .       .   . .   . .    
-      .                             .   .           . .                                             
+    .         . . .       . .       .       . . .
+   .                 .                       .   .
+  .                       . .     .   . .   . .   .   . .   .   . .   .   . .       .     .   . .
+     . .       . .   .   .     .     .   .   .     .     . .   .       .     .     .   . .
+            .     .     .                     .           .           .           .
+           . .     .         . .         . .     .   .   .       . .       .       .   .     .   .
+.         . . . .             . .     .   .           .       .     .         .     .           .
+         .                       .     .     .   . .
+  .       .           .                     . .   .     .   .     .   . . .         .
+   .   . .   .   .     . .       . . . .         . .     .     . .   . .   .       .   . .   . .
+      .                             .   .           . .
  .         . .     .     .     .   . .     .     .   . .           .     .   . . .     . .         .
-        .   .     . . . . .     . .       .         .       .     .             .   .               
-               .           .               . .   . .         .     .                       .     .  
-    .   .     .             .           .   .     .     .         . .     .       .   . .   . . .   
- . .         .       .       .       . .     .                 .             .     .   .       .    
-      .     .           .     .   .       .           .   .     .           .     .           .     
+        .   .     . . . . .     . .       .         .       .     .             .   .
+               .           .               . .   . .         .     .                       .     .
+    .   .     .             .           .   .     .     .         . .     .       .   . .   . . .
+ . .         .       .       .       . .     .                 .             .     .   .       .
+      .     .           .     .   .       .           .   .     .           .     .           .
  .                     . .                                 .     .   .     .         .   .         .
-      .   .     .   . .       .   . .   .     .           .             .     . .     .         . . 
-               .           .                 .     .   . .               .     .           .        
-    .         .           .     .           .       .               .   .     .           . .     . 
+      .   .     .   . .       .   . .   .     .           .             .     . .     .         . .
+               .           .                 .     .   . .               .     .           .
+    .         .           .     .           .       .               .   .     .           . .     .
        .             . . .       .     .   . .   .       .     .                       .     .     .
-.                       .                 .                       .   .                             
-           .     .           .             .     .   . .     .   .     .               . . . .   .  
-.   .   .             . .     .                     .           . .           . .         . .     . 
-   .                 .           .         .           . .     .   . .               .              
-        . .           .                           . .         .       .   .   .   .             . . 
- . . . . . .     . .           .     .       .   .       .                                          
-                              .               .       .   . .   . .               .     .     .     
-       .         .           . .   .             .     .   .       .         .     .         . . .  
-              . . .   .     . .   .     . .           .   .                   .           . .       
-   .     .     .                 .                       .         .     . .               .     .  
-    .         . .                 .     .   .     .     .                 . .         .   .   . .   
+.                       .                 .                       .   .
+           .     .           .             .     .   . .     .   .     .               . . . .   .
+.   .   .             . .     .                     .           . .           . .         . .     .
+   .                 .           .         .           . .     .   . .               .
+        . .           .                           . .         .       .   .   .   .             . .
+ . . . . . .     . .           .     .       .   .       .
+                              .               .       .   . .   . .               .     .     .
+       .         .           . .   .             .     .   .       .         .     .         . . .
+              . . .   .     . .   .     . .           .   .                   .           . .
+   .     .     .                 .                       .         .     . .               .     .
+    .         . .                 .     .   .     .     .                 . .         .   .   . .
      .     .             .                 . .     .   .                 .       .       .     .   .
-.               .             .     .     .   .     . .         . .               .                 
-           .     .           .     . .               .     .     .             .             . .    
-      . .         .     .     .   .       .         .                               .             . 
-               .   .     . .         . .               .     .                   .   .              
-  .       .         .                       . .   .       .     .   .       .             . . .   . 
+.               .             .     .     .   .     . .         . .               .
+           .     .           .     . .               .     .     .             .             . .
+      . .         .     .     .   .       .         .                               .             .
+               .   .     . .         . .               .     .                   .   .
+  .       .         .                       . .   .       .     .   .       .             . . .   .
      .   .         .                             .       .                 .   . .           . .   .
-      .                 .   . .   .       .               .     .     . .           .               
-                 .       .                 .         .     .             .   . .     .              
-.         . .         .       .         .     .     .       .   .     . .         . .               
-             .           .             .     .   . .   .                 .     .           .     .  
-  . .                 .         . .         . .   .     .                   .     .   .           . 
- .       .         .       .               . .         .             .   . .           .     .      
-    .       .         .           .     . .                           . .     .   . .               
+      .                 .   . .   .       .               .     .     . .           .
+                 .       .                 .         .     .             .   . .     .
+.         . .         .       .         .     .     .       .   .     . .         . .
+             .           .             .     .   . .   .                 .     .           .     .
+  . .                 .         . .         . .   .     .                   .     .   .           .
+ .       .         .       .               . .         .             .   . .           .     .
+    .       .         .           .     . .                           . .     .   . .
        .   .             .   . .     .                     .     .             .     .     .       .
-                . .           .     .   .     .                 . .           .     .   .           
+                . .           .     .   .     .                 . .           .     .   .
 
 ```
 
@@ -3674,15 +3674,15 @@ show_spiral(9, symbol='', space=' - ')
 ♘♞♘♘♘♞♘♘♘♞
 ♞♘♘♘♘♘♞♘♘♘
 
- -  -  -  - 61  - 59  -  - 
- - 37  -  -  -  -  - 31  - 
-67  - 17  -  -  - 13  -  - 
- -  -  -  5  -  3  - 29  - 
- -  - 19  -  -  2 11  - 53 
- - 41  -  7  -  -  -  -  - 
-71  -  -  - 23  -  -  -  - 
- - 43  -  -  - 47  -  -  - 
-73  -  -  -  -  - 79  -  - 
+ -  -  -  - 61  - 59  -  -
+ - 37  -  -  -  -  - 31  -
+67  - 17  -  -  - 13  -  -
+ -  -  -  5  -  3  - 29  -
+ -  - 19  -  -  2 11  - 53
+ - 41  -  7  -  -  -  -  -
+71  -  -  - 23  -  -  -  -
+ - 43  -  -  - 47  -  -  -
+73  -  -  -  -  - 79  -  -
 
 ```
 
@@ -3705,7 +3705,7 @@ My own plotting helper function plotmat() was used and made it possible. You can
 ## Plotting Ulam spiral (for primes) 2/12/17 aev
 ## plotulamspirR(n, clr, fn, ttl, psz=600), where: n - initial size;
 ## clr - color; fn - file name; ttl - plot title; psz - picture size.
-## 
+##
 require(numbers);
 plotulamspirR <- function(n, clr, fn, ttl, psz=600) {
   cat(" *** START:", date(), "n=",n, "clr=",clr, "psz=", psz, "\n");
@@ -3717,13 +3717,13 @@ plotulamspirR <- function(n, clr, fn, ttl, psz=600) {
   for (i in 1:n2) {
     if(isPrime(i)) {M[x,y]=1};
     if(dir=="R") {if(xmx>0) {x=x+1;xmx=xmx-1}
-                  else {dir="U";ymx=cnt;y=y-1;ymx=ymx-1}; next}; 
+                  else {dir="U";ymx=cnt;y=y-1;ymx=ymx-1}; next};
     if(dir=="U") {if(ymx>0) {y=y-1;ymx=ymx-1}
-                  else {dir="L";cnt=cnt+1;xmx=cnt;x=x-1;xmx=xmx-1}; next}; 
-    if(dir=="L") {if(xmx>0) {x=x-1;xmx=xmx-1} 
-                  else {dir="D";ymx=cnt;y=y+1;ymx=ymx-1}; next}; 
-    if(dir=="D") {if(ymx>0) {y=y+1;ymx=ymx-1} 
-                  else {dir="R";cnt=cnt+1;xmx=cnt;x=x+1;xmx=xmx-1}; next}; 
+                  else {dir="L";cnt=cnt+1;xmx=cnt;x=x-1;xmx=xmx-1}; next};
+    if(dir=="L") {if(xmx>0) {x=x-1;xmx=xmx-1}
+                  else {dir="D";ymx=cnt;y=y+1;ymx=ymx-1}; next};
+    if(dir=="D") {if(ymx>0) {y=y+1;ymx=ymx-1}
+                  else {dir="R";cnt=cnt+1;xmx=cnt;x=x+1;xmx=xmx-1}; next};
   };
   plotmat(M, fn, clr, ttl,,psz);
   cat(" *** END:",date(),"\n");
@@ -3734,7 +3734,7 @@ plotulamspirR(100, "red", "UlamSpiralR1", "Ulam Spiral: ");
 plotulamspirR(200, "red", "UlamSpiralR2", "Ulam Spiral: ",1240);
 
 ```
- 
+
 
 {{Output}}
 
@@ -3742,16 +3742,16 @@ plotulamspirR(200, "red", "UlamSpiralR2", "Ulam Spiral: ",1240);
 ```txt
 
 > plotulamspirR(100, "red", "UlamSpiralR1", "Ulam Spiral: ");
- *** START: Sun Feb 12 12:03:34 2017 n= 100 clr= red psz= 600 
- *** Ulam Spiral: 101x101 matrix. 
+ *** START: Sun Feb 12 12:03:34 2017 n= 100 clr= red psz= 600
+ *** Ulam Spiral: 101x101 matrix.
  *** Matrix( 101 x 101 ) 1232 DOTS
- *** END: Sun Feb 12 12:03:37 2017 
+ *** END: Sun Feb 12 12:03:37 2017
 
 > plotulamspirR(200, "red", "UlamSpiralR2", "Ulam Spiral: ",1240);
  *** START: Sun Feb 12 12:03:51 2017 n= 200 clr= red psz= 1240
- *** Ulam Spiral: 201x201 matrix. 
+ *** Ulam Spiral: 201x201 matrix.
  *** Matrix( 201 x 201 ) 4196 DOTS
- *** END: Sun Feb 12 12:04:07 2017 
+ *** END: Sun Feb 12 12:04:07 2017
 
 ```
 
@@ -3766,14 +3766,14 @@ plotulamspirR(200, "red", "UlamSpiralR2", "Ulam Spiral: ",1240);
 ```racket
 #lang racket
 (require (only-in math/number-theory prime?))
- 
+
 (define ((cell-fn n (start 1)) x y)
   (let* ((y (- y (quotient n 2)))
          (x (- x (quotient (sub1 n) 2)))
          (l (* 2 (if (> (abs x) (abs y)) (abs x) (abs y))))
          (d (if (>= y x) (+ (* l 3) x y) (- l x y))))
     (+ (sqr (- l 1)) d start -1)))
- 
+
 (define (show-spiral n
                      #:symbol (smb "# ")
                      #:start (start 1)
@@ -3788,13 +3788,13 @@ plotulamspirR(200, "red", "UlamSpiralR2", "Ulam Spiral: ",1240);
           (λ (i p?)
             (display (if p? (~a #:width max-len i #:align 'right) space))
             (display #\space)))))
- 
+
   (for* ((y (in-range 0 n)) #:when (unless (= y 0) (newline)) (x (in-range 0 n)))
     (define c (cell x y))
     (define p? (prime? c))
     (print-cell c p?))
   (newline))
- 
+
 (show-spiral 9 #:symbol #f)
 (show-spiral 10 #:symbol "♞" #:space "♘") ; black are the primes
 (show-spiral 50 #:symbol "*" #:start 42)
@@ -3806,15 +3806,15 @@ plotulamspirR(200, "red", "UlamSpiralR2", "Ulam Spiral: ",1240);
 {{out}}
 
 ```txt
-__ __ __ __ 61 __ 59 __ __ 
-__ 37 __ __ __ __ __ 31 __ 
-67 __ 17 __ __ __ 13 __ __ 
-__ __ __  5 __  3 __ 29 __ 
-__ __ 19 __ __  2 11 __ 53 
-__ 41 __  7 __ __ __ __ __ 
-71 __ __ __ 23 __ __ __ __ 
-__ 43 __ __ __ 47 __ __ __ 
-73 __ __ __ __ __ 79 __ __ 
+__ __ __ __ 61 __ 59 __ __
+__ 37 __ __ __ __ __ 31 __
+67 __ 17 __ __ __ 13 __ __
+__ __ __  5 __  3 __ 29 __
+__ __ 19 __ __  2 11 __ 53
+__ 41 __  7 __ __ __ __ __
+71 __ __ __ 23 __ __ __ __
+__ 43 __ __ __ 47 __ __ __
+73 __ __ __ __ __ 79 __ __
 ♘♘♘♞♘♘♘♘♘♘
 ♘♘♘♘♞♘♞♘♘♘
 ♘♞♘♘♘♘♘♞♘♞
@@ -3825,56 +3825,56 @@ __ 43 __ __ __ 47 __ __ __
 ♞♘♘♘♞♘♘♘♘♘
 ♘♞♘♘♘♞♘♘♘♞
 ♞♘♘♘♘♘♞♘♘♘
-  *       *         *                 *           
-     * *     *                     * *            
-*     *         * *   *     * *               * * 
-       *                     * *               *  
-  *     *           * *   *     *             *   
- *       *         *     * *     *   * *          
-*       * *         *           *     * *   * * * 
-     *           *     * *           *   * *      
-            *     *     *         *       *       
-   * *     * *         * *         *     *   *    
-          *   *       *         *       *   *     
-       *     * *         * *           *          
-* *     * *         *       *         * * *     * 
-     *     * *   *     *     * *     *            
-          * *   * *           *     *             
+  *       *         *                 *
+     * *     *                     * *
+*     *         * *   *     * *               * *
+       *                     * *               *
+  *     *           * *   *     *             *
+ *       *         *     * *     *   * *
+*       * *         *           *     * *   * * *
+     *           *     * *           *   * *
+            *     *     *         *       *
+   * *     * *         * *         *     *   *
+          *   *       *         *       *   *
+       *     * *         * *           *
+* *     * *         *       *         * * *     *
+     *     * *   *     *     * *     *
+          * *   * *           *     *
          *       *     * *         *   *   * * * *
-              *       *     *   * *               
-               *     *         * *                
-  *                   *   * *   * *       *     * 
+              *       *     *   * *
+               *     *         * *
+  *                   *   * *   * *       *     *
      *           *     * *     *   *     *       *
-    *                 * *     *     *     *       
-   *     * *     *     * *   *       *   * * *    
-  *           *     *     * *   *     * *         
- *     *       *     *     *                      
-  *       *       * * *   *             *   * *   
+    *                 * *     *     *     *
+   *     * *     *     * *   *       *   * * *
+  *           *     *     * *   *     * *
+ *     *       *     *     *
+  *       *       * * *   *             *   * *
                        * *   *             *   * *
-*   *       *   * *   *       *           *     * 
-       *   *       * *     *     * * *     * * *  
-  *                 *     *     * *         *     
-   *         * *   *                              
-    * * *     * * *     *     * *   *   * *   * * 
-     *           * *           *   * *     *   *  
-*   *           *     *     *             *     * 
+*   *       *   * *   *       *           *     *
+       *   *       * *     *     * * *     * * *
+  *                 *     *     * *         *
+   *         * *   *
+    * * *     * * *     *     * *   *   * *   * *
+     *           * *           *   * *     *   *
+*   *           *     *     *             *     *
        *   *   *   *             *             * *
-        *     *     *       *   *       *         
-         *   * *   *           *       *     *    
-* *   * *   *         *     *     * * *     * *   
-           * *   *     *     * *                  
-*         *       *     *   *       *             
-       * *   * *   *             *   * *          
-        *     *     *       *     *         *     
-       *     *     *       *     *     *          
-  *   *     *           *         *               
-     *       *                 *         *        
-*           *           *     *   *     *         
+        *     *     *       *   *       *
+         *   * *   *           *       *     *
+* *   * *   *         *     *     * * *     * *
+           * *   *     *     * *
+*         *       *     *   *       *
+       * *   * *   *             *   * *
+        *     *     *       *     *         *
+       *     *     *       *     *     *
+  *   *     *           *         *
+     *       *                 *         *
+*           *           *     *   *     *
    *           *   * *         *           * * * *
-                *     *   * *   * *         *     
- *     * *         *             *         *      
-*   *     *       *               * *   *       * 
-     *           *     *     *             *   *  
+                *     *   * *   * *         *
+ *     * *         *             *         *
+*   *     *       *               * *   *       *
+     *           *     *     *             *   *
 
 ```
 
@@ -3882,7 +3882,7 @@ __ 43 __ __ __ 47 __ __ __
 
 ## REXX
 
-Programming note for the showing of the spiral:   because images can't be uploaded at this time on Rosetta Code, the glyphs for primes was chosen to be a solid glyph   (or in ASCII or XML terminology, a "block"). 
+Programming note for the showing of the spiral:   because images can't be uploaded at this time on Rosetta Code, the glyphs for primes was chosen to be a solid glyph   (or in ASCII or XML terminology, a "block").
 
 This then allows the REXX program to compress two rows of the Ulam spiral into one by processing two rows at a time by comparing each character to the character on the next line   (when comparing two lines as a pair):
 ::* if a char on row   '''k'''   is a block, and the char on row   '''k+1'''   is a block, then a   "block"   is used.
@@ -3902,7 +3902,7 @@ Or, to show all three characters in the (above) ordered next to each other (sepa
 This allows the displaying of the Ulam prime spiral to keep a (mostly) square aspect ratio.
 
 The characters chosen allow for the HTML on Rosetta Code to shrink (via STYLE ''font-size'') the displayed output to half their normal height.
-  
+
 ===counter-clockwise===
 
 ```rexx
@@ -4004,7 +4004,7 @@ isPrime: procedure; parse arg x;  if wordpos(x, '2 3 5 7 11 13 17 19') \==0  the
 1 is the starting point, 6241 numbers used, 811 primes found, largest prime: 6229
 
 ```
- 
+
 {{out|output|text=  when the following input is used:     <tt> ,   41 </tt>}}
 
 (Shown at three-quarter size.)
@@ -4169,13 +4169,13 @@ isPrime: procedure; parse arg x;  if wordpos(x, '2 3 5 7 11 13 17 19') \==0  the
 ```ring
 
 # Project : Ulam spiral (for primes)
- 
+
 load "guilib.ring"
 load "stdlib.ring"
 
 paint = null
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("Ulam spiral")
@@ -4227,13 +4227,13 @@ func ulamspiral(nr)
                      button[n] = new qpushbutton(win1)
                      {
                                         setgeometry(60+col*40,60+row*40,40,40)
-                                        setclickevent("movetile(" + string(n) +")")   
-                                        show() 
-                     } 
+                                        setclickevent("movetile(" + string(n) +")")
+                                        show()
+                     }
                 next
         n = 9
         result = newlist(n,n)
-        k = 1 
+        k = 1
         top = 1
         bottom = n
         left = 1
@@ -4242,18 +4242,18 @@ func ulamspiral(nr)
                  for i=left to right
                       result[top][i]=k
                       k = k + 1
-                 next    
-                 top = top + 1 
+                 next
+                 top = top + 1
                  for i=top to bottom
                      result[i][right]=k
                      k = k + 1
                  next
-                 right = right - 1 
+                 right = right - 1
                  for i=right to left step -1
                       result[bottom][i]=k
                       k = k + 1
                  next
-                 bottom = bottom - 1 
+                 bottom = bottom - 1
                  for i=bottom to top step -1
                       result[i][left] = k
                       k = k + 1
@@ -4261,7 +4261,7 @@ func ulamspiral(nr)
                  left = left + 1
         end
         for m = 1 to n
-             for p = 1 to n  
+             for p = 1 to n
                   pos = (m-1)*n + p
                   if isprime(result[m][p])
                      button[pos] {settext(string(result[m][p]))}
@@ -4319,69 +4319,69 @@ show_spiral(25, "# ")
 ```txt
 
 N : 9
-            61    59       
-   37                31    
-67    17          13       
-          5     3    29    
-      19        2 11    53 
-   41     7                
-71          23             
-   43          47          
-73                79       
+            61    59
+   37                31
+67    17          13
+          5     3    29
+      19        2 11    53
+   41     7
+71          23
+   43          47
+73                79
 
 N : 25
-577                     571     569                     563                     557                 
-                            479                                             467             463     
-        401             397                             389                     383                 
-    487                                     317             313     311             307     461     
-                257                     251                                     241     379         
-                    197             193     191                                                     
-                                                139     137                     239             547 
-    491             199     101              97                             181             457     
-                                                 61      59             131                         
-            331             103      37                      31      89     179                     
-587     409     263     149      67      17              13                             373         
-                                              5       3      29                                     
-                        151              19           2  11      53     127     233             541 
-                            107      41       7                                                     
-                                 71              23                                                 
-    499     337             109      43              47              83     173             449     
-593             269              73                      79                     229     367         
-                                    113                                             293             
-                271     157                     163             167             227                 
-    503             211                                             223                             
-        419                     277             281     283                                         
-                            347     349             353                     359             443     
-599     421                                     431     433                     439                 
-            509                                             521     523                             
-601                     607                     613             617     619                         
+577                     571     569                     563                     557
+                            479                                             467             463
+        401             397                             389                     383
+    487                                     317             313     311             307     461
+                257                     251                                     241     379
+                    197             193     191
+                                                139     137                     239             547
+    491             199     101              97                             181             457
+                                                 61      59             131
+            331             103      37                      31      89     179
+587     409     263     149      67      17              13                             373
+                                              5       3      29
+                        151              19           2  11      53     127     233             541
+                            107      41       7
+                                 71              23
+    499     337             109      43              47              83     173             449
+593             269              73                      79                     229     367
+                                    113                                             293
+                271     157                     163             167             227
+    503             211                                             223
+        419                     277             281     283
+                            347     349             353                     359             443
+599     421                                     431     433                     439
+            509                                             521     523
+601                     607                     613             617     619
 
 N : 25
-#     # #     #     #    
-       #           #   # 
-  #   #       #     #    
- #         #   # #   # # 
-    #     #         # #  
-     #   # #             
+#     # #     #     #
+       #           #   #
+  #   #       #     #
+ #         #   # #   # #
+    #     #         # #
+     #   # #
             # #     #   #
- #   # #   #       #   # 
-            # #   #      
-   #   # #     # # #     
-# # # # # #   #       #  
-           # # #         
+ #   # #   #       #   #
+            # #   #
+   #   # #     # # #
+# # # # # #   #       #
+           # # #
       #   #  ## # # #   #
-       # # #             
-        #   #            
- # #   # #   #   # #   # 
-#   #   #     #     # #  
-         #           #   
-    # #     #   #   #    
- #   #           #       
-  #     #   # #          
-       # #   #     #   # 
-# #         # #     #    
-   #           # #       
-#     #     #   # #      
+       # # #
+        #   #
+ # #   # #   #   # #   #
+#   #   #     #     # #
+         #           #
+    # #     #   #   #
+ #   #           #
+  #     #   # #
+       # #   #     #   #
+# #         # #     #
+   #           # #
+#     #     #   # #
 
 ```
 
@@ -4416,7 +4416,7 @@ def ulam_spiral(n, start=1)
     pos = position.next
     h[pos] = 1  if i.prime?
   end
-  
+
   chr = [[' ', '▄'], ['▀', '█']]
   (xmin, xmax), (ymin, ymax) = h.keys.transpose.map(&:minmax)
   (xmin..xmax).step(2).each do |x|
@@ -4434,75 +4434,75 @@ end
 {{out}}
 <pre style="font-size:50%">
 N : 11
-▀   ▀▄ ▄   
+▀   ▀▄ ▄
 ▀▄▀▄   ▄▀ ▀
-   ▄▀ █▄▀▄ 
-▀▄▀ ▀▄     
+   ▄▀ █▄▀▄
+▀▄▀ ▀▄
 ▀▄▀   ▀▄  ▀
-  ▀        
+  ▀
 
 N : 122
-▄    ▀      ▄ ▄▀ ▀              ▄▀       ▀           ▀▄  ▀  ▄  ▀       ▀  ▄   ▄ ▄      ▀          ▄  ▀   ▀  ▄    ▀   ▀  ▄ 
-  ▄  ▀  ▄    ▀    ▄▀   ▀ ▀            ▄   ▄▀   ▀▄▀   ▀      ▄ ▄    ▀          ▄      ▀      ▄  ▀ ▀                     ▀  
+▄    ▀      ▄ ▄▀ ▀              ▄▀       ▀           ▀▄  ▀  ▄  ▀       ▀  ▄   ▄ ▄      ▀          ▄  ▀   ▀  ▄    ▀   ▀  ▄
+  ▄  ▀  ▄    ▀    ▄▀   ▀ ▀            ▄   ▄▀   ▀▄▀   ▀      ▄ ▄    ▀          ▄      ▀      ▄  ▀ ▀                     ▀
         ▄ ▄      ▀   ▀▄    ▀    ▄▀    ▄  ▀    ▄▀    ▄     ▄▀  ▄       ▄     ▄▀   ▀ ▀     ▀  ▄▀    ▄  ▀     ▀   ▀▄   ▄ ▄  ▀
-▄   ▄▀   ▀    ▄                  ▀ ▀  ▄           ▄   ▄  ▀     ▀ ▀   ▀    ▄   ▄     ▄       ▄  ▀   ▀                  ▄   
- ▀▄▀                      ▄    ▀    ▄       ▄  ▀      ▄            ▀   ▀▄▀         ▀ ▀▄     ▄  ▀▄     ▄          ▀        
+▄   ▄▀   ▀    ▄                  ▀ ▀  ▄           ▄   ▄  ▀     ▀ ▀   ▀    ▄   ▄     ▄       ▄  ▀   ▀                  ▄
+ ▀▄▀                      ▄    ▀    ▄       ▄  ▀      ▄            ▀   ▀▄▀         ▀ ▀▄     ▄  ▀▄     ▄          ▀
 ▄▀ ▀   ▀       ▀       ▀              ▄     ▄▀           ▀    ▄       ▄▀     ▀  ▄▀▄▀    ▄    ▀       ▀  ▄     ▄▀▄  ▀   ▀ ▀
-    ▄▀         ▀    ▄     ▄  ▀▄           ▄     ▄       ▄        ▀  ▄▀  ▄    ▀▄    ▀        ▄  ▀▄     ▄  ▀     ▀▄ ▄   ▄   
-  ▄▀ ▀ ▀     ▀    ▄▀         ▀ ▀▄   ▄      ▀   ▀▄ ▄     ▄   ▄      ▀   ▀                 ▀▄ ▄    ▀    ▄▀          ▄       
+    ▄▀         ▀    ▄     ▄  ▀▄           ▄     ▄       ▄        ▀  ▄▀  ▄    ▀▄    ▀        ▄  ▀▄     ▄  ▀     ▀▄ ▄   ▄
+  ▄▀ ▀ ▀     ▀    ▄▀         ▀ ▀▄   ▄      ▀   ▀▄ ▄     ▄   ▄      ▀   ▀                 ▀▄ ▄    ▀    ▄▀          ▄
    ▀      ▄ ▄▀▄▀    ▄  ▀   ▀ ▀    ▄▀  ▄     ▄  ▀         ▀▄   ▄▀      ▄   ▄  ▀  ▄       ▄   ▄      ▀     ▀ ▀       ▀▄ ▄  ▀
-▄    ▀▄   ▄       ▄  ▀          ▄   ▄        ▀  ▄       ▄     ▄▀ ▀        ▄   ▄  ▀ ▀▄       ▄▀    ▄      ▀▄               
-           ▀            ▄▀      ▄  ▀     ▀▄▀    ▄    ▀▄▀    ▄ ▄  ▀  ▄  ▀      ▄    ▀▄▀     ▀▄     ▄   ▄▀   ▀     ▀     ▀  
+▄    ▀▄   ▄       ▄  ▀          ▄   ▄        ▀  ▄       ▄     ▄▀ ▀        ▄   ▄  ▀ ▀▄       ▄▀    ▄      ▀▄
+           ▀            ▄▀      ▄  ▀     ▀▄▀    ▄    ▀▄▀    ▄ ▄  ▀  ▄  ▀      ▄    ▀▄▀     ▀▄     ▄   ▄▀   ▀     ▀     ▀
 ▄ ▄   ▄▀▄   ▄              ▀     ▀     ▀          ▄  ▀  ▄ ▄▀  ▄▀     ▀       ▀    ▄     ▄      ▀  ▄▀   ▀     ▀   ▀       ▀
-     ▀          ▄     ▄▀     ▀▄       ▄   ▄        ▀    ▄▀ ▀  ▄▀     ▀           ▀ ▀   ▀  ▄  ▀  ▄   ▄ ▄ ▄ ▄ ▄ ▄▀    ▄     
+     ▀          ▄     ▄▀     ▀▄       ▄   ▄        ▀    ▄▀ ▀  ▄▀     ▀           ▀ ▀   ▀  ▄  ▀  ▄   ▄ ▄ ▄ ▄ ▄ ▄▀    ▄
            ▀ ▀ ▀     ▀ ▀      ▄      ▀          ▄▀    ▄▀    ▄    ▀  ▄               ▄     ▄    ▀     ▀     ▀     ▀ ▀     ▀
-    ▄  ▀▄       ▄  ▀ ▀▄ ▄▀ ▀    ▄ ▄▀         ▀▄▀    ▄    ▀          ▄     ▄ ▄          ▀         ▀           ▀▄    ▀▄  ▀  
-▄     ▄    ▀    ▄ ▄    ▀    ▄         ▄  ▀      ▄ ▄▀ ▀      ▄          ▀▄ ▄  ▀   ▀  ▄     ▄  ▀  ▄ ▄ ▄ ▄ ▄   ▄   ▄     ▄ ▄ 
+    ▄  ▀▄       ▄  ▀ ▀▄ ▄▀ ▀    ▄ ▄▀         ▀▄▀    ▄    ▀          ▄     ▄ ▄          ▀         ▀           ▀▄    ▀▄  ▀
+▄     ▄    ▀    ▄ ▄    ▀    ▄         ▄  ▀      ▄ ▄▀ ▀      ▄          ▀▄ ▄  ▀   ▀  ▄     ▄  ▀  ▄ ▄ ▄ ▄ ▄   ▄   ▄     ▄ ▄
   ▄    ▀ ▀     ▀ ▀ ▀         ▀  ▄  ▀ ▀          ▄▀▄  ▀      ▄    ▀ ▀     ▀   ▀  ▄  ▀  ▄  ▀▄           ▄▀                ▄▀
-         ▀  ▄            ▀ ▀     ▀      ▄▀    ▄▀  ▄ ▄▀  ▄     ▄▀    ▄  ▀    ▄   ▄ ▄     ▄  ▀▄ ▄  ▀▄     ▄▀▄     ▄    ▀▄   
-▄   ▄      ▀▄         ▄ ▄    ▀▄   ▄         ▄   ▄     ▄    ▀▄  ▀    ▄▀  ▄ ▄  ▀         ▀     ▀▄ ▄                 ▄ ▄     
-        ▄▀ ▀ ▀ ▀ ▀   ▀    ▄  ▀ ▀   ▀     ▀▄▀▄          ▀      ▄  ▀ ▀▄  ▀ ▀▄              ▀▄     ▄          ▀       ▀    ▄ 
+         ▀  ▄            ▀ ▀     ▀      ▄▀    ▄▀  ▄ ▄▀  ▄     ▄▀    ▄  ▀    ▄   ▄ ▄     ▄  ▀▄ ▄  ▀▄     ▄▀▄     ▄    ▀▄
+▄   ▄      ▀▄         ▄ ▄    ▀▄   ▄         ▄   ▄     ▄    ▀▄  ▀    ▄▀  ▄ ▄  ▀         ▀     ▀▄ ▄                 ▄ ▄
+        ▄▀ ▀ ▀ ▀ ▀   ▀    ▄  ▀ ▀   ▀     ▀▄▀▄          ▀      ▄  ▀ ▀▄  ▀ ▀▄              ▀▄     ▄          ▀       ▀    ▄
  ▀ ▀  ▄      ▀    ▄ ▄     ▄    ▀  ▄ ▄   ▄   ▄▀     ▀     ▀▄   ▄▀      ▄▀  ▄      ▀ ▀ ▀▄▀ ▀  ▄  ▀ ▀▄ ▄        ▀▄▀         ▀
-    ▄ ▄                     ▄ ▄   ▄ ▄     ▄    ▀▄ ▄  ▀  ▄▀ ▀▄ ▄▀             ▀  ▄▀▄ ▄     ▄ ▄      ▀▄ ▄     ▄  ▀          
- ▀▄▀   ▀▄    ▀           ▀▄▀     ▀       ▀     ▀▄▀▄     ▄   ▄          ▀▄    ▀▄           ▄▀   ▀     ▀▄    ▀      ▄▀      
+    ▄ ▄                     ▄ ▄   ▄ ▄     ▄    ▀▄ ▄  ▀  ▄▀ ▀▄ ▄▀             ▀  ▄▀▄ ▄     ▄ ▄      ▀▄ ▄     ▄  ▀
+ ▀▄▀   ▀▄    ▀           ▀▄▀     ▀       ▀     ▀▄▀▄     ▄   ▄          ▀▄    ▀▄           ▄▀   ▀     ▀▄    ▀      ▄▀
 ▄         ▄         ▄ ▄       ▄         ▄ ▄               ▄▀  ▄▀ ▀   ▀▄   ▄ ▄      ▀ ▀ ▀▄  ▀ ▀   ▀     ▀     ▀ ▀ ▀  ▄▀▄▀ ▀
-▄   ▄▀    ▄            ▀▄    ▀    ▄     ▄▀▄   ▄▀▄  ▀  ▄ ▄     ▄▀ ▀  ▄  ▀        ▄           ▄▀     ▀                      
+▄   ▄▀    ▄            ▀▄    ▀    ▄     ▄▀▄   ▄▀▄  ▀  ▄ ▄     ▄▀ ▀  ▄  ▀        ▄           ▄▀     ▀
    ▀   ▀▄  ▀  ▄      ▀ ▀  ▄          ▀▄  ▀ ▀▄     ▄   ▄▀      ▄    ▀▄  ▀     ▀ ▀    ▄▀          ▄          ▀           ▀ ▀
-        ▄   ▄         ▄   ▄   ▄      ▀▄▀▄ ▄ ▄▀   ▀  ▄     ▄▀   ▀ ▀  ▄▀▄▀ ▀▄     ▄ ▄     ▄  ▀            ▄    ▀▄  ▀    ▄▀  
-     ▀           ▀     ▀                       ▀     ▀   ▀ ▀▄ ▄     ▄   ▄  ▀▄ ▄  ▀▄ ▄ ▄▀  ▄ ▄     ▄ ▄         ▄▀▄         
-   ▀       ▀       ▀     ▀     ▀ ▀ ▀     ▀   ▀   ▀   ▀ ▀   ▀▄ ▄   ▄▀   ▀ ▀         ▀▄          ▀▄    ▀       ▀   ▀ ▀      
-  ▄   ▄▀▄▀         ▀ ▀▄  ▀▄ ▄  ▀▄ ▄  ▀ ▀▄  ▀▄ ▄ ▄ ▄▀▄ ▄▀▄▀▄   ▄▀ ▀ ▀  ▄  ▀ ▀ ▀  ▄ ▄         ▄▀ ▀          ▄▀ ▀  ▄  ▀▄▀ ▀  
-▄   ▄ ▄         ▄           ▄ ▄   ▄     ▄             ▄   ▄▀ █▄▀▄ ▄ ▄   ▄ ▄▀▄     ▄    ▀  ▄ ▄▀▄ ▄             ▄▀  ▄ ▄   ▄ 
-     ▀   ▀    ▄▀         ▀ ▀ ▀  ▄    ▀ ▀       ▀       ▀▄▀ ▀▄                                                             
+        ▄   ▄         ▄   ▄   ▄      ▀▄▀▄ ▄ ▄▀   ▀  ▄     ▄▀   ▀ ▀  ▄▀▄▀ ▀▄     ▄ ▄     ▄  ▀            ▄    ▀▄  ▀    ▄▀
+     ▀           ▀     ▀                       ▀     ▀   ▀ ▀▄ ▄     ▄   ▄  ▀▄ ▄  ▀▄ ▄ ▄▀  ▄ ▄     ▄ ▄         ▄▀▄
+   ▀       ▀       ▀     ▀     ▀ ▀ ▀     ▀   ▀   ▀   ▀ ▀   ▀▄ ▄   ▄▀   ▀ ▀         ▀▄          ▀▄    ▀       ▀   ▀ ▀
+  ▄   ▄▀▄▀         ▀ ▀▄  ▀▄ ▄  ▀▄ ▄  ▀ ▀▄  ▀▄ ▄ ▄ ▄▀▄ ▄▀▄▀▄   ▄▀ ▀ ▀  ▄  ▀ ▀ ▀  ▄ ▄         ▄▀ ▀          ▄▀ ▀  ▄  ▀▄▀ ▀
+▄   ▄ ▄         ▄           ▄ ▄   ▄     ▄             ▄   ▄▀ █▄▀▄ ▄ ▄   ▄ ▄▀▄     ▄    ▀  ▄ ▄▀▄ ▄             ▄▀  ▄ ▄   ▄
+     ▀   ▀    ▄▀         ▀ ▀ ▀  ▄    ▀ ▀       ▀       ▀▄▀ ▀▄
          ▀   ▀  ▄ ▄       ▄ ▄   ▄   ▄▀ ▀  ▄  ▀  ▄▀ ▀▄  ▀▄▀   ▀▄  ▀ ▀▄ ▄▀  ▄▀ ▀   ▀▄  ▀ ▀▄     ▄▀  ▄ ▄▀   ▀ ▀    ▄  ▀▄▀   ▀
-     ▀                ▄▀▄    ▀▄    ▀    ▄ ▄         ▄ ▄  ▀  ▄   ▄   ▄▀      ▄ ▄  ▀    ▄      ▀▄   ▄     ▄   ▄  ▀  ▄  ▀    
-  ▄  ▀   ▀ ▀        ▄▀ ▀ ▀ ▀             ▀ ▀▄    ▀▄  ▀  ▄   ▄ ▄  ▀       ▀     ▀         ▀     ▀           ▀     ▀        
-   ▀▄  ▀  ▄  ▀▄   ▄ ▄▀  ▄   ▄    ▀▄ ▄       ▄ ▄ ▄ ▄    ▀ ▀  ▄▀▄    ▀▄  ▀  ▄ ▄▀  ▄▀▄▀ ▀▄       ▄▀  ▄ ▄   ▄ ▄    ▀▄▀ ▀      
-    ▄ ▄     ▄    ▀    ▄ ▄     ▄     ▄     ▄   ▄▀▄  ▀  ▄     ▄  ▀▄▀▄           ▄     ▄   ▄ ▄ ▄     ▄ ▄         ▄   ▄       
- ▀      ▄          ▀   ▀  ▄  ▀ ▀ ▀ ▀ ▀▄    ▀ ▀       ▀▄ ▄   ▄ ▄▀       ▀▄    ▀▄            ▀   ▀      ▄     ▄     ▄▀    ▄ 
- ▀        ▄ ▄ ▄▀   ▀    ▄▀      ▄      ▀▄       ▄ ▄▀   ▀▄    ▀     ▀      ▄  ▀ ▀     ▀  ▄    ▀▄  ▀▄▀   ▀ ▀▄▀          ▄   
-▄   ▄     ▄ ▄    ▀     ▀          ▄▀▄    ▀   ▀       ▀           ▀   ▀▄    ▀▄   ▄     ▄▀     ▀  ▄   ▄    ▀    ▄      ▀    
+     ▀                ▄▀▄    ▀▄    ▀    ▄ ▄         ▄ ▄  ▀  ▄   ▄   ▄▀      ▄ ▄  ▀    ▄      ▀▄   ▄     ▄   ▄  ▀  ▄  ▀
+  ▄  ▀   ▀ ▀        ▄▀ ▀ ▀ ▀             ▀ ▀▄    ▀▄  ▀  ▄   ▄ ▄  ▀       ▀     ▀         ▀     ▀           ▀     ▀
+   ▀▄  ▀  ▄  ▀▄   ▄ ▄▀  ▄   ▄    ▀▄ ▄       ▄ ▄ ▄ ▄    ▀ ▀  ▄▀▄    ▀▄  ▀  ▄ ▄▀  ▄▀▄▀ ▀▄       ▄▀  ▄ ▄   ▄ ▄    ▀▄▀ ▀
+    ▄ ▄     ▄    ▀    ▄ ▄     ▄     ▄     ▄   ▄▀▄  ▀  ▄     ▄  ▀▄▀▄           ▄     ▄   ▄ ▄ ▄     ▄ ▄         ▄   ▄
+ ▀      ▄          ▀   ▀  ▄  ▀ ▀ ▀ ▀ ▀▄    ▀ ▀       ▀▄ ▄   ▄ ▄▀       ▀▄    ▀▄            ▀   ▀      ▄     ▄     ▄▀    ▄
+ ▀        ▄ ▄ ▄▀   ▀    ▄▀      ▄      ▀▄       ▄ ▄▀   ▀▄    ▀     ▀      ▄  ▀ ▀     ▀  ▄    ▀▄  ▀▄▀   ▀ ▀▄▀          ▄
+▄   ▄     ▄ ▄    ▀     ▀          ▄▀▄    ▀   ▀       ▀           ▀   ▀▄    ▀▄   ▄     ▄▀     ▀  ▄   ▄    ▀    ▄      ▀
         ▄        ▀   ▀    ▄▀   ▀ ▀    ▄  ▀   ▀ ▀   ▀    ▄▀    ▄   ▄ ▄▀             ▀▄    ▀▄▀     ▀    ▄    ▀ ▀   ▀▄    ▀ ▀
-  ▄    ▀▄▀     ▀  ▄      ▀      ▄ ▄ ▄▀     ▀▄     ▄   ▄▀▄   ▄  ▀    ▄     ▄    ▀   ▀     ▀        ▄  ▀ ▀▄    ▀▄ ▄▀        
-      ▄    ▀          ▄     ▄      ▀    ▄            ▀▄     ▄   ▄ ▄     ▄   ▄▀   ▀▄               ▄ ▄ ▄ ▄   ▄         ▄ ▄ 
- ▀         ▀  ▄▀   ▀            ▄▀ ▀     ▀  ▄         ▄        ▀  ▄ ▄     ▄▀ ▀▄ ▄        ▀ ▀    ▄    ▀ ▀     ▀         ▀  
-▄▀     ▀  ▄ ▄ ▄ ▄ ▄▀▄▀▄     ▄ ▄  ▀        ▄     ▄       ▄   ▄▀ ▀    ▄    ▀       ▀   ▀   ▀   ▀             ▀ ▀     ▀ ▀ ▀  
-                  ▄         ▄           ▄▀▄   ▄          ▀  ▄    ▀▄  ▀▄▀   ▀ ▀▄         ▄    ▀▄    ▀    ▄▀▄ ▄  ▀▄   ▄     
-       ▀ ▀    ▄     ▄    ▀▄▀ ▀   ▀     ▀ ▀  ▄▀     ▀ ▀           ▀  ▄▀        ▄     ▄ ▄  ▀           ▀▄▀    ▄    ▀▄       
+  ▄    ▀▄▀     ▀  ▄      ▀      ▄ ▄ ▄▀     ▀▄     ▄   ▄▀▄   ▄  ▀    ▄     ▄    ▀   ▀     ▀        ▄  ▀ ▀▄    ▀▄ ▄▀
+      ▄    ▀          ▄     ▄      ▀    ▄            ▀▄     ▄   ▄ ▄     ▄   ▄▀   ▀▄               ▄ ▄ ▄ ▄   ▄         ▄ ▄
+ ▀         ▀  ▄▀   ▀            ▄▀ ▀     ▀  ▄         ▄        ▀  ▄ ▄     ▄▀ ▀▄ ▄        ▀ ▀    ▄    ▀ ▀     ▀         ▀
+▄▀     ▀  ▄ ▄ ▄ ▄ ▄▀▄▀▄     ▄ ▄  ▀        ▄     ▄       ▄   ▄▀ ▀    ▄    ▀       ▀   ▀   ▀   ▀             ▀ ▀     ▀ ▀ ▀
+                  ▄         ▄           ▄▀▄   ▄          ▀  ▄    ▀▄  ▀▄▀   ▀ ▀▄         ▄    ▀▄    ▀    ▄▀▄ ▄  ▀▄   ▄
+       ▀ ▀    ▄     ▄    ▀▄▀ ▀   ▀     ▀ ▀  ▄▀     ▀ ▀           ▀  ▄▀        ▄     ▄ ▄  ▀           ▀▄▀    ▄    ▀▄
         ▄      ▀▄     ▄  ▀ ▀        ▄        ▀     ▀  ▄▀▄    ▀▄   ▄▀                ▄▀ ▀    ▄    ▀  ▄▀   ▀▄▀  ▄ ▄  ▀▄ ▄  ▀
-    ▄      ▀          ▄    ▀▄           ▄▀    ▄▀▄    ▀   ▀     ▀▄▀    ▄    ▀▄▀            ▄  ▀          ▄ ▄       ▄  ▀    
-  ▄              ▀ ▀      ▄  ▀▄    ▀▄ ▄  ▀   ▀  ▄ ▄  ▀         ▀  ▄     ▄                   ▄  ▀▄            ▀         ▀  
-   ▀▄  ▀▄ ▄  ▀  ▄   ▄▀        ▄▀                       ▀ ▀  ▄▀      ▄▀     ▀   ▀      ▄▀  ▄ ▄        ▀ ▀▄▀▄  ▀▄    ▀   ▀  
-▄    ▀    ▄      ▀          ▄      ▀▄  ▀ ▀   ▀       ▀▄         ▄    ▀▄    ▀     ▀ ▀▄   ▄ ▄    ▀▄              ▀      ▄   
-         ▀ ▀         ▀ ▀▄        ▀  ▄    ▀        ▄▀    ▄▀  ▄ ▄▀  ▄    ▀   ▀     ▀ ▀▄     ▄  ▀ ▀      ▄     ▄           ▄ 
+    ▄      ▀          ▄    ▀▄           ▄▀    ▄▀▄    ▀   ▀     ▀▄▀    ▄    ▀▄▀            ▄  ▀          ▄ ▄       ▄  ▀
+  ▄              ▀ ▀      ▄  ▀▄    ▀▄ ▄  ▀   ▀  ▄ ▄  ▀         ▀  ▄     ▄                   ▄  ▀▄            ▀         ▀
+   ▀▄  ▀▄ ▄  ▀  ▄   ▄▀        ▄▀                       ▀ ▀  ▄▀      ▄▀     ▀   ▀      ▄▀  ▄ ▄        ▀ ▀▄▀▄  ▀▄    ▀   ▀
+▄    ▀    ▄      ▀          ▄      ▀▄  ▀ ▀   ▀       ▀▄         ▄    ▀▄    ▀     ▀ ▀▄   ▄ ▄    ▀▄              ▀      ▄
+         ▀ ▀         ▀ ▀▄        ▀  ▄    ▀        ▄▀    ▄▀  ▄ ▄▀  ▄    ▀   ▀     ▀ ▀▄     ▄  ▀ ▀      ▄     ▄           ▄
  ▀ ▀▄    ▀  ▄▀ ▀    ▄         ▄  ▀    ▄    ▀ ▀        ▄▀▄▀   ▀    ▄▀            ▄   ▄ ▄▀     ▀   ▀▄     ▄    ▀       ▀   ▀
-     ▀    ▄    ▀  ▄   ▄▀         ▀  ▄   ▄ ▄  ▀  ▄  ▀ ▀                ▄     ▄    ▀ ▀     ▀▄  ▀ ▀▄     ▄       ▄ ▄   ▄   ▄ 
+     ▀    ▄    ▀  ▄   ▄▀         ▀  ▄   ▄ ▄  ▀  ▄  ▀ ▀                ▄     ▄    ▀ ▀     ▀▄  ▀ ▀▄     ▄       ▄ ▄   ▄   ▄
  ▀ ▀        ▄       ▄      ▀ ▀           ▀▄    ▀▄ ▄▀     ▀  ▄       ▄   ▄  ▀ ▀▄       ▄  ▀▄    ▀   ▀  ▄            ▀     ▀
-  ▄ ▄          ▀        ▄ ▄    ▀ ▀  ▄       ▄               ▄▀    ▄  ▀    ▄     ▄         ▄▀       ▀   ▀     ▀   ▀     ▀  
-          ▄ ▄  ▀▄▀    ▄          ▀▄     ▄     ▄▀      ▄  ▀  ▄  ▀▄ ▄     ▄  ▀           ▀        ▄   ▄▀     ▀   ▀    ▄ ▄   
-   ▀ ▀▄           ▄  ▀           ▀ ▀▄       ▄▀ ▀  ▄      ▀  ▄  ▀    ▄  ▀   ▀       ▀  ▄   ▄    ▀        ▄     ▄        ▀  
-▄     ▄      ▀     ▀▄     ▄            ▀  ▄▀    ▄  ▀   ▀▄     ▄▀     ▀     ▀  ▄▀                  ▄         ▄▀▄▀    ▄  ▀  
-         ▀  ▄  ▀▄     ▄     ▄▀▄     ▄  ▀▄▀▄  ▀                   ▀    ▄ ▄                           ▄▀    ▄▀▄  ▀▄    ▀▄   
+  ▄ ▄          ▀        ▄ ▄    ▀ ▀  ▄       ▄               ▄▀    ▄  ▀    ▄     ▄         ▄▀       ▀   ▀     ▀   ▀     ▀
+          ▄ ▄  ▀▄▀    ▄          ▀▄     ▄     ▄▀      ▄  ▀  ▄  ▀▄ ▄     ▄  ▀           ▀        ▄   ▄▀     ▀   ▀    ▄ ▄
+   ▀ ▀▄           ▄  ▀           ▀ ▀▄       ▄▀ ▀  ▄      ▀  ▄  ▀    ▄  ▀   ▀       ▀  ▄   ▄    ▀        ▄     ▄        ▀
+▄     ▄      ▀     ▀▄     ▄            ▀  ▄▀    ▄  ▀   ▀▄     ▄▀     ▀     ▀  ▄▀                  ▄         ▄▀▄▀    ▄  ▀
+         ▀  ▄  ▀▄     ▄     ▄▀▄     ▄  ▀▄▀▄  ▀                   ▀    ▄ ▄                           ▄▀    ▄▀▄  ▀▄    ▀▄
 
 ```
 
@@ -4772,39 +4772,39 @@ The mark used is Unicode's OGHAM FEATHER MARK .. the closest I could find to a T
 {{out}}
 
 ```txt
-        ᚛   ᚛           ᚛       ᚛                       ᚛        
-                              ᚛       ᚛   ᚛       ᚛              
+        ᚛   ᚛           ᚛       ᚛                       ᚛
+                              ᚛       ᚛   ᚛       ᚛
                             ᚛       ᚛               ᚛       ᚛   ᚛
-      ᚛       ᚛                       ᚛   ᚛           ᚛          
-    ᚛   ᚛           ᚛   ᚛           ᚛           ᚛                
-                      ᚛                       ᚛       ᚛          
-᚛           ᚛       ᚛               ᚛           ᚛                
-  ᚛       ᚛                   ᚛       ᚛   ᚛       ᚛   ᚛   ᚛      
-᚛               ᚛           ᚛                   ᚛   ᚛       ᚛    
-      ᚛           ᚛       ᚛   ᚛                               ᚛  
+      ᚛       ᚛                       ᚛   ᚛           ᚛
+    ᚛   ᚛           ᚛   ᚛           ᚛           ᚛
+                      ᚛                       ᚛       ᚛
+᚛           ᚛       ᚛               ᚛           ᚛
+  ᚛       ᚛                   ᚛       ᚛   ᚛       ᚛   ᚛   ᚛
+᚛               ᚛           ᚛                   ᚛   ᚛       ᚛
+      ᚛           ᚛       ᚛   ᚛                               ᚛
                                 ᚛   ᚛           ᚛       ᚛       ᚛
-  ᚛       ᚛       ᚛   ᚛       ᚛               ᚛       ᚛   ᚛      
-                                ᚛   ᚛       ᚛                    
-              ᚛       ᚛   ᚛           ᚛   ᚛   ᚛           ᚛   ᚛  
-᚛   ᚛   ᚛   ᚛   ᚛   ᚛   ᚛   ᚛       ᚛               ᚛            
-                              ᚛   ᚛   ᚛                       ᚛  
+  ᚛       ᚛       ᚛   ᚛       ᚛               ᚛       ᚛   ᚛
+                                ᚛   ᚛       ᚛
+              ᚛       ᚛   ᚛           ᚛   ᚛   ᚛           ᚛   ᚛
+᚛   ᚛   ᚛   ᚛   ᚛   ᚛   ᚛   ᚛       ᚛               ᚛
+                              ᚛   ᚛   ᚛                       ᚛
                     ᚛       ᚛     ᚛ ᚛   ᚛   ᚛   ᚛       ᚛   ᚛   ᚛
-      ᚛               ᚛   ᚛   ᚛                                  
-                        ᚛       ᚛                                
-  ᚛       ᚛   ᚛       ᚛   ᚛       ᚛       ᚛   ᚛       ᚛       ᚛  
-        ᚛       ᚛       ᚛           ᚛           ᚛   ᚛       ᚛    
-                          ᚛                       ᚛              
+      ᚛               ᚛   ᚛   ᚛
+                        ᚛       ᚛
+  ᚛       ᚛   ᚛       ᚛   ᚛       ᚛       ᚛   ᚛       ᚛       ᚛
+        ᚛       ᚛       ᚛           ᚛           ᚛   ᚛       ᚛
+                          ᚛                       ᚛
                 ᚛   ᚛           ᚛       ᚛       ᚛               ᚛
-          ᚛       ᚛                       ᚛               ᚛      
-᚛           ᚛           ᚛       ᚛   ᚛                            
-                      ᚛   ᚛       ᚛           ᚛       ᚛          
+          ᚛       ᚛                       ᚛               ᚛
+᚛           ᚛           ᚛       ᚛   ᚛
+                      ᚛   ᚛       ᚛           ᚛       ᚛
 ᚛   ᚛   ᚛   ᚛                   ᚛   ᚛           ᚛           ᚛   ᚛
-      ᚛       ᚛                       ᚛   ᚛                      
-    ᚛   ᚛           ᚛           ᚛       ᚛   ᚛                    
-  ᚛               ᚛                   ᚛               ᚛          
-                    ᚛   ᚛       ᚛   ᚛                   ᚛        
-              ᚛       ᚛           ᚛           ᚛                  
-        ᚛   ᚛           ᚛                                   ᚛   
+      ᚛       ᚛                       ᚛   ᚛
+    ᚛   ᚛           ᚛           ᚛       ᚛   ᚛
+  ᚛               ᚛                   ᚛               ᚛
+                    ᚛   ᚛       ᚛   ᚛                   ᚛
+              ᚛       ᚛           ᚛           ᚛
+        ᚛   ᚛           ᚛                                   ᚛
 ```
 
 
@@ -4923,14 +4923,14 @@ build_spiral(9)
 ```Yabasic
 sub is_prime(n)
     local p
-    
+
     for p=2 to n
         if p*p>n break
         if mod(n,p)=0 return false
     next
     return n>=2
 end sub
- 
+
 sub spiral(w, h, x, y)
     if y then
         return w+spiral(h-1,w,y-1,w-x-1)
@@ -4938,7 +4938,7 @@ sub spiral(w, h, x, y)
         return x
     end if
 end sub
- 
+
 w = 9 : h = 9
 for i=h-1 to 0 step -1
     for j=w-1 to 0 step -1

@@ -65,7 +65,7 @@ FOR d1 FROM 0 TO 9 DO
         digit pair square sum[ ( d1 * 10 ) + d2 ] := ( d1 * d1 ) + ( d2 * d2 )
     OD
 OD;
- 
+
 # returns the sum of the squared digits of n                                            #
 PROC squared digit sum = ( INT n )INT:
      BEGIN
@@ -249,7 +249,7 @@ Version 3: 85744333 in 0.02 seconds.
 ## Befunge
 
 
-This is just a brute force solution, so it's not very fast. A decent interpreter will probably take a minute or two for a 1,000,000 iterations. If you want to test with 100,000,000 iterations, change the <tt>::**</tt> (100³) near the end of the first line to <tt>:*:*</tt> (100²<sup>²</sup>). With that many iterations, though, you'll almost certainly want to be using a compiler, otherwise you'll be waiting a long time for the result. 
+This is just a brute force solution, so it's not very fast. A decent interpreter will probably take a minute or two for a 1,000,000 iterations. If you want to test with 100,000,000 iterations, change the <tt>::**</tt> (100³) near the end of the first line to <tt>:*:*</tt> (100²<sup>²</sup>). With that many iterations, though, you'll almost certainly want to be using a compiler, otherwise you'll be waiting a long time for the result.
 
 
 ```befunge
@@ -280,8 +280,8 @@ v0:\+<_:55+%:*^^"d":+1$<:
 
 C99, tested with "gcc -std=c99". Record how many digit square sum combinations there are.  This reduces <math>10^n</math> numbers to <math>81n</math>, and the complexity is about <math>O(n^2)</math>.  The 64 bit integer counter is good for up to <math>10^{19}</math>, which takes practically no time to run.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef unsigned long long ull;
 
@@ -849,7 +849,7 @@ It doesn't always get to 10^230 in six seconds at Tio.run, sometimes it only get
 
 ```ceylon
 shared void run() {
-	
+
 	function digitsSquaredSum(variable Integer n) {
 		variable value total = 0;
 		while(n > 0) {
@@ -858,7 +858,7 @@ shared void run() {
 		}
 		return total;
 	}
-	
+
 	function lastSum(variable Integer n) {
 		while(true) {
 			n = digitsSquaredSum(n);
@@ -867,7 +867,7 @@ shared void run() {
 			}
 		}
 	}
-	
+
 	variable value eightyNines = 0;
 	for(i in 1..100M - 1) {
 		if(lastSum(i) == 89) {
@@ -1378,33 +1378,33 @@ Function endsWith89(n As Integer) As Boolean
     If sum = 1 Then Return False
     n = sum
     sum  = 0
-  Loop  
+  Loop
 End Function
 
-Dim As Double start = timer 
-Dim sums(0 To 8 * 81) As UInteger 
+Dim As Double start = timer
+Dim sums(0 To 8 * 81) As UInteger
 sums(0) = 1
 sums(1) = 0
 Dim s As Integer
-For n As Integer = 1 To 8 
+For n As Integer = 1 To 8
   For i As Integer = n * 81 To 1 Step -1
     For j As Integer = 1 To 9
-      s = j * j        
+      s = j * j
       If s > i Then Exit For
       sums(i) += sums(i - s)
     Next j
   Next i
 
   If n = 8 Then
-    Dim As UInteger count89 = 0 
+    Dim As UInteger count89 = 0
     For i As Integer = 1 To n * 81
       If Not endsWith89(i) Then Continue For
       count89 += sums(i)
-    Next i 
+    Next i
     Print "There are";count89; " numbers from 1 to 100 million ending with 89"
   End If
 Next
-Print "Elapsed milliseconds ="; Int((timer - start) * 1000 + 0.5) 
+Print "Elapsed milliseconds ="; Int((timer - start) * 1000 + 0.5)
 Print
 Print "Press any key to quit"
 Sleep
@@ -1443,11 +1443,11 @@ for n = 1 to 100 million - 1
       }
 
       c = sum
-      
+
       sum = 0
       for digit = integerDigits[c]
          sum = sum + digit^2
-   } while (sum != 89) and (sum != 1) 
+   } while (sum != 89) and (sum != 1)
 
    if (n < 1000)
       d@n = sum
@@ -1495,7 +1495,7 @@ func main() {
 				o = (o - d) / 10
 				u += d*d
 				if o == 0 {
-					break 
+					break
 				}
 			}
 			if u == 89 || u == 1 {
@@ -1762,7 +1762,7 @@ def pick(n):
 def runs:
   reduce .[] as $item
     ( [];
-      if . == [] then [ [ $item, 1] ] 
+      if . == [] then [ [ $item, 1] ]
       else  .[length-1] as $last
             | if $last[0] == $item then (.[0:length-1] + [ [$item, $last[1] + 1] ] )
               else . + [[$item, 1]]
@@ -1779,7 +1779,7 @@ def terminus:
   # sum of the squared digits
   def ssdigits: tostring | explode | map(. - 48 | .*.) | add;
 
-  if . == 1 or . == 89 then . 
+  if . == 1 or . == 89 then .
   else ssdigits | terminus
   end;
 
@@ -1801,7 +1801,7 @@ def task(D):
       (0;
        ($digits | map(.*.) | add) as $ss
        | if $cache[$ss] then . + ($digits|combinations($Dfactorial))
-         else . 
+         else .
          end) ;
 ```
 
@@ -1821,7 +1821,7 @@ $ jq -M -n -f Iterated_digits_squaring_using_pick.jq
 # user	0m2.595s
 # sys	0m0.010s
 
-# Using jq 1.4: 
+# Using jq 1.4:
 # user	0m3.942s
 # sys	0m0.009s
 ```
@@ -1858,14 +1858,14 @@ fun main(args: Array<String>) {
     sums[1] = 0
     var s: Int
     for (n in 1 .. 8)
-        for (i in n * 81 downTo 1) 
+        for (i in n * 81 downTo 1)
             for (j in 1 .. 9) {
                 s = j * j
                 if (s > i) break
                 sums[i] += sums[i - s]
             }
-    var count89 = 0 
-    for (i in 1 .. 8 * 81) 
+    var count89 = 0
+    for (i in 1 .. 8 * 81)
         if (endsWith89(i)) count89 += sums[i]
     println("There are $count89 numbers from 1 to 100 million ending with 89")
 }
@@ -1942,43 +1942,43 @@ print(counter)
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
 sumDigitsSquared[n_Integer] := Total[IntegerDigits[n]^2]
 stopValues = Join[{1}, NestList[sumDigitsSquared, 89, 7]];
-iterate[n_Integer] := 
+iterate[n_Integer] :=
  NestWhile[sumDigitsSquared, n, Intersection[stopValues, {#}] == {} &]
 
 numberOfDigits = 8;
 maxSum = numberOfDigits 9^2;
-loopVariables = 
+loopVariables =
   ToExpression@Table["i" <> ToString[n], {n, numberOfDigits}];
 iteratesToOne = Cases[Range@maxSum, _?(iterate[#] == 1 &)];
-allIterators = 
+allIterators =
   Flatten[{Reverse@#, 9}] & /@ Partition[loopVariables, 2, 1];
 maxCombinations = numberOfDigits!;
 
-ssd = 
+ssd =
   SparseArray[Table[n^2 -> numberOfDigits, {n, 9}], {maxSum}];
 
 Do[
   variables = loopVariables[[;; digitCount]];
   iterators = allIterators[[;; digitCount - 1]];
-  
-  Do[ssd += 
+
+  Do[ssd +=
     SparseArray[
-     Total[variables^2] -> 
+     Total[variables^2] ->
       maxCombinations/
-       Times @@ (Tally[PadRight[variables, numberOfDigits]][[All, 
+       Times @@ (Tally[PadRight[variables, numberOfDigits]][[All,
             2]]!), {maxSum}], {i, 9}, Evaluate[Sequence @@ iterators]],
-            
+
   {digitCount, 2, numberOfDigits}];
 
-onesCount = 
+onesCount =
  Total[Cases[
-    ArrayRules[ssd] /. 
-     HoldPattern[{a_} -> b_] :> {a, 
+    ArrayRules[ssd] /.
+     HoldPattern[{a_} -> b_] :> {a,
        b}, {_?(MemberQ[iteratesToOne, #] &), _}][[All, 2]]];
 
 (10^numberOfDigits - 1) - onesCount
@@ -2014,7 +2014,7 @@ class Abbreviations {
       while(ends[i] <> 1 & ends[i] <> 89) {
         ends[i] := SquareDigitSum(ends[i]);
       };
-      
+
       if(ends[i] = 89) {
         result++;
       };
@@ -2025,7 +2025,7 @@ class Abbreviations {
         result++;
       };
     };
-            
+
     return result;
   }
 
@@ -2064,7 +2064,7 @@ IMPORT
 
 VAR
   i,hits89: LONGINT;
-  
+
   PROCEDURE Squaring(n: LONGINT): LONGINT;
   VAR
     d, sum: LONGINT;
@@ -2079,10 +2079,10 @@ VAR
       IF (sum = 1) OR (sum = 89) THEN EXIT END;
       n := sum;
     END;
-    
+
     RETURN sum
   END Squaring;
-  
+
 BEGIN
   hits89 := 0;
   FOR i := 1 TO 100000000 DO
@@ -2116,10 +2116,10 @@ Brute force implementation
 
 
 ```Oforth
-: sq_digits(n) 
-   while (n 1 <> n 89 <> and ) [ 
-      0 while(n) [ n 10 /mod ->n dup * + ] 
-      ->n 
+: sq_digits(n)
+   while (n 1 <> n 89 <> and ) [
+      0 while(n) [ n 10 /mod ->n dup * + ]
+      ->n
       ] n ;
 
 : iterDigits  | i | 0 100000000 loop: i [ i sq_digits 89 &= + ] . ;
@@ -2156,14 +2156,14 @@ ct(8)
 
 ## Pascal
 
-A limited, but fast implementation (up to 10e14). 
+A limited, but fast implementation (up to 10e14).
 It calculates first all the possible sums up to cM= sqrt(MAX), with the drawback that cM must be 10^n and can only count from 10^n to 10^(2*n).
 Runtime:  n-> 100*n => t(100*n)-> ~10*t(n) O(n) sqrt(n)
 
 
 ```txt
 
-1E8 -> runtime 0..4 ms // not really measureable 
+1E8 -> runtime 0..4 ms // not really measureable
 1E12-> runtime 0.22 secs
 1E14 -> runtime 2,7 secs
 1E16 -> runtime 31,0 secs
@@ -2317,8 +2317,8 @@ output  i3 3.5 Ghz
 
 10e18
 //658 small counts out of 1000000000
-there are 118226055080025491  1s 
-there are 881773944919974509 89s 
+there are 118226055080025491  1s
+there are 881773944919974509 89s
 
 real	5m54.431s
 user	5m53.977s
@@ -2349,7 +2349,7 @@ my $cnt = 0;
 
 sub Euler92 {
     my $n = 0 + join( '', sort split( '', shift ) );
-    $cache{$n} //= ($n == 1 || $n == 89) ? $n : 
+    $cache{$n} //= ($n == 1 || $n == 89) ? $n :
     Euler92( sum( @sq[ split '', $n ] ) )
 }
 
@@ -2362,7 +2362,7 @@ sub sum {
 for (1 .. 100_000_000) {
    ++$cnt if Euler92( $_ ) == 89;
 }
- 
+
 print $cnt;
 ```
 
@@ -2388,7 +2388,7 @@ for 1 .. 1_000_000 -> $n {
    my $i = +$n.comb.sort.join;
    ++$cnt if Euler92($i) == 89;
 }
- 
+
 say $cnt;
 ```
 
@@ -2616,8 +2616,8 @@ for i=1 to 8 do
 end for
 ```
 
-Starting with the combinations method from http://rosettacode.org/wiki/Combinations_with_repetitions#Phix converted to a function, make sure we 
-are covering all the numbers correctly by checking that we have indeed found power(10,n) of them, and show we are looking at significantly fewer combinations. 
+Starting with the combinations method from http://rosettacode.org/wiki/Combinations_with_repetitions#Phix converted to a function, make sure we
+are covering all the numbers correctly by checking that we have indeed found power(10,n) of them, and show we are looking at significantly fewer combinations.
 {{out}}
 
 ```txt
@@ -2820,7 +2820,7 @@ EndProcedure
 
 Procedure main()
   Dim sums(32*81+1) : sums(0)=1 : sums(1)=0
-  
+
   For n=1 To n+1
     For i=n*81 To 1 Step -1
       For j=1 To 9
@@ -2838,7 +2838,7 @@ Procedure main()
       count89+sums(i)
     Next
     PrintN("1->10^"+LSet(Str(n),2,Chr(32))+": "+Str(count89))
-  Next  
+  Next
 EndProcedure
 
 start=ElapsedMilliseconds()
@@ -3076,14 +3076,14 @@ def ids(n):
 	if n in {1, 89}: return n
 	else: return ids(sum(int(d) ** 2 for d in str(n)))
 
-	
+
 >>> ids(15)
 89
 >>> [ids(x) for x in range(1, 21)]
 [1, 89, 89, 89, 89, 89, 1, 89, 89, 1, 89, 89, 1, 89, 89, 89, 89, 89, 1, 89]
 >>> sum(ids(x) == 89 for x in range(1, 100000000))
 85744333
->>> 
+>>>
 ```
 
 
@@ -3101,7 +3101,7 @@ def _ids(nt):
 	if nt in {('1',), ('8', '9')}: return nt
 	else: return _ids(tuple(sorted(str(sum(int(d) ** 2 for d in nt)))))
 
-	
+
 >>> def ids(n):
 	return int(''.join(_ids(tuple(sorted(str(n))))))
 
@@ -3113,7 +3113,7 @@ def _ids(nt):
 85744333
 >>> _ids.cache_info()
 CacheInfo(hits=99991418, misses=5867462, maxsize=1024, currsize=1024)
->>> 
+>>>
 ```
 
 
@@ -3190,14 +3190,14 @@ This contains two versions (in one go). The naive version which can (and should,
       [else
        (for*/list
            ((ld+ (in-range least-digit 10))
-            (rgt (in-list (inner (sub1 remain) empty ld+))))           
+            (rgt (in-list (inner (sub1 remain) empty ld+))))
          (append acc (cons ld+ rgt)))]))
   (inner n-digits '() 0))
 
 ;; We calculate IDS differently since we're presented with a list of digits rather than a number
 (define (digit-list-IDS c)
   (define (digit-combo-IDS c)
-    (apply + (map sqr c)))  
+    (apply + (map sqr c)))
   (iterated-digit^2-sum (digit-combo-IDS c)))
 
 ;; ! (factiorial) -- everyone's favourite combinatorial function! (that's just an exclamation mark)
@@ -3282,7 +3282,7 @@ Ok, so maybe 131 seconds is not so flattering -- but I have not memoised or anyt
 
 ## REXX
 
-{Both REXX versions don't depend on a specific end─number.} 
+{Both REXX versions don't depend on a specific end─number.}
 
 ### with memoization
 
@@ -3392,14 +3392,14 @@ count of  "89"  chains for all natural numbers up to  100000000  is  85744333
 
 nr = 1000
 num = 0
-for n = 1 to nr 
+for n = 1 to nr
    sum = 0
    for m = 1 to len(string(n))
        sum += pow(number(substr(string(n),m,1)),2)
        if sum = 89 num += 1 see "" + n + " " + sum + nl ok
    next
-next   
-see "Total under 1000 is : " + num + nl 
+next
+see "Total under 1000 is : " + num + nl
 
 ```
 
@@ -3466,7 +3466,7 @@ def iterated_square_digit(d)
                end
                res==89 ? 0 : res
              }
-  
+
   #An array: table[n]==0 means that n translates to 89 and 1 means that n translates to 1
   table = Array.new(d*81+1){|n| n.zero? ? 1 : (i=g.call(n))==89 ? 0 : i}
   table.collect!{|n| n = table[n] while n>1; n}
@@ -3750,7 +3750,7 @@ iterSquare(upToPower: 8)
 
 ## Tcl
 
-All three versions below produce identical output (<tt>85744333</tt>), but the third is fastest and the first is the slowest, both by substantial margins. 
+All three versions below produce identical output (<tt>85744333</tt>), but the third is fastest and the first is the slowest, both by substantial margins.
 ===''Very'' Naïve Version===
 
 ```tcl
@@ -3885,7 +3885,7 @@ fcn check(number){  // a list of digits: 13 is L(0,0,0,0,0,0,1,3)
 
    while(candidate != 89 and candidate != 1)  // repeatedly sum squares of digits
       { candidate = candidate.split().reduce(fcn(sum,c){ sum + c*c },0); }
- 
+
    if(candidate == 89){ // count permutations of these digits, they all sum to 89
       digitsCount:=List(0,0,0,0,0,0,0,0,0,0);
       foreach d in (number){ digitsCount[d] += 1; }
@@ -3894,12 +3894,12 @@ fcn check(number){  // a list of digits: 13 is L(0,0,0,0,0,0,1,3)
    0 // this number doesn't sum to 89 (ie sums to 1)
 }
 fcn factorial(n) { (1).reduce(n,fcn(N,n){ N*n },1) }
- 
+
 limit:=0d100_000_000;  cacheSize:=limit.toFloat().log10().ceil().toInt();
 number:=(0).pump(cacheSize,List().write,0); // list of zeros
 result:=0; i:=cacheSize - 1;
 var cacheBang=factorial(cacheSize);  //== number.len()!
- 
+
 while(True){  // create numbers s.t. no set of digits is repeated
    if(i == 0 and number[i] == 9) break;
    if(i == cacheSize - 1 and number[i] < 9){ number[i] += 1; result += check(number); }

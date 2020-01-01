@@ -11,15 +11,15 @@ tags = []
 +++
 
 == Generalization ==
-This is an interesting programming challenge.  An active discussion is needed to strike a balance between generalization and defeating the task. 
-* I would expect to see a number of languages mark this as omit.  
+This is an interesting programming challenge.  An active discussion is needed to strike a balance between generalization and defeating the task.
+* I would expect to see a number of languages mark this as omit.
 * Would this only be possible for languages with implicit iteration?
 * Would it be fair to relax the lists to lists of lists or supplementary lists in cases of languages like C that represent strings as arrays?
 * Etc.
 How about a discussion here of how this would apply to a few languages (say in the top 20 or so)?
 
 
-###  Suitability and Applicability 
+###  Suitability and Applicability
 
 There needs to be an anchor for the emerging discussion on the suitability of this task for RC as the comments are under several headings.
 
@@ -39,14 +39,14 @@ I'm really not convinced that this needs to be deleted, but I haven't had time t
 :: I'm happy that the task has generated a lot of discussion and thinking.  It seems to be a bit more of a can of worms than I'd hoped for and I really hope it can be salvaged in a fair and reasonable way. I expect that the task description will need a concise summary of the intent so people don't go too literal on it.   --[[User:Dgamey|Dgamey]] 03:20, 15 August 2011 (UTC)
 
 
-###  Revised task description candidate 
+###  Revised task description candidate
 
 
 : Given the level of consideration and debate, I don't want to just replace the task description without showing my hand first.  :)
 
 Background
 
-This problem and challenge is inspired by one that used to be given as a challenge to students learning Icon. It was intended to be tried in Icon and another language the student was familiar with.  The basic problem is quite simple the challenge and fun part came through the introduction of restrictions. Experience has shown that the original restrictions required some adjustment to bring out the intent of the challenge and make it suitable for Rosetta Code.  
+This problem and challenge is inspired by one that used to be given as a challenge to students learning Icon. It was intended to be tried in Icon and another language the student was familiar with.  The basic problem is quite simple the challenge and fun part came through the introduction of restrictions. Experience has shown that the original restrictions required some adjustment to bring out the intent of the challenge and make it suitable for Rosetta Code.
 
 The original programming challenge and some solutions can be found at [https://tapestry.tucson.az.us/twiki/bin/view/Main/LongestStringsPuzzle Unicon Programming TWiki / Longest Strings Puzzle].  (See notes on talk page if you have trouble with the site).
 
@@ -54,20 +54,20 @@ Basic problem statement:
 
 :Write a program that reads lines from standard input and, upon end of file, writes the longest line to standard output.
 :If there are ties for the longest line, the program writes out all the lines that tie.
-:If there is no input, the program should produce no output. 
+:If there is no input, the program should produce no output.
 
-Original list of restrictions: 
+Original list of restrictions:
 
 :1. No comparison operators may be used.
 :2. No arithmetic operations, such as addition and subtraction, may be used.
-:3. The only datatypes you may use are integer and string. In particular, you may not use lists. 
+:3. The only datatypes you may use are integer and string. In particular, you may not use lists.
 
 An additional restriction became apparent in the discussion.
 :4. Do not re-read the input file.  Avoid using files as a replacement for lists.
 
 Because of the variety of languages on Rosetta and the wide variety of concepts used in them there needs to be a bit of clarification and guidance here to get to the spirit of the challenge and the intent of the restrictions.
 
-:The basic problem can be solved very conventionally and that's boring and pedestrian.   The original intent here wasn't to unduly frustrate people with interpreting the restrictions, it was to get people to think outside of their particular box and have a bit of fun doing it. 
+:The basic problem can be solved very conventionally and that's boring and pedestrian.   The original intent here wasn't to unduly frustrate people with interpreting the restrictions, it was to get people to think outside of their particular box and have a bit of fun doing it.
 
 :The guiding principle here should be that when using the language of your choice, try to solve this creatively showing off some of your language capabilities. If you need to bend the restrictions a bit, explain why and try to follow the intent.  If you absolutely can't get around one, say why in your description.
 
@@ -76,28 +76,28 @@ Because of the variety of languages on Rosetta and the wide variety of concepts 
 ::* In general, the restrictions are meant to avoid the explicit use of these features.
 ::* "No comparison operators may be used" - At some level there must be some test that allows the solution to get at the length and determine if one string is longer.  Comparison operators, in particular any less/greater comparison should be avoided. Various approaches allow for detecting the end of a string. Some of these involve implicitly using equal/not-equal; however, explicitly using equal/not-equal should be acceptable.
 ::* "No arithmetic operations" - Again, at some level something may have to advance through the string.  Often there are ways a language can do this implicitly advance a cursor or pointer without explicitly using a +, - , ++, --, add, subtract, etc.
-::* The datatype restrictions are amongst the most difficult to reinterpret.  In the language of the original challenge strings are atomic datatypes and structured datatypes like lists are quite distinct and have many different operations that apply to them.  This becomes a bit fuzzier with languages with a different programming paradigm.  The intent would be to avoid using an easy structure to accumulate the longest strings and spit them out. There will be some natural reinterpretation here. 
+::* The datatype restrictions are amongst the most difficult to reinterpret.  In the language of the original challenge strings are atomic datatypes and structured datatypes like lists are quite distinct and have many different operations that apply to them.  This becomes a bit fuzzier with languages with a different programming paradigm.  The intent would be to avoid using an easy structure to accumulate the longest strings and spit them out. There will be some natural reinterpretation here.
 ::: To make this a bit more concrete, here are a couple of specific examples:
-:::: In C, a string is an array of chars, so using a couple of arrays as strings is in the spirit while using a second array in a non-string like fashion would violate the intent. 
+:::: In C, a string is an array of chars, so using a couple of arrays as strings is in the spirit while using a second array in a non-string like fashion would violate the intent.
 :::: In APL or J, arrays are the core of the language so ruling them out is unfair.  Meeting the spirit will come down to how they are used.
 ::: Please keep in mind these are just examples and you may hit new territory finding a solution. There will be other cases like these. Explain your reasoning. You may want to open a discussion on the talk page as well.
 ::* The added "No rereading" restriction is for practical reasons, re-reading stdin should be broken.  I haven't outright banned the use of other files but I've discouraged them as it is basically another form of a list.  Somewhere there may be a language that just sings when doing file manipulation and where that makes sense; however, for most there should be a way to accomplish without resorting to an externality.
 
 :At the end of the day for the implementer this should be a bit of fun.  As an implementer you represent the expertise in your language, the reader may have no knowledge of your language.  For the reader it should give them insight into how people think outside the box in other languages.  Comments, especially for non-obvious (to the reader) bits will be extremely helpful.  While the implementations may be a bit artificial in the context of this task, the general techniques may be useful elsewhere.
-    
-Task    
-    
-Implement a solution to the basic problem that adheres to the spirit of the restrictions.  
-Describe how you circumvented or got around these 'restrictions' and met the 'spirit' of the challenge.  Your supporting description may need to describe any challenges to interpreting the restrictions and how you interpretation.  You should state any assumptions, warnings, or other relevant points. 
 
-This task is likely to encourage multiple different types of solutions.  They should be substantially different approaches. 
+Task
+
+Implement a solution to the basic problem that adheres to the spirit of the restrictions.
+Describe how you circumvented or got around these 'restrictions' and met the 'spirit' of the challenge.  Your supporting description may need to describe any challenges to interpreting the restrictions and how you interpretation.  You should state any assumptions, warnings, or other relevant points.
+
+This task is likely to encourage multiple different types of solutions.  They should be substantially different approaches.
 
 Given the input: (etc. as is current).
 --[[User:Dgamey|Dgamey]] 13:30, 15 August 2011 (UTC)
 
 
 ### = Comments / Feedback =
- 
+
 
 : How does this work for people?  --[[User:Dgamey|Dgamey]] 13:35, 15 August 2011 (UTC)
 
@@ -182,7 +182,7 @@ Beyond thinking outside the box, the restrictions need to be clear and will prob
 All of the restrictions apply to any called routines such as libraries.  I suppose if there was a native built-in library function that returned the longest strings that would be allowable; but, library routines shouldn't be used to cheat on the restrictions.  --[[User:Dgamey|Dgamey]] 12:35, 13 August 2011 (UTC)
 
 
-###  No comparisons 
+###  No comparisons
 
 : "No comparison operators may be used."
 ::  This would also cover built-in comparison functions like lt(a,b).  Instead of "operators" it should probably read "operators/functions" or "operations" possibly with "built-in" in front.  Now if you can write a comparison function that doesn't use these things, that would work. --[[User:Dgamey|Dgamey]] 12:35, 13 August 2011 (UTC)
@@ -190,7 +190,7 @@ All of the restrictions apply to any called routines such as libraries.  I suppo
 :::: Based on the discussions below about the C cmp() function, I think the main intent was to avoid explicit less/greater than comparisons and comparisons of the contents of the data (i.e. two strings). Beyond end of string detection, I'm not sure how equality tests would help.  So I think the answer to (1) is no.  The question in (2) is a bit more complicated, the Icon solution (and others on the original TWiki) use the built in string scanning/pattern matching to consume length so this kind of thing was not intended to count as a comparison.  A full-blown regular expression might allow other ways to solve this than by consuming length.  Provided it avoided explicit comparison and math it should probably be allowed.  It would have to be a built-in regexp as a regexp procedure in the source language would likely violate one or more of the restrictions.  But also, because of it's portability it really isn't showing off the characteristics of the language even if reg exp is built in and is a bit of a cheat in that sense.  If it were the only way to do it, then yes, but if there were other ways to do it I think the intent of the task is to see those other ways.  I could see some people submitting a regexp and non regexp version to show the variety.  --[[User:Dgamey|Dgamey]] 06:00, 14 August 2011 (UTC)
 
 
-###  No arithmetic operations 
+###  No arithmetic operations
 
 : "No arithmetic operations, such as addition and subtraction, may be used."
 :: I think this is clear. --[[User:Dgamey|Dgamey]] 12:35, 13 August 2011 (UTC)
@@ -199,7 +199,7 @@ All of the restrictions apply to any called routines such as libraries.  I suppo
 ::::: A number of languages have this as a short hand for <tt>i = i + 1</tt>, so I think it doesn't pass.  There are a couple of solutions that use operations like substrings and detect failures/errors/etc. One of these might work for you?  --[[User:Dgamey|Dgamey]] 23:26, 15 August 2011 (UTC)
 
 
-###  Use only integers and strings 
+###  Use only integers and strings
 
 : "The only datatypes you may are use are integer and string. In particular, you may not use lists."
 :: To avoid semantic arguments, "lists" means lists/arrays/vectors in the broader sense.  However, clearly in the case of C, where strings are arrays of characters, this needs to be relaxed a bit.  Using arrays for other than strings would be a cheat here. --[[User:Dgamey|Dgamey]] 12:35, 13 August 2011 (UTC)
@@ -214,9 +214,9 @@ All of the restrictions apply to any called routines such as libraries.  I suppo
 ::::: Part 3: what is a data type?  (See part 1). --[[User:Rdm|Rdm]] 20:16, 14 August 2011 (UTC)
 :::::: Ok, lets start with my intent was not to rule out J.  You also might want to look at the (currently) last paragraph under Restrictions (search for "boring and pedestrian") and see that I'm thinking that the task needs to be specified more positively.  Toward that end, I'd appreciate your input.  I also appreciate that J (and APL and others) are sufficiently different in approach that there are creative approaches that would be different from other languages and also that you may very well be correct that it doesn't make much sense.  The pedestrian solution is to loop through the input building a list/array of the longest strings testing length using gt/lt.  J rarely does things in such a pedestrian and serial manner.
 :::::: Re Pt1 and 3.  I thought J had (data)types inside arrays like numbers and literals.  I also thought J had operators for dealing with literals that were not generalized to arbitrary dimensioned arrays.
-:::::: Re Pt2.  Stepping back this seems to be focusing on avoiding direct comparison of length as in the pedestrian solution. Most of the posted solutions are looking at some secondary way of detecting end of string. 
+:::::: Re Pt2.  Stepping back this seems to be focusing on avoiding direct comparison of length as in the pedestrian solution. Most of the posted solutions are looking at some secondary way of detecting end of string.
 :::::: Does any of that help?  As a start? --[[User:Dgamey|Dgamey]] 21:45, 14 August 2011 (UTC)
-::::::: Ok, yes, J has data types inside of its arrays, they are mostly invisible, but they can be grouped into:  numeric, literal (which means that it's an array of characters), and boxed (which means that it's an array of references to arrays).  So, hypothetically speaking, we could claim that "no list" really means, in the context of J, no boxed arrays" -- this means we can have arrays of characters with multiple dimensions even though in another language a person might think of this as "lists of strings".  That might leave use with a solution like <code>(];._2 ([ #~ -:"1) [:|."1|.;._2)@(1!:1)</code> but would this be legal?  It's using the -: verb, which tests for an exact [http://jsoftware.com/help/dictionary/d122.htm match].  But is that a comparison operator?  If the point is to not be testing on length, then this might or might not be legal, depending on what that concept really means. 
+::::::: Ok, yes, J has data types inside of its arrays, they are mostly invisible, but they can be grouped into:  numeric, literal (which means that it's an array of characters), and boxed (which means that it's an array of references to arrays).  So, hypothetically speaking, we could claim that "no list" really means, in the context of J, no boxed arrays" -- this means we can have arrays of characters with multiple dimensions even though in another language a person might think of this as "lists of strings".  That might leave use with a solution like <code>(];._2 ([ #~ -:"1) [:|."1|.;._2)@(1!:1)</code> but would this be legal?  It's using the -: verb, which tests for an exact [http://jsoftware.com/help/dictionary/d122.htm match].  But is that a comparison operator?  If the point is to not be testing on length, then this might or might not be legal, depending on what that concept really means.
 ::::::: But, ok, you probably do not know enough J to read that sentence, so here's a description:  Using the end of line marker, form the characters into a two dimensional array (padding short lines with spaces).  This is the left argument to the inner expression.  The right argument is formed using the same technique, except that we reverse each line in the process of forming them into an array and then reverse each row again after it has been padded.  The inner set of parenthesis contains an expression which will keep the rows which are identical in both copies.
 ::::::: That said, it's probably also worth noting that most J programming involves "thinking outside the box" if "the box" means "traditional approaches used in traditional languages".
 ::::::: Also, for reference, here is a "use length directly" approach: <code>(#~ (=>./)@:(#@>))@(<;._2)@(1!:1)</code> and note that it does not use any "comparison operators" except = and that it's not doing any "arithmetic".  It is, however, finding the maximum length and using that to select the relevant rows.
@@ -237,7 +237,7 @@ I had to chuckle at the comment on the C submission as I think it proves the poi
 ::: Also, Icon is implicitly advancing a cursor (&pos) inside the string scanning/matching which strikes me as equivalent to what is happening inside of cmp.  --[[User:Dgamey|Dgamey]] 06:04, 14 August 2011 (UTC)
 
 ==Icon uses boolean datatypes==
-'move(1)' must return something coerced to a boolean for the if statement/expression to work on its return value. In fact, their are more conditionals, so things are getting coerced to booleans there too. I think the problem statement could prove tough to tie down ;-) 
+'move(1)' must return something coerced to a boolean for the if statement/expression to work on its return value. In fact, their are more conditionals, so things are getting coerced to booleans there too. I think the problem statement could prove tough to tie down ;-)
  --[[User:Paddy3118|Paddy3118]]
 
 Yet more. From the Icon comments:
@@ -280,7 +280,7 @@ Replaces:
 ```python
 import fileinput
 import operator as op
- 
+
 maxlen, maxlines = 0, ''
 for line in fileinput.input():
     ll = len(line)
@@ -302,9 +302,9 @@ The last revision to the page claims:  "Silently wrong result is no better than 
 I believe this claim is false, since crashing can lead to machine compromises in contexts where the data comes from elsewhere.  --[[User:Rdm|Rdm]] 02:51, 15 August 2011 (UTC)
 :Segfault isn't all that different from <code>kill -9</code>, or even calling <code>exit()</code> for that matter: the process is gone, along with all its memory pages and file handles, leaving not much to be compromised.  A crashed program of course can leave behind some inconsistent state around such as half written files, but that's not a problem here.  The C code can overrun buffers even if we use <code>fgets</code> (and the fgets length should be 1 less anyway), so the last fix didn't really fix anything, only adding a possibility of wrong result besides crashing.  If there is a chance for the program to fail and we are not going to completely prevent it, I'd rather have it fail more obviously. --[[User:Ledrug|Ledrug]] 03:13, 15 August 2011 (UTC)
 ::Segfault is not the only possible outcome from buffer overflow.  Also, it's my understanding that the length argument to fgets is the buffer size -- if it's 65536 then a maximum of 65535 characters will be read as the final character to be placed in the buffer must be null.  That said, if there were some other way to crash the program, I would like to understand it, and I would also like for that issue to be fixed.  --[[User:Rdm|Rdm]] 17:07, 15 August 2011 (UTC)
-:::The fgets needs to be 1 less because of the strcat of a newline right after it.  Even with fgets, the accumulator buffer <code>buf</code> can still be overrun when we add lines to it (suppose the input has 2000 lines each 1000 chars long, for example).  If you want to be safe, well, 
-```c>#include <stdio.h
-
+:::The fgets needs to be 1 less because of the strcat of a newline right after it.  Even with fgets, the accumulator buffer <code>buf</code> can still be overrun when we add lines to it (suppose the input has 2000 lines each 1000 chars long, for example).  If you want to be safe, well,
+```c
+#include <stdio.h>
 #include <string.h>
 #include <assert.h>
 
@@ -347,7 +347,7 @@ int main()
 	char buf[ACCU_MAX] = {0};
 	char *last = buf;
 	char *next = buf;
- 
+
 	while (fgets(line, LINE_MAX, stdin)) {
 		/* check that fgets didn't truncate line, or result will be wrong */
 		assert(gt(dec(LINE_MAX), length(line)));
@@ -361,7 +361,7 @@ int main()
 		strcpy(next, line);
 		while (*next) next = &next[1];
 	}
- 
+
 	printf("%s", buf);
 	return 0;
 }
@@ -374,12 +374,12 @@ int main()
 
 :::::::: Now you 've pointed it out, it does verge on the absurd :-)
  There is also much more talk than task entries. --[[User:Paddy3118|Paddy3118]] 05:59, 17 August 2011 (UTC)
-::::::::: I think I'll post the revised task descriptions with a small tweak about warnings.  The intent was for demonstration code with some documentation.  It would be fine to point out that the code isn't secure in the description.  Now we've got all kinds of secondary functions.  I'd rather see comments on the line p = &p[1] and the while loop showing the reader with little C what's happening.  
+::::::::: I think I'll post the revised task descriptions with a small tweak about warnings.  The intent was for demonstration code with some documentation.  It would be fine to point out that the code isn't secure in the description.  Now we've got all kinds of secondary functions.  I'd rather see comments on the line p = &p[1] and the while loop showing the reader with little C what's happening.
 ::::::::: A separate task or family of tasks showing various safe vs. unsafe practices might be worth considering.  --[[User:Dgamey|Dgamey]] 11:39, 17 August 2011 (UTC)
 
-::In other words, this program will not block for input:  
-```c>#include <stdio.h
-
+::In other words, this program will not block for input:
+```c
+#include <stdio.h>
 main() {
         char buf[9];
         fgets(buf, 1, stdin);
@@ -476,10 +476,10 @@ I'm not sure if this will help or not but here goes:
 procedure main()    # boring and pedestrian solution
 maxlen := 0                    # set max string length
 L := []
-while line := read() do        
+while line := read() do
     if maxlen <:= *line then L := [line]    # <:= lt assignment blatantly fails comparison restriction
     else if maxlen = *line then put(L,line) # L is a list accumulator and blatantly fails list restriction
-every write(!L)                              
+every write(!L)
 end
 ```
 

@@ -17,7 +17,7 @@ tags = []
 Write a computer program that computes and shows its own   [[entropy]].
 
 
-;Related Tasks: 
+;Related Tasks:
 :*   [[Fibonacci_word]]
 :*   [[Entropy]]
 
@@ -90,7 +90,7 @@ BEGIN
         OD;
         close( input file );
         # show the entropy of the file cotents #
-        print( ( shannon entropy( file contents ), newline ) ) 
+        print( ( shannon entropy( file contents ), newline ) )
     FI
 END
 ```
@@ -143,8 +143,8 @@ Minor edit to the [[Entropy#C|Entropy]] answer.
 
 Assumes that the source file is stored in the working directory as "entropy.c".
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
@@ -391,7 +391,7 @@ IN: rosetta-code.entropy-narcissist
 ' version 01-06-2016
 ' compile with: fbc -s console
 ' modified code from ENTROPY entry
- 
+
 Dim As Integer i, count, totalchar(255)
 Dim As UByte buffer
 Dim As Double prop, entropy
@@ -399,31 +399,31 @@ Dim As Double prop, entropy
 Dim As String slash, filename = Command(0)
 Dim As Integer ff = FreeFile   ' find first free filenumber
 Open filename For Binary As #ff
- 
+
 If Err > 0 Then ' should not happen
     Print "Error opening the file"
     Beep : Sleep 5000, 1
     End
 End If
- 
+
 ' will read 1 UByte from the file until it reaches the end of the file
 For i = 1 To Lof(ff)
     Get #ff, ,buffer
     totalchar(buffer) += 1
     count = count + 1
 Next
- 
+
 For i = 0  To 255
     If totalchar(i) = 0 Then Continue For
     prop = totalchar(i) / count
     entropy = entropy - (prop * Log (prop) / Log(2))
 Next
- 
+
 ' next lines are only compiled when compiling for Windows OS (32/64)
 #Ifdef __FB_WIN32__
     slash = chr(92)
     print "Windows version"
-#endif    
+#endif
 #Ifdef __FB_LINUX__
    slash = chr(47)
    print "LINUX version"
@@ -431,11 +431,11 @@ Next
 
     i = InStrRev(filename, slash)
     If i <> 0 Then filename = Right(filename, Len(filename)-i)
- 
+
 Print "My name is "; filename
 Print : Print "The Entropy of myself is"; entropy
 Print
- 
+
 ' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "hit any key to end program"
@@ -522,7 +522,7 @@ import System.Environment
 (>>>) = flip (.)
 
 main = getArgs >>= head >>> BS.readFile >>= BS.unpack >>> entropy >>> print
-          
+
 entropy = sort >>> group >>> map genericLength >>> normalize >>> map lg >>> sum
   where lg c = -c * logBase 2 c
         normalize c = let sc = sum c in map (/ sc) c
@@ -538,7 +538,7 @@ Entropy of the source
  $ ./Narcissist Narcissist.hs
  4.452645183154108
 
-Entropy of the binary 
+Entropy of the binary
 
  $ ./Narcissist Narcissist
  5.525417236346172
@@ -590,14 +590,14 @@ self-entropy: 4.8684243451359706
 fun log2(d: Double) = Math.log(d) / Math.log(2.0)
 
 fun shannon(s: String): Double {
-    val counters = mutableMapOf<Char, Int>() 
+    val counters = mutableMapOf<Char, Int>()
     for (c in s) {
         if (counters.containsKey(c)) counters[c] = counters[c]!! + 1
         else counters.put(c, 1)
     }
     val nn = s.length.toDouble()
     var sum = 0.0
-    for (key in counters.keys) {      
+    for (key in counters.keys) {
        val term = counters[key]!! / nn
        sum += term * log2(term)
     }
@@ -634,7 +634,7 @@ function getFile (filename)
 end
 
 function log2 (x) return math.log(x) / math.log(2) end
- 
+
 function entropy (X)
     local N, count, sum, i = X:len(), {}, 0
     for char = 1, N do
@@ -799,7 +799,7 @@ def entropy(s):
 
 with open(__file__) as f:
     b=f.read()
-    
+
 print(entropy(b))
 ```
 
@@ -870,7 +870,7 @@ log2: procedure;  parse arg x 1 ox;     ig= x>1.5;     ii=0;          is=1 -  2 
            r=z+ii;  if arg()==2  then return r;    return r/log2(2,.)
 ```
 
-'''output''' 
+'''output'''
 
 ```txt
 
@@ -925,7 +925,7 @@ fn entropy<I: IntoIterator<Item = u8>>(iter: I) -> f32 {
         histogram[b as usize] += 1;
         len += 1;
     }
-    
+
     histogram
         .iter()
         .cloned()

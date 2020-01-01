@@ -65,7 +65,7 @@ OP LWB = (BITS in x)INT: bits width - RUPB in x;
 OP RUPB = (BITS in x)INT:
   ### 32 bit LWB Find Lower Set Bit using an unrolled loop ###
 # Note: BITS ELEM 1 is actually numerically the Most Significant Bit!! #
-  IF in x = 2r0 THEN 
+  IF in x = 2r0 THEN
     -1 # EXIT #
   ELSE
     BITS x := in x, out := 2r0;
@@ -82,7 +82,7 @@ OP LWB = (LBITS in x)INT: lbits width - RUPB in x;
 OP RUPB = (LBITS in x)INT:
   ### Generalised Find Lower Set Bit using a loop ###
 # Note: BITS ELEM 32 is actually numerically the Least Significant Bit!! #
-  IF in x = 2r0 THEN 
+  IF in x = 2r0 THEN
     -1 # EXIT #
   ELSE
     LBITS x := in x;
@@ -91,8 +91,8 @@ OP RUPB = (LBITS in x)INT:
       out := BIN 0;
     WHILE
       LBITS mask := NOT BIN (ABS (LONG 2r1 SHL ABS out bit) - 1);
-      IF(x AND mask) /= 2r0 THEN 
-        x := x SHR ABS out bit; 
+      IF(x AND mask) /= 2r0 THEN
+        x := x SHR ABS out bit;
         out := out OR out bit FI;
       out bit := out bit SHR 1;
   # WHILE # out bit /= 2r0 DO SKIP OD;
@@ -104,7 +104,7 @@ OP UPB = (BITS in x)INT: bits width - RLWB in x;
 OP RLWB = (BITS in x)INT:
   ### 32 bit Find Upper Set Bit using an unrolled loop ###
 # Note: BITS ELEM 1 is actually numerically the Most Significant Bit!! #
-  IF in x = 2r0 THEN 
+  IF in x = 2r0 THEN
     0 # EXIT #
   ELSE
     BITS x := in x, out := 2r0;
@@ -121,7 +121,7 @@ OP UPB = (LBITS in x)INT: lbits width - RLWB in x;
 OP RLWB = (LBITS in x)INT:
   ### Generalised Find Upper Set Bit using a loop ###
 # Note: BITS ELEM 1 is actually numerically the Most Significant Bit!! #
-  IF in x = 2r0 THEN 
+  IF in x = 2r0 THEN
     0 # EXIT #
   ELSE
     LBITS x := in x;
@@ -130,8 +130,8 @@ OP RLWB = (LBITS in x)INT:
       out := BIN 0;
     WHILE
       LBITS mask := BIN (ABS (LONG 2r1 SHL ABS out bit) - 1);
-      IF(x AND mask) = 2r0 THEN 
-        x := x SHR ABS out bit; 
+      IF(x AND mask) = 2r0 THEN
+        x := x SHR ABS out bit;
         out := out OR out bit FI;
       out bit := out bit SHR 1;
   # WHILE # out bit /= 2r0 DO SKIP OD;
@@ -153,11 +153,11 @@ FORMAT row fmt  = $g(-35)"|"2(g(-3)" |"),2rn(bits of prod+1)d l$;
 test int:(
   printf((header fmt, "INT: find first & last set bit"));
   INT prod := 0;
-  
+
   # test case 0 #
   prod := 0; bits of prod := RUPB BIN prod;
   printf((row fmt0, prod, RLWB BIN prod, RUPB BIN prod, BIN prod));
-  
+
   prod := 1; # test case 1 etc ... #
   INT zoom := 2 * 3 * 7;
   WHILE
@@ -171,11 +171,11 @@ test int:(
 test long int:(
   printf(($l$,header fmt, "LONG INT:"));
   LONG INT prod := 0;
-  
+
   # test case 0 #
   prod := 0; bits of prod := RUPB BIN prod;
   printf((row fmt0, prod, RLWB BIN prod, RUPB BIN prod, BIN prod));
-  
+
   prod := 1; # test case 1 etc ... #
   INT zoom := 2 * 3 * 7 * 31;
   WHILE
@@ -256,8 +256,8 @@ Outputs:
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdint.h>
 
 uint32_t msb32(uint32_t n)
@@ -324,8 +324,8 @@ output ("x###" are in base 16)
 
 {{works with|GCC}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <limits.h>
 
 int msb_int(unsigned int x) {
@@ -669,7 +669,7 @@ big numbers:
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-The task definition makes some assumptions that don't work in Icon/Unicon and are going to require some reinterpretation. In Icon/Unicon all integers appear to be implemented as a single common type.  A specific implementation may or may not have large integers, but if it does they are essentially indistinguishable from regular integers. Given all of this, implementing "efficient" procedures for the platform word size without loops or recursion makes little sense.  
+The task definition makes some assumptions that don't work in Icon/Unicon and are going to require some reinterpretation. In Icon/Unicon all integers appear to be implemented as a single common type.  A specific implementation may or may not have large integers, but if it does they are essentially indistinguishable from regular integers. Given all of this, implementing "efficient" procedures for the platform word size without loops or recursion makes little sense.
 
 Instead of this, to meet the spirit of the task, these lsb and msb routines are generalized to reduce the integer in blocks of bits and then zoom in on the desired bit by binary search (i.e. successively looking a blocks that are half the size again).  The exponent for the initial power used to create the masks does not need to be itself a power of two.  The xsb_initial procedure uses introspection to determine the word size of a basic integer type.  This is used to build a mask that fits within the basic word size of the implementation. In this way we won't create unnecessary large integers through implicit type conversions.
 
@@ -693,15 +693,15 @@ procedure msb(i)  #: return the most significant set bit index or fail
 static mask
 initial mask := xsb_initial()
 
-   if i > 0 then {  
+   if i > 0 then {
       b := 0
       every m := mask[j := 1 to *mask by 2] & r := mask[j+1] do {
          repeat {
             l := iand(i,m)
             i := ishift(i,r)
-            if i = 0 then break            
+            if i = 0 then break
             b -:= r
-            }         
+            }
          i := l
          }
       return b
@@ -714,7 +714,7 @@ initial mask := xsb_initial()
 
    if i > 0 then {
       b := 0
-      every m := mask[j := 1 to *mask by 2] & r := mask[j+1] do 
+      every m := mask[j := 1 to *mask by 2] & r := mask[j+1] do
          until iand(i,m) > 0 do {
             i := ishift(i,r)
             b -:= r
@@ -728,7 +728,7 @@ static mask
 initial {                                          # build
       a := &allocated                              # bigint affects allocation
       p := if 2^63 & a=&allocated then 63 else 31  # find wordsize-1
-      p *:= 2                                      # adjust pre-loop 
+      p *:= 2                                      # adjust pre-loop
       mask := []
       until (p := p / 2) = 0 do put(mask,2^p-1,-p) # list of masks and shifts
    }
@@ -737,9 +737,9 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
-[http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn hexcvt.icn provides hexstring] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
+[http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn hexcvt.icn provides hexstring]
 
 Output:
 ```txt
@@ -845,7 +845,7 @@ The left part of each sentence uses the words we defined here, organizing their 
 
 
 
-###  Library 
+###  Library
 
 {{incorrect|Java}}
 {{works with|Java|1.5+}}
@@ -1052,7 +1052,7 @@ end
 
 ## Kotlin
 
-As I have no idea what the difference is supposed to be between lwb/uwb and rlwb/ruwb (unless the former numbers bits from left to right), I have only provided implementations of the latter - using Java/Kotlin library functions - which seem to be all that is needed in any case to perform the task in hand: 
+As I have no idea what the difference is supposed to be between lwb/uwb and rlwb/ruwb (unless the former numbers bits from left to right), I have only provided implementations of the latter - using Java/Kotlin library functions - which seem to be all that is needed in any case to perform the task in hand:
 
 ```scala
 // version 1.1.0
@@ -1085,7 +1085,7 @@ fun main(args: Array<String>) {
         print("42 ^ ${i.toString().padEnd(2)}  = ${pow42.toString(2).padStart(64, '0').padEnd(64)} -> ")
         println(String.format("MSB: %2d, LSB: %2d", pow42.ruwb(), pow42.rlwb()))
         pow42 *= 42L
-    } 
+    }
     println()
     val big1302 = BigInteger.valueOf(1302)
     var pow1302 = BigInteger.ONE
@@ -1093,7 +1093,7 @@ fun main(args: Array<String>) {
         print("1302 ^ $i = ${pow1302.toString(2).padStart(64, '0').padEnd(64)} -> ")
         println(String.format("MSB: %2d, LSB: %2d", pow1302.ruwb(), pow1302.rlwb()))
         pow1302 *= big1302
-    } 
+    }
 }
 ```
 
@@ -1364,7 +1364,7 @@ on 64-bit that results in 130691232 + ~7.3e-12 rather than the integer 130691232
 whereas repeated multiplication by 42 as shown keeps it integer for longer.
 
 
-###  mpfr/gmp 
+###  mpfr/gmp
 
 {{libheader|mpfr}}
 
@@ -1527,13 +1527,13 @@ Output:
 
 ## REXX
 
-Programming note:   The task's requirements state to compute powers of   1302   up the host's next "natural" '''long''' host word 
+Programming note:   The task's requirements state to compute powers of   1302   up the host's next "natural" '''long''' host word
 
 size ···, but for REXX, the "natural" size is a character string (indeed, the only thing REXX knows are character strings, numbers
 
 are expressed as character strings), so the output (below) was limited to four times the default size, but the actual limit may be
 
-around eight million bytes (for some REXXes).   REXX programmers have no need to know what the host's word size is. 
+around eight million bytes (for some REXXes).   REXX programmers have no need to know what the host's word size is.
 
 ```rexx
 /*REXX program finds the  first and last  set bit  of  "integer"  and  "long interger". */
@@ -1560,7 +1560,7 @@ sep:  say copies('─',w)arg(1)copies('─',4)arg(1)copies('─',4)arg(1) ||,
           copies('─',length(n2b(10**(digits()-1))));               return
 ```
 
-'''output''' 
+'''output'''
 
 ```txt
 

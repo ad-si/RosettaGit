@@ -17,7 +17,7 @@ tags = []
 [[File:total_circles_area_full.png|300px|thumb|right|Example circles]]
 [[File:total_circles_area_filtered.png|300px|thumb|right|Example circles filtered]]
 
-Given some partially overlapping circles on the plane, compute and show the total area covered by them, with four or six (or a little more) decimal digits of precision. The area covered by two or more disks needs to be counted only once. 
+Given some partially overlapping circles on the plane, compute and show the total area covered by them, with four or six (or a little more) decimal digits of precision. The area covered by two or more disks needs to be counted only once.
 
 One point of this Task is also to compare and discuss the relative merits of various solution strategies, their performance, precision and simplicity. This means keeping both slower and faster solutions for a language (like C) is welcome.
 
@@ -77,8 +77,8 @@ The result is 21.56503660... .
 
 This program uses a Montecarlo sampling. For this problem this is less efficient (converges more slowly) than a regular grid sampling, like in the Python entry.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
@@ -205,8 +205,8 @@ int main() {
 
 This version performs about 5 million scanlines in about a second, result should be accurate to maybe 10 decimal points.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
@@ -651,7 +651,7 @@ Circles included in circles are discarded, and the circles are sorted : largest 
 (lib 'math)
 (define (make-circle x0 y0 r)
     (vector x0 y0 r ))
-    
+
 (define-syntax-id _.radius (_ 2))
 (define-syntax-id  _.x0  (_ 0))
 (define-syntax-id  _.y0  (_ 1))
@@ -660,8 +660,8 @@ Circles included in circles are discarded, and the circles are sorted : largest 
 (define (cmp-circles a b) (> a.radius b.radius))
 
 (define (included? circle: a circles)
-    (for/or ((b circles))  
-        #:continue (equal? a b) 
+    (for/or ((b circles))
+        #:continue (equal? a b)
         (disk-in-disk? a b)))
 
 ;; eliminates, and sort
@@ -669,7 +669,7 @@ Circles included in circles are discarded, and the circles are sorted : largest 
         (list-sort cmp-circles
           (filter (lambda(c) (not (included? c circles))) circles)))
 
-(define circles (sort-circles 
+(define circles (sort-circles
   (list (make-circle   1.6417233788  1.6121789534 0.0848270516)
         (make-circle  -1.4944608174  1.2077959613 1.1039549836)
         (make-circle   0.6110294452 -0.6907087527 0.9089162485)
@@ -714,15 +714,15 @@ Circles included in circles are discarded, and the circles are sorted : largest 
     (define ds (* dx dy)) ;; tile surface
     (define dr (vector (- rect.x0 dx) (- rect.y0 dy) dx dy))
     (define ijdx 0)
-    
+
     (for/sum ((i steps))
         (vector+= dr 0 dx)
         (vector-set! dr 1 (- rect.y0 dy))
-        
+
         (for/sum ((j steps))
         (vector+= dr 1 dy)
         (set! ijdx (+ i (* j steps)))
-            
+
         (for/sum ((c circles))
             #:break (rect-in-disk? dr c) ;; enclosed ? add ds
                  => (begin   (vector-set! cands ijdx null) ds)
@@ -741,30 +741,30 @@ Circles included in circles are discarded, and the circles are sorted : largest 
     (define ds (* dx dy))
     (define dr (vector (- rect.x0 dx) (- rect.y0 dy) dx dy))
     (define ijdx 0)
-    
+
     (for/sum ((i steps))
         (vector+= dr 0 dx)
         (vector-set! dr 1 (- (rect 1) dy))
-        
+
         (for/sum ((j steps))
         (vector+= dr 1 dy)
-        
+
         (when (!null? cands) (set! circles (cands (+ i (* j steps)))))
         #:continue (null? circles)
-        
+
         ;; add surface
         (or
             (for/or ((c circles)) ;; enclosed ? add ds
             #:break (rect-in-disk? dr c) => ds
             #f )
-            
+
             (if ;; not intersecting? add 0
             (for/or ((c circles))
              (rect-disk-intersect? dr c)) #f 0)
-            
+
             ;; intersecting ? recurse until precision
-            (when (> dx s-precision) (S circles dr 2 null)) 
-            
+            (when (> dx s-precision) (S circles dr 2 null))
+
             ;; no hope - add ds/2
             (// ds 2))
     )))
@@ -787,14 +787,14 @@ Circles included in circles are discarded, and the circles are sorted : largest 
 (vector-length cands) → 640000
 ;; number of remaining tiles
 (for/sum ((c cands)) (if (null? c) 0 1)) → 3670
-;; number of candidates circles 
+;; number of candidates circles
 (for/sum ((c cands)) (if (null? c) 0 (length c))) → 3701
 
 ;;    "The result is 21.565036603856399517.. . "
 (define s-precision 0.0001)
 (define delta (S null rect nsteps cands))
     → 0.08540009897433079 ;; 466_928 calls to S
- 
+
 (+ starter delta) ;; 5 decimals
    → 21.565035654679114
 
@@ -1425,11 +1425,11 @@ public class CirclesTotalArea {
      * Rectangles are given as 4-element arrays [tx, ty, w, h].
      * Circles are given as 3-element arrays [cx, cy, r].
      */
-    
+
     private static double distSq(double x1, double y1, double x2, double y2) {
         return (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
     }
-    
+
     private static boolean rectangleFullyInsideCircle(double[] rect, double[] circ) {
         double r2 = circ[2] * circ[2];
         // Every corner point of rectangle must be inside the circle.
@@ -1438,7 +1438,7 @@ public class CirclesTotalArea {
           distSq(rect[0], rect[1] - rect[3], circ[0], circ[1]) <= r2 &&
           distSq(rect[0] + rect[2], rect[1] - rect[3], circ[0], circ[1]) <= r2;
     }
-    
+
     private static boolean rectangleSurelyOutsideCircle(double[] rect, double[] circ) {
         // Circle center point inside rectangle?
         if(rect[0] <= circ[0] && circ[0] <= rect[0] + rect[2] &&
@@ -1451,10 +1451,10 @@ public class CirclesTotalArea {
           distSq(rect[0], rect[1] - rect[3], circ[0], circ[1]) >= r2 &&
           distSq(rect[0] + rect[2], rect[1] - rect[3], circ[0], circ[1]) >= r2;
     }
-    
+
     private static boolean[] surelyOutside;
-    
-    private static double totalArea(double[] rect, double[][] circs, int d) {    
+
+    private static double totalArea(double[] rect, double[][] circs, int d) {
         // Check if we can get a quick certain answer.
         int surelyOutsideCount = 0;
         for(int i = 0; i < circs.length; i++) {
@@ -1468,7 +1468,7 @@ public class CirclesTotalArea {
         // Is this rectangle surely outside all circles?
         if(surelyOutsideCount == circs.length) { return 0; }
         // Are we deep enough in the recursion?
-        if(d < 1) { 
+        if(d < 1) {
             return rect[2] * rect[3] / 3;  // Best guess for overlapping portion
         }
         // Throw out all circles that are surely outside this rectangle.
@@ -1493,7 +1493,7 @@ public class CirclesTotalArea {
         for(double[] piece: pieces) { total += totalArea(piece, circs, d - 1); }
         return total;
     }
-    
+
     public static double totalArea(double[][] circs, int d) {
         double maxx = Double.NEGATIVE_INFINITY;
         double minx = Double.POSITIVE_INFINITY;
@@ -1510,7 +1510,7 @@ public class CirclesTotalArea {
         surelyOutside = new boolean[circs.length];
         return totalArea(rect, circs, d);
     }
-    
+
     public static void main(String[] args) {
         double[][] circs = {
             { 1.6417233788, 1.6121789534, 0.0848270516 },
@@ -1552,7 +1552,7 @@ public class CirclesTotalArea {
 
 {{works with|Julia|0.6}}
 
-Simple grid algorithm. Borrows the xmin/xmax idea from the Python version. This algorithm is fairly slow. 
+Simple grid algorithm. Borrows the xmin/xmax idea from the Python version. This algorithm is fairly slow.
 
 
 ```julia
@@ -1645,8 +1645,8 @@ fun Double.sq() = this * this
 fun main(args: Array<String>) {
     val xMin = circles.map { it.x - it.r }.min()!!
     val xMax = circles.map { it.x + it.r }.max()!!
-    val yMin = circles.map { it.y - it.r }.min()!! 
-    val yMax = circles.map { it.y + it.r }.max()!! 
+    val yMin = circles.map { it.y - it.r }.min()!!
+    val yMax = circles.map { it.y + it.r }.max()!!
     val boxSide = 5000
     val dx = (xMax - xMin) / boxSide
     val dy = (yMax - yMin) / boxSide
@@ -1655,7 +1655,7 @@ fun main(args: Array<String>) {
         val y = yMin + r * dy
         for (c in 0 until boxSide) {
             val x = xMin + c * dx
-            val b = circles.any { (x - it.x).sq() + (y - it.y).sq() <= it.r.sq() } 
+            val b = circles.any { (x - it.x).sq() + (y - it.y).sq() <= it.r.sq() }
             if (b) count++
         }
     }
@@ -1731,7 +1731,7 @@ fun areaScan(precision: Double): Double {
         var right = Double.NEGATIVE_INFINITY
         val points = circles.filter { Math.abs(y - it.y) < it.r }
                             .map { sect(it, y) }
-                            .sortedBy { it.x } 
+                            .sortedBy { it.x }
         for (p in points) {
             if (p.y <= right) continue
             total += p.y - maxOf(p.x, right)
@@ -2243,7 +2243,7 @@ constant circles = {{ 1.6417233788,  1.6121789534, 0.0848270516},
                     { 0.0152957411,  0.0638919221, 0.9771215985}},
         {x,y,r} = columnize(circles),
         r2 = sq_power(r,2)
- 
+
 atom xMin = min(sq_sub(x,r)),
      xMax = max(sq_add(x,r)),
      yMin = min(sq_sub(y,r)),
@@ -2421,12 +2421,12 @@ main()
 ### 2D Van der Corput sequence
 
 [[File:Van_der_Corput_2D.png|200px|thumb|right]]
-Remembering that the [[Van der Corput sequence]] is used for Monte Carlo-like simulations. This example uses a Van der Corput sequence generator of base 2 for the first dimension, and base 3 for the second dimension of the 2D space which seems to cover evenly. 
+Remembering that the [[Van der Corput sequence]] is used for Monte Carlo-like simulations. This example uses a Van der Corput sequence generator of base 2 for the first dimension, and base 3 for the second dimension of the 2D space which seems to cover evenly.
 
 To aid in efficiency:
-* Circles are uniquified, 
-* Sorted in descending order of size, 
-* Wholly obscured circles removed, 
+* Circles are uniquified,
+* Sorted in descending order of size,
+* Wholly obscured circles removed,
 * And the square of the radius computed outside the main loops.
 
 ```python
@@ -2504,7 +2504,7 @@ def remove_covered_circles(circles):
                         if circle_is_in_circle(c1, c2)]
         if eliminate: covered += [c1, eliminate]
         for c in eliminate: circles.remove(c)
-    #pp(covered)    
+    #pp(covered)
 
 def main(circles):
     print('Originally %i circles' % len(circles))
@@ -2523,7 +2523,7 @@ def main(circles):
             inside += 1
         if not pcount % 100000:
             area = (inside/pcount) * scalex * scaley
-            print('Points: %8i, Area estimate: %r' 
+            print('Points: %8i, Area estimate: %r'
                   % (pcount, area))
             # Hack to check if precision OK
             this = '%.4f' % area
@@ -2534,7 +2534,7 @@ def main(circles):
     print('The value has settled to %s' % this)
 
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
     main(circles)
 ```
 
@@ -2542,7 +2542,7 @@ The above is tested to work with Python v.2.7, Python3 and PyPy.
 {{out}}
 
 ```txt
-python3 total_circle_area.py 
+python3 total_circle_area.py
 Originally 25 circles
 Bounding box: (-2.598415801, 2.8356525417, -2.2017717074, 3.1743670698999997)
   down to 14  due to some being wholly covered by others
@@ -2748,7 +2748,7 @@ See: [[Example:Total_circles_area/Racket]]
 These REXX programs use the grid sampling method.
 
 ### using all circles
- 
+
 
 ```rexx
 /*REXX program calculates the total area of  (possibly overlapping)  circles.           */
@@ -2816,7 +2816,7 @@ the approximate area is:  21.5615597720
 
 
 ### optimized
- 
+
 This REXX version elides any circle that is completely contained in another circle.
 
 Also, another optimization is the sorting of the circles by (descending) radii,
@@ -3025,14 +3025,14 @@ circles = select_circle(circles)
 def grid_sample(circles, box_side=500)
   # compute the bounding box of the circles
   xmin, xmax, ymin, ymax = minmax_circle(circles)
-  
+
   dx = (xmax - xmin) / box_side
   dy = (ymax - ymin) / box_side
-  
+
   circle2 = circles.map{|cx,cy,r| [cx,cy,r*r]}
   include = ->(x,y){circle2.any?{|cx, cy, r2| (x-cx)**2 + (y-cy)**2 < r2}}
   count = 0
-  
+
   box_side.times do |r|
     y = ymin + r * dy
     box_side.times do |c|
@@ -3084,7 +3084,7 @@ def area_scan(prec, circles)
   xmin, xmax, ymin, ymax = minmax_circle(circles)
   ymin = (ymin / prec).floor
   ymax = (ymax / prec).ceil
-  
+
   total = 0
   for y in ymin..ymax
     y *= prec
@@ -3253,7 +3253,7 @@ Note that the error on the Monte Carlo sampling is actually very high; the above
 
 ## VBA
 
-Analytical solution adapted from Haskell/Python. 
+Analytical solution adapted from Haskell/Python.
 
 ```vb
 Public c As Variant
@@ -3508,7 +3508,7 @@ End Sub
 {{out}}
 
 ```txt
- 21,5650366038564 
+ 21,5650366038564
 ```
 
 
@@ -3539,7 +3539,7 @@ foreach r in (box_side){
       count+=circles.filter1('wrap([(cx,cy,cr)]){
          x-=cx; y-=cy;
       	 x*x + y*y <= cr*cr
-      }).toBool(); // -->False|L(x,y,z), L(x,y,r).toBool()-->True, 
+      }).toBool(); // -->False|L(x,y,z), L(x,y,r).toBool()-->True,
    }
 }
 

@@ -31,12 +31,12 @@ The routine should be used to:
 
 Show output on this page.
 
-'''Note:''' You may reference code already on this site if it is written to be imported/included, then only the code necessary for import and the performance of this task need be shown. (It is also important to leave a forward link on the referenced tasks entry so that later editors know that the code is used for multiple tasks). 
+'''Note:''' You may reference code already on this site if it is written to be imported/included, then only the code necessary for import and the performance of this task need be shown. (It is also important to leave a forward link on the referenced tasks entry so that later editors know that the code is used for multiple tasks).
 
-'''Note 2:''' If a languages in-built prime generator is extensible or is guaranteed to generate primes up to a system limit, (2<sup>31</sup> or memory overflow for example), then this may be used as long as an explanation of the limits of the prime generator is also given. (Which may include a link to/excerpt from, language documentation). 
+'''Note 2:''' If a languages in-built prime generator is extensible or is guaranteed to generate primes up to a system limit, (2<sup>31</sup> or memory overflow for example), then this may be used as long as an explanation of the limits of the prime generator is also given. (Which may include a link to/excerpt from, language documentation).
 
 ;nice site to check results:
-Website with vast count of primes. Small ones for the first 10000 and up to 1,000,000,000,000 aka 1E12, divided in subranges : "Each compressed file contains 10 million primes" 
+Website with vast count of primes. Small ones for the first 10000 and up to 1,000,000,000,000 aka 1E12, divided in subranges : "Each compressed file contains 10 million primes"
 
 http://www.primos.mat.br/indexen.html
 
@@ -54,20 +54,20 @@ http://www.primos.mat.br/indexen.html
 
 The solution is based on an open-ended counter, named "Current" counting up to the limit from the Compiler, namely 2**63-1.
 
-The solution uses the package Miller_Rabin from the [[Miller-Rabin primality test]]. When using the gnat Ada compiler, the largest integer we can deal with is 2**63-1. For anything larger, we could use a big-num package. 
+The solution uses the package Miller_Rabin from the [[Miller-Rabin primality test]]. When using the gnat Ada compiler, the largest integer we can deal with is 2**63-1. For anything larger, we could use a big-num package.
 
 
 ```Ada
 with Ada.Text_IO, Miller_Rabin;
 
 procedure Prime_Gen is
-   
+
    type Num is range 0 .. 2**63-1; -- maximum for the gnat Ada compiler
-   
-   MR_Iterations: constant Positive := 25; 
-     -- the probability Pr[Is_Prime(N, MR_Iterations) = Probably_Prime] 
+
+   MR_Iterations: constant Positive := 25;
+     -- the probability Pr[Is_Prime(N, MR_Iterations) = Probably_Prime]
      -- is 1 for prime N and < 4**(-MR_Iterations) for composed N
-   
+
    function Next(P: Num) return Num is
       N: Num := P+1;
       package MR is new Miller_Rabin(Num); use MR;
@@ -77,10 +77,10 @@ procedure Prime_Gen is
       end loop;
       return N;
    end Next;
-   
+
    Current: Num;
    Count: Num := 0;
-   
+
 begin
    -- show the first twenty primes
    Ada.Text_IO.Put("First 20 primes:");
@@ -90,7 +90,7 @@ begin
       Ada.Text_IO.Put(Num'Image(Current));
    end loop;
    Ada.Text_IO.New_Line;
-   
+
    -- show the primes between 100 and 150
    Ada.Text_IO.Put("Primes between 100 and 150:");
    Current := 99;
@@ -100,7 +100,7 @@ begin
       Ada.Text_IO.Put(Num'Image(Current));
    end loop;
    Ada.Text_IO.New_Line;
-   
+
    -- count primes between 7700 and 8000
    Ada.Text_IO.Put("Number of primes between 7700 and 8000:");
    Current := 7699;
@@ -110,7 +110,7 @@ begin
       Count := Count + 1;
    end loop;
    Ada.Text_IO.Put_Line(Num'Image(Count));
-   
+
    Count := 10;
    Ada.Text_IO.Put_Line("Print the K_i'th prime, for $K=10**i:");
    begin
@@ -119,12 +119,12 @@ begin
 	 for I in 1 .. Count loop
 	    Current := Next(Current);
 	 end loop;
-	 Ada.Text_IO.Put(Num'Image(Count) & "th prime:" & 
+	 Ada.Text_IO.Put(Num'Image(Count) & "th prime:" &
 			Num'Image(Current));
 	 Count := Count * 10;
       end loop;
    exception
-      when Constraint_Error => 
+      when Constraint_Error =>
 	 Ada.Text_IO.Put_Line(" can't compute the" & Num'Image(Count) &
 				"th prime:");
    end;
@@ -213,8 +213,8 @@ The 10,000th prime: 104729
 
 Extends the list of primes by sieving more chunks of integers.  There's no serious optimizations. The code can calculate all 32-bit primes in some seconds, and will overflow beyond that.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -344,11 +344,11 @@ ns test-project-intellij.core
   (:require [clojure.string :as string]))
 
 (def primes
-" The following routine produces a infinite sequence of primes 
-  (i.e. can be infinite since the evaluation is lazy in that it 
+" The following routine produces a infinite sequence of primes
+  (i.e. can be infinite since the evaluation is lazy in that it
   only produces values as needed).  The method is from clojure primes.clj library
   which produces primes based upon O'Neill's paper:
-  'The Genuine Sieve of Eratosthenes'.  
+  'The Genuine Sieve of Eratosthenes'.
 
    Produces primes based upon trial division on previously found primes up to
    (sqrt number), and uses 'wheel' to avoid
@@ -359,7 +359,7 @@ ns test-project-intellij.core
   (concat
     [2 3 5 7]
     (lazy-seq
-      (let [primes-from   ; generates primes by only checking if primes 
+      (let [primes-from   ; generates primes by only checking if primes
                           ; numbers which are not divisible by 2, 3, 5, or 7
             (fn primes-from [n [f & r]]
               (if (some #(zero? (rem n %))
@@ -378,9 +378,9 @@ ns test-project-intellij.core
   (->> (take-while #(<= % hi) primes)
        (filter #(>= % lo))
        ))
-	   
+
 (println "First twenty:" (take 20 primes))
-   
+
 (println "Between 100 and 150:" (between 100 150))
 
 (println "Number between 7,7700 and 8,000:" (count (between 7700 8000)))
@@ -474,7 +474,7 @@ The above version is adequate for ranges up to the low millions, so covers the t
   []
   (letfn [(mltpls [[p pi]]
             (letfn [(nxtmltpl [c ci]
-                      (let [nci (if (< ci wheellmt) (+ ci 1) 0)]  
+                      (let [nci (if (< ci wheellmt) (+ ci 1) 0)]
                         (->CIS c #(-> (nxtmltpl (+ c (* p (get wheel ci))) nci)))))]
               (nxtmltpl (* p p) pi))),
           (allmtpls [^CIS pxs]
@@ -778,13 +778,13 @@ Standard prime functions handle numbers < 2e+9. See [http://www.echolalie.org/ec
 ; count in [7700 ...  8000]
 (- (primes-pi 8000) (primes-pi 7700) → 30
 
-; nth-prime 
+; nth-prime
 (nth-prime 10000) → 104729
 
 ;; big ones
 (lib 'bigint)
-(define (p-digits n) 
-  (printf "(next-prime  %d ! ) has %d digits" n 
+(define (p-digits n)
+  (printf "(next-prime  %d ! ) has %d digits" n
   (number-length (next-prime (factorial n )))))
 
 (next-prime 0! ) has 1 digits
@@ -1033,8 +1033,8 @@ printfn "All of the last took %d milliseconds." timed
 {{out}}
 
 ```txt
-The first 20 primes are:  2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 
-The primes from 150 to 150 are:  101 103 107 109 113 127 131 137 139 149 
+The first 20 primes are:  2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71
+The primes from 150 to 150 are:  101 103 107 109 113 127 131 137 139 149
 The number of primes from 7700 to 8000 are:  30
 The 10th prime is:  29
 The 100th prime is:  541
@@ -1062,12 +1062,12 @@ Over the years, the storage of boolean variables has been a steady source of vex
 
 And indeed, the array shall be large. Some simple investigations show that storing a collection of prime numbers in an array of integers occupies rather more storage than storing a simple bit array spanning the same range of numbers, and given the obvious scheme of storing bits only for odd integers, this advantage is still greater - see the schedule in the source file. One could argue that the array of successive prime numbers could be stored in various space-saving ways, but, so also can the bit array be compressed. For instance, have a span of a "primorial" size such as 2*3*5 and a reference span with those factors marked "off": that removes seven odd numbers from consideration, leaving eight candidates for each surge and so only eight bits are required to state "prime" or not instead of fifteen. With non-binary computers, "bit fiddling" is less convenient but still possible. One must use techniques similar to those needed to work with the year, month, and day parts of an integer such as 20161015 in binary.
 
-So, the plan is to have a long array of bits, and, rather than commit a lot of memory to this, do so in a disc file with random access. To follow the "extensible" aspect, this disc file will ''not'' be initialised to its maximum extent on the first invocation of the routine, instead, it will be extended as provoked by requests for NEXTPRIME and so forth. 
+So, the plan is to have a long array of bits, and, rather than commit a lot of memory to this, do so in a disc file with random access. To follow the "extensible" aspect, this disc file will ''not'' be initialised to its maximum extent on the first invocation of the routine, instead, it will be extended as provoked by requests for NEXTPRIME and so forth.
 
 
 ### =Initialisation=
 
-When arranging a sieve of Eratosthenes, one of the problems is that one wishes to step along only with steps of prime number size to avoid wasted effort, but, before the sieve process is completed, there is no ready source of known prime numbers. This is especially difficult when instead of one long sieve covering the whole span of interest, the process is to proceed in surges, repeatedly using some limited size span. For this reason, it is often convenient to prepare an initial array of prime numbers knowing for example that Prime(4792) = 46337, and that the square of the next prime exceeds the range of signed 32-bit integers. But such pre-emptive preparation conflicts with the "extensible" notion, and requires special code and storage for the array. 
+When arranging a sieve of Eratosthenes, one of the problems is that one wishes to step along only with steps of prime number size to avoid wasted effort, but, before the sieve process is completed, there is no ready source of known prime numbers. This is especially difficult when instead of one long sieve covering the whole span of interest, the process is to proceed in surges, repeatedly using some limited size span. For this reason, it is often convenient to prepare an initial array of prime numbers knowing for example that Prime(4792) = 46337, and that the square of the next prime exceeds the range of signed 32-bit integers. But such pre-emptive preparation conflicts with the "extensible" notion, and requires special code and storage for the array.
 
 Because Fortran passes parameters by reference (i.e. by address of the original) a trick is possible. The array SCHARS is shared storage to hold a record from the disc file (as a "buffer") and when subroutine GRASPPRIMEBAG is invoked to gain access to its disc file it notes whether it must create the file. If so, the first record is to be written, and the call is PSURGE(SCHARS) to do so within the shared bitpad. PSURGE knows that its first stepper is with <code>F = 3</code> (because even numbers are not being represented) and proceeds with that, adjusting array SCHARS. When it is ready for the next sieve pass, it invokes <code>F = NEXTPRIME(F)</code> to find the next stepper, which will be five, and NEXTPRIME scans the bit array in SCHARS to find it. ''This is the same bitpad that PSURGE is in the process of adjusting.'' To support this startup ploy, GETSREC (invoked by NEXTPRIME) returns at once when SLAST = 0, signifying that there are no records in the work file as yet. Later, if  GETSREC determines that the bit array is to be extended, it invokes PSURGE with its local array BIT8 as the bitpad to be developed then written to disc, leaving the shared SCHAR array as a record buffer for the use of NEXTPRIME when invoked by PSURGE.
 
@@ -1086,10 +1086,10 @@ Preparing the count field involves another trick, because the first record's cou
 
 The variables are all the default thirty-two bit two's complement integers and integer overflow is a possibility, especially because someone is sure to wonder what is the largest prime that can be represented in thirty-two bits - see the output. The code would be extensible in another way, if all appearances of <code>INTEGER</code> were to be replaced by <code>INTEGER*8</code> though not all variables need be changed - such as <code>C</code> and <code>B</code> because they need only index a character in array SCHARS or a bit in a character. Using sixty-four bits for such variables is excessive even if the cpu uses a 64-bit data bus to memory. If such a change were to be made, then all would go well as cpu time and disc space were consumed up to the point when the count of prime numbers can no longer be fitted into the four character storage allowance in the record format. This will be when more than 4,294,967,295 primes have been counted (with 64-bit arithmetic its four bytes will manifest as an unsigned integer) in previous records, and Prime(4,294,967,295) = 104,484,802,043, so that the bit file would require a mere 6,530MB or so - which some may think is not too much. If so, expanding the allowance from four to five characters would be easy enough, and then 256 times as many primes could be counted. That would also expand the reach of the record counter, which otherwise would be limited to 4,294,967,295 records of 4096 bytes each, or a bit bag of 17,592,186,040,320 bytes - only seventeen terabytes...
 
-Overflow is also a problem in many of the calculations. For instance, for a given (prime) number F, the marking of multiples of F via the sieve process starts with the bit corresponding to F² and if this exceeds the number corresponding to the last bit of the current sieve span, then the sieve process is complete for this span because all later values for F will be still further past the end. So, if <code>LST</code> is the number corresponding to the last bit of the current span, 
+Overflow is also a problem in many of the calculations. For instance, for a given (prime) number F, the marking of multiples of F via the sieve process starts with the bit corresponding to F² and if this exceeds the number corresponding to the last bit of the current sieve span, then the sieve process is complete for this span because all later values for F will be still further past the end. So, if <code>LST</code> is the number corresponding to the last bit of the current span,
 ```Fortran
       DO WHILE(F*F <= LST)         !But, F*F might overflow the integer limit so instead,
-      DO WHILE(F <= LST/F)                      !Except, LST might also overflow the integer limit, so 
+      DO WHILE(F <= LST/F)                      !Except, LST might also overflow the integer limit, so
       DO WHILE(F <= (IST + 2*(SBITS - 1))/F)    !Which becomes...
       DO WHILE(F <= IST/F + (MOD(IST,F) + 2*(SBITS - 1))/F) !Preserving the remainder from IST/F.
 ```
@@ -1107,7 +1107,7 @@ The source code employs the MODULE facility of F90 simply to avoid the tedium of
 
 Although recursion is now permissible if one utters the magic word <code>RECURSIVE</code>, this ability usually is not extended to the workings for formatted I/O so that if say a function is invoked in a WRITE statement's list, should that function attempt to use a WRITE statement, the run will be stopped. There can be slight dispensations if different types of WRITE statement are involved (say, formatted for one, and "free"-format for the other) but an ugly message is the likely result. The various functions are thus best invoked via an assignment statement to a scratch variable, which can then be printed. The functions are definitely not "pure" because although they are indeed functions only of their arguments, they all mess with shared storage, can produce error messages (and even a STOP), and can provoke I/O with a disc file, even creating such a file. For this reason, it would be unwise to attempt to invoke them via any sort of parallel processing. Similarly, the disc file is opened with exclusive use because of the possibility of writing to it. There are no facilities in standard Fortran to control the locking and unlocking of records of a disc file as would be needed when adding a new record and updating the record count. This would be needed if separate tasks could be accessing the bit file at the same time, and is prevented by exclusive use. If an interactive system were prepared to respond to requests for ISPRIME(n), ''etc.'' it should open the bit file only for its query then close it before waiting for the next request - which might be many milliseconds away.
 
-The bit array is stored in an array of type CHARACTER*1 since this has been available longer and more widely than INTEGER*1. One hopes that the consequent genuflections to type checking via functions CHAR(i) and ICHAR(c) will not involve an overhead. 
+The bit array is stored in an array of type CHARACTER*1 since this has been available longer and more widely than INTEGER*1. One hopes that the consequent genuflections to type checking via functions CHAR(i) and ICHAR(c) will not involve an overhead.
 ```Fortran
       MODULE PRIMEBAG	!Need prime numbers? Plenty are available.
 C   Creates and expands a disc file for a sieve of Eratoshenes, representing odd numbers only and starting with three.
@@ -1509,7 +1509,7 @@ Cast forth some interesting values.
       END	!Whee!
 ```
 
-Although the structuralist talk up the merit of "structured" constructs in programming, there are often annoying obstacles. With a WHILE-loop one usually has to repeat the "next item" code to "prime" the loop, as in 
+Although the structuralist talk up the merit of "structured" constructs in programming, there are often annoying obstacles. With a WHILE-loop one usually has to repeat the "next item" code to "prime" the loop, as in
 ```Fortran
       P = NEXTPRIME(100)
       DO WHILE (P.LE.150)
@@ -1518,7 +1518,7 @@ Although the structuralist talk up the merit of "structured" constructs in progr
       END DO
 ```
 
-While this is not a large imposition in this example, if Fortran were to allow assignment within expressions as in Algol, the tedium of code replication and its risks could be avoided. 
+While this is not a large imposition in this example, if Fortran were to allow assignment within expressions as in Algol, the tedium of code replication and its risks could be avoided.
 ```algol68
  P:=100; WHILE (P:=NextPrime(P)) <= 150 DO stuff;
 ```
@@ -1589,18 +1589,18 @@ The thinning out rather suggests an alternative encoding such as by counting the
 
 This program uses the Sieve Of Eratosthenes which is not very efficient for large primes but is quick enough for present purposes.
 
-The size of the sieve array (of type Boolean) is calculated as 20 times the number of primes required which is big enough to compute 
+The size of the sieve array (of type Boolean) is calculated as 20 times the number of primes required which is big enough to compute
 up to 50 million primes (a sieve size of 1 billion bytes) which takes under 50 seconds on my i3 @ 2.13 GHz. I've limited the
-procedure to this but it should certainly be possible to use a much higher figure without running out of memory. 
+procedure to this but it should certainly be possible to use a much higher figure without running out of memory.
 
-It would also be possible to use a more efficient algorithm to compute the optimal sieve size for smaller numbers of primes but this will suffice for now. 
+It would also be possible to use a more efficient algorithm to compute the optimal sieve size for smaller numbers of primes but this will suffice for now.
 
 
 ```freebasic
 ' FB 1.05.0
 
 Enum SieveLimitType
-  number 
+  number
   between
   countBetween
 End Enum
@@ -1608,15 +1608,15 @@ End Enum
 Sub printPrimes(low As Integer, high As Integer, slt As SieveLimitType)
   If high < low OrElse low < 1 Then Return               ' too small
   If slt <> number AndAlso slt <> between AndAlso slt <> countBetween Then Return
-  If slt <> number AndAlso (low < 2 OrElse high < 2) Then Return  
-  If slt <> number AndAlso high > 1000000000 Then Return ' too big 
+  If slt <> number AndAlso (low < 2 OrElse high < 2) Then Return
+  If slt <> number AndAlso high > 1000000000 Then Return ' too big
   If slt = number  AndAlso high > 50000000 Then Return   ' too big
   Dim As Integer n
   If slt = number Then
     n = 20 * high '' big enough to accomodate 50 million primes to which this procedure is limited
   Else
     n = high
-  End If  
+  End If
   Dim a(2 To n) As Boolean '' only uses 1 byte per element
   For i As Integer = 2 To n : a(i) = True : Next '' set all elements to True to start with
   Dim As Integer p = 2, q
@@ -1633,7 +1633,7 @@ Sub printPrimes(low As Integer, high As Integer, slt As SieveLimitType)
         q = j
         Exit For
       End If
-    Next j    
+    Next j
     If q = 0 Then Exit Do
     p = q
   Loop
@@ -1681,16 +1681,16 @@ Print "The number of primes between 7700 and 8000 is :";
 printPrimes(7700, 8000, countBetween)
 Print
 Print "The 10000th prime is :";
-Dim t As Double = timer 
+Dim t As Double = timer
 printPrimes(10000, 10000, number)
 Print "Computed in "; CInt((timer - t) * 1000 + 0.5); " ms"
 Print
-Print "The 1000000th prime is :"; 
+Print "The 1000000th prime is :";
 t = timer
 printPrimes(1000000, 1000000, number)
 Print "Computed in ";CInt((timer - t) * 1000 + 0.5); " ms"
 Print
-Print "The 50000000th prime is :"; 
+Print "The 50000000th prime is :";
 t = timer
 printPrimes(50000000, 50000000, number)
 Print "Computed in ";CInt((timer - t) * 1000 + 0.5); " ms"
@@ -1824,8 +1824,8 @@ func (p *pQueue) Pop() interface{} {
 
 ```txt
 
-First twenty: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 
-Between 100 and 150: 101 103 107 109 113 127 131 137 139 149 
+First twenty: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71
+Between 100 and 150: 101 103 107 109 113 127 131 137 139 149
 Number beween 7,700 and 8,000: 30
 10,000th prime: 104729
 
@@ -2002,8 +2002,8 @@ procedure getCompositeField(x); return x.composite; end
 ```txt
 
 ->ePrimes
-2 3 5.7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 
-101 103 107 109 113 127 131 137 139 149 
+2 3 5.7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73
+101 103 107 109 113 127 131 137 139 149
 30
 104729
 ->
@@ -2227,10 +2227,10 @@ There are 30 primes twixt 7700 and 8000.
 
 ## Julia
 
-Julia's Primes package, included in the distribution, is exact up to 2^64 = 18446744073709551616. 
-After that, Primes can use the BigInt data type, and then may use a probabalistic prime 
-determination algorithm for such integers of arbitrarily large size. The probabilistic formula is tune-able, 
-and by default determines primes with Knuth's recommended level for cryptography of an error less than 
+Julia's Primes package, included in the distribution, is exact up to 2^64 = 18446744073709551616.
+After that, Primes can use the BigInt data type, and then may use a probabalistic prime
+determination algorithm for such integers of arbitrarily large size. The probabilistic formula is tune-able,
+and by default determines primes with Knuth's recommended level for cryptography of an error less than
 (0.25)^25 = 8.881784197001252e-16, or 1 in 1125899906842624.
 
 ```julia
@@ -2555,7 +2555,7 @@ on getNthPrime (me, n)
         if found=n then return i
     end repeat
 end
-            
+
 ----------------------------------------
 -- Sieve of Eratosthenes
 ----------------------------------------
@@ -2663,17 +2663,17 @@ Module CheckPrimes {
             if n<1 then Error "Only >=1"
             if exist(known, n) then =eval(known) : exit
             if n>5 then {
-                 i=len(known1) 
+                 i=len(known1)
                  x=eval(known1, i-1)+2
             } else  x=5 : i=2
-            { 
+            {
                   if i=n then  =known(n) : exit
                   ok=false
                   if frac(x) then 1000
                   if frac(x/2) else 1000
                   if frac(x/3) else 1000
                   x1=sqrt(x) : d=5@
-                  Repeat 
+                  Repeat
                         if frac(x/d ) else exit
                         d += 2: if d>x1 then ok=true : exit
                         if frac(x/d) else exit
@@ -2712,7 +2712,7 @@ Module CheckPrimes {
       For i=1 to 20  : Print Known(i),: Next i
       Print
       Print "Primes between 100 and 150:"
-      c=0     
+      c=0
       For i=100 to 150
             If IsPrime2(i) Then print i, : c++
       Next i
@@ -2761,7 +2761,7 @@ Count: 10
 Primes between 7700 and 8000:
  7703 7717 7723 7727 7741 7753 7757 7759 7789 7793 7817 7823 7829 7841 7853 7867 7873 7877 7879 7883 7901 7907 7919 7927 7933 7937 7949 7951 7963 7993
 Count: 30
-200th Prime: 
+200th Prime:
  1223
 List from 190th to 199th Prime:
  1151 1153 1163 1171 1181 1187 1193 1201 1213 1217
@@ -2787,10 +2787,10 @@ PrimeNth=lambda  Known, Known1  (n as long) -> {
       if n<1 then Error "Only >=1"
       if exist(known, n) then =eval(known) : exit
       if n>5 then {
-           i=len(known1) 
+           i=len(known1)
            x=eval(known1, i-1)+2
       } else  x=5 : i=2
-      { 
+      {
             if i=n then  =known(n) : exit
             if  frac(x) then 999
             if frac(x/2) else 999
@@ -2810,7 +2810,7 @@ PrimeNth=lambda  Known, Known1  (n as long) -> {
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 Prime and PrimePi use sparse caching and sieving. For large values, the Lagarias–Miller–Odlyzko algorithm for PrimePi is used, based on asymptotic estimates of the density of primes, and is inverted to give Prime.
 PrimeQ first tests for divisibility using small primes, then uses the Miller–Rabin strong pseudoprime test base 2 and base 3, and then uses a Lucas test.
 
@@ -2964,12 +2964,12 @@ prime(10000)
 {{works with|Free Pascal}}
 <b>there is something wrong </b>
 <pre >
-http://www.primos.mat.br/Ate100G.html -> 
+http://www.primos.mat.br/Ate100G.html ->
 75. de 16639648367 a 16875026921
 76. de 16875026963 a 17110593779
 77. de 17110593791 a 17346308407
 ...
-my unit: 
+my unit:
  750000000 16875026921
  760000000 17110593779
  770000000 17346251243 <----Wrong
@@ -3487,19 +3487,19 @@ const
   MaxMulFac     =    22; {array [0..9] of byte= (2,4,6,10,14,22,26,34,40,50);}
   cMaxZahl      = 30030;
   cRepFldLen    =  5760;
- 
+
   MaxUpperLimit =  100*1000*1000*1000-1;
- 
+
   MAXIMUM       = ((MaxUpperLimit-1) DIV cMaxZahl+1)*cMaxZahl;
   MAXSUCHE      = (((MAXIMUM-1) div cMaxZahl+1)*cRepFldLen-1)
                     DIV cBitSize;
- 
+
 type
   tRpFldIdx  = 0..cRepFldLen-1;
   pNativeUint = ^ NativeUint;
   (* numberField as Bit array *)
   tsearchFld   = array of tSievenum;
- 
+
   tSegment       = record
                      dOfs,
                      dSegment    :tSievenum;
@@ -3510,14 +3510,14 @@ type
   tRevIdx     = array [tRpFldIdx] of word;//word->  0..cMaxZahl-1
   tDiffFeld   = array [tRpFldIdx] of byte;
   tNewPosFeld = array [tRpFldIdx] of Uint64;
- 
+
   tRecPrime   = record
                   rpPrime,
                   rpsvPos : Uint64;
                   rpOfs,
                   rpSeg   :LongWord;
                 end;
- 
+
 var
   BitSet,
   BitClr : Array [0..cAndMask] Of NativeUint;
@@ -3530,7 +3530,7 @@ var
   actSquare   : Uint64;
   NewStartPos,
   MaxPos    : Uint64;
- 
+
 const
 //K1  = $0101010101010101;
   K55 = $5555555555555555;
@@ -3539,7 +3539,7 @@ const
   KF2 = $00FF00FF00FF00FF;
   KF4 = $0000FFFF0000FFFF;
   KF8 = $00000000FFFFFFFF;
- 
+
 function popcnt(n:Uint64):integer;overload;inline;
 var
   c,b,k : NativeUint;
@@ -3553,7 +3553,7 @@ begin
   k := NativeUint(KF8);c :=  (b shr 32)+(b AND k);
   result := c;
 end;
- 
+
 function popcnt(n:LongWord):integer;overload;
 var
   c,k : LongWord;
@@ -3568,7 +3568,7 @@ begin
   k := LongWord(KF4);
   result :=  (result  shr 16) AND k +(result  AND k);
 end;
- 
+
 procedure Init;
 {simple sieve of erathosthenes only eliminating small primes}
 var
@@ -3593,7 +3593,7 @@ Begin
       dec(j,pr);
     until j <= 0;
   end;
- 
+
   // build reverse Index and save distances
   i := 1;
   j := 0;
@@ -3609,7 +3609,7 @@ Begin
     RevIdx[j] := i;
   until i = High(number);
   DiffFld[j] := 2;
- 
+
   //calculate a bitnumber-index into cRepFldLen
   Fillchar(number,SizeOf(number),#0);
   Ofs := 1;
@@ -3618,7 +3618,7 @@ Begin
     inc(Ofs,DiffFld[i]);
     number[ofs] := i+1;
   end;
- 
+
   //direct index into Mulfeld 2->0 ,4-> 1 ...
   For i := 0 to cRepFldLen-1 do
   Begin
@@ -3626,7 +3626,7 @@ Begin
     DiffFld[i] := j;
   end;
 end;
- 
+
 function CalcPos(m: Uint64): Uint64;
 {search right position of m}
 var
@@ -3645,14 +3645,14 @@ Begin
   end; {while}
   CalcPos := res *Uint64(cRepFldLen) +number[i];
 end;
- 
+
 procedure CalcSqrOfs(out Segment,Ofs :Uint64);
 Begin
   Segment  := actSquare div cMaxZahl;
   Ofs      := actSquare-Segment*cMaxZahl; //ofs Mod cMaxZahl
   Segment  := Segment*cRepFldLen;
 end;
- 
+
 procedure MulTab(sievePr:Nativeint);
 var
  k,Segment,Segment0,Rest,Rest0: NativeUint;
@@ -3661,19 +3661,19 @@ Begin
   {2* sievePr,4* ,6* ...MaxMulFac*sievePr }
   sievePr := sievePr+sievePr;
   Segment0 := sievePr div cMaxzahl;
- 
+
   Rest0    := sievePr-Segment0*cMaxzahl;
   Segment0 := Segment0 * cRepFldLen;
- 
+
   Segment := Segment0;
   Rest := Rest0;
- 
+
   with MulFeld[0] do
   begin
     dOfs := Rest0;
     dSegment:= Segment0;
   end;
- 
+
   for k := 1 to MaxMulFac shr 1-1 do
   begin
     Segment := Segment+Segment0;
@@ -3690,7 +3690,7 @@ Begin
     end;
   end;
 end;
- 
+
 procedure CalcDeltaNewPos(sievePr,MulPos:NativeUint);
 var
   Ofs,Segment,prevPos,actPos : Uint64;
@@ -3721,12 +3721,12 @@ Begin
     deltaNewPos[i]:= actPos - prevPos;
     IF actPos> maxPos then
       BREAK;
- 
+
     prevPos := actPos;
   end;
   deltaNewPos[cRepFldLen-1] := NewStartPos+cRepFldLen*sievePr-prevPos;
 end;
- 
+
 procedure SieveByOnePrime(var sf:tsearchFld;sievePr:NativeUint);
 var
   pNewPos : ^Uint64;
@@ -3735,7 +3735,7 @@ var
   Ofs      : Int64;
   Position : UINt64;
   i: NativeInt;
- 
+
 Begin
   pSiev0 := @sf[0];
   Ofs := MaxPos-sievePr *cRepFldLen;
@@ -3771,7 +3771,7 @@ Begin
     end;
   until Position >= MaxPos;
 end;
- 
+
 procedure SieveAll;
 var
   i,
@@ -3804,7 +3804,7 @@ Begin
     //binom (a+b)^2; a^2 already known
     actSquare := actSquare+(2*sievePr+i)*i;
     inc(sievePr,i);
- 
+
     IF actSquare > MaxUpperLimit THEN
       BREAK;
     {if sievePr == prime then sieve with sievePr}
@@ -3820,7 +3820,7 @@ Begin
       dec(PrimPos,PrimPos);// := 0;
   until false;
 end;
- 
+
 function InitRecPrime(pr: UInt64):tRecPrime;
 var
   svPos,sg : NativeUint;
@@ -3835,7 +3835,7 @@ Begin
     rpPrime := RevIdx[rpOfs]+ sg*cMaxZahl;
   end;
 end;
- 
+
 function InitPrimeSvPos(svPos: Uint64):tRecPrime;
 var
   sg : LongWord;
@@ -3849,7 +3849,7 @@ Begin
     rpPrime := RevIdx[rpOfs]+ sg*cMaxZahl;
   end;
 end;
- 
+
 function NextPrime(var pr:  tRecPrime):Boolean;
 var
   ofs : LongWord;
@@ -3880,7 +3880,7 @@ Begin
   end;
   result := true;
 end;
- 
+
 function GetNthPrime(n: Uint64):tRecPrime;
 var
   i : longWord;
@@ -3888,20 +3888,20 @@ var
 Begin
   IF n > MaxPos then
     EXIT;
- 
+
   i := 0;
   cnt := Bis;
   For i := 0 to n DIV cBitSize do
     inc(cnt,PopCnt(NativeUint(searchFld[i])));
   i := n DIV cBitSize+1;
- 
+
   while cnt < n do
   Begin
     inc(cnt,PopCnt(NativeUint(searchFld[i])));
     inc(i);
   end;
   dec(i);
- 
+
   dec(cnt,PopCnt(NativeUint(searchFld[i])));
   result := InitPrimeSvPos(i*Uint64(cBitSize)-1);
   while cnt < n do
@@ -3910,7 +3910,7 @@ Begin
     else
       Break;
 end;
- 
+
 procedure ShowPrimes(loLmt,HiLmt: NativeInt);
 var
   p1 :tRecPrime;
@@ -3921,7 +3921,7 @@ Begin
   while p1.rpPrime < LoLmt do
     IF Not(NextPrime(p1)) Then
       EXIT;
- 
+
   repeat
     write(p1.rpPrime,' ');
     IF Not(NextPrime(p1)) Then
@@ -3929,7 +3929,7 @@ Begin
   until p1.rpPrime > HiLmt;
   writeln;
 end;
- 
+
 function CountPrimes(loLmt,HiLmt: NativeInt):LongWord;
 var
   p1 :tRecPrime;
@@ -3947,7 +3947,7 @@ Begin
       Break;
   until p1.rpPrime > HiLmt;
 end;
- 
+
 procedure WriteCntSmallPrimes(n: NativeInt);
 var
   i, p,prPos,svPos : nativeUint;
@@ -3966,7 +3966,7 @@ Begin
     For i := 0 to BIS do
       write(InitPrim[i],' ');
     dec(n,Bis);
- 
+
     svPos := 0;
     PrPos := 0;
     p     := 1;
@@ -3987,7 +3987,7 @@ Begin
   end;
   writeln;
 end;
- 
+
 function RvsNumL(var n: Uint64):Uint64;
 //reverse and last digit, most of the time n > base therefor repeat
 const
@@ -4004,7 +4004,7 @@ Begin
   until result < Base;
   n := q*Base+result;
 end;
- 
+
 function IsEmirp(n:Uint64):boolean;
 var
  lastDgt:NativeUint;
@@ -4016,7 +4016,7 @@ Begin
   result:= false;
   IF (seg = n) OR (n> MaxUpperLimit) then
     EXIT;
- 
+
   IF lastDgt in [1,3,7,9] then
   Begin
     seg := n div cMaxZahl;
@@ -4028,12 +4028,12 @@ Begin
     end
   end;
 end;
- 
+
 function GetEmirps(loLmt,HiLmt: Uint64):NativeInt;
 var
   p1 :tRecPrime;
 Begin
-  result := 0; 
+  result := 0;
   IF HiLmt < loLmt then
     exit;
   IF loLmt > MaxUpperLimit then
@@ -4045,7 +4045,7 @@ Begin
   while p1.rpPrime < LoLmt do
     IF Not(NextPrime(p1)) Then
       EXIT;
- 
+
   repeat
     if isEmirp(p1.rpPrime) then
       inc(result);
@@ -4053,7 +4053,7 @@ Begin
       BREAK;
   until p1.rpPrime > HiLmt;
 end;
- 
+
 var
   T1,T0: TDateTime;
   Anzahl :Uint64;
@@ -4078,7 +4078,7 @@ Begin
       dec(n);
     until n< 0;
   end;
- 
+
   Writeln('there are ',Anzahl,' primes til ',MaxUpperLimit);
   WriteCntSmallPrimes(20);
   write('primes between 100 and 150: ');
@@ -4090,7 +4090,7 @@ Begin
     Writeln('the ',i, ' th prime ',GetNthPrime(i).rpPrime);
     i := i * 10;
   until i*25 > MaxUpperLimit;
- 
+
   writeln;
   writeln('Count Emirps');
   writeln('             Emirp           Total');
@@ -4109,7 +4109,7 @@ Begin
     writeln(dgtCnt:12,TotalCnt:14);
     j:=j*10;
     inc(i);
-    dgtCnt := 0;    
+    dgtCnt := 0;
   until j >= MaxUpperLimit;
 end.
 ```
@@ -4119,11 +4119,11 @@ end.
 ```txt
 //64-Bit
 time ./emirp
-         
+
 time for sieving 04:17.895
 there are 4118054813 primes til 99999999999
-First 20 primes 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 
-primes between 100 and 150: 101 103 107 109 113 127 131 137 139 149 
+First 20 primes 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71
+primes between 100 and 150: 101 103 107 109 113 127 131 137 139 149
 count of primes between 7700 and 8000 30
 the 100 th prime 541
 the 1000 th prime 7919
@@ -4295,11 +4295,11 @@ on the plus side this completely avoids all marking/checking of even numbers.
 
 This could almost certainly be further improved by halving the size of the sieve block.
 
-I investigated the use of so-called "wheels", beguiled by the claim that "a 2-3-5-7 wheel saves 77%", until 
-I realised the breakdown was 2: 50%, 3: 16%, 5: 7%, 7: 4% - it is unthinkable not to exclude even numbers, 
+I investigated the use of so-called "wheels", beguiled by the claim that "a 2-3-5-7 wheel saves 77%", until
+I realised the breakdown was 2: 50%, 3: 16%, 5: 7%, 7: 4% - it is unthinkable not to exclude even numbers,
 the added complexity (and subscripting) of a 30- or 210- element wheel does not seem worthwhile. While it
-would be trivial to unroll a 2-3 wheel, it seems far better just to avoid even numbers altogether (hence, 
-I believe, this achieves 66 of those 77% savings). 
+would be trivial to unroll a 2-3 wheel, it seems far better just to avoid even numbers altogether (hence,
+I believe, this achieves 66 of those 77% savings).
 Some further discussion of this can be found on my talk page --[[User:Petelomax|Pete Lomax]] ([[User talk:Petelomax|talk]])
 
 
@@ -4462,7 +4462,7 @@ Procedure.b IsPrime(n.i)
     i+2
     If n%i=0 : ProcedureReturn #False : EndIf
     i+4
-  Wend  
+  Wend
   ProcedureReturn #True
 EndProcedure
 
@@ -4476,28 +4476,28 @@ If OpenConsole("Extensible prime generator")
     EndIf
     n+1
   Wend
-  
+
   Print(~"\nBetween 100 and 150: ")
   For n=100 To 150
     If IsPrime(n)
       Print(Str(n)+" ")
     EndIf
   Next
-  
+
   Print(~"\nNumber beween 7'700 and 8'000: ")
   c=0
   For n=7700 To 8000
     c+IsPrime(n)
   Next
   Print(Str(c))
-  
+
   Print(~"\n10'000th prime: ")
   c=0 : n=1
   While c<10000
     n+1
-    c+IsPrime(n)    
+    c+IsPrime(n)
   Wend
-  Print(Str(n))  
+  Print(Str(n))
 EndIf
 Print(~"\nRuntime milliseconds: "+
       Str(ElapsedMilliseconds()-StartTime))
@@ -4520,7 +4520,7 @@ Runtime milliseconds: 75
 
 ### Python: Croft spiral
 
-The Croft spiral sieve prime generator from the [[Prime_decomposition#Python:_Using_Croft_Spiral_sieve|Prime decomposition]] task is used which contains the line 
+The Croft spiral sieve prime generator from the [[Prime_decomposition#Python:_Using_Croft_Spiral_sieve|Prime decomposition]] task is used which contains the line
 ```python
 islice(count(7), 0, None, 2)
 ```
@@ -4581,27 +4581,27 @@ def wsieve():       # ideone.com/mqO25A
     mults = {}
     for c in cs:
         if c in mults:
-            wheel = mults.pop(c)  
-        elif c < psq:              
-            yield c ; continue   
+            wheel = mults.pop(c)
+        elif c < psq:
+            yield c ; continue
         else:          # c==psq:  map (p*) (roll wh from p) = roll (wh*p) from (p*p)
             x = [p*d for d in wh11]
             i = D[ (p-11) % 210]
             wheel = accumulate( chain( [psq+x[i]], cycle( x[i+1:] + x[:i+1])))
-            p = next(ps) ; psq = p*p 
-        for m in wheel: 
-            if not m in mults: 
+            p = next(ps) ; psq = p*p
+        for m in wheel:
+            if not m in mults:
                 break
         mults[m] = wheel
 
-def primes(): 
+def primes():
 	yield from (2, 3, 5, 7)
-	yield from wsieve() 
+	yield from wsieve()
 
 print( list( islice( primes(), 0, 20)))
-print( list( takewhile( lambda x: x<150, 
+print( list( takewhile( lambda x: x<150,
                    dropwhile( lambda x: x<100, primes()))))
-print( len( list( takewhile( lambda x: x<8000, 
+print( len( list( takewhile( lambda x: x<8000,
                    dropwhile( lambda x: x<7700, primes())))))
 print( list( islice( primes(), 10000-1, 10000))[0])
 ```
@@ -4642,7 +4642,7 @@ def prime_sieve():
 if __name__ == '__main__':
     def leq_150(x): return x <= 150
     def leq_8000(x): return x <= 8000
-    
+
     print("Show the first twenty primes.\n   =",
         list(islice(prime_sieve(), 20)))
     print("Show the primes between 100 and 150\n   =",
@@ -4702,7 +4702,7 @@ The link referenced in the source: [http://docs.racket-lang.org/math/number-theo
 ;; If a languages in-built prime generator is extensible or is guaranteed to generate primes up to a
 ;; system limit, (2^31 or memory overflow for example), then this may be used as long as an
 ;; explanation of the limits of the prime generator is also given. (Which may include a link
-;; to/excerpt from, language documentation). 
+;; to/excerpt from, language documentation).
 ;;
 ;; Full details in:
 ;; [[http://docs.racket-lang.org/math/number-theory.html?q=prime%3F#%28part._primes%29]]
@@ -4734,10 +4734,10 @@ Show the 10,000th prime.
 
 ## REXX
 
-Programming note:   Most REXXes (of the 32-bit variety) run with an upper limit of roughly 2 Gbytes (for virtual storage), and that is the limit of this program (in building the stemmed array of prime numbers and prime number indicators, and available virtual storage will be the limiting factor of how many primes can be generated. 
+Programming note:   Most REXXes (of the 32-bit variety) run with an upper limit of roughly 2 Gbytes (for virtual storage), and that is the limit of this program (in building the stemmed array of prime numbers and prime number indicators, and available virtual storage will be the limiting factor of how many primes can be generated.
 
 The method of extending primes (via the PRIMES subroutine) is of two kinds when invoking the PRIMES subroutine:
-:* a positive number which will (possibly) generate primes up to that total amount, and 
+:* a positive number which will (possibly) generate primes up to that total amount, and
 :* a negative number which will (possibly) generate primes up to   |number|.
 
 Two arrays are available to the caller after invoking the PRIMES subroutine.   @.Nth   where this is the Nth prime.   Also, one can check if 1331 is a prime: !.1331 has the value of 1 (is prime), 0 (isn't prime).
@@ -4818,7 +4818,7 @@ see "first twenty primes : "
 i = 1
 nr = 0
 while i <= 20
-      nr += 1     
+      nr += 1
       if isPrime(nr) see " " + nr i += 1 ok
 end
 
@@ -4839,11 +4839,11 @@ see "The 10,000th prime : "
 i = 1
 nr = 0
 while i <= 10000
-      nr += 1     
+      nr += 1
       if isPrime(nr) i += 1 ok
 end
 see nr + nl
-  
+
 func isPrime n
      if n <= 1 return false ok
      if n <= 3 return true ok
@@ -5210,13 +5210,13 @@ Sub Main()
 Dim Primes() As Long, n As Long, temp$
 Dim t As Single
     t = Timer
-    
+
     n = 133218295 'limit for an Array of Longs with VBA on my computer
     Primes = ListPrimes(n)
     Debug.Print "For N = " & Format(n, "#,##0") & ", execution time : " & _
         Format(Timer - t, "0.000 s") & ", " & _
         Format(UBound(Primes) + 1, "#,##0") & " primes numbers."
-    
+
     'First twenty primes
     For n = 0 To 19
         temp = temp & ", " & Primes(n)
@@ -5306,13 +5306,13 @@ The last prime I could find is the : 7 550 283th, Value : 133 218 289
 ```zkl
 // http://stackoverflow.com/revisions/10733621/4
 
-fcn postponed_sieve(){            # postponed sieve, by Will Ness      
-   vm.yield(2); vm.yield(3);	  # original code David Eppstein, 
+fcn postponed_sieve(){            # postponed sieve, by Will Ness
+   vm.yield(2); vm.yield(3);	  # original code David Eppstein,
    vm.yield(5); vm.yield(7);      #        ActiveState Recipe 2002
-   D:=Dictionary();               
+   D:=Dictionary();
    ps:=Utils.Generator(postponed_sieve);  # a separate Primes Supply:
    p:=ps.pump(2,Void);            # (3) a Prime to add to dict
-   q:=p*p;                        # (9) when its sQuare is 
+   q:=p*p;                        # (9) when its sQuare is
    c:=9;                          # the next Candidate
    while(1){
       if (not D.holds(c)){        # not a multiple of any prime seen so far:
@@ -5340,7 +5340,7 @@ fcn add(D,x,s){                   # make no multiple keys in Dict
 ```zkl
 primes:=Utils.Generator(postponed_sieve);
 primes.walk(20).println();   // first 20 primes
- 
+
 primes.pump(List,fcn(p){  // the primes between 100 & 150
    if (p<100) Void.Skip else if(p>150) Void.Stop else p
 }).println();

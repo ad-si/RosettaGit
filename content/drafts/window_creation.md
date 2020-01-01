@@ -135,7 +135,7 @@ main.run
 
 ## AutoHotkey
 
-    
+
 
 ```AutoHotkey
 Gui, Add, Text,, Hello
@@ -214,7 +214,7 @@ DISPLAY
 
 ```c
 /*
- *   Opens an 800x600 16bit color window. 
+ *   Opens an 800x600 16bit color window.
  *   Done here with ANSI C.
  */
 
@@ -225,14 +225,14 @@ DISPLAY
 int main()
 {
   SDL_Surface *screen;
-  
+
   if (SDL_Init(SDL_INIT_VIDEO) != 0) {
     fprintf(stderr, "Unable to initialize SDL: %s\n", SDL_GetError());
     return 1;
   }
   atexit(SDL_Quit);
   screen = SDL_SetVideoMode( 800, 600, 16, SDL_SWSURFACE | SDL_HWPALETTE );
-  
+
   return 0;
 }
 ```
@@ -247,11 +247,12 @@ int main()
 '''Compile command:''' gcc `gtk-config --cflags` `gtk-config --libs` -o window window.c
 
 
-```c>#include <gtk/gtk.h
+```c
+#include <gtk/gtk.h>
 
 
 int
-main(int argc, char *argv[]) 
+main(int argc, char *argv[])
 {
   GtkWidget *window;
 
@@ -275,8 +276,8 @@ main(int argc, char *argv[])
 '''Compile command:''' gcc -Wall -pedantic `pkg-config --cflags gtk+-2.0` `pkg-config --libs gtk+-2.0` -o window window.c
 
 
-```c>#include <gtk/gtk.h
-
+```c
+#include <gtk/gtk.h>
 
 int
 main(int argc, char *argv[])
@@ -361,8 +362,8 @@ int main(int argc, char **argv)
 '''Compiler command:''' qmake -pro; qmake
 
 
-```cpp>#include <QApplication
-
+```cpp
+#include <QApplication>
 #include <QMainWindow>
 
 int main(int argc, char *argv[])
@@ -380,8 +381,8 @@ int main(int argc, char *argv[])
 '''Compiler command:''' g++ filename.cc -o test `pkg-config --cflags --libs gtkmm-2.4`
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <gtkmm.h>
 
 int
@@ -393,13 +394,13 @@ main( int argc, char* argv[] )
   Gtk::Window win ;
   m.run( win ) ;
  }
- 
+
  catch( std::exception const & exc )
  {
   std::cout << exc.what() << std::endl ;
   exit( -1 ) ;
  }
- 
+
  exit( 0 ) ;
 }
 ```
@@ -418,7 +419,7 @@ public class Window {
     [STAThread]
     static void Main() {
         Form form = new Form();
-        
+
         form.Text = "Window";
         form.Disposed += delegate { Application.Exit(); };
 
@@ -479,7 +480,7 @@ The actual definition and display:
 
 
 ```lisp
-(define-application-frame rc-window () 
+(define-application-frame rc-window ()
   ()
   (:layouts (:default)))
 
@@ -512,9 +513,9 @@ Works with the Armed Bear Common Lisp implementation that targets the JVM.
 
 ```d
  module Window;
- 
+
  import fltk4d.all;
- 
+
  void main() {
      auto window = new Window(300, 300, "A window");
      window.show;
@@ -528,20 +529,20 @@ Works with the Armed Bear Common Lisp implementation that targets the JVM.
 
 ```d
  import derelict.sdl.sdl;
- 
+
  int main(char[][] args)
  {
      DerelictSDL.load();
- 
+
      SDL_Event event;
      auto done = false;
- 
+
      SDL_Init(SDL_INIT_VIDEO);
      scope(exit) SDL_Quit();
- 
+
      SDL_SetVideoMode(1024, 768, 0, SDL_OPENGL);
      SDL_WM_SetCaption("My first Window", "SDL test");
- 	 
+
      while (!done)
      {
          if (SDL_PollEvent(&event) == 1)
@@ -554,9 +555,9 @@ Works with the Armed Bear Common Lisp implementation that targets the JVM.
  		 default:
  		      break;
  	     }
- 	 }		
+ 	 }
      }
- 
+
     return 0;
  }
 ```
@@ -567,7 +568,7 @@ QD is a simple and easy-to-use wrapper around SDL.
 
 ```d
  import qd;
- 
+
  void main() {
    screen(640, 480);
    while (true) events();
@@ -757,7 +758,7 @@ Swing
 Platform independent EiffelVision 2 Library
 
 
-```eiffel 
+```eiffel
 class
     APPLICATION
 inherit
@@ -781,7 +782,7 @@ end
 
 
 
-```eiffel 
+```eiffel
 class
     MAIN_WINDOW
 inherit
@@ -839,7 +840,7 @@ end
 
 {{libheader|Windows Forms}}
 
-```eiffel 
+```eiffel
 class
     APPLICATION
 inherit
@@ -978,7 +979,7 @@ using fwt
 
 class Main
 {
-  public static Void main () 
+  public static Void main ()
   {
     Window().open
   }
@@ -1045,7 +1046,7 @@ Dim As MSG msg
 
 'Create the window:
 Window_Main = CreateWindow("#32770", "I am a window - close me!", WS_OVERLAPPEDWINDOW Or WS_VISIBLE, 100, 100, 350, 200, 0, 0, 0, 0)
-														
+
 'Windows message loop:
 While GetMessage(@msg, Window_Main, 0, 0)
   TranslateMessage(@msg)
@@ -1076,7 +1077,7 @@ Everything is provided by the .NET runtime so this is almost identical to [[C_sh
 
 ```fsharp
  open System.Windows.Forms
- 
+
  [<System.STAThread>]
  do
      Form(Text = "F# Window")
@@ -1201,7 +1202,7 @@ func main() {
 
 
 We will open notepad as a window here.
- 
+
 
 ```guiss
 Start,Programs,Accessories,Notepad
@@ -1221,7 +1222,7 @@ Window:Notepad,Button:Close
 
 Using {{libheader|HGL}} from [http://hackage.haskell.org/packages/hackage.html HackageDB].
 
-A simple graphics library, designed to give the programmer access to most interesting parts of the Win32 Graphics Device Interface and X11 library without exposing the programmer to the pain and anguish usually associated with using these interfaces. 
+A simple graphics library, designed to give the programmer access to most interesting parts of the Win32 Graphics Device Interface and X11 library without exposing the programmer to the pain and anguish usually associated with using these interfaces.
 
 ```haskell
 import Graphics.HGL
@@ -1260,7 +1261,7 @@ Icon and Unicon windowing is portable between Windows and X-Windows environments
 =
 
 ```Icon
-link graphics 
+link graphics
 
 procedure main(arglist)
 
@@ -1270,7 +1271,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn graphics is required ]
 
 =
@@ -1328,7 +1329,7 @@ minwdw_run=: monad define
 minwdw_close=: monad define
   wd'pclose'
 )
- 
+
 minwdw_run ''
 ```
 
@@ -1439,7 +1440,7 @@ Window by default has 6000 twips width by 4000 twips height
 Here we open MyForm as modal window (with 1 as first parameter, after "Show")
 
 Window show a square in left side of title (we can change this to be at right), so this close the window (if we have proper event function, we can quit the closing). Also using key combination Alt-F4 close window too (also send event).
- 
+
 Window open in the monitor where we see the mouse pointer.
 
 M2000 Windows have own decoration, independent from platform (same to Xp, Windows 7, Windows 8, Windows 10 and Linux using Wine).
@@ -1477,7 +1478,7 @@ Minimum code required to fulfill the task.
 nomainwin
 open "GUI Window" for window as #1
 wait
- 
+
 ```
 
 As it would properly be used in a real program.
@@ -1491,14 +1492,14 @@ sub Quit hndl$
     close #hndl$
     end
 end sub
- 
+
 ```
 
 
 
 ## mIRC Scripting Language
 
-{{works with|mIRC}} 
+{{works with|mIRC}}
 
 '''Switches:'''
 C = Center Window
@@ -1549,7 +1550,7 @@ method createFrame(title, addText = boolean 0) public static
   catch ex = Exception
     ex.printStackTrace()
   end
-  
+
   return
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1577,7 +1578,7 @@ method isFalse() public static returns boolean
 ## Nim
 
 
-###  gtk2 
+###  gtk2
 
 This is example 9 from the Araq/Nim github repository (modified to include a quit button)
 
@@ -1616,7 +1617,7 @@ proc ChangeLabel(P: PWidget, Event: gdk2.PEventCrossing,
   else: set_text(ALabel, Outside)
   Data = Not Data
 
-   
+
 add(button2, ALAbel)
 pack_start(stackbox, button1, TRUE, TRUE, 0)
 pack_start(stackbox, button2, TRUE, TRUE, 0)
@@ -1638,7 +1639,7 @@ main()
 
 
 
-###  SDL 
+###  SDL
 
 
 ```nim
@@ -1672,7 +1673,7 @@ r.y = 0
 
 block game_loop:
   while true:
-    
+
     while pollEvent(addr event) > 0:
       case event.kind
       of QUITEV:
@@ -1682,7 +1683,7 @@ block game_loop:
           break game_loop
       else:
         discard
-    
+
     discard fillRect(screen, nil, bgColor)
     discard blitSurface(greeting, nil, screen, addr r)
     discard flip(screen)
@@ -1694,7 +1695,7 @@ sdl.Quit()
 
 
 
-###  X11 
+###  X11
 
 
 ```nim
@@ -1703,7 +1704,7 @@ import xlib, xutil, x, keysym
 const
   WINDOW_WIDTH = 400
   WINDOW_HEIGHT = 300
-  
+
 var
   width, height: cuint
   display: PDisplay
@@ -1742,7 +1743,7 @@ proc create_window =
 proc close_window =
   discard XDestroyWindow(display, win)
   discard XCloseDisplay(display)
-    
+
 var
   xev: TXEvent
 
@@ -1776,7 +1777,7 @@ close_window()
 
 
 
-###  glut 
+###  glut
 
 
 ```nim
@@ -1787,7 +1788,7 @@ var win: int = 0
 proc myOnKeyPress(c: int8, v1, v2: cint) {.cdecl.} =
    echo(c)
    if c == 27:
-      glutDestroyWindow(win) 
+      glutDestroyWindow(win)
 
 glutInit()
 win = glutCreateWindow("Goodbye, World!")
@@ -1797,7 +1798,7 @@ glutMainLoop()
 
 
 
-###  win 
+###  win
 
 
 ```nim
@@ -1814,7 +1815,7 @@ discard MessageBox(0, "Hello World!", "Nim GUI Application", 0)
 
 
 
-###  IUP 
+###  IUP
 
 
 ```nim
@@ -1852,7 +1853,7 @@ iup.close()
 ```objeck
 
 use Gtk2;
-  
+
 bundle Default {
   class GtkHello {
     function : Main(args : String[]) ~ Nil {
@@ -1877,8 +1878,8 @@ bundle Default {
 It opens a 800&times;600 window, centered on the screen, with title "A Window".
 
 
-```objc>#include <Foundation/Foundation.h
-
+```objc
+#include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
 
 @interface Win : NSWindow
@@ -1892,7 +1893,7 @@ It opens a 800&times;600 window, centered on the screen, with title "A Window".
 @implementation Win : NSWindow
 -(instancetype) init
 {
-  if ((self = [super 
+  if ((self = [super
     initWithContentRect: NSMakeRect(0, 0, 800, 600)
     styleMask: (NSTitledWindowMask | NSClosableWindowMask)
     backing: NSBackingStoreBuffered
@@ -1952,7 +1953,7 @@ with the [http://caml.inria.fr/pub/docs/manual-ocaml/manual039.html Graphics] mo
 
 ```ocaml
 open Graphics
- 
+
 let () =
   open_graph " 800x600";
   let _ = read_line() in
@@ -2023,7 +2024,7 @@ execute with:
 ```ocaml
 let () =
   let app = SFRenderWindow.make (640, 480) "OCaml-SFML Windowing" in
- 
+
   let rec loop () =
     let continue =
       match SFRenderWindow.pollEvent app with
@@ -2044,7 +2045,7 @@ execute with:
 
 ```ocaml
 open Xlib
- 
+
 let () =
   let d = xOpenDisplay "" in
   let s = xDefaultScreen d in
@@ -2069,7 +2070,7 @@ execute with:
 
 
   DEFINE VAR C-Win AS WIDGET-HANDLE NO-UNDO.
-  
+
   CREATE WINDOW C-Win ASSIGN
          HIDDEN             = YES
          TITLE              = "OpenEdge Window Display"
@@ -2099,7 +2100,7 @@ execute with:
     END.
 
     WAIT-FOR CLOSE OF THIS-PROCEDURE.
-    
+
 
 ```
 
@@ -2147,7 +2148,7 @@ uses
 
 var
   screen: PSDL_Surface;
- 
+
 begin
   SDL_Init(SDL_INIT_VIDEO);
   screen := SDL_SetVideoMode( 800, 600, 16, (SDL_SWSURFACE or SDL_HWPALETTE) );
@@ -2166,7 +2167,7 @@ end.
 
 ```perl
   use Tk;
-  
+
   MainWindow->new();
   MainLoop;
 ```
@@ -2177,7 +2178,7 @@ end.
 ```perl
   use SDL::App;
   use SDL::Event;
-  
+
   $app = SDL::App->new;
   $app->loop({
     SDL_QUIT() => sub { exit 0; },
@@ -2189,7 +2190,7 @@ end.
 
 ```perl
   use Gtk3 '-init';
-  
+
   $window = Gtk3::Window->new;
   $window->signal_connect(
     destroy => sub { Gtk3->main_quit; }
@@ -2217,7 +2218,7 @@ exit $app->exec;
 
 ```perl
   use Wx;
-  
+
   $window = Wx::Frame->new(undef, -1, 'title');
   $window->Show;
   Wx::SimpleApp->new->MainLoop;
@@ -2308,7 +2309,7 @@ $form.ShowDialog() | Out-Null
 
 
 ## Prolog
- 
+
 Works with SWI-Prolog which has a graphic interface XPCE.
 
 ```Prolog
@@ -2317,7 +2318,7 @@ Works with SWI-Prolog which has a graphic interface XPCE.
 
 
 ## PureBasic
- 
+
 
 ```PureBasic
 Define MyWin.i, Event.i
@@ -2346,7 +2347,7 @@ ForEver
 
 ```python
   import Tkinter
-  
+
   w = Tkinter.Tk()
   w.mainloop()
 ```
@@ -2356,14 +2357,14 @@ ForEver
 
 ```python
   from wxPython.wx import *
-  
+
   class MyApp(wxApp):
     def OnInit(self):
       frame = wxFrame(NULL, -1, "Hello from wxPython")
       frame.Show(true)
       self.SetTopWindow(frame)
       return true
-  
+
   app = MyApp(0)
   app.MainLoop()
 ```
@@ -2374,7 +2375,7 @@ ForEver
 ```python
   import win32ui
   from pywin.mfc.dialog import Dialog
-  
+
   d = Dialog(win32ui.IDD_SIMPLE_INPUT)
   d.CreateWindow()
 ```
@@ -2384,7 +2385,7 @@ ForEver
 
 ```python
   import gtk
-  
+
   window = gtk.Window()
   window.show()
   gtk.main()
@@ -2504,7 +2505,7 @@ MyApp = New qApp {
 
 ```ruby
  require 'tk'
- 
+
  window = TkRoot::new()
  window::mainloop()
 ```
@@ -2514,7 +2515,7 @@ MyApp = New qApp {
 
 ```ruby
  require 'gtk2'
- 
+
  window = Gtk::Window.new.show
  Gtk.main
 ```
@@ -2565,7 +2566,7 @@ wait
 
 ;; PS-TK example: display simple frame
 
-(import (rnrs) 
+(import (rnrs)
         (lib pstk main) ; change this to refer to your installation of PS/Tk
         )
 
@@ -3084,7 +3085,7 @@ Note that the <code>CW_USEDEFAULT</code> constant in the Windows header files is
                               NULL NULL hInstance NULL)))
     (unless (equal hwnd NULL)
       (ShowWindow hwnd SW_SHOWDEFAULT)
- 
+
       (let ((msg (new MSG)))
         (while (GetMessage msg NULL 0 0)
           (TranslateMessage msg)
@@ -3111,7 +3112,7 @@ Note: if you run this command while in Visual Mode, you should adjust your activ
 Need to reference the following object library (From the Tools menu, choose References)
     Microsoft Forms 2.0 Object Library
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-And : 
+And :
 Programmatic Access to Visual Basic Project must be trusted. See it in Macro's security!
 ```
 
@@ -3132,12 +3133,12 @@ End Sub
 
 ## Visual Basic .NET
 
-    
+
 
 ```vb
     Dim newForm as new Form
     newForm.Text = "It's a new window"
-   
+
         newForm.Show()
 ```
 
@@ -3167,7 +3168,7 @@ bits 32
 
 section .text
 	global _main
-	
+
         ;exit signal
 	sig_main_exit:
 		push exit_sig_msg
@@ -3175,9 +3176,9 @@ section .text
 		add esp, 4
 		call gtk_main_quit
 		ret
-		
+
 	_main:
-		mov ebp, esp	
+		mov ebp, esp
 		sub esp, 8
 		push argv
 		push argc
@@ -3196,19 +3197,19 @@ section .text
 		push dword [ebp-4]
 		call gtk_widget_show
 		add esp, 4
-		call gtk_main	
-		
+		call gtk_main
+
 section .data
-;sudo argv 
+;sudo argv
 argc                dd 1
 argv                dd args
-args                dd title   
+args                dd title
 						  dd 0
-                  
+
 title               db "GTK Window",0
 gtk_delete_event   db 'delete_event',0
 exit_sig_msg      db "-> Rage quitting..",10,0
-	
+
 
 ```
 
@@ -3234,7 +3235,7 @@ WinMain proto :dword,:dword,:dword,:dword
 .data
    ClassName db "WndClass",0
    AppName   db "Window!",0
-.data? 
+.data?
    hInstance   dd ?
    CommandLine dd ?
 

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task|Prime Numbers}} 
+{{task|Prime Numbers}}
 
 A [[Truncatable primes|truncatable prime]] is one where all non-empty substrings that finish at the end of the number (right-substrings) are also primes ''when understood as numbers in a particular base''. The largest such prime in a given (integer) base is therefore computable, provided the base is larger than 2.
 
@@ -38,15 +38,15 @@ Uses the '''H'''uge '''I'''nteger '''M'''ath & '''E'''ncryption library from htt
       HIMEM = PAGE + 3000000
       INSTALL @lib$+"HIMELIB"
       PROC_himeinit("HIMEkey")
-      
+
       DIM old$(20000), new$(20000)
       h1% = 1 : h2% = 2 : h3% = 3 : h4% = 4
-      
+
       FOR base% = 3 TO 17
         PRINT "Base "; base% " : " FN_largest_left_truncated_prime(base%)
       NEXT
       END
-      
+
       DEF FN_largest_left_truncated_prime(base%)
       LOCAL digit%, i%, new%, old%, prime%, fast%, slow%
       fast% = 1 : slow% = 50
@@ -105,8 +105,8 @@ Base 17 : 13563641583101
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <gmp.h>
 
 typedef unsigned long ulong;
@@ -197,7 +197,7 @@ $ ./a.out 2&>/dev/null
 using Mpir.NET;  // 0.4.0
 using System;   // 4790@3.6
 using System.Collections.Generic;
-class MaxLftTrP_B   
+class MaxLftTrP_B
 {
     static void Main()
     {
@@ -452,7 +452,7 @@ Fortran does not offer a "list" data structure, so as ever, fiddling with arrays
 
 The source file uses the F90 style, mainly because module PRIMEBAG (from [[Extensible_prime_generator#Fortran]]) is available to supply some prime numbers and check whether a number is prime or not. This works up to the 32-bit integer limit: although INTEGER*8 variables are available, that seemed a reasonable stopping point.  Otherwise, the source is older-style, except for a few conveniences: the use of "CYCLE" rather than a "GO TO", some array assignments rather than explicit DO-loops, and the special function MAXLOC to locate the index of the maximum value in an array. Although F90 also allows arrays of compound data, the entries are stored via a two-dimensional array, and to keep related digits adjacent in storage the indexing is (digit,entry) rather than (entry,digit) since fortran uses that ordering.
 
-Unfortunately, the modernisers have abandoned a feature of First Fortran (1957): the <code>IF OVERFLOW ... </code> statement, or similar. In its place are ad-hoc tests on whether a number has suddenly become zero or negative: there is roughly a 50:50 chance that an overflow in two's-complement integer arithmetic will produce such a result - if positive, the value will still be wrong after an overflow. Such checks are tedious, but not bothering to check will mean that odd behaviour will ensue, and worse, incorrect results. 
+Unfortunately, the modernisers have abandoned a feature of First Fortran (1957): the <code>IF OVERFLOW ... </code> statement, or similar. In its place are ad-hoc tests on whether a number has suddenly become zero or negative: there is roughly a 50:50 chance that an overflow in two's-complement integer arithmetic will produce such a result - if positive, the value will still be wrong after an overflow. Such checks are tedious, but not bothering to check will mean that odd behaviour will ensue, and worse, incorrect results.
 ```Fortran
       USE PRIMEBAG	!Gain access to NEXTPRIME and ISPRIME.
 Calculates the largest "left-truncatable" digit sequence that is a prime number, in various bases.
@@ -561,7 +561,7 @@ Base Digits Count Max. Value = (in base)
 ```
 
 
-So, there being no type declarations such as INTEGER*600, multi-precision arithmetic is needed to go further. There is no universally-used library for this, but thanks to previous effort in [[Sequence_of_primorial_primes#Fortran]] a collection is available, another F90 "module". This however works with a fixed value of BIGBASE, which is expected to be a large number and a power of ten. While there would be no great difficulty in converting from the digit sequences in the current base into a BIGNUM in base BIGBASE, it is more interesting to work with the desired base so that the digit sequences are manipulated directly. Accordingly, a variation, with the module starting 
+So, there being no type declarations such as INTEGER*600, multi-precision arithmetic is needed to go further. There is no universally-used library for this, but thanks to previous effort in [[Sequence_of_primorial_primes#Fortran]] a collection is available, another F90 "module". This however works with a fixed value of BIGBASE, which is expected to be a large number and a power of ten. While there would be no great difficulty in converting from the digit sequences in the current base into a BIGNUM in base BIGBASE, it is more interesting to work with the desired base so that the digit sequences are manipulated directly. Accordingly, a variation, with the module starting
 ```Fortran
       MODULE BIGNUMBERVB	!Limited services: integers, no negative numbers, variable base possible.
        INTEGER BIGORDER		!A limited attempt at generality.
@@ -577,11 +577,11 @@ c       PARAMETER (BIGBASE = 10**BIGORDER, BIGLIMIT = 8888/BIGORDER)	!Enough?
 ```
 
 
-As checked via earlier tests, using a fixed value for BIGLIMIT that is "surely big enough" enables faster execution than variable sizes. Now, BIGBASE is a variable, with a view to <code>DO BIGBASE = 3,17</code> and almost everything else remains the same, though with BIGBASE being a rather small number, there is no need to employ 64-bit variables via INTEGER*8 at certain places. The use of BIGORDER is disrupted and routines employing it should be avoided or adjusted, thus in BIGTASTE, adding 
+As checked via earlier tests, using a fixed value for BIGLIMIT that is "surely big enough" enables faster execution than variable sizes. Now, BIGBASE is a variable, with a view to <code>DO BIGBASE = 3,17</code> and almost everything else remains the same, though with BIGBASE being a rather small number, there is no need to employ 64-bit variables via INTEGER*8 at certain places. The use of BIGORDER is disrupted and routines employing it should be avoided or adjusted, thus in BIGTASTE, adding
 ```Fortran
           IF (MOD(BIGBASE,10).NE.0) STOP "BIGTASTE expects powers of 10"	!Alas. Otherwise the "E" formalism fails.
 ```
- for example. The changes produce 
+ for example. The changes produce
 ```Fortran
         SUBROUTINE BIGWRITE(F,B)	!Show B.
          INTEGER F	!I/O unit number.
@@ -614,7 +614,7 @@ As checked via earlier tests, using a fixed value for BIGLIMIT that is "surely b
 
 ```
 
-Which is to say that BIGWRITE will show the digits of a number as decimal numbers separated by periods rather than involving letters as additional digit symbols, while BIGTEN will prepare a text version in base ten, whatever BIGBASE is. Finally, BIGMRPRIME used to quit if BIGBASE were less than four, because it wants to test numbers not exceeding four by only inspecting a single digit of the big number, so that it can for larger numbers perform a direct test for divisibility by two and three without rejecting those numbers as primes just in case it is invoked for them. So ... 
+Which is to say that BIGWRITE will show the digits of a number as decimal numbers separated by periods rather than involving letters as additional digit symbols, while BIGTEN will prepare a text version in base ten, whatever BIGBASE is. Finally, BIGMRPRIME used to quit if BIGBASE were less than four, because it wants to test numbers not exceeding four by only inspecting a single digit of the big number, so that it can for larger numbers perform a direct test for divisibility by two and three without rejecting those numbers as primes just in case it is invoked for them. So ...
 ```Fortran
 Catch some annoying cases, to protect the direct tests for divisibility by two and three...
           IF (N.LAST.LE.2) THEN	!A smallish number? I want to compare to four, but BIGBASE might be two.
@@ -630,7 +630,7 @@ Catch some annoying cases, to protect the direct tests for divisibility by two a
 
 ```
 
-With all this in hand, the job can be done by 
+With all this in hand, the job can be done by
 ```Fortran
       USE PRIMEBAG	!Gain access to NEXTPRIME and ISPRIME.
       USE BIGNUMBERVB	!Alas, INTEGER*600 is not available.
@@ -1068,7 +1068,7 @@ class LeftTruncatablePrime
     }
     return probablePrimes;
   }
-  
+
   public static BigInteger getLargestLeftTruncatablePrime(int radix, int millerRabinCertainty)
   {
     List<BigInteger> lastList = null;
@@ -1085,7 +1085,7 @@ class LeftTruncatablePrime
     Collections.sort(lastList);
     return lastList.get(lastList.size() - 1);
   }
-  
+
   public static void main(String[] args)
   {
     if (args.length != 2) {
@@ -1095,7 +1095,7 @@ class LeftTruncatablePrime
     int maxRadix;
     try {
       maxRadix = Integer.parseInt(args[0]);
-      if (maxRadix < 3) throw new NumberFormatException(); 
+      if (maxRadix < 3) throw new NumberFormatException();
     } catch (NumberFormatException e) {
       System.err.println("Radix must be an integer greater than 2.");
       return;
@@ -1106,7 +1106,7 @@ class LeftTruncatablePrime
     } catch (NumberFormatException e) {
       System.err.println("Miiller-Rabin Certainty must be an integer.");
       return;
-    }  
+    }
     for (int radix = 3; radix <= maxRadix; radix++)
     {
       BigInteger largest = getLargestLeftTruncatablePrime(radix, millerRabinCertainty);
@@ -1117,7 +1117,7 @@ class LeftTruncatablePrime
         System.out.println(largest + " (in base " + radix + "): " + largest.toString(radix));
     }
   }
-  
+
 }
 ```
 
@@ -1154,7 +1154,7 @@ This solution is limited to a base of 17, to keep the processing time to well un
 
 ```julia
 using Primes, Printf
- 
+
 function addmsdigit(p::Integer, b::Integer, s::Integer)
     a = Vector{typeof(p)}()
     q = p
@@ -1165,7 +1165,7 @@ function addmsdigit(p::Integer, b::Integer, s::Integer)
     end
     return a
 end
- 
+
 function lefttruncprime(pbase::Integer)
     a = Vector{BigInt}()
     append!(a, primes(pbase - 1))
@@ -1181,7 +1181,7 @@ function lefttruncprime(pbase::Integer)
     end
     return mlt
 end
- 
+
 lo, hi = 3, 17
 println("The largest left truncatable primes for bases", @sprintf(" %d to %d.", lo, hi))
 for i in lo:hi
@@ -1319,7 +1319,7 @@ local tprimes := table();
                 j := 1;
                 p := p - iquo(p, b^i)*b^i;
             elif assigned(tprimes[c]) then
-                j := j + 1;    
+                j := j + 1;
             elif isprime(c) then
                 p := c;
                 i := i + 1;
@@ -1336,10 +1336,10 @@ end proc;
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
-<lang>LargestLeftTruncatablePrimeInBase[n_] := 
+<lang>LargestLeftTruncatablePrimeInBase[n_] :=
  Max[NestWhile[{Select[
-       Flatten@Outer[Function[{a, b}, #[[2]] a + b], 
-         Range[1, n - 1], #[[1]]], PrimeQ], n #[[2]]} &, {{0}, 
+       Flatten@Outer[Function[{a, b}, #[[2]] a + b],
+         Range[1, n - 1], #[[1]]], PrimeQ], n #[[2]]} &, {{0},
      1}, #[[1]] != {} &, 1, Infinity, -1][[1]]]
 ```
 
@@ -1576,7 +1576,7 @@ printf(1,"length %d candidates: %d \r",{radix,length(candidates)})
 printf(1,"                         \r")
     return ba_sprint(candidates[$])
 end function
- 
+
 for i=3 to 17 do
     atom t0 = time()
     string r = largestLeftTruncatablePrime(i),
@@ -1636,16 +1636,16 @@ def is_probable_prime(n,k):
             if pow(a, 2**i * d, n) == n-1:
                 return False
         return True # n is definitely composite
- 
+
     for i in range(k):
         a = random.randrange(2, n)
         if try_composite(a):
             return False
- 
-    return True # no base tested showed n as composite    
-    
-    
-def largest_left_truncatable_prime(base):    
+
+    return True # no base tested showed n as composite
+
+
+def largest_left_truncatable_prime(base):
     radix = 0
     candidates = [0]
     while True:
@@ -1796,7 +1796,7 @@ That is going to be big!
 
 (define (extend b i ts)
   (define ts*
-    (for/list ([t (in-set ts)])           
+    (for/list ([t (in-set ts)])
            (for/set ([d (in-range 1 b)]
                      #:when (prime? (prepend-digit b d i t)))
                     (prepend-digit b d i t))))
@@ -2074,7 +2074,7 @@ proc tcl::mathfunc::modexp {a b n} {
         }
         set b [expr {$b >> 1}]
     }
-    return $c 
+    return $c
 }
 # Based on Miller-Rabin primality testing, but with small prime check first
 proc is_prime {n {count 10}} {
@@ -2091,7 +2091,7 @@ proc is_prime {n {count 10}} {
     for {set s 0} {$d & 1 == 0} {incr s} {
         set d [expr {$d >> 1}]
     }
- 
+
     for {} {$count > 0} {incr count -1} {
         set a [expr {2 + int(rand()*($n - 4))}]
         set x [expr {modexp($a, $d, $n)}]
@@ -2245,7 +2245,7 @@ fcn largest_lefty_prime(base){
    b,biggest := BN(1),0;
    while(primes){
       b*=base;  // base,base^2,base^3... gets big
-      ps:=List(); 
+      ps:=List();
       foreach p,n in (primes,[1..base-1]){
          if((z:=(p + b*n)).probablyPrime()){
 	    ps.append(z);

@@ -63,12 +63,12 @@ DATA(result) = COND #( WHEN condition1istrue = abap_true AND condition2istrue = 
 with Ada.Text_IO; use Ada.Text_IO;
 
 procedure Test_If_2 is
-   
+
    type Two_Bool is range 0 .. 3;
-   
+
    function If_2(Cond_1, Cond_2: Boolean) return Two_Bool is
       (Two_Bool(2*Boolean'Pos(Cond_1)) + Two_Bool(Boolean'Pos(Cond_2)));
-   
+
 begin
    for N in 10 .. 20 loop
       Put(Integer'Image(N) & " is ");
@@ -169,14 +169,14 @@ if2 [cond1,cond2,both,one,two,none]{
 	}
 }
 
-if2 true false { 
-	print "both" 
-} { 
-	print "only first" 
-} { 
-	print "only second" 
-} { 
-	print "none" 
+if2 true false {
+	print "both"
+} {
+	print "only first"
+} {
+	print "only second"
+} {
+	print "none"
 }
 ```
 
@@ -209,14 +209,14 @@ This task requires syntax different from the <code>if</code> keyword in C.  For 
 Example application:
 
 
-```c>#include <limits.h
-
+```c
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "if2.h"
- 
+
 int main(int argc, char *argv[]) {
-	int i; 
+	int i;
 	for (i = 1; i < argc; i++) {
 		char *arg= argv[i], *ep;
 		long lval = strtol(arg, &ep, 10); /* convert arg to long */
@@ -255,8 +255,8 @@ b: not a number
 
 The following is probably easier to read, although <code>fi2</code> is funny looking however you slice it.  On the other hand, this kind of macros are unquestionably in the "bad" category.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define if2(a, b) switch(((a)) + ((b)) * 2) { case 3:
 #define else00	break; case 0:	/* both false */
@@ -276,14 +276,14 @@ int main()
 			printf("left\n");
 		else01
 			printf("right\n");
-		else00 { /* <-- bracket is optional, flaw */, 
+		else00 { /* <-- bracket is optional, flaw */,
 			printf("neither\n");
-			if2 (i == 2, j == 2) 
+			if2 (i == 2, j == 2)
 				printf("\tis 22");
 				printf("\n"); /* flaw: this is part of if2! */
 			else2
 				printf("\tnot 22\n");
-			fi2				
+			fi2
 		}
 		fi2
 	}
@@ -347,8 +347,8 @@ firstTrue
 > (if2 [false false] 'bothTrue 'firstTrue 'secondTrue 'else)
 else
 > (macroexpand '(if2 ['c1 'c2] 'bothTrue 'firstTrue 'secondTrue 'else))
-(let* [cond2__1806__auto__ (quote c2)] 
-  (if (quote c1) (if cond2__1806__auto__ (quote bothTrue)   (quote firstTrue)) 
+(let* [cond2__1806__auto__ (quote c2)]
+  (if (quote c1) (if cond2__1806__auto__ (quote bothTrue)   (quote firstTrue))
                  (if cond2__1806__auto__ (quote secondTrue) (quote else))))
 
 ```
@@ -477,63 +477,63 @@ using System.Reflection;
 
 namespace Extend_your_language
 {
-	
+
 
 	class Program
 	{
-		
+
 		public static void Main(string[] args)
 		{
 			Console.WriteLine();
 			Console.WriteLine("Hello World!");
 			Console.WriteLine();
-			
+
 			int x = 0;
 			int y = 0;
-			
+
 			for(x=0;x<2;x++)
 			{
 				for(y=0;y<2;y++)
 				{
-					
+
 					CONDITIONS( (x==0) , (y==0) ).
 						IF2  ("METHOD1").
 						ELSE1("METHOD2").
 						ELSE2("METHOD3").
 						ELSE ("METHOD4");
-					
+
 				}
 			}
-			
+
 			Console.WriteLine();
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);
 		}
-		
-		
-		
-		
+
+
+
+
 		public static void METHOD1()
 		{
 			Console.WriteLine("METHOD 1 executed - both are true");
 		}
-		
+
 		public static void METHOD2()
 		{
 			Console.WriteLine("METHOD 2 executed - first is true");
 		}
-		
+
 		public static void METHOD3()
 		{
 			Console.WriteLine("METHOD 3 executed - second is true");
 		}
-		
+
 		public static void METHOD4()
 		{
 			Console.WriteLine("METHOD 4 executed - both are false");
 		}
-		
-		
+
+
 		static int CONDITIONS(bool condition1, bool condition2)
 		{
 			int c = 0;
@@ -545,12 +545,12 @@ namespace Extend_your_language
 				c = 2;
 			else
 				c = 3;
-			
+
 			return c;
 		}
 	}
-	
-	
+
+
 	public static class ExtensionMethods
 	{
 
@@ -561,10 +561,10 @@ namespace Extend_your_language
 				MethodInfo m = typeof(Program).GetMethod(method);
 				m.Invoke(null,null);
 			}
-			
+
 			return value;
 		}
-		
+
 		public static int ELSE1(this int value, string method)
 		{
 			if(value == 1)
@@ -572,10 +572,10 @@ namespace Extend_your_language
 				MethodInfo m = typeof(Program).GetMethod(method);
 				m.Invoke(null,null);
 			}
-			
+
 			return value;
 		}
-		
+
 		public static int ELSE2(this int value, string method)
 		{
 			if(value == 2)
@@ -583,10 +583,10 @@ namespace Extend_your_language
 				MethodInfo m = typeof(Program).GetMethod(method);
 				m.Invoke(null,null);
 			}
-			
+
 			return value;
 		}
-		
+
 		public static void ELSE(this int value, string method)
 		{
 			if(value == 3)
@@ -595,7 +595,7 @@ namespace Extend_your_language
 				m.Invoke(null,null);
 			}
 		}
-		
+
 	}
 }
 
@@ -607,7 +607,7 @@ namespace Extend_your_language
 ```txt
 
 
- 
+
 Hello World!
 
 METHOD 1 executed - both are true
@@ -848,21 +848,21 @@ if2.then__control_2_0(fn {
 
 ```scheme
 
-(define-syntax-rule 
+(define-syntax-rule
 	(if2 cond1 cond2 both cond1-only cond2-only none) ;; new syntax
 ;; will expand to :
-	(if cond1 
+	(if cond1
 		(if cond2 both cond1-only)
 		(if cond2 cond2-only none)))
    → #syntax:if2
-   
+
 (define (num-test n)
     (if2 (positive? n) (exact? n)
 	  "positive and exact"
 	  "positive and inexact"
 	  "negative and exact"
 	  "negative and inexact"))
-	
+
 (num-test 3/4)
    → "positive and exact"
 (num-test -666)
@@ -954,7 +954,7 @@ Control structures in Forth are just IMMEDIATE words, which flags them to be run
 
 Fortran does not offer language extension facilities except in the form of allowing a programmer to define subroutines and especially functions, that extend the collection of library functions and which could look a bit like a new statement form if viewed sympathetically. Similarly, there is no built-in pre-processor (as in pl/i) which would enable the definition of what could look like an additional statement form. So, you're stuck with something like <code>call DIRECTWRITE(F,FMT,B,X + 7)</code> in place of <code>WRITE (F,FMT) B,X + 7</code> where one is to pass over the appearance of "call" and disregard the placement of the ")" symbol.
 
-Even so, Fortran programmers often confront a need for multiple condition tests, and, there being no [[Decision_tables|"decision table"]] construction, one might proceed as follows: 
+Even so, Fortran programmers often confront a need for multiple condition tests, and, there being no [[Decision_tables|"decision table"]] construction, one might proceed as follows:
 ```Fortran
       LOGICAL A,B		!These are allocated the same storage
       INTEGER IA,IB		!As the default integer size.
@@ -1033,7 +1033,7 @@ Boolean tests via LOGICAL variables...
 
 ```
 
-Different compilers/systems may use different values for ''true'' and ''false'' and indeed on the IBM360 ''et seq'', Fortran and pl/i did just that. Nevertheless, it would be easy enough to extend the language by adding a function such as: 
+Different compilers/systems may use different values for ''true'' and ''false'' and indeed on the IBM360 ''et seq'', Fortran and pl/i did just that. Nevertheless, it would be easy enough to extend the language by adding a function such as:
 ```Fortran
       INTEGER FUNCTION IF2(A,B)	!Combine two LOGICAL variables.
        LOGICAL A,B		!These.
@@ -1043,7 +1043,7 @@ Different compilers/systems may use different values for ''true'' and ''false'' 
       END FUNCTION IF2		!Thus produce a four-way result.
 ```
 
-which ignores the possibly peculiar numerical values of LOGICAL variables. The results of such a function could then be employed in a computed GO TO statement as above, or, in the SELECT CASE statement that is preferred by more modern programmers: 
+which ignores the possibly peculiar numerical values of LOGICAL variables. The results of such a function could then be employed in a computed GO TO statement as above, or, in the SELECT CASE statement that is preferred by more modern programmers:
 ```Fortran
       SELECT CASE(IF2(A,B))
        CASE(B"00"); WRITE (6,*) "Both false."
@@ -1082,13 +1082,13 @@ Sub test(a As Integer, b As Integer)
 End Sub
 
 Dim As Integer a, b
-Print "a = 1, b = 1 => "; 
+Print "a = 1, b = 1 => ";
 test(1, 1)
-Print "a = 1, b = 0 => "; 
+Print "a = 1, b = 0 => ";
 test(1, 0)
-Print "a = 0, b = 1 => "; 
+Print "a = 0, b = 1 => ";
 test(0, 1)
-Print "a = 0, b = 0 => "; 
+Print "a = 0, b = 0 => ";
 test(0, 0)
 Print
 Print "Press any key to quit"
@@ -1113,7 +1113,7 @@ a = 0, b = 0 => neither positive
 
 {{trans|Kotlin}}
 
-Go does not have macros but, using a combination of chained methods and function literals, it's possible to create something which (if you squint) is similar to the Kotlin example. 
+Go does not have macros but, using a combination of chained methods and function literals, it's possible to create something which (if you squint) is similar to the Kotlin example.
 Of course one should never do this kind of thing in real code.
 
 However, it's far less elegant. This is because, in Go, function arguments cannot be passed outside the method's parentheses and must be preceded by the func keyword.
@@ -1229,9 +1229,9 @@ procedure main(A)
           write("2: only first true"),
         }
 end
-     
+
 procedure if2(A)		# The double-conditional PDCO
-    suspend if @A[1] then 
+    suspend if @A[1] then
         if @A[2] then |@A[3]    # Run-err if missing 'then' clause
         else @\A[4]	        # (all else clauses are optional)
     else if @A[2] then |@\A[5]
@@ -1244,13 +1244,13 @@ and some sample runs:
 
 
 ```txt
-->eyl 1 1 2 2 
+->eyl 1 1 2 2
 1: both true
 2: both true
 ->eyl 1 1 2 3
 1: only first true
 2: only first true
-->eyl 1 2 2 2 
+->eyl 1 2 2 2
 1: only second true
 ->eyl 1 2 3 4
 1: neither true
@@ -1285,7 +1285,7 @@ if2 _     _    _ _ _ v = v
 
 
 
-###  Statement 
+###  Statement
 
 Inform 7 has two syntaxes for flow control blocks. Unfortunately, the newer indentation-based syntax only works with the built-in flow control statements, but it's possible to define new flow control statements using the older begin...end syntax:
 
@@ -1316,7 +1316,7 @@ When play begins:
 
 
 
-###  Text substitution 
+###  Text substitution
 
 
 ```inform7
@@ -1539,7 +1539,7 @@ macro if2(condition1, condition2, alltrue)
     elseif ifcond2
         push!(CSTACK1, false)
         push!(CSTACK2, true)
-        push!(CSTACK3, false)        
+        push!(CSTACK3, false)
     else
         push!(CSTACK1, false)
         push!(CSTACK2, false)
@@ -1641,7 +1641,7 @@ data class IfBoth(val cond1: Boolean, val cond2: Boolean) {
         return this
     }
 
-    fun elseNeither(func: () -> Unit): IfBoth {  
+    fun elseNeither(func: () -> Unit): IfBoth {
         if (!cond1 && !cond2) func()
         return this  // in case it's called out of order
     }
@@ -1659,13 +1659,13 @@ fun main(args: Array<String>) {
         println("a = 1 and b = 3")
     }
     .elseFirst {
-        println("a = 1 and b <> 3") 
+        println("a = 1 and b <> 3")
     }
     .elseSecond {
-        println("a <> 1 and b = 3") 
+        println("a <> 1 and b = 3")
     }
     .elseNeither {
-        println("a <> 1 and b <> 3") 
+        println("a <> 1 and b <> 3")
     }
 
     // It's also possible to omit any (or all) of the 'else' clauses or to call them out of order
@@ -1675,10 +1675,10 @@ fun main(args: Array<String>) {
         println("a = 1 and b = 3")
     }
     .elseNeither {
-        println("a <> 1 and b <> 3") 
+        println("a <> 1 and b <> 3")
     }
     .elseFirst {
-        println("a = 1 and b <> 3") 
+        println("a = 1 and b <> 3")
     }
 }
 ```
@@ -1732,13 +1732,13 @@ Example use:
 
 ```Lasso
 if2(true,true) => {
-    ifboth => {    
+    ifboth => {
         bothConditionsAreTrue
     }
-    else1 => { 
+    else1 => {
         firstConditionIsTrue
     }
-    else2 => { 
+    else2 => {
         secondConditionIsTrue
     }
     else => {
@@ -1798,7 +1798,7 @@ for a=1 to 2
             if2 a=1, b=2, &ctrl : Part {
                   print "both", a, b
             } as ctrl
-            ifelse1 : Part { 
+            ifelse1 : Part {
                   print "first", a
             } as ctrl
             ifelse2  : Part {
@@ -1884,7 +1884,7 @@ public func else1(bothAction: func(): void, else1Action: func(): void): IF2
 {
     return IF2([IF2.Condition.both -> bothAction,
                 IF2.Condition.else1 -> else1Action]);
-         
+
 }
 public func else2(actionHolder: IF2, action: func(): void): IF2
 {
@@ -1926,21 +1926,21 @@ struct IF2
 }
 
 // usage
-if2 (true, false) then func() 
-{ 
-    println("both true"); 
-}
-else1 func() 
+if2 (true, false) then func()
 {
-    println("first true"); 
+    println("both true");
 }
-else2 func() 
+else1 func()
 {
-    println("second true"); 
+    println("first true");
 }
-none func() 
+else2 func()
 {
-    println("none true"); 
+    println("second true");
+}
+none func()
+{
+    println("none true");
 };
 
 ```
@@ -1958,7 +1958,7 @@ In file "if2macro.n":
 macro if2 (cond1, cond2, bodyTT, bodyTF, bodyFT, bodyFF)
 syntax ("if2", "(", cond1, ")", "(", cond2, ")", bodyTT, "elseTF", bodyTF, "elseFT", bodyFT, "else", bodyFF)
 {
-    <[ 
+    <[
         when($cond1 && $cond2) {$bodyTT};
         when($cond1 && !($cond2)) {$bodyTF};
         when(!($cond1) && $cond2) {$bodyFT};
@@ -1985,7 +1985,7 @@ module UseIf2
     {
         def happy = true;
         def knowit = false;
-        
+
         if2 (happy) (knowit)
             Write("Clap hands")
         elseTF
@@ -2013,13 +2013,13 @@ ncc -r if2macro.dll useif2.n
 (context 'if2)
 
 (define-macro (if2:if2 cond1 cond2 both-true first-true second-true neither)
-  (cond 
+  (cond
     ((eval cond1)
       (if (eval cond2)
             (eval both-true)
             (eval first-true)))
     ((eval cond2)
-      (eval second-true))  
+      (eval second-true))
     (true
       (eval neither))))
 
@@ -2319,7 +2319,7 @@ Testing 4: Neither bit is set
 Testing 5: Only bit 0 is set
 Testing 6: Only bit 1 is set
 Testing 7: Both bits 0 and 1 are set
-msl@64Lucid:~/perl$ 
+msl@64Lucid:~/perl$
 
 ```
 
@@ -2413,7 +2413,7 @@ end if
 
 I can accept that those could all be deemed cheating (and that the last does not look anywhere near as nice as I hoped it would).
 
-However Phix is designed to be easily modifiable (albeit not dynamically) and I think it would be instructive to 
+However Phix is designed to be easily modifiable (albeit not dynamically) and I think it would be instructive to
 outline the changes that would be needed to the compiler sources to achieve this task.
 
 First decide on the syntax:
@@ -2476,7 +2476,7 @@ constant T_endelseelsif = {T_end,T_else,T_else1,T_else2,T_elsif,T_case,T_default
 ```
 
 
-Admittedly the next part is non-trivial. Not really worthwhile showing here, the distribution 
+Admittedly the next part is non-trivial. Not really worthwhile showing here, the distribution
 includes the file demo\rosetta\if2.txt which contains a DoIf2() procedure (120 lines) that
 is simply a quick hack of DoSwitch() and would be added to pmain.e
 
@@ -2487,7 +2487,7 @@ Lastly, that would need to be hooked in, find the DoSwitch call (again in pmain.
 ```
 
 
-Recompile Phix (p -cp, approx 10s) and test. 
+Recompile Phix (p -cp, approx 10s) and test.
 Obviously, while I have subsequently removed it, I have tried this myself and it worked fine:
 
 ```Phix
@@ -2537,17 +2537,17 @@ import phl::lang::io;
 struct @ConditionalChain {
 	field @Boolean cond;
 	field @ConditionalChain next;
-	
+
 	@ConditionalChain init(@Boolean cond, @ConditionalChain next) [
 		this::cond = cond;
 		this::next = next;
-		
+
 		return this;
 	]
-	
+
 	/*
 	 *	If the condition is true executes the closure and returns a false element, otherwise returns the next condition
-	 *	
+	 *
 	 *	Execution starts from the first element, and iterates until the right element is found.
 	 */
 	@ConditionalChain then(@Closure<@Void> closure) [
@@ -2559,7 +2559,7 @@ struct @ConditionalChain {
 		else return next();
 	]
 
-	/* Operators create a cool look */	
+	/* Operators create a cool look */
 	@ConditionalChain operator then(@Closure<@Void> closure) alias @ConditionalChain.then;
 	@ConditionalChain operator else1(@Closure<@Void> closure) alias @ConditionalChain.then;
 	@ConditionalChain operator else2(@Closure<@Void> closure) alias @ConditionalChain.then;
@@ -2694,7 +2694,7 @@ Alternate syntax:
 
 ```PowerShell
 
-Set-Alias -Name if2 -Value When-Condition 
+Set-Alias -Name if2 -Value When-Condition
 
 if2 $true $false {
     "both true"
@@ -2739,19 +2739,19 @@ if2 <- function(condition1, condition2, both_true, first_true, second_true, both
 ```
 
 
-A test example: 
+A test example:
 
 ```r
 
-for(x in 1:2) for(y in letters[1:2]) 
+for(x in 1:2) for(y in letters[1:2])
 {
-  print(if2(x == 1, y == "a", 
-    "both conditions are true", 
-    x + 99, 
+  print(if2(x == 1, y == "a",
+    "both conditions are true",
+    x + 99,
     {
       yy <- rep.int(y, 10)
-      paste(letters[1:10], yy)  
-    }, 
+      paste(letters[1:10], yy)
+    },
     NULL
   ))
 }
@@ -2771,7 +2771,7 @@ if2 <- function(condition1, condition2, expr_list = NULL)
     if(condition2) "" else "else1"
   } else if(condition2) "else2" else "else"
   if(!nzchar(cl_name)) cl_name <- which(!nzchar(names(cl)))
-  eval(cl[[cl_name]])       
+  eval(cl[[cl_name]])
 }
 
 ```
@@ -2781,16 +2781,16 @@ The usage here is modified to
 
 ```r
 
-for(x in 1:2) for(y in letters[1:2]) 
+for(x in 1:2) for(y in letters[1:2])
 {
   print(if2(x == 1, y == "a", list(
     "both conditions are true",
     else1 = x + 99,
-    else2 = 
+    else2 =
     {
       yy <- rep.int(y, 10)
-      paste(letters[1:10], yy)  
-    }, 
+      paste(letters[1:10], yy)
+    },
     "else" = NULL
   )))
 }
@@ -2941,9 +2941,9 @@ This REXX version is modeled after the   ADA   example.
 
 '''Programming note:'''   the two arguments for the   '''if2'''   routine should be verified for having boolean values,
 
-and also the number of arguments should be validated   (both have been omitted to make the code clearer). 
+and also the number of arguments should be validated   (both have been omitted to make the code clearer).
 
-'''Usage example:''' 
+'''Usage example:'''
 
 ```rexx
 if2(  some-expression-that-results-in-a-boolean-value,   some-other-expression-that-results-in-a-boolean-value)
@@ -3023,13 +3023,13 @@ if2: parse arg if.10,   if.01                    /*assign the cases of  10   and
 
 # Project : Extend your language
 
-see "a = 1, b = 1 => " 
+see "a = 1, b = 1 => "
 test(1, 1)
-see "a = 1, b = 0 => " 
+see "a = 1, b = 0 => "
 test(1, 0)
-see "a = 0, b = 1 => " 
+see "a = 0, b = 1 => "
 test(0, 1)
-see "a = 0, b = 0 => " 
+see "a = 0, b = 0 => "
 test(0, 0)
 see nl
 
@@ -3126,11 +3126,11 @@ false, false => neither is true
 ```rust
 #![allow(unused_variables)]
 macro_rules! if2 {
-    ($cond1: expr, $cond2: expr 
-        => $both:expr 
-        => $first: expr 
-        => $second:expr 
-        => $none:expr) 
+    ($cond1: expr, $cond2: expr
+        => $both:expr
+        => $first: expr
+        => $second:expr
+        => $none:expr)
     => {
         match ($cond1, $cond2) {
             (true, true) => $both,
@@ -3295,11 +3295,11 @@ Example:
 ```shen
 
 (define try
-  X Y -> (branch-if (integer? X) 
+  X Y -> (branch-if (integer? X)
                     (integer? Y)
            both-ints first-int second-int neither-int))
 
-(map (/. X (do (print X) (nl))) 
+(map (/. X (do (print X) (nl)))
      [(try 1 2) (try 1 1.5) (try 1.5 1) (try 1.5 1.5)])
 ```
 
@@ -3407,7 +3407,7 @@ proc if2 {cond1 cond2 body00 body01 body10 body11} {
 
 This behaves exactly as above, so shall not be repeated here.
 
-###  Other language extension forms 
+###  Other language extension forms
 
 Tcl includes very strong support for language extension. For example, consider this code which implements a integer looping command:
 
@@ -3540,7 +3540,7 @@ if2 {test 1 -gt 0} {~ grill foo bar boo} {
 Identifiers can't contain digits, so the function is named <code>iftwo</code>.
 
 ```Ursala
-iftwo("p","q") <"both","justp","justq","neither"> = 
+iftwo("p","q") <"both","justp","justq","neither"> =
 
 "p"?(
    "q"?("both","justp"),

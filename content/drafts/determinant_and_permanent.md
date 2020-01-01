@@ -31,8 +31,8 @@ More efficient algorithms for the determinant are known: [[LU decomposition]], s
 
 ## 360 Assembly
 
-For maximum compatibility, this program uses only the basic instruction set (S/360) 
-and two ASSIST macros (XDECO,XPRNT) to keep it as short as possible. 
+For maximum compatibility, this program uses only the basic instruction set (S/360)
+and two ASSIST macros (XDECO,XPRNT) to keep it as short as possible.
 It works on OS/360 family (MVS,z/OS), on DOS/360 family (z/VSE) use GETVIS,FREEVIS instead of GETMAIN,FREEMAIN.
 
 ```360asm
@@ -58,7 +58,7 @@ EXITALL  L      R13,SAVEAREA+4     restore caller's savearea address
          XR     R15,R15            set return code to 0
          BR     R14                return to caller
 SAVEAREA DS     18F                main savearea
-TT       DC     F'3'               matrix size 
+TT       DC     F'3'               matrix size
          DC     F'2',F'9',F'4',F'7',F'5',F'3',F'6',F'1',F'8' <==input
 PG1      DC     CL80'determinant='
 PG2      DC     CL80'permanent='
@@ -160,11 +160,11 @@ ELOOPIQ  LR     R1,R6                  k
          LA     R6,1(R6)               k=k+1
          B      LOOPK                next k
 ELOOPK   EQU    *                    end do
-EIF1     EQU    *                  end if 
+EIF1     EQU    *                  end if
 EXIT     L      R13,SAVEAREB+4     restore caller's savearea address
          L      R2,R               return value (determinant)
          L      R3,S               return value (permanent)
-         XR     R15,R15            set return code to 0        
+         XR     R15,R15            set return code to 0
          FREEMAIN A=(R10),LV=(R11) free allocated storage
          LR     R0,R2              first return value
          LR     R1,R3              second return value
@@ -186,7 +186,7 @@ S        DS     F                  permanent accu
 SGN      DS     F                  sign
 STACKLEN EQU    *-STACK
 Q        DS     F                  sub matrix q((n-1)*(n-1)+1)
-         YREGS  
+         YREGS
          END    MATARI
 ```
 
@@ -205,8 +205,8 @@ permanent=           900
 
 C99 code. By no means efficient or reliable.  If you need it for serious work, go find a serious library.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -255,8 +255,8 @@ int main(void)
 
 A method to calculate determinant that might actually be usable:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <tgmath.h>
 
@@ -620,10 +620,10 @@ Please find the compilation and example run at the start of the comments in the 
 !
 !a=./F && make $a && $a < unixdict.txt
 !f95 -Wall -ffree-form F.F -o F
-! j example, determinant:    7.00000000    
-! j example, permanent:      5.00000000    
-! maxima, determinant:      -360.000000    
-! maxima, permanent:         900.000000    
+! j example, determinant:    7.00000000
+! j example, permanent:      5.00000000
+! maxima, determinant:      -360.000000
+! maxima, permanent:         900.000000
 !
 !Compilation finished at Sat May 18 23:25:43
 
@@ -645,7 +645,7 @@ Please find the compilation and example run at the start of the comments in the 
 !a: matrix([2, 9, 4], [7, 5, 3], [6, 1, 8])$
 !determinant(a);
 !-360
-! 
+!
 !permanent(a);
 !900
 
@@ -1301,7 +1301,7 @@ Permanent: 6778800.0
 # Eliminate row i and row j
 def except(i;j):
   reduce del(.[i])[] as $row ([]; . + [$row | del(.[j]) ] );
- 
+
 def det:
   def parity(i): if i % 2 == 0 then 1 else -1 end;
   if length == 1 and (.[0] | length) == 1 then .[0][0]
@@ -1338,10 +1338,10 @@ def matrices:
     [ 5,  6,  7,  8,  9],
     [10, 11, 12, 13, 14],
     [15, 16, 17, 18, 19],
-    [20, 21, 22, 23, 24]] 
+    [20, 21, 22, 23, 24]]
 ;
 
-"Determinants: ", (matrices | det), 
+"Determinants: ", (matrices | det),
 "Permanents:   ",  (matrices | perm)
 ```
 
@@ -1349,12 +1349,12 @@ def matrices:
 
 ```sh
 $ jq -n -r -f Matrix_arithmetic.jq
-Determinants: 
+Determinants:
 -2
 18
 0
 0
-Permanents:   
+Permanents:
 10
 10
 29556
@@ -1372,7 +1372,7 @@ def det:
   def product_diagonal:
     . as $m | reduce range(0;length) as $i (1; . * $m[$i][$i]);
   def tidy: if . == -0 then 0 else . end;
-  lup 
+  lup
   | (.[0]|product_diagonal) as $l
   | if $l == 0 then 0 else $l * (.[1]|product_diagonal) | tidy end ;
 
@@ -1450,7 +1450,7 @@ fun johnsonTrotter(n: Int): Pair<List<IntArray>, List<Int>> {
             signs.add(sign)
             sign *= -1
             return
-        } 
+        }
         permute(k + 1)
         for (i in 0 until k) {
             val z = p[q[k] + d[k]]
@@ -1461,7 +1461,7 @@ fun johnsonTrotter(n: Int): Pair<List<IntArray>, List<Int>> {
             permute(k + 1)
         }
         d[k] *= -1
-    } 
+    }
 
     permute(0)
     return perms to signs
@@ -1469,7 +1469,7 @@ fun johnsonTrotter(n: Int): Pair<List<IntArray>, List<Int>> {
 
 fun determinant(m: Matrix): Double {
     val (sigmas, signs) = johnsonTrotter(m.size)
-    var sum = 0.0    
+    var sum = 0.0
     for ((i, sigma) in sigmas.withIndex()) {
         var prod = 1.0
         for ((j, s) in sigma.withIndex()) prod *= m[j][s]
@@ -1508,16 +1508,16 @@ fun main(args: Array<String>) {
     val m4 = arrayOf(
         doubleArrayOf( 1.0,  2.0,  3.0,  4.0),
         doubleArrayOf( 4.0,  5.0,  6.0,  7.0),
-        doubleArrayOf( 7.0,  8.0,  9.0, 10.0),     
+        doubleArrayOf( 7.0,  8.0,  9.0, 10.0),
         doubleArrayOf(10.0, 11.0, 12.0, 13.0)
-    )      
+    )
 
     val matrices = arrayOf(m1, m2, m3, m4)
     for (m in matrices) {
         println("m${m.size} -> ")
         println("  determinant = ${determinant(m)}")
         println("  permanent   = ${permanent(m)}\n")
-    } 
+    }
 }
 ```
 
@@ -1526,19 +1526,19 @@ fun main(args: Array<String>) {
 
 ```txt
 
-m1 -> 
+m1 ->
   determinant = 1.0
   permanent   = 1.0
 
-m2 -> 
+m2 ->
   determinant = -2.0
   permanent   = 10.0
 
-m3 -> 
+m3 ->
   determinant = -360.0
   permanent   = 900.0
 
-m4 -> 
+m4 ->
   determinant = 0.0
   permanent   = 29556.0
 
@@ -1584,7 +1584,7 @@ function _JT:next()
   self.sign=-self.sign
   for i=r+1,#self.directions do self.directions[i]=-self.directions[i] end
   return true
-end  
+end
 
 -- matrix class
 
@@ -1940,7 +1940,7 @@ print "perm(M) = " . permanent($M) . ".\n";
 
 ```txt
 
-M = 
+M =
 [
  [2 9 4]
  [7 5 3]
@@ -2112,7 +2112,7 @@ constant tests = {
  {20, 21, 22, 23, 24}},
 --Determinant: 0, permanent: 6778800
 {{5}},
---Determinant: 5, permanent: 5 
+--Determinant: 5, permanent: 5
 {{1,0,0},
  {0,1,0},
  {0,0,1}},
@@ -2183,7 +2183,7 @@ function det-perm ($array) {
         }
         function generate($sign, $n, $A) {
             if($n -eq 1) {
-                $i = 0               
+                $i = 0
                 $prod = prod @($A | foreach{$array[$i++][$_]})
                 [pscustomobject]@{det = $sign*$prod; perm = $prod}
             }
@@ -2224,14 +2224,14 @@ det-perm @(@(4,4),@(2,2))
 
 ```txt
 
-det                                                    perm                                                  
----                                                    ----                                                  
-5                                                      5                                                     
-1                                                      1                                                     
--1                                                     1                                                     
-14                                                     26                                                    
--14                                                    26                                                    
-0                                                      16                                                    
+det                                                    perm
+---                                                    ----
+5                                                      5
+1                                                      1
+-1                                                     1
+14                                                     26
+-14                                                    26
+0                                                      16
 
 ```
 
@@ -2267,16 +2267,16 @@ def det(a):
 if __name__ == '__main__':
     from pprint import pprint as pp
 
-    for a in ( 
+    for a in (
             [
-             [1, 2], 
-             [3, 4]], 
+             [1, 2],
+             [3, 4]],
 
             [
              [1, 2, 3, 4],
              [4, 5, 6, 7],
              [7, 8, 9, 10],
-             [10, 11, 12, 13]],        
+             [10, 11, 12, 13]],
 
             [
              [ 0,  1,  2,  3,  4],
@@ -2603,12 +2603,12 @@ m2 = Matrix[[1, 2, 3, 4], [4, 5, 6, 7], [7, 8, 9, 10], [10, 11, 12, 13]]
 m3 = Matrix[[0, 1, 2, 3, 4],
             [5, 6, 7, 8, 9],
             [10, 11, 12, 13, 14],
-            [15, 16, 17, 18, 19], 
+            [15, 16, 17, 18, 19],
             [20, 21, 22, 23, 24]]
 
 [m1, m2, m3].each do |m|
   puts "determinant:\t #{m.determinant}", "permanent:\t #{m.permanent}"
-  puts 
+  puts
 end
 ```
 
@@ -2744,7 +2744,7 @@ BEGIN
         INTEGER N; N := LENGTH(A);
         IF N = 1 THEN
             DET := A(1, 1)
-        ELSE 
+        ELSE
         BEGIN
             INTEGER I, SIGN;
             REAL SUM;
@@ -2765,7 +2765,7 @@ BEGIN
         INTEGER N; N := LENGTH(A);
         IF N = 1 THEN
             PERM := A(1, 1)
-        ELSE 
+        ELSE
         BEGIN
             REAL SUM;
             INTEGER I;
@@ -2802,7 +2802,7 @@ BEGIN
     ! 3 4
     ! DETERMINANT: -2.0
     ! PERMANENT: 10.0 ;
-     
+
     COMMENT
     ! 5
     ! 0 1 2 3 4
@@ -3020,7 +3020,7 @@ Private Function minor(a As Variant, x As Integer, y As Integer) As Variant
     Next i
     minor = result
 End Function
- 
+
 Private Function det(a As Variant)
     If IsArray(a) Then
         If UBound(a) = 1 Then
@@ -3044,7 +3044,7 @@ Private Function det(a As Variant)
 err:
     det = a(1)
 End Function
- 
+
 Private Function perm(a As Variant) As Double
     If IsArray(a) Then
         If UBound(a) = 1 Then
@@ -3066,7 +3066,7 @@ Private Function perm(a As Variant) As Double
 err:
     perm = a(1)
 End Function
- 
+
 Public Sub main()
     Dim tests(13) As Variant
     tests(1) = [{1,  2; 3,  4}]
@@ -3105,19 +3105,19 @@ End Sub
 
 ```txt
 Determinant   Builtin det   Permanent
--2            -2             10 
--360          -360           900 
- 0             0             29556 
- 0             0             6778800 
- 5             5             5 
- 1             1             1 
--1            -1             1 
- 14            14            26 
--14           -14            26 
- 0             0             16 
--4319         -4319          10723 
- 18            18            10 
- 13           error          13 
+-2            -2             10
+-360          -360           900
+ 0             0             29556
+ 0             0             6778800
+ 5             5             5
+ 1             1             1
+-1            -1             1
+ 14            14            26
+-14           -14            26
+ 0             0             16
+-4319         -4319          10723
+ 18            18            10
+ 13           error          13
 ```
 
 
@@ -3142,7 +3142,7 @@ test:=fcn(A){
 ```zkl
 A:=GSL.Matrix(2,2).set(1,2, 3,4);
 B:=GSL.Matrix(4,4).set(1,2,3,4, 4,5,6,7, 7,8,9,10, 10,11,12,13);
-C:=GSL.Matrix(5,5).set( 0, 1, 2, 3, 4,  5, 6, 7, 8, 9, 10,11,12,13,14, 
+C:=GSL.Matrix(5,5).set( 0, 1, 2, 3, 4,  5, 6, 7, 8, 9, 10,11,12,13,14,
 		       15,16,17,18,19, 20,21,22,23,24);
 T(A,B,C).apply2(test);
 ```

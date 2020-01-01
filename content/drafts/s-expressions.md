@@ -17,13 +17,13 @@ tags = []
 ;Task:
 Write a simple reader and writer for S-Expressions that handles quoted and unquoted strings, integers and floats.
 
-The reader should read a single but nested S-Expression from a string and store it in a suitable datastructure (list, array, etc). 
+The reader should read a single but nested S-Expression from a string and store it in a suitable datastructure (list, array, etc).
 
 Newlines and other whitespace may be ignored unless contained within a quoted string.
 
-“<tt>()</tt>”   inside quoted strings are not interpreted, but treated as part of the string. 
+“<tt>()</tt>”   inside quoted strings are not interpreted, but treated as part of the string.
 
-Handling escaped quotes inside a string is optional;   thus “<tt>(foo"bar)</tt>” maybe treated as a string “<tt>foo"bar</tt>”, or as an error. 
+Handling escaped quotes inside a string is optional;   thus “<tt>(foo"bar)</tt>” maybe treated as a string “<tt>foo"bar</tt>”, or as an error.
 
 For this, the reader need not recognize “<tt>\</tt>” for escaping, but should, in addition, recognize numbers if the language has appropriate datatypes.
 
@@ -54,7 +54,7 @@ Let the writer produce pretty printed output with indenting and line-breaks.
 ## Ada
 
 
-Uses Ada 2005 (Ada.Containers). 
+Uses Ada 2005 (Ada.Containers).
 
 Specification of package S_Expr:
 
@@ -342,29 +342,29 @@ end Test_S_Expr;
 {{out}}
 
 ```txt
- ( 
-    ( 
+ (
+    (
       data
       "quoted data"
        123
        4.50000E+00
-    ) 
-    ( 
+    )
+    (
       data
       "quoted data"
        123
        4.50000E+00
       data
-       ( 
+       (
          !@#
-          ( 
+          (
              4.50000E+00
-          ) 
+          )
          "(more"
          "data)"
-       ) 
-    ) 
- ) 
+       )
+    )
+ )
 ```
 
 
@@ -594,8 +594,8 @@ MsgBox, 262144, , % S_Expressions(Str)
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
@@ -996,7 +996,7 @@ Node buildTree(Tokens tokens) {
         return [result, index];
     }
 
-    value root = recursivelyBuild(tokens.sequence())[0]; 
+    value root = recursivelyBuild(tokens.sequence())[0];
     return root.first else Group();
 }
 
@@ -1089,7 +1089,7 @@ parse_sexp = (sexp) ->
     else
      throw Error "missing end paren"
     arr
-    
+
   _guess_type = (word) ->
     # This is crude, doesn't handle all forms of floats.
     if word.match /^\d+\.\d+$/
@@ -1097,7 +1097,7 @@ parse_sexp = (sexp) ->
     else if word.match /^\d+/
       parseInt(word)
     else
-      word    
+      word
 
   _parse_word = ->
     token = tokens[i]
@@ -1106,7 +1106,7 @@ parse_sexp = (sexp) ->
       token.word
     else
       _guess_type token.word
-      
+
   _parse = ->
     return undefined unless i < tokens.length
     token = tokens[i]
@@ -1118,16 +1118,16 @@ parse_sexp = (sexp) ->
   exp = _parse()
   throw Error "premature termination" if i < tokens.length
   exp
-    
+
 lex_sexp = (sexp) ->
   is_whitespace = (c) -> c in [' ', '\t', '\n']
   i = 0
   tokens = []
-  
+
   test = (f) ->
     return false unless i < sexp.length
     f(sexp[i])
-  
+
   eat_char = (c) ->
     tokens.push
       type: c
@@ -1149,7 +1149,7 @@ lex_sexp = (sexp) ->
     tokens.push
       type: "word"
       word: token
-  
+
   eat_quoted_word = ->
     start = i
     i += 1
@@ -1167,7 +1167,7 @@ lex_sexp = (sexp) ->
       i += 1
     else
       throw Error("end quote missing #{sexp.substring(start, i)}")
-  
+
   while i < sexp.length
     c = sexp[i]
     if c == '(' or c == ')'
@@ -1195,7 +1195,7 @@ do ->
 
 {{out}}
 <lang>
-> coffee sexp.coffee 
+> coffee sexp.coffee
 input:
 ((data "quoted data with escaped \"" 123 4.5 "14")
  (data (!@# (4.5) "(more" "data)")))
@@ -1232,10 +1232,10 @@ round trip:
 ## Common Lisp
 
 ===Parsing S-Expressions===
-Like most Lisp dialects, Common Lisp uses s-expressions to represent 
-both source code and data.  
-Therefore, a properly formatted s-expression is easily "read" 
-then "evaluated" within the top-level REPL (read-eval-print-loop).  
+Like most Lisp dialects, Common Lisp uses s-expressions to represent
+both source code and data.
+Therefore, a properly formatted s-expression is easily "read"
+then "evaluated" within the top-level REPL (read-eval-print-loop).
 
 ```txt
 CL-USER> (read-from-string "((data \"quoted data\" 123 4.5) (data (!@# (4.5) \"(more\" \"data)\")))")
@@ -1245,7 +1245,7 @@ CL-USER> (caar *)  ;;The first element from the first sublist is DATA
 DATA
 CL-USER> (eval (read-from-string "(concatenate 'string \"foo\" \"bar\")"))  ;;An example with evaluation
 "foobar"
-CL-USER> 
+CL-USER>
 ```
 
 Unfortunately, our pointy-haired boss has asked you to write a parser for an unusual s-expression syntax that uses square brackets instead of parenthesis.  In most programming languages, this would necessitate writing an entire parser.  Fortunately, the Common Lisp reader can be modified through the use of macro-characters to accomplish this task.  When the reader parses a macro-character token, a function associated with the macro-character is called.  As evidenced below, modifying the behavior of the Lisp reader by setting macro-character functions to handle additional sytax requires far less work than writing a complete parser from scratch.
@@ -1262,10 +1262,10 @@ Unfortunately, our pointy-haired boss has asked you to write a parser for an unu
 Unit test code:
 
 ```lisp
-;;A list of unit tests.  Each test is a cons in which the car (left side) contains the 
+;;A list of unit tests.  Each test is a cons in which the car (left side) contains the
 ;;test string and the cdr (right side) the expected result of reading the S-Exp.
-(setf unit-tests 
-      (list 
+(setf unit-tests
+      (list
        (cons "[]" NIL)
        (cons "[a b c]" '(a b c))
        (cons "[\"abc\" \"def\"]" '("abc" "def"))
@@ -1274,7 +1274,7 @@ Unit test code:
        (cons "[4/8 3/6 2/4]" '(1/2 1/2 1/2))
        (cons "[reduce #'+ '[1 2 3]]" '(reduce #'+ '(1 2 3)))))
 
-(defun run-tests () 
+(defun run-tests ()
   (dolist (test unit-tests)
     (format t "String: ~23s  Expected: ~23s  Actual: ~s~%"
 	    (car test) (cdr test) (read-from-string (car test)))))
@@ -1298,10 +1298,10 @@ Error testing:
 ```txt
 (read-from-string "[\"ab\"\"]")  ;;Error:  Object ends with a string.
 (read-from-string "[)")          ;;Error:  An object cannot start with ')'
-(read-from-string "(]")          ;;Error:  An object cannot start with ']' 
+(read-from-string "(]")          ;;Error:  An object cannot start with ']'
 ```
 
-{{out|Task output}} 
+{{out|Task output}}
 
 ```txt
 CL-USER>  (setf task "[[data \"quoted data\" 123 4.5] [data [!@# [4.5] \"[more\" \"data]\"]]]")
@@ -1319,7 +1319,7 @@ CL-USER> (cdar testing)
 ("quoted data" 123 4.5)
 CL-USER> (cadar testing)
 "quoted data"
-CL-USER> 
+CL-USER>
 ```
 
 
@@ -1332,12 +1332,12 @@ The next step in this task is to write a standard Lisp s-expression in the squar
   (labels ((parse (sexp)
 	     (cond ((null sexp) "")
 		   ((atom sexp) (format nil "~s " sexp))
-		   ((listp sexp) 
-		    (concatenate 
-		     'string 
+		   ((listp sexp)
+		    (concatenate
+		     'string
 		     (if (listp (car sexp))
-			 (concatenate 'string "[" 
-				      (fix-spacing (parse (car sexp))) 
+			 (concatenate 'string "["
+				      (fix-spacing (parse (car sexp)))
 				      "] ")
 			 (parse (car sexp)))
 		     (parse (cdr sexp))))))
@@ -1359,13 +1359,13 @@ Unit test code:
 (setf unit-tests '(((1 2) (3 4)) (1 2 3 4) ("ab(cd" "mn)op")
 		   (1 (2 (3 (4)))) ((1) (2) (3)) ()))
 
-(defun run-tests () 
+(defun run-tests ()
   (dolist (test unit-tests)
     (format t "Before: ~18s  After: ~s~%"
 	    test (write-sexp test))))
 ```
 
-{{out|Unit test output}} 
+{{out|Unit test output}}
 
 ```txt
 CL-USER> (run-tests)
@@ -1377,7 +1377,7 @@ Before: ((1) (2) (3))       After: "[[1] [2] [3]]"
 Before: NIL                 After: "[]"
 ```
 
-{{out|Finally, round trip output for the original task example}} 
+{{out|Finally, round trip output for the original task example}}
 
 ```txt
 CL-USER> task
@@ -1387,7 +1387,7 @@ CL-USER> (read-from-string task)
 65
 CL-USER> (write-sexp *)  ; * is the previous return value
 "[[DATA \"quoted data\" 123 4.5] [DATA [!@# [4.5] \"[more\" \"data]\"]]]"
-CL-USER> 
+CL-USER>
 ```
 
 
@@ -1421,7 +1421,7 @@ using System.Text;
         public void AddNode(SNode node)
         {
             this._items.Add(node);
-        }      
+        }
     }
 
     public class SNodeFull : SNode
@@ -1581,14 +1581,14 @@ namespace SExpression
                 st = st.Trim();
 
                 r.AddNode(node);
-               
+
                 if (!node.IsLeaf)
                 {
                     Deserialize(ref st,node);
                 }
             }
             while (st.Length > 0);
-            
+
         }
 
         private SNodeFull DeserializeItem(ref string st)
@@ -1652,7 +1652,7 @@ namespace SExpression.Test
     {
         static void Main(string[] args)
         {
-            var str = 
+            var str =
 @"((data ""quoted data"" 123 4.5)
 (data(!@# (4.5) ""(more"" ""data)"")))";
 
@@ -1839,7 +1839,7 @@ EBNF: sexp>seq [=[
 
 : seq>sexp ( seq -- str )
     unparse R/ {\s+/ "(" R/ \s+}/ ")" [ re-replace ] 2bi@ ;
-    
+
 input [ "Input:\n%s\n\n" printf ] [
     sexp>seq dup seq>sexp
     "Native:\n%u\n\nRound trip:\n%s\n" printf
@@ -2000,7 +2000,7 @@ func ps2(s0 string, n int) (x sexp, rem string) {
     }
     return l, s1
 }
-    
+
 // gettok gets one token from string s.
 // return values are the token and the remainder of the string.
 // dynamic type of tok indicates result:
@@ -2015,10 +2015,10 @@ func gettok(s string) (tok interface{}, rem string) {
     switch s[0] {
     case '(', ')':
         return s[0], s[1:]
-    case '"': 
+    case '"':
         if i := strings.Index(s[1:], `"`); i >= 0 {
             return qString(s[1 : i+1]), s[i+2:]
-        } 
+        }
         return errors.New(`unmatched "`), s
     }
     i := 1
@@ -2115,11 +2115,11 @@ main = do
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-The following should suffice as a demonstration. 
-  
-String escaping and quoting could be handled more robustly. 
- 
-The example takes single and double quotes. 
+The following should suffice as a demonstration.
+
+String escaping and quoting could be handled more robustly.
+
+The example takes single and double quotes.
 
 Single quotes were used instead of doubles in the input.
 
@@ -2137,20 +2137,20 @@ end
 procedure sexp2string(S)   #: return a string representing the s-expr
    s := ""
    every t := !S do {
-      if type(t) == "list" then 
+      if type(t) == "list" then
          s ||:= "(" || trim(sexp2string(t)) || ")"
-      else 
-         if upto('() \t\r\n',t) then 
-            s ||:= "'" || t || "'" 
+      else
+         if upto('() \t\r\n',t) then
+            s ||:= "'" || t || "'"
          else
-            s ||:= t 
+            s ||:= t
       s ||:= " "
       }
    return trim(s)
 end
 
 procedure string2sexp(s)   #: return a s-expression nested list
-   if s ? ( sexptokenize(T := []), pos(0) ) then 
+   if s ? ( sexptokenize(T := []), pos(0) ) then
       return sexpnest(T)
    else
       write("Malformed: ",s)
@@ -2158,7 +2158,7 @@ end
 
 procedure sexpnest(T,L)   #: transform s-expr token list to nested list
    /L := []
-   while t := get(T) do           
+   while t := get(T) do
       case t of {
          "("      :  {
                      put(L,[])
@@ -2173,22 +2173,22 @@ end
 procedure sexptokenize(T) #: return list of tokens parsed from an s-expr string
 static sym
 initial sym := &letters++&digits++'~`!@#$%^&*_-+|;:.,<>[]{}'
-   until pos(0) do 
+   until pos(0) do
       case &subject[&pos] of {
          " "   :  tab(many(' \t\r\n'))                     # consume whitespace
-         "'"|"\""  : 
+         "'"|"\""  :
             (q := move(1)) & put(T,tab(find(q))) & move(1) # quotes
-         "("   :  put(T,move(1)) & sexptokenize(T)         # open      
+         "("   :  put(T,move(1)) & sexptokenize(T)         # open
          ")"   :  put(T,move(1)) &return T                 # close
          default  : put(T, tab(many(sym)))                 # other symbols
-         } 
+         }
    return T
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn ximage.icn formats arbitrary structures into printable strings] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn ximage.icn formats arbitrary structures into printable strings]
 
 {{Out}}
 
@@ -2357,7 +2357,7 @@ public class LispTokenizer implements Iterator<Token>
     }
 
     public Token peekToken()
-    {	
+    {
         if(m_ioexn != null)
             return null;
         try
@@ -2396,7 +2396,7 @@ public class LispTokenizer implements Iterator<Token>
     }
 
     /** Return the most recently caught IOException, if any,
-     * 
+     *
      * @return
      */
     public IOException getIOException()
@@ -2566,11 +2566,11 @@ public class ExprList extends ArrayList<Expr> implements Expr
             indent = "\n";
             char[] chars = new char[getIndent()];
             Arrays.fill(chars, ' ');
-            indent += new String(chars);		
+            indent += new String(chars);
         }
 
         String output = indent+"(";
-        for(Iterator<Expr> it=this.iterator(); it.hasNext(); ) 
+        for(Iterator<Expr> it=this.iterator(); it.hasNext(); )
         {
             Expr expr = it.next();
             output += expr.toString();
@@ -2682,7 +2682,7 @@ public class LispParserDemo
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-    }	
+    }
 }
 ```
 
@@ -2717,7 +2717,7 @@ Array.prototype.toPretty = function(s) {
 	var r = s + '(
 '
 	var s2 = s + Array(6).join(' ')
-	for (var i=0, e=this.length; i<e; i+=1) { 
+	for (var i=0, e=this.length; i<e; i+=1) {
 		var ai = this[i]
 		r += ai.constructor != Array ? s2+ai+'
 ' : ai.toPretty(s2)
@@ -2733,10 +2733,10 @@ document.write('text:
 
 ')
 var sexpr = str.parseSexpr()
-if (sexpr === undefined) 
+if (sexpr === undefined)
 	document.write('Invalid s-expr!', '
 ')
-else 
+else
 	document.write('s-expr:
 ', sexpr, '
 
@@ -2826,7 +2826,7 @@ function printAny(anyarr)
                             reconsdata(k, el3)
                         end
                     end
-                    print(")")             
+                    print(")")
                 else
                     reconsdata(j, el2)
                 end
@@ -2858,7 +2858,7 @@ processed = (inputstring |> removewhitespace |> rewritequotedparen |> quote3op
                         |> paren2bracket |> data2symbol |> unrewriteparens |> addcommas)
 nat = eval(parse("""$processed"""))
 println("The processed native structure is:\n", nat)
-println("The reconstructed string is:\n"), printAny(nat)       
+println("The reconstructed string is:\n"), printAny(nat)
 
 ```
 
@@ -2966,14 +2966,14 @@ fun List<String>.prettyPrint() {
 
 fun main(args: Array<String>) {
     val str = """((data "quoted data" 123 4.5)""" + "\n" +
-              """ (data (!@# (4.5) "(more" "data)")))"""  
+              """ (data (!@# (4.5) "(more" "data)")))"""
     val tokens = str.parseSExpr()
     if (tokens == null)
         println("Invalid s-expr!")
     else {
         println("Native data structure:")
         println(tokens.joinToString(""))
-        println("\nNative data structure (pretty print):")    
+        println("\nNative data structure (pretty print):")
         tokens.prettyPrint()
 
         val tokens2 = tokens.toMutableList()
@@ -3441,7 +3441,7 @@ Then we compile this small module and test it in the interactive loop:
 ```txt
 $ ocamlc -c SExpr.mli
 $ ocamlc -c SExpr.ml
-$ ocaml SExpr.cmo 
+$ ocaml SExpr.cmo
         Objective Caml version 3.11.2
 
 # open SExpr ;;
@@ -3466,9 +3466,9 @@ val se : SExpr.sexpr list =
 # SExpr.print_sexpr_indent se ;;
 
 (
- (data "quoted data" 123 4.5) 
- (data 
-  (!@# 
+ (data "quoted data" 123 4.5)
+ (data
+  (!@#
    (4.5) "(more" "data)")))
 - : unit = ()
 ```
@@ -3525,7 +3525,7 @@ sub sexpr
 
 sub quote
 { (local $_ = $_[0]) =~ /[\s\"\(\)]/s ? do{s/\"/\\\"/gs; qq{"$_"}} : $_; }
- 
+
 sub sexpr2txt
 {
 	qq{(@{[ map {
@@ -3594,27 +3594,27 @@ grammar S-Exp {
   rule TOP    {^ <s-list> $};
 
   token s-list { '(' ~ ')' [ <in_list>+ % [\s+] | '' ] }
-  token in_list { <s-token> | <s-list> } 
- 
+  token in_list { <s-token> | <s-list> }
+
   proto token s-token {*}
   token s-token:sym<Num>    {\d*\.?\d+}
   token s-token:sym<String> {'"' ['\"' |<-[\\"]>]*? '"'} #'
   token s-token:sym<Atom>   {<-[()\s]>+}
- 
+
 }
- 
+
 # The Actions class, for each syntactic rule there is a method
 # that stores some data in the abstract syntax tree with make
 class S-Exp::ACTIONS {
   method TOP ($/) {make $<s-list>.ast}
   method s-list ($/) {make [$<in_list>».ast]}
   method in_list ($/) {make $/.values[0].ast}
- 
+
   method s-token:sym<Num> ($/){make +$/}
   method s-token:sym<String> ($/){make ~$/.substr(1,*-1)}
   method s-token:sym<Atom> ($/){make ~$/}
 }
- 
+
 multi s-exp_writer (Positional $ary) {'(' ~ $ary.map(&s-exp_writer).join(' ') ~ ')'}
 multi s-exp_writer (Numeric    $num) {~$num}
 multi s-exp_writer (Str        $str) {
@@ -3622,14 +3622,14 @@ multi s-exp_writer (Str        $str) {
   return '()' if $str eq '()';
   '"' ~ $str.subst('"', '\"' ) ~ '"';
 }
- 
- 
+
+
 my $s-exp = '((data "quoted data" 123 4.5)
  (data (!@# (4.5) "(more" "data)")))';
- 
+
 my $actions = S-Exp::ACTIONS.new();
 my $perl_array = (S-Exp.parse($s-exp, :$actions)).ast;
- 
+
 say "the expression:\n$s-exp\n";
 say "the perl6-expression:\n{$perl_array.perl}\n";
 say "and back:\n{s-exp_writer($perl_array)}";
@@ -3893,26 +3893,26 @@ or to collect the characters into a string:
 
 ```pike
 class Symbol(string name)
-{ 
+{
     string _sprintf(int type)
-    { 
+    {
         switch(type)
-        { 
-            case 's': return name; 
+        {
+            case 's': return name;
             case 'O': return sprintf("(Symbol: %s)", name||"");
-            case 'q': return name; 
+            case 'q': return name;
             case 't': return "Symbol";
             default:  return sprintf("%"+int2char(type), name);
-        } 
+        }
     }
 
     mixed cast(string type)
-    { 
+    {
         switch(type)
-        { 
+        {
             case "string": return name;
-            default: throw(sprintf("can not cast 'Symbol' to '%s'", type)); 
-        }  
+            default: throw(sprintf("can not cast 'Symbol' to '%s'", type));
+        }
     }
 }
 
@@ -3929,24 +3929,24 @@ mixed value(string token)
 
 array tokenizer(string input)
 {
-    array output = ({}); 
+    array output = ({});
     for(int i=0; i<sizeof(input); i++)
-    { 
+    {
         switch(input[i])
-        { 
-            case '(': output+= ({"("}); break; 
-            case ')': output += ({")"}); break; 
+        {
+            case '(': output+= ({"("}); break;
+            case ')': output += ({")"}); break;
             case '"': //"
-                      output+=array_sscanf(input[++i..], "%s\"%[ \t\n]")[0..0]; 
-                      i+=sizeof(output[-1]); 
-                      break; 
-            case ' ': 
-            case '\t': 
-            case '\n': break; 
-            default: string token = array_sscanf(input[i..], "%s%[) \t\n]")[0]; 
-                     output+=({ value(token) }); 
-                     i+=sizeof(token)-1; 
-                     break; 
+                      output+=array_sscanf(input[++i..], "%s\"%[ \t\n]")[0..0];
+                      i+=sizeof(output[-1]);
+                      break;
+            case ' ':
+            case '\t':
+            case '\n': break;
+            default: string token = array_sscanf(input[i..], "%s%[) \t\n]")[0];
+                     output+=({ value(token) });
+                     i+=sizeof(token)-1;
+                     break;
         }
     }
     return output;
@@ -3964,13 +3964,13 @@ array group(array tokens)
         {
             case "(": stack->push(ret); ret=({}); break;
             case ")":
-                    if (!sizeof(ret) || !stack->ptr) 
+                    if (!sizeof(ret) || !stack->ptr)
                     {
                       // Mismatch
                         werror ("unmatched close parenthesis\n");
                         return ret;
                     }
-                    ret=stack->pop()+({ ret }); 
+                    ret=stack->pop()+({ ret });
                     break;
             default: ret+=({token}); break;
         }
@@ -4144,8 +4144,8 @@ def print_sexp(exp):
     else:
         out += '%s' % exp
     return out
-        
-    
+
+
 if __name__ == '__main__':
     sexp = ''' ( ( data "quoted data" 123 4.5)
          (data (123 (4.5) "(more" "data)")))'''
@@ -4195,7 +4195,7 @@ Note that in the example above the parser also recognises and changes the type o
  ('brackr', ')'),
  ('brackr', ')'),
  ('brackr', ')')]
->>> 
+>>>
 ```
 
 
@@ -4240,7 +4240,7 @@ Also added were two more separators   (a comma and semicolon).
 Separators that could be added are more whitespace characters (vertical/horizontal tabs, line feed, form feed, tab char, etc).
 
 
-It would normally be considered improper, but the literal string delimiters were left intact; making it much easier to understand what is/was being parsed. 
+It would normally be considered improper, but the literal string delimiters were left intact; making it much easier to understand what is/was being parsed.
 
 ```rexx
 /*REXX program  parses  an   S-expression   and  displays the results to the terminal.  */
@@ -4342,25 +4342,25 @@ class SExpr
     @data = parse_sexpr(str)
   end
   attr_reader :data, :original
-  
+
   def to_sexpr
     @data.to_sexpr
   end
-  
+
   private
-  
+
   def parse_sexpr(str)
     state = :token_start
     tokens = []
     word = ""
     str.each_char do |char|
       case state
-        
+
       when :token_start
         case char
-        when "(" 
+        when "("
           tokens << :lbr
-        when ")" 
+        when ")"
           tokens << :rbr
         when /\s/
           # do nothing, just consume the whitespace
@@ -4371,7 +4371,7 @@ class SExpr
           state = :read_string_or_number
           word = char
         end
-        
+
       when :read_quoted_string
         case char
         when '"'
@@ -4380,7 +4380,7 @@ class SExpr
         else
           word << char
         end
-        
+
       when :read_string_or_number
         case char
         when /\s/
@@ -4395,20 +4395,20 @@ class SExpr
         end
       end
     end
-    
+
     sexpr_tokens_to_array(tokens)
   end
-  
+
   def symbol_or_number(word)
     Integer(word)
   rescue ArgumentError
-    begin 
+    begin
       Float(word)
     rescue ArgumentError
       word.to_sym
     end
   end
-  
+
   def sexpr_tokens_to_array(tokens, idx = 0)
     result = []
     while idx < tokens.length
@@ -4418,7 +4418,7 @@ class SExpr
         result << tmp
       when :rbr
         return [result, idx]
-      else 
+      else
         result << tokens[idx]
       end
       idx += 1
@@ -4454,7 +4454,7 @@ sexpr = SExpr.new <<END
 ((data "quoted data" 123 4.5)
  (data (!@# (4.5) "(more" "data)")))
 END
- 
+
 puts "original sexpr:\n#{sexpr.original}"
 puts "\nruby data structure:\n#{sexpr.data}"
 puts "\nand back to S-Expr:\n#{sexpr.to_sexpr}"
@@ -4481,7 +4481,7 @@ and back to S-Expr:
 
 ## Scheme
 
-Because Scheme, like all serious lisp implementations, has a native function called read for parsing s-expressions, 
+Because Scheme, like all serious lisp implementations, has a native function called read for parsing s-expressions,
 this code will never be used. It serves more as an example of how to write simple parsers in Scheme.
 It also forgos turning things into their native scheme representation and uses strings for all atoms of data.
 
@@ -4806,21 +4806,21 @@ Run:
 
 ```txt
 $ txr s-expressions.txr -
-() 
+()
 expr: nil
-junk: 
+junk:
 $ txr s-expressions.txr -
 3e3
 expr: 3000.0
-junk: 
+junk:
 $ txr s-expressions.txr -
 +3
 expr: 3
-junk: 
+junk:
 $ txr s-expressions.txr -
 abc*
 expr: abc*
-junk: 
+junk:
 $ txr s-expressions.txr -
 abc*)
 expr: abc*
@@ -4829,7 +4829,7 @@ $ txr s-expressions.txr -
 ((data "quoted data" 123 4.5)
  (data (!@# (4.5) "(more" "data)")))
 expr: ((data "quoted data" 123 4.5) (data (!@# (4.5) "(more" "data)")))
-junk: 
+junk:
 
 ```
 

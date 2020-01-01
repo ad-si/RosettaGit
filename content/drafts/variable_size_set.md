@@ -33,22 +33,22 @@ X4       DS     E          short            4 bytes
 X8       DS     D          double           8 bytes
 X16      DS     L          extended        16 bytes
 * Packed decimal (P)
-P3       DS     PL3                         2 bytes 
-P7       DS     PL7                         4 bytes 
-P15      DS     PL15                        8 bytes 
+P3       DS     PL3                         2 bytes
+P7       DS     PL7                         4 bytes
+P15      DS     PL15                        8 bytes
 * Zoned decimal (Z)
-Z8       DS     ZL8                         8 bytes 
-Z16      DS     ZL16                       16 bytes 
-* Character (C) 
-C1       DS     C                           1 byte 
-C16      DS     CL16                       16 bytes 
-C256     DS     CL256                     256 bytes 
+Z8       DS     ZL8                         8 bytes
+Z16      DS     ZL16                       16 bytes
+* Character (C)
+C1       DS     C                           1 byte
+C16      DS     CL16                       16 bytes
+C256     DS     CL256                     256 bytes
 * Bit value (B)
-B1       DC     B'10101010'                 1 byte 
-* Hexadecimal value (X) 
+B1       DC     B'10101010'                 1 byte
+* Hexadecimal value (X)
 X1       DC     X'AA'                       1 byte
-* Address value (A) 
-A4       DC     A(176)                      4 bytes   but only 3 bytes used 
+* Address value (A)
+A4       DC     A(176)                      4 bytes   but only 3 bytes used
 *                                                     (24 bits => 16 MB of storage)
 
 ```
@@ -105,8 +105,8 @@ If the task is talking about setting the size of a variable ''at run time'' that
 
 {{works with|C99}}
 
-```c>#include <stdint.h
-
+```c
+#include <stdint.h>
 
 int_least32_t foo;
 ```
@@ -153,15 +153,15 @@ boost::int_least32_t foo;
 
 ## D
 
-In D, any variables of static array of zero length has a size of zero. But such data is useless, as no base type element can be accessed. 
+In D, any variables of static array of zero length has a size of zero. But such data is useless, as no base type element can be accessed.
 
 ```d
-typedef long[0] zeroLength ; 
+typedef long[0] zeroLength ;
 writefln(zeroLength.sizeof) ; // print 0
 ```
 
 NOTE: a dynamic array variable's size is always 8 bytes, 4(32-bit) for length and 4 for a reference pointer of the actual storage somewhere in runtime memory.
- 
+
 The proper candidates of minimum size variable are empty structure, 1-byte size data type variable (include <tt>byte, ubyte, char and bool</tt>), and void, they all occupy 1 byte.
 
 ```d
@@ -239,14 +239,14 @@ implicit none
   integer, parameter :: r4 = 4
   integer, parameter :: r5 = 8
   integer, parameter :: r6 = 16
-  integer, parameter :: rprec1 = selected_real_kind(p1, r1) 
-  integer, parameter :: rprec2 = selected_real_kind(p2, r1) 
-  integer, parameter :: rprec3 = selected_real_kind(p2, r2) 
-  integer, parameter :: iprec1 = selected_int_kind(r3) 
+  integer, parameter :: rprec1 = selected_real_kind(p1, r1)
+  integer, parameter :: rprec2 = selected_real_kind(p2, r1)
+  integer, parameter :: rprec3 = selected_real_kind(p2, r2)
+  integer, parameter :: iprec1 = selected_int_kind(r3)
   integer, parameter :: iprec2 = selected_int_kind(r4)
   integer, parameter :: iprec3 = selected_int_kind(r5)
-  integer, parameter :: iprec4 = selected_int_kind(r6) 
-  
+  integer, parameter :: iprec4 = selected_int_kind(r6)
+
   real(rprec1)    :: n1
   real(rprec2)    :: n2
   real(rprec3)    :: n3
@@ -255,7 +255,7 @@ implicit none
   integer(iprec3) :: n6
   integer(iprec4) :: n7
   character(30) :: form
-  
+
   form = "(a7, i11, i10, i6, i9, i8)"
   write(*, "(a)") "KIND NAME   KIND NUMBER   PRECISION        RANGE "
   write(*, "(a)") "                          min   set     min     set"
@@ -265,8 +265,8 @@ implicit none
   write(*, form) "rprec3", kind(n3), p2, precision(n3), r2, range(n3)
   write(*,*)
   form = "(a7, i11, i25, i8)"
-  write(*, form) "iprec1", kind(n4), r3, range(n4) 
-  write(*, form) "iprec2", kind(n5), r4, range(n5) 
+  write(*, form) "iprec1", kind(n4), r3, range(n4)
+  write(*, form) "iprec2", kind(n5), r4, range(n5)
   write(*, form) "iprec3", kind(n6), r5, range(n6)
   write(*, form) "iprec4", kind(n7), r6, range(n7)
 
@@ -282,7 +282,7 @@ ______________________________________________________
  rprec1          1         6     6       30      37
  rprec2          2        12    15       30     307
  rprec3          3        12    18     1000    4931
- 
+
  iprec1          1                        2       2
  iprec2          2                        4       4
  iprec3          3                        8       9
@@ -379,7 +379,7 @@ import Data.Int
 import Foreign.Storable
 
 task name value = putStrLn $ name ++ ": " ++ show (sizeOf value) ++ " byte(s)"
-  
+
 main = do
   let i8  = 0::Int8
   let i16 = 0::Int16
@@ -412,7 +412,7 @@ Icon and Unicon values are self-descriptive types subject to automatic garbage c
 * strings are always variable in length with some fixed overhead
 * csets are a fixed size
 * tables and sets are variable in size and start empty
-* integers and reals are fixed sizes 
+* integers and reals are fixed sizes
 * records are a fized size
 * co-expressions vary in size based on the environment when they are created
 * file, window, and procedure references are all fixed in size
@@ -420,7 +420,7 @@ Icon and Unicon values are self-descriptive types subject to automatic garbage c
 
 
 ```Icon
-   L := list(10) # 10 element list 
+   L := list(10) # 10 element list
 ```
 
 
@@ -453,7 +453,7 @@ primitive type MyInt24 24 end
 println("\nFor the 24-bit user defined type MyInt24, size is ", sizeof(MyInt24), " bytes.")
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 For type   Bool size is 1 8-bit bytes, or  8 bits.
@@ -477,7 +477,7 @@ For the 24-bit user defined type MyInt24, size is 3 bytes.
 
 In Kotlin (or any other language targetting the JVM) the size of variables is outside the programmer's control. The primitive types are either fixed in size or (in the case of Boolean) implementation dependent and the size of objects will depend not only on the aggregate size of their fields but also on any overhead or alignment padding needed.
 
-If one wants a numeric type to be able to accomodate a certain size of number, then one can of course declare a variable of the appropriate type (up to 8 bytes) or use the BigInteger or BigDecimal types where more than 8 byte precision is required. 
+If one wants a numeric type to be able to accomodate a certain size of number, then one can of course declare a variable of the appropriate type (up to 8 bytes) or use the BigInteger or BigDecimal types where more than 8 byte precision is required.
 
 The following program shows the range of numbers which the primitive numeric types can accomodate to enable one to choose the appropriate type:
 
@@ -585,13 +585,13 @@ By spec, arrays may be declared with dimensions of fixed size, but as of this wr
 
 ## Phix
 
-Phix native numeric types are fixed size: 
+Phix native numeric types are fixed size:
 
 on 32 bit integers are 4 bytes and floats 8 bytes,
 
-on 64 bit integers are 8 bytes and floats 10 bytes. 
+on 64 bit integers are 8 bytes and floats 10 bytes.
 
-Note that native integers are always signed and one bit shy of a full machine word, ie 
+Note that native integers are always signed and one bit shy of a full machine word, ie
 
 -1,073,741,824 to +1,073,741,823 (-#40000000 to #3FFFFFFF) on 32 bit, and
 
@@ -673,7 +673,7 @@ Structure AllTypes
 EndStructure
 
 If OpenConsole()
-  Define at.AllTypes  
+  Define at.AllTypes
   PrintN("Size of types in bytes (x64)")
   PrintN("")
   PrintN("byte      = " + SizeOf(at\b))
@@ -834,7 +834,7 @@ Like many other highlevel languages, Racket doesn't have direct control on objec
 
 ## REXX
 
-In REXX, there are no minimums for variables holding character literals, so you just simply assign (set) 
+In REXX, there are no minimums for variables holding character literals, so you just simply assign (set)
 
 character strings (or numbers) to REXX variables.
 
@@ -842,9 +842,9 @@ Note that REXX stores all the values of variables as characters, and that includ
 
 booleans (logical), and labels (including subroutine/function names).
 
-However, to insure that REXX can store numbers with a minimum size (amount of decimal digits), 
+However, to insure that REXX can store numbers with a minimum size (amount of decimal digits),
 
-the     '''NUMERIC DIGITS nnn'''     REXX instruction can be used.   This will ensure that the decimal 
+the     '''NUMERIC DIGITS nnn'''     REXX instruction can be used.   This will ensure that the decimal
 
 number can be stored without resorting to exponential notation   (although exponential notation
 
@@ -854,7 +854,7 @@ can be forced via the   '''format'''   BIF  ('''B'''uilt '''I'''n '''F'''unction
 The default for   ''numeric digits''   is   '''9'''   (decimal) digits.
 
 
-There's effectively no limit for the precision [or length] for REXX numbers (except for memory), 
+There's effectively no limit for the precision [or length] for REXX numbers (except for memory),
 
 but eight million is probably the practical limit.
 

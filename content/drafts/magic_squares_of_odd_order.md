@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 
-A magic square is an   <big>'''NxN'''</big>   square matrix whose numbers (usually integers) consist of consecutive numbers arranged so that the sum of each row and column,   ''and''   both long (main) diagonals are equal to the same sum (which is called the   ''magic number''   or   ''magic constant''). 
+A magic square is an   <big>'''NxN'''</big>   square matrix whose numbers (usually integers) consist of consecutive numbers arranged so that the sum of each row and column,   ''and''   both long (main) diagonals are equal to the same sum (which is called the   ''magic number''   or   ''magic constant'').
 
 The numbers are usually (but not always) the first   '''N'''<sup>2</sup>   positive integers.
 
@@ -30,9 +30,9 @@ A magic square whose rows and columns add up to a magic number but whose main di
 
 ;Task
 
-For any odd   '''N''',   [[wp:Magic square#Method_for_constructing_a_magic_square_of_odd_order|generate a magic square]] with the integers   ''' 1''' ──► '''N''',   and show the results here. 
+For any odd   '''N''',   [[wp:Magic square#Method_for_constructing_a_magic_square_of_odd_order|generate a magic square]] with the integers   ''' 1''' ──► '''N''',   and show the results here.
 
-Optionally, show the ''magic number''.  
+Optionally, show the ''magic number''.
 
 You should demonstrate the generator by showing at least a magic square for   '''N''' = '''5'''.
 
@@ -45,7 +45,7 @@ You should demonstrate the generator by showing at least a magic square for   ''
 
 
 ; See also:
-* MathWorld&trade; entry: [http://mathworld.wolfram.com/MagicSquare.html Magic_square] 
+* MathWorld&trade; entry: [http://mathworld.wolfram.com/MagicSquare.html Magic_square]
 * [http://www.1728.org/magicsq1.htm Odd Magic Squares (1728.org)]
 
 
@@ -127,7 +127,7 @@ with Ada.Text_IO, Ada.Command_Line;
 
 procedure Magic_Square is
    N: constant Positive := Positive'Value(Ada.Command_Line.Argument(1));
-   
+
    subtype Constants is Natural range 1 .. N*N;
    package CIO is new Ada.Text_IO.Integer_IO(Constants);
    Undef: constant Natural := 0;
@@ -135,24 +135,24 @@ procedure Magic_Square is
    subtype Index is Natural range 0 .. N-1;
    function Inc(I: Index) return Index is (if I = N-1 then 0 else I+1);
    function Dec(I: Index) return Index is (if I = 0 then N-1 else I-1);
-    
+
    A: array(Index, Index) of Natural := (others => (others => Undef));
      -- initially undefined; at the end holding the magic square
-  
+
    X: Index := 0; Y: Index := N/2; -- start position for the algorithm
 begin
    for I in Constants loop -- write 1, 2, ..., N*N into the magic array
       A(X, Y) := I; -- write I into the magic array
-      if A(Dec(X), Inc(Y)) = Undef then 
+      if A(Dec(X), Inc(Y)) = Undef then
 	 X := Dec(X); Y := Inc(Y); -- go right-up
       else
 	 X := Inc(X); -- go down
       end if;
    end loop;
-   
+
    for Row in Index loop -- output the magic array
       for Collumn in Index loop
-	 CIO.Put(A(Row, Collumn), 
+	 CIO.Put(A(Row, Collumn),
 		 Width => (if N*N < 10 then 2 elsif N*N < 100 then 3 else 4));
       end loop;
       Ada.Text_IO.New_Line;
@@ -272,26 +272,26 @@ end.
 
 ```txt
 
-maqic square of order 1 : sum: 1 
-1 
-maqic square of order 3 : sum: 15 
-8 1 6 
-3 5 7 
-4 9 2 
-maqic square of order  5 : sum: 65 
-17 24  1  8 15 
-23  5  7 14 16 
- 4  6 13 20 22 
-10 12 19 21  3 
-11 18 25  2  9 
-maqic square of order  7 : sum: 175 
-30 39 48  1 10 19 28 
-38 47  7  9 18 27 29 
-46  6  8 17 26 35 37 
- 5 14 16 25 34 36 45 
-13 15 24 33 42 44  4 
-21 23 32 41 43  3 12 
-22 31 40 49  2 11 20 
+maqic square of order 1 : sum: 1
+1
+maqic square of order 3 : sum: 15
+8 1 6
+3 5 7
+4 9 2
+maqic square of order  5 : sum: 65
+17 24  1  8 15
+23  5  7 14 16
+ 4  6 13 20 22
+10 12 19 21  3
+11 18 25  2  9
+maqic square of order  7 : sum: 175
+30 39 48  1 10 19 28
+38 47  7  9 18 27 29
+46  6  8 17 26 35 37
+ 5 14 16 25 34 36 45
+13 15 24 33 42 44  4
+21 23 32 41 43  3 12
+22 31 40 49  2 11 20
 
 ```
 
@@ -396,7 +396,7 @@ maqic square of order 7: sum: 175
 
 {{trans|JavaScript}}
 
-Composing functions ( cycleRows . transpose . cycleRows ), 
+Composing functions ( cycleRows . transpose . cycleRows ),
 and lifting AppleScript handlers into first class script objects,
 to allow for first class functions and closures.
 
@@ -412,21 +412,21 @@ end oddMagicSquare
 -- TEST -----------------------------------------------------------------------
 on run
     -- Orders 3, 5, 11
-    
+
     -- wikiTableMagic :: Int -> String
     script wikiTableMagic
         on |λ|(n)
             formattedTable(oddMagicSquare(n))
         end |λ|
     end script
-    
+
     intercalate(linefeed & linefeed, map(wikiTableMagic, {3, 5, 11}))
 end run
 
 -- table :: Int -> [[Int]]
 on table(n)
     set lstTop to enumFromTo(1, n)
-    
+
     script cols
         on |λ|(row)
             script rows
@@ -434,11 +434,11 @@ on table(n)
                     (row * n) + x
                 end |λ|
             end script
-            
+
             map(rows, lstTop)
         end |λ|
     end script
-    
+
     map(cols, enumFromTo(0, n - 1))
 end table
 
@@ -448,17 +448,17 @@ on cycleRows(lst)
         -- rotatedList :: [a] -> Int -> [a]
         on rotatedList(lst, n)
             if n = 0 then return lst
-            
+
             set lng to length of lst
             set m to (n + lng) mod lng
             items -m thru -1 of lst & items 1 thru (lng - m) of lst
         end rotatedList
-        
+
         on |λ|(row, i)
             rotatedList(row, (((length of row) + 1) div 2) - (i))
         end |λ|
     end script
-    
+
     map(rotationRow, lst)
 end cycleRows
 
@@ -485,7 +485,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -528,11 +528,11 @@ on transpose(xss)
                     item iCol of xs
                 end |λ|
             end script
-            
+
             map(row, xss)
         end |λ|
     end script
-    
+
     map(column, item 1 of xss)
 end transpose
 
@@ -557,7 +557,7 @@ on wikiTable(xs, blnHdr, strStyle)
                 intercalate(space & strDbl & space, lstRow)
         end |λ|
     end script
-    
+
     linefeed & "{| class=\"wikitable\" " & ¬
         cond(strStyle ≠ "", "style=\"" & strStyle & "\"", "") & ¬
         intercalate("", ¬
@@ -833,12 +833,12 @@ Even if the code works for any odd number, N=9 is the maximum for a 40 column wi
   130  DEF FN MOD(A) = A -  INT (A / N) * N
   140  DEF FN NR(J) =  FN MOD((J + 2 * I + 1))
   200  INPUT "ENTER N: ";N
-  210  IF N < 3 OR (N - INT (N / 2) * 2) = 0 GOTO 200               
-  220  FOR I = 0 TO (N - 1)              
-  230  FOR J = 0 TO (N - 1): HTAB 4 * (J + 1)                        
-  240  PRINT N * FN NR(N - J - 1) + FN NR(J) + 1;                  
-  250  NEXT J: PRINT                     
-  260  NEXT I                            
+  210  IF N < 3 OR (N - INT (N / 2) * 2) = 0 GOTO 200
+  220  FOR I = 0 TO (N - 1)
+  230  FOR J = 0 TO (N - 1): HTAB 4 * (J + 1)
+  240  PRINT N * FN NR(N - J - 1) + FN NR(J) + 1;
+  250  NEXT J: PRINT
+  260  NEXT I
   270  PRINT "MAGIC CONSTANT: ";N * (N * N + 1) / 2
 
 ```
@@ -846,27 +846,27 @@ Even if the code works for any odd number, N=9 is the maximum for a 40 column wi
 {{out}}
 
 ```txt
-ENTER N: 5                              
-   2   23  19  15  6                    
-   14  10  1   22  18                   
-   21  17  13  9   5                    
-   8   4   25  16  12                   
-   20  11  7   3   24                   
+ENTER N: 5
+   2   23  19  15  6
+   14  10  1   22  18
+   21  17  13  9   5
+   8   4   25  16  12
+   20  11  7   3   24
 MAGIC CONSTANT: 65
 ```
 
 
 ==={{header|IS-BASIC}}===
 <lang IS-BASIC>100 PROGRAM "MagicN.bas"
-110 DO 
+110 DO
 120   INPUT PROMPT "The square order: ":N
 130 LOOP UNTIL MOD(N,2)>0 AND INT(N)=N AND N>0
 140 FOR I=1 TO N
 150   FOR J=1 TO N
 160     PRINT USING " ###":MOD((I*2-J+N-1),N)*N+MOD(I*2+J-2,N)+1;
-170   NEXT 
-180   PRINT 
-190 NEXT 
+170   NEXT
+180   PRINT
+190 NEXT
 200 PRINT "The magic number is:";N*(N^2+1)/2
 ```
 
@@ -981,11 +981,11 @@ The size, ''n'', is specified by the first value on the stack.
 {{out}}
 
 ```txt
-2 	23 	19 	15 	6 
-14 	10 	1 	22 	18 
-21 	17 	13 	9 	5 
-8 	4 	25 	16 	12 
-20 	11 	7 	3 	24 
+2 	23 	19 	15 	6
+14 	10 	1 	22 	18
+21 	17 	13 	9 	5
+8 	4 	25 	16 	12
+20 	11 	7 	3 	24
 ```
 
 
@@ -994,33 +994,33 @@ The size, ''n'', is specified by the first value on the stack.
 
 Generates an associative magic square.  If the size is larger than 3, the square is also [http://en.wikipedia.org/wiki/Pandiagonal_magic_square panmagic].
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
- 
+
 int f(int n, int x, int y)
 {
 	return (x + y*2 + 1)%n;
 }
- 
+
 int main(int argc, char **argv)
 {
 	int i, j, n;
- 
+
 	//Edit: Add argument checking
 	if(argc!=2) return 1;
 
 	//Edit: Input must be odd and not less than 3.
 	n = atoi(argv[1]);
 	if (n < 3 || (n%2) == 0) return 2;
- 
+
 	for (i = 0; i < n; i++) {
 		for (j = 0; j < n; j++)
 			printf("% 4d", f(n, n - j - 1, i)*n + f(n, j, i) + 1);
 		putchar('\n');
 	}
 	printf("\n Magic Constant: %d.\n", (n*n+1)/2*n);
- 
+
 	return 0;
 }
 ```
@@ -1052,7 +1052,7 @@ using namespace std;
 
 class magicSqr
 {
-public: 
+public:
     magicSqr() { sqr = 0; }
     ~magicSqr() { if( sqr ) delete [] sqr; }
 
@@ -1092,7 +1092,7 @@ private:
 	    if( !sqr[sx + sy * sz] )
 	    {
 		sqr[sx + sy * sz]= c + 1;
-		inc( sx ); dec( sy ); 
+		inc( sx ); dec( sy );
 		c++;
 	    }
 	    else
@@ -1165,18 +1165,18 @@ It's Magic Sum is: 175
 ```lisp
 (defun magic-square (n)
   (loop for i from 1 to n
-        collect 
+        collect
           (loop for j from 1 to n
-                collect 
-                  (+ (* n (mod (+ i j (floor n 2) -1) 
-                               n)) 
-                     (mod (+ i (* 2 j) -2) 
-                          n) 
+                collect
+                  (+ (* n (mod (+ i j (floor n 2) -1)
+                               n))
+                     (mod (+ i (* 2 j) -2)
+                          n)
                      1))))
 
 (defun magic-constant (n)
-  (* n 
-     (/ (1+ (* n n)) 
+  (* n
+     (/ (1+ (* n n))
         2)))
 
 (defun output (n)
@@ -1345,7 +1345,7 @@ The '''make-ms''' procedure allows to construct different magic squares for a sa
 (define-syntax-rule (path imove jmove)
 (begin (set! i (imove i n)) (set! j (jmove j n))))
 
-;; We define the ordinary and break moves 
+;; We define the ordinary and break moves
 ;; (1 , -1), (0, 1) King's move
 (define (inext i n) (modulo (1+ i) n))
 (define (jnext j n) (modulo (1- j) n))
@@ -1358,19 +1358,19 @@ The '''make-ms''' procedure allows to construct different magic squares for a sa
     (define i (quotient n 2))
     (define j 0)
     (array-set! ms i j 1)
-    
+
     (for ((ns (in-range 2  n2+1)))
         (if (zero? (array-ref ms (inext i n ) (jnext j n )))
             (path inext jnext) ;; ordinary move if empty target
-            (path ibreak jbreak)) ;; else break move 
-        
+            (path ibreak jbreak)) ;; else break move
+
         (if (zero? (array-ref ms i j))
             (array-set! ms i j ns)
             (error ns "illegal path"))
     )
     (writeln 'order n 'magic-number  (/ ( * n n2+1) 2))
     (array-print ms))
-    
+
 
 ```
 
@@ -1379,14 +1379,14 @@ The '''make-ms''' procedure allows to construct different magic squares for a sa
 ```txt
 
 (make-ms 7)
-order     7     magic-number     175    
-  30   38   46   5    13   21   22 
-  39   47   6    14   15   23   31 
-  48   7    8    16   24   32   40 
-  1    9    17   25   33   41   49 
-  10   18   26   34   42   43   2  
-  19   27   35   36   44   3    11 
-  28   29   37   45   4    12   20 
+order     7     magic-number     175
+  30   38   46   5    13   21   22
+  39   47   6    14   15   23   31
+  48   7    8    16   24   32   40
+  1    9    17   25   33   41   49
+  10   18   26   34   42   43   2
+  19   27   35   36   44   3    11
+  28   29   37   45   4    12   20
 
 ;; Changing the moves allow to generate other magic squares
 ;; (2 ,1) (1,-2) Knight's move !
@@ -1396,14 +1396,14 @@ order     7     magic-number     175
 (define (jbreak j n) (modulo (- j 2) n))
 (make-ms 7)
 
-order     7     magic-number     175    
-  37   48   3    14   18   22   33 
-  11   15   26   30   41   45   7  
-  34   38   49   4    8    19   23 
-  1    12   16   27   31   42   46 
-  24   35   39   43   5    9    20 
-  47   2    13   17   28   32   36 
-  21   25   29   40   44   6    10 
+order     7     magic-number     175
+  37   48   3    14   18   22   33
+  11   15   26   30   41   45   7
+  34   38   49   4    8    19   23
+  1    12   16   27   31   42   46
+  24   35   39   43   5    9    20
+  47   2    13   17   28   32   36
+  21   25   29   40   44   6    10
 
 ;; (2 ,1) (1,-1)
 (define (inext i n) (modulo (+ 2 i) n))
@@ -1412,14 +1412,14 @@ order     7     magic-number     175
 (define (jbreak j n) (modulo (1- j) n))
 (make-ms 7)
 
-order     7     magic-number     175    
-  48   22   3    33   14   37   18 
-  30   11   41   15   45   26   7  
-  19   49   23   4    34   8    38 
-  1    31   12   42   16   46   27 
-  39   20   43   24   5    35   9  
-  28   2    32   13   36   17   47 
-  10   40   21   44   25   6    29 
+order     7     magic-number     175
+  48   22   3    33   14   37   18
+  30   11   41   15   45   26   7
+  19   49   23   4    34   8    38
+  1    31   12   42   16   46   27
+  39   20   43   24   5    35   9
+  28   2    32   13   36   17   47
+  10   40   21   44   25   6    29
 
 ```
 
@@ -1437,7 +1437,7 @@ defmodule RC do
       for j <- 0..n-1, do: n * rem(i+j+1+div(n,2),n) + rem(i+2*j+2*n-5,n) + 1
     end
   end
-  
+
   def print_square(sq) do
     width = List.flatten(sq) |> Enum.max |> to_char_list |> length
     fmt = String.duplicate(" ~#{width}w", length(sq)) <> "~n"
@@ -1591,8 +1591,8 @@ Same as FreeBasic version
 
 ```txt
 Odd magic square size: 5 * 5        Odd magic square size: 11 * 11
-The magic sum = 65                  The magic sum = 671           
-             
+The magic sum = 65                  The magic sum = 671
+
  17 24  1  8 15                       68  81  94 107 120   1  14  27  40  53  66
  23  5  7 14 16                       80  93 106 119  11  13  26  39  52  65  67
   4  6 13 20 22                       92 105 118  10  12  25  38  51  64  77  79
@@ -1679,7 +1679,7 @@ program Magic_Square
 
   integer, parameter :: order = 15
   integer :: i, j
- 
+
   write(*, "(a, i0)") "Magic Square Order: ", order
   write(*, "(a)")     "----------------------"
   do i = 1, order
@@ -1711,21 +1711,21 @@ Output:
 ```txt
 Magic Square Order: 15
 ----------------------
- 122 139 156 173 190 207 224   1  18  35  52  69  86 103 120 
- 138 155 172 189 206 223  15  17  34  51  68  85 102 119 121 
- 154 171 188 205 222  14  16  33  50  67  84 101 118 135 137 
- 170 187 204 221  13  30  32  49  66  83 100 117 134 136 153 
- 186 203 220  12  29  31  48  65  82  99 116 133 150 152 169 
- 202 219  11  28  45  47  64  81  98 115 132 149 151 168 185 
- 218  10  27  44  46  63  80  97 114 131 148 165 167 184 201 
-   9  26  43  60  62  79  96 113 130 147 164 166 183 200 217 
-  25  42  59  61  78  95 112 129 146 163 180 182 199 216   8 
-  41  58  75  77  94 111 128 145 162 179 181 198 215   7  24 
-  57  74  76  93 110 127 144 161 178 195 197 214   6  23  40 
-  73  90  92 109 126 143 160 177 194 196 213   5  22  39  56 
-  89  91 108 125 142 159 176 193 210 212   4  21  38  55  72 
- 105 107 124 141 158 175 192 209 211   3  20  37  54  71  88 
- 106 123 140 157 174 191 208 225   2  19  36  53  70  87 104 
+ 122 139 156 173 190 207 224   1  18  35  52  69  86 103 120
+ 138 155 172 189 206 223  15  17  34  51  68  85 102 119 121
+ 154 171 188 205 222  14  16  33  50  67  84 101 118 135 137
+ 170 187 204 221  13  30  32  49  66  83 100 117 134 136 153
+ 186 203 220  12  29  31  48  65  82  99 116 133 150 152 169
+ 202 219  11  28  45  47  64  81  98 115 132 149 151 168 185
+ 218  10  27  44  46  63  80  97 114 131 148 165 167 184 201
+   9  26  43  60  62  79  96 113 130 147 164 166 183 200 217
+  25  42  59  61  78  95 112 129 146 163 180 182 199 216   8
+  41  58  75  77  94 111 128 145 162 179 181 198 215   7  24
+  57  74  76  93 110 127 144 161 178 195 197 214   6  23  40
+  73  90  92 109 126 143 160 177 194 196 213   5  22  39  56
+  89  91 108 125 142 159 176 193 210 212   4  21  38  55  72
+ 105 107 124 141 158 175 192 209 211   3  20  37  54  71  88
+ 106 123 140 157 174 191 208 225   2  19  36  53  70  87 104
 Magic number = 1695
 ```
 
@@ -1834,8 +1834,8 @@ End
 
 ```txt
 Odd magic square size: 5 * 5        Odd magic square size: 11 * 11
-The magic sum = 65                  The magic sum = 671           
-             
+The magic sum = 65                  The magic sum = 671
+
  17 24  1  8 15                       68  81  94 107 120   1  14  27  40  53  66
  23  5  7 14 16                       80  93 106 119  11  13  26  39  52  65  67
   4  6 13 20 22                       92 105 118  10  12  25  38  51  64  77  79
@@ -1952,11 +1952,11 @@ create x = replicate x $ replicate x 0
 
 cells :: [[Int]] -> Int
 cells m = x*x where x = length m
-   
+
 fill :: Var -> [[Int]] -> [[Int]]
 fill (sx, sy, sz, c) m
    | c < cells m =
-      if isZero m sx sy 
+      if isZero m sx sy
       then fill ((wrapInc sz sx), (wrapDec sz sy), sz, c + 1) (setAt (sx, sy) (c + 1) m)
       else fill ((wrapDec sz sx), (wrapInc sz(wrapInc sz sy)), sz, c) m
    | otherwise = m
@@ -2228,7 +2228,7 @@ ms=: i:@<.@-: |."0 1&|:^:2 >:@i.@,~
 
 In other words, generate a square of counting integers, like this:
 
-```J>   
+```J>
 :@i.@,~ 3
 1 2 3
 4 5 6
@@ -2321,13 +2321,13 @@ public class MagicSquare {
 {{out}}
 
 ```txt
-17 24  1  8 15 
-23  5  7 14 16 
- 4  6 13 20 22 
-10 12 19 21  3 
+17 24  1  8 15
+23  5  7 14 16
+ 4  6 13 20 22
+10 12 19 21  3
 11 18 25  2  9
 
-Magic constant: 65 
+Magic constant: 65
 ```
 
 
@@ -2494,7 +2494,7 @@ magic(11)
 
 ### =Cycled . transposed . cycled=
 
-{{Trans|Haskell}} 
+{{Trans|Haskell}}
 
 (2nd Haskell version: ''cycledRows . transpose . cycledRows'')
 
@@ -2947,7 +2947,7 @@ fun main(args: Array<String>) {
         if (n < 1 || n % 2 == 0) println("Must be odd and >= 1, try again")
         else break
     }
-    println()    
+    println()
     for (i in 0 until n) {
         for (j in 0 until n) print("%4d".format(f(n, n - j - 1, i) * n + f(n, j, i) + 1))
         println()
@@ -3032,7 +3032,7 @@ Sub printSquare n
     Else
         Notice "Magic Square will not fit on one sheet of paper."
     End If
-End Sub 
+End Sub
 
 ```
 
@@ -3107,7 +3107,7 @@ Method from http://www.jsoftware.com/papers/eem/magicsq.htm
 
 rp[v_, pos_] := RotateRight[v, (Length[v] + 1)/2 - pos];
 rho[m_] := MapIndexed[rp, m];
-magic[n_] := 
+magic[n_] :=
   rho[Transpose[rho[Table[i*n + j, {i, 0, n - 1}, {j, 1, n}]]]];
 
 square = magic[11] // Grid
@@ -3132,11 +3132,11 @@ Print["Magic number is ", Total[square[[1, 1]]]]
 Magic number is 671
 
 Output from code that checks the results
-Rows 
+Rows
 
 {671,671,671,671,671,671,671,671,671,671,671}
 
-Columns 
+Columns
 
 {671,671,671,671,671,671,671,671,671,671,671}
 
@@ -3251,11 +3251,11 @@ Order 5
 
 ### =
 
-17 24  1  8 15 
-23  5  7 14 16 
- 4  6 13 20 22 
-10 12 19 21  3 
-11 18 25  2  9 
+17 24  1  8 15
+23  5  7 14 16
+ 4  6 13 20 22
+10 12 19 21  3
+11 18 25  2  9
 
 All sum to magic number 65
 
@@ -3263,9 +3263,9 @@ Order 3
 
 ### =
 
-8 1 6 
-3 5 7 
-4 9 2 
+8 1 6
+3 5 7
+4 9 2
 
 All sum to magic number 15
 
@@ -3273,13 +3273,13 @@ Order 7
 
 ### =
 
-30 39 48  1 10 19 28 
-38 47  7  9 18 27 29 
-46  6  8 17 26 35 37 
- 5 14 16 25 34 36 45 
-13 15 24 33 42 44  4 
-21 23 32 41 43  3 12 
-22 31 40 49  2 11 20 
+30 39 48  1 10 19 28
+38 47  7  9 18 27 29
+46  6  8 17 26 35 37
+ 5 14 16 25 34 36 45
+13 15 24 33 42 44  4
+21 23 32 41 43  3 12
+22 31 40 49  2 11 20
 
 All sum to magic number 175
 ```
@@ -3297,11 +3297,11 @@ All sum to magic number 175
    n loop: i [
       n loop: j [
          i j + 1- n 2 / + n mod n *
-         i j + j + 2 - n mod 1 + + 
-         System.Out swap <<w(wd) " " << drop 
+         i j + j + 2 - n mod 1 + +
+         System.Out swap <<w(wd) " " << drop
          ]
       printcr
-      ] 
+      ]
    System.Out "Magic constant is : " << n sq 1 + 2 / n * << cr ;
 ```
 
@@ -3701,18 +3701,18 @@ end magic;
 {{out}}
 
 ```txt
-What is the order of the magic square? 
+What is the order of the magic square?
 
-The order is 5 
+The order is 5
   15   8   1  24  17
   16  14   7   5  23
   22  20  13   6   4
    3  21  19  12  10
    9   2  25  18  11
-The magic number is                65 
-What is the order of the magic square? 
+The magic number is                65
+What is the order of the magic square?
 
-The order is 7 
+The order is 7
   28  19  10   1  48  39  30
   29  27  18   9   7  47  38
   37  35  26  17   8   6  46
@@ -3781,14 +3781,14 @@ The magic number is: 369
                        for col in range(1, n + 1))))
     print('\nAll sum to magic number %i' % ((n * n + 1) * n // 2))
 
-    
+
 >>> for n in (5, 3, 7):
 	print('\nOrder %i\n
 ### =
 ' % n)
 	magic(n)
 
-	
+
 
 Order 5
 
@@ -3825,7 +3825,7 @@ Order 7
 22 31 40 49  2 11 20
 
 All sum to magic number 175
->>> 
+>>>
 ```
 
 
@@ -4032,19 +4032,19 @@ if __name__ == '__main__':
 ```txt
 Magic squares of odd order N:
 
-3 -> 
+3 ->
      8 1 6
      3 5 7
      4 9 2
 
-5 -> 
+5 ->
      17 24  1  8 15
      23  5  7 14 16
       4  6 13 20 22
      10 12 19 21  3
      11 18 25  2  9
 
-7 -> 
+7 ->
      30 39 48  1 10 19 28
      38 47  7  9 18 27 29
      46  6  8 17 26 35 37
@@ -4220,8 +4220,8 @@ The magic number  (or magic constant is):  3439
 
 n=9
 see "the square order is : " + n + nl
-for i=1 to n 
-    for j = 1 to n 
+for i=1 to n
+    for j = 1 to n
         x = (i*2-j+n-1) % n*n + (i*2+j-2) % n + 1
         see "" + x + " "
     next
@@ -4324,15 +4324,15 @@ fn main() {
 {{out}}
 
 ```txt
- 47  58  69  80   1  12  23  34  45 
- 57  68  79   9  11  22  33  44  46 
- 67  78   8  10  21  32  43  54  56 
- 77   7  18  20  31  42  53  55  66 
-  6  17  19  30  41  52  63  65  76 
- 16  27  29  40  51  62  64  75   5 
- 26  28  39  50  61  72  74   4  15 
- 36  38  49  60  71  73   3  14  25 
- 37  48  59  70  81   2  13  24  35 
+ 47  58  69  80   1  12  23  34  45
+ 57  68  79   9  11  22  33  44  46
+ 67  78   8  10  21  32  43  54  56
+ 77   7  18  20  31  42  53  55  66
+  6  17  19  30  41  52  63  65  76
+ 16  27  29  40  51  62  64  75   5
+ 26  28  39  50  61  72  74   4  15
+ 36  38  49  60  71  73   3  14  25
+ 37  48  59  70  81   2  13  24  35
 The sum of the square is 369.
 ```
 
@@ -4454,7 +4454,7 @@ const proc: main is func
     column := succ(size div 2);
     for number range 1 to size ** 2 do
       magic[row][column] := number;
-      if magic[pred(row, size)][succ(column, size)] = 0 then 
+      if magic[pred(row, size)][succ(column, size)] = 0 then
         row := pred(row, size);
         column := succ(column, size);
       else
@@ -4552,13 +4552,13 @@ extension String: Error {}
 struct Point: CustomStringConvertible {
     var x: Int
     var y: Int
-    
+
     init(_ _x: Int,
          _ _y: Int) {
         self.x = _x
         self.y = _y
     }
-    
+
     var description: String {
         return "(\(x), \(y))\n"
     }
@@ -4580,7 +4580,7 @@ class MagicSquare: CustomStringConvertible {
         grid = [:]
         number = n
     }
-    
+
     func createOdd() throws -> MagicSquare {
         guard number < 1 || number % 2 != 0 else {
             throw "Must be odd and >= 1, try again"
@@ -4595,10 +4595,10 @@ class MagicSquare: CustomStringConvertible {
             let oldXY = Point(x,y)
             x += 1
             y -= 1
-            
+
             if x >= number {x -= number}
             if y < 0 {y +=  number}
-            
+
             var tempCoord = Point(x,y)
             if let _ = grid.firstIndex(where: { (k,v) -> Bool in
                 v == tempCoord
@@ -4614,7 +4614,7 @@ class MagicSquare: CustomStringConvertible {
         print(self)
         return self
     }
-    
+
     fileprivate func gridToText(_ result: inout String) {
         let sorted = sortedGrid()
         let sc = sorted.count
@@ -4629,14 +4629,14 @@ class MagicSquare: CustomStringConvertible {
         }
         result += "\nThe magic number is \(number * (number * number + 1) / 2)"
         result += "\nRows and Columns are "
-        
+
         result += checkRows() == checkColumns() ? "Equal" : " Not Equal!"
         result += "\nRows and Columns and Diagonals are "
         let allEqual = (checkDiagonals() == checkColumns() && checkDiagonals() == checkRows())
         result += allEqual ? "Equal" : " Not Equal!"
         result += "\n"
     }
-    
+
     var description: String {
         var result = "base \(number)\n"
         gridToText(&result)
@@ -4648,7 +4648,7 @@ extension MagicSquare {
     private func sortedGrid()->[(key:Int,value:Point)] {
         return grid.sorted(by: {$0.1 < $1.1})
     }
-    
+
     private func checkRows() -> (Bool, Int?)
     {
         var result = Set<Int>()
@@ -4666,7 +4666,7 @@ extension MagicSquare {
         }
         return (result.count == 1, result.first ?? nil)
     }
-    
+
     private func checkColumns() -> (Bool, Int?)
     {
         var result = Set<Int>()
@@ -4685,7 +4685,7 @@ extension MagicSquare {
     {
         var result = Set<Int>()
         var sorted = sortedGrid()
-        
+
         var rowtotal = 0
         for cell in stride(from: 0, to: sorted.count, by: number+1) {
             rowtotal += sorted[cell].key
@@ -4696,7 +4696,7 @@ extension MagicSquare {
             rowtotal += sorted[cell].key
         }
         result.insert(rowtotal)
-        
+
         return (result.count == 1, result.first)
     }
 }
@@ -4725,8 +4725,8 @@ base 5
  17 24 1  8  15
  23 5  7  14 16
  4  6  13 20 22
- 10 12 19 21 3 
- 11 18 25 2  9 
+ 10 12 19 21 3
+ 11 18 25 2  9
 
 The magic number is 65<br />
 Rows and Columns are Equal<br />
@@ -4737,7 +4737,7 @@ base 7
  38 47 7  9  18 27 29
  46 6  8  17 26 35 37
  5  14 16 25 34 36 45
- 13 15 24 33 42 44 4 
+ 13 15 24 33 42 44 4
  21 23 32 41 43 3  12
  22 31 40 49 2  11 20
 
@@ -4832,7 +4832,7 @@ End
 
 {{trans|FreeBASIC}}
 <lang>' ------=< MAIN >=------
- 
+
 Proc _magicsq(5)
 Proc _magicsq(11)
 End
@@ -4993,7 +4993,7 @@ Sub magic_square(n)
 				WScript.StdOut.Write ms(i,j)
 			Else
 				WScript.StdOut.Write ms(i,j) & vbTab
-			End If 
+			End If
 		Next
 		WScript.StdOut.WriteLine
 	Next

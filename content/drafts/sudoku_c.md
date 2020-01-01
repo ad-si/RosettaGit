@@ -11,8 +11,8 @@ tags = []
 +++
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #if 1
 #define N 4

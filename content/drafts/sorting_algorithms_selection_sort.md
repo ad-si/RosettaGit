@@ -13,17 +13,17 @@ tags = []
 {{task|Sorting Algorithms}}{{Sorting Algorithm}}
 
 ;Task:
-Sort an [[array]] (or list) of elements using the Selection sort algorithm. 
+Sort an [[array]] (or list) of elements using the Selection sort algorithm.
 
 
 It works as follows:
 
-First find the smallest element in the array and exchange it with the element in the first position, then find the second smallest element and exchange it with the element in the second position, and continue in this way until the entire array is sorted. 
+First find the smallest element in the array and exchange it with the element in the first position, then find the second smallest element and exchange it with the element in the second position, and continue in this way until the entire array is sorted.
 
 
-Its asymptotic complexity is   <big> [[O]](n<sup>2</sup>) </big>   making it inefficient on large arrays. 
+Its asymptotic complexity is   <big> [[O]](n<sup>2</sup>) </big>   making it inefficient on large arrays.
 
-Its primary purpose is for when writing data is very expensive (slow) when compared to reading, eg. writing to flash memory or EEPROM. 
+Its primary purpose is for when writing data is very expensive (slow) when compared to reading, eg. writing to flash memory or EEPROM.
 
 No other sorting algorithm has less data movement.
 
@@ -38,7 +38,7 @@ No other sorting algorithm has less data movement.
 ## 360 Assembly
 
 {{trans|PL/I}}
-The program uses ASM structured macros and two ASSIST macros to keep the code as short as possible. 
+The program uses ASM structured macros and two ASSIST macros to keep the code as short as possible.
 
 ```360asm
 *        Selection sort            26/06/2016
@@ -48,15 +48,15 @@ SELECSRT CSECT
          DC     17F'0'             savearea
          STM    R14,R12,12(R13)    prolog
          ST     R13,4(R15)         "
-         ST     R15,8(R13)         " 
+         ST     R15,8(R13)         "
          LR     R13,R15            "
          LA     RJ,1               j=1
          DO WHILE=(C,RJ,LE,N)      do j=1 to n
          LR     RK,RJ                k=j
          LR     R1,RJ                j
          SLA    R1,2                 .
-         LA     R3,A-4(R1)           @a(j)   
-         L      RT,0(R3)             temp=a(j)   
+         LA     R3,A-4(R1)           @a(j)
+         L      RT,0(R3)             temp=a(j)
          LA     RI,1(RJ)             i=j+1
          DO WHILE=(C,RI,LE,N)        do i=j+1 to n
          LR     R1,RI                  i
@@ -68,7 +68,7 @@ SELECSRT CSECT
          ENDIF  ,                      end if
          LA     RI,1(RI)               i=i+1
          ENDDO  ,                    end do
-		 L      R0,0(R3)             a(j)   
+		 L      R0,0(R3)             a(j)
          LR     R1,RK                k
          SLA    R1,2                 .
          ST     R0,A-4(R1)           a(k)=a(j)
@@ -87,7 +87,7 @@ SELECSRT CSECT
          LA     RI,1(RI)             i=i+1
          ENDDO  ,                  end do
          XPRNT  PG,L'PG            print buffer
-         L      R13,4(0,R13)       epilog 
+         L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
@@ -192,8 +192,8 @@ end Test_Selection_Sort;
 {{trans|Ada}}
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}} 
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}} 
+{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}}
 
 ```algol68
 MODE DATA = REF CHAR;
@@ -216,7 +216,7 @@ BEGIN
       FI
    OD
 END # in place selection sort #;
- 
+
 [32]CHAR data := "big fjords vex quick waltz nymph";
 [UPB data]DATA ref data;  FOR i TO UPB data DO ref data[i] := data[i] OD;
 in place selection sort(ref data);
@@ -242,7 +242,7 @@ big fjords vex quick waltz nymph
 
 /* ARM assembly Raspberry PI  */
 /*  program selectionSort.s   */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -258,7 +258,7 @@ szMessSortNok:      .asciz "Table not sorted !!!!!.\n"
 sMessResult:        .ascii "Value  : "
 sMessValeur:        .fill 11, 1, ' '            @ size => 11
 szCarriageReturn:  .asciz "\n"
- 
+
 .align 4
 iGraine:  .int 123456
 .equ NBELEMENTS,      10
@@ -267,38 +267,38 @@ TableNumber:     .int   10,9,8,7,6,5,4,3,2,1
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                              @ entry of program 
- 
+.global main
+main:                                              @ entry of program
+
 1:
     ldr r0,iAdrTableNumber                         @ address number table
     mov r1,#0
-    mov r2,#NBELEMENTS                             @ number of élements 
+    mov r2,#NBELEMENTS                             @ number of élements
     bl selectionSort
     ldr r0,iAdrTableNumber                         @ address number table
     bl displayTable
- 
+
     ldr r0,iAdrTableNumber                         @ address number table
-    mov r1,#NBELEMENTS                             @ number of élements 
+    mov r1,#NBELEMENTS                             @ number of élements
     bl isSorted                                    @ control sort
     cmp r0,#1                                      @ sorted ?
-    beq 2f                                    
+    beq 2f
     ldr r0,iAdrszMessSortNok                       @ no !! error sort
     bl affichageMess
     b 100f
 2:                                                 @ yes
     ldr r0,iAdrszMessSortOk
     bl affichageMess
-100:                                               @ standard end of the program 
+100:                                               @ standard end of the program
     mov r0, #0                                     @ return code
     mov r7, #EXIT                                  @ request to exit program
     svc #0                                         @ perform the system call
- 
+
 iAdrsMessValeur:          .int sMessValeur
 iAdrszCarriageReturn:     .int szCarriageReturn
 iAdrsMessResult:          .int sMessResult
@@ -306,7 +306,7 @@ iAdrTableNumber:          .int TableNumber
 iAdrszMessSortOk:         .int szMessSortOk
 iAdrszMessSortNok:        .int szMessSortNok
 /******************************************************************/
-/*     control sorted table                                   */ 
+/*     control sorted table                                   */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the number of elements  > 0  */
@@ -328,9 +328,9 @@ isSorted:
     b 1b
 100:
     pop {r2-r4,lr}
-    bx lr                                              @ return 
+    bx lr                                              @ return
 /******************************************************************/
-/*         selection sort                                              */ 
+/*         selection sort                                              */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the first element    */
@@ -342,7 +342,7 @@ selectionSort:
 1:                                                         @ start loop
     mov r4,r3
     add r5,r3,#1                                           @ init index 2
-2: 
+2:
     ldr r1,[r0,r4,lsl #2]                                  @ load value A[mini]
     ldr r6,[r0,r5,lsl #2]                                  @ load value A[j]
     cmp r6,r1                                              @ compare value
@@ -359,14 +359,14 @@ selectionSort:
 3:
     add r3,#1                                              @ increment i
     cmp r3,r7                                              @ end ?
-    blt 1b                                                 @ no -> loop 
+    blt 1b                                                 @ no -> loop
 
 100:
     pop {r1-r7,lr}
-    bx lr                                                  @ return 
+    bx lr                                                  @ return
 
 /******************************************************************/
-/*      Display table elements                                */ 
+/*      Display table elements                                */
 /******************************************************************/
 /* r0 contains the address of table */
 displayTable:
@@ -388,41 +388,41 @@ displayTable:
     pop {r0-r3,lr}
     bx lr
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
- 
+
 1:	                                            @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b	                                    @ and loop
                                                     @ and move digit from left of area
@@ -435,23 +435,23 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -459,12 +459,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 
@@ -500,7 +500,7 @@ SelecSort(var) {                         ; SORT COMMA SEPARATED LIST
    Return SubStr(sorted,2)               ; drop leading comma
 }
 ```
- 
+
 
 
 ## AWK
@@ -560,8 +560,8 @@ ENDPROC
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void selection_sort (int *a, int n) {
     int i, j, m, t;
@@ -607,8 +607,8 @@ int main () {
 Uses C++11. Compile with
  g++ -std=c++11 selection.cpp
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iterator>
 #include <iostream>
 
@@ -697,7 +697,7 @@ this
 ## Clojure
 
 This is an implementation that mutates a Java arraylist in place.
- 
+
 
 ```lisp
 (import 'java.util.ArrayList)
@@ -833,7 +833,7 @@ def selectionSort(array : Array)
             if array[j] < array[nextMinIndex]
                 nextMinIndex = j
             end
-        end    
+        end
         if i != nextMinIndex
             array.swap(i, nextMinIndex)
         end
@@ -1037,7 +1037,7 @@ def selectionSort := {
     c[b]  := t
     println(c)
   }
-  
+
   def indexOfMin(array, first, last) {
     var min := array[first]
     var mini := first
@@ -1093,22 +1093,22 @@ print data[]
 ;; recursive version (adapted from Racket)
 (lib 'list) ;; list-delete
 (define (sel-sort xs  (x0))
-	(cond 
+	(cond
 		[(null? xs) null]
 		[else (set! x0 (apply min xs))
 			  (cons x0 (sel-sort (list-delete xs x0)))]))
 
 (sel-sort (shuffle (iota 13)))
     → (0 1 2 3 4 5 6 7 8 9 10 11 12)
-    
+
 ;; straightforward and more efficient implementation using list-swap!
 (define (sel-sort list)
-		(maplist (lambda( L) 
+		(maplist (lambda( L)
 			(first (list-swap! L (first L) (apply min L )))) list))
-			
+
 (sel-sort (shuffle (iota 13)))
     → (0 1 2 3 4 5 6 7 8 9 10 11 12)
-    
+
 
 ```
 
@@ -1127,10 +1127,10 @@ print data[]
 			(when (< [a j] amin) (set! amin [a (setv! imin j)])))
 		(vector-swap! a i imin))
 		a )
-	
+
 (define a #(9 8 2 6 3 5 4))
 (sel-sort a)
-    → #( 2 3 4 5 6 8 9)		
+    → #( 2 3 4 5 6 8 9)
 
 ```
 
@@ -1285,13 +1285,13 @@ ELENA 4.1 :
 ```elena
 import extensions;
 import system'routines;
- 
+
 extension op
 {
     selectionSort()
     {
         var copy := self.clone();
- 
+
         for(int i := 0, i < copy.Length, i += 1)
         {
             int k := i;
@@ -1303,16 +1303,16 @@ extension op
                 }
             };
             copy.exchange(i,k)
-        };        
- 
+        };
+
         ^ copy
     }
 }
- 
+
 public program()
 {
     var list := new string[]::("this", "is", "a", "test", "of", "generic", "selection", "sort");
- 
+
     console.printLine("before:",list.asEnumerable());
     console.printLine("after:",list.selectionSort().asEnumerable())
 }
@@ -1335,7 +1335,7 @@ after:a,generic,is,of,selection,sort,test,this
 ```elixir
 defmodule Sort do
   def selection_sort(list) when is_list(list), do: selection_sort(list, [])
-  
+
   defp selection_sort([], sorted), do: sorted
   defp selection_sort(list, sorted) do
     max = Enum.max(list)
@@ -1371,7 +1371,7 @@ selection_sort(Ar,Sort)->
 print_array([])->ok;
 print_array([H|T])->
 	io:format("~p~n",[H]),
-	print_array(T).	
+	print_array(T).
 
 main()->
 	Ans=selection_sort([1,5,7,8,4,10],[]),
@@ -1457,7 +1457,7 @@ After: {
 
 let rec ssort = function
     [] -> []
-    | x::xs -> 
+    | x::xs ->
         let min, rest =
             List.fold (fun (min,acc) x ->
                              if h<min then (h, min::acc)
@@ -1512,7 +1512,7 @@ defer less?   ' < is less?
   cell +loop drop ;
 
 create array 8 , 1 , 4 , 2 , 10 , 3 , 7 , 9 , 6 , 5 ,
- 
+
 array 10 selection
 array 10 cells dump
 ```
@@ -1529,13 +1529,13 @@ PROGRAM SELECTION
   IMPLICIT NONE
 
   INTEGER :: intArray(10) = (/ 4, 9, 3, -2, 0, 7, -5, 1, 6, 8 /)
- 
+
   WRITE(*,"(A,10I5)") "Unsorted array:", intArray
   CALL Selection_sort(intArray)
   WRITE(*,"(A,10I5)") "Sorted array  :", intArray
-   
+
 CONTAINS
- 
+
   SUBROUTINE Selection_sort(a)
     INTEGER, INTENT(IN OUT) :: a(:)
     INTEGER :: i, minIndex, temp
@@ -1847,7 +1847,7 @@ l selectionSortInPlace println # ==> list(-9, -1, 2, 4)
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main()                     #: demonstrate various ways to sort a list and string 
+procedure main()                     #: demonstrate various ways to sort a list and string
    demosort(selectionsort,[3, 14, 1, 5, 9, 2, 6, 3],"qwerty")
 end
 
@@ -1857,7 +1857,7 @@ local i,m
 
    op := sortop(op,X)                                   # select how and what we sort
    every i := 1 to *X-1 do {
-      m := i 
+      m := i
       every j := i + 1 to *X do
          if op(X[j],X[m]) then m := j                   # find X that belongs @i low (or high)
       X[m ~= i] :=: X[m]
@@ -1869,7 +1869,7 @@ end
 
 Note: This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'sortop', and 'demosort' in Bubble Sort]]. The full demosort exercises the named sort of a list with op = "numeric", "string", ">>" (lexically gt, descending),">" (numerically gt, descending), a custom comparator, and also a string.
 
-{{out}} Abbreviated sample 
+{{out}} Abbreviated sample
 
 ```txt
 Sorting Demo using procedure selectionsort
@@ -1883,7 +1883,7 @@ Sorting Demo using procedure selectionsort
 
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 PROGRAM "SelecSrt.bas"
-110 RANDOMIZE 
+110 RANDOMIZE
 120 NUMERIC ARRAY(-5 TO 14)
 130 CALL INIT(ARRAY)
 140 CALL WRITE(ARRAY)
@@ -1892,22 +1892,22 @@ Sorting Demo using procedure selectionsort
 170 DEF INIT(REF A)
 180   FOR I=LBOUND(A) TO UBOUND(A)
 190     LET A(I)=RND(98)+1
-200   NEXT 
-210 END DEF 
+200   NEXT
+210 END DEF
 220 DEF WRITE(REF A)
 230   FOR I=LBOUND(A) TO UBOUND(A)
 240     PRINT A(I);
-250   NEXT 
-260   PRINT 
-270 END DEF 
+250   NEXT
+260   PRINT
+270 END DEF
 280 DEF SELECTIONSORT(REF A)
 290   FOR I=LBOUND(A) TO UBOUND(A)-1
 300     LET MN=A(I):LET INDEX=I
 310     FOR J=I+1 TO UBOUND(A)
 320       IF MN>A(J) THEN LET MN=A(J):LET INDEX=J
-330     NEXT 
+330     NEXT
 340     LET A(INDEX)=A(I):LET A(I)=MN
-350   NEXT 
+350   NEXT
 360 END DEF
 ```
 
@@ -1934,7 +1934,7 @@ selectionSort=: verb define
 In an email discussion, Roger_Hui presented the following tacit code:
 
 ```j
-ix=: C.~ <@~.@(0, (i. <./)) 
+ix=: C.~ <@~.@(0, (i. <./))
 ss1=: ({. , $:@}.)@ix^:(*@#)
 ```
 
@@ -2004,7 +2004,7 @@ function selectionSort(nums) {
 
 ## jq
 
-The following implementation does not impose any restrictions on the types of entities that may appear in the array to be sorted.  That is, the array may include any collection of JSON entities.  
+The following implementation does not impose any restrictions on the types of entities that may appear in the array to be sorted.  That is, the array may include any collection of JSON entities.
 
 The definition also illustrates the use of an inner function (swap), and the use of jq's reduction operator, <tt>reduce</tt>.
 ```jq
@@ -2168,7 +2168,7 @@ end
     next i
     print
 return
- 
+
 ```
 
 
@@ -2178,12 +2178,12 @@ return
 
 ```lua
 function SelectionSort( f )
-    for k = 1, #f-1 do    
-        local idx = k    
+    for k = 1, #f-1 do
+        local idx = k
         for i = k+1, #f do
-            if f[i] < f[idx] then 
+            if f[i] < f[idx] then
                 idx = i
-            end    
+            end
         end
         f[k], f[idx] = f[idx], f[k]
     end
@@ -2289,25 +2289,25 @@ Validation Result:
 function list = selectionSort(list)
 
     listSize = numel(list);
-    
+
     for i = (1:listSize-1)
 
         minElem = list(i);
         minIndex = i;
-        
+
         %This for loop can be vectorized, but there will be no significant
         %increase in sorting efficiency.
-        for j = (i:listSize)    
+        for j = (i:listSize)
             if list(j) <= minElem
                 minElem = list(j);
                 minIndex = j;
-            end                              
+            end
         end
-        
+
         if i ~= minIndex
             list([minIndex i]) = list([i minIndex]); %Swap
         end
-        
+
     end %for
 end %selectionSort
 ```
@@ -2466,7 +2466,7 @@ module Selection
     {
         mutable k = 0;
         def lastindex = a.Length - 1;
-        
+
         foreach (i in [0 .. lastindex])
         {
             k = i;
@@ -2475,7 +2475,7 @@ module Selection
             a[i] <-> a[k];
         }
     }
-    
+
     Main() : void
     {
         def arr = array[6, 2, 8, 3, 9, 4, 7, 3, 9, 1];
@@ -2630,7 +2630,7 @@ let rec selection_sort = function
    l asListBuffer ->b
 
    s loop: i [
-      i dup ->k b at 
+      i dup ->k b at
       i 1 + s for: j [ b at(j) 2dup <= ifTrue: [ drop ] else: [ nip j ->k ] ]
       k i b at b put i swap b put
       ]
@@ -2705,7 +2705,7 @@ generate:
 
 ## Oz
 
-Although lists are much more used in Oz than arrays, this algorithm seems more natural for arrays. 
+Although lists are much more used in Oz than arrays, this algorithm seems more natural for arrays.
 
 ```oz
 declare
@@ -2733,7 +2733,7 @@ declare
 	{Swap @MinIndex I}
      end
   end
-  
+
   A = {Tuple.toArray unit(3 1 4 1 5 9 2 6 5)}
 in
   {SelectionSort A}
@@ -2886,7 +2886,7 @@ function selectionsort($arr,$result=array()){
     $nresult = $result;
     $nresult[] = min($arr);
     unset($arr[array_search(min($arr),$arr)]);
-    return selectionsort($arr,$nresult);	
+    return selectionsort($arr,$nresult);
 }
 ```
 
@@ -2999,7 +2999,7 @@ exchange(H, L, H1, L1) :-
 	(   H < H2
 	->  H1 = H, L1 = L
 	;   H1 = H2,
-	    % does the exchange of the number H 
+	    % does the exchange of the number H
 	    % and the min of the list
 	    nth0(Ind, L, H1, L2),
 	    nth0(Ind, L1, H, L2)).
@@ -3013,7 +3013,7 @@ exchange(H, L, H1, L1) :-
 ```PureBasic
 Procedure selectionSort(Array a(1))
   Protected i, j, lastIndex, minIndex
-  
+
   lastIndex = ArraySize(a())
   For i = 0 To lastIndex - 1
     minIndex = i
@@ -3023,7 +3023,7 @@ Procedure selectionSort(Array a(1))
       EndIf
     Next
     Swap a(minIndex), a(i)
-  Next  
+  Next
 EndProcedure
 ```
 
@@ -3044,7 +3044,7 @@ def selection_sort(lst):
 
 
 ## R
-           
+
 For loop:
 
 ```r
@@ -3120,34 +3120,34 @@ selectionsort.rec <- function(x)
 
 class SelectionSort
 	**Sort a list with the Selection Sort algorithm**
-	
+
 	on start
-		
+
 		args := program arguments
 		.sort(args)
 		print args
-	
+
 	define sort(list) is shared
 		**Sort the list**
-		
+
 		test
 			list := [4, 2, 7, 3]
 			.sort(list)
 			assert list = [2, 3, 4, 7]
-		
+
 		body
 			count := list.count
 			last := count - 1
-			
+
 			for i in last
-				
+
 				minCandidate := i
 				j := i + 1
-				
+
 				while j < count
 					if list[j] < list[minCandidate], minCandidate := j
 					j :+ 1
-				
+
 				temp := list[i]
 				list[i] := list[minCandidate]
 				list[minCandidate] := temp
@@ -3194,7 +3194,7 @@ show:  do i=1  for #;  say '       element' right(i,length(#)) arg(1)":" @.i; en
 ```txt
 
        element 1 before sort: ---The seven hills of Rome:---
-       element 2 before sort: 
+       element 2 before sort:
 ### ========================
 
        element 3 before sort: Caelian
@@ -3206,7 +3206,7 @@ show:  do i=1  for #;  say '       element' right(i,length(#)) arg(1)":" @.i; en
        element 9 before sort: Aventine
 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
        element 1  after sort: ---The seven hills of Rome:---
-       element 2  after sort: 
+       element 2  after sort:
 ### ========================
 
        element 3  after sort: Aventine
@@ -3232,7 +3232,7 @@ see sortList(aList)
 func sortList list
      count = len(list) + 1
      last = count - 1
-   
+
      for i = 1 to last
           minCandidate = i
           j = i + 1
@@ -3363,8 +3363,8 @@ fn main() {
 def swap(a: Array[Int], i1: Int, i2: Int) = { val tmp = a(i1); a(i1) = a(i2); a(i2) = tmp }
 
 def selectionSort(a: Array[Int]) =
-  for (i <- 0 until a.size - 1) 
-    swap(a, i, (i + 1 until a.size).foldLeft(i)((currMin, index) => 
+  for (i <- 0 until a.size - 1)
+    swap(a, i, (i + 1 until a.size).foldLeft(i)((currMin, index) =>
       if (a(index) < a(currMin)) index else currMin))
 ```
 
@@ -3373,7 +3373,7 @@ This version avoids the extra definition by using a function literal:
 
 
 ```scala
-def selectionSort(a: Array[Int]) =  for (i <- 0 until a.size - 1) ( 
+def selectionSort(a: Array[Int]) =  for (i <- 0 until a.size - 1) (
   { (i1: Int, i2: Int) => val tmp = a(i1); a(i1) = a(i2); a(i2) = tmp }
   ) (i, (i + 1 until a.size).foldLeft(i)((currMin, index) => if (a(index) < a(currMin)) index else currMin) )
 ```
@@ -3469,7 +3469,7 @@ fun selection_sort [] = []
     let
       val (small, output) = foldl
         (fn (x, (small, output)) =>
-            if x < small then 
+            if x < small then
               (x, small::output)
             else
               (small, x::output)
@@ -3506,16 +3506,16 @@ end
 ```Swift
 func selectionSort(inout arr:[Int]) {
     var min:Int
-    
+
     for n in 0..<arr.count {
         min = n
-        
+
         for x in n+1..<arr.count {
             if (arr[x] < arr[min]) {
                 min = x
             }
         }
-        
+
         if min != n {
             let temp = arr[min]
             arr[min] = arr[n]
@@ -3592,7 +3592,7 @@ Store input into L<sub>1</sub> and prgmSORTSLCT will store the sorted output int
   PROC _Selectionsort (n)
   PROC _ShowArray (n)
 PRINT
- 
+
 END
 
 
@@ -3609,30 +3609,30 @@ _Selectionsort PARAM (1)               ' Selection sort
     IF b@ # c@ THEN PROC _Swap (b@, c@)
   NEXT
 RETURN
- 
- 
+
+
 _Swap PARAM(2)                         ' Swap two array elements
   PUSH @(a@)
   @(a@) = @(b@)
   @(b@) = POP()
 RETURN
- 
- 
+
+
 _InitArray                             ' Init example array
   PUSH 4, 65, 2, -31, 0, 99, 2, 83, 782, 1
- 
+
   FOR i = 0 TO 9
     @(i) = POP()
   NEXT
- 
+
 RETURN (i)
- 
- 
+
+
 _ShowArray PARAM (1)                   ' Show array subroutine
   FOR i = 0 TO a@-1
     PRINT @(i),
   NEXT
- 
+
   PRINT
 RETURN
 ```
@@ -3661,7 +3661,7 @@ selection_sort "p" = ~&itB^?a\~&a ^|JahPfatPRC/~& ~=-~BrhPltPClhPrtPCTlrTQrS^D/"
 ```
 
 Here is a test program sorting by the partial order relation on natural
-numbers. 
+numbers.
 
 ```Ursala
 #import nat

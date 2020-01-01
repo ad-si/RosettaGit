@@ -15,25 +15,25 @@ tags = []
 [[Category:Probability and statistics]]
 [[File:Monte_Hall_problem.jpg|600px||right]]
 
-Suppose you're on a game show and you're given the choice of three doors. 
+Suppose you're on a game show and you're given the choice of three doors.
 
-Behind one door is a car; behind the others, goats. 
+Behind one door is a car; behind the others, goats.
 
-The car and the goats were placed randomly behind the doors before the show. 
+The car and the goats were placed randomly behind the doors before the show.
 
 
 ;Rules of the game:
-After you have chosen a door, the door remains closed for the time being. 
+After you have chosen a door, the door remains closed for the time being.
 
-The game show host, Monty Hall, who knows what is behind the doors, now has to open one of the two remaining doors, and the door he opens must have a goat behind it. 
+The game show host, Monty Hall, who knows what is behind the doors, now has to open one of the two remaining doors, and the door he opens must have a goat behind it.
 
-If both remaining doors have goats behind them, he chooses one randomly. 
+If both remaining doors have goats behind them, he chooses one randomly.
 
-After Monty Hall opens a door with a goat, he will ask you to decide whether you want to stay with your first choice or to switch to the last remaining door. 
+After Monty Hall opens a door with a goat, he will ask you to decide whether you want to stay with your first choice or to switch to the last remaining door.
 
-Imagine that you chose Door 1 and the host opens Door 3, which has a goat. 
+Imagine that you chose Door 1 and the host opens Door 3, which has a goat.
 
-He then asks you "Do you want to switch to Door Number 2?" 
+He then asks you "Do you want to switch to Door Number 2?"
 
 
 ;The question:
@@ -52,7 +52,7 @@ Simulate at least a thousand games using three doors for each strategy <u>and sh
 
 ;References:
 :* Stefan Krauss, X. T. Wang, "The psychology of the Monty Hall problem: Discovering psychological mechanisms for solving a tenacious brain teaser.", Journal of Experimental Psychology: General, Vol 132(1), Mar 2003, 3-22 [https://doi.org/10.1037/0096-3445.132.1.3 DOI: 10.1037/0096-3445.132.1.3]
-:* A YouTube video:   [https://www.youtube.com/watch?v=4Lb-6rxZxx0 Monty Hall Problem - Numberphile]. 
+:* A YouTube video:   [https://www.youtube.com/watch?v=4Lb-6rxZxx0 Monty Hall Problem - Numberphile].
 
 
 
@@ -72,23 +72,23 @@ package {
 			var iterations:int = 30000;
 			var switchWins:int = 0;
 			var stayWins:int = 0;
-			
+
 			for (var i:int = 0; i < iterations; i++)
 			{
 				var doors:Array = [0, 0, 0];
 				doors[Math.floor(Math.random() * 3)] = 1;
 				var choice:int = Math.floor(Math.random() * 3);
 				var shown:int;
-				
+
 				do
 				{
 					shown = Math.floor(Math.random() * 3);
 				} while (doors[shown] == 1 || shown == choice);
-				
+
 				stayWins += doors[choice];
 				switchWins += doors[3 - choice - shown];
 			}
-			
+
 			trace("Switching wins " + switchWins + " times. (" + (switchWins / iterations) * 100 + "%)");
 			trace("Staying wins " + stayWins + " times. (" + (stayWins / iterations) * 100 + "%)");
 		}
@@ -124,7 +124,7 @@ procedure Monty_Stats is
    use Random_Prize;
    Seed : Generator;
    Doors : array(Door_Index) of Prize_Type;
-   
+
    procedure Set_Prizes is
       Prize_Index : Door_Index;
       Booby_Prize : Prize_Type := Goat;
@@ -139,7 +139,7 @@ procedure Monty_Stats is
          end if;
       end loop;
    end Set_Prizes;
-   
+
    function Play(Action : Action_Type) return Prize_Type is
       Chosen : Door_Index := Random(Seed);
       Monty : Door_Index;
@@ -208,16 +208,16 @@ Switch : count 65695 = 65.69%
 INT trials=100 000;
 
 PROC brand = (INT n)INT: 1 + ENTIER (n * random);
- 
+
 PROC percent = (REAL x)STRING: fixed(100.0*x/trials,0,2)+"%";
- 
+
 main:
 (
   INT prize, choice, show, not shown, new choice;
   INT stay winning:=0, change winning:=0, random winning:=0;
   INT doors = 3;
   [doors-1]INT other door;
- 
+
   TO trials DO
      # put the prize somewhere #
      prize := brand(doors);
@@ -242,7 +242,7 @@ main:
            not shown := other door[2]
        FI
      FI;
- 
+
      # the user randomly choose one of the two closed doors
         (one is his/her previous choice, the second is the
         one not shown ) #
@@ -254,7 +254,7 @@ main:
      IF not shown = prize THEN change winning+:=1 FI;
      IF new choice = prize THEN random winning+:=1 FI
   OD;
- 
+
   print(("Staying: ", percent(stay winning), new line ));
   print(("Changing: ", percent(change winning), new line ));
   print(("New random choice: ", percent(random winning), new line ))
@@ -364,7 +364,7 @@ When I stayed with my first guess, I got 329 of 1000 (that's 671 incorrect). Tha
 
 
 ```awk
-#!/bin/gawk -f 
+#!/bin/gawk -f
 
 # Monty Hall problem
 
@@ -372,10 +372,10 @@ BEGIN {
 	srand()
 	doors = 3
 	iterations = 10000
-	# Behind a door: 
+	# Behind a door:
 	EMPTY = "empty"; PRIZE = "prize"
 	# Algorithm used
-  KEEP = "keep"; SWITCH="switch"; RAND="random"; 
+  KEEP = "keep"; SWITCH="switch"; RAND="random";
   #
 }
 function monty_hall( choice, algorithm ) {
@@ -391,22 +391,22 @@ function monty_hall( choice, algorithm ) {
 
   #if you didn't choose the prize first time around then
   # that will be the alternative
-	alternative = (chosen == PRIZE) ? EMPTY : PRIZE 
+	alternative = (chosen == PRIZE) ? EMPTY : PRIZE
 
 	if( algorithm == KEEP) {
 		return chosen
-	} 
+	}
 	if( algorithm == SWITCH) {
 		return alternative
-	} 
+	}
 	return rand() <0.5 ? chosen : alternative
 }
 
 function simulate(algo){
 	prizecount = 0
 	for(j=0; j< iterations; j++){
-		if( monty_hall( int(rand()*doors), algo) == PRIZE) { 
-			prizecount ++ 
+		if( monty_hall( int(rand()*doors), algo) == PRIZE) {
+			prizecount ++
 		}
 	}
 	printf "  Algorithm %7s: prize count = %i, = %6.2f%%\n", \
@@ -419,7 +419,7 @@ BEGIN {
 	simulate(KEEP)
 	simulate(SWITCH)
 	simulate(RAND)
-		
+
 }
 ```
 
@@ -476,17 +476,17 @@ Staying wins 10963 times.
 
 ==={{header|IS-BASIC}}===
 <lang IS-BASIC>100 PROGRAM "MontyH.bas"
-110 RANDOMIZE 
+110 RANDOMIZE
 120 LET NUMGAMES=1000
 130 LET CHANGING,NOTCHANGING=0
 140 FOR I=0 TO NUMGAMES-1
 150   LET PRIZEDOOR=RND(3)+1:LET CHOSENDOOR=RND(3)+1
 160   IF CHOSENDOOR=PRIZEDOOR THEN
 170     LET NOTCHANGING=NOTCHANGING+1
-180   ELSE 
+180   ELSE
 190     LET CHANGING=CHANGING+1
-200   END IF 
-210 NEXT 
+200   END IF
+210 NEXT
 220 PRINT "Num of games:";NUMGAMES
 230 PRINT "Wins not changing doors:";NOTCHANGING,NOTCHANGING/NUMGAMES*100;"% of total."
 240 PRINT "Wins changing doors:",CHANGING,CHANGING/NUMGAMES*100;"% of total."
@@ -612,7 +612,7 @@ Output of one run:
 
 
 ```txt
-After 3000000 games, I won 1999747 by switching.  That is 66.658233%. 
+After 3000000 games, I won 1999747 by switching.  That is 66.658233%.
 ```
 
 
@@ -630,14 +630,14 @@ class Program
         int stayWins = 0;
 
         Random gen = new Random();
-		    
+
         for(int plays = 0; plays < 1000000; plays++ )
         {
             int[] doors = {0,0,0};//0 is a goat, 1 is a car
 
             var winner = gen.Next(3);
             doors[winner] = 1; //put a winner in a random door
-                
+
 	    int choice = gen.Next(3); //pick a door, any door
 	    int shown; //the shown door
 	    do
@@ -645,9 +645,9 @@ class Program
 	        shown = gen.Next(3);
 	    }
             while (doors[shown] == 1 || shown == choice); //don't show the winner or the choice
-     
+
 	    stayWins += doors[choice]; //if you won by staying, count it
-     
+
             //the switched (last remaining) door is (3 - choice - shown), because 0+1+2=3
             switchWins += doors[3 - choice - shown];
         }
@@ -672,11 +672,11 @@ Switching wins:  666170
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cstdlib>
 #include <ctime>
- 
+
 int randint(int n)
 {
   return (1.0*n*std::rand())/(1.0+RAND_MAX);
@@ -717,10 +717,10 @@ int check(int games, bool change)
     if (selected_door == winning_door)
       ++win_count;
   }
- 
+
   return win_count;
 }
- 
+
 int main()
 {
   std::srand(std::time(0));
@@ -765,14 +765,14 @@ coforall task in tasks {
     if player_door == winning_door then
       wins_by_stay[ task ] += 1;
   }
-  
+
   if task == tasks.last then {
     for game in 1..#remaining_games {
       var player_door =  (rand.getNext() * 1000): int % doors ;
       var winning_door = (rand.getNext() * 1000): int % doors ;
       if player_door == winning_door then
         wins_by_stay[ task ] += 1;
-    }  
+    }
   }
 
 }
@@ -880,20 +880,20 @@ nil
                CALL "get-rand-int" USING CONTENT One, Three,
                    REFERENCE winner
                MOVE 1 TO doors (winner)
-               
+
                CALL "get-rand-int" USING CONTENT One, Three,
                    REFERENCE choice
-    
+
                PERFORM WITH TEST AFTER
                        UNTIL NOT(shown = winner OR choice)
                    CALL "get-rand-int" USING CONTENT One, Three,
                        REFERENCE shown
                END-PERFORM
-    
+
                ADD doors (choice) TO stay-wins
                ADD doors (6 - choice - shown) TO switch-wins
            END-PERFORM
-    
+
            COMPUTE stay-wins-percent ROUNDED =
                stay-wins / Num-Games * 100
            COMPUTE switch-wins-percent ROUNDED =
@@ -975,7 +975,7 @@ Switching wins 0666604 times (66.66%).
 		// monty randomly reveals a door...
 		shown = randrange(1,3);
 	    }
-	    // ...but monty only reveals empty doors; 
+	    // ...but monty only reveals empty doors;
 	    // he will not reveal the door that the player has choosen
 	    // nor will he reveal the winning door
 	    while(shown==choice || doors[shown]==1);
@@ -999,7 +999,7 @@ Switching wins 0666604 times (66.66%).
 </cfscript>
 ```
 
-Output:  
+Output:
 
 ```txt
 
@@ -1065,11 +1065,11 @@ Switch: 66.6593%
 	 (prize (random 3));possible values: 0, 1, 2
 	 (pick (random 3))
 	 (opened (rand-elt (remove pick (remove prize doors))));monty opens a door which is not your pick and not the prize
-	 (other (car (remove pick (remove opened doors)))))	 ;you decide to switch to the one other door that is not your pick and not opened 
+	 (other (car (remove pick (remove opened doors)))))	 ;you decide to switch to the one other door that is not your pick and not opened
     (= prize other))) ; did you switch to the prize?
 
 (defun monty-trials (n)
-  (count t (loop for x from 1 to n collect (monty)))) 
+  (count t (loop for x from 1 to n collect (monty))))
 
 ```
 
@@ -1266,7 +1266,7 @@ Switching wins 568318 times.
 note
 	description: "[
 					Monty Hall Problem as an Eiffel Solution
-					
+
 					1. Set the stage: Randomly place car and two goats behind doors 1, 2 and 3.
 					2. Monty offers choice of doors --> Contestant will choose a random door or always one door.
 					2a. Door has Goat - door remains closed
@@ -1277,7 +1277,7 @@ note
 					4. Monty offers door switch --> Contestant chooses to stay or change.
 					5. Door reveal: Contestant refused cash and did or did not door switch. Either way: Reveal!
 					6. Winner and Loser based on door reveal of prize.
-					
+
 					Car Winner: Chooses car door
 					Cash Winner: Chooses cash over any door
 					Goat Loser: Chooses goat door
@@ -1610,9 +1610,9 @@ defmodule MontyHall do
   def simulate(n) do
     {stay, switch} = simulate(n, 0, 0)
     :io.format "Staying wins   ~w times (~.3f%)~n", [stay,   100 * stay   / n]
-    :io.format "Switching wins ~w times (~.3f%)~n", [switch, 100 * switch / n]   
+    :io.format "Switching wins ~w times (~.3f%)~n", [switch, 100 * switch / n]
   end
-  
+
   defp simulate(0, stay, switch), do: {stay, switch}
   defp simulate(n, stay, switch) do
     doors = Enum.shuffle([:goat, :goat, :car])
@@ -1621,7 +1621,7 @@ defmodule MontyHall do
     if Enum.at(doors, choice) == :car, do: simulate(n-1, stay, switch+1),
                                      else: simulate(n-1, stay+1, switch)
   end
-  
+
   defp shown(doors, guess) do
     [i, j] = Enum.shuffle([0,1,2] -- [guess])
     if Enum.at(doors, i) == :goat, do: i, else: j
@@ -1703,13 +1703,13 @@ experiment(N, WinStay, WinSwitch) ->
 	SelectedDoor = random:uniform(3),
 	OpenDoor = open_door(Doors, SelectedDoor),
 	experiment(
-		N - 1, 
-		WinStay + element(SelectedDoor, Doors), 
+		N - 1,
+		WinStay + element(SelectedDoor, Doors),
 		WinSwitch + element(6 - (SelectedDoor + OpenDoor), Doors) ).
 
-open_door(Doors,SelectedDoor) -> 
+open_door(Doors,SelectedDoor) ->
 	OpenDoor = random:uniform(3),
-	case (element(OpenDoor, Doors) =:= 1) or (OpenDoor =:= SelectedDoor) of 
+	case (element(OpenDoor, Doors) =:= 1) or (OpenDoor =:= SelectedDoor) of
 		true -> open_door(Doors, SelectedDoor);
 		false -> OpenDoor
 	end.
@@ -1858,11 +1858,11 @@ or in iForth:
 
 : trial ( -- )
   3 choose 3 choose ( -- prize choice )
-  = IF  1 +TO stay-wins exit  ENDIF 
+  = IF  1 +TO stay-wins exit  ENDIF
   1 +TO switch-wins ;
 
 : trials ( n -- )
-  CLEAR stay-wins  
+  CLEAR stay-wins
   CLEAR switch-wins
   dup 0 ?DO  trial  LOOP
   CR   stay-wins DEC. ." / " dup DEC. ." staying wins,"
@@ -1944,8 +1944,8 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 
 ```fortran
 PROGRAM MONTYHALL
-                            
-  IMPLICIT NONE  
+
+  IMPLICIT NONE
 
   INTEGER, PARAMETER :: trials = 10000
   INTEGER :: i, choice, prize, remaining, show, staycount = 0, switchcount = 0
@@ -1958,13 +1958,13 @@ PROGRAM MONTYHALL
      CALL RANDOM_NUMBER(rnum)
      prize = INT(3*rnum) + 1
      door(prize) = .TRUE.              ! place car behind random door
-    
-     CALL RANDOM_NUMBER(rnum)   
+
+     CALL RANDOM_NUMBER(rnum)
      choice = INT(3*rnum) + 1          ! choose a door
 
      DO
-        CALL RANDOM_NUMBER(rnum)   
-        show = INT(3*rnum) + 1 
+        CALL RANDOM_NUMBER(rnum)
+        show = INT(3*rnum) + 1
         IF (show /= choice .AND. show /= prize) EXIT       ! Reveal a goat
      END DO
 
@@ -1982,11 +1982,11 @@ PROGRAM MONTYHALL
      ELSE IF (door(remaining)) THEN   ! You win by switching to other door
         switchcount = switchcount + 1
      END IF
-    
+
   END DO
 
   WRITE(*, "(A,F6.2,A)") "Chance of winning by not switching is", real(staycount)/trials*100, "%"
-  WRITE(*, "(A,F6.2,A)") "Chance of winning by switching is", real(switchcount)/trials*100, "%" 
+  WRITE(*, "(A,F6.2,A)") "Chance of winning by switching is", real(switchcount)/trials*100, "%"
 
 END PROGRAM MONTYHALL
 ```
@@ -2226,7 +2226,7 @@ doors := '123'
 strategy1 := strategy2 := 0
 
 every 1 to rounds do {
-   goats  := doors -- ( car := ?doors )  
+   goats  := doors -- ( car := ?doors )
    guess1 := ?doors
    show   := goats -- guess1
    if guess1 == car then strategy1 +:= 1
@@ -2370,8 +2370,8 @@ Example use:
 ```j
    simulate 1000
 limit  1000
-stay   304 
-switch 696 
+stay   304
+switch 696
 ```
 
 
@@ -2381,8 +2381,8 @@ Or, with more doors (and assuming this does not require new rules about how Mont
 ```j
    1 2 3 4 simulate 1000
 limit  1000
-stay   233 
-switch 388 
+stay   233
+switch 388
 ```
 
 
@@ -2406,9 +2406,9 @@ public class Monty{
 				shown = gen.nextInt(3);
 			//don't show the winner or the choice
 			}while(doors[shown] == 1 || shown == choice);
-			
+
 			stayWins += doors[choice];//if you won by staying, count it
-			
+
 			//the switched (last remaining) door is (3 - choice - shown), because 0+1+2=3
 			switchWins += doors[3 - choice - shown];
 		}
@@ -2444,7 +2444,7 @@ function montyhall(tests, doors) {
 	tests = tests ? tests : 1000;
 	doors = doors ? doors : 3;
 	var prizeDoor, chosenDoor, shownDoor, switchDoor, chosenWins = 0, switchWins = 0;
-	
+
 	// randomly pick a door excluding input doors
 	function pick(excludeA, excludeB) {
 		var door;
@@ -2453,10 +2453,10 @@ function montyhall(tests, doors) {
 		} while (door === excludeA || door === excludeB);
 		return door;
 	}
-	
+
 	// run tests
 	for (var i = 0; i < tests; i ++) {
-		
+
 		// pick set of doors
 		prizeDoor = pick();
 		chosenDoor = pick();
@@ -2470,7 +2470,7 @@ function montyhall(tests, doors) {
 			switchWins ++;
 		}
 	}
-	
+
 	// results
 	return {
 		stayWins: chosenWins + ' ' + (100 * chosenWins / tests) + '%',
@@ -2522,8 +2522,8 @@ var totalGames = 10000,
 	for (; i < j; ++i) {
 	    winningDoor = games[i];
 	    randomGuess = selectDoor();
-	    if ((randomGuess === winningDoor && !switchDoor) || 
-		(randomGuess !== winningDoor && switchDoor)) 
+	    if ((randomGuess === winningDoor && !switchDoor) ||
+		(randomGuess !== winningDoor && switchDoor))
 	    {
 		/*
 		 * If I initially guessed the winning door and didn't switch,
@@ -2567,9 +2567,9 @@ Wins when switching door 6630
 
 To make things interesting, I decided to generalize the problem to <tt>ncur</tt> doors and <tt>ncar</tt> cars.  To allow the MC to always show a goat behind a door after the contestant chooses, <math>ncur-ncar \ge 2</math>.
 
-I was was of two minds on the type of simulation to provide, so I wrote two different simulators.  The literal simulator mimics the mechanics of the game as literally as possible, shuffling the arrangement of cars behind doors and randomizes all choices.  This avoids any feel of cheating but results in rather complex code.  The clean simulator implements the game more elegantly but it might look like cheating. 
+I was was of two minds on the type of simulation to provide, so I wrote two different simulators.  The literal simulator mimics the mechanics of the game as literally as possible, shuffling the arrangement of cars behind doors and randomizes all choices.  This avoids any feel of cheating but results in rather complex code.  The clean simulator implements the game more elegantly but it might look like cheating.
 
-'''The Literal Simulation Function''' 
+'''The Literal Simulation Function'''
 
 ```Julia
 
@@ -2586,7 +2586,7 @@ function play_mh_literal{T<:Integer}(ncur::T=3, ncar::T=1)
     end
     if length(goats) > 0 # reveal goat
         deleteat!(curtains, findin(curtains, shuffle(goats)[1]))
-    else # no goats, so reveal car 
+    else # no goats, so reveal car
         deleteat!(curtains, rand(1:(ncur-1)))
     end
     pick = shuffle(curtains)[1]
@@ -2886,7 +2886,7 @@ end
 
 function montyStats(n)
     local car, pchoice, opens, change, win = montyHall(n)
-    
+
     local    change_and_win     =    change [  win:byte()]:sum()/   change :sum()*100
     local no_change_and_win     = (1-change)[  win:byte()]:sum()/(1-change):sum()*100
     local    change_and_win_not =    change [1-win:byte()]:sum()/   change :sum()*100
@@ -2932,30 +2932,30 @@ Module CheckIt {
                   If k <> guess Then Append other, k
             }
             If doors(guess) Then {
-                  Mont_Hall_show=other(Random(0,1)!)            
+                  Mont_Hall_show=other(Random(0,1)!)
             } Else {
                 If doors(other(0!)) Then {
                    Mont_Hall_show=other(1!)
                 } Else Mont_Hall_show=other(0!)
                 Delete Other, Mont_Hall_show
             }
-            Strategy=Each(Strat)            
+            Strategy=Each(Strat)
             While Strategy {
                   Select Case Eval(strategy)
-                  Case Random 
+                  Case Random
                         {
                               If Random(1,2)=1 Then {
-                                    If doors(guess) Then player_win_Random++     
-                              } else If doors(other(0!)) Then player_win_Random++ 
-                        } 
+                                    If doors(guess) Then player_win_Random++
+                              } else If doors(other(0!)) Then player_win_Random++
+                        }
                   Case Switch
                         If doors(other(0!)) Then player_win_switch++
                   Else
                         If doors(guess) Then player_win_stay++
                   End Select
             }
-      }      
-      Print "Stay: ";player_win_stay/total*100;"%"      
+      }
+      Print "Stay: ";player_win_stay/total*100;"%"
       Print "Random: ";player_win_Random/total*100;"%"
       Print "Switch: ";player_win_switch/total*100;"%"
 }
@@ -2987,8 +2987,8 @@ Switch: 66.61%
          firstChoices = r;
          nStayWins =  Count[Transpose[{winningDoors, firstChoices}], {d_, d_}];
          nSwitchWins = nGames - nStayWins;
-  
-    Grid[{{"Strategy", "Wins", "Win %"}, {"Stay", Row[{nStayWins, "/", nGames}], s=N[100 nStayWins/nGames]}, 
+
+    Grid[{{"Strategy", "Wins", "Win %"}, {"Stay", Row[{nStayWins, "/", nGames}], s=N[100 nStayWins/nGames]},
           {"Switch", Row[{nSwitchWins, "/", nGames}], 100 - s}},  Frame -> All]]
 ```
 
@@ -3020,27 +3020,27 @@ function montyHall(numDoors,numSimulations)
     %The first column will tallie wins, the second losses
     switchedDoors = [0 0];
     stayed = [0 0];
-    
+
 
     for i = (1:numSimulations)
-        
+
         availableDoors = (1:numDoors); %Preallocate the available doors
         winningDoor = randInt(numDoors); %Define the winning door
         playersOriginalChoice = randInt(numDoors); %The player picks his initial choice
-        
+
         availableDoors(playersOriginalChoice) = []; %Remove the players choice from the available doors
 
         %Pick the door to open from the available doors
         openDoor = availableDoors(randperm(numel(availableDoors))); %Sort the available doors randomly
         openDoor(openDoor == winningDoor) = []; %Make sure Monty doesn't open the winning door
         openDoor = openDoor(randInt(numel(openDoor))); %Choose a random door to open
-        
+
         availableDoors(availableDoors==openDoor) = []; %Remove the open door from the available doors
         availableDoors(end+1) = playersOriginalChoice; %Put the player's original choice back into the pool of available doors
         availableDoors = sort(availableDoors);
-        
+
         playersNewChoice = availableDoors(randInt(numel(availableDoors))); %Pick one of the available doors
-    
+
         if playersNewChoice == playersOriginalChoice
             switch playersNewChoice == winningDoor
                 case true
@@ -3058,12 +3058,12 @@ function montyHall(numDoors,numSimulations)
                     switchedDoors(2) = switchedDoors(2) + 1;
                 otherwise
                     error 'ERROR'
-            end        
+            end
         end
     end
-    
+
     disp(sprintf('Switch win percentage: %f%%\nStay win percentage: %f%%\n', [switchedDoors(1)/sum(switchedDoors),stayed(1)/sum(stayed)] * 100));
-        
+
 end
 ```
 
@@ -3168,7 +3168,7 @@ Output
 ```txt
 
 Switching wins  667335  times.
-Staying wins    332665  times.   
+Staying wins    332665  times.
 
 ```
 
@@ -3407,16 +3407,16 @@ This implementation is parametric over the number of doors. [[wp:Monty_Hall_prob
 ```perl6>enum Prize <Car Goat
 ;
 enum Strategy <Stay Switch>;
- 
+
 sub play (Strategy $strategy, Int :$doors = 3) returns Prize {
- 
+
     # Call the door with a car behind it door 0. Number the
     # remaining doors starting from 1.
     my Prize @doors = flat Car, Goat xx $doors - 1;
- 
+
     # The player chooses a door.
     my Prize $initial_pick = @doors.splice(@doors.keys.pick,1)[0];
- 
+
     # Of the n doors remaining, the host chooses n - 1 that have
     # goats behind them and opens them, removing them from play.
     while @doors > 1 {
@@ -3424,14 +3424,14 @@ sub play (Strategy $strategy, Int :$doors = 3) returns Prize {
 	    when Goat
 		given @doors.keys.pick;
     }
- 
+
     # If the player stays, they get their initial pick. Otherwise,
     # they get whatever's behind the remaining door.
     return $strategy === Stay ?? $initial_pick !! @doors[0];
 }
- 
+
 constant TRIALS = 10_000;
- 
+
 for 3, 10 -> $doors {
     my atomicint @wins[2];
     say "With $doors doors: ";
@@ -3449,10 +3449,10 @@ for 3, 10 -> $doors {
 {{out}}
 
 ```txt
-With 3 doors: 
+With 3 doors:
   Staying wins 34% of the time.
   Switching wins 66% of the time.
-With 10 doors: 
+With 10 doors:
   Staying wins 10% of the time.
   Switching wins 90% of the time.
 ```
@@ -3466,7 +3466,7 @@ Modified copy of [[Monty_Hall_problem#Euphoria|Euphoria]]
 ```Phix
 integer swapWins = 0, stayWins = 0, winner, choice, reveal, other
 atom t0 = time()
- 
+
 for game=1 to 1_000_000 do
     winner = rand(3)
     choice = rand(3)
@@ -3501,7 +3501,7 @@ Time: 0.16s
 function montyhall($iterations){
 	$switch_win = 0;
 	$stay_win = 0;
-		
+
 	foreach (range(1, $iterations) as $i){
 		$doors = array(0, 0, 0);
 		$doors[array_rand($doors)] = 1;
@@ -3509,19 +3509,19 @@ function montyhall($iterations){
 		do {
 			$shown = array_rand($doors);
 		} while($shown == $choice || $doors[$shown] == 1);
-			
+
 		$stay_win += $doors[$choice];
 		$switch_win += $doors[3 - $choice - $shown];
 	}
-		
+
 	$stay_percentages = ($stay_win/$iterations)*100;
 	$switch_percentages = ($switch_win/$iterations)*100;
-		
+
 	echo "Iterations: {$iterations} - ";
 	echo "Stayed wins: {$stay_win} ({$stay_percentages}%) - ";
 	echo "Switched wins: {$switch_win} ({$switch_percentages}%)";
 }
-	
+
         montyhall(10000);
 ?>
 ```
@@ -3618,7 +3618,7 @@ Output:
 ```txt
 
 Switching wins 665908 times.
-Staying wins   334092 times.         
+Staying wins   334092 times.
 
 ```
 
@@ -3630,7 +3630,7 @@ Use ghostscript or print this to a postscript printer
 ```PostScript
 %!PS
 /Courier             % name the desired font
-20 selectfont        % choose the size in points and establish 
+20 selectfont        % choose the size in points and establish
                      % the font as the current one
 
 % init random number generator
@@ -3644,7 +3644,7 @@ rand 3 mod			% winning door
 rand 3 mod			% first choice
 eq {
 	1 add
-} 
+}
 {
 	exch 1 add exch
 } ifelse
@@ -3652,14 +3652,14 @@ eq {
 
 % compute percentages
 2 index div 100 mul exch 2 index div 100 mul
- 
+
 
 % display result
 70 600 moveto
 (Switching the door: ) show
 80 string cvs show (%) show
 70 700 moveto
-(Keeping the same: ) show 
+(Keeping the same: ) show
 80 string cvs show (%) show
 
 
@@ -3692,13 +3692,13 @@ Function Play-MontyHall()
     {
     #Using a .NET object for randomization
     $objRandom = New-Object -TypeName System.Random
-    
+
     #Generating the winning door number
     $intWin = $objRandom.Next(1,4)
-    
+
     #Generating the chosen door
     $intChoice = $objRandom.Next(1,4)
-    
+
     #Generating the excluded number
     #Because there is no method to exclude a number from a range,
     #I let it re-generate in case it equals the winning number or
@@ -3706,14 +3706,14 @@ Function Play-MontyHall()
     $intLose = $objRandom.Next(1,4)
     While (($intLose -EQ $intWin) -OR ($intLose -EQ $intChoice))
         {$intLose = $objRandom.Next(1,4)}
-        
+
     #Generating the 'other' door
-    #Same logic applies as for the chosen door: it cannot be equal 
+    #Same logic applies as for the chosen door: it cannot be equal
     #to the winning door nor to the chosen door.
     $intSwitch = $objRandom.Next(1,4)
     While (($intSwitch -EQ $intLose) -OR ($intSwitch -EQ $intChoice))
         {$intSwitch = $objRandom.Next(1,4)}
-    
+
     #Simple counters per win for both categories
     #Because a child scope cannot change variables in the parent
     #scope, the scope of the counters is expanded script-wide.
@@ -3721,19 +3721,19 @@ Function Play-MontyHall()
         {$script:intKept++}
     If ($intSwitch -EQ $intWin)
         {$script:intSwitched++}
-    
+
     }
 
 #Looping the Monty Hall function for $intIterations times
 While ($intIterationCount -LT $intIterations)
     {
-    Play-MontyHall 
+    Play-MontyHall
     $intIterationCount++
     }
 
 #Output
 Write-Host "Results through $intIterations iterations:"
-Write-Host "Keep  : $intKept ($($intKept/$intIterations*100)%)" 
+Write-Host "Keep  : $intKept ($($intKept/$intIterations*100)%)"
 Write-Host "Switch: $intSwitched ($($intSwitched/$intIterations*100)%)"
 Write-Host ""
 ```
@@ -3773,16 +3773,16 @@ Procedure MontyHall(*results.wins)
       *results\stay + #goat
   EndSelect
 EndProcedure
- 
+
 OpenConsole()
 #Tries = 1000000
- 
+
 Define results.wins
 
 For i = 1 To #Tries
   MontyHall(@results)
 Next
- 
+
 PrintN("Trial runs for each option: " + Str(#Tries))
 PrintN("Wins when redeciding: " + Str(results\redecide) + " (" + StrD(results\redecide / #Tries * 100, 2) + "% chance)")
 PrintN("Wins when sticking:   " + Str(results\stay) + " (" + StrD(results\stay / #Tries * 100, 2) + "% chance)")
@@ -3864,7 +3864,7 @@ Switching allows you to win 66529 out of 100000 times.
 
 
 
-### Python 3 version: 
+### Python 3 version:
 
 Another (simpler in my opinion), way to do this is below, also in python 3:
 
@@ -3874,15 +3874,15 @@ import random
  #0 represent a goat
 
 stay = 0  #amount won if stay in the same position
-switch = 0 # amount won if you switch 
+switch = 0 # amount won if you switch
 
 for i in range(1000):
     lst = [1,0,0]           # one car and two goats
     random.shuffle(lst)     # shuffles the list randomly
-    
+
     ran = random.randrange(3) # gets a random number for the random guess
 
-    user = lst[ran] #storing the random guess 
+    user = lst[ran] #storing the random guess
 
     del(lst[ran]) # deleting the random guess
 
@@ -3892,10 +3892,10 @@ for i in range(1000):
             del(lst[huh]) # deletes a goat when it finds it
             break
         huh+=1
-        
+
     if user ==1: # if the original choice is 1 then stay adds 1
         stay+=1
-        
+
     if lst[0] == 1: # if the switched value is 1 then switch adds 1
         switch+=1
 
@@ -3912,21 +3912,21 @@ print("Switch = ",switch)
 
 ```rsplus
 # Since R is a vector based language that penalizes for loops, we will avoid
-#     for-loops, instead using "apply" statement variants (like "map" in other 
-#     functional languages).     
+#     for-loops, instead using "apply" statement variants (like "map" in other
+#     functional languages).
 
 set.seed(19771025)   # set the seed to set the same results as this code
 N <- 10000  # trials
 true_answers <- sample(1:3, N, replace=TRUE)
 
-# We can assme that the contestant always choose door 1 without any loss of 
+# We can assme that the contestant always choose door 1 without any loss of
 #    generality, by equivalence.  That is, we can always relabel the doors
-#    to make the user-chosen door into door 1.  
+#    to make the user-chosen door into door 1.
 # Thus, the host opens door '2' unless door 2 has the prize, in which case
 #    the host opens door 3.
 
-host_opens <- 2 + (true_answers == 2) 
-other_door <- 2 + (true_answers != 2)  
+host_opens <- 2 + (true_answers == 2)
+other_door <- 2 + (true_answers != 2)
 
 ## if always switch
 summary( other_door == true_answers )
@@ -3941,8 +3941,8 @@ summary(random_switch == true_answers)
 
 ## To go with the exact parameters of the Rosetta challenge, complicating matters....
 ##  Note that the player may initially choose any of the three doors (not just Door 1),
-##     that the host opens a different door revealing a goat (not necessarily Door 3), and 
-##     that he gives the player a second choice between the two remaining unopened doors. 
+##     that the host opens a different door revealing a goat (not necessarily Door 3), and
+##     that he gives the player a second choice between the two remaining unopened doors.
 
 N <- 10000  #trials
 true_answers <- sample(1:3, N, replace=TRUE)
@@ -3979,34 +3979,34 @@ summary(random_switch == true_answers)
 
 
 ```txt
-Results: 
+Results:
 
 > ## if always switch
 > summary( other_door == true_answers )
-   Mode   FALSE    TRUE 
-logical    3298    6702 
+   Mode   FALSE    TRUE
+logical    3298    6702
 > ## if we never switch
 > summary( true_answers == 1)
-   Mode   FALSE    TRUE 
-logical    6702    3298 
+   Mode   FALSE    TRUE
+logical    6702    3298
 > ## if we randomly switch
 > summary(random_switch == true_answers)
-   Mode   FALSE    TRUE 
-logical    5028    4972 
+   Mode   FALSE    TRUE
+logical    5028    4972
 
 
 > ## if always switch
 > summary( other_door == true_answers )
-   Mode   FALSE    TRUE 
-logical    3295    6705 
+   Mode   FALSE    TRUE
+logical    3295    6705
 > ## if we never switch
 > summary( true_answers == user_choice)
-   Mode   FALSE    TRUE 
-logical    6705    3295 
+   Mode   FALSE    TRUE
+logical    6705    3295
 > ## if we randomly switch
 > summary(random_switch == true_answers)
-   Mode   FALSE    TRUE 
-logical    4986    5014 
+   Mode   FALSE    TRUE
+logical    4986    5014
 ```
 
 
@@ -4038,10 +4038,10 @@ p100("By first choice" = (Pr.first_win <- mean(first_choice == prize_door)),
 #
 # Sample output:
 
-Number of doors: 4 
+Number of doors: 4
 Simulation yields % winning probability:  (2nd choice after host reveal)
- By first choice By second choice      Change gain 
-            24.7             36.5             48.0 
+ By first choice By second choice      Change gain
+            24.7             36.5             48.0
 
 ```
 
@@ -4140,7 +4140,7 @@ Say 'PL/I:' time('E') 'seconds'
 Say ' '
 Call time 'R'
 'java ziegen'
-Say 'NetRexx:' time('E') 'seconds'   
+Say 'NetRexx:' time('E') 'seconds'
 Exit
 r3: Return random(2)+1
 ```
@@ -4159,7 +4159,7 @@ PL/I:   0.328000 seconds
 
 Switching wins  667335  times.
 Staying wins    332665  times.
-NetRexx: 2.042000 seconds        
+NetRexx: 2.042000 seconds
 
 ```
 
@@ -4250,7 +4250,7 @@ swapper = 0
 sticker = 0
 revealdoor = 0
 for trial = 1 to total
-    prizedoor = random(3) + 1 
+    prizedoor = random(3) + 1
     guessdoor = random(3) + 1
     if prizedoor = guessdoor
        revealdoor = random(2) + 1
@@ -4259,11 +4259,11 @@ for trial = 1 to total
     else
        revealdoor = (prizedoor ^ guessdoor)
     ok
-    stickdoor = guessdoor 
+    stickdoor = guessdoor
     swapdoor = (guessdoor ^ revealdoor)
     if stickdoor = prizedoor sticker += 1 ok
     if swapdoor = prizedoor swapper += 1 ok
-next 
+next
 see "after a total of " + total + " trials," + nl
 see "the 'sticker' won " + sticker + " times (" + floor(sticker/total*100) + "%)" + nl
 see "the 'swapper' won " + swapper + " times (" + floor(swapper/total*100) + "%)" + nl
@@ -4292,16 +4292,16 @@ n = 10_000                  #number of times to play
 stay = switch = 0           #sum of each strategy's wins
 
 n.times do                  #play the game n times
-  
+
   #the doors reveal 2 goats and a car
   doors = [ :goat, :goat, :car ].shuffle
-  
+
   #random guess
   guess = rand(3)
-  
+
   #random door shown, but it is neither the guess nor the car
   begin shown = rand(3) end while shown == guess || doors[shown] == :car
-  
+
   if doors[guess] == :car
     #staying with the initial guess wins if the initial guess is the car
     stay += 1
@@ -4309,7 +4309,7 @@ n.times do                  #play the game n times
     #switching guesses wins if the unshown door is the car
     switch += 1
   end
-  
+
 end
 
 puts "Staying wins %.2f%% of the time."   % (100.0 * stay   / n)
@@ -4370,7 +4370,7 @@ const GAMES: usize = 3_000_000;
 fn main() {
     let mut switch_wins = 0;
     let mut rng = rand::thread_rng();
-    
+
     for _ in 0..GAMES {
         let mut doors = [Prize::Goat; 3];
         *rng.choose_mut(&mut doors).unwrap() = Prize::Car;
@@ -4380,9 +4380,9 @@ fn main() {
             switch_wins += 1;
         }
     }
-    println!("I played the game {total} times and won {wins} times ({percent}%).", 
-             total   = GAMES, 
-             wins    = switch_wins, 
+    println!("I played the game {total} times and won {wins} times ({percent}%).",
+             total   = GAMES,
+             wins    = switch_wins,
              percent = switch_wins as f64 / GAMES as f64 * 100.0
     );
 }
@@ -4401,28 +4401,28 @@ object MontyHallSimulation {
     val doors = Set(0, 1, 2)
     var stayStrategyWins = 0
     var switchStrategyWins = 0
-  
+
     1 to samples foreach { _ =>
       val prizeDoor = Random shuffle doors head;
       val choosenDoor = Random shuffle doors head;
       val hostDoor = Random shuffle (doors - choosenDoor - prizeDoor) head;
       val switchDoor = doors - choosenDoor - hostDoor head;
-      
+
       (choosenDoor, switchDoor) match {
         case (`prizeDoor`, _) => stayStrategyWins += 1
         case (_, `prizeDoor`) => switchStrategyWins += 1
       }
     }
-    
+
     def percent(n: Int) = n * 100 / samples
-    
+
     val report = """|%d simulations were ran.
                     |Staying won %d times (%d %%)
                     |Switching won %d times (%d %%)""".stripMargin
-    
-    println(report 
-            format (samples, 
-                    stayStrategyWins, percent(stayStrategyWins), 
+
+    println(report
+            format (samples,
+                    stayStrategyWins, percent(stayStrategyWins),
                     switchStrategyWins, percent(switchStrategyWins)))
   }
 }
@@ -4571,10 +4571,10 @@ Output:
 ```txt
 
  Switching, one wins
- 66649 games out of 100000   
- 
+ 66649 games out of 100000
+
  Staying, one wins
- 33403 games out of 100000  
+ 33403 games out of 100000
 
 ```
 
@@ -4670,7 +4670,7 @@ montyHall(n) ==
   fc:=[1+random(3) for j in 1..n]
   st:=reduce(_+,[1 for j in 1..n | wd.j=fc.j])
   p:=(st/n)::DoubleFloat
-  FORMAT(nil,"stay: ~A, switch: ~A",p,1-p)$Lisp 
+  FORMAT(nil,"stay: ~A, switch: ~A",p,1-p)$Lisp
 
 ```
 
@@ -4883,7 +4883,7 @@ create table MONTY_HALL(
   [RANDOM] int
   )
 
--- INIT 
+-- INIT
 truncate table MONTY_HALL
 
 declare @N int  , @i int -- No of Experiments and their counter
@@ -4892,9 +4892,9 @@ declare @rooms  int  ,  -- number of rooms
 		@car int , -- room with car
 		@alternative int -- alternative room
 
-select @rooms = 3, @N  = 100000 , @i = 0 
+select @rooms = 3, @N  = 100000 , @i = 0
 
--- EXPERIMENTS LOOP 
+-- EXPERIMENTS LOOP
 while  @i < @N begin
   select @car = FLOOR(rand()*@rooms)+1 , @origin = FLOOR(rand()*@rooms)+1
   select @alternative = FLOOR(rand()*(@rooms-1))+1
@@ -4947,7 +4947,7 @@ nbase=1 # or 0 if we want to see door numbers zero-based
 num_win=0; num_lose=0
 
 echo "Playing $num_rounds times, with $num_doors doors."
-[ "$num_doors" -lt 3 ] && { 
+[ "$num_doors" -lt 3 ] && {
   echo "Hey, there has to be at least 3 doors!!"
   exit 1
 }
@@ -4960,15 +4960,15 @@ function one_round() {
   # Host leaves this door AND the player's first choice closed, opens all others
   # (this WILL loop forever if there is only 1 door)
   host_skips_door=$winning_door
-  while [ "$host_skips_door" = "$player_picks_door" ]; do 
+  while [ "$host_skips_door" = "$player_picks_door" ]; do
     #echo -n "(Host looks at door $host_skips_door...) "
     host_skips_door=$[$RANDOM % $num_doors]
   done
-  
+
   # Output the result of this round
   #echo "Round $[$nbase+current_round]: "
   echo -n "Player chooses #$[$nbase+$player_picks_door]. "
-  [ "$num_doors" -ge 10 ] &&               
+  [ "$num_doors" -ge 10 ] &&
     # listing too many door numbers (10 or more) will just clutter the output
     echo -n "Host opens all except #$[$nbase+$host_skips_door] and #$[$nbase+$player_picks_door]. " \
   || {
@@ -5263,7 +5263,7 @@ do(games){
    doors := L(0,0,0);
    doors[(0).random(3)] = 1; // Set which one has the car
    choice := (0).random(3);  // Choose a door
-   while(1){ shown = (0).random(3); 
+   while(1){ shown = (0).random(3);
       if (not (shown == choice or doors[shown] == 1)) break; }
    switcherWins += doors[3 - choice - shown];
    keeperWins   += doors[choice];

@@ -109,7 +109,7 @@ If this is not the approach which would be most natural or idiomatic in your lan
 ] var, cities-raw
 
 "Index of first occurrence of 'Dar Es Salaam': " .
-"Dar Es Salaam" >r cities-raw @ 
+"Dar Es Salaam" >r cities-raw @
 (
   "name" m:@ r@ s:= if
     drop . cr ;;
@@ -117,8 +117,8 @@ If this is not the approach which would be most natural or idiomatic in your lan
   2drop
 ) a:each drop rdrop
 
-"The name of the first city in this list whose population is less than 5 million: " . 
-5 >r cities-raw @ 
+"The name of the first city in this list whose population is less than 5 million: " .
+5 >r cities-raw @
 (
   nip
   "population" m:@ r@ n:< if
@@ -128,7 +128,7 @@ If this is not the approach which would be most natural or idiomatic in your lan
 ) a:each drop rdrop
 
 "The population of the first city in this list whose name starts with the letter \"A\": " .
-'A >r cities-raw @ 
+'A >r cities-raw @
 (
   nip
   "name" m:@ 0 s:@ r@ n:= if
@@ -390,14 +390,14 @@ end nameBeginsWithA
 
 -- TEST
 on run
-    
+
     return {¬
         findIndex(nameIsDar, lstCities), ¬
         ¬
             |name| of find(popBelow5M, lstCities), ¬
         ¬
             population of find(nameBeginsWithA, lstCities)}
-    
+
 end run
 
 
@@ -427,7 +427,7 @@ on findIndex(f, xs)
     end tell
 end findIndex
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -461,14 +461,14 @@ This solution makes use of the 'bsearch' and 'lfind' library functions. Note: 'l
 #include <stdlib.h> /* bsearch */
 #include <string.h>
 #include <search.h> /* lfind */
- 
+
 #define LEN(x) (sizeof(x) / sizeof(x[0]))
- 
+
 struct cd {
     char *name;
     double population;
 };
- 
+
 /* Return -1 if name could not be found */
 int search_get_index_by_name(const char *name, const struct cd *data, const size_t data_length,
         int (*cmp_func)(const void *, const void *))
@@ -476,13 +476,13 @@ int search_get_index_by_name(const char *name, const struct cd *data, const size
     struct cd key = { (char *) name, 0 };
     struct cd *match = bsearch(&key, data, data_length,
             sizeof(struct cd), cmp_func);
- 
+
     if (match == NULL)
         return -1;
     else
         return ((intptr_t) match - (intptr_t) data) / sizeof(struct cd);
 }
- 
+
 /* Return -1 if no matching record can be found */
 double search_get_pop_by_name(const char *name, const struct cd *data, size_t data_length,
         int (*cmp_func)(const void *, const void *))
@@ -490,7 +490,7 @@ double search_get_pop_by_name(const char *name, const struct cd *data, size_t da
     struct cd key = { (char *) name, 0 };
     struct cd *match = lfind(&key, data, &data_length,
             sizeof(struct cd), cmp_func);
- 
+
     if (match == NULL)
         return -1;
     else
@@ -504,7 +504,7 @@ char* search_get_pop_threshold(double pop_threshold, const struct cd *data, size
     struct cd key = { NULL, pop_threshold };
     struct cd *match = lfind(&key, data, &data_length,
             sizeof(struct cd), cmp_func);
- 
+
     if (match == NULL)
         return NULL;
     else
@@ -515,7 +515,7 @@ int cd_nameChar_cmp(const void *a, const void *b)
 {
     struct cd *aa = (struct cd *) a;
     struct cd *bb = (struct cd *) b;
-	
+
 	int i,len = strlen(aa->name);
 
 	for(i=0;i<len;i++)
@@ -523,21 +523,21 @@ int cd_nameChar_cmp(const void *a, const void *b)
 			return -1;
 	return 0;
 }
- 
+
 int cd_name_cmp(const void *a, const void *b)
 {
     struct cd *aa = (struct cd *) a;
     struct cd *bb = (struct cd *) b;
     return strcmp(bb->name, aa->name);
 }
- 
+
 int cd_pop_cmp(const void *a, const void *b)
 {
     struct cd *aa = (struct cd *) a;
     struct cd *bb = (struct cd *) b;
     return bb->population >= aa->population;
 }
- 
+
 int main(void)
 {
     const struct cd citydata[] = {
@@ -552,13 +552,13 @@ int main(void)
         { "Abidjan", 4.4 },
         { "Casablanca", 3.98 }
     };
- 
+
     const size_t citydata_length = LEN(citydata);
- 
+
     printf("%d\n", search_get_index_by_name("Dar Es Salaam", citydata, citydata_length, cd_name_cmp));
     printf("%s\n", search_get_pop_threshold(5, citydata, citydata_length, cd_pop_cmp));
     printf("%lf\n", search_get_pop_by_name("A", citydata, citydata_length, cd_nameChar_cmp));
-    
+
     return 0;
 }
 
@@ -583,8 +583,8 @@ Khartoum-Omdurman
 <tt>std::find_if</tt> accepts a lambda as predicate.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
@@ -608,19 +608,19 @@ int main()
         { "Abidjan", 4.4 },
         { "Casablanca", 3.98 },
     };
-    
+
     auto i1 = std::find_if( cities.begin(), cities.end(),
         [](city c){ return c.name == "Dar Es Salaam"; } );
     if (i1 != cities.end()) {
         std::cout << i1 - cities.begin() << "\n";
     }
-    
+
     auto i2 = std::find_if( cities.begin(), cities.end(),
         [](city c){ return c.population < 5.0; } );
     if (i2 != cities.end()) {
         std::cout << i2->name << "\n";
     }
-    
+
     auto i3 = std::find_if( cities.begin(), cities.end(),
         [](city c){ return c.name.length() > 0 && c.name[0] == 'A'; } );
     if (i3 != cities.end()) {
@@ -670,11 +670,11 @@ namespace RosettaSearchListofRecords
             var index = dataset.FindIndex(x => ((string)x["name"]) == "Dar Es Salaam");
             Console.WriteLine(index);
 
-            // Find the name of the first city in this list whose population is less than 5 million 
+            // Find the name of the first city in this list whose population is less than 5 million
             var name = (string)dataset.Find(x => (double)x["population"] < 5.0)["name"];
             Console.WriteLine(name);
 
-            // Find the population of the first city in this list whose name starts with the letter "A" 
+            // Find the population of the first city in this list whose name starts with the letter "A"
             var aNamePopulation = (double)dataset.Find(x => ((string)x["name"]).StartsWith("A"))["population"];
             Console.WriteLine(aNamePopulation);
         }
@@ -743,7 +743,7 @@ Answer 3: 4.58
 * A third test-case has been added.
 }}
 
-We demonstrate the '''vector-search''' primitive, which takes as input a vector, and a predicate. 
+We demonstrate the '''vector-search''' primitive, which takes as input a vector, and a predicate.
 
 ```scheme
 
@@ -763,11 +763,11 @@ We demonstrate the '''vector-search''' primitive, which takes as input a vector,
 ;; convert JSON to EchoLisp instances of structures
 (set! cities
 	(vector-map (lambda(x) (json->struct x struct:city)) (json-import cities)))
-	
+
 ;; search by name, case indifferent
 (define (city-index name)
 	(vector-search (lambda(x) (string-ci=? (city-name x) name)) cities))
-	
+
 ;; returns first city name such as population < seuil
 (define (city-pop seuil)
 	(define idx (vector-search (lambda(x) (< (city-population x) seuil)) cities))
@@ -791,7 +791,7 @@ ELENA 4.1 :
 ```elena
 import extensions;
 import system'routines;
- 
+
 public program()
 {
     var dataset := new::
@@ -807,13 +807,13 @@ public program()
         new :: { Name = "Abidjan";  Population = 4.4r; },
         new :: { Name = "Casablanca";  Population = 3.98r; }
     );
- 
+
     var index := dataset.selectBy:(r => r.Name).toArray().indexOfElement("Dar Es Salaam");
     console.printLine(index);
- 
+
     var name := dataset.filterBy:(c => c.Population < 5.0r).toArray().FirstMember.Name;
     console.printLine(name);
- 
+
     var namePopulation := dataset.filterBy:(c => c.Name.startingWith("A")).toArray().FirstMember.Population;
     console.printLine(namePopulation)
 }
@@ -929,7 +929,7 @@ The specification mentions an ordered list: here, the items are indeed ordered i
 
 Such arrays involve the ability to access an individual city's information at random, simply by specifying the index into the CITY array, however the given problem requires only sequential access. In such a case, the storage for the city elements could be formed as a linked-list which would be followed sequentially. Even so, random access can be regained via an array such as XCNAME, which now would hold the storage address of the corresponding CITY element. And as ever, how long is a piece of string? Here, ten.
 
-If the data were stored as records in a disc file, a record zero won't exist and so appropriate testing for "not found" will be required. For this example however there is no attempt either to prepare a suitable "not found" entry nor to test and evade such a misfortune. The test data employed do not provoke such errors... 
+If the data were stored as records in a disc file, a record zero won't exist and so appropriate testing for "not found" will be required. For this example however there is no attempt either to prepare a suitable "not found" entry nor to test and evade such a misfortune. The test data employed do not provoke such errors...
 ```Fortran
       MODULE SEMPERNOVIS	!Keep it together.
        TYPE CITYSTAT		!Define a compound data type.
@@ -1117,9 +1117,9 @@ func main() {
         log.Fatal(err)
     }
     fmt.Fprintln(f, `package data
-    
+
 import "datadef"
-    
+
 var List = datadef.List {`)
     for i, e := range l {
         fmt.Fprintf(f, "   %d: {%q, %g},\n", i, e.Name, e.Population)
@@ -1132,9 +1132,9 @@ var List = datadef.List {`)
 
 ```go
 package data
-    
+
 import "datadef"
-    
+
 var List = datadef.List {
    0: {"Lagos", 21},
    1: {"Cairo", 15.2},
@@ -1464,7 +1464,7 @@ Thus, we could say:
 
 
 ```J
-   1 (= >./)@(* 5&>)@:> gsf data 
+   1 (= >./)@(* 5&>)@:> gsf data
 5
 ```
 
@@ -1472,7 +1472,7 @@ Thus, we could say:
 But this doesn't seem any clearer or more concise than our previous expression which finds the index of the first example of the most populous city with a population less than five million. Not only that, but if there were multiple cities which had the same population number which satisfied this constraint, this version would return all of those indices where the task explicitly required we return the first example.
 
 
-###  J: Another approach 
+###  J: Another approach
 
 The following approach is arguably more natural in J than requiring a dictionary-type structure.
 
@@ -1661,7 +1661,7 @@ Khartoum-Omdurman
 ```JavaScript
 (function () {
     'use strict';
- 
+
     // find :: (a -> Bool) -> [a] -> Maybe a
     function find(f, xs) {
         for (var i = 0, lng = xs.length; i < lng; i++) {
@@ -1669,16 +1669,16 @@ Khartoum-Omdurman
         }
         return undefined;
     }
- 
+
     // findIndex :: (a -> Bool) -> [a] -> Maybe Int
     function findIndex(f, xs) {
         for (var i = 0, lng = xs.length; i < lng; i++) {
             if (f(xs[i])) return i;
-        }   
+        }
         return undefined;
     }
- 
- 
+
+
     var lst = [
       { "name": "Lagos",                "population": 21.0  },
       { "name": "Cairo",                "population": 15.2  },
@@ -1691,23 +1691,23 @@ Khartoum-Omdurman
       { "name": "Abidjan",              "population":  4.4  },
       { "name": "Casablanca",           "population":  3.98 }
     ];
- 
+
     return {
         darEsSalaamIndex: findIndex(function (x) {
             return x.name === 'Dar Es Salaam';
         }, lst),
- 
+
         firstBelow5M: find(function (x) {
                 return x.population < 5;
             }, lst)
             .name,
- 
+
         firstApop: find(function (x) {
                 return x.name.charAt(0) === 'A';
             }, lst)
             .population
     };
- 
+
 })();
 ```
 
@@ -1728,7 +1728,7 @@ Khartoum-Omdurman
 ```JavaScript
 (() => {
     'use strict';
- 
+
     let lst = [
           { "name": "Lagos",                "population": 21.0  },
           { "name": "Cairo",                "population": 15.2  },
@@ -1741,7 +1741,7 @@ Khartoum-Omdurman
           { "name": "Abidjan",              "population":  4.4  },
           { "name": "Casablanca",           "population":  3.98 }
         ];
- 
+
     return {
         darEsSalaamIndex: lst.findIndex(x => x.name === 'Dar Es Salaam'),
         firstBelow5M: lst.find(x => x.population < 5)
@@ -1749,7 +1749,7 @@ Khartoum-Omdurman
         firstApop: lst.find(x => x.name[0] === 'A')
             .population
     };
- 
+
 })();
 ```
 
@@ -1776,7 +1776,7 @@ def first(s): [s][0];
 
 This will emit `null` if the stream, s, is empty.
 
-In each case where `first/1` is used below, a less efficient alternative is also shown. 
+In each case where `first/1` is used below, a less efficient alternative is also shown.
 
 ====Find the (zero-based) index of the first city in the list whose name is "Dar Es Salaam"====
 
@@ -1904,7 +1904,7 @@ data = [\
   [ "name": "Abidjan",              "population":  4.4  ],\
   [ "name": "Casablanca",           "population":  3.98 ]\
 ]
-  
+
 q = QUOTE
 
 -- Find the (zero-based) index of the first city in the list whose name is "Dar Es Salaam"
@@ -1995,7 +1995,7 @@ searchRec := proc(rec, pred, operation)
 			return operation(rec[i],i):
 		fi:
 	od:
-end proc:	
+end proc:
 searchRec(rec, x->x["name"] = "Dar Es Salaam", (x,i)->print(i-1)): # minus 1 since Maple is 1-indexed
 searchRec(rec, x->x["population"]<5, (x,i)->print(x["name"])):
 searchRec(rec, x->x["name"][1] = "A", (x,i)->print(x["population"])):
@@ -2018,15 +2018,15 @@ searchRec(rec, x->x["name"][1] = "A", (x,i)->print(x["population"])):
 ```Mathematica
 
 data = Dataset[{
-  <|"name" -> "Lagos", "population" -> 21.|>, 
-  <|"name" -> "Cairo", "population" -> 15.2|>, 
-  <|"name" -> "Kinshasa-Brazzaville", "population" -> 11.3|>, 
-  <|"name" -> "Greater Johannesburg", "population" -> 7.55|>, 
-  <|"name" -> "Mogadishu", "population" -> 5.85|>, 
-  <|"name" -> "Khartoum-Omdurman", "population" -> 4.98|>, 
+  <|"name" -> "Lagos", "population" -> 21.|>,
+  <|"name" -> "Cairo", "population" -> 15.2|>,
+  <|"name" -> "Kinshasa-Brazzaville", "population" -> 11.3|>,
+  <|"name" -> "Greater Johannesburg", "population" -> 7.55|>,
+  <|"name" -> "Mogadishu", "population" -> 5.85|>,
+  <|"name" -> "Khartoum-Omdurman", "population" -> 4.98|>,
   <|"name" -> "Dar Es Salaam", "population" -> 4.7|>,
-  <|"name" -> "Alexandria", "population" -> 4.58|>, 
-  <|"name" -> "Abidjan", "population" -> 4.4|>, 
+  <|"name" -> "Alexandria", "population" -> 4.58|>,
+  <|"name" -> "Abidjan", "population" -> 4.4|>,
   <|"name" -> "Casablanca", "population" -> 3.98|>
 }]
 
@@ -2054,7 +2054,7 @@ data[Select[StringMatchQ[#name, "A*"] &]][1, "population"]
 type city = {
   name : string;
   population : float
-} 
+}
 
 (* Second: The actual list of records containing the data. *)
 let cities = [
@@ -2296,7 +2296,7 @@ $data_array = [
   ['name' => 'Alexandria', 'population' => 4.58],
   ['name' => 'Abidjan', 'population' => 4.4],
   ['name' => 'Casablanca', 'population' => 3.98],
-]; 
+];
 $found=0;
 $search_name = 'Dar Es Salaam';
 echo "Find the (zero-based) index of the first city in the list whose name is \"$search_name\" - 6";
@@ -2304,7 +2304,7 @@ echo "Find the (zero-based) index of the first city in the list whose name is \"
 $index = array_search($search_name, array_column($data_array, 'name'));
 $population = $data_array[$index]['population'];
 echo "\nAnswer 1: Index: [$index] Population for $search_name is $population Million\n";
- 
+
 $search_val = 5;
 echo "\nFind the name of the first city in this list whose population is less than $search_val million - Khartoum-Omdurman";
 foreach ($data_array as $index => $row) {
@@ -2314,7 +2314,7 @@ foreach ($data_array as $index => $row) {
     break;
   }
 }
- 
+
 $search_term = 'A';
 echo "\n\nFind the population of the first city in this list whose name starts with the letter \"$search_term\" - 4.58";
 foreach ($data_array as $index => $row) {
@@ -2323,7 +2323,7 @@ foreach ($data_array as $index => $row) {
     break;
   }
 }
- 
+
 echo "\nDone...";
 
 Output:
@@ -2605,21 +2605,21 @@ Use unnamed functions with findf for the other two test cases.
 
 ## REXX
 
-It is more idiomatic in REXX to use sparse arrays to express a list of CSV values, especially those which have 
+It is more idiomatic in REXX to use sparse arrays to express a list of CSV values, especially those which have
 
 embedded blanks in them   (or other special characters).
 
-Most REXX interpreters use (very efficient) hashing to index sparse arrays, which is much faster than performing an 
+Most REXX interpreters use (very efficient) hashing to index sparse arrays, which is much faster than performing an
 
 incremental (sequential) search through an indexed array.
 
-Only one loop is needed to find the result for the 2nd task requirement   (although the loop could be eliminated). 
+Only one loop is needed to find the result for the 2nd task requirement   (although the loop could be eliminated).
 
 The other two task requirements are found without using traditional   '''IF'''   statements.
 
 The approach taken in this REXX program makes use of a   '''DO WHILE'''   and   '''DO UNTIL'''   structure which
 
-makes it much simpler (and idiomatic) and easier to code   (instead of adding multiple   '''IF'''   statements to a 
+makes it much simpler (and idiomatic) and easier to code   (instead of adding multiple   '''IF'''   statements to a
 
 generic search routine/function).
 
@@ -2718,15 +2718,15 @@ Khartoum-Omdurman
 
 ```Ruby
 cities = [
-    {name: "Lagos", population: 21}, 
-    {name: "Cairo", population: 15.2}, 
-    {name: "Kinshasa-Brazzaville", population: 11.3}, 
-    {name: "Greater Johannesburg", population: 7.55}, 
-    {name: "Mogadishu", population: 5.85}, 
-    {name: "Khartoum-Omdurman", population: 4.98}, 
-    {name: "Dar Es Salaam", population: 4.7}, 
-    {name: "Alexandria", population: 4.58}, 
-    {name: "Abidjan", population: 4.4}, 
+    {name: "Lagos", population: 21},
+    {name: "Cairo", population: 15.2},
+    {name: "Kinshasa-Brazzaville", population: 11.3},
+    {name: "Greater Johannesburg", population: 7.55},
+    {name: "Mogadishu", population: 5.85},
+    {name: "Khartoum-Omdurman", population: 4.98},
+    {name: "Dar Es Salaam", population: 4.7},
+    {name: "Alexandria", population: 4.58},
+    {name: "Abidjan", population: 4.4},
     {name: "Casablanca", population: 3.98},
 ]
 
@@ -2896,7 +2896,7 @@ In a similar way (srfi 132) provides sorting routines with user-defined predicat
                     (name place-name)
                     (population place-population))
 
-(define *items* 
+(define *items*
   (list-sort ; sort by decreasing population
     (lambda (r1 r2) (> (place-population r1)
                        (place-population r2)))
@@ -2914,25 +2914,25 @@ In a similar way (srfi 132) provides sorting routines with user-defined predicat
 ;; Find the (zero-based) index of the first city in the list
 ;; whose name is "Dar Es Salaam"
 (display "Test 1: ")
-(display (list-index (lambda (item) 
+(display (list-index (lambda (item)
                        (string=? "Dar Es Salaam" (place-name item)))
                      *items*))
 (newline)
 
-;; Find the name of the first city in this list 
+;; Find the name of the first city in this list
 ;; whose population is less than 5 million
 (display "Test 2: ")
-(display (place-name 
-           (find (lambda (item) 
+(display (place-name
+           (find (lambda (item)
                    (< (place-population item) 5.0))
                  *items*)))
 (newline)
 
-;; Find the population of the first city in this list 
-;; whose name starts with the letter "A" 
+;; Find the population of the first city in this list
+;; whose name starts with the letter "A"
 (display "Test 3: ")
-(display (place-population 
-           (find (lambda (item) 
+(display (place-population
+           (find (lambda (item)
                    (char=? (string-ref (place-name item) 0)
                            #\A))
                  *items*)))
@@ -3087,14 +3087,14 @@ Khartoum-Omdurman
 
 ```zkl
 list:=T(SD("name","Lagos", 		  "population",21.0), // SD is a fixed dictionary
-        SD("name","Cairo", 		  "population",15.2), 
-	SD("name","Kinshasa-Brazzaville", "population",11.3), 
-	SD("name","Greater Johannesburg", "population", 7.55), 
-	SD("name","Mogadishu", 		  "population", 5.85), 
-	SD("name","Khartoum-Omdurman", 	  "population", 4.98), 
-	SD("name","Dar Es Salaam", 	  "population", 4.7), 
-	SD("name","Alexandria", 	  "population", 4.58), 
-	SD("name","Abidjan", 		  "population", 4.4), 
+        SD("name","Cairo", 		  "population",15.2),
+	SD("name","Kinshasa-Brazzaville", "population",11.3),
+	SD("name","Greater Johannesburg", "population", 7.55),
+	SD("name","Mogadishu", 		  "population", 5.85),
+	SD("name","Khartoum-Omdurman", 	  "population", 4.98),
+	SD("name","Dar Es Salaam", 	  "population", 4.7),
+	SD("name","Alexandria", 	  "population", 4.58),
+	SD("name","Abidjan", 		  "population", 4.4),
 	SD("name","Casablanca", 	  "population", 3.98));
 
 // Test case 1:

@@ -10,29 +10,29 @@ categories = []
 tags = []
 +++
 
-{{task|Encryption}} 
+{{task|Encryption}}
 [[Category:String_manipulation]]
 
 
 ;Task:
-Implement a   '''rot-13'''   function   (or procedure, class, subroutine, or other "callable" object as appropriate to your programming environment). 
+Implement a   '''rot-13'''   function   (or procedure, class, subroutine, or other "callable" object as appropriate to your programming environment).
 
-Optionally wrap this function in a utility program   (like [[:Category:Tr|tr]],   which acts like a common [[UNIX]] utility, performing a line-by-line rot-13 encoding of every line of input contained in each file listed on its command line,   or (if no filenames are passed thereon) acting as a filter on its   "standard input." 
+Optionally wrap this function in a utility program   (like [[:Category:Tr|tr]],   which acts like a common [[UNIX]] utility, performing a line-by-line rot-13 encoding of every line of input contained in each file listed on its command line,   or (if no filenames are passed thereon) acting as a filter on its   "standard input."
 
 
 (A number of UNIX scripting languages and utilities, such as   ''awk''   and   ''sed''   either default to processing files in this way or have command line switches or modules to easily implement these wrapper semantics, e.g.,   [[Perl]]   and   [[Python]]).
 
-The   '''rot-13'''   encoding is commonly known from the early days of Usenet "Netnews" as a way of obfuscating text to prevent casual reading of   [[wp:Spoiler (media)|spoiler]]   or potentially offensive material. 
+The   '''rot-13'''   encoding is commonly known from the early days of Usenet "Netnews" as a way of obfuscating text to prevent casual reading of   [[wp:Spoiler (media)|spoiler]]   or potentially offensive material.
 
 Many news reader and mail user agent programs have built-in '''rot-13''' encoder/decoders or have the ability to feed a message through any external utility script for performing this (or other) actions.
 
-The definition of the rot-13 function is to simply replace every letter of the ASCII alphabet with the letter which is "rotated" 13 characters "around" the 26 letter alphabet from its normal cardinal position   (wrapping around from   '''z'''   to   '''a'''   as necessary). 
+The definition of the rot-13 function is to simply replace every letter of the ASCII alphabet with the letter which is "rotated" 13 characters "around" the 26 letter alphabet from its normal cardinal position   (wrapping around from   '''z'''   to   '''a'''   as necessary).
 
-Thus the letters   '''abc'''   become   '''nop'''   and so on. 
+Thus the letters   '''abc'''   become   '''nop'''   and so on.
 
-Technically '''rot-13''' is a   "mono-alphabetic substitution cipher"   with a trivial   "key". 
+Technically '''rot-13''' is a   "mono-alphabetic substitution cipher"   with a trivial   "key".
 
-A proper implementation should work on upper and lower case letters, preserve case, and pass all non-alphabetic characters 
+A proper implementation should work on upper and lower case letters, preserve case, and pass all non-alphabetic characters
 in the input stream through without alteration.
 
 
@@ -47,7 +47,7 @@ in the input stream through without alteration.
 
 ## 360 Assembly
 
-Sytem/360 uses EBCDIC encoding. 
+Sytem/360 uses EBCDIC encoding.
 The power of the CISC architecture, only one hardware instruction (TR) does all the job!
 
 ```360asm
@@ -60,7 +60,7 @@ ROT13    CSECT
          XPRNT  CC,L'CC
          BR     R14                return to caller
 CC       DC     CL10'{NOWHERE!}'
-TABLE    DC     CL64' '   
+TABLE    DC     CL64' '
 *                    0123456789ABCDEF
          DC     CL16'           .<(+|'   X'4.'
          DC     CL16'          !$*);^'   X'5.'
@@ -175,7 +175,7 @@ with Ada.Strings.Maps; use Ada.Strings.Maps;
 with Ada.Command_Line; use Ada.Command_Line;
 
 procedure Rot_13 is
-   
+
    From_Sequence : Character_Sequence := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
    Result_Sequence : Character_Sequence := "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
    Rot_13_Mapping : Character_Mapping := To_Mapping(From_Sequence, Result_Sequence);
@@ -184,7 +184,7 @@ procedure Rot_13 is
    Stdio : Stream_Access := Stream(Ada.Text_IO.Standard_Input);
    Stdout : Stream_Access := Stream(Ada.Text_Io.Standard_Output);
    Input : Ada.Text_Io.File_Type;
- 
+
 begin
    if Argument_Count > 0 then
       for I in 1..Argument_Count loop
@@ -192,7 +192,7 @@ begin
             Ada.Text_Io.Open(File => Input, Mode => Ada.Text_Io.In_File, Name => Argument(I));
             Stdio := Stream(Input);
              while not Ada.Text_Io.End_Of_File(Input) loop
-               In_Char :=Character'Input(Stdio); 
+               In_Char :=Character'Input(Stdio);
                Character'Output(Stdout, Value(Rot_13_Mapping, In_Char));
             end loop;
             Ada.Text_IO.Close(Input);
@@ -205,7 +205,7 @@ begin
       end loop;
    else
       while not Ada.Text_Io.End_Of_File loop
-         In_Char :=Character'Input(Stdio); 
+         In_Char :=Character'Input(Stdio);
          Character'Output(Stdout, Value(Rot_13_Mapping, In_Char));
       end loop;
    end if;
@@ -311,7 +311,7 @@ on rot13(str)
             end if
         end |λ|
     end script
-    
+
     intercalate("", map(rt13, characters of str))
 end rot13
 
@@ -319,7 +319,7 @@ end rot13
 -- TEST ----------------------------------------------------------------------
 on run
     rot13("nowhere ABJURER")
-    
+
     -->  "abjurer NOWHERE"
 end run
 
@@ -346,7 +346,7 @@ on intercalate(strText, lstText)
     return strJoined
 end intercalate
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -422,7 +422,7 @@ Str1 := Rot13(Str0)
 Str2 := Rot13(Str1)
 MsgBox % Str0 "`n" Str1 "`n" Str2
 
-Rot13(string) 
+Rot13(string)
 {
    Loop Parse, string
    {
@@ -471,7 +471,7 @@ Rot13(string) {
 <!--  http://ideone.com/TTZykC -->
 
 ```awk
-# usage: awk -f rot13.awk 
+# usage: awk -f rot13.awk
 BEGIN {
   for(i=0; i < 256; i++) {
     amap[sprintf("%c", i)] = i
@@ -517,9 +517,9 @@ PRINT "Output: ", REPLACE$(s$, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUV
 user@host $ bacon rot13
 Converting 'rot13.bac'... done, 2 lines were processed in 0.001 seconds.
 Compiling 'rot13.bac'... cc  -c rot13.bac.c
-cc -o rot13 rot13.bac.o -lbacon -lm 
+cc -o rot13 rot13.bac.o -lbacon -lm
 Done, program 'rot13' ready.
-user@host $ ./rot13 
+user@host $ ./rot13
 String: Oolite quick Thargoid jumps lazy Vipers = blown up + special fx
 Output: Bbyvgr dhvpx Gunetbvq whzcf ynml Ivcref = oybja hc + fcrpvny sk
 
@@ -597,14 +597,14 @@ len = length(str$)
 
 for i = 1 to len
     iTemp =  asc(mid(str$,i,1))
- 
+
     if iTemp > 64 AND iTemp < 91 then
         iTemp = ((iTemp - 65) + iOffset) % 26
         print chr(iTemp + 65);
     else
         print chr(iTemp);
-    end if  
- 
+    end if
+
 next i
 
 ```
@@ -650,7 +650,7 @@ NEGUHE:  VS LBH JVYY ABG FUBJ HF GUR TENVY, JR FUNYY GNXR LBHE PNFGYR
         PRINT FNrot13(A$)
       UNTIL FALSE
       END
-      
+
       DEF FNrot13(A$)
       LOCAL A%,B$,C$
       IF A$="" THEN =""
@@ -762,8 +762,8 @@ blsq ) "URYYB JBEYQ"{{'A'Zr\\/Fi}m[13?+26.%'A'Zr\\/si}ww
 The following code can handle all character sets, even if the letters are not in a contiguous range (in ASCII they are, in EBCDIC they aren't).
 
 
-```c>#include <ctype.h
-
+```c
+#include <ctype.h>
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -791,7 +791,7 @@ static void rot13_file(FILE *fp)
 {
 	int ch;
 	while ((ch = fgetc(fp)) != EOF) {
-		fputc(rot13_table[ch], stdout);                
+		fputc(rot13_table[ch], stdout);
 	}
 }
 
@@ -865,8 +865,8 @@ class Program
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <istream>
 #include <ostream>
 #include <fstream>
@@ -949,8 +949,8 @@ int main(int argc, char* argv[])
 Here is an other approach which can rotate by any number:
 {{libheader|Boost}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <boost/iostreams/concepts.hpp>    // output_filter
 #include <boost/iostreams/operations.hpp>  // put
@@ -958,7 +958,7 @@ Here is an other approach which can rotate by any number:
 #include <fstream>
 namespace io = boost::iostreams;
 
-class rot_output_filter : public io::output_filter 
+class rot_output_filter : public io::output_filter
 {
 public:
     explicit rot_output_filter(int r=13):rotby(r),negrot(alphlen-r){};
@@ -1000,8 +1000,8 @@ int main(int argc, char *argv[])
 ### C++11
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 #include <fstream>
 
@@ -1077,7 +1077,7 @@ All invocations produce "Gur Dhvpx Oebja Sbk Whzcrq Bire Gur Ynml Qbt!"
        DATA DIVISION.
        LOCAL-STORAGE SECTION.
        78  STR-LENGTH   VALUE 100.
- 
+
        78  normal-lower VALUE "abcdefghijklmnopqrstuvwxyz".
        78  rot13-lower  VALUE "nopqrstuvwxyzabcdefghijklm".
 
@@ -1288,7 +1288,7 @@ func Char.rot13() {
     }
     return this
 }
- 
+
 func String.rot13() {
     var cs = []
     for c in this {
@@ -1338,7 +1338,7 @@ ELENA 4.x :
 import system'routines;
 import extensions;
 import extensions'text;
- 
+
 singleton rotConvertor
 {
     char convert(char ch)
@@ -1351,14 +1351,14 @@ singleton rotConvertor
         {
             ^ (ch.toInt() - 13).toChar()
         };
- 
+
         ^ ch
     }
- 
+
     string convert(string s)
         = s.selectBy:(ch => rotConvertor.convert(ch)).summarize(new StringWriter());
 }
- 
+
 public program()
 {
     if (program_arguments.Length > 1)
@@ -1393,7 +1393,7 @@ defmodule RC do
     Enum.map(clist, f)
   end
 end
- 
+
 IO.inspect encode = RC.rot13('Rosetta Code')
 IO.inspect RC.rot13(encode)
 ```
@@ -1636,7 +1636,7 @@ CLASS CircularQueue
 	head
 	tail
 	here
-	
+
 	SUB INITIALIZE(dArray)
 		head = 0
 		tail = 0
@@ -1646,16 +1646,16 @@ CLASS CircularQueue
 			tail = tail + 1
 		NEXT
 	END SUB
-	
+
 	SUB TERMINATE()
 		REM
 	END SUB
-	
+
 	METHOD Put(s AS STRING)
 		items[tail] = s
 		tail = tail + 1
 	END METHOD
-	
+
 	METHOD Find(s AS STRING)
 		FOR DIM i = head TO tail - 1
 			IF items[i] = s THEN
@@ -1665,16 +1665,16 @@ CLASS CircularQueue
 		NEXT
 		RETURN FALSE
 	END METHOD
-	
+
 	METHOD Move(n AS INTEGER)
 		DIM bound AS INTEGER = UBOUND(items) + 1
 		here = (here + n) MOD bound
 	END METHOD
-	
+
 	METHOD Recall()
 		RETURN items[here]
 	END METHOD
-	
+
 	PROPERTY Size()
 		RETURN COUNT(items)
 	END PROPERTY
@@ -1725,7 +1725,7 @@ A table driven version which should be more efficient. The mechanism is flexible
 
 : xlate create does> ( c -- c' ) + c@ ;
 
-xlate rot13 
+xlate rot13
   char A         0    ,chars
   char Z 1+ char N    ,chars
   char N    char A    ,chars
@@ -1739,7 +1739,7 @@ xlate rot13
 
 : .rot13" ( string -- )
   [char] " parse 2dup rot13-string type ;
- 
+
 .rot13" abjurer NOWHERE"   \ nowhere ABJURER
 ```
 
@@ -1839,17 +1839,17 @@ one
 Sub rot13(ByRef s As String)
   If s = "" Then Exit Sub
   Dim code As Integer
-  For i As Integer = 0 To Len(s) - 1    
+  For i As Integer = 0 To Len(s) - 1
     Select Case As Const s[i]
       Case 65 To 90  '' A to Z
         code = s[i] + 13
         If code > 90 Then code -= 26
         s[i] = code
-      Case 97 To 122 '' a to z 
+      Case 97 To 122 '' a to z
         code = s[i] + 13
         If code > 122 Then code -= 26
         s[i] = code
-     End Select 
+     End Select
   Next
 End Sub
 
@@ -2173,7 +2173,7 @@ main = print $ rot13 <$> "Abjurer nowhere"
 "Nowhere abjurer"
 ```
 
- 
+
 To wrap rot13 as a utility program, here's a quick implementation of a general framework:
 
 
@@ -2190,7 +2190,7 @@ hInteract f hIn hOut =
 processByTemp :: (Handle -> Handle -> IO ()) -> String -> IO ()
 processByTemp f name = do
   hIn <- openFile name ReadMode
-  let tmp = name ++ "$" 
+  let tmp = name ++ "$"
   hOut <- openFile tmp WriteMode
   f hIn hOut
   hClose hIn
@@ -2204,7 +2204,7 @@ process f ns = mapM_ (processByTemp f) ns
 ```
 
 
-Then the wrapped program is simply 
+Then the wrapped program is simply
 
 ```haskell
 main = do
@@ -2258,7 +2258,7 @@ return map(s,a,n)
 end
 ```
 
-This example uses a number of Icon features.  
+This example uses a number of Icon features.
 * alternation ( x | y ) selects and opens a file if supplied or fall back to standard output
 * repeated alternation ( |x ) is used to generate the contents of the input file
 * the rot13 procedure does a one time setup (initially) of persistent (static) mapping strings so the procedure can return the rot13 mapping
@@ -2353,7 +2353,7 @@ function rot13(value){
     if (c.toUpperCase() <= "M")
       return String.fromCharCode(c.charCodeAt(0) + 13);
 
-    return String.fromCharCode(c.charCodeAt(0) - 13);  
+    return String.fromCharCode(c.charCodeAt(0) - 13);
   }
 
   return _.map(value.split(""), singleChar).join("");
@@ -2641,7 +2641,7 @@ define string->rot13 => {
         // We only modify these ranges, set range if we should modify
         #int >= 65 and #int < 91  ? local(a=65,b=91)  |
         #int >= 97 and #int < 123 ? local(a=97,b=123) | local(a=0,b=0)
-   
+
         if(#a && #b) => {
             #i = (#int+13) % #b         // loop back if past ceiling (#b)
             #i += #a * (1 - #i / #a)    // offset if below floor (#a)
@@ -2671,7 +2671,7 @@ Evtug jurer lbh yrsg uvz.'->rot13
 ```txt
 NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm
 
-Jurer qb lbh svaq n qbt jvgu ab yrtf? 
+Jurer qb lbh svaq n qbt jvgu ab yrtf?
 Right where you left him.
 ```
 
@@ -2688,12 +2688,12 @@ define rot13(p::string) => {
         i
     )
 
-    with char in #p->eachCharacter 
+    with char in #p->eachCharacter
     let c = bytes(#char) do {
         #i = #a->find(#b)
         #i ? #rot13->import8bits(#b->get(#i)) | #rot13->append(#c)
     }
-    
+
     return #rot13->asString
 }
 
@@ -2745,7 +2745,7 @@ Function Rot13$(t$)
     next
     Rot13$=rot$
     end function
- 
+
 ```
 
 
@@ -2861,7 +2861,7 @@ rot13cat(fd: ref Sys->FD, file: string)
 function rot13 S
    repeat with i = 1 to length(S)
       get chartonum(char i of S)
-      if it < 65 or it > 122 or (it > 90 and it < 97) then next repeat 
+      if it < 65 or it > 122 or (it > 90 and it < 97) then next repeat
       put char it - 64 of "NOPQRSTUVWXYZABCDEFGHIJKLM      nopqrstuvwxyzabcdefghijklm" into char i of S
    end repeat
    return S
@@ -2939,7 +2939,7 @@ end
 There is a built-in command for this in Maple.
 
 ```Maple>
- StringTools:-Encode( "The Quick Brown Fox Jumped Over The Lazy Dog!", encoding = rot13 ); 
+ StringTools:-Encode( "The Quick Brown Fox Jumped Over The Lazy Dog!", encoding = rot13 );
             "Gur Dhvpx Oebja Sbk Whzcrq Bire Gur Ynml Qbt!"
 ```
 
@@ -3009,10 +3009,10 @@ It is possible to vectorize this code, the example below is not fully vectorized
 ```MATLAB
 function text = rot13(text)
     if ischar(text)
-        
+
         selectedLetters = ( (text >= 'A') & (text <= 'Z') ); %Select upper case letters
         text(selectedLetters) = char( mod( text(selectedLetters)-'A'+13,26 )+'A' );
-        
+
         selectedLetters = ( (text >= 'a') & (text <= 'z') ); %Select lower case letters
         text(selectedLetters) = char( mod( text(selectedLetters)-'a'+13,26 )+'a' );
 
@@ -3105,14 +3105,14 @@ def rot13 (value:string)
     d = ' '.toCharArray[0]
     value.toCharArray.each do |c|
         testChar = Character.toLowerCase(c)
-        if testChar <= 'm'.toCharArray[0] && testChar >= 'a'.toCharArray[0] then 
+        if testChar <= 'm'.toCharArray[0] && testChar >= 'a'.toCharArray[0] then
             d = char(c + 13)
         end
-        if testChar <= 'z'.toCharArray[0] && testChar >= 'n'.toCharArray[0] then 
-            d = char(c - 13) 
-        end 
+        if testChar <= 'z'.toCharArray[0] && testChar >= 'n'.toCharArray[0] then
+            d = char(c - 13)
+        end
         result += d
-    end 
+    end
     result
 end
 
@@ -3159,16 +3159,16 @@ local
 	val upper_z = ord #"Z";
 	val lower_a = ord #"a";
 	val upper_a = ord #"A";
-	
-	fun which 
+
+	fun which
 			(c_upper c) = (upper_a, upper_z)
 		|	_	    = (lower_a, lower_z)
 		;
-	
-	fun scale 
+
+	fun scale
 			(c, az) where (c > #1 az) = scale( (#0 az + (c - #1 az - 1)), az)
 		|	(c, az) 		  = c
-			
+
 in
 	fun rot13
 			([], t) 			    = implode ` rev t
@@ -3268,8 +3268,8 @@ Foo bar baz
 Sbb one onm
 martin@thinkpad:~$ echo "Bar baz foo" | ./prog
 One onm sbb
-martin@thinkpad:~$ echo "Foo bar baz" > foo.txt 
-martin@thinkpad:~$ echo "quux zeepf" >> foo.txt 
+martin@thinkpad:~$ echo "Foo bar baz" > foo.txt
+martin@thinkpad:~$ echo "quux zeepf" >> foo.txt
 martin@thinkpad:~$ cat foo.txt | ./prog
 Sbb one onm
 dhhk mrrcs
@@ -3570,7 +3570,7 @@ zrgubq vfSnyfr choyvp fgngvp ergheaf obbyrna
 (define (rot13 str)
   (join
    (map
-    (fn(c) 
+    (fn(c)
       (cond
        ((<= "A" (upper-case c) "M") (char (+ (char c) 13)))
        ((<= "N" (upper-case c) "Z") (char (- (char c) 13)))
@@ -3791,7 +3791,7 @@ end.
 sub rot13 {
   shift =~ tr/A-Za-z/N-ZA-Mn-za-m/r;
 }
- 
+
 print rot13($_) while (<>);
 ```
 
@@ -3897,7 +3897,7 @@ Output:
 (de rot13-Ch (C)
    (if
       (or
-         (member C '`(apply circ (chop "ABCDEFGHIJKLMNOPQRSTUVWXYZ"))) 
+         (member C '`(apply circ (chop "ABCDEFGHIJKLMNOPQRSTUVWXYZ")))
          (member C '`(apply circ (chop "abcdefghijklmnopqrstuvwxyz"))) )
       (get @ 14)
       C ) )
@@ -3909,9 +3909,9 @@ or:
 (de rot13-Ch (C)
    (cond
       ((>= "M" (uppc C) "A")
-         (char (+ (char C) 13)) ) 
+         (char (+ (char C) 13)) )
       ((>= "Z" (uppc C) "N")
-         (char (- (char C) 13)) ) 
+         (char (- (char C) 13)) )
       (T C) ) )
 ```
 
@@ -4013,7 +4013,7 @@ CREATE OR REPLACE FUNCTION fn_rot13_clob(p_text CLOB) RETURN CLOB IS
   v_result CLOB := NULL;
 BEGIN
   FOR i IN 0..TRUNC(LENGTH(p_text) / c_chunk_size) LOOP
-    v_result := v_result || 
+    v_result := v_result ||
       TRANSLATE(dbms_lob.substr(p_text, c_chunk_size, i * c_chunk_size + 1), c_source, c_target);
   END LOOP;
   RETURN v_result;
@@ -4201,12 +4201,12 @@ Declare.s Rot13(text_to_code.s)
 
 If OpenConsole()
   Define txt$
-  
+
   Print("Enter a string to encode: "): txt$=Input()
- 
+
   PrintN("Coded  : "+Rot13(txt$))
   PrintN("Decoded: "+Rot13(Rot13(txt$)))
- 
+
   Print("Press ENTER to quit."): Input()
   CloseConsole()
 EndIf
@@ -4223,7 +4223,7 @@ Procedure.s Rot13(s.s)
         t=chr(Asc(t)-13)
     EndSelect
     u+t
-  Next  
+  Next
   ProcedureReturn u
 EndProcedure
 ```
@@ -4371,18 +4371,18 @@ For a slightly more general function, see the [http://stat.ethz.ch/R-manual/R-pa
 function ROT13 (InputTxt as string) as string
     dim i as integer, ascVal as byte
     Result = ""
-    
+
     for i = 1 to len(InputTxt)
         ascVal = asc(InputTxt[i])
 
-        select case ascVal 
+        select case ascVal
         case 65 to 77, 97 to 109
             Result = Result + chr$(ascVal + 13)
         case 78 to 90, 110 to 122
             Result = Result + chr$(ascVal - 13)
         case else
             Result = Result + chr$(ascVal)
-        end select 
+        end select
     next
 end function
 
@@ -4408,9 +4408,9 @@ define rot13 use $str
                ord 13 - chr
     $str length list "" join
 
-"12!ABJURER nowhere" 
-dup print "\nas rot13 is\n" print 
-rot13 
+"12!ABJURER nowhere"
+dup print "\nas rot13 is\n" print
+rot13
 print "\n" print
 ```
 
@@ -4469,7 +4469,7 @@ rot-13: func [
 ; reversible, so I can just run it again without modification to decrypt.
 
 print ["    Encrypted:"  text: rot-13 text]
-print ["    Decrypted:"  text: rot-13 text] 
+print ["    Decrypted:"  text: rot-13 text]
 
 
 print "Using parse:"
@@ -4509,7 +4509,7 @@ rot-13: func [
 ; As you see, I don't need to re-assign 'text' anymore.
 
 print ["    Encrypted:" rot-13 text]
-print ["    Decrypted:" rot-13 text] 
+print ["    Decrypted:" rot-13 text]
 ```
 
 
@@ -4548,7 +4548,7 @@ Using parse:
 
 ## REXX
 
-This REXX version supports upper and lower case letters, preserves their case (upper/lower), 
+This REXX version supports upper and lower case letters, preserves their case (upper/lower),
 
 and passes through (without alteration) all non-alphabetic input characters.
 
@@ -4597,10 +4597,10 @@ see "enter a string : " give s
 ans = ""
 for a = 1 to len(s)
     letter = substr(s, a, 1)
-    if letter >= "a" and letter <= "z" 
+    if letter >= "a" and letter <= "z"
        char = char(ascii(letter) + 13)
        if char > "z" char = chr(asc(char) - 26) ok
-    else  
+    else
        if letter >= "a" and letter <= "z" char = char(ascii(letter) + 13) ok
        if char > "z" char = char(ascii(char) - 26) else  char = letter ok
     ok
@@ -4648,7 +4648,7 @@ FOR a = 1 TO LEN(s$)
         IF letter$ >= "A" AND letter$ <= "Z" THEN
            char$ = CHR$(ASC(letter$) + 13)
            IF char$ > "Z" THEN char$ = CHR$(ASC(char$) - 26)
-        else  
+        else
            if letter$ >= "a" AND letter$ <= "z" THEN   char$ = CHR$(ASC(letter$) + 13)
            IF char$ > "z" THEN  char$ = CHR$(ASC(char$) - 26) ELSE  char$ = letter$
         END IF
@@ -4660,7 +4660,7 @@ Output:
 ```txt
 Enter a string: ?abc
 nop
-Enter a string: ?ABC 
+Enter a string: ?ABC
 NOP
 ```
 
@@ -4902,15 +4902,15 @@ slate[37]> 'abc123' rot13.
 ## Smalltalk
 
 {{works with|GNU Smalltalk}}
-Here we implemented three ways. The first one is the simplest. The second demonstrates extending the String class with a generic <code>rot</code> method, which in turn uses two ''new'' method for the class Character (+ and -). The third one is an imitation of the <tt>tr '[a-m][n-z]' '[n-z][a-m]'</tt> approach (see UNIX Shell example), done through a block closure and using also the new method <code>trFrom:to:</code> for Character. 
+Here we implemented three ways. The first one is the simplest. The second demonstrates extending the String class with a generic <code>rot</code> method, which in turn uses two ''new'' method for the class Character (+ and -). The third one is an imitation of the <tt>tr '[a-m][n-z]' '[n-z][a-m]'</tt> approach (see UNIX Shell example), done through a block closure and using also the new method <code>trFrom:to:</code> for Character.
 
 
 ```smalltalk
 "1. simple approach"
 rot13 := [ :string |
   string collect: [ :each | | index |
-    index := 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' 
-      indexOf: each ifAbsent: [ 0 ]. "Smalltalk uses 1-based indexing" 
+    index := 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+      indexOf: each ifAbsent: [ 0 ]. "Smalltalk uses 1-based indexing"
         index isZero
           ifTrue: [ each ]
           ifFalse: [ 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM' at:
@@ -4973,7 +4973,7 @@ rotThirteen := [ :s | |m1 m2 r|
       ifTrue: [ | a |
         a := (c asLowercase) trFrom: m1 to: m2.
         (c isUppercase) ifTrue: [ a := a asUppercase ].
-        r := r, (a asString)] 
+        r := r, (a asString)]
       ifFalse: [ r := r, (c asString) ]
   ].
   r
@@ -5046,7 +5046,7 @@ select translate(
 
 ```tsql
 
-with cte(num) as 
+with cte(num) as
 (
  select 1
  union all
@@ -5055,7 +5055,7 @@ with cte(num) as
 )
 select cast((
 select char(ascii(chr) +
-		case 
+		case
 			when    ascii(chr) between ascii('a') and ascii('m') or
 				ascii(chr) between ascii('A') and ascii('M') then 13
 			when    ascii(chr) between ascii('n') and ascii('z') or
@@ -5064,7 +5064,7 @@ select char(ascii(chr) +
 		end)
 from
 (
-select top(1000) num, 
+select top(1000) num,
 		 -- your string to be converted to ROT13
                  substring('The Quick Brown Fox Jumps Over The Lazy Dog',num,1) chr
 from cte
@@ -5171,7 +5171,7 @@ function rot13(%string)
 {
 	%alph = "abcdefghijklmnopqrstuvwxyz";
 	%len = strLen(%string);
-	
+
 	for(%a = 0; %a < %len; %a++)
 	{
 		%char = getSubStr(%string,%a,1);
@@ -5225,7 +5225,7 @@ Via definition and subsequent use of a named filter.
 
 
 ```txr
-@(deffilter rot13 
+@(deffilter rot13
    ("a" "n") ("b" "o") ("c" "p") ("d" "q") ("e" "r") ("f" "s") ("g" "t")
    ("h" "u") ("i" "v") ("j" "w") ("k" "x") ("l" "y") ("m" "z") ("n" "a")
    ("o" "b") ("p" "c") ("q" "d") ("r" "e") ("s" "f") ("t" "g") ("u" "h")
@@ -5376,7 +5376,7 @@ Function ROT13(ByVal a As String) As String
       Case Else
         e = 255
     End Select
-  
+
     If n > e Then
       n = n - 26
     End If
@@ -5471,10 +5471,10 @@ Using Linux/FASM.
 ```asm
 format 	ELF 	executable 3
 entry 	start
-	
+
 segment	readable writeable
 buf	rb	1
-	
+
 segment	readable executable
 start:	mov	eax, 3		; syscall "read"
 	mov	ebx, 0		; stdin
@@ -5503,7 +5503,7 @@ rotup:	sub	eax, "A"-13	; do rot 13 for A-Z
 	div	ebx
 	add	edx, "A"
 	jmp	rotend
-	
+
 rotlow:	sub	eax, "a"-13	; do rot 13 for a-z
 	cdq
 	mov	ebx, 26
@@ -5511,7 +5511,7 @@ rotlow:	sub	eax, "a"-13	; do rot 13 for a-z
 	add	edx, "a"
 
 rotend:	mov	[buf], dl
-	
+
 print: 	mov	eax, 4		; syscall write
 	mov	ebx, 1		; stdout
 	mov	ecx, buf	; *char
@@ -5551,8 +5551,8 @@ Textual transforms are one of the domains XSLT was designed for.
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="text" />
   <xsl:variable name="alpha">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</xsl:variable>
-  <xsl:variable name="rot13">NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm</xsl:variable>  
-  <xsl:template match="body"> 
+  <xsl:variable name="rot13">NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm</xsl:variable>
+  <xsl:template match="body">
     <xsl:apply-templates/>
   </xsl:template>
   <xsl:template match="rot13">
@@ -5638,11 +5638,11 @@ vs(grkg.vfGlcr(Yvfg)) Svyr.fgqbhg.jevgrya();	// pbzznaq yvar trgf raqvat arjyvar
 50 LET i$ = s$(l): REM i$ is the letter being worked on
 60 IF i$ < "A" OR i$ > "Z" THEN GO TO 100
 70 LET c$ = CHR$(CODE(i$) + 13): REM c$ is the encoded letter
-80 IF c$ > "Z" THEN LET c$ = CHR$(CODE(c$) - 26)          
+80 IF c$ > "Z" THEN LET c$ = CHR$(CODE(c$) - 26)
 90 GO TO 300
 100 IF i$ < "a" OR i$ > "z" THEN GO TO 200
-110 LET c$ = CHR$(CODE(i$) + 13)          
-120 IF c$ > "z" THEN LET c$ = CHR$(CODE(c$) - 26)          
+110 LET c$ = CHR$(CODE(i$) + 13)
+120 IF c$ > "z" THEN LET c$ = CHR$(CODE(c$) - 26)
 130 GO TO 300
 200 LET c$ = i$
 300 LET a$ = a$ + c$

@@ -1262,8 +1262,8 @@ Output: ..., 89, FizBuz, Goz, 92, Fiz, 94, Buz, Fiz, 97, Goz, FizKaz, Buz
 
 One line version, with pretty printing
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main() {
   for (int i=1; i<=105; i++) if (i%3 && i%5) printf("%3d ", i); else printf("%s%s%s", i%3?"":"Fizz", i%5?"":"Buzz", i%15?" ":"\n");
@@ -1273,8 +1273,9 @@ int main() {
 
 
 This actually works (the array init part, saves 6 bytes of static data, whee):
-```c>#include<stdio.h
 
+```c
+#include <stdio.h>
 
 int main ()
 {
@@ -1288,8 +1289,8 @@ int main ()
 
 
 
-```c>#include<stdio.h
-
+```c
+#include <stdio.h>
 
 int main (void)
 {
@@ -1313,8 +1314,8 @@ int main (void)
 
 Implicit int main and return 0 (C99+):
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 main() {
   int i = 1;
@@ -1334,16 +1335,16 @@ main() {
 
 obfuscated:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #define F(x,y) printf("%s",i%x?"":#y"zz")
 int main(int i){for(--i;i++^100;puts(""))F(3,Fi)|F(5,Bu)||printf("%i",i);return 0;}
 ```
 
 
 With numbers theory:
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main(void)
 {
@@ -1361,8 +1362,8 @@ int main(void)
 Without conditionals, anything in the loop body gcc compiles with branching, duplicate tests or duplicate strings. Depends on ASCII and two's complement arithmetic:
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 int main()
 {
     for (int i=0;++i<101;puts(""))
@@ -1664,8 +1665,8 @@ namespace FizzBuzz
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 using namespace std;
 int main ()
@@ -1687,8 +1688,8 @@ int main ()
 
 Alternate version not using modulo 15:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 using namespace std;
 
 int main()
@@ -1712,8 +1713,8 @@ int main()
 
 Alternate version that avoids using modulo.  (Modulo can be expensive on some architectures.)
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main()
 {
@@ -1736,8 +1737,8 @@ int main()
 A version using std::transform:
 {{works with|C++11}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <algorithm>
 #include <vector>
 
@@ -1766,8 +1767,8 @@ int main()
 
 Version computing FizzBuzz at compile time with metaprogramming:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 template <int n, int m3, int m5>
 struct fizzbuzz : fizzbuzz<n-1, (n-1)%3, (n-1)%5>
@@ -1819,8 +1820,8 @@ int main()
 
 Hardcore templates (compile with -ftemplate-depth-9000 -std=c++0x):
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <cstdlib>
 #include <boost/mpl/string.hpp>
@@ -7479,8 +7480,8 @@ main: func {
 ## Order
 
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 // Get FB for one number
 #define ORDER_PP_DEF_8fizzbuzz ORDER_PP_FN(            \

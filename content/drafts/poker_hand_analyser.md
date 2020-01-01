@@ -10,15 +10,15 @@ categories = []
 tags = []
 +++
 
-{{task}} 
-[[Category:Cards]] 
+{{task}}
+[[Category:Cards]]
 [[Category:Games]]
 
 ;Task:
 Create a program to parse a single five card poker hand and rank it according to this [[wp:List_of_poker_hands|list of poker hands]].
 
 
-A poker hand is specified as a space separated list of five playing cards. 
+A poker hand is specified as a space separated list of five playing cards.
 
 Each input card has two characters indicating face and suit.   For example:   '''2d'''   (two of diamonds).
 
@@ -46,7 +46,7 @@ Examples:
     a♥ 2♦ 3♣ 4♣ 5♦: straight
     2♥ 3♥ 2♦ 3♣ 3♦: full-house
     2♥ 7♥ 2♦ 3♣ 3♦: two-pair
-    2♥ 7♥ 7♦ 7♣ 7♠: four-of-a-kind 
+    2♥ 7♥ 7♦ 7♣ 7♠: four-of-a-kind
     10♥ j♥ q♥ k♥ a♥: straight-flush
     4♥ 4♠ k♠ 5♦ 10♠: one-pair
     q♣ 10♣ 7♣ 6♣ 4♣: flush
@@ -89,14 +89,14 @@ PokerHand(hand){
 	StringUpper, hand, hand
 	Sort, hand, FCardSort D%A_Space%
 	cardSeq	:= RegExReplace(hand, "[^2-9TJQKA]")
-	Straight:= InStr("23456789TJQKA", cardSeq) || (cardSeq = "2345A") ? true : false	
+	Straight:= InStr("23456789TJQKA", cardSeq) || (cardSeq = "2345A") ? true : false
 	hand 	:= cardSeq = "2345A" ? RegExReplace(hand, "(.*)\h(A.)", "$2 $1") : hand
 	Royal 	:= InStr(hand, "A") ? "Royal": "Straight"
 	return  (hand ~= "[2-9TJQKA](.)\h.\1\h.\1\h.\1\h.\1") && (Straight) 			? hand "`t" Royal " Flush"
 			: (hand ~= "([2-9TJQKA]).*?\1.*?\1.*?\1") 				? hand "`tFour of a Kind"
 			: (hand ~= "^([2-9TJQKA]).\h\1.\h(?!\1)([2-9TJQKA]).\h\2.\h\2.$") 	? hand "`tFull House"	; xxyyy
 			: (hand ~= "^([2-9TJQKA]).\h\1.\h\1.\h(?!\1)([2-9TJQKA]).\h\2.$") 	? hand "`tFull House"	; xxxyy
-			: (hand ~= "[2-9TJQKA](.)\h.\1\h.\1\h.\1\h.\1") 			? hand "`tFlush" 
+			: (hand ~= "[2-9TJQKA](.)\h.\1\h.\1\h.\1\h.\1") 			? hand "`tFlush"
 			: (Straight)								? hand "`tStraight"
 			: (hand ~= "([2-9TJQKA]).*?\1.*?\1")					? hand "`tThree of a Kind"
 			: (hand ~= "([2-9TJQKA]).\h\1.*?([2-9TJQKA]).\h\2")			? hand "`tTwo Pair"
@@ -154,8 +154,8 @@ T♥ J♥ Q♥ K♥ A♥	Royal Flush
 
 {{trans|Kotlin}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 #include <stdlib.h>
@@ -355,7 +355,7 @@ private:
         {
 	    int s = 0;
 	    for( int x = 0; x < 13; x++ )
-	    { 
+	    {
 		if( faceCnt[x] ) s++; else s = 0;
 		if( s == 5 ) break;
 	    }
@@ -363,7 +363,7 @@ private:
 	}
 
 	if( st && fl ) return "straight-flush";
-	else if( f ) return "four-of-a-kind"; 
+	else if( f ) return "four-of-a-kind";
 	else if( p1 && t ) return "full-house";
 	else if( fl ) return "flush";
 	else if( st ) return "straight";
@@ -378,7 +378,7 @@ private:
 
 int main( int argc, char* argv[] )
 {
-    poker p; 
+    poker p;
     cout << p.analyze( "2h 2d 2s ks qd" ) << endl; cout << p.analyze( "2h 5h 7d 8s 9d" ) << endl;
     cout << p.analyze( "ah 2d 3s 4s 5s" ) << endl; cout << p.analyze( "2h 3h 2d 3s 3d" ) << endl;
     cout << p.analyze( "2h 7h 2d 3s 3d" ) << endl; cout << p.analyze( "2h 7h 7d 7s 7c" ) << endl;
@@ -635,9 +635,9 @@ defmodule Card do
   @faces   ~w(2 3 4 5 6 7 8 9 10 j q k a)
   @suits   ~w(♥ ♦ ♣ ♠)                          # ~w(h d c s)
   @ordinal @faces |> Enum.with_index |> Map.new
-  
+
   defstruct ~w[face suit ordinal]a
-  
+
   def new(str) do
     {face, suit} = String.split_at(str, -1)
     if face in @faces and suit in @suits do
@@ -647,7 +647,7 @@ defmodule Card do
       raise ArgumentError, "invalid card: #{str}"
     end
   end
-  
+
   def deck do
     for face <- @faces, suit <- @suits, do: "#{face}#{suit}"
   end
@@ -658,7 +658,7 @@ defmodule Hand do
             full-house four-of-a-kind straight-flush five-of-a-kind)a |>
          Enum.with_index |> Map.new
   @wheel_faces ~w(2 3 4 5 a)
-  
+
   def new(str_of_cards) do
     cards = String.downcase(str_of_cards) |>
             String.split([" ", ","], trim: true) |>
@@ -676,11 +676,11 @@ defmodule Hand do
                  end
     {rank_num, tiebreaker, str_of_cards, rank}
   end
-  
+
   defp one_suit?(cards) do
     Enum.map(cards, &(&1.suit)) |> Enum.uniq |> length == 1
   end
- 
+
   defp consecutive?(cards) do
     sorted = Enum.sort_by(cards, &(&1.ordinal))
     if Enum.map(sorted, &(&1.face)) == @wheel_faces do
@@ -692,7 +692,7 @@ defmodule Hand do
       {flag, false}
     end
   end
-  
+
   defp categorize(cards, face_pattern, consecutive) do
     case {consecutive, one_suit?(cards)} do
       {true, true}  -> :"straight-flush"
@@ -825,7 +825,7 @@ let cardList (s:string): Cards =
       match (s |> List.ofSeq) with
       | '1'::'0'::xs -> (9, xs) | '!'::xs -> (-1, xs) | x::xs-> ("a23456789!jqk".IndexOf(x), xs) | _  as xs-> (-1, xs)
       |> function | -1, _  -> (-1, '!') | x, y::[] -> (x, y) | _  -> (-1, '!')
-      |> function 
+      |> function
       | x, 'h' | x, '♥' -> (x, 0) | x, 'd' | x, '♦' -> (x, 1) | x, 'c' | x, '♣' -> (x, 2)
       | x, 's' | x, '♠' -> (x, 3) | _ -> (-1, -1)
     )
@@ -834,12 +834,12 @@ let cardList (s:string): Cards =
 
 let rank (cards: Cards) =
   if cards.Length<>5 then rankInvalid
-  else 
+  else
     let cts = cards |> Seq.groupBy fst |> Seq.map (snd >> Seq.length) |> List.ofSeq |> List.sort |> List.rev
     if cts.[0]=5 then ("five-of-a-kind", 1)
     else
       let flush = cards |> List.map snd |> allSame
-      let straight = 
+      let straight =
         let (ACE, ALT_ACE) = 0, 13
         let faces = cards |> List.map fst |> List.sort
         (straightList faces) || (if faces.Head<>ACE then false else (straightList (ALT_ACE::(faces.Tail))))
@@ -862,8 +862,8 @@ let pickBest (xs: seq<Cards>) =
 
 let calcHandRank handStr =
   let cards = handStr |> cardList
-  if cards.Length<>5 
-    then (cards, rankInvalid) 
+  if cards.Length<>5
+    then (cards, rankInvalid)
     else
       cards |> List.partition ((=) joker) |> fun (x,y) -> x.Length, y
       |> function
@@ -900,7 +900,7 @@ let showHandRank handStr =
 "joker  Q♦  joker  A♠ 10♠"
 "joker  Q♦  joker  A♦ 10♦"
 "joker  2♦  2♠  joker  q♦"
-] 
+]
 |> List.iter showHandRank
 
 ```
@@ -1405,7 +1405,7 @@ Deck=: ,Faces,&.>/Suits
 Joker=: <'joker'
 joke=: [: ,/^:(#@$ - 2:) (({. ,"1 Deck ,"0 1 }.@}.)^:(5>[)~ i.&Joker)"1^:2@,:
 punchLine=: {:@-.&a:@,@|:
-rateHand=: [:;:inv [: (, [: punchLine -1 :(0 :0-.LF)@joke) parseHand 
+rateHand=: [:;:inv [: (, [: punchLine -1 :(0 :0-.LF)@joke) parseHand
  ('invalid' IF 1:) Or
  ('high-card' IF highcard) Or
  ('one-pair' IF two) Or
@@ -1704,20 +1704,20 @@ const SUITS = ['♥', '♦', '♣', '♠'];
 function analyzeHand(hand){
 	let cards  = hand.split(' ').filter(x => x !== 'joker');
 	let jokers = hand.split(' ').length - cards.length;
-	
+
 	let faces = cards.map( card => FACES.indexOf(card.slice(0,-1)) );
 	let suits = cards.map( card => SUITS.indexOf(card.slice(-1)) );
-	
-	if( cards.some( (card, i, self) => i !== self.indexOf(card) ) || faces.some(face => face === -1) || suits.some(suit => suit === -1) ) 
+
+	if( cards.some( (card, i, self) => i !== self.indexOf(card) ) || faces.some(face => face === -1) || suits.some(suit => suit === -1) )
 		return 'invalid';
-	
+
 	let flush    = suits.every(suit => suit === suits[0]);
 	let groups   = FACES.map( (face,i) => faces.filter(j => i === j).length).sort( (x, y) => y - x );
 	let shifted  = faces.map(x => (x + 1) % 13);
 	let distance = Math.min( Math.max(...faces) - Math.min(...faces), Math.max(...shifted) - Math.min(...shifted));
 	let straight = groups[0] === 1 && distance < 5;
 	groups[0] += jokers;
-	
+
 	if      (groups[0] === 5)                    return 'five-of-a-kind'
 	else if (straight && flush)                  return 'straight-flush'
 	else if (groups[0] === 4)                    return 'four-of-a-kind'
@@ -1735,13 +1735,13 @@ Demonstrating:
 
 ```JavaScript
 let testHands = [
-	"2♥ 2♦ 2♣ k♣ q♦", 
-	"2♥ 5♥ 7♦ 8♣ 9♠", 
-	"a♥ 2♦ 3♣ 4♣ 5♦", 
-	"2♥ 3♥ 2♦ 3♣ 3♦", 
-	"2♥ 7♥ 2♦ 3♣ 3♦", 
-	"2♥ 7♥ 7♦ 7♣ 7♠", 
-	"10♥ j♥ q♥ k♥ a♥", 
+	"2♥ 2♦ 2♣ k♣ q♦",
+	"2♥ 5♥ 7♦ 8♣ 9♠",
+	"a♥ 2♦ 3♣ 4♣ 5♦",
+	"2♥ 3♥ 2♦ 3♣ 3♦",
+	"2♥ 7♥ 2♦ 3♣ 3♦",
+	"2♥ 7♥ 7♦ 7♣ 7♠",
+	"10♥ j♥ q♥ k♥ a♥",
 	"4♥ 4♠ k♠ 5♦ 10♠",
 	"q♣ 10♣ 7♣ 6♣ 4♣",
 	"joker 4♣ k♣ 5♦ 10♠",
@@ -1752,7 +1752,7 @@ let testHands = [
 	"joker 2♠ joker a♠ 10♠",
 	"joker q♦ joker a♦ 10♦"
 ];
-	
+
 for(hand of testHands) console.log(hand + ": " + analyzeHand(hand));
 ```
 
@@ -1896,7 +1896,7 @@ function scorehand(d)
     end
 end
 
-const hands =  [["2♥", "2♦", "2♣", "K♣", "Q♦"], ["2♥", "5♥", "7♦", "8♣", "9♠"], 
+const hands =  [["2♥", "2♦", "2♣", "K♣", "Q♦"], ["2♥", "5♥", "7♦", "8♣", "9♠"],
    ["A♥", "2♦", "3♣", "4♣", "5♦"], ["2♥", "3♥", "2♦", "3♣", "3♦"],
    ["2♥", "7♥", "2♦", "3♣", "3♦"], ["2♥", "7♥", "7♦", "7♣", "7♠"],
    ["T♥", "J♥", "Q♥", "K♥", "A♥"], ["4♥", "4♠", "K♠", "5♦", "T♠"],
@@ -1941,13 +1941,13 @@ const val SUITS = "shdc"
 fun isStraight(cards: List<Card>): Boolean {
     val sorted = cards.sortedBy { it.face }
     if (sorted[0].face + 4 == sorted[4].face) return true
-    if (sorted[4].face == 14 && sorted[0].face == 2 && sorted[3].face == 5) return true 
+    if (sorted[4].face == 14 && sorted[0].face == 2 && sorted[3].face == 5) return true
     return false
 }
 
 fun isFlush(cards: List<Card>): Boolean {
     val suit = cards[0].suit
-    if (cards.drop(1).all { it.suit == suit }) return true 
+    if (cards.drop(1).all { it.suit == suit }) return true
     return false
 }
 
@@ -1958,14 +1958,14 @@ fun analyzeHand(hand: String): String {
     val cards = mutableListOf<Card>()
 
     for (s in split) {
-        if (s.length != 2) return "invalid"            
+        if (s.length != 2) return "invalid"
         val fIndex = FACES.indexOf(s[0])
         if (fIndex == -1) return "invalid"
         val sIndex = SUITS.indexOf(s[1])
         if (sIndex == -1) return "invalid"
         cards.add(Card(fIndex + 2, s[1]))
-    } 
-     
+    }
+
     val groups = cards.groupBy { it.face }
     when (groups.size) {
         2 -> {
@@ -1976,7 +1976,7 @@ fun analyzeHand(hand: String): String {
             if (groups.any { it.value.size == 3 }) return "three-of-a-kind"
             return "two-pair"
         }
-        4 -> return "one-pair" 
+        4 -> return "one-pair"
         else -> {
             val flush = isFlush(cards)
             val straight = isStraight(cards)
@@ -1987,8 +1987,8 @@ fun analyzeHand(hand: String): String {
                 else              -> return "high-card"
             }
         }
-    } 
-}    
+    }
+}
 
 fun main(args: Array<String>) {
     val hands = arrayOf(
@@ -2005,7 +2005,7 @@ fun main(args: Array<String>) {
     )
     for (hand in hands) {
         println("$hand: ${analyzeHand(hand)}")
-    }    
+    }
 }
 ```
 
@@ -2042,32 +2042,32 @@ fun isStraight(cards: List<Card>, jokers: Int): Boolean {
     when (jokers) {
         0    -> {
             if (sorted[0].face + 4 == sorted[4].face) return true
-            if (sorted[4].face == 14 && sorted[3].face == 5) return true 
+            if (sorted[4].face == 14 && sorted[3].face == 5) return true
             return false
         }
         1    -> {
             if (sorted[0].face + 3 == sorted[3].face) return true
             if (sorted[0].face + 4 == sorted[3].face) return true
-            if (sorted[3].face == 14 && sorted[2].face == 4) return true 
+            if (sorted[3].face == 14 && sorted[2].face == 4) return true
             if (sorted[3].face == 14 && sorted[2].face == 5) return true
-            return false 
+            return false
         }
         else -> {
             if (sorted[0].face + 2 == sorted[2].face) return true
             if (sorted[0].face + 3 == sorted[2].face) return true
             if (sorted[0].face + 4 == sorted[2].face) return true
-            if (sorted[2].face == 14 && sorted[1].face == 3) return true 
+            if (sorted[2].face == 14 && sorted[1].face == 3) return true
             if (sorted[2].face == 14 && sorted[1].face == 4) return true
             if (sorted[2].face == 14 && sorted[1].face == 5) return true
-            return false 
+            return false
         }
-    }  
+    }
 }
 
 fun isFlush(cards: List<Card>): Boolean {
     val sorted = cards.sortedBy { it.face }
     val suit = sorted[0].suit
-    if (sorted.drop(1).all { it.suit == suit || it.suit == 'j' }) return true 
+    if (sorted.drop(1).all { it.suit == suit || it.suit == 'j' }) return true
     return false
 }
 
@@ -2085,7 +2085,7 @@ fun analyzeHand(hand: String): String {
              0x1f0c1 -> Card(14, 'd')
              0x1f0d1 -> Card(14, 'c')
              0x1f0cf -> { jokers++; Card(15, 'j') }  // black joker
-             0x1f0df -> { jokers++; Card(16, 'j') }  // white joker  
+             0x1f0df -> { jokers++; Card(16, 'j') }  // white joker
              in 0x1f0a2..0x1f0ab -> Card(cp - 0x1f0a0, 's')
              in 0x1f0ad..0x1f0ae -> Card(cp - 0x1f0a1, 's')
              in 0x1f0b2..0x1f0bb -> Card(cp - 0x1f0b0, 'h')
@@ -2094,12 +2094,12 @@ fun analyzeHand(hand: String): String {
              in 0x1f0cd..0x1f0ce -> Card(cp - 0x1f0c1, 'd')
              in 0x1f0d2..0x1f0db -> Card(cp - 0x1f0d0, 'c')
              in 0x1f0dd..0x1f0de -> Card(cp - 0x1f0d1, 'c')
-             else                -> Card(0, 'j') // invalid 
+             else                -> Card(0, 'j') // invalid
         }
         if (card.face == 0) return "invalid"
         cards.add(card)
-    } 
-     
+    }
+
     val groups = cards.groupBy { it.face }
     when (groups.size) {
         2 -> {
@@ -2118,7 +2118,7 @@ fun analyzeHand(hand: String): String {
                     1    -> "four-of-a-kind"
                     else -> "five-of-a-kind"
                 }
-            } 
+            }
             return if (jokers == 0) "two-pair" else "full-house"
         }
         4 -> return when (jokers) {
@@ -2127,7 +2127,7 @@ fun analyzeHand(hand: String): String {
                     else -> "four-of-a-kind"
              }
         else -> {
-            val flush = isFlush(cards) 
+            val flush = isFlush(cards)
             val straight = isStraight(cards,jokers)
             when {
                 flush && straight -> return "straight-flush"
@@ -2136,8 +2136,8 @@ fun analyzeHand(hand: String): String {
                 else              -> return if (jokers == 0) "high-card" else "one-pair"
             }
         }
-    } 
-}    
+    }
+}
 
 fun main(args: Array<String>) {
     val hands = arrayOf(
@@ -2159,7 +2159,7 @@ fun main(args: Array<String>) {
     )
     for (hand in hands) {
         println("$hand : ${analyzeHand(hand)}")
-    }    
+    }
 }
 ```
 
@@ -2309,7 +2309,7 @@ local testCases = {
     "ah 2d 3c 4c 5d", -- straight
     "2h 3h 2d 3c 3d", -- full-house
     "2h 7h 2d 3c 3d", -- two-pair
-    "2h 7h 7d 7c 7s", -- four-of-a-kind 
+    "2h 7h 7d 7c 7s", -- four-of-a-kind
     "10h jh qh kh ah",-- straight-flush
     "4h 4s ks 5d 10s",-- one-pair
     "qc 10c 7c 6c 4c" -- flush
@@ -2345,7 +2345,7 @@ use warnings;
 use utf8;
 use feature 'say';
 use open qw<:encoding(utf-8) :std>;
- 
+
 package Hand {
     sub describe {
         my $str = pop;
@@ -2353,7 +2353,7 @@ package Hand {
         return "$str: INVALID" if !$hand;
         return analyze($hand);
     }
- 
+
     sub init {
         (my $str = lc shift) =~ tr/234567891jqka♥♦♣♠//cd;
         return if $str !~ m/\A (?: [234567891jqka] [♥♦♣♠] ){5} \z/x;
@@ -2370,7 +2370,7 @@ package Hand {
             ranks => $ranks,
         };
     }
- 
+
     sub analyze {
         my $hand = shift;
         my @ranks = split //, $hand->{ranks};
@@ -2386,7 +2386,7 @@ package Hand {
         }
         my $kicker = 0;
         my (@pairs, $set, $quads, $straight, $flush);
- 
+
         while (my ($card, $count) = each %cards) {
             if ($count == 1) {
                 $kicker = $card if $kicker < $card;
@@ -2408,14 +2408,14 @@ package Hand {
         $straight = check_straight(@ranks);
         return get_high($kicker, \@pairs, $set, $quads, $straight, $flush,);
     }
- 
+
     sub check_straight {
         my $sequence = join ' ', sort { $a <=> $b } @_;
         return 1       if index('2 3 4 5 6 7 8 9 10 11 12 13 14', $sequence) != -1;
         return 'wheel' if index('2 3 4 5 14 6 7 8 9 10 11 12 13', $sequence) ==  0;
         return undef;
     }
- 
+
     sub get_high {
         my ($kicker, $pairs, $set, $quads, $straight, $flush) = @_;
         $kicker = to_s($kicker, 's');
@@ -2443,14 +2443,14 @@ package Hand {
             if @$pairs == 1;
         return "high-card: $kicker";
     }
- 
+
     my %to_str = (
          2 => 'Two',    3 => 'Three', 4 => 'Four',  5 => 'Five', 6 => 'Six',
          7 => 'Seven',  8 => 'Eight', 9 => 'Nine', 10 => 'Ten', 11 => 'Jack',
         12 => 'Queen', 13 => 'King', 14 => 'Ace',
     );
     my %to_str_diffs = (2 => 'Deuces', 6 => 'Sixes',);
- 
+
     sub to_s {
         my ($num, $verb) = @_;
         # verb is 'singular' or 'plural' (or 's' or 'p')
@@ -2461,7 +2461,7 @@ package Hand {
         return $to_str{ $num };
     }
 }
- 
+
 my @cards = (
     '10♥ j♥  q♥ k♥ a♥',
     '2♥  3♥  4♥ 5♥ a♥',
@@ -2480,7 +2480,7 @@ my @cards = (
     '2♥  5♥  7♦ 8♣ 9♠',
     'a♥  a♥  3♣ 4♣ 5♦', # INVALID: duplicate aces
 );
- 
+
 say Hand::describe($_) for @cards;
 
 ```
@@ -2516,33 +2516,33 @@ This solution handles jokers. It has been written to use a Perl 6 grammar.
 
 ```perl6
 use v6;
- 
+
 grammar PokerHand {
- 
+
     # Perl6 Grammar to parse and rank 5-card poker hands
     # E.g. PokerHand.parse("2♥ 3♥ 2♦ 3♣ 3♦");
     # 2013-12-21: handle 'joker' wildcards; maximum of two
- 
+
     rule TOP {
          :my %*PLAYED;
          { %*PLAYED = () }
          [ <face-card> | <joker> ]**5
     }
- 
+
     token face-card {<face><suit> <?{
             my $card = ~$/.lc;
             # disallow duplicates
             ++%*PLAYED{$card} <= 1;
        }>
     }
- 
+
     token joker {:i 'joker' <?{
             my $card = ~$/.lc;
             # allow two jokers in a hand
             ++%*PLAYED{$card} <= 2;
         }>
     }
- 
+
     token face {:i <[2..9 jqka]> | 10 }
     token suit {<[♥ ♦ ♣ ♠]>}
 }
@@ -2564,19 +2564,19 @@ class PokerHand::Actions {
     multi sub rank(2,2,$,$)                    { 'two-pair' }
     multi sub rank(2,$,$,$)                    { 'one-pair' }
     multi sub rank($,$,$,$) is default         { 'high-card' }
-  
+
     sub n-of-a-kind($/) {
         my %faces := bag @<face-card>.map: -> $/ {~$<face>.lc};
         my @counts = %faces.values.sort.reverse;
         @counts[0] += @<joker>;
         return @counts;
     }
- 
+
     sub flush($/) {
         my @suits = unique @<face-card>.map: -> $/ {~$<suit>};
         return +@suits == 1;
     }
- 
+
     sub straight($/) {
         # allow both ace-low and ace-high straights
         constant @Faces = [ "a 2 3 4 5 6 7 8 9 10 j q k a".split: ' ' ];
@@ -2584,7 +2584,7 @@ class PokerHand::Actions {
 
         my $faces = set @<face-card>.map: -> $/ {~$<face>.lc};
         my $jokers = +@<joker>;
- 
+
         return ?( @Possible-Straights.first: { +($faces ∩ $_) + $jokers == 5 } );
     }
 }
@@ -2690,8 +2690,8 @@ function poker(string hand)
             suits[suit] += 1
         end if
     end for
-    integer straight = match({1,1,1,1,1},ranks) 
-    if not straight then 
+    integer straight = match({1,1,1,1,1},ranks)
+    if not straight then
         straight = sort(ranks)[$]=1 and match({0,0,0,0,0,0,0,0},ranks)
     end if
     integer _flush = (max(suits)+jokers = 5)
@@ -2715,7 +2715,7 @@ function poker(string hand)
         if straight and j then
             high_card = min(high_card+j,14)
         end if
-    elsif straight and ranks[1]!=0 then 
+    elsif straight and ranks[1]!=0 then
         high_card = find(0,ranks)
     end if
     if _pairs=5             then return {10,"five of a kind", find(5-jokers,ranks)+1} end if
@@ -2934,7 +2934,7 @@ main :- findall(_, run_tests, _), halt.
 
 ## Python
 
-Goes a little further in also giving the ordered tie-breaker information from the wikipedia page. 
+Goes a little further in also giving the ordered tie-breaker information from the wikipedia page.
 
 ```python
 from collections import namedtuple
@@ -3050,7 +3050,7 @@ def highcard(hand):
 handrankorder =  (straightflush, fourofakind, fullhouse,
                   flush, straight, threeofakind,
                   twopair, onepair, highcard)
-              
+
 def rank(cards):
     hand = handy(cards)
     for ranker in handrankorder:
@@ -3154,7 +3154,7 @@ HAND               CATEGORY        TIE-BREAKER
 ;; analyse-sorted-hand score-hand
 (define all-cards/promise (delay (for*/list ((f (in-range 2 15)) (s '(h d s c))) (cons f s))))
 
-(define (best-jokered-hand cards) ; we've lost the first joker from cards  
+(define (best-jokered-hand cards) ; we've lost the first joker from cards
   (define-values (best-hand _bhs)
     (for*/fold ((best-hand #f) (best-score 0))
       ((joker (in-list (force all-cards/promise)))
@@ -3238,7 +3238,7 @@ HAND               CATEGORY        TIE-BREAKER
   (list " 2♥  2♦ 2♣ k♣  q♦" " 2♥  5♥ 7♦ 8♣  9♠" " a♥  2♦ 3♣ 4♣  5♦" "10♥  j♦ q♣ k♣  a♦"
         " 2♥  3♥ 2♦ 3♣  3♦" " 2♥  7♥ 2♦ 3♣  3♦" " 2♥  7♥ 7♦ 7♣  7♠" "10♥  j♥ q♥ k♥  a♥"
         " 4♥  4♠ k♠ 5♦ 10♠" " q♣ 10♣ 7♣ 6♣  4♣"
-        
+
         " joker  2♦  2♠  k♠  q♦"     "  joker  5♥  7♦  8♠  9♦"    "  joker  2♦  3♠  4♠  5♠"
         "  joker  3♥  2♦  3♠  3♦"    "  joker  7♥  2♦  3♠  3♦"    "  joker  7♥  7♦  7♠  7♣"
         "  joker  j♥  q♥  k♥  A♥"    "  joker  4♣  k♣  5♦ 10♠"    "  joker  k♣  7♣  6♣  4♣"
@@ -3253,7 +3253,7 @@ HAND               CATEGORY        TIE-BREAKER
     (for/list ((h (map string->hand e.g.-hands)))
       (define-values (analysis score) (car+cdr (score-hand h)))
       (list h analysis score)))
-  
+
   (for ((a.s (sort scored-hands > #:key third)))
     (match-define (list (app hand->string h) a _) a.s)
     (printf "~a: ~a ~a" h (~a (first a) #:min-width 15) (number->face (second a)))
@@ -3261,16 +3261,16 @@ HAND               CATEGORY        TIE-BREAKER
     (newline)))
 
 (module+ test
-  (require rackunit)  
+  (require rackunit)
   (let ((e.g.-strght-flsh '((14 . h) (13 . h) (12 . h) (11 . h) (10 . h))))
     (check-match (straight? e.g.-strght-flsh) '(straight 14))
     (check-match (flush? e.g.-strght-flsh) '(flush 14 13 12 11 10))
     (check-match e.g.-strght-flsh (and (? flush?) (app straight? (list 'straight top _ ...)))))
-  
+
   (define expected-results
     '((three-of-a-kind 2 13 12)
       (high-card 9 8 7 5 2) (straight 5) (straight 14) (full-house 3 2) (two-pair 3 2 7)
-      (four-of-a-kind 7) (straight-flush 14) (one-pair 4 13 10 5) (flush 12 10 7 6 4)      
+      (four-of-a-kind 7) (straight-flush 14) (one-pair 4 13 10 5) (flush 12 10 7 6 4)
       (three-of-a-kind 2 13 12) (straight 9) (straight 6) (four-of-a-kind 3) (three-of-a-kind 3 7 2)
       (five-of-a-kind 7) (straight-flush 14) (one-pair 13 10 5 4) (flush 14 13 7 6 4) (straight 6)
       (straight 14) (straight-flush 14) (four-of-a-kind 2)))
@@ -3444,7 +3444,7 @@ This REXX version supports:
 ::*   alternate names for aces and tens
 ::*   alphabetic letters for suits and/or glyphs
 ::*   specification of number of cards in a hand
-::*   the dealt hands can be in a file   (blank lines are ignored) 
+::*   the dealt hands can be in a file   (blank lines are ignored)
 ::*   dealt hands in the file can have comments after a semicolon (''';''')
 
 ```rexx
@@ -3515,7 +3515,7 @@ pairs= 13 - length( space( translate( pips, , 2), 0) )   /*count # of  2's  in P
   ah  2h  3h  4h
 
 ```
- 
+
 {{out|output|text=  when using the (above) input file}}
 
 ```txt
@@ -3605,7 +3605,7 @@ if kinds==2             then return  'one-pair'
                              return  'high-card'
 ```
 
-Programming note:   the method used for analyzing hands that contain jokers are limited to a maximum of two jokers. 
+Programming note:   the method used for analyzing hands that contain jokers are limited to a maximum of two jokers.
 
 A different methodology would be needed for a generic number of jokers (and/or wild cards [such as deuces and one─eyed jacks]).
 
@@ -3635,10 +3635,10 @@ A different methodology would be needed for a generic number of jokers (and/or w
      10♥  j♥  q♥  k♥  jok
       4♥  4♣  k♣  5♦  jok
       q♣  t♣  7♣  6♣  jok
-      J♥  Q♦  K♠  A♠  jok 
+      J♥  Q♦  K♠  A♠  jok
 
 ```
- 
+
 {{out|output|text=  when using the (above) input file}}
 
 ```txt
@@ -3663,7 +3663,7 @@ A different methodology would be needed for a generic number of jokers (and/or w
           10♥  j♥  q♥  k♥  jok  ◄───  straight-flush
            4♥  4♣  k♣  5♦  jok  ◄───  three-of-a-kind
            q♣  t♣  7♣  6♣  jok  ◄───  flush
-           J♥  Q♦  K♠  A♠  jok  ◄───  straight 
+           J♥  Q♦  K♠  A♠  jok  ◄───  straight
 
 ```
 
@@ -3677,24 +3677,24 @@ Joker-less hands are sorted high to low.
 class Card
   include Comparable
   attr_accessor :ordinal
-  attr_reader :suit, :face 
-  
+  attr_reader :suit, :face
+
   SUITS = %i(♥ ♦ ♣ ♠)
   FACES = %i(2 3 4 5 6 7 8 9 10 j q k a)
-  
+
   def initialize(str)
     @face, @suit = parse(str)
     @ordinal = FACES.index(@face)
   end
-  
+
   def <=> (other) #used for sorting
     self.ordinal <=> other.ordinal
   end
-  
+
   def to_s
     "#@face#@suit"
   end
-  
+
   private
   def parse(str)
     face, suit = str.chop.to_sym, str[-1].to_sym
@@ -3706,11 +3706,11 @@ end
 class Hand
   include Comparable
   attr_reader :cards, :rank
-  
+
   RANKS       = %i(high-card one-pair two-pair three-of-a-kind straight flush
                    full-house four-of-a-kind straight-flush five-of-a-kind)
   WHEEL_FACES = %i(2 3 4 5 a)
-  
+
   def initialize(str_of_cards)
     @cards = str_of_cards.downcase.tr(',',' ').split.map{|str| Card.new(str)}
     grouped = @cards.group_by(&:face).values
@@ -3719,36 +3719,36 @@ class Hand
     @rank_num = RANKS.index(@rank)
     @tiebreaker = grouped.map{|ar| [ar.size, ar.first.ordinal]}.sort.reverse
   end
-  
+
   def <=> (other)    # used for sorting and comparing
     self.compare_value <=> other.compare_value
   end
-  
+
   def to_s
     @cards.map(&:to_s).join(" ")
   end
-  
+
   protected          # accessible for Hands
   def compare_value
     [@rank_num, @tiebreaker]
   end
-  
+
   private
   def one_suit?
     @cards.map(&:suit).uniq.size == 1
   end
-  
+
   def consecutive?
     sort.each_cons(2).all? {|c1,c2| c2.ordinal - c1.ordinal == 1 }
   end
-  
+
   def sort
     if @cards.sort.map(&:face) == WHEEL_FACES
       @cards.detect {|c| c.face == :a}.ordinal = -1
-    end 
+    end
     @cards.sort
   end
-  
+
   def categorize
     if consecutive?
       one_suit? ? :'straight-flush' : :straight
@@ -4042,7 +4042,7 @@ const func string: analyzeHand (in array integer: faceCnt, in array integer: sui
       straight := sequence = 5 or (sequence = 4 and faceCnt[1] <> 0);
     end if;
     if straight and flush then handValue := "straight-flush";
-    elsif four            then handValue := "four-of-a-kind"; 
+    elsif four            then handValue := "four-of-a-kind";
     elsif pair1 and three then handValue := "full-house";
     elsif flush           then handValue := "flush";
     elsif straight        then handValue := "straight";
@@ -4052,7 +4052,7 @@ const func string: analyzeHand (in array integer: faceCnt, in array integer: sui
     else                       handValue := "high-card";
     end if;
   end func;
- 
+
 const proc: analyze (in string: cards) is func
   local
     var array integer: faceCnt is 13 times 0;

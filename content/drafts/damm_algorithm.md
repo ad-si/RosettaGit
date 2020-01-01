@@ -12,7 +12,7 @@ tags = []
 
 {{draft task}}
 
-The   [https://en.wikipedia.org/wiki/Damm_algorithm '''Damm'''   algorithm] is a checksum algorithm which detects all single digit errors and adjacent transposition errors. 
+The   [https://en.wikipedia.org/wiki/Damm_algorithm '''Damm'''   algorithm] is a checksum algorithm which detects all single digit errors and adjacent transposition errors.
 
 
 ;Task:
@@ -102,7 +102,7 @@ BEGIN
             OD;
             interim digit = 0
          END # has valid damm check digit # ;
- 
+
     # test the damm algorithm #
     PROC test damm algorithm = ( STRING s, BOOL expected )VOID:
          BEGIN
@@ -180,8 +180,8 @@ T 112946
 
 {{Output?}}
 
-```c>#include <stdbool.h
-
+```c
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 
@@ -198,7 +198,7 @@ bool damm(unsigned char *input, size_t length) {
         {9, 4, 3, 8, 6, 1, 7, 2, 0, 5},
         {2, 5, 8, 1, 4, 3, 6, 7, 9, 0},
     };
-    
+
     unsigned char interim = 0;
     for (size_t i = 0; i < length; i++) {
         interim = table[interim][input[i]];
@@ -219,7 +219,8 @@ int main() {
 
 {{trans|C#|C sharp}}
 
-```cpp>#include <sstream
+```cpp
+#include <sstream>
 
 
 const int TABLE[][10] = {
@@ -344,7 +345,7 @@ namespace DammAlgorithm {
           [2 5 8 1 4 3 6 7 9 0]])
 
 (defn damm? [digits]
-  (= 0 (reduce #(nth (nth tbl %1) %2) 0 
+  (= 0 (reduce #(nth (nth tbl %1) %2) 0
     (map #(Character/getNumericValue %) (seq digits)))))
 ```
 
@@ -436,9 +437,9 @@ let damm str =
         if v.Length = 0 then 0 = interim
         else helper (v.Substring(1)) (TABLE.[interim].[(int (v.[0])) - (int '0')])
     helper str 0
- 
+
 [<EntryPoint>]
-let main _ = 
+let main _ =
     let numbers = [|5724; 5727; 112946; 112949|]
     for number in numbers do
         let isValid = damm (number.ToString())
@@ -513,8 +514,8 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 ## Fortran
 
 Thanks to the ability standardised in F90 to define an array with a lower bound other than one, this can be achieved without the need for annoying offsets, as in A(i + 1) instead of just A(i). However, right from the start, Fortran has stored arrays in column-major order, so statements that initialise two-dimensional arrays via a list of consecutive values can look odd when they are nicely laid out, because they will have to be be in transposed order. Alternatively, if the layout is the same as the expected (row,column) usage, the actual usage of the array will have to be (column,row). Rather than transpose a ten by ten matrix, this is the approach here. The continuation column has the (apparent) row count, but row zero can't have the digit zero in the continuation column as this is taken to be equivalent to a space (meaning "no continuation") just in case it is used for the first line of a statement to be continued. However, the letter o will do instead. A capital O looks too much like a 0...
- 
-Possibly a more useful function would be one that returned the check digit that must be appended to a sequence to provide the full sequence, as when preparing a checksummed sequence for output. For checking input, such a function would be applied to all but the last digit of the suspect sequence, and its result compared to the supplied last digit. But for simplicity here, all that is reported is "good" or "bad", without hints as to what would have been good. 
+
+Possibly a more useful function would be one that returned the check digit that must be appended to a sequence to provide the full sequence, as when preparing a checksummed sequence for output. For checking input, such a function would be applied to all but the last digit of the suspect sequence, and its result compared to the supplied last digit. But for simplicity here, all that is reported is "good" or "bad", without hints as to what would have been good.
 ```Fortran
       LOGICAL FUNCTION DAMM(DIGIT)	!Check that a sequence of digits checks out..
 Calculates according to the method of H. Michael Damm, described in 2004.
@@ -540,13 +541,13 @@ Calculates according to the method of H. Michael Damm, described in 2004.
         END DO			!On to the next.
         DAMM = ID .EQ. 0	!Somewhere, a check digit should ensure this.
       END FUNCTION DAMM	!Simple, fast, and alas, rarely used.
- 
+
       LOGICAL DAMM	!Not a default type.
- 
+
       WRITE (6,*) DAMM("5724"),"5724"
       WRITE (6,*) DAMM("5727"),"5727"
       WRITE (6,*) DAMM("112946"),"112946"
- 
+
       END
 ```
 
@@ -697,8 +698,8 @@ getdigits=: 10&#.inv
 getDamm=: verb define
   row=. 0
   for_digit. getdigits y do.
-    row=. OpTbl {~ <row,digit    
-  end.   
+    row=. OpTbl {~ <row,digit
+  end.
 )
 
 checkDamm=: 0 = getDamm
@@ -818,7 +819,7 @@ val table = arrayOf(
     intArrayOf(8, 9, 4, 5, 3, 6, 2, 0, 1, 7),
     intArrayOf(9, 4, 3, 8, 6, 1, 7, 2, 0, 5),
     intArrayOf(2, 5, 8, 1, 4, 3, 6, 7, 9, 0)
-) 
+)
 
 fun damm(s: String): Boolean {
     var interim = 0
@@ -1175,7 +1176,7 @@ constant tbl = sq_add(1,{{0, 3, 1, 7, 5, 9, 8, 6, 4, 2},
                          {8, 9, 4, 5, 3, 6, 2, 0, 1, 7},
                          {9, 4, 3, 8, 6, 1, 7, 2, 0, 5},
                          {2, 5, 8, 1, 4, 3, 6, 7, 9, 0}})
- 
+
 function damm(string s)
     integer interim = 1
     for i=1 to length(s) do
@@ -1185,7 +1186,7 @@ function damm(string s)
     end for
     return interim == 1
 end function
- 
+
 constant tests = {"5724", "5727", "112946", "112949"}
 for i=1 to length(tests) do
     string ti = tests[i]
@@ -1213,7 +1214,7 @@ end for
 def damm(num: int) -> bool:
     row = 0
     for digit in str(num):
-        row = _matrix[row][int(digit)] 
+        row = _matrix[row][int(digit)]
     return row == 0
 
 _matrix = (
@@ -1381,7 +1382,7 @@ Damm: arg z;  do j=1  for words(z);             x=word(z, j);                  L
 {{out|output|text=  when using the (internal) default inputs:}}
 
 ```txt
-  
+
 valid check digit 4  for  5724
 invalid check digit 7  for  5727   (should be 4)
   valid check digit 6  for  112946
@@ -1615,7 +1616,7 @@ End Module
 
 
 ```zkl
-fcn damm(digits){  // digits is something that supports an iterator of integers 
+fcn damm(digits){  // digits is something that supports an iterator of integers
    var [const]  tbl=Data(0,Int,		// 10x10 byte bucket
       0, 3, 1, 7, 5, 9, 8, 6, 4, 2,
       7, 0, 9, 2, 1, 5, 4, 8, 6, 3,

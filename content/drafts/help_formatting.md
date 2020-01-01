@@ -47,7 +47,8 @@ If you would like to break yourself away from the GUI editor options, you can cl
 <nowiki>[[Media:Example.ogg]]</nowiki>
 
 <nowiki>
-```c>C code example
+```c
+C code example
 ```
 </nowiki
 

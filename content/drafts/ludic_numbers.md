@@ -49,7 +49,7 @@ To generate succeeding ludic numbers create an array of increasing integers star
 
 ;Stretch goal:
 Show all triplets of ludic numbers < 250.
-* A triplet is any three numbers     <big><math>x,</math>   <math>x+2,</math>   <math>x+6</math> </big>     where all three numbers are also ludic numbers. 
+* A triplet is any three numbers     <big><math>x,</math>   <math>x+2,</math>   <math>x+6</math> </big>     where all three numbers are also ludic numbers.
 
 
 
@@ -80,7 +80,7 @@ LOOPJ1   CH     R7,NMAX            do j=i+1 to nmax
          CLI    0(R1),X'01'        if ludic(j)
          BNE    NOTJ1
          LA     R8,1(R8)           n=n+1
-NOTJ1    CR     R8,R6              if n=i 
+NOTJ1    CR     R8,R6              if n=i
          BNE    NDIFI
          LA     R1,LUDIC-1(R7)     @ludic(j)
          MVI    0(R1),X'00'        ludic(j)=false
@@ -99,7 +99,7 @@ LOOPI2   CH     R6,NMAX            do i=1 to nmax
          CLI    0(R1),X'01'        if ludic(i)
          BNE    NOTI2
          XDECO  R6,XDEC            i
-         MVC    0(4,R10),XDEC+8    output i 
+         MVC    0(4,R10),XDEC+8    output i
          LA     R10,4(R10)         @buf=@buf+4
          LA     R8,1(R8)           n=n+1
          LR     R2,R8              n
@@ -176,7 +176,7 @@ ITERI5   LA     R6,1(R6)           i=i+1
          B      LOOPI5
 ELOOPI5  XR     R15,R15            set return code
          BR     R14                return to caller
-         LTORG  
+         LTORG
 BUF      DS     CL80               buffer
 XDEC     DS     CL12               decimal editor
 NMAX     DC     H'25000'           nmax
@@ -311,52 +311,52 @@ ENDCLASS.
 ```txt
 
 First 25 Ludics
-1 
-2 
-3 
-5 
-7 
-11 
-13 
-17 
-23 
-25 
-29 
-37 
-41 
-43 
-47 
-53 
-61 
-67 
-71 
-77 
-83 
-89 
-91 
-97 
-107 
+1
+2
+3
+5
+7
+11
+13
+17
+23
+25
+29
+37
+41
+43
+47
+53
+61
+67
+71
+77
+83
+89
+91
+97
+107
 
 Ludics up to 1000
-142 
+142
 
 2000th - 2005th Ludics
-21475 
-21481 
-21487 
-21493 
-21503 
-21511 
+21475
+21481
+21487
+21493
+21503
+21511
 
 Triplets up to 250
-1 3 7 
-5 7 11 
-11 13 17 
-23 25 29 
-41 43 47 
-173 175 179 
-221 223 227 
-233 235 239 
+1 3 7
+5 7 11
+11 13 17
+23 25 29
+41 43 47
+173 175 179
+221 223 227
+233 235 239
 
 ```
 
@@ -387,7 +387,7 @@ FOR n FROM 2 TO UPB candidates OVER 2 DO
                 FI
             FI
         OD
-    FI                
+    FI
 OD;
 # show some Ludic numbers and counts                      #
 print( ( "Ludic numbers: " ) );
@@ -503,10 +503,10 @@ LudicSieve(Limit) {
 {{Output}}
 
 ```txt
-First 25:		1 2 3 5 7 11 13 17 23 25 29 37 41 43 47 53 61 67 71 77 83 89 91 97 107 
+First 25:		1 2 3 5 7 11 13 17 23 25 29 37 41 43 47 53 61 67 71 77 83 89 91 97 107
 Ludics below 1000:	142
-Ludic 2000 to 2005:	21475 21481 21487 21493 21503 21511 
-Triples below 250:	(1 3 7) (5 7 11) (11 13 17) (23 25 29) (41 43 47) (173 175 179) (221 223 227) (233 235 239) 
+Ludic 2000 to 2005:	21475 21481 21487 21493 21503 21511
+Triples below 250:	(1 3 7) (5 7 11) (11 13 17) (23 25 29) (41 43 47) (173 175 179) (221 223 227) (233 235 239)
 ```
 
 
@@ -514,8 +514,8 @@ Triples below 250:	(1 3 7) (5 7 11) (11 13 17) (23 25 29) (41 43 47) (173 175 17
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef unsigned uint;
@@ -616,16 +616,16 @@ public class Program
         Console.WriteLine("First 25 ludic numbers:");
         Console.WriteLine(string.Join(", ", LudicNumbers(150).Take(25)));
         Console.WriteLine();
-        
+
         Console.WriteLine($"There are {LudicNumbers(1001).Count()} ludic numbers below 1000");
         Console.WriteLine();
-        
+
         foreach (var ludic in LudicNumbers(22000).Skip(1999).Take(6)
                 .Select((n, i) => $"#{i+2000} = {n}")) {
             Console.WriteLine(ludic);
         }
         Console.WriteLine();
-        
+
         Console.WriteLine("Triplets below 250:");
         var queue = new Queue<int>(5);
         foreach (int x in LudicNumbers(255)) {
@@ -636,7 +636,7 @@ public class Program
             }
         }
     }
-    
+
     public static IEnumerable<int> LudicNumbers(int limit) {
         yield return 1;
         //Like a linked list, but with value types.
@@ -653,12 +653,12 @@ public class Program
             }
         }
     }
-    
+
     static void Unlink(Entry[] values, int index) {
         values[values[index].Prev].Next = values[index].Next;
         values[values[index].Next].Prev = values[index].Prev;
     }
-    
+
 }
 
 struct Entry
@@ -668,7 +668,7 @@ struct Entry
         Prev = n - 1;
         Next = n + 1;
     }
-    
+
     public int N { get; }
     public int Prev { get; set; }
     public int Next { get; set; }
@@ -826,8 +826,8 @@ all triplets of ludic numbers < 250:
 (defn ints-from [n]
   (cons n (lazy-seq (ints-from (inc n)))))
 
-(defn drop-nth [n seq] 
-   (cond 
+(defn drop-nth [n seq]
+   (cond
       (zero?    n) seq
       (empty? seq) []
       :else (concat (take (dec n) seq) (lazy-seq (drop-nth n (drop n seq))))))
@@ -838,7 +838,7 @@ all triplets of ludic numbers < 250:
    ([n [f & r]] (cons n (lazy-seq (ludic f (drop-nth f r))))))))
 
 (defn ludic? [n]  (= (first (filter (partial <= n) ludic)) n))
-   
+
 (print "First 25: ")
 (println (take 25 ludic))
 (print "Count below 1000: ")
@@ -846,7 +846,7 @@ all triplets of ludic numbers < 250:
 (print "2000th through 2005th: ")
 (println (map (partial nth ludic) (range 1999 2005)))
 (print "Triplets < 250: ")
-(println (filter (partial every? ludic?) 
+(println (filter (partial every? ludic?)
          (for [i (range 250)] (list i (+ i 2) (+ i 6)))))
 ```
 
@@ -1302,12 +1302,12 @@ defmodule Ludic do
     [h|t] = Enum.to_list(1..n)
     numbers(t, [h])
   end
-  
+
   defp numbers(list, nums) when length(list) < hd(list), do: Enum.reverse(nums, list)
   defp numbers([h|_]=list, nums) do
     Enum.drop_every(list, h) |> numbers([h | nums])
   end
-  
+
   def task do
     IO.puts "First 25 : #{inspect numbers(200) |> Enum.take(25)}"
     IO.puts "Below 1000: #{length(numbers(1000))}"
@@ -1387,7 +1387,7 @@ Ludic numbers 2000 to 2005:
 ```fortran
 program ludic_numbers
   implicit none
-  
+
   integer, parameter :: nmax = 25000
   logical :: ludic(nmax) = .true.
   integer :: i, j, n
@@ -1413,12 +1413,12 @@ program ludic_numbers
       n = n + 1
     end if
     if(n == 25) exit
-  end do  
-   
+  end do
+
   write(*, "(/, a)", advance = "no") "Ludic numbers below 1000: "
   write(*, "(i0)") count(ludic(:999))
- 
-  write(*, "(a)", advance = "no") "Ludic numbers 2000 to 2005: " 
+
+  write(*, "(a)", advance = "no") "Ludic numbers 2000 to 2005: "
   n = 0
   do i = 1, nmax
     if(ludic(i)) then
@@ -1428,13 +1428,13 @@ program ludic_numbers
          if(n == 2005) exit
        end if
      end if
-  end do  
+  end do
 
   write(*, "(/, a)", advance = "no") "Ludic Triplets below 250: "
   do i = 1, 243
     if(ludic(i) .and. ludic(i+2) .and. ludic(i+6)) then
        write(*, "(a, 2(i0, 1x), i0, a, 1x)", advance = "no") "[", i, i+2, i+6, "]"
-    end if  
+    end if
   end do
 
 end program
@@ -1443,9 +1443,9 @@ end program
 Output:
 
 ```txt
-First 25 Ludic numbers: 1 2 3 5 7 11 13 17 23 25 29 37 41 43 47 53 61 67 71 77 83 89 91 97 107 
+First 25 Ludic numbers: 1 2 3 5 7 11 13 17 23 25 29 37 41 43 47 53 61 67 71 77 83 89 91 97 107
 Ludic numbers below 1000: 142
-Ludic numbers 2000 to 2005: 21475 21481 21487 21493 21503 21511 
+Ludic numbers 2000 to 2005: 21475 21481 21487 21493 21503 21511
 Ludic Triplets below 250: [1 3 7] [5 7 11] [11 13 17] [23 25 29] [41 43 47] [173 175 179] [221 223 227] [233 235 239]
 ```
 
@@ -1475,18 +1475,18 @@ Sub ludic(n As Integer, lu() As Integer)
      k += 1
 
      For i = k to ub
-       If a(i) > 0 Then 
-         count += 1 
+       If a(i) > 0 Then
+         count += 1
          lu(count) = a(i)
          If n = count Then Return
-         a(i) = 0  
-         k = i             
+         a(i) = 0
+         k = i
          Exit For
        End If
-     Next 
+     Next
 
      count2 = 0
-     j = k + 1 
+     j = k + 1
 
      While j <= ub
        If a(j) > 0 Then
@@ -1499,21 +1499,21 @@ Sub ludic(n As Integer, lu() As Integer)
        j += 1
      Wend
    Loop
-     
+
 End Sub
 
 Dim i As Integer
 Dim lu() As Integer
 ludic(2005, lu())
-Print "The first 25 Ludic numbers are :" 
+Print "The first 25 Ludic numbers are :"
 For i = 1 To 25
-  Print Using "###"; lu(i); 
+  Print Using "###"; lu(i);
   Print " ";
 Next
 Print
 
 Dim As Integer Count  = 0
-For i = 1 To 1000 
+For i = 1 To 1000
   If lu(i) <= 1000 Then
     count += 1
   Else
@@ -1557,10 +1557,10 @@ For i = 1 To 248
    Next j
 Next i
 Erase lu
-Print 
+Print
 
 Print "Press any key to quit"
-Sleep 
+Sleep
 ```
 
 
@@ -1782,10 +1782,10 @@ Output:
 
 ```txt
 
-->ludic    
+->ludic
 First 25: 1 2 3 5 7 11 13 17 23 25 29 37 41 43 47 53 61 67 71 77 83 89 91 97 107
 There are 142 Ludic numbers < 1000.
-2000th through 20005th: 21475 21481 21487 21493 21503 21511 
+2000th through 20005th: 21475 21481 21487 21493 21503 21511
 Triplets: [1,3,7] [5,7,11] [11,13,17] [23,25,29] [41,43,47] [173,175,179] [221,223,227] [233,235,239]
 ->
 
@@ -1843,7 +1843,7 @@ public class Ludic{
 		for(int i = 1; i <= n; i++){   //fill the initial list
 			ludics.add(i);
 		}
-		
+
 		//start at index 1 because the first ludic number is 1 and we don't remove anything for it
 		for(int cursor = 1; cursor < ludics.size(); cursor++){
 			int thisLudic = ludics.get(cursor); //the first item in the list is a ludic number
@@ -1856,7 +1856,7 @@ public class Ludic{
 		}
 		return ludics;
 	}
-	
+
 	public static List<List<Integer>> getTriplets(List<Integer> ludics){
 		List<List<Integer>> triplets = new ArrayList<List<Integer>>();
 		for(int i = 0; i < ludics.size() - 2; i++){ //only need to check up to the third to last item
@@ -1871,7 +1871,7 @@ public class Ludic{
 		}
 		return triplets;
 	}
-	
+
 	public static void main(String[] srgs){
 		System.out.println("First 25 Ludics: " + ludicUpTo(110));				//110 will get us 25 numbers
 		System.out.println("Ludics up to 1000: " + ludicUpTo(1000).size());
@@ -2068,7 +2068,7 @@ end
 ```txt
 
 Generate and show here the first 25 ludic numbers.
-    1, 2, 3, 5, 7, 11, 13, 17, 23, 25, 29, 37, 41, 43, 47, 53, 61, 67, 71, 77, 
+    1, 2, 3, 5, 7, 11, 13, 17, 23, 25, 29, 37, 41, 43, 47, 53, 61, 67, 71, 77,
     83, 89, 91, 97, 107
 
 How many ludic numbers are there less than or equal to 1000?
@@ -2105,7 +2105,7 @@ Show all triplets of ludic numbers < 250
 
 /* Rather than remove elements from a MutableList which would be a relatively expensive operation
    we instead use two arrays:
-   
+
    1. An array of the Ludic numbers to be returned.
    2. A 'working' array of a suitable size whose elements are set to 0 to denote removal. */
 
@@ -2145,13 +2145,13 @@ fun ludic(n: Int): IntArray {
             j += 1
         }
     }
-} 
+}
 
 fun main(args: Array<String>) {
     val lu: IntArray = ludic(2005)
-    println("The first 25 Ludic numbers are :")  
+    println("The first 25 Ludic numbers are :")
     for (i in 0 .. 24) print("%4d".format(lu[i]))
-  
+
     val count = lu.count { it <= 1000 }
     println("\n\nThere are $count Ludic numbers <= 1000" )
 
@@ -2182,7 +2182,7 @@ fun main(args: Array<String>) {
             }
             else if (lu[j] > ldc + 6) break
         }
-    }    
+    }
 }
 ```
 
@@ -2335,13 +2335,13 @@ class Ludic  {
     Show("2000th - 2005th Ludics: ", ludics, 1999, 2005);
     Show("Triplets up to 250: ", GetTriplets(LudicUpTo(250)));
   }
-  
+
   function : LudicUpTo(n : Int) ~ CompareVector<IntHolder> {
     ludics := CompareVector->New()<IntHolder>;
     for(i := 1; i <= n; i++;){
       ludics->AddBack(i);
     };
-     
+
     for(cursor := 1; cursor < ludics->Size(); cursor++;) {
       thisLudic := ludics->Get(cursor);
       removeCursor := cursor + thisLudic;
@@ -2427,7 +2427,7 @@ Triplets up to 250:
    ListBuffer newSize(n) dup add(1) dup ->ludics
 
    while(l notEmpty) [
-      l removeFirst dup ludics add ->p  
+      l removeFirst dup ludics add ->p
       l size p / p * while(dup 1 > ) [ dup l removeAt drop p - ] drop
       ] ;
 
@@ -2480,10 +2480,10 @@ Below 1000   : 142
 \\ where the index of each flag=1 is the ludic number.
 \\ 2/28/16 aev
 ludic(maxn)={my(Vlf=vector(maxn,z,1),n2=maxn\2,k,j1);
-for(i=2,n2, 
+for(i=2,n2,
     if(Vlf[i], k=0; j1=i+1;
        for(j=j1,maxn, if(Vlf[j], k++); if(k==i, Vlf[j]=0; k=0))
-      ); 
+      );
    );
 return(Vlf);
 }
@@ -2509,7 +2509,7 @@ for(i=1,250, if(Vr[i]&&Vr[i+2]&&Vr[i+6], print1("(",i," ",i+2," ",i+6,") ")));
 }
 
 ```
- 
+
 {{Output}}
 
 ```txt
@@ -2563,7 +2563,7 @@ for(i=1,vrs, vi=Vr[i]; if(i==1,print1("(",vi," ",vi+2," ",vi+6,") "); next); if(
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -2587,7 +2587,7 @@ Ludic Triplets below 250:
 ## Pascal
 
 
-###  
+###
 
 Inspired by "rotors" of perl 6 .
 Runtime nearly quadratic: maxLudicCnt = 10000 -> 0.03 s =>maxLudicCnt= 100000 -> 3 s
@@ -2754,12 +2754,12 @@ There are 142 ludic numbers below 1000
 Ludic triples below 250
 (1,3,7) (5,7,11) (11,13,17) (23,25,29) (41,43,47) (173,175,179) (221,223,227) (233,235,239)
 
-real  0m2.921s 
+real  0m2.921s
 
 ```
 
 
-###  
+###
 
 Using  an array of byte, each containing the distance to the next ludic number. 64-Bit needs only ~ 60% runtime of 32-Bit.
 Three times slower than the Version 1. Much space left for improvements, like memorizing the count of ludics of intervals of size 1024 or so, to do bigger steps.Something like skiplist.
@@ -2926,11 +2926,11 @@ END.
 MaxDist 56
 
 First 25 ludic numbers
-  1,  2,  3,  5,  7 
- 11, 13, 17, 23, 25 
- 29, 37, 41, 43, 47 
- 53, 61, 67, 71, 77 
- 83, 89, 91, 97,107 
+  1,  2,  3,  5,  7
+ 11, 13, 17, 23, 25
+ 29, 37, 41, 43, 47
+ 53, 61, 67, 71, 77
+ 83, 89, 91, 97,107
 
 Count of ludic numbers below 1000 = 142
 
@@ -2938,14 +2938,14 @@ ludic number #2000 to #2005
 21475,21481,21487,21493,21503,21511
 
 ludic numbers triplets below 250
-{1|3|7} 
-{5|7|11} 
-{11|13|17} 
-{23|25|29} 
-{41|43|47} 
-{173|175|179} 
-{221|223|227} 
-{233|235|239} 
+{1|3|7}
+{5|7|11}
+{11|13|17}
+{23|25|29}
+{41|43|47}
+{173|175|179}
+{221|223|227}
+{233|235|239}
 real    0m0.003s
 
 100000 ludic numbers upto 1561334
@@ -3042,7 +3042,7 @@ This implementation has no arbitrary upper limit, since it can keep adding new r
 constant @ludic = gather {
         my @taken = take 1;
         my @rotor;
- 
+
         for 2..* -> $i {
             loop (my $j = 0; $j < @rotor; $j++) {
                 --@rotor[$j] or last;
@@ -3056,11 +3056,11 @@ constant @ludic = gather {
             }
         }
     }
- 
+
 say @ludic[^25];
 say "Number of Ludic numbers <= 1000: ", +(@ludic ...^ * > 1000);
 say "Ludic numbers 2000..2005: ", @ludic[1999..2004];
- 
+
 my \l250 = set @ludic ...^ * > 250;
 say "Ludic triples < 250: ", gather
     for l250.keys.sort -> $a {
@@ -3127,7 +3127,7 @@ s = {}
 for i=1 to 243 do
     if ludic[i] and ludic[i+2] and ludic[i+6] then
        s = append(s,{i,i+2,i+6})
-    end if  
+    end if
 end for
 printf(1,"There are %d Ludic triplets below 250: %s\n",{length(s),sprint(s)})
 ```
@@ -3154,7 +3154,7 @@ There are 8 Ludic triplets below 250: {{1,3,7},{5,7,11},{11,13,17},{23,25,29},{4
       (make
          (for (I . X) (cdr Lst)
             (unless (=0 (% I N)) (link X)) ) ) ) )
- 
+
 (de comb (M Lst)
    (cond
       ((=0 M) '(NIL))
@@ -3165,7 +3165,7 @@ There are 8 Ludic triplets below 250: {{1,3,7},{5,7,11},{11,13,17},{23,25,29},{4
                '((Y) (cons (car Lst) Y))
                (comb (dec M) (cdr Lst)) )
             (comb M (cdr Lst)) ) ) ) )
-           
+
 (de ludic (N)
    (let Ludic (range 1 100000)
       (make
@@ -3173,7 +3173,7 @@ There are 8 Ludic triplets below 250: {{1,3,7},{5,7,11},{11,13,17},{23,25,29},{4
          (do (dec N)
             (link (car Ludic))
             (setq Ludic (drop Ludic)) ) ) ) )
- 
+
 (let L (ludic 2005)
    (println (head 25 L))
    (println (cnt '((X) (< X 1000)) L))
@@ -3187,7 +3187,7 @@ There are 8 Ludic triplets below 250: {{1,3,7},{5,7,11},{11,13,17},{23,25,29},{4
          (comb
             3
             (filter '((X) (< X 250)) L) ) ) ) )
- 
+
 (bye)
 ```
 
@@ -3216,7 +3216,7 @@ Ludic: procedure;
    do i = 2 to n; V(i) = i; end;
 
    do forever;
-      
+
       k = k + 1; L(k), step = V(2);
 
       do i = 2 to n by step;
@@ -3265,13 +3265,13 @@ end Ludic_numbers;
 Output:
 
 ```txt
-The first 25 Ludic numbers are: 
+The first 25 Ludic numbers are:
    1   2   3   5   7  11  13  17  23  25  29  37  41  43  47
   53  61  67  71  77  83  89  91  97 107
-There are 142 Ludic numbers < 1000 
-Six Ludic numbers from the 2000-th: 
+There are 142 Ludic numbers < 1000
+Six Ludic numbers from the 2000-th:
   21475  21481  21487  21493  21503  21511
-Triples are: 
+Triples are:
 (   1   3  7) (   5   7  11) (  11  13  17) (  23  25  29) (  41  43  47)
 ( 173 175 179) ( 221 223 227) ( 233 235 239)
 ```
@@ -3368,11 +3368,11 @@ END;
 
 ```txt
 Generate and show here the first 25 ludic numbers.
-1 2 3 5 7 11 13 17 23 25 29 37 41 43 47 53 61 67 71 77 83 89 91 97 107 
+1 2 3 5 7 11 13 17 23 25 29 37 41 43 47 53 61 67 71 77 83 89 91 97 107
 How many ludic numbers are there less than or equal to 1000?
 142
 Show the 2000..2005'th ludic numbers.
-21475 21481 21487 21493 21503 21511 
+21475 21481 21487 21493 21503 21511
 A triplet is any three numbers x, x + 2, x + 6 where all three numbers are also ludic numbers.
 Show all triplets of ludic numbers < 250 (Stretch goal)
 1, 3, 7
@@ -3395,20 +3395,20 @@ Show all triplets of ludic numbers < 250 (Stretch goal)
 
 #  Start with a pool large enough to meet the requirements
 $Pool = [System.Collections.ArrayList]( 2..22000 )
- 
+
 #  Start with 1, because it's grandfathered in
 $Ludic = @( 1 )
- 
+
 #  While the size of the pool is still larger than the next Ludic number...
 While ( $Pool.Count -gt $Pool[0] )
     {
     #  Add the next Ludic number to the list
     $Ludic += $Pool[0]
- 
+
     #  Remove from the pool all entries whose index is a multiple of the next Ludic number
     [math]::Truncate( ( $Pool.Count - 1 )/ $Pool[0])..0 | ForEach { $Pool.RemoveAt( $_ * $Pool[0] ) }
     }
- 
+
 #  Add the rest of the numbers in the pool to the list of Ludic numbers
 $Ludic += $Pool.ToArray()
 
@@ -3420,15 +3420,15 @@ $Ludic += $Pool.ToArray()
 #  Display the first 25 Ludic numbers
 $Ludic[0..24] -join ", "
 ''
- 
+
 #  Display the count of all Ludic numbers under 1000
 $Ludic.Where{ $_ -le 1000 }.Count
 ''
- 
+
 #  Display the 2000th through the 2005th Ludic number
 $Ludic[1999..2004] -join ", "
 ''
- 
+
 #  Display all Ludic triplets less than 250
 $TripletStart = $Ludic.Where{ $_ -lt 244 -and ( $_ + 2 ) -in $Ludic -and ( $_ + 6 ) -in $Ludic }
 $TripletStart.ForEach{ $_, ( $_ + 2 ), ( $_ + 6 ) -join ", " }
@@ -3477,7 +3477,7 @@ ludics = [l for l in ludic()]
 print('First 25 ludic primes:')
 print(ludics[:25])
 print("\nThere are %i ludic numbers <= 1000"
-      % sum(1 for l in ludics if l <= 1000)) 
+      % sum(1 for l in ludics if l <= 1000))
 print("\n2000'th..2005'th ludic primes:")
 print(ludics[2000-1: 2005])
 
@@ -3539,7 +3539,7 @@ Output is the same as for the fast version.
 (define lucid?
   (let ((lucid-bytes-sieve
          (delay
-           (define sieve-bytes (make-bytes lucid-sieve-size 1))       
+           (define sieve-bytes (make-bytes lucid-sieve-size 1))
            (bytes-set! sieve-bytes 0 0) ; not a lucid number
            (define (sieve-pass L)
              (let loop ((idx (add1 L)) (skip (sub1 L)))
@@ -3556,7 +3556,7 @@ Output is the same as for the fast version.
            (let loop ((l 2))
              (when l (loop (sieve-pass l))))
            sieve-bytes)))
-    
+
     (λ (n) (= 1 (bytes-ref (force lucid-bytes-sieve) n)))))
 
 (define (dnl . things) (for-each displayln things))
@@ -3673,7 +3673,7 @@ ludicnumbers(ludic)
 showarray(resludic)
 see nl
 
-see "Ludic numbers below 1000: " 
+see "Ludic numbers below 1000: "
 ludic = list(3000)
 resludic = []
 for n = 1 to len(ludic)
@@ -3695,7 +3695,7 @@ showarray3(resludic)
 
 func ludicnumbers(ludic)
       for n = 1 to len(ludic)
-          delludic = [] 
+          delludic = []
           for m = 1 to len(ludic) step ludic[1]
               add(delludic, m)
           next
@@ -3703,7 +3703,7 @@ func ludicnumbers(ludic)
           for p = len(delludic)  to 1 step -1
               del(ludic, delludic[p])
           next
-      next 
+      next
 
 func showarray(vect)
       see "[1, "
@@ -3731,7 +3731,7 @@ func showarray3(vect)
       next
       svect = left(svect, len(svect) - 2)
       see svect
-      see "]" + nl 
+      see "]" + nl
 
 ```
 
@@ -3809,7 +3809,7 @@ object Ludic {
           |2000-2005th Ludic Numbers: ${ludic.slice(1999, 2005).mkString(", ")}
           |Triplets <= 250: ${triplets.takeWhile(_._3 <= 250).mkString(", ")}""".stripMargin)
   }
-  
+
   def dropByN[T](lst: LazyList[T], len: Int): LazyList[T] = lst.grouped(len).flatMap(_.init).to(LazyList)
   def ludic: LazyList[Int] = 1 #:: LazyList.unfold(LazyList.from(2)){case n +: ns => Some((n, dropByN(ns, n)))}
   def triplets: LazyList[(Int, Int, Int)] = LazyList.from(1).map(n => (n, n + 2, n + 6)).filter{case (a, b, c) => Seq(a, b, c).forall(ludic.takeWhile(_ <= c).contains)}
@@ -3920,10 +3920,10 @@ ludic(v(1), result(1)) :=
 	let
 		n := head(v);
 		filtered[i] := v[i] when (i-1) mod n /= 0;
-	in 
+	in
 	result when size(v) < 1 else
 	ludic(filtered, result ++ [n]);
-		
+
 count : int(1) * int * int -> int;
 count(v(1), top, index) :=
 	index-1 when v[index] > top else
@@ -4160,13 +4160,13 @@ WScript.StdOut.WriteLine triplets
 First 25 Ludic Numbers:
 1, 2, 3, 5, 7, 11, 13, 17, 23, 25, 29, 37, 41, 43, 47, 53, 61, 67, 71, 77, 83, 89, 91, 97, 107
 
-Ludics up to 1000: 
+Ludics up to 1000:
 142
 
 The 2000th - 2005th Ludic Numbers:
 21475, 21481, 21487, 21493, 21503, 21511
 
-Ludic Triplets up to 250: 
+Ludic Triplets up to 250:
 1, 3, 7
 5, 7, 11
 11, 13, 17
@@ -4188,7 +4188,7 @@ This solution builds an iterator with filters, one for each Ludic number, each e
 fcn dropNth(n,seq){
    seq.tweak(fcn(n,skipper,idx){ if(0==idx.inc()%skipper) Void.Skip else n }
 	     .fp1(n,Ref(1)))  // skip every nth number of previous sequence
-} 
+}
 fcn ludic{  //-->Walker
    Walker(fcn(rw){ w:=rw.value; n:=w.next(); rw.set(dropNth(n,w)); n }
 	  .fp(Ref([3..*,2])))  // odd numbers starting at 3

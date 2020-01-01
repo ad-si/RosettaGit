@@ -1409,8 +1409,8 @@ int main(void)
 ###  A recursive solution
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main(int argc, char *argv[])
 {
@@ -1434,8 +1434,8 @@ int main(int argc, char *argv[])
 ###  Code golf
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 main(){_=100;while(--_)printf("%i bottle%s of beer in the wall,\n%i bottle%"
 "s of beer.\nTake one down, pass it round,\n%s%s\n\n",_,_-1?"s":"",_,_-1?"s"
 :"",_-1?(char[]){(_-1)/10?(_-1)/10+48:(_-1)%10+48,(_-1)/10?(_-1)%10+48:2+30,
@@ -1452,8 +1452,8 @@ and just output it at run time?
 Well, with the preprocessor, that's indeed possible:
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 
 #define BOTTLE(nstr) nstr " bottles of beer"

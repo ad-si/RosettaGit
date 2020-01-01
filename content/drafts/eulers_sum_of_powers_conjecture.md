@@ -16,7 +16,7 @@ There is a conjecture in mathematics that held for over two hundred years before
 
 
 ;Euler's (disproved) sum of powers   [[wp:Euler's sum of powers conjecture|conjecture]]:
-   <big>At least  k  positive  k<sup>th</sup>  powers are required to sum to a  k<sup>th</sup>  power,  
+   <big>At least  k  positive  k<sup>th</sup>  powers are required to sum to a  k<sup>th</sup>  power,
    except for the trivial case of one  k<sup>th</sup> power:  y<sup>k</sup> = y<sup>k</sup> </big>
 
 Lander and Parkin are known to have used a brute-force search on a   [[wp:CDC_6600|CDC 6600]]   computer restricting numbers to those less than 250.
@@ -33,7 +33,7 @@ Show an answer here.
 
 
 ;Related tasks:
-*   [[Pythagorean quadruples]]. 
+*   [[Pythagorean quadruples]].
 *   [[Pythagorean triples]].
 
 
@@ -136,25 +136,25 @@ LOOPX5   CP     X5,MAXN            while x5<=maxn & valx<=sumx
          BH     ELOOPX5
          CP     VALX,SUMX
          BH     ELOOPX5
-         CP     VALX,SUMX          if valx=sumx 
+         CP     VALX,SUMX          if valx=sumx
          BNE    NOTEQUAL
          MVI    BUF,C' '
          MVC    BUF+1(79),BUF      clear buffer
          MVC    WC,MASK
          ED     WC,X1              x1
-         MVC    BUF+0(8),WC+8     
+         MVC    BUF+0(8),WC+8
          MVC    WC,MASK
          ED     WC,X2              x2
-         MVC    BUF+8(8),WC+8    
+         MVC    BUF+8(8),WC+8
          MVC    WC,MASK
          ED     WC,X3              x3
-         MVC    BUF+16(8),WC+8    
+         MVC    BUF+16(8),WC+8
          MVC    WC,MASK
          ED     WC,X4              x4
-         MVC    BUF+24(8),WC+8     
+         MVC    BUF+24(8),WC+8
          MVC    WC,MASK
          ED     WC,X5              x5
-         MVC    BUF+32(8),WC+8     
+         MVC    BUF+32(8),WC+8
          XPRNT  BUF,80             output x1,x2,x3,x4,x5
          B      ELOOPX1
 NOTEQUAL ZAP    PT,X5
@@ -193,10 +193,10 @@ SUMX     DS     PL8
 VALX     DS     PL8
 PT       DS     PL8
 PQ       DS     PL8
-WC       DS     CL17            
+WC       DS     CL17
 MASK     DC     X'40',13X'20',X'212060'  CL17
 BUF      DS     CL80
-         YREGS  
+         YREGS
          END
 
 ```
@@ -219,33 +219,33 @@ BUF      DS     CL80
 with Ada.Text_IO;
 
 procedure Sum_Of_Powers is
-   
+
    type Base is range 0 .. 250; -- A, B, C, D and Y are in that range
    type Num is range 0 .. 4*(250**5); -- (A**5 + ... + D**5) is in that range
    subtype Fit is Num range 0 .. 250**5; -- Y**5 is in that range
-   
+
    Modulus: constant Num := 254;
    type Modular is mod Modulus;
- 
+
    type Result_Type is array(1..5) of Base; -- this will hold A,B,C,D and Y
-  
+
    type Y_Type is array(Modular) of Base;
    type Y_Sum_Type is array(Modular) of Fit;
 
-   Y_Sum: Y_Sum_Type := (others => 0);  
+   Y_Sum: Y_Sum_Type := (others => 0);
    Y: Y_Type := (others => 0);
       -- for I in 0 .. 250, we set Y_Sum(I**5 mod Modulus) := I**5
       --                       and Y(I**5 mod Modulus) := I
       -- Modulus has been chosen to avoid collisions on (I**5 mod Modulus)
       -- later we will compute Sum_ABCD := A**5 + B**5 + C**5 + D**5
       -- and check if Y_Sum(Sum_ABCD mod modulus) = Sum_ABCD
-   
-   function Compute_Coefficients return Result_Type is  
-   
+
+   function Compute_Coefficients return Result_Type is
+
       Sum_A: Fit;
       Sum_AB, Sum_ABC, Sum_ABCD: Num;
       Short: Modular;
-      
+
    begin
       for A in Base(0) .. 246 loop
          Sum_A := Num(A) ** 5;
@@ -274,14 +274,14 @@ begin -- main program
    -- initialize Y_Sum and Y
    for I in Base(0) .. 250 loop
       Tmp := Num(I)**5;
-      if Y_Sum(Modular(Tmp mod Modulus)) /= 0 then 
+      if Y_Sum(Modular(Tmp mod Modulus)) /= 0 then
          raise Program_Error with "Collision: Change Modulus and recompile!";
       else
          Y_Sum(Modular(Tmp mod Modulus)) := Tmp;
          Y(Modular(Tmp mod Modulus)) := I;
       end if;
    end loop;
-   
+
    -- search for a solution (A, B, C, D, Y)
    ABCD_Y := Compute_Coefficients;
 
@@ -290,7 +290,7 @@ begin -- main program
       Ada.Text_IO.Put(Base'Image(Number));
    end loop;
    Ada.Text_IO.New_Line;
-   
+
 end Sum_Of_Powers;
 ```
 
@@ -570,11 +570,11 @@ void compute(int N, char find_only_one_solution)
 {	const int M = 30;   /* x^5 == x modulo M=2*3*5 */
 	int a, b, c, d, e;
 	mylong s, t, max, *p5 = (mylong*)malloc(sizeof(mylong)*(N+M));
- 
+
 	for(s=0; s < N; ++s)
 		p5[s] = s * s, p5[s] *= p5[s] * s;
 	for(max = p5[N - 1]; s < (N + M); p5[s++] = max + 1);
- 
+
 	for(a = 1; a < N; ++a)
 	for(b = a + 1; b < N; ++b)
 	for(c = b + 1; c < N; ++c)
@@ -631,17 +631,17 @@ PS: The solution for C++ provided below is actually quite good in its design ide
 
 The simplest brute-force find is already reasonably quick:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cmath>
 #include <set>
 using namespace std;
 
-bool find() 
+bool find()
 {
 	const auto MAX = 250;
 	vector<double> pow5(MAX);
-	for (auto i = 1; i < MAX; i++) 
+	for (auto i = 1; i < MAX; i++)
 		pow5[i] = (double)i * i * i * i * i;
 	for (auto x0 = 1; x0 < MAX; x0++) {
 		for (auto x1 = 1; x1 < x0; x1++) {
@@ -684,7 +684,7 @@ We can accelerate this further by creating a parallel std::set<double> p5s conta
 
 ```cpp
 	set<double> pow5s;
-	for (auto i = 1; i < MAX; i++) 
+	for (auto i = 1; i < MAX; i++)
 	{
 		pow5[i] = (double)i * i * i * i * i;
 		pow5s.insert(pow5[i]);
@@ -693,16 +693,16 @@ We can accelerate this further by creating a parallel std::set<double> p5s conta
         if (pow5s.find(sum) != pow5s.end())
 ```
 
-This reduces the timing to 125 ms on the same hardware.  
+This reduces the timing to 125 ms on the same hardware.
 
 A different, more effective optimization is to note that each successive sum is close to the previous one, and use a bidirectional linear search with memory.  We also note that inside the innermost loop, we only need to search upward, so we hoist the downward linear search to the loop over x2.
 
 ```cpp
-bool find() 
+bool find()
 {
 	const auto MAX = 250;
 	vector<double> pow5(MAX);
-	for (auto i = 1; i < MAX; i++) 
+	for (auto i = 1; i < MAX; i++)
 		pow5[i] = (double)i * i * i * i * i;
 	auto rs = 5;
 	for (auto x0 = 1; x0 < MAX; x0++) {
@@ -734,7 +734,7 @@ For comparison with the C code, we also check the timing of an exhaustive search
 Fortunately, we can incorporate the same trick into the above code, by inserting a forward jump to a feasible solution mod 30 into the loop over x3:
 
 ```cpp
-				for (auto x3 = 1; x3 < x2; x3++) 
+				for (auto x3 = 1; x3 < x2; x3++)
 				{
 					// go straight to the first appropriate x3, mod 30
 					if (int err30 = (x0 + x1 + x2 + x3 - rs) % 30)
@@ -752,7 +752,7 @@ Thanks, C guys!
 ### Second version
 
 
-We can create a more efficient method by using the idea (taken from the EchoLisp listing below) of precomputing difference between pairs of fifth powers.  If we combine this with the above idea of using linear search with memory, this still requires asymptotically O(N^4) time (because of the linear search within diffs), but is at least twice as fast as the solution above using the mod-30 trick.  Exhaustive search up to MAX=1000 took 6.2 seconds for me (64-bit on 3.4GHz i7).  It is not clear how it can be combined with the mod-30 trick.  
+We can create a more efficient method by using the idea (taken from the EchoLisp listing below) of precomputing difference between pairs of fifth powers.  If we combine this with the above idea of using linear search with memory, this still requires asymptotically O(N^4) time (because of the linear search within diffs), but is at least twice as fast as the solution above using the mod-30 trick.  Exhaustive search up to MAX=1000 took 6.2 seconds for me (64-bit on 3.4GHz i7).  It is not clear how it can be combined with the mod-30 trick.
 
 The asymptotic behavior can be improved to O(N^3 ln N) by replacing the linear search with an increasing-increment "hunt" (and the outer linear search, which is also O(N^4), with a call to std::upper_bound).  With this replacement, the first solution was found in 0.05 seconds; exhaustive search up to MAX=1000 took 2.80 seconds; and the second nontrivial solution (discarding multiples of the first solution), at y==2615, was found in 94.6 seconds. Note: there is no solution 2615, because 645^5 + 1523^5 + 1722^5 +2506^5 = 122 280 854 808 884 376, but 2615^5=122 280 854 808 884 375. This is an error due to limitation in mantissa of double type (52 bits). 128 bit type is required for the next solution 85359.
 
@@ -1039,7 +1039,7 @@ Mod 30 shortcut with threading, checking from 1 to 1000...
 
 (defn solve-power-sum [max-value max-sols]
   " Finds solutions by using method approach of EchoLisp
-    Large difference is we store a dictionary of all combinations 
+    Large difference is we store a dictionary of all combinations
     of y^5 - x^5 with the x, y value so we can simply lookup rather than have to search "
   (let [pow5 (mapv #(math/expt % 5) (range 0 (* 4 max-value)))                  ; Pow5 = Generate Lookup table for x^5
         y5-x3 (into (i/int-map) (for [x (range 1 max-value)                     ; For x0^5 + x1^5 + x2^5 + x3^5  = y^5
@@ -1072,12 +1072,12 @@ Output
 #{(27 84 110 133 144))
 
 All Solutions with MAX = 1000 (Solution Time: 4.8 seconds CPU i7 920 Quad Core)
-#{(27 84 110 133 144) 
-(162 504 660 798 864) 
-(135 420 550 665 720) 
-(108 336 440 532 576) 
-(189 588 770 931 1008) 
-(54 168 220 266 288) 
+#{(27 84 110 133 144)
+(162 504 660 798 864)
+(135 420 550 665 720)
+(108 336 440 532 576)
+(189 588 770 931 1008)
+(54 168 220 266 288)
 (81 252 330 399 432)}
 
 ```
@@ -1107,7 +1107,7 @@ All Solutions with MAX = 1000 (Solution Time: 4.8 seconds CPU i7 920 Quad Core)
         3  FIFTH-ROOT-OFFS PIC 999 USAGE COMPUTATIONAL-5.
         3  POWER-COUNTER   PIC 999 USAGE COMPUTATIONAL-5.
         88 POWER-MAX       VALUE TABLE-LENGTH.
-       
+
        1   PRETTY.
         3  A               PIC ZZ9.
         3  FILLER          VALUE "^5 + ".
@@ -1175,12 +1175,12 @@ All Solutions with MAX = 1000 (Solution Time: 4.8 seconds CPU i7 920 Quad Core)
 
        POWERS-OF-FIVE-TABLE-INIT.
            PERFORM VARYING POWER-COUNTER FROM 1 BY 1 UNTIL POWER-MAX
-               COMPUTE FIFTH-POWER(POWER-COUNTER) = 
+               COMPUTE FIFTH-POWER(POWER-COUNTER) =
                    POWER-COUNTER *
                    POWER-COUNTER *
                    POWER-COUNTER *
                    POWER-COUNTER *
-                   POWER-COUNTER 
+                   POWER-COUNTER
                END-COMPUTE
            END-PERFORM.
            EXIT PARAGRAPH.
@@ -1424,38 +1424,38 @@ To speed up things, we search for x0, x1, x2 such as x0^5 + x1^5 + x2^5 = a diff
 (define dim 250)
 
 ;; speed up n^5
-(define (p5 n) (* n n n n n)) 
+(define (p5 n) (* n n n n n))
 (remember 'p5) ;; memoize
 
 ;; build vector of all  y^5 - x^5 diffs - length 30877
-(define all-y^5-x^5 
-	(for*/vector 
-		[(x (in-range 1 dim))  (y (in-range (1+ x) dim))] 
+(define all-y^5-x^5
+	(for*/vector
+		[(x (in-range 1 dim))  (y (in-range (1+ x) dim))]
 		(- (p5 y) (p5 x))))
-		
+
 ;; sort to use vector-search
-(begin (vector-sort! <  all-y^5-x^5) 'sorted) 
+(begin (vector-sort! <  all-y^5-x^5) 'sorted)
 
  ;; find couple (x y) from y^5 - x^5
 (define (x-y y^5-x^5)
-	(for*/fold (x-y null) 
+	(for*/fold (x-y null)
 	[(x (in-range 1 dim)) (y (in-range (1+ x ) dim))]
-		(when 
-			(= (- (p5 y) (p5 x)) y^5-x^5) 
-			(set! x-y (list x y)) 
+		(when
+			(= (- (p5 y) (p5 x)) y^5-x^5)
+			(set! x-y (list x y))
 			(break #t)))) ; stop on first
 
 ;; search
-(for*/fold  (sol null)  
+(for*/fold  (sol null)
 	[(x0 (in-range 1 dim)) (x1 (in-range (1+ x0) dim)) (x2 (in-range (1+ x1) dim))]
 	(set! sol (+ (p5 x0) (p5 x1) (p5 x2)))
- 	(when 
+ 	(when
  		(vector-search sol all-y^5-x^5)  ;; x0^5 + x1^5 + x2^5 = y^5 - x3^5 ???
  		(set! sol (append (list x0 x1 x2) (x-y  sol))) ;; found
  		(break #t))) ;; stop on first
 
   →   (27 84 110 133 144) ;; time 2.8 sec
- 		
+
 
 ```
 
@@ -1474,7 +1474,7 @@ defmodule Euler do
       sum(sk, p5, sum2, p, map)
     end)
   end
-  
+
   defp setup(max) do
     Enum.reduce(1..max, {%{}, %{}}, fn i,{p5,sum2} ->
       i5 = i*i*i*i*i
@@ -1482,7 +1482,7 @@ defmodule Euler do
       {Map.put(p5, i5, i), add}
     end)
   end
-  
+
   defp sum([], _, _, _, map), do: map
   defp sum([s|_], _, _, p, map) when p<=s, do: map
   defp sum([s|t], p5, sum2, p, map) do
@@ -1627,7 +1627,7 @@ create pow5 250 cells allot
    pow5 250 cells bounds DO
       dup i @ = IF  drop i pow5 - cell / unloop EXIT  THEN
    cell +LOOP drop 0 ;
- 
+
 \ GFORTH only provides 2 index variables: i, j
 \ so the code creates locals for two outer loop vars, k & l
 
@@ -1658,7 +1658,7 @@ bye
 ```txt
 
 $ gforth-fast ./euler.fs
-133 110 84 27 144 
+133 110 84 27 144
 
 ```
 
@@ -1668,7 +1668,7 @@ $ gforth-fast ./euler.fs
 
 ### FORTRAN IV
 
-To solve this problem, we must handle integers up 250**5 ~= 9.8*10**11 . So we need integers with at less 41 bits. 
+To solve this problem, we must handle integers up 250**5 ~= 9.8*10**11 . So we need integers with at less 41 bits.
 In 1966 all Fortrans were not equal. On IBM360, INTEGER was a 32-bit integer; on CDC6600, INTEGER was a 60-bit integer.
 And Leon J. Lander and Thomas R. Parkin used the CDC6600.
 
@@ -1682,7 +1682,7 @@ C FIND I1,I2,I3,I4,I5 : I1**5+I2**5+I3**5+I4**5=I5**5
       DO 6 I1=1,MAXN
       DO 6 I2=1,MAXN
       DO 6 I3=1,MAXN
-      DO 6 I4=1,MAXN	  
+      DO 6 I4=1,MAXN
       SUMX=P5(I1)+P5(I2)+P5(I3)+P5(I4)
       I5=1
    2  IF(I5-MAXN) 3,3,6
@@ -1693,7 +1693,7 @@ C FIND I1,I2,I3,I4,I5 : I1**5+I2**5+I3**5+I4**5=I5**5
       GOTO 2
    6  CONTINUE
  300  FORMAT(5(1X,I3))
-      END 
+      END
 ```
 
 {{out}}
@@ -1714,13 +1714,13 @@ C FIND I1,I2,I3,I4,I5 : I1**5+I2**5+I3**5+I4**5=I5**5
 program sum_of_powers
   implicit none
 
-  integer, parameter :: maxn = 249      
+  integer, parameter :: maxn = 249
   integer, parameter :: dprec = selected_real_kind(15)
   integer :: i, x0, x1, x2, x3, y
   real(dprec) :: n(maxn), sumx
 
   n = (/ (real(i, dprec)**5, i = 1, maxn) /)
- 
+
 outer: do x0 = 1, maxn
          do x1 = 1, maxn
            do x2 = 1, maxn
@@ -1733,12 +1733,12 @@ outer: do x0 = 1, maxn
                    exit outer
                  end if
                  y = y + 1
-               end do  
+               end do
              end do
            end do
          end do
        end do outer
-        
+
 end program
 ```
 
@@ -1882,21 +1882,21 @@ import Data.List
 import Data.List.Ordered
 
 main :: IO ()
-main = print $ head [(x0,x1,x2,x3,x4) | 
-                                        -- choose x0, x1, x2, x3 
+main = print $ head [(x0,x1,x2,x3,x4) |
+                                        -- choose x0, x1, x2, x3
                                         -- so that 250 < x3 < x2 < x1 < x0
-                                        x3 <- [1..250-1], 
-                                        x2 <- [1..x3-1], 
-                                        x1 <- [1..x2-1], 
-                                        x0 <- [1..x1-1], 
+                                        x3 <- [1..250-1],
+                                        x2 <- [1..x3-1],
+                                        x1 <- [1..x2-1],
+                                        x0 <- [1..x1-1],
 
                                         let p5Sum = x0^5 + x1^5 + x2^5 + x3^5,
 
                                         -- lazy evaluation of powers of 5
-                                        let p5List = [i^5|i <- [1..]], 
+                                        let p5List = [i^5|i <- [1..]],
 
                                         -- is sum a power of 5 ?
-                                        member p5Sum p5List, 
+                                        member p5Sum p5List,
 
                                         -- which power of 5 is sum ?
                                         let Just x4 = elemIndex p5Sum p5List ]
@@ -1934,8 +1934,8 @@ sumMap :: M.Map Int (Int, Int)
 sumMap =
   M.fromList
     [ ((x ^ 5) + (y ^ 5), (x, y))
-    | x <- xs 
-    , y <- tail xs 
+    | x <- xs
+    , y <- tail xs
     , x > y ]
 
 mbExample :: Maybe (Int, Int)
@@ -1996,7 +1996,7 @@ Explanation:
 ```J>1+4 comb 248</lang
  finds all the possibilities for our four arguments.
 
-Then, 
+Then,
 ```J
 (#~ (= <.)@((+/"1)&.:(^&5)))
 ```
@@ -2156,7 +2156,7 @@ for (var n=0; n<=N; n++) {
 	var np=Math.pow(n,5); ns[np]=n; npv.push(np)
 }
 loop:
-for (var a=1;   a<=N; a+=1) 
+for (var a=1;   a<=N; a+=1)
 for (var b=a+1; b<=N; b+=1)
 for (var c=b+1; c<=N; c+=1)
 for (var d=c+1; d<=N; d+=1) {
@@ -2176,7 +2176,7 @@ function print(c) {
 
 ```javascript
 var N=1000, first=false
-var npv=[], M=30 // x^5 == x modulo M (=2*3*5) 
+var npv=[], M=30 // x^5 == x modulo M (=2*3*5)
 for (var n=0; n<=N; n+=1) npv[n]=Math.pow(n, 5)
 var mx=1+npv[N]; while(n<=N+M) npv[n++]=mx
 
@@ -2201,17 +2201,17 @@ function print(c) {
 
 ```javascript
 var N=1000, first=false
-var dxs={}, pow=Math.pow 
+var dxs={}, pow=Math.pow
 for (var d=1; d<=N; d+=1)
 	for (var dp=pow(d,5), x=d+1; x<=N; x+=1)
 		dxs[pow(x,5)-dp]=[d,x]
 loop:
 for (var a=1; a<N; a+=1)
-for (var ap=pow(a,5), b=a+1; b<N; b+=1) 
+for (var ap=pow(a,5), b=a+1; b<N; b+=1)
 for (var abp=ap+pow(b,5), c=b+1; c<N; c+=1) {
 	var dx = dxs[ abp+pow(c,5) ]
 	if (!dx || c >= dx[0]) continue
-	print( [a, b, c].concat( dx ) )  
+	print( [a, b, c].concat( dx ) )
 	if (first) break loop
 }
 function print(c) {
@@ -2230,7 +2230,7 @@ for (var i=1; i<=N; i+=1) {
 	var ip=pow(i,5); is[ip]=i; ipv.push(ip)
 	for (var j=i+1; j<=N; j+=1) {
 		var ijp=ip+pow(j,5); ijs[ijp]=[i,j]; ijpv.push(ijp)
-	} 
+	}
 }
 ijpv.sort( function (a,b) {return a - b } )
 loop:
@@ -2587,7 +2587,7 @@ Counter-example found:
 ## jq
 
 {{works with | jq | 1.4 }}
-This version finds all non-decreasing solutions within the specified bounds, 
+This version finds all non-decreasing solutions within the specified bounds,
 using a brute-force but not entirely blind approach.
 
 ```jq
@@ -2775,7 +2775,7 @@ Time taken: 1.247 seconds
 
 ```Mathematica
 Sort[FindInstance[
-   x0^5 + x1^5 + x2^5 + x3^5 == y^5 && x0 > 0 && x1 > 0 && x2 > 0 && 
+   x0^5 + x1^5 + x2^5 + x3^5 == y^5 && x0 > 0 && x1 > 0 && x2 > 0 &&
     x3 > 0, {x0, x1, x2, x3, y}, Integers][[1, All, -1]]]
 ```
 
@@ -2823,7 +2823,7 @@ Sort[FindInstance[
       EndFor 'x3
     EndFor 'x2
   EndFor 'x1
- EndPgrm: 
+ EndPgrm:
 ```
 
 {{out}}
@@ -2831,7 +2831,7 @@ Sort[FindInstance[
 ```txt
 Found!
 -> 27^5+84^5+110^5+133^5=144^5
-x5^5=61917364224 
+x5^5=61917364224
 ```
 
 
@@ -2885,7 +2885,7 @@ END EulerConjecture.
 
 ## Nim
 
-{{trans|PureBasic}} 
+{{trans|PureBasic}}
 
 ```Nim
 
@@ -2894,7 +2894,7 @@ END EulerConjecture.
 import times
 
 # assumes an array of non-decreasing positive integers
-proc binarySearch(a : openArray[int], target : int) : int = 
+proc binarySearch(a : openArray[int], target : int) : int =
   var left, right, mid : int
   left = 0
   right = len(a) - 1
@@ -2908,7 +2908,7 @@ proc binarySearch(a : openArray[int], target : int) : int =
     else :
       return mid  # match found
 
-var 
+var
   p5 : array[250, int]
   sum = 0
   y, t1 : int
@@ -2917,7 +2917,7 @@ let t0 = cpuTime()
 
 for i in 1 .. 249 :
   p5[i] = i * i * i * i * i
- 
+
 for x0 in 1 .. 249 :
   for x1 in 1 .. x0 - 1 :
     for x2 in 1 .. x1 - 1 :
@@ -2925,13 +2925,13 @@ for x0 in 1 .. 249 :
         sum = p5[x0] + p5[x1] + p5[x2] + p5[x3]
         y = binarySearch(p5, sum)
         if y > 0 :
-          t1 = int((cputime() - t0) * 1000.0) 
+          t1 = int((cputime() - t0) * 1000.0)
           echo "Time : ", t1, " milliseconds"
           echo  $x0 & "^5 + " & $x1 & "^5 + " & $x2 & "^5 + " & $x3 & "^5 = " & $y & "^5"
           quit()
 
 if y == 0 :
-  echo "No solution was found"  
+  echo "No solution was found"
 
 ```
 
@@ -3027,7 +3027,7 @@ slightly improved.Reducing calculation time by temporary sum and early break.
 program Pot5Test;
 {$IFDEF FPC} {$MODE DELPHI}{$ELSE]{$APPTYPE CONSOLE}{$ENDIF}
 type
-  tTest = double;//UInt64;{ On linux 32Bit double is faster than  Uint64 } 
+  tTest = double;//UInt64;{ On linux 32Bit double is faster than  Uint64 }
 var
   Pot5 : array[0..255] of tTest;
   res,tmpSum : tTest;
@@ -3175,7 +3175,7 @@ constant MAX = 250
 
 constant p5 = new_dict(),
          sum2 = new_dict()
- 
+
 atom t0 = time()
 for i=1 to MAX do
     atom i5 = power(i,5)
@@ -3320,7 +3320,7 @@ $max = 250
 
 $powers =  New-Object System.Collections.ArrayList
 for ($i = 0; $i -lt $max; $i++) {
-  $tmp = $powers.Add([Math]::Pow($i, 5)) 
+  $tmp = $powers.Add([Math]::Pow($i, 5))
 }
 
 for ($x0 = 1; $x0 -lt $max; $x0++) {
@@ -3419,10 +3419,10 @@ Procedure.q BinarySearch(Array a.q(1), Target.q)
       r = m - 1
     Else
       ProcedureReturn m ; match found
-    EndIf  
+    EndIf
   ForEver
 EndProcedure
-  
+
 Define i, x0, x1, x2, x3, y
 Define.q sum
 Define Dim p5.q(249)
@@ -3434,11 +3434,11 @@ Next
 If OpenConsole()
   For x0 = 1 To 249
     For x1 = 1 To x0 - 1
-      For x2 = 1 To x1 - 1 
-        For x3 = 1 To x2 - 1 
+      For x2 = 1 To x1 - 1
+        For x3 = 1 To x2 - 1
           sum = p5(x0) + p5(x1) + p5(x2) + p5(x3)
           y = BinarySearch(p5(), sum)
-          If y > 0          
+          If y > 0
             PrintN(Str(x0) + "^5 + " + Str(x1) + "^5 + " + Str(x2) + "^5 + " + Str(x3) + "^5 = " + Str(y) + "^5")
             Goto finish
           EndIf
@@ -3446,7 +3446,7 @@ If OpenConsole()
       Next x2
     Next x1
   Next x0
-  
+
   PrintN("No solution was found")
   finish:
   PrintN("")
@@ -3685,7 +3685,7 @@ Euler's sum of powers conjecture – counter-example:
 (define MAX 250)
 (define pow5 (make-vector MAX))
 (for ([i (in-range 1 MAX)])
-  (vector-set! pow5 i (expt i 5)))  
+  (vector-set! pow5 i (expt i 5)))
 (define pow5s (list->set (vector->list pow5)))
 (let/ec break
   (for* ([x0 (in-range 1 MAX)]
@@ -3713,11 +3713,11 @@ Euler's sum of powers conjecture – counter-example:
 
 ## REXX
 
-Programming note:   the 3<sup>rd</sup> argument can be specified which causes an attempt to find   '''N'''   solutions.   
+Programming note:   the 3<sup>rd</sup> argument can be specified which causes an attempt to find   '''N'''   solutions.
 
-The starting and ending (low and high) values can also be specified   (to limit or expand the search range). 
+The starting and ending (low and high) values can also be specified   (to limit or expand the search range).
 
-If any of the arguments are omitted, they default to the Rosetta Code task's specifications. 
+If any of the arguments are omitted, they default to the Rosetta Code task's specifications.
 
 The method used is:
 
@@ -3729,17 +3729,17 @@ The method used is:
 ::*           (this is needed as the fourth number   <big>'''d'''</big>   isn't known yet).
 ::*   {all of the above utilizes REXX's   ''sparse stemmed array hashing''   which eliminates the need for sorting.}
 
-By implementing (user ID)   G. Brougnard's   idea of   ''differences of two 5<sup>th</sup> powers'',   
-the time used for computation was reduced by over a factor of seventy.  
+By implementing (user ID)   G. Brougnard's   idea of   ''differences of two 5<sup>th</sup> powers'',
+the time used for computation was reduced by over a factor of seventy.
 
 
 In essence, the new formula being solved is:       <big><big> aⁿ   +   bⁿ   +   cⁿ     ==     xⁿ   ─   dⁿ </big></big>
 
 which lends itself to algorithm optimization by (only) having to:
-:*   [the right side of the above equation]   pre-compute all possible differences between any two applicable 
-         integer powers of five   (there are 30,135 unique differences) 
-:*   [the   left side of the above equation]   sum any applicable three integer powers of five   
-:*   [the   <big><big>==</big></big>   part of the above equation]   see if any of the above left─side sums match any of the   ≈30k   right─side differences 
+:*   [the right side of the above equation]   pre-compute all possible differences between any two applicable
+         integer powers of five   (there are 30,135 unique differences)
+:*   [the   left side of the above equation]   sum any applicable three integer powers of five
+:*   [the   <big><big>==</big></big>   part of the above equation]   see if any of the above left─side sums match any of the   ≈30k   right─side differences
 
 ```rexx
 /*REXX program finds unique positive integers for ────────── aⁿ+bⁿ+cⁿ+dⁿ==xⁿ  where n=5 */
@@ -3840,13 +3840,13 @@ for w = 1 to max
                for z = 1 to y
                     sum = pow(w,5) + pow(x,5) + pow(y,5) + pow(z,5)
                     s1  = floor(pow(sum,0.2))
-                    if sum = pow(s1,5) 
-                       see "" + w + "^5 + " + x + "^5 + " + y + "^5 + " + z + "^5 = " + s1 + "^5" 
+                    if sum = pow(s1,5)
+                       see "" + w + "^5 + " + x + "^5 + " + y + "^5 + " + z + "^5 = " + s1 + "^5"
                     ok
-               next 
+               next
           next
-     next 
-next 
+     next
+next
 
 ```
 
@@ -3915,8 +3915,8 @@ FOR w = 1 TO max
       FOR z = 1 TO y
       sum = w^5 + x^5 + y^5 + z^5
       s1  = INT(sum^0.2)
-      IF sum=s1^5 THEN 
-        PRINT w;"^5 + ";x;"^5 + ";y;"^5 + ";z;"^5 = ";s1;"^5" 
+      IF sum=s1^5 THEN
+        PRINT w;"^5 + ";x;"^5 + ";y;"^5 + ";z;"^5 = ";s1;"^5"
         end
       end if
       NEXT z
@@ -4261,11 +4261,11 @@ End Module
 ```txt
 Checking from 1 to 250...
   27^5 + 84^5 + 110^5 + 133^5 = 144^5
-  
+
   Computation time to find lowest one was 0.0807819 seconds
-  
+
   27^5 + 84^5 + 110^5 + 133^5 = 144^5
-  
+
   Computation time to check entire space was 0.3830103 seconds
 ```
 
@@ -4340,7 +4340,7 @@ Module Module1
             For Each s In sum2.Keys
                 Dim t As Long = p - s : If t <= 0 Then Exit For
                 If sum2.Keys.Contains(t) AndAlso sum2.Item(t).a > sum2.Item(s).b Then
-                    Console.WriteLine("  {1} + {2} = {0}^5", i, 
+                    Console.WriteLine("  {1} + {2} = {0}^5", i,
                         Fmt(sum2.Item(s)), Fmt(sum2.Item(t)))
                     If findLowest Then Exit Sub
                 End If
@@ -4529,21 +4529,21 @@ Paired powers with Mod 30 shortcut (entire space) parallel, checking from 27 to 
 ```txt
 Paired powers, checking from 189 to 1008...
   189^5 + 588^5 + 770^5 + 931^5 = 1008^5
-  
+
   Computation time to find lowest one was 14.6840411 seconds
-  
+
   189^5 + 588^5 + 770^5 + 931^5 = 1008^5
-  
+
   Computation time to check entire space was 14.7777685 seconds
-  
+
 Paired powers with Mod 30 shortcut (entire space) sequential, checking from 189 to 1008...
   189^5 + 588^5 + 770^5 + 931^5 = 1008^5
-  
+
   Computation time was 12.4814705 seconds
-  
+
 Paired powers with Mod 30 shortcut (entire space) parallel, checking from 189 to 1008...
   189^5 + 588^5 + 770^5 + 931^5 = 1008^5
-  
+
   Computation time was 2.7180777 seconds
 ```
 
@@ -4601,7 +4601,7 @@ Note: dictionary keys are always strings and copying a read only list creates a 
 
 ## ZX Spectrum Basic
 
-{{incorrect|ZX Spectrum Basic|ZX Spectrum Basic has one numerical type, a floating point type of 5 bytes, of which the first byte holds the mantissa leaving 4 bytes for the number. 144^5 is to big to fit in 4 bytes.   
+{{incorrect|ZX Spectrum Basic|ZX Spectrum Basic has one numerical type, a floating point type of 5 bytes, of which the first byte holds the mantissa leaving 4 bytes for the number. 144^5 is to big to fit in 4 bytes.
 It will lose precision, the program will not find the a solution.}}
 Very, very, very slow. Even with an emulator at full speed.
 
@@ -4610,7 +4610,7 @@ Very, very, very slow. Even with an emulator at full speed.
 20 FOR w=1 TO max: FOR x=1 TO w: FOR y=1 TO x: FOR z=1 TO y
 30 LET sum=w^5+x^5+y^5+z^5
 40 LET s1=INT (sum^0.2)
-50 IF sum=s1^5 THEN PRINT w;"^5+";x;"^5+";y;"^5+";z;"^5=";s1;"^5": STOP 
+50 IF sum=s1^5 THEN PRINT w;"^5+";x;"^5+";y;"^5+";z;"^5=";s1;"^5": STOP
 60 NEXT z: NEXT y: NEXT x: NEXT w
 ```
 

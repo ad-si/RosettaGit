@@ -15,7 +15,7 @@ tags = []
 [[File:Tic_tac_toe.jpg|500px||right]]
 
 ;Task:
-Play a game of [[wp:Tic-tac-toe|tic-tac-toe]]. 
+Play a game of [[wp:Tic-tac-toe|tic-tac-toe]].
 
 Ensure that legal moves are played and that a winning position is notified.
 
@@ -166,7 +166,7 @@ end Tic_Tac_Toe;
 
 ```txt
 
-> ./tic_tac_toe 
+> ./tic_tac_toe
 Shall x be run by the computer? (y=yes)
 y
 Yes!
@@ -224,7 +224,7 @@ oxx
 
 Draw
 
-> ./tic_tac_toe 
+> ./tic_tac_toe
 Shall x be run by the computer? (y=yes)
 n
 No!
@@ -507,7 +507,7 @@ X|X|O
 O|O|X
 -+-+-
 X|O|O
-it's a draw                     
+it's a draw
 Play again?                     n
 
 ```
@@ -526,17 +526,17 @@ property difficulty : missing value
 repeat
    set OMask to 0
    set XMask to 0
-   
+
    if button returned of (display dialog "Who should start?" buttons {"I shoud", "CPU"}) = "CPU" then set OMask to npcGet()
    set difficulty to button returned of (display dialog "Please choose your difficulty" buttons {"Hard", "Normal"})
-   
+
    repeat
        set XMask to XMask + 2 ^ (nGet() - 1)
        if winnerForMask(XMask) or OMask + XMask = 511 then exit repeat
        set OMask to npcGet()
        if winnerForMask(OMask) or OMask + XMask = 511 then exit repeat
    end repeat
-   
+
    if winnerForMask(OMask) then
        set msg to "CPU Wins!"
    else if winnerForMask(XMask) then
@@ -544,7 +544,7 @@ repeat
    else
        set msg to "It's a draw"
    end if
-   
+
    display dialog msg & return & return & drawGrid() & return & return & "Do you want to play again?"
 end repeat
 
@@ -569,7 +569,7 @@ on npcGet()
    repeat with spot in freeSpots
        if winnerForMask(OMask + spot) then return OMask + spot
    end repeat
-   
+
    if difficulty is "Hard" and OMask is 0 then
        if XMask = 1 or XMask = 4 then return 2
        if XMask = 64 or XMask = 256 then return 128
@@ -578,7 +578,7 @@ on npcGet()
    repeat with spot in freeSpots
        if winnerForMask(XMask + spot) then return OMask + spot
    end repeat
-   
+
    --fourth check if CPU can win in two moves
    repeat with spot1 in freeSpots
        repeat with spot2 in freeSpots
@@ -593,7 +593,7 @@ on npcGet()
    end repeat
    --at last pick a random spot
    if XMask + OMask = 0 and difficulty = "Hard" then return 1
-   
+
    return OMask + (some item of freeSpots)
 end npcGet
 
@@ -1227,7 +1227,7 @@ set ll=X
 goto display1
 :win
 echo %ll% wins!
-pause 
+pause
 goto newgame
 
 ```
@@ -1239,7 +1239,7 @@ This code makes a version of Tic Tac Toe with more features:
 
 ```dos
 @ECHO OFF
-:BEGIN  
+:BEGIN
   REM Skill level
   set sl=
   cls
@@ -1250,7 +1250,7 @@ This code makes a version of Tic Tac Toe with more features:
   echo.
   echo               (1) Children under 6
   echo               (2) Average Mental Case
-  echo               (3) Oversized Ego  
+  echo               (3) Oversized Ego
   CHOICE /c:123q /n > nul
   if errorlevel 4 goto end
   if errorlevel 3 set sl=3
@@ -1267,24 +1267,24 @@ This code makes a version of Tic Tac Toe with more features:
   REM No moves
   set nm=
   REM Set to one blank space after equal sign (check with cursor end)
-  set t1= 
-  set t2= 
-  set t3= 
-  set t4= 
-  set t5= 
-  set t6= 
-  set t7= 
-  set t8= 
-  set t9= 
+  set t1=
+  set t2=
+  set t3=
+  set t4=
+  set t5=
+  set t6=
+  set t7=
+  set t8=
+  set t9=
 
 :UPDATE
   cls
   echo   (S to set skill level)       Tic Tac Toe                         (Q to quit)
   echo.
-  echo                               You are the X player. 
-  echo                    Press the number where you want to put an X.     
+  echo                               You are the X player.
+  echo                    Press the number where you want to put an X.
   echo.
-  echo   Skill level %sl%                    7 8 9 
+  echo   Skill level %sl%                    7 8 9
   echo                                       4 5 6
   echo                                       1 2 3
   echo.
@@ -1316,48 +1316,48 @@ This code makes a version of Tic Tac Toe with more features:
   if errorlevel 2 goto 2
   goto 1
 
-:1  
+:1
   REM Check if "x" or "o" already in square.
   if "%t1%"=="x" goto player
   if "%t1%"=="o" goto player
   set t1=x
   goto check
-:2  
+:2
   if "%t2%"=="x" goto player
   if "%t2%"=="o" goto player
   set t2=x
   goto check
-:3  
+:3
   if "%t3%"=="x" goto player
   if "%t3%"=="o" goto player
   set t3=x
   goto check
-:4  
+:4
   if "%t4%"=="x" goto player
   if "%t4%"=="o" goto player
   set t4=x
   goto check
-:5  
+:5
   if "%t5%"=="x" goto player
   if "%t5%"=="o" goto player
   set t5=x
   goto check
-:6  
+:6
   if "%t6%"=="x" goto player
   if "%t6%"=="o" goto player
   set t6=x
   goto check
-:7  
+:7
   if "%t7%"=="x" goto player
   if "%t7%"=="o" goto player
   set t7=x
   goto check
-:8  
+:8
   if "%t8%"=="x" goto player
   if "%t8%"=="o" goto player
   set t8=x
   goto check
-:9  
+:9
   if "%t9%"=="x" goto player
   if "%t9%"=="o" goto player
   set t9=x
@@ -1365,11 +1365,11 @@ This code makes a version of Tic Tac Toe with more features:
 
 :COMPUTER
   set pt=o
-  if "%sl%"=="1" goto skill1  
+  if "%sl%"=="1" goto skill1
  REM (win corner to corner)
   if "%t1%"=="o" if "%t3%"=="o" if not "%t2%"=="x" if not "%t2%"=="o" goto c2
   if "%t1%"=="o" if "%t9%"=="o" if not "%t5%"=="x" if not "%t5%"=="o" goto c5
-  if "%t1%"=="o" if "%t7%"=="o" if not "%t4%"=="x" if not "%t4%"=="o" goto c4  
+  if "%t1%"=="o" if "%t7%"=="o" if not "%t4%"=="x" if not "%t4%"=="o" goto c4
   if "%t3%"=="o" if "%t7%"=="o" if not "%t5%"=="x" if not "%t5%"=="o" goto c5
   if "%t3%"=="o" if "%t9%"=="o" if not "%t6%"=="x" if not "%t6%"=="o" goto c6
   if "%t9%"=="o" if "%t7%"=="o" if not "%t8%"=="x" if not "%t8%"=="o" goto c8
@@ -1410,18 +1410,18 @@ This code makes a version of Tic Tac Toe with more features:
   if "%t9%"=="x" if "%t8%"=="x" if not "%t7%"=="x" if not "%t7%"=="o" goto c7
   if "%t9%"=="x" if "%t5%"=="x" if not "%t1%"=="x" if not "%t1%"=="o" goto c1
   if "%t9%"=="x" if "%t6%"=="x" if not "%t3%"=="x" if not "%t3%"=="o" goto c3
- REM (block obvious corner to corner) 
+ REM (block obvious corner to corner)
   if "%t1%"=="x" if "%t3%"=="x" if not "%t2%"=="x" if not "%t2%"=="o" goto c2
   if "%t1%"=="x" if "%t9%"=="x" if not "%t5%"=="x" if not "%t5%"=="o" goto c5
-  if "%t1%"=="x" if "%t7%"=="x" if not "%t4%"=="x" if not "%t4%"=="o" goto c4  
+  if "%t1%"=="x" if "%t7%"=="x" if not "%t4%"=="x" if not "%t4%"=="o" goto c4
   if "%t3%"=="x" if "%t7%"=="x" if not "%t5%"=="x" if not "%t5%"=="o" goto c5
   if "%t3%"=="x" if "%t9%"=="x" if not "%t6%"=="x" if not "%t6%"=="o" goto c6
   if "%t9%"=="x" if "%t7%"=="x" if not "%t8%"=="x" if not "%t8%"=="o" goto c8
   if "%sl%"=="2" goto skill2
- REM (block sneaky corner to corner 2-4, 2-6, etc.) 
+ REM (block sneaky corner to corner 2-4, 2-6, etc.)
   if "%t2%"=="x" if "%t4%"=="x" if not "%t1%"=="x" if not "%t1%"=="o" goto c1
   if "%t2%"=="x" if "%t6%"=="x" if not "%t3%"=="x" if not "%t3%"=="o" goto c3
-  if "%t8%"=="x" if "%t4%"=="x" if not "%t7%"=="x" if not "%t7%"=="o" goto c7  
+  if "%t8%"=="x" if "%t4%"=="x" if not "%t7%"=="x" if not "%t7%"=="o" goto c7
   if "%t8%"=="x" if "%t6%"=="x" if not "%t9%"=="x" if not "%t9%"=="o" goto c9
  REM (block offset corner trap 1-8, 1-6, etc.)
   if "%t1%"=="x" if "%t6%"=="x" if not "%t8%"=="x" if not "%t8%"=="o" goto c8
@@ -1446,8 +1446,8 @@ This code makes a version of Tic Tac Toe with more features:
   if "%t3%"=="x" if "%t7%"=="x" if not "%t6%"=="x" if not "%t6%"=="o" goto c6
   if "%t1%"=="x" if "%t9%"=="x" if not "%t8%"=="x" if not "%t8%"=="o" goto c8
   if "%t3%"=="x" if "%t7%"=="x" if not "%t8%"=="x" if not "%t8%"=="o" goto c8
-:SKILL1 
- REM (just take a turn) 
+:SKILL1
+ REM (just take a turn)
   if not "%t5%"=="x" if not "%t5%"=="o" goto c5
   if not "%t1%"=="x" if not "%t1%"=="o" goto c1
   if not "%t3%"=="x" if not "%t3%"=="o" goto c3
@@ -1460,31 +1460,31 @@ This code makes a version of Tic Tac Toe with more features:
   set nm=0
   goto update
 
-:C1  
+:C1
   set t1=o
   goto check
-:C2  
+:C2
   set t2=o
   goto check
-:C3  
+:C3
   set t3=o
   goto check
-:C4  
+:C4
   set t4=o
   goto check
-:C5  
+:C5
   set t5=o
   goto check
-:C6  
+:C6
   set t6=o
   goto check
-:C7  
+:C7
   set t7=o
   goto check
-:C8  
+:C8
   set t8=o
   goto check
-:C9  
+:C9
   set t9=o
   goto check
 
@@ -1606,7 +1606,7 @@ Your move: 1
 ---+---+---
  7 | 8 | 9
 
-My move: 5 
+My move: 5
 
  X | 2 | 3
 ---+---+---
@@ -1622,7 +1622,7 @@ Your move: 2
 ---+---+---
  7 | 8 | 9
 
-My move: 3 
+My move: 3
 
  X | X | O
 ---+---+---
@@ -1640,8 +1640,8 @@ Your move:
 
 Opening alternates between human and computer. Computer never loses.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int b[3][3]; /* board. 0: blank; -1: computer; 1: human */
@@ -1732,7 +1732,7 @@ const char* game(int user)
 		}
 
 		showboard();
-		if ((win = check_winner())) 
+		if ((win = check_winner()))
 			return win == 1 ? "You win.\n\n": "I win.\n\n";
 	}
 	return "A draw.\n\n";
@@ -1806,7 +1806,7 @@ public:
     }
 
 private:
-    void reset() 
+    void reset()
     {
 	for( int x = 0; x < 9; x++ )
 	    _field[x] = None;
@@ -1815,7 +1815,7 @@ private:
     void drawGrid()
     {
 	system( "cls" );
-		
+
         COORD c = { 0, 2 };
 	SetConsoleCursorPosition( GetStdHandle( STD_OUTPUT_HANDLE ), c );
 
@@ -1901,8 +1901,8 @@ private:
 		if( _field[try1] == Computer ) break;
 	    }
 
-	    if( _field[try1] != None && _field[try1] == _field[try3] && _field[try2] == None ) 
-	    {			
+	    if( _field[try1] != None && _field[try1] == _field[try3] && _field[try2] == None )
+	    {
 		move = try2;
 		if( _field[try1] == Computer ) break;
 	    }
@@ -1914,7 +1914,7 @@ private:
 	    }
         }
 	_field[move] = Computer;
-		
+
     }
 
 
@@ -1975,7 +1975,7 @@ namespace RosettaTicTacToe
      *
 ### ==========================================================
 */
-    static string[][] Players = new string[][] { 
+    static string[][] Players = new string[][] {
       new string[] { "COMPUTER", "X" }, // computer player
       new string[] { "HUMAN", "O" }     // human player
     };
@@ -1989,9 +1989,9 @@ namespace RosettaTicTacToe
 
     static int[] corners = new int[] { 0, 2, 6, 8 };
 
-    static int[][] wins = new int[][] { 
-      new int[] { 0, 1, 2 }, new int[] { 3, 4, 5 }, new int[] { 6, 7, 8 }, 
-      new int[] { 0, 3, 6 }, new int[] { 1, 4, 7 }, new int[] { 2, 5, 8 }, 
+    static int[][] wins = new int[][] {
+      new int[] { 0, 1, 2 }, new int[] { 3, 4, 5 }, new int[] { 6, 7, 8 },
+      new int[] { 0, 3, 6 }, new int[] { 1, 4, 7 }, new int[] { 2, 5, 8 },
       new int[] { 0, 4, 8 }, new int[] { 2, 4, 6 } };
 
 
@@ -2306,7 +2306,7 @@ HUMAN, enter you move (number):
   (and (notany #'null lst)
        (notany #'null (mapcar #'(lambda (x) (eq (car lst) x)) lst))
        (car lst)))
-	
+
 (defun elements-of-straights (board)
   (loop for i in *straights*
      collect (loop for j from 0 to 2
@@ -2344,7 +2344,7 @@ HUMAN, enter you move (number):
       (player-move board current-player)))
 
 (defun switch-player ()
-  (if (eq *current-player* 'x) 
+  (if (eq *current-player* 'x)
       (setf *current-player* 'o)
       (setf *current-player* 'x)))
 
@@ -2362,7 +2362,7 @@ HUMAN, enter you move (number):
 	(autoplay-o-p (set-player 'o)))
     (format t "~%")
     (loop until (or (find-winner board) (null (list-legal-moves board)))
-       do (display-board board)      
+       do (display-board board)
        do (perform-turn *current-player* board autoplay-x-p autoplay-o-p)
        do (switch-player)
        finally (if (find-winner board)
@@ -2584,7 +2584,7 @@ It uses minimax with alpha-beta pruning. Therefore, the computer never loses.
 state = 0
 linewidth 2
 textsize 14
-# 
+#
 func init . .
   color 000
   move 0 0
@@ -2830,11 +2830,11 @@ turn( "X"=Player, Board ) ->
     New_board = [{N, Player} | lists:keydelete(N, 1, Board)],
     turn( player(is_finished(New_board), Player), New_board );
 turn( "O"=Player, Board ) ->
-    [turn_board_write_horisontal(X, Board) || X <- three_in_row_horisontal()], 
+    [turn_board_write_horisontal(X, Board) || X <- three_in_row_horisontal()],
     Ns = [X || {X, Y} <- Board, is_empty(Y)],
     Prompt = lists:flatten( io_lib:format("Player, ~p, select one of ~p: ", [Player, Ns]) ),
     N = turn_next_move( Prompt, Ns ),
-    New_board = [{N, Player} | lists:keydelete(N, 1, Board)], 
+    New_board = [{N, Player} | lists:keydelete(N, 1, Board)],
     turn( player(is_finished(New_board), Player), New_board ).
 
 turn_board_write_horisontal( Selections, Board ) ->
@@ -2856,29 +2856,29 @@ turn_next_move_ok( false, Prompt, Ns, _N ) -> turn_next_move( Prompt, Ns ).
 ```txt
 
 96> tic_tac_toe:task().
-"1" "2" "3" 
-"4" "5" "6" 
-"7" "8" "9" 
+"1" "2" "3"
+"4" "5" "6"
+"7" "8" "9"
 Player, "O", select one of [1,2,3,4,5,6,7,8,9]: 5
 Computer, "X", selected 2
-"1" "X" "3" 
-"4" "O" "6" 
-"7" "8" "9" 
+"1" "X" "3"
+"4" "O" "6"
+"7" "8" "9"
 Player, "O", select one of [1,3,4,6,7,8,9]: 1
 Computer, "X", selected 9
-"O" "X" "3" 
-"4" "O" "6" 
-"7" "8" "X" 
+"O" "X" "3"
+"4" "O" "6"
+"7" "8" "X"
 Player, "O", select one of [3,4,6,7,8]: 3
 Computer, "X", selected 7
-"O" "X" "O" 
-"4" "O" "6" 
-"X" "8" "X" 
+"O" "X" "O"
+"4" "O" "6"
+"X" "8" "X"
 Player, "O", select one of [4,6,8]: 8
 Computer, "X", selected 6
-"O" "X" "O" 
-"4" "O" "X" 
-"X" "O" "X" 
+"O" "X" "O"
+"4" "O" "X"
+"X" "O" "X"
 Player, "O", select one of [4]: 4
 Result: draw.
 
@@ -3160,7 +3160,7 @@ include std/text.e
 include std/search.e
 include std/sequence.e
 
-sequence board 
+sequence board
 sequence players = {"X","O"}
 
 function DisplayBoard()
@@ -3177,7 +3177,7 @@ function DisplayBoard()
 			puts(1,"\n\n")
 		end if
 	end for
-	
+
 	return 1
 end function
 
@@ -3203,13 +3203,13 @@ sequence temp = board
 	   equal({"O","O","O"},{board[1][3],board[2][2],board[3][1]}) then
 		puts(1,"O wins\n")
 		return 1
-	end if	
-	
+	end if
+
 	if moves = 9 then
 		puts(1,"Draw\n\n")
 		return 1
 	end if
-	
+
 	return 0
 end function
 
@@ -3220,7 +3220,7 @@ while 1 do
 	DisplayBoard()
 	turn = rand(2)
 	moves = 0
-	
+
 	while 1 do
 		while 1 do
 			printf(1,"%s's turn\n",players[turn])
@@ -3234,13 +3234,13 @@ while 1 do
 				puts(1,"Space already taken - pick again\n")
 			end if
 		end while
-		
+
 		DisplayBoard()
-		
+
 		if CheckWinner() then
 			exit
 		end if
-		
+
 		if turn = 1 then
 			turn = 2
 		else
@@ -3249,7 +3249,7 @@ while 1 do
 	end while
 
 	replay = lower(prompt_string("Play again (y/n)?\n\n"))
-	
+
 	if match(replay,"n") then
 		exit
 	end if
@@ -3384,14 +3384,14 @@ let set player (b:Board) (x,y) : Board =
   let row = b.[y].Add(x, player)
   b.Add(y, row)
 
-let winningPositions = 
+let winningPositions =
   [for x in [0..2] -> x,x] // first diagonal
   ::[for x in [0..2] -> 2-x,x] // second diagonal
   ::[for y in [0..2] do
      yield! [[for x in [0..2]->(y,x)]; // columns
              [for x in [0..2] -> (x,y)]]] // rows
-  
-let hasWon player board = 
+
+let hasWon player board =
   List.exists
     (fun ps -> List.forall (fun pos -> get board pos = player) ps)
     winningPositions
@@ -3412,7 +3412,7 @@ let rec evaluate board move =
   else
     match freeSpace b2 with
     | [] -> Draw
-    | userChoices -> 
+    | userChoices ->
        let b3s = List.map (set User b2) userChoices
        if List.exists (hasWon User) b3s then Lose
        elif List.exists (fun b3 -> bestOutcome b3 = Lose) b3s
@@ -3420,11 +3420,11 @@ let rec evaluate board move =
        elif List.exists (fun b3 -> bestOutcome b3 = Draw) b3s
        then Draw
        else Win
-        
+
 and findBestChoice b =
   match freeSpace b with
   | [] -> ((-1,-1), Draw)
-  | choices -> 
+  | choices ->
     match List.tryFind (fun c -> evaluate b c = Win) choices with
     | Some c -> (c, Win)
     | None -> match List.tryFind (fun c -> evaluate b c = Draw) choices with
@@ -3436,7 +3436,7 @@ and bestOutcome b = snd (findBestChoice b)
 let bestChoice b = fst (findBestChoice b)
 
 let computerPlay b = set Computer b (bestChoice b)
-       
+
 let printBoard b =
   printfn "   | A | B | C |"
   printfn "---+---+---+---+"
@@ -3635,7 +3635,7 @@ end module tic
 program tictactoe
    ! computer: player=1, user: player=2
    use tic
-   implicit none 
+   implicit none
    integer :: move,ios,v,bestmove,ply,player=2,k,values(8)
    integer,allocatable :: seed(:)
    call date_and_time(values=values)
@@ -3794,7 +3794,7 @@ func computerTurn() {
         }
         if yours == 2 && x >= 0 {
             block = x
-        } 
+        }
     }
     if block >= 0 {
         x = block // strategy 2: make blocking move
@@ -3802,14 +3802,14 @@ func computerTurn() {
     }
     // default strategy: random move
     choices = choices[:0]
-    for i, sq := range b { 
+    for i, sq := range b {
         if sq == '1'+byte(i) {
             choices = append(choices, i)
         }
     }
     x = choices[rand.Intn(len(choices))]
-}   
-    
+}
+
 func gameOver() bool {
     // check for win
     for _, l := range lines {
@@ -3824,8 +3824,8 @@ func gameOver() bool {
                 pScore++
                 pMark, cMark = 'O', 'X'
             }
-            return true 
-        } 
+            return true
+        }
     }
     // check for empty squares
     for i, sq := range b {
@@ -3860,7 +3860,7 @@ Simplified version of Tic Tac Toe for player vs. player (no AI computer-controll
 class Main {
 
 	def input = new Scanner(System.in)
-	
+
 	static main(args) {
 		Main main = new Main();
 		main.play();
@@ -3870,9 +3870,9 @@ class Main {
 
 		TicTackToe game = new TicTackToe();
 		game.init()
-		def gameOver = false		
+		def gameOver = false
 		def player = game.player1
-		
+
 		println "Players take turns marking a square. Only squares \n"+
 				"not already marked can be picked. Once a player has \n"+
     			"marked three squares in a row, column or diagonal, they win! If all squares \n"+
@@ -3882,47 +3882,47 @@ class Main {
 		println "${game.drawBoard()}"
 
 		while (!gameOver && game.plays < 9) {
-			
+
 			player = game.currentPlayer == 1 ? game.player1 :game.player2
 			def validPick = false;
 			while (!validPick) {
-				
+
 				def square
-				println "Next $player, enter move by selecting square's number :"	
+				println "Next $player, enter move by selecting square's number :"
 				try {
 					square = input.nextLine();
-				} catch (Exception ex) { }					
-				 			
+				} catch (Exception ex) { }
+
 				if (square.length() == 1 && Character.isDigit(square.toCharArray()[0])) {	validPick = game.placeMarker(square)	}
 				if (!validPick) {	println "Select another Square"	}
-				
+
 			}
-			
-			(game.checkWinner(player))?	gameOver = true	: game.switchPlayers()			
-			println(game.drawBoard());	
-				
-		}		
+
+			(game.checkWinner(player))?	gameOver = true	: game.switchPlayers()
+			println(game.drawBoard());
+
+		}
 		println "Game Over, " + ((gameOver == true)? "$player Wins" : "Draw")
 	}
 
 }
 
 public class TicTackToe {
-	
+
     def board = new Object[3][3]
 	def final player1 = "player 1"
 	def final player2 = "player 2"
 	def final marker1 = 'X'
 	def final marker2 = 'O'
-	
+
     int currentPlayer
 	int plays
-    
+
 	public TicTacToe(){
-		
+
 	}
 
- 
+
     def init() {
         int counter = 0;
        (0..2).each { row ->
@@ -3954,21 +3954,21 @@ public class TicTackToe {
 
     def checkWinner(player) {
     	char current = (player == player1)? marker2:  marker1
-        //Checking 
+        //Checking
         return checkRows(current) || checkColumns(current) ||checkDiagonals(current);
     }
-    
+
     def checkRows(char current){
 		(0..2).any{ line ->
 			  board[line].every { it == current}
 		}
     }
-    
-    
-    def checkColumns(char current){				
+
+
+    def checkColumns(char current){
 		(0..2).any{i ->
 			(0..2).every{j ->
-				 board[j][i]==current }		
+				 board[j][i]==current }
 		}
     }
 
@@ -3977,7 +3977,7 @@ public class TicTackToe {
 		def leftDiag =  [board[0][2],board[1][1],board[2][0]]
 		return rightDiag.every{it == current} || leftDiag.every{it == current}
     }
-    
+
 
     def drawBoard() {
         StringBuilder builder = new StringBuilder("Game board: \n");
@@ -4049,7 +4049,7 @@ place i c game =
 -- intelligence here anyway
 developGame :: Bool -> Int -> Int -> Char -> String -> (Int, Char, String)
 developGame iterateMore moves i player game
-    | i > 8 = 
+    | i > 8 =
         -- if i arrives to the last position, iterate again from 0
         -- but do it only once
         if iterateMore
@@ -4092,7 +4092,7 @@ canBlock p [a,b,c,d,e,f,g,h,i] =
     listToMaybe $ mapMaybe blockable [[a,b,c],[d,e,f],[g,h,i],[a,d,g],
                                       [b,e,h],[c,f,i],[a,e,i],[c,e,g]]
     where
-        blockable xs = do          
+        blockable xs = do
           guard $ length (filter (== otherPlayer) xs) == 2
           x <- find (`elem` "123456789") xs
           return $ digitToInt x
@@ -4368,7 +4368,7 @@ $define E " " # empty square
 $define X "X" # X piece
 $define O "O" # O piece
 
-# -- define a board 
+# -- define a board
 record Board(a, b, c, d, e, f, g, h, i)
 
 procedure display_board (board, player)
@@ -4385,7 +4385,7 @@ end
 # return a set of valid moves (empty positions) in given board
 procedure empty_fields (board)
   fields := set()
-  every i := !fieldnames(board) do 
+  every i := !fieldnames(board) do
     if (board[i] == E) then insert (fields, i)
   return fields
 end
@@ -4402,7 +4402,7 @@ procedure game_won_by (board, player)
   return (board.a == board.b == board.c == player) |
          (board.d == board.e == board.f == player) |
          (board.g == board.h == board.i == player) |
-         (board.a == board.d == board.g == player) | 
+         (board.a == board.d == board.g == player) |
          (board.b == board.e == board.h == player) |
          (board.c == board.f == board.i == player) |
          (board.a == board.e == board.i == player) |
@@ -4423,7 +4423,7 @@ procedure human_move (board, player)
   until member (options, choice) do {
     writes ("Choose one of: ")
     every writes (!options || " ")
-    writes ("\n> ") 
+    writes ("\n> ")
     choice := read ()
   }
   board[choice] := player
@@ -4441,7 +4441,7 @@ procedure play_game ()
   player_X := human_move
 
   # randomly determine if human or computer moves first
-  if (?2 = 0) 
+  if (?2 = 0)
     then {
       write ("Human plays first as O")
       player_O := human_move
@@ -4454,7 +4454,7 @@ procedure play_game ()
   player := O
   display_board (board, player)
   # loop until the game is over, getting each player to move in turn
-  until game_over (board) do { 
+  until game_over (board) do {
     write (player || " to play next")
     # based on player, prompt for the next move
     if (player == O)
@@ -4465,9 +4465,9 @@ procedure play_game ()
     display_board (board, player)
   }
   # finish by writing out result
-  if game_won_by (board, O) 
-    then write ("O won") 
-    else if game_won_by (board, X) 
+  if game_won_by (board, O)
+    then write ("O won")
+    else if game_won_by (board, X)
       then write ("X won")
       else write ("draw") # neither player won, so must be a draw
 end
@@ -4603,7 +4603,7 @@ public class TicTacToe
 		TicTacToe now=new TicTacToe();
 		now.startMatch();
 	}
-	
+
 	private int[][] marks;
 	private int[][] wins;
 	private int[] weights;
@@ -4621,7 +4621,7 @@ public class TicTacToe
 	private char[][] numpad={{'7','8','9'},{'4','5','6'},{'1','2','3'}};
 	private Hashtable<Integer,Integer> crossbank;
 	private Hashtable<Integer,Integer> knotbank;
-	
+
 	public void startMatch()
 	{
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
@@ -4639,7 +4639,7 @@ public class TicTacToe
 		{
 			return;
 		}
-		
+
 		System.out.println("Use a standard numpad as an entry grid, as so:\n ");
 		display(numpad);
 		System.out.println("Begin");
@@ -4662,9 +4662,9 @@ public class TicTacToe
 			{
 				System.out.println(e.getMessage());
 			}
-			
+
 		}while(choice!='n'||choice=='N');
-		
+
 		System.out.println("Game over.");
 	}
 	private void put(int cell,int player)
@@ -4717,7 +4717,7 @@ public class TicTacToe
 		override=0;
 		marks=new int[8][6];
 		wins=new int[][]	//new int[8][3];
-		{	
+		{
 				{7,8,9},
 				{4,5,6},
 				{1,2,3},
@@ -4753,7 +4753,7 @@ public class TicTacToe
 				if(marks[i][j]==1)
 					if(weights[wins[i][j]-1]!=Integer.MIN_VALUE)
 						weights[wins[i][j]-1]=Integer.MIN_VALUE;
-		
+
 		for(int i=0;i<8;i++)
 		{
 			if(marks[i][totalcount]!=2)
@@ -4767,7 +4767,7 @@ public class TicTacToe
 					q=1;
 				else if(marks[i][2]==0)
 					q=2;
-				
+
 				if(weights[wins[p][q]-1]!=Integer.MIN_VALUE)
 				{
 					weights[wins[p][q]-1]=6;
@@ -4782,7 +4782,7 @@ public class TicTacToe
 					q=1;
 				else if(marks[i][2]==0)
 					q=2;
-				
+
 				if(weights[wins[p][q]-1]!=Integer.MIN_VALUE)
 				{
 					weights[wins[p][q]-1]=5;
@@ -4807,7 +4807,7 @@ public class TicTacToe
 				max=weights[i];
 				cell=i+1;
 			}
-		
+
 		//This section ensures the computer never loses
 		//Remove it for a fair match
 		//Dirty kluge
@@ -4821,7 +4821,7 @@ public class TicTacToe
 			cell=4*((int)(Math.random()*2)+1);
 		else if(movesPlayer.equals("19")||movesPlayer.equals("91"))
 			cell=4+2*(int)(Math.pow(-1, (int)(Math.random()*2)));
-		
+
 		mark(cell,1);
 		fixWeights();
 		crossbank.put(cell, 0);
@@ -4896,12 +4896,12 @@ public class TicTacToe
 			System.out.println("X wins.");
 			return compid;
 		}
-		
+
 		for(int i=0;i<weights.length;i++)
 			if(weights[i]!=Integer.MIN_VALUE)
 				return playingid;
 		System.out.println("Truce");
-		
+
 		return truceid;
 	}
 	private void display(char[][] grid)
@@ -5115,7 +5115,7 @@ setLayout(new BorderLayout());
  }
  void initComponents()
  {
-  for(int i=0;i<3;i++)  
+  for(int i=0;i<3;i++)
    for(int j=0;j<3;j++)  {
     buttons[i][j].putClientProperty("INDEX", new Integer[]{i,j});
     buttons[i][j].putClientProperty("OWNER",null);
@@ -5153,17 +5153,17 @@ import java.awt.*;
 //Make sure the name of the class is the same as the .java file name.
 //If you change the class name you should change the class object name in runGUI method
 public class ticTacToeCallum implements ActionListener {
- 
-  static JFrame frame;          
-  static JPanel contentPane;    
-  static JLabel lblEnterFirstPlayerName, lblEnterSecondPlayerName, lblFirstPlayerScore, lblSecondPlayerScore;    
-  static JButton btnButton1, btnButton2, btnButton3, btnButton4, btnButton5, btnButton6, btnButton7, btnButton8, btnButton9, btnClearBoard, btnClearAll, btnCloseGame;     
-  static JTextField txtEnterFirstPlayerName, txtEnterSecondPlayerName;  
+
+  static JFrame frame;
+  static JPanel contentPane;
+  static JLabel lblEnterFirstPlayerName, lblEnterSecondPlayerName, lblFirstPlayerScore, lblSecondPlayerScore;
+  static JButton btnButton1, btnButton2, btnButton3, btnButton4, btnButton5, btnButton6, btnButton7, btnButton8, btnButton9, btnClearBoard, btnClearAll, btnCloseGame;
+  static JTextField txtEnterFirstPlayerName, txtEnterSecondPlayerName;
   static Icon imgicon = new ImageIcon("saveIcon.JPG");
 
   Font buttonFont = new Font("Arial", Font.PLAIN, 20);
-  
-  
+
+
   //to adjust the frame size change the values in pixels
   static int width = 600;
   static int length = 400;
@@ -5172,128 +5172,128 @@ public class ticTacToeCallum implements ActionListener {
   static int playerTurn = 1;
   static int roundComplete = 0;
   static int button1 = 1, button2 = 1, button3 = 1, button4 = 1, button5 = 1, button6 = 1, button7 = 1, button8 = 1, button9 = 1; // 1 is true, 0 is false
-  
+
 
   public ticTacToeCallum(){
-	  
+
     frame = new JFrame("Tic Tac Toe ^_^");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    
+
     contentPane = new JPanel();
     contentPane.setLayout(new GridLayout(6, 3, 10, 10));
     contentPane.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-   
+
     btnButton1 = new JButton("");
     btnButton1.setFont(buttonFont);
     btnButton1.setAlignmentX(JButton.CENTER_ALIGNMENT);
     btnButton1.setIcon(imgicon);
-    btnButton1.setActionCommand("CLICK1");    
-    btnButton1.addActionListener(this);  
+    btnButton1.setActionCommand("CLICK1");
+    btnButton1.addActionListener(this);
     contentPane.add(btnButton1);
-    
+
     btnButton2 = new JButton("");
     btnButton2.setFont(buttonFont);
     btnButton2.setAlignmentX(JButton.CENTER_ALIGNMENT);
     btnButton2.setIcon(imgicon);
-    btnButton2.setActionCommand("CLICK2");    
-    btnButton2.addActionListener(this);      
+    btnButton2.setActionCommand("CLICK2");
+    btnButton2.addActionListener(this);
     contentPane.add(btnButton2);
-    
-    btnButton3 = new JButton(""); 
+
+    btnButton3 = new JButton("");
     btnButton3.setFont(buttonFont);
     btnButton3.setAlignmentX(JButton.CENTER_ALIGNMENT);
     btnButton3.setIcon(imgicon);
-    btnButton3.setActionCommand("CLICK3");    
-    btnButton3.addActionListener(this);      
+    btnButton3.setActionCommand("CLICK3");
+    btnButton3.addActionListener(this);
     contentPane.add(btnButton3);
-    
+
     btnButton4 = new JButton("");
     btnButton4.setFont(buttonFont);
     btnButton4.setAlignmentX(JButton.CENTER_ALIGNMENT);
     btnButton4.setIcon(imgicon);
-    btnButton4.setActionCommand("CLICK4");    
-    btnButton4.addActionListener(this);      
+    btnButton4.setActionCommand("CLICK4");
+    btnButton4.addActionListener(this);
     contentPane.add(btnButton4);
-    
-    btnButton5 = new JButton(""); 
+
+    btnButton5 = new JButton("");
     btnButton5.setFont(buttonFont);
     btnButton5.setAlignmentX(JButton.CENTER_ALIGNMENT);
     btnButton5.setIcon(imgicon);
-    btnButton5.setActionCommand("CLICK5");    
-    btnButton5.addActionListener(this);      
+    btnButton5.setActionCommand("CLICK5");
+    btnButton5.addActionListener(this);
     contentPane.add(btnButton5);
-    
-    btnButton6 = new JButton(""); 
+
+    btnButton6 = new JButton("");
     btnButton6.setFont(buttonFont);
     btnButton6.setAlignmentX(JButton.CENTER_ALIGNMENT);
     btnButton6.setIcon(imgicon);
-    btnButton6.setActionCommand("CLICK6");    
-    btnButton6.addActionListener(this);      
+    btnButton6.setActionCommand("CLICK6");
+    btnButton6.addActionListener(this);
     contentPane.add(btnButton6);
-    
-    btnButton7 = new JButton(""); 
+
+    btnButton7 = new JButton("");
     btnButton7.setFont(buttonFont);
     btnButton7.setAlignmentX(JButton.CENTER_ALIGNMENT);
     btnButton7.setIcon(imgicon);
-    btnButton7.setActionCommand("CLICK7");    
-    btnButton7.addActionListener(this);      
+    btnButton7.setActionCommand("CLICK7");
+    btnButton7.addActionListener(this);
     contentPane.add(btnButton7);
-    
-    btnButton8 = new JButton(""); 
+
+    btnButton8 = new JButton("");
     btnButton8.setFont(buttonFont);
     btnButton8.setAlignmentX(JButton.CENTER_ALIGNMENT);
     btnButton8.setIcon(imgicon);
-    btnButton8.setActionCommand("CLICK8");    
-    btnButton8.addActionListener(this);      
+    btnButton8.setActionCommand("CLICK8");
+    btnButton8.addActionListener(this);
     contentPane.add(btnButton8);
-    
+
     btnButton9 = new JButton("");
     btnButton9.setFont(buttonFont);
     btnButton9.setAlignmentX(JButton.CENTER_ALIGNMENT);
     btnButton9.setIcon(imgicon);
-    btnButton9.setActionCommand("CLICK9");    
-    btnButton9.addActionListener(this);      
+    btnButton9.setActionCommand("CLICK9");
+    btnButton9.addActionListener(this);
     contentPane.add(btnButton9);
-    
+
     lblEnterFirstPlayerName = new JLabel("Enter First Player's Name");
     contentPane.add(lblEnterFirstPlayerName);
-    
+
     txtEnterFirstPlayerName = new JTextField("");
     contentPane.add(txtEnterFirstPlayerName);
-    
+
     lblFirstPlayerScore = new JLabel("Score: " + firstPlayerScore);
     contentPane.add(lblFirstPlayerScore);
-    
+
     lblEnterSecondPlayerName = new JLabel("Enter Second Player's Name");
     contentPane.add(lblEnterSecondPlayerName);
-    
+
     txtEnterSecondPlayerName = new JTextField("");
     contentPane.add(txtEnterSecondPlayerName);
-    
+
     lblSecondPlayerScore = new JLabel("Score: " + secondPlayerScore);
     contentPane.add(lblSecondPlayerScore);
-    
-    btnClearBoard = new JButton("Clear Board");  
+
+    btnClearBoard = new JButton("Clear Board");
     btnClearBoard.setAlignmentX(JButton.CENTER_ALIGNMENT);
     btnClearBoard.setIcon(imgicon);
-    btnClearBoard.setActionCommand("CLICKClearBoard");    
-    btnClearBoard.addActionListener(this);      
+    btnClearBoard.setActionCommand("CLICKClearBoard");
+    btnClearBoard.addActionListener(this);
     contentPane.add(btnClearBoard);
-    
-    btnClearAll = new JButton("Clear All");  
+
+    btnClearAll = new JButton("Clear All");
     btnClearAll.setAlignmentX(JButton.CENTER_ALIGNMENT);
     btnClearAll.setIcon(imgicon);
-    btnClearAll.setActionCommand("CLICKClearAll");    
-    btnClearAll.addActionListener(this);      
+    btnClearAll.setActionCommand("CLICKClearAll");
+    btnClearAll.addActionListener(this);
     contentPane.add(btnClearAll);
-    
-    btnCloseGame = new JButton("Close Game"); 
+
+    btnCloseGame = new JButton("Close Game");
     btnCloseGame.setAlignmentX(JButton.CENTER_ALIGNMENT);
     btnCloseGame.setIcon(imgicon);
-    btnCloseGame.setActionCommand("CLICKCloseGame");    
-    btnCloseGame.addActionListener(this);      
+    btnCloseGame.setActionCommand("CLICKCloseGame");
+    btnCloseGame.addActionListener(this);
     contentPane.add(btnCloseGame);
-    
+
     frame.setContentPane(contentPane);
     frame.pack();
     frame.setSize(width,length);
@@ -5318,7 +5318,7 @@ public class ticTacToeCallum implements ActionListener {
     		 }
     	 }
       } else if (eventName.equals ("CLICK2")) {
-    	  if (button2 == 1){	
+    	  if (button2 == 1){
     	  	if (playerTurn == 1){
     	  		btnButton2.setForeground(Color.RED);
     	  		btnButton2.setText("X");
@@ -5330,9 +5330,9 @@ public class ticTacToeCallum implements ActionListener {
     	  		playerTurn = 1;
     	  		button2 = 0;
     	  	}
-    	  }	
+    	  }
       }	else if (eventName.equals ("CLICK3")) {
-    	  if (button3 == 1){	
+    	  if (button3 == 1){
       	  	if (playerTurn == 1){
       	  		btnButton3.setForeground(Color.RED);
       	  		btnButton3.setText("X");
@@ -5346,7 +5346,7 @@ public class ticTacToeCallum implements ActionListener {
       	  	}
       	  }
       }	else if (eventName.equals ("CLICK4")) {
-    	  if (button4 == 1){	
+    	  if (button4 == 1){
       	  	if (playerTurn == 1){
       	  		btnButton4.setForeground(Color.RED);
       	  		btnButton4.setText("X");
@@ -5360,7 +5360,7 @@ public class ticTacToeCallum implements ActionListener {
       	  	}
       	  }
       }	else if (eventName.equals ("CLICK5")) {
-    	  if (button5 == 1){	
+    	  if (button5 == 1){
       	  	if (playerTurn == 1){
       	  		btnButton5.setForeground(Color.RED);
   	  			btnButton5.setText("X");
@@ -5374,7 +5374,7 @@ public class ticTacToeCallum implements ActionListener {
       	  	}
       	  }
       } else if (eventName.equals ("CLICK6")) {
-    	  if (button6 == 1){	
+    	  if (button6 == 1){
       	  	if (playerTurn == 1){
       	  		btnButton6.setForeground(Color.RED);
   	  			btnButton6.setText("X");
@@ -5388,7 +5388,7 @@ public class ticTacToeCallum implements ActionListener {
       	  	}
       	  }
       } else if (eventName.equals ("CLICK7")) {
-    	  if (button7 == 1){	
+    	  if (button7 == 1){
       	  	if (playerTurn == 1){
       	  		btnButton7.setForeground(Color.RED);
   	  			btnButton7.setText("X");
@@ -5402,7 +5402,7 @@ public class ticTacToeCallum implements ActionListener {
       	  	}
       	  }
       } else if (eventName.equals ("CLICK8")) {
-    	  if (button8 == 1){	
+    	  if (button8 == 1){
       	  	if (playerTurn == 1){
       	  		btnButton8.setForeground(Color.RED);
   	  			btnButton8.setText("X");
@@ -5416,7 +5416,7 @@ public class ticTacToeCallum implements ActionListener {
       	  	}
       	  }
       } else if (eventName.equals ("CLICK9")) {
-    	  if (button9 == 1){	
+    	  if (button9 == 1){
       	  	if (playerTurn == 1){
       	  		btnButton9.setForeground(Color.RED);
   	  			btnButton9.setText("X");
@@ -5430,7 +5430,7 @@ public class ticTacToeCallum implements ActionListener {
       	  	}
       	  }
       } else if (eventName.equals ("CLICKClearBoard")) {
-          
+
     	  btnButton1.setText("");
           btnButton2.setText("");
           btnButton3.setText("");
@@ -5440,7 +5440,7 @@ public class ticTacToeCallum implements ActionListener {
           btnButton7.setText("");
           btnButton8.setText("");
           btnButton9.setText("");
-          
+
           button1 = 1;
           button2 = 1;
           button3 = 1;
@@ -5450,13 +5450,13 @@ public class ticTacToeCallum implements ActionListener {
           button7 = 1;
           button8 = 1;
           button9 = 1;
-          
+
           playerTurn = 1;
-          
+
           roundComplete = 0;
-          
+
       } else if (eventName.equals ("CLICKClearAll")) {
-    	  
+
     	  btnButton1.setText("");
           btnButton2.setText("");
           btnButton3.setText("");
@@ -5466,15 +5466,15 @@ public class ticTacToeCallum implements ActionListener {
           btnButton7.setText("");
           btnButton8.setText("");
           btnButton9.setText("");
-          
+
           firstPlayerScore = 0;
           lblFirstPlayerScore.setText("Score: " + firstPlayerScore);
           secondPlayerScore = 0;
           lblSecondPlayerScore.setText("Score: " + secondPlayerScore);
-          
+
           txtEnterFirstPlayerName.setText("");
           txtEnterSecondPlayerName.setText("");
-          
+
           button1 = 1;
           button2 = 1;
           button3 = 1;
@@ -5484,18 +5484,18 @@ public class ticTacToeCallum implements ActionListener {
           button7 = 1;
           button8 = 1;
           button9 = 1;
-         
+
           playerTurn = 1;
-          
+
           roundComplete = 0;
-          
+
       } else if (eventName.equals ("CLICKCloseGame")) {
     	  System.exit(0);
-      }  
+      }
      score();
     }
-  
-  
+
+
   public static void score(){
 	  if (roundComplete == 0){
 	  if (btnButton1.getText().equals(btnButton2.getText())  && btnButton1.getText().equals(btnButton3.getText())){
@@ -5599,16 +5599,16 @@ public class ticTacToeCallum implements ActionListener {
 	    	button9 = 0;
 	    }
   }
-  
+
   /**
    * Create and show the GUI.
    */
   private static void runGUI() {
     ticTacToeCallum        greeting     = new ticTacToeCallum();
   }
-  
-  
-  
+
+
+
   //Do not change this method
   public static void main(String[] args) {
     /* Methods that create and show a GUI should be run from an event-dispatching thread */
@@ -6300,8 +6300,8 @@ Draw!
 One move look-ahead algorithm. Computer plays to win or at least draw.
 
 ```julia
-const winningpositions = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], 
-    [2, 5, 8], [3, 6, 9],[1, 5, 9], [7, 5, 3]] 
+const winningpositions = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7],
+    [2, 5, 8], [3, 6, 9],[1, 5, 9], [7, 5, 3]]
 
 function haswon(brd, xoro)
     marked = findall(x -> x == xoro, brd)
@@ -6404,14 +6404,14 @@ end
 tictactoe()
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
  Board move grid:
   1 2 3
   4 5 6
   7 8 9
- 
+
  Would you like to move first (y/n)? ->  y
  Your move(1-9) ->  5
  Computer has moved.
@@ -6420,7 +6420,7 @@ tictactoe()
  |   | X |   |
  | O |   |   |
  +-----------+
- 
+
  Your move(1-9) ->  1
  Player has moved.
  +-----------+
@@ -6434,7 +6434,7 @@ tictactoe()
  |   | X |   |
  | O |   | O |
  +-----------+
- 
+
  Your move(1-9) ->  3
  Player has moved.
  +-----------+
@@ -6580,44 +6580,44 @@ Board postions are numbered so:
 You have O, I have X.
 
 Your move: 2
-  O   
-      
-      
+  O
+
+
 -----
 My move: 1
-X O   
-      
-      
+X O
+
+
 -----
 Your move: 8
-X O   
-      
-  O   
+X O
+
+  O
 -----
 My move: 5
-X O   
-  X   
-  O   
+X O
+  X
+  O
 -----
 Your move: 9
-X O   
-  X   
-  O O 
+X O
+  X
+  O O
 -----
 My move: 7
-X O   
-  X   
-X O O 
+X O
+  X
+X O O
 -----
 Your move: 3
-X O O 
-  X   
-X O O 
+X O O
+  X
+X O O
 -----
 My move: 4
-X O O 
-X X   
-X O O 
+X O O
+X X
+X O O
 -----
 I win.
 
@@ -6686,9 +6686,9 @@ if($matrix->find('-')->size < 9) => {
 			#clear = true
 			loop_abort
 		}
-		
+
 	}
-	
+
 }
 // determine if tie
 if(not $matrix->find('-')->size && #winner == 'noone') => {
@@ -6994,7 +6994,7 @@ Module Tic.Tac.Toe {
       RandomPosition=lambda -> {
             =(random(1,3), random(1,3))
       }
-      
+
       BoardItemEmpty=Lambda p (x, y) -> {
             =Array$(p, x, y)=" "
       }
@@ -7016,7 +7016,7 @@ Module Tic.Tac.Toe {
             Repeat {
                   GetRowCol("Input Row", &R)
                   GetRowCol("Input Column", &C)
-                  If BoardItemEmpty(R,C) then call boardsetitem(R,C,"O") : exit 
+                  If BoardItemEmpty(R,C) then call boardsetitem(R,C,"O") : exit
             } Always
             T--
             DrawBoard()
@@ -7059,10 +7059,10 @@ Module Tic.Tac.Toe {
                   local i=3, j=3, found=false
                   if T<=6 then {
                         CompThink("X","X")
-                  } 
+                  }
                   let i=3, j=3
                   If Not found And T<6 then {
-                        CompThink("O","X")    
+                        CompThink("O","X")
                   }
                   If not found then {
                         Repeat {
@@ -7087,7 +7087,7 @@ Module Tic.Tac.Toe {
                               }
                               i--
                         }
-      
+
       End Sub
       Sub GetRowCol(What$, &W)
             Print What$;":";
@@ -7105,52 +7105,52 @@ Tic.Tac.Toe
 <pre style="height:30ex;overflow:scroll">
 Computer Move:
 R/C 1 2 3
- 1)  | | 
+ 1)  | |
     -+-+-
- 2)  | | 
+ 2)  | |
     -+-+-
  3)  | |X
 Input Row:2
 Input Column:2
 R/C 1 2 3
- 1)  | | 
+ 1)  | |
     -+-+-
- 2)  |O| 
+ 2)  |O|
     -+-+-
  3)  | |X
 Computer Move:
 R/C 1 2 3
- 1)  | | 
+ 1)  | |
     -+-+-
- 2)  |O| 
+ 2)  |O|
     -+-+-
  3) X| |X
 Input Row:3
 Input Column:2
 R/C 1 2 3
- 1)  | | 
+ 1)  | |
     -+-+-
- 2)  |O| 
+ 2)  |O|
     -+-+-
  3) X|O|X
 Computer Move:
 R/C 1 2 3
- 1)  |X| 
+ 1)  |X|
     -+-+-
- 2)  |O| 
+ 2)  |O|
     -+-+-
  3) X|O|X
 Input Row:2
 Input Column:1
 R/C 1 2 3
- 1)  |X| 
+ 1)  |X|
     -+-+-
- 2) O|O| 
+ 2) O|O|
     -+-+-
  3) X|O|X
 Computer Move:
 R/C 1 2 3
- 1)  |X| 
+ 1)  |X|
     -+-+-
  2) O|O|X
     -+-+-
@@ -7176,39 +7176,39 @@ R/C 1 2 3
 
 ## Mathematica
 
-<lang>DynamicModule[{board = ConstantArray[0, {3, 3}], text = "Playing...", 
-  first, rows = 
-   Join[#, Transpose@#, {Diagonal@#, Diagonal@Reverse@#}] &}, 
- Column@{Graphics[{Thickness[.02], 
-     Table[With[{i = i, j = j}, 
-       Button[{White, Rectangle[{i, j} - 1, {i, j}], Black, 
-         Dynamic[Switch[board[[i, j]], 0, Black, 1, 
-           Circle[{i, j} - .5, .3], -1, 
-           Line[{{{i, j} - .2, {i, j} - .8}, {{i - .2, 
-               j - .8}, {i - .8, j - .2}}}]]]}, 
+<lang>DynamicModule[{board = ConstantArray[0, {3, 3}], text = "Playing...",
+  first, rows =
+   Join[#, Transpose@#, {Diagonal@#, Diagonal@Reverse@#}] &},
+ Column@{Graphics[{Thickness[.02],
+     Table[With[{i = i, j = j},
+       Button[{White, Rectangle[{i, j} - 1, {i, j}], Black,
+         Dynamic[Switch[board[[i, j]], 0, Black, 1,
+           Circle[{i, j} - .5, .3], -1,
+           Line[{{{i, j} - .2, {i, j} - .8}, {{i - .2,
+               j - .8}, {i - .8, j - .2}}}]]]},
         Which[text != "Playing...", board = ConstantArray[0, {3, 3}];
-         text = "Playing...", board[[i, j]] == 0, 
-         If[board == ConstantArray[0, {3, 3}], 
-          first = {i, 
-             j} /. {{2, 2} -> 1, {1 | 3, 1 | 3} -> 2, _ -> 3}]; 
+         text = "Playing...", board[[i, j]] == 0,
+         If[board == ConstantArray[0, {3, 3}],
+          first = {i,
+             j} /. {{2, 2} -> 1, {1 | 3, 1 | 3} -> 2, _ -> 3}];
          board[[i, j]] = 1;
          FinishDynamic[];
-         Which[MemberQ[rows[board], {1, 1, 1}], text = "You win.", 
-          FreeQ[board, 0], text = "Draw.", True, 
-          board[[Sequence @@ 
-              SortBy[Select[Tuples[{Range@3, Range@3}], 
-                 board[[Sequence @@ #]] == 
+         Which[MemberQ[rows[board], {1, 1, 1}], text = "You win.",
+          FreeQ[board, 0], text = "Draw.", True,
+          board[[Sequence @@
+              SortBy[Select[Tuples[{Range@3, Range@3}],
+                 board[[Sequence @@ #]] ==
                    0 &], -Total[
-                    Sort /@ 
+                    Sort /@
                     rows[ReplacePart[
-                    board, # -> -1]] /. {{-1, -1, -1} -> 
-                    512, {-1, 1, 1} -> 64, {-1, -1, 0} -> 
-                    8, {0, 1, 1} -> -1, {_, _, _} -> 0}] - 
-                  Switch[#, {2, 2}, 1, {1 | 3, 1 | 3}, 
-                   If[first == 2, -1, 0], _, 
-                   If[first == 2, 0, -1]] &][[1]]]] = -1; 
-          Which[MemberQ[rows[board], {-1, -1, -1}], 
-           text = "You lost.", FreeQ[board, 0], 
+                    board, # -> -1]] /. {{-1, -1, -1} ->
+                    512, {-1, 1, 1} -> 64, {-1, -1, 0} ->
+                    8, {0, 1, 1} -> -1, {_, _, _} -> 0}] -
+                  Switch[#, {2, 2}, 1, {1 | 3, 1 | 3},
+                   If[first == 2, -1, 0], _,
+                   If[first == 2, 0, -1]] &][[1]]]] = -1;
+          Which[MemberQ[rows[board], {-1, -1, -1}],
+           text = "You lost.", FreeQ[board, 0],
            text = "Draw."]]]]], {i, 1, 3}, {j, 1, 3}], Thickness[.01],
       Line[{{{1, 0}, {1, 3}}, {{2, 0}, {2, 3}}, {{0, 1}, {3, 1}}, {{0,
           2}, {3, 2}}}]}], Dynamic@text}]
@@ -7222,11 +7222,11 @@ Allows for choice between any combination of human or computer players. Computer
 
 ```MATLAB
 function TicTacToe
-    
+
     % Set up the board (one for each player)
     boards = false(3, 3, 2);    % Players' pieces
     rep = ['   1 | 4 | 7' ; '   2 | 5 | 8' ; '   3 | 6 | 9'];
-    
+
     % Prompt user with options
     fprintf('Welcome to Tic-Tac-Toe!\n')
     nHumans = str2double(input('Enter the number of human players: ', 's'));
@@ -7254,7 +7254,7 @@ function TicTacToe
         fprintf('Select the space to mark by entering the space number.\n')
         fprintf('No entry will quit the game.\n')
     end
-    
+
     % Play game
     gameOver = false;
     turn = 1;
@@ -7326,19 +7326,19 @@ function move = GetMoveFromComputer(pNum, boards)
         pMe = boards(:, :, pNum);
         pThem = boards(:, :, ~(pNum-1)+1);
         possMoves = find(~(pMe | pThem)).';
-        
+
         % Look for a winning move
         move = FindWin(pMe, possMoves);
         if move
             return
         end
-        
+
         % Look to block opponent from winning
         move = FindWin(pThem, possMoves);
         if move
             return
         end
-        
+
         % Look to create a fork (two non-blocked lines of two)
         for m = possMoves
             newPMe = pMe;
@@ -7348,7 +7348,7 @@ function move = GetMoveFromComputer(pNum, boards)
                 return
             end
         end
-        
+
         % Look to make two in a row so long as it doesn't force opponent to fork
         notGoodMoves = false(size(possMoves));
         for m = possMoves
@@ -7369,13 +7369,13 @@ function move = GetMoveFromComputer(pNum, boards)
             end
         end
         possMoves(notGoodMoves) = [];
-        
+
         % Play the center if available
         if any(possMoves == 5)
             move = 5;
         	return
         end
-        
+
         % Play the opposite corner of the opponent's piece if available
         corners = [1 3 7 9];
         move = intersect(possMoves, ...
@@ -7384,14 +7384,14 @@ function move = GetMoveFromComputer(pNum, boards)
             move = move(1);
             return
         end
-        
+
         % Play an empty corner if available
         move = intersect(possMoves, corners);
         if move
             move = move(1);
             return
         end
-        
+
         % Play an empty side if available
         sides = [2 4 6 8];
         move = intersect(possMoves, sides);
@@ -7399,7 +7399,7 @@ function move = GetMoveFromComputer(pNum, boards)
             move = move(1);
             return
         end
-        
+
         % No good moves, so move randomly
         possMoves = find(~(pMe | pThem));
         move = possMoves(randi(length(possMoves)));
@@ -7654,7 +7654,7 @@ class TicTacToe {
         cpu_score += 1;
         "\n=> CPU Wins!"->PrintLine();
       }
-      else if(result = Status->TIE) {              
+      else if(result = Status->TIE) {
         "\n=> Tie."->PrintLine();
       }
       else {
@@ -7670,7 +7670,7 @@ class TicTacToe {
     for(index := 0; index < 9; index += 1;) {
       j := index / 3;
       i := index % 3;
-      @board[i, j] := '1' + index; 
+      @board[i, j] := '1' + index;
     };
 
     @cpu_opening := true;
@@ -7692,7 +7692,7 @@ class TicTacToe {
     do {
       status : Status;
 
-      if(players_turn) { 
+      if(players_turn) {
         status := PlayerMove();
         players_turn := false;
       }
@@ -7725,12 +7725,12 @@ class TicTacToe {
         label Status->QUIT: {
           playing := false;
         }
-      };      
+      };
     }
     while(playing);
 
     return Status->QUIT;
-  }          
+  }
 
   method : PlayerMove() ~ Status {
     move := System.IO.Console->ReadString();
@@ -7792,30 +7792,30 @@ class TicTacToe {
   }
 
   method : Minimax(board : Char[,], depth : Int, is_max : Bool, alpha : Int, beta : Int) ~ Int {
-      score := EvaluateMove(board); 
+      score := EvaluateMove(board);
       if(score = 10 | score = -10) {
-          return score; 
+          return score;
       };
 
       if(IsTied()) {
         return 0;
       };
 
-    if(is_max) { 
+    if(is_max) {
           best := Weights->MIN;
-          for(i := 0; i < 3; i += 1;) { 
+          for(i := 0; i < 3; i += 1;) {
         for(j := 0; j < 3; j += 1;) {
-          if(board[i,j] <> 'X' & board[i,j] <>'O') { 
+          if(board[i,j] <> 'X' & board[i,j] <>'O') {
             test := board[i,j];
-            board[i,j] := 'O';     
-            best := Int->Max(best, Minimax(board, depth + 1, false, alpha, beta)); 
+            board[i,j] := 'O';
+            best := Int->Max(best, Minimax(board, depth + 1, false, alpha, beta));
             alpha := Int->Max(alpha, best);
             board[i,j] := test;
 
-            if(beta <= alpha) { 
+            if(beta <= alpha) {
               return best;
-            };  
-          }; 
+            };
+          };
         };
       };
 
@@ -7823,19 +7823,19 @@ class TicTacToe {
     }
     else {
       best := Weights->MAX;
-          for(i := 0; i < 3; i += 1;) { 
+          for(i := 0; i < 3; i += 1;) {
         for(j := 0; j < 3; j += 1;) {
-          if(board[i,j] <> 'X' & board[i,j] <>'O') { 
+          if(board[i,j] <> 'X' & board[i,j] <>'O') {
             test := board[i,j];
-            board[i,j] := 'X';     
+            board[i,j] := 'X';
             best := Int->Min(best, Minimax(board, depth + 1, true, alpha, beta));
             beta := Int->Min(beta, best);
             board[i,j] := test;
 
-            if(beta <= alpha) { 
+            if(beta <= alpha) {
               return best;
-            }; 
-          }; 
+            };
+          };
         };
       };
 
@@ -7844,19 +7844,19 @@ class TicTacToe {
     }
 
     method : BestCpuMove(board : Char[,]) ~ Nil {
-      best := Weights->MIN; # empty 
+      best := Weights->MIN; # empty
       best_i := -1;
       best_j := -1;
 
-      for(i := 0; i < 3; i += 1;) { 
+      for(i := 0; i < 3; i += 1;) {
       for(j := 0; j < 3; j += 1;) {
-        if(board[i,j] <> 'X' & board[i,j] <> 'O') { 
+        if(board[i,j] <> 'X' & board[i,j] <> 'O') {
           test := board[i,j];
-          board[i,j] := 'O';    
-          move := Int->Max(best, Minimax(board, 0, false, Weights->MIN, Weights->MAX)); 
+          board[i,j] := 'O';
+          move := Int->Max(best, Minimax(board, 0, false, Weights->MIN, Weights->MAX));
           board[i,j] := test;
 
-          if(move > best) { 
+          if(move > best) {
             best_i := i;
               best_j := j;
             best := move;
@@ -7879,11 +7879,11 @@ class TicTacToe {
         return 0;
       };
     }
-    
+
     method : CopyBoard() ~ Char[,] {
       board := Char->New[3, 3];
 
-      for(i := 0; i < 3; i += 1;) { 
+      for(i := 0; i < 3; i += 1;) {
       for(j := 0; j < 3; j += 1;) {
         board[i,j] := @board[i,j];
       };
@@ -7910,7 +7910,7 @@ class TicTacToe {
   }
 
   method : IsWinner(board : Char[,], player : Char) ~ Bool {
-    # --- diagonal --- 
+    # --- diagonal ---
     check := 0;
     for(i := 0; i < 3; i += 1;) {
       if(board[i, i] = player) {
@@ -7949,7 +7949,7 @@ class TicTacToe {
       };
     };
 
-    # --- horizontal --- 
+    # --- horizontal ---
     for(j := 0; j < 3; j += 1;) {
       check := 0;
       for(i := 0; i < 3; i += 1;) {
@@ -7972,7 +7972,7 @@ class TicTacToe {
         if(@board[i, j] <> 'X' & @board[i, j] <> 'O') {
           return false;
         };
-      }; 
+      };
     };
 
     return true;
@@ -8253,7 +8253,7 @@ function check_winner()
     end for
     return 0
 end function
- 
+
 procedure showboard()
     printf(1," %c | %c | %c\n---+---+---\n %c | %c | %c\n---+---+---\n %c | %c | %c\n",board)
 end procedure
@@ -8264,7 +8264,7 @@ integer score = check_winner()
 integer best = -1, changed = 0
     if score!=0 then return iff(score=val?1:-1) end if
     for i=1 to 9 do
-        if board[i]=' ' then 
+        if board[i]=' ' then
             {changed,board[i]} @= val
             score = -test_move('O'+'X'-val, depth + 1)
             board[i] = ' '
@@ -8284,7 +8284,7 @@ integer user = 1
 function game()
 integer key, k, win
     board = repeat(' ',9)
- 
+
     printf(1,"Board postions are numbered so:\n1 2 3\n4 5 6\n7 8 9\n");
     printf(1,"You have O, I have X.\n\n");
     for n=1 to 9 do
@@ -8318,7 +8318,7 @@ integer key, k, win
     end for
     return "A draw.\n\n";
 end function
- 
+
 while 1 do
     string res = game()
     puts(1,res)
@@ -9035,12 +9035,12 @@ A draw
 ## Racket
 
 
-The program provides standard interface for implementation of any zero–sum game with perfect information such as tick-tack-toe, Nim, the 21 game etc. It is possible to create interactive players (as objects) with different playing strategy (AI-driven, user-driven, random etc.) and let them play with each other through message-sending technique. 
+The program provides standard interface for implementation of any zero–sum game with perfect information such as tick-tack-toe, Nim, the 21 game etc. It is possible to create interactive players (as objects) with different playing strategy (AI-driven, user-driven, random etc.) and let them play with each other through message-sending technique.
 
 The optimal strategy is implemented via lazy minimax algorythm with α-β-pruning and arbitrary depth of the recursion.
 
 The program consists of separate modules:
- + minimax.rkt    -- Written in Lazy Racket, implements the general minimax algorythm as 
+ + minimax.rkt    -- Written in Lazy Racket, implements the general minimax algorythm as
  |                   given in [http://en.wikipedia.org/wiki/Alpha-beta_pruning Wikipedia].
  |                   Knows nothing about games.
  V
@@ -9060,24 +9060,24 @@ The <tt>minimax.rkt</tt> module:
 
 (define (minimax tree)
   (! (let minimax ([node tree] [α -inf.0] [β +inf.0] [max-player #f])
-       (cond 
+       (cond
          [(number? node) node]
          [(empty? node) 0.0]
          [max-player
           (let next ([x node] [α α])
-            (if (or (empty? x) (<= β α)) 
+            (if (or (empty? x) (<= β α))
                 α
                 (next (cdr x)
                       (max α (minimax (car x) α β (not max-player))))))]
          [else
           (let next ([x node] [β β])
-            (if (or (empty? x) (<= β α)) 
+            (if (or (empty? x) (<= β α))
                 β
                 (next (cdr x)
                       (min β (minimax (car x) α β (not max-player))))))]))))
 
 ```
- 
+
 
 The <tt>game.rkt</tt> module:
 
@@ -9094,12 +9094,12 @@ The <tt>game.rkt</tt> module:
          define-partners)
 
 ;;--------------------------------------------------------------------
-;; Class representing the logics and optimal strategy 
+;; Class representing the logics and optimal strategy
 ;; for a zero-sum game with perfect information.
 (define game%
   (class object%
     (super-new)
-    
+
     ;; virtual methods which set up the game rules
     (init-field my-win?         ; State -> Bool
                 my-loss?        ; State -> Bool
@@ -9108,36 +9108,36 @@ The <tt>game.rkt</tt> module:
                 opponent-move   ; State Move -> State
                 possible-moves  ; State -> (list Move)
                 show-state)     ; State -> Any
-    
+
     ;; optimal-move :: State -> Move
-    ;; Choses the optimal move. 
+    ;; Choses the optimal move.
     ;; If several equivalent moves exist -- choses one randomly.
     (define/public ((optimal-move look-ahead) S)
       (! (argmax (λ (m) (! (minimax (game-tree S m look-ahead))))
                  (shuffle (possible-moves S)))))
-    
+
     ;; game-tree :: State -> (Move -> (Treeof Real))
     (define (game-tree S m look-ahead)
-      (let new-ply ([moves (cycle opponent-move my-move)] 
-                    [i 1] 
+      (let new-ply ([moves (cycle opponent-move my-move)]
+                    [i 1]
                     [s (my-move S m)])
         (cond
           [(my-win? s)        (/  1 i)] ; more close wins and loses
           [(my-loss? s) (/ -1 i)] ; have bigger weights
           [(draw-game? s)     0]
-          [(>= i look-ahead)  (/ 1 i)] 
+          [(>= i look-ahead)  (/ 1 i)]
           [else (map (λ (x) (new-ply (cdr moves) (+ 1 i) ((car moves) s x)))
                      (possible-moves s))])))
-    
+
     ;; make-move :: State (State -> Move) -> (Move State Symbol)
     (define/public (make-move S move)
       (cond
-        [(my-loss? S)   (values '() S 'loss)]         
-        [(draw-game? S) (values '() S 'draw)]   
+        [(my-loss? S)   (values '() S 'loss)]
+        [(draw-game? S) (values '() S 'draw)]
         [else (let* ([m* (! (move S))]
                      [S* (my-move S m*)])
                 (cond
-                  [(my-win? S*)    (values m* S* 'win)] 
+                  [(my-win? S*)    (values m* S* 'win)]
                   [(draw-game? S*) (values m* S* 'draw)]
                   [else            (values m* S* 'next)]))]))))
 
@@ -9147,15 +9147,15 @@ The <tt>game.rkt</tt> module:
 (define (interactive-player game)
   (class game
     (super-new)
-    
+
     (inherit-field show-state)
     (inherit make-move optimal-move)
-    
+
     (init-field name
                 [look-ahead 4]
                 [opponent 'undefined]
                 [move-method (optimal-move look-ahead)])
-    
+
     (define/public (your-turn S)
       (define-values (m S* status) (make-move S move-method))
       (! (printf "\n~a makes move ~a\n" name m))
@@ -9170,18 +9170,18 @@ The <tt>game.rkt</tt> module:
 
 ;;--------------------------------------------------------------------
 ;; a simple macro for initialization of game partners
-(define-syntax-rule 
-  (define-partners game (A #:win A-wins #:move A-move) 
+(define-syntax-rule
+  (define-partners game (A #:win A-wins #:move A-move)
                         (B #:win B-wins #:move B-move))
   (begin
-    (define A (class game 
-                (super-new 
+    (define A (class game
+                (super-new
                  [my-win?  A-wins]
                  [my-loss? B-wins]
                  [my-move  A-move]
                  [opponent-move B-move])))
-    (define B (class game 
-                (super-new 
+    (define B (class game
+                (super-new
                  [my-win?  B-wins]
                  [my-loss? A-wins]
                  [my-move  B-move]
@@ -9277,10 +9277,10 @@ The <tt>tick-tack.rkt</tt> module:
 (define player-B (new (interactive-player o%) [name "B"] [look-ahead 6]))
 
 ; The interactive user
-(define User 
-  (new (interactive-player x%) 
+(define User
+  (new (interactive-player x%)
        [name "User"]
-       [move-method 
+       [move-method
         (λ (b) (let make-move ([m (read)])
                  (match m
                    ['q (exit)]
@@ -9288,7 +9288,7 @@ The <tt>tick-tack.rkt</tt> module:
                    [else (make-move (read))])))]))
 
 ;; The dummy player plays randomly
-(define Dummy 
+(define Dummy
   (new (interactive-player o%) [name "Dummy"] [look-ahead 0]))
 
 
@@ -9307,42 +9307,42 @@ A makes move (3 1)
 3 | | | |
 2 | | | |
 1 | | |x|
-   1 2 3    
+   1 2 3
 B makes move (2 2)
 3 | | | |
 2 | |o| |
 1 | | |x|
-   1 2 3    
+   1 2 3
 A makes move (1 1)
 3 | | | |
 2 | |o| |
 1 |x| |x|
-   1 2 3    
+   1 2 3
 B makes move (2 1)
 3 | | | |
 2 | |o| |
 1 |x|o|x|
-   1 2 3    
+   1 2 3
 A makes move (2 3)
 3 | |x| |
 2 | |o| |
 1 |x|o|x|
-   1 2 3    
+   1 2 3
 B makes move (3 2)
 3 | |x| |
 2 | |o|o|
 1 |x|o|x|
-   1 2 3    
+   1 2 3
 A makes move (1 2)
 3 | |x| |
 2 |x|o|o|
 1 |x|o|x|
-   1 2 3    
+   1 2 3
 B makes move (1 3)
 3 |o|x| |
 2 |x|o|o|
 1 |x|o|x|
-   1 2 3    
+   1 2 3
 A makes move (3 3)
 3 |o|x|x|
 2 |x|o|o|
@@ -9362,22 +9362,22 @@ A makes move (3 1)
 3 | | | |
 2 | | | |
 1 | | |x|
-   1 2 3    
+   1 2 3
 Dummy makes move (2 3)
 3 | |o| |
 2 | | | |
 1 | | |x|
-   1 2 3    
+   1 2 3
 A makes move (1 1)
 3 | |o| |
 2 | | | |
 1 |x| |x|
-   1 2 3    
+   1 2 3
 Dummy makes move (3 3)
 3 | |o|o|
 2 | | | |
 1 |x| |x|
-   1 2 3    
+   1 2 3
 A makes move (2 1)
 3 | |o|o|
 2 | | | |
@@ -9403,7 +9403,7 @@ User makes move (1 2)
 3 | |o| |
 2 |x| | |
 1 | | | |
-   1 2 3    
+   1 2 3
 Dummy makes move (3 2)
 3 | |o| |
 2 |x| |o|
@@ -9414,7 +9414,7 @@ User makes move (1 3)
 3 |x|o| |
 2 |x| |o|
 1 | | | |
-   1 2 3    
+   1 2 3
 Dummy makes move (3 3)
 3 |x|o|o|
 2 |x| |o|
@@ -9452,8 +9452,8 @@ As an example of another zero-sum game consider the classical [http://en.wikiped
 (define (show-state s) (displayln (map (λ (n) (make-list n '●)) s)))
 
 (define (possible-moves S)
-  (append-map 
-   (λ (heap n) 
+  (append-map
+   (λ (heap n)
      (map (λ (x) (map (curry * x) heap))
           (range 1 (+ 1 (min 3 n)))))
    '((1 0 0) (0 1 0) (0 0 1)) S))
@@ -9469,10 +9469,10 @@ As an example of another zero-sum game consider the classical [http://en.wikiped
   (second% #:win win? #:move move))
 
 ;; players
-(define player-A 
+(define player-A
   (new (interactive-player first%) [name "A"] [look-ahead 4]))
 
-(define player-B 
+(define player-B
   (new (interactive-player second%) [name "B"] [look-ahead 4]))
 
 ```
@@ -9678,9 +9678,9 @@ win:   parse arg wm,w;            if w==''  then w=N     /* [↓]  see if there 
        return 0                                          /*no winner "    "       "     */
 ```
 
-This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console);   this is used to determine the amount of padding for a centered display of the two grids.  
+This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console);   this is used to determine the amount of padding for a centered display of the two grids.
 
-The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZE.REX]]. 
+The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZE.REX]].
 
 
 {{out|output|text=  when using the input of:     <tt> -3 </tt>}}
@@ -9887,7 +9887,7 @@ q         ◄■■■■■■■■■■ human player's response.
 ## Ring
 
 
-Easy and simple implementation of tecTacToe in ring programming language with human-human type of game(for now). 
+Easy and simple implementation of tecTacToe in ring programming language with human-human type of game(for now).
 
 This implementation is a gui implementation using the default gui provided by the language
 
@@ -9949,7 +9949,7 @@ func reStart
     for i=1 to 9
         lst[i]=0
         btns[i].setText("-")
-    next  
+    next
 isXTurn=true
 
 func Disp x
@@ -10046,21 +10046,21 @@ require 'set'
 
 module TicTacToe
   LINES = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]]
-  
+
   class Game
     def initialize(player_1_class, player_2_class)
       @board = Array.new(10) # we ignore index 0 for convenience
-      
+
       @current_player_id = 0
       @players = [player_1_class.new(self, "X"), player_2_class.new(self, "O")]
       puts "#{current_player} goes first."
     end
     attr_reader :board, :current_player_id
-    
+
     def play
       loop do
         place_player_marker(current_player)
-        
+
         if player_has_won?(current_player)
           puts "#{current_player} wins!"
           print_board
@@ -10070,62 +10070,62 @@ module TicTacToe
           print_board
           return
         end
-        
+
         switch_players!
       end
     end
-    
+
     def free_positions
       Set.new((1..9).select {|position| @board[position].nil?})
     end
-    
+
     def place_player_marker(player)
       position = player.select_position!
       puts "#{player} selects #{player.marker} position #{position}"
       @board[position] = player.marker
     end
-    
+
     def player_has_won?(player)
       LINES.any? do |line|
         line.all? {|position| @board[position] == player.marker}
       end
     end
-    
+
     def board_full?
       free_positions.empty?
     end
-    
+
     def other_player_id
       1 - @current_player_id
     end
-    
+
     def switch_players!
       @current_player_id = other_player_id
     end
-    
+
     def current_player
       @players[current_player_id]
     end
-    
+
     def opponent
       @players[other_player_id]
     end
-    
+
     def turn_num
       10 - free_positions.size
     end
-    
+
     def print_board
       col_separator, row_separator = " | ", "--+---+--"
       label_for_position = lambda{|position| @board[position] ? @board[position] : position}
-      
+
       row_for_display = lambda{|row| row.map(&label_for_position).join(col_separator)}
       row_positions = [[1,2,3], [4,5,6], [7,8,9]]
       rows_for_display = row_positions.map(&row_for_display)
       puts rows_for_display.join("\n" + row_separator + "\n")
     end
   end
-  
+
   class Player
     def initialize(game, marker)
       @game = game
@@ -10133,7 +10133,7 @@ module TicTacToe
     end
     attr_reader :marker
   end
-  
+
   class HumanPlayer < Player
     def select_position!
       @game.print_board
@@ -10144,36 +10144,36 @@ module TicTacToe
         puts "Position #{selection} is not available. Try again."
       end
     end
-    
+
     def to_s
       "Human"
     end
   end
-  
+
   class ComputerPlayer < Player
     DEBUG = false # edit this line if necessary
-    
+
     def group_positions_by_markers(line)
       markers = line.group_by {|position| @game.board[position]}
       markers.default = []
       markers
     end
-    
+
     def select_position!
       opponent_marker = @game.opponent.marker
-      
+
       winning_or_blocking_position = look_for_winning_or_blocking_position(opponent_marker)
       return winning_or_blocking_position if winning_or_blocking_position
-      
+
       if corner_trap_defense_needed?
         return corner_trap_defense_position(opponent_marker)
       end
-      
+
       # could make this smarter by sometimes doing corner trap offense
-      
+
       return random_prioritized_position
     end
-    
+
     def look_for_winning_or_blocking_position(opponent_marker)
       for line in LINES
         markers = group_positions_by_markers(line)
@@ -10191,13 +10191,13 @@ module TicTacToe
         return blocking_position
       end
     end
-    
+
     def corner_trap_defense_needed?
       corner_positions = [1, 3, 7, 9]
       opponent_chose_a_corner = corner_positions.any?{|pos| @game.board[pos] != nil}
       return @game.turn_num == 2 && opponent_chose_a_corner
     end
-    
+
     def corner_trap_defense_position(opponent_marker)
       # if you respond in the center or the opposite corner, the opponent can force you to lose
       log_debug "defending against corner start by playing adjacent"
@@ -10206,24 +10206,24 @@ module TicTacToe
       safe_responses = {1=>[2,4], 3=>[2,6], 7=>[4,8], 9=>[6,8]}
       return safe_responses[opponent_position].sample
     end
-    
+
     def random_prioritized_position
       log_debug "picking random position, favoring center and then corners"
       ([5] + [1,3,7,9].shuffle + [2,4,6,8].shuffle).find do |pos|
         @game.free_positions.include?(pos)
       end
     end
-    
+
     def log_debug(message)
       puts "#{self}: #{message}" if DEBUG
     end
-    
+
     def to_s
       "Computer#{@game.current_player_id}"
     end
   end
 end
- 
+
 include TicTacToe
 
 Game.new(ComputerPlayer, ComputerPlayer).play
@@ -10314,7 +10314,7 @@ X | O | X
 winBox$ = "123 456 789 159 147 258 369 357"
 boxPos$ = "123 231 456 564 789 897 159 591 357 753 132 465 798 174 285 396 159 471 582 693 147 258 369 195 375"
 ai$     = "519628374"
-ox$     = "OX" 
+ox$     = "OX"
 [newGame]
 for i = 1 to 9
  box$(i) = ""
@@ -10361,7 +10361,7 @@ cls
 html "<table border=1 width=300px height=225px><TR>"
 for i = 1 to 9
   html "<td align=center width=33%><h1>"
-    if box$(i) <> "" then 
+    if box$(i) <> "" then
      html box$(i)
     else
     button #box, " ";box$(i);" ", [doTic]
@@ -10398,7 +10398,7 @@ next i
 
 moveCount = 0
 for i = 1 to 9
- if box$(i) <> "" then moveCount = moveCount + 1 
+ if box$(i) <> "" then moveCount = moveCount + 1
 next i
 if moveCount = 9 then
   print "Draw!"
@@ -10426,49 +10426,49 @@ Computer moves are legal, but random.
 ```scala
 package object tictactoe {
   val Human = 'X'
-  val Computer = 'O'  
+  val Computer = 'O'
   val BaseBoard = ('1' to '9').toList
   val WinnerLines = List((0,1,2), (3,4,5), (6,7,8), (0,3,6), (1,4,7), (2,5,8), (0,4,8), (2,4,6))
   val randomGen = new util.Random(System.currentTimeMillis)
 }
 
 package tictactoe {
-  
+
 class Board(aBoard : List[Char] = BaseBoard) {
-                            
+
   def availableMoves = aBoard.filter(c => c != Human && c != Computer)
-  
+
   def availableMovesIdxs = for ((c,i) <- aBoard.zipWithIndex if c != Human && c != Computer) yield i
-  
+
   def computerPlays = new Board(aBoard.updated(availableMovesIdxs(randomGen.nextInt(availableMovesIdxs.length)), Computer))
-  
+
   def humanPlays(move : Char) = new Board(aBoard.updated(aBoard.indexOf(move), Human))
-                          
+
   def isDraw = aBoard.forall(c => c == Human || c == Computer)
-  
-  def isWinner(winner : Char) = 
+
+  def isWinner(winner : Char) =
     WinnerLines.exists{case (i,j,k) => aBoard(i) == winner && aBoard(j) == winner && aBoard(k) == winner}
-  
+
   def isOver = isWinner(Computer) || isWinner(Human) || isDraw
-  
-  def print { 
-    aBoard.grouped(3).foreach(row => println(row(0) + " " + row(1) + " " + row(2))) 
+
+  def print {
+    aBoard.grouped(3).foreach(row => println(row(0) + " " + row(1) + " " + row(2)))
   }
-  
-  def printOverMessage { 
+
+  def printOverMessage {
     if (isWinner(Human)) println("You win.")
     else if (isWinner(Computer)) println("Computer wins.")
     else if (isDraw) println("It's a draw.")
-    else println("Not over yet, or something went wrong.")     
+    else println("Not over yet, or something went wrong.")
   }
-  
+
 }
 
 
-object TicTacToe extends App {   
-  
+object TicTacToe extends App {
+
    def play(board : Board, turn : Char) {
-    
+
     // Reads a char from input until it is one of
     // the available moves in the current board
     def readValidMove() : Char = {
@@ -10483,26 +10483,26 @@ object TicTacToe extends App {
       }
     }
 
-    
-    board.print    
-    
+
+    board.print
+
     if (board.isOver) {
       board.printOverMessage
       return
     }
-    
-    if (turn == Human) { // Human plays            
-      val nextBoard = board.humanPlays(readValidMove)      
+
+    if (turn == Human) { // Human plays
+      val nextBoard = board.humanPlays(readValidMove)
       play(nextBoard, Computer)
     } else { // Computer plays
-      println("Computer plays: ") 
-      val nextBoard = board.computerPlays 
+      println("Computer plays: ")
+      val nextBoard = board.computerPlays
       play(nextBoard, Human)
-    }    
-  }   
-  
+    }
+  }
+
   play(new Board(),Human)
-  
+
 }
 
 }
@@ -10520,7 +10520,7 @@ Choose a move: 1
 X 2 3
 4 5 6
 7 8 9
-Computer plays: 
+Computer plays:
 X 2 O
 4 5 6
 7 8 9
@@ -10530,7 +10530,7 @@ Choose a move: 4
 X 2 O
 X 5 6
 7 8 9
-Computer plays: 
+Computer plays:
 X 2 O
 X 5 6
 7 8 O
@@ -10552,18 +10552,18 @@ Can be a game of human v. human, human v. machine, or machine v. machine. Machin
     //Board size and marks
     N = 3;
     marks = ["X" "O"];
-        
+
     //Creating empty board
     board = string(zeros(N,N));
     for i = 1:(N*N)
         board(i) = "";
     end
-    
+
     //Initialising players
     clc();
     players= [%F %F];
     players = playerSetup(marks);
-    
+
     //Console header
     header = [strsplit(marks(1)+" is ----")';...
               strsplit(marks(2)+" is ----")'];
@@ -10574,7 +10574,7 @@ Can be a game of human v. human, human v. machine, or machine v. machine. Machin
             header(i,6:10) = strsplit("COMP.");
         end
     end
-    
+
     //Game loop
     sleep(1000);
     win_flag = %F;
@@ -10584,10 +10584,10 @@ Can be a game of human v. human, human v. machine, or machine v. machine. Machin
         clc();
         printf("%s\n %s\n",strcat(header(1,:)),strcat(header(2,:)));
         dispBoard(board);
-        
+
         //Find which player should move
         player_n = modulo(count,2) + 1;
-        
+
         if players(player_n) == %T then
             //Human plays
             pos = [];
@@ -10599,7 +10599,7 @@ Can be a game of human v. human, human v. machine, or machine v. machine. Machin
                     disp("You should input a valid cell number.");
                 end
             end
-            
+
             if valid_move then
                 board = updateBoard(board,pos,marks(player_n));
             else
@@ -10611,41 +10611,41 @@ Can be a game of human v. human, human v. machine, or machine v. machine. Machin
             board = ComputerMove(board,marks(player_n),marks);
             sleep(800);
         end
-        
+
         //Count number of movements
         count = count + 1;
-        
+
         //Check if the game has finished
         [win_flag,winning_mark] = detectWin(board)
         if win_flag then
             break
         end
     end
-    
+
     //Clear screen at the end of game
     clc();
     disp("Game finished:");
     dispBoard(board);
-    
+
     //Print results
     if win_flag then
         disp(winning_mark+" won!");
     else
         disp("It''s a tie.");
     end
-    
+
     //Play again?
     play_again = "";
     while play_again ~= "Y" & play_again ~= "N"
         play_again = input("Would you like to play again? (Y/N)","s");
         play_again = strsplit(play_again);
         play_again = convstr(play_again(1),"u");
-        
+
         if play_again ~= "Y" & play_again ~= "N" then
             disp("Invalid answer.");
         end
     end
-    
+
     if play_again == "Y" then
         startGame();
     else
@@ -10656,7 +10656,7 @@ endfunction
 function players = playerSetup(marks)
     //Determines who plays which mark
     players = [%F %F]; //True for human, Flase for computer
-    
+
     printf("\n%s always starts.\n",marks(1));
     for i = 1:2
         user_input = "";
@@ -10664,12 +10664,12 @@ function players = playerSetup(marks)
             user_input = input("Would you like to play as "+marks(i)+"? (Y/N)","s");
             user_input = strsplit(user_input);
             user_input = convstr(user_input(1),"u");
-            
+
             if user_input ~= "Y" & user_input ~= "N" then
                 disp("Invalid answer.");
             end
         end
-        
+
         //Print choice
         if user_input == "Y" then
             players(i) = %T;
@@ -10682,7 +10682,7 @@ endfunction
 
 function [] = dispBoard(board)
     //Print ASCII board on console
-    
+
     //Get board marks
     marks = [" " " "];
     mark_inds = find(board ~= "");
@@ -10693,30 +10693,30 @@ function [] = dispBoard(board)
             marks(2) = board(mark_inds(1));
         end
     end
-    
+
     //Transpose to display for humans
     //[compatibility with readHumanMove()]
     disp_board = board';
-    
+
     rows = 3*size(board,'r');
     cols = 4*size(board,'c');
     ascii_board = string(zeros(rows, cols));
-    
+
     mark_1=[...
     strsplit("   |")';...
     strsplit(" "+marks(1)+" |")';...
     strsplit("___|")'];
-    
+
     mark_2=[...
     strsplit("   |")';...
     strsplit(" "+marks(2)+" |")';...
     strsplit("___|")'];
-    
+
     Blank_mark=[...
     strsplit("   |")';...
     strsplit("   |")';...
     strsplit("___|")'];
-    
+
     for r = ([1:size(board,'r')] - 1 )
         for c = ([1:size(board,'c')] - 1)
             if disp_board(r+1,c+1) == marks(1) then
@@ -10731,17 +10731,17 @@ function [] = dispBoard(board)
             end
         end
     end
-    
+
     for i = 1:cols
         if modulo(i,4)>0 then
             ascii_board(rows,i) = " ";
         end
     end
-    
+
     for i = 1:rows
         ascii_board(i,cols) = " ";
     end
-    
+
     printf("\n");
     for i = 1:size(ascii_board,'r')
         printf("%s\n",strcat(ascii_board(i,:)))
@@ -10751,7 +10751,7 @@ endfunction
 function moves_board = availableMoves(board)
     //Find empty cells on the board
     moves_board = board;
-    
+
     for i = 1:(size(board,'r')*size(board,'c'))
         if board(i) == "" then
             moves_board(i) = string(i);
@@ -10766,13 +10766,13 @@ function varargout = readHumanMove(board)
     printf("\nAvailable cells:");
     moves_board = availableMoves(board);
     disp(moves_board');
-    
+
     x = input("\nEnter a move (0 to quit game): ");
-    
+
     valid = %F;
     pos = 0;
     total = size(moves_board,'r') * size(moves_board,'c');
-    
+
     //Check if it is a valid move
     if x == 0 then
         disp("Quit game.")
@@ -10783,7 +10783,7 @@ function varargout = readHumanMove(board)
             pos = x;
         end
     end
-    
+
     varargout = list(pos,valid);
 endfunction
 
@@ -10792,9 +10792,9 @@ function varargout = updateBoard(board,pos,player)
     if board(pos) ~= "" then
         error('Error: Invalid move.');
     end
-    
+
     board(pos) = player
-    
+
     varargout = list(board);
 endfunction
 
@@ -10802,22 +10802,22 @@ function varargout = detectWin(board)
     //Detect if there is a winner or not
     win_flag = %F;
     winner = "";
-    
+
     //Get board marks
     marks = ["" ""];
     mark_inds = find(board ~= "");
     marks(1) = board(mark_inds(1))
     mark_inds = find( (board ~= "") & (board ~= marks(1)) );
     marks(2) = board(mark_inds(1));
-    
+
     //If there is a minimum number of moves, check if there is a winner
     n_moves = find(~(board == ""));
     n_moves = length(n_moves)
-    
+
     if n_moves >= size(board,'r') then
         board_X = (board == marks(1));
-        board_O = (board == marks(2)); 
-        
+        board_O = (board == marks(2));
+
         for i = 1:size(board,'r')
             //Check rows
             if find(~board_X(i,:)) == [] then
@@ -10830,7 +10830,7 @@ function varargout = detectWin(board)
                 winner = marks(2);
                 break
             end
-            
+
             //Check columns
             if find(~board_X(:,i)) == [] then
                 win_flag = %T;
@@ -10843,7 +10843,7 @@ function varargout = detectWin(board)
                 break
             end
         end
-        
+
         //Check diagonal
         if ~win_flag then
             if find(~diag(board_X)) == [] then
@@ -10854,12 +10854,12 @@ function varargout = detectWin(board)
                 winner = marks(2);
             end
         end
-        
+
         //Check anti-diagonal
         if ~win_flag then
             board_X = board_X(:,$:-1:1);
             board_O = board_O(:,$:-1:1);
-            
+
             if find(~diag(board_X)) == [] then
                 win_flag = %T;
                 winner = marks(1);
@@ -10869,16 +10869,16 @@ function varargout = detectWin(board)
             end
         end
     end
-    
+
     varargout = list(win_flag,winner)
 endfunction
 
 function threat_pos = findThreat(board,player)
     //Returns a list of moves that can finish the game
-    
+
     //Available moves
     move_inds = find(~( availableMoves(board) == "_" ));
-    
+
     //If there is a minimum number of moves, check if there is a threat
     threat_pos = [];
     if (size(board,'r')*size(board,'c')) - length(move_inds) >...
@@ -10895,10 +10895,10 @@ endfunction
 
 function varargout = ComputerMove(board,mark,all_marks)
     //Atomatically add a move to the board with no human input
-    
+
     //Find winning moves moves
     move_inds = findThreat(board,mark);
-    
+
     //If there are no winning moves, find opponent's winning moves
     //to block opponent's victory
     if move_inds == [] then
@@ -10907,23 +10907,23 @@ function varargout = ComputerMove(board,mark,all_marks)
         elseif mark == all_marks(2) then
             opponent = all_marks(1);
         end
-        
+
         move_inds = findThreat(board,opponent);
     end
-    
+
     //If there are no winning moves or threats, find all possible moves
     if move_inds == [] then
         move_inds = find(~( availableMoves(board) == "_" ));
     end
-    
+
     //Choose a random move among the selected possible moves
     pos = grand(1,"prm",move_inds);
     pos = pos(1);
-    
+
     //Update board by adding a new mark
     board(pos) = mark;
-    
-    varargout = list(board);    
+
+    varargout = list(board);
 endfunction
 
 startGame()
@@ -10941,38 +10941,38 @@ import Darwin
 
 enum Token : CustomStringConvertible {
 	case cross, circle
-	
+
 	func matches(tokens: [Token?]) -> Bool {
 		for token in tokens {
-			guard let t = token, t == self else { 
-				return false 
+			guard let t = token, t == self else {
+				return false
 			}
 		}
 		return true
 	}
-	
+
 	func emptyCell(in tokens: [Token?]) -> Int? {
-		if tokens[0] == nil 
-		&& tokens[1] == self 
+		if tokens[0] == nil
+		&& tokens[1] == self
 		&& tokens[2] == self {
 			return 0
 		} else
-		if tokens[0] == self 
-		&& tokens[1] == nil 
+		if tokens[0] == self
+		&& tokens[1] == nil
 		&& tokens[2] == self {
 			return 1
 		} else
-		if tokens[0] == self 
-		&& tokens[1] == self 
+		if tokens[0] == self
+		&& tokens[1] == self
 		&& tokens[2] == nil {
 			return 2
 		}
 		return nil
 	}
-	
+
 	var description: String {
 		switch self {
-			case .cross: return "x" 
+			case .cross: return "x"
 			case .circle: return "o"
 		}
 	}
@@ -10980,23 +10980,23 @@ enum Token : CustomStringConvertible {
 
 struct Board {
 	var cells: [Token?] = [nil, nil, nil, nil, nil, nil, nil, nil, nil]
-	
+
 	func cells(atCol col: Int) -> [Token?] {
 		return [cells[col], cells[col + 3], cells[col + 6]]
 	}
-	
+
 	func cells(atRow row: Int) -> [Token?] {
 		return [cells[row * 3], cells[row * 3 + 1], cells[row * 3 + 2]]
 	}
-	
+
 	func cellsTopLeft() -> [Token?] {
 		return [cells[0], cells[4], cells[8]]
 	}
-	
+
 	func cellsBottomLeft() -> [Token?] {
 		return [cells[6], cells[4], cells[2]]
 	}
-	
+
 	func winner() -> Token? {
 		let r0 = cells(atRow: 0)
 		let r1 = cells(atRow: 1)
@@ -11006,7 +11006,7 @@ struct Board {
 		let c2 = cells(atCol: 2)
 		let tl = cellsTopLeft()
 		let bl = cellsBottomLeft()
-		
+
 		if Token.cross.matches(tokens: r0)
 		|| Token.cross.matches(tokens: r1)
 		|| Token.cross.matches(tokens: r2)
@@ -11016,7 +11016,7 @@ struct Board {
 		|| Token.cross.matches(tokens: tl)
 		|| Token.cross.matches(tokens: bl) {
 			return .cross
-		} else 
+		} else
 		if Token.circle.matches(tokens: r0)
 		|| Token.circle.matches(tokens: r1)
 		|| Token.circle.matches(tokens: r2)
@@ -11029,15 +11029,15 @@ struct Board {
 		}
 		return nil
 	}
-	
+
 	func atCapacity() -> Bool {
 		return cells.filter { $0 == nil }.count == 0
 	}
-	
+
 	mutating func play(token: Token, at location: Int) {
 		cells[location] = token
 	}
-	
+
 	func findBestLocation(for player: Token) -> Int? {
 		let r0 = cells(atRow: 0)
 		let r1 = cells(atRow: 1)
@@ -11047,7 +11047,7 @@ struct Board {
 		let c2 = cells(atCol: 2)
 		let tl = cellsTopLeft()
 		let bl = cellsBottomLeft()
-		
+
 		if let cell = player.emptyCell(in: r0) {
 			return cell
 		} else if let cell = player.emptyCell(in: r1) {
@@ -11067,7 +11067,7 @@ struct Board {
 		}
 		return nil
 	}
-	
+
 	func findMove() -> Int {
 		let empties = cells.enumerated().filter { $0.1 == nil }
 		let r = Int(arc4random()) % empties.count
@@ -11084,7 +11084,7 @@ extension Board : CustomStringConvertible {
 			} else {
 				result += "| \(idx) |"
 			}
-			
+
 			if (idx + 1) % 3 == 0 {
 				result += "\n---------------\n"
 			}
@@ -11097,12 +11097,12 @@ while true {
 	var board = Board()
 	print("Who do you want to play as ('o' or 'x'): ", separator: "", terminator: "")
 	let answer = readLine()?.characters.first ?? "x"
-	
+
 	var player: Token = answer == "x" ? .cross : .circle
 	var pc: Token = player == .cross ? .circle : .cross
-	
+
 	print(board)
-	
+
 	while true {
 		print("Choose cell to play on: ", separator: "", terminator: "")
 		var pos = Int(readLine() ?? "0") ?? 0
@@ -11110,15 +11110,15 @@ while true {
 			print("Invalid move. Choose cell to play on: ", separator: "", terminator: "")
 			pos = Int(readLine() ?? "0") ?? 0
 		}
-		
+
 		if board.atCapacity() {
 			print("Draw")
 			break
 		}
-		
+
 		board.play(token: player, at: pos)
 		print(board)
-		
+
 		if let winner = board.winner() {
 			print("winner is \(winner)")
 			break
@@ -11126,7 +11126,7 @@ while true {
 			print("Draw")
 			break
 		}
-		
+
 		if let win = board.findBestLocation(for: pc) {
 			board.play(token: pc, at: win)
 		} else if let def = board.findBestLocation(for: player) {
@@ -11134,9 +11134,9 @@ while true {
 		} else {
 			board.play(token: pc, at: board.findMove())
 		}
-		
+
 		print(board)
-		
+
 		if let winner = board.winner() {
 			print("winner is \(winner)")
 			break
@@ -11247,7 +11247,7 @@ Choose cell to play on: 8
 ---------------
 
 Draw
-Who do you want to play as ('o' or 'x'): 
+Who do you want to play as ('o' or 'x'):
 
 ```
 
@@ -11823,7 +11823,7 @@ In the classic style.
 520 GOTO 30
 530 REM ************************
 540 REM MOVIMIENTO DEL ORDENADOR
-550 P = ASC("O") 
+550 P = ASC("O")
 560 X = 0
 570 J = 1
 580 IF A(W(J)) = A(W(J + 1)) AND A(W(J + 2)) = 32 AND A(W(J)) = P  X = W(J + 2): GOTO 750

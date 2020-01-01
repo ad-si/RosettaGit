@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Sorting}}
-Sort an array (or list) of integers in ascending numerical order. 
+Sort an array (or list) of integers in ascending numerical order.
 
 ;Task:
 Use a sorting facility provided by the language/library if possible.
@@ -87,24 +87,24 @@ nums.sort(compare);
 
 ```ada
 with Gnat.Heap_Sort_G;
- 
+
 procedure Integer_Sort is
    -- Heap sort package requires data to be in index values starting at
    -- 1 while index value 0 is used as temporary storage
    type Int_Array is array(Natural range <>) of Integer;
    Values : Int_Array := (0,1,8,2,7,3,6,4,5);
-   
+
    -- define move and less than subprograms for use by the heap sort package
    procedure Move_Int(From : Natural; To : Natural) is
    begin
       Values(To) := Values(From);
    end Move_Int;
-   
+
    function Lt_Int(Left, Right : Natural) return Boolean is
    begin
       return Values(Left) < Values (Right);
    end Lt_Int;
-  
+
    -- Instantiate the generic heap sort package
    package Heap_Sort is new Gnat.Heap_Sort_G(Move_Int, Lt_Int);
 
@@ -114,12 +114,12 @@ end Integer_Sort;
 
 requires an Ada05 compiler, e.g GNAT GPL 2007
 with Ada.Containers.Generic_Array_Sort;
- 
+
 procedure Integer_Sort is
-   -- 
+   --
    type Int_Array is array(Natural range <>) of Integer;
    Values : Int_Array := (0,1,8,2,7,3,6,4,5);
-   
+
    -- Instantiate the generic sort package from the standard Ada library
    procedure Sort is new Ada.Containers.Generic_Array_Sort
      (Index_Type   => Natural,
@@ -158,10 +158,10 @@ PROC in place shell sort = (REF[]TYPE seq)REF[]TYPE:(
             seq[i] := el
         OD;
         inc := IF inc = 2 THEN 1 ELSE ENTIER(inc * 5 / 11) FI
-    OD;  
-    seq  
-);    
-   
+    OD;
+    seq
+);
+
 PROC shell sort = ([]TYPE seq)[]TYPE:
   in place shell sort(LOC[LWB seq: UPB seq]TYPE:=seq);
 
@@ -229,9 +229,9 @@ end.
 
 AppleScript has no native sort function.
 
-Later versions of AppleScript (OS X 10.10 onwards) do allow access to the ObjC NSArray library, 
+Later versions of AppleScript (OS X 10.10 onwards) do allow access to the ObjC NSArray library,
 but while this approach can yield reasonably fast sorts, it is slow in terms of scripter time,
-requiring digestion of the ObjC library documentation, and leading to code like the '''sort''' function 
+requiring digestion of the ObjC library documentation, and leading to code like the '''sort''' function
 below, which is possibly more messy than it is worth for the purposes of casual end-user scripting,
 for which AppleScript was presumably designed.
 
@@ -247,11 +247,11 @@ end sort
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     map(sort, [[9, 1, 8, 2, 8, 3, 7, 0, 4, 6, 5], ¬
         ["alpha", "beta", "gamma", "delta", "epsilon", "zeta", "eta", ¬
             "theta", "iota", "kappa", "lambda", "mu"]])
-    
+
 end run
 
 
@@ -269,7 +269,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -285,8 +285,8 @@ end mReturn
 {{Out}}
 
 ```txt
-{{0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 9}, 
-{"alpha", "beta", "delta", "epsilon", "eta", "gamma", 
+{{0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 9},
+{"alpha", "beta", "delta", "epsilon", "eta", "gamma",
 "iota", "kappa", "lambda", "mu", "theta", "zeta"}}
 ```
 
@@ -294,7 +294,7 @@ end mReturn
 
 ## AutoHotkey
 
-    
+
 
 ```AutoHotkey
 numbers = 5 4 1 2 3
@@ -431,13 +431,13 @@ Uses the supplied SORTLIB library.
 ```bbcbasic
       INSTALL @lib$+"SORTLIB"
       sort% = FN_sortinit(0,0)
-      
+
       DIM array(8)
       array() = 8, 2, 5, 9, 1, 3, 6, 7, 4
-      
+
       C% = DIM(array(),1) + 1
       CALL sort%, array(0)
-      
+
       FOR i% = 0 TO DIM(array(),1) - 1
         PRINT ; array(i%) ", ";
       NEXT
@@ -460,7 +460,7 @@ Output:
 Elements of the array are read from standard input, preceded by their quantity. The algorithm uses counting sort and allows numbers between 1 and 60, inclusive.
 
 ```Befunge
-v 
+v
 > 543** >     :#v_ $&>           :#v_ 1 > :0g >    :#v_ $ 1+: 543** `! #v_ 25*,@
         ^-1p0\0:<    ^-1 p0\+1 g0:&<          ^-1\.:\<
                                         ^                               <
@@ -506,7 +506,7 @@ To complete the task need to unfold the terms with a numerical factor >1:
           )
       )
   & !sorted);
-  
+
   out$sort$(9 -2 1 2 8 0 1 2);
 ```
 
@@ -532,8 +532,8 @@ Also, adding elements to the end of the list 'sorted' is costly. Better is to pr
 ## C
 
 
-```c>#include <stdlib.h
-  /* qsort() */
+```cpp
+#include <iostream>  /* qsort() */
 #include <stdio.h>   /* printf() */
 
 int intcmp(const void *aa, const void *bb)
@@ -564,8 +564,8 @@ int main()
 ### Simple Array
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 
 int main()
 {
@@ -580,8 +580,8 @@ int main()
 ### <tt>std::vector</tt>
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <vector>
 
 int main()
@@ -602,8 +602,8 @@ int main()
 ### <tt>std::list</tt>
 
 
-```cpp>#include <list
-
+```cpp
+#include <list>
 
 int main()
 {
@@ -668,19 +668,19 @@ Start = sortArray {2, 4, 3, 1, 2}
 
 ```cobol
        PROGRAM-ID. sort-ints.
-       
+
        DATA DIVISION.
        WORKING-STORAGE SECTION.
        01  array-area             VALUE "54321".
            03  array              PIC 9 OCCURS 5 TIMES.
        01  i                      PIC 9.
-       
+
        PROCEDURE DIVISION.
        main-line.
            PERFORM display-array
            SORT array ASCENDING array
            PERFORM display-array
-       
+
            GOBACK
            .
        display-array.
@@ -794,11 +794,11 @@ ELENA 4.1 :
 ```elena
 import system'routines;
 import extensions;
- 
+
 public program()
 {
     var unsorted := new int[]::(6, 2, 7, 8, 3, 1, 10, 5, 4, 9);
- 
+
     console.printLine(unsorted.clone().sort(ifOrdered).asEnumerable())
 }
 ```
@@ -862,11 +862,11 @@ program SortExample
 	    SysLib.writeStdout(test1[i]);
 	end
     end
-    
+
     function sortFunction(a any in, b any in) returns (int)
         return (a as int) - (b as int);
     end
-	
+
 end
 ```
 
@@ -877,7 +877,7 @@ The following works in RBD but only with Rich UI programs.
 test1 int[] = [1,-1,8,-8,2,-2,7,-7,3,-3,6,-6,9,-9,4,-4,5,-5,0];
 RUILib.sort(test1, sortFunction);
 
-    
+
 function sortFunction(a any in, b any in) returns (int)
     return ((a as int) - (b as int));
 end
@@ -944,7 +944,7 @@ CREATE MYARRAY   SIZE CELLS ALLOT
 : FILLIT ( -- ) ( reversed order)
   SIZE 0  DO   SIZE I -   I MYARRAY [] !  LOOP ;
 
-: SEEIT  ( -- ) 
+: SEEIT  ( -- )
   SIZE 0 DO  I MYARRAY [] ?   LOOP ;
 
 \ define non-standard words used by Quicksort author
@@ -954,7 +954,7 @@ CELL NEGATE CONSTANT -CELL
 
 : MID ( l r -- mid ) OVER - 2/ -CELL AND + ;
 
-: EXCH    ( addr1 addr2 -- ) 
+: EXCH    ( addr1 addr2 -- )
   OVER @ OVER @        ( read values)
   SWAP ROT ! SWAP ! ;  ( exchange values)
 
@@ -1207,7 +1207,7 @@ println ([2,4,0,3,1,2,-12].sort())
 ```
 
 
-Output: 
+Output:
 
 ```txt
 [-12, 0, 1, 2, 2, 3, 4]
@@ -1218,7 +1218,7 @@ Output:
 ## Haskell
 
 {{works with|GHC|GHCi|6.6}}
- 
+
 
 ```haskell
 nums = [2,4,3,1,2] :: [Int]
@@ -1234,7 +1234,7 @@ sorted = List.sort nums
 DIMENSION array(100)
 
    array = INT( RAN(100) )
-   SORT(Vector=array, Sorted=array) 
+   SORT(Vector=array, Sorted=array)
 ```
 
 
@@ -1737,7 +1737,7 @@ module IntSort
     {
         def nums = [1, 5, 3, 7, 2, 8, 3, 9];
         def sorted = nums.Sort((x, y) => x.CompareTo(y));
-        
+
         WriteLine(nums);
         WriteLine(sorted);
     }
@@ -1784,8 +1784,8 @@ method display(in = int[]) public static
 
 '''Output'''
 <pre style="overflow:scroll">
-   2   4   3   1   2  -1   0  -2 
-  -2  -1   0   1   2   2   3   4 
+   2   4   3   1   2  -1   0  -2
+  -2  -1   0   1   2   2   3   4
 
 ```
 
@@ -1836,7 +1836,7 @@ method esort(a, size) public static
 --esort: procedure expose a.;
 
   h = a[0]
- 
+
   loop while h > 1
     h = h % 2
     loop i = 1 for a[0] - h
@@ -1958,7 +1958,7 @@ method esort(a, size) public static
 --esort: procedure expose a.;
 
   h = a[0]
- 
+
   loop while h > 1
     h = h % 2
     loop i = 1 for a[0] - h
@@ -1991,7 +1991,7 @@ return
 ## Nial
 
 
-```nial>sort 
+```nial>sort
 = 9 6 8 7 1 10
 = 10 9 8 7 6 1
 ```
@@ -2003,7 +2003,7 @@ return
 
 ```nim
 import algorithm
-  
+
 var a: array[0..8,int] = [2,3,5,8,4,1,6,9,7]
 a.sort(system.cmp[int], Ascending)
 for x in a:
@@ -2135,7 +2135,8 @@ The sorted numbers are
 
 Passing the less-than operator to the built-in sequence (i.e. list) sort function:
 
-```c>#include <order/interpreter.h
+```c
+#include <order/interpreter.h>
 
 
 ORDER_PP( 8seq_sort(8less, 8seq(2, 4, 3, 1, 2)) )
@@ -2170,20 +2171,20 @@ vecsort(v)
 Sorting a list of numbers as strings and as numbers (from the manual.)
 
 ```sgml
-Construct a list of numbers 
-<@ LETCNSLSTLIT>L|65^84^1^25^77^4^47^2^42^44^41^25^69^3^51^45^4^39^</@> 
+Construct a list of numbers
+<@ LETCNSLSTLIT>L|65^84^1^25^77^4^47^2^42^44^41^25^69^3^51^45^4^39^</@>
 Numbers sort as strings
-<@ ACTSRTENTLST>L</@> 
-<@ SAYDMPLST>L</@> 
-<@ ACTSRTENTLSTLIT>L|__StringDescending</@> 
+<@ ACTSRTENTLST>L</@>
 <@ SAYDMPLST>L</@>
- 
+<@ ACTSRTENTLSTLIT>L|__StringDescending</@>
+<@ SAYDMPLST>L</@>
+
 Construct another list of numbers
-<@ LETCNSLSTLIT>list|65^84^1^25^77^4^47^2^42^44^41^25^69^3^51^45^4^39^</@> 
+<@ LETCNSLSTLIT>list|65^84^1^25^77^4^47^2^42^44^41^25^69^3^51^45^4^39^</@>
 Numbers sorted as numbers
-<@ ACTSRTENTLSTLIT>list|__Numeric</@> 
-<@ SAYDMPLST>list</@> 
-<@ ACTSRTENTLSTLIT>list|__NumericDescending</@> 
+<@ ACTSRTENTLSTLIT>list|__Numeric</@>
+<@ SAYDMPLST>list</@>
+<@ ACTSRTENTLSTLIT>list|__NumericDescending</@>
 <@ SAYDMPLST>list</@>
 ```
 
@@ -2191,20 +2192,20 @@ Numbers sorted as numbers
 Output
 
 ```html
-Construct a list of numbers 
- 
+Construct a list of numbers
+
 Numbers sort as strings
- 
-1^2^25^25^3^39^4^4^41^42^44^45^47^51^65^69^77^84^ 
- 
+
+1^2^25^25^3^39^4^4^41^42^44^45^47^51^65^69^77^84^
+
 84^77^69^65^51^47^45^44^42^41^4^4^39^3^25^25^2^1^
- 
+
 Construct another list of numbers
- 
+
 Numbers sorted as numbers
- 
-1^2^3^4^4^25^25^39^41^42^44^45^47^51^65^69^77^84^ 
- 
+
+1^2^3^4^4^25^25^39^41^42^44^45^47^51^65^69^77^84^
+
 84^77^69^65^51^47^45^44^42^41^39^25^25^4^4^3^2^1^
 ```
 
@@ -2281,7 +2282,7 @@ MERGE: PROCEDURE (A,LA,B,LB,C);
    DECLARE (A(*),B(*),C(*)) FIXED BIN(31);
    DECLARE (LA,LB) FIXED BIN(31) NONASGN;
    DECLARE (I,J,K) FIXED BIN(31);
-   
+
    I=1; J=1; K=1;
    DO WHILE ((I <= LA) & (J <= LB));
       IF(A(I) <= B(J)) THEN
@@ -2305,7 +2306,7 @@ MERGESORT: PROCEDURE (A,N) RECURSIVE ;
     IF (N=1) THEN RETURN;
    M = trunc((N+1)/2);
    IF (M>1) THEN CALL MERGESORT(A,M);
-   P=ADDR(A(M+1)); 
+   P=ADDR(A(M+1));
    IF (N-M > 1) THEN CALL MERGESORT(AMP1,N-M);
    IF A(M) <= AMP1(1) THEN RETURN;
    DO I=1 to M; T(I)=A(I); END;
@@ -2350,7 +2351,7 @@ ar =>
 
 (The list created by conslist will be garbage-collected.)
 
-Alternatively, using the datalist function, even more economically: 
+Alternatively, using the datalist function, even more economically:
 
 
 ```pop11
@@ -2358,7 +2359,7 @@ lvars ar = {2 4 3 1 2};
 consvector(destlist(sort(datalist(ar)))) -> ar;
 ```
 
- 
+
 
 or in Forth-like pop11 postfix syntax:
 
@@ -2904,7 +2905,7 @@ val sorted = [1,2,2,3,4] : int list
 ## Stata
 
 
-###  Sort a Stata dataset 
+###  Sort a Stata dataset
 
 See '''[https://www.stata.com/help.cgi?sort sort]''' in Stata help.
 
@@ -2934,7 +2935,7 @@ See '''[https://www.stata.com/help.cgi?sort sort]''' in Stata help.
 
 
 
-###  Sort a macro list 
+###  Sort a macro list
 
 See '''[https://www.stata.com/help.cgi?macrolists macrolists]''' in Stata help for other functions on lists stored in macros.
 
@@ -2947,7 +2948,7 @@ See '''[https://www.stata.com/help.cgi?macrolists macrolists]''' in Stata help f
 
 
 
-###  Mata 
+###  Mata
 
 See Mata's '''[http://www.stata.com/help.cgi?mf_sort sort]''' function.
 
@@ -3204,7 +3205,7 @@ Output:
 
 ```txt
 
-1 1 2 3 4 4 5 5 6 9 
+1 1 2 3 4 4 5 5 6 9
 
 ```
 
@@ -3251,20 +3252,20 @@ end sub
 if peek$("library") = "main" then
 
 	clear screen
-	
+
 	ITEMS = 100
 	dim numeros(ITEMS)
-	
+
 	for n = 1 to ITEMS
 		numeros(n) = ran(ITEMS + 1)
 	next n
-	
+
 	print time$
 	shell_sort(numeros())
 	print time$
 	print "Press a key to see ordered numbers."
 	inkey$
-	
+
 	for n = 1 to ITEMS
 		print numeros(n),", ";
 	next n

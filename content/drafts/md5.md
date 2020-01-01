@@ -16,7 +16,7 @@ tags = []
 Encode a string using an MD5 algorithm.   The algorithm can be found on   [[wp:Md5#Algorithm|Wikipedia]].
 
 
-Optionally, validate your implementation by running all of the test values in   [http://tools.ietf.org/html/rfc1321 IETF RFC (1321)   for MD5]. 
+Optionally, validate your implementation by running all of the test values in   [http://tools.ietf.org/html/rfc1321 IETF RFC (1321)   for MD5].
 
 Additionally,   RFC 1321   provides more precise information on the algorithm than the Wikipedia article.
 
@@ -33,7 +33,7 @@ If the solution on this page is a library solution, see   [[MD5/Implementation]]
 
 ```forth
 
-"md5" cr:hash! "Some text" cr:hash cr:hash>s 
+"md5" cr:hash! "Some text" cr:hash cr:hash>s
 . cr bye
 
 ```
@@ -99,12 +99,12 @@ OP + = (BITS a, b) BITS:
    END;
 
 #[0:63]LONG INT k;
-FOR i FROM 0 TO 63 DO 
+FOR i FROM 0 TO 63 DO
    k[i] :=  ENTIER (ABS (sin(i+1)) * LONG INT(2)**32)
 OD;#
 
 PROC md5 = (STRING intext) STRING:
-   BEGIN 
+   BEGIN
       # Initialize variables: #
       BITS a0 := 16r67452301,
            a1 := 16refcdab89,
@@ -112,30 +112,30 @@ PROC md5 = (STRING intext) STRING:
            a3 := 16r10325476;
 
       STRING text := intext;
- 
+
       # Pre-processing: adding a single 1 bit #
       text +:= REPR 128;
- 
+
       # Pre-processing: padding with zeros
         append "0" bit until message length in bits ≡ 448 (mod 512) #
-      WHILE ELEMS text MOD 64 ≠ 56 DO 
+      WHILE ELEMS text MOD 64 ≠ 56 DO
          text +:= REPR 0
       OD;
- 
+
       # append original length in bits mod (2 pow 64) to message #
       text +:= dec2asc (ELEMS intext * 8);
- 
+
       # MD5 rounds #
       # Process the message in successive 512-bit chunks: #
-      WHILE text ≠ "" DO 
+      WHILE text ≠ "" DO
 	 # for each 512-bit (64 byte) chunk of message #
 	 []CHAR chunk = text[1:64]; text := text[65:];
 	 # break chunk into sixteen 32-bit words M[j], 0 <= j <= 15 #
 	 [0:15]BITS m;
-         FOR j FROM 0 TO 15 DO 
-             m[j] := BIN (ABS chunk[j*4+1]) OR 
-	             BIN (ABS chunk[j*4+2]) SHL 8 OR 
-	             BIN (ABS chunk[j*4+3]) SHL 16 OR 
+         FOR j FROM 0 TO 15 DO
+             m[j] := BIN (ABS chunk[j*4+1]) OR
+	             BIN (ABS chunk[j*4+2]) SHL 8 OR
+	             BIN (ABS chunk[j*4+3]) SHL 16 OR
 	             BIN (ABS chunk[j*4+4]) SHL 24
           OD;
           INT g;
@@ -146,17 +146,17 @@ PROC md5 = (STRING intext) STRING:
           b := a1;
           c := a2;
           d := a3;
-          FOR i FROM 0 TO 63 DO 
+          FOR i FROM 0 TO 63 DO
              IF 0 <= i AND i <= 15 THEN
 		f := (b AND c) OR ((NOT b) AND d);
 		g := i
-	     ELIF 16 <= i AND i <= 31 THEN 
+	     ELIF 16 <= i AND i <= 31 THEN
 		 f := (d AND b) OR ((NOT d) AND c);
 		 g := (5×i + 1) MOD 16
-	     ELIF 32 <= i AND i <= 47 THEN 
+	     ELIF 32 <= i AND i <= 47 THEN
 		 f := b XOR c XOR d;
 		 g := (3×i + 5) MOD 16
-	     ELIF 48 <= i AND i <= 63 THEN 
+	     ELIF 48 <= i AND i <= 63 THEN
 		 f := c XOR (b OR (NOT d));
 		 g := (7×i) MOD 16
 	     FI;
@@ -177,12 +177,12 @@ PROC md5 = (STRING intext) STRING:
 
 PROC leftrotate = (BITS x, INT c) BITS:
     (x SHL c) OR (x SHR (32-c));
-  
+
 # dec2asc: dec to 8 byte asc #
 PROC dec2asc = (INT nn)STRING:
    BEGIN
       STRING h := ""; INT n := nn;
-      FOR i TO 8 DO 
+      FOR i TO 8 DO
          h +:= REPR (n MOD 256);
          n ÷:= 256
       OD;
@@ -204,10 +204,10 @@ PROC dec2asc = (INT nn)STRING:
 
 STRING testmsg = "The quick brown fox jumps over the lazy dog";
 STRING checksum = "9e107d9d372bb6826bd81d3542a419d6";
- 
+
 print ((testmsg, new line));
 print ((checksum, new line));
- 
+
 STRING test = md5 (testmsg);
 
 IF test = checksum THEN
@@ -232,12 +232,12 @@ data := "abc"
 MsgBox % MD5(data,StrLen(data)) ; 900150983cd24fb0d6963f7d28e17f72
 
 MD5( ByRef V, L=0 ) {
- VarSetCapacity( MD5_CTX,104,0 ), DllCall( "advapi32\MD5Init", Str,MD5_CTX ) 
- DllCall( "advapi32\MD5Update", Str,MD5_CTX, Str,V, UInt,L ? L : VarSetCapacity(V) ) 
- DllCall( "advapi32\MD5Final", Str,MD5_CTX ) 
- Loop % StrLen( Hex:="123456789ABCDEF0" ) 
-  N := NumGet( MD5_CTX,87+A_Index,"Char"), MD5 .= SubStr(Hex,N>>4,1) . SubStr(Hex,N&15,1) 
-Return MD5 
+ VarSetCapacity( MD5_CTX,104,0 ), DllCall( "advapi32\MD5Init", Str,MD5_CTX )
+ DllCall( "advapi32\MD5Update", Str,MD5_CTX, Str,V, UInt,L ? L : VarSetCapacity(V) )
+ DllCall( "advapi32\MD5Final", Str,MD5_CTX )
+ Loop % StrLen( Hex:="123456789ABCDEF0" )
+  N := NumGet( MD5_CTX,87+A_Index,"Char"), MD5 .= SubStr(Hex,N>>4,1) . SubStr(Hex,N&15,1)
+Return MD5
 }
 
 ```
@@ -249,80 +249,80 @@ Return MD5
 Source: [http://www.autohotkey.com/forum/topic17853.html AutoHotkey forum] by Laszlo
 
 ```autohotkey
-; GLOBAL CONSTANTS r[64], k[64] 
-r =  12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22 
-, 5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20 
-, 4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23 
-, 6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21 
-StringSplit r, r, `, 
-r0 := 7 
-Loop 64 
-   i := A_Index-1, k%i% := floor(abs(sin(A_Index)) * 2**32) 
+; GLOBAL CONSTANTS r[64], k[64]
+r =  12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22,  7, 12, 17, 22
+, 5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20,  5,  9, 14, 20
+, 4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23,  4, 11, 16, 23
+, 6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21,  6, 10, 15, 21
+StringSplit r, r, `,
+r0 := 7
+Loop 64
+   i := A_Index-1, k%i% := floor(abs(sin(A_Index)) * 2**32)
 
-; TEST CASES 
-MsgBox % MD5(x:="", 0) ; d41d8cd98f00b204e9800998ecf8427e 
-MsgBox % MD5(x:="a", StrLen(x)) ; 0cc175b9c0f1b6a831c399e269772661 
-MsgBox % MD5(x:="abc", StrLen(x)) ; 900150983cd24fb0d6963f7d28e17f72 
-MsgBox % MD5(x:="message digest", StrLen(x)) ; f96b697d7cb7938d525a2f31aaf161d0 
+; TEST CASES
+MsgBox % MD5(x:="", 0) ; d41d8cd98f00b204e9800998ecf8427e
+MsgBox % MD5(x:="a", StrLen(x)) ; 0cc175b9c0f1b6a831c399e269772661
+MsgBox % MD5(x:="abc", StrLen(x)) ; 900150983cd24fb0d6963f7d28e17f72
+MsgBox % MD5(x:="message digest", StrLen(x)) ; f96b697d7cb7938d525a2f31aaf161d0
 MsgBox % MD5(x:="abcdefghijklmnopqrstuvwxyz", StrLen(x))
-; c3fcd3d76192e4007dfb496cca67e13b 
+; c3fcd3d76192e4007dfb496cca67e13b
 MsgBox % MD5(x:="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", StrLen(x))
-; d174ab98d277d9f5a5611c2c9f419d9f 
+; d174ab98d277d9f5a5611c2c9f419d9f
 MsgBox % MD5(x:="12345678901234567890123456789012345678901234567890123456789012345678901234567890", StrLen(x))
-; 57edf4a22be3c955ac49da2e2107b67a 
+; 57edf4a22be3c955ac49da2e2107b67a
 MsgBox % MD5(x:="The quick brown fox jumps over the lazy dog", StrLen(x))
-; 9e107d9d372bb6826bd81d3542a419d6 
+; 9e107d9d372bb6826bd81d3542a419d6
 MsgBox % MD5(x:="The quick brown fox jumps over the lazy cog", StrLen(x))
-; 1055d3e698d289f2af8663725127bd4b 
+; 1055d3e698d289f2af8663725127bd4b
 
-MD5(ByRef Buf, L) { ; Binary buffer, Length in bytes 
-   Static P, Q, N, i, a,b,c,d, t, h0,h1,h2,h3, y = 0xFFFFFFFF 
+MD5(ByRef Buf, L) { ; Binary buffer, Length in bytes
+   Static P, Q, N, i, a,b,c,d, t, h0,h1,h2,h3, y = 0xFFFFFFFF
 
-   h0 := 0x67452301, h1 := 0xEFCDAB89, h2 := 0x98BADCFE, h3 := 0x10325476 
+   h0 := 0x67452301, h1 := 0xEFCDAB89, h2 := 0x98BADCFE, h3 := 0x10325476
 
-   N := ceil((L+9)/64)*64 ; padded length (100..separator, 8B length) 
-   VarSetCapacity(Q,N,0)  ; room for padded data 
-   P := &Q ; pointer 
-   DllCall("RtlMoveMemory", UInt,P, UInt,&Buf, UInt,L) ; copy data 
-   DllCall("RtlFillMemory", UInt,P+L, UInt,1, UInt,0x80) ; pad separator 
-   DllCall("ntdll.dll\RtlFillMemoryUlong",UInt,P+N-8,UInt,4,UInt,8*L) ; at end: length in bits < 512 MB 
+   N := ceil((L+9)/64)*64 ; padded length (100..separator, 8B length)
+   VarSetCapacity(Q,N,0)  ; room for padded data
+   P := &Q ; pointer
+   DllCall("RtlMoveMemory", UInt,P, UInt,&Buf, UInt,L) ; copy data
+   DllCall("RtlFillMemory", UInt,P+L, UInt,1, UInt,0x80) ; pad separator
+   DllCall("ntdll.dll\RtlFillMemoryUlong",UInt,P+N-8,UInt,4,UInt,8*L) ; at end: length in bits < 512 MB
 
-   Loop % N//64 { 
-      Loop 16 
-         i := A_Index-1, w%i% := *P | *(P+1)<<8 | *(P+2)<<16 | *(P+3)<<24, P += 4 
+   Loop % N//64 {
+      Loop 16
+         i := A_Index-1, w%i% := *P | *(P+1)<<8 | *(P+2)<<16 | *(P+3)<<24, P += 4
 
-      a := h0, b := h1, c := h2, d := h3 
+      a := h0, b := h1, c := h2, d := h3
 
-      Loop 64 { 
-         i := A_Index-1 
-         If i < 16 
-             f := (b & c) | (~b & d), g := i 
-         Else If i < 32 
-             f := (d & b) | (~d & c), g := 5*i+1 & 15 
-         Else If i < 48 
-             f := b ^ c ^ d,          g := 3*i+5 & 15 
-         Else 
-             f := c ^ (b | ~d),       g :=  7*i  & 15 
+      Loop 64 {
+         i := A_Index-1
+         If i < 16
+             f := (b & c) | (~b & d), g := i
+         Else If i < 32
+             f := (d & b) | (~d & c), g := 5*i+1 & 15
+         Else If i < 48
+             f := b ^ c ^ d,          g := 3*i+5 & 15
+         Else
+             f := c ^ (b | ~d),       g :=  7*i  & 15
 
-         t := d, d := c, c := b 
-         b += rotate(a + f + k%i% + w%g%, r%i%) ; reduced to 32 bits later 
-         a := t 
-      } 
+         t := d, d := c, c := b
+         b += rotate(a + f + k%i% + w%g%, r%i%) ; reduced to 32 bits later
+         a := t
+      }
 
-      h0 := h0+a & y, h1 := h1+b & y, h2 := h2+c & y, h3 := h3+d & y 
-   } 
-   Return hex(h0) . hex(h1) . hex(h2) . hex(h3) 
-} 
+      h0 := h0+a & y, h1 := h1+b & y, h2 := h2+c & y, h3 := h3+d & y
+   }
+   Return hex(h0) . hex(h1) . hex(h2) . hex(h3)
+}
 
-rotate(a,b) { ; 32-bit rotate a to left by b bits, bit32..63 garbage 
-   Return a << b | (a & 0xFFFFFFFF) >> (32-b) 
-} 
+rotate(a,b) { ; 32-bit rotate a to left by b bits, bit32..63 garbage
+   Return a << b | (a & 0xFFFFFFFF) >> (32-b)
+}
 
-hex(x) {      ; 32-bit little endian hex digits 
-   SetFormat Integer, HEX 
-   x += 0x100000000, x := SubStr(x,-1) . SubStr(x,8,2) . SubStr(x,6,2) . SubStr(x,4,2) 
-   SetFormat Integer, DECIMAL 
-   Return x 
+hex(x) {      ; 32-bit little endian hex digits
+   SetFormat Integer, HEX
+   x += 0x100000000, x := SubStr(x,-1) . SubStr(x,8,2) . SubStr(x,6,2) . SubStr(x,4,2)
+   SetFormat Integer, DECIMAL
+   Return x
 }
 ```
 
@@ -340,7 +340,7 @@ PRAGMA INCLUDE <stdio.h>
 PRAGMA INCLUDE <stdlib.h>
 PRAGMA INCLUDE <string.h>
 PRAGMA INCLUDE <openssl/md5.h>
-PRAGMA LDFLAGS -lcrypto -lm -w 
+PRAGMA LDFLAGS -lcrypto -lm -w
 
 DECLARE result TYPE unsigned char *
 DECLARE string TYPE const char *
@@ -349,7 +349,7 @@ string = "Rosetta code"
 strlenght = LEN(string)
 
 result = MD5( string, strlenght , 0)
- 
+
 FOR  i = 0 TO MD5_DIGEST_LENGTH-1
     PRINT   result[i] FORMAT "%02x"
 NEXT
@@ -369,7 +369,7 @@ See [[MD5/Implementation]] for a native version.
       PRINT FN_MD5("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")
       PRINT FN_MD5(STRING$(8,"1234567890"))
       END
-      
+
       DEF FN_MD5(message$)
       LOCAL I%, MD5$, MD5_CTX{}
       DIM MD5_CTX{i%(1), buf%(3), in&(63), digest&(15)}
@@ -388,8 +388,8 @@ See [[MD5/Implementation]] for a native version.
 
 {{libheader|OpenSSL}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <openssl/md5.h>
@@ -412,11 +412,11 @@ int main()
 }
 ```
 
-Implementation of md5 
+Implementation of md5
 (Needs review - differences observed for the last 8 characters when compared with openssl implementation)
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -462,7 +462,7 @@ unsigned rol( unsigned v, short amt )
     return ((v>>(32-amt)) & msk1) | ((v<<amt) & ~msk1);
 }
 
-unsigned *md5( const char *msg, int mlen) 
+unsigned *md5( const char *msg, int mlen)
 {
     static Digest h0 = { 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476 };
 //    static Digest h0 = { 0x01234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210 };
@@ -499,7 +499,7 @@ unsigned *md5( const char *msg, int mlen)
         grps  = 1 + (mlen+8)/64;
         msg2 = malloc( 64*grps);
         memcpy( msg2, msg, mlen);
-        msg2[mlen] = (unsigned char)0x80;  
+        msg2[mlen] = (unsigned char)0x80;
         q = mlen + 1;
         while (q < 64*grps){ msg2[q] = 0; q++ ; }
         {
@@ -540,7 +540,7 @@ unsigned *md5( const char *msg, int mlen)
         free( msg2 );
 
     return h;
-}    
+}
 
 int main( int argc, char *argv[] )
 {
@@ -566,8 +566,8 @@ int main( int argc, char *argv[] )
 
 {{libheader|Poco Crypto}}
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 #include "Poco/MD5Engine.h"
 #include "Poco/DigestStream.h"
@@ -583,7 +583,7 @@ int main( ) {
    outstr << myphrase ;
    outstr.flush( ) ; //to pass everything to the digest engine
    const DigestEngine::Digest& digest = md5.digest( ) ;
-   std::cout << myphrase << " as a MD5 digest :\n" << DigestEngine::digestToHex( digest ) 
+   std::cout << myphrase << " as a MD5 digest :\n" << DigestEngine::digestToHex( digest )
       << " !" << std::endl ;
    return 0 ;
 }
@@ -642,9 +642,9 @@ USER>zzdump hash
 (ql:quickload 'ironclad)
 (defun md5 (str)
   (ironclad:byte-array-to-hex-string
-    (ironclad:digest-sequence :md5 
+    (ironclad:digest-sequence :md5
                               (ironclad:ascii-string-to-byte-array str))))
-(defvar *tests* '("" 
+(defvar *tests* '(""
                   "a"
                   "abc"
                   "message digest"
@@ -770,7 +770,7 @@ begin
 end.
 ```
 
-'''Output:''' 
+'''Output:'''
 
 ```txt
 
@@ -896,20 +896,20 @@ Using builtin library:
 include ffl/md5.fs
 
 \ Create a MD5 variable md1 in the dictionary
- 
+
 md5-create md1
- 
+
 \ Update the variable with data
- 
+
 s" The quick brown fox jumps over the lazy dog" md1 md5-update
- 
+
 \ Finish the MD5 calculation resulting in four unsigned 32 bit words
 \ on the stack representing the hash value
- 
+
 md1 md5-finish
- 
+
 \ Convert the hash value to a hex string and print it
- 
+
 md5+to-string type cr
 ```
 
@@ -939,31 +939,31 @@ contains
         integer(BYTE) :: buffer(BUFLEN)
         integer(BYTE) :: hash(MD5LEN)
         integer(UINT64) :: filesize
- 
+
         dwStatus = 0
         filesize = 0
         hFile = CreateFile(trim(name) // char(0), GENERIC_READ, FILE_SHARE_READ, NULL, &
                            OPEN_EXISTING, FILE_FLAG_SEQUENTIAL_SCAN, NULL)
- 
+
         if (hFile == INVALID_HANDLE_VALUE) then
             dwStatus = GetLastError()
             print *, "CreateFile failed."
             return
         end if
- 
+
         if (CryptAcquireContext(hProv, NULL, NULL, PROV_RSA_FULL, &
                                 CRYPT_VERIFYCONTEXT) == FALSE) then
             dwStatus = GetLastError()
             print *, "CryptAcquireContext failed."
             goto 3
         end if
- 
+
         if (CryptCreateHash(hProv, CALG_MD5, 0_ULONG_PTR, 0_DWORD, hHash) == FALSE) then
             dwStatus = GetLastError()
             print *, "CryptCreateHash failed."
             go to 2
         end if
- 
+
         do
             status = ReadFile(hFile, loc(buffer), BUFLEN, nRead, NULL)
             if (status == FALSE .or. nRead == 0) exit
@@ -974,25 +974,25 @@ contains
                 go to 1
             end if
         end do
- 
+
         if (status == FALSE) then
             dwStatus = GetLastError()
             print *, "ReadFile failed."
             go to 1
         end if
- 
+
         nRead = MD5LEN
         if (CryptGetHashParam(hHash, HP_HASHVAL, hash, nRead, 0) == FALSE) then
             dwStatus = GetLastError()
             print *, "CryptGetHashParam failed.", status, nRead, dwStatus
         end if
- 
+
       1 status = CryptDestroyHash(hHash)
       2 status = CryptReleaseContext(hProv, 0)
       3 status = CloseHandle(hFile)
     end subroutine
 end module
- 
+
 program md5
     use md5_mod
     implicit none
@@ -1001,7 +1001,7 @@ program md5
     integer(DWORD) :: dwStatus
     integer(BYTE) :: hash(MD5LEN)
     integer(UINT64) :: filesize
- 
+
     n = command_argument_count()
     do i = 1, n
         call get_command_argument(i, length=m)
@@ -1262,7 +1262,7 @@ The following program demonstrates the MD5 using a native Icon/Unicon implementa
 procedure main()  # validate against the RFC test strings and more
    testMD5("The quick brown fox jumps over the lazy dog", 16r9e107d9d372bb6826bd81d3542a419d6)
    testMD5("The quick brown fox jumps over the lazy dog.", 16re4d909c290d0fb1ca068ffaddf22cbd0)
-   testMD5("", 16rd41d8cd98f00b204e9800998ecf8427e)    
+   testMD5("", 16rd41d8cd98f00b204e9800998ecf8427e)
 end
 
 procedure testMD5(s,rh)  # compute the MD5 hash and compare it to reference value
@@ -1384,7 +1384,7 @@ MD5('123456789012345678901234567890123456789012345678901234567890123456789012345
 prompt$ jsish md5.jsi
 bf0ac9c7e94e9d50c18f4ff592643546
 
-prompt$ jsish --U md5.jsi               # display unit test echos 
+prompt$ jsish --U md5.jsi               # display unit test echos
 bf0ac9c7e94e9d50c18f4ff592643546
 MD5('') ==> d41d8cd98f00b204e9800998ecf8427e
 MD5('a') ==> 0cc175b9c0f1b6a831c399e269772661
@@ -1471,7 +1471,7 @@ fun main(args: Array<String>) {
     val md = MessageDigest.getInstance("MD5")
     val digest = md.digest(bytes)
     for (byte in digest) print("%02x".format(byte))
-    println() 
+    println()
 }
 ```
 
@@ -2003,7 +2003,7 @@ command md5testsuite
           is "d174ab98d277d9f5a5611c2c9f419d9f" into md5["abcupper"]
     put md5sum("12345678901234567890123456789012345678901234567890123456789012345678901234567890")\
     is "57edf4a22be3c955ac49da2e2107b67a" into md5["123"]
-    
+
     repeat for each line n in the keys of md5
         if md5[n] is not true then
             put "err" & tab & n & return after results
@@ -2296,12 +2296,12 @@ module Md5
         BitConverter.ToString
             (MD5.Create().ComputeHash(Encoding.Default.GetBytes(input))).Replace("-", "").ToLower()
     }
-    
+
     IsValidMD5(text : string, hash : string) : bool
     {
         HashMD5(text) == hash.ToLower()
     }
-    
+
     Main() : void
     {
         def examples = ["The quick brown fox jumped over the lazy dog's back", "", "a", "abc", "message digest",
@@ -2387,7 +2387,7 @@ method getDigest(messageText = Rexx, algorithm = Rexx 'MD5', encoding = Rexx 'UT
   catch ex = Exception
     ex.printStackTrace
   end
-  
+
   return digestSum
 
 ```
@@ -2475,7 +2475,7 @@ BEGIN
   str := "The quick brown fox jumped over the lazy dog's back";
   h.Update(str,0,Strings.Length(str));
   h.GetHash(str,0);
-  Out.String("MD5: ");Utils.PrintHex(str,0,h.size);Out.Ln  
+  Out.String("MD5: ");Utils.PrintHex(str,0,h.size);Out.Ln
 END MD5.
 
 ```
@@ -2484,7 +2484,7 @@ END MD5.
 
 ```txt
 
-MD5: 
+MD5:
    E38CA1D9   20C4B8B8   D3946B2C   72F01680
 
 ```
@@ -2538,7 +2538,8 @@ if (CC_MD5([data bytes], [data length], digest)) {
 
 {{works with|Mac OS X}} (need to include "libcrypto.dylib" framework)
 
-```objc>#include <openssl/md5.h
+```objc
+#include <openssl/md5.h>
 
 
 NSString *myString = @"The quick brown fox jumped over the lazy dog's back";
@@ -2583,7 +2584,7 @@ For an implementation of MD5, see [[{{FULLPAGENAME}}#MATLAB|MATLAB example]].
 The MD5-DIGEST function is readily available, the output is passed thru HEX-ENCODE to convert the raw result to a hexadecimal string, this then needs to be passed thru STRING for display purposes.
 
 ```OpenEdge/Progress
-MESSAGE 
+MESSAGE
    1 STRING( HEX-ENCODE( MD5-DIGEST( "" ) ) ) SKIP
    2 STRING( HEX-ENCODE( MD5-DIGEST( "a" ) ) ) SKIP
    3 STRING( HEX-ENCODE( MD5-DIGEST( "abc" ) ) ) SKIP
@@ -2602,15 +2603,15 @@ Output:
 ---------------------------
 Message
 ---------------------------
-1 d41d8cd98f00b204e9800998ecf8427e 
-2 0cc175b9c0f1b6a831c399e269772661 
-3 900150983cd24fb0d6963f7d28e17f72 
-4 f96b697d7cb7938d525a2f31aaf161d0 
-5 c3fcd3d76192e4007dfb496cca67e13b 
-6 d174ab98d277d9f5a5611c2c9f419d9f 
+1 d41d8cd98f00b204e9800998ecf8427e
+2 0cc175b9c0f1b6a831c399e269772661
+3 900150983cd24fb0d6963f7d28e17f72
+4 f96b697d7cb7938d525a2f31aaf161d0
+5 c3fcd3d76192e4007dfb496cca67e13b
+6 d174ab98d277d9f5a5611c2c9f419d9f
 7 57edf4a22be3c955ac49da2e2107b67a
 ---------------------------
-OK   
+OK
 ---------------------------
 
 ```
@@ -2660,7 +2661,7 @@ Load plugin from your home directory into PARI:
 ```parigp
 install("plug_md5", "s", "MD5", "~/libmd5.so");
 
-MD5("The quick brown fox jumped over the lazy dog's back") 
+MD5("The quick brown fox jumped over the lazy dog's back")
 ```
 
 
@@ -2834,7 +2835,7 @@ Using builtin libraries:
   (b"12345678901234567890123456789012345678901234567890123456789012345678901234567890", '57edf4a22be3c955ac49da2e2107b67a') )
 >>> for text, golden in tests: assert hashlib.md5(text).hexdigest() == golden
 
->>> 
+>>>
 ```
 
 
@@ -2862,7 +2863,7 @@ e38ca1d920c4b8b8d3946b2c72f01680
 
 ```R
 library(digest)
-hexdigest <- digest("The quick brown fox jumped over the lazy dog's back", 
+hexdigest <- digest("The quick brown fox jumped over the lazy dog's back",
                     algo="md5", serialize=FALSE)
 ```
 
@@ -3135,7 +3136,7 @@ dcl-proc Main;
     bytesProvided int(10) INZ(0);  // Leave at zero
     bytesAvailable int(10);
   end-ds;
-  
+
   dow inputDataLen = 0;
     DSPLY 'Input: ' '' inputData;
     inputData = %trim(inputData);
@@ -3146,7 +3147,7 @@ dcl-proc Main;
       DSPLY 'Input must not be blank';
     endif;
   enddo;
-  
+
   // Convert from EBCDIC to ASCII
   QDCXLATE(inputDataLen : inputData : 'QTCPASC');
   algorithmDscr.hashAlgorithm = 1;   // MD5
@@ -3174,7 +3175,7 @@ dcl-proc CVTHC;
     // IBM i is big-endian
     charField char(1) OVERLAY(numField : 2);
   end-ds;
-  
+
   for i = 1 to targetLen;
     if lowNibble;
       dataStruct.charField = %BitAnd(%subst(srcBits : inputOffset : 1) : X'0F');

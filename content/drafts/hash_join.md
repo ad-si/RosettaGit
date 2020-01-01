@@ -40,10 +40,10 @@ In pseudo-code, the algorithm could be expressed as follows:
  '''let''' ''j<sub>B</sub>'' = the join column ID of table ''B''
  '''let''' ''M<sub>B</sub>'' = a multimap for mapping from single values to multiple rows of table ''B'' (starts out empty)
  '''let''' ''C'' = the output table (starts out empty)
- 
+
  '''for each''' row ''b'' '''in''' table ''B''''':'''
     '''place''' ''b'' '''in''' multimap ''M<sub>B</sub>'' under key ''b''(''j<sub>B</sub>'')
- 
+
  '''for each''' row ''a'' '''in''' table ''A''''':'''
     '''for each''' row ''b'' '''in''' multimap ''M<sub>B</sub>'' under key ''a''(''j<sub>A</sub>'')''':'''
        '''let''' ''c'' = the concatenation of row ''a'' and row ''b''
@@ -60,7 +60,7 @@ In pseudo-code, the algorithm could be expressed as follows:
 
 {| style="border:none; border-collapse:collapse;"
 |-
-| style="border:none" | ''A'' = 
+| style="border:none" | ''A'' =
 | style="border:none" |
 
 {| class="wikitable"
@@ -79,7 +79,7 @@ In pseudo-code, the algorithm could be expressed as follows:
 |}
 
 | style="border:none; padding-left:1.5em;" rowspan="2" |
-| style="border:none" | ''B'' = 
+| style="border:none" | ''B'' =
 | style="border:none" |
 
 {| class="wikitable"
@@ -140,7 +140,7 @@ If you're using numerically indexed arrays to represent table rows (rather than 
 
 {{Trans|JavaScript}}
 
-Native AppleScript records lack introspection, but from Yosemite onwards we can read and write them a little more flexibly through the Foundation classes. 
+Native AppleScript records lack introspection, but from Yosemite onwards we can read and write them a little more flexibly through the Foundation classes.
 The vertical bars distinguish AppleScript reserved words ('''name''' and '''character''' here) from field name literal strings.
 
 
@@ -152,11 +152,11 @@ use framework "Foundation" -- Yosemite onwards, for record-handling functions
 -- hashJoin :: [Record] -> [Record] -> String -> [Record]
 on hashJoin(tblA, tblB, strJoin)
     set {jA, jB} to splitOn("=", strJoin)
-    
+
     script instanceOfjB
         on |λ|(a, x)
             set strID to keyValue(x, jB)
-            
+
             set maybeInstances to keyValue(a, strID)
             if maybeInstances is not missing value then
                 updatedRecord(a, strID, maybeInstances & {x})
@@ -165,9 +165,9 @@ on hashJoin(tblA, tblB, strJoin)
             end if
         end |λ|
     end script
-    
+
     set M to foldl(instanceOfjB, {name:"multiMap"}, tblB)
-    
+
     script joins
         on |λ|(a, x)
             set matches to keyValue(M, keyValue(x, jA))
@@ -177,14 +177,14 @@ on hashJoin(tblA, tblB, strJoin)
                         x & row
                     end |λ|
                 end script
-                
+
                 a & map(concat, matches)
             else
                 a
             end if
         end |λ|
     end script
-    
+
     foldl(joins, {}, tblA)
 end hashJoin
 
@@ -196,7 +196,7 @@ on run
         {age:28, |name|:"Glory"}, ¬
         {age:18, |name|:"Popeye"}, ¬
         {age:28, |name|:"Alan"}]
-    
+
     set lstB to [¬
         {|character|:"Jonah", nemesis:"Whales"}, ¬
         {|character|:"Jonah", nemesis:"Spiders"}, ¬
@@ -204,7 +204,7 @@ on run
         {|character|:"Alan", nemesis:"Zombies"}, ¬
         {|character|:"Glory", nemesis:"Buffy"}, ¬
         {|character|:"Bob", nemesis:"foo"}]
-    
+
     hashJoin(lstA, lstB, "name=character")
 end run
 
@@ -258,7 +258,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -282,12 +282,12 @@ end splitOn
 {{Out}}
 
 ```txt
-{{age:27, |name|:"Jonah", |character|:"Jonah", nemesis:"Whales"}, 
-{age:27, |name|:"Jonah", |character|:"Jonah", nemesis:"Spiders"}, 
-{age:18, |name|:"Alan", |character|:"Alan", nemesis:"Ghosts"}, 
-{age:18, |name|:"Alan", |character|:"Alan", nemesis:"Zombies"}, 
-{age:28, |name|:"Glory", |character|:"Glory", nemesis:"Buffy"}, 
-{age:28, |name|:"Alan", |character|:"Alan", nemesis:"Ghosts"}, 
+{{age:27, |name|:"Jonah", |character|:"Jonah", nemesis:"Whales"},
+{age:27, |name|:"Jonah", |character|:"Jonah", nemesis:"Spiders"},
+{age:18, |name|:"Alan", |character|:"Alan", nemesis:"Ghosts"},
+{age:18, |name|:"Alan", |character|:"Alan", nemesis:"Zombies"},
+{age:28, |name|:"Glory", |character|:"Glory", nemesis:"Buffy"},
+{age:28, |name|:"Alan", |character|:"Alan", nemesis:"Ghosts"},
 {age:28, |name|:"Alan", |character|:"Alan", nemesis:"Zombies"}}
 ```
 
@@ -486,8 +486,8 @@ Output:
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <vector>
 #include <unordered_map>
@@ -514,7 +514,7 @@ tab_t tab2 {
 std::ostream& operator<<(std::ostream& o, const tab_t& t) {
   for(size_t i = 0; i < t.size(); ++i) {
     o << i << ":";
-    for(const auto& e : t[i]) 
+    for(const auto& e : t[i])
       o << '\t' << e;
     o << std::endl;
   }
@@ -558,21 +558,21 @@ int main(int argc, char const *argv[])
 {{out}}
 
 ```txt
-Table A: 
+Table A:
 0:  27  Jonah
 1:  18  Alan
 2:  28  Glory
 3:  18  Popeye
 4:  28  Alan
 
-Table B: 
+Table B:
 0:  Jonah Whales
 1:  Jonah Spiders
 2:  Alan  Ghosts
 3:  Alan  Zombies
 4:  Glory Buffy
 
-Joined tables: 
+Joined tables:
 0:  27  Jonah Jonah Whales
 1:  27  Jonah Jonah Spiders
 2:  28  Alan  Alan  Ghosts
@@ -660,7 +660,7 @@ namespace HashJoin
 
         private static List<AgeNameNemesis> ExecuteHashJoin(DataContext data)
         {
-            return (data.AgeName.Join(data.NameNemesis, 
+            return (data.AgeName.Join(data.NameNemesis,
                 ageName => ageName.Name, nameNemesis => nameNemesis.Name,
                 (ageName, nameNemesis) => new AgeNameNemesis(ageName.Age, ageName.Name, nameNemesis.Nemesis)))
                 .ToList();
@@ -671,10 +671,10 @@ namespace HashJoin
             var context = new DataContext();
 
             context.AgeName.AddRange(new [] {
-                    new AgeName(27, "Jonah"), 
-                    new AgeName(18, "Alan"), 
-                    new AgeName(28, "Glory"), 
-                    new AgeName(18, "Popeye"), 
+                    new AgeName(27, "Jonah"),
+                    new AgeName(18, "Alan"),
+                    new AgeName(28, "Glory"),
+                    new AgeName(18, "Popeye"),
                     new AgeName(28, "Alan")
                 });
 
@@ -767,15 +767,15 @@ Age: 28, Name: Alan, Nemesis: Zombies
 ;; Hash phase
 (defparameter *hash-table* (make-hash-table :test #'equal))
 
-(loop for (i r) in *table-A* 
+(loop for (i r) in *table-A*
    for value = (gethash r *hash-table* (list nil))  do
    (setf (gethash r *hash-table*) value)
    (push (list i r) (first value)))
 
-;; Join phase     
+;; Join phase
 (loop for (i r) in *table-B* do
      (let ((val (car (gethash i *hash-table*))))
-       (loop for (a b) in val do 
+       (loop for (a b) in val do
 	    (format t "{~a ~a} {~a ~a}~%"  a b i r))))
 ```
 
@@ -907,8 +907,8 @@ Since this is a real, professional application, we build the hash tables in perm
 (define (table-hash table source key-proc )
 (local-make-store table)
 (for ((r source))
-	(local-put-value 
-		(key-proc r) 
+	(local-put-value
+		(key-proc r)
 		(append (list r) (local-get-value (key-proc r) table)) table)))
 
 ;; build the two tables
@@ -920,7 +920,7 @@ Since this is a real, professional application, we build the hash tables in perm
 (table-hash 'NEMESIS nemesis key-nemesis-name)
 
 ;; join
-(for* ((k (local-keys 'AGES)) 
+(for* ((k (local-keys 'AGES))
 	  (a (local-get-value k 'AGES))
 	  (n (local-get-value k 'NEMESIS)))
 	  (writeln a n))
@@ -931,13 +931,13 @@ Since this is a real, professional application, we build the hash tables in perm
 
 ```lisp
 
-(28 "Alan")     ("Alan" "Zombies")    
-(28 "Alan")     ("Alan" "Ghosts")    
-(18 "Alan")     ("Alan" "Zombies")    
-(18 "Alan")     ("Alan" "Ghosts")    
-(28 "Glory")     ("Glory" "Buffy")    
-(27 "Jonah")     ("Jonah" "Spiders")    
-(27 "Jonah")     ("Jonah" "Whales")  
+(28 "Alan")     ("Alan" "Zombies")
+(28 "Alan")     ("Alan" "Ghosts")
+(18 "Alan")     ("Alan" "Zombies")
+(18 "Alan")     ("Alan" "Ghosts")
+(28 "Glory")     ("Glory" "Buffy")
+(27 "Jonah")     ("Jonah" "Spiders")
+(27 "Jonah")     ("Jonah" "Whales")
 
 ```
 
@@ -959,10 +959,10 @@ RightRec := RECORD
   STRING6   Name;
   STRING7   Nemesis;
 END;
-	
+
 RightFile := DATASET([{'Jonah','Whales'},{'Jonah','Spiders'},{'Alan','Ghosts'},{'Alan','Zombies'},{'Glory','Buffy'}],
                      RightRec);
-										 
+
 HashJoin := JOIN(LeftFile,RightFile,Left.Name = RIGHT.Name,HASH);
 
 HashJoin;
@@ -973,12 +973,12 @@ HashJoin;
 /*
 OUTPUT:
 Age Name  Nemesis
-18  Alan  Ghosts 
+18  Alan  Ghosts
 18  Alan  Zombies
-28  Alan  Ghosts 
+28  Alan  Ghosts
 28  Alan  Zombies
-28  Glory Buffy  
-27  Jonah Whales 
+28  Glory Buffy
+27  Jonah Whales
 27  Jonah Spiders
 */
 
@@ -1087,8 +1087,8 @@ let main argv =
                 "Alan", "Zombies";
                 "Glory", "Buffy"]
     let hash = Seq.groupBy (fun r -> snd r) table1
-    table2 
-    |> Seq.collect (fun r -> 
+    table2
+    |> Seq.collect (fun r ->
         hash
         |> Seq.collect (fun kv ->
             if (fst r) <> (fst kv) then []
@@ -1146,19 +1146,19 @@ include FMS-SILib.f
       while
         dup key@: @: key-addr @ key-len @ compare 0=
              if dup last-node ! val@: true exit then
-      repeat 
+      repeat
     then ;m
 ;class
 
-\ begin hash phase 
+\ begin hash phase
 : obj ( addr len -- obj )
   heap> string+ dup >r !: r> ;
 
-hash-table-m R   1 r init 
+hash-table-m R   1 r init
 s" Whales "   obj s" Jonah" r insert:
 s" Spiders "  obj s" Jonah" r insert:
 s" Ghosts "   obj s" Alan"  r insert:
-s" Buffy "    obj s" Glory" r insert: 
+s" Buffy "    obj s" Glory" r insert:
 s" Zombies "  obj s" Alan"  r insert:
 s" Vampires " obj s" Jonah" r insert:
 \ end hash phase
@@ -1168,7 +1168,7 @@ o{ o{ 27 'Jonah' }
    o{ 18 'Alan' }
    o{ 28 'Glory' }
    o{ 18 'Popeye' }
-   o{ 28 'Alan' } } value s  
+   o{ 28 'Alan' } } value s
 
 \ Q is a place to store the relation
 object-list2 Q
@@ -1195,13 +1195,13 @@ object-list2 Q
   while
     ( obj ) join \ pass the object to function join
   repeat ;
- 
+
 probe \ execute the probe function
 
 q p: \ print the saved relation
 
 \ free allocated memory
-s <free 
+s <free
 r free2:
 q free:
 
@@ -1212,11 +1212,11 @@ q free:
 
 ```txt
 
-o{ 
-o{ 27 'Jonah' Whales Spiders Vampires } 
-o{ 18 'Alan' Ghosts Zombies } 
-o{ 28 'Glory' Buffy } 
-o{ 28 'Alan' Ghosts Zombies } } 
+o{
+o{ 27 'Jonah' Whales Spiders Vampires }
+o{ 18 'Alan' Ghosts Zombies }
+o{ 28 'Glory' Buffy }
+o{ 28 'Alan' Ghosts Zombies } }
 
 ```
 
@@ -1377,20 +1377,20 @@ hashJoin :: (Eq k, Hashable k) =>
 hashJoin xs fx ys fy = runST $ do
   l <- newSTRef []
   ht <- H.new
-  forM_ ys $ \y -> H.insert ht (fy y) =<< 
+  forM_ ys $ \y -> H.insert ht (fy y) =<<
     (H.lookup ht (fy y) >>= \case
       Nothing -> return [y]
       Just v -> return (y:v))
   forM_ xs $ \x -> do
     H.lookup ht (fx x) >>= \case
       Nothing -> return ()
-      Just v -> modifySTRef' l ((map (x,)  v) ++) 
+      Just v -> modifySTRef' l ((map (x,)  v) ++)
   readSTRef l
 
-main = mapM_ print $ hashJoin 
+main = mapM_ print $ hashJoin
     [(1, "Jonah"), (2, "Alan"), (3, "Glory"), (4, "Popeye")]
         snd
-    [("Jonah", "Whales"), ("Jonah", "Spiders"), 
+    [("Jonah", "Whales"), ("Jonah", "Spiders"),
       ("Alan", "Ghosts"), ("Alan", "Zombies"), ("Glory", "Buffy")]
         fst
 
@@ -1426,7 +1426,7 @@ mapJoin xs fx ys fy = joined
 main = mapM_ print $ mapJoin
     [(1, "Jonah"), (2, "Alan"), (3, "Glory"), (4, "Popeye")]
         snd
-    [("Jonah", "Whales"), ("Jonah", "Spiders"), 
+    [("Jonah", "Whales"), ("Jonah", "Spiders"),
      ("Alan", "Ghosts"), ("Alan", "Zombies"), ("Glory", "Buffy")]
         fst
 
@@ -1636,7 +1636,7 @@ public class HashJoin {
     ];
 
     return hashJoin(lstA, lstB, 'name=character');
-    
+
 })();
 
 ```
@@ -1750,7 +1750,7 @@ def table2a:
    ["Holmes", "Moriarty"] ]
 ;
 
-def pp: 
+def pp:
   reduce .[] as $row (""; . + "\n" + ($row|tostring));
 
 ( hashJoin(table1; "name"; table2; "name"),
@@ -1805,7 +1805,7 @@ def hashJoinArrays(table1; index1; table2; index2):
        ($row[index2]|h) as $key
        | if $hash|has($key) then
            reduce $hash[$key][] as $r
-	     (.; 
+	     (.;
 	      . + [ $r + $row[0:index2] + $row[index2+1:] ] )
   	 else . end)
 ;
@@ -2065,12 +2065,12 @@ Module HashJoin {
       \\ so we can remove these two lines
       Def Name$, Nemesis$
       Def Long m, mc, items_size, A
- 
+
       \\ Lets make a container which use keys with hash function
-      Inventory A      
+      Inventory A
       \\ A now is a pointer to an Inventory, with Len(A)=0
       \\ Print Type$(A)="Inventory"
- 
+
       \\ empty stack. We use current stack to place data
       Flush
       \Input B
@@ -2080,7 +2080,7 @@ Module HashJoin {
       data "Alan", "Zombies"
       data "Glory", "Buffy"
       \\ Keys are unique, This is the HASH PHASE
-      While not empty { 
+      While not empty {
             Read Name$, Nemesis$
             If Exist(A, Name$) Then {
                   m=Eval(A)  ' get a pointer to array
@@ -2093,15 +2093,15 @@ Module HashJoin {
       data 28, "Glory"
       data 18, "Popeye"
       data 28, "Alan"
- 
+
       \\ This is the JOIN PHASE
- 
+
       items_size=stack.size/2
       \\ using items_size we can append data (using data) to stack
       \\ $(0) is the default handler for columns.
       \\ Letters justify to left, numbers to right.
       \\ Letters can use more columns, and maybe wrap to more lines.
- 
+
       Print $(0), "Output during join"
       Print "A.Age", "A.Name","B.Character", "B.Nemesis"
       While items_size>0 {
@@ -2118,8 +2118,8 @@ Module HashJoin {
                        Print $(1), Age, Name$,Name$, StackItem$(mc)
                         \\ so now we place at the end of current stack the same output
                        Data Age, Name$,Name$, StackItem$(mc)
-                  }   
-            } 
+                  }
+            }
             items_size--
       }
       \\ split rem line after : to use second way
@@ -2143,13 +2143,13 @@ HashJoin
 
 {{out}}
 <pre >
-27    Jonah      Jonah      Whales              
-27    Jonah      Jonah      Spiders             
-18    Alan       Alan       Ghosts              
-18    Alan       Alan       Zombies             
-28    Glory      Glory      Buffy               
-28    Alan       Alan       Ghosts              
-28    Alan       Alan       Zombies             
+27    Jonah      Jonah      Whales
+27    Jonah      Jonah      Spiders
+18    Alan       Alan       Ghosts
+18    Alan       Alan       Zombies
+28    Glory      Glory      Buffy
+28    Alan       Alan       Ghosts
+28    Alan       Alan       Zombies
 
 </pre >
 
@@ -2176,9 +2176,9 @@ Sample run:
 
 ```txt
 
-table1 = {{18, "Alan", 1}, {27, "Jonah", 2}, {28, "Alan", 3}, {28, 
+table1 = {{18, "Alan", 1}, {27, "Jonah", 2}, {28, "Alan", 3}, {28,
     "Glory", 4}};
-table2 = {{"Alan", "Ghosts"}, {"Alan", "Zombies"}, {"Glory", 
+table2 = {{"Alan", "Ghosts"}, {"Alan", "Zombies"}, {"Glory",
     "Buffy"}, {"Jonah", "Spiders"}, {"Jonah", "Whales"}};
 table1colindex = 2;
 table2colindex = 1;
@@ -2193,10 +2193,10 @@ Buffy	Glory	28	4
 Spiders	Jonah	27	2
 Whales	Jonah	27	2
 
-table1 = {{18, "Alan", 1}, {27, "Jonah", 2}, {28, "Alan", 3}, {28, 
+table1 = {{18, "Alan", 1}, {27, "Jonah", 2}, {28, "Alan", 3}, {28,
     "Glory", 4}};
-table2 = {{33, "Alan", "Ghosts"}, {34, "Alan", "Zombies"}, {35, 
-    "Glory", "Buffy"}, {36, "Jonah", "Spiders"}, {37, "Jonah", 
+table2 = {{33, "Alan", "Ghosts"}, {34, "Alan", "Zombies"}, {35,
+    "Glory", "Buffy"}, {36, "Jonah", "Spiders"}, {37, "Jonah",
     "Whales"}};
 table1colindex = 2;
 table2colindex = 2;
@@ -2211,10 +2211,10 @@ hashJoin[table1, table1colindex, table2, table2colindex] // TableForm
 36	Spiders	Jonah	27	2
 37	Whales	Jonah	27	2
 
-table1 = {{19, "Zorro", 8}, {17, "Zorro", 7}, {17, "Zorro", 9}, {18, 
+table1 = {{19, "Zorro", 8}, {17, "Zorro", 7}, {17, "Zorro", 9}, {18,
     "Alan", 1}, {27, "Jonah", 2}, {28, "Alan", 3}, {28, "Glory", 4}};
-table2 = {{33, "Alan", "Ghosts"}, {34, "Alan", "Zombies"}, {35, 
-    "Glory", "Buffy"}, {36, "Jonah", "Spiders"}, {37, "Jonah", 
+table2 = {{33, "Alan", "Ghosts"}, {34, "Alan", "Zombies"}, {35,
+    "Glory", "Buffy"}, {36, "Jonah", "Spiders"}, {37, "Jonah",
     "Whales"}, {39, "Zorro", "Fox"}};
 table1colindex = 2;
 table2colindex = 2;
@@ -2241,7 +2241,7 @@ Works with oo2c version 2
 ```oberon2
 
 MODULE HashJoin;
-IMPORT 
+IMPORT
   ADT:Dictionary,
   ADT:LinkedList,
   NPCT:Tools,
@@ -2253,7 +2253,7 @@ TYPE
   Age= Boxed.LongInt;
   Name= STRING;
   Nemesis= STRING;
-  
+
   (* Generic Tuple *)
   Tuple(E1: Object.Object; E2: Object.Object) = POINTER TO TupleDesc(E1,E2);
   TupleDesc(E1: Object.Object; E2: Object.Object) = RECORD
@@ -2271,13 +2271,13 @@ VAR
   tableB: RelationB;
   dict: Dictionary.Dictionary(Name,LinkedList.LinkedList(Age));
   ll: LinkedList.LinkedList(Age);
-  
+
   PROCEDURE (t: Tuple(E1, E2)) INIT*(e1: E1; e2: E2);
   BEGIN
     t._1 := e1;
     t._2 := e2;
   END INIT;
-  
+
   PROCEDURE DoHashPhase(t: RelationA;VAR dict: Dictionary.Dictionary(Name,LinkedList.LinkedList(Age)));
   VAR
     i: INTEGER;
@@ -2295,7 +2295,7 @@ VAR
       INC(i)
     END
   END DoHashPhase;
-  
+
   PROCEDURE DoJoinPhase(t: RelationB; dict: Dictionary.Dictionary(Name,LinkedList.LinkedList(Age)));
   VAR
     i: INTEGER;
@@ -2308,7 +2308,7 @@ VAR
     WHILE iterll.HasNext() DO
       age := iterll.Next();
       Out.LongInt(age.value,4);
-      Out.Object(Tools.AdjustRight(t[i]._1,10));      
+      Out.Object(Tools.AdjustRight(t[i]._1,10));
       Out.Object(Tools.AdjustRight(t[i]._2,10));Out.Ln
     END
   END
@@ -2321,16 +2321,16 @@ BEGIN
   tableA[2] := NEW(Tuple(Age,Name),NEW(Age,28),"Glory");
   tableA[3] := NEW(Tuple(Age,Name),NEW(Age,18),"Popeye");
   tableA[4] := NEW(Tuple(Age,Name),NEW(Age,28),"Alan");
-  
+
   (* tableB initialization *)
   tableB[0] := NEW(Tuple(Name,Nemesis),"Jonah","Whales");
   tableB[1] := NEW(Tuple(Name,Nemesis),"Jonah","Spiders");
   tableB[2] := NEW(Tuple(Name,Nemesis),"Alan","Ghost");
   tableB[3] := NEW(Tuple(Name,Nemesis),"Alan","Zombies");
-  tableB[4] := NEW(Tuple(Name,Nemesis),"Glory","Buffy");  
-  
+  tableB[4] := NEW(Tuple(Name,Nemesis),"Glory","Buffy");
+
   dict := NEW(Dictionary.Dictionary(Name,LinkedList.LinkedList(Age)));
-  
+
   DoHashPhase(tableA,dict);
   DoJoinPhase(tableB,dict);
 END HashJoin.
@@ -2455,7 +2455,7 @@ The <tt>.classify</tt> method returns a multimap represented as a <tt>Hash</tt> 
 ```perl6
 sub hash-join(@a, &a, @b, &b) {
     my %hash := @b.classify(&b);
-    
+
     @a.map: -> $a {
         |(%hash{a $a} // next).map: -> $b { [$a, $b] }
     }
@@ -2791,12 +2791,12 @@ pdf or dvi output:
 
 
 ```Prolog
-% Name/Age	
-person_age('Jonah',  27).	
-person_age('Alan',   18).	
-person_age('Glory',  28).	
-person_age('Popeye', 18).	
-person_age('Alan',   28).	
+% Name/Age
+person_age('Jonah',  27).
+person_age('Alan',   18).
+person_age('Glory',  28).
+person_age('Popeye', 18).
+person_age('Alan',   28).
 
 % Character/Nemesis
 character_nemisis('Jonah', 'Whales').
@@ -2806,9 +2806,9 @@ character_nemisis('Alan',  'Zombies').
 character_nemisis('Glory', 'Buffy').
 
 join_and_print :-
-	format('Age\tName\tCharacter\tNemisis\n\n'),		
+	format('Age\tName\tCharacter\tNemisis\n\n'),
 	forall(
-		(person_age(Person, Age), character_nemisis(Person, Nemesis)),	
+		(person_age(Person, Age), character_nemisis(Person, Nemesis)),
 		format('~w\t~w\t~w\t\t~w\n', [Age, Person, Person, Nemesis])
 	).
 ```
@@ -2839,7 +2839,7 @@ true.
 ```PureBasic
 Structure tabA
   age.i
-  name.s  
+  name.s
 EndStructure
 
 Structure tabB
@@ -2851,7 +2851,7 @@ NewList listA.tabA()
 NewList listB.tabB()
 
 Macro SetListA(c_age, c_name)
-  AddElement(listA()) : listA()\age = c_age : listA()\name = c_name  
+  AddElement(listA()) : listA()\age = c_age : listA()\name = c_name
 EndMacro
 
 Macro SetListB(c_char, c_nem)
@@ -2986,7 +2986,7 @@ for row in hashJoin(table1, 1, table2, 0):
     (match-define (A age name) a)
     (hash-update rv name (λ (ages) (append ages (list age))) null)))
 
-;; Join phase     
+;; Join phase
 (for*/list
     ((b (in-list Nemeses-table))
      (key (in-value (B-name b)))
@@ -3078,8 +3078,8 @@ next
 for b in table2
 	h = hashing(b[1])
 	for sh in htable
-		if sh[1] = h 
-			 add(qtable, sh[2] + b[2])  
+		if sh[1] = h
+			 add(qtable, sh[2] + b[2])
 		ok
 	next
 next
@@ -3096,16 +3096,16 @@ Age	| Name		|| Name		| Nemesis
 ---------------------------------------------------
 "
 for l in lst
-	see string(l[1]) + char(9) + "| " + l[2] + copy(char(9),2) + "|| " + l[2] + "    " + char(9) +  "| " + l[3] + nl 
-next 
+	see string(l[1]) + char(9) + "| " + l[2] + copy(char(9),2) + "|| " + l[2] + "    " + char(9) +  "| " + l[3] + nl
+next
 
 func Hashing str
 r = 0
 if len(str) > 4
-	r = (ascii(str[1]) + ascii(str[len(str)]) + ascii(str[ceil(len(str) * 0.25)]) + ascii(str[ceil(len(str) * 0.75)])) 
+	r = (ascii(str[1]) + ascii(str[len(str)]) + ascii(str[ceil(len(str) * 0.25)]) + ascii(str[ceil(len(str) * 0.75)]))
 else
-	for s in str 
-		r += ascii(s) 
+	for s in str
+		r += ascii(s)
 	next
 ok
 return r
@@ -3213,7 +3213,7 @@ Output:
 18 Alan Ghosts
 18 Alan Zombies
 28 Glory Buffy
-18 Popeye 
+18 Popeye
 28 Alan Ghosts
 28 Alan Zombies
 ```
@@ -3332,11 +3332,11 @@ List(28, Alan, Zombies)
 (use srfi-42)
 
 (define ages '((27 Jonah) (18 Alan) (28 Glory) (18 Popeye) (28 Alan)))
- 
+
 (define nemeses '((Jonah Whales) (Jonah Spiders) (Alan Ghosts)
                   (Alan Zombies) (Glory Buffy)
                   (unknown nothing)))
- 
+
 (define hash (make-hash-table 'equal?))
 
 (dolist (item ages)
@@ -3435,7 +3435,7 @@ insert into people (age, name)
 ;
 
 create table nemesises (name varchar2(30), nemesis varchar2(30));
-insert into nemesises (name, nemesis) 
+insert into nemesises (name, nemesis)
   select 'Jonah', 'Whales'  from dual union all
   select 'Jonah', 'Spiders' from dual union all
   select 'Alan' , 'Ghosts'  from dual union all
@@ -3645,7 +3645,7 @@ n = 100
 FOR i = 1 TO n
     INSERT INTO people_ids (id) VALUES (i)
     INSERT INTO nem_ids (id) VALUES (i)
-ENDFOR	
+ENDFOR
 
 CREATE CURSOR people (age I, name V(16), id I)
 INDEX ON id TAG id COLLATE "Machine"
@@ -3670,7 +3670,7 @@ INSERT INTO nemeses (name, nemesis) VALUES ("Jonah", "Spiders")
 INSERT INTO nemeses (name, nemesis) VALUES ("Alan", "Ghosts")
 INSERT INTO nemeses (name, nemesis) VALUES ("Alan", "Zombies")
 INSERT INTO nemeses (name, nemesis) VALUES ("Glory", "Buffy")
-REPLACE id WITH HashMe("nem_ids") ALL 
+REPLACE id WITH HashMe("nem_ids") ALL
 UPDATE nemeses SET p_id = people.id FROM people ;
 WHERE nemeses.name = people.name
 
@@ -3691,12 +3691,12 @@ ENDFUNC
 
 ```txt
 
-AGE NAME      NEMESIS                                                
- 27 Jonah     Whales                                                 
- 27 Jonah     Spiders                                                
- 18 Alan      Ghosts                                                 
- 18 Alan      Zombies                                                
- 28 Glory     Buffy                                                  
+AGE NAME      NEMESIS
+ 27 Jonah     Whales
+ 27 Jonah     Spiders
+ 18 Alan      Ghosts
+ 18 Alan      Zombies
+ 28 Glory     Buffy
 
 ```
 
@@ -3708,7 +3708,7 @@ Join two tables by hashing on the common key (name). The resulting join is the i
 
 ```zkl
 ageName:=T(27,"Jonah", 18,"Alan", 28,"Glory", 18,"Popeye", 28,"Alan");
-nameNemesis:=T("Jonah","Whales", "Jonah","Spiders", "Alan","Ghosts", 
+nameNemesis:=T("Jonah","Whales", "Jonah","Spiders", "Alan","Ghosts",
       "Alan","Zombies", "Glory","Buffy");
 
 fcn addAN(age,name,d){  // keys are names, values are ( (age,...),() )

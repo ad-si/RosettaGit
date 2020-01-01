@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Object oriented}}
-An object is [[polymorphism|polymorphic]] when its specific type may vary. 
+An object is [[polymorphism|polymorphic]] when its specific type may vary.
 The types a specific value may take, is called ''class''.
 
 It is trivial to copy an object if its type is known:
@@ -21,14 +21,14 @@ int x;
 int y = x;
 ```
 
-Here x is not polymorphic, so y is declared of same type (''int'') as x. 
+Here x is not polymorphic, so y is declared of same type (''int'') as x.
 But if the specific type of x were unknown, then y could not be declared of any specific type.
 
-The task: let a polymorphic object contain an instance of some specific type S derived from a type T. 
-The type T is known. 
-The type S is possibly unknown until [[run time]]. 
-The objective is to create an exact copy of such polymorphic object (not to create a [[reference]], nor a pointer to). 
-Let further the type T have a method overridden by S. 
+The task: let a polymorphic object contain an instance of some specific type S derived from a type T.
+The type T is known.
+The type S is possibly unknown until [[run time]].
+The objective is to create an exact copy of such polymorphic object (not to create a [[reference]], nor a pointer to).
+Let further the type T have a method overridden by S.
 This method is to be called on the copy to demonstrate that the specific type of the copy is indeed S.
 
 
@@ -45,14 +45,14 @@ procedure Test_Polymorphic_Copy is
       function Name (X : T) return String;
    end Base;
    use Base;
-   
+
    package body Base is
       function Name (X : T) return String is
       begin
          return "T";
       end Name;
    end Base;
-   
+
       -- The procedure knows nothing about S
    procedure Copier (X : T'Class) is
       Duplicate : T'Class := X;  -- A copy of X
@@ -66,13 +66,13 @@ procedure Test_Polymorphic_Copy is
       return new T'Class(X);
    end Copier;
 
-   package Derived is   
+   package Derived is
       type S is new T with null record;
       overriding function Name (X : S) return String;
    end Derived;
    use Derived;
-   
-   package body Derived is   
+
+   package body Derived is
       function Name (X : S) return String is
       begin
          return "S";
@@ -91,8 +91,8 @@ begin
 end Test_Polymorphic_Copy;
 ```
 
-The procedure Copier does not know the specific type of its argument. 
-Nevertheless it creates an object Duplicate of exactly same type. 
+The procedure Copier does not know the specific type of its argument.
+Nevertheless it creates an object Duplicate of exactly same type.
 {{out}}
 
 ```txt
@@ -154,28 +154,28 @@ scopy.print()
 
 ```bbcbasic
       INSTALL @lib$ + "CLASSLIB"
-      
+
       REM Create parent class T:
       DIM classT{array#(0), setval, retval}
       DEF classT.setval (n%,v) classT.array#(n%) = v : ENDPROC
       DEF classT.retval (n%) = classT.array#(n%)
       PROC_class(classT{})
-      
+
       REM Create class S derived from T, known only at run-time:
       RunTimeSize% = RND(100)
       DIM classS{array#(RunTimeSize%)}
       PROC_inherit(classS{}, classT{})
       DEF classS.retval (n%) = classS.array#(n%) ^ 2 : REM Overridden method
       PROC_class(classS{})
-      
+
       REM Create an instance of class S:
       PROC_new(myobject{}, classS{})
-      
+
       REM Now make a copy of the instance:
       DIM mycopy{} = myobject{}
       mycopy{} = myobject{}
       PROC_discard(myobject{})
-      
+
       REM Test the copy (should print 123^2):
       PROC(mycopy.setval)(RunTimeSize%, 123)
       result% = FN(mycopy.retval)(RunTimeSize%)
@@ -195,16 +195,16 @@ scopy.print()
 
 ## C
 
-Since C doesn't support classes, this is not quite so trivial. 
-Normally the code below would be split into a number of files. 
+Since C doesn't support classes, this is not quite so trivial.
+Normally the code below would be split into a number of files.
 
-Specificially there would be a header (.h) file and a source (.c) file for each of - BaseObj, Dog, and Ferret. 
+Specificially there would be a header (.h) file and a source (.c) file for each of - BaseObj, Dog, and Ferret.
 
-The code in "main" would also be a separate source file which would include Dog.h and Ferret.h header files (which would thems elves include the BaseObj.h header file.) 
+The code in "main" would also be a separate source file which would include Dog.h and Ferret.h header files (which would thems elves include the BaseObj.h header file.)
 A better example of object oriented support in 'C' can be found in the source for the XtIntrinsics library of X11.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -228,13 +228,13 @@ typedef struct object {
     Class class;
 } SObject;
 
-static 
+static
 BaseObj obj_copy( BaseObj s, Class c )
 {
     BaseObj clo;
-    if (c->parent) 
+    if (c->parent)
         clo = obj_copy( s, c->parent);
-    else 
+    else
         clo = malloc( s->class->csize );
 
     if (clo)
@@ -257,8 +257,8 @@ BaseObj ObjClone( BaseObj s )
 { return obj_copy( s, s->class ); }
 
 const char * ObjSpeak( BaseObj s )
-{ 
-    return s->class->speak(s); 
+{
+    return s->class->speak(s);
 }
 
 void ObjDestroy( BaseObj s )
@@ -267,7 +267,7 @@ void ObjDestroy( BaseObj s )
 /* * * * * * */
 static
 void baseClone( BaseObj s, BaseObj clone)
-{  
+{
     clone->class = s->class;
 }
 
@@ -277,7 +277,7 @@ const char *baseSpeak(BaseObj s)
     return "Hello, I'm base object";
 }
 
-sClass boc = { sizeof(SObject), "BaseObj", NULL, 
+sClass boc = { sizeof(SObject), "BaseObj", NULL,
     &baseClone, &baseSpeak, NULL };
 Class BaseObjClass = &boc;
 
@@ -299,7 +299,7 @@ struct sDog {
 
 static
 void dogClone( BaseObj s, BaseObj c)
-{  
+{
     Dog src = (Dog)s;
     Dog clone = (Dog)c;
     clone->dog = src->dog;	/* no pointers so strncpys not needed */
@@ -310,7 +310,7 @@ const char *dogSpeak( BaseObj s)
 {
     Dog d = (Dog)s;
     static char  response[90];
-    sprintf(response, "woof! woof! My name is %s. I'm a %s %s", 
+    sprintf(response, "woof! woof! My name is %s. I'm a %s %s",
             d->dog.name, d->dog.color, d->class->cname);
     return response;
 }
@@ -351,7 +351,7 @@ struct sFerret {
 
 static
 void ferretClone( BaseObj s, BaseObj c)
-{  
+{
     Ferret src = (Ferret)s;
     Ferret clone = (Ferret)c;
     clone->ferret = src->ferret;  /* no pointers so strncpys not needed */
@@ -362,13 +362,13 @@ const char *ferretSpeak(BaseObj s)
 {
     Ferret f = (Ferret)s;
     static char  response[90];
-    sprintf(response, "My name is %s. I'm a %d mo. old %s wiley %s", 
+    sprintf(response, "My name is %s. I'm a %d mo. old %s wiley %s",
             f->ferret.name, f->ferret.age, f->ferret.color,
             f->class->cname);
     return response;
 }
 
-sClass ferretc = { sizeof(struct sFerret), "Ferret", &boc, 
+sClass ferretc = { sizeof(struct sFerret), "Ferret", &boc,
     &ferretClone, &ferretSpeak, NULL };
 Class FerretClass = &ferretc;
 
@@ -463,8 +463,8 @@ S
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 class T
 {
@@ -750,7 +750,7 @@ def copy(object) {
 ```
 
 
-Since E does not have any static dispatch, this cannot be non-polymorphic without also being non-generic. 
+Since E does not have any static dispatch, this cannot be non-polymorphic without also being non-generic.
 
 An example showing that it does indeed make copies follows. (For the task description, let <var>S</var> be the type of all serializable E objects, <var>T</var> be the <code>[http://wiki.erights.org/wiki/FlexList FlexList]</code> type (result of <code>diverge</code>), and the overriden method be <code> [http://wiki.erights.org/wiki/FlexList#push/1 push]</code>.
 
@@ -784,7 +784,7 @@ See also: [[Deepcopy#E]]
 
 (struct T (integer:x)) ;; super class
 (struct S T (integer:y)) ;; sub class
-(struct K (T:box)) ;; container class, box must be of type T, or derived 
+(struct K (T:box)) ;; container class, box must be of type T, or derived
 
 (define k-source (K (S 33 42)))
 (define k-copy (copy k-source))
@@ -800,7 +800,7 @@ k-source
     → #<K> (#<S> (33 666)) ;; modified
 k-copy
     → #<K> (#<S> (33 42))  ;; unmodified
-    
+
 (K "string-inside") ;; trying to put a string in the container box
 😡 error: T : type-check failure : string-inside → 'K:box'
 
@@ -813,26 +813,26 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 class T
 {
     Name = "T";
- 
+
     T clone() = new T();
 }
- 
+
 class S : T
 {
     Name = "S";
- 
+
     T clone() = new S();
 }
- 
+
 public program()
 {
     T original := new S();
     T clone := original.clone();
- 
+
     console.printLine(original.Name);
     console.printLine(clone.Name)
 }
@@ -914,21 +914,21 @@ include 4pp/lib/foos.4pp
      fork defines clone                ( -- addr)
    }
 ;
- 
+
 :: S()                                 \ class S
    extends T()                         \ derived from T
    end-extends {                       \ print message
      :method { ." class S" cr } ; defines print
    }                                   \ clone yourself
 ;
- 
+
 new T() t                              \ create a new object t
 new S() s                              \ create a new object s
 
 ." before copy" cr
 t => print                             \ use "print" methods
 s => print
- 
+
 t => clone to tcopy                    \ cloning t, spawning tcopy
 s => clone to scopy                    \ cloning s, spawning scopy
 
@@ -939,7 +939,7 @@ scopy => print
 
 
 
-Works with any ANS Forth 
+Works with any ANS Forth
 
 Needs the FMS-SI (single inheritance) library code located here:
 http://soton.mpeforth.com/flag/fms/index.html
@@ -947,7 +947,7 @@ http://soton.mpeforth.com/flag/fms/index.html
 ```forth
 include FMS-SI.f
 
-:class T 
+:class T
  ivar container  \ can contain an object of any type
  :m put ( obj -- ) container ! ;m
  :m init: self self put ;m \ initially container holds self
@@ -960,10 +960,10 @@ include FMS-SI.f
 ;class
 
 : ecopy {: obj1 -- obj2 :} \ make an exact copy of obj
-  obj1 dup >class dfa @ 
+  obj1 dup >class dfa @
   obj1 heap: dup >r swap move r> ;
- 
-T obj-t  \ instantiate a T object 
+
+T obj-t  \ instantiate a T object
 obj-t print-container \ class is T
 
 S obj-s  \ instantiate an S object
@@ -976,7 +976,7 @@ obj-t print-container \ class is S
 
 ## Fortran
 
-Tested with GNU gfortran 5.2.1 and INTEL ifort 16. 
+Tested with GNU gfortran 5.2.1 and INTEL ifort 16.
 
 ```Fortran
 
@@ -1059,13 +1059,13 @@ It does however, have types, structs, interfaces, and methods.  These language f
 
 In addition to the types t and s called for by the task description, I define two other types:
 
-i, an interface type, is needed as a common "base" definition for the method.  
-This is not Go terminology, and in fact notice that i is not even referenced anywhere in the definitions of types s or t.  
+i, an interface type, is needed as a common "base" definition for the method.
+This is not Go terminology, and in fact notice that i is not even referenced anywhere in the definitions of types s or t.
 A "parent" method definition is called for by the task however, and interfaces are Go's way of doing this.
 
-r, another type defined similarly to s, I added to illustrate that this analog of method inheritance and overriding is valid.  (In Go terminology, that the method set of a type with an anonymous field includes the method set of the anonymous field.) 
+r, another type defined similarly to s, I added to illustrate that this analog of method inheritance and overriding is valid.  (In Go terminology, that the method set of a type with an anonymous field includes the method set of the anonymous field.)
 
-You can see in the output that interface values of type r access t's identify method.  
+You can see in the output that interface values of type r access t's identify method.
 Values of type s would as well, except s has it's own identify method which takes precedence.
 
 ```go
@@ -1108,7 +1108,7 @@ func (x t) identify() string {
 }
 
 // the same method on s.  although s already satisfied i, calls to identify
-// will now find this method rather than the one defined on t.  
+// will now find this method rather than the one defined on t.
 // in a sense it "overrides" the method of the "base class."
 func (x s) identify() string {
     return "I'm an s!"
@@ -1236,9 +1236,9 @@ objB:: name: S, property: meh
 
 =={{header|Icon}} and {{header|Unicon}}==
 
-Icon and Unicon do no compile-time type checks.  
-The deepcopy procedure from the Deep Copy task is sufficient.  
-The sample code shown below is Unicon-specific only because it is copying an object (Icon has no object-oriented support).  
+Icon and Unicon do no compile-time type checks.
+The deepcopy procedure from the Deep Copy task is sufficient.
+The sample code shown below is Unicon-specific only because it is copying an object (Icon has no object-oriented support).
 The deepcopy procedure is identical in both languages.
 
 
@@ -1257,10 +1257,10 @@ end
 
 procedure deepcopy(A, cache)  #: return a deepcopy of A
     local k
- 
+
     /cache := table()        # used to handle multireferenced objects
     if \cache[A] then return cache[A]
- 
+
     case type(A) of {
         "table"|"list": {
             cache[A] := copy(A)
@@ -1297,9 +1297,9 @@ This is S's a
 ## J
 
 
-Most of the time, J will automatically make a copy for you on dereference.  
+Most of the time, J will automatically make a copy for you on dereference.
 So expressions of the form
-   def=: abc 
+   def=: abc
 are sufficient.
 
 However, if you are working with mapped files, this lazy copy mechanism does not work, and neither will the built in identify functions.  In those cases, you can use
@@ -1328,9 +1328,9 @@ function clone(obj){
 
 ## Java
 
-Here we implement a "copy" method once in the base class because there is by default no public way to copy an object from outside the class in Java. (There is a protected, not public, "clone" method inherited from Object.) 
-The way to clone polymorphically is to obtain a copy from the superclass's <code>clone()</code> method, and then perform custom copying operations specific to this class. 
-If this pattern is followed, the calls will eventually pass all the way up to <code>Object</code>'s <code>clone()</code> method, which performs a polymorphic copy. 
+Here we implement a "copy" method once in the base class because there is by default no public way to copy an object from outside the class in Java. (There is a protected, not public, "clone" method inherited from Object.)
+The way to clone polymorphically is to obtain a copy from the superclass's <code>clone()</code> method, and then perform custom copying operations specific to this class.
+If this pattern is followed, the calls will eventually pass all the way up to <code>Object</code>'s <code>clone()</code> method, which performs a polymorphic copy.
 If you do not follow this pattern, and simply use a constructor, like <code>new T()</code>, then the copy won't be polymorphic.
 
 ```java
@@ -1389,7 +1389,7 @@ color(j::Sapphire) = j.color
 function testtypecopy()
     a = Sapphire("blue", 5.0, "good")
     b = RoseQuartz(3.5, "excellent")
-    
+
     j::Jewel = deepcopy(b)
 
     println("a is a Jewel? ", a isa Jewel)
@@ -1401,7 +1401,7 @@ function testtypecopy()
     println("b is a RoseQuartz? ", b isa RoseQuartz)
     println("j is a Sapphire? ", j isa Sapphire)
     println("j is a RoseQuartz? ", j isa RoseQuartz)
-    
+
     println("The color of j is ", color(j), ".")
     println("j is the same as b? ", j == b)
 end
@@ -1409,7 +1409,7 @@ end
 testtypecopy()
 
 ```
-{{output}} 
+{{output}}
 ```txt
 
  a is a Jewel? true
@@ -1437,16 +1437,16 @@ testtypecopy()
 
 open class Animal(val name: String, var age: Int) {
     open fun copy() = Animal(name, age)
-    
-    override fun toString() = "Name: $name, Age: $age"     
-}   
 
-class Dog(name: String, age: Int, val breed: String) : Animal(name, age) { 
+    override fun toString() = "Name: $name, Age: $age"
+}
+
+class Dog(name: String, age: Int, val breed: String) : Animal(name, age) {
     override fun copy() = Dog(name, age, breed)
 
     override fun toString() = super.toString() + ", Breed: $breed"
 }
-          
+
 fun main(args: Array<String>) {
     val a: Animal = Dog("Rover", 3, "Terrier")
     val b: Animal = a.copy()  // calls Dog.copy() because runtime type of 'a' is Dog
@@ -1622,11 +1622,11 @@ S2 Woof Yellow
 
 
 =={{header|Objective-C}}==
-All objects inherit the <code>copy</code> method from <code>NSObject</code>, which performs copying. 
-But they must implement the <code>NSCopying</code> protocol (which involves implementing the <code>copyWithZone:</code> method) to actually specify how to copy. 
+All objects inherit the <code>copy</code> method from <code>NSObject</code>, which performs copying.
+But they must implement the <code>NSCopying</code> protocol (which involves implementing the <code>copyWithZone:</code> method) to actually specify how to copy.
 Calling <code>copy</code> on an object that does not implement <code>copyWithZone:</code> will result in an error.
 
-Generally, to implement copying, if your parent class does not implement <code>NSCopying</code>, you explicitly allocate a new object (using the class object <code>[self class]</code> instead of hard-coding the name of a particular class, in order to be polymorphic), and initialize it with your object's data. 
+Generally, to implement copying, if your parent class does not implement <code>NSCopying</code>, you explicitly allocate a new object (using the class object <code>[self class]</code> instead of hard-coding the name of a particular class, in order to be polymorphic), and initialize it with your object's data.
 If your parent class already implements <code>NSCopying</code>, and you wish to customize the copying of your class's fields, then you should get a copy from your parent object's <code>copyWithZone:</code> method, and then perform custom initialization on the copy.
 
 
@@ -1672,7 +1672,7 @@ int main()
 ```
 
 
-Analogously, there is a <code>mutableCopy</code> method to get a mutable copy of the current object (e.g. if you have an NSArray object and you want an NSMutableArray with the same contents). 
+Analogously, there is a <code>mutableCopy</code> method to get a mutable copy of the current object (e.g. if you have an NSArray object and you want an NSMutableArray with the same contents).
 In this case it would have to implement the <code>NSMutableCopying</code> protocol (which involves implementing the <code>mutableCopyWithZone:</code> method) to specify how to copy.
 
 
@@ -1700,7 +1700,7 @@ let () =
 
 ## ooRexx
 
-All ooRexx objects have a copy method inherited from the object class that performs a shallow copy of the object state. 
+All ooRexx objects have a copy method inherited from the object class that performs a shallow copy of the object state.
 
 ```ooRexx
 
@@ -1787,7 +1787,7 @@ declare
   class S from T
      attr a
      feat f
-      
+
      meth name($)
         'S'
      end
@@ -1817,8 +1817,8 @@ in
 ```
 
 
-Oz is not a pure object-oriented language. In fact, most values are not objects. 
-For immutable data it usually does not make sense to clone it because it does not have an identity beyond its value. 
+Oz is not a pure object-oriented language. In fact, most values are not objects.
+For immutable data it usually does not make sense to clone it because it does not have an identity beyond its value.
 For mutable data types there are clone functions available (<code>Dictionary.clone</code>, <code>Array.clone</code>, <code>BitArray.clone</code>).
 
 
@@ -2015,7 +2015,7 @@ $385346595 (+Cls1 +Cls2)
 import copy
 
 class T:
-   def classname(self): 
+   def classname(self):
       return self.__class__.__name__
 
    def __init__(self):
@@ -2091,13 +2091,13 @@ S2 Woof Yellow
 ```
 
 
-The foregoing example uses the Python standard library ''copy'' module.  
-The task, as stated,does not provide insight as to what should happen should the object contain lists of other objects.  
-It could be necessary to use "deep copy" instead of copy. (using ''copy.deepcopy'').  
-The distinction is important for complex objects containing references to other objects (for instances lists, tuples or dictionaries containing other lists, tuples or dictionaries as elements).  
+The foregoing example uses the Python standard library ''copy'' module.
+The task, as stated,does not provide insight as to what should happen should the object contain lists of other objects.
+It could be necessary to use "deep copy" instead of copy. (using ''copy.deepcopy'').
+The distinction is important for complex objects containing references to other objects (for instances lists, tuples or dictionaries containing other lists, tuples or dictionaries as elements).
 The described task, as presented, offers no guidance on this matter.
 
-In many cases the most portable and robust "copy" would be made by serializing the source object and then de-serializing it back into the target.  
+In many cases the most portable and robust "copy" would be made by serializing the source object and then de-serializing it back into the target.
 Under Python this would best be done with the ''pickle'' or ''cPickle'' standard modules.
 
 
@@ -2112,10 +2112,10 @@ target = pickle.loads(pickle.dumps(source))
 ```
 
 
-In this example we use the ''cPickle'' module which is an implementation of the pickle features coded in C for optimal performance. 
-We import it as ''pickle'' since we intend to use only those features which are common to both implementations.  
-(The pure Python implementation is retained for those who which to create their own classes derived therefrom).  
-The ''dumps()'' and ''loads()'' methods dump the data structures to a string and load them from a string, respectively.  (The more common use of ''pickle'' is to serialize the data out to a file or over a network connection using file-like ''.read()'' and ''.write()'' methods.  
+In this example we use the ''cPickle'' module which is an implementation of the pickle features coded in C for optimal performance.
+We import it as ''pickle'' since we intend to use only those features which are common to both implementations.
+(The pure Python implementation is retained for those who which to create their own classes derived therefrom).
+The ''dumps()'' and ''loads()'' methods dump the data structures to a string and load them from a string, respectively.  (The more common use of ''pickle'' is to serialize the data out to a file or over a network connection using file-like ''.read()'' and ''.write()'' methods.
 For those we'd use the ''pickle.dump()'' and ''pickle.load()'' methods).
 
 For the simplest cases one can use simple Python introspection to copy simple objects:
@@ -2133,12 +2133,12 @@ else:  # Following is not recommended. (see below).
 ```
 
 
-This example handles dictionaries (and anything that implements a sufficiently dictionary like interface to support the ''items()'' method along with the ''__setitem__()'' method. (statements of the form '''''x[y] = z''''' in Python are implicitly calling the ''__setitem__()'' method of the "x" object, passing it a key of "y" and a value of "z."  
-Similarly this code tests if an item is a sequence (one can call the "len()" built-in function on it) and, if so, uses a slice assignment to perform a shallow copy.  
-For any other type of object a simple binding is performed.  
-Technically this last case will not "copy" anything ... it will create a new name binding to the object to which "source" was already a reference. 
-The earlier binding of a "blank" instance of the source's __class__ will be replaced.  
-So the trick of creating the blank object of the same type is only meaningful for the other types.  
+This example handles dictionaries (and anything that implements a sufficiently dictionary like interface to support the ''items()'' method along with the ''__setitem__()'' method. (statements of the form '''''x[y] = z''''' in Python are implicitly calling the ''__setitem__()'' method of the "x" object, passing it a key of "y" and a value of "z."
+Similarly this code tests if an item is a sequence (one can call the "len()" built-in function on it) and, if so, uses a slice assignment to perform a shallow copy.
+For any other type of object a simple binding is performed.
+Technically this last case will not "copy" anything ... it will create a new name binding to the object to which "source" was already a reference.
+The earlier binding of a "blank" instance of the source's __class__ will be replaced.
+So the trick of creating the blank object of the same type is only meaningful for the other types.
 In the cases of strings, integers and other numbers the objects themselves are immutable and the bindings are all dynamic (so the entire task is moot with respect to them).
 
 
@@ -2184,7 +2184,7 @@ This method is useful only for prefab structures.
 
 ### Using transparent structures
 
-This method can be applied to prefab or transparent structures, or using a powerful enough inspector. The example uses transparent structures. 
+This method can be applied to prefab or transparent structures, or using a powerful enough inspector. The example uses transparent structures.
 
 It’s also possible to copy other structures using generics or structure-type-properties to implement a “magic”-like generic method.
 
@@ -2229,15 +2229,15 @@ There is no build-in clone method, so the class (or the interface) must implemen
 ```Racket
 ;#lang racket
 
-(define point% 
-  (class object% 
+(define point%
+  (class object%
     (super-new)
     (init-field x y)
     (define/public (clone) (new this% [x x] [y y]))
     (define/public (to-list) (list this% x y))))
 
-(define point/color% 
-  (class point% 
+(define point/color%
+  (class point%
     (super-new)
     (inherit-field x y)
     (init-field color)
@@ -2260,7 +2260,7 @@ There is no build-in clone method, so the class (or the interface) must implemen
 
 In the REXX language, every variable is a string   (whether or not they contain characters or numerals).
 
-However, a variables' type (by REXX's definition) can be determined/inferred from it's attributes (datatypes).  
+However, a variables' type (by REXX's definition) can be determined/inferred from it's attributes (datatypes).
 
 ```rexx
 /*REXX program to  copy  (polymorphically)  one variable's value into another variable. */
@@ -2279,7 +2279,7 @@ Programming note:   Most REXXes will raise a syntax error if an assignment (copy
 
 ## Ruby
 
-All Ruby objects inherit two methods for copying themselves: "clone" and "dup". 
+All Ruby objects inherit two methods for copying themselves: "clone" and "dup".
 I don't really understand the difference between them.
 
 ```ruby
@@ -2363,8 +2363,8 @@ obj3.display;                   # prints "S"
 ## Slate
 
 
-All objects in Slate may be <tt>clone</tt>d unless they are clones of <tt>Oddball</tt> (like <tt>True</tt>, <tt>False</tt>, and <tt>Nil</tt>) or are word-size Integers (which are encoded as tagged pointer values). 
-This is a shallow copy where no values held in the object's slots are replaced with copies. 
+All objects in Slate may be <tt>clone</tt>d unless they are clones of <tt>Oddball</tt> (like <tt>True</tt>, <tt>False</tt>, and <tt>Nil</tt>) or are word-size Integers (which are encoded as tagged pointer values).
+This is a shallow copy where no values held in the object's slots are replaced with copies.
 There is also a <tt>copy</tt> method which is universal and overridden to perform deep copies as appropriate - copying continues via recursion through slot values and should be modified on any type where equality (<tt>=</tt>) is overridden.
 
 
@@ -2416,7 +2416,7 @@ another.identify() // prints "I am an S"
 
 ## Tcl
 
-Tcl values are logically immutable, and are passed around by reference with copies being taken as and when it is necessary to do so to maintain the immutable model. 
+Tcl values are logically immutable, and are passed around by reference with copies being taken as and when it is necessary to do so to maintain the immutable model.
 Hence an effective copy of any value is just:
 
 ```tcl

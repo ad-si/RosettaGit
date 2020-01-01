@@ -26,8 +26,8 @@ Kosaraju's algorithm (also known as the Kosaraju–Sharir algorithm) is a linear
 
 {{trans|D}}
 
-```cpp>#include <functional
-
+```cpp
+#include <functional>
 #include <iostream>
 #include <ostream>
 #include <vector>
@@ -138,7 +138,7 @@ class Node
 
 	public Colors color { get; set; }
 	public int N { get; }
-	
+
 	public Node(int n)
 	{
 		N = n;
@@ -542,7 +542,7 @@ val g = listOf(
     intArrayOf(5),        // 6
     intArrayOf(4, 6, 7)   // 7
 )
-    
+
 fun kosaraju(g: List<IntArray>): List<List<Int>> {
     // 1. For each vertex u of the graph, mark u as unvisited. Let l be empty.
     val size = g.size
@@ -550,14 +550,14 @@ fun kosaraju(g: List<IntArray>): List<List<Int>> {
     val l = IntArray(size)                       // all zero by default
     var x = size                                 // index for filling l in reverse order
     val t = List(size) { mutableListOf<Int>() }  // transpose graph
-    
+
     // Recursive subroutine 'visit':
     fun visit(u: Int) {
         if (!vis[u]) {
             vis[u] = true
-            for (v in g[u]) { 
+            for (v in g[u]) {
                 visit(v)
-                t[v].add(u)  // construct transpose 
+                t[v].add(u)  // construct transpose
             }
             l[--x] = u
         }
@@ -565,7 +565,7 @@ fun kosaraju(g: List<IntArray>): List<List<Int>> {
 
     // 2. For each vertex u of the graph do visit(u)
     for (u in g.indices) visit(u)
-    val c = IntArray(size)  // used for component assignment 
+    val c = IntArray(size)  // used for component assignment
 
     // Recursive subroutine 'assign':
     fun assign(u: Int, root: Int) {
@@ -579,7 +579,7 @@ fun kosaraju(g: List<IntArray>): List<List<Int>> {
     // 3: For each element u of l in order, do assign(u, u)
     for (u in l) assign(u, u)
 
-    // Obtain list of SCC's from 'c' and return it   
+    // Obtain list of SCC's from 'c' and return it
     return c.withIndex()
             .groupBy { it.value }.values
             .map { ivl -> ivl.map { it.index } }
@@ -813,7 +813,7 @@ Hank
 {{works with|Rakudo|2018.09}}
 Inspired by Python & Kotlin entries.
 
-Accepts a hash of lists/arrays holding the vertex (name => (neighbors)) pairs. No longer limited to continuous, positive, integer vertex names. 
+Accepts a hash of lists/arrays holding the vertex (name => (neighbors)) pairs. No longer limited to continuous, positive, integer vertex names.
 
 
 ```perl6
@@ -824,7 +824,7 @@ sub kosaraju (%k) {
     my @stack;
     my @transpose;
     my @connected;
- 
+
     sub visit ($u) {
         unless %visited{$u} {
             %visited{$u} = True;
@@ -835,7 +835,7 @@ sub kosaraju (%k) {
             @stack.push: $u;
         }
     }
- 
+
     sub assign ($u, $root) {
         if %visited{$u} {
             %visited{$u}   = False;
@@ -843,7 +843,7 @@ sub kosaraju (%k) {
             assign($_, $root) for |@transpose[%g{$u}];
         }
     }
- 
+
     .&visit for %g.keys;
     assign($_, $_) for @stack.reverse;
 
@@ -923,7 +923,7 @@ function korasaju(sequence g)
     end for
     return c
 end function
- 
+
 constant g = {{2}, {3}, {1}, {2, 3, 5}, {4, 6}, {3, 7}, {6}, {5, 7, 8}}
 ?korasaju(g)
 ```
@@ -1006,18 +1006,18 @@ print kosaraju(g)
       ((vertices (remove-duplicates (append (dict-keys G) (append* (dict-values G)))))
        (visited?-dict (make-hash)) ; or any mutable dict type
        (assigned-dict (make-hash)) ; or any mutable dict type
-       (neighbours:in (λ (u) (for/list (([v outs] (in-dict G)) #:when (member u outs)) v)))  
+       (neighbours:in (λ (u) (for/list (([v outs] (in-dict G)) #:when (member u outs)) v)))
        (visit! (λ (u L)
                  (cond [(dict-ref visited?-dict u #f) L]
                        [else (dict-set! visited?-dict u #t)
-                             (cons u (for/fold ((L L)) ((v (in-list (dict-ref G u)))) (visit! v L)))])))  
+                             (cons u (for/fold ((L L)) ((v (in-list (dict-ref G u)))) (visit! v L)))])))
        (assign! (λ (u root)
                   (unless (dict-ref assigned-dict u #f)
                     (dict-set! assigned-dict u root)
                     (for ((v (in-list (neighbours:in u)))) (assign! v root)))))
        (L (for/fold ((l null)) ((u (in-dict-keys G))) (visit! u l))))
-    
-    (for ((u (in-list L))) (assign! u u))  
+
+    (for ((u (in-list L))) (assign! u u))
     (map (curry map car) (group-by cdr (dict->list assigned-dict) =))))
 
 (module+ test
@@ -1206,7 +1206,7 @@ fcn assign(u,root,G){  // u as above, root is a list of strong components
    foreach v in (G){  // traverse graph to find in-neighbours, fugly
       n,ins := v[1][0],v[1][1,*];
       if(ins.holds(uid)) assign(G[n],root,G); // assign in-neighbour
-   } 
+   }
 }
 fcn kosaraju(graph){  // Use Tarjan's algorithm instead of this one
    // input: graph G = (V, Es)

@@ -88,7 +88,7 @@ Welcome.
 
 WARNING!!!  Please remember that there's no need to shake your device for this program to work, and shaking your device could damage it
 
-What's your question? 
+What's your question?
 Should I have an apple
 
 MY_SOURCES_SAY_NO
@@ -183,8 +183,8 @@ Yes, definitely
 
 {{trans|Kotlin}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -235,7 +235,7 @@ Signs point to yes
 
 It is decidedly so
 
-? : 
+? :
 
 ```
 
@@ -298,7 +298,7 @@ int main()
 
 ```clojure
 
-(def responses 
+(def responses
   ["It is certain" "It is decidedly so" "Without a doubt"
   "Yes, definitely" "You may rely on it" "As I see it, yes"
   "Most likely" "Outlook good" "Signs point to yes" "Yes"
@@ -308,7 +308,7 @@ int main()
   "My reply is no" "My sources say no" "Outlook not so good"
   "Very doubtful"])
 
-(do 
+(do
   (println "Ask a question.  ")
   (read-line)
   (println (rand-nth responses)))
@@ -361,7 +361,7 @@ Outlook not so good
 ## Forth
 
 ANS/ISO FORTH, GNU FORTH <BR>
-This example defines CASE: ;CASE that create a vector table.  
+This example defines CASE: ;CASE that create a vector table.
 VECTORS compiles a specific number of execution vectors into memory from the data stack.
 Responses are created as executable routines that return their Execution token to the Forth Data Stack.
 The responses are retrieved from the data stack and compiled into a vector table, after which it is trivial for RANDOM to select any response.
@@ -396,11 +396,11 @@ DECIMAL
 
 CASE: MAGIC8BALL  20 VECTORS  ;CASE
 
-: GO   
+: GO
        CR ." Please enter your question or a blank line to quit."
        BEGIN   CR ." ? :" PAD 80 ACCEPT 0>
        WHILE   CR 19 RANDOM MAGIC8BALL  CR
-       REPEAT ;</LANG> 
+       REPEAT ;</LANG>
 Test at the console
 ```txt
  ok
@@ -489,7 +489,7 @@ Yes
 
 My reply is no
 
-? : 
+? :
 
 ```
 
@@ -522,10 +522,10 @@ eight_ball=: ANSWERS&$: :(dyad define)
    eight_ball''
 Please enter your question or a blank line to quit.
 Will I finish on time?
-Cannot predict now       
+Cannot predict now
 Please enter your question or a blank line to quit.
 Will he?
-My reply is no           
+My reply is no
 Please enter your question or a blank line to quit.
 
 ```
@@ -578,7 +578,7 @@ console.log(answers[Math.floor(Math.random()*answers.length)]);
 ```julia
 const responses = ["It is certain", "It is decidedly so", "Without a doubt",
     "Yes, definitely", "You may rely on it", "As I see it, yes", "Most likely",
-    "Outlook good", "Signs point to yes", "Yes", "Reply hazy, try again", 
+    "Outlook good", "Signs point to yes", "Yes", "Reply hazy, try again",
     "Ask again later", "Better not tell you now", "Cannot predict now",
     "Concentrate and ask again", "Don't bet on it", "My reply is no",
     "My sources say no", "Outlook not so good", "Very doubtful"]
@@ -662,7 +662,7 @@ Reply hazy, try again
 
 Signs point to yes
 
-? : 
+? :
 
 ```
 
@@ -805,7 +805,7 @@ Output very similar to C, Kotlin and zkl examples.
 ```Phix
 constant answers = {"As I see it, yes", "Ask again later", "You may rely on it",
                     "Without a doubt", "Don't bet on it", "Outlook not so good",
-                    "Signs point to yes", "It is decidedly so", "It is certain", 
+                    "Signs point to yes", "It is decidedly so", "It is certain",
                     "Better not tell you now", "My reply is no", "Outlook good",
                     "Concentrate and ask again", "Reply hazy, try again", "Yes",
                     "Most likely", "Cannot predict now", "My sources say maybe",
@@ -919,9 +919,9 @@ q_and_a = {}
 while True:
     question = input('Ask your question:')
     if len(question) == 0: break
-    
+
     answer = random.choice(s)
-    
+
     if question in q_and_a:
         print('Your question has already been answered')
     else:
@@ -1068,7 +1068,7 @@ answers = ["It is certain", "It is decidedly so", "Without a doubt",
                  "Better not tell you now", "Cannot predict now",
                  "Concentrate and ask again", "Don't bet on it",
                  "My reply is no", "My sources say no", "Outlook not so good",
-                 "Very doubtful"]  
+                 "Very doubtful"]
 index = random(len(answers)-1)+1
 see answers[index] + nl
 
@@ -1175,7 +1175,7 @@ while(ask("? : ")){ println(answers[(0).random(answers.len())]) }
 ```txt
 
 lease enter your question or a blank line to quit.
-? : will it rain today 
+? : will it rain today
 It is certain
 ? : where is Turkey
 Yes
@@ -1183,7 +1183,7 @@ Yes
 It is decidedly so
 ? : who is Elton John
 Most likely
-? : 
+? :
 
 ```
 

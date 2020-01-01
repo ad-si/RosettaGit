@@ -120,8 +120,8 @@ ExitApp
 
 Writes an EPS file that has the 26th fractal.  This is probably cheating.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main(void)
 {
@@ -162,7 +162,7 @@ public:
         DeleteDC( hdc );
         DeleteObject( bmp );
     }
- 
+
     bool create( int w, int h )
     {
         BITMAPINFO	bi;
@@ -178,24 +178,24 @@ public:
 	if( !bmp ) return false;
 	hdc = CreateCompatibleDC( dc );
 	SelectObject( hdc, bmp );
-	ReleaseDC( GetConsoleWindow(), dc ); 
+	ReleaseDC( GetConsoleWindow(), dc );
 	width = w; height = h;
 	clear();
 	return true;
     }
- 
+
     void clear()
     {
 	ZeroMemory( pBits, width * height * sizeof( DWORD ) );
     }
- 
+
     void setPenColor( DWORD clr )
     {
 	if( pen ) DeleteObject( pen );
 	pen = CreatePen( PS_SOLID, 1, clr );
 	SelectObject( hdc, pen );
     }
- 
+
     void saveBitmap( string path )
     {
 	BITMAPFILEHEADER fileheader;
@@ -204,13 +204,13 @@ public:
 	DWORD*		 dwpBits;
 	DWORD		 wb;
 	HANDLE		 file;
- 
+
 	GetObject( bmp, sizeof( bitmap ), &bitmap );
 	dwpBits = new DWORD[bitmap.bmWidth * bitmap.bmHeight];
 	ZeroMemory( dwpBits, bitmap.bmWidth * bitmap.bmHeight * sizeof( DWORD ) );
 	ZeroMemory( &infoheader, sizeof( BITMAPINFO ) );
 	ZeroMemory( &fileheader, sizeof( BITMAPFILEHEADER ) );
- 
+
 	infoheader.bmiHeader.biBitCount = sizeof( DWORD ) * 8;
 	infoheader.bmiHeader.biCompression = BI_RGB;
 	infoheader.bmiHeader.biPlanes = 1;
@@ -218,26 +218,26 @@ public:
 	infoheader.bmiHeader.biHeight = bitmap.bmHeight;
 	infoheader.bmiHeader.biWidth = bitmap.bmWidth;
 	infoheader.bmiHeader.biSizeImage = bitmap.bmWidth * bitmap.bmHeight * sizeof( DWORD );
- 
+
 	fileheader.bfType    = 0x4D42;
 	fileheader.bfOffBits = sizeof( infoheader.bmiHeader ) + sizeof( BITMAPFILEHEADER );
 	fileheader.bfSize    = fileheader.bfOffBits + infoheader.bmiHeader.biSizeImage;
- 
+
 	GetDIBits( hdc, bmp, 0, height, ( LPVOID )dwpBits, &infoheader, DIB_RGB_COLORS );
- 
+
 	file = CreateFile( path.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL );
 	WriteFile( file, &fileheader, sizeof( BITMAPFILEHEADER ), &wb, NULL );
 	WriteFile( file, &infoheader.bmiHeader, sizeof( infoheader.bmiHeader ), &wb, NULL );
 	WriteFile( file, dwpBits, bitmap.bmWidth * bitmap.bmHeight * 4, &wb, NULL );
 	CloseHandle( file );
- 
+
 	delete [] dwpBits;
     }
- 
+
     HDC getDC()     { return hdc; }
     int getWidth()  { return width; }
     int getHeight() { return height; }
- 
+
 private:
     HBITMAP bmp;
     HDC	    hdc;
@@ -267,8 +267,8 @@ private:
 
     void createFractal()
     {
-	int n = 1, px = 10, dir, 
-	    py = 420, len = 1, 
+	int n = 1, px = 10, dir,
+	    py = 420, len = 1,
 	    x = 0, y = -len, goingTo = 0;
 
 	HDC dc = bmp.getDC();
@@ -361,13 +361,13 @@ It prints the level 25 word as the Python entry.
 ```elixir
 defmodule Fibonacci do
   def fibonacci_word, do: Stream.unfold({"1","0"}, fn{a,b} -> {a, {b, b<>a}} end)
-  
+
   def word_fractal(n) do
     word = fibonacci_word |> Enum.at(n)
     walk(to_char_list(word), 1, 0, 0, 0, -1, %{{0,0}=>"S"})
     |> print
   end
-  
+
   defp walk([], _, _, _, _, _, map), do: map
   defp walk([h|t], n, x, y, dx, dy, map) do
     map2 = Map.put(map, {x+dx, y+dy}, (if dx==0, do: "|", else: "-"))
@@ -379,7 +379,7 @@ defmodule Fibonacci do
       walk(t, n+1, x2, y2, dx, dy, map2)
     end
   end
-  
+
   defp print(map) do
     xkeys = Map.keys(map) |> Enum.map(fn {x,_} -> x end)
     {xmin, xmax} = Enum.min_max(xkeys)
@@ -400,7 +400,7 @@ Output is same as Ruby.
 <p>We output an SVG or rather an HTML with an embedded SVG</p>
 <p>Points to note:</p>
 <ul>
-<li>Rather than using the "usual" Fibonacci catamorphismen 
+<li>Rather than using the "usual" Fibonacci catamorphismen
 ```fsharp
 Seq.unfold(fun (f1, f2) -> Some(f1, (f2, f2+f1))) ("1", "0")
 ```
@@ -428,9 +428,9 @@ let goto (x, y) (dx, dy) c n =
     (x+dx, y+dy), (dx', dy')
 
 // How much longer a line is, compared to its thickness:
-let factor = 2     
+let factor = 2
 
-let rec draw (x, y) (dx, dy) n = function 
+let rec draw (x, y) (dx, dy) n = function
 | [] -> ()
 | z::zs ->
     printf "%d,%d " (factor*(x+dx)) (factor*(y+dy))
@@ -478,7 +478,7 @@ sequences ;
 FROM: fry => '[ _ ;
 IN: rosetta-code.fibonacci-word-fractal
 
-! 
+!
 ###  Turtle code ===========================================
 
 
@@ -487,7 +487,7 @@ C: <turtle> turtle
 
 : forward ( turtle -- turtle' )
     dup heading>> [ v+ ] curry change-loc ;
-    
+
 MATCH-VARS: ?a ;
 
 CONSTANT: left { { 0 ?a } => [ ?a 0 ] { ?a 0 } => [ 0 ?a neg ] }
@@ -496,18 +496,18 @@ CONSTANT: right { { 0 ?a } => [ ?a neg 0 ] { ?a 0 } => [ 0 ?a ] }
 : turn ( turtle left/right -- turtle' )
     [ dup heading>> ] dip match-cond 2array >>heading ; inline
 
-! 
+!
 ###  Fib word ==============================================
 
-   
+
 : fib-word ( n -- str )
     {
         1 => [ "1" ]
         2 => [ "0" ]
         [ [ 1 - fib-word ] [ 2 - fib-word ] bi append ]
     } case ;
-    
-! 
+
+!
 ###  Fractal ===============================================
 
 
@@ -521,8 +521,8 @@ CONSTANT: right { { 0 ?a } => [ ?a neg 0 ] { ?a 0 } => [ 0 ?a ] }
             ] [ drop ] if drop
         ] with each-index
     ] { } make ;
-    
-! 
+
+!
 ###  Image =================================================
 
 
@@ -538,16 +538,16 @@ CONSTANT: h 428
     BGRA             >>component-order
     ubyte-components >>component-type
     init-img-data    >>bitmap ;
-    
+
 : fract>img ( seq -- img' )
     [ <fib-word-fractal-img> dup ] dip [
         '[ B{ 33 33 33 255 } _ first2 ] dip set-pixel-at
     ] with each ;
-    
+
 : main ( -- )
     23 fib-word-fractal fract>img "fib-word-fractal.png"
     save-graphic-image ;
-    
+
 MAIN: main
 ```
 
@@ -787,7 +787,7 @@ procedure drawFractal(n,w,sl)
         rTurn["north"] := "east"; rTurn["east"] := "south"
         rTurn["south"] := "west"; rTurn["west"] := "north"
         }
-    
+
     wparms := ["FibFractal "||n,"g","bg=white","canvas=normal",
                "fg=black","size="||width||","||height,"dx=10","dy=10"]
     &window := open!wparms | stop("Unable to open window")
@@ -797,7 +797,7 @@ procedure drawFractal(n,w,sl)
        p := draw(p,d,sl)
        if w[i] == "0" then d := if i%2 = 0 then lTurn[d] else rTurn[d]
        }
- 
+
     until Event() == &lpress
     WriteImage("FibFract"||n||".png")
     close(&window)
@@ -934,17 +934,17 @@ public class FibonacciWordFractal extends JPanel {
 function pFibowFractal(n,len,canvasId,color) {
   // DCLs
   var canvas = document.getElementById(canvasId);
-  var ctx = canvas.getContext("2d"); 
+  var ctx = canvas.getContext("2d");
   var w = canvas.width; var h = canvas.height;
   var fwv,fwe,fn,tx,x=10,y=10,dx=len,dy=0,nr;
-  // Cleaning canvas, setting plotting color, etc 
+  // Cleaning canvas, setting plotting color, etc
   ctx.fillStyle="white"; ctx.fillRect(0,0,w,h);
   ctx.beginPath();
   ctx.moveTo(x,y);
   fwv=fibword(n); fn=fwv.length;
   // MAIN LOOP
   for(var i=0; i<fn; i++) {
-    ctx.lineTo(x+dx,y+dy); fwe=fwv[i]; 
+    ctx.lineTo(x+dx,y+dy); fwe=fwv[i];
     if(fwe=="0") {tx=dx; nr=i%2;
       if(nr==0) {dx=-dy;dy=tx} else {dx=dy;dy=-tx}};
     x+=dx; y+=dy;
@@ -960,7 +960,7 @@ function fibword(n) {
 }
 
 ```
- 
+
 
 '''Executing:'''
 
@@ -991,7 +991,7 @@ function fibword(n) {
 </html>
 
 ```
- 
+
 
 {{Output}}
 
@@ -1049,8 +1049,8 @@ import java.awt.*
 import javax.swing.*
 
 class FibonacciWordFractal(n: Int) : JPanel() {
-    private val wordFractal: String 
- 
+    private val wordFractal: String
+
     init {
         preferredSize = Dimension(450, 620)
         background = Color.black
@@ -1061,14 +1061,14 @@ class FibonacciWordFractal(n: Int) : JPanel() {
         if (i < 2) return if (i == 1) "1" else ""
         val f1 = StringBuilder("1")
         val f2 = StringBuilder("0")
- 
+
         for (j in i - 2 downTo 1) {
             val tmp = f2.toString()
             f2.append(f1)
             f1.setLength(0)
             f1.append(tmp)
         }
- 
+
         return f2.toString()
     }
 
@@ -1076,7 +1076,7 @@ class FibonacciWordFractal(n: Int) : JPanel() {
         var x2 = x
         var y2 = y
         var dx2 = dx
-        var dy2 = dy 
+        var dy2 = dy
         for (i in 0 until wordFractal.length) {
             g.drawLine(x2, y2, x2 + dx2, y2 + dy2)
             x2 += dx2
@@ -1175,7 +1175,7 @@ function drawFractals( w )
     for i = 1, #w do
         px = px + x; table.insert( pts, px + .5 )
         py = py + y; table.insert( pts, py + .5 )
-        if w:sub( i, i ) == "0" then 
+        if w:sub( i, i ) == "0" then
             if c % 2 == 1 then dir = RIGHT else dir = LEFT end
             if facing == UP then
                 if dir == RIGHT then x = lineLen; facing = RIGHT
@@ -1227,11 +1227,11 @@ Module[{FibonacciWord, step},
   FibonacciWord[2] = "0";
   FibonacciWord[n_Integer?(# > 2 &)] :=
    (FibonacciWord[n] = FibonacciWord[n - 1] <> FibonacciWord[n - 2]);
-  
+
   step["0", {_?EvenQ}] = N@RotationTransform[Pi/2];
   step["0", {_?OddQ}] = N@RotationTransform[-Pi/2];
   step[___] = Identity;
-  
+
   FibonacciFractal[n_] := Module[{steps, dirs},
     steps = MapIndexed[step, Characters[FibonacciWord[n]]];
     dirs = ComposeList[steps, {0, 1}];
@@ -1279,11 +1279,11 @@ return(dir);
 plotfibofract(n,sz,len)={
 my(fwv,fn,dr,px=10,py=420,x=0,y=-len,g2=0,
    ttl="Fibonacci word/fractal: n=");
-plotinit(0); plotcolor(0,6); \\green 
+plotinit(0); plotcolor(0,6); \\green
 plotscale(0, -sz,sz, -sz,sz);
 plotmove(0, px,py);
 fwv=fibword(n); fn=#fwv;
-for(i=1,fn, 
+for(i=1,fn,
     plotrline(0,x,y);
     dr=nextdir(i,fwv[i]);
     if(dr==-1, next);
@@ -1295,7 +1295,7 @@ for(i=1,fn,
     if(g2==2, y=0; if(dr, x=-len;g2=3, x=len;g2=1); next);
     \\left
     if(g2==3, x=0; if(dr, y=-len;g2=0, y=len;g2=2); next);
-   );\\fend i 
+   );\\fend i
 plotdraw([0,-sz,-sz]);
 print(" *** ",ttl,n," sz=",sz," len=",len," fw-len=",fn);
 
@@ -1307,7 +1307,7 @@ plotfibofract(21,430,2);  \\ Fibofrac2.png
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -1352,13 +1352,13 @@ return(fw);
 
 plotfibofract1(n,sz,len)={
 my(fwv,fn,dx=len,dy=0,nr,ttl="Fibonacci word/fractal, n=");
-plotinit(0); plotcolor(0,5); \\red 
+plotinit(0); plotcolor(0,5); \\red
 plotscale(0, -sz,sz, -sz,sz); plotmove(0, 0,0);
 fwv=fibword(n); fn=#fwv;
 for(i=1,fn, plotrline(0,dx,dy);
     if(fwv[i]==0, tx=dx; nr=i%2; if(!nr,dx=-dy;dy=tx, dx=dy;dy=-tx));
-   );\\fend i 
-plotdraw([0,0,0]); 
+   );\\fend i
+plotdraw([0,0,0]);
 print(" *** ",ttl,n," sz=",sz," len=",len," fw-len=",fn);
 }
 
@@ -1368,7 +1368,7 @@ plotfibofract1(21,600,1); \\ Fibofrac4.png
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -1405,7 +1405,7 @@ sub fword {
 my $size = 3000;
 my $im = new GD::Image($size,$size);
 my $white = $im->colorAllocate(255,255,255);
-my $black = $im->colorAllocate(0,0,0);       
+my $black = $im->colorAllocate(0,0,0);
 $im->transparent($white);
 $im->interlaced('true');
 
@@ -1758,16 +1758,16 @@ pfibofractal(23, 1000, 1000, 1, "navy")
 pfibofractal(25, 2300, 1000, 1, "red")
 
 ```
- 
+
 
 {{Output}}
 
 ```txt
 
 > pfibofractal(23, 1000, 1000, 1, "navy")
-Fibonacci word/fractal, n=23 nf= 75025 pf= FiboFractR23.png 
+Fibonacci word/fractal, n=23 nf= 75025 pf= FiboFractR23.png
 > pfibofractal(25, 2300, 1000, 1, "red")
-Fibonacci word/fractal, n=25 nf= 196418 pf= FiboFractR25.png 
+Fibonacci word/fractal, n=25 nf= 196418 pf= FiboFractR25.png
 
 ```
 
@@ -1969,7 +1969,7 @@ def print_fractal(word)
     area[[x, y]] = "+"
     dx,dy = n.even? ? [dy,-dx] : [-dy,dx]  if c=="0"
   end
-  
+
   (xmin, xmax), (ymin, ymax) = area.keys.transpose.map(&:minmax)
   for y in ymin..ymax
     puts (xmin..xmax).map{|x| area[[x,y]]}.join
@@ -1983,144 +1983,144 @@ print_fractal(word)
 
 {{out}}
 <pre style="height: 190ex; font-size: 50%;">
-+-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+                                   +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+  
-|   |   |   |       |   |   |   |               |   |   |   |       |   |   |   |                                   |   |   |   |       |   |   |   |               |   |   |   |       |   |   |   |  
-+   +-+-+   +       +   +-+-+   +               +   +-+-+   +       +   +-+-+   +                                   +   +-+-+   +       +   +-+-+   +               +   +-+-+   +       +   +-+-+   +  
-|           |       |           |               |           |       |           |                                   |           |       |           |               |           |       |           |  
-+-+       +-+       +-+       +-+               +-+       +-+       +-+       +-+                                   +-+       +-+       +-+       +-+               +-+       +-+       +-+       +-+  
-  |       |           |       |                   |       |           |       |                                       |       |           |       |                   |       |           |       |    
-  +       +   +-+-+   +       +                   +       +   +-+-+   +       +                                       +       +   +-+-+   +       +                   +       +   +-+-+   +       +    
-  |       |   |   |   |       |                   |       |   |   |   |       |                                       |       |   |   |   |       |                   |       |   |   |   |       |    
-+-+       +-+-+   +-+-+       +-+               +-+       +-+-+   +-+-+       +-+                                   +-+       +-+-+   +-+-+       +-+               +-+       +-+-+   +-+-+       +-+  
-|                               |               |                               |                                   |                               |               |                               |  
-+   +-+-+               +-+-+   +               +   +-+-+               +-+-+   +                                   +   +-+-+               +-+-+   +               +   +-+-+               +-+-+   +  
-|   |   |               |   |   |               |   |   |               |   |   |                                   |   |   |               |   |   |               |   |   |               |   |   |  
-+-+-+   +               +   +-+-+               +-+-+   +               +   +-+-+                                   +-+-+   +               +   +-+-+               +-+-+   +               +   +-+-+  
-        |               |                               |               |                                                   |               |                               |               |          
-      +-+               +-+       +-+-+   +-+-+       +-+               +-+                                               +-+               +-+       +-+-+   +-+-+       +-+               +-+        
-      |                   |       |   |   |   |       |                   |                                               |                   |       |   |   |   |       |                   |        
-      +                   +       +   +-+-+   +       +                   +                                               +                   +       +   +-+-+   +       +                   +        
-      |                   |       |           |       |                   |                                               |                   |       |           |       |                   |        
-      +-+               +-+       +-+       +-+       +-+               +-+                                               +-+               +-+       +-+       +-+       +-+               +-+        
-        |               |           |       |           |               |                                                   |               |           |       |           |               |          
-+-+-+   +               +   +-+-+   +       +   +-+-+   +               +   +-+-+                                   +-+-+   +               +   +-+-+   +       +   +-+-+   +               +   +-+-+  
-|   |   |               |   |   |   |       |   |   |   |               |   |   |                                   |   |   |               |   |   |   |       |   |   |   |               |   |   |  
-+   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +                                   +   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +  
-|                                                                               |                                   |                                                                               |  
-+-+       +-+-+   +-+-+                                   +-+-+   +-+-+       +-+                                   +-+       +-+-+   +-+-+                                   +-+-+   +-+-+       +-+  
-  |       |   |   |   |                                   |   |   |   |       |                                       |       |   |   |   |                                   |   |   |   |       |    
-  +       +   +-+-+   +                                   +   +-+-+   +       +                                       +       +   +-+-+   +                                   +   +-+-+   +       +    
-  |       |           |                                   |           |       |                                       |       |           |                                   |           |       |    
-+-+       +-+       +-+                                   +-+       +-+       +-+                                   +-+       +-+       +-+                                   +-+       +-+       +-+  
-|           |       |                                       |       |           |                                   |           |       |                                       |       |           |  
-+   +-+-+   +       +                                       +       +   +-+-+   +                                   +   +-+-+   +       +                                       +       +   +-+-+   +  
-|   |   |   |       |                                       |       |   |   |   |                                   |   |   |   |       |                                       |       |   |   |   |  
-+-+-+   +-+-+       +-+                                   +-+       +-+-+   +-+-+                                   +-+-+   +-+-+       +-+                                   +-+       +-+-+   +-+-+  
-                      |                                   |                                                                               |                                   |                        
-              +-+-+   +                                   +   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +                                   +   +-+-+                
-              |   |   |                                   |   |   |               |   |   |   |       |   |   |   |               |   |   |                                   |   |   |                
-              +   +-+-+                                   +-+-+   +               +   +-+-+   +       +   +-+-+   +               +   +-+-+                                   +-+-+   +                
-              |                                                   |               |           |       |           |               |                                                   |                
-              +-+                                               +-+               +-+       +-+       +-+       +-+               +-+                                               +-+                
-                |                                               |                   |       |           |       |                   |                                               |                  
-                +                                               +                   +       +   +-+-+   +       +                   +                                               +                  
-                |                                               |                   |       |   |   |   |       |                   |                                               |                  
-              +-+                                               +-+               +-+       +-+-+   +-+-+       +-+               +-+                                               +-+                
-              |                                                   |               |                               |               |                                                   |                
-              +   +-+-+                                   +-+-+   +               +   +-+-+               +-+-+   +               +   +-+-+                                   +-+-+   +                
-              |   |   |                                   |   |   |               |   |   |               |   |   |               |   |   |                                   |   |   |                
-              +-+-+   +                                   +   +-+-+               +-+-+   +               +   +-+-+               +-+-+   +                                   +   +-+-+                
-                      |                                   |                               |               |                               |                                   |                        
-+-+-+   +-+-+       +-+                                   +-+       +-+-+   +-+-+       +-+               +-+       +-+-+   +-+-+       +-+                                   +-+       +-+-+   +-+-+  
-|   |   |   |       |                                       |       |   |   |   |       |                   |       |   |   |   |       |                                       |       |   |   |   |  
-+   +-+-+   +       +                                       +       +   +-+-+   +       +                   +       +   +-+-+   +       +                                       +       +   +-+-+   +  
-|           |       |                                       |       |           |       |                   |       |           |       |                                       |       |           |  
-+-+       +-+       +-+                                   +-+       +-+       +-+       +-+               +-+       +-+       +-+       +-+                                   +-+       +-+       +-+  
-  |       |           |                                   |           |       |           |               |           |       |           |                                   |           |       |    
-  +       +   +-+-+   +                                   +   +-+-+   +       +   +-+-+   +               +   +-+-+   +       +   +-+-+   +                                   +   +-+-+   +       +    
-  |       |   |   |   |                                   |   |   |   |       |   |   |   |               |   |   |   |       |   |   |   |                                   |   |   |   |       |    
-+-+       +-+-+   +-+-+                                   +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+                                   +-+-+   +-+-+       +-+  
-|                                                                                                                                                                                                   |  
-+   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+                                                                                   +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +  
-|   |   |               |   |   |   |       |   |   |   |                                                                                   |   |   |   |       |   |   |   |               |   |   |  
-+-+-+   +               +   +-+-+   +       +   +-+-+   +                                                                                   +   +-+-+   +       +   +-+-+   +               +   +-+-+  
-        |               |           |       |           |                                                                                   |           |       |           |               |          
-      +-+               +-+       +-+       +-+       +-+                                                                                   +-+       +-+       +-+       +-+               +-+        
-      |                   |       |           |       |                                                                                       |       |           |       |                   |        
-      +                   +       +   +-+-+   +       +                                                                                       +       +   +-+-+   +       +                   +        
-      |                   |       |   |   |   |       |                                                                                       |       |   |   |   |       |                   |        
-      +-+               +-+       +-+-+   +-+-+       +-+                                                                                   +-+       +-+-+   +-+-+       +-+               +-+        
-        |               |                               |                                                                                   |                               |               |          
-+-+-+   +               +   +-+-+               +-+-+   +                                                                                   +   +-+-+               +-+-+   +               +   +-+-+  
-|   |   |               |   |   |               |   |   |                                                                                   |   |   |               |   |   |               |   |   |  
-+   +-+-+               +-+-+   +               +   +-+-+                                                                                   +-+-+   +               +   +-+-+               +-+-+   +  
-|                               |               |                                                                                                   |               |                               |  
-+-+       +-+-+   +-+-+       +-+               +-+                                                                                               +-+               +-+       +-+-+   +-+-+       +-+  
-  |       |   |   |   |       |                   |                                                                                               |                   |       |   |   |   |       |    
-  +       +   +-+-+   +       +                   +                                                                                               +                   +       +   +-+-+   +       +    
-  |       |           |       |                   |                                                                                               |                   |       |           |       |    
-+-+       +-+       +-+       +-+               +-+                                                                                               +-+               +-+       +-+       +-+       +-+  
-|           |       |           |               |                                                                                                   |               |           |       |           |  
-+   +-+-+   +       +   +-+-+   +               +   +-+-+                                                                                   +-+-+   +               +   +-+-+   +       +   +-+-+   +  
-|   |   |   |       |   |   |   |               |   |   |                                                                                   |   |   |               |   |   |   |       |   |   |   |  
-+-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +                                                                                   +   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+  
-                                                        |                                                                                   |                                                          
-                                  +-+-+   +-+-+       +-+                                                                                   +-+       +-+-+   +-+-+                                    
-                                  |   |   |   |       |                                                                                       |       |   |   |   |                                    
-                                  +   +-+-+   +       +                                                                                       +       +   +-+-+   +                                    
-                                  |           |       |                                                                                       |       |           |                                    
-                                  +-+       +-+       +-+                                                                                   +-+       +-+       +-+                                    
-                                    |       |           |                                                                                   |           |       |                                      
-                                    +       +   +-+-+   +                                                                                   +   +-+-+   +       +                                      
-                                    |       |   |   |   |                                                                                   |   |   |   |       |                                      
-                                  +-+       +-+-+   +-+-+                                                                                   +-+-+   +-+-+       +-+                                    
-                                  |                                                                                                                               |                                    
-                                  +   +-+-+                                                                                                               +-+-+   +                                    
-                                  |   |   |                                                                                                               |   |   |                                    
-                                  +-+-+   +                                                                                                               +   +-+-+                                    
-                                          |                                                                                                               |                                            
-                                        +-+                                                                                                               +-+                                          
-                                        |                                                                                                                   |                                          
-                                        +                                                                                                                   +                                          
-                                        |                                                                                                                   |                                          
-                                        +-+                                                                                                               +-+                                          
-                                          |                                                                                                               |                                            
-                                  +-+-+   +                                                                                                               +   +-+-+                                    
-                                  |   |   |                                                                                                               |   |   |                                    
-                                  +   +-+-+                                                                                                               +-+-+   +                                    
-                                  |                                                                                                                               |                                    
-                                  +-+       +-+-+   +-+-+                                                                                   +-+-+   +-+-+       +-+                                    
-                                    |       |   |   |   |                                                                                   |   |   |   |       |                                      
-                                    +       +   +-+-+   +                                                                                   +   +-+-+   +       +                                      
-                                    |       |           |                                                                                   |           |       |                                      
-                                  +-+       +-+       +-+                                                                                   +-+       +-+       +-+                                    
-                                  |           |       |                                                                                       |       |           |                                    
-                                  +   +-+-+   +       +                                                                                       +       +   +-+-+   +                                    
-                                  |   |   |   |       |                                                                                       |       |   |   |   |                                    
-                                  +-+-+   +-+-+       +-+                                                                                   +-+       +-+-+   +-+-+                                    
-                                                        |                                                                                   |                                                          
-+-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +                                                                                   +   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+  
-|   |   |   |       |   |   |   |               |   |   |                                                                                   |   |   |               |   |   |   |       |   |   |   |  
-+   +-+-+   +       +   +-+-+   +               +   +-+-+                                                                                   +-+-+   +               +   +-+-+   +       +   +-+-+   +  
-|           |       |           |               |                                                                                                   |               |           |       |           |  
-+-+       +-+       +-+       +-+               +-+                                                                                               +-+               +-+       +-+       +-+       +-+  
-  |       |           |       |                   |                                                                                               |                   |       |           |       |    
-  +       +   +-+-+   +       +                   +                                                                                               +                   +       +   +-+-+   +       +    
-  |       |   |   |   |       |                   |                                                                                               |                   |       |   |   |   |       |    
-+-+       +-+-+   +-+-+       +-+               +-+                                                                                               +-+               +-+       +-+-+   +-+-+       +-+  
-|                               |               |                                                                                                   |               |                               |  
-+   +-+-+               +-+-+   +               +   +-+-+                                                                                   +-+-+   +               +   +-+-+               +-+-+   +  
-|   |   |               |   |   |               |   |   |                                                                                   |   |   |               |   |   |               |   |   |  
-+-+-+   +               +   +-+-+               +-+-+   +                                                                                   +   +-+-+               +-+-+   +               +   +-+-+  
-        |               |                               |                                                                                   |                               |               |          
-      +-+               +-+       +-+-+   +-+-+       +-+                                                                                   +-+       +-+-+   +-+-+       +-+               +-+        
-      |                   |       |   |   |   |       |                                                                                       |       |   |   |   |       |                   |        
-      +                   +       +   +-+-+   +       +                                                                                       +       +   +-+-+   +       +                   +        
-      |                   |       |           |       |                                                                                       |       |           |       |                   |        
-      +-+               +-+       +-+       +-+       +-+                                                                                   +-+       +-+       +-+       +-+               +-+        
-        |               |           |       |           |                                                                                   |           |       |           |               |          
-+-+-+   +               +   +-+-+   +       +   +-+-+   +                                                                                   +   +-+-+   +       +   +-+-+   +               +   +-+-+  
-|   |   |               |   |   |   |       |   |   |   |                                                                                   |   |   |   |       |   |   |   |               |   |   |  
++-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+                                   +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+
+|   |   |   |       |   |   |   |               |   |   |   |       |   |   |   |                                   |   |   |   |       |   |   |   |               |   |   |   |       |   |   |   |
++   +-+-+   +       +   +-+-+   +               +   +-+-+   +       +   +-+-+   +                                   +   +-+-+   +       +   +-+-+   +               +   +-+-+   +       +   +-+-+   +
+|           |       |           |               |           |       |           |                                   |           |       |           |               |           |       |           |
++-+       +-+       +-+       +-+               +-+       +-+       +-+       +-+                                   +-+       +-+       +-+       +-+               +-+       +-+       +-+       +-+
+  |       |           |       |                   |       |           |       |                                       |       |           |       |                   |       |           |       |
+  +       +   +-+-+   +       +                   +       +   +-+-+   +       +                                       +       +   +-+-+   +       +                   +       +   +-+-+   +       +
+  |       |   |   |   |       |                   |       |   |   |   |       |                                       |       |   |   |   |       |                   |       |   |   |   |       |
++-+       +-+-+   +-+-+       +-+               +-+       +-+-+   +-+-+       +-+                                   +-+       +-+-+   +-+-+       +-+               +-+       +-+-+   +-+-+       +-+
+|                               |               |                               |                                   |                               |               |                               |
++   +-+-+               +-+-+   +               +   +-+-+               +-+-+   +                                   +   +-+-+               +-+-+   +               +   +-+-+               +-+-+   +
+|   |   |               |   |   |               |   |   |               |   |   |                                   |   |   |               |   |   |               |   |   |               |   |   |
++-+-+   +               +   +-+-+               +-+-+   +               +   +-+-+                                   +-+-+   +               +   +-+-+               +-+-+   +               +   +-+-+
+        |               |                               |               |                                                   |               |                               |               |
+      +-+               +-+       +-+-+   +-+-+       +-+               +-+                                               +-+               +-+       +-+-+   +-+-+       +-+               +-+
+      |                   |       |   |   |   |       |                   |                                               |                   |       |   |   |   |       |                   |
+      +                   +       +   +-+-+   +       +                   +                                               +                   +       +   +-+-+   +       +                   +
+      |                   |       |           |       |                   |                                               |                   |       |           |       |                   |
+      +-+               +-+       +-+       +-+       +-+               +-+                                               +-+               +-+       +-+       +-+       +-+               +-+
+        |               |           |       |           |               |                                                   |               |           |       |           |               |
++-+-+   +               +   +-+-+   +       +   +-+-+   +               +   +-+-+                                   +-+-+   +               +   +-+-+   +       +   +-+-+   +               +   +-+-+
+|   |   |               |   |   |   |       |   |   |   |               |   |   |                                   |   |   |               |   |   |   |       |   |   |   |               |   |   |
++   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +                                   +   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +
+|                                                                               |                                   |                                                                               |
++-+       +-+-+   +-+-+                                   +-+-+   +-+-+       +-+                                   +-+       +-+-+   +-+-+                                   +-+-+   +-+-+       +-+
+  |       |   |   |   |                                   |   |   |   |       |                                       |       |   |   |   |                                   |   |   |   |       |
+  +       +   +-+-+   +                                   +   +-+-+   +       +                                       +       +   +-+-+   +                                   +   +-+-+   +       +
+  |       |           |                                   |           |       |                                       |       |           |                                   |           |       |
++-+       +-+       +-+                                   +-+       +-+       +-+                                   +-+       +-+       +-+                                   +-+       +-+       +-+
+|           |       |                                       |       |           |                                   |           |       |                                       |       |           |
++   +-+-+   +       +                                       +       +   +-+-+   +                                   +   +-+-+   +       +                                       +       +   +-+-+   +
+|   |   |   |       |                                       |       |   |   |   |                                   |   |   |   |       |                                       |       |   |   |   |
++-+-+   +-+-+       +-+                                   +-+       +-+-+   +-+-+                                   +-+-+   +-+-+       +-+                                   +-+       +-+-+   +-+-+
+                      |                                   |                                                                               |                                   |
+              +-+-+   +                                   +   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +                                   +   +-+-+
+              |   |   |                                   |   |   |               |   |   |   |       |   |   |   |               |   |   |                                   |   |   |
+              +   +-+-+                                   +-+-+   +               +   +-+-+   +       +   +-+-+   +               +   +-+-+                                   +-+-+   +
+              |                                                   |               |           |       |           |               |                                                   |
+              +-+                                               +-+               +-+       +-+       +-+       +-+               +-+                                               +-+
+                |                                               |                   |       |           |       |                   |                                               |
+                +                                               +                   +       +   +-+-+   +       +                   +                                               +
+                |                                               |                   |       |   |   |   |       |                   |                                               |
+              +-+                                               +-+               +-+       +-+-+   +-+-+       +-+               +-+                                               +-+
+              |                                                   |               |                               |               |                                                   |
+              +   +-+-+                                   +-+-+   +               +   +-+-+               +-+-+   +               +   +-+-+                                   +-+-+   +
+              |   |   |                                   |   |   |               |   |   |               |   |   |               |   |   |                                   |   |   |
+              +-+-+   +                                   +   +-+-+               +-+-+   +               +   +-+-+               +-+-+   +                                   +   +-+-+
+                      |                                   |                               |               |                               |                                   |
++-+-+   +-+-+       +-+                                   +-+       +-+-+   +-+-+       +-+               +-+       +-+-+   +-+-+       +-+                                   +-+       +-+-+   +-+-+
+|   |   |   |       |                                       |       |   |   |   |       |                   |       |   |   |   |       |                                       |       |   |   |   |
++   +-+-+   +       +                                       +       +   +-+-+   +       +                   +       +   +-+-+   +       +                                       +       +   +-+-+   +
+|           |       |                                       |       |           |       |                   |       |           |       |                                       |       |           |
++-+       +-+       +-+                                   +-+       +-+       +-+       +-+               +-+       +-+       +-+       +-+                                   +-+       +-+       +-+
+  |       |           |                                   |           |       |           |               |           |       |           |                                   |           |       |
+  +       +   +-+-+   +                                   +   +-+-+   +       +   +-+-+   +               +   +-+-+   +       +   +-+-+   +                                   +   +-+-+   +       +
+  |       |   |   |   |                                   |   |   |   |       |   |   |   |               |   |   |   |       |   |   |   |                                   |   |   |   |       |
++-+       +-+-+   +-+-+                                   +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+                                   +-+-+   +-+-+       +-+
+|                                                                                                                                                                                                   |
++   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+                                                                                   +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +
+|   |   |               |   |   |   |       |   |   |   |                                                                                   |   |   |   |       |   |   |   |               |   |   |
++-+-+   +               +   +-+-+   +       +   +-+-+   +                                                                                   +   +-+-+   +       +   +-+-+   +               +   +-+-+
+        |               |           |       |           |                                                                                   |           |       |           |               |
+      +-+               +-+       +-+       +-+       +-+                                                                                   +-+       +-+       +-+       +-+               +-+
+      |                   |       |           |       |                                                                                       |       |           |       |                   |
+      +                   +       +   +-+-+   +       +                                                                                       +       +   +-+-+   +       +                   +
+      |                   |       |   |   |   |       |                                                                                       |       |   |   |   |       |                   |
+      +-+               +-+       +-+-+   +-+-+       +-+                                                                                   +-+       +-+-+   +-+-+       +-+               +-+
+        |               |                               |                                                                                   |                               |               |
++-+-+   +               +   +-+-+               +-+-+   +                                                                                   +   +-+-+               +-+-+   +               +   +-+-+
+|   |   |               |   |   |               |   |   |                                                                                   |   |   |               |   |   |               |   |   |
++   +-+-+               +-+-+   +               +   +-+-+                                                                                   +-+-+   +               +   +-+-+               +-+-+   +
+|                               |               |                                                                                                   |               |                               |
++-+       +-+-+   +-+-+       +-+               +-+                                                                                               +-+               +-+       +-+-+   +-+-+       +-+
+  |       |   |   |   |       |                   |                                                                                               |                   |       |   |   |   |       |
+  +       +   +-+-+   +       +                   +                                                                                               +                   +       +   +-+-+   +       +
+  |       |           |       |                   |                                                                                               |                   |       |           |       |
++-+       +-+       +-+       +-+               +-+                                                                                               +-+               +-+       +-+       +-+       +-+
+|           |       |           |               |                                                                                                   |               |           |       |           |
++   +-+-+   +       +   +-+-+   +               +   +-+-+                                                                                   +-+-+   +               +   +-+-+   +       +   +-+-+   +
+|   |   |   |       |   |   |   |               |   |   |                                                                                   |   |   |               |   |   |   |       |   |   |   |
++-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +                                                                                   +   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+
+                                                        |                                                                                   |
+                                  +-+-+   +-+-+       +-+                                                                                   +-+       +-+-+   +-+-+
+                                  |   |   |   |       |                                                                                       |       |   |   |   |
+                                  +   +-+-+   +       +                                                                                       +       +   +-+-+   +
+                                  |           |       |                                                                                       |       |           |
+                                  +-+       +-+       +-+                                                                                   +-+       +-+       +-+
+                                    |       |           |                                                                                   |           |       |
+                                    +       +   +-+-+   +                                                                                   +   +-+-+   +       +
+                                    |       |   |   |   |                                                                                   |   |   |   |       |
+                                  +-+       +-+-+   +-+-+                                                                                   +-+-+   +-+-+       +-+
+                                  |                                                                                                                               |
+                                  +   +-+-+                                                                                                               +-+-+   +
+                                  |   |   |                                                                                                               |   |   |
+                                  +-+-+   +                                                                                                               +   +-+-+
+                                          |                                                                                                               |
+                                        +-+                                                                                                               +-+
+                                        |                                                                                                                   |
+                                        +                                                                                                                   +
+                                        |                                                                                                                   |
+                                        +-+                                                                                                               +-+
+                                          |                                                                                                               |
+                                  +-+-+   +                                                                                                               +   +-+-+
+                                  |   |   |                                                                                                               |   |   |
+                                  +   +-+-+                                                                                                               +-+-+   +
+                                  |                                                                                                                               |
+                                  +-+       +-+-+   +-+-+                                                                                   +-+-+   +-+-+       +-+
+                                    |       |   |   |   |                                                                                   |   |   |   |       |
+                                    +       +   +-+-+   +                                                                                   +   +-+-+   +       +
+                                    |       |           |                                                                                   |           |       |
+                                  +-+       +-+       +-+                                                                                   +-+       +-+       +-+
+                                  |           |       |                                                                                       |       |           |
+                                  +   +-+-+   +       +                                                                                       +       +   +-+-+   +
+                                  |   |   |   |       |                                                                                       |       |   |   |   |
+                                  +-+-+   +-+-+       +-+                                                                                   +-+       +-+-+   +-+-+
+                                                        |                                                                                   |
++-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +                                                                                   +   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+
+|   |   |   |       |   |   |   |               |   |   |                                                                                   |   |   |               |   |   |   |       |   |   |   |
++   +-+-+   +       +   +-+-+   +               +   +-+-+                                                                                   +-+-+   +               +   +-+-+   +       +   +-+-+   +
+|           |       |           |               |                                                                                                   |               |           |       |           |
++-+       +-+       +-+       +-+               +-+                                                                                               +-+               +-+       +-+       +-+       +-+
+  |       |           |       |                   |                                                                                               |                   |       |           |       |
+  +       +   +-+-+   +       +                   +                                                                                               +                   +       +   +-+-+   +       +
+  |       |   |   |   |       |                   |                                                                                               |                   |       |   |   |   |       |
++-+       +-+-+   +-+-+       +-+               +-+                                                                                               +-+               +-+       +-+-+   +-+-+       +-+
+|                               |               |                                                                                                   |               |                               |
++   +-+-+               +-+-+   +               +   +-+-+                                                                                   +-+-+   +               +   +-+-+               +-+-+   +
+|   |   |               |   |   |               |   |   |                                                                                   |   |   |               |   |   |               |   |   |
++-+-+   +               +   +-+-+               +-+-+   +                                                                                   +   +-+-+               +-+-+   +               +   +-+-+
+        |               |                               |                                                                                   |                               |               |
+      +-+               +-+       +-+-+   +-+-+       +-+                                                                                   +-+       +-+-+   +-+-+       +-+               +-+
+      |                   |       |   |   |   |       |                                                                                       |       |   |   |   |       |                   |
+      +                   +       +   +-+-+   +       +                                                                                       +       +   +-+-+   +       +                   +
+      |                   |       |           |       |                                                                                       |       |           |       |                   |
+      +-+               +-+       +-+       +-+       +-+                                                                                   +-+       +-+       +-+       +-+               +-+
+        |               |           |       |           |                                                                                   |           |       |           |               |
++-+-+   +               +   +-+-+   +       +   +-+-+   +                                                                                   +   +-+-+   +       +   +-+-+   +               +   +-+-+
+|   |   |               |   |   |   |       |   |   |   |                                                                                   |   |   |   |       |   |   |   |               |   |   |
 S   +-+-+               +-+-+   +-+-+       +-+-+   +-+-+                                                                                   +-+-+   +-+-+       +-+-+   +-+-+               +-+-+   +-+
 
 ```
@@ -2159,13 +2159,13 @@ def directions(xss: List[(Char,Char)], current: Char = 'R'): List[Char] = xss ma
     }
   }
 }
-     
+
 def buildIt(xss: List[Char], old: Char = 'X', count: Int = 1): List[String] = xss match {
   case Nil => s"$old$count" :: Nil
   case x :: xs if x == old => buildIt(xs,old,count+1)
   case x :: xs => s"$old$count" :: buildIt(xs,x)
 }
-     
+
 def convertToLine(s: String, c: Int): String = (s.head, s.tail) match {
   case ('R',n) => s"l ${c * n.toInt} 0"
   case ('U',n) => s"l 0 ${-c * n.toInt}"

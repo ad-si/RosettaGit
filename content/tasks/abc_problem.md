@@ -2129,8 +2129,7 @@ Confuse 1
 Uses C++11. Build with g++-4.7 -Wall -std=c++0x abc.cpp
 
 ```cpp
-#include <iostream
-
+#include <iostream>
 #include <vector>
 #include <string>
 #include <set>
@@ -2165,7 +2164,6 @@ int main() {
     for (const std::string& w : words) {
         std::cout << w << ": " << std::boolalpha << can_make_word(w,vals) << ".\n";
     }
-
 }
 ```
 

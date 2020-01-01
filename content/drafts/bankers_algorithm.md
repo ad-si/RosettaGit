@@ -51,8 +51,8 @@ Standard binary heap-as-priority queue affair.  Only that each node links back t
 
 There are two <code>main()</code> functions to choose from (look for <code>#define BIG_EXAMPLE</code>), one is for task example, the other is a much heavier duty test case.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdbool.h>
 
 int main() {
@@ -532,26 +532,26 @@ function queryprompt(query, typ)
         (typ <: Vector) ? map(x -> parse(Int, x), split(entry, r"\s+")) :
         entry
 end
- 
+
 function testbankers()
     r = queryprompt("Enter the number of resources", Int)
     p = queryprompt("\nEnter the number of processes", Int)
     maxres = queryprompt("\nEnter Claim Vector", Vector{Int})
     curr, maxclaim = zeros(Int, p, r), zeros(Int, p, r)
-    
+
     for i in 1:p
         curr[i, :] .= queryprompt("\nEnter Allocated Resource Table, Row $i", Vector{Int})
     end
      for i in 1:p
         maxclaim[i, :] .= queryprompt("\nEnter Maximum Claim Table, Row $i", Vector{Int})
     end
- 
+
     alloc = [sum(curr[:, j]) for j in 1:r]
     println("\nAllocated Resources: $alloc")
- 
+
     avl = map(i -> maxres[i] - alloc[i], 1:r)
     println("\nAvailable Resources: $avl")
- 
+
     running = trues(p)
     count = p
     while count != 0
@@ -565,7 +565,7 @@ function testbankers()
                         break
                     end
                 end
- 
+
                 if exec
                     println("\nProcess $i is executing.")
                     running[i] = false
@@ -578,12 +578,12 @@ function testbankers()
                 end
             end
         end
- 
+
         if !safe
             println("The processes are in an unsafe state.")
             break
         end
- 
+
         println("\nThe process is in a safe state.")
         println("\nAvailable Vector: $avl")
     end
@@ -756,7 +756,7 @@ Row 3:  4 0 0 3
 Row 4:  0 2 1 0
 Row 5:  1 0 3 0
 
-Enter Maximum Claim Table: 
+Enter Maximum Claim Table:
 Row 1:  3 2 1 4
 Row 2:  0 2 5 2
 Row 3:  5 1 0 5
@@ -811,7 +811,7 @@ Module BankerAlgo {
       Function RequestPreset(FromWhere as Inventory, What$, Many as long)  {
             =FromWhere(What$+"_Request")-Many>=0
       }
-      Function Need(FromWhere as Inventory, What$, Many) { 
+      Function Need(FromWhere as Inventory, What$, Many) {
             =FromWhere(What$ + "_max")-FromWhere(What$)-Many>=0
       }
       \\ code for sub can be found from parent module/function (here parent as in code, not as in call)
@@ -820,7 +820,7 @@ Module BankerAlgo {
             ApplyResources(Process)   ' sub need more arguments and read from current stack
             =Process
       }
-      Inventory System, Processes 
+      Inventory System, Processes
       \\ Recource, Max, Available
       ApplyResources(System, "A", 6, 3,"B", 5,1,"C", 7, 1, "D", 6, 2)
       \\ Recource, Max, Available
@@ -843,16 +843,16 @@ Module BankerAlgo {
       Append Processes, "P1":=NewProcess("A", 9, 3)
       Append Processes, "P2":=NewProcess("A", 4, 2)
       Append Processes, "P3":=NewProcess("A", 7, 2)
-      Status(True) ' show all process, available resource and max    
+      Status(True) ' show all process, available resource and max
       Print "Current Status"
       RequestResource() ' display Safe State
       \ Third Example
       Clear System
       ApplyResources(System, "A", 10, 2)
       Return Processes, "P1":=NewProcess("A", 9,4)
-      Status(True) ' show all process, available resource and max    
+      Status(True) ' show all process, available resource and max
       Print "Current Status"
-      RequestResource() ' display UnSafe State       
+      RequestResource() ' display UnSafe State
       Sub Respond()
             If SafeState Then {
                   Pen 15 {Print "Safe State"}
@@ -873,7 +873,7 @@ Module BankerAlgo {
                   Print  Format$("Claim {1} for type {0} resource ",ResourceName$, many)
                   If skip Then Continue
                   If Request(System, ResourceName$, many) Then {
-                        If Need(pro, ResourceName$, many) Then { 
+                        If Need(pro, ResourceName$, many) Then {
                               Return pro, ResourceName$+"_Request":=many
                               Return System, ResourceName$+"_Request":=-many
                         } Else {
@@ -881,7 +881,7 @@ Module BankerAlgo {
                         }
                   } Else Print "Too many Recources for System" : Skip=True
                   If Skip Then exit
-            } 
+            }
             If skip Else  CheckNewState(&SafeState) : Respond()
             Print  ' just a new line
             WaitForKey()
@@ -939,8 +939,8 @@ Module BankerAlgo {
                   While M {
                         If alive(M^) Then {
                               Z=Processes(M^!)
-                              M1=Each(Z) 
-                              safe=True 
+                              M1=Each(Z)
+                              safe=True
                               While M1 {
                                     Recource$=Eval$(M1, M1^)
                                     If Instr(Recource$,"_")=0 Then {
@@ -952,7 +952,7 @@ Module BankerAlgo {
                                     print format$("Process {0} is executing", M^+1)
                                     alive(M^)=0
                                     count--
-                                    M1=Each(Z) 
+                                    M1=Each(Z)
                                     While M1 {
                                           Recource$=Eval$(M1, M1^)
                                           If Instr(Recource$,"_")=0 Then {
@@ -992,13 +992,13 @@ sequence max_res = {6, 5, 7, 6},
     for i=1 to count do
         alloc = sq_add(alloc,curr[i])
     end for
-    sequence avl = sq_sub(max_res,alloc) 
+    sequence avl = sq_sub(max_res,alloc)
 
     printf(1,"Available system resources: ")    ?max_res
     printf(1,"Process allocated: ")             ?curr
     printf(1,"Maximum resources: ")             ?max_claim
     printf(1,"Allocated resources: ")           ?alloc
-    printf(1,"Available resources: ")           ?avl 
+    printf(1,"Available resources: ")           ?avl
 
     while count!=0 do
         bool safe = false
@@ -1011,7 +1011,7 @@ sequence max_res = {6, 5, 7, 6},
                         exit
                     end if
                 end for
- 
+
                 if execute then
                     printf(1,"Process%d is executing. ", i)
                     running[i] = false
@@ -1024,7 +1024,7 @@ sequence max_res = {6, 5, 7, 6},
                 end if
             end if
         end for
- 
+
         if not safe then
             printf(1,"The processes are in an unsafe state.\n");
             exit
@@ -1080,7 +1080,7 @@ The processes are in an unsafe state.
   (printf "Allocated resources:~%~a~%" (pretty-format alloc))
   (define avl (for/vector #:length r ((m (in-vector maxres)) (a (in-vector alloc))) (- m a)))
   (printf "Available resources:~%~a~%~%" (pretty-format avl))
-  
+
   (define (safe-exec i mc_i cu_i)
     (define exec? (for/and ((a (in-vector avl)) (m (in-vector mc_i)) (c (in-vector cu_i)))
                     (<= (- m c) a)))
@@ -1091,7 +1091,7 @@ The processes are in an unsafe state.
        (for ((j (in-range r)) (a (in-vector avl)) (c (in-vector cu_i))) (vector-set! avl j (+ a c)))
        #t]
       [else #f]))
-  
+
   (let loop ()
     (unless (zero? (vector-count values running?))
       (define safe?
@@ -1110,13 +1110,13 @@ The processes are in an unsafe state.
             [else (displayln "The processes are in an unsafe state")]))))
 
 
-(define (bankers-input)  
+(define (bankers-input)
   (define ((n-vector? type? dims) x) ;; not the world's most efficient implementation!
     (cond [(null? dims) (type? x)]
           [(not (vector? x)) #f]
           [(not (= (car dims) (vector-length x))) #f]
           [else (for/and ((e (in-vector x))) (n-vector? type? (cdr dims)) e)]))
-  
+
   (define-syntax-rule (prompted-input prompt valid?)
     (block
      (printf "Enter ~a:~%" prompt)
@@ -1124,7 +1124,7 @@ The processes are in an unsafe state.
      (pretty-print rv)
      (unless (valid? rv) (raise-argument-error 'prompted-input (format "~a" 'valid?) rv))
      rv))
-  
+
   (define p (prompted-input "the number of processes" exact-positive-integer?))
   (define r (prompted-input "the number of resources" exact-positive-integer?))
   (define maxres (prompted-input "Claim Vector" (n-vector? exact-positive-integer? (list r))))
@@ -1227,12 +1227,12 @@ where T: std::str::FromStr {
 fn main() {
     print!("Enter the number of resources: ");
     let r = read_numbers()[0];
-    
+
     print!("Enter the number of processes: ");
     let p = read_numbers()[0];
     let mut running = vec![true; p];
     let mut count = p;
-    
+
     print!("Enter the {}-item claim vector: ", r);
     let max_res = read_numbers::<u32>();
 
@@ -1241,13 +1241,13 @@ fn main() {
     for i in 0..p {
         curr[i] = read_numbers::<u32>();
     }
-    
+
     println!("Enter the {}-line {}-column maximum-claim table:", p, r);
     let mut max_claim = vec![vec![0; 0]; p];
     for i in 0..p {
         max_claim[i] = read_numbers::<u32>();
     }
-    
+
     print!("The claim vector is: ");
     for i in 0..r {
         print!("{} ", max_res[i]);
@@ -1269,14 +1269,14 @@ fn main() {
         }
         println!();
     }
-    
+
     let mut alloc = vec![0; r];
     for i in 0..p {
         for j in 0..r {
             alloc[j] += curr[i][j];
         }
     }
-    
+
     print!("The allocated resources are: ");
     for i in 0..r {
         print!("{} ", alloc[i]);
@@ -1356,7 +1356,7 @@ Enter the 5-line 4-column maximum-claim table:
 5 1 0 5
 1 5 3 0
 3 0 3 3
-The claim vector is: 8 5 9 7 
+The claim vector is: 8 5 9 7
 The allocated resources table is:
 	2	0	1	1
 	0	1	2	1
@@ -1369,23 +1369,23 @@ The maximum claims table is:
 	5	1	0	5
 	1	5	3	0
 	3	0	3	3
-The allocated resources are: 7 3 7 5 
-The available resources are: 1 2 2 2 
+The allocated resources are: 7 3 7 5
+The available resources are: 1 2 2 2
 Process 3 is executing.
 The process is in safe state.
-The available vector is: 5 2 2 5 
+The available vector is: 5 2 2 5
 Process 1 is executing.
 The process is in safe state.
-The available vector is: 7 2 3 6 
+The available vector is: 7 2 3 6
 Process 2 is executing.
 The process is in safe state.
-The available vector is: 7 3 5 7 
+The available vector is: 7 3 5 7
 Process 4 is executing.
 The process is in safe state.
-The available vector is: 7 5 6 7 
+The available vector is: 7 5 6 7
 Process 5 is executing.
 The process is in safe state.
-The available vector is: 8 5 9 7 
+The available vector is: 8 5 9 7
 
 ```
 

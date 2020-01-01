@@ -14,7 +14,7 @@ tags = []
 [[File:Apollonius.png|400px|Two solutions to the problem of Apollonius|right]]
 
 ;Task:
-Implement a solution to the Problem of Apollonius   ([[wp:Problem_of_Apollonius|description on Wikipedia]])   which is the problem of finding the circle that is tangent to three specified circles.   There is an [[wp:Problem_of_Apollonius#Algebraic_solutions|algebraic solution]] which is pretty straightforward. 
+Implement a solution to the Problem of Apollonius   ([[wp:Problem_of_Apollonius|description on Wikipedia]])   which is the problem of finding the circle that is tangent to three specified circles.   There is an [[wp:Problem_of_Apollonius#Algebraic_solutions|algebraic solution]] which is pretty straightforward.
 
 The solutions to the example in the code are shown in the image (below and right).   The red circle is "internally tangent" to all three black circles, and the green circle is "externally tangent" to all three black circles.
 
@@ -305,7 +305,7 @@ Note use made of array arithmetic.
       Circles{(0)}.x = 0 : Circles{(0)}.y = 0 : Circles{(0)}.r = 1
       Circles{(1)}.x = 4 : Circles{(1)}.y = 0 : Circles{(1)}.r = 1
       Circles{(2)}.x = 2 : Circles{(2)}.y = 4 : Circles{(2)}.r = 2
-      
+
       @% = &2030A
       REM Solution for internal circle:
       PROCapollonius(Circle{}, Circles{()}, -1, -1, -1)
@@ -314,14 +314,14 @@ Note use made of array arithmetic.
       PROCapollonius(Circle{}, Circles{()}, 1, 1, 1)
       PRINT "External: x = ";Circle.x ", y = ";Circle.y ", r = ";Circle.r
       END
-      
+
       DEF PROCapollonius(c{}, c{()}, s0, s1, s2)
       LOCAL x0, x1, x2, y0, y1, y2, r0, r1, r2, a, b, c
       LOCAL u(), v(), w() : DIM u(2), v(2), w(2)
       x0 = c{(0)}.x : y0 = c{(0)}.y : r0 = c{(0)}.r
       x1 = c{(1)}.x : y1 = c{(1)}.y : r1 = c{(1)}.r
       x2 = c{(2)}.x : y2 = c{(2)}.y : r2 = c{(2)}.r
-      
+
       u() = 2*y1-2*y0, x0*x0-x1*x1+y0*y0-y1*y1-r0*r0+r1*r1, 2*s1*r1-2*s0*r0
       v() = 2*y2-2*y1, x1*x1-x2*x2+y1*y1-y2*y2-r1*r1+r2*r2, 2*s2*r2-2*s1*r1
       w() = u() / (2*x1 - 2*x0)
@@ -332,7 +332,7 @@ Note use made of array arithmetic.
       a = w(2)*w(2) + u(2)*u(2) - 1
       b = -2*w(1)*w(2) - 2*w(2)*x1 - 2*u(1)*u(2) - 2*u(2)*y1 + 2*s1*r1
       c = x1*x1 + w(1)*w(1) + 2*w(1)*x1 + u(1)*u(1) + y1*y1 + 2*u(1)*y1 - r1*r1
-      
+
       c.r = (-b - SQR(b^2 - 4*a*c)) / (2*a)
       c.x = c.r * w(2) - w(1)
       c.y = c.r * u(2) - u(1)
@@ -354,8 +354,8 @@ External: x = 2.000, y = 2.100, r = 3.900
 
 C99.  2D vectors are actually complex numbers.  The method here is unothordox if not insane.  I can't prove that it should work, though it does seem to give correct answers for test cases I tried.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <tgmath.h>
 
 #define VERBOSE 0
@@ -372,18 +372,18 @@ typedef struct { vec c; double r; } circ;
 
 double cross(vec a, vec b) { return re(a) * im(b) - im(a) * re(b); }
 double abs2(vec a) { return a * conj(a); }
- 
+
 int apollonius_in(circ aa[], int ss[], int flip, int divert)
 {
 	vec n[3], x[3], t[3], a, b, center;
 	int s[3], iter = 0, res = 0;
 	double diff = 1, diff_old = -1, axb, d, r;
- 
+
 	for3 {
 		s[i] = ss[i] ? 1 : -1;
 		x[i] = aa[i].c;
 	}
- 
+
 	while (diff > 1e-20) {
 		a = x[0] - x[2], b = x[1] - x[2];
 		diff = 0;
@@ -402,7 +402,7 @@ int apollonius_in(circ aa[], int ss[], int flip, int divert)
 		   towards the edge of each given circle. */
 		r = fabs(d / (2 * axb));
 		center = (abs2(a)*b - abs2(b)*a) / (2 * axb) * I + x[2];
- 
+
  		/* maybe the "arc" is actually straight line; then we have two
 		   choices in defining "push" and "pull", so try both */
 		if (!axb && flip != -1 && !divert) {
@@ -424,7 +424,7 @@ int apollonius_in(circ aa[], int ss[], int flip, int divert)
 		for3 diff += abs2(t[i] - x[i]), x[i] = t[i];
 
 		if (VERBOSE) printf(" %g\n", diff);
- 
+
  		/* keep an eye on the total diff: failing to converge means no solution */
 		if (diff >= diff_old && diff_old >= 0)
 			if (iter++ > 20) return res;
@@ -438,7 +438,7 @@ int apollonius_in(circ aa[], int ss[], int flip, int divert)
 
 	return res + 1;
 }
- 
+
 int apollonius(circ aa[])
 {
 	int s[3], i, sum = 0;
@@ -453,14 +453,14 @@ int apollonius(circ aa[])
 	}
 	return sum;
 }
- 
+
 int main()
 {
 	circ a[3] = {{0, 1}, {4, 1}, {2 + 4 * I, 1}};
 	circ b[3] = {{-3, 2}, {0, 1}, {3, 2}};
 	circ c[3] = {{-2, 1}, {0, 1}, {2 * I, 1}};
 	//circ c[3] = {{0, 1}, {0, 2}, {0, 3}}; <-- a fun one
- 
+
 	puts("set 1"); apollonius(a);
 	puts("set 2"); apollonius(b);
 	puts("set 3"); apollonius(c);
@@ -593,7 +593,7 @@ namespace ApolloniusProblemCalc
                 s3 = 1;
             }
 
-            //This calculation to solve for the solution circles is cited from the Java version 
+            //This calculation to solve for the solution circles is cited from the Java version
             float v11 = 2 * x2 - 2 * x1;
             float v12 = 2 * y2 - 2 * y1;
             float v13 = x1 * x1 - x2 * x2 + y1 * y1 - y2 * y2 - r1 * r1 + r2 * r2;
@@ -642,12 +642,12 @@ namespace ApolloniusProblemCalc
 
 class Circle
   constructor: (@x, @y, @r) ->
- 
+
 apollonius = (c1, c2, c3, s1=1, s2=1, s3=1) ->
   [x1, y1, r1] = [c1.x, c1.y, c1.r]
   [x2, y2, r2] = [c2.x, c2.y, c2.r]
   [x3, y3, r3] = [c3.x, c3.y, c3.r]
-  
+
   sq = (n) -> n*n
 
   v11 = 2*x2 - 2*x1
@@ -681,14 +681,14 @@ apollonius = (c1, c2, c3, s1=1, s2=1, s3=1) ->
   rs = (-b - Math.sqrt(d)) / (2*a)
   xs = m + n*rs
   ys = p + q*rs
-  
+
   new Circle(xs, ys, rs)
-  
- 
+
+
 console.log c1 = new Circle(0, 0, 1)
 console.log c2 = new Circle(2, 4, 2)
 console.log c3 = new Circle(4, 0, 1)
- 
+
 console.log apollonius(c1, c2, c3)
 console.log apollonius(c1, c2, c3, -1, -1, -1)
 
@@ -697,7 +697,7 @@ console.log apollonius(c1, c2, c3, -1, -1, -1)
 
 output
 <lang>
-> coffee foo.coffee 
+> coffee foo.coffee
 { x: 0, y: 0, r: 1 }
 { x: 2, y: 4, r: 2 }
 { x: 4, y: 0, r: 1 }
@@ -816,21 +816,21 @@ defmodule Circle do
     {w12, w13, w14} = calc(c1, c2, s1, s2)
     {u22, u23, u24} = calc(c2, c3, s2, s3)
     {w22, w23, w24} = {u22 - w12, u23 - w13, u24 - w14}
-    
+
     p = -w23 / w22
     q = w24 / w22
     m = -w12 * p - w13
     n = w14 - w12 * q
-    
+
     a = n*n + q*q - 1
     b = 2*m*n - 2*n*x1 + 2*p*q - 2*q*y1 + 2*s1*r1
     c = x1*x1 + m*m - 2*m*x1 + p*p + y1*y1 - 2*p*y1 - r1*r1
-    
+
     d = b*b - 4*a*c
     rs = (-b - :math.sqrt(d)) / (2*a)
     {m + n*rs, p + q*rs, rs}
   end
-  
+
   defp calc({x1, y1, r1}, {x2, y2, r2}, s1, s2) do
     v1 = x2 - x1
     {(y2 - y1) / v1, (x1*x1 - x2*x2 + y1*y1 - y2*y2 - r1*r1 + r2*r2) / (2*v1), (s2*r2 - s1*r1) / v1}
@@ -840,7 +840,7 @@ end
 c1 = {0, 0, 1}
 c2 = {2, 4, 2}
 c3 = {4, 0, 1}
- 
+
 IO.inspect Circle.apollonius(c1, c2, c3, 1, 1, 1)
 IO.inspect Circle.apollonius(c1, c2, c3, -1, -1, -1)
 ```
@@ -865,65 +865,65 @@ type circle = { center: point; radius: float; }
 
 let new_circle x y r =
    { center = { x=x; y=y }; radius = r }
- 
+
 let print_circle c =
    printfn "Circle(x=%.2f, y=%.2f, r=%.2f)"
      c.center.x c.center.y c.radius
- 
+
 let xyr c = c.center.x, c.center.y, c.radius
- 
+
 let solve_apollonius c1 c2 c3
                      s1 s2 s3 =
 
    let x1, y1, r1 = xyr c1
    let x2, y2, r2 = xyr c2
    let x3, y3, r3 = xyr c3
- 
+
    let v11 = 2. * x2 - 2. * x1
    let v12 = 2. * y2 - 2. * y1
    let v13 = x1*x1 - x2*x2 + y1*y1 - y2*y2 - r1*r1 + r2*r2
    let v14 = (2. * s2 * r2) - (2. * s1 * r1)
- 
+
    let v21 = 2. * x3 - 2. * x2
    let v22 = 2. * y3 - 2. * y2
    let v23 = x2*x2 - x3*x3 + y2*y2 - y3*y3 - r2*r2 + r3*r3
    let v24 = (2. * s3 * r3) - (2. * s2 * r2)
- 
+
    let w12 = v12 / v11
    let w13 = v13 / v11
    let w14 = v14 / v11
- 
+
    let w22 = v22 / v21 - w12
    let w23 = v23 / v21 - w13
    let w24 = v24 / v21 - w14
- 
+
    let p = - w23 / w22
    let q = w24 / w22
    let m = - w12 * p - w13
    let n = w14 - w12 * q
- 
+
    let a = n*n + q*q - 1.
    let b = 2.*m*n - 2.*n*x1 + 2.*p*q - 2.*q*y1 + 2.*s1*r1
    let c = x1*x1 + m*m - 2.*m*x1 + p*p + y1*y1 - 2.*p*y1 - r1*r1
- 
+
    let d = b * b - 4. * a * c
    let rs = (- b - (sqrt d)) / (2. * a)
- 
+
    let xs = m + n * rs
    let ys = p + q * rs
- 
+
    new_circle xs ys rs
- 
+
 
 [<EntryPoint>]
-let main argv = 
+let main argv =
   let c1 = new_circle 0. 0. 1.
   let c2 = new_circle 4. 0. 1.
   let c3 = new_circle 2. 4. 2.
- 
+
   let r1 = solve_apollonius c1 c2 c3 1. 1. 1.
   print_circle r1
- 
+
   let r2 = solve_apollonius c1 c2 c3 (-1.) (-1.) (-1.)
   print_circle r2
   0
@@ -953,7 +953,7 @@ program Apollonius
     real(dp) :: y
     real(dp) :: radius
   end type
-       
+
   type(circle) :: c1 , c2, c3, r
 
   c1 = circle(0.0, 0.0, 1.0)
@@ -962,21 +962,21 @@ program Apollonius
 
   write(*, "(a,3f12.8))") "External tangent:", SolveApollonius(c1, c2, c3, 1, 1, 1)
   write(*, "(a,3f12.8))") "Internal tangent:", SolveApollonius(c1, c2, c3, -1, -1, -1)
- 
+
 contains
 
 function SolveApollonius(c1, c2, c3, s1, s2, s3) result(res)
   type(circle) :: res
   type(circle), intent(in) :: c1, c2, c3
   integer, intent(in) :: s1, s2, s3
- 
+
   real(dp) :: x1, x2, x3, y1, y2, y3, r1, r2, r3
   real(dp) :: v11, v12, v13, v14
   real(dp) :: v21, v22, v23, v24
   real(dp) :: w12, w13, w14
   real(dp) :: w22, w23, w24
   real(dp) :: p, q, m, n, a, b, c, det
-  
+
   x1 = c1%x; x2 = c2%x; x3 = c3%x
   y1 = c1%y; y2 = c2%y; y3 = c3%y
   r1 = c1%radius; r2 = c2%radius; r3 = c3%radius
@@ -985,29 +985,29 @@ function SolveApollonius(c1, c2, c3, s1, s2, s3) result(res)
   v12 = 2*y2 - 2*y1
   v13 = x1*x1 - x2*x2 + y1*y1 - y2*y2 - r1*r1 + r2*r2
   v14 = 2*s2*r2 - 2*s1*r1
- 
+
   v21 = 2*x3 - 2*x2
   v22 = 2*y3 - 2*y2
   v23 = x2*x2 - x3*x3 + y2*y2 - y3*y3 - r2*r2 + r3*r3
   v24 = 2*s3*r3 - 2*s2*r2
- 
+
   w12 = v12/v11
   w13 = v13/v11
   w14 = v14/v11
- 
+
   w22 = v22/v21-w12
   w23 = v23/v21-w13
   w24 = v24/v21-w14
- 
+
   p = -w23/w22
   q = w24/w22
   m = -w12*P - w13
   n = w14 - w12*q
- 
+
   a = n*n + q*q - 1
   b = 2*m*n - 2*n*x1 + 2*p*q - 2*q*y1 + 2*s1*r1
   c = x1*x1 + m*m - 2*m*x1 + p*p + y1*y1 - 2*p*y1 - r1*r1
- 
+
   det = b*b - 4*a*c
   res%radius = (-b-sqrt(det)) / (2*a)
   res%x = m + n*res%radius
@@ -1230,7 +1230,7 @@ WDone()
 end
 
 procedure WC(c,fg)  # write and plot circle
-WAttrib("fg="||fg) 
+WAttrib("fg="||fg)
 DrawCircle(c.x*scale+xoffset, yadjust-(c.y*scale+yoffset), c.r*scale)
 return write("Circle(x,y,r) := (",c.x,", ",c.y,", ",c.r,")")
 end
@@ -1241,29 +1241,29 @@ procedure Apollonius(c1,c2,c3,s1,s2,s3)  # solve Apollonius
   v12 := 2.*(c2.y - c1.y)
   v13 := c1.x^2 - c2.x^2 + c1.y^2 - c2.y^2 - c1.r^2 + c2.r^2
   v14 := 2.*(s2*c2.r - s1*c1.r)
- 
+
   v21 := 2.*(c3.x - c2.x)
   v22 := 2.*(c3.y - c2.y)
   v23 := c2.x^2 - c3.x^2 + c2.y^2 - c3.y^2 - c2.r^2 + c3.r^2
   v24 := 2.*(s3*c3.r - s2*c2.r)
- 
+
   w12 := v12/v11
   w13 := v13/v11
   w14 := v14/v11
- 
+
   w22 := v22/v21-w12
   w23 := v23/v21-w13
   w24 := v24/v21-w14
- 
+
   P := -w23/w22
   Q := w24/w22
   M := -w12*P-w13
   N := w14 - w12*Q
- 
+
   a := N*N + Q*Q - 1
   b := 2*M*N - 2*N*c1.x + 2*P*Q - 2*Q*c1.y + 2*s1*c1.r
   c := c1.x*c1.x + M*M - 2*M*c1.x + P*P + c1.y*c1.y - 2*P*c1.y - c1.r*c1.r
- 
+
   #// Find a root of a quadratic equation. This requires the circle centers not to be e.g. colinear
   D := b*b-4*a*c
   rs := (-b-sqrt(D))/(2*a)
@@ -1293,7 +1293,7 @@ Circle(x,y,r) := (2.0, 0.8333333333333333, 1.166666666666667)
 require 'math/misc/amoeba'
 
 NB.*apollonius v solves Apollonius problems
-NB. y is Cx0 Cy0 R0,  Cx1 Cy1 R1,:  Cx2 Cy2 R2 
+NB. y is Cx0 Cy0 R0,  Cx1 Cy1 R1,:  Cx2 Cy2 R2
 NB. x are radius scale factors to control which circles are included
 NB.   in the common tangent circle.  1 to surround, _1 to exclude.
 NB. returns Cxs Cys Rs
@@ -1351,7 +1351,7 @@ public class ApolloniusSolver
 {
 /** Solves the Problem of Apollonius (finding a circle tangent to three other
   * circles in the plane). The method uses approximately 68 heavy operations
-  * (multiplication, division, square-roots). 
+  * (multiplication, division, square-roots).
   * @param c1 One of the circles in the problem
   * @param c2 One of the circles in the problem
   * @param c3 One of the circles in the problem
@@ -1361,7 +1361,7 @@ public class ApolloniusSolver
   *           tangent (+1/-1) to c2
   * @param s3 An indication if the solution should be externally or internally
   *           tangent (+1/-1) to c3
-  * @return The circle that is tangent to c1, c2 and c3. 
+  * @return The circle that is tangent to c1, c2 and c3.
   */
  public static Circle solveApollonius(Circle c1, Circle c2, Circle c3, int s1,
 				      int s2, int s3)
@@ -1456,7 +1456,7 @@ def ap(c1; c2; c3; s):
   | (2 * (c2.x - c1.x)) as $v11
   | (2 * (c2.y - c1.y)) as $v12
   | ($x1sq - $x2sq + $y1sq - $y2sq - $r1sq + $r2sq) as $v13
-  
+
   | (2 * (c2.r - c1.r) | sign) as $v14
   | (2 * (c3.x - c2.x)) as $v21
   | (2 * (c3.y - c2.y)) as $v22
@@ -1484,7 +1484,7 @@ def ap(c1; c2; c3; s):
   | (( -$b - (($d|sqrt))) / (2 * $a)) as $rs    # root
 
   | [$m + ($n*$rs),  $p + ($q*$rs),  $rs]
-  | circle 
+  | circle
 ;
 ```
 
@@ -1512,7 +1512,7 @@ $ jq -n -c -f apollonius.jq
 
 ## Julia
 
-This solution follows the algebraic solution from [http://mathworld.wolfram.com/ApolloniusProblem.html Weisstein, Eric W. "Apollonius' Problem." From MathWorld--A Wolfram Web Resource].  The [https://github.com/Keno/Polynomials.jl Polynomials] package is used to solve the quadratic equation for the radius (equation 1 in the reference) rather than hard coding it.  
+This solution follows the algebraic solution from [http://mathworld.wolfram.com/ApolloniusProblem.html Weisstein, Eric W. "Apollonius' Problem." From MathWorld--A Wolfram Web Resource].  The [https://github.com/Keno/Polynomials.jl Polynomials] package is used to solve the quadratic equation for the radius (equation 1 in the reference) rather than hard coding it.
 
 The <code>enc</code> array passed to the <code>apollonius</code> function, specifies which of the three defining circles are to be enclosed in the solution.  For this task only the "internal" (<code>enc=[]</code>) and "external" (<code>enc=[1:3]</code>) are called for.
 
@@ -1613,7 +1613,7 @@ data class Circle(val x: Double, val y: Double, val r: Double)
 
 val Double.sq get() = this * this
 
-fun solveApollonius(c1: Circle, c2: Circle, c3: Circle, 
+fun solveApollonius(c1: Circle, c2: Circle, c3: Circle,
                     s1: Int, s2: Int, s3: Int): Circle {
     val (x1, y1, r1) = c1
     val (x2, y2, r2) = c2
@@ -1623,29 +1623,29 @@ fun solveApollonius(c1: Circle, c2: Circle, c3: Circle,
     val v12 = 2 * y2 - 2 * y1
     val v13 = x1.sq - x2.sq + y1.sq - y2.sq - r1.sq + r2.sq
     val v14 = 2 * s2 * r2 - 2 * s1 * r1
- 
+
     val v21 = 2 * x3 - 2 * x2
     val v22 = 2 * y3 - 2 * y2
     val v23 = x2.sq - x3.sq + y2.sq - y3.sq - r2.sq + r3.sq
     val v24 = 2 * s3 * r3 - 2 * s2 * r2
- 
+
     val w12 = v12 / v11
     val w13 = v13 / v11
     val w14 = v14 / v11
- 
+
     val w22 = v22 / v21 - w12
     val w23 = v23 / v21 - w13
     val w24 = v24 / v21 - w14
- 
+
     val p = -w23 / w22
     val q =  w24 / w22
     val m = -w12 * p - w13
     val n =  w14 - w12 * q
- 
+
     val a = n.sq +  q.sq - 1
     val b = 2 * m * n - 2 * n * x1 + 2 * p * q - 2 * q * y1 + 2 * s1 * r1
     val c = x1.sq + m.sq - 2 * m * x1 + p.sq + y1.sq - 2 * p * y1 - r1.sq
- 
+
     val d = b.sq - 4 * a * c
     val rs = (-b - Math.sqrt(d)) / (2 * a)
     val xs = m + n * rs
@@ -1681,18 +1681,18 @@ Circle(x=2.0, y=0.8333333333333333, r=1.1666666666666667)
 ```Lasso
 define solveApollonius(c1, c2, c3, s1, s2, s3) => {
 	local(
-		x1 = decimal(#c1->get(1)), 
-		y1 = decimal(#c1->get(2)), 
+		x1 = decimal(#c1->get(1)),
+		y1 = decimal(#c1->get(2)),
 		r1 = decimal(#c1->get(3))
 	)
 	local(
-		x2 = decimal(#c2->get(1)), 
-		y2 = decimal(#c2->get(2)), 
+		x2 = decimal(#c2->get(1)),
+		y2 = decimal(#c2->get(2)),
 		r2 = decimal(#c2->get(3))
 	)
 	local(
-		x3 = decimal(#c3->get(1)), 
-		y3 = decimal(#c3->get(2)), 
+		x3 = decimal(#c3->get(1)),
+		y3 = decimal(#c3->get(2)),
 		r3 = decimal(#c3->get(3))
 	)
     local(
@@ -1700,36 +1700,36 @@ define solveApollonius(c1, c2, c3, s1, s2, s3) => {
     	v12 = 2*#y2 - 2*#y1,
     	v13 = #x1*#x1 - #x2*#x2 + #y1*#y1 - #y2*#y2 - #r1*#r1 + #r2*#r2,
     	v14 = 2*#s2*#r2 - 2*#s1*#r1,
-    	
+
 		v21 = 2*#x3 - 2*#x2,
 		v22 = 2*#y3 - 2*#y2,
 		v23 = #x2*#x2 - #x3*#x3 + #y2*#y2 - #y3*#y3 - #r2*#r2 + #r3*#r3,
 		v24 = 2*#s3*#r3 - 2*#s2*#r2,
-		 
+
 		w12 = #v12/#v11,
 		w13 = #v13/#v11,
 		w14 = #v14/#v11,
-		 
+
 		w22 = #v22/#v21-#w12,
 		w23 = #v23/#v21-#w13,
 		w24 = #v24/#v21-#w14,
-		
+
 		P = -#w23/#w22,
 		Q = #w24/#w22,
 		M = -#w12*#P-#w13,
 		N = #w14 - #w12*#Q,
-		 
+
 		a = #N*#N + #Q*#Q - 1,
 		b = 2*#M*#N - 2*#N*#x1 + 2*#P*#Q - 2*#Q*#y1 + 2*#s1*#r1,
 		c = #x1*#x1 + #M*#M - 2*#M*#x1 + #P*#P + #y1*#y1 - 2*#P*#y1 - #r1*#r1
 
 	)
-	
+
 	// Find a root of a quadratic equation. This requires the circle centers not to be e.g. colinear
 	local(
 		D = #b*#b-4*#a*#c,
 		rs = (-#b - #D->sqrt)/(2*#a),
-		 
+
 		xs = #M+#N*#rs,
 		ys = #P+#Q*#rs
 	)
@@ -1813,7 +1813,7 @@ end function
 
 ```
 
- 
+
  x_pos y_pos radius
  0.000, 0.000, 1.000
  4.000, 0.000, 1.000
@@ -1821,8 +1821,8 @@ end function
 
  2.000, 2.100, 3.900
  2.000, 0.833, 1.167
- 
- 
+
+
 
 
 ## Mathematica
@@ -2012,7 +2012,7 @@ type circle = {
   center: point;
   radius: float;
 }
- 
+
 let new_circle ~x ~y ~r =
   { center = { x=x; y=y };
     radius = r }
@@ -2036,47 +2036,47 @@ let solve_apollonius ~c1 ~c2 ~c3
   let x1, y1, r1 = defxyr c1
   and x2, y2, r2 = defxyr c2
   and x3, y3, r3 = defxyr c3 in
- 
+
   let v11 = 2.0 * x2 - 2.0 * x1
   and v12 = 2.0 * y2 - 2.0 * y1
   and v13 = x1*x1 - x2*x2 + y1*y1 - y2*y2 - r1*r1 + r2*r2
   and v14 = (2.0 * s2 * r2) - (2.0 * s1 * r1)
- 
+
   and v21 = 2.0 * x3 - 2.0 * x2
   and v22 = 2.0 * y3 - 2.0 * y2
   and v23 = x2*x2 - x3*x3 + y2*y2 - y3*y3 - r2*r2 + r3*r3
   and v24 = (2.0 * s3 * r3) - (2.0 * s2 * r2) in
- 
+
   let w12 = v12 / v11
   and w13 = v13 / v11
   and w14 = v14 / v11 in
- 
+
   let w22 = v22 / v21 - w12
   and w23 = v23 / v21 - w13
   and w24 = v24 / v21 - w14 in
- 
+
   let p = -. w23 / w22
   and q = w24 / w22 in
   let m = -. w12 * p - w13
   and n = w14 - w12 * q in
- 
+
   let a = n*n + q*q - 1.0
   and b = 2.0*m*n - 2.0*n*x1 + 2.0*p*q - 2.0*q*y1 + 2.0*s1*r1
   and c = x1*x1 + m*m - 2.0*m*x1 + p*p + y1*y1 - 2.0*p*y1 - r1*r1 in
- 
+
   let d = b * b - 4.0 * a * c in
   let rs = (-. b - (sqrt d)) / (2.0 * a) in
- 
+
   let xs = m + n * rs
   and ys = p + q * rs in
- 
+
   (new_circle xs ys rs)
 
 let () =
   let c1 = new_circle 0.0 0.0 1.0
   and c2 = new_circle 4.0 0.0 1.0
   and c3 = new_circle 2.0 4.0 2.0 in
- 
+
   let r1 = solve_apollonius c1 c2 c3 1.0 1.0 1.0 in
   print_circle r1;
 
@@ -2209,38 +2209,38 @@ sub solve-Apollonius([\c1, \c2, \c3], [\s1, \s2, \s3]) {
     my \𝑣12 = 2 * c2.y - 2 * c1.y;
     my \𝑣13 = c1.x² - c2.x² + c1.y² - c2.y² - c1.r² + c2.r²;
     my \𝑣14 = 2 * s2 * c2.r - 2 * s1 * c1.r;
- 
+
     my \𝑣21 = 2 * c3.x - 2 * c2.x;
     my \𝑣22 = 2 * c3.y - 2 * c2.y;
     my \𝑣23 = c2.x² - c3.x² + c2.y² - c3.y² - c2.r² + c3.r²;
     my \𝑣24 = 2 * s3 * c3.r - 2 * s2 * c2.r;
- 
+
     my \𝑤12 = 𝑣12 / 𝑣11;
     my \𝑤13 = 𝑣13 / 𝑣11;
     my \𝑤14 = 𝑣14 / 𝑣11;
- 
+
     my \𝑤22 = 𝑣22 / 𝑣21 - 𝑤12;
     my \𝑤23 = 𝑣23 / 𝑣21 - 𝑤13;
     my \𝑤24 = 𝑣24 / 𝑣21 - 𝑤14;
- 
+
     my \𝑃 = -𝑤23 / 𝑤22;
     my \𝑄 = 𝑤24 / 𝑤22;
     my \𝑀 = -𝑤12 * 𝑃 - 𝑤13;
     my \𝑁 = 𝑤14 - 𝑤12 * 𝑄;
- 
+
     my \𝑎 = 𝑁² + 𝑄² - 1;
     my \𝑏 = 2 * 𝑀 * 𝑁 - 2 * 𝑁 * c1.x + 2 * 𝑃 * 𝑄 - 2 * 𝑄 * c1.y + 2 * s1 * c1.r;
     my \𝑐 = c1.x² + 𝑀² - 2 * 𝑀 * c1.x + 𝑃² + c1.y² - 2 * 𝑃 * c1.y - c1.r²;
- 
+
     my \𝐷 = 𝑏² - 4 * 𝑎 * 𝑐;
     my \rs = (-𝑏 - sqrt 𝐷) / (2 * 𝑎);
- 
+
     my \xs = 𝑀 + 𝑁 * rs;
     my \ys = 𝑃 + 𝑄 * rs;
- 
+
     circle(xs, ys, rs);
 }
- 
+
 my @c = circle(0, 0, 1), circle(4, 0, 1), circle(2, 4, 2);
 for ([X] [-1,1] xx 3) -> @i {
     say (solve-Apollonius @c, @i).gist;
@@ -2271,45 +2271,45 @@ function Apollonius(sequence calc, circles)
     integer {s1,s2,s3} = calc
 
     atom {x1,y1,r1} = circles[1],
-         {x2,y2,r2} = circles[2],   
-         {x3,y3,r3} = circles[3],   
+         {x2,y2,r2} = circles[2],
+         {x3,y3,r3} = circles[3],
 
          v11 = 2*x2 - 2*x1,
          v12 = 2*y2 - 2*y1,
          v13 = x1*x1 - x2*x2 + y1*y1 - y2*y2 - r1*r1 + r2*r2,
          v14 = 2*s2*r2 - 2*s1*r1,
- 
+
          v21 = 2*x3 - 2*x2,
          v22 = 2*y3 - 2*y2,
          v23 = x2*x2 - x3*x3 + y2*y2 - y3*y3 - r2*r2 + r3*r3,
          v24 = 2*s3*r3 - 2*s2*r2,
- 
+
          w12 = v12 / v11,
          w13 = v13 / v11,
          w14 = v14 / v11,
- 
+
          w22 = v22 / v21 - w12,
          w23 = v23 / v21 - w13,
          w24 = v24 / v21 - w14,
- 
+
          P = -w23 / w22,
          Q =  w24 / w22,
          M = -w12*P - w13,
          N =  w14 - w12*Q,
- 
+
          a = N*N + Q*Q - 1,
          b = 2*M*N - 2*N*x1 + 2*P*Q - 2*Q*y1 + 2*s1*r1,
          c = x1*x1 + M*M - 2*M*x1 + P*P + y1*y1 - 2*P*y1 - r1*r1,
- 
+
          d = b*b - 4*a*c,
- 
+
          rs = (-b-sqrt(d)) / (2*a),
 
          xs = M + N*rs,
          ys = P + Q*rs
 
     return {xs,ys,rs}
-end function 
+end function
 
 constant circles = {{0,0,1},
                     {4,0,1},
@@ -2359,7 +2359,7 @@ Apollonius: procedure options (main); /* 29 October 2013 */
       2 x float (15),
       2 y float (15),
       2 radius float (15);
-       
+
    declare (c1 , c2, c3, result) type (circle);
 
    c1.x = 0; c1.y = 0; c1.radius = 1;
@@ -2371,48 +2371,48 @@ Apollonius: procedure options (main); /* 29 October 2013 */
 
    result = Solve_Apollonius(c1, c2, c3, -1, -1, -1);
    put skip edit ('Internal tangent:', result.x, result.y, result.radius) (a, 3 f(12,8));
- 
+
 
 
 Solve_Apollonius: procedure (c1, c2, c3, s1, s2, s3) returns(type(circle));
    declare (c1, c2, c3) type(circle);
    declare res type (circle);
    declare (s1, s2, s3) fixed binary;
- 
-   declare ( 
+
+   declare (
              v11, v12, v13, v14,
              v21, v22, v23, v24,
              w12, w13, w14,
              w22, w23, w24,
              p, q, m, n, a, b, c, det) float (15);
-  
+
    v11 = 2*c2.x - 2*c1.x;
    v12 = 2*c2.y - 2*c1.y;
    v13 = c1.x**2 - c2.x**2 + c1.y**2 - c2.y**2 - c1.radius**2 + c2.radius**2;
    v14 = 2*s2*c2.radius - 2*s1*c1.radius;
- 
+
    v21 = 2*c3.x - 2*c2.x;
    v22 = 2*c3.y - 2*c2.y;
    v23 = c2.x**2 - c3.x**2 + c2.y**2 - c3.y**2 - c2.radius**2 + c3.radius**2;
    v24 = 2*s3*c3.radius - 2*s2*c2.radius;
- 
+
    w12 = v12/v11;
    w13 = v13/v11;
    w14 = v14/v11;
- 
+
    w22 = v22/v21-w12;
    w23 = v23/v21-w13;
    w24 = v24/v21-w14;
- 
+
    p = -w23/w22;
    q = w24/w22;
    m = -w12*P - w13;
    n = w14 - w12*q;
- 
+
    a = n*n + q*q - 1;
    b = 2*m*n - 2*n*c1.x + 2*p*q - 2*q*c1.y + 2*s1*c1.radius;
    c = c1.x**2 + m*m - 2*m*c1.x + p*p + c1.y**2 - 2*p*c1.y - c1.radius**2;
- 
+
    det = b*b - 4*a*c;
    res.radius = (-b-sqrt(det)) / (2*a);
    res.x = m + n*res.radius;
@@ -2473,20 +2473,20 @@ function Measure-Apollonius
     [double]$v12 = 2 * $y2 - 2 * $y1
     [double]$v13 = $x1 * $x1 - $x2 * $x2 + $y1 * $y1 - $y2 * $y2 - $r1 * $r1 + $r2 * $r2
     [double]$v14 = 2 * $s2 * $r2 - 2 * $s1 * $r1
- 
+
     [double]$v21 = 2 * $x3 - 2 * $x2
     [double]$v22 = 2 * $y3 - 2 * $y2
     [double]$v23 = $x2 * $x2 - $x3 * $x3 + $y2 * $y2 - $y3 * $y3 - $r2 * $r2 + $r3 * $r3
     [double]$v24 = 2 * $s3 * $r3 - 2 * $s2 * $r2
- 
+
     [double]$w12 = $v12 / $v11
     [double]$w13 = $v13 / $v11
     [double]$w14 = $v14 / $v11
- 
+
     [double]$w22 = $v22 / $v21 - $w12
     [double]$w23 = $v23 / $v21 - $w13
     [double]$w24 = $v24 / $v21 - $w14
- 
+
     [double]$P = -$w23 / $w22
     [double]$Q = $w24 / $w22
     [double]$M = -$w12 * $P - $w13
@@ -2495,9 +2495,9 @@ function Measure-Apollonius
     [double]$a = $N * $N + $Q * $Q - 1
     [double]$b = 2 * $M * $N - 2 * $N * $x1 + 2 * $P * $Q - 2 * $Q * $y1 + 2 * $s1 * $r1
     [double]$c = $x1 * $x1 + $M * $M - 2 * $M * $x1 + $P * $P + $y1 * $y1 - 2 * $P * $y1 - $r1 * $r1
- 
+
     [double]$D = $b * $b - 4 * $a * $c
- 
+
     [double]$rs = (-$b - [Double]::Parse([Math]::Sqrt($D).ToString())) / (2 * [Double]::Parse($a.ToString()))
     [double]$xs = $M + $N * $rs
     [double]$ys = $P + $Q * $rs
@@ -2515,7 +2515,7 @@ function Measure-Apollonius
 ```PowerShell
 
 for ($i = 1; $i -le 8; $i++)
-{ 
+{
     Measure-Apollonius -Counter $i -x1 0 -y1 0 -r1 1 -x2 4 -y2 0 -r2 1 -x3 2 -y3 4 -r3 2
 }
 
@@ -2555,38 +2555,38 @@ Procedure ApolloniusSolver(*c1.Circle,*c2.Circle,*c3.Circle, s1, s2, s3)
   Define.f  ; This tells the compiler that all non-specified new variables
             ; should be of float type (.f).
   x1=*c1\XPos:  y1=*c1\YPos:  r1=*c1\Radius
-  x2=*c2\XPos:  y2=*c2\YPos:  r2=*c2\Radius  
+  x2=*c2\XPos:  y2=*c2\YPos:  r2=*c2\Radius
   x3=*c3\XPos:  y3=*c3\YPos:  r3=*c3\Radius
-  
+
   v11 = 2*x2 - 2*x1
   v12 = 2*y2 - 2*y1
   v13 = x1*x1 - x2*x2 + y1*y1 - y2*y2 - r1*r1 + r2*r2
   v14 = 2*s2*r2 - 2*s1*r1
-  
+
   v21 = 2*x3 - 2*x2
   v22 = 2*y3 - 2*y2
   v23 = x2*x2 - x3*x3 + y2*y2 - y3*y3 - r2*r2 + r3*r3
   v24 = 2*s3*r3 - 2*s2*r2
-  
+
   w12 = v12/v11
   w13 = v13/v11
   w14 = v14/v11
-  
+
   w22 = v22/v21-w12
   w23 = v23/v21-w13
   w24 = v24/v21-w14
-  
+
   P = -w23/w22
   Q =  w24/w22
   M = -w12*P-w13
   N =  w14-w12*Q
-  
+
   a = N*N + Q*Q - 1
   b = 2*M*N - 2*N*x1 + 2*P*Q - 2*Q*y1 + 2*s1*r1
   c = x1*x1 + M*M - 2*M*x1 + P*P + y1*y1 - 2*P*y1 - r1*r1
-  
+
   D= b*b - 4*a*c
-  
+
   Define *result.Circle=AllocateMemory(SizeOf(Circle))
   ; Allocate memory for a returned Structure of type Circle.
   ; This memory should be freed later but if not, PureBasic’s
@@ -2605,17 +2605,17 @@ If OpenConsole()
   c1\Radius=1
   c2\XPos=4:  c2\Radius=1
   c3\XPos=2:  c3\YPos=4:  c3\Radius=2
-  
+
   *c=ApolloniusSolver(@c1, @c2, @c3, 1, 1, 1)
   If *c ; Verify that *c got allocated
     PrintN("Circle [x="+StrF(*c\XPos,2)+", y="+StrF(*c\YPos,2)+", r="+StrF(*c\Radius,2)+"]")
     FreeMemory(*c)  ; We are done with *c for the first calculation
-  EndIf        
-  
+  EndIf
+
   *c=ApolloniusSolver(@c1, @c2, @c3,-1,-1,-1)
   If *c
     PrintN("Circle [x="+StrF(*c\XPos,2)+", y="+StrF(*c\YPos,2)+", r="+StrF(*c\Radius,2)+"]")
-    FreeMemory(*c) 
+    FreeMemory(*c)
   EndIf
   Print("Press ENTER to exit"): Input()
 EndIf
@@ -2640,13 +2640,13 @@ from collections import namedtuple
 import math
 
 Circle = namedtuple('Circle', 'x, y, r')
- 
+
 def solveApollonius(c1, c2, c3, s1, s2, s3):
     '''
     >>> solveApollonius((0, 0, 1), (4, 0, 1), (2, 4, 2), 1,1,1)
     Circle(x=2.0, y=2.1, r=3.9)
     >>> solveApollonius((0, 0, 1), (4, 0, 1), (2, 4, 2), -1,-1,-1)
-    Circle(x=2.0, y=0.8333333333333333, r=1.1666666666666667) 
+    Circle(x=2.0, y=0.8333333333333333, r=1.1666666666666667)
     '''
     x1, y1, r1 = c1
     x2, y2, r2 = c2
@@ -2656,36 +2656,36 @@ def solveApollonius(c1, c2, c3, s1, s2, s3):
     v12 = 2*y2 - 2*y1
     v13 = x1*x1 - x2*x2 + y1*y1 - y2*y2 - r1*r1 + r2*r2
     v14 = 2*s2*r2 - 2*s1*r1
- 
+
     v21 = 2*x3 - 2*x2
     v22 = 2*y3 - 2*y2
     v23 = x2*x2 - x3*x3 + y2*y2 - y3*y3 - r2*r2 + r3*r3
     v24 = 2*s3*r3 - 2*s2*r2
- 
+
     w12 = v12/v11
     w13 = v13/v11
     w14 = v14/v11
- 
+
     w22 = v22/v21-w12
     w23 = v23/v21-w13
     w24 = v24/v21-w14
- 
+
     P = -w23/w22
     Q = w24/w22
     M = -w12*P-w13
     N = w14 - w12*Q
- 
+
     a = N*N + Q*Q - 1
     b = 2*M*N - 2*N*x1 + 2*P*Q - 2*Q*y1 + 2*s1*r1
     c = x1*x1 + M*M - 2*M*x1 + P*P + y1*y1 - 2*P*y1 - r1*r1
- 
+
     # Find a root of a quadratic equation. This requires the circle centers not to be e.g. colinear
     D = b*b-4*a*c
     rs = (-b-math.sqrt(D))/(2*a)
- 
+
     xs = M+N*rs
     ys = P+Q*rs
- 
+
     return Circle(xs, ys, rs)
 
 if __name__ == '__main__':
@@ -2837,7 +2837,7 @@ tell: parse arg _,a b c; w=digits()+4; say _ left(a/1,w%2) left(b/1,w) left(c/1,
 ```
 
 Programming note:   in REXX, dividing by unity normalizes the number.
- 
+
 {{out|output|text=  when using the default input:}}
 
 ```txt
@@ -2860,47 +2860,47 @@ class Circle
     @x, @y, @r = [x, y, r].map(&:to_f)
   end
   attr_reader :x, :y, :r
-  
+
   def self.apollonius(c1, c2, c3, s1=1, s2=1, s3=1)
     x1, y1, r1 = c1.x, c1.y, c1.r
     x2, y2, r2 = c2.x, c2.y, c2.r
     x3, y3, r3 = c3.x, c3.y, c3.r
-    
+
     v11 = 2*x2 - 2*x1
     v12 = 2*y2 - 2*y1
     v13 = x1**2 - x2**2 + y1**2 - y2**2 - r1**2 + r2**2
     v14 = 2*s2*r2 - 2*s1*r1
-    
+
     v21 = 2*x3 - 2*x2
     v22 = 2*y3 - 2*y2
     v23 = x2**2 - x3**2 + y2**2 - y3**2 - r2**2 + r3**2
     v24 = 2*s3*r3 - 2*s2*r2
-    
+
     w12 = v12/v11
     w13 = v13/v11
     w14 = v14/v11
-    
+
     w22 = v22/v21 - w12
     w23 = v23/v21 - w13
     w24 = v24/v21 - w14
-    
+
     p = -w23/w22
     q = w24/w22
     m = -w12*p - w13
     n = w14 - w12*q
-    
+
     a = n**2 + q**2 - 1
     b = 2*m*n - 2*n*x1 + 2*p*q - 2*q*y1 + 2*s1*r1
     c = x1**2 + m**2 - 2*m*x1 + p**2 + y1**2 - 2*p*y1 - r1**2
-    
+
     d = b**2 - 4*a*c
     rs = (-b - Math.sqrt(d)) / (2*a)
     xs = m + n*rs
     ys = p + q*rs
-    
+
     self.new(xs, ys, rs)
   end
-  
+
   def to_s
     "Circle: x=#{@x}, y=#{@y}, r=#{@r}"
   end
@@ -2960,30 +2960,30 @@ object ApolloniusSolver extends App {
     val w12 = v12 / v11
     val w13 = v13 / v11
     val w14 = v14 / v11
-    
+
     val w22 = v22 / v21 - w12
     val w23 = v23 / v21 - w13
     val w24 = v24 / v21 - w14
-    
+
     val P = -w23 / w22
     val Q =  w24 / w22
     val M = -w12 * P - w13
     val N =  w14 - w12 * Q
-    
+
     val a = N*N + Q*Q - 1
     val b = 2*M*N - 2*N*c1.x +
             2*P*Q - 2*Q*c1.y +
             2*s1*c1.r
     val c = pow(c1.x, 2) + M*M - 2*M*c1.x +
             P*P + pow(c1.y, 2) - 2*P*c1.y - pow(c1.r, 2)
-    
+
     // Find a root of a quadratic equation. This requires the circle centers not to be e.g. colinear
     val D = b*b - 4*a*c
     val rs = (-b - sqrt(D)) / (2*a)
-    
+
     Circle(x=M + N*rs, y=P + Q*rs, r=rs)
-  }	
-    
+  }
+
   val c1 = Circle(x=0.0, y=0.0, r=1.0)
   val c2 = Circle(x=4.0, y=0.0, r=1.0)
   val c3 = Circle(x=2.0, y=4.0, r=2.0)
@@ -2991,7 +2991,7 @@ object ApolloniusSolver extends App {
   println("c1: "+c1)
   println("c2: "+c2)
   println("c3: "+c3)
-  
+
   println{
     val tangents = Triple(intern, intern, intern)
     "red circle:   tangents="+tangents+" cs=" + solveApollonius(c1, c2, c3, tangents)
@@ -3115,12 +3115,12 @@ import Foundation
 struct Circle {
     let center:[Double]!
     let radius:Double!
-    
+
     init(center:[Double], radius:Double) {
         self.center = center
         self.radius = radius
     }
-    
+
     func toString() -> String {
         return "Circle[x=\(center[0]),y=\(center[1]),r=\(radius)]"
     }
@@ -3128,7 +3128,7 @@ struct Circle {
 
 func solveApollonius(c1:Circle, c2:Circle, c3:Circle,
     s1:Double, s2:Double, s3:Double) -> Circle {
-    
+
         let x1 = c1.center[0]
         let y1 = c1.center[1]
         let r1 = c1.radius
@@ -3138,42 +3138,42 @@ func solveApollonius(c1:Circle, c2:Circle, c3:Circle,
         let x3 = c3.center[0]
         let y3 = c3.center[1]
         let r3 = c3.radius
-        
+
         let v11 = 2*x2 - 2*x1
         let v12 = 2*y2 - 2*y1
         let v13 = x1*x1 - x2*x2 + y1*y1 - y2*y2 - r1*r1 + r2*r2
         let v14 = 2*s2*r2 - 2*s1*r1
-        
+
         let v21 = 2*x3 - 2*x2
         let v22 = 2*y3 - 2*y2
         let v23 = x2*x2 - x3*x3 + y2*y2 - y3*y3 - r2*r2 + r3*r3
         let v24 = 2*s3*r3 - 2*s2*r2
-        
+
         let w12 = v12/v11
         let w13 = v13/v11
         let w14 = v14/v11
-        
+
         let w22 = v22/v21-w12
         let w23 = v23/v21-w13
         let w24 = v24/v21-w14
-        
+
         let P = -w23/w22
         let Q = w24/w22
         let M = -w12*P-w13
         let N = w14 - w12*Q
-        
+
         let a = N*N + Q*Q - 1
         let b = 2*M*N - 2*N*x1 + 2*P*Q - 2*Q*y1 + 2*s1*r1
         let c = x1*x1 + M*M - 2*M*x1 + P*P + y1*y1 - 2*P*y1 - r1*r1
-        
+
         let D = b*b-4*a*c
-        
+
         let rs = (-b - sqrt(D)) / (2*a)
         let xs = M + N * rs
         let ys = P + Q * rs
-        
+
         return  Circle(center: [xs,ys], radius: rs)
-        
+
 }
 
 let c1 = Circle(center: [0,0], radius: 1)
@@ -3359,7 +3359,7 @@ Public Function fApollonius(ByRef C1 As tCircle, _
     Dim Tan1 As Integer
     Dim Tan2 As Integer
     Dim Tan3 As Integer
-    
+
     Dim v11 As Double
     Dim v12 As Double
     Dim v13 As Double
@@ -3374,12 +3374,12 @@ Public Function fApollonius(ByRef C1 As tCircle, _
     Dim w22 As Double
     Dim w23 As Double
     Dim w24 As Double
-    
+
     Dim p As Double
     Dim Q As Double
     Dim M As Double
     Dim N As Double
-   
+
     Dim A As Double
     Dim b As Double
     Dim c As Double
@@ -3390,39 +3390,39 @@ Public Function fApollonius(ByRef C1 As tCircle, _
         fApollonius = False
         Exit Function
     End If
-    
+
     Tangent(intBase + 0, intBase + 0) = -1
     Tangent(intBase + 0, intBase + 1) = -1
     Tangent(intBase + 0, intBase + 2) = -1
-    
+
     Tangent(intBase + 1, intBase + 0) = -1
     Tangent(intBase + 1, intBase + 1) = -1
     Tangent(intBase + 1, intBase + 2) = 1
-    
+
     Tangent(intBase + 2, intBase + 0) = -1
     Tangent(intBase + 2, intBase + 1) = 1
     Tangent(intBase + 2, intBase + 2) = -1
-    
+
     Tangent(intBase + 3, intBase + 0) = -1
     Tangent(intBase + 3, intBase + 1) = 1
     Tangent(intBase + 3, intBase + 2) = 1
-    
+
     Tangent(intBase + 4, intBase + 0) = 1
     Tangent(intBase + 4, intBase + 1) = -1
     Tangent(intBase + 4, intBase + 2) = -1
-    
+
     Tangent(intBase + 5, intBase + 0) = 1
     Tangent(intBase + 5, intBase + 1) = -1
     Tangent(intBase + 5, intBase + 2) = 1
-    
+
     Tangent(intBase + 6, intBase + 0) = 1
     Tangent(intBase + 6, intBase + 1) = 1
     Tangent(intBase + 6, intBase + 2) = -1
-    
+
     Tangent(intBase + 7, intBase + 0) = 1
     Tangent(intBase + 7, intBase + 1) = 1
     Tangent(intBase + 7, intBase + 2) = 1
-    
+
     For lgTangent = LBound(Tangent) To UBound(Tangent)
         Tan1 = Tangent(lgTangent, intBase + 0)
         Tan2 = Tangent(lgTangent, intBase + 1)
@@ -3437,7 +3437,7 @@ Public Function fApollonius(ByRef C1 As tCircle, _
             - (C1.Radius * C1.Radius) _
             + (C2.Radius * C2.Radius)
         v14 = 2 * (Tan2 * C2.Radius - Tan1 * C1.Radius)
-        
+
         v21 = 2 * (C3.Centre.X - C2.Centre.X)
         v22 = 2 * (C3.Centre.Y - C2.Centre.Y)
         v23 = (C2.Centre.X * C2.Centre.X) _
@@ -3447,20 +3447,20 @@ Public Function fApollonius(ByRef C1 As tCircle, _
             - (C2.Radius * C2.Radius) _
             + (C3.Radius * C3.Radius)
         v24 = 2 * ((Tan3 * C3.Radius) - (Tan2 * C2.Radius))
-        
+
         w12 = v12 / v11
         w13 = v13 / v11
         w14 = v14 / v11
-        
+
         w22 = (v22 / v21) - w12
         w23 = (v23 / v21) - w13
         w24 = (v24 / v21) - w14
-        
+
         p = -w23 / w22
         Q = w24 / w22
         M = -(w12 * p) - w13
         N = w14 - (w12 * Q)
-        
+
         A = (N * N) + (Q * Q) - 1
         b = 2 * ((M * N) - (N * C1.Centre.X) + (p * Q) - (Q * C1.Centre.Y) + (Tan1 * C1.Radius))
         c = (C1.Centre.X * C1.Centre.X) _
@@ -3470,20 +3470,20 @@ Public Function fApollonius(ByRef C1 As tCircle, _
           + (C1.Centre.Y * C1.Centre.Y) _
           - (2 * p * C1.Centre.Y) _
           - (C1.Radius * C1.Radius)
-        
+
         'Find a root of a quadratic equation (requires the circle centers not to be e.g. colinear)
         D = (b * b) - (4 * A * c)
-        
+
         With CTanTanTan(lgTangent)
             .Radius = (-b - VBA.Sqr(D)) / (2 * A)
             .Centre.X = M + (N * .Radius)
             .Centre.Y = p + (Q * .Radius)
         End With
- 
+
     Next lgTangent
-    
+
     fApollonius = True
-    
+
 End Function
 
 

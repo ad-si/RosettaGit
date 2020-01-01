@@ -21,7 +21,7 @@ Create a [http://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence Thue-Morse se
 *   YouTube entry: [https://www.youtube.com/watch?v=Tt5TTid6YXk Math and OCD - My story with the Thue-Morse sequence]
 
 
- 
+
 
 
 ## Ada
@@ -33,16 +33,16 @@ Implementation using an L-system.
 with Ada.Text_IO; use Ada.Text_IO;
 
 procedure Thue_Morse is
-   
+
    function Replace(S: String) return String is
       -- replace every "0" by "01" and every "1" by "10"
-      (if S'Length = 0 then "" 
-      else (if S(S'First) = '0' then "01" else "10") & 
+      (if S'Length = 0 then ""
+      else (if S(S'First) = '0' then "01" else "10") &
 	Replace(S(S'First+1 .. S'Last)));
-      
+
    function Sequence (N: Natural) return String is
-      (if N=0 then "0" else Replace(Sequence(N-1)));   
-      
+      (if N=0 then "0" else Replace(Sequence(N-1)));
+
 begin
    for I in 0 .. 6 loop
       Ada.Text_IO.Put_Line(Integer'Image(I) & ": " & Sequence(I));
@@ -121,11 +121,11 @@ on thueMorse(nCycles)
                     1 - x
                 end |λ|
             end script
-            
+
             xs & map(binaryInverse, xs)
         end |λ|
     end script
-    
+
     intercalate("", ¬
         foldl(concatBinaryInverse, [0], enumFromTo(1, nCycles)))
 end thueMorse
@@ -133,9 +133,9 @@ end thueMorse
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     thueMorse(6)
-    
+
     --> 0110100110010110100101100110100110010110011010010110100110010110
 end run
 
@@ -188,7 +188,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -296,7 +296,7 @@ T7=01101001100101101001011001101001100101100110100101101001100101101001011001101
 ## BBC BASIC
 
 
-```bbcbasic>REM 
+```bbcbasic>REM
 thuemorse
 tm$ = "0"
 PRINT tm$
@@ -359,8 +359,8 @@ This implements the algorithm that counts the 1 bits in the binary representatio
 
 {{trans|Java}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -369,13 +369,13 @@ int main(int argc, char *argv[]){
 	char inverse[256+1] = "1";
 	char buffer[256+1];
 	int i;
-	
+
 	for(i = 0; i < 8; i++){
 		strcpy(buffer, sequence);
 		strcat(sequence, inverse);
 		strcat(inverse, buffer);
 	}
-	
+
 	puts(sequence);
 	return 0;
 }
@@ -395,8 +395,8 @@ int main(int argc, char *argv[]){
 ### C: By counting ones in binary representation of an iterator
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 /**
  * description : Counts the number of bits set to 1
@@ -485,7 +485,7 @@ int main(void) {
     putchar('\n');
 
     return 0;
-} 
+}
 ```
 
 
@@ -640,11 +640,11 @@ struct TM {
     private char[] buffer;
 
     enum empty = false;
-    
+
     auto front() {
         return sequence;
     }
-    
+
     auto popFront() {
         buffer = sequence;
         sequence ~= inverse;
@@ -689,7 +689,7 @@ import system'text;
 sequence(int steps)
 {
     var sb1 := TextBuilder.load("0");
-    var sb2 := TextBuilder.load("1"); 
+    var sb2 := TextBuilder.load("1");
     for(int i := 0, i < steps, i += 1)
     {
         var tmp := sb1.Value;
@@ -698,7 +698,7 @@ sequence(int steps)
     };
     console.printLine(sb1).readLine()
 }
- 
+
 public program()
 {
     sequence(6)
@@ -756,7 +756,7 @@ USING: io kernel math math.parser sequences ;
 
 : thue-morse ( seq n -- seq' )
     [ [ ] [ [ 1 bitxor ] map ] bi append ] times ;
-    
+
 : print-tm ( seq -- ) [ number>string ] map "" join print ;
 
 7 <iota> [ { 0 } swap thue-morse print-tm ] each
@@ -790,11 +790,11 @@ program thue_morse
 
   do
     write(*,*) f(1:n)
-    if (n > size(f)/2) exit  
+    if (n > size(f)/2) exit
     f(n+1:2*n) = .not. f(1:n)
     n = n * 2
   end do
-  
+
 end program thue_morse
 ```
 
@@ -823,9 +823,9 @@ Dim As String tm = "0"
 Function Thue_Morse(s As String) As String
     Dim As String k = ""
     For i As Integer = 1 To Len(s)
-        If Mid(s, i, 1) = "1" Then 
-            k += "0" 
-        Else 
+        If Mid(s, i, 1) = "1" Then
+            k += "0"
+        Else
             k += "1"
         End If
     Next i
@@ -883,7 +883,7 @@ func nextTMSequenceMember( tmBuffer * bytes.Buffer ) {
         }
     }
 }
-    
+
 func main() {
     var tmBuffer bytes.Buffer
     // initial sequence member is "0"
@@ -1096,7 +1096,7 @@ fun main(args: Array<String>) {
         s1 += s2;
         s2 += tmp;
     }
-    console.log(s1);    
+    console.log(s1);
 })(6);
 ```
 
@@ -1442,7 +1442,7 @@ Begin
   fThueMorse(1 shl 30);
 end.
 ```
- 
+
 {{Output}}
 ```txt
 Compile with /usr/lib/fpc/3.0.1/ppc386 "ThueMorse.pas" -al -XX -Xs -O4 -MDelphi
@@ -1581,30 +1581,30 @@ function New-ThueMorse ( $Digits )
     {
     #  Start with seed 0
     $ThueMorse = "0"
- 
+
     #  Decrement digits remaining
     $Digits--
- 
+
     #  While we still have digits to calculate...
     While ( $Digits -gt 0 )
         {
         #  Number of digits we'll get this loop (what we still need up to the maximum available), corrected to 0 base
         $LastDigit = [math]::Min( $ThueMorse.Length, $Digits ) - 1
- 
+
         #  Loop through each digit
         ForEach ( $i in 0..$LastDigit )
             {
             #  Append the twos complement
             $ThueMorse += ( 1 - $ThueMorse.Substring( $i, 1 ) )
             }
- 
+
         #  Calculate the number of digits still remaining
         $Digits = $Digits - $LastDigit - 1
         }
- 
+
     return $ThueMorse
     }
- 
+
 New-ThueMorse 5
 New-ThueMorse 16
 New-ThueMorse 73
@@ -1638,7 +1638,7 @@ EndProcedure
 
 If OpenConsole()
   Define n.i
-  For n=0 To 255      
+  For n=0 To 255
     Print(Str(count_bits(n)%2))
   Next
   PrintN(~"\n...fin") : Input()
@@ -1695,11 +1695,11 @@ for i in range(0,6):
 
 >>> def thue_morse_digits(digits):
 ...     return  [bin(n).count('1') % 2 for n in range(digits)]
-... 
+...
 >>> thue_morse_digits(20)
 [0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1]
 
->>> 
+>>>
 
 ```
 
@@ -1713,11 +1713,11 @@ for i in range(0,6):
 ...     while len(ans) < chars:
 ...         ans = ans.replace('0', '0_').replace('1', '10').replace('_', '1')
 ...     return ans[:chars]
-... 
+...
 >>> thue_morse_subs(20)
 '01101001100101101001'
 
->>> 
+>>>
 
 ```
 
@@ -1810,7 +1810,7 @@ $weight: return  $pop( x2b( d2x( arg(1) ) ) )                     /*dec──►
 01101001100101101001011001101001100101100110100101101001100101101001011001101001
 
 ```
- 
+
 
 ===using in-line code===
 
@@ -1825,13 +1825,13 @@ $=                                               /*the Thue─Morse sequence  (s
 say $                                            /*stick a fork in it,  we're all done. */
 ```
 
-'''output'''   is identical to the 1<sup>st</sup> REXX version. 
+'''output'''   is identical to the 1<sup>st</sup> REXX version.
 
 
 ===using 2's complement===
 Programming note:   this method displays the sequence, but it doubles in (binary) length each iteration.
 
-Because of this, the displaying of the output lacks the granularity of the first two REXX versions. 
+Because of this, the displaying of the output lacks the granularity of the first two REXX versions.
 
 ```rexx
 /*REXX pgm generates & displays the Thue─Morse sequence up to the Nth term (inclusive). */
@@ -1860,7 +1860,7 @@ say $                                            /*stick a fork in it,  we're al
 ```ring
 
 tm = "0"
-see tm 
+see tm
 for n = 1 to 6
     tm = thue_morse(tm)
     see tm
@@ -2190,12 +2190,12 @@ End Function
 {{out}}
 
 ```txt
-"0" 
-"01" 
-"0110" 
-"01101001" 
-"0110100110010110" 
-"01101001100101101001011001101001" 
+"0"
+"01"
+"0110"
+"01101001"
+"0110100110010110"
+"01101001100101101001011001101001"
 "0110100110010110100101100110100110010110011010010110100110010110"
 ```
 
@@ -2214,7 +2214,7 @@ next
 
 sub inverte$(tm$)
     local i
-    
+
     for i = 1 to len(tm$)
         mid$(tm$, i, 1) = str$(not val(mid$(tm$, i, 1)))
     next

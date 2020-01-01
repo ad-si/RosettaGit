@@ -14,10 +14,10 @@ tags = []
 Create a program which parses and evaluates arithmetic expressions.
 
 ;Requirements:
-* An [[wp:Abstract_syntax_tree|abstract-syntax tree]] (AST) for the expression must be created from parsing the input. 
-* The AST must be used in evaluation, also, so the input may not be directly evaluated (e.g. by calling eval or a similar language feature.) 
-* The expression will be a string or list of symbols like "(1+3)*7". 
-* The four symbols + - * / must be supported as binary operators with conventional precedence rules. 
+* An [[wp:Abstract_syntax_tree|abstract-syntax tree]] (AST) for the expression must be created from parsing the input.
+* The AST must be used in evaluation, also, so the input may not be directly evaluated (e.g. by calling eval or a similar language feature.)
+* The expression will be a string or list of symbols like "(1+3)*7".
+* The four symbols + - * / must be supported as binary operators with conventional precedence rules.
 * Precedence-control parentheses must also be supported.
 
 
@@ -30,7 +30,7 @@ For those who don't remember, mathematical precedence is as follows:
 
 
 
-;C.f: 
+;C.f:
 * [[24 game Player]].
 * [[Parsing/RPN calculator algorithm]].
 * [[Parsing/RPN to infix conversion]].
@@ -256,11 +256,11 @@ PROC build ast = (STRING expr)NUM:(
 
   PROC compress ast stack = (INT prio, NUM in value)NUM:(
     NUM out value := in value;
-    FOR loc FROM top BY -1 TO 1 WHILE 
+    FOR loc FROM top BY -1 TO 1 WHILE
       REF STACKITEM stack top := stack[loc];
   # WHILE # ( top >= LWB stack | prio <= prio OF op OF stack top | FALSE ) DO
       top := loc - 1;
-      out value := 
+      out value :=
         CASE action OF op OF stack top IN
           (MONADIC op): op(value OF stack top), # not implemented #
           (DIADIC op): op(value OF stack top,out value)
@@ -275,7 +275,7 @@ PROC build ast = (STRING expr)NUM:(
 
   FOR i TO UPB expr DO
     TOK token = expr[i];
-    REF OPVAL this op := op dict(token); 
+    REF OPVAL this op := op dict(token);
     CASE action OF this op IN
       (STACKACTION action):(
         IF prio OF thisop = -10 THEN
@@ -292,7 +292,7 @@ PROC build ast = (STRING expr)NUM:(
             decimal places := 0;
             value := HEAP AST := num value := digit
           ELSE
-            NUM(value) := num value := IF decimal places = 0 
+            NUM(value) := num value := IF decimal places = 0
               THEN
                 num value * base + digit
               ELSE
@@ -343,7 +343,7 @@ test:(
 
 ```AutoHotkey
 /*
-hand coded recursive descent parser 
+hand coded recursive descent parser
 expr	: term ( ( PLUS | MINUS )  term )* ;
 term	: factor ( ( MULT | DIV ) factor )* ;
 factor	: NUMBER | '(' expr ')';
@@ -367,18 +367,18 @@ expr()
   global tokens
   ast := object(1, "expr")
   if node := term()
-    ast._Insert(node)    
-  loop 
+    ast._Insert(node)
+  loop
   {
     if peek("PLUS") or peek("MINUS")
-    {  
+    {
       op := getsym()
       newop := object(1, op.type, 2, op.value)
       node := term()
       ast._Insert(newop)
       ast._Insert(node)
     }
-    Else  
+    Else
       Break
   }
   return ast
@@ -390,10 +390,10 @@ term()
   tree := object(1, "term")
   if node := factor()
     tree._Insert(node)
-  loop 
+  loop
   {
     if  peek("MULT") or peek("DIV")
-    {  
+    {
       op := getsym()
       newop := object(1, op.type, 2, op.value)
       node := factor()
@@ -410,7 +410,7 @@ factor()
 {
   global tokens
   if peek("NUMBER")
-  {  
+  {
     token := getsym()
     tree := object(1, token.type, 2, token.value)
     return tree
@@ -427,7 +427,7 @@ factor()
     else
       error("miss closing parentheses ")
   }
-  else  
+  else
     error("no factor found")
 }
 
@@ -502,15 +502,15 @@ tokenize(string, lexer)
   locationInString := 1
   size := strlen(string)
   tokens := object()
-  
+
 start:
   Enum := Lexer._NewEnum()
   While Enum[type, value]  ; loop through regular expression lexing rules
   {
     if (1 == regexmatch(string, value, tokenValue))
     {
-      token := object()     
-      token.pos := locationInString 
+      token := object()
+      token.pos := locationInString
       token.value := tokenValue
       token.length := strlen(tokenValue)
       token.type := type
@@ -518,7 +518,7 @@ start:
       locationInString += token.length
       string := substr(string, token.length + 1)
       goto start
-    } 
+    }
     continue
   }
   if (locationInString < size)
@@ -551,7 +551,7 @@ makeCalcLexer()
 printTokens(tokens)
 {
   loop % tokens._MaxIndex()
-  {  
+  {
     tokenString .= printToken(tokens[A_Index]) "`n`n"
   }
   return tokenString
@@ -578,7 +578,7 @@ printToken(token)
       PRINT "AST =   " AST$
       PRINT "Value = " ;EVAL(AST$)
       END
-      
+
       DEF FNast(RETURN in$)
       LOCAL ast$, oper$
       REPEAT
@@ -593,7 +593,7 @@ printToken(token)
         ENDIF
       UNTIL FALSE
       = "(" + ast$ + ")"
-      
+
       DEF FNast1(RETURN in$)
       LOCAL ast$, oper$
       REPEAT
@@ -608,7 +608,7 @@ printToken(token)
         ENDIF
       UNTIL FALSE
       = "(" + ast$ + ")"
-      
+
       DEF FNast2(RETURN in$)
       LOCAL ast$
       WHILE ASC(in$)=32 in$ = MID$(in$,2) : ENDWHILE
@@ -617,7 +617,7 @@ printToken(token)
       ast$ = FNast(in$)
       in$ = MID$(in$,2)
       = ast$
-      
+
       DEF FNnumber(RETURN in$)
       LOCAL ch$, num$
       REPEAT
@@ -655,28 +655,28 @@ See [[Arithmetic Evaluator/C]].
 
 {{libheader|Boost.Spirit|1.8.4}}
 
-```cpp> #include <boost/spirit.hpp
+```cpp
+#include <boost/spirit.hpp>
+#include <boost/spirit/tree/ast.hpp>
+#include <string>
+#include <cassert>
+#include <iostream>
+#include <istream>
+#include <ostream>
 
- #include <boost/spirit/tree/ast.hpp>
- #include <string>
- #include <cassert>
- #include <iostream>
- #include <istream>
- #include <ostream>
- 
- using boost::spirit::rule;
- using boost::spirit::parser_tag;
- using boost::spirit::ch_p;
- using boost::spirit::real_p;
- 
- using boost::spirit::tree_node;
- using boost::spirit::node_val_data;
- 
- // The grammar
- struct parser: public boost::spirit::grammar<parser>
- {
+using boost::spirit::rule;
+using boost::spirit::parser_tag;
+using boost::spirit::ch_p;
+using boost::spirit::real_p;
+
+using boost::spirit::tree_node;
+using boost::spirit::node_val_data;
+
+// The grammar
+struct parser: public boost::spirit::grammar<parser>
+{
    enum rule_ids { addsub_id, multdiv_id, value_id, real_id };
- 
+
    struct set_value
    {
      set_value(parser const& p): self(p) {}
@@ -689,16 +689,16 @@ See [[Arithmetic Evaluator/C]].
      }
      parser const& self;
    };
- 
+
    mutable double tmp;
- 
+
    template<typename Scanner> struct definition
    {
      rule<Scanner, parser_tag<addsub_id> > addsub;
      rule<Scanner, parser_tag<multdiv_id> > multdiv;
      rule<Scanner, parser_tag<value_id> > value;
      rule<Scanner, parser_tag<real_id> > real;
- 
+
      definition(parser const& self)
      {
        using namespace boost::spirit;
@@ -709,14 +709,14 @@ See [[Arithmetic Evaluator/C]].
        value = real | inner_node_d[('(' >> addsub >> ')')];
        real = leaf_node_d[access_node_d[real_p[assign_a(self.tmp)]][set_value(self)]];
      }
- 
+
      rule<Scanner, parser_tag<addsub_id> > const& start() const
      {
        return addsub;
      }
    };
  };
- 
+
  template<typename TreeIter>
  double evaluate(TreeIter const& i)
  {
@@ -748,7 +748,7 @@ See [[Arithmetic Evaluator/C]].
    }
    return 0;
  }
- 
+
  // the read/eval/write loop
  int main()
  {
@@ -849,7 +849,7 @@ Next, that sequence of tokens is then transformed by eliminating the parentheses
 
 At this point, another processing stage parses the operator precedence, and fully parenthesizes fragments, turning <code>(1 + 2 / 3 + 5)</code> into <code>(1 + (2 / 3) + 5)</code>. The result is a Lisp-ified infix representation.
 
-Finally, this infix representation can be easily converted to prefix, forming the final AST which is a Lisp expression. 
+Finally, this infix representation can be easily converted to prefix, forming the final AST which is a Lisp expression.
 (Lisp expressions '''are''' abstract syntax trees!) This representation evaluates directly with <code>eval</code>.
 
 This implementation can read integers, and produce integral and rational values.
@@ -944,7 +944,7 @@ This implementation can read integers, and produce integral and rational values.
                   collect token)))))))
 ```
 
- 
+
 Examples
 
  > (evaluate "1 - 5 * 2 / 20 + 1")
@@ -1225,18 +1225,18 @@ void main(string[] args) /*@safe*/ {
 {{out}}
 
 ```txt
-   ........................................................+.  
- .+..                                                        1 
-1    *...  
-    2   .-..........  
-       3     .......*................................  
-            *...                 ....................-.  
-           2   .-.            ..-...                   1 
-              3   2       ...*      /...  
-                        .-.   5   22   .+..  
-                       2   4          7    *...  
-                                          2   .-.  
-                                             3   1 
+   ........................................................+.
+ .+..                                                        1
+1    *...
+    2   .-..........
+       3     .......*................................
+            *...                 ....................-.
+           2   .-.            ..-...                   1
+              3   2       ...*      /...
+                        .-.   5   22   .+..
+                       2   4          7    *...
+                                          2   .-.
+                                             3   1
 
 1 + 2*(3 - 2*(3 - 2)*((2 - 4)*5 - 22/(7 + 2*(3 - 1)) - 1)) + 1 ==>
 ((1+(2*(3-((2*(3-2))*((((2-4)*5)-(22/(7+(2*(3-1)))))-1)))))+1) = 60
@@ -1255,7 +1255,7 @@ While the task requirements specify not evaluating using the language's built-in
 def LiteralExpr := <elang:evm.makeLiteralExpr>.asType()
 def arithEvaluate(expr :String) {
   def ast := eParser(expr)
-  
+
   def evalAST(ast) {
     return switch (ast) {
       match e`@a + @b` { evalAST(a) + evalAST(b) }
@@ -1266,7 +1266,7 @@ def arithEvaluate(expr :String) {
       match l :LiteralExpr { l.getValue() }
     }
   }
-  
+
   return evalAST(ast)
 }
 ```
@@ -1300,20 +1300,20 @@ import extensions'text;
 class Token
 {
     object theValue;
-    
+
     rprop int Level;
-    
+
     constructor new(int level)
     {
         theValue := new StringWriter();
         Level := level + 9;
     }
-    
+
     append(ch)
     {
         theValue.write(ch)
     }
-    
+
     Number = theValue.toReal();
 }
 
@@ -1333,7 +1333,7 @@ class SummaryNode : Node
 {
     constructor new(int level)
         <= new(level + 1);
-    
+
     Number = Left.Number + Right.Number;
 }
 
@@ -1341,7 +1341,7 @@ class DifferenceNode : Node
 {
     constructor new(int level)
         <= new(level + 1);
-    
+
     Number = Left.Number - Right.Number;
 }
 
@@ -1349,7 +1349,7 @@ class ProductNode : Node
 {
     constructor new(int level)
         <= new(level + 2);
-    
+
     Number = Left.Number * Right.Number;
 }
 
@@ -1357,7 +1357,7 @@ class FractionNode : Node
 {
     constructor new(int level)
         <= new(level + 2);
-    
+
     Number = Left.Number / Right.Number;
 }
 
@@ -1365,22 +1365,22 @@ class Expression
 {
     rprop int Level;
     prop object Top;
-    
+
     constructor new(int level)
     {
         Level := level
     }
-    
+
     prop object Right
     {
         get() = Top;
-        
+
         set(object node)
         {
             Top := node
         }
     }
-    
+
     get Number() => Top;
 }
 
@@ -1390,7 +1390,7 @@ singleton operatorState
     {
         ch =>
             $40 {      // (
-                ^ __target.newBracket().gotoStarting()  
+                ^ __target.newBracket().gotoStarting()
             }
             : {
                 ^ __target.newToken().append(ch).gotoToken()
@@ -1422,7 +1422,7 @@ singleton tokenState
                 ^ __target.append:ch
             }
     }
-}    
+}
 
 singleton startState
 {
@@ -1439,7 +1439,7 @@ singleton startState
                 ^ __target.newToken().append:ch.gotoToken()
             }
     }
-}    
+}
 
 class Scope
 {
@@ -1448,7 +1448,7 @@ class Scope
     object theParser;
     object theToken;
     object theExpression;
-    
+
     constructor new(parser)
     {
         theState := startState;
@@ -1456,91 +1456,91 @@ class Scope
         theExpression := Expression.new(0);
         theParser := parser
     }
-                                       
+
     newToken()
     {
         theToken := theParser.appendToken(theExpression, theLevel)
-    }                                                
-    
+    }
+
     newSummary()
     {
         theToken := nil;
-        
+
         theParser.appendSummary(theExpression, theLevel)
-    }                                                
-    
+    }
+
     newDifference()
     {
         theToken := nil;
-        
+
         theParser.appendDifference(theExpression, theLevel)
-    }                                                
-      
+    }
+
     newProduct()
     {
         theToken := nil;
-        
+
         theParser.appendProduct(theExpression, theLevel)
-    }                                                
-    
+    }
+
     newFraction()
     {
         theToken := nil;
-        
+
         theParser.appendFraction(theExpression, theLevel)
-    }                                                
+    }
 
     newBracket()
     {
         theToken := nil;
-        
+
         theLevel := theLevel + 10;
-        
+
         theParser.appendSubexpression(theExpression, theLevel)
-    }            
+    }
 
     closeBracket()
     {
         if (theLevel < 10)
             { InvalidArgumentException.new:"Invalid expression".raise() };
-        
+
         theLevel := theLevel - 10
-    }            
-                                    
+    }
+
     append(ch)
     {
         if(ch >= $48 && ch < $58)
-        { 
-            theToken.append:ch 
+        {
+            theToken.append:ch
         }
         else
-        { 
+        {
             InvalidArgumentException.new:"Invalid expression".raise()
         }
     }
-            
+
     append(string s)
     {
         s.forEach:(ch){ self.append:ch }
     }
-                                                         
+
     gotoStarting()
     {
         theState := startState
     }
-                                                                  
+
     gotoToken()
     {
         theState := tokenState
     }
-                                                                  
+
     gotoOperator()
     {
         theState := operatorState
     }
-    
+
     get Number() => theExpression;
-    
+
     dispatch() => theState;
 }
 
@@ -1549,9 +1549,9 @@ class Parser
     appendToken(object expression, int level)
     {
         var token := Token.new(level);
-        
+
         expression.Top := self.append(expression.Top, token);
-        
+
         ^ token
     }
 
@@ -1584,27 +1584,27 @@ class Parser
     {
         if(nil == lastNode)
             { ^ newNode };
-        
+
         if (newNode.Level <= lastNode.Level)
             { newNode.Left := lastNode; ^ newNode };
-            
+
         var parent := lastNode;
         var current := lastNode.Right;
         while (nil != current && newNode.Level > current.Level)
             { parent := current; current := current.Right };
-        
+
         if (nil == current)
-        { 
-            parent.Right := newNode 
+        {
+            parent.Right := newNode
         }
         else
-        { 
-            newNode.Left := current; parent.Right := newNode 
+        {
+            newNode.Left := current; parent.Right := newNode
         };
-            
+
         ^ lastNode
     }
-    
+
     run(text)
     {
         var scope := Scope.new(self);
@@ -1629,10 +1629,10 @@ public program()
         catch(Exception e)
         {
             console.writeLine(e.Printable)
-            
+
             //console.writeLine:"Invalid Expression"
         };
-        
+
         text.clear()
     }
 }
@@ -1652,7 +1652,7 @@ public program()
   (let ((rtn (buffer-substring-no-properties (point) (match-end 0))))
     (goto-char (match-end 0))
     rtn))
-               
+
 (defvar current-symbol nil)
 
 (defun next-symbol ()
@@ -1673,11 +1673,11 @@ public program()
   (when (equal sym current-symbol)
     (next-symbol)
     t))
-      
+
 (defun expect (sym)
   (unless (accept sym)
     (error "Expected symbol %s, but found %s" sym current-symbol))
-  t)    
+  t)
 
 (defun p-expression ()
   " expression = term  { ('+' | '-') term } . "
@@ -1687,7 +1687,7 @@ public program()
             (left rtn))
         (next-symbol)
         (setq rtn (list op left (p-term)))))
-    rtn))  
+    rtn))
 
 (defun p-term ()
   " term = factor  { ('*' | '/') factor } . "
@@ -2064,12 +2064,12 @@ Using FsLex and FsYacc from the F# PowerPack, we implement this with multiple so
 
 ```fsharp
 module AbstractSyntaxTree
- 
-type Expression = 
-  | Int    of int 
-  | Plus   of Expression * Expression 
-  | Minus  of Expression * Expression 
-  | Times  of Expression * Expression 
+
+type Expression =
+  | Int    of int
+  | Plus   of Expression * Expression
+  | Minus  of Expression * Expression
+  | Times  of Expression * Expression
   | Divide of Expression * Expression
 ```
 
@@ -2107,32 +2107,32 @@ rule token = parse
 <code>Parser.fsy</code>:
 
 ```fsharp
-%{ 
-open AbstractSyntaxTree 
-%} 
+%{
+open AbstractSyntaxTree
+%}
 
-%start Expr 
+%start Expr
 
 // terminal tokens
-%token <int> INT 
+%token <int> INT
 %token PLUS MINUS TIMES DIVIDE LPAREN RPAREN
 %token EOF
 
 // associativity and precedences
-%left PLUS MINUS 
+%left PLUS MINUS
 %left TIMES DIVIDE
 
 // return type of Expr
 %type <Expression> Expr
- 
-%% 
- 
-Expr: INT                     { Int $1 } 
-    | Expr PLUS Expr          { Plus ($1, $3) } 
-    | Expr MINUS Expr         { Minus ($1, $3) } 
-    | Expr TIMES Expr         { Times ($1, $3) } 
-    | Expr DIVIDE Expr        { Divide ($1, $3) } 
-    | LPAREN Expr RPAREN      { $2 } 
+
+%%
+
+Expr: INT                     { Int $1 }
+    | Expr PLUS Expr          { Plus ($1, $3) }
+    | Expr MINUS Expr         { Minus ($1, $3) }
+    | Expr TIMES Expr         { Times ($1, $3) }
+    | Expr DIVIDE Expr        { Divide ($1, $3) }
+    | LPAREN Expr RPAREN      { $2 }
 ```
 
 
@@ -2141,7 +2141,7 @@ Expr: INT                     { Int $1 }
 ```fsharp
 open AbstractSyntaxTree
 open Lexer
-open Parser 
+open Parser
 
 let parse txt =
   txt
@@ -2157,7 +2157,7 @@ let rec eval = function
 
 do
   "((11+15)*15)*2-(3)*4*1"
-  |> parse 
+  |> parse
   |> eval
   |> printfn "%d"
 ```
@@ -2397,14 +2397,14 @@ enum Op {
     SUBTRACT('-', 2),
     MULTIPLY('*', 1),
     DIVIDE('/', 1);
-    
+
     static {
         ADD.operation = { a, b -> a + b }
         SUBTRACT.operation = { a, b -> a - b }
         MULTIPLY.operation = { a, b -> a * b }
         DIVIDE.operation = { a, b -> a / b }
     }
-    
+
     final String symbol
     final int precedence
     Closure operation
@@ -2471,7 +2471,7 @@ List tokenize(String expr) {
     }
     for(def i = 0; i<expr.size(); i++) {
         def c = expr[i]
-        def constSign = c in ['+','-'] && constStr.empty && (tokens.empty || tokens[-1] != ')') 
+        def constSign = c in ['+','-'] && constStr.empty && (tokens.empty || tokens[-1] != ')')
         def isConstChar = { it in ['.'] + ('0'..'9') || constSign }
         if (c in ([')'] + Op.values()*.symbol) && !constSign) { captureConstant(i) }
         switch (c) {
@@ -2711,7 +2711,7 @@ main = print $ solution "(1+3)*7"
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-A compact recursive descent parser using Hanson's device.  This program 
+A compact recursive descent parser using Hanson's device.  This program
 *  handles left and right associativity and different precedences
 *  is ready to handle any number of infix operators without adding more functions to handle the precedences
 *  accepts integers, reals, and radix constants (e.g. 3r10 is 3 in base 3)
@@ -2831,7 +2831,7 @@ end
 {{out|Sample Output}}
 
 ```txt
-#matheval.exe 
+#matheval.exe
 
 Usage: Input expression = Abstract Syntax Tree = Value, ^Z to end.
 Input expression : 1
@@ -2872,9 +2872,9 @@ eval=:monad define
   gerund@.structure
 )
 
-coclass 'parser' 
+coclass 'parser'
 classify=: '$()*/+-'&(((>:@#@[ # 2:) #: 2 ^ i.)&;:)
- 
+
 rules=: ''
 patterns=: ,"0 assert 1
 
@@ -2882,7 +2882,7 @@ addrule=: dyad define
    rules=: rules,;:x
    patterns=: patterns,+./@classify"1 y
 )
- 
+
 'Term'   addrule '$()',   '0',     '+-',: '0'
 'Factor' addrule '$()+-', '0',     '*/',: '0'
 'Parens' addrule '(',    '*/+-0', ')',:  ')*/+-0$'
@@ -2912,12 +2912,12 @@ Term=: Factor=: monad define
   stack=: ({.stack),(classify '0'),4}.stack
   tree=: ({.tree),(<1 2 3{tree),4}.tree
 )
- 
+
 Parens=: monad define
   stack=: (1{stack),3}.stack
   tree=: (1{tree),3}.tree
 )
- 
+
 Move=: monad define
   'syntax' assert 0<#queue
   stack=: ({:queue),stack
@@ -3151,7 +3151,7 @@ Input: "2*-3--4+-.25", AST: "(((2 * -3) - -4) + -1/4)", value=-9/4
 
 ## JavaScript
 
-Numbers must have a digit before the decimal point, so 0.1 not .1. 
+Numbers must have a digit before the decimal point, so 0.1 not .1.
 
 Spaces are removed, expressions like <code>5--1</code> are treated as <code>5 - -1</code>
 
@@ -3166,7 +3166,7 @@ function evalArithmeticExp(s) {
     s = s.replace(exp[0], evalExp(exp[0]));
   }
   return evalExp(s);
-  
+
   function evalExp(s) {
     s = s.replace(/[\(\)]/g,'');
     var reMD = /\d+\.?\d*\s*[\*\/]\s*[+-]?\d+\.?\d*/;
@@ -3178,29 +3178,29 @@ function evalArithmeticExp(s) {
     while (exp = s.match(reMD)) {
       s = exp[0].match(reM)? s.replace(exp[0], multiply(exp[0])) : s.replace(exp[0], divide(exp[0]));
     }
-    
+
     while (exp = s.match(reAS)) {
       s = exp[0].match(reA)? s.replace(exp[0], add(exp[0])) : s.replace(exp[0], subtract(exp[0]));
     }
-    
+
     return '' + s;
 
     function multiply(s, b) {
       b = s.split('*');
       return b[0] * b[1];
     }
-    
+
     function divide(s, b) {
       b = s.split('/');
       return b[0] / b[1];
     }
-    
+
     function add(s, b) {
       s = s.replace(/^\+/,'').replace(/\++/,'+');
       b = s.split('+');
       return Number(b[0]) + Number(b[1]);
     }
-    
+
     function subtract(s, b) {
       s = s.replace(/\+-|-\+/g,'-');
 
@@ -3235,7 +3235,7 @@ evalArithmeticExp('2*-3--4+-0.25' // -2.25
 This entry highlights the use of a PEG grammar expressed in jq.
 
 
-###  PEG operations 
+###  PEG operations
 
 
 ```jq
@@ -3249,7 +3249,7 @@ def neg(E): select( [E] == [] );
 
 
 
-###  Helper functions 
+###  Helper functions
 
 
 ```jq
@@ -3279,7 +3279,7 @@ def parseNumber($re):
 
 
 
-###  PEG Grammar 
+###  PEG Grammar
 
 The PEG grammar for arithmetic expressions follows the one given at the Perl 6 entry.
 ```jq
@@ -3288,7 +3288,7 @@ def Expr:
   def ws: consume(" *");
 
   def Number: ws | parseNumber( "-?[0-9]+([.][0-9]*)?" );
-  
+
   def Sum:
     def Parenthesized: ws | consume("[(]") | ws | box(Sum) | ws | consume("[)]");
     def Factor: Parenthesized // Number;
@@ -3300,7 +3300,7 @@ def Expr:
 
 
 
-###  Evaluation 
+###  Evaluation
 
 
 ```jq
@@ -3313,8 +3313,8 @@ def eval:
       else (.[:-2] | eval) as $v
       | if   .[-2] == "*" then $v * .[-1]
         elif .[-2] == "/" then $v / .[-1]
-        elif .[-2] == "+" then $v + .[-1] 
-        elif .[-2] == "-" then $v - .[-1] 
+        elif .[-2] == "+" then $v + .[-1]
+        elif .[-2] == "-" then $v - .[-1]
         else tostring|error
 	end
       end
@@ -3330,7 +3330,7 @@ def eval(String):
 
 
 
-###  Example 
+###  Example
 
     eval("2 * (3 -1) + 2 * 5")
 
@@ -3348,7 +3348,7 @@ function evalArithmeticExp(s) {
     s = s.replace(/\s/g,'').replace(/^\+/,'');
     var rePara = /\([^\(\)]*\)/;
     var exp;
- 
+
     function evalExp(s) {
         s = s.replace(/[\(\)]/g,'');
         var reMD = /[0-9]+\.?[0-9]*\s*[\*\/]\s*[+-]?[0-9]+\.?[0-9]*/;
@@ -3361,21 +3361,21 @@ function evalArithmeticExp(s) {
             b = s.split('*');
             return b[0] * b[1];
         }
- 
+
         function divide(s, b=0) {
             b = s.split('/');
             return b[0] / b[1];
         }
- 
+
         function add(s, b=0) {
             s = s.replace(/^\+/,'').replace(/\++/,'+');
             b = s.split('+');
             return Number(b[0]) + Number(b[1]);
         }
- 
+
         function subtract(s, b=0) {
             s = s.replace(/\+-|-\+/g,'-');
- 
+
             if (s.match(/--/)) {
                 return add(s.replace(/--/,'+'));
             }
@@ -3386,7 +3386,7 @@ function evalArithmeticExp(s) {
         while (exp = s.match(reMD)) {
             s = exp[0].match(reM) ? s.replace(exp[0], multiply(exp[0]).toString()) : s.replace(exp[0], divide(exp[0]).toString());
         }
- 
+
         while (exp = s.match(reAS)) {
             s = exp[0].match(reA)? s.replace(exp[0], add(exp[0]).toString()) : s.replace(exp[0], subtract(exp[0]).toString());
         }
@@ -3456,24 +3456,24 @@ julia> names(t) #shows type fields
 
 julia> parsed.args #Inspect our 'Expr' type innards
 3-element Any Array:
- :+            
+ :+
  :(*(2,-(3,1)))
- :(*(2,5))     
+ :(*(2,5))
 
 julia> typeof(parsed.args[2]) #'Expr' types can nest
 Expr
 
 julia> parsed.args[2].args
 3-element Any Array:
-  :*       
- 2         
+  :*
+ 2
   :(-(3,1))
 
 julia> parsed.args[2].args[3].args #Will nest until lowest level of AST
 3-element Any Array:
   :-
- 3  
- 1  
+ 3
+ 1
 
 julia> eval(parsed)
 14
@@ -3508,7 +3508,7 @@ fun divide(s: String): String {
 }
 
 fun add(s: String): String {
-    var t = s.replace(Regex("""^\+"""), "").replace(Regex("""\++"""), "+")     
+    var t = s.replace(Regex("""^\+"""), "").replace(Regex("""\++"""), "+")
     val b = t.split('+').map { it.toDoubleOrZero() }
     return (b[0] + b[1]).toString()
 }
@@ -3623,13 +3623,13 @@ expr = V"number" * V"more" + V"lp" * lpeg.Ct(V"expr" * V"more") * V"rp" * V"more
 function eval(expr)
   --empty
   if type(expr) == "string" or type(expr) == "number" then return expr + 0 end
-  
+
   --arithmetic functions
   tb = {["+"] = function(a,b) return eval(a) + eval(b) end,
 		["-"] = function(a,b) return eval(a) - eval(b) end,
 		["*"] = function(a,b) return eval(a) * eval(b) end,
 		["/"] = function(a,b) return eval(a) / eval(b) end}
-  
+
   --you could add ^ or other operators to this pretty easily
   for i, v in ipairs{"*/", "+-"} do
     for s, u in ipairs(expr) do
@@ -3785,7 +3785,7 @@ end function
 
 '------------------------------------------
 sub stack.push s$
-    stack$=s$+"|"+stack$ 
+    stack$=s$+"|"+stack$
 end sub
 
 function stack.pop$()
@@ -3977,7 +3977,7 @@ Module CheckAst {
                         if Asc(in$)<>40 then =.Number$(&in$) : exit
                         in$=Mid$(in$, 2)
                         ast$=.Ast$(&in$)
-                        in$=Mid$(in$, 2) 
+                        in$=Mid$(in$, 2)
                         =ast$
                   }
                   Function Number$ (&in$) {
@@ -4004,28 +4004,28 @@ CheckAst
 
 ```Mathematica
 (*parsing:*)
-parse[string_] := 
- Module[{e}, 
-  StringCases[string, 
-     "+" | "-" | "*" | "/" | "(" | ")" | 
-      DigitCharacter ..] //. {a_String?DigitQ :> 
-      e[ToExpression@a], {x___, PatternSequence["(", a_e, ")"], 
-       y___} :> {x, a, 
-       y}, {x : 
-        PatternSequence[] | 
-         PatternSequence[___, "(" | "+" | "-" | "*" | "/"], 
-       PatternSequence[op : "+" | "-", a_e], y___} :> {x, e[op, a], 
-       y}, {x : 
-        PatternSequence[] | PatternSequence[___, "(" | "+" | "-"], 
-       PatternSequence[a_e, op : "*" | "/", b_e], y___} :> {x, 
-       e[op, a, b], 
-       y}, {x : 
-        PatternSequence[] | PatternSequence[___, "(" | "+" | "-"], 
-       PatternSequence[a_e, b_e], y___} :> {x, e["*", a, b], 
-       y}, {x : PatternSequence[] | PatternSequence[___, "("], 
-       PatternSequence[a_e, op : "+" | "-", b_e], 
-       y : PatternSequence[] | 
-         PatternSequence[")" | "+" | "-", ___]} :> {x, e[op, a, b], 
+parse[string_] :=
+ Module[{e},
+  StringCases[string,
+     "+" | "-" | "*" | "/" | "(" | ")" |
+      DigitCharacter ..] //. {a_String?DigitQ :>
+      e[ToExpression@a], {x___, PatternSequence["(", a_e, ")"],
+       y___} :> {x, a,
+       y}, {x :
+        PatternSequence[] |
+         PatternSequence[___, "(" | "+" | "-" | "*" | "/"],
+       PatternSequence[op : "+" | "-", a_e], y___} :> {x, e[op, a],
+       y}, {x :
+        PatternSequence[] | PatternSequence[___, "(" | "+" | "-"],
+       PatternSequence[a_e, op : "*" | "/", b_e], y___} :> {x,
+       e[op, a, b],
+       y}, {x :
+        PatternSequence[] | PatternSequence[___, "(" | "+" | "-"],
+       PatternSequence[a_e, b_e], y___} :> {x, e["*", a, b],
+       y}, {x : PatternSequence[] | PatternSequence[___, "("],
+       PatternSequence[a_e, op : "+" | "-", b_e],
+       y : PatternSequence[] |
+         PatternSequence[")" | "+" | "-", ___]} :> {x, e[op, a, b],
        y}} //. {e -> List, {a_Integer} :> a, {a_List} :> a}]
 
 (*evaluation*)
@@ -4547,7 +4547,7 @@ Expression "2*-3--4+-.25" parses to "(((2 * -3) - -4) + -.25)" and evaluates to 
 
 ## Oz
 
-We can create a simple, but slow parser using logic programming. 
+We can create a simple, but slow parser using logic programming.
 Every procedure reads the input characters from <code>X0</code> and returns the remaining characters in <code>X</code>. The AST is returned as the regular return value.
 
 The <code>Do</code> procedure automatically threads the input state through a sequence of procedure calls.
@@ -4587,7 +4587,7 @@ declare
   fun {Digit X0 ?X}
      D|!X = X0
   in
-     D = choice &0 [] &1 [] &2 [] &3 [] &4 [] &5 [] &6 [] &7 [] &8 [] &9 end 
+     D = choice &0 [] &1 [] &2 [] &3 [] &4 [] &5 [] &6 [] &7 [] &8 [] &9 end
   end
 
   fun {Many1 Rule X0 ?X}
@@ -4672,7 +4672,7 @@ sub ev
      {\( ( [^()]+ | (??{$balanced_paren_regex}) )+ \)}x;
   # ??{ ... } interpolates lazily (only when necessary),
   # permitting recursion to arbitrary depths.
-  
+
   sub astize
   # Constructs an abstract syntax tree by recursively
   # transforming textual arithmetic expressions into array
@@ -4708,7 +4708,7 @@ sub ev
       '-' => sub {$_[0] - $_[1]},
       '*' => sub {$_[0] * $_[1]},
       '/' => sub {$_[0] / $_[1]});
-  
+
   sub ev_ast
   # Evaluates an abstract syntax tree of the form returned by
   # &astize.
@@ -4740,7 +4740,7 @@ sub ev (Str $s --> Numeric) {
         token parens { '(' <sum> ')' }
         token literal { \d+ ['.' \d+]? || '.' \d+ }
     }
-    
+
     my sub minus ($b) { $b ?? -1 !! +1 }
 
     my sub sum ($x) {
@@ -4748,13 +4748,13 @@ sub ev (Str $s --> Numeric) {
             { minus($^y[0] eq '-') * product $^y<product> },
             |($x[0] or [])
     }
-    
+
     my sub product ($x) {
         [*] flat factor($x<factor>), map
             { factor($^y<factor>) ** minus($^y[0] eq '/') },
             |($x[0] or [])
     }
-    
+
     my sub factor ($x) {
         minus($x<unary_minus>) * ($x<parens>
           ?? sum $x<parens><sum>
@@ -5290,7 +5290,7 @@ arith_eval(do_expr()) =>
 % Lexer
  numeric(X) :- 48 =< X, X =< 57.
  not_numeric(X) :- 48 > X ; X > 57.
- 
+
  lex1([], []).
  lex1([40|Xs], ['('|Ys]) :- lex1(Xs, Ys).
  lex1([41|Xs], [')'|Ys]) :- lex1(Xs, Ys).
@@ -5299,42 +5299,42 @@ arith_eval(do_expr()) =>
  lex1([42|Xs], ['*'|Ys]) :- lex1(Xs, Ys).
  lex1([47|Xs], ['/'|Ys]) :- lex1(Xs, Ys).
  lex1([X|Xs], [N|Ys]) :- numeric(X), N is X - 48, lex1(Xs, Ys).
- 
+
  lex2([], []).
  lex2([X], [X]).
  lex2([Xa,Xb|Xs], [Xa|Ys]) :- atom(Xa), lex2([Xb|Xs], Ys).
  lex2([Xa,Xb|Xs], [Xa|Ys]) :- number(Xa), atom(Xb), lex2([Xb|Xs], Ys).
  lex2([Xa,Xb|Xs], [Y|Ys]) :- number(Xa), number(Xb), N is Xa * 10 + Xb, lex2([N|Xs], [Y|Ys]).
- 
+
  % Parser
  oper(1, *, X, Y, X * Y). oper(1, /, X, Y, X / Y).
  oper(2, +, X, Y, X + Y). oper(2, -, X, Y, X - Y).
- 
+
  num(D) --> [D], {number(D)}.
- 
+
  expr(0, Z) --> num(Z).
  expr(0, Z) --> {Z = (X)}, ['('], expr(2, X), [')'].
- 
+
  expr(N, Z) --> {succ(N0, N)}, {oper(N, Op, X, Y, Z)}, expr(N0, X), [Op], expr(N, Y).
  expr(N, Z) --> {succ(N0, N)}, expr(N0, Z).
- 
+
  parse(Tokens, Expr) :- expr(2, Expr, Tokens, []).
- 
- 
+
+
  % Evaluator
  evaluate(E, E) :- number(E).
  evaluate(A + B, E) :- evaluate(A, Ae), evaluate(B, Be), E is Ae + Be.
  evaluate(A - B, E) :- evaluate(A, Ae), evaluate(B, Be), E is Ae - Be.
  evaluate(A * B, E) :- evaluate(A, Ae), evaluate(B, Be), E is Ae * Be.
  evaluate(A / B, E) :- evaluate(A, Ae), evaluate(B, Be), E is Ae / Be.
- 
+
  % Solution
  calculator(String, Value) :-
     lex1(String, Tokens1),
     lex2(Tokens1, Tokens2),
     parse(Tokens2, Expression),
     evaluate(Expression, Value).
- 
+
  % Example use
  % calculator("(3+50)*7-9", X).
 ```
@@ -5343,7 +5343,7 @@ arith_eval(do_expr()) =>
 
 ## Python
 
-There are python modules, such as Ply, which facilitate the implementation of parsers.  This example, however, uses only standard Python with the parser having two stacks, one for operators, one for operands. 
+There are python modules, such as Ply, which facilitate the implementation of parsers.  This example, however, uses only standard Python with the parser having two stacks, one for operators, one for operands.
 
 A subsequent example uses Pythons' ast module to generate the abstract syntax tree.
 
@@ -5399,12 +5399,12 @@ class Yaccer(object):
       # print 'pushop', operchar
 
    def syntaxErr(self, char ):
-      # Open Parenthesis 
+      # Open Parenthesis
       print 'parse error - near operator "%s"' %char
 
    def pc2( self,operchar ):
       # Close Parenthesis
-      # reduce node until matching open paren found 
+      # reduce node until matching open paren found
       self.redeuce( 1 )
       if len(self.operstak)>0:
          self.operstak.pop()		# pop off open parenthesis
@@ -5455,7 +5455,7 @@ def Lex( exprssn, p ):
          if bgn is not None:
             p.v(p, exprssn[bgn:cp])
             bgn = None
-         
+
    if bgn is not None:
       p.v(p, exprssn[bgn:cp+1])
       bgn = None
@@ -5475,7 +5475,7 @@ Python comes with its own [http://docs.python.org/3.1/library/ast.html#module-as
 
 ```python>>>
  import ast
->>> 
+>>>
 >>> expr="2 * (3 -1) + 2 * 5"
 >>> node = ast.parse(expr, mode='eval')
 >>> print(ast.dump(node).replace(',', ',\n'))
@@ -5509,7 +5509,7 @@ Expression(body=BinOp(left=BinOp(left=Num(n=2),
 ```racket
 #lang racket
 
-(require parser-tools/yacc 
+(require parser-tools/yacc
          parser-tools/lex
          (prefix-in ~ parser-tools/lex-sre))
 
@@ -5559,7 +5559,7 @@ Several additional operators are supported as well as several forms of exponenti
 :::*   '''&amp;&amp;'''   for logical   '''XOR'''
 :::*   '''||'''       for concatenation
 :::*   '''[   ]     {   }'''     as grouping symbols,   as well as   '''(   )'''
-:::*   12.3e+44       ("single" precision) 
+:::*   12.3e+44       ("single" precision)
 :::*   12.3E+44       ("single" precision)
 :::*   12.3D+44       ("double" precision)
 :::*   12.3Q+44       ("extended" or "quad" precision)
@@ -5683,7 +5683,7 @@ getX:            do Nj=j+1  to length(x);   _n=substr(x, Nj, 1);    if _n==$  th
        return $                                  /*reached end-of-tokens,  return $.    */
 ```
 
-To view a version of the above REXX program, see this version which has much more whitespace:   ──►   [[Arithmetic_evaluation/REXX]]. 
+To view a version of the above REXX program, see this version which has much more whitespace:   ──►   [[Arithmetic_evaluation/REXX]].
 
 
 
@@ -5712,32 +5712,32 @@ class TreeNode
     "*" => lambda {|x, y| x * y},
     "/" => lambda {|x, y| x / y}}
   attr_accessor :info, :left, :right
-  
+
   def initialize(info)
     @info = info
   end
-  
+
   def leaf?
     @left.nil? and @right.nil?
   end
-  
+
   def to_s(order)
     if leaf?
       @info
     else
       left_s, right_s = @left.to_s(order), @right.to_s(order)
-      
+
       strs = case order
              when :prefix  then [@info, left_s, right_s]
              when :infix   then [left_s, @info, right_s]
              when :postfix then [left_s, right_s, @info]
              else               []
              end
-      
+
       "(" + strs.join(" ") + ")"
     end
   end
-  
+
   def eval
     if !leaf? and operator?(@info)
       OP_FUNCTION[@info].call(@left.eval, @right.eval)
@@ -5772,7 +5772,7 @@ end
 def infix_exp_to_tree(exp)
   tokens = tokenize(exp)
   op_stack, node_stack = [], []
-  
+
   tokens.each do |token|
     if operator?(token)
       # clear stack of higher priority operators
@@ -5781,7 +5781,7 @@ def infix_exp_to_tree(exp)
              $op_priority[op_stack.last.info] < $op_priority[token])
         pop_connect_push(op_stack, node_stack)
       end
-      
+
       op_stack.push(TreeNode.new(token))
     elsif token == "("
       op_stack.push(TreeNode.new(token))
@@ -5789,18 +5789,18 @@ def infix_exp_to_tree(exp)
       while op_stack.last.info != "("
         pop_connect_push(op_stack, node_stack)
       end
-      
+
       # throw away the '('
       op_stack.pop
     else
       node_stack.push(TreeNode.new(token))
     end
   end
-  
+
   until op_stack.empty?
     pop_connect_push(op_stack, node_stack)
   end
-  
+
   node_stack.last
 end
 ```
@@ -5872,7 +5872,7 @@ fn parse_expression(chars: &Vec<char>, pos: usize) -> Option<(usize,Node)> {
                         None
                     }
                 },
-                None => Some((new_pos,first)), 
+                None => Some((new_pos,first)),
             }
         },
         None => None,
@@ -5961,7 +5961,7 @@ fn parse_operator(chars: &Vec<char>, pos: usize) -> Option<(usize,Operator)> {
                 return Some((pos+1, op));
             }
         }
-    } 
+    }
     None
 }
 
@@ -5971,7 +5971,7 @@ pub fn eval(txt :&str) -> f64 {
         Some(t) => eval_term(&t),
         None => panic!("Cannot parse {}",txt),
     }
-    
+
 }
 
 /// eval a term, recursively
@@ -6003,7 +6003,7 @@ mod tests {
         assert_eq!(-9.0/4.0, eval("2*-3--4+-.25"));
         assert_eq!(1.5, eval("1 - 5 * 2 / 20 + 1"));
         assert_eq!(3.5, eval("2 * (3 + ((5) / (7 - 11)))"));
-        
+
     }
 }
 
@@ -6127,7 +6127,7 @@ The parse function uses a recursive-descent parser to follow the precedence rule
           (else ; read a multi-digit positive integer
             (let loop ((rem chars)
                        (res 0))
-              (if (and (not (null? rem)) 
+              (if (and (not (null? rem))
                        (char-numeric? (car rem)))
                 (loop (cdr rem)
                       (+ (* res 10)
@@ -6144,7 +6144,7 @@ The parse function uses a recursive-descent parser to follow the precedence rule
                   (loop remaining-chars
                         (cons token tokens))))))
 
-;; turn list of tokens into an AST 
+;; turn list of tokens into an AST
 ;; -- using recursive descent parsing to obey laws of precedence
 (define (parse tokens)
   (define (parse-factor tokens)
@@ -6173,7 +6173,7 @@ The parse function uses a recursive-descent parser to follow the precedence rule
                 (values expr rem)))
   ;
   (let-values (((expr rem) (parse-expr tokens)))
-                (if (null? rem) 
+                (if (null? rem)
                   expr
                   (error "Misformed expression"))))
 
@@ -6182,8 +6182,8 @@ The parse function uses a recursive-descent parser to follow the precedence rule
   (cond ((number? ast)
          ast)
         ((member (car ast) (list + - * /))
-         ((car ast) 
-          (eval-expression (cadr ast)) 
+         ((car ast)
+          (eval-expression (cadr ast))
           (eval-expression (caddr ast))))
         (else
           (error "Misformed expression"))))
@@ -6195,7 +6195,7 @@ The parse function uses a recursive-descent parser to follow the precedence rule
 ;; running some examples
 (for-each
   (lambda (str)
-    (display 
+    (display
       (string-append str
                      " => "
                      (number->string (interpret str))))
@@ -6386,8 +6386,8 @@ fun lex_parse_eval (str:string) =
 ## Tcl
 
 {{works with|Tcl|8.5}}
-The code below delivers the AST for an expression 
-in a form that it can be immediately eval-led, 
+The code below delivers the AST for an expression
+in a form that it can be immediately eval-led,
 using Tcl's prefix operators.
 
 ```Tcl
@@ -6668,24 +6668,24 @@ Compiler.Compiler.compileText("1+3*7").__constructor(); vm.regX;
 110 IF c$="(" OR c$=")" THEN GO SUB 230: GO TO 130
 120 GO TO 300
 130 NEXT n
-140 IF pc>0 THEN PRINT FLASH 1;"Parentheses not paired.": BEEP 1,-25: STOP 
+140 IF pc>0 THEN PRINT FLASH 1;"Parentheses not paired.": BEEP 1,-25: STOP
 150 PRINT "Result = ";VAL i$
-160 STOP 
+160 STOP
 170 IF s$=")" THEN GO TO 300
 180 LET s$=c$
-190 RETURN 
+190 RETURN
 200 IF (NOT (s$>="0" AND s$<="9")) AND s$<>")" THEN GO TO 300
 210 LET s$=c$
-220 RETURN 
+220 RETURN
 230 IF c$="(" AND ((s$>="0" AND s$<="9") OR s$=")") THEN GO TO 300
 240 IF c$=")" AND ((NOT (s$>="0" AND s$<="9")) OR s$="(") THEN GO TO 300
 250 LET s$=c$
-260 IF c$="(" THEN LET pc=pc+1: RETURN 
+260 IF c$="(" THEN LET pc=pc+1: RETURN
 270 LET pc=pc-1
 280 IF pc<0 THEN GO TO 300
-290 RETURN 
+290 RETURN
 300 PRINT FLASH 1;"Invalid symbol ";c$;" detected in pos ";n: BEEP 1,-25
-310 STOP 
+310 STOP
 
 ```
 

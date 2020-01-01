@@ -207,9 +207,9 @@ on run
             {index:i}
         end |λ|
     end script
-    
+
     nObjects(someConstructor, 6)
-    
+
     --> {{index:1}, {index:2}, {index:3}, {index:4}, {index:5}, {index:6}}
 end run
 
@@ -241,7 +241,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -281,16 +281,16 @@ Loop, %n%
 ```bbcbasic
       REM Determine object count at runtime:
       n% = RND(1000)
-      
+
       REM Declare an array of structures; all members are initialised to zero:
       DIM objects{(n%) a%, b$}
-      
+
       REM Initialise the objects to distinct values:
       FOR i% = 0 TO DIM(objects{()},1)
         objects{(i%)}.a% = i%
         objects{(i%)}.b$ = STR$(i%)
       NEXT
-      
+
       REM This is how to create an array of pointers to the same object:
       DIM objects%(n%), object{a%, b$}
       FOR i% = 0 TO DIM(objects%(),1)
@@ -351,8 +351,8 @@ delete[] p;
 
 Using the standard library
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <algorithm>
 #include <iterator>
 
@@ -362,19 +362,19 @@ std::vector<T> vec1(n); // all n objects are default-initialized
 // this assumes t is a value of type T (or a type which implicitly converts to T)
 std::vector<T> vec2(n, t); // all n objects are copy-initialized with t
 
-// To initialise each value differently 
+// To initialise each value differently
 std::generate_n(std::back_inserter(vec), n, makeT); //makeT is a function of type T(void)
 
 ```
 
 
-In C++ reference semantics are achieved by holding objects by pointer. Here is an example of the error, and a correct way of achieving distinctness.  
+In C++ reference semantics are achieved by holding objects by pointer. Here is an example of the error, and a correct way of achieving distinctness.
 
 These examples assume T has a public copy constructor, and that p is a pointer to T;
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <tr1/memory>
 using namespace std;
 using namespace std::tr1;
@@ -395,7 +395,7 @@ for (int i = 0; i < n; ++i)
 // this solution avoids uninitialized pointers at any point
 std::vector<TPtr_t> bvec2;
 for (int i = 0; i < n; ++i)
-  bvec2.push_back(TPtr_t(new T(*p)); 
+  bvec2.push_back(TPtr_t(new T(*p));
 
 
 ```
@@ -597,21 +597,21 @@ include FMS-SILib.f
 
 \ create a list of VAR objects the right way
 \ each: returns a unique object reference
-o{ 0 0 0 } dup p:   o{ 0 0 0 } 
-dup each: drop . 10774016  
-dup each: drop . 10786896 
-dup each: drop . 10786912 
+o{ 0 0 0 } dup p:   o{ 0 0 0 }
+dup each: drop . 10774016
+dup each: drop . 10786896
+dup each: drop . 10786912
 
 
 \ create a list of VAR objects the wrong way
 \ each: returns the same object reference
-var x 
+var x
 object-list2 list
 x list add:
 x list add:
 x list add:
-list p: o{ 0 0 0 } 
-list each: drop . 1301600 
+list p: o{ 0 0 0 }
+list each: drop . 1301600
 list each: drop . 1301600
 list each: drop . 1301600
 
@@ -643,7 +643,7 @@ program multiple
   integer, target      :: v
   integer, parameter   :: N = 10
 
-  ! Create 10 
+  ! Create 10
   allocate(T_array(N))
 
   ! Set the fifth one to b something different
@@ -665,7 +665,7 @@ program multiple
 
   ! Change the referenced object and reprint - should all be 3
   v = 3
-  write(*,'(10i2)') (S_same(i)%a,i=1,N)  
+  write(*,'(10i2)') (S_same(i)%a,i=1,N)
 
 end program multiple
 
@@ -764,8 +764,8 @@ Test:
 Output:
 
 ```txt
-Objects distinct for n = 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 
-Objects distinct for n = Caught: Assertion failed: 
+Objects distinct for n = 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19
+Objects distinct for n = Caught: Assertion failed:
 
 assert (here == there) == (i == j)
         |    |  |      |   | |  |
@@ -947,7 +947,7 @@ for (var i = 0; i < n; i++)
 {{Out}}
 
 ```JavaScript
-[{"index":0}, {"index":1}, {"index":2}, {"index":3}, 
+[{"index":0}, {"index":1}, {"index":2}, {"index":3},
 {"index":4}, {"index":5}, {"index":6}]
 ```
 
@@ -993,7 +993,7 @@ def Array(atype; n):
     else error("there is only one null value")
     end
   else error("\(atype) is not a jq type")
-  end; 
+  end;
 
 # Example:
 
@@ -1095,7 +1095,7 @@ local table1 = {1,2,3}
 local refTab = {}
 for i = 1, 10 do refTab[i] = table1 end
 
--- Instead, tables should be copied using a function like this	
+-- Instead, tables should be copied using a function like this
 function copy (t)
     local new = {}
     for k, v in pairs(t) do new[k] = v end
@@ -1125,16 +1125,16 @@ Module CheckIt {
             =Alfa(m, id)
             id++
       }
-       
+
       Dim A(10)<<Foo(20)
       \\ for each arrayitem call Foo(20)
       TestThis()
-       
-       
+
+
       \\  call once foo(20) and result copy to each array item
       Dim A(10)=Foo(20)
       TestThis()
-       
+
       Bar=Lambda Foo (m)->{
             ->Foo(m)
       }
@@ -1142,7 +1142,7 @@ Module CheckIt {
       \\ each item is pointer to group
       Dim A(10)=Bar(20)
       TestThis()
-       
+
       Sub TestThis()
             Local i
             For i=0 to 9 {
@@ -1179,7 +1179,7 @@ A correct version is:
 {x, x, x, x} /. x :> Random[]
 ```
 
- 
+
 which evaluates Random[] each time e.g.
 ->{0.514617, 0.0682395, 0.609602, 0.00177382}
 
@@ -1277,7 +1277,7 @@ Each line interleaves the initial values of <code>a</code> and <code>b</code>. T
 
 ```txt
 
-3 , -9 , 100 ; 4 , 2 , 100 ; 2 , 6 , 100 ; 
+3 , -9 , 100 ; 4 , 2 , 100 ; 2 , 6 , 100 ;
 -1 , -9 , 0 ; -9 , 2 , 0 ; 8 , 6 , 0 ;
 
 ```
@@ -1364,7 +1364,7 @@ Array.init n (fun _ -> new foo);;
 ## Oforth
 
 
-The right way : the block sent as parameter is performed n times : 
+The right way : the block sent as parameter is performed n times :
 
 
 ```Oforth
@@ -1477,7 +1477,7 @@ See [[Multiple_distinct_objects#Delphi | Delphi]]
 incorrect:
 
 ```perl
-(Foo->new) x $n 
+(Foo->new) x $n
 # here Foo->new can be any expression that returns a reference representing
 # a new object
 ```
@@ -1624,14 +1624,14 @@ Run the same commands a few times and the <code>Select-Object -Unique</code> com
 
 ```PureBasic
 n=Random(50)+25
-Dim A.i(n)  
+Dim A.i(n)
 ; Creates a Array of n [25-75] elements depending on the outcome of Random().
 ; Each element will be initiated to zero.
 
 For i=0 To ArraySize(A())
   A(i)=2*i
 Next i
-; Set each individual element at a wanted (here 2*i) value and 
+; Set each individual element at a wanted (here 2*i) value and
 ; automatically adjust accordingly to the unknown length of the Array.
 
 NewList *PointersToA()
@@ -1731,17 +1731,17 @@ use std::cell::RefCell;
 
 fn main() {
     let size = 3;
-    
+
     // Clone the given element to fill out the vector.
     let mut v: Vec<String> = vec![String::new(); size];
     v[0].push('a');
     println!("{:?}", v);
-    
+
     // Run a given closure to create each element.
     let mut v: Vec<String> = (0..size).map(|i| i.to_string()).collect();
     v[0].push('a');
     println!("{:?}", v);
-    
+
     // For multiple mutable views of the same thing, use something like Rc and RefCell.
     let v: Vec<Rc<RefCell<String>>> = vec![Rc::new(RefCell::new(String::new())); size];
     v[0].borrow_mut().push('a');
@@ -1920,7 +1920,7 @@ for {set i 0} {$i<$n} {incr i} {
 
 ```XPL0
 code Reserve=3, IntIn=10;
-char A;  int  N, I;  
+char A;  int  N, I;
 [N:= IntIn(8);                  \get number of items from command line
 A:= Reserve(N);                 \create array of N bytes
 for I:= 0 to N-1 do A(I):= I*3; \initialize items with different values
@@ -1940,7 +1940,7 @@ end sub
 
 sub repL$(e$, n)
 	local i, r$
-	
+
 	for i = 1 to n
 		r$ = r$ + "," + e$
 	next

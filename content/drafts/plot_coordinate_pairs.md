@@ -222,24 +222,24 @@ ExitApp
       DIM x(9), y(9)
       x() = 0,   1,    2,    3,    4,    5,     6,     7,     8,     9
       y() = 2.7, 2.8, 31.4, 38.1, 58.0, 76.2, 100.5, 130.0, 149.3, 180.0
-      
+
       ORIGIN 100,100
       VDU 23,23,2;0;0;0;
       VDU 5
-      
+
       FOR x = 1 TO 9
         GCOL 7 : LINE 100*x,720,100*x,0
         GCOL 0 : PLOT 0,-10,-4 : PRINT ; x ;
       NEXT
-      
+
       FOR y = 20 TO 180 STEP 20
         GCOL 7 : LINE 900,4*y,0,4*y
         GCOL 0 : PLOT 0,-212,20 : PRINT y ;
       NEXT
-      
+
       LINE 0,0,0,720
       LINE 0,0,900,0
-      
+
       GCOL 4
       FOR i% = 0 TO 9
         IF i%=0 THEN
@@ -259,8 +259,8 @@ We could use the ''suite'' provided by [[:Category:Raster graphics operations|Ra
 
 {{libheader|libplot}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <plot.h>
@@ -270,7 +270,7 @@ double x[NP] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 double y[NP] = {2.7, 2.8, 31.4, 38.1, 58.0, 76.2, 100.5, 130.0, 149.3, 180.0};
 
 void minmax(double *x, double *y,
-	    double *minx, double *maxx, 
+	    double *minx, double *maxx,
 	    double *miny, double *maxy, int n)
 {
   int i;
@@ -288,7 +288,7 @@ void minmax(double *x, double *y,
 /* likely we must play with this parameter to make the plot looks better
    when using different set of data */
 #define YLAB_HEIGHT_F 0.1
-#define XLAB_WIDTH_F 0.2  
+#define XLAB_WIDTH_F 0.2
 #define XDIV (NP*1.0)
 #define YDIV (NP*1.0)
 #define EXTRA_W 0.01
@@ -308,7 +308,7 @@ int main()
   double lx, ly;
   double xticstep, yticstep, nx, ny;
   double sx, sy;
-  
+
   char labs[MAXLABLEN+1];
 
   plotter = pl_newpl("png", NULL, stdout, NULL);
@@ -323,7 +323,7 @@ int main()
   ly = maxy - miny;
   pl_fspace(floor(minx) - XLAB_WIDTH_F * lx, floor(miny) - YLAB_HEIGHT_F * ly,
 	    ceil(maxx) + EXTRA_W * lx, ceil(maxy) + EXTRA_H * ly);
-  
+
   /* compute x,y-ticstep */
   xticstep = (ceil(maxx) - floor(minx)) / XDIV;
   yticstep = (ceil(maxy) - floor(miny)) / YDIV;
@@ -387,8 +387,8 @@ No one would use the previous code to produce a plot (that looks [http://i40.tin
 
 [[File:plot-2d-c.png|center]]Following code creates a plot in EPS format, with auto scaling and line/symbol/color controls.  Plotting function loosely follows Matlab command style.  Not thorough by any means, just to give an idea on how this kind of things can be coded.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 #include <string.h>
 
@@ -476,7 +476,7 @@ int plot(double x[], double y[], int len, char *spec)
 		if (i) printf("%g %g m 0 7 rl st\n", grid_x, BOTY);
 	}
 	printf("%g %g m %g %g l st\n", ofs_x, BOTY, grid_x, BOTY);
-		
+
 	if (strchr(spec, 'r'))		printf("1 0 0 s\n");
 	else if (strchr(spec, 'b'))	printf("0 0 1 s\n");
 	else if (strchr(spec, 'g'))	printf("0 1 0 s\n");
@@ -504,7 +504,7 @@ int plot(double x[], double y[], int len, char *spec)
 		}
 
 	printf("showpage\n%%EOF");
-	
+
 	return 0;
 }
 
@@ -681,7 +681,7 @@ private:
     {
 	HDC dc = bmp.getDC();
 	bmp.setPenColor( RGB( 240, 240, 240 ) );
-	DWORD b = 11, c = 40, x; 
+	DWORD b = 11, c = 40, x;
 	RECT rc; char txt[8];
 
 	for( x = 0; x < pairs->size(); x++ )
@@ -709,11 +709,11 @@ private:
     }
 
     void plotIt( vector<vector2>* pairs )
-    {	
+    {
 	HDC dc = bmp.getDC();
 	HBRUSH br = CreateSolidBrush( 255 );
 	RECT rc;
-		
+
 	bmp.setPenColor( 255 ); bmp.setPenWidth( 2 );
 	vector<vector2>::iterator it = pairs->begin();
 	int a = MWID + HSTEP * static_cast<int>( ( *it ).x ), b = MHEI - static_cast<int>( VSTEP * ( *it ).y );
@@ -745,7 +745,7 @@ int main( int argc, char* argv[] )
     pairs.push_back( vector2( 4.0f, 58.0f ) ); pairs.push_back( vector2( 5.0f, 76.2f ) );
     pairs.push_back( vector2( 6.0f, 100.5f ) ); pairs.push_back( vector2( 7.0f, 130.0f ) );
     pairs.push_back( vector2( 8.0f, 149.3f ) ); pairs.push_back( vector2( 9.0f, 180.0f ) );
-	
+
     pt.draw( &pairs );
     system( "pause" );
 
@@ -1055,10 +1055,10 @@ procedure Plot(x,y,cw,ch)
    wparms  := ["Plot","g",
                sprintf("size=%d,%d",cw,ch),
                "bg=white"]             # base window parms
-               
+
    dx := sprintf("dx=%d",BORDER)       # grid origin
    dy := sprintf("dy=%d",BORDER)
-     
+
    &window := open!wparms | stop("Unable to open window")
    X := scale(x,uw)                    # scale data to usable space
    Y := scale(y,uh,"invert")
@@ -1066,31 +1066,31 @@ procedure Plot(x,y,cw,ch)
    WAttrib(dx,dy)                      # set origin=grid & draw grid
    every x := (X.tickfrom to X.tickto by X.tick) * X.tickscale do {
       if x = 0 then Fg(AXISC) else Fg(GRIDC)
-      DrawLine(x,Y.tickfrom*Y.tickscale,x,Y.tickto*Y.tickscale)    
+      DrawLine(x,Y.tickfrom*Y.tickscale,x,Y.tickto*Y.tickscale)
       }
    every y := (Y.tickfrom to Y.tickto by Y.tick) * Y.tickscale do {
-      if y = uh then Fg(AXISC) else Fg(GRIDC) 
-      DrawLine(X.tickfrom*X.tickscale,y,X.tickto*X.tickscale,y) 
+      if y = uh then Fg(AXISC) else Fg(GRIDC)
+      DrawLine(X.tickfrom*X.tickscale,y,X.tickto*X.tickscale,y)
       }
 
    Fg(POINTC)                          # draw data points ....
-   every i := 1 to *X.scaled do 
-      FillCircle(X.scaled[i],Y.scaled[i],POINTR) 
+   every i := 1 to *X.scaled do
+      FillCircle(X.scaled[i],Y.scaled[i],POINTR)
 
    Fg(AXISC)                           # label grid
    WAttrib(dx,"dy=0")                  # label X axis
    Font(sprintf("Helvetica,%d",AXISFH))
    ytxt := ch-BORDER+1+(WAttrib("ascent") - WAttrib("descent"))/2
-   
-   every x := X.tickscale * (xv := X.tickfrom to X.tickto by X.tick) do 
+
+   every x := X.tickscale * (xv := X.tickfrom to X.tickto by X.tick) do
       DrawString(x - TextWidth(xv)/2, ytxt + integer(AXISFH*1.5),xv)
 
    WAttrib("dx=0",dy)                  # label Y axis
    every y := Y.tickscale * (yv := Y.tickfrom to Y.tickto by Y.tick) do
       DrawString(BORDER/2 - TextWidth(yv)/2, ytxt - BORDER - y,yv)
-      
+
    WriteImage(sprintf("PlotPoints-%d.gif",&now))   # save image
-   
+
    WAttrib("dx=0","dy=0")                          # close off nicely
    Font("Helvetica,10")
    DrawString(10,ch-5,"Right click to exit")
@@ -1109,16 +1109,16 @@ procedure scale(data,pix,opts[])
    P.tick := ceil(prange/(10^(k:=floor(log(prange,10))))*(10^k)/ticks)
    P.tickfrom := P.tick*floor(pmin/P.tick)
    P.tickto   := P.tick*ceil(pmax/P.tick)
-   P.tickscale := real(pix)/(P.tickto-P.tickfrom) 
-   every put(q,integer((!data-P.tickfrom)*P.tickscale))   
+   P.tickscale := real(pix)/(P.tickto-P.tickfrom)
+   every put(q,integer((!data-P.tickfrom)*P.tickscale))
    if !opts == "invert" then           # invert is for y
-      every q[i := 1 to *q] := pix - q[i]  
+      every q[i := 1 to *q] := pix - q[i]
    return P
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 [http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers.icn provides floor,ceil]
 
@@ -1129,14 +1129,14 @@ end
 
 ```j
 require 'plot'
-X=: i.10 
+X=: i.10
 Y=: 2.7 2.8 31.4 38.1 58.0 76.2 100.5 130.0 149.3 180.0
 'dot; pensize 2.4' plot X;Y
 ```
 
 [http://www.jsoftware.com/jwiki/RosettaCode/ExamplePlot1 Output of plot.]
 
-If you eliminate the left argument to plot, 
+If you eliminate the left argument to plot,
 the dots will be connected instead of being isolated.
 
 
@@ -1158,10 +1158,10 @@ the dots will be connected instead of being isolated.
         this.yi = y;
     }
     public static double max(double[] t) {
-        double maximum = t[0];   
+        double maximum = t[0];
         for (int i = 1; i < t.length; i++) {
             if (t[i] > maximum) {
-                maximum = t[i];  
+                maximum = t[i];
             }
         }
         return maximum;
@@ -1257,7 +1257,7 @@ The above would produce the plot as a .pdf file.
 # NOTE: This definition of transpose can be omitted
 # if your version of jq includes transpose as a builtin.
 #
-# transpose a possibly jagged matrix, quickly; 
+# transpose a possibly jagged matrix, quickly;
 # rows are padded with nulls so the result is always rectangular.
 def transpose:
   if . == [] then []
@@ -1284,8 +1284,8 @@ mydata <- read.table( file("stdin"), header=TRUE, sep=",")
 x = mydata$A                        # x-axis
 y = mydata$B                        # y-axis
 plot(x, y,                          # plot the variables
-   main="Scatterplot Example", 
-   xlab="x-axis label",             # x-axis label 
+   main="Scatterplot Example",
+   xlab="x-axis label",             # x-axis label
    ylab="y-axis label" )            # y-axis label
 ```
 
@@ -1406,7 +1406,7 @@ For i = 0 To 9
     Print "."
 Next i
 
-End  
+End
 
 ```
 
@@ -1495,7 +1495,7 @@ Result image [https://4.bp.blogspot.com/-8XdIVaW79lU/W_iCUBmj92I/AAAAAAAAHbA/TxM
 Module Pairs {
       \\ written in version 9.5 rev. 13
       \\ use Gdi+ antialiasing (not work with Wine in Linux, but we get no error)
-      smooth on 
+      smooth on
       Const center=2, right=3, left=1, blue=1, angle=0, dotline=3
       Const size9pt=9, size11pt=11
       Cls ,0    ' use current background color, set split screen from line 0
@@ -1519,7 +1519,7 @@ Module Pairs {
       max=Y#max()
       \\ Auto scale for Y, using 0 for start of axis Y
       scY=-graH/((max+5^log(max) ) div 100)/100
-      \\ make vertical axis using dots with numbers center per dx 
+      \\ make vertical axis using dots with numbers center per dx
       j=1
       For i=basex+dx to basex+dx*x#max() Step dx
             Move i, basey
@@ -1541,7 +1541,7 @@ Module Pairs {
      \\ start from first point. We use Draw to for absolute coordinates
       Move array(x,0)*dx+Basex, array(y,0)*scy+Basey
       While ex, ey {
-            Width 2 {      
+            Width 2 {
                   Draw to array(ex)*dx+Basex, array(ey)*scy+Basey, blue
             }
       }
@@ -1614,7 +1614,7 @@ ListPlot[{x, y} // Transpose]
 (%i3) plot2d(['discrete, x, y], [style, [points,5,1,1]], [gnuplot_term, png], [gnuplot_out_file, "qsort-range-10-9.png"])$
 ```
 
- 
+
 [http://img28.picoodle.com/img/img28/4/2/7/f_qsortrange1m_1b7f493.png qsort-range-10-9.png]
 
 
@@ -1645,7 +1645,7 @@ let () =
 ```
 
 
-Using the [http://forge.ocamlcore.org/projects/archimedes/ Archimedes] library, 
+Using the [http://forge.ocamlcore.org/projects/archimedes/ Archimedes] library,
 one can write:
 [[Image:Archimedes.png|300px|thumb|right|Archimedes plot (graphics output).]]
 
@@ -1824,9 +1824,9 @@ atom {w,h} = {(width-60)/9,(height-60)/180}
         cdCanvasSetForeground(cddbuffer, CD_BLACK)
         nx = 30+(i-1)*w
         ny = 30+(i-1)*20*h
-        {} = cdCanvasTextAlignment(cddbuffer, CD_NORTH) 
+        {} = cdCanvasTextAlignment(cddbuffer, CD_NORTH)
         cdCanvasText(cddbuffer, nx, 25, sprintf("%d",(i-1)))
-        {} = cdCanvasTextAlignment(cddbuffer, CD_EAST) 
+        {} = cdCanvasTextAlignment(cddbuffer, CD_EAST)
         cdCanvasText(cddbuffer, 25, ny, sprintf("%3d",(i-1)*20))
         cdCanvasSetForeground(cddbuffer, CD_GRAY)
         cdCanvasLine(cddbuffer,30,ny,width-30,ny)
@@ -1971,12 +1971,12 @@ For i = 0 To count
   Read.f  y
   MyData(i)\y = y
   If y > max_y: max_y = y:  EndIf
-  If y < min_y: min_y = y:  EndIf 
+  If y < min_y: min_y = y:  EndIf
 Next
 
 Procedure UpdatePlot(Win, w, h)
   Static gblm = 20, gtrm = 5 ;graph's bottom-left and top-right margin
-  
+
   Protected count = ArraySize(MyData())
   If w > gblm And h > gblm And count > 0
     SetWindowTitle(Win, "PureBasic Plot " + Str(w) + "x" + Str(h))
@@ -1984,7 +1984,7 @@ Procedure UpdatePlot(Win, w, h)
     Protected i, yf.f, xf.f
     yf = (gh - gtrm) / max_y
     xf = (gw - gtrm) / max_x
-    
+
     CreateImage(0, w, h)
     Protected OutputID = ImageOutput(0)
     StartDrawing(OutputID)
@@ -1999,9 +1999,9 @@ Procedure UpdatePlot(Win, w, h)
         y = gh
         ; X-Scale
         LineXY(x, y, x, gtrm, $467E3E)
-        If i: DrawText(x - 5, y + 2, Str(i)): EndIf 
-      Next 
-      
+        If i: DrawText(x - 5, y + 2, Str(i)): EndIf
+      Next
+
       ;- Draw curve
       Protected ox = gblm, oy = gh, x, y
       For i = 0 To count
@@ -2026,7 +2026,7 @@ If Win
         UpdatePlot(Win, WindowWidth(Win), WindowHeight(Win))
     EndSelect
   Until event = #PB_Event_CloseWindow
-  
+
   ; Save the plot if the user wants to
   If MessageRequester("Question", "Save it?", #PB_MessageRequester_YesNo) = #PB_MessageRequester_Yes
     Define File$=SaveFileRequester("Save as", "PB.png", "PNG (*.png)|*.png", 0)
@@ -2077,14 +2077,14 @@ See some other examples:
 from visual import *
 from visual.graph import *
 
-plot1 = gdisplay( title='VPython Plot-Demo', 
+plot1 = gdisplay( title='VPython Plot-Demo',
                   xtitle='x',
                   ytitle='y    (click and drag mouse to see coordinates)',
                   foreground=color.black,
-                  background=color.white, 
+                  background=color.white,
                   x=0, y=0,
                   width=400, height=400,
-                  xmin=0, xmax=10, 
+                  xmin=0, xmax=10,
                   ymin=0, ymax=200 )
 
 f1 = gdots(color=color.red)                 # create plot-object
@@ -2092,7 +2092,7 @@ f1 = gdots(color=color.red)                 # create plot-object
 f1.plot(pos= (0,   2.7), color=color.blue ) # add a single point
 f1.plot(pos=[(1,   2.8),                    # add a list of points
              (2,  31.4),
-             (3,  38.1), 
+             (3,  38.1),
              (4,  58.0),
              (5,  76.2),
              (6, 100.5),
@@ -2353,7 +2353,7 @@ load "guilib.ring"
 
 paint = null
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("Plot coordinate pairs")
@@ -2391,22 +2391,22 @@ func draw
         ynew = 0
         x2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         y2 = [2.7, 2.8, 31.4, 38.1, 58.0, 76.2, 100.5, 130.0, 149.3, 180.0]
- 
+
         for x = 1 to 9
               drawline(100*x,720,100*x,0)
               drawtext(100*x,750,string(x))
         next
- 
+
         for y = 20 to 180 step 20
              drawline(900,4*y,0,4*y)
              drawtext(0,720-4*y,string(y))
         next
- 
+
         drawline(0,0,0,720)
         drawline(0,0,900,0)
- 
+
         for i = 1 to 10
-             if i=1 
+             if i=1
                 xold = 100*x2[i]
                 yold = 720-4*y2[i]
              else
@@ -2501,7 +2501,7 @@ object PlotCoordPairs extends scala.swing.SimpleSwingApplication {
     //axes:
     val a_path = new geom.GeneralPath
     a_path.moveTo(pxmax.dx, pxmax.dy)
-    a_path.lineTo(pcentre.dx, pcentre.dy) //x-axis    
+    a_path.lineTo(pcentre.dx, pcentre.dy) //x-axis
     a_path.lineTo(pymax.dx, pymax.dy) //y-axis
     // interval ticks:
     xs.map(i => Coord(i * xinterv, 0)).map(p => {
@@ -2535,7 +2535,7 @@ object PlotCoordPairs extends scala.swing.SimpleSwingApplication {
       Triple(p.y.toInt.toString, p.dx - 30, p.dy + 5)
     })
 
-    //curve:  
+    //curve:
     val path = new geom.GeneralPath
     val curve = xs.map(i => Coord(xs(i), ys(i)))
     path.moveTo(curve.head.dx, curve.head.dy)
@@ -2659,7 +2659,7 @@ proc scale {canvas direction from to fac} {
             $canvas create line $f 0 $t 0
             $canvas create text $f 0 -anchor nw -text $from
             $canvas create text $t 0 -anchor n -text $to
-            
+
         }
         y {
             set f [expr {$from * -$fac}]
@@ -2710,10 +2710,10 @@ ZoomData
 
 ## Ursala
 
-Ursala doesn't plot anything directly, but has libraries 
-to generate LaTeX code for 2D and 3D graphics. 
-The output file has to be run through LaTeX or included into a LaTeX document. 
-Here's the way to do it just as a quick check (all default settings 
+Ursala doesn't plot anything directly, but has libraries
+to generate LaTeX code for 2D and 3D graphics.
+The output file has to be run through LaTeX or included into a LaTeX document.
+Here's the way to do it just as a quick check (all default settings
 and dots connected with straight lines).
 
 ```Ursala
@@ -2867,7 +2867,7 @@ A program can of course supply commands and data to gnuplot as prepared files.  
 cmd:=0'|
 #set term wxt  # X11
 unset key  # Only one data set, so the key is uninformative
- 
+
 plot '-'   # '-' can be replaced with a filename, to read data from that file.
   0   2.7
   1   2.8

@@ -26,7 +26,7 @@ Take a   [[wp:Natural_number|Natural Number]]   in a given base and return the s
 ## 360 Assembly
 
 {{trans|REXX}}
-The program uses two ASSIST macro (XDECO,XPRNT) to keep the code as short as possible. 
+The program uses two ASSIST macro (XDECO,XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Sum digits of an integer  08/07/2016
@@ -73,7 +73,7 @@ ELOOPJ   MVC    PG(8),0(R11)         number
          LA     R11,8(R11)           @number=@number+8
          LA     R8,1(R8)             k=k+1
          B      LOOPK              end do k
-ELOOPK   L      R13,4(0,R13)       epilog 
+ELOOPK   L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    " restore
          XR     R15,R15            " rc=0
          BR     R14                exit
@@ -103,8 +103,8 @@ F0E           29
 ## Ada
 
 
-Numeric constants in Ada are either decimal or written as B#Digits#. Here B is the base, written as a decimal number, and 
-Digits is a base-B number. E.g., 30, 10#30# 2#11110#, and 16#1E# are the same number -- either written in decimal, binary or hexadecimal notation. 
+Numeric constants in Ada are either decimal or written as B#Digits#. Here B is the base, written as a decimal number, and
+Digits is a base-B number. E.g., 30, 10#30# 2#11110#, and 16#1E# are the same number -- either written in decimal, binary or hexadecimal notation.
 
 
 ```Ada
@@ -224,10 +224,10 @@ value\base base digit-sum
 
 -- digitsSummed :: (Int | String) -> Int
 on digitsSummed(n)
-    
+
     -- digitAdded :: Int -> String -> Int
     script digitAdded
-        
+
         -- Numeric values of known glyphs: 0-9 A-Z a-z
         -- digitValue :: String -> Int
         on digitValue(s)
@@ -246,12 +246,12 @@ on digitsSummed(n)
                 0
             end if
         end digitValue
-        
+
         on |λ|(accumulator, strDigit)
             accumulator + digitValue(strDigit)
         end |λ|
     end script
-    
+
     foldl(digitAdded, 0, splitOn("", n as string))
 end digitsSummed
 
@@ -264,7 +264,7 @@ on run
             (n as string) & " -> " & digitsSummed(n)
         end |λ|
     end script
-    
+
     intercalate(linefeed, ¬
         map(showDigitSum, [1, 1234, "254", "fe", "f0e", "999ABCXYZ"]))
 end run
@@ -304,7 +304,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -596,7 +596,7 @@ This solution deliberately avoids MOD and DIV so it is not restricted to 32-bit 
       PRINT "Digit sum of FE (base 16) is "; ~FNdigitsum(&FE, 16) " (base 16)"
       PRINT "Digit sum of F0E (base 16) is "; ~FNdigitsum(&F0E, 16) " (base 16)"
       END
-      
+
       DEF FNdigitsum(n, b)
       LOCAL q, s
       WHILE n <> 0
@@ -627,14 +627,14 @@ Digit sum of F0E (base 16) is 1D (base 16)
 ```bc
 define s(n) {
     auto i, o, s
-    
+
     o = scale
     scale = 0
 
     for (i = n; i > 0; i /= ibase) {
         s += i % ibase
     }
-    
+
     scale = o
     return(s)
 }
@@ -688,8 +688,8 @@ Sum: 10
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int SumDigits(unsigned long long n, const int base) {
     int sum = 0;
@@ -697,7 +697,7 @@ int SumDigits(unsigned long long n, const int base) {
     	sum += n % base;
     return sum;
 }
- 
+
 int main() {
     printf("%d %d %d %d %d\n",
         SumDigits(1, 10),
@@ -794,8 +794,8 @@ namespace RosettaCode.SumDigitsOfAnInteger
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cmath>
 int SumDigits(const unsigned long long int digits, const int BASE = 10) {
     int sum = 0;
@@ -843,7 +843,7 @@ template <typename T, T i> void For(T &sum, T &x, const T &BASE)
     const double z(std::pow(BASE,i));
     const T t = x/z;
     sum += t;
-    x -= t*z; 
+    x -= t*z;
     For<T, i-1>(sum,x,BASE);
 }
 template <> void For<T,0>(T &, T &, const T &){}
@@ -857,7 +857,7 @@ template <typename T, T digits, int BASE> T SumDigits()
     return x+sum;
 }
 
-int main() 
+int main()
 {
         std::cout << SumDigits<T, 1     , 10>()  << ' '
                   << SumDigits<T, 12345 , 10>()  << ' '
@@ -881,7 +881,7 @@ int main()
 
 
 ```clojure
-(defn sum-digits [n base] 
+(defn sum-digits [n base]
   (let [number (if-not (string? n) (Long/toString n base) n)]
     (reduce + (map #(Long/valueOf (str %) base) number))))
 ```
@@ -1094,7 +1094,7 @@ f0e(16) sums to 29
 <b>Output:</b>
 
 ```txt
- 
+
 10
 
 ```
@@ -1160,7 +1160,7 @@ Example usage:
      எண் = (எண்-d)/10;
      தொகை  = தொகை  + d
   முடி
-  பின்கொடு தொகை 
+  பின்கொடு தொகை
 முடி
 
 
@@ -1185,7 +1185,7 @@ let digsum b n =
 
 [<EntryPoint>]
 let main argv =
-    let rec show = function 
+    let rec show = function
         | n :: b :: r -> printf " %d" (digsum b n); show r
         | _ -> ()
 
@@ -1283,10 +1283,10 @@ This is an easy task for Forth, that has built in support for radices up to 36. 
 
 ## Fortran
 
-Please find GNU/linux compilation instructions along with the sample output within the comments at the start of this FORTRAN 2008 source.  Thank you.  
-Review of this page shows a solution to this task with the number input as text.  
-The solution is the sum of index positions in an ordered list of digit characters. (awk).  
-Other solutions ignore the representations of the input, encode digits using the base, then sum the encoding.  
+Please find GNU/linux compilation instructions along with the sample output within the comments at the start of this FORTRAN 2008 source.  Thank you.
+Review of this page shows a solution to this task with the number input as text.
+The solution is the sum of index positions in an ordered list of digit characters. (awk).
+Other solutions ignore the representations of the input, encode digits using the base, then sum the encoding.
 Both methods appear in this implementation.
 
 ```FORTRAN
@@ -1327,7 +1327,7 @@ contains
        a(i) = a(j)
        a(j) = t
     end do
-  end subroutine reverse  
+  end subroutine reverse
 
   function antibase(b, n) result(a)
     integer, intent(in) :: b,n
@@ -1404,13 +1404,13 @@ Function SumDigits(number As Integer, nBase As Integer) As Integer
   Wend
   Return sum
 End Function
- 
+
 Print "The sums of the digits are:"
 Print
 Print "1    base 10 :"; SumDigits(1, 10)
 Print "1234 base 10 :"; SumDigits(1234, 10)
 Print "fe   base 16 :"; SumDigits(&Hfe, 16)
-Print "f0e  base 16 :"; SumDigits(&Hf0e, 16) 
+Print "f0e  base 16 :"; SumDigits(&Hf0e, 16)
 Print
 Print "Press any key to quit the program"
 Sleep
@@ -1571,42 +1571,42 @@ Test:
     Radix value:       11110
     Decimal Digit Sum: 4
     Radix Digit Sum:   100
-    
+
 
     Decimal value:     30
     Radix:             10
     Radix value:       30
     Decimal Digit Sum: 3
     Radix Digit Sum:   3
-    
+
 
     Decimal value:     1
     Radix:             10
     Radix value:       1
     Decimal Digit Sum: 1
     Radix Digit Sum:   1
-    
+
 
     Decimal value:     12345
     Radix:             10
     Radix value:       12345
     Decimal Digit Sum: 15
     Radix Digit Sum:   15
-    
+
 
     Decimal value:     123405
     Radix:             10
     Radix value:       123405
     Decimal Digit Sum: 15
     Radix Digit Sum:   15
-    
+
 
     Decimal value:     254
     Radix:             16
     Radix value:       fe
     Decimal Digit Sum: 29
     Radix Digit Sum:   1d
-    
+
 
     Decimal value:     3854
     Radix:             16
@@ -1913,15 +1913,15 @@ f0e sum to 29
 
     // digitsSummed :: (Int | String) -> Int
     function digitsSummed(number) {
-    
+
         // 10 digits + 26 alphabetics
         // give us glyphs for up to base 36
         var intMaxBase = 36;
-    
+
         return number
             .toString()
             .split('')
-            .reduce(function (a, digit) { 
+            .reduce(function (a, digit) {
                 return a + parseInt(digit, intMaxBase);
             }, 0);
     }
@@ -2198,7 +2198,7 @@ sumDigits := proc( num )
 	local digits, number_to_string, i;
 	number_to_string := convert( num, string );
 	digits := [ seq( convert( h, decimal, hex ), h in seq( parse( i ) , i in number_to_string ) ) ];
-	return add( digits ); 
+	return add( digits );
 end proc:
 sumDigits( 1234 );
 sumDigits( "fe" );
@@ -2336,24 +2336,24 @@ VAR
   Num: LONGCARD;
 
 BEGIN
-  WriteString('   1 sums to '); 
-  WriteInt(SumOfDigitBase(1, 10), 1); 
+  WriteString('   1 sums to ');
+  WriteInt(SumOfDigitBase(1, 10), 1);
   WriteLn;
-  WriteString('1234 sums to '); 
-  WriteInt(SumOfDigitBase(1234, 10), 1); 
+  WriteString('1234 sums to ');
+  WriteInt(SumOfDigitBase(1234, 10), 1);
   WriteLn;
   IF StrBaseToLong('FE', 16, Num) THEN
-    WriteString(' $FE sums to '); 
-    WriteInt(SumOfDigitBase(Num, 16), 1); 
+    WriteString(' $FE sums to ');
+    WriteInt(SumOfDigitBase(Num, 16), 1);
     WriteLn;
   END;
   IF StrBaseToLong('F0E', 16, Num) THEN
-    WriteString('$F0E sums to '); 
-    WriteInt(SumOfDigitBase(Num, 16), 1); 
+    WriteString('$F0E sums to ');
+    WriteInt(SumOfDigitBase(Num, 16), 1);
     WriteLn;
   END;
-  WriteString('MAX(LONGCARD) (in dec) sums to '); 
-  WriteInt(SumOfDigitBase(MAX(LONGCARD), 10), 1); 
+  WriteString('MAX(LONGCARD) (in dec) sums to ');
+  WriteInt(SumOfDigitBase(MAX(LONGCARD), 10), 1);
   WriteLn;
 END SumOFDigits.
 
@@ -2542,14 +2542,14 @@ Sum of digits for integer "77" for a given base of "8": 14, 5
 
 func sum_digits(n : int, base : int) -> int {
     var sum = 0;
-    
+
     do
     {
         sum = sum + n % base;
         n = n / base
     }
     while (n != 0);
-    
+
     sum
 }
 
@@ -2559,7 +2559,7 @@ func main() -> int {
     print(sum_digits(123045, 10));
     print(sum_digits(0xfe, 16));
     print(sum_digits(0Xf0e, 16));
-    
+
     0
 }
 
@@ -2657,7 +2657,7 @@ let sum_digits ~digits ~base =
     aux (sum + x mod base) (x / base)
   in
   aux 0 digits
- 
+
 let () =
   Printf.printf "%d %d %d %d %d\n"
     (sum_digits 1 10)
@@ -2765,15 +2765,15 @@ Begin
     n := tmp;
     inc(sum,digit);
   end;
-  SumOfDigitBase := sum;  
+  SumOfDigitBase := sum;
 end;
 Begin
-  writeln('   1 sums to ', SumOfDigitBase(1,10)); 
-  writeln('1234 sums to ', SumOfDigitBase(1234,10));  
-  writeln(' $FE sums to ', SumOfDigitBase($FE,16)); 
-  writeln('$FOE sums to ', SumOfDigitBase($F0E,16));   
-  
-  writeln('18446744073709551615 sums to ', SumOfDigitBase(High(Uint64),10));  
+  writeln('   1 sums to ', SumOfDigitBase(1,10));
+  writeln('1234 sums to ', SumOfDigitBase(1234,10));
+  writeln(' $FE sums to ', SumOfDigitBase($FE,16));
+  writeln('$FOE sums to ', SumOfDigitBase($F0E,16));
+
+  writeln('18446744073709551615 sums to ', SumOfDigitBase(High(Uint64),10));
 
 end.
 ```
@@ -2834,7 +2834,7 @@ say sumdigits($_,36) for (qw/1 1234 1020304 fe f0e DEADBEEF/);
 
 ## Perl 6
 
-This will handle input numbers in any base from 2 to 36. 
+This will handle input numbers in any base from 2 to 36.
 The results are in base 10.
 
 ```perl6
@@ -2993,7 +2993,7 @@ SD=       5;
 function Get-DigitalSum ([string] $number, $base = 10)
 {
     if ($number.ToCharArray().Length -le 1) { [Convert]::ToInt32($number, $base) }
-    else 
+    else
     {
         $result = 0
         foreach ($character in $number.ToCharArray())
@@ -3078,14 +3078,14 @@ Procedure.i SumDigits(Number.q, Base)
   Wend
   ProcedureReturn sum
 EndProcedure
-  
+
 If OpenConsole()
   PrintN("The sums of the digits are:")
   PrintN("")
   PrintN("1    base 10 : " + SumDigits(1, 10))
   PrintN("1234 base 10 : " + SumDigits(1234, 10))
   PrintN("fe   base 16 : " + SumDigits($fe, 16))
-  PrintN("f0e  base 16 : " + SumDigits($f0e, 16)) 
+  PrintN("f0e  base 16 : " + SumDigits($f0e, 16))
   PrintN("")
   PrintN("Press any key to close the console")
   Repeat: Delay(10) : Until Inkey() <> ""
@@ -3124,7 +3124,7 @@ def sumDigits(num, base=10):
 ```
 
 
-or    
+or
 
 
 ```python
@@ -3301,14 +3301,14 @@ f0e -> 29
 change.base <- function(n, base)
 {
   ret <- integer(as.integer(logb(x=n, base=base))+1L)
-  
+
   for (i in 1:length(ret))
   {
     ret[i] <- n %% base
     n <- n %/% base
-    
+
   }
-  
+
   return(ret)
 }
 
@@ -3316,7 +3316,7 @@ sum.digits <- function(n, base=10)
 {
   if (base < 2)
     stop("base must be at least 2")
-  
+
   return(sum(change.base(n=n, base=base)))
 }
 
@@ -3369,28 +3369,28 @@ sum.digits(0xf0e, 16)
 
 ```rexx
 
-/* REXX ************************************************************** 
-* 04.12.2012 Walter Pachl                                               
-**********************************************************************/ 
-digits='0123456789ABCDEF'                                               
-Do i=1 To length(digits)                                                
-  d=substr(digits,i,1)                                                  
-  value.d=i-1                                                           
-  End                                                                   
-Call test '1'                                                           
-Call test '1234'                                                        
-Call test 'FE'                                                          
-Call test 'F0E'                                                         
-Exit                                                                    
-test:                                                                   
-  Parse Arg number                                                      
-  res=right(number,4)                                                   
-  dsum=0                                                                
-  Do While number<>''                                                   
-    Parse Var number d +1 number                                        
-    dsum=dsum+value.d                                                   
-    End                                                                 
-  Say res '->' right(dsum,2)                                            
+/* REXX **************************************************************
+* 04.12.2012 Walter Pachl
+**********************************************************************/
+digits='0123456789ABCDEF'
+Do i=1 To length(digits)
+  d=substr(digits,i,1)
+  value.d=i-1
+  End
+Call test '1'
+Call test '1234'
+Call test 'FE'
+Call test 'F0E'
+Exit
+test:
+  Parse Arg number
+  res=right(number,4)
+  dsum=0
+  Do While number<>''
+    Parse Var number d +1 number
+    dsum=dsum+value.d
+    End
+  Say res '->' right(dsum,2)
   Return
 ```
 
@@ -3490,7 +3490,7 @@ see "sum digits of 1234 = " + sumDigits(1234) + nl
 
 func sumDigits n
      sum = 0
-     while n > 0.5 
+     while n > 0.5
            m = floor(n / 10)
            digit = n - m * 10
            sum = sum + digit
@@ -3592,10 +3592,10 @@ The output is the sum of the digits in the target base, displayed in base 10.
         (scheme write))
 
 ;; convert number to a list of digits, in desired base
-(define (number->list n base) 
+(define (number->list n base)
   (let loop ((res '())
              (num n))
-    (if (< num base) 
+    (if (< num base)
       (cons num res)
       (loop (cons (remainder num base) res)
             (quotient num base)))))
@@ -3604,7 +3604,7 @@ The output is the sum of the digits in the target base, displayed in base 10.
 (define (sum-digits n base)
   (apply + (number->list n base)))
 
-;; test cases: 
+;; test cases:
 ;; -- this displays each number in its original, given-base, for comparison
 ;; -- target-base is the base in which to consider each number represented, for summing the digits
 (define (test-case n given-base target-base)
@@ -3767,7 +3767,7 @@ extension String: Error {
                 return Int(String(char), radix: base)
             }
         }
-        
+
         return try self.map(characterToInt(base))
             .flatMap {
                 guard $0 != nil else { throw "Invalid input" }
@@ -3969,7 +3969,7 @@ return Sum;
 
 
 ```zkl
-fcn sum(n,b=10){ 
+fcn sum(n,b=10){
    if(b==10) n.split().sum(0);  // digits to list
    else      n.toString(b).split("").apply("toInt",b).sum(0);
 }

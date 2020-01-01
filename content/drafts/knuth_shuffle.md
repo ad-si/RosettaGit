@@ -118,7 +118,7 @@ TMP      DS     C                  temp for swap
 PG       DC     CL80' '            buffer
 XD       DS     CL12               to decimal
 RANDSEED DC     F'16807'           running seed
-         YREGS  
+         YREGS
          END    KNUTHSH
 
 ```
@@ -174,7 +174,7 @@ This implementation is a generic shuffle routine, able to shuffle an array of an
 generic
    type Element_Type is private;
    type Array_Type is array (Positive range <>) of Element_Type;
-   
+
 procedure Generic_Shuffle (List : in out Array_Type);
 ```
 
@@ -199,14 +199,14 @@ begin
 end Generic_Shuffle;
 ```
 
-An example using Generic_Shuffle. 
+An example using Generic_Shuffle.
 
 ```Ada
 with Ada.Text_IO;
 with Generic_Shuffle;
 
 procedure Test_Shuffle is
-   
+
    type Integer_Array is array (Positive range <>) of Integer;
 
    Integer_List : Integer_Array
@@ -327,7 +327,7 @@ Example:
 
 -- knuthShuffle :: [a] -> [a]
 on knuthShuffle(xs)
-    
+
     -- randomSwap :: [Int] -> Int -> [Int]
     script randomSwap
         on |λ|(a, i)
@@ -344,7 +344,7 @@ on knuthShuffle(xs)
             end if
         end |λ|
     end script
-    
+
     foldr(randomSwap, xs, enumFromTo(1, length of xs))
 end knuthShuffle
 
@@ -384,7 +384,7 @@ on foldr(f, startValue, xs)
     end tell
 end foldr
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -401,7 +401,7 @@ end mReturn
 e.g.
 
 ```AppleScript
-{"mu", "theta", "alpha", "delta", "zeta", "gamma", 
+{"mu", "theta", "alpha", "delta", "zeta", "gamma",
 "iota", "kappa", "lambda", "epsilon", "beta", "eta"}
 ```
 
@@ -438,15 +438,15 @@ TableNumber:	     .int   1,2,3,4,5,6,7,8,9,10
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                           @ entry of program 
+.global main
+main:                                           @ entry of program
     ldr r0,iAdrTableNumber                      @ address number table
-    mov r1,#NBELEMENTS                          @ number of élements 
+    mov r1,#NBELEMENTS                          @ number of élements
     bl knuthShuffle
     ldr r2,iAdrTableNumber
     mov r3,#0
@@ -461,10 +461,10 @@ main:                                           @ entry of program
     ble 1b
 
     ldr r0,iAdrszCarriageReturn
-    bl affichageMess   
+    bl affichageMess
     /*    2e shuffle             */
     ldr r0,iAdrTableNumber                     @ address number table
-    mov r1,#NBELEMENTS                         @ number of élements 
+    mov r1,#NBELEMENTS                         @ number of élements
     bl knuthShuffle
     ldr r2,iAdrTableNumber
     mov r3,#0
@@ -478,7 +478,7 @@ main:                                           @ entry of program
     cmp r3,#NBELEMENTS - 1
     ble 2b
 
-100:                                            @ standard end of the program 
+100:                                            @ standard end of the program
     mov r0, #0                                  @ return code
     mov r7, #EXIT                               @ request to exit program
     svc #0                                      @ perform the system call
@@ -489,7 +489,7 @@ iAdrsMessResult:          .int sMessResult
 iAdrTableNumber:          .int TableNumber
 
 /******************************************************************/
-/*     Knuth Shuffle                                             */ 
+/*     Knuth Shuffle                                             */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the number of elements */
@@ -510,36 +510,36 @@ knuthShuffle:
 
 100:
     pop {r2-r5,lr}
-    bx lr                                               @ return 
+    bx lr                                               @ return
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                @ save registers 
+    push {r1-r4,lr}                                @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 
@@ -547,7 +547,7 @@ conversion10:
     bl divisionpar10U                              @unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                     @ digit
     strb r1,[r3,r2]                                @ store digit on area
-    cmp r0,#0                                      @ stop if quotient = 0 
+    cmp r0,#0                                      @ stop if quotient = 0
     subne r2,#1                                    @ else previous position
     bne 1b	                                   @ and loop
                                                    @ and move digit from left of area
@@ -560,7 +560,7 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
@@ -569,14 +569,14 @@ conversion10:
     ble 3b                                            @ loop if r4 <= area size
 
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
 
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -584,40 +584,40 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 /***************************************************/
 /*   Generation random number                  */
 /***************************************************/
 /* r0 contains limit  */
 genereraleas:
-    push {r1-r4,lr}                                    @ save registers 
+    push {r1-r4,lr}                                    @ save registers
     ldr r4,iAdriGraine
     ldr r2,[r4]
     ldr r3,iNbDep1
     mul r2,r3,r2
     ldr r3,iNbDep1
     add r2,r2,r3
-    str r2,[r4]                                        @ maj de la graine pour l appel suivant 
+    str r2,[r4]                                        @ maj de la graine pour l appel suivant
     cmp r0,#0
     beq 100f
     mov r1,r0                                          @ divisor
     mov r0,r2                                          @ dividende
     bl division
     mov r0,r3                                          @ résult = remainder
-  
+
 100:                                                   @ end function
     pop {r1-r4,lr}                                     @ restaur registers
     bx lr                                              @ return
 /*****************************************************/
-iAdriGraine: .int iGraine	
+iAdriGraine: .int iGraine
 iNbDep1: .int 0x343FD
-iNbDep2: .int 0x269EC3 
+iNbDep2: .int 0x269EC3
 /***************************************************/
 /* integer division unsigned                       */
 /***************************************************/
@@ -631,14 +631,14 @@ division:
     mov r3, #0                                         @ init remainder
     mov r4, #32                                        @ init counter bits
     b 2f
-1:                                                     @ loop 
+1:                                                     @ loop
     movs r0, r0, LSL #1                                @ r0 <- r0 << 1 updating cpsr (sets C if 31st bit of r0 was 1)
-    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C 
-    cmp r3, r1                                         @ compute r3 - r1 and update cpsr 
-    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1 
-    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C 
+    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C
+    cmp r3, r1                                         @ compute r3 - r1 and update cpsr
+    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1
+    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C
 2:
-    subs r4, r4, #1                                    @ r4 <- r4 - 1 
+    subs r4, r4, #1                                    @ r4 <- r4 - 1
     bpl 1b                                             @ if r4 >= 0 (N=0) then loop
     pop {r4, lr}
     bx lr
@@ -710,9 +710,9 @@ EndFunc
 ```txt
 
  array before permutation:
- 43 57 37 20 97 98 69 76 97 70 
+ 43 57 37 20 97 98 69 76 97 70
  array after permutation:
- 57 69 97 70 37 97 20 76 43 98 
+ 57 69 97 70 37 97 20 76 43 98
 
 ```
 
@@ -720,8 +720,8 @@ EndFunc
 
 ## AWK
 
-Many [[Arrays#AWK|arrays in AWK]] have the first index at 1. 
-This example shows how to shuffle such arrays. 
+Many [[Arrays#AWK|arrays in AWK]] have the first index at 1.
+This example shows how to shuffle such arrays.
 The elements can be integers, floating-point numbers, or strings.
 
 ```awk
@@ -806,7 +806,7 @@ As mentioned in the Sinclair ZX81 BASIC solution, for very small positive intege
  150 A(I) = I: PRINT A(I);" ";: NEXT I
  160  PRINT : PRINT
  170  FOR I = 25 TO 2 STEP  - 1
- 180 J =  INT ( RND (1) * I + 1)        
+ 180 J =  INT ( RND (1) * I + 1)
  190 T = A(I):A(I) = A(J):A(J) = T: NEXT I
  200  FOR I = 1 TO 25
  210  PRINT A(I);" ";: NEXT I
@@ -940,7 +940,7 @@ trash = shuffle(10)
 quit
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 Original array: 11, 22, 33, 44, 55, 66, 77, 88, 99, 110
@@ -973,8 +973,8 @@ p shuffle [1 2 3 4 5 6 7]
 
 This shuffles any "object"; it imitates <tt>qsort</tt> in the syntax.
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <string.h>
 
 int rrand(int m)
@@ -982,7 +982,7 @@ int rrand(int m)
   return (int)((double)m * ( rand() / (RAND_MAX+1.0) ));
 }
 
-#define BYTE(X) ((unsigned char *)(X)) 
+#define BYTE(X) ((unsigned char *)(X))
 void shuffle(void *obj, size_t nmemb, size_t size)
 {
   void *temp = malloc(size);
@@ -994,13 +994,13 @@ void shuffle(void *obj, size_t nmemb, size_t size)
     memcpy(BYTE(obj) + k*size, temp, size);
   }
   free(temp);
-} 
+}
 ```
 
 Alternatively, using Durstenfeld's method (swapping selected item and last item in each iteration instead of literally shifting everything), and macro'd function declaration/definition:
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 /* define a shuffle function. e.g. decl_shuffle(double).
@@ -1060,8 +1060,8 @@ int main()
 
 '''Compiler:''' [[g++]] (version 4.3.2 20081105 (Red Hat 4.3.2-7))
 
-```cpp>#include <cstdlib
-
+```cpp
+#include <cstdlib>
 #include <algorithm>
 #include <iterator>
 
@@ -1078,8 +1078,8 @@ void knuthShuffle(RandomAccessIterator begin, RandomAccessIterator end) {
 
 The standard library provides this in the form of <code>std::random_shuffle</code>.
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <vector>
 
 int main()
@@ -1241,7 +1241,7 @@ for key, val of counts
 
 ```txt
 
-> coffee knuth_shuffle.coffee 
+> coffee knuth_shuffle.coffee
 1,2,3: 16714
 1,3,2: 16566
 2,1,3: 16460
@@ -1419,19 +1419,19 @@ Remark- The native '''shuffle''' function implementation  in EchoLisp has been r
 		(when (!= i j) (vector-set! v i [v j]))
 		(vector-set! v j i))
 	v)
-	
+
 ;; apply to any kind of list
 (define (k-shuffle list)
 	(list-permute list (vector->list (rpv (length list)))))
-	
-;; out 
+
+;; out
 (k-shuffle (iota 17))
     → (16 7 11 10 0 9 15 12 13 8 4 2 14 3 6 5 1)
-	
-(k-shuffle 
+
+(k-shuffle
 '(adrien 🎸 alexandre 🚂  antoine  🍼 ben 📚   georges 📷   julie 🎥 marine 🐼 nathalie 🍕 ))
     → (marine alexandre 🎥 julie 🎸 ben 🍼 nathalie 📚 georges 🚂 antoine adrien 🐼 📷 🍕)
-    
+
 (shuffle ;; native
 '(adrien 🎸 alexandre 🚂 antoine 🍼 ben 📚 georges 📷 julie 🎥 marine 🐼 nathalie 🍕 ))
     → (antoine 🎥 🚂 marine adrien nathalie 🍼 🍕 ben 🐼 julie 📷 📚 🎸 alexandre georges)
@@ -1548,30 +1548,30 @@ ELENA 4.x:
 ```elena
 import system'routines;
 import extensions;
- 
+
 const int MAX = 10;
- 
+
 extension randomOp
 {
     randomize()
     {
         var max := self.Length;
- 
+
         for(int i := 0, i < max, i += 1)
         {
             var j := randomGenerator.eval(i,max);
- 
+
             self.exchange(i,j)
         };
- 
+
         ^ self
     }
 }
- 
+
 public program()
 {
     var a := Array.allocate:MAX.populate:(i => i );
- 
+
     console.printLine(a.randomize())
 }
 ```
@@ -1597,7 +1597,7 @@ defmodule Knuth do
     {[], acc} = Enum.reduce( n..1, {inputs, []}, &random_move/2 )
     acc
   end
-  
+
   defp random_move( n, {inputs, acc} ) do
     item = Enum.at( inputs, :rand.uniform(n)-1 )
     {List.delete( inputs, item ), [item | acc]}
@@ -1801,7 +1801,7 @@ program Knuth_Shuffle
 
   integer, parameter :: reps = 1000000
   integer :: i, n
-  integer, dimension(10) :: a, bins = 0, initial = (/ (n, n=1,10) /) 
+  integer, dimension(10) :: a, bins = 0, initial = (/ (n, n=1,10) /)
 
   do i = 1, reps
     a = initial
@@ -1825,9 +1825,9 @@ subroutine Shuffle(a)
     a(randpos) = a(i)
     a(i) = temp
   end do
-     
+
 end subroutine Shuffle
-   
+
 end program Knuth_Shuffle
 ```
 
@@ -1928,7 +1928,7 @@ After Knuth shuffle downwards
   42   7  12  21  33  18  32  22  49  38   6  27   1  41   5  20  15  37   3  28  30  26  45  50  25
   10  11
 
-Starting array, first index <> 0 
+Starting array, first index <> 0
   1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
 
 After Knuth shuffle upwards
@@ -1960,7 +1960,7 @@ open System
 let FisherYatesShuffle (initialList : array<'a>) =                  // '
     let availableFlags = Array.init initialList.Length (fun i -> (i, true))
                                                                     // Which items are available and their indices
-    let rnd = new Random()  
+    let rnd = new Random()
     let nextItem nLeft =
         let nItem = rnd.Next(0, nLeft)                              // Index out of available items
         let index =                                                 // Index in original deck
@@ -2005,11 +2005,11 @@ val it : string array = [|"Marvin"; "Doug"; "Sam"; "Darrell"; "Ken"; "Greg"|]
 def shuffle( a ) =
   res = array( a )
   n = a.length()
-  
+
   for i <- 0:n
     r = rnd( i:n )
     res(i), res(r) = res(r), res(i)
-    
+
   res.toList()
 ```
 
@@ -2294,7 +2294,7 @@ Function for showing intermediate results:
 
 ```Haskell
 knuthShuffleProcess :: (Show a) => [a] -> IO ()
-knuthShuffleProcess = 
+knuthShuffleProcess =
    (mapM_ print. reverse =<<). ap (fmap. (. zip [1..]). scanr swapElems) (mkRands. length)
 ```
 
@@ -2366,8 +2366,8 @@ end
 
 ```txt
 ->ks
-9 6 1 4 3 1 3 5 2 
-i n   t i s   r t g   h s a i s 
+9 6 1 4 3 1 3 5 2
+i n   t i s   r t g   h s a i s
 ->
 ```
 
@@ -2414,7 +2414,7 @@ process                         J
 
  fold swap transform array   <==>  f / g y
 ```
-   
+
 Example of a transformed input:
 
 ```j
@@ -2442,7 +2442,7 @@ Finally, the shuffled indexes select elements from the original array.
 input { ~ shuffled indexes
 ```
 
-Alternatively, instead of creating a rectangular array, the swapping indices and the original data can be individually boxed.  
+Alternatively, instead of creating a rectangular array, the swapping indices and the original data can be individually boxed.
 
 In other words, <code>(,~ (,. ?@>:))@i.@#</code> can be replaced with <code>|.@; ;&~./@(,. ?@>:)@i.@#</code>, and the swapping can be achieved using <code>(<@C. >)/</code> instead of <code>(2&{.@[ {`(|.@[)`]} ])/</code>.
 
@@ -2459,7 +2459,7 @@ Note that we have the original data here, instead of indices to select all of it
 
 The resulting definition looks like this:
 
-```j>KS=: [: 
+```j>KS=: [:
  (<@C. >)/@(|.@; ;&~./@(,. ?@>:)@i.@#)
 ```
 
@@ -2534,7 +2534,7 @@ In J the shuffling of an arbitrary array can easily be implemented by the phrase
 ({~?~@#)
 ```
 
-Applied on the former examples: 
+Applied on the former examples:
 
 ```j
 ({~?~@#) A
@@ -2703,7 +2703,7 @@ Results in:
 e.g.
 
 ```JavaScript
-["iota", "epsilon", "kappa", "theta", "gamma", "delta", 
+["iota", "epsilon", "kappa", "theta", "gamma", "delta",
 "lambda", "eta", "zeta", "beta", "mu", "alpha"]
 ```
 
@@ -2778,7 +2778,7 @@ e.g.
 e.g.
 
 ```JavaScript
-["mu", "theta", "beta", "eta", "delta", "epsilon", 
+["mu", "theta", "beta", "eta", "delta", "epsilon",
 "kappa", "alpha", "gamma", "lambda", "zeta", "iota"]
 ```
 
@@ -3044,13 +3044,13 @@ to swap :i :j :a
 end
 
 to shuffle :a
-	for "i [count :a 2] 
+	for "i [count :a 2]
 	[
 		make "a swap 1 + random :i :i :a
 	]
 	op :a
 end
- 
+
 make "a ( list 1 2 3 4 5 6 7 8 9 10 )
 make "a shuffle :a
 show :a
@@ -3067,7 +3067,7 @@ function table.shuffle(t)
     local k = math.random(n)
     t[n], t[k] = t[k], t[n]
   end
- 
+
   return t
 end
 
@@ -3092,7 +3092,7 @@ For k=1 to 6 {
             let j=random(0,i)
             Swap a(i), a(j)
       }
- Print A()           
+ Print A()
 }
 
 
@@ -3160,10 +3160,10 @@ RandomSample[{1, 2, 3, 4, 5, 6}]
 Custom function:
 
 ```Mathematica
-Shuffle[input_List /; Length[input] >= 1] := 
+Shuffle[input_List /; Length[input] >= 1] :=
  Module[{indices = {}, allindices = Range[Length[input]]},
   Do[
-   AppendTo[indices, 
+   AppendTo[indices,
      Complement[allindices, indices][[RandomInteger[{1, i}]]]];
    ,
    {i, Length[input], 1, -1}
@@ -3187,26 +3187,26 @@ Because this shuffle is done using rounds of operations on subsets of decreasing
 ```MATLAB
 function list = knuthShuffle(list)
 
-    for i = (numel(list):-1:2)  
-        
+    for i = (numel(list):-1:2)
+
         j = floor(i*rand(1) + 1); %Generate random int between 1 and i
-        
+
         %Swap element i with element j.
-        list([j i]) = list([i j]);    
+        list([j i]) = list([i j]);
     end
 end
 ```
 
-There is an alternate way to do this that is not a true Knuth Shuffle, but operates with the same spirit. 
-This alternate version produces the same output, saves some space, 
-and can be implemented in-line without the need to encapsulate it 
-in a function call like the Knuth Shuffle.  
+There is an alternate way to do this that is not a true Knuth Shuffle, but operates with the same spirit.
+This alternate version produces the same output, saves some space,
+and can be implemented in-line without the need to encapsulate it
+in a function call like the Knuth Shuffle.
 
 ```MATLAB
 function list = randSort(list)
-    
+
     list = list( randperm(numel(list)) );
-    
+
 end
 ```
 
@@ -3260,9 +3260,9 @@ END Shuffle.
 ```txt
 
 martin@thinkpad:~$ ./shuffle
-9 2 7 3 6 8 4 5 1 10 
+9 2 7 3 6 8 4 5 1 10
 martin@thinkpad:~$ ./shuffle
-1 7 8 10 5 4 6 3 9 2 
+1 7 8 10 5 4 6 3 9 2
 
 ```
 
@@ -3367,7 +3367,7 @@ King of Diamonds
 Shuffle[T] (arr : array[T]) : array[T]
 {
     def rnd = Random();
-    
+
     foreach (i in [0 .. (arr.Length - 2)])
         arr[i] <-> arr[(rnd.Next(i, arr.Length))];
     arr
@@ -3603,7 +3603,7 @@ Indexable method: shuffle
 | s i l |
    self asListBuffer ->l
    self size dup ->s 1- loop: i [ s i - rand i +  i  l swapValues ]
-   l dup freeze ; 
+   l dup freeze ;
 ```
 
 
@@ -3995,15 +3995,15 @@ EnableExplicit
 
 Procedure KnuthShuffle(Array a(1))
    Protected i, last = ArraySize(a())
-   
+
    For i = last To 1 Step -1
-      Swap a(i), a(Random(i)) 
-   Next 
+      Swap a(i), a(Random(i))
+   Next
 EndProcedure
 
 Procedure.s ArrayToString(Array a(1))
    Protected ret$, i, last = ArraySize(a())
-   
+
    ret$ = Str(a(0))
    For i = 1 To last
       ret$ + "," + Str(a(i))
@@ -4035,7 +4035,7 @@ shuffled: 1,8,6,0,5,9,2,4,7,3
 
 ## Python
 
-Python's standard library function <code>[http://docs.python.org/library/random.html#random.shuffle random.shuffle]</code> uses this algorithm and so should normally be used. 
+Python's standard library function <code>[http://docs.python.org/library/random.html#random.shuffle random.shuffle]</code> uses this algorithm and so should normally be used.
 The function below is very similar:
 
 ```python
@@ -4182,9 +4182,9 @@ Repeated Knuth shuffles of ['a' .. 'k']:
 
 
 ## R
-    
-See also, the built-in function 'sample'.  
-     
+
+See also, the built-in function 'sample'.
+
 Original Fisher-Yates version
 
 ```r
@@ -4209,7 +4209,7 @@ fisheryatesknuthshuffle <- function(n)
 {
    a <- seq_len(n)
    while(n >=2)
-   {     
+   {
       k <- sample.int(n, 1)
       if(k != n)
       {
@@ -4222,7 +4222,7 @@ fisheryatesknuthshuffle <- function(n)
    a
 }
 
-#Example usage: 
+#Example usage:
 fisheryatesshuffle(6)                # e.g. 1 3 6 2 4 5
 x <- c("foo", "bar", "baz", "quux")
 x[fisheryatesknuthshuffle(4)]        # e.g. "bar"  "baz"  "quux" "foo"
@@ -4325,7 +4325,7 @@ show: _=;      do m=1  for cards;   _=_ @.m;   end  /*m*/;         say _;       
 
 
 ===version 1, card names===
-This version handles items with (leading/trailing/embedded) blanks in them, so   '''parse'''   isn't an option for shuffling. 
+This version handles items with (leading/trailing/embedded) blanks in them, so   '''parse'''   isn't an option for shuffling.
 
 ```rexx
 /*REXX program shuffles a deck of playing cards (with jokers)  using the  Knuth shuffle.*/
@@ -4536,7 +4536,7 @@ Out    10  7  4  8  1  5  3  9  6  2
 # Project : Knuth shuffle
 
 items = list(52)
-for n = 1 to len(items) 
+for n = 1 to len(items)
       items[n] = n
 next
 knuth(items)
@@ -4544,7 +4544,7 @@ showarray(items)
 
 func knuth(items)
        for i = len(items) to 1 step -1
-            j = random(i-1) + 1 
+            j = random(i-1) + 1
             if i != j
                temp = items[i]
                items[i] = items[j]
@@ -4633,20 +4633,20 @@ end
 
 
 ```runbasic
-dim cards(52) 
+dim cards(52)
 for i = 1 to 52                ' make deck
   cards(i) = i
 next
- 
+
 for i = 52 to 1 step -1        ' shuffle deck
    r = int((rnd(1)*i) + 1)
-   if r <> i then 
+   if r <> i then
      hold     = cards(r)
      cards(r) = cards(i)
      cards(i) = hold
    end if
 next
- 
+
 print "== Shuffled Cards =="  ' print shuffled cards
 for i = 1 to 52
     print cards(i);" ";
@@ -4807,7 +4807,7 @@ const proc: main is func
 
 ```txt
 
-7 5 6 8 3 10 9 4 2 1 
+7 5 6 8 3 10 9 4 2 1
 
 ```
 
@@ -4862,7 +4862,7 @@ Object subclass: Shuffler [
       k := Random between: 1 and: n.
       aSequenceableCollection swap: n with: k.
       n := n - 1
-    ]      
+    ]
   ]
 ].
 ```
@@ -4970,17 +4970,17 @@ end
 import func Darwin.arc4random_uniform
 
 extension Array {
-    
+
     func shuffle() -> Array {
-        
+
         var result = self; result.shuffleInPlace(); return result
     }
-    
+
     mutating func shuffleInPlace() {
-        
+
         for i in 1 ..< count { swap(&self[i], &self[Int(arc4random_uniform(UInt32(i+1)))]) }
     }
-    
+
 }
 
 // Swift 2.0:
@@ -5004,27 +5004,27 @@ print([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].shuffle())
 import func Darwin.arc4random_uniform
 
 func shuffleInPlace<T: MutableCollectionType where T.Index: RandomAccessIndexType>(inout collection: T) {
-    
+
     let i0 = collection.startIndex
-    
+
     for i in i0.successor() ..< collection.endIndex {
-        
+
         let j = i0.advancedBy(numericCast(
                     arc4random_uniform(numericCast(
                         i0.distanceTo()
                     )+1)
                 ))
-        
+
         swap(&collection[i], &collection[j])
     }
 }
 
 func shuffle<T: MutableCollectionType where T.Index: RandomAccessIndexType>(collection: T) -> T {
-    
+
     var result = collection
-    
+
     shuffleInPlace(&result)
-    
+
     return result
 }
 
@@ -5051,33 +5051,33 @@ import func Darwin.arc4random_uniform
 // Define a protocol for shuffling:
 
 protocol Shufflable {
-    
+
     @warn_unused_result (mutable_variant="shuffleInPlace")
     func shuffle() -> Self
-    
+
     mutating func shuffleInPlace()
-    
+
 }
 
 // Provide a generalized implementation of the shuffling protocol for any mutable collection with random-access index:
 
 extension Shufflable where Self: MutableCollectionType, Self.Index: RandomAccessIndexType {
-    
+
     func shuffle() -> Self {
-        
+
         var result = self
-        
+
         result.shuffleInPlace()
-        
+
         return result
     }
-    
+
     mutating func shuffleInPlace() {
-        
+
         let i0 = startIndex
-        
+
         for i in i0+1 ..< endIndex {
-            
+
             let j = i0.advancedBy(numericCast(
                         arc4random_uniform(numericCast(
                             i0.distanceTo(i)
@@ -5087,12 +5087,12 @@ extension Shufflable where Self: MutableCollectionType, Self.Index: RandomAccess
             swap(&self[i], &self[j])
         }
     }
-    
+
 }
 
 // Declare Array's conformance to Shufflable:
 
-extension Array: Shufflable 
+extension Array: Shufflable
     { /* Implementation provided by Shufflable protocol extension */ }
 
 print([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].shuffle())
@@ -5205,15 +5205,15 @@ FOR L = 0 TO 51
     @(L) = L
     PRINT @(L); " ";
 NEXT
- 
+
 FOR L = 51 TO 0 STEP -1
     C = RND(L + 1)
-    IF C # L THEN 
+    IF C # L THEN
       PUSH @(C), L, @(L), C
       GOSUB 100
     ENDIF
 NEXT
- 
+
 PRINT : PRINT "after:"
 FOR L = 0 TO 51
     PRINT @(L); " ";
@@ -5346,17 +5346,17 @@ End Sub
 {{out}}
 ```txt
 Before:
-After: 
-Before: 10 
-After:  10 
-Before: 10  20 
-After:  10  20 
-Before: 10  20  30 
-After:  20  10  30 
-Before: 11  12  13  14  15  16  17  18  19  20  21  22 
-After:  22  12  15  20  19  11  13  21  16  17  14  18 
+After:
+Before: 10
+After:  10
+Before: 10  20
+After:  10  20
+Before: 10  20  30
+After:  20  10  30
+Before: 11  12  13  14  15  16  17  18  19  20  21  22
+After:  22  12  15  20  19  11  13  21  16  17  14  18
 Before:This is a test
-After: a This testis 
+After: a This testis
 
 ```
 
@@ -5383,7 +5383,7 @@ end function
 sub swap( byref a, byref b )
 	dim tmp
 	tmp = a
-	a = b 
+	a = b
 	b = tmp
 end sub
 ```
@@ -5479,21 +5479,21 @@ Return ((#90 & 0xffff) * #91 / 0x10000)
 
 ```txt
 Before:
-0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19
 After:
-9 13 8 18 10 1 17 15 0 16 14 19 3 2 7 11 6 4 5 12 
+9 13 8 18 10 1 17 15 0 16 14 19 3 2 7 11 6 4 5 12
 ```
 
 
 
 ## zkl
 
-Two versions, imperative and functional, same results. 
+Two versions, imperative and functional, same results.
 xs has to be a mutable list.
 
 ```zkl
 fcn kshuffle(xs){
-   foreach i in ([xs.len()-1..1,-1]){ xs.swap(i,(0).random(0,i+1)) } 
+   foreach i in ([xs.len()-1..1,-1]){ xs.swap(i,(0).random(0,i+1)) }
    xs
 }
 fcn kshufflep(xs){

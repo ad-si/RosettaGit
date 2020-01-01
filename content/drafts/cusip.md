@@ -19,12 +19,12 @@ A   '''CUSIP'''   is a nine-character alphanumeric code that identifies a North 
 
 ;Task:
 Ensure the last digit   (i.e., the   ''check digit'')   of the '''CUSIP''' code (the 1<sup>st</sup> column) is correct, against the following:
-*    037833100           Apple Incorporated       
-*    17275R102           Cisco Systems   
-*    38259P508           Google Incorporated  
-*    594918104           Microsoft Corporation   
+*    037833100           Apple Incorporated
+*    17275R102           Cisco Systems
+*    38259P508           Google Incorporated
+*    594918104           Microsoft Corporation
 *    68389X106           Oracle Corporation   (''incorrect'')
-*    68389X105           Oracle Corporation    
+*    68389X105           Oracle Corporation
 
 
 ;Example pseudo-code below.
@@ -52,13 +52,13 @@ Ensure the last digit   (i.e., the   ''check digit'')   of the '''CUSIP''' code 
 
       sum := sum + int ( v div 10 ) + v mod 10
    repeat
-   
+
    return (10 - (sum mod 10)) mod 10
 end function
 ```
 
 
-;See related tasks: 
+;See related tasks:
 * [[SEDOLs|SEDOL]]
 * [[Validate_International_Securities_Identification_Number|ISIN]]
 
@@ -443,7 +443,7 @@ Reads CUSIP strings from a file and prints results to console, usage printed on 
 
 int cusipCheck(char str[10]){
 	int sum=0,i,v;
-	
+
 	for(i=0;i<8;i++){
 		if(str[i]>='0'&&str[i]<='9')
 			v = str[i]-'0';
@@ -457,7 +457,7 @@ int cusipCheck(char str[10]){
 			v = 38;
 		if(i%2!=0)
 			v*=2;
-		
+
 		sum += ((int)(v/10) + v%10);
 	}
 	return ((10 - (sum%10))%10);
@@ -466,27 +466,27 @@ int cusipCheck(char str[10]){
 int main(int argC,char* argV[])
 {
 	char cusipStr[10];
-	
+
 	int i,numLines;
-	
+
 	if(argC==1)
 		printf("Usage : %s <full path of CUSIP Data file>",argV[0]);
-	
+
 	else{
 		FILE* fp = fopen(argV[1],"r");
-	
+
 		fscanf(fp,"%d",&numLines);
-		
+
 		printf("CUSIP       Verdict\n");
 		printf("-------------------");
-		
+
 		for(i=0;i<numLines;i++){
-		
+
 			fscanf(fp,"%s",cusipStr);
-		
+
 			printf("\n%s : %s",cusipStr,(cusipCheck(cusipStr)==(cusipStr[8]-'0'))?"Valid":"Invalid");
 		}
-	
+
 		fclose(fp);
 	}
 	return 0;
@@ -530,8 +530,8 @@ CUSIP       Verdict
 
 {{trans|C#}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 
 bool isCusip(const std::string& s) {
@@ -688,7 +688,7 @@ ClassMethod CUSIP(x As %String) As %Boolean
 {{out|Examples}}
 
 ```txt
-USER>For  { Read s Quit:s=""  Write ": "_##class(Utils.Check).CUSIP(s), ! }         
+USER>For  { Read s Quit:s=""  Write ": "_##class(Utils.Check).CUSIP(s), ! }
 037833100: 1
 17275R102: 1
 38259P508: 1
@@ -966,7 +966,7 @@ func isCusip(s) {
     }
     Integer(s[8]) - 48 == (10 - (sum % 10)) % 10
 }
- 
+
 var candidates = [
     "037833100",
     "17275R102",
@@ -1045,9 +1045,9 @@ qw{ 037833100 17275R102 38259P508 594918104 68389X106 68389X105 }
 
 The key notion here is to employ a single sequence of valid characters, VALID, and for each character C of the code under test, use function INDEX(VALID,C) to find its position within that sequence, which turns out to be the desired ''v'' of the example pseudocode. The only slight difficulty is that INDEX starts its counting with one for the first character of VALID, which is zero, so one must be subtracted; similarly, to return a digit character code via indexing into VALID, one must be added. By using a list of valid characters rather than peculiar character arithmetic (such as ''c <= "9" & c >= "0"'' or similar) there is no reliance on the ASCII way of things. Recall that EBCDIC encodements have different orderings and notably, non-alphabetic characters between A and Z.
 
-The source does not bother with the MODULE protocol of F90 and later, and so the type of function CUSIPCHECK must be declared in all routines wishing to invoke it. However, the F90 feature of having the END statement of a subroutine or function give its name is to valuable to ignore. The function returns a character code rather than an integer, since the presumption is that it is to be compared to the check character of the code being inspected, which is known as a character not an integer. This means some blather when extracting the eight characters to be presented to CUSIPCHECK and comparing the result to the ninth character, but the test can be done in one expression. 
+The source does not bother with the MODULE protocol of F90 and later, and so the type of function CUSIPCHECK must be declared in all routines wishing to invoke it. However, the F90 feature of having the END statement of a subroutine or function give its name is to valuable to ignore. The function returns a character code rather than an integer, since the presumption is that it is to be compared to the check character of the code being inspected, which is known as a character not an integer. This means some blather when extracting the eight characters to be presented to CUSIPCHECK and comparing the result to the ninth character, but the test can be done in one expression.
 
-There is no checking that only valid characters are presented, nor that eight-character codes only are offered, though the compiler might complain if the function were to be invoked with a text literal of the wrong size. In the absence of such checks, there need be no added complications to support a scheme for reporting such errors. 
+There is no checking that only valid characters are presented, nor that eight-character codes only are offered, though the compiler might complain if the function were to be invoked with a text literal of the wrong size. In the absence of such checks, there need be no added complications to support a scheme for reporting such errors.
 ```Fortran
       CHARACTER*1 FUNCTION CUSIPCHECK(TEXT)	!Determines the check sum character.
 Committee on Uniform Security Identification Purposes, of the American (i.e. USA) Bankers' Association.
@@ -1267,14 +1267,14 @@ prependMaybe _ _ = Nothing
 -- convert a list of Maybe to a Maybe list.
 -- result is Nothing if any of values from the original list are Nothing
 allMaybe :: [Maybe a] -> Maybe [a]
-allMaybe = foldr prependMaybe (Just []) 
+allMaybe = foldr prependMaybe (Just [])
 
 toValue :: Char -> Maybe Int
-toValue c = elemIndex c $ ['0'..'9'] ++ ['A'..'Z'] ++ "*&#" 
+toValue c = elemIndex c $ ['0'..'9'] ++ ['A'..'Z'] ++ "*&#"
 
 -- check a list of ints to see if they represent a valid CUSIP
 valid :: [Int] -> Bool
-valid ns0 = 
+valid ns0 =
     let -- multiply values with even index by 2
         ns1 = zipWith (\i n -> (if odd i then n else 2*n)) [1..] $ take 8 ns0
 
@@ -1286,7 +1286,7 @@ valid ns0 =
 
 -- check a String to see if it represents a valid CUSIP
 checkCUSIP :: String -> Result
-checkCUSIP cs 
+checkCUSIP cs
        | l < 9     = TooShort
        | l > 9     = TooLong
        | otherwise = case allMaybe (fmap toValue cs) of
@@ -1294,7 +1294,7 @@ checkCUSIP cs
                          Just ns -> if valid ns then Valid else BadCheck
     where l = length cs
 
-testData =  
+testData =
     [ "037833100"
     , "17275R102"
     , "38259P508"
@@ -1391,7 +1391,7 @@ procedure check_code(c)
    value := 0
    every p := 1 to 8 do {
       if p % 2 = 1 then    # odd position
-         value := codetable[c[p]] 
+         value := codetable[c[p]]
       else                 # even position
          value := 2 * codetable[c[p]]
       sum +:= (value / 10) + (value % 10)
@@ -1627,7 +1627,7 @@ fun main(args: Array<String>) {
         "68389X106",
         "68389X105"
     )
-    for (candidate in candidates) 
+    for (candidate in candidates)
         println("$candidate -> ${if(isCusip(candidate)) "correct" else "incorrect"}")
 }
 ```
@@ -1722,7 +1722,7 @@ The checkDigit function is a line-for-line translation of the pseudo-code algori
 ```Lua
 function checkDigit (cusip)
   if #cusip ~= 8 then return false end
-  
+
   local sum, c, v, p = 0
   for i = 1, 8 do
     c = cusip:sub(i, i)
@@ -1741,10 +1741,10 @@ function checkDigit (cusip)
     if i % 2 == 0 then
       v = v * 2
     end
-    
+
     sum = sum + math.floor(v / 10) + v % 10
   end
-  
+
   return tostring((10 - (sum % 10)) % 10)
 end
 
@@ -1882,8 +1882,8 @@ import strutils
 proc cusipCheck(cusip: string): bool =
   if cusip.len != 9:
     return false
-  
-  var 
+
+  var
     sum, v = 0
   for i, c in cusip[0 ..< ^1]:
     if c.isDigit:
@@ -1896,10 +1896,10 @@ proc cusipCheck(cusip: string): bool =
       v = 37
     elif c == '#':
       v = 38
-    
+
     if i mod 2 == 1:
       v *= 2
-    
+
     sum += v div 10 + v mod 10
   let check = (10 - (sum mod 10)) mod 10
   return $check == $cusip[^1]
@@ -1949,7 +1949,7 @@ class Cusip {
         sum := 0;
         for(i := 0; i < 7; i+=1;) {
             c := s->Get(i);
- 
+
             v : Int;
             if (c >= '0' & c <= '9') {
                 v := c - 48;
@@ -1964,18 +1964,18 @@ class Cusip {
             } else {
                 return false;
             };
-        
+
             # check if odd as using 0-based indexing
             if(i % 2 = 1) {
                 v *= 2;
-            }; 
+            };
 
             sum += v / 10 + v % 10;
         };
 
         return s->Get(8) - 48 = (10 - (sum % 10)) % 10;
     }
- 
+
     function : Main(args : String[]) ~ Nil {
         candidates := [
             "037833100",
@@ -1988,7 +1988,7 @@ class Cusip {
 
         each(i : candidates) {
             candidate := candidates[i];
-            "{$candidate} => "->Print(); 
+            "{$candidate} => "->Print();
             if(IsCusip(candidate)) {
                 "correct"->PrintLine();
             }
@@ -2475,7 +2475,7 @@ Test for validity as a CUSIP string:
 (define 0-char (char->integer #\0))
 (define A-char (char->integer #\A))
 
-(define (cusip-value c)  
+(define (cusip-value c)
   (cond
     [(char-set-contains? char-set:digit c)
      (- (char->integer c) 0-char)]
@@ -2499,7 +2499,7 @@ Test for validity as a CUSIP string:
           (integer->char (+ 0-char (cusip-check-digit s)))))
 
 (module+ test
-  (require rackunit)         
+  (require rackunit)
   (check-true (CUSIP? "037833100"))
   (check-true (CUSIP? "17275R102"))
   (check-true (CUSIP? "38259P508"))
@@ -2600,7 +2600,7 @@ CUSIPchk: procedure; arg x 9;  $=0;         abc= '0123456789ABCDEFGHIJKLMNOPQRST
           return (10-$//10) // 10
 ```
 
-'''output'''   is the same as the idiomatic REXX version. 
+'''output'''   is the same as the idiomatic REXX version.
 
 
 
@@ -2623,7 +2623,7 @@ for n = 1 to len(inputstr)
      cusip(inputstr[n])
 next
 
-func cusip(inputstr) 
+func cusip(inputstr)
         if len(inputstr) != 9
             see " length is incorrect, invalid cusip"
             return
@@ -2638,7 +2638,7 @@ func cusip(inputstr)
                 flag = 1
              ok
              if x >= ascii("A") and x <= ascii("Z")
-                v = x - 64 
+                v = x - 64
                 flag = 1
              ok
              if x = ascii("*")
@@ -2653,14 +2653,14 @@ func cusip(inputstr)
                 v = 38
                 flag = 1
              ok
-             if flag = 0 
+             if flag = 0
                   see " found a invalid character, invalid cusip" + nl
              ok
-             if (i % 2) = 0 
+             if (i % 2) = 0
                  v = v * 2
              ok
              sum = sum + floor(v / 10) + v % 10
-        next 
+        next
         sum = (10 - (sum % 10)) % 10
         if sum = (ascii(inputstr[9]) - ascii("0"))
            see inputstr + " is valid" + nl
@@ -3037,7 +3037,7 @@ for potentialCUSIP in testCases {
 ## Tcl
 
 
-###  Direct translation of pseudocode 
+###  Direct translation of pseudocode
 
 
 ```Tcl
@@ -3049,7 +3049,7 @@ proc Cusip-Check-Digit {cusip} {                ;# algorithm Cusip-Check-Digit(c
     if {[string length $cusip] != 8} {          ;#    Input: an 8-character CUSIP
         return false
     }
-    
+
     set sum 0                                   ;#    sum := 0
     for {set i 1} {$i <= 8} {incr i} {          ;#    for 1 ≤ i ≤ 8 do
         set c [string index $cusip $i-1]        ;#       c := the ith character of cusip
@@ -3083,7 +3083,7 @@ proc check-cusip {cusip} {
 
 
 
-###  More idiomatic Tcl 
+###  More idiomatic Tcl
 
 
 ```Tcl
@@ -3108,7 +3108,7 @@ proc check-cusip {code} {
 
 
 
-###  Common test harness 
+###  Common test harness
 
 
 ```Tcl
@@ -3130,7 +3130,7 @@ test
 
 
 
-###  Output 
+###  Output
 
 {{out}}
 
@@ -3265,10 +3265,10 @@ End Module
 ```Yabasic
 sub cusip(inputStr$)
     local i, v, sum, x$
- 
+
     Print inputStr$;
     If Len(inputStr$) <> 9 Print " length is incorrect, invalid cusip" : return
- 
+
     For i = 1 To 8
         x$ = mid$(inputStr$, i, 1)
         switch x$
@@ -3285,25 +3285,25 @@ sub cusip(inputStr$)
                     return
                 end if
         End switch
- 
+
         If and(i, 1) = 0 v = v * 2
         sum = sum + int(v / 10) + mod(v, 10)
     Next
- 
+
     sum = mod(10 - mod(sum, 10), 10)
     If sum = asc(mid$(inputStr$, 9, 1)) - Asc("0") Then
         Print " is valid"
     Else
         Print " is invalid"
     End If
- 
+
 End Sub
- 
+
 // ------=< MAIN >=------
- 
+
 Data "037833100", "17275R102", "38259P508"
 Data "594918104", "68389X106", "68389X105", ""
- 
+
 Print
 do
     Read inputStr$
@@ -3333,7 +3333,7 @@ fcn cusipCheckDigit(cusip){
 ```zkl
 foreach cusip in (T("037833100", "17275R102",
 		    "38259P508", "594918104", "68389X106", "68389X105")){
-   println(cusip,": ",cusipCheckDigit(cusip));      
+   println(cusip,": ",cusipCheckDigit(cusip));
 }
 ```
 

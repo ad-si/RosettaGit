@@ -12,12 +12,12 @@ tags = []
 
 {{task|Sorting}}
 
-Sort an array of composite structures by a key. 
+Sort an array of composite structures by a key.
 
 
 For example, if you define a composite structure that presents a name-value pair (in pseudo-code):
 
- Define structure pair such that: 
+ Define structure pair such that:
     name as a string
     value as a string
 
@@ -226,18 +226,18 @@ procedure Sort_Composite is
       Name : Unbounded_String;
       Value : Unbounded_String;
    end record;
-   
+
    type Pairs_Array is array(Positive range <>) of Composite_Record;
-   
+
    procedure Swap(Left, Right : in out Composite_Record) is
       Temp : Composite_Record := Left;
    begin
       Left := Right;
       Right := Temp;
-   end Swap; 
-   
+   end Swap;
+
    -- Sort_Names uses a bubble sort
-   
+
    procedure Sort_Name(Pairs : in out Pairs_Array) is
       Swap_Performed : Boolean := True;
    begin
@@ -251,11 +251,11 @@ procedure Sort_Composite is
          end loop;
       end loop;
    end Sort_Name;
-   
+
    procedure Print(Item : Pairs_Array) is
    begin
       for I in Item'range loop
-         Ada.Text_Io.Put_Line(To_String(Item(I).Name) & ", " & 
+         Ada.Text_Io.Put_Line(To_String(Item(I).Name) & ", " &
             to_String(Item(I).Value));
       end loop;
    end Print;
@@ -323,21 +323,21 @@ use framework "Foundation"
 -- sortByComparing :: [(String, Bool)] -> [Records] -> [Records]
 on sortByComparing(keyDirections, xs)
     set ca to current application
-    
+
     script recDict
         on |λ|(x)
             ca's NSDictionary's dictionaryWithDictionary:x
         end |λ|
     end script
     set dcts to map(recDict, xs)
-    
+
     script asDescriptor
         on |λ|(kd)
             set {k, d} to kd
             ca's NSSortDescriptor's sortDescriptorWithKey:k ascending:d selector:dcts
         end |λ|
     end script
-    
+
     ((ca's NSArray's arrayWithArray:dcts)'s ¬
         sortedArrayUsingDescriptors:map(asDescriptor, keyDirections)) as list
 end sortByComparing
@@ -357,7 +357,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -580,20 +580,20 @@ Uses the supplied SORTSALIB library.
 ```bbcbasic
       INSTALL @lib$+"SORTSALIB"
       sort% = FN_sortSAinit(0,0)
-      
+
       DIM pair{name$, number%}
       DIM array{(10)} = pair{}
       FOR i% = 1 TO DIM(array{()}, 1)
         READ array{(i%)}.name$, array{(i%)}.number%
       NEXT
-      
+
       DATA "Eight", 8, "Two", 2, "Five", 5, "Nine", 9, "One", 1
       DATA "Three", 3, "Six", 6, "Seven", 7, "Four", 4, "Ten", 10
-      
+
       C% = DIM(array{()}, 1)
       D% = 1
       CALL sort%, array{()}, array{(0)}.number%, array{(0)}.name$
-      
+
       FOR i% = 1 TO DIM(array{()}, 1)
         PRINT array{(i%)}.name$, array{(i%)}.number%
       NEXT
@@ -752,7 +752,7 @@ Bracmat has a left to right sorting order. If an array must be sorted on another
     )
 );
 ```
-    
+
 
 Output:
 
@@ -788,7 +788,7 @@ Using qsort, from the standard library.
 typedef struct twoStringsStruct {
     char * key, *value;
 } sTwoStrings;
- 
+
 int ord( char v )
 {
     static char *dgts = "012345679";
@@ -799,7 +799,7 @@ int ord( char v )
 
 int cmprStrgs(const sTwoStrings *s1,const sTwoStrings *s2)
 {
-    char *p1 = s1->key; 
+    char *p1 = s1->key;
     char *p2 = s2->key;
     char *mrk1, *mrk2;
     while ((tolower(*p1) == tolower(*p2)) && *p1) { p1++; p2++;}
@@ -825,7 +825,7 @@ int cmprStrgs(const sTwoStrings *s1,const sTwoStrings *s2)
             v2 = 10*v2+ord(*p2);
             p2++;
         }
-        if (v1 == v2) 
+        if (v1 == v2)
            return(p2-mrk2)-(p1-mrk1);
         return v1 - v2;
     }
@@ -862,10 +862,10 @@ int main()
     char format[12];
     sTwoStrings *cp;
 
-    qsort( (void*)toBsorted, ASIZE, sizeof(sTwoStrings),cmprStrgs); 
+    qsort( (void*)toBsorted, ASIZE, sizeof(sTwoStrings),cmprStrgs);
 
     for (k=0,cp=toBsorted; k < ASIZE; k++,cp++) {
-        maxlens[k] = maxstrlen(cp->key, cp->value);   
+        maxlens[k] = maxstrlen(cp->key, cp->value);
         sprintf(format," %%-%ds", maxlens[k]);
         printf(format, toBsorted[k].value);
 	}
@@ -894,8 +894,8 @@ Output:
 Uses C++11. Compile with
  g++ -std=c++11 sort.cpp
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <string>
 
@@ -913,7 +913,7 @@ int main() {
     std::cout << "{" << e.name << ", " << e.value << "}\n";
   }
 
-  std::sort(std::begin(array), std::end(array), 
+  std::sort(std::begin(array), std::end(array),
             [](const entry & a, const entry & b) {
     return a.name < b.name;
   });
@@ -953,7 +953,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 class Program
-{        
+{
     struct Entry
     {
         public Entry(string name, double value) { Name = name; Value = value; }
@@ -1041,7 +1041,7 @@ CL-USER> (defparameter *test-scores* '(("texas" 68.9) ("ohio" 87.8) ("california
 *TEST-SCORES*
 ```
 
- 
+
 We can sort by the state name by supplying a one-argument key function that is called by the ''sort'' function to determine the value to compare. In this case, the function is ''first'' will retrieve the state name:
 
 
@@ -1162,7 +1162,7 @@ println(x.sort(compareBy(fn [name,_] { name })))
 (define( sort-proc a b)
     (string-ci<? (name a) (name b)))
 
-(define people 
+(define people
    '(("😎" -42) ("albert" 33) ("Simone" 44) ("Antoinette" 42) ("elvis" 666) ("😃" 1000)))
 
 (list-sort sort-proc people)
@@ -1179,7 +1179,7 @@ ELENA 4.1 :
 ```elena
 import system'routines;
 import extensions;
- 
+
 public program()
 {
     var elements := new::(
@@ -1189,9 +1189,9 @@ public program()
             KeyValue.new("Cobalt", 58.933195r),
             KeyValue.new("Selenium", 78.96r),
             KeyValue.new("Germanium", 72.64r));
- 
+
     var sorted := elements.sort:(former,later => former.Key < later.Key );
- 
+
     sorted.forEach:(element)
     {
          console.printLine(element.Key," - ",element)
@@ -1269,7 +1269,7 @@ Any Erlang type can be compared to any Erlang type. As such, nothing special nee
 It is also possible to sort with custom functions, in this case by the team's name:
 
 ```Erlang>2
- F = fun({_,X},{_,Y}) -> X < Y end.   
+ F = fun({_,X},{_,Y}) -> X < Y end.
 #Fun<erl_eval.12.113037538>
 3> lists:usort(F, [{{2006,2007},"Ducks"},
                    {{2000,2001},"Avalanche"},
@@ -1380,7 +1380,7 @@ class Pair // create a composite structure
     this.value = value
   }
 
-  override Str toStr () 
+  override Str toStr ()
   {
     "(Pair: $name, $value)"
   }
@@ -1393,7 +1393,7 @@ class Main
     // samples
     pairs := [Pair("Fantom", "OO"), Pair("Clojure", "Functional"), Pair("Java", "OO") ]
 
-    sorted := pairs.dup // make a copy of original list 
+    sorted := pairs.dup // make a copy of original list
     sorted.sort |Pair a, Pair b -> Int|  // sort using custom comparator
     {
       a.name <=> b.name
@@ -1414,7 +1414,7 @@ Standard Fortran has no built-in sort function although some compilers add them.
 
 ```fortran
 PROGRAM EXAMPLE
-  IMPLICIT NONE  
+  IMPLICIT NONE
 
   TYPE Pair
     CHARACTER(6) :: name
@@ -1428,7 +1428,7 @@ PROGRAM EXAMPLE
   rcc(2) = Pair("Brown", "1")
   rcc(3) = Pair("Red", "2")
   rcc(4) = Pair("Orange", "3")
-  rcc(5) = Pair("Yellow", "4") 
+  rcc(5) = Pair("Yellow", "4")
   rcc(6) = Pair("Green", "5")
   rcc(7) = Pair("Blue", "6")
   rcc(8) = Pair("Violet", "7")
@@ -1498,7 +1498,7 @@ End Sub
 
 Dim As Pair pairs(1 To 4) = _
 { _
-  Pair("grass", "green"), _ 
+  Pair("grass", "green"), _
   Pair("snow", "white" ), _
   Pair("sky", "blue"),    _
   Pair("cherry", "red")   _
@@ -1551,7 +1551,7 @@ Array.sortInPlaceBy fst persons
 printfn "%A" persons
 ```
 
- 
+
 Output:
 
 ```txt
@@ -2183,7 +2183,7 @@ println("\nThe list, sorted by value: \n - ", join(lst, "\n - "))
 {{out}}
 
 ```txt
-The original list: 
+The original list:
  - "gold"=>"shiny"
  - "neon"=>"inert"
  - "sulphur"=>"yellow"
@@ -2196,7 +2196,7 @@ The original list:
  - "coffee"=>"stimulating"
  - "book"=>"interesting"
 
-The list, sorted by name: 
+The list, sorted by name:
  - "apple"=>"tasty"
  - "book"=>"interesting"
  - "coffee"=>"stimulating"
@@ -2209,7 +2209,7 @@ The list, sorted by name:
  - "sulphur"=>"yellow"
  - "zebra"=>"striped"
 
-The list, sorted by value: 
+The list, sorted by value:
  - "star"=>"brilliant"
  - "neon"=>"inert"
  - "book"=>"interesting"
@@ -2301,15 +2301,15 @@ next i
 
 
 ```lua
-function sorting( a, b ) 
-    return a[1] < b[1] 
+function sorting( a, b )
+    return a[1] < b[1]
 end
- 
+
 tab = { {"C++", 1979}, {"Ada", 1983}, {"Ruby", 1995}, {"Eiffel", 1985} }
 
 table.sort( tab, sorting )
-for _, v in ipairs( tab ) do 
-    print( unpack(v) ) 
+for _, v in ipairs( tab ) do
+    print( unpack(v) )
 end
 ```
 
@@ -2333,7 +2333,7 @@ Module CheckIt {
             partition=lambda-> {
                   Read &A(), p, r : i = p-1 : x=A(r)
                   For j=p to r-1 {If .LE(A(j), x) Then i++:Swap A(i),A(j)
-                  } : Swap A(i+1), A(r) :  Push  i+2, i 
+                  } : Swap A(i+1), A(r) :  Push  i+2, i
             }
       Public:
             LE=Lambda->Number<=Number
@@ -2348,7 +2348,7 @@ Module CheckIt {
                  Read ref$
                  {
                          loop : If Stackitem() >= Stackitem(2) Then Drop 2 : if  empty then {Break} else continue
-                         over 2,2 : call .partition(ref$) :shift 3 
+                         over 2,2 : call .partition(ref$) :shift 3
                  }
             }
       }
@@ -2375,7 +2375,7 @@ Module CheckIt {
                   }
             }
       }
-      
+
       Call Quick.quicksort(&A(),1, 5)
       Doc$={
             Sorted Pairs
@@ -2452,14 +2452,14 @@ Walter, 1234
 
 
 ```Mathematica
-events = {{"2009-12-25", "Christmas Day"}, {"2009-04-22", 
-    "Earth Day"}, {"2009-09-07", "Labor Day"}, {"2009-07-04", 
-    "Independence Day"}, {"2009-10-31", "Halloween"}, {"2009-05-25", 
-    "Memorial Day"}, {"2009-03-14", "PI Day"}, {"2009-01-01", 
-    "New Year's Day"}, {"2009-12-31", 
-    "New Year's Eve"}, {"2009-11-26", "Thanksgiving"}, {"2009-02-14", 
-    "St. Valentine's Day"}, {"2009-03-17", 
-    "St. Patrick's Day"}, {"2009-01-19", 
+events = {{"2009-12-25", "Christmas Day"}, {"2009-04-22",
+    "Earth Day"}, {"2009-09-07", "Labor Day"}, {"2009-07-04",
+    "Independence Day"}, {"2009-10-31", "Halloween"}, {"2009-05-25",
+    "Memorial Day"}, {"2009-03-14", "PI Day"}, {"2009-01-01",
+    "New Year's Day"}, {"2009-12-31",
+    "New Year's Eve"}, {"2009-11-26", "Thanksgiving"}, {"2009-02-14",
+    "St. Valentine's Day"}, {"2009-03-17",
+    "St. Patrick's Day"}, {"2009-01-19",
     "Martin Luther King Day"}, {"2009-02-16", "President's Day"}};
 date = 1;
 name = 2;
@@ -2511,7 +2511,7 @@ gives back:
 /* NetRexx */
 options replace format comments java crossref symbols nobinary
 
--- 
+--
 ### =======================================================================
 
 class RSortCompsiteStructure public
@@ -2528,7 +2528,7 @@ class RSortCompsiteStructure public
     Arrays.sort(places, PairComparator())
     say displayArray(places)
     return
-  
+
   method displayArray(harry = PairBean[]) constant
     disp = ''
     loop elmt over harry
@@ -2536,7 +2536,7 @@ class RSortCompsiteStructure public
       end elmt
     return '['disp.substr(2)']' -- trim leading comma
 
--- 
+--
 ### =======================================================================
 
 class RSortCompsiteStructure.PairBean
@@ -2550,7 +2550,7 @@ class RSortCompsiteStructure.PairBean
   method toString() public returns String
     return '('getName()','getValue()')'
 
--- 
+--
 ### =======================================================================
 
 class RSortCompsiteStructure.PairComparator implements Comparator
@@ -2645,7 +2645,7 @@ class Entry implements Compare {
   method : public : GetName() ~ String {
     return @name;
   }
-  
+
   method : public : HashID() ~ Int {
     return @name->HashID();
   }
@@ -2661,7 +2661,7 @@ class Sorter {
     entries->AddBack(Entry->New("Krypton", 83.798));
     entries->AddBack(Entry->New("Beryllium", 9.012182));
     entries->AddBack(Entry->New("Silicon", 28.0855));
-    entries->AddBack(Entry->New("Cobalt", 58.933195)); 
+    entries->AddBack(Entry->New("Cobalt", 58.933195));
     entries->AddBack(Entry->New("Selenium", 78.96));
     entries->AddBack(Entry->New("Germanium", 72.64));
 
@@ -2961,10 +2961,10 @@ say @orderedByWage.join('  ');
 this produces the following output:
 
 ```txt
-Team ordered by name (ascending order): 
-Aaron Fast   Frank Mileeater   Frank Myers   John Dude   
-Team ordered by wage (ascending order): 
-John Dude   Aaron Fast   Frank Mileeater   Frank Myers   
+Team ordered by name (ascending order):
+Aaron Fast   Frank Mileeater   Frank Myers   John Dude
+Team ordered by wage (ascending order):
+John Dude   Aaron Fast   Frank Mileeater   Frank Myers
 
 ```
 
@@ -3043,21 +3043,21 @@ $list = @{
 "ghijkl" = "six"
  }
  $list.GetEnumerator() | sort {-($PSItem.Name).length}, Name
- 
+
 ```
 
 <b>Output:</b>
- 
+
 ```txt
 
-Name                           Value                                                                               
-----                           -----                                                                               
-abcdef                         four                                                                                
-ghijkl                         six                                                                                 
-abc                            two                                                                                 
-def                            one                                                                                 
-ghi                            five                                                                                
-jkl                            three                                                                                  
+Name                           Value
+----                           -----
+abcdef                         four
+ghijkl                         six
+abc                            two
+def                            one
+ghi                            five
+jkl                            three
 
 ```
 
@@ -3115,7 +3115,7 @@ EndIf
  Emma - Value: 200
  John - Value: 100
  Johnny - Value: 175
- 
+
  Sorted descending by value.
  Emma - Value: 200
  Johnny - Value: 175
@@ -3167,15 +3167,15 @@ x <- c(texas=68.9, ohio=87.8, california=76.2, "new york"=88.2)
 sortbyname(x)
 ```
 
- california   new york       ohio      texas 
-       76.2       88.2       87.8       68.9 
+ california   new york       ohio      texas
+       76.2       88.2       87.8       68.9
 
 
 ```R
 sortbyname(x, decreasing=TRUE)
 ```
 
-      texas       ohio   new york california 
+      texas       ohio   new york california
        68.9       87.8       88.2       76.2
 
 
@@ -3201,7 +3201,7 @@ sortbyname(x, decreasing=TRUE)
 
 ## REXX
 
-This version sorts the structure by color;   as entered (built),   the structure is ordered by value (percent). 
+This version sorts the structure by color;   as entered (built),   the structure is ordered by value (percent).
 
 ```rexx
 /*REXX program  sorts an array of composite structures  (which has two classes of data).*/
@@ -3573,7 +3573,7 @@ BEGIN
     FOR I:= 1 STEP 1 UNTIL 5 DO
     BEGIN OUTTEXT(A(I).N); OUTCHAR(' '); OUTTEXT(A(I).V); OUTIMAGE; END;
     OUTIMAGE;
-    
+
 END.
 ```
 
@@ -3611,7 +3611,7 @@ Fido             dog
 Fluffy           cat
 Francis          fish
 ```
- 
+
 
 ## Tcl
 
@@ -3662,7 +3662,7 @@ dumplist
 ```
 
 
-Output: 
+Output:
 ```txt
 Original list:
   namez => order!
@@ -3689,7 +3689,7 @@ anonymous field specification and/or a relational predicate.
 
 #cast %sWLW
 
-examples = 
+examples =
 
 (
    -<&l <('z','a'),('x','c'),('y','b')>,  # sorted by the left
@@ -3795,7 +3795,7 @@ The list of lists way is available or:
 
 ```zkl
 class P{var name,value;
-   fcn init(nm,val){name,value=vm.arglist} 
+   fcn init(nm,val){name,value=vm.arglist}
    fcn __opLT(p){name<p.name}  // implementation of P1 < P2
 }
 // create list of pairs:

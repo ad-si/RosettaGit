@@ -142,7 +142,7 @@ This version explicitly casts integers as strings during list generation and use
 ```AWK
 BEGIN {
     n=13
-    for (i=1; i<=n; i++) 
+    for (i=1; i<=n; i++)
         a[i]=i""
     asort(a)
     for (k in a)
@@ -154,7 +154,7 @@ BEGIN {
 
 ```txt
 
-1 10 11 12 13 2 3 4 5 6 7 8 9 
+1 10 11 12 13 2 3 4 5 6 7 8 9
 ```
 
 
@@ -162,8 +162,8 @@ BEGIN {
 ## C
 
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -179,12 +179,12 @@ void lexOrder(int n, int *ints) {
     int i, first = 1, last = n, k = n, len;
     if (n < 1) {
         first = n; last = 1; k = 2 - n;
-    } 
+    }
     strs = malloc(k * sizeof(char *));
     for (i = first; i <= last; ++i) {
         if (i >= 1) len = (int)log10(i) + 2;
         else if (i == 0) len = 2;
-        else len = (int)log10(-i) + 3; 
+        else len = (int)log10(-i) + 3;
         strs[i-first] = malloc(len);
         sprintf(strs[i-first], "%d", i);
     }
@@ -292,7 +292,7 @@ IN: rosetta-code.lexicographical-numbers
 : lex-order ( n -- seq )
     [1,b] [ number>string ] map natural-sort
     [ string>number ] map ;
-    
+
 { 13 21 -22 } [ dup lex-order "%3d: %[%d, %]\n" printf ] each
 ```
 
@@ -519,7 +519,7 @@ Module Checkit {
             If N<>0 then {
                   if N=1 then =(1,) : Exit
                   Document A$
-                  For k=1 to N-1 
+                  For k=1 to N-1
                         A$=Str$(k,"")+{
                         }
                   Next k
@@ -530,7 +530,7 @@ Module Checkit {
                   \\ convert strings to numbers in one statement
                   \\ in stack of values
                   Data Param(Replace$(nl$,",", a$))
-                  \\ return stack as array 
+                  \\ return stack as array
                   =Array([])
             }  else =(0,)   ' empty array
       }
@@ -547,7 +547,7 @@ Module Checkit {
             If N<>0 then {
                   if N=1 then =(1,) : Exit
                   Document A$
-                  For k=1 to N-1 
+                  For k=1 to N-1
                         A$=Str$(k,"")+{
                         }
                   Next k
@@ -557,7 +557,7 @@ Module Checkit {
                   Sort A$
                   Flush
                   ="["+Replace$(nl$," ", a$)+"]"
-                  
+
             }  else =("",)   ' empty array
       }
       Print lexicographical$(5)  ' [1 2 3 4 5]
@@ -592,7 +592,7 @@ For n=1 To 3
       k=j+1
       tj=Text.GetSubText(Text.Append(t[j],xx),1,ll)
       tk=Text.GetSubText(Text.Append(t[k],xx),1,ll)
-      If tj>tk Then 
+      If tj>tk Then
         w=t[j]
         t[j]=t[k]
         t[k]=w
@@ -609,7 +609,7 @@ exitfor:
     x=x+","+t[i]
   EndFor
   TextWindow.WriteLine(nn+":"+Text.GetSubTextToEnd(x,2))
-EndFor 
+EndFor
 ```
 
 {{out}}
@@ -640,7 +640,7 @@ printf("%4d: [%s]\n", $_, join ',', sort $_ > 0 ? 1..$_ : $_..1) for 13, 21, -22
 
 ```perl6
 sub lex (Int $n) { (1…$n).sort: ~* }
- 
+
 # TESTING
 printf("%4d: [%s]\n", $_, .&lex.join: ',') for 13, 21, -22
 ```
@@ -660,12 +660,12 @@ printf("%4d: [%s]\n", $_, .&lex.join: ',') for 13, 21, -22
 Idiomatic version - crashes if n<1, and calls sprint() 76 times.
 
 ```Phix
-function lexographic(integer i, j) 
+function lexographic(integer i, j)
     return compare(sprint(i),sprint(j))
-end function 
+end function
 
 function lex_order(integer n)
-    return custom_sort(routine_id("lexographic"), tagset(n)) 
+    return custom_sort(routine_id("lexographic"), tagset(n))
 end function
 
 ?lex_order(13)
@@ -716,7 +716,7 @@ end function
 EnableExplicit
 
 Procedure lexOrder(n, Array ints(1))
-    Define first = 1, last = n, k = n, i  
+    Define first = 1, last = n, k = n, i
     If n < 1
         first = n
         last = 1
@@ -982,7 +982,7 @@ End Sub
 {{out}}
 
 ```txt
-1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9, 
+1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9,
 ```
 
 

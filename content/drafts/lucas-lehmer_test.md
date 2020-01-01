@@ -18,7 +18,7 @@ Lucas-Lehmer Test: for <math>p</math> an odd prime, the Mersenne number <math>2^
 
 
 ;Task:
-Calculate all Mersenne primes up to the implementation's 
+Calculate all Mersenne primes up to the implementation's
 maximum precision, or the 47<sup>th</sup> Mersenne prime   (whichever comes first).
 
 
@@ -31,13 +31,13 @@ For maximum compatibility, this program uses only the basic instruction set.
 
 ```360asm
 *        Lucas-Lehmer test
-LUCASLEH CSECT  
+LUCASLEH CSECT
          USING  LUCASLEH,R12
 SAVEARA  B      STM-SAVEARA(R15)
          DC     17F'0'
          DC     CL8'LUCASLEH'
 STM      STM    R14,R12,12(R13) save calling context
-         ST     R13,4(R15)      
+         ST     R13,4(R15)
          ST     R15,8(R13)
          LR     R12,R15         set addessability
 *        ----   CODE
@@ -46,28 +46,28 @@ STM      STM    R14,R12,12(R13) save calling context
          BCTR   R11,0           N':=X'FFFFFFFF'
          LA     R10,1           R10:N N=1
          LA     R4,1            R4:IEXP
-         LA     R6,1            step 
+         LA     R6,1            step
          LH     R7,IEXPMAX      R7:IEXPMAX limit
 LOOPE    BXH    R4,R6,ENDLOOPE	do iexp=2 to iexpmax
-         SR     R3,R3           R3:S S=0 
+         SR     R3,R3           R3:S S=0
          CR     R4,R2           if iexp=2 then S=0
          BE     OKS
          LA     R3,4            else S=4
 OKS      EQU    *
          SLDA   R10,1           n=(n+1)*2-1
          LA     R5,0            I
-         LA     R8,1            step 
+         LA     R8,1            step
          LR     R9,R4           IEXP
          SR     R9,R2           IEXP-2 limit
-LOOPI    BXH    R5,R8,ENDLOOPI	do i=1 to iexp-2	 
-*        ----   compute s=(s*s-2) MOD n 
+LOOPI    BXH    R5,R8,ENDLOOPI	do i=1 to iexp-2
+*        ----   compute s=(s*s-2) MOD n
          SR     R14,R14         R14=0
          LR     R15,R3          R15=S
          MR     R14,R3          R{14-15}=S*S
          SLR    R15,R2          R15=R15-2=S*S-2
          BNM    *+6             skip next if no borrow
          BCTR   R14,0           perform borrow
-         DR     R14,R10         R10=N 
+         DR     R14,R10         R10=N
          LR     R3,R14          R14=MOD
          B      LOOPI
 ENDLOOPI EQU    *
@@ -79,7 +79,7 @@ ENDLOOPI EQU    *
          OI     C+L'C-1,X'F0'   zap sign
          MVC    WTOBUF(4),C+12
          MVI    WTOBUF,C'M'
-         WTO    MF=(E,WTOMSG)		  
+         WTO    MF=(E,WTOMSG)
 NOPRT    EQU    *
          B      LOOPE
 ENDLOOPE EQU    *
@@ -96,12 +96,12 @@ S        DS     F
 N        DS     F
 P        DS     PL8             packed
 Z        DS     ZL16            zoned
-C        DS     CL16            character 
+C        DS     CL16            character
 WTOMSG   DS     0F
          DC     H'80',XL2'0000'
 WTOBUF   DC     80C' '
-         LTORG  
-         YREGS  
+         LTORG
+         YREGS
          END    LUCASLEH
 ```
 
@@ -161,7 +161,7 @@ end Lucas_Lehmer_Test;
 
 ## Agena
 
-Because of the very large numbers computed, 
+Because of the very large numbers computed,
 the mapm binding is used to calculate with arbitrary precision.
 
 ```agena
@@ -248,7 +248,7 @@ test:(
 
 ```txt
 
-Finding Mersenne primes in M[2..33252]: 
+Finding Mersenne primes in M[2..33252]:
 M2 M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281 M3217 M4253 M4423 M9689 M9941 M11213 M19937 M21701 M23209
 
 ```
@@ -284,7 +284,7 @@ szCarriageReturn:   .asciz "\n"
 szformat:           .asciz "nombre= %Zd\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 .align 4
 spT:                .skip 100
 mpT:                .skip 100
@@ -292,8 +292,8 @@ Deux:               .skip 100
 snT:                .skip 100
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
     ldr r0,iAdrDeux                       @ create big number = 2
     mov r1,#2
     bl __gmpz_init_set_ui
@@ -305,7 +305,7 @@ main:
     mov r6,#0                             @ result counter
 1:
     ldr r0,iAdrspT                        @ conversion integer in big number gmp
-    mov r1,r5 
+    mov r1,r5
     bl __gmpz_set_ui
     ldr r0,iAdrspT                        @ control if exposant is prime !
     ldr r0,iAdrspT
@@ -323,10 +323,10 @@ main:
     ldr r1,iAdrDeux
     mov r2,r5
     bl __gmpz_pow_ui
-    ldr r0,iAdrmpT                      
+    ldr r0,iAdrmpT
     ldr r1,iAdrmpT
     mov r2,#1
-    bl __gmpz_sub_ui                      @ then (2 pow p) - 1 
+    bl __gmpz_sub_ui                      @ then (2 pow p) - 1
 
     ldr r0,iAdrsnT
     mov r1,#4
@@ -353,7 +353,7 @@ main:
     //ldr r1,iAdrsnT                      @ display number for control
     //ldr r0,iAdrszformat
     //bl __gmp_printf
-    
+
     add r4,#1                             @ increment counter
     cmp r4,r5                             @ end ?
     blt 3b                                @ no -> loop
@@ -398,41 +398,41 @@ iAdrmpT:                  .int mpT
 iAdrDeux:                 .int Deux
 iAdrsnT:                  .int snT
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
- 
+
 1:                                                  @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b                                          @ and loop
                                                     @ and move digit from left of area
@@ -445,23 +445,23 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -469,12 +469,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 
@@ -555,7 +555,7 @@ Using its native arithmetic BBC BASIC can only test up to M23.
         IF FNlucas_lehmer(p%) PRINT "M" ; p%
       NEXT
       END
-      
+
       DEF FNlucas_lehmer(p%)
       LOCAL i%, mp, sn
       IF p% = 2 THEN = TRUE
@@ -599,7 +599,7 @@ For example, the expression <code>13^(13^-1)</code> becomes <code>13^1/13</code>
   ( clk$:?t0:?now
   & ( time
     =   ( print
-        =   
+        =
           .   put
             $ ( str
               $ ( div$(!arg,1)
@@ -607,7 +607,7 @@ For example, the expression <code>13^(13^-1)</code> becomes <code>13^1/13</code>
                   (   div$(mod$(!arg*100,100),1):?arg
                     & !arg:<10
                     & 0
-                  | 
+                  |
                   )
                   !arg
                   " "
@@ -634,9 +634,9 @@ For example, the expression <code>13^(13^-1)</code> becomes <code>13^1/13</code>
           & (   !s:0
               & !time
               & out$(str$(M !exponent " is PRIME!"))
-            | 
+            |
             )
-        | 
+        |
         )
       & 1+!exponent:?exponent
       )
@@ -685,8 +685,8 @@ Takes an optional argument to test up to the given value.
 
 {{libheader|GMP}}
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
 #include <gmp.h>
@@ -769,7 +769,7 @@ int main(int argc, char* argv[]) {
 (partial output after 50 minutes)
 
 ```txt
-M2 M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281 M3217 M4253 M4423 M9689 M9941 M11213 M11213 M19937 M21701 M23209 M44497 
+M2 M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281 M3217 M4253 M4423 M9689 M9941 M11213 M11213 M19937 M21701 M23209 M44497
 ```
 
 
@@ -781,8 +781,8 @@ M2 M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281 M3217 
 Compiler options: gcc -std=c99 -lm Lucas-Lehmer_test.c -o Lucas-Lehmer_test
 
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 #include <stdio.h>
 #include <limits.h>
 #pragma precision=log10l(ULLONG_MAX)/2
@@ -796,7 +796,7 @@ BOOL is_prime( int p ){
     BOOL prime = TRUE;
     const int to = sqrt(p);
     int i;
-    for(i = 3; i <= to; i+=2)  
+    for(i = 3; i <= to; i+=2)
       if (!(prime = p % i))break;
     return prime;
   }
@@ -817,7 +817,7 @@ BOOL is_mersenne_prime( int p ){
 
 int main(int argc, char **argv){
 
-  const int upb = log2l(ULLONG_MAX)/2; 
+  const int upb = log2l(ULLONG_MAX)/2;
   int p;
   printf(" Mersenne primes:\n");
   for( p = 2; p <= upb; p += 1 ){
@@ -847,8 +847,8 @@ Straightforward method.
 {{libheader|GMP}}
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <gmpxx.h>
 
 static bool is_mersenne_prime(mpz_class p)
@@ -916,7 +916,7 @@ namespace LucasLehmerTestForRosettaCode
         static BigInteger TWO = new BigInteger(2);
         static BigInteger FOUR = new BigInteger(4);
 
-        private static bool isMersennePrime(int p) 
+        private static bool isMersennePrime(int p)
         {
             if (p % 2 == 0) return (p == 2);
             else {
@@ -927,7 +927,7 @@ namespace LucasLehmerTestForRosettaCode
                 for (int i = 3; i <= p; i++)
                     s = (s * s - TWO) % m_p;
                 return s == ZERO;
-            } 
+            }
         }
 
         public static int[] GetMersennePrimeNumbers(int upTo)
@@ -1068,13 +1068,13 @@ void main() {
 {{out}}
 
 ```txt
-M2 M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281 
+M2 M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281
 ```
 
 With p up to 10_000 it prints:
 
 ```txt
-M2 M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281 M3217 M4253 M4423 M9941 
+M2 M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281 M3217 M4253 M4423 M9941
 ```
 
 
@@ -1132,7 +1132,7 @@ PrintLn('');
 	(for [(i (in-range 3 (1+ p)))]
 		(set! s (% (- (* s s) 2) mp)))
 	(when (zero? s) (printf "M%d" p)))
-	
+
 ;; run it in the background
 (require 'tasks)
 (define LP (primes 10000)) ; list of candidate primes
@@ -1140,7 +1140,7 @@ PrintLn('');
 (define (mp-task LP)
 	(mersenne-prime? (first LP))
 	(rest LP)) ;; return next state
-	
+
 (task-run (make-task mp-task LP))
 
 →  M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281
@@ -1159,7 +1159,7 @@ defmodule LucasLehmer do
   def test do
     for p <- 2..1300, p==2 or s(bsl(1,p)-1, p-1)==0, do: IO.write "M#{p} "
   end
-  
+
   defp s(mp, 1), do: rem(4, mp)
   defp s(mp, n) do
     x = s(mp, n-1)
@@ -1195,7 +1195,7 @@ s(MP,N) -> X=s(MP,N-1), (X*X - 2) rem MP.
 ```
 
 
-In 3 seconds will print 
+In 3 seconds will print
 
 ```txt
 
@@ -1277,7 +1277,7 @@ let IsMersennePrime exponent =
         match i with
         | x when x = exponent - 2 -> acc
         | x -> LucasLehmer (x + 1) ((acc*acc - 2I) % prime)
- 
+
     LucasLehmer 0 4I = 0I
 
 ```
@@ -1292,7 +1292,7 @@ let IsMersennePrime exponent =
 
     let LucasLehmer =
         [| 1 .. exponent-2 |] |> Array.fold (fun acc _ -> (acc*acc - 2I) % prime) 4I
- 
+
     LucasLehmer = 0I
 
 ```
@@ -1316,7 +1316,7 @@ sequences ;
 ```txt
 
 Mersenne primes:
-M2 M3 M5 M7 M13 M17 M19 M31 
+M2 M3 M5 M7 M13 M17 M19 M31
 
 ```
 
@@ -1363,7 +1363,7 @@ PROGRAM LUCAS_LEHMER
   INTEGER, PARAMETER :: i64 = SELECTED_INT_KIND(18)
   INTEGER(i64) :: s, n
   INTEGER :: i, exponent
-  
+
   DO exponent = 2, 31
      IF (exponent == 2) THEN
         s = 0
@@ -1376,7 +1376,7 @@ PROGRAM LUCAS_LEHMER
      END DO
      IF (s==0) WRITE(*,"(A,I0,A)") "M", exponent, " is PRIME"
   END DO
- 
+
 END PROGRAM LUCAS_LEHMER
 ```
 
@@ -1450,7 +1450,7 @@ End
 ```
 
 ==={{libheader|GMP}}===
-Uses the trick from the '''C''' entry to avoid the slow Mod  
+Uses the trick from the '''C''' entry to avoid the slow Mod
 
 ```freebasic
 ' version 18-09-2015
@@ -1555,10 +1555,10 @@ M9941         M11213
 ```funl
 def mersenne( p ) =
   if p == 2 then return true
-  
+
   var s = 4
   var M = 2^p - 1
-  
+
   repeat p - 2
     s = (s*s - 2) mod M
 
@@ -1674,7 +1674,7 @@ func llTest(ps []uint) {
 
 ```txt
 
-M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 
+M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127
 M521 M607 M1279 M2203 M2281 M3217 M4253 M4423 M9689 M9941 M11213 M19937...
 
 ```
@@ -1800,7 +1800,7 @@ public class Mersenne
 
 ```txt
 
- Finding Mersenne primes in M[2..2147483647]: 
+ Finding Mersenne primes in M[2..2147483647]:
  M2 M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281 M3217 M4253 M4423 M9689 M9941 M11213
 
 ```
@@ -1876,7 +1876,7 @@ In JavaScript we using BigInt ( numbers with 'n' suffix ) - so we can use really
 
 ```
 
-{{Out}} 
+{{Out}}
 
 ```txt
 
@@ -1981,7 +1981,7 @@ val bigTwo  = BigInteger.valueOf(2L)
 val bigFour = bigTwo * bigTwo
 
 fun isPrime(n: Int): Boolean {
-    if (n < 2) return false 
+    if (n < 2) return false
     if (n % 2 == 0) return n == 2
     if (n % 3 == 0) return n == 3
     var d : Int = 5
@@ -1997,26 +1997,26 @@ fun isPrime(n: Int): Boolean {
 fun main(args: Array<String>) {
     var count = 0
     var p = 3   // first odd prime
-    var s: BigInteger 
+    var s: BigInteger
     var m: BigInteger
     while (true) {
         m = bigTwo.shiftLeft(p - 1) - BigInteger.ONE
         s = bigFour
-        for (i in 1 .. p - 2) s = (s * s - bigTwo) % m 
+        for (i in 1 .. p - 2) s = (s * s - bigTwo) % m
         if (s == BigInteger.ZERO) {
             count +=1
             print("M$p ")
             if (count == MAX) {
                 println()
-                break 
+                break
             }
-        }    
+        }
         // obtain next odd prime
         while(true) {
-            p += 2         
+            p += 2
             if (isPrime(p)) break
-        } 
-    } 
+        }
+    }
 }
 ```
 
@@ -2036,9 +2036,9 @@ M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281 M3217 M42
 This version is very speedy and is bounded.
 
 ```Mathematica
-Select[Table[M = 2^p - 1; 
-  For[i = 1; s = 4, i <= p - 2, i++, s = Mod[s^2 - 2, M]]; 
-  If[s == 0, "M" <> ToString@p, p], {p, 
+Select[Table[M = 2^p - 1;
+  For[i = 1; s = 4, i <= p - 2, i++, s = Mod[s^2 - 2, M]];
+  If[s == 0, "M" <> ToString@p, p], {p,
    Prime /@ Range[300]}], StringQ]
 
 => {M3, M5, M7, M13, M17, M19, M31, M61, M89, M107, M127, M521, M607, M1279}
@@ -2049,8 +2049,8 @@ This version is unbounded (and timed):
 
 ```Mathematica
 t = SessionTime[];
-For[p = 2, True, p = NextPrime[p], M = 2^p - 1; 
- For[i = 1; s = 4, i <= p - 2, i++, s = Mod[s^2 - 2, M]]; 
+For[p = 2, True, p = NextPrime[p], M = 2^p - 1;
+ For[i = 1; s = 4, i <= p - 2, i++, s = Mod[s^2 - 2, M]];
  If[s == 0, Print["M" <> ToString@p]]]
 (SessionTime[] - t) {Seconds, Minutes/60, Hours/3600, Days/86400}
 ```
@@ -2062,25 +2062,25 @@ I'll see what this gets.
 ## MATLAB
 
 
-MATLAB suffers from a lack of an arbitrary precision math (bignums) library. 
-It also doesn't have great support for 64-bit integer arithmetic...or at least MATLAB 2007 doesn't. So, the best precision we have is doubles; therefore, this script can only find up to M19 and no greater. 
+MATLAB suffers from a lack of an arbitrary precision math (bignums) library.
+It also doesn't have great support for 64-bit integer arithmetic...or at least MATLAB 2007 doesn't. So, the best precision we have is doubles; therefore, this script can only find up to M19 and no greater.
 
 ```MATLAB
 function [mNumber,mersennesPrime] = mersennePrimes()
 
     function isPrime = lucasLehmerTest(thePrime)
-        
+
         llResidue = 4;
         mersennesPrime = (2^thePrime)-1;
-       
+
         for i = ( 1:thePrime-2 )
-            llResidue = mod( ((llResidue^2) - 2),mersennesPrime );        
-        end         
-       
+            llResidue = mod( ((llResidue^2) - 2),mersennesPrime );
+        end
+
         isPrime = (llResidue == 0);
-       
+
     end
-    
+
     %Because IEEE764 Double is the highest precision number we can
     %represent in MATLAB, the highest Mersenne Number we can test is 2^52.
     %In addition, because we have this cap, we can only test up to the
@@ -2092,19 +2092,19 @@ function [mNumber,mersennesPrime] = mersennePrimes()
     %Mersenne Prime, but because of the rounding error in calculating the
     %residues caused by floating-point arithmetic, it does not. So M30 is
     %the largest number we test.
-    
+
     mNumber = (3:30);
-    
+
     [isPrime] = arrayfun(@lucasLehmerTest,mNumber);
-    
+
     mNumber = [2 mNumber(isPrime)];
     mersennesPrime = (2.^mNumber) - 1;
-        
+
 end
 ```
 
 
-{{Out}} 
+{{Out}}
 
 ```MATLAB
 [mNumber,mersennesPrime] = mersennePrimes
@@ -2147,7 +2147,7 @@ MODULE LucasLehmer EXPORTS Main;
 IMPORT IO, Fmt, Long;
 
 PROCEDURE Mersenne(p: CARDINAL): BOOLEAN =
-  VAR 
+  VAR
     s := 4L;
     m := Long.Shift(1L, p) - 1L; (* 2^p - 1 *)
   BEGIN
@@ -2174,7 +2174,7 @@ END LucasLehmer.
 {{Out}}
 
 ```txt
-M2 M3 M5 M7 M13 M17 M19 M31 
+M2 M3 M5 M7 M13 M17 M19 M31
 ```
 
 
@@ -2228,29 +2228,29 @@ functor
 import
   Application
   System
-define 
-  
+define
+
   fun {Arg Idx Default}
     Cmd = {Application.getArgs plain}
     Len = {Length Cmd}
   in
-    if Len < Idx then 
+    if Len < Idx then
       Default
-    else 
+    else
       {StringToInt {Nth Cmd Idx}}
     end
   end
-    
-  fun {LLtest N} 
+
+  fun {LLtest N}
     Mp = {Pow 2 N} - 1
     fun {S K} X T
     in
-      if K == 1 then 4 
+      if K == 1 then 4
       else
         T = {S K-1}
-        X = T * T - 2 
+        X = T * T - 2
         X mod Mp
-      end 
+      end
     end
   in
     if N == 2 then
@@ -2259,11 +2259,11 @@ define
       {S N-1} == 0
     end
   end
-  
+
   proc {FindLL X}
     fun {Sieve Ls}
       case Ls of nil then nil
-      [] X|Xs then 
+      [] X|Xs then
         fun {DIV M} M mod X \= 0  end
       in
         X|{Sieve {Filter Xs DIV}}
@@ -2280,11 +2280,11 @@ define
       {FindLL {Filter {Sieve 2|{List.number 3 X 2}} LLtest}}
     end
   end
-  
+
   Num = {Arg 1 607}
 
   {FindLL Num}
-  
+
   {Application.exit 0}
 end
 ```
@@ -2434,7 +2434,7 @@ sub is_mersenne_prime {
     } else {
         my $m_p = 2 ** $p - 1;
         my $s = 4;
-        
+
         foreach my $i (3 .. $p) {
             $s = ($s ** 2 - 2) % $m_p;
         }
@@ -2548,14 +2548,14 @@ function mersenne(integer p)
     {s,m,r} = mpz_free({s,m,r})
     return res
 end function
- 
+
 atom t0 = time(), t1 = t0
 integer i=2, j = 1, count = 0
-constant mersennes = {1279, 2203, 2281, 3217, 4253, 4423, 9689, 9941, 11213, 19937, 21701, 
-                      23209, 44497, 86243, 110503, 132049, 216091, 756839, 859433, 1257787, 
+constant mersennes = {1279, 2203, 2281, 3217, 4253, 4423, 9689, 9941, 11213, 19937, 21701,
+                      23209, 44497, 86243, 110503, 132049, 216091, 756839, 859433, 1257787,
                       1398269, 2976221, 3021377, 6972593, 13466917, 20996011, 24036583,
                       25964951, 30402457, 32582657, 37156667, 42643801, 43112609}
- 
+
 while count<limit do
     if mersenne(i) then
         count += 1
@@ -2722,7 +2722,7 @@ endwhile;
 ```
 
 
-{{Out}} (obtained in few seconds) 
+{{Out}} (obtained in few seconds)
 
 ```pop11
 M2
@@ -2755,7 +2755,7 @@ function Get-MersennePrime ([bigint]$Maximum = 4800)
     [bigint]$n = [bigint]::One
 
     for ($exp = 2; $exp -lt $Maximum; $exp++)
-    { 
+    {
         if ($exp -eq 2)
         {
             $s = 0
@@ -2768,7 +2768,7 @@ function Get-MersennePrime ([bigint]$Maximum = 4800)
         $n = ($n + 1) * 2 - 1
 
         for ($i = 1; $i -le $exp - 2; $i++)
-        { 
+        {
             $s = ($s * $s - 2) % $n
         }
 
@@ -2810,7 +2810,7 @@ Get-MersennePrime | Format-Wide {"{0,4}" -f $_} -Column 4 -Force
 show(Count) :-
     findall(N, limit(Count, (between(2, infinite, N), mersenne_prime(N))), S),
     forall(member(P, S), (write(P), write(" "))), nl.
-    
+
 lucas_lehmer_seq(M, L) :-
     lazy_list(ll_iter, 4-M, L).
 
@@ -2851,7 +2851,7 @@ prime(N, D, [A|As]) :- D2 is D + A, prime(N, D2, As).
 ```txt
 
 ?- show(20).
-2 3 5 7 13 17 19 31 61 89 107 127 521 607 1279 2203 2281 3217 4253 4423 
+2 3 5 7 13 17 19 31 61 89 107 127 521 607 1279 2203 2281 3217 4253 4423
 true.
 
 ```
@@ -2873,7 +2873,7 @@ Procedure Lucas_Lehmer_Test(p)
   EndIf
   ProcedureReturn #False
 EndProcedure
-  
+
 #upperBound = SizeOf(Quad) * 8 - 1 ;equivalent to significant bits in a signed quad integer
 If OpenConsole()
   Define p = 3
@@ -2884,7 +2884,7 @@ If OpenConsole()
     EndIf
     p + 2
   Wend
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2917,7 +2917,7 @@ def is_prime ( p ):
   if p == 2: return True # Lucas-Lehmer test only works on odd primes
   elif p <= 1 or p % 2 == 0: return False
   else:
-    for i in range(3, int(sqrt(p))+1, 2 ): 
+    for i in range(3, int(sqrt(p))+1, 2 ):
       if p % i == 0: return False
     return True
 
@@ -2927,7 +2927,7 @@ def is_mersenne_prime ( p ):
   else:
     m_p = ( 1 << p ) - 1
     s = 4
-    for i in range(3, p+1): 
+    for i in range(3, p+1):
       s = (s ** 2 - 2) % m_p
     return s == 0
 
@@ -2939,7 +2939,7 @@ upb_count = 45      # find 45 mprimes if int was given enough bits #
 print (" Finding Mersenne primes in M[2..%d]:"%upb_prime)
 
 count=0
-for p in range(2, int(upb_prime+1)): 
+for p in range(2, int(upb_prime+1)):
   if is_prime(p) and is_mersenne_prime(p):
     print("M%d"%p),
     stdout.flush()
@@ -2953,13 +2953,13 @@ print
 {{Out}}
 
 ```txt
- Finding Mersenne primes in M[2..33218]: 
+ Finding Mersenne primes in M[2..33218]:
  M2 M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281 M3217 M4253 M4423 M9689 M9941 M11213 M19937 M21701 M23209
 ```
 
 
 
-###  Faster loop without division 
+###  Faster loop without division
 
 
 ```python
@@ -2976,7 +2976,7 @@ def isqrt(n):
             if b >= a:
                 return a
             a = b
- 
+
 def isprime(n):
     if n < 5:
         return n == 2 or n == 3
@@ -2990,7 +2990,7 @@ def isprime(n):
                 return False
             k += 2
         return True
- 
+
 def lucas_lehmer_fast(n):
     if n == 2:
         return True
@@ -3017,12 +3017,12 @@ long_bits_width = precision * log(10, 2)
 upb_prime = int( long_bits_width - 1 ) / 2    # no unsigned #
 # upb_count = 45      # find 45 mprimes if int was given enough bits #
 upb_count = 15      # find 45 mprimes if int was given enough bits #
- 
+
 print (" Finding Mersenne primes in M[2..%d]:"%upb_prime)
- 
+
 count=0
-# for p in range(2, upb_prime+1): 
-for p in range(2, int(upb_prime+1)): 
+# for p in range(2, upb_prime+1):
+for p in range(2, int(upb_prime+1)):
   if lucas_lehmer_fast(p):
     print("M%d"%p),
     stdout.flush()
@@ -3080,7 +3080,7 @@ p <- seq(1, n, by = 2)
 q <- length(p)
 p[1] <- 2
 for (k in seq(3, sqrt(n), by = 2))
-  if (p[(k + 1)/2] != 0) 
+  if (p[(k + 1)/2] != 0)
     p[seq((k * k + 1)/2, q, by = k)] <- 0
 p <- p[p > 0]
 cat(p[1]," special case M2 == 3\n")
@@ -3136,7 +3136,7 @@ for (i in 1:(p[length(p)] - 2)){
 
 ## REXX
 
-REXX won't have a problem with the large number of digits involved, but since it's an interpreted language, 
+REXX won't have a problem with the large number of digits involved, but since it's an interpreted language,
 
 such massive number crunching isn't conducive in searching for large primes.
 
@@ -3241,7 +3241,7 @@ see "Mersenne Primes :" + nl
 for p = 2 to 18
     if lucasLehmer(p) see "M"  + p + nl ok
 next
- 
+
 func lucasLehmer p
      i = 0 mp = 0 sn = 0
      if p = 2 return true ok
@@ -3263,13 +3263,13 @@ func lucasLehmer p
 
 ```RPL
 
-%%HP: T(3)A(R)F(.);                                                          ; ASCII transfer header 
+%%HP: T(3)A(R)F(.);                                                          ; ASCII transfer header
 \<< DUP LN DUP \pi * 4 SWAP / 1 + UNROT / * IP 2 { 2 } ROT 2 SWAP            ; input n; n := Int(n/ln(n)*(1 + 4/(pi*ln(n)))), p:=2; (n ~ number of primes less then n, pi used here only as a convenience),  2 is assumed to be the 1st elemente in the list
   START SWAP NEXTPRIME DUP UNROT DUP 2 SWAP ^ 1 - 4 PICK3 2 - 1 SWAP         ; for i := 2 to n,  p := nextprime;  s := 4; m := 2^p - 1;
-    START SQ 2 - OVER MOD                                                    ;   for j := 1 to p - 2;  s := s^2 mod m;  
-    NEXT NIP NOT { + } { DROP } IFTE                                         ;   next j;  if s = 0 then add p to the list else discard p; 
-  NEXT NIP                                                                   ; next i;     
-\>>                                                                           
+    START SQ 2 - OVER MOD                                                    ;   for j := 1 to p - 2;  s := s^2 mod m;
+    NEXT NIP NOT { + } { DROP } IFTE                                         ;   next j;  if s = 0 then add p to the list else discard p;
+  NEXT NIP                                                                   ; next i;
+\>>
 
 ```
 
@@ -3278,11 +3278,11 @@ func lucasLehmer p
 ```txt
 Outputs for arguments 130, 607 and 2281, respectively:
 
-{ 2 3 5 7 13 17 19 31 61 89 107 127 } 
+{ 2 3 5 7 13 17 19 31 61 89 107 127 }
 { 2 3 5 7 13 17 19 31 61 89 107 127 521 607 }
 { 2 3 5 7 13 17 19 31 61 89 107 127 521 607 1279 2203 2281 }
 
-These take respectively 1m 22s on the real HP 50g, 4m 29s and 10h 29m 23s on the emulator (Debug4 running on PC under WinXP, Intel(R) Core(TM) Duo CPU T2350 @ 1.86GHz). 
+These take respectively 1m 22s on the real HP 50g, 4m 29s and 10h 29m 23s on the emulator (Debug4 running on PC under WinXP, Intel(R) Core(TM) Duo CPU T2350 @ 1.86GHz).
 
 ```
 
@@ -3331,7 +3331,7 @@ puts
 {{out}}
 
 ```txt
- Finding Mersenne primes in M[2..33218]: 
+ Finding Mersenne primes in M[2..33218]:
  M2 M3 M5 M7 M13 M17 M19 M31 M61 M89 M107 M127 M521 M607 M1279 M2203 M2281 M3217 M4253 M4423 M9689 M9941 M11213 M19937 M21701 M23209
 ```
 
@@ -3353,7 +3353,7 @@ use std::thread::spawn;
 fn is_mersenne (p : usize) {
     let p = p as u32;
     let mut m = Integer::from(1);
-    m = m << p;  
+    m = m << p;
     m = Integer::from(&m - 1);
     let mut flag1 = false;
     for k in 1..10_000 {
@@ -3364,11 +3364,11 @@ fn is_mersenne (p : usize) {
             if div % j == 0 {
                 flag2 = true;
                 break;
-            }   
+            }
         }
         if flag2 == true {continue;}
         if div % 8 != 1 && div % 8 != 7 { continue; }
-        if m.is_divisible_u(div) { 
+        if m.is_divisible_u(div) {
             flag1 = true;
             break;
         }
@@ -3382,7 +3382,7 @@ fn is_mersenne (p : usize) {
 		if &s >= &m {s = s - &m}
 		s = Integer::from(&s - &two);
     }
-	if s == 0 {println!("Mersenne : {}",p);} 
+	if s == 0 {println!("Mersenne : {}",p);}
 }
 
 fn main () {
@@ -3390,7 +3390,7 @@ fn main () {
     let limit = 11_214;
     let mut thread_handles = vec![];
     for p in primal::Primes::all().take_while(|p| *p < limit) {
-        thread_handles.push(spawn(move || is_mersenne(p))); 
+        thread_handles.push(spawn(move || is_mersenne(p)));
     }
     for handle in thread_handles {
         handle.join().unwrap();
@@ -3568,7 +3568,7 @@ To get maximum speed the program should be [http://seed7.sourceforge.net/scrshot
 ```seed7
 $ include "seed7_05.s7i";
   include "bigint.s7i";
- 
+
 const func boolean: isPrime (in integer: number) is func
   result
     var boolean: prime is FALSE;
@@ -3770,7 +3770,7 @@ main 33218
 ```
 
 {{Out}}
-The program was still running, but as the next Mersenne prime is 19937 
+The program was still running, but as the next Mersenne prime is 19937
 there will be a long wait until the program finds it.
 
 ```txt
@@ -3806,7 +3806,7 @@ there will be a long wait until the program finds it.
 19→M
 1→N
 For(E,2,M)
-If E=2 
+If E=2
 Then:0→S
 Else:4→S
 End
@@ -3814,7 +3814,7 @@ End
 For(I,1,E-2)
 Reminder(S*S-2,N)→S
 End
-If S=0 
+If S=0
 Then:Disp E
 End
 End
@@ -3823,12 +3823,12 @@ End
 {{out}}
 
 ```txt
-2 
-3 
-5 
-7 
-13 
-17 
+2
+3
+5
+7
+13
+17
 19
 ```
 
@@ -3870,18 +3870,18 @@ For iexp = 2 To iexpmax
 	n = (n + 1) * 2 - 1
 	For i = 1 To iexp - 2
 		s = (s * s - 2) Mod n
-	Next 
+	Next
 	If s = 0 Then
 		out=out & "M" & iexp & " "
 	End If
-Next 
+Next
 Wscript.echo out
 ```
 
 {{Out}}
 
 ```txt
-M2 M3 M5 M7 M13 
+M2 M3 M5 M7 M13
 ```
 
 
@@ -3920,7 +3920,7 @@ End Class
 
 ```txt
 
-M2 M3 M5 M7 M13 M17 M19 M31 
+M2 M3 M5 M7 M13 M17 M19 M31
 ```
 
 

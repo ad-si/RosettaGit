@@ -12,11 +12,11 @@ tags = []
 
 {{task|Text processing}}
 
-When two or more words are composed of the same characters, but in a different order, they are called [[wp:Anagram|anagrams]]. 
+When two or more words are composed of the same characters, but in a different order, they are called [[wp:Anagram|anagrams]].
 
 {{task heading}}
 
-Using the word list at   http://wiki.puzzlers.org/pub/wordlists/unixdict.txt, 
+Using the word list at   http://wiki.puzzlers.org/pub/wordlists/unixdict.txt,
 
 find the sets of words that share the same characters that contain the most words in them.
 
@@ -67,8 +67,8 @@ L(ana) anagram.values()
 \ anagrams.8th
 \ Rosetta Code - Anagrams problem
 \ Using the word list at:
-\   http://www.puzzlers.org/pub/wordlists/unixdict.txt, 
-\ find the sets of words that share the same characters 
+\   http://www.puzzlers.org/pub/wordlists/unixdict.txt,
+\ find the sets of words that share the same characters
 \ that contain the most words in them.
 \
 
@@ -79,7 +79,7 @@ a:new var, anaptr
 0 var, analen
 
 \ sort a string
-: s:sort \ s -- s                             \ 
+: s:sort \ s -- s                             \
   null s:/                                    \ a
   ' s:cmpi a:sort                             \ a
   "" a:join                                   \ s
@@ -92,7 +92,7 @@ a:new var, anaptr
   \ 1. we create a sorted version of the curret word (sword)
   s:sort                                      \ sword | word
   \ We check if sword can be found in map anamap
-  anamap @                                    \ sword anamap | word 
+  anamap @                                    \ sword anamap | word
   over                                        \ sword anamap sword | word
   m:exists?                                   \ sword anamap boolean | word
   if                                          \ sword anamap | word
@@ -108,7 +108,7 @@ a:new var, anaptr
     swap                                      \ anamap sword array
     m:!                                       \ anamap
   else                                        \ sword anamap | word
-  \ If sword does not yet exist in anamap: 
+  \ If sword does not yet exist in anamap:
   \    - create empty array
   \    - put the original word into that array
   \    - store the array in the map with key sword
@@ -123,17 +123,17 @@ a:new var, anaptr
 
 \ Read and check all words in array analist
 : read-and-check-words \ --                   \
-  "analist.txt"                               \ fname 
+  "analist.txt"                               \ fname
   f:open-ro                                   \ f
   ' process-words f:eachline                  \ f
-  f:close                                     \ 
+  f:close                                     \
   ;
 
 : len< \ key array arraylen --                \ key array arraylen
-  2drop                                       \ key 
+  2drop                                       \ key
   drop                                        \
   ;
-  
+
 : len= \ key array arraylen --                \ key array arraylen
   2drop                                       \ key
   anaptr @                                    \ key anaptr
@@ -152,17 +152,17 @@ a:new var, anaptr
   a:push                                      \ anaptr
   drop                                        \
   ;
-  
+
 : fetch-longest-list \ key array --           \ key array
   a:len                                       \ key array arraylen
   analen @                                    \ key array arraylen analen
   2dup                                        \ key array arraylen analen arraylen analen
   n:cmp                                       \ key array arraylen analen value
   1 n:+                                       \ key array arraylen analen value
-  nip                                         \ key array arraylen value 
+  nip                                         \ key array arraylen value
   [ ' len< , ' len= , ' len> ]                \ key array arraylen value swarr
   swap                                        \ key array arraylen swarr value
-  caseof                                      \ 
+  caseof                                      \
   ;
 
 : list-words-1 \ ix value --                  \ ix value
@@ -180,7 +180,7 @@ a:new var, anaptr
   cr                                          \ array
   drop                                        \
   ;
-  
+
 : app:main
 
   \ Create a map, where the values are arrays, containing all words
@@ -190,7 +190,7 @@ a:new var, anaptr
   \ Create an array that holds the keys for anamap, for which the value,
   \ which is the array of anagrams, has the biggest length found.
   anamap @ ' fetch-longest-list m:each
-  
+
   \ Dump the resulting words to the console
   anaptr @ ' list-words a:each drop
   bye
@@ -427,7 +427,7 @@ PROC count = ( STRING text, CHAR ch )INT:
          FOR c FROM LWB text TO UPB text DO IF text[ c ] = ch THEN result +:= 1 FI OD;
          result
      END # count # ;
-         
+
 # returns text with the characters sorted into ascending order #
 PROC char sort = ( STRING text )STRING:
      BEGIN
@@ -437,7 +437,7 @@ PROC char sort = ( STRING text )STRING:
              BOOL swapped := FALSE;
              FOR pos FROM LWB sorted TO end pos DO
                  IF sorted[ pos ] > sorted[ pos + 1 ]
-                 THEN              
+                 THEN
                      CHAR  t           := sorted[ pos     ];
                      sorted[ pos     ] := sorted[ pos + 1 ];
                      sorted[ pos + 1 ] := t;
@@ -764,7 +764,7 @@ e i l v: evil levi live veil vile
 ```bbcbasic
       INSTALL @lib$+"SORTLIB"
       sort% = FN_sortinit(0,0)
-      
+
       REM Count number of words in dictionary:
       nwords% = 0
       dict% = OPENIN("unixdict.txt")
@@ -773,10 +773,10 @@ e i l v: evil levi live veil vile
         nwords% += 1
       ENDWHILE
       CLOSE #dict%
-      
+
       REM Create arrays big enough to contain the dictionary:
       DIM dict$(nwords%), sort$(nwords%)
-      
+
       REM Load the dictionary and sort the characters in the words:
       dict% = OPENIN("unixdict.txt")
       FOR word% = 1 TO nwords%
@@ -785,11 +785,11 @@ e i l v: evil levi live veil vile
         sort$(word%) = FNsortchars(word$)
       NEXT word%
       CLOSE #dict%
-      
+
       REM Sort arrays using the 'sorted character' words as a key:
       C% = nwords%
       CALL sort%, sort$(1), dict$(1)
-      
+
       REM Count the longest sets of anagrams:
       max% = 0
       set% = 1
@@ -801,7 +801,7 @@ e i l v: evil levi live veil vile
           set% = 1
         ENDIF
       NEXT word%
-      
+
       REM Output the results:
       set% = 1
       FOR word% = 1 TO nwords%-1
@@ -818,7 +818,7 @@ e i l v: evil levi live veil vile
         ENDIF
       NEXT word%
       END
-      
+
       DEF FNsortchars(word$)
       LOCAL C%, char&()
       DIM char&(LEN(word$))
@@ -896,8 +896,8 @@ The program is not fast. (Minutes rather than seconds.)
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -991,7 +991,7 @@ int buildAnagrams( FILE *fin )
     DictWord  we;
     int  maxPC = 2;
     int numWords = 0;
-    
+
     while ( fgets(buffer, 40, fin)) {
         for(hkey = buffer; *hkey && (*hkey!='\n'); hkey++);
         *hkey = 0;
@@ -1025,7 +1025,7 @@ int buildAnagrams( FILE *fin )
             he->link = mostPerms;
             mostPerms = he;
         }
-         
+
         numWords++;
     }
     printf("%d words in dictionary max ana=%d\n", numWords, maxPC);
@@ -1033,16 +1033,16 @@ int buildAnagrams( FILE *fin )
 }
 
 
-int main( ) 
+int main( )
 {
     HashEntry he;
     DictWord  we;
     FILE *f1;
-    
+
     f1 = fopen("unixdict.txt","r");
     buildAnagrams(f1);
     fclose(f1);
-    
+
     f1 = fopen("anaout.txt","w");
 //    f1 = stdout;
 
@@ -1062,19 +1062,19 @@ int main( )
 {{out}} (less than 1 second on old P500)
 
 ```txt
-5:vile, veil, live, levi, evil, 
-5:trace, crate, cater, carte, caret, 
-5:regal, large, lager, glare, alger, 
-5:neal, lena, lean, lane, elan, 
-5:lange, glean, galen, angle, angel, 
-5:elba, bela, bale, able, abel, 
+5:vile, veil, live, levi, evil,
+5:trace, crate, cater, carte, caret,
+5:regal, large, lager, glare, alger,
+5:neal, lena, lean, lane, elan,
+5:lange, glean, galen, angle, angel,
+5:elba, bela, bale, able, abel,
 
 ```
 
 A much shorter version with no fancy data structures:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
@@ -1181,11 +1181,11 @@ int main()
 
 ```txt
 
-abel able bale bela elba 
-caret carte cater crate trace 
-angel angle galen glean lange 
-alger glare lager large regal 
-elan lane lean lena neal 
+abel able bale bela elba
+caret carte cater crate trace
+angel angle galen glean lange
+alger glare lager large regal
+elan lane lean lena neal
 evil levi live veil vile
 
 ```
@@ -1195,20 +1195,20 @@ evil levi live veil vile
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <map>
 #include <vector>
 #include <algorithm>
 #include <iterator>
- 
+
 int main() {
   std::ifstream in("unixdict.txt");
   typedef  std::map<std::string, std::vector<std::string> > AnagramMap;
   AnagramMap anagrams;
- 
+
   std::string word;
   size_t count = 0;
   while (std::getline(in, word)) {
@@ -1219,9 +1219,9 @@ int main() {
     v.push_back(word);
     count = std::max(count, v.size());
   }
- 
+
   in.close();
- 
+
   for (AnagramMap::const_iterator it = anagrams.begin(), e = anagrams.end();
        it != e; it++)
     if (it->second.size() >= count) {
@@ -1234,11 +1234,11 @@ int main() {
 ```
 
 {{out}}
- abel, able, bale, bela, elba, 
- caret, carte, cater, crate, trace, 
- angel, angle, galen, glean, lange, 
- alger, glare, lager, large, regal, 
- elan, lane, lean, lena, neal, 
+ abel, able, bale, bela, elba,
+ caret, carte, cater, crate, trace,
+ angel, angle, galen, glean, lange,
+ alger, glare, lager, large, regal,
+ elan, lane, lean, lena, neal,
  evil, levi, live, veil, vile,
 
 =={{header|C sharp|C#}}==
@@ -1320,11 +1320,11 @@ Assume ''wordfile'' is the path of the local file containing the words. This cod
      (partition-by count)
      first)
 
-;; (["caret" "carte" "cater" "crate" "trace"] 
-;;  ["angel" "angle" "galen" "glean" "lange"] 
-;;  ["elan" "lane" "lean" "lena" "neal"] 
-;;  ["alger" "glare" "lager" "large" "regal"] 
-;;  ["evil" "levi" "live" "veil" "vile"] 
+;; (["caret" "carte" "cater" "crate" "trace"]
+;;  ["angel" "angle" "galen" "glean" "lange"]
+;;  ["elan" "lane" "lean" "lena" "neal"]
+;;  ["alger" "glare" "lager" "large" "regal"]
+;;  ["evil" "levi" "live" "veil" "vile"]
 ;;  ["abel" "able" "bale" "bela" "elba"])
 
 ```
@@ -1626,14 +1626,14 @@ http = require 'http'
 show_large_anagram_sets = (word_lst) ->
   anagrams = {}
   max_size = 0
-  
+
   for word in word_lst
     key = word.split('').sort().join('')
     anagrams[key] ?= []
     anagrams[key].push word
     size = anagrams[key].length
     max_size = size if size > max_size
-    
+
   for key, variations of anagrams
     if variations.length == max_size
       console.log variations.join ' '
@@ -1642,7 +1642,7 @@ get_word_list = (process) ->
   options =
     host: "www.puzzlers.org"
     path: "/pub/wordlists/unixdict.txt"
-  
+
   req = http.request options, (res) ->
     s = ''
     res.on 'data', (chunk) ->
@@ -1650,14 +1650,14 @@ get_word_list = (process) ->
     res.on 'end', ->
       process s.split '\n'
   req.end()
-  
+
 get_word_list show_large_anagram_sets
 ```
 
 {{out}}
 
 ```coffeescript>
- coffee anagrams.coffee 
+ coffee anagrams.coffee
 [ 'abel', 'able', 'bale', 'bela', 'elba' ]
 [ 'alger', 'glare', 'lager', 'large', 'regal' ]
 [ 'angel', 'angle', 'galen', 'glean', 'lange' ]
@@ -1745,11 +1745,11 @@ Another method, assuming file is local:
 {{out}}
 
 ```txt
-elba bela bale able abel 
-regal large lager glare alger 
-lange glean galen angle angel 
-trace crate cater carte caret 
-neal lena lean lane elan 
+elba bela bale able abel
+regal large lager glare alger
+lange glean galen angle angel
+trace crate cater carte caret
+neal lena lean lane elan
 vile veil live levi evil
 ```
 
@@ -1765,20 +1765,20 @@ MODULE BbtAnagrams;
 IMPORT StdLog,Files,Strings,Args;
 CONST
 	MAXPOOLSZ = 1024;
- 
-TYPE	
+
+TYPE
 	Node = POINTER TO LIMITED RECORD;
 		count: INTEGER;
 		word: Args.String;
 		desc: Node;
 		next: Node;
 	END;
- 
+
 	Pool = POINTER TO LIMITED RECORD
 		capacity,max: INTEGER;
 		words: POINTER TO ARRAY OF Node;
 	END;
- 
+
 	PROCEDURE NewNode(word: ARRAY OF CHAR): Node;
 	VAR
 		n: Node;
@@ -1787,7 +1787,7 @@ TYPE
 		n.desc := NIL;n.next := NIL;
 		RETURN n
 	END NewNode;
- 
+
 	PROCEDURE Index(s: ARRAY OF CHAR;cap: INTEGER): INTEGER;
 	VAR
 		i,sum: INTEGER;
@@ -1798,29 +1798,29 @@ TYPE
 		END;
 		RETURN sum MOD cap
 	END Index;
- 
-	PROCEDURE ISort(VAR s: ARRAY OF CHAR); 
-	VAR 
-        i, j: INTEGER; 
-        t: CHAR; 
-	BEGIN 
-        FOR i := 0 TO LEN(s$) - 1 DO 
-			j := i; 
-			t := s[j]; 
-			WHILE (j > 0) & (s[j -1] > t) DO 
-					s[j] := s[j - 1]; 
-					DEC(j) 
-			END; 
-			s[j] := t 
-        END 
-	END ISort; 
- 
-	PROCEDURE SameLetters(x,y: ARRAY OF CHAR): BOOLEAN; 
-	BEGIN 
-        ISort(x);ISort(y); 
+
+	PROCEDURE ISort(VAR s: ARRAY OF CHAR);
+	VAR
+        i, j: INTEGER;
+        t: CHAR;
+	BEGIN
+        FOR i := 0 TO LEN(s$) - 1 DO
+			j := i;
+			t := s[j];
+			WHILE (j > 0) & (s[j -1] > t) DO
+					s[j] := s[j - 1];
+					DEC(j)
+			END;
+			s[j] := t
+        END
+	END ISort;
+
+	PROCEDURE SameLetters(x,y: ARRAY OF CHAR): BOOLEAN;
+	BEGIN
+        ISort(x);ISort(y);
         RETURN x = y
-	END SameLetters; 
- 
+	END SameLetters;
+
 	PROCEDURE NewPoolWith(cap: INTEGER): Pool;
 	VAR
 		i: INTEGER;
@@ -1842,7 +1842,7 @@ TYPE
 	BEGIN
 		RETURN NewPoolWith(MAXPOOLSZ);
 	END NewPool;
- 
+
 	PROCEDURE (p: Pool) Add(w: ARRAY OF CHAR), NEW;
 	VAR
 		idx: INTEGER;
@@ -1864,7 +1864,7 @@ TYPE
 		ASSERT(iter = NIL);
 		n.next := p.words[idx];p.words[idx] := n
 	END Add;
- 
+
 	PROCEDURE ShowAnagrams(l: Node);
 	VAR
 		iter: Node;
@@ -1876,7 +1876,7 @@ TYPE
 		END;
 		StdLog.Ln
 	END ShowAnagrams;
- 
+
 	PROCEDURE (p: Pool) ShowMax(),NEW;
 	VAR
 		i: INTEGER;
@@ -1887,14 +1887,14 @@ TYPE
 				iter := p.words^[i];
 				WHILE iter # NIL DO
 					IF iter.count = p.max THEN
-						ShowAnagrams(iter); 
+						ShowAnagrams(iter);
 					END;
 					iter := iter.next
 				END
 			END
 		END
 	END ShowMax;
-	
+
 	PROCEDURE GetLine(rd: Files.Reader; OUT str: ARRAY OF CHAR);
 	VAR
 		i: INTEGER;
@@ -1902,13 +1902,13 @@ TYPE
 	BEGIN
 		rd.ReadByte(b);i := 0;
 		WHILE (~rd.eof) & (i < LEN(str)) DO
-			IF (b = ORD(0DX)) OR (b = ORD(0AX)) THEN str[i] := 0X; RETURN  END; 
+			IF (b = ORD(0DX)) OR (b = ORD(0AX)) THEN str[i] := 0X; RETURN  END;
 			str[i] := CHR(b);
 			rd.ReadByte(b);INC(i)
 		END;
 		str[LEN(str) - 1] := 0X
 	END GetLine;
-	
+
 	PROCEDURE DoProcess*;
 	VAR
 		params : Args.Params;
@@ -1919,7 +1919,7 @@ TYPE
 		p: Pool;
 	BEGIN
 		Args.Get(params);
-		IF params.argc = 1 THEN 
+		IF params.argc = 1 THEN
 		  loc := Files.dir.This("Bbt");
 			fd := Files.dir.Old(loc,params.args[0]$,FALSE);
 			StdLog.String("Processing: " + params.args[0]);StdLog.Ln;StdLog.Ln;
@@ -1934,7 +1934,7 @@ TYPE
 			StdLog.String("Error: Missing file to process");StdLog.Ln
 		END;
 	END DoProcess;
- 
+
 END BbtAnagrams.
 
 ```
@@ -1946,12 +1946,12 @@ Execute:^Q BbtAnagrams.DoProcess unixdict.txt~<br/>
 
 Processing: unixdict.txt
 
-abel elba bela bale able 
-elan neal lena lean lane 
-evil vile veil live levi 
-angel lange glean galen angle 
-alger regal large lager glare 
-caret trace crate cater carte 
+abel elba bela bale able
+elan neal lena lean lane
+evil vile veil live levi
+angel lange glean galen angle
+alger regal large lager glare
+caret trace crate cater carte
 
 ```
 
@@ -2058,12 +2058,12 @@ For a change, we will use the french dictionary - '''(lib 'dico.fr)''' - deliver
 
 (define (string-sort str)
 	(list->string (list-sort string<?  (string->list str))))
-	
+
 (define (ana-sort H words) ;; bump counter for each word
 	(for ((w words))
 		#:continue (< (string-length w) 4)
 		(let [(key (string-sort w))]  (hash-set H key (1+ (hash-ref! H key 0))))))
-		
+
 ;; input w word
 ;; output : list of matching words
 (define (anagrams w words)
@@ -2077,7 +2077,7 @@ For a change, we will use the french dictionary - '''(lib 'dico.fr)''' - deliver
 (define H (make-hash))
 	(ana-sort H words) ;; build counters key= sorted-string, value = count
 	(hash-get-keys H   ;; extract max count values
-	    (for/fold (hmax 0) ((h H) ) 
+	    (for/fold (hmax 0) ((h H) )
 	    #:when (>= (cdr h) hmax)
 	    (cdr h))
 	))
@@ -2278,7 +2278,7 @@ public program()
             item := new ArrayList();
             dictionary[key] := item
         };
-    
+
         item.append:word
     };
 
@@ -2286,7 +2286,7 @@ public program()
         .sort:(former,later => former.Item2.Length > later.Item2.Length )
         .top:20
         .forEach:(pair){ console.printLine(pair.Item2) };
-    
+
     console.readChar()
 }
 ```
@@ -2329,11 +2329,11 @@ defmodule Anagrams do
     File.read!(file)
     |> String.split
     |> Enum.group_by(fn word -> String.codepoints(word) |> Enum.sort end)
-    |> Enum.group_by(fn {_,v} -> length(v) end) 
-    |> Enum.max 
+    |> Enum.group_by(fn {_,v} -> length(v) end)
+    |> Enum.max
     |> print
   end
-  
+
   defp print({_,y}) do
     Enum.each(y, fn {_,e} -> Enum.sort(e) |> Enum.join(" ") |> IO.puts end)
   end
@@ -2549,13 +2549,13 @@ PAUSE
 DYNC Anagram()
 	#include <windows.h>
 	#include <stdio.h>
-	
+
 	char* sortedWord(const char* word, char* wbuf)
 	{
 		char* p1, *p2, *endwrd;
 		char t;
 		int swaps;
-		
+
 		strcpy(wbuf, word);
 		endwrd = wbuf + strlen(wbuf);
 		do {
@@ -2579,7 +2579,7 @@ DYNC Anagram()
 		} while (swaps);
 		return wbuf;
 	}
-	
+
 	static short cxmap[] = {
 		0x06, 0x1f, 0x4d, 0x0c, 0x5c, 0x28, 0x5d, 0x0e, 0x09, 0x33, 0x31, 0x56,
 		0x52, 0x19, 0x29, 0x53, 0x32, 0x48, 0x35, 0x55, 0x5e, 0x14, 0x27, 0x24,
@@ -2591,7 +2591,7 @@ DYNC Anagram()
 		0x23, 0x34, 0x25, 0x2f, 0x2b, 0x50, 0x3a, 0x54, 0x47, 0x59, 0x13, 0x57,
 	};
 	#define CXMAP_SIZE (sizeof(cxmap) / sizeof(short))
-	
+
 	int Str_Hash(const char* key, int ix_max)
 	{
 		const char* cp;
@@ -2604,13 +2604,13 @@ DYNC Anagram()
 		}
 		return hash % ix_max;
 	}
-	
+
 	typedef struct sDictWord* DictWord;
 	struct sDictWord {
 		const char* word;
 		DictWord next;
 	};
-	
+
 	typedef struct sHashEntry* HashEntry;
 	struct sHashEntry {
 		const char* key;
@@ -2619,13 +2619,13 @@ DYNC Anagram()
 		HashEntry link;
 		short wordCount;
 	};
-	
+
 	#define HT_SIZE 8192
-	
+
 	HashEntry hashTable[HT_SIZE];
-	
+
 	HashEntry mostPerms = NULL;
-	
+
 	int buildAnagrams(FILE* fin)
 	{
 		char buffer[40];
@@ -2636,7 +2636,7 @@ DYNC Anagram()
 		DictWord we;
 		int maxPC = 2;
 		int numWords = 0;
-		
+
 		while (fgets(buffer, 40, fin)) {
 			for (hkey = buffer; *hkey && (*hkey != '\n'); hkey++);
 			*hkey = 0;
@@ -2675,19 +2675,19 @@ DYNC Anagram()
 		printf("%d words in dictionary max ana=%d\n", numWords, maxPC);
 		return maxPC;
 	}
-	
+
 	void main()
 	{
 		HashEntry he;
 		DictWord we;
 		FILE* f1;
-		
+
 		f1 = fopen("unixdict.txt", "r");
 		buildAnagrams(f1);
 		fclose(f1);
-		
+
 		f1 = fopen("anaout.txt", "w");
-		
+
 		for (he = mostPerms; he; he = he->link) {
 			fprintf(f1, "%d: ", he->wordCount);
 			for (we = he->words; we; we = we->next) {
@@ -2712,11 +2712,11 @@ Press any key to continue...
 '''"anaout.txt" listing:'''
 
 ```txt
-5: vile, veil, live, levi, evil, 
-5: trace, crate, cater, carte, caret, 
-5: regal, large, lager, glare, alger, 
-5: neal, lena, lean, lane, elan, 
-5: lange, glean, galen, angle, angel, 
+5: vile, veil, live, levi, evil,
+5: trace, crate, cater, carte, caret,
+5: regal, large, lager, glare, alger,
+5: neal, lena, lean, lane, elan,
+5: lange, glean, galen, angle, angel,
 5: elba, bela, bale, able, abel,
 ```
 
@@ -2815,28 +2815,28 @@ This program:
 	module anagram_routines
 !***************************************************************************************
 	implicit none
-	
+
 	!the dictionary file:
 	integer,parameter :: file_unit = 1000
 	character(len=*),parameter :: filename = 'unixdict.txt'
-	
+
 	!maximum number of characters in a word:
 	integer,parameter :: max_chars = 50
-	
+
 	!maximum number of characters in the string displaying the anagram lists:
 	integer,parameter :: str_len = 256
-	
-	type word 
+
+	type word
 	  character(len=max_chars) :: str = repeat(' ',max_chars)    !the word from the dictionary
 	  integer                  :: n = 0                          !length of this word
 	  integer                  :: n_anagrams = 0	             !number of anagrams found
 	  logical                  :: checked = .false.              !if this one has already been checked
 	  character(len=str_len)   :: anagrams = repeat(' ',str_len) !the anagram list for this word
 	end type word
-	
+
 	!the dictionary structure:
 	type(word),dimension(:),allocatable,target :: dict
-	
+
 	contains
 !***************************************************************************************
 
@@ -2844,17 +2844,17 @@ This program:
 		function count_lines_in_file(fid) result(n_lines)
 	!******************************************************************************
 		implicit none
-	
+
 		integer             :: n_lines
-		integer,intent(in)  :: fid		
+		integer,intent(in)  :: fid
 		character(len=1)    :: tmp
 		integer             :: i
 		integer             :: ios
-		
+
 		!the file is assumed to be open already.
-		
+
 		rewind(fid)	  !rewind to beginning of the file
-		
+
 		n_lines = 0
 		do !read each line until the end of the file.
 			read(fid,'(A1)',iostat=ios) tmp
@@ -2862,12 +2862,12 @@ This program:
 			n_lines = n_lines + 1  !row counter
 		end do
 
-		rewind(fid)   !rewind to beginning of the file	
-				
+		rewind(fid)   !rewind to beginning of the file
+
 	!******************************************************************************
 		end function count_lines_in_file
 	!******************************************************************************
-	
+
 	!******************************************************************************
 		pure elemental function is_anagram(x,y)
 	!******************************************************************************
@@ -2875,15 +2875,15 @@ This program:
 		character(len=*),intent(in) :: x
 		character(len=*),intent(in) :: y
 		logical :: is_anagram
-	
+
 		character(len=len(x)) :: x_tmp	!a copy of x
 		integer :: i,j
-		
+
 		!a character not found in any word:
 		character(len=1),parameter :: null = achar(0)
-			
+
 		!x and y are assumed to be the same size.
-		
+
 		x_tmp = x
 		do i=1,len_trim(x)
 			j = index(x_tmp, y(i:i)) !look for this character in x_tmp
@@ -2894,11 +2894,11 @@ This program:
 				return
 			end if
 		end do
-	
-		!if we got to this point, all the characters 
+
+		!if we got to this point, all the characters
 		! were the same, so x,y are anagrams:
 		is_anagram = .true.
-					
+
 	!******************************************************************************
 		end function is_anagram
 	!******************************************************************************
@@ -2912,14 +2912,14 @@ This program:
 !***************************************************************************************
 	use anagram_routines
 	implicit none
-	
+
 	integer :: n,i,j,n_max
 	type(word),pointer :: x,y
 	logical :: first_word
 	real :: start, finish
-	
+
 	call cpu_time(start)	!..start timer
-	
+
 	!open the dictionary and read in all the words:
 	open(unit=file_unit,file=filename)      !open the file
 	n = count_lines_in_file(file_unit)      !count lines in the file
@@ -2927,24 +2927,24 @@ This program:
 	do i=1,n                                !
 		read(file_unit,'(A)') dict(i)%str   !each line is a word in the dictionary
 		dict(i)%n = len_trim(dict(i)%str)   !saving length here to avoid trim's below
-	end do		
+	end do
 	close(file_unit)                        !close the file
-	
+
 	!search dictionary for anagrams:
 	do i=1,n
-		
+
 		x => dict(i)	!pointer to simplify code
 		first_word = .true.	!initialize
-		
+
 		do j=i,n
-		
+
 			y => dict(j)	!pointer to simplify code
-			
+
 			!checks to avoid checking words unnecessarily:
 			if (x%checked .or. y%checked) cycle     !both must not have been checked already
 			if (x%n/=y%n) cycle                     !must be the same size
 			if (x%str(1:x%n)==y%str(1:y%n)) cycle   !can't be the same word
-			
+
 			! check to see if x,y are anagrams:
 			if (is_anagram(x%str(1:x%n), y%str(1:y%n))) then
 				!they are anagrams.
@@ -2958,19 +2958,19 @@ This program:
 				end if
 				x%anagrams = trim(x%anagrams)//','//y%str(1:y%n) !add next word to list
 			end if
-	
+
 		end do
 		x%checked = .true.  !don't check this one again
-		 
+
 	end do
-	
+
 	!anagram groups with the most words:
 	write(*,*) ''
 	n_max = maxval(dict%n_anagrams)
 	do i=1,n
 		if (dict(i)%n_anagrams==n_max) write(*,'(A)') trim(dict(i)%anagrams)
 	end do
-	
+
 	!anagram group containing longest words:
 	write(*,*) ''
 	n_max = maxval(dict%n, mask=dict%n_anagrams>0)
@@ -2999,7 +2999,7 @@ This program:
 	caret,carte,cater,crate,trace
 	elan,lane,lean,lena,neal
 	evil,levi,live,veil,vile
-	 
+
 	conservation,conversation
 
 	[Runtime =  6.897 sec]
@@ -3046,10 +3046,10 @@ End Sub
 ' quicksort for sorting whole dictionary of IndexedWord instances by sorted word
 Sub quicksort(a() As IndexedWord, first As Integer, last As Integer)
   Dim As Integer length = last - first + 1
-  If length < 2 Then Return 
+  If length < 2 Then Return
   Dim pivot As String = a(first + length\ 2).word
-  Dim lft As Integer = first 
-  Dim rgt As Integer = last 
+  Dim lft As Integer = first
+  Dim rgt As Integer = last
   While lft <= rgt
     While a(lft).word < pivot
       lft +=1
@@ -3061,7 +3061,7 @@ Sub quicksort(a() As IndexedWord, first As Integer, last As Integer)
        Swap a(lft), a(rgt)
        lft += 1
        rgt -= 1
-    End If 
+    End If
   Wend
   quicksort(a(), first, rgt)
   quicksort(a(), lft, last)
@@ -3078,13 +3078,13 @@ While Not Eof(1)
 Wend
 Close #1
 
-Dim As IndexedWord iw(1 To count) '' array to hold sorted words and their index into w() 
+Dim As IndexedWord iw(1 To count) '' array to hold sorted words and their index into w()
 Dim word As String
 For i As Integer = 1 To count
   word = w(i)
   sortWord(word)
   iw(i).word = word
-  iw(i).index = i 
+  iw(i).index = i
 Next
 quickSort iw(), 1, count  '' sort the IndexedWord array by sorted word
 
@@ -3095,7 +3095,7 @@ word = iw(1).word
 
 For i As Integer = 2 To count
   If word = iw(i).word Then
-    length += 1 
+    length += 1
   Else
     If length > maxLength Then
       maxLength = length
@@ -3134,15 +3134,15 @@ For i As Integer = 1 To UBound(maxIndex)
     iws(j - maxIndex(i) + 1) = iw(j)
   Next j
   sortIndexedWord iws()  '' sort anagram set before displaying it
-  For j As Integer = 1 To maxLength  
+  For j As Integer = 1 To maxLength
     Print w(iws(j).index); " ";
   Next j
   Print
 Next i
 
 Print
-Print "Took "; 
-Print Using "#.###"; timer - t; 
+Print "Took ";
+Print Using "#.###"; timer - t;
 Print " seconds on i3 @ 2.13 GHz"
 
 Print
@@ -3253,7 +3253,7 @@ open "i", 2, url
       read file 2, [h], fileLen
       cfStr = fn CFStringCreateWithBytes( _kCFAllocatorDefault, #[h], fn GetHandleSize(h), _kCFStringEncodingMacRoman, _false )
       if ( cfStr )
-        arr = fn CFStringCreateArrayBySeparatingStrings( _kCFAllocatorDefault, cfStr, @"\n" ) 
+        arr = fn CFStringCreateArrayBySeparatingStrings( _kCFAllocatorDefault, cfStr, @"\n" )
         CFRelease( cfStr )
         elements = fn CFArrayGetCount( arr )
           for i = 0 to elements - 1
@@ -3313,25 +3313,25 @@ Output:
 
 ```txt
 
-Anagrams for BADE:         abed     bade     bead     
-Anagrams for ABET:         abet     bate     beat     beta     
-Anagrams for BEAST:        baste    beast    tabes    
-Anagrams for TUBA:         abut     tabu     tuba     
-Anagrams for MACE:         acme     came     mace     
-Anagrams for SCARE:        carse    caser    ceras    scare    scrae    
-Anagrams for MARINE:       marine   remain   
-Anagrams for ANTLER:       altern   antler   learnt   rental   ternal   
-Anagrams for SPARE:        asper    parse    prase    spaer    spare    spear    
-Anagrams for LEADING:      adeling  dealing  leading  
-Anagrams for ALERTED:      delater  related  treadle  
-Anagrams for ALLERGY:      allergy  gallery  largely  regally  
-Anagrams for RESEARCH:     rechaser research searcher 
-Anagrams for HUSTLE:       hustle   sleuth   
-Anagrams for ORIENTAL:     oriental relation 
+Anagrams for BADE:         abed     bade     bead
+Anagrams for ABET:         abet     bate     beat     beta
+Anagrams for BEAST:        baste    beast    tabes
+Anagrams for TUBA:         abut     tabu     tuba
+Anagrams for MACE:         acme     came     mace
+Anagrams for SCARE:        carse    caser    ceras    scare    scrae
+Anagrams for MARINE:       marine   remain
+Anagrams for ANTLER:       altern   antler   learnt   rental   ternal
+Anagrams for SPARE:        asper    parse    prase    spaer    spare    spear
+Anagrams for LEADING:      adeling  dealing  leading
+Anagrams for ALERTED:      delater  related  treadle
+Anagrams for ALLERGY:      allergy  gallery  largely  regally
+Anagrams for RESEARCH:     rechaser research searcher
+Anagrams for HUSTLE:       hustle   sleuth
+Anagrams for ORIENTAL:     oriental relation
 
-Anagrams for CREATIONISM:  anisometric creationism miscreation ramisection reactionism 
-Anagrams for RESISTANCE:   resistance  senatrices  
-Anagrams for MOUNTAINEER:  enumeration mountaineer 
+Anagrams for CREATIONISM:  anisometric creationism miscreation ramisection reactionism
+Anagrams for RESISTANCE:   resistance  senatrices
+Anagrams for MOUNTAINEER:  enumeration mountaineer
 
 ```
 
@@ -3776,11 +3776,11 @@ Sample run:
 
 ```txt
 ->an <unixdict.txt
-         abel bale bela able elba 
-         lean neal elan lane lena 
-         angle galen lange angel glean 
-         alger glare lager large regal 
-         veil evil levi live vile 
+         abel bale bela able elba
+         lean neal elan lane lena
+         angle galen lange angel glean
+         alger glare lager large regal
+         veil evil levi live vile
          caret cater crate carte trace
 ->
 ```
@@ -3838,7 +3838,7 @@ The key to this algorithm is the sorting of the characters in each word from the
 import java.net.*;
 import java.io.*;
 import java.util.*;
- 
+
 public class WordsOfEqChars {
     public static void main(String[] args) throws IOException {
         URL url = new URL("http://www.puzzlers.org/pub/wordlists/unixdict.txt");
@@ -3863,7 +3863,7 @@ public class WordsOfEqChars {
         for (Collection<String> ana : anagrams.values())
             if (ana.size() >= count)
                 System.out.println(ana);
-    }   
+    }
 }
 ```
 
@@ -3944,7 +3944,7 @@ var words = fs.readFileSync('unixdict.txt', 'UTF-8').split('\n');
 
 var i, item, max = 0,
     anagrams = {};
- 
+
 for (i = 0; i < words.length; i += 1) {
   var key = words[i].split('').sort().join('');
   if (!anagrams.hasOwnProperty(key)) {//check if property exists on current obj only
@@ -4054,9 +4054,9 @@ if (console.args[0] == '-more' && Interp.conf('maxArrayList') > 500000)
 
 var words = File.read(datafile).split('\n');
 puts(words.length, 'words');
- 
+
 var i, item, max = 0, anagrams = {};
- 
+
 for (i = 0; i < words.length; i += 1) {
     var key = words[i].split('').sort().join('');
     if (!anagrams.hasOwnProperty(key)) {
@@ -4382,7 +4382,7 @@ evil,levi,live,veil,vile
 
 ## Lua
 
-Lua's core library is very small and does not include built-in network functionality. If a networking library were imported, the local file in the following script could be replaced with the remote dictionary file. 
+Lua's core library is very small and does not include built-in network functionality. If a networking library were imported, the local file in the following script could be replaced with the remote dictionary file.
 
 ```lua
 function sort(word)
@@ -4414,11 +4414,11 @@ end
 {{out}}
 
 ```txt
-abel able bale bela elba 
-evil levi live veil vile 
-alger glare lager large regal 
-angel angle galen glean lange 
-caret carte cater crate trace 
+abel able bale bela elba
+evil levi live veil vile
+alger glare lager large regal
+angel angle galen glean lange
+caret carte cater crate trace
 elan lane lean lena neal
 ```
 
@@ -4492,12 +4492,12 @@ aboard  abroad
 
 ## Maple
 
-The first line downloads the specified dictionary.  
-(You could, instead, read it from a file, or use one of Maple's built-in word lists.)  
-Next, turn it into a list of words.  
-The assignment to T is where the real work is done (via Classify, in the ListTools package).  
-This creates sets of words all of which have the same "hash", which is, in this case, the sorted word.  
-The convert call discards the hashes, which have done their job, and leaves us with a list L of anagram sets.  
+The first line downloads the specified dictionary.
+(You could, instead, read it from a file, or use one of Maple's built-in word lists.)
+Next, turn it into a list of words.
+The assignment to T is where the real work is done (via Classify, in the ListTools package).
+This creates sets of words all of which have the same "hash", which is, in this case, the sorted word.
+The convert call discards the hashes, which have done their job, and leaves us with a list L of anagram sets.
 Finally, we just note the size of the largest sets of anagrams, and pick those off.
 
 ```Maple
@@ -4730,7 +4730,7 @@ class RAnagramsV01 public
       chars = aWord.toCharArray()
       Arrays.sort(chars)
       key = String(chars)
-      if (\anagrams.containsKey(key)) then do 
+      if (\anagrams.containsKey(key)) then do
         anagrams.put(key, ArrayList())
         end
       (ArrayList anagrams.get(key)).add(Object aWord)
@@ -4866,7 +4866,7 @@ caret carte cater crate trace
 import tables, strutils, algorithm
 
 proc main() =
-    var 
+    var
         count    = 0
         anagrams = initTable[string, seq[string]]()
 
@@ -4888,12 +4888,12 @@ main()
 
 ```txt
 
-evil levi live veil vile 
-caret carte cater crate trace 
-elan lane lean lena neal 
-alger glare lager large regal 
-abel able bale bela elba 
-angel angle galen glean lange 
+evil levi live veil vile
+caret carte cater crate trace
+elan lane lean lena neal
+alger glare lager large regal
+abel able bale bela elba
+angel angle galen glean lange
 
 ```
 
@@ -4918,13 +4918,13 @@ TYPE
 		desc: Node;
 		next: Node;
 	END;
-	
+
 	Pool = POINTER TO PoolDesc;
 	PoolDesc = RECORD
 		capacity,max: INTEGER;
 		words: POINTER TO ARRAY OF Node;
 	END;
-	
+
 	PROCEDURE InitNode(n: Node);
 	BEGIN
 		n^.count := 0;
@@ -4932,7 +4932,7 @@ TYPE
 		n^.desc := NIL;
 		n^.next := NIL;
 	END InitNode;
-	
+
 	PROCEDURE Index(s: ARRAY OF CHAR;cap: INTEGER): INTEGER;
 	VAR
 		i,sum: INTEGER;
@@ -4943,34 +4943,34 @@ TYPE
 		END;
 		RETURN sum MOD cap
 	END Index;
-	
-	PROCEDURE ISort(VAR s: ARRAY OF CHAR); 
-	VAR 
-        i, j: INTEGER; 
-        t: CHAR; 
-	BEGIN 
-        FOR i := 0 TO Strings.Length(s) - 1 DO 
-			j := i; 
-			t := s[j]; 
-			WHILE (j > 0) & (s[j -1] > t) DO 
-					s[j] := s[j - 1]; 
-					DEC(j) 
-			END; 
-			s[j] := t 
-        END 
-	END ISort; 
-	
-	PROCEDURE SameLetters(x,y: ARRAY OF CHAR): BOOLEAN; 
-	BEGIN 
-        ISort(x);ISort(y); 
+
+	PROCEDURE ISort(VAR s: ARRAY OF CHAR);
+	VAR
+        i, j: INTEGER;
+        t: CHAR;
+	BEGIN
+        FOR i := 0 TO Strings.Length(s) - 1 DO
+			j := i;
+			t := s[j];
+			WHILE (j > 0) & (s[j -1] > t) DO
+					s[j] := s[j - 1];
+					DEC(j)
+			END;
+			s[j] := t
+        END
+	END ISort;
+
+	PROCEDURE SameLetters(x,y: ARRAY OF CHAR): BOOLEAN;
+	BEGIN
+        ISort(x);ISort(y);
         RETURN (Strings.Compare(x,y) = 0)
-	END SameLetters; 
-	
+	END SameLetters;
+
 	PROCEDURE InitPool(p:Pool);
 	BEGIN
 		InitPoolWith(p,MAXPOOLSZ);
 	END InitPool;
-	
+
 	PROCEDURE InitPoolWith(p:Pool;cap: INTEGER);
 	VAR
 		i: INTEGER;
@@ -4984,7 +4984,7 @@ TYPE
 			INC(i);
 		END;
 	END InitPoolWith;
-	
+
 	PROCEDURE (p: Pool) Add(w: ARRAY OF CHAR);
 	VAR
 		idx: INTEGER;
@@ -5006,7 +5006,7 @@ TYPE
 		ASSERT(iter = NIL);
 		n^.next := p^.words^[idx];p^.words^[idx] := n
 	END Add;
-	
+
 	PROCEDURE ShowAnagrams(l: Node);
 	VAR
 		iter: Node;
@@ -5018,7 +5018,7 @@ TYPE
 		END;
 		Out.Ln
 	END ShowAnagrams;
-	
+
 	PROCEDURE (p: Pool) ShowMax();
 	VAR
 		i: INTEGER;
@@ -5029,14 +5029,14 @@ TYPE
 				iter := p^.words^[i];
 				WHILE iter # NIL DO
 					IF iter^.count = p^.max THEN
-						ShowAnagrams(iter); 
+						ShowAnagrams(iter);
 					END;
 					iter := iter^.next
 				END
 			END
 		END
 	END ShowMax;
-	
+
 	PROCEDURE DoProcess(fnm: ARRAY OF CHAR);
 	VAR
 		stdinBck,istream: Files.File;
@@ -5053,9 +5053,9 @@ TYPE
 		END;
 		Files.stdin := stdinBck;
 		Files.Close(istream);
-		p^.ShowMax(); 
+		p^.ShowMax();
 	END DoProcess;
-	
+
 BEGIN
 	DoProcess("unixdict.txt");
 END Anagrams.
@@ -5066,12 +5066,12 @@ END Anagrams.
 
 ```txt
 
-abel elba bela bale able 
-elan neal lena lean lane 
-evil vile veil live levi 
-angel lange glean galen angle 
-alger regal large lager glare 
-caret trace crate cater carte 
+abel elba bela bale able
+elan neal lena lean lane
+evil vile veil live levi
+angel lange glean galen angle
+alger regal large lager glare
+caret trace crate cater carte
 
 ```
 
@@ -5103,19 +5103,19 @@ class Anagrams {
         list->AddBack(word);
         count := count->Max(list->Size());
       };
-    
+
       lists := anagrams->GetValues();
       each(i : lists) {
         list := lists->Get(i)->As(Vector);
         if(list->Size() >= count) {
-          '['->Print(); 
+          '['->Print();
           each(j : list) {
             list->Get(j)->As(String)->Print();
             if(j + 1 < list->Size()) {
               ','->Print();
             };
           };
-          ']'->PrintLine(); 
+          ']'->PrintLine();
         };
       };
     };
@@ -5124,7 +5124,7 @@ class Anagrams {
 
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 [abel,able,bale,bela,elba]
@@ -5164,7 +5164,7 @@ let () =
     let k = implode (List.sort compare (explode w)) in
     let l =
       try Hashtbl.find h k
-      with Not_found -> [] 
+      with Not_found -> []
     in
     Hashtbl.replace h k (w::l);
   done with End_of_file -> ();
@@ -5215,7 +5215,7 @@ import: quicksort
 
 ## ooRexx
 
-Two versions of this, using different collection classes. 
+Two versions of this, using different collection classes.
 
 ### Version 1:  Directory of arrays
 
@@ -5263,7 +5263,7 @@ end
 
 ### Version 2:  Using the relation class
 
-This version appears to be the fastest. 
+This version appears to be the fastest.
 
 ```ooRexx
 
@@ -5334,12 +5334,12 @@ NetRexx v2   .09 seconds (using local file)
 It probably should be noted that the REXX timings are actually for ooRexx executing a modified version of the REXX code.
 
 Statistics:
- sets number of words  
-22022 1                
- 1089 2                
-  155 3                
-   31 4                
-    6 5  
+ sets number of words
+22022 1
+ 1089 2
+  155 3
+   31 4
+    6 5
 
 ```
 
@@ -5399,7 +5399,7 @@ var
   WordList:          TStringList;
   SortedWordList:    TStringList;
   AnagramList:       array of TStringlist;
-  
+
 begin
   WordList := TStringList.Create;
   WordList.LoadFromFile('unixdict.txt');
@@ -5422,7 +5422,7 @@ begin
       j := j + 1;
     end;
 
-    // create the stringlists of the sorted letters and 
+    // create the stringlists of the sorted letters and
     // the list of the original words
     if not assigned(SortedWordList) then
     begin
@@ -5438,13 +5438,13 @@ begin
       while sortedString <> SortedWordList.Strings[j] do
       begin
         inc(j);
-        if j = (SortedWordList.Count) then 
+        if j = (SortedWordList.Count) then
         begin
           SortedWordList.append(sortedString);
           setlength(AnagramList,length(AnagramList) + 1);
           AnagramList[j] := TStringList.Create;
  	  break;
-        end;  
+        end;
       end;
       AnagramList[j].append(WordList.Strings[i]);
     end;
@@ -5453,7 +5453,7 @@ begin
   maxCount := 1;
   for i := 0 to length(AnagramList) - 1 do
     maxCount := max(maxCount, AnagramList[i].Count);
-    
+
   // create output
   writeln('The largest sets of words have ', maxCount, ' members:');
   for i := 0 to length(AnagramList) - 1 do
@@ -5534,7 +5534,7 @@ $max > @$_  or  $max = @$_    for values %anagram;
 
 ```perl6
 my @anagrams = 'unixdict.txt'.IO.words.classify(*.comb.sort.join).values;
- 
+
 my $max = @anagrams».elems.max;
 
 .put for @anagrams.grep(*.elems == $max);
@@ -5598,7 +5598,7 @@ integer maxlen = 1
             anagrams = append(anagrams,{word})
         end if
     end for
-     
+
     puts(1,"\nMost anagrams:\n")
     for i=1 to length(anagrams) do
         last = anagrams[i]
@@ -5762,7 +5762,7 @@ end word_test;
 
 ```txt
 
-There are          23565 words 
+There are          23565 words
 The following word(s) have 5 anagrams:
  abel alger angel caret elan evil
 
@@ -5818,7 +5818,7 @@ foreach ($w in $words)
     $chars=[char[]]$w
     [array]::sort($chars)
     $orderedChars = [string]::Join('', $chars)
-    
+
 
     # If no anagrams list for these chars, make one
     if (-not $anagrams.ContainsKey($orderedChars))
@@ -5830,14 +5830,14 @@ foreach ($w in $words)
     # Add current word as an anagram of these chars,
     # in a way which keeps the list available
     ($list = $anagrams[$orderedChars]).Add($w)
-    
+
 
     # Keep running score of max number of anagrams seen
     if ($list.Count -gt $maxAnagramCount)
     {
         $maxAnagramCount = $list.Count
     }
-    
+
 }
 
 foreach ($entry in $anagrams.GetEnumerator())
@@ -5900,7 +5900,7 @@ StringList size=5 [ "caret", "carte", "cater", "crate", "trace" ]
 
 ## Prolog
 
-{{works with|SWI-Prolog|5.10.0}} 
+{{works with|SWI-Prolog|5.10.0}}
 
 ```Prolog
 :- use_module(library( http/http_open )).
@@ -5921,10 +5921,10 @@ anagrams:-
         % we sorted this list in decreasing order of the length of values
 	predsort(my_compare, GPL, GPLSort),
 
-	% we extract the first 6 items 
+	% we extract the first 6 items
         GPLSort = [_H1-T1, _H2-T2, _H3-T3, _H4-T4, _H5-T5, _H6-T6 | _],
 
-        % Tnn are lists of codes (97 for 'a'), we create the strings 
+        % Tnn are lists of codes (97 for 'a'), we create the strings
 	maplist(maplist(atom_codes), L, [T1, T2, T3, T4, T5, T6] ),
 
 	maplist(writeln, L).
@@ -5932,15 +5932,15 @@ anagrams:-
 
 read_file(In, L, L1) :-
 	read_line_to_codes(In, W),
-	(   W == end_of_file -> 
+	(   W == end_of_file ->
                % the file is read
 	       L1 = L
-	       ; 
+	       ;
                % we sort the list of codes of the line
 	       msort(W, W1),
 
                % to create the key in alphabetic order
-	       atom_codes(A, W1), 
+	       atom_codes(A, W1),
 
                % and we have the pair Key-Value in the result list
 	       read_file(In, [A-W | L], L1)).
@@ -5970,27 +5970,27 @@ true
 
 ## PureBasic
 
-{{works with|PureBasic|4.4}} 
+{{works with|PureBasic|4.4}}
 
 ```PureBasic
 InitNetwork()  ;
 OpenConsole()
- 
+
 Procedure.s sortWord(word$)
   len.i = Len(word$)
   Dim CharArray.s (len)
- 
-  For n = 1 To len                                 ; Transfering each single character 
+
+  For n = 1 To len                                 ; Transfering each single character
      CharArray(n) = Mid(word$, n, 1)      ; of the word into an array.
-  Next                               
- 
-  SortArray(CharArray(),#PB_Sort_NoCase ) ; Sorting the array. 
- 
-  word$ ="" 
-  For n = 1 To len                       ; Writing back each single 
+  Next
+
+  SortArray(CharArray(),#PB_Sort_NoCase ) ; Sorting the array.
+
+  word$ =""
+  For n = 1 To len                       ; Writing back each single
      word$ + CharArray(n)             ; character of the array.
-  Next 
- 
+  Next
+
   ProcedureReturn word$
 EndProcedure
 
@@ -5998,55 +5998,55 @@ EndProcedure
 ; Procedure.s sortWord(word$) ;returns a string with the letters of the word sorted
 ;   Protected wordLength = Len(word$)
 ;   Protected Dim letters.c(wordLength)
-;   
+;
 ;   PokeS(@letters(), word$) ;overwrite the array with the strings contents
 ;   SortArray(letters(), #PB_Sort_Ascending, 0, wordLength - 1)
 ;   ProcedureReturn PeekS(@letters(), wordLength) ;return the arrays contents
 ; EndProcedure
- 
- 
+
+
 tmpdir$   = GetTemporaryDirectory()
 filename$ = tmpdir$ + "unixdict.txt"
 Structure ana
    isana.l
    anas.s
 EndStructure
- 
+
 NewMap anaMap.ana()
- 
+
 If ReceiveHTTPFile("http://www.puzzlers.org/pub/wordlists/unixdict.txt", filename$)
   If ReadFile(1, filename$)
     Repeat
       word$ = (ReadString(1))             ; Reading a word from a file.
       key$  = (sortWord(word$))             ; Sorting the word and storing in key$.
- 
+
       If FindMapElement(anaMap(), key$)   ; Looking up if a word already had the same key$.
- 
-                                          ; if yes 
+
+                                          ; if yes
          anaMap()\anas  = anaMap()\anas+ ", " + word$   ; adding the word
-         anaMap()\isana + 1   
+         anaMap()\isana + 1
       Else
-                                          ; if no       
+                                          ; if no
          anaMap(key$)\anas = word$        ; applying  a new record
-         anaMap()\isana = 1 
+         anaMap()\isana = 1
        EndIf
-       
+
       If anaMap()\isana > maxAnagrams ;make note of maximum anagram count
         maxAnagrams = anaMap()\isana
       EndIf
-      
+
     Until Eof(1)
     CloseFile(1)
     DeleteFile(filename$)
- 
+
     ;----- output -----
     ForEach anaMap()
       If anaMap()\isana = maxAnagrams      ; only emit elements that have the most hits
         PrintN(anaMap()\anas)
-      EndIf 
+      EndIf
     Next
- 
-    PrintN("Press any key"): Repeat: Until Inkey() <> ""       
+
+    PrintN("Press any key"): Repeat: Until Inkey() <> ""
   EndIf
 EndIf
 ```
@@ -6079,7 +6079,7 @@ Python 3.2 shell input (IDLE)
 >>> for word in words:
 	anagram[tuple(sorted(word))].append( word )
 
-	
+
 >>> count = max(len(ana) for ana in anagram.values())
 >>> for ana in anagram.values():
 	if len(ana) >= count:
@@ -6102,13 +6102,13 @@ Python 2.7 shell input (IDLE)
 >>> for word in words:
 	anagram[tuple(sorted(word))].append( word )
 
-	
+
 >>> count = max(len(ana) for ana in anagram.itervalues())
 >>> for ana in anagram.itervalues():
 	if len(ana) >= count:
 		print ana
 
-		
+
 ['angel', 'angle', 'galen', 'glean', 'lange']
 ['alger', 'glare', 'lager', 'large', 'regal']
 ['caret', 'carte', 'cater', 'crate', 'trace']
@@ -6140,7 +6140,7 @@ Python 2.7 shell input (IDLE)
 	if len(ana) >= count:
 		print ana
 
-		
+
 ['abel', 'able', 'bale', 'bela', 'elba']
 ['caret', 'carte', 'cater', 'crate', 'trace']
 ['angel', 'angle', 'galen', 'glean', 'lange']
@@ -6154,7 +6154,7 @@ Python 2.7 shell input (IDLE)
 
 
 
-Or, disaggregating, speeding up a bit by avoiding the slightly expensive use of ''sorted'' as a key, updating for Python 3, and using a local ''unixdict.txt'': 
+Or, disaggregating, speeding up a bit by avoiding the slightly expensive use of ''sorted'' as a key, updating for Python 3, and using a local ''unixdict.txt'':
 {{Works with|Python|3.7}}
 
 ```python
@@ -6628,16 +6628,16 @@ anagrams <- tapply(words, word_group, paste, collapse=", ") # group to get strin
 # Results
 table(counts)
 counts
-    1     2     3     4     5 
-22263  1111   155    31     6 
+    1     2     3     4     5
+22263  1111   155    31     6
 
 anagrams[counts == max(counts)]
-                               abel                               acert 
-     "abel, able, bale, bela, elba" "caret, carte, cater, crate, trace" 
-                              aegln                               aeglr 
-"angel, angle, galen, glean, lange" "alger, glare, lager, large, regal" 
-                               aeln                                eilv 
-     "elan, lane, lean, lena, neal"      "evil, levi, live, veil, vile" 
+                               abel                               acert
+     "abel, able, bale, bela, elba" "caret, carte, cater, crate, trace"
+                              aegln                               aeglr
+"angel, angle, galen, glean, lange" "alger, glare, lager, large, regal"
+                               aeln                                eilv
+     "elan, lane, lean, lena, neal"      "evil, levi, live, veil, vile"
 ```
 
 
@@ -6649,7 +6649,7 @@ anagrams[counts == max(counts)]
 
 #lang racket
 
-(require net/url)         
+(require net/url)
 
 (define (get-lines url-string)
   (define port (get-pure-port (string->url url-string)))
@@ -6657,7 +6657,7 @@ anagrams[counts == max(counts)]
 
 (define (hash-words words)
   (for/fold ([ws-hash (hash)]) ([w words])
-    (hash-update ws-hash 
+    (hash-update ws-hash
                  (list->string (sort (string->list w) < #:key (λ (c) (char->integer c))))
                  (λ (ws) (cons w ws))
                  (λ () '()))))
@@ -6712,7 +6712,7 @@ function sortChars(expr as string) as string
     charlist.sort
     result = Charlist.text - chr$(10) - chr$(13)
 end function
- 
+
 '--- Start main code
     wordlist.loadfromfile ("unixdict.txt")
 
@@ -6720,18 +6720,18 @@ end function
     for x = 0 to wordlist.itemcount-1
         AnaList.AddItems sortChars(wordlist.item(x))
     next
-       
+
     'Filter largest anagram lists
     analist.sort
     MaxCount = 0
-    
+
     for x = 0 to AnaList.Itemcount-1
         Count = 0
         for y = x+1 to AnaList.Itemcount-1
             if AnaList.item(y) = AnaList.item(x) then
                 inc(count)
             else
-                if count > MaxCount then 
+                if count > MaxCount then
                     Templist.clear
                     MaxCount = Count
                     Templist.AddItems AnaList.item(x)
@@ -6742,10 +6742,10 @@ end function
             end if
         next
     next
-       
-    'Now get the words 
+
+    'Now get the words
     for x = 0 to Templist.Itemcount-1
-        for y = 0 to wordlist.Itemcount-1 
+        for y = 0 to wordlist.Itemcount-1
             if Templist.item(x) = sortChars(wordlist.item(y)) then
                 StrOutPut = StrOutPut + wordlist.item(y) + "  "
             end if
@@ -6753,7 +6753,7 @@ end function
         StrOutPut = StrOutPut + chr$(13) + chr$(10)
     next
 
-ShowMessage StrOutPut 
+ShowMessage StrOutPut
 End
 
 
@@ -6763,12 +6763,12 @@ End
 
 ```txt
 
-abel  able  bale  bela  elba  
-caret  carte  cater  crate  trace  
-angel  angle  galen  glean  lange  
-alger  glare  lager  large  regal  
-elan  lane  lean  lena  neal  
-evil  levi  live  veil  vile  
+abel  able  bale  bela  elba
+caret  carte  cater  crate  trace
+angel  angle  galen  glean  lange
+alger  glare  lager  large  regal
+elan  lane  lean  lena  neal
+evil  levi  live  veil  vile
 
 ```
 
@@ -6780,7 +6780,7 @@ evil  levi  live  veil  vile
 ```rascal
 import Prelude;
 
-list[str] OrderedRep(str word){	
+list[str] OrderedRep(str word){
 	return sort([word[i] | i <- [0..size(word)-1]]);
 }
 public list[set[str]] anagram(){
@@ -6813,16 +6813,16 @@ Red []
 
 m: make map! [] 25000
 
-maxx: 0 
+maxx: 0
 foreach word  read/lines http://www.puzzlers.org/pub/wordlists/unixdict.txt [
 sword:  sort copy word ;; sorted characters of word
 
 either find m sword [
-    append   m/:sword word  
+    append   m/:sword word
     maxx: max maxx length?  m/:sword
-   ] [ 
+   ] [
       put m sword append copy [] word
-    ]    
+    ]
 ]
 foreach v values-of m [ if maxx = length? v [print v] ]
 
@@ -6837,7 +6837,7 @@ angel angle galen glean lange
 caret carte cater crate trace
 elan lane lean lena neal
 evil levi live veil vile
->> 
+>>
 
 ```
 
@@ -6884,7 +6884,7 @@ sortA: arg char 2 xx,@.                          /*get the first letter of arg; 
 ```
 
 Programming note:   the long (wide) assignment for     '''return @.a||'''...     could've been coded as an elegant   '''do'''   loop instead of hardcoding 26 letters,
-but since the dictionary (word list) is rather large, a rather expaciated method was used for speed. 
+but since the dictionary (word list) is rather large, a rather expaciated method was used for speed.
 
 {{out|output|text=  when using the default input (dictionary):}}
 
@@ -6942,7 +6942,7 @@ sortA: arg char 2 xx,@.                          /*get the first letter of arg; 
 
 {{out|output|text=  is the same as REXX version 1.1}}
 
-Programming note:   the above REXX programs adopted the method that the REXX version 2 uses for extracting each character of a word. 
+Programming note:   the above REXX programs adopted the method that the REXX version 2 uses for extracting each character of a word.
 
 The method is more obtuse, but when invoking the routine tens of thousands of times, this faster method lends itself to heavy use.
 
@@ -7106,7 +7106,7 @@ There are 6 set(s) of anagrams with 5 elements each:
      alger glare lager large regal
      caret carte cater crate trace
      evil levi live veil vile
-1.170000                
+1.170000
 
 ```
 
@@ -7124,7 +7124,7 @@ fn1 = "unixdict.txt"
 
 fp = fopen(fn1,"r")
 str = fread(fp, getFileSize(fp))
-fclose(fp) 
+fclose(fp)
 strlist = str2list(str)
 anagram = newlist(len(strlist), 5)
 anag = list(len(strlist))
@@ -7155,7 +7155,7 @@ for n = 1 to len(strlist)
              if sum = 4
                 anag[n] = anag[n] + 1
                 if anag[n] < 6 and result[n] = 0 and result[m] = 0
-                   anagram[n][anag[n]] = strlist[m] 
+                   anagram[n][anag[n]] = strlist[m]
                    result[m] = 1
                 ok
              ok
@@ -7204,23 +7204,23 @@ Output:
 
 ```txt
 
-abbe babe 
-abed bade bead 
-abel able bale bela 
-abet bate beat beta 
-alai alia 
-alex axle 
-bail bali 
-bake beak 
-bane bean 
-bard brad 
-bare bear brae 
-barn bran 
-beam bema 
-blot bolt 
-blow bowl 
-blur burl 
-body boyd 
+abbe babe
+abed bade bead
+abel able bale bela
+abet bate beat beta
+alai alia
+alex axle
+bail bali
+bake beak
+bane bean
+bard brad
+bare bear brae
+barn bran
+beam bema
+blot bolt
+blow bowl
+blur burl
+body boyd
 
 ```
 
@@ -7295,9 +7295,9 @@ sqliteconnect #mem, ":memory:"
 mem$ = "CREATE TABLE anti(gram,ordr);
 CREATE INDEX ord ON anti(ordr)"
 #mem execute(mem$)
-' read the file 
+' read the file
 a$ = httpGet$("http://www.puzzlers.org/pub/wordlists/unixdict.txt")
- 
+
 ' break the file words apart
 i = 1
 while i <> 0
@@ -7308,7 +7308,7 @@ while i <> 0
 	if q > 0 then a1$ = left$(a1$,q) + mid$(a1$,q)
 	ln	= len(a1$)
 	s$	= a1$
- 
+
 	' Split the characters of the word and sort them
 	s = 1
 	while	s = 1
@@ -7322,12 +7322,12 @@ while i <> 0
 			end if
 		next k
 	wend
- 
+
 	mem$	= "INSERT INTO anti VALUES('";a1$;"','";ord$;"')"
 	#mem execute(mem$)
 	i	= j +1
 wend
-' find all antigrams 
+' find all antigrams
 mem$	= "SELECT count(*) as cnt,anti.ordr FROM anti GROUP BY ordr ORDER BY cnt desc"
 #mem execute(mem$)
 numDups = #mem ROWCOUNT()	'Get the number of rows
@@ -7339,14 +7339,14 @@ for i = 1 to numDups
 	if cnt < maxCnt then exit for
 	dups$(i) = #row ordr$()
 next i
- 
+
 for i = 1 to i -1
 	mem$	= "SELECT anti.gram FROM anti
 		   WHERE  anti.ordr = '";dups$(i);"'
 		   ORDER BY anti.gram"
 	#mem execute(mem$)
 	rows = #mem ROWCOUNT()	'Get the number of rows
- 
+
 	for ii = 1 to rows
 		#row	= #mem #nextrow()
 		gram$	= #row gram$()
@@ -7360,11 +7360,11 @@ end
 
 ```txt
 
-abel	able	bale	bela	elba	
-caret	carte	cater	crate	trace	
-angel	angle	galen	glean	lange	
-alger	glare	lager	large	regal	
-elan	lane	lean	lena	neal	
+abel	able	bale	bela	elba
+caret	carte	cater	crate	trace
+angel	angle	galen	glean	lange
+alger	glare	lager	large	regal
+elan	lane	lean	lena	neal
 evil	levi	live	veil	vile
 ```
 
@@ -7544,9 +7544,9 @@ Uses two SRFI libraries: SRFI 125 for hash tables and SRFI 132 for sorting.
 
 ;; read in the words
 (define (read-groups)
-  (with-input-from-file 
+  (with-input-from-file
     "unixdict.txt"
-    (lambda () 
+    (lambda ()
       (let ((groups (hash-table string=?)))
         (do ((line (read-line) (read-line)))
           ((eof-object? line) groups)
@@ -7563,12 +7563,12 @@ Uses two SRFI libraries: SRFI 125 for hash tables and SRFI 132 for sorting.
            (find-largest (cdr grps) (length (car grps)) (list (car grps))))
           ((= (length (car grps)) n)
            (find-largest (cdr grps) n (cons (car grps) sofar)))
-          (else 
+          (else
             (find-largest (cdr grps) n sofar))))
   (find-largest (hash-table-values groups) 0 '()))
 
 ;; print results
-(for-each 
+(for-each
   (lambda (group)
     (display "[ ")
     (for-each (lambda (word) (display word) (display " ")) group)
@@ -7713,7 +7713,7 @@ procedure insertion_sort(A);
       A(j+1) := A(j);
       j := j - 1;
     end loop;
-    A(j+1) := v; 
+    A(j+1) := v;
  end loop;
  return A;
 end procedure;
@@ -7985,7 +7985,7 @@ BEGIN
     INTEGER I, J, LONGEST;
 
     MAP :- NEW HASHMAP;
-  
+
     INF :- NEW INFILE("unixdict.txt");
     INF.OPEN(BLANKS(132));
     WHILE NOT INF.LASTITEM DO
@@ -8061,7 +8061,7 @@ acert: caret carte cater crate trace
 ```Smalltalk
 list:= (FillInTheBlank request: 'myMessageBoxTitle') subStrings: String crlf.
 dict:= Dictionary new.
-list do: [:val| 
+list do: [:val|
 	(dict at: val copy sort ifAbsent: [dict at: val copy sort put: OrderedCollection new])
 		add: val.
 	].
@@ -8074,15 +8074,15 @@ Documentation:
 
 First ask the user for the list.
 Then create an empty dictionary (a Map). Which maps strings as keys to OrderedCollections as values.
-For each entry in the list add an entry to the OrderedCollection under the key of the sorted string 
+For each entry in the list add an entry to the OrderedCollection under the key of the sorted string
 (and create a new empty OC if there was no previous entry).
 Then create a SortedCollection sorting by comparing the sizes of the OrderedCollections.
 The first 6 entries are:
-an OrderedCollection('evil' 'levi' 'live' 'veil' 'vile') 
-an OrderedCollection('angel' 'angle' 'galen' 'glean' 'lange') 
-an OrderedCollection('alger' 'glare' 'lager' 'large' 'regal') 
-an OrderedCollection('caret' 'carte' 'cater' 'crate' 'trace') 
-an OrderedCollection('abel' 'able' 'bale' 'bela' 'elba') 
+an OrderedCollection('evil' 'levi' 'live' 'veil' 'vile')
+an OrderedCollection('angel' 'angle' 'galen' 'glean' 'lange')
+an OrderedCollection('alger' 'glare' 'lager' 'large' 'regal')
+an OrderedCollection('caret' 'carte' 'cater' 'crate' 'trace')
+an OrderedCollection('abel' 'able' 'bale' 'bela' 'elba')
 an OrderedCollection('elan' 'lane' 'lean' 'lena' 'neal')
 
 ```
@@ -8092,7 +8092,7 @@ instead of asking for the strings, read the file:
 
 ```smalltalk
 d := Dictionary new.
-'unixdict.txt' asFilename 
+'unixdict.txt' asFilename
     readingLinesDo:[:eachWord |
       (d at:eachWord copy sort ifAbsentPut:[OrderedCollection new]) add:eachWord
     ].
@@ -8131,19 +8131,19 @@ not sure if getting the dictionary via http is part of the task; if so, replace 
 Note: unixdict.txt is passed in locally via STDIN. Newlines must be converted for Win/DOS environment.
 
 ```SNOBOL4
-*       # Sort letters of word        
+*       # Sort letters of word
         define('sortw(str)a,i,j') :(sortw_end)
 sortw   a = array(size(str))
 sw1     i = i + 1; str len(1) . a<i> = :s(sw1)
         a = sort(a)
 sw2     j = j + 1; sortw = sortw a<j> :s(sw2)f(return)
-sortw_end        
+sortw_end
 
 *       # Count words in string
         define('countw(str)') :(countw_end)
 countw  str break(' ') span(' ') = :f(return)
         countw = countw + 1 :(countw)
-countw_end        
+countw_end
 
         ana = table()
 L1      wrd = input :f(L2) ;* unixdict.txt from stdin
@@ -8155,15 +8155,15 @@ L3      j = j + 1; key = kv<j,1>; val = kv<j,2> :f(end)
         output = eq(countw(val),max) key ': ' val :(L3)
 end
 ```
-       
+
 {{out}}
 
 ```txt
-abel: abel able bale bela elba 
-aeglr: alger glare lager large regal 
-aegln: angel angle galen glean lange 
-acert: caret carte cater crate trace 
-aeln: elan lane lean lena neal 
+abel: abel able bale bela elba
+aeglr: alger glare lager large regal
+aegln: angel angle galen glean lange
+acert: caret carte cater crate trace
+aeln: elan lane lean lena neal
 eilv: evil levi live veil vile
 ```
 
@@ -8270,7 +8270,7 @@ var biggestlists = [Set<String>]()
 
 for thisword in words {
     let chars = thisword.charactersAscending
-    
+
     var knownwords = charsToWords[chars] ?? Set<String>()
     knownwords.insert(thisword)
     charsToWords[chars] = knownwords
@@ -8405,12 +8405,12 @@ a'b'e'l                                     5: abel able bale bela elba
 ## UNIX Shell
 
 {{works with|bash|4}}
-There's a bit of a cheat here: bash has no builtin way to sort. 
+There's a bit of a cheat here: bash has no builtin way to sort.
 I have to call out to the system's <tt>sort</tt> utility.
 
-This code uses a [http://www.gnu.org/software/bash/manual/bashref.html#Process-Substitution process substitution]. 
-Bash will execute each part of a command pipeline in a subshell. 
-That means if you set variables inside a while loop that's part of a pipeline, then those variables will disappear when the subshell exits. 
+This code uses a [http://www.gnu.org/software/bash/manual/bashref.html#Process-Substitution process substitution].
+Bash will execute each part of a command pipeline in a subshell.
+That means if you set variables inside a while loop that's part of a pipeline, then those variables will disappear when the subshell exits.
 Process substitutions eliminate the need for command pipelines.
 
 
@@ -8420,8 +8420,8 @@ http_get_body() {
     local uri=$2
     exec 5<> /dev/tcp/$host/80
     printf >&5 "%s\r\n" "GET $uri HTTP/1.1" "Host: $host" "Connection: close" ""
-    mapfile -t -u5 
-    local lines=( "${MAPFILE[@]//$'\r'}" ) 
+    mapfile -t -u5
+    local lines=( "${MAPFILE[@]//$'\r'}" )
     local i=0 found=0
     for (( ; found == 0; i++ )); do
         [[ -z ${lines[i]} ]] && (( found++ ))
@@ -8430,17 +8430,17 @@ http_get_body() {
     exec 5>&-
 }
 
-declare -A wordlist 
+declare -A wordlist
 
-while read -r word; do 
+while read -r word; do
     uniq_letters=( $(for ((i=0; i<${#word}; i++)); do echo "${word:i:1}"; done | sort) )
-    wordlist["${uniq_letters[*]}"]+="$word " 
+    wordlist["${uniq_letters[*]}"]+="$word "
 done < <( http_get_body www.puzzlers.org  /pub/wordlists/unixdict.txt )
 
 maxlen=0
 maxwords=()
 
-for key in "${!wordlist[@]}"; do 
+for key in "${!wordlist[@]}"; do
     words=( ${wordlist[$key]} )
     if (( ${#words[@]} > maxlen )); then
         maxlen=${#words[@]}
@@ -8457,19 +8457,19 @@ printf "%s\n" "${maxwords[@]}"
 {{output}}
 
 ```txt
-angel angle galen glean lange 
-alger glare lager large regal 
-evil levi live veil vile 
-elan lane lean lena neal 
-caret carte cater crate trace 
-abel able bale bela elba 
+angel angle galen glean lange
+alger glare lager large regal
+evil levi live veil vile
+elan lane lean lena neal
+caret carte cater crate trace
+abel able bale bela elba
 ```
 
 
 
 ## Ursala
 
-Supplying the input file on the command line during compilation makes its contents accessible as a pre-declared identifier. 
+Supplying the input file on the command line during compilation makes its contents accessible as a pre-declared identifier.
 The algorithm is to group the words together that are made from the same unordered lists of letters, then collect the groups together that have the same number of words in
 them, and then show the collection associated with the highest number.
 
@@ -8712,7 +8712,7 @@ Dim i As Long
 Dim j As Long
 Dim Pivot As Variant
 Dim temp As Variant
-    
+
     On Error Resume Next
     i = mini: j = Maxi
     Pivot = myArr((mini + Maxi) \ 2)
@@ -8763,7 +8763,7 @@ End Sub
 
 ```txt
 25104 words, in the dictionary
-The anagram set(s) with the greatest number of words (namely 5) is : 
+The anagram set(s) with the greatest number of words (namely 5) is :
 
 abel, able, bale, bela, elba
 caret, carte, cater, crate, trace
@@ -8871,7 +8871,7 @@ if (not open(1,filename$)) error "Could not open '"+filename$+"' for reading"
 
 print "Be patient, please ...\n"
 
-while(not eof(1)) 
+while(not eof(1))
   line input #1 a$
   c = c + 1
   p$(c) = a$
@@ -8895,7 +8895,7 @@ print "\n", peek("secondsrunning"), " sec"
 
 sub sort$(a$)
 	local n, i, t$, c1$, c2$
-	
+
 	for n = 1 to len(a$) - 1
 		for i = n + 1 to len(a$)
 			c1$ = mid$(a$, n, 1) : c2$ = mid$(a$, i, 1)
@@ -8918,7 +8918,7 @@ end sub
 
 sub insert(j)
 	local p
-	
+
 	if po$(c) < po$(j) then
 		p = 1
 	elseif po$(c) = po$(j) then
@@ -8936,7 +8936,7 @@ sub insert(j)
 	else
 		p = 3
 	end if
-	
+
 	if d(j,p) then
 		insert(d(j,p))
 	else
@@ -8953,7 +8953,7 @@ end sub
 ```zkl
 File("unixdict.txt").read(*)  // dictionary file to blob, copied from web
    // blob to dictionary: key is word "fuzzed", values are anagram words
-   .pump(Void,T(fcn(w,d){ 
+   .pump(Void,T(fcn(w,d){
       key:=w.split("").sort().concat();  // fuzz word to key
       d.appendV(key,w);  // add or append w
    },d:=Dictionary(0d60_000)));

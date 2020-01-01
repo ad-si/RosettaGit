@@ -14,7 +14,7 @@ tags = []
 
 A [[wp:Munchausen number|Munchausen number]] is a natural number ''n'' the sum of whose digits (in base 10), each raised to the power of itself, equals ''n''.
 
-('''Munchausen''' is also spelled: '''Münchhausen'''.) 
+('''Munchausen''' is also spelled: '''Münchhausen'''.)
 
 For instance:   <big> 3435 = 3<sup>3</sup> + 4<sup>4</sup> + 3<sup>3</sup> + 5<sup>5</sup> </big>
 
@@ -63,7 +63,7 @@ POW      DC     F'0',F'1',F'4',F'27',F'256',F'3125',4F'0'
 P10      DC     F'1000',F'100',F'10',F'1'
 PG       DC     CL12' '            buffer
          REGEQU
-         END    MUNCHAU 
+         END    MUNCHAU
 ```
 
 {{out}}
@@ -83,10 +83,10 @@ PG       DC     CL12' '            buffer
 ```algol68
 # Find Munchausen Numbers between 1 and 5000                                        #
 # note that 6^6 is 46 656 so we only need to consider numbers consisting of 0 to 5   #
- 
+
 # table of Nth powers - note 0^0 is 0 for Munchausen numbers, not 1                 #
 []INT nth power = ([]INT( 0, 1, 2 * 2, 3 * 3 * 3, 4 * 4 * 4 * 4, 5 * 5 * 5 * 5 * 5 ))[ AT 0 ];
- 
+
 INT d1 := 0; INT d1 part := 0;
 INT d2 := 0; INT d2 part := 0;
 INT d3 := 0; INT d3 part := 0;
@@ -217,7 +217,7 @@ OD
 % Find Munchausen Numbers between 1 and 5000                                         %
 % note that 6^6 is 46 656 so we only need to consider numbers consisting of 0 to 5   %
 begin
- 
+
     % table of nth Powers - note 0^0 is 0 for Munchausen numbers, not 1              %
     integer array nthPower( 0 :: 5 );
     integer d1, d2, d3, d4, d1Part, d2Part, d3Part;
@@ -279,7 +279,7 @@ end.
 
 -- isMunchausen :: Int -> Bool
 on isMunchausen(n)
-    
+
     -- digitPowerSum :: Int -> Character -> Int
     script digitPowerSum
         on |λ|(a, c)
@@ -287,20 +287,20 @@ on isMunchausen(n)
             a + (d ^ d)
         end |λ|
     end script
-    
+
     (class of n is integer) and ¬
         foldl(digitPowerSum, 0, characters of (n as string)) = n
-        
+
 end isMunchausen
 
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     filter(isMunchausen, enumFromTo(1, 5000))
-    
+
     --> {1, 3435}
-    
+
 end run
 
 
@@ -345,7 +345,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -401,7 +401,7 @@ BEGIN {
 
 ## BASIC
 
-This should need only minimal modification to work with any old-style BASIC that supports user-defined functions. The call to <code>INT</code> in line 10 is needed because the exponentiation operator may return a (floating-point) value that is slightly too large. 
+This should need only minimal modification to work with any old-style BASIC that supports user-defined functions. The call to <code>INT</code> in line 10 is needed because the exponentiation operator may return a (floating-point) value that is slightly too large.
 
 ```basic
 10 DEF FN P(X)=INT(X^X*SGN(X))
@@ -459,7 +459,7 @@ Works with 1k of RAM. The word <code>FAST</code> in line 10 shouldn't be taken <
 ## BBC BASIC
 
 
-```bbcbasic>REM 
+```bbcbasic>REM
 munchausen
 FOR i% = 0 TO 5
   FOR j% = 0 TO 5
@@ -494,8 +494,8 @@ ELSE
 
 Adapted from Zack Denton's code posted on [https://zach.se/munchausen-numbers-and-how-to-find-them/ Munchausen Numbers and How to Find Them].
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 int main() {
@@ -505,16 +505,16 @@ int main() {
         int sum = 0;
         for (int number = i; number > 0; number /= 10) {
             int digit = number % 10;
-            // find the sum of the digits 
-            // raised to themselves 
+            // find the sum of the digits
+            // raised to themselves
             sum += pow(digit, digit);
         }
         if (sum == i) {
             // the sum is equal to the number
-            // itself; thus it is a 
+            // itself; thus it is a
             // munchausen number
             printf("%i\n", i);
-        } 
+        }
     }
     return 0;
 }
@@ -548,7 +548,7 @@ foreach (var i in Enumerable.Range(1,5000)
 
 
 
-###  Faster version 
+###  Faster version
 
 {{Trans|Kotlin}}
 
@@ -607,7 +607,7 @@ namespace Munchhausen
 ```
 
 
-###  Faster version alternate 
+###  Faster version alternate
 
 {{trans|Visual Basic .NET}}
 Search covers all 11 digit numbers (as pointed out elsewhere, 11*(9^9) has only 10 digits, so there are no Munchausen numbers with 11+ digits), not just the first half of the 9 digit numbers.  Computation time is under 1.5 seconds.
@@ -627,7 +627,7 @@ static class Program
                   for (n5 = 0; n5 <= n - (s6 = s7 + n6); n5++) { for (n4 = 0; n4 <= n - (s5 = s6 + n5); n4++) {
                       for (n3 = 0; n3 <= n - (s4 = s5 + n4); n3++) { for (n2 = 0; n2 <= n - (s3 = s4 + n3); n2++) {
                           for (n1 = 0; n1 <= n - (s2 = s3 + n2); n1++) {
-                            sum = n1 * pow[1] + n2 * pow[2] + n3 * pow[3] + n4 * pow[4] + 
+                            sum = n1 * pow[1] + n2 * pow[2] + n3 * pow[3] + n4 * pow[4] +
                                   n5 * pow[5] + n6 * pow[6] + n7 * pow[7] + n8 * pow[8] + n9 * pow[9];
                             if (sum < ten1 || sum >= ten2) continue;
                             num = new byte[10]; foreach (char ch in sum.ToString()) num[Convert.ToByte(ch) - 48] += 1;
@@ -819,7 +819,7 @@ void main() {
             // itself; thus it is a
             // munchausen number
             writeln(i);
-        } 
+        }
     }
 }
 ```
@@ -854,7 +854,7 @@ Cosmetic: The stack is dirty after execution. The loop <code>L</code> needs a fi
 ```elixir
 defmodule Munchausen do
   @pow  for i <- 0..9, into: %{}, do: {i, :math.pow(i,i) |> round}
-  
+
   def number?(n) do
     n == Integer.digits(n) |> Enum.reduce(0, fn d,acc -> @pow[d] + acc end)
   end
@@ -928,16 +928,16 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 	 10 /
      repeat
 	 drop ;
-	
+
  : to.self                                        \ returns input number raised to the power of itself ( n -- n^n  )
 	 dup 1 = if drop 1 else                   \ positive numbers only, zero and negative returns zero
 	 dup 0 <= if drop 0 else
 	 dup
-         1 do 
-	 dup 
+         1 do
+	 dup
 	 loop
 	 dup
-	 1 do 
+	 1 do
 	 *
          loop
 	 then then ;
@@ -946,16 +946,16 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 	 dup 0 <= if drop 1 else
 	 dup 1 = if drop 10 else
 	 10 swap
-         1 do 
+         1 do
 	 10 *
          loop then then ;
-	
+
  : zero.divmod                                       \ /mod that returns zero if number is zero
 	  dup
-	  0 = if drop 0 
-          else /mod 
+	  0 = if drop 0
+          else /mod
 	  then ;
-	
+
  : split.div                                         \ returns input number and its digits ( n -- n n1 n2 n3....)
 	  dup 10 < if dup 0 else		     \ duplicates single digit numbers adds 0 for add.pow
 	  dig.num			             \ provides number of digits
@@ -963,27 +963,27 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
           1 do                                       \ ... is the needed divisor, counter on top and ...
 	  dup rot swap zero.divmod swap rot 10 /     \ ...division loop
           loop drop then ;
-	
+
  : add.pow	  				     \ raises each number on the stack except last one to ...
 	  to.self                                    \ ...the power of itself and adds them
 	  depth					     \ needs at least 3 numbers on the stack
-          2 do 
+          2 do
 	  swap to.self +
-          loop ; 
+          loop ;
 
- : check.num                                 
+ : check.num
 	 split.div add.pow ;
-	
+
  : munch.num                                         \ ( n -- ) displays Munchausen numbers between 1 and n
          1 +
 	 page
-         1 do 
-         i check.num = if i . cr 
+         1 do
+         i check.num = if i . cr
          then loop ;
 
 ```
-	
-{{out}} 
+
+{{out}}
 
 ```txt
 
@@ -1014,7 +1014,7 @@ C MUNCHAUSEN NUMBERS - FORTRAN IV
           IF(N.NE.0) IS=IS+N**N
   1       II=IR
   2     IF(IS.EQ.I) WRITE(*,*) I
-      END 
+      END
 ```
 
 {{out}}
@@ -1044,7 +1044,7 @@ C MUNCHAUSEN NUMBERS - FORTRAN IV
         END DO
         IF(IS.EQ.I) WRITE(*,*) I
       END DO
-      END 
+      END
 ```
 
 {{out}}
@@ -1070,14 +1070,14 @@ C MUNCHAUSEN NUMBERS - FORTRAN IV
 ' Cache n ^ n for the digits 1 to 9
 ' Note than 0 ^ 0 specially treated as 0 (not 1) for this purpose
 Dim Shared powers(1 To 9) As UInteger
-For i As UInteger = 1 To 9 
+For i As UInteger = 1 To 9
   Dim power As UInteger = i
   For j As UInteger = 2 To i
      power *= i
   Next j
   powers(i) = power
 Next i
- 
+
 Function isMunchausen(n As UInteger) As Boolean
   Dim p As UInteger = n
   Dim As UInteger digit, sum
@@ -1087,13 +1087,13 @@ Function isMunchausen(n As UInteger) As Boolean
     p \= 10
   Wend
   Return n = sum
-End Function  
- 
+End Function
+
 Print "The Munchausen numbers between 0 and 500000000 are : "
 For i As UInteger = 0 To 500000000
   If isMunchausen(i) Then Print i
 Next
- 
+
 Print
 Print "Press any key to quit"
 
@@ -1159,7 +1159,7 @@ For n = 1 To 11
                       num(j) += 1
                     Next i
                     If n0 = num(0) AndAlso n1 = num(1) AndAlso n2 = num(2) AndAlso _
-                       n3 = num(3) AndAlso n4 = num(4) AndAlso n5 = num(5) AndAlso _ 
+                       n3 = num(3) AndAlso n4 = num(4) AndAlso n5 = num(5) AndAlso _
                        n6 = num(6) AndAlso n7 = num(7) AndAlso n8 = num(8) AndAlso _
                        n9 = num(9) Then Print sum
                   Next n1
@@ -1240,10 +1240,10 @@ func isMunchausen(n int) bool {
 func main() {
     // cache n ^ n for n in 0..9, defining 0 ^ 0 = 0 for this purpose
     for i := 1; i <= 9; i++ {
-        d := float64(i)  
+        d := float64(i)
         powers[i] = int(math.Pow(d, d))
     }
- 
+
     // check numbers 0 to 500 million
     fmt.Println("The Munchausen numbers between 0 and 500 million are:")
     for i := 0; i <= 500000000; i++ {
@@ -1258,7 +1258,7 @@ func main() {
 
 ```txt
 
-0 1 3435 438579088 
+0 1 3435 438579088
 
 ```
 
@@ -1360,7 +1360,7 @@ public class Main {
 
 
 
-###  Faster version 
+###  Faster version
 
 {{trans|Kotlin}}
 
@@ -1535,7 +1535,7 @@ fun isMunchausen(n: Int): Boolean {
         if (sum > n.toLong()) return false
         nn /= 10
     }
-    return sum == n.toLong()  
+    return sum == n.toLong()
 }
 
 fun main(args: Array<String>) {
@@ -1701,20 +1701,20 @@ Münchhausen
 
 
 ```Maple
-isMunchausen := proc(n::posint) 
-local num_digits; 
-num_digits := map(x -> StringTools:-Ord(x) - 48, StringTools:-Explode(convert(n, string))); 
-return evalb(n = convert(map(x -> x^x, num_digits), `+`)); 
+isMunchausen := proc(n::posint)
+local num_digits;
+num_digits := map(x -> StringTools:-Ord(x) - 48, StringTools:-Explode(convert(n, string)));
+return evalb(n = convert(map(x -> x^x, num_digits), `+`));
 end proc;
 
-Munchausen_upto := proc(n::posint) local k, count, list_num; 
-list_num := []; 
-for k to n do 
-    if isMunchausen(k) then 
-       list_num := [op(list_num), k]; 
-    end if; 
-end do; 
-return list_num; 
+Munchausen_upto := proc(n::posint) local k, count, list_num;
+list_num := [];
+for k to n do
+    if isMunchausen(k) then
+       list_num := [op(list_num), k];
+    end if;
+end do;
+return list_num;
 end proc;
 
 Munchausen_upto(5000);
@@ -1821,7 +1821,7 @@ END MunchausenNumbers.
 
 {{works with|Free Pascal}}
 {{works with|Delphi}}
-tried to speed things up.Only checking one arrangement of 123456789 instead of all 9! = 362880 permutations.This ist possible, because summing up is commutative. 
+tried to speed things up.Only checking one arrangement of 123456789 instead of all 9! = 362880 permutations.This ist possible, because summing up is commutative.
 So I only have to create [http://rosettacode.org/wiki/Combinations_with_repetitions Combinations_with_repetitions] and need to check, that the number and the sum of power of digits have the same amount in every possible digit. This means, that a combination of the digits of number leads to the sum of power of digits. Therefore I need leading zero's.
 
 ```pascal
@@ -1834,25 +1834,25 @@ const
   base = 10;
   maxDigits = base-1;// set for 32-compilation otherwise overflow.
 
-var 
+var
   DgtPotDgt : array[0..base-1] of NativeUint;
   cnt: NativeUint;
-  
+
 function CheckSameDigits(n1,n2:NativeUInt):boolean;
 var
-  dgtCnt : array[0..Base-1] of NativeInt; 
-  i : NativeUInt;  
+  dgtCnt : array[0..Base-1] of NativeInt;
+  i : NativeUInt;
 Begin
   fillchar(dgtCnt,SizeOf(dgtCnt),#0);
-  repeat   
-    //increment digit of n1 
-    i := n1;n1 := n1 div base;i := i-n1*base;inc(dgtCnt[i]); 
-    //decrement digit of n2     
-    i := n2;n2 := n2 div base;i := i-n2*base;dec(dgtCnt[i]);     
+  repeat
+    //increment digit of n1
+    i := n1;n1 := n1 div base;i := i-n1*base;inc(dgtCnt[i]);
+    //decrement digit of n2
+    i := n2;n2 := n2 div base;i := i-n2*base;dec(dgtCnt[i]);
   until (n1=0) AND (n2= 0 );
   result := true;
   For i := 0 to Base-1 do
-    result := result AND (dgtCnt[i]=0);   
+    result := result AND (dgtCnt[i]=0);
 end;
 
 procedure Munch(number,DgtPowSum,minDigit:NativeUInt;digits:NativeInt);
@@ -1867,34 +1867,34 @@ begin
       Munch(number+i,DgtPowSum+DgtPotDgt[i],i,digits-1);
   end
   else
-    For i := minDigit to base-1 do    
-      //number is always the arrangement of the digits leading to smallest number 
-      IF (number+i)<= (DgtPowSum+DgtPotDgt[i]) then 
+    For i := minDigit to base-1 do
+      //number is always the arrangement of the digits leading to smallest number
+      IF (number+i)<= (DgtPowSum+DgtPotDgt[i]) then
         IF CheckSameDigits(number+i,DgtPowSum+DgtPotDgt[i]) then
           iF number+i>0 then
             writeln(Format('%*d  %.*d',
              [maxDigits,DgtPowSum+DgtPotDgt[i],maxDigits,number+i]));
-end;      
+end;
 
 procedure InitDgtPotDgt;
 var
   i,k,dgtpow: NativeUint;
 Begin
-  // digit ^ digit ,special case 0^0 here 0  
+  // digit ^ digit ,special case 0^0 here 0
   DgtPotDgt[0]:= 0;
   For i := 1 to Base-1 do
   Begin
     dgtpow := i;
-    For k := 2 to i do 
+    For k := 2 to i do
       dgtpow := dgtpow*i;
-    DgtPotDgt[i] := dgtpow;  
-  end;  
-end;  
-           
+    DgtPotDgt[i] := dgtpow;
+  end;
+end;
+
 begin
   cnt := 0;
   InitDgtPotDgt;
-  Munch(0,0,0,maxDigits);    
+  Munch(0,0,0,maxDigits);
   writeln('Check Count ',cnt);
 end.
 
@@ -1907,7 +1907,7 @@ end.
       3435  000003345
  438579088  034578889
 
-Check Count 43758 == 
+Check Count 43758 ==
 n= maxdigits = 9,k = 10;CombWithRep = (10+9-1))!/(10!*(9-1)!)=43758
 
 real    0m0.002s
@@ -2144,7 +2144,7 @@ Procedure main()
   Define i.i,
          sum.i,
          number.i,
-         digit.i  
+         digit.i
   For i = 1 To 5000
     sum = 0
     number = i
@@ -2152,7 +2152,7 @@ Procedure main()
       digit = number % 10
       sum + Pow(digit, digit)
       number / 10
-    Wend  
+    Wend
     If sum = i
       PrintN(Str(i))
     EndIf
@@ -2389,7 +2389,7 @@ isMunch: parse arg a 2 b 3 c 4 d 5 e 6 x 1 ox; $=@.a+@.b+@.c+@.d+@.e /*sum 1st 5
          return $==ox                                                /*it is or it ain't*/
 ```
 
-'''output'''   is the same as the 2<sup>nd</sup> REXX version. 
+'''output'''   is the same as the 2<sup>nd</sup> REXX version.
 
 
 
@@ -2413,7 +2413,7 @@ for n=1 to limit
     if sum = n
        see n + nl
     ok
-next 
+next
 
 ```
 
@@ -2594,7 +2594,7 @@ for i in 1...5000 where isMünchhausen(i) {
       R→K
     End
     If S=I:Disp I
-  End 
+  End
 ```
 
 {{out}}
@@ -2834,7 +2834,7 @@ Module Program
                 s7 = s8 + n7 : For n6 = 0 To n - s7 : s6 = s7 + n6 : For n5 = 0 To n - s6
                     s5 = s6 + n5 : For n4 = 0 To n - s5 : s4 = s5 + n4 : For n3 = 0 To n - s4
                         s3 = s4 + n3 : For n2 = 0 To n - s3 : s2 = s3 + n2 : For n1 = 0 To n - s2
-                            sum = n1 * pow(1) + n2 * pow(2) + n3 * pow(3) + n4 * pow(4) + 
+                            sum = n1 * pow(1) + n2 * pow(2) + n3 * pow(3) + n4 * pow(4) +
                                   n5 * pow(5) + n6 * pow(6) + n7 * pow(7) + n8 * pow(8) + n9 * pow(9)
                             If sum < ten1 OrElse sum >= ten2 Then Continue For
                             redim num(9)

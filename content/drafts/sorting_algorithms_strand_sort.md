@@ -17,7 +17,7 @@ tags = []
 
 
 ;Task:
-Implement the [[wp:Strand sort|Strand sort]]. 
+Implement the [[wp:Strand sort|Strand sort]].
 
 This is a way of sorting numbers by extracting shorter sequences of already sorted numbers from an unsorted list.
 
@@ -43,12 +43,12 @@ Loop
 		StringSplit, k, list, %A_space%
 
 		if ( k%k0% <= A_loopfield ) && ( l != "" ) && ( A_index != 1 )
-			list := list . " " . A_loopfield 
+			list := list . " " . A_loopfield
 
 		if ( k%k0% > A_loopfield )
 			list := A_loopfield . " " . list , index++
 		l := A_loopfield
-	}		 
+	}
 		if ( index = 0 )
 		{
 			MsgBox % "unsorted:" string2 "`n    Sorted:" list
@@ -69,8 +69,8 @@ unsorted:-2 0 -2 5 5 3 -1 -3 5 5 0 2 -4 4 2
 
 Strand sort using singly linked list.  C99, compiled with <code>gcc -std=c99</code>
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef struct node_t *node, node_t;
 struct node_t { int v; node next; };
@@ -158,8 +158,8 @@ after sort:   -4  -3  -2  -2  -1   0   0   2   2   3   4   5   5   5   5
 ## C++
 
 
-```cpp>#include <list
-
+```cpp
+#include <list>
 
 template <typename T>
 std::list<T> strandSort(std::list<T> lst) {
@@ -313,7 +313,7 @@ message(STATUS "${result}")  # -- 11;11;22;22;33;33;44;44;55;55
 ```lisp
 (defun strand-sort (l cmp)
   (if l
-    (let* ((l (reverse l))    
+    (let* ((l (reverse l))
 	   (o (list (car l))) n)
       (loop for i in (cdr l) do
 	    (push i (if (funcall cmp (car o) i) n o)))
@@ -323,7 +323,7 @@ message(STATUS "${result}")  # -- 11;11;22;22;33;33;44;44;55;55
   (print r)
   (print (strand-sort r #'<)))
 ```
-output<lang>(5 8 6 0 6 8 4 7 0 7 1 5 3 3 6) 
+output<lang>(5 8 6 0 6 8 4 7 0 7 1 5 3 3 6)
 (0 0 1 3 3 4 5 5 6 6 6 7 7 8 8)
 ```
 
@@ -333,7 +333,7 @@ output<lang>(5 8 6 0 6 8 4 7 0 7 1 5 3 3 6)
 
 
 
-###  Using doubly linked lists 
+###  Using doubly linked lists
 
 
 ```d
@@ -386,12 +386,12 @@ void main() {
 {{out}}
 
 ```txt
--4 -3 -2 -2 -1 0 0 2 2 3 4 5 5 5 5 
+-4 -3 -2 -2 -1 0 0 2 2 3 4 5 5 5 5
 ```
 
 
 
-###  Faster version using slices 
+###  Faster version using slices
 
 
 ```d
@@ -447,7 +447,7 @@ void main() {
 ```elixir
 defmodule Sort do
   def strand_sort(args), do: strand_sort(args, [])
-  
+
   defp strand_sort([], result), do: result
   defp strand_sort(a, result) do
     {_, sublist, b} = Enum.reduce(a, {hd(a),[],[]}, fn val,{v,l1,l2} ->
@@ -507,7 +507,7 @@ function strand_sort(sequence s)
                 exit
             end if
         end for
-        
+
         result = merge(result,s[1..j])
         s = s[j+1..$]
     end while
@@ -714,7 +714,7 @@ import java.util.LinkedList;
 
 public class Strand{
 	// note: the input list is destroyed
-	public static <E extends Comparable<? super E>> 
+	public static <E extends Comparable<? super E>>
 	LinkedList<E> strandSort(LinkedList<E> list){
 		if(list.size() <= 1) return list;
 
@@ -748,7 +748,7 @@ public class Strand{
 		result.addAll(right);
 		return result;
 	}
-	
+
 	public static void main(String[] args){
 		System.out.println(strandSort(new LinkedList<Integer>(Arrays.asList(3,1,2,4,5))));
 		System.out.println(strandSort(new LinkedList<Integer>(Arrays.asList(3,3,1,2,4,5))));
@@ -771,19 +771,19 @@ Output:
 
 Most of the implementation is the "merge" function for merging two arrays.  Notice that the helper function, strand, is defined here as an inner function.
 ```jq
-# merge input array with array x by comparing the heads of the arrays 
+# merge input array with array x by comparing the heads of the arrays
 # in turn; # if both arrays are sorted, the result will be sorted:
 def merge(x):
   length as $length
   | (x|length) as $xl
   | if $length == 0 then x
     elif $xl == 0 then .
-    else 
+    else
       . as $in
       | reduce range(0; $xl + $length) as $z
          # state [ix, xix, ans]
          ( [0, 0, []];
-           if .[0] < $length and 
+           if .[0] < $length and
               ((.[1] < $xl and $in[.[0]] <= x[.[1]]) or .[1] == $xl)
            then [(.[0] + 1), .[1], (.[2] + [$in[.[0]]]) ]
            else [.[0], (.[1] + 1), (.[2] + [x[.[1]]]) ]
@@ -795,8 +795,8 @@ def strand_sort:
   # The inner function emits [strand, remainder]
   def strand:
     if length <= 1 then .
-    else 
-      reduce .[] as $x 
+    else
+      reduce .[] as $x
       # state: [strand, remainder]
       ([ [], [] ];
        if ((.[0]|length) == 0) or .[0][-1] <= $x
@@ -834,7 +834,7 @@ function mergelist(a, b)
     append!(out, b)
     out
 end
- 
+
 function strand(a)
     i, s = 1, [popfirst!(a)]
     while i < length(a) + 1
@@ -848,7 +848,7 @@ function strand(a)
 end
 
 strandsort(a) = (out = strand(a); while !isempty(a) out = mergelist(out, strand(a)) end; out)
- 
+
 println(strandsort([1, 6, 3, 2, 1, 7, 5, 3]))
 
 ```
@@ -885,8 +885,8 @@ fun <T : Comparable<T>> strandSort(l: List<T>): List<T> {
         res.addAll(right)
         return res
     }
-    
-    var list = l.toMutableList() 
+
+    var list = l.toMutableList()
     var result = mutableListOf<T>()
     while (!list.isEmpty()) {
         val sorted = mutableListOf(list[0])
@@ -899,7 +899,7 @@ fun <T : Comparable<T>> strandSort(l: List<T>): List<T> {
                 leftover.add(item)
         }
         result = merge(sorted, result)
-        list = leftover  
+        list = leftover
     }
     return result
 }
@@ -926,7 +926,7 @@ fun main(args: Array<String>) {
 
 ```Mathematica
 StrandSort[ input_ ] := Module[ {results = {}, A = input},
-While[Length@A > 0, 
+While[Length@A > 0,
  sublist = {A[[1]]}; A = A[[2;;All]];
   For[i = 1, i < Length@A, i++,
    If[ A[[i]] > Last@sublist, AppendTo[sublist, A[[i]]]; A = Delete[A, i];]
@@ -1213,7 +1213,7 @@ merge(u,v)={
 
 ```Pascal
 program StrandSortDemo;
- 
+
 type
   TIntArray = array of integer;
 
@@ -1419,7 +1419,7 @@ sequence result = {}
     end while
     return result & left & right
 end function
- 
+
 function strand_sort(sequence s)
 integer j
 sequence result = {}
@@ -1551,7 +1551,7 @@ strand: procedure options (main); /* 27 Oct. 2012 */
       call fetch (A, work);
       call move  (temp, work);
 
-      call merge(sorted, temp); 
+      call merge(sorted, temp);
          /* Merges elements in SORTED with elements in TEMP. */
    end;
    /* Transfer the sorted elements to A. */
@@ -1574,8 +1574,8 @@ merge: procedure (sorted, temp);
       k_ok = allocation(sorted) > 0;
       j_ok = allocation(temp)   > 0;
       if k_ok & j_ok then
-         do; 
-            if sorted <= temp then 
+         do;
+            if sorted <= temp then
                do; allocate work; work = sorted; free sorted; end;
             else
                do; allocate work; work = temp; free temp; end;
@@ -1602,14 +1602,14 @@ end merge;
 fetch: procedure (A, temp);
    declare A(*) fixed, temp controlled fixed;
    declare i fixed binary;
-   
-   do i = 1 to hbound(A,1); 
+
+   do i = 1 to hbound(A,1);
       if used(i) then
          do; allocate temp; temp = A(i); used(i) = '0'b; go to found; end;
    end;
 found:
    do i = i+1 to hbound(A,1);
-      if (temp <= A(i)) & used(i) then 
+      if (temp <= A(i)) & used(i) then
          do; allocate temp; temp = A(i); used(i) = '0'b; end;
    end;
 end fetch;
@@ -1643,7 +1643,7 @@ Results:
 
 ```txt
 
-The sorted values are: 
+The sorted values are:
   1  2  3  5  7  8 11 11 11 11 12 13 13 14 14 15 16 17 18 19 21 23 25 25 26 26 27 28 28 29 29 29 29 29 30 31 31 34 34 35
  38 39 39 42 42 43 43 43 45 45 45 47 48 48 48 49 51 54 57 58 58 59 59 59 59 60 61 62 63 63 64 65 68 69 70 71 72 72 73 76
  77 79 81 81 82 84 85 89 89 90 90 91 92 94 95 96 96 97 97 98
@@ -1659,7 +1659,7 @@ The sorted values are:
 Procedure strandSort(List a())
   Protected NewList subList()
   Protected NewList results()
-  
+
   While ListSize(a()) > 0
     ClearList(subList())
     AddElement(subList())
@@ -1673,7 +1673,7 @@ Procedure strandSort(List a())
         DeleteElement(a())
       EndIf
     Next
-    
+
     ;merge lists
     FirstElement(subList())
     If Not FirstElement(results())
@@ -1691,12 +1691,12 @@ Procedure strandSort(List a())
         ElseIf Not NextElement(results())
           ;add remainder of sublist() to end of results()
           MergeLists(subList(), results(), #PB_List_Last)
-          Break 
+          Break
         EndIf
       ForEver
-    EndIf 
-    
-  Wend 
+    EndIf
+
+  Wend
   CopyList(results(), a())
 EndProcedure
 
@@ -1713,7 +1713,7 @@ EndProcedure
 Procedure setupList(List a())
   ClearList(a())
   Protected elementCount, i
-  
+
   elementCount = Random(5) + 10
   For i = 1 To elementCount
     AddElement(a())
@@ -1725,7 +1725,7 @@ EndProcedure
 If OpenConsole()
   NewList sample()
   Define i
-  
+
   For i = 1 To 3
     setupList(sample())
     PrintN("List " + Str(i) + ":")
@@ -1734,7 +1734,7 @@ If OpenConsole()
     PrintN("  After :  " + listContents(sample()))
     PrintN("")
   Next
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -1815,7 +1815,7 @@ Output:<lang>[1, 1, 2, 3, 3, 5, 6, 7]
   (for/fold ([strand '()] [unsorted '[]]) ([x xs])
     (if (or (empty? strand) (< x (first strand)))
         (values (cons x strand) unsorted)
-        (values strand (cons x unsorted)))))        
+        (values strand (cons x unsorted)))))
 
 (strand-sort (build-list 10 (λ(_) (random 15))))
 
@@ -1825,8 +1825,8 @@ Output:<lang>[1, 1, 2, 3, 3, 5, 6, 7]
 
 ## REXX
 
-This REXX program was written to generate a specified amount of random numbers as 
-well as allowing a pre-pended list of numbers). 
+This REXX program was written to generate a specified amount of random numbers as
+well as allowing a pre-pended list of numbers).
 
 It can handle integers, floating point numbers, exponentiated numbers, and/or character strings.
 
@@ -1876,7 +1876,7 @@ merge:       procedure; parse arg a.1,a.2;    p=
 
 ```
 
-The REXX program can also sort words as well as numbers. 
+The REXX program can also sort words as well as numbers.
 
 
 '''output'''   when using the input of:   <tt> 24 -9 100 66 66 8.8 carp Carp </tt>
@@ -1891,7 +1891,7 @@ The REXX program can also sort words as well as numbers.
 
 ```
 
-Note that an   ASCII   computer will sort words differently than an   EBCDIC   machine. 
+Note that an   ASCII   computer will sort words differently than an   EBCDIC   machine.
 
 
 The order of sorting on an   ASCII   machine is:   <tt> numbers, upperCase, lowerCase </tt>
@@ -1918,30 +1918,30 @@ test = strandsort(test)
 see "after sort:" + nl
 showarray(test)
 
-func strandsort(a) 
+func strandsort(a)
         while len(a) > 0
                  sublist = []
                  add(sublist,a[1])
                  del(a,1)
                  for i = 1 to len(a)
-                     if a[i] > sublist[len(sublist)] 
+                     if a[i] > sublist[len(sublist)]
                        add(sublist,a[i])
                        del(a,i)
                      ok
                 next
                 for n = 1 to len(sublist)
                      add(results,sublist[n])
-                next 
+                next
                 for n = 1 to len(results)
-                     for m = n + 1 to len(results)  
+                     for m = n + 1 to len(results)
                           if results[m] < results[n]
                              temp = results[m]
                              results[m] = results[n]
                              results[n] = temp
-                          ok 
+                          ok
                      next
-                next                      
-        end 
+                next
+        end
         return results
 
 func showarray(vect)
@@ -1978,7 +1978,7 @@ class Array
     until a.empty?
       v = a.first
       sublist, a = a.partition{|val| v=val if v<=val}   # In case of v>val, it becomes nil.
-      
+
       result.each_index do |idx|
         break if sublist.empty?
         result.insert(idx, sublist.shift) if sublist.first < result[idx]
@@ -1987,7 +1987,7 @@ class Array
     end
     result
   end
-  
+
   def strandsort!
     replace(strandsort)
   end

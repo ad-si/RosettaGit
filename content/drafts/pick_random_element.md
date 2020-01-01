@@ -32,9 +32,9 @@ Demonstrate how to pick a random element from a list.
 ## Ada
 
 
-The following program generates three 20-letter words. 
-Each vowel and each consonant is picked randomly from a list of vowels 
-resp. a list of consonants. 
+The following program generates three 20-letter words.
+Each vowel and each consonant is picked randomly from a list of vowels
+resp. a list of consonants.
 
 
 ```Ada
@@ -377,7 +377,7 @@ blsq ) "ABCDEFG"123456 0 6rn-]!!
 ```
 
 
-''123456'' is the random seed. In order to pick another element you have to change the random seed. 
+''123456'' is the random seed. In order to pick another element you have to change the random seed.
 
 
 ## C
@@ -389,17 +389,17 @@ blsq ) "ABCDEFG"123456 0 6rn-]!!
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
- 
+
 int main(){
    char array[] = { 'a', 'b', 'c','d','e','f','g','h','i','j' };
    int i;
    time_t t;
    srand((unsigned)time(&t));
-   
+
    for(i=0;i<30;i++){
 		printf("%c\n", array[rand()%10]);
    }
-   
+
    return 0;
 }
 
@@ -448,19 +448,19 @@ a
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <random>
 #include <vector>
 
 int main( ) {
    std::vector<int> numbers { 11 , 88 , -5 , 13 , 4 , 121 , 77 , 2 } ;
    std::random_device seed ;
-   // generator 
+   // generator
    std::mt19937 engine( seed( ) ) ;
    // number distribution
    std::uniform_int_distribution<int> choose( 0 , numbers.size( ) - 1 ) ;
-   std::cout << "random element picked : " << numbers[ choose( engine ) ] 
+   std::cout << "random element picked : " << numbers[ choose( engine ) ]
       << " !\n" ;
    return 0 ;
 }
@@ -535,9 +535,9 @@ DATA DIVISION.
 WORKING-STORAGE SECTION.
 01  nums-area                           VALUE "123456789".
     03  nums                            PIC 9 OCCURS 9 TIMES.
-    
+
 01  random-idx                          PIC 9 COMP.
-    
+
 PROCEDURE DIVISION.
     COMPUTE random-idx = FUNCTION RANDOM(FUNCTION CURRENT-DATE (9:7)) * 9 + 1
     DISPLAY nums (random-idx)
@@ -572,8 +572,8 @@ console.log array[Math.floor(Math.random() * array.length)]
 {{out}}
 
 ```txt
-FIVE 
-THREE 
+FIVE
+THREE
 ONE
 ```
 
@@ -645,17 +645,17 @@ ELENA 4.1 :
 
 ```elena
 import extensions;
- 
+
 extension listOp
 {
     randomItem()
         = self[randomGenerator.eval(self.Length)];
 }
- 
+
 public program()
 {
     var item := new int[]::(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
- 
+
     console.printLine("I picked element ",item.randomItem())
 }
 ```
@@ -771,7 +771,7 @@ end program
 Dim a(0 To 9) As String = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"}
 
 Randomize
-Dim randInt As Integer 
+Dim randInt As Integer
 
 For i As Integer = 1 To 5
   randInt = Int(Rnd * 10)
@@ -820,7 +820,7 @@ Dim sList As String[] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
 
 Print sList[Rand(0, 11)]
 
-End 
+End
 ```
 
 Output:
@@ -937,7 +937,7 @@ sample $ randomElement  [1, 2, 3]
 For example:
 
 ```haskell
-do 
+do
   x <- sample $ randomElement  [1, 2, 3]
   print x
 ```
@@ -1019,7 +1019,7 @@ rand(array)
 import java.util.Random
 
 /**
- * Extension function on any list that will return a random element from index 0 
+ * Extension function on any list that will return a random element from index 0
  * to the last index
  */
 fun <E> List<E>.getRandomElement() = this[Random().nextInt(this.size)]
@@ -1036,10 +1036,10 @@ fun <E> List<E>.getRandomElements(numberOfElements: Int): List<E>? {
     return this.shuffled().take(numberOfElements)
 }
 
-fun main(args: Array<String>) { 
+fun main(args: Array<String>) {
     val list = listOf(1, 16, 3, 7, 17, 24, 34, 23, 11, 2)
     println("The list consists of the following numbers:\n${list}")
- 
+
     // notice we can call our extension functions as if they were regular member functions of List
     println("\nA randomly selected element from the list is ${list.getRandomElement()}")
     println("\nA random sequence of 5 elements from the list is ${list.getRandomElements(5)}")
@@ -1152,7 +1152,7 @@ RandomChoice[{a, b, c}]
 In case list is a cell array:
 
 ```Matlab
-        list = {'a','b','c'}; 
+        list = {'a','b','c'};
 	list{ceil(rand(1)*length(list))}
 ```
 
@@ -1160,7 +1160,7 @@ In case list is a cell array:
 If list is a vector:
 
 ```Matlab
-        list = 1:1000; 
+        list = 1:1000;
 	list(ceil(rand(1)*length(list)))
 ```
 
@@ -1368,7 +1368,7 @@ print $array[ rand @array ];
 ## Perl 6
 
 {{Works with|rakudo|2015-12-07}}
-In a nutshell, picking an element from a list 
+In a nutshell, picking an element from a list
 is implemented with a method conveniently called "pick":
 
 ```perl6
@@ -1376,9 +1376,9 @@ say (1, 2, 3).pick;
 ```
 
 
-There are various ways of doing something similar, though.  
-Perl 6 has actually two methods (with associated functional forms) 
-to return random elements depending on whether you are doing selection 
+There are various ways of doing something similar, though.
+Perl 6 has actually two methods (with associated functional forms)
+to return random elements depending on whether you are doing selection
 with or without replacement.
 
 Selection with replacement: (roll of a die)
@@ -1400,15 +1400,15 @@ say @deck.pick(5); # Draw 5
 say @deck.pick(*); # Get a shuffled deck
 ```
 
-Or you can always use the normal <tt>rand</tt> built-in 
+Or you can always use the normal <tt>rand</tt> built-in
 to generate a subscript (which automatically truncates any fractional part):
 
 ```perl6
 @array[@array * rand]
 ```
 
-However, the <tt>pick</tt> and <tt>roll</tt> methods (not to be confused 
-with the pick-and-roll method in basketball) are more general 
+However, the <tt>pick</tt> and <tt>roll</tt> methods (not to be confused
+with the pick-and-roll method in basketball) are more general
 insofar as they may be used on any enumerable type:
 
 ```perl6>say Bool.pick;  # returns either True or False</lang
@@ -1496,7 +1496,7 @@ M = i.
 ```PureBasic
 Procedure.s pickRandomElement(List source.s())
   Protected x = ListSize(source())
-  
+
   If x > 0
     SelectElement(source(), Random(x - 1)) ;element numbering is zero - based
     ProcedureReturn source()
@@ -1510,14 +1510,14 @@ DataSection
 EndDataSection
 
 #elementCount = 10
-NewList item.s() 
+NewList item.s()
 
 Restore elements
 Define i
 For i = 1 To #elementCount
   AddElement(item())
   Read.s item()
-Next 
+Next
 
 If OpenConsole()
   Print("Source list:  ")
@@ -1525,12 +1525,12 @@ If OpenConsole()
     Print(item() + " ")
   Next
   PrintN(#CRLF$)
-   
+
   Print("Random picks from list:  ")
   For i = 1 To 10
     Print(pickRandomElement(item()) + " ")
   Next
-   
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -1551,7 +1551,7 @@ Random picks from list:  Seven Nine Two Six Four Four Nine Three Six Two
 ```purebasic
 OpenConsole()
 
-a$="One" +#TAB$+ "Two"  +#TAB$+ "Three" +#TAB$+ "Four" +#TAB$+ "Five" +#TAB$+ 
+a$="One" +#TAB$+ "Two"  +#TAB$+ "Three" +#TAB$+ "Four" +#TAB$+ "Five" +#TAB$+
    "Six" +#TAB$+ "Seven"+#TAB$+ "Eight" +#TAB$+ "Nine" +#TAB$+ "Ten"  +#TAB$
 
 Print("Source list: "+#TAB$+a$+#CRLF$+"Random list: "+#TAB$)
@@ -1659,23 +1659,23 @@ random element:  nihoniym
 Slightly simplified:
 
 
-Note that this version doesn't work (receives a syntax error 12) with REXXes that have a 
+Note that this version doesn't work (receives a syntax error 12) with REXXes that have a
 
-smaller limit of the total length of a clause, in particular PC/REXX and Personal REXX 
+smaller limit of the total length of a clause, in particular PC/REXX and Personal REXX
 
-which have a limit of 1,000 characters). 
+which have a limit of 1,000 characters).
 
 ```rexx
 
-/* REXX *************************************************************** 
+/* REXX ***************************************************************
 * 18.10.2012 Walter Pachl Not only the list of elements shortened:-)
-**********************************************************************/ 
-wl='hydrogen helium lithium beryllium boron carbon nitrogen oxygen',    
-   'fluorine neon sodium magnesium aluminum silicon phosphorous sulfur',   
-   '...',                                                                  
-   'meitnerium darmstadtium roentgenium copernicium Ununtrium'             
-                                                                        
-Say word(wl,random(1,words(wl)))    
+**********************************************************************/
+wl='hydrogen helium lithium beryllium boron carbon nitrogen oxygen',
+   'fluorine neon sodium magnesium aluminum silicon phosphorous sulfur',
+   '...',
+   'meitnerium darmstadtium roentgenium copernicium Ununtrium'
+
+Say word(wl,random(1,words(wl)))
 
 ```
 
@@ -1700,8 +1700,8 @@ for i = 1 to 10
     letter = random(9) + 1
     if letter > 0
        see aList[letter] + nl
-    ok       
-next 
+    ok
+next
 
 ```
 
@@ -1741,7 +1741,7 @@ use rand::Rng;
 fn main() {
     let array = [5,1,2,5,6,7,8,1,2,4,5];
     let mut rng = rand::thread_rng();
-    
+
     println!("{}", rng.choose(&array).unwrap());
 }
 ```
@@ -1822,8 +1822,8 @@ print(myList[Int(arc4random_uniform(UInt32(myList.count)))])
 
 ## Tcl
 
-Random selection from a list is implemented by composing <code>lindex</code> 
-(for selection of an item from a list) and the pattern for generating an integral random number from the range <math>[0,n)</math>. 
+Random selection from a list is implemented by composing <code>lindex</code>
+(for selection of an item from a list) and the pattern for generating an integral random number from the range <math>[0,n)</math>.
 It's simpler to use when wrapped up as a helper procedure:
 
 ```tcl

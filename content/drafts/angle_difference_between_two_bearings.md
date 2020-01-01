@@ -16,12 +16,12 @@ Finding the angle between two bearings is often confusing.<ref>[https://stackove
 
 
 ;Task:
-Find the angle which is the result of the subtraction '''b2 - b1''', where '''b1''' and '''b2''' are the bearings. 
+Find the angle which is the result of the subtraction '''b2 - b1''', where '''b1''' and '''b2''' are the bearings.
 
 
-Input bearings are expressed in the range   '''-180'''   to   '''+180'''   degrees. 
+Input bearings are expressed in the range   '''-180'''   to   '''+180'''   degrees.
 
-The result is also expressed in the range   '''-180'''   to   '''+180'''   degrees. 
+The result is also expressed in the range   '''-180'''   to   '''+180'''   degrees.
 
 
 Compute the angle for the following pairs:
@@ -35,8 +35,8 @@ Compute the angle for the following pairs:
 * -78.3251 and -159.036
 
 
-;Optional extra:  
-Allow the input bearings to be any (finite) value. 
+;Optional extra:
+Allow the input bearings to be any (finite) value.
 
 
 ;Test cases:
@@ -126,7 +126,7 @@ ANGLEDBB CSECT
          A      R4,=F'5400000'       +540
          SRDA   R4,32                ~
          D      R4,=F'3600000'       /360
-         S      R4,=F'1800000'       x=((((b-a)//360)+540)//360)-180         
+         S      R4,=F'1800000'       x=((((b-a)//360)+540)//360)-180
          XDECO  R7,XDEC              edit a
          MVC    PG(8),XDEC           output a
          MVC    PG+9(4),XDEC+8       output a decimals
@@ -254,14 +254,14 @@ procedure Bearing_Angles is
       B2 : Real;
    end record;
    type Angle_Arr is array(Positive range <>) of Angles;
-   
+
    function fmod(Left, Right : Real) return Real is
       Result : Real;
    begin
       Result := Left - Right*Real'Truncation(Left / Right);
       return Result;
    end fmod;
-   
+
    The_Angles : Angle_Arr := ((20.0,45.0),(-45.0, 45.0), (-85.0, 90.0),
                               (-95.0, 90.0), (-14.0, 125.0), (29.4803, -88.6381),
                               (-78.3251, -159.036),
@@ -270,9 +270,9 @@ procedure Bearing_Angles is
                               (1174.8380510598456, -154146.66490124757),
                               (60175.77306795546, 42213.07192354373));
    Diff : Real;
-   
+
 begin
-   
+
    for A of The_Angles loop
       Diff := fmod(A.b2 - A.b1, 360.0);
       If Diff < -180.0 then
@@ -280,7 +280,7 @@ begin
       elsif Diff > 180.0 then
          Diff := Diff - 360.0;
       end if;
-      
+
       Put("Difference between ");
       Put(Item => A.B2, Fore => 7, Aft => 4, Exp => 0);
       Put(" and ");
@@ -289,7 +289,7 @@ begin
       Put(Item => Diff, Fore => 4, Aft => 4, Exp => 0);
       New_Line;
    end loop;
-   
+
 end Bearing_Angles;
 
 ```
@@ -328,20 +328,20 @@ Returns an angle in (-180,180]; so two opposite bearings have a difference of 18
 
 ```txt
       'B1' 'B2' 'DIFFERENCE'⍪(⊂'¯¯¯¯¯¯¯¯¯¯')⍪(⊃B),DIFF/¨B
-         B1          B2  DIFFERENCE 
- ¯¯¯¯¯¯¯¯¯¯  ¯¯¯¯¯¯¯¯¯¯  ¯¯¯¯¯¯¯¯¯¯ 
-      20          45          25    
-     ¯45          45          90    
-     ¯85          90         175    
-     ¯95          90        ¯175    
-     ¯45         125         170    
-     ¯45         145        ¯170    
-      29.48      ¯88.64     ¯118.12 
-     ¯78.33     ¯159.04      ¯80.71 
-  ¯70099.74    29840.67     ¯139.59 
- ¯165313.67     3369.99     ¯156.34 
-    1174.84  ¯154146.66     ¯161.5  
-   60175.77    42213.07       37.3  
+         B1          B2  DIFFERENCE
+ ¯¯¯¯¯¯¯¯¯¯  ¯¯¯¯¯¯¯¯¯¯  ¯¯¯¯¯¯¯¯¯¯
+      20          45          25
+     ¯45          45          90
+     ¯85          90         175
+     ¯95          90        ¯175
+     ¯45         125         170
+     ¯45         145        ¯170
+      29.48      ¯88.64     ¯118.12
+     ¯78.33     ¯159.04      ¯80.71
+  ¯70099.74    29840.67     ¯139.59
+ ¯165313.67     3369.99     ¯156.34
+    1174.84  ¯154146.66     ¯161.5
+   60175.77    42213.07       37.3
 
       270 DIFF 90.01
 ¯179.99
@@ -416,27 +416,27 @@ This implementation either reads two bearings from the console or a file contain
 #include<math.h>
 
 void processFile(char* name){
-	
+
 	int i,records;
 	double diff,b1,b2;
 	FILE* fp = fopen(name,"r");
-	
+
 	fscanf(fp,"%d\n",&records);
-	
+
 	for(i=0;i<records;i++){
 		fscanf(fp,"%lf%lf",&b1,&b2);
-		
+
 		diff = fmod(b2-b1,360.0);
-		printf("\nDifference between b2(%lf) and b1(%lf) is %lf",b2,b1,(diff<-180)?diff+360:((diff>=180)?diff-360:diff));	
+		printf("\nDifference between b2(%lf) and b1(%lf) is %lf",b2,b1,(diff<-180)?diff+360:((diff>=180)?diff-360:diff));
 	}
-	
+
 	fclose(fp);
 }
 
 int main(int argC,char* argV[])
 {
 	double diff;
-	
+
 	if(argC < 2)
 		printf("Usage : %s <bearings separated by a space OR full file name which contains the bearing list>",argV[0]);
 	else if(argC == 2)
@@ -515,8 +515,8 @@ Difference between b2(42213.071924) and b1(60175.773068) is 37.298856
 ## C++
 
 
-```cpp>#include <cmath
-
+```cpp
+#include <cmath>
 #include <iostream>
 using namespace std;
 
@@ -542,7 +542,7 @@ int main()
 	cout << getDifference(-45.0, 145.0) << endl;
 	cout << getDifference(29.4803, -88.6381) << endl;
 	cout << getDifference(-78.3251, -159.036) << endl;
-	
+
 	cout << "Input in wider range" << endl;
 	cout << getDifference(-70099.74233810938, 29840.67437876723) << endl;
 	cout << getDifference(-165313.6666297357, 33693.9894517456) << endl;
@@ -592,7 +592,7 @@ namespace Angle_difference_between_two_bearings
 			Console.WriteLine();
 			Console.WriteLine("Hello World!");
 			Console.WriteLine();
-			
+
 			// Calculate standard test cases
 			Console.WriteLine(Delta_Bearing( 20M,45));
 			Console.WriteLine(Delta_Bearing(-45M,45M));
@@ -602,61 +602,61 @@ namespace Angle_difference_between_two_bearings
 			Console.WriteLine(Delta_Bearing(-45M,145M));
 			Console.WriteLine(Delta_Bearing( 29.4803M,-88.6381M));
 			Console.WriteLine(Delta_Bearing(-78.3251M, -159.036M));
-			
+
 			// Calculate optional test cases
 			Console.WriteLine(Delta_Bearing(-70099.74233810938M,   29840.67437876723M));
 			Console.WriteLine(Delta_Bearing(-165313.6666297357M,   33693.9894517456M));
 			Console.WriteLine(Delta_Bearing( 1174.8380510598456M, -154146.66490124757M));
 			Console.WriteLine(Delta_Bearing( 60175.77306795546M,   42213.07192354373M));
-			
+
 			Console.WriteLine();
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);
 		}
-		
+
 		static decimal Delta_Bearing(decimal b1, decimal b2)
 		{
 			/*
 			 * Optimal solution
 			 *
 			decimal d = 0;
-			
+
 			d = (b2-b1)%360;
-			
+
 			if(d>180)
 				d -= 360;
 			else if(d<-180)
 				d += 360;
-			
+
 			return d;
 			 *
-			 * 
+			 *
 			 */
-			
-			
+
+
 			//
 			//
 			//
 			decimal d = 0;
-			
+
 			// Convert bearing to W.C.B
 			if(b1<0)
 				b1 += 360;
 			if(b2<0)
 				b2 += 360;
-			
+
 			///Calculate delta bearing
 			//and
 			//Convert result value to Q.B.
 			d = (b2 - b1)%360;
-			
+
 			if(d>180)
 				d -= 360;
 			else if(d<-180)
 				d += 360;
-			
+
 			return d;
-			
+
 			//
 			//
 			//
@@ -819,7 +819,7 @@ let deltaBearing (b1:double) (b2:double) =
         r
 
 [<EntryPoint>]
-let main _ = 
+let main _ =
     printfn "%A" (deltaBearing      20.0                  45.0)
     printfn "%A" (deltaBearing     -45.0                  45.0)
     printfn "%A" (deltaBearing     -85.0                  90.0)
@@ -917,7 +917,7 @@ However, this relies on the unit vectors being accurately so, and their subseque
 
 As it happens, the test data did not provoke any objections from the ACOSD function, but even so, a conversion to using ''arctan'' instead of ''arccos'' to recover angles would be safer. By using the four-quadrant ''arctan(x,y)'' function, the sign of the angle difference is also delivered and although that result could be in 0°-360° it turns out to be in ±180° as desired. On the other hand, the library of available functions did not include an arctan for complex parameters, so the complex number Z had to be split into its real and imaginary parts, thus requiring two appearances and to avoid repeated calculation, a temporary variable Z is needed. Otherwise, the statement could have been just <code>T = ATAN2D(Z1*CONJG(Z2))</code> and the whole calculation could be effected in one statement, <code>T = ATAN2D(CIS(90 - B1)*CONJG(CIS(90 - B2)))</code> And, since ''cis(t) = exp(i.t)'', <code>T = ATAN2D(EXP(CMPLX(0,90 - B1))*CONJG(EXP(CMPLX(0,90 - B2))))</code> - although using the arithmetic statement function does seem less intimidating.
 
-The source style is F77 (even using the old-style arithmetic statement function) except for the convenience of generic functions taking the type of their parameters to save on the bother of DCMPLX instead of just CMPLX, etc. Floating-point constants in the test data are specified with ~D0, the exponential form that signifies double precision otherwise they would be taken as single precision values. Some compilers offer an option stating that all floating-point constants are to be taken as double precision. REAL*8 precision amounts to about sixteen decimal digits, so some of the supplied values will not be accurately represented, unless something beyond REAL*8 is available. 
+The source style is F77 (even using the old-style arithmetic statement function) except for the convenience of generic functions taking the type of their parameters to save on the bother of DCMPLX instead of just CMPLX, etc. Floating-point constants in the test data are specified with ~D0, the exponential form that signifies double precision otherwise they would be taken as single precision values. Some compilers offer an option stating that all floating-point constants are to be taken as double precision. REAL*8 precision amounts to about sixteen decimal digits, so some of the supplied values will not be accurately represented, unless something beyond REAL*8 is available.
 ```Fortran
       SUBROUTINE BDIFF (B1,B2)	!Difference B2 - B1, as bearings. All in degrees, not radians.
        REAL*8 B1,B2	!Maximum precision, for large-angle folding.
@@ -1444,7 +1444,7 @@ function test()
 
 		+relativeBearing(29.4803*deg2rad, -88.6381*deg2rad)*rad2deg+"\n"
 		+relativeBearing(-78.3251*deg2rad, -159.036*deg2rad)*rad2deg+"\n"
-	
+
 		+ "Input in wider range\n"
 		+relativeBearing(-70099.74233810938*deg2rad, 29840.67437876723*deg2rad)*rad2deg+"\n"
 		+relativeBearing(-165313.6666297357*deg2rad, 33693.9894517456*deg2rad)*rad2deg+"\n"
@@ -2037,7 +2037,7 @@ for vector in testVectors:
 {{out}}
 
 ```txt
-        
+
         20.00        45.00        25.00
        -45.00        45.00        90.00
        -85.00        90.00       175.00
@@ -2068,7 +2068,7 @@ let get_diff b1 b2 =
   else if r >= 180.0
   then r -. 360.0
   else r
- 
+
 let () =
   print_endline "Input in -180 to +180 range";
   Printf.printf " %g\n" (get_diff 20.0 45.0);
@@ -2081,7 +2081,7 @@ let () =
   Printf.printf " %g\n" (get_diff (-45.0) 145.0);
   Printf.printf " %g\n" (get_diff 29.4803 (-88.6381));
   Printf.printf " %g\n" (get_diff (-78.3251) (-159.036));
- 
+
   print_endline "Input in wider range";
   Printf.printf " %g\n" (get_diff (-70099.74233810938) 29840.67437876723);
   Printf.printf " %g\n" (get_diff (-165313.6666297357) 33693.9894517456);
@@ -2390,7 +2390,7 @@ test(60175.77306795546,42213.07192354373)
 
 ```python
 from __future__ import print_function
- 
+
 def getDifference(b1, b2):
 	r = (b2 - b1) % 360.0
 	# Python modulus has same sign as divisor, which is positive here,
@@ -2398,7 +2398,7 @@ def getDifference(b1, b2):
 	if r >= 180.0:
 		r -= 360.0
 	return r
- 
+
 if __name__ == "__main__":
 	print ("Input in -180 to +180 range")
 	print (getDifference(20.0, 45.0))
@@ -2411,7 +2411,7 @@ if __name__ == "__main__":
 	print (getDifference(-45.0, 145.0))
 	print (getDifference(29.4803, -88.6381))
 	print (getDifference(-78.3251, -159.036))
- 
+
 	print ("Input in wider range")
 	print (getDifference(-70099.74233810938, 29840.67437876723))
 	print (getDifference(-165313.6666297357, 33693.9894517456))
@@ -2681,7 +2681,7 @@ see getDifference(-45.0, 125.0) + nl
 see getDifference(-45.0, 145.0) + nl
 see getDifference(29.4803, -88.6381) + nl
 see getDifference(-78.3251, -159.036) + nl
- 
+
 func getDifference(b1, b2)
      r = (b2 - b1) % 360.0
      if r >= 180.0
@@ -2738,7 +2738,7 @@ if __FILE__ == $PROGRAM_NAME
 	puts getDifference(-45.0, 145.0)
 	puts getDifference(29.4803, -88.6381)
 	puts getDifference(-78.3251, -159.036)
- 
+
 	puts "Input in wider range"
 	puts getDifference(-70099.74233810938, 29840.67437876723)
 	puts getDifference(-165313.6666297357, 33693.9894517456)
@@ -3124,14 +3124,14 @@ End Sub
 ```txt
        b1               b2             diff
 ---------------- ---------------- ----------------
-       20               45               25       
-      -45               45               90       
-      -85               90              175       
-      -95               90             -175       
-      -45              125              170       
-      -45              145             -170       
-       29,4803         -88,6381        -118,1184  
-      -78,3251        -159,036          -80,7109  
+       20               45               25
+      -45               45               90
+      -85               90              175
+      -95               90             -175
+      -45              125              170
+      -45              145             -170
+       29,4803         -88,6381        -118,1184
+      -78,3251        -159,036          -80,7109
    -70099,742338     29840,674379      -139,583283
   -165313,66663      33693,989452       -72,343919
      1174,838051   -154146,664901      -161,502952

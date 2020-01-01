@@ -13,8 +13,8 @@ tags = []
 {{task|Probability and statistics}}
 
 ;Task:
-Generate 100 <x,y> coordinate pairs such that x and y are integers sampled from the uniform distribution with the condition that 
-<math>10 \leq \sqrt{ x^2 + y^2 } \leq 15 </math>. 
+Generate 100 <x,y> coordinate pairs such that x and y are integers sampled from the uniform distribution with the condition that
+<math>10 \leq \sqrt{ x^2 + y^2 } \leq 15 </math>.
 Then display/plot them. The outcome should be a "fuzzy" circle. The actual number of points plotted may be less than 100, given that some pairs may be generated more than once.
 
 There are several possible approaches to accomplish this. Here are two possible algorithms.
@@ -45,7 +45,7 @@ F print_circle(lo, hi, ndots)
 
    L(i) 0 .. 2*hi
       print(canvas[i].map(j -> I j {‘♦ ’} E ‘  ’).join(‘’))
- 
+
 print_circle(10, 15, 100)
 ```
 
@@ -226,7 +226,7 @@ Chosen from precalculated:
 
 ## ALGOL 68
 
-{{trans|C}} - note: This specimen retains the original [[#C|C]] coding style. 
+{{trans|C}} - note: This specimen retains the original [[#C|C]] coding style.
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used - requires ansi/xterm & ascii}}
 
@@ -234,10 +234,10 @@ Chosen from precalculated:
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to use of '''format'''[ted] ''transput''}}
 
 ```algol68
-PROC clrscr = VOID: 
+PROC clrscr = VOID:
         printf(($g"[2J"$,REPR 27)); # ansi.sys #
 
-PROC gotoxy = (INT x,y)VOID: 
+PROC gotoxy = (INT x,y)VOID:
         printf(($g"["g(0)";"g(0)"H"$,REPR 27, y,x)); # ansi.sys #
 
 MODE POINT = STRUCT(
@@ -434,19 +434,19 @@ Loop Until counter=100000
 
 '
 ### =========== Plot to Console ===================
- 
+
 
 dim as integer yres=hiword(width)
 dim as integer xres=loword(width)
 
 #define map(a,b,x,c,d)  ((d)-(c))*((x)-(a))/((b)-(a))+(c)
-#define _X(num) int( map(0,xres,(num),0,loword(width))) 
+#define _X(num) int( map(0,xres,(num),0,loword(width)))
 #define _Y(num) int( map(0,yres,(num),0,hiword(width)))
 
 counter=0
 For n As Integer=Lbound(pts) To Ubound(pts)
     counter=counter+1
-    if counter <=100 then 
+    if counter <=100 then
     var xpos=map(-20,20,pts(n).x,0,xres)
     var ypos=map(-20,20,pts(n).y,0,yres)
     locate _Y(ypos),_X(xpos)
@@ -498,8 +498,8 @@ done                                           * *
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 inline
@@ -535,36 +535,36 @@ int main()
 	return 0;
 }
 ```
-Output<lang>                            .   .     . .                     
-                    .           .         .                   
-                  .           .           . .                 
-                              .             .     .           
-                    .       .       .     . .                 
-          .                                 .       .         
-          .       .                               .           
-          .                                     .             
-                                                . .           
-                                                  .   .       
-      . .                                                     
-        . .                                       . .         
-  .       .                                               .   
-                                                              
-                                                    .         
-  .                                                           
-                                                              
-      . .                                                 .   
-    .                                                 . .     
-      .   . .                                                 
-      .   .                                   .         .     
-        .                                       . . .   .     
-          .       .                                           
-      . .     .                                 .             
-          .   .     .   .   .         .           .           
-                    .       . .         .                     
-              . . .   . . .       .                           
-                  . .     .               .                   
-                                        .                     
-                              .                         
+Output<lang>                            .   .     . .
+                    .           .         .
+                  .           .           . .
+                              .             .     .
+                    .       .       .     . .
+          .                                 .       .
+          .       .                               .
+          .                                     .
+                                                . .
+                                                  .   .
+      . .
+        . .                                       . .
+  .       .                                               .
+
+                                                    .
+  .
+
+      . .                                                 .
+    .                                                 . .
+      .   . .
+      .   .                                   .         .
+        .                                       . . .   .
+          .       .
+      . .     .                                 .
+          .   .     .   .   .         .           .
+                    .       . .         .
+              . . .   . . .       .
+                  . .     .               .
+                                        .
+                              .
 ```
 
 
@@ -697,7 +697,7 @@ namespace RosettaConstrainedRandomCircle
 (ns rosettacode.circle-random-points
   (:import [java.awt Color Graphics Dimension]
            [javax.swing JFrame JPanel]))
- 
+
 (let [points (->> (for [x (range -15 16), y (range -15 16)
 			:when (<= 10 (Math/hypot x y) 15)]
 		    [(+ x 15) (+ y 15)])
@@ -889,7 +889,7 @@ MAX_R = 15
 random_circle_points = ->
   rand_point = ->
     Math.floor (Math.random() * (MAX_R * 2 + 1) - MAX_R)
-    
+
   points = {}
   cnt = 0
   while cnt < 100
@@ -899,7 +899,7 @@ random_circle_points = ->
     points["#{x},#{y}"] = true
     cnt += 1
   points
-    
+
 plot = (points) ->
   range = [-1 * MAX_R .. MAX_R]
   for y in range
@@ -907,8 +907,8 @@ plot = (points) ->
     for x in range
       s += if points["#{x},#{y}"] then '*' else ' '
     console.log s
-        
-plot random_circle_points()    
+
+plot random_circle_points()
 
 ```
 
@@ -916,35 +916,35 @@ plot random_circle_points()
 The output may be a bit distorted, since even monospace fonts take more vertical space per character than horizontal space.
 <lang>
 > coffee foo.coffee
-                               
-          **    *              
-         * ** *     *          
-          *  * *      *        
-     *     **           *      
-      *  *      *       *      
-    *               *          
-                      *        
-    *                    *     
-  ***                          
-     **                 **** * 
-  * *                          
-     *                      *  
-  **                           
-                          *    
-                               
-    *                     **   
- *  *                    *     
-   **                          
-   *                      * ** 
-     *                     *   
-  *                         *  
-                       *    *  
-     *  *                      
-                       ***     
-      *** * *     *     * *    
-     ***           *           
-      * *       * *  *         
-               * *   *        
+
+          **    *
+         * ** *     *
+          *  * *      *
+     *     **           *
+      *  *      *       *
+    *               *
+                      *
+    *                    *
+  ***
+     **                 **** *
+  * *
+     *                      *
+  **
+                          *
+
+    *                     **
+ *  *                    *
+   **
+   *                      * **
+     *                     *
+  *                         *
+                       *    *
+     *  *
+                       ***
+      *** * *     *     * *
+     ***           *
+      * *       * *  *
+               * *   *
 
 ```
 
@@ -993,36 +993,36 @@ void main() {
 {{out}}
 
 ```txt
-                               
-                   *           
-          * **  *              
-                  * *          
-     **  * *   **  *  *        
-    *    *            **  *    
-        **            **  *    
-                       *   *   
-                        *      
-       *                 ***   
- *  * *                        
-   * *                     *   
-   *                        *  
-     *                      *  
-   **                    * *   
-  *                       *    
-                            *  
-                             * 
-  *                          * 
-                               
-   *                           
-     *                     **  
-    * *                  *     
-         *           * *  *    
-   *     *             **      
-    *     *  *  *     * *      
-     **     *  **   **   *     
-          **                   
-        *     *  *  *          
-               **              
+
+                   *
+          * **  *
+                  * *
+     **  * *   **  *  *
+    *    *            **  *
+        **            **  *
+                       *   *
+                        *
+       *                 ***
+ *  * *
+   * *                     *
+   *                        *
+     *                      *
+   **                    * *
+  *                       *
+                            *
+                             *
+  *                          *
+
+   *
+     *                     **
+    * *                  *
+         *           * *  *
+   *     *             **
+    *     *  *  *     * *
+     **     *  **   **   *
+          **
+        *     *  *  *
+               **
 ```
 
 
@@ -1041,7 +1041,7 @@ Using the '''plot''' library. For a greater visual appeal, points are plotted as
 	(plot-clear)
 	(plot-x-minmax (- rmax))
 	(plot-y-minmax( - rmax))
-	
+
 	(for [(i n)]
 	(set! x (round (* (random -1) rmax)))
 	(set! y (round (* (random -1) rmax)))
@@ -1071,7 +1071,7 @@ defmodule Random do
       do:   generate_point(n-1, f, condition, MapSet.put(set, point)),
       else: generate_point(n,   f, condition, set)
   end
-  
+
   def circle do
     f = fn -> :rand.uniform(31) - 16 end
     points = generate_point(100, f, 10*10..15*15, MapSet.new)
@@ -1208,16 +1208,16 @@ integer randindex
 --scan for all possible values. store discarded ones in another sequence, for extra reference.
 for y = -15 to 15 do
     for x = -15 to 15 do
-        
+
         coordresult = sqrt( x * x + y * y )
-        
+
         if coordresult >= 10 and coordresult <= 15 then --if it would fall in the ring area
             validpoints &= {{x, y, coordresult}} --concatenate (add to the end) the coordinate pair x, y and the
             -- result into a subsequence of sequence validpoints
             else
-                discardedpoints &= {{x, y, coordresult}} --else put it in the discarded sequence    
+                discardedpoints &= {{x, y, coordresult}} --else put it in the discarded sequence
         end if
-        
+
     end for
 end for
 
@@ -1226,35 +1226,35 @@ for i = 1 to 100 label "oneofhundred" do --make 100 random coordinate pairs
 
     if length(rand100points) = 0 then --if rand100points sequence is empty, add the first subsequence to it.
         rand100points &= {validpoints[randindex]}
-        
+
         else --if it isn't empty, then..
             for j = 1 to length(rand100points) do --loop through each "data chunk" in rand100points
-                
+
                 if equal(validpoints[randindex], rand100points[j]) = 1 then --if any are the same as the randomly chosen chunk in
                     retry "oneofhundred" -- validpoints, then retry from one line below the "oneofhundred" loop without incrementing i.
                 end if --the continue keyword would increment i instead.
 
             end for
-        
+
             rand100points &= {validpoints[randindex]} --length of rand100points isnt 0 and no data chunks match ones that the program
             --already picked before, so add this subsequence chunk to rand100points.
     end if
-            
+
 end for
 
 for i = 1 to 32 do --32 lines
     printf(1,"\n")
     for j = 1 to 32 label "xscan" do --32 characters on each line
-        
+
         for k = 1 to length(rand100points) do --for every subsequence in this
             if rand100points[k][1]+16 = j and rand100points[k][2]+16 = i then --if the x and y coordinates in the picked points
                 printf(1, 178) --(adjusted to minimum of 1,1) are at the same place as in the console output grid
                 continue "xscan" --print a funny character and continue to the next "xscan"
             end if
         end for
-        
+
         printf(1, 176) --if no picked points were there, print another funny character to represent a blank space
-        
+
     end for
 end for
 
@@ -1305,18 +1305,18 @@ Number of discarded coordinate pairs : 557
 Number of randomly picked coordinate pairs : 100
 Press Any Key to continue...
 ```
-Extra EuSDL code : 
+Extra EuSDL code :
 ```euphoria
 
 for i = 1 to length(validpoints) do --simple each pixel output to screen surface
-    dummy=pixelColor(surface,validpoints[i][1]+18,validpoints[i][2]+18,#AA0202FF) --i is index number of each subsequence 'chunk'. 
+    dummy=pixelColor(surface,validpoints[i][1]+18,validpoints[i][2]+18,#AA0202FF) --i is index number of each subsequence 'chunk'.
     --index 1 is x, index 2 is y, inside that chunk.
 end for
-        
+
 for i = 1 to length(discardedpoints) do
     dummy=pixelColor(surface,discardedpoints[i][1]+18,discardedpoints[i][2]+52,#0202AAFF)
 end for
-                
+
 for i = 1 to length(rand100points) do
     dummy=pixelColor(surface,rand100points[i][1]+55,rand100points[i][2]+52,#02AA02FF)
 end for
@@ -1353,7 +1353,7 @@ module CirclePoints =
             |> Array.iter (fun x -> chars.[x+size/2] <- 'o')
             printfn "%s" (new string(chars))
         0
-    
+
 #if INTERACTIVE
 CirclePoints.main fsi.CommandLineArgs
 #else
@@ -1418,8 +1418,8 @@ points = [].comp([0:100], {__ => random_point(-15, 15, in_circle)})
 // Show points
 for i in [-15:16]
   for j in [-15:16]
-    >> [i, j] in points ? "x" : " " 
-  end 
+    >> [i, j] in points ? "x" : " "
+  end
   >
 end
 
@@ -1429,34 +1429,34 @@ Example output:
 
 ```txt
 
-          xxx  x               
-        xx x  x  xx            
-          x    xx      xx      
-      x x     x x x x x x      
-              x      x         
-     xx   x          x         
-   x    x            x         
-     xx                        
-  x  x                   xx    
-      x                 x      
-                         x   x 
- x                        xx   
-                             x 
-                               
-                           xx  
-     x                   xx    
- x                       xx  x 
-    x                          
-                               
-  xx  x                     xx 
-  xx                    x   x  
-                               
-         x                 x   
-       x x           x    x    
-         x     x   x           
-     x     x x   x  x    x     
-                    x x        
-              x x x x          
+          xxx  x
+        xx x  x  xx
+          x    xx      xx
+      x x     x x x x x x
+              x      x
+     xx   x          x
+   x    x            x
+     xx
+  x  x                   xx
+      x                 x
+                         x   x
+ x                        xx
+                             x
+
+                           xx
+     x                   xx
+ x                       xx  x
+    x
+
+  xx  x                     xx
+  xx                    x   x
+
+         x                 x
+       x x           x    x
+         x     x   x
+     x     x x   x  x    x
+                    x x
+              x x x x
 
 ```
 
@@ -1469,11 +1469,11 @@ Example output:
 ```fortran
 program Constrained_Points
   implicit none
- 
+
   integer, parameter :: samples = 100
   integer :: i, j, n, randpoint
   real :: r
- 
+
   type points
     integer :: x, y
   end type
@@ -1527,7 +1527,7 @@ program Constrained_Points
         end do
      set(j+1) = temp
   end do
-  
+
 ! print circle
   write(*,"(a,a)", advance="no") repeat(" ", set(1)%y+15), "*"
   do i = 2, samples
@@ -1541,7 +1541,7 @@ program Constrained_Points
       write(*,"(a,a)", advance="no") repeat(" ", set(i)%y+15), "*"
     end if
   end do
- 
+
 end program
 ```
 
@@ -1549,34 +1549,34 @@ Output
 
 ```txt
 
-                  * * 
-        *   *         * 
-      ** **    * **    * 
-                ** 
-     *  **   * **    * 
-   ***   **               * 
-    *    *           * 
-                           * 
-  *                      *  * 
-     **                   * 
-   *                      * 
-  *  *                   * 
-    *                        * 
-    * 
-    **                   ***  * 
-    *                    * 
-    **                   * 
-    *                    * 
-   *                      * 
-  *   *                      * 
-      **                 *  * 
-    * *                *  ** 
-   ** * *               * 
-     * 
-          ***         * * * 
-     **         *   *    * 
-         *  * * * 
-         *     *  ** * 
+                  * *
+        *   *         *
+      ** **    * **    *
+                **
+     *  **   * **    *
+   ***   **               *
+    *    *           *
+                           *
+  *                      *  *
+     **                   *
+   *                      *
+  *  *                   *
+    *                        *
+    *
+    **                   ***  *
+    *                    *
+    **                   *
+    *                    *
+   *                      *
+  *   *                      *
+      **                 *  *
+    * *                *  **
+   ** * *               *
+     *
+          ***         * * *
+     **         *   *    *
+         *  * * *
+         *     *  ** *
             *
 ```
 
@@ -1599,7 +1599,7 @@ set terminal png font arial 12 size 640,640
 set output ofn
 set title ttl font "Arial:Bold,12"
 unset key;
-set size square 
+set size square
 set parametric
 set xrange [-20:20]; set yrange [-20:20];
 set style line 1 lt rgb "red"
@@ -1740,37 +1740,37 @@ func main() {
 ```txt
 
 404 possible points
-                                                              
-                            * *       *                       
-                          *           * *                     
-                    *     * *       * *                       
-            *   *   * * *             *   *                   
-          *   *     *   *     *     *       *                 
-                                              * * *           
-            *   *                                 * * *       
-    * *   *                                       *           
-    * *   *                                     * *           
-        *                                                     
-      *                                             *     *   
-                                                              
-      *                                               * *     
-      * *                                                     
-* *                                                       *   
-    *                                                         
-                                                              
-      * *                                                     
-    *                                               *   *     
-      *                                           *           
-                                                    *         
-    *       *                                                 
-          * *                                       *         
-              *                         *                     
-                  * *         *     *   *     * *             
-            *     *   * *                                     
-                            *     *     *     *               
-                      *   *       *                           
-                      *                                       
-                              *                               
+
+                            * *       *
+                          *           * *
+                    *     * *       * *
+            *   *   * * *             *   *
+          *   *     *   *     *     *       *
+                                              * * *
+            *   *                                 * * *
+    * *   *                                       *
+    * *   *                                     * *
+        *
+      *                                             *     *
+
+      *                                               * *
+      * *
+* *                                                       *
+    *
+
+      * *
+    *                                               *   *
+      *                                           *
+                                                    *
+    *       *
+          * *                                       *
+              *                         *
+                  * *         *     *   *     * *
+            *     *   * *
+                            *     *     *     *
+                      *   *       *
+                      *
+                              *
 90 unique points
 
 ```
@@ -1795,7 +1795,7 @@ task = do
   pts <- knuthShuffle $ filter constraint cs
 -- 'paint' first 100 randomized circle points on canvas
   let canvas = foldl (\cs [x,y] -> replaceAt (31*(x+15)+y+15) "/ " cs ) blanco (take 100 pts)
--- show canvas      
+-- show canvas
   mapM_ (putStrLn.concat). takeWhile(not.null). unfoldr (Just . splitAt 31) $ canvas
 ```
 
@@ -1803,35 +1803,35 @@ Output (added a trailing space per 'pixel'
 
 ```txt
 *Main> task
-                                                              
-                      /             / /                       
-                          /     /       /                                       
-              /                 /                                               
-          /     /               /       / / /   /                               
-            /                 / /       /                                       
-      /     /     /                       /   /                                 
-      /         /                           /                                   
-        /   / /                                     /   /                       
-        / / /                                 /       / /                       
-                                                    /                           
-    /     /                                       /                             
-      / /                                             /                         
-      /                                               /   /                     
-        /                                                                       
-/ /                                                   /     / 
-                                                      /   /                     
-                                                      /   /                     
-      /                                                                         
-      /                                             /                           
-  /                                                   /       
-                                                /     /                         
-    /     /                                       /           
-              / /                         / /         /       
-        /   /       /                             /           
-                          / /     / / /   / /                 
-          / /             /                   /               
-                            / /                               
-                /   /   / / /   /       / /                   
+
+                      /             / /
+                          /     /       /
+              /                 /
+          /     /               /       / / /   /
+            /                 / /       /
+      /     /     /                       /   /
+      /         /                           /
+        /   / /                                     /   /
+        / / /                                 /       / /
+                                                    /
+    /     /                                       /
+      / /                                             /
+      /                                               /   /
+        /
+/ /                                                   /     /
+                                                      /   /
+                                                      /   /
+      /
+      /                                             /
+  /                                                   /
+                                                /     /
+    /     /                                       /
+              / /                         / /         /
+        /   /       /                             /
+                          / /     / / /   / /
+          / /             /                   /
+                            / /
+                /   /   / / /   /       / /
                       /             / /
 ```
 
@@ -1845,11 +1845,11 @@ Output (added a trailing space per 'pixel'
   [math [sqrt]]
   [random [choice]]
   [matplotlib.pyplot :as plt])
- 
+
 (setv possible-points (list-comp (, x y)
   [x (range -15 16) y (range -15 16)]
   (<= 10 (sqrt (+ (** x 2) (** y 2))) 15)))
- 
+
 (setv [xs ys] (apply zip (list-comp (choice possible-points) [_ (range 100)])))
   ; We can't use random.sample because that samples without replacement.
 (plt.plot xs ys "bo")
@@ -1871,7 +1871,7 @@ outside := \A[2] | 15
 inside  := \A[3] | 10
 if inside > outside then inside :=: outside
 
-wsize   := integer(2.2*outside) 
+wsize   := integer(2.2*outside)
 wsize  <:= 150
 center  := wsize/2
 
@@ -1880,7 +1880,7 @@ WOpen("size="||wsize||","||wsize,"bg=black","fg=white") | stop("Unable to open w
 until(points -:= 1) <= 0 do {
    x := ?(2*outside)-outside   # random x
    y := ?(2*outside)-outside   # and y
-   if (inside <= integer(sqrt(x^2+y^2)) ) <= outside then 
+   if (inside <= integer(sqrt(x^2+y^2)) ) <= outside then
       DrawPoint(x + center,y + center)
    }
 WDone()
@@ -1905,36 +1905,36 @@ Example use (<code><nowiki>gen''</nowiki></code> generates the points, the rest 
 
 ```j
    '*' (<"1]15+gen '')} 31 31$' '
-                               
-          *                    
-               *               
-           *  *  * * * *       
-     *   *      *  *   *       
-                   *   ***     
-    **    *         *     **   
-    * **                       
-       *                   **  
-  * *                  *   *   
- *   *                  **     
- * **                       ** 
- ** *                      *** 
- * **                    *   * 
- **                        *   
-    *                    **  * 
- **  *                         
- * **                       *  
- *                           * 
-    *                        * 
-  *                       *    
-   **  *                       
-       *                  **   
-      *                        
-      * *            *    *    
-     *       ** *     * *      
-       *                *      
-       **                      
-         *   *       *         
-            **  *      
+
+          *
+               *
+           *  *  * * * *
+     *   *      *  *   *
+                   *   ***
+    **    *         *     **
+    * **
+       *                   **
+  * *                  *   *
+ *   *                  **
+ * **                       **
+ ** *                      ***
+ * **                    *   *
+ **                        *
+    *                    **  *
+ **  *
+ * **                       *
+ *                           *
+    *                        *
+  *                       *
+   **  *
+       *                  **
+      *
+      * *            *    *
+     *       ** *     * *
+       *                *
+       **
+         *   *       *
+            **  *
 ```
 
 
@@ -1976,37 +1976,37 @@ public class FuzzyCircle {
 Output:
 
 ```txt
-                               
-            XX X               
-        X X    X  X   X        
-       X        XX  X          
-     XXXX      X        X      
-    X    X      X  XXX         
-        X             X        
-    X                 X  XXX   
-    X                     X    
-       X               X   XX  
- X   X                       X 
-    XX                    X    
-                           X   
-                               
- X                         X   
- XXXXX                   X   X 
-                          X X  
-                         X   X 
-                          X X  
- X   X                    X    
- X                        X    
-    XX                 X       
-    XX                  X      
-        X            XX   X    
-     X XX              X       
-    X       X X  X      X      
-     XX   X     X      XXX     
-        X    X X X     XX      
-            X         X        
-               X               
-               X               
+
+            XX X
+        X X    X  X   X
+       X        XX  X
+     XXXX      X        X
+    X    X      X  XXX
+        X             X
+    X                 X  XXX
+    X                     X
+       X               X   XX
+ X   X                       X
+    XX                    X
+                           X
+
+ X                         X
+ XXXXX                   X   X
+                          X X
+                         X   X
+                          X X
+ X   X                    X
+ X                        X
+    XX                 X
+    XX                  X
+        X            XX   X
+     X XX              X
+    X       X X  X      X
+     XX   X     X      XXX
+        X    X X X     XX
+            X         X
+               X
+               X
 ```
 
 
@@ -2031,7 +2031,7 @@ var h = cv.height;
 ctx.fillStyle = 'rgba(0, 255, 200, .3)';
 ctx.strokeStyle = 'rgba(0,0,0,.1)';
 ctx.beginPath();
-ctx.arc(w/2, h/2, 150, 0, Math.PI*2, true); 
+ctx.arc(w/2, h/2, 150, 0, Math.PI*2, true);
 ctx.arc(w/2, h/2, 100, 0, Math.PI*2, false);
 ctx.closePath();
 ctx.fill();
@@ -2098,37 +2098,37 @@ printcircle(10, 15, 100)
 
 ```txt
 
-                                                                 
-                          ●                 ●                     
-                          ●     ● ● ●           ●                 
-                  ●         ● ●                 ●                 
-                ●           ●                 ●     ●             
-                    ●           ●               ● ●               
-                  ●                                 ●             
-                    ●                         ●       ●           
-        ●       ●                                     ●           
-        ●                                               ●         
-                                                        ● ● ● ●   
-              ●                                       ●           
-          ●                                                       
-        ● ● ●                                             ●   ●   
-                                                        ●     ●   
-                                                                  
-          ●                                             ●   ●     
-                                                          ●       
-      ●                                                 ● ●       
-            ●                                         ●           
-      ●   ●                                                       
-          ● ●     ●                                 ●       ●     
-                ● ●                                   ●   ●       
-                      ●                                           
-            ● ●       ● ●                       ●                 
-              ●         ● ● ● ●   ●             ● ● ● ●           
-                ●   ●           ●   ● ● ●                         
-                            ● ●   ●                               
-                        ●             ●                           
-                            ● ●                                   
-                                                                  
+
+                          ●                 ●
+                          ●     ● ● ●           ●
+                  ●         ● ●                 ●
+                ●           ●                 ●     ●
+                    ●           ●               ● ●
+                  ●                                 ●
+                    ●                         ●       ●
+        ●       ●                                     ●
+        ●                                               ●
+                                                        ● ● ● ●
+              ●                                       ●
+          ●
+        ● ● ●                                             ●   ●
+                                                        ●     ●
+
+          ●                                             ●   ●
+                                                          ●
+      ●                                                 ● ●
+            ●                                         ●
+      ●   ●
+          ● ●     ●                                 ●       ●
+                ● ●                                   ●   ●
+                      ●
+            ● ●       ● ●                       ●
+              ●         ● ● ● ●   ●             ● ● ● ●
+                ●   ●           ●   ● ● ●
+                            ● ●   ●
+                        ●             ●
+                            ● ●
+
 
 ```
 
@@ -2162,35 +2162,35 @@ Sample output:
 
 ```txt
 
-            ooo oo  o          
-           o                   
-               oo   oo         
-       o      oo      o        
-      o   ooo oo               
-                    o    oo    
-     o  o               o      
-     o o                 oo o  
-     o o                       
-                         o o   
-     o                   ooo   
-    o                    oo    
-  o oo                         
-  o                       o    
+            ooo oo  o
+           o
+               oo   oo
+       o      oo      o
+      o   ooo oo
+                    o    oo
+     o  o               o
+     o o                 oo o
+     o o
+                         o o
+     o                   ooo
+    o                    oo
+  o oo
+  o                       o
   o                         o o
-  o o                          
-     o                   ooo   
- o  o                    o     
-   o                           
- oo                      o  oo 
-   oo                      o   
-   o  o                 o      
-                               
-                     ooo o     
-     oo               o        
-     o         o   o           
-          oo  o     o          
-                    o o        
-                 o  o     
+  o o
+     o                   ooo
+ o  o                    o
+   o
+ oo                      o  oo
+   oo                      o
+   o  o                 o
+
+                     ooo o
+     oo               o
+     o         o   o
+          oo  o     o
+                    o o
+                 o  o
 
 ```
 
@@ -2264,9 +2264,9 @@ end
  ba := (rand(-15 .. 15))():
  bb := (rand(-15 .. 15))():
  b := evalf(sqrt(ba^2+bb^2)):
- if b <= 15 and b >= 10 
-  then a[i] := [ba, bb]: 
-  i := i+1: 
+ if b <= 15 and b >= 10
+  then a[i] := [ba, bb]:
+  i := i+1:
  end if:
  end do:
  plots:-pointplot(convert(a,list));
@@ -2274,7 +2274,7 @@ end
 
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
-This algorithm generates 500 pairs of random integers between +/- 15, picks out the ones that satisfy the inequality, and then takes the first 100 of those. It oversamples to reduce the chance of having less than 100 "candidates", which is not impossible, though extremely unlikely. 
+This algorithm generates 500 pairs of random integers between +/- 15, picks out the ones that satisfy the inequality, and then takes the first 100 of those. It oversamples to reduce the chance of having less than 100 "candidates", which is not impossible, though extremely unlikely.
 
 ```Mathematica
 sample = Take[Cases[RandomInteger[{-15, 15}, {500, 2}], {x_, y_} /; 10 <= Sqrt[x^2 + y^2] <= 15], 100];
@@ -2304,22 +2304,22 @@ function [xCoordinates,yCoordinates] = randomDisc(numPoints)
     n = numPoints;
 
     while n > 0
-        
+
         x = randInt(n);
         y = randInt(n);
 
         norms = sqrt((x.^2) + (y.^2));
         inBounds = find((10 <= norms) & (norms <= 15));
-        
+
         xCoordinates = [xCoordinates; x(inBounds)];
         yCoordinates = [yCoordinates; y(inBounds)];
-        
+
         n = numPoints - numel(xCoordinates);
     end
-    
+
     xCoordinates(numPoints+1:end) = [];
     yCoordinates(numPoints+1:end) = [];
-    
+
 end
 ```
 
@@ -2351,7 +2351,7 @@ randomDisc(numPoints):= block([p: []],
       )
     ),
   p)$
-  
+
 p: randomDisc(100)$
 plot2d(['discrete, p], ['style, 'points]);
 ```
@@ -2394,36 +2394,36 @@ for x in -15..15:
 Output:
 
 ```txt
-               1               
-          1211      1          
-                               
-      1 1 3       1   1        
-                3     11       
-    1  11    1   1    1        
-       122           21  1     
-                               
-                        1 1 2  
-                        1      
-      1                   1    
- 11                      11    
-   1 1                   1     
-   1                           
-  11                      1    
-  1  1                      11 
- 2   1                         
-                           1   
-     1                       1 
-                         1 1   
-                           11  
-                       11      
-    1 1                   111  
-    1                1 1 1     
-       1            11         
-                 1 1     1     
-     12 2        11   1  1     
-              1 1 1 1 1        
-        11 1                   
-              1                
+               1
+          1211      1
+
+      1 1 3       1   1
+                3     11
+    1  11    1   1    1
+       122           21  1
+
+                        1 1 2
+                        1
+      1                   1
+ 11                      11
+   1 1                   1
+   1
+  11                      1
+  1  1                      11
+ 2   1
+                           1
+     1                       1
+                         1 1
+                           11
+                       11
+    1 1                   111
+    1                1 1 1
+       1            11
+                 1 1     1
+     12 2        11   1  1
+              1 1 1 1 1
+        11 1
+              1
 ```
 
 
@@ -2458,7 +2458,7 @@ let () =
 ```
 
 
- 
+
                  o   o     o
                  o
             oo      oo     oooo
@@ -2486,7 +2486,7 @@ let () =
               o  ooo     o
                o
                   oo  o
- 
+
 
 
 ## PARI/GP
@@ -2872,32 +2872,32 @@ Output:
 
 ```txt
 
-        **  *                  
-                *   *          
-                               
-    **                         
-         **                    
-                               
-                         *     
-                           *** 
-      *                        
-                               
-                               
-                         *     
-    **                         
-                               
-                           *   
- * **                          
-                               
-                               
-                        * *    
-  **                        *  
-     * *                       
-                               
-                     ***       
-                         ***   
-       ***                     
-            *                  
+        **  *
+                *   *
+
+    **
+         **
+
+                         *
+                           ***
+      *
+
+
+                         *
+    **
+
+                           *
+ * **
+
+
+                        * *
+  **                        *
+     * *
+
+                     ***
+                         ***
+       ***
+            *
                      *
 
 ```
@@ -2985,7 +2985,7 @@ Output:
               * *   *   * * *   *     * * * *   *
                   * * * *     * *     * *
                         * * *   *     * *
-          
+
 ```
 
 
@@ -2997,56 +2997,56 @@ Output:
 ```PowerShell
 $MinR2 = 10 * 10
 $MaxR2 = 15 * 15
- 
+
 $Points = @{}
- 
+
 While ( $Points.Count -lt 100 )
     {
     $X = Get-Random -Minimum -16 -Maximum 17
     $Y = Get-Random -Minimum -16 -Maximum 17
     $R2 = $X * $X + $Y * $Y
- 
+
     If ( $R2 -ge $MinR2 -and $R2 -le $MaxR2 -and "$X,$Y" -notin $Points.Keys )
         {
         $Points += @{ "$X,$Y" = 1 }
         }
     }
- 
+
 ForEach ( $Y in -16..16 ) { ( -16..16 | ForEach { ( " ", "*" )[[int]$Points["$_,$Y"]] } ) -join '' }
 ```
 
 {{out}}
 
 ```txt
-            ***                  
-           *     **   *          
-           *     ***     *       
-           * * * ** *    *       
-     *    *    *     *           
-           *          *     *    
-    * *               ***  *     
-    *                    *****   
-      **                * *      
-   * *                    ***    
-  ** *                    ***    
-  *                        * *   
-     *                           
-  *                       *   *  
-      *                          
-    *                            
-    **                        *  
-    * *                    **    
-     *                           
-                           *     
-                                 
-        *                **      
-         *            * * *      
-    * *   **           *         
-      *   **          **   *     
-        * * *       * *          
-         *                       
-                      **         
-             ** * 
+            ***
+           *     **   *
+           *     ***     *
+           * * * ** *    *
+     *    *    *     *
+           *          *     *
+    * *               ***  *
+    *                    *****
+      **                * *
+   * *                    ***
+  ** *                    ***
+  *                        * *
+     *
+  *                       *   *
+      *
+    *
+    **                        *
+    * *                    **
+     *
+                           *
+
+        *                **
+         *            * * *
+    * *   **           *
+      *   **          **   *
+        * * *       * *
+         *
+                      **
+             ** *
 ```
 
 
@@ -3071,7 +3071,7 @@ choose(BL, N, V) :-
 	I is random(N),
 	nth0(I, BL, V).
 
-% to find all couples of numbers verifying 
+% to find all couples of numbers verifying
 % 100 <= x^2 + y^2 <= 225
 init(X1, Y1) :-
 	X in -15..15,
@@ -3141,38 +3141,38 @@ Note that the diagram shows the number of points at any given position (up to a 
 	print(''.join(str(min([9, world[(x,y)]])) if world[(x,y)] else ' '
 			  for y in range(-15,16)))
 
-	
-                               
-             1     1           
-          1 1                  
-      11 1     1  1     1      
-     111  1     1211           
-      1   2    1 1    11       
-      1  11         21         
-     1   1            11  1    
-   1  2                1 1     
-                               
- 1  2                          
-   1 1                      1  
-   1 1                         
-   2                      11   
-  1                         1  
-                         1     
-                               
-                               
-  1                          1 
-                         1     
-                         2     
-                            1  
-     1                  1 1    
-      1                2   1   
-   1   3            11  2      
-    11   1    1      1   2     
-            1   1    2         
-        1  1                   
-         1      1     1        
-          2 2   1              
-               1               
+
+
+             1     1
+          1 1
+      11 1     1  1     1
+     111  1     1211
+      1   2    1 1    11
+      1  11         21
+     1   1            11  1
+   1  2                1 1
+
+ 1  2
+   1 1                      1
+   1 1
+   2                      11
+  1                         1
+                         1
+
+
+  1                          1
+                         1
+                         2
+                            1
+     1                  1 1
+      1                2   1
+   1   3            11  2
+    11   1    1      1   2
+            1   1    2
+        1  1
+         1      1     1
+          2 2   1
+               1
 ```
 
 If the number of samples is increased to 1100:
@@ -3184,38 +3184,38 @@ If the number of samples is increased to 1100:
 	print(''.join(str(min([9, world[(x,y)]])) if world[(x,y)] else ' '
 			  for y in range(-15,16)))
 
-	
-               2               
-          41341421333          
-        5133333131253 1        
-      5231514 14214721 24      
-     326 21222143234122322     
-    54235153132123344125 22    
-   32331432         2422 33    
-   5453135           4144344   
-  132595               323123  
-  4 6353               432224  
- 5 4323                 3 5313 
- 23214                   41433 
- 42454                   33342 
- 332 4                   34314 
- 142 1                   35 53 
-124211                   53131 
- 22221                   152 4 
- 22213                   34562 
- 654 4                   4 212 
- 24354                   52232 
- 544222                 283323 
-  411123               453325  
-  251321               124332  
-   2124134           2443226   
-   2 113315         64324334   
-    2412452 324 32121132363    
-      4222434324635 5433       
-      3113333123432112633      
-        2131181233  424        
-          47414232164          
-               4               
+
+               2
+          41341421333
+        5133333131253 1
+      5231514 14214721 24
+     326 21222143234122322
+    54235153132123344125 22
+   32331432         2422 33
+   5453135           4144344
+  132595               323123
+  4 6353               432224
+ 5 4323                 3 5313
+ 23214                   41433
+ 42454                   33342
+ 332 4                   34314
+ 142 1                   35 53
+124211                   53131
+ 22221                   152 4
+ 22213                   34562
+ 654 4                   4 212
+ 24354                   52232
+ 544222                 283323
+  411123               453325
+  251321               124332
+   2124134           2443226
+   2 113315         64324334
+    2412452 324 32121132363
+      4222434324635 5433
+      3113333123432112633
+        2131181233  424
+          47414232164
+               4
 ```
 
 
@@ -3241,7 +3241,7 @@ while (nValid < NPts) {
 	nValid <- sum(Valid)
 	nBlock <- 2 * nBlock
 }
-plot(X[Valid][1:NPts],Y[Valid][1:NPts], pch=19, cex=0.25, col="blue", 
+plot(X[Valid][1:NPts],Y[Valid][1:NPts], pch=19, cex=0.25, col="blue",
 	xlab="x",ylab="y",main="Fuzzy circle", xlim=c(-RMax,RMax), ylim=c(-RMax,RMax) )
 
 ```
@@ -3507,7 +3507,7 @@ O O           O O
   O           O
   O           O
     O O O O O
-        O 
+        O
 ```
 
 
@@ -3622,7 +3622,7 @@ all points filled
 
 load "guilib.ring"
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                    setwindowtitle("drawing using qpainter")
@@ -3759,37 +3759,37 @@ puts range.map{|i| range.map{|j| pt[[i,j]]}.join}
 ```txt
 
 Precalculate: 404
-                                                              
-                               o o o                          
-                 o o o     o                                  
-                 o           o     o o       o                
-           o   o     o                 o         o o          
-               o       o             o   o           o        
-                                               o     o        
-       o                                       o              
-                                                   o o o      
-     o         o                                     o        
-     o o                                           o       o  
-       o                                             o        
-                                                           o  
-         o                                                    
-           o                                             o    
+
+                               o o o
+                 o o o     o
+                 o           o     o o       o
+           o   o     o                 o         o o
+               o       o             o   o           o
+                                               o     o
+       o                                       o
+                                                   o o o
+     o         o                                     o
+     o o                                           o       o
+       o                                             o
+                                                           o
+         o
+           o                                             o
          o                                               o   o
-                                                              
-                                                           o  
-   o o   o                                         o   o      
-   o       o                                         o        
-   o   o     o                                         o      
-                                                   o          
-             o                                   o     o      
-                 o                                   o o      
-       o       o                           o   o   o   o      
-           o o     o   o     o       o     o o   o            
-                         o           o   o o   o              
-             o     o o   o                 o o                
-                   o o   o o             o                    
-                         o o                                  
-                               o                              
+
+                                                           o
+   o o   o                                         o   o
+   o       o                                         o
+   o   o     o                                         o
+                                                   o
+             o                                   o     o
+                 o                                   o o
+       o       o                           o   o   o   o
+           o o     o   o     o       o     o o   o
+                         o           o   o o   o
+             o     o o   o                 o o
+                   o o   o o             o
+                         o o
+                               o
 
 ```
 
@@ -3811,7 +3811,7 @@ for pts = 1 to 1000
     y = int(y * 10 + h/2)
     canvas(x,y) = 1
   end if
-next pts    
+next pts
 
 ' -----------------------------
 ' display the graphic
@@ -3822,7 +3822,7 @@ for x = 1 to w
      if canvas(x,y) = 1 then  #g "color green ; set "; x; " "; y else #g "color blue ; set "; x; " "; y
   next y
 next x
-render #g 
+render #g
 #g "flush"
 ```
 
@@ -4069,38 +4069,38 @@ Piping the output through sed to improve the contrast of the output:
 ```txt
 
 % vcs -sverilog -R circle.sv | sed 's/0/ /g'
-                                        
-                   1                    
-                11 1  1                 
-            1 1  1    11                
-          1     1   1   11              
-            1           1  1            
-             1      1      1            
-            1                           
-       1   1                  1         
-      1    1               1            
-                             1          
-       11                               
-                                11      
-         1                              
-     11  1                     1 1      
-         1                   1          
-    1   1                    1   1      
-     1                        1  1      
-     11 1                       1       
-                             11         
-     1111                        1      
-      1 111                  1          
-       11 1                111  1       
-       11                               
-                          1  1          
-            1            1   1          
-                   1                    
-             1  11                      
-                          1             
-                   1    1               
-               11  1 1                  
-                                        
+
+                   1
+                11 1  1
+            1 1  1    11
+          1     1   1   11
+            1           1  1
+             1      1      1
+            1
+       1   1                  1
+      1    1               1
+                             1
+       11
+                                11
+         1
+     11  1                     1 1
+         1                   1
+    1   1                    1   1
+     1                        1  1
+     11 1                       1
+                             11
+     1111                        1
+      1 111                  1
+       11 1                111  1
+       11
+                          1  1
+            1            1   1
+                   1
+             1  11
+                          1
+                   1    1
+               11  1 1
+
 
 
 ```
@@ -4151,37 +4151,37 @@ Example output:
 
 ```txt
 
-               1               
-           1  1                
-                               
-         1 1 1   2   1 1       
-        11   1        1  1     
-       11 1            1  1    
-   1     1                     
-   1    12               1     
-     1 1               1       
-  1 1                    1     
-      1                    1   
-   1                       1 1 
-                          1  2 
-                           1   
- 1                         1   
- 2   1                    2    
-  2                         1  
-                             1 
-    1                    11    
-     1                   1     
-      1                        
-  1                       1    
-     2                 1    1  
-   1                     1     
-   1 1   1          11     1   
-     2  1  1        11         
-        11      1      1 1     
-      1 2   1       11         
-         121   1  1            
-           1  1   1            
-               1               
+               1
+           1  1
+
+         1 1 1   2   1 1
+        11   1        1  1
+       11 1            1  1
+   1     1
+   1    12               1
+     1 1               1
+  1 1                    1
+      1                    1
+   1                       1 1
+                          1  2
+                           1
+ 1                         1
+ 2   1                    2
+  2                         1
+                             1
+    1                    11
+     1                   1
+      1
+  1                       1
+     2                 1    1
+   1                     1
+   1 1   1          11     1
+     2  1  1        11
+        11      1      1 1
+      1 2   1       11
+         121   1  1
+           1  1   1
+               1
 
 ```
 
@@ -4214,7 +4214,7 @@ SetVid(3);              \restore normal text mode
 
 ```zkl
 xy:=(0).walker(*).tweak(fcn{  // generate infinite random pairs (lazy)
-   x:=(-15).random(16); y:=(-15).random(16); 
+   x:=(-15).random(16); y:=(-15).random(16);
    if(not (100<=(x*x + y*y)<=225)) Void.Skip else T(x,y)
 });
 
@@ -4229,36 +4229,36 @@ foreach n in ([0..30]){ array[n*N,30].concat().println(); }
 
 ```txt
 
-                              
-          *   *     *         
-               **   ***       
-         *  *  * **     *     
-       * **                   
-        *      *    *     *   
-       *                *  *  
-    *                *   ***  
-       *                      
-      *                   *   
+
+          *   *     *
+               **   ***
+         *  *  * **     *
+       * **
+        *      *    *     *
+       *                *  *
+    *                *   ***
+       *
+      *                   *
   * *                    *   *
- *                       *    
-     *                     *  
-                           *  
+ *                       *
+     *                     *
+                           *
                          *   *
   ****                      **
-                           *  
-   *                          
- *  *                         
+                           *
+   *
+ *  *
                           *  *
  **  *                       *
-   * *                        
-                       * *  * 
-        *             *       
-   *      *                   
-            ** * **           
-         *         *  ***     
-       * *        *           
-        *    *                
-           *                  
+   * *
+                       * *  *
+        *             *
+   *      *
+            ** * **
+         *         *  ***
+       * *        *
+        *    *
+           *
 
 ```
 

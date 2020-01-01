@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task}} 
+{{task}}
 [[Category:File System Operations]]
 
 ;Task:
@@ -19,9 +19,9 @@ Truncate a file to a specific length.   This should be implemented as a routine 
 
 Truncation can be achieved using system or library calls intended for such a task, if such methods exist, or by creating a temporary file of a reduced size and renaming it, after first deleting the original file, if no other method is available.   The file may contain non human readable binary data in an unspecified format, so the routine should be "binary safe", leaving the contents of the untruncated part of the file unchanged.
 
-If the specified filename does not exist, or the provided length is not less than the current file length, then the routine should raise an appropriate error condition. 
+If the specified filename does not exist, or the provided length is not less than the current file length, then the routine should raise an appropriate error condition.
 
-On some systems, the provided file truncation facilities might not change the file or may extend the file, if the specified length is greater than the current length of the file. 
+On some systems, the provided file truncation facilities might not change the file or may extend the file, if the specified length is greater than the current length of the file.
 
 This task permits the use of such facilities.   However, such behaviour should be noted, or optionally a warning message relating to an non change or increase in file size may be implemented.
 
@@ -233,7 +233,7 @@ This will extend the file if the specified length is greater than the existing l
 
 ## Bracmat
 
-Handling binary data is not easy in Bracmat. This solution reads all bytes as numbers. They are prepended to a list. After reversing the list, all numbers are written to the file. Notice that to close a file you should try to seek to a non-existing file position.<code>fil$(,SET,-1)</code> seeks to the position before the start of the file currently in focus.  
+Handling binary data is not easy in Bracmat. This solution reads all bytes as numbers. They are prepended to a list. After reversing the list, all numbers are written to the file. Notice that to close a file you should try to seek to a non-existing file position.<code>fil$(,SET,-1)</code> seeks to the position before the start of the file currently in focus.
 
 ```bracmat
 ( ( trunc
@@ -282,8 +282,8 @@ Windows uses <code>SetEndOfFile()</code> to change the length of a file. This pr
 
 {{works with|MinGW}}
 
-```c>#include <windows.h
-
+```c
+#include <windows.h>
 #include <stdio.h>
 #include <wchar.h>
 
@@ -371,8 +371,8 @@ main()
 ### POSIX
 
 
-```c>#include <unistd.h
-
+```c
+#include <unistd.h>
 #include <sys/types.h>
 
 ...
@@ -554,30 +554,30 @@ ELENA 4.x:
 ```elena
 import system'io;
 import extensions;
- 
+
 extension fileOp : File
 {
     set Length(int len)
     {
         auto stream := FileStream.openForEdit(self);
- 
+
         stream.Length := len;
- 
+
         stream.close()
     }
 }
- 
+
 public program()
 {
     if (program_arguments.Length != 3)
         { console.printLine:"Please provide the path to the file and a new length"; AbortException.raise() };
- 
+
     auto file := File.assign(program_arguments[1]);
     var length := program_arguments[2].toInt();
- 
+
     ifnot(file.Available)
         { console.printLine("File ",file," does not exist"); AbortException.raise() };
- 
+
     file.Length := length
 }
 ```
@@ -653,7 +653,7 @@ The details turn out to be tricky. There is no equivalent of Turbo Pascal's Bloc
 
 Accordingly, the input must be read in the UNFORMATTED style. This is done with a specified record length, but again unlike the BlockRead procedure there is no indication of a short record at the end - if the record length is say 60, there is no guarantee that the file's length will be a multiple of sixty and the remainder will cause trouble. The ERR=''label'' can catch this mishap, but still, there is no indication of by how much the remaining portion of the file fell short. The only record length that will divide all possible file lengths is ... one. Now arises a minor obstacle: some systems use the size of a default INTEGER to be the unit of a RECL=''n'', but fortunately, a compiler option allows the specification of the record length to be in units of bytes.
 
-Initial tests threw up further obstacles, such as "end-of-file during read", the very first read. Floundering discovered that escalating to random access avoided this confusion, so ACCESS="DIRECT" and READ (F,REC=L) worked, except that the END action label is not permitted for direct access. ERR instead, to cover the case when a byte beyond end-of-file is requested, clearly an error. 
+Initial tests threw up further obstacles, such as "end-of-file during read", the very first read. Floundering discovered that escalating to random access avoided this confusion, so ACCESS="DIRECT" and READ (F,REC=L) worked, except that the END action label is not permitted for direct access. ERR instead, to cover the case when a byte beyond end-of-file is requested, clearly an error.
 Despite writing output as a single byte at a time, the output file appeared to manifest as a file having records with a 32-bit record length of value one (not helped by endian issues) followed by the content, but changing to writing each byte of the output using the FORM="FORMATTED" option dodged that, provided that each output employed the "$" output format code that signifies that a record ender (the CR, etc. mess) is not to be appended. After these experiences, one suspects that each system will have its own quirks for some types of file, and testing will be required.
 
 There is an option to specify BUFFERED="YES" and BUFFERCOUNT=n or similar in many Fortrans, but alas, these are not standard even in F90/95. One's guilt is not so easily diverted, but, ... this is really only a demonstration, perhaps with very occasional use.
@@ -717,7 +717,7 @@ This can be achieved by using the <code>setFileSize</code> function in [http://h
 
 ```Haskell
 setFileSize :: FilePath -> FileOffset -> IO ()
--- Truncates the file down to the specified length. 
+-- Truncates the file down to the specified length.
 -- If the file was larger than the given length
 -- before this operation was performed the extra is lost.
 -- Note: calls truncate.
@@ -809,7 +809,7 @@ fun truncateFile(fileName: String, newSize: Long) {
     var fc: FileChannel? = null
     try {
         fc = FileOutputStream(fileName, true).channel
-        if (newSize >= fc.size()) 
+        if (newSize >= fc.size())
             println("Requested file size isn't less than existing size")
         else
             fc.truncate(newSize)
@@ -870,7 +870,7 @@ Original size: 692
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat
 ornare lectus, dignissim iaculis libero consequat sed. Proin quis magna in
 arcu sagittis consequat sed ac risus. Ut a pharetra dui. Phasellus molestie,
-mauris eget scelerisque laoreet, diam dolor vulputate nulla, in porta sem 
+mauris eget scelerisque laoreet, diam dolor vulputate nulla, in porta sem
 Truncated size: 300
 
 ```
@@ -1004,15 +1004,15 @@ Truncate[file_, n_] := Module[{filename = file, nbbytes = n, temp},
 =={{header|MATLAB}} / {{header|Octave}}==
 
 ```MATLAB
-function truncate_a_file(fn,count); 
+function truncate_a_file(fn,count);
 
 fid=fopen(fn,'r');
 s = fread(fid,count,'uint8');
-fclose(fid); 
+fclose(fid);
 
 fid=fopen(fn,'w');
 s = fwrite(fid,s,'uint8');
-fclose(fid); 
+fclose(fid);
 ```
 
 
@@ -1143,7 +1143,7 @@ use NativeCall;
 sub truncate(Str, int32 --> int32) is native {*}
 
 sub MAIN (Str $file, Int $to) {
-    given $file.IO { 
+    given $file.IO {
         .e        or die "$file doesn't exist";
         .w        or die "$file isn't writable";
         .s >= $to or die "$file is not big enough to truncate";
@@ -1275,7 +1275,7 @@ Procedure SetFileSize(File$, length.q)
   If FileSize(File$) < length
     Debug "File to small, is a directory or does not exist."
     ProcedureReturn #False
-  Else 
+  Else
     fh = OpenFile(#PB_Any, File$)
     FileSeek(fh, length)
     TruncateFile(fh)
@@ -1347,8 +1347,8 @@ As long as the REXX program has access to enough virtual memory, this version wo
 some versions of REXX that are severely limited in virtual storage by design or by the operating system.
 
 Extra boilerplate code was added to ensure that various flavors of REXX correctly handle a file that:
-::::*   has been read (in input mode), 
-::::*   then erased (deleted), 
+::::*   has been read (in input mode),
+::::*   then erased (deleted),
 ::::*   then written to.
 
 ```rexx
@@ -1380,7 +1380,7 @@ For this example, Windows/XP and Windows 7 operating systems were used, the prog
 :::*   all currently available Regina REXX interpreters   (versions 3.2 ──► 3.9.1)
 :::*   R4 REXX
 :::*   ROO
- 
+
 '''sample output'''   for the file named   '''AA.AA'''   being truncated to   '''333'''   bytes:
 
 ```txt
@@ -1424,7 +1424,7 @@ exit                                             /*stick a fork in it,  we're al
 ser:  say '***error***'  arg(1);      exit 13    /*display an error message  and  exit. */
 ```
 
-'''output'''   is identical to the 1<sup>st</sup> REXX version. 
+'''output'''   is identical to the 1<sup>st</sup> REXX version.
 
 
 
@@ -1534,7 +1534,7 @@ ls myfile >/dev/null &&
 
 
 ----
-Some systems have a truncate(1) command ([http://www.freebsd.org/cgi/man.cgi?query=truncate&apropos=0&sektion=0&manpath=FreeBSD+8.2-RELEASE&format=html FreeBSD truncate(1)], [http://www.gnu.org/software/coreutils/manual/html_node/truncate-invocation.html#truncate-invocation GNU truncate(1)]). 
+Some systems have a truncate(1) command ([http://www.freebsd.org/cgi/man.cgi?query=truncate&apropos=0&sektion=0&manpath=FreeBSD+8.2-RELEASE&format=html FreeBSD truncate(1)], [http://www.gnu.org/software/coreutils/manual/html_node/truncate-invocation.html#truncate-invocation GNU truncate(1)]).
 
 
 ```bash
@@ -1572,7 +1572,7 @@ glob=$(ls -1 file[0-9]); for f in $glob; do echo -n<$f>$f; done
 + ls -l bad
 -rw-r--r--  1 fieldsa  fieldsa  0 Dec  4 20:07 bad
 + cat bad
--bash-4.2$ 
+-bash-4.2$
 
 # 2. checks
 -bash-4.2$ set -x; f="bad"; echo -n<$f>$f
@@ -1597,7 +1597,7 @@ glob=$(ls -1 file[0-9]); for f in $glob; do echo -n<$f>$f; done
 # Now a bad file exists
 -bash-4.2$ echo 'abc'>bad
 + echo abc
--bash-4.2$ ls -l bad;cat<bad     
+-bash-4.2$ ls -l bad;cat<bad
 + ls -l bad
 -rw-r--r--  1 fieldsa  fieldsa  4 Dec  4 19:21 bad
 + cat

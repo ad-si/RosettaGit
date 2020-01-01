@@ -40,15 +40,15 @@ For the purposes of this task, a filename extension
 |-
 | <code><nowiki>http://example.com/download.tar.gz</nowiki></code>
 | <code>.gz</code>
-| 
+|
 |-
 | <code>CharacterModel.3DS</code>
 | <code>.3DS</code>
-| 
+|
 |-
 | <code>.desktop</code>
 | <code>.desktop</code>
-| 
+|
 |-
 | <code>document</code>
 | <code></code>
@@ -111,8 +111,8 @@ PROC test extension = ( STRING pathname, STRING expected extension )VOID:
                )
              )
     END ; # text extension #
-                                  
-               
+
+
 main:
 ( test extension( "http://example.com/download.tar.gz", ".gz"      )
 ; test extension( "CharacterModel.3DS",                 ".3DS"     )
@@ -210,7 +210,7 @@ begin
              , " as expected"
              )
     end ; % text extension %
-               
+
     testExtension( "http://example.com/download.tar.gz", ".gz"      );
     testExtension( "CharacterModel.3DS",                 ".3DS"     );
     testExtension( ".desktop",                           ".desktop" );
@@ -256,10 +256,10 @@ loop files {
 ```txt
 http://example.com/download.tar.gz => extension: .gz
 CharacterModel.3DS => extension: .3DS
-.desktop => extension: 
-document => extension: 
-document.txt_backup => extension: 
-/etc/pam.d/login => extension: 
+.desktop => extension:
+document => extension:
+document.txt_backup => extension:
+/etc/pam.d/login => extension:
 ```
 
 
@@ -432,8 +432,8 @@ int main(void)
 
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <algorithm>
 #include <iostream>
 #include <vector>
@@ -559,7 +559,7 @@ void main()
 
   foreach(filename; filenames)
     writeln(filename, " -> ", filename.extension);
-    
+
 }
 
 ```
@@ -572,7 +572,7 @@ void main()
 http://example.com/download.tar.gz -> .gz
 CharacterModel.3DS -> .3DS
 .desktop ->
-document -> 
+document ->
 document.txt_backup -> .txt_backup
 /etc/pam.d/login ->
 
@@ -611,7 +611,7 @@ void main()
     }
     writeln(filename, " -> ", ext);
   }
-    
+
 }
 
 
@@ -624,7 +624,7 @@ void main()
 http://example.com/download.tar.gz -> .gz
 CharacterModel.3DS -> .3DS
 .desktop -> .desktop
-document -> 
+document ->
 document.txt_backup ->
 /etc/pam.d/login ->
 
@@ -710,7 +710,7 @@ document.txt_backup                | txt_backup
 {{out}}
 
 ```txt
-cr tests 
+cr tests
 'http://example.com/download.tar.gz' => '.gz'
 'CharacterModel.3DS' => '.3DS'
 '.desktop' => '.desktop'
@@ -728,7 +728,7 @@ The plan is to scan backwards from the end of the text until a non-extensionish 
 
 The source incorporates a collection of character characterisations via suitable spans of a single sequence of characters. Unfortunately, the PARAMETER statement does not allow its constants to appear in EQUIVALENCE statements, so the text is initialised by DATA statements, and thus loses the protection of read-only given to constants defined via PARAMETER statements. The statements are from a rather more complex text scanning scheme, as all that are needed here are the symbols of GOODEXT.
 
-The text scan could instead check for a valid character via something like <code> ("a" <= C & C <= "z") | ("A" <= C & C <= "Z") | (0 <= C & C <= "9")</code> but this is not just messy but unreliable - in EBCDIC for example there are gaps in the sequence of letters that are occupied by other symbols. So instead, a test via INDEX into a sequence of all the valid symbols. If one was in a hurry, for eight-bit character codes, an array GOODEXT of 256 logical values could be indexed by the numerical value of the character. 
+The text scan could instead check for a valid character via something like <code> ("a" <= C & C <= "z") | ("A" <= C & C <= "Z") | (0 <= C & C <= "9")</code> but this is not just messy but unreliable - in EBCDIC for example there are gaps in the sequence of letters that are occupied by other symbols. So instead, a test via INDEX into a sequence of all the valid symbols. If one was in a hurry, for eight-bit character codes, an array GOODEXT of 256 logical values could be indexed by the numerical value of the character.
 ```Fortran
       MODULE TEXTGNASH	!Some text inspection.
        CHARACTER*10 DIGITS		!Integer only.
@@ -856,9 +856,9 @@ End Function
 
 Dim filePaths(1 To 6) As String = _
 { _
-  "http://example.com/download.tar.gz", _	
-  "CharacterModel.3DS", _	
-  ".desktop", _	
+  "http://example.com/download.tar.gz", _
+  "CharacterModel.3DS", _
+  ".desktop", _
   "document", _
   "document.txt_backup", _
   "/etc/pam.d/login" _
@@ -872,7 +872,7 @@ Print "
 "
 Print
 For i As Integer = 1 To 6
-  Print filePaths(i); Tab(40); 
+  Print filePaths(i); Tab(40);
   Dim ext As String = extractFileExt(filePaths(i))
   If ext = "" Then
     Print "(empty string)"
@@ -909,7 +909,7 @@ document.txt_backup                    (empty string)
 ## Gambas
 
 As Gambas has its own tools for file extension extraction I have used those rather than complicate the code to match the requested criteria.
- 
+
 '''[https://gambas-playground.proko.eu/?gist=d52464fe8c05c857311d49184299814a Click this link to run this code]'''
 
 ```gambas
@@ -934,15 +934,15 @@ Output:
 
 ....
 mount.ntfs               ntfs
-iptables-save            
+iptables-save
 mkfs.minix               minix
-exfatlabel               
-modprobe                 
-vgrename                 
+exfatlabel
+modprobe
+vgrename
 mkfs.ext2                ext2
-lsmod                    
+lsmod
 umount.ecryptfs_private  ecryptfs_private
-fstab-decode             
+fstab-decode
 mount.ecryptfs           ecryptfs
 ....
 
@@ -1047,7 +1047,7 @@ fps =
   , "document.txt_backup"
   , "/etc/pam.d/login"
   ]
-  
+
 main :: IO ()
 main = mapM_ print $ takeExtension <$> fps
 ```
@@ -1114,7 +1114,7 @@ ext=: (}.~ i:&'.')@(#~ [: -. [: +./\. -.@e.&('.',AlphaNum_j_)
 
 ```java
 public class Test {
- 
+
     public static void main(String[] args) {
         String[] filenames = { "http://example.com/download.tar.gz",
                                "CharacterModel.3DS",
@@ -1167,9 +1167,9 @@ filenames.forEach((e) => console.log(e + " -> " + (r.test(e) ? r.exec(e)[0] : ""
 http://example.com/download.tar.gz -> .gz
 CharacterModel.3DS -> .3DS
 .desktop -> .desktop
-document -> 
-document.txt_backup -> 
-/etc/pam.d/login -> 
+document ->
+document.txt_backup ->
+/etc/pam.d/login ->
 ```
 
 
@@ -1347,7 +1347,7 @@ http://example.com/download.tar.gz -> '.gz'
                           .desktop -> '.desktop'
                           document -> ''
                document.txt_backup -> '.txt_backup'
-                  /etc/pam.d/login -> '' 
+                  /etc/pam.d/login -> ''
 
 
 takeWindowsExtension :: FilePath -> String:
@@ -1357,7 +1357,7 @@ http://example.com/download.tar.gz -> '.gz'
                           .desktop -> '.desktop'
                           document -> ''
                document.txt_backup -> ''
-                  /etc/pam.d/login -> '' 
+                  /etc/pam.d/login -> ''
 ```
 
 
@@ -1394,7 +1394,7 @@ def file_extension:
 
 ```jq
 def file_extension:
-  (match( "(\\.[a-zA-Z0-9]*$)" ) | .captures[0].string) 
+  (match( "(\\.[a-zA-Z0-9]*$)" ) | .captures[0].string)
   // "" ;
 ```
 
@@ -1425,9 +1425,9 @@ $ jq -r -n -f Extract_file_extension.jq
 http://example.com/download.tar.gz has extension: .gz
 CharacterModel.3DS has extension: .3DS
 .desktop has extension: .desktop
-document has extension: 
-document.txt_backup has extension: 
-/etc/pam.d/login has extension: 
+document has extension:
+document.txt_backup has extension:
+/etc/pam.d/login has extension:
 
 ```
 
@@ -1569,7 +1569,7 @@ c:\programs\myprogs\myprog.exe_backup -> (empty string)
 ```Lua
 -- Lua pattern docs at http://www.lua.org/manual/5.1/manual.html#5.4.1
 function fileExt (filename) return filename:match("(%.%w+)$") or "" end
- 
+
 local testCases = {
     "http://example.com/download.tar.gz",
     "CharacterModel.3DS",
@@ -1625,7 +1625,7 @@ class FindExtension {
     if(ext->Size() < 1) {
       return "";
     };
-    
+
     if(<>RegEx->New("\\.([a-z]|[A-Z]|[0-9])+")->MatchExact(ext)) {
       return "";
     };
@@ -1694,7 +1694,7 @@ Easy to change if "" is required.
 
 
 ```Oforth
-: fileExt( s -- t ) 
+: fileExt( s -- t )
 | i |
    s lastIndexOf('.') dup ->i ifNull: [ null return ]
    s extract(i 1+, s size) conform(#isAlpha) ifFalse: [ null return ]
@@ -1761,11 +1761,11 @@ for qw[
 
 ```txt
 
-http://example.com/download.tar.gz  '.gz'      
-CharacterModel.3DS                  '.3DS'     
-.desktop                            '.desktop' 
-document                            ''         
-document.txt_backup                 ''         
+http://example.com/download.tar.gz  '.gz'
+CharacterModel.3DS                  '.3DS'
+.desktop                            '.desktop'
+document                            ''
+document.txt_backup                 ''
 /etc/pam.d/login                    ''
 
 ```
@@ -1813,10 +1813,10 @@ for <
 
 ```txt
 
-http://example.com/download.tar.gz  ".gz"       "gz"        
-CharacterModel.3DS                  ".3DS"      "3DS"       
-.desktop                            ".desktop"  "desktop"   
-document                            ""          ""          
+http://example.com/download.tar.gz  ".gz"       "gz"
+CharacterModel.3DS                  ".3DS"      "3DS"
+.desktop                            ".desktop"  "desktop"
+document                            ""          ""
 document.txt_backup                 ""          "txt_backup"
 /etc/pam.d/login                    ""          ""
 
@@ -2056,17 +2056,17 @@ takePosixExtension :: FilePath -> String:
 http://example.com/download.tar.gz -> .gz
                 CharacterModel.3DS -> .3DS
                           .desktop -> .desktop
-                          document -> 
+                          document ->
                document.txt_backup -> .txt_backup
-                  /etc/pam.d/login -> 
+                  /etc/pam.d/login ->
 
 takeWindowsExtension :: FilePath -> String:
 http://example.com/download.tar.gz -> .gz
                 CharacterModel.3DS -> .3DS
                           .desktop -> .desktop
-                          document -> 
-               document.txt_backup -> 
-                  /etc/pam.d/login -> 
+                          document ->
+               document.txt_backup ->
+                  /etc/pam.d/login ->
 ```
 
 
@@ -2084,10 +2084,10 @@ http://example.com/download.tar.gz -> .gz
 ;; since it requires a proper name (fails on ""), returns a byte-string,
 ;; and handles path values so might run into problems with unicode
 ;; string inputs.
- 
+
 (define (string-extension x)
   (cadr (regexp-match #px"(\\.[[:alnum:]]+|)$" x)))
- 
+
 (define examples '("http://example.com/download.tar.gz"
                    "CharacterModel.3DS"
                    ".desktop"
@@ -2097,7 +2097,7 @@ http://example.com/download.tar.gz -> .gz
 
 (for ([x (in-list examples)])
   (printf "~a | ~a\n" (~a x #:width 34) (string-extension x)))
- 
+
 ```
 
 
@@ -2108,9 +2108,9 @@ http://example.com/download.tar.gz -> .gz
 http://example.com/download.tar.gz | .gz
 CharacterModel.3DS                 | .3DS
 .desktop                           | .desktop
-document                           | 
-document.txt_backup                | 
-/etc/pam.d/login                   | 
+document                           |
+document.txt_backup                |
+/etc/pam.d/login                   |
 
 ```
 
@@ -2183,7 +2183,7 @@ for n = 1 to len(test)
     if nr > 0
        revtest2 = left(revtest, nr)
        for m = 1 to len(revtest2)
-           if (ascii(revtest2[m]) > 64 and ascii(revtest2[m]) < 91) or 
+           if (ascii(revtest2[m]) > 64 and ascii(revtest2[m]) < 91) or
               (ascii(revtest2[m]) > 96 and ascii(revtest2[m]) < 123) or
                isdigit(revtest2[m]) or revtest2[m] = "."
            else
@@ -2198,7 +2198,7 @@ for n = 1 to len(test)
        see test[n] + " -> " + revtest3 + nl
     else
        see test[n] + " -> (none)" + nl
-    ok    
+    ok
 next
 
 func revstr(cStr)
@@ -2229,7 +2229,7 @@ document.txt_backup -> (none)
 
 
 ```ruby
-names = 
+names =
 %w(http://example.com/download.tar.gz
    CharacterModel.3DS
    .desktop
@@ -2312,19 +2312,19 @@ document.txt_backup                |          | Some("txt_backup")
 package rosetta
 
 object FileExt {
-  
+
   private val ext = """\.[A-Za-z0-9]+$""".r
-   
+
   def isExt(fileName: String, extensions: List[String]) =
     extensions.map { _.toLowerCase }.exists { fileName.toLowerCase endsWith "." + _ }
-  
+
   def extractExt(url: String) = ext findFirstIn url getOrElse("")
-  
+
 }
 
 object FileExtTest extends App {
-    val testExtensions: List[String] = List("zip", "rar", "7z", "gz", "archive", "A##", "tar.bz2") 
-  
+    val testExtensions: List[String] = List("zip", "rar", "7z", "gz", "archive", "A##", "tar.bz2")
+
   val isExtTestFiles: Map[String, Boolean] = Map(
       "MyData.a##"          -> true,
       "MyData.tar.Gz"       -> true,
@@ -2335,27 +2335,27 @@ object FileExtTest extends App {
       "MyData_v1.0.tar.bz2" -> true,
       "MyData_v1.0.bz2"     -> false
       )
-      
-  val extractExtTestFiles: Map[String, String] = Map(      
-      "http://example.com/download.tar.gz" -> ".gz",           
-      "CharacterModel.3DS"                 -> ".3DS",          
-      ".desktop"                           -> ".desktop",      
+
+  val extractExtTestFiles: Map[String, String] = Map(
+      "http://example.com/download.tar.gz" -> ".gz",
+      "CharacterModel.3DS"                 -> ".3DS",
+      ".desktop"                           -> ".desktop",
       "document"                           -> "",
       "document.txt_backup"                -> "",
       "/etc/pam.d/login"                   -> "",
-      "/etc/pam.d/login.a"                 -> ".a",                  
-      "/etc/pam.d/login."                  -> "",              
-      "picture.jpg"                        -> ".jpg",          
-      "http://mywebsite.com/picture/image.png"-> ".png",       
+      "/etc/pam.d/login.a"                 -> ".a",
+      "/etc/pam.d/login."                  -> "",
+      "picture.jpg"                        -> ".jpg",
+      "http://mywebsite.com/picture/image.png"-> ".png",
       "myuniquefile.longextension"         -> ".longextension",
-      "IAmAFileWithoutExtension"           -> "",              
-      "/path/to.my/file"                   -> "",              
-      "file.odd_one"                       -> "",              
-      // Extra, with unicode                                   
-	    "café.png"                           -> ".png",          
-      "file.resumé"                        -> "",              
-      // with unicode combining characters                     
-	    "cafe\u0301.png"                     -> ".png",        
+      "IAmAFileWithoutExtension"           -> "",
+      "/path/to.my/file"                   -> "",
+      "file.odd_one"                       -> "",
+      // Extra, with unicode
+	    "café.png"                           -> ".png",
+      "file.resumé"                        -> "",
+      // with unicode combining characters
+	    "cafe\u0301.png"                     -> ".png",
       "file.resume\u0301"                  -> ""
 	    )
 	      println("isExt() tests:")
@@ -2377,22 +2377,22 @@ object FileExtTest extends App {
 ```txt
 
 Url: picture.jpg -> Extension: .jpg
-Url: document.txt_backup -> Extension: 
+Url: document.txt_backup -> Extension:
 Url: .desktop -> Extension: .desktop
 Url: CharacterModel.3DS -> Extension: .3DS
-Url: file.resumé -> Extension: 
-Url: document -> Extension: 
+Url: file.resumé -> Extension:
+Url: document -> Extension:
 Url: café.png -> Extension: .png
-Url: /etc/pam.d/login. -> Extension: 
+Url: /etc/pam.d/login. -> Extension:
 Url: http://mywebsite.com/picture/image.png -> Extension: .png
-Url: IAmAFileWithoutExtension -> Extension: 
-Url: /etc/pam.d/login -> Extension: 
+Url: IAmAFileWithoutExtension -> Extension:
+Url: /etc/pam.d/login -> Extension:
 Url: /etc/pam.d/login.a -> Extension: .a
-Url: file.odd_one -> Extension: 
-Url: /path/to.my/file -> Extension: 
+Url: file.odd_one -> Extension:
+Url: /path/to.my/file -> Extension:
 Url: myuniquefile.longextension -> Extension: .longextension
 Url: café.png -> Extension: .png
-Url: file.resumé -> Extension: 
+Url: file.resumé -> Extension:
 Url: http://example.com/download.tar.gz -> Extension: .gz
 
 ```
@@ -2426,9 +2426,9 @@ done
 http://example.com/download.tar.gz: .gz
 CharacterModel.3DS: .3DS
 .desktop: .desktop
-document: 
-document.txt_backup: 
-/etc/pam.d/login: 
+document:
+document.txt_backup:
+/etc/pam.d/login:
 
 ```
 
@@ -2460,12 +2460,12 @@ files.each {|f|
 
 ```txt
 
-"http://example.com/download.tar.gz" -> ".gz"      
-"CharacterModel.3DS"                 -> ".3DS"     
-".desktop"                           -> ".desktop" 
-"document"                           -> ""         
-"document.txt_backup"                -> ""         
-"/etc/pam.d/login"                   -> ""         
+"http://example.com/download.tar.gz" -> ".gz"
+"CharacterModel.3DS"                 -> ".3DS"
+".desktop"                           -> ".desktop"
+"document"                           -> ""
+"document.txt_backup"                -> ""
+"/etc/pam.d/login"                   -> ""
 
 ```
 
@@ -2582,7 +2582,7 @@ Function fileExt(fname)
 	End If
 	fileExt = ret
 End Function
- 
+
 'Real Start of Program
 arr_t = Array("http://example.com/download.tar.gz",	_
 	      "CharacterModel.3DS",			_
@@ -2590,7 +2590,7 @@ arr_t = Array("http://example.com/download.tar.gz",	_
 	      "document",				_
 	      "document.txt_backup",			_
 	      "/etc/pam.d/login")
- 
+
 For Each name In arr_t
 	Wscript.Echo "NAME:",name
 	Wscript.Echo " EXT:","<" & fileExt(name) & ">"
@@ -2702,10 +2702,10 @@ Note: on Unix, .desktop is a hidden file, not an extension.
 
  http://example.com/download.tar.gz : .gz
                  CharacterModel.3DS : .3DS
-                           .desktop : 
-                           document : 
-                document.txt_backup : 
-                   /etc/pam.d/login : 
+                           .desktop :
+                           document :
+                document.txt_backup :
+                   /etc/pam.d/login :
 
 ```
 

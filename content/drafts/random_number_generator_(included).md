@@ -17,9 +17,9 @@ The task is to:
 
 <small>Note: the task is ''not'' to create an RNG, but to report on the languages in-built RNG that would be the most likely RNG used.</small>
 
-The main types of pseudo-random number generator ([[wp:PRNG|PRNG]]) that are in use are the [[linear congruential generator|Linear Congruential Generator]] ([[wp:Linear congruential generator|LCG]]), and the Generalized Feedback Shift Register ([[wp:Generalised_feedback_shift_register#Non-binary_Galois_LFSR|GFSR]]), (of which the [[wp:Mersenne twister|Mersenne twister]] generator is a subclass). The last main type is where the output of one of the previous ones (typically a Mersenne twister) is fed through a [[cryptographic hash function]] to maximize unpredictability of individual bits. 
+The main types of pseudo-random number generator ([[wp:PRNG|PRNG]]) that are in use are the [[linear congruential generator|Linear Congruential Generator]] ([[wp:Linear congruential generator|LCG]]), and the Generalized Feedback Shift Register ([[wp:Generalised_feedback_shift_register#Non-binary_Galois_LFSR|GFSR]]), (of which the [[wp:Mersenne twister|Mersenne twister]] generator is a subclass). The last main type is where the output of one of the previous ones (typically a Mersenne twister) is fed through a [[cryptographic hash function]] to maximize unpredictability of individual bits.
 
-Note that neither LCGs nor GFSRs should be used for the most demanding applications (cryptography) without additional steps. 
+Note that neither LCGs nor GFSRs should be used for the most demanding applications (cryptography) without additional steps.
 
 
 ## 8th
@@ -49,18 +49,18 @@ The used algorithm is implementation defined. The standard says: "To enable the 
 Details of the random number generator are in the Revised Reports sections: 10.2.1. and 10.5.1.
 * [http://vestein.arb-phys.uni-dortmund.de/~wb/RR/rrA2.html 10.2. The standard prelude - 10.2.1. Environment enquiries]
 * [http://vestein.arb-phys.uni-dortmund.de/~wb/RR/rrA5.html 10.5. The particular preludes and postlude - 10.5.1. The particular preludes]
- 
+
 
 ```algol68
-PROC ℒ next random = (REF ℒ INT a)ℒ REAL: ( a := 
-¢ the next pseudo-random ℒ integral value after 'a' from a 
-uniformly distributed sequence on the interval [ℒ 0,ℒ maxint] ¢; 
+PROC ℒ next random = (REF ℒ INT a)ℒ REAL: ( a :=
+¢ the next pseudo-random ℒ integral value after 'a' from a
+uniformly distributed sequence on the interval [ℒ 0,ℒ maxint] ¢;
 
-¢ the real value corresponding to 'a' according to some mapping of 
-integral values [ℒ 0, ℒ max int] into real values [ℒ 0, ℒ 1) 
-i.e. such that -0 <= x < 1 such that the sequence of real 
-values so produced preserves the properties of pseudo-randomness 
-and uniform distribution of the sequence of integral values ¢); 
+¢ the real value corresponding to 'a' according to some mapping of
+integral values [ℒ 0, ℒ max int] into real values [ℒ 0, ℒ 1)
+i.e. such that -0 <= x < 1 such that the sequence of real
+values so produced preserves the properties of pseudo-randomness
+and uniform distribution of the sequence of integral values ¢);
 
 INT ℒ last random := # some initial random number #;
 PROC ℒ random = ℒ REAL: ℒ next random(ℒ last random);
@@ -88,10 +88,10 @@ The built-in command [http://www.autohotkey.com/docs/commands/Random.htm Random]
 
 ## AWK
 
-The built-in command "rand" generates a pseudo-random uniform distributed random variable. More information is available from the documentation of 
+The built-in command "rand" generates a pseudo-random uniform distributed random variable. More information is available from the documentation of
 [http://www.gnu.org/software/gawk/manual/html_node/Numeric-Functions.html gawk].
 
-It is important that the RNG is seeded with the funtions "srand", otherwise, 
+It is important that the RNG is seeded with the funtions "srand", otherwise,
 the same random number is produced.
 
 Example usage: see [http://rosettacode.org/wiki/Random_number_generator_(included)#UNIX_Shell #UNIX_Shell]
@@ -147,8 +147,8 @@ Among current systems, [[BSD]] might have the worst algorithm for rand(). BSD ra
 BSD rand() produces a cycling sequence of only <math>2^{31}</math> possible states; this is already too short to produce good random numbers. The big problem with BSD rand() is that the low <math>n</math> bits' cycle sequence length is only <math>2^n</math>. (This problem happens because the modulus <math>2^{31}</math> is a power of two.) The worst case, when <math>n = 1</math>, becomes obvious if one uses the low bit to flip a coin.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 /* Flip a coin, 10 times. */
@@ -213,17 +213,17 @@ Additionally, the following distributions are supported:
 Example of use:
 {{works with|C++11}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <random>
- 
+
 int main()
 {
     std::random_device rd;
     std::uniform_int_distribution<int> dist(1, 10);
     std::mt19937 mt(rd());
-    
+
     std::cout << "Random Number (hardware): " << dist(rd) << std::endl;
     std::cout << "Mersenne twister (hardware seeded): " << dist(mt) << std::endl;
 }
@@ -293,8 +293,8 @@ The standard implementation, <code>[[vu]]</code>, uses a Mersenne twister.
 According to [[wp:Linear_congruential_generator#Parameters_in_common_use|Wikipedia]], Delphi uses a Linear Congruential Generator.
 
 Random functions:
-  function Random : Extended; 
-  function Random ( LimitPlusOne  : Integer ) : Integer; 
+  function Random : Extended;
+  function Random ( LimitPlusOne  : Integer ) : Integer;
   procedure Randomize;
 
 Based on the values given in the wikipedia entry here is a Delphi compatible implementation for use in other pascal dialects.
@@ -302,30 +302,30 @@ Based on the values given in the wikipedia entry here is a Delphi compatible imp
 ```pascal
 
 {$ifdef fpc}{$mode objfpc}{$endif}
- 
+
 interface
- 
+
 function LCGRandom: extended; overload;inline;
 function LCGRandom(const range:longint):longint;overload;inline;
- 
+
 implementation
- 
+
 function IM:cardinal;inline;
 begin
   RandSeed := RandSeed * 134775813  + 1;
   Result := RandSeed;
 end;
- 
+
 function LCGRandom: extended; overload;inline;
 begin
   Result := IM * 2.32830643653870e-10;
 end;
- 
+
 function LCGRandom(const range:longint):longint;overload;inline;
 begin
   Result := IM * range shr 32;
 end;
- 
+
 end.
 ```
 
@@ -360,7 +360,7 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     console.printLine(randomGenerator.nextReal());
@@ -462,7 +462,7 @@ The default RNG used when the <code>random</code> vocabulary is used, is the [[w
 ## Fortran
 
 Fortran has intrinsic random_seed() and random_number() subroutines. Used algorithm of the pseudorandom number generator is compiler dependent (not specified in ISO Fortran Standard, see ISO/IEC 1539-1:2010 (E), 13.7.135 RANDOM NUMBER). For algorithm in GNU gfortran see https://gcc.gnu.org/onlinedocs/gfortran/RANDOM_005fNUMBER.html
-Note that with the GNU gfortran compiler program needs to call random_seed with a random PUT= argument to get a pseudorandom number otherwise the sequence always starts with the same number. Intel compiler ifort reinitializes  the seed randomly without PUT argument to random value using the system date and time. Here we are seeding random_seed() with some number obtained from the Linux urandom device. 
+Note that with the GNU gfortran compiler program needs to call random_seed with a random PUT= argument to get a pseudorandom number otherwise the sequence always starts with the same number. Intel compiler ifort reinitializes  the seed randomly without PUT argument to random value using the system date and time. Here we are seeding random_seed() with some number obtained from the Linux urandom device.
 
 
 ```fortran
@@ -668,7 +668,7 @@ The [http://www.haskell.org/onlinereport/random.html Haskell 98 report] specifie
 =={{header|Icon}} and {{header|Unicon}} ==
 Icon and Unicon both use the same linear congruential random number generator  x := (x * 1103515245 + 453816694) mod 2^31.  Icon uses an initial seed value of 0 and Unicon randomizes the initial seed.
 
-This LCRNG has a number of well documented quirks (see [http://www.cs.arizona.edu/icon/analyst/ia.htm The Icon Analyst issues #26, 28, 38]) relating to the choices of an even additive and a power of two modulus.  This LCRNG produces two independent sequences of length 2^30 one of even numbers the other odd.  
+This LCRNG has a number of well documented quirks (see [http://www.cs.arizona.edu/icon/analyst/ia.htm The Icon Analyst issues #26, 28, 38]) relating to the choices of an even additive and a power of two modulus.  This LCRNG produces two independent sequences of length 2^30 one of even numbers the other odd.
 
 Additionally, the {{libheader|Icon Programming Library}} [http://www.cs.arizona.edu/icon/library/src/procs/random.icn random] provides related procedures including a parametrized  LCRNG that defaults to the built-in values.
 
@@ -837,7 +837,7 @@ The implementation underlying the <tt>rand</tt> function is platform and VM depe
 
 ## Phix
 
-The rand(n) routine returns an integer in the range 1 to n, and rnd() returns a floating point number between 0.0 and 1.0. 
+The rand(n) routine returns an integer in the range 1 to n, and rnd() returns a floating point number between 0.0 and 1.0.
 
 In both cases the underlying algorithm is just about as trivial as it can be, certainly not suitable for serious cryptographic work.
 
@@ -876,7 +876,7 @@ random(x) = seed(x) / 2147483647
 Oracle Database has two packages that can be used for random numbers generation.
 
 ===DBMS_RANDOM===
-The DBMS_RANDOM package provides a built-in random number generator. This package is not intended for cryptography. 
+The DBMS_RANDOM package provides a built-in random number generator. This package is not intended for cryptography.
 It will automatically initialize with the date, user ID, and process ID if no explicit initialization is performed.
 If this package is seeded twice with the same seed, then accessed in the same way, it will produce the same results in both cases.
 
@@ -890,7 +890,7 @@ DBMS_RANDOM.NORMAL --produces normal distributed numbers with a mean of 0 and a 
 ===DBMS_CRYPTO===
 The DBMS_CRYPTO package contains basic cryptographic functions and procedures.
 The DBMS_CRYPTO.RANDOMBYTES function returns a RAW value containing a cryptographically secure
-pseudo-random sequence of bytes, which can be used to generate random material for encryption keys. 
+pseudo-random sequence of bytes, which can be used to generate random material for encryption keys.
 This function is based on the RSA X9.31 PRNG (Pseudo-Random Number Generator).
 
 ```PL/SQL
@@ -961,7 +961,7 @@ In addition, the "math" library has a bunch of additional
 
 
 ## Rascal
- 
+
 Rascal does not have its own arbitrary number generator, but uses the [[Random_number_generator_(included)#Java | Java]]  generator. Nonetheless, you can redefine the arbitrary number generator if needed. Rascal has the following functions connected to the random number generator:
 
 ```rascal
@@ -972,7 +972,7 @@ arbReal(); // generates an arbitrary real value in the interval [0.0, 1.0]
 arbSeed(int seed);
 ```
 
-The last function can be used to redefine the arbitrary number generator. This function is also used in the getOneFrom() functions. 
+The last function can be used to redefine the arbitrary number generator. This function is also used in the getOneFrom() functions.
 
 ```rascal>rascal
 import List;
@@ -987,12 +987,12 @@ str: "owl"
 ## REXX
 
 The   RANDOM   BIF function is a pseudo-random number (non-negative integer) generator,
-with a range (spread) limited to   100,000   (but some REXX interpreters support a larger range). 
+with a range (spread) limited to   100,000   (but some REXX interpreters support a larger range).
 
 
-The random numbers generated are not consistent between different REXX interpreters or 
+The random numbers generated are not consistent between different REXX interpreters or
 
-even the same REXX interpreters executing on different hardware.  
+even the same REXX interpreters executing on different hardware.
 
 ```rexx
      /*(below)  returns a random integer between 100 & 200, inclusive.*/
@@ -1035,8 +1035,8 @@ Say ol
 
 ```txt
 
-REXX-ooRexx_4.1.3(MT) 6.03 4 Jul 2013: 3 10 6 8 6 9 9 1 1 6 
-REXX-ooRexx_4.2.0(MT)_32-bit 6.04 22 Feb 2014: 3 10 6 8 6 9 9 1 1 6 -403019526 
+REXX-ooRexx_4.1.3(MT) 6.03 4 Jul 2013: 3 10 6 8 6 9 9 1 1 6
+REXX-ooRexx_4.2.0(MT)_32-bit 6.04 22 Feb 2014: 3 10 6 8 6 9 9 1 1 6 -403019526
 REXX/Personal 4.00 21 Mar 1992: 7 7 6 7 8 8 5 9 4 7
 REXX-r4 4.00 17 Aug 2013: 8 10 7 5 4 2 10 5 2 4
 REXX-roo 4.00 28 Jan 2007: 8 10 7 5 4 2 10 5 2 4
@@ -1061,9 +1061,9 @@ Conclusion: It's not safe to transport a program that uses 'reproducable' use of
 ```ring
 
 nr = 10
-for i = 1 to nr 
+for i = 1 to nr
      see random(i) + nl
-next          
+next
 
 ```
 
@@ -1092,14 +1092,14 @@ For any other PRNGs not provided, they merely have to implement the <code>[https
 
 ## Scala
 
-Scala's <code>scala.util.Random</code> class uses a [[wp:Linear congruential generator|Linear congruential formula]] of the JVM run-time libary, as described in [http://java.sun.com/javase/6/docs/api/java/util/Random.html its documentation]. 
+Scala's <code>scala.util.Random</code> class uses a [[wp:Linear congruential generator|Linear congruential formula]] of the JVM run-time libary, as described in [http://java.sun.com/javase/6/docs/api/java/util/Random.html its documentation].
 An example can be found here:
 
 ```scala
 import scala.util.Random
 
 /**
- * Histogram of 200 throws with two dices. 
+ * Histogram of 200 throws with two dices.
  */
 object Throws extends App {
   Stream.continually(Random.nextInt(6) + Random.nextInt(6) + 2)
@@ -1171,8 +1171,8 @@ Citations (from Tcl source code):
 
 =={{header|TI-83 BASIC}}==
 TI-83 uses L'Ecuyer's algorithm to generate random numbers.
-See [https://www.gnu.org/software/gsl/manual/html_node/Random-number-generator-algorithms.html L'Ecuyer's algorithm]. 
-More explainations can be found in this [http://www.iro.umontreal.ca/~lecuyer/myftp/papers/handstat.pdf paper]. 
+See [https://www.gnu.org/software/gsl/manual/html_node/Random-number-generator-algorithms.html L'Ecuyer's algorithm].
+More explainations can be found in this [http://www.iro.umontreal.ca/~lecuyer/myftp/papers/handstat.pdf paper].
 
 Random function:
 
@@ -1192,7 +1192,7 @@ All '''Bourne Shell''' clones have a very quick pseudo random number generator.
 
 
 ```bash
- echo $RANDOM 
+ echo $RANDOM
 ```
 
 

@@ -75,7 +75,7 @@ Allied sequences can be generated where the initial values are changed:
 ## Ada
 
 
-First, we specify a package Bonacci, that defines the type Sequence (of Positive numbers), a function Generate that takes a given Start sequence and outputs a generalized N-Bonacci Sequence of a spefified Length, and some constant start sequences. 
+First, we specify a package Bonacci, that defines the type Sequence (of Positive numbers), a function Generate that takes a given Start sequence and outputs a generalized N-Bonacci Sequence of a spefified Length, and some constant start sequences.
 
 
 ```Ada
@@ -93,7 +93,7 @@ end Bonacci;
 ```
 
 
-The implementation is quite straightforward. 
+The implementation is quite straightforward.
 
 
 ```Ada
@@ -290,11 +290,11 @@ on run
                 showJSON(takeNFibs(fibInit(n), intTerms))
         end |λ|
     end script
-    
+
     set strTable to unlines(zipWith(series, ¬
         words of ("fibo tribo tetra penta hexa hepta octo nona deca"), ¬
         enumFromToInt(2, 10)))
-    
+
     justifyLeft(12, space, "Lucas ") & " -> " & ¬
         showJSON(takeNFibs({2, 1}, intTerms)) & linefeed & strTable
 end run
@@ -360,7 +360,7 @@ on justifyLeft(n, cFiller, strText)
     end if
 end justifyLeft
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -394,14 +394,14 @@ on min(x, y)
 end min
 
 -- Egyptian multiplication - progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for binary 
+-- stages of doubling to an accumulator where needed for binary
 -- assembly of a target length
 -- replicate :: Int -> a -> [a]
 on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -447,7 +447,7 @@ on sum(xs)
             a + b
         end |λ|
     end script
-    
+
     foldl(add, 0, xs)
 end sum
 
@@ -525,7 +525,7 @@ for i, seq in ["nacci", "lucas"]
             Out .= val (A_Index = 15 ? "`n" : "`, ")
     }
 MsgBox, % Out
- 
+
 NStepSequence(v1, v2, n, k) {
     a := [v1, v2]
     Loop, % k - 2 {
@@ -583,7 +583,7 @@ function sequence(values, howmany) {
 	return result
 }
 
-# print some sequences                                                                    
+# print some sequences
 END	{
 		a[1] = 1; a[2] = 1
 		print("fibonacci :\t",sequence(a, 10))
@@ -604,10 +604,10 @@ END	{
 
 ```txt
 
-fibonacci :	 1 1 2 3 5 8 13 21 34 55 
-tribonacci :	 1 1 2 4 7 13 24 44 81 149 
-tetrabonacci :	 1 1 2 4 8 15 29 56 108 208 
-lucas :		 2 1 3 4 7 11 18 29 47 76 
+fibonacci :	 1 1 2 3 5 8 13 21 34 55
+tribonacci :	 1 1 2 4 7 13 24 44 81 149
+tetrabonacci :	 1 1 2 4 8 15 29 56 108 208
+lucas :		 2 1 3 4 7 11 18 29 47 76
 
 ```
 
@@ -650,8 +650,8 @@ set "seq=%seq% ^| "
 set n=-%count%
 set /a n+=1
 for %%i in (%*) do (
-  set F!n!=%%i 
-  set /a n+=1 
+  set F!n!=%%i
+  set /a n+=1
 )
 
 for /l %%i in (1,1,10) do (
@@ -696,24 +696,24 @@ The BBC BASIC '''SUM''' function is useful here.
 
 ```bbcbasic
       @% = 5 : REM Column width
-      
+
       PRINT "Fibonacci:"
       DIM f2%(1) : f2%() = 1,1
       FOR i% = 1 TO 12 : PRINT f2%(0); : PROCfibn(f2%()) : NEXT : PRINT " ..."
-      
+
       PRINT "Tribonacci:"
       DIM f3%(2) : f3%() = 1,1,2
       FOR i% = 1 TO 12 : PRINT f3%(0); : PROCfibn(f3%()) : NEXT : PRINT " ..."
-      
+
       PRINT "Tetranacci:"
       DIM f4%(3) : f4%() = 1,1,2,4
       FOR i% = 1 TO 12 : PRINT f4%(0); : PROCfibn(f4%()) : NEXT : PRINT " ..."
-      
+
       PRINT "Lucas:"
       DIM fl%(1) : fl%() = 2,1
       FOR i% = 1 TO 12 : PRINT fl%(0); : PROCfibn(fl%()) : NEXT : PRINT " ..."
       END
-      
+
       DEF PROCfibn(f%())
       LOCAL i%, s%
       s% = SUM(f%())
@@ -870,7 +870,7 @@ int
 main ()
 {
   int fibo[] = { 1, 1, 0 }, tribo[] = { 1, 1, 2, 0 }, tetra[] = { 1, 1, 2, 4, 0 }, luca[] = { 2, 1, 0 };
-  int *fibonacci = anynacci (fibo, 10), *tribonacci = anynacci (tribo, 10), *tetranacci = anynacci (tetra, 10), 
+  int *fibonacci = anynacci (fibo, 10), *tribonacci = anynacci (tribo, 10), *tetranacci = anynacci (tetra, 10),
       *lucas = anynacci(luca, 10);
   int i;
 
@@ -909,8 +909,8 @@ Fibonacci       Tribonacci      Tetranacci      Lucas
 ## C++
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <iostream>
 #include <numeric>
 #include <iterator>
@@ -924,10 +924,10 @@ std::vector<int> nacci ( const std::vector<int> & start , int arity ) {
    int sumstart = 1 ;//summing starts at vector's begin + sumstart as
                      //soon as the vector is longer than arity
    while ( result.size( ) < 15 ) { //we print out the first 15 numbers
-      if ( result.size( ) <= arity ) 
-	 result.push_back( std::accumulate( result.begin( ) , 
+      if ( result.size( ) <= arity )
+	 result.push_back( std::accumulate( result.begin( ) ,
 		  result.begin( ) + result.size( ) , 0 ) ) ;
-      else { 
+      else {
 	 result.push_back( std::accumulate ( result.begin( ) +
 	  sumstart , result.begin( ) + sumstart + arity  , 0 )) ;
 	 sumstart++ ;
@@ -937,25 +937,25 @@ std::vector<int> nacci ( const std::vector<int> & start , int arity ) {
 }
 
 int main( ) {
-   std::vector<std::string> naccinames {"fibo" , "tribo" , 
+   std::vector<std::string> naccinames {"fibo" , "tribo" ,
       "tetra" , "penta" , "hexa" , "hepta" , "octo" , "nona" , "deca" } ;
    const std::vector<int> fibo { 1 , 1 } , lucas { 2 , 1 } ;
    for ( int i = 2 ; i < 11 ; i++ ) {
       std::vector<int> numberrow = nacci ( fibo , i ) ;
-      std::cout << std::left << std::setw( 10 ) << 
+      std::cout << std::left << std::setw( 10 ) <<
 	 naccinames[ i - 2 ].append( "nacci" ) <<
 	 std::setw( 2 ) << " : " ;
       std::copy ( numberrow.begin( ) , numberrow.end( ) ,
-	    std::ostream_iterator<int>( std::cout , " " ) ) ; 
+	    std::ostream_iterator<int>( std::cout , " " ) ) ;
       std::cout << "...\n" ;
       numberrow = nacci ( lucas , i ) ;
-      std::cout << "Lucas-" << i ; 
+      std::cout << "Lucas-" << i ;
       if ( i < 10 )               //for formatting purposes
 	 std::cout << "    : " ;
-      else 
+      else
 	 std::cout << "   : " ;
       std::copy ( numberrow.begin( ) , numberrow.end( ) ,
-	    std::ostream_iterator<int>( std::cout , " " ) ) ; 
+	    std::ostream_iterator<int>( std::cout , " " ) ) ;
       std::cout << "...\n" ;
    }
    return 0 ;
@@ -1011,7 +1011,7 @@ class nacci_t
   public:
 
     nacci_t( unsigned int order, int a0 = 1, int a1 = 1 )
-    :   history( order + 1 ), windex( 0 ), rindex( order - 1 ), 
+    :   history( order + 1 ), windex( 0 ), rindex( order - 1 ),
         running_sum( a0 + a1 )
     {
         // intialize sliding window
@@ -1019,7 +1019,7 @@ class nacci_t
         history[order - 0] = a1;
     }
 
-    int operator()() 
+    int operator()()
     {
         int result   = history[ rindex ];   // get 'nacci number to return
         running_sum -= history[ windex ];   // old 'nacci falls out of window
@@ -1038,7 +1038,7 @@ int main()
 {
     for ( unsigned int i = 2; i <= 10; ++i )
     {
-        nacci_t nacci( i ); // fibonacci sequence 
+        nacci_t nacci( i ); // fibonacci sequence
 
         std::cout << "nacci( " << i << " ): ";
 
@@ -1050,7 +1050,7 @@ int main()
 
     for ( unsigned int i = 2; i <= 10; ++i )
     {
-        nacci_t lucas( i, 2, 1 ); // Lucas sequence 
+        nacci_t lucas( i, 2, 1 ); // Lucas sequence
 
         std::cout << "lucas( " << i << " ): ";
 
@@ -1433,11 +1433,11 @@ n=10,  decanacci -> 1, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1023, 2045, 4088, 
 ;; bind it to its name
 (define (make-nacci name seed)
 		(define len (1+ (vector-length seed)))
-		(define-global name 
+		(define-global name
 			`(lambda(n) (for/sum ((i (in-range (1- n) (- n ,len) -1)))  (,name i))))
 		(remember name seed)
 		name)
-		
+
 (define nacci-family `(
 	(Fibonacci #(1 1))
 	(Tribonacci #(1 1 2))
@@ -1445,7 +1445,7 @@ n=10,  decanacci -> 1, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1023, 2045, 4088, 
 	(Decanacci #(1 1 2 4 8 16 32 64 128 256))
 	(Random-😜-nacci ,(list->vector (take 6 (shuffle (iota 100)))))
 	(Lucas #(2 1))))
-	
+
 (define (task naccis)
 	(for ((nacci naccis))
 		(define-values (name seed) nacci)
@@ -1454,7 +1454,7 @@ n=10,  decanacci -> 1, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1023, 2045, 4088, 
 
 ```
 
-	
+
 {{out}}
 
 ```txt
@@ -1482,7 +1482,7 @@ defmodule RC do
     n = length(start_sequence)
     anynacci(Enum.reverse(start_sequence), count-n, n)
   end
-  
+
   def anynacci(seq, 0, _), do: Enum.reverse(seq)
   def anynacci(seq, count, n) do
     next = Enum.sum(Enum.take(seq, n))
@@ -1678,7 +1678,7 @@ USING: formatting fry kernel make math namespaces qw sequences ;
         [ [ , ] each ] [ length - ] [ length ] tri
         '[ building get _ tail* sum , ] times
     ] { } make ;
-    
+
 qw{ fibonacci tribonacci tetranacci lucas }
 { { 1 1 } { 1 1 2 } { 1 1 2 4 } { 2 1 } }
 [ 10 swap n-bonacci "%-10s %[%3d, %]\n" printf ] 2each
@@ -1711,17 +1711,17 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 ```forth
 : length @ ;                          \ length of an array is stored at its address
 : a{ here cell allot ;
-: } , here over - cell / over ! ;  
- 
+: } , here over - cell / over ! ;
+
 defer nacci
 
 : step ( a- i n -- a- i m )
     >r 1- 2dup nacci r> + ;
 
-: steps ( a- i n -- m ) 
+: steps ( a- i n -- m )
     0 tuck do step loop nip nip ;
 
-:noname ( a- i -- n ) 
+:noname ( a- i -- n )
     over length over >                \ if i is within the array
     if cells + @                      \ fetch i...if not,
     else over length 1- steps         \ get length of array for calling step and recurse
@@ -1739,10 +1739,10 @@ defer nacci
 {{out}}
 
 ```txt
-fibonacci: 1 1 2 3 5 8 13 21 34 55 
-tribonacci: 1 1 2 4 7 13 24 44 81 149 
-tetranacci: 1 1 2 4 8 15 29 56 108 208 
-lucas: 2 1 3 4 7 11 18 29 47 76 
+fibonacci: 1 1 2 3 5 8 13 21 34 55
+tribonacci: 1 1 2 4 7 13 24 44 81 149
+tetranacci: 1 1 2 4 8 15 29 56 108 208
+lucas: 2 1 3 4 7 11 18 29 47 76
 
 ```
 
@@ -1834,12 +1834,12 @@ n
  1: 2
  2: 1
            2           1           3           4           7          11          18          29          47          76
-$ 
-$ 
-$ 
-$ 
-$ 
-$ 
+$
+$
+$
+$
+$
+$
 $ ./f # Waltzing the 6-step
 Enter the number of terms to sum: 6
 Show the the first how many terms of the sequence?  10
@@ -1847,7 +1847,7 @@ Show the the first how many terms of the sequence?  10
            1           1           2           4           8          16
 y
            1           1           2           4           8          16          32          63         125         248
-$ 
+$
 
 ```
 
@@ -1900,7 +1900,7 @@ Sub printSeries(a() As Integer, name_ As String) '' name is a keyword
     Print Using "####"; a(i);
     Print " ";
   Next
-  Print 
+  Print
 End Sub
 
 Const size As Integer = 13 '' say
@@ -2289,17 +2289,17 @@ The output is identical.
 '''Example''' ''(extended 'nacci series)'':
 ```j
    TESTS     =:  }."1 fixdsv noun define  [   require 'tables/dsv'             NB.  Tests from task description
-	 2 	fibonacci 	1 1 2 3 5  8 13 21  34  55  89  144  233  377  610 ...        
-	 3 	tribonacci	1 1 2 4 7 13 24 44  81 149 274  504  927 1705 3136 ...   
-	 4 	tetranacci	1 1 2 4 8 15 29 56 108 208 401  773 1490 2872 5536 ... 
-	 5 	pentanacci	1 1 2 4 8 16 31 61 120 236 464  912 1793 3525 6930 ... 
-	 6 	hexanacci 	1 1 2 4 8 16 32 63 125 248 492  976 1936 3840 7617 ... 
+	 2 	fibonacci 	1 1 2 3 5  8 13 21  34  55  89  144  233  377  610 ...
+	 3 	tribonacci	1 1 2 4 7 13 24 44  81 149 274  504  927 1705 3136 ...
+	 4 	tetranacci	1 1 2 4 8 15 29 56 108 208 401  773 1490 2872 5536 ...
+	 5 	pentanacci	1 1 2 4 8 16 31 61 120 236 464  912 1793 3525 6930 ...
+	 6 	hexanacci 	1 1 2 4 8 16 32 63 125 248 492  976 1936 3840 7617 ...
 	 7 	heptanacci	1 1 2 4 8 16 32 64 127 253 504 1004 2000 3984 7936 ...
 	 8 	octonacci 	1 1 2 4 8 16 32 64 128 255 509 1016 2028 4048 8080 ...
 	 9 	nonanacci 	1 1 2 4 8 16 32 64 128 256 511 1021 2040 4076 8144 ...
 	10	decanacci 	1 1 2 4 8 16 32 64 128 256 512 1023 2045 4088 8172 ...
 )
-   testNacci =:  ] -: #@] nacci {.                                             NB. Given an order & test sequence, compare nacci to sequence   
+   testNacci =:  ] -: #@] nacci {.                                             NB. Given an order & test sequence, compare nacci to sequence
    OT        =:  __ ".&.> (<<<1) { |: TESTS                                    NB. 'nacci order and test sequence
    (> 1 {"1 TESTS) ,. ' ' ,. (u: 16b274c 16b2713) {~ (testNacci }:)&>/ OT      NB. ✓ or ❌ for success or failure
 fibonacci  ✓
@@ -2330,14 +2330,14 @@ class Fibonacci
       throw new IllegalArgumentException("Fibonacci value must be at least 2");
     return fibonacci((n == 2) ? new int[] { 2, 1 } : lucas(n - 1, n), numRequested);
   }
-  
+
   public static int[] fibonacci(int n, int numRequested)
   {
     if (n < 2)
       throw new IllegalArgumentException("Fibonacci value must be at least 2");
     return fibonacci((n == 2) ? new int[] { 1, 1 } : fibonacci(n - 1, n), numRequested);
   }
-  
+
   public static int[] fibonacci(int[] startingValues, int numRequested)
   {
     int[] output = new int[numRequested];
@@ -2348,7 +2348,7 @@ class Fibonacci
         output[i] += output[i - j];
     return output;
   }
-  
+
   public static void main(String[] args)
   {
     for (int n = 2; n <= 10; n++)
@@ -2608,7 +2608,7 @@ def nacci(arity; len):
 def fib(arity; len):
   arity as $arity | len as $len
   | [1,1] | nacci($arity; $arity) | nacci($arity; $len) ;
- 
+
 def lucas(arity; len):
   arity as $arity | len as $len
   | [2,1] | nacci($arity; $arity) | nacci($arity; $len) ;
@@ -2698,7 +2698,7 @@ end
 This iterator produces the task description's version of the Lucas Sequence ([https://oeis.org/A000032 OEIS A000032]) and its generalization to n-steps as was done by some of the other solutions to this task.  The seeding for this series of sequences is <math>F_{1-n} = 3</math>, <math>F_{2-n} = -1</math> and, for <math>n > 2</math>, <math>F_{3-n} \ldots F_{0}=0</math>.
 
 ```Julia
- 
+
 function luc_rc_seeder{T<:Integer}(n::T)
     a = zeros(BigInt, n)
     a[1] = 3
@@ -2780,37 +2780,37 @@ end
 ```txt
 
 n-step Fibonacci for n = (2,10) up to k = 16:
-    2 => 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 
-    3 => 1 1 2 4 7 13 24 44 81 149 274 504 927 1705 3136 5768 
-    4 => 1 1 2 4 8 15 29 56 108 208 401 773 1490 2872 5536 10671 
-    5 => 1 1 2 4 8 16 31 61 120 236 464 912 1793 3525 6930 13624 
-    6 => 1 1 2 4 8 16 32 63 125 248 492 976 1936 3840 7617 15109 
-    7 => 1 1 2 4 8 16 32 64 127 253 504 1004 2000 3984 7936 15808 
-    8 => 1 1 2 4 8 16 32 64 128 255 509 1016 2028 4048 8080 16128 
-    9 => 1 1 2 4 8 16 32 64 128 256 511 1021 2040 4076 8144 16272 
-   10 => 1 1 2 4 8 16 32 64 128 256 512 1023 2045 4088 8172 16336 
+    2 => 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+    3 => 1 1 2 4 7 13 24 44 81 149 274 504 927 1705 3136 5768
+    4 => 1 1 2 4 8 15 29 56 108 208 401 773 1490 2872 5536 10671
+    5 => 1 1 2 4 8 16 31 61 120 236 464 912 1793 3525 6930 13624
+    6 => 1 1 2 4 8 16 32 63 125 248 492 976 1936 3840 7617 15109
+    7 => 1 1 2 4 8 16 32 64 127 253 504 1004 2000 3984 7936 15808
+    8 => 1 1 2 4 8 16 32 64 128 255 509 1016 2028 4048 8080 16128
+    9 => 1 1 2 4 8 16 32 64 128 256 511 1021 2040 4076 8144 16272
+   10 => 1 1 2 4 8 16 32 64 128 256 512 1023 2045 4088 8172 16336
 
 n-step Rosetta Code Lucas for n = (2,10) up to k = 16:
-    2 => 2 1 3 4 7 11 18 29 47 76 123 199 322 521 843 1364 
-    3 => 2 1 3 6 10 19 35 64 118 217 399 734 1350 2483 4567 8400 
-    4 => 2 1 3 6 12 22 43 83 160 308 594 1145 2207 4254 8200 15806 
-    5 => 2 1 3 6 12 24 46 91 179 352 692 1360 2674 5257 10335 20318 
-    6 => 2 1 3 6 12 24 48 94 187 371 736 1460 2896 5744 11394 22601 
-    7 => 2 1 3 6 12 24 48 96 190 379 755 1504 2996 5968 11888 23680 
-    8 => 2 1 3 6 12 24 48 96 192 382 763 1523 3040 6068 12112 24176 
-    9 => 2 1 3 6 12 24 48 96 192 384 766 1531 3059 6112 12212 24400 
-   10 => 2 1 3 6 12 24 48 96 192 384 768 1534 3067 6131 12256 24500 
+    2 => 2 1 3 4 7 11 18 29 47 76 123 199 322 521 843 1364
+    3 => 2 1 3 6 10 19 35 64 118 217 399 734 1350 2483 4567 8400
+    4 => 2 1 3 6 12 22 43 83 160 308 594 1145 2207 4254 8200 15806
+    5 => 2 1 3 6 12 24 46 91 179 352 692 1360 2674 5257 10335 20318
+    6 => 2 1 3 6 12 24 48 94 187 371 736 1460 2896 5744 11394 22601
+    7 => 2 1 3 6 12 24 48 96 190 379 755 1504 2996 5968 11888 23680
+    8 => 2 1 3 6 12 24 48 96 192 382 763 1523 3040 6068 12112 24176
+    9 => 2 1 3 6 12 24 48 96 192 384 766 1531 3059 6112 12212 24400
+   10 => 2 1 3 6 12 24 48 96 192 384 768 1534 3067 6131 12256 24500
 
 n-step MathWorld Lucas for n = (2,10) up to k = 16:
-    2 => 1 3 4 7 11 18 29 47 76 123 199 322 521 843 1364 2207 
-    3 => 1 3 7 11 21 39 71 131 241 443 815 1499 2757 5071 9327 17155 
-    4 => 1 3 7 15 26 51 99 191 367 708 1365 2631 5071 9775 18842 36319 
-    5 => 1 3 7 15 31 57 113 223 439 863 1695 3333 6553 12883 25327 49791 
-    6 => 1 3 7 15 31 63 120 239 475 943 1871 3711 7359 14598 28957 57439 
-    7 => 1 3 7 15 31 63 127 247 493 983 1959 3903 7775 15487 30847 61447 
-    8 => 1 3 7 15 31 63 127 255 502 1003 2003 3999 7983 15935 31807 63487 
-    9 => 1 3 7 15 31 63 127 255 511 1013 2025 4047 8087 16159 32287 64511 
-   10 => 1 3 7 15 31 63 127 255 511 1023 2036 4071 8139 16271 32527 65023 
+    2 => 1 3 4 7 11 18 29 47 76 123 199 322 521 843 1364 2207
+    3 => 1 3 7 11 21 39 71 131 241 443 815 1499 2757 5071 9327 17155
+    4 => 1 3 7 15 26 51 99 191 367 708 1365 2631 5071 9775 18842 36319
+    5 => 1 3 7 15 31 57 113 223 439 863 1695 3333 6553 12883 25327 49791
+    6 => 1 3 7 15 31 63 120 239 475 943 1871 3711 7359 14598 28957 57439
+    7 => 1 3 7 15 31 63 127 247 493 983 1959 3903 7775 15487 30847 61447
+    8 => 1 3 7 15 31 63 127 255 502 1003 2003 3999 7983 15935 31807 63487
+    9 => 1 3 7 15 31 63 127 255 511 1013 2025 4047 8087 16159 32287 64511
+   10 => 1 3 7 15 31 63 127 255 511 1023 2036 4071 8139 16271 32527 65023
 
 ```
 
@@ -2871,7 +2871,7 @@ fun main(args: Array<String>) {
 
 
 ## Lua
- 
+
 
 ```Lua
 function nStepFibs (seq, limit)
@@ -2947,12 +2947,12 @@ lucas: [2, 1, 3, 4, 7, 11, 18, 29, 47, 76, 123, 199, 322, 521, 843]
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
 
 f2=Function[{l,k},
-  Module[{n=Length@l,m}, 
+  Module[{n=Length@l,m},
   m=SparseArray[{{i_,j_}/;i==1||i==j+1->1},{n,n}];
   NestList[m.#&,l,k]]];
 Table[Last/@f2[{1,1}~Join~Table[0,{n-2}],15+n][[-18;;]],{n,2,10}]//TableForm
@@ -3187,15 +3187,15 @@ Output:
 
 ```txt
 % ./Fibbonacci
-Fibonacci:  1 1 2 3 5 8 13 21 34 55 89 
-Tribonacci: 1 1 2 4 7 13 24 44 81 149 274 
-Tetranacci: 1 1 2 4 8 15 29 56 108 208 401 
-Pentanacci: 1 1 2 4 8 16 31 61 120 236 464 
-Hexanacci:  1 1 2 4 8 16 32 63 125 248 492 
-Heptanacci: 1 1 2 4 8 16 32 64 127 253 504 
-Octonacci:  1 1 2 4 8 16 32 64 128 255 509 
-Nonanacci:  1 1 2 4 8 16 32 64 128 256 511 
-Decanacci:  1 1 2 4 8 16 32 64 128 256 512 
+Fibonacci:  1 1 2 3 5 8 13 21 34 55 89
+Tribonacci: 1 1 2 4 7 13 24 44 81 149 274
+Tetranacci: 1 1 2 4 8 15 29 56 108 208 401
+Pentanacci: 1 1 2 4 8 16 31 61 120 236 464
+Hexanacci:  1 1 2 4 8 16 32 63 125 248 492
+Heptanacci: 1 1 2 4 8 16 32 64 127 253 504
+Octonacci:  1 1 2 4 8 16 32 64 128 255 509
+Nonanacci:  1 1 2 4 8 16 32 64 128 256 511
+Decanacci:  1 1 2 4 8 16 32 64 128 256 512
 Lucas:      2 1 3 4 7 11 18 29 47 76 123
 ```
 
@@ -3219,7 +3219,7 @@ program FibbonacciN (output);
 const
   MAX_Nacci = 10;
 
-  No_of_examples = 11;// max 90; (golden ratio)^No < 2^64 
+  No_of_examples = 11;// max 90; (golden ratio)^No < 2^64
   Name: array[2..11] of string = ('Fibonacci:  ',
                                   'Tribonacci: ',
                                   'Tetranacci: ',
@@ -3349,7 +3349,7 @@ sub fib {
             sum(@xs[max($len - $n, 0)..$len-1])
         );
     }
-    
+
     return @xs;
 }
 
@@ -3664,19 +3664,19 @@ Output:
 
 ```txt
 
-We have a Lucan series. 
+We have a Lucan series.
 2 1 3 4 7 11 18 29 47 76 123 199 322 521 843 1364 2207 3571 5778 9349
 
-We have a 2-step Fibonacci series. 
+We have a 2-step Fibonacci series.
 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765
 
-We have a 3-step Fibonacci series. 
+We have a 3-step Fibonacci series.
 1 1 2 4 7 13 24 44 81 149 274 504 927 1705 3136 5768 10609 19513 35890 66012
 
-We have a 4-step Fibonacci series. 
+We have a 4-step Fibonacci series.
 1 1 2 4 8 15 29 56 108 208 401 773 1490 2872 5536 10671 20569 39648 76424 147312
 
-We have a 5-step Fibonacci series. 
+We have a 5-step Fibonacci series.
 1 1 2 4 8 16 31 61 120 236 464 912 1793 3525 6930 13624 26784 52656 103519 203513
 
 ```
@@ -3729,13 +3729,13 @@ Sample output
 
 ```txt
 
- n Name      Sequence                                          
- - ----      --------                                          
- 2 fibonaci  1,1,2,3,5,8,13,21,34,55,89,144,233,377,610        
- 3 tribonaci 1,1,2,4,7,13,24,44,81,149,274,504,927,1705,3136   
- 4 tetranaci 1,1,2,4,8,15,29,56,108,208,401,773,1490,2872,5536 
- 5 pentanaci 1,1,2,4,8,16,31,61,120,236,464,912,1793,3525,6930 
- 6 hexanaci  1,1,2,4,8,16,32,63,125,248,492,976,1936,3840,7617 
+ n Name      Sequence
+ - ----      --------
+ 2 fibonaci  1,1,2,3,5,8,13,21,34,55,89,144,233,377,610
+ 3 tribonaci 1,1,2,4,7,13,24,44,81,149,274,504,927,1705,3136
+ 4 tetranaci 1,1,2,4,8,15,29,56,108,208,401,773,1490,2872,5536
+ 5 pentanaci 1,1,2,4,8,16,31,61,120,236,464,912,1793,3525,6930
+ 6 hexanaci  1,1,2,4,8,16,32,63,125,248,492,976,1936,3840,7617
  7 heptanaci 1,1,2,4,8,16,32,64,127,253,504,1004,2000,3984,7936
  8 octonaci  1,1,2,4,8,16,32,64,128,255,509,1016,2028,4048,8080
  9 nonanaci  1,1,2,4,8,16,32,64,128,256,511,1021,2040,4076,8144
@@ -3769,8 +3769,8 @@ next
 ProcedureReturn r
 EndProcedure
 
-; The fact that PureBasic supports default values for procedure parameters 
-; is very useful in a case such as this. 
+; The fact that PureBasic supports default values for procedure parameters
+; is very useful in a case such as this.
 ; Since:
 ; k=4
 ; Debug FibonacciLike(k)               ;good old Fibonacci
@@ -3814,18 +3814,18 @@ Debug ""
 
 ```txt
 
-n    0    1    2    3    4    5    6    7    8    9    10   
-2    1    1    2    3    5    8    13   21   34   55   89   
-3    1    1    2    4    7    13   24   44   81   149  274  
-4    1    1    2    4    8    15   29   56   108  208  401  
-5    1    1    2    4    8    16   31   61   120  236  464  
-6    1    1    2    4    8    16   32   63   125  248  492  
-7    1    1    2    4    8    16   32   64   127  253  504  
-8    1    1    2    4    8    16   32   64   128  255  509  
-9    1    1    2    4    8    16   32   64   128  256  511  
-10   1    1    2    4    8    16   32   64   128  256  512  
+n    0    1    2    3    4    5    6    7    8    9    10
+2    1    1    2    3    5    8    13   21   34   55   89
+3    1    1    2    4    7    13   24   44   81   149  274
+4    1    1    2    4    8    15   29   56   108  208  401
+5    1    1    2    4    8    16   31   61   120  236  464
+6    1    1    2    4    8    16   32   63   125  248  492
+7    1    1    2    4    8    16   32   64   127  253  504
+8    1    1    2    4    8    16   32   64   128  255  509
+9    1    1    2    4    8    16   32   64   128  256  511
+10   1    1    2    4    8    16   32   64   128  256  512
 
-2.1  2    1    3    4    7    11   18   29   47   76   123  
+2.1  2    1    3    4    7    11   18   29   47   76   123
 
 
 
@@ -3862,7 +3862,7 @@ n    0    1    2    3    4    5    6    7    8    9    10
 	fibber = fiblike([1] + [2**i for i in range(n-1)])
 	print('n=%2i, %5snacci -> %s ...' % (n, name, ' '.join(str(fibber(i)) for i in range(15))))
 
-	
+
 n= 2,  fibonacci -> 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 ...
 n= 3, tribonacci -> 1 1 2 4 7 13 24 44 81 149 274 504 927 1705 3136 ...
 n= 4, tetranacci -> 1 1 2 4 8 15 29 56 108 208 401 773 1490 2872 5536 ...
@@ -3872,7 +3872,7 @@ n= 7, heptanacci -> 1 1 2 4 8 16 32 64 127 253 504 1004 2000 3984 7936 ...
 n= 8,  octonacci -> 1 1 2 4 8 16 32 64 128 255 509 1016 2028 4048 8080 ...
 n= 9,  nonanacci -> 1 1 2 4 8 16 32 64 128 256 511 1021 2040 4076 8144 ...
 n=10,  decanacci -> 1 1 2 4 8 16 32 64 128 256 512 1023 2045 4088 8172 ...
->>> 
+>>>
 ```
 
 
@@ -3893,7 +3893,7 @@ n=10,  decanacci -> 1 1 2 4 8 16 32 64 128 256 512 1023 2045 4088 8172 ...
 			self.memo.append(ans)
 			return ans
 
-		
+
 >>> fibo = Fiblike([1,1])
 >>> [fibo(i) for i in range(10)]
 [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
@@ -3904,7 +3904,7 @@ n=10,  decanacci -> 1 1 2 4 8 16 32 64 128 256 512 1023 2045 4088 8172 ...
 	fibber = Fiblike([1] + [2**i for i in range(n-1)])
 	print('n=%2i, %5snacci -> %s ...' % (n, name, ' '.join(str(fibber(i)) for i in range(15))))
 
-	
+
 n= 2,  fibonacci -> 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 ...
 n= 3, tribonacci -> 1 1 2 4 7 13 24 44 81 149 274 504 927 1705 3136 ...
 n= 4, tetranacci -> 1 1 2 4 8 15 29 56 108 208 401 773 1490 2872 5536 ...
@@ -3914,7 +3914,7 @@ n= 7, heptanacci -> 1 1 2 4 8 16 32 64 127 253 504 1004 2000 3984 7936 ...
 n= 8,  octonacci -> 1 1 2 4 8 16 32 64 128 255 509 1016 2028 4048 8080 ...
 n= 9,  nonanacci -> 1 1 2 4 8 16 32 64 128 256 511 1021 2040 4076 8144 ...
 n=10,  decanacci -> 1 1 2 4 8 16 32 64 128 256 512 1023 2045 4088 8172 ...
->>> 
+>>>
 ```
 
 
@@ -4226,13 +4226,13 @@ f = list(12)
 
 see "Fibonacci:" + nl
 f2  = [1,1]
-for nr2 = 1 to 10 
+for nr2 = 1 to 10
     see "" + f2[1] + " "
     fibn(f2)
 next
 showarray(f2)
 see " ..." + nl + nl
- 
+
 see "Tribonacci:" + nl
 f3 = [1,1,2]
 for nr3 = 1 to 9
@@ -4241,7 +4241,7 @@ for nr3 = 1 to 9
 next
 showarray(f3)
 see " ..." + nl + nl
- 
+
 see "Tetranacci:" + nl
 f4 = [1,1,2,4]
 for nr4 = 1 to 8
@@ -4259,7 +4259,7 @@ for nr5 = 1 to 10
 next
 showarray(f5)
 see " ..." + nl + nl
- 
+
 func fibn(fs)
      s = sum(fs)
      for i = 2 to len(fs)
@@ -4273,7 +4273,7 @@ func sum(arr)
      for sn = 1 to len(arr)
          sm = sm + arr[sn]
      next
-     return sm 
+     return sm
 
 func showarray(fn)
      svect = ""
@@ -4312,11 +4312,11 @@ Lucas:
 def anynacci(start_sequence, count)
   n = start_sequence.length    # Get the n-step for the type of fibonacci sequence
   result = start_sequence.dup  # Create a new result array with the values copied from the array that was passed by reference
-  
+
   (n+1..count).each do         # Loop for the remaining results up to count
     result << result.last(n).reduce(:+)    # Get the last n element from result and append its total to Array
   end
-  
+
   result                       # Return result
 end
 
@@ -4400,7 +4400,7 @@ Fibonacci:6=>1,1,2,4,8,16,32,63,125,248,492,976,1936,3840,
 
 
 ```rust
- 
+
 struct GenFibonacci {
     buf:    Vec<u64>,
     sum:    u64,
@@ -4432,13 +4432,13 @@ fn print(buf: Vec<u64>, len: usize) {
 fn main() {
     print!("Fib2:");
     print(vec![1,1], 10 - 2);
-    
+
     print!("\nFib3:");
     print(vec![1,1,2], 10 - 3);
-    
+
     print!("\nFib4:");
     print(vec![1,1,2,4], 10 - 4);
-    
+
     print!("\nLucas:");
     print(vec![2,1], 10 - 2);
 }
@@ -4482,7 +4482,7 @@ def fibStream(init: BigInt*): Stream[BigInt] = {
 ```scala
 
 //in the optimized version we don't compute values until it's needed.
-//the unoptimized version, computed k elements ahead, where k being 
+//the unoptimized version, computed k elements ahead, where k being
 //the number of elements to sum (fibonacci: k=2, tribonacci: k=3, ...).
 def fibStream(init: BigInt*): Stream[BigInt] = {
   def inner(prev: Vector[BigInt]): Stream[BigInt] = {
@@ -4555,7 +4555,7 @@ Lucas:      2,1,3,4,7,11,18,29,47,76
 ;; continue lst until of length num
 (define (n-fib lst num)
   (let ((n (length lst)))
-    (do ((result (reverse lst) 
+    (do ((result (reverse lst)
                  (cons (fold + 0 (take result n))
                        result)))
       ((= num (length result)) (reverse result)))))
@@ -4570,7 +4570,7 @@ Lucas:      2,1,3,4,7,11,18,29,47,76
                   15))
   (newline))
 
-(display "Lucas: ") 
+(display "Lucas: ")
 (display (n-fib '(2 1) 15))
 (newline)
 
@@ -4697,26 +4697,26 @@ templates fibonacciNstep@{N:}
     $(2..-1)... -> @: $ + $@;
     [ $(2..-1)..., $@ ] !
   end next
- 
+
   @: $;
   1..$N -> #
   <>
     $@(1) !
     @: $@ -> next;
 end fibonacciNstep
- 
+
 [1,1] -> fibonacciNstep@{N:10} -> '$; ' -> !OUT::write
 '
 ' -> !OUT::write
- 
+
 [1,1,2] -> fibonacciNstep@{N:10} -> '$; ' -> !OUT::write
 '
 ' -> !OUT::write
- 
+
 [1,1,2,4] -> fibonacciNstep@{N:10} -> '$; ' -> !OUT::write
 '
 ' -> !OUT::write
- 
+
 [2,1] -> fibonacciNstep@{N:10} -> '$; ' -> !OUT::write
 '
 ' -> !OUT::write
@@ -4727,10 +4727,10 @@ end fibonacciNstep
 
 ```txt
 
-1 1 2 3 5 8 13 21 34 55 
-1 1 2 4 7 13 24 44 81 149 
-1 1 2 4 8 15 29 56 108 208 
-2 1 3 4 7 11 18 29 47 76 
+1 1 2 3 5 8 13 21 34 55
+1 1 2 4 7 13 24 44 81 149
+1 1 2 4 8 15 29 56 108 208
+2 1 3 4 7 11 18 29 47 76
 
 ```
 
@@ -4805,7 +4805,7 @@ Dim temp$, T() As Long, i&
     Next
     Debug.Print "Fibonacci: " & Mid(temp, 3)
     temp = ""
-    
+
     'Tribonacci:
     T = Fibonacci_Step(1, 15, 2)
     For i = LBound(T) To UBound(T)
@@ -4813,7 +4813,7 @@ Dim temp$, T() As Long, i&
     Next
     Debug.Print "Tribonacci: " & Mid(temp, 3)
     temp = ""
-    
+
     'Tetranacci:
     T = Fibonacci_Step(1, 15, 3)
     For i = LBound(T) To UBound(T)
@@ -4821,7 +4821,7 @@ Dim temp$, T() As Long, i&
     Next
     Debug.Print "Tetranacci: " & Mid(temp, 3)
     temp = ""
-    
+
     'Lucas:
     T = Fibonacci_Step(1, 15, 1, 2)
     For i = LBound(T) To UBound(T)
@@ -4958,10 +4958,10 @@ Output:
 
 ```txt
 
- Fibonacci: 1 1 2 3 5 8 13 21 34 55 
-Tribonacci: 1 1 2 4 7 13 24 44 81 149 
-Tetranacci: 1 1 2 4 8 15 29 56 108 208 
-     Lucas: 2 1 3 4 7 11 18 29 47 76 
+ Fibonacci: 1 1 2 3 5 8 13 21 34 55
+Tribonacci: 1 1 2 4 7 13 24 44 81 149
+Tetranacci: 1 1 2 4 8 15 29 56 108 208
+     Lucas: 2 1 3 4 7 11 18 29 47 76
 
 ```
 
@@ -4974,7 +4974,7 @@ Tetranacci: 1 1 2 4 8 15 29 56 108 208
 ```Yabasic
 sub nStepFibs$(seq$, limit)
     local iMax, sum, numb$(1), lim, i
-    
+
     lim = token(seq$, numb$(), ",")
     redim numb$(limit)
     seq$ = ""
@@ -4985,7 +4985,7 @@ sub nStepFibs$(seq$, limit)
         lim = lim + 1
         numb$(lim) = str$(sum)
     wend
-    for i = 0 to lim : seq$ = seq$ + " " + numb$(i) : next 
+    for i = 0 to lim : seq$ = seq$ + " " + numb$(i) : next
     return seq$
 end sub
 

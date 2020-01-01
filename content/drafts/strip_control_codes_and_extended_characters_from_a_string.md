@@ -243,7 +243,7 @@ See also: [[#Liberty BASIC|Liberty BASIC]], [[#PureBasic|PureBasic]], [[#Run BAS
       test$ = FNstripextended(test$)
       PRINT "Control & extended stripped: " test$ " (length " ; LEN(test$) ")"
       END
-      
+
       DEF FNstripcontrol(A$) : REM CHR$(127) is a 'control' code
       LOCAL I%
       WHILE I%<LEN(A$)
@@ -253,7 +253,7 @@ See also: [[#Liberty BASIC|Liberty BASIC]], [[#PureBasic|PureBasic]], [[#Run BAS
         ENDIF
       ENDWHILE
       = A$
-      
+
       DEF FNstripextended(A$)
       LOCAL I%
       WHILE I%<LEN(A$)
@@ -326,8 +326,8 @@ string of , may include controlcharacters and other ilk.Rdgrd med flde
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 #define IS_CTRL  (1 << 0)
@@ -402,8 +402,8 @@ output:<lang> !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`ab
 ## C++
 
 
-```Cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 #include <algorithm>
 #include <boost/lambda/lambda.hpp>
@@ -419,7 +419,7 @@ struct MyRandomizer {
 } ;
 
 std::string deleteControls ( std::string startstring ) {
-   std::string noControls( "                                        " ) ;//creating space for 
+   std::string noControls( "                                        " ) ;//creating space for
    //the standard algorithm remove_copy_if
    std::remove_copy_if( startstring.begin( ) , startstring.end( ) , noControls.begin( ) ,
 	 ll_static_cast<int>( _1 ) < 32 && ll_static_cast<int>( _1 ) == 127 ) ;
@@ -432,7 +432,7 @@ std::string deleteExtended( std::string startstring ) {
 	 ll_static_cast<int>( _1 ) > 127 || ll_static_cast<int>( _1 ) < 32 ) ;
    return noExtended ;
 }
-   
+
 int main( ) {
    std::string my_extended_string ;
    for ( int i = 0 ; i < 40 ; i++ ) //we want the extended string to be 40 characters long
@@ -453,7 +453,7 @@ Output:
 ���W��@>��ȓ�q�Q@���W-
 string without control characters: K�O:~���7�5����
 ���W��@>��ȓ�q�Q@���W-
-string without extended characters: KO:~75W@>qQ@W-    
+string without extended characters: KO:~75W@>qQ@W-
 </PRE>
 =={{header|C sharp|C#}}==
 Uses the test string from REXX.
@@ -482,7 +482,7 @@ namespace RosettaCode
         {
             char[] arrForm = arg.ToCharArray();
             StringBuilder buffer = new StringBuilder(arg.Length);//This many chars at most
-            
+
             foreach(char ch in arrForm)
                 if (!Char.IsControl(ch)) buffer.Append(ch);//Only add to buffer if not a control char
 
@@ -505,7 +505,7 @@ namespace RosettaCode
 
 ```
 
-Output: 
+Output:
 
 ```txt
 
@@ -540,8 +540,8 @@ Stripped of extended: string of , may include control characters and other ilk.
 > (defparameter *extended-ascii* (coerce (loop for i from 0 to 255 collect (code-char i)) 'string))
 
 *EXTENDED-ASCII*
-> (defparameter *control-codes-stripped* 
-    (remove-if #'(lambda (c) 
+> (defparameter *control-codes-stripped*
+    (remove-if #'(lambda (c)
                    (let ((x (char-code c)))
                      (or (< x 32) (= x 127))))
                *extended-ascii*))
@@ -550,7 +550,7 @@ Stripped of extended: string of , may include control characters and other ilk.
 > *control-codes-stripped*
 
 " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklm¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ"
-> (defparameter *control-codes-and-extended-stripped* 
+> (defparameter *control-codes-and-extended-stripped*
     (remove-if-not #'(lambda (c) (and (standard-char-p c) (graphic-char-p c)))
                    *extended-ascii*))
 
@@ -629,7 +629,7 @@ task() ->
 ```txt
 
 41> strip_control_codes:task().
-String (256 characters): ^@^A^B^C^D^E^F^G^H     
+String (256 characters): ^@^A^B^C^D^E^F^G^H
 ^N^O^P^Q^R^S^T^U^V^W^X^Y^Z^[^\^]^^^_ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~^ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
 String without control codes (223 characters):  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ
 String without control codes nor extended characters (95 characters):  !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
@@ -644,17 +644,17 @@ Uses test string from REXX.
 
 open System
 
-let stripControl (arg:string) = 
+let stripControl (arg:string) =
     String(Array.filter (fun x -> not (Char.IsControl(x))) (arg.ToCharArray()))
 //end stripControl
 
-let stripExtended (arg:string) = 
+let stripExtended (arg:string) =
     let numArr = Array.map (fun (x:char) -> Convert.ToUInt16(x)) (arg.ToCharArray()) in
     String([|for num in numArr do if num >= 32us && num <= 126us then yield Convert.ToChar(num) |])
 //end stripExtended
 
 [<EntryPoint>]
-let main args = 
+let main args =
     let test = "string of ☺☻♥♦⌂, may include control characters and other ilk.♫☼§►↔◄"
     printfn "Original: %s" test
     printfn "Stripped of controls: %s" (stripControl test)
@@ -746,13 +746,13 @@ end module stripcharacters
 
 program test
   use stripcharacters
-  
+
   character(len=256) :: string, str
   integer            :: ascii(256), i
   forall (i=0:255) ascii(i) = i
   forall (i=1:len(string)) string(i:i) = achar(ascii(i))
   write (*,*) string
-  
+
   write (*,*) 'Control characters deleted:'
   str = strip(string,not_control)
   write (*,*) str
@@ -778,16 +778,16 @@ Function stripControlChars(s As Const String) As String
   Dim strip(0 To Len(s) - 1) As Boolean
   For i As Integer = 0 To Len(s) - 1
     For j As Integer = 0 To 31
-      If s[i] = j OrElse s[i] = 127 Then 
+      If s[i] = j OrElse s[i] = 127 Then
         count += 1
         strip(i) = True
-        Exit For 
+        Exit For
       End If
     Next j
   Next i
 
   Dim buffer As String = Space(Len(s) - count)
-  count  = 0  
+  count  = 0
   For i As Integer = 0 To Len(s) - 1
     If Not Strip(i) Then
       buffer[count] = s[i]
@@ -803,16 +803,16 @@ Function stripExtendedChars(s As Const String) As String
   Dim strip(0 To Len(s) - 1) As Boolean
   For i As Integer = 0 To Len(s) - 1
     For j As Integer = 128 To 255
-      If s[i] = j Then 
+      If s[i] = j Then
         count += 1
         strip(i) = True
-        Exit For 
+        Exit For
       End If
     Next j
   Next i
 
   Dim buffer As String = Space(Len(s) - count)
-  count  = 0  
+  count  = 0
   For i As Integer = 0 To Len(s) - 1
     If Not Strip(i) Then
       buffer[count] = s[i]
@@ -822,20 +822,20 @@ Function stripExtendedChars(s As Const String) As String
   Return buffer
 End Function
 
-Dim s  As String = !"\v\001The\t quick\255 \vbrown\127\f fox\156" 
+Dim s  As String = !"\v\001The\t quick\255 \vbrown\127\f fox\156"
 Dim s1 As String = stripControlChars(s)
 Dim s2 As String = stripExtendedChars(s)
 Dim s3 As String = stripExtendedChars(s1)
 
 ' Under Windows console, code page 850 :
 ' "vertical tab" displays as ♂
-' "form feed" displays as ♀ 
+' "form feed" displays as ♀
 ' Chr(1) displays as ☺
 ' Chr(127) displays as ⌂
-' the other control characters do what it says on the tin 
+' the other control characters do what it says on the tin
 ' Chr(156) displays as £
 ' Chr(255) displays as space
- 
+
 Print "Before stripping   :" , s
 Print "Ctl chars stripped :" , s1
 Print "Ext chars stripped :" , s2
@@ -875,7 +875,7 @@ Both sets stripped          Length =>  19
 
 ```gambas
 Public Sub Main()
-Dim sString As String = "The\t \equick\n \fbrownfox \vcost £125.00 or €145.00 or $160.00 \bto \ncapture ©®" 
+Dim sString As String = "The\t \equick\n \fbrownfox \vcost £125.00 or €145.00 or $160.00 \bto \ncapture ©®"
 Dim sStd, sExtend As String
 Dim siCount As Short
 
@@ -912,11 +912,11 @@ Output:
 ```txt
 
 Original string: -      The      uick
- 
-brownfox ^Kcost £125.00 or €145.00 or $160.00to 
+
+brownfox ^Kcost £125.00 or €145.00 or $160.00to
 capture ©®
 
-No extended characters: -       The quick brownfox cost 125.00 or 145.00 or $160.00 to capture 
+No extended characters: -       The quick brownfox cost 125.00 or 145.00 or $160.00 to capture
 With extended characters: -     The quick brownfox cost £125.00 or €145.00 or $160.00 to capture ©®
 
 ```
@@ -1027,16 +1027,16 @@ Output: (varies with display configuration)
 source text:
 déjà vu
 � !~��
-as⃝df̅ 
+as⃝df̅
 
 as bytes, stripped of control codes:
-déjà vu !~��as⃝df̅ 
+déjà vu !~��as⃝df̅
 
 as bytes, stripped of control codes and extended characters:
-dj vu !~asdf 
+dj vu !~asdf
 
 as UTF-8, stripped of control codes:
-déjà vu !~��as⃝df̅ 
+déjà vu !~��as⃝df̅
 
 as UTF-8, stripped of control codes and extended characters:
 dj vu !~asdf
@@ -1100,15 +1100,15 @@ We'll use ''deletec'' to remove unwanted characters (2nd argument) from a string
 
 ```Icon
 procedure main(A)
-write(image(deletec(&ascii,&ascii--(&ascii)[33:127]))) 
+write(image(deletec(&ascii,&ascii--(&ascii)[33:127])))
 end
 link strings
 
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec]
 
 The IPL procedure ''deletec'' is equivalent to this:
 
@@ -1179,7 +1179,7 @@ k}w:]U3xEh9"GZdr/#^B.Sn%\uFOo[(`t2-J6*IA=Vf&N;lQ8,${XLz5?D0~s)'Y7Kq|ip4<WRCaM!b@
     function strip(s) {
         return s.split('').filter(function (x) {
             var n = x.charCodeAt(0);
-            
+
             return 31 < n && 127 > n;
         }).join('');
     }
@@ -1388,7 +1388,7 @@ String = 123abcDEF+-*/  Length = 13
 
 ```
 
- 
+
 
 ## Lua
 
@@ -1471,8 +1471,8 @@ stripCtrlExt[CompleteSet]
 
 ```MATLAB
  function str = stripped(str)
-    str = str(31<str & str<127); 
-  end; 
+    str = str(31<str & str<127);
+  end;
 ```
 
 
@@ -1506,11 +1506,11 @@ abcd
 let is_control_code c =
   let d = int_of_char c in
   d < 32 || d = 127
- 
+
 let is_extended_char c =
   let d = int_of_char c in
   d > 127
- 
+
 let strip f str =
   let len = String.length str in
   let res = Bytes.create len in
@@ -1525,7 +1525,7 @@ let strip f str =
     end
   in
   aux 0 0
- 
+
 let () =
   Random.self_init ();
   let len = 32 in
@@ -1576,7 +1576,7 @@ end.
 Output:
 
 ```txt
-% ./StripCharacters 
+% ./StripCharacters
 Original: )?z8i9?a?K??N?s?F˪w?a??s
                                   #?b?B}PT?ٜ
 No CNTL:  )?z8i9?a?K??N?s?F˪w?a??s#?b?B}PT?ٜ
@@ -1593,7 +1593,7 @@ ASCII:    )z8i9aKNsFwas#bB}PT
 Peloton has a native instruction for removing control codes from a string, SAL, the Low ASCII Strip. From the manual:
 
 ```sgml>Create variable with control characters: <@ SAYLETVARLIT
-i|This string has control characters 
+i|This string has control characters
 	-	-	-	-	-	-
 
 in it</@>
@@ -1620,7 +1620,7 @@ Reflexive assign <@ ACTSAHVAR>i</@> <@ SAYVAR>i</@>
 
 
 ```Perl
-#!/usr/bin/perl -w 
+#!/usr/bin/perl -w
 use strict ;
 
 my @letters ;
@@ -1633,7 +1633,7 @@ print "before sanitation : " ;
 print join( '' , map { chr( $_ ) } @letters ) ;
 print "\n" ;
 @nocontrols = grep { $_ > 32 && $_ != 127 } @letters ;
-print "Without controls: " ; 
+print "Without controls: " ;
 print join( '' , map { chr( $_ ) } @nocontrols ) ;
 @noextended = grep { $_ < 127 } @nocontrols ;
 print "\nWithout extended: " ;
@@ -1689,11 +1689,11 @@ string res = ""
     end for
     return res
 end function
- 
+
 procedure put_line(string text, s)
     printf(1,"%s \"%s\", Length:%d\n",{text,s,length(s)})
 end procedure
- 
+
 string full = "\u0000 abc\u00E9def\u007F"
 
 put_line("The full string:", full)
@@ -1838,10 +1838,10 @@ Output:
 
 ```txt
 
-the�quick�brown�fox�jumped 
-thequickbrownfoxjumped 
-now¡is¡the¡time¡for¡all¡good¡men 
-nowisthetimeforallgoodmen 
+the�quick�brown�fox�jumped
+thequickbrownfoxjumped
+now¡is¡the¡time¡for¡all¡good¡men
+nowisthetimeforallgoodmen
 
 ```
 
@@ -1952,12 +1952,12 @@ Procedure.s stripControlCodes(source.s)
   Protected i, *ptrChar.Character, length = Len(source), result.s
   *ptrChar = @source
   For i = 1 To length
-    If *ptrChar\c > 31 
+    If *ptrChar\c > 31
       result + Chr(*ptrChar\c)
     EndIf
     *ptrChar + SizeOf(Character)
   Next
-  ProcedureReturn result 
+  ProcedureReturn result
 EndProcedure
 
 Procedure.s stripControlExtCodes(source.s)
@@ -1969,7 +1969,7 @@ Procedure.s stripControlExtCodes(source.s)
     EndIf
     *ptrChar + SizeOf(Character)
   Next
-  ProcedureReturn result 
+  ProcedureReturn result
 EndProcedure
 
 If OpenConsole()
@@ -1977,12 +1977,12 @@ If OpenConsole()
   Define i, s.s
   For i = 1 To 80
     s + Chr(Random(254) + 1) ;include character values from 1 to 255
-  Next 
+  Next
 
-  PrintN(stripControlCodes(s))    ;string without control codes 
+  PrintN(stripControlCodes(s))    ;string without control codes
   PrintN("---------")
   PrintN(stripControlExtCodes(s)) ;string without control codes or extended chars
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2062,9 +2062,9 @@ new = »»»string of , may include control characters and other    ilk.«««
 
 ### faster version
 
-This REXX version only deletes unwanted characters. 
+This REXX version only deletes unwanted characters.
 
-It also shows a different way of performing concatenations (without using abutments,   and a way to split a long literal (character) string. 
+It also shows a different way of performing concatenations (without using abutments,   and a way to split a long literal (character) string.
 
 Because there are   (or should be)   fewer unwanted characters than wanted characters, this version is faster.
 
@@ -2082,7 +2082,7 @@ say 'old = »»»' || x || "«««"                    /*add ««fence»» befor
 say 'new = »»»' || $ || "«««"                    /* "      "        "   "   "   new   " */
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -2094,7 +2094,7 @@ say 'new = »»»' || $ || "«««"                    /* "      "        "   " 
 
 s = char(31) + "abc" + char(13) + "def" + char(11) + "ghi" + char(10)
 see strip(s) + nl
- 
+
 func strip str
 strip = ""
 for i = 1 to len(str)
@@ -2102,7 +2102,7 @@ for i = 1 to len(str)
     a = ascii(nr)
     if a > 31 and a < 123 and nr != "'" and nr != """"
        strip = strip + nr ok
-next 
+next
 return strip
 
 ```
@@ -2119,7 +2119,7 @@ class String
       str << char unless char.ascii_only? and (char.ord < 32 or char.ord == 127)
     end
   end
-  
+
   def strip_control_and_extended_characters()
     chars.each_with_object("") do |char, str|
       str << char if char.ascii_only? and char.ord.between?(32,126)
@@ -2151,7 +2151,7 @@ s$ = chr$(31) + "abc" + chr$(13) + "def" + chr$(11) + "ghi" + chr$(10)
 print strip$(s$)
 
 ' -----------------------------------------
-' strip junk 
+' strip junk
 ' -----------------------------------------
 FUNCTION strip$(str$)
 for i = 1 to len(str$)
@@ -2194,10 +2194,10 @@ val extendedCode : (Char) => Boolean = (c:Char) => (c <= 32 || c > 127)
 // ASCII test...
 val teststring = scala.util.Random.shuffle( (1.toChar to 254.toChar).toList ).mkString
 
-println( "ctrl filtered out: \n\n" + 
+println( "ctrl filtered out: \n\n" +
   teststring.filterNot(controlCode) + "\n" )
 
-println( "ctrl and extended filtered out: \n\n" + 
+println( "ctrl and extended filtered out: \n\n" +
   teststring.filterNot(controlCode).filterNot(extendedCode) + "\n" )
 ```
 
@@ -2231,17 +2231,17 @@ val ulist = 0x8232.toChar :: 0xFFF9.toChar :: 0x200E.toChar :: (1.toChar to 2000
 val ustring = scala.util.Random.shuffle( ulist ).mkString
 
 // Remove control codes including private codes
-val sNoCtrlCode = ustring.replaceAll("[\\p{C}]","")  
+val sNoCtrlCode = ustring.replaceAll("[\\p{C}]","")
 
-val htmlNoCtrlCode = for( i <- sNoCtrlCode.indices ) yield 
+val htmlNoCtrlCode = for( i <- sNoCtrlCode.indices ) yield
   "&#" + sNoCtrlCode(i).toInt + ";" + (if( (i+1) % 10 == 0 ) "\n" else "")
 println( "ctrl filtered out: <br/><br/>\n\n" + htmlNoCtrlCode.mkString  + "<br/><br/>\n" )
 
 
 // Keep 0x00-0x7f and remove control codes
-val sNoExtCode = ustring.replaceAll("[^\\p{InBasicLatin}]","").replaceAll("[\\p{C}]","") 
+val sNoExtCode = ustring.replaceAll("[^\\p{InBasicLatin}]","").replaceAll("[\\p{C}]","")
 
-val htmlNoExtCode = for( i <- sNoExtCode.indices ) yield 
+val htmlNoExtCode = for( i <- sNoExtCode.indices ) yield
   "&#" + sNoExtCode(i).toInt + ";" + (if( (i+1) % 10 == 0 ) "\n" else "")
 println( "ctrl and extended filtered out: <br/><br/>\n\n" + htmlNoExtCode.mkString  + "<br/><br/>\n" )
 ```
@@ -2406,7 +2406,7 @@ proc stripCC str {
 
 
 =={{header|TI-83 BASIC}}==
-TI-83 BASIC doesn't support ASCII or Unicode, so the following program just strips every character that doesn't have a corresponding glyph from 32 to 126 decimal in a real ASCII table. 
+TI-83 BASIC doesn't support ASCII or Unicode, so the following program just strips every character that doesn't have a corresponding glyph from 32 to 126 decimal in a real ASCII table.
 
 The following "normal characters" do exist, but can't be typed on the calculator and a hex editor must be used to enter them:
 
@@ -2465,7 +2465,7 @@ Function StripCtrlCodes(s)
 			tmp = tmp & Mid(s,i,1)
 		End If
 	Next
-	StripCtrlCodes = tmp	
+	StripCtrlCodes = tmp
 End Function
 
 Function StripCtrlCodesExtChrs(s)
@@ -2476,7 +2476,7 @@ Function StripCtrlCodesExtChrs(s)
 			tmp = tmp & Mid(s,i,1)
 		End If
 	Next
-	StripCtrlCodesExtChrs = tmp	
+	StripCtrlCodesExtChrs = tmp
 End Function
 
 WScript.StdOut.Write "ab�cd�ef�gh€" & " = " & StripCtrlCodes("ab�cd�ef�gh€")
@@ -2541,7 +2541,7 @@ Output:
 Hello
  World àáâã
 Hello World àáâã
-Hello World 
+Hello World
 
 ```
 

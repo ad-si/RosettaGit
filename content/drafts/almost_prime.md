@@ -77,21 +77,21 @@ k = 5: [32, 48, 72, 80, 108, 112, 120, 162, 168, 176]
 ## Ada
 
 
-This imports the package '''Prime_Numbers''' from [[Prime decomposition#Ada]]. 
+This imports the package '''Prime_Numbers''' from [[Prime decomposition#Ada]].
 
 
 ```ada
-with Prime_Numbers, Ada.Text_IO; 
- 
+with Prime_Numbers, Ada.Text_IO;
+
 procedure Test_Kth_Prime is
-   
-   package Integer_Numbers is new 
-     Prime_Numbers (Natural, 0, 1, 2); 
+
+   package Integer_Numbers is new
+     Prime_Numbers (Natural, 0, 1, 2);
    use Integer_Numbers;
-   
+
    Out_Length: constant Positive := 10; -- 10 k-th almost primes
    N: Positive; -- the "current number" to be checked
-   
+
 begin
    for K in 1 .. 5 loop
       Ada.Text_IO.Put("K =" & Integer'Image(K) &":  ");
@@ -186,7 +186,7 @@ k = 5: 32 48 72 80 108 112 120 162 168 176
 
 /* ARM assembly Raspberry PI  */
 /*  program kprime.s   */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -212,13 +212,13 @@ szCarriageReturn:   .asciz "\n"
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                             @ entry of program 
+.global main
+main:                                             @ entry of program
     mov r3,#1                                     @ k
 1:                                                @ start loop k
     mov r0,r3
@@ -238,7 +238,7 @@ main:                                             @ entry of program
     mov r1,r3
     bl kprime                                     @ is kprine ?
     cmp r0,#0
-    beq 3f                                        @ no 
+    beq 3f                                        @ no
     mov r0,r4
     ldr r1,iAdrsMessValeur
     bl conversion10                               @ call conversion decimal
@@ -258,18 +258,18 @@ main:                                             @ entry of program
     cmp r3,#MAXIK                                 @ maxi ?
     ble 1b                                        @ no -> loop
 
-100:                                              @ standard end of the program 
+100:                                              @ standard end of the program
     mov r0, #0                                    @ return code
     mov r7, #EXIT                                 @ request to exit program
     svc #0                                        @ perform the system call
- 
+
 iAdrsMessValeur:          .int sMessValeur
 iAdrszCarriageReturn:     .int szCarriageReturn
 iAdrsMessResult:          .int sMessResult
 iAdrsMessValeurDeb:       .int sMessValeurDeb
 iAdrsMessDeb:             .int sMessDeb
 /******************************************************************/
-/*     compute kprime (n,k)                                       */ 
+/*     compute kprime (n,k)                                       */
 /******************************************************************/
 /* r0 contains n */
 /* r1 contains k */
@@ -278,7 +278,7 @@ kprime:
     mov r5,r0                                         @ save n
     mov r7,r1                                         @ save k
     mov r4,#0                                         @ counter product
-    mov r1,#2                                         @ divisor 
+    mov r1,#2                                         @ divisor
 1:                                                    @ start loop
     cmp r4,r7                                         @ counter >= k
     bge 4f                                            @ yes -> end
@@ -289,13 +289,13 @@ kprime:
     mov r0,r5                                         @ dividende
     bl division                                       @ by r1
     cmp r3,#0                                         @ remainder = 0 ?
-    bne 3f                                            @ no 
+    bne 3f                                            @ no
     mov r5,r2                                         @ yes -> n = n / r1
     add r4,#1                                         @ increment counter
     b 2b                                              @ and loop
 3:
     add r1,#1                                         @ increment divisor
-    b 1b                                              @ and loop 
+    b 1b                                              @ and loop
 4:                                                    @ end compute
     cmp r5,#1                                         @ n > 1
     addgt r4,#1                                       @ yes increment counter
@@ -303,43 +303,43 @@ kprime:
     movne r0,#0                                       @ no -> no kprime
     moveq r0,#1                                       @ yes -> kprime
 100:
-    pop {r1-r7,lr}                                    @ restaur registers 
+    pop {r1-r7,lr}                                    @ restaur registers
     bx lr                                             @return
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 1:                                                  @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b                                          @ and loop
                                                     @ and move digit from left of area
@@ -352,18 +352,18 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
@@ -374,12 +374,12 @@ divisionpar10U:
     push {r2,r3,r4, lr}
     mov r4,r0                                          @ save value
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 /***************************************************/
 /* integer division unsigned                       */
@@ -394,14 +394,14 @@ division:
     mov r3, #0                                         @ init remainder
     mov r4, #32                                        @ init counter bits
     b 2f
-1:                                                     @ loop 
+1:                                                     @ loop
     movs r0, r0, LSL #1                                @ r0 <- r0 << 1 updating cpsr (sets C if 31st bit of r0 was 1)
-    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C 
-    cmp r3, r1                                         @ compute r3 - r1 and update cpsr 
-    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1 
-    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C 
+    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C
+    cmp r3, r1                                         @ compute r3 - r1 and update cpsr
+    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1
+    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C
 2:
-    subs r4, r4, #1                                    @ r4 <- r4 - 1 
+    subs r4, r4, #1                                    @ r4 <- r4 - 1
     bpl 1b                                             @ if r4 >= 0 (N=0) then loop
     pop {r4, lr}
     bx lr
@@ -544,8 +544,8 @@ k = 5 : 32  48  72  80  108  112  120  162  168  176
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int kprime(int n, int k)
 {
@@ -595,8 +595,8 @@ k = 5: 32 48 72 80 108 112 120 162 168 176
 
 {{trans|Kotlin}}
 
-```cpp>#include <cstdlib
-
+```cpp
+#include <cstdlib>
 #include <iostream>
 #include <sstream>
 #include <iomanip>
@@ -730,22 +730,22 @@ k = 5: 32 48 72 80 108 112 120 162 168 176
 (defn divisors [n]
     " Finds divisors by looping through integers 2, 3,...i.. up to sqrt (n) [note: rather than compute sqrt(), test with i*i <=n] "
     (let [div (some #(if (= 0 (mod n %)) % nil) (take-while #(<= (* % %) n) (iterate inc 2)))]
-        (if div                                                         ; div = nil (if no divisor found else its the divisor) 
+        (if div                                                         ; div = nil (if no divisor found else its the divisor)
             (into [] (concat (divisors div) (divisors (/ n div))))      ; Concat the two divisors of the two divisors
             [n])))                                                      ; Number is prime so only itself as a divisor
-            
+
 (defn divisors-k [k n]
-    " Finds n numbers with k divisors.  Does this by looping through integers 2, 3, ... filtering (passing) ones with k divisors and 
+    " Finds n numbers with k divisors.  Does this by looping through integers 2, 3, ... filtering (passing) ones with k divisors and
       taking the first n "
     (->> (iterate inc 2)            ; infinite sequence of numbers starting at 2
          (map divisors)             ; compute divisor of each element of sequence
          (filter #(= (count %) k))  ; filter to take only elements with k divisors
          (take n)                   ; take n elements from filtered sequence
          (map #(apply * %))))       ; compute number by taking product of divisors
-         
+
 (println (for [k (range 1 6)]
           (println "k:" k (divisors-k k 10))))
- 
+
 }
 ```
 
@@ -925,10 +925,10 @@ Small numbers : filter the sequence [ 2 .. n]
 
 (define (almost-prime? p k)
 	(= k (length (prime-factors p))))
-	
+
 (define (almost-primes k nmax)
 	(take (filter (rcurry almost-prime? k) [2 ..]) nmax))
-	
+
 (define (task (kmax 6) (nmax 10))
 	(for ((k [1 .. kmax]))
 		(write 'k= k '|)
@@ -947,7 +947,7 @@ k= 1 | 2 3 5 7 11 13 17 19 23 29
 k= 2 | 4 6 9 10 14 15 21 22 25 26
 k= 3 | 8 12 18 20 27 28 30 42 44 45
 k= 4 | 16 24 36 40 54 56 60 81 84 88
-k= 5 | 32 48 72 80 108 112 120 162 168 176 
+k= 5 | 32 48 72 80 108 112 120 162 168 176
 
 ```
 
@@ -975,9 +975,9 @@ Large numbers : generate - combinations with repetitions - k-almost-primes up to
 
     (for ((i (in-range (1- k) -1 -1))) ;; look backwards for c[i] to increment
         (vector-set! c i (1+ [c : i])) ;; increment c[i]
-        (set! cp [cprimes : [c : i]]) 
+        (set! cp [cprimes : [c : i]])
         (vector-set! p i (if (> i 0) (* [ p : (1- i)] cp) cp)) ;; update partial product
-			
+
         (when (< [p : i) pmax)
 	    (set! almost-prime
             (and  ;; set followers to c[i] value
@@ -989,7 +989,7 @@ Large numbers : generate - combinations with repetitions - k-almost-primes up to
 	  ) ;; // and
 	  ) ;; set!
 	  ) ;; when
-    #:break almost-prime 
+    #:break almost-prime
     ) ;; // for i
     almost-prime )
 
@@ -999,12 +999,12 @@ Large numbers : generate - combinations with repetitions - k-almost-primes up to
     (define pmax (* base nmax))
     (define c (make-vector k #0))
     (define p (build-vector k (lambda(i) (expt #2 (1+ i)))))
-		
+
     (cons base
-	(for/list 
+	(for/list
 	((almost-prime (in-producer almost-next pmax k c p )))
 	 almost-prime)))
-			
+
 
 ```
 
@@ -1017,7 +1017,7 @@ Large numbers : generate - combinations with repetitions - k-almost-primes up to
 (take (drop (list-sort < (almost-primes 500 10000)) 10000 ) 10)
 
 (7241149198492252834202927258094752774597239286103014697435725917649659974371690699721153852986
-440733637405206125678822081264723636566725108094369093648384 
+440733637405206125678822081264723636566725108094369093648384
 etc ...
 
 ;; The first one is 2^497 * 3 * 17 * 347 , same result as Haskell.
@@ -1025,7 +1025,7 @@ etc ...
 
 ```
 
-		
+
 
 
 
@@ -1036,13 +1036,13 @@ etc ...
 ```elixir
 defmodule Factors do
   def factors(n), do: factors(n,2,[])
-  
+
   defp factors(1,_,acc), do: acc
   defp factors(n,k,acc) when rem(n,k)==0, do: factors(div(n,k),k,[k|acc])
   defp factors(n,k,acc)                 , do: factors(n,k+1,acc)
-  
+
   def kfactors(n,k), do: kfactors(n,k,1,1,[])
-  
+
   defp kfactors(_tn,tk,_n,k,_acc) when k == tk+1, do: IO.puts "done! "
   defp kfactors(tn,tk,_n,k,acc) when length(acc) == tn do
     IO.puts "K: #{k} #{inspect acc}"
@@ -1076,61 +1076,61 @@ done!
 
 ## Erlang
 
-Using the factors function from  [[Prime_decomposition#Erlang]]. 
+Using the factors function from  [[Prime_decomposition#Erlang]].
 
 
 ```erlang
 
--module(factors).                                         
--export([factors/1,kfactors/0,kfactors/2]).               
-                                                          
-factors(N) ->                                             
-     factors(N,2,[]).                                     
-                                                          
-factors(1,_,Acc) -> Acc;                                  
-factors(N,K,Acc) when N rem K == 0 ->                     
-    factors(N div K,K, [K|Acc]);                          
-factors(N,K,Acc) ->                                       
-    factors(N,K+1,Acc).                                   
-                                                          
-kfactors() -> kfactors(10,5,1,1,[]).                      
-kfactors(N,K) -> kfactors(N,K,1,1,[]).                    
-kfactors(_Tn,Tk,_N,K,_Acc) when K == Tk+1 ->  io:fwrite("Done! ");            
-kfactors(Tn,Tk,N,K,Acc) when length(Acc) == Tn  ->        
-    io:format("K: ~w ~w ~n", [K, Acc]),                   
-    kfactors(Tn,Tk,2,K+1,[]);                             
-                     
-kfactors(Tn,Tk,N,K,Acc) ->                                
-    case length(factors(N)) of K ->                       
-     kfactors(Tn,Tk, N+1,K, Acc ++ [ N ] );               
-      _ ->                                                
-      kfactors(Tn,Tk, N+1,K, Acc) end.                    
+-module(factors).
+-export([factors/1,kfactors/0,kfactors/2]).
+
+factors(N) ->
+     factors(N,2,[]).
+
+factors(1,_,Acc) -> Acc;
+factors(N,K,Acc) when N rem K == 0 ->
+    factors(N div K,K, [K|Acc]);
+factors(N,K,Acc) ->
+    factors(N,K+1,Acc).
+
+kfactors() -> kfactors(10,5,1,1,[]).
+kfactors(N,K) -> kfactors(N,K,1,1,[]).
+kfactors(_Tn,Tk,_N,K,_Acc) when K == Tk+1 ->  io:fwrite("Done! ");
+kfactors(Tn,Tk,N,K,Acc) when length(Acc) == Tn  ->
+    io:format("K: ~w ~w ~n", [K, Acc]),
+    kfactors(Tn,Tk,2,K+1,[]);
+
+kfactors(Tn,Tk,N,K,Acc) ->
+    case length(factors(N)) of K ->
+     kfactors(Tn,Tk, N+1,K, Acc ++ [ N ] );
+      _ ->
+      kfactors(Tn,Tk, N+1,K, Acc) end.
 
 ```
-                           
+
 
 {{out}}
 
 ```txt
 
-9> factors:kfactors(10,5). 
-K: 1 [2,3,5,7,11,13,17,19,23,29] 
-K: 2 [4,6,9,10,14,15,21,22,25,26] 
-K: 3 [8,12,18,20,27,28,30,42,44,45] 
-K: 4 [16,24,36,40,54,56,60,81,84,88] 
-K: 5 [32,48,72,80,108,112,120,162,168,176] 
+9> factors:kfactors(10,5).
+K: 1 [2,3,5,7,11,13,17,19,23,29]
+K: 2 [4,6,9,10,14,15,21,22,25,26]
+K: 3 [8,12,18,20,27,28,30,42,44,45]
+K: 4 [16,24,36,40,54,56,60,81,84,88]
+K: 5 [32,48,72,80,108,112,120,162,168,176]
 Done! ok
 10> factors:kfactors(15,10).
-K: 1 [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47] 
-K: 2 [4,6,9,10,14,15,21,22,25,26,33,34,35,38,39] 
-K: 3 [8,12,18,20,27,28,30,42,44,45,50,52,63,66,68] 
-K: 4 [16,24,36,40,54,56,60,81,84,88,90,100,104,126,132] 
-K: 5 [32,48,72,80,108,112,120,162,168,176,180,200,208,243,252] 
-K: 6 [64,96,144,160,216,224,240,324,336,352,360,400,416,486,504] 
-K: 7 [128,192,288,320,432,448,480,648,672,704,720,800,832,972,1008] 
-K: 8 [256,384,576,640,864,896,960,1296,1344,1408,1440,1600,1664,1944,2016] 
-K: 9 [512,768,1152,1280,1728,1792,1920,2592,2688,2816,2880,3200,3328,3888,4032] 
-K: 10 [1024,1536,2304,2560,3456,3584,3840,5184,5376,5632,5760,6400,6656,7776,8064] 
+K: 1 [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47]
+K: 2 [4,6,9,10,14,15,21,22,25,26,33,34,35,38,39]
+K: 3 [8,12,18,20,27,28,30,42,44,45,50,52,63,66,68]
+K: 4 [16,24,36,40,54,56,60,81,84,88,90,100,104,126,132]
+K: 5 [32,48,72,80,108,112,120,162,168,176,180,200,208,243,252]
+K: 6 [64,96,144,160,216,224,240,324,336,352,360,400,416,486,504]
+K: 7 [128,192,288,320,432,448,480,648,672,704,720,800,832,972,1008]
+K: 8 [256,384,576,640,864,896,960,1296,1344,1408,1440,1600,1664,1944,2016]
+K: 9 [512,768,1152,1280,1728,1792,1920,2592,2688,2816,2880,3200,3328,3888,4032]
+K: 10 [1024,1536,2304,2560,3456,3584,3840,5184,5376,5632,5760,6400,6656,7776,8064]
 Done! ok
 
 ```
@@ -1204,10 +1204,10 @@ IN: rosetta-code.almost-prime
 : k-almost-prime? ( n k -- ? )
     '[ factors _ <combinations> [ product ] map ]
     [ [ = ] curry ] bi any? ;
-    
+
 :: first10 ( k -- seq )
     10 0 lfrom [ k k-almost-prime? ] lfilter ltake list>array ;
-    
+
 5 [1,b] [ dup first10 "K = %d: %[%3d, %]\n" printf ] each
 ```
 
@@ -1235,20 +1235,20 @@ Function kPrime(n As Integer, k As Integer) As Boolean
    Dim f As Integer = 0
    For i As Integer = 2 To n
      While n Mod i = 0
-       If f = k Then Return false 
+       If f = k Then Return false
        f += 1
        n \= i
      Wend
    Next
    Return f = k
 End Function
-   
+
 Dim As Integer i, c, k
 For k = 1 To 5
   Print "k = "; k; " : ";
   i = 2
   c = 0
-  While c < 10  
+  While c < 10
     If kPrime(i, k) Then
       Print Using "### "; i;
       c += 1
@@ -1439,7 +1439,7 @@ func main() {
 
 
 ```Groovy
- 
+
  public class almostprime
 {
 public static boolean kprime(int n,int k)
@@ -1482,19 +1482,19 @@ public static boolean kprime(int n,int k)
 ```txt
 
 k = 1:
-2 3 5 7 11 13 17 19 23 29 
+2 3 5 7 11 13 17 19 23 29
 k = 2:
-4 6 9 10 14 15 21 22 25 26 
+4 6 9 10 14 15 21 22 25 26
 k = 3:
-8 12 18 20 27 28 30 42 44 45 
+8 12 18 20 27 28 30 42 44 45
 k = 4:
-16 24 36 40 54 56 60 81 84 88 
+16 24 36 40 54 56 60 81 84 88
 k = 5:
-32 48 72 80 108 112 120 162 168 176 
+32 48 72 80 108 112 120 162 168 176
 
 ```
 
- 
+
 =={{header|GW-BASIC}}==
 {{trans|FreeBASIC}}
 {{works with|PC-BASIC|any}}
@@ -1506,14 +1506,14 @@ k = 5:
 30   PRINT "k = "; K%; ": ";
 40   LET I% = 2
 50   LET C% = 0
-60   WHILE C% < 10  
+60   WHILE C% < 10
 70    LET AN% = I%: LET AK% = K%: GOSUB 1000
 80    IF ISKPRIME <> 0 THEN PRINT USING "### "; I%;: LET C% = C% + 1
 90    LET I% = I% + 1
 100  WEND
 110  PRINT
 120 NEXT K%
-130 END 
+130 END
 
 995  ' Check if n (AN%) is a k (AK%) prime
 1000 LET F% = 0
@@ -1533,11 +1533,11 @@ k = 5:
 
 ```txt
 
-k =  1 :   2   3   5   7  11  13  17  19  23  29                               
-k =  2 :   4   6   9  10  14  15  21  22  25  26                               
-k =  3 :   8  12  18  20  27  28  30  42  44  45                               
-k =  4 :  16  24  36  40  54  56  60  81  84  88                               
-k =  5 :  32  48  72  80 108 112 120 162 168 176 
+k =  1 :   2   3   5   7  11  13  17  19  23  29
+k =  2 :   4   6   9  10  14  15  21  22  25  26
+k =  3 :   8  12  18  20  27  28  30  42  44  45
+k =  4 :  16  24  36  40  54  56  60  81  84  88
+k =  5 :  32  48  72  80 108 112 120 162 168 176
 
 ```
 
@@ -1581,7 +1581,7 @@ k = 5: 32 48 72 80 108 112 120 162 168 176
 Larger ''k''s require more complicated methods:
 
 ```haskell
-primes = 2:3:[n | n <- [5,7..], foldr (\p r-> p*p > n || rem n p > 0 && r) 
+primes = 2:3:[n | n <- [5,7..], foldr (\p r-> p*p > n || rem n p > 0 && r)
 	True (drop 1 primes)]
 
 merge aa@(a:as) bb@(b:bs)
@@ -1602,7 +1602,7 @@ kprimes k
 			| a < t = a : f as seqs tt
 			| otherwise = f (merge aa $ head seqs) (tail seqs) ts
 
-main = do 
+main = do
 	-- next line is for task requirement:
 	mapM_ (\x->print (x, take 10 $ kprimes x)) [1 .. 5]
 
@@ -1769,7 +1769,7 @@ k=1: 2 3 5 7 11 13 17 19 23 29 31
 k=2: 4 6 9 10 14 15 21 22 25 26 33
 k=3: 8 12 18 20 27 28 30 42 44 45 50
 k=4: 16 24 36 40 54 56 60 81 84 88 90
-k=5: 32 48 72 80 108 112 120 162 168 176 180 
+k=5: 32 48 72 80 108 112 120 162 168 176 180
 ```
 
 
@@ -1837,7 +1837,7 @@ def prime_factors:
       end
       | unique
     end;
-    
+
   if . <= 1 then []
   else . as $in
   | pf( [ primes( (1+$in) | sqrt | floor)  ] )
@@ -1958,7 +1958,7 @@ function almostPrime (n, k)
     end
     return count == k
 end
- 
+
 -- Generates table containing first ten k-almost primes for given k
 function kList (k)
     local n, kTab = 2^k, {}
@@ -2095,7 +2095,7 @@ AlmostPrimes:=proc(k, numvalues::posint:=10)
     local aprimes, i, intfactors;
     aprimes := Array([]);
     i := 0;
-    
+
     do
         i := i + 1;
         intfactors := ifactors(i)[2];
@@ -2113,10 +2113,10 @@ end proc:
 
 ```txt
 
-[[2, 3, 5, 7, 11, 13, 17, 19, 23, 29], 
- [4, 6, 9, 10, 14, 15, 21, 22, 25, 26], 
- [8, 12, 18, 20, 27, 28, 30, 42, 44, 45], 
- [16, 24, 36, 40, 54, 56, 60, 81, 84, 88], 
+[[2, 3, 5, 7, 11, 13, 17, 19, 23, 29],
+ [4, 6, 9, 10, 14, 15, 21, 22, 25, 26],
+ [8, 12, 18, 20, 27, 28, 30, 42, 44, 45],
+ [16, 24, 36, 40, 54, 56, 60, 81, 84, 88],
  [32, 48, 72, 80, 108, 112, 120, 162, 168, 176]]
 ```
 
@@ -2130,8 +2130,8 @@ kprimes[k_,n_] :=
   firstnprimes = Prime[Range[n]];
   runningkprimes = firstnprimes;
   Do[
-   runningkprimes = 
-     Outer[Times, firstnprimes , runningkprimes ] // Flatten // Union  // Take[#, n] & ; 
+   runningkprimes =
+     Outer[Times, firstnprimes , runningkprimes ] // Flatten // Union  // Take[#, n] & ;
    (* only keep lowest n numbers in our running list *)
    , {i, 1, k - 1}];
   runningkprimes
@@ -2228,7 +2228,7 @@ proc prime(k: int, listLen: int): seq[int] =
    result.add(test)
    curseur += 1
   test += 1
- 
+
 for k in 1..5:
  echo "k = ",k," : ",prime(k,10)
 ```
@@ -2258,14 +2258,14 @@ class Kth_Prime {
         n /= p; f+=1;
       };
     };
-    
+
     return f + ((n > 1) ? 1 : 0) = k;
   }
-  
+
   function : Main(args : String[]) ~ Nil {
     for (k := 1; k <= 5; k+=1;) {
       "k = {$k}:"->Print();
-      
+
       c := 0;
       for (i := 2; c < 10; i+=1;) {
         if (kPrime(i, k)) {
@@ -2300,17 +2300,17 @@ k = 5: 32 48 72 80 108 112 120 162 168 176
 ```Oforth
 : kprime?( n k -- b )
 | i |
-   0 2 n for: i [ 
-      while( n i /mod swap 0 = ) [ ->n 1+ ] drop 
-      ] 
-   k == 
+   0 2 n for: i [
+      while( n i /mod swap 0 = ) [ ->n 1+ ] drop
+      ]
+   k ==
 ;
- 
+
 : table( k -- [] )
 | l |
    Array new dup ->l
    2 while (l size 10 <>) [ dup k kprime? if dup l add then 1+ ]
-   drop 
+   drop
 ;
 ```
 
@@ -2351,7 +2351,7 @@ for(k=1,5,almost(k);print)
 
 ## Pascal
 
-{{libheader|primTrial}} 
+{{libheader|primTrial}}
 {{works with|Free Pascal}}
 
 ```Pascal
@@ -2488,7 +2488,7 @@ BEGIN {
 			$next += $twop while exists $sieve{$next};
 			$sieve{$next} = $twop;
 			$p = $primes[++$p_iter];
-			$q = $p * $p;	
+			$q = $p * $p;
 			$candidate += 2;
 		}
 		return $primes[$n];
@@ -2577,12 +2577,12 @@ put almost($_)[^10] for 1..5;
 -- Naieve stuff, mostly, but coded with enthuiasm!
 -- Following the idea behind (but not the code from!) the J submission:
 --  Generate 10 primes (kept in p10)                            -- (print K=1)
---  Multiply each of them by the first ten primes 
+--  Multiply each of them by the first ten primes
 --  Sort and find unique values, take the first ten of those    -- (print K=2)
---  Multiply each of them by the first ten primes 
+--  Multiply each of them by the first ten primes
 --  Sort and find unique values, take the first ten of those    -- (print K=3)
 --  ...
--- However I just keep a "top 10", using a bubble insertion, and stop 
+-- However I just keep a "top 10", using a bubble insertion, and stop
 --  multiplying as soon as everything else for p10[i] will be too big.
 
 -- (as calculated earlier from this routine,
@@ -2612,7 +2612,7 @@ function primes(integer n)
 sequence prime
 integer count = 0
 integer lowN, highN, midN
-    
+
     -- First, iteratively estimate the sieve size required
     lowN = 2*n
     highN = n*n+1
@@ -2634,7 +2634,7 @@ integer lowN, highN, midN
             if count>=n then exit end if
             for k=i+i to highN by i do
                 prime[k] = 0
-            end for 
+            end for
         end if
     end for
     return prime[1..n]
@@ -2716,13 +2716,13 @@ function kprime(integer n, integer k)
 --
 -- returns true if n has exactly k factors
 --
--- p is a "pseudo prime" in that 2,3,4,5,6,7,8,9,10,11 will behave 
---  exactly like 2,3,5,7,11, ie the remainder(n,4)=0 (etc) will never 
+-- p is a "pseudo prime" in that 2,3,4,5,6,7,8,9,10,11 will behave
+--  exactly like 2,3,5,7,11, ie the remainder(n,4)=0 (etc) will never
 --  succeed because remainder(n,2) would have succeeded twice first.
 --  Hence for larger n consider replacing p+=1 with p=next_prime(),
 --  then again, on "" this performs an obscene number of divisions..
 --
-integer p = 2, 
+integer p = 2,
         factors = 0
 
     while factors<k and p*p<=n do
@@ -2731,14 +2731,14 @@ integer p = 2,
             factors += 1
         end while
         p += 1
-    end while 
+    end while
     factors += (n>1)
     return factors==k
 end function
 
 procedure almost_primeC()
 integer nextkprime, count
- 
+
     for k=1 to 5 do
         printf(1,"k = %d: ", k);
         nextkprime = 2
@@ -2747,7 +2747,7 @@ integer nextkprime, count
             if kprime(nextkprime, k) then
                 printf(1," %4d", nextkprime)
                 count += 1
-            end if 
+            end if
             nextkprime += 1
         end while
         puts(1,"\n")
@@ -2786,7 +2786,7 @@ k = 5:    32   48   72   80  108  112  120  162  168  176
             M (sqrt N) )
          (while (>= M D)
             (if (=0 (% N D))
-               (setq M 
+               (setq M
                   (sqrt (setq N (/ N (link D)))) )
                (inc 'D (pop 'L)) ) )
          (link N) ) ) )
@@ -2800,7 +2800,7 @@ k = 5:    32   48   72   80  108  112  120  162  168  176
                (inc 'Y) )
             (T (= 10 Y) 'done)
             (inc 'X) ) ) ) )
-            
+
 (for I 5
    (println I '-> (almost I) ) )
 
@@ -2851,12 +2851,12 @@ C and Potion take 0.006s, Perl5 0.028s
 %
 almostPrime(K, Take, List) :-
   % Compute the list of the first Take primes:
-  nPrimes(Take, Primes),   
+  nPrimes(Take, Primes),
   almostPrime(K, Take, Primes, List).
 
 almostPrime(1, Take, Primes, Primes).
 
-almostPrime(K, Take, Primes, List) :- 
+almostPrime(K, Take, Primes, List) :-
   generate(2, K),  % generate K >= 2
   K1 is K - 1,
   almostPrime(K1, Take, Primes, L),
@@ -2884,7 +2884,7 @@ next_prime([2|Primes], P) :-
 	P2 is PP + 2,
 	generate(P2, N),
 	1 is N mod 2,		        % odd
-	Max is floor(sqrt(N+1)),	% round-off paranoia 
+	Max is floor(sqrt(N+1)),	% round-off paranoia
 	forall( (member(Prime, [2|Primes]),
 		 (Prime =< Max -> true
 		 ; (!, fail))), N mod Prime > 0 ),
@@ -2894,7 +2894,7 @@ next_prime([2|Primes], P) :-
 % multiply( +A, +List, Answer )
 multiply( A, [], [] ).
 multiply( A, [X|Xs], [AX|As] ) :-
-  AX is A * X, 
+  AX is A * X,
   multiply(A, Xs, As).
 
 % multiplylist( L1, L2, List ) succeeds if List is the concatenation of X * L2
@@ -2905,8 +2905,8 @@ multiplylist( [A|As], B, List ) :-
    multiplylist(As, B, L2),
    append(L1, L2, List).
 
-take(N, List, Head) :- 
-  length(Head, N), 
+take(N, List, Head) :-
+  length(Head, N),
   append(Head,X,List).
 
 ```
@@ -2933,11 +2933,11 @@ append([X|Xs], L, [X|Ls]) :- append(Xs,L,Ls).
 
 last([X], X).
 last([_|Xs],X) :- last(Xs,X).
-    
+
 :- endif.
 
 :- if(current_prolog_flag(dialect, gprolog)).
-generate(Min, I) :- 
+generate(Min, I) :-
   current_prolog_flag(max_integer, Max),
   between(Min, Max, I).
 :- endif.
@@ -2974,17 +2974,17 @@ EnableExplicit
 Procedure.b kprime(n.i, k.i)
   Define p.i = 2,
          f.i = 0
-  
+
   While f < k And p*p <= n
     While n % p = 0
       n / p
-      f + 1      
-    Wend    
+      f + 1
+    Wend
     p + 1
   Wend
-  
+
   ProcedureReturn Bool(f + Bool(n > 1) = k)
-  
+
 EndProcedure
 
 ;___main____
@@ -2998,16 +2998,16 @@ Define i.i,
 
 For k = 1 To 5
   Print("k = " + Str(k) + ":")
-  
+
   i = 2
   c = 0
-  While c < 10    
+  While c < 10
     If kprime(i, k)
       Print(RSet(Str(i),4))
       c + 1
     EndIf
     i + 1
-  Wend  
+  Wend
   PrintN("")
 Next
 
@@ -3033,9 +3033,9 @@ This imports [[Prime decomposition#Python]]
 ```python
 from prime_decomposition import decompose
 from itertools import islice, count
-try: 
+try:
     from functools import reduce
-except: 
+except:
     pass
 
 
@@ -3078,7 +3078,7 @@ if __name__ == '__main__':
 # no imports
 
 def prime_factors(m=2):
-    
+
     for i in range(2, m):
         r, q = divmod(m, i)
         if not q:
@@ -3166,17 +3166,17 @@ findfactors <- function(n) {
 almost_primes <- function(n = 10, k = 5) {
 
   # Set up matrix for storing of the results
-  
+
   res <- matrix(NA, nrow = k, ncol = n)
   rownames(res) <- paste("k = ", 1:k, sep = "")
   colnames(res) <- rep("", n)
-  
+
   # Loop over k
-  
+
   for (i in 1:k) {
-    
-    tmp <- 1 
-    
+
+    tmp <- 1
+
     while (any(is.na(res[i, ]))) { # Keep looping if there are still missing entries in the result-matrix
       if (length(findfactors(tmp)) == i) { # Check number of factors
         res[i, which.max(is.na(res[i, ]))] <- tmp
@@ -3330,17 +3330,17 @@ factr: z=j;                    do f=0  while z// 2==0;  z=z% 2;  end  /*divisibl
 
 ### optimized version
 
-This optimized REXX version can be   ''over a hundred times''   faster than the naive version. 
+This optimized REXX version can be   ''over a hundred times''   faster than the naive version.
 
 Some of the optimizations are:
 :::*   calculating the first   <big> 2<sup>(K-1)</sup> </big>   K─almost primes for each   '''K'''   group
 :::*   generating the primes (up to the limit) instead of dividing by (most) divisors.
-:::*   extending the   ''up-front''   prime divisors in the '''factr''' function. 
+:::*   extending the   ''up-front''   prime divisors in the '''factr''' function.
 
 
 The 1<sup>st</sup> optimization (bullet) allows the direct computation   (instead of searching)   of all K─almost primes up to the first   ''odd''   prime in the list.
 
-Once the required primes are generated, the finding of the K─almost primes is almost instantaneous. 
+Once the required primes are generated, the finding of the K─almost primes is almost instantaneous.
 
 ```rexx
 /*REXX program  computes and displays  the first    N    K─almost primes from  1 ──► K. */
@@ -3444,13 +3444,13 @@ The highest prime computed:  655357  (under the limit of  655360).
 ```ring
 
 for ap = 1 to 5
-    see "k = " + ap + ":" 
+    see "k = " + ap + ":"
     aList = []
     for n = 1 to 200
         num = 0
         for nr = 1 to n
             if n%nr=0 and isPrime(nr)=1
-               num = num + 1 
+               num = num + 1
                pr = nr
                while true
                      pr = pr * nr
@@ -3458,14 +3458,14 @@ for ap = 1 to 5
                         num = num + 1
                      else exit ok
                end ok
-        next  
+        next
         if (ap = 1 and isPrime(n) = 1) or (ap > 1 and num = ap)
            add(aList, n)
            if len(aList)=10 exit ok ok
      next
      for m = 1 to len(aList)
            see " " + aList[m]
-     next 
+     next
      see nl
 next
 
@@ -3649,16 +3649,16 @@ import <Utilities/Sequence.sl>;
 main(args(2)) :=
 	let
 		result := firstNKPrimes(1 ... 5, 10);
-		
+
 		output[i] := "k = " ++ intToString(i) ++ ": " ++ delimit(intToString(result[i]), ' ');
 	in
 		delimit(output, '\n');
-		
+
 firstNKPrimes(k, N) := firstNKPrimesHelper(k, N, 2, []);
 
 firstNKPrimesHelper(k, N, current, result(1)) :=
 	let
-		newResult := result when not isKPrime(k, current) else result ++ [current]; 
+		newResult := result when not isKPrime(k, current) else result ++ [current];
 	in
 		result when size(result) = N
 	else
@@ -3901,7 +3901,7 @@ Private Function kprime(ByVal n As Integer, k As Integer) As Boolean
     factors = factors - (n > 1) 'true=-1
     kprime = factors = k
 End Function
- 
+
 Private Sub almost_primeC()
     Dim nextkprime As Integer, count As Integer
     Dim k As Integer
@@ -3960,13 +3960,13 @@ Function PrimeFactors(n)
 			If divnum = 1 Then
 				Exit For
 			ElseIf divnum Mod arrP(i) = 0 Then
-				divnum = divnum/arrP(i) 
+				divnum = divnum/arrP(i)
 				PrimeFactors = PrimeFactors + 1
 			End If
 		Next
 	Loop
 End Function
- 
+
 Function IsPrime(n)
 	If n = 2 Then
 		IsPrime = True
@@ -3982,7 +3982,7 @@ Function IsPrime(n)
 		Next
 	End If
 End Function
- 
+
 Function ListPrimes(n)
 	ListPrimes = ""
 	For i = 1 To n
@@ -3999,11 +3999,11 @@ End Function
 
 ```txt
 
-K1: 2 3 5 7 11 13 17 19 23 29 
-K2: 4 6 9 10 14 15 21 22 25 26 
-K3: 8 12 18 20 27 28 30 42 44 45 
-K4: 16 24 36 40 54 56 60 81 84 88 
-K5: 32 48 72 80 108 112 120 162 168 176 
+K1: 2 3 5 7 11 13 17 19 23 29
+K2: 4 6 9 10 14 15 21 22 25 26
+K3: 8 12 18 20 27 28 30 42 44 45
+K4: 16 24 36 40 54 56 60 81 84 88
+K5: 32 48 72 80 108 112 120 162 168 176
 
 ```
 
@@ -4138,9 +4138,9 @@ k = 5:  32  48  72  80 108 112 120 162 168 176
 // Returns boolean indicating whether n is k-almost prime
 sub almostPrime(n, k)
     local divisor, count
-    
+
     divisor = 2
-    
+
     while(count < (k + 1) and n <> 1)
         if not mod(n, divisor) then
             n = n / divisor
@@ -4155,7 +4155,7 @@ end sub
 // Generates table containing first ten k-almost primes for given k
 sub kList(k, kTab())
     local n, i
-    
+
     n = 2^k : i = 1
     while(i < 11)
         if almostPrime(n, k) then
@@ -4222,9 +4222,9 @@ L(32,48,72,80,108,112,120,162,168,176)
 60 GO SUB 1000
 70 IF r THEN PRINT " ";i;: LET c=c+1
 90 GO TO 40
-100 PRINT 
+100 PRINT
 110 NEXT k
-120 STOP 
+120 STOP
 1000 REM kprime
 1010 LET p=2: LET n=i: LET f=0
 1020 IF f=k OR (p*p)>n THEN GO TO 1100

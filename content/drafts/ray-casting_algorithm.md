@@ -59,9 +59,9 @@ An algorithm for the previous speech could be (if P is a point, Px is its x coor
   '''if''' Py = Ay '''or''' Py = By '''then'''
     Py ← Py + &epsilon;
   '''end''' '''if'''
-  '''if''' Py < Ay '''or''' Py > By '''then''' 
+  '''if''' Py < Ay '''or''' Py > By '''then'''
     '''return''' false
-  '''else''' '''if''' Px >= max(Ax, Bx) '''then''' 
+  '''else''' '''if''' Px >= max(Ax, Bx) '''then'''
     '''return''' false
   '''else'''
     '''if''' Px < min(Ax, Bx) '''then'''
@@ -400,7 +400,7 @@ Point(10.0,10.0): FALSE
 1460 MAT READ strange
 1470 DATA 0,0,2.5,2.5,0,10,2.5,7.5,7.5,7.5,10,10,10,0,2.5,2.5
 1480 !
-1490 DIM exagon(6,2)  
+1490 DIM exagon(6,2)
 1500 MAT READ exagon
 1510 DATA 3,0,7,0,10,5,7,10,3,10,0,5
 1520 !
@@ -676,7 +676,7 @@ Strange does contain point 6
 Strange doesn't contain point 7
 
 ---------------------------
-OK   
+OK
 ---------------------------
 ```
 
@@ -685,8 +685,8 @@ OK
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -836,8 +836,8 @@ int main()
 {{works with|C++|11}}
 {{trans|D}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>
@@ -1003,8 +1003,8 @@ Testing code
 
 ```lisp
 (defparameter *points*
-  #((0 . 0) (10 . 0) (10 . 10) (0 . 10)  
-    (2.5 . 2.5) (7.5 . 2.5) (7.5 . 7.5) (2.5 . 7.5) 
+  #((0 . 0) (10 . 0) (10 . 10) (0 . 10)
+    (2.5 . 2.5) (7.5 . 2.5) (7.5 . 7.5) (2.5 . 7.5)
     (0 . 5) (10 . 5) (3 . 0) (7 . 0)
     (7 . 10) (3 . 10)))
 
@@ -1305,7 +1305,7 @@ contains
     logical :: inside
     type(point), intent(in) :: p
     type(polygon), intent(in) :: pol
-    
+
     integer :: i, cnt, pa, pb
 
     cnt = 0
@@ -1314,7 +1314,7 @@ contains
        pb = pol%vertices(i+1)
        if ( ray_intersects_seg(p, pol%points(pa), pol%points(pb)) ) cnt = cnt + 1
     end do
-    
+
     inside = .true.
     if ( mod(cnt, 2) == 0 ) then
        inside = .false.
@@ -2022,10 +2022,10 @@ public class RayCasting {
 
 
 ```txt
-   true    true   false   false    true    true   false 
-  false    true   false   false    true    true   false 
-   true   false   false   false    true    true   false 
-   true    true   false   false    true    true   false 
+   true    true   false   false    true    true   false
+  false    true   false   false    true    true   false
+   true   false   false   false    true    true   false
+   true    true   false   false    true    true   false
 ```
 
 
@@ -2453,7 +2453,7 @@ End Sub
 
 Function rand(loNum,hiNum)
     rand = Int(Rnd(0)*(hiNum-loNum+1)+loNum)
-End Function 
+End Function
 ```
 
 
@@ -2464,7 +2464,7 @@ End Function
 
 ```ocaml
 type point = { x:float; y:float }
- 
+
 type polygon = {
   vertices: point array;
   edges: (int * int) list;
@@ -2627,9 +2627,9 @@ sub create_polygon
     \@poly;
 }
 
-my @pts = ( point(0,0), point(10,0), point(10,10), point(0,10), 
-	    point(2.5,2.5), point(7.5,2.5), point(7.5,7.5), point(2.5,7.5), 
-	    point(0,5), point(10,5), 
+my @pts = ( point(0,0), point(10,0), point(10,10), point(0,10),
+	    point(2.5,2.5), point(7.5,2.5), point(7.5,7.5), point(2.5,7.5),
+	    point(0,5), point(10,5),
 	    point(3,0), point(7,0), point(7,10), point(3,10) );
 
 my %pgs = (
@@ -2647,7 +2647,7 @@ foreach my $pol ( sort keys %pgs ) {
     print "$pol\n";
     my $rp = $pgs{$pol};
     foreach my $tp ( @p ) {
-	print "\t($tp->[0],$tp->[1]) " . 
+	print "\t($tp->[0],$tp->[1]) " .
            ( point_in_polygon($tp, $rp) ? "INSIDE" : "OUTSIDE" ) . "\n";
     }
 }
@@ -2659,10 +2659,10 @@ foreach my $pol ( sort keys %pgs ) {
 
 ```perl6
 constant ε = 0.0001;
- 
+
 sub ray-hits-seg([\Px,\Py], [[\Ax,\Ay], [\Bx,\By]] --> Bool) {
     Py += ε if Py == Ay | By;
- 
+
     if Py < Ay or Py > By or Px > (Ax max Bx) {
 	False;
     }
@@ -2681,9 +2681,9 @@ sub point-in-poly(@point, @polygon --> Bool) {
 	take ray-hits-seg @point, @side.sort(*.[1]);
     }
 }
- 
+
 my %poly =
-    squared => 
+    squared =>
 	 [[[ 0.0,  0.0], [10.0,  0.0]],
 	  [[10.0,  0.0], [10.0, 10.0]],
 	  [[10.0, 10.0], [ 0.0, 10.0]],
@@ -2713,7 +2713,7 @@ my %poly =
 	  [[ 7.0, 10.0], [ 3.0, 10.0]],
 	  [[ 3.0, 10.0], [ 0.0,  5.0]],
 	  [[ 0.0,  5.0], [ 3.0,  0.0]]];
- 
+
 my @test-points =
 	  [  5.0,  5.0],
 	  [  5.0,  8.0],
@@ -2722,7 +2722,7 @@ my @test-points =
 	  [ 10.0,  5.0],
 	  [  8.0,  5.0],
 	  [ 10.0, 10.0];
- 
+
 for <squared squaredhole strange exagon> -> $polywanna {
     say "$polywanna";
     my @poly = %poly{$polywanna}[];
@@ -2777,7 +2777,7 @@ exagon
 ```Phix
 constant true = (1=1), false = not true
 constant inf = 1e300*1e300
- 
+
 function rayIntersectsSegment(sequence point, sequence segment)
 atom {pX,pY} = point
 atom {{aX,aY},{bX,bY}} = segment
@@ -2794,8 +2794,8 @@ atom m_red,m_blue
         --   ^      \
         -- In both cases it touches both edges, but ends up outside in the
         --  top case, whereas it ends up inside in the left case. Just move
-        --  the y co-ordinate down a smidge and it'll work properly, by 
-        --  missing one line in the left/right cases and hitting both/none 
+        --  the y co-ordinate down a smidge and it'll work properly, by
+        --  missing one line in the left/right cases and hitting both/none
         --  in the top/bottom cases.
         --
         pY += 0.000001
@@ -2831,7 +2831,7 @@ function in(integer flag, integer expected)
     if flag=expected then
         return INOUT[2-flag]
     end if
-    return INOUT[2-flag] & "*** ERROR ***" 
+    return INOUT[2-flag] & "*** ERROR ***"
 end function
 
 constant INSTAR = "* "
@@ -2856,7 +2856,7 @@ constant test_polygons = {
 }
 
 sequence name, poly, expected, tp
- 
+
     for i=1 to length(test_polygons) do
         {name,poly,expected} = test_polygons[i]
         printf(1,"\n%12s:",{name})
@@ -3049,22 +3049,22 @@ EndStructure
 Procedure inpoly(*p.point_f, List poly.point_f())
   Protected.point_f new, old, lp, rp
   Protected inside
-  If ListSize(poly()) < 3: ProcedureReturn 0: EndIf 
+  If ListSize(poly()) < 3: ProcedureReturn 0: EndIf
   LastElement(poly()): old = poly()
   ForEach poly()
     ;find leftmost endpoint 'lp' and the rightmost endpoint 'rp' based on x value
-    If poly()\x > old\x 
+    If poly()\x > old\x
       lp = old
       rp = poly()
     Else
       lp = poly()
       rp = old
-    EndIf 
+    EndIf
     If lp\x < *p\x And *p\x <= rp\x And (*p\y - lp\y) * (rp\x - lp\x) < (rp\y - lp\y) * (*p\x - lp\x)
       inside = ~inside
-    EndIf 
+    EndIf
     old = poly()
-  Next 
+  Next
   ProcedureReturn inside & 1
 EndProcedure
 
@@ -3087,7 +3087,7 @@ Repeat
   ExamineKeyboard()
   ExamineMouse()
   ClearScreen(Col)
-  
+
   mp\x = MouseX()
   mp\y = MouseY()
   If MouseButton(#PB_MouseButton_Left)
@@ -3096,12 +3096,12 @@ Repeat
     v()\y = mp\y
     Delay(100)
   EndIf
-  
+
   If MouseButton(#PB_MouseButton_Right)
     ClearList(v())
     Delay(100)
   EndIf
-  
+
   StartDrawing(ScreenOutput())
     If LastElement(v())
       pvp = v()
@@ -3110,8 +3110,8 @@ Repeat
         Circle(pvp\x, pvp\y, 5, RGB($FF, 0, 0)) ;Red
         pvp = v()
       Next
-    EndIf 
-    Circle(MouseX(), MouseY(), 5, RGB($C0, $C0, $FF)) ;LightBlue 
+    EndIf
+    Circle(MouseX(), MouseY(), 5, RGB($C0, $C0, $FF)) ;LightBlue
 
     If inpoly(mp, v())
       modetxt = "You are in the polygon."
@@ -3120,9 +3120,9 @@ Repeat
       modetxt = "You are not in the polygon."
       Col = RGB($50, $50, $50)
     EndIf
-    DrawText((800 - TextWidth(modetxt)) / 2, 0, modetxt) 
+    DrawText((800 - TextWidth(modetxt)) / 2, 0, modetxt)
   StopDrawing()
-  
+
   FlipBuffers()
 Until KeyboardReleased(#PB_Key_Escape) Or EventID = #PB_Event_CloseWindow
 ```
@@ -3225,7 +3225,7 @@ if __name__ == '__main__':
                   Pt(x=-10, y=5), Pt(x=0, y=5),
                   Pt(x=10, y=5), Pt(x=8, y=5),
                   Pt(x=10, y=10))
-    
+
     print ("\n TESTING WHETHER POINTS ARE WITHIN POLYGONS")
     for poly in polys:
         polypp(poly)
@@ -3298,13 +3298,13 @@ if __name__ == '__main__':
 ```python
 def _convert_fortran_shapes():
     point = Pt
-    pts = (point(0,0), point(10,0), point(10,10), point(0,10), 
-           point(2.5,2.5), point(7.5,2.5), point(7.5,7.5), point(2.5,7.5), 
-           point(0,5), point(10,5), 
+    pts = (point(0,0), point(10,0), point(10,10), point(0,10),
+           point(2.5,2.5), point(7.5,2.5), point(7.5,7.5), point(2.5,7.5),
+           point(0,5), point(10,5),
            point(3,0), point(7,0), point(7,10), point(3,10))
     p = (point(5,5), point(5, 8), point(-10, 5), point(0,5), point(10,5),
          point(8,5), point(10,10) )
- 
+
     def create_polygon(pts,vertexindex):
         return [tuple(Edge(pts[vertexindex[i]-1], pts[vertexindex[i+1]-1])
                        for i in range(0, len(vertexindex), 2) )]
@@ -3401,8 +3401,8 @@ createPolygon <- function(pts, segs) {
 #### testing ####
 
 pts <- list(point(0,0), point(10,0), point(10,10), point(0,10),
-            point(2.5,2.5), point(7.5,2.5), point(7.5,7.5), point(2.5,7.5), 
-            point(0,5), point(10,5), 
+            point(2.5,2.5), point(7.5,2.5), point(7.5,7.5), point(2.5,7.5),
+            point(0,5), point(10,5),
             point(3,0), point(7,0), point(7,10), point(3,10))
 
 polygons <-
@@ -3441,9 +3441,9 @@ Straightforward implementation of pseudocode
 
   (provide point)
   (provide seg)
-  (provide (contract-out [point-in-polygon? (-> 
-                                             point? 
-                                             list? 
+  (provide (contract-out [point-in-polygon? (->
+                                             point?
+                                             list?
                                              boolean?)]))
 
   (struct point (x y) #:transparent)
@@ -3455,8 +3455,8 @@ Straightforward implementation of pseudocode
     (let* ([Ax (seg-Ax s)] [Ay (seg-Ay s)]
            [Bx (seg-Bx s)] [By (seg-By s)]
            [Px (point-x r)] [Pyo (point-y r)]
-           [Py (+ Pyo (if (or (eq? Pyo Ay) 
-                              (eq? Pyo By)) 
+           [Py (+ Pyo (if (or (eq? Pyo Ay)
+                              (eq? Pyo By))
                           ε 0))])
 
       (define Ax2 (if (< Ay By) Ax Bx))
@@ -3466,7 +3466,7 @@ Straightforward implementation of pseudocode
 
       (cond [(or (> Py (max Ay By)) (< Py (min Ay By))) #f]
             [(> Px (max Ax Bx)) #f]
-            [else (cond 
+            [else (cond
                 [(< Px (min Ax Bx)) #t]
                 [else
                  (let ([red (if (neq? Ax2 Bx2)
@@ -3478,7 +3478,7 @@ Straightforward implementation of pseudocode
                    (if (>= blue red) #t #f))])])))
 
   (define (point-in-polygon? point polygon)
-    (odd? 
+    (odd?
      (for/fold ([c 0]) ([seg polygon])
        (+ c (if (ray-cross-seg? point seg) 1 0))))))
 
@@ -3486,26 +3486,26 @@ Straightforward implementation of pseudocode
 
 (define test-point-list
   (list
-   (point 5.0    5.0) 
-   (point 5.0    8.0) 
-   (point -10.0  5.0) 
-   (point  0.0   5.0) 
-   (point 10.0   5.0) 
-   (point  8.0   5.0) 
+   (point 5.0    5.0)
+   (point 5.0    8.0)
+   (point -10.0  5.0)
+   (point  0.0   5.0)
+   (point 10.0   5.0)
+   (point  8.0   5.0)
    (point 10.0  10.0)))
 
 (define square
-  (list (seg 0.0   0.0  10.0   0.0) 
-        (seg 10.0  0.0  10.0  10.0) 
-        (seg 10.0  10.0  0.0  10.0) 
+  (list (seg 0.0   0.0  10.0   0.0)
+        (seg 10.0  0.0  10.0  10.0)
+        (seg 10.0  10.0  0.0  10.0)
         (seg 0.0   0.0  0.0   10.0)))
 
 (define exagon
-  (list (seg  3.0   0.0   7.0   0.0) 
-        (seg  7.0   0.0  10.0   5.0) 
-        (seg 10.0   5.0   7.0  10.0) 
-        (seg  7.0  10.0   3.0  10.0) 
-        (seg  0.0   5.0   3.0   10.0) 
+  (list (seg  3.0   0.0   7.0   0.0)
+        (seg  7.0   0.0  10.0   5.0)
+        (seg 10.0   5.0   7.0  10.0)
+        (seg  7.0  10.0   3.0  10.0)
+        (seg  0.0   5.0   3.0   10.0)
         (seg  3.0   0.0 0.0   5.0)))
 
 (define (test-figure fig name)
@@ -3523,7 +3523,7 @@ Straightforward implementation of pseudocode
 
 ```txt
 
-testing square: 
+testing square:
 testing (point 5.0 5.0): #t
 testing (point 5.0 8.0): #t
 testing (point -10.0 5.0): #f
@@ -3532,7 +3532,7 @@ testing (point 10.0 5.0): #t
 testing (point 8.0 5.0): #t
 testing (point 10.0 10.0): #f
 
-testing exagon: 
+testing exagon:
 testing (point 5.0 5.0): #t
 testing (point 5.0 8.0): #t
 testing (point -10.0 5.0): #f
@@ -3549,7 +3549,7 @@ testing (point 10.0 10.0): #f
 
 Over half of the REXX program is devoted to specifying/defining/assigning the points for the test cases and for the various polygons.
 
-Code was added to facilitate easier specification of polygon sides by just specifying their   ''vertices''   instead of specifying their   ''line segments''. 
+Code was added to facilitate easier specification of polygon sides by just specifying their   ''vertices''   instead of specifying their   ''line segments''.
 
 ```rexx
 /*REXX program verifies if a   horizontal ray   from   point P   intersects  a polygon. */
@@ -3887,11 +3887,11 @@ Object subclass: Segment [
     "utility methods"
     first [ ^ pts at: 1]
     second [ ^ pts at: 2]
-    leftmostEndPoint [ 
+    leftmostEndPoint [
       ^ (self first x > self second x) ifTrue: [ self second ] ifFalse: [ self first ]
     ]
     rightmostEndPoint [
-      ^ (self first x > self second x) ifTrue: [ self first ] ifFalse: [ self second ] 
+      ^ (self first x > self second x) ifTrue: [ self first ] ifFalse: [ self second ]
     ]
     topmostEndPoint [
       ^ (self first y > self second y) ifTrue: [ self first ] ifFalse: [ self second ]
@@ -3916,7 +3916,7 @@ Object subclass: Segment [
         ifTrue: [ ^false ]
         ifFalse: [ (p x < (self leftmostEndPoint x))
                      ifTrue: [ ^true ]
-                     ifFalse: [ |s| 
+                     ifFalse: [ |s|
                         s := Segment new: { A . point }.
 			(s slope) >= (self slope)
 			  ifTrue: [ ^ true ]
@@ -3945,7 +3945,7 @@ Object subclass: Polygon [
     ]
     init [ polysegs := OrderedCollection new. ^ self ]
     addSegment: segment [ polysegs add: segment ]
-    
+
     pointInside: point [ |cnt|
       cnt := 0.
       polysegs do: [ :s | (s doesIntersectRayFrom: point)
@@ -3973,27 +3973,27 @@ names := { 'square' . 'square hole' . 'strange' . 'exagon' }.
 polys := OrderedCollection new.
 
 polys add:
-      ( 
-        Polygon fromPoints: points 
+      (
+        Polygon fromPoints: points
                 and: { {1 . 2}. {2 . 3}. {3 . 4}. {4 . 1} }
       ) ;
       add:
       (
-        Polygon fromPoints: points 
+        Polygon fromPoints: points
                 and: { {1 . 2}. {2 . 3}. {3 . 4}. {4 . 1}. {5 . 6}. {6 . 7}. {7 . 8}. {8 . 5} }
       ) ;
       add:
       (
-        Polygon fromPoints: points 
+        Polygon fromPoints: points
                 and: { {1 . 5}. {5 . 4}. {4 . 8}. {8 . 7}. {7 . 3}. {3 . 2}. {2 . 5} }
       ) ;
       add:
       (
-        Polygon fromPoints: points 
+        Polygon fromPoints: points
                 and: { {11 . 12}. {12 . 10}. {10 . 13}. {13 . 14}. {14 . 9}. {9 . 11} }
       ).
 
-{ 5@5 . 5@8 . -10@5 . 0@5 . 10@5 . 8@5 . 10@10 } 
+{ 5@5 . 5@8 . -10@5 . 0@5 . 10@5 . 8@5 . 10@10 }
 do: [ :p |
   1 to: 4 do: [ :i |
    ('point %1 inside %2? %3' %
@@ -4010,7 +4010,7 @@ do: [ :p |
 
 ```Tcl
 package require Tcl 8.5
- 
+
 proc point_in_polygon {point polygon} {
     set count 0
     foreach side [sides $polygon] {
@@ -4036,7 +4036,7 @@ proc ray_intersects_line {point line} {
     if {$By < $Ay} {
 	lassign $line Bx By Ax Ay
     }
-    # Add epsilon to 
+    # Add epsilon to
     if {$Py == $Ay || $Py == $By} {
 	set Py [expr {$Py + abs($Py)/1e6}]
     }
@@ -4051,7 +4051,7 @@ proc ray_intersects_line {point line} {
     set mBlu [expr {$Ax != $Px ? ($Py-$Ay)/($Px-$Ax) : Inf}]
     return [expr {$mBlu >= $mRed}]
 }
- 
+
 foreach {point poly} {
     {0 0}	{-1 -1  -1 1  1 1  1 -1}
     {2 2}	{-1 -1  -1 1  1 1  1 -1}
@@ -4076,7 +4076,7 @@ foreach {point poly} {
 This function takes a point <math>(x,y)</math> and a polygon <math>\langle(x_1,y_1)\dots(x_n,y_n)\rangle</math>
 to a true value if the point is enclosed by the polygon and a false
 value if it's outside, using the algorithm described above.
-For points on the boundary the result is unspecified. 
+For points on the boundary the result is unspecified.
 
 ```Ursala
 #import flo
@@ -4093,7 +4093,7 @@ This test program tries it on a couple of examples.
 ```Ursala
 #cast %bL
 
-examples = 
+examples =
 
 in* <
    ((0.5,0.6),<(0.,0.),(1.,2.),(1.,0.)>),
@@ -4181,7 +4181,7 @@ End Module
 
 ```zkl
 const E = 0.0001;
- 
+
 fcn rayHitsSeg([(Px,Py)],[(Ax,Ay)],[(Bx,By)]){ // --> Bool
    if(Py==Ay or Py==By) Py+=E;
    if(Py<Ay or Py>By or Px>Ax.max(Bx)) False
@@ -4189,7 +4189,7 @@ fcn rayHitsSeg([(Px,Py)],[(Ax,Ay)],[(Bx,By)]){ // --> Bool
    else try{ ( (Py - Ay)/(Px - Ax) )>=( (By - Ay)/(Bx - Ax) ) } //blue>=red
         catch(MathError){ Px==Ax } // divide by zero == ∞, only blue?
 }
- 
+
 fcn pointInPoly(point, polygon){ // --> Bool, polygon is ( (a,b),(c,d).. )
    polygon.filter('wrap([(ab,cd)]){ a,b:=ab; c,d:=cd;
       if(b<=d) rayHitsSeg(point,ab,cd); // left point has smallest y coordinate
@@ -4233,7 +4233,7 @@ polys:=T( //(name,( ((a,b),(c,d)),((a,b),(c,d))... ), ... )==(nm,(ln,ln..) ..)
 	  T(T( 3.0, 10.0), T( 0.0,  5.0)),
 	  T(T( 0.0,  5.0), T( 3.0,  0.0)))),
 );
- 
+
 testPoints:=T(
 	  T(  5.0,  5.0),
 	  T(  5.0,  8.0),
@@ -4243,7 +4243,7 @@ testPoints:=T(
 	  T(  8.0,  5.0),
 	  T( 10.0, 10.0)
 );
- 
+
 foreach name,polywanna in (polys){
    name.println();
    foreach testPoint in (testPoints){

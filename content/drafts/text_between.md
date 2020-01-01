@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{draft task|Text between}} 
+{{draft task|Text between}}
 
 ;Task:
 Get the text in a string that occurs between a start and end delimiter.
@@ -18,7 +18,7 @@ Programs will be given a search string, a start delimiter string, and an end del
 
 The value returned should be the text in the search string that occurs between the '''first''' occurrence of the start delimiter (starting after the text of the start delimiter) and the '''first''' occurrence of the end delimiter after that.
 
-If the start delimiter is not present in the search string, a blank string should be returned. 
+If the start delimiter is not present in the search string, a blank string should be returned.
 
 If the end delimiter is not present after the end of the first occurrence of the start delimiter in the search string, the remainder of the search string after that point should be returned.
 
@@ -302,7 +302,7 @@ on text_between(this_text, start_text, end_text)
 		end if
 	end try
 	set AppleScript's text item delimiters to ""
-	
+
 	return return_text
 end text_between
 
@@ -476,7 +476,7 @@ char* textBetween(char* thisText, char* startText, char* endText, char* returnTe
         	startPointer = startPointer + strlen(startText);
         }
 	} // end if the start delimiter is "start"
-    
+
     if (startPointer != NULL)
     {
 
@@ -491,7 +491,7 @@ char* textBetween(char* thisText, char* startText, char* endText, char* returnTe
 		} // end if the end delimiter is "end"
 
         stringLength = strlen(startPointer) - endLength;
-        
+
         if (stringLength == 0)
         {
 		    returnText = "";
@@ -501,13 +501,13 @@ char* textBetween(char* thisText, char* startText, char* endText, char* returnTe
     	    strncpy(returnText,startPointer, stringLength);
 	        returnText[stringLength++] = '\0';
 		}
-        
+
     } else {
 	    //printf("Start pointer not found\n");
 	    returnText = "";
-	    
+
     } // end if the start pointer is not found
-    
+
     return startPointer;
 } // end textBetween method
 ```
@@ -518,8 +518,8 @@ char* textBetween(char* thisText, char* startText, char* endText, char* returnTe
 
 {{trans|C#}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 std::ostream& operator<<(std::ostream& out, const std::string& str) {
     return out << str.c_str();
@@ -1026,7 +1026,7 @@ main = do
 textBetween=: dyad define
   text=. y
   'start end'=. x
-  start=. ''"_^:('start'&-:) start 
+  start=. ''"_^:('start'&-:) start
   end=. text"_^:('end'&-:) end
   end taketo start takeafter text
 )
@@ -1110,37 +1110,37 @@ public class textBetween
     	String returnText = "";
     	int startIndex = 0;
     	int endIndex = 0;
-    	
+
     	if (startString.equals("start"))
     	{
     		startIndex = 0;
     	} else {
 	    	startIndex = thisText.indexOf(startString);
-	    	
-	    	if (startIndex < 0) 
+
+	    	if (startIndex < 0)
 	        {
-	        	return "";	        	
+	        	return "";
 	        } else {
 	        	startIndex = startIndex + startString.length();
 	        }
     	}
-        
+
     	if (endString.equals("end"))
     	{
     		endIndex = thisText.length();
     	} else {
     		endIndex = thisText.indexOf(endString);
-            
-            if (endIndex <= 0) 
+
+            if (endIndex <= 0)
             {
             	return "";
             } else {
 
-            }	
+            }
     	}
-    	
+
     	returnText = thisText.substring(startIndex,endIndex);
-    	
+
     	return returnText;
     } // end method textBetween
 
@@ -1152,14 +1152,14 @@ public class textBetween
     	String thisText = args[0];
     	String startDelimiter = args[1];
     	String endDelimiter = args[2];
-    	
+
     	String returnText = "";
     	returnText = textBetween(thisText, startDelimiter, endDelimiter);
-    	
+
         System.out.println(returnText);
 
     } // end method main
-    
+
 } // end class TextBetween
 
 ```
@@ -1180,7 +1180,7 @@ public class textBetween
 		{
 			return "";
 		}
-		
+
 		var start_pos = 0;
 		if (startString != 'start')
 		{
@@ -1452,7 +1452,7 @@ def textbetween_strings($startdlm; $enddlm):
 ```
 
 
-###  Verification 
+###  Verification
 
 
 <lang>
@@ -1467,11 +1467,11 @@ def testdata:
    ["One fish two fish red fish blue fish", "fish ", " red"],
    ["FooBarBazFooBuxQuux", "Foo", "Foo"] )
    ;
-	     
+
 testdata
 | . as $in
 | $in[0]
-| textbetween_strings($in[1]; $in[2]) 
+| textbetween_strings($in[1]; $in[2])
 
 ```
 
@@ -1773,10 +1773,10 @@ class TextBetween {
         startIndex := 0;
       } else {
         startIndex := thisText->Find(startString);
- 
-        if (startIndex < 0) 
+
+        if (startIndex < 0)
           {
-            return "";            
+            return "";
           } else {
             startIndex := startIndex + startString->Size();
           };
@@ -1787,13 +1787,13 @@ class TextBetween {
         endIndex := thisText->Size();
       } else {
         endIndex := thisText->Find(endString);
- 
-            if (endIndex <= 0) 
+
+            if (endIndex <= 0)
             {
               return "";
             } else {
- 
-            };  
+
+            };
       };
 
     return thisText->SubString(startIndex, endIndex - startIndex);
@@ -1937,7 +1937,7 @@ put '11> ', 'Soothe a guilty conscience today, string wrangling is not the best 
 3> Rosetta Code world
 4> 你好嗎
 5> Hello <span>Rosetta Code</span> world</text><table style="myTable">
-6> 
+6>
 7> brown
 8> two fish
 9> BarBaz
@@ -1989,7 +1989,7 @@ Expect: "%s" ***ERROR***
 """
 
 for i=1 to length(tests) do
-    string {text,start_delimiter,end_delimiter,expected} = tests[i], 
+    string {text,start_delimiter,end_delimiter,expected} = tests[i],
             actual = text_between(text,start_delimiter,end_delimiter)
     if actual!=expected then
         printf(1,fmt,{text,start_delimiter,end_delimiter,actual,expected})
@@ -2019,7 +2019,7 @@ function text_between($string, $start, $end)
 {
     //$string = " ".$string;
     $startIndex = strpos($string,$start);
-    
+
     if ($start == "start")
     {
     	$startIndex = 0;
@@ -2029,7 +2029,7 @@ function text_between($string, $start, $end)
     		return "Start text not found";
     	}
     }
-    
+
     if ($end == "end")
     {
     	$endIndex=strlen($string);
@@ -2037,7 +2037,7 @@ function text_between($string, $start, $end)
     } else {
 	    $resultLength = strpos($string,$end,$startIndex) - $startIndex;
 	}
-    
+
     if ($start != "start")
     {
 		$startIndex += strlen($start);
@@ -2047,7 +2047,7 @@ function text_between($string, $start, $end)
     {
     	return "End text not found";
     }
-    
+
     return substr($string,$startIndex,$resultLength);
 }
 
@@ -2210,14 +2210,14 @@ def textBetween( thisText, startString, endString ):
     	if startString is 'start':
     		startIndex = 0
     	else:
-    		startIndex = thisText.index( startString ) 
-    	
+    		startIndex = thisText.index( startString )
+
     	if not (startIndex >= 0):
     		return 'Start delimiter not found'
     	else:
         	if startString is not 'start':
         		startIndex = startIndex + len( startString )
-        
+
         returnText = thisText[startIndex:]
 
 
@@ -2263,8 +2263,8 @@ print textBetween( thisText, startString, endString )
         [else ""]))
 
 (define text-between
-  (match-lambda**   
-   [("start" "end" text) text]   
+  (match-lambda**
+   [("start" "end" text) text]
    [("start" end text) (text-to-end text end)]
    [(start "end" text) (text-from-start text start)]
    [(start end text) (text-to-end (text-from-start text start) end)]))
@@ -2339,7 +2339,7 @@ text_between: Procedure
     Return left(rest,e-1)
     End
 
-o: Say arg(1)     
+o: Say arg(1)
 ```
 
 {{out|Output}}
@@ -2397,7 +2397,7 @@ Output: "BarBaz"
 
 This REXX version makes use of the REXX   '''parse'''   instruction to extract the required string.
 
-Also, it wasn't necessary, but I <u>assummed</u> (bad assumption?) that the   <big>'''\'''</big>   could be an escape character, but unless clarified, 
+Also, it wasn't necessary, but I <u>assummed</u> (bad assumption?) that the   <big>'''\'''</big>   could be an escape character, but unless clarified,
 
 it's being treated as a commom character,   REXX has no need for escape characters (within character strings).
 
@@ -2564,35 +2564,35 @@ Test
 
 class String
   def textBetween startDelimiter, endDelimiter
-  
+
   	if (startDelimiter == "start") then
   		startIndex = 0
   	else
   		startIndex = self.index(startDelimiter) + startDelimiter.length
   	end
-  	
+
   	if (startIndex == nil) then
   		return "Start delimiter not found"
   	end
-  	
+
   	thisLength = self.length
-  	
+
   	returnText = self[startIndex, thisLength]
-  	  	
+
  	if (endDelimiter == "end") then
   		endIndex = thisLength
   	else
   		endIndex = returnText.index(endDelimiter)
   	end
-  	
+
   	if (endIndex == nil) then
   		return "End delimiter not found"
   	end
-  	  	
+
   	returnText = returnText[0, endIndex]
-  	
+
   	return returnText
-  
+
   end
 end
 
@@ -3063,12 +3063,12 @@ End Function
 3- Rosetta Code world
 4- 你好嗎
 5- Hello <span>Rosetta Code</span> world</text><table style=\"myTable\">
-6- 
+6-
 7- brown
 8- two fish
 9- BarBaz
 10- 你好嗎...
-11- 
+11-
 12- Hello Rosetta Code world
 ```
 
@@ -3082,7 +3082,7 @@ End Function
 Public Function TextBetween(ByVal Text As String, ByVal StartDelim As String, ByVal EndDelim As String) As String
 Dim indS As Long
 Dim indE As Long
-  
+
   If StartDelim = "start" Then
     indS = 1
   Else
@@ -3091,7 +3091,7 @@ Dim indE As Long
       indS = indS + Len(StartDelim)
     End If
   End If
-  
+
   If indS Then
     If EndDelim = "end" Then
       indE = Len(Text) + 1
@@ -3106,7 +3106,7 @@ Dim indE As Long
       TextBetween = Mid$(Text, indS, indE)
     End If
   End If
-  
+
 End Function
 
 ' *********************

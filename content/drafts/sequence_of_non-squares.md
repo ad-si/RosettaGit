@@ -19,7 +19,7 @@ Show that the following remarkable formula gives the [http://www.research.att.co
 * Show that no squares occur for   <big> n </big>   less than one million
 
 
-This sequence is also known as   [http://oeis.org/A000037 A000037]   in the '''OEIS''' database. 
+This sequence is also known as   [http://oeis.org/A000037 A000037]   in the '''OEIS''' database.
 
 
 
@@ -34,12 +34,12 @@ with Ada.Text_IO;  use Ada.Text_IO;
 
 procedure Sequence_Of_Non_Squares_Test is
    use Ada.Numerics.Long_Elementary_Functions;
-   
+
    function Non_Square (N : Positive) return Positive is
    begin
       return N + Positive (Long_Float'Rounding (Sqrt (Long_Float (N))));
    end Non_Square;
-   
+
    I : Positive;
 begin
    for N in 1..22 loop -- First 22 non-squares
@@ -77,13 +77,13 @@ end Sequence_Of_Non_Squares_Test;
 PROC non square = (INT n)INT: n + ENTIER(0.5 + sqrt(n));
 
 main: (
- 
+
     # first 22 values (as a list) has no squares: #
     FOR i TO 22 DO
         print((whole(non square(i),-3),space))
     OD;
     print(new line);
- 
+
     # The following check shows no squares up to one million:  #
     FOR i TO 1 000 000 DO
         REAL j = sqrt(non square(i));
@@ -126,7 +126,7 @@ begin
         if ( rn * rn ) = fn then begin
             write( "Found square at: ", n );
             noSquares := false
-        end if_fn_is_a_square 
+        end if_fn_is_a_square
     end for_n ;
 
     if noSquares then write( "f(n) did not produce a square in 1 .. 1 000 000" )
@@ -180,7 +180,7 @@ Loop 1000000
    x := A_Index + floor(0.5 + sqrt(A_Index)), s += x = round(sqrt(x))**2
 Msgbox Number of bad squares = %s% ; 0
 ```
- 
+
 
 
 ## AWK
@@ -241,7 +241,7 @@ PRINT
 found = 0
 FOR i = 1 TO 1000000
      j = SQR(nonsqr(i))
-     IF j = INT(j) THEN 
+     IF j = INT(j) THEN
 	 found = 1
          PRINT "Found square: "; i
          EXIT FOR
@@ -260,7 +260,7 @@ IF found=0 THEN PRINT "No squares found"
         S% = N% + SQR(N%) + 0.5
         PRINT S%
       NEXT
-      
+
       PRINT '"Checking...."
       FOR N% = 1 TO 999999
         S% = N% + SQR(N%) + 0.5
@@ -378,8 +378,8 @@ The functions int, round, floor, ceil are taken from [http://www.pixelbeat.org/s
 ## C
 
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 #include <stdio.h>
 #include <assert.h>
 
@@ -390,12 +390,12 @@ int nonsqr(int n) {
 
 int main() {
     int i;
-    
+
     /* first 22 values (as a list) has no squares: */
     for (i = 1; i < 23; i++)
         printf("%d ", nonsqr(i));
     printf("\n");
-    
+
     /* The following check shows no squares up to one million: */
     for (i = 1; i < 1000000; i++) {
         double j = sqrt(nonsqr(i));
@@ -418,14 +418,14 @@ namespace sons
     {
         static void Main(string[] args)
         {
-            for (int i = 1; i < 23; i++)            
-                Console.WriteLine(nonsqr(i));            
+            for (int i = 1; i < 23; i++)
+                Console.WriteLine(nonsqr(i));
 
             for (int i = 1; i < 1000000; i++)
             {
                 double j = Math.Sqrt(nonsqr(i));
                 Debug.Assert(j != Math.Floor(j),"Square");
-            }            
+            }
         }
 
         static int nonsqr(int i)
@@ -441,8 +441,8 @@ namespace sons
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <algorithm>
 #include <vector>
 #include <cmath>
@@ -456,13 +456,13 @@ double nextNumber( double number ) {
 int main( ) {
    std::vector<double> non_squares ;
    typedef std::vector<double>::iterator SVI ;
-   non_squares.reserve( 1000000 ) ;   
+   non_squares.reserve( 1000000 ) ;
    //create a vector with a million sequence numbers
    for ( double i = 1.0 ; i < 100001.0 ; i += 1 )
-      non_squares.push_back( nextNumber( i ) ) ;  
+      non_squares.push_back( nextNumber( i ) ) ;
    //copy the first numbers to standard out
    std::copy( non_squares.begin( ) , non_squares.begin( ) + 22 ,
-	 std::ostream_iterator<double>(std::cout, " " ) ) ;     
+	 std::ostream_iterator<double>(std::cout, " " ) ) ;
    std::cout << '\n' ;
    //find if floor of square root equals square root( i. e. it's a square number )
    SVI found = std::find_if ( non_squares.begin( ) , non_squares.end( ) ,
@@ -482,7 +482,7 @@ int main( ) {
 
 ```txt
 
-2 3 5 6 7 8 10 11 12 13 14 15 17 18 19 20 21 22 23 24 26 27 
+2 3 5 6 7 8 10 11 12 13 14 15 17 18 19 20 21 22 23 24 26 27
 Up to 1000000, found no square number in the sequence!
 
 ```
@@ -525,11 +525,11 @@ is_square = (n) ->
 do ->
   first_22_non_squares = (non_square i for i in [1..22])
   console.log first_22_non_squares
-  
+
   # test is_square has no false negatives:
   for i in [1..10000]
     throw Error("is_square broken") unless is_square i*i
-    
+
   # test non_square is valid for first million values of n
   for i in [1..1000000]
     throw Error("non_square broken") if is_square non_square(i)
@@ -543,7 +543,7 @@ do ->
 
 ```txt
 
-> coffee foo.coffee 
+> coffee foo.coffee
 [ 2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27 ]
 success
 
@@ -572,7 +572,7 @@ success
     (loop
        :for n :upfrom 1 :to 1000000
        :when (squarep (non-square n))
-       :do (format t "Found a square: ~D -> ~D~%" 
+       :do (format t "Found a square: ~D -> ~D~%"
 		   n (non-square n)))))
 ```
 
@@ -681,33 +681,33 @@ end
 
 ```txt
 
-2 
-3 
-5 
-6 
-7 
+2
+3
+5
+6
+7
 8
-10 
-11 
-12 
-13 
-14 
-15 
-17 
-18 
-19 
-20 
-21 
-22 
-23 
-24 
-26 
+10
+11
+12
+13
+14
+15
+17
+18
+19
+20
+21
+22
+23
+24
+26
 27
 There are no squares for n equal to 22.
 
-2 
-3 
-5 
+2
+3
+5
 6 ...
 
 1000999
@@ -775,13 +775,13 @@ This is based on the [[BASIC]] and [[Go]] examples.
 function nonsqr( atom n)
     return n + floor( 0.5 + sqrt( n ) )
 end function
- 
+
 puts( 1, "  n  r(n)\n" )
 puts( 1, "---  ---\n" )
 for i = 1 to 22 do
     printf( 1, "%3d  %3d\n", { i, nonsqr(i) } )
 end for
- 
+
 atom j
 atom found
 found = 0
@@ -793,8 +793,8 @@ for i = 1 to 1000000 do
         exit
     end if
 end for
-if found = 0 then 
-    puts( 1, "No squares found\n" ) 
+if found = 0 then
+    puts( 1, "No squares found\n" )
 end if
 ```
 
@@ -912,7 +912,7 @@ PROGRAM NONSQUARES
   IMPLICIT NONE
 
   INTEGER :: m, n, nonsqr
-      
+
   DO n = 1, 22
     nonsqr =  n + FLOOR(0.5 + SQRT(REAL(n)))  ! or could use NINT(SQRT(REAL(n)))
     WRITE(*,*) nonsqr
@@ -956,7 +956,7 @@ Print : Print
 ' Test numbers generated for n less than a million to see if they're squares
 
 For i As UInteger = 1 To 999999
-  If isSquare(nonSquare(i)) Then 
+  If isSquare(nonSquare(i)) Then
     Print "The number generated by the sequence for n ="; i; " is square!"
     Goto finish
   End If
@@ -1025,7 +1025,7 @@ end;
 gen := NonSquaresGen();
 List([1 .. 22] i -> gen());
 # [ 2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27 ]
-  
+
 a := NonSquaresGen();
 b := NonSquaresAlt();
 
@@ -1178,7 +1178,7 @@ nonsqr n = n + round (sqrt (fromIntegral n))
 
  > map nonsqr [1..22]
  [2,3,5,6,7,8,10,11,12,13,14,15,17,18,19,20,21,22,23,24,26,27]
- 
+
  > any (\j -> j == fromIntegral (floor j)) $ map (sqrt . fromIntegral . nonsqr) [1..1000000]
  False
 
@@ -1244,7 +1244,7 @@ END
 
 ```txt
 2 3 5 6 7 8 10 11 12 13 14 15 17 18 19 20 21 22 23 24 26 27
-squares_found=0; 
+squares_found=0;
 ```
 
 
@@ -1268,7 +1268,7 @@ return n + floor(0.5 + sqrt(n))
 end
 ```
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers provides floor]
 
 
@@ -1320,13 +1320,13 @@ public class SeqNonSquares {
     public static int nonsqr(int n) {
         return n + (int)Math.round(Math.sqrt(n));
     }
-    
+
     public static void main(String[] args) {
         // first 22 values (as a list) has no squares:
         for (int i = 1; i < 23; i++)
             System.out.print(nonsqr(i) + " ");
         System.out.println();
-        
+
         // The following check shows no squares up to one million:
         for (int i = 1; i < 1000000; i++) {
             double j = Math.sqrt(nonsqr(i));
@@ -1412,7 +1412,7 @@ By functional composition
 ```JavaScript
 {
     "first22":[2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15,
-               17, 18, 19, 20, 21, 22, 23, 24, 26, 27], 
+               17, 18, 19, 20, 21, 22, 23, 24, 26, 27],
     "firstMillionNotSquare":true
 }
 ```
@@ -1657,7 +1657,7 @@ No squares found
 ```Mathematica
 nonsq = (# + Floor[0.5 + Sqrt[#]]) &;
 nonsq@Range[22]
-If[! Or @@ (IntegerQ /@ Sqrt /@ nonsq@Range[10^6]), 
+If[! Or @@ (IntegerQ /@ Sqrt /@ nonsq@Range[10^6]),
  Print["No squares for n <= ", 10^6]
  ]
 ```
@@ -1678,9 +1678,9 @@ No squares for n <= 1000000
 function nonSquares(i)
 
     for n = (1:i)
-        
+
         generatedNumber = n + floor(1/2 + sqrt(n));
-        
+
         if mod(sqrt(generatedNumber),1)==0 %Check to see if the sqrt of the generated number is an integer
             fprintf('\n%d generates a square number: %d\n', [n,generatedNumber]);
             return
@@ -1690,9 +1690,9 @@ function nonSquares(i)
             end
         end
     end
-    
+
     fprintf('\nNo square numbers were generated for n <= %d\n',i);
-    
+
 end
 ```
 
@@ -1700,7 +1700,7 @@ Solution:
 
 ```MATLAB>>
  nonSquares(1000000)
-2 3 5 6 7 8 10 11 12 13 14 15 17 18 19 20 21 22 23 24 26 27 
+2 3 5 6 7 8 10 11 12 13 14 15 17 18 19 20 21 22 23 24 26 27
 No square numbers were generated for n <= 1000000
 ```
 
@@ -1784,9 +1784,9 @@ Ja	IS	$127		% return address
 // in advance the end of the buffer is filled with ' 0 '
 // reg x contains int to be printed
 bp	IS	$71
-0H	GREG	#0000000000203020 
+0H	GREG	#0000000000203020
 prtInt	STO	0B,buf		% initialize buffer
-	LDA	bp,buf+7	% points after LSD 
+	LDA	bp,buf+7	% points after LSD
 				% REPEAT
 1H	SUB	bp,bp,1		%  move buffer pointer
 	DIV	x,x,10		%  divmod (x,10)
@@ -1807,7 +1807,7 @@ RF	FLOT	x,i		% convert i to float
 	GO	Ja,Ja,0		% 'return'
 
 				% main (argc, argv) {
-// generate the first 22 non squares 
+// generate the first 22 non squares
 Main	SET	i,1		%  for ( i=1; i<=22; i++){
 1H	GO	Ja,RF		%   x =  RF (i)
 	GO	Ja,prtInt	%   print non square
@@ -1824,11 +1824,11 @@ Main	SET	i,1		%  for ( i=1; i<=22; i++){
 3H	GO	Ja,RF		%  x = RF ( i )
 // square test
 	FLOT	y,x		%  convert int x to float
-	FSQRT	z,3,y		%  z = floor ( sqrt ( int (x) ) ) 
+	FSQRT	z,3,y		%  z = floor ( sqrt ( int (x) ) )
 	FIX	z,z		%  z = cint z
 	MUL	z,z,z		%  z = z^2
 	CMP	t,x,z		%  x != (int sqrt x)^2 ?
-	PBNZ	t,2F		%  if yes then continue 
+	PBNZ	t,2F		%  if yes then continue
 // it should not happen, but if a square is found
 	LDA	$255,errh	%  else print err-message
 	TRAP	0,Fputs,StdOut
@@ -1841,7 +1841,7 @@ Main	SET	i,1		%  for ( i=1; i<=22; i++){
 
 2H	SUB	i,i,1		%  i--
 	PBNZ	i,3B		%  i>0? }
-	LDA	$255,prtOk	% 
+	LDA	$255,prtOk	%
 	TRAP	0,Fputs,StdOut
 	LDA	$255,NL
 	TRAP	0,Fputs,StdOut
@@ -1954,7 +1954,7 @@ val nonsqr : int -> int = <fun>
 
 1000000 seq map(#[ dup sqrt 0.5 + floor + ]) conform(#[ sqrt dup floor <>]) println
 ```
- 
+
 
 {{out}}
 
@@ -2040,7 +2040,7 @@ Program SequenceOfNonSquares(output);
 
 uses
   Math;
-                     
+
 var
   m, n, test: longint;
 
@@ -2051,14 +2051,14 @@ begin
     write(test, ' ');
   end;
   writeln;
- 
+
   for n := 1 to 1000000 do
   begin
     test :=  n + floor(0.5 + sqrt(n));
     m := round(sqrt(test));
     if (m*m = test) then
       writeln('square found for n = ', n);
-  end; 
+  end;
 end.
 ```
 
@@ -2363,7 +2363,7 @@ Test 1,000,000 values:
 <lang>
 test: proc options (main);
    declare n fixed (15);
-   
+
    do n = 1 to 1000000;
       if perfect_square (n + fixed(sqrt(n) + 0.5, 15)) then
          do; put skip list ('formula fails for n = ', n); stop; end;
@@ -2390,11 +2390,11 @@ end test;
 
 1 1 22 { nonsquare = } for
 
-1 1 1000 { 
-        dup nonsquare issquare { 
+1 1 1000 {
+        dup nonsquare issquare {
                 (produced a square!) = = exit
         } if pop
-} for 
+} for
 
 ```
 
@@ -2516,7 +2516,7 @@ StopIteration                             Traceback (most recent call last)
       1 non_squares = map(non_square, range(1, 10 ** 6))
 ----> 2 next(filter(is_square, non_squares))
 
-StopIteration: 
+StopIteration:
 ```
 
 
@@ -2535,7 +2535,7 @@ nonsqr(1:22)
 Testing the first million nonsquares.
 
 ```R
-is.square <- function(x) 
+is.square <- function(x)
 {
    sqrx <- sqrt(x)
    err <- abs(sqrx - round(sqrx))
@@ -2665,7 +2665,7 @@ Using the formula:  floor[ 1/2 +  sqrt(n) ],  no  squares found up to  1000000.
 ```ring
 
 for n=1 to 22
-    x = n + floor(1/2 + sqrt(n))  
+    x = n + floor(1/2 + sqrt(n))
     see "" + x + " "
 next
 see nl
@@ -2705,7 +2705,7 @@ fn f(n: i64) -> i64 {
 
 fn is_sqr(n: i64) -> bool {
     let a = (n as f64).sqrt() as i64;
-    n == a * a || n == (a+1) * (a+1) || n == (a-1) * (a-1) 
+    n == a * a || n == (a+1) * (a+1) || n == (a-1) * (a-1)
 }
 
 fn main() {
@@ -2723,7 +2723,7 @@ fn main() {
 
 ```scala
 def nonsqr(n:Int)=n+math.round(math.sqrt(n)).toInt
-		
+
 for(n<-1 to 22) println(n + "  "+ nonsqr(n))
 
 val test=(1 to 1000000).exists{n =>
@@ -2784,10 +2784,10 @@ println("squares up to one million="+test)
 $ include "seed7_05.s7i";
   include "float.s7i";
   include "math.s7i";
- 
+
 const func integer: nonsqr (in integer: n) is
   return n + trunc(0.5 + sqrt(flt(n)));
- 
+
 const proc: main is func
   local
     var integer: i is 0;
@@ -2798,7 +2798,7 @@ const proc: main is func
       write(nonsqr(i) <& " ");
     end for;
     writeln;
- 
+
     # The following check shows no squares up to one million:
     for i range 1 to 1000000 do
       j := sqrt(flt(nonsqr(i)));
@@ -3025,7 +3025,7 @@ Const N& = 1000000
       j = Sqr(ns(i))
       If j = CInt(j) Then c = c + 1
    Next
-   
+
    Debug.Print s
    Debug.Print c & " squares less than " & N
 End Sub
@@ -3038,7 +3038,7 @@ End Function
 {{out}}
 
 ```txt
-values for n in the range 1 to 22 : 2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 
+values for n in the range 1 to 22 : 2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27,
 0 squares less than 1000000
 ```
 
@@ -3073,7 +3073,7 @@ values for n in the range 1 to 22 : 2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 17
 {{out}}
 
 ```txt
-(2 3 5 6 7 8 10 11 12 13 14 15 17 18 19 20 21 22 23 24 26 27) 
+(2 3 5 6 7 8 10 11 12 13 14 15 17 18 19 20 21 22 23 24 26 27)
 (NUMBER OF SQUARES FOR VALUES LESS THAN 1000000 = 0)
 ```
 
@@ -3113,7 +3113,7 @@ for N:= 1 to 999_999 do
 
 ```txt
 
-2 3 5 6 7 8 10 11 12 13 14 15 17 18 19 20 21 22 23 24 26 27 
+2 3 5 6 7 8 10 11 12 13 14 15 17 18 19 20 21 22 23 24 26 27
 
 ```
 

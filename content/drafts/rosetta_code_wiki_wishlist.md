@@ -80,9 +80,6 @@ document.location = document.location + "#" + document.referrer.split("/").slice
 
 ==[[User:Ce|Ce]]==
 * I wish there were syntax highlighting for C++ (the C highlighting doesn't know C++ keywords)
-:* What about <nowiki>
-```cpp></nowiki
-?
 
 ==[[User:IanOsgood|Ian Osgood]]==
 * More outreach to other programming language communities. Most languages haven't seen new examples for a year. Maybe via comp.lang.* postings, IRC, and programming language portals.

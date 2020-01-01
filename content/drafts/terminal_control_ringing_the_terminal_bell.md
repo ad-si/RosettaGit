@@ -255,8 +255,8 @@ Assuming the output stream is connected to a TTY, printing BEL should ring its b
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 int main() {
   printf("\a");
   return 0;
@@ -268,8 +268,8 @@ int main() {
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main() {
   std::cout << "\a";

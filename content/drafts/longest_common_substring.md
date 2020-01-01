@@ -160,10 +160,10 @@ LCS("thisisatest", "testing123testing")
 ```AutoHotkey
 LCS(a, b){
 	x := i := 1
-	while StrLen(x)	
+	while StrLen(x)
 		Loop % StrLen(a)
 			IfInString, b, % x := SubStr(a, i:=StrLen(x)=1 ? i+1 : i, n:=StrLen(a)+1-A_Index)
-				res := StrLen(res) > StrLen(x) ? res : x 
+				res := StrLen(res) > StrLen(x) ? res : x
 	return res
 }
 ```
@@ -208,8 +208,8 @@ test
 
 {{trans|Modula-2}}
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void lcs(const char * const sa, const char * const sb, char ** const beg, char ** const end) {
     size_t apos, bpos;
@@ -264,8 +264,8 @@ test
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <algorithm>
 #include <iostream>
 #include <set>
@@ -285,11 +285,11 @@ std::string lcs ( const std::string & first , const std::string & second ) {
    findSubstrings ( first , firstSubstrings ) ;
    findSubstrings ( second , secondSubstrings ) ;
    std::set<std::string> common ;
-   std::set_intersection ( firstSubstrings.begin( ) , firstSubstrings.end( ) , 
+   std::set_intersection ( firstSubstrings.begin( ) , firstSubstrings.end( ) ,
 	 secondSubstrings.begin( ) , secondSubstrings.end( ) ,
 	 std::inserter ( common , common.begin( ) ) ) ;
    std::vector<std::string> commonSubs ( common.begin( ) , common.end( ) ) ;
-   std::sort ( commonSubs.begin( ) , commonSubs.end( ) , []( const std::string &s1 , 
+   std::sort ( commonSubs.begin( ) , commonSubs.end( ) , []( const std::string &s1 ,
 	    const std::string &s2 ) { return s1.length( ) > s2.length( ) ; } ) ;
    return *(commonSubs.begin( ) ) ;
 }
@@ -457,7 +457,7 @@ namespace LongestCommonSubstring
               }
            }
            return "";
-        }    
+        }
     }
 
 ```
@@ -549,7 +549,7 @@ func lComSubStr(w1, w2) {
     }
     String(values: w1).sub((end + 1) - len, len)
 }
- 
+
 func comSubStr(w1, w2) {
   return String(lComSubStr(w1.iter().toArray(), w2.iter().toArray()))
 }
@@ -655,7 +655,7 @@ subStrings :: [a] -> [[a]]
 subStrings s =
   let intChars = length s
   in [ take n $ drop i s
-     | i <- [0 .. intChars - 1] 
+     | i <- [0 .. intChars - 1]
      , n <- [1 .. intChars - i] ]
 
 longestCommon :: Eq a => [a] -> [a] -> [a]
@@ -933,9 +933,9 @@ def lcs(a; b):
   matrix(a|length; b|length; 0) as $lengths
   # state: [ $lengths, greatestLength, answer ]
   | [$lengths, 0]
-  | reduce range(0; a|length) as $i 
+  | reduce range(0; a|length) as $i
       (.;
-       reduce range(0; b|length) as $j 
+       reduce range(0; b|length) as $j
          (.;
            if a[$i:$i+1] == b[$j:$j+1] then
             (if $i == 0 or $j == 0 then 1
@@ -1154,7 +1154,7 @@ sub findSubstrings {
 }
 
 my $longest = longestCommonSubstr( "thisisatest" ,"testing123testing" ) ;
-print "The longest common substring of <thisisatest> and <testing123testing> is $longest !\n" ; 
+print "The longest common substring of <thisisatest> and <testing123testing> is $longest !\n" ;
 
 ```
 
@@ -1285,17 +1285,17 @@ Test:
 
 ```Prolog
 common_sublist(A, B, M) :-
-	append(_, Ma, A), 
+	append(_, Ma, A),
 	append(M, _, Ma),
 	append(_, Mb, B),
-	append(M, _, Mb).	
+	append(M, _, Mb).
 
 longest_list([], L, _, L).
-longest_list([L|Ls], LongestList, LongestLength, Result) :-	
+longest_list([L|Ls], LongestList, LongestLength, Result) :-
 	length(L, Len),
 	Len >= LongestLength -> longest_list(Ls, L, Len, Result)
 	; longest_list(Ls, LongestList, LongestLength, Result).
-	
+
 longest_substring(A, B, Result) :-
 	string_chars(A, AChars),
 	string_chars(B, BChars),
@@ -1474,18 +1474,18 @@ A chance to show off how to use <code>HashTable</code> types in <i>typed/racket<
     (for*/hash : (HashTable String Boolean)
       ((s (in-range 0 l)) (e (in-range (add1 s) (add1 l))))
       (values (substring str s e) #t)))
-  
+
   (define a# (all-substrings# a))
-  
+
   (define b# (all-substrings# b))
-  
+
   (define-values (s l)
     (for/fold : (Values String Nonnegative-Integer)
     ((s "") (l : Nonnegative-Integer 0))
     ((a_ (in-hash-keys a#))
      #:when (and (> (string-length a_) l) (hash-ref b# a_ #f)))
     (values a_ (string-length a_))))
-  
+
   s)
 
 (module+ test
@@ -1503,7 +1503,7 @@ A chance to show off how to use <code>HashTable</code> types in <i>typed/racket<
 
 
 ## REXX
- 
+
 
 ```rexx
 /*REXX program determines the   LCSUBSTR   (Longest Common Substring)  via a function.  */
@@ -1547,7 +1547,7 @@ LCsubstr: procedure;  parse arg x,y,,$;     #=0  /*LCsubstr:  Longest Common Sub
 
 # Project : Longest Common Substring
 
-str1 = "testing123testing" 
+str1 = "testing123testing"
 str2 = "tsitest"
 see longest(str1, str2)
 
@@ -1563,7 +1563,7 @@ for n=1 to len(str1)
 next
 
 temp = 0
-for n=1 to len(subarr) 
+for n=1 to len(subarr)
     if len(subarr[n]) > temp
        temp = len(subarr[n])
        subend = subarr[n]
@@ -1703,12 +1703,12 @@ func lComSubStr<
   S0.Generator.Element == T, S1.Generator.Element == T,
   S0.Index.Distance == Int, S1.Index.Distance == Int
   >(w1: S0, _ w2: S1) -> S0.SubSlice {
-    
+
     var (len, end) = (0, 0)
-    
+
     let empty = Array(Repeat(count: w2.count + 1, repeatedValue: 0))
     var mat: [[Int]] = Array(Repeat(count: w1.count + 1, repeatedValue: empty))
-    
+
     for (i, sLett) in w1.enumerate() {
       for (j, tLett) in w2.enumerate() where tLett == sLett {
         let curLen = mat[i][j] + 1

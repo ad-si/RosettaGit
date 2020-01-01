@@ -12,13 +12,13 @@ tags = []
 
 == Bad definition? ==
 
-It's probably better to describe a daemon as a process that runs in the background and independent of a user's login session, if anything. 
+It's probably better to describe a daemon as a process that runs in the background and independent of a user's login session, if anything.
 : True, I'll try to integrate that into the description.--[[User:EMBee|eMBee]] 08:56, 17 November 2011 (UTC)
 "Not connected to a terminal" isn't quite it, a daemon could print to a tty all day if it wants to.
 : Yes, but only if it opens the tty manually. It should otherwise be able to run without a tty being present.--[[User:EMBee|eMBee]] 08:56, 17 November 2011 (UTC)
-:: Not really.  
-```c>#include <stdio.h
-
+:: Not really.
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int main(void)
@@ -37,7 +37,7 @@ int main(void)
 ::: fair enough. however i would not consider that a clean way to write a daemon. the goal here is to write the daemon in such a way that the administrator does not have to jump through hoops to make sure that the process doesn't die if the terminal goes away and to capture all output from the daemon.--[[User:EMBee|eMBee]] 13:14, 17 November 2011 (UTC)
 Also, why do you want a daemon process to both detach from stdout ''and'' print to stdout?  Wouldn't it be saner to have it directly write to a file to begin with? --[[User:Ledrug|Ledrug]] 08:23, 17 November 2011 (UTC)
 : I want it to detach from the stdout that is connected to the users terminal, and write to a file as if it were stdout. Redirecting stdout is the sanest way to achieve that because the internals of the program and the libraries used can continue to write to what looks like stdout. If I open a file in the daemon itself and use that, I have to go out of my way to make sure that everywhere I have output the file is used. I have to make that file globally accessible or pass it around as a variable. There may be languages/situations where this is the better option, but I would not say that it is always better or saner.--[[User:EMBee|eMBee]] 08:56, 17 November 2011 (UTC)
-:: This strikes me as bad modularity.  If you want the program detached from the shell's stdio context you can and should do that in the shell.  You should not replicate that shell-specific code in every program. 
+:: This strikes me as bad modularity.  If you want the program detached from the shell's stdio context you can and should do that in the shell.  You should not replicate that shell-specific code in every program.
 ::: i do not understand this point. every daemon would need its own shellscript because they all have different files their output needs to go to. there is nothing that shellscripts would avoid from being replicated.
 ::: also, depending on the language, the code to detach the daemon may be no more complex than the shellscript.--[[User:EMBee|eMBee]] 15:15, 17 November 2011 (UTC)
 :: It's an unnecessary complication for programs running from inittab, for example.  For example, from bourne shell:
@@ -49,19 +49,19 @@ Also, why do you want a daemon process to both detach from stdout ''and'' print 
 ::This detaches <code>myprog</code> from the shell (its parent process will be init, and it obviously will not be using the shell's terminal).  And, of course, if you want to reconfigure it to log to a file (or to another process) from stdout, you could do that instead.
 ::But if you are really serious about running myprog as a daemon, you should probably run it from inittab (or xinittab or whatever ...), probably wrapped in <code>su</code> and so it runs as a relevant user. --[[User:Rdm|Rdm]] 14:42, 17 November 2011 (UTC)
 ::: an unnecesary complication is having to write a shell script in order to run a daemon. X and getty are run from inittab without a shell and we can probably find other examples, of course we can find counter examples too, but i don't see a reason prefer using a shell wrapper.
-::: also there are only few developers writing the daemon, but many more sysadmins running it. so any complication that is taken away from the sysadmin and moved to the developers is a win in the long run. 
+::: also there are only few developers writing the daemon, but many more sysadmins running it. so any complication that is taken away from the sysadmin and moved to the developers is a win in the long run.
 ::: but the main point really is to show of the capabilities of languages here. using a shell script would defeat that purpose and would not fit on rosettacode. it also would not be portable.--[[User:EMBee|eMBee]] 15:15, 17 November 2011 (UTC)
 :::: Huh?
 :::: First: daemons should be run from inittab or the rc directories which are run by init.  If you don't do that, you lose your daemon on every reboot.
 ::::: yes--[[User:EMBee|eMBee]] 18:09, 17 November 2011 (UTC)
 :::: Second: you could easily abstract the shell script:
-:::: 
+::::
 ```bash
 $ cat >/usr/local/bin/detach_from_shell; chmod +x /usr/local/bin/detach_from_shell
 #!/bin/sh
 if [ -n "$1" ]; then (
    "$@" </dev/null >/dev/null 2>&1&
-) else 
+) else
    >&2 echo 'Usage:'
    >&2 echo 'detach_from_shell program [arguments]'
    exit 1
@@ -81,7 +81,7 @@ i'd like to restart the discussion from a different angle. instead of discussing
 
 if the discussion until now is any indication then the answer is ''no''.
 
-however i'd disagree with that. 
+however i'd disagree with that.
 * the capability to disconnect from a tty and to redirect or close stdout,stderr,stdin from within a process does exist in more than one language so it is worth demonstrating it.
 * this method of writing daemons has been used traditionally for a long time. a search for "how to write a unix daemon" has most links on the first result pages point to resources that explain just this method and do not talk about shell scripts. and it not only works on unix. (DOS TSR comes to mind)
 * using a shell script is a very unix centric solution whereas an in-language solution is likely more portable.
@@ -98,7 +98,7 @@ however i'd disagree with that.
 :: but programming languages may well include support for this for different OSes so that the programmer does not have to deal with the details. or they may not. we might find out in the course of this task.--[[User:EMBee|eMBee]] 09:10, 18 November 2011 (UTC)
 :  On unix you may let init adopt the process, on Windows you need to have user login script to start the process or use regsvc or svchost.  It's also not clear if any of the systray icons count as a daemon.
 :: they probably would if the program disconnects from the command shell it was started from. but i don't know how that actually works on windows. i'll probably find out at some point--[[User:EMBee|eMBee]] 09:10, 18 November 2011 (UTC)
-: # Redirecting stdio is useful to have the daemon not die unexpectly on hangup or something, but it's not a defining property. 
+: # Redirecting stdio is useful to have the daemon not die unexpectly on hangup or something, but it's not a defining property.
 :: correct. it is a requirement specific to this task.--[[User:EMBee|eMBee]] 09:10, 18 November 2011 (UTC)
 :Also your requirement of redirecting is strange: the program is supposed to write to stdout; the program is not supposed to ''really'' write to stdout; the program is not supposed to worry about where the output goes; the program is not supposed to be invoked by shell redirection, so it must know where the output goes.  Make up your mind, maybe? --[[User:Ledrug|Ledrug]] 00:10, 18 November 2011 (UTC)
 :: ok, this needs clearing up: the daemon should not write to the stdout that is connected to the terminal it was started from. it may write to stdout if that has been redirected to a file, by means that are either within the daemon itself or in a separate helper program written in the same language.
@@ -136,7 +136,7 @@ You can run processes under screen so that they always have a tty. And screen ca
 Screen makes an obsolete practice of in-the-app daemonization.[[Special:Contributions/24.85.131.247|24.85.131.247]] 03:34, 15 January 2012 (UTC)
 : i have found screen seems to be popular among the lisp community probably in order to keep access to the repl, but i don't like it. the thing that screen does not do is restart your daemon if it disappears.--[[User:EMBee|eMBee]] 06:06, 15 January 2012 (UTC)
 :: <code>while true ; yourdaemon ; done</code> [[Special:Contributions/24.85.131.247|24.85.131.247]] 03:18, 17 January 2012 (UTC)
-::: sure, anything can be done by hand. but the job of a sysadmin is to automate things. if i am going to write a script, i might as well write a real init script. but then i don't need screen anymore. 
+::: sure, anything can be done by hand. but the job of a sysadmin is to automate things. if i am going to write a script, i might as well write a real init script. but then i don't need screen anymore.
 :::: An init script doesn't provide the functionality of screen. A little while loop to run a program over again is hardly a script.[[Special:Contributions/24.85.131.247|24.85.131.247]] 04:48, 17 January 2012 (UTC)
 ::: doing things by hand is like starting a car with empty batteries. you push it until the motor can be started. this task is about including the batteries. you start the program and it does everything by itself. no extra scripting required.--[[User:EMBee|eMBee]] 03:38, 17 January 2012 (UTC)
 :::: I'm afraid you and the unsigned guy are above grasping at straws here to make a point. Pardon me, I'm only describing the simplest possible way of doing it.[[Special:Contributions/24.85.131.247|24.85.131.247]] 04:48, 17 January 2012 (UTC)
@@ -152,7 +152,7 @@ Screen makes an obsolete practice of in-the-app daemonization.[[Special:Contribu
 :::if you "su" to a user other than root, then you keep using your existing terminal and screen can't connect because the new user does not have permission to access the terminal:
  $ screen
  Cannot open your terminal '/dev/pts/1' - please check.
-::: so multiple daemons in one screen session is not practical either. there are ways around it (eg. by running <code>script</code>) but that's just another complication. 
+::: so multiple daemons in one screen session is not practical either. there are ways around it (eg. by running <code>script</code>) but that's just another complication.
 ::: i am afraid we just have to agree to disagree. in my view screen is for interactive sessions. a daemon is not interactive, and there are better tools out there to run programs in the background than screen. either way, this task is not about any of those existing tools but about the capability of a language to build such a tool--[[User:EMBee|eMBee]] 06:29, 17 January 2012 (UTC)
 
 : From my perspective, the problem with screen is that it is a manual solution at all. Daemons should run without having someone start them up by hand; after all, if it is a true daemon then it will have been set to be started automatically upon reboot of the machine (or on demand by some automated code that is itself auto-started). While I suppose I could automate screen's startup with the use of expect, the resulting hacked together lash up(/ball of mud/screaming horror from the depths) is enough to give me shivers just thinking about it. Screen is ''not'' a solution to this problem. –[[User:Dkf|Donal Fellows]] 09:43, 17 January 2012 (UTC)

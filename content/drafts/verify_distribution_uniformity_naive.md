@@ -103,7 +103,7 @@ Sample run 1 (all buckets good):
 ```txt
 7
 1000
-3 
+3
 Buckets: 7, Expected: 1000, Margin: 3
 Bucket 1: 1006 (passed)
 Bucket 2: 1030 (passed)
@@ -146,7 +146,7 @@ DistCheck(function, repetitions, delta)
 {  Loop, % 7 ; initialize array
    {  bucket%A_Index% := 0
    }
- 
+
    Loop, % repetitions ; populate buckets
    {  v := %function%()
       bucket%v% += 1
@@ -200,7 +200,7 @@ Bucket 7 contains 1444 elements.
         ENDIF
       NEXT
       END
-      
+
       DEF FNdistcheck(RETURN func%, repet%, delta)
       LOCAL i%, m%, r%, s%, bins%()
       DIM bins%(MAXRND)
@@ -214,7 +214,7 @@ Bucket 7 contains 1444 elements.
         IF bins%(i%)/(repet%/m%) < 1-delta s% += 1
       NEXT
       = s%
-      
+
       DEF FNdice5 = RND(5)
 ```
 
@@ -234,8 +234,8 @@ Over 100000 runs dice5 passed distribution check
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <math.h>
 
@@ -299,8 +299,8 @@ Count = 1000000: flat
 ## C++
 
 
-```cpp>#include <map
-
+```cpp
+#include <map>
 #include <iostream>
 #include <cmath>
 
@@ -348,7 +348,7 @@ The code could be shortened if the verify function did the output itself, but th
     (for [[num count] (sort rands)]
       [num count (acceptable? count)])))
 
-(doseq [n [100 1000 10000] 
+(doseq [n [100 1000 10000]
         [num count okay?] (verify #(rand-int 7) n)]
   (println "Saw" num count "times:"
            (if okay? "that's" "   not") "acceptable"))
@@ -480,12 +480,12 @@ defmodule VerifyDistribution do
     too_large_dict = Enum.filter( dict, fun )
     return( length(too_large_dict), too_large_dict, average, delta_percent )
   end
-  
+
   def return( 0, _too_large_dict, _average, _delta ), do: :ok
   def return( _n, too_large_dict, average, delta ) do
     {:error, {too_large_dict, :failed_expected_average, average, 'with_delta_%', delta}}
   end
-  
+
   def update_counter( fun, dict ), do: Map.update( dict, fun.(), 1, &(&1+1) )
 end
 
@@ -545,7 +545,7 @@ Calling dice:dice7/0 few times shows skewed distribution.
 61> Fun = fun dice:dice7/0.
 62> verify_distribution_uniformity:naive( Fun, 100000, 3).
 ok
-63> verify_distribution_uniformity:naive( Fun, 100, 3).   
+63> verify_distribution_uniformity:naive( Fun, 100, 3).
 {error,{[{3,15},{6,15},{5,13},{1,20},{4,11},{7,12}],
         failed_expected_average,14.285714285714286,'with_delta_%',
         3}}
@@ -742,7 +742,7 @@ requires Forth200x locals
 
 ```txt
 cr ' d7 1000000 7 1 check-distribution .
-lower bound = 141429  upper bound = 144285 
+lower bound = 141429  upper bound = 144285
 1 : 143241 ok
 2 : 142397 ok
 3 : 143522 ok
@@ -750,10 +750,10 @@ lower bound = 141429  upper bound = 144285
 5 : 142001 ok
 6 : 142844 ok
 7 : 143086 ok
--1 
+-1
 
 cr ' d7 10000 7 1 check-distribution .
-lower bound = 1415  upper bound = 1443 
+lower bound = 1415  upper bound = 1443
 1 : 1431 ok
 2 : 1426 ok
 3 : 1413 not ok
@@ -774,19 +774,19 @@ subroutine distcheck(randgen, n, delta)
 
   interface
     function randgen
-      integer :: randgen 
+      integer :: randgen
     end function randgen
   end interface
-  
+
   real, intent(in) :: delta
   integer, intent(in) :: n
   integer :: i, mval, lolim, hilim
   integer, allocatable :: buckets(:)
   integer, allocatable :: rnums(:)
   logical :: skewed = .false.
-     
+
   allocate(rnums(n))
-  
+
   do i = 1, n
     rnums(i) = randgen()
   end do
@@ -794,27 +794,27 @@ subroutine distcheck(randgen, n, delta)
   mval = maxval(rnums)
   allocate(buckets(mval))
   buckets = 0
-  
+
   do i = 1, n
     buckets(rnums(i)) = buckets(rnums(i)) + 1
   end do
 
   lolim = n/mval - n/mval*delta
   hilim = n/mval + n/mval*delta
-  
-  do i = 1, mval  
+
+  do i = 1, mval
     if(buckets(i) < lolim .or. buckets(i) > hilim) then
       write(*,"(a,i0,a,i0,a,i0)") "Distribution potentially skewed for bucket ", i, "   Expected: ", &
                                    n/mval, "   Actual: ", buckets(i)
       skewed = .true.
     end if
-  end do 
+  end do
 
   if (.not. skewed) write(*,"(a)") "Distribution uniform"
-  
+
   deallocate(rnums)
   deallocate(buckets)
-    
+
 end subroutine
 ```
 
@@ -964,7 +964,7 @@ This example assumes the random number generator is passed to <code>verify_unifo
 # rnd  : a co-expression, which will generate the random numbers
 # n    : the number of numbers to test
 # delta: tolerance in non-uniformity
-# This procedure fails if after the sampling the difference 
+# This procedure fails if after the sampling the difference
 # in uniformity exceeds delta, a proportion of n / number-of-alternatives
 procedure verify_uniform (rnd, n, delta)
   # generate a table counting the outcome of the generator
@@ -984,11 +984,11 @@ end
 
 procedure main ()
   gen_1 := create (|?10) # uniform integers, 1 to 10
-  if verify_uniform (gen_1, 1000000, 0.01) 
+  if verify_uniform (gen_1, 1000000, 0.01)
     then write ("uniform")
     else write ("skewed")
   gen_2 := create (|(if ?2 = 1 then 6 else ?10)) # skewed integers, 1 to 10
-  if verify_uniform (gen_2, 1000000, 0.01) 
+  if verify_uniform (gen_2, 1000000, 0.01)
     then write ("uniform")
     else write ("skewed")
 end
@@ -1027,7 +1027,7 @@ skewed
 
 ## J
 
-This solution defines the checker as an adverb. Adverbs combine with the verb immediately to their left to create a new verb. So for a verb <code>generateDistribution</code> and an adverb <code>checkUniform</code>, the new verb might be thought of as <code>checkGeneratedDistributionisUniform</code>. 
+This solution defines the checker as an adverb. Adverbs combine with the verb immediately to their left to create a new verb. So for a verb <code>generateDistribution</code> and an adverb <code>checkUniform</code>, the new verb might be thought of as <code>checkGeneratedDistributionisUniform</code>.
 
 The ''delta'' is given as an optional left argument (<code>x</code>), defaulting to 5%. The right argument (<code>y</code>) is any valid argument to the distribution generating verb.
 
@@ -1049,11 +1049,11 @@ checkUniform=: adverb define
 It is possible to use tacit expressions within an explicit definition enabling a more functional and concise style:
 
 ```j
-checkUniformT=: adverb define    
+checkUniformT=: adverb define
   0.05 u checkUniformT y
   :
   freqtable=. /:~ (~. ,. #/.~) u n=. */y
-  errmsg=. 'Distribution is potentially skewed' 
+  errmsg=. 'Distribution is potentially skewed'
   errmsg assert ((n % #) (x&*@[ > |@:-) {:"1) freqtable
   freqtable
 )
@@ -1148,11 +1148,11 @@ function distcheck(random_func, times, opts) {
     vals.sort(function(a,b) {return a-b});
 
     var target = times / vals.length;
-    var tolerance = target * opts['delta'] / 100; 
+    var tolerance = target * opts['delta'] / 100;
 
     for (var i = 0; i < vals.length; i++) {
         var val = vals[i];
-        if (Math.abs(count[val] - target) > tolerance) 
+        if (Math.abs(count[val] - target) > tolerance)
             throw "distribution potentially skewed for " + val +
                   ": expected result around " + target + ", got " +count[val];
         else
@@ -1243,14 +1243,14 @@ fun checkDist(gen: () -> Int, nRepeats: Int, tolerance: Double = 0.5) {
     println("Repetitions = $nRepeats, Expected = $expected")
     println("Tolerance = $tolerance%, Max Error = $maxError\n")
     println("Integer   Occurrences   Error  Acceptable")
-    val f = "  %d        %5d      %5d     %s" 
+    val f = "  %d        %5d      %5d     %s"
     var allAcceptable = true
     for ((k,v) in occurs.toSortedMap()) {
         val error = Math.abs(v - expected)
         val acceptable = if (error <= maxError) "Yes" else "No"
         if (acceptable == "No") allAcceptable = false
         println(f.format(k, v, error, acceptable))
-    }  
+    }
     println("\nAcceptable overall: ${if (allAcceptable) "Yes" else "No"}")
 }
 
@@ -1416,12 +1416,12 @@ Transpose[Tally[Table[function, {number}]]][[2]] // Sort];  If[(Max[#]-Min[#])&
 Example usage:
 
 ```txt
-CheckDistribution[RandomInteger[{1, 7}], 10000, 5]  
+CheckDistribution[RandomInteger[{1, 7}], 10000, 5]
 
 ->Expected: 1428.57, Generated :{1372,1420,1429,1431,1433,1450,1465}
 ->"Skewed"
 
-CheckDistribution[RandomInteger[{1, 7}], 100000, 5]  
+CheckDistribution[RandomInteger[{1, 7}], 100000, 5]
 
 ->Expected: 14285.7, Generated :{14182,14186,14240,14242,14319,14407,14424}
 ->"Flat"
@@ -1433,13 +1433,13 @@ CheckDistribution[RandomInteger[{1, 7}], 100000, 5]
 
 
 ```ocaml
-let distcheck fn n ?(delta=1.0) () = 
+let distcheck fn n ?(delta=1.0) () =
   let h = Hashtbl.create 5 in
   for i = 1 to n do
     let v = fn() in
-    let n = 
-      try Hashtbl.find h v 
-      with Not_found -> 0 
+    let n =
+      try Hashtbl.find h v
+      with Not_found -> 0
     in
     Hashtbl.replace h v (n+1)
   done;
@@ -1462,7 +1462,7 @@ This tests the purportedly random 7-sided die with a slightly biased 1000-sided 
 
 ```parigp
 dice5()=random(5)+1;
- 
+
 dice7()={
   my(t);
   while((t=dice5()*5+dice5()) > 26,);
@@ -1585,7 +1585,7 @@ my($n, $threshold, $producer) = @_;
 
 ## Perl 6
 
-Since the tested function is rolls of a 7 sided die, the test numbers are magnitudes of 10<sup>x</sup> bumped up to the closest multiple of 7. This reduces spurious error from there not being an integer expected value. 
+Since the tested function is rolls of a 7 sided die, the test numbers are magnitudes of 10<sup>x</sup> bumped up to the closest multiple of 7. This reduces spurious error from there not being an integer expected value.
 
 ```perl6
 my $d7 = 1..7;
@@ -1601,9 +1601,9 @@ sub dist ( $n is copy, $threshold, &producer ) {
     my @dist;
     my $expect = $n / 7;
     say "Expect\t",$expect.fmt("%.3f");
-    
+
     loop ($_ = $n; $n; --$n) { @dist[&producer()]++; }
-     
+
     for @dist.kv -> $i, $v is copy {
         next unless $i;
         $v //= 0;
@@ -1738,7 +1738,7 @@ At 100 iterations, the permitted range is ~14.21..14.36, so you could not get ev
 
 At 1000 iterations, 142 is too low (and 144 too high), they would all have to be 143, but 7*143=1001.
 
-The commented-out adjustment to n (as Perl 6) changes the "1000 impossible" result to "1001 not flat", 
+The commented-out adjustment to n (as Perl 6) changes the "1000 impossible" result to "1001 not flat",
 
 except of course for the one-in-however-many-gazillion chance of getting exactly 143 of each.
 
@@ -1785,28 +1785,28 @@ Prototype RandNum_prt()
 Procedure.s distcheck(*function.RandNum_prt, repetitions, delta.d)
   Protected text.s, maxIndex = 0
   Dim bucket(maxIndex) ;array will be resized as needed
-  
+
   For i = 1 To repetitions ;populate buckets
     v = *function()
     If v > maxIndex
       maxIndex = v
       Redim bucket(maxIndex)
-    EndIf 
+    EndIf
     bucket(v) + 1
-  Next 
-  
-  
+  Next
+
+
   lbnd = Round((repetitions / maxIndex) * (100 - delta) / 100, #PB_Round_Up)
   ubnd = Round((repetitions / maxIndex) * (100 + delta) / 100, #PB_Round_Down)
   text = "Distribution check:" + #crlf$ + #crlf$
   text + "Total elements = " + Str(repetitions) + #crlf$ + #crlf$
   text + "Margin = " + StrF(delta, 2) + "% --> Lbound = " + Str(lbnd) + ", Ubound = " + Str(ubnd) + #crlf$
-  
-  For i = 1 To maxIndex 
+
+  For i = 1 To maxIndex
     If bucket(i) < lbnd Or bucket(i) > ubnd
       text + #crlf$ + "Bucket " + Str(i) + " contains " + Str(bucket(i)) + " elements.  Skewed."
-    EndIf 
-  Next 
+    EndIf
+  Next
   ProcedureReturn text
 EndProcedure
 
@@ -1881,14 +1881,14 @@ distcheck <- function(fn, repetitions=1e4, delta=3)
    {
       stop("fn is not a function")
    }
-   samp <- fn(n=repetitions)   
+   samp <- fn(n=repetitions)
    counts <- table(samp)
    expected <- repetitions/length(counts)
    lbound <- expected * (1 - 0.01*delta)
    ubound <- expected * (1 + 0.01*delta)
-   status <- ifelse(counts < lbound, "under", 
+   status <- ifelse(counts < lbound, "under",
       ifelse(counts > ubound, "over", "okay"))
-   data.frame(value=names(counts), counts=as.vector(counts), status=status)   
+   data.frame(value=names(counts), counts=as.vector(counts), status=status)
 }
 distcheck(dice7.vec)
 ```
@@ -1915,7 +1915,7 @@ Returns a pair of a boolean stating uniformity and either the "uniform" distribu
   (define target (/ n (hash-count observation)))
   (define max-skew (* n δ 1/100))
   (define (skewed? v)
-    (> (abs (- v target)) max-skew))  
+    (> (abs (- v target)) max-skew))
   (let/ec ek
     (cons
      #t
@@ -2028,13 +2028,13 @@ maxrnd = 7
 for r = 2 to 5
     check = distcheck(pow(10,r), 0.05)
     see "over " + pow(10,r) + " runs dice5 " + nl
-    if check 
+    if check
        see "failed distribution check with " + check + " bin(s) out of range" + nl
     else
        see "passed distribution check" + nl
     ok
 next
- 
+
 func distcheck(repet, delta)
 m = 1
 s = 0
@@ -2049,8 +2049,8 @@ for i = 1 to m
     if bins[i]/(repet/m) < 1-delta s = s + 1 ok
 next
 return s
- 
-func dice5 
+
+func dice5
      return random(5)
 
 ```
@@ -2077,25 +2077,25 @@ def distcheck(n, delta=1)
   unless block_given?
     raise ArgumentError, "pass a block to this method"
   end
-  
+
   h = Hash.new(0)
   n.times {h[ yield ] += 1}
-  
+
   target = 1.0 * n / h.length
-  h.each do |key, value| 
+  h.each do |key, value|
     if (value - target).abs > 0.01 * delta * n
       raise StandardError,
         "distribution potentially skewed for '#{key}': expected around #{target}, got #{value}"
     end
   end
-  
+
   puts h.sort.map{|k, v| "#{k} #{v}"}
 end
 
 if __FILE__ == $0
   begin
     distcheck(100_000) {rand(10)}
-    distcheck(100_000) {rand > 0.95} 
+    distcheck(100_000) {rand > 0.95}
   rescue StandardError => e
     p e
   end
@@ -2312,7 +2312,7 @@ This tests the random spread over 0..9. It starts at 10 samples and doubles the 
 fcn rtest(N){
    dist:=L(0,0,0,0,0,0,0,0,0,0);
    do(N){n:=(0).random(10); dist[n]=dist[n]+1}
-   sum:=dist.sum(); 
+   sum:=dist.sum();
    dist=dist.apply('wrap(n){n.toFloat()/sum*100});
    if (dist.filter((10.0).closeTo.fp1(0.1)).len() == 10)
       { "Good enough at %,d: %s".fmt(N,dist).println(); return(True); }

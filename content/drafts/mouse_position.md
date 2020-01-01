@@ -288,8 +288,8 @@ of the BBC BASIC main output window:
 
 {{libheader|Xlib}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <X11/Xlib.h>
 
 int main()

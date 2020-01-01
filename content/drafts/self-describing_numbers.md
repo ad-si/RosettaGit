@@ -198,7 +198,7 @@ Self-describing numbers < 100000000 :
 42101000
 
 ---------------------------
-OK   
+OK
 ---------------------------
 ```
 
@@ -246,7 +246,7 @@ function is_self_describing(n,  i) {
 
 ```qbasic
 Dim x, r, b, c, n, m As Integer
-Dim a, d As String 
+Dim a, d As String
 Dim v(10), w(10) As Integer
 Cls
 For x = 1 To 5000000
@@ -259,8 +259,8 @@ For x = 1 To 5000000
    Next c
    r = 0
    For n = 0 To 10
-      If v(n) = w(n) Then r = r + 1 
-      v(n) = 0 
+      If v(n) = w(n) Then r = r + 1
+      v(n) = 0
       w(n) = 0
    Next n
    If r = 11 Then Print x; " Yes,is autodescriptive number"
@@ -282,7 +282,7 @@ end
         IF FNselfdescribing(N) PRINT N
       NEXT
       END
-      
+
       DEF FNselfdescribing(N%)
       LOCAL D%(), I%, L%, O%
       DIM D%(9)
@@ -343,31 +343,31 @@ Be aware, though, that even with a fast interpreter, it's going to be a very lon
 
 Using integers instead of strings.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 inline int self_desc(unsigned long long xx)
 {
 	register unsigned int d, x;
 	unsigned char cnt[10] = {0}, dig[10] = {0};
- 
+
 	for (d = 0; xx > ~0U; xx /= 10)
 		cnt[ dig[d++] = xx % 10 ]++;
- 
+
 	for (x = xx; x; x /= 10)
 		cnt[ dig[d++] = x % 10 ]++;
- 
+
 	while(d-- && dig[x++] == cnt[d]);
- 
+
 	return d == -1;
 }
- 
+
 int main()
 {
 	int i;
 	for (i = 1; i < 100000000; i++) /* don't handle 0 */
 		if (self_desc(i)) printf("%d\n", i);
- 
+
 	return 0;
 }
 ```
@@ -384,8 +384,8 @@ output<lang>1210
 
 Backtracks on each digit from right to left, takes advantage of constraints "sum of digit values = number of digits" and "sum of (digit index * digit value) = number of digits". It is using as argument the list of allowed digits (example 012345789 to run the program in standard base 10).
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -531,13 +531,13 @@ sys     0m0.030s
 ```cpp
 
 #include <iostream>
- 
+
 //--------------------------------------------------------------------------------------------------
 typedef unsigned long long bigint;
- 
+
 //--------------------------------------------------------------------------------------------------
 using namespace std;
- 
+
 //--------------------------------------------------------------------------------------------------
 class sdn
 {
@@ -547,14 +547,14 @@ public:
 	int cc = digitsCount( n );
 	return compare( n, cc );
     }
- 
+
     void displayAll( bigint s )
     {
 	for( bigint y = 1; y < s; y++ )
 	    if( check( y ) )
 		cout << y << " is a Self-Describing Number." << endl;
     }
- 
+
 private:
     bool compare( bigint n, int cc )
     {
@@ -567,7 +567,7 @@ private:
 	}
 	return true;
     }
- 
+
     int digitsCount( bigint n )
     {
 	int cc = 0; bigint a;
@@ -579,7 +579,7 @@ private:
 	}
 	return cc;
     }
- 
+
     int dig[10];
 };
 //--------------------------------------------------------------------------------------------------
@@ -588,7 +588,7 @@ int main( int argc, char* argv[] )
     sdn s;
     s. displayAll( 1000000000000 );
     cout << endl << endl; system( "pause" );
- 
+
     bigint n;
     while( true )
     {
@@ -600,7 +600,7 @@ int main( int argc, char* argv[] )
 	cout << " a Self-Describing Number!" << endl << endl;
 	system( "pause" );
     }
- 
+
     return 0;
 }
 
@@ -622,13 +622,13 @@ int main( int argc, char* argv[] )
 
 
 
-###  Alternate version 
+###  Alternate version
 
 Uses C++11. Build with
  g++ -std=c++11 sdn.cpp
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <array>
 #include <iostream>
 
@@ -636,7 +636,7 @@ bool is_self_describing(unsigned long long int n) noexcept {
   if (n == 0) {
     return false;
   }
- 
+
   std::array<char, 10> digits = {0}, counts = {0};
   std::size_t i = digits.size();
 
@@ -692,7 +692,7 @@ turn around and "interpret" it back out but I didn't really pursue it.
        (curlist (to-digits n) (cdr curlist)))
       ((null curlist) counts)
     (setf (aref counts (car curlist)) (+ 1 (aref counts (car curlist)))))))
-    
+
 (defun self-described-p (n)
   (if (not (numberp n))
       nil
@@ -707,10 +707,10 @@ turn around and "interpret" it back out but I didn't really pursue it.
 Output:
 <lang>(loop for i from 1 to 4000000 do (if (self-described-p i) (print i)))
 
-1210 
-2020 
-21200 
-3211000 
+1210
+2020
+21200
+3211000
 NIL
 ```
 
@@ -1071,14 +1071,14 @@ main =
 
 =={{header|Icon}} and {{header|Unicon}}==
 
-The following program contains the procedure <code>is_self_describing</code> to test if a number is a self-describing number, and the procedure <code>self_describing_numbers</code> to generate them. 
+The following program contains the procedure <code>is_self_describing</code> to test if a number is a self-describing number, and the procedure <code>self_describing_numbers</code> to generate them.
 
 
 ```Icon
 
 procedure count (test_item, str)
   result := 0
-  every item := !str do 
+  every item := !str do
     if test_item == item then result +:= 1
   return result
 end
@@ -1120,7 +1120,7 @@ procedure is_self_describing (n)
       }
   return n # on success, return the self-described number
 end
- 
+
 procedure self_describing_numbers ()
   suspend is_self_describing(seq())
 end
@@ -1150,9 +1150,9 @@ end
 1210 2020 21200
 ```
 
-'''Discussion''': The use of <tt>&.</tt> here is a great example of its surprisingly broad applicability, and the elegance it can produce. 
+'''Discussion''': The use of <tt>&.</tt> here is a great example of its surprisingly broad applicability, and the elegance it can produce.
 
-The use of <tt>"0</tt> is less satisfying, expressing an essentially scalar solution, and that such an approach runs against the grain of J becomes quite evident when executing the extra credit sentence.  
+The use of <tt>"0</tt> is less satisfying, expressing an essentially scalar solution, and that such an approach runs against the grain of J becomes quite evident when executing the extra credit sentence.
 
 It would not be difficult to rephrase the verb in a way that would take advantage of J's array mastery, but it would cost us of some of the simplicity and elegance of the existing solution.  More gratifying would be  some kind of closed-form, algebraic formula that could identify the SDNs directly, without test-and-filter.
 
@@ -1247,7 +1247,7 @@ outputs
 {{works with|jq|1.4}}
 
 ```jq
-# If your jq includes all/2 then comment out the following definition, 
+# If your jq includes all/2 then comment out the following definition,
 # which is slightly less efficient:
 def all(generator; condition):
   reduce generator as $i (true; if . then $i | condition else . end);
@@ -1349,7 +1349,7 @@ fun selfDescribing(n: Int): Boolean {
         count[nn % 10] += 1
         nn /= 10
     }
-    for (i in 0 until ns.length) 
+    for (i in 0 until ns.length)
         if( ns[i] - '0' != count[i]) return false
     return true
 }
@@ -1405,7 +1405,7 @@ function selfDescNumber n
     put len(n) into tLen
     repeat with x = 0 to (tLen - 1)
         put n into nCopy
-        replace x with empty in nCopy 
+        replace x with empty in nCopy
         put char (x + 1) of n = (tLen - len(nCopy)) into tSelfD
         if not tSelfD then exit repeat
     end repeat
@@ -1439,8 +1439,8 @@ Output
 ```logo
 TO XX
 BT
-MAKE "AA (ARRAY 10 0) 
-MAKE "BB (ARRAY 10 0) 
+MAKE "AA (ARRAY 10 0)
+MAKE "BB (ARRAY 10 0)
 FOR [Z 0 9][SETITEM :Z :AA "0 SETITEM :Z :BB "0 ]
    FOR [A 1 50000][
       MAKE "B COUNT :A
@@ -1451,12 +1451,12 @@ FOR [Z 0 9][SETITEM :Z :AA "0 SETITEM :Z :BB "0 ]
       MAKE "K 0
 
    FOR [C 1 :B][MAKE "D ITEM :C :A
-      SETITEM :C - 1 :AA :D 
-      MAKE "X ITEM :D :BB 
-      MAKE "Y :X + 1 
-      SETITEM :D :BB :Y 
+      SETITEM :C - 1 :AA :D
+      MAKE "X ITEM :D :BB
+      MAKE "Y :X + 1
+      SETITEM :D :BB :Y
       MAKE "R 0]
-   FOR [Z 0 9][MAKE "J ITEM :Z :AA 
+   FOR [Z 0 9][MAKE "J ITEM :Z :AA
       MAKE "K ITEM :Z :BB
       IF :J = :K [MAKE "R :R + 1]]
 IF :R = 10 [PR :A]
@@ -1522,25 +1522,25 @@ end;
 ```
 
 
-Test function: 
+Test function:
 
 
 ```Matlab
-for k = 1:1e10, 
+for k = 1:1e10,
    if isSelfDescribing(k),
-      printf('%i\n',k); 
-   end 
-end; 
+      printf('%i\n',k);
+   end
+end;
 ```
 
 
-Output: 
+Output:
 
 ```txt
   1210
   2020
   21200
-  ... 
+  ...
 ```
 
 
@@ -1550,7 +1550,7 @@ Output:
 
 ```MiniScript
 numbers = [12, 1210, 1300, 2020, 21200, 5]
- 
+
 occurrences = function(test, values)
     count = 0
     for i in values
@@ -1558,7 +1558,7 @@ occurrences = function(test, values)
     end for
     return count
 end function
- 
+
 for number in numbers
     check = "" + number
     digits = check.values
@@ -1761,7 +1761,7 @@ Program SelfDescribingNumber;
 
 uses
   SysUtils;
-  
+
 function check(number: longint): boolean;
   var
     i, d: integer;
@@ -1919,7 +1919,7 @@ integer n = 0, digit
     end while
     return digits[10-n..10] = counts[1..n+1]
 end function
- 
+
 atom t0 = time()
 for i=10 to 100_000_000 by 10 do
     if self_desc(i) then ?i end if
@@ -1952,10 +1952,10 @@ Works with: PHP 5.
 
 function is_describing($number) {
     foreach (str_split((int) $number) as $place => $value) {
-        if (substr_count($number, $place) != $value) { 
+        if (substr_count($number, $place) != $value) {
             return false;
         }
-    }    
+    }
     return true;
 }
 
@@ -2013,7 +2013,7 @@ function Test-SelfDescribing ([int]$Number)
     [int]$sum = 0
 
     for ($i = 0; $i -lt $digits.Count; $i++)
-    { 
+    {
         $sum += $i * $digits[$i]
     }
 
@@ -2209,28 +2209,28 @@ Procedure isSelfDescribing(x.q)
   Protected digitCount, digit, i, digitSum
   Dim digitTally(10)
   Dim digitprediction(10)
-  
+
   If x <= 0
     ProcedureReturn 0 ;number must be positive and non-zero
-  EndIf 
-  
+  EndIf
+
   While x > 0 And i < 10
     digit = x % 10
     digitSum + digit
     If digitSum > 10
       ProcedureReturn 0 ;sum of digits' values exceeds maximum possible
-    EndIf 
-    digitprediction(i) = digit 
+    EndIf
+    digitprediction(i) = digit
     digitTally(digit) + 1
     x / 10
-    i + 1 
-  Wend 
+    i + 1
+  Wend
   digitCount = i - 1
-  
+
   If digitSum < digitCount Or x > 0
     ProcedureReturn 0  ;sum of digits' values is too small or number has more than 10 digits
-  EndIf 
-  
+  EndIf
+
   For i = 0 To digitCount
     If digitTally(i) <> digitprediction(digitCount - i)
       ProcedureReturn 0 ;number is not self-describing
@@ -2248,10 +2248,10 @@ Procedure displayAll()
     For i = 0 To 999999999
       If isSelfDescribing(j * 1000000000 + i)
         PrintN(Str(j * 1000000000 + i))
-      EndIf 
+      EndIf
     Next
     PrintN("Time to search this range of possibilities: " + Str((ElapsedMilliseconds() - t) / 1000) + "s.")
-  Next 
+  Next
   PrintN(#CRLF$ + "Search complete.")
 EndProcedure
 
@@ -2260,7 +2260,7 @@ If OpenConsole()
   DataSection
     Data.q 1210, 2020, 21200, 3211000, 42101000, 521001000, 6210001000, 3214314
   EndDataSection
-  
+
   Define i, x.q
   For i = 1 To 8
     Read.q x
@@ -2269,11 +2269,11 @@ If OpenConsole()
       Print("not ")
     EndIf
     PrintN("selfdescribing.")
-  Next 
+  Next
   PrintN(#CRLF$)
-  
+
   displayAll()
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2364,9 +2364,9 @@ def impl(d, c, m):
         dd = d+[i]
         if i<len(dd) and c[i]==dd[i]: continue
         impl(dd,c[:i]+[c[i]+1]+c[i+1:],m-i)
- 
+
 def self(n): impl([], [0]*(n+1), n)
- 
+
 self(10)
 ```
 
@@ -2380,7 +2380,7 @@ Output:
 [3, 2, 1, 1, 0, 0, 0]
 [4, 2, 1, 0, 1, 0, 0, 0]
 [5, 2, 1, 0, 0, 1, 0, 0, 0]
-[6, 2, 1, 0, 0, 0, 1, 0, 0, 0] 
+[6, 2, 1, 0, 0, 0, 1, 0, 0, 0]
 ```
 
 
@@ -2452,7 +2452,7 @@ repeat i 4000000 [  if isSDN? to-string i [print i] ]
 2020
 21200
 3211000
->> 
+>>
 
 ```
 
@@ -2460,7 +2460,7 @@ repeat i 4000000 [  if isSDN? to-string i [print i] ]
 
 ## REXX
 
-Also see:    [http://oeis.org/A046043 OEIS A46043] 
+Also see:    [http://oeis.org/A046043 OEIS A46043]
   and   [http://oeis.org/A138480 OEIS A138480].
 
 ### digit by digit test
@@ -2667,8 +2667,8 @@ for i = 0 to 50000000 step 10
    next c
    r = 0
    for n = 0 to 10
-      r    = r + (j(n) = k(n)) 
-      j(n) = 0 
+      r    = r + (j(n) = k(n))
+      j(n) = 0
       k(n) = 0
    next n
    if r = 11 then print i
@@ -2971,7 +2971,7 @@ selfdescribing() {
     return 0
 }
 
-for n in 0 1 10 11 1210 2020 21200 3211000 42101000; do 
+for n in 0 1 10 11 1210 2020 21200 3211000 42101000; do
     if selfdescribing $n; then
         printf "%d\t%s\n" $n yes
     else
@@ -3012,7 +3012,7 @@ Function IsSelfDescribing(n)
 			digit.Item(k) = digit.Item(k) + 1
 		Else
 			digit.Add k,1
-		End If	
+		End If
 	Next
 	c = 0
 	For j = 0 To Len(n)-1
@@ -3053,7 +3053,7 @@ WScript.StdOut.WriteLine "Elapse Time: " & DateDiff("s",start_time,end_time) & "
 ```XPL0
 code ChOut=8, IntOut=11;
 
-func SelfDesc(N);               \Returns 'true' if N is self-describing 
+func SelfDesc(N);               \Returns 'true' if N is self-describing
 int N;
 int Len,        \length = number of digits in N
     I, D;
@@ -3093,7 +3093,7 @@ Output:
 
 ```txt
 
-1210 2020 21200 3211000 42101000 
+1210 2020 21200 3211000 42101000
 
 ```
 
@@ -3119,7 +3119,7 @@ sub FNselfdescribing(N)
         D(I) = D(I) + 10^(L-I)
         N = INT(N / 10)
     WEND
-    
+
     L = 0
     FOR I = 0 TO 8 : L = L + D(I) : NEXT
     RETURN O = L

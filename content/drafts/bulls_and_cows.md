@@ -20,7 +20,7 @@ tags = []
 ;Task:
 Create a four digit random number from the digits   '''1'''   to   '''9''',   without duplication.
 
-The program should: 
+The program should:
 ::::::*   ask for guesses to this number
 ::::::*   reject guesses that are malformed
 ::::::*   print the score for the guess
@@ -79,7 +79,7 @@ begin
             raise Data_Error;
          end if;
          for I in Guess'Range loop
-            for J in Number'Range loop                  
+            for J in Number'Range loop
                if Guess (I) not in '1'..'9' or else (I < J and then Guess (I) = Guess (J)) then
                   raise Data_Error;
                end if;
@@ -118,9 +118,9 @@ STRING digits = "123456789";
 
 [4]CHAR chosen;
 STRING available := digits;
-FOR i TO UPB chosen DO 
-    INT c = ENTIER(random*UPB available)+1; 
-    chosen[i] := available[c]; 
+FOR i TO UPB chosen DO
+    INT c = ENTIER(random*UPB available)+1;
+    chosen[i] := available[c];
     available := available[:c-1]+available[c+1:]
 OD;
 
@@ -139,7 +139,7 @@ INT guesses := 0, bulls, cows;
 WHILE
     STRING guess;
     guesses +:= 1;
-    WHILE 
+    WHILE
         # get a good guess #
         print((new line,"Next guess [",D guesses,"]: "));
         read((guess, new line));
@@ -150,7 +150,7 @@ WHILE
             FOR i TO UPB guess WHILE
                 ok := guess[i] WITHIN digits AND guess[i] NOTWITHIN guess[i+1:]
             DO SKIP OD;
-            NOT ok 
+            NOT ok
         FI
     DO
         print(("Problem, try again. You need to enter ",D UPB chosen," unique digits from 1 to 9", new line))
@@ -178,7 +178,7 @@ Output:
 I have chosen a number from 4 unique digits from 1 to 9 arranged in a random order.
 You need to input a 4 digit, unique digit number as a guess at what I have chosen
 
-Next guess [1]: 
+Next guess [1]:
 
 ```
 
@@ -219,7 +219,7 @@ to cows of theGuess given key:theKey, bulls:bullCount
 			set cowCount to cowCount + 1
 		end if
 	end repeat
-	
+
 	return cowCount
 end cows
 
@@ -491,7 +491,7 @@ LOOP
 Based on the AppleSoft BASIC version. Modifications as follows:
 * Accommodate 80 character BASIC line length (for line 250 especially), created subroutines.
 * Booleans in Commodore BASIC evaluate to -1 for TRUE, therefore ABS function added to give desired results.
-* Leading space in printed numbers (which is placeholder for negative sign) is included in string conversion in Commodore BASIC, therefore RIGHT$ function added on 220 to trim leading whitespace upon conversion. 
+* Leading space in printed numbers (which is placeholder for negative sign) is included in string conversion in Commodore BASIC, therefore RIGHT$ function added on 220 to trim leading whitespace upon conversion.
 * Other formatting (clear screen, etc.) unique to Commodore BASIC.
 
 
@@ -677,19 +677,19 @@ goto :won
         c$ = CHR$(&30 + RND(9))
         IF INSTR(secret$, c$) = 0 secret$ += c$
       UNTIL LEN(secret$) = 4
-      
+
       PRINT "Guess a four-digit number with no digit used twice."'
       guesses% = 0
       REPEAT
-        
+
         REPEAT
           INPUT "Enter your guess: " guess$
           IF LEN(guess$) <> 4 PRINT "Must be a four-digit number"
         UNTIL LEN(guess$) = 4
         guesses% += 1
-        
+
         IF guess$ = secret$ PRINT "You won after "; guesses% " guesses!" : END
-        
+
         bulls% = 0
         cows% = 0
         FOR i% = 1 TO 4
@@ -702,7 +702,7 @@ goto :won
           ENDIF
         NEXT i%
         PRINT "You got " ;bulls% " bull(s) and " ;cows% " cow(s)."
-        
+
       UNTIL FALSE
 
 ```
@@ -719,15 +719,15 @@ secret = [1 2 3 4 5 6 7 8 9].shuffle.pop secret_length
 
 score = { guess |
   cows = 0
-  bulls = 0 
+  bulls = 0
 
-  guess.each_with_index { digit, index | 
+  guess.each_with_index { digit, index |
     true? digit == secret[index]
       { bulls = bulls + 1 }
       { true? secret.include?(digit)
         { cows = cows + 1 }
       }
-  } 
+  }
 
   [cows: cows, bulls: bulls]
 }
@@ -750,7 +750,7 @@ while { not won }
         result = score guess
         p "Score: #{result[:bulls]} bulls, #{result[:cows]} cows."
         guesses = guesses + 1
-      }    
+      }
   }
 ```
 
@@ -760,8 +760,8 @@ while { not won }
 
 {{libheader|ncurses}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -782,7 +782,7 @@ void mvaddstrf(int y, int x, const char *fmt, ...)
 {
   va_list args;
   char buf[MAX_STR];
-  
+
   va_start(args, fmt);
   vsprintf(buf, fmt, args);
   move(y, x);
@@ -902,13 +902,13 @@ int main()
       bingo = take_it_or_not();
       tries++;
     } while(!bingo && (tries < MAX_NUM_TRIES));
-    if ( bingo ) 
+    if ( bingo )
       mvaddstrf(20, 0, "You guessed %s correctly in %d attempts!", number, tries);
     else
-      mvaddstrf(20,0, "Sorry, you had only %d tries...; the number was %s", 
+      mvaddstrf(20,0, "Sorry, you had only %d tries...; the number was %s",
 		MAX_NUM_TRIES, number);
     again = ask_play_again();
-    tries = 0; 
+    tries = 0;
   } while(again);
   nocbreak(); echo(); endwin();
   return EXIT_SUCCESS;
@@ -920,8 +920,8 @@ int main()
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <algorithm>
 #include <cstdlib>
@@ -995,7 +995,7 @@ int main()
       }
       std::cout << "Please answer yes or no: ";
     }
-    game(); 
+    game();
     std::cout << "Another game? ";
   }
 }
@@ -1011,7 +1011,7 @@ namespace BullsnCows
 {
     class Program
     {
-        
+
         static void Main(string[] args)
         {
             int[] nums = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -1024,7 +1024,7 @@ namespace BullsnCows
             {
                 Console.WriteLine("Your next Guess ?");
             }
-            
+
             Console.ReadKey();
         }
 
@@ -1173,10 +1173,10 @@ shared void run() {
 ```clojure
 
 (ns bulls-and-cows)
- 
+
 (defn bulls [guess solution]
   (count (filter true? (map = guess solution))))
- 
+
 (defn cows [guess solution]
   (-
    (count (filter (set solution) guess))
@@ -1197,7 +1197,7 @@ returns a list of digits enters by the user (# # # #)"
       (if (valid-input? guess)
         (map #(Character/digit % 10) guess)
         (recur))))
- 
+
 (defn bulls-and-cows []
   "generate a random 4 digit number from the list of (1 ... 9): no repeating digits
 player tries to guess the number with bull and cows rules gameplay"
@@ -1208,7 +1208,7 @@ player tries to guess the number with bull and cows rules gameplay"
       (if (not= guess solution)
         (recur (enter-guess))
         (println "You have won!")))))
- 
+
 (bulls-and-cows)
 
 ```
@@ -1269,7 +1269,7 @@ say 'A winner is you!'
   (do ((digits '()))
       ((>= (length digits) 4) digits)
     (pushnew (1+ (random 9)) digits)))
- 
+
 (defun compute-score (guess number)
   (let ((cows  0)
         (bulls 0))
@@ -1278,7 +1278,7 @@ say 'A winner is you!'
                      ((member guess-digit number)  (incf cows))))
          guess number)
     (values cows bulls)))
- 
+
 (defun number->guess (number)
   (when (integerp number)
     (do ((digits '()))
@@ -1286,12 +1286,12 @@ say 'A winner is you!'
       (multiple-value-bind (quotient remainder) (floor number 10)
         (push remainder digits)
         (setf number quotient)))))
- 
+
 (defun valid-guess-p (guess)
   (and (= 4 (length guess))
        (every (lambda (digit) (<= 1 digit 9)) guess)
        (equal guess (remove-duplicates guess))))
- 
+
 (defun play-game (&optional (stream *query-io*))
   (do ((number (get-number))
        (cows   0)
@@ -1417,7 +1417,7 @@ def Number := Tuple[Digit,Digit,Digit,Digit]
 /** Choose a random number to be guessed. */
 def pick4(entropy) {
     def digits := [1,2,3,4,5,6,7,8,9].diverge()
-    
+
     # Partial Fisher-Yates shuffle
     for i in 0..!4 {
         def other := entropy.nextInt(digits.size() - i) + i
@@ -1456,28 +1456,28 @@ def parseGuess(guessString, fail) :Number {
             }
         }
         return digits
-    }  
+    }
 }
 
 /** The game loop: asking for guesses and reporting scores and win conditions.
     The return value is null or a broken reference if there was a problem. */
 def bullsAndCows(askUserForGuess, tellUser, entropy) {
     def actual := pick4(entropy)
-    
+
     def gameTurn() {
         return when (def guessString := askUserForGuess <- ()) -> {
             escape tellAndContinue {
 
-                def guess := parseGuess(guessString, tellAndContinue)                
+                def guess := parseGuess(guessString, tellAndContinue)
                 def [bulls, cows] := scoreGuess(actual, guess)
-                
+
                 if (bulls == 4) {
                     tellUser <- (`You got it! The number is $actual!`)
                     null
                 } else {
                     tellAndContinue(`Your score for $guessString is $bulls bulls and $cows cows.`)
                 }
-                
+
             } catch message {
                 # The parser or scorer has something to say, and the game continues afterward
                 when (tellUser <- (message)) -> {
@@ -1490,7 +1490,7 @@ def bullsAndCows(askUserForGuess, tellUser, entropy) {
             throw(p)
         }
     }
-    
+
     return gameTurn()
 }
 ```
@@ -1770,7 +1770,7 @@ class GameMaster
     ask()
     {
         var row := console.print("Your Guess #",theAttempt," ?").readLine();
-        
+
         ^ row.toArray()
     }
 
@@ -1781,7 +1781,7 @@ class GameMaster
 
         if (guess.Length != 4)
         {
-            bulls := -1 
+            bulls := -1
         }
         else
         {
@@ -1790,21 +1790,21 @@ class GameMaster
                 for (int i := 0, i < 4, i+=1) {
                     var ch := guess[i];
                     var number := ch.toString().toInt();
-                    
+
                     // check range
                     ifnot (number > 0 && number < 10)
                         { InvalidArgumentException.raise() };
-                    
+
                     // check duplicates
                     var duplicate := guess.seekEach:(x => (x == ch)&&(x.equalReference(ch).Inverted));
                     if (nil != duplicate)
                     {
                         InvalidArgumentException.raise()
                     };
-                    
+
                     if (number == theNumbers[i])
-                    { 
-                        bulls += 1 
+                    {
+                        bulls += 1
                     }
                     else
                     {
@@ -1824,9 +1824,9 @@ class GameMaster
              4 { console.printLine:"Congratulations! You have won!"; ^ false }
              : {
                  theAttempt.append(1);
-                 
+
                  console.printLine("Your Score is ",bulls," bulls and ",cows," cows");
-                 
+
                  ^ true
              }
     }
@@ -1837,7 +1837,7 @@ public program()
     var gameMaster := new GameMaster();
 
     (lazy:gameMaster.proceed(gameMaster.ask())).doWhile();
-    
+
     console.readChar()
 }
 ```
@@ -1873,7 +1873,7 @@ defmodule Bulls_and_cows do
     secret = Enum.take_random(1..9, size) |> Enum.map(&to_string/1)
     play(size, secret)
   end
-  
+
   defp play(size, secret) do
     guess = input(size)
     if guess == secret do
@@ -1884,7 +1884,7 @@ defmodule Bulls_and_cows do
       play(size, secret)
     end
   end
-  
+
   defp input(size) do
     guess = IO.gets("Enter your #{size}-digit guess: ") |> String.strip
     cond do
@@ -1896,7 +1896,7 @@ defmodule Bulls_and_cows do
       true -> input(size)
     end
   end
-  
+
   defp count(guess, secret) do
     Enum.zip(guess, secret) |>
     Enum.reduce({0,0}, fn {g,s},{bulls,cows} ->
@@ -1947,7 +1947,7 @@ generate_secret(Secret, N, Digits) ->
   Next = lists:nth(random:uniform(length(Digits)), Digits),
   generate_secret(Secret ++ [Next], N - 1, Digits -- [Next]).
 
-% evaluate a guess 
+% evaluate a guess
 score_guess(Secret, Guess)
   when length(Secret) =/= length(Guess) -> throw(badguess);
 score_guess(Secret, Guess) ->
@@ -1985,7 +1985,7 @@ read_guess() ->
 ```
 
 
-Script: 
+Script:
 
 ```erlang
 #!/usr/bin/escript
@@ -2036,7 +2036,7 @@ goalNum[3] = goalNum[1][1] * 1000 + goalNum[1][2] * 100 + goalNum[1][3] * 10 + g
 
 procedure getInputAndProcess(integer stage = 1)  --object = 1 sets default value for the parameter if it isn't specified
 
-    goalNum[2][1..4] = 0 --{0,0,0,0} --set these to unscaned (0) since the scanning will start over. 
+    goalNum[2][1..4] = 0 --{0,0,0,0} --set these to unscaned (0) since the scanning will start over.
     currentGuess[1][1..4] = 0 --{0,0,0,0} --these too, or they will contain old marks
     currentGuess[2][1..4] = 0
     tries += 1 --equivalent to tries = tries + 1, but faster and shorter to write
@@ -2045,7 +2045,7 @@ procedure getInputAndProcess(integer stage = 1)  --object = 1 sets default value
     if stage <= 1 then --if this process was run for the first time or with no parameters, then..
         puts(1,"The program has thought of a four digit number using only digits 1 to 9.\nType your guess and press enter.\n")
     end if
-    
+
     while 1 label "guesscheck" do --labels can be used to specify a jump point from exit or retry, and help readability
         currentGuess[1] = trim(gets(0), removeChars) --get user input, trim unwanted characters from it, store it in currentGuess[1]
         currentGuess[1] = mapping( currentGuess[1], {49,50,51,52,53,54,55,56,57}, {1,2,3,4,5,6,7,8,9} ) --convert ascii codes to
@@ -2060,7 +2060,7 @@ procedure getInputAndProcess(integer stage = 1)  --object = 1 sets default value
         end if
     end while
     --convert separate digits to the one integer they represent and store it, like with goalNum[3]
-    currentGuess[3] = currentGuess[1][1] * 1000 + currentGuess[1][2] * 100 + currentGuess[1][3] * 10 + currentGuess[1][4] 
+    currentGuess[3] = currentGuess[1][1] * 1000 + currentGuess[1][2] * 100 + currentGuess[1][3] * 10 + currentGuess[1][4]
 --convert digits to the integer they represent, to print to a string later
 
     --check for bulls
@@ -2076,23 +2076,23 @@ procedure getInputAndProcess(integer stage = 1)  --object = 1 sets default value
     for i = 1 to 4 label "iGuessElem"do --loop through each guessed digit
         for j = 1 to 4 label "jGoalElem" do --but first go through each goal digit, comparing the first guessed digit,
             --and then the other guessed digits 2 through 4
-        
+
             if currentGuess[2][i] = 1 then --if the guessed digit we're comparing right now has been marked as bull or cow already
                 continue "iGuessElem" --skip to the next guess digit without comparing this guess digit to the other goal digits
             end if
-        
+
             if goalNum[2][j] = 1 then --if the goal digit we're comparing to right now has been marked as a bull or cow already
                 continue "jGoalElem" --skip to the next goal digit
             end if
-        
-            if currentGuess[1][i] = goalNum[1][j] then --if the guessed digit is the same as the goal one, 
+
+            if currentGuess[1][i] = goalNum[1][j] then --if the guessed digit is the same as the goal one,
                 --it won't be a bull, so it's a cow
                 bcData[2] += 1 --score one more cow
                 goalNum[2][j] = 1 --mark this digit as a found cow in the subsequence that stores 0's or 1's as flags
                 continue "iGuessElem" --skip to the next guess digit, so that this digit won't try to check for
                 --matches(cow) with other goal digits
             end if
-        
+
         end for --this guess digit was compared to one goal digit , try comparing this guess digit with the next goal digit
     end for --this guess digit was compared with all goal digits, compare the next guess digit to all the goal digits
 
@@ -2113,7 +2113,7 @@ procedure getInputAndProcess(integer stage = 1)  --object = 1 sets default value
         getInputAndProcess(2)
     else --else they have won and the procedure ends
         printf(1, "The number was %d. You guessed %d in %d tries.\n", {goalNum[3], currentGuess[3], tries} )
-        any_key()--wait for keypress before closing console window. 
+        any_key()--wait for keypress before closing console window.
     end if
 
 end procedure
@@ -2159,7 +2159,7 @@ Press Any Key to continue...
 USING: accessors assocs combinators fry grouping hashtables kernel
        locals math math.parser math.ranges random sequences strings
        io ascii ;
-   
+
 IN: bullsncows
 
 TUPLE: score bulls cows ;
@@ -2212,7 +2212,7 @@ TUPLE: bull ;
       write flush drop validate-readln ]
     when ;
 
-: win ( -- ) "\nYou've won! Good job. You're so smart." print flush ; 
+: win ( -- ) "\nYou've won! Good job. You're so smart." print flush ;
 
 : main-loop ( x -- )
     "Enter a 4 digit number: " write flush validate-readln num>hash swap
@@ -2348,11 +2348,11 @@ contains
     integer, intent(out) :: n(4)
     integer :: i, j
     real :: r
-      
+
     call random_number(r)
     n(1) = int(r * 9.0) + 1
     i = 2
-    
+
 outer: do while (i <= 4)
          call random_number(r)
          n(i) = int(r * 9.0) + 1
@@ -2361,15 +2361,15 @@ inner:   do j = i-1 , 1, -1
          end do inner
          i = i + 1
        end do outer
- 
+
   end subroutine Gennum
 
-  subroutine Score(n, guess, b, c) 
+  subroutine Score(n, guess, b, c)
     character(*), intent(in) :: guess
     integer, intent(in) :: n(0:3)
     integer, intent(out) :: b, c
     integer :: digit, i, j, ind
-   
+
     b = 0; c = 0
     do i = 1, 4
       read(guess(i:i), "(i1)") digit
@@ -2382,25 +2382,25 @@ inner:   do j = i-1 , 1, -1
             c = c + 1
             exit
           end if
-        end do    
+        end do
       end if
-    end do  
+    end do
 
- end subroutine Score  
+ end subroutine Score
 
 end module bac
 
 program Bulls_and_Cows
    use bac
    implicit none
-   
+
    integer :: n(4)
    integer :: bulls=0, cows=0, tries=0
    character(4) :: guess
 
    call random_seed
    call Gennum(n)
-   
+
    write(*,*) "I have selected a number made up of 4 digits (1-9) without repetitions."
    write(*,*) "You attempt to guess this number."
    write(*,*) "Every digit in your guess that is in the correct position scores 1 Bull"
@@ -2646,7 +2646,7 @@ bullsAndCows = do
 
         okay :: String -> Bool
         okay input =
-            length input == numberOfDigits && 
+            length input == numberOfDigits &&
             input == nub input &&
             all legalchar input
           where legalchar c = '1' <= c && c <= '9'
@@ -2698,7 +2698,7 @@ pick n l g = f n l g (length l - 1) []
   (print (.format "{} bull{}, {} cows"
     bulls (if (= bulls 1) "" "s")
     cows (if (= cows 1) "" "s"))))
-      
+
 (print "A winner is you!")
 ```
 
@@ -2742,11 +2742,11 @@ end
 
 ```j
 require 'misc'
- 
+
 plural=: conjunction define
  (":m),' ',n,'s'#~1~:m
 )
- 
+
 bullcow=:monad define
   number=. 1+4?9
   whilst. -.guess-:number do.
@@ -2882,7 +2882,7 @@ You won after 10 guesses!
 ## JavaScript
 
 
-###  Spidermonkey version 
+###  Spidermonkey version
 
 
 ```javascript
@@ -2941,7 +2941,7 @@ function getGuess(nGuesses, len) {
         if (hasDups(guess)) {
             print('  No digits can be duplicated.');
             continue;
-        }    
+        }
         return guess;
     }
 }
@@ -2988,7 +2988,7 @@ Example game (cheating!):
    After each of your guesses, I will tell you:
      The number of bulls (digits in right place)
      The number of cows (correct digits, but in wrong place)
- 
+
  Your guess #1: 1234
      Bulls: 0, cows: 2
  Your guess #2: 5678
@@ -3017,7 +3017,7 @@ function cowsbulls()
 		You get one bull for every right number in the right position.\n
 		You get one cow for every right number, but in the wrong position.\n
 		Enter 'n' to pick a new number and 'q' to quit.\n>")
-	function new_number() 
+	function new_number()
 		s = [1:9]
 		n = ""
 		for i = 9:-1:6
@@ -3029,13 +3029,13 @@ function cowsbulls()
 	while true
 		input = chomp(readline(STDIN))
 		input == "q" && break
-		if input == "n" 
+		if input == "n"
 			answer = new_number()
 			print("\nI've picked a new number, go ahead and guess\n>")
 			continue
 		end
 		!ismatch(r"^[1-9]{4}$",input) && (print("Invalid guess: Please enter a 4-digit number\n>"); continue)
-		if input == answer 
+		if input == answer
 			print("\nYou're right! Good guessing!\nEnter 'n' for a new number or 'q' to quit\n>")
 		else
 			bulls = sum(answer.data .== input.data)
@@ -3057,8 +3057,8 @@ function bullsandcows ()
       print("Your guess? ")
       guess = collect(chomp(readline(STDIN)))
       if ! (length(unique(guess)) == length(guess) == 4 && all(isdigit,guess))
-         println("please, enter four distincts digits") 
-         continue 
+         println("please, enter four distincts digits")
+         continue
       end
       bulls = sum(map(==, guess, result))
       cows = length(intersect(guess,result)) - bulls
@@ -3085,7 +3085,7 @@ Your guess? grr
 please, enter four distincts digits
 Your guess? ...
 please, enter four distincts digits
-Your guess? 
+Your guess?
 ```
 
 
@@ -3117,9 +3117,9 @@ fun main(args: Array<String>) {
         if (guess == num) {
             println("You've won with ${++guesses} valid guesses!")
             return
-        } 
+        }
         val n = guess.toIntOrNull()
-        if (n == null) 
+        if (n == null)
             println("Not a valid number")
         else if ('-' in guess || '+' in guess)
             println("Can't contain a sign")
@@ -3129,7 +3129,7 @@ fun main(args: Array<String>) {
             println("Must have exactly 4 digits")
         else if (guess.toSet().size < 4)
             println("All digits must be distinct")
-        else {            
+        else {
             var bulls = 0
             var cows  = 0
             for ((i, c) in guess.withIndex()) {
@@ -3138,8 +3138,8 @@ fun main(args: Array<String>) {
             }
             println("Your score for this guess:  Bulls = $bulls  Cows = $cows")
             guesses++
-            if (guesses == MAX_GUESSES) 
-                println("You've now had $guesses valid guesses, the maximum allowed") 
+            if (guesses == MAX_GUESSES)
+                println("You've now had $guesses valid guesses, the maximum allowed")
         }
     }
 }
@@ -3200,8 +3200,8 @@ define cowbullchecker(n::string,a::string) => {
 			}
 		}
 	}
-	#cowbull->find('bulls') == 4 ? return (:true,map('cows'=0,'bulls'=4,'choice'=#a)) 
-	return (:true,#cowbull) 
+	#cowbull->find('bulls') == 4 ? return (:true,map('cows'=0,'bulls'=4,'choice'=#a))
+	return (:true,#cowbull)
 }
 session_start('user')
 session_addvar('user', 'num')
@@ -3525,7 +3525,7 @@ Module Game {
             if len(a$)<>4 then exit
             n=0 : dummy=val(a$,"int",n)
             if n<>5 or dummy=0 then exit
-            for i=1 to 9 
+            for i=1 to 9
                   if len(filter$(a$,str$(i,0)))<3 then break
             next i
             =false
@@ -3542,7 +3542,7 @@ Module Game {
             ok=b=4
             =format$("bulls {0}, cows {1}", b, c)
       }
-      Random$=lambda$ ->{ 
+      Random$=lambda$ ->{
             def repl$, bank$, c$
             bank$="123456789"
             for i=1 to 4
@@ -3555,7 +3555,7 @@ Module Game {
       target$=Random$()
       def boolean win=false, a$
       do
-            do  
+            do
                   Input "Next guess ";a%
                   a$=str$(a%,0)
                   if Malformed(a$) then Print "Malformed input, try again" else exit
@@ -3602,7 +3602,7 @@ BC := proc(n) #where n is the number of turns the user wishes to play before the
 					printf("No repeating digits! Please guess again.\n\n");
 				elif member(0, guess) then
 					printf("No 0s! Please guess again.\n\n");
-				else 
+				else
 					err := false;
 				end if;
 			catch:
@@ -3692,7 +3692,7 @@ Illegal input.
 ```MATLAB
 function BullsAndCows
 % Plays the game Bulls and Cows as the "game master"
-    
+
     % Create a secret number
     nDigits = 4;
     lowVal = 1;
@@ -3704,7 +3704,7 @@ function BullsAndCows
         secret(k) = digitList(idx);
         digitList(idx) = [];
     end
-    
+
     % Give game information
     fprintf('Welcome to Bulls and Cows!\n')
     fprintf('Try to guess the %d-digit number (no repeated digits).\n', nDigits)
@@ -3713,7 +3713,7 @@ function BullsAndCows
     fprintf('       1 Cow per correct digit in incorrect place.\n')
     fprintf('The number has been chosen. Now it''s your moooooove!\n')
     gs = input('Guess: ', 's');
-    
+
     % Loop until user guesses right or quits (no guess)
     nGuesses = 1;
     while gs
@@ -3826,12 +3826,12 @@ while not keyboard.escpressed do
 	local badInput = false
 	case of
 	(
-		(classof userVal != integer): 
+		(classof userVal != integer):
 			(
 			format "\nThe number must be a positive integer.\n"
 			badInput = true
 			)
-		((userVal as string).count != num.count): 
+		((userVal as string).count != num.count):
 			(
 			format "\nThe number must have % digits.\n" num.count
 			badInput = true
@@ -3867,7 +3867,7 @@ while not keyboard.escpressed do
 {{out}}
 <lang>
 OK
-Rules: 
+Rules:
 1. Choose only 4 unique digits in any combination (0 can't be used).
 2. Only positive integers are allowed.
 3. For each digit that is in it's place, you get a bull,
@@ -3918,7 +3918,7 @@ while true
         print "You got it!  Great job!"
         break
     end if
-    print "You score " + bulls + " bull" + "s"*(bulls!=1) + 
+    print "You score " + bulls + " bull" + "s"*(bulls!=1) +
     " and " + cows + " cow" + "s"*(cows!=1) + "."
 end while
 ```
@@ -3977,18 +3977,18 @@ BullCow	New bull,cow,guess,guessed,ii,number,pos,x
 	If guessed<0 Write !!,"The number was ",number,".",!
 	Quit
 Do BullCow
- 
+
 The computer has selected a number that consists
 of four different digits.
- 
+
 As you are guessing the number, "bulls" and "cows"
 will be awarded: a "bull" for each digit that is
 placed in the correct position, and a "cow" for each
 digit that occurs in the number, but in a different place.
- 
+
 For a guess, enter 4 digits.
 Any other input is interpreted as "I give up".
- 
+
 Your guess: 1234
 You guessed 1234. That earns you 1 cow.
 Your guess: 5678
@@ -4245,7 +4245,7 @@ declare
   fun {Intersection Xs Ys}
      {Filter Xs fun {$ X} {Member X Ys} end}
   end
-  
+
   fun {Id X} X end
 in
   {Main}
@@ -4296,7 +4296,7 @@ begin
       Write(fd[i]);
    end;
 end;
-   
+
 Function WellFormed(Tentative: TFourDigit): Boolean;
 { Does the TFourDigit avoid repeating digits? }
 var
@@ -4304,7 +4304,7 @@ var
 begin
 
    Result := True;
-   
+
    for current := 1 to 4 do
    begin
       for check := current + 1 to 4 do
@@ -4315,7 +4315,7 @@ begin
          end;
       end;
    end;
-   
+
 end;
 
 Function MakeNumber(): TFourDigit;
@@ -4391,7 +4391,7 @@ begin
 
    { Format the result as a sentence. }
    Result := IntToStr(bulls) + ' bulls, ' + IntToStr(cows) + ' cows.';
-   
+
 end;
 
 Function GetGuess(): TFourDigit;
@@ -4406,24 +4406,24 @@ begin
    { Must be 4 digits. }
    if Length(input) = 4 then
    begin
-   
+
       Result := StrToFourDigit(input);
-      
+
       if not WellFormed(Result) then
       begin
          WriteLn('Four unique digits, please.');
          Result := GetGuess();
       end;
-      
+
    end
    else
    begin
       WriteLn('Please guess a four-digit number.');
       Result := GetGuess();
    end;
-   
+
 end;
-   
+
 var
    Num, Guess: TFourDigit;
    Turns: integer;
@@ -4461,9 +4461,9 @@ begin
       begin
          WriteLn(GuessScore(Num, Guess));
       end;
-      
+
    end;
-      
+
 end.
 
 ```
@@ -4555,7 +4555,7 @@ say 'A winner is you!';
 
 ```Phix
 constant N = 4
- 
+
 function mask(integer ch)
     return power(2,ch-'1')
 end function
@@ -4582,7 +4582,7 @@ end function
 
 procedure game()
 sequence tgt = shuffle("123456789")[1..N]
-integer attempt = 1, bulls = 0, cows 
+integer attempt = 1, bulls = 0, cows
 sequence guess
     while bulls<N do
         while 1 do
@@ -4602,7 +4602,7 @@ sequence guess
     end while
     puts(1,"Well done!\n")
 end procedure
- 
+
 game()
 ```
 
@@ -4733,7 +4733,7 @@ while ($bulls -lt 4)
     $bulls = $cows = 0
 
     for ($i = 0; $i -lt 4; $i++)
-    { 
+    {
         $character = $digits.Substring($i,1)
 
         if ($guess.Substring($i,1) -eq $character)
@@ -4893,18 +4893,18 @@ choose(Solution) :-
 study(Solution, Guess, Bulls, Cows) :-
 	proposition(LenGuess),
 	digits(Digits),
-	
+
 	% compute the transformation 1234 => [1,2,3,4]
 	atom_chars(Guess, Chars),
 	maplist(\X^Y^(atom_number(X, Y)), Chars, Ms),
-	
+
 	% check that the guess is well formed
 	length(Ms, LenGuess),
 	maplist(\X^(X > 0, X =< Digits+1), Ms),
 
 	% compute the digit in good place
 	foldl(\X^Y^V0^V1^((X = Y->V1 is V0+1; V1 = V0)),Solution, Ms, 0, Bulls),
-	
+
 	% compute the digits in bad place
 	foldl(\Y1^V2^V3^(foldl(\X2^Z2^Z3^(X2 = Y1 -> Z3 is Z2+1; Z3 = Z2), Ms, 0, TT1),
 			 V3 is V2+ TT1),
@@ -4927,20 +4927,20 @@ If OpenConsole()
     c = Chr(Random(8) + 49)
     If FindString(secret, c, 1) = 0
       secret + c
-    EndIf 
+    EndIf
   Wend
 
   Repeat
     Print("Guess a 4-digit number with no duplicate digits: ")
     guess = Input()
-    If Len(guess) = 0 
+    If Len(guess) = 0
       Break   ;break from loop
-    EndIf 
-  
+    EndIf
+
     isMalformedGuess = #False
     If Len(guess) <> 4
       ;guess is too short
-      isMalformedGuess = #True 
+      isMalformedGuess = #True
     Else
       For i = 1 To 4
         c = Mid(guess, i, 1)
@@ -4948,15 +4948,15 @@ If OpenConsole()
           ;guess contains either non-digits or duplicate digits
           isMalformedGuess = #True
           Break ;break from For/Next loop
-        EndIf 
+        EndIf
       Next
     EndIf
-  
+
     If isMalformedGuess
       PrintN("** You should enter 4 different numeric digits that are each from 1 to 9!")
       Continue ;continue loop
-    EndIf 
-    
+    EndIf
+
     bulls = 0: cows = 0: guesses = guesses + 1
     For i = 1 To 4
       c = Mid(secret, i, 1)
@@ -4964,20 +4964,20 @@ If OpenConsole()
         bulls + 1
       ElseIf FindString(guess, c, 1)
         cows + 1
-      EndIf 
+      EndIf
     Next
-  
+
     Print( Str(bulls) + " bull")
     If bulls <> 1
       Print( "s")
-    EndIf 
+    EndIf
     Print( ", " + Str(cows) + " cow")
     If cows <> 1
       PrintN( "s")
     Else
       PrintN("")
     EndIf
-  
+
     If guess = secret
       PrintN("You won after " + Str(guesses) + " guesses!")
       Break    ;break from loop
@@ -5090,14 +5090,14 @@ print(paste("You won in",attempts,"attempt(s)!"))
 
 ; secret : (listof exact-nonnegative-integer?)
 (define secret
-  (foldr (λ (n result) 
-           (cons n (map (λ (y) (if (>= y n) (add1 y) y)) 
+  (foldr (λ (n result)
+           (cons n (map (λ (y) (if (>= y n) (add1 y) y))
                         result)))
          '()
          (map random '(10 9 8 7))))
 
-; (count-bulls/cows guess) -> (values exact-nonnegative-integer? 
-;                                     exact-nonnegative-integer?) 
+; (count-bulls/cows guess) -> (values exact-nonnegative-integer?
+;                                     exact-nonnegative-integer?)
 ; guess : (listof exact-nonnegative-integer?)
 (define (count-bulls/cows guess)
   (let* ([bulls (map = guess secret)]
@@ -5115,26 +5115,26 @@ print(paste("You won in",attempts,"attempt(s)!"))
     (- (char->integer c) (char->integer #\0)))
   (if (regexp-match-exact? #px"[0-9]{4}" guess-str)
       (let ([guess (map char->digit (string->list guess-str))])
-        (if (andmap (λ (x) (equal? (count ((curry equal?) x) guess) 1)) 
+        (if (andmap (λ (x) (equal? (count ((curry equal?) x) guess) 1))
                     guess)
             guess
             #f))
       #f))
-           
+
 ; Game states
 (define win #t)
-(define game #f)      
+(define game #f)
 
 ; (main-loop state step) -> void?
 ; state : boolean?
-; step  : exact-nonnegative-integer? 
+; step  : exact-nonnegative-integer?
 (define (main-loop state step)
   (if (equal? state win)
       (printf "You won after ~a guesses." step)
-      (begin 
+      (begin
         (let* ([guess-str (read-line)]
                [guess (valid-guess guess-str)])
-          (if (false? guess) 
+          (if (false? guess)
               (begin (displayln "Guess should include exactly four different digits")
                      (main-loop state step))
               (let-values ([(bulls cows) (count-bulls/cows guess)])
@@ -5210,7 +5210,7 @@ This game is also known as:
 
 ### version 1
 
-This REXX version of Bulls and Cows doesn't allow repeated digits (in the computer-generated number), 
+This REXX version of Bulls and Cows doesn't allow repeated digits (in the computer-generated number),
 
 nor the use of the zero digit.
 
@@ -5219,7 +5219,7 @@ To allow a zero digit, change the   <big> '''1''' </big>   on the 2<sup>nd</sup>
 
 To allow repeated digits in the computer-generated number, delete the 3<sup>rd</sup> REXX statement     '''if pos(r, ?)···''',
 
-and also change the prompt message. 
+and also change the prompt message.
 
 The REXX statement that contains the   '''translate'''   statement can be removed if repeated digits aren't allowed.
 
@@ -5397,12 +5397,12 @@ while true
                 if len(guess) != 4
                    see "must be a four-digit number" + nl
                 ok
-        end 
-        guesses = guesses + 1 
+        end
+        guesses = guesses + 1
         if guess = secret
            see "you won after " + guesses + " guesses!"
-           exit             
-        ok 
+           exit
+        ok
         bulls = 0
         cows = 0
         for i = 1 to 4
@@ -5452,7 +5452,7 @@ def score(word, guess)
     elsif word.include? num
       cows += 1
     end
-  end 
+  end
   [bulls, cows]
 end
 
@@ -5485,19 +5485,19 @@ loop do
     print "Guess #{i}: "
     guess = gets.chomp.chars
     exit if guess.empty?
-    
-    break if guess.size == size and 
+
+    break if guess.size == size and
              guess.all? { |x| ('1'..'9').include? x } and
              guess.uniq.size == size
-    
+
     puts "Problem, try again. You need to enter #{size} unique digits from 1 to 9"
   end
-  
+
   if guess == secret
     puts "Congratulations you guessed correctly in #{i} attempts"
     break
   end
-  
+
   bulls = cows = 0
   size.times do |j|
     if guess[j] == secret[j]
@@ -5506,7 +5506,7 @@ loop do
       cows += 1
     end
   end
-  
+
   puts "Bulls: #{bulls}; Cows: #{cows}"
 end
 ```
@@ -5732,7 +5732,7 @@ object BullCow {
 
 
 
-###  Sample game play 
+###  Sample game play
 
 
 ```txt
@@ -6015,7 +6015,7 @@ ENDIF
 guesses+=1
 r$=score$(guess$,sec$)
 P(r$)!l
-    
+
 IF guess$=sec$ THEN
   P("W I N N E R ! ! !")!l
   IF guesses>1 THEN gs$="guesses!" ELSE gs$="guess!"
@@ -6135,14 +6135,14 @@ while true {
 
 
 ```txt
-Please enter a 4 digit number with digits between 1-9, no repetitions: 
+Please enter a 4 digit number with digits between 1-9, no repetitions:
 8496
 Actual number: 6475
 Your score: 1 bulls and 1 cows
 
-Would you like to play again? (y): 
+Would you like to play again? (y):
 y
-Please enter a 4 digit number with digits between 1-9, no repetitions: 
+Please enter a 4 digit number with digits between 1-9, no repetitions:
 5983
 Actual number: 7846
 Your score: 0 bulls and 1 cows
@@ -6158,11 +6158,11 @@ Your score: 0 bulls and 1 cows
 proc main {} {
     fconfigure stdout -buffering none
     set length 4
-    
+
     puts "I have chosen a number from $length unique digits from 1 to 9 arranged in a random order.
 You need to input a $length digit, unique digit number as a guess at what I have chosen
     "
-    
+
     while true {
         set word [generateWord $length]
         set count 1
@@ -6408,7 +6408,7 @@ rand() {
   [ ${min} -gt ${max} ] &&
   min=$(( min ^ max )) &&
   max=$(( min ^ max )) &&
-  min=$(( min ^ max )) 
+  min=$(( min ^ max ))
 
   echo -n $(( ( $RANDOM % $max ) + $min ))
 }
@@ -6464,7 +6464,7 @@ to_arr() {
 
 choose_idx() {
   local arr=( $@ )
-  
+
   echo -n "$( rand 0 $(( ${#arr[@]} - 1 )) )"
 }
 
@@ -6502,11 +6502,11 @@ cows() {
   do
     secret=( $( delete_at ${i} ${secret[*]} ) )
   done
-  
+
   # Process the guess against what's left of the secret
   for i in ${guess[*]}
   do
-    in_arr "${i}" ${secret[*]} && 
+    in_arr "${i}" ${secret[*]} &&
     secret=( $( delete_first "${i}" ${secret[*]} ) ) &&
     (( hits++ ))
   done
@@ -6518,12 +6518,12 @@ malformed() {
   local guess=( $( to_arr "${1}" ) )
   local i=''
 
-  [ ${#guess[@]} -ne 4 ] && 
+  [ ${#guess[@]} -ne 4 ] &&
   return 0
 
   for i in ${guess[*]}
   do
-    if ! in_arr ${i} 1 2 3 4 5 6 7 8 9 
+    if ! in_arr ${i} 1 2 3 4 5 6 7 8 9
     then
       return 0
       break
@@ -6669,7 +6669,7 @@ repeat (99) {
     #2 = Search_Block(@10, 0, 4, REGEXP+BEGIN+ALL+NOERR) - #1
 
     #3++
-    NT(#1, NOCR) M(" bulls,") NT(#2, NOCR) M(" cows\n") 
+    NT(#1, NOCR) M(" bulls,") NT(#2, NOCR) M(" cows\n")
     if (#1 == 4) {
         M("You won after") NT(#3, NOCR) M(" guesses!\n")
         Break
@@ -6805,7 +6805,7 @@ You got it!
 70 NEXT i
 80 LET guesses=0
 90 INPUT "Guess a 4-digit number (1 to 9) with no duplicate digits: ";guess
-100 IF guess=0 THEN STOP 
+100 IF guess=0 THEN STOP
 110 IF guess>9999 OR guess<1000 THEN PRINT "Only 4 numeric digits, please": GO TO 90
 120 LET bulls=0: LET cows=0: LET guesses=guesses+1: LET g$=STR$ guess
 130 FOR i=1 TO 4

@@ -89,14 +89,14 @@ prime factors of F(6) = #(274177 67280421310721)
 
 ## C
 
-Compile with : 
+Compile with :
 ```txt
 gcc -o fermat fermat.c -lgmp
 ```
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <gmp.h>
 
@@ -168,7 +168,7 @@ math.primes.factors sequences ;
     0 lfrom [ [ 1 2 2 ] dip ^ ^ + ] lmap-lazy ;
 
 CHAR: ₀ 10 lfermats ltake list>array [
-    "First 10 Fermat numbers:" print 
+    "First 10 Fermat numbers:" print
     [ dupd "F%c = %d\n" printf 1 + ] each drop nl
 ] [
     "Factors of first few Fermat numbers:" print [
@@ -216,7 +216,7 @@ However, the algorithm factorizes F₈ and finds the first prime factor of F₉ 
 
 As the second and third prime factors of F₉ are respectively 49 and 99 digits long there would be no chance of finding these any time soon so I haven't bothered.
 
-I thought that [https://en.wikipedia.org/wiki/Fermat%27s_factorization_method Fermat's own factorization method], which is easy to code, might be able to factorize F₇ faster than Pollard's Rho as the factors are relatively close together but in fact it was much slower. 
+I thought that [https://en.wikipedia.org/wiki/Fermat%27s_factorization_method Fermat's own factorization method], which is easy to code, might be able to factorize F₇ faster than Pollard's Rho as the factors are relatively close together but in fact it was much slower.
 
 The timings are for my Intel Core i7-8565U laptop using Go 1.12.9 on Ubuntu 18.04.
 
@@ -306,7 +306,7 @@ func main() {
 
     fmt.Println("\nFactors of first 10 Fermat numbers:")
     for i, f := range fns {
-        fmt.Printf("F%c = ", 0x2080+i)        
+        fmt.Printf("F%c = ", 0x2080+i)
         factors, err := primeFactors(f)
         if err != nil {
             fmt.Println(err)
@@ -347,10 +347,10 @@ F₁ = 5 - prime
 F₂ = 17 - prime
 F₃ = 257 - prime
 F₄ = 65537 - prime
-F₅ = 641 6700417 
-F₆ = 274177 67280421310721 
+F₅ = 641 6700417
+F₆ = 274177 67280421310721
 F₇ = 59649589127497217 5704689200685129054721
-F₈ = 1238926361552897 93461639715357977769163558199606896584051237541638188580280321 
+F₈ = 1238926361552897 93461639715357977769163558199606896584051237541638188580280321
 F₉ = 2424833 (second factor is not prime)
 
 ```
@@ -366,7 +366,7 @@ using Primes
 fermat(n) = BigInt(2)^(BigInt(2)^n) + 1
 prettyprint(fdict) = replace(replace(string(fdict), r".+\(([^)]+)\)" => s"\1"), r"\=\>" => "^")
 
-function factorfermats(max, nofactor=false) 
+function factorfermats(max, nofactor=false)
     for n in 0:max
         fm = fermat(n)
         if nofactor
@@ -374,7 +374,7 @@ function factorfermats(max, nofactor=false)
             continue
         end
         factors = factor(fm)
-        println("Fermat number F($n), $fm, ", 
+        println("Fermat number F($n), $fm, ",
             length(factors) < 2 ? "is prime." : "factors to $(prettyprint(factors)).")
     end
 end
@@ -507,9 +507,9 @@ Factors of F₁: 5 - prime
 Factors of F₂: 17 - prime
 Factors of F₃: 257 - prime
 Factors of F₄: 65537 - prime
-Factors of F₅: 641 6700417 
-Factors of F₆: 274177 67280421310721 
-Factors of F₇: 59649589127497217 5704689200685129054721 
+Factors of F₅: 641 6700417
+Factors of F₆: 274177 67280421310721
+Factors of F₇: 59649589127497217 5704689200685129054721
 Factors of F₈: 1238926361552897 93461639715357977769163558199606896584051237541638188580280321
 
 ```
@@ -575,10 +575,10 @@ end for
 ```
 
 {{out}}
-Note that mpz_prime_factors(), a phix-specific extension to gmp, is designed to find small factors quickly and 
-give up early, however it works by maintaining a table of primes, so any prime factor over 10 digits or so is 
-beyond reach. You could increase the maxprime parameter, here set at 200,000, which guarantees all factors up 
-to 2,750,159 (obviously 7 digits), but it will just get exponentially slower without getting close to finding 
+Note that mpz_prime_factors(), a phix-specific extension to gmp, is designed to find small factors quickly and
+give up early, however it works by maintaining a table of primes, so any prime factor over 10 digits or so is
+beyond reach. You could increase the maxprime parameter, here set at 200,000, which guarantees all factors up
+to 2,750,159 (obviously 7 digits), but it will just get exponentially slower without getting close to finding
 anything more, specifically in this case 1,238,926,361,552,897 (16 digits) or 59,649,589,127,497,217 (17 digits).
 
 Calculating F0..F29 is pretty quick, but F30 and above hit integer limits on 32 bit, F32 and above exceed my physical memory on 64 bit.
@@ -708,7 +708,7 @@ F₈ FACTORS: [1238926361552897, 93461639715357977769163558199606896584051237541
 ## REXX
 
 
-###  factoring by trial division 
+###  factoring by trial division
 
 
 ```rexx
@@ -725,7 +725,7 @@ say
      say center(' F'k": " f' ', 79, "═")         /*display a particular     "      "    */
      p= factr(f)                                 /*factor a Fermat number,  given time. */
      if words(p)==1  then say f ' is prime.'
-                     else say 'factors: '    p   
+                     else say 'factors: '    p
      end   /*k*/
 exit
 /*──────────────────────────────────────────────────────────────────────────────────────*/

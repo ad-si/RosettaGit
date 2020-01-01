@@ -170,8 +170,8 @@ See [[Distributed program/AutoHotkey]].
 Using PVM [[http://www.csm.ornl.gov/pvm/pvm_home.html]
 This program is in a sense both a server and a client, depending on if its task is spawned with a command-line argument: if yes, it spawns another task of the same executible on the parallel virtual machine and waits for it to transmit data; if no, it transmits data and is done.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <pvm3.h>
 
@@ -349,7 +349,7 @@ class SampleData
 Uses the <b>rpc</b> library:
 https://github.com/adamdruppe/misc-stuff-including-D-programming-language-web-stuff/blob/master/rpc.d
 
-This library is not standard, so this code (by Adam D. Ruppe) could and should be rewritten using more standard means. 
+This library is not standard, so this code (by Adam D. Ruppe) could and should be rewritten using more standard means.
 
 ```d
 import arsd.rpc;
@@ -430,7 +430,7 @@ void main(in string[] args) {
 This service cannot be used except by clients which know the URL designating it, messages are encrypted, and the client authenticates the server. However, it is vulnerable to denial-of-service by any client knowing the URL.
 
 
-###  Server 
+###  Server
 
 
 (The protocol is symmetric; this program is the server only in that it is the one which is started first and exports an object.)
@@ -462,7 +462,7 @@ interp.blockAtTop()
 This will print the URL of the service and run it until aborted.
 
 
-###  Client 
+###  Client
 
 
 The URL provided by the server is given as the argument to this program.
@@ -491,7 +491,7 @@ when (def result := logService <- search("foo")) -> {
 
 The protocol is erlang's own
 
-###  Server 
+###  Server
 
 srv.erl
 
@@ -520,7 +520,7 @@ wait() ->
 
 
 
-###  Client 
+###  Client
 
 client.erl
 
@@ -590,7 +590,7 @@ Note: we are using QUALIFIED: with the concurrency.messaging vocabulary because 
 ```factor
 USING: concurrency.distributed io.sockets ;
 QUALIFIED: concurrency.messaging
-{ "Hello Remote Factor!" H{ { "key1" "value1" } } } 
+{ "Hello Remote Factor!" H{ { "key1" "value1" } } }
 "127.0.0.1" 9000 <inet4> "logger" <remote-thread> concurrency.messaging:send
 ```
 
@@ -599,7 +599,7 @@ How to Run:
 
 - Copy/Paste the server code in an instance of Factor Listener
 
-- Copy/Paste the client code in another instance of Factor Listener. 
+- Copy/Paste the client code in another instance of Factor Listener.
 
 The server node should prettyprint the data structure send by the client: { "Hello Remote Factor!" H{ { "key1" "value1" } } }
 
@@ -937,8 +937,8 @@ conn.on('data', function(msg){
 
 ## Julia
 
-Julia was designed with distributed conmputing. in particular cluster computing, as a primary use target. 
-If a group of CPUs, including multiple cores on a single machine or a cluster running with paswordless ssh login, is used, 
+Julia was designed with distributed conmputing. in particular cluster computing, as a primary use target.
+If a group of CPUs, including multiple cores on a single machine or a cluster running with paswordless ssh login, is used,
 the following can be set up as an example:
 
 ```julia
@@ -966,7 +966,7 @@ b = @spawn count_heads(100000000) # runs on another available processor
 println(fetch(a)+fetch(b)) # total heads of 200 million coin flips, half on each CPU
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 100001564
@@ -1063,7 +1063,7 @@ To use this code, simply start the server in the server terminal:
 > (start)
 exampleserver@yourhostname ready
 ok
-(exampleserver@yourhostname)> 
+(exampleserver@yourhostname)>
 
 ```
 
@@ -1073,11 +1073,11 @@ Send some messages from the client terminal:
 
 ```lisp
 
-> (send "hi there")                                        
+> (send "hi there")
 connecting to exampleserver@yourhostname
 Received "hi there"
 ok
-(exampleclient@yourhostname)> (send 42)          
+(exampleclient@yourhostname)> (send 42)
 connecting to exampleserver@yourhostname
 Received 42
 ok
@@ -1085,7 +1085,7 @@ ok
 connecting to exampleserver@yourhostname
 Received {key,value}
 ok
-(exampleclient@yourhostname)> 
+(exampleclient@yourhostname)>
 
 ```
 
@@ -1228,13 +1228,13 @@ The server ''vending'' the object with the name <tt>DistributedAction</tt>
 int main (void)
 {
   @autoreleasepool {
-  
+
     ActionObject *action = [[ActionObject alloc] init];
 
     NSSocketPort *port = (NSSocketPort *)[NSSocketPort port];
     // initWithTCPPort: 1234 and other methods are not supported yet
     // by GNUstep
-    NSConnection *connect = [NSConnection 
+    NSConnection *connect = [NSConnection
   	      connectionWithReceivePort: port
   	      sendPort: port]; // or sendPort: nil
 
@@ -1244,12 +1244,12 @@ int main (void)
        the Name Server that allows the resolution of the registered name
        is bound to port 538 */
     if (![connect registerName:@"DistributedAction"
-  	       withNameServer: [NSSocketPortNameServer sharedInstance] ]) 
+  	       withNameServer: [NSSocketPortNameServer sharedInstance] ])
     {
       NSLog(@"can't register the server DistributedAction");
       exit(EXIT_FAILURE);
     }
-  
+
     NSLog(@"waiting for messages...");
 
     [[NSRunLoop currentRunLoop] run];
@@ -1275,7 +1275,7 @@ int main(void)
 
     id <ActionObjectProtocol> action = (id <ActionObjectProtocol>)
       [NSConnection
-        rootProxyForConnectionWithRegisteredName: @"DistributedAction" 
+        rootProxyForConnectionWithRegisteredName: @"DistributedAction"
         host: @"localhost"
         usingNameServer: [NSSocketPortNameServer sharedInstance] ];
 
@@ -1284,7 +1284,7 @@ int main(void)
       NSLog(@"can't connect to the server");
       exit(EXIT_FAILURE);
     }
-  
+
     NSArray *args = [[NSProcessInfo processInfo] arguments];
 
     if ([args count] == 1)
@@ -1292,7 +1292,7 @@ int main(void)
       NSLog(@"specify a message");
       exit(EXIT_FAILURE);
     }
-  
+
     NSString *msg = args[1];
 
     // "send" (call the selector "sendMessage:" of the (remote) object
@@ -1315,12 +1315,12 @@ int main(void)
 Minimalistic distributed logger with synchronous channels using the join calculus on top of OCaml.
 
 
-###  Server 
+###  Server
 
 
 ```ocaml
 open Printf
- 
+
 let create_logger () =
   def log(text) & logs(l) =
       printf "Logged: %s\n%!" text;
@@ -1335,7 +1335,7 @@ let create_logger () =
 def wait() & finished() = reply to wait
 
 let register name service = Join.Ns.register Join.Ns.here name service
- 
+
 let () =
   let log, search = create_logger () in
     register "log" log;
@@ -1346,26 +1346,26 @@ let () =
 
 
 
-###  Client 
+###  Client
 
 
 
 ```ocaml
 open Printf
- 
+
 let ns_there = Join.Ns.there (Unix.ADDR_INET (Join.Site.get_local_addr(), 12345))
- 
+
 let lookup name = Join.Ns.lookup ns_there name
 
 let log : string -> unit = lookup "log"
 let search : string -> (string * float) list = lookup "search"
- 
+
 let find txt =
   printf "Looking for %s...\n" txt;
   List.iter (fun (line, time) ->
                printf "Found: '%s' at t = %f\n%!" (String.escaped line) time)
     (search txt)
- 
+
 let () =
   log "bar";
   find "foo";
@@ -1412,7 +1412,7 @@ declare
   fun {Send X}
      {Port.sendRecv Server.port X}
   end
-in 
+in
   %% echo
   {System.showInfo "Echo reply: "#{Send echo(hello)}}
 
@@ -1707,7 +1707,7 @@ PORT = 8000
 
 rpc = xmlrpclib.ServerProxy("http://%s:%d" % (HOST, PORT))
 
-# print what functions does server support 
+# print what functions does server support
 print 'Server supports these functions:',
 print ' '.join(rpc.system.listMethods())
 
@@ -1802,10 +1802,10 @@ This example builds a very basic RPC mechanism on top of sockets and the [http:/
 ```python
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
- 
+
 import SocketServer
 import pickle
- 
+
 HOST = "localhost"
 PORT = 8000
 
@@ -1841,14 +1841,14 @@ class MyHandlerInstance(object):
     def echo(self, data):
         '''Method for returning data got from client'''
         return 'Server responded: %s' % data
- 
+
     def div(self, dividend, divisor):
         '''Method to divide 2 numbers'''
         return dividend/divisor
- 
+
     def is_computer_on(self):
         return True
- 
+
 if __name__ == '__main__':
     rpcserver = RPCServer((HOST, PORT), RPCHandler)
     rpcserver.object_to_proxy = MyHandlerInstance()
@@ -1868,10 +1868,10 @@ if __name__ == '__main__':
 ```python
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
- 
+
 import socket
 import pickle
- 
+
 HOST = "localhost"
 PORT = 8000
 
@@ -1903,7 +1903,7 @@ class RPCClient(object):
                 raise result
 
         return proxy
- 
+
 if __name__ == '__main__':
     # connect to server and send data
     rpcclient = RPCClient(HOST, PORT)
@@ -1989,7 +1989,7 @@ print 'Server responded the result: %s' % math.div(NUM1, NUM2)
 
 
 
-###  Spread 
+###  Spread
 
 '''Note:''' You should install Spread (http://www.spread.org) and its python bindings (http://www.python.org/other/spread/)
 
@@ -2255,7 +2255,7 @@ Uses netcat and a buffer to cycle the server shell's stdout back to netcat's std
 {{alertbox|yellow|'''Security risk!''' Anything, able to reach 127.0.0.1 port 1234, can run shell commands as the user who runs the server. This allows other users to gain privileges.}}
 
 
-```bash>: 
+```bash>:
 /tmp/buffer
 tail -f /tmp/buffer | nc -l 127.0.0.1 1234 | sh >/tmp/buffer 2>&1
 ```

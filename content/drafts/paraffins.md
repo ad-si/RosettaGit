@@ -17,32 +17,32 @@ This organic chemistry task is essentially to implement a tree enumeration algor
 
 
 ;Task:
-Enumerate, without repetitions and in order of increasing size, all possible paraffin molecules (also known as [[wp:alkane|alkane]]s). 
+Enumerate, without repetitions and in order of increasing size, all possible paraffin molecules (also known as [[wp:alkane|alkane]]s).
 
 
 Paraffins are built up using only carbon atoms, which has four bonds, and hydrogen, which has one bond. All bonds for each atom must be used, so it is easiest to think of an alkane as linked carbon atoms forming the "backbone" structure, with adding hydrogen atoms linking the remaining unused bonds.
 
 In a paraffin, one is allowed neither double bonds (two bonds between the same pair of atoms), nor cycles of linked carbons. So all paraffins with   '''n'''   carbon atoms share the empirical formula   <big>C<sub>n</sub>H<sub>2n+2</sub></big>
 
-But for all   '''n''' ≥ 4   there are several distinct molecules ("isomers") with the same formula but different structures. 
+But for all   '''n''' ≥ 4   there are several distinct molecules ("isomers") with the same formula but different structures.
 
-The number of isomers rises rather rapidly when   '''n'''   increases. 
+The number of isomers rises rather rapidly when   '''n'''   increases.
 
 In counting isomers it should be borne in mind that the four bond positions on a given carbon atom can be freely interchanged and bonds rotated (including 3-D "out of the paper" rotations when it's being observed on a flat diagram), so rotations or re-orientations of parts of the molecule (without breaking bonds) do not give different isomers. So what seem at first to be different molecules may in fact turn out to be different orientations of the same molecule.
 
 
 ;Example:
-With   '''n''' = 3   there is only one way of linking the carbons despite the different orientations the molecule can be drawn;   and with   '''n''' = 4   there are two configurations: 
-:::* a   straight chain:     <big>(CH<sub>3</sub>)(CH<sub>2</sub>)(CH<sub>2</sub>)(CH<sub>3</sub>)</big>   
+With   '''n''' = 3   there is only one way of linking the carbons despite the different orientations the molecule can be drawn;   and with   '''n''' = 4   there are two configurations:
+:::* a   straight chain:     <big>(CH<sub>3</sub>)(CH<sub>2</sub>)(CH<sub>2</sub>)(CH<sub>3</sub>)</big>
 :::* a        branched chain:     <big>(CH<sub>3</sub>)(CH(CH<sub>3</sub>))(CH<sub>3</sub>)</big>
 
 
 
-Due to bond rotations, it doesn't matter which direction the branch points in. 
+Due to bond rotations, it doesn't matter which direction the branch points in.
 
 The phenomenon of "stereo-isomerism" (a molecule being different from its mirror image due to the actual 3-D arrangement of bonds) is ignored for the purpose of this task.
 
-The input is the number   '''n'''   of carbon atoms of a molecule (for instance '''17'''). 
+The input is the number   '''n'''   of carbon atoms of a molecule (for instance '''17''').
 
 The output is how many different different paraffins there are with   '''n'''   carbon atoms  (for instance   24,894   if   '''n''' = 17).
 
@@ -55,7 +55,7 @@ The sequence of those results is visible in the [[oeis:A000602|Sloane encycloped
 
 
 ;Extra credit:
-Show the paraffins in some way. 
+Show the paraffins in some way.
 
 A flat 1D representation, with arrays or lists is enough, for instance:
 
@@ -87,7 +87,7 @@ Showing a basic 2D ASCII-art representation of the paraffins is better; for inst
 
 ```txt
  Methane         Ethane              Propane              Isobutane
-                 
+
     H             H   H             H   H   H             H   H   H
     |             |   |             |   |   |             |   |   |
 H - C - H     H - C - C - H     H - C - C - C - H     H - C - C - C - H
@@ -121,8 +121,8 @@ http://java.net/projects/projectfortress/sources/sources/content/ProjectFortress
 
 Can't show the tree shapes; count only.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define MAX_N 33	/* max number of tree nodes */
 #define BRANCH 4	/* max number of edges a single node can have */
@@ -239,8 +239,9 @@ int main()
 }
 ```
 Same idea, with GMP, and done somewhat differently:
-```c>#include <gmp.h
 
+```c
+#include <gmp.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -284,7 +285,7 @@ void calc_rooted(mpz_t res, int n, int b, int r)
 		mpz_set_ui(rtmp2, 0);
 		for (r1 = 0; r1 < r && r1 + r * b1 < n; r1++)
 			mpz_add(rtmp2, rtmp2, rcache[n - r * b1][b - b1][r1]);
-		
+
 		mpz_addmul(res, rtmp1, rtmp2);
 	}
 }
@@ -318,7 +319,7 @@ void calc_unrooted(int n)
 	for (r = 0; r * 2 < n; r++)
 		for (b = 0; b <= MAX_BRANCH; b++)
 			mpz_add(ucache[n], ucache[n], rcache[n][b][r]);
-	
+
 	if (!(n & 1)) {
 		mpz_add_ui(rtmp1, bcache[n/2], 1);
 		mpz_mul(rtmp1, rtmp1, bcache[n/2]);
@@ -1292,7 +1293,7 @@ part3=: ;@((<@([(],.(-+/"1))],.]+i.@(]-~1+<.@-:@-))"0 i.@>:@<.@%&3))
 
 part4=: 3 :0
 ij=.; (,.]+i.@:(]-~1+[:<.3%~y-]))&.> i.1+<.y%4
-(,.y - +/"1) ; (<@(],"1 0 <.@-:@(y-[) (] + i.@>:@-) {:@] >. (>.-:y)-[)~+/)"1 ij 
+(,.y - +/"1) ; (<@(],"1 0 <.@-:@(y-[) (] + i.@>:@-) {:@] >. (>.-:y)-[)~+/)"1 ij
 )
 
 c0=: */@:{
@@ -1450,15 +1451,15 @@ def tree(br; n; l; sum; cnt):
         | if $sum >= MAX_N or
              # prevent unneeded long math
              ( l * 2 >= $sum and $b >= BRANCH) then [$unrooted, $ra]                      # return
-          else (if $b == br + 1 then $ra[n] * cnt 
+          else (if $b == br + 1 then $ra[n] * cnt
                 else ($c * ($ra[n] + (($b - br - 1)))) / ($b - br) | floor
                 end) as $c
           | (if l * 2 < $sum then ($unrooted | .[$sum] += $c)
              else $unrooted end) as $unrooted
           | if $b >= BRANCH then [$b+1, $c, $sum, $unrooted, $ra] | _tree                 # next
             else  [$unrooted, ($ra | .[$sum] += $c) ]
-            | reduce range(1; n) as $m (.;  tree($b; $m; l; $sum; $c)) 
-            | ([$b + 1, $c, $sum] + .) | _tree 
+            | reduce range(1; n) as $m (.;  tree($b; $m; l; $sum; $c))
+            | ([$b + 1, $c, $sum] + .) | _tree
             end
           end
       end
@@ -1467,7 +1468,7 @@ def tree(br; n; l; sum; cnt):
   # start by incrementing b, and prepending values for (b,c,sum)
   ([br+1, cnt, sum] + .)  | _tree
 ;
- 
+
 # input and output: [unrooted, ra]
 def bicenter(s):
   if s % 2 == 1 then .
@@ -1476,7 +1477,7 @@ def bicenter(s):
      | .[0][s] += ($aux * ($aux + 1)) / 2 # 2 divides odd*even
   end
 ;
- 
+
 def array(n;init): [][n-1] = init | map(init);
 
 def ra: array( MAX_N; 0) | .[0] = 1 | .[1] = 1;
@@ -1657,7 +1658,7 @@ fun tree(br: Int, n: Int, l: Int, s: Int, cnt: BigInteger) {
             c[br] *= tmp + BigInteger.valueOf(diff - 1L)
             c[br] /= BigInteger.valueOf(diff)
         }
- 
+
         if (l * 2 < sum) unrooted[sum] += c[br]
         if (b < BRANCHES) rooted[sum] += c[br]
         for (m in n - 1 downTo 1) tree(b, m, l, sum, c[br])
@@ -1698,12 +1699,12 @@ Same as Java entry
 Using the formula on OEIS.
 
 ```mathematica
-s[m_, p_, n_] := 
-  CycleIndexPolynomial[SymmetricGroup[m], 
+s[m_, p_, n_] :=
+  CycleIndexPolynomial[SymmetricGroup[m],
    Table[ComposeSeries[p, x^i + O[x]^(n + 1)], {i, m}]];
 G000598[n_] := Nest[1 + x s[3, #, n] &, 1 + O[x], n];
-G000602[n_] := 
-  x s[4, #, n] - s[2, # - 1, n] + 
+G000602[n_] :=
+  x s[4, #, n] - s[2, # - 1, n] +
      ComposeSeries[#, x^2 + O[x]^(n + 1)] &[G000598[n]];
 A000602[n_] := SeriesCoefficient[G000602[n], n];
 A000602List[n_] := CoefficientList[G000602[n], x];
@@ -1915,7 +1916,7 @@ Program Paraffins;
 
 uses
   gmp;
-  
+
 const
   max_n = 500;
   branch = 4;
@@ -1939,7 +1940,7 @@ procedure tree(br, n, l: integer; sum: integer; cnt: mpz_t);
 	exit;
 
       (* prevent unneeded long math *)
-      if (l * 2 >= sum) and (b >= branch) then 
+      if (l * 2 >= sum) and (b >= branch) then
 	exit;
 
       if b = (br + 1) then
@@ -2278,10 +2279,10 @@ end for
 ```Pike
 int MAX_N = 300;
 int BRANCH = 4;
- 
+
 array ra = allocate(MAX_N);
 array unrooted = allocate(MAX_N);
- 
+
 void tree(int br, int n, int l, int sum, int cnt)
 {
     int c;
@@ -2290,11 +2291,11 @@ void tree(int br, int n, int l, int sum, int cnt)
         sum += n;
         if (sum >= MAX_N)
             return;
- 
+
         // prevent unneeded long math
         if (l * 2 >= sum && b >= BRANCH)
             return;
- 
+
         if (b == br + 1)
         {
             c = ra[n] * cnt;
@@ -2303,10 +2304,10 @@ void tree(int br, int n, int l, int sum, int cnt)
         {
             c = c * (ra[n] + (b - br - 1)) / (b - br);
         }
- 
+
         if (l * 2 < sum)
             unrooted[sum] += c;
- 
+
         if (b < BRANCH)
         {
             ra[sum] += c;
@@ -2317,7 +2318,7 @@ void tree(int br, int n, int l, int sum, int cnt)
         }
     }
 }
- 
+
 void bicenter(int s)
 {
     if (!(s & 1))
@@ -2326,12 +2327,12 @@ void bicenter(int s)
         unrooted[s] += aux * (aux + 1) / 2;
     }
 }
- 
- 
+
+
 void main()
 {
     ra[0] = ra[1] = unrooted[0] = unrooted[1] = 1;
- 
+
     for (int n = 1; n < MAX_N; n++)
     {
         tree(0, n, n, 1, 1);
@@ -2456,7 +2457,7 @@ Output (newlines added):
 
 
 
-###  Using generating function 
+###  Using generating function
 
 This is almost the same as the one in [[Formal power series]].  Compare to the Mathematica and Haskell solutions.
 
@@ -2578,7 +2579,7 @@ for n,x in zip(count(0), islice(a602, 500)): print(n,x)
 
 
 
-###  Using generating function without OO 
+###  Using generating function without OO
 
 
 This uses a different generating function, but also demonstrates a lower level approach and the use of <code>functools.lru_cache</code> to memoise a recursive function which would otherwise make an exponential number of recursive calls.
@@ -3623,11 +3624,11 @@ Uses GMP for big ints, mostly modified in place. Rather slow.
 var BN=Import("zklBigNum");
 
 const nMax=100, nBranches=4;
- 
+
 var rooted  =(nMax+1).pump(List.createLong(nMax+1).write,BN.fp(0)),
     unrooted=(nMax+1).pump(List.createLong(nMax+1).write,BN.fp(0));
 rooted[0]=BN(1); rooted[1]=BN(1); unrooted[0]=BN(1); unrooted[1]=BN(1);
- 
+
 fcn tree(br,n,l,inSum,cnt){
    var c=(nBranches).pump(List().write,0);  // happens only once
 
@@ -3645,11 +3646,11 @@ fcn tree(br,n,l,inSum,cnt){
       foreach m in ([n-1 .. 1,-1]) { tree(b, m, l, sum, c[br]); }
    }
 }
- 
+
 fcn bicenter(s){
    if (s.isEven) unrooted[s].add(rooted[s / 2] * (rooted[s / 2] + 1) / 2);
 }
- 
+
 foreach n in ([1 .. nMax]){
    tree(0, n, n, 1, BN(1));
    bicenter(n);

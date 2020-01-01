@@ -22,7 +22,7 @@ It is defined like the [[Fibonacci sequence]], but whereas the next term in the 
 
 
 ;Task:
-* Confirm and display that the first ten terms of the sequence are: 1, 1, 2, 3, 3, 4, 5, 5, 6, and 6 
+* Confirm and display that the first ten terms of the sequence are: 1, 1, 2, 3, 3, 4, 5, 5, 6, and 6
 * Confirm and display that the 1000<sup>th</sup> term is:   502
 
 
@@ -89,7 +89,7 @@ PG       DC     CL80'n=...., q=....'  buffer
 XD       DS     CL12               temporary variable
          LTORG                     insert literals for addressability
 N        DC     F'1000'            n=1000
-Q        DS     1000F              array q(1000) 
+Q        DS     1000F              array q(1000)
          YREGS
          END    HOFSTRAD
 ```
@@ -240,7 +240,7 @@ flips: 49798
 
 
 ```APL
-∇ Q_sequence;seq;size    
+∇ Q_sequence;seq;size
     size←100000
     seq←{⍵,+/⍵[(1+⍴⍵)-¯2↑⍵]}⍣(size-2)⊢1 1
 
@@ -274,7 +274,7 @@ Q := HofsQSeq(100000)
 Loop, 10
 	Out .= Q[A_Index] ", "
 
-MsgBox, % "First ten:`t" Out "`n" 
+MsgBox, % "First ten:`t" Out "`n"
 	. "1000th:`t`t" Q[1000] "`n"
 	. "Flips:`t`t" Q.flips
 
@@ -293,7 +293,7 @@ HofsQSeq(n) {
 {{out}}
 
 ```txt
-First ten:	1, 1, 2, 3, 3, 4, 5, 5, 6, 6, 
+First ten:	1, 1, 2, 3, 3, 4, 5, 5, 6, 6,
 1000th:		502
 Flips:		49798
 ```
@@ -305,7 +305,7 @@ Flips:		49798
 
 ```awk
 #!/usr/bin/awk -f
-BEGIN { 
+BEGIN {
   N = 100000
   print "Q-sequence(1..10) : " Qsequence(10)
   Qsequence(N,Q)
@@ -318,14 +318,14 @@ BEGIN {
 
 function Qsequence(N,Q) {
   Q[1] = 1
-  Q[2] = 1  
+  Q[2] = 1
   seq = "1 1"
   for (n=3; n<=N; n++) {
     Q[n] = Q[n-Q[n-1]]+Q[n-Q[n-2]]
     seq = seq" "Q[n]
-  } 
+  }
   return seq
-} 
+}
 ```
 
 
@@ -384,7 +384,7 @@ Igual que la entrada de FreeBASIC.
       PRINT "100000th term = " ; FNq(100000, c%)
       PRINT "Term is less than preceding term " ; c% " times"
       END
-      
+
       DEF FNq(n%, RETURN c%)
       LOCAL i%,q%()
       IF n% < 3 THEN = 1 ELSE IF n% = 3 THEN = 2
@@ -418,7 +418,7 @@ Term is less than preceding term 49798 times
 ( 0:?memocells
 & tbl$(memo,!memocells+1) { allocate array }
 & ( Q
-  =   
+  =
     .   !arg:(1|2)&1
       |   !arg:>2
         & (   !arg:>!memocells:?memocells               { Array is too small. }
@@ -462,8 +462,8 @@ Output:
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 #define N 100000
@@ -475,7 +475,7 @@ int main()
 
 	for (i = 3; i <= N; i++)
 		q[i] = q[i - q[i - 1]] + q[i - q[i - 2]];
-		
+
 	for (i = 1; i <= 10; i++)
 		printf("%d%c", q[i], i == 10 ? '\n' : ' ');
 
@@ -505,22 +505,22 @@ flips: 49798
 solution modeled after Perl solution
 
 
-```Cpp>#include <iostream
+```cpp
+#include <iostream>
 
- 
 int main() {
    const int size = 100000;
-   int hofstadters[size] = { 1, 1 };  
-   for (int i = 3 ; i < size; i++) 
+   int hofstadters[size] = { 1, 1 };
+   for (int i = 3 ; i < size; i++)
       hofstadters[ i - 1 ] = hofstadters[ i - 1 - hofstadters[ i - 1 - 1 ]] +
                              hofstadters[ i - 1 - hofstadters[ i - 2 - 1 ]];
    std::cout << "The first 10 numbers are: ";
-   for (int i = 0; i < 10; i++) 
+   for (int i = 0; i < 10; i++)
       std::cout << hofstadters[ i ] << ' ';
    std::cout << std::endl << "The 1000'th term is " << hofstadters[ 999 ] << " !" << std::endl;
    int less_than_preceding = 0;
    for (int i = 0; i < size - 1; i++)
-      if (hofstadters[ i + 1 ] < hofstadters[ i ]) 
+      if (hofstadters[ i + 1 ] < hofstadters[ i ])
 	     less_than_preceding++;
    std::cout << "In array of size: " << size << ", ";
    std::cout << less_than_preceding << " times a number was preceded by a greater number!" << std::endl;
@@ -531,7 +531,7 @@ int main() {
 {{out}}
 
 ```txt
-The first 10 numbers are: 1 1 2 3 3 4 5 5 6 6 
+The first 10 numbers are: 1 1 2 3 3 4 5 5 6 6
 The 1000'th term is 502 !
 In array of size: 100000, 49798 times a number was preceded by a greater number!
 ```
@@ -631,8 +631,8 @@ Number of times a member of the sequence was less than its preceding term: 49798
 
 ## Clojure
 
-The ''qs'' function, given the initial subsequence of Q of length ''n'', produces the initial subsequence of length ''n+1''. 
-The subsequences are vectors for efficient indexing. 
+The ''qs'' function, given the initial subsequence of Q of length ''n'', produces the initial subsequence of length ''n+1''.
+The subsequences are vectors for efficient indexing.
 ''qfirst'' iterates ''qs'' so the nth iteration is Q{1..n].
 
 ```clojure
@@ -952,7 +952,7 @@ If the maximum number is known, filling an array is probably the fastest solutio
 main() {
   List<int> q=new List<int>(100001);
   q[1]=q[2]=1;
- 
+
   int count=0;
   for(int i=3;i<q.length;i++) {
     q[i]=q[i-q[i-1]]+q[i-q[i-2]];
@@ -981,7 +981,7 @@ main() {
 (define (flips N)
 	(for/sum ((n (in-range 2 (1+ N))))
 	#:when (< (Q n) (Q (1- n)))  1))
-		
+
 (cache-size 120000)
 (define (Q n)
 	;; prevent browser stack overflow at low-cost
@@ -1096,9 +1096,9 @@ changed collection (Erlang array => Map)
 defmodule Hofstadter do
   defp flip(v2, v1) when v1 > v2, do: 1
   defp flip(_v2, _v1), do: 0
-  
+
   defp list_terms(max, n, acc), do: Enum.map_join(n..max, ", ", &acc[&1])
-  
+
   defp hofstadter(n, n, acc, flips) do
     IO.puts "The first ten terms are: #{list_terms(10, 1, acc)}"
     IO.puts "The 1000'th term is #{acc[1000]}"
@@ -1109,7 +1109,7 @@ defmodule Hofstadter do
     qn = acc[n - qn1] + acc[n - acc[n-2]]
     hofstadter(max, n+1, Map.put(acc, n, qn), flips + flip(qn, qn1))
   end
-  
+
   def main(max \\ 100_000) do
     acc = %{1 => 1, 2 => 1}
     hofstadter(max+1, 3, acc, 0)
@@ -1145,7 +1145,7 @@ Number of flips: 49798
 
 flip(V2, V1) when V1 > V2 -> 1;
 flip(_V2, _V1) -> 0.
-	
+
 list_terms(N, N, Acc) ->
 	io:format("~w~n", [array:get(N, Acc)]);
 list_terms(Max, N, Acc) ->
@@ -1466,7 +1466,7 @@ The basic task:
 
 ```Haskell
 qSequence = tail qq where
-  qq = 0 : 1 : 1 : map g [3..] 
+  qq = 0 : 1 : 1 : map g [3..]
   g n = qq !! (n - qq !! (n-1)) + qq !! (n - qq !! (n-2))
 
 -- Output:
@@ -1485,14 +1485,14 @@ import Data.Array
 qSequence n = arr
   where
      arr = listArray (1,n) $ 1:1: map g [3..n]
-     g i = arr!(i - arr!(i-1)) + 
+     g i = arr!(i - arr!(i-1)) +
            arr!(i - arr!(i-2))
 
-gradualth m k arr                         -- gradually precalculate m-th item 
+gradualth m k arr                         -- gradually precalculate m-th item
         | m <= v = pre `seq` arr!m        --   in steps of k
-  where                                   --     to prevent STACK OVERFLOW 
+  where                                   --     to prevent STACK OVERFLOW
     pre = foldl1 (\a b-> a `seq` arr!b) [u,u+k..m]
-    (u,v) = bounds arr 
+    (u,v) = bounds arr
 
 qSeqTest m n = let arr = qSequence $ max m n in
   ( take 10 . elems  $ arr                       -- 10 first items
@@ -1530,7 +1530,7 @@ q = qq (listArray (1,2) [1,1]) 1 where
             | otherwise = listArray (1, l*2)$
                 ([ar!i | i <- [1..l]] ++
                  [step i | i <- [l+1..l*2]])
- 
+
 main = do
     putStr("first 10: "); print (take 10 q)
     putStr("1000-th:  "); print (q !! 999)
@@ -1554,7 +1554,7 @@ List backed up by a list of arrays, with nominal constant lookup time.  ''Someho
 ```haskell
 import Data.Array
 import Data.Int (Int64)
- 
+
 q = qq [listArray (1,2) [1,1]] 1 where
     qq a n = seek aa n : qq aa (1 + n) where
         aa  | n <= l = a
@@ -1567,10 +1567,10 @@ q = qq [listArray (1,2) [1,1]] 1 where
         seek (ar:ars) n
             | n >= fst (bounds ar) = ar ! n
             | otherwise = seek ars n
- 
+
 -- Only a perf test. Task can be done exactly the same as above
 main = print $ sum qqq
-    where 
+    where
         qqq :: [Int64]
         qqq = map fromIntegral $ take 3000000 q
 ```
@@ -1589,9 +1589,9 @@ every i := 1 to *V do
 printf("Q(1 to %d) - verified.\n",*V)
 
 q := Q(n := 1000)
-v := 502 
+v := 502
 printf("Q[%d]=%d - %s.\n",n,v,if q = v then "verified" else "failed")
-   
+
 invcount := 0
 every i := 2 to (n := 100000) do
    if Q(i) < Q(i-1) then {
@@ -1614,15 +1614,15 @@ else {
       put(S,q)
       return q
       }
-   else 
+   else
       runerr(500,n)
    }
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 
 {{out}}
 
@@ -1648,11 +1648,11 @@ There were 49798 inversions in Q up to 100000
 130 LET Q(1),Q(2)=1
 140 FOR I=3 TO LIMIT
 150   LET Q(I)=Q(I-Q(I-1))+Q(I-Q(I-2))
-160 NEXT 
+160 NEXT
 170 PRINT "First 10 terms:"
 180 FOR I=1 TO 10
 190   PRINT Q(I);
-200 NEXT 
+200 NEXT
 210 PRINT :PRINT "Term 1000:";Q(1000)
 ```
 
@@ -1666,7 +1666,7 @@ There were 49798 inversions in Q up to 100000
    Q=: verb define
      n=. >./,y
      while. n>:#Qs do.
-       Qs=: Qs,+/(-_2{.Qs){Qs 
+       Qs=: Qs,+/(-_2{.Qs){Qs
      end.
      y{Qs
 )
@@ -1692,7 +1692,7 @@ There were 49798 inversions in Q up to 100000
 
 '''Note''': The bottom-up solution uses iteration and doesn't risk failure due to recursion limits or cache overflows.  The top-down solution uses recursion, and likely hews closer to the spirit of the task.  While this latter uses memoization/caching, at some point it will still hit a recursion limit (depends on the environment; in mine, it barfs at N=4402).  We use the bottom up version for the extra credit part of this task (the expression which compares adjacent numbers and gave us the result 49798).
 
-It happens to be that the bottom-up version is written in the "explicit" style of code and the top-down version is written in the "tacit" (aka "point-free") style.  This is incidental and it's possible to write bottom-up tacitly and/or top-down explicitly. 
+It happens to be that the bottom-up version is written in the "explicit" style of code and the top-down version is written in the "tacit" (aka "point-free") style.  This is incidental and it's possible to write bottom-up tacitly and/or top-down explicitly.
 
 The top-down version may be interesting as an example of algebraic factorization of code: taking advantage of some unique function composition operations in J, it manages to only mention <tt>$:</tt> (aka recursion aka "Q") twice.
 
@@ -1711,9 +1711,9 @@ public class HofQ {
 		put(1, 1);
 		put(2, 1);
 	}};
-	
+
 	private static int[] nUses = new int[100001];//not part of the task
-	
+
 	public static int Q(int n){
 		nUses[n]++;//not part of the task
 		if(q.containsKey(n)){
@@ -1723,7 +1723,7 @@ public class HofQ {
 		q.put(n, ans);
 		return ans;
 	}
-	
+
 	public static void main(String[] args){
 		for(int i = 1; i <= 10; i++){
 			System.out.println("Q(" + i + ") = " + Q(i));
@@ -1737,7 +1737,7 @@ public class HofQ {
 			if(i == 1000) System.out.println("Q(1000) = " + curr);
 		}
 		System.out.println("Q(i) is less than Q(i-1) for i <= 100000 " + count + " times");
-		
+
 		//Optional stuff below here
 		int maxUses = 0, maxN = 0;
 		for(int i = 1; i<nUses.length;i++){
@@ -1871,7 +1871,7 @@ Memoising with the accumulator of a fold
 {{Out}}
 
 ```JavaScript
-{"firstTen":[1, 1, 2, 3, 3, 4, 5, 5, 6, 6], 
+{"firstTen":[1, 1, 2, 3, 3, 4, 5, 5, 6, 6],
  "thousandth":502,
  "Q<Q-1UpTo10E5":49798}
 ```
@@ -1884,7 +1884,7 @@ For the tasks related to evaluating Q(n) directy, a recursive implementation is 
 
 For simplicity, we also define Q(0) = 1, so that the defining
 formula also holds for n == 2, and so that we can cache Q(n) at the
-n-th position of an array with index origin 0. 
+n-th position of an array with index origin 0.
 
 ```jq
 
@@ -1894,7 +1894,7 @@ def Q:
     n as $n
     | (if . == null then [1,1,1] else . end) as $q
     | if $q[$n] != null then $q
-      else 
+      else
         $q | Q($n-1) as $q1
         | $q1 | Q($n-2) as $q2
         | $q2 | Q($n - $q2[$n - 1]) as $q3   # Q(n - Q(n-1))
@@ -1902,17 +1902,17 @@ def Q:
         | ($q4[$n - $q4[$n-1]] + $q4[$n - $q4[$n -2]]) as $ans
         | $q4 | setpath( [$n]; $ans)
       end ;
-  
+
   . as $n | null | Q($n) | .[$n];
-  
+
 # count the number of times Q(i) > Q(i+1) for 0 < i < n
 def flips(n):
-  (reduce range(3; n) as $n 
+  (reduce range(3; n) as $n
     ([1,1,1]; . + [ .[$n - .[$n-1]] + .[$n - .[$n - 2 ]] ] )) as $q
   | reduce range(0; n) as $i
       (0; . + (if $q[$i] > $q[$i + 1] then 1 else 0 end)) ;
 
-# The three tasks: 
+# The three tasks:
 ((range(0;11), 1000) | "Q(\(.)) = \( . | Q)"),
 
 (100000 | "flips(\(.)) = \(flips(.))")
@@ -2119,16 +2119,16 @@ Count[Differences[Hofstadter /@ Range[100000]], _?Negative]
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-This solution pre-allocates memory and is an iterative solution, so caching or recursion limits do not apply. 
+This solution pre-allocates memory and is an iterative solution, so caching or recursion limits do not apply.
 
 ```MATLAB
 function Q = Qsequence(N)
   %% zeros are used to pre-allocate memory, this is not strictly necessary but can significantly improve performance for large N
-  Q = [1,1,zeros(1,N-2)];  
+  Q = [1,1,zeros(1,N-2)];
   for n=3:N
     Q(n) = Q(n-Q(n-1))+Q(n-Q(n-2));
-  end; 
-end;  
+  end;
+end;
 ```
 
 Confirm and display that the first ten terms of the sequence are: 1, 1, 2, 3, 3, 4, 5, 5, 6, and 6
@@ -2140,7 +2140,7 @@ ans =
 
 ```
 
-Confirm and display that the 1000'th term is: 502 
+Confirm and display that the 1000'th term is: 502
 
 ```txt
 >> Q=Qsequence(1000); Q(end)
@@ -2231,33 +2231,33 @@ Works with oo2c version 2
 ```oberon2
 
 MODULE Hofstadter;
-IMPORT 
+IMPORT
   Out;
-  
+
 VAR
-  i,count,q,prev: LONGINT; 
+  i,count,q,prev: LONGINT;
   founds: ARRAY 100001 OF LONGINT;
-  
+
   PROCEDURE Q(n: LONGINT): LONGINT;
   BEGIN
     IF founds[n] = 0 THEN
       CASE n OF
-        1 .. 2: 
+        1 .. 2:
             founds[n] := 1
-        ELSE  founds[n] := Q(n - Q(n - 1)) + Q(n - Q(n - 2))  
+        ELSE  founds[n] := Q(n - Q(n - 1)) + Q(n - Q(n - 2))
       END
     END;
     RETURN founds[n]
   END Q;
-  
+
 BEGIN
   (* first ten numbers in the sequence *)
   FOR i := 1 TO 10 DO
     Out.String("At ");Out.LongInt(i,0);Out.String(":> ");Out.LongInt(Q(i),4);Out.Ln
   END;
-  
+
   Out.String("1000th value: ");Out.LongInt(Q(1000),4);Out.Ln;
-  
+
   prev := 1;
   FOR i := 2 TO 100000 DO
     q := Q(i);
@@ -2298,11 +2298,11 @@ terms less than the previous: 49798
 : QSeqTask
 | q i |
    ListBuffer newSize(100000) dup add(1) dup add(1) ->q
-   0 3 100000 for: i [ 
-      q add(q at(i q at(i 1-) -) q at(i q at(i 2 -) -) +) 
+   0 3 100000 for: i [
+      q add(q at(i q at(i 1-) -) q at(i q at(i 2 -) -) +)
       q at(i) q at(i 1-) < ifTrue: [ 1+ ]
       ]
-   q left(10) println q at(1000) println println ; 
+   q left(10) println q at(1000) println println ;
 ```
 
 
@@ -2372,8 +2372,8 @@ end.
 {{out}}
 
 ```txt
-:> ./HofstadterQSequence 
-1 1 2 3 3 4 5 5 6 6 
+:> ./HofstadterQSequence
+1 1 2 3 3 4 5 5 6 6
 502
 Flips: 49798
 
@@ -2413,7 +2413,7 @@ my @hofstadters = ( 1 , 1 );
 while ( @hofstadters < 100000 ) {
    my $nextn = @hofstadters + 1;
 # array index counting starts at 0 , so we have to subtract 1 from the numbers!
-   push @hofstadters ,  $hofstadters [ $nextn - 1 - $hofstadters[ $nextn - 1 - 1 ] ]  
+   push @hofstadters ,  $hofstadters [ $nextn - 1 - $hofstadters[ $nextn - 1 - 1 ] ]
       + $hofstadters[ $nextn - 1 - $hofstadters[ $nextn - 2 - 1 ]];
 }
 for my $i ( 0..9 ) {
@@ -2448,8 +2448,8 @@ Up to and including the 100000'th term, 49798 terms are less than their precedin
 ```
 
 
-This different solution uses tie to make the Q sequence look like a regular array, and only fills the cache on demand.  
-Some pre-allocation is done which provides a minor speed increase for the extra credit.  
+This different solution uses tie to make the Q sequence look like a regular array, and only fills the cache on demand.
+Some pre-allocation is done which provides a minor speed increase for the extra credit.
 I could have chosen to do recursion instead of iteration, as perl has no limit on how deeply one may recurse, but did not see the benefit of doing so.
 
 
@@ -2582,7 +2582,7 @@ function q(integer n)
     while n>l do
         l += 1
         Q &= Q[l-Q[l-1]]+Q[l-Q[l-2]]
-    end while       
+    end while
     return Q[n]
 end function
 
@@ -2674,29 +2674,29 @@ end H;
 
 ```txt
 
-How many values do you want? : 
+How many values do you want? :
 
-n=1                                  1 
-n=2                                  1 
-n=3                                  2 
-n=4                                  3 
-n=5                                  3 
-n=6                                  4 
-n=7                                  5 
-n=8                                  5 
-n=9                                  6 
-n=10                                 6 
-n=11                                 6 
-n=12                                 8 
-n=13                                 8 
-n=14                                 8 
-n=15                                10 
-n=16                                 9 
-n=17                                10 
-n=18                                11 
-n=19                                11 
-n=20                                12 
-n=1000                             502 
+n=1                                  1
+n=2                                  1
+n=3                                  2
+n=4                                  3
+n=5                                  3
+n=6                                  4
+n=7                                  5
+n=8                                  5
+n=9                                  6
+n=10                                 6
+n=11                                 6
+n=12                                 8
+n=13                                 8
+n=14                                 8
+n=15                                10
+n=16                                 9
+n=17                                10
+n=18                                11
+n=19                                11
+n=20                                12
+n=1000                             502
 
 ```
 
@@ -2704,7 +2704,7 @@ n=1000                             502
 
 ```txt
 
-n=100000                         48157 
+n=100000                         48157
 
 ```
 
@@ -2723,7 +2723,7 @@ Bonus to produce the count of unordered values:
 
 ```txt
 
-n=100000                         48157 
+n=100000                         48157
 TALLY=         49798;
 
 ```
@@ -2792,7 +2792,7 @@ if __name__ == '__main__':
 
 
 ;Extra credit:
-If you try and initially compute larger values of n then you tend to hit the Python recursion limit. 
+If you try and initially compute larger values of n then you tend to hit the Python recursion limit.
 
 The function q1 gets around this by calling function q to extend the Q series in increments below the recursion limit.
 
@@ -2891,8 +2891,8 @@ cat(count,"terms is less than its preceding term\n")
 
 ```txt
 
-1 1 2 3 3 4 5 5 6 6 
-502 
+1 1 2 3 3 4 5 5 6 6
+502
 49798 terms is less than its preceding term
 
 ```
@@ -3002,7 +3002,7 @@ The 1000000th term is 512066
 
 
 ===non-recursive, simpler===
-This REXX example is identical to the first version 
+This REXX example is identical to the first version
 except that it uses a function to retrieve array elements which may have index expressions.
 
 ```rexx
@@ -3039,9 +3039,9 @@ q:  parse arg ?;              return q.?               /*return value of Q.? to 
 th: procedure; x=abs(arg(1)); return word('th st nd rd',1+x//10*(x//100%10\==1)*(x//10<4))
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
-Because of the additional subroutine (function) invokes, this REXX version is about half as fast as the 1<sup>st</sup> REXX version. 
+Because of the additional subroutine (function) invokes, this REXX version is about half as fast as the 1<sup>st</sup> REXX version.
 
 
 ### recursive
@@ -3084,7 +3084,7 @@ QR: procedure expose q.;   parse arg n                 /*this  QR function is re
 th: procedure; x=abs(arg(1)); return word('th st nd rd',1+x//10*(x//100%10\==1)*(x//10<4))
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 The recursive version is almost ten times slower than the (1<sup>st</sup>) non-recursive version.
 
@@ -3125,13 +3125,13 @@ def Q(n)
 end
 
 puts "first 10 numbers in the sequence: #{(1..10).map {|n| Q(n)}}"
-puts "1000'th term: #{Q(1000)}" 
+puts "1000'th term: #{Q(1000)}"
 
 prev = Q(1)
 count = 0
-2.upto(100_000) do |n| 
+2.upto(100_000) do |n|
   q = Q(n)
-  count += 1 if q < prev 
+  count += 1 if q < prev
   prev = q
 end
 puts "number of times in the first 100,000 terms where Q(i)<Q(i-1): #{count}"
@@ -3256,7 +3256,7 @@ Term is less than preceding term 49798 times
 ## Scala
 
 {{works with|Scala|2.9.1}}
-Naive but elegant version using only recursion doesn't work 
+Naive but elegant version using only recursion doesn't work
 because runtime is excessive increasing ...
 
 ```scala
@@ -3272,8 +3272,8 @@ object HofstadterQseq extends App {
 
 
 
-Unfortunately the function Q isn't tail recursiv, 
-therefore the compiler can't optimize it. 
+Unfortunately the function Q isn't tail recursiv,
+therefore the compiler can't optimize it.
 Thus we are forced to use a caching featured version.
 
 
@@ -3290,9 +3290,9 @@ object HofstadterQseq extends App {
         case xs => HofQ(n)
       }
       res
-    } 
+    }
   }
-  
+
   (1 to 10).map(i=>(i,Q(i))).foreach(t=>println("Q("+t._1+") = "+t._2))
   println("Q("+1000+") = "+Q(1000))
   println((3 to 100000).filter(i=>Q(i)<Q(i-1)).size)
@@ -3320,8 +3320,8 @@ Q(1000) = 502
 
 ## Scheme
 
-I wish there were a portable way to <code>define-syntax</code>, 
-or to resize arrays, or to do formated output--anything to make the code 
+I wish there were a portable way to <code>define-syntax</code>,
+or to resize arrays, or to do formated output--anything to make the code
 less silly looking while still run under more than one interpreter.
 
 ```lisp
@@ -3377,7 +3377,7 @@ less silly looking while still run under more than one interpreter.
 {{out}}
 
 ```txt
-Q(1 .. 10): 1 1 2 3 3 4 5 5 6 6 
+Q(1 .. 10): 1 1 2 3 3 4 5 5 6 6
 Q(1000): 502
 bumps up to 100000: 49798
 ```
@@ -3434,7 +3434,7 @@ const proc: main is func
 ```txt
 
 q(n) for n = 1 .. 10:
-1 1 2 3 3 4 5 5 6 6 
+1 1 2 3 3 4 5 5 6 6
 q(1000)=502
 q(n) < q(n-1) for n = 2 .. 100000: 49798
 
@@ -3499,14 +3499,14 @@ templates q
   <$outputFrom..>
     $@($) !
 end q
- 
+
 [1,10] -> q -> '$; ' -> !OUT::write
 '
 ' -> !OUT::write
- 
+
 [1000,1000] -> q -> '$;
 ' -> !OUT::write
- 
+
 templates countDownSteps
   @: 0;
   def qs: $;
@@ -3514,7 +3514,7 @@ templates countDownSteps
   $@ !
   <?($qs($) <..~$qs($-1)>)> @: $@ + 1;
 end countDownSteps
- 
+
 [[1, 100000] -> q] -> countDownSteps -> 'Less than previous $; times' -> !OUT::write
 
 ```
@@ -3523,7 +3523,7 @@ end countDownSteps
 
 ```txt
 
-1 1 2 3 3 4 5 5 6 6 
+1 1 2 3 3 4 5 5 6 6
 502
 Less than previous 49798 times
 
@@ -3694,9 +3694,9 @@ End Sub
 
 ```txt
 First ten terms:
- 1  1  2  3  3  4  5  5  6  6 
-The 1000th term is: 502 
-Number of times smaller: 49798 
+ 1  1  2  3  3  4  5  5  6  6
+The 1000th term is: 502
+Number of times smaller: 49798
 ```
 
 
@@ -3712,7 +3712,7 @@ p = 0
 ? "First 10 terms:"
 FOR i = 1 TO 10
 	?? Q(i, @p)
-ENDFOR	
+ENDFOR
 ? "1000th term:", Q(1000, @p)
 ? "100000th term:", q(100000, @p)
 ? "Number of terms less than the preceding term:", p
@@ -3723,13 +3723,13 @@ LOCAL ARRAY aq[n]
 aq[1] = 1
 IF n > 1
     aq[2] = 1
-ENDIF	
+ENDIF
 k = 0
 FOR i = 3 TO n
     aq[i] = aq[i - aq[i-1]] + aq[i-aq[i-2]]
     IF aq(i) < aq(i-1)
-    	k = k + 1 
-    ENDIF	
+    	k = k + 1
+    ENDIF
 ENDFOR
 RETURN aq[n]
 ENDFUNC
@@ -3740,7 +3740,7 @@ ENDFUNC
 
 ```txt
 
-Hofstadter Q Sequence     
+Hofstadter Q Sequence
 First 10 terms:  1    1    2    3    3    4    5    5    6   6
 1000th term:     502
 100000th term:   48157
@@ -3774,7 +3774,7 @@ IntOut(0, C);  CrLf(0);
 
 ```txt
 
-1 1 2 3 3 4 5 5 6 6 
+1 1 2 3 3 4 5 5 6 6
 502
 49798
 
@@ -3792,10 +3792,10 @@ q:=(n+1).pump(List.createLong(n+1).write); // (0,1,2,...,n) base 1
 q[1] = q[2] = 1;
 
 foreach i in ([3..n]) { q[i] = q[i - q[i - 1]] + q[i - q[i - 2]] }
- 
+
 q[1,10].concat(" ").println();
 println(q[1000]);
- 
+
 flip := 0;
 foreach i in (n){ flip += (q[i] > q[i + 1]) }
 println("flips: ",flip);
@@ -3820,14 +3820,14 @@ Extra credit 100000 is not implemented because of memory limitations.
 
 ```zxbasic
 10 PRINT "First 10 terms of Q = "
-20 FOR i=1 TO 10: GO SUB 1000: PRINT s;" ";: NEXT i: PRINT 
+20 FOR i=1 TO 10: GO SUB 1000: PRINT s;" ";: NEXT i: PRINT
 30 LET i=1000
 40 PRINT "1000th term = ";: GO SUB 1000: PRINT s
 50 PRINT "Term is less than preceding term ";c;" times"
-100 STOP 
+100 STOP
 1000 REM Qsequence subroutine
-1010 IF i<3 THEN LET s=1: RETURN 
-1020 IF i=3 THEN LET s=2: RETURN 
+1010 IF i<3 THEN LET s=1: RETURN
+1020 IF i=3 THEN LET s=2: RETURN
 1030 DIM q(i)
 1040 LET q(1)=1: LET q(2)=1: LET q(3)=2
 1050 LET c=0

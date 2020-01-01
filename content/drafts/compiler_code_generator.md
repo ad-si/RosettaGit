@@ -205,7 +205,7 @@ def load_ast()
 
 * pc: the program counter - points to the current instruction to be performed.  The code is an array of bytes.
 
-;Data: 
+;Data:
 
 32-bit integers and strings
 
@@ -618,7 +618,7 @@ code trailer
 lbl_1:
             ldloc      l_count
             ldc.i4     10
-            clt      
+            clt
             brfalse    lbl_2
             call       class [mscorlib]System.IO.TextWriter [mscorlib]System.Console::get_Out()
             ldstr      "count is: "
@@ -631,7 +631,7 @@ lbl_1:
             callvirt   instance void [mscorlib]System.IO.TextWriter::Write(string)
             ldloc      l_count
             ldc.i4     1
-            add      
+            add
             stloc      l_count
             br         lbl_1
 lbl_2:
@@ -1370,8 +1370,8 @@ Datasize: 1 Strings: 2
 
 Tested with gcc 4.81 and later, compiles warning free with -Wall -Wextra
 
-```C>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
@@ -1898,7 +1898,7 @@ print-ast.
         if leaf-type(t1) = 'Identifier' or 'Integer' or 'String'
             display t1 space trim(leaf-type(t1)) space trim(leaf-value(t1)) upon syserr
         else
-            display t1 space node-left(t1) space node-right(t1) space trim(node-type(t1)) 
+            display t1 space node-left(t1) space node-right(t1) space trim(node-type(t1))
                 upon syserr
         end-if
     end-perform
@@ -1937,13 +1937,13 @@ start-codegen.
     when 'If'
         call 'codegen' using node-left(n)          *> conditional expr
         call 'emitbyte' using opJZ                 *> jump to false path or exit
-        move c to p1(n)                      
+        move c to p1(n)
         call 'emitword' using '0' '0'
         move node-right(n) to n1(n)                *> true path
         call 'codegen' using node-left(n1(n))
         if node-right(n1(n)) <> 0                  *> there is a false path
             call 'emitbyte' using opJMP            *> jump past false path
-            move c to p2(n)                 
+            move c to p2(n)
             call 'emitword' using '0' '0'
             compute r = c - p1(n)                  *> fill in jump to false path
             call 'emitword' using r p1(n)
@@ -2026,14 +2026,14 @@ start-codegen.
         call 'codegen' using node-left(n)
         call 'codegen' using node-right(n)
         call 'emitbyte' using opMUL
-    when 'Mod' 
+    when 'Mod'
         call 'codegen' using node-left(n)
         call 'codegen' using node-right(n)
         call 'emitbyte' using opMOD
     when 'Negate'
        call 'codegen' using node-left(n)
        call 'emitbyte' using opNEG
-    when 'Not' 
+    when 'Not'
         call 'codegen' using node-left(n)
         call 'emitbyte' using opNOT
     when other
@@ -2041,7 +2041,7 @@ start-codegen.
         call 'reporterror'
     end-evaluate
     .
-end program codegen. 
+end program codegen.
 
 identification division.
 program-id. variableoffset common.
@@ -2105,7 +2105,7 @@ start-emitbyte.
     add 1 to c
     .
 end program emitbyte.
-   
+
 identification division.
 program-id. emitword common.
 data division.
@@ -2150,11 +2150,11 @@ start-listcode.
     move v-max to v-display
     move s-max to s-display
     display 'Datasize: ' trim(v-display) space 'Strings: ' trim(s-display)
- 
+
     perform varying s from 1 by 1
     until s > s-max
         display string-entry(s)
-    end-perform 
+    end-perform
 
     move 1 to c1
     perform until c1 >= c
@@ -2164,7 +2164,7 @@ start-listcode.
         when opFETCH
             add 1 to c1
             move kode(c1:4) to word-x
-            compute address-display = word - 1 
+            compute address-display = word - 1
             display 'fetch [' trim(address-display) ']'
             add 3 to c1
         when opSTORE
@@ -2293,7 +2293,7 @@ linkage section.
 01  parm-l-right pic 999.
 procedure division using parm-type parm-l-left parm-l-right.
 start-makenode.
-    if t >= t-lim 
+    if t >= t-lim
         string 'in generator makenode t exceeds ' t-lim into error-record
         call 'reporterror'
     end-if
@@ -2313,7 +2313,7 @@ linkage section.
 procedure division using parm-type parm-value.
 start-makeleaf.
     add 1 to t
-    if t >= t-lim 
+    if t >= t-lim
         string 'in generator makeleaf t exceeds ' t-lim into error-record
         call 'reporterror'
     end-if
@@ -2442,7 +2442,7 @@ end program generator.
 {{out|case=Count}}
 
 ```txt
-prompt$ ./lexer <testcases/Count | ./parser | ./generator 
+prompt$ ./lexer <testcases/Count | ./parser | ./generator
 Datasize: 1 Strings: 2
 "count is: "
 "\n"
@@ -2483,7 +2483,7 @@ CREATE BUF 0 ,
    BEGIN  PEEK DIGIT?
    WHILE  GETC [CHAR] 0 -  SWAP 10 * +  REPEAT ;
 : SKIP ( xt --)
-   BEGIN PEEK OVER EXECUTE WHILE GETC DROP REPEAT DROP ; 
+   BEGIN PEEK OVER EXECUTE WHILE GETC DROP REPEAT DROP ;
 : WORD ( xt -- c-addr)  DUP >R SKIP  PAD 1+
    BEGIN PEEK R@ EXECUTE INVERT
    WHILE GETC OVER C! CHAR+
@@ -3056,15 +3056,15 @@ import java.util.Scanner;
 
 public class CodeGenerator {
     final static int WORDSIZE = 4;
-    
+
     static byte[] code = {};
-    
+
     static Map<String, NodeType> str_to_nodes = new HashMap<>();
     static List<String> string_pool = new ArrayList<>();
     static List<String> variables = new ArrayList<>();
     static int string_count = 0;
     static int var_count = 0;
-    
+
     static Scanner s;
     static NodeType[] unary_ops = {
         NodeType.nd_Negate, NodeType.nd_Not
@@ -3074,7 +3074,7 @@ public class CodeGenerator {
         NodeType.nd_Lss, NodeType.nd_Leq, NodeType.nd_Gtr, NodeType.nd_Geq,
         NodeType.nd_Eql, NodeType.nd_Neq, NodeType.nd_And, NodeType.nd_Or
     };
- 
+
     static enum Mnemonic {
         NONE, FETCH, STORE, PUSH, ADD, SUB, MUL, DIV, MOD, LT, GT, LE, GE, EQ, NE, AND, OR, NEG, NOT,
         JMP, JZ, PRTC, PRTS, PRTI, HALT
@@ -3150,7 +3150,7 @@ public class CodeGenerator {
     static int get_word(int pos) {
         int result;
         result = ((code[pos] & 0xff) << 24) + ((code[pos + 1] & 0xff)  << 16) + ((code[pos + 2] & 0xff)  << 8) + (code[pos + 3] & 0xff) ;
-        
+
         return result;
     }
     static int fetch_var_offset(String name) {
@@ -3189,7 +3189,7 @@ public class CodeGenerator {
     static void code_gen(Node x) throws Exception {
         int n, p1, p2;
         if (x == null) return;
-        
+
         switch (x.nt) {
             case nd_None: return;
             case nd_Ident:
@@ -3605,7 +3605,7 @@ Module CodeGenerator (s$){
 	Function code3$(op$,pc, st, ed) {
 		=format$("{0::-6} {1} ({2}) {3}", pc, op$, ed-st-1, ed)
 	}
-	
+
 	Enum tok {
 		gneg, gnot, gmul, gdiv, gmod, gadd, gle, gsub, glt
 		gle, ggt, gge, geq, gne, gand, gor, gprtc, gprti, gprts,
@@ -3626,7 +3626,7 @@ Module CodeGenerator (s$){
 	\\ We set string as key. key maybe an empty string, a string or a number.
 	\\ so we want eash string to saved one time only.
 	Inventory Strings
-	
+
 	Const nl$=chr$(13)+chr$(10), Ansi=3
 	Def z$, lim, line$, newvar_ok, i=0
 	Document message$=nl$
@@ -3637,7 +3637,7 @@ Module CodeGenerator (s$){
 	Lines$()=piece$(s$,nl$) \\ break to lines
 	lim=len(Lines$())
 	Flush ' empty stack (there is a current stack of values which we use here)
-	
+
 	Load_Ast()
 	If not stack.size=1 Then Flush : Error "Ast not loaded"
 	AST=array   \\ pop the array from stack
@@ -3645,7 +3645,7 @@ Module CodeGenerator (s$){
 
 	\\ all lines of assembly goes to stack. Maybe not in right order.
 	\\ Push statement push to top, Data statement push to bottom of stack
-	
+
 	CodeGenerator(Ast)
 	Data  code$("halt") ' append to end of stack
 	\\ So now we get all data (letters) from stack
@@ -3654,11 +3654,11 @@ Module CodeGenerator (s$){
 	end while
 	\\ So now we have to place them in order
 	Sort Assembly$
-	
+
 	\\ Let's make the header
 	Header$=format$("Datasize: {0} Strings: {1}", Len(Dataset),Len(strings))
 	\\ we use an iterator object, str^ is the counter, readonly, but Eval$() use it from object.
-	str=each(strings)    
+	str=each(strings)
 	While str
 		Header$=nl$+Eval$(str)
 	End while
@@ -3675,7 +3675,7 @@ Module CodeGenerator (s$){
 	End
 	\\ subs have 10000 limit for recursion but can be extended to 1000000 or more.
 	Sub CodeGenerator(t)
-	
+
 		If len(t)=3 then
 			select case  t#val(0)
 			Case gSeq
@@ -3683,7 +3683,7 @@ Module CodeGenerator (s$){
 			Case gwhile
 			{
 				local spc=pc
-				CodeGenerator(t#val(1)) 
+				CodeGenerator(t#val(1))
 				local pc1=pc
 				pc+=5 ' room for jz
 				CodeGenerator(t#val(2))
@@ -3693,10 +3693,10 @@ Module CodeGenerator (s$){
 			}
 			Case gif
 			{
-				CodeGenerator(t#val(1)) 
+				CodeGenerator(t#val(1))
 				local pc1=pc, pc2
 				pc+=5
-				CodeGenerator(t#val(2)#val(1)) 
+				CodeGenerator(t#val(2)#val(1))
 				If len(t#val(2)#val(2))>0 then
 					pc2=pc
 					pc+=5
@@ -3705,7 +3705,7 @@ Module CodeGenerator (s$){
 					data code3$("jmp",pc2, pc2, pc)
 				else
 					data code3$("jz",pc1, pc1, pc)
-				end If		
+				end If
 			}
 			Case gAssign
 			{
@@ -3730,7 +3730,7 @@ Module CodeGenerator (s$){
 				If exist(strings,t#val$(1)) then
 					spos=eval(strings!)
 				else
-					append strings, t#val$(1)		
+					append strings, t#val$(1)
 					spos=len(strings)-1
 				end If
 				Push code2$("push",str$(spos,0))
@@ -3747,7 +3747,7 @@ Module CodeGenerator (s$){
 					ipos=len(dataset)-1
 				else
 					message$="Variable "+t#val$(1)+" not initialized"+nl$
-					
+
 				end If
 				If newvar_ok then
 					Push code2$("store","["+str$(ipos, 0)+"]")
@@ -3776,7 +3776,7 @@ Module CodeGenerator (s$){
 				Push (,)
 			Else
 				local otok=symb(tok$)
-				Load_Ast() 
+				Load_Ast()
 				Load_Ast()
 				Shift 2
 				Push (otok,array, array)
@@ -3826,10 +3826,10 @@ CodeGenerator {
 Datasize: 1 Strings: 2
 "count is: "
 "\n"
-     0 push 
+     0 push
      5 store [0]
     10 fetch [0]
-    15 push 
+    15 push
     20 lt
     21 jz (43) 65
     26 push 0
@@ -3839,7 +3839,7 @@ Datasize: 1 Strings: 2
     38 push 1
     43 prts
     44 fetch [0]
-    49 push 
+    49 push
     54 add
     55 store [0]
     60 jmp (-51) 10
@@ -3906,7 +3906,7 @@ Deviates somewhat from the task specification in that it generates executable ma
 ```Phix
 --
 -- demo\rosetta\Compiler\cgen.e
--- 
+--
 ### ======================
 
 --
@@ -4213,7 +4213,7 @@ global procedure code_gen(object t)
 -- The chain connects all places where we need an actual address before
 --  the code is executed, with the byte after the link differentiating
 --  between var(1), string(2), and builtin(3), and the byte after that
---  determining the instance of the given type - not that any of them 
+--  determining the instance of the given type - not that any of them
 --  are actually limited to a byte in the above intermediate form, and
 --  of course the trailing 0 of each {link,type,id,0} is just there to
 --  reserve the space we will need.
@@ -4226,7 +4226,7 @@ include builtins/VM/puts1.e -- low-level console i/o routines
 
 function setbuiltins()
 atom printc,printi,prints
-    #ilASM{ 
+    #ilASM{
         jmp :setbuiltins
     ::printc
         lea edi,[esp+4]
@@ -4306,7 +4306,7 @@ And a simple test driver for the specific task:
 ```Phix
 --
 -- demo\rosetta\Compiler\cgen.exw
--- 
+--
 ### ========================
 
 --
@@ -4848,9 +4848,9 @@ Datasize: 1 Strings: 2
         (only (srfi 1) delete-duplicates list-index)
         (only (srfi 13) string-delete string-index string-trim))
 
-(define *names* '((Add add) (Subtract sub) (Multiply mul) (Divide div) (Mod mod) 
-                            (Less lt) (Greater gt) (LessEqual le) (GreaterEqual ge) 
-                            (Equal eq) (NotEqual ne) (And and) (Or or) (Negate neg) 
+(define *names* '((Add add) (Subtract sub) (Multiply mul) (Divide div) (Mod mod)
+                            (Less lt) (Greater gt) (LessEqual le) (GreaterEqual ge)
+                            (Equal eq) (NotEqual ne) (And and) (Or or) (Negate neg)
                             (Not not) (Prts prts) (Prti prti) (Prtc prtc)))
 
 (define (change-name name)
@@ -4892,7 +4892,7 @@ Datasize: 1 Strings: 2
          (values '() '()))
         ((Negate Not Prtc Prti Prts)
          (extract-values (left ast)))
-        ((Assign Add Subtract Multiply Divide Mod Less Greater LessEqual GreaterEqual 
+        ((Assign Add Subtract Multiply Divide Mod Less Greater LessEqual GreaterEqual
                  Equal NotEqual And Or If While Sequence)
          (let-values (((a b) (extract-values (left ast)))
                       ((c d) (extract-values (right ast))))
@@ -4921,7 +4921,7 @@ Datasize: 1 Strings: 2
                      (cons (list 'push (string-idx (left ast))) asm))
                     ((Assign)
                      (cons (list 'store (constant-idx (left (left ast)))) (pass-1 (right ast) asm)))
-                    ((Add Subtract Multiply Divide Mod Less Greater LessEqual GreaterEqual 
+                    ((Add Subtract Multiply Divide Mod Less Greater LessEqual GreaterEqual
                           Equal NotEqual And Or) ; binary operators
                      (cons (change-name (car ast))
                            (pass-1 (right ast) (pass-1 (left ast) asm))))
@@ -4946,7 +4946,7 @@ Datasize: 1 Strings: 2
                     ((While)
                      (let ((label-test (new-address))
                            (label-end (new-address)))
-                       (cons (list 'label label-end) ; introduce a label for end of while block 
+                       (cons (list 'label label-end) ; introduce a label for end of while block
                              (cons (list 'jmp label-test) ; jump back to repeat test
                                    (pass-1 (right ast)  ; output the block
                                            (cons (list 'jz label-end) ; test failed, jump around block
@@ -4967,10 +4967,10 @@ Datasize: 1 Strings: 2
                                (set! addr (+ addr (if (= 1 (length instr)) 1 5))))
                              res))
                          asm)))
-                ; 
+                ;
                 (define (extract-labels asm)
                   (let ((labels '()))
-                    (for-each (lambda (instr) 
+                    (for-each (lambda (instr)
                                 (when (eq? (cadr instr) 'label)
                                   (set! labels (cons (cons (cadr (cdr instr)) (car instr))
                                                      labels))))
@@ -4996,16 +4996,16 @@ Datasize: 1 Strings: 2
                   (add-jump-locations asm+addr (extract-labels asm+addr) '())))
               ;
               (define (output-instruction instr)
-                   (display (number->string (car instr))) (display #\tab) 
+                   (display (number->string (car instr))) (display #\tab)
                    (display (cadr instr)) (display #\tab)
                 (case (cadr instr)
                   ((fetch store)
                    (display "[") (display (number->string (cadr (cdr instr)))) (display "]\n"))
                   ((jmp jz)
-                   (display 
+                   (display
                      (string-append "("
                                     (number->string (- (cadr (cdr instr)) (car instr) 1))
-                                    ")")) 
+                                    ")"))
                    (display #\tab)
                    (display (number->string (cadr (cdr instr)))) (newline))
                   ((push)
@@ -5013,9 +5013,9 @@ Datasize: 1 Strings: 2
                   (else
                     (newline))))
               ; generate the code and output to stdout
-              (display 
+              (display
                 (string-append "Datasize: "
-                               (number->string (length constants)) 
+                               (number->string (length constants))
                                " Strings: "
                                (number->string (length strings))))
               (newline)
@@ -5044,8 +5044,8 @@ Tested on all examples in [[Compiler/Sample programs]].
 
 const WORD_SIZE=4;
 const{ var _n=-1; var[proxy]N=fcn{ _n+=1 }; }  // enumerator
-const FETCH=N, STORE=N, PUSH=N, ADD=N,  SUB=N,  MUL=N, DIV=N, MOD=N, 
-      LT=N,    GT=N,    LE=N,   GE=N,   EQ=N,   NE=N, 
+const FETCH=N, STORE=N, PUSH=N, ADD=N,  SUB=N,  MUL=N, DIV=N, MOD=N,
+      LT=N,    GT=N,    LE=N,   GE=N,   EQ=N,   NE=N,
       AND=N,   OR=N,    NEG=N,  NOT=N,
       JMP=N,   JZ=N,    PRTC=N, PRTS=N, PRTI=N, HALT=N;
 const nd_String=N, nd_Sequence=N, nd_If=N, nd_While=N;
@@ -5065,13 +5065,13 @@ var all_syms=Dictionary(
     "Or"          ,OR,		"halt"	      ,HALT);
 var binOps=T(LT,GT,LE,GE,EQ,NE, AND,OR, SUB,ADD,DIV,MUL,MOD),
     unaryOps=T(NEG,NOT);
- 
+
 class Node{
    fcn init(_node_type, _value, _left=Void, _right=Void){
       var type=_node_type, left=_left, right=_right, value=_value;
    }
 }
- 
+
 var vars=Dictionary(), strings=Dictionary(); // ( value:offset, ...)
 fcn doVar(value){
    var offset=-1;  // fcn local static var
@@ -5096,8 +5096,8 @@ fcn asm(node,code){
       case(PUSH)     { emitB(PUSH);  emitW(node.value);           }
       case(nd_String){ emitB(PUSH);  emitW(doString(node.value)); }
       case(STORE){
-         asm(node.right,code); 
-	 emitB(STORE); emitW(doVar(node.left.value)); 
+         asm(node.right,code);
+	 emitB(STORE); emitW(doVar(node.left.value));
       }
       case(nd_If){
 	 asm(node.left,code);		# expr
@@ -5139,13 +5139,13 @@ fcn asm(node,code){
 	 else throw(Exception.AssertionError(
 	    "error in code generator - found %d, expecting operator"
 	    .fmt(node.type)))
-      } 
+      }
    }
    code
 }
 fcn code_finish(code){
    code.append(HALT);
-   // prepend the strings to the code, 
+   // prepend the strings to the code,
    // using my magic [66,1 byte len,text], no trailing '\0' needed
    idxs:=strings.pump(Dictionary(),"reverse");
    idxs.keys.sort().reverse().pump(Void,'wrap(n){
@@ -5166,7 +5166,7 @@ fcn unasm(code){
       op:=code[pc]; print("%4d: %2d ".fmt(pc,op));
       pc+=1;
       switch(op){
-         case(66){ 
+         case(66){
 	    n,str := code[pc], code[pc+=1,n].text;
 	    println("String #%d %3d \"%s\"".fmt(nthString+=1,n,
 	        Compiler.Asm.quotify(str)));
@@ -5204,7 +5204,7 @@ fcn load_ast(file){
    if(value){
       try{ value=value.toInt() }catch{}
       return(Node(type,value));
-   } 
+   }
    left,right := load_ast(file),load_ast(file);
    Node(type,Void,left,right)
 }
@@ -5225,7 +5225,7 @@ File ast.txt is the text at the start of this task.
 
 ```txt
 
-$ zkl codeGen.zkl ast.txt 
+$ zkl codeGen.zkl ast.txt
 Datasize: 4 bytes, Strings: 11 bytes
    0: 66 String #0  10 "\ncount is:"
   12: 66 String #1   1 "\n"
@@ -5249,13 +5249,13 @@ Datasize: 4 bytes, Strings: 11 bytes
   80: 23 halt
 Wrote 81 bytes to code.bin
 
-$ zkl hexDump code1.bin 
+$ zkl hexDump code1.bin
    0: 42 0a 63 6f 75 6e 74 20 | 69 73 3a 20 42 01 0a 02   B.count is: B...
   16: 01 00 00 00 01 00 00 00 | 00 00 00 00 00 00 02 0a   ................
   32: 00 00 00 08 13 2b 00 00 | 00 02 00 00 00 00 15 00   .....+..........
   48: 00 00 00 00 16 02 01 00 | 00 00 15 00 00 00 00 00   ................
   64: 02 01 00 00 00 03 01 00 | 00 00 00 12 cd ff ff ff   ................
-  80: 17                            
+  80: 17
 
 ```
 

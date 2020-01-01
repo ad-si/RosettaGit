@@ -12,12 +12,12 @@ tags = []
 
 {{task}}
 
-The phrase     [[wp:I before E except after C| "I before E, except after C"]]     is a 
+The phrase     [[wp:I before E except after C| "I before E, except after C"]]     is a
 widely known mnemonic which is supposed to help when spelling English words.
 
 
 ;Task:
-Using the word list from   [http://wiki.puzzlers.org/pub/wordlists/unixdict.txt http://wiki.puzzlers.org/pub/wordlists/unixdict.txt], 
+Using the word list from   [http://wiki.puzzlers.org/pub/wordlists/unixdict.txt http://wiki.puzzlers.org/pub/wordlists/unixdict.txt],
 
 check if the two sub-clauses of the phrase are plausible individually:
 :::#   ''"I before E when not preceded by C"''
@@ -28,7 +28,7 @@ check if the two sub-clauses of the phrase are plausible individually:
 If both sub-phrases are plausible then the original phrase can be said to be plausible.
 
 Something is plausible if the number of words having the feature is more than two times the number of words having the opposite feature (where feature is 'ie' or 'ei' preceded or not by 'c' as appropriate).
- 
+
 
 ;Stretch goal:
 As a stretch goal use the entries from the table of [http://ucrel.lancs.ac.uk/bncfreq/lists/1_2_all_freq.txt Word Frequencies in Written and Spoken English: based on the British National Corpus], (selecting those rows with three space or tab separated words only), to see if the phrase is plausible when word frequencies are taken into account.
@@ -161,17 +161,17 @@ WordList := RegExReplace(WordList, "i)cie", "", cieN)
 WordList := RegExReplace(WordList, "i)cei", "", ceiN)
 RegExReplace(WordList, "i)ie", "", ieN)
 RegExReplace(WordList, "i)ei", "", eiN)
- 
+
 cei := ceiN / cieN > 2 ? "plausible" : "implausible"
 ei  := ieN  / eiN  > 2 ? "plausible" : "implausible"
 ova := cei = "plausible." && ei = "plausible" ? "plausible" : "implausible"
- 
+
 MsgBox, % """I before E when not preceded by C"" is " ei ".`n"
         . ieN " cases for and " eiN " cases against is a ratio of " ieN / eiN ".`n`n"
         . """E before I when preceded by C"" is " cei ".`n"
         . ceiN " cases for and " cieN " cases against is a ratio of " ceiN / cieN ".`n`n"
         . "Overall the rule is " ova "."
- 
+
 URL_ToVar(URL) {
     WebRequest := ComObjCreate("WinHttp.WinHttpRequest.5.1")
     WebRequest.Open("GET", URL)
@@ -198,7 +198,7 @@ Overall the rule is implausible.
 
 
 ```awk
-#!/usr/bin/awk -f 
+#!/usr/bin/awk -f
 
 /.ei/ {nei+=cnt($3)}
 /cei/ {cei+=cnt($3)}
@@ -207,7 +207,7 @@ Overall the rule is implausible.
 /cie/ {cie+=cnt($3)}
 
 function cnt(c) {
-	if (c<1) return 1; 
+	if (c<1) return 1;
 	return c;
 }
 
@@ -227,10 +227,10 @@ END {
 ```
 
 
-Usage: 
+Usage:
 
 ```txt
-$ awk -f ./i_before_e_except_after_c.awk unixdict.txt 
+$ awk -f ./i_before_e_except_after_c.awk unixdict.txt
 cie: 24
 nie: 464
 cei: 13
@@ -238,7 +238,7 @@ nei: 194
 I before E when not preceded by C: is plausible
 E before I when preceded by C: is not plausible
 
-$ awk -f i_before_e_except_after_c.awk 1_2_all_freq.txt 
+$ awk -f i_before_e_except_after_c.awk 1_2_all_freq.txt
 cie: 994
 nie: 8148
 cei: 327
@@ -362,9 +362,9 @@ I before E, except after C : Implausible
 
 ## C
 
-Inspired by the J solution, but implemented as a single pass through the data, 
-we have [http://flex.sourceforge.net/ flex] build the finite state machine in C.  
-This may in turn motivate me to provide a second J solution as a single pass FSM.  
+Inspired by the J solution, but implemented as a single pass through the data,
+we have [http://flex.sourceforge.net/ flex] build the finite state machine in C.
+This may in turn motivate me to provide a second J solution as a single pass FSM.
 Please find the program output hidden at the top of the source as part of the build and example run.
 
 ```c
@@ -372,27 +372,27 @@ Please find the program output hidden at the top of the source as part of the bu
 %{
   /*
     compilation and example on a GNU linux system:
- 
+
     $ flex --case-insensitive --noyywrap --outfile=cia.c source.l
-    $ make LOADLIBES=-lfl cia 
-    $ ./cia < unixdict.txt 
+    $ make LOADLIBES=-lfl cia
+    $ ./cia < unixdict.txt
     I before E when not preceded by C: plausible
     E before I when preceded by C: implausible
-    Overall, the rule is: implausible 
+    Overall, the rule is: implausible
   */
   int cie, cei, ie, ei;
 %}
- 
+
 %%
- 
+
 cie ++cie, ++ie; /* longer patterns are matched preferentially, consuming input */
 cei ++cei, ++ei;
 ie ++ie;
 ei ++ei;
 .|\n ;
- 
+
 %%
- 
+
 int main() {
   cie = cei = ie = ei = 0;
   yylex();
@@ -416,8 +416,8 @@ int main() {
 :*   (Test used 4.4, so only a limited number of C++11 features were used.)
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <tuple>
@@ -430,12 +430,12 @@ int main() {
 struct Claim {
         Claim(const std::string& name) : name_(name), pro_(0), against_(0), propats_(), againstpats_() {
         }
-        
-        void add_pro(const std::string& pat) { 
-               propats_.push_back(std::make_tuple(boost::regex(pat), pat[0] == '^')); 
+
+        void add_pro(const std::string& pat) {
+               propats_.push_back(std::make_tuple(boost::regex(pat), pat[0] == '^'));
         }
-        void add_against(const std::string& pat) { 
-               againstpats_.push_back(std::make_tuple(boost::regex(pat), pat[0] == '^')); 
+        void add_against(const std::string& pat) {
+               againstpats_.push_back(std::make_tuple(boost::regex(pat), pat[0] == '^'));
         }
         bool plausible() const { return pro_ > against_*2; }
         void check(const char * buf, uint32_t len) {
@@ -711,7 +711,7 @@ for word of dict.toLowerCase!.match /\S+/g
 
 p1 = ie-npc > 2 * ei-npc
 p2 = ei-pc > 2 * ie-pc
- 
+
 console.log '(1) is%s plausible.', if p1 then '' else ' not'
 console.log '(2) is%s plausible.', if p2 then '' else ' not'
 console.log 'The whole phrase is%s plausible.', if p1 and p2 then '' else ' not'
@@ -947,7 +947,7 @@ defmodule RC do
       ratio > plausibility_ratio
     end)
   end
-  
+
   def countup(binary, regex) do
     String.split(binary)
     |> Enum.reduce(Map.new, fn word,acc ->
@@ -982,30 +982,30 @@ false
 
 ```erlang
 
--module(cei).                                                                 
--export([plaus/0,count/3]).                                                   
-                                                                              
-plaus() ->                                                                    
-    {ok,Words} = file:read_file("unixdict.txt"),                              
-    Swords = string:tokens(erlang:binary_to_list(Words), "\n"),                                                        
-    EiF = count(Swords,"[^c]ei",0),                                               
-    IeF = count(Swords,"[^c]ie",0),                                               
-    CeiF = count(Swords,"cei",0),                                             
-    CieF = count(Swords,"cie",0),                                             
-    if CeiF >= 2 * CieF -> P1= 'is'; true -> P1 = 'is not' end,               
-    if IeF >= 2 * EiF -> P2 = 'is'; true -> P2 = 'is not' end,                
-    if P1 == 'is' andalso p2 == 'is' -> P3 ='is'; true -> P3 = 'is not' end,  
-    io:format("Proposition 1. ~w plausible: ie ~w, ei ~w~n", [P2,IeF,EiF]),    
+-module(cei).
+-export([plaus/0,count/3]).
+
+plaus() ->
+    {ok,Words} = file:read_file("unixdict.txt"),
+    Swords = string:tokens(erlang:binary_to_list(Words), "\n"),
+    EiF = count(Swords,"[^c]ei",0),
+    IeF = count(Swords,"[^c]ie",0),
+    CeiF = count(Swords,"cei",0),
+    CieF = count(Swords,"cie",0),
+    if CeiF >= 2 * CieF -> P1= 'is'; true -> P1 = 'is not' end,
+    if IeF >= 2 * EiF -> P2 = 'is'; true -> P2 = 'is not' end,
+    if P1 == 'is' andalso p2 == 'is' -> P3 ='is'; true -> P3 = 'is not' end,
+    io:format("Proposition 1. ~w plausible: ie ~w, ei ~w~n", [P2,IeF,EiF]),
     io:format("Proposition 2. ~w plausible: cei ~w, cie ~w~n", [P1,CeiF,CieF]),
-    io:format("The rule ~w plausible~n", [P3]).                               
-                                                                              
-count(List,Pattern,Acc) when length(List) == 0 -> Acc;                        
-count(List,Pattern,Acc) ->                                                    
-    [H|T] = List,                                                             
-    case re:run(H,Pattern,[global,{capture,none}]) of                         
-        match -> count(T,Pattern, Acc + 1);                                   
-        nomatch -> count(T,Pattern, Acc)                                      
-    end.                                                                      
+    io:format("The rule ~w plausible~n", [P3]).
+
+count(List,Pattern,Acc) when length(List) == 0 -> Acc;
+count(List,Pattern,Acc) ->
+    [H|T] = List,
+    case re:run(H,Pattern,[global,{capture,none}]) of
+        match -> count(T,Pattern, Acc + 1);
+        nomatch -> count(T,Pattern, Acc)
+    end.
 
 ```
 
@@ -1035,11 +1035,11 @@ IN: rosetta-code.i-before-e
 
 : plausibility ( #correct #incorrect -- str )
     2 * > "plausible" "implausible" ? ;
-    
+
 : output ( #correct #incorrect rule-str -- )
     [ correct ] curry
     [ plausibility "This is %s.\n\n" printf ] 2bi ;
-    
+
 "unixdict.txt" utf8 file-lines ${
     R/ cei/ R/ cie/ R/ [^c]ie/ R/ [^c]ei/
     [ count-matches ]
@@ -1078,9 +1078,9 @@ Please find the linux build instructions along with example run in the comments 
 !f95 -Wall -ffree-form F.F -o F
 !   ie   ei  cie  cei
 !  490  230   24   13
-!         [^c]ie plausible                       
-!            cei implausible                     
-! ([^c]ie)|(cei) implausible                     
+!         [^c]ie plausible
+!            cei implausible
+! ([^c]ie)|(cei) implausible
 !
 !Compilation finished at Sat May 18 22:19:19
 
@@ -1156,9 +1156,9 @@ Function getfile(file As String) As String
     Dim As String text,intext
     Open file For Input As #F
     Line Input #F,text
-    While Not Eof(F) 
+    While Not Eof(F)
         Line Input #F,intext
-        text=text+Chr(10)+intext 
+        text=text+Chr(10)+intext
     Wend
     close #F
     Return text
@@ -1167,7 +1167,7 @@ End Function
 Function TALLY(instring As String,PartString As String) As Integer
         Dim count As Integer
         var lens2=Len(PartString)
-        Dim As String s=instring 
+        Dim As String s=instring
         Dim As Integer position=Instr(s,PartString)
         If position=0 Then Return 0
         While position>0
@@ -1176,7 +1176,7 @@ Function TALLY(instring As String,PartString As String) As Integer
         Wend
         Function=count
     End Function
-    
+
 Dim As String myfile="unixdict.txt"
 
 Dim As String wordlist= getfile(myfile)
@@ -1335,7 +1335,7 @@ main = do
         rule1Plausible  =  numTrueRule1 > (2*numFalseRule1)
     printf "Rule 1 is correct for %d\n        incorrect for %d\n" numTrueRule1 numFalseRule1
     printf "*** Rule 1 is %splausible.\n" (if rule1Plausible then "" else "im")
-    
+
     putStrLn "Checking Rule 2: \"E before I when preceded by C\"..."
     let numTrueRule2   =  matchCount (makeRegex "cei" :: Regex) words
         numFalseRule2  =  matchCount (makeRegex "cie" :: Regex) words
@@ -1410,7 +1410,7 @@ ie: 466
 
 
 
-###  stretch goal 
+###  stretch goal
 
 
 
@@ -1428,7 +1428,7 @@ procedure main(a)
         w := (tab(many(WS)),tab(upto(WS)))             # word
         (tab(many(WS)),tab(upto(WS)))                  # Skip part of speech
         n := integer((tab(many(WS)),tab(upto(WS)|0))) | next   # frequency?
-        
+
         \w ? while totals[2(tab(ff.locate()), ff.moveMatch(), move(-1))] +:= n
         }
 
@@ -1492,7 +1492,7 @@ So, based on unixdict.txt, the "I before E" rule seems plausible (490 > 230 by m
 Note that if we looked at frequency of use for words, instead of considering all words to have equal weights, we might come up with a different answer.
 
 
-###  stretch goal 
+###  stretch goal
 
 
 After downloading 1_2_all_freq to /tmp, we can read it into J, and break out the first column (as words) and the third column as numbers:
@@ -1555,7 +1555,7 @@ Download and save wordlist to unixdict.txt.
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class IbeforeE 
+public class IbeforeE
 {
 	public static void main(String[] args)
 	{
@@ -1586,7 +1586,7 @@ public class IbeforeE
 		{
 			System.out.println("Something went horribly wrong: "+e.getMessage());
 		}
-		
+
 		System.out.println("Plausible count: "+truecount);
 		System.out.println("Implausible count: "+falsecount);
 		if(truecount>2*falsecount)
@@ -1652,7 +1652,7 @@ def round:
   if . < 0 then (-1 * ((- .) | round) | if . == -0 then 0 else . end)
   else floor as $x | if (. - $x) < 0.5 then $x else $x+1 end
   end;
-   
+
 def assess:
   (split("\n") | dictionary) as $dictionary
   | rules as $rules
@@ -1763,7 +1763,7 @@ fun main(args: Array<String>) {
         Regex("(^|[^c])ie"),     // i before e when not preceded by c (includes words starting with ie)
         Regex("(^|[^c])ei"),     // e before i when not preceded by c (includes words starting with ei)
         Regex("cei"),            // e before i when preceded by c
-        Regex("cie")             // i before e when preceded by c       
+        Regex("cie")             // i before e when preceded by c
     )
     val counts = IntArray(4) // corresponding counts of occurrences
     var word = reader.readLine()
@@ -1777,7 +1777,7 @@ fun main(args: Array<String>) {
     val url2 = URL("http://ucrel.lancs.ac.uk/bncfreq/lists/1_2_all_freq.txt")
     val isr2 = InputStreamReader(url2.openStream())
     val reader2 = BufferedReader(isr2)
-    val counts2 = IntArray(4) 
+    val counts2 = IntArray(4)
     reader2.readLine() // read header line
     var line = reader2.readLine() // read first line and store it
     var words: List<String>
@@ -1937,7 +1937,7 @@ Overall the phrase is not plausible.
 words:= HTTP:-Get("http://wiki.puzzlers.org/pub/wordlists/unixdict.txt"):
 lst := StringTools:-Split(words[2],"\n"):
 xie, cie, cei, xei := 0, 0, 0, 0:
-for item in lst do 
+for item in lst do
 	if searchtext("ie", item) <> 0 then
 		if searchtext("cie", item) <> 0 then
 			cie := cie + 1:
@@ -1952,7 +1952,7 @@ for item in lst do
 			xei := xei + 1:
 		fi:
 	fi:
-od:	
+od:
 p1, p2 := evalb(xie > 2*xei),evalb(cei > 2*cie);
 printf("The first phrase is %s with supporting features %d, anti features %d\n", piecewise(p1, "plausible", "not plausible"), xie, xei);
 printf("The seond phrase is %s with supporting features %d, anti features %d\n", piecewise(p2, "plausible", "not plausible"), cei, cie);
@@ -1971,10 +1971,10 @@ The overall phrase is not plausible
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```mathematica
-wordlist = 
-  Import["http://wiki.puzzlers.org/pub/wordlists/unixdict.txt", 
+wordlist =
+  Import["http://wiki.puzzlers.org/pub/wordlists/unixdict.txt",
    "Words"];
-Print["The number of words in unixdict.txt = " <> 
+Print["The number of words in unixdict.txt = " <>
   ToString[Length[wordlist]]]
 StringMatchQ[#, ___ ~~ "c" ~~ "i" ~~ "e" ~~ ___] & /@ wordlist ;
 cie = Count[%, True];
@@ -1985,18 +1985,18 @@ ie = Count[%, True] - cie;
 StringMatchQ[#, ___ ~~ "e" ~~ "i" ~~ ___] & /@ wordlist ;
 ei = Count[%, True] - cei;
 test1 = ie > 2 ei;
-Print["The rule \"I before E when not preceded by C\" is " <> 
+Print["The rule \"I before E when not preceded by C\" is " <>
   If[test1, "PLAUSIBLE", "NOT PLAUSIBLE"]]
-Print["There were " <> ToString[ie] <> " examples and " <> 
-  ToString[ei]  <> " counter examples, for a ratio of " <> 
+Print["There were " <> ToString[ie] <> " examples and " <>
+  ToString[ei]  <> " counter examples, for a ratio of " <>
   ToString[N[ie/ei]]]
 test2 = cei > 2 cie;
-Print["The rule \"E before I when preceded by C\" is " <> 
+Print["The rule \"E before I when preceded by C\" is " <>
   If[test2, "PLAUSIBLE", "NOT PLAUSIBLE"]]
-Print["There were " <> ToString[cei] <> " examples and " <> 
-  ToString[cie]  <> " counter examples, for a ratio of " <> 
+Print["There were " <> ToString[cei] <> " examples and " <>
+  ToString[cie]  <> " counter examples, for a ratio of " <>
   ToString[N[cei/cie]]]
-Print["Overall the rule is " <> 
+Print["Overall the rule is " <>
   If[test1 && test2, "PLAUSIBLE", "NOT PLAUSIBLE" ]]
 ```
 
@@ -2028,11 +2028,11 @@ nie = 0;
 cie = 0;
 while ~feof(fid)
 	c = strsplit(strtrim(fgetl(fid)),char([9,32]));
-	if length(c) > 2, 
+	if length(c) > 2,
 		n = str2num(c{3});
 	else
 		n = 1;
-	end; 
+	end;
 	if strfind(c{1},'ei')>1, nei=nei+n; end;
 	if strfind(c{1},'cei'),  cei=cei+n; end;
 	if strfind(c{1},'ie')>1, nie=nie+n; end;
@@ -2047,7 +2047,7 @@ if (nie < 3 * cie)
 end
 printf('I before E when not preceded by C: is%s plausible\n',v);
 v = '';
-if (nei > 3 * cei) 
+if (nei > 3 * cei)
 	v=' not';
 end
 printf('E before I when preceded by C: is%s plausible\n',v);
@@ -2057,7 +2057,7 @@ printf('E before I when preceded by C: is%s plausible\n',v);
 
 
 ```txt
-octave:23> i_before_e_except_after_c 1_2_all_freq.txt 
+octave:23> i_before_e_except_after_c 1_2_all_freq.txt
 cie: 994
 nie: 8133
 cei: 327
@@ -2433,7 +2433,7 @@ Kept dirt simple, difficult to imagine anything being much faster than this.
 ```Phix
 --
 -- demo\rosetta\IbeforeE.exw
--- 
+--
 ### ===================
 
 --
@@ -2454,7 +2454,7 @@ if fn=-1 then
 end if
 string text = get_text(fn)
 close(fn)
--- Note: my unixdict.txt begins with "10th" and ends 
+-- Note: my unixdict.txt begins with "10th" and ends
 -- with "zygote", so boundary checks can be skipped.
 integer {cei,xei,cie,xie} @= 0
 for i=1 to length(text) do
@@ -2571,11 +2571,11 @@ Overall rule is not plausible
 ```Powershell
 $Web = New-Object -TypeName Net.Webclient
 $Words = $web.DownloadString('http://wiki.puzzlers.org/pub/wordlists/unixdict.txt')
- 
+
 $IE = $EI = $CIE = $CEI = @()
- 
+
 $Clause1 = $Clause2 = $MainClause = $false
- 
+
 foreach ($Word in $Words.split())
 {
     switch ($Word)
@@ -2586,15 +2586,15 @@ foreach ($Word in $Words.split())
         {$_ -like '*cie*'} {$CIE += $Word}
     }
 }
- 
+
 if ($IE.count -gt $EI.count * 2)
 {$Clause1 = $true}
 "The plausibility of 'I before E when not preceded by C' is $Clause1"
- 
+
 if ($CEI.count -gt $CIE.count * 2)
 {$Clause2 = $true}
 "The plausibility of 'E before I when preceded by C' is $Clause2"
- 
+
 if ($Clause1 -and $Clause2)
 {$MainClause = $True}
 "The plausibility of the phrase 'I before E except after C' is $MainClause"
@@ -2618,11 +2618,11 @@ The plausibility of the phrase 'I before E except after C' is False
 ```Powershell
 $Web = New-Object -TypeName Net.Webclient
 $Words = $web.DownloadString('http://wiki.puzzlers.org/pub/wordlists/unixdict.txt')
- 
+
 $IE = $EI = $CIE = $CEI = @()
- 
+
 $Clause1 = $Clause2 = $MainClause = $false
- 
+
 foreach ($Word in $Words.split())
 {
     switch ($Word)
@@ -2633,15 +2633,15 @@ foreach ($Word in $Words.split())
         {$_ -like '*ei*'}  {$EI += $Word}
     }
 }
- 
+
 if ($IE.count -gt $EI.count * 2)
 {$Clause1 = $true}
 "The plausibility of 'I before E when not preceded by C' is $Clause1"
- 
+
 if ($CEI.count -gt $CIE.count * 2)
 {$Clause2 = $true}
 "The plausibility of 'E before I when preceded by C' is $Clause2"
- 
+
 if ($Clause1 -and $Clause2)
 {$MainClause = $True}
 "The plausibility of the phrase 'I before E except after C' is $MainClause"
@@ -2849,14 +2849,14 @@ The whole phrase is not plausible.
     ([line (file->lines filename)])
     (match-let ([(list word n) (line-parser line)])
       (for/list ([p patterns] [t totals])
-        (if (regexp-match? p word) 
+        (if (regexp-match? p word)
             (+ n t) t)))))
 
 (define (plausible test) (string-append (if test "" "IM") "PLAUSIBLE"))
 
 (define (subrule description examples counters)
   (let ([result (> examples (* 2 counters))])
-    (printf "  The sub-rule \"~a\" is ~a.  There were ~a examples and ~a counter-examples.\n" 
+    (printf "  The sub-rule \"~a\" is ~a.  There were ~a examples and ~a counter-examples.\n"
             description (plausible result) examples counters)
     result))
 
@@ -2900,14 +2900,14 @@ Word frequencies (stretch goal):
 ## REXX
 
 The following assumptions were made about the (default) dictionary:
-::*   there could be leading and/or trailing blanks or tabs 
+::*   there could be leading and/or trailing blanks or tabs
 ::*   the dictionary words are in mixed case.
 ::*   there could be blank lines
-::*   there may be more than one occurrence of a target string within a word   [einsteinium] 
+::*   there may be more than one occurrence of a target string within a word   [einsteinium]
 
 
 ### unweighted version
- 
+
 
 ```rexx
 /*REXX program shows  plausibility  of  "I before E"  when not preceded by C,  and      */
@@ -2979,16 +2979,16 @@ Using the default word frequency count file, several discrepancies (or not) beca
 ::*   some words had a   '''*'''    suffix
 ::*   some words had a   '''~'''    suffix
 ::*   some words had a   '''~'''   and   '''*'''   suffix
-::*   one word had a   '''~'''    prefix and a   '''~'''   suffix 
+::*   one word had a   '''~'''    prefix and a   '''~'''   suffix
 ::*   some lines had an imbedded   '''[xxx]'''   comment
 ::*   some words had a   ''' ' '''   (quote)   prefix to indicate a:
-::::*   possessive 
+::::*   possessive
 ::::*   plural
 ::::*   contraction
-::::*   word   (as is) 
+::::*   word   (as is)
 All of the cases when an asterisk   ['''*''']   or tilde   ['''~''']   was used <u>weren't</u> programmatically handled within the REXX program;   it is assumed that prefixes and suffixes were being used to indicate multiple words that either begin or end with (any) string   (or in some case, both).
 
-A cursory look at the file seems to indicate that the use of the tilde and/or asterisk doesn't affect the rules for the mantra phrases.   
+A cursory look at the file seems to indicate that the use of the tilde and/or asterisk doesn't affect the rules for the mantra phrases.
 
 ```rexx
 /*REXX program shows  plausibility  of  "I before E"  when not preceded by C,  and      */
@@ -3089,7 +3089,7 @@ fn1 = "unixdict.txt"
 
 fp = fopen(fn1,"r")
 str = fread(fp, getFileSize(fp))
-fclose(fp) 
+fclose(fp)
 strcount = str2list(str)
 see "The number of words in unixdict : " + len(strcount) + nl
 cei = count(str, "cei")
@@ -3102,7 +3102,7 @@ see "Rule: 'e' before 'i' when preceded by 'c' is = "
 if cei>cie see "plausible" + nl else see"not plausible" + nl ok
 see "Instances of *ei, where * is not c : " + (ei-cei) + nl
 see "Instances of *ie, where * is not c: " + (ie-cie) + nl
-see "Rule: 'i' before 'e' when not preceded by 'c' is = " 
+see "Rule: 'i' before 'e' when not preceded by 'c' is = "
 if ie>ei see "plausible" + nl else see "not plausible" + nl ok
 see "Overall the rule is : "
 if cei>cie and ie>ei see "PLAUSIBLE" + nl else see "NOT PLAUSIBLE" + nl ok
@@ -3440,22 +3440,22 @@ NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) {res
                     not_c_ei++
                 }
             }
-            
-            
+
+
             if (not_c_ie > not_c_ei * 2) {
                 println("I before E when not preceded by C is plausable")
                 firstCase = true
             } else {
                 println("I before E when not preceded by C is not plausable")
             }
-            
+
             if (cei > cie * 2) {
                 secondCase = true
                 println("E before I when preceded by C is plausable")
             } else {
                 println("E before I when preceded by C is not plausable")
             }
-            
+
             if (firstCase && secondCase) {
                 println("I before E except after C is plausible")
             } else {
@@ -3692,7 +3692,7 @@ The sample text was downloaded and saved in the same folder as the script.
 Set objFSO = CreateObject("Scripting.FileSystemObject")
 Set srcFile = objFSO.OpenTextFile(objFSO.GetParentFolderName(WScript.ScriptFullName) &_
 	"\unixdict.txt",1,False,0)
-	
+
 cei = 0 : cie = 0 : ei = 0 : ie = 0
 
 Do Until srcFile.AtEndOfStream
@@ -3995,7 +3995,7 @@ Stretch
 fcn wc2(wordList,altrs,aAdjust,bltrs,bAdjust,text){
    a,b:=wordList.reduce('wrap(cnts,line){
       // don't care if line is "Word PoS Freq" or "as yet Adv 14"
-      word,_,n:=line.split();  
+      word,_,n:=line.split();
       if(word.holds(altrs)) cnts[0]=cnts[0]+n;
       if(word.holds(bltrs)) cnts[1]=cnts[1]+n;
       cnts

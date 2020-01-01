@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 
-An equilibrium index of a sequence is an index into the sequence such that the sum of elements at lower indices is equal to the sum of elements at higher indices. 
+An equilibrium index of a sequence is an index into the sequence such that the sum of elements at lower indices is equal to the sum of elements at higher indices.
 
 
 For example, in a sequence   <big><math>A</math></big>:
@@ -33,7 +33,7 @@ For example, in a sequence   <big><math>A</math></big>:
 
 :::::   <big><math>A_0 + A_1 + A_2 + A_3 + A_4 + A_5 = 0</math></big>
 
-(sum of zero elements is zero) 
+(sum of zero elements is zero)
 
 7   is not an equilibrium index, because it is not a valid index of sequence <big><math>A</math></big>.
 
@@ -368,7 +368,7 @@ PROC gen equilibrium index = ([]INT arr, YIELDINT yield)VOID:
 test:(
   []INT arr = []INT(-7, 1, 5, 2, -4, 3, 0)[@0];
 # FOR INT index IN # gen equilibrium index(arr, # ) DO ( #
-##   (INT index)VOID: 
+##   (INT index)VOID:
      print(index)
 # OD # );
   print(new line)
@@ -392,7 +392,7 @@ test:(
 ```applescript
 -- equilibriumIndices :: [Int] -> [Int]
 on equilibriumIndices(xs)
-    
+
     script balancedPair
         on |λ|(a, pair, i)
             set {x, y} to pair
@@ -403,24 +403,24 @@ on equilibriumIndices(xs)
             end if
         end |λ|
     end script
-    
+
     script plus
         on |λ|(a, b)
             a + b
         end |λ|
     end script
-    
+
     -- Fold over zipped pairs of sums from left
     -- and sums from right
-    
+
     foldr(balancedPair, {}, ¬
         zip(scanl1(plus, xs), scanr1(plus, xs)))
-    
+
 end equilibriumIndices
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     map(equilibriumIndices, {¬
         {-7, 1, 5, 2, -4, 3, 0}, ¬
         {2, 4, 6}, ¬
@@ -428,7 +428,7 @@ on run
         {1, -1, 1, -1, 1, -1, 1}, ¬
         {1}, ¬
         {}})
-    
+
     --> {{3, 6}, {}, {1}, {0, 1, 2, 3, 4, 5, 6}, {0}, {}}
 end run
 
@@ -492,7 +492,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -734,7 +734,7 @@ BBC BASIC's '''SUM''' function is useful for this task.
       list() = -7, 1, 5, 2, -4, 3, 0
       PRINT "Equilibrium indices are " FNequilibrium(list())
       END
-      
+
       DEF FNequilibrium(l())
       LOCAL i%, r, s, e$
       s = SUM(l())
@@ -758,8 +758,8 @@ Equilibrium indices are 3,6
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int list[] = {-7, 1, 5, 2, -4, 3, 0};
@@ -810,8 +810,8 @@ int main()
 ## C++
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <numeric>
 #include <vector>
@@ -843,7 +843,7 @@ void print(const T& value)
     std::cout << value << "\n";
 }
 
-int main() 
+int main()
 {
     const int data[] = { -7, 1, 5, 2, -4, 3, 0 };
 
@@ -1022,65 +1022,65 @@ import extensions;
 import system'routines;
 import system'collections;
 import extensions'routines;
- 
+
 class EquilibriumEnumerator : Enumerator
 {
     int        left;
     int        right;
     int        index;
     Enumerator en;
- 
+
     constructor(Enumerator en)
     {
         this en := en;
- 
+
         self.reset()
     }
- 
+
     constructor(Enumerable list)
         <= (list.enumerator());
- 
+
     constructor(o)
-        <= (cast Enumerable(o)); 
- 
+        <= (cast Enumerable(o));
+
     bool next()
     {
         index += 1;
- 
+
         while(en.next())
         {
-            var element := en.get();            
+            var element := en.get();
             right -= element;
             bool found := (left == right);
             left += element;
- 
+
             if (found)
             {
                 ^ true
             };
- 
+
             index += 1
         };
- 
+
         ^ false
     }
- 
+
     reset()
     {
         en.reset();
- 
+
         left := 0;
         right := en.summarize();
         index := -1;
- 
+
         en.reset();
     }
- 
+
     get() = index;
- 
+
     enumerable() => en;
 }
- 
+
 public program()
 {
     new EquilibriumEnumerator(new int[]::( -7, 1, 5, 2, -4, 3, 0 ))
@@ -1120,7 +1120,7 @@ faster version:
 ```elixir
 defmodule Equilibrium do
   def index(list), do: index(list,0,0,Enum.sum(list),[])
-  
+
   defp index([],_,_,_,acc), do: Enum.reverse(acc)
   defp index([h|t],i,left,right,acc) when left==right-h, do: index(t,i+1,left+h,right-h,[i|acc])
   defp index([h|t],i,left,right,acc)                   , do: index(t,i+1,left+h,right-h,acc)
@@ -1268,11 +1268,11 @@ Array indices are 1-based.
 ```fortran
 program Equilibrium
   implicit none
-  
+
   integer :: array(7) = (/ -7, 1, 5, 2, -4, 3, 0 /)
- 
+
   call equil_index(array)
- 
+
 contains
 
 subroutine equil_index(a)
@@ -1299,16 +1299,16 @@ Sub equilibriumIndices (a() As Integer, b() As Integer)
   If UBound(a) = -1 Then Return  '' empty array
 
   Dim sum As Integer = 0
-  Dim count As Integer = 0 
+  Dim count As Integer = 0
   For i As Integer = LBound(a) To UBound(a) : sum += a(i) : Next
   Dim sumLeft As Integer = 0, sumRight As Integer = 0
 
-  For i As Integer = LBound(a) To UBound(a) 
+  For i As Integer = LBound(a) To UBound(a)
      sumRight = sum - sumLeft - a(i)
      If sumLeft = sumRight Then
        Redim Preserve b(0 To Count)
        b(count) = i
-       count += 1      
+       count += 1
      End If
      sumLeft += a(i)
   Next
@@ -1489,7 +1489,7 @@ every (s := 0, i := !L) do
    s +:= numeric(i) | fail              # sum and validate
 
 every (l := 0, i := 1 to *L) do {
-   if l = (s-L[i])/2 then suspend i     
+   if l = (s-L[i])/2 then suspend i
    l +:= L[i]                           # sum of left side
    }
 end
@@ -1648,10 +1648,10 @@ def equilibrium_indices:
       | if $i == mx then empty          # all done
         else .[1] as $h
         | (.[2] - a[$i]) as $t
-        | (if $h == $t then $i else empty end), 
+        | (if $h == $t then $i else empty end),
           ( [ $i + 1, $h + a[$i], $t ] | report )
         end;
-    [0, 0, (a|add)] | report; 
+    [0, 0, (a|add)] | report;
   . as $in | indices($in; $in|length);
 ```
 
@@ -1722,16 +1722,16 @@ equindex2pass([-7, 1, 5, 2, -4, 3, 0]) = [4, 7]
 
 ```K
    f:{&{(+/y# x)=+/(y+1)_x}[x]'!#x}
- 
+
    f -7 1 5 2 -4 3 0
 3 6
- 
+
    f 2 4 6
 !0
 
    f 2 9 2
 ,1
- 
+
   f 1 -1 1 -1 1 -1 1
 0 1 2 3 4 5 6
 ```
@@ -1817,7 +1817,7 @@ end function
 {{out}}
 
 ```txt
-EQ Indices are 3, 6 
+EQ Indices are 3, 6
 ```
 
 
@@ -1844,7 +1844,7 @@ Mathematica indexes are 1-based so the output of this program will be shifted up
 
 ```Mathematica
 equilibriumIndex[data_]:=Reap[
-    Do[If[Total[data[[;; n - 1]]] == Total[data[[n + 1 ;;]]],Sow[n]], 
+    Do[If[Total[data[[;; n - 1]]] == Total[data[[n + 1 ;;]]],Sow[n]],
     {n, Length[data]}]][[2, 1]]
 ```
 
@@ -1985,14 +1985,14 @@ class Rosetta {
     sequence := [-7, 1, 5, 2, -4, 3, 0];
     EqulibriumIndices(sequence);
   }
- 
+
   function : EqulibriumIndices(sequence : Int[]) ~ Nil {
     # find total sum
     totalSum := 0;
     each(i : sequence) {
       totalSum += sequence[i];
     };
-    
+
     # compare running sum to remaining sum to find equlibrium indices
     runningSum := 0;
     each(i : sequence) {
@@ -2112,7 +2112,7 @@ procedure EquilibriumIndex(list: array of integer; offset: integer);
       if ArraySum(list, low(list), i-1) = ArraySum(list, i+1, high(list)) then
         write(offset + i:3);
   end;
- 
+
 var
 {** The base index of the array is fully taken care off and can be any number. **}
   numbers: array [1..7] of integer = (-7, 1, 5, 2, -4, 3, 0);
@@ -2237,7 +2237,7 @@ end.
 List of numbers:      -7  1  5  2 -4  3  0
 Equilibirum indices:   3  6
 
-List of numbers:       0  0  0  0  0  0  0 
+List of numbers:       0  0  0  0  0  0  0
 Equilibirum indices:   0  1  2  3  4  5  6
 ```
 
@@ -2291,7 +2291,7 @@ And here's an FP solution that manages to remain O(n):
 sub equilibrium_index(@list) {
     my @a = [\+] @list;
     my @b = reverse [\+] reverse @list;
-    ^@list Zxx (@a »==« @b); 
+    ^@list Zxx (@a »==« @b);
 }
 ```
 
@@ -2377,7 +2377,7 @@ sequence res = {}
     end for
     return res
 end function
- 
+
 ? equilibrium({-7,1,5,2,-4,3,0})
 ```
 
@@ -2462,7 +2462,7 @@ function Get-EquilibriumIndex ( $Sequence )
     {
     $Indexes = 0..($Sequence.Count - 1)
     $EqulibriumIndex = @()
-   
+
     ForEach ( $TestIndex in $Indexes )
         {
         $Left = 0
@@ -2472,7 +2472,7 @@ function Get-EquilibriumIndex ( $Sequence )
             If     ( $Index -lt $TestIndex ) { $Left  += $Sequence[$Index] }
             ElseIf ( $Index -gt $TestIndex ) { $Right += $Sequence[$Index] }
             }
- 
+
         If ( $Left -eq $Right )
             {
             $EqulibriumIndex += $TestIndex
@@ -2563,7 +2563,7 @@ EndIf
 
 ### Two Pass
 
-Uses an initial summation of the whole list then visits each item of the list adding it to the left-hand sum (after a delay); and subtracting the item from the right-hand sum. I think it should be quicker than algorithms that scan the list creating left and right sums for each index as it does ~2N add/subtractions rather than n*n. 
+Uses an initial summation of the whole list then visits each item of the list adding it to the left-hand sum (after a delay); and subtracting the item from the right-hand sum. I think it should be quicker than algorithms that scan the list creating left and right sums for each index as it does ~2N add/subtractions rather than n*n.
 
 ```python
 def eqindex2Pass(data):
@@ -2776,7 +2776,7 @@ Equilibrium indices:
 
 ### version 1
 
-This REXX version utilizes a   ''zero-based''   stemmed array to mimic the illustrative example in this Rosetta Code task's 
+This REXX version utilizes a   ''zero-based''   stemmed array to mimic the illustrative example in this Rosetta Code task's
 
 prologue,   which uses a   ''zero-based''   index.
 
@@ -2830,7 +2830,7 @@ equilibrium (none)
 
 ```
 
-'''output'''   using the default input: 
+'''output'''   using the default input:
 
 ```txt
 
@@ -2915,7 +2915,7 @@ func equilibrium l
      next
      for i = 1 to len(l)
          if r = s - r - l[i]  e += string(i-1) + "," ok
-         r += l[i] 
+         r += l[i]
      next
      e = left(e,len(e)-1)
      return e
@@ -2954,7 +2954,7 @@ def eq_indices(list)
   result = []
   list.empty? and return result
   final = list.size - 1
-  
+
   helper = lambda do |left, current, right, index|
     left == right and result << index   # Push index to result?
     index == final and return           # Terminate recursion?
@@ -2972,13 +2972,13 @@ end
 def eq_indices(list)
   left, right = 0, list.inject(0, :+)
   equilibrium_indices = []
-  
+
   list.each_with_index do |val, i|
     right -= val
     equilibrium_indices << i if right == left
     left += val
   end
-  
+
   equilibrium_indices
 end
 ```
@@ -3022,7 +3022,7 @@ end
       def rSum(i: Int): BigInt = partialSums.last - partialSums(i)
       def isRandLSumEqual(i: Int): Boolean = lSum(i) == rSum(i)
       (0 until partialSums.length).find(isRandLSumEqual).getOrElse(-1)
-    } 
+    }
 ```
 
 
@@ -3108,7 +3108,7 @@ var indices = [
   [2, 9, 2],
   [1,-1, 1,-1, 1,-1, 1],
 ]
- 
+
 for x in indices {
     say ("%s => %s" % @|[x, eq_index(x)].map{.dump});
 }
@@ -3245,7 +3245,7 @@ for I:= 0 to Size-1 do
 
 ```txt
 
-502910 504929 508168 
+502910 504929 508168
 
 ```
 

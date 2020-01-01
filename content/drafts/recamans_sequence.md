@@ -150,58 +150,58 @@ use framework "Foundation"
 use scripting additions
 
 on run
-  
+
   -- FIRST FIFTEEN RECAMANs ------------------------------------------------------
-  
+
   script term15
     on |λ|(i)
       15 = (i as integer)
     end |λ|
   end script
   set strFirst15 to unwords(snd(recamanUpto(true, term15)))
-  
+
   set strFirstMsg to "First 15 Recamans:" & linefeed
   display notification strFirstMsg & strFirst15
   delay 2
-  
+
   -- FIRST DUPLICATE RECAMAN ----------------------------------------------------
-  
+
   script firstDuplicate
     on |λ|(_, seen, rs)
       setSize(seen) as integer is not (length of (rs as list))
     end |λ|
   end script
   set strDuplicate to (item -1 of snd(recamanUpto(true, firstDuplicate))) as integer as string
-  
+
   set strDupMsg to "First duplicated Recaman:" & linefeed
   display notification strDupMsg & strDuplicate
   delay 2
-  
+
   -- NUMBER OF RECAMAN TERMS NEEDED TO GET ALL OF [0..1000]
   -- (takes about a minute, depending on system)
-  
+
   set setK to setFromList(enumFromTo(0, 1000))
   script supersetK
     on |λ|(i, setR)
       setK's isSubsetOfSet:(setR)
     end |λ|
   end script
-  
+
   display notification "Superset size result will take c. 1 min to find ..."
   set dteStart to current date
-  
+
   set strSetSize to (fst(recamanUpto(false, supersetK)) - 1) as string
-  
+
   set dteEnd to current date
-  
+
   set strSetSizeMsg to "Number of Recaman terms needed to generate" & ¬
     linefeed & "all integers from [0..1000]:" & linefeed
   set strElapsed to "(Last result took c. " & (dteEnd - dteStart) & " seconds to find)"
   display notification strSetSizeMsg & linefeed & strSetSize
-  
-  -- CLEARED REFERENCE TO NSMUTABLESET ------------------------------------- 
+
+  -- CLEARED REFERENCE TO NSMUTABLESET -------------------------------------
   set setK to missing value
-  
+
   -- REPORT ----------------------------------------------------------------
   unlines({strFirstMsg & strFirst15, "", ¬
     strDupMsg & strDuplicate, "", ¬
@@ -273,7 +273,7 @@ on intercalateS(sep, xs)
   return s
 end intercalateS
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
   if class of f is script then
@@ -420,8 +420,8 @@ terms needed to generate integers 0 - 1000: 328002
 {{libheader|GLib}}
 {{trans|Go}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <gmodule.h>
 
@@ -494,8 +494,8 @@ Terms up to a[328002] are needed to generate 0 to 1000
 
 {{trans|C#}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <ostream>
 #include <set>
 #include <vector>
@@ -929,7 +929,7 @@ Length of Recaman series required to include [0..1000]:
 
 ### Lazy search over infinite lists
 
-For a lazier solution, we could define an infinite series of Recaman sequences of growing length, starting with '''[0]''', and simply search through them for the first series of length 15, 
+For a lazier solution, we could define an infinite series of Recaman sequences of growing length, starting with '''[0]''', and simply search through them for the first series of length 15,
 or the first to include a duplicated integer.
 For the third task, it would be enough to search through an infinite stream of Recaman-generated integer '''sets''' of increasing size, until we find the first that contains [0..1000] as a subset.
 
@@ -1059,13 +1059,13 @@ Bsearch =: 1 :'((0 1 + (u <.@:average)) { ({. , <.@:average, {:)@:])^:_'
 
    R f Bsearch 0 , #R
 328002 328003
-   
+
    (<: 328002 328003) { R
 328881 879
 
 ```
 
-   
+
 The sequence begins 0 1 3 6 2 7 13 20 12 21 11 22 10 23 9 .
 With 0 as the first term,
 We've learned that 25 terms are required to generate a duplicate,
@@ -1410,7 +1410,7 @@ Inefficency of associative array allocation in Small Basic ban to provide the op
     nn="firstdup"
     recaman()
     TextWindow.WriteLine("The first duplicated term is a["+n+"]="+a[n])
- 
+
 Sub recaman
     a=""
     b=""
@@ -1422,8 +1422,8 @@ Sub recaman
         firstdup="True"
     EndIf
     For n=0 To nn-1
-        ap=a[n-1]+n 
-        If a[n-1]<=n Then 
+        ap=a[n-1]+n
+        If a[n-1]<=n Then
             a[n]=ap  'a[n]=a[n-1]+n
             b[ap]=1
         Else
@@ -1445,7 +1445,7 @@ Sub recaman
         recaman=recaman+","+a[n]
     EndFor
     exitsub:
-EndSub 
+EndSub
 ```
 
 {{out}}
@@ -1471,17 +1471,17 @@ class RecamanSequence {
   function : Main(args : String[]) ~ Nil {
     GenerateSequence();
   }
-  
+
   function : native : GenerateSequence() ~ Nil {
     a := Vector->New()<IntHolder>;
     a->AddBack(0);
-     
+
     used := Set->New()<IntHolder>;
     used->Insert(0);
 
     used1000 := Set->New()<IntHolder>;
     used1000->Insert(0);
- 
+
     foundDup := false;
     n := 1;
     while (n <= 15 | <>foundDup | used1000->Size() < 1001) {
@@ -1511,7 +1511,7 @@ class RecamanSequence {
       n++;
     };
   }
-  
+
   function : ToString(a : Vector<IntHolder>) ~ String {
     out := "[";
     each(i : a) {
@@ -1749,7 +1749,7 @@ class Recamans():
     def __init__(self):
         self.a = None   # Set of results so far
         self.n = None   # n'th term (counting from zero)
-    
+
     def __call__(self):
         "Recamán's sequence  generator"
         nxt = 0
@@ -1768,7 +1768,7 @@ class Recamans():
 
 if __name__ == '__main__':
     recamans = Recamans()
-    print("First fifteen members of Recamans sequence:", 
+    print("First fifteen members of Recamans sequence:",
           list(islice(recamans(), 15)))
 
     so_far = set()
@@ -1777,7 +1777,7 @@ if __name__ == '__main__':
             print(f"First duplicate number in series is: a({recamans.n}) = {term}")
             break
         so_far.add(term)
-    
+
     n = 1_000
     setn = set(range(n + 1))    # The target set of numbers to be covered
     for _ in recamans():
@@ -2024,7 +2024,7 @@ visited <- vector('logical', 1e8)
 terms <- vector('numeric')
 
 in_a_interval <- function(v) {
-	visited[[v+1]] 
+	visited[[v+1]]
 }
 
 add_value <- function(v) {
@@ -2054,7 +2054,7 @@ repeat {
 		break
 	}
 	step <- step + 1
-	if (step == 15) { 
+	if (step == 15) {
 		cat("The first 15 terms are :")
 		for (aterm in terms) { cat(aterm," ", sep = "") }
 		cat("\n")
@@ -2067,7 +2067,7 @@ repeat {
 
 ```txt
 
-The first 15 terms are :0 1 3 6 2 7 13 20 12 21 11 22 10 23 9 
+The first 15 terms are :0 1 3 6 2 7 13 20 12 21 11 22 10 23 9
 The first duplicated term is a[24] = 42
 Terms up to a[328002] are needed to generate 0 to 1000
 
@@ -2080,7 +2080,7 @@ Terms up to a[328002] are needed to generate 0 to 1000
 
 ### version 1
 
-Instead of using a subroutine to perform the three tasks with one invocation,   the subroutine was used three times for 
+Instead of using a subroutine to perform the three tasks with one invocation,   the subroutine was used three times for
 
 each of the task's three requirements.
 
@@ -2181,7 +2181,7 @@ dn=1                           /* number of elements <=1000       */
           'elapsed:' time('E') 'seconds'
     done=1
     End
-  ans.3='Element number' i 'is the last to satisfy task 3. It is' temp 
+  ans.3='Element number' i 'is the last to satisfy task 3. It is' temp
   Have.temp=1
   End
 Return s
@@ -2312,7 +2312,7 @@ To run in console mode with cscript.
 	Wscript.StdOut.WriteLine "The first duplicate number is: " & recaman("firstdup",0)
 	Wscript.StdOut.WriteLine "The number of terms to complete the range 0--->"& h &" is: "& recaman("numterm",h)
 	Wscript.StdOut.Write vbCrlf&".../...": zz=Wscript.StdIn.ReadLine()
-	
+
 function recaman(op,nn)
 	Dim b,d,h
 	Set b = CreateObject("Scripting.Dictionary")
@@ -2329,9 +2329,9 @@ function recaman(op,nn)
 	s=0
 	for n=1 to nn-1
         an=ax-n
-		if an<=0 then 
+		if an<=0 then
 			an=ax+n
-		elseif b.Exists(an) then 
+		elseif b.Exists(an) then
 			an=ax+n
 		end if
 		ax=an  'a(n)=an

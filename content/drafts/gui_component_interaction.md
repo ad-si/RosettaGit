@@ -413,8 +413,8 @@ file main.c
 
 
 
-```c>#include <windows.h
-
+```c
+#include <windows.h>
 #include "resource.h"
 
 BOOL CALLBACK DlgProc( HWND hwnd, UINT msg, WPARAM wPar, LPARAM lPar ) {
@@ -488,8 +488,8 @@ file resource.rc
 
 
 
-```c>#include <windows.h
-
+```c
+#include <windows.h>
 #include "resource.h"
 
 LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
@@ -547,8 +547,8 @@ file interaction.cpp
 ```
 
 
-```cpp>#include <QPushButton
-
+```cpp
+#include <QPushButton>
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QString>
@@ -604,8 +604,8 @@ file main.cpp
 ```
 
 
-```cpp>#include <QApplication
-
+```cpp
+#include <QApplication>
 #include "interaction.h"
 
 int main( int argc , char *argv[ ] ) {
@@ -629,8 +629,8 @@ main.cpp
 
 
 
-```cpp>#include <QApplication
-
+```cpp
+#include <QApplication>
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QPushButton>

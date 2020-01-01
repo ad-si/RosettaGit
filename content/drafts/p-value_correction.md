@@ -12,9 +12,9 @@ tags = []
 
 {{task|Probability and statistics}}
 
-Given a list of [[wp:p-value|p-values]], adjust the p-values for multiple comparisons. This is done in order to control the false positive, or Type 1 error rate. 
+Given a list of [[wp:p-value|p-values]], adjust the p-values for multiple comparisons. This is done in order to control the false positive, or Type 1 error rate.
 
-This is also known as the "[[wp:False discovery rate|false discovery rate]]" (FDR). After adjustment, the p-values will be higher but still inside [0,1]. 
+This is also known as the "[[wp:False discovery rate|false discovery rate]]" (FDR). After adjustment, the p-values will be higher but still inside [0,1].
 
 The adjusted p-values are sometimes called "q-values".
 
@@ -42,7 +42,7 @@ There are several methods to do this, see:
 * Gerhard Hommel, "A stagewise rejective multiple test procedure based on a modified Bonferroni test", ''Biometrika'', Vol. 75, No. 2 (1988), pp 383–386, DOI:[https://doi.org/10.1093/biomet/75.2.383 10.1093/biomet/75.2.383] JSTOR:[https://www.jstor.org/stable/2336190 2336190]
 
 
-Each method has its own advantages and disadvantages. 
+Each method has its own advantages and disadvantages.
 
 
 
@@ -71,8 +71,8 @@ or
 
 Link with <code>-lm</code>
 
-```C>#include <stdio.h
-//printf
+```c
+#include <stdio.h>//printf
 #include <stdlib.h>//qsort
 #include <math.h>//fabs
 #include <stdbool.h>//bool data type
@@ -492,7 +492,7 @@ computed differently*/
 	double *restrict cummin_input = malloc(sizeof(double) * NO_OF_ARRAY_ELEMENTS);
 	if (TYPE == 0) {//BH method
 		for (size_t index = 0; index < NO_OF_ARRAY_ELEMENTS; index++) {
-			const double NI = (double)NO_OF_ARRAY_ELEMENTS / (NO_OF_ARRAY_ELEMENTS - index);// n/i simplified 
+			const double NI = (double)NO_OF_ARRAY_ELEMENTS / (NO_OF_ARRAY_ELEMENTS - index);// n/i simplified
 			cummin_input[index] = NI * PVALUES[o[index]];//PVALUES[o[index]] is p[o]
 		}
 	} else if (TYPE == 1) {//BY method
@@ -501,7 +501,7 @@ computed differently*/
 			q += (double) 1.0/index;
 		}
 		for (size_t index = 0; index < NO_OF_ARRAY_ELEMENTS; index++) {
-			const double NI = (double)NO_OF_ARRAY_ELEMENTS / (NO_OF_ARRAY_ELEMENTS - index);// n/i simplified 
+			const double NI = (double)NO_OF_ARRAY_ELEMENTS / (NO_OF_ARRAY_ELEMENTS - index);// n/i simplified
 			cummin_input[index] = q * NI * PVALUES[o[index]];//PVALUES[o[index]] is p[o]
 		}
 	} else if (TYPE == 3) {//Hochberg method
@@ -616,7 +616,7 @@ int main(void) {
 		free(q); q = NULL;
 		printf("\ntype %u = '%s' has cumulative error of %g\n", type, TYPES[type], error);
 	}
-	
+
 	return 0;
 }
 
@@ -720,8 +720,8 @@ type 5 = 'hommel' has cumulative error of 4.35302e-07
 {{trans|Kotlin}}
 To avoid licensing issues, this version is a translation of the Kotlin entry (Version 2) which is itself a partial translation of the Perl 6 entry. If using gcc, you need to link to the math library (-lm).
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -781,12 +781,12 @@ void schwartzian(const double *p, double *pa, direction dir) {
     iv1 iv1s[SIZE];
     iv2 iv2s[SIZE];
     double pa2[SIZE];
-    each_i(0, SIZE) { iv1s[i].index = i; iv1s[i].value = p[i]; }    
-    if (dir == UP) 
+    each_i(0, SIZE) { iv1s[i].index = i; iv1s[i].value = p[i]; }
+    if (dir == UP)
         qsort(iv1s, SIZE, sizeof(iv1s[0]), compare_iv1_desc);
-    else 
+    else
         qsort(iv1s, SIZE, sizeof(iv1s[0]), compare_iv1);
-    each_i(0, SIZE) order[i] = iv1s[i].index;   
+    each_i(0, SIZE) order[i] = iv1s[i].index;
     each_i(0, SIZE) pa[i] *= p[order[i]];
     ratchet(pa, dir);
     each_i(0, SIZE) { iv2s[i].index = i; iv2s[i].value = order[i]; }
@@ -796,7 +796,7 @@ void schwartzian(const double *p, double *pa, direction dir) {
     each_i(0, SIZE) pa[i] = pa2[i];
 }
 
-void adjust(const double *p, double *pa, const char *type) {    
+void adjust(const double *p, double *pa, const char *type) {
     int i;
     if (!strcmp(type, "Benjamini-Hochberg")) {
         each_i(0, SIZE) pa[i] = (double)SIZE / (SIZE - i);
@@ -843,7 +843,7 @@ void adjust(const double *p, double *pa, const char *type) {
         for (j = SIZE - 1; j >= 2; --j) {
             each_i(0, SIZE) indices[i] = i;
             int upper_start = SIZE - j + 1;      /* upper indices start index */
-            int upper_size = j - 1;              /* size of upper indices */ 
+            int upper_size = j - 1;              /* size of upper indices */
             int lower_size = SIZE - upper_size;  /* size of lower indices */
             double qmin = j * s[indices[upper_start]] / 2.0;
             each_i(1, upper_size) {
@@ -933,8 +933,8 @@ Same as Kotlin (Version 2) output.
 
 {{trans|Java}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <functional>
 #include <iostream>
 #include <numeric>
@@ -3150,7 +3150,7 @@ MultipleTesting.Hommel()
 ## Kotlin
 
 
-### Version 1 
+### Version 1
 
 {{trans|C}}
 ''This work is based on R source code covered by the '''GPL''' license. It is thus a modified version, also covered by the GPL. See the [https://www.gnu.org/licenses/gpl-faq.html#GPLRequireSourcePostedPublic FAQ about GNU licenses]''.
@@ -3529,7 +3529,7 @@ type 5 = 'hommel' has cumulative error of 4.35302e-07
 
 
 
-### Version 2 
+### Version 2
 
 {{trans|Perl 6}}
 
@@ -3858,7 +3858,7 @@ sub p_adjust {
 	my @qvalues;
 	if ($method eq 'hochberg') {
 		my @o = order($pvalues_ref, 'TRUE');
-		my @cummin_input; 
+		my @cummin_input;
 		for (my $index = 0; $index < $n; $index++) {
 			$cummin_input[$index] = ($index+1)* @$pvalues_ref[$o[$index]];#PVALUES[$o[$index]] is p[o]
 		}
@@ -4291,7 +4291,7 @@ Hommel
 
 Translation of Kotlin (version 2), except for the Hommel part, which is translated from Go.
 
-Note that sq_min(), extract(), and custom_sort() as used below require 0.8.0+ 
+Note that sq_min(), extract(), and custom_sort() as used below require 0.8.0+
 
 ```Phix
 enum UP, DOWN
@@ -4331,11 +4331,11 @@ function adjust(sequence p, string method)
 
         case "Hochberg":
             return schwartzian(p, mult, UP)
- 
+
         case "Holm":
             mult = sq_sub(size+1,mult)
             return schwartzian(p, mult, DOWN)
- 
+
         case "Hommel":
             sequence ivdx = repeat(0,size)
             for i=1 to size do ivdx[i] = {p[i],i} end for
@@ -4374,7 +4374,7 @@ function adjust(sequence p, string method)
     return p
 end function
 
-constant {types,correct_answers} = columnize({ 
+constant {types,correct_answers} = columnize({
     {"Benjamini-Hochberg",
      {6.126681e-01, 8.521710e-01, 1.987205e-01, 1.891595e-01, 3.217789e-01,
       9.301450e-01, 4.870370e-01, 9.301450e-01, 6.049731e-01, 6.826753e-01,
@@ -4906,15 +4906,15 @@ run;
 
                                   P-Value Adjustment Information
 
-                            P-Value Adjustment     Bonferroni         
+                            P-Value Adjustment     Bonferroni
                             P-Value Adjustment     Stepdown Bonferroni
-                            P-Value Adjustment     Sidak              
-                            P-Value Adjustment     Hochberg           
-                            P-Value Adjustment     Hommel             
+                            P-Value Adjustment     Sidak
+                            P-Value Adjustment     Hochberg
+                            P-Value Adjustment     Hommel
 
 
                                              p-Values
- 
+
                                             Stepdown
       Test           Raw    Bonferroni    Bonferroni         Sidak      Hochberg        Hommel
 
@@ -5133,7 +5133,7 @@ fcn bonferroni(pvalues){  // -->List
       b:=pv*sz;
       if(b>=1.0) r.append(1.0);
       else if(0.0<=b<1.0) r.append(b);
-      else throw(Exception.ValueError( 
+      else throw(Exception.ValueError(
 	 "%g is outside of the interval I planned.".fmt(b)));
    }
    r

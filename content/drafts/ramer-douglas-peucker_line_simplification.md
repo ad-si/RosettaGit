@@ -14,14 +14,14 @@ tags = []
 [[Category:Recursion]]
 
 {{task}}
-The   '''Ramer–Douglas–Peucker'''   algorithm is a line simplification algorithm for reducing the number of points used to define its shape. 
+The   '''Ramer–Douglas–Peucker'''   algorithm is a line simplification algorithm for reducing the number of points used to define its shape.
 
 
 ;Task:
 Using the   '''Ramer–Douglas–Peucker'''   algorithm, simplify the   2D   line defined by the points:
-    (0,0)  (1,0.1)  (2,-0.1)  (3,5)  (4,6)  (5,7)  (6,8.1)  (7,9)  (8,9)  (9,9) 
+    (0,0)  (1,0.1)  (2,-0.1)  (3,5)  (4,6)  (5,7)  (6,8.1)  (7,9)  (8,9)  (9,9)
 
-The error threshold to be used is:   '''1.0'''. 
+The error threshold to be used is:   '''1.0'''.
 
 Display the remaining points here.
 
@@ -37,8 +37,8 @@ Display the remaining points here.
 
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cmath>
 #include <utility>
 #include <vector>
@@ -105,14 +105,14 @@ void RamerDouglasPeucker(const vector<Point> &pointList, double epsilon, vector<
 		vector<Point> lastLine(pointList.begin()+index, pointList.end());
 		RamerDouglasPeucker(firstLine, epsilon, recResults1);
 		RamerDouglasPeucker(lastLine, epsilon, recResults2);
- 
+
 		// Build the result list
 		out.assign(recResults1.begin(), recResults1.end()-1);
 		out.insert(out.end(), recResults2.begin(), recResults2.end());
 		if(out.size()<2)
 			throw runtime_error("Problem assembling output");
-	} 
-	else 
+	}
+	else
 	{
 		//Just return start and end points
 		out.clear();
@@ -737,17 +737,17 @@ fun perpendicularDistance(pt: Point, lineStart: Point, lineEnd: Point): Double {
 
     // Get dot product (project pv onto normalized direction)
     val pvdot = dx * pvx + dy * pvy
- 
+
     // Scale line direction vector and substract it from pv
     val ax = pvx - pvdot * dx
     val ay = pvy - pvdot * dy
- 
+
     return Math.hypot(ax, ay)
 }
 
 fun RamerDouglasPeucker(pointList: List<Point>, epsilon: Double, out: MutableList<Point>) {
     if (pointList.size < 2) throw IllegalArgumentException("Not enough points to simplify")
-    
+
     // Find the point with the maximum distance from line between start and end
     var dmax = 0.0
     var index = 0
@@ -761,7 +761,7 @@ fun RamerDouglasPeucker(pointList: List<Point>, epsilon: Double, out: MutableLis
     if (dmax > epsilon) {
         val recResults1 = mutableListOf<Point>()
         val recResults2 = mutableListOf<Point>()
-        val firstLine = pointList.take(index + 1) 
+        val firstLine = pointList.take(index + 1)
         val lastLine  = pointList.drop(index)
         RamerDouglasPeucker(firstLine, epsilon, recResults1)
         RamerDouglasPeucker(lastLine, epsilon, recResults2)
@@ -790,10 +790,10 @@ fun main(args: Array<String>) {
         Point(6.0, 8.1),
 	Point(7.0, 9.0),
 	Point(8.0, 9.0),
-        Point(9.0, 9.0) 
+        Point(9.0, 9.0)
     )
     val pointListOut = mutableListOf<Point>()
-    RamerDouglasPeucker(pointList, 1.0, pointListOut)   
+    RamerDouglasPeucker(pointList, 1.0, pointListOut)
     println("Points remaining after simplification:")
     for (p in pointListOut) println(p)
 }
@@ -841,7 +841,7 @@ proc rdp(points: seq[Point], startIndex, lastIndex: int, ε: float64 = 1.0): seq
     if d > dmax:
       index = i
       dmax = d
-  
+
   if dmax > ε:
     var res1 = rdp(points, startIndex, index, ε)
     var res2 = rdp(points, index, lastIndex, ε)
@@ -849,12 +849,12 @@ proc rdp(points: seq[Point], startIndex, lastIndex: int, ε: float64 = 1.0): seq
     var finalRes: seq[Point] = @[]
     finalRes.add(res1[0..^2])
     finalRes.add(res2[0..^1])
-    
+
     result = finalRes
   else:
     result = @[points[startIndex], points[lastIndex]]
 
-var line: seq[Point] = @[(0.0, 0.0), (1.0, 0.1), (2.0, -0.1), (3.0, 5.0), (4.0, 6.0), 
+var line: seq[Point] = @[(0.0, 0.0), (1.0, 0.1), (2.0, -0.1), (3.0, 5.0), (4.0, 6.0),
                          (5.0, 7.0), (6.0, 8.1), (7.0,  9.0), (8.0, 9.0), (9.0, 9.0)]
 echo rdp(line, line.low, line.high)
 ```
@@ -922,10 +922,10 @@ say '(' . join(' ', @$_) . ') '
 {{out}}
 
 ```txt
-(0 0) 
-(2 -0.1) 
-(3 5) 
-(7 9) 
+(0 0)
+(2 -0.1)
+(3 5)
+(7 9)
 (9 9)
 ```
 
@@ -1000,7 +1000,7 @@ function rdp(sequence l, atom e)
     return {l[1], l[$]}
 end function
 
-sequence points = {{0, 0}, {1, 0.1}, {2, -0.1}, {3, 5}, {4, 6}, 
+sequence points = {{0, 0}, {1, 0.1}, {2, -0.1}, {3, 5}, {4, 6},
                    {5, 7}, {6, 8.1}, {7,    9}, {8, 9}, {9, 9}}
 ?rdp(points, 1)
 ```
@@ -1120,7 +1120,7 @@ An approach using the shapely library:
 ```python
 from __future__ import print_function
 from shapely.geometry import LineString
- 
+
 if __name__=="__main__":
 	line = LineString([(0,0),(1,0.1),(2,-0.1),(3,5),(4,6),(5,7),(6,8.1),(7,9),(8,9),(9,9)])
 	print (line.simplify(1.0, preserve_topology=False))
@@ -1299,25 +1299,25 @@ sub perpendicularDistance(tabla(), i, ini, fin)
 
     dx = tabla(fin, 1) - tabla(ini, 1)
     dy = tabla(fin, 2) - tabla(ini, 2)
- 
+
     //Normalise
     mag = (dx^2 + dy^2)^0.5
     if mag > 0 dx = dx / mag : dy = dy / mag
- 
+
     pvx = tabla(i, 1) - tabla(ini, 1)
     pvy = tabla(i, 2) - tabla(ini, 2)
- 
+
     //Get dot product (project pv onto normalized direction)
     pvdot = dx * pvx + dy * pvy
- 
+
     //Scale line direction vector
     dsx = pvdot * dx
     dsy = pvdot * dy
- 
+
     //Subtract this from pv
     ax = pvx - dsx
     ay = pvy - dsy
- 
+
     return (ax^2 + ay^2)^0.5
 end sub
 
@@ -1326,7 +1326,7 @@ sub DouglasPeucker(PointList(), ini, fin, epsilon)
     // Find the point with the maximum distance
 
     for i = ini + 1 to fin
-        d = perpendicularDistance(PointList(), i, ini, fin) 
+        d = perpendicularDistance(PointList(), i, ini, fin)
         if d > dmax index = i : dmax = d
     next
 

@@ -13,11 +13,11 @@ tags = []
 {{task}}
 {{omit from|Lilypond}}
 
-There are quite a number of temperature scales. For this task we will concentrate on four of the perhaps best-known ones: 
+There are quite a number of temperature scales. For this task we will concentrate on four of the perhaps best-known ones:
 [[wp:Kelvin|Kelvin]], [[wp:Degree Celsius|Celsius]], [[wp:Fahrenheit|Fahrenheit]], and  [[wp:Degree Rankine|Rankine]].
 
 The Celsius and Kelvin scales have the same magnitude, but different null points.
- 
+
 : 0 degrees Celsius corresponds to 273.15 kelvin.
 : 0 kelvin is absolute zero.
 
@@ -30,7 +30,7 @@ The Celsius/Kelvin and Fahrenheit/Rankine scales have a ratio of 5 : 9.
 
 
 ;Task
-Write code that accepts a value of kelvin, converts it to values of the three other scales, and prints the result. 
+Write code that accepts a value of kelvin, converts it to values of the three other scales, and prints the result.
 
 
 ;Example:
@@ -161,7 +161,7 @@ Rankine:     671.67 R
 
 ```forth
 : KtoC \ n -- n
-	273.15 n:- 
+	273.15 n:-
 ;
 
 : KtoF \ n -- n
@@ -183,13 +183,13 @@ Rankine:     671.67 R
 	. " degrees Rankine" . cr
 ;
 
-: app:main \ 
-	argc 0 n:= 
+: app:main \
+	argc 0 n:=
 	if
 		"Syntax" . cr "    temp.8th number" . cr
 	else
-		0 args >n KtoCFR 
-	then 
+		0 args >n KtoCFR
+	then
 	bye
 ;
 
@@ -221,7 +221,7 @@ procedure Temperatur_Conversion is
    function F return Float is (K * 1.8 - 459.67);
    function R return Float is (K * 1.8);
 begin
-   Get(K); New_Line;                                           -- Format 
+   Get(K); New_Line;                                           -- Format
    Put("K: "); Put(K, Fore => 4, Aft => 2, Exp => 0); New_Line;-- K: dddd.dd
    Put("C: "); Put(C, Fore => 4, Aft => 2, Exp => 0); New_Line;-- C: dddd.dd
    Put("F: "); Put(F, Fore => 4, Aft => 2, Exp => 0); New_Line;-- F: dddd.dd
@@ -273,7 +273,7 @@ main(void)
 
 ```txt
 aime$ aime -a tmp/tconvert 300
-K   300   
+K   300
 C    26.85
 F    80.32
 R   540
@@ -303,12 +303,12 @@ $ echo 21 | a68g Temperature_conversion.a68
   +21.00 K =  -252.15 C
   +21.00 K =   +37.80 R
   +21.00 K =  -421.87 F
-$ 
+$
 ```
 
 
 =={{header|ALGOL-M}}==
-If the temperature in Kelvin is a whole number, you should type a decimal point after it (e.g. <code>290.</code>): <code>290</code> with no decimal point will be interpreted as 0.29 rather than 290.0. 
+If the temperature in Kelvin is a whole number, you should type a decimal point after it (e.g. <code>290.</code>): <code>290</code> with no decimal point will be interpreted as 0.29 rather than 290.0.
 
 ```algol
 BEGIN
@@ -367,7 +367,7 @@ on heatBabel(n, strFromScale, strToScale)
     set ratio to 9 / 5
     set cels to 273.15
     set fahr to 459.67
-    
+
     script reading
         on |λ|(x, strFrom)
             if strFrom = "k" then
@@ -381,7 +381,7 @@ on heatBabel(n, strFromScale, strToScale)
             end if
         end |λ|
     end script
-    
+
     script writing
         on |λ|(x, strTo)
             if strTo = "k" then
@@ -395,7 +395,7 @@ on heatBabel(n, strFromScale, strToScale)
             end if
         end |λ|
     end script
-    
+
     writing's |λ|(reading's |λ|(n, ¬
         toLower(text 1 of strFromScale)), ¬
         toLower(text 1 of strToScale))
@@ -409,7 +409,7 @@ on kelvinTranslations(n)
             {x, kelvinAs(x, n)}
         end |λ|
     end script
-    
+
     map(translations, {"K", "C", "F", "R"})
 end kelvinTranslations
 
@@ -419,7 +419,7 @@ on run
             intercalate(tab, x)
         end |λ|
     end script
-    
+
     intercalate(linefeed, map(tabbed, kelvinTranslations(21)))
 end run
 
@@ -446,7 +446,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -537,7 +537,7 @@ Func Kelvin($degrees, $conversion)
 EndFunc ;==> Kelvin
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 Kelvin: 21°
@@ -575,7 +575,7 @@ BEGIN {
 ```
 
 
-"Regular" version, reading from input-file(s). 
+"Regular" version, reading from input-file(s).
 
 With no such file, or "-" as filename, reading from stdin:
 
@@ -591,7 +591,7 @@ BEGINFILE { print "# reading", FILENAME
 
 !NF       { exit }
 
-          { print "Input:" $0 }     
+          { print "Input:" $0 }
 $1<0      { print("K must be >= 0\n"); next }
           { K = 0+$1
             printf("K = %8.2f Kelvin degrees\n",K)
@@ -621,7 +621,7 @@ absolute
 
 So, "absolute" has a value of 0, and 310x is just 310.
 
-After that file is read and processed, values are read from stdin. 
+After that file is read and processed, values are read from stdin.
 
 Here entering "333" by hand, and then stopping with an empty input.
 {{out}}
@@ -792,7 +792,7 @@ The temperature to convert is read from stdin. Befunge has no support for real n
 "K"\-+**"!Y]"9:\"C"\--\**"^CIT"/5*9:\"F"\/5*9:\"R"\0\0<v
 v/+55\+*86%+55: /+55\+*86%+55: \0/+55+5*-\1*2 p00:`\0:,<
 >"."\>:55+% 68*v                       >:#,_$55+,\:!#@_^
-   $_^#!:/+55\+<                       ^\" :"_<g00*95   
+   $_^#!:/+55\+<                       ^\" :"_<g00*95
 ```
 
 
@@ -876,8 +876,8 @@ Enter Kelvin temperature:21.00
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 double kelvinToCelsius(double k){
@@ -935,11 +935,11 @@ public:
 	      fah = kelvin * KTF - 459.67f,
 	      net = cel * KTNew,
 	      rnk = kelvin * KTRank,
-	      rea = cel * KTRe, 
+	      rea = cel * KTRe,
 	      rom = cel * KTRom + 7.5f;
 
 	cout << endl << left
-	     << "TEMPERATURES:" << endl 
+	     << "TEMPERATURES:" << endl
 	     << "
 ### =========
 " << endl << setw( 13 )
@@ -1057,15 +1057,15 @@ shared void run() {
 		value celsius =	kelvin - 273.15;
 		value rankine = kelvin * 9.0 / 5.0;
 		value fahrenheit = rankine - 459.67;
-		
+
 		print("Kelvin:     ``formatFloat(kelvin, 2, 2)``
 		       Celsius:    ``formatFloat(celsius, 2, 2)``
 		       Fahrenheit: ``formatFloat(fahrenheit, 2, 2)``
 		       Rankine:    ``formatFloat(rankine, 2, 2)``");
 	}
-	
+
 	printKelvinConversions(21.0);
-	
+
 }
 ```
 
@@ -1078,15 +1078,15 @@ shared void run() {
 ```clojure
 (defn to-celsius [k]
   (- k 273.15))
-(defn to-fahrenheit [k] 
+(defn to-fahrenheit [k]
   (- (* k 1.8) 459.67))
-(defn to-rankine [k] 
+(defn to-rankine [k]
   (* k 1.8))
- 
-(defn temperature-conversion [k] 
-  (if (number? k) 
-    (format "Celsius: %.2f Fahrenheit: %.2f Rankine: %.2f" 
-      (to-celsius k) (to-fahrenheit k) (to-rankine k)) 
+
+(defn temperature-conversion [k]
+  (if (number? k)
+    (format "Celsius: %.2f Fahrenheit: %.2f Rankine: %.2f"
+      (to-celsius k) (to-fahrenheit k) (to-rankine k))
     (format "Error: Non-numeric value entered.")))
 ```
 
@@ -1109,38 +1109,38 @@ user=> (temperature-conversion 21.0)
 ```cobol
        IDENTIFICATION DIVISION.
        PROGRAM-ID. temp-conversion.
-       
+
        DATA DIVISION.
        WORKING-STORAGE SECTION.
        78  Kelvin-Rankine-Ratio    VALUE 0.5556. *> 5 / 9 to 4 d.p.
        78  Kelvin-Celsius-Diff     VALUE 273.15.
        78  Rankine-Fahrenheit-Diff VALUE 459.67.
-       
+
        01  temp-kelvin             PIC S9(8)V99.
        01  temp-rankine            PIC S9(8)V99.
-       
+
        01  kelvin                  PIC -(7)9.99.
        01  celsius                 PIC -(7)9.99.
        01  rankine                 PIC -(7)9.99.
        01  fahrenheit              PIC -(7)9.99.
-       
+
        PROCEDURE DIVISION.
            DISPLAY "Enter a temperature in Kelvin to convert: " NO ADVANCING
            ACCEPT temp-kelvin
-       
+
            MOVE temp-kelvin TO kelvin
            DISPLAY "K " kelvin
-           
+
            SUBTRACT Kelvin-Celsius-Diff FROM temp-kelvin GIVING celsius
            DISPLAY "C " celsius
-           
+
            DIVIDE temp-kelvin BY Kelvin-Rankine-Ratio
                GIVING temp-rankine, rankine
            SUBTRACT Rankine-Fahrenheit-Diff FROM temp-rankine GIVING fahrenheit
-           
+
            DISPLAY "F " fahrenheit
            DISPLAY "R " rankine
-       
+
            GOBACK
            .
 ```
@@ -1167,18 +1167,18 @@ Three functions define the necessary conversion formulas. A fancy format string 
 
 ```lisp
 
-(defun to-celsius (k) 
+(defun to-celsius (k)
   (- k 273.15))
-(defun to-fahrenheit (k) 
+(defun to-fahrenheit (k)
   (- (* k 1.8) 459.67))
-(defun to-rankine (k) 
+(defun to-rankine (k)
   (* k 1.8))
 
-(defun temperature-conversion () 
-  (let ((k (read))) 
-    (if (numberp k) 
-      (format t "Celsius: ~d~%Fahrenheit: ~d~%Rankine: ~d~%" 
-        (to-celsius k) (to-fahrenheit k) (to-rankine k)) 
+(defun temperature-conversion ()
+  (let ((k (read)))
+    (if (numberp k)
+      (format t "Celsius: ~d~%Fahrenheit: ~d~%Rankine: ~d~%"
+        (to-celsius k) (to-fahrenheit k) (to-rankine k))
       (format t "Error: Non-numeric value entered."))))
 
 ```
@@ -1334,16 +1334,16 @@ ELENA 4.1 :
 
 ```elena
 import extensions;
- 
+
 convertKelvinToFahrenheit(x)
     = x * 1.8r - 459.6r;
- 
+
 convertKelvinToRankine(x)
     = x * 1.8r;
- 
-convertKelvinToCelsius(x) 
+
+convertKelvinToCelsius(x)
     = x - 273.15r;
- 
+
 public program()
 {
     console.print("Enter a Kelvin Temperature: ");
@@ -1356,10 +1356,10 @@ public program()
     catch(Exception e)
     {
         console.printLine("Invalid input value: ", inputVal);
- 
+
         AbortException.raise()
     };
- 
+
     console.printLine("Kelvin: ", kelvinTemp);
     console.printLine("Fahrenheit: ", convertKelvinToFahrenheit(kelvinTemp));
     console.printLine("Rankine: ", convertKelvinToRankine(kelvinTemp));
@@ -1393,11 +1393,11 @@ defmodule Temperature do
     IO.puts "\nF : #{f(t * 1.8 - 459.67)}"
     IO.puts "\nR : #{f(t * 1.8)}"
   end
-  
+
   defp f(a) do
     Float.round(a, 2)
   end
-  
+
   def task, do: conversion(21.0)
 end
 
@@ -1439,7 +1439,7 @@ conversion(T) ->
 	io:format("R : ~p\n\n",[f(T * 1.8)]).
 
 f(A) ->
-	(round(A*100))/100 .	
+	(round(A*100))/100 .
 
 ```
 
@@ -1449,7 +1449,7 @@ f(A) ->
 
 K : 21.0
 
-C : -252.15 
+C : -252.15
 
 F : -421.87
 
@@ -1502,7 +1502,7 @@ Name A2 : K
 B2 : =K-273.15
 C2 : =K*1.8-459.67
 D2 : =K*1.8
-Input in A1 
+Input in A1
 ```
 
 {{Out}}
@@ -1571,7 +1571,7 @@ IN: rosetta-code.temperature
 : convert ( kelvin -- )
     { [ ] [ k>c ] [ k>f ] [ k>r ] } cleave
     "K  %.2f\nC  %.2f\nF  %.2f\nR  %.2f\n" printf ;
-    
+
 21 convert
 ```
 
@@ -1649,7 +1649,7 @@ main bye
 ```fortran
 Program Temperature
   implicit none
-  
+
   real :: kel, cel, fah, ran
 
   write(*,*) "Input Kelvin temperature to convert"
@@ -1660,7 +1660,7 @@ Program Temperature
   write(*, "((a10), f10.3)") "Celsius", cel
   write(*, "((a10), f10.3)") "Fahrenheit", fah
   write(*, "((a10), f10.3)") "Rankine", ran
-    
+
 contains
 
 subroutine temp_convert(kelvin, celsius, fahrenheit, rankine)
@@ -1690,12 +1690,12 @@ Sub convKelvin(temp As Double)
   Print Using f; temp - 273.15;
   Print " degrees Celsius"
   Print Using f; (temp - 273.15) * 1.8 + 32.0;
-  Print " degrees Fahreneit" 
+  Print " degrees Fahreneit"
   Print Using f; (temp - 273.15) * 1.8 + 32.0 + 459.67;
   Print " degrees Rankine"
 End Sub
 
-convKelvin(0.0) 
+convKelvin(0.0)
 Print
 convKelvin(21.0)
 Print
@@ -1878,10 +1878,10 @@ convert n = zipWith (++) labels nums
     where labels      = ["kelvin: ", "celcius: ", "farenheit: ", "rankine: "]
           conversions = [id, subtract 273, subtract 459.67 . (1.8 *), (1.8 *)]
           nums        = (show . ($ n)) <$> conversions
-           
+
 getTemp :: ExceptT String IO Double
-getTemp = do 
-    t <- liftIO getLine >>= tryRead "Could not read temp" 
+getTemp = do
+    t <- liftIO getLine >>= tryRead "Could not read temp"
     tryAssert "Temp cannot be negative" (t>=0)
     return t
 ```
@@ -1933,7 +1933,7 @@ F 32.0
    K2F    =:  _459.67 1.8  NB. F = (1.8*k) - 459.67
    K2R    =:     0    1.8  NB. R = (1.8*k) +   0
 
-   NB.  Do all conversions at once (eval 
+   NB.  Do all conversions at once (eval
    NB.  polynomials in parallel). This is the
    NB.  numeric matrix J programs would manipulate
    NB.  directly.
@@ -1947,7 +1947,7 @@ F 32.0
    NB. temp with scale, for human legibility
    fmt    =:  [: (;:inv"1) 0 _1 |: 'KCFR' ;"0 1"_1 '0.2' 8!:0 ]
    kcfr   =:  fmt@k2KCFR
-   
+
    kcfr 21
 K   21.00
 C -252.00
@@ -2041,9 +2041,9 @@ Number.prototype.toMaxDecimal = function (d) {
 
 function kCnv(k) {
 	document.write( k,'K° = ', k2c(k).toMaxDecimal(2),'C° = ', k2r(k).toMaxDecimal(2),'R° = ', k2f(k).toMaxDecimal(2),'F°
-' ) 
+' )
 }
- 
+
 kCnv(21)
 kCnv(295)
 ```
@@ -2142,7 +2142,7 @@ def round(keep):
                 else (($head + $tail) | length) as $length
                   | ($head[0:-1] + $tail)
                   | (tonumber +  (if $head[0:1]=="-" then -5 else 5 end))
-                  | tostring 
+                  | tostring
                   | .[0: ($ix+1+length-$length)] + "." + .[length-keep-1:-1]
                 end
             end
@@ -2154,7 +2154,7 @@ def k2f: . * 1.8 - 459.67;
 def k2r: . * 1.8;
 
 # produce a stream
-def cfr: 
+def cfr:
   if . >= 0
   then "Kelvin: \(.)", "Celsius: \(k2c|round(2))",
        "Fahrenheit: \(k2f|round(2))", "Rankine: \(k2r|round(2))"
@@ -2173,7 +2173,7 @@ cfr
   Celsius: -252.15
   Fahrenheit: -421.87
   Rankine: 37.80
-  
+
   -1
   jq: error: cfr: -1 is an invalid temperature in degrees Kelvin
 ```
@@ -2217,7 +2217,7 @@ fun main(args: Array<String>) {
     val degrees = readLine()!!.toDouble()
     val k = Kelvin(degrees)
     val f = "% 1.2f"
-    println() 
+    println()
     println("K  ${f.format(k.degrees)}\n")
     println("C  ${f.format(k.toCelsius())}\n")
     println("F  ${f.format(k.toFahreneit())}\n")
@@ -2334,7 +2334,7 @@ for {set k [readline]} {![streq $k {}]} {set k [readline]} {
 {{out}}
 
 ```txt
-prompt$ lil temperatureConversion.lil 
+prompt$ lil temperatureConversion.lil
 Enter kelvin temperatures or just enter to quit: 21
 Kelvin:     21
 Celsius:    -252.150000
@@ -2423,7 +2423,7 @@ R: 37.80
 
 ```Mathematica
 tempConvert[t_] :=
-Grid[Transpose@{{"K", "C", "F", "R"}, 
+Grid[Transpose@{{"K", "C", "F", "R"},
 Round[{t, t - 273.15, 9 t/5 - 459.67, 9 t/5}, .01]}]
 
 tempConvert[21]
@@ -2526,7 +2526,7 @@ output ["K \(kelvin)\n", "C \(celsius)\n", "F \(fahrenheit)\n", "R \(rankine)\n"
 {{out}}
 ```txt
 
-Compiling temperature.mzn, additional arguments kelvin=1000; 
+Compiling temperature.mzn, additional arguments kelvin=1000;
 Running temperature.mzn
 K 1000.0
 C 726.850000000001
@@ -2587,9 +2587,9 @@ val K = argv 0;
 if K = false then
 	println "mlite -f temcon.m <temp>"
 else
-	let 
+	let
 		val K = ston K
-	in 
+	in
 		print "Kelvin:     "; println K;
 		print "Celcius:    "; println ` KtoC K;
 		print "Fahrenheit: "; println ` KtoF K;
@@ -2767,19 +2767,19 @@ method runSample(arg) public static
         temperatureConversion(CELSIUS,    FAHRENHEIT, ttC).format(5, 2) -
         temperatureConversion(CELSIUS,    KELVIN,     ttC).format(5, 2) -
         temperatureConversion(CELSIUS,    RANKINE,    ttC).format(5, 2)
-  
+
     say 'F ' -
         temperatureConversion(FAHRENHEIT, CELSIUS,    ttF).format(5, 2) -
         temperatureConversion(FAHRENHEIT, FAHRENHEIT, ttF).format(5, 2) -
         temperatureConversion(FAHRENHEIT, KELVIN,     ttF).format(5, 2) -
         temperatureConversion(FAHRENHEIT, RANKINE,    ttF).format(5, 2)
-  
+
     say 'K ' -
         temperatureConversion(KELVIN,     CELSIUS,    ttK).format(5, 2) -
         temperatureConversion(KELVIN,     FAHRENHEIT, ttK).format(5, 2) -
         temperatureConversion(KELVIN,     KELVIN,     ttK).format(5, 2) -
         temperatureConversion(KELVIN,     RANKINE,    ttK).format(5, 2)
-  
+
     say 'R ' -
         temperatureConversion(RANKINE,    CELSIUS,    ttR).format(5, 2) -
         temperatureConversion(RANKINE,    FAHRENHEIT, ttR).format(5, 2) -
@@ -2914,9 +2914,9 @@ R 37.80
 
 (define (kelvinConversion k)
     (if (number? k)
-        (println k " kelvin is equivalent to:\n" 
-            (to-celsius k) " celsius\n" 
-            (to-fahrenheit k) " fahrenheit\n" 
+        (println k " kelvin is equivalent to:\n"
+            (to-celsius k) " celsius\n"
+            (to-fahrenheit k) " fahrenheit\n"
             (to-rankine k) " rankine")
         (println "Please enter a number only, with no º or letter. ")
     )
@@ -2981,11 +2981,11 @@ class Temperature {
   function : KelvinToCelsius(k : Float) ~ Float {
     return k - 273.15;
   }
- 
+
   function : KelvinToFahrenheit(k : Float) ~ Float {
     return k * 1.8 - 459.67;
   }
- 
+
   function : KelvinToRankine(k : Float) ~ Float {
     return k * 1.8;
   }
@@ -3015,10 +3015,10 @@ int main(int argc, const char * argv[])
     @autoreleasepool {
         if(argc > 1)
         {
-            NSString *arg1 = [NSString stringWithCString:argv[1] encoding:NSUTF8StringEncoding]; 
+            NSString *arg1 = [NSString stringWithCString:argv[1] encoding:NSUTF8StringEncoding];
             // encoding shouldn't matter in this case
             double kelvin = [arg1 doubleValue];
-            
+
             NSLog(@"K %.2f",kelvin);
             NSLog(@"C %.2f\n", kelvin - 273.15);
             NSLog(@"F %.2f\n", (kelvin * 1.8) - 459.67);
@@ -3179,7 +3179,7 @@ end.
 ```txt
 
 Temperature to convert (in kelvins): 373.15
-373.15 in kelvins is 
+373.15 in kelvins is
     100.00 in degrees Celsius.
     212.00 in degrees Fahrenheit.
     671.67 in degrees Rankine.
@@ -3231,10 +3231,10 @@ my %scale =
     Rankine    => { factor => 1.8, offset =>    0    },
     Fahrenheit => { factor => 1.8, offset => -459.67 },
 ;
- 
+
 my $kelvin = +prompt "Enter a temperature in Kelvin: ";
 die "No such temperature!" if $kelvin < 0;
- 
+
 for %scale.sort {
     printf "%12s: %7.2f\n", .key, $kelvin * .value<factor> + .value<offset>;
 }
@@ -3791,9 +3791,9 @@ Repeat
   PrintN(#TAB$+"Fahrenheit"+#TAB$+RSet(StrD(Kelvin2Fahrenheit(Kelvin),2),8,Chr(32)))
   PrintN(#TAB$+"Rankine   "+#TAB$+RSet(StrD(Kelvin2Rankine(Kelvin),2),8,Chr(32)))
   PrintN("ESC = End.")
-  Repeat 
+  Repeat
     k$=Inkey() : Delay(50) : If RawKey()=#ESC : End : EndIf
-  Until RawKey()  
+  Until RawKey()
 ForEver
 ```
 
@@ -3818,12 +3818,12 @@ ESC = End.
 	print("%g Kelvin = %g Celsius = %g Fahrenheit = %g Rankine degrees."
 	      % (k, k - 273.15, k * 1.8 - 459.67, k * 1.8))
 
-	
+
 K ? 21.0
 21 Kelvin = -252.15 Celsius = -421.87 Fahrenheit = 37.8 Rankine degrees.
 K ? 222.2
 222.2 Kelvin = -50.95 Celsius = -59.71 Fahrenheit = 399.96 Rankine degrees.
-K ? 
+K ?
 ```
 
 
@@ -3843,7 +3843,7 @@ This converts from any one of the units to all the others
 	print("%g Kelvin = %g Celsius = %g Fahrenheit = %g Rankine degrees."
 	      % (k, k - 273.15, k * 1.8 - 459.67, k * 1.8))
 
-	
+
 <value> <K/R/F/C> ? 222.2 K
 222.2 Kelvin = -50.95 Celsius = -59.71 Fahrenheit = 399.96 Rankine degrees.
 <value> <K/R/F/C> ? -50.95 C
@@ -3852,14 +3852,14 @@ This converts from any one of the units to all the others
 222.2 Kelvin = -50.95 Celsius = -59.71 Fahrenheit = 399.96 Rankine degrees.
 <value> <K/R/F/C> ? 399.96 R
 222.2 Kelvin = -50.95 Celsius = -59.71 Fahrenheit = 399.96 Rankine degrees.
-<value> <K/R/F/C> ? 
+<value> <K/R/F/C> ?
 ```
 
 
 
 ## Racket
 
-Although not exactly the shortest code, 
+Although not exactly the shortest code,
 the converter function can turn any temperature into any other
 
 ```Racket
@@ -3884,10 +3884,10 @@ the converter function can turn any temperature into any other
                    (converter temp 'k 'f)
                    (converter temp 'k 'r))))
 (kelvin-to-all 21)
-;Kelvin: 21 
-;Celsius: -252.14999999999998 
-;Fahrenheit: -421.87 
-;Rankine: 37.800000000000004 
+;Kelvin: 21
+;Celsius: -252.14999999999998
+;Fahrenheit: -421.87
+;Rankine: 37.800000000000004
 
 ```
 
@@ -3913,11 +3913,11 @@ This REXX version supports:
 ::::::* Rankine
 ::::::* Reaumur,   Réaumur
 ::::::* Romer,   Rømer,   Roemer
-::* multiple temperatures in a list 
+::* multiple temperatures in a list
 ::* specification of which temperature scale to be used for conversion
 ::* conversion of a temperature to:
 ::::::* all other temperature scales
-::::::* a specific temperature scale 
+::::::* a specific temperature scale
 ::* supports proper pluralization of kelvin
 ::* comments (annotation notes) allowed within the list
 ::* aligned output (whole numbers and decimal fractions)
@@ -4113,7 +4113,7 @@ The REXX program can be seen at   ──►   [[Temperature conversion/REXX]]
 
 This REXX version supports   '''58'''   temperature scales.
 
-Scientific note:   at temperatures above   '''1 Planck''',   quantum gravitational effects become relevant, and current physical theory breaks down because there is a lack of a theory of quantum gravity. 
+Scientific note:   at temperatures above   '''1 Planck''',   quantum gravitational effects become relevant, and current physical theory breaks down because there is a lack of a theory of quantum gravity.
 
 
 See the Wikipedia article:     [http://en.wikipedia.org/wiki/Planck_temperature Planck temperature].
@@ -4267,10 +4267,10 @@ see "Kelvin : " + k + nl +
 "Rankine : " + r + nl +
 "Fahrenheit : " + f + nl
 
-func convertTemp k 
+func convertTemp k
      c = k - 273.15
      r = k * 1.8
-     f = r - 459.67 
+     f = r - 459.67
 
 ```
 
@@ -4282,7 +4282,7 @@ func convertTemp k
 ```ruby
 module TempConvert
 
-  FROM_TEMP_SCALE_TO_K = 
+  FROM_TEMP_SCALE_TO_K =
   {'kelvin'     => lambda{|t| t},
    'celsius'    => lambda{|t| t + 273.15},
    'fahrenheit' => lambda{|t| (t + 459.67) * 5/9.0},
@@ -4292,7 +4292,7 @@ module TempConvert
    'reaumur'    => lambda{|t| t * 5/4.0 + 273.15},
    'roemer'     => lambda{|t| (t - 7.5) * 40/21.0 + 273.15}}
 
-  TO_TEMP_SCALE_FROM_K = 
+  TO_TEMP_SCALE_FROM_K =
   {'kelvin'     => lambda{|t| t},
    'celsius'    => lambda{|t| t - 273.15},
    'fahrenheit' => lambda{|t| t * 9/5.0 - 459.67},
@@ -4301,7 +4301,7 @@ module TempConvert
    'newton'     => lambda{|t| (t - 273.15) * 33/100.0},
    'reaumur'    => lambda{|t| (t - 273.15) * 4/5.0},
    'roemer'     => lambda{|t| (t - 273.15) * 21/40.0 + 7.5}}
-  
+
   SUPPORTED_SCALES = FROM_TEMP_SCALE_TO_K.keys.join('|')
 
   def self.method_missing(meth, *args, &block)
@@ -4315,21 +4315,21 @@ module TempConvert
   def self.respond_to_missing?(meth, include_private = false)
     valid_temperature_conversion?(meth) || super
   end
- 
+
   def self.valid_temperature_conversion?(meth)
-    !!(meth.to_s =~ /(#{SUPPORTED_SCALES})_to_(#{SUPPORTED_SCALES})/) 
+    !!(meth.to_s =~ /(#{SUPPORTED_SCALES})_to_(#{SUPPORTED_SCALES})/)
   end
-  
+
   def self.convert_temperature(meth, temp)
     from_scale, to_scale = meth.to_s.split("_to_")
-    return temp.to_f if from_scale == to_scale # no kelvin roundtrip 
+    return temp.to_f if from_scale == to_scale # no kelvin roundtrip
     TO_TEMP_SCALE_FROM_K[to_scale].call(FROM_TEMP_SCALE_TO_K[from_scale].call(temp)).round(2)
   end
- 
+
 end
 ```
 
-Converts all eight scales to any other scale, by means of method_missing. 
+Converts all eight scales to any other scale, by means of method_missing.
 
 Usage:
 
@@ -4538,17 +4538,17 @@ Enter a temperature in Kelvin: 256
 ```swift
 
 func KtoC(kelvin : Double)->Double{
-    
+
     return kelvin-273.15
 }
 
 func KtoF(kelvin : Double)->Double{
-    
+
     return ((kelvin-273.15)*1.8)+32
 }
 
 func KtoR(kelvin : Double)->Double{
-    
+
     return ((kelvin-273.15)*1.8)+491.67
 }
 
@@ -4687,7 +4687,7 @@ End Sub
 
 Function ConvTemp(sngReturn As Single, Kelv As Single, InWhat As String) As Boolean
 Dim ratio As Single
-    
+
     ConvTemp = True
     ratio = 9 / 5
     Select Case UCase(InWhat)
@@ -4772,7 +4772,7 @@ DO WHILE .T.
     k = VAL(INPUTBOX("Degrees Kelvin:", "Temperature"))
     IF k <= 0
 	EXIT
-    ENDIF	
+    ENDIF
     ? "K:", k
     c = k - ABSZC
     ? "C:", c
@@ -4781,7 +4781,7 @@ DO WHILE .T.
     r = f + ABSZF
     ? "R:", r
     ?
-ENDDO	
+ENDDO
 SET FIXED &cf
 SET DECIMALS TO n
 ```

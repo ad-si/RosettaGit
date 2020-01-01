@@ -13,11 +13,11 @@ tags = []
 {{task|Iteration}} [[Category:Loop modifiers]] [[Category:Simple]]
 
 ;Task:
-Show a loop which prints random numbers (each number newly generated each loop) from 0 to 19 (inclusive). 
+Show a loop which prints random numbers (each number newly generated each loop) from 0 to 19 (inclusive).
 
-If a number is 10, stop the loop after printing it, and do not generate any further numbers.  
+If a number is 10, stop the loop after printing it, and do not generate any further numbers.
 
-Otherwise, generate and print a second random number before restarting the loop.  
+Otherwise, generate and print a second random number before restarting the loop.
 
 If the number 10 is never generated as the first number in a loop, loop forever.
 
@@ -80,7 +80,7 @@ LOOP     MVC    PG,=CL80' '        clean buffer
          XPRNT  PG,L'PG            print buffer
          B      LOOP               loop forever
 ENDLOOP  XPRNT  PG,L'PG            print buffer
-         L      R13,4(0,R13)       epilog 
+         L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    " restore
          XR     R15,R15            " rc=0
          BR     R14                exit
@@ -123,7 +123,7 @@ XDEC     DS     CL12
 
 
 ## 6502 Assembly
- 
+
 Code is called as a subroutine (i.e. JSR LoopBreakSub).  Specific OS/hardware routines for generating random numbers and printing are left unimplemented.
 
 ```6502asm
@@ -238,8 +238,8 @@ LAB:
 
 ```txt
 
-        +17           +4          +20           +3          +16           +5           +1          +17  
-        +11           +2          +12           +5           +7           +6          +10  
+        +17           +4          +20           +3          +16           +5           +1          +17
+        +11           +2          +12           +5           +7           +6          +10
 
 ```
 
@@ -412,15 +412,15 @@ iGraine:  .int 123456
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                @ entry of program 
-    push {fp,lr}      @ saves 2 registers 
-1:    @ begin loop 
+.global main
+main:                @ entry of program
+    push {fp,lr}      @ saves 2 registers
+1:    @ begin loop
     mov r4,#20
 2:
     mov r0,#19
@@ -434,18 +434,18 @@ main:                @ entry of program
     subs r4,#1                   @ decrement counter
     bgt 2b                      @ loop if greather
     b 1b                          @ begin loop one
-	
+
 3:
     mov r2,r0             @ save value
     ldr r0,iAdrszMessEndLoop
     bl affichageMess            @ display message
     mov r0,r2
-    ldr r1,iAdrsMessValeur                
+    ldr r1,iAdrsMessValeur
     bl conversion10       @ call function with 2 parameter (r0,r1)
     ldr r0,iAdrszMessResult
     bl affichageMess            @ display message
 
-100:   @ standard end of the program 
+100:   @ standard end of the program
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
     mov r7, #EXIT              @ request to exit program
@@ -455,65 +455,65 @@ iAdrsMessValeur:          .int sMessValeur
 iAdrszMessResult:         .int szMessResult
 iAdrszMessEndLoop:        .int szMessEndLoop
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}      @ save  registres
-    mov r2,#0                  @ counter length 
-1:      @ loop length calculation 
-    ldrb r1,[r0,r2]           @ read octet start position + index 
-    cmp r1,#0                  @ if 0 its over 
-    addne r2,r2,#1            @ else add 1 in the length 
-    bne 1b                    @ and loop 
-                                @ so here r2 contains the length of the message 
-    mov r1,r0        			@ address message in r1 
-    mov r0,#STDOUT      		@ code to write to the standard output Linux 
-    mov r7, #WRITE             @ code call system "write" 
-    svc #0                      @ call systeme 
-    pop {r0,r1,r2,r7,lr}        @ restaur des  2 registres */ 
-    bx lr                       @ return  
+    mov r2,#0                  @ counter length
+1:      @ loop length calculation
+    ldrb r1,[r0,r2]           @ read octet start position + index
+    cmp r1,#0                  @ if 0 its over
+    addne r2,r2,#1            @ else add 1 in the length
+    bne 1b                    @ and loop
+                                @ so here r2 contains the length of the message
+    mov r1,r0        			@ address message in r1
+    mov r0,#STDOUT      		@ code to write to the standard output Linux
+    mov r7, #WRITE             @ code call system "write"
+    svc #0                      @ call systeme
+    pop {r0,r1,r2,r7,lr}        @ restaur des  2 registres */
+    bx lr                       @ return
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 conversion10:
-    push {r1-r4,lr}    @ save registers 
+    push {r1-r4,lr}    @ save registers
     mov r3,r1
     mov r2,#10
 
 1:	   @ start loop
     bl divisionpar10 @ r0 <- dividende. quotient ->r0 reste -> r1
-    add r1,#48        @ digit	
+    add r1,#48        @ digit
     strb r1,[r3,r2]  @ store digit on area
     sub r2,#1         @ previous position
     cmp r0,#0         @ stop if quotient = 0 */
     bne 1b	          @ else loop
     @ and move spaces in first on area
-    mov r1,#' '   @ space	
-2:	
+    mov r1,#' '   @ space
+2:
     strb r1,[r3,r2]  @ store space in area
     subs r2,#1       @ @ previous position
-    bge 2b           @ loop if r2 >= zéro 
+    bge 2b           @ loop if r2 >= zéro
 
-100:	
-    pop {r1-r4,lr}    @ restaur registres 
+100:
+    pop {r1-r4,lr}    @ restaur registres
     bx lr	          @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
     push {r2-r4}   /* save registers  */
-    mov r4,r0 
+    mov r4,r0
     mov r3,#0x6667   @ r3 <- magic_number  lower
     movt r3,#0x6666  @ r3 <- magic_number  upper
-    smull r1, r2, r3, r0   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) 
+    smull r1, r2, r3, r0   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0)
     mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
     mov r1, r0, LSR #31    /* r1 <- r0 >> 31 */
     add r0, r2, r1         /* r0 <- r2 + r1 */
@@ -527,27 +527,27 @@ divisionpar10:
 /***************************************************/
 /* r0 contains limit  */
 genereraleas:
-    push {r1-r4,lr}    @ save registers 
+    push {r1-r4,lr}    @ save registers
     ldr r4,iAdriGraine
     ldr r2,[r4]
     ldr r3,iNbDep1
     mul r2,r3,r2
     ldr r3,iNbDep1
     add r2,r2,r3
-    str r2,[r4]     @ maj de la graine pour l appel suivant 
+    str r2,[r4]     @ maj de la graine pour l appel suivant
 
     mov r1,r0        @ divisor
     mov r0,r2        @ dividende
     bl division
     mov r0,r3       @  résult = remainder
-  
+
 100:                @ end function
     pop {r1-r4,lr}   @ restaur registers
     bx lr            @ return
 /********************************************************************/
-iAdriGraine: .int iGraine	
+iAdriGraine: .int iGraine
 iNbDep1: .int 0x343FD
-iNbDep2: .int 0x269EC3 
+iNbDep2: .int 0x269EC3
 /***************************************************/
 /* integer division unsigned                       */
 /***************************************************/
@@ -561,14 +561,14 @@ division:
     mov r3, #0                @ init remainder
     mov r4, #32               @ init counter bits
     b 2f
-1:          @ loop 
+1:          @ loop
     movs r0, r0, LSL #1     @ r0 <- r0 << 1 updating cpsr (sets C if 31st bit of r0 was 1)
-    adc r3, r3, r3           @ r3 <- r3 + r3 + C. This is equivalent to r3 <- (r3 << 1) + C 
-    cmp r3, r1               @ compute r3 - r1 and update cpsr 
-    subhs r3, r3, r1        @ if r3 >= r1 (C=1) then r3 <- r3 - r1 
-    adc r2, r2, r2           @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C 
+    adc r3, r3, r3           @ r3 <- r3 + r3 + C. This is equivalent to r3 <- (r3 << 1) + C
+    cmp r3, r1               @ compute r3 - r1 and update cpsr
+    subhs r3, r3, r1        @ if r3 >= r1 (C=1) then r3 <- r3 - r1
+    adc r2, r2, r2           @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C
 2:
-    subs r4, r4, #1          @ r4 <- r4 - 1 
+    subs r4, r4, #1          @ r4 <- r4 - 1
     bpl 1b                  @ if r4 >= 0 (N=0) then loop
     pop {r4, lr}
     bx lr
@@ -641,12 +641,12 @@ End
 ```freebasic
 
 REPEAT
-    number = RANDOM(20) 
+    number = RANDOM(20)
     PRINT "first  " ,number
-        IF number = 10 THEN 
+        IF number = 10 THEN
             BREAK
         ENDIF
-    PRINT "second  ",RANDOM(20) 
+    PRINT "second  ",RANDOM(20)
 UNTIL FALSE
 ```
 
@@ -669,7 +669,7 @@ In Commodore BASIC, the function RND() generates a floating point number from 0.
 
 
 ==={{header|IS-BASIC}}===
-<lang IS-BASIC>100 RANDOMIZE 
+<lang IS-BASIC>100 RANDOMIZE
 110 DO
 120   LET A=RND(20)+1
 130   PRINT A,
@@ -861,9 +861,9 @@ class Program
             int b = random.Next(20)
             Console.WriteLine(b);
         }
-           
+
         Console.ReadLine();
-    }       
+    }
 }
 ```
 
@@ -872,8 +872,8 @@ class Program
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <ctime>
 #include <cstdlib>
 
@@ -987,8 +987,8 @@ Serves 2.
 ```lisp
 (loop [[a b & more] (repeatedly #(rand-int 20))]
   (println a)
-  (when-not (= 10 a) 
-    (println b) 
+  (when-not (= 10 a)
+    (println b)
     (recur more)))
 ```
 
@@ -1036,7 +1036,7 @@ We can use print from the Rhino JavaScript shell as in the JavaScript example or
 ```coffeescript
 
 loop
-  print a = Math.random() * 20 // 1  
+  print a = Math.random() * 20 // 1
   break if a == 10
   print Math.random() * 20 // 1
 
@@ -1063,63 +1063,63 @@ loop
 {{out}}
 My first two test outputs (I swear this is true)
 <pre style="height:25ex;overflow:scroll">
-6 0 
-9 6 
-12 3 
-6 0 
-14 10 
-19 12 
-18 14 
-19 8 
-3 2 
-19 1 
-11 12 
-16 9 
-11 15 
-3 19 
-13 8 
-6 4 
-4 4 
-13 17 
-16 9 
-5 12 
-12 6 
-4 14 
-1 10 
-3 7 
-11 15 
-11 8 
-0 16 
-16 14 
-8 14 
-11 10 
-8 8 
-16 11 
-4 7 
-19 10 
-8 2 
-15 11 
-18 10 
-1 2 
-18 9 
-4 9 
-6 6 
-11 8 
-14 6 
-17 15 
-13 2 
-2 0 
-2 17 
-8 17 
-18 13 
-11 5 
-15 18 
-17 8 
-15 3 
-7 17 
-7 13 
-15 14 
-11 9 
+6 0
+9 6
+12 3
+6 0
+14 10
+19 12
+18 14
+19 8
+3 2
+19 1
+11 12
+16 9
+11 15
+3 19
+13 8
+6 4
+4 4
+13 17
+16 9
+5 12
+12 6
+4 14
+1 10
+3 7
+11 15
+11 8
+0 16
+16 14
+8 14
+11 10
+8 8
+16 11
+4 7
+19 10
+8 2
+15 11
+18 10
+1 2
+18 9
+4 9
+6 6
+11 8
+14 6
+17 15
+13 2
+2 0
+2 17
+8 17
+18 13
+11 5
+15 18
+17 8
+15 3
+7 17
+7 13
+15 14
+11 9
 10
 
 ```
@@ -1165,7 +1165,7 @@ void main() {
 {{out}}
 
 ```txt
-2 4 9 5 3 7 4 4 14 14 3 7 13 8 13 6 10 
+2 4 9 5 3 7 4 4 14 14 3 7 13 8 13 6 10
 ```
 
 
@@ -1277,14 +1277,14 @@ while (true) {
 ## Ela
 
 
-This implementation uses .NET Framework Math.Randomize function. 
-Current ticks multiplied by an iteration index are used as a seed. 
+This implementation uses .NET Framework Math.Randomize function.
+Current ticks multiplied by an iteration index are used as a seed.
 As a result, an output looks almost truly random:
 
 
 ```ela
 open datetime random monad io
- 
+
 loop = loop' 1
        where loop' n t = do
                 dt <- datetime.now
@@ -1306,13 +1306,13 @@ loop 10 ::: IO
 ```elixir
 defmodule Loops do
   def break, do: break(random)
-  
+
   defp break(10), do: IO.puts 10
   defp break(r) do
     IO.puts "#{r},\t#{random}"
     break(random)
   end
-  
+
   defp random, do: Enum.random(0..19)
 end
 
@@ -1351,10 +1351,10 @@ Loops.break
 %% Implemented by Arjun Sunel
 -module(forever).
 -export([main/0, for/0]).
- 
+
 main() ->
-	for().    
-  	 
+	for().
+
 for() ->
 	K = random:uniform(19),
         io:fwrite( "~p ", [K] ),
@@ -1364,7 +1364,7 @@ for() ->
 		M = random:uniform(19),
 		io:format("~p~n",[M]),
    		for()
-	end.		
+	end.
 
 ```
 
@@ -1650,11 +1650,11 @@ Dim i As Integer
 Randomize
 Do
   i = Int(Rnd * 20)
-  Print Using "##"; i; 
+  Print Using "##"; i;
   Print "  ";
   If i = 10 Then Exit Do
   i = Int(Rnd * 20)
-  Print Using "##"; i; 
+  Print Using "##"; i;
   Print"  ";
 Loop
 
@@ -1897,7 +1897,7 @@ PROCEDURE Loop()
 import Control.Monad
 import System.Random
 
-loopBreak n k = do 
+loopBreak n k = do
   r <- randomRIO (0,n)
   print r
   unless (r==k) $ do
@@ -1971,11 +1971,11 @@ procedure main()
 end
 ```
 
-Notes: 
-* For any positive integer i, ?i produces a value j where 1 <= j <= i 
+Notes:
+* For any positive integer i, ?i produces a value j where 1 <= j <= i
 * Although this can be written with a break (e.g. repeat expression & break), there is no need to actually use one. (And it's ugly).
 * Programmers new to Icon/Unicon need to understand that just about everything returns values including comparison operators, I/O functions like write/writes.
-* This program will perform similarly but not identically under Icon and Unicon because the random operator ?i behaves differently.  While both produce pseudo-random numbers a different generator is used.  Also, the sequence produced by Icon begins with the same seed value and is repeatable whereas the sequence produced by Unicon does not.  One way to force Icon to use different random sequences on each call would be to add the line 
+* This program will perform similarly but not identically under Icon and Unicon because the random operator ?i behaves differently.  While both produce pseudo-random numbers a different generator is used.  Also, the sequence produced by Icon begins with the same seed value and is repeatable whereas the sequence produced by Unicon does not.  One way to force Icon to use different random sequences on each call would be to add the line
 ```Icon
 &random := integer(map("smhSMH","Hh:Mm:Ss",&clock))
 ```
@@ -2039,7 +2039,7 @@ while(true){
 for (;;) {
   var a = Math.floor(Math.random() * 20);
   print(a);
-  if (a == 10) 
+  if (a == 10)
     break;
   a = Math.floor(Math.random() * 20);
   print(a);
@@ -2057,15 +2057,15 @@ In a functional idiom of JavaScript, we might instead write something like:
 ```JavaScript
 (function streamTillInitialTen() {
     var nFirst = Math.floor(Math.random() * 20);
-        
+
     console.log(nFirst);
-    
+
     if (nFirst === 10) return true;
-    
+
     console.log(
         Math.floor(Math.random() * 20)
     );
-    
+
     return streamTillInitialTen();
 })();
 ```
@@ -2119,9 +2119,9 @@ Though returning a value composes better, and costs less IO traffic, than firing
 console.log(
   (function streamTillInitialTen() {
     var nFirst = Math.floor(Math.random() * 20);
-  
+
     if (nFirst === 10) return [10];
-  
+
     return [
       nFirst,
       Math.floor(Math.random() * 20)
@@ -2155,11 +2155,11 @@ Sample result:
 With the functions defined below, the task can be accomplished using the following jq filter:
 
     take( rand(20); . != 10 )
- 
+
 Here, `rand(n)` is a pseudo-random number generator, and `take(stream; cond)` will continue taking from the stream so long as the condition is satisfied.  When the condition is no longer satisfied, the PRNG is immediately terminated.
 
 Using the built-in `foreach` construct, the above is equivalent to:
-  
+
     label $done | foreach rand(20) as $n (null; $n; if . == 10 then break $done else . end)
 
 '''PRNG'''
@@ -2167,14 +2167,14 @@ Using the built-in `foreach` construct, the above is equivalent to:
 Currently, jq does not have a built-in random-number generator, so here we borrow one of the linear congruential generators defined at https://rosettacode.org/wiki/Linear_congruential_generator -
 
 ```jq
-# 15-bit integers generated using the same formula as rand() 
+# 15-bit integers generated using the same formula as rand()
 # from the Microsoft C Runtime.
 # Input: [ count, state, rand ]
 def next_rand_Microsoft:
   .[0] as $count | .[1] as $state
   | ( (214013 * $state) + 2531011) % 2147483648 # mod 2^31
   | [$count+1 , ., (. / 65536 | floor) ];
- 
+
 def rand_Microsoft(seed):
   [0,seed]
   | next_rand_Microsoft  # the seed is not so random
@@ -2295,7 +2295,7 @@ while(#x != 10) => {^
 
 ## Liberty BASIC
 
-The task specifies a "number". 
+The task specifies a "number".
 
 ```lb>while num<
 10
@@ -2419,8 +2419,8 @@ Module Checkit {
                         If M=10 then Break
                         Print Random(0, 19)
                         loop
-                  }     
-                  Print "no print this" 
+                  }
+                  Print "no print this"
             } always
             Print "no print this"
       } always
@@ -2619,7 +2619,7 @@ BREAKLOOP
  KILL A,B
  QUIT
  ;A denser version that doesn't require two tests
- NEW A,B 
+ NEW A,B
  FOR  SET A=$RANDOM(20) WRITE !,A QUIT:A=10  SET B=$RANDOM(20) WRITE ?6,B
  KILL A,B QUIT
 ```
@@ -2628,7 +2628,7 @@ BREAKLOOP
 
 ```txt
 USER>D BREAKLOOP^ROSETTA
- 
+
 5     3
 9     13
 3     12
@@ -2639,7 +2639,7 @@ USER>D BREAKLOOP^ROSETTA
 4     18
 10
 USER>D BREAKLOOP+11^ROSETTA
- 
+
 6     13
 15    3
 0     8
@@ -2819,7 +2819,7 @@ END LoopBreak.
 while(true) {
   a := (Float->Random() * 20.0)->As(Int);
   a->PrintLine();
-  if(a = 10) { 
+  if(a = 10) {
     break;
   };
   a := (Float->Random() * 20.0)->As(Int);
@@ -3194,7 +3194,7 @@ If OpenConsole()
     PrintN(Str(a))
     If a = 10
       Break
-    EndIf 
+    EndIf
     b = Random(19)
     PrintN(Str(b))
     PrintN("")
@@ -3364,7 +3364,7 @@ second printing handled by a conditional clause.
 
 {{out|output}}
 
-(A long run was chosen) 
+(A long run was chosen)
 
 ```txt
 
@@ -3495,7 +3495,7 @@ end
 
 extern crate rand;
 use rand::{thread_rng, Rng};
- 
+
 fn main() {
     let mut rng = thread_rng();
     loop {
@@ -3556,7 +3556,7 @@ class MAIN is
       if a = 10 then break!; end; -- here we break
       b := rnd.next % 20;
       #OUT + b + "\n";
-    end; 
+    end;
   end;
 end;
 ```
@@ -3611,7 +3611,7 @@ Or by using call/cc to break out:
 
 ```scheme
 
-(call/cc 
+(call/cc
  (lambda (break)
    (let loop ((first (random 20)))
      (print first)
@@ -3628,7 +3628,7 @@ Or by using call/cc to break out:
 
 {{works with|Scilab|5.5.1}}
 <lang>while %T
-    a=int(rand()*20)  // [0..19] 
+    a=int(rand()*20)  // [0..19]
     printf("%2d ",a)
     if a==10 then break; end
     b=int(rand()*20)
@@ -3646,7 +3646,7 @@ printf("\n")
 17  1
 11 13
 14  3
-10 
+10
 
 ```
 
@@ -3758,7 +3758,7 @@ Most Snobols lack a built-in rand( ) function. Kludgy "Linux-only" implementatio
 ```snobol
 	input(.random,io_findunit(),1,"/dev/urandom")
 while	&ALPHABET random @rand
-	output = rand = rand - (rand / 20) * 20 
+	output = rand = rand - (rand / 20) * 20
 	eq(rand,10)	 :f(while)
 end
 ```
@@ -3816,7 +3816,7 @@ pub main | r, s
 
 ```txt
 
-8 13 1 7 19 1 15 16 9 6 5 9 1 15 5 0 6 3 9 19 8 9 10 
+8 13 1 7 19 1 15 16 9 6 5 9 1 15 5 0 6 3 9 19 8 9 10
 
 ```
 
@@ -3921,7 +3921,7 @@ while 1 {
 
 
 
-###  Mata 
+###  Mata
 
 
 ```stata
@@ -3974,7 +3974,7 @@ while true
 a: 2   b: 7
 a: 16   b: 13
 a: 18   b: 16
-a: 10   
+a: 10
 
 ```
 
@@ -4074,7 +4074,7 @@ a=17 b=13
 a=8 b=11
 a=8 b=0
 a=6 b=2
-a=10 
+a=10
 
 ```
 
@@ -4093,7 +4093,7 @@ Loop
 
 ## UNIX Shell
 
-This script gets random numbers from jot(1). 
+This script gets random numbers from jot(1).
 If there is any error with jot(1), the script exits.
 
 {{works with|Bourne Shell}}
@@ -4173,7 +4173,7 @@ Dim a, b, i
 
 Do
     a = Int(Rnd * 20)
-    WScript.StdOut.Write a 
+    WScript.StdOut.Write a
     If a = 10 Then Exit Do
     b = Int(Rnd * 20)
     WScript.Echo vbNullString, b
@@ -4181,7 +4181,7 @@ Loop
 
 For i = 1 To 100000
     a = Int(Rnd * 20)
-    WScript.StdOut.Write a 
+    WScript.StdOut.Write a
     If a = 10 Then Exit For
     b = Int(Rnd * 20)
     WScript.Echo vbNullString, b
@@ -4216,7 +4216,7 @@ End Module
 {{out}}
 
 ```txt
-14 16 15 11 4 11 18 8 19 5 5 9 12 9 19 0 17 19 13 6 16 16 19 0 13 10 18 13 10 
+14 16 15 11 4 11 18 8 19 5 5 9 12 9 19 0 17 19 13 6 16 16 19 0 13 10 18 13 10
 ```
 
 
@@ -4258,7 +4258,7 @@ loop    [N:= Ran(20);
 
 
 ```zkl
-while(1){n:=(0).random(20); n.print("  "); 
+while(1){n:=(0).random(20); n.print("  ");
    if (n==10){ println(); break; } (0).random().println();
 }
 ```
@@ -4271,7 +4271,7 @@ while(1){n:=(0).random(20); n.print("  ");
 4  3217334923
 18  2050357211
 2  2061361000
-10  
+10
 
 ```
 

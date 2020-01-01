@@ -13,7 +13,7 @@ tags = []
 {{task|Games}}
 
 ;Task:
-Solve a partially filled-in normal   9x9   [[wp:Sudoku|Sudoku]] grid   and display the result in a human-readable format. 
+Solve a partially filled-in normal   9x9   [[wp:Sudoku|Sudoku]] grid   and display the result in a human-readable format.
 
 
 [[wp:Algorithmics_of_sudoku|Algorithmics of Sudoku]]   may help implement this.
@@ -119,7 +119,7 @@ procedure Sudoku is
       end loop;
    end prettyprint;
 
-   
+
    sudoku_ar : sudoku_ar_t :=
      (
       8,5,0,0,0,2,4,0,0,
@@ -199,7 +199,7 @@ PROC avail slice = (REF[]CHAR slice, REF AVAIL available)REF AVAIL:(
         OD;
         available
 );
- 
+
 PROC avail box = (INT x, y, REF AVAIL available)REF AVAIL:(
         #  x designates row, y designates column #
         #  get a base index for the boxes #
@@ -213,20 +213,20 @@ PROC avail box = (INT x, y, REF AVAIL available)REF AVAIL:(
         OD;
         available
 );
- 
+
 [9, 9]CHAR puzzle;
 PROC solve = ([,]CHAR in puzzle)VOID:(
         puzzle := in puzzle;
         TO UPB puzzle UP 2 DO
                 BOOL done := TRUE;
                 FOR i FROM LWB puzzle TO UPB puzzle DO
-                  FOR j FROM 2 LWB puzzle TO 2 UPB puzzle DO 
+                  FOR j FROM 2 LWB puzzle TO 2 UPB puzzle DO
                     CHAR ele := puzzle[i, j];
                     IF ele = empty THEN
                         #  poke at the elements that are "_" #
-                        AVAIL remaining := avail box(i, j, 
-                                           avail slice(puzzle[i, ], 
-                                           avail slice(puzzle[, j], 
+                        AVAIL remaining := avail box(i, j,
+                                           avail slice(puzzle[i, ],
+                                           avail slice(puzzle[, j],
                                            LOC AVAIL := gen full)));
                         STRING s = REPR remaining;
                         IF UPB s = 1 THEN puzzle[i, j] := s[LWB s]
@@ -385,22 +385,22 @@ Sudoku( p ) { ;ErrorLevel contains the number of iterations
    p := RegExReplace(p, "[^1-9@]"), ErrorLevel := 0 ;format puzzle as single line string
    return Sudoku_Display(Sudoku_Solve(p))
 }
- 
+
 Sudoku_Solve( p, d = 0 ) { ;d is 0-based
 ;   http://www.autohotkey.com/forum/topic46679.html
-;   p: 81 character puzzle string 
+;   p: 81 character puzzle string
 ;      (concat all 9 rows of 9 chars each)
 ;      givens represented as chars 1-9
 ;      fill-ins as any non-null, non 1-9 char
 ;   d: used internally. omit on initial call
-;   
+;
 ;   returns: 81 char string with non-givens replaced with valid solution
-;   
+;
    If (d >= 81), ErrorLevel++
       return p  ;this is 82nd iteration, so it has successfully finished iteration 81
    If InStr( "123456789", SubStr(p, d+1, 1) ) ;this depth is a given, skip through
       return Sudoku_Solve(p, d+1)
-   m := Sudoku_Constraints(p,d) ;a string of this level's constraints. 
+   m := Sudoku_Constraints(p,d) ;a string of this level's constraints.
    ; (these will not change for all 9 loops)
    Loop 9
    {
@@ -423,14 +423,14 @@ Sudoku_Constraints( ByRef p, d ) {
    return ""
    ; row:
       . SubStr(p, r * 9 + 1, 9)
-   ; column: 
+   ; column:
       . SubStr(p,c   ,1) SubStr(p,c+9 ,1) SubStr(p,c+18,1)
       . SubStr(p,c+27,1) SubStr(p,c+36,1) SubStr(p,c+45,1)
       . SubStr(p,c+54,1) SubStr(p,c+63,1) SubStr(p,c+72,1)
    ;box
-      . SubStr(p, b, 3) SubStr(p, b+9, 3) SubStr(p, b+18, 3) 
+      . SubStr(p, b, 3) SubStr(p, b+9, 3) SubStr(p, b+18, 3)
 }
- 
+
 Sudoku_Display( p ) {
    If StrLen(p) = 81
       loop 81
@@ -449,17 +449,17 @@ Sudoku_Display( p ) {
 ```bbcbasic
       VDU 23,22,453;453;8,20,16,128
       *FONT Arial,28
-      
+
       DIM Board%(8,8)
       Board%() = %111111111
-      
+
       FOR L% = 0 TO 9:P% = L%*100
         LINE 2,P%+2,902,P%+2
         IF (L% MOD 3)=0 LINE 2,P%,902,P% : LINE 2,P%+4,902,P%+4
         LINE P%+2,2,P%+2,902
         IF (L% MOD 3)=0 LINE P%,2,P%,902 : LINE P%+4,2,P%+4,902
       NEXT
-      
+
       DATA "  4 5  6 "
       DATA " 6 1  8 9"
       DATA "3    7   "
@@ -469,7 +469,7 @@ Sudoku_Display( p ) {
       DATA "   2    6"
       DATA "1 5  4 3 "
       DATA " 2  7 1  "
-      
+
       FOR R% = 8 TO 0 STEP -1
         READ A$
         FOR C% = 0 TO 8
@@ -477,7 +477,7 @@ Sudoku_Display( p ) {
           IF A% Board%(R%,C%) = 1 << (A%-1)
         NEXT
       NEXT R%
-      
+
       GCOL 4
       PROCshow
       WAIT 200
@@ -486,7 +486,7 @@ Sudoku_Display( p ) {
       PROCshow
       REPEAT WAIT 1 : UNTIL FALSE
       END
-      
+
       DEF PROCshow
       LOCAL C%,P%,R%
       FOR C% = 0 TO 8
@@ -500,7 +500,7 @@ Sudoku_Display( p ) {
         NEXT
       NEXT
       ENDPROC
-      
+
       DEF FNsolve(P%(),F%)
       LOCAL C%,D%,M%,N%,R%,X%,Y%,Q%()
       DIM Q%(8,8)
@@ -974,14 +974,14 @@ p|<$0.0^!g+:#9/9<^@ ^,>#+5<5_>#!<>#$0"------+-------+-----":#<^
 
 
 ```txt
-8 5 0 0 0 2 4 0 0 
-7 2 0 0 0 0 0 0 9 
-0 0 4 0 0 0 0 0 0 
-0 0 0 1 0 7 0 0 2 
-3 0 5 0 0 0 9 0 0 
-0 4 0 0 0 0 0 0 0 
-0 0 0 0 8 0 0 7 0 
-0 1 7 0 0 0 0 0 0 
+8 5 0 0 0 2 4 0 0
+7 2 0 0 0 0 0 0 9
+0 0 4 0 0 0 0 0 0
+0 0 0 1 0 7 0 0 2
+3 0 5 0 0 0 9 0 0
+0 4 0 0 0 0 0 0 0
+0 0 0 0 8 0 0 7 0
+0 1 7 0 0 0 0 0 0
 0 0 0 0 3 6 0 4 0
 ```
 
@@ -1028,7 +1028,7 @@ sudokuSolver=
                         | create$!arg
                       )
                       create$(!a+1 !arg)
-                | 
+                |
             )
           & create$(0 0 0 0):?(its.Tree)
           & ( init
@@ -1045,7 +1045,7 @@ sudokuSolver=
                               mod$(!y,3)
                               div$(!y,3)
                           )
-                      | 
+                      |
                       )
                       (   !remainingCells:
                         & init$(!y+1.0.!remainingRows)
@@ -1055,7 +1055,7 @@ sudokuSolver=
                           . (.!remainingCells) !remainingRows
                           )
                       )
-                | 
+                |
             )
           & out$!arg
           &   (its.Set)$(!(its.Tree).init$(0.0.!arg))
@@ -1094,7 +1094,7 @@ sudokuSolver=
                       & ~
                   )
                   ?
-          | 
+          |
       )
       ( Set
       =     update certainValue a b c d
@@ -1156,7 +1156,7 @@ sudokuSolver=
             |   9:?minlen
               & :?minp
               & ( len
-                =   
+                =
                   .   !arg:% %?arg&1+len$!arg
                     | 1
                 )
@@ -1243,8 +1243,8 @@ See e.g. [http://www.techfinesse.com/game/sudoku_solver.php this GPLed solver] w
 
 The following code is really only good for size 3 puzzles. A longer, even less readable version [[Sudoku/C|here]] could handle size 4s.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void show(int *x)
 {
@@ -1475,7 +1475,7 @@ namespace Sudoku
                 return slice;
             }
 
-            // rows    
+            // rows
             foreach (var r in Range(0,9))
             {
                 matrix[r] = new IValue<int>[9];
@@ -1902,7 +1902,7 @@ public class DLX //Some functionality elided
     private class Header : Node
     {
         public Header(Node left, Node right) : base(left, right, null, null, null, -1) { }
-        
+
         public int Size { get; set; }
     }
 
@@ -1953,8 +1953,8 @@ static class Extensions
 
 {{trans|Java}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 using namespace std;
 
 class SudokuSolver {
@@ -2094,15 +2094,15 @@ int main() {
          [0 1 0 0 6 7 0 0 8]
          [0 0 9 0 0 8 0 0 0]
          [0 2 6 4 0 0 7 3 5]])
-3  9  4  8  5  2  6  7  1  
-2  6  8  3  7  1  4  5  9  
-5  7  1  6  9  4  8  2  3  
-1  4  5  7  8  3  9  6  2  
-6  8  2  9  4  5  3  1  7  
-9  3  7  1  2  6  5  8  4  
-4  1  3  5  6  7  2  9  8  
-7  5  9  2  3  8  1  4  6  
-8  2  6  4  1  9  7  3  5  
+3  9  4  8  5  2  6  7  1
+2  6  8  3  7  1  4  5  9
+5  7  1  6  9  4  8  2  3
+1  4  5  7  8  3  9  6  2
+6  8  2  9  4  5  3  1  7
+9  3  7  1  2  6  5  8  4
+4  1  3  5  6  7  2  9  8
+7  5  9  2  3  8  1  4  6
+8  2  6  4  1  9  7  3  5
 
 nil
 ```
@@ -2163,11 +2163,11 @@ Example:
   #2A((3 9 4    _ _ 2    6 7 _)
       (_ _ _    3 _ _    4 _ _)
       (5 _ _    6 9 _    _ 2 _)
-    
+
       (_ 4 5    _ _ _    9 _ _)
       (6 _ _    _ _ _    _ _ 7)
       (_ _ 7    _ _ _    5 8 _)
-    
+
       (_ 1 _    _ 6 7    _ _ 8)
       (_ _ 9    _ _ 8    _ _ _)
       (_ 2 6    4 _ _    7 3 5)))
@@ -2460,19 +2460,19 @@ void main() {
 ------+-------+------
 . . . | . 8 . | . 7 .
 . 1 7 | . . . | . . .
-. . . | . 3 6 | . 4 . 
+. . . | . 3 6 | . 4 .
 
-8 5 9 | 6 1 2 | 4 3 7 
-7 2 3 | 8 5 4 | 1 6 9 
-1 6 4 | 3 7 9 | 5 2 8 
+8 5 9 | 6 1 2 | 4 3 7
+7 2 3 | 8 5 4 | 1 6 9
+1 6 4 | 3 7 9 | 5 2 8
 ------+-------+------
-9 8 6 | 1 4 7 | 3 5 2 
-3 7 5 | 2 6 8 | 9 1 4 
-2 4 1 | 5 9 3 | 7 8 6 
+9 8 6 | 1 4 7 | 3 5 2
+3 7 5 | 2 6 8 | 9 1 4
+2 4 1 | 5 9 3 | 7 8 6
 ------+-------+------
-4 3 2 | 9 8 1 | 6 7 5 
-6 1 7 | 4 2 5 | 8 9 3 
-5 9 8 | 7 3 6 | 2 4 1 
+4 3 2 | 9 8 1 | 6 7 5
+6 1 7 | 4 2 5 | 8 9 3
+5 9 8 | 7 3 6 | 2 4 1
 ```
 
 
@@ -2748,14 +2748,14 @@ end;
 ```elixir
 defmodule Sudoku do
   def display( grid ), do: ( for y <- 1..9, do: display_row(y, grid) )
-  
+
   def start( knowns ), do: Enum.into( knowns, Map.new )
-  
+
   def solve( grid ) do
     sure = solve_all_sure( grid )
     solve_unsure( potentials(sure), sure )
   end
-  
+
   def task( knowns ) do
     IO.puts "start"
     start = start( knowns )
@@ -2765,114 +2765,114 @@ defmodule Sudoku do
     display( solved )
     IO.puts ""
   end
-  
+
   defp bt( grid ), do: bt_reject( is_not_allowed(grid), grid )
-  
+
   defp bt_accept( true, board ), do: throw( {:ok, board} )
   defp bt_accept( false, grid ), do: bt_loop( potentials_one_position(grid), grid )
-  
+
   defp bt_loop( {position, values}, grid ), do: ( for x <- values, do: bt( Map.put(grid, position, x) ) )
-  
+
   defp bt_reject( true, _grid ), do: :backtrack
   defp bt_reject( false, grid ), do: bt_accept( is_all_correct(grid), grid )
-  
+
   defp display_row( row, grid ) do
     for x <- [1, 4, 7], do: display_row_group( x, row, grid )
     display_row_nl( row )
   end
-  
+
   defp display_row_group( start, row, grid ) do
     Enum.each(start..start+2, &IO.write " #{Map.get( grid, {&1, row}, ".")}")
     IO.write " "
   end
-  
+
   defp display_row_nl( n ) when n in [3,6,9], do: IO.puts "\n"
   defp display_row_nl( _n ), do: IO.puts ""
-  
+
   defp is_all_correct( grid ), do: map_size( grid ) == 81
-  
+
   defp is_not_allowed( grid ) do
     is_not_allowed_rows( grid ) or is_not_allowed_columns( grid ) or is_not_allowed_groups( grid )
   end
-  
+
   defp is_not_allowed_columns( grid ), do: values_all_columns(grid) |> Enum.any?(&is_not_allowed_values/1)
-  
+
   defp is_not_allowed_groups( grid ),  do: values_all_groups(grid)  |> Enum.any?(&is_not_allowed_values/1)
-  
+
   defp is_not_allowed_rows( grid ),    do: values_all_rows(grid)    |> Enum.any?(&is_not_allowed_values/1)
-  
+
   defp is_not_allowed_values( values ), do: length( values ) != length( Enum.uniq(values) )
-  
+
   defp group_positions( {x, y} ) do
     for colum <- group_positions_close(x), row <- group_positions_close(y), do: {colum, row}
   end
-  
+
   defp group_positions_close( n ) when n < 4, do: [1,2,3]
   defp group_positions_close( n ) when n < 7, do: [4,5,6]
   defp group_positions_close( _n )          , do: [7,8,9]
-  
+
   defp positions_not_in_grid( grid ) do
     keys = Map.keys( grid )
     for x <- 1..9, y <- 1..9, not {x, y} in keys, do: {x, y}
   end
-  
+
   defp potentials_one_position( grid ) do
     Enum.min_by( potentials( grid ), fn {_position, values} -> length(values) end )
   end
-  
+
   defp potentials( grid ), do: List.flatten( for x <- positions_not_in_grid(grid), do: potentials(x, grid) )
-  
+
   defp potentials( position, grid ) do
     useds = potentials_used_values( position, grid )
     {position, Enum.to_list(1..9) -- useds }
   end
-  
+
   defp potentials_used_values( {x, y}, grid ) do
     row_values    = (for row <- 1..9, row != x, do: {row, y})          |> potentials_values( grid )
     column_values = (for column <- 1..9, column != y, do: {x, column}) |> potentials_values( grid )
     group_values  = group_positions({x, y}) -- [ {x, y} ]              |> potentials_values( grid )
     row_values ++ column_values ++ group_values
   end
-  
+
   defp potentials_values( keys, grid ) do
     for x <- keys, val = grid[x], do: val
   end
-  
+
   defp values_all_columns( grid ) do
     for x <- 1..9, do:
       ( for y <- 1..9, do: {x, y} ) |> potentials_values( grid )
   end
-  
+
   defp values_all_groups( grid ) do
     [[g1,g2,g3], [g4,g5,g6], [g7,g8,g9]] = for x <- [1,4,7], do: values_all_groups(x, grid)
     [g1,g2,g3,g4,g5,g6,g7,g8,g9]
   end
-  
+
   defp values_all_groups( x, grid ) do
     for x_offset <- x..x+2, do: values_all_groups(x, x_offset, grid)
   end
-  
+
   defp values_all_groups( _x, x_offset, grid ) do
     ( for y_offset <- group_positions_close(x_offset), do: {x_offset, y_offset} )
     |> potentials_values( grid )
   end
-  
+
   defp values_all_rows( grid ) do
     for y <- 1..9, do:
       ( for x <- 1..9, do: {x, y} ) |> potentials_values( grid )
   end
-  
+
   defp solve_all_sure( grid ), do: solve_all_sure( solve_all_sure_values(grid), grid )
-  
+
   defp solve_all_sure( [], grid ), do: grid
   defp solve_all_sure( sures, grid ) do
     solve_all_sure( Enum.reduce(sures, grid, &solve_all_sure_store/2) )
   end
-  
+
   defp solve_all_sure_values( grid ), do: (for{position, [value]} <- potentials(grid), do: {position, value} )
-  
+
   defp solve_all_sure_store( {position, value}, acc ), do: Map.put( acc, position, value )
-  
+
   defp solve_unsure( [], grid ), do: grid
   defp solve_unsure( _potentials, grid ) do
     try do
@@ -2882,7 +2882,7 @@ defmodule Sudoku do
     end
   end
 end
-  
+
 simple = [{{1, 1}, 3}, {{2, 1}, 9}, {{3, 1},4}, {{6, 1}, 2}, {{7, 1}, 6}, {{8, 1}, 7},
           {{4, 2}, 3}, {{7, 2}, 4},
           {{1, 3}, 5}, {{4, 3}, 6}, {{5, 3}, 9}, {{8, 3}, 2},
@@ -3144,57 +3144,57 @@ task( Knowns ) ->
 
 5> sudoku:task().
 Start
- 3 9 4  . . 2  6 7 . 
- . . .  3 . .  4 . . 
- 5 . .  6 9 .  . 2 . 
+ 3 9 4  . . 2  6 7 .
+ . . .  3 . .  4 . .
+ 5 . .  6 9 .  . 2 .
 
- . 4 5  . . .  9 . . 
- 6 . .  . . .  . . 7 
- . . 7  . . .  5 8 . 
+ . 4 5  . . .  9 . .
+ 6 . .  . . .  . . 7
+ . . 7  . . .  5 8 .
 
- . 1 .  . 6 7  . . 8 
- . . 9  . . 8  . . . 
- . 2 6  4 . .  7 3 5 
+ . 1 .  . 6 7  . . 8
+ . . 9  . . 8  . . .
+ . 2 6  4 . .  7 3 5
 
 Solved
- 3 9 4  8 5 2  6 7 1 
- 2 6 8  3 7 1  4 5 9 
- 5 7 1  6 9 4  8 2 3 
+ 3 9 4  8 5 2  6 7 1
+ 2 6 8  3 7 1  4 5 9
+ 5 7 1  6 9 4  8 2 3
 
- 1 4 5  7 8 3  9 6 2 
- 6 8 2  9 4 5  3 1 7 
- 9 3 7  1 2 6  5 8 4 
+ 1 4 5  7 8 3  9 6 2
+ 6 8 2  9 4 5  3 1 7
+ 9 3 7  1 2 6  5 8 4
 
- 4 1 3  5 6 7  2 9 8 
- 7 5 9  2 3 8  1 4 6 
- 8 2 6  4 1 9  7 3 5 
+ 4 1 3  5 6 7  2 9 8
+ 7 5 9  2 3 8  1 4 6
+ 8 2 6  4 1 9  7 3 5
 
 
 Start
- . . .  . . .  . . . 
- . . .  . . 3  . 8 5 
- . . 1  . 2 .  . . . 
+ . . .  . . .  . . .
+ . . .  . . 3  . 8 5
+ . . 1  . 2 .  . . .
 
- . . .  5 . 7  . . . 
- . . 4  . . .  1 . . 
- . 9 .  . . .  . . . 
+ . . .  5 . 7  . . .
+ . . 4  . . .  1 . .
+ . 9 .  . . .  . . .
 
- 5 . .  . . .  . 7 3 
- . . 2  . 1 .  . . . 
- . . .  . 4 .  . . 9 
+ 5 . .  . . .  . 7 3
+ . . 2  . 1 .  . . .
+ . . .  . 4 .  . . 9
 
 Solved
- 9 8 7  6 5 4  3 2 1 
- 2 4 6  1 7 3  9 8 5 
- 3 5 1  9 2 8  7 4 6 
+ 9 8 7  6 5 4  3 2 1
+ 2 4 6  1 7 3  9 8 5
+ 3 5 1  9 2 8  7 4 6
 
- 1 2 8  5 3 7  6 9 4 
- 6 3 4  8 9 2  1 5 7 
- 7 9 5  4 6 1  8 3 2 
+ 1 2 8  5 3 7  6 9 4
+ 6 3 4  8 9 2  1 5 7
+ 7 9 5  4 6 1  8 3 2
 
- 5 1 9  2 8 6  4 7 3 
- 4 7 2  3 1 9  5 6 8 
- 8 6 3  7 4 5  2 1 9 
+ 5 1 9  2 8 6  4 7 3
+ 4 7 2  3 1 9  5 6 8
+ 8 6 3  7 4 5  2 1 9
 
 ```
 
@@ -3764,12 +3764,12 @@ s" 000009706" >grid
 s" 000000004" >grid
 s" 003500000" >grid
 s" 200600080" >grid
-drop 
+drop
 
 \  ---------------------
 \  Logic
 \  ---------------------
-\  Basically :  
+\  Basically :
 \     Grid is parsed. All numbers are put into sets, which are
 \     implemented as bitmaps (sudoku_row, sudoku_col, sudoku_box)
 \     which represent sets of numbers in each row, column, box.
@@ -3806,7 +3806,7 @@ drop
 \ ie x y --  ; remove number x from bitmap y
 : removebits_row cells sudoku_row + dup @ rot 1 swap lshift invert and swap ! ;
 : removebits_col cells sudoku_col + dup @ rot 1 swap lshift invert and swap ! ;
-: removebits_box cells sudoku_box + dup @ rot 1 swap lshift invert and swap ! ; 
+: removebits_box cells sudoku_box + dup @ rot 1 swap lshift invert and swap ! ;
 
 \ clears all bitsmaps to 0
 : clearbitmaps 9 0 do i cells
@@ -3825,7 +3825,7 @@ drop
 
 \ Remove number from grid, and sets
 : removenumber                         \ position --
-    dup getnumber swap    
+    dup getnumber swap
     2dup getrow removebits_row
     2dup getcol removebits_col
     2dup getbox removebits_box
@@ -3835,9 +3835,9 @@ drop
 \ gets bitmap at position, ie
 \ position -- bitmap
 
-: getrow_bits getrow cells sudoku_row + @ ;  
-: getcol_bits getcol cells sudoku_col + @ ;  
-: getbox_bits getbox cells sudoku_box + @ ;  
+: getrow_bits getrow cells sudoku_row + @ ;
+: getcol_bits getcol cells sudoku_col + @ ;
+: getbox_bits getbox cells sudoku_box + @ ;
 
 \ position -- composite bitmap  (or'ed)
 : getbits
@@ -3864,13 +3864,13 @@ drop
 : parsegrid                            \ Parses Grid to fill sets.. Run before solver.
    sudokugrid                          \ to ensure all numbers are parsed into sets/bitmaps
    81 0 do
-     dup i + c@                            
-       dup if                              
-         dup i try if                    
-           i addnumber                          
+     dup i + c@
+       dup if
+         dup i try if
+           i addnumber
          else
-           unloop drop drop FALSE exit      
-         then  
+           unloop drop drop FALSE exit
+         then
        else
          drop
        then
@@ -3900,16 +3900,16 @@ drop
              \ stack diagram:
              \ index prev_possibilities  new_possiblities --
 
-             2dup > if          
+             2dup > if
                                        \ if new_possibilities < prev_possibilities...
-                 nip nip i swap  
+                 nip nip i swap
                                        \ new_index new_possibilies --
 
              else                      \ else prev_possibilities < new possibilities, so:
 
-                 drop                  \ new_index new_possibilies --        
+                 drop                  \ new_index new_possibilies --
 
-             then                
+             then
       THEN
    loop
    drop
@@ -3931,7 +3931,7 @@ drop
          then
 
      10 1 do
-        i over try if          
+        i over try if
            i over addnumber
            recurse  if
                 drop unloop TRUE EXIT
@@ -3946,7 +3946,7 @@ drop
 
 \ SOLVER
 
-: startsolving        
+: startsolving
    clearbitmaps                        \ reparse bitmaps and reparse grid
    parsegrid                           \ just in case..
    solver
@@ -3973,7 +3973,7 @@ drop
             then
          else
            ." | "
-         then      
+         then
       then
     drop
   loop
@@ -4015,7 +4015,7 @@ drop
 ;
 
 : solveit
-  CR 
+  CR
   startsolving
   if
     ." Solution found!" CR .sudokugrid
@@ -4218,7 +4218,7 @@ end program sudoku
  |8 0 0|2 0 3|0 0 9|
  |0 0 5|0 1 0|3 0 0|
  +-----+-----+-----+
- 
+
  +-----+-----+-----+
  |4 8 3|9 2 1|6 5 7|
  |9 6 7|3 4 5|8 2 1|
@@ -4312,7 +4312,7 @@ CFMutableStringRef print_sudoku()
 {
   short i, j;
   CFMutableStringRef mutStr;
-  
+
   mutStr = CFStringCreateMutable( kCFAllocatorDefault, 0 );
 
      for (i = 0; i < 9; i++)
@@ -4824,9 +4824,9 @@ solution: 6.956 ms
 
 ## Go
 
-Solution using [http://en.wikipedia.org/wiki/Dancing_Links Knuth's DLX.]  
-This code follows his paper fairly closely.  
-Input to function solve is an 81 character string.  
+Solution using [http://en.wikipedia.org/wiki/Dancing_Links Knuth's DLX.]
+This code follows his paper fairly closely.
+Input to function solve is an 81 character string.
 This seems to be a conventional computer representation for Sudoku puzzles.
 
 ```go
@@ -4834,7 +4834,7 @@ package main
 
 import "fmt"
 
-// sudoku puzzle representation is an 81 character string 
+// sudoku puzzle representation is an 81 character string
 var puzzle = "" +
     "394  267 " +
     "   3  4  " +
@@ -4865,8 +4865,8 @@ func printGrid(title, s string) {
             fmt.Println("------+-------+------")
         }
     }
-}   
-    
+}
+
 // solve puzzle in 81 character string format.
 // if solved, result is 81 character string.
 // if not solved, result is the empty string.
@@ -4940,8 +4940,8 @@ func newDlxObject(nCols int) *dlx {
         h = hi
     }
     return d
-}   
-    
+}
+
 // rows define constraints
 func (d *dlx) addRow(nr []int) {
     if len(nr) == 0 {
@@ -4971,16 +4971,16 @@ func (d *dlx) text() string {
         b[x0.c.n] = byte(x0.r.c.n%9) + '1'
     }
     return string(b)
-}   
-    
-// the dlx algorithm 
+}
+
+// the dlx algorithm
 func (d *dlx) search() bool {
     h := d.h
     j := h.r.c
     if j == h {
         return true
     }
-    c := j 
+    c := j
     for minS := j.s; ; {
         j = j.r.c
         if j == h {
@@ -5039,16 +5039,16 @@ func uncover(c *y) {
 ```txt
 
 puzzle:
-3 9 4 |     2 | 6 7  
-      | 3     | 4    
-5     | 6 9   |   2  
+3 9 4 |     2 | 6 7
+      | 3     | 4
+5     | 6 9   |   2
 ------+-------+------
-  4 5 |       | 9    
+  4 5 |       | 9
 6     |       |     7
-    7 |       | 5 8  
+    7 |       | 5 8
 ------+-------+------
   1   |   6 7 |     8
-    9 |     8 |      
+    9 |     8 |
   2 6 | 4     | 7 3 5
 solved:
 3 9 4 | 8 5 2 | 6 7 1
@@ -5077,30 +5077,30 @@ I consider this a "brute force" solution of sorts, in that it is the same method
 
 ```groovy
 final CELL_VALUES = ('1'..'9')
- 
+
 class GridException extends Exception {
     GridException(String message) { super(message) }
 }
- 
+
 def string2grid = { string ->
     assert string.size() == 81
     (0..8).collect { i -> (0..8).collect { j -> string[9*i+j] } }
 }
- 
+
 def gridRow = { grid, slot -> grid[slot.i] as Set }
- 
+
 def gridCol = { grid, slot -> grid.collect { it[slot.j] } as Set }
- 
+
 def gridBox = { grid, slot ->
     def t, l; (t, l) = [slot.i.intdiv(3)*3, slot.j.intdiv(3)*3]
     (0..2).collect { row -> (0..2).collect { col -> grid[t+row][l+col] } }.flatten() as Set
 }
- 
+
 def slotList = { grid ->
     def slots = (0..8).collect { i -> (0..8).findAll { j -> grid[i][j] == '.' } \
             .collect {j -> [i: i, j: j] } }.flatten()
 }
- 
+
 def assignCandidates = { grid, slots = slotList(grid) ->
     slots.each { slot ->
         def unavailable = [gridRow, gridCol, gridBox].collect { it(grid, slot) }.sum() as Set
@@ -5112,10 +5112,10 @@ def assignCandidates = { grid, slots = slotList(grid) ->
     }
     slots
 }
- 
+
 def isSolved = { grid -> ! (grid.flatten().find { it == '.' }) }
- 
-def solve 
+
+def solve
 solve = { grid ->
     def slots = assignCandidates(grid)
     if (! slots) { return grid }
@@ -5125,7 +5125,7 @@ solve = { grid ->
         if (! slots) { return grid }
         slots = assignCandidates(grid, slots)
     }
-    if (! slots) { return grid } 
+    if (! slots) { return grid }
     def slot = slots.pop()
     slot.candidates.each {
         if (! isSolved(grid)) {
@@ -5154,60 +5154,60 @@ Mentions of ''"exceptionally difficult" example in Wikipedia'' refer to this (fo
 def sudokus = [
   //Used in Curry solution:                             ~ 0.1 seconds
     '819..5.....2...75..371.4.6.4..59.1..7..3.8..2..3.62..7.5.7.921..64...9.....2..438',
- 
+
   //Used in Perl and PicoLisp solutions:                ~ 0.1 seconds
     '53..247....2...8..1..7.39.2..8.72.49.2.98..7.79.....8.....3.5.696..1.3...5.69..1.',
- 
+
   //Used in Fortran solution:                           ~ 0.1 seconds
     '..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3..',
- 
+
   //Used in many other solutions, notably Algol 68:     ~ 0.1 seconds
     '394..267....3..4..5..69..2..45...9..6.......7..7...58..1..67..8..9..8....264..735',
- 
+
   //Used in C# solution:                                ~ 0.2 seconds
     '97.3...6..6.75.........8.5.......67.....3.....539..2..7...25.....2.1...8.4...73..',
- 
+
   //Used in Oz solution:                                ~ 0.2 seconds
     '4......6.5...8.9..3....1....2.7....1.9.....4.8....3.5....2....7..6.5...8.1......6',
- 
+
   //Used in many other solutions, notably C++:          ~ 0.3 seconds
     '85...24..72......9..4.........1.7..23.5...9...4...........8..7..17..........36.4.',
- 
+
   //Used in VBA solution:                               ~ 0.3 seconds
     '..1..5.7.92.6.......8...6...9..2.4.1.........3.4.8..9...7...3.......7.69.1.8..7..',
- 
+
   //Used in Forth solution:                             ~ 0.8 seconds
     '.9...4..7.....79..8........4.58.....3.......2.....97.6........4..35.....2..6...8.',
- 
+
   //3rd "exceptionally difficult" example in Wikipedia: ~ 2.3 seconds
     '12.3....435....1....4........54..2..6...7.........8.9...31..5.......9.7.....6...8',
- 
+
   //Used in Curry solution:                             ~ 2.4 seconds
     '9..2..5...4..6..3...3.....6...9..2......5..8...7..4..37.....1...5..2..4...1..6..9',
- 
+
   //"AL Escargot", so-called "hardest sudoku" (HA!):    ~ 3.0 seconds
     '1....7.9..3..2...8..96..5....53..9...1..8...26....4...3......1..4......7..7...3..',
- 
+
   //1st "exceptionally difficult" example in Wikipedia: ~ 6.5 seconds
     '12.4..3..3...1..5...6...1..7...9.....4.6.3.....3..2...5...8.7....7.....5.......98',
- 
+
   //Used in Bracmat and Scala solutions:                ~ 6.7 seconds
     '..............3.85..1.2.......5.7.....4...1...9.......5......73..2.1........4...9',
- 
+
   //2nd "exceptionally difficult" example in Wikipedia: ~ 8.8 seconds
     '.......39.....1..5..3.5.8....8.9...6.7...2...1..4.......9.8..5..2....6..4..7.....',
- 
+
   //Used in MATLAB solution:                            ~15   seconds
     '....839..1......3...4....7..42.3....6.......4....7..1..2........8...92.....25...6',
- 
+
   //4th "exceptionally difficult" example in Wikipedia: ~29   seconds
     '..3......4...8..36..8...1...4..6..73...9..........2..5..4.7..686........7..6..5..']
- 
+
 sudokus.each { sudoku ->
     def grid = string2grid(sudoku)
     println '\nPUZZLE'
     grid.each { println it }
- 
+
     println '\nSOLUTION'
     def start = System.currentTimeMillis()
     def solution = solve(grid)
@@ -5791,17 +5791,17 @@ solve_sudoku(display, grid)
 
 ```txt
 
-5 3 9  8 2 4  7 6 1  
-6 7 2  1 5 9  8 3 4  
-1 8 4  7 6 3  9 5 2  
+5 3 9  8 2 4  7 6 1
+6 7 2  1 5 9  8 3 4
+1 8 4  7 6 3  9 5 2
 
-3 1 8  5 7 2  6 4 9  
-4 2 5  9 8 6  1 7 3  
-7 9 6  3 4 1  2 8 5  
+3 1 8  5 7 2  6 4 9
+4 2 5  9 8 6  1 7 3
+7 9 6  3 4 1  2 8 5
 
-8 4 1  2 3 7  5 9 6  
-9 6 7  4 1 5  3 2 8  
-2 5 3  6 9 8  4 1 7  
+8 4 1  2 3 7  5 9 6
+9 6 7  4 1 5  3 2 8
+2 5 3  6 9 8  4 1 7
 
 ```
 
@@ -5905,31 +5905,31 @@ fun main(args: Array<String>) {
 
 Starting grid:
 
-8 5 0 | 0 0 2 | 4 0 0 
-7 2 0 | 0 0 0 | 0 0 9 
-0 0 4 | 0 0 0 | 0 0 0 
+8 5 0 | 0 0 2 | 4 0 0
+7 2 0 | 0 0 0 | 0 0 9
+0 0 4 | 0 0 0 | 0 0 0
 ------+-------+------
-0 0 0 | 1 0 7 | 0 0 2 
-3 0 5 | 0 0 0 | 9 0 0 
-0 4 0 | 0 0 0 | 0 0 0 
+0 0 0 | 1 0 7 | 0 0 2
+3 0 5 | 0 0 0 | 9 0 0
+0 4 0 | 0 0 0 | 0 0 0
 ------+-------+------
-0 0 0 | 0 8 0 | 0 7 0 
-0 1 7 | 0 0 0 | 0 0 0 
-0 0 0 | 0 3 6 | 0 4 0 
+0 0 0 | 0 8 0 | 0 7 0
+0 1 7 | 0 0 0 | 0 0 0
+0 0 0 | 0 3 6 | 0 4 0
 
 Solution:
 
-8 5 9 | 6 1 2 | 4 3 7 
-7 2 3 | 8 5 4 | 1 6 9 
-1 6 4 | 3 7 9 | 5 2 8 
+8 5 9 | 6 1 2 | 4 3 7
+7 2 3 | 8 5 4 | 1 6 9
+1 6 4 | 3 7 9 | 5 2 8
 ------+-------+------
-9 8 6 | 1 4 7 | 3 5 2 
-3 7 5 | 2 6 8 | 9 1 4 
-2 4 1 | 5 9 3 | 7 8 6 
+9 8 6 | 1 4 7 | 3 5 2
+3 7 5 | 2 6 8 | 9 1 4
+2 4 1 | 5 9 3 | 7 8 6
 ------+-------+------
-4 3 2 | 9 8 1 | 6 7 5 
-6 1 7 | 4 2 5 | 8 9 3 
-5 9 8 | 7 3 6 | 2 4 1 
+4 3 2 | 9 8 1 | 6 7 5
+6 1 7 | 4 2 5 | 8 9 3
+5 9 8 | 7 3 6 | 2 4 1
 
 ```
 
@@ -5990,14 +5990,14 @@ proc placeNumber(self: Sudoku, pos: int) =
     if checkValidity(n, pos mod 9, pos div 9):
       grid[pos] = n
       placeNumber(pos + 1)
-      if solved: 
+      if solved:
         return
       grid[pos] = 0
 
 proc solve(self: Sudoku) =
   echo "Starting grid:\n\n", $self
   placeNumber(0)
-  if solved: 
+  if solved:
     echo "Solution:\n\n", $self
   else:
     echo "Unsolvable!"
@@ -6023,30 +6023,30 @@ puzzle.solve()
 ```txt
 Starting grid:
 
-8 5 0 | 0 0 2 | 4 0 0 
-7 2 0 | 0 0 0 | 0 0 9 
-0 0 4 | 0 0 0 | 0 0 0 
+8 5 0 | 0 0 2 | 4 0 0
+7 2 0 | 0 0 0 | 0 0 9
+0 0 4 | 0 0 0 | 0 0 0
 ------+-------+------
-0 0 0 | 1 0 7 | 0 0 2 
-3 0 5 | 0 0 0 | 9 0 0 
-0 4 0 | 0 0 0 | 0 0 0 
+0 0 0 | 1 0 7 | 0 0 2
+3 0 5 | 0 0 0 | 9 0 0
+0 4 0 | 0 0 0 | 0 0 0
 ------+-------+------
-0 0 0 | 0 8 0 | 0 7 0 
-0 1 7 | 0 0 0 | 0 0 0 
-0 0 0 | 0 3 6 | 0 4 0 
+0 0 0 | 0 8 0 | 0 7 0
+0 1 7 | 0 0 0 | 0 0 0
+0 0 0 | 0 3 6 | 0 4 0
 
 Solution:
 
-8 5 9 | 6 1 2 | 4 3 7 
-7 2 3 | 8 5 4 | 1 6 9 
-1 6 4 | 3 7 9 | 5 2 8 
+8 5 9 | 6 1 2 | 4 3 7
+7 2 3 | 8 5 4 | 1 6 9
+1 6 4 | 3 7 9 | 5 2 8
 ------+-------+------
-9 8 6 | 1 4 7 | 3 5 2 
-3 7 5 | 2 6 8 | 9 1 4 
-2 4 1 | 5 9 3 | 7 8 6 
+9 8 6 | 1 4 7 | 3 5 2
+3 7 5 | 2 6 8 | 9 1 4
+2 4 1 | 5 9 3 | 7 8 6
 ------+-------+------
-4 3 2 | 9 8 1 | 6 7 5 
-6 1 7 | 4 2 5 | 8 9 3 
+4 3 2 | 9 8 1 | 6 7 5
+6 1 7 | 4 2 5 | 8 9 3
 5 9 8 | 7 3 6 | 2 4 1
 ```
 
@@ -6141,12 +6141,12 @@ function read() --read the values from stdin
   assert((f == 82), "Wrong number of digits")
 end
 read()
-function printer(t) --helper function for printing a 1-81 table 
+function printer(t) --helper function for printing a 1-81 table
   local pattern = {1,2,3,false,4,5,6,false,7,8,9} --place seperators for better readability
   for _,r in pairs(pattern) do
     if r then
       local function p(c)
-        return c and t[(r - 1) * 9 + c] or "|" 
+        return c and t[(r - 1) * 9 + c] or "|"
       end
       local line={}
       for k,v in pairs(pattern) do
@@ -6207,7 +6207,7 @@ max = #order --how many fields are to be solved
 function bound(f,i)
   for _,c in pairs(constraints[f]) do
     for _,x in pairs(c) do
-      if i == working[x] then 
+      if i == working[x] then
         return false --i is already used in fs column/row/block
       end
     end
@@ -6285,15 +6285,15 @@ Time with luajit: 9.245s
 
 
 ```mathematica
-solve[sudoku_] := 
+solve[sudoku_] :=
  NestWhile[
   Join @@ Table[
-     Table[ReplacePart[s, #1 -> n], {n, #2}] & @@ 
-      First@SortBy[{#, 
-           Complement[Range@9, s[[First@#]], s[[;; , Last@#]], 
+     Table[ReplacePart[s, #1 -> n], {n, #2}] & @@
+      First@SortBy[{#,
+           Complement[Range@9, s[[First@#]], s[[;; , Last@#]],
             Catenate@
-             Extract[Partition[s, {3, 3}], Quotient[#, 3, -2]]]} & /@ 
-         Position[s, 0, {2}], 
+             Extract[Partition[s, {3, 3}], Quotient[#, 3, -2]]]} & /@
+         Position[s, 0, {2}],
         Length@Last@# &], {s, #}] &, {sudoku}, ! FreeQ[#, 0] &]
 ```
 
@@ -6312,9 +6312,9 @@ Example:
 {{out}}
 
 ```txt
-{{{9, 7, 5, 3, 4, 2, 8, 6, 1}, {8, 6, 1, 7, 5, 9, 4, 3, 2}, {3, 2, 4, 
-   1, 6, 8, 9, 5, 7}, {2, 1, 9, 5, 8, 4, 6, 7, 3}, {4, 8, 7, 2, 3, 6, 
-   5, 1, 9}, {6, 5, 3, 9, 7, 1, 2, 8, 4}, {7, 3, 8, 4, 2, 5, 1, 9, 
+{{{9, 7, 5, 3, 4, 2, 8, 6, 1}, {8, 6, 1, 7, 5, 9, 4, 3, 2}, {3, 2, 4,
+   1, 6, 8, 9, 5, 7}, {2, 1, 9, 5, 8, 4, 6, 7, 3}, {4, 8, 7, 2, 3, 6,
+   5, 1, 9}, {6, 5, 3, 9, 7, 1, 2, 8, 4}, {7, 3, 8, 4, 2, 5, 1, 9,
    6}, {5, 9, 2, 6, 1, 3, 7, 4, 8}, {1, 4, 6, 8, 9, 7, 3, 2, 5}}}
 ```
 
@@ -6338,18 +6338,18 @@ function solution = sudokuSolver(sudokuGrid)
     %subBoxes{row,column}(1), represents the row indecies of the subbox.
     %The array in position 2, i.e. subBoxes{row,column}(2),represents the
     %column indecies of the subbox.
-    
+
     subBoxes(1:9,1:9) = {{(1:3),(1:3)}};
     subBoxes(4:6,:)= {{(4:6),(1:3)}};
     subBoxes(7:9,:)= {{(7:9),(1:3)}};
-    
+
     for column = (4:6)
-        for row = (1:9) 
+        for row = (1:9)
             subBoxes{row,column}(2)= {4:6};
         end
     end
     for column = (7:9)
-        for row = (1:9) 
+        for row = (1:9)
             subBoxes{row,column}(2)= {7:9};
         end
     end
@@ -6361,24 +6361,24 @@ function solution = sudokuSolver(sudokuGrid)
     %For example sudokuGrid(m,n) can be possibly filled in by the
     %values stored in the array at possibleValues(m,n).
     possibleValues(1:9,1:9) = { (1:9) };
-    
+
     %Filter the possibleValues so that no entry exists for coordinates that
     %have already been filled in. This will replace any array with an empty
     %array in the possibleValues cell matrix at the coordinates of a grid
     %already filled in the sudoku grid.
     possibleValues( ~isnan(sudokuGrid) )={[]};
-    
+
     %Iterate through each grid coordinate and filter out the possible
     %values for that grid point that aren't alowed by the rules given the
     %current values that are filled in. Or, if there is only one possible
     %value for the current coordinate, fill it in.
-    
+
     solution = sudokuGrid; %so the original sudoku input isn't modified
     memory = 0; %contains the previous iterations possibleValues
     dontStop = true; %stops the while loop when nothing else can be reasoned about the sudoku
-    
+
     while( dontStop )
- 
+
 %% Process of elimination deduction method
 
         while( ~isequal(possibleValues,memory) ) %Stops using the process of elimination deduction method when this deduction rule stops working
@@ -6386,7 +6386,7 @@ function solution = sudokuSolver(sudokuGrid)
             memory = possibleValues; %Copies the current possibleValues into memory, for the above conditional on the next iteration.
 
             %Iterate through everything
-            for row = (1:9) 
+            for row = (1:9)
                 for column = (1:9)
 
                     if isnan( solution(row,column) ) %If grid coordinate hasn't been filled in, try to determine it's value.
@@ -6413,7 +6413,7 @@ function solution = sudokuSolver(sudokuGrid)
                         end
                     end  %end if
 
-                    if isnan( solution(row,column) ) %If grid coordinate hasn't been filled in, try to determine it's value. 
+                    if isnan( solution(row,column) ) %If grid coordinate hasn't been filled in, try to determine it's value.
 
                         %Look at row to see what values have already
                         %been filled in and thus the current grid
@@ -6428,7 +6428,7 @@ function solution = sudokuSolver(sudokuGrid)
                                 possibleValues{row,column}( possibleValues{row,column}==removableValues(m) )=[];
                             end
                         end
-                        
+
                         %If the current grid coordinate can only atain one
                         %possible value, assign it that value
                         if numel( possibleValues{row,column} ) == 1
@@ -6437,11 +6437,11 @@ function solution = sudokuSolver(sudokuGrid)
                         end
                     end %end if
 
-                    if isnan( solution(row,column) ) %If grid coordinate hasn't been filled in, try to determine it's value. 
-                        
+                    if isnan( solution(row,column) ) %If grid coordinate hasn't been filled in, try to determine it's value.
+
                         %Look at sub-box to see if any possible values can be
                         %filtered out. First pull the boundaries of the sub-box
-                        %containing the current array coordinate           
+                        %containing the current array coordinate
                         currentBoxBoundaries=subBoxes{row,column};
 
                         %Then pull the sub-boxes values out of the solution
@@ -6460,7 +6460,7 @@ function solution = sudokuSolver(sudokuGrid)
                                 possibleValues{row,column}( possibleValues{row,column}==removableValues(m) )=[];
                             end
                         end
-                        
+
                         %If the current grid coordinate can only atain one
                         %possible value, assign it that value
                         if numel( possibleValues{row,column} ) == 1
@@ -6468,27 +6468,27 @@ function solution = sudokuSolver(sudokuGrid)
                             possibleValues(row,column)={[]};
                         end
                     end %end if
-                    
+
                 end %end for column
             end %end for row
         end %stop process of elimination
-        
+
 %% Check that there are no contradictions in the solved grid coordinates.
-        
+
         %Check that each row at most contains one of each of the integers
         %from 1 to 9
         if ~isempty( find( histc( solution,(1:9),1 )>1 ) )
             solution = false;
             return
         end
-        
+
         %Check that each column at most contains one of each of the integers
         %from 1 to 9
         if ~isempty( find( histc( solution,(1:9),2 )>1 ) )
             solution = false;
             return
         end
-        
+
         %Check that each sub-box at most contains one of each of the integers
         %from 1 to 9
         subBoxBins = zeros(9,9);
@@ -6496,38 +6496,38 @@ function solution = sudokuSolver(sudokuGrid)
         for row = [2 5 8]
             for column = [2 5 8]
                 counter = counter +1;
-                
+
                 %because the sub-boxes are extracted as square matricies,
-                %we need to reshape them into row vectors so all of the 
+                %we need to reshape them into row vectors so all of the
                 %boxes can be input into histc simultaneously
-                subBoxBins(counter,:) = reshape( solution(subBoxes{row,column}{:}),1,9 ); 
+                subBoxBins(counter,:) = reshape( solution(subBoxes{row,column}{:}),1,9 );
             end
         end
         if ~isempty( find( histc( subBoxBins,(1:9),2 )>1 ) )
             solution = false;
             return
         end
-                
+
         %Check to make sure there are no grid coordinates that are not
         %filled in and have no possible values.
-        
+
         [rowStack,columnStack] = find(isnan(solution)); %extracts the indicies of the unsolved grid coordinates
         if (numel(rowStack) > 0)
-            
+
             for counter = (1:numel(rowStack))
                 if isempty(possibleValues{rowStack(counter),columnStack(counter)})
                     solution = false;
                     return
-                end  
+                end
             end
-        
+
         %if there are no more grid coordinates to be filed in then the
-        %sudoku is solved and we can return the solution without further 
+        %sudoku is solved and we can return the solution without further
         %computation
         elseif (numel(rowStack) == 0)
             return
-        end   
-        
+        end
+
 %% Use the unique relative compliment of sets deduction method
 
         %Because no more information can be determined by the process of
@@ -6539,51 +6539,51 @@ function solution = sudokuSolver(sudokuGrid)
 
         keepGoing = true; %signals to keep applying rules to the current grid-coordinate because it hasn't been solved using previous rules
         dontStop = false; %if this method doesn't figure anything out, this will terminate the top level while loop
-        
+
         [rowStack,columnStack] = find(isnan(solution)); %This will also take care of the case where the sudoku is solved
         counter = 0; %makes sure the loop terminates when there are no more cells to consider
-        
+
         while( keepGoing && (counter < numel(rowStack)) ) %stop this method of reasoning when the value of one of the cells has been determined and return to the process of elimination method
-        
+
             counter = counter + 1;
-            
+
             row = rowStack(counter);
             column = columnStack(counter);
-            
+
             gridPossibles = [possibleValues{row,column}];
-            
+
             coords = (1:9);
             coords(column) = [];
             rowPossibles = [possibleValues{row,coords}]; %extract possible values for everything in the same row except the current grid coordinate
-            
+
             totalMatches = zeros( numel(gridPossibles),1 ); %preallocate for speed
-            
+
             %count how many times a possible value for the current cell
             %appears as a possible value for the cells in the same row
             for n = ( 1:numel(gridPossibles) )
-                totalMatches(n) = sum( (rowPossibles == gridPossibles(n)) ); 
+                totalMatches(n) = sum( (rowPossibles == gridPossibles(n)) );
             end
-            
+
             %remove any possible values for the current cell that have
             %matches in other cells
             gridPossibles = gridPossibles(totalMatches==0);
-            
+
             %if there is only one possible value that the current cell can
             %take that aren't shared by other cells, assign that value to
             %the current cell.
             if numel(gridPossibles) == 1
-                
+
                 solution(row,column) = gridPossibles;
                 possibleValues(row,column)={[]};
                 keepGoing = false; %stop this method of deduction and return to the process of elimination
                 dontStop = true; %keep the top level loop going
-                
+
             end
-            
+
             if(keepGoing) %do the same as above but for the current cell's column
 
                 gridPossibles = [possibleValues{row,column}];
-                
+
                 coords = (1:9);
                 coords(row) = [];
                 columnPossibles = [possibleValues{coords,column}];
@@ -6604,11 +6604,11 @@ function solution = sudokuSolver(sudokuGrid)
 
                 end
             end
-            
+
             if(keepGoing) %do the same as above but for the current cell's sub-box
 
                 gridPossibles = [possibleValues{row,column}];
-                
+
                 currentBoxBoundaries = subBoxes{row,column};
                 subBoxPossibles = [];
                 for m = currentBoxBoundaries{1}
@@ -6634,9 +6634,9 @@ function solution = sudokuSolver(sudokuGrid)
                     dontStop = true;
 
                 end
-            end %end 
-            
-        end %end  set comliment rule while loop 
+            end %end
+
+        end %end  set comliment rule while loop
     end %end top-level while loop
 
 %% Depth-first search of the solution tree
@@ -6644,28 +6644,28 @@ function solution = sudokuSolver(sudokuGrid)
     %There is no more reasoning that can solve the puzzle so now it is time
     %for a depth-first search of the possible answers, basically
     %guess-and-check. This is implimented recursively.
-    
+
     [rowStack,columnStack] = find(isnan(solution)); %Get all of the unsolved cells
-    
+
     if (numel(rowStack) > 0) %If all of the above stuff terminates then there will be at least one grid coordinate not filled in
-                
+
         %Treat the rowStack and columnStack like stacks, and pop the top
         %value off the stack to act as the current node whose
         %possibleValues to search through, then assign the possible values
         %of that grid coordinate to a variable that holds that values to
         %search through
-        searchTreeNodes = possibleValues{rowStack(1),columnStack(1)}; 
-        
+        searchTreeNodes = possibleValues{rowStack(1),columnStack(1)};
+
         keepSearching = true; %used to continue the search
         counter = 0; %counts the amount of possible values searched for the current node
         tempSolution = solution; %used so that the solution is not overriden until a solution hase been found
-        
+
         while( keepSearching && (counter < numel(searchTreeNodes)) ) %stop recursing if we run out of possible values for the current node
-        
+
             counter = counter + 1;
             tempSolution(rowStack(1),columnStack(1)) = searchTreeNodes(counter); %assign a possible value to the current node in the tree
-            tempSolution = sudokuSolver(tempSolution); %recursively call the solver with the current guess value for the current grid coordinate           
-            
+            tempSolution = sudokuSolver(tempSolution); %recursively call the solver with the current guess value for the current grid coordinate
+
             if ~islogical(tempSolution) %if tempSolution is not a boolean but a valid sudoku stop recursing and set solution to tempSolution
                keepSearching = false;
                solution = tempSolution;
@@ -6674,10 +6674,10 @@ function solution = sudokuSolver(sudokuGrid)
             else %reset tempSolution to the current state of the board and try the next guess for the possible value of the current cell
                tempSolution = solution;
             end
-            
+
         end %end recursion
-    end  %end if 
-    
+    end  %end if
+
 %% End of program
 end %end sudokuSolver
 ```
@@ -6723,7 +6723,7 @@ uses the library [http://ocamlgraph.lri.fr/index.en.html ocamlgraph]
 (* Ocamlgraph demo program: solving the Sudoku puzzle using graph coloring
    Copyright 2004-2007 Sylvain Conchon, Jean-Christophe Filliatre, Julien Signoles
 
-   This software is free software; you can redistribute it and/or modify 
+   This software is free software; you can redistribute it and/or modify
    it under the terms of the GNU Library General Public License version 2,
    with the special exception on linking described in file LICENSE.
 
@@ -6742,15 +6742,15 @@ module G = Imperative.Graph.Abstract(struct type t = int * int end)
 (* The Sudoku grid = a graph with 9x9 nodes *)
 let g = G.create ()
 
-(* We create the 9x9 nodes, add them to the graph and keep them in a matrix 
+(* We create the 9x9 nodes, add them to the graph and keep them in a matrix
    for later access *)
-let nodes = 
+let nodes =
   let new_node i j = let v = G.V.create (i, j) in G.add_vertex g v; v in
   Array.init 9 (fun i -> Array.init 9 (new_node i))
 
 let node i j = nodes.(i).(j) (* shortcut for easier access *)
 
-(* We add the edges: 
+(* We add the edges:
    two nodes are connected whenever they can't have the same value,
    i.e. they belong to the same line, the same column or the same 3x3 group *)
 let () =
@@ -6806,13 +6806,13 @@ declare
      [[4 _ _  _ _ _  _ 6 _]
       [5 _ _  _ 8 _  9 _ _]
       [3 _ _  _ _ 1  _ _ _]
-    
+
       [_ 2 _  7 _ _  _ _ 1]
       [_ 9 _  _ _ _  _ 4 _]
       [8 _ _  _ _ 3  _ 5 _]
-    
+
       [_ _ _  2 _ _  _ _ 7]
-      [_ _ 6  _ 5 _  _ _ 8] 
+      [_ _ 6  _ 5 _  _ _ 8]
       [_ 1 _  _ _ _  _ _ 6]]
   end
 
@@ -6829,7 +6829,7 @@ declare
         Board = {MapRange fun {$ _} {FD.list 9 1#9} end}
         %% Post initial configuration.
         Board = {Puzzle}
-        
+
         %% The core constraints:
         {ForAll {Rows Board} FD.distinct}
         {ForAll {Columns Board} FD.distinct}
@@ -6839,27 +6839,27 @@ declare
         {FD.distribute ff {Flatten Board}}
      end
   end
- 
+
   %% Returns the board as a list of rows.
   fun {Rows Board}
      Board %% This is already the representation we have chosen.
   end
- 
+
   %% Returns the board as a list of columns.
   fun {Columns Board}
      {MapRange fun {$ I} {Column Board I} end}
   end
- 
+
   %% Returns the board as a list of boxes (sub-grids).
   fun {Boxes Board}
      {MapRange fun {$ I} {Box Board I} end}
   end
- 
+
   %% Helper function: map the range 1..9 to something.
   fun {MapRange F}
      {Map [1 2 3 4 5 6 7 8 9] F}
   end
- 
+
   %% Returns a column of the board as a list of fields.
   fun {Column Board Index}
      {Map Board
@@ -6868,12 +6868,12 @@ declare
       end
      }
   end
- 
+
   %% Returns a box of the board as a list of fields.
   fun {Box Board Index}
      Index0 = Index-1
      Fields = {Flatten Board}
-     Start = (Index0 div 3) * 27 + (Index0 mod 3)*3   
+     Start = (Index0 div 3) * 27 + (Index0 mod 3)*3
   in
      {Flatten
       for I in 0..2 collect:C do
@@ -7301,7 +7301,7 @@ Expl1
   762954381
 // InitField  doReverse = true
    857.600 ms Test calls :40980572
-// InitField  doReverse = false    
+// InitField  doReverse = false
     21.400 ms Test calls : 1089986
 
 ```
@@ -7317,16 +7317,16 @@ use integer;
 use strict;
 
 my @A = qw(
-    5 3 0  0 2 4  7 0 0 
-    0 0 2  0 0 0  8 0 0 
-    1 0 0  7 0 3  9 0 2 
+    5 3 0  0 2 4  7 0 0
+    0 0 2  0 0 0  8 0 0
+    1 0 0  7 0 3  9 0 2
 
-    0 0 8  0 7 2  0 4 9 
-    0 2 0  9 8 0  0 7 0 
-    7 9 0  0 0 0  0 8 0 
+    0 0 8  0 7 2  0 4 9
+    0 2 0  9 8 0  0 7 0
+    7 9 0  0 0 0  0 8 0
 
-    0 0 0  0 3 0  5 0 6 
-    9 6 0  0 1 0  3 0 0 
+    0 0 0  0 3 0  5 0 6
+    9 6 0  0 1 0  3 0 0
     0 5 0  6 9 0  0 1 0
 );
 
@@ -7382,19 +7382,19 @@ solve();
 ```perl6
 use v6;
 my @A = <
-    5 3 0  0 2 4  7 0 0 
-    0 0 2  0 0 0  8 0 0 
-    1 0 0  7 0 3  9 0 2 
- 
-    0 0 8  0 7 2  0 4 9 
-    0 2 0  9 8 0  0 7 0 
-    7 9 0  0 0 0  0 8 0 
- 
-    0 0 0  0 3 0  5 0 6 
-    9 6 0  0 1 0  3 0 0 
+    5 3 0  0 2 4  7 0 0
+    0 0 2  0 0 0  8 0 0
+    1 0 0  7 0 3  9 0 2
+
+    0 0 8  0 7 2  0 4 9
+    0 2 0  9 8 0  0 7 0
+    7 9 0  0 0 0  0 8 0
+
+    0 0 0  0 3 0  5 0 6
+    9 6 0  0 1 0  3 0 0
     0 5 0  6 9 0  0 1 0
 >;
- 
+
 my &I = * div 9;  # line number
 my &J = * % 9;    # column number
 my &K = { ($_ div 27) * 3 + $_ % 9 div 3 }; # bloc number
@@ -7428,16 +7428,16 @@ solve;
 {{out}}
 
 ```txt
-5 3 9  8 2 4  7 6 1  
-6 7 2  1 5 9  8 3 4  
-1 8 4  7 6 3  9 5 2  
+5 3 9  8 2 4  7 6 1
+6 7 2  1 5 9  8 3 4
+1 8 4  7 6 3  9 5 2
 
-3 1 8  5 7 2  6 4 9  
-4 2 5  9 8 6  1 7 3  
-7 9 6  3 4 1  2 8 5  
+3 1 8  5 7 2  6 4 9
+4 2 5  9 8 6  1 7 3
+7 9 6  3 4 1  2 8 5
 
-8 4 1  2 3 7  5 9 6  
-9 6 7  4 1 5  3 2 8  
+8 4 1  2 3 7  5 9 6
+9 6 7  4 1 5  3 2 8
 2 5 3  6 9 8  4 1 7
 ```
 
@@ -7535,7 +7535,7 @@ sub cleanup-impossible-values($sudoku, Int $level = 1) {
             # which block is this cell in
             my Int $bx = Int($x / 3);
             my Int $by = Int($y / 3);
-            
+
             # A unfilled cell is not resolved, so it shouldn't match
             my multi match-resolved-cell(Array $other, Int $this) {
                 return 0;
@@ -7666,7 +7666,7 @@ sub print-sudoku($sudoku, Int $level = 1) {
     trace $level, '-' x 5*9;
     for @($sudoku) -> $row {
         trace $level, join " ", do for @($row) -> $cell {
-            $cell ~~ Array ?? "#{$cell.elems}#" !! " $cell " 
+            $cell ~~ Array ?? "#{$cell.elems}#" !! " $cell "
         }
     }
 }
@@ -8064,15 +8064,15 @@ Trying 8 on 9,1 [8, 9]
 .Solved... (3 on 9,2)
 Solved... (8 on 9,1)
 ---------------------------------------------
- 9   5   4   1   3   7   6   8   2 
- 2   7   3   6   8   4   1   9   5 
- 1   6   8   2   9   5   7   3   4 
- 4   9   5   7   2   8   3   6   1 
- 6   8   1   4   5   3   2   7   9 
- 3   2   7   9   6   1   5   4   8 
- 7   4   9   3   1   2   8   5   6 
- 5   1   6   8   7   9   4   2   3 
- 8   3   2   5   4   6   9   1   7 
+ 9   5   4   1   3   7   6   8   2
+ 2   7   3   6   8   4   1   9   5
+ 1   6   8   2   9   5   7   3   4
+ 4   9   5   7   2   8   3   6   1
+ 6   8   1   4   5   3   2   7   9
+ 3   2   7   9   6   1   5   4   8
+ 7   4   9   3   1   2   8   5   6
+ 5   1   6   8   7   9   4   2   3
+ 8   3   2   5   4   6   9   1   7
 
 ```
 
@@ -8102,7 +8102,7 @@ Solved... (8 on 9,1)
 			}
 			return $grid;
 		}
-		
+
 		public function __construct($str, $emptySymbol = '0') {
 			if(strlen($str) !== 81)
 			{
@@ -8111,7 +8111,7 @@ Solved... (8 on 9,1)
 			$this->grid = static::parseString($str, $emptySymbol);
 			$this->emptySymbol = $emptySymbol;
 		}
-		
+
 		public function solve()
 		{
 			try
@@ -8124,7 +8124,7 @@ Solved... (8 on 9,1)
 				return true;
 			}
 		}
-		
+
 		protected function placeNumber($pos)
 		{
 			if($pos == 81)
@@ -8146,7 +8146,7 @@ Solved... (8 on 9,1)
 				}
 			}
 		}
-		
+
 		protected function checkValidity($val, $x, $y)
 		{
 			for($i = 0; $i < 9; $i++)
@@ -8193,7 +8193,7 @@ Solved... (8 on 9,1)
 			}
 			echo $str;
 		}
-		
+
 		public function __toString() {
 			foreach ($this->grid as &$item)
 			{
@@ -8214,16 +8214,16 @@ Solved... (8 on 9,1)
 
 ```txt
 
-3 6 9 | 1 7 5 | 8 4 2 
-4 2 7 | 6 8 9 | 5 3 1 
-8 5 1 | 2 3 4 | 6 9 7 
+3 6 9 | 1 7 5 | 8 4 2
+4 2 7 | 6 8 9 | 5 3 1
+8 5 1 | 2 3 4 | 6 9 7
 ------+-------+------
-2 1 8 | 7 9 6 | 4 5 3 
-6 3 4 | 8 5 1 | 2 7 9 
-9 7 5 | 3 4 2 | 1 8 6 
+2 1 8 | 7 9 6 | 4 5 3
+6 3 4 | 8 5 1 | 2 7 9
+9 7 5 | 3 4 2 | 1 8 6
 ------+-------+------
-1 4 3 | 9 2 8 | 7 6 5 
-5 9 6 | 4 1 7 | 3 2 8 
+1 4 3 | 9 2 8 | 7 6 5
+5 9 6 | 4 1 7 | 3 2 8
 7 8 2 | 5 6 3 | 9 1 4
 (solved in 0.027s)
 
@@ -8306,15 +8306,15 @@ printf(1,"%s\n(solved in %3.2fs)\n",{join(solution,"\n"),time()-t0})
 ```
 
 OTT solution. Implements line/col and set exclusion, and x-wings. Blisteringly fast<BR>
-The included program demo\rosetta\Sudoku.exw is an extended version of this that performs extended validation, 
-contains 339 puzzles, can be run as a command-line or gui program, check for multiple solutions, and produce 
+The included program demo\rosetta\Sudoku.exw is an extended version of this that performs extended validation,
+contains 339 puzzles, can be run as a command-line or gui program, check for multiple solutions, and produce
 a more readable single-puzzle output (example below).
 
 ```Phix
--- Working directly on 81-character strings ultimately proves easier: Originally I 
+-- Working directly on 81-character strings ultimately proves easier: Originally I
 --  just wanted to simplify the final display, but later I realised that a 9x9 grid
---  encourages laborious indexing/looping everwhere whereas using a flat 81-element 
---  approach encourages precomputation of index sets, and once you commit to that, 
+--  encourages laborious indexing/looping everwhere whereas using a flat 81-element
+--  approach encourages precomputation of index sets, and once you commit to that,
 --  the rest of the code starts to get a whole lot cleaner. Below we create 27+18
 --  sets and 5 tables of lookup indexes to locate them quickly.
 
@@ -8492,10 +8492,10 @@ function deep_logic(string board, sequence valid)
 --              600|000|000 <-- 3
 --                        ^-- 3
 --      Naively, the br can contain a 3 in the four corners, but looking at mid-right and
---      mid-bottom leads us to eliminating 3s in column 9 and row 9, leaving 7,7 as the 
+--      mid-bottom leads us to eliminating 3s in column 9 and row 9, leaving 7,7 as the
 --      only square in the br that can be a 3. Uses dotcol and dotrow.
 --      Without this, brute force on the above takes ~8s, but with it ~0s
---      
+--
 --  2) set elimination
 --      If in any 9-set there is a set of n blank squares that can only contain n digits,
 --      then no other squares can contain those digits. Example (with some benefit):
@@ -8510,9 +8510,9 @@ function deep_logic(string board, sequence valid)
 --              ...|...|...     <-- [7,8] is {1,3,8}, [7,9] is {1,3,8}
 --              3.9|...|2.4     <-- [8,8] is {1,8}
 --              84.|.3.|.79
---      The three cells above the br 479 can only contain {1,3,8}, so the .. of the .2. 
+--      The three cells above the br 479 can only contain {1,3,8}, so the .. of the .2.
 --      in column 7 of that square are {5,6} (not 1) and hence [9,4] must be a 1.
---      (Relies on plain_logic to spot that "must be a 1", and serves as a clear example 
+--      (Relies on plain_logic to spot that "must be a 1", and serves as a clear example
 --       of why this routine should not bother to attempt updating the board itself - as
 --       it spends almost all of its time looking in a completely different place.)
 --      (One could argue that [7,7] and [9,7] are the only places that can hold {5,6} and
@@ -8522,7 +8522,7 @@ function deep_logic(string board, sequence valid)
 --
 --  3) x-wings
 --      If a pair of rows or columns can only contain a given number in two matching places,
---      then once filled they will occupy opposite diagonal corners, hence that said number 
+--      then once filled they will occupy opposite diagonal corners, hence that said number
 --      cannot occur elsewhere in those two columns/rows. Example (with a benefit):
 --              .43|98.|25. <-- 6 in [1,{6,9}]
 --              6..|425|...
@@ -8556,14 +8556,14 @@ function deep_logic(string board, sequence valid)
 --              -3-|82-|1--
 --               ^---^---^-- 3 pairs of 9s (marked with *) on 3 rows (only)
 --      It is not a swordfish if the 3 pairs are on >3 rows, I trust that is obvious.
---      Logically you can extend this to N pairs on N rows, however I cannot imagine a 
+--      Logically you can extend this to N pairs on N rows, however I cannot imagine a
 --      case where this is not immediately solved by a single trial-step being invalid.
 --      (eg above if you try [3,5]:=9 it is quickly proved to be invalid, and the same
 --       goes for [6,8]:=9 and [7,2]:=9, since they are all entirely inter-dependent.)
 --      Obviously where I have said rows, the same concept can be applied to columns.
---      Likewise there are "Alternate Pairs" and "Hook or X-Y wing" strategies, which 
+--      Likewise there are "Alternate Pairs" and "Hook or X-Y wing" strategies, which
 --      are easily solved with a single trial-and-error step, and of course the brute
---      force algorithm is going to select pairs first anyway. [Erm, no it doesn't, 
+--      force algorithm is going to select pairs first anyway. [Erm, no it doesn't,
 --      it selects shortest - I've noted the possible improvement below.]
 --
 integer col, row
@@ -8680,7 +8680,7 @@ integer ch, k, idx, sx, sy, count
                 end if
             end for
             if count=2 then
-                k = find(set,prevsets) 
+                k = find(set,prevsets)
                 if k!=0 then
                     for x=1 to 9 do
                         if set[x]=1 then
@@ -8825,7 +8825,7 @@ object vi
     if solved=BRUTE then return {{solution},BRUTE} end if
     if solved!=INCOMPLETE then ?9/0 end if
     -- find the cell with the fewest options:
-    -- (a possible improvement here would be to select the shortest 
+    -- (a possible improvement here would be to select the shortest
     --  with the "most pairs" set, see swordfish etc above.)
     minopt = 10
     for i=1 to 9*9 do
@@ -9203,14 +9203,14 @@ Working PL/I version, derived from the Rosetta Fortran version.
 sudoku: procedure options (main); /* 27 July 2014 */
 
   declare grid (9,9) fixed (1) static initial (
-      0, 0, 3, 0, 2, 0, 6, 0, 0,    
-      9, 0, 0, 3, 0, 5, 0, 0, 1,    
-      0, 0, 1, 8, 0, 6, 4, 0, 0,    
-      0, 0, 8, 1, 0, 2, 9, 0, 0,    
-      7, 0, 0, 0, 0, 0, 0, 0, 8,    
-      0, 0, 6, 7, 0, 8, 2, 0, 0,    
-      0, 0, 2, 6, 0, 9, 5, 0, 0,    
-      8, 0, 0, 2, 0, 3, 0, 0, 9,    
+      0, 0, 3, 0, 2, 0, 6, 0, 0,
+      9, 0, 0, 3, 0, 5, 0, 0, 1,
+      0, 0, 1, 8, 0, 6, 4, 0, 0,
+      0, 0, 8, 1, 0, 2, 9, 0, 0,
+      7, 0, 0, 0, 0, 0, 0, 0, 8,
+      0, 0, 6, 7, 0, 8, 2, 0, 0,
+      0, 0, 2, 6, 0, 9, 5, 0, 0,
+      8, 0, 0, 2, 0, 3, 0, 0, 9,
       0, 0, 5, 0, 1, 0, 3, 0, 0 );
 
   declare grid_solved (9,9) fixed (1);
@@ -9248,7 +9248,7 @@ is_safe: procedure (i, j, n) returns (bit(1) aligned) options (reorder);
     declare (i_min, j_min, ii, jj) fixed binary;
     declare kk bit(1) aligned;
 
-    if grid (i, j)  = n      then return (true);    
+    if grid (i, j)  = n      then return (true);
     if grid (i, j) ^= 0      then return (false);
     if any (grid (i, *) = n) then return (false);
     if any (grid (*, j) = n) then return (false);
@@ -9290,34 +9290,34 @@ end sudoku;
 
 ```txt
 
-+-----+-----+-----+ 
++-----+-----+-----+
 |0 0 3|0 2 0|6 0 0|
 |9 0 0|3 0 5|0 0 1|
 |0 0 1|8 0 6|4 0 0|
-+-----+-----+-----+ 
++-----+-----+-----+
 |0 0 8|1 0 2|9 0 0|
 |7 0 0|0 0 0|0 0 8|
 |0 0 6|7 0 8|2 0 0|
-+-----+-----+-----+ 
++-----+-----+-----+
 |0 0 2|6 0 9|5 0 0|
 |8 0 0|2 0 3|0 0 9|
 |0 0 5|0 1 0|3 0 0|
-+-----+-----+-----+ 
++-----+-----+-----+
 
 
-+-----+-----+-----+ 
++-----+-----+-----+
 |4 8 3|9 2 1|6 5 7|
 |9 6 7|3 4 5|8 2 1|
 |2 5 1|8 7 6|4 9 3|
-+-----+-----+-----+ 
++-----+-----+-----+
 |5 4 8|1 3 2|9 7 6|
 |7 2 9|5 6 4|1 3 8|
 |1 3 6|7 9 8|2 4 5|
-+-----+-----+-----+ 
++-----+-----+-----+
 |3 7 2|6 8 9|5 1 4|
 |8 1 4|2 5 3|7 6 9|
 |6 9 5|4 1 7|3 8 2|
-+-----+-----+-----+ 
++-----+-----+-----+
 
 ```
 
@@ -9474,7 +9474,7 @@ Another PL/I version, reads sudoku from the text data file as 81 character recor
 
 ```Prolog
 :- use_module(library(clpfd)).
- 
+
 sudoku(Rows) :-
         length(Rows, 9), maplist(length_(9), Rows),
         append(Rows, Vs), Vs ins 1..9,
@@ -9482,14 +9482,14 @@ sudoku(Rows) :-
         transpose(Rows, Columns), maplist(all_distinct, Columns),
         Rows = [A,B,C,D,E,F,G,H,I],
         blocks(A, B, C), blocks(D, E, F), blocks(G, H, I).
- 
+
 length_(L, Ls) :- length(Ls, L).
- 
+
 blocks([], [], []).
 blocks([A,B,C|Bs1], [D,E,F|Bs2], [G,H,I|Bs3]) :-
         all_distinct([A,B,C,D,E,F,G,H,I]),
         blocks(Bs1, Bs2, Bs3).
- 
+
 problem(1, [[_,_,_,_,_,_,_,_,_],
             [_,_,_,_,_,3,_,8,5],
             [_,_,1,_,2,_,_,_,_],
@@ -9602,7 +9602,7 @@ EndDataSection
 #IsPossible = 0
 #IsNotPossible = 1
 #Unknown = 0
-Global Dim sudoku(8, 8) 
+Global Dim sudoku(8, 8)
 ;-declarations
 Declare readSudoku()
 Declare displaySudoku()
@@ -9612,10 +9612,10 @@ Declare solvePuzzle(x = 0, y = 0)
 ;-procedures
 Procedure readSudoku()
   Protected a$, row, column
-  
+
   Restore puzzle
-  For row = 0 To 8 
-    Read.s a$  
+  For row = 0 To 8
+    Read.s a$
     For column = 0 To 8
       sudoku(column, row) = Val(Mid(a$, column + 1, 1))
     Next
@@ -9623,7 +9623,7 @@ Procedure readSudoku()
 EndProcedure
 
 Procedure displaySudoku()
-  Protected row, column 
+  Protected row, column
   Static border.s = "+-----+-----+-----+"
   For row = 0 To 8
     If row % 3 = 0: PrintN(border): EndIf
@@ -9640,46 +9640,46 @@ Procedure.s buildpossible(x, y, Array possible.b(1))
   Protected index, column, row, boxColumn = (x / 3) * 3, boxRow = (y / 3) * 3
   Dim possible.b(9)
 
-  For index = 0 To 8 
+  For index = 0 To 8
     possible(sudoku(index, y)) = #IsNotPossible ;record possibles in column
     possible(sudoku(x, index)) = #IsNotPossible ;record possibles in row
   Next
-  
+
   ;record possibles in box
   For row = boxRow To boxRow + 2
-    For column = boxColumn To boxColumn + 2 
+    For column = boxColumn To boxColumn + 2
       possible(sudoku(column, row)) = #IsNotPossible
-    Next 
+    Next
   Next
 EndProcedure
 
 Procedure solvePuzzle(x = 0, y = 0)
   Protected row, column, spot, digit
   Dim possible.b(9)
-  
+
   For row = y To 8
     For column = x To 8
       If sudoku(column, row) = #Unknown
         buildpossible(column, row, possible())
-        
-        For digit =  1 To 9                                   
+
+        For digit =  1 To 9
           If possible(digit) = #IsPossible
             sudoku(column, row) = digit
             spot = row * 9 + column + 1
             If solvePuzzle(spot % 9, spot / 9)
               Break 3
-            EndIf   
+            EndIf
           EndIf
         Next
 
         If digit = 10
           sudoku(column, row) = #Unknown
           ProcedureReturn #False
-        EndIf 
-      EndIf 
-    Next 
+        EndIf
+      EndIf
+    Next
     x = 0 ;reset column start point
-  Next 
+  Next
   ProcedureReturn #True
 EndProcedure
 
@@ -9691,8 +9691,8 @@ If OpenConsole()
     displaySudoku()
   Else
     PrintN("Unable to solve puzzle") ;due to bad starting data
-  EndIf 
-  
+  EndIf
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -9837,7 +9837,7 @@ A [http://schemecookbook.org/view/Cookbook/SudokuSolver Sudoku Solver in Racket]
 ## Rascal
 
 [[File:sudoku.jpeg||200px|thumb|right]]
-A sudoku is represented as a matrix, see Rascal solutions to matrix related problems for examples. 
+A sudoku is represented as a matrix, see Rascal solutions to matrix related problems for examples.
 
 
 ```Rascal
@@ -9848,22 +9848,22 @@ import vis::Render;
 public rel[int,int,int] sudoku(rel[int x, int y, int v] sudoku){
 	annotated= annotateGrid(sudoku);
 	solved = {<0,0,0,0,{0}>};
-	
+
 	while(!isEmpty(solved)){
 		for (n <- [0 ..8]){
 			column = domainR(annotated, {n});
 			annotated -= column;
 			annotated += reduceOptions(column);
-				
-			row = {<x,y,v,g,p> | <x,y,v,g,p> <- annotated, y==n}; 
+
+			row = {<x,y,v,g,p> | <x,y,v,g,p> <- annotated, y==n};
 			annotated -= row;
 			annotated += reduceOptions(row);
-				
-			grid1 = {<x,y,v,g,p> | <x,y,v,g,p> <- annotated, g==n}; 
+
+			grid1 = {<x,y,v,g,p> | <x,y,v,g,p> <- annotated, g==n};
 			annotated -= grid1;
 			annotated += reduceOptions(grid1);
-		}	
-		
+		}
+
 		solved = {<x,y,v,g,p> | <x,y,v,g,p> <- annotated, size(p)==1};
 		annotated -= solved;
 		annotated += {<x,y,getOneFrom(p),g,{*[1 .. 9]}> | <x,y,v,g,p> <- solved};
@@ -9882,15 +9882,15 @@ public rel[int,int,int,int,set[int]] annotateGrid(rel[int x, int y, int v] sudok
 			if (x<3 && y<3) g = 0;
 			if (2<x && x<6 && y<3) g = 1;
 			if (x>5 && y<3) g = 2;
-				
+
 			if (x<3 && 2<y && y<6) g = 3;
 			if (2<x && x<6 && 2<y && y<6) g = 4;
 			if (x>5 && 2<y && y<6) g = 5;
-				
+
 			if (x<3 && y>5) g=6;
 			if (2<x && x<6 && y>5) g=7;
 			if (x>5 && y>5) g=8;
-			
+
 			result += <x,y,v,g,{*[1 .. 9]}>;
 			}
 	return result;
@@ -9899,7 +9899,7 @@ public rel[int,int,int,int,set[int]] annotateGrid(rel[int x, int y, int v] sudok
 //reduces set of options
 public rel[int,int,int,int,set[int]] reduceOptions(rel[int x, int y, int v, int g, set[int] p] subSudoku){
 	solved = {<x,y,v,g,p> | <x,y,v,g,p> <- subSudoku, v!=0};
-	numbers = {*[1 .. 9]} - {v | <x,y,v,g,p> <- solved}; 
+	numbers = {*[1 .. 9]} - {v | <x,y,v,g,p> <- solved};
 	remaining = {<x,y,v,g,numbers&p> | <x,y,v,g,p> <- subSudoku-solved};
 	result = remaining + solved;
 	return result;
@@ -9913,17 +9913,17 @@ public void displaySudoku(rel[int x, int y, int v] sudoku){
 }
 
 //a sudoku
-public rel[int, int, int] sudokuA = 
+public rel[int, int, int] sudokuA =
 {
 <0,0,3>, <1,0,9>, <2,0,4>, <3,0,0>, <4,0,0>, <5,0,2>, <6,0,6>, <7,0,7>, <8,0,0>,
 <0,1,0>, <1,1,0>, <2,1,0>, <3,1,3>, <4,1,0>, <5,1,0>, <6,1,4>, <7,1,0>, <8,1,0>,
 <0,2,5>, <1,2,0>, <2,2,0>, <3,2,6>, <4,2,9>, <5,2,0>, <6,2,0>, <7,2,2>, <8,2,0>,
 <0,3,0>, <1,3,4>, <2,3,5>, <3,3,0>, <4,3,0>, <5,3,0>, <6,3,9>, <7,3,0>, <8,3,0>,
-<0,4,6>, <1,4,0>, <2,4,0>, <3,4,0>, <4,4,0>, <5,4,0>, <6,4,0>, <7,4,0>, <8,4,7>, 
+<0,4,6>, <1,4,0>, <2,4,0>, <3,4,0>, <4,4,0>, <5,4,0>, <6,4,0>, <7,4,0>, <8,4,7>,
 <0,5,0>, <1,5,0>, <2,5,7>, <3,5,0>, <4,5,0>, <5,5,0>, <6,5,5>, <7,5,8>, <8,5,0>,
 <0,6,0>, <1,6,1>, <2,6,0>, <3,6,0>, <4,6,6>, <5,6,7>, <6,6,0>, <7,6,0>, <8,6,8>,
 <0,7,0>, <1,7,0>, <2,7,9>, <3,7,0>, <4,7,0>, <5,7,8>, <6,7,0>, <7,7,0>, <8,7,0>,
-<0,8,0>, <1,8,2>, <2,8,6>, <3,8,4>, <4,8,0>, <5,8,0>, <6,8,7>, <7,8,3>, <8,8,5> 
+<0,8,0>, <1,8,2>, <2,8,6>, <3,8,4>, <4,8,0>, <5,8,0>, <6,8,7>, <7,8,3>, <8,8,5>
 };
 ```
 
@@ -9954,11 +9954,11 @@ Latest version and usage notes kept at: [[http://neural-noise.blogspot.com/2013/
 
 ```txt
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       
-; Register And Flag Usage        
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Register And Flag Usage
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;        0        General purpose variable used for miscelaneous purposes
-;        1        Current index (0-80) in the pseudo-recursion 
+;        1        Current index (0-80) in the pseudo-recursion
 ;        2        Row (0-8) of current index
 ;        3        Column (0-8) of current index
 ;        4        Block # (0-8) of current index
@@ -9971,33 +9971,33 @@ Latest version and usage notes kept at: [[http://neural-noise.blogspot.com/2013/
 ;
 ;        Flag 2   Indicates that a digit has been used in cur row/column/block
 ;        Flag 3   Input to Subroutine B (whether to set or clear flags)
-        
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       
-; setU(x)        
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; setU(x)
 ; Set/clear flag matrix values (show that x is used in a row/column/block)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       
-LBL D        
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+LBL D
         GSB 5       ; calc bit value we need to set/clear in existing row
         RCL 2       ; Get the current row index into x
         GSB B       ; set flag matrix value and calc new bit value for the column
         RCL 3       ; Get the current column index into x
         GSB B       ; set flag matrix values and calc new bit value for the block
         RCL 4       ; Get the current block index into x
-        
-; MUST IMMEDIATELY FOLLOW PRECEEDING SUBROUTINE        
-; utility subroutine for setting flag matrix values         
 
-LBL B        
+; MUST IMMEDIATELY FOLLOW PRECEEDING SUBROUTINE
+; utility subroutine for setting flag matrix values
+
+LBL B
         GSB 1       ; get the current flag matrix row at index x
-        
+
         RCL 0       ; get temp register (holds the bit value we will be setting)
         F? 3        ; flag 3 indicates if we are setting or clearing the flag
         CHS         ; if we are clearing, we will do a subtraction instead
         +           ; set/clear the flag
-        
+
         X<>Y        ; bring the row index back into x
         2           ; 26 is the starting register for the flag matrix
-        6        
+        6
         GSB 3       ; set I so that we are ready to store the new value
         STO (i)     ; store the new value into the flag matrix
         RDN         ; get rid of the new value to restore the stack
@@ -10005,18 +10005,18 @@ LBL B
         +           ; set the next bit index
         GTO 5       ; calculate the value with that bit set
                     ; we GTO instead of GSB and it will do the RTN
-        
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       
-; putA(x)        
-; Set the value x into the current row/column in the trial solution.         
-; Does it by subtracting the previous value and adding the new one.        
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       
-LBL 7        
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; putA(x)
+; Set the value x into the current row/column in the trial solution.
+; Does it by subtracting the previous value and adding the new one.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+LBL 7
         X<>6        ; swap new value with register that holds current value
         STO 0       ; store the old value in the temp register
         RCL 2       ; Get the current row index into x
         1           ; 17 is the starting register for the current trial solution
-        7        
+        7
         GSB 3       ; Set the indirect register
         RCL (i)     ; Get the current value for the entire row
         RCL 6       ; Get the new value
@@ -10024,164 +10024,164 @@ LBL 7
         RCL* 5      ; shift the power of 10 to the appropriate column
         +           ; add to the old value
         STO (i)     ; store the new row value from where we got it
-        RTN        
-        
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       
-; change(x)        
-; Increments or decrements the current position in the trial solution.        
+        RTN
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; change(x)
+; Increments or decrements the current position in the trial solution.
 ; Updates the registers containing the current row, column and block index,
 ; and the one with the power of 10 factor for the current column and others
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       
-LBL 6        
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+LBL 6
         STO+ 1      ; x holds +1 or -1; Register 1 is the current index
-        
+
         RCL 1       ; get the current index (0 to 80)
         RCL 1       ; get the current index (0 to 80)
         9           ; integer divide by 9 to get the row index (0 to 8)
         /           ; no integer divide on 15c so do a floating point divide
         INT         ; use the INT operator to finish of the integer divide
         STO 2       ; register 2 contains the current row index
-        
-        9        
-        *        
+
+        9
+        *
         -           ; col = index - 9 * row
         STO 3       ; register 3 contains the current column index
-        
+
         3           ; calculate the block index from the row & column indexes
         /           ; TODO: save a couple of bytes in this section of code
-        RCL 2        
-        3        
-        /        
-        INT          
-        3        
-        *        
-        +        
+        RCL 2
+        3
+        /
+        INT
+        3
+        *
+        +
         STO 4       ; register 4 holds the block index
-        
+
         8           ; now calculate the power of 10 of the current column
         RCL- 3      ; Get the digit (from right) based on the column
         10^X        ; calculate the exponent
         STO 5       ; save in register 5 which is used throughout the code
-        
+
         RCL 2       ; get the current row
         1           ; 17 is the start register of the current trial solution
-        7        
+        7
         GSB 4       ; extract the value at the current column
         STO 6       ; reg 6: the current trial value at the current row/column
-        
+
         RCL 2       ; get the current row
         8           ; 8 is the start register of the input data from the user
         GSB 4       ; extract the value at the current column
         STO 7       ; reg 7: starting value at the current row/column (0 if none)
-        RTN        
-        
+        RTN
+
 ; Extract value at the current column from the matrix indirectly specified by x&y
-LBL 4        
+LBL 4
         GSB 3       ; set the indirect register based on x & y
         RCL (i)     ; get the row from the matrix passed in
         RCL / 5     ; shift the row to the right
         INT         ; trim off the digits shifted to the right of the decimal
         1           ; we will do a modulus 10 to extract the last digit
-        0        
+        0
         /           ; do the equivalent of a mod 10
-        FRAC                
+        FRAC
         1
         0
         *
         RTN
-        
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       
-;  main()        
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       
-LBL A        
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;  main()
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+LBL A
         CF 2        ; make sure flag 2 is unset - CLR REG does not do this
         CF 3        ; make sure flag 3 is unset - CLR REG does not do this
         1           ; start with a index in register 1 of -1 (0 to 80)
         CHS         ; that way we can start with an increment operation
         STO 1       ; and actually start at 0 where we want.
-        
+
 LBL 2               ; set the flags to show the input values are set
         1           ; go forward one position at a time
         GSB 6       ; go to the next position in the trial solution
-        
-        RCL 7       ; get the starting input value at this row/col 
+
+        RCL 7       ; get the starting input value at this row/col
         GSB 7       ; set the value in the trial solution
         RCL 7       ; get starting input value because the last call destroyed it
         TEST 1      ; if > 0 then the user input a value for this row/col
         GSB D       ; set the flags to indicate this value is set
-        
+
         8           ; 80 is the upper bound of the indexes (9x9 = 80 = 0:80)
-        0        
+        0
         RCL 1       ; get the current index
         TEST 6      ; if the current index hasn't reached 80
         GTO 2       ; do the next value
         1           ; reset the starting value
         CHS         ; to -1 as we did at the beginning of the program
         STO 1       ; register 1 holds the current index
-        
+
 LBL E               ; main solution loop
         8           ; when we reach the last index (80) we are done
-        0        
+        0
         RCL 1       ; register 1 holds the current index
         TEST 5      ; see if we are at the end
         RTN         ;  finished        ; woohoo - we are done!
         1           ; Go forward one spot
         GSB 6       ; Do the position increment
-        RCL 7       ; get the starting input value at this row/col 
+        RCL 7       ; get the starting input value at this row/col
         TEST 1      ; if it's > 0, the user specified a value here
         GTO E       ; go forward, since this value was specified by the user
         GSB 7       ; Set the value in the trial solution
-        
-LBL 8          
+
+LBL 8
         9           ; check the possible digits in order 1-9.
         RCL 6       ; Get the current trial solution value
         TEST 5      ; Check to see if it is 9
         GTO C       ; If it is, backup one step
         1           ; We weren't at 9 yet, so increment the value by 1
-        +        
+        +
         GSB 7       ; Set the value in the trial solution
-        
+
         RCL 6       ; Get the current trial solution value
         GSB 5       ; Calc 2^x-1 to get the bit mask
         CF 2        ; Clear the flag thats used as a return value
         RCL 2       ; Get the current row index into x
         GSB 9       ; see if the current value has already been used in the row
         F? 2        ; If number has been used in the block, try the next value
-        GTO 8        
+        GTO 8
         RCL 3       ; Get the current column index into x
         GSB 9       ; see if current value has already been used in the column
         F? 2        ; If number has been used in the block, try the next value
-        GTO 8        
+        GTO 8
         RCL 4       ; Get the current block index into x
         GSB 9       ; see if the current value has already been used in the block
         F? 2        ; If number has been used in the block, try the next value
-        GTO 8        
+        GTO 8
         RCL 6       ; Get the current trial solution value
         GSB D       ; set the flags to indicate this value is set
         GTO E       ; move on to the next position in the puzzle
-        
+
 LBL C               ; Come here to back up to the previous position
         1           ; We will go one spot backwards
-        CHS        
+        CHS
         GSB 6       ; Set the new current position and all temp values
         TEST 1      ; previous call leaves the starting value in X
         GTO C       ; if value is > 0, it was set, backup one more spot
         RCL 6       ; Get the current trial solution value
-        
+
         SF 3        ; flag 3: clear the flag matrix bits, instead of setting them
         GSB D       ; Set/Clear the flag matrix bits
         CF 3        ; unset the 3 flag
         GTO 8       ; check the next digit
-        
-LBL 9        
+
+LBL 9
         GSB 1       ; get the appropriate row (x) from the flag matrix
         RCL /  0    ; divide by the temp register - right shifts value
-        INT        
+        INT
         2           ; if bit is set, fractional part will be non 0 when / 2
-        /        
-        FRAC        
+        /
+        FRAC
         TEST 1      ; if bit is set, set flag 2 which is used as a return value
-        SF 2        
+        SF 2
         RDN         ; move the stack down to prepare the caller for the next call
         RDN         ; move the stack down to prepare the caller for the next call
         9           ; bit flags for row/col/block are << by 9 from each other
@@ -10189,11 +10189,11 @@ LBL 9
         GTO 5       ; calc 2^x-1 to get the bit mask
                     ; do a GTO instead of GSB and it will return for us
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       
-; setPow2(x)        
-; Sets the utility temp register to 2^(x-1). Leaves x in place.        
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       
-LBL 5        
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; setPow2(x)
+; Sets the utility temp register to 2^(x-1). Leaves x in place.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+LBL 5
         STO 0       ; store the input X in the temp register
         1           ; we want to subtract 1 from the exponent
         -           ; calculate x-1
@@ -10201,32 +10201,32 @@ LBL 5
         X<>Y        ; the y^x function wants x and y reversed
         y^x         ; calculate the value
         X<>0        ; stuff result in temp register and restore the input x
-        RTN        
-        
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       
-; getPart(x)        
-; Returns the integer representing the entire Xth row of the flag matrix        
-; Row numbers start at 0.        
-; returns value in x - input parameter x ends up in y        
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;       
-LBL 1        
-        ENTER        
+        RTN
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; getPart(x)
+; Returns the integer representing the entire Xth row of the flag matrix
+; Row numbers start at 0.
+; returns value in x - input parameter x ends up in y
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+LBL 1
+        ENTER
         ENTER       ; duplicate the parameter so we can leave it for the caller
         2           ; 26 is the starting register for the flag matrix
-        6        
+        6
         GSB 3       ; set the indirect register to the row specified by x
         RCL (i)     ; retrieve the entire row from the flag matrix
-        RTN        
-        
+        RTN
+
 ; Set the indirect register and remove the parameters from the stack
-LBL 3        
+LBL 3
         +           ; x+y is the memory offset we want
         STO I       ; put it in the indirect register
         RDN         ; get rid of the sum from the stack
-        RTN        
+        RTN
 
 ```
-        
+
 
 
 ## Ruby
@@ -10273,15 +10273,15 @@ def solve_sudoku(matrix)
     end
     # If the matrix is complete, we have a solution...
     return matrix if options.empty?
-    
+
     i, j, permissible = options.min_by { |x| x.last.length }
-    
+
     # If there is an option with only one solution, set it and re-check permissibility
     if permissible.length == 1
       matrix[i][j] = permissible[0]
       next
     end
-    
+
     # We have two or more choices. We need to search both...
     permissible.each do |v|
       mtmp = deep_copy_sudoku(matrix)
@@ -10289,7 +10289,7 @@ def solve_sudoku(matrix)
       ret = solve_sudoku(mtmp)
       return ret if ret
     end
-    
+
     # We did an exhaustive search on this branch and nothing worked out.
     return
   end
@@ -10297,7 +10297,7 @@ end
 
 def print_matrix(matrix)
   puts "Impossible" or return  unless matrix
-  
+
   border = "+-----+-----+-----+"
   9.times do |i|
     puts border if i%3 == 0
@@ -10441,17 +10441,17 @@ fn main() {
 ```txt
 
 ------+-------+------
-8 5 9 | 6 1 2 | 4 3 7  
-7 2 3 | 8 5 4 | 1 6 9  
-1 6 4 | 3 7 9 | 5 2 8  
+8 5 9 | 6 1 2 | 4 3 7
+7 2 3 | 8 5 4 | 1 6 9
+1 6 4 | 3 7 9 | 5 2 8
 ------+-------+------
-9 8 6 | 1 4 7 | 3 5 2  
-3 7 5 | 2 6 8 | 9 1 4  
-2 4 1 | 5 9 3 | 7 8 6  
+9 8 6 | 1 4 7 | 3 5 2
+3 7 5 | 2 6 8 | 9 1 4
+2 4 1 | 5 9 3 | 7 8 6
 ------+-------+------
-4 3 2 | 9 8 1 | 6 7 5  
-6 1 7 | 4 2 5 | 8 9 3  
-5 9 8 | 7 3 6 | 2 4 1  
+4 3 2 | 9 8 1 | 6 7 5
+6 1 7 | 4 2 5 | 8 9 3
+5 9 8 | 7 3 6 | 2 4 1
 ------+-------+------
 
 ```
@@ -10518,17 +10518,17 @@ Output:
 
 ```txt
 
-X 
-  1 2 3 4 5 6 7 8 9 
-1 9 8 5 3 2 7 6 4 1 
-2 6 7 1 5 9 4 2 3 8 
-3 3 2 4 6 1 8 9 5 7 
-4 2 4 3 7 6 1 8 9 5 
-5 5 9 7 4 8 3 1 2 6 
-6 1 6 8 2 5 9 4 7 3 
-7 4 5 2 8 3 6 7 1 9 
-8 7 1 6 9 4 5 3 8 2 
-9 8 3 9 1 7 2 5 6 4 
+X
+  1 2 3 4 5 6 7 8 9
+1 9 8 5 3 2 7 6 4 1
+2 6 7 1 5 9 4 2 3 8
+3 3 2 4 6 1 8 9 5 7
+4 2 4 3 7 6 1 8 9 5
+5 5 9 7 4 8 3 1 2 6
+6 1 6 8 2 5 9 4 7 3
+7 4 5 2 8 3 6 7 1 9
+8 7 1 6 9 4 5 3 8 2
+9 8 3 9 1 7 2 5 6 4
 
 ```
 
@@ -10537,7 +10537,7 @@ X
 ## Scala
 
 I use the following slightly modified code for creating new sudokus and it seems to me usable for solving given sudokus. It doesn't look like elegant and functional programming - so what! it works!
-This solver works with normally 9x9 sudokus as well as with sudokus of jigsaw type or sudokus with additional condition like diagonal constraint. 
+This solver works with normally 9x9 sudokus as well as with sudokus of jigsaw type or sudokus with additional condition like diagonal constraint.
 {{works with|Scala|2.9.1}}
 
 ```scala
@@ -10562,8 +10562,8 @@ object SudokuSolver extends App {
       val gSquare = (0 to 80 toList) map fgs filter (_._2==(fgs(pos))._2) map (_._1)
       arrayGroups(pos) = List(gRow,gCol,gSquare)
     }
-    val listGroups = arrayGroups toList 
-    
+    val listGroups = arrayGroups toList
+
     val fpv4s: (Int) => List[Int] = pos => {   //get possible values for solving
       val setRow = (listGroups(pos)(0) map (solution(_))).toSet
       val setCol = listGroups(pos)(1).map(solution(_)).toSet
@@ -10572,8 +10572,8 @@ object SudokuSolver extends App {
       val setPossible = setAll--setG
       setPossible.toList.sortWith(_<_)
     }
-    
-    
+
+
     //solve the riddle: Nil ==> solution does not exist
     def solve(listOfFields: List[Int]): List[Int] = {
       solution = listOfFields toArray
@@ -10585,7 +10585,7 @@ object SudokuSolver extends App {
         if (check == Nil) return uncheckedSol
         return Nil
       }
-    
+
       val f1: Int => Pair[Int,Int] = p => Pair(p,listOfFields(p))
       val numFields = (0 to 80 toList) map f1 filter (_._2==0)
       val iter = numFields map ((_: (Int,Int))._1)
@@ -10598,7 +10598,7 @@ object SudokuSolver extends App {
         }
         ret
       }
-  
+
       val last: () => Int = () => {
         val ret = numFields match {
           case Nil => -1
@@ -10606,12 +10606,12 @@ object SudokuSolver extends App {
         }
         ret
       }
-  
+
       val hasPrev: () => Boolean = () => p_iter > 0
       val prev: () => Int = () => {p_iter -= 1; iter(p_iter)}
       val hasNext: () => Boolean = () => p_iter < iter.size-1
       val next: () => Int = () => {p_iter += 1; iter(p_iter)}
-      val fixed: Int => Boolean = pos => listOfFields(pos) != 0  
+      val fixed: Int => Boolean = pos => listOfFields(pos) != 0
       val possiArray = new Array[List[Int]](numFields.size)
       val firstUF = first() //first unfixed
       if (firstUF < 0) return checkSol(solution.toList) //that is it!
@@ -10644,7 +10644,7 @@ object SudokuSolver extends App {
       }
       checkSol(solution.toList)
     }
-  }  
+  }
 
   val f2Str: List[Int] => String = fields => {
     val sepLine = "+---+---+---+"
@@ -10652,7 +10652,7 @@ object SudokuSolver extends App {
     val fs: (Int, Int) => String = (i, v) => v.toString.replace("0"," ")+(if (sepPoints.contains(i%9)) "|" else "")
     sepLine+"\n"+(0 to fields.size-1).map(i => (if (i%9==0) "|" else "")+fs(i,fields(i))+(if (i%9==8) if (sepPoints.contains(i/9)) "\n"+sepLine+"\n" else "\n" else "")).foldRight("")(_+_)
   }
-  
+
   val solver = new Solver()
 
   val riddle = List(3,9,4,0,0,2,6,7,0,
@@ -10671,7 +10671,7 @@ object SudokuSolver extends App {
 
   println("solution:")
   println(solution match {case Nil => "no solution!!!" case _ => f2Str(solution)})
- 
+
 }
 ```
 
@@ -10723,7 +10723,7 @@ object SudokuSolver extends App {
 
     def solve(listOfFields: List[Int]): List[Int] = {
       solution = listOfFields toArray
-      
+
       val mRowSubset = new Array[Boolean](81)
       val mColSubset = new Array[Boolean](81)
       val mBoxSubset = new Array[Boolean](81)
@@ -10737,7 +10737,7 @@ object SudokuSolver extends App {
           }
         }
       }
-      
+
       def setSubsetValue(r: Int, c: Int, value: Int, present: Boolean): Unit = {
         mRowSubset(fap(r, value - 1)) = present
         mColSubset(fap(c, value - 1)) = present
@@ -10747,7 +10747,7 @@ object SudokuSolver extends App {
       def computeBoxNo(r: Int, c: Int): Int = {
         val boxRow = r / 3
         val boxCol = c / 3
-        return boxRow * 3 + boxCol 
+        return boxRow * 3 + boxCol
       }
 
       def isValid(r: Int, c: Int, value: Int): Boolean = {
@@ -10766,10 +10766,10 @@ object SudokuSolver extends App {
           if (c == 9)
             return true
         }
-        
+
         if(solution(fap(r,c)) != 0)
           return solve(r+1,c)
-        for(value <- 1 to 9) 
+        for(value <- 1 to 9)
           if(isValid(r, c, value)) {
             solution(fap(r,c)) = value
             setSubsetValue(r, c, value, true)
@@ -10780,7 +10780,7 @@ object SudokuSolver extends App {
         solution(fap(r,c)) = 0
         return false
       }
- 
+
       def checkSol: Boolean = {
         initSubsets
         if ((mRowSubset.exists(_==false)) || (mColSubset.exists(_==false)) || (mBoxSubset.exists(_==false))) return false
@@ -10789,13 +10789,13 @@ object SudokuSolver extends App {
 
       initSubsets
       val ret = solve(0,0)
-      if (ret) 
+      if (ret)
         if (checkSol) return solution.toList else Nil
       else
         return Nil
     }
   }
-  
+
   val f2Str: List[Int] => String = fields => {
     val f2Stri: List[Int] => String = fields => {
       val sepLine = "+---+---+---+"
@@ -10811,7 +10811,7 @@ object SudokuSolver extends App {
   val elapsedtime: (=> Unit) => Long = f => {val s = System.currentTimeMillis; f; (System.currentTimeMillis - s)/1000}
 
   var sol = List[Int]()
-  
+
   val sudokus = List(
       ("riddle used in Ada section:",
        "394..267....3..4..5..69..2..45...9..6.......7..7...58..1..67..8..9..8....264..735"),
@@ -10820,7 +10820,7 @@ object SudokuSolver extends App {
       ("riddle from Groovy section: 4th exceptionally difficult example in Wikipedia: ~80 seconds",
        "..3......4...8..36..8...1...4..6..73...9..........2..5..4.7..686........7..6..5.."),
       ("riddle used in Ada section with incorrect modifactions - it should fail:",
-       "3943.267....3..4..5..69..2..45...9..6.......7..7...58..1..67..8..9..8....264..735"),       
+       "3943.267....3..4..5..69..2..45...9..6.......7..7...58..1..67..8..9..8....264..735"),
       ("riddle constructed with mess - it should fail too:",
        "123456789456789123789123456.45..89..6.......72.7...58.31..67..8..9..8....264..735"))
 
@@ -10992,10 +10992,10 @@ function []=disp_board(board)
             end
         end
     end
-    
+
     StringBoard=[StringBoard, string(zeros(9,2))];
     StringBoard=[StringBoard; string(zeros(2,11))];
-    
+
     for i=1:9
         StringBoard(i,:)=[StringBoard(i,1:3), '|', StringBoard(i,4:6), '|', StringBoard(i,7:9)]
     end
@@ -11003,7 +11003,7 @@ function []=disp_board(board)
     StringBoard(8,:)=strsplit('-----------');
     StringBoard(5:7,:)=StringBoard(4:6,:);
     StringBoard(4,:)=strsplit('-----------');
-    
+
     disp(StringBoard)
 endfunction
 
@@ -11026,12 +11026,12 @@ function varargout=validate_input(input,position,board)
         j=6;
     end
     block=board(i+1:i+3,j+1:j+3)
-    
+
     valid_input=%F;
     valid_row=%F;
     valid_col=%F;
     valid_block=%F;
-    
+
     if find(input==row)==[] then
         valid_row=%T;
     end
@@ -11044,7 +11044,7 @@ function varargout=validate_input(input,position,board)
     if valid_row & valid_col & valid_block then
         valid_input=%T;
     end
-    
+
     varargout=list(valid_input,valid_row,valid_col,valid_block)
 endfunction
 
@@ -11065,11 +11065,11 @@ function varargout=validate_board(board)
             break
         end
     end
-    
+
     valid_flag2 = (length( find(board) ) >= 17); //enforces rule of minimum of 17 givens
                                                  //set it to always %T to ignore this rule
     valid_board = (valid_flag1 & valid_flag2);
-    
+
     varargout=list(valid_board)
 endfunction
 
@@ -11096,14 +11096,14 @@ Solved_board=Init_board;
 tic();
 i=0; counter=0; breaked=%F;
 while i<size(blank,'r')
-    i=i+1; 
+    i=i+1;
     counter=counter+1;
     pos=blank(i,:);
-    
+
     value=Solved_board(pos(1),pos(2));
-    
+
     valid_value=%F;
-     
+
     while valid_value==%F
         value=value+1;
         if value>=10
@@ -11112,14 +11112,14 @@ while i<size(blank,'r')
             valid_value=validate_input(value,pos,Solved_board);
         end
     end
-   
+
     if valid_value & value<10 then
         Solved_board(pos(1),pos(2))=value
     else
         Solved_board(pos(1),pos(2))=0;
         i=i-2;
     end
-    
+
     if counter==break_point
         breaked=%T;
         break
@@ -11266,17 +11266,17 @@ solve(grid)
 {{out}}
 
 ```txt
-5 3 9  8 2 4  7 6 1  
-6 7 2  1 5 9  8 3 4  
-1 8 4  7 6 3  9 5 2  
+5 3 9  8 2 4  7 6 1
+6 7 2  1 5 9  8 3 4
+1 8 4  7 6 3  9 5 2
 
-3 1 8  5 7 2  6 4 9  
-4 2 5  9 8 6  1 7 3  
-7 9 6  3 4 1  2 8 5  
+3 1 8  5 7 2  6 4 9
+4 2 5  9 8 6  1 7 3
+7 9 6  3 4 1  2 8 5
 
-8 4 1  2 3 7  5 9 6  
-9 6 7  4 1 5  3 2 8  
-2 5 3  6 9 8  4 1 7  
+8 4 1  2 3 7  5 9 6
+9 6 7  4 1 5  3 2 8
+2 5 3  6 9 8  4 1 7
 ```
 
 
@@ -11401,7 +11401,7 @@ function solve(a,s,t,v,w) {
 			}
 		}
 	}
-	
+
 	if (all(w:==0)) {
 		return(1)
 	}
@@ -11553,7 +11553,7 @@ class Soduku {
     var mRowSubset:[[Bool]]!
     var mColSubset:[[Bool]]!
     var mBoxSubset:[[Bool]]!
-    
+
     init(board:SodukuPuzzle) {
         mBoard = board
         mBoardSize = board.count
@@ -11563,63 +11563,63 @@ class Soduku {
         mBoxSubset = [[Bool]](count: mBoardSize, repeatedValue: [Bool](count: mBoardSize, repeatedValue: false))
         initSubsets()
     }
-    
+
     func computeBoxNo(i:Int, _ j:Int) -> Int {
         let boxRow = i / mBoxSize
         let boxCol = j / mBoxSize
-        
+
         return boxRow * mBoxSize + boxCol
     }
-    
+
     func initSubsets() {
         for i in 0..<mBoard.count {
             for j in 0..<mBoard.count {
                 let value = mBoard[i][j]
-                
+
                 if value != 0 {
                     setSubsetValue(i, j, value, true);
                 }
             }
         }
     }
-    
+
     func isValid(i:Int, _ j:Int, var _ val:Int) -> Bool {
         val--
         let isPresent = mRowSubset[i][val] || mColSubset[j][val] || mBoxSubset[computeBoxNo(i, j)][val]
         return !isPresent
     }
-    
+
     func printBoard() {
         for i in 0..<mBoardSize {
             if i % mBoxSize == 0 {
                 println(" -----------------------")
             }
-            
+
             for j in 0..<mBoardSize {
                 if j % mBoxSize == 0 {
                     print("| ")
                 }
-                
+
                 print(mBoard[i][j] != 0 ? String(mBoard[i][j]) : " ")
                 print(" ")
             }
-            
+
             println("|")
         }
-        
+
         println(" -----------------------")
     }
-    
+
     func setSubsetValue(i:Int, _ j:Int, _ value:Int, _ present:Bool) {
         mRowSubset[i][value - 1] = present
         mColSubset[j][value - 1] = present
         mBoxSubset[computeBoxNo(i, j)][value - 1] = present
     }
-    
+
     func solve() {
         solve(0, 0)
     }
-    
+
     func solve(var i:Int, var _ j:Int) -> Bool {
         if i == mBoardSize {
             i = 0
@@ -11628,24 +11628,24 @@ class Soduku {
                 return true
             }
         }
-        
+
         if mBoard[i][j] != 0 {
             return solve(i + 1, j)
         }
-        
+
         for value in 1...mBoardSize {
             if isValid(i, j, value) {
                 mBoard[i][j] = value
                 setSubsetValue(i, j, value, true)
-                
+
                 if solve(i + 1, j) {
                     return true
                 }
-                
+
                 setSubsetValue(i, j, value, false)
             }
         }
-        
+
         mBoard[i][j] = 0
         return false
     }
@@ -11810,7 +11810,7 @@ class SudokuSolver;
   rand int cols[0:8][0:8];
   int preset_rows[0:8][0:8];
   constraint board_input {
-    foreach(preset_rows[i])foreach(preset_rows[i][j]) 
+    foreach(preset_rows[i])foreach(preset_rows[i][j])
        if(preset_rows[i][j] != 0) rows[i][j] == preset_rows[i][j];
   }
   constraint range {
@@ -11839,7 +11839,7 @@ class SudokuSolver;
   constraint tiles_permutation {
     foreach(tiles[i]) foreach(tiles[i][j1])
                      foreach(tiles[i][j2])
-      if(j1 != j2) tiles[i][j1] != tiles[i][j2];     
+      if(j1 != j2) tiles[i][j1] != tiles[i][j2];
   }
   ///////////////////////////////////////////////////
   /// Makes sure that sure that the numbers in    ///
@@ -12164,7 +12164,7 @@ oo::class create RuleOnlyChoice {
     superclass Rule
     method Solve {hSudoku x y choices} {
 	if {[llength $choices]==1} {
-	    return $choices 
+	    return $choices
 	} else {
 	    return 0
 	}
@@ -12520,15 +12520,15 @@ End Sub
 
 Sudoku
 Solution:
-6 3 1 2 4 5 9 7 8 
-9 2 5 6 7 8 1 4 3 
-4 7 8 3 1 9 6 5 2 
-7 9 6 5 2 3 4 8 1 
-1 8 2 9 6 4 5 3 7 
-3 5 4 7 8 1 2 9 6 
-8 6 7 4 9 2 3 1 5 
-2 4 3 1 5 7 8 6 9 
-5 1 9 8 3 6 7 2 4 
+6 3 1 2 4 5 9 7 8
+9 2 5 6 7 8 1 4 3
+4 7 8 3 1 9 6 5 2
+7 9 6 5 2 3 4 8 1
+1 8 2 9 6 4 5 3 7
+3 5 4 7 8 1 2 9 6
+8 6 7 4 9 2 3 1 5
+2 4 3 1 5 7 8 6 9
+5 1 9 8 3 6 7 2 4
 
 ```
 
@@ -12542,14 +12542,14 @@ To run in console mode with cscript.
 ```vb
 Dim grid(9, 9)
 Dim gridSolved(9, 9)
- 
+
 Public Sub Solve(i, j)
     If i > 9 Then
         'exit with gridSolved = Grid
         For r = 1 To 9
 	    For c = 1 To 9
 	        gridSolved(r, c) = grid(r, c)
-	    Next 'c 
+	    Next 'c
         Next 'r
         Exit Sub
     End If
@@ -12566,8 +12566,8 @@ Public Sub Solve(i, j)
         End If
     Next 'n
 End Sub 'Solve
- 
-Public Function isSafe(i, j, n) 
+
+Public Function isSafe(i, j, n)
     If grid(i, j) <> 0 Then
         isSafe = (grid(i, j) = n)
         Exit Function
@@ -12601,10 +12601,10 @@ Public Function isSafe(i, j, n)
     'all tests were OK
     isSafe = True
 End Function 'isSafe
- 
+
 Public Sub Sudoku()
     'main routine
-   Dim s(9) 
+   Dim s(9)
     s(1) = "001005070"
     s(2) = "920600000"
     s(3) = "008000600"
@@ -12779,14 +12779,14 @@ else Text(0, "No solution");
 ```zkl
 fcn trycell(sdku,pos=0){
    row,col:=pos/9, pos%9;
- 
+
    if(pos==81)   return(True);
    if(sdku[pos]) return(trycell(sdku, pos + 1));
- 
+
    used:=0;
    foreach r in (9){ used=used.bitOr((1).shiftLeft(sdku[r*9 + col] - 1)) }
    foreach c in (9){ used=used.bitOr((1).shiftLeft(sdku[row*9 + c] - 1)) }
- 
+
    row,col = row/3*3, col/3*3;
    foreach r,c in ([row..row+2], [col..col+2])
       { used=used.bitOr((1).shiftLeft(sdku[r*9 + c] - 1)) }
@@ -12795,7 +12795,7 @@ fcn trycell(sdku,pos=0){
       if(used.isEven and trycell(sdku, pos + 1)) return(True);
       sdku[pos]+=1; used/=2;
    }
- 
+
    sdku[pos]=0;
    return(False);
 }
@@ -12830,17 +12830,17 @@ foreach n in (3){
 
 True
 +-----+-----+-----+
-| 534 | 678 | 912 | 
-| 672 | 195 | 348 | 
-| 198 | 342 | 567 | 
+| 534 | 678 | 912 |
+| 672 | 195 | 348 |
+| 198 | 342 | 567 |
 +-----+-----+-----+
-| 859 | 761 | 423 | 
-| 426 | 853 | 791 | 
-| 713 | 924 | 856 | 
+| 859 | 761 | 423 |
+| 426 | 853 | 791 |
+| 713 | 924 | 856 |
 +-----+-----+-----+
-| 961 | 537 | 284 | 
-| 287 | 419 | 635 | 
-| 345 | 286 | 179 | 
+| 961 | 537 | 284 |
+| 287 | 419 | 635 |
+| 345 | 286 | 179 |
 +-----+-----+-----+
 
 ```

@@ -15,21 +15,21 @@ tags = []
 
 
 
-[[wp:Heapsort|Heapsort]] is an in-place sorting algorithm with worst case and average complexity of   <span style="font-family: serif">O(''n'' log''n'')</span>. 
+[[wp:Heapsort|Heapsort]] is an in-place sorting algorithm with worst case and average complexity of   <span style="font-family: serif">O(''n'' log''n'')</span>.
 
-The basic idea is to turn the array into a binary heap structure, which has the property that it allows efficient retrieval and removal of the maximal element. 
+The basic idea is to turn the array into a binary heap structure, which has the property that it allows efficient retrieval and removal of the maximal element.
 
-We repeatedly "remove" the maximal element from the heap, thus building the sorted list from back to front. 
+We repeatedly "remove" the maximal element from the heap, thus building the sorted list from back to front.
 
 Heapsort requires random access, so can only be used on an array-like data structure.
 
 Pseudocode:
  '''function''' heapSort(a, count) '''is'''
     '''input:''' an unordered array ''a'' of length ''count''
-  
+
     <span style="color: grey">''(first place a in max-heap order)''</span>
     heapify(a, count)
-  
+
     end := count - 1
     '''while''' end > 0 '''do'''
        <span style="color: grey">''(swap the root(maximum value) of the heap with the''
@@ -41,11 +41,11 @@ Pseudocode:
        <span style="color: grey">''(put the heap back in max-heap order)''</span>
        siftDown(a, 0, end)
 
-  
+
  '''function''' heapify(a,count) '''is'''
     <span style="color: grey">''(start is assigned the index in ''a'' of the last parent node)''</span>
     start := (count - 2) / 2
-    
+
     '''while''' start ≥ 0 '''do'''
        <span style="color: grey">''(sift down the node at index start to the proper place''
         ''such that all nodes below the start index are in heap''
@@ -53,11 +53,11 @@ Pseudocode:
        siftDown(a, start, count-1)
        start := start - 1
     <span style="color: grey">''(after sifting down the root all nodes/elements are in heap order)''</span>
-  
+
  '''function''' siftDown(a, start, end) '''is'''
     <span style="color: grey">''(''end'' represents the limit of how far down the heap to sift)''</span>
     root := start
- 
+
     '''while''' root * 2 + 1 ≤ end '''do'''       <span style="color: grey">''(While the root has at least one child)''</span>
        child := root * 2 + 1           <span style="color: grey">''(root*2+1 points to the left child)''</span>
        <span style="color: grey">''(If the child has a sibling and the child's value is less than its sibling's...)''</span>
@@ -80,7 +80,7 @@ Write a function to sort a collection of integers using heapsort.
 ## 360 Assembly
 
 {{trans|PL/I}}
-The program uses ASM structured macros and two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible. 
+The program uses ASM structured macros and two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Heap sort                     22/06/2016
@@ -90,7 +90,7 @@ HEAPS    CSECT
          DC     17F'0'                 savearea
          STM    R14,R12,12(R13)        prolog
          ST     R13,4(R15)             "
-         ST     R15,8(R13)             " 
+         ST     R15,8(R13)             "
          LR     R13,R15                "
          L      R1,N                   n
          BAL    R14,HEAPSORT           call heapsort(n)
@@ -106,12 +106,12 @@ HEAPS    CSECT
          LA     R6,1(R6)                 i=i+1
          ENDDO  ,                      end for
          XPRNT  PG,80                  print buffer
-         L      R13,4(0,R13)           epilog 
+         L      R13,4(0,R13)           epilog
          LM     R14,R12,12(R13)        "
          XR     R15,R15                "
          BR     R14                    exit
 PG       DC     CL80' '                local data
-XDEC     DS     CL12                   " 
+XDEC     DS     CL12                   "
 *------- heapsort(icount)----------------------------------------------
 HEAPSORT ST     R14,SAVEHPSR           save return addr
          ST     R1,ICOUNT              icount
@@ -130,8 +130,8 @@ HEAPSORT ST     R14,SAVEHPSR           save return addr
          L      R14,SAVEHPSR           restore return addr
          BR     R14                    return to caller
 SAVEHPSR DS     A                      local data
-ICOUNT   DS     F                      " 
-IEND     DS     F                      " 
+ICOUNT   DS     F                      "
+IEND     DS     F                      "
 *------- heapify(count)------------------------------------------------
 HEAPIFY  ST     R14,SAVEHPFY           save return addr
          ST     R1,COUNT               count
@@ -148,8 +148,8 @@ HEAPIFY  ST     R14,SAVEHPFY           save return addr
          L      R14,SAVEHPFY           restore return addr
          BR     R14                    return to caller
 SAVEHPFY DS     A                      local data
-COUNT    DS     F                      " 
-ISTART   DS     F                      " 
+COUNT    DS     F                      "
+ISTART   DS     F                      "
 *------- siftdown(jstart,jend)-----------------------------------------
 SIFTDOWN ST     R14,SAVESFDW           save return addr
          ST     R1,JSTART              jstart
@@ -198,11 +198,11 @@ SIFTDOWN ST     R14,SAVESFDW           save return addr
 RETSFDW  L      R14,SAVESFDW           restore return addr
          BR     R14                    return to caller
 SAVESFDW DS     A                      local data
-JSTART   DS     F                      " 
+JSTART   DS     F                      "
 ROOT     DS     F                      "
-JEND     DS     F                      " 
-CHILD    DS     F                      " 
-SW       DS     F                      " 
+JEND     DS     F                      "
+CHILD    DS     F                      "
+SW       DS     F                      "
 *------- swap(x,y)-----------------------------------------------------
 SWAP     SLA    R1,2                   x
          LA     R1,A-4(R1)             @a(x)
@@ -307,7 +307,7 @@ procedure Generic_Heapsort(Item : in out Collection) is
          end if;
       end loop;
    end Sift_Down;
-   
+
    procedure Heapify(Item : in out Collection) is
       First_Pos : Integer := Index_Type'Pos(Index_Type'First);
       Last_Pos  : Integer := Index_Type'Pos(Index_type'Last);
@@ -330,7 +330,7 @@ begin
       Last_Index := Index_Type'Pred(Last_Index);
       Sift_Down(Item(Item'First..Last_Index));
    end loop;
-   
+
 end Generic_Heapsort;
 ```
 
@@ -377,39 +377,39 @@ PROC heapmove = (REF []INT array, INT i, INT last) VOID:
 (
     INT index := i;
     INT larger := (index*2);
-    
+
     WHILE larger <= last DO
         IF larger < last THEN IF array[larger] < array[larger+1] THEN
             larger +:= 1
         FI FI;
         IF array[index] < array[larger] THEN
-            swap(array, index, larger) 
+            swap(array, index, larger)
         FI;
-        index := larger; 
-        larger := (index*2) 
+        index := larger;
+        larger := (index*2)
     OD
 );
 
 #--- Heap sort ---#
 PROC heapsort = (REF []INT array) VOID:
 (
-    FOR i FROM ENTIER((UPB array) / 2) BY -1 WHILE 
+    FOR i FROM ENTIER((UPB array) / 2) BY -1 WHILE
         heapmove(array, i, UPB array);
-    i > 1 DO SKIP OD;    
-    
-    FOR i FROM UPB array BY -1 WHILE 
+    i > 1 DO SKIP OD;
+
+    FOR i FROM UPB array BY -1 WHILE
         swap(array, 1, i);
-        heapmove(array, 1, i-1); 
+        heapmove(array, 1, i-1);
     i > 1 DO SKIP OD
 );
 #***************************************************************#
 main:
 (
-    [10]INT a; 
-    FOR i FROM 1 TO UPB a DO        
+    [10]INT a;
+    FOR i FROM 1 TO UPB a DO
         a[i] := ROUND(random*100)
-    OD;                    
-                  
+    OD;
+
     print(("Before:", a));
     print((newline, newline));
     heapsort(a);
@@ -423,7 +423,7 @@ main:
 ```txt
 
 Before:       +633       +972       +136       +494       +720       +326       +813       +980       +784       +760
-                                                                                                                     
+
 After:        +136       +326       +494       +633       +720       +760       +784       +813       +972       +980
 
 ```
@@ -440,7 +440,7 @@ After:        +136       +326       +494       +633       +720       +760       
 /* ARM assembly Raspberry PI  */
 /*  program heapSort.s   */
 /* look Pseudocode begin this task  */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -456,7 +456,7 @@ szMessSortNok:      .asciz "Table not sorted !!!!!.\n"
 sMessResult:        .ascii "Value  : "
 sMessValeur:        .fill 11, 1, ' '            @ size => 11
 szCarriageReturn:  .asciz "\n"
- 
+
 .align 4
 iGraine:  .int 123456
 .equ NBELEMENTS,      10
@@ -465,37 +465,37 @@ TableNumber:	     .int   1,3,6,2,5,9,10,8,4,7
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                             @ entry of program 
- 
+.global main
+main:                                             @ entry of program
+
 1:
     ldr r0,iAdrTableNumber                      @ address number table
-    mov r1,#NBELEMENTS                           @ number of élements 
+    mov r1,#NBELEMENTS                           @ number of élements
     bl heapSort
     ldr r0,iAdrTableNumber                      @ address number table
     bl displayTable
- 
+
     ldr r0,iAdrTableNumber                      @ address number table
-    mov r1,#NBELEMENTS                           @ number of élements 
+    mov r1,#NBELEMENTS                           @ number of élements
     bl isSorted                                   @ control sort
     cmp r0,#1                                       @ sorted ?
-    beq 2f                                    
+    beq 2f
     ldr r0,iAdrszMessSortNok                    @ no !! error sort
     bl affichageMess
     b 100f
 2:                                                  @ yes
     ldr r0,iAdrszMessSortOk
     bl affichageMess
-100:                                               @ standard end of the program 
+100:                                               @ standard end of the program
     mov r0, #0                                      @ return code
     mov r7, #EXIT                                  @ request to exit program
     svc #0                                         @ perform the system call
- 
+
 iAdrsMessValeur:          .int sMessValeur
 iAdrszCarriageReturn:    .int szCarriageReturn
 iAdrsMessResult:          .int sMessResult
@@ -503,7 +503,7 @@ iAdrTableNumber:          .int TableNumber
 iAdrszMessSortOk:         .int szMessSortOk
 iAdrszMessSortNok:        .int szMessSortNok
 /******************************************************************/
-/*     control sorted table                                   */ 
+/*     control sorted table                                   */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the number of elements  > 0  */
@@ -525,9 +525,9 @@ isSorted:
     b 1b
 100:
     pop {r2-r4,lr}
-    bx lr                                              @ return 
+    bx lr                                              @ return
 /******************************************************************/
-/*         heap sort                                              */ 
+/*         heap sort                                              */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the number of element */
@@ -549,9 +549,9 @@ heapSort:
 
 100:
     pop {r2,r3,r4,lr}
-    bx lr                                              @ return 
+    bx lr                                              @ return
 /******************************************************************/
-/*      place table in max-heap order                             */ 
+/*      place table in max-heap order                             */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the number of element */
@@ -570,9 +570,9 @@ heapify:
     b 1b
 100:
     pop {r1,r2,r3,r4,lr}
-    bx lr                                              @ return 
+    bx lr                                              @ return
 /******************************************************************/
-/*     swap two elements of table                                  */ 
+/*     swap two elements of table                                  */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the first index */
@@ -586,10 +586,10 @@ swapElement:
 
 100:
     pop {r3,r4,lr}
-    bx lr                                              @ return 
- 
+    bx lr                                              @ return
+
 /******************************************************************/
-/*     put the heap back in max-heap order                        */ 
+/*     put the heap back in max-heap order                        */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the first index */
@@ -622,10 +622,10 @@ siftDown:
 
 100:
     pop {r1-r7,lr}
-    bx lr                                              @ return  
+    bx lr                                              @ return
 
 /******************************************************************/
-/*      Display table elements                                */ 
+/*      Display table elements                                */
 /******************************************************************/
 /* r0 contains the address of table */
 displayTable:
@@ -647,41 +647,41 @@ displayTable:
     pop {r0-r3,lr}
     bx lr
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
- 
+
 1:	                                            @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b	                                    @ and loop
                                                     @ and move digit from left of area
@@ -694,23 +694,23 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -718,12 +718,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 
@@ -785,7 +785,7 @@ MsgBox
       NEXT
       PRINT
       END
-      
+
       DEF PROCheapsort(a())
       LOCAL e%
       PROCheapify(a())
@@ -794,7 +794,7 @@ MsgBox
         PROCsiftdown(a(), 0, e%-1)
       NEXT
       ENDPROC
-      
+
       DEF PROCheapify(a())
       LOCAL s%, m%
       m% = DIM(a(),1)
@@ -802,7 +802,7 @@ MsgBox
         PROCsiftdown(a(), s%, m%)
       NEXT
       ENDPROC
-      
+
       DEF PROCsiftdown(a(), s%, e%)
       LOCAL c%, r%
       r% = s%
@@ -877,8 +877,8 @@ LET start() = VALOF {
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int max (int *a, int n, int i, int j, int k) {
     int m = i;
@@ -938,8 +938,8 @@ int main () {
 Uses C++11. Compile with
  g++ -std=c++11 heap.cpp
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iterator>
 #include <iostream>
 
@@ -1119,7 +1119,7 @@ public class HeapSortClass
 ```lisp
 (defn- swap [a i j]
   (assoc a i (nth a j) j (nth a i)))
- 
+
 (defn- sift [a pred k l]
   (loop [a a x k y (inc (* 2 k))]
     (if (< (inc (* 2 x)) l)
@@ -1224,7 +1224,7 @@ start-heapsort.
 sift-down.
     move a-start to a-parent
     perform until a-parent * 2 > a-end
-        compute a-child = a-parent * 2 
+        compute a-child = a-parent * 2
         compute a-sibling = a-child + 1
         if a-sibling <= a-end and array(a-child) < array(a-sibling)
             *> take the greater of the two
@@ -1303,7 +1303,7 @@ do ->
 
 ```txt
 
-> coffee heap.coffee 
+> coffee heap.coffee
 [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
 
 ```
@@ -1462,21 +1462,21 @@ void main() {
 
 void heapSort(List a) {
   int count = a.length;
-  
+
   // first place 'a' in max-heap order
   heapify(a, count);
-  
+
   int end = count - 1;
   while (end > 0) {
-    // swap the root (maximum value) of the heap with the 
+    // swap the root (maximum value) of the heap with the
     // last element of the heap
     int tmp = a[end];
     a[end] = a[0];
     a[0] = tmp;
-    
+
     // put the heap back in max-heap order
     siftDown(a, 0, end - 1);
-    
+
     // decrement the size of the heap so that the previous
     // max value will stay in its proper place
     end--;
@@ -1488,7 +1488,7 @@ void heapSort(List a) {
 void heapify(List a, int count) {
   // start is assigned the index in 'a' of the last parent node
   int start = ((count - 2)/2).toInt(); // binary heap
-  
+
   while (start >= 0) {
     // sift down the node at index 'start' to the proper place
     // such that all nodes below the 'start' index are in heap
@@ -1501,14 +1501,14 @@ void heapify(List a, int count) {
 void siftDown(List a, int start, int end) {
   // end represents the limit of how far down the heap to shift
   int root = start;
-  
+
   while ((root*2 + 1) <= end) { // While the root has at least one child
     int child = root*2 + 1; // root*2+1 points to the left child
     // if the child has a sibling and the child's value is less than its sibling's...
     if (child + 1 <= end && a[child] < a[child + 1]) {
       child = child+1; // .. then point to the right child instead
-    } 
-    
+    }
+
     if (a[root] < a[child]) { // out of max-heap order
       int tmp = a[root];
       a[root] = a[child];
@@ -1518,7 +1518,7 @@ void siftDown(List a, int start, int end) {
       return;
     }
   }
- 
+
 }
 
 void main() {
@@ -1570,7 +1570,7 @@ def heapsort := {
     for start in (0..((array.size()-2)//2)).descending() {
       siftDown(array, start, array.size()-1)
     }
- 
+
     for finish in (0..(array.size()-1)).descending() {
       cswap(array, 0, finish)
       siftDown(array, 0, finish - 1)
@@ -1631,7 +1631,7 @@ We use the heap library and the '''heap-pop''' primitive to implement heap-sort.
 (define (heap-sort list)
     (define heap (make-heap < )) ;; make a min heap
     (list->heap list heap)
-    (while (not (heap-empty? heap)) 
+    (while (not (heap-empty? heap))
           (push 'stack (heap-pop heap)))
     (stack->list 'stack))
 
@@ -1649,7 +1649,7 @@ We use the heap library and the '''heap-pop''' primitive to implement heap-sort.
 
 
 ```Eiffel
- 
+
 class
 	HEAPSORT
 
@@ -1797,20 +1797,20 @@ defmodule Sort do
     |> heapSort(len-1)
     |> Tuple.to_list
   end
-  
+
   defp heapSort(a, finish) when finish > 0 do
     swap(a, 0, finish)
     |> siftDown(0, finish-1)
     |> heapSort(finish-1)
   end
   defp heapSort(a, _), do: a
-  
+
   defp heapify(a, start) when start >= 0 do
     siftDown(a, start, tuple_size(a)-1)
     |> heapify(start-1)
   end
   defp heapify(a, _), do: a
-  
+
   defp siftDown(a, root, finish) when root * 2 + 1 <= finish do
     child = root * 2 + 1
     if child + 1 <= finish and elem(a,child) < elem(a,child + 1), do: child = child + 1
@@ -1819,7 +1819,7 @@ defmodule Sort do
       else: a
   end
   defp siftDown(a, _root, _finish), do: a
-  
+
   defp swap(a, i, j) do
     {vi, vj} = {elem(a,i), elem(a,j)}
     a |> put_elem(i, vj) |> put_elem(j, vi)
@@ -1847,7 +1847,7 @@ let inline swap (a: _ []) i j =
   let temp = a.[i]
   a.[i] <- a.[j]
   a.[j] <- temp
- 
+
 let inline sift cmp (a: _ []) start count =
   let rec loop root child =
     if root * 2 + 1 < count then
@@ -1924,7 +1924,7 @@ defer exchange                         ( n1 n2 a --)
 
 : .array 10 0 do example i cells + ? loop cr ;
 
-.array example 10 heapsort .array 
+.array example 10 heapsort .array
 ```
 
 
@@ -1939,12 +1939,12 @@ defer exchange                         ( n1 n2 a --)
 
 \ This is already in the novice package, so it is not really necessary to compile the code provided here.
 
-\ ****** 
+\ ******
 \ ****** This is our array sort. We are using the heap-sort because it provides consistent times and it is not recursive.
 \ ****** This code was ported from C++ at: http://www.snippets.24bytes.com/2010/06/heap-sort.html
 \ ****** Our array record size must be a multiple of W. This is assured if FIELD is used for creating the record.
 \ ****** The easiest way to speed this up is to rewrite EXCHANGE in assembly language.
-\ ****** 
+\ ******
 
 marker HeapSort.4th
 
@@ -1952,18 +1952,18 @@ macro: exchange ( adrX adrY size -- )   \ the size of the record must be a multi
     begin  dup while                    \ -- adrX adrY remaining
         over @  fourth @                \ -- adrX adrY remaining Y X
         fourth !  fourth !              \ -- adrX adrY remaining
-        rot w +  rot w +  rot w -  
+        rot w +  rot w +  rot w -
         repeat
     3drop ;
 
 \ All of these macros use the locals from SORT, and can only be called from SORT.
 
-macro: adr ( index -- adr )  
+macro: adr ( index -- adr )
     recsiz *  array + ;
 
 macro: left ( x -- y )      2*  1+ ;
-    
-macro: right ( x -- y )     2*  2 + ;    
+
+macro: right ( x -- y )     2*  2 + ;
 
 macro: heapify ( x -- )
     dup >r  begin   \ r: -- great
@@ -1973,11 +1973,11 @@ macro: heapify ( x -- )
             adr  r@ adr  recsiz exchange
             r@ repeat
     drop rdrop ;
-                
+
 macro: build-max-heap ( -- )
     limit 1- 2/  begin  dup 0>= while  dup heapify  1- repeat drop ;
-    
-: sort { array limit recsiz 'comparer -- }      
+
+: sort { array limit recsiz 'comparer -- }
     recsiz  [ w 1- ] literal  and  abort" *** SORT: record size must be a multiple of the cell size ***"
     build-max-heap
     begin  limit while  -1 +to limit
@@ -1996,10 +1996,10 @@ macro: build-max-heap ( -- )
 \ One of the reasons why the heap-sort was chosen is because it is not recursive, which allows macros to be used.
 \ Using macros allows the data (array, limit, recsiz, 'comparer) to be held in locals rather than items, which is reentrant.
 
-    
-\ ****** 
+
+\ ******
 \ ****** This tests SORT.
-\ ****** 
+\ ******
 
 create aaa  2 , 9 , 3 , 6 , 1 , 4 , 5 , 7 , 0 , 8 ,
 
@@ -2008,11 +2008,11 @@ create aaa  2 , 9 , 3 , 6 , 1 , 4 , 5 , 7 , 0 , 8 ,
 
 : int> ( adrX adrY -- X>Y? )
     swap @  swap @  > ;
-    
+
 : test-sort ( limit -- )
     cr  dup print-aaa
-    aaa  over  w  ['] int>  sort 
-    cr  print-aaa ;    
+    aaa  over  w  ['] int>  sort
+    cr  print-aaa ;
 
 10 test-sort
 
@@ -2020,7 +2020,7 @@ create aaa  2 , 9 , 3 , 6 , 1 , 4 , 5 , 7 , 0 , 8 ,
 
 {{out}}
 <pre style="height:8ex;overflow:scroll">
-2 9 3 6 1 4 5 7 0 8 
+2 9 3 6 1 4 5 7 0 8
 0 1 2 3 4 5 6 7 8 9
 
 ```
@@ -2029,16 +2029,16 @@ create aaa  2 , 9 , 3 , 6 , 1 , 4 , 5 , 7 , 0 , 8 ,
 
 ## Fortran
 
-{{works with|Fortran|90 and later}} 
+{{works with|Fortran|90 and later}}
 Translation of the pseudocode
 
 ```fortran
 program Heapsort_Demo
   implicit none
-  
+
   integer, parameter :: num = 20
   real :: array(num)
-    
+
   call random_seed
   call random_number(array)
   write(*,*) "Unsorted array:-"
@@ -2047,7 +2047,7 @@ program Heapsort_Demo
   call heapsort(array)
   write(*,*) "Sorted array:-"
   write(*,*) array
-  
+
 contains
 
 subroutine heapsort(a)
@@ -2060,7 +2060,7 @@ subroutine heapsort(a)
    do start = (n - 2) / 2, 0, -1
      call siftdown(a, start, n);
    end do
-   
+
    do bottom = n - 1, 1, -1
      temp = a(0)
      a(0) = a(bottom)
@@ -2071,7 +2071,7 @@ subroutine heapsort(a)
 end subroutine heapsort
 
 subroutine siftdown(a, start, bottom)
-  
+
   real, intent(in out) :: a(0:)
   integer, intent(in) :: start, bottom
   integer :: child, root
@@ -2080,11 +2080,11 @@ subroutine siftdown(a, start, bottom)
   root = start
   do while(root*2 + 1 < bottom)
     child = root * 2 + 1
-    
+
     if (child + 1 < bottom) then
       if (a(child) < a(child+1)) child = child + 1
     end if
-    
+
     if (a(root) < a(child)) then
       temp = a(child)
       a(child) = a (root)
@@ -2092,9 +2092,9 @@ subroutine siftdown(a, start, bottom)
       root = child
     else
       return
-    end if  
-  end do      
-    
+    end if
+  end do
+
 end subroutine siftdown
 
 end program Heapsort_Demo
@@ -2346,9 +2346,9 @@ func siftDown(a sort.Interface, start, end int) {
 Loose translation of the pseudocode:
 
 ```groovy
-def makeSwap = { a, i, j = i+1 -> print "."; a[[j,i]] = a[[i,j]] } 
+def makeSwap = { a, i, j = i+1 -> print "."; a[[j,i]] = a[[i,j]] }
 
-def checkSwap = { list, i, j = i+1 -> [(list[i] > list[j])].find{ it }.each { makeSwap(list, i, j) } } 
+def checkSwap = { list, i, j = i+1 -> [(list[i] > list[j])].find{ it }.each { makeSwap(list, i, j) } }
 
 def siftDown = { a, start, end ->
     def p = start
@@ -2422,7 +2422,7 @@ e.g.
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main()                     #: demonstrate various ways to sort a list and string 
+procedure main()                     #: demonstrate various ways to sort a list and string
    demosort(heapsort,[3, 14, 1, 5, 9, 2, 6, 3],"qwerty")
 end
 
@@ -2432,7 +2432,7 @@ local head,tail
    op := sortop(op,X)                               # select how and what we sort
 
    every head := (tail := *X) / 2  to 1 by -1 do    # work back from from last parent node
-      X := siftdown(X,op,head,tail)                 # sift down from head to make the heap 
+      X := siftdown(X,op,head,tail)                 # sift down from head to make the heap
 
    every tail := *X to 2 by -1 do {                 # work between the beginning and the tail to final positions
       X[1] :=: X[tail]
@@ -2447,14 +2447,14 @@ local child
 
    while (child :=  root * 2) <= tail do {          # move down the branch from root to tail
 
-      if op(X[child],X[tail >= child + 1]) then     # choose the larger(smaller) 
-         child +:= 1                                # ... child 
+      if op(X[child],X[tail >= child + 1]) then     # choose the larger(smaller)
+         child +:= 1                                # ... child
 
-      if op(X[root],X[child]) then  {               # root out of order? 
-         X[child] :=: X[root]                       
+      if op(X[root],X[child]) then  {               # root out of order?
+         X[child] :=: X[root]
          root := child                              # follow max(min) branch
          }
-      else 
+      else
          return X
       }
    return X
@@ -2467,7 +2467,7 @@ Implementation notes:
 * Since this transparently sorts both string and list arguments the result must 'return' to bypass call by value (strings)
 * Beware missing trailing 'returns' when translating pseudo-code.  For amusement try comment out the return at the end of 'shiftdown'
 
-Note: This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'sortop', and 'demosort' in Bubble Sort]]. 
+Note: This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'sortop', and 'demosort' in Bubble Sort]].
 The full demosort exercises the named sort of a list with op = "numeric", "string", ">>" (lexically gt, descending),">" (numerically gt, descending), a custom comparator, and also a string.
 {{out|Abbreviated sample output}}
 
@@ -2664,7 +2664,7 @@ function pd!(a, first, last)
         end
     end
 end
-        
+
 hfy!(a, n) = (f = div(n, 2); while f >= 1 pd!(a, f, n); f -= 1 end)
 
 heapsort!(a) = (n = length(a); hfy!(a, n); l = n; while l > 1 swapa(a, 1, l); l -= 1; pd!(a, 1, l) end; a)
@@ -2850,11 +2850,11 @@ Public Sub heapsort(pavIn As Variant)
   Dim liCount As Integer, liEnd As Integer
   Dim lvTemp As Variant
   liCount = UBound(pavIn) + 1
-	
-  heapify pavIn, liCount 
-	
+
+  heapify pavIn, liCount
+
   liEnd = liCount - 1
-  While liEnd > 0 
+  While liEnd > 0
     lvTemp = pavIn(liEnd)
     pavIn(liEnd) = pavIn(0)
     pavIn(0) = lvTemp
@@ -2868,7 +2868,7 @@ Private Sub heapify(pavIn As Variant,piCount As Integer)
   liStart = (piCount - 2) / 2
   While liStart >=0
     siftDown pavIn, liStart, piCount -1
-    liStart = liStart - 1 
+    liStart = liStart - 1
   Wend
 End Sub
 
@@ -2888,7 +2888,7 @@ Private Sub siftDown(pavIn As Variant, piStart As Integer, piEnd As Integer)
       liRoot = liChild
     Else
       Exit sub
-    End if 
+    End if
   wend
 End Sub
 
@@ -3025,7 +3025,7 @@ heapSort[list_] := Module[{ count, start},
  count = Length[list]; start = Floor[count/2];
  While[start >= 1,list = siftDown[list,start,count];
   start--;
- ] 
+ ]
  While[count > 1, list[[{count,1}]] = list[[{1,count}]];
   count--; list = siftDown[list,1,count];
  ]
@@ -3046,43 +3046,43 @@ This function definition is an almost exact translation of the pseudo-code into 
 ```MATLAB
 function list = heapSort(list)
 
-    function list = siftDown(list,root,theEnd) 
+    function list = siftDown(list,root,theEnd)
         while (root * 2) <= theEnd
-            
+
             child = root * 2;
             if (child + 1 <= theEnd) && (list(child) < list(child+1))
                 child = child + 1;
             end
-            
+
             if list(root) < list(child)
                 list([root child]) = list([child root]); %Swap
                 root = child;
             else
                 return
             end
-            
+
         end %while
     end %siftDown
-    
+
     count = numel(list);
-    
+
     %Because heapify is called once in pseudo-code, it is inline here
     start = floor(count/2);
-        
+
     while start >= 1
         list = siftDown(list, start, count);
         start = start - 1;
     end
     %End Heapify
-    
+
     while count > 1
-        
-        list([count 1]) = list([1 count]); %Swap        
+
+        list([count 1]) = list([1 count]); %Swap
         count = count - 1;
         list = siftDown(list,1,count);
-        
+
     end
-    
+
 end
 ```
 
@@ -3117,7 +3117,7 @@ fn siftDown arr s end =
 	local root = s
 	while root * 2 <= end do
 	(
-		local child = root * 2 
+		local child = root * 2
 		if child < end and arr[child] < arr[child+1] do
 		(
 			child += 1
@@ -3139,11 +3139,11 @@ fn heapSort arr =
 	while end >= 1 do
 	(
 		swap arr[1] arr[end]
-		
+
 		end -= 1
 		arr = siftDown arr 1 end
 	)
-	
+
 )
 ```
 
@@ -3324,13 +3324,13 @@ bundle Default {
       HeapSort(values);
       each(i : values) {
         values[i]->PrintLine();
-      };  
+      };
     }
-    
+
     function : HeapSort(a : Int[]) ~ Nil {
       count := a->Size();
       Heapify(a, count);
-      
+
       end := count - 1;
       while(end > 0) {
         tmp := a[end];
@@ -3356,7 +3356,7 @@ bundle Default {
         if(child + 1 <= end & a[child] < a[child + 1]) {
           child := child + 1;
         };
-        
+
         if(a[root] < a[child]) {
           tmp := a[root];
           a[root] := a[child];
@@ -3365,7 +3365,7 @@ bundle Default {
         }
         else {
           return;
-        };  
+        };
       };
     }
   }
@@ -3422,7 +3422,7 @@ print_newline ();;
 
 ```txt
 
-1 1 2 3 3 4 5 5 5 6 8 9 23 27 33 62 64 83 84 93 95 97 
+1 1 2 3 3 4 5 5 5 6 8 9 23 27 33 62 64 83 84 93 95 97
         -Jaccccdeeefhhhhiiiiklmnnoooooppprsssstttttuuwyy
 
 ```
@@ -3439,14 +3439,14 @@ declare
      Low = {Array.low A}
      High = {Array.high A}
      Count = High-Low+1
- 
+
      %% heapify
      LastParent = Low + (Count-2) div 2
   in
      for Start in LastParent..Low;~1 do
         {Siftdown A Start High}
      end
- 
+
      %% repeatedly put the maximum element to the end
      %% and re-heapify the rest
      for End in High..Low+1;~1 do
@@ -3454,11 +3454,11 @@ declare
         {Siftdown A Low End-1}
      end
   end
- 
+
   proc {Siftdown A Start End}
      Low = {Array.low A}
      fun {FirstChildOf I} Low+(I-Low)*2+1 end
- 
+
      Root = {NewCell Start}
   in
      for while:{FirstChildOf @Root} =< End
@@ -3477,11 +3477,11 @@ declare
         end
      end
   end
- 
+
   proc {Swap A I J}
      A.J := (A.I := A.J)
   end
- 
+
   %% create array with indices ~1..7 and fill it
   Arr = {Array.new ~1 7 0}
   {Record.forAllInd unit(~1:3 0:1 4 1 5 9 2 6 5)
@@ -3504,11 +3504,11 @@ program HeapSortDemo;
 
 type
   TIntArray = array[4..15] of integer;
- 
+
 var
   data: TIntArray;
   i: integer;
-  
+
 procedure siftDown(var a: TIntArray; start, ende: integer);
   var
     root, child, swap: integer;
@@ -3690,7 +3690,7 @@ Output = 1 2 3 4 5 6 7 8 9
 function siftDown(sequence arr, integer s, integer last)
 integer root = s
     while root*2<=last do
-        integer child = root*2 
+        integer child = root*2
         if child<last and arr[child]<arr[child+1] then
             child += 1
         end if
@@ -3861,7 +3861,7 @@ end function
 ```txt
 
 element  0 before sort ---letters of the modern Greek Alphabet---
-element  1 before sort 
+element  1 before sort
 ### ====================================
 
 element  2 before sort alpha
@@ -3889,7 +3889,7 @@ element 23 before sort chi
 element 24 before sort psi
 element 25 before sort omega
 element  0  after sort ---letters of the modern Greek Alphabet---
-element  1  after sort 
+element  1  after sort
 ### ====================================
 
 element  2  after sort alpha
@@ -3937,7 +3937,7 @@ function heapsort($a, $count) {
     $a
 }
 function heapify($a, $count) {
-   $start = [Math]::Floor(($count - 2) / 2)  
+   $start = [Math]::Floor(($count - 2) / 2)
    while($start -ge 0) {
       $a = siftDown $a $start ($count-1)
       $start--
@@ -3946,15 +3946,15 @@ function heapify($a, $count) {
 }
 function siftdown($a, $start, $end) {
    $b, $root = $true, $start
-   while(( ($root * 2 + 1) -le $end) -and $b) {     
-      $child = $root * 2 + 1  
+   while(( ($root * 2 + 1) -le $end) -and $b) {
+      $child = $root * 2 + 1
       if( ($child + 1 -le $end) -and ($a[$child] -lt $a[$child + 1]) ) {
          $child++
-      }        
-      if($a[$root] -lt $a[$child]) { 
+      }
+      if($a[$root] -lt $a[$child]) {
         $a[$root], $a[$child] = $a[$child], $a[$root]
-        $root = $child 
-      }               
+        $root = $child
+      }
       else { $b = $false}
     }
     $a
@@ -3996,7 +3996,7 @@ Procedure heapify(Array a(1), count)
   While start>=0
     siftDown(a(),start,count-1)
     start-1
-  Wend  
+  Wend
 EndProcedure
 
 Procedure siftDown(Array a(1), start, ending)
@@ -4010,7 +4010,7 @@ Procedure siftDown(Array a(1), start, ending)
       Swap a(root), a(child)
       root=child
     Else
-      Break  
+      Break
     EndIf
   Wend
 EndProcedure
@@ -4070,21 +4070,21 @@ Testing:
   (define (ref i) (vector-ref xs i))
   (define (swap! i j) (vector-swap! xs i j))
   (define size (vector-length xs))
-  
+
   (define (sift-down! r end)
     (define c (+ (* 2 r) 1))
     (define c+1 (+ c 1))
     (when (<= c end)
-      (define child 
+      (define child
         (if (and (<= c+1 end) (< (ref c) (ref c+1)))
             c+1 c))
       (when (< (ref r) (ref child))
         (swap! r child))
       (sift-down! child end)))
-  
+
   (for ([i (in-range (quotient (- size 2) 2) -1 -1)])
     (sift-down! i (- size 1)))
-  
+
   (for ([end (in-range (- size 1) 0 -1)])
     (swap! 0 end)
     (sift-down! 0 (- end 1)))
@@ -4353,7 +4353,7 @@ showarray(test)
 heapsort(test)
 see "after sort:" + nl
 showarray(test)
- 
+
 func heapsort(a)
 cheapify(a)
 for e = len(a) to 1 step -1
@@ -4362,17 +4362,17 @@ for e = len(a) to 1 step -1
      a[1] = temp
      siftdown(a, 1, e-1)
 next
- 
+
 func cheapify(a)
 m = len(a)
 for s = floor((m - 1) / 2) to 1 step -1
      siftdown(a,s,m)
 next
- 
+
 func siftdown(a,s,e)
 r = s
 while r * 2 + 1 <= e
-         c = r * 2                  
+         c = r * 2
          if c + 1 <= e
             if a[c] < a[c + 1]
                c = c + 1
@@ -4381,10 +4381,10 @@ while r * 2 + 1 <= e
          if a[r] < a[c]
             temp = a[r]
             a[r] = a[c]
-            a[c] = temp  
-            r = c    
+            a[c] = temp
+            r = c
          else
-            exit 
+            exit
          ok
 end
 
@@ -4538,11 +4538,11 @@ This code is not written for maximum performance, though, of course, it preserve
 def heapSort[T](a: Array[T])(implicit ord: Ordering[T]) {
   import scala.annotation.tailrec // Ensure functions are tail-recursive
   import ord._
-  
+
   val indexOrdering = Ordering by a.apply
 
   def numberOfLeaves(heapSize: Int) = (heapSize + 1) / 2
-  
+
   def children(i: Int, heapSize: Int) = {
     val leftChild = i * 2 + 1
     leftChild to leftChild + 1 takeWhile (_ < heapSize)
@@ -4553,9 +4553,9 @@ def heapSort[T](a: Array[T])(implicit ord: Ordering[T]) {
     a(i) = a(j)
     a(j) = tmp
   }
-  
+
   // Maintain partial ordering by bubbling down elements
-  @tailrec 
+  @tailrec
   def siftDown(i: Int, heapSize: Int) {
     val childrenOfI = children(i, heapSize)
     if (childrenOfI nonEmpty) {
@@ -4566,10 +4566,10 @@ def heapSort[T](a: Array[T])(implicit ord: Ordering[T]) {
       }
     }
   }
-  
+
   // Prepare heap by sifting down all non-leaf elements
   for (i <- a.indices.reverse drop numberOfLeaves(a.size)) siftDown(i, a.size)
-  
+
   // Sort from the end of the array forward, by swapping the highest element,
   // which is always the top of the heap, to the end of the unsorted array
   for (i <- a.indices.reverse) {
@@ -4635,7 +4635,7 @@ def heapSort[T](a: Array[T])(implicit ord: Ordering[T]) {
     (heapify v)
     ; start swapping with root and final node
     (iter v (- (vector-length v) 1))))
-    
+
 ; testing
 (define uriah (list->vector '(3 5 7 9 0 8 1 4 2 6)))
 (heapsort uriah)
@@ -4708,11 +4708,11 @@ import <Utilities/Sequence.sl>;
 
 TUPLE<T> ::= (A: T, B: T);
 
-heapSort(x(1)) := 
+heapSort(x(1)) :=
 	let
 		heapified := heapify(x, (size(x) - 2) / 2 + 1);
 	in
-		sortLoop(heapified, size(heapified)); 
+		sortLoop(heapified, size(heapified));
 
 heapify(x(1), i) :=
 	x when i <= 0 else
@@ -4720,7 +4720,7 @@ heapify(x(1), i) :=
 
 sortLoop(x(1), i) :=
 	x when i <= 2 else
-	sortLoop( siftDown(swap(x, 1, i), 1, i - 1), i - 1); 
+	sortLoop( siftDown(swap(x, 1, i), 1, i - 1), i - 1);
 
 siftDown(x(1), start, end) :=
 	let
@@ -4759,7 +4759,7 @@ func sift_down(a, start, end) {
         }
     }
 }
- 
+
 func heapify(a, count) {
     var start = ((count - 2) / 2);
     while (start >= 0) {
@@ -4767,7 +4767,7 @@ func heapify(a, count) {
         start -= 1;
     }
 }
- 
+
 func heap_sort(a, count) {
     heapify(a, count);
     var end = (count - 1);
@@ -4921,22 +4921,22 @@ function heapsort(a) {
 ```Swift>func heapsort<T:Comparable
 (inout list:[T]) {
     var count = list.count
-    
+
     func shiftDown(inout list:[T], start:Int, end:Int) {
         var root = start
-        
+
         while root * 2 + 1 <= end {
             var child = root * 2 + 1
             var swap = root
-            
+
             if list[swap] < list[child] {
                 swap = child
             }
-            
+
             if child + 1 <= end && list[swap] < list[child + 1] {
                 swap = child + 1
             }
-            
+
             if swap == root {
                 return
             } else {
@@ -4945,26 +4945,26 @@ function heapsort(a) {
             }
         }
     }
-    
+
     func heapify(inout list:[T], count:Int) {
         var start = (count - 2) / 2
-        
+
         while start >= 0 {
             shiftDown(&list, start, count - 1)
-            
+
             start--
         }
     }
-    
+
     heapify(&list, count)
-    
+
     var end = count - 1
-    
+
     while end > 0 {
         (list[end], list[0]) = (list[0], list[end])
-        
+
         end--
-        
+
         shiftDown(&list, 0, end)
     }
 }
@@ -5223,7 +5223,7 @@ Sub HeapSort(list() As Integer)
 		SiftDown list(), start, eend
 		start = start - 1
 	Wend
-	
+
 	Dim temp As Integer
 
 	While eend > 0

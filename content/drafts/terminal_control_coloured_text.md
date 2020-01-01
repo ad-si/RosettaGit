@@ -14,7 +14,7 @@ tags = []
 [[Category:Terminal control]]
 
 ;Task:
-Display a word in various colours on the terminal. 
+Display a word in various colours on the terminal.
 
 The system palette, or colours such as Red, Green, Blue, Magenta, Cyan, and Yellow can be used.
 
@@ -59,12 +59,12 @@ szMessTest:                .asciz "\033[33m\033[1mMessage yellow bold\n"
 szCarriageReturn:          .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
 
     ldr r0,iAdrszMessStartPgm                   @ display start message
     bl affichageMess
@@ -98,21 +98,21 @@ iAdrszMessTest:            .int szMessTest
 iAdrszCarriageReturn:      .int szCarriageReturn
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -201,7 +201,7 @@ NEXT
 
 ## Befunge
 
-Assuming a terminal with support for ANSI escape sequences, this displays the words ''Red'', ''Green'', ''Blue'', ''Magenta'', ''Cyan'' and ''Yellow'', using the corresponding text colour and a "complementary" background colour. 
+Assuming a terminal with support for ANSI escape sequences, this displays the words ''Red'', ''Green'', ''Blue'', ''Magenta'', ''Cyan'' and ''Yellow'', using the corresponding text colour and a "complementary" background colour.
 
 ```befunge
 <v0"1Red"0"2Green"0"4Blue"0"5Magenta"0"6Cyan"0"3Yellow"00
@@ -214,8 +214,8 @@ Assuming a terminal with support for ANSI escape sequences, this displays the wo
 
 On a terminal that understands ANSI escape sequences, such as color xterm, this shows you some annoyingly huge, annoyingly colorful tables.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void table(const char *title, const char *mode)
 {
@@ -303,7 +303,7 @@ Note: <code>LOWLIGHT</code> and <code>BLINK</code> are not well supported on mod
                    DISPLAY example-str AT LINE line-num, COLUMN col-num
                        WITH FOREGROUND-COLOR fore-colour,
                        BACKGROUND-COLOR back-colour
-    
+
                    ADD 6 TO col-num
                END-PERFORM
 
@@ -320,13 +320,13 @@ Note: <code>LOWLIGHT</code> and <code>BLINK</code> are not well supported on mod
                    DISPLAY example-str AT LINE line-num, COLUMN col-num
                        WITH FOREGROUND-COLOR fore-colour,
                        BACKGROUND-COLOR back-colour HIGHLIGHT
-    
+
                    ADD 6 TO col-num
                END-PERFORM
 
                ADD 1 TO line-num
                MOVE 1 TO col-num
-           END-PERFORM           
+           END-PERFORM
 
            DISPLAY "With LOWLIGHT: (has no effect on many terminals)"
                AT LINE line-num, COLUMN 1
@@ -338,13 +338,13 @@ Note: <code>LOWLIGHT</code> and <code>BLINK</code> are not well supported on mod
                    DISPLAY example-str AT LINE line-num, COLUMN col-num
                        WITH FOREGROUND-COLOR fore-colour,
                        BACKGROUND-COLOR back-colour LOWLIGHT
-    
+
                    ADD 6 TO col-num
                END-PERFORM
 
                ADD 1 TO line-num
                MOVE 1 TO col-num
-           END-PERFORM           
+           END-PERFORM
 
            DISPLAY "With BLINK:" AT LINE line-num, COLUMN 1
            ADD 1 TO line-num
@@ -355,7 +355,7 @@ Note: <code>LOWLIGHT</code> and <code>BLINK</code> are not well supported on mod
                    DISPLAY example-str AT LINE line-num, COLUMN col-num
                        WITH FOREGROUND-COLOR fore-colour,
                        BACKGROUND-COLOR back-colour BLINK
-    
+
                    ADD 6 TO col-num
                END-PERFORM
 
@@ -482,11 +482,11 @@ DECIMAL
 : ATTR   ( attribute ) ESC[ <##> ." m" ;  ( use:  BOLD ATTR       )
 : TEXT       ( color ) 30 + ATTR ;        ( use:  YELLOW TEXT     )
 : BACKGROUND ( color ) 40 + ATTR ;        ( use:  BLUE BACKGROUND )
-</LANG> 
+</LANG>
 With the code loaded into Forth, color control is a part of the language
 
 ```forth
-WHITE TEXT BLUE BACKGROUND  ok 
+WHITE TEXT BLUE BACKGROUND  ok
 BLUE TEXT  BOLD ATTR ok
 CYAN TEXT ok</LANG>
 
@@ -506,13 +506,13 @@ program textcolor
     integer(HANDLE) :: hConsole
     integer(BOOL) :: q
     type(T_CONSOLE_SCREEN_BUFFER_INFO) :: csbi
-    
+
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE)
-    
+
     if (GetConsoleScreenBufferInfo(hConsole, csbi) == 0) then
         error stop "GetConsoleScreenBufferInfo failed."
     end if
-    
+
     q = SetConsoleTextAttribute(hConsole, int(FOREGROUND_RED .or. &
                                               FOREGROUND_INTENSITY .or. &
                                               BACKGROUND_BLUE .or. &
@@ -894,7 +894,7 @@ end
 {{out}}
 
 ```txt
- 
+
 $ julia --color=yes terminal_control_color.jl
 
 ```
@@ -1036,7 +1036,7 @@ stdout( ec('normal'))
 Delegating to tput on terminal enabled OS(Mac Os, Linux)
 
 ```Mathematica
-Run["tput setaf 1"]; Print["Coloured Text"]; 
+Run["tput setaf 1"]; Print["Coloured Text"];
 Run["tput setaf 2"]; Print["Coloured Text"];
 Run["tput setaf 3"]; Print["Coloured Text"]
 ```
@@ -1328,13 +1328,13 @@ say colored('YELLOW', 'bold yellow');
 ## Phix
 
 {{trans|PureBasic}}
-The following builtin constants (0..15) may be used: 
-BLACK, BLUE, BRIGHT_BLUE, BROWN, CYAN, BRIGHT_CYAN, GRAY, GREEN, BRIGHT_GREEN, MAGENTA, BRIGHT_MAGENTA, RED, BRIGHT_RED, WHITE, BRIGHT_WHITE, YELLOW 
+The following builtin constants (0..15) may be used:
+BLACK, BLUE, BRIGHT_BLUE, BROWN, CYAN, BRIGHT_CYAN, GRAY, GREEN, BRIGHT_GREEN, MAGENTA, BRIGHT_MAGENTA, RED, BRIGHT_RED, WHITE, BRIGHT_WHITE, YELLOW
 
 ```Phix
 --
 -- demo\rosetta\Coloured_text.exw
--- 
+--
 ### ==========================
 
 --
@@ -1390,7 +1390,7 @@ Output matches PureBasic
 
 ```PowerShell
 
-foreach ($color in [enum]::GetValues([System.ConsoleColor])) {Write-Host "$color color." -ForegroundColor $color} 
+foreach ($color in [enum]::GetValues([System.ConsoleColor])) {Write-Host "$color color." -ForegroundColor $color}
 
 ```
 
@@ -1461,7 +1461,7 @@ If OpenConsole()
     Next
     PrintN("")
   Next
-  
+
   ConsoleColor(7, 0) ;grey foreground, black background
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
@@ -1527,7 +1527,7 @@ The prologue code (at the bottom of the program) is a collection of some general
 * what the fileName, fileType/fileExt, fileMode/path is of the REXX program
 * which command to use to clear the terminal screen
 * invokes $H to show general documentation (1st and only arg = ?)
-* invokes $H to show a flow diagram (1st and only arg = ?FLOW) 
+* invokes $H to show a flow diagram (1st and only arg = ?FLOW)
 * invokes $H to show sample uses (1st and only arg = ?SAMPLE)
 * invokes $H to show the author &amp; contact info (1st and only arg = ?AUTHOR)
 
@@ -1590,9 +1590,9 @@ load "consolecolors.ring"
 
 forecolors = [CC_FG_BLACK,CC_FG_RED,CC_FG_GREEN,CC_FG_YELLOW,
                    CC_FG_BLUE,CC_FG_MAGENTA,CC_FG_CYAN,CC_FG_GRAY,CC_BG_WHITE]
-        
+
 for n = 1 to len(forecolors)
-     forecolor = forecolors[n] 
+     forecolor = forecolors[n]
      cc_print(forecolor | CC_BG_WHITE, "Rosetta Code" + nl)
 next
 
@@ -1759,7 +1759,7 @@ case $TERM in
     ;;      # We know this is a colour terminal
   rxvt)
     ;;      # We know this is a colour terminal
-  *)   
+  *)
     COLORS=`tput colors 2> /dev/null`    # Get the number of colours from the termcap file
 esac
 if [ -z $COLORS ] ; then
@@ -1845,7 +1845,7 @@ fcn table(title,mode){
       println("\e[m");
    }
 }
- 
+
 table("normal ( ESC[22m or ESC[m )", 		"22;");
 table("bold ( ESC[1m )",			"1;");
 table("faint ( ESC[2m ), not well supported",	"2;");

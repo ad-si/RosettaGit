@@ -34,8 +34,8 @@ Happy coding.
 
 {{trans|C++}}
 
-```c>#include <stdbool.h
-
+```c
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -126,8 +126,8 @@ out:
 
 {{trans|C#}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <map>
 #include <random>
 
@@ -1329,11 +1329,11 @@ constant sixesThrowAgain = true
 
 constant snl = new_dict({{4,14},{9,31},{17,7},{20,38},{28,84},{40,59},{51,67},{54,34},
                         {62,19},{63,81},{64,60},{71,91},{87,24},{93,73},{95,75},{99,78}})
- 
+
 constant msgs = {". Oops! Landed on a snake. Slither down to %d.\n", -- (next<square)
                  " and moves to square %d\n",                        -- (next=square)
                  ". Yay! Landed on a ladder. Climb up to %d.\n"}     -- (next>square)
-                
+
 function Turn(integer player, square)
     while true do
         integer roll = rand(6)
@@ -1353,7 +1353,7 @@ function Turn(integer player, square)
     end while
     return square
 end function
- 
+
 procedure main()
     sequence players = {1,1,1}  -- three players starting on square one
     while true do
@@ -1618,7 +1618,7 @@ turn: parse arg P, square;     ?= random(1, 6)   /*simulate a roll of a six─si
 NONE = 0; LADDER = 1; SNAKE = 2; STAY = 1; MOVE = 2; WIN = 3
 class Cell
     @type; @to; attr_reader :type, :to
-    def initialize; @type = NONE; @to = 0; end 
+    def initialize; @type = NONE; @to = 0; end
     def set( t, o ); @type = t; @to = o; end
 end
 class Player
@@ -1640,7 +1640,7 @@ def initBoard
     @board[27].set( LADDER, 83 );@board[39].set( LADDER, 58 ); @board[50].set( LADDER, 66 );
     @board[62].set( LADDER, 80 ); @board[70].set( LADDER, 90 ); @board[16].set( SNAKE, 6 );
     @board[61].set( SNAKE, 18 ); @board[86].set( SNAKE, 23 ); @board[53].set( SNAKE, 33 );
-    @board[63].set( SNAKE, 59 ); @board[92].set( SNAKE, 72 ); @board[94].set( SNAKE, 74 ); 
+    @board[63].set( SNAKE, 59 ); @board[92].set( SNAKE, 72 ); @board[94].set( SNAKE, 74 );
     @board[98].set( SNAKE, 77 );
 end
 def initPlayers
@@ -1652,7 +1652,7 @@ def play
     while true
         for p in 0 .. @playersCount - 1
             puts; puts
-            if( 0 == p ) 
+            if( 0 == p )
                 print "#{@players[p].name}, your turn. Your position is cell #{@players[p].pos + 1}.\n"<<
                 "Press [RETURN] to roll the die."
                 gets; np = @players[p].play( @die ); print "You rolled a #{np[0]}\n"
@@ -1663,7 +1663,7 @@ def play
                 end
             else
                 np = @players[p].play( @die ); print "#{@players[p].name} rolled a #{np[0]}.\n"
-                if np[1] == WIN 
+                if np[1] == WIN
                      print "He reached position #{@players[p].pos + 1} and wins the game!!!!\n"; return
                 elsif np[1] == STAY; print "But he cannot move....\n"
                 else print "His new position is cell #{@players[p].pos + 1}.\n";

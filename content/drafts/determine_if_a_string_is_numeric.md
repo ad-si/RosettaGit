@@ -68,7 +68,7 @@ The last file shows how the Is_Numeric function can be called.
 
 ```ada
 with Ada.Text_Io; use Ada.Text_Io;
-with Numeric_Tests; use Numeric_Tests; 
+with Numeric_Tests; use Numeric_Tests;
 
 procedure Is_Numeric_Test is
    S1 : String := "152";
@@ -389,11 +389,11 @@ end isNumString
 
 -- TEST
 on run
-    
+
     map(isNumString, {3, 3.0, 3.5, "3.5", "3E8", "-3.5", "30", "three", three, four})
-    
+
     --> {false, false, false, true, true, true, true, false, false, false}
-    
+
 end run
 
 -- three :: () -> Int
@@ -422,7 +422,7 @@ on map(f, xs)
 end map
 
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -475,23 +475,23 @@ szMessFloatExp:         .asciz "String is a float with exposant.\n"
 szCarriageReturn:       .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 sBuffer:              .skip BUFFERSIZE
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
 
 loop:
     ldr r0,iAdrszMessNum
     bl affichageMess
     mov r0,#STDIN                               @ Linux input console
-    ldr r1,iAdrsBuffer                          @ buffer address 
-    mov r2,#BUFFERSIZE                          @ buffer size 
+    ldr r1,iAdrsBuffer                          @ buffer address
+    mov r2,#BUFFERSIZE                          @ buffer size
     mov r7, #READ                               @ request to read datas
     swi 0                                       @ call system
-    ldr r1,iAdrsBuffer                          @ buffer address 
+    ldr r1,iAdrsBuffer                          @ buffer address
     mov r2,#0                                   @ end of string
     sub r0,#1                                   @ replace character 0xA
     strb r2,[r1,r0]                             @ store byte at the end of input string (r0 contains number of characters)
@@ -534,7 +534,7 @@ iAdrszMessFloatExp:       .int szMessFloatExp
 iAdrszCarriageReturn:     .int szCarriageReturn
 iAdrsBuffer:              .int sBuffer
 /******************************************************************/
-/*     control if string is number                          */ 
+/*     control if string is number                          */
 /******************************************************************/
 /* r0 contains the address of the string */
 /* r0 return 0 if not a number       */
@@ -542,9 +542,9 @@ iAdrsBuffer:              .int sBuffer
 /* r0 return 2 if float     eq 123.45 or 123,45  or -123,45     */
 /* r0 return 3 if float with exposant  eq 123.45E30 or -123,45E-30        */
 controlNumber:
-    push {r1-r4,lr}                       @ save  registers 
+    push {r1-r4,lr}                       @ save  registers
     mov r1,#0
-    mov r3,#0          @ point counter 
+    mov r3,#0          @ point counter
 1:
     ldrb r2,[r0,r1]
     cmp r2,#0
@@ -597,7 +597,7 @@ controlNumber:
     beq 100f
     cmp r2,#'-'           @ negative exposant ?
     addeq r1,#1
-    mov r4,#0             @ nombre de chiffres 
+    mov r4,#0             @ nombre de chiffres
 7:
     ldrb r2,[r0,r1]
     cmp r2,#0             @ end ?
@@ -613,10 +613,10 @@ controlNumber:
     mov r0,#0
     b 100f
 9:
-    cmp r4,#0             @ number digit exposant = 0 -> error 
+    cmp r4,#0             @ number digit exposant = 0 -> error
     moveq r0,#0           @ erreur
     beq 100f
-    cmp r4,#2             @ number digit exposant > 2 -> error 
+    cmp r4,#2             @ number digit exposant > 2 -> error
     movgt r0,#0           @ error
     bgt 100f
     mov r0,#3             @ valid float with exposant
@@ -632,21 +632,21 @@ controlNumber:
     pop {r1-r4,lr}                         @ restaur des  2 registres
     bx lr                                        @ return
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -715,21 +715,21 @@ END IF
 
 ```txt
 
-user@host $ bacon isnumber.bac 
+user@host $ bacon isnumber.bac
 Converting 'isnumber.bac'... done, 7 lines were processed in 0.006 seconds.
 Compiling 'isnumber.bac'... cc  -c isnumber.bac.c
-cc -o isnumber isnumber.bac.o -lbacon -lm 
+cc -o isnumber isnumber.bac.o -lbacon -lm
 Done, program 'isnumber' ready.
-user@host $ ./isnumber 
+user@host $ ./isnumber
 Your string: 12.3
 This is a number
-user@host $ ./isnumber 
+user@host $ ./isnumber
 Your string: 12E3
 This is a number
-user@host $ ./isnumber 
+user@host $ ./isnumber
 Your string: PI
 Not a number
-user@host $ ./isnumber 
+user@host $ ./isnumber
 Your string: Hello
 Not a number
 
@@ -783,10 +783,10 @@ if %a% == 0 (
         ENDIF
       UNTIL N$ = "end"
       END
-      
+
       DATA "PI", "0123", "-0123", "12.30", "-12.30", "123!", "0"
       DATA "0.0", ".123", "-.123", "12E3", "12E-3", "12+3", "end"
-      
+
       DEF FN_isanumber(A$)
       ON ERROR LOCAL = FALSE
       IF EVAL("(" + A$ + ")") <> VAL(A$) THEN = FALSE
@@ -874,7 +874,7 @@ To check whether a string is a number, a fraction or an integer, use the pattern
 
 260780243875083/35587980:/
     S
-    
+
 247/30:~/#
     F
 
@@ -986,7 +986,7 @@ ps^^-]to{"Int""Double"}\/~[\/L[1==?*
 ```
 
 
-Assumes string is not empty. 
+Assumes string is not empty.
 
 
 ## C
@@ -994,8 +994,8 @@ Assumes string is not empty.
 Returns true (non-zero) if character-string parameter represents a signed or unsigned floating-point number. Otherwise returns false (zero).
 
 
-```c>#include <ctype.h
-
+```c
+#include <ctype.h>
 #include <stdlib.h>
 int isNumeric (const char * s)
 {
@@ -1013,9 +1013,9 @@ int isNumeric (const char * s)
 
 Using stringstream:
 
-```cpp>#include <sstream
- // for istringstream
-
+```cpp
+#include <sstream>
+// for istringstream
 using namespace std;
 
 bool isNumeric( const char* pszInput, int nNumberBase )
@@ -1081,10 +1081,10 @@ public static bool IsNumeric(string s)
 {
     double Result;
     return double.TryParse(s, out Result);  // TryParse routines were added in Framework version 2.0.
-}        
+}
 
 string value = "123";
-if (IsNumeric(value)) 
+if (IsNumeric(value))
 {
   // do something
 }
@@ -1166,7 +1166,7 @@ COBOL has the intrinsic functions <code>TEST-NUMVAL</code> and <code>TEST-NUMVAL
        DATA DIVISION.
        WORKING-STORAGE SECTION.
        01  Numeric-Chars      PIC X(10) VALUE "0123456789".
-       
+
        01  Success            CONSTANT 0.
        01  Failure            CONSTANT 128.
 
@@ -1177,7 +1177,7 @@ COBOL has the intrinsic functions <code>TEST-NUMVAL</code> and <code>TEST-NUMVAL
        01  Num-Valid-Chars    PIC 99.
 
        LINKAGE SECTION.
-       01  Str                PIC X(30). 
+       01  Str                PIC X(30).
 
        PROCEDURE DIVISION USING Str.
            IF Str = SPACES
@@ -1198,7 +1198,7 @@ COBOL has the intrinsic functions <code>TEST-NUMVAL</code> and <code>TEST-NUMVAL
            IF Str (1:1) = "-" OR "+"
                ADD 1 TO Num-Valid-Chars
            END-IF
-           
+
            PERFORM VARYING I FROM 1 BY 1 UNTIL I > 10
                INSPECT Str TALLYING Num-Valid-Chars
                    FOR ALL Numeric-Chars (I:1) BEFORE SPACE
@@ -1206,7 +1206,7 @@ COBOL has the intrinsic functions <code>TEST-NUMVAL</code> and <code>TEST-NUMVAL
 
            INSPECT Str TALLYING Num-Valid-Chars FOR TRAILING SPACES
 
-           IF Num-Valid-Chars = FUNCTION LENGTH(Str) 
+           IF Num-Valid-Chars = FUNCTION LENGTH(Str)
                MOVE Success TO Return-Code
            ELSE
                MOVE Failure TO Return-Code
@@ -1407,12 +1407,12 @@ for v in [ "1" "0" "3.14" "hello" "12e3" "12ef" "-3" ]:
 {{out}}
 
 ```txt
-"-3" true 
-"12ef" false 
-"12e3" true 
-"hello" false 
-"3.14" true 
-"0" true 
+"-3" true
+"12ef" false
+"12e3" true
+"hello" false
+"3.14" true
+"0" true
 "1" true
 ```
 
@@ -1799,7 +1799,7 @@ END FUNCTION is_numeric
 
 FreeBASIC has a built-in Val() function which converts numeric strings to doubles. However, it is not ideal for the present task
 since it will try to convert as much of the string as it can (so "123xyz" would convert to 123) and return 0 if a conversion on
-this basis is not possible (i.e. "xyz" would return 0). 
+this basis is not possible (i.e. "xyz" would return 0).
 
 I've therefore written a custom function which recognizes signed numbers in bases from 2 to 16 (but only integral numbers for bases other than 10). For base 10, it will treat "123." or ".123" as numbers but not ".". It doesn't recognize scientific notation but does recognize the integral prefixes &H, &O and &B if bases 16, 8 or 2 respectively are specified.
 
@@ -1821,7 +1821,7 @@ Const dot   As UByte = 46
 
 Function isNumeric(s As Const String, base_ As Integer = 10) As Boolean
   If s = "" OrElse s = "."  OrElse s = "+" OrElse s = "-" Then Return False
-  Err = 0 
+  Err = 0
 
   If base_ < 2 OrElse base_ > 16 Then
     Err = 1000
@@ -1851,7 +1851,7 @@ Function isNumeric(s As Const String, base_ As Integer = 10) As Boolean
 
   If Len(t) = 0 Then Return False
   Dim As Boolean isValid, hasDot = false
-  
+
   For i As Integer = 0 To Len(t) - 1
     isValid = False
 
@@ -1862,7 +1862,7 @@ Function isNumeric(s As Const String, base_ As Integer = 10) As Boolean
       End If
       If t[i] = dot Then
         If CInt(Not hasDot) AndAlso (base_ = 10) Then
-          hasDot = True 
+          hasDot = True
           IsValid = True
           Exit For
         End If
@@ -1873,20 +1873,20 @@ Function isNumeric(s As Const String, base_ As Integer = 10) As Boolean
     If Not isValid Then Return False
   Next i
 
-  Return True 
+  Return True
 End Function
 
 Dim s As String
 s = "1234.056789"
 Print s, " (base 10) => "; isNumeric(s)
 s = "1234.56"
-Print s, " (base 7)  => "; isNumeric(s, 7) 
+Print s, " (base 7)  => "; isNumeric(s, 7)
 s = "021101"
-Print s, " (base 2)  => "; isNumeric(s, 2)  
+Print s, " (base 2)  => "; isNumeric(s, 2)
 s = "Dog"
-Print s, " (base 16) => "; isNumeric(s, 16)  
+Print s, " (base 16) => "; isNumeric(s, 16)
 s = "Bad125"
-Print s, " (base 16) => "; isNumeric(s, 16)  
+Print s, " (base 16) => "; isNumeric(s, 16)
 s = "-0177"
 Print s, " (base 8)  => "; isNumeric(s, 8)
 s = "+123abcd.ef"
@@ -1935,13 +1935,13 @@ var
 begin
 	integerError := 0;
 	realError := 0;
-	
+
 	// system.val attempts to convert numerical value representations.
 	// It accepts all notations as they are accepted by the language,
 	// as well as the '0x' (or '0X') prefix for hexadecimal values.
 	val(potentialNumeric, potentialInteger, integerError);
 	val(potentialNumeric, potentialReal, realError);
-	
+
 	isNumeric := (integerError = 0) or (realError = 0);
 end;
 ```
@@ -1997,7 +1997,7 @@ def isNumeric = {
     def formatter = java.text.NumberFormat.instance
     def pos = [0] as java.text.ParsePosition
     formatter.parse(it, pos)
-    
+
     // if parse position index has moved to end of string
     // them the whole string was numeric
     pos.index == it.size()
@@ -2068,7 +2068,7 @@ so read s::Int (for instance) could be reliably used if string s passed these te
 
 ## Haxe
 
-Haxe has a built-in function that will convert a string to an integer, so we can use that to determine if the string is numeric or not. 
+Haxe has a built-in function that will convert a string to an integer, so we can use that to determine if the string is numeric or not.
 ```ActionScript
 
 static function isNumeric(n:String):Bool
@@ -2146,7 +2146,7 @@ software {
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-The code writes a printable image of x whatever type it is and a statement about whether it is numeric or not.  Icon and Unicon use success and failure instead of boolean functions, numeric(x) is built-in and returns x or fails.  
+The code writes a printable image of x whatever type it is and a statement about whether it is numeric or not.  Icon and Unicon use success and failure instead of boolean functions, numeric(x) is built-in and returns x or fails.
 
 ```Icon
 
@@ -2266,7 +2266,7 @@ public static boolean isNumeric(String inputData) {
 ```
 
 
-Alternative 4 : use the java.util.Scanner object. Very useful if you have to scan multiple entries. 
+Alternative 4 : use the java.util.Scanner object. Very useful if you have to scan multiple entries.
 
 
 ```java
@@ -2312,7 +2312,7 @@ def is_numeric: true and try tonumber catch false;
 
 ## Julia
 
-The function <tt>isnumeric</tt> tests for strings that parse directly to numbers.  This test excludes symbols, such as &pi; and <tt>1 + 1</tt>, that evaluate to numbers as well as certain elaborate numbers (large integers, rationals and complex numbers) whose literals parse to expressions that must be evaluated to yield numbers. 
+The function <tt>isnumeric</tt> tests for strings that parse directly to numbers.  This test excludes symbols, such as &pi; and <tt>1 + 1</tt>, that evaluate to numbers as well as certain elaborate numbers (large integers, rationals and complex numbers) whose literals parse to expressions that must be evaluated to yield numbers.
 
 
 ```julia
@@ -2478,7 +2478,7 @@ function IsNumber(string$)
     if HasNumeric = 0 then IsNumber = 0
     [NotNumber]
 end function
- 
+
 ```
 
 
@@ -2536,7 +2536,7 @@ Module Checkit {
             if c$ = "" then {
                   =true
             } else.if m>1 then {
-                  \ may have -+ and ,      
+                  \ may have -+ and ,
                   if m=2 then {
                         if not c$~"[-+\"+de$+"]" then break
                   } else {
@@ -2547,7 +2547,7 @@ Module Checkit {
                  if de$<>"." then  a$=replace$(de$, ".", a$, 1,1)
                  try {inline "a="+a$+"=="+a$}
                  if valid(a) then =a = true=true  ' return boolean
-             }    
+             }
       }
       Print isNumber("+1"), isnumber("-1"), isNumber("1+")=false, isnumber("1-")=false
       Print isNumber(",1",","), isnumber("1,",","), isNumber(",0",","), isnumber("0,", ",")
@@ -2641,7 +2641,7 @@ NumberQ[ToExpression["02553352000242"]]
        o = str2num(a);
        r = !isempty(o);
      endif
-   end 
+   end
 
 % tests
 disp(isnum(123)) % 1
@@ -2734,9 +2734,9 @@ print isNumeric("spam")
 # $a2 PERIOD_HIT_FLAG
 # $a3 HAS_DIGITS_FLAG
 
-.data 
+.data
 			### CHANGE THIS STRING TO TEST DIFFERENT ONES... ###
-	string: .asciiz "-.1236"  
+	string: .asciiz "-.1236"
 	s_false: .asciiz "False"
 	s_true: .asciiz "True"
 .text
@@ -2753,12 +2753,12 @@ main:
 		lb $a0,($a1)
 		beqz $a0,exit_true # test for \0 null char
 		beq $a0,46,period_test #test for a duplicate period
-		blt $a0,48,exit_false  #test for 
+		blt $a0,48,exit_false  #test for
 		bgt $a0,57,exit_false
 		la $a3,1 #set the HAS_DIGITS flag. This line is only reached because the
-			 #    tests for period and - both jump back to start. 
+			 #    tests for period and - both jump back to start.
 		j loop
-	
+
 exit_true:
 	beqz $a3,exit_false
 	la $a0,s_true
@@ -2766,16 +2766,16 @@ exit_true:
 	syscall
 
 	li $v0,10
-	syscall	
+	syscall
 
 exit_false:
 	la $a0,s_false
 	la $v0,4
 	syscall
-	
+
 	li $v0,10
 	syscall
-	
+
 period_test:
 	beq $a2,1,exit_false
 	li $a2,1
@@ -2793,7 +2793,7 @@ import java.text.NumberFormat
 import java.text.ParsePosition
 import java.util.Scanner
 
-# this first example relies on catching an exception, 
+# this first example relies on catching an exception,
 # which is bad style and poorly performing in Java
 def is_numeric?(s:string)
     begin
@@ -2816,28 +2816,28 @@ puts '1.2.3 is not numeric' unless is_numeric?('1.2.3')
 
 
 # check every element of the string
-def is_numeric2?(s: string) 
-    if (s == nil || s.isEmpty()) 
-        return false 
-    end 
-    if (!s.startsWith('-')) 
+def is_numeric2?(s: string)
+    if (s == nil || s.isEmpty())
+        return false
+    end
+    if (!s.startsWith('-'))
         if s.contains('-')
-            return false 
+            return false
         end
-    end 
-    
+    end
+
     0.upto(s.length()-1) do |x|
         c = s.charAt(x)
         if ((x == 0) && (c == '-'.charAt(0)))
             # negative number
         elsif (c == '.'.charAt(0))
-            if (s.indexOf('.', x) > -1) 
+            if (s.indexOf('.', x) > -1)
                 return false # more than one period
-            end        
+            end
         elsif (!Character.isDigit(c))
             return false
         end
-    end 
+    end
     true
 end
 
@@ -2854,7 +2854,7 @@ puts '1.2.3 is not numeric' unless is_numeric2?('1.2.3')
 
 
 
-# use a regular  expression 
+# use a regular  expression
 def is_numeric3?(s:string)
   s == nil || s.matches("[-+]?\\d+(\\.\\d+)?")
 end
@@ -2870,12 +2870,12 @@ puts '123-  is not numeric' unless is_numeric3?('123-')
 puts '1.2.3 is not numeric' unless is_numeric3?('1.2.3')
 
 
-#  use the positional parser in the java.text.NumberFormat object 
-# (a more robust solution). If, after parsing, the parse position is at 
-# the end of the string, we can deduce that the entire string was a 
+#  use the positional parser in the java.text.NumberFormat object
+# (a more robust solution). If, after parsing, the parse position is at
+# the end of the string, we can deduce that the entire string was a
 # valid number.
-def is_numeric4?(s:string) 
-    return false if s == nil    
+def is_numeric4?(s:string)
+    return false if s == nil
     formatter = NumberFormat.getInstance()
     pos = ParsePosition.new(0)
     formatter.parse(s, pos)
@@ -2894,10 +2894,10 @@ puts '123-  is not numeric' unless is_numeric4?('123-')
 puts '1.2.3 is not numeric' unless is_numeric4?('1.2.3')
 
 
-# use the java.util.Scanner object. Very useful if you have to 
-# scan multiple entries. Scanner also has similar methods for longs, 
-# shorts, bytes, doubles, floats, BigIntegers, and BigDecimals as well 
-# as methods for integral types where you may input a base/radix other than 
+# use the java.util.Scanner object. Very useful if you have to
+# scan multiple entries. Scanner also has similar methods for longs,
+# shorts, bytes, doubles, floats, BigIntegers, and BigDecimals as well
+# as methods for integral types where you may input a base/radix other than
 # 10 (10 is the default, which can be changed using the useRadix method).
 def is_numeric5?(s:string)
     return false if s == nil
@@ -2951,7 +2951,7 @@ PROCEDURE isNumeric(s: TEXT): BOOLEAN =
       END;
     END;
     RETURN TRUE;
-  END isNumeric;      
+  END isNumeric;
 
 BEGIN
   IO.Put("isNumeric(152) = " & Fmt.Bool(isNumeric("152")) & "\n");
@@ -3003,10 +3003,10 @@ USER>WRITE +"1E-3"
 
 USER>WRITE $SELECT($ISVALIDNUM("123"):"Valid",1:"Invalid"),!
 Valid
- 
+
 USER>WRITE $SELECT($ISVALIDNUM("a123"):"Valid",1:"Invalid"),!
 Invalid
- 
+
 USER>WRITE $SELECT($ISVALIDNUM("123a"):"Valid",1:"Invalid"),!
 Invalid
 
@@ -3030,7 +3030,7 @@ module IsNumeric
         mutable meh = 0.0;  // I don't want it, not going to use it, why force me to declare it?
         double.TryParse(input, out meh)
     }
-    
+
     Main() : void
     {
         def num = "-1.2345E6";
@@ -3068,7 +3068,7 @@ method isNumeric(testString) public static returns boolean
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 method getTestData() private static returns Rexx[]
-  
+
   -- Coercing numbers into the Rexx type has the effect of converting them to strings.
   -- NetRexx will still perform arithmetic on Rexx strings if those strings represent numbers.
   -- Notice that whitespace between the sign and the number are ignored even when inside a string constant
@@ -3193,7 +3193,7 @@ BOOL isNumericI(NSString *s)
    NSUInteger len = [s length];
    NSUInteger i;
    BOOL status = NO;
-   
+
    for(i=0; i < len; i++)
    {
        unichar singlechar = [s characterAtIndex: i];
@@ -3265,7 +3265,7 @@ disp(isnum("3.1415")) % 1
 ```
 
 
-STR2NUM uses internally the function eval(), therefore it should not be used for unsecured data (e.g. user input). Use instead str2double() or scanf(). 
+STR2NUM uses internally the function eval(), therefore it should not be used for unsecured data (e.g. user input). Use instead str2double() or scanf().
 
 
 ```octave
@@ -3333,11 +3333,11 @@ A Boolean value: True if Value contains a valid numeric value, False otherwise.
 
 Example
 
-&Value = Get Field().Value; 
-If IsNumber(&Value) Then 
-   /* do numeric processing */ 
-Else 
-   /* do non-numeric processing */ 
+&Value = Get Field().Value;
+If IsNumber(&Value) Then
+   /* do numeric processing */
+Else
+   /* do non-numeric processing */
 End-if;
 
 ```
@@ -3571,11 +3571,11 @@ end is_numeric;
 
 ```txt
 
-5                       '1'B 
-6.7                     '1'B 
--8.9                    '1'B 
--4e3                    '1'B 
-4A37                    '0'B 
+5                       '1'B
+6.7                     '1'B
+-8.9                    '1'B
+-4e3                    '1'B
+4A37                    '0'B
 
 ```
 
@@ -3694,12 +3694,12 @@ This routine parses the string to verify it's a number. It returns 1 if string i
 Procedure IsNumeric(InString.s, DecimalCharacter.c = '.')
   #NotNumeric = #False
   #IsNumeric = #True
-  
+
   InString = Trim(InString)
   Protected IsDecimal, CaughtDecimal, CaughtE
   Protected IsSignPresent, IsSignAllowed = #True, CountNumeric
   Protected *CurrentChar.Character = @InString
-  
+
   While *CurrentChar\c
     Select *CurrentChar\c
       Case '0' To '9'
@@ -3709,18 +3709,18 @@ Procedure IsNumeric(InString.s, DecimalCharacter.c = '.')
         If CaughtDecimal Or CaughtE Or CountNumeric = 0
           ProcedureReturn #NotNumeric
         EndIf
-        
+
         CountNumeric = 0
         CaughtDecimal = #True
         IsDecimal = #True
       Case  '-', '+'
-        If IsSignPresent Or Not IsSignAllowed: ProcedureReturn #NotNumeric: EndIf 
+        If IsSignPresent Or Not IsSignAllowed: ProcedureReturn #NotNumeric: EndIf
         IsSignPresent = #True
       Case 'E', 'e'
         If CaughtE Or CountNumeric = 0
           ProcedureReturn #NotNumeric
         EndIf
-        
+
         CaughtE = #True
         CountNumeric = 0
         CaughtDecimal = #False
@@ -3731,7 +3731,7 @@ Procedure IsNumeric(InString.s, DecimalCharacter.c = '.')
     EndSelect
     *CurrentChar + SizeOf(Character)
   Wend
-  
+
   If CountNumeric = 0: ProcedureReturn #NotNumeric: EndIf
   ProcedureReturn #IsNumeric
 EndProcedure
@@ -3826,7 +3826,7 @@ def numeric(literal):
 tests = [
     '0', '0.', '00', '123', '0123', '+123', '-123', '-123.', '-123e-4', '-.8E-04',
     '0.123', '(5)', '-123+4.5j', '0b0101', ' +0B101 ', '0o123', '-0xABC', '0x1a1',
-    '12.5%', '1/2', '½', '3¼', 'π', 'Ⅻ', '1,000,000', '1 000', '- 001.20e+02', 
+    '12.5%', '1/2', '½', '3¼', 'π', 'Ⅻ', '1,000,000', '1 000', '- 001.20e+02',
     'NaN', 'inf', '-Infinity']
 
 for s in tests:
@@ -3889,7 +3889,7 @@ for s in tests:
 
 
 ```RapidQ
-isnumeric 
+isnumeric
 $Typecheck on
 
 Defint FALSE, TRUE
@@ -3905,16 +3905,16 @@ Function isNumeric(s as string, optchar as string) as integer
     if instr(s,"+") > 1 then
         Result = FALSE
         exit function
-    end if    
+    end if
     if instr(s,"-") > 1 then
         Result = FALSE
         exit function
-    end if              
-    Defint i, ndex = 0    
+    end if
+    Defint i, ndex = 0
     For i = 1 to len(s)
         select case asc(mid$(s,i,1))
         case 43   '+
-        case 45   '- 
+        case 45   '-
         case 46 '.
             if ndex = 1 then
                 Result = FALSE
@@ -3923,14 +3923,14 @@ Function isNumeric(s as string, optchar as string) as integer
             ndex = 1
         case 48 to 57  '0 to 9
         case else
-            if instr(optchar,(mid$(s,i,1))) = 0 then 
+            if instr(optchar,(mid$(s,i,1))) = 0 then
                 Result = FALSE
                 exit function
             end if
         end select
     next
     Result = TRUE
-End Function  
+End Function
 
 '
 ### ======================================================
@@ -3971,7 +3971,7 @@ number: [
 	sign float ["e" | "E"] sign int |
 	sign int ["e" | "E"] sign int |
 	sign float |
-	sign int 
+	sign int
 ]
 
 pnumeric?: func [x][parse x number]
@@ -3979,8 +3979,8 @@ pnumeric?: func [x][parse x number]
 ; Test cases.
 
 cases: parse {
-   10 -99 
-   10.43 -12.04 
+   10 -99
+   10.43 -12.04
    1e99 1.0e10 -10e3 -9.12e7 2e-4 -3.4E-5
    3phase  Garkenhammer  e  n3v3r  phase3
 } none
@@ -4126,7 +4126,7 @@ end
 
 
 ```runbasic
-print isNumeric("123") 
+print isNumeric("123")
 print isNumeric("1ab")
 
 ' ------------------------
@@ -4146,7 +4146,7 @@ for i = 1 to len(f$)
 		dot$	= "."
 		goto [nxtDigit]
 	end if
-       if (d$ < "0") or (d$ > "9") then isNumeric = 0	
+       if (d$ < "0") or (d$ > "9") then isNumeric = 0
 [nxtDigit]
 next i
 END FUNCTION
@@ -4209,7 +4209,7 @@ Or using the built-in number parsing and catching exceptions:
 def isNumeric(str: String): Boolean = {
   !throwsNumberFormatException(str.toLong) || !throwsNumberFormatException(str.toDouble)
 }
-  
+
 def throwsNumberFormatException(f: => Any): Boolean = {
   try { f; false } catch { case e: NumberFormatException => true }
 }
@@ -4278,7 +4278,7 @@ DB20000I  The SQL command completed successfully.
 
 VALUES IS_NUMERIC('5')
 
-1     
+1
 ------
      0
 
@@ -4287,7 +4287,7 @@ VALUES IS_NUMERIC('5')
 
 VALUES IS_NUMERIC('0')
 
-1     
+1
 ------
      0
 
@@ -4296,7 +4296,7 @@ VALUES IS_NUMERIC('0')
 
 VALUES IS_NUMERIC('-1')
 
-1     
+1
 ------
      0
 
@@ -4305,7 +4305,7 @@ VALUES IS_NUMERIC('-1')
 
 VALUES IS_NUMERIC('A')
 
-1     
+1
 ------
      1
 
@@ -4314,7 +4314,7 @@ VALUES IS_NUMERIC('A')
 
 VALUES IS_NUMERIC('-')
 
-1     
+1
 ------
      1
 
@@ -4323,7 +4323,7 @@ VALUES IS_NUMERIC('-')
 
 VALUES IS_NUMERIC('z')
 
-1     
+1
 ------
      1
 
@@ -4332,7 +4332,7 @@ VALUES IS_NUMERIC('z')
 
 VALUES IS_NUMERIC('')
 
-1     
+1
 ------
      1
 
@@ -4341,7 +4341,7 @@ VALUES IS_NUMERIC('')
 
 VALUES IS_NUMERIC(' ')
 
-1     
+1
 ------
      1
 
@@ -4559,7 +4559,7 @@ The String class has the method <code>isNumeric</code>; this method (at least on
 String extend [
   realIsNumeric [
      (self first = $+) |
-     (self first = $-) 
+     (self first = $-)
         ifTrue: [
            ^ (self allButFirst) isNumeric
         ]
@@ -4597,19 +4597,19 @@ to handle radix numbers (such as 2r10111), use:
 
 ## SNOBOL4
 
-This task is easy in Snobol. Use the convert( ) function as a predicate returning success (T) or failure (F) for string to real conversion.   
+This task is easy in Snobol. Use the convert( ) function as a predicate returning success (T) or failure (F) for string to real conversion.
 
 
 ```Snobol4
         define('nchk(str)') :(nchk_end)
 nchk    convert(str,'real') :s(return)f(freturn)
-nchk_end        
+nchk_end
 
 *       # Wrapper for testing
         define('isnum(str)') :(isnum_end)
 isnum   isnum = 'F'; isnum = nchk(str) 'T'
         isnum = isnum ': ' str :(return)
-isnum_end        
+isnum_end
 
 *       # Test and display
         output = isnum('123')
@@ -4649,7 +4649,7 @@ set @s = '1234.56'
 
 print isnumeric(@s) --prints 1 if numeric, 0 if not.
 
-if isnumeric(@s)=1 begin print 'Numeric' end 
+if isnumeric(@s)=1 begin print 'Numeric' end
 else print 'Non-numeric'
 ```
 

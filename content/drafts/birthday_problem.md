@@ -39,18 +39,18 @@ Using simulation, estimate the number of independent people required in a groups
 ## Ada
 
 
-This solution assumes a 4-year cycle, with three 365-day years and one leap year. 
+This solution assumes a 4-year cycle, with three 365-day years and one leap year.
 
 
 ```Ada
 with Ada.Command_Line, Ada.Text_IO, Ada.Numerics.Discrete_random;
 
 procedure Birthday_Test is
-   
+
    Samples: constant Positive := Integer'Value(Ada.Command_Line.Argument(1));
    -- our experiment: Generate a X (birth-)days and check for Y-collisions
    -- the constant "Samples" is the number of repetitions of this experiment
-   
+
    subtype Day is integer range 0 .. 365; -- this includes leap_days
    subtype Extended_Day is Integer range 0 .. 365*4; -- a four-year cycle
    package ANDR is new Ada.Numerics.Discrete_Random(Extended_Day);
@@ -58,19 +58,19 @@ procedure Birthday_Test is
 
    function Random_Day return Day is (ANDR.Random(Random_Generator) / 4);
    -- days 0 .. 364 are equally probable, leap-day 365 is 4* less probable
-   
+
    type Checkpoint is record
       Multiplicity:  Positive;
       Person_Count:   Positive;
    end record;
-   Checkpoints: constant array(Positive range <>) of Checkpoint 
-     := ( (2, 22),  (2, 23),  (3, 86),  (3, 87), (3, 88),  
+   Checkpoints: constant array(Positive range <>) of Checkpoint
+     := ( (2, 22),  (2, 23),  (3, 86),  (3, 87), (3, 88),
 	  (4, 186), (4, 187), (5, 312), (5, 313), (5, 314) );
    type Result_Type is array(Checkpoints'Range) of Natural;
    Result: Result_Type := (others => 0);
-   -- how often is a 2-collision in a group of 22 or 23, ..., a 5-collision 
+   -- how often is a 2-collision in a group of 22 or 23, ..., a 5-collision
    -- in a group of 312 .. 314
-   
+
    procedure Experiment(Result: in out Result_Type) is
    -- run the experiment once!
       A_Year: array(Day) of Natural := (others => 0);
@@ -93,7 +93,7 @@ procedure Birthday_Test is
 	 end if;
       end loop;
    end Experiment;
-   
+
    package TIO renames Ada.Text_IO;
    package FIO is new TIO.Float_IO(Float);
 
@@ -111,8 +111,8 @@ begin
     for I in Result'Range loop
        FIO.Put(Float(Result(I))/Float(Samples), Fore => 3, Aft => 6, Exp => 0);
        TIO.Put_Line
-	 ("% of groups with" & Integer'Image(Checkpoints(I).Person_Count) & 
-	  " have"            & Integer'Image(Checkpoints(I).Multiplicity) & 
+	 ("% of groups with" & Integer'Image(Checkpoints(I).Person_Count) &
+	  " have"            & Integer'Image(Checkpoints(I).Multiplicity) &
 	  " persons sharing a common birthday.");
     end loop;
 end Birthday_Test;
@@ -121,7 +121,7 @@ end Birthday_Test;
 
 {{out}}
 
-Running the program with a sample size 500_000_000 took about 25 minutes on a slow pc. 
+Running the program with a sample size 500_000_000 took about 25 minutes on a slow pc.
 
 
 ```txt
@@ -140,7 +140,7 @@ Birthday-Test with 500000000 samples:
 ```
 
 
-An interesting observation: 
+An interesting observation:
 The probability for groups of 313 persons having 5 persons sharing a common birthday is almost exactly 0.5. Note that a solution based on 365-day years, i.e., a solution ignoring leap days, would generate slightly but significantly larger probabilities.
 
 
@@ -199,7 +199,7 @@ FOR group size FROM required common WHILE required common <= upb common DO
     sample with no required common +:= 1;
     found required common: SKIP
   OD # sample size #;
-  REAL portion of years with required common birthdays = 
+  REAL portion of years with required common birthdays =
     (upb sample size - sample with no required common) / upb sample size;
   print(".");
   IF portion of years with required common birthdays > desired probability THEN
@@ -221,17 +221,17 @@ OD # group size #
 
 ```txt
 
-upb year: 365.2500; upb common: 5; upb sample size: 100000; 
+upb year: 365.2500; upb common: 5; upb sample size: 100000;
 .
-required common: 1; group size: 1; %age of years with required common birthdays: 100.00%; 
+required common: 1; group size: 1; %age of years with required common birthdays: 100.00%;
 ......................
-required common: 2; group size: 23; %age of years with required common birthdays: 50.71%; 
+required common: 2; group size: 23; %age of years with required common birthdays: 50.71%;
 .................................................................
-required common: 3; group size: 88; %age of years with required common birthdays: 50.90%; 
+required common: 3; group size: 88; %age of years with required common birthdays: 50.90%;
 ...................................................................................................
-required common: 4; group size: 187; %age of years with required common birthdays: 50.25%; 
+required common: 4; group size: 187; %age of years with required common birthdays: 50.25%;
 ...............................................................................................................................
-required common: 5; group size: 314; %age of years with required common birthdays: 50.66%; 
+required common: 5; group size: 314; %age of years with required common birthdays: 50.66%;
 
 ```
 
@@ -239,10 +239,10 @@ required common: 5; group size: 314; %age of years with required common birthday
 
 ## C
 
-Computing probabilities to 5 sigmas of confidence. It's very slow, chiefly because to make sure a probability like 0.5006 is indeed above .5 instead of just statistical fluctuation, you have to run the simulation millions of times. 
+Computing probabilities to 5 sigmas of confidence. It's very slow, chiefly because to make sure a probability like 0.5006 is indeed above .5 instead of just statistical fluctuation, you have to run the simulation millions of times.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -1008,13 +1008,13 @@ fun equalBirthdays(nSharers: Int, groupSize: Int, nRepetitions: Int): Double {
     return eq * 100.0 / nRepetitions
 }
 
-fun main(args: Array<String>) {    
+fun main(args: Array<String>) {
     var groupEst = 2
     for (sharers in 2..5) {
         // Coarse
         var groupSize = groupEst + 1
         while (equalBirthdays(sharers, groupSize, 100) < 50.0) groupSize++
-        
+
         // Finer
         val inf = (groupSize - (groupSize - groupEst) / 4.0).toInt()
         for (gs in inf until groupSize + 999) {
@@ -1030,10 +1030,10 @@ fun main(args: Array<String>) {
             val eq = equalBirthdays(sharers, gs, 50_000)
             if (eq > 50.0) {
                 groupEst = gs
-                print("$sharers independent people in a group of ${"%3d".format(gs)} ") 
+                print("$sharers independent people in a group of ${"%3d".format(gs)} ")
                 println("share a common birthday (${"%2.1f%%".format(eq)})")
                 break
-            } 
+            }
         }
     }
 }
@@ -1071,7 +1071,7 @@ if(sys_listunboundmethods !>> 'hasdupe') => {
 		with i in #a do => {
 			#a->find(#i)->size > #threshold-1 ? return true
 		}
-		
+
 		return false
 	}
 }
@@ -1084,7 +1084,7 @@ while(#probability < 50.00) => {^
 		hasdupe(#x,#threshold) ? #dupeqty++
 	}
 	#probability = (#dupeqty / decimal(#samplesize)) * 100
-	
+
 	'Threshold: '+#threshold+', qty: '+#qty+' - probability: '+#probability+'\r'
 	#qty += 1
 ^}
@@ -1189,7 +1189,7 @@ find(5)
    End;
  End;
 ```
- 
+
 Output:
 
 ```txt
@@ -1356,12 +1356,12 @@ printf "$_ people in a group of %s share a common birthday. (%.3f)\n", simulatio
 
 ```Phix
 constant nDays = 365
- 
--- 5 sigma confidence. Conventionally people think 3 sigmas are 
--- good enough, but for the case of 5 people sharing a birthday, 
+
+-- 5 sigma confidence. Conventionally people think 3 sigmas are
+-- good enough, but for the case of 5 people sharing a birthday,
 -- 3 sigmas actually sometimes gives a slightly wrong answer.
 constant nSigmas = 5.0; -- Currently 3 for smaller run time.
- 
+
 function simulate1(integer nPeople, nCollisions)
 --
 -- Given n people, if m of them have same birthday in one run.
@@ -1376,7 +1376,7 @@ function simulate1(integer nPeople, nCollisions)
     end for
     return false;
 end function
- 
+
 function prob(integer np, nCollisions, atom pThresh)
 --
 -- Decide if the probablity of n out of np people sharing a birthday
@@ -1385,28 +1385,28 @@ function prob(integer np, nCollisions, atom pThresh)
 --
     atom p, d; -- Probablity and standard deviation.
     integer nRuns = 0, yes = 0;
- 
+
     while nRuns<10 or (abs(p - pThresh) < (nSigmas * d)) do
         yes += simulate1(np, nCollisions)
         nRuns += 1
         p = yes/nRuns
         d = sqrt(p * (1 - p) / nRuns);
     end while
- 
+
     return {p,d}
 end function
- 
+
 function findHalfChance(integer nCollisions)
 -- Bisect for truth.
     atom p, dev
     integer mid = 1,
             lo = 0,
             hi = nDays * (nCollisions - 1) + 1;
- 
+
     while lo < mid or p < 0.5 do
         mid = floor((hi + lo) / 2)
         {p,dev} = prob(mid, nCollisions, 0.5)
- 
+
         if (p < 0.5) then
             lo = mid + 1;
         else
@@ -1420,7 +1420,7 @@ function findHalfChance(integer nCollisions)
 
     return {p,dev,mid}
 end function
- 
+
 for nCollisions=2 to 6 do
     atom {p,d,np} = findHalfChance(nCollisions)
     printf(1,"%d collision: %d people, P = %g +/- %g\n", {nCollisions, np, p, d})
@@ -1462,7 +1462,7 @@ Note: the first (unused), version of function equal_birthdays() uses a different
 from random import randint
 
 def equal_birthdays(sharers=2, groupsize=23, rep=100000):
-    'Note: 4 sharing common birthday may have 2 dates shared between two people each' 
+    'Note: 4 sharing common birthday may have 2 dates shared between two people each'
     g = range(groupsize)
     sh = sharers - 1
     eq = sum((groupsize - len(set(randint(1,365) for i in g)) >= sh)
@@ -1470,7 +1470,7 @@ def equal_birthdays(sharers=2, groupsize=23, rep=100000):
     return (eq * 100.) / rep
 
 def equal_birthdays(sharers=2, groupsize=23, rep=100000):
-    'Note: 4 sharing common birthday must all share same common day' 
+    'Note: 4 sharing common birthday must all share same common day'
     g = range(groupsize)
     sh = sharers - 1
     eq = 0
@@ -1687,7 +1687,7 @@ for x in range(2, 6): find_half(x)
         (search-upwards sharers (add1 group-size)))))
 
 (for ([sharers (in-range 2 6)])
-  (let-values ([(group-size probability) 
+  (let-values ([(group-size probability)
                 (search-from sharers (search-coarse-group-size sharers))])
     (printf "~a independent people in a group of ~a share a common birthday. (~a%)\n"
             sharers group-size  (~r (* probability 100) #:precision '(= 2)))))
@@ -1712,9 +1712,9 @@ for x in range(2, 6): find_half(x)
 
 The method used is to find the average number of people to share a birthday,   and then use the   '''floor'''   of that
 
-value   (less the group size)   as a starting point to find a new group size with an expected size that exceeds 
+value   (less the group size)   as a starting point to find a new group size with an expected size that exceeds
 
-50%   duplicate birthdays of the required size. 
+50%   duplicate birthdays of the required size.
 
 ```rexx
 /*REXX pgm examines the birthday problem via random # simulation (with specifable parms)*/

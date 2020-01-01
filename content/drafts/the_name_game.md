@@ -21,7 +21,7 @@ The verse for the name 'Gary' would be like this:
     Gary, Gary, bo-bary
     Banana-fana fo-fary
     Fee-fi-mo-mary
-    Gary! 
+    Gary!
 
 At the end of every line, the name gets repeated without the first letter: Gary becomes ary
 If we take (X) as the full name (Gary) and (Y) as the name without the first letter (ary) the verse would look like this:
@@ -29,7 +29,7 @@ If we take (X) as the full name (Gary) and (Y) as the name without the first let
     (X), (X), bo-b(Y)
     Banana-fana fo-f(Y)
     Fee-fi-mo-m(Y)
-    (X)! 
+    (X)!
 
 Vowel as first letter of the name
 
@@ -39,7 +39,7 @@ The verse looks like this:
     Earl, Earl, bo-bearl
     Banana-fana fo-fearl
     Fee-fi-mo-mearl
-    Earl! 
+    Earl!
 
 'B', 'F' or 'M' as first letter of the name
 
@@ -50,7 +50,7 @@ The verse for the name Billy looks like this:
     Billy, Billy, bo-illy
     Banana-fana fo-filly
     Fee-fi-mo-milly
-    Billy! 
+    Billy!
 
 For the name 'Felix', this would be right:
 
@@ -77,7 +77,7 @@ is
    package ASU renames Ada.Strings.Unbounded;
    function "+"(input : in String) return ASU.Unbounded_String renames ASU.To_Unbounded_String;
    function "+"(input : in ASU.Unbounded_String) return String renames ASU.To_String;
-   
+
    function Normalize_Case(input : in String) return String is
    begin
       return ACH.To_Upper(input(input'First))
@@ -97,7 +97,7 @@ is
             end if;
       end case;
    end Transform;
-   
+
    procedure Lyrics(name : in String)
    is
       normalized : constant String := Normalize_Case(name);
@@ -261,22 +261,22 @@ Shirley!
 
 {{trans|Kotlin}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 void print_verse(const char *name) {
-    char *x, *y; 
+    char *x, *y;
     int b = 1, f = 1, m = 1, i = 1;
 
     /* ensure name is in title-case */
-    x = strdup(name);     
+    x = strdup(name);
     x[0] = toupper(x[0]);
     for (; x[i]; ++i) x[i] = tolower(x[i]);
-   
+
     if (strchr("AEIOU", x[0])) {
         y = strdup(x);
-        y[0] = tolower(y[0]); 
+        y[0] = tolower(y[0]);
     }
     else {
         y = x + 1;
@@ -288,7 +288,7 @@ void print_verse(const char *name) {
         case 'M': m = 0; break;
         default : break;
     }
-      
+
     printf("%s, %s, bo-%s%s\n", x, x, (b) ? "b" : "", y);
     printf("Banana-fana fo-%s%s\n", (f) ? "f" : "", y);
     printf("Fee-fi-mo-%s%s\n", (m) ? "m" : "", y);
@@ -346,8 +346,8 @@ Shirley!
 
 {{trans|C#}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -608,7 +608,7 @@ let   fN g =
 
 ```fsharp
 
-fN "Nigel"                                                                                                 
+fN "Nigel"
 
 ```
 
@@ -716,7 +716,7 @@ IN: rosetta-code.name-game
     "b"         :> B!
     "f"         :> F!
     "m"         :> M!
-    
+
     L { CHAR: B => [ "" B! ]
         CHAR: F => [ "" F! ]
         CHAR: M => [ "" M! ] [ drop ] } case
@@ -855,20 +855,20 @@ Shirley!
 ```Haskell
 
 -- The Name Game, Ethan Riley, 22nd May 2018
-import Data.Char 
+import Data.Char
 
 isVowel :: Char -> Bool
-isVowel c  
+isVowel c
     | char == 'A' = True
     | char == 'E' = True
     | char == 'I' = True
     | char == 'O' = True
     | char == 'U' = True
     | otherwise = False
-    where char = toUpper c 
+    where char = toUpper c
 
 isSpecial :: Char -> Bool
-isSpecial c 
+isSpecial c
     | char == 'B' = True
     | char == 'F' = True
     | char == 'M' = True
@@ -876,24 +876,24 @@ isSpecial c
     where char = toUpper c
 
 shorten :: String -> String
-shorten name  
+shorten name
     | isVowel $ head name = map toLower name
     | otherwise = map toLower $ tail name
 
-line :: String -> Char -> String -> String 
-line prefix letter name 
+line :: String -> Char -> String -> String
+line prefix letter name
     | letter == char = prefix ++ shorten name ++ "\n"
     | otherwise = prefix ++ letter:[] ++ shorten name ++ "\n"
     where char = toLower $ head name
 
 theNameGame :: String -> String
 theNameGame name =
-    line (name ++ ", " ++ name ++ ", bo-") 'b' name ++ 
-    line "Banana-fana fo-" 'f' name ++ 
-    line "Fee-fi-mo-" 'm' name ++ 
-    name ++ "!\n" 
-    
-main = 
+    line (name ++ ", " ++ name ++ ", bo-") 'b' name ++
+    line "Banana-fana fo-" 'f' name ++
+    line "Fee-fi-mo-" 'm' name ++
+    name ++ "!\n"
+
+main =
     mapM_ (putStrLn . theNameGame) ["Gary", "Earl", "Billy", "Felix", "Mike", "Steve"]
 
 ```
@@ -1233,7 +1233,7 @@ so we can alter line song$ ...
 ```M2000 Interpreter
 
 Module The.Name.Game {
-      Flush 
+      Flush
       Data "Gary", "Earl","Billy","Felix"
       Document doc$="The Name Game"+{
       }
@@ -1242,7 +1242,7 @@ Module The.Name.Game {
          {0}, {0}, bo-{2}{1}
          Banana-fana fo-{3}{1}
          Fee-fi-mo-{4}{1}
-         {0}!    
+         {0}!
          }
       While not empty {
             Read x$
@@ -1269,22 +1269,22 @@ The Name Game
 Gary, Gary, bo-bary
 Banana-fana fo-fary
 Fee-fi-mo-mary
-Gary!    
+Gary!
 
 Earl, Earl, bo-bearl
 Banana-fana fo-fearl
 Fee-fi-mo-mearl
-Earl!    
+Earl!
 
 Billy, Billy, bo-illy
 Banana-fana fo-filly
 Fee-fi-mo-milly
-Billy!    
+Billy!
 
 Felix, Felix, bo-belix
 Banana-fana fo-elix
 Fee-fi-mo-melix
-Felix!    
+Felix!
 </pre >
 
 
@@ -1437,9 +1437,9 @@ sub printVerse {
     $b  = $x0 eq 'B' ? $y : 'b' . $y;
     $f  = $x0 eq 'F' ? $y : 'f' . $y;
     $m  = $x0 eq 'M' ? $y : 'm' . $y;
-    print "$x, $x, bo-$b\n" . 
-          "Banana-fana fo-$f\n" . 
-          "Fee-fi-mo-$m\n" . 
+    print "$x, $x, bo-$b\n" .
+          "Banana-fana fo-$f\n" .
+          "Fee-fi-mo-$m\n" .
           "$x!\n\n";
 }
 
@@ -1573,7 +1573,7 @@ procedure printVerse(string name)
     end switch
     printf(1,fmt,{x, x, b, f, m, x})
 end procedure
- 
+
 constant tests = {"gARY", "Earl", "Billy", "Felix", "Mary", "SHIRley"}
 for i=1 to length(tests) do printVerse(tests[i]) end for
 ```

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task|Text processing}} 
+{{task|Text processing}}
 [[Category:Simple]]
 
 ;Task:
@@ -97,8 +97,8 @@ o_byte('\n');
 
 ```algol68
 STRING s := "12345"; FILE f; INT i;
-associate(f, s); get(f,i); 
-i+:=1; 
+associate(f, s); get(f,i);
+i+:=1;
 s:=""; reset(f); put(f,i);
 print((s, new line))
 ```
@@ -208,7 +208,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -284,36 +284,36 @@ sMessValeur:        .fill 12, 1, ' '
                        .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 sBuffer:    .skip    BUFFERSIZE
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* saves 2 registers */
 
     ldr r0,iAdrszMessNum
     bl affichageMess
     mov r0,#STDIN         @ Linux input console
-    ldr r1,iAdrsBuffer   @ buffer address 
-    mov r2,#BUFFERSIZE   @ buffer size 
+    ldr r1,iAdrsBuffer   @ buffer address
+    mov r2,#BUFFERSIZE   @ buffer size
     mov r7, #READ         @ request to read datas
     swi 0                  @ call system
-    ldr r1,iAdrsBuffer    @ buffer address 
+    ldr r1,iAdrsBuffer    @ buffer address
     mov r2,#0                @ end of string
     strb r2,[r1,r0]         @ store byte at the end of input string (r0
-    @ 
+    @
     ldr r0,iAdrsBuffer    @ buffer address
     bl conversionAtoD    @ conversion string in number in r0
     @ increment r0
     add r0,#1
     @ conversion register to string
-    ldr r1,iAdrsMessValeur                
+    ldr r1,iAdrsMessValeur
     bl conversion10S       @ call conversion
     ldr r0,iAdrszMessResult
     bl affichageMess            @ display message
-    
+
 100:   /* standard end of the program */
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
@@ -326,11 +326,11 @@ iAdrsBuffer:             .int sBuffer
 iAdrszMessResult:       .int szMessResult
 iAdrszCarriageReturn:  .int szCarriageReturn
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      /* loop length calculation */
@@ -344,68 +344,68 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 
  /******************************************************************/
-/*     Convert a string to a number stored in a registry          */ 
+/*     Convert a string to a number stored in a registry          */
 /******************************************************************/
 /* r0 contains the address of the area terminated by 0 or 0A */
 /* r0 returns a number                           */
 conversionAtoD:
-    push {fp,lr}         @ save 2 registers 
-    push {r1-r7}         @ save others registers 
+    push {fp,lr}         @ save 2 registers
+    push {r1-r7}         @ save others registers
     mov r1,#0
-    mov r2,#10           @ factor 
-    mov r3,#0            @ counter 
-    mov r4,r0            @ save address string -> r4 
-    mov r6,#0            @ positive sign by default 
-    mov r0,#0            @ initialization to 0 
+    mov r2,#10           @ factor
+    mov r3,#0            @ counter
+    mov r4,r0            @ save address string -> r4
+    mov r6,#0            @ positive sign by default
+    mov r0,#0            @ initialization to 0
 1:     /* early space elimination loop */
-    ldrb r5,[r4,r3]     @ loading in r5 of the byte located at the beginning + the position 
+    ldrb r5,[r4,r3]     @ loading in r5 of the byte located at the beginning + the position
     cmp r5,#0            @ end of string -> end routine
     beq 100f
     cmp r5,#0x0A        @ end of string -> end routine
     beq 100f
-    cmp r5,#' '          @ space ? 
-    addeq r3,r3,#1      @ yes we loop by moving one byte 
+    cmp r5,#' '          @ space ?
+    addeq r3,r3,#1      @ yes we loop by moving one byte
     beq 1b
-    cmp r5,#'-'          @ first character is -    
+    cmp r5,#'-'          @ first character is -
     moveq r6,#1         @  1 -> r6
-    beq 3f              @ then move on to the next position 
+    beq 3f              @ then move on to the next position
 2:   /* beginning of digit processing loop */
-    cmp r5,#'0'          @ character is not a number 
+    cmp r5,#'0'          @ character is not a number
     blt 3f
     cmp r5,#'9'          @ character is not a number
     bgt 3f
     /* character is a number */
     sub r5,#48
-    umull r0,r1,r2,r0         @ multiply par factor 10 
+    umull r0,r1,r2,r0         @ multiply par factor 10
 	cmp r1,#0           @ overflow ?
     bgt 99f            @ overflow error
-    add r0,r5            @ add to  r0 
+    add r0,r5            @ add to  r0
 3:
-    add r3,r3,#1         @ advance to the next position 
-    ldrb r5,[r4,r3]     @ load byte 
+    add r3,r3,#1         @ advance to the next position
+    ldrb r5,[r4,r3]     @ load byte
     cmp r5,#0            @ end of string -> end routine
     beq 4f
     cmp r5,#0x0A            @ end of string -> end routine
     beq 4f
-    b 2b                 @ loop 
+    b 2b                 @ loop
 4:
-    cmp r6,#1            @ test r6 for sign 
+    cmp r6,#1            @ test r6 for sign
     moveq r1,#-1
-    muleq r0,r1,r0       @ if negatif, multiply par -1 
+    muleq r0,r1,r0       @ if negatif, multiply par -1
     b 100f
 99:  /* overflow error */
     ldr r0,=szMessErrDep
     bl   affichageMess
     mov r0,#0      @ return  zero  if error
 100:
-    pop {r1-r7}          @ restaur other registers 
-    pop {fp,lr}          @ restaur   2 registers 
-    bx lr                 @return procedure 
-/* constante program */	
+    pop {r1-r7}          @ restaur other registers
+    pop {fp,lr}          @ restaur   2 registers
+    bx lr                 @return procedure
+/* constante program */
 szMessErrDep:  .asciz  "Too large: overflow 32 bits.\n"
 .align 4
 
@@ -417,10 +417,10 @@ conversion10S:
     push {r0-r4,lr}    @ save registers
     mov r2,r1       /* debut zone stockage */
     mov r3,#'+'     /* par defaut le signe est + */
-    cmp r0,#0       @ negative number ? 
+    cmp r0,#0       @ negative number ?
     movlt r3,#'-'   @ yes
     mvnlt r0,r0     @ number inversion
-    addlt r0,#1   
+    addlt r0,#1
     mov r4,#10       @ length area
 1:  @ start loop
     bl divisionpar10
@@ -428,34 +428,34 @@ conversion10S:
     strb r1,[r2,r4]  @ store digit on area
     sub r4,r4,#1      @ previous position
     cmp r0,#0          @ stop if quotient = 0
-    bne 1b	
+    bne 1b
 
-    strb r3,[r2,r4]  @ store signe 
+    strb r3,[r2,r4]  @ store signe
     subs r4,r4,#1    @ previous position
     blt  100f        @ if r4 < 0 -> end
 
-    mov r1,#' '   @ space	
+    mov r1,#' '   @ space
 2:
     strb r1,[r2,r4]  @store byte space
     subs r4,r4,#1    @ previous position
     bge 2b           @ loop if r4 > 0
-100: 
+100:
     pop {r0-r4,lr}   @ restaur registers
-    bx lr  
+    bx lr
 
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
-divisionpar10:	
+divisionpar10:
     /* r0 contains the argument to be divided by 10 */
     push {r2-r4}   /* save registers  */
-    mov r4,r0 
+    mov r4,r0
     ldr r3, .Ls_magic_number_10 /* r1 <- magic_number */
     smull r1, r2, r3, r0   /* r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) */
     mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
@@ -467,7 +467,7 @@ divisionpar10:
     bx lr                  /* leave function */
     .align 4
 .Ls_magic_number_10: .word 0x66666667
-	
+
 
 
 ```
@@ -529,7 +529,7 @@ MsgBox(0,"",$x)
 
 ## AWK
 
-The example shows that the string ''s'' can be incremented, 
+The example shows that the string ''s'' can be incremented,
 but after that still is a string of length 2.
 
 ```awk
@@ -568,7 +568,7 @@ s$ = STR$(VAL(s$) + 1)
 
 === {{header|ZX Spectrum Basic}} ===
 
-The ZX Spectrum needs line numbers and a let statement, 
+The ZX Spectrum needs line numbers and a let statement,
 but the same technique can be used:
 
 
@@ -603,7 +603,7 @@ This assumes the task is about incrementing an ''arbitrary-length'' decimal stri
         PROCinc$(num$)
       UNTIL FALSE
       END
-      
+
       DEF PROCinc$(RETURN n$)
       LOCAL A$, I%
       I% = LEN(n$)
@@ -669,8 +669,8 @@ ri?ish
 ## C
 
 Handling strings of arbitrary sizes:
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -790,8 +790,8 @@ if (oss << i) s = oss.str();
 
 {{works with|C++11}}
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 
 std::string s = "12345";
 s = std::to_string(1+std::stoi(s));
@@ -832,7 +832,7 @@ QString num2 = QString("%1").arg(v1.toInt()+1);
 // MFC
 CString s = "12345";
 int i = _ttoi(s) + 1;
-int i = _tcstoul(s, NULL, 10) + 1; 
+int i = _tcstoul(s, NULL, 10) + 1;
 s.Format("%d", i);
 ```
 
@@ -841,8 +841,8 @@ All of the above solutions only work for numbers <= INT_MAX. The following works
 
 {{works with|g++|4.0.2}}
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 #include <ostream>
 
@@ -885,14 +885,14 @@ s = (int.Parse(s) + 1).ToString();
 
 ```ceylon
 shared void run() {
-	
-	"Increments a numeric string by 1. Returns a float or integer depending on the string. 
+
+	"Increments a numeric string by 1. Returns a float or integer depending on the string.
 	 Returns null if the string isn't a number."
-	function inc(String string) => 
+	function inc(String string) =>
 			if(exists integer = parseInteger(string)) then integer + 1
 			else if(exists float = parseFloat(string)) then float + 1.0
 			else null;
-	
+
 	value a = "1";
 	print(a);
 	value b = inc(a);
@@ -939,12 +939,12 @@ message(STATUS "${string}")
 
 ```cobol
        PROGRAM-ID. increment-num-str.
-       
+
        DATA DIVISION.
        WORKING-STORAGE SECTION.
        01  str                    PIC X(5) VALUE "12345".
        01  num                    REDEFINES str PIC 9(5).
-       
+
        PROCEDURE DIVISION.
            DISPLAY str
            ADD 1 TO num
@@ -959,16 +959,16 @@ The following example also increments a numerical string, although it does not a
 
 ```cobol
        PROGRAM-ID. increment-num-str.
-       
+
        DATA DIVISION.
        WORKING-STORAGE SECTION.
        01  num-str                PIC 9(5) VALUE 12345.
-       
+
        PROCEDURE DIVISION.
            DISPLAY num-str
            ADD 1 TO num-str
            DISPLAY num-str
-       
+
            GOBACK
            .
 ```
@@ -1199,12 +1199,12 @@ ELENA 4.x:
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     var s := "12345";
     s := (s.toInt() + 1).toString();
- 
+
     console.printLine(s)
 }
 ```
@@ -1345,7 +1345,7 @@ This word causes the number whose string value is stored at the given location t
 The word ">string" takes and integer and returns the string representation of that integer. I factored it out of the definitions below to keep the example simpler.
 
 
-```forth>: 
+```forth>:
 string ( d -- addr n )
   dup >r dabs <# #s r> sign #> ;
 
@@ -1395,13 +1395,13 @@ Using 'internal' files you can increment both integer and real strings
 CHARACTER(10) :: intstr = "12345", realstr = "1234.5"
 INTEGER :: i
 REAL :: r
- 
+
 READ(intstr, "(I10)") i        ! Read numeric string into integer i
 i = i + 1                      ! increment i
 WRITE(intstr, "(I10)") i       ! Write i back to string
 
-READ(realstr, "(F10.1)") r 	
-r = r + 1.0				
+READ(realstr, "(F10.1)") r
+r = r + 1.0
 WRITE(realstr, "(F10.1)") r
 ```
 
@@ -1519,7 +1519,7 @@ Output:
 
 ```gambas
 Public Sub Main()
-Dim vInput As Variant = "12345" 
+Dim vInput As Variant = "12345"
 
 Inc vInput
 Print vInput
@@ -1552,7 +1552,7 @@ Increment := function(s)
   n := Length(s);
   carry := true;
   while n > 0 and carry do
-    c := Position(digits, s[n]) - 1; 
+    c := Position(digits, s[n]) - 1;
     if carry then
       c := c + 1;
     fi;
@@ -1943,7 +1943,7 @@ When play begins:
 ## J
 
 
-```j>incrTextNum=: 
+```j>incrTextNum=:
 :&.".
 ```
 
@@ -2327,7 +2327,7 @@ put integer("123")+1
 
 ## LiveCode
 
-LiveCode casts types transparently. When storing a number in a variable, the internal representation is numeric (a double, I think), and if the variable is used as a number, there is no type conversion. 
+LiveCode casts types transparently. When storing a number in a variable, the internal representation is numeric (a double, I think), and if the variable is used as a number, there is no type conversion.
 If the variable is used as a string, the conversion is automatic; likewise if a string variable containing a number is used as a number:
 
 ```LiveCode
@@ -2845,8 +2845,8 @@ Say i
 ```progress
 DEFINE VARIABLE cc AS CHARACTER INITIAL "12345".
 
-MESSAGE 
-   INTEGER( cc ) + 1 
+MESSAGE
+   INTEGER( cc ) + 1
 VIEW-AS ALERT-BOX.
 ```
 
@@ -2873,7 +2873,7 @@ foo(s)=Str(eval(s)+1);
 ## Pascal
 
 {{works with| Free Pascal}} not like [[Increment_a_numerical_string#Delphi | Delphi]] doing two conversion, but increment a string by 1 is much faster.
-Here with different bases upto 10.After this there must be a correction to convert values > '9' to 'A'... 
+Here with different bases upto 10.After this there must be a correction to convert values > '9' to 'A'...
 Only for positive integer strings as high speed counter.
 
 ```pascal
@@ -2976,7 +2976,7 @@ Output:
                  150244043 base  9   0.308 s
                   67108863 base 10   0.305 s
 first 5 digits 09999
-1000000001   1.299 s 
+1000000001   1.299 s
 //4.55 cpu-cycles per digit == 3.5 Ghz [cycle/s]*1.3[s]/1e9[digits]  (IPC = 17/4.55 = 3.73 wow)
 first 5 digits 10000
 
@@ -3069,14 +3069,14 @@ put skip list (s);
 
 Warning:
 With s='999999999'
-the result shown would be 
+the result shown would be
 000000000
-It is advisable to enable the SIZE condition 
+It is advisable to enable the SIZE condition
 (size):
- s = s + 1; 
-which will diagnose this problem: 
+ s = s + 1;
+which will diagnose this problem:
 IBM0342I  ONCODE=0340  The SIZE condition was raised.
-   At offset +000000B9 in procedure with entry IB1 
+   At offset +000000B9 in procedure with entry IB1
 
 ```
 
@@ -3323,9 +3323,9 @@ print [x: "12345" "plus one equals" mold s++ x]
 ## REXX
 
 
-REXX, like many other scripting languages, uses typeless variables. 
+REXX, like many other scripting languages, uses typeless variables.
 
-Typeless variables are stored as variable length character strings and can be treated as 
+Typeless variables are stored as variable length character strings and can be treated as
 
 either a string or a numeric value, depending on the context in which they are used.
 
@@ -3424,7 +3424,7 @@ REXX-ooRexx_4.1.2(MT)
 100000000012
 LOSTDIGITS condition raised in line 30
 sourceline=z=z+1
-condition('D')= 100000000012    
+condition('D')= 100000000012
 
 ```
 
@@ -3519,7 +3519,7 @@ res5: String = 124
 
 
 ## Scheme
- 
+
 
 ```scheme
 (number->string (+ 1 (string->number "1234")))
@@ -3767,7 +3767,7 @@ ENDLOOP
 0
 12346
 10000001
--9999999 
+-9999999
 
 ```
 
@@ -3800,7 +3800,7 @@ Two implementations of what the task says: incrementing a numerical string. (Not
 
 
 ```txt
-$ ./txr -B incnum.txr 
+$ ./txr -B incnum.txr
 a="10000"
 b="1235"
 ```

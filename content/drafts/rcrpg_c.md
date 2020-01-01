@@ -51,8 +51,8 @@ Ladders position and prize room are random.
 {{works with|POSIX}}
 {{libheader|ncurses}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdarg.h>
@@ -89,7 +89,7 @@ enum dir {
 };
 enum dir invdir[DIR_NUM] = { SOUTH, NORTH, WEST, EAST, DOWN, UP };
 
-position_t incdir[DIR_NUM] = { 
+position_t incdir[DIR_NUM] = {
   { 1, 0, 0 },
   { -1, 0, 0 },
   { 0, 1, 0 }, { 0, -1, 0 },
@@ -214,7 +214,7 @@ room_t *create_room(enum objects ob1, ...)
   }
 
   room_i++;
-  
+
   return rooms[room_i-1];
 }
 
@@ -230,7 +230,7 @@ void free_rooms()
 void print_cmd(int y, int x, const char *str)
 {
   int i, l;
-  
+
   l = strlen(str);
   move(y, x);
   for(i=0; i < l; i++) {
@@ -275,7 +275,7 @@ void show_description()
   }
   if ( currentroom->lo == 0 ) {
     addstr("nothing");
-  } else {    
+  } else {
     for(i=0; i < currentroom->lo; i++) {
       addstr(objs[currentroom->ol[i]]);
       if ( i < (currentroom->lo - 1) ) {
@@ -312,7 +312,7 @@ void show_description()
       }
       if ( (i>0) && ( (i % 6) ==  0 ) ) {
 	move(++py, 0);
-      } 
+      }
     }
   }
   py += 2;
@@ -603,7 +603,7 @@ int main()
     addstr("Press a key to quit the game");
     getch();
   }
-  
+
   free_rooms();
   nocbreak(); echo(); endwin();
   return EXIT_SUCCESS;

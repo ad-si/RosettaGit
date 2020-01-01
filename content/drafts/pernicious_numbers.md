@@ -11,9 +11,9 @@ tags = []
 +++
 
 {{task|Prime Numbers}}
-A   [[wp:Pernicious number|pernicious number]]   is a positive integer whose   [[population count]]   is a prime. 
+A   [[wp:Pernicious number|pernicious number]]   is a positive integer whose   [[population count]]   is a prime.
 
-The population count is the number of   ''ones''   in the binary representation of a non-negative integer. 
+The population count is the number of   ''ones''   in the binary representation of a non-negative integer.
 
 
 ;Example
@@ -37,7 +37,7 @@ The population count is the number of   ''ones''   in the binary representation 
 ## 360 Assembly
 
 {{trans|FORTRAN}}
-For maximum compatibility, this program uses only the basic instruction set (S/360) 
+For maximum compatibility, this program uses only the basic instruction set (S/360)
 with 2 ASSIST macros (XDECO,XPRNT).
 
 ```360asm
@@ -89,7 +89,7 @@ ELOOPI2  XPRNT  PG,80              print buffer
          L      R13,4(0,R13)       restore savearea pointer
          LM     R14,R12,12(R13)    restore registers
          XR     R15,R15            return code = 0
-         BR     R14 -------------- end main 
+         BR     R14 -------------- end main
 POPCOUNT CNOP   0,4 -------------- popcount(xx) [R8,R11]
          ST     R14,POPCOUSA       save return address
          ST     R1,XX              store argument
@@ -107,7 +107,7 @@ NOTBTEST LA     R8,1(R8)           ii=ii+1
          B      LOOPII
 ELOOPII  LR     R0,R11             return(rr)
          L      R14,POPCOUSA
-         BR     R14 -------------- end popcount   
+         BR     R14 -------------- end popcount
 ISPRIME  CNOP   0,4 -------------- isprime(number) [R9]
          ST     R14,ISPRIMSA       save return address
          ST     R1,NUMBER          store argument
@@ -143,7 +143,7 @@ ITERJJ   LA     R9,1(R9)           jj=jj+1
          B      LOOPJJ
 ELOOPJJ  L      R0,ISPRIMEX        return(isprimex)
 ISPRIMRT L      R14,ISPRIMSA
-         BR     R14 -------------- end isprime   
+         BR     R14 -------------- end isprime
 BTEST    CNOP   0,4 -------------- btest(word,n) [R0:R3]
          LA     R0,1               ok=1; return(1) if word(n)='1'b
          LR     R3,R2              i=n
@@ -154,7 +154,7 @@ LOOPB    LTR    R3,R3              if i=0
          B      LOOPB
 ELOOPB   STC    R1,BTESTX          x=word
          TM     BTESTX,B'00000001' if bit(word,n)='1'b
-         BO     BTESTRET           
+         BO     BTESTRET
          LA     R0,0               ok=0; return(0) if word(n)='0'b
 BTESTRET BR     R14 -------------- end btest
 XX       DS     F                  paramter of popcount
@@ -183,15 +183,15 @@ XDEC     DS     CL12               edit zone
 ## Ada
 
 
-Uses package Population_Count from [[Population count#Ada]]. 
+Uses package Population_Count from [[Population count#Ada]].
 
 
 ```Ada
 with Ada.Text_IO, Population_Count; use Population_Count;
 
 procedure Pernicious is
-   
-   Prime: array(0 .. 64) of Boolean; 
+
+   Prime: array(0 .. 64) of Boolean;
      -- we are using 64-bit numbers, so the population count is between 0 and 64
    X: Num; use type Num;
    Cnt: Positive;
@@ -207,25 +207,25 @@ begin
 	 end loop;
       end if;
    end loop;
-   
-   -- print first 25 pernicious numbers 
+
+   -- print first 25 pernicious numbers
    X := 1;
    for I in 1 .. 25 loop
-      while not Prime(Pop_Count(X)) loop 
+      while not Prime(Pop_Count(X)) loop
 	 X := X + 1;
       end loop;
       Ada.Text_IO.Put(Num'Image(X));
       X := X + 1;
    end loop;
    Ada.Text_IO.New_Line;
-   
+
    -- print pernicious numbers between  888_888_877 and 888_888_888 (inclusive)
    for Y in Num(888_888_877) .. 888_888_888 loop
       if Prime(Pop_Count(Y)) then
 	 Ada.Text_IO.Put(Num'Image(Y));
       end if;
    end loop;
-   Ada.Text_IO.New_Line;   
+   Ada.Text_IO.New_Line;
 end;
 ```
 
@@ -250,7 +250,7 @@ begin
    ...
 
    Counter := 0;
-   -- count p. numbers below 2**32 
+   -- count p. numbers below 2**32
    for Y in Num(2) .. 2**32 loop
       if Prime(Pop_Count(Y)) then
 	 Counter := Counter + 1;
@@ -265,7 +265,7 @@ end Count_Pernicious;
 
 
 ```txt
-> time ./count_pernicious 
+> time ./count_pernicious
  1421120880
 
 real    0m33.375s
@@ -314,9 +314,9 @@ FOR i FROM 2 WHILE pernicious count < 25 DO
     IF is pernicious( i ) THEN
         # found a pernicious number #
         print( ( whole( i, 0 ), " " ) );
-        pernicious count +:= 1 
+        pernicious count +:= 1
     FI
-OD;             
+OD;
 print( ( newline ) );
 
 # find the pernicious numbers between 888 888 877 and 888 888 888              #
@@ -366,8 +366,8 @@ IsPern(x) {	;https://en.wikipedia.org/wiki/Hamming_weight#Efficient_implementati
 {{Out}}
 
 ```txt
-3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36 
-888888877 888888878 888888880 888888883 888888885 888888886 
+3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36
+888888877 888888878 888888880 888888883 888888885 888888886
 ```
 
 
@@ -472,9 +472,9 @@ v".D}Tx"$,+55_^#!p00:-1g<v  |<
 ## C
 
 
-```c>#include <stdio.h
+```c
+#include <stdio.h>
 
- 
 typedef unsigned uint;
 uint is_pern(uint n)
 {
@@ -482,7 +482,7 @@ uint is_pern(uint n)
         while (n) c >>= 1, n &= (n - 1); // take out lowerest set bit one by one
         return c & 1;
 }
- 
+
 int main(void)
 {
         uint i, c;
@@ -490,12 +490,12 @@ int main(void)
                 if (is_pern(i))
                         printf("%u ", i), ++c;
         putchar('\n');
- 
+
         for (i = 888888877u; i <= 888888888u; i++)
                 if (is_pern(i))
                         printf("%u ", i);
         putchar('\n');
- 
+
         return 0;
 }
 ```
@@ -527,11 +527,11 @@ class pernNumber
 public:
     void displayFirst( unsigned cnt )
     {
-	unsigned pn = 3; 
+	unsigned pn = 3;
 	while( cnt )
 	{
 	    if( isPernNumber( pn ) )
-	    { 
+	    {
 		cout << pn << " "; cnt--;
 	    }
 	    pn++;
@@ -562,7 +562,7 @@ private:
 };
 int main( int argc, char* argv[] )
 {
-    pernNumber p; 
+    pernNumber p;
     p.displayFirst( 25 ); cout << endl;
     p.displayFromTo( 888888877, 888888888 ); cout << endl;
     return 0;
@@ -595,7 +595,7 @@ namespace PerniciousNumbers
             int cnt = 0;
             do
             {
-                if ((n & 1) != 0) 
+                if ((n & 1) != 0)
                 {
                     cnt++;
                 }
@@ -706,7 +706,7 @@ Using <code>primep</code> from [[Primality_by_trial_division#Common_Lisp|Primali
 {{Out}}
 
 ```txt
-3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36 
+3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36
 888888877 888888878 888888880 888888883 888888885 888888886
 ```
 
@@ -734,7 +734,7 @@ void main() {
 
 Where <code>0xA08A28AC == 0b_1010_0000__1000_1010__0010_1000__1010_1100</code>, that is a bit set equivalent to the prime numbers [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31] of the range (0, 31].
 
-This high-level code is fast enough to allow to count all the 
+This high-level code is fast enough to allow to count all the
 1_421_120_880 Pernicious numbers in the unsigned 32 bit range in less than 48 seconds with this line:
 
 ```d
@@ -905,8 +905,8 @@ end
 defmodule PerniciousNumbers do
   def take(n) do
     primes = SieveofEratosthenes.init(100)
-    Stream.iterate(1,&(&1+1)) 
-      |> Stream.filter(&(pernicious?(&1,primes))) 
+    Stream.iterate(1,&(&1+1))
+      |> Stream.filter(&(pernicious?(&1,primes)))
       |> Enum.take(n)
       |> IO.inspect
   end
@@ -914,18 +914,18 @@ defmodule PerniciousNumbers do
   def between(a..b) do
     primes = SieveofEratosthenes.init(100)
     a..b
-      |> Stream.filter(&(pernicious?(&1,primes))) 
+      |> Stream.filter(&(pernicious?(&1,primes)))
       |> Enum.to_list
       |> IO.inspect
   end
-  
+
   def ones(num) do
-     num 
-      |> Integer.to_string(2) 
-      |> String.codepoints 
+     num
+      |> Integer.to_string(2)
+      |> String.codepoints
       |> Enum.count(fn n -> n == "1" end)
   end
-  
+
    def pernicious?(n,primes), do: Enum.member?(primes,ones(n))
 end
 
@@ -959,7 +959,7 @@ let bitcount (n : int) =
     (count8 * 0x01010101) >>> 24
 
 //Modified from other examples to actually state the 1 is not prime
-let isPrime n = 
+let isPrime n =
     if n < 2 then
         false
     else
@@ -1027,11 +1027,11 @@ program pernicious
     end if
     i = i + 1
   end do
-  
+
   write(*,*)
   do i = 888888877, 888888888
     if(isprime(popcnt(i))) write(*, "(i0, 1x)", advance = "no") i
-  end do 
+  end do
 
 contains
 
@@ -1039,19 +1039,19 @@ function popcnt(x)
   integer :: popcnt
   integer, intent(in) :: x
   integer :: i
- 
+
   popcnt = 0
   do i = 0, 31
     if(btest(x, i)) popcnt = popcnt + 1
   end do
- 
+
 end function
 
 function isprime(number)
   logical :: isprime
   integer, intent(in) :: number
   integer :: i
- 
+
   if(number == 2) then
     isprime = .true.
   else if(number < 2 .or. mod(number,2) == 0) then
@@ -1097,10 +1097,10 @@ Function SumBinaryDigits(number As Integer) As Integer
 End Function
 
 Function IsPrime(number As Integer) As Boolean
-  If number <= 1 Then 
-    Return false 
+  If number <= 1 Then
+    Return false
   ElseIf number <= 3 Then
-    Return true 
+    Return true
   ElseIf number Mod 2 = 0 OrElse number Mod 3 = 0 Then
     Return false
   End If
@@ -1130,7 +1130,7 @@ Do
   End If
   n += 1
 Loop Until count = 25
-  
+
 Print : Print
 Print "The pernicious numbers between 888,888,877 and 888,888,888 inclusive are :"
 Print
@@ -1204,8 +1204,8 @@ func main() {
 
 ```txt
 
-3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36 
-888888877 888888878 888888880 888888883 888888885 888888886 
+3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36
+888888877 888888878 888888880 888888883 888888885 888888886
 
 ```
 
@@ -1247,7 +1247,7 @@ if(e in primes){printf(a+" ");return 1;}
 
 ```txt
 
-3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36 
+3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36
 888888877 888888878 888888880 888888883 888888885 888888886
 
 ```
@@ -1270,9 +1270,9 @@ isPrime number = divisors number == [1, number]
       divisors :: Integer -> [Integer]
       divisors number = [ m | m <- [1 .. number] , number `mod` m == 0 ]
 
-toBinary :: Integer -> [Integer]      
+toBinary :: Integer -> [Integer]
 toBinary num = reverse $ map ( `mod` 2 ) ( takeWhile ( /= 0 ) $ iterate ( `div` 2 ) num )
-  
+
 solution1 = take 25 $ filter isPernicious [1 ..]
 solution2 = filter isPernicious [888888877 .. 888888888]
 ```
@@ -1347,8 +1347,8 @@ end
 ```txt
 
 ->pn
-3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36 
-888888877 888888878 888888880 888888883 888888885 888888886 
+3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36
+888888877 888888878 888888880 888888883 888888885 888888886
 ->
 
 ```
@@ -1405,9 +1405,9 @@ public class Pernicious{
                 n++;
             }
         }
-        
+
         System.out.println();
-        
+
         for(long i = 888888877; i <= 888888888; i++){
             if(isPrime(popCount(i))) System.out.print(i + " ");
         }
@@ -1418,8 +1418,8 @@ public class Pernicious{
 {{out}}
 
 ```txt
-3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36 
-888888877 888888878 888888880 888888883 888888885 888888886 
+3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36
+888888877 888888878 888888880 888888883 888888885 888888886
 ```
 
 
@@ -1440,13 +1440,13 @@ def is_prime:
            (true; if . then ($in % ((2 * $i) + 1)) > 0 else false end)
   end;
 
-def popcount: 
+def popcount:
   def bin: recurse( if . == 0 then empty else ./2 | floor end ) % 2;
   [bin] | add;
 
 def is_pernicious: popcount | is_prime;
 
-# Emit a stream of "count" pernicious numbers greater than 
+# Emit a stream of "count" pernicious numbers greater than
 # or equal to m:
 def pernicious(m; count):
    if count > 0 then
@@ -1461,7 +1461,7 @@ def task:
   [ pernicious(1;25) ],
 
   # display all pernicious numbers between
-  #     888,888,877 and 888,888,888 (inclusive). 
+  #     888,888,877 and 888,888,888 (inclusive).
   [ range(888888877; 888888889) | select( is_pernicious ) ]
 ;
 
@@ -1494,7 +1494,7 @@ end
 perniciouses(a::Integer, b::Integer) = filter(ispernicious, a:b)
 
 println("First 25 pernicious numbers: ", join(perniciouses(25), ", "))
-println("Perniciouses in [888888877, 888888888]: ", join(perniciouses(888888877, 888888888), ", ")) 
+println("Perniciouses in [888888877, 888888888]: ", join(perniciouses(888888877, 888888888), ", "))
 ```
 
 
@@ -1514,7 +1514,7 @@ Perniciouses in [888888877, 888888888]: 888888877, 888888878, 888888880, 8888888
 //  version 1.0.5-2
 
 fun isPrime(n: Int): Boolean {
-    if (n < 2) return false 
+    if (n < 2) return false
     if (n % 2 == 0) return n == 2
     if (n % 3 == 0) return n == 3
     var d : Int = 5
@@ -1556,7 +1556,7 @@ fun main(args: Array<String>) {
     println("The pernicious numbers between 888,888,877 and 888,888,888 inclusive are:\n")
     for (i in 888888877..888888888) {
         if (isPernicious(i)) print("$i ")
-    }   
+    }
 }
 ```
 
@@ -1615,7 +1615,7 @@ end
 -- Print pernicious numbers in range if two arguments provided, or
 function pernicious (x, y) -- the first 'x' if only one argument.
     if y then
-        for n = x, y do 
+        for n = x, y do
             if isPrime(popCount(n)) then io.write(n .. " ") end
         end
     else
@@ -1649,32 +1649,32 @@ pernicious(888888877, 888888888)
 
 
 ```Maple
-ispernicious := proc(n::posint) 
-  return evalb(isprime(rhs(Statistics:-Tally(StringTools:-Explode(convert(convert(n, binary), string)))[-1]))); 
+ispernicious := proc(n::posint)
+  return evalb(isprime(rhs(Statistics:-Tally(StringTools:-Explode(convert(convert(n, binary), string)))[-1])));
 end proc;
 
-print_pernicious := proc(n::posint) 
+print_pernicious := proc(n::posint)
 local k, count, list_num;
 count := 0;
 list_num := [];
-for k while count < n do 
-    if ispernicious(k) then 
-       count := count + 1; 
-       list_num := [op(list_num), k]; 
-    end if; 
-end do; 
-return list_num; 
+for k while count < n do
+    if ispernicious(k) then
+       count := count + 1;
+       list_num := [op(list_num), k];
+    end if;
+end do;
+return list_num;
 end proc:
 
-range_pernicious := proc(n::posint, m::posint) 
-local k, list_num; 
-list_num := []; 
-for k from n to m do 
+range_pernicious := proc(n::posint, m::posint)
+local k, list_num;
+list_num := [];
+for k from n to m do
     if ispernicious(k) then
        list_num := [op(list_num), k];
-    end if; 
-end do; 
-return list_num; 
+    end if;
+end do;
+return list_num;
 end proc:
 ```
 
@@ -1697,8 +1697,8 @@ perniciousQ[n_Integer] := popcount[n] // PrimeQ
 perniciouscount = 0;
 perniciouslist = {};
 i = 0;
-While[perniciouscount < 25,  
- If[perniciousQ[i], AppendTo[perniciouslist, i]; perniciouscount++];  
+While[perniciouscount < 25,
+ If[perniciousQ[i], AppendTo[perniciouslist, i]; perniciouscount++];
  i++]
 Print["first 25 pernicious numbers"]
 perniciouslist
@@ -1890,7 +1890,7 @@ fun pernisc(a) type integer->integer
 ## Pascal
 
 {{works with|Free Pascal}}
-Inspired by [[Pernicious numbers#Ada|Ada]], using array of primes to simply add.An if-then takes to long. 
+Inspired by [[Pernicious numbers#Ada|Ada]], using array of primes to simply add.An if-then takes to long.
 
 Added easy counting of pernicious numbers for full Bit ranges like 32-Bit
 
@@ -2178,8 +2178,8 @@ end pern;
 Results:
 
 ```txt
-3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36 
-888888877 888888878 888888880 888888883 888888885 888888886 888888889 888888890 888888892 888888897 888888898 888888900 
+3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36
+888888877 888888878 888888880 888888883 888888885 888888886 888888889 888888890 888888892 888888897 888888898 888888900
 
 ```
 
@@ -2191,11 +2191,11 @@ Results:
 ```PowerShell
 
 function pop-count($n) {
-    (([Convert]::ToString($n, 2)).toCharArray() | where {$_ -eq '1'}).count 
+    (([Convert]::ToString($n, 2)).toCharArray() | where {$_ -eq '1'}).count
 }
 
 function isPrime ($n) {
-    if ($n -eq 1) {$false} 
+    if ($n -eq 1) {$false}
     elseif ($n -eq 2) {$true}
     elseif ($n -eq 3) {$true}
     else{
@@ -2297,7 +2297,7 @@ $start, $end = 0, 999999
 $range1 = $start..$end | Select-PerniciousNumber | Select-Object -First 25
 
 "First {0} pernicious numbers:`n{1}`n" -f $range1.Count, ($range1 -join ", ")
- 
+
 $start, $end = 888888877, 888888888
 $range2 = $start..$end | Select-PerniciousNumber
 
@@ -2337,10 +2337,10 @@ Procedure.i SumBinaryDigits(Number)
 EndProcedure
 
 Procedure.i IsPrime(Number)
-  If Number <= 1 
+  If Number <= 1
     ProcedureReturn #False
-  ElseIf Number <= 3 
-    ProcedureReturn #True 
+  ElseIf Number <= 3
+    ProcedureReturn #True
   ElseIf Number % 2 = 0 Or Number % 3 = 0
     ProcedureReturn #False
   EndIf
@@ -2417,7 +2417,7 @@ The pernicious numbers between 888,888,877 and 888,888,888 inclusive are :
         if popcount(i) in primes: p.append(i)
         i += 1
 
-        
+
 >>> p
 [3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 24, 25, 26, 28, 31, 33, 34, 35, 36]
 >>> p, i = [], 888888877
@@ -2425,10 +2425,10 @@ The pernicious numbers between 888,888,877 and 888,888,888 inclusive are :
         if popcount(i) in primes: p.append(i)
         i += 1
 
-        
+
 >>> p
 [888888877, 888888878, 888888880, 888888883, 888888885, 888888886]
->>> 
+>>>
 ```
 
 
@@ -2450,7 +2450,7 @@ The pernicious numbers between 888,888,877 and 888,888,888 inclusive are :
   (string-join (for/list ((v (in-values*-sequence seq))) (~a ((if (list? v) car values) v))) ", "))
 
 (dnl
- "Task requirements:"     
+ "Task requirements:"
  "display the first 25 pernicious numbers."
  (show-sequence (in-parallel (sequence-filter pernicious? (in-naturals 1)) (in-range 25)))
  "display all pernicious numbers between 888,888,877 and 888,888,888 (inclusive)."
@@ -2579,10 +2579,10 @@ for n=1 to 50
     ok
 next
 
-func decimaltobase(nr, base) 
+func decimaltobase(nr, base)
      binary = 0
-     i = 1  
-     while(nr != 0) 
+     i = 1
+     while(nr != 0)
            remainder = nr % base
            nr = floor(nr/base)
            binary= binary + (remainder*i)
@@ -2605,7 +2605,7 @@ Output:
 ```txt
 
 The first 25 pernicious numbers:
-3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36 
+3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36
 
 ```
 
@@ -2618,11 +2618,11 @@ The first 25 pernicious numbers:
 require "prime"
 
 class Integer
- 
+
   def popcount
     to_s(2).count("1")   #Ruby 2.4:  digits(2).count(1)
   end
- 
+
   def pernicious?
     popcount.prime?
   end
@@ -2652,7 +2652,7 @@ define is_prime(n)
    if ((n & 1) == 0) return(0);
 
    variable mx = int(sqrt(n)), i;
-   
+
    _for i (3, mx, 1) {
      if ((n mod i) == 0)
        return(0);
@@ -2687,7 +2687,7 @@ print(strjoin(list_to_array(plist), " "));
 plist = {};
 _for n (888888877, 888888888, 1) {
    if (is_pernicious(n))
-     list_append(plist, string(n));     
+     list_append(plist, string(n));
 }
 print(strjoin(list_to_array(plist), " "));
 
@@ -2764,8 +2764,8 @@ const proc: main is func
 
 ```txt
 
-3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36 
-888888877 888888878 888888880 888888883 888888885 888888886 
+3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36
+888888877 888888878 888888880 888888883 888888885 888888886
 
 ```
 
@@ -2818,7 +2818,7 @@ say p.join(' ');
 ```symsyn
 
 
-primes : 0b0010100000100000100010100010000010100000100010100010100010101100 
+primes : 0b0010100000100000100010100010000010100000100010100010100010101100
 
 | the first 25 pernicious numbers
 
@@ -2827,12 +2827,12 @@ primes : 0b0010100000100000100010100010000010100000100010100010100010101100
        num_pn                            | set to zero
        2 n                               | start at 2
        5 hi_bit
-       if num_pn LT 25                     
+       if num_pn LT 25
           call popcount                  | count ones
           if primes bit pop_cnt          | if pop_cnt bit of bit vector primes is one
              + num_pn                    | inc number of pernicious numbers
              ~ n $S                      | convert to decimal string
-             + ' ' $S                    | pad a space 
+             + ' ' $S                    | pad a space
              + $S $T                     | add to string $T
           endif
           + pop_cnt                      | next number (odd) has one more bit than previous (even)
@@ -2846,7 +2846,7 @@ primes : 0b0010100000100000100010100010000010100000100010100010100010101100
           + n
           goif                           | go back to if
        endif
-       $T []                             | display numbers 
+       $T []                             | display numbers
 
 
 
@@ -2856,12 +2856,12 @@ primes : 0b0010100000100000100010100010000010100000100010100010100010101100
        num_pn                            | set to zero
        888888876 n                       | start at 888888876
        29 hi_bit
-       if n LE 888888888                     
+       if n LE 888888888
           call popcount                  | count ones
           if primes bit pop_cnt          | if pop_cnt bit of bit vector primes is one
              + num_pn                    | inc number of pernicious numbers
              ~ n $S                      | convert to decimal string
-             + ' ' $S                    | pad a space 
+             + ' ' $S                    | pad a space
              + $S $T                     | add to string $T
           endif
           + pop_cnt                      | next number (odd) has one more bit than previous (even)
@@ -2875,7 +2875,7 @@ primes : 0b0010100000100000100010100010000010100000100010100010100010101100
           + n
           goif                           | go back to if
        endif
-       $T []                             | display numbers 
+       $T []                             | display numbers
 
        stop
 
@@ -2901,13 +2901,13 @@ popcount                                 | count ones in bit field
 
 
 ```txt
-            
-3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36 37 
-888888877 888888878 888888880 888888883 888888885 888888886 888888889 
+
+3 5 6 7 9 10 11 12 13 14 17 18 19 20 21 22 24 25 26 28 31 33 34 35 36 37
+888888877 888888878 888888880 888888883 888888885 888888886 888888889
 
 ```
 
-  
+
 
 
 ## Tcl
@@ -2971,13 +2971,13 @@ Function is_prime(n As Integer) As Boolean
     Next i
     is_prime = True
 End Function
- 
+
 Function pernicious(n As Long)
     Dim tmp As Integer
     tmp = population_count(n)
     pernicious = is_prime(tmp)
 End Function
- 
+
 Public Sub main()
     Dim count As Integer
     Dim n As Long: n = 1
@@ -2999,8 +2999,8 @@ End Sub
 {{out}}
 
 ```txt
- 3  5  6  7  9  10  11  12  13  14  17  18  19  20  21  22  24  25  26  28  31  33  34  35  36 
- 888888877  888888878  888888880  888888883  888888885  888888886 
+ 3  5  6  7  9  10  11  12  13  14  17  18  19  20  21  22  24  25  26  28  31  33  34  35  36
+ 888888877  888888878  888888880  888888883  888888885  888888886
 ```
 
 
@@ -3016,7 +3016,7 @@ Function IsPernicious(n)
 	For h = 1 To Len(bin_num)
 		sum = sum + CInt(Mid(bin_num,h,1))
 	Next
-	If IsPrime(sum) Then 
+	If IsPrime(sum) Then
 		IsPernicious = True
 	End If
 End Function
@@ -3080,10 +3080,10 @@ WScript.StdOut.WriteLine
 ```txt
 
 First 25 Pernicious Numbers:
-3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 24, 25, 26, 28, 31, 33, 34, 35, 36, 
+3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 24, 25, 26, 28, 31, 33, 34, 35, 36,
 
 Pernicious Numbers between 888,888,877 to 888,888,888 (inclusive):
-888888877, 888888878, 888888880, 888888883, 888888885, 888888886, 
+888888877, 888888878, 888888880, 888888883, 888888885, 888888886,
 
 ```
 

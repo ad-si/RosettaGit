@@ -115,7 +115,7 @@ procedure Test_Bit_Streams is
                   1,0,0,0,0,0,1,  -- A
                   1,0,0,0,0,1,1,  -- C
                   1,0,1,0,1,0,1,  -- U
-                  1,0,1,0,0,1,1   -- S 	
+                  1,0,1,0,0,1,1   -- S
                );
    Data : Bit_Array (ABACUS'Range);
 begin
@@ -156,10 +156,10 @@ OP << = (BITS bits, INT shift)BITS: bits SHL shift;
 OP >> = (BITS bits, INT shift)BITS: bits SHR shift;
 
 # define nibble opertors for left/right shift and append #
-OP << = (NIBBLE nibble, INT shift)NIBBLE: 
+OP << = (NIBBLE nibble, INT shift)NIBBLE:
   (width OF nibble + shift, bits OF nibble << shift);
 
-OP >> = (NIBBLE nibble, INT shift)NIBBLE: 
+OP >> = (NIBBLE nibble, INT shift)NIBBLE:
   (width OF nibble - shift, bits OF nibble >> shift);
 
 OP +:= = (REF NIBBLE lhs, NIBBLE rhs)REF NIBBLE: (
@@ -173,12 +173,12 @@ MODE GENNIBBLE = PROC(YIELDNIBBLE)VOID;
 
 PROC gen resize nibble = (
   INT out width,
-  GENNIBBLE gen nibble, 
+  GENNIBBLE gen nibble,
   YIELDNIBBLE yield
 )VOID:(
      NIBBLE buf := (0, 2r0), out;
      BITS out mask := BIN(ABS(2r1 << out width)-1);
-# FOR NIBBLE nibble IN # gen nibble( # ) DO # 
+# FOR NIBBLE nibble IN # gen nibble( # ) DO #
 ##   (NIBBLE in nibble)VOID:(
     buf +:= in nibble;
     WHILE width OF buf >= out width DO
@@ -191,13 +191,13 @@ PROC gen resize nibble = (
 
 # Routines for joining strings and generating a stream of nibbles #
 
-PROC gen nibble from 7bit chars = (STRING string, YIELDNIBBLE yield)VOID: 
+PROC gen nibble from 7bit chars = (STRING string, YIELDNIBBLE yield)VOID:
   FOR key FROM LWB string TO UPB string DO yield((7, BIN ABS string[key])) OD;
 
 PROC gen nibble from 8bit chars = (STRING string, YIELDNIBBLE yield)VOID:
   FOR key FROM LWB string TO UPB string DO yield((8,BIN ABS string[key])) OD;
 
-PROC gen join = ([]STRING strings, STRING new line, YIELDNIBBLE yield)VOID: 
+PROC gen join = ([]STRING strings, STRING new line, YIELDNIBBLE yield)VOID:
    FOR key FROM LWB strings TO UPB strings DO
      gen nibble from 8bit chars(strings[key]+new line, yield)
    OD;
@@ -208,7 +208,7 @@ PROC gen join = ([]STRING strings, STRING new line, YIELDNIBBLE yield)VOID:
   "`!""#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_"[@0];
 
 [0:255]BITS decode uue 6bit; # CHAR64 => [0:63] #
-  FOR key FROM LWB encode uue 6bit TO UPB encode uue 6bit DO 
+  FOR key FROM LWB encode uue 6bit TO UPB encode uue 6bit DO
     decode uue 6bit[ABS encode uue 6bit[key]] := BIN key
   OD;
   decode uue 6bit[ABS " "] := 2r0; # extra #
@@ -223,8 +223,8 @@ PROC example uudecode nibble stream = VOID:(
     ";V1B>64@""@``"
   );
 
-  PROC gen join hello world = (YIELDNIBBLE yield)VOID: 
-  # FOR NIBBLE nibble IN # gen join(encoded uue 6bit hello world, "", # ) DO # 
+  PROC gen join hello world = (YIELDNIBBLE yield)VOID:
+  # FOR NIBBLE nibble IN # gen join(encoded uue 6bit hello world, "", # ) DO #
   ##   (NIBBLE nibble)VOID:(
     yield((6, decode uue 6bit[ABS bits OF nibble]))
   # OD # ));
@@ -246,7 +246,7 @@ PROC example uuencode nibble stream = VOID: (
     "Goodbye, goodbye, goodbye "
   );
 
-  PROC gen join hello world = (YIELDNIBBLE yield)VOID: 
+  PROC gen join hello world = (YIELDNIBBLE yield)VOID:
     gen join(hello world, REPR ABS 8r12, yield); # 8r12 = ASCII new line #
 
   print((new line, "Encode 8bit CHARs into uue 6bit NIBBLEs:", new line));
@@ -290,14 +290,14 @@ hello, world
 Hello, world!
 Goodbye, cruel world
 I'm leaving you today
-Goodbye, goodbye, goodbye 
+Goodbye, goodbye, goodbye
 
 Encode 8bit CHARs into uue 6bit NIBBLEs:
 :&5L;&\L('=O<FQD"DAE;&QO+"!W;W)L9"$*1V]O9&)Y92P@8W)U96P@=V]R
 ;&0*22=M(&QE879I;F<@>6]U('1O9&%Y"D=O;V1B>64L(&=O;V1B>64L(&=O
 ;V1B>64@"
 
-Convert 7bit ASCII CHARS to a 1bit stream: 
+Convert 7bit ASCII CHARS to a 1bit stream:
 STRING & ABACUS => 101001110101001010010100100110011101000111010000001001100100000100000110000101000001100001110101011010011
 
 ```
@@ -445,7 +445,7 @@ BinRead(file, ByRef data, n=0, offset=0)
 ```bbcbasic
       file$ = @tmp$ + "bitwise.tmp"
       test$ = "Hello, world!"
-      
+
       REM Write to file, 7 bits per character:
       file% = OPENOUT(file$)
       FOR i% = 1 TO LEN(test$)
@@ -453,7 +453,7 @@ BinRead(file, ByRef data, n=0, offset=0)
       NEXT
       PROCwritebits(file%, 0, 0)
       CLOSE #file%
-      
+
       REM Read from file, 7 bits per character:
       file% = OPENIN(file$)
       REPEAT
@@ -463,7 +463,7 @@ BinRead(file, ByRef data, n=0, offset=0)
       PRINT
       CLOSE #file%
       END
-      
+
       REM Write n% bits from b% to file f% (n% = 0 to flush):
       DEF PROCwritebits(f%, b%, n%)
       PRIVATE a%, c%
@@ -475,7 +475,7 @@ BinRead(file, ByRef data, n=0, offset=0)
         IF b% AND 1 << n% THEN a% OR= 1 << (8 - c%)
       ENDWHILE
       ENDPROC
-      
+
       REM Read n% bits from file f%:
       DEF FNreadbits(f%, n%)
       PRIVATE a%, c% : LOCAL v%
@@ -502,8 +502,8 @@ Hello, world!
 
 MSB in a byte is considered the "first" bit.  Read and write methods somewhat mimic fread and fwrite, though there's no fflush-like function because flushing bits into a file is ill-defined (this whole task is pretty ill-defined).  Only way to make sure all bits are written to the file is by detaching the bit filter, just like how closing a file flushes out buffer. There's no limit on read/write size, but caller should ensure the buffer is large enough.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
@@ -637,9 +637,9 @@ Common Lisp already has tonnes of bitwise-I/O functionality (remember, folks hav
 (defun byte->bit-vector (byte byte-bits)
   "Convert one BYTE into a bit-vector of BYTE-BITS length."
   (let ((vector (make-array byte-bits :element-type 'bit))
-        (bit-value 1)) 
+        (bit-value 1))
     (declare (optimize (speed 3)))
-    (dotimes (bit-index byte-bits vector) 
+    (dotimes (bit-index byte-bits vector)
       (setf (aref vector bit-index)
             (if (plusp (logand byte (the (unsigned-byte 8) bit-value)))
                 1 0))
@@ -650,7 +650,7 @@ Common Lisp already has tonnes of bitwise-I/O functionality (remember, folks hav
 
 For  optimization's sake,  I  limit the  size of  the  vector to  (FLOOR
 MOST-POSITIVE-FIXNUM  BYTE-BITS), which  is somewhat  ridiculously long,
-but allows the compiler to trust that indices will fit in a FIXNUM." 
+but allows the compiler to trust that indices will fit in a FIXNUM."
   (reduce (lambda (a b) (concatenate 'bit-vector a b))
           (map 'list (lambda (byte) (byte->bit-vector byte byte-bits)) byte-vector)))
 
@@ -665,7 +665,7 @@ but allows the compiler to trust that indices will fit in a FIXNUM."
           "STRING must contain only ASCII (7-bit) characters;~%“~a”
 …contains non-ASCII character~p~:*: ~{~% • ~c ~:*— ~@c ~}"
           string (coerce (remove-duplicates (remove-if #'ascii-char-p string)
-                                            :test #'char=) 
+                                            :test #'char=)
                          'list)))
 
 (defun ascii-string->bit-vector (string)
@@ -676,7 +676,7 @@ This assumes \(as is now, in  2017, I believe universally the case) that
 the local character code system \(as for `CHAR-CODE' and `CODE-CHAR') is
 Unicode, or at least, a superset of ASCII \(eg: ISO-8859-*)
 "
-  (check-type string simple-string) 
+  (check-type string simple-string)
   (assert-ascii-string string)
   (bytes->bit-vector (map 'vector #'char-code string) 7))
 
@@ -689,9 +689,9 @@ Unicode, or at least, a superset of ASCII \(eg: ISO-8859-*)
   (declare (optimize (speed 3)))
   (check-type vector bit-vector)
   (assert (<= (length vector) 8))
-  (reduce (lambda (x y) 
+  (reduce (lambda (x y)
             (logior (the (unsigned-byte 8)
-                         (ash (the (unsigned-byte 8) x) 1)) 
+                         (ash (the (unsigned-byte 8) x) 1))
                     (the bit y)))
           (reverse vector) :initial-value 0))
 
@@ -718,9 +718,9 @@ If TRUNCATEP, then discard any trailing bits."
                      8))
 
 (defun unpack-ascii-from-8-bits (byte-vector)
-  "Convert an 8-bit BYTE-VECTOR into an array of (unpacked) 7-bit bytes." 
+  "Convert an 8-bit BYTE-VECTOR into an array of (unpacked) 7-bit bytes."
   (map 'string #'code-char
-       (bit-vector->bytes 
+       (bit-vector->bytes
         (pad-bit-vector-to-8 (bytes->bit-vector byte-vector 8))
         7
         :truncatep t)))
@@ -731,11 +731,11 @@ with the contents of that string packed into 8-bit bytes."
   (format *trace-output* "~&Writing string to ~a in packed 7→8 bits…~%“~a”"
           pathname string)
   (assert-ascii-string string)
-  (with-open-file (output pathname 
+  (with-open-file (output pathname
                           :direction :output
                           :if-exists :supersede
                           :element-type '(unsigned-byte 8))
-    (write-sequence (ascii-pack-to-8-bit string) output) 
+    (write-sequence (ascii-pack-to-8-bit string) output)
     (finish-output output)
     (let ((expected-length (ceiling (* (length string) 7) 8)))
       (assert (= (file-length output) expected-length) ()
@@ -790,8 +790,8 @@ Writing string to /tmp/demo.bin in packed 7→8 bits…
 
 STRING must contain only ASCII (7-bit) characters;
 “It doesn't, however, do UTF-7. So, no ☠ or 🙋”
-…contains non-ASCII characters: 
- • ☠ — #\SKULL_AND_CROSSBONES 
+…contains non-ASCII characters:
+ • ☠ — #\SKULL_AND_CROSSBONES
  • 🙋 — #\HAPPY_PERSON_RAISING_ONE_HAND
    [Condition of type SIMPLE-ERROR]
 
@@ -1237,7 +1237,7 @@ const (
 	MSB
 )
 
-// 
+//
 ### = Writing / Encoding =
 
 
@@ -1344,7 +1344,7 @@ func NewWriter(w io.Writer, order Order) *Writer {
 	return bw
 }
 
-// 
+//
 ### = Reading / Decoding =
 
 
@@ -1517,7 +1517,7 @@ int2bin = unfoldr(\x -> if x==0 then Nothing
                           else Just (uncurry(flip(,)) (divMod x 2)))
 
 bin2int :: [Int] -> Int
-bin2int = foldr ((.(2 *)).(+)) 0 
+bin2int = foldr ((.(2 *)).(+)) 0
 
 bitReader = map (chr.bin2int). takeWhile(not.null). unfoldr(Just. splitAt 7)
   . (take =<< (7 *) . (`div` 7) . length)
@@ -1647,7 +1647,7 @@ println("Compressed to length $(length(outs.data)) on line below:\n", String(out
 println("Decompressed string: ", String(newouts.data))
 
 ```
- {{out}} 
+ {{out}}
 ```txt
 
 Initial string of length 88: These bit oriented I/O functions can be used to implement compressors and decompressors.
@@ -1672,7 +1672,7 @@ class BitFilter(val f: File, var accu: Int = 0, var bits: Int = 0) {
 
     private val bw = f.bufferedWriter()
     private val br = f.bufferedReader()
- 
+
     fun write(buf: ByteArray, start: Int, _nBits: Int, _shift: Int) {
         var nBits = _nBits
         var index = start + _shift / 8
@@ -1938,7 +1938,7 @@ proc flush * (stream: ref BitWriter) =
   if stream.nRemain < 8:
     stream.bits = stream.bits shl stream.nRemain
     stream.flushBits
- 
+
 proc newBitReader * (file: File) : ref BitReader =
   result = new BitReader
   result.file = file
@@ -1961,7 +1961,7 @@ proc read * (stream: ref BitReader, nBits: int) : uint8 =
 
     stream.bits = stream.bits shl 1
     stream.nRemain.dec(1)
-    
+
 
 when isMainModule:
   var
@@ -2092,14 +2092,14 @@ while( read(*STDIN, $c, 1) > 0 ) {
 flush_bits(*STDOUT, $buf);
 ```
 
-Expanding each seven bits to fit a byte (padding the ''eight'' most significant bit with 0):  
+Expanding each seven bits to fit a byte (padding the ''eight'' most significant bit with 0):
 
 ```perl
 my $buf = "";
 my $v;
 while(1) {
     ( $v, $buf ) = read_bits(*STDIN, $buf, 7);
-    last if ($buf < 0); 
+    last if ($buf < 0);
     print pack("C1", $v);
 }
 ```
@@ -2209,7 +2209,7 @@ function as_hexb(string s, fmt="%02x ")
     string res = ""
     for i=1 to length(s) do
         res &= sprintf(fmt,s[i])
-    end for 
+    end for
     return trim(res)
 end function
 
@@ -2406,7 +2406,7 @@ Procedure flushBits(fileID)
       WriteByte(fileID, fileDataBits()\outputByte << (#BitsPerByte - fileDataBits()\bitsToWrite))
       fileDataBits()\bitsToWrite = 0
       fileDataBits()\outputByte = 0
-    EndIf 
+    EndIf
     DeleteMapElement(fileDataBits())
   EndIf
 EndProcedure
@@ -2417,15 +2417,15 @@ Procedure writeBits(fileID, Value.i, bitCount)
     *fileData = AddMapElement(fileDataBits(), Str(fileID))
     If Not *fileData: End: EndIf ;simple error check for lack of memory
   EndIf
-  
+
   Value << (#BitsPerInteger - bitCount) ;shift value so it's first bit (HSB) is in the highest position
   While bitCount > 0
     If bitCount > #BitsPerByte - *fileData\bitsToWrite
       bitGroupSize = #BitsPerByte - *fileData\bitsToWrite
     Else
       bitGroupSize = bitCount
-    EndIf 
-    
+    EndIf
+
     *fileData\outputByte << bitGroupSize
     *fileData\outputByte + (Value >> (#BitsPerInteger - bitGroupSize)) & fileBitMask(bitGroupSize)
     Value << bitGroupSize
@@ -2434,7 +2434,7 @@ Procedure writeBits(fileID, Value.i, bitCount)
       WriteByte(fileID, *fileData\outputByte)
       *fileData\bitsToWrite = 0
       *fileData\outputByte = 0
-    EndIf 
+    EndIf
     bitCount - bitGroupSize
   Wend
 EndProcedure
@@ -2445,7 +2445,7 @@ Procedure.i readBits(fileID, bitCount)
     *fileData = AddMapElement(fileDataBits(), Str(fileID))
     If Not *fileData: End: EndIf ;simple error check for lack of memory
   EndIf
-  
+
   Protected Value.i, bitGroupSize
   While bitCount > 0
     If *fileData\bitsToRead = 0
@@ -2455,21 +2455,21 @@ Procedure.i readBits(fileID, bitCount)
       Else
         flushBits(fileID)
         Break ;simple error check aborts if nothing left to read
-      EndIf 
+      EndIf
     EndIf
 
     If bitCount > *fileData\bitsToRead
       bitGroupSize = *fileData\bitsToRead
-    Else 
+    Else
       bitGroupSize = bitCount
-    EndIf 
+    EndIf
     Value << bitGroupSize
     Value + (*fileData\inputByte >> (#BitsPerByte - bitGroupSize)) & fileBitMask(bitGroupSize) ;shift last bit being read in byte to the lowest position
     *fileData\inputByte << bitGroupSize
     *fileData\bitsToRead - bitGroupSize
     bitCount - bitGroupSize
-  Wend 
-  ProcedureReturn Value 
+  Wend
+  ProcedureReturn Value
 EndProcedure
 
 ;test
@@ -2478,11 +2478,11 @@ testWriteString = "This is an ascii string that will be crunched, written, read 
 fileNum = CreateFile(#PB_Any, "BitIO_Test.dat")
 If fileNum
   For i = 1 To Len(testWriteString)
-    writeBits(fileNum, Asc(Mid(testWriteString, i, 1)), 7)  
+    writeBits(fileNum, Asc(Mid(testWriteString, i, 1)), 7)
   Next
   flushBits(fileNum)
   CloseFile(fileNum)
-EndIf 
+EndIf
 
 fileNum = ReadFile(#PB_Any, "BitIO_Test.dat")
 If fileNum
@@ -2499,7 +2499,7 @@ If testReadString = testWriteString
   result + "The expanded string is the same as the original." + #LF$
 Else
   result + "The expanded string is not the same as the original." + #LF$
-EndIf 
+EndIf
 result + "Expanded string = '" + testReadString + "'"
 
 MessageRequester("Results", result)
@@ -2765,7 +2765,7 @@ Say 'r='r                              /* show result                 */
 s=STRING
 b=101001110101001010010100100110011101000111000000
                                             000000 padding
-r=STRING  
+r=STRING
 
 ```
 
@@ -2798,7 +2798,7 @@ dcomp: parse arg x; z=;    do k=1  by 7  to length(x);       _=substr(x, k, 7)
 
    input string= STRING
  encoded string= 101001110101001010010100100110011101000111000000
- decoded string= STRING 
+ decoded string= STRING
 
 ```
 
@@ -2835,7 +2835,7 @@ filesize = File.size(filename)
 puts "the file containing the crunched text is #{filesize} bytes"
 
 # read and expand
-expanded = File.open(filename, "r") do |fh| 
+expanded = File.open(filename, "r") do |fh|
   fh.binmode
   expand(fh.read)
 end

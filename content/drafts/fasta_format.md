@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 
-In [[wp:bioinformatics|bioinformatics]], long character strings are often encoded in a format called [[wp:FASTA format|FASTA]].  
+In [[wp:bioinformatics|bioinformatics]], long character strings are often encoded in a format called [[wp:FASTA format|FASTA]].
 
 A FASTA file can contain several strings, each identified by a name marked by a <big><big><code>&gt;</code></big></big> (greater than) character at the beginning of the line.
 
@@ -56,11 +56,11 @@ The simple solution just reads the file (from standard input) line by line and d
 with Ada.Text_IO; use Ada.Text_IO;
 
 procedure Simple_FASTA is
-   
+
    Current: Character;
-   
-begin 
-   Get(Current); 
+
+begin
+   Get(Current);
    if Current /= '>' then
       raise Constraint_Error with "'>' expected";
    end if;
@@ -71,10 +71,10 @@ begin
 	 exit Read_String when End_Of_File; -- end of input
 	 Get(Current);
 	 if Current = '>' then -- next name
-	    New_Line; 
+	    New_Line;
 	    exit Read_String;
 	 else
-	    Put(Current & Get_Line); 
+	    Put(Current & Get_Line);
 	    -- read part of string and write directly to output
 	 end if;
       end loop Read_String;
@@ -87,7 +87,7 @@ end Simple_FASTA;
 {{out}}
 
 ```txt
-./simple_fasta < test.txt 
+./simple_fasta < test.txt
 Rosetta_Example_1: THERECANBENOSPACE
 Rosetta_Example_2: THERECANBESEVERALLINESBUTTHEYALLMUSTBECONCATENATED
 ```
@@ -107,12 +107,12 @@ procedure FASTA is
    package Maps is new  Ada.Containers.Indefinite_Ordered_Maps
      (Element_Type => String, Key_Type => String);
    Map: Maps.Map; -- Map holds the full file (as pairs of name and value)
-   
+
    function Get_Value(Previous: String := "") return String is
       Current: Character;
    begin
-      if End_Of_File then 
-	 return Previous; -- file ends 
+      if End_Of_File then
+	 return Previous; -- file ends
       else
 	 Get(Current); -- read first character
 	 if Current = '>' then -- ah, a new name begins
@@ -122,18 +122,18 @@ procedure FASTA is
 	 end if;
       end if;
    end Get_Value;
-   
+
    procedure Print_Pair(Position: Maps.Cursor) is
    begin
       Put_Line(Maps.Key(Position) & ": " & Maps.Element(Position));
       -- Maps.Key(X) is the name and Maps.Element(X) is the value at X
    end Print_Pair;
-   
-   Skip_This: String := Get_Value; 
+
+   Skip_This: String := Get_Value;
    -- consumes the entire file, until the first line starting with '>'.
    -- the string Skip_This should be empty, but we don't verify this
 
-begin 
+begin
    while not End_Of_File loop -- read the file into Map
       declare
 	 Name: String := Get_Line;
@@ -144,7 +144,7 @@ begin
 	 -- adds the pair (Name, Value) to Map
       end;
    end loop;
-   
+
    Map.Iterate(Process => Print_Pair'Access); -- print Map
 end FASTA;
 ```
@@ -240,7 +240,7 @@ BECONCATENATED
 )
 
 Data := RegExReplace(RegExReplace(Data, ">\V+\K\v+", ": "), "\v+(?!>)")
-Gui, add, Edit, w700,  % Data 
+Gui, add, Edit, w700,  % Data
 Gui, show
 return
 ```
@@ -327,8 +327,8 @@ Rosetta_Example_2: THERECANBESEVERALLINESBUTTHEYALLMUSTBECONCATENATED
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -380,8 +380,8 @@ Rosetta_Example_2: THERECANBESEVERALLINESBUTTHEYALLMUSTBECONCATENATED
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <fstream>
 
 int main( int argc, char **argv ){
@@ -419,7 +419,7 @@ int main( int argc, char **argv ){
     if( !name.empty() ){ // Print out what we read from the last entry
         std::cout << name << " : " << content << std::endl;
     }
-    
+
     return 0;
 }
 ```
@@ -576,7 +576,7 @@ Function checkNoSpaces(s As String) As Boolean
   Next
   Return True
 End Function
-    
+
 Open "input.fasta" For Input As # 1
 
 Dim As String ln, seq
@@ -585,8 +585,8 @@ Dim first As Boolean = True
 While Not Eof(1)
   Line Input #1, ln
   If Left(ln, 1) = ">"  Then
-    If Not first Then Print 
-    Print Mid(ln, 2); ": ";       
+    If Not first Then Print
+    Print Mid(ln, 2); ": ";
     If first Then first = False
   ElseIf first Then
     Print: Print "Error : File does not begin with '>'";
@@ -715,7 +715,7 @@ Rosetta_Example_2: THERECANBESEVERALLINESBUTTHEYALLMUSTBECONCATENATED
 
 ## Haskell
 
-We pass the file path as an argument to the parseFasta function, which only does the file loading and result printing. 
+We pass the file path as an argument to the parseFasta function, which only does the file loading and result printing.
 
 '''The first way'''
 
@@ -753,7 +753,7 @@ Rosetta_Example_2: THERECANBESEVERALLINESBUTTHEYALLMUSTBECONCATENATED
 
 '''The second way'''
 
-We parse FASTA using parser combinators. Normally you'd use something like Trifecta or Parsec, but here we use ReadP, because it is simple and also included in ghc by default. With other parsing libraries the code would be almost the same. 
+We parse FASTA using parser combinators. Normally you'd use something like Trifecta or Parsec, but here we use ReadP, because it is simple and also included in ghc by default. With other parsing libraries the code would be almost the same.
 
 
 ```haskell
@@ -808,7 +808,7 @@ LINESBUTTHEYALLMUST
 BECONCATENATED
 )
    parseFasta Fafile
-Rosetta_Example_1: THERECANBENOSPACE                                 
+Rosetta_Example_1: THERECANBENOSPACE
 Rosetta_Example_2: THERECANBESEVERALLINESBUTTHEYALLMUSTBECONCATENATED
 ```
 
@@ -861,9 +861,9 @@ Rosetta_Example_3: THISISFASTA
 ## jq
 
 {{works with|jq|1.5rc1}}
-The following implementation uses "foreach" and "inputs" 
+The following implementation uses "foreach" and "inputs"
 so that very large input files can be processed with minimal space requirements:
-in each cycle, only as many lines are read as are required to compose an output line. 
+in each cycle, only as many lines are read as are required to compose an output line.
 
 Notice that an additional ">" must be provided to "foreach" to ensure the final block of lines of the input file are properly assembled.
 
@@ -1002,7 +1002,7 @@ Rosetta_Example_2: THERECANBESEVERALLINESBUTTHEYALLMUSTBECONCATENATED
 
 ## OCaml
 
-I keep it simple by sticking to the description of the FASTA format described in the task. 
+I keep it simple by sticking to the description of the FASTA format described in the task.
 
 The program reads and processes the input one line at a time, and directly prints out the chunk of data available. The long strings are not concatenated in memory but just examined and processed as necessary: either printed out as is in the case of part of a sequence, or formatted in the case of the name (what I call the label), and managing the new lines where needed.
 {{works with|OCaml|4.03+}}
@@ -1091,10 +1091,10 @@ Module CheckIt {
                         If len(waste$)=0 Then waste$=rightpart$(Buf$, ";") : idstate=2
                         If len(waste$)=0 Then idstate=1 : Goto GetNextPacket ' we have to read more
                         buf$=waste$
-                        state=2            
+                        state=2
             GetIdentifier:
                         If Len(Buf$)=len(lineFeed$) then {
-                              if buf$<>lineFeed$ then Goto GetNextPacket 
+                              if buf$<>lineFeed$ then Goto GetNextPacket
                               waste$=""
                         } Else {
                               if instr(buf$, lineFeed$)=0 then Goto GetNextPacket
@@ -1126,11 +1126,11 @@ Module CheckIt {
                         Call Event "DataLine", waste$
                         Buf$=Rightpart$(Buf$,lineFeed$)
                         Goto GetNextPacket
-            }     
+            }
       }
       Group WithEvents K=FASTA_MACHINE()
       Document Final$, Inp$
-      
+
       \\ In documents, "="" used for append data. Final$="append this"
       Const NewLine$=chr$(13)+chr$(10)
       Const Center=2
@@ -1141,7 +1141,7 @@ Module CheckIt {
             while right$(a$, 1)="\" {
                   Input "IN:", b$
                   inp$=b$+NewLine$
-                  if b$="" then b$="n" 
+                  if b$="" then b$="n"
                   a$+=b$
             }
             a$= replace$("\N","\n", a$)
@@ -1156,7 +1156,7 @@ Module CheckIt {
             Final$=a$
       }
       Function K_Quit (New &q) {
-            q=keypress(1) 
+            q=keypress(1)
       }
       Cls , 0
       Report Center, "FASTA Format"
@@ -1519,9 +1519,9 @@ Rosetta_Example_2 : THERECANBESEVERALLINESBUTTHEYALLMUSTBECONCATENATED
 
 ```PureBasic
 EnableExplicit
-Define Hdl_File.i, 
+Define Hdl_File.i,
        Frm_File.i,
-       c.c,         
+       c.c,
        header.b
 
 Hdl_File=ReadFile(#PB_Any,"c:\code_pb\rosettacode\data\FASTA_TEST.txt")
@@ -1530,7 +1530,7 @@ Frm_File=ReadStringFormat(Hdl_File)
 
 If OpenConsole("FASTA format")
   While Not Eof(Hdl_File)
-    c=ReadCharacter(Hdl_File,Frm_File)  
+    c=ReadCharacter(Hdl_File,Frm_File)
     Select c
       Case '>'
         header=#True
@@ -1538,14 +1538,14 @@ If OpenConsole("FASTA format")
       Case #LF, #CR
         If header
           Print(": ")
-          header=#False        
-        EndIf      
-      Default      
+          header=#False
+        EndIf
+      Default
         Print(Chr(c))
-    EndSelect      
+    EndSelect
   Wend
   CloseFile(Hdl_File)
-  Input()   
+  Input()
 EndIf
 ```
 
@@ -1560,9 +1560,9 @@ Rosetta_Example_2: THERECANBESEVERALLINESBUTTHEYALLMUSTBECONCATENATED
 
 ## Python
 
-I use a string to mimic an input file. 
-If it was an input file, then the file is read line-by-line 
-and I use a generator expression yielding key, value pairs 
+I use a string to mimic an input file.
+If it was an input file, then the file is read line-by-line
+and I use a generator expression yielding key, value pairs
 as soon as they are read, keeping the minimum in memory.
 
 ```python
@@ -1626,8 +1626,8 @@ for (aline in fasta) {
 
 ```txt
 
->Rosetta_Example_1 : THERECANBENOSPACE 
->Rosetta_Example_2 : THERECANBESEVERALLINESBUTTHEYALLMUSTBECONCATENATED 
+>Rosetta_Example_1 : THERECANBENOSPACE
+>Rosetta_Example_2 : THERECANBESEVERALLINESBUTTHEYALLMUSTBECONCATENATED
 
 ```
 
@@ -1778,16 +1778,16 @@ THERECANBENOSPACE
 THERECANBESEVERAL
 LINESBUTTHEYALLMUST
 BECONCATENATED"
- 
+
 i = 1
 while i <= len(a)
-      if substr(a,i,17) = ">Rosetta_Example_"  
-         see nl 
+      if substr(a,i,17) = ">Rosetta_Example_"
+         see nl
          see substr(a,i,18) + ": " + nl
          i = i + 17
       else
-         if ascii(substr(a,i,1)) > 20 
-            see a[i] 
+         if ascii(substr(a,i,1)) > 20
+            see a[i]
          ok
       ok
       i = i + 1
@@ -1860,8 +1860,8 @@ BECONCATENATED"
 
 i = 1
 while i <= len(a$)
-  if mid$(a$,i,17) = ">Rosetta_Example_" then 
-    print 
+  if mid$(a$,i,17) = ">Rosetta_Example_" then
+    print
     print mid$(a$,i,18);": ";
     i = i + 17
    else
@@ -1922,7 +1922,7 @@ impl<T: Read> Iterator for FastaIter<T> {
         while let Some(l) = self.buffer_lines.next() {
             let line = l.unwrap();
             if line.starts_with(">") {
-                if self.current_name.is_some() {                    
+                if self.current_name.is_some() {
                     let mut res = String::new();
                     res.push_str(self.current_name.as_ref().unwrap());
                     res.push_str(": ");

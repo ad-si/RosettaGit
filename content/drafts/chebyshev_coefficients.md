@@ -16,10 +16,10 @@ tags = []
 
 ## C
 
-C99.  
+C99.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <math.h>
 
@@ -225,7 +225,7 @@ void chebyshevCoef(size_t N)(in real function(in real) pure nothrow @safe @nogc 
                              in real min, in real max, ref real[N] coef)
 pure nothrow @safe @nogc {
     coef[] = 0.0;
-    
+
     foreach (immutable i; 0 .. N) {
         immutable f = func(map(cos(PI * (i + 0.5f) / N), -1, 1, min, max)) * 2 / N;
         foreach (immutable j, ref cj; coef)
@@ -255,7 +255,7 @@ pure nothrow @safe @nogc if (N >= 2) {
 
 
 void main() @safe {
-    import std.stdio: writeln, writefln;    
+    import std.stdio: writeln, writefln;
     enum uint N = 10;
 
 	real[N] c;
@@ -909,7 +909,7 @@ function Cheb(atom cmin, cmax, integer ncoeff, nnodes)
     end for
     return c
 end function
- 
+
 function evaluate(sequence c, atom cmin, cmax, x)
     atom x1 = (2*x - cmax - cmin) / (cmax - cmin),
          x2 = 2*x1,
@@ -919,7 +919,7 @@ function evaluate(sequence c, atom cmin, cmax, x)
     end for
     return x1 * t - s + c[1] / 2
 end function
- 
+
 atom cmin = 0.0, cmax = 1.0
 sequence c  = Cheb(cmin, cmax, 10, 10)
 printf(1, "Coefficients:\n")
@@ -1033,7 +1033,7 @@ This REXX program is a translation of the   '''C'''   program plus added optimiz
                                    Tschebyscheff   [   "           "        ]
 
 
-The numeric precision is dependent on the number of decimal digits specified in the value of '''pi'''. 
+The numeric precision is dependent on the number of decimal digits specified in the value of '''pi'''.
 
 ```rexx
 /*REXX program calculates  N  Chebyshev coefficients for the range  0 ──► 1  (inclusive)*/
@@ -1069,7 +1069,7 @@ cos: procedure; parse arg x; numeric digits digits()+9; x=r2r(x); a=abs(x); nume
 pi:  pi=3.1415926535897932384626433832795028841971693993751058209749445923078164;return pi
 r2r: return  arg(1)  //  (pi() * 2)              /*normalize radians ───► a unit circle.*/
 ```
- 
+
 {{out|output|text=  when using the default inputs:}}
 
 ```txt

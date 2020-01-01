@@ -121,16 +121,17 @@ To assign values 5, 6, and 7 to array elements 1,2,3:
 
 ==[[C]]==
 
-```c> #include <sys/types.h
+```c
+#include <sys/types.h>
 
- int writeToIntArray(int *array, size_t array_sz, int loc, int val)
- {
-   /* Check bounds on array */
-   if (loc > array_sz || loc < 0)
-     return -1;
-   array[loc] = val;
-   return 0;
- }
+int writeToIntArray(int *array, size_t array_sz, int loc, int val)
+{
+  /* Check bounds on array */
+  if (loc > array_sz || loc < 0)
+    return -1;
+  array[loc] = val;
+  return 0;
+}
 ```
 
 

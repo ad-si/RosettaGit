@@ -16,7 +16,7 @@ Solve the [[wp:Stable marriage problem|Stable marriage problem]] using the Gale/
 
 '''Problem description'''
 
-Given an equal number of men and women to be paired for marriage, each man ranks all the women in order of his preference and each woman ranks all the men in order of her preference. 
+Given an equal number of men and women to be paired for marriage, each man ranks all the women in order of his preference and each woman ranks all the men in order of her preference.
 
 A stable set of engagements for marriage is one where no man prefers a woman over the one he is engaged to, where that other woman ''also'' prefers that man over the one she is engaged to. I.e. with consulting marriages, there would be no reason for the engagements between the people to change.
 
@@ -41,7 +41,7 @@ And a complete list of ranked preferences, where the most liked is to the left:
    hal: abi, eve, hope, fay, ivy, cath, jan, bea, gay, dee
    ian: hope, cath, dee, gay, bea, abi, fay, ivy, jan, eve
    jon: abi, fay, jan, gay, eve, bea, dee, cath, ivy, hope
-    
+
    abi: bob, fred, jon, gav, ian, abe, dan, ed, col, hal
    bea: bob, abe, col, fred, gav, dan, ian, ed, jon, hal
   cath: fred, bob, ed, gav, hal, col, ian, abe, dan, jon
@@ -74,7 +74,7 @@ And a complete list of ranked preferences, where the most liked is to the left:
 {{works with|AutoHotkey L}}
 
 ```autohotkey
-; Given a complete list of ranked preferences, where the most liked is to the left: 
+; Given a complete list of ranked preferences, where the most liked is to the left:
 abe := ["abi", "eve", "cath", "ivy", "jan", "dee", "fay", "bea", "hope", "gay"]
 bob := ["cath", "hope", "abi", "dee", "eve", "fay", "bea", "jan", "ivy", "gay"]
 col := ["hope", "eve", "abi", "dee", "bea", "fay", "ivy", "gay", "cath", "jan"]
@@ -129,7 +129,7 @@ s .= Stable(engagements, females)
 ; then perturb this set of engagements to form an unstable set of engagements then check this new set for stability:
 s .= "`nWhat if cath and ivy swap?`n"
 engagements["cath"]:="abe", engagements["ivy"]:="bob"
-	
+
 ; summarize results:
 s .= "`nCouples:`n"
 For female, male in engagements
@@ -152,7 +152,7 @@ Stable(engagements, females) {
 	{
 		For j, female2 in females ; j=index of female (not needed)
 		{
-			If (index(%male%, female) > index(%male%, female2) 
+			If (index(%male%, female) > index(%male%, female2)
 				and index(%female2%, male2:=engagements[female2]) > index(%female2%, male))
 				s .= male . " is engaged to " . female . " but would prefer " . female2
 					. " and " . female2 . " is engaged to " . male2 . " but would prefer " . male . "`n"
@@ -311,7 +311,7 @@ for /f "tokens=1* delims= " %%m in ("%free_men%") do (
    rem of women (poor guy), he starts again to his most preferred woman (#0).
    for /f %%x in ("!%%m_tried!") do if not defined %%m{%%x} (
       set "%%m_tried=0" & set "w=!%%m{0}!"
-   ) else set "w=!%%m{%%x}!" 
+   ) else set "w=!%%m{%%x}!"
    set "m=%%m"
 
    for /f %%x in ("free_fem:!w!=") do (
@@ -447,7 +447,7 @@ eve and abe would rather be together than their current partners.
       \              "BADGEICJHF","GEIBCADHJF","AEHFICJBGD","HCDGBAFIJE","AFJGEBDCIH"
       wpref$() = "", "BFJGIADECH","BACFGDIEJH","FBEGHCIADJ","FJCAIHGDBE","JHFDAGCEIB",\
       \              "BAEIJDFGCH","JGHFBACEDI","GJBAIDHECF","ICHGFBAEJD","EHGABJCIFD"
-      
+
       REM The Gale-Shapley algorithm:
       REPEAT
         FOR m% = 1 TO N
@@ -474,13 +474,13 @@ eve and abe would rather be together than their current partners.
           UNTIL TRUE
         NEXT m%
       UNTIL SUM(mpartner%()) = (N*(N+1))/2
-      
+
       FOR m% = 1 TO N
         PRINT mname$(m%) " is engaged to " wname$(mpartner%(m%))
       NEXT
       PRINT "Relationships are ";
       IF FNstable PRINT "stable." ELSE PRINT "unstable."
-      
+
       a% = RND(N)
       REPEAT b% = RND(N) : UNTIL b%<>a%
       PRINT '"Now swapping " mname$(a%) "'s and " mname$(b%) "'s partners:"
@@ -490,7 +490,7 @@ eve and abe would rather be together than their current partners.
       PRINT "Relationships are ";
       IF FNstable PRINT "stable." ELSE PRINT "unstable."
       END
-      
+
       DEF FNstable
       LOCAL m%, w%, o%, p%
       FOR m% = 1 TO N
@@ -572,7 +572,7 @@ Relationships are unstable.
                   & !a (!m.!w) !z
                 )
               : ?engaged
-            | 
+            |
             )
           & !Z !A (!m.!ws):?Mplan
           )
@@ -629,8 +629,8 @@ unstable
 
 Oddly enough (or maybe it should be that way, only that I don't know): if the women were proposing instead of the men, the resulting pairs are exactly the same.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int verbose = 0;
 enum {
@@ -797,8 +797,8 @@ Marriages not stable
 ## C++
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <map>
 #include <queue>
@@ -818,7 +818,7 @@ const char *men_data[][11] = {
     { "ian",  "hope","cath","dee","gay","bea","abi","fay","ivy","jan","eve" },
     { "jon",  "abi","fay","jan","gay","eve","bea","dee","cath","ivy","hope" }
 };
- 
+
 const char *women_data[][11] = {
     { "abi",  "bob","fred","jon","gav","ian","abe","dan","ed","col","hal" },
     { "bea",  "bob","abe","col","fred","gav","dan","ian","ed","jon","hal" },
@@ -998,7 +998,7 @@ namespace StableMarriage
         public string Name { get; set; }
         public List<Person> Prefs { get; set; }
         public Person Fiance { get; set; }
-        
+
         public Person(string name) {
             Name = name;
             Prefs = null;
@@ -1019,7 +1019,7 @@ namespace StableMarriage
             Fiance = p;
         }
     }
-    
+
     static class MainClass
     {
         static public bool IsStable(List<Person> men) {
@@ -1032,7 +1032,7 @@ namespace StableMarriage
             }
             return true;
         }
-        
+
         static void DoMarriage() {
             Person abe  = new Person("abe");
             Person bob  = new Person("bob");
@@ -1054,7 +1054,7 @@ namespace StableMarriage
             Person hope = new Person("hope");
             Person ivy  = new Person("ivy");
             Person jan  = new Person("jan");
-            
+
             abe.Prefs  = new List<Person>() {abi, eve, cath, ivy, jan, dee, fay, bea, hope, gay};
             bob.Prefs  = new List<Person>() {cath, hope, abi, dee, eve, fay, bea, jan, ivy, gay};
             col.Prefs  = new List<Person>() {hope, eve, abi, dee, bea, fay, ivy, gay, cath, jan};
@@ -1075,9 +1075,9 @@ namespace StableMarriage
             hope.Prefs = new List<Person>() {gav, jon, bob, abe, ian, dan, hal, ed, col, fred};
             ivy.Prefs  = new List<Person>() {ian, col, hal, gav, fred, bob, abe, ed, jon, dan};
             jan.Prefs  = new List<Person>() {ed, hal, gav, abe, bob, jon, col, ian, fred, dan};
-            
+
             List<Person> men = new List<Person>(abi.Prefs);
-            
+
             int freeMenCount = men.Count;
             while (freeMenCount > 0) {
                 foreach (Person guy in men) {
@@ -1092,12 +1092,12 @@ namespace StableMarriage
                     }
                 }
             }
-            
+
             foreach (Person guy in men) {
                 Console.WriteLine("{0} is engaged to {1}", guy.Name, guy.Fiance.Name);
             }
             Console.WriteLine("Stable = {0}", IsStable(men));
-            
+
             Console.WriteLine("\nSwitching fred & jon's partners");
             Person jonsFiance = jon.Fiance;
             Person fredsFiance = fred.Fiance;
@@ -1105,7 +1105,7 @@ namespace StableMarriage
             jon.EngageTo(fredsFiance);
             Console.WriteLine("Stable = {0}", IsStable(men));
         }
-        
+
         public static void Main(string[] args)
         {
             DoMarriage();
@@ -1271,7 +1271,7 @@ void checkStability() {
         for (guy in guys) {
             if (guy.prefers(gal) && gal.prefers(guy)) {
                 stabilityFlag = false;
-                print("``guy`` prefers ``gal`` over ``guy.fiance else "nobody"`` 
+                print("``guy`` prefers ``gal`` over ``guy.fiance else "nobody"``
                        and ``gal`` prefers ``guy`` over ``gal.fiance else "nobody"``!".normalized);
             }
         }
@@ -1335,17 +1335,17 @@ class Person
     @rank = {}
     for preference, i in @preferences
       @rank[preference] = i
-  
+
   preferred_mate_name: =>
     @preferences[@best_mate_rank]
-    
+
   reject: =>
     @best_mate_rank += 1
-    
+
   set_mate: (mate) =>
     @mate = mate
-  
-  offer_mate: (free_mate, reject_mate_cb) =>  
+
+  offer_mate: (free_mate, reject_mate_cb) =>
     if @mate
       if @covets(free_mate)
         console.log "#{free_mate.name} steals #{@name} from #{@mate.name}"
@@ -1359,19 +1359,19 @@ class Person
       console.log "#{free_mate.name} gets #{@name} first"
       free_mate.set_mate @
       @set_mate free_mate
-      
+
   happiness: =>
     @rank[@mate.name]
-    
+
   covets: (other_mate) =>
     @rank[other_mate.name] <= @rank[@mate.name]
- 
+
 persons_by_name = (persons) ->
   hsh = {}
   for person in persons
     hsh[person.name] = person
   hsh
-     
+
 mate_off = (guys, gals) ->
   free_pursuers = (guy for guy in guys)
   guys_by_name = persons_by_name guys
@@ -1431,7 +1431,7 @@ Population = ->
    hal:  ['abi', 'eve', 'hope', 'fay', 'ivy', 'cath', 'jan', 'bea', 'gay', 'dee']
    ian:  ['hope', 'cath', 'dee', 'gay', 'bea', 'abi', 'fay', 'ivy', 'jan', 'eve']
    jon:  ['abi', 'fay', 'jan', 'gay', 'eve', 'bea', 'dee', 'cath', 'ivy', 'hope']
- 
+
   gal_preferences =
    abi:  ['bob', 'fred', 'jon', 'gav', 'ian', 'abe', 'dan', 'ed', 'col', 'hal']
    bea:  ['bob', 'abe', 'col', 'fred', 'gav', 'dan', 'ian', 'ed', 'jon', 'hal']
@@ -1447,7 +1447,7 @@ Population = ->
   guys = (new Person(name, preferences) for name, preferences of guy_preferences)
   gals = (new Person(name, preferences) for name, preferences of gal_preferences)
   [guys, gals]
- 
+
 do ->
   [guys, gals] = Population()
   mate_off guys, gals
@@ -1462,7 +1462,7 @@ do ->
 
 ```txt
 
-> coffee stable_marriage.coffee 
+> coffee stable_marriage.coffee
 abe gets abi first
 bob gets cath first
 col gets hope first
@@ -1556,7 +1556,7 @@ component displayName="Person" accessors="true" {
             // if the new person's hotness is greater (numerically smaller) than our current beau...
             return getHotness( this, arguments.person ) < getHotness( this, this.getMrOrMrsGoodEnough() );
         }
-        return false; 
+        return false;
     }
 
     public Void function settle( required Person person ) {
@@ -2176,7 +2176,7 @@ Stablility:
 
 (lib 'hash)
 ;; input data
-(define M-RANKS 
+(define M-RANKS
 '(( abe abi eve cath ivy jan dee fay bea hope gay)
 (  bob cath hope abi dee eve fay bea jan ivy gay)
 (  col hope eve abi dee bea fay ivy gay cath jan)
@@ -2188,7 +2188,7 @@ Stablility:
 (  ian hope cath dee gay bea abi fay ivy jan eve)
 (  jon abi fay jan gay eve bea dee cath ivy hope)))
 
-(define W-RANKS 
+(define W-RANKS
 '((  abi bob fred jon gav ian abe dan ed col hal)
 (  bea bob abe col fred gav dan ian ed jon hal)
 ( cath fred bob ed gav hal col ian abe dan jon)
@@ -2205,7 +2205,7 @@ Stablility:
     (for/list ((r ranks))
         (hash-set prefs (first r) (rest r))
         (first r)))
-        
+
 (define (engage  m w)    (hash-set ENGAGED m w) (hash-set ENGAGED w m) (writeln  m w '👫 ))
 (define (disengage  m w) (hash-remove! ENGAGED m ) (hash-remove! ENGAGED w) (writeln '💔 m w))
 (define (engaged x)      (hash-ref ENGAGED x))
@@ -2215,11 +2215,11 @@ Stablility:
 
 (define (prefers? prefs x a b) (member b  (member a (hash-ref prefs x))))
 ;; get first choice and remove it from prefs list
-(define (first-choice prefs m) 
+(define (first-choice prefs m)
     (define w (first (hash-ref prefs m)))
     (hash-set prefs m (rest (hash-ref prefs m)))
     w)
-    
+
 ;; sets ENGAGED couples
 ;;  https//en.wikipedia.org/wiki/Stable_marriage_problem
 
@@ -2236,18 +2236,18 @@ Stablility:
                 (disengage w dumped)
                 (engage w m)))))
  (hash->list ENGAGED))
-                
+
 ;; input : ENGAGED couples
 (define (checkStable (prefs (make-hash)))
   (define men   (set-prefs  M-RANKS  prefs))
   (define women (set-prefs  W-RANKS  prefs))
 	(for* [(man men) (woman women)]
 	#:continue (equal? woman (engaged man))
-			(when (and 
+			(when (and
 					(prefers? prefs man woman (engaged man))
 					(prefers? prefs woman man (engaged woman)))
 					(error 'not-stable (list man woman)))))
-		
+
 
 ```
 
@@ -2256,22 +2256,22 @@ Stablility:
 ```txt
 
 (stableMatching)
-👫     abe     abi    
-👫     bob     cath    
-👫     col     hope    
-👫     dan     ivy    
-👫     ed     jan    
-👫     fred     bea    
-👫     gav     gay    
-👫     hal     eve    
-💔     hope     col    
-👫     hope     ian    
-👫     col     dee    
-💔     abi     abe    
-👫     abi     jon    
-💔     ivy     dan    
-👫     ivy     abe    
-👫     dan     fay    
+👫     abe     abi
+👫     bob     cath
+👫     col     hope
+👫     dan     ivy
+👫     ed     jan
+👫     fred     bea
+👫     gav     gay
+👫     hal     eve
+💔     hope     col
+👫     hope     ian
+👫     col     dee
+💔     abi     abe
+👫     abi     jon
+💔     ivy     dan
+👫     ivy     abe
+👫     dan     fay
   ((abe . ivy) (abi . jon) (bob . cath) (cath . bob) (col . dee) (hope . ian) (dan . fay) (ivy . abe) (ed . jan)
  (jan . ed) (fred . bea) (bea . fred) (gav . gay) (gay . gav) (hal . eve) (eve . hal) (ian . hope) (dee . col) (jon . abi) (fay . dan))
 
@@ -2281,10 +2281,10 @@ Stablility:
 (engage 'ivy 'ian)
 (checkStable)
 
-💔     abe     ivy    
-💔     hope     ian    
-abe     hope     👫    
-ivy     ian     👫    
+💔     abe     ivy
+💔     hope     ian
+abe     hope     👫
+ivy     ian     👫
 😡 error: not-stable (abe bea)
 
 ```
@@ -2348,7 +2348,7 @@ let negate f = fun x -> not (f x)
 
 // returns those 'women' who 'man' has not proposed to before
 let notProposedBy config man women = List.filter (negate (hasProposedTo config man)) women
- 
+
 let prefers (prefs:Map<string,string list>) w m1 m2 =
   let order = prefs.[w]
   let m1i = List.findIndex ((=) m1) order
@@ -2412,7 +2412,7 @@ let step config : Configuration option =
             // w is automatically the highest ranked because menPrefs.[m] is the source
             let w = List.head unproposedByM
             Some( propose config m w )
-              
+
 let rec loop config =
   match step config with
   | None -> config
@@ -2431,7 +2431,7 @@ printfn "Solution is stable: %A" (isStable solution)
 
 
 // create unstable configuration by perturbing the solution
-let perturbed = 
+let perturbed =
   let gal0 = women.[0]
   let gal1 = women.[1]
   let guy0 = solution.husbandOf.[gal0]
@@ -2478,7 +2478,7 @@ import "fmt"
 // proposers.  A slice is adequate for proposers, but a map allows direct
 // lookups for recipients and avoids looping code.
 type proposers map[string][]string
-    
+
 var mPref = proposers{
     "abe": []string{
         "abi", "eve", "cath", "ivy", "jan",
@@ -2553,11 +2553,11 @@ func main() {
     // show results
     fmt.Println("\nresult:")
     if !validateStable(ps, mPref, wPref) {
-        return 
+        return
     }
     // perturb
     for {
-        i := 0 
+        i := 0
         var w2, m2 [2]string
         for w, m := range ps {
             w2[i] = w
@@ -2569,17 +2569,17 @@ func main() {
         }
         fmt.Println("\nexchanging partners of", m2[0], "and", m2[1])
         ps[w2[0]] = m2[1]
-        ps[w2[1]] = m2[0] 
+        ps[w2[1]] = m2[0]
         // validate perturbed parings
         if !validateStable(ps, mPref, wPref) {
             return
         }
         // if those happened to be stable as well, perturb more
     }
-}   
+}
 
 type parings map[string]string // map[recipient]proposer (or map[w]m)
-    
+
 // Pair implements the Gale/Shapley algorithm.
 func pair(pPref proposers, rPref recipients) parings {
     // code is destructive on the maps, so work with copies
@@ -2635,14 +2635,14 @@ func pair(pPref proposers, rPref recipients) parings {
                 // WP: else (m', w) remain engaged
                 pFree[proposer] = ppref // update preferences in map
                 continue
-            } 
+            }
         }
         fmt.Println("engagement:", recipient, proposer)
         proposals[recipient] = save{proposer, ppref, rpref}
         delete(pFree, proposer)
         delete(rFree, recipient)
     }
-    // construct return value 
+    // construct return value
     ps := parings{}
     for recipient, s := range proposals {
         ps[recipient] = s.proposer
@@ -2777,9 +2777,9 @@ boolean isStable(Map<Woman,Man> matches, Map<Man,Map<Woman,Integer>> guysGalRank
                 println """O. M. G. ... ${otherGuy} likes ${girl} better than ${otherGuyFiancee}, and ${girl} likes ${otherGuy} better than ${guy}!
                             I am TOTALLY 'shipping ${girl} and ${otherGuy} now!"""
                 return false
-            } 
+            }
         }
-        
+
         int galsRank = guysGalRanking[guy][girl]
         List<Woman> heLikesBetter = Woman.values().findAll{ she -> guysGalRanking[guy][she] > galsRank }
         for(Woman otherGal : heLikesBetter) {
@@ -2788,7 +2788,7 @@ boolean isStable(Map<Woman,Man> matches, Map<Man,Map<Woman,Integer>> guysGalRank
                 println """O. M. G. ... ${otherGal} likes ${guy} better than ${otherGalFiance}, and ${guy} likes ${otherGal} better than ${girl}!
                             I am TOTALLY 'shipping ${guy} and ${otherGal} now!"""
                 return false
-            } 
+            }
         }
         true
     }.every()
@@ -2819,7 +2819,7 @@ Map<Man,Map<Woman,Integer>> mansWomanRanking = [
     (ian): [(hope):10, (cath):9, (dee):8, (gay):7, (bea):6, (abi):5, (fay):4, (ivy):3, (jan):2, (eve):1],
     (jon): [(abi):10, (fay):9, (jan):8, (gay):7, (eve):6, (bea):5, (dee):4, (cath):3, (ivy):2, (hope):1],
 ]
- 
+
 Map<Woman,List<Man>> womansManRanking = [
     (abi): [(bob):10, (fred):9, (jon):8, (gav):7, (ian):6, (abe):5, (dan):4, (ed):3, (col):2, (hal):1],
     (bea): [(bob):10, (abe):9, (col):8, (fred):7, (gav):6, (dan):5, (ian):4, (ed):3, (jon):2, (hal):1],
@@ -2902,7 +2902,7 @@ O. M. G. ... jon likes gay better than bea, and gay likes jon better than gav!
 
 
 
-###  The solution 
+###  The solution
 
 
 The Gale/Shapley algorithm is formulated via iterative changing of the state. In Haskell it is possible to implement this approach by pure function iterations.
@@ -2956,7 +2956,7 @@ With these tools and notes we are ready to implement the Gale/Shapley algorithm 
 stableMatching = getPairs . iterateUntil (null._freeGuys) step
   where
     iterateUntil p f = head . dropWhile (not . p) . iterate f
-    getPairs s = map (_2 %~ head) $ s^.guys 
+    getPairs s = map (_2 %~ head) $ s^.guys
 
 step :: Eq a => State a -> State a
 step s = foldl propose s (s^.freeGuys)
@@ -2990,7 +2990,7 @@ unstablePairs s pairs =
 This solution works not only for strings, but for any equable data.
 
 
-###  The task 
+###  The task
 
 
 Here are the given preferences:
@@ -3008,8 +3008,8 @@ guys0 =
    ("hal", ["abi", "eve", "hope", "fay", "ivy", "cath", "jan", "bea", "gay", "dee"]),
    ("ian", ["hope", "cath", "dee", "gay", "bea", "abi", "fay", "ivy", "jan", "eve"]),
    ("jon", ["abi", "fay", "jan", "gay", "eve", "bea", "dee", "cath", "ivy", "hope"])]
-  
-girls0 = 
+
+girls0 =
   [("abi",  ["bob", "fred", "jon", "gav", "ian", "abe", "dan", "ed", "col", "hal"]),
    ("bea",  ["bob", "abe", "col", "fred", "gav", "dan", "ian", "ed", "jon", "hal"]),
    ("cath", ["fred", "bob", "ed", "gav", "hal", "col", "ian", "abe", "dan", "jon"]),
@@ -3022,7 +3022,7 @@ girls0 =
    ("jan",  ["ed", "hal", "gav", "abe", "bob", "jon", "col", "ian", "fred", "dan"])]
 ```
 
-   
+
 The initial state:
 
 
@@ -3072,8 +3072,8 @@ Lets' make some perturbations: swap fiancees of abe and bob:
 link printf
 
 procedure main()
-   smd := IsStable(ShowEngaged(StableMatching(setup())))   
-   IsStable(ShowEngaged(Swap(\smd,smd.women[1],smd.women[2]))) 
+   smd := IsStable(ShowEngaged(StableMatching(setup())))
+   IsStable(ShowEngaged(Swap(\smd,smd.women[1],smd.women[2])))
 end
 
 procedure index(L,x)                         #: return index of value or fail
@@ -3087,19 +3087,19 @@ procedure ShowEngaged(smd)                   #: Show who's hooked up
    return smd
 end
 
-procedure Swap(smd,x0,x1)                    #: swap two couples by m or w   
+procedure Swap(smd,x0,x1)                    #: swap two couples by m or w
    printf("\nSwapping %s and %s\n",x0,x1)
    e := smd.engaged
    e[x0] :=: e[x1]                           # swap partners
    e[e[x0]] := e[e[x1]]
    return smd
-end   
+end
 
 procedure IsStable(smd)                      #: validate stability
    stable := 1                                               # assumption
    printf("\n")
    every mp := smd.prefs[m := !smd.men] &                    # man & pref
-         w := mp[index(mp,smd.engaged[m])-1 to 1 by -1] do { # better choices 
+         w := mp[index(mp,smd.engaged[m])-1 to 1 by -1] do { # better choices
       wp := smd.prefs[w]                                     # her choices
       if index(wp,smd.engaged[w]) > index(wp,m) then {
          printf("Engagement of %s to %s is unstable.\n",w,m)
@@ -3112,33 +3112,33 @@ procedure IsStable(smd)                      #: validate stability
       }
 end
 
-procedure StableMatching(smd)                #: match making 
-   freemen   := copy(smd.men)                # Initialize all m memberof M 
+procedure StableMatching(smd)                #: match making
+   freemen   := copy(smd.men)                # Initialize all m memberof M
    freewomen := set(smd.women)               # ... and w memberof W to free
    every (prefmen := table())[m := !freemen] := copy(smd.prefs[m])
    smd.engaged := engaged := table()
-   printf("\nMatching:\n")   
+   printf("\nMatching:\n")
    while m := get(freemen) do {                 # next freeman
       while w := get(prefmen[m]) do  {          # . with prpoposals left
          if member(freewomen,w) then {          # . . is she free?
-            engaged[m] := w                     # . . . (m, w) 
+            engaged[m] := w                     # . . . (m, w)
             engaged[w] := m
             delete(freewomen,w)
             printf("%s accepted %s's proposal\n",w,m)
             break
             }
-         else {                                 # . . no, she's engaged         
-            m0 := engaged[w]                    #     to m0                  
-            if index(smd.prefs[w],m) < index(smd.prefs[w],m0) then {  
+         else {                                 # . . no, she's engaged
+            m0 := engaged[w]                    #     to m0
+            if index(smd.prefs[w],m) < index(smd.prefs[w],m0) then {
                engaged[m] := w                  # (m, w) become engaged
                engaged[w] := m
                delete(freewomen,w)
                engaged[m0] := &null             # m' becomes free
-               put(freemen,m0)   
+               put(freemen,m0)
                printf("%s chose %s over %s\n",w,m,m0)
                break
                }
-            else next                          # she's happier as is 
+            else next                          # she's happier as is
          }
       }
    }
@@ -3151,13 +3151,13 @@ procedure setup()                        #: setup everyones data
    X := sm_data()
    X.men   := ["abe","bob","col","dan","ed","fred","gav","hal","ian","jon"]
    X.women := ["abi","bea","cath","dee","eve","fay","gay","hope","ivy","jan"]
-   
-   if *X.men ~= *(M := set(X.men)) then runerr(500,X.men)       # duplicate? 
+
+   if *X.men ~= *(M := set(X.men)) then runerr(500,X.men)       # duplicate?
    if *X.women ~= *(W := set(X.women)) then runerr(500,X.women) # duplicate?
    if *(B := M**W) ~= 0 then runerr(500,B)                      # intersect?
-   
+
    X.prefs := p := table()
-   
+
    p["abe"]  := ["abi","eve","cath","ivy","jan","dee","fay","bea","hope","gay"]
    p["bob"]  := ["cath","hope","abi","dee","eve","fay","bea","jan","ivy","gay"]
    p["col"]  := ["hope","eve","abi","dee","bea","fay","ivy","gay","cath","jan"]
@@ -3168,7 +3168,7 @@ procedure setup()                        #: setup everyones data
    p["hal"]  := ["abi","eve","hope","fay","ivy","cath","jan","bea","gay","dee"]
    p["ian"]  := ["hope","cath","dee","gay","bea","abi","fay","ivy","jan","eve"]
    p["jon"]  := ["abi","fay","jan","gay","eve","bea","dee","cath","ivy","hope"]
-   
+
    p["abi"]  := ["bob","fred","jon","gav","ian","abe","dan","ed","col","hal"]
    p["bea"]  := ["bob","abe","col","fred","gav","dan","ian","ed","jon","hal"]
    p["cath"] := ["fred","bob","ed","gav","hal","col","ian","abe","dan","jon"]
@@ -3179,14 +3179,14 @@ procedure setup()                        #: setup everyones data
    p["hope"] := ["gav","jon","bob","abe","ian","dan","hal","ed","col","fred"]
    p["ivy"]  := ["ian","col","hal","gav","fred","bob","abe","ed","jon","dan"]
    p["jan"]  := ["ed","hal","gav","abe","bob","jon","col","ian","fred","dan"]
-   
+
    return X
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 {{out}}
 
 ```txt
@@ -3271,10 +3271,10 @@ Fraw=: ;: ;._2 noun define -. ':,'
 
 GuyNames=: {."1 Mraw
 GalNames=: {."1 Fraw
- 
+
 Mprefs=: GalNames i. }."1 Mraw
 Fprefs=: GuyNames i. }."1 Fraw
- 
+
 propose=: dyad define
   engaged=. x
   'guy gal'=. y
@@ -3288,7 +3288,7 @@ propose=: dyad define
   end.
   engaged
 )
- 
+
 matchMake=: monad define
   engaged=. _"0 GuyNames NB. initially no one is engaged
   fallback=. 0"0 engaged NB. and each guy will first propose to his favorite
@@ -3302,7 +3302,7 @@ matchMake=: monad define
   end.
   GuyNames,:engaged{GalNames
 )
- 
+
 checkStable=: monad define
   'guys gals'=. (GuyNames,:GalNames) i."1 y
   satisfied=. ] >: (<0 1) |: ]
@@ -3340,7 +3340,7 @@ Stability check:
 
 ```j
    checkStable matchMake''
-   
+
 ```
 
 
@@ -4320,7 +4320,7 @@ void doMarriage() {
     Person *hope = [Person named:@"hope"];
     Person *ivy  = [Person named:@"ivy"];
     Person *jan  = [Person named:@"jan"];
-    
+
     abe.prefs  = @[ abi, eve, cath, ivy, jan, dee, fay, bea, hope, gay ];
     bob.prefs  = @[ cath, hope, abi, dee, eve, fay, bea, jan, ivy, gay ];
     col.prefs  = @[ hope, eve, abi, dee, bea, fay, ivy, gay, cath, jan ];
@@ -4341,9 +4341,9 @@ void doMarriage() {
     hope.prefs = @[ gav, jon, bob, abe, ian, dan, hal, ed, col, fred ];
     ivy.prefs  = @[ ian, col, hal, gav, fred, bob, abe, ed, jon, dan ];
     jan.prefs  = @[ ed, hal, gav, abe, bob, jon, col, ian, fred, dan ];
-    
+
     NSArray *men = abi.prefs;
-    
+
     NSUInteger freeMenCount = men.count;
     while (freeMenCount > 0) {
         for (Person *guy in men) {
@@ -4358,7 +4358,7 @@ void doMarriage() {
             }
         }
     }
-    
+
     for (Person *guy in men) {
         printf("%s is engaged to %s\n", [guy.name UTF8String], [guy.fiance.name UTF8String]);
     }
@@ -4605,7 +4605,7 @@ let () =
 
 
 ```Perl
-#!/usr/bin/env perl 
+#!/usr/bin/env perl
 use strict;
 use warnings;
 use feature qw/say/;
@@ -4774,7 +4774,7 @@ my %he-likes =
     ian  => < hope cath dee gay bea abi fay ivy jan eve >,
     jon  => < abi fay jan gay eve bea dee cath ivy hope >,
 ;
- 
+
 my %she-likes =
     abi  => < bob fred jon gav ian abe dan ed col hal >,
     bea  => < bob abe col fred gav dan ian ed jon hal >,
@@ -4791,16 +4791,16 @@ my %she-likes =
 my %fiancé;
 my %fiancée;
 my %proposed;
- 
+
 sub she-prefers ($her, $hottie) { .index($hottie) < .index(%fiancé{$her}) given ~%she-likes{$her} }
 sub he-prefers  ($him, $hottie) { .index($hottie) < .index(%fiancée{$him}) given ~%he-likes{$him} }
- 
+
 match'em;
 check-stability;
 
 perturb'em;
 check-stability;
- 
+
 sub match'em {                                          #'
     say 'Matchmaking:';
     while unmatched-guy() -> $guy {
@@ -4818,7 +4818,7 @@ sub match'em {                                          #'
 	}
     }
 }
- 
+
 sub check-stability {
     my @instabilities = gather for flat %he-likes.keys X %she-likes.keys -> $m, $w {
 	if he-prefers($m, $w) and she-prefers($w, $m) {
@@ -4834,16 +4834,16 @@ sub check-stability {
         say "\t(all marriages stable)";
     }
 }
- 
+
 sub unmatched-guy { %he-likes.keys.first: { not %fiancée{$_} } }
- 
+
 sub preferred-choice($guy) { %he-likes{$guy}.first: { not %proposed{"$guy $_" } } }
- 
+
 sub engage($guy, $gal) {
     %fiancé{$gal} = $guy;
     %fiancée{$guy} = $gal;
 }
- 
+
 sub perturb'em {                                            #'
     say 'Perturb:';
     say "\tengage abi with fred and bea with jon";
@@ -4891,7 +4891,7 @@ enum             abe , bob , col , dan , ed , fred , gav , hal , ian , jon
 constant hen = {"abi","bea","cath","dee","eve","fay","gay","hope","ivy","jan"}
 enum             abi , bea , cath , dee , eve , fay , gay , hope , ivy , jan
 
--- Given a complete list of ranked preferences, where the most liked is to the left: 
+-- Given a complete list of ranked preferences, where the most liked is to the left:
 sequence mpref = repeat(0,length(men))
     mpref[abe]  = {abi, eve, cath, ivy, jan, dee, fay, bea, hope, gay}
     mpref[bob]  = {cath, hope, abi, dee, eve, fay, bea, jan, ivy, gay}
@@ -4903,7 +4903,7 @@ sequence mpref = repeat(0,length(men))
     mpref[hal]  = {abi, eve, hope, fay, ivy, cath, jan, bea, gay, dee}
     mpref[ian]  = {hope, cath, dee, gay, bea, abi, fay, ivy, jan, eve}
     mpref[jon]  = {abi, fay, jan, gay, eve, bea, dee, cath, ivy, hope}
- 
+
 sequence hpref = repeat(0,length(hen))
     hpref[abi]  = {bob, fred, jon, gav, ian, abe, dan, ed, col, hal}
     hpref[bea]  = {bob, abe, col, fred, gav, dan, ian, ed, jon, hal}
@@ -4919,7 +4919,7 @@ sequence hpref = repeat(0,length(hen))
 sequence engagements := repeat(0,length(hen))
 sequence freemen = tagset(length(men))
 printf(1,"Engagements:\n")
- 
+
 -- use the Gale Shapley algorithm to find a stable set of engagements:
 while length(freemen) do
     integer man = freemen[1]
@@ -5194,7 +5194,7 @@ stable_mariage :-
 				   message(@pce, write_ln, @arg1?name, with, @arg1?elu?name))),
 
 	nl,
-	
+
 	% test of the stability of couples
 	stability(LstCouple),
 	nl,
@@ -5214,7 +5214,7 @@ stable_mariage :-
 	send(@pce, write_ln, NC1?second, with, NC1?first),
 	send(@pce, write_ln, NC2?second, with, NC2?first),
 	nl,
-	
+
 	stability(LstCouple).
 
 get_two_random_couples(Len, C1, C2) :-
@@ -5424,7 +5424,7 @@ couple(gav,abi) and couple(abe,ivy)
 couple(jon,gay) and couple(dan,fay)
 couple(jon,gay) and couple(gav,abi)
 
-true 
+true
 ```
 
 A more Prolog-ish version (working with SWI-Prolog) could be :
@@ -5529,7 +5529,7 @@ iteration(Men, Women, LstCouples) :-
 		   assert(person(X, Pref, free, Elu)),
 		   retract(prop(W, Prop)),
 		   assert(prop(W, [X| Prop])))),
-	
+
 	% women dispose
 	bagof(W, L^(prop(W, L), L \= []), LW),
 	forall(member(W, LW),
@@ -5545,7 +5545,7 @@ iteration(Men, Women, LstCouples) :-
 		   assert(prop(W, [])),
 		   assert(person(W, Pref, maybe, M))
 	       )),
-	
+
 	% finished ?
 	(   bagof(X, T^Z^(member(X, Women), person(X, T, free, Z)), _LW1) ->
 	    iteration(Men, Women, LstCouples)
@@ -5694,7 +5694,7 @@ EndStructure
 
 Global NewList messages.message()
 
-Procedure setupPersons(List persons.person(), count) 
+Procedure setupPersons(List persons.person(), count)
   Protected i, j, start, pref$
   For i = 1 To count
     Read.s pref$
@@ -5710,7 +5710,7 @@ Procedure setupPersons(List persons.person(), count)
   Next
 EndProcedure
 
-Procedure sendMessage(source.s, dest.s, action.s) 
+Procedure sendMessage(source.s, dest.s, action.s)
   LastElement(messages())
   AddElement(messages())
   With messages()
@@ -5725,16 +5725,16 @@ Procedure selectPerson(name.s, List persons.person())
   ForEach persons()
     If persons()\name = name
       Break
-    EndIf 
-  Next 
+    EndIf
+  Next
 EndProcedure
 
 Procedure rankPerson(name.s, List prefs.s())
   ForEach prefs()
     If prefs() = name
       ProcedureReturn #coupleCount - ListIndex(prefs()) ;higher is better
-    EndIf 
-  Next 
+    EndIf
+  Next
   ProcedureReturn -1 ;no rank, shouldn't occur
 EndProcedure
 
@@ -5749,11 +5749,11 @@ Procedure stabilityCheck(List guys.person(), List gals.person())
         PrintN(" And " + guys()\name + " loves " + gals()\name + " more than " + guys()\isEngagedTo + ".")
         isStable = #False
       EndIf
-    Wend 
+    Wend
   Next
   If isStable
     PrintN(#CRLF$ + "Marriage stability check PASSED.")
-  Else 
+  Else
     PrintN(#CRLF$ + "Marriage stability check FAILED.")
   EndIf
 EndProcedure
@@ -5775,7 +5775,7 @@ ForEach messages()
   source = messages()\source
   dest = messages()\dest
   action = messages()\action
-  
+
   DeleteElement(messages())
   Select action
     Case "P" ;propose ;only message received by gals
@@ -5786,23 +5786,23 @@ ForEach messages()
       ElseIf rankPerson(guys()\name, gals()\prefs()) > rankPerson(gals()\isEngagedTo, gals()\prefs())
         If gals()\isEngagedTo
           sendMessage(dest, gals()\isEngagedTo, "B")  ;break-up engagement
-        EndIf 
+        EndIf
         gals()\isEngagedTo = source
         sendMessage(dest, source, "A") ;accept proposal
-      EndIf 
+      EndIf
     Case "A", "D", "B" ;messages received by guys
       selectPerson(dest, guys())
       If action = "A" ;proposal accepted
-        guys()\isEngagedTo = source 
+        guys()\isEngagedTo = source
       Else
         If action = "B" ;broke-up
           guys()\isEngagedTo = ""
-        EndIf 
+        EndIf
         NextElement(guys()\prefs())
         sendMessage(dest, guys()\prefs(),"P") ;propose to next pref
-      EndIf  
+      EndIf
   EndSelect
-Next 
+Next
 
 If OpenConsole()
   PrintN("Marriages:")
@@ -5823,7 +5823,7 @@ If OpenConsole()
   PrintN("  " + *person_2\name + " is now with " + *person_2\isEngagedTo + ".")
   PrintN("")
   stabilityCheck(guys(), gals())
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -6553,7 +6553,7 @@ repl: Procedure
     If p>0 Then
       s=left(s,p-1)||new||substr(s,p+length(old))
     End
-  Return s     
+  Return s
 ```
 
 {{out}}
@@ -6664,7 +6664,7 @@ object SMP extends App {
         "hope" -> List("gav", "jon", "bob", "abe", "ian", "dan", "hal", "ed", "col", "fred"),
         "ivy" -> List("ian", "col", "hal", "gav", "fred", "bob", "abe", "ed", "jon", "dan"),
         "jan" -> List("ed", "hal", "gav", "abe", "bob", "jon", "col", "ian", "fred", "dan"))
-    
+
     private lazy val matches = {
         val engagements = new TM
         val freeGuys = scala.collection.mutable.Queue.empty ++ guys
@@ -6692,7 +6692,7 @@ object SMP extends App {
         engagements foreach { e => println(s"${e._1} is engaged to ${e._2}") }
         engagements
     }
-    
+
     checkMarriages()
     swap()
     checkMarriages()
@@ -7361,11 +7361,11 @@ class Person {
     var candidateIndex = 0
     var fiance:Person?
     var candidates = [Person]()
-    
+
     init(name:String) {
         self.name = name
     }
-    
+
     func rank(p:Person) -> Int {
         for (i, candidate) in enumerate(self.candidates) {
             if candidate === p {
@@ -7374,28 +7374,28 @@ class Person {
         }
         return self.candidates.count + 1
     }
-    
+
     func prefers(p:Person) -> Bool {
         if let fiance = self.fiance {
             return self.rank(p) < self.rank(fiance)
         }
         return false
     }
-    
+
     func nextCandidate() -> Person? {
         if self.candidateIndex >= self.candidates.count {
             return nil
         }
         return self.candidates[candidateIndex++]
     }
-    
+
     func engageTo(p:Person) {
         p.fiance?.fiance = nil
         p.fiance = self
         self.fiance?.fiance = nil
         self.fiance = p
     }
-    
+
     func swapWith(p:Person) {
         let thisFiance = self.fiance
         let pFiance = p.fiance
@@ -7456,7 +7456,7 @@ func doMarriage() {
     let hope = Person(name: "Hope")
     let ivy  = Person(name: "Ivy")
     let jan  = Person(name: "Jan")
-    
+
     abe.candidates  = [abi, eve, cath, ivy, jan, dee, fay, bea, hope, gay]
     bob.candidates  = [cath, hope, abi, dee, eve, fay, bea, jan, ivy, gay]
     col.candidates  = [hope, eve, abi, dee, bea, fay, ivy, gay, cath, jan]
@@ -7477,20 +7477,20 @@ func doMarriage() {
     hope.candidates = [gav, jon, bob, abe, ian, dan, hal, ed, col, fred]
     ivy.candidates  = [ian, col, hal, gav, fred, bob, abe, ed, jon, dan]
     jan.candidates  = [ed, hal, gav, abe, bob, jon, col, ian, fred, dan]
-    
+
     let guys = [abe, bob, col, dan, ed, fred, gav, hal, ian, jon]
     let gals = [abi, bea, cath, dee, eve, fay, gay, hope, ivy, jan]
-    
+
     engageEveryone(guys)
-    
+
     for guy in guys {
         println("\(guy.name) is engaged to \(guy.fiance!.name)")
     }
-    
+
     println("Stable = \(isStable(guys, gals))")
     jon.swapWith(fred)
     println("Stable = \(isStable(guys, gals))")
-    
+
 }
 
 doMarriage()
@@ -7751,7 +7751,7 @@ main() {
 
     # If she has a fiancé and prefers him to this guy, look for this guy's next
     # best choice
-    while [[ -n $fiance ]] && 
+    while [[ -n $fiance ]] &&
       (( $(index "$male" "${hers[@]}") > $(index "$fiance" "${hers[@]}") )); do
       let f+=1
       female=${his[f]}
@@ -7777,7 +7777,7 @@ main() {
   # Verify its stability
   print_stable engagements "${females[@]}"
 
-  # Try a swap 
+  # Try a swap
   printf '\nWhat if cath and ivy swap partners?\n'
   local temp=${engagements[cath]}
   engagements[cath]=${engagements[ivy]}
@@ -7831,7 +7831,7 @@ print_stable() {
 # determine if a set of engagements is stable; takes name of engagement array
 # followed by the list of females
 stable() {
-  local dict=$1 
+  local dict=$1
   shift
   eval 'local shes=("${!'"$dict"'[@]}")'
   eval 'local hes=("${'"$dict"'[@]}")'
@@ -7844,7 +7844,7 @@ stable() {
     for alt in "$@"; do
       eval 'local fiance=${'"$dict"'["'"$alt"'"]}'
       eval 'local hers=("${'"$alt"'[@]}")'
-      if (( $(index "$she" "${his[@]}") > $(index "$alt" "${his[@]}") 
+      if (( $(index "$she" "${his[@]}") > $(index "$alt" "${his[@]}")
          && $(index "$fiance" "${hers[@]}") > $(index "$he" "${hers[@]}") ))
        then
         printf '%-4s is engaged to %-4s but prefers %4s, ' "$he" "$she" "$alt"
@@ -7863,50 +7863,50 @@ main "$@"
 {{Out}}
 
 ```txt
-abi  accepted abe 
-cath accepted bob 
-hope accepted col 
-ivy  accepted dan 
-jan  accepted ed  
+abi  accepted abe
+cath accepted bob
+hope accepted col
+ivy  accepted dan
+jan  accepted ed
 bea  accepted fred
-gay  accepted gav 
-eve  accepted hal 
-hope rejected col 
-hope accepted ian 
-abi  rejected abe 
-abi  accepted jon 
-dee  accepted col 
-ivy  rejected dan 
-ivy  accepted abe 
-fay  accepted dan 
+gay  accepted gav
+eve  accepted hal
+hope rejected col
+hope accepted ian
+abi  rejected abe
+abi  accepted jon
+dee  accepted col
+ivy  rejected dan
+ivy  accepted abe
+fay  accepted dan
 
 Couples:
-abi  is engaged to jon 
+abi  is engaged to jon
 bea  is engaged to fred
-cath is engaged to bob 
-dee  is engaged to col 
-eve  is engaged to hal 
-fay  is engaged to dan 
-gay  is engaged to gav 
-hope is engaged to ian 
-ivy  is engaged to abe 
-jan  is engaged to ed  
+cath is engaged to bob
+dee  is engaged to col
+eve  is engaged to hal
+fay  is engaged to dan
+gay  is engaged to gav
+hope is engaged to ian
+ivy  is engaged to abe
+jan  is engaged to ed
 
 These couples are stable.
 
 What if cath and ivy swap partners?
 
 Couples:
-abi  is engaged to jon 
+abi  is engaged to jon
 bea  is engaged to fred
-cath is engaged to abe 
-dee  is engaged to col 
-eve  is engaged to hal 
-fay  is engaged to dan 
-gay  is engaged to gav 
-hope is engaged to ian 
-ivy  is engaged to bob 
-jan  is engaged to ed  
+cath is engaged to abe
+dee  is engaged to col
+eve  is engaged to hal
+fay  is engaged to dan
+gay  is engaged to gav
+hope is engaged to ian
+ivy  is engaged to bob
+jan  is engaged to ed
 
 bob  is engaged to ivy  but prefers  abi, while abi  is engaged to jon  but prefers  bob.
 bob  is engaged to ivy  but prefers  bea, while bea  is engaged to fred but prefers  bob.
@@ -8066,7 +8066,7 @@ Sub M_snb()
         "_hope gav jon bob abe ian dan hal ed col fred " & _
         "_ivy ian col hal gav fred bob abe ed jon dan " & _
         "_jan ed hal gav abe bob jon col ian fred dan "
-     
+
   sn = Filter(Filter(Split(c00), "_"), "-", 0)
   Do
     c01 = Mid(c00, InStr(c00, sn(0) & " "))
@@ -8086,7 +8086,7 @@ Sub M_snb()
      Next
      sn = Filter(Filter(Filter(Split(c00), "_"), "-", 0), ".", 0)
    Loop Until UBound(sn) = -1
-   
+
    MsgBox Replace(Join(Filter(Split(c00), "-"), vbLf), "_", "")
 End Sub
 ```
@@ -8100,7 +8100,7 @@ Sub M_snb()
   Set d_00 = CreateObject("scripting.dictionary")
   Set d_01 = CreateObject("scripting.dictionary")
   Set d_02 = CreateObject("scripting.dictionary")
-   
+
   sn = Split("abe abi eve cath ivy jan dee fay bea hope gay _" & _
        "bob cath hope abi dee eve fay bea jan ivy gay _" & _
        "col hope eve abi dee bea fay ivy gay cath jan _" & _
@@ -8111,7 +8111,7 @@ Sub M_snb()
        "hal abi eve hope fay ivy cath jan bea gay dee _" & _
        "ian hope cath dee gay bea abi fay ivy jan eve _" & _
        "jon abi fay jan gay eve bea dee cath ivy hope ", "_")
- 
+
   sp = Split("abi bob fred jon gav ian abe dan ed col hal _" & _
        "bea bob abe col fred gav dan ian ed jon hal _" & _
        "cath fred bob ed gav hal col ian abe dan jon _" & _
@@ -8122,14 +8122,14 @@ Sub M_snb()
        "hope gav jon bob abe ian dan hal ed col fred _" & _
        "ivy ian col hal gav fred bob abe ed jon dan _" & _
        "jan ed hal gav abe bob jon col ian fred dan ", "_")
-     
+
   For j = 0 To UBound(sn)
     d_00(Split(sn(j))(0)) = ""
     d_01(Split(sp(j))(0)) = ""
     d_02(Split(sn(j))(0)) = sn(j)
     d_02(Split(sp(j))(0)) = sp(j)
   Next
-    
+
   Do
     For Each it In d_00.keys
       If d_00.Item(it) = "" Then
@@ -8149,7 +8149,7 @@ Sub M_snb()
       End If
     Next
   Loop Until UBound(Filter(d_00.items, vbTab)) = d_00.Count - 1
-   
+
   MsgBox Join(d_00.items, vbLf)
 End Sub
 ```
@@ -8180,15 +8180,15 @@ jan  - abi
 Assume that the input is in XML form as listed [[Stable marriage problem/XSLT input|here]]. The following XSLT 2.0 style-sheet...
 
 <lang><xsl:stylesheet version="2.0"
-  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-  xmlns:fn="http://www.w3.org/2005/xpath-functions" 
-  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:fn="http://www.w3.org/2005/xpath-functions"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:m="http://rosettacode.org/wiki/Stable_marriage_problem"
-  xmlns:t="http://rosettacode.org/wiki/Stable_marriage_problem/temp" 
+  xmlns:t="http://rosettacode.org/wiki/Stable_marriage_problem/temp"
   exclude-result-prefixes="xsl xs fn t m">
 <xsl:output indent="yes" encoding="UTF-8" omit-xml-declaration="yes" />
 <xsl:strip-space elements="*" />
-      
+
 <xsl:template match="*">
   <xsl:copy>
     <xsl:apply-templates select="@*,node()" />
@@ -8235,7 +8235,7 @@ Assume that the input is in XML form as listed [[Stable marriage problem/XSLT in
   <xsl:variable name="solution">
     <xsl:call-template name="solve-it">
       <xsl:with-param name="dudes" select="m:dude" />
-      <xsl:with-param name="maids" select="m:maid" tunnel="yes" /> 
+      <xsl:with-param name="maids" select="m:maid" tunnel="yes" />
     </xsl:call-template>
   </xsl:variable>
   <xsl:variable name="perturbed">
@@ -8259,13 +8259,13 @@ Assume that the input is in XML form as listed [[Stable marriage problem/XSLT in
   <xsl:param name="dudes" as="element()*" /> <!-- Sequence of m:dude -->
   <xsl:param name="maids" as="element()*" tunnel="yes" />  <!-- Sequence of m:maid -->
   <xsl:param name="engagements" as="element()*" select="()" /> <!-- Sequence of m:engagement -->
-  
+
   <!-- 1. For each dude not yet engaged, and has a preference, propose to his top preference. -->
   <xsl:variable name="fresh-proposals">
     <xsl:apply-templates select="$dudes[not(@name = $engagements/m:dude/@name)]/m:interest[1]" mode="match-making" />
   </xsl:variable>
   <xsl:variable name="proposals" select="$engagements | $fresh-proposals/m:engagement" />
-  
+
   <!-- 2. For each maid with conflicting suitors, reject all but the most attractive (for her) proposal. -->
   <xsl:variable name="acceptable" select="$proposals[
     for $g in m:maid/@name, $b in m:dude/@name, $this-interest in $maids[@name=$g]/m:interest[.=$b]
@@ -8277,20 +8277,20 @@ Assume that the input is in XML form as listed [[Stable marriage problem/XSLT in
 		satisfies
 		  $interest >> $this-interest
     ]" />
-  
+
   <!-- 3. Reject suitors cross-off the maids that spurned them. -->
   <xsl:variable name="new-dudes">
     <xsl:apply-templates select="$dudes" mode="match-making">
       <xsl:with-param name="eliminations" select="$fresh-proposals/m:engagement" />
     </xsl:apply-templates>
   </xsl:variable>
-  
+
   <!-- 4. Test for finish. If not, loop back for another round of proposals. -->
   <xsl:choose>
     <xsl:when test="$dudes[not(for $b in @name return $acceptable[m:dude/@name=$b])]">
   	  <xsl:call-template name="solve-it">
         <xsl:with-param name="dudes" select="$new-dudes/m:dude" />
-        <xsl:with-param name="engagements" select="$acceptable" /> 
+        <xsl:with-param name="engagements" select="$acceptable" />
 	  </xsl:call-template>
     </xsl:when>
 	<xsl:otherwise>
@@ -8307,13 +8307,13 @@ Assume that the input is in XML form as listed [[Stable marriage problem/XSLT in
 	      $b in string($e/m:dude/@name), $g in string($e/m:maid/@name),
 		  $desired-g in $population/self::m:dude[@name=$b]/m:interest[$g=following-sibling::m:interest],
 		  $desired-maid in $population/self::m:maid[@name=$desired-g]
-	  satisfies 
+	  satisfies
           not(
 		    $desired-maid/m:interest[.=$b] &lt;&lt;
 		    $desired-maid/m:interest[.=$engagements[m:maid[@name=$desired-g]]/m:dude/@name])
-  " />  
-</xsl:function>  
-	 
+  " />
+</xsl:function>
+
 </xsl:stylesheet>
 ```
 
@@ -8401,10 +8401,10 @@ var
       "ivy", "ian col hal gav fred bob abe ed jon dan".split(),
       "jan", "ed hal gav abe bob jon col ian fred dan".split(), ),
    Couples=List();  // ( (boy,girl),(boy,girl),...)
- 
+
 Boyz:=Boys.pump(Dictionary(),fcn([(b,gs)]){ return(b,gs.copy()) }); // make writable copy
 while( bgs:=Boyz.filter1( 'wrap([(Boy,gs)]){ // while unattached boy
-             gs and (not Couples.filter1("holds",Boy)) 
+             gs and (not Couples.filter1("holds",Boy))
      }) )
 {
    Boy,Girl:=bgs; Girl=Girl.pop(0);

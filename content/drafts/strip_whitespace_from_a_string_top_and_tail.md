@@ -13,7 +13,7 @@ tags = []
 {{task|String manipulation}}
 
 ;Task:
-Demonstrate how to strip leading and trailing whitespace from a string. 
+Demonstrate how to strip leading and trailing whitespace from a string.
 
 The solution should demonstrate how to achieve the following three results:
 
@@ -23,7 +23,7 @@ The solution should demonstrate how to achieve the following three results:
 
 
 
-For the purposes of this task whitespace includes non printable characters such as the space character, the tab character, and other such characters that have no corresponding graphical representation. 
+For the purposes of this task whitespace includes non printable characters such as the space character, the tab character, and other such characters that have no corresponding graphical representation.
 
 
 
@@ -137,7 +137,7 @@ A single procedure that trims leading space, trailing space, or both.
 
 
 ```algol68
-# 
+#
   string_trim
   Trim leading and trailing whitespace from string.
 
@@ -205,19 +205,19 @@ end strip
 -- TEST ----------------------------------------------------------------------
 on run
     set strText to "  \t\t \n \r    Much Ado About Nothing \t \n \r  "
-    
+
     script arrowed
         on |λ|(x)
             "-->" & x & "<--"
         end |λ|
     end script
-    
+
     map(arrowed, [stripStart(strText), stripEnd(strText), strip(strText)])
-    
-    --     {"-->Much Ado About Nothing      
-    --  
-    --   <--", "-->           
-    --  
+
+    --     {"-->Much Ado About Nothing
+    --
+    --   <--", "-->
+    --
     --     Much Ado About Nothing<--", "-->Much Ado About Nothing<--"}
 end run
 
@@ -272,7 +272,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -298,10 +298,10 @@ end regexTest
 {{Out}}
 
 ```AppleScript
-{"-->Much Ado About Nothing      
- 
-  <--", "-->           
- 
+{"-->Much Ado About Nothing
+
+  <--", "-->
+
     Much Ado About Nothing<--", "-->Much Ado About Nothing<--"}
 ```
 
@@ -327,7 +327,7 @@ MsgBox % clipboard := "<" LTrim(string) ">`n<" RTrim(string) ">`n<" . Trim(strin
 
 
 ## AWK
- 
+
 *[:graph:] is a POSIX character class for characters that are both printable and visible. The following strips the entire non-[:graph:] character set. A simplified version for the more common task of removing only spaces and tabs follows it.
 
 
@@ -341,8 +341,8 @@ function trimleft(str   ,c, out, arr) {
 
 function reverse(str    ,n, tmp, j, out) {
     n = split(str, tmp, "")
-    for (j = n; j > 0; j--) 
-        out = out tmp[j]    
+    for (j = n; j > 0; j--)
+        out = out tmp[j]
     return out
 }
 
@@ -416,10 +416,10 @@ function trim(str) {
 ```bbcbasic
       REM Remove leading whitespace:
       WHILE ASC(A$)<=32 A$ = MID$(A$,2) : ENDWHILE
-      
+
       REM Remove trailing whitespace:
       WHILE ASC(RIGHT$(A$))<=32 A$ = LEFT$(A$) : ENDWHILE
-      
+
       REM Remove both leading and trailing whitespace:
       WHILE ASC(A$)<=32 A$ = MID$(A$,2) : ENDWHILE
       WHILE ASC(RIGHT$(A$))<=32 A$ = LEFT$(A$) : ENDWHILE
@@ -511,8 +511,8 @@ blsq ) "  this is a string  "tt
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -552,7 +552,7 @@ int main()
   char *d = trim(a);
 
   printf("'%s'\n'%s'\n'%s'\n", b, c, d);
-  
+
   free(b);
   free(c);
   free(d);
@@ -565,8 +565,8 @@ int main()
 ## C++
 
 
-```cpp>#include <boost/algorithm/string.hpp
-
+```cpp
+#include <boost/algorithm/string.hpp>
 #include <string>
 #include <iostream>
 
@@ -584,8 +584,8 @@ int main( ) {
 ```
 
 {{out}}
-<PRE>The test phrase is :    There are unwanted blanks here!    
-Trimmed on the left side :There are unwanted blanks here!    
+<PRE>The test phrase is :    There are unwanted blanks here!
+Trimmed on the left side :There are unwanted blanks here!
 Trimmed on the right side :    There are unwanted blanks here!
 Trimmed on both sides :There are unwanted blanks here!</PRE>
 
@@ -670,7 +670,7 @@ DISPLAY "'" FUNCTION TRIM(str) "'"
 
 (defvar str "   foo bar     baz  ")
 
-(string-trim *whitespace* str) 
+(string-trim *whitespace* str)
 ; -> "foo bar     baz"
 
 (string-left-trim *whitespace* str)
@@ -682,7 +682,7 @@ DISPLAY "'" FUNCTION TRIM(str) "'"
 ; Whitespace characters defined by Unicode for
 ; implementations which support it (e.g. CLISP, SBCL).
 ; (see http://www.unicode.org/Public/UCD/latest/ucd/PropList.txt)
-(defvar *unicode-whitespace* 
+(defvar *unicode-whitespace*
   '(#\u0009 #\u000a #\u000b #\u000c #\u000d
     #\u0020 #\u0085 #\u00a0 #\u1680 #\u2000
     #\u2001 #\u2002 #\u2003 #\u2004 #\u2005
@@ -726,7 +726,7 @@ strip_whitepace("\t hello \t")
 
 
 ## D
- 
+
 
 ```d
 import std.stdio, std.string;
@@ -799,7 +799,7 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     var toTrim := " Trim me ";
@@ -856,7 +856,7 @@ IO.inspect String.lstrip(str)
 
 (setq str "    left between right  ")
 (insert (trim-l str) )
- 
+
 
 ```
 
@@ -864,7 +864,7 @@ IO.inspect String.lstrip(str)
 
 ```txt
 
-left between right    
+left between right
 
 ```
 
@@ -981,7 +981,7 @@ for i = 1 to length(extraSeq) do --loop over each character in the sequence.
     printf(1, "String element %d", i) --to look at more detail,
     printf(1, " : %d\r\n", extraSeq[i])--print integer values(ascii) of the string.
 end for
-    
+
 any_key()
 ```
 
@@ -1043,22 +1043,22 @@ USING: unicode.categories;
 
 Modern Forth advocates the use of "stack strings". These are simply the memory address of the text on the stack followed by the length of the string on the stack. The advantage of using stack strings is that string manipulation is done without resorting to copying the strings to temporary memory. This makes string manipulation very fast. The values left on the stack are suitable as input arguments for further processing so function concatenation is possible to create more complex functions.
 
-After the string processing is completed on the stack the program can print or copy back to memory as required. 
+After the string processing is completed on the stack the program can print or copy back to memory as required.
 
 
 ```forth
 : -leading ( addr len -- addr' len' ) \ called "minus-leading"
-    begin 
+    begin
       over c@ bl =  \ fetch character at addr, test if blank (space)
-    while 
-     \ cut 1 leading character by incrementing address & decrementing length 
+    while
+     \ cut 1 leading character by incrementing address & decrementing length
       1 /string      \ "cut-string"
    repeat ;
 ```
 
 The counterpart function "-trailing" is normally part of a standard forth system,
 so by concatenating both we create a "STRIP" function.
-<lang> : strip ( addr len -- addr' len') -leading -trailing ; 
+<lang> : strip ( addr len -- addr' len') -leading -trailing ;
 ```
 
 Test at the Forth console
@@ -1067,8 +1067,8 @@ Test at the Forth console
 : mystring s"        Trim this string.        "  ;
 
 mstring type        Trim this string.       ok
-mstring -leading type Trim this string.        ok      
-mystring -trailing type        Trim this string. ok       
+mstring -leading type Trim this string.        ok
+mystring -trailing type        Trim this string. ok
 mytring strip type Trim this string. ok
 ```
 
@@ -1089,7 +1089,7 @@ Otherwise, one must write integer functions such as ISTNB(x) and LSTNB(x) to ret
 ```freebasic
 ' FB 1.05.0 Win64
 
-Const whitespace = !" \t\n\v\f\r" 
+Const whitespace = !" \t\n\v\f\r"
 
 Dim s  As String = !"  \tRosetta Code \v\f\r\n"
 Dim s1 As String = LTrim (s, Any whitespace)
@@ -1099,10 +1099,10 @@ Dim s3 As String = Trim  (s, Any whitespace)
 ' Under Windows console :
 ' "vertical tab" displays as ♂
 ' "form feed" displays as ♀
-' the other whitespace characters do what it says on the tin 
+' the other whitespace characters do what it says on the tin
 
 Print "Untrimmed"         , "=> "; s
-Print "Left Trimmed"      , "=> "; s1 
+Print "Left Trimmed"      , "=> "; s1
 Print "Right Trimmed"     , "=> "; s2
 Print "Fully Trimmed"     , "=> "; s3
 Print
@@ -1251,7 +1251,7 @@ println '
 Unstripped
 ------------
 |
-	  abc  
+	  abc
 	|
 
 ### ======
@@ -1266,7 +1266,7 @@ Stripped
 
 Left Stripped
 ------------
-|abc  
+|abc
 	|
 
 ### ======
@@ -1444,7 +1444,7 @@ Or, composing from generic primitives:
     let strip = s => dropAround(isSpace, s);
     // OR: let strip = s => s.trim();
 
-    
+
 
     // GENERIC FUNCTIONS
 
@@ -1639,7 +1639,7 @@ julia> strip(s)
 fun main(args: Array<String>) {
     val s = "  \tRosetta Code \r\n"
     println("Untrimmed       => $s")
-    println("Left Trimmed    => ${s.trimStart()}") 
+    println("Left Trimmed    => ${s.trimStart()}")
     println("Right Trimmed   => ${s.trimEnd()}")
     println("Fully Trimmed   => ${s.trim()}")
 }
@@ -1710,7 +1710,7 @@ function rtrim$(a$)
     c$=trim$("."+a$)
     rtrim$ = mid$(c$, 2)
 end function
- 
+
 
 ```
 
@@ -1790,7 +1790,7 @@ Module CheckIt {
 	for i=1 to 31:filter$+=chr$(i):next
 	a$=chr$(9)+"    There are unwanted blanks here!    "+chr$(9)
 	a$=filter$(a$,filter$) ' exclude non printable characters
-	
+
 	\\ string encoded as UTF16LE
 	Print Len(a$)=39
 	Print(ltrim$(a$))
@@ -1858,12 +1858,12 @@ StringTrim[" \n\t    string with spaces   \n   \t   "]
 
 ```matlab
 % remove trailing whitespaces
-    str = str(1:find(~isspace(str),1,'last'));  
+    str = str(1:find(~isspace(str),1,'last'));
 % remove leading whitespaces
-    str = str(find(~isspace(str),1):end);       
+    str = str(find(~isspace(str),1):end);
 
 % removes leading and trailing whitespaces, vectorized version
-    f = ~isspace(str); 
+    f = ~isspace(str);
     str = str(find(f,1,'first'):find(f,1,'last');
 
 % a built-in function, removes leading and trailing whitespaces
@@ -2005,13 +2005,13 @@ method runSample(arg) public static
 
 '''Output:'''
 <pre style="height: 25ex; overflow:scroll;">
-  Original string  [   	 
-  ﻿1 String with white space.  	  
+  Original string  [
+  ﻿1 String with white space.
     ]
-    strip leading  [1 String with white space.  	  
+    strip leading  [1 String with white space.
     ]
-    strip trailing [   	 
-  ﻿1 String with white space.]
+    strip trailing [
+ ﻿1 String with white space.]
     strip both     [1 String with white space.]
 
   Original string  [ 	 2 String with white space. 	   ]
@@ -2034,7 +2034,7 @@ method runSample(arg) public static
     strip trailing [5 String with white space.]
     strip both     [5 String with white space.]
 
-  Original string  [ 	 ﻿  ]
+  Original string  [ ﻿  ]
     strip leading  []
     strip trailing []
     strip both     []
@@ -2097,13 +2097,13 @@ CONST
 	(* whitespaces *)
 	HT = 09X;	VT = 0BX;	FF = 0CX;	GS = 1DX;	US = 1FX;
 	LF = 0AX;	CR = 0DX; 	FS = 1CX;	RS = 1EX;	SPC = 20X;
-	
+
 PROCEDURE LTrim(VAR s: ARRAY OF CHAR);
-VAR 
+VAR
 	j : INTEGER;
 BEGIN
 	j := 0;
-	WHILE (s[j] = HT) OR (s[j] = LF) OR (s[j] = VT) OR (s[j] = CR) OR 
+	WHILE (s[j] = HT) OR (s[j] = LF) OR (s[j] = VT) OR (s[j] = CR) OR
 		(s[j] = FF) OR (s[j] = FS) OR (s[j] = FS) OR (s[j] = GS) OR
 		(s[j] = RS) OR (s[j] = US) OR (s[j] = SPC) DO INC(j) END;
 	SYSTEM.MOVE(SYSTEM.ADR(s[j]),SYSTEM.ADR(s[0]),LEN(s) - j);
@@ -2115,23 +2115,23 @@ VAR
 BEGIN
 	j := LEN(s) - 1;
 	WHILE (j >= 0) & (s[j] = 0X) DO DEC(j) END;
-	WHILE (j >= 0) & ((s[j] = HT) OR (s[j] = LF) OR (s[j] = VT) OR (s[j] = CR) OR 
+	WHILE (j >= 0) & ((s[j] = HT) OR (s[j] = LF) OR (s[j] = VT) OR (s[j] = CR) OR
 		(s[j] = FF) OR (s[j] = FS) OR (s[j] = FS) OR (s[j] = GS) OR
-		(s[j] = RS) OR (s[j] = US) OR (s[j] = SPC)) DO 
+		(s[j] = RS) OR (s[j] = US) OR (s[j] = SPC)) DO
 		s[j] := 0X;
  		DEC(j)
 	END
 END RTrim;
 
 PROCEDURE Trim(VAR s: ARRAY OF CHAR);
-BEGIN 
+BEGIN
 	LTrim(s);
 	RTrim(s)
 END Trim;
 
 VAR
 	s: ARRAY 100 OF CHAR;
-	
+
 BEGIN
 	s := "   A AAA";
 	Out.Char("[");Out.String(s);Out.String("]=");Out.Char(HT);LTrim(s);Out.Char("[");Out.String(s);Out.Char("]");Out.Ln;
@@ -2197,14 +2197,14 @@ Output:
   NSCharacterSet *cs = [NSCharacterSet whitespaceAndNewlineCharacterSet];
   for(i = [self length] -1; i >= 0; i--)
   {
-    if ( ![cs characterIsMember: [self characterAtIndex: i]] ) break;    
+    if ( ![cs characterIsMember: [self characterAtIndex: i]] ) break;
   }
   return [self substringToIndex: (i+1)];
 }
 
 -(NSString *) trim
 {
-  return [self 
+  return [self
 	   stringByTrimmingCharactersInSet:
 	     [NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
@@ -2314,11 +2314,11 @@ VIEW-AS ALERT-BOX.
 ---------------------------
 Message
 ---------------------------
-|string with spaces   | 
-|   string with spaces| 
+|string with spaces   |
+|   string with spaces|
 |string with spaces|
 ---------------------------
-OK   
+OK
 ---------------------------
 
 ```
@@ -2397,7 +2397,7 @@ constant s = "\ttest\n"
 There is a built-in function that already does this.
 
 ```PHP
-<?php 
+<?php
 
 /**
  * @author Elad Yosifon
@@ -2490,7 +2490,7 @@ $var.Trim() # String with both leading and trailing whitespace removed
 
 ```txt
 
-Hello World 
+Hello World
  Hello World
 Hello World
 
@@ -2595,7 +2595,7 @@ If OpenConsole()
   PrintN(#DQUOTE$ + myLTrim("  Top  ") + #DQUOTE$)
   PrintN(#DQUOTE$ + myRTrim("  Tail  ") + #DQUOTE$)
   PrintN(#DQUOTE$ +  myTrim("  Both  ") + #DQUOTE$)
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2624,7 +2624,7 @@ EndIf
 ' \t \r \n String with spaces'
 >>> s.strip()
 'String with spaces'
->>> 
+>>>
 ```
 
 
@@ -2772,8 +2772,8 @@ s >�  Hi  � there!  �<
 sl>Hi  � there!  �<
 sr>�  Hi  � there!<
 sb>Hi  � there!<
-sa>Hi there!<    
-s0>Hithere!<      
+sa>Hi there!<
+s0>Hithere!<
 
 ```
 
@@ -2831,7 +2831,7 @@ end
 
 
 ```txt
-   Top:abcdefg 
+   Top:abcdefg
 Bottom:  abcdefg
   Both:abcdefg
 ```
@@ -2910,7 +2910,7 @@ def trimRight(str: String) = str take (str.lastIndexWhere(!_.isWhitespace) + 1)
 def trimRight2(str: String) = trimLeft(str reverse) reverse
 
 def trim(str: String) = str trim
-		
+
 def testTrim() = {
   val str = "  \u001F  String with spaces \t  \n  \r "
   println("original  : |" + str + "|")
@@ -2924,11 +2924,11 @@ def testTrim() = {
 {{out}}
 
 ```txt
-original  : |  �  String with spaces 	  
-  
+original  : |  �  String with spaces
+
  |
-trimLeft  : |String with spaces 	  
-  
+trimLeft  : |String with spaces
+
  |
 trimRight : |  �  String with spaces|
 trimRight2: |  �  String with spaces|
@@ -3014,7 +3014,7 @@ a := '      this is a string       '.
     s2 = CHAR(3) s2 CHAR(134)
     &ALPHABET TAB(33) . prechars
     &ALPHABET POS(127) RTAB(0) . postchars
-    stripchars = " " prechars postchars 
+    stripchars = " " prechars postchars
 
 * TRIM() removes final spaces and tabs:
     OUTPUT = "Original: >" s1 "<"

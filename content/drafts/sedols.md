@@ -13,7 +13,7 @@ tags = []
 {{task|Checksums}}
 
 ;Task:
-For each number list of '''6'''-digit [[wp:SEDOL|SEDOL]]s, calculate and append the checksum digit.  
+For each number list of '''6'''-digit [[wp:SEDOL|SEDOL]]s, calculate and append the checksum digit.
 
 
 That is, given this input:
@@ -33,7 +33,7 @@ B0YBKT
 B00030
 
 ```
- 
+
 Produce this output:
 
 ```txt
@@ -94,7 +94,7 @@ function toSum(str:String):uint {
 	if(str.length != 6)
 		throw new Error("toSum expected length 6, recieved " + str.length);
 	var sum:uint=0;
-	for (var i:uint = 0; i < str.length; i++) 
+	for (var i:uint = 0; i < str.length; i++)
 		sum+=toSEDOLCode(str.charAt(i))*[1,3,1,7,3,9][i];
 	return sum;
 }
@@ -196,7 +196,7 @@ B0YBKT7
 ```algol68
 []INT sedol weights = (1, 3, 1, 7, 3, 9);
 STRING reject = "AEIOUaeiou";
- 
+
 PROC strcspn = (STRING s,reject)INT: (
   INT out:=0;
   FOR i TO UPB s DO
@@ -214,10 +214,10 @@ PROC sedol checksum = (REF STRING sedol6)INT:
 
   INT len := UPB sedol6;
   INT sum := 0;
- 
+
   IF sedol6[len-1] = REPR 10 THEN len-:=1; sedol6[len]:=null char FI;
   IF len = 7 THEN
-    putf(stand error, ($"SEDOL code already checksummed? ("g")"l$, sedol6)); 
+    putf(stand error, ($"SEDOL code already checksummed? ("g")"l$, sedol6));
     out := ABS ( BIN ABS sedol6[6] AND 16r7f); return out
   FI;
   IF len > 7 OR len < 6 OR strcspn(sedol6, reject) /= 6 THEN
@@ -238,11 +238,11 @@ PROC sedol checksum = (REF STRING sedol6)INT:
   out := (10 - (sum MOD 10)) MOD 10 + ABS "0";
   return out: out
 );
- 
+
 main:
 (
   STRING line;
-  
+
   on logical file end(stand in, (REF FILE f)BOOL: done);
   DO getf(stand in, ($gl$,line));
     INT sr := sedol checksum(line);
@@ -512,7 +512,7 @@ END FUNCTION
       PRINT FNsedol("B0YBKT")
       PRINT FNsedol("B00030")
       END
-      
+
       DEF FNsedol(d$)
       LOCAL a%, i%, s%, weights%()
       DIM weights%(6) : weights%() = 0, 1, 3, 1, 7, 3, 9
@@ -548,12 +548,12 @@ B000300
 '''Notes''': it reads the codes from standard input, one per line (linefeed terminated); the input encoding must meet the following specifications: single byte encoding, digits (0-9) must have codes that follow the same order of the digits (0, 1, 2, ...) and similar for letters, the encoding must match the one used with the compiled source (likely, ASCII based encodings). This should happen 99% of the time (for ASCII, ISO-8859 family and UTF-8 have the same byte encoding for alphanumeric characters).
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 
-int sedol_weights[] = {1, 3, 1, 7, 3, 9}; 
+int sedol_weights[] = {1, 3, 1, 7, 3, 9};
 const char *reject = "AEIOUaeiou";
 
 int sedol_checksum(const char *sedol6)
@@ -579,7 +579,7 @@ int sedol_checksum(const char *sedol6)
       return -1;
     }
   }
-  return (10 - (sum%10))%10 + '0'; 
+  return (10 - (sum%10))%10 + '0';
 }
 
 
@@ -628,18 +628,18 @@ B0YBKT7
 #include <iostream>
 #include <string>
 
- 
+
 template<typename result_sink_t>
 auto sedol_checksum(std::string const& sedol, result_sink_t result_sink)
 {
-    if(sedol.size() != 6) 
+    if(sedol.size() != 6)
         return result_sink(0, "length of sedol string != 6");
-        
+
     const char * valid_chars = "BCDFGHJKLMNPQRSTVWXYZ0123456789";
     if(sedol.find_first_not_of(valid_chars) != std::string::npos)
         return result_sink(0, "sedol string contains disallowed characters");
-   
-    const int weights[] = {1,3,1,7,3,9};    
+
+    const int weights[] = {1,3,1,7,3,9};
     auto weighted_sum = std::inner_product(sedol.begin(), sedol.end(), weights, 0
                                            , [](int acc, int prod){ return acc + prod; }
                                            , [](char c, int weight){ return (std::isalpha(c) ? c -'A' + 10 : c - '0') * weight; }
@@ -649,11 +649,11 @@ auto sedol_checksum(std::string const& sedol, result_sink_t result_sink)
 
 int main()
 {
-    using namespace std; 
+    using namespace std;
     string inputs[] = {
-       "710889", "B0YBKJ", "406566", "B0YBLH", "228276", "B0YBKL", 
+       "710889", "B0YBKJ", "406566", "B0YBLH", "228276", "B0YBKL",
        "557910", "B0YBKR", "585284", "B0YBKT", "B00030"
-   }; 
+   };
    for(auto const & sedol : inputs)
    {
         sedol_checksum(sedol, [&](auto sum, char const * errorMessage)
@@ -661,7 +661,7 @@ int main()
             if(errorMessage)
                 cout << "error for sedol: " << sedol << " message: " <<  errorMessage << "\n";
             else
-                cout << sedol << sum << "\n"; 
+                cout << sedol << sum << "\n";
         });
    }
    return 0;
@@ -789,10 +789,10 @@ WORKING-STORAGE SECTION.
     88  sedol-file-ok                   VALUE "00".
 
 01  digit-num                           PIC 9 COMP.
-    
+
 01  digit-weights-area                  VALUE "1317391".
     03  digit-weights                   PIC 9 OCCURS 7 TIMES.
-    
+
 01  weighted-sum-parts-area.
     03  weighted-sum-parts              PIC 9(3) COMP OCCURS 6 TIMES.
 
@@ -809,7 +809,7 @@ PROCEDURE DIVISION.
         END-READ
 
         MOVE FUNCTION UPPER-CASE(sedol) TO sedol
-        
+
         PERFORM VARYING digit-num FROM 1 BY 1 UNTIL digit-num > 6
             EVALUATE TRUE
                 WHEN sedol (digit-num:1) IS ALPHABETIC-UPPER
@@ -817,16 +817,16 @@ PROCEDURE DIVISION.
                         DISPLAY "Invalid SEDOL: " sedol
                         EXIT PERFORM CYCLE
                     END-IF
-                
+
                     COMPUTE weighted-sum-parts (digit-num) =
                         (FUNCTION ORD(sedol (digit-num:1)) - FUNCTION ORD("A")
                         + 10) * digit-weights (digit-num)
-                        
+
                 WHEN sedol (digit-num:1) IS NUMERIC
                     MULTIPLY FUNCTION NUMVAL(sedol (digit-num:1))
                         BY digit-weights (digit-num)
                         GIVING weighted-sum-parts (digit-num)
-                        
+
                 WHEN OTHER
                     DISPLAY "Invalid SEDOL: " sedol
                     EXIT PERFORM CYCLE
@@ -837,13 +837,13 @@ PROCEDURE DIVISION.
         PERFORM VARYING digit-num FROM 1 BY 1 UNTIL digit-num > 6
             ADD weighted-sum-parts (digit-num) TO weighted-sum
         END-PERFORM
-        
+
         COMPUTE check-digit =
             FUNCTION MOD(10 - FUNCTION MOD(weighted-sum, 10), 10)
 
         DISPLAY sedol check-digit
     END-PERFORM
-    
+
     CLOSE sedol-file
     .
 END PROGRAM sedol.
@@ -860,7 +860,7 @@ Implemented from scratch using the description on Wikipedia as specification.
 (defun append-sedol-check-digit (sedol &key (start 0) (end (+ start 6)))
   (assert (<= 0 start end (length sedol)))
   (assert (= (- end start) 6))
-  (loop 
+  (loop
        :with checksum = 0
        :for weight :in '(1 3 1 7 3 9)
        :for index :upfrom start
@@ -1143,12 +1143,12 @@ for sedol in "710889
 defmodule SEDOL do
   @sedol_char  "0123456789BCDFGHJKLMNPQRSTVWXYZ" |> String.codepoints
   @sedolweight  [1,3,1,7,3,9]
-  
+
   defp char2value(c) do
     unless c in @sedol_char, do: raise ArgumentError, "No vowels"
     String.to_integer(c,36)
   end
-  
+
   def checksum(sedol) do
     if String.length(sedol) != length(@sedolweight), do: raise ArgumentError, "Invalid length"
     sum = Enum.zip(String.codepoints(sedol), @sedolweight)
@@ -1235,10 +1235,10 @@ Function getSedolCheckDigit(Input1)
         Else
                 Total = Total + (Asc(s1) - 55) * mult(i)
         End If
- 
+
     Next i
     getSedolCheckDigit = Input1 + CStr((10 - (Total Mod 10)) Mod 10)
-        
+
 End Function
 
 ```
@@ -1256,16 +1256,16 @@ let Weights = [1; 3; 1; 7; 3; 9; 1]
 
 let inline isVowel c = Vowels.Contains (Char.ToUpper c)
 
-let char2value c =   
-    if Char.IsDigit c then int c - 0x30 
+let char2value c =
+    if Char.IsDigit c then int c - 0x30
     else (['A'..'Z'] |> List.findIndex ((=) (Char.ToUpper c))) + 10
-        
+
 let sedolCheckDigit (input: string) =
-    if input.Length <> 6 || input |> Seq.exists isVowel then 
+    if input.Length <> 6 || input |> Seq.exists isVowel then
         failwithf "Input must be six characters long and not contain vowels: %s" input
 
     let sum = Seq.map2 (fun ch weight -> (char2value ch) * weight) input Weights |> Seq.sum
-    (10 - sum%10)%10              
+    (10 - sum%10)%10
 
 let addCheckDigit inputs =
     inputs |> List.map (fun s -> s + (sedolCheckDigit s).ToString())
@@ -1273,7 +1273,7 @@ let addCheckDigit inputs =
 let processDigits() =
     try
         addCheckDigit Inputs |> List.iter (printfn "%s")
-    with 
+    with
         ex -> printfn "ERROR: %s" ex.Message
 ```
 
@@ -1401,7 +1401,7 @@ sedol" B0YBKT" B0YBKT7 ok
 MODULE SEDOL_CHECK
   IMPLICIT NONE
   CONTAINS
- 
+
   FUNCTION Checkdigit(c)
     CHARACTER :: Checkdigit
     CHARACTER(6), INTENT(IN) :: c
@@ -1413,16 +1413,16 @@ MODULE SEDOL_CHECK
       temp(i) = INDEX(alpha, c(i:i)) - 1
     END DO
     temp = temp * weights
-    n = MOD(10 - (MOD(SUM(temp), 10)), 10)  
+    n = MOD(10 - (MOD(SUM(temp), 10)), 10)
     Checkdigit = ACHAR(n + 48)
   END FUNCTION Checkdigit
- 
+
 END MODULE SEDOL_CHECK
 
 PROGRAM SEDOLTEST
   USE SEDOL_CHECK
   IMPLICIT NONE
- 
+
   CHARACTER(31) :: valid = "0123456789BCDFGHJKLMNPQRSTVWXYZ"
   CHARACTER(6) :: codes(10) = (/ "710889", "B0YBKJ", "406566", "B0YBLH", "228276" ,  &
                                  "B0YBKL", "557910", "B0YBKR", "585284", "B0YBKT" /)
@@ -1439,7 +1439,7 @@ PROGRAM SEDOLTEST
     END IF
     WRITE(*, "(2A9)") codes(i), sedol
   END DO
-   
+
 END PROGRAM SEDOLTEST
 ```
 
@@ -1609,8 +1609,8 @@ Dim sToProcess As String[] = ["710889", "B0YBKJ", "406566", "B0YBLH", "228276", 
                               "557910", "B0YBKR", "585284", "B0YBKT", "B00030"]
 
 For byCompute = 0 To sToProcess.Max
-  For byCount = 1 To 6 
-    If IsLetter(Mid(sToProcess[byCompute], byCount, 1)) Then 
+  For byCount = 1 To 6
+    If IsLetter(Mid(sToProcess[byCompute], byCount, 1)) Then
       sWork.Add(Str(Asc(Mid(sToProcess[byCompute], byCount, 1)) - 55) * byWeight[byCount - 1])
     Else
       sWork.Add(Val(Mid(sToProcess[byCompute], byCount, 1)) * byWeight[byCount - 1])
@@ -1705,8 +1705,8 @@ func csd(code string) string {
         sum += int(n)*weight[i]
     }
     return strconv.Itoa(9-(sum-1)%10)
-}   
-    
+}
+
 func main() {
     for _, s := range strings.Split(input, "\n") {
         d := csd(s)
@@ -1865,7 +1865,7 @@ initial {
    every c[!"AEIOU"] := &null                 # delete vowels
    w := [1,3,1,7,3,9]                         # weights
    }
-   
+
 if *(x := map(x,&lcase,&ucase)) = *w then {   # match lengths
    every (t :=0, i := 1 to *x) do
       t +:= \c[x[i]]*w[i] | fail              # accumulate weighted chars
@@ -1881,11 +1881,11 @@ end
 There are several ways to perform this in J.  This most closely follows the algorithmic description at Wikipedia:
 
 ```j
-sn   =.  '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'  
+sn   =.  '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 ac0  =:  (, 10 | 1 3 1 7 3 9 +/@:* -)&.(sn i. |:)
 ```
 
-However, because J is so concise, having written the above, it becomes clear that the negation (<tt>-</tt>) is unnecessary.  
+However, because J is so concise, having written the above, it becomes clear that the negation (<tt>-</tt>) is unnecessary.
 
 The fundamental operation is the linear combination (<tt>+/@:*</tt>) and neither argument is "special".  In particular, the coefficients are just another array participating in the calculation, and there's no reason we can't modify them as easily as the input array.  Having this insight, it is obvious that manipulating the coefficients, rather than the input array, will be more efficient (because the coefficients are fixed at small size, while the input array can be arbitrarily large).
 
@@ -1928,9 +1928,9 @@ public class SEDOL{
 			System.out.println(sedol + getSedolCheckDigit(sedol));
 		}
 	}
-	
+
 	private static final int[] mult = {1, 3, 1, 7, 3, 9};
-	
+
 	public static int getSedolCheckDigit(String str){
 	    if(!validateSedol(str)){
 	    	System.err.println("SEDOL strings must contain six characters with no vowels.");
@@ -1975,13 +1975,13 @@ function sedol_check_digit(char6) {
     return check.toString();
 }
 
-var input = [ 
+var input = [
     '710889', 'B0YBKJ', '406566', 'B0YBLH', '228276',
     'B0YBKL', '557910', 'B0YBKR', '585284', 'B0YBKT',
     "BOATER" , "12345", "123456", "1234567"
 ];
 
-var expected = [ 
+var expected = [
     '7108899', 'B0YBKJ7', '4065663', 'B0YBLH2', '2282765',
     'B0YBKL9', '5579107', 'B0YBKR5', '5852842', 'B0YBKT7',
     null, null, '1234563', null
@@ -1990,10 +1990,10 @@ var expected = [
 for (var i in input) {
     try {
         var sedolized = sedol(input[i]);
-        if (sedolized == expected[i]) 
+        if (sedolized == expected[i])
             print(sedolized);
         else
-            print("error: calculated sedol for input " + input[i] + 
+            print("error: calculated sedol for input " + input[i] +
                   " is " + sedolized + ", but it should be " + expected[i]
             );
     }
@@ -2236,7 +2236,7 @@ def sedol_checksum:
 
 # error on error, else pass input to output
 def check_valid_sedol:
-  def has_vowel: 
+  def has_vowel:
     ("AEIOU"|explode) as $vowels
     | reduce explode[] as $c
         (false; if . then . else $vowels|index($c) end);
@@ -2249,12 +2249,12 @@ def check_valid_sedol:
     else .
     end;
 
-def sedolize: 
+def sedolize:
   ascii_upcase as $in
   | $in
   | check_valid_sedol
   | .[0:6] as $sedol
-  | ($sedol | sedol_checksum | tostring) as $sedolcheck 
+  | ($sedol | sedol_checksum | tostring) as $sedolcheck
   | ($sedol + $sedolcheck) as $ans
   | if length == 7 and $ans != $in then
          $ans + " (original \($in) has wrong checksum digit"
@@ -2320,15 +2320,15 @@ fun sedol7(sedol6: String): String {
     if (sedol6.length != 6) throw IllegalArgumentException("Length of argument string must be 6")
     var sum = 0
     for (i in 0..5) {
-        val c = sedol6[i] 
+        val c = sedol6[i]
         val v = when (c) {
-            in '0'..'9' -> c.toInt() - 48  
+            in '0'..'9' -> c.toInt() - 48
             in 'A'..'Z' -> c.toInt() - 55
             else        -> throw IllegalArgumentException("Argument string contains an invalid character")
         }
         sum += v * weights[i]
     }
-    val check = (10 - (sum % 10)) % 10 
+    val check = (10 - (sum % 10)) % 10
     return sedol6 + (check + 48).toChar()
 }
 
@@ -2615,12 +2615,12 @@ IMPORT IO, Fmt, Text, Stdio;
 
 EXCEPTION BadSedol(TEXT);
 
-VAR test := ARRAY [1..10] OF TEXT {"710889", "B0YBKJ", "406566", "B0YBLH", 
-                                   "228276", "B0YBKL", "557910", "B0YBKR", 
+VAR test := ARRAY [1..10] OF TEXT {"710889", "B0YBKJ", "406566", "B0YBLH",
+                                   "228276", "B0YBKL", "557910", "B0YBKR",
                                    "585284", "B0YBKT" };
 
 PROCEDURE Check(sed: TEXT): INTEGER RAISES {BadSedol}=
-  VAR 
+  VAR
     weights := ARRAY [0..5] OF INTEGER {1, 3, 1, 7, 3, 9};
     result, d: INTEGER;
     char: CHAR;
@@ -2633,7 +2633,7 @@ PROCEDURE Check(sed: TEXT): INTEGER RAISES {BadSedol}=
       char := Text.GetChar(sed, i);
       CASE char OF
       | '0'..'9' => d := ORD(char) - ORD('0');
-      | 'B'..'D', 'F'..'H', 'J'..'N', 'P'..'T', 'V'..'Z' 
+      | 'B'..'D', 'F'..'H', 'J'..'N', 'P'..'T', 'V'..'Z'
         => d := ORD(char) - ORD('A') + 10;
       ELSE
         RAISE BadSedol("ERROR: Must be numbers or (non-vowel) letters.");
@@ -2703,7 +2703,7 @@ Examples:
 
 ```txt
 USER>D SEDOL^ROSETTA
- 
+
 Enter the first 6 digits of a SEDOL: 710889
 Full SEDOL is 7108899
 Enter the first 6 digits of a SEDOL: B0YBKJ
@@ -2780,17 +2780,17 @@ let char2value c =
   | '0'..'9' -> int_of_char c - int_of_char '0'
   | 'A'..'Z' -> int_of_char c - int_of_char 'A' + 10
   | _ -> assert false
- 
+
 let sedolweight = [1;3;1;7;3;9]
- 
+
 let explode s =
   s |> String.to_seq |> List.of_seq
- 
+
 let checksum sedol =
   let tmp = List.fold_left2 (fun sum ch weight -> sum + char2value ch * weight)
               0 (explode sedol) sedolweight in
   string_of_int ((10 - (tmp mod 10)) mod 10) ;;
- 
+
 List.iter (fun sedol -> print_endline (sedol ^ checksum sedol))
   [ "710889";
     "B0YBKJ";
@@ -2812,7 +2812,7 @@ List.iter (fun sedol -> print_endline (sedol ^ checksum sedol))
 
 ```Oforth
 func: sedol(s)
-   [ 1, 3, 1, 7, 3, 9 ] s 
+   [ 1, 3, 1, 7, 3, 9 ] s
    zipWith(#[ dup isDigit ifTrue: [ '0' - ] else: [ 'A' - 10 + ] * ]) sum
    10 mod 10 swap - 10 mod
    StringBuffer new s << swap '0' + <<c ;
@@ -2881,7 +2881,7 @@ const
 var
   seforl: string;
   i: integer;
- 
+
 begin
   for i := low(codes) to high(codes) do
   begin
@@ -2896,7 +2896,7 @@ end.
 Output:
 
 ```txt
-% ./Sedols 
+% ./Sedols
 710889 -> 7108899
 B0YBKJ -> B0YBKJ7
 406566 -> 4065663
@@ -3187,28 +3187,28 @@ function Add-SEDOLCheckDigit
             [parameter ( Mandatory = $True ) ]
             [string]
             $SixDigitSEDOL )
- 
+
     #  Convert to array of single character strings, using type char as an intermediary
     $SEDOL = [string[]][char[]]$SixDigitSEDOL
- 
+
     #  Define place weights
     $Weight = @( 1, 3, 1, 7, 3, 9 )
- 
+
     #  Define character values (implicit in 0-based location within string)
     $Characters = "0123456789abcdefghijklmnopqrstuvwxyz"
- 
+
     $CheckSum = 0
-   
+
     #  For each digit, multiply the character value by the weight and add to check sum
     0..5 | ForEach { $CheckSum += $Characters.IndexOf( $SEDOL[$_].ToLower() ) * $Weight[$_] }
- 
+
     #  Derive the check digit from the partial check sum
     $CheckDigit = ( 10 - $CheckSum % 10 ) % 10
- 
+
     #  Return concatenated result
     return ( $SixDigitSEDOL + $CheckDigit )
     }
- 
+
 #  Test
 $List = @(
     "710889"
@@ -3223,7 +3223,7 @@ $List = @(
     "B0YBKT"
     "B00030"
     )
- 
+
 ForEach ( $PartialSEDOL in $List )
     {
     Add-SEDOLCheckDigit -SixDigitSEDOL $PartialSEDOL
@@ -3522,15 +3522,15 @@ checkSedol <- function(datalines)
    ok <- grep("^[[:digit:][:upper:]]{6}$", datalines)
    if(length(ok) < length(datalines))
    {
-      stop("there are invalid lines") 
+      stop("there are invalid lines")
    }
 }
 checkSedol(datalines)
 
 # Append check digit
-appendCheckDigit <- function(x) 
-{   
-   if(length(x) > 1) return(sapply(x, appendCheckDigit)) 
+appendCheckDigit <- function(x)
+{
+   if(length(x) > 1) return(sapply(x, appendCheckDigit))
    ascii <- as.integer(charToRaw(x))
    scores <- ifelse(ascii < 65, ascii - 48, ascii - 55)
    weights <- c(1, 3, 1, 7, 3, 9)
@@ -3604,7 +3604,7 @@ writeLines(withchkdig)
   )
 
 (module+ test
-  (require rackunit)  
+  (require rackunit)
   (check-= (SEDOL-character-value #\3) 3 0)
   (check-= (SEDOL-character-value #\B) 11 0)
   (check-equal? (invalid-SEDOL? "B000301") "invalid checksum")
@@ -3733,10 +3733,10 @@ see sedol("B0YBKR") + nl
 see sedol("585284") + nl
 see sedol("B0YBKT") + nl
 see sedol("B00030") + nl
- 
+
 func sedol d
      d = upper(d)
-     s = 0 
+     s = 0
      weights  = [1, 3, 1, 7, 3, 9]
      for i = 1 to 6
          a = substr(d,i,1)
@@ -3780,13 +3780,13 @@ def char2value(c)
   raise ArgumentError, "Invalid char #{c}" unless Sedol_char.include?(c)
   c.to_i(36)
 end
- 
+
 def checksum(sedol)
   raise ArgumentError, "Invalid length" unless sedol.size == Sedolweight.size
   sum = sedol.chars.zip(Sedolweight).sum{|ch, weight| char2value(ch) * weight }
   ((10 - (sum % 10)) % 10).to_s
 end
- 
+
 data = %w(710889
           B0YBKJ
           406566
@@ -3801,7 +3801,7 @@ data = %w(710889
           C0000
           1234567
           00000A)
- 
+
 data.each do |sedol|
   print "%-8s " % sedol
   begin
@@ -3925,7 +3925,7 @@ const func char: sedolCheckDigit (in string: sedol) is func
      end for;
      checkDigit := chr(-sum mod 10 + ord('0'));
    end func;
- 
+
 const proc: main is func
   local
     var string: sedol is "";
@@ -4037,7 +4037,7 @@ Object subclass: SEDOL [
     weight := Array from: { 1. 3. 1. 7. 3. 9 }.
     charList :=
       ('ABCDEFGHIJKLMNOPQRSTUVWXYZ' asOrderedCollection)
-      collect: [ :c | ('AEIOU' includes: c) ifTrue: [ nil ] ifFalse: [ c ] ].    
+      collect: [ :c | ('AEIOU' includes: c) ifTrue: [ nil ] ifFalse: [ c ] ].
   ]
 
   SEDOL class >> new [
@@ -4049,8 +4049,8 @@ Object subclass: SEDOL [
      sum := 0.
      aSEDOL keysAndValuesDo: [ :i :c |
         ('0123456789' includes: c)
-          ifTrue: [  sum := sum + 
-                            ((weight at: i) * 
+          ifTrue: [  sum := sum +
+                            ((weight at: i) *
                             (Number readFrom: (c asString readStream))).
                   ]
           ifFalse: [ sum := sum + (((charList indexOf: c) + 9) *
@@ -4140,7 +4140,7 @@ CREATE OR REPLACE FUNCTION CHECK_SEDOL (
    END IF;
    SET I = I + 1;
   END WHILE;
- 
+
   -- Assigns weight
   SET WEIGHT[1] = '1';
   SET WEIGHT[2] = '3';
@@ -4275,7 +4275,7 @@ namespace eval sedol {
         }
         return [expr {(10 - ($sum % 10)) % 10}]
     }
-    
+
     proc valid {alnum7} {
         expr {[checksum [string range $alnum7 0 5]] == [string index $alnum7 6]}
     }
@@ -4311,27 +4311,27 @@ AS
 BEGIN
 	declare	@true bit = 1,
 		@false bit = 0,
-		@isSEDOL bit,		
+		@isSEDOL bit,
 		@sedol_weights varchar(6) ='131739',
 		@sedol_len int = LEN(@SEDOL),
 		@sum int = 0
-		
-					
-	if ((@sedol_len = 6)) 
+
+
+	if ((@sedol_len = 6))
 	begin
 		select @SEDOL = UPPER(@SEDOL)
-		Declare	@vowels varchar(5) = 'AEIOU', 
+		Declare	@vowels varchar(5) = 'AEIOU',
 			@letters varchar(21) = 'BCDFGHJKLMNPQRSTVWXYZ',
 			@i int=1,
-			@isStillGood bit = @true,					
+			@isStillGood bit = @true,
 			@char char = '',
 			@weighting int =0
-					
+
 		select @isSEDOL = @false
-    
+
 		while ((@i < 7) and (@isStillGood = @true))
 		begin
-			select	@char = SUBSTRING(@SEDOL,@i,1), 
+			select	@char = SUBSTRING(@SEDOL,@i,1),
 				@weighting = CONVERT (INT,SUBSTRING(@sedol_weights, @i, 1))
 			if (CHARINDEX(@char, @vowels) > 0) -- no vowels please
 			begin
@@ -4351,19 +4351,19 @@ BEGIN
 				begin
 					select @sum = @sum + (ASCII(@char) - 55) * @weighting
 				end
-			end 
-			select @i = @i +1  
+			end
+			select @i = @i +1
 		end -- of while loop
-		if (@isStillGood = @true) 
+		if (@isStillGood = @true)
 		begin
-			declare @checksum int = (10 - (@sum%10))%10 
+			declare @checksum int = (10 - (@sum%10))%10
 			select @SEDOL = @SEDOL + CONVERT(CHAR,@checksum)
 		end
 	end
 	else
 	begin
 		select @SEDOL = ''
-	end 
+	end
 	-- Return the result of the function
 	RETURN @SEDOL
 END
@@ -4443,7 +4443,7 @@ B0YBKR checkdigit: 5
 585284 checkdigit: 2
 B0YBKT checkdigit: 7
 @@@@@@@@  BOYAKT illegal
-B00030 checkdigit: 0 
+B00030 checkdigit: 0
 
 ```
 
@@ -4562,7 +4562,7 @@ arr = Array("710889",_
 For j = 0 To UBound(arr)
 	WScript.StdOut.Write arr(j) & getSEDOLCheckDigit(arr(j))
 	WScript.StdOut.WriteLine
-Next 
+Next
 
 Function getSEDOLCheckDigit(str)
 	If Len(str) <> 6 Then
@@ -4620,7 +4620,7 @@ B000300
 #DEFINE ALPHABET "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 #DEFINE VOWELS "AEIOU"
 #DEFINE VALIDCHARS "0123456789" + ALPHABET
-LOCAL cMsg As String, cCode As String 
+LOCAL cMsg As String, cCode As String
 LOCAL ARRAY codes[12]
 codes[1] = "710889"
 codes[2] = "B0YBKJ"
@@ -4649,7 +4649,7 @@ FOR EACH cCode IN codes
 	? cCode
     ELSE
 	? cCode, cMsg
-    ENDIF			
+    ENDIF
 ENDFOR
 
 FUNCTION GetCheckDigit(tcCode As String) As String
@@ -4665,7 +4665,7 @@ FOR i = 1 TO 6
     s = s + k*w[i]
 ENDFOR
 RETURN TRANSFORM((10 - s%10)%10)
-ENDFUNC 
+ENDFUNC
 
 FUNCTION IsValidCode(tcCode As String, tcMsg As String) As Boolean
 LOCAL n As Integer, c As String, i As Integer
@@ -4679,17 +4679,17 @@ ELSE
 	c = SUBSTR(tcCode, i, 1)
 	IF NOT c $ VALIDCHAR
 	    tcMsg = c + " is not a valid character."
-	    EXIT 
+	    EXIT
 	ELSE
 	    IF c $ VOWELS
 		tcMsg = "Vowels are not allowed."
-		EXIT 
+		EXIT
 	    ENDIF
-	ENDIF 			
+	ENDIF
     ENDFOR
 ENDIF
 RETURN EMPTY(tcMsg)
-ENDFUNC	
+ENDFUNC
 
 ```
 
@@ -4718,16 +4718,16 @@ loop
 
 sub sedol$(d$)
     LOCAL a, i, s, weights$(1)
-    
+
     a = len(d$)
     if a < 6 or a > 6 return d$ + ": Error in length"
-    
+
     for i = 1 to 6
         if not instr("BCDFGHJKLMNPQRSTVWXYZ0123456789", mid$(d$, i, 1)) return d$ + ": Error in symbol " + mid$(d$, i, 1)
     next
-    
+
     a = token("1 3 1 7 3 9", weights$())
-    
+
     FOR i = 1 TO 6
       a = ASC(MID$(d$, i, 1)) - 48
       s = s + (a + 3 * (a > 9)) * val(weights$(i))
@@ -4743,7 +4743,7 @@ end sub
 
 ```zkl
 fcn checksum(text){
-   ( text.len()!=6 or (text..matches("*[AEIOUaeioua-z]*")) ) and 
+   ( text.len()!=6 or (text..matches("*[AEIOUaeioua-z]*")) ) and
       throw(Exception.ValueError("Invalid SEDOL text: "+text));
 
    text + (10 - text.pump(List,'wrap(c){

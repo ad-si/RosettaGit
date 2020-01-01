@@ -27,46 +27,46 @@ Determine whether a given year is a leap year in the Gregorian calendar.
 
 
 This is a callable subroutine to determine whether or not a given zoned-decimal 4-digit year is a Leap Year.
-Leap years are "evenly divisible" by 4, except those which end in '00' and are not evenly divisible by 400. 
+Leap years are "evenly divisible" by 4, except those which end in '00' and are not evenly divisible by 400.
 The subroutine receives two parameters:
   (1) a 4-digit year (CCYY)
-  (2) an 8-byte work area  
+  (2) an 8-byte work area
 The value returned in Register 15 (by convention the "return code") indicates whether the year is a Leap Year:
-  When R15 = zero, the year is a leap year. 
-  Otherwise it is not.  
+  When R15 = zero, the year is a leap year.
+  Otherwise it is not.
 
 ```360 Assembly
- 
-LPCK CSECT                                                         
-     USING LPCK,15                                                 
-     STM  0,12,20(13)   STORE CALLER REGS                          
-     LM   1,2,0(1)      R1 -> CCYY, R2 -> DOUBLE-WORD WORK AREA    
-     PACK 0(8,2),0(4,1) PACK CCYY INTO WORK AREA                   
-     CVB  0,0(2)        CONVERT TO BINARY (R0 = CCYY)              
-     SRDL 0,32          R0|R1 = CCYY                               
-     LA   2,100         R2 = 100                                   
-     DR   0,2           DIVIDE CCYY BY 100: R0 = YY, R1 = CC            
-     LTR  0,0           YY = 0? IF CCYY DIV BY 100, LY IFF DIV BY 400                                        
-     BZ   A               YES: R0|R1 = CC; CCYY DIV BY 100, TEST CC                           
-     SRDL 0,32            NO: R0|R1 = YY; CCYY NOT DIV BY 100, TEST YY                           
-A    LA   2,4           DIVISOR = 4; DIVIDEND = YY, OR DIV BY 100 CC                                    
-     DR   0,2           DIVIDE BY 4: R0 = REMAINDER, R1 = QUOTIENT 
-     LR   15,0          LOAD REMAINDER: IF 0, THEN LEAP YEAR       
-     LM   0,12,20(13)   RESTORE REGS                               
-     BR   14                                                       
-     END 
+
+LPCK CSECT
+     USING LPCK,15
+     STM  0,12,20(13)   STORE CALLER REGS
+     LM   1,2,0(1)      R1 -> CCYY, R2 -> DOUBLE-WORD WORK AREA
+     PACK 0(8,2),0(4,1) PACK CCYY INTO WORK AREA
+     CVB  0,0(2)        CONVERT TO BINARY (R0 = CCYY)
+     SRDL 0,32          R0|R1 = CCYY
+     LA   2,100         R2 = 100
+     DR   0,2           DIVIDE CCYY BY 100: R0 = YY, R1 = CC
+     LTR  0,0           YY = 0? IF CCYY DIV BY 100, LY IFF DIV BY 400
+     BZ   A               YES: R0|R1 = CC; CCYY DIV BY 100, TEST CC
+     SRDL 0,32            NO: R0|R1 = YY; CCYY NOT DIV BY 100, TEST YY
+A    LA   2,4           DIVISOR = 4; DIVIDEND = YY, OR DIV BY 100 CC
+     DR   0,2           DIVIDE BY 4: R0 = REMAINDER, R1 = QUOTIENT
+     LR   15,0          LOAD REMAINDER: IF 0, THEN LEAP YEAR
+     LM   0,12,20(13)   RESTORE REGS
+     BR   14
+     END
 
 ```
-                                                       
+
 
 Sample invocation from a COBOL program:
 
-WORKING-STORAGE SECTION.        
-01  FILLER. 
+WORKING-STORAGE SECTION.
+01  FILLER.
     05 YEAR-VALUE PIC 9(4).
-    05 WKAREA PIC X(8).            
+    05 WKAREA PIC X(8).
 
-PROCEDURE DIVISION.                                             
+PROCEDURE DIVISION.
 
     MOVE 1936 TO YEAR-VALUE
     CALL 'LPCK' USING YEAR-VALUE, WKAREA
@@ -175,11 +175,11 @@ end Is_Leap_Year;
 -- FYI: 400 is evenly divisible by 16 whereas 100,200 and 300 are not. Ergo, the
 -- set of integers evenly divisible by 16 and 100 are all evenly divisible by 400.
 -- 1. If a year is not divisible by 4 => not a leap year. Skip other checks.
--- 2. If a year is evenly divisible by 16, it is either evenly divisible by 400 or 
+-- 2. If a year is evenly divisible by 16, it is either evenly divisible by 400 or
 --    not evenly divisible by 100 => leap year. Skip further checks.
--- 3. If a year evenly divisible by 100 => not a leap year. 
--- 4. Otherwise a leap year. 
- 
+-- 3. If a year evenly divisible by 100 => not a leap year.
+-- 4. Otherwise a leap year.
+
 function Is_Leap_Year (Year : Integer) return Boolean is
 begin
    return (Year rem 4 = 0) and then ((Year rem 16 = 0) or else (Year rem 100 /= 0));
@@ -201,17 +201,17 @@ pragma Inline (Is_Leap_Year);
 
 ```algol68
 MODE YEAR = INT, MONTH = INT, DAY = INT;
- 
+
 PROC year days = (YEAR year)DAY: # Ignore 1752 CE for the moment #
   ( month days(year, 2) = 28 | 365 | 366 );
- 
+
 PROC month days = (YEAR year, MONTH month) DAY:
   ( month | 31,
             28 + ABS (year MOD 4 = 0 AND year MOD 100 /= 0 OR year MOD 400 = 0),
             31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
- 
+
 PROC is leap year = (YEAR year)BOOL: year days(year)=366;
- 
+
 test:(
   []INT test cases = (1900, 1994, 1996, 1997, 2000);
   FOR i TO UPB test cases DO
@@ -376,7 +376,7 @@ leap_year(1900)
 
 ```arc
 
-(map [leap? _] '(1900 1904 2000 2019 2020 2100)) 
+(map [leap? _] '(1900 1904 2000 2019 2020 2100))
 ;; =>          '(     1904 2000      2020     )
 
 ```
@@ -462,7 +462,7 @@ function leapyear( year )
     if ( year % 100 == 0 )
         return ( year % 400 == 0 )
     else
-        return ( year % 4 == 0 )            
+        return ( year % 4 == 0 )
 }
 ```
 
@@ -691,7 +691,7 @@ Press any key to continue . . .
         ENDIF
       UNTIL FALSE
       END
-      
+
       DEF FNleap(yr%)
       = (yr% MOD 4 = 0) AND ((yr% MOD 400 = 0) OR (yr% MOD 100 <> 0))
 ```
@@ -729,7 +729,7 @@ v"ear."+550<,,,,*84<$#
 
 ```bracmat
   ( leap-year
-  =   
+  =
     .     mod$(!arg.100):0
         & `(mod$(!arg.400):0) { The backtick skips the remainder of the OR operation,
                                 even if the tested condition fails. }
@@ -762,8 +762,8 @@ v"ear."+550<,,,,*84<$#
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int is_leap_year(int year)
 {
@@ -799,8 +799,8 @@ int main()
 Uses C++11. Compile with
  g++ -std=c++11 leap_year.cpp
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 bool is_leap_year(int year) {
   return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
@@ -997,9 +997,9 @@ IMPORT StdLog, Strings, Args;
 
 PROCEDURE IsLeapYear(year: INTEGER): BOOLEAN;
 BEGIN
-	IF year MOD 4 # 0 THEN 
+	IF year MOD 4 # 0 THEN
     	RETURN FALSE
-	ELSE 
+	ELSE
 		IF year MOD 100 = 0 THEN
 			IF year MOD 400  = 0 THEN RETURN TRUE ELSE RETURN FALSE END
 		ELSE
@@ -1018,7 +1018,7 @@ BEGIN
 		Strings.StringToInt(p.args[i],year,done);
 		StdLog.Int(year);StdLog.String(":>");StdLog.Bool(IsLeapYear(year));StdLog.Ln
 	END;
-	
+
 END Do;
 END LeapYear.
 
@@ -1342,19 +1342,19 @@ program leap
 	pure elemental function leap_year(y) result(is_leap)
 	implicit none
 	logical :: is_leap
-	integer,intent(in) :: y	
-	
-	is_leap = (mod(y,4)==0 .and. .not. mod(y,100)==0) .or. (mod(y,400)==0)	
-	
+	integer,intent(in) :: y
+
+	is_leap = (mod(y,4)==0 .and. .not. mod(y,100)==0) .or. (mod(y,400)==0)
+
 	end function leap_year
-	
+
 end program leap
 ```
 
 {{out}}
 
 ```txt
-  F T F T 
+  F T F T
 ```
 
 
@@ -1423,10 +1423,10 @@ End
  2800 is a leap year
  2900 is not a leap year
 
- 2012 = leap   2013 = no     2014 = no     2015 = no    
- 2016 = leap   2017 = no     2018 = no     2019 = no    
- 2020 = leap   2021 = no     2022 = no     2023 = no    
- 2024 = leap   2025 = no     2026 = no     2027 = no    
+ 2012 = leap   2013 = no     2014 = no     2015 = no
+ 2016 = leap   2017 = no     2018 = no     2019 = no
+ 2020 = leap   2021 = no     2022 = no     2023 = no
+ 2024 = leap   2025 = no     2026 = no     2027 = no
  2028 = leap   2029 = no     2030 = no     2031 = no
 ```
 
@@ -1443,10 +1443,10 @@ include "ConsoleWindow"
 BeginCFunction
 long randomInRange( long min, long max ) {
 int i = (arc4random()%(max-min+1))+min;
-return (long)i; 
+return (long)i;
 }
 EndC
-toolbox fn randomInRange( long min, long max  ) = long   
+toolbox fn randomInRange( long min, long max  ) = long
 
 // Leap year test function
 local fn LeapYear( year as long ) as Boolean
@@ -1690,11 +1690,11 @@ Solution:
 
 ```txt
 
- 1900 is not a leap year.                                                       
- 1994 is not a leap year.                                                       
- 1996 is a leap year.                                                           
- 1997 is not a leap year.                                                       
- 2000 is a leap year.  
+ 1900 is not a leap year.
+ 1994 is not a leap year.
+ 1996 is a leap year.
+ 1997 is not a leap year.
+ 2000 is a leap year.
 
 ```
 
@@ -1754,7 +1754,7 @@ isLeapYear y
   | mod y 400 == 0 = True
   | mod y 100 == 0 = False
   | mod y 4 == 0 = True
-  | otherwise = False 
+  | otherwise = False
 
 tests = TestList[TestCase $ assertEqual "4 is a leap year" True $ isLeapYear 4
                 ,TestCase $ assertEqual "1 is not a leap year" False $ isLeapYear 1
@@ -1813,8 +1813,8 @@ Example use:
 ## Java
 
 By default, [http://docs.oracle.com/javase/7/docs/api/index.html?java/util/GregorianCalendar.html java.util.GregorianCalendar] switches from Julian calendar to Gregorian calendar at 15 October 1582.
-The code below uses both the GregorianCalendar class 
-and the algorithm from the wiki. 
+The code below uses both the GregorianCalendar class
+and the algorithm from the wiki.
 Both values are printed in the output.
 
 
@@ -1983,7 +1983,7 @@ true
 ## Liberty BASIC
 
 
-###  Simple method 
+###  Simple method
 
 
 ```lb
@@ -2001,7 +2001,7 @@ end function
 
 
 
-###  Calculated method 
+###  Calculated method
 
 
 ```lb
@@ -2051,11 +2051,11 @@ command testLeapYear
     put tyears
 end testLeapYear
 
-1900 is false 
-1994 is false 
-1996 is true 
-1997 is false 
-2000 is true 
+1900 is false
+1994 is false
+1996 is true
+1997 is false
+2000 is true
 ```
 
 
@@ -2293,7 +2293,7 @@ end proc:
 
 
 ## Mathematica
- 
+
 Dates are handled by built-in functions in the Wolfram Language
 
 ```Mathematica
@@ -2454,7 +2454,7 @@ ILY(X) ;IS IT A LEAP YEAR?
  QUIT ((X#4=0)&(X#100'=0))!((X#100=0)&(X#400=0))
 ```
 
-Usage: 
+Usage:
 ```txt
 USER>W $SELECT($$ILY^ROSETTA(1900):"Yes",1:"No")
 No
@@ -2521,10 +2521,10 @@ module LeapYear
         when (year % 100 == 0) return false;
         when (year % 4   == 0) return true;
         false
-         
+
 
     }
-    
+
     Main() : void
     {
         WriteLine("2000 is a leap year: {0}", IsLeapYear(2000));
@@ -2538,7 +2538,7 @@ module LeapYear
         WriteLine("1500 is a leap year: {0}", DateTime.IsLeapYear(1500)); // is false, indicating use of proleptic
                                                                           // Gregorian calendar rather than reverting to
                                                                           // Julian calendar
-        WriteLine("{0} is a leap year: {1}", DateTime.Now.Year, 
+        WriteLine("{0} is a leap year: {1}", DateTime.Now.Year,
                                              DateTime.IsLeapYear(DateTime.Now.Year));
     }
 }
@@ -2561,10 +2561,10 @@ Parameter name: year must be in Gregorian calendar.
 
 Demonstrates both a '''Gregorian/proleptic Gregorian''' calendar leap-year algorithm and use of the Java library's <code>GregorianCalendar</code> object to determine which years are leap-years.
 
-Note that the Java library indicates that the year '''1500''' 
-is a leap-year as the Gregorian calendar wasn't established until 1582.  
-The Java library implements the Julian calendar for dates 
-prior to the Gregorian cut-over and leap-year rules in the Julian calendar 
+Note that the Java library indicates that the year '''1500'''
+is a leap-year as the Gregorian calendar wasn't established until 1582.
+The Java library implements the Julian calendar for dates
+prior to the Gregorian cut-over and leap-year rules in the Julian calendar
 are different to those for the Gregorian calendar.
 
 ```NetRexx
@@ -2659,13 +2659,13 @@ true
 
 PROCEDURE IsLeapYear(year: INTEGER): BOOLEAN;
 BEGIN
-  IF year MOD 4 # 0 THEN 
+  IF year MOD 4 # 0 THEN
     RETURN FALSE
-  ELSE 
+  ELSE
     IF year MOD 100 = 0 THEN
       IF year MOD 400  = 0 THEN
 	RETURN TRUE
-      ELSE 
+      ELSE
 	RETURN FALSE
       END
     ELSE
@@ -2756,8 +2756,8 @@ Date.IsLeapYear(2000)
 ```ooRexx
 
 ::routine isLeapYear
-  use arg year 
-  d = .datetime~new(year, 1, 1) 
+  use arg year
+  d = .datetime~new(year, 1, 1)
   return d~isLeapYear
 
 ```
@@ -2861,7 +2861,7 @@ isLeap(n)={
 program LeapYear;
 uses
   sysutils;//includes isLeapYear
-  
+
 procedure TestYear(y: word);
 begin
   if IsLeapYear(y) then
@@ -3030,13 +3030,13 @@ end;
 
 ```txt
 
-1900 is not a leap year 
-1996 is a leap year     
-1997 is not a leap year 
-1998 is not a leap year 
-1999 is not a leap year 
-2000 is a leap year     
-2001 is not a leap year 
+1900 is not a leap year
+1996 is a leap year
+1997 is not a leap year
+1998 is not a leap year
+1999 is not a leap year
+2000 is a leap year
+2001 is not a leap year
 
 ```
 
@@ -3220,7 +3220,7 @@ define is_leap_year use $year
 ```rebol
 leap-year?: func [
     {Returns true if the specified year is a leap year; false otherwise.}
-    year [date! integer!] 
+    year [date! integer!]
     /local div?
 ][
     either date? year [year: year/year] [
@@ -3290,7 +3290,7 @@ leapyear: if arg(1)//4\==0  then return 0
 
 This REXX version has the proviso that if the year is exactly two digits,
 
-the current century is assumed   (i.e.,   no ''year'' windowing). 
+the current century is assumed   (i.e.,   no ''year'' windowing).
 
 
 If a year below 100 is to be used, the year should have leading zeroes added (to make it four digits).
@@ -3315,7 +3315,7 @@ if leap true see year + " is leap year."
 else see year + " is not leap year." ok
 
 Func isLeapYear year
-     if (year % 400) = 0 return true 
+     if (year % 400) = 0 return true
         but (year % 100) = 0 return false
         but (year % 4) = 0 return true
         else return false ok
@@ -3667,7 +3667,7 @@ ENDLOOP
 1994 is not a leap year
 1996 is a leap year
 1997 is not a leap year
-2000 is a leap year 
+2000 is a leap year
 
 ```
 
@@ -3729,7 +3729,7 @@ Using the cal command: ''(note that this invokes two processes with IO piped bet
 <!--
 {{incorrect|UNIX Shell|The task specifies the Gregorian calendar, but cal(1) switches to the Julian for historical years.}}
 -->
-<!-- actually, it *is* correct for dates from 1752 and after.  Since the Gregorian calendar didn't exist prior to that date, 
+<!-- actually, it *is* correct for dates from 1752 and after.  Since the Gregorian calendar didn't exist prior to that date,
 it doesn't make sense to hold this task accountable for years prior -->
 
 ```sh
@@ -3969,7 +3969,7 @@ Using FASM syntax. Leaf function fits nicely into your program.
 
 ```asm
     align 16
-; Input year as signed dword in EAX    
+; Input year as signed dword in EAX
 IsLeapYear:
     test eax,11b
     jz .4
@@ -4047,7 +4047,7 @@ Interactive example usage:
 
 ```zkl
 Time.Date.isLeapYear(1988) //-->True
-T(1988,1989,1900,2000).apply(Time.Date.isLeapYear) 
+T(1988,1989,1900,2000).apply(Time.Date.isLeapYear)
     //-->L(True,False,False,True)
 ```
 

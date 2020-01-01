@@ -13,10 +13,10 @@ tags = []
 == Old solution for C ==
 
 
-```c>#include<stdio.h
-
-#include<dir.h>
-#include<errno.h>
+```c
+#include <stdio.h>
+#include <dir.h>
+#include <errno.h>
 
 signed int fexist(char*s){
  FILE*f=fopen(s,"r");

@@ -15,11 +15,11 @@ tags = []
 
 
 ;Task:
-Show the syntax for a complete stoppage of a program inside a   [[Conditional Structures|conditional]]. 
+Show the syntax for a complete stoppage of a program inside a   [[Conditional Structures|conditional]].
 
 This includes all [[threads]]/[[processes]] which are part of your program.
 
-Explain the cleanup (or lack thereof) caused by the termination (allocated memory, database connections, open files, object finalizers/destructors, run-on-exit hooks, etc.).  
+Explain the cleanup (or lack thereof) caused by the termination (allocated memory, database connections, open files, object finalizers/destructors, run-on-exit hooks, etc.).
 
 Unless otherwise described, no special cleanup outside that provided by the operating system is provided.
 
@@ -29,8 +29,8 @@ Unless otherwise described, no special cleanup outside that provided by the oper
 
 ## Ada
 
-Ada programs execute in one or more tasks. All tasks created during the execution of a program depend in a hierarchical manner on the task that create them, except for the environment task which executes the "main" procedure for the program. 
-Each task will abort (terminate abnormally) if the task upon which it depends is aborted. 
+Ada programs execute in one or more tasks. All tasks created during the execution of a program depend in a hierarchical manner on the task that create them, except for the environment task which executes the "main" procedure for the program.
+Each task will abort (terminate abnormally) if the task upon which it depends is aborted.
 This approach to task termination is not recommended because it does not allow tasks to terminate in a known state.
 
 However, this Rosetta Code task requires a simple stoppage of the program including all tasks. The simple way to achieve this is to abort the environment task.
@@ -48,8 +48,8 @@ begin
 end Main;
 ```
 
-Aborting a task with Abort_Task is equivalent to ''abort'' statement, 
-which is not used here because the environment task object is anonymous.  
+Aborting a task with Abort_Task is equivalent to ''abort'' statement,
+which is not used here because the environment task object is anonymous.
 The semantics of ''abort'' is as follows:
 
 * Abort is deferred until certain unbreakable actions are accomplished. These are protected actions on shared objects, initialization, assignment, and finalization of controlled objects, waiting for dependent tasks to be aborted;
@@ -204,12 +204,12 @@ Memory is automatically managed and reclaimed by AppleScript.
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                                   @ entry of program
     push {fp,lr}                        @ saves registers
 
 OK:
-    @ end program OK 
+    @ end program OK
     mov r0, #0                          @ return code
     b 100f
 NONOK:
@@ -257,7 +257,7 @@ if(problem)exit 1
 ```
 
 
-Before exiting, the END-block(s) are processed. 
+Before exiting, the END-block(s) are processed.
 
 An "exit" in an END-block causes an immediate exit:
 
@@ -270,7 +270,7 @@ BEGIN  { print "# Exit-Test" }
         { print " ", NR, $0}
 
 END     { if(problem) {print "!! Problem !!"; exit 2} }
-END     { print "# Lines read:", NR }  
+END     { print "# Lines read:", NR }
 
 ```
 
@@ -281,7 +281,7 @@ To compare, un/comment one of the lines #1 or #2:
 
 This is file input.txt
 you can use it
-to provide your 
+to provide your
 program with some data
 to process.
 
@@ -295,7 +295,7 @@ to process.
 # Exit-Test
 ! 1 This is file input.txt
 ! 2 you can use it
-  3 to provide your 
+  3 to provide your
 ! 4 program with some data
   5 to process.
 # Lines read: 5
@@ -414,8 +414,8 @@ If there are no infinite loops in Bracmat code, the Bracmat program will ultimat
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 /* More "natural" way of ending the program: finish all work and return
    from main() */
 int main(int argc, char **argv)
@@ -437,8 +437,8 @@ if(problem){
 
 The <code>atexit()</code> function (also in <tt>stdlib.h</tt>) can be used to register functions to be run when the program exits. Registered functions will be called in the reverse order in which they were registered.
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 
 if(problem){
   abort();
@@ -447,7 +447,7 @@ if(problem){
 
 Unlike <tt>exit()</tt>, <tt>abort()</tt> will not do any cleanup other than the normal OS one. Also, it may cause other actions like producing a core dump or starting a debugger.
 
-To end not just the current process, but all processes in the same group, do 
+To end not just the current process, but all processes in the same group, do
 ```C
 exit_group();
 ```
@@ -458,8 +458,8 @@ exit_group();
 
 There are several ways to terminate a program. The following is mostly the same as in C:
 
-```cpp>#include <cstdlib
-
+```cpp
+#include <cstdlib>
 
 void problem_occured()
 {
@@ -471,8 +471,8 @@ The argument is the return value passed to the operating system. Returning 0 or 
 
 On calling <tt>std::exit</tt>, all functions registered with std::atexit are called, and the destructors of all objects at namespace scope, as well as of all static objects already constructed, are called. However the destructors of automatic objects (i.e. local variables) are ''not'' called (and of course, objects allocated with new will not be destructed as well, except if one of the called destructors destroys them). Due to this inconsistency calling <tt>std::exit</tt> is often not a good idea.
 
-```cpp>#include <cstdlib
-
+```cpp
+#include <cstdlib>
 
 void problem_occured()
 {
@@ -482,8 +482,8 @@ void problem_occured()
 
 Unlike <tt>std::exit</tt>, <tt>std::abort</tt> will not do any cleanup other than the normal OS one. Also, it may cause other actions like producing a core dump or starting a debugger.
 
-```cpp>#include <exception
-
+```cpp
+#include <exception>
 
 void problem_occured()
 {
@@ -657,7 +657,7 @@ foo at exit
 
 
 
-###  Simple exit with D Runtime cleanup 
+###  Simple exit with D Runtime cleanup
 
 
 ```d
@@ -793,10 +793,10 @@ then
 
 ## Fortran
 
-In Fortran <tt>STOP</tt> stops the execution of the ''main'' process and its "children" (tested with OpenMP; if using POSIX threads, I think the <tt>stop</tt> behaves almost like C <tt>exit</tt>). Allocated memory or any other resource except opened file (which are closed) is not cleaned up. 
+In Fortran <tt>STOP</tt> stops the execution of the ''main'' process and its "children" (tested with OpenMP; if using POSIX threads, I think the <tt>stop</tt> behaves almost like C <tt>exit</tt>). Allocated memory or any other resource except opened file (which are closed) is not cleaned up.
 
 ```fortran
-IF (condition) STOP [message] 
+IF (condition) STOP [message]
 ! message is optional and is a character string.
 ! If present, the message is output to the standard output device.
 ```
@@ -805,7 +805,7 @@ IF (condition) STOP [message]
 
 ## FreeBASIC
 
-In FreeBASIC, the 'End' statement exits the program immediately and optionally returns a value to the operating system. 
+In FreeBASIC, the 'End' statement exits the program immediately and optionally returns a value to the operating system.
 Typically, a return value of 0 (the default) indicates there was no error and some other value (such as 1) indicates termination was due to an error. Any open files will be closed automatically.
 
 However, the use of this statement does not necessarily produce a clean exit. As FreeBASIC does not unwind the stack, local variables will not have their destructors (if any) called automatically - though global variables will.
@@ -916,7 +916,7 @@ The Gnuplot manual under "exit" notes that "any open output files may not be com
 
 ## Go
 
-Operating system resources such as memory and file handles are generally released on exit automatically, but this is not specified in the language definition.  
+Operating system resources such as memory and file handles are generally released on exit automatically, but this is not specified in the language definition.
 Proceses started with os.StartProcess or exec.Run are not automatically terminated by any of the techniques below and will continue to run after the main program terminates.
 
 ### Return statement
@@ -931,10 +931,10 @@ func main() {
 }
 ```
 
-Deferred functions are run when the enclosing function returns, so in the example below, function <tt>paperwork</tt> is run.  
+Deferred functions are run when the enclosing function returns, so in the example below, function <tt>paperwork</tt> is run.
 This is the idiomatic mechanism for doing any kind of necessary cleanup.
 
-Other goroutines are terminated unceremoniously when <tt>main</tt> returns.  
+Other goroutines are terminated unceremoniously when <tt>main</tt> returns.
 Below, <tt>main</tt> returns without waiting for <tt>pcj</tt> to complete.
 
 The tantalizingly named <tt>SetFinalizer</tt> mechanism is also not invoked on program termination.  It is designed for resource reclamation in long-running processes, not for program termination.
@@ -1047,12 +1047,12 @@ main program exiting
 
 ### Panic
 
-Panics have some similarities to exceptions in other languages, including that there is a recovery mechanism allowing program termination to be averted.  
+Panics have some similarities to exceptions in other languages, including that there is a recovery mechanism allowing program termination to be averted.
 When the program terminates from panic however, it prints the panic value and then a stack trace for all goroutines.
 
-Like the return statement, panic runs deferred functions.  
-It run functions deferred from the current function, but then proceeds to unwind the call stack of the goroutine, calling deferred functions at each level.  
-It does this only in the goroutine where panic was called.  
+Like the return statement, panic runs deferred functions.
+It run functions deferred from the current function, but then proceeds to unwind the call stack of the goroutine, calling deferred functions at each level.
+It does this only in the goroutine where panic was called.
 Deferred functions in other goroutines are not run and if panicking goes unrecovered and the program terminates, all other goroutines are terminated abruptly.
 
 ```go
@@ -1159,7 +1159,7 @@ Tacit version:
 2!:55^:] condition
 ```
 
-Explicit version:   
+Explicit version:
 
 ```j
 3 : 'if. 0~: condition do. 2!:55 condition end.'
@@ -1169,12 +1169,12 @@ Explicit version:
 
 ## Java
 
-The call <tt>System.exit</tt> does not finalize any objects by default. 
+The call <tt>System.exit</tt> does not finalize any objects by default.
 This default is to keep the program thread-safe. From the javadocs for the method to change this default: "may result in finalizers being called on live objects while other threads are concurrently manipulating those objects, resulting in erratic behavior or deadlock."
 
 ```java
 if(problem){
-   System.exit(integerErrorCode); 
+   System.exit(integerErrorCode);
    //conventionally, error code 0 is the code for "OK",
    // while anything else is an actual problem
    //optionally: Runtime.getRuntime().exit(integerErrorCode);
@@ -1187,7 +1187,7 @@ This one does not perform cleanup:
 
 ```java
 if(problem){
-   Runtime.getRuntime().halt(integerErrorCode); 
+   Runtime.getRuntime().halt(integerErrorCode);
    //conventionally, error code 0 is the code for "OK",
    // while anything else is an actual problem
 }
@@ -1201,7 +1201,7 @@ if(problem){
 The <code>quit()</code> function exits the shell.
 
 ```javascript
-if (some_condition) 
+if (some_condition)
     quit();
 ```
 
@@ -1210,7 +1210,7 @@ if (some_condition)
 
 ## jq
 
-The jq process will stop when it encounters a call to the function "error" (error/0) unless it occurs within the scope of a "try" command. 
+The jq process will stop when it encounters a call to the function "error" (error/0) unless it occurs within the scope of a "try" command.
 
 '''Example:'''
 
@@ -1261,7 +1261,7 @@ quit() # terminates program normally, with its child processes. See also exit(0)
 
 ## Kotlin
 
-Premature termination of a program in Kotlin would normally be achieved by calling Java's System.exit(status) method which calls Runtime.getRuntime().exit(status) under the hood and passes the value of 'status' to the operating system. By convention a non-zero code indicates that termination was triggered due to some problem. According to the Java documentation, prior to JVM termination: 
+Premature termination of a program in Kotlin would normally be achieved by calling Java's System.exit(status) method which calls Runtime.getRuntime().exit(status) under the hood and passes the value of 'status' to the operating system. By convention a non-zero code indicates that termination was triggered due to some problem. According to the Java documentation, prior to JVM termination:
 
 1. All shutdown hooks, registered by the Runtime.addShutdownHook(hook) method, would be started in an unspecified order and allowed to run concurrently until they finish.
 
@@ -1357,7 +1357,7 @@ The following is functional. Better practice is to instead jump to commands or s
 
 ```lb>if 2 =2 then end</lang
 
- 
+
 
 ## Logo
 
@@ -1378,7 +1378,7 @@ continue   ; resumes after a PAUSE
 
 
 ```lua
-if some_condition then 
+if some_condition then
     os.exit( number )
 end
 ```
@@ -1413,7 +1413,7 @@ Module Checkit {
       }
       Thread M interval 100+900*rnd
       next i
-      
+
       Task.Main 20 {
             if random(10)=1 then Set End
       }
@@ -1808,7 +1808,7 @@ This ends the scope for any non-global variables defined in the script. No speci
 
 ## Prolog
 
-Terminate Prolog execution. Open files are closed. Exits the Interpreter. 
+Terminate Prolog execution. Open files are closed. Exits the Interpreter.
 
 ```prolog>halt.</lang
 
@@ -2034,7 +2034,7 @@ if problem
 end
 ```
 
-Exits the process immediately. No exit handlers are run.  
+Exits the process immediately. No exit handlers are run.
 <code>exit!</code> is different from <code>exit</code> and it doesn't do an exception handling.
 
 
@@ -2202,11 +2202,11 @@ IF terminallyIll THEN terminate_program;
 
 ## SNOBOL4
 
-Conditional transfer to the required END label causes immediate termination 
-and normal cleanup. 
-In this example, if ''condition'' succeeds (is true), 
-the value of ''errlevel'' is assigned to the &code keyword 
-as the exit status of the program, 
+Conditional transfer to the required END label causes immediate termination
+and normal cleanup.
+In this example, if ''condition'' succeeds (is true),
+the value of ''errlevel'' is assigned to the &code keyword
+as the exit status of the program,
 and the :s( ) goto transfers control to END.
 
 ```SNOBOL4
@@ -2239,16 +2239,16 @@ else
   ()
 ```
 
-The <code>OS.Process.atExit</code> function can be used 
-to register functions to be run when the program exits. 
-Registered functions will be called in the reverse order 
+The <code>OS.Process.atExit</code> function can be used
+to register functions to be run when the program exits.
+Registered functions will be called in the reverse order
 in which they were registered.
 
 
 ## Tcl
 
-The language runtime (in [[C]]) includes a mechanism for cleaning up open resources when the application quits, but access to this is not exposed at script level; extension packages just register with it automatically when required. 
-At the script level, all that is needed to make the program terminate 
+The language runtime (in [[C]]) includes a mechanism for cleaning up open resources when the application quits, but access to this is not exposed at script level; extension packages just register with it automatically when required.
+At the script level, all that is needed to make the program terminate
 is the <tt>exit</tt> command:
 
 ```tcl
@@ -2371,7 +2371,7 @@ In this case, if your macro does not do cleanup, you may eventually run out of f
 
 ## VBScript
 
-No matter how deep you're in, <code>wscript.quit</code> will get you out. 
+No matter how deep you're in, <code>wscript.quit</code> will get you out.
 
 ```vb
 dim i, j

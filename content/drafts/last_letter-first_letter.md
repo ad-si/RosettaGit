@@ -12,14 +12,14 @@ tags = []
 
 {{task}}
 
-A certain children's game involves starting with a word in a particular category.   Each participant in turn says a word, but that word must begin with the final letter of the previous word.   Once a word has been given, it cannot be repeated.   If an opponent cannot give a word in the category, they fall out of the game. 
+A certain children's game involves starting with a word in a particular category.   Each participant in turn says a word, but that word must begin with the final letter of the previous word.   Once a word has been given, it cannot be repeated.   If an opponent cannot give a word in the category, they fall out of the game.
 
 
 For example, with   "animals"   as the category,
 
 ```txt
 
-Child 1: dog 
+Child 1: dog
 Child 2: goldfish
 Child 1: hippopotamus
 Child 2: snake
@@ -30,7 +30,7 @@ Child 2: snake
 
 
 ;Task:
-Take the following selection of 70 English Pokemon names   (extracted from   [[wp:List of Pokémon|Wikipedia's list of Pokemon]])   and generate the/a sequence with the highest possible number of Pokemon names where the subsequent name starts with the final letter of the preceding name. 
+Take the following selection of 70 English Pokemon names   (extracted from   [[wp:List of Pokémon|Wikipedia's list of Pokemon]])   and generate the/a sequence with the highest possible number of Pokemon names where the subsequent name starts with the final letter of the preceding name.
 
 No Pokemon name is to be repeated.
 
@@ -76,7 +76,7 @@ procedure Lalefile is
    procedure Read(Words: out Words_Type) is
       F: Ada.Text_IO.File_Type;
    begin
-      Ada.Text_IO.Open(File => F, 
+      Ada.Text_IO.Open(File => F,
                        Name => "pokemon70.txt",
                        Mode => Ada.Text_IO.In_File);
       loop
@@ -145,7 +145,7 @@ end Lalefile;
 
 Output:
 ```txt
-Processing a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, 
+Processing a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z,
 Length of longest Path: 23
 One such path:
    machamp
@@ -177,7 +177,7 @@ One such path:
 
 ## BaCon
 
-Naive implementation showing the algorithm. 
+Naive implementation showing the algorithm.
 
 ```freebasic
 all$ = "audino bagon baltoy banette bidoof braviary bronzor carracosta charmeleon " \
@@ -286,7 +286,7 @@ END SUB
 
 ```txt
 
-23: machamp petilil landorus scrafty yamask kricketune emboar registeel loudred darmanitan nosepass simisear relicanth heatmor rufflet trapinch haxorus seaking girafarig gabite exeggcute emolga audino 
+23: machamp petilil landorus scrafty yamask kricketune emboar registeel loudred darmanitan nosepass simisear relicanth heatmor rufflet trapinch haxorus seaking girafarig gabite exeggcute emolga audino
 
 Speed: 818 msecs.
 
@@ -394,11 +394,11 @@ Output:
       \ "simisear", "snivy", "snorlax", "spoink", "starly", "tirtouga", \
       \ "trapinch", "treecko", "tyrogue", "vigoroth", "vulpix", \
       \ "wailord", "wartortle", "whismur", "wingull", "yamask"
-      
+
       maxPathLength% = 0
       maxPathLengthCount% = 0
       maxPathExample$ = ""
-      
+
       FOR i% = 0 TO DIM(names$(),1)
         SWAP names$(0), names$(i%)
         PROClastfirst(names$(), 1)
@@ -408,7 +408,7 @@ Output:
       PRINT "Number of solutions with that length = " ; maxPathLengthCount%
       PRINT "One such solution: " ' maxPathExample$
       END
-      
+
       DEF PROClastfirst(names$(), offset%)
       LOCAL i%, l%
       IF offset% > maxPathLength% THEN
@@ -496,7 +496,7 @@ audino
             :   ?A
                 %@?M
                 (?Z&lalefile$(!M.!A !Z)&~)
-          | 
+          |
           )
       |   !arg:(@(%:? @?first) ?:?done.?todo)
         & :?M
@@ -511,7 +511,7 @@ audino
             & !done:? [?Length
             & !Length:>!max:?max
             & !done:?sequence
-          | 
+          |
           )
   )
 & lalefile$(.!names)
@@ -577,7 +577,7 @@ The <code>whl</code> loop transforms the flat list of names to, conceptually, a 
 ```
 
 
-Another, less important, optimization is the way in which the last letter of a name is found, using the position pattern <code>[</code> rather than the pattern that matches at most one letter, <code>@</code>. 
+Another, less important, optimization is the way in which the last letter of a name is found, using the position pattern <code>[</code> rather than the pattern that matches at most one letter, <code>@</code>.
 
 The optimized version is about 4.5 times faster than the naive version.
 
@@ -620,7 +620,7 @@ The optimized version is about 4.5 times faster than the naive version.
                       & ~
                       )
                 )
-          | 
+          |
           )
       |   !arg:(@(%:? [-2 ?first) ?:?done.?todo)
         & :?M
@@ -637,7 +637,7 @@ The optimized version is about 4.5 times faster than the naive version.
             & !done:? [?Length
             & !Length:>!max:?max
             & !done:?sequence
-          | 
+          |
           )
   )
 & lalefile$(.!names)
@@ -682,8 +682,8 @@ Output (read from bottom to top):
 
 From the D version.
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <string.h>
 #include <stdio.h>
 #include <inttypes.h>
@@ -818,8 +818,8 @@ Runtime: about 0.49 seconds, gcc compiler.
 
 For dealing with full list (646 names), here's an approximate method.  Names are restricted to begin and end with a lower case letter, so for example in my input file "porygon2" is written as "porygon-two".  It finds some chains with 300-odd length for 646 names, and found a chain with 23 for the 70 names (by luck, that is), and since it's basically a one-pass method, running time is next to none.  C99 code.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -898,7 +898,7 @@ void read_names()
 		p->s = p->str[0] - 'a';
 		p->e = p->str[len-1] - 'a';
 		if (p->s < 0 || p->s >= 26 || p->e < 0 || p->e >= 26) {
-			printf("bad name %s: first/last char must be letter\n", 
+			printf("bad name %s: first/last char must be letter\n",
 				p->str);
 			abort();
 		}
@@ -961,7 +961,7 @@ edge * shift(chain *c)
 chain* make_chain(int s)
 {
 	chain *c = calloc(1, sizeof(chain));
-	
+
 	/* extend backwards */
 	for (int i, j = s; (i = widest(j, 0)) >= 0; j = i)
 		insert(c, remove_edge(i, j));
@@ -1137,7 +1137,7 @@ tyrogue vigoroth vulpix wailord wartortle whismur wingull yamask";
             for (int i = 0; i < pokemon.Length; i++)
             {
                 swap(ref pokemon[0], ref pokemon[i]);
-                Search( pokemon, chain, 1 );               
+                Search( pokemon, chain, 1 );
                 swap(ref pokemon[0], ref pokemon[i]);
             }
 
@@ -1286,17 +1286,17 @@ Pretty brute force here.  Takes a couple of seconds to run.
   (let ((ret))
     ; Mark the word as unavailable
     (setf (gethash word available) nil)
-    
+
     ; Find the longest path starting with word
     (let ((available-followers (get-available-followers word followers available)))
         (setf ret
          (if (null available-followers)
              (cons word path)
            (best-path-from-available word followers available depth path available-followers))))
-      
+
     ; Mark the word as available again
     (setf (gethash word available) t)
-    
+
     ; Return our longest path
     ret))
 
@@ -1970,7 +1970,7 @@ defmodule LastLetter_FirstLetter do
       :io.fwrite "  ~2w ~s~n", [idx+1, name]
     end)
   end
-  
+
   defp add_name(first, sequences, seq) do
     last_letter = String.last(hd(seq))
     potentials = Map.get(first, last_letter, []) -- seq
@@ -2079,7 +2079,7 @@ dict_append( Name, Acc ) ->
 	dict:append( First_letter, {Name, Last_letter}, Acc ).
 
 dict_item( <<First_letter, _T/binary>>=Name ) ->
-	Until_last_letter = erlang:byte_size( Name ) - 1, 
+	Until_last_letter = erlang:byte_size( Name ) - 1,
 	<<_H:Until_last_letter/binary, Last_letter>> = Name,
 	{First_letter, {Name, Last_letter}}.
 
@@ -2178,10 +2178,10 @@ searching 70 names...
 maximum path length: 23
 paths of that length: 1248
 example path of that length:
-   machamp petilil landorus scrafty yamask kricketune 
-   emboar registeel loudred darmanitan nosepass simisear 
-   relicanth heatmor rufflet trapinch haxorus seaking 
-   girafarig gabite exeggcute emolga audino 
+   machamp petilil landorus scrafty yamask kricketune
+   emboar registeel loudred darmanitan nosepass simisear
+   relicanth heatmor rufflet trapinch haxorus seaking
+   girafarig gabite exeggcute emolga audino
 
 ```
 
@@ -2196,7 +2196,7 @@ import Data.List
 import qualified Data.ByteString.Char8 as B
 
 allPokemon :: [B.ByteString]
-allPokemon = map B.pack $ words 
+allPokemon = map B.pack $ words
     "audino bagon baltoy banette bidoof braviary bronzor carracosta charmeleon \
     \cresselia croagunk darmanitan deino emboar emolga exeggcute gabite \
     \girafarig gulpin haxorus heatmor heatran ivysaur jellicent jumpluff kangaskhan \
@@ -2207,7 +2207,7 @@ allPokemon = map B.pack $ words
     \tyrogue vigoroth vulpix wailord wartortle whismur wingull yamask"
 
 growChains :: [[B.ByteString]] -> [B.ByteString]
-growChains pcs 
+growChains pcs
     | nextChainSet == [] = head pcs
     | otherwise = growChains nextChainSet
   where nextChainSet = pcs >>= findLinks
@@ -2311,7 +2311,7 @@ Sample run on sample data:
 
 ->llfl <llfl.in
 Longest: 23
-machamp petilil landorus scrafty yamask kricketune emboar registeel loudred darmanitan nosepass simisear relicanth heatmor rufflet trapinch haxorus seaking girafarig gabite exeggcute emolga audino 
+machamp petilil landorus scrafty yamask kricketune emboar registeel loudred darmanitan nosepass simisear relicanth heatmor rufflet trapinch haxorus seaking girafarig gabite exeggcute emolga audino
 ->
 
 ```
@@ -2336,7 +2336,7 @@ pokenames=: ;:0 :0-.LF
 )
 
 seqs=: 3 :0
-  links=. <@I. _1 =/&({&>&y) 0  
+  links=. <@I. _1 =/&({&>&y) 0
   next=. ,.i.#links
   while.#next do.
      r=. next
@@ -2362,31 +2362,31 @@ $R=: seqs pokenames
 With this data set, we have 1248 sequences of names which have the longest possible length, and those sequences are 23 names long.  Here's one of them:
 
 
-```j>   
+```j>
 pokenames {~{.R
-machamp   
-petilil   
-landorus  
-scrafty   
-yamask    
+machamp
+petilil
+landorus
+scrafty
+yamask
 kricketune
-emboar    
-registeel 
-loudred   
+emboar
+registeel
+loudred
 darmanitan
-nosepass  
-simisear  
-relicanth 
-heatmor   
-rufflet   
-trapinch  
-haxorus   
-seaking   
-girafarig 
-gabite    
-exeggcute 
-emolga    
-audino    
+nosepass
+simisear
+relicanth
+heatmor
+rufflet
+trapinch
+haxorus
+seaking
+girafarig
+gabite
+exeggcute
+emolga
+audino
 ```
 
 
@@ -2580,7 +2580,7 @@ Checking: 70 names
 Execution time (hr): 2s 121.778223ms
 Max Path: 23
 Matching Paths: 1249
-Example Path: [ 
+Example Path: [
   'machamp',
   'petilil',
   'landorus',
@@ -2679,19 +2679,19 @@ def maximal:
 
 ```jq
 def names:
-  ["audino", "bagon", "baltoy", "banette", 
-       "bidoof", "braviary", "bronzor", "carracosta", "charmeleon", 
-       "cresselia", "croagunk", "darmanitan", "deino", "emboar", 
-       "emolga", "exeggcute", "gabite", "girafarig", "gulpin", 
-       "haxorus", "heatmor", "heatran", "ivysaur", "jellicent", 
-       "jumpluff", "kangaskhan", "kricketune", "landorus", "ledyba", 
-       "loudred", "lumineon", "lunatone", "machamp", "magnezone", 
-       "mamoswine", "nosepass", "petilil", "pidgeotto", "pikachu", 
-       "pinsir", "poliwrath", "poochyena", "porygon2", "porygonz", 
-       "registeel", "relicanth", "remoraid", "rufflet", "sableye", 
-       "scolipede", "scrafty", "seaking", "sealeo", "silcoon", 
-       "simisear", "snivy", "snorlax", "spoink", "starly", "tirtouga", 
-       "trapinch", "treecko", "tyrogue", "vigoroth", "vulpix", 
+  ["audino", "bagon", "baltoy", "banette",
+       "bidoof", "braviary", "bronzor", "carracosta", "charmeleon",
+       "cresselia", "croagunk", "darmanitan", "deino", "emboar",
+       "emolga", "exeggcute", "gabite", "girafarig", "gulpin",
+       "haxorus", "heatmor", "heatran", "ivysaur", "jellicent",
+       "jumpluff", "kangaskhan", "kricketune", "landorus", "ledyba",
+       "loudred", "lumineon", "lunatone", "machamp", "magnezone",
+       "mamoswine", "nosepass", "petilil", "pidgeotto", "pikachu",
+       "pinsir", "poliwrath", "poochyena", "porygon2", "porygonz",
+       "registeel", "relicanth", "remoraid", "rufflet", "sableye",
+       "scolipede", "scrafty", "seaking", "sealeo", "silcoon",
+       "simisear", "snivy", "snorlax", "spoink", "starly", "tirtouga",
+       "trapinch", "treecko", "tyrogue", "vigoroth", "vulpix",
        "wailord", "wartortle", "whismur", "wingull", "yamask" ] ;
 
 names | maximal
@@ -2875,17 +2875,17 @@ var maxPathLengthCount = 0
 val maxPathExample = StringBuilder(500)
 
 val names = arrayOf(
-    "audino", "bagon", "baltoy", "banette", "bidoof", 
-    "braviary", "bronzor", "carracosta", "charmeleon", "cresselia", 
-    "croagunk", "darmanitan", "deino", "emboar", "emolga", 
-    "exeggcute", "gabite", "girafarig", "gulpin", "haxorus", 
-    "heatmor", "heatran", "ivysaur", "jellicent", "jumpluff", 
-    "kangaskhan", "kricketune", "landorus", "ledyba", "loudred", 
-    "lumineon", "lunatone", "machamp", "magnezone", "mamoswine", 
-    "nosepass", "petilil", "pidgeotto", "pikachu", "pinsir", 
-    "poliwrath", "poochyena", "porygon2", "porygonz", "registeel", 
-    "relicanth", "remoraid", "rufflet", "sableye", "scolipede", 
-    "scrafty", "seaking", "sealeo", "silcoon", "simisear", 
+    "audino", "bagon", "baltoy", "banette", "bidoof",
+    "braviary", "bronzor", "carracosta", "charmeleon", "cresselia",
+    "croagunk", "darmanitan", "deino", "emboar", "emolga",
+    "exeggcute", "gabite", "girafarig", "gulpin", "haxorus",
+    "heatmor", "heatran", "ivysaur", "jellicent", "jumpluff",
+    "kangaskhan", "kricketune", "landorus", "ledyba", "loudred",
+    "lumineon", "lunatone", "machamp", "magnezone", "mamoswine",
+    "nosepass", "petilil", "pidgeotto", "pikachu", "pinsir",
+    "poliwrath", "poochyena", "porygon2", "porygonz", "registeel",
+    "relicanth", "remoraid", "rufflet", "sableye", "scolipede",
+    "scrafty", "seaking", "sealeo", "silcoon", "simisear",
     "snivy", "snorlax", "spoink", "starly", "tirtouga",
     "trapinch", "treecko", "tyrogue", "vigoroth", "vulpix",
     "wailord", "wartortle", "whismur", "wingull", "yamask"
@@ -2902,7 +2902,7 @@ fun search(part: Array<String>, offset: Int) {
         for (i in 0 until offset) {
             maxPathExample.append(if (i % 5 == 0) "\n  " else " ")
             maxPathExample.append(part[i])
-        }    
+        }
     }
     val lastChar = part[offset - 1].last()
     for (i in offset until part.size) {
@@ -2939,7 +2939,7 @@ fun main(args: Array<String>) {
 
 Maximum path length         : 23
 Paths of that length        : 1248
-Example path of that length : 
+Example path of that length :
   machamp pinsir rufflet trapinch heatmor
   remoraid darmanitan nosepass starly yamask
   kricketune exeggcute emboar relicanth haxorus
@@ -2954,26 +2954,26 @@ Example path of that length :
 
 
 ```Mathematica
-longestChain[list_] := 
+longestChain[list_] :=
   NestWhileList[
-    Append @@@ 
+    Append @@@
       Select[DeleteDuplicatesBy[
-        Tuples[{#, list}], {#[[1, 1]], #[[2]]} &], ! MemberQ @@ # && 
-         StringTake[#[[1, -1]], -1] == StringTake[#[[2]], 1] &] &, 
+        Tuples[{#, list}], {#[[1, 1]], #[[2]]} &], ! MemberQ @@ # &&
+         StringTake[#[[1, -1]], -1] == StringTake[#[[2]], 1] &] &,
     List /@ list, # != {} &][[-2, 1]];
-Print[longestChain[{"audino", "bagon", "baltoy", "banette", "bidoof", 
-    "braviary", "bronzor", "carracosta", "charmeleon", "cresselia", 
-    "croagunk", "darmanitan", "deino", "emboar", "emolga", 
-    "exeggcute", "gabite", "girafarig", "gulpin", "haxorus", 
-    "heatmor", "heatran", "ivysaur", "jellicent", "jumpluff", 
-    "kangaskhan", "kricketune", "landorus", "ledyba", "loudred", 
-    "lumineon", "lunatone", "machamp", "magnezone", "mamoswine", 
-    "nosepass", "petilil", "pidgeotto", "pikachu", "pinsir", 
-    "poliwrath", "poochyena", "porygon2", "porygonz", "registeel", 
-    "relicanth", "remoraid", "rufflet", "sableye", "scolipede", 
-    "scrafty", "seaking", "sealeo", "silcoon", "simisear", "snivy", 
-    "snorlax", "spoink", "starly", "tirtouga", "trapinch", "treecko", 
-    "tyrogue", "vigoroth", "vulpix", "wailord", "wartortle", 
+Print[longestChain[{"audino", "bagon", "baltoy", "banette", "bidoof",
+    "braviary", "bronzor", "carracosta", "charmeleon", "cresselia",
+    "croagunk", "darmanitan", "deino", "emboar", "emolga",
+    "exeggcute", "gabite", "girafarig", "gulpin", "haxorus",
+    "heatmor", "heatran", "ivysaur", "jellicent", "jumpluff",
+    "kangaskhan", "kricketune", "landorus", "ledyba", "loudred",
+    "lumineon", "lunatone", "machamp", "magnezone", "mamoswine",
+    "nosepass", "petilil", "pidgeotto", "pikachu", "pinsir",
+    "poliwrath", "poochyena", "porygon2", "porygonz", "registeel",
+    "relicanth", "remoraid", "rufflet", "sableye", "scolipede",
+    "scrafty", "seaking", "sealeo", "silcoon", "simisear", "snivy",
+    "snorlax", "spoink", "starly", "tirtouga", "trapinch", "treecko",
+    "tyrogue", "vigoroth", "vulpix", "wailord", "wartortle",
     "whismur", "wingull", "yamask"}]];
 ```
 
@@ -3203,14 +3203,14 @@ Output:
 ---------------------------
 machamp
 ---------------------------
-Maximum path length: 23 
-Paths of that length: 1248 
+Maximum path length: 23
+Paths of that length: 1248
 
-Example path of that length: machamp petilil landorus scrafty yamask kricketune emboar registeel loudred darmanitan nosepass simisear relicanth heatmor rufflet trapinch haxorus seaking girafarig gabite exeggcute emolga audino  
+Example path of that length: machamp petilil landorus scrafty yamask kricketune emboar registeel loudred darmanitan nosepass simisear relicanth heatmor rufflet trapinch haxorus seaking girafarig gabite exeggcute emolga audino
 
 Time taken: 00:40:09
 ---------------------------
-Yes   No   
+Yes   No
 ---------------------------
 ```
 
@@ -3403,7 +3403,7 @@ constant words = {"audino","bagon","baltoy","banette","bidoof","braviary","bronz
                   "porygon2","porygonz","registeel","relicanth","remoraid","rufflet","sableye","scolipede","scrafty","seaking",
                   "sealeo","silcoon","simisear","snivy","snorlax","spoink","starly","tirtouga","trapinch","treecko","tyrogue",
                   "vigoroth","vulpix","wailord","wartortle","whismur","wingull","yamask"}
-    
+
 function word_chains()
 sequence first = repeat(0,256),             -- start of chains for a given letter
                                             -- first['a']=1, first['b']=2, first['c']=8, etc.
@@ -3480,7 +3480,7 @@ end while
 ```txt
 
 Runtime: 0.656 seconds. Max length:23, found 1248 of such, one of which is:
-machamp petilil landorus scrafty yamask kricketune emboar registeel loudred darmanitan nosepass simisear 
+machamp petilil landorus scrafty yamask kricketune emboar registeel loudred darmanitan nosepass simisear
 relicanth heatmor rufflet trapinch haxorus seaking girafarig gabite exeggcute emolga audino
 
 ```
@@ -3503,7 +3503,7 @@ quite probably not finishing within my lifetime...
 
 ## Prolog
 
-Works with SWI-Prolog and module '''lambda.pl''' written  by '''Ulrich Neumerkel''' found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl 
+Works with SWI-Prolog and module '''lambda.pl''' written  by '''Ulrich Neumerkel''' found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl
 
 ```Prolog
 :- use_module(library(lambda)).
@@ -3645,7 +3645,7 @@ porygonz registeel relicanth remoraid rufflet sableye scolipede scrafty seaking
 sealeo silcoon simisear snivy snorlax spoink starly tirtouga trapinch treecko
 tyrogue vigoroth vulpix wailord wartortle whismur wingull yamask'''
     pokemon = pokemon.strip().lower().split()
-    pokemon = sorted(set(pokemon))    
+    pokemon = sorted(set(pokemon))
     l = llfl(pokemon)
     for i in range(0, len(l), 8): print(' '.join(l[i:i+8]))
     print(len(l))
@@ -3824,7 +3824,7 @@ definiton of `word` is slightly different here.
 (define-struct word (sym char-a char-z) #:prefab)
 
 ;;; names are input as symbols both for ease of comparsion, and because it's easier to type
-(define (symbol->word sym) 
+(define (symbol->word sym)
   (let* ((str (symbol->string sym))
          (chrs (string->list str))
          (fst (for/first ((c chrs) #:when (char-alphabetic? c)) (char-downcase c)))
@@ -3891,10 +3891,10 @@ definiton of `word` is slightly different here.
                longest-range
                (list sub-range-start sub-range-end range-length)))
          #f))))
-  
+
   (let* ((chain-first-name (word-sym (first chain)))
-         (chain-length (length chain))         
-         (a..a-list (sort (hash->list (find-a..a-loops chain)) > #:key third)))                       
+         (chain-length (length chain))
+         (a..a-list (sort (hash->list (find-a..a-loops chain)) > #:key third)))
     (for*/first (((chain2 chain2-idx) (in-parallel (in-list chains) (in-naturals)))
                  #:unless (eq? chain-first-name (word-sym (car chain2)))
                  (chain2-length (in-value (length chain2)))
@@ -3911,7 +3911,7 @@ definiton of `word` is slightly different here.
 
 ;; this is a bit more combinatorially intensive... for all c2, substitute a
 ;; subrange in c2 that is longer than an equivalent subrange in c
-(define (merge-subranges-of-chains-into-chain chain chain-idx chains) 
+(define (merge-subranges-of-chains-into-chain chain chain-idx chains)
   (let ((chain-first-name (word-sym (first chain)))
         (chain-length (length chain))
         (chain-first-a (word-char-a (first chain)))
@@ -3935,14 +3935,14 @@ definiton of `word` is slightly different here.
          (c2-sub-range (in-value (take (drop chain2 c2-sub-range-start) c2-sub-range-len)))
          (new-c2 (in-value (append (take chain2 c2-sub-range-start)
                                    chain
-                                   (drop chain2 (add1 c2-sub-range-end))))))      
+                                   (drop chain2 (add1 c2-sub-range-end))))))
       (cons c2-sub-range ; put the subrange back into the chains pool
             (cons new-c2 ; put the modified onto the chains pool
                   (copy-list-ignoring-indices chains chain-idx chain2-idx))))))
 
 (define (longest-chain/constructive names #:known-max (known-max +inf.0))
   (define names-list (map symbol->word names))
-  
+
   (define (link-chains chains)
     (let
         ((new-chains
@@ -3951,13 +3951,13 @@ definiton of `word` is slightly different here.
                (new-chains
                 (in-value
                  (or
-                  (append-ab..bz-chains chain chain-idx chains)                                         
+                  (append-ab..bz-chains chain chain-idx chains)
                   (merge-chain-into-chain-accepting-a..a-in-chain chain chain-idx chains)
                   (merge-subranges-of-chains-into-chain chain chain-idx chains))))
                #:when new-chains)
             new-chains)))
       (if new-chains (link-chains new-chains) chains)))
-  
+
   (define (keep-trying
            (run-count 0)
            (linked-chains (link-chains (map list (shuffle names-list))))
@@ -4150,7 +4150,7 @@ Never terminates. The longest chain I have found (so far?) is 333 long:
 
 This REXX version allows a limit on the word scan (very useful for testing and debugging), and
 
-also has various speed optimizations. 
+also has various speed optimizations.
 
 ```rexx
 /*REXX program finds the  longest path of word's   last─letter ───► first─letter.       */
@@ -4334,19 +4334,19 @@ scan: procedure expose @. # !. $$$ MP MPL;   parse arg $$$,!;                   
 # Project : Last letter-first letter
 
 ready = []
-names = ["audino", "bagon", "baltoy", "banette", 
-               "bidoof", "braviary", "bronzor", "carracosta", "charmeleon", 
-               "cresselia", "croagunk", "darmanitan", "deino", "emboar", 
-               "emolga", "exeggcute", "gabite", "girafarig", "gulpin", 
-               "haxorus", "heatmor", "heatran", "ivysaur", "jellicent", 
-               "jumpluff", "kangaskhan", "kricketune", "landorus", "ledyba", 
-               "loudred", "lumineon", "lunatone", "machamp", "magnezone", 
-               "mamoswine", "nosepass", "petilil", "pidgeotto", "pikachu", 
-               "pinsir", "poliwrath", "poochyena", "porygon2", "porygonz", 
-               "registeel", "relicanth", "remoraid", "rufflet", "sableye", 
-               "scolipede", "scrafty", "seaking", "sealeo", "silcoon", 
-               "simisear", "snivy", "snorlax", "spoink", "starly", "tirtouga", 
-               "trapinch", "treecko", "tyrogue", "vigoroth", "vulpix", 
+names = ["audino", "bagon", "baltoy", "banette",
+               "bidoof", "braviary", "bronzor", "carracosta", "charmeleon",
+               "cresselia", "croagunk", "darmanitan", "deino", "emboar",
+               "emolga", "exeggcute", "gabite", "girafarig", "gulpin",
+               "haxorus", "heatmor", "heatran", "ivysaur", "jellicent",
+               "jumpluff", "kangaskhan", "kricketune", "landorus", "ledyba",
+               "loudred", "lumineon", "lunatone", "machamp", "magnezone",
+               "mamoswine", "nosepass", "petilil", "pidgeotto", "pikachu",
+               "pinsir", "poliwrath", "poochyena", "porygon2", "porygonz",
+               "registeel", "relicanth", "remoraid", "rufflet", "sableye",
+               "scolipede", "scrafty", "seaking", "sealeo", "silcoon",
+               "simisear", "snivy", "snorlax", "spoink", "starly", "tirtouga",
+               "trapinch", "treecko", "tyrogue", "vigoroth", "vulpix",
                "wailord", "wartortle", "whismur", "wingull", "yamask"]
 strbegin = "gabite"
 strdir = "first"
@@ -4358,7 +4358,7 @@ while true
              strc = right(strbegin, 1)
              flag = 1
              nr = nr + 1
-             if nr <= len(names) 
+             if nr <= len(names)
                 if left(names[nr],1) = strc
                    for n = 1 to len(ready)
                          if names[nr] = ready[n]
@@ -4427,7 +4427,7 @@ class LastL_FirstL
     @first = names.group_by {|name| name[0]}
     @sequences = []
   end
-  
+
   def add_name(seq)
     last_letter = seq[-1][-1]
     potentials = @first.include?(last_letter) ? (@first[last_letter] - seq) : []
@@ -4437,7 +4437,7 @@ class LastL_FirstL
       potentials.each {|name| add_name(seq + [name])}
     end
   end
-  
+
   def search
     @names.each {|name| add_name [name]}
     max = @sequences.max_by {|seq| seq.length}.length
@@ -4826,7 +4826,7 @@ Path (length 23): machamp petilil landorus scrafty yamask kricketune emboar regi
 ```Ursala
 #import std
 
-mon = 
+mon =
 
 ~&*~ sep`  mat`  -[
    audino bagon baltoy banette bidoof braviary bronzor carracosta charmeleon
@@ -4937,7 +4937,7 @@ Sub lastfirst(names, offset)
             temp=names(offset): names(offset)=names(i): names(i)=temp
         End If
     Next 'i
-End Sub 'lastfirst 
+End Sub 'lastfirst
 ```
 
 {{out}}
@@ -4991,12 +4991,12 @@ all$ = all$ + "sealeo silcoon simisear snivy snorlax spoink starly tirtouga trap
 all$ = all$ + "tyrogue vigoroth vulpix wailord wartortle whismur wingull yamask"
 
 dim word$(1)
- 
+
 lnames = token(all$, word$())
 
 dim first(256), snext(lnames)
- 
-    
+
+
 for i = 1 to lnames
     ch = asc(left$(word$(i), 1))
     if first(ch)=0 then
@@ -5009,12 +5009,12 @@ for i = 1 to lnames
         end if
     next
 next
- 
+
 dim taken(lnames), best(lnames)
- 
+
 sub try(ch, last, n)
     local nex, i
-    
+
     nex = first(ch)
     while(nex <> 0)
         if taken(nex)=0 then
@@ -5037,7 +5037,7 @@ sub try(ch, last, n)
         count = count + 1
     end if
 end sub
- 
+
 for i=1 to lnames
     tstart = i
     taken(i) = -1
@@ -5069,7 +5069,7 @@ pokemon:=("audino bagon baltoy banette bidoof braviary "
    "whismur wingull yamask").split();
 
 tree:=pokemon.pump(Dictionary(),'wrap(name){ //--> Hash("aB":("Bc","Bd",,,) )
-   T( name, pokemon.filter('wrap(nm){ name[-1]==nm[0] }) ) 
+   T( name, pokemon.filter('wrap(nm){ name[-1]==nm[0] }) )
 });
 
 fcn maxPath([(a,_)]ab,[(c,_)]cd){ if(a>c) ab else cd }

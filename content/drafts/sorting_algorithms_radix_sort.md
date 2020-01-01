@@ -15,7 +15,7 @@ tags = []
 
 
 ;Task:
-Sort an integer array with the   [[wp:Radix sort|radix sort algorithm]]. 
+Sort an integer array with the   [[wp:Radix sort|radix sort algorithm]].
 
 The primary purpose is to complete the characterization of sort algorithms task.
 
@@ -131,39 +131,39 @@ output:
 ```algol68
 PROC radixsort = (REF []INT array) VOID:
 (
-    [UPB array]INT zero;  
-    [UPB array]INT one;   
-    BITS mask := 16r01;  
-    INT zero_index  := 0, 
+    [UPB array]INT zero;
+    [UPB array]INT one;
+    BITS mask := 16r01;
+    INT zero_index  := 0,
         one_index   := 0,
-        array_index := 1; 
+        array_index := 1;
 
-    WHILE ABS(mask) > 0 DO 
-        WHILE array_index <= UPB array DO 
-            IF (BIN(array[array_index]) AND mask) = 16r0 THEN 
+    WHILE ABS(mask) > 0 DO
+        WHILE array_index <= UPB array DO
+            IF (BIN(array[array_index]) AND mask) = 16r0 THEN
                 zero_index +:= 1;
                 zero[zero_index] := array[array_index]
-            ELSE            
+            ELSE
                 one_index +:= 1;
                 one[one_index] := array[array_index]
             FI;
-            array_index +:= 1 
+            array_index +:= 1
         OD;
-        
-        array_index := 1; 
-        FOR i FROM 1 TO zero_index DO 
+
+        array_index := 1;
+        FOR i FROM 1 TO zero_index DO
             array[array_index] := zero[i];
             array_index +:= 1
         OD;
 
-        FOR i FROM 1 TO one_index DO 
+        FOR i FROM 1 TO one_index DO
             array[array_index] := one[i];
             array_index +:=1
         OD;
-        
+
         array_index := 1;
         zero_index := one_index := 0;
-        mask := mask SHL 1 
+        mask := mask SHL 1
     OD
 );
 
@@ -173,7 +173,7 @@ main:
     FOR i FROM 1 TO UPB a DO
         a[i] := ROUND(random*1000)
     OD;
-    
+
     print(("Before:", a));
     print((newline, newline));
     radixsort(a);
@@ -186,7 +186,7 @@ main:
 ```txt
 
 Before:       +459       +941       +623       +386       +263       +766       +129       +554       +160       +328
-                                                                                                                     
+
 After:        +129       +160       +263       +328       +386       +459       +554       +623       +766       +941
 
 ```
@@ -239,7 +239,7 @@ The array index is assumed to start at zero.  The third parameter of PROCradixso
       NEXT
       PRINT
       END
-      
+
       DEF PROCradixsort(a%(), n%, r%)
       LOCAL d%, e%, i%, l%, m%, b%(), bucket%()
       DIM b%(n%-1), bucket%(r%-1)
@@ -283,8 +283,8 @@ The array index is assumed to start at zero.  The third parameter of PROCradixso
 ## C
 
 Radix sort, "digits" are most significant bits.
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <limits.h>
 #include <stdlib.h>
 #include <time.h>
@@ -327,27 +327,27 @@ static void radix_sort(int *a, const size_t len)
 	size_t i;
 	unsigned *x = (unsigned*) a;
 
-	for (i = 0; i < len; i++) 
+	for (i = 0; i < len; i++)
             x[i] ^= INT_MIN;
 
         rad_sort_u(x, x + len, INT_MIN);
 
-        for (i = 0; i < len; i++) 
+        for (i = 0; i < len; i++)
             x[i] ^= INT_MIN;
 }
 
 int main(void)
 {
-        
+
     srand(time(NULL));
     int x[16];
 
-     for (size_t i = 0; i < ARR_LEN(x); i++) 
+     for (size_t i = 0; i < ARR_LEN(x); i++)
         x[i] = RAND_RNG(-128,127)
 
     radix_sort(x, ARR_LEN(x));
 
-    for (size_t i = 0; i < ARR_LEN(x); i++) 
+    for (size_t i = 0; i < ARR_LEN(x); i++)
         printf("%d%c", x[i], i + 1 < ARR_LEN(x) ? ' ' : '\n');
 }
 ```
@@ -364,8 +364,8 @@ Implements a least significant digit radix sort and a recursive most significant
 
 Note: the LSD radix sort uses the standard library '''std::stable_partition''' algorithm. This algorithm is guaranteed to preserve relative order and has a higher runtime cost. The MSD radix sort uses '''std::partition''' and can be significantly faster.
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 
@@ -423,7 +423,7 @@ int main()
 Output:
 
 ```txt
--802 -90 2 24 45 66 75 170 
+-802 -90 2 24 45 66 75 170
 ```
 
 
@@ -598,7 +598,7 @@ http://www.cubic.org/docs/download/radix_ar_2011.cpp
 
 
 <lang># only works with positive integers
-# 
+#
 subr sort
   radix = 16
   max = 0
@@ -795,7 +795,7 @@ Sorted:
 ```elixir
 defmodule Sort do
   def radix_sort(list), do: radix_sort(list, 10)
-  
+
   def radix_sort([], _), do: []
   def radix_sort(list, base) do
     max = abs(Enum.max_by(list, &abs(&1)))
@@ -803,7 +803,7 @@ defmodule Sort do
     {minus, plus} = Enum.partition(sorted, &(&1<0))
     Enum.reverse(minus, plus)
   end
-  
+
   defp radix_sort(list, _, max, m) when max<m, do: list
   defp radix_sort(list, base, max, m) do
     buckets = List.to_tuple(for _ <- 0..base-1, do: [])
@@ -850,14 +850,14 @@ IO.inspect Sort.radix_sort([-4, 5, -26, 58, -990, 331, 331, 990, -1837, 2028])
 * ASSUMPTIONS:  Bits in an INTEGER is an even number.
 *               Integers are represented by twos complement.
 *
-* NOTE THAT:  Radix sorting has an advantage when the input is known 
-*             to be less than some value, so that only a few bits need 
-*             to be compared.  This routine looks at all the bits, 
+* NOTE THAT:  Radix sorting has an advantage when the input is known
+*             to be less than some value, so that only a few bits need
+*             to be compared.  This routine looks at all the bits,
 *             and is thus slower than Quicksort.
 *
 ### =================================================================
 
-      SUBROUTINE RSORT (IX, IW, N)      
+      SUBROUTINE RSORT (IX, IW, N)
        IMPLICIT NONE
        INTEGER IX, IW, N
        DIMENSION IX(N), IW(N)
@@ -907,8 +907,8 @@ IO.inspect Sort.radix_sort([-4, 5, -26, 58, -990, 331, 331, 990, -1837, 2028])
               IX(P0) = IW(J)
              END IF
            END DO
-          
-         ELSE 
+
+         ELSE
            DO J = 1, P0OLD, +1             ! copy data from the zeros
              IF ( BTEST(IX(J), I) ) THEN
                P1 = P1 - 1
@@ -928,7 +928,7 @@ IO.inspect Sort.radix_sort([-4, 5, -26, 58, -990, 331, 331, 990, -1837, 2028])
              END IF
           END DO
          END IF  ! even or odd i
-        
+
          ODD = .NOT. ODD
        END DO  ! next i
 
@@ -942,18 +942,18 @@ IO.inspect Sort.radix_sort([-4, 5, -26, 58, -990, 331, 331, 990, -1837, 2028])
        P1OLD = P1
        P0OLD = P0
        P1 = N+1
-       P0 = 0 
+       P0 = 0
 
 *          if sign bit is set, send to the zero end
        DO J = 1, P0OLD, +1
-         IF ( BTEST(IW(J), ILIM-1) ) THEN 
+         IF ( BTEST(IW(J), ILIM-1) ) THEN
            P0 = P0 + 1
            IX(P0) = IW(J)
          ELSE
            P1 = P1 - 1
            IX(P1) = IW(J)
          END IF
-       END DO          
+       END DO
        DO J = N, P1OLD, -1
          IF ( BTEST(IW(J), ILIM-1) ) THEN
            P0 = P0 + 1
@@ -963,7 +963,7 @@ IO.inspect Sort.radix_sort([-4, 5, -26, 58, -990, 331, 331, 990, -1837, 2028])
            IX(P1) = IW(J)
          END IF
        END DO
-          
+
 *
 ### =================================================================
 
@@ -991,13 +991,13 @@ IO.inspect Sort.radix_sort([-4, 5, -26, 58, -990, 331, 331, 990, -1837, 2028])
        PARAMETER (N = 11)
        INTEGER IX(N), IW(N)
        LOGICAL OK
-       
+
        DATA IX / 2, 24, 45, 0, 66, 75, 170, -802, -90, 1066, 666 /
-       
+
        PRINT *, 'before: ', IX
        CALL RSORT (IX, IW, N)
        PRINT *, 'after: ', IX
-       
+
 *              compare
        OK = .TRUE.
        DO I = 1, N-1
@@ -1506,7 +1506,7 @@ def radix_sort(base):
       # state: [ base^i, buckets ]
       ( [1, .];
         .[0] as $base_i
-        | reduce .[1][] as $n 
+        | reduce .[1][] as $n
             ([];
              (($n/$base_i) % base) as $digit
              | .[$digit] += [$n] )
@@ -1526,7 +1526,7 @@ def radix_sort:
 # Verify that radix_sort agrees with sort
 ( [1, 3, 8, 9, 0, 0, 8, 7, 1, 6],
   [170, 45, 75, 90, 2, 24, 802, 66],
-  [170, 45, 75, 90, 2, 24, -802, -66] ) 
+  [170, 45, 75, 90, 2, 24, -802, -66] )
 | (radix_sort == sort)
 
 ```
@@ -1564,7 +1564,7 @@ end
 
 function testradixsort()
     arrays = [[170, 45, 75, -90, -802, 24, 2, 66], [-4, 5, -26, 58, -990, 331, 331, 990, -1837, 2028]]
-    for array in arrays 
+    for array in arrays
         println(radixsort(array))
     end
 end
@@ -2108,21 +2108,21 @@ DataSection
   Data.i 10 ;size
   Data.i 1, 3, 8, 9, 0, 0, 8, 7, 1, 6 ;data
   set2:
-  Data.i 8 
+  Data.i 8
   Data.i 170, 45, 75, 90, 2, 24, 802, 66
   set3:
   Data.i 8
   Data.i 170, 45, 75, 90, 2, 24, -802, -66
 EndDataSection
 
-Procedure setIntegerArray(Array x(1), *setPtr) 
+Procedure setIntegerArray(Array x(1), *setPtr)
   Protected i, count
   count = PeekI(*setPtr) - 1 ;convert to zero based count
   *setPtr + SizeOf(Integer) ;move pointer forward to data
   Dim x(count)
   For i = 0 To count
     x(i) = PeekI(*setPtr + i * SizeOf(Integer))
-  Next 
+  Next
 EndProcedure
 
 Procedure displayArray(Array x(1))
@@ -2130,42 +2130,42 @@ Procedure displayArray(Array x(1))
   For i = 0 To Size
     Print(Str(x(i)))
     If i < Size: Print(", "): EndIf
-  Next 
+  Next
   PrintN("")
 EndProcedure
 
 Procedure radixSort(Array x(1), Base = 10)
   Protected count = ArraySize(x())
   If Base < 1 Or count < 1: ProcedureReturn: EndIf ;exit due to invalid values
-  
+
   Protected i, pv, digit, digitCount, maxAbs, pass, index
   ;find element with largest number of digits
   For i = 0 To count
     If Abs(x(i)) > maxAbs
       maxAbs = Abs(x(i))
-    EndIf 
+    EndIf
   Next
-  
+
   digitCount = Int(Log(maxAbs)/Log(Base)) + 1
-  
+
   For pass = 1 To digitCount
     Dim sortBuckets.bucket(Base * 2 - 1)
     pv = Pow(Base, pass - 1)
-    
+
     ;place elements in buckets according to the current place-value's digit
     For index = 0 To count
       digit = Int(x(index)/pv) % Base + Base
       AddElement(sortBuckets(digit)\i())
       sortBuckets(digit)\i() = x(index)
     Next
-    
+
     ;transfer contents of buckets back into array
     index = 0
     For digit = 1 To (Base * 2) - 1
       ForEach sortBuckets(digit)\i()
         x(index) = sortBuckets(digit)\i()
         index + 1
-      Next 
+      Next
     Next
   Next
 EndProcedure
@@ -2174,13 +2174,13 @@ If OpenConsole()
   Dim x(0)
   setIntegerArray(x(), ?set1)
   radixSort(x()): displayArray(x())
-  
+
   setIntegerArray(x(), ?set2)
   radixSort(x()): displayArray(x())
-  
+
   setIntegerArray(x(), ?set3)
   radixSort(x(), 2): displayArray(x())
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2206,29 +2206,29 @@ This is the Wikipedia example code extended with an extra pass to sort negative 
 ```python
 #python2.6 <
 from math import log
- 
+
 def getDigit(num, base, digit_num):
     # pulls the selected digit
-    return (num // base ** digit_num) % base  
- 
+    return (num // base ** digit_num) % base
+
 def makeBlanks(size):
     # create a list of empty lists to hold the split by digit
-    return [ [] for i in range(size) ]  
- 
+    return [ [] for i in range(size) ]
+
 def split(a_list, base, digit_num):
     buckets = makeBlanks(base)
     for num in a_list:
         # append the number to the list selected by the digit
-        buckets[getDigit(num, base, digit_num)].append(num)  
+        buckets[getDigit(num, base, digit_num)].append(num)
     return buckets
- 
+
 # concatenate the lists back in order for the next step
 def merge(a_list):
     new_list = []
     for sublist in a_list:
        new_list.extend(sublist)
     return new_list
- 
+
 def maxAbs(a_list):
     # largest abs value element of a list
     return max(abs(num) for num in a_list)
@@ -2243,10 +2243,10 @@ def split_by_sign(a_list):
         else:
             buckets[1].append(num)
     return buckets
- 
+
 def radixSort(a_list, base):
     # there are as many passes as there are digits in the longest number
-    passes = int(round(log(maxAbs(a_list), base)) + 1) 
+    passes = int(round(log(maxAbs(a_list), base)) + 1)
     new_list = list(a_list)
     for digit_num in range(passes):
         new_list = merge(split(new_list, base, digit_num))
@@ -2293,7 +2293,7 @@ def radix(some_list, idex=None, size=None):
     # idex: 2
     #    i: (3-2) == 1
     # str(123)[i] -> 2
-    i = size - idex 
+    i = size - idex
 
     # The recursive base case.
     # Hint: out of range indexing errors
@@ -2314,7 +2314,7 @@ def radix(some_list, idex=None, size=None):
         # dest_i: 2
         num_s  = str(e).zfill(size)
         dest_c = num_s[i]
-        dest_i = int(dest_c) 
+        dest_i = int(dest_c)
         bins[dest_i] += [e]
 
     result = []
@@ -2691,7 +2691,7 @@ END SUB
       (define x/R (quotient x R))
       (enqueue! (vector-ref queues (modulo x/R r)) x)
       (unless (zero? x/R) (set! all-zero? #f)))
-    (if all-zero? l	
+    (if all-zero? l
          (loop (let q-loop ([i 0])
                 (define q (vector-ref queues i))
                 (let dq-loop ()

@@ -12,17 +12,17 @@ tags = []
 
 {{task}}
 
-'''Task''': 
-* Generate a string with   '''N'''   opening brackets   <big>'''['''</big>   and with   '''N'''   closing brackets   <big>''']'''</big>,   in some arbitrary order. 
+'''Task''':
+* Generate a string with   '''N'''   opening brackets   <big>'''['''</big>   and with   '''N'''   closing brackets   <big>''']'''</big>,   in some arbitrary order.
 * Determine whether the generated string is ''balanced''; that is, whether it consists entirely of pairs of opening/closing brackets (in that order), none of which mis-nest.
 
 
 
 ;Examples:
     (empty)      OK
-    []           OK   
-    [][]         OK   
-    [[][]]       OK 
+    []           OK
+    [][]         OK
+    [[][]]       OK
     ][         NOT OK
     ][][       NOT OK
     []][[]     NOT OK
@@ -130,7 +130,7 @@ EIFC     XDECO  R8,XDEC            i
 ELOOPI   L      R13,4(0,R13)
          LM     R14,R12,12(R13)
          XR     R15,R15            set return code to 0
-         BR     R14 -------------- end 
+         BR     R14 -------------- end
 CHECKBAL CNOP   0,4 -------------- checkbal
          SR     R6,R6              n=0
          LA     R7,1               k=1
@@ -140,10 +140,10 @@ LOOPK    C      R7,=F'20'          do k=1 to 20
          LA     R4,C-1(R1)         @c(k)
          MVC    CI(1),0(R4)        ci=c(k)
          CLI    CI,C'['            if ci='['
-         BNE    NOT1   
+         BNE    NOT1
          LA     R6,1(R6)           n=n+1
 NOT1     CLI    CI,C']'            if ci=']'
-         BNE    NOT2   
+         BNE    NOT2
          BCTR   R6,0               n=n-1
 NOT2     LTR    R6,R6              if n<0
          BNM    NSUP0
@@ -157,7 +157,7 @@ ELOOPK   LTR    R6,R6              if n=0
          B      RETCHECK
 ELSEN    SR     R0,R0              return(0)
 RETCHECK BR     R14 -------------- end checkbal
-RANDOMX  CNOP   0,4 -------------- randomx 
+RANDOMX  CNOP   0,4 -------------- randomx
          LR     R3,R2              i2
          SR     R3,R1              ii=i2-i1
          L      R5,SEED
@@ -370,7 +370,7 @@ FUNCTION bBRACKETS_MATCH(zStringWithBrackets: STRING): STRING
         SET sBracketCounter = sBracketCounter + 1
       VALUE "]"
         SET sBracketCounter = sBracketCounter - 1
-    ENDCASE      
+    ENDCASE
   ENDDO
   IF sBracketCounter = 0
     SET zOK = "OK"
@@ -410,9 +410,9 @@ procedure Brackets is
       Left := Right;
       Right := Temp;
    end Swap;
-   function Generate_Brackets (Bracket_Count : Natural; 
-                               Opening_Bracket : Character := '['; 
-                               Closing_Bracket : Character := ']') 
+   function Generate_Brackets (Bracket_Count : Natural;
+                               Opening_Bracket : Character := '[';
+                               Closing_Bracket : Character := ']')
             return String is
       use Ada.Strings.Fixed;
       All_Brackets : String := Bracket_Count * Opening_Bracket & Bracket_Count * Closing_Bracket;
@@ -423,9 +423,9 @@ procedure Brackets is
       return All_Brackets;
    end Generate_Brackets;
 
-   function Check_Brackets (Test : String; 
-                            Opening_Bracket : Character := '['; 
-                            Closing_Bracket : Character := ']') 
+   function Check_Brackets (Test : String;
+                            Opening_Bracket : Character := '[';
+                            Closing_Bracket : Character := ']')
             return Boolean is
       Open : Natural := 0;
    begin
@@ -717,7 +717,7 @@ on imbalance(strBrackets)
             set lngChars to length of xs
             if lngChars > 0 then
                 set iNext to iDepth + cond(item 1 of xs = "[", 1, -1)
-                
+
                 if iNext < 0 then -- closing bracket unmatched
                     iIndex
                 else
@@ -732,13 +732,13 @@ on imbalance(strBrackets)
             end if
         end errorIndex
     end script
-    
+
     result's errorIndex(characters of strBrackets, 0, 0)
 end imbalance
 
 -- TEST ----------------------------------------------------------------------
 
--- Random bracket sequences for testing 
+-- Random bracket sequences for testing
 -- brackets :: Int -> String
 on randomBrackets(n)
     -- bracket :: () -> String
@@ -752,29 +752,29 @@ end randomBrackets
 
 on run
     set nPairs to 6
-    
+
     -- report :: Int -> String
     script report
         property strPad : concat(replicate(nPairs * 2 + 4, space))
-        
+
         on |λ|(n)
             set w to n * 2
             set s to randomBrackets(w)
             set i to imbalance(s)
             set blnOK to (i = -1)
-            
+
             set strStatus to cond(blnOK, "OK", "problem")
-            
+
             set strLine to "'" & s & "'" & ¬
                 (items (w + 2) thru -1 of strPad) & strStatus
-            
+
             set strPointer to cond(blnOK, ¬
                 "", linefeed & concat(replicate(i + 1, space)) & "^")
-            
+
             intercalate("", {strLine, strPointer})
         end |λ|
     end script
-    
+
     linefeed & ¬
         intercalate(linefeed, ¬
             map(report, enumFromTo(1, nPairs))) & linefeed
@@ -822,7 +822,7 @@ on concat(xs)
             a & b
         end |λ|
     end script
-    
+
     if length of xs > 0 and class of (item 1 of xs) is string then
         set empty to ""
     else
@@ -832,7 +832,7 @@ on concat(xs)
 end concat
 
 -- Egyptian multiplication - progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for binary 
+-- stages of doubling to an accumulator where needed for binary
 -- assembly of a target length
 
 -- replicate :: Int -> a -> [a]
@@ -840,7 +840,7 @@ on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -878,7 +878,7 @@ on enumFromTo(m, n)
     return lst
 end enumFromTo
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -941,7 +941,7 @@ BalancedBrackets:
 
     cmp r2, #'['
     addeq r3, r3, #1
-    
+
     cmp r2, #']'
     subeq r3, r3, #1
 
@@ -1163,10 +1163,10 @@ EndFunc
 
 ## AWK
 
- 	
+
 
 ```AWK
-#!/usr/bin/awk -f 
+#!/usr/bin/awk -f
 BEGIN {
    print isbb("[]")
    print isbb("][")
@@ -1180,11 +1180,11 @@ function isbb(x) {
    s = 0
    for (k=1; k<=length(x); k++) {
 	c = substr(x,k,1)
-	if (c=="[") {s++}	
+	if (c=="[") {s++}
 	else { if (c=="]") s--	}
 
         if (s<0) {return 0}
-   } 	
+   }
    return (s==0)
 }
 
@@ -1297,18 +1297,18 @@ Based on ZX Spectrum BASIC implementation
 60   PRINT TAB(20);
 70   GOSUB 1000
 80 NEXT N
-90 END 
+90 END
 100 REM ********************************
 1000 S = 0
 1010 FOR K=1 TO LEN(S$)
 1020   C$ = MID$(S$,K,1)
 1030   IF C$="[" THEN S = S+1
 1040   IF C$="]" THEN S = S-1
-1050   IF S<0 THEN PRINT "NOT OK": RETURN 
+1050   IF S<0 THEN PRINT "NOT OK": RETURN
 1060 NEXT K
-1070 IF S=0 THEN PRINT "OK": RETURN 
+1070 IF S=0 THEN PRINT "OK": RETURN
 1090 PRINT "NOT OK"
-1100 RETURN 
+1100 RETURN
 2000 DATA , [], ][, [][], ][][, [[][]], []][[]
 ```
 
@@ -1321,7 +1321,7 @@ Uses a Markov algorithm/code <code>"[]" -> null</code> to check if brackets are 
 ```dos
 :: Balanced Brackets Task from Rosetta Code Wiki
 :: Batch File Implementation
- 
+
 @echo off
 setlocal enabledelayedexpansion
 
@@ -1372,7 +1372,7 @@ if "!input!"=="!changes!" goto notbal
 set input=!changes!
 set "changes=!input:[]=!"
 goto check_loop
- 
+
 :itsbal
 echo.
 echo %samp% is Balanced.
@@ -1469,7 +1469,7 @@ Bracket string []][][][[] is not OK.
 {{works with|befungee}}
 This code implements the second part of the task: it reads from standard input an arbitrary string of opening and closing brackets, and checks whether it's balanced or not.
 
-```Befunge>v                
+```Befunge>v
  "KO TON" ,,,,,,   v
 > ~ : 25*- #v_ $ |                   > 25*, @
                  > "KO" ,,           ^
@@ -1591,10 +1591,10 @@ Output:
 ## C
 
 
-```c>#include<stdio.h
-
-#include<stdlib.h>
-#include<string.h>
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 int isBal(const char*s,int l){
     signed c=0;
@@ -1729,7 +1729,7 @@ Sample output:
 						i = -1;
 					}
 				}
-	
+
 			}
 			if (input.Length == 0)
 				Console.WriteLine("Okay");
@@ -1744,8 +1744,8 @@ Sample output:
 ## C++
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <string>
 
@@ -1783,7 +1783,7 @@ int main()
 Output:
 
 ```txt
- ok: 
+ ok:
  ok: []
  ok: [][]
 bad: []][[]
@@ -1871,7 +1871,7 @@ Output:
 ```
 
 
-There are other ways to express the <code>balanced?</code> function. 
+There are other ways to express the <code>balanced?</code> function.
 
 * We can use <code>reduce</code> to consume the sequence:
 :
@@ -1897,7 +1897,7 @@ There are other ways to express the <code>balanced?</code> function.
   (let [opens-closes (->> s
                           (map {\[ 1, \] -1})
                           (reductions + 0))]
-    (and (not-any? neg? opens-closes) (zero? (last opens-closes))))) 
+    (and (not-any? neg? opens-closes) (zero? (last opens-closes)))))
 ```
 
 
@@ -2010,20 +2010,20 @@ user> (->> (range 10)
                ELSE
                    SUBTRACT 1 FROM nesting-level
                    IF nesting-level < 0
-                       MOVE False-Val TO RETURN-CODE 
+                       MOVE False-Val TO RETURN-CODE
                        GOBACK
                    END-IF
                END-IF
            END-PERFORM
-           
+
            IF nesting-level = 0
                MOVE True-Val TO RETURN-CODE
            ELSE
                MOVE False-Val TO RETURN-CODE
            END-IF
-           
+
            GOBACK
-           . 
+           .
 
        END PROGRAM check-if-balanced.
 ```
@@ -2055,7 +2055,7 @@ for brackets in bracketsCombinations 4
 
 output
 <lang>
-> coffee balanced.coffee 
+> coffee balanced.coffee
 [[[[ false
 [[[] false
 [[][ false
@@ -2120,7 +2120,7 @@ Output:
 ```txt
 
 CL-USER> (show-balanced-brackets)
-T  : 
+T  :
 NIL: ][
 T  : [[]]
 NIL: []]][[
@@ -2147,7 +2147,7 @@ TYPE
 	Character = POINTER TO RECORD (Stacks.Object)
 		c: CHAR
 	END;
-	
+
 PROCEDURE NewCharacter(c: CHAR): Character;
 VAR
 	n: Character;
@@ -2169,20 +2169,20 @@ VAR
 BEGIN
 	i := 0; s := Stacks.NewStack();
 	WHILE (i < LEN(str$)) & (~Args.IsBlank(str[i])) & (str[i] # 0X) DO
-		IF s.Empty() THEN 
+		IF s.Empty() THEN
 			s.Push(NewCharacter(str[i]));
-		ELSE 
+		ELSE
 			n := s.top.data;
-			WITH 
+			WITH
 				n :  Character DO
-				IF (str[i] = ']')& (n.c = '[') THEN 
-					x := s.Pop(); 
+				IF (str[i] = ']')& (n.c = '[') THEN
+					x := s.Pop();
 				ELSE
 					s.Push(NewCharacter(str[i]))
 				END;
 			ELSE RETURN FALSE;
 			END;
-		END; 
+		END;
 		INC(i)
 	END;
 	RETURN s.Empty();
@@ -2414,11 +2414,11 @@ false
 	(for/fold (closed 0) ((par str))
 	 #:break (< closed 0 ) => closed
 	(+ closed
-	(cond 
+	(cond
 		((string=? par "[")  1)
 		((string=? par "]") -1)
 		(else 0)))))
-		
+
 (define (task N)
 (define str (list->string (append (make-list N "[") (make-list N "]"))))
 	(for ((i 10))
@@ -2427,17 +2427,17 @@ false
 
 (task 4)
 
-❌     "[]]][[]["    
-❌     "]][][[[]"    
-❌     "][[[]]]["    
-👍     "[][[[]]]"    
-❌     "]][[][]["    
-❌     "][][[[]]"    
-👍     "[][][[]]"    
-❌     "]][[][[]"    
-❌     "[[]]][[]"    
-❌     "[[][]]]["    
-	  
+❌     "[]]][[]["
+❌     "]][][[[]"
+❌     "][[[]]]["
+👍     "[][[[]]]"
+❌     "]][[][]["
+❌     "][][[[]]"
+👍     "[][][[]]"
+❌     "]][[][[]"
+❌     "[[]]][[]"
+❌     "[[][]]]["
+
 
 ```
 
@@ -2455,14 +2455,14 @@ import extensions'text;
 randomBrackets(len)
 {
     if (0 == len)
-    { 
-        ^emptyString 
+    {
+        ^emptyString
     }
     else
     {
-        var brackets := 
-            Array.allocate(len).populate:(i => $91) 
-            + 
+        var brackets :=
+            Array.allocate(len).populate:(i => $91)
+            +
             Array.allocate(len).populate:(i => $93);
 
         brackets := brackets.randomize(len * 2);
@@ -2476,9 +2476,9 @@ extension op
     get isBalanced()
     {
         var counter := new Integer(0);
-    
+
         self.seekEach:(ch => counter.append((ch==$91).iif(1,-1)) < 0);
-    
+
         ^ (0 == counter)
     }
 }
@@ -2529,20 +2529,20 @@ defmodule Balanced_brackets do
       IO.puts "#{brackets} is #{result}"
     end)
   end
-  
+
   defp generate( 0 ), do: []
   defp generate( n ) do
     for _ <- 1..2*n, do: Enum.random ["[", "]"]
   end
-  
+
   def is_balanced( brackets ), do: is_balanced_loop( brackets, 0 )
-  
+
   defp is_balanced_loop( _, n ) when n < 0, do: false
   defp is_balanced_loop( [], 0 ), do: true
   defp is_balanced_loop( [], _n ), do: false
   defp is_balanced_loop( ["[" | t], n ), do: is_balanced_loop( t, n + 1 )
   defp is_balanced_loop( ["]" | t], n ), do: is_balanced_loop( t, n - 1 )
- 
+
   defp task_balanced( true ), do: "OK"
   defp task_balanced( false ), do: "NOT OK"
 end
@@ -2700,11 +2700,11 @@ let isBalanced str =
 let shuffle arr =
     let rnd = new System.Random()
     Array.sortBy (fun _ -> rnd.Next()) arr
-      
-let generate n = 
+
+let generate n =
   new string( String.replicate n "[]" |> Array.ofSeq |> shuffle )
 
- 
+
 for n in 1..10 do
   let s = generate n
   printfn "\"%s\" is balanced: %b" s (isBalanced s)
@@ -2734,7 +2734,7 @@ This code implements the second part of the task: it reads from standard input a
 
 ```Factor
 USING: io formatting locals kernel math sequences unicode.case ;
-IN: balanced-brackets 
+IN: balanced-brackets
 
 :: balanced ( str -- )
    0 :> counter!
@@ -2763,23 +2763,23 @@ Some more idiomatic solution might be as follows:
 
 ```Factor
 USING: io formatting locals kernel math sequences unicode.case ;
-IN: balanced-brackets 
+IN: balanced-brackets
 
-: map-braces ( -- qout ) 
+: map-braces ( -- qout )
   [
     {
       { "[" [ drop  1 ] }
       { "]" [ drop -1 ] }
             [ drop  0 ]
     } case
-  ] 
-; 
+  ]
+;
 
 : balanced? ( str -- ? )
   map-braces map sum 0 =
 ;
 
-"[1+2*[3+4*[5+6]-3]*4-[3*[3+3]]]" balanced? 
+"[1+2*[3+4*[5+6]-3]*4-[3*[3+3]]]" balanced?
 -- Data stack:
 t
 
@@ -2824,7 +2824,7 @@ class Main
         n.times { brackets.addAll (["[", "]"]) }
         n.times { brackets.swap(Int.random(0..<2*n), Int.random(0..<2*n)) }
         // report if matching or not
-        if (matchingBrackets(brackets)) 
+        if (matchingBrackets(brackets))
           echo (brackets.join(" ") + " Matching")
         else
           echo (brackets.join(" ") + " not matching")
@@ -2922,18 +2922,18 @@ Please see the compilation and program execution result as comments at the top o
 ! $ gfortran -g -O0 -std=f2008 -Wall f.f08 -o f.exe
 ! $ ./f
 !  compiles             syntax error
-! :                    
-! :                     ][                  
-! :                     ]][[                
-! :[[[]]]              
-! :                     ][[][]][            
-! :                     ][[]]][[[]          
-! :                     ]]]][]][[[[[        
-! :                     ]]]][][]][[[[[      
-! :                     ][[[]]]]][]][[[[    
-! :                     [[][]]][]]][[[][[]  
+! :
+! :                     ][
+! :                     ]][[
+! :[[[]]]
+! :                     ][[][]][
+! :                     ][[]]][[[]
+! :                     ]]]][]][[[[[
+! :                     ]]]][][]][[[[[
+! :                     ][[[]]]]][]][[[[
+! :                     [[][]]][]]][[[][[]
 ! :                     ]]][[][[[[[[[[]]]]]]
-! :[[][[[][]]][]]      
+! :[[][[[][]]][]]
 ! :[[[][]][][[[]][]][]]
 
 program balanced_brackets
@@ -3045,10 +3045,10 @@ Function isBalanced(s As String) As Boolean
 End Function
 
 ' checking examples in task description
-Dim brackets(1 To 7) As String = {"", "[]", "][", "[][]", "][][", "[[][]]", "[]][[]"} 
+Dim brackets(1 To 7) As String = {"", "[]", "][", "[][]", "][][", "[[][]]", "[]][[]"}
 For i As Integer = 1 To 7
   Print IIf(brackets(i) <> "", brackets(i), "(empty)"); Tab(10); IIf(isBalanced(brackets(i)), "OK", "NOT OK")
-Next    
+Next
 
 ' checking 7 random strings of brackets of length 8 say
 Randomize
@@ -3056,9 +3056,9 @@ Dim r As Integer '' 0 will signify "[" and 1 will signify "]"
 Dim s As String
 For i As Integer = 1 To 7
   s = Space(8)
-  For j As Integer = 1 To 8    
-    r = Int(Rnd * 2)  
-    If r = 0 Then 
+  For j As Integer = 1 To 8
+    r = Int(Rnd * 2)
+    If r = 0 Then
       Mid(s, j) = "["
     Else
       Mid(s, j) = "]"
@@ -3105,43 +3105,43 @@ Sample output (last 7 lines random) :
 
 siNumberOfBrackets As Short = 20              'Maximum amount of brackets in a line
 siNumberOfLines As Short = 20                 'Amount of lines to test
- 
+
 '----
- 
+
 Public Sub Main()
 Dim sBrks As String[] = GenerateBrackets()    'Get random array to check
 Dim sTemp, sHold, sWork As String             'Working variables
 Dim siCount As Short                          'Counter
- 
+
 For Each sTemp In sBrks                       'For each line in the sBrk array (e.g. '[][][][[[[]][]]]')
   sWork = sTemp                               'Make sWork = sTemp
   Repeat                                      'Repeat
     sHold = sWork                             'Make sHold = sWork
     sWork = Replace(sWork, "[]", "")          'Remove all brackets that match '[]'
   Until sHold = sWork                         'If sHold = sWork then there are no more '[]' matches
- 
+
   If sWork = "" Then                          'So if all the brackets 'Nested' correctly sWork will be empty
       Print "    OK ";                        'Print 'OK'
   Else                                        'Else they did not all match
     Print "NOT OK ";                          'So print 'NOT OK'
   Endif
- 
+
   For siCount = 1 To Len(sTemp)               'Loop through the line of brackets
     Print Mid(sTemp, siCount, 1) & " ";       'Print each bracket + a space to make it easier to read
   Next
   Print                                       'Print a new line
 Next
- 
+
 End
- 
+
 '----
- 
+
 Public Sub GenerateBrackets() As String[]     'Generates an array of random quantities of '[' and ']'
 Dim siQty As New Short[]                      'To store the random number (of brackets) to put in a line
 Dim sBrk As New String[]                      'To store the lines of brackets
-Dim siNum, siEnd, siLoop As Short             'Various counters 
+Dim siNum, siEnd, siLoop As Short             'Various counters
 Dim sTemp As String                           'Temp string
- 
+
 Repeat                                        'Repeat
   siNum = Rand(0, siNumberOfBrackets)         'Pick a number between 0 and the total number of brackets requested
   If Even(siNum) Then siQty.Add(siNum)        'If the number is even then add the number to siQty
@@ -3152,13 +3152,13 @@ For Each siNum In siQty                       'For each number in siQty..(e.g. 6
     siEnd = Rand(0, 1)                        'Generate a 0 or a 1
     If siEnd = 0 Then sTemp &= "["            'If '0' then add a '[' bracket
     If siEnd = 1 Then sTemp &= "]"            'If '1' then add a ']' bracket
-    
+
     If siNum = 0 Then                         'If siNum = 0 then..
       sBrk.Add("")                            'Add '0' to the array
         sTemp = ""                            'Clear sTemp
         Break                                 'Exit the Do Loop
     Endif
-    
+
     If Len(sTemp) = siNum Then                'If the length of sTemp = the required amount then..
       If sTemp Not Begins "]" And sTemp Not Ends "[" Then  'Check to see that sTemp does not start with "]" and does not end with a "["
         sBrk.Add(sTemp)                       'Add it to the array
@@ -3180,22 +3180,22 @@ Output:
 
 ```txt
 
-NOT OK [ ] ] [ [ ] [ [ ] [ [ [ ] [ [ ] [ ] 
-NOT OK [ [ [ ] [ [ ] [ [ ] ] [ ] ] 
-NOT OK [ ] [ [ [ ] ] [ [ ] ] ] [ ] ] [ ] ] ] ] 
-NOT OK [ [ [ ] [ ] ] ] ] ] [ [ ] ] [ ] [ [ ] ] 
-NOT OK [ [ ] ] ] ] 
-NOT OK [ ] ] [ [ ] [ ] [ ] 
-NOT OK [ [ [ ] [ ] 
-    OK [ ] 
-NOT OK [ ] ] ] [ ] 
-NOT OK [ [ ] ] ] ] 
-    OK [ [ [ [ ] ] [ ] [ ] ] ] 
-    OK [ ] 
-    OK [ ] [ ] 
-NOT OK [ ] ] ] [ ] [ [ [ [ ] [ [ ] [ ] 
-NOT OK [ ] ] ] [ [ ] ] ] [ ] ] ] ] 
-NOT OK [ ] ] ] ] ] [ [ ] [ ] ] ] [ ] [ [ [ [ ] 
+NOT OK [ ] ] [ [ ] [ [ ] [ [ [ ] [ [ ] [ ]
+NOT OK [ [ [ ] [ [ ] [ [ ] ] [ ] ]
+NOT OK [ ] [ [ [ ] ] [ [ ] ] ] [ ] ] [ ] ] ] ]
+NOT OK [ [ [ ] [ ] ] ] ] ] [ [ ] ] [ ] [ [ ] ]
+NOT OK [ [ ] ] ] ]
+NOT OK [ ] ] [ [ ] [ ] [ ]
+NOT OK [ [ [ ] [ ]
+    OK [ ]
+NOT OK [ ] ] ] [ ]
+NOT OK [ [ ] ] ] ]
+    OK [ [ [ [ ] ] [ ] [ ] ] ]
+    OK [ ]
+    OK [ ] [ ]
+NOT OK [ ] ] ] [ ] [ [ [ [ ] [ [ ] [ ]
+NOT OK [ ] ] ] [ [ ] ] ] [ ] ] ] ]
+NOT OK [ ] ] ] ] ] [ [ ] [ ] ] ] [ ] [ [ [ [ ]
 
 ```
 
@@ -3333,14 +3333,14 @@ Generate Arbitrary String of Bracket Pairs:
 def random = new Random()
 
 def factorial = { (it > 1) ? (2..it).inject(1) { i, j -> i*j } : 1 }
- 
+
 def makePermutation;
 makePermutation = { string, i ->
     def n = string.size()
     if (n < 2) return string
     def fact = factorial(n-1)
     assert i < fact*n
- 
+
     def index = i.intdiv(fact)
     string[index] + makePermutation(string[0..<index] + string[(index+1)..<n], i % fact)
 }
@@ -3360,7 +3360,7 @@ Check Balance of Bracket String:
 boolean balancedBrackets(String brackets, int depth=0) {
     if (brackets == null || brackets.empty) return depth == 0
     switch (brackets[0]) {
-        case '[': 
+        case '[':
             return brackets.size() > 1  &&  balancedBrackets(brackets[1..-1], depth + 1)
         case ']':
             return depth > 0  &&  (brackets.size() == 1  ||  balancedBrackets(brackets[1..-1], depth - 1))
@@ -3391,7 +3391,7 @@ brackets.sort { a, b ->
 
 
 Output:
-<pre style="height:30ex;overflow:scroll;">balanced:    
+<pre style="height:30ex;overflow:scroll;">balanced:
 balanced:    []
 unbalanced:  ][
 balanced:    [[]]
@@ -3681,7 +3681,7 @@ Bad  "]]][[[][][][[][]]["
 
 ```Icon
 procedure main(arglist)
-every s := genbs(!arglist) do  
+every s := genbs(!arglist) do
    write(image(s), if isbalanced(s) then " is balanced." else " is unbalanced")
 end
 
@@ -3720,7 +3720,7 @@ Output:
 
 ## J
 
-'''Solution''': 
+'''Solution''':
 ```j
 bracketDepth    =:  '[]' -&(+/\)/@:(=/) ]
 checkBalanced   =:  _1 -.@e. bracketDepth
@@ -3730,14 +3730,14 @@ genBracketPairs =:  (?~@# { ])@#"0 1&'[]'          NB. bracket pairs in arbitrar
 '''Examples''':
 ```j
    (, ' ' ,  ('bad';'OK') {::~ checkBalanced)"1 genBracketPairs i. 10
-                   OK 
+                   OK
 ][                 bad
 ][[]               bad
-[[[]]]             OK 
-[][[]][]           OK 
-[][[[][]]]         OK 
+[[[]]]             OK
+[][[]][]           OK
+[][[[][]]]         OK
 []][]][]][[[       bad
-[[]][[][][]][]     OK 
+[[]][[][][]][]     OK
 ]]]][[][][[[[]][   bad
 []]][][][[[[]][[]] bad
 ```
@@ -4029,7 +4029,7 @@ balancedbrackets(str::AbstractString) = foldl((x, y) -> x < 0 ? -1 : x + y, 0, c
 
   gen_brackets:{"[]"@x _draw 2}
   check:{r:(-1;1)@"["=x; *(0=+/cs<'0)&(0=-1#cs:+\r)}
-  
+
   {(x;check x)}' gen_brackets' 2*1+!10
 (("[[";0)
  ("[][]";1)
@@ -4117,7 +4117,7 @@ Checking 7 random strings of brackets of length 8:
 
 ```lisp
 (include "string")
- 
+
 (defn bool balanced (std::string s)
   (def bal 0)
   (foreach c s
@@ -4125,7 +4125,7 @@ Checking 7 random strings of brackets of length 8:
       (if (== c #\]) (-- bal)))
     (if (< bal 0) (return false)))
   (return (== bal 0)))
- 
+
 (main
   (decl std::string (at tests) |{"", "[]", "[][]", "[[][]]", "][", "][][", "[]][[]"}|)
   (pr std::boolalpha)
@@ -4147,14 +4147,14 @@ define randomparens(num::integer,open::string='[',close::string=']') => {
         #out->insert('[', integer_random(1,#out->size || 1))
     }
     return #out->join
-} 
+}
 
 define validateparens(input::string,open::string='[',close::string=']') => {
     local(i) = 0
     #input->foreachcharacter => {
         #1 == #open ? #i++
         #1 == #close && --#i < 0 ? return false
-    }    
+    }
     return #i == 0 ? true | false
 }
 
@@ -4377,7 +4377,7 @@ doString[n_] := (
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
- 	
+
 
 ```matlab
 function x = isbb(s)
@@ -4549,7 +4549,7 @@ Output:
 ```oberon2
 
 MODULE BalancedBrackets;
-IMPORT 
+IMPORT
   Object,
   Object:Boxed,
   ADT:LinkedList,
@@ -4619,7 +4619,7 @@ BEGIN
       s.Append(NewCharacter(chars[i]))  (* Push character *)
     ELSE
       n := s.GetLast(); (* top character *)
-      WITH 
+      WITH
         n: Character DO
           IF (chars[i] = ']') & (n.c = '[') THEN
             x := s.RemoveLast(); (* Pop character *)
@@ -4734,7 +4734,7 @@ let generate_brackets n =
       aux (pred i) ('['::']'::acc)
   in
   let brk = aux n [] in
-  List.sort (fun _ _ -> (Random.int 3) - 1) brk 
+  List.sort (fun _ _ -> (Random.int 3) - 1) brk
 
 let is_balanced brk =
   let rec aux = function
@@ -4775,13 +4775,13 @@ $ ocaml balanced_brackets.ml 3
 ```Oforth
 String method: isBalanced
 | c |
-   0 self forEach: c [ 
+   0 self forEach: c [
       c '[' == ifTrue: [ 1+ continue ]
       c ']' <> ifTrue: [ continue ]
       1- dup 0 < ifTrue: [ drop false return ]
       ]
    0 == ;
- 
+
 : genBrackets(n)
    "" #[ "[" "]" 2 rand 2 == ifTrue: [ swap ] rot + swap + ] times(n) ;
 ```
@@ -5126,7 +5126,7 @@ integer level = 0
     end for
     return (level=0)
 end function
- 
+
 sequence s
 constant ok = {"not ok","ok"}
 
@@ -5176,7 +5176,7 @@ The sample is given as unix shell script, you need to have ''php-cli'' (or what 
 #!/usr/bin/php
 <?php
 
-# brackets generator 
+# brackets generator
 function bgenerate ($n) {
     if ($n==0) return '';
     $s = str_repeat('[', $n) . str_repeat(']', $n);
@@ -5403,7 +5403,7 @@ function Get-BalanceStatus ( $String )
 #  Test
 $Strings = @( "" )
 $Strings += 1..5 | ForEach { ( [char[]]("[]" * $_) | Get-Random -Count ( $_ * 2 ) ) -join "" }
- 
+
 ForEach ( $String in $Strings )
     {
     $String.PadRight( 12, " " ) + (Get-BalanceStatus $String)
@@ -5473,7 +5473,7 @@ function Test-BalancedBracket
         Paren = @{Left="("; Right=")"; Regex="^[^()]*(?>(?>(?'pair'\()[^()]*)+(?>(?'-pair'\))[^()]*)+)+(?(pair)(?!))$"}
     }
 
-    if ($String.IndexOf($brackets.$Bracket.Left)  -eq $notFound -and 
+    if ($String.IndexOf($brackets.$Bracket.Left)  -eq $notFound -and
         $String.IndexOf($brackets.$Bracket.Right) -eq $notFound -or  $String -eq [String]::Empty)
     {
         return $true
@@ -5614,7 +5614,7 @@ Procedure.s Generate(N)
       a.c=PeekC(@sample$+r*SizeOf(Character))
       b.c=PeekC(@sample$+i*SizeOf(Character))
       PokeC(@sample$+r*SizeOf(Character), b)
-      PokeC(@sample$+i*SizeOf(Character), a) 
+      PokeC(@sample$+i*SizeOf(Character), a)
     EndIf
   Next
   ProcedureReturn sample$
@@ -5675,7 +5675,7 @@ Output sample
 ...     txt = ['[', ']'] * N
 ...     random.shuffle( txt )
 ...     return ''.join(txt)
-... 
+...
 >>> def balanced(txt):
 ...     braced = 0
 ...     for ch in txt:
@@ -5684,10 +5684,10 @@ Output sample
 ...             braced -= 1
 ...             if braced < 0: return False
 ...     return braced == 0
-... 
+...
 >>> for txt in (gen(N) for N in range(10)):
 ...     print ("%-22r is%s balanced" % (txt, '' if balanced(txt) else ' not'))
-... 
+...
 ''                     is balanced
 '[]'                   is balanced
 '[][]'                 is balanced
@@ -5702,7 +5702,7 @@ Output sample
 
 
 
-###  Functional 
+###  Functional
 
 {{works with|Python|3.2}}
 Rather than explicitly track the count, we can just write the per-element test and use stdlib functions to turn it into a whole-sequence test. It's straightforwardly declarative, and hard to get wrong, but whether it's actually easier to understand depends on how familiar the reader is with thinking in `itertools` style.
@@ -5737,7 +5737,7 @@ Rather than explicitly track the count, we can just write the per-element test a
 
 
 
-###  Array Programming 
+###  Array Programming
 
 {{libheader|NumPy}}
 The numpy library gives us a way to write just the elementwise tests and automatically turn them into whole-sequence tests, although it can be a bit clumsy to use for character rather than numeric operations. The simplicity of the final expression probably doesn't make up for all that extra clumsiness in this case.
@@ -5795,7 +5795,7 @@ The numpy library gives us a way to write just the elementwise tests and automat
 (balanced-brackets "[]")
 (balanced-brackets "[][]")
 (balanced-brackets "[[][]]")
- 
+
 (balanced-brackets "][")
 (balanced-brackets "][][")
 (balanced-brackets "[]][[]")
@@ -6022,7 +6022,7 @@ OK [][][][][][][][]
 
 /*REXX program to check for balanced brackets [] **********************
 * test strings and random string generation copied from Version 1
-* the rest restructured (shortened) to some extent 
+* the rest restructured (shortened) to some extent
 * and output made reproducible (random with a seed)
 * 10.07.2012 Walter Pachl
 **********************************************************************/
@@ -6129,17 +6129,17 @@ checkBal: procedure               /*check for balanced brackets ()   */
 
 
 ===with over 125,000 permutations===
-This REXX version generates over one hundred thousand unique permutations of strings that contain an equal 
+This REXX version generates over one hundred thousand unique permutations of strings that contain an equal
 
 amount of left   <big>[</big>   and right   <big>]</big>   brackets.
 
-All   ''possible''   strings of twenty or less characters (legal bracket expressions) are generated. 
+All   ''possible''   strings of twenty or less characters (legal bracket expressions) are generated.
 
 This eliminates the possibility of missing a particular character string permutation that may not be generated
 
 via a random generator.
 
-Use is made of the   '''countstr'''   function   (which is a BIF for newer REXX interpreters), but a RYO version is 
+Use is made of the   '''countstr'''   function   (which is a BIF for newer REXX interpreters), but a RYO version is
 
 included here for older REXXes that don't contain that BIF   ('''B'''uilt   '''I'''n   '''F'''unction).
 
@@ -6196,7 +6196,7 @@ end
 func generate n
 l = 0 r = 0 output = ""
 while l<n and r<n
-      switch random(2) 
+      switch random(2)
       on 1 l+=1 output+="["
       on 2 r+=1 output+="]"
       off
@@ -6260,10 +6260,10 @@ end
 ```
 
 
-One output: 
+One output:
 ```txt
 
- OK: 
+ OK:
  OK: []
 bad: []][
  OK: [[][]]
@@ -6286,16 +6286,16 @@ bad: []]
 
 ```runbasic
 dim brk$(10)
-brk$(1)  = "[[[][]]]"           
-brk$(2)  = "[[[]][[[][[][]]]]]" 
-brk$(3)  = "][][]][["           
-brk$(4)  = "[][][]"             
-brk$(5)  = "[][]][]][[]]][[["   
-brk$(6)  = "]][[[[]]]][]]][[[[" 
-brk$(7)  = "[[][[[]]][]]"       
-brk$(8)  = "[]][][][[[]]"       
-brk$(9)  = "][]][["             
-brk$(10) = "[]][][][[]"         
+brk$(1)  = "[[[][]]]"
+brk$(2)  = "[[[]][[[][[][]]]]]"
+brk$(3)  = "][][]][["
+brk$(4)  = "[][][]"
+brk$(5)  = "[][]][]][[]]][[["
+brk$(6)  = "]][[[[]]]][]]][[[["
+brk$(7)  = "[[][[[]]][]]"
+brk$(8)  = "[]][][][[[]]"
+brk$(9)  = "][]][["
+brk$(10) = "[]][][][[]"
 
 for i = 0 to 10
   b$ = brk$(i)
@@ -6309,9 +6309,9 @@ next i
 ```
 
 
-One output: 
+One output:
 ```txt
-    OK 
+    OK
     OK [[[][]]]
     OK [[[]][[[][[][]]]]]
 Not OK ][][]][[
@@ -6375,7 +6375,7 @@ fn main() {
 }
 ```
 
-Output: 
+Output:
 ```txt
 
     true
@@ -6399,7 +6399,7 @@ Output:
 If you are new to Scala you might want to jump to Version 2.
 
 
-###  Scala Version 1 
+###  Scala Version 1
 
 {{works with|Scala|2.9.1}}
 
@@ -6818,7 +6818,7 @@ unbalanced: ]]]]][[[[[
 
 
 
-###  Scala Version 2 
+###  Scala Version 2
 
 {{works with|Scala|2.10.1}}
 
@@ -6888,7 +6888,7 @@ Slightly modified implementation of "isBalanced" using tail-recursion
 
 @scala.annotation.tailrec
 final def isBalanced(
-  str: List[Char], 
+  str: List[Char],
   // accumulator|indicator|flag
   balance: Int = 0,
   options_Map: Map[Char, Int] = Map(('[' -> 1), (']' -> -1))
@@ -6991,16 +6991,16 @@ end
 Console output:
 
 ```txt
- ][]][   
- 
- F   
- 
- [[[[][[[][]]]]]]   
- 
- T   
- 
- ][[][]]]][]][[]][][]]]   
- 
+ ][]][
+
+ F
+
+ [[[[][[[][]]]]]]
+
+ T
+
+ ][[][]]]][]][[]][][]]]
+
  F
 ```
 
@@ -7339,11 +7339,11 @@ Checks balance function:
 import Foundation
 
 func isBal(str: String) -> Bool {
-  
+
   var count = 0
-  
+
   return !str.characters.contains { ($0 == "["  ? ++count : --count) < 0 } && count == 0
-  
+
 }
 
 ```
@@ -7361,17 +7361,17 @@ Random Bracket function:
 
 
 func randBrack(n: Int) -> String {
-  
+
   var bracks: [Character] = Array(Repeat(count: n, repeatedValue: "["))
-  
+
   for i in UInt32(n+1)...UInt32(n + n) {
-    
+
     bracks.insert("]", atIndex: Int(arc4random_uniform(i)))
-    
+
   }
-  
+
   return String(bracks)
-  
+
 }
 
 
@@ -7389,13 +7389,13 @@ Random check balance function:
 
 
 func randIsBal(n: Int) {
-  
+
   let (bal, un) = ("", "un")
-  
+
   for str in (1...n).map(randBrack) {
-    
+
     print("\(str) is \(isBal(str) ? bal : un)balanced\n")
-    
+
   }
 }
 
@@ -7546,7 +7546,7 @@ Output:
 ]]][[]][]][[[][][[ ERROR
 ][][[]]][[[[[]]][[][ ERROR
 [[[][][]][]]]][[[[[[]] ERROR
-][[[]][[][[[[[[[[[[[]]]] ERROR 
+][[[]][[][[[[[[[[[[[]]]] ERROR
 
 ```
 
@@ -7597,30 +7597,30 @@ Sample run:
 
 
 ```txt
-$ ./txr paren.txr 
+$ ./txr paren.txr
 INPUT           MATCHED         REST
-][[[]][][[]]                    ][[[]][][[]]   
-[]][[]][][[]    []              ][[]][][[]     
-[][[[[]]]]][    []              [[[[]]]]][     
-][[][[]]][][                    ][[][[]]][][   
-[[[][[]]][]]    [[[][[]]][]]                   
-]][]][[[][[]                    ]][]][[[][[]   
-[[]][]][[[]]    [[]]            []][[[]]       
-]][]][]][[[[                    ]][]][]][[[[   
-]][[]]][][[[                    ]][[]]][][[[   
-]]]][[]][[[[                    ]]]][[]][[[[   
-][[[[][[]]]]                    ][[[[][[]]]]   
-][]][]]][[[[                    ][]][]]][[[[   
-]][][[][][[]                    ]][][[][][[]   
-]][][]][[][[                    ]][][]][[][[   
-[][[]][]]][[    []              [[]][]]][[     
-[[]]]]][[[[]    [[]]            ]]][[[[]       
-]][[[[[[]]]]                    ]][[[[[[]]]]   
-][][][[[]][]                    ][][][[[]][]   
-[]][]][][][[    []              ][]][][][[     
-]][[[][]][[]                    ]][[[][]][[]   
-][[[[]]]][][                    ][[[[]]]][][   
-[[]]]]][[][[    [[]]            ]]][[][[       
+][[[]][][[]]                    ][[[]][][[]]
+[]][[]][][[]    []              ][[]][][[]
+[][[[[]]]]][    []              [[[[]]]]][
+][[][[]]][][                    ][[][[]]][][
+[[[][[]]][]]    [[[][[]]][]]
+]][]][[[][[]                    ]][]][[[][[]
+[[]][]][[[]]    [[]]            []][[[]]
+]][]][]][[[[                    ]][]][]][[[[
+]][[]]][][[[                    ]][[]]][][[[
+]]]][[]][[[[                    ]]]][[]][[[[
+][[[[][[]]]]                    ][[[[][[]]]]
+][]][]]][[[[                    ][]][]]][[[[
+]][][[][][[]                    ]][][[][][[]
+]][][]][[][[                    ]][][]][[][[
+[][[]][]]][[    []              [[]][]]][[
+[[]]]]][[[[]    [[]]            ]]][[[[]
+]][[[[[[]]]]                    ]][[[[[[]]]]
+][][][[[]][]                    ][][][[[]][]
+[]][]][][][[    []              ][]][][][[
+]][[[][]][[]                    ]][[[][]][[]
+][[[[]]]][][                    ][[[[]]]][][
+[[]]]]][[][[    [[]]            ]]][[][[
 ```
 
 
@@ -8130,7 +8130,7 @@ For `Int \n=10; n; --n
 ```Yabasic
 sub check_brackets(s$)
     local level, i
-	
+
     for i = 1 to len(s$)
         switch mid$(s$, i, 1)
             case "[": level = level + 1 : break
@@ -8139,7 +8139,7 @@ sub check_brackets(s$)
     next i
     return level = 0
 end sub
- 
+
 s$ = "[[]][]"
 
 print s$, " = ";
@@ -8190,17 +8190,17 @@ False
 25 PRINT "The sequence ";s$;" is ";
 30 GO SUB 1000
 40 NEXT n
-50 STOP 
+50 STOP
 1000 LET s=0
 1010 FOR k=1 TO LEN s$
 1020 LET c$=s$(k)
 1030 IF c$="[" THEN LET s=s+1
 1040 IF c$="]" THEN LET s=s-1
-1050 IF s<0 THEN PRINT "Bad!": RETURN 
+1050 IF s<0 THEN PRINT "Bad!": RETURN
 1060 NEXT k
-1070 IF s=0 THEN PRINT "Good!": RETURN 
+1070 IF s=0 THEN PRINT "Good!": RETURN
 1090 PRINT "Bad!"
-1100 RETURN 
+1100 RETURN
 2000 DATA "[]","][","][][","[][]","[][][]","[]][[]","[[[[[]]]]][][][]][]["
 
 ```

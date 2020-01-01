@@ -11,11 +11,11 @@ tags = []
 +++
 
 {{task}}
-Some programming languages allow calculation of values at compile time. 
+Some programming languages allow calculation of values at compile time.
 
 
 ;Task:
-Calculate   <big> 10! </big>   (ten factorial)   at compile time. 
+Calculate   <big> 10! </big>   (ten factorial)   at compile time.
 
 Print the result when the program is run.
 
@@ -103,7 +103,7 @@ Here's a hardcoded version:
 with Ada.Text_Io;
 procedure CompileTimeCalculation is
    Factorial : constant Integer := 10*9*8*7*6*5*4*3*2*1;
-   
+
 begin
    Ada.Text_Io.Put(Integer'Image(Factorial));
 end CompileTimeCalculation;
@@ -116,7 +116,7 @@ And here's a recursive function version that prints the exact same thing.
 
 with Ada.Text_Io;
 procedure CompileTimeCalculation is
-   
+
    function Factorial (Int : in Integer) return Integer is
    begin
       if Int > 1 then
@@ -125,7 +125,7 @@ procedure CompileTimeCalculation is
          return 1;
       end if;
    end;
-     
+
      Fact10 : Integer := Factorial(10);
 begin
    Ada.Text_Io.Put(Integer'Image(Fact10));
@@ -154,7 +154,7 @@ end Unbounded_Compile_Time_Calculation;
 ```
 
 
-The same compiler refuses to compile the two two lines 
+The same compiler refuses to compile the two two lines
 
 
 ```Ada
@@ -195,8 +195,8 @@ C includes a macro processor that runs at compile-time. With the use of suitably
 
 The Order macro library [[Order|implements a full virtual machine and high-level, functional programming language]] available to C programs at compile-time:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8fac ORDER_PP_FN( \
@@ -225,8 +225,8 @@ This and similar macro libraries are very demanding on the preprocessor, and wil
 ===C (simpler version)===
 This is a simple version, showing that 10! was computed at compile time:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 const int val = 2*3*4*5*6*7*8*9*10;
 int main(void) {
 	printf("10! = %d\n", val );
@@ -288,8 +288,8 @@ main:
 
 This is called [[wp:Template metaprogramming|Template metaprogramming]]. In fact, templates in C++ are Turing-complete, making deciding whether a program will compile undecidable.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 template<int i> struct Fac
 {
@@ -316,8 +316,8 @@ Compile-time calculations in C++ look quite different from normal code. We can o
 Alternative version, using constexpr in C++11:
 
 
-```cpp>#include <stdio.h
-
+```cpp
+#include <stdio.h>
 
 constexpr int factorial(int n) {
     return n ? (n * factorial(n - 1)) : 1;
@@ -389,8 +389,8 @@ public static class Program
 	.field public static literal int32 FACTORIAL_10 = int32(3628800)
 
 	// Methods
-	.method private hidebysig static 
-		void Main () cil managed 
+	.method private hidebysig static
+		void Main () cil managed
 	{
 		// Method begins at RVA 0x2050
 		// Code size 11 (0xb)
@@ -452,8 +452,8 @@ produce the same IL, except without the field.
 	extends [System.Runtime]System.Object
 {
 	// Methods
-	.method private hidebysig static 
-		void Main () cil managed 
+	.method private hidebysig static
+		void Main () cil managed
 	{
 		// Method begins at RVA 0x2050
 		// Code size 11 (0xb)
@@ -664,7 +664,7 @@ const fact10 = Factorial(10);
 (define-constant DIX!+1 (1+ DIX!))
 
 (writeln DIX!+1)
-3628801    
+3628801
 
 ```
 
@@ -698,8 +698,8 @@ During a word definition, you can drop out of the compilation state with '''['''
 
 : main  ." 10! = " [ 10 fac ] literal . ;
 
-see main 
-: main  
+see main
+: main
   .\" 10! = " 3628800 . ; ok
 ```
 
@@ -748,7 +748,7 @@ In Fortran, parameters can be defined where the value is computed at compile tim
 
 ' Calculations can be done in a Const declaration at compile time
 ' provided only literals or other constant expressions are used
- 
+
 Const factorial As Integer = 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 * 10
 Print factorial ' 3628800
 Sleep
@@ -839,9 +839,9 @@ When the definition of pf10 is examined, it contains the value 3628800.  J has s
 │        │ ││3.6288e6│"│_││
 │        │ │└────────┴─┴─┘│
 └────────┴─┴──────────────┘
-      ┌─ smoutput          
+      ┌─ smoutput
 ── @ ─┤          ┌─ 3628800
-      └─ " ──────┴─ _      
+      └─ " ──────┴─ _
 smoutput@(3628800"_)
 smoutput@(3628800"_)
 ```
@@ -884,7 +884,7 @@ Compile time calculations are possible in Kotlin using the 'const' modifier prov
 
 ```scala
 // version 1.0.6
-const val TEN_FACTORIAL = 10 * 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 
+const val TEN_FACTORIAL = 10 * 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2
 
 fun main(args: Array<String>) {
     println("10! = $TEN_FACTORIAL")
@@ -947,7 +947,7 @@ BEGIN {
 
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
-Mathematica is not a compiled language, you can construct compiled functions in Mathematica by the build-in function "Compile". Constants are calculated at "compile-time". 
+Mathematica is not a compiled language, you can construct compiled functions in Mathematica by the build-in function "Compile". Constants are calculated at "compile-time".
 <lang>f = Compile[{}, 10!]
 ```
 
@@ -1003,7 +1003,7 @@ Works with oo2c Version 2
 ```oberon2
 
 MODULE CompileTime;
-IMPORT 
+IMPORT
   Out;
 CONST
     tenfac = 10*9*8*7*6*5*4*3*2;
@@ -1017,7 +1017,7 @@ END CompileTime.
 
 ## Objeck
 
-Objeck will fold constants at compiler time as long as the -s2 or -s3 compiler switches are enabled. 
+Objeck will fold constants at compiler time as long as the -s2 or -s3 compiler switches are enabled.
 
 
 ```objeck
@@ -1049,7 +1049,7 @@ let days_to_seconds n =
 
 
 It is easy to verify this using the argument <code>-S</code> to keep the intermediate assembly file:
- ocamlopt -S sec.ml 
+ ocamlopt -S sec.ml
  grep 86400 sec.s
          imull   $<span style="color:red">86400</span>, %eax
 
@@ -1075,7 +1075,7 @@ let days_to_seconds n =
 
 ## Oforth
 
-Not easy to define "compile time" with Oforth : oforth interpreter read input and perform it. If that intput creates function or methods, it creates and compile them. 
+Not easy to define "compile time" with Oforth : oforth interpreter read input and perform it. If that intput creates function or methods, it creates and compile them.
 
 You can do any calculation you want before or after, create constants, ...
 
@@ -1086,7 +1086,7 @@ You can do any calculation you want before or after, create constants, ...
 ```
 
 
-You can also calculate all factorials for 1 to 20 before defining fact method : 
+You can also calculate all factorials for 1 to 20 before defining fact method :
 
 ```Oforth
 20 seq map(#[ seq reduce(#*) ]) Constant new: ALLFACTS
@@ -1264,7 +1264,7 @@ my $tenfactorial = 10 * 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2;
 
 
 ```perl6
-constant $tenfact = [*] 2..10; 
+constant $tenfact = [*] 2..10;
 say $tenfact;
 ```
 
@@ -1296,11 +1296,11 @@ produces a listing file containing
 
 ;     1 integer a,b
 ;     2 a = 10*9*8*7*6*5*4*3*2*1
-    mov [#0040278C] (a), dword 3628800    ;#0042904E: 307005 8C274000 005F3700   uv 00 00  1  15      
+    mov [#0040278C] (a), dword 3628800    ;#0042904E: 307005 8C274000 005F3700   uv 00 00  1  15
 ;     3 b = factorial(10)
-    mov ecx,5                             ;#00429058: 271 05000000               vu 02 00  1  15      
-    mov edx,85                            ;#0042905D: 272 55000000               uv 04 00  1  16      
-    call :%opFrame (factorial)            ;#00429062: 350 0BE80000               v  00 00  1  16      
+    mov ecx,5                             ;#00429058: 271 05000000               vu 02 00  1  15
+    mov edx,85                            ;#0042905D: 272 55000000               uv 04 00  1  16
+    call :%opFrame (factorial)            ;#00429062: 350 0BE80000               v  00 00  1  16
     ...
 
 ```
@@ -1398,8 +1398,8 @@ end test;
 Execution results:
 
 <lang>
-factorial 4  is               24 
-factorial 6 is               720 
+factorial 4  is               24
+factorial 6 is               720
 
 ```
 
@@ -1417,13 +1417,13 @@ function fact([BigInt]$n){
             $fact = [BigInt]::Multiply($fact, $_)
         }
         $fact
- 
+
     } else {
         Write-Error "$n is lower than 0"
     }
 }
 "$((Measure-Command {$fact = fact 10}).TotalSeconds) Seconds"
-$fact 
+$fact
 
 ```
 
@@ -1446,7 +1446,7 @@ PureBasic will do most calculation during compiling, e.g.
 a=1*2*3*4*5*6*7*8*9*10
 ```
 
-could on a x86 be complied to 
+could on a x86 be complied to
 
 ```txt
 MOV    dword [v_a],3628800
@@ -1491,7 +1491,7 @@ Racket, like most Lisp descendants, allows arbitrary code to be executed at comp
 ## REXX
 
 
-<!-- 
+<!--
 
 There is no mention of ''non-eligibility'' for this task in this Rosetta Code task requirements or prologue.
 
@@ -1686,7 +1686,7 @@ ByteCode 0x0x4de10, refCt 1, epoch 3, interp 0x0x31c10 (epoch 3)
       1: pc 0-1, src 0-44
   Command 1: "expr {1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 * 10}"
     (0) push1 0 	# "3628800"
-    (2) done 
+    (2) done
 
 ```
 
@@ -1772,8 +1772,8 @@ End Module
 	.field private static literal int32 FACTORIAL_10 = int32(3628800)
 
 	// Methods
-	.method public static 
-		void Main () cil managed 
+	.method public static
+		void Main () cil managed
 	{
 		.custom instance void [System.Runtime]System.STAThreadAttribute::.ctor() = (
 			01 00 00 00
@@ -1830,8 +1830,8 @@ produce the same IL, albeit without the constant field that other assemblies can
 		01 00 00 00
 	)
 	// Methods
-	.method public static 
-		void Main () cil managed 
+	.method public static
+		void Main () cil managed
 	{
 		.custom instance void [System.Runtime]System.STAThreadAttribute::.ctor() = (
 			01 00 00 00

@@ -229,7 +229,7 @@ rle_encode(message)
     Else
     {
       output .= previous . count
-      previous := A_LoopField 
+      previous := A_LoopField
       count = 1
     }
   }
@@ -244,7 +244,7 @@ rle_decode(message)
     digpos := RegExMatch(message, "\d+", dig, item)
     Loop, % dig
       output .= char
-    pos := digpos 
+    pos := digpos
   }
   Return output
 }
@@ -269,7 +269,7 @@ BEGIN {
   cp = $1; j = 0
   for(i=1; i <= NF; i++) {
     if ( $i == cp ) {
-      j++; 
+      j++;
     } else {
       printf("%d%c", j, cp)
       j = 1
@@ -434,12 +434,12 @@ Sample output (last one shows errors from using numbers in input string):
  aaaaeeeeeeiiiioooouuy
  4a6e4i4o2u1y
  aaaaeeeeeeiiiioooouuy
- 
+
  Type something: My dog has fleas.
  My dog has fleas.
  1M1y1 1d1o1g1 1h1a1s1 1f1l1e1a1s1.
  My dog has fleas.
- 
+
  Type something: 1r
  1r
  111r
@@ -546,7 +546,7 @@ The run counts are indicated by means of character codes in the range 131 to 255
       output$ = FNdecodeRLE(rle$)
       PRINT "Output: " output$
       END
-      
+
       DEF FNencodeRLE(text$)
       LOCAL n%, r%, c$, o$
       n% = 1
@@ -561,7 +561,7 @@ The run counts are indicated by means of character codes in the range 131 to 255
         IF r% < 3 o$ += STRING$(r%, c$) ELSE o$ += CHR$(128+r%) + c$
       ENDWHILE
       = o$
-      
+
       DEF FNdecodeRLE(rle$)
       LOCAL n%, c$, o$
       n% = 1
@@ -668,8 +668,8 @@ the validity of this program is NOT affected  p-
 
 Encoder that can deal with byte streams.  Can encode/decode any byte values and any length with reasonable efficiency.  Also showing OO and polymophism with structs.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct stream_t stream_t, *stream;
@@ -825,8 +825,8 @@ See [[Run-length encoding/C]]
 ## C++
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <array>
 #include <iterator>
 #include <limits>
@@ -842,7 +842,7 @@ template <typename OutputIterator>
 constexpr auto encode_run_length(std::size_t n, OutputIterator out)
 {
     constexpr auto base = digits.size();
-    
+
     // Determine the number of digits needed.
     auto const num_digits = [base](auto n)
     {
@@ -851,7 +851,7 @@ constexpr auto encode_run_length(std::size_t n, OutputIterator out)
             ++d;
         return d;
     }(n);
-    
+
     // Helper lambda to raise the base to an integer power.
     auto base_power = [base](auto n)
     {
@@ -860,11 +860,11 @@ constexpr auto encode_run_length(std::size_t n, OutputIterator out)
             res *= base;
         return res;
     };
-    
+
     // From the most significant digit to the least, output the digit.
     for (auto i = decltype(num_digits){0}; i < num_digits; ++i)
         *out++ = digits[(n / base_power(num_digits - i)) % base];
-    
+
     return out;
 }
 
@@ -875,22 +875,22 @@ template <typename InputIterator>
 auto decode_run_length(InputIterator first, InputIterator last)
 {
     auto count = std::size_t{0};
-    
+
     while (first != last)
     {
         // If the next input character is not a digit, we're done.
         auto const p = std::find(digits.begin(), digits.end(), *first);
         if (p == digits.end())
             break;
-        
+
         // Convert the digit to a number, and append it to the size.
         count *= digits.size();
         count += std::distance(digits.begin(), p);
-        
+
         // Move on to the next input character.
         ++first;
     }
-    
+
     return std::tuple{count, first};
 }
 
@@ -903,7 +903,7 @@ constexpr auto encode(InputIterator first, InputIterator last, OutputIterator ou
     {
         // Read the next value.
         auto const value = *first++;
-        
+
         // Increase the count as long as the next value is the same.
         auto count = std::size_t{1};
         while (first != last && *first == value)
@@ -911,12 +911,12 @@ constexpr auto encode(InputIterator first, InputIterator last, OutputIterator ou
             ++count;
             ++first;
         }
-        
+
         // Write the value and its run length.
         out = detail_::encode_run_length(count, out);
         *out++ = value;
     }
-    
+
     return out;
 }
 
@@ -931,17 +931,17 @@ auto decode(InputIterator first, InputIterator last, OutputIterator out)
     while (first != last)
     {
         using detail_::digits;
-        
+
         // Assume a run-length of 1, then try to decode the actual
         // run-length, if any.
         auto count = std::size_t{1};
         if (std::find(digits.begin(), digits.end(), *first) != digits.end())
             std::tie(count, first) = detail_::decode_run_length(first, last);
-        
+
         // Write the run.
         out = std::fill_n(out, count, *first++);
     }
-    
+
     return out;
 }
 
@@ -950,7 +950,7 @@ constexpr auto encode(Range&& range, OutputIterator out)
 {
     using std::begin;
     using std::end;
-    
+
     return encode(begin(range), end(range), out);
 }
 
@@ -959,7 +959,7 @@ auto decode(Range&& range, OutputIterator out)
 {
     using std::begin;
     using std::end;
-    
+
     return decode(begin(range), end(range), out);
 }
 
@@ -971,20 +971,20 @@ auto decode(Range&& range, OutputIterator out)
 int main()
 {
     using namespace std::literals;
-    
+
     constexpr auto test_string = "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"sv;
-    
+
     std::cout << "Input:  \"" << test_string << "\"\n";
     std::cout << "Output: \"";
     // No need for a temporary string - can encode directly to cout.
     encode(test_string, std::ostreambuf_iterator<char>{std::cout});
     std::cout << "\"\n";
-    
+
     auto encoded_str = std::string{};
     auto decoded_str = std::string{};
     encode(test_string, std::back_inserter(encoded_str));
     decode(encoded_str, std::back_inserter(decoded_str));
-    
+
     std::cout.setf(std::cout.boolalpha);
     std::cout << "Round trip works: " << (test_string == decoded_str) << '\n';
 }
@@ -993,8 +993,8 @@ int main()
 
 {{libheader|boost}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <sstream>
 #include <boost/regex.hpp>
@@ -1011,7 +1011,7 @@ int main( ) {
    std::string decoded ( decode( encoded ) ) ;
    std::cout << "Decoded again:\n" ;
    std::cout << decoded << std::endl ;
-   if ( to_encode == decoded ) 
+   if ( to_encode == decoded )
       std::cout << "It must have worked!\n" ;
    return 0 ;
 }
@@ -1027,7 +1027,7 @@ std::string encode( const std::string & to_encode ) {
       nextfound = to_encode.find_first_not_of( to_encode[ found ] , found ) ;
    }
    //since we must not discard the last characters we add them at the end of the string
-   std::string rest ( to_encode.substr( found ) ) ;//last run of characters starts at position found 
+   std::string rest ( to_encode.substr( found ) ) ;//last run of characters starts at position found
    oss << rest.length( ) << to_encode[ found ] ;
    return oss.str( ) ;
 }
@@ -1041,7 +1041,7 @@ std::string decode ( const std::string & to_decode ) {
       std::string numberstring ( matches[ 1 ].first , matches[ 1 ].second ) ;
       int number = atoi( numberstring.c_str( ) ) ;
       std::string character ( matches[ 2 ].first , matches[ 2 ].second ) ;
-      for ( int i = 0 ; i < number ; i++ ) 
+      for ( int i = 0 ; i < number ; i++ )
 	 oss << character ;
       start = matches[ 2 ].second ;
    }
@@ -1052,7 +1052,7 @@ std::string decode ( const std::string & to_decode ) {
 
 =={{header|C sharp|C#}}==
 
-###  Linq 
+###  Linq
 
 <!--Martin Freedman 22/02/2018-->
 
@@ -1074,12 +1074,12 @@ namespace RunLengthEncoding
             .StringConcat();
 
         public static string Decode(string input) => input
-            .Aggregate((t: "", o: Empty<string>()), (a, c) => !char.IsDigit(c) ? ("", a.o.Append(a.t+c)) : (a.t + c,a.o)).o 
+            .Aggregate((t: "", o: Empty<string>()), (a, c) => !char.IsDigit(c) ? ("", a.o.Append(a.t+c)) : (a.t + c,a.o)).o
             .Select(p => new string(p.Last(), int.Parse(string.Concat(p.Where(char.IsDigit)))))
             .StringConcat();
 
         private static string StringConcat(this IEnumerable<string> seq) => string.Concat(seq);
-        
+
         public static void Main(string[] args)
         {
             const string  raw = "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW";
@@ -1153,7 +1153,7 @@ Decode(Encode(raw)) = True
 
 ```
 
-Stringbuilder version. Might be more performant but mixes output formatting with encoding/decoding logic. 
+Stringbuilder version. Might be more performant but mixes output formatting with encoding/decoding logic.
 <!--Martin Freedman 22/02/2018-->
 
 ```csharp
@@ -1168,17 +1168,17 @@ namespace RunLengthEncoding
     {
          public static string Encode(string input) => input.Length == 0 ? "" : input.Skip(1)
           .Aggregate((len: 1, chr: input[0], sb: new StringBuilder()),
-             (a, c) => a.chr == c ? (a.len + 1, a.chr, a.sb) 
+             (a, c) => a.chr == c ? (a.len + 1, a.chr, a.sb)
                                   : (1, c, a.sb.Append(a.len).Append(a.chr))),
              a => a.sb.Append(a.len).Append(a.chr)))
           .ToString();
 
          public static string Decode(string input) => input
            .Aggregate((t: "", sb: new StringBuilder()),
-             (a, c) => !char.IsDigit(c) ? ("", a.sb.Append(new string(c, int.Parse(a.t)))) 
+             (a, c) => !char.IsDigit(c) ? ("", a.sb.Append(new string(c, int.Parse(a.t))))
                                         : (a.t + c, a.sb))
            .sb.ToString();
-        
+
         public static void Main(string[] args)
         {
             const string  raw = "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW";
@@ -1208,7 +1208,7 @@ Decode(Encode(raw)) = True
 
 
 
-###  Imperative 
+###  Imperative
 
 This example only works if there are no digits in the string to be encoded and then decoded.
 
@@ -1267,7 +1267,7 @@ This example only works if there are no digits in the string to be encoded and t
 
 
 
-###  RegEx 
+###  RegEx
 
 Somewhat shorter, using Regex.Replace with MatchEvaluator (using C#2 syntax only):
 
@@ -1318,7 +1318,7 @@ public class Program
 
 ```ceylon
 shared void run() {
-    
+
     "Takes a string such as aaaabbbbbbcc and returns 4a6b2c"
     String compress(String string) {
         if (exists firstChar = string.first) {
@@ -1333,16 +1333,16 @@ shared void run() {
             return "";
         }
     }
-    
+
     "Takes a string such as 4a6b2c and returns aaaabbbbbbcc"
     String decompress(String string) =>
             let (runs = string.split(Character.letter, false).paired)
-    		"".join { 
-        		for ([length, char] in runs) 
-        		if (is Integer int = Integer.parse(length)) 
-        		char.repeat(int) 
+    		"".join {
+        		for ([length, char] in runs)
+        		if (is Integer int = Integer.parse(length))
+        		char.repeat(int)
         	};
-    
+
     assert (compress("aaaabbbbbaa") == "4a5b2a");
     assert (decompress("4a6b2c") == "aaaabbbbbbcc");
     assert (compress("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW") == "12W1B12W3B24W1B14W");
@@ -1426,7 +1426,7 @@ PROCEDURE DIVISION USING str RETURNING encoded.
         IF str (i:1) <> current-char
             CALL "add-num-chars" USING encoded, encoded-pos,
                 CONTENT current-char, num-chars
-                
+
             MOVE str (i:1) TO current-char
             MOVE 1 TO num-chars
         ELSE
@@ -1519,11 +1519,11 @@ Decoded: WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW
 encode = (str) ->
     str.replace /(.)\1*/g, (w) ->
         w[0] + w.length
-        
+
 decode = (str) ->
     str.replace /(.)(\d+)/g, (m,w,n) ->
         new Array(+n+1).join(w)
-        
+
 console.log s = "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"
 console.log encode s
 console.log decode encode s
@@ -1547,7 +1547,7 @@ The following version encodes the number of ocurrences as an unicode character. 
 encode = (str, offset = 75) ->
     str.replace /(.)\1*/g, (w) ->
         w[0] + String.fromCharCode(offset+w.length)
-        
+
 decode = (str, offset = 75) ->
     str.split('').map((w,i) ->
         if not (i%2) then w else new Array(+w.charCodeAt(0)-offset).join(str[i-1])
@@ -1694,19 +1694,19 @@ Encoded: 12W1B12W3B24W1B14W
 
 ### UTF String Version
 
-D's native string is utf-encoded. This version works for utf string, and uses a [[Variable-length_quantity|Variable-length Quantity]] [[Variable-length_quantity#D|module]]. 
+D's native string is utf-encoded. This version works for utf string, and uses a [[Variable-length_quantity|Variable-length Quantity]] [[Variable-length_quantity#D|module]].
 
 
 ```d
 import std.stdio, std.conv, std.utf, std.array;
 import vlq;
 
-struct RLE { // for utf string 
+struct RLE { // for utf string
     ubyte[] encoded;
 
     RLE encode(const string s) {
-        validate(s); // check if s is well-formed utf, throw if not 
-        encoded.length = 0; // reset 
+        validate(s); // check if s is well-formed utf, throw if not
+        encoded.length = 0; // reset
         if (s.length == 0) return this; // empty string
         string last;
         VLQ count;
@@ -1737,7 +1737,7 @@ struct RLE { // for utf string
             if (i >= encoded.length)
                 throw new Exception("not valid encoded string");
             k = stride(cast(string) encoded[i .. $], 0);
-            if (k == 0xff) // not valid utf code point 
+            if (k == 0xff) // not valid utf code point
                 throw new Exception("not valid encoded string");
             ucode = cast(string)encoded[i .. i + k].dup;
             dg(count.value, ucode);
@@ -1752,17 +1752,17 @@ struct RLE { // for utf string
         foreach (ref i, s ; this)
             if (indexOf("0123456789#", s) == -1)
                 res ~= text(i) ~ s;
-            else 
+            else
                 res ~= text(i) ~ '#' ~ s;
         return res;
     }
- 
+
     string decode() {
         string res;
         foreach (ref i, s; this)
             res ~= replicate(s, cast(uint)i);
         return res;
-    }       
+    }
 }
 
 void main() {
@@ -1940,7 +1940,7 @@ import system'text;
 import system'routines;
 import extensions;
 import extensions'text;
- 
+
 singleton compressor
 {
     string compress(string s)
@@ -1961,12 +1961,12 @@ singleton compressor
                 current := ch
             }
         };
- 
+
         tb.writeFormatted("{0}{1}",count,current);
- 
+
         ^ tb
     }
- 
+
     string decompress(string s)
     {
         auto tb := new TextBuilder();
@@ -1983,22 +1983,22 @@ singleton compressor
             {
                 int count := a.toInt();
                 a.clear();
- 
+
                 tb.fill(current,count)
             }
         };
- 
+
         ^ tb
     }
 }
- 
+
 public program()
 {
     var s := "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW";
- 
+
     s := compressor.compress(s);
     console.printLine(s);
- 
+
     s := compressor.decompress(s);
     console.printLine(s)
 }
@@ -2027,7 +2027,7 @@ defmodule Run_length do
     Enum.chunk_by(list, &(&1))
     |> Enum.flat_map(fn chars -> to_char_list(length(chars)) ++ [hd(chars)] end)
   end
-  
+
   def decode(str) when is_bitstring(str) do
     Regex.scan(~r/(\d+)(.)/, str)
     |> Enum.map_join(fn [_,n,c] -> String.duplicate(c, String.to_integer(n)) end)
@@ -2070,7 +2070,7 @@ char_list
 
 
 ```lisp
- 
+
 (defun run-length-encode (str_arg)
   "Return the run length encoding of a string argument STR_ARG."
 
@@ -2089,7 +2089,7 @@ char_list
 	       (lambda (x y) (concat (number-to-string x)
 				     (char-to-string y)))
 	       frequency letters)))))
- 
+
 ```
 
 
@@ -2167,12 +2167,12 @@ encode([H|T], [{Count, Char}|AT]) ->
     if
         H =:= Char ->
             encode(T, [{Count + 1, Char}|AT]);
-        true -> 
+        true ->
             encode(T, [{1, H}|[{Count, Char}|AT]])
-    end.        
+    end.
 
 decode({rle, L}) -> lists:append(lists:reverse(decode(L, []))).
-decode([], Acc) -> Acc; 
+decode([], Acc) -> Acc;
 decode([{Count, Char}|T], Acc) ->
     decode(T, [[Char || _ <- lists:seq(1, Count)]|Acc]).
 
@@ -2244,17 +2244,17 @@ let encode data =
     // encodeData : seq<'T> -> seq<int * 'T> i.e. Takes a sequence of 'T types and return a sequence of tuples containing the run length and an instance of 'T.
     let rec encodeData input =
         seq { if not (Seq.isEmpty input) then
-                 let head = Seq.head input              
+                 let head = Seq.head input
                  let runLength = Seq.length (Seq.takeWhile ((=) head) input)
                  yield runLength, head
                  yield! encodeData (Seq.skip runLength input) }
- 
+
     encodeData data |> Seq.fold(fun acc (len, d) -> acc + len.ToString() + d.ToString()) ""
 
 let decode str =
     [ for m in Regex.Matches(str, "(\d+)(.)") -> m ]
     |> List.map (fun m -> Int32.Parse(m.Groups.[1].Value), m.Groups.[2].Value)
-    |> List.fold (fun acc (len, s) -> acc + String.replicate len s) "" 
+    |> List.fold (fun acc (len, s) -> acc + String.replicate len s) ""
 
 ```
 
@@ -2274,11 +2274,11 @@ CONSTANT: alpha $[ CHAR: A CHAR: Z [a,b] >string ]
 : encode ( str -- str )
     [ = ] monotonic-split [ [ length number>string ] [ first ]
     bi suffix ] map concat ;
-    
+
 : decode ( str -- str )
     alpha split* [ odd-indices ] [ even-indices
     [ string>number ] map ] bi [ repeat ] 2map concat ;
-    
+
 "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"
 "12W1B12W3B24W1B14W"
 [ encode ] [ decode ] bi* [ print ] bi@
@@ -2407,7 +2407,7 @@ program RLE
   implicit none
 
   integer, parameter :: bufsize = 100   ! Sets maximum size of coded and decoded strings, adjust as necessary
-  character(bufsize) :: teststr = "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"	
+  character(bufsize) :: teststr = "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"
   character(bufsize) :: codedstr = "" Encode (Data (Index..Data'Last));
             end;
          end;
@@ -2423,7 +2423,7 @@ program RLE
             Count : Natural := 0;
          begin
             while Index , decodedstr = ""
-    
+
   call Encode(teststr, codedstr)
   write(*,"(a)") trim(codedstr)
   call Decode(codedstr, decodedstr)
@@ -2490,7 +2490,7 @@ Dim As String initial, encoded, decoded
 Function RLDecode(i As String) As String
     Dim As Long Loop0
     dim as string rCount, outP, m
-    
+
     For Loop0 = 1 To Len(i)
         m = Mid(i, Loop0, 1)
         Select Case m
@@ -2511,11 +2511,11 @@ End Function
 Function RLEncode(i As String) As String
     Dim As String tmp1, tmp2, outP
     Dim As Long Loop0, rCount
-    
+
     tmp1 = Mid(i, 1, 1)
     tmp2 = tmp1
     rCount = 1
-    
+
     For Loop0 = 2 To Len(i)
         tmp1 = Mid(i, Loop0, 1)
         If tmp1 <> tmp2 Then
@@ -2526,7 +2526,7 @@ Function RLEncode(i As String) As String
             rCount += 1
         End If
     Next
-    
+
     outP += Ltrim(Rtrim(Str(rCount)))
     outP += tmp2
     RLEncode = outP
@@ -2551,7 +2551,7 @@ La salida es similar a la de [[#BASIC|BASIC]], mostrada arriba.
 '''[https://gambas-playground.proko.eu/?gist=b30707043cb64effba91a2edc4d4be94 Click this link to run this code]'''
 
 ```gambas
-Public Sub Main() 
+Public Sub Main()
 Dim sString As String = "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"
 Dim siCount As Short = 1
 Dim siStart As Short = 1
@@ -2580,7 +2580,7 @@ Output:
 
 ```txt
 
-WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW 
+WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW
 12W, 1B, 12W, 3B, 24W, 1B, 14W
 
 ```
@@ -2863,7 +2863,7 @@ rle=: ;@(<@(":@#,{.);.1~ 2 ~:/\ (a.{.@-.{.),])
 Other approaches include using <nowiki>rle ::(''"_)</nowiki> or <nowiki>rle^:(*@#)</nowiki> or equivalent variations on the original sentence.
 
 
-###  Alternative Implementation 
+###  Alternative Implementation
 
 
 A numeric approach, based on a discussion in the J forums (primarily [http://jsoftware.com/pipermail/programming/2015-June/042139.html Pascal Jasmin] and [http://jsoftware.com/pipermail/programming/2015-June/042141.html Marshall Lochbaum]):
@@ -2994,7 +2994,7 @@ function encode(input) {
             count = 1;
             prev = input[i];
         }
-        else 
+        else
             count ++;
     }
     encoding.push([count, prev]);
@@ -3036,7 +3036,7 @@ Note: "run_length_decode" as defined below requires a version of jq with regex s
 def runs:
   reduce .[] as $item
     ( [];
-      if . == [] then [ [ $item, 1] ] 
+      if . == [] then [ [ $item, 1] ]
       else .[length-1] as $last
       | if $last[0] == $item then .[length-1] = [$item, $last[1] + 1]
         else . + [[$item, 1]]
@@ -3176,7 +3176,7 @@ define rle(str::string)::string => {
 				#newc->insert(#orig->first)
 			}
 			#orig->remove(1)
-		} 
+		}
 	}
 	loop(#newi->size) => {
 		#compiled->append(#newi->get(loop_count)+#newc->get(loop_count))
@@ -3380,7 +3380,7 @@ function compress(t)
     return table.concat(ret)
 end
 q = io.read()
-print(compress(astable:match(q))) 
+print(compress(astable:match(q)))
 
 undo = Ct((Cf(Cc"0" * C(R"09")^1, function(a, b) return 10 * a + b end) * C(R"AZ"))^0)
 
@@ -3424,7 +3424,7 @@ Module RLE_example {
 		def repl$
 		def long m, many=1
 		while r$<>"" and many>0 {
-			many=val(r$, "INT", &m)	
+			many=val(r$, "INT", &m)
 			repl$+=string$(mid$(r$, m, 1), many)
 			r$=mid$(r$,m+1)
 		}
@@ -3482,7 +3482,7 @@ RunLengthEncode[s_String] := StringJoin[
   ]
 
 RunLengthDecode[s_String] := StringJoin[
-  Table[#[[2]], {ToExpression[#[[1]]]}] & /@ 
+  Table[#[[2]], {ToExpression[#[[1]]]}] & /@
    Partition[StringSplit[s, x : _?LetterQ :> x], 2]
   ]
 ```
@@ -3528,7 +3528,7 @@ tEnc	BYTE	"12W1B12W3B24W1B14W",0
 // (c,l) in which c is a char and l = number of chars c
 // high wyde of the tetra contains the char
 // low wyde  .. ..  ..    contains the length
-RLE	TETRA	0 
+RLE	TETRA	0
 
 	LOC	#100            locate program
 	GREG	@
@@ -3542,7 +3542,7 @@ Prt64	LDA	$255,Buf+23    points to LSD
 	STBU	$13,$255        store ascii digit
 	BZ	$3,3F
 	SUB	$255,$255,1     move pointer down
-	JMP	2B             While N !=0 
+	JMP	2B             While N !=0
 3H	TRAP	0,Fputs,StdOut print number to standard out
 	GO	$127,$127,0    return
 
@@ -3558,7 +3558,7 @@ PChar	LDA	$255,Char
 // $0 string pointer
 // $1 index var
 // $2 pointer to tuple array
-// $11 temp var tuple 
+// $11 temp var tuple
 Encode	SET	$1,0        initialize index = 0
 	SET	$11,0       postion in string = 0
 	LDBU	$3,$0,$1    get first char
@@ -3567,15 +3567,15 @@ Encode	SET	$1,0        initialize index = 0
 1H	INCL	$1,1          repeat  incr index
 	LDBU	$3,$0,$1              get a char
 	BZ	$3,2F                 if EOS then finish
-	CMP	$7,$3,$6     
-	PBZ	$7,1B         while new == old 
+	CMP	$7,$3,$6
+	PBZ	$7,1B         while new == old
 	XOR	$4,$4,$4      new tuple
-	ADDU	$4,$6,0      
+	ADDU	$4,$6,0
 	SLU	$4,$4,16      old char to tuple -> (c,_)
 	SUB	$7,$1,$11     length = index - previous position
 	ADDU	$11,$1,0      incr position
 	OR	$4,$4,$7      length l to tuple -> (c,l)
-	STT	$4,$2         put tuple in array 
+	STT	$4,$2         put tuple in array
 	ADDU	$6,$3,0       remember new char
 	INCL	$2,4          incr 'tetra' pointer
 	JMP	1B          loop
@@ -3585,7 +3585,7 @@ Encode	SET	$1,0        initialize index = 0
 	SUB	$7,$1,$11
 	ADDU	$11,$1,0
 	OR	$4,$4,$7
-	STT	$4,$2		
+	STT	$4,$2
 	GO	$127,$127,0 return
 
 	GREG	@
@@ -3595,7 +3595,7 @@ Main	LDA	$0,task      pointer uncompressed string
 	LDA	$2,RLE	     points to start tuples
 	SET	$5,#ffff     mask for extracting length
 1H	LDTU	$3,$2        while not End of Array
-	BZ	$3,2F        
+	BZ	$3,2F
 	SRU	$4,$3,16      char   = (c,_)
 	AND	$3,$3,$5      length = (_,l)
 	GO	$127,Prt64    print length
@@ -3677,17 +3677,17 @@ use RegEx;
 class RunLengthEncoding {
   function : Main(args : String[]) ~ Nil {
     input := "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW";
-    
+
     encoded := Encode(input);
     "encoding: {$encoded}"->PrintLine();
     test := encoded->Equals("12W1B12W3B24W1B14W");
     "encoding match: {$test}"->PrintLine();
-    
+
     decoded := Decode(encoded);
     test := input->Equals(decoded);
     "decoding match: {$test}"->PrintLine();
   }
-  
+
   function : Encode(source : String) ~ String {
     dest := "";
     each(i : source) {
@@ -3720,7 +3720,7 @@ class RunLengthEncoding {
         };
       };
     };
-    
+
     return output;
   }
 }
@@ -3810,8 +3810,8 @@ let () =
 
 
 ```Oforth
-: encode(s) 
-   StringBuffer new 
+: encode(s)
+   StringBuffer new
    s group apply(#[ tuck size asString << swap first <<c ]) ;
 
 : decode(s)
@@ -3868,13 +3868,13 @@ declare
         (X|Ys) | {Group Zs}
      end
   end
-  %% e.g. 3,4 -> [3 3 3 3] 
+  %% e.g. 3,4 -> [3 3 3 3]
   fun {Replicate X N}
      case N of 0 then nil
      else X|{Replicate X N-1}
      end
   end
-  
+
   Data = "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"
   Enc = {RLEncode Data}
 in
@@ -3936,7 +3936,7 @@ Output:
 
 ```pascal
 Program RunLengthEncoding(output);
-                     
+
 procedure encode(s: string; var counts: array of integer; var letters: string);
   var
     i, j: integer;
@@ -4114,7 +4114,7 @@ Output:
 
 
 ```txt
-12W1B12W3B24W1B14W 
+12W1B12W3B24W1B14W
 WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW
 ```
 
@@ -4143,7 +4143,7 @@ integer prev_char,count = 1
     end if
     return out
 end function
- 
+
 function decode(sequence s)
 sequence out = {}
     for i=1 to length(s) by 2 do
@@ -4151,7 +4151,7 @@ sequence out = {}
     end for
     return out
 end function
- 
+
 sequence s = encode("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW")
 pp(s)
 ?decode(s)
@@ -4216,7 +4216,7 @@ echo decode('12W1B12W3B24W1B14W'), PHP_EOL;
                   (setq N (+ (format C) (* 10 N)))
                   (do N (link C))
                   (zero N) ) ) ) ) ) )
-            
+
 (and
    (prinl "Data:    " "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW")
    (prinl "Encoded: " (encode @))
@@ -4398,13 +4398,13 @@ run_length :-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %  encode
-%  
+%
 %  translation
 %  from
 %  "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"
 %  to
 %  "12W1B12W3B24W1B14W"
-%  
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 encode(In, Out) :-
 	% Because of the special management of the "strings" by Prolog
@@ -4427,13 +4427,13 @@ dcg_packList2List([]) --> [].
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %  decode
-%  
+%
 %  translation
 %  from
 %  "12W1B12W3B24W1B14W"
 %  to
 %  "WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"
-%  
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 decode(In, Out) :-
 	% Because of the special management of the "strings" by Prolog
@@ -4471,7 +4471,7 @@ parse_number([H|T], N) -->
 %  L = [[3,a],[1,b],[3,c],[2,d],[1,e]] .
 % ?- packList(R,  [[3,a],[1,b],[3,c],[2,d],[1,e]]).
 % R = [a,a,a,b,c,c,c,d,d,e] .
-%  
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 packList([],[]).
 
@@ -4535,7 +4535,7 @@ decode r;
 
 ## PureBasic
 
-{{trans|PowerBasic}} with some optimations to use pointers instead of string functions.  According to the task description it works with uppercase A - Z.  In this implementation it also functions with all characters that are non-digits and whose value is non-zero. 
+{{trans|PowerBasic}} with some optimations to use pointers instead of string functions.  According to the task description it works with uppercase A - Z.  In this implementation it also functions with all characters that are non-digits and whose value is non-zero.
 
 ```PureBasic
 Procedure.s RLDecode(toDecode.s)
@@ -4559,10 +4559,10 @@ Procedure.s RLDecode(toDecode.s)
     EndSelect
     *c + SizeOf(Character)
   Wend
-  
+
   ProcedureReturn output
 EndProcedure
- 
+
 Procedure.s RLEncode(toEncode.s)
   Protected.s currChar, prevChar, output
   Protected repCount
@@ -4588,10 +4588,10 @@ Procedure.s RLEncode(toEncode.s)
   output + prevChar
   ProcedureReturn output
 EndProcedure
- 
+
 If OpenConsole()
   Define initial.s, encoded.s, decoded.s
-  
+
   Print("Type something: ")
   initial = Input()
   encoded = RLEncode(initial)
@@ -4599,7 +4599,7 @@ If OpenConsole()
   PrintN(initial)
   PrintN(RLEncode(initial))
   PrintN(RLDecode(encoded))
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -4642,15 +4642,15 @@ def encode(input_string):
             lst.append(entry)
             return (lst, 0)
         except Exception as e:
-            print("Exception encountered {e}".format(e=e)) 
+            print("Exception encountered {e}".format(e=e))
             return (e, 1)
- 
+
 def decode(lst):
     q = ""
     for character, count in lst:
         q += character * count
     return q
- 
+
 #Method call
 value = encode("aaaaahhhhhhmmmmmmmuiiiiiiiaaaaaa")
 if value[1] == 0:
@@ -4687,7 +4687,7 @@ def encode(text):
     '''
     Doctest:
         >>> encode('WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW')
-        '12W1B12W3B24W1B14W'    
+        '12W1B12W3B24W1B14W'
     '''
     return sub(r'(.)\1*', lambda m: str(len(m.group(0))) + m.group(1),
                text)
@@ -4764,7 +4764,7 @@ inverserunlengthencoding(output)
 
 The task (input) rule was relaxed a bit as this program accepts upper─ and lowercase input.
 
-Note that this REXX version (for encoding and decoding) uses a   ''replication''   count, not the   ''count''   of characters, 
+Note that this REXX version (for encoding and decoding) uses a   ''replication''   count, not the   ''count''   of characters,
 
 so a replication count of   '''11'''   represents a count of   '''12'''   characters.
 
@@ -5045,7 +5045,7 @@ end
 ```ruby
 def encode(string)
   string.scan(/(.)(\1*)/).collect do |char, repeat|
-    [1 + repeat.length, char] 
+    [1 + repeat.length, char]
   end.join
 end
 
@@ -5215,7 +5215,7 @@ The encode script:
 ```sed
 
 	/^$/ b
-:start 
+:start
 	/^[0-9]/ b
 	s/^/1/
 :loop
@@ -5383,7 +5383,7 @@ func decode(str) {
 ## Smalltalk
 
 See [[Run-length encoding/Smalltalk]]
-    
+
 A "functional" version without RunArray:
 {{works with|Smalltalk/X}} (and others)
 
@@ -5393,17 +5393,17 @@ A "functional" version without RunArray:
 compress := [:string |
    String streamContents:[:out |
        |count prev|
-       
+
        count := 0.
-       (string,'*')  "trick to avoid final run handling in loop" 
-          inject:nil 
+       (string,'*')  "trick to avoid final run handling in loop"
+          inject:nil
           into:[:prevChar :ch |
               ch ~= prevChar ifTrue:[
                   count = 0 ifFalse:[
                       count printOn:out.
                       out nextPut:prevChar.
                       count := 0.
-                  ].    
+                  ].
               ].
               count := count + 1.
               ch
@@ -5428,7 +5428,7 @@ decompress := [:string |
 
 
 ```smalltalk
-compress value:'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW' 
+compress value:'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW'
 -> '12W1B12W3B24W1B14W'
 
 decompress value:'12W1B12W3B24W1B14W'
@@ -5506,7 +5506,7 @@ insert into var(value) select 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWW
 
 -- select
 with recursive
-ints(num) as 
+ints(num) as
 (
 	select 1
 	union all
@@ -5519,7 +5519,7 @@ chars(num,chr,nextChr,isGroupEnd) as
 (
 	select tmp.*, case when tmp.nextChr <> tmp.chr then 1 else 0 end groupEnds
 	from (
-	select num, 
+	select num,
 		   substring((select value from var), num, 1) chr,
 		   (select substring((select value from var), num+1, 1)) nextChr
 	from ints
@@ -5530,16 +5530,16 @@ select (select value from var) plain_text, (
 	from (
 		select *, max(noWithinGroup) over (partition by chr, groupNo) maxNoWithinGroup
 		from (
-			select	num, 
-					chr, 
-					groupNo, 
+			select	num,
+					chr,
+					groupNo,
 					row_number() over( partition by chr, groupNo order by num) noWithinGroup
 			from (
-			select *, (select count(*) 
-					   from chars chars2 
-					   where chars2.isGroupEnd = 1 and 
-					   chars2.chr = chars.chr and 
-					   chars2.num < chars.num) groupNo 
+			select *, (select count(*)
+					   from chars chars2
+					   where chars2.isGroupEnd = 1 and
+					   chars2.chr = chars.chr and
+					   chars2.num < chars.num) groupNo
 			from chars
 			) tmp
 		) sub
@@ -5561,7 +5561,7 @@ INSERT INTO var(VALUE) SELECT '1A2B3C4D5E6F';
 
 -- select
 WITH recursive
-ints(num) AS 
+ints(num) AS
 (
 	SELECT 1
 	UNION ALL
@@ -5574,7 +5574,7 @@ chars(num,chr,nextChr) AS
 (
 	SELECT tmp.*
 	FROM (
-	SELECT num, 
+	SELECT num,
 		SUBSTRING((SELECT VALUE FROM var), num, 1) chr,
 		(SELECT SUBSTRING((SELECT VALUE FROM var), num+1, 1)) nextChr
 	FROM ints
@@ -5583,19 +5583,19 @@ chars(num,chr,nextChr) AS
 ,
 charsWithGroup(num,chr,nextChr,group_no) AS
 (
-	SELECT *,(SELECT COUNT(*) 
-		FROM chars chars2 
-		WHERE chars2.chr !~ '[0-9]' AND 
+	SELECT *,(SELECT COUNT(*)
+		FROM chars chars2
+		WHERE chars2.chr !~ '[0-9]' AND
 		chars2.num < chars.num) group_No
 	FROM chars
 )
 ,
 charsWithGroupAndLetter(num,chr,nextChr,group_no,group_letter) AS
 (
-	SELECT *,(SELECT chr 
-		FROM charsWithGroup g2 
-		where g2.group_no = charsWithGroup.group_no 
-		ORDER BY num DESC 
+	SELECT *,(SELECT chr
+		FROM charsWithGroup g2
+		where g2.group_no = charsWithGroup.group_no
+		ORDER BY num DESC
 		LIMIT 1)
 	FROM charsWithGroup
 )
@@ -5610,11 +5610,11 @@ lettersWithCount(group_no,amount,group_letter) AS
 ,
 lettersReplicated(group_no,amount,group_letter, replicated_Letter) AS
 (
-	SELECT *, rpad(group_letter, cast(amount as int), group_letter) 
+	SELECT *, rpad(group_letter, cast(amount as int), group_letter)
 	FROM lettersWithCount
 )
-select (SELECT value FROM var) rle_encoded, 
-	string_agg(replicated_Letter, '' ORDER BY group_no) decoded_string 
+select (SELECT value FROM var) rle_encoded,
+	string_agg(replicated_Letter, '' ORDER BY group_no) decoded_string
 FROM lettersReplicated
 
 ```
@@ -5826,7 +5826,7 @@ test_data = 'WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW
 
 #show+
 
-example = 
+example =
 
 <
    encode test_data,
@@ -6008,8 +6008,8 @@ const MAX_LEN=250, MIN_LEN=3;
 fcn compress(text){ // !empty byte/text stream -->Data (byte stream)
    sink:=Data(); cnt:=Ref(0);
    write:='wrap(c,n){ // helper function
-      while(n>MAX_LEN){ 
-         sink.write(1); sink.write(MAX_LEN); sink.write(c); 
+      while(n>MAX_LEN){
+         sink.write(1); sink.write(MAX_LEN); sink.write(c);
 	 n-=MAX_LEN;
       }
       if(n>MIN_LEN){ sink.write(1); sink.write(n); sink.write(c); }

@@ -10,14 +10,14 @@ categories = []
 tags = []
 +++
 
-{{task}} 
+{{task}}
 {{requires|Graphics}}
 [[Category:3D]]
 
 ;Task:
-Draw a sphere. 
+Draw a sphere.
 
-The sphere can be represented graphically, or in ASCII art, depending on the language capabilities. 
+The sphere can be represented graphically, or in ASCII art, depending on the language capabilities.
 
 Either static or rotational projection is acceptable for this task.
 
@@ -94,10 +94,10 @@ end Main;
 
 
 ```txt
-[ #j , 
-   [ #i , 
-      { ( #x - 19 ) ^ 2 + 
-        ( #y - 14 ) ^ 2 &lt; 125 , p 
+[ #j ,
+   [ #i ,
+      { ( #x - 19 ) ^ 2 +
+        ( #y - 14 ) ^ 2 &lt; 125 , p
       } r
    ] [ #i , l ] d
 ]
@@ -144,14 +144,14 @@ Draw_a_sphere
     in
         (v0/len, v1/len, v2/len)
     end // end of [normalize]
-    
+
     fun dot(v0: double, v1: double, v2: double, x0: double, x1: double, x2: double): double = let
         val d = v0*x0+v1*x1+v2*x2
         val sgn = gcompare_val_val<double> (d, 0.0)
     in
         if sgn < 0 then ~d else 0.0
     end // end of [dot]
-    
+
     fun print_char(i: int): void =
         if i = 0 then print!(".") else
         if i = 1 then print!(":") else
@@ -163,13 +163,13 @@ Draw_a_sphere
         if i = 7 then print!("#") else
         if i = 8 then print!("%") else
         if i = 9 then print!("@") else print!(" ")
-    
+
     val i_start = floor(~R)
     val i_end = ceil(R)
     val j_start = floor(~2 * R)
     val j_end = ceil(2 * R)
     val (l0, l1, l2) = normalize(30.0, 30.0, ~50.0)
-    
+
     fun loopj(j: int, j_end: int, x: double): void = let
         val y = j / 2.0 + 0.5;
         val sgn = gcompare_val_val<double> (x*x + y*y, R*R)
@@ -179,14 +179,14 @@ Draw_a_sphere
         val sgn2 = gcompare_val_val<double> (intensity, 0.0)
         val sgn3 = gcompare_val_val<double> (intensity, 9.0)
     in
-    (   if sgn > 0 then print_char(10) else 
+    (   if sgn > 0 then print_char(10) else
         if sgn2 < 0 then print_char(0) else
         if sgn3 >= 0 then print_char(8) else
         print_char(g0float2int(intensity));
         if j < j_end then loopj(j+1, j_end, x)
     )
     end // end of [loopj]
-    
+
     fun loopi(i: int, i_end: int, j: int, j_end: int): void = let
         val x = i + 0.5
         val () = loopj(j, j_end, x)
@@ -194,7 +194,7 @@ Draw_a_sphere
     in
         if i < i_end then loopi(i+1, i_end, j, j_end)
     end // end of [loopi]
-    
+
 in
     loopi(g0float2int(i_start), g0float2int(i_end), g0float2int(j_start), g0float2int(j_end))
 end
@@ -448,30 +448,30 @@ Using Direct3D.
       D3DTS_VIEW = 2
       D3DTS_PROJECTION = 3
       D3DRS_SPECULARENABLE = 29
-      
+
       SYS "LoadLibrary", @lib$+"D3DX8BBC.DLL" TO d3dx%
       IF d3dx%=0 ERROR 100, "Couldn't load D3DX8BBC.DLL"
       SYS "GetProcAddress", d3dx%, "D3DXCreateSphere" TO `D3DXCreateSphere`
       SYS "GetProcAddress", d3dx%, "D3DXMatrixLookAtLH" TO `D3DXMatrixLookAtLH`
       SYS "GetProcAddress", d3dx%, "D3DXMatrixPerspectiveFovLH" TO `D3DXMatrixPerspectiveFovLH`
-      
+
       DIM eyepos%(2), lookat%(2), up%(2), mat%(3,3)
-      
+
       DIM D3Dlight8{Type%, Diffuse{r%,g%,b%,a%}, Specular{r%,g%,b%,a%}, \
       \ Ambient{r%,g%,b%,a%}, Position{x%,y%,z%}, Direction{x%,y%,z%}, \
       \ Range%, Falloff%, Attenuation0%, Attenuation1%, Attenuation2%, \
       \ Theta%, Phi%}
-      
+
       DIM D3Dmaterial8{Diffuse{r%,g%,b%,a%}, Ambient{r%,g%,b%,a%}, \
       \ Specular{r%,g%,b%,a%}, Emissive{r%,g%,b%,a%}, Power%}
-      
+
       DIM D3Dbasemesh8{QueryInterface%, Addref%, Release%, \
       \ DrawSubset%, GetNumFaces%, GetNumVertices%, GetFVF%, \
       \ GetDeclaration%, GetOptions%, GetDevice%, \
       \ CloneMeshFVF%, CloneMesh%, GetVertexBuffer%, GetIndexBuffer%, \
       \ LockVertexBuffer%, UnlockVertexBuffer%, LockIndexBuffer%, \
       \ UnlockIndexBuffer%, GetAttributeTable%}
-      
+
       DIM D3Ddevice8{QueryInterface%, AddRef%, Release%, TestCooperativeLevel%, \
       \ GetAvailableTextureMem%, ResourceManagerDiscardBytes%, GetDirect3D%, \
       \ GetDeviceCaps%, GetDisplayMode%, GetCreationParameters%, SetCursorProperties%, \
@@ -497,15 +497,15 @@ Using Direct3D.
       \ GetIndices%, CreatePixelShader%, SetPixelShader%, GetPixelShader%, \
       \ DeletePixelShader%, SetPixelShaderConstant%, GetPixelShaderConstant%, \
       \ GetPixelShaderFunction%, DrawRectPatch%, DrawTriPatch%, DeletePatch%}
-      
+
       pDevice%=FN_initd3d(@hwnd%, 1, 1)
       IF pDevice%=0 ERROR 100, "Couldn't create Direct3D8 device"
       !(^D3Ddevice8{}+4) = !pDevice%
-      
+
       SYS `D3DXCreateSphere`, pDevice%, FN_f4(1), 50, 50, ^meshSphere%, 0
       IF meshSphere% = 0 ERROR 100, "D3DXCreateSphere failed"
       !(^D3Dbasemesh8{}+4) = !meshSphere%
-      
+
       REM. Point-source light:
       D3Dlight8.Type%=1 : REM. point source
       D3Dlight8.Diffuse.r%  = FN_f4(1)
@@ -519,7 +519,7 @@ Using Direct3D.
       D3Dlight8.Position.z% = FN_f4(4)
       D3Dlight8.Range%      = FN_f4(10)
       D3Dlight8.Attenuation0% = FN_f4(1)
-      
+
       REM. Material:
       D3Dmaterial8.Diffuse.r%  = FN_f4(0.2)
       D3Dmaterial8.Diffuse.g%  = FN_f4(0.6)
@@ -528,7 +528,7 @@ Using Direct3D.
       D3Dmaterial8.Specular.g% = FN_f4(0.4)
       D3Dmaterial8.Specular.b% = FN_f4(0.4)
       D3Dmaterial8.Power%      = FN_f4(100)
-      
+
       fovy = RAD(30)
       aspect = 5/4
       znear = 1
@@ -537,25 +537,25 @@ Using Direct3D.
       eyepos%() = 0, 0, FN_f4(6)
       lookat%() = 0, 0, 0
       up%() = 0, FN_f4(1), 0
-      
+
       SYS D3Ddevice8.Clear%, pDevice%, 0, 0, 3, bkgnd%, FN_f4(1), 0
       SYS D3Ddevice8.BeginScene%, pDevice%
       SYS D3Ddevice8.SetLight%, pDevice%, 0, D3Dlight8{}
       SYS D3Ddevice8.LightEnable%, pDevice%, 0, 1
       SYS D3Ddevice8.SetMaterial%, pDevice%, D3Dmaterial8{}
       SYS D3Ddevice8.SetRenderState%, pDevice%, D3DRS_SPECULARENABLE, 1
-      
+
       SYS `D3DXMatrixLookAtLH`, ^mat%(0,0), ^eyepos%(0), ^lookat%(0), ^up%(0)
       SYS D3Ddevice8.SetTransform%, pDevice%, D3DTS_VIEW, ^mat%(0,0)
-      
+
       SYS `D3DXMatrixPerspectiveFovLH`, ^mat%(0,0), FN_f4(fovy), \
       \                                 FN_f4(aspect), FN_f4(znear), FN_f4(zfar)
       SYS D3Ddevice8.SetTransform%, pDevice%, D3DTS_PROJECTION, ^mat%(0,0)
-      
+
       SYS D3Dbasemesh8.DrawSubset%, meshSphere%, 0
       SYS D3Ddevice8.EndScene%, pDevice%
       SYS D3Ddevice8.Present%, pDevice%, 0, 0, 0, 0
-      
+
       SYS D3Ddevice8.Release%, pDevice%
       SYS D3Dbasemesh8.Release%, meshSphere%
       SYS "FreeLibrary", d3dx%
@@ -581,7 +581,7 @@ MAKE OBJECT SPHERE 1,1
 =
 
 ```FreeBASIC
-' "\" = a integer division (CPU) 
+' "\" = a integer division (CPU)
 ' "/" = a floating point division (FPU)
 ' the compiler takes care of the conversion between floating point and integer
 ' compile with: FBC -s console "filename.bas" or FBC -s GUI "filename.bas"
@@ -598,7 +598,7 @@ ScreenRes W, H, 32   ' set 640x480x32 graphics mode, 32 bits color mode
 WindowTitle "32 bpp Cyan Sphere FreeBASIC"
 
 ' wait until keypress
-' Color(RGB(255,255,255),RGB(0,0,0))         ' default white foreground, black background 
+' Color(RGB(255,255,255),RGB(0,0,0))         ' default white foreground, black background
 Locate 50,2
 Print "Enter any key to start"
 Sleep
@@ -606,10 +606,10 @@ Sleep
 Dim As UInteger R = 100, R2 = R * R          ' radius, in pixels; radius squared
 Dim As UInteger X0 = W \ 2, Y0 = H \ 2       ' coordinates of center of screen
 Dim As Integer X, Y, C, D2                   ' coords, color, distance from center squared
-   
+
 For Y = -R To R                              ' for all the coordinates near the circle
   For X = -R To R                            ' which is under the sphere
-    D2 = X * X + Y * Y 
+    D2 = X * X + Y * Y
     If D2 <= R2 Then                         ' coordinate is inside circle under sphere
                                              ' height of point on surface of sphere above X,Y
       C = Sqr(R2 - D2) - ( X + Y) / 2 + 130  ' color is proportional; offset X and Y, and
@@ -618,13 +618,13 @@ For Y = -R To R                              ' for all the coordinates near the 
                                              ' green + blue = cyan
       PSet(X + X0, Y + Y0)
     End If
-  Next 
-Next 
+  Next
+Next
 
 ' wait until keypress
 Locate 50,2
 Color(RGB(255,255,255),RGB(0,0,0))           ' foreground color is changed
-' empty keyboard buffer 
+' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "hit any key to end program"
 Sleep
@@ -644,13 +644,13 @@ windowtitle "32 bpp Blue Sphere FreeBASIC"
 '
 ' wait until keypress
 locate 50,2
-color(rgb(255,255,255),rgb(0,0,0)) 
-Print "Enter any key to start" 
+color(rgb(255,255,255),rgb(0,0,0))
+Print "Enter any key to start"
 sleep
  R=100 : R2=R*R	               '\radius, in pixels; radius squared
  X0=640/2 : Y0=480/2           '\coordinates of center of screen
  dim as integer X, Y, Z, C, D2 '\coords, color, distance from center squared
-'                             
+'
 for Y= -R to +R                '\for all the coordinates near the circle
     for X = -R to +R          '\ which is under the sphere
         D2 = X*X + Y*Y        '
@@ -664,11 +664,11 @@ for Y= -R to +R                '\for all the coordinates near the circle
          Pset(X+X0, Y+Y0)
     next x
   next y
-' 
+'
 ' wait until keypress
 locate 50,2
-color(rgb(255,255,255),rgb(0,0,0)) 
-Print "Enter any key to exit " 
+color(rgb(255,255,255),rgb(0,0,0))
+Print "Enter any key to exit "
 sleep
 END
 ```
@@ -693,7 +693,7 @@ xS =200
 yS =200
 for radius =150 to 0 step -1
     level$ =str$( int( 256 -256 *radius /150))
-    c$ =level$ +" " +level$ +" " +level$ 
+    c$ =level$ +" " +level$ +" " +level$
     #w "color ";     c$
     #w "backcolor "; c$
     #w "place "; xS; " "; yS
@@ -865,25 +865,25 @@ Repeat
   If #FULLSCREEN = 0
     Repeat
       EventID = WindowEvent()
-      
+
       Select EventID
         Case #PB_Event_CloseWindow : End
       EndSelect
     Until EventID = 0
   EndIf
-  
+
   Angle + Pas
   RotateEntity(0, Angle, Angle,Angle)
-  
+
   If PasLength > 0 : UpdateMesh() : EndIf
-  
+
   If ExamineKeyboard()
     If KeyboardReleased(#PB_Key_F1)
       CameraMode = 1 - CameraMode
       CameraRenderMode(0, CameraMode)
     EndIf
   EndIf
-  
+
   RenderWorld()
   FlipBuffers()
 Until KeyboardPushed(#PB_Key_Escape)
@@ -896,20 +896,20 @@ Procedure CreateSphere(M,P)
   ; M = Meridian
   ; P = Parallele
   ; The radius is 1. Front to remove it later, it's just for the demo.
-  
+
   If M < 3 Or P < 2  : ProcedureReturn 0 : EndIf
-  
+
   Protected Normale.VECTOR, NbSommet, i, j, Theta.f, cTheta.f, sTheta.f
   Protected Alpha.f, cAlpha.f, sAlpha.f, *PtrV.VERTEX, *PtrF.TRIANGLE, NbTriangle
-  
+
   NbSommet = 2 + ((M + 1) * P)
   *VBuffer = AllocateMemory(#_SIZEVERT * Nbsommet)
-  
+
   For i = 0 To M
     Theta  = i * #PI * 2.0 / M
     cTheta = Cos(theta)
     sTheta = Sin(theta)
-    
+
     For j = 1 To P
       Alpha  = j * #PI / (P + 1)
       cAlpha = Cos(Alpha)
@@ -923,30 +923,30 @@ Procedure CreateSphere(M,P)
       CALC_NORMALS
     Next j
   Next i
-  
+
   ; Southpole
-  *PtrV = *VBuffer + #_SIZEVERT * ((M + 1) * P)   
+  *PtrV = *VBuffer + #_SIZEVERT * ((M + 1) * P)
   *PtrV\X =  0
-  *PtrV\Y =  0   
+  *PtrV\Y =  0
   *PtrV\Z = -1
   *PtrV\U =  0
   *PtrV\V =  0
   CALC_NORMALS
-  
+
   ; Northpole
   *PtrV + #_SIZEVERT
   *PtrV\X = 0
-  *PtrV\Y = 0   
+  *PtrV\Y = 0
   *PtrV\Z = 1
   *PtrV\U = 0
   *PtrV\V = 0
   CALC_NORMALS
-  
+
   ; Les facettes
   NbTriangle = 4 * M * P
   *IBuffer = AllocateMemory(#_SIZETRIS * NbTriangle)
   *PtrF = *IBuffer
-  
+
   For i = 0 To M - 1
     For j = 1 To P - 1
       *PtrF\V1 = ((i + 1) * P) + j
@@ -965,9 +965,9 @@ Procedure CreateSphere(M,P)
       *PtrF\V2 = ((i + 1) * P) + j       ;Recto
       *PtrF\V1 = (i * P) + (j - 1)       ;Recto
       *PtrF + #_SIZETRIS
-    Next j     
+    Next j
   Next i
-  
+
   ; The Poles
   For i = 0 To M - 1
     *PtrF\V3 = (M + 1) * P + 1
@@ -978,8 +978,8 @@ Procedure CreateSphere(M,P)
     *PtrF\V2 = (i + 1) * P       ;Recto
     *PtrF\V3 = i * P             ;Recto
     *PtrF + #_SIZETRIS
-  Next i     
-  
+  Next i
+
   For i = 0 To M - 1
     *PtrF\V3 = (M + 1) * P
     *PtrF\V2 = i * P + (P - 1)
@@ -988,31 +988,31 @@ Procedure CreateSphere(M,P)
     *PtrF\V1 = (M + 1) * P              ;Recto
     *PtrF\V2 = i * P + (P - 1)          ;Recto
     *PtrF\V3 = (i + 1) * P + (P - 1)    ;Recto
-    *PtrF + #_SIZETRIS 
-  Next i     
-  
+    *PtrF + #_SIZETRIS
+  Next i
+
   If CreateMesh(0,100)
     Protected Flag = #PB_Mesh_Vertex | #PB_Mesh_Normal | #PB_Mesh_UVCoordinate | #PB_Mesh_Color
     SetMeshData(0,Flag,*VBuffer,NbSommet)
     SetMeshData(0,#PB_Mesh_Face,*IBuffer,NbTriangle)
     ProcedureReturn 1
   EndIf
-  
+
   ProcedureReturn 0
-EndProcedure   
+EndProcedure
 
 ; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 Procedure UpdateMesh()
   Protected NbTriangle = 4 * Meridian * Parallele
-  
+
   Length + PasLength
-  
+
   If Length >= NbTriangle
     PasLength = 0
     Length = Nbtriangle
   EndIf
-  
+
   SetMeshData(0,#PB_Mesh_Face,*IBuffer,Length)
 EndProcedure
 ```
@@ -1105,7 +1105,7 @@ Works with 1k of RAM. A screenshot of the output is [http://www.edmundgriffiths.
 In my console the sphere looked more or less spheric, but this site has a larger interval between lines, so the result looks more like an egg.  The code of this sample is not ported from the C sample. Integer square root by Aacini.
 
 ```dos
-@echo off 
+@echo off
 setlocal enabledelayedexpansion
 mode con cols=80
 
@@ -1123,22 +1123,22 @@ set "block8=---------"
 set wy=0
 set linea=
 echo                           Batch-File ASCII Ball
-echo. 
+echo.
 for /L %%y in (-%r%,10,%r%) do (
    set /a "w1=r*r-%%y*%%y"
-   call:sqrt2 w1 w1 
+   call:sqrt2 w1 w1
    set /a "w1=14*w1/10,wy=(cent-w1),cnt=0,sp=wy/10,centre=cent/10-sp"
    call set "linea=%%spaces:~0,!sp!%%%%block1:~0,!centre!%%
    set /a wy=0,sum=0
    for %%i in (30 80 120 150 170 185 195 200) do (
-        set /a "cnt+=1,wy2=(%%i+r2)*w1/r,ww=(wy2+5)/10-sum,wy=wy2,sum+=ww" 
-        call set miblock=%%block!cnt!%% 
-        call set "Linea=%%linea%%%%miblock:~0,!ww!%%"   
-   )  
+        set /a "cnt+=1,wy2=(%%i+r2)*w1/r,ww=(wy2+5)/10-sum,wy=wy2,sum+=ww"
+        call set miblock=%%block!cnt!%%
+        call set "Linea=%%linea%%%%miblock:~0,!ww!%%"
+   )
    call echo(!linea!
 )
-echo.  
-exit /b 
+echo.
+exit /b
 
 :sqrt2   [num] calculates integer square root . By AAcini
 set "s=!%~1!"
@@ -1228,22 +1228,22 @@ g-10g*+:9**00gv|!*`\2\`-20::/2-\/\+<>
 {{out}}
 
 ```txt
-                               eeeeeeeeeee&&&&&#                               
-                        eooo********oooooooeeee&&&&###%                        
-                    oo****!!!!!!!!********ooooeeeee&&&###%%                    
-                 o**!!!!!!!!!!!!!!!!!!!*****oooooeeee&&&####%%                 
-              o*!!!!:::::::::::::::!!!!!!*****ooooeeee&&&&####%%%              
-            **!!:::::::....::::::::::!!!!!!****ooooeeeee&&&####%%%%            
-          **!!::::.............::::::::!!!!!****ooooeeee&&&&####%%%%%          
-        o*!!::::.................::::::!!!!!!****ooooeeee&&&&####%%%%%%        
-       *!!::::....................::::::!!!!!****ooooeeeee&&&&####%%%%%%       
-     e*!!:::......................::::::!!!!!*****ooooeeee&&&&####%%%%%%%%     
-    o*!!:::.......................::::::!!!!!*****ooooeeee&&&&#####%%%%%%%%    
-   o*!!::::.......................::::::!!!!!****oooooeeee&&&&#####%%%%%%%%%   
-  e**!!:::.......................::::::!!!!!*****ooooeeeee&&&&#####%%%%%%%%%%  
-  o*!!!:::......................:::::::!!!!!*****ooooeeeee&&&&#####%%%%%%%%%%  
- o**!!!::::...................::::::::!!!!!*****oooooeeee&&&&&#####%%%%%%%%%%% 
- o**!!!:::::................::::::::!!!!!!*****oooooeeeee&&&&#####%%%%%%%%%%%% 
+                               eeeeeeeeeee&&&&&#
+                        eooo********oooooooeeee&&&&###%
+                    oo****!!!!!!!!********ooooeeeee&&&###%%
+                 o**!!!!!!!!!!!!!!!!!!!*****oooooeeee&&&####%%
+              o*!!!!:::::::::::::::!!!!!!*****ooooeeee&&&&####%%%
+            **!!:::::::....::::::::::!!!!!!****ooooeeeee&&&####%%%%
+          **!!::::.............::::::::!!!!!****ooooeeee&&&&####%%%%%
+        o*!!::::.................::::::!!!!!!****ooooeeee&&&&####%%%%%%
+       *!!::::....................::::::!!!!!****ooooeeeee&&&&####%%%%%%
+     e*!!:::......................::::::!!!!!*****ooooeeee&&&&####%%%%%%%%
+    o*!!:::.......................::::::!!!!!*****ooooeeee&&&&#####%%%%%%%%
+   o*!!::::.......................::::::!!!!!****oooooeeee&&&&#####%%%%%%%%%
+  e**!!:::.......................::::::!!!!!*****ooooeeeee&&&&#####%%%%%%%%%%
+  o*!!!:::......................:::::::!!!!!*****ooooeeeee&&&&#####%%%%%%%%%%
+ o**!!!::::...................::::::::!!!!!*****oooooeeee&&&&&#####%%%%%%%%%%%
+ o**!!!:::::................::::::::!!!!!!*****oooooeeeee&&&&#####%%%%%%%%%%%%
 eo**!!!:::::::............:::::::::!!!!!!*****oooooeeeee&&&&&#####%%%%%%%%%%%%%
 eo***!!!:::::::::::::::::::::::::!!!!!!******oooooeeeee&&&&&#####%%%%%%%%%%%%%%
 eoo**!!!!!::::::::::::::::::::!!!!!!!!******oooooeeeee&&&&&######%%%%%%%%%%%%%%
@@ -1252,22 +1252,22 @@ eeoo****!!!!!!!!!!!!!!!!!!!!!!!!!*******ooooooeeeeee&&&&&######%%%%%%%%%%%%%%%%
 &eooo*****!!!!!!!!!!!!!!!!!!!!********ooooooeeeeee&&&&&&######%%%%%%%%%%%%%%%%%
 &eeoooo*******!!!!!!!!!!***********oooooooeeeeeee&&&&&&######%%%%%%%%%%%%%%%%%#
 &&eeeoooo***********************ooooooooeeeeeee&&&&&&#######%%%%%%%%%%%%%%%%%%#
- &&eeeooooooo**************ooooooooooeeeeeeee&&&&&&#######%%%%%%%%%%%%%%%%%%%# 
- #&&eeeeeoooooooooooooooooooooooooeeeeeeee&&&&&&&########%%%%%%%%%%%%%%%%%%%## 
-  #&&&eeeeeeeooooooooooooooooeeeeeeeeee&&&&&&&&########%%%%%%%%%%%%%%%%%%%%##  
-  %##&&&&eeeeeeeeeeeeeeeeeeeeeeeeee&&&&&&&&&&########%%%%%%%%%%%%%%%%%%%%%##&  
-   %###&&&&&&eeeeeeeeeeeeeeeeee&&&&&&&&&&&#########%%%%%%%%%%%%%%%%%%%%%%##&   
-    %####&&&&&&&&&&&&&&&&&&&&&&&&&&&&&##########%%%%%%%%%%%%%%%%%%%%%%%%##&    
-     %%######&&&&&&&&&&&&&&&&&&&&############%%%%%%%%%%%%%%%%%%%%%%%%%%##e     
-       %%%################################%%%%%%%%%%%%%%%%%%%%%%%%%%%##&       
-        %%%%%########################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%###&        
-          %%%%%%%%%###########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%###&          
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%###&            
-              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%##&&              
-                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%###&                 
-                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%####&                    
-                        %%%%%%%%%%%%%%%%%%%%%%%%%%####&                        
-                               %%%%%%%%%%%%#####                               
+ &&eeeooooooo**************ooooooooooeeeeeeee&&&&&&#######%%%%%%%%%%%%%%%%%%%#
+ #&&eeeeeoooooooooooooooooooooooooeeeeeeee&&&&&&&########%%%%%%%%%%%%%%%%%%%##
+  #&&&eeeeeeeooooooooooooooooeeeeeeeeee&&&&&&&&########%%%%%%%%%%%%%%%%%%%%##
+  %##&&&&eeeeeeeeeeeeeeeeeeeeeeeeee&&&&&&&&&&########%%%%%%%%%%%%%%%%%%%%%##&
+   %###&&&&&&eeeeeeeeeeeeeeeeee&&&&&&&&&&&#########%%%%%%%%%%%%%%%%%%%%%%##&
+    %####&&&&&&&&&&&&&&&&&&&&&&&&&&&&&##########%%%%%%%%%%%%%%%%%%%%%%%%##&
+     %%######&&&&&&&&&&&&&&&&&&&&############%%%%%%%%%%%%%%%%%%%%%%%%%%##e
+       %%%################################%%%%%%%%%%%%%%%%%%%%%%%%%%%##&
+        %%%%%########################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%###&
+          %%%%%%%%%###########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%###&
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%###&
+              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%##&&
+                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%###&
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%####&
+                        %%%%%%%%%%%%%%%%%%%%%%%%%%####&
+                               %%%%%%%%%%%%#####
 ```
 
 
@@ -1279,7 +1279,7 @@ eeoo****!!!!!!!!!!!!!!!!!!!!!!!!!*******ooooooeeeeee&&&&&######%%%%%%%%%%%%%%%%
 ```brlcad
 opendb balls.g y            # Create a database to hold our shapes
 units cm                     # Set the unit of measure
-in ball.s sph 0 0 0 3  # Create a sphere of radius 3 cm named ball.s with its centre at 0,0,0 
+in ball.s sph 0 0 0 3  # Create a sphere of radius 3 cm named ball.s with its centre at 0,0,0
 ```
 
 
@@ -1288,8 +1288,8 @@ in ball.s sph 0 0 0 3  # Create a sphere of radius 3 cm named ball.s with its ce
 
 The lighting calculation is somewhere between crude and bogus, but hey, I'm shading it with ASCII characters, don't expect too much.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -1351,67 +1351,67 @@ int main()
 {{out}}
 
 ```txt
-                               #############%%%%                                 
-                       ##&&eeeeeeeeee&&&&&&&####%%%%%%%%                         
-                   &&eeooooooooooooooeeeee&&&&######%%%%%%%%                     
-                 eeoo**************oooooooeeee&&&&####%%%%%%%%                   
-             &&oo**!!!!!!::!!!!!!!!****oooooee&&&&######%%%%%%%%%%               
-           eeoo!!!!::::::::::::::!!!!*****ooeeee&&&&####%%%%%%%%%%%%             
-         ee**!!::::............::::!!!!***ooooeeee&&######%%%%%%%%%%%%           
-       &&oo!!::..................::!!!!*****ooeeee&&&&####%%%%%%%%%%%%%%         
-       oo!!::....................::::!!*****ooeeee&&&&####%%%%%%%%%%%%%%         
-     ee**!!::....................::::!!*****ooeeee&&&&####%%%%%%%%%%%%%%%%       
-   &&oo!!::......................::::!!*****ooeeee&&&&######%%%%%%%%%%%%%%%%     
-   ee**!!::......................::::!!*****ooeeee&&&&######%%%%%%%%%%%%%%%%     
- ##oo**!!::......................::!!!!*****ooeeee&&&&####%%%%%%%%%%%%%%%%%%%%   
- &&oo**::::....................::::!!!!***ooooeeee&&&&####%%%%%%%%%%%%%%%%%%%%   
- eeoo**!!::..................::::!!!!*****ooooee&&&&######%%%%%%%%%%%%%%%%%%%%   
- eeoo**!!::................::::!!!!****oooooeeee&&&&######%%%%%%%%%%%%%%%%%%%%   
-#eeoo**!!::::............::::!!!!!!****oooeeee&&&&&&######%%%%%%%%%%%%%%%%%%%%%% 
-#eeoo**!!!!::::::::::::::::!!!!!!****oooooeeee&&&&######%%%%%%%%%%%%%%%%%%%%%%%% 
-#eeoooo**!!!!!!::::::::!!!!!!******ooooeeeee&&&&&&######%%%%%%%%%%%%%%%%%%%%%%%% 
-#&&eeoo****!!!!!!!!!!!!!!!!******ooooeeeee&&&&&&######%%%%%%%%%%%%%%%%%%%%%%%%%% 
-#&&eeoooo********************ooooooeeee&&&&&&&######%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-#&&&&eeoooooo************ooooooeeeeee&&&&&&&########%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%##&&eeeeeeooooooooooooooooooeeeeee&&&&&&&########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%####&&&&eeeeeeeeeeeeeeeeeeeeee&&&&&&&&#########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
- %%##&&&&&&eeeeeeeeeeeeeeee&&&&&&&&&&#########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
- %%######&&&&&&&&&&&&&&&&&&&&&&&&###########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
- %%%%########&&&&&&&&&&&&&&############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
- %%%%%%##############################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
-   %%%%%%%%######################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
-   %%%%%%%%%%%%%%%%####%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
-     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%       
-       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%         
-       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%         
-         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%           
-           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%             
-             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%               
-                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                   
-                   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                     
-                       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                         
-                               %%%%%%%%%%%%%%%%%                                 
-                                                                                 
-             ::..:::::!!**               
-         .............::!!**oo           
-     ...................::!!**ooee       
-   .......................::!!ooeeee     
-   .......................::!!**ooee     
- .........................::!!**ooeeee   
- .........................::!!**ooeeee   
-:.........................::!!**ooeeeeee 
-........................::!!**ooooeeeeee 
-:.......................::!!**ooeeeeeeee 
-:.....................::!!****ooeeeeeeee 
-!::................:::!!****ooeeeeeeeeee 
-*!!::..........::::!!!****ooooeeeeeeeeee 
- **!!::::::::::!!!!*****ooooeeeeeeeeee   
- oo**!!!!!!!!!!*******ooooeeeeeeeeeeee   
-   oooo********oooooooeeeeeeeeeeeeee     
-   eeeeooooooooooeeeeeeeeeeeeeeeeeee     
-     eeeeeeeeeeeeeeeeeeeeeeeeeeeee       
-         eeeeeeeeeeeeeeeeeeeee           
-             eeeeeeeeeeeee               
+                               #############%%%%
+                       ##&&eeeeeeeeee&&&&&&&####%%%%%%%%
+                   &&eeooooooooooooooeeeee&&&&######%%%%%%%%
+                 eeoo**************oooooooeeee&&&&####%%%%%%%%
+             &&oo**!!!!!!::!!!!!!!!****oooooee&&&&######%%%%%%%%%%
+           eeoo!!!!::::::::::::::!!!!*****ooeeee&&&&####%%%%%%%%%%%%
+         ee**!!::::............::::!!!!***ooooeeee&&######%%%%%%%%%%%%
+       &&oo!!::..................::!!!!*****ooeeee&&&&####%%%%%%%%%%%%%%
+       oo!!::....................::::!!*****ooeeee&&&&####%%%%%%%%%%%%%%
+     ee**!!::....................::::!!*****ooeeee&&&&####%%%%%%%%%%%%%%%%
+   &&oo!!::......................::::!!*****ooeeee&&&&######%%%%%%%%%%%%%%%%
+   ee**!!::......................::::!!*****ooeeee&&&&######%%%%%%%%%%%%%%%%
+ ##oo**!!::......................::!!!!*****ooeeee&&&&####%%%%%%%%%%%%%%%%%%%%
+ &&oo**::::....................::::!!!!***ooooeeee&&&&####%%%%%%%%%%%%%%%%%%%%
+ eeoo**!!::..................::::!!!!*****ooooee&&&&######%%%%%%%%%%%%%%%%%%%%
+ eeoo**!!::................::::!!!!****oooooeeee&&&&######%%%%%%%%%%%%%%%%%%%%
+#eeoo**!!::::............::::!!!!!!****oooeeee&&&&&&######%%%%%%%%%%%%%%%%%%%%%%
+#eeoo**!!!!::::::::::::::::!!!!!!****oooooeeee&&&&######%%%%%%%%%%%%%%%%%%%%%%%%
+#eeoooo**!!!!!!::::::::!!!!!!******ooooeeeee&&&&&&######%%%%%%%%%%%%%%%%%%%%%%%%
+#&&eeoo****!!!!!!!!!!!!!!!!******ooooeeeee&&&&&&######%%%%%%%%%%%%%%%%%%%%%%%%%%
+#&&eeoooo********************ooooooeeee&&&&&&&######%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#&&&&eeoooooo************ooooooeeeeee&&&&&&&########%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%##&&eeeeeeooooooooooooooooooeeeeee&&&&&&&########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%####&&&&eeeeeeeeeeeeeeeeeeeeee&&&&&&&&#########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%##&&&&&&eeeeeeeeeeeeeeee&&&&&&&&&&#########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%######&&&&&&&&&&&&&&&&&&&&&&&&###########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%########&&&&&&&&&&&&&&############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%##############################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   %%%%%%%%######################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   %%%%%%%%%%%%%%%%####%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                               %%%%%%%%%%%%%%%%%
+
+             ::..:::::!!**
+         .............::!!**oo
+     ...................::!!**ooee
+   .......................::!!ooeeee
+   .......................::!!**ooee
+ .........................::!!**ooeeee
+ .........................::!!**ooeeee
+:.........................::!!**ooeeeeee
+........................::!!**ooooeeeeee
+:.......................::!!**ooeeeeeeee
+:.....................::!!****ooeeeeeeee
+!::................:::!!****ooeeeeeeeeee
+*!!::..........::::!!!****ooooeeeeeeeeee
+ **!!::::::::::!!!!*****ooooeeeeeeeeee
+ oo**!!!!!!!!!!*******ooooeeeeeeeeeeee
+   oooo********oooooooeeeeeeeeeeeeee
+   eeeeooooooooooeeeeeeeeeeeeeeeeeee
+     eeeeeeeeeeeeeeeeeeeeeeeeeeeee
+         eeeeeeeeeeeeeeeeeeeee
+             eeeeeeeeeeeee
 ```
 
 
@@ -1420,8 +1420,8 @@ int main()
 
 [[file:sphere-perlin.png]]
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -2013,71 +2013,71 @@ END PROGRAM
 {{out}}
 
 ```txt
-             !::::::!!!**o               
-         ............:::!!**oe           
-      :................::!!**ooee        
-    :...................::!!**ooeee      
-   ......................::!!**ooeee     
-  .......................::!!**ooeeee    
- .......................:::!!**ooeeeee   
-:.......................::!!***ooeeeeee  
-:......................::!!!**oooeeeeee  
-:....................:::!!!**oooeeeeeee  
-!:..................:::!!***oooeeeeeeee  
-!!:..............::::!!!***oooeeeeeeeee  
-*!!::::.....::::::!!!!***ooooeeeeeeeeee  
- o*!!!!::::::!!!!!!****ooooeeeeeeeeeee   
-  o****!!!!!!!******oooooeeeeeeeeeeee    
-   eooo********oooooooeeeeeeeeeeeeee     
-    eeeoooooooooooeeeeeeeeeeeeeeeee      
-      eeeeeeeeeeeeeeeeeeeeeeeeeee        
-         eeeeeeeeeeeeeeeeeeeee           
-             eeeeeeeeeeeee               
-                                         
+             !::::::!!!**o
+         ............:::!!**oe
+      :................::!!**ooee
+    :...................::!!**ooeee
+   ......................::!!**ooeee
+  .......................::!!**ooeeee
+ .......................:::!!**ooeeeee
+:.......................::!!***ooeeeeee
+:......................::!!!**oooeeeeee
+:....................:::!!!**oooeeeeeee
+!:..................:::!!***oooeeeeeeee
+!!:..............::::!!!***oooeeeeeeeee
+*!!::::.....::::::!!!!***ooooeeeeeeeeee
+ o*!!!!::::::!!!!!!****ooooeeeeeeeeeee
+  o****!!!!!!!******oooooeeeeeeeeeeee
+   eooo********oooooooeeeeeeeeeeeeee
+    eeeoooooooooooeeeeeeeeeeeeeeeee
+      eeeeeeeeeeeeeeeeeeeeeeeeeee
+         eeeeeeeeeeeeeeeeeeeee
+             eeeeeeeeeeeee
+
 
 ### =========================================================================
 
-                               ##############%%%                                 
-                        #&&eeeeeeeeeee&&&&&&######%%%%%                          
-                    &eeeoooooooooooooeeeee&&&&&######%%%%%%                      
-                 &eooo**************oooooeeee&&&&&#####%%%%%%%                   
-              &eoo**!!!!!!!!!!!!!!*****ooooeeee&&&&######%%%%%%%%                
-            eoo**!!!::::::::::::!!!!****ooooeeee&&&&######%%%%%%%%%              
-          eoo*!!!::::.......::::::!!!!****oooeeee&&&&######%%%%%%%%%%            
-        &eo*!!:::..............::::!!!!***ooooeeee&&&&######%%%%%%%%%%%          
-       eo**!!::.................::::!!!****oooeeee&&&&######%%%%%%%%%%%%         
-     &eo*!!:::..................::::!!!!***oooeeee&&&&&######%%%%%%%%%%%%%       
-    &eo*!!:::...................::::!!!!***oooeeee&&&&&######%%%%%%%%%%%%%%      
-   &eo**!!::....................::::!!!****oooeeee&&&&&######%%%%%%%%%%%%%%%     
-  #eoo*!!:::...................::::!!!!***ooooeeee&&&&#######%%%%%%%%%%%%%%%%    
-  &eo**!!:::.................:::::!!!!****oooeeee&&&&&#######%%%%%%%%%%%%%%%%    
- &eoo**!!::::...............:::::!!!!****ooooeeee&&&&#######%%%%%%%%%%%%%%%%%%   
- &eoo**!!!::::...........::::::!!!!*****ooooeeee&&&&&#######%%%%%%%%%%%%%%%%%%   
-#&eoo***!!!::::::::::::::::::!!!!!****ooooeeeee&&&&&#######%%%%%%%%%%%%%%%%%%%%  
-#&eeoo***!!!!::::::::::::!!!!!!!*****ooooeeeee&&&&&#######%%%%%%%%%%%%%%%%%%%%%  
-#&eeooo****!!!!!!!!!!!!!!!!!!******ooooeeeee&&&&&&#######%%%%%%%%%%%%%%%%%%%%%%  
-#&&eeooo******!!!!!!!!!!!*******ooooooeeeee&&&&&&#######%%%%%%%%%%%%%%%%%%%%%%%  
-#&&&eeooooo******************ooooooeeeeee&&&&&&########%%%%%%%%%%%%%%%%%%%%%%%%  
-##&&&eeeooooooo********oooooooooeeeeeee&&&&&&#########%%%%%%%%%%%%%%%%%%%%%%%%%  
-###&&&eeeeeooooooooooooooooooeeeeeee&&&&&&&&#########%%%%%%%%%%%%%%%%%%%%%%%%%%  
-%###&&&&eeeeeeeeeeeoeeeeeeeeeeeee&&&&&&&&##########%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
- %####&&&&&eeeeeeeeeeeeeeeeee&&&&&&&&&&##########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
- %%#####&&&&&&&&&&&&&&&&&&&&&&&&&&&############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
-  %%#######&&&&&&&&&&&&&&&&&&&&##############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
-  %%%%############&&&&&###################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
-   %%%%%##############################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
-    %%%%%%%#######################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%      
-     %%%%%%%%%%%%%#########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%       
-       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%         
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%          
-          %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%            
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              
-              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                
-                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                   
-                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                      
-                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                          
-                               %%%%%%%%%%%%%%%%%                                 
-                                                                                 
+                               ##############%%%
+                        #&&eeeeeeeeeee&&&&&&######%%%%%
+                    &eeeoooooooooooooeeeee&&&&&######%%%%%%
+                 &eooo**************oooooeeee&&&&&#####%%%%%%%
+              &eoo**!!!!!!!!!!!!!!*****ooooeeee&&&&######%%%%%%%%
+            eoo**!!!::::::::::::!!!!****ooooeeee&&&&######%%%%%%%%%
+          eoo*!!!::::.......::::::!!!!****oooeeee&&&&######%%%%%%%%%%
+        &eo*!!:::..............::::!!!!***ooooeeee&&&&######%%%%%%%%%%%
+       eo**!!::.................::::!!!****oooeeee&&&&######%%%%%%%%%%%%
+     &eo*!!:::..................::::!!!!***oooeeee&&&&&######%%%%%%%%%%%%%
+    &eo*!!:::...................::::!!!!***oooeeee&&&&&######%%%%%%%%%%%%%%
+   &eo**!!::....................::::!!!****oooeeee&&&&&######%%%%%%%%%%%%%%%
+  #eoo*!!:::...................::::!!!!***ooooeeee&&&&#######%%%%%%%%%%%%%%%%
+  &eo**!!:::.................:::::!!!!****oooeeee&&&&&#######%%%%%%%%%%%%%%%%
+ &eoo**!!::::...............:::::!!!!****ooooeeee&&&&#######%%%%%%%%%%%%%%%%%%
+ &eoo**!!!::::...........::::::!!!!*****ooooeeee&&&&&#######%%%%%%%%%%%%%%%%%%
+#&eoo***!!!::::::::::::::::::!!!!!****ooooeeeee&&&&&#######%%%%%%%%%%%%%%%%%%%%
+#&eeoo***!!!!::::::::::::!!!!!!!*****ooooeeeee&&&&&#######%%%%%%%%%%%%%%%%%%%%%
+#&eeooo****!!!!!!!!!!!!!!!!!!******ooooeeeee&&&&&&#######%%%%%%%%%%%%%%%%%%%%%%
+#&&eeooo******!!!!!!!!!!!*******ooooooeeeee&&&&&&#######%%%%%%%%%%%%%%%%%%%%%%%
+#&&&eeooooo******************ooooooeeeeee&&&&&&########%%%%%%%%%%%%%%%%%%%%%%%%
+##&&&eeeooooooo********oooooooooeeeeeee&&&&&&#########%%%%%%%%%%%%%%%%%%%%%%%%%
+###&&&eeeeeooooooooooooooooooeeeeeee&&&&&&&&#########%%%%%%%%%%%%%%%%%%%%%%%%%%
+%###&&&&eeeeeeeeeeeoeeeeeeeeeeeee&&&&&&&&##########%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %####&&&&&eeeeeeeeeeeeeeeeee&&&&&&&&&&##########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%#####&&&&&&&&&&&&&&&&&&&&&&&&&&&############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%#######&&&&&&&&&&&&&&&&&&&&##############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%############&&&&&###################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   %%%%%##############################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%#######################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %%%%%%%%%%%%%#########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+          %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                               %%%%%%%%%%%%%%%%%
+
 
 ```
 
@@ -2267,7 +2267,7 @@ setProjection :: IO ()
 setProjection = do
   matrixMode $= Projection
   ortho (-1) 1 (-1) 1 0 (-1)
-         
+
 grey1,grey9,red,white :: Color4 GLfloat
 grey1 = Color4 0.1 0.1 0.1 1
 grey9 = Color4 0.9 0.9 0.9 1
@@ -2334,7 +2334,7 @@ end
 
 The simplest way to draw a sphere is to run the sphere demo code from J's simple demos.  (This assumes J version 6.)
 
-Normally you would bring up this demo by using the menu system: 
+Normally you would bring up this demo by using the menu system:
 
  Studio
   > Demos...
@@ -2423,68 +2423,68 @@ public class Sphere{
 {{out}}
 
 ```txt
-                               &&&&&&&&&&#######                                 
-                        &eeeeeeeeeeeeeeee&&&&&&#######%                          
-                    &eoooo*******oooooooeeeee&&&&&########%                      
-                 eoo****!!!!!!!!******oooooeeee&&&&&########%%                   
-              eoo**!!!!::::::::!!!!!*****ooooeeee&&&&&########%%%                
-            eo**!!::::::...:::::::!!!!!***ooooeeee&&&&&########%%%%              
-          eo*!!:::.............:::::!!!!***ooooeeee&&&&&########%%%%%            
-        eo*!!:::.................::::!!!!***ooooeeee&&&&#########%%%%%%          
-       eo*!!::....................::::!!!****oooeeee&&&&&#########%%%%%%         
-     &o**!::......................::::!!!****oooeeee&&&&&##########%%%%%%%       
-    &o**!::.......................::::!!!****oooeeee&&&&&##########%%%%%%%%      
-   &oo*!!::.......................:::!!!!***ooooeeee&&&&&##########%%%%%%%%%     
-  &eo*!!::.......................::::!!!****ooooeeee&&&&&##########%%%%%%%%%%    
-  eo**!!::......................::::!!!!***ooooeeeee&&&&&##########%%%%%%%%%%    
- &eo**!!:::...................:::::!!!!****ooooeeee&&&&&###########%%%%%%%%%%%   
- eeo**!!::::................:::::!!!!!****ooooeeee&&&&&&###########%%%%%%%%%%%   
-&eeo***!!:::::...........::::::!!!!!****oooooeeee&&&&&&###########%%%%%%%%%%%%%  
-&eeoo**!!!!::::::::::::::::::!!!!!*****ooooeeeee&&&&&&############%%%%%%%%%%%%%  
-&eeooo***!!!!::::::::::::!!!!!!!*****oooooeeeee&&&&&&############%%%%%%%%%%%%%%  
-&&eeooo***!!!!!!!!!!!!!!!!!!!******oooooeeeeee&&&&&&############%%%%%%%%%%%%%%%  
-&&eeeooo******!!!!!!!!!!********ooooooeeeeee&&&&&&&############%%%%%%%%%%%%%%%%  
-#&&eeeooooo******************oooooooeeeeee&&&&&&&#############%%%%%%%%%%%%%%%%%  
-#&&&eeeeoooooooo******oooooooooooeeeeeee&&&&&&&&#############%%%%%%%%%%%%%%%%%%  
-##&&&&eeeeeooooooooooooooooooeeeeeeee&&&&&&&&&##############%%%%%%%%%%%%%%%%%%%  
- ##&&&&&eeeeeeeeeeeeeeeeeeeeeeeeee&&&&&&&&&################%%%%%%%%%%%%%%%%%%%   
- ####&&&&&&eeeeeeeeeeeeeeeeeee&&&&&&&&&&&################%%%%%%%%%%%%%%%%%%%%%   
-  #####&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&#################%%%%%%%%%%%%%%%%%%%%%%    
-  %#######&&&&&&&&&&&&&&&&&&&&&&&&###################%%%%%%%%%%%%%%%%%%%%%%%%    
-   %###########&&&&&&&&&&&&&#######################%%%%%%%%%%%%%%%%%%%%%%%%%     
-    %############################################%%%%%%%%%%%%%%%%%%%%%%%%%%      
-     %%#######################################%%%%%%%%%%%%%%%%%%%%%%%%%%%%       
-       %%#################################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%         
-        %%%%%#########################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%          
-          %%%%%%%%#############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%            
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              
-              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                
-                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                   
-                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                      
-                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                          
-                               %%%%%%%%%%%%%%%%%                                 
-                                                                                 
-             ::...:::!!!*o               
-         ..............::!!*oo           
-      ..................::!!**ooe        
-    .....................::!!**ooee      
-   .......................::!!**ooee     
-  ........................::!!**oooee    
- .........................::!!**oooeee   
-:........................::!!!**oooeeee  
-........................::!!!**ooooeeee  
-:......................::!!!***oooeeeee  
-:....................:::!!!***oooeeeeee  
-!:.................:::!!!****oooeeeeeee  
-*!:::...........::::!!!!***ooooeeeeeeee  
- *!!!:::::::::::!!!!!****oooooeeeeeeee   
-  o**!!!!!!!!!!!!!*****oooooeeeeeeeee    
-   oo**************ooooooeeeeeeeeeee     
-    eoooooooooooooooooeeeeeeeeeeeee      
-      eeeooooooooeeeeeeeeeeeeeeee        
-         eeeeeeeeeeeeeeeeeeeee           
-             eeeeeeeeeeeee               
-                                         
+                               &&&&&&&&&&#######
+                        &eeeeeeeeeeeeeeee&&&&&&#######%
+                    &eoooo*******oooooooeeeee&&&&&########%
+                 eoo****!!!!!!!!******oooooeeee&&&&&########%%
+              eoo**!!!!::::::::!!!!!*****ooooeeee&&&&&########%%%
+            eo**!!::::::...:::::::!!!!!***ooooeeee&&&&&########%%%%
+          eo*!!:::.............:::::!!!!***ooooeeee&&&&&########%%%%%
+        eo*!!:::.................::::!!!!***ooooeeee&&&&#########%%%%%%
+       eo*!!::....................::::!!!****oooeeee&&&&&#########%%%%%%
+     &o**!::......................::::!!!****oooeeee&&&&&##########%%%%%%%
+    &o**!::.......................::::!!!****oooeeee&&&&&##########%%%%%%%%
+   &oo*!!::.......................:::!!!!***ooooeeee&&&&&##########%%%%%%%%%
+  &eo*!!::.......................::::!!!****ooooeeee&&&&&##########%%%%%%%%%%
+  eo**!!::......................::::!!!!***ooooeeeee&&&&&##########%%%%%%%%%%
+ &eo**!!:::...................:::::!!!!****ooooeeee&&&&&###########%%%%%%%%%%%
+ eeo**!!::::................:::::!!!!!****ooooeeee&&&&&&###########%%%%%%%%%%%
+&eeo***!!:::::...........::::::!!!!!****oooooeeee&&&&&&###########%%%%%%%%%%%%%
+&eeoo**!!!!::::::::::::::::::!!!!!*****ooooeeeee&&&&&&############%%%%%%%%%%%%%
+&eeooo***!!!!::::::::::::!!!!!!!*****oooooeeeee&&&&&&############%%%%%%%%%%%%%%
+&&eeooo***!!!!!!!!!!!!!!!!!!!******oooooeeeeee&&&&&&############%%%%%%%%%%%%%%%
+&&eeeooo******!!!!!!!!!!********ooooooeeeeee&&&&&&&############%%%%%%%%%%%%%%%%
+#&&eeeooooo******************oooooooeeeeee&&&&&&&#############%%%%%%%%%%%%%%%%%
+#&&&eeeeoooooooo******oooooooooooeeeeeee&&&&&&&&#############%%%%%%%%%%%%%%%%%%
+##&&&&eeeeeooooooooooooooooooeeeeeeee&&&&&&&&&##############%%%%%%%%%%%%%%%%%%%
+ ##&&&&&eeeeeeeeeeeeeeeeeeeeeeeeee&&&&&&&&&################%%%%%%%%%%%%%%%%%%%
+ ####&&&&&&eeeeeeeeeeeeeeeeeee&&&&&&&&&&&################%%%%%%%%%%%%%%%%%%%%%
+  #####&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&#################%%%%%%%%%%%%%%%%%%%%%%
+  %#######&&&&&&&&&&&&&&&&&&&&&&&&###################%%%%%%%%%%%%%%%%%%%%%%%%
+   %###########&&&&&&&&&&&&&#######################%%%%%%%%%%%%%%%%%%%%%%%%%
+    %############################################%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %%#######################################%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+       %%#################################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%#########################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+          %%%%%%%%#############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                               %%%%%%%%%%%%%%%%%
+
+             ::...:::!!!*o
+         ..............::!!*oo
+      ..................::!!**ooe
+    .....................::!!**ooee
+   .......................::!!**ooee
+  ........................::!!**oooee
+ .........................::!!**oooeee
+:........................::!!!**oooeeee
+........................::!!!**ooooeeee
+:......................::!!!***oooeeeee
+:....................:::!!!***oooeeeeee
+!:.................:::!!!****oooeeeeeee
+*!:::...........::::!!!!***ooooeeeeeeee
+ *!!!:::::::::::!!!!!****oooooeeeeeeee
+  o**!!!!!!!!!!!!!*****oooooeeeeeeeee
+   oo**************ooooooeeeeeeeeeee
+    eoooooooooooooooooeeeeeeeeeeeee
+      eeeooooooooeeeeeeeeeeeeeeee
+         eeeeeeeeeeeeeeeeeeeee
+             eeeeeeeeeeeee
+
 ```
 
 
@@ -2512,12 +2512,12 @@ function normalize(v){
 	v[2]/=len;
 	return v;
 }
- 
+
 function dot(x,y){
 	var d=x[0]*y[0]+x[1]*y[1]+x[2]*y[2];
 	return d<0?-d:0;
 }
- 
+
 function draw_sphere(R,k,ambient){
 	var i,j,intensity,b,vec,x,y,cvs,ctx,imgdata,idx;
 	cvs=document.getElementById("c");
@@ -2579,7 +2579,7 @@ def svg:
     xmlns:xlink='http://www.w3.org/1999/xlink'>" ;
 
 # A radial gradient to make a circle look like a sphere.
-# "colors" should be [startColor, intermediateColor, endColor] 
+# "colors" should be [startColor, intermediateColor, endColor]
 # or null for ["white", "teal", "black"]
 def sphericalGradient(id; colors):
   "<defs>
@@ -2605,7 +2605,7 @@ def draw_sphere:
     sphere(100;100;100; "tealGradient"),     # draw a sphere using the gradient
     sphere(100;300;100; "tealGradient"),     # draw another sphere using the same gradient
   "</svg>" ;
-    
+
 draw_sphere
 ```
 
@@ -2673,7 +2673,7 @@ fun normalize(v: DoubleArray) {
 }
 
 fun dot(x: DoubleArray, y: DoubleArray): Double {
-    val d = x[0] * y[0] + x[1] * y[1] + x[2] * y[2]   
+    val d = x[0] * y[0] + x[1] * y[1] + x[2] * y[2]
     return if (d < 0.0) -d else 0.0
 }
 
@@ -2690,12 +2690,12 @@ fun drawSphere(r: Double, k: Double, ambient: Double) {
             if (x * x + y * y <= r * r) {
                 vec[0] = x
                 vec[1] = y
-                vec[2] = Math.sqrt(r * r - x * x - y * y) 
+                vec[2] = Math.sqrt(r * r - x * x - y * y)
                 normalize(vec)
-                b = Math.pow(dot(light, vec), k) + ambient 
-                intensity = ((1.0 - b) * (shades.length - 1)).toInt() 
-                if (intensity < 0) intensity = 0  
-                if (intensity >= shades.length - 1) intensity = shades.length - 2                 
+                b = Math.pow(dot(light, vec), k) + ambient
+                intensity = ((1.0 - b) * (shades.length - 1)).toInt()
+                if (intensity < 0) intensity = 0
+                if (intensity >= shades.length - 1) intensity = shades.length - 2
                 print(shades[intensity])
             }
             else print(' ')
@@ -2871,68 +2871,68 @@ draw_sphere (10, 2, 0.4)
 {{out}}
 
 ```txt
-                               &&&&&&&&&&&&#####                                 
-                        &eeeoooooooooeeeeee&&&&&#######                          
-                    eooo*************oooooeeee&&&&&########                      
-                 eo**!!!!!!!!!!!!!!!*****ooooeeee&&&&#########                   
-              eo*!!!:::::...:::::::!!!!****oooeeee&&&&&##########                
-            o**!:::..............::::!!!!***ooooeee&&&&&###########              
-          o*!!::...................::::!!!***ooooeee&&&&&############            
-        eo*!::......................::::!!!***oooeeee&&&&&#############          
-       o*!::.........................:::!!!***ooooeee&&&&&##############         
-     &o*!::..........................:::!!!***ooooeeee&&&&###############%       
-    eo*!::...........................:::!!!***ooooeeee&&&&&###############%      
-   eo*!::............................:::!!!***ooooeeee&&&&&###############%%     
-  &o*!!::...........................:::!!!!***oooeeee&&&&&#################%%    
-  eo*!!:...........................::::!!!***ooooeeee&&&&&#################%%    
- eo**!!::.........................::::!!!****oooeeee&&&&&&#################%%%   
- eo**!!::.......................::::!!!!****oooeeeee&&&&&##################%%%   
-&eo**!!:::....................:::::!!!!***ooooeeeee&&&&&&##################%%%%  
-&eoo**!!::::................:::::!!!!****ooooeeeee&&&&&&###################%%%%  
-&eoo***!!!:::::........:::::::!!!!!****oooooeeeee&&&&&&###################%%%%%  
-&eeoo***!!!!:::::::::::::::!!!!!!*****ooooeeeee&&&&&&&####################%%%%%  
-&&eeoo****!!!!!!!!!!!!!!!!!!!!*****oooooeeeeee&&&&&&######################%%%%%  
-&&eeeooo******!!!!!!!!!!!*******ooooooeeeeee&&&&&&&######################%%%%%%  
-#&&eeeooooo******************oooooooeeeeee&&&&&&&#######################%%%%%%%  
-##&&&eeeeoooooooooo*ooooooooooooeeeeeeee&&&&&&&&#######################%%%%%%%%  
- ##&&&eeeeeeooooooooooooooooeeeeeeeee&&&&&&&&&########################%%%%%%%%   
- ###&&&&&eeeeeeeeeeeeeeeeeeeeeeee&&&&&&&&&&##########################%%%%%%%%%   
-  ####&&&&&&&eeeeeeeeeeeeeee&&&&&&&&&&&&############################%%%%%%%%%    
-  ######&&&&&&&&&&&&&&&&&&&&&&&&&&&&&##############################%%%%%%%%%%    
-   ########&&&&&&&&&&&&&&&&&&&&&&################################%%%%%%%%%%%     
-    ###############&&&&&#######################################%%%%%%%%%%%%      
-     #########################################################%%%%%%%%%%%%       
-       #####################################################%%%%%%%%%%%%         
-        #################################################%%%%%%%%%%%%%%          
-          #############################################%%%%%%%%%%%%%%            
-            ########################################%%%%%%%%%%%%%%%              
-              ##################################%%%%%%%%%%%%%%%%%                
-                 %##########################%%%%%%%%%%%%%%%%%%                   
-                    %%%%############%%%%%%%%%%%%%%%%%%%%%%%                      
-                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                          
-                               %%%%%%%%%%%%%%%%%                                 
-                                                                                 
-             ........::!!*               
-         ...............::!!*o           
-      ....................::!**oo        
-    .......................::!**ooo      
-   ........................::!!**ooo     
-  .........................::!!**oooo    
- ..........................::!!**ooooe   
-...........................::!!**ooooee  
-..........................::!!***ooooee  
-.........................::!!!**oooooee  
-.......................:::!!!**oooooeee  
-:.....................::!!!***ooooooeee  
-!::................:::!!!!***ooooooeeee  
- !!::..........:::::!!!****ooooooeeeee   
-  *!!!::::::::::!!!!!****oooooooeeeee    
-   o***!!!!!!!!!******ooooooooeeeeee     
-    ooo***********ooooooooooeeeeeee      
-      oooooooooooooooooooeeeeeeee        
-         eooooooooooeeeeeeeeee           
-             eeeeeeeeeeeee               
-                                         
+                               &&&&&&&&&&&&#####
+                        &eeeoooooooooeeeeee&&&&&#######
+                    eooo*************oooooeeee&&&&&########
+                 eo**!!!!!!!!!!!!!!!*****ooooeeee&&&&#########
+              eo*!!!:::::...:::::::!!!!****oooeeee&&&&&##########
+            o**!:::..............::::!!!!***ooooeee&&&&&###########
+          o*!!::...................::::!!!***ooooeee&&&&&############
+        eo*!::......................::::!!!***oooeeee&&&&&#############
+       o*!::.........................:::!!!***ooooeee&&&&&##############
+     &o*!::..........................:::!!!***ooooeeee&&&&###############%
+    eo*!::...........................:::!!!***ooooeeee&&&&&###############%
+   eo*!::............................:::!!!***ooooeeee&&&&&###############%%
+  &o*!!::...........................:::!!!!***oooeeee&&&&&#################%%
+  eo*!!:...........................::::!!!***ooooeeee&&&&&#################%%
+ eo**!!::.........................::::!!!****oooeeee&&&&&&#################%%%
+ eo**!!::.......................::::!!!!****oooeeeee&&&&&##################%%%
+&eo**!!:::....................:::::!!!!***ooooeeeee&&&&&&##################%%%%
+&eoo**!!::::................:::::!!!!****ooooeeeee&&&&&&###################%%%%
+&eoo***!!!:::::........:::::::!!!!!****oooooeeeee&&&&&&###################%%%%%
+&eeoo***!!!!:::::::::::::::!!!!!!*****ooooeeeee&&&&&&&####################%%%%%
+&&eeoo****!!!!!!!!!!!!!!!!!!!!*****oooooeeeeee&&&&&&######################%%%%%
+&&eeeooo******!!!!!!!!!!!*******ooooooeeeeee&&&&&&&######################%%%%%%
+#&&eeeooooo******************oooooooeeeeee&&&&&&&#######################%%%%%%%
+##&&&eeeeoooooooooo*ooooooooooooeeeeeeee&&&&&&&&#######################%%%%%%%%
+ ##&&&eeeeeeooooooooooooooooeeeeeeeee&&&&&&&&&########################%%%%%%%%
+ ###&&&&&eeeeeeeeeeeeeeeeeeeeeeee&&&&&&&&&&##########################%%%%%%%%%
+  ####&&&&&&&eeeeeeeeeeeeeee&&&&&&&&&&&&############################%%%%%%%%%
+  ######&&&&&&&&&&&&&&&&&&&&&&&&&&&&&##############################%%%%%%%%%%
+   ########&&&&&&&&&&&&&&&&&&&&&&################################%%%%%%%%%%%
+    ###############&&&&&#######################################%%%%%%%%%%%%
+     #########################################################%%%%%%%%%%%%
+       #####################################################%%%%%%%%%%%%
+        #################################################%%%%%%%%%%%%%%
+          #############################################%%%%%%%%%%%%%%
+            ########################################%%%%%%%%%%%%%%%
+              ##################################%%%%%%%%%%%%%%%%%
+                 %##########################%%%%%%%%%%%%%%%%%%
+                    %%%%############%%%%%%%%%%%%%%%%%%%%%%%
+                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                               %%%%%%%%%%%%%%%%%
+
+             ........::!!*
+         ...............::!!*o
+      ....................::!**oo
+    .......................::!**ooo
+   ........................::!!**ooo
+  .........................::!!**oooo
+ ..........................::!!**ooooe
+...........................::!!**ooooee
+..........................::!!***ooooee
+.........................::!!!**oooooee
+.......................:::!!!**oooooeee
+:.....................::!!!***ooooooeee
+!::................:::!!!!***ooooooeeee
+ !!::..........:::::!!!****ooooooeeeee
+  *!!!::::::::::!!!!!****oooooooeeeee
+   o***!!!!!!!!!******ooooooooeeeeee
+    ooo***********ooooooooooeeeeeee
+      oooooooooooooooooooeeeeeeee
+         eooooooooooeeeeeeeeee
+             eeeeeeeeeeeee
+
 ```
 
 
@@ -3093,66 +3093,66 @@ drawSphere 10, 2.0, 0.4
 {{out}}
 
 ```txt
-                               &&&&&&&&&&#######                                 
-                        &eeeeeeeeeeeeeeee&&&&&&#######%                          
-                    &eoooo*******oooooooeeeee&&&&&########%                      
-                 eoo****!!!!!!!!******oooooeeee&&&&&########%%                   
-              eoo**!!!!::::::::!!!!!*****ooooeeee&&&&&########%%%                
-            eo**!!::::::...:::::::!!!!!***ooooeeee&&&&&########%%%%              
-          eo*!!:::.............:::::!!!!***ooooeeee&&&&&########%%%%%            
-        eo*!!:::.................::::!!!!***ooooeeee&&&&#########%%%%%%          
-       eo*!!::....................::::!!!****oooeeee&&&&&#########%%%%%%         
-     &o**!::......................::::!!!****oooeeee&&&&&##########%%%%%%%       
-    &o**!::.......................::::!!!****oooeeee&&&&&##########%%%%%%%%      
-   &oo*!!::.......................:::!!!!***ooooeeee&&&&&##########%%%%%%%%%     
-  &eo*!!::.......................::::!!!****ooooeeee&&&&&##########%%%%%%%%%%    
-  eo**!!::......................::::!!!!***ooooeeeee&&&&&##########%%%%%%%%%%    
- &eo**!!:::...................:::::!!!!****ooooeeee&&&&&###########%%%%%%%%%%%   
- eeo**!!::::................:::::!!!!!****ooooeeee&&&&&&###########%%%%%%%%%%%   
-&eeo***!!:::::...........::::::!!!!!****oooooeeee&&&&&&###########%%%%%%%%%%%%%  
-&eeoo**!!!!::::::::::::::::::!!!!!*****ooooeeeee&&&&&&############%%%%%%%%%%%%%  
-&eeooo***!!!!::::::::::::!!!!!!!*****oooooeeeee&&&&&&############%%%%%%%%%%%%%%  
-&&eeooo***!!!!!!!!!!!!!!!!!!!******oooooeeeeee&&&&&&############%%%%%%%%%%%%%%%  
-&&eeeooo******!!!!!!!!!!********ooooooeeeeee&&&&&&&############%%%%%%%%%%%%%%%%  
-#&&eeeooooo******************oooooooeeeeee&&&&&&&#############%%%%%%%%%%%%%%%%%  
-#&&&eeeeoooooooo******oooooooooooeeeeeee&&&&&&&&#############%%%%%%%%%%%%%%%%%%  
-##&&&&eeeeeooooooooooooooooooeeeeeeee&&&&&&&&&##############%%%%%%%%%%%%%%%%%%%  
- ##&&&&&eeeeeeeeeeeeeeeeeeeeeeeeee&&&&&&&&&################%%%%%%%%%%%%%%%%%%%   
- ####&&&&&&eeeeeeeeeeeeeeeeeee&&&&&&&&&&&################%%%%%%%%%%%%%%%%%%%%%   
-  #####&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&#################%%%%%%%%%%%%%%%%%%%%%%    
-  %#######&&&&&&&&&&&&&&&&&&&&&&&&###################%%%%%%%%%%%%%%%%%%%%%%%%    
-   %###########&&&&&&&&&&&&&#######################%%%%%%%%%%%%%%%%%%%%%%%%%     
-    %############################################%%%%%%%%%%%%%%%%%%%%%%%%%%      
-     %%#######################################%%%%%%%%%%%%%%%%%%%%%%%%%%%%       
-       %%#################################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%         
-        %%%%%#########################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%          
-          %%%%%%%%#############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%            
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%              
-              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                
-                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                   
-                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                      
-                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                          
-                               %%%%%%%%%%%%%%%%%                                 
-                                                                                 
-             ::...:::!!!*o               
-         ..............::!!*oo           
-      ..................::!!**ooe        
-    .....................::!!**ooee      
-   .......................::!!**ooee     
-  ........................::!!**oooee    
- .........................::!!**oooeee   
-:........................::!!!**oooeeee  
-........................::!!!**ooooeeee  
-:......................::!!!***oooeeeee  
-:....................:::!!!***oooeeeeee  
-!:.................:::!!!****oooeeeeeee  
-*!:::...........::::!!!!***ooooeeeeeeee  
- *!!!:::::::::::!!!!!****oooooeeeeeeee   
-  o**!!!!!!!!!!!!!*****oooooeeeeeeeee    
-   oo**************ooooooeeeeeeeeeee     
-    eoooooooooooooooooeeeeeeeeeeeee      
-      eeeooooooooeeeeeeeeeeeeeeee        
-         eeeeeeeeeeeeeeeeeeeee           
+                               &&&&&&&&&&#######
+                        &eeeeeeeeeeeeeeee&&&&&&#######%
+                    &eoooo*******oooooooeeeee&&&&&########%
+                 eoo****!!!!!!!!******oooooeeee&&&&&########%%
+              eoo**!!!!::::::::!!!!!*****ooooeeee&&&&&########%%%
+            eo**!!::::::...:::::::!!!!!***ooooeeee&&&&&########%%%%
+          eo*!!:::.............:::::!!!!***ooooeeee&&&&&########%%%%%
+        eo*!!:::.................::::!!!!***ooooeeee&&&&#########%%%%%%
+       eo*!!::....................::::!!!****oooeeee&&&&&#########%%%%%%
+     &o**!::......................::::!!!****oooeeee&&&&&##########%%%%%%%
+    &o**!::.......................::::!!!****oooeeee&&&&&##########%%%%%%%%
+   &oo*!!::.......................:::!!!!***ooooeeee&&&&&##########%%%%%%%%%
+  &eo*!!::.......................::::!!!****ooooeeee&&&&&##########%%%%%%%%%%
+  eo**!!::......................::::!!!!***ooooeeeee&&&&&##########%%%%%%%%%%
+ &eo**!!:::...................:::::!!!!****ooooeeee&&&&&###########%%%%%%%%%%%
+ eeo**!!::::................:::::!!!!!****ooooeeee&&&&&&###########%%%%%%%%%%%
+&eeo***!!:::::...........::::::!!!!!****oooooeeee&&&&&&###########%%%%%%%%%%%%%
+&eeoo**!!!!::::::::::::::::::!!!!!*****ooooeeeee&&&&&&############%%%%%%%%%%%%%
+&eeooo***!!!!::::::::::::!!!!!!!*****oooooeeeee&&&&&&############%%%%%%%%%%%%%%
+&&eeooo***!!!!!!!!!!!!!!!!!!!******oooooeeeeee&&&&&&############%%%%%%%%%%%%%%%
+&&eeeooo******!!!!!!!!!!********ooooooeeeeee&&&&&&&############%%%%%%%%%%%%%%%%
+#&&eeeooooo******************oooooooeeeeee&&&&&&&#############%%%%%%%%%%%%%%%%%
+#&&&eeeeoooooooo******oooooooooooeeeeeee&&&&&&&&#############%%%%%%%%%%%%%%%%%%
+##&&&&eeeeeooooooooooooooooooeeeeeeee&&&&&&&&&##############%%%%%%%%%%%%%%%%%%%
+ ##&&&&&eeeeeeeeeeeeeeeeeeeeeeeeee&&&&&&&&&################%%%%%%%%%%%%%%%%%%%
+ ####&&&&&&eeeeeeeeeeeeeeeeeee&&&&&&&&&&&################%%%%%%%%%%%%%%%%%%%%%
+  #####&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&#################%%%%%%%%%%%%%%%%%%%%%%
+  %#######&&&&&&&&&&&&&&&&&&&&&&&&###################%%%%%%%%%%%%%%%%%%%%%%%%
+   %###########&&&&&&&&&&&&&#######################%%%%%%%%%%%%%%%%%%%%%%%%%
+    %############################################%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %%#######################################%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+       %%#################################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%#########################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+          %%%%%%%%#############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                               %%%%%%%%%%%%%%%%%
+
+             ::...:::!!!*o
+         ..............::!!*oo
+      ..................::!!**ooe
+    .....................::!!**ooee
+   .......................::!!**ooee
+  ........................::!!**oooee
+ .........................::!!**oooeee
+:........................::!!!**oooeeee
+........................::!!!**ooooeeee
+:......................::!!!***oooeeeee
+:....................:::!!!***oooeeeeee
+!:.................:::!!!****oooeeeeeee
+*!:::...........::::!!!!***ooooeeeeeeee
+ *!!!:::::::::::!!!!!****oooooeeeeeeee
+  o**!!!!!!!!!!!!!*****oooooeeeeeeeee
+   oo**************ooooooeeeeeeeeeee
+    eoooooooooooooooooeeeeeeeeeeeee
+      eeeooooooooeeeeeeeeeeeeeeee
+         eeeeeeeeeeeeeeeeeeeee
              eeeeeeeeeeeee
 ```
 
@@ -3341,7 +3341,7 @@ See [https://github.com/thundergnat/rc/blob/master/img/sphere2-perl6.png sphere2
 ## Phix
 
 {{libheader|pGUI}}
-{{trans|Go}} (Go gets credit for the dot/normalize/drawSphere routines, but this draws on screen rather than to png file) 
+{{trans|Go}} (Go gets credit for the dot/normalize/drawSphere routines, but this draws on screen rather than to png file)
 Sphere will resize to match the window.
 
 ```Phix
@@ -3384,7 +3384,7 @@ end procedure
 function redraw_cb(Ihandle /*ih*/, integer /*posx*/, integer /*posy*/)
 integer {width, height} = IupGetIntInt(canvas, "DRAWSIZE")
     cdCanvasActivate(cddbuffer)
-    cdCanvasClear(cddbuffer) 
+    cdCanvasClear(cddbuffer)
     drawSphere(width,height,1.5,0.2,normalize({-30,-30,50}))
     cdCanvasFlush(cddbuffer)
     return IUP_DEFAULT
@@ -3530,70 +3530,70 @@ This is for the 64-bit version.
 {{out}}
 
 ```txt
-                               ##############%%%                                  
-                        #&&eeeeeeeeeee&&&&&&######%%%%%                           
-                    &eeeoooooooooooooeeeee&&&&&######%%%%%%                       
-                 &eooo**************oooooeeee&&&&&#####%%%%%%%                    
-              &eoo**!!!!!!!!!!!!!!*****ooooeeee&&&&######%%%%%%%%                 
-            eoo**!!!::::::::::::!!!!****ooooeeee&&&&######%%%%%%%%%               
-          eoo*!!!::::.......::::::!!!!****oooeeee&&&&######%%%%%%%%%%             
-        &eo*!!:::..............::::!!!!***ooooeeee&&&&######%%%%%%%%%%%           
-       eo**!!::.................::::!!!****oooeeee&&&&######%%%%%%%%%%%%          
-     &eo*!!:::..................::::!!!!***oooeeee&&&&&######%%%%%%%%%%%%%        
-    &eo*!!:::...................::::!!!!***oooeeee&&&&&######%%%%%%%%%%%%%%       
-   &eo**!!::....................::::!!!****oooeeee&&&&&######%%%%%%%%%%%%%%%      
-  #eoo*!!:::...................::::!!!!***ooooeeee&&&&#######%%%%%%%%%%%%%%%%     
-  &eo**!!:::.................:::::!!!!****oooeeee&&&&&#######%%%%%%%%%%%%%%%%     
- &eoo**!!::::...............:::::!!!!****ooooeeee&&&&#######%%%%%%%%%%%%%%%%%%    
- &eoo**!!!::::...........::::::!!!!*****ooooeeee&&&&&#######%%%%%%%%%%%%%%%%%%    
-#&eoo***!!!::::::::::::::::::!!!!!****ooooeeeee&&&&&#######%%%%%%%%%%%%%%%%%%%%   
-#&eeoo***!!!!::::::::::::!!!!!!!*****ooooeeeee&&&&&#######%%%%%%%%%%%%%%%%%%%%%   
-#&eeooo****!!!!!!!!!!!!!!!!!!******ooooeeeee&&&&&&#######%%%%%%%%%%%%%%%%%%%%%%   
-#&&eeooo******!!!!!!!!!!!*******ooooooeeeee&&&&&&#######%%%%%%%%%%%%%%%%%%%%%%%   
-#&&&eeooooo******************ooooooeeeeee&&&&&&########%%%%%%%%%%%%%%%%%%%%%%%%   
-##&&&eeeooooooo********oooooooooeeeeeee&&&&&&#########%%%%%%%%%%%%%%%%%%%%%%%%%   
-###&&&eeeeeooooooooooooooooooeeeeeee&&&&&&&&#########%%%%%%%%%%%%%%%%%%%%%%%%%%   
-%###&&&&eeeeeeeeeeeoeeeeeeeeeeeee&&&&&&&&##########%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
- %####&&&&&eeeeeeeeeeeeeeeeee&&&&&&&&&&##########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
- %%#####&&&&&&&&&&&&&&&&&&&&&&&&&&&############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
-  %%#######&&&&&&&&&&&&&&&&&&&&##############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
-  %%%%############&&&&&###################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%     
-   %%%%%##############################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%      
-    %%%%%%%#######################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%       
-     %%%%%%%%%%%%%#########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%        
-       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%          
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%           
-          %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%             
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%               
-              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                 
-                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                    
-                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                       
-                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                           
-                               %%%%%%%%%%%%%%%%%                                  
-                                                                                  
-                                                                                  
-             !::::::!!!**o                
-         ............:::!!**oe            
-      :................::!!**ooee         
-    :...................::!!**ooeee       
-   ......................::!!**ooeee      
-  .......................::!!**ooeeee     
- .......................:::!!**ooeeeee    
-:.......................::!!***ooeeeeee   
-:......................::!!!**oooeeeeee   
-:....................:::!!!**oooeeeeeee   
-!:..................:::!!***oooeeeeeeee   
-!!:..............::::!!!***oooeeeeeeeee   
-*!!::::.....::::::!!!!***ooooeeeeeeeeee   
- o*!!!!::::::!!!!!!****ooooeeeeeeeeeee    
-  o****!!!!!!!******oooooeeeeeeeeeeee     
-   eooo********oooooooeeeeeeeeeeeeee      
-    eeeoooooooooooeeeeeeeeeeeeeeeee       
-      eeeeeeeeeeeeeeeeeeeeeeeeeee         
-         eeeeeeeeeeeeeeeeeeeee            
-             eeeeeeeeeeeee                
-                                          
-                                          
+                               ##############%%%
+                        #&&eeeeeeeeeee&&&&&&######%%%%%
+                    &eeeoooooooooooooeeeee&&&&&######%%%%%%
+                 &eooo**************oooooeeee&&&&&#####%%%%%%%
+              &eoo**!!!!!!!!!!!!!!*****ooooeeee&&&&######%%%%%%%%
+            eoo**!!!::::::::::::!!!!****ooooeeee&&&&######%%%%%%%%%
+          eoo*!!!::::.......::::::!!!!****oooeeee&&&&######%%%%%%%%%%
+        &eo*!!:::..............::::!!!!***ooooeeee&&&&######%%%%%%%%%%%
+       eo**!!::.................::::!!!****oooeeee&&&&######%%%%%%%%%%%%
+     &eo*!!:::..................::::!!!!***oooeeee&&&&&######%%%%%%%%%%%%%
+    &eo*!!:::...................::::!!!!***oooeeee&&&&&######%%%%%%%%%%%%%%
+   &eo**!!::....................::::!!!****oooeeee&&&&&######%%%%%%%%%%%%%%%
+  #eoo*!!:::...................::::!!!!***ooooeeee&&&&#######%%%%%%%%%%%%%%%%
+  &eo**!!:::.................:::::!!!!****oooeeee&&&&&#######%%%%%%%%%%%%%%%%
+ &eoo**!!::::...............:::::!!!!****ooooeeee&&&&#######%%%%%%%%%%%%%%%%%%
+ &eoo**!!!::::...........::::::!!!!*****ooooeeee&&&&&#######%%%%%%%%%%%%%%%%%%
+#&eoo***!!!::::::::::::::::::!!!!!****ooooeeeee&&&&&#######%%%%%%%%%%%%%%%%%%%%
+#&eeoo***!!!!::::::::::::!!!!!!!*****ooooeeeee&&&&&#######%%%%%%%%%%%%%%%%%%%%%
+#&eeooo****!!!!!!!!!!!!!!!!!!******ooooeeeee&&&&&&#######%%%%%%%%%%%%%%%%%%%%%%
+#&&eeooo******!!!!!!!!!!!*******ooooooeeeee&&&&&&#######%%%%%%%%%%%%%%%%%%%%%%%
+#&&&eeooooo******************ooooooeeeeee&&&&&&########%%%%%%%%%%%%%%%%%%%%%%%%
+##&&&eeeooooooo********oooooooooeeeeeee&&&&&&#########%%%%%%%%%%%%%%%%%%%%%%%%%
+###&&&eeeeeooooooooooooooooooeeeeeee&&&&&&&&#########%%%%%%%%%%%%%%%%%%%%%%%%%%
+%###&&&&eeeeeeeeeeeoeeeeeeeeeeeee&&&&&&&&##########%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %####&&&&&eeeeeeeeeeeeeeeeee&&&&&&&&&&##########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%#####&&&&&&&&&&&&&&&&&&&&&&&&&&&############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%#######&&&&&&&&&&&&&&&&&&&&##############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%############&&&&&###################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   %%%%%##############################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%#######################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %%%%%%%%%%%%%#########%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+          %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                               %%%%%%%%%%%%%%%%%
+
+
+             !::::::!!!**o
+         ............:::!!**oe
+      :................::!!**ooee
+    :...................::!!**ooeee
+   ......................::!!**ooeee
+  .......................::!!**ooeeee
+ .......................:::!!**ooeeeee
+:.......................::!!***ooeeeeee
+:......................::!!!**oooeeeeee
+:....................:::!!!**oooeeeeeee
+!:..................:::!!***oooeeeeeeee
+!!:..............::::!!!***oooeeeeeeeee
+*!!::::.....::::::!!!!***ooooeeeeeeeeee
+ o*!!!!::::::!!!!!!****ooooeeeeeeeeeee
+  o****!!!!!!!******oooooeeeeeeeeeeee
+   eooo********oooooooeeeeeeeeeeeeee
+    eeeoooooooooooeeeeeeeeeeeeeeeee
+      eeeeeeeeeeeeeeeeeeeeeeeeeee
+         eeeeeeeeeeeeeeeeeeeee
+             eeeeeeeeeeeee
+
+
 
 ```
 
@@ -3611,11 +3611,11 @@ Gradient filled circle:
 
 /Pattern setcolorspace
 <<      /PatternType    2
-        /Shading <<     
+        /Shading <<
                 /ShadingType    3
                 /ColorSpace     /DeviceRGB
                 /Coords         [-60 60 0 0 0 100]
-                /Function <<    
+                /Function <<
                         /FunctionType   2
                         /Domain         [0 1]
                         /C0             [1 1 1]
@@ -3639,7 +3639,7 @@ This is what POVray was made for. An example with a sky, surface and transparenc
 ```POVray
 
 camera { location  <0.0 , .8 ,-3.0> look_at 0}
-                            
+
 light_source{< 3,3,-3> color rgb 1}
 
 sky_sphere { pigment{ gradient <0,1,0> color_map {[0 color rgb <.2,.1,0>][.5 color rgb 1]} scale 2}}
@@ -3647,12 +3647,12 @@ sky_sphere { pigment{ gradient <0,1,0> color_map {[0 color rgb <.2,.1,0>][.5 col
 plane {y,-2 pigment { hexagon color rgb .7 color rgb .5 color rgb .6 }}
 
 sphere { 0,1
-  texture { 
-    pigment{ color rgbft <.8,1,1,.4,.4> } 
+  texture {
+    pigment{ color rgbft <.8,1,1,.4,.4> }
     finish { phong 1 reflection {0.40 metallic 0.5} }
-  } 
+  }
   interior { ior 1.5}
-}  
+}
 
 ```
 
@@ -3726,66 +3726,66 @@ draw_sphere(10,2,0.4, light)
 {{out}}
 
 ```txt
-                                &&&&&&&&&&######                                 
-                        &&eeeeeeeeeeeeeeee&&&&&&######%%                         
-                    &&oooo********ooooooeeeeee&&&&########%%                     
-                  oo****!!!!!!!!******ooooooeeee&&&&########%%                   
-              eeoo**!!!!::::::::!!!!******ooooeeee&&&&########%%%%               
-            ee**!!::::::....::::::!!!!!!**ooooeeee&&&&&&########%%%%             
-          ee**!!::..............::::!!!!****ooooeeee&&&&########%%%%%%           
-        ee**!!::..................::::!!!!**ooooeeee&&&&##########%%%%%%         
-        oo!!::....................::::!!!!****ooeeee&&&&&&########%%%%%%         
-      oo**::......................::::!!!!****ooeeee&&&&&&##########%%%%%%       
-    &&**!!::......................::::!!!!****ooeeee&&&&&&##########%%%%%%%%     
-    oo**!!::......................::::!!!!**ooooeeee&&&&&&##########%%%%%%%%     
-  &&oo!!::........................::::!!****ooooeeee&&&&&&##########%%%%%%%%%%   
-  ee**!!::......................::::!!!!****ooooeeee&&&&&&##########%%%%%%%%%%   
-  ee**!!::::..................::::::!!!!****ooooeeee&&&&############%%%%%%%%%%   
-  ee**!!::::................::::::!!!!****ooooeeee&&&&&&############%%%%%%%%%%   
-&&ee****!!::::............::::::!!!!****ooooooeeee&&&&&&##########%%%%%%%%%%%%%% 
-&&eeoo**!!!!::::::::::::::::::!!!!******ooooeeee&&&&&&############%%%%%%%%%%%%%% 
-&&eeoo****!!!!::::::::::::!!!!!!******ooooeeeeee&&&&&&############%%%%%%%%%%%%%% 
-&&eeoooo**!!!!!!!!!!!!!!!!!!!!******ooooeeeeee&&&&&&############%%%%%%%%%%%%%%%% 
-&&eeeeoo******!!!!!!!!!!********ooooooeeeeee&&&&&&&&############%%%%%%%%%%%%%%%% 
-##&&eeoooooo******************ooooooeeeeee&&&&&&&&############%%%%%%%%%%%%%%%%%% 
-##&&eeeeoooooooo******ooooooooooooeeeeee&&&&&&&&##############%%%%%%%%%%%%%%%%%% 
-##&&&&eeeeeeooooooooooooooooooeeeeeeee&&&&&&&&##############%%%%%%%%%%%%%%%%%%%% 
-  ##&&&&eeeeeeeeeeeeeeeeeeeeeeeeee&&&&&&&&&&################%%%%%%%%%%%%%%%%%%   
-  ####&&&&&&eeeeeeeeeeeeeeeeee&&&&&&&&&&&&################%%%%%%%%%%%%%%%%%%%%   
-  ######&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&##################%%%%%%%%%%%%%%%%%%%%%%   
-  %%######&&&&&&&&&&&&&&&&&&&&&&&&####################%%%%%%%%%%%%%%%%%%%%%%%%   
-    ############&&&&&&&&&&&&########################%%%%%%%%%%%%%%%%%%%%%%%%     
-    %%############################################%%%%%%%%%%%%%%%%%%%%%%%%%%     
-      %%######################################%%%%%%%%%%%%%%%%%%%%%%%%%%%%       
-        %%################################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%         
-        %%%%%%########################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%         
-          %%%%%%%%##############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%           
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%             
-              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%               
-                  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                   
-                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                     
-                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                         
-                                %%%%%%%%%%%%%%%%                                 
-                                                                                 
-              ::..::::!!**               
-          ..............::!!oo           
-      ..................::!!**ooee       
-    ......................::!!**ooee     
-    ......................::!!**ooee     
-  ........................::!!**ooooee   
-  ........................::!!**ooooee   
-::........................::!!**ooooeeee 
-........................::!!!!**ooooeeee 
-::......................::!!****ooeeeeee 
-::....................::!!!!**ooooeeeeee 
-!!..................::!!!!****ooeeeeeeee 
-**::::..........::::!!!!****ooooeeeeeeee 
-  !!!!::::::::::!!!!!!****ooooeeeeeeee   
-  oo**!!!!!!!!!!!!******ooooeeeeeeeeee   
-    oo**************ooooooeeeeeeeeee     
-    eeooooooooooooooooeeeeeeeeeeeeee     
-      eeeeooooooooeeeeeeeeeeeeeeee       
-          eeeeeeeeeeeeeeeeeeee           
+                                &&&&&&&&&&######
+                        &&eeeeeeeeeeeeeeee&&&&&&######%%
+                    &&oooo********ooooooeeeeee&&&&########%%
+                  oo****!!!!!!!!******ooooooeeee&&&&########%%
+              eeoo**!!!!::::::::!!!!******ooooeeee&&&&########%%%%
+            ee**!!::::::....::::::!!!!!!**ooooeeee&&&&&&########%%%%
+          ee**!!::..............::::!!!!****ooooeeee&&&&########%%%%%%
+        ee**!!::..................::::!!!!**ooooeeee&&&&##########%%%%%%
+        oo!!::....................::::!!!!****ooeeee&&&&&&########%%%%%%
+      oo**::......................::::!!!!****ooeeee&&&&&&##########%%%%%%
+    &&**!!::......................::::!!!!****ooeeee&&&&&&##########%%%%%%%%
+    oo**!!::......................::::!!!!**ooooeeee&&&&&&##########%%%%%%%%
+  &&oo!!::........................::::!!****ooooeeee&&&&&&##########%%%%%%%%%%
+  ee**!!::......................::::!!!!****ooooeeee&&&&&&##########%%%%%%%%%%
+  ee**!!::::..................::::::!!!!****ooooeeee&&&&############%%%%%%%%%%
+  ee**!!::::................::::::!!!!****ooooeeee&&&&&&############%%%%%%%%%%
+&&ee****!!::::............::::::!!!!****ooooooeeee&&&&&&##########%%%%%%%%%%%%%%
+&&eeoo**!!!!::::::::::::::::::!!!!******ooooeeee&&&&&&############%%%%%%%%%%%%%%
+&&eeoo****!!!!::::::::::::!!!!!!******ooooeeeeee&&&&&&############%%%%%%%%%%%%%%
+&&eeoooo**!!!!!!!!!!!!!!!!!!!!******ooooeeeeee&&&&&&############%%%%%%%%%%%%%%%%
+&&eeeeoo******!!!!!!!!!!********ooooooeeeeee&&&&&&&&############%%%%%%%%%%%%%%%%
+##&&eeoooooo******************ooooooeeeeee&&&&&&&&############%%%%%%%%%%%%%%%%%%
+##&&eeeeoooooooo******ooooooooooooeeeeee&&&&&&&&##############%%%%%%%%%%%%%%%%%%
+##&&&&eeeeeeooooooooooooooooooeeeeeeee&&&&&&&&##############%%%%%%%%%%%%%%%%%%%%
+  ##&&&&eeeeeeeeeeeeeeeeeeeeeeeeee&&&&&&&&&&################%%%%%%%%%%%%%%%%%%
+  ####&&&&&&eeeeeeeeeeeeeeeeee&&&&&&&&&&&&################%%%%%%%%%%%%%%%%%%%%
+  ######&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&##################%%%%%%%%%%%%%%%%%%%%%%
+  %%######&&&&&&&&&&&&&&&&&&&&&&&&####################%%%%%%%%%%%%%%%%%%%%%%%%
+    ############&&&&&&&&&&&&########################%%%%%%%%%%%%%%%%%%%%%%%%
+    %%############################################%%%%%%%%%%%%%%%%%%%%%%%%%%
+      %%######################################%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%################################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %%%%%%########################%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+          %%%%%%%%##############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+              %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                %%%%%%%%%%%%%%%%
+
+              ::..::::!!**
+          ..............::!!oo
+      ..................::!!**ooee
+    ......................::!!**ooee
+    ......................::!!**ooee
+  ........................::!!**ooooee
+  ........................::!!**ooooee
+::........................::!!**ooooeeee
+........................::!!!!**ooooeeee
+::......................::!!****ooeeeeee
+::....................::!!!!**ooooeeeeee
+!!..................::!!!!****ooeeeeeeee
+**::::..........::::!!!!****ooooeeeeeeee
+  !!!!::::::::::!!!!!!****ooooeeeeeeee
+  oo**!!!!!!!!!!!!******ooooeeeeeeeeee
+    oo**************ooooooeeeeeeeeee
+    eeooooooooooooooooeeeeeeeeeeeeee
+      eeeeooooooooeeeeeeeeeeeeeeee
+          eeeeeeeeeeeeeeeeeeee
               eeeeeeeeeeee
 
 ```
@@ -3793,9 +3793,9 @@ draw_sphere(10,2,0.4, light)
 
 ==={{libheader|Pygame}}===
 [[File:PythonSphere.png|thumb|Python Sphere]]
-Renders a sphere with random Perlin noise. 
+Renders a sphere with random Perlin noise.
 
-This code contains unnecessary functions which are part of a 3D graphics library I wrote. 
+This code contains unnecessary functions which are part of a 3D graphics library I wrote.
 
 Uses Pygame and Python 3.2.2
 
@@ -4517,7 +4517,7 @@ lights = [(Vector3(-10,6,-9),[.8,.8,.8],[.7,.7,.7])]
 
 depth = 3
 groups = []
-for n in range(1):  
+for n in range(1):
    textures = []
    for n in range(depth):
       textures.append(Texture(4**(n+1)))
@@ -4538,7 +4538,7 @@ def Select(texture,at):
    return (sel,Vector3(at.x%1,at.y%1,at.z%1))
 def Round(val):
    return val-(val-math.floor(val))
-      
+
 theta = math.tan(70*math.pi/360)
 for x in range(width):
    for event in pygame.event.get():
@@ -4549,7 +4549,7 @@ for x in range(width):
          pass
    for y in range(height):
       l = Vector3(theta*2*((x/width)-.5),theta*2*((y/width)-.5),1).Unit()
-      ldc = Vector3.Dot(l,center) 
+      ldc = Vector3.Dot(l,center)
       d = ldc-(((ldc**2)-Vector3.Dot(center,center)+1)**.5)
       if type(d) != type((-1)**.5):
          intersection = Vector3.Scale(l,d)
@@ -4561,7 +4561,7 @@ for x in range(width):
          for i in range(depth):
             sel = Select(groups[0][i],Vector3.Scale(s,4**i))
             val += Misc.Tricubic(sel[0],sel[1])*((1/2)**i)/4
-            
+
          val = (25*val)%1
          vals = [0,Misc.Linear([0,.3,1],val),1]
 
@@ -4595,7 +4595,7 @@ while True:
 ```python
 from visual import *
 scene.title = "VPython: Draw a sphere"
-sphere()    # using defaults, see http://www.vpython.org/contents/docs/defaults.html 
+sphere()    # using defaults, see http://www.vpython.org/contents/docs/defaults.html
 ```
 
 
@@ -4911,7 +4911,7 @@ Point3D :=
 Point3D compile:'z ^ z'.
 Point3D compile:'z:v z := v'.
 
-normalize := [:v | |invLen| 
+normalize := [:v | |invLen|
     invLen := 1 / (dot value:v value:v) sqrt.
     v x: v x * invLen.
     v y: v y * invLen.
@@ -4982,20 +4982,20 @@ In Playground for example:
 ```Swift
 
 class Sphere: UIView{
-  
+
   override func drawRect(rect: CGRect)
   {
     let context = UIGraphicsGetCurrentContext()
     let locations: [CGFloat] = [0.0, 1.0]
-    
+
     let colors = [UIColor.whiteColor().CGColor,
       UIColor.blueColor().CGColor]
-    
+
     let colorspace = CGColorSpaceCreateDeviceRGB()
-    
+
     let gradient = CGGradientCreateWithColors(colorspace,
       colors, locations)
-    
+
     var startPoint = CGPoint()
     var endPoint = CGPoint()
     startPoint.x = self.center.x - (self.frame.width * 0.1)
@@ -5004,7 +5004,7 @@ class Sphere: UIView{
     endPoint.y = self.center.y
     let startRadius: CGFloat = 0
     let endRadius: CGFloat = self.frame.width * 0.38
-    
+
     CGContextDrawRadialGradient (context, gradient, startPoint,
       startRadius, endPoint, endRadius,
       0)
@@ -5030,7 +5030,7 @@ proc grey {n} {format "#%2.2x%2.2x%2.2x" $n $n $n}
 pack [canvas .c -height 400 -width 640 -background white]
 
 for {set i 0} {$i < 255} {incr i} {
-  set h [grey $i] 
+  set h [grey $i]
   .c create arc [expr {100+$i/5}] [expr {50+$i/5}] [expr {400-$i/1.5}] [expr {350-$i/1.5}] \
                  -start 0 -extent 359 -fill $h -outline $h
 }
@@ -5199,7 +5199,7 @@ int     X, Y, Z, C, D2;         \coords, color, distance from center squared
 [SetVid($112);                  \set 640x480x24 graphics mode
 for Y:= -R to +R do             \for all the coordinates near the circle
     for X:= -R to +R do         \ which is under the sphere
-        [D2:= X*X + Y*Y;        
+        [D2:= X*X + Y*Y;
         C:= 0;                  \default color is black
         if D2 <= R2 then        \coordinate is inside circle under sphere
             [Z:= sqrt(R2-D2);   \height of point on surface of sphere above X,Y
@@ -5226,7 +5226,7 @@ sphera()
 
 sub sphera()
 	local n
-	
+
 	for n = 1 to 100
 		color 2*n, 2*n, 2*n
 		fill circle ancho/2-2*n/3, alto/2-n/2, 150-n
@@ -5248,7 +5248,7 @@ R:=100; R2:=R*R;           //radius, in pixels; radius squared
 X0:=640/2; Y0:=480/2;      //coordinates of center of screen
 foreach Y in ([-R..R]){    //for all the coordinates near the circle
    foreach X in ([-R..R]){ // which is under the sphere
-      D2:=X*X + Y*Y;        
+      D2:=X*X + Y*Y;
       C:=0;                //default color is black
       if(D2<=R2){          //coordinate is inside circle under sphere
 	 Z:=(R2-D2).toFloat().sqrt();//height of point on surface of sphere above X,Y
@@ -5260,7 +5260,7 @@ foreach Y in ([-R..R]){    //for all the coordinates near the circle
 img.write(File("foo.ppm","wb"));
 ```
 
-The radius of 100 is the max before the color calculation overflows 24 bits so for a radius (R) of, say 200, use 
+The radius of 100 is the max before the color calculation overflows 24 bits so for a radius (R) of, say 200, use
 
 ```zkl
 img[X+X0,Y+Y0]=C*140+C;
@@ -5281,10 +5281,10 @@ set view equal xyz
 set pm3d hidden3d 100 depthorder
 set style line 100 lt 7 lw 0.1
 set palette defined (0 "dark-blue", 1 "light-blue")
-unset key 
+unset key
 set samples 24
 set isosamples 36
-set title 'sphere (pm3d)' font "Times,20" 
+set title 'sphere (pm3d)' font "Times,20"
 R = 3
 splot R*sin(u)*cos(v), R*sin(u)*sin(v), R*cos(u) w pm3d
 |;
@@ -5304,7 +5304,7 @@ Where "term wxt" is X11 on my Linux box. A window pops up and stays until the pi
 ```zxbasic
 1 REM fast
 50 REM spheer with hidden lines and rotation
-100 CLS 
+100 CLS
 110 PRINT "sphere with lenght&wide-circles"
 120 PRINT "_______________________________"''
 200 INPUT "rotate x-as:";a
@@ -5344,7 +5344,7 @@ Where "term wxt" is X11 on my Linux box. A window pops up and stays until the pi
 670 PLOT x1,y1: DRAW xb-x1,yb-y1: LET x1=xb: LET y1=yb: LET f1=f2
 680 NEXT l
 690 NEXT p
-700 PRINT #0;"...press any key...": PAUSE 0: RUN 
+700 PRINT #0;"...press any key...": PAUSE 0: RUN
 999 REM sfere-coordinates>>>Cartesis Coordinate
 1000 LET x=r*COS (p*bm)*COS (l*bm)
 1010 LET y=r*COS (p*bm)*SIN (l*bm)

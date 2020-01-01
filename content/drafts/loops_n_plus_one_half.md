@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task|Iteration}} 
+{{task|Iteration}}
 [[Category:Simple]]
 
 Quite often one needs loops which, in the last iteration, execute only part of the loop body.
@@ -23,7 +23,7 @@ Demonstrate the best way to do this.
 ;Task:
 Write a loop which writes the comma-separated list
  1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-using separate output statements for the number 
+using separate output statements for the number
 and the comma from within the body of the loop.
 
 
@@ -75,7 +75,7 @@ ELOOPI   XPRNT  MVC,80
          BR     R14
 MVC      DC     CL80' '
 XDEC     DS     CL12
-         YREGS  
+         YREGS
          END    LOOPHALF
 
 ```
@@ -113,7 +113,7 @@ ACL2 does not have loops, but this is close:
 ```ada
 with Ada.Text_IO;
 
-procedure LoopsAndHalf is 
+procedure LoopsAndHalf is
 begin
   for i in 1 .. 10 loop
     Ada.Text_IO.put (i'Img);
@@ -288,15 +288,15 @@ szCarriageReturn:  .asciz "\n"
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                       @ entry of program 
+.global main
+main:                                       @ entry of program
     mov r4,#1                               @ loop counter
-1:                                          @ begin loop 
+1:                                          @ begin loop
     mov r0,r4
     ldr r1,iAdrsMessValeur                  @ display value
     bl conversion10                         @ decimal conversion
@@ -315,7 +315,7 @@ main:                                       @ entry of program
     ldr r0,iAdrszCarriageReturn
     bl affichageMess                        @ display return line
 
-100:                                        @ standard end of the program 
+100:                                        @ standard end of the program
     mov r0, #0                              @ return code
     mov r7, #EXIT                           @ request to exit program
     svc #0                                  @ perform the system call
@@ -325,31 +325,31 @@ iAdrszMessResult:         .int szMessResult
 iAdrszMessComma:          .int szMessComma
 iAdrszCarriageReturn:     .int szCarriageReturn
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                   @ save  registres
-    mov r2,#0                               @ counter length 
-1:                                          @ loop length calculation 
-    ldrb r1,[r0,r2]                         @ read octet start position + index 
-    cmp r1,#0                               @ if 0 its over 
-    addne r2,r2,#1                          @ else add 1 in the length 
-    bne 1b                                  @ and loop 
-                                            @ so here r2 contains the length of the message 
-    mov r1,r0                               @ address message in r1 
-    mov r0,#STDOUT                          @ code to write to the standard output Linux 
-    mov r7, #WRITE                          @ code call system "write" 
-    svc #0                                  @ call systeme 
-    pop {r0,r1,r2,r7,lr}                    @ restaur registers */ 
-    bx lr                                   @ return  
+    mov r2,#0                               @ counter length
+1:                                          @ loop length calculation
+    ldrb r1,[r0,r2]                         @ read octet start position + index
+    cmp r1,#0                               @ if 0 its over
+    addne r2,r2,#1                          @ else add 1 in the length
+    bne 1b                                  @ and loop
+                                            @ so here r2 contains the length of the message
+    mov r1,r0                               @ address message in r1
+    mov r0,#STDOUT                          @ code to write to the standard output Linux
+    mov r7, #WRITE                          @ code call system "write"
+    svc #0                                  @ call systeme
+    pop {r0,r1,r2,r7,lr}                    @ restaur registers */
+    bx lr                                   @ return
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                         @ save registers 
+    push {r1-r4,lr}                         @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 
@@ -358,41 +358,41 @@ conversion10:
     add r1,#48                              @ digit
     strb r1,[r3,r2]                         @ store digit on area
     sub r2,#1                               @ previous position
-    cmp r0,#0                               @ stop if quotient = 0 
+    cmp r0,#0                               @ stop if quotient = 0
     bne 1b                                  @ else loop
                                             @ end replaces digit in front of area
     mov r4,#0
 2:
-    ldrb r1,[r3,r2] 
+    ldrb r1,[r3,r2]
     strb r1,[r3,r4]                         @ store in area begin
     add r4,#1
     add r2,#1                               @ previous position
     cmp r2,#LGZONECAL                       @ end
     ble 2b                                  @ loop
-    mov r1,#0                               @ final zero 
+    mov r1,#0                               @ final zero
     strb r1,[r3,r4]
 100:
-    pop {r1-r4,lr}                          @ restaur registres 
+    pop {r1-r4,lr}                          @ restaur registres
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
     push {r2-r4}                           @ save registers  */
-    mov r4,r0  
+    mov r4,r0
     mov r3,#0x6667                         @ r3 <- magic_number  lower
     movt r3,#0x6666                        @ r3 <- magic_number  upper
-    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) 
+    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0)
     mov r2, r2, ASR #2                     @ r2 <- r2 >> 2
     mov r1, r0, LSR #31                    @ r1 <- r0 >> 31
-    add r0, r2, r1                         @ r0 <- r2 + r1 
-    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5 
+    add r0, r2, r1                         @ r0 <- r2 + r1
+    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                   @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2-r4}
     bx lr                                  @ return
@@ -492,7 +492,7 @@ $ awk 'BEGIN{for(i=1;i<=10;i++){printf i;if(i<10)printf ", "};print}'
 BEGIN {
   n=10
   for(i=1;i<=n;i++) {
-    printf i; 
+    printf i;
     if(i<n) printf ", "
   }
   print
@@ -609,7 +609,7 @@ The <code>print</code> extension is necessary to get the required output.
 while (1) {
     print ++i
     if (i == 10) {
-        print "\n" 
+        print "\n"
         break
     }
     print ", "
@@ -652,8 +652,8 @@ This code is a good answer. However, most Befunge implementations print a " " af
 
 {{trans|C++}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -671,11 +671,11 @@ int main()
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main()
-{ 
+{
   int i;
   for (i = 1; i<10 ; i++)
     std::cout << i << ", ";
@@ -759,7 +759,7 @@ for i in 1..10 do
                IF I = 10
                    EXIT PERFORM
                END-IF
-               
+
                STRING FUNCTION TRIM(List) "," INTO List
 
                ADD 1 TO I
@@ -828,7 +828,7 @@ WORKING-STORAGE SECTION.
 	88	END-LIST	VALUE 10.
 01	I-OUT	PIC Z9.
 PROCEDURE DIVISION.
-	PERFORM WITH TEST AFTER VARYING I FROM 1 BY 1 UNTIL END-LIST 
+	PERFORM WITH TEST AFTER VARYING I FROM 1 BY 1 UNTIL END-LIST
 		MOVE I TO I-OUT
 		DISPLAY FUNCTION TRIM(I-OUT) WITH NO ADVANCING
 		IF NOT END-LIST
@@ -874,7 +874,7 @@ With tags:
   <cfif i EQ 10>
     <cfbreak />
   </cfif>
-  , 
+  ,
 </cfloop>
 ```
 
@@ -886,7 +886,7 @@ With script:
   for( i = 1; i <= 10; i++ ) //note: the ++ notation works only on version 8 up, otherwise use i=i+1
   {
     writeOutput( i );
-    
+
     if( i == 10 )
     {
       break;
@@ -903,7 +903,7 @@ With script:
 
 ```lisp
 
-(loop for i from 1 below 10 do 
+(loop for i from 1 below 10 do
         (princ i) (princ ", ")
         finally (princ i))
 
@@ -940,7 +940,7 @@ but for such simple tasks we can use format's powers:
 
 ```d
 import std.stdio;
- 
+
 void main() {
     for (int i = 1; ; i++) {
         write(i);
@@ -1075,7 +1075,7 @@ __loop(fn {
     } else {
         print(", ")
         i += 1
-        true 
+        true
     }
 })
 ```
@@ -1090,7 +1090,7 @@ __loop(fn {
 (string-delimiter "")
 
 (for ((i (in-range 1 11))) (write i) #:break (= i 10) (write ","))
- → 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 
+ → 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10
 
 ;; or
 
@@ -1106,7 +1106,7 @@ __loop(fn {
 
 ```edsac
 [ N and a half times loop
-  
+
 ### =================
 
 
@@ -1183,17 +1183,17 @@ Enum.to_list(1..10) |> Loops.n_plus_one_half
 %% Implemented by Arjun Sunel
 -module(loop).
 -export([main/0]).
- 
+
 main() ->
-	for_loop(1).    
- 
+	for_loop(1).
+
  for_loop(N) ->
  	if N < 10 ->
 		io:format("~p, ",[N] ),
 		for_loop(N+1);
 	true ->
 		io:format("~p\n",[N])
-	end.	
+	end.
 
 ```
 
@@ -1248,7 +1248,7 @@ let rec print (lst : int list) =
         print tl
     | [] -> printf "\n"
 
-print [1..10] 
+print [1..10]
 
 ```
 
@@ -1272,7 +1272,7 @@ print [1..10]
 
 ```falcon
 for value = 1 to 10
-    formiddle 
+    formiddle
         >> value
         >> ", "
     end
@@ -1474,7 +1474,7 @@ For i As Integer = 1 To 10
   If i < 10 Then Print ", ";
 Next
 
-Print  
+Print
 Sleep
 ```
 
@@ -1733,7 +1733,7 @@ end
 
 ```Icon
 procedure main()
-every writes(i := 1 to 10) do 
+every writes(i := 1 to 10) do
    if i = 10 then break write()
    else writes(", ")
 end
@@ -1791,7 +1791,7 @@ And, note also that this sort of data driven approach can also deal with more co
 
 
 ```j
-   commaAnd=: ":&.> ;@,. -@# {. (<;._1 '/ and /') ,~ (<', ') #~ #  
+   commaAnd=: ":&.> ;@,. -@# {. (<;._1 '/ and /') ,~ (<', ') #~ #
    commaAnd i.5
 0, 1, 2, 3 and 4
 ```
@@ -1831,7 +1831,7 @@ function loop_plus_half(start, end) {
     }
     return str;
 }
- 
+
 alert(loop_plus_half(1, 10));
 ```
 
@@ -1849,14 +1849,14 @@ function range(m, n) {
     }
   );
 }
- 
+
 console.log(
   range(1, 10).join(', ')
 );
 ```
 
 
-Output: 
+Output:
 
 ```JavaScript
 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
@@ -1923,7 +1923,7 @@ for (;; s+=1) {
 
 ```txt
 
-1, 2, 3, 4, 5, 6, 7, 8, 9, 10 
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
 ```
 
@@ -2061,10 +2061,10 @@ Word: [[Loops/For#Lang5]]
 <code>type</code> doesn't output a newline. The <code>print</code> outputs one.
 
 ```logo
-for "i [1 10] 
+for "i [1 10]
 [
 	type :i
-	if :i < 10 
+	if :i < 10
 	[
 		type "|, |
 	]
@@ -2210,7 +2210,7 @@ Module Checkit {
                   i++
                   Print i;
                   If i=10 Then Exit  ' so now we use exit to break loop
-                  Print ", ";      
+                  Print ", ";
       }
       Print
 }
@@ -2265,7 +2265,7 @@ s
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-Vectorized form: 
+Vectorized form:
 
 ```MATLAB
  	printf('%i, ',1:9); printf('%i\n',10);
@@ -2276,10 +2276,10 @@ Explicite loop:
 
 ```Matlab
    for k=1:10,
-      printf('%i', k); 
+      printf('%i', k);
    if k==10, break; end;
       printf(', ');
-   end; 
+   end;
    printf('\n');
 ```
 
@@ -2287,7 +2287,7 @@ Explicite loop:
 Output:
 
 ```txt
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10 
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 ```
 
 
@@ -2471,7 +2471,7 @@ For i = 1 To 10
   If i <> 10 Then
     TextWindow.Write(", ")
   EndIf
-EndFor 
+EndFor
 TextWindow.WriteLine("")
 ```
 
@@ -2573,7 +2573,7 @@ declare
   fun {CommaSep Xs}
      case Xs of nil then nil
      [] X|Xr then
-	{FoldL Xr 
+	{FoldL Xr
 	 fun {$ Z X} Z#", "#X end
 	 X}
      end
@@ -2802,7 +2802,7 @@ switch (1..10) {
 
 ```PureBasic
 x=1
-Repeat 
+Repeat
   Print(Str(x))
   x+1
   If x>10: Break: EndIf
@@ -2816,7 +2816,7 @@ ForEver
 
 
 ```prolog
-example :- 
+example :-
   between(1,10,Val), write(Val), Val<10, write(', '), fail.
 example.
 ```
@@ -2850,7 +2850,7 @@ But the [http://academicearth.org/lectures/the-loop-and-half-problem named patte
         break
     write(', ')
 
-    
+
 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 >>>
 ```
@@ -2871,7 +2871,7 @@ The task specifies that we should use a loop however, so this more verbose code 
 for(i in 1:10)
 {
    cat(i)
-   if(i==10) 
+   if(i==10)
    {
       cat("\n")
       break
@@ -3035,7 +3035,7 @@ More like the problem description:
 fn main() {
     for i in 1..=10 {
         print!("{}", i);
-        if i == 10 { 
+        if i == 10 {
             break;
         }
         print!(", ");
@@ -3159,7 +3159,7 @@ printf("\n")
 {{out}}
 
 ```txt
- 1 ,  2 ,  3 ,  4 ,  5 ,  6 ,  7 ,  8 ,  9 , 10 
+ 1 ,  2 ,  3 ,  4 ,  5 ,  6 ,  7 ,  8 ,  9 , 10
 ```
 
 
@@ -3216,7 +3216,7 @@ print "\n";
 ## SNOBOL4
 
 
-It's idiomatic in Snobol to accumulate the result in a string buffer for 
+It's idiomatic in Snobol to accumulate the result in a string buffer for
 line output, and to use the same statement for loop control and the comma.
 
 
@@ -3230,8 +3230,8 @@ end
 
 {{works with|Macro Spitbol}}
 
-For the task description, it's possible (implementation dependent) to 
-set an output variable to raw mode for character output within the loop. 
+For the task description, it's possible (implementation dependent) to
+set an output variable to raw mode for character output within the loop.
 
 This example also breaks the loop explicitly:
 
@@ -3259,7 +3259,7 @@ end
 ```snusp>@\>@\>@\
 +++++++++<!/+.  >-?\#  digit and loop test
  |  |  \@@@+@+++++# \>>.<.<</    comma and space
- |  \@@+@@+++++#      
+ |  \@@+@@+++++#
  \@@@@=++++#
 ```
 
@@ -3321,7 +3321,7 @@ forv i=1/10 {
 
 
 
-###  Mata 
+###  Mata
 
 
 ```stata
@@ -3359,7 +3359,7 @@ for var i = 1; ; i++ {
 ```swift
 
 for i in 1...10 {
-    
+
     print(i, terminator: i == 10 ? "\n" : ", ")
 }
 
@@ -3402,7 +3402,7 @@ proc range {from to} {
     }
     return $i
 }
- 
+
 puts [join [range 1 10] ", "] ;# ==> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 ```
 
@@ -3509,7 +3509,7 @@ out endl console
 
 
 ```v
-[loop 
+[loop
    [ [10 =] [puts]
      [true] [dup put ',' put succ loop]
    ] when].
@@ -3592,7 +3592,7 @@ for i 1 (i <= 10) ++i
 
 ## Wee Basic
 
-print 1 "" ensures the end of program text is separate from the list of numbers. 
+print 1 "" ensures the end of program text is separate from the list of numbers.
 
 ```Wee Basic
 print 1 ""

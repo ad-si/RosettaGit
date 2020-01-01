@@ -37,7 +37,7 @@ while (f.b_line(b) ^ -1) {
 BEGIN
     BOOL at eof := FALSE;
     # set the EOF handler for stand in to a procedure that sets "at eof" to true #
-    # and returns true so processing can continue                                #                               
+    # and returns true so processing can continue                                #
     on logical file end( stand in, ( REF FILE f )BOOL: at eof := TRUE );
     # copy stand in to stand out                                                 #
     WHILE STRING line; read( ( line, newline ) ); NOT at eof DO write( ( line, newline ) ) OD
@@ -74,8 +74,8 @@ int main(){
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iterator>
 
 int main() {
@@ -123,13 +123,13 @@ func main() {
     r := bufio.NewReader(os.Stdin)
     w := bufio.NewWriter(os.Stdout)
     for {
-        b, err := r.ReadByte()       
+        b, err := r.ReadByte()
         if err == io.EOF {
             return
         }
         w.WriteByte(b)
         w.Flush()
-    }   
+    }
 }
 ```
 

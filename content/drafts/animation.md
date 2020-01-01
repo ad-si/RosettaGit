@@ -18,9 +18,9 @@ tags = []
 
 
 ;Task:
-Create a window containing the string "<code>Hello World! </code>" (the trailing space is significant). 
+Create a window containing the string "<code>Hello World! </code>" (the trailing space is significant).
 
-Make the text appear to be rotating right by periodically removing one letter from the end of the string and attaching it to the front. 
+Make the text appear to be rotating right by periodically removing one letter from the end of the string and attaching it to the front.
 
 When the user clicks on the (windowed) text, it should reverse its direction.
 
@@ -248,8 +248,8 @@ goto main
 {{libheader|GTK}}
 (NB: implicitly, through GTK, it uses also Pango library)
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <string.h>
 #include <gtk/gtk.h>
 
@@ -316,7 +316,7 @@ int main(int argc, char **argv)
   slen = strlen(hello);
 
   g_timeout_add(125, scroll_it, NULL);
-  
+
   gtk_widget_show_all(GTK_WIDGET(win));
   gtk_main();
   return 0;
@@ -422,7 +422,7 @@ shared void run() {
  	value label = JLabel(initialText);
 	variable value forward = true;
 	label.addMouseListener(object extends MouseAdapter() {
-        	mouseClicked(MouseEvent? mouseEvent) => 
+        	mouseClicked(MouseEvent? mouseEvent) =>
                 	forward = !forward;
 	});
 
@@ -440,7 +440,7 @@ shared void run() {
 			label.text = left + right;
 		}
 	}).start();
-	
+
 	value frame = JFrame();
 	frame.defaultCloseOperation = JFrame.\iEXIT_ON_CLOSE;
 	frame.title = "Rosetta Code Animation Example";
@@ -488,7 +488,7 @@ Clojure is a JVM language so this example uses Swing, and illustrates Clojure's 
   (.pack)
   (.setDefaultCloseOperation JFrame/EXIT_ON_CLOSE)
   (.setVisible true))
-  
+
 (future-call animator)  ;simple way to run animator on a separate thread
 ```
 
@@ -501,7 +501,7 @@ The ltk package provides a lisp interface to Tk for creating graphical interface
 
 ```lisp
 (use-package :ltk)
- 
+
 (defparameter *message* "Hello World! ")
 (defparameter *direction* :left)
 (defun animate (label)
@@ -510,16 +510,16 @@ The ltk package provides a lisp interface to Tk for creating graphical interface
          (c (char *message* i)))
     (if (eq *direction* :left)
         (setq *message* (concatenate 'string
-				     (subseq *message* 1 n) 
+				     (subseq *message* 1 n)
 				     (list c)))
-	(setq *message* (concatenate 'string (list c) 
+	(setq *message* (concatenate 'string (list c)
 				     (subseq *message* 0 (1- n)))))
     (setf (ltk:text label) *message*)
     (ltk:after 125 (lambda () (animate label)))))
- 
+
 (defun basic-animation ()
   (ltk:with-ltk ()
-      (let* ((label (make-instance 'label 
+      (let* ((label (make-instance 'label
                                    :font "Courier 14")))
         (setf (text label) *message*)
         (ltk:bind label "<Button-1>"
@@ -531,7 +531,7 @@ The ltk package provides a lisp interface to Tk for creating graphical interface
         (ltk:pack label)
         (animate label)
         (ltk:mainloop))))
- 
+
 (basic-animation)
 ```
 
@@ -647,8 +647,8 @@ def anim := timer.every(100, fn _ { # milliseconds
 # Set up window shape and close behavior
 w.pack()
 w.setLocationRelativeTo(null)
-w.addWindowListener(def windowListener { 
-    to windowClosing(_) { anim.stop() } 
+w.addWindowListener(def windowListener {
+    to windowClosing(_) { anim.stop() }
     match _ {}
 })
 
@@ -713,23 +713,23 @@ USING: accessors timers calendar kernel models sequences ui
 ui.gadgets ui.gadgets.labels ui.gestures ;
 FROM: models => change-model ;
 IN: rosetta.animation
- 
+
 CONSTANT: sentence "Hello World! "
- 
+
 TUPLE: animated-label < label-control reversed alarm ;
 : <animated-label> ( model -- <animated-model> )
-    sentence animated-label new-label swap >>model 
+    sentence animated-label new-label swap >>model
     monospace-font >>font ;
 : update-string ( str reverse -- str )
     [ unclip-last prefix ] [ unclip suffix ] if ;
 : update-model ( model reversed? -- )
     [ update-string ] curry change-model ;
- 
-animated-label  
-    H{ 
+
+animated-label
+    H{
         { T{ button-down } [ [ not ] change-reversed drop ] }
      } set-gestures
- 
+
 M: animated-label graft*
   [ [ [ model>> ] [ reversed>> ] bi update-model ] curry 400 milliseconds every ] keep
   alarm<< ;
@@ -737,7 +737,7 @@ M: animated-label ungraft*
     alarm>> stop-timer ;
 : main ( -- )
    [ sentence <model> <animated-label> "Rosetta" open-window ] with-ui ;
- 
+
 MAIN: main
 ```
 
@@ -774,14 +774,14 @@ const class RotateString : Actor
       case "reverse":
         Desktop.callAsync |->| { reverse }
     }
-    
+
     return null
   }
 
   // change the stored string indicating the direction to rotate
   Void reverse ()
   {
-    Actor.locals["direction"] = 
+    Actor.locals["direction"] =
         (Actor.locals["direction"] == "forward" ? "backward" : "forward")
   }
 
@@ -807,9 +807,9 @@ class Animate
 {
   public static Void main ()
   {
-    label := Label 
-    { 
-      text = "Hello world! " 
+    label := Label
+    {
+      text = "Hello world! "
       halign = Halign.center
     }
     ticker := RotateString (label)
@@ -1076,16 +1076,16 @@ runAnim = runGraphics $
   (openWindowEx "Basic animation task" Nothing (250,50) DoubleBuffered (Just 110))
   closeWindow
   (\w -> do
-    f <- createFont (64,28) 0 False False "courier" 
+    f <- createFont (64,28) 0 False False "courier"
     let loop t dir = do
 	  e <- maybeGetWindowEvent w
 	  let d = case e of
 		  Just (Button _ True False)  -> -dir
 		  _ -> dir
 	      t' = if d == 1 then last t : init t else tail t ++ [head t]
-	  setGraphic w (withFont f $ text (5,10) t') >> getWindowTick w 
+	  setGraphic w (withFont f $ text (5,10) t') >> getWindowTick w
 	  loop  t' d
-	      
+
     loop "Hello world ! " 1  )
 ```
 
@@ -1118,7 +1118,7 @@ CHARACTER string="Hello World! "
 
 SUBROUTINE Mouse_callback()
    direction = button_type ! 4 == left button up, 8 == right button up
- END 
+ END
 ```
 
 
@@ -1147,7 +1147,7 @@ class WindowApp : Dialog (label, direction)
   # this method gets called by the ticker, and updates the label
   method tick ()
     static msg := "Hello World! "
-    if direction = 0 
+    if direction = 0
       then msg := rotate_left (msg)
       else msg := rotate_right (msg)
     label.set_label(msg)
@@ -1190,10 +1190,10 @@ procedure main()
     h := WAttrib("fheight")
     x := (WAttrib("width") - w) / 2
     y := (WAttrib("height") - 20 + h) / 2
-    
+
     repeat
     {   if *Pending() > 0 then if (Event() = &lrelease) & (x < &x < x + w) & (y > &y > y-h) then direction := ixor(direction, 1)
-        s := s[2 - 3 * direction:0] || s[1:2 - 3 * direction]       
+        s := s[2 - 3 * direction:0] || s[1:2 - 3 * direction]
         EraseArea(x, y, w, -h)
         DrawString(x,y - WAttrib("descent")-1,s)
         WFlush()
@@ -1211,18 +1211,18 @@ end
 
 ```j
 coinsert'jgl2' [ require'gl2'
- 
+
 MESSAGE        =: 'Hello World! '
 TIMER_INTERVAL =: 0.5 * 1000                                          NB. Milliseconds
 DIRECTION      =: -1                                                  NB. Initial direction is right -->
- 
+
 ANIM           =: noun define
   pc anim closeok;pn "Basic Animation in J";
   minwh 350 5;
   cc isi isigraph flush;
   pcenter;pshow;
 )
- 
+
 anim_run        =: verb def 'wd ANIM,''; ptimer '',":TIMER_INTERVAL'  NB. Set form timer
 anim_timer      =: verb def 'glpaint MESSAGE=: DIRECTION |. MESSAGE'  NB. Rotate MESSAGE according to DIRECTION
 anim_isi_mbldown=: verb def 'DIRECTION=: - DIRECTION'                 NB. Reverse direction when user clicks
@@ -1234,7 +1234,7 @@ anim_isi_paint  =:  verb define
   glfont '"courier new" 36'
   gltext MESSAGE
 )
- 
+
 anim_run ''
 ```
 
@@ -1242,7 +1242,7 @@ anim_run ''
 {{works with|J6}}
 
 ```j
-coinsert'jgl2' [ require'gl2'   
+coinsert'jgl2' [ require'gl2'
 
 MESSAGE          =:  'Hello World! '
 TIMER_INTERVAL   =:  0.5 * 1000                                            NB.  Milliseconds
@@ -1353,9 +1353,9 @@ public class Rotate {
 
             var text = textNode.data;
             var reverse = false;
-            
+
             element.onclick = function () { reverse = !reverse; };
-            
+
             setInterval(function () {
                 if (reverse)
                     text = text.substring(1) + text[0];
@@ -1366,7 +1366,7 @@ public class Rotate {
         }
     </script>
 </head> <body onload="animate('target')">
-    <pre id="target">Hello World! 
+    <pre id="target">Hello World!
 ```
 
 </body> </html>
@@ -1385,7 +1385,7 @@ public class Rotate {
             var reverse = false;
 
             element.onclick = function () { reverse = !reverse; };
-            
+
             setInterval(function () {
                 if (reverse)
                     text = text.substring(1) + text[0];
@@ -1395,7 +1395,7 @@ public class Rotate {
             }, 100);
         }
     </script>
-  
+
     <rect width="100" height="40" fill="yellow"/>
     <text x="2" y="20" onload="animate(this);">Hello World! </text>
 </svg>
@@ -1452,9 +1452,9 @@ windowanim(frameinterval)
 ```julia
 
 using Gtk.ShortNames
- 
+
 const frameinterval = 0.12 # partial seconds between change on screen display
- 
+
 function textanimation(stepinterval::Float64)
     hello = "Hello World!                        "
     win = Window("Animation", 210, 40) |> (Frame() |> (but = Button("Switch Directions")))
@@ -1465,11 +1465,11 @@ function textanimation(stepinterval::Float64)
     ppos = 1
     pmod = length(permut)
     nobreak = true
-    endit(w) = (nobreak = false)    
+    endit(w) = (nobreak = false)
     signal_connect(endit, win, :destroy)
     showall(win)
     while nobreak
-        setproperty!(but, :label, permut[ppos])        
+        setproperty!(but, :label, permut[ppos])
         sleep(stepinterval)
         if rightward
             ppos += 1
@@ -1641,7 +1641,7 @@ Any Button can use a blink, a timer which return a changed value, true or false,
 
 ```M2000 Interpreter
 
-Module UseBlink { 
+Module UseBlink {
       Def boolean direction=True
       rotating$ =lambda$ a$="Hello World! " (direction as boolean)->{
             =a$
@@ -1709,7 +1709,7 @@ When a thread created saves the current layer, to use it in each iteration.
 
 ```M2000 Interpreter
 
-Module UseThread { 
+Module UseThread {
       Def boolean direction=True
       rotating$ =lambda$ a$="Hello World! " (direction as boolean)->{
             =a$
@@ -1725,9 +1725,9 @@ Module UseThread {
       Function MyForm.Click {
             direction~
       }
-      
+
       With MyForm, "Title", "Animation"
-      
+
       Method MyForm, "Show", 1
       Threads Erase
 }
@@ -1746,7 +1746,7 @@ First, create a textbox, and by right-clicking it, and selecting component prope
 ScrollText(GP("Text",value),"Forward",65);
 
 ```
- 
+
 and:
 
 ```Maple
@@ -1760,10 +1760,10 @@ Then in the startup actions, accessed by clicking the 2 gears, add this:
 ```Maple
 
 macro(SP=DocumentTools:-SetProperty, GP=DocumentTools:-GetProperty);
-SP("Text",value,"Hello World! "); 
+SP("Text",value,"Hello World! ");
 ScrollText := proc( msg, direction::identical("Forward","Reverse"),n::posint:=20 )
     local word, count;
-    word:=msg; 
+    word:=msg;
     count:=0;
 
     while count<n do
@@ -1772,7 +1772,7 @@ ScrollText := proc( msg, direction::identical("Forward","Reverse"),n::posint:=20
         else
             word:=cat(word[-1],word[1..-2]):
         end if;
-        SP("Text",value,word,refresh); 
+        SP("Text",value,word,refresh);
         Threads:-Sleep(0.1);
                    count:=count+1:
     end do:
@@ -1788,10 +1788,10 @@ mystring = "Hello World! ";
 Scroll[str_, dir_] := StringJoin @@ RotateLeft[str // Characters, dir];
 GiveString[dir_] := (mystring = Scroll[mystring, dir]);
 CreateDialog[{
-   DynamicModule[{direction = -1}, 
+   DynamicModule[{direction = -1},
     EventHandler[
      Dynamic[TextCell[
-       Refresh[GiveString[direction], UpdateInterval -> 1/8]], 
+       Refresh[GiveString[direction], UpdateInterval -> 1/8]],
       TrackedSymbols -> {}], {"MouseClicked" :> (direction *= -1)}]]
    }];
 ```
@@ -1814,16 +1814,16 @@ fn reverseStr str: direction: =
 	local lastChar = str[str.count]
 	local firstChar = str[1]
 	local newStr = ""
-	local dir 
-	
+	local dir
+
 	if direction == unsupplied then dir = "left" else dir = direction
-		
+
 	case dir of
 	(
 		"right": (newstr = lastChar + (substring str 1 (str.count-1)))
 		"left": (newstr = (substring str 2 (str.count))+firstChar)
 	)
-	
+
 	return newstr
 )
 
@@ -1832,19 +1832,19 @@ rollout animGUI "Hello World" width:200
 	button switchToLeft "<--" pos:[40,0] height:15
 	label HelloWorldLabel "Hello World! " pos:[80,0]
 	button switchToRight "-->" pos:[150,0] height:15
-	
+
 	timer activeTimer interval:70 active:true
-	
+
 	on activeTimer tick do
 	(
 		HelloWorldLabel.text = reverseStr str:(HelloWorldLabel.text) direction:userDirection
 	)
-	
+
 	on switchToLeft pressed do
 	(
 		userDirection = "left"
 	)
-	
+
 	on switchToRight pressed do
 	(
 		userDirection = "right"
@@ -1874,7 +1874,7 @@ define
       {Window show}
       {Animation go}
    end
-   
+
    fun {CreateWindow ?Label}
       Courier = {QTk.newFont font(family:courier size:14)}
       GUI = td(
@@ -1892,7 +1892,7 @@ define
          otherShifter:ShiftLeft
       feat
          label
-         
+
       meth init(Label delay:Delay<=100)
          self.label = Label
          {self setRepAll(action:Animate delay:Delay)}
@@ -1914,11 +1914,11 @@ define
    fun {ShiftRight Xs}
       {List.last Xs}|{List.take Xs {Length Xs}-1}
    end
-   
+
    fun {ShiftLeft Xs}
       {Append Xs.2 [Xs.1]}
    end
-   
+
    {Start}
 end
 ```
@@ -2346,7 +2346,7 @@ Repeat
     Case #PB_Event_CloseWindow
       End
   EndSelect
-  
+
   If ElapsedMilliseconds()-tick > 400
     offset+direction
     If offset > Len(text$)-1
@@ -2464,7 +2464,7 @@ def draw():
     surface = font.render(TEXT, True, (255,255,255), (0,0,0))
     global TEXTBOX
     TEXTBOX = screen.blit(surface, TEXTBOX)
-    
+
 def input(event):
     if event.type == QUIT:
         sys.exit(0)
@@ -2543,27 +2543,27 @@ DO
  I = TIMER
  LOCATE 1, 1
  PRINT C
- 
+
  REGS.AX = 5            'read mouse's queue of occurred pressings
  REGS.BX = 0            'the left button
  INTERRUPT 51, REGS, REGS
- 
+
  'BX is the selected button's quantity of occurred pressings
  IF REGS.BX <> 0 THEN
   IF REGS.CX >= 0 AND REGS.CX < SIZ * 8 AND REGS.DX >= 0 AND REGS.DX < 16 THEN
    DIRE = 1 - DIRE
   END IF
  END IF
- 
+
  'AX is all buttons' status
  IF (REGS.AX AND 2) <> 0 THEN EXIT DO
- 
+
  IF DIRE = 0 THEN
   C = RIGHT$(C, 1) + LEFT$(C, SIZ - 1)
  ELSE
   C = RIGHT$(C, SIZ - 1) + LEFT$(C, 1)
  END IF
- 
+
  DO WHILE TIMER < I + .08
   IF TIMER < I THEN I = I - 86400       'midnight checking
  LOOP
@@ -2580,16 +2580,16 @@ The basic principle is:create a window with a label in it, then add a handler to
 
 ```r
 
-rotate_string <- function(x, forwards) 
-{ 
-   nchx <- nchar(x) 
-   if(forwards) 
-   {                                   
-      paste(substr(x, nchx, nchx), substr(x, 1, nchx - 1), sep = "") 
-   } else 
-   {                                                           
-      paste(substr(x, 2, nchx), substr(x, 1, 1), sep = "") 
-   } 
+rotate_string <- function(x, forwards)
+{
+   nchx <- nchar(x)
+   if(forwards)
+   {                                  
+      paste(substr(x, nchx, nchx), substr(x, 1, nchx - 1), sep = "")
+   } else
+   {                                                          
+      paste(substr(x, 2, nchx), substr(x, 1, 1), sep = "")
+   }
 }
 
 handle_rotate_label <- function(obj, interval = 100)
@@ -2614,11 +2614,11 @@ handle_change_direction_on_click <- function(obj)
 }
 
 library(gWidgets)
-library(gWidgetstcltk) #or library(gWidgetsRGtk2) or library(gWidgetsrJava)              
+library(gWidgetstcltk) #or library(gWidgetsRGtk2) or library(gWidgetsrJava)             
 lab <- glabel("Hello World! ", container = gwindow())  
-tag(lab, "forwards") <- TRUE 
-handle_rotate_label(lab) 
-handle_change_direction_on_click(lab) 
+tag(lab, "forwards") <- TRUE
+handle_rotate_label(lab)
+handle_change_direction_on_click(lab)
 
 ```
 
@@ -2640,7 +2640,7 @@ handle_change_direction_on_click(lab)
   (class frame%
     (super-new [label "Animation"])
     ;; reverse direction on a click
-    (define/override (on-subwindow-event win evt)                    
+    (define/override (on-subwindow-event win evt)
       (when (send evt button-down?)
         (set! direction
               (if (eq? direction 'left)
@@ -2711,8 +2711,8 @@ view layout [
 	backdrop effect [gradient 0x1 coal black]
 
 	vh1 as-is message ; 'as-is' prevents text trimming.
-	font [name: font-fixed]  
-	rate 24  
+	font [name: font-fixed]
+	rate 24
 	feel [
 		engage: func [f a e] [
 			case [
@@ -2803,7 +2803,7 @@ func rotatetext()
                     sleep(1)
                  ok
         next
-        see nl 
+        see nl
 
 ```
 
@@ -2856,7 +2856,7 @@ str = " Hello World! "
 require 'tk'
 $str = TkVariable.new("Hello World! ")
 $dir = :right
- 
+
 def animate
   $str.value = shift_char($str.value, $dir)
   $root.after(125) {animate}
@@ -2868,16 +2868,16 @@ def shift_char(str, dir)
   when :left  then str[1..-1] + str[0,1]
   end
 end
- 
+
 $root = TkRoot.new("title" => "Basic Animation")
- 
+
 TkLabel.new($root) do
   textvariable $str
   font "Courier 14"
   pack {side 'top'}
   bind("ButtonPress-1") {$dir = {:right=>:left,:left=>:right}[$dir]}
 end
- 
+
 animate
 Tk.mainloop
 ```
@@ -2892,7 +2892,7 @@ Shoes.app do
 
   click {|button, left, top| @direction *= -1 if button == 1}
 
-  animate(8) do |f| 
+  animate(8) do |f|
     t = @label.text
     @label.text = @direction > 0 ? t[-1] + t[0..-2] : t[1..-1] + t[0]
   end
@@ -3113,7 +3113,7 @@ This animation is defined as a smooth movement rather than by moving whole chara
 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="30">
     <g id="all">
         <rect width="100%" height="100%" fill="yellow"/>
-        <g style="font: 18 'Times New Roman', serif; 
+        <g style="font: 18 'Times New Roman', serif;
                   fill: black;
                   stroke: white; stroke-width: 0.001; /* workaround for Batik oddity */ ">
             <text x="0" y="20" textLength="95">Hello World!</text>

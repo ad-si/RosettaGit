@@ -46,7 +46,7 @@ Exponentiation || Specific implementation of
 |-
 |4|| a<sup>9</sup> || (a × a × a→c) × c × c
 |-
-|4|| a<sup>10</sup> || ((a × a→b) × b→d) × d × b 
+|4|| a<sup>10</sup> || ((a × a→b) × b→d) × d × b
 |-
 |5|| a<sup>11</sup> || ((a × a→b) × b→d) × d × b × a
 |-
@@ -60,7 +60,7 @@ Exponentiation || Specific implementation of
 |-
 |4|| a<sup>16</sup> || (((a × a→b) × b→d) × d→h) × h
 |}
-The number of multiplications required follows this sequence: 
+The number of multiplications required follows this sequence:
 0, 1, 2, 2, 3, 3, 4, 3, 4, 4,  5, 4, 5, 5, 5, 4, 5, 5, 6, 5,
 6, 6, 6, 5, 6, 6, 6, 6, 7, 6,  7, 5, 6, 6, 7, 6, 7, 7, 7, 6,
 7, 7, 7, 7, 7, 7, 8, 6, 7, 7,  7, 7, 8, 7, 8, 7, 8, 8, 8, 7,
@@ -69,7 +69,7 @@ The number of multiplications required follows this sequence:
 
 This sequence can be found at: http://oeis.org/A003313
 
-'''Task requirements:''' 
+'''Task requirements:'''
 
 Using the following values:
 <math>A=\begin{bmatrix}
@@ -85,7 +85,7 @@ Repeat task [[Matrix-exponentiation operator]], except use '''addition-chain exp
 :<math> A ^ {m}</math>, <math>A ^ {n}</math> and <math>A ^ {n \times m}</math>.
 
 As an easier alternative to doing the matrix manipulation above, generate the ''addition-chains'' for 12509, 31415 and 27182 and use ''addition-chain exponentiation'' to calculate these two equations:
-* 1.00002206445416<sup>31415</sup> 
+* 1.00002206445416<sup>31415</sup>
 * 1.00002550055251<sup>27182</sup>
 
 Also: Display a count of how many multiplications were done in each case.
@@ -109,8 +109,8 @@ Knuth's power tree].
 
 Using complex instead of matrix.  Requires [[Addition-chain exponentiation/Achain.c|Achain.c]].  It takes a long while to compute the shortest addition chains, such that if you don't have the chain lengths precomputed and stored somewhere, you are probably better off with a binary chain (normally not shortest but very simple to calculate) whatever you intend to use the chains for.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #include "achain.c" /* not common practice */
 
@@ -620,7 +620,7 @@ func main() {
         fmt.Println("  c.f. Binary multiplies:", binLen(ex))
     }
     fmt.Printf("\nExponent: %d x %d = %d\n", m, n, m*n)
-    fmt.Printf("A ^ %d = (A ^ %d) ^ %d:-\n\n", m*n, m, n)   
+    fmt.Printf("A ^ %d = (A ^ %d) ^ %d:-\n\n", m*n, m, n)
     mx2 := mxs[0].pow(n, false)
     mx2.print()
 }
@@ -641,16 +641,16 @@ Cached 29696
 Cached 30720
 
 The first 100 terms of A003313 are:
-0 1 2 2 3 3 4 3 4 4 
-5 4 5 5 5 4 5 5 6 5 
-6 6 6 5 6 6 6 6 7 6 
-7 5 6 6 7 6 7 7 7 6 
-7 7 7 7 7 7 8 6 7 7 
-7 7 8 7 8 7 8 8 8 7 
-8 8 8 6 7 7 8 7 8 8 
-9 7 8 8 8 8 8 8 9 7 
-8 8 8 8 8 8 9 8 9 8 
-9 8 9 9 9 7 8 8 8 8 
+0 1 2 2 3 3 4 3 4 4
+5 4 5 5 5 4 5 5 6 5
+6 6 6 5 6 6 6 6 7 6
+7 5 6 6 7 6 7 7 7 6
+7 7 7 7 7 7 8 6 7 7
+7 7 8 7 8 7 8 8 8 7
+8 8 8 6 7 7 8 7 8 8
+9 7 8 8 8 8 8 8 9 7
+8 8 8 8 8 8 9 8 9 8
+9 8 9 9 9 7 8 8 8 8
 
 Exponent: 27182
 Addition chain:
@@ -693,7 +693,7 @@ A ^ 853922530 = (A ^ 27182) ^ 31415:-
 [ 0.000000  0.000000  0.000000  0.000000  0.000000  1.000000]
 
 ```
- 
+
 
 Below is the original solution which was ruled inadmissible because it uses 'star chains' and is therefore non-optimal.
 
@@ -820,7 +820,7 @@ func show(e int) {
     a.scExp(sc).print("a^e")
     fmt.Println("count of multiplies:", mCount)
     fmt.Println()
-}   
+}
 
 var mCount int
 
@@ -836,7 +836,7 @@ func showEasier(e int, a float64) {
 func scExp64(a float64, sc starChain) float64 {
     mCount = 0
     p := make([]float64, len(sc))
-    p[0] = a 
+    p[0] = a
     for i := 1; i < len(p); i++ {
         d := sc[i] - sc[i-1]
         j := i - 1
@@ -847,8 +847,8 @@ func scExp64(a float64, sc starChain) float64 {
         mCount++
     }
     return p[len(p)-1]
-}   
-    
+}
+
 func (m *matrix) scExp(sc starChain) *matrix {
     mCount = 0
     p := make([]*matrix, len(sc))
@@ -919,24 +919,24 @@ exponent: 31415
 addition chain: [1 2 4 5 10 20 25 50 55 110 220 245 490 980 1960 3920 7840
 15680 31360 31415]
 a^e
-[ 0.707  0.000  0.000 -0.707  0.000  0.000] 
-[ 0.000  0.707  0.707  0.000  0.000  0.000] 
-[ 0.707  0.000  0.000  0.707  0.000  0.000] 
-[ 0.000  0.707 -0.707  0.000  0.000  0.000] 
-[ 0.000  0.000  0.000  0.000  0.000  1.000] 
-[ 0.000  0.000  0.000  0.000  1.000  0.000] 
+[ 0.707  0.000  0.000 -0.707  0.000  0.000]
+[ 0.000  0.707  0.707  0.000  0.000  0.000]
+[ 0.707  0.000  0.000  0.707  0.000  0.000]
+[ 0.000  0.707 -0.707  0.000  0.000  0.000]
+[ 0.000  0.000  0.000  0.000  0.000  1.000]
+[ 0.000  0.000  0.000  0.000  1.000  0.000]
 count of multiplies: 19
 
 exponent: 27182
 addition chain: [1 2 4 8 10 18 28 46 92 184 212 424 848 1696 3392 6784 13568
 27136 27182]
 a^e
-[-0.500 -0.500 -0.500  0.500  0.000  0.000] 
-[ 0.500 -0.500 -0.500 -0.500  0.000  0.000] 
-[-0.500 -0.500  0.500 -0.500  0.000  0.000] 
-[ 0.500 -0.500  0.500  0.500  0.000  0.000] 
-[ 0.000  0.000  0.000  0.000  1.000  0.000] 
-[ 0.000  0.000  0.000  0.000  0.000  1.000] 
+[-0.500 -0.500 -0.500  0.500  0.000  0.000]
+[ 0.500 -0.500 -0.500 -0.500  0.000  0.000]
+[-0.500 -0.500  0.500 -0.500  0.000  0.000]
+[ 0.500 -0.500  0.500  0.500  0.000  0.000]
+[ 0.000  0.000  0.000  0.000  1.000  0.000]
+[ 0.000  0.000  0.000  0.000  0.000  1.000]
 count of multiplies: 18
 
 exponent: 853922530
@@ -944,12 +944,12 @@ addition chain: [1 2 4 5 7 12 24 48 96 103 206 309 412 721 1133 1854 3708 4841
 9682 19364 21218 26059 52118 104236 208472 416944 833888 1667776 3335552 6671104
 13342208 26684416 53368832 106737664 213475328 426950656 853901312 853922530]
 a^e
-[-0.500  0.500 -0.500  0.500  0.000  0.000] 
-[-0.500 -0.500 -0.500 -0.500  0.000  0.000] 
-[-0.500 -0.500  0.500  0.500  0.000  0.000] 
-[ 0.500 -0.500 -0.500  0.500  0.000  0.000] 
-[ 0.000  0.000  0.000  0.000  1.000  0.000] 
-[ 0.000  0.000  0.000  0.000  0.000  1.000] 
+[-0.500  0.500 -0.500  0.500  0.000  0.000]
+[-0.500 -0.500 -0.500 -0.500  0.000  0.000]
+[-0.500 -0.500  0.500  0.500  0.000  0.000]
+[ 0.500 -0.500 -0.500  0.500  0.000  0.000]
+[ 0.000  0.000  0.000  0.000  1.000  0.000]
+[ 0.000  0.000  0.000  0.000  0.000  1.000]
 count of multiplies: 37
 
 exponent: 31415
@@ -967,18 +967,18 @@ count of multiplies: 18
 ## Phix
 
 
-###  Brute force 
+###  Brute force
 
 Naieve brute force search, no attempt to optimise, manages about 4 million checks/s.
 
-Replacing the recursion with an internal stack and chosen with a fixed length array might help, but 
+Replacing the recursion with an internal stack and chosen with a fixed length array might help, but
 otherwise I got no good ideas at all for trimming the search space.
 
 Giving it the same length, I think, yields the same result as [[Knuth%27s_power_tree#Phix]], and at least
 in the cases that I tried, somewhat faster than the method on that page.
 
-If you know the A003313 number, you can throw that at it and wait (for several billion years) or get the 
-power tree length and loop trying to find a path one shorter (and wait several trillion years). For the 
+If you know the A003313 number, you can throw that at it and wait (for several billion years) or get the
+power tree length and loop trying to find a path one shorter (and wait several trillion years). For the
 path() and treepow() routines see link above.
 
 Note that "tries" overflows (crashes) at 1073741824, which I kept in as a deliberate limiter.
@@ -1055,7 +1055,7 @@ On the task numbers, however, as to be expected, it struggles but probably would
 --?addition_chain(31415,23) -- bust
 --?addition_chain(31415,22) -- 137s     {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,10240,10368,10384,10386,20772,31158,31414,31415}
 --?addition_chain(31415,21) -- 116s     {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,6144,6272,6288,6290,12562,25124,31414,31415}
---?addition_chain(31415,20) -- bust     
+--?addition_chain(31415,20) -- bust
 --?addition_chain(31415,19) -- bust
 
 --?path(27182)                       -- {1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,24576,26624,27136,27168,27176,27180,27182}
@@ -1118,9 +1118,9 @@ The addition chains correspond to binary exponentiation.
             [(equal? xs (list 'reset)) (set! n 0)]
             [else (set! n (+ n 1))
                   (apply * xs)]))))
-    
+
 (define (expt/chain x n chain)
-    ; computes x^n using the addition chain  
+    ; computes x^n using the addition chain
   (define ht (make-hash))
   (hash-set! ht 1 x)
   (define (expt1 n)
@@ -1132,8 +1132,8 @@ The addition chains correspond to binary exponentiation.
           (hash-set! ht n x^n)
           x^n)))
   (expt1 n))
-     
-(define (test x n)  
+
+(define (test x n)
   (displayln (~a "Chain for " n "\n" (chain n)))
   (mult 'reset)
   (displayln (~a x " ^ " n " = " (expt/chain x n (chain n))))
@@ -1265,28 +1265,28 @@ puts "$countMult matrix multiplies"
 
 ```txt
 A**31415
- 0.707  0.000  0.000 -0.707  0.000  0.000 
- 0.000  0.707  0.707  0.000  0.000  0.000 
- 0.707  0.000  0.000  0.707  0.000  0.000 
- 0.000  0.707 -0.707  0.000  0.000  0.000 
- 0.000  0.000  0.000  0.000  0.000  1.000 
- 0.000  0.000  0.000  0.000  1.000  0.000 
+ 0.707  0.000  0.000 -0.707  0.000  0.000
+ 0.000  0.707  0.707  0.000  0.000  0.000
+ 0.707  0.000  0.000  0.707  0.000  0.000
+ 0.000  0.707 -0.707  0.000  0.000  0.000
+ 0.000  0.000  0.000  0.000  0.000  1.000
+ 0.000  0.000  0.000  0.000  1.000  0.000
 19 matrix multiplies
 A**27182
--0.500 -0.500 -0.500  0.500  0.000  0.000 
- 0.500 -0.500 -0.500 -0.500  0.000  0.000 
--0.500 -0.500  0.500 -0.500  0.000  0.000 
- 0.500 -0.500  0.500  0.500  0.000  0.000 
- 0.000  0.000  0.000  0.000  1.000  0.000 
- 0.000  0.000  0.000  0.000  0.000  1.000 
+-0.500 -0.500 -0.500  0.500  0.000  0.000
+ 0.500 -0.500 -0.500 -0.500  0.000  0.000
+-0.500 -0.500  0.500 -0.500  0.000  0.000
+ 0.500 -0.500  0.500  0.500  0.000  0.000
+ 0.000  0.000  0.000  0.000  1.000  0.000
+ 0.000  0.000  0.000  0.000  0.000  1.000
 18 matrix multiplies
 A**853922530
--0.500  0.500 -0.500  0.500  0.000  0.000 
--0.500 -0.500 -0.500 -0.500  0.000  0.000 
--0.500 -0.500  0.500  0.500  0.000  0.000 
- 0.500 -0.500 -0.500  0.500  0.000  0.000 
- 0.000  0.000  0.000  0.000  1.000  0.000 
- 0.000  0.000  0.000  0.000  0.000  1.000 
+-0.500  0.500 -0.500  0.500  0.000  0.000
+-0.500 -0.500 -0.500 -0.500  0.000  0.000
+-0.500 -0.500  0.500  0.500  0.000  0.000
+ 0.500 -0.500 -0.500  0.500  0.000  0.000
+ 0.000  0.000  0.000  0.000  1.000  0.000
+ 0.000  0.000  0.000  0.000  0.000  1.000
 37 matrix multiplies
 ```
 

@@ -17,7 +17,7 @@ Two integers <math>N</math> and <math>M</math> are said to be [[wp:Amicable numb
 
 ;Example:
 '''1184''' and '''1210''' are an amicable pair, with proper divisors:
-*   1, 2, 4, 8, 16, 32, 37, 74, 148, 296, 592   and 
+*   1, 2, 4, 8, 16, 32, 37, 74, 148, 296, 592   and
 *   1, 2, 5, 10, 11, 22, 55, 110, 121, 242, 605    respectively.
 
 
@@ -28,7 +28,7 @@ Calculate and show here the Amicable pairs below 20,000; (there are eight).
 ;Related tasks
 * [[Proper divisors]]
 * [[Abundant, deficient and perfect number classifications]]
-* [[Aliquot sequence classifications]] and its amicable ''classification''. 
+* [[Aliquot sequence classifications]] and its amicable ''classification''.
 
 
 
@@ -52,20 +52,20 @@ L(n) 1..20000
 ## Ada
 
 
-This solution uses the package ''Generic_Divisors'' from the Proper Divisors task 
+This solution uses the package ''Generic_Divisors'' from the Proper Divisors task
 [[http://rosettacode.org/wiki/Proper_divisors#Ada]].
 
 
 ```Ada
 with Ada.Text_IO, Generic_Divisors; use Ada.Text_IO;
- 
+
 procedure Amicable_Pairs is
-   
+
    function Same(P: Positive) return Positive is (P);
-   
+
    package Divisor_Sum is new Generic_Divisors
      (Result_Type => Natural, None => 0, One => Same, Add =>  "+");
-   
+
    Num2 : Integer;
 begin
    for Num1 in 4 .. 20_000 loop
@@ -222,7 +222,7 @@ OD
 
 -- amicablePairsUpTo :: Int -> Int
 on amicablePairsUpTo(max)
-    
+
     -- amicable :: [Int] -> Int -> Int -> [Int] -> [Int]
     script amicable
         on |λ|(a, m, n, lstSums)
@@ -233,7 +233,7 @@ on amicablePairsUpTo(max)
             end if
         end |λ|
     end script
-    
+
     -- divisorsSummed :: Int -> Int
     script divisorsSummed
         -- sum :: Int -> Int -> Int
@@ -242,12 +242,12 @@ on amicablePairsUpTo(max)
                 a + b
             end |λ|
         end script
-        
+
         on |λ|(n)
             foldl(sum, 0, properDivisors(n))
         end |λ|
     end script
-    
+
     foldl(amicable, {}, ¬
         map(divisorsSummed, enumFromTo(1, max)))
 end amicablePairsUpTo
@@ -255,9 +255,9 @@ end amicablePairsUpTo
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     amicablePairsUpTo(20000)
-    
+
 end run
 
 
@@ -265,31 +265,31 @@ end run
 
 -- properDivisors :: Int -> [Int]
 on properDivisors(n)
-    
-    -- isFactor :: Int -> Bool 
+
+    -- isFactor :: Int -> Bool
     script isFactor
         on |λ|(x)
             n mod x = 0
         end |λ|
     end script
-    
+
     -- integerQuotient :: Int -> Int
     script integerQuotient
         on |λ|(x)
             (n / x) as integer
         end |λ|
     end script
-    
+
     if n = 1 then
         {1}
     else
         set realRoot to n ^ (1 / 2)
         set intRoot to realRoot as integer
         set blnPerfectSquare to intRoot = realRoot
-        
+
         -- Factors up to square root of n,
         set lows to filter(isFactor, enumFromTo(1, intRoot))
-        
+
         -- and quotients of these factors beyond the square root,
         -- excluding n itself (last item)
         items 1 thru -2 of (lows & map(integerQuotient, ¬
@@ -350,7 +350,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -515,7 +515,7 @@ Loop, 20000
 	loop % floor(sqrt(m))
 	{
 		if ( mod(m, A_index) = 0 )
-		{	
+		{
 			if ( A_index ** 2 == m )
 			{
 				sum += A_index
@@ -536,7 +536,7 @@ Loop, 20000
 		loop % floor(sqrt(sum))
 		{
 			if ( mod(sum, A_index) = 0 )
-			{	
+			{
 				if ( A_index ** 2 == sum )
 				{
 					sum2 += A_index
@@ -549,7 +549,7 @@ Loop, 20000
 					sum2 += A_index
 				}
 			}
-		}		
+		}
 		if ( m = sum2 ) && ( m != sum ) && ( m < sum )
 			final .= m . ":" . sum . "`n"
 	} ; Checked
@@ -590,17 +590,17 @@ sum=1
 root=sqrt(num)
 for ( i=2; i < root; i++) {
     if (num % i == 0 )
-        { 
+        {
           sum = sum + i + num/i
           }
      }
-     if (num % root == 0) 
+     if (num % root == 0)
         {
          sum = sum + root
-         }    
+         }
  return sum
  }
-                              
+
 BEGIN{
 limit=20000
 print "Amicable pairs < ",limit
@@ -617,7 +617,7 @@ for (n=1; n < limit+1; n++)
 
 ```txt
 
-# ./amicable 
+# ./amicable
 Amicable pairs < 20000
 220 284
 1184 1210
@@ -668,8 +668,8 @@ Look at Pascal Alternative [[http://rosettacode.org/wiki/Amicable_pairs#Alternat
 
 The program will overflow and error in all sorts of ways when given a commandline argument >= UINT_MAX/2 (generally 2^31)
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef unsigned int uint;
@@ -770,11 +770,11 @@ user  0m16.156s
 
 int main() {
     std::vector<int> alreadyDiscovered;
-    std::unordered_map<int, int> divsumMap; 
+    std::unordered_map<int, int> divsumMap;
     int count = 0;
 
     for (int N = 1; N <= 20000; ++N)
-    {      
+    {
         int divSumN = 0;
 
         for (int i = 1; i <= N / 2; ++i)
@@ -784,7 +784,7 @@ int main() {
                 divSumN += i;
             }
         }
-        
+
         // populate map of integers to the sum of their proper divisors
         if (divSumN != 1) // do not include primes
             divsumMap[N] = divSumN;
@@ -844,7 +844,7 @@ using System.Linq;
 namespace RosettaCode.AmicablePairs
 {
     internal static class Program {
-        private const int Limit = 20000;        
+        private const int Limit = 20000;
 
         private static void Main()
         {
@@ -1134,33 +1134,33 @@ ELENA 4.1 :
 import extensions;
 import system'routines;
 import system'math;
- 
+
 const int N = 20000;
- 
+
 extension op
 {
     ProperDivisors
         = Range.new(1,self / 2).filterBy:(n => self.mod:n == 0);
- 
+
     get AmicablePairs()
     {
         var divsums := Range
                          .new(0, self + 1)
                          .selectBy:(i => i.ProperDivisors.summarize(new Integer()))
                          .toArray();
-                         
-        ^ 1.repeatTill(divsums.Length) 
+
+        ^ 1.repeatTill(divsums.Length)
             .filterBy:(i)
             {
-                var ii := i; 
-                
+                var ii := i;
+
                 var sum := divsums[i];
                 ^ (i < sum) && (sum < divsums.Length) && (divsums[sum] == i)
-            } 
+            }
             .selectBy:(i => new::{ Item1 = i; Item2 = divsums[i]; })
     }
 }
- 
+
 public program()
 {
     N.AmicablePairs.forEach:(pair)
@@ -1192,18 +1192,18 @@ import extensions;
 import system'routines'stex;
 import system'math;
 import system'collections;
- 
+
 const int N = 20000;
- 
+
 extension op : IntNumber
 {
     Enumerator<int> ProperDivisors
         = new Range(1,self / 2).filterBy:(int n => self.mod:n == 0);
- 
+
     get AmicablePairs()
     {
         auto divsums := new List<int>(cast Enumerator<int>(new Range(0, self).selectBy:(int i => i.ProperDivisors.summarize(0))));
- 
+
         ^ new Range(0, divsums.Length)
             .filterBy:(int i)
             {
@@ -1213,7 +1213,7 @@ extension op : IntNumber
             .selectBy:(int i => new Tuple<int,int>(i,divsums[i]));
     }
 }
- 
+
 public program()
 {
     N.AmicablePairs.forEach:(var Tuple<int,int> pair)
@@ -1249,7 +1249,7 @@ With [[proper_divisors#Elixir]] in place:
 defmodule Proper do
   def divisors(1), do: []
   def divisors(n), do: [1 | divisors(2,n,:math.sqrt(n))] |> Enum.sort
-  
+
   defp divisors(k,_n,q) when k>q, do: []
   defp divisors(k,n,q) when rem(n,k)>0, do: divisors(k+1,n,q)
   defp divisors(k,n,q) when k * k == n, do: [k | divisors(k+1,n,q)]
@@ -1288,64 +1288,64 @@ Very slow solution. Same functions by and large as in proper divisors and co.
 
 ```erlang
 
--module(properdivs).                                                            
+-module(properdivs).
 -export([amicable/1,divs/1,sumdivs/1]).
-             
-amicable(Limit) -> amicable(Limit,[],3,2).                                         
-                                                                                   
-amicable(Limit,List,_Current,Acc) when Acc >= Limit -> List;                       
-amicable(Limit,List,Current,Acc) when Current =< Acc/2  ->                         
-    amicable(Limit,List,Acc,Acc+1);                                          
-amicable(Limit,List,Current,Acc) ->                                                
-    CS = sumdivs(Current),                                                         
-    AS = sumdivs(Acc),                                                             
-    if                                                                             
-        CS == Acc andalso AS == Current andalso Acc =/= Current ->                 
-          io:format("A: ~w, B: ~w, ~nL: ~w~w~n",  [Current,Acc,divs(Current),divs(Acc)]),                                                                                
-          NL = List ++ [{Current,Acc}],                                            
-          amicable(Limit,NL,Acc+1,Acc+1);                                          
-        true -> 
-          amicable(Limit,List,Current-1,Acc) end.                            
-                                                                                                                                           
-divs(0) -> [];                                                                  
-divs(1) -> [];                                                                  
-divs(N) -> lists:sort(divisors(1,N)).                                           
-                                                                                
-divisors(1,N) ->                                                                
-     [1] ++ divisors(2,N,math:sqrt(N)).                                         
-                                                                                
-divisors(K,_N,Q) when K > Q -> [];                                              
-divisors(K,N,_Q) when N rem K =/= 0 ->                                          
-    [] ++ divisors(K+1,N,math:sqrt(N));                                         
-divisors(K,N,_Q) when K * K  == N ->                                            
-    [K] ++ divisors(K+1,N,math:sqrt(N));                                        
-divisors(K,N,_Q) ->                                                             
-    [K, N div K] ++ divisors(K+1,N,math:sqrt(N)).                               
-                                                                                
-sumdivs(N) -> lists:sum(divs(N)).                                               
+
+amicable(Limit) -> amicable(Limit,[],3,2).
+
+amicable(Limit,List,_Current,Acc) when Acc >= Limit -> List;
+amicable(Limit,List,Current,Acc) when Current =< Acc/2  ->
+    amicable(Limit,List,Acc,Acc+1);
+amicable(Limit,List,Current,Acc) ->
+    CS = sumdivs(Current),
+    AS = sumdivs(Acc),
+    if
+        CS == Acc andalso AS == Current andalso Acc =/= Current ->
+          io:format("A: ~w, B: ~w, ~nL: ~w~w~n",  [Current,Acc,divs(Current),divs(Acc)]),
+          NL = List ++ [{Current,Acc}],
+          amicable(Limit,NL,Acc+1,Acc+1);
+        true ->
+          amicable(Limit,List,Current-1,Acc) end.
+
+divs(0) -> [];
+divs(1) -> [];
+divs(N) -> lists:sort(divisors(1,N)).
+
+divisors(1,N) ->
+     [1] ++ divisors(2,N,math:sqrt(N)).
+
+divisors(K,_N,Q) when K > Q -> [];
+divisors(K,N,_Q) when N rem K =/= 0 ->
+    [] ++ divisors(K+1,N,math:sqrt(N));
+divisors(K,N,_Q) when K * K  == N ->
+    [K] ++ divisors(K+1,N,math:sqrt(N));
+divisors(K,N,_Q) ->
+    [K, N div K] ++ divisors(K+1,N,math:sqrt(N)).
+
+sumdivs(N) -> lists:sum(divs(N)).
 
 ```
-                                                                                   
+
 {{out}}
 
 ```txt
 
 3> properdivs:amicable(20000).
-A: 220, B: 284, 
+A: 220, B: 284,
 L: [1,2,4,5,10,11,20,22,44,55,110][1,2,4,71,142]
-A: 1184, B: 1210, 
+A: 1184, B: 1210,
 L: [1,2,4,8,16,32,37,74,148,296,592][1,2,5,10,11,22,55,110,121,242,605]
-A: 2620, B: 2924, 
+A: 2620, B: 2924,
 L: [1,2,4,5,10,20,131,262,524,655,1310][1,2,4,17,34,43,68,86,172,731,1462]
-A: 5020, B: 5564, 
+A: 5020, B: 5564,
 L: [1,2,4,5,10,20,251,502,1004,1255,2510][1,2,4,13,26,52,107,214,428,1391,2782]
-A: 6232, B: 6368, 
+A: 6232, B: 6368,
 L: [1,2,4,8,19,38,41,76,82,152,164,328,779,1558,3116][1,2,4,8,16,32,199,398,796,1592,3184]
-A: 10744, B: 10856, 
+A: 10744, B: 10856,
 L: [1,2,4,8,17,34,68,79,136,158,316,632,1343,2686,5372][1,2,4,8,23,46,59,92,118,184,236,472,1357,2714,5428]
-A: 12285, B: 14595, 
+A: 12285, B: 14595,
 L: [1,3,5,7,9,13,15,21,27,35,39,45,63,65,91,105,117,135,189,195,273,315,351,455,585,819,945,1365,1755,2457,4095][1,3,5,7,15,21,35,105,139,417,695,973,2085,2919,4865]
-A: 17296, B: 18416, 
+A: 17296, B: 18416,
 L: [1,2,4,8,16,23,46,47,92,94,184,188,368,376,752,1081,2162,4324,8648][1,2,4,8,16,1151,2302,4604,9208]
 [{220,284},
  {1184,1210},
@@ -1370,11 +1370,11 @@ Probably, this answer is false in some sense. But a good deal faster :) As above
 
 friendly(Limit) ->
     List = [{X,properdivs:sumdivs(X)} || X <- lists:seq(3,Limit)],
-    Final = [ X || 
-        X <- lists:seq(3,Limit), 
-        X == properdivs:sumdivs(proplists:get_value(X,List)) 
+    Final = [ X ||
+        X <- lists:seq(3,Limit),
+        X == properdivs:sumdivs(proplists:get_value(X,List))
         andalso X =/= proplists:get_value(X,List)],
-    io:format("L: ~w~n", [Final]).                                                   
+    io:format("L: ~w~n", [Final]).
 
 
 ```
@@ -1395,26 +1395,26 @@ We might answer a challenge by saying:
 
 ```erlang
 
-friendly(Limit) ->                                                                 
-    List = [{X,properdivs:sumdivs(X)} || X <- lists:seq(3,Limit)],                 
-    Final = [ X || X <- lists:seq(3,Limit), X == properdivs:sumdivs(proplists:get_value(X,List)) 
+friendly(Limit) ->
+    List = [{X,properdivs:sumdivs(X)} || X <- lists:seq(3,Limit)],
+    Final = [ X || X <- lists:seq(3,Limit), X == properdivs:sumdivs(proplists:get_value(X,List))
             andalso X =/= proplists:get_value(X,List)],
     findfriendlies(Final,[]).
-                                                                                   
-                                                                                   
+
+
 findfriendlies(List,Acc) when length(List) =< 0 -> Acc;
-findfriendlies(List,Acc) ->                                                        
-    A = lists:nth(1,List),                                                         
-    AS = sumdivs(A),                                                               
-    B = lists:nth(2,List),                                                         
-    BS = sumdivs(B),                                                               
-    if                                                                             
-        AS == B andalso BS == A ->                                                 
-          {_,BL} = lists:split(2,List),                                            
-          findfriendlies(BL,Acc++[{A,B}]);                                         
-        true -> false                                                              
-    end.                                                                           
-                                                                                   
+findfriendlies(List,Acc) ->
+    A = lists:nth(1,List),
+    AS = sumdivs(A),
+    B = lists:nth(2,List),
+    BS = sumdivs(B),
+    if
+        AS == B andalso BS == A ->
+          {_,BL} = lists:split(2,List),
+          findfriendlies(BL,Acc++[{A,B}]);
+        true -> false
+    end.
+
 
 ```
 
@@ -1623,7 +1623,7 @@ Could use SUMF in place of S, but some compilers have been confused by such usag
          RETURN			!Done.
 Cannot calculate the sum, because it exceeds the integer limit.
   666     SUMF = -666		!An expression of dismay that the caller will notice.
-        END FUNCTION SUMF	!Alternatively, find the prime factors, and combine them...  
+        END FUNCTION SUMF	!Alternatively, find the prime factors, and combine them...
          SUBROUTINE PREPARESUMF	!Initialise the KNOWNSUM array.
 Convert the Sieve of Eratoshenes to have each slot contain the sum of the proper divisors of its slot number.
 Changes to instead count the number of factors, or prime factors, etc. would be simple enough.
@@ -1634,7 +1634,7 @@ Changes to instead count the number of factors, or prime factors, etc. would be 
             FOR ALL(I = F + F:LOTS:F) KNOWNSUM(I) = KNOWNSUM(I) + F	!And augment each corresponding slot.
           END DO			!Different divisors can hit the same slot. For instance, 6 by 2 and also by 3.
         END SUBROUTINE PREPARESUMF	!Could alternatively generate all products of prime numbers.
-      END MODULE FACTORSTUFF	!Enough assistants. 
+      END MODULE FACTORSTUFF	!Enough assistants.
        PROGRAM AMICABLE		!Seek N such that SumF(SumF(N)) = N, for N up to 20,000.
        USE FACTORSTUFF		!This should help.
        INTEGER I,N		!Steppers.
@@ -1678,7 +1678,7 @@ End Function
 
 Dim As Integer n, f
 Dim As Integer sum(19999)
- 
+
 For n = 1 To 19999
   sum(n) = SumProperDivisors(n)
 Next
@@ -1689,9 +1689,9 @@ Print
 For n = 1 To 19998
   ' f = SumProperDivisors(n)
   f = sum(n)
-  If f <= n OrElse f < 1 OrElse f > 19999 Then Continue For 
+  If f <= n OrElse f < 1 OrElse f > 19999 Then Continue For
   If f = sum(n) AndAlso n = sum(f) Then
-    Print Using "#####"; n;  
+    Print Using "#####"; n;
     Print " and "; Using "#####"; sum(n)
   End If
 Next
@@ -1721,7 +1721,7 @@ The pairs of amicable numbers below 20,000 are :
 
 ```
 
-===using "Sieve of Erathosthenes" style=== 
+===using "Sieve of Erathosthenes" style===
 
 ```freebasic
 ' version 04-10-2016
@@ -1943,7 +1943,7 @@ if (i==a[a[i]])&&(i<a[i]){
 }
 func pfac_sum(i int) int {
 	var p,sum=1,0
-	
+
 	for p=1;p<=i/2;p++{
 	x := float64(i)
 	y := float64(p)
@@ -2105,14 +2105,14 @@ public class AmicablePairs {
 
 
 ```txt
-220 284 
-1184 1210 
-2620 2924 
-5020 5564 
-6232 6368 
-10744 10856 
-12285 14595 
-17296 18416 
+220 284
+1184 1210
+2620 2924
+5020 5564
+6232 6368
+10744 10856
+12285 14595
+17296 18416
 ```
 
 
@@ -2127,24 +2127,24 @@ public class AmicablePairs {
 
 ```JavaScript
 (function (max) {
- 
+
     // Proper divisors
     function properDivisors(n) {
         if (n < 2) return [];
         else {
             var rRoot = Math.sqrt(n),
                 intRoot = Math.floor(rRoot),
- 
+
                 lows = range(1, intRoot).filter(function (x) {
                     return (n % x) === 0;
                 });
- 
+
             return lows.concat(lows.slice(1).map(function (x) {
                 return n / x;
             }).reverse().slice((rRoot === intRoot) | 0));
         }
     }
- 
+
     // [m..n]
     function range(m, n) {
         var a = Array(n - m + 1),
@@ -2152,40 +2152,40 @@ public class AmicablePairs {
         while (i--) a[i - 1] = i;
         return a;
     }
- 
+
     // Filter an array of proper divisor sums,
     // reading the array index as a function of N (N-1)
     // and the sum of proper divisors as a potential M
- 
+
     var pairs = range(1, max).map(function (x) {
         return properDivisors(x).reduce(function (a, d) {
             return a + d;
         }, 0)
     }).reduce(function (a, m, i, lst) {
         var n = i + 1;
- 
+
         return (m > n) && lst[m - 1] === n ? a.concat([[n, m]]) : a;
     }, []);
- 
+
     // [[a]] -> bool -> s -> s
     function wikiTable(lstRows, blnHeaderRow, strStyle) {
         return '{| class="wikitable" ' + (
             strStyle ? 'style="' + strStyle + '"' : ''
         ) + lstRows.map(function (lstRow, iRow) {
             var strDelim = ((blnHeaderRow && !iRow) ? '!' : '|');
- 
+
             return '\n|-\n' + strDelim + ' ' + lstRow.map(function (v) {
                 return typeof v === 'undefined' ? ' ' : v;
             }).join(' ' + strDelim + strDelim + ' ');
         }).join('') + '\n|}';
     }
- 
+
     return wikiTable(
         [['N', 'M']].concat(pairs),
         true,
         'text-align:center'
     ) + '\n\n' + JSON.stringify(pairs);
- 
+
 })(20000);
 ```
 
@@ -2489,7 +2489,7 @@ The pairs of amicable numbers below 20,000 are:
 
 
 ## Lua
- 
+
 0.02 of a second in 16 lines of code.
 The vital trick is to just set m to the sum of n's proper divisors each time.  That way you only have to test the reverse, dividing your run time by half the loop limit (ie. 10,000)!
 
@@ -2606,21 +2606,21 @@ end
     N    Amicable1    Amicable2
     _    _________    _________
 
-    1      220          284    
-    2     1184         1210    
-    3     2620         2924    
-    4     5020         5564    
-    5     6232         6368    
-    6    10744        10856    
-    7    12285        14595    
-    8    17296        18416    
+    1      220          284
+    2     1184         1210
+    3     2620         2924
+    4     5020         5564
+    5     6232         6368
+    6    10744        10856
+    7    12285        14595
+    8    17296        18416
 
 Elapsed time is 8.958720 seconds.
 
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
 amicableQ[n_] :=
@@ -2747,7 +2747,7 @@ for m in 4..N:
 ```Oberon2
 
 MODULE AmicablePairs;
-IMPORT 
+IMPORT
   Out;
 CONST
   max = 20000;
@@ -2761,7 +2761,7 @@ VAR
    i,sum: LONGINT;
 BEGIN
   sum := 0;
-  IF n > 1 THEN 
+  IF n > 1 THEN
     INC(sum,1);i := 2;
     WHILE (i < n) DO
       IF (n MOD i) = 0 THEN INC(sum,i) END;
@@ -2781,7 +2781,7 @@ BEGIN
       IF (pd[i] = j) & (pd[j] = i) THEN
          Out.Char('[');Out.Int(i,0);Out.Char(',');Out.Int(j,0);Out.Char("]");Out.Ln
       END
-    END 
+    END
   END
 END AmicablePairs.
 
@@ -2815,7 +2815,7 @@ import: mapping
 
 Integer method: properDivs -- []
    #[ self swap mod 0 == ] self 2 / seq filter ;
- 
+
 : amicables
 | i j |
    Array new
@@ -2941,7 +2941,7 @@ Source file:
        KnownSum[j]:=KnownSum[j] + i;
        j:=j + i;
       end;
-    end; 
+    end;
 
  {Enough preparation.}
    Assign(outf,'Factors.txt'); ReWrite(Outf);
@@ -3256,14 +3256,14 @@ Output
 about 25-times faster.
 This will not output the amicable number unless both! numbers are under the given limit.
 
-So there will be differences to "Table of n, a(n) for n=1..39374"  https://oeis.org/A002025/b002025.txt 
+So there will be differences to "Table of n, a(n) for n=1..39374"  https://oeis.org/A002025/b002025.txt
 Up to 524'000'000 the pairs found are only correct by number up to no. 437  460122410 and only 442 out of 455 are found, because some pairs exceed the limit.
 The limits of the ratio between the numbers of the amicable pair up to 1E14 are, based on b002025.txt:
 
 ```txt
 
-No.    lower            upper         
-31447  52326552030976  52326637800704 ratio  1.0000016 
+No.    lower            upper
+31447  52326552030976  52326637800704 ratio  1.0000016
 52326552030976 [2^8*563*6079*59723]
 52326637800704 [2^8*797*1439*178223]
 
@@ -3281,10 +3281,10 @@ The used method is not useful for very high limits.
 n = p[1]^a[1]*p[2]^a[2]*...p[l]^a[l]
 
 sum of divisors(n) = s(n) = (p[1]^(a[1]+1) -1) / (p[1] -1)  * ... * (p[l]^(a[l]+1) -1) / (p[l] -1) with
- 
+
 p[k]^(a[k]+1) -1) / (p[k] -1) = sum (i= [1..a[k]])(p[k]^i)
 
-Using "Sieve of Erathosthenes"-style  
+Using "Sieve of Erathosthenes"-style
 
 
 ```pascal
@@ -3838,7 +3838,7 @@ function Get-ProperDivisorSum ( [int]$N )
         }
     return $Sum
     }
- 
+
 function Get-AmicablePairs ( $N = 300 )
     {
     ForEach ( $X in 1..$N )
@@ -3944,7 +3944,7 @@ Procedure.i SumProperDivisors(Number)
   Next
   ProcedureReturn sum
 EndProcedure
-  
+
 Define n, f
 Define Dim sum(19999)
 
@@ -4314,18 +4314,18 @@ sum(pd) computed in 48.502000 seconds
 10744 10856 found after 150.126000 seconds
 12285 14595 found after 162.124000 seconds
 17296 18416 found after 185.600000 seconds
-188.836000 seconds total search time 
+188.836000 seconds total search time
 ```
 
 
 ===version 2, using SIGMA function===
 This REXX version allows the specification of the upper limit (for the searching of amicable pairs).
 
-Some optimization was incorporated by using a   '''sigma'''   function,   which was a re-coded   ''proper divisors''   (Pdivs)   function, 
+Some optimization was incorporated by using a   '''sigma'''   function,   which was a re-coded   ''proper divisors''   (Pdivs)   function,
 
 which was taken from the REXX language entry for Rosetta Code task   ''integer factors''.
 
-Other optimizations were incorporated which took advantage of several well-known generalizations about amicable pairs. 
+Other optimizations were incorporated which took advantage of several well-known generalizations about amicable pairs.
 
 The generation/summation is about   '''50'''  times faster;   searching is about   '''100'''   times faster.
 
@@ -4419,9 +4419,9 @@ sigma: procedure; parse arg x;   od=x//2         /*use either  EVEN  or  ODD  in
 '''output'''   is the same as the 2<sup>nd</sup> REXX version.
 
 ===version 4, SIGMA using integer SQRT===
-This REXX version is optimized to use the   ''integer square root of X''   in the   '''sigma'''   function   (instead of 
+This REXX version is optimized to use the   ''integer square root of X''   in the   '''sigma'''   function   (instead of
 
-computing the square of   '''J'''   to see if that value exceeds   '''X'''). 
+computing the square of   '''J'''   to see if that value exceeds   '''X''').
 
 The optimization makes it about another 20% faster when searching for amicable numbers up to one million.
 
@@ -4463,11 +4463,11 @@ sigma: procedure; parse arg x;   od=x//2         /*use either  EVEN  or  ODD  in
 '''output'''   is the same as the 2<sup>nd</sup> REXX version.
 
 ===version 5, SIGMA (in-line code)===
-This REXX version is optimized by bringing the functions in-line   (which minimizes the overhead of invoking two 
+This REXX version is optimized by bringing the functions in-line   (which minimizes the overhead of invoking two
 
-internal functions),   and it also pre-computes the powers of four   (for the integer square root code). 
+internal functions),   and it also pre-computes the powers of four   (for the integer square root code).
 
-This method of coding has the disadvantage in that the code (logic) is less idiomatic and therefore less readable. 
+This method of coding has the disadvantage in that the code (logic) is less idiomatic and therefore less readable.
 
 The optimization makes it about another 15% faster when searching for amicable numbers up to one million.
 
@@ -4501,7 +4501,7 @@ say                                              /*stick a fork in it,  we're al
 say #   'amicable pairs found up to'    H        /*display the count of amicable pairs. */
 ```
 
-'''output'''   is the same as the 2<sup>nd</sup> REXX version. 
+'''output'''   is the same as the 2<sup>nd</sup> REXX version.
 
 
 
@@ -4522,7 +4522,7 @@ see "OK" + nl
 func amicable nr
      sum = 1
      for d = 2 to sqrt(nr)
-         if nr % d = 0 
+         if nr % d = 0
             sum = sum + d
             sum = sum + nr / d ok
      next
@@ -4570,7 +4570,7 @@ for n = 1 to size
     m = amicable(n)
     if m > n and amicable(m) = n then print  n ; " and " ; m
 next
- 
+
 function amicable(nr)
      amicable = 1
      for d = 2 to sqr(nr)
@@ -4671,7 +4671,7 @@ println( result mkString ", " )
                (i 2))
       (if (> i root)
         divisors
-        (loop (if (zero? (modulo n i)) 
+        (loop (if (zero? (modulo n i))
                 (if (= (square i) n)
                   (cons i divisors)
                   (append (list i (quotient n i)) divisors))
@@ -4769,42 +4769,42 @@ import func Darwin.sqrt
 func sqrt(x:Int) -> Int { return Int(sqrt(Double(x))) }
 
 func properDivs(n: Int) -> [Int] {
-    
+
     if n == 1 { return [] }
-    
+
     var result = [Int]()
-    
+
     for div in filter (1...sqrt(n), { n % $0 == 0 }) {
-        
+
         result.append(div)
 
         if n/div != div && n/div != n { result.append(n/div) }
     }
-    
+
     return sorted(result)
-    
+
 }
 
 
 func sumDivs(n:Int) -> Int {
-    
+
     struct Cache { static var sum = [Int:Int]() }
-    
+
     if let sum = Cache.sum[n] { return sum }
-    
+
     let sum = properDivs(n).reduce(0) { $0 + $1 }
-    
+
     Cache.sum[n] = sum
-    
+
     return sum
 }
 
 func amicable(n:Int, m:Int) -> Bool {
-    
+
     if n == m { return false }
-    
+
     if sumDivs(n) != m || sumDivs(m) != n { return false }
-    
+
     return true
 }
 
@@ -4830,37 +4830,37 @@ import func Darwin.sqrt
 func sqrt(x:Int) -> Int { return Int(sqrt(Double(x))) }
 
 func sigma(n: Int) -> Int {
-    
+
     if n == 1 { return 0 }          // definition of aliquot sum
-    
+
     var result = 1
     let root = sqrt(n)
-    
+
     for var div = 2; div <= root; ++div {
         if n % div == 0 {
             result += div + n/div
         }
-        
+
     }
     if root*root == n { result -= root }
-    
+
     return (result)
 }
 
 func amicables (upTo: Int) -> () {
-    
+
     var aliquot = Array(count: upTo+1, repeatedValue: 0)
 
     for i in 1 ... upTo {           // fill lookup array
         aliquot[i] = sigma(i)
     }
-    
+
  for i in 1 ... upTo {
         let a = aliquot[i]
         if a > upTo {continue}      //second part of pair out-of-bounds
 
         if a == i {continue}        //skip perfect numbers
-        
+
         if i == aliquot[a] {
             print("\(i, a)")
             aliquot[a] = upTo+1     //prevent second display of pair
@@ -4900,7 +4900,7 @@ sub sum_proper_divisors(n)
 	if n > 1 then
 		for i = 1 to (n \ 2)
 			if n %% i = 0 then
-				sum = sum + i 
+				sum = sum + i
 			end if
 		next
 	end if
@@ -4915,7 +4915,7 @@ for i = 1 to 20000
 			print "Amicable pair:";sums(i);"-";sums(j)
 			exit for
 		end if
-	next 
+	next
 next
 
 ```
@@ -5122,7 +5122,7 @@ http://rosettacode.org/wiki/Amicable_pairs
 
 ```vb
 Option Explicit
- 
+
 Public Sub AmicablePairs()
 Dim a(2 To 20000) As Long, c As New Collection, i As Long, j As Long, t#
     t = Timer
@@ -5151,7 +5151,7 @@ Dim a(2 To 20000) As Long, c As New Collection, i As Long, j As Long, t#
         Debug.Print c.Item(i)
     Next i
 End Sub
- 
+
 Private Function S(n As Long) As Long
 'returns the sum of the proper divisors of n
 Dim j As Long
@@ -5165,7 +5165,7 @@ End Function
 
 ```txt
 Execution Time : 7,95703125 seconds.
-Amicable pairs below 20 000 are : 
+Amicable pairs below 20 000 are :
 220 : 284
 1184 : 1210
 2620 : 2924
@@ -5207,7 +5207,7 @@ For j = 1 To 20000
 				sum = sum + m
 			End If
 		End If
-	Next 
+	Next
 	If nlookup.Exists(sum) And nlookup.Item(sum) = j And j <> sum _
 		And uniquepair.Exists(sum) = False Then
 			uniquepair.Add j,sum
@@ -5244,9 +5244,9 @@ Execution Time: 162 seconds
 ```Yabasic
 sub sumDivs(n)
     local sum, d
-    
+
     sum = 1
-    
+
     for d = 2 to sqrt(n)
         if not mod(n, d) then
             sum = sum + d
@@ -5302,9 +5302,9 @@ L(L(220,284),L(1184,1210),L(2620,2924),L(5020,5564),L(6232,6368),L(10744,10856),
 60 GO SUB 1000
 70 IF n=num AND n<m THEN PRINT n;" ";m
 80 NEXT n
-90 STOP 
+90 STOP
 1000 REM sumprop
-1010 IF num<2 THEN LET num=0: RETURN 
+1010 IF num<2 THEN LET num=0: RETURN
 1020 LET sum=1
 1030 LET root=SQR num
 1040 FOR i=2 TO root-.01

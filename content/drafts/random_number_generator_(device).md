@@ -149,7 +149,7 @@ end Random;
 
 /* Initialized data */
 .data
-szFileName:              .asciz "/dev/urandom"      @ see linux doc 
+szFileName:              .asciz "/dev/urandom"      @ see linux doc
 szCarriageReturn:        .asciz "\n"
 /* datas error display */
 szMessErreur:        .asciz "Error detected.\n"
@@ -163,18 +163,18 @@ szMessResult:        .ascii "Random number :"
 sValue:              .space 12,' '
                      .asciz "\n"
 /* UnInitialized data */
-.bss 
+.bss
 sBuffer:             .skip BUFFERSIZE             @ buffer result
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
     ldr r0,iAdrszFileName               @ File name
     mov r1,#O_RDONLY                    @  flags
     mov r2,#0                           @ mode
     mov r7,#OPEN                        @ open file
-    svc #0 
+    svc #0
     cmp r0,#0                           @ error ?
     ble error
     mov r8,r0                           @ save FD
@@ -184,7 +184,7 @@ main:
     ldr r1,iAdrsBuffer                  @ buffer address
     mov r2,#BUFFERSIZE                  @ buffer size
     mov r7,#READ                        @ call system read file
-    svc 0 
+    svc 0
     cmp r0,#0                           @ read error ?
     ble error
     ldr r1,iAdrsBuffer                  @ buffer address
@@ -201,7 +201,7 @@ main:
 end:
     mov r0,r8
     mov r7, #CLOSE                      @ call system close file
-    svc #0 
+    svc #0
     cmp r0,#0
     blt error
     mov r0,#0                           @ return code
@@ -221,21 +221,21 @@ iAdrszMessErreur:          .int szMessErreur
 iAdrszCarriageReturn:      .int szCarriageReturn
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -258,12 +258,12 @@ displayError:
     bl affichageMess
 100:
     pop {r0-r2,lr}                          @ restaur registers
-    bx lr                                   @ return 
+    bx lr                                   @ return
 iAdrszMessErr:                 .int szMessErr
 iAdrsHexa:                     .int sHexa
 iAdrsDeci:                     .int sDeci
 /******************************************************************/
-/*     Converting a register to hexadecimal                      */ 
+/*     Converting a register to hexadecimal                      */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 conversion16:
@@ -273,7 +273,7 @@ conversion16:
     mov r3,r0                                @ save entry value
 1:                                           @ start loop
     and r0,r3,r4                             @ value register and mask
-    lsr r0,r2                                @ move right 
+    lsr r0,r2                                @ move right
     cmp r0,#10                               @ compare value
     addlt r0,#48                             @ <10  ->digit
     addge r0,#55                             @ >10  ->letter A-F
@@ -283,8 +283,8 @@ conversion16:
     bge 1b                                   @ no -> loop
 
 100:
-    pop {r1-r4,lr}                                     @ restaur registers 
-    bx lr     
+    pop {r1-r4,lr}                                     @ restaur registers
+    bx lr
 /***************************************************/
 /*  Converting a register to a signed decimal      */
 /***************************************************/
@@ -293,7 +293,7 @@ conversion10S:
     push {r0-r4,lr}       @ save registers
     mov r2,r1             @ debut zone stockage
     mov r3,#'+'           @ par defaut le signe est +
-    cmp r0,#0             @ negative number ? 
+    cmp r0,#0             @ negative number ?
     movlt r3,#'-'         @ yes
     mvnlt r0,r0           @ number inversion
     addlt r0,#1
@@ -304,9 +304,9 @@ conversion10S:
     strb r1,[r2,r4]       @ store digit on area
     sub r4,r4,#1          @ previous position
     cmp r0,#0             @ stop if quotient = 0
-    bne 1b	
+    bne 1b
 
-    strb r3,[r2,r4]       @ store signe 
+    strb r3,[r2,r4]       @ store signe
     subs r4,r4,#1         @ previous position
     blt  100f             @ if r4 < 0 -> end
 
@@ -315,9 +315,9 @@ conversion10S:
     strb r1,[r2,r4]       @store byte space
     subs r4,r4,#1         @ previous position
     bge 2b                @ loop if r4 > 0
-100: 
+100:
     pop {r0-r4,lr}        @ restaur registers
-    bx lr  
+    bx lr
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
@@ -330,12 +330,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 
@@ -371,8 +371,8 @@ Requires Windows XP or later.
 It works on systems having /dev/urandom, like [[GNU]]/[[Linux]].
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 #define RANDOM_PATH "/dev/urandom"
@@ -404,8 +404,8 @@ int main(void)
 [http://www.openbsd.org/cgi-bin/man.cgi?query=arc4random&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html arc4random()] appeared in [[OpenBSD]] 2.1 and has spread to many [[BSD]] systems. This function runs an ARC4 random number generator that takes entropy from a kernel device. (This kernel device is sysctl kern.arandom in OpenBSD, or /dev/urandom in some other systems.)
 
 
-```c>#include <inttypes.h
- /* PRIu32 */
+```c
+#include <inttypes.h> /* PRIu32 */
 #include <stdlib.h> /* arc4random */
 #include <stdio.h>  /* printf */
 
@@ -422,8 +422,8 @@ main()
 OpenSSL can generate random numbers. The default generator uses SHA1. For [[Unix]] systems, OpenSSL will gather entropy by reading a kernel device like /dev/urandom, or by using [http://egd.sourceforge.net/ EGD, the Entropy Gathering Daemon]. For other systems, OpenSSL might use a different source of entropy.
 
 
-```c>#include <inttypes.h
-
+```c
+#include <inttypes.h>
 #include <stdio.h>
 
 #include <openssl/err.h>
@@ -445,13 +445,13 @@ main()
 
 
 
-###  Windows 
+###  Windows
 
 {{works with|MinGW}}
 
 
-```c>#include <stdio.h
-  /* printf */
+```c
+#include <stdio.h>  /* printf */
 #include <windows.h>
 #include <wincrypt.h> /* CryptAcquireContext, CryptGenRandom */
 
@@ -480,20 +480,20 @@ main()
 == {{header|C++}} ==
 <code>std::random_device</code> is a uniformly-distributed integer random number generator that produces non-deterministic random numbers.
 
-Note that <code>std::random_device</code> may be implemented in terms of a pseudo-random number engine if a non-deterministic source (e.g. a hardware device) is not available to the implementation. 
+Note that <code>std::random_device</code> may be implemented in terms of a pseudo-random number engine if a non-deterministic source (e.g. a hardware device) is not available to the implementation.
 
 See the C++ section on [[Random_number_generator_(included)#C.2B.2B|Random number generator (included)]] for the list of pseudo-random number engines available.
 {{works with|C++11}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <random>
- 
+
 int main()
 {
     std::random_device rd;
     std::uniform_int_distribution<long> dist; // long is guaranteed to be 32 bits
-    
+
     std::cout << "Random Number: " << dist(rd) << std::endl;
 }
 ```
@@ -547,7 +547,7 @@ public static void ParkMiller(byte[] arr)
 {
    byte[] arr = new byte[10900000];
     for (int i = 0; i < arr.Length; i++)
-                {                       
+                {
                        arr[i] = gen();
                 }
 }
@@ -557,7 +557,7 @@ public static void ParkMiller(byte[] arr)
 == {{header|ChucK}} ==
 
 ```c
- Math.random2(-(Math.random()),Math.random(); 
+ Math.random2(-(Math.random()),Math.random();
 ```
 
 
@@ -619,7 +619,7 @@ No random device provided by the host (browser). But we can use the system timer
 (random (expt 2 32)) → 2275215386 ;; the same
 
 
-(random-seed (current-time-milliseconds )) 
+(random-seed (current-time-milliseconds ))
 (random (expt 2 32)) → 4061857345
 (random-seed (current-time-milliseconds ))
 (random (expt 2 32)) → 1322611152
@@ -1046,7 +1046,7 @@ Table[rand32[], {i, 1, 10}]
 {{out}}
 
 ```txt
-{355587317, -869860319, -91421859, 1605907693, 101463390, 891823090, 
+{355587317, -869860319, -91421859, 1605907693, 101463390, 891823090,
 -531713717, -1038608428, 1717313407, 674189312}
 ```
 
@@ -1190,7 +1190,7 @@ The code above creates a new function rnd() which returns cryptographically stro
 
 rnd() = 3055652197
 rnd(20) = 75735303746547944580
-... 
+...
 
 ```
 
@@ -1408,7 +1408,7 @@ function Get-RandomInteger
     (
         [Parameter(Mandatory=$false,
                    ValueFromPipeline=$true,
-                   ValueFromPipelineByPropertyName=$true, 
+                   ValueFromPipelineByPropertyName=$true,
                    Position=0)]
         [ValidateScript({$_ -ge 4})]
         [int[]]
@@ -1428,7 +1428,7 @@ function Get-RandomInteger
             [System.BitConverter]::ToInt32($bytes,0)
         }
     }
-    End 
+    End
     {
         Remove-Variable -Name rng -Scope Local
     }
@@ -1474,13 +1474,13 @@ As hexadecimal:
 Uses math module:
 
 ```ProDOS
-printline -random- 
+printline -random-
 ```
 
 
 ## PureBasic
 
-PureBasic has the source for the random data is the "/dev/urandom" device on Linux or Mac OSX and the "Microsoft Cryptography API" on Windows. 
+PureBasic has the source for the random data is the "/dev/urandom" device on Linux or Mac OSX and the "Microsoft Cryptography API" on Windows.
 
 ```PureBasic
 If OpenCryptRandom()
@@ -1581,7 +1581,7 @@ high   FFFFFFFF
 ```ring
 
 nr = 10
-for i = 1 to nr 
+for i = 1 to nr
     see random(i) + nl
 next
 
@@ -1752,7 +1752,7 @@ Linux:
 
 ```zkl
 const RANDOM_PATH="/dev/urandom";
- 
+
 fin,buf:=File(RANDOM_PATH,"r"), fin.read(4);
 fin.close();  // GC would also close the file
 println(buf.toBigEndian(0,4));  // 4 bytes @ offset 0

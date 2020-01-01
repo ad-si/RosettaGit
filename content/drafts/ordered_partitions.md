@@ -12,7 +12,7 @@ tags = []
 
 {{task|Discrete math}}
 
-In this task we want to find the ordered partitions into fixed-size blocks. 
+In this task we want to find the ordered partitions into fixed-size blocks.
 
 This task is related to [[Combinations]] in that it has to do with discrete mathematics and moreover a helper function to compute combinations is (probably) needed to solve this task.
 
@@ -23,11 +23,11 @@ Example 1: <math>partitions(2,0,2)</math> would create:
 
 ```txt
 
-{({1, 2}, {}, {3, 4}), 
- ({1, 3}, {}, {2, 4}), 
- ({1, 4}, {}, {2, 3}), 
- ({2, 3}, {}, {1, 4}), 
- ({2, 4}, {}, {1, 3}), 
+{({1, 2}, {}, {3, 4}),
+ ({1, 3}, {}, {2, 4}),
+ ({1, 4}, {}, {2, 3}),
+ ({2, 3}, {}, {1, 4}),
+ ({2, 4}, {}, {1, 3}),
  ({3, 4}, {}, {1, 2})}
 
 ```
@@ -38,20 +38,20 @@ Example 2: <math>partitions(1,1,1)</math> would create:
 
 ```txt
 
-{({1}, {2}, {3}), 
- ({1}, {3}, {2}), 
- ({2}, {1}, {3}), 
- ({2}, {3}, {1}), 
- ({3}, {1}, {2}), 
+{({1}, {2}, {3}),
+ ({1}, {3}, {2}),
+ ({2}, {1}, {3}),
+ ({2}, {3}, {1}),
+ ({3}, {1}, {2}),
  ({3}, {2}, {1})}
 
 ```
 
 
-Note that the number of elements in the list is 
+Note that the number of elements in the list is
 :<math>{\mathit{arg}_1+\mathit{arg}_2+...+\mathit{arg}_n \choose \mathit{arg}_1} \cdot {\mathit{arg}_2+\mathit{arg}_3+...+\mathit{arg}_n \choose \mathit{arg}_2} \cdot \ldots \cdot {\mathit{arg}_n \choose \mathit{arg}_n}</math>
 (see [http://en.wikipedia.org/wiki/Binomial_coefficient the definition of the binomial coefficient] if you are not familiar with this notation) and the number of elements remains the same regardless of how the argument is permuted
-(i.e. the [http://en.wikipedia.org/wiki/Multinomial_coefficient multinomial coefficient]). 
+(i.e. the [http://en.wikipedia.org/wiki/Multinomial_coefficient multinomial coefficient]).
 
 Also, <math>partitions(1,1,1)</math> creates the permutations of <math>\{1,2,3\}</math> and thus there would be <math>3! = 6</math> elements in the list.
 
@@ -63,7 +63,7 @@ Here are some explanatory remarks on the notation used in the task description:
 
 <math>\{1, \ldots, n\}</math> denotes the set of consecutive numbers from <math>1</math> to <math>n</math>, e.g. <math>\{1,2,3\}</math> if <math>n = 3</math>.
 
-<math>\Sigma</math> is the mathematical notation for summation, e.g. <math>\Sigma_{i=1}^3 i = 6</math> (see also [http://en.wikipedia.org/wiki/Summation#Capital-sigma_notation]). 
+<math>\Sigma</math> is the mathematical notation for summation, e.g. <math>\Sigma_{i=1}^3 i = 6</math> (see also [http://en.wikipedia.org/wiki/Summation#Capital-sigma_notation]).
 
 <math>\mathit{arg}_1,\mathit{arg}_2,...,\mathit{arg}_n</math> are the arguments — natural numbers — that the sought function receives.
 
@@ -342,7 +342,7 @@ Partitions for (2, 0, 2):
       PRINT "partitions(1,2,0,1):"
       PRINT FNpartitions(list3%())
       END
-      
+
       DEF FNpartitions(list%())
       LOCAL i%, j%, n%, p%, o$, x%()
       n% = DIM(list%(),1)
@@ -366,7 +366,7 @@ Partitions for (2, 0, 2):
         o$ += CHR$13 + CHR$10
       UNTIL NOT FNperm(x%())
       = o$
-      
+
       DEF FNperm(x%())
       LOCAL i%, j%
       FOR i% = DIM(x%(),1)-1 TO 0 STEP -1
@@ -428,8 +428,8 @@ partitions(1,2,0,1):
 
 Watch out for blank for loops.  Iterative permutation generation is described at [[http://en.wikipedia.org/wiki/Permutation#Systematic_generation_of_all_permutations]]; code messness is purely mine.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int next_perm(int size, int * nums)
 {
@@ -504,8 +504,8 @@ Part 1 2 3 4:
 ```
 
 With bitfield:
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef unsigned int uint;
 
@@ -929,17 +929,17 @@ void main() nothrow @nogc {
 (define (_partitions S ns )
     (cond
     ([empty? (rest ns)]  (list (combinations S (first ns))))
-    (else 
+    (else
         (for/fold (parts null)
         ([c (combinations S (first ns))])
-        (append 
-           parts 
+        (append
+           parts
            (pproduct c (_partitions (set-substract S c) (rest ns))))))))
-        
+
 ;; task : S = ( 0 , 1 ... n-1) args = ns
 (define (partitions . args)
-    (for-each 
-	 writeln 
+    (for-each
+	 writeln
         (_partitions (range 1  (1+ (apply + args))) args )))
 
 ```
@@ -949,34 +949,34 @@ void main() nothrow @nogc {
 ```txt
 
 (partitions 1 1 1)
-({ 1 } { 2 } { 3 })    
-({ 1 } { 3 } { 2 })    
-({ 2 } { 1 } { 3 })    
-({ 2 } { 3 } { 1 })    
-({ 3 } { 1 } { 2 })    
-({ 3 } { 2 } { 1 })    
+({ 1 } { 2 } { 3 })
+({ 1 } { 3 } { 2 })
+({ 2 } { 1 } { 3 })
+({ 2 } { 3 } { 1 })
+({ 3 } { 1 } { 2 })
+({ 3 } { 2 } { 1 })
 
 (partitions 2 0 2)
-({ 1 2 } () { 3 4 })    
-({ 1 3 } () { 2 4 })    
-({ 1 4 } () { 2 3 })    
-({ 2 3 } () { 1 4 })    
-({ 2 4 } () { 1 3 })    
-({ 3 4 } () { 1 2 })   
+({ 1 2 } () { 3 4 })
+({ 1 3 } () { 2 4 })
+({ 1 4 } () { 2 3 })
+({ 2 3 } () { 1 4 })
+({ 2 4 } () { 1 3 })
+({ 3 4 } () { 1 2 })
 
 (for-each writeln (_partitions (make-set '(b a d c )) '(1 2 1)))
-({ a } { b c } { d })    
-({ a } { b d } { c })    
-({ a } { c d } { b })    
-({ b } { a c } { d })    
-({ b } { a d } { c })    
-({ b } { c d } { a })    
-({ c } { a b } { d })    
-({ c } { a d } { b })    
-({ c } { b d } { a })    
-({ d } { a b } { c })    
-({ d } { a c } { b })    
-({ d } { b c } { a })    
+({ a } { b c } { d })
+({ a } { b d } { c })
+({ a } { c d } { b })
+({ b } { a c } { d })
+({ b } { a d } { c })
+({ b } { c d } { a })
+({ c } { a b } { d })
+({ c } { a d } { b })
+({ c } { b d } { a })
+({ d } { a b } { c })
+({ d } { a c } { b })
+({ d } { b c } { a })
 
 ```
 
@@ -997,7 +997,7 @@ defmodule Ordered do
     else
       Enum.to_list(1..sum)
       |> permute
-      |> Enum.reduce([], fn perm,acc -> 
+      |> Enum.reduce([], fn perm,acc ->
            {_, part} = Enum.reduce(mask, {perm,[]}, fn num,{pm,a} ->
              {p, rest} = Enum.split(pm, num)
              {rest, [Enum.sort(p) | a]}
@@ -1007,7 +1007,7 @@ defmodule Ordered do
       |> Enum.uniq
     end
   end
-  
+
   defp permute([]), do: [[]]
   defp permute(list), do: for x <- list, y <- permute(list -- [x]), do: [x|y]
 end
@@ -1076,12 +1076,12 @@ end;
 
 
 FixedPartitions(2, 0, 2);
-# [ [ [ 1, 2 ], [  ], [ 3, 4 ] ], [ [ 1, 3 ], [  ], [ 2, 4 ] ], 
-#   [ [ 1, 4 ], [  ], [ 2, 3 ] ], [ [ 2, 3 ], [  ], [ 1, 4 ] ], 
+# [ [ [ 1, 2 ], [  ], [ 3, 4 ] ], [ [ 1, 3 ], [  ], [ 2, 4 ] ],
+#   [ [ 1, 4 ], [  ], [ 2, 3 ] ], [ [ 2, 3 ], [  ], [ 1, 4 ] ],
 #   [ [ 2, 4 ], [  ], [ 1, 3 ] ], [ [ 3, 4 ], [  ], [ 1, 2 ] ] ]
 
 FixedPartitions(1, 1, 1);
-# [ [ [ 1 ], [ 2 ], [ 3 ] ], [ [ 1 ], [ 3 ], [ 2 ] ], [ [ 2 ], [ 1 ], [ 3 ] ], 
+# [ [ [ 1 ], [ 2 ], [ 3 ] ], [ [ 1 ], [ 3 ], [ 2 ] ], [ [ 2 ], [ 1 ], [ 3 ] ],
 #   [ [ 2 ], [ 3 ], [ 1 ] ], [ [ 3 ], [ 1 ], [ 2 ] ], [ [ 3 ], [ 2 ], [ 1 ] ] ]
 ```
 
@@ -1262,7 +1262,7 @@ keeps the chosen elements but also the not chosen elements together in a tuple.
 comb :: Int -> [a] -> [([a],[a])]
 comb 0 xs     = [([],xs)]
 comb _ []     = []
-comb k (x:xs) = [ (x:cs,zs) | (cs,zs) <- comb (k-1) xs ] ++ 
+comb k (x:xs) = [ (x:cs,zs) | (cs,zs) <- comb (k-1) xs ] ++
                 [ (cs,x:zs) | (cs,zs) <- comb  k    xs ]
 
 partitions :: [Int] -> [[[Int]]]
@@ -1458,7 +1458,7 @@ Here, on the right hand side we form 0 1 0 1 2 3 4 5, count how many things are 
       // monadic return/injection requires 1 additional
       // layer of list nesting:
       return [ [l_rest[0]].concat(r) ];
-      
+
     })});
   }
 
@@ -1478,7 +1478,7 @@ Here, on the right hand side we form 0 1 0 1 2 3 4 5, count how many things are 
       }))
     );
   }
-  
+
   // GENERIC
 
   // Monadic bind (chain) for lists
@@ -1492,7 +1492,7 @@ Here, on the right hand side we form 0 1 0 1 2 3 4 5, count how many things are 
       return m + i;
     });
   }
-  
+
   // EXAMPLE
 
   return partitions(2, 0, 2);
@@ -1505,7 +1505,7 @@ Here, on the right hand side we form 0 1 0 1 2 3 4 5, count how many things are 
 
 
 ```JavaScript
-[[[1, 2], [], [3, 4]], 
+[[[1, 2], [], [3, 4]],
  [[1, 3], [], [2, 4]],
  [[1, 4], [], [2, 3]],
  [[2, 3], [], [1, 4]],
@@ -1528,7 +1528,7 @@ def combination(r):
   else  ( [.[0]] + (.[1:]|combination(r-1))),
         ( .[1:]|combination(r))
   end;
- 
+
 # Input: a mask, that is, an array of lengths.
 # Output: a stream of the distinct partitions defined by the mask.
 def partition:
@@ -1583,7 +1583,7 @@ partitions [2,0,2]:
 
 ## Julia
 
-The method used, as seen in the function masked(), is to take a brute force permutation of size n = sum of partition,  
+The method used, as seen in the function masked(), is to take a brute force permutation of size n = sum of partition,
 partition it using the provided mask, and then sort the inner lists in order to properly filter duplicates.
 
 ```Julian
@@ -1616,7 +1616,7 @@ println(orderedpartitions([1, 1, 1]))
 
 ```
 
-{{output}} 
+{{output}}
 
 ```txt
 
@@ -1646,7 +1646,7 @@ println(orderedpartitions([1, 1, 1]))
 fun nextPerm(perm: IntArray): Boolean {
     val size = perm.size
     var k = -1
-    for (i in size - 2 downTo 0) { 
+    for (i in size - 2 downTo 0) {
         if (perm[i] < perm[i + 1]) {
             k = i
             break
@@ -1669,29 +1669,29 @@ fun nextPerm(perm: IntArray): Boolean {
         }
     }
     return true
-} 
+}
 
 fun List<Int>.isMonotonic(): Boolean {
     for (i in 1 until this.size) {
         if (this[i] < this[i - 1]) return false
     }
     return true
-}  
-                              
+}
+
 fun main(args: Array<String>) {
     val sizes = args.map { it.toInt() }
-    println("Partitions for $sizes:\n[") 
+    println("Partitions for $sizes:\n[")
     val totalSize = sizes.sum()
     val perm = IntArray(totalSize) { it + 1 }
-      
+
     do {
         val partition = mutableListOf<List<Int>>()
         var sum = 0
-        var isValid = true 
+        var isValid = true
         for (size in sizes) {
             if (size == 0) {
                 partition.add(emptyList<Int>())
-            } 
+            }
             else if (size == 1) {
                 partition.add(listOf(perm[sum]))
             }
@@ -1705,10 +1705,10 @@ fun main(args: Array<String>) {
             }
             sum += size
         }
-        if (isValid) println("  $partition")  
+        if (isValid) println("  $partition")
     }
     while (nextPerm(perm))
-    println("]")    
+    println("]")
 }
 ```
 
@@ -1828,7 +1828,7 @@ local parts = partitions(2,0,2)
 for i,tuple in ipairs(parts) do
   io.write "("
   for j,set in ipairs(tuple) do
-    io.write "{" 
+    io.write "{"
     for k,element in ipairs(set) do
       io.write(element)
       if k ~= #set then io.write(", ") end
@@ -1960,7 +1960,7 @@ use List::Util 1.33 qw(sum pairmap);
 sub partition {
     my @mask = @_;
     my $last = sum @mask or return [map {[]} 0..$#mask];
-    
+
     return pairmap {
         $b ? do {
             local $mask[$a] = $b - 1;
@@ -2319,7 +2319,7 @@ if __name__ == '__main__':
 ```txt
 Tests of the partitions function:
 
-partitions([2, 0, 2]) -> 
+partitions([2, 0, 2]) ->
 
     [[1, 2], [], [3, 4]]
     [[1, 3], [], [2, 4]]
@@ -2328,7 +2328,7 @@ partitions([2, 0, 2]) ->
     [[2, 4], [], [1, 3]]
     [[3, 4], [], [1, 2]]
 
-partitions([1, 1, 1]) -> 
+partitions([1, 1, 1]) ->
 
     [[1], [2], [3]]
     [[1], [3], [2]]
@@ -2707,7 +2707,7 @@ Output:
 #import std
 #import nat
 
-opart = 
+opart =
 
 -+
   ~&art^?\~&alNCNC ^|JalSPfarSPMplrDSL/~& ^DrlPrrPlXXS/~&rt ^DrlrjXS/~&l choices@lrhPX,
@@ -2767,7 +2767,7 @@ partitions(args.xplode()).pump(Console.println,Void);
 
 ```txt
 
-$ zkl bbb 
+$ zkl bbb
 L(L(1,2),L(),L(3,4))
 L(L(1,3),L(),L(2,4))
 L(L(1,4),L(),L(2,3))

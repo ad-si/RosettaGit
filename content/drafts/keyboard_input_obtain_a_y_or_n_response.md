@@ -10,14 +10,14 @@ categories = []
 tags = []
 +++
 
-{{task}} 
+{{task}}
 [[Category:Simple]]
 [[user input::task| ]]
 
 ;Task:
-Obtain a valid   '''Y'''   or   '''N'''   response from the [[input device::keyboard]]. 
+Obtain a valid   '''Y'''   or   '''N'''   response from the [[input device::keyboard]].
 
-The keyboard should be flushed, so that any outstanding key-presses are removed, preventing any existing   '''Y'''   or   '''N'''   key-press from being evaluated. 
+The keyboard should be flushed, so that any outstanding key-presses are removed, preventing any existing   '''Y'''   or   '''N'''   key-press from being evaluated.
 
 The response should be obtained as soon as   '''Y'''   or   '''N'''   are pressed, and there should be no need to press an   enter   key.
 
@@ -209,7 +209,7 @@ The loop on lines 30 - 40 will cycle as fast as the interpreter can go, assignin
 ==={{header|IS-BASIC}}===
 <lang IS-BASIC>100 GET K$ ! Flush the keyboard buffer
 110 PRINT "Press Y or N to continue."
-120 DO 
+120 DO
 130   LET K$=LCASE$(INKEY$)
 140 LOOP UNTIL K$="y" OR K$="n"
 150 PRINT "The response was ";K$
@@ -275,7 +275,7 @@ For POSIX compliant systems (in theory that includes WinNT family).
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/time.h>
- 
+
 void set_mode(int want_key)
 {
 	static struct termios old, new;
@@ -283,20 +283,20 @@ void set_mode(int want_key)
 		tcsetattr(STDIN_FILENO, TCSANOW, &old);
 		return;
 	}
- 
+
 	tcgetattr(STDIN_FILENO, &old);
 	new = old;
 	new.c_lflag &= ~(ICANON);
 	tcsetattr(STDIN_FILENO, TCSANOW, &new);
 }
- 
+
 int get_key(int no_timeout)
 {
 	int c = 0;
 	struct timeval tv;
 	fd_set fs;
 	tv.tv_usec = tv.tv_sec = 0;
- 
+
 	FD_ZERO(&fs);
 	FD_SET(STDIN_FILENO, &fs);
 
@@ -307,7 +307,7 @@ int get_key(int no_timeout)
 	}
 	return c;
 }
- 
+
 int main()
 {
 	int c;
@@ -341,8 +341,8 @@ int main()
 
 Windows specific
 
-```cpp>#include <conio.h
-
+```cpp
+#include <conio.h>
 #include <iostream>
 
 using namespace std;
@@ -402,10 +402,10 @@ namespace Y_or_N
                 Console.WriteLine(); // Breaks the line.
             } while (response != ConsoleKey.Y && response != ConsoleKey.N); // If the user did not respond with a 'Y' or an 'N', repeat the loop.
 
-             /* 
+             /*
               * Return true if the user responded with 'Y', otherwise false.
-              * 
-              * We know the response was either 'Y' or 'N', so we can assume 
+              *
+              * We know the response was either 'Y' or 'N', so we can assume
               * the response is 'N' if it is not 'Y'.
               */
             return response == ConsoleKey.Y;
@@ -571,7 +571,7 @@ import Keyboard
 view : Int -> Element
 view keyCode =
   let
-    char = 
+    char =
       Char.fromCode keyCode
 
     showChar =
@@ -604,7 +604,7 @@ main =
 ................
 ! flush the keyboard buffer
 ! --------------------------------
-! you can use POKE(198,0) in C-64 
+! you can use POKE(198,0) in C-64
 ! ERRE version
 ! --------------------------------
 REPEAT
@@ -616,9 +616,9 @@ REPEAT
   GET(K$)
 UNTIL INSTR("YyNn",K$)<>0
 !
-! with C-64 you must write a line like 
+! with C-64 you must write a line like
 ! UNTIL K$="Y" OR K$="N"
-!  
+!
 
 PRINT("The response was ";K$)
 .................
@@ -659,27 +659,27 @@ printf(1,"Your response was %s\n",key)
 handler YesOrNoHandler type RUIhandler{initialUI =[ui], onConstructionFunction = start}
 
     ui Div { };
-	
+
     const KEY_N int = 78;
     const KEY_Y int = 89;
-	
+
     function start()
     	document.onKeyDown = d_onKeyDown;
     end
-    
+
     function d_onKeyDown(e Event in)
-		
+
 	case (e.ch)
   	    when (KEY_N)
 	        ui.innerText = "N pressed.";
 	    when (KEY_Y)
 	        ui.innerText = "Y pressed.";
 	end
-	
+
 	e.preventDefault();
-    
+
     end
-	
+
 end
 ```
 
@@ -745,7 +745,7 @@ printfn "\nYour choice: %c" (yorn())
 
 ## Fortran
 
-Standard Fortran has no special I/O statements that allow asynchronous actions (such as the KeyPressed and ReadKey functions of Turbo Pascal), so input is awaited in the usual fashion and a prompt should be supplied to indicate to the reader that a response is awaited, otherwise the user will confront a blank screen with nothing happening and will have to guess what might be expected. Further, there is no scheme for knowing if impending input has been waiting in an input buffer since before the need for a question arose, so it is not possible to flush such lines before requesting the special input. Impatience at the screenface can prompt typing ahead so that the next command will be immediately available but incorrectly anticipated input will likely wreck the run, though for yes/no responses you may be rescued if such input does not conform to the required form: the bad input will be ignored and the question asked afresh. Thus, the details of the specification cannot be met via standard Fortran, though a given system may have special subroutines equivalent to KeyPressed, etc. available.   
+Standard Fortran has no special I/O statements that allow asynchronous actions (such as the KeyPressed and ReadKey functions of Turbo Pascal), so input is awaited in the usual fashion and a prompt should be supplied to indicate to the reader that a response is awaited, otherwise the user will confront a blank screen with nothing happening and will have to guess what might be expected. Further, there is no scheme for knowing if impending input has been waiting in an input buffer since before the need for a question arose, so it is not possible to flush such lines before requesting the special input. Impatience at the screenface can prompt typing ahead so that the next command will be immediately available but incorrectly anticipated input will likely wreck the run, though for yes/no responses you may be rescued if such input does not conform to the required form: the bad input will be ignored and the question asked afresh. Thus, the details of the specification cannot be met via standard Fortran, though a given system may have special subroutines equivalent to KeyPressed, etc. available.
 
 Even so, asking questions can often be useful when messing about with tests, etc., so some routines for this can help. These were devised afresh at the Culham Science Centre, so there was some language generality:
 
@@ -1007,7 +1007,7 @@ This solution works in both Icon and Unicon.  It also accepts <tt>y</tt> or <tt>
 ```unicon
 procedure main()
     write("Response was ",getResponse("OK? (Y or N): "))
-end 
+end
 
 procedure getResponse(prompt)
     while kbhit() do getch()   # flush input
@@ -1130,13 +1130,13 @@ Uses the Gtk library.
 
 ```julia
 using Gtk.ShortNames
- 
+
 function keypresswindow()
 
     # This code creates  the Gtk widgets on the screen.
     txt = "Type Y or N"
     win = Window("Keypress Test", 250, 30) |> (Frame() |> ((vbox = Box(:v)) |> (lab = Label(txt))))
-    
+
     # this is the keystroke processing code, a function and a callback for the function.
     function keycall(w, event)
         ch = Char(event.keyval)
@@ -1151,7 +1151,7 @@ function keypresswindow()
     Gtk.showall(win)
     wait(c)
 end
- 
+
 keypresswindow()
 
 ```
@@ -1236,20 +1236,20 @@ sub Quit hndle$
     close #hndle$
     end
     end sub
- 
+
 ```
 
 
 
 ## LiveCode
 
-In the Card script, add a handler for the OpenCard event, putting empty into the text field. 
+In the Card script, add a handler for the OpenCard event, putting empty into the text field.
 
 In the text field, put the following in its code
 
 ```LiveCode
 on KeyDown k
-    if toUpper(k) is among the items of "Y,N" then 
+    if toUpper(k) is among the items of "Y,N" then
         answer "Thanks for your response"
     else
         answer "You need to enter Y or N"
@@ -1367,7 +1367,7 @@ Module CheckisToo {
                   if keypress(Y) then Ret=True : exit
                   if keypress(N) then exit
                   drop$=inkey$
-                  \\ ensure thread MM run using wait 
+                  \\ ensure thread MM run using wait
                   wait 1
             } Always
             Keyboard Ucase$(Key$)+Chr$(13)
@@ -1379,8 +1379,8 @@ Module CheckisToo {
             M++
       } as MM interval 10
       While Inkey$<>"" {}
-      After 10 { 
-            Module GetYN &Y 
+      After 10 {
+            Module GetYN &Y
       }
       Profiler
       Input "Your answer (Y/N):", A$
@@ -1425,7 +1425,7 @@ UseUIForm
 ## Microsoft Small Basic
 
 
-Submitted by: '''AykayayCiti''' (''Earl L. Montgomery'') on Mar 19, 2018.  
+Submitted by: '''AykayayCiti''' (''Earl L. Montgomery'') on Mar 19, 2018.
 Once you hit a key a separate dialog box will appear. Place them side by side to see the results.
 
 ```vb
@@ -1480,7 +1480,7 @@ Enter Y or N to continue: J
 Enter Y or N to continue: YES
 Enter Y or N to continue: no
 Enter Y or N to continue: N
-SAMPLES>        
+SAMPLES>
 ```
 
 
@@ -1499,7 +1499,7 @@ Select
   when c='Y' Then Say 'YES'
   when c='N' Then Say 'NO'
   otherwise       Say 'Undecided'
-  End 
+  End
 ```
 
 
@@ -1581,7 +1581,7 @@ Output:
 
 ```txt
 % ./ObtainYN
-Your answer? (Y/N): 
+Your answer? (Y/N):
 Your answer was: y
 
 ```
@@ -1636,16 +1636,16 @@ say so prompt-char("Y or N? ") ~~ /:i y/;
 
 ```Phix
 integer key
- 
+
 while get_key()!=-1 do end while -- flush
 
 puts(1,"Your answer? (Y/N)")
- 
+
 while 1 do
     key = upper(get_key())
     if find(key,"YN") then exit end if
 end while
- 
+
 printf(1,"\nYour response was %s\n",key)
 ```
 
@@ -1729,7 +1729,7 @@ KeyChar Key Modifiers
 
 ## PureBasic
 
-Inkey() returns the character string of the key which is being pressed at the time. 
+Inkey() returns the character string of the key which is being pressed at the time.
 
 ```PureBasic
 PrintN("Press Y or N to continue")
@@ -1886,7 +1886,7 @@ RETURN
 This version works with all classic REXXes.
 
 
-REXX (in general) requires the user to press the   '''ENTER'''   key after entering text.  
+REXX (in general) requires the user to press the   '''ENTER'''   key after entering text.
 
 This is because the original (IBM) REXX was designed and written for a system when all I/O to a user's terminal screen was
 
@@ -1899,7 +1899,7 @@ in block mode and required the user to press one of the following before any dat
 
 Note that the above keys may have different names on terminals that emulate an IBM 3270 type terminal (block mode terminals).
 
-Some older Classic REXX interpreters have a keyboard read subroutine (BIF) so that the program can read keyboard keys as 
+Some older Classic REXX interpreters have a keyboard read subroutine (BIF) so that the program can read keyboard keys as
 
 they are pressed   (see the other versions below).
 
@@ -2193,7 +2193,7 @@ Without a console (answer in the global variable yn; this should work in any GUI
 ```tcl
 
 proc yesno {message} {
-  toplevel .msg 
+  toplevel .msg
   pack [label .msg.l -text "$message\n (type Y/N)?"]
   set ::yn ""
   bind .msg <Key-y> {set ::yn "Y"}
@@ -2253,7 +2253,7 @@ The <code>go-raw</code> method on the <code>termios</code> structure only manipu
 getkey() {
   local stty="$(stty -g)"
   trap "stty $stty; trap SIGINT; return 128" SIGINT
-  stty cbreak -echo 
+  stty cbreak -echo
   local key
   while true; do
     key=$(dd count=1 2>/dev/null) || return $?
@@ -2269,7 +2269,7 @@ getkey() {
 yorn() {
   echo -n "${1:-Press Y or N to continue: }" >&2
   local yorn="$(getkey YyNn)" || return $?
-  case "$yorn" in 
+  case "$yorn" in
     [Yy]) echo >&2 Y; return 0;;
     [Nn]) echo >&2 N; return 1;;
   esac
@@ -2324,7 +2324,7 @@ Key_Purge()                                     // flush keyboard buffer
 do {
     #1 = Get_Key("Are you sure? (Y/N): ")       // prompt for a key
     #1 &= 0xdf                                  // to upper case
-} while (#1 != 'Y' && #1 != 'N') 
+} while (#1 != 'Y' && #1 != 'N')
 ```
 
 

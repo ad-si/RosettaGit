@@ -45,7 +45,7 @@ procedure RungeKutta is
    type Derivative is access function(t, y : Floaty) return Floaty;
    package Math is new Ada.Numerics.Generic_Elementary_Functions (Floaty);
    function calc_err (t, calc : Floaty) return Floaty;
-   
+
    procedure Runge (yp_func : Derivative; t, y : in out Floaty_Array;
                     dt : Floaty) is
       dy1, dy2, dy3, dy4 : Floaty;
@@ -59,7 +59,7 @@ procedure RungeKutta is
          y(n+1) := y(n) + (dy1 + 2.0 * (dy2 + dy3) + dy4) / 6.0;
       end loop;
    end Runge;
-   
+
    procedure Print (t, y : Floaty_Array; modnum : Positive) is begin
       for i in t'Range loop
          if i mod modnum = 0 then
@@ -77,8 +77,8 @@ procedure RungeKutta is
    function calc_err (t, calc : Floaty) return Floaty is
       actual : constant Floaty := (t**2 + 4.0)**2 / 16.0;
    begin return abs(actual-calc);
-   end calc_err;   
-   
+   end calc_err;
+
    dt : constant Floaty := 0.10;
    N : constant Positive := 100;
    t_arr, y_arr : Floaty_Array(0 .. N);
@@ -127,7 +127,7 @@ BEGIN
    [0:num points]REAL y;   y[0] := y0;			CO Grid and starting point.CO
    PROC dy by dx = (REAL x, y) REAL : x * sqrt(y);	CO Differential equation. CO
    FOR i TO num points
-   DO 
+   DO
       y[i] := rk4 (dy by dx, y[i-1], x0 + dx * (i - 1), dx)
    OD;
    print (("   x              true y         calc y       relative error", newline));
@@ -271,12 +271,12 @@ BEGIN {
       y = 1.0
       FOR i% = 0 TO 100
         t = i% / 10
-  
+
         IF t = INT(t) THEN
           actual = ((t^2 + 4)^2) / 16
           PRINT "y("; t ") = "; y TAB(20) "Error = ";  actual - y
         ENDIF
-  
+
         k1 =  t * SQR(y)
         k2 = (t + 0.05) * SQR(y + 0.05 * k1)
         k3 = (t + 0.05) * SQR(y + 0.05 * k2)
@@ -321,8 +321,8 @@ y(10) = 675.999949  Error = 5.09832905E-5
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -419,11 +419,11 @@ namespace RungeKutta
             s[i] = 0.0;
             y[i] = 1.0;
 
-            Console.WriteLine(" 
+            Console.WriteLine("
 ### ===============================
  ");
             Console.WriteLine(" Beging 4th Order Runge Kutta Method ");
-            Console.WriteLine(" 
+            Console.WriteLine("
 ### ===============================
  ");
 
@@ -563,7 +563,7 @@ int main(void)
                       y (+ y (/ (+ k1 k2 k2 k3 k3 k4) 6)))
                 collect (cons x y)))))
 
-(let ((sol (runge-kutta (lambda (x y) (* x (sqrt y))) 0 1 10 100)))    
+(let ((sol (runge-kutta (lambda (x y) (* x (sqrt y))) 0 1 10 100)))
     (loop for n from 0
           for (x . y) in sol
           when (zerop (mod n 10))
@@ -595,7 +595,7 @@ while t <= 10
    k2	= (t + 0.05) * Math.sqrt(y + 0.05 * k1)
    k3	= (t + 0.05) * Math.sqrt(y + 0.05 * k2)
    k4	= (t + 0.1)  * Math.sqrt(y + 0.1  * k3)
- 
+
    printf("y(%4.1f)\t= %12.6f \t error: %12.6e\n", t, y, (((t**2 + 4)**2 / 16) - y )) if (t.round - t).abs < 1.0e-5
    y += 0.1 * (k1 + 2 * (k2 + k3) + k4) / 6
    t += 0.1
@@ -798,7 +798,7 @@ Y( 10 )= 676.0001  Error=-6.103516E-05
 
 ```F Sharp
 
-open System 
+open System
 
 let y'(t,y) = t * sqrt(y)
 
@@ -810,7 +810,7 @@ let RungeKutta4 t0 y0 t_max dt =
     let dy4(t,y) = dt * y'(t+dt, y+dy3(t,y))
 
     (t0,y0) |> Seq.unfold (fun (t,y) ->
-        if ( t <= t_max) then Some((t,y), (Math.Round(t+dt, 6), y + ( dy1(t,y) + 2.0*dy2(t,y) + 2.0*dy3(t,y) + dy4(t,y))/6.0)) 
+        if ( t <= t_max) then Some((t,y), (Math.Round(t+dt, 6), y + ( dy1(t,y) + 2.0*dy2(t,y) + 2.0*dy3(t,y) + dy4(t,y))/6.0))
         else None
         )
 
@@ -964,7 +964,7 @@ def tab 9
 
 local fn dydx( x as double, y as double ) as double
 end fn = x * sqr(y)
- 
+
 local fn exactY( x as long ) as double
 end fn = ( x ^2 + 4 ) ^2 / 16
 
@@ -979,7 +979,7 @@ if x == int(x)
 result = fn exactY( x )
 print "y("; mid$( str$(x), 2, len(str$(x) )); ") = "; y, "Error = "; result - y
 end if
- 
+
 k1 = h * fn dydx( x, y )
 k2 = h * fn dydx( x + h / 2, y + k1 / 2 )
 k3 = h * fn dydx( x + h / 2, y + k2 / 2 )
@@ -1213,30 +1213,30 @@ rk4 y x dx =
       k3 = dx * f (x + dx / 2.0) (y + k2 / 2.0)
       k4 = dx * f (x + dx) (y + k3)
   in y + (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0
-  
+
 actual :: Double -> Double
 actual x = (1 / 16) * (x * x + 4) * (x * x + 4)
- 
+
 step :: Double
 step = 0.1
- 
+
 ixs :: [Int]
 ixs = [0 .. 100]
- 
+
 xys :: [(Double, Double)]
 xys =
   scanl
     (\(x, y) _ -> (((x * 10) + (step * 10)) / 10, rk4 y x step))
     (0.0, 1.0)
     ixs
- 
+
 samples :: [(Double, Double, Double)]
 samples =
   zip ixs xys >>=
   (\(i, (x, y)) ->
       [ (x, y, actual x - y)
       | 0 == mod i 10 ])
- 
+
 main :: IO ()
 main =
   (putStrLn . unlines) $
@@ -1286,10 +1286,10 @@ rk4=: adverb define
  for_t. }: T do.
    ty=. t,Yt
    k1=. h * u ty
-   k2=. h * u ty + -: h,k1 
-   k3=. h * u ty + -: h,k2 
+   k2=. h * u ty + -: h,k1
+   k3=. h * u ty + -: h,k2
    k4=. h * u ty + h,k3
-   Y=. Y, Yt=. Yt + (%6) * 1 2 2 1 +/@:* k1, k2, k3, k4  
+   Y=. Y, Yt=. Yt + (%6) * 1 2 2 1 +/@:* k1, k2, k3, k4
  end.
 T ,. Y
 )
@@ -1667,7 +1667,7 @@ y(10) = 675.9999490167097   ± 5.098329029351589e-5
 
 ## jq
 
-In this section, two solutions are presented.  
+In this section, two solutions are presented.
 They use "while" and/or "until" as defined in recent versions of jq (after version 1.4).
 To use either of the two programs with jq 1.4, simply include the lines in the following block:
 
@@ -1689,7 +1689,7 @@ def while(cond; update):
 ```jq
 # yprime maps [t,y] to a number, i.e. t * sqrt(y)
 def yprime: .[0] * (.[1] | sqrt);
- 
+
 # The exact solution of yprime:
 def actual:
   . as $t
@@ -1747,7 +1747,7 @@ def dy(f): runge_kutta(f);
          | [$t + dt, $y + dy(yprime) ] )
 | .[0] as $t | .[1] as $y
 | if $t | integerq then
-     "y(\($t|round(1))) = \($y|round(10000)) ± \( ($t|actual) - $y | abs)" 
+     "y(\($t|round(1))) = \($y|round(10000)) ± \( ($t|actual) - $y | abs)"
   else empty
   end
 ```
@@ -1795,7 +1795,7 @@ def newRK4Step(yp):
   | ($dt * ([$t+$dt, $y+$dy3]    |yp)) as $dy4
   | $y + ($dy1+2*($dy2+$dy3)+$dy4)/6
 ;
- 
+
 
 def printErr: # input: [t, y]
   def abs: if . < 0 then -. else . end;
@@ -2062,11 +2062,11 @@ y(10) = 675.999949 Error = 0.5098329e-4
 
 ```Mathematica
 (* Symbolic solution *)
-DSolve[{y'[t] == t*Sqrt[y[t]], y[0] == 1}, y, t] 
+DSolve[{y'[t] == t*Sqrt[y[t]], y[0] == 1}, y, t]
 Table[{t, 1/16 (4 + t^2)^2}, {t, 0, 10}]
 
 (* Numerical solution I (not RK4) *)
-Table[{t, y[t], Abs[y[t] - 1/16*(4 + t^2)^2]}, {t, 0, 10}] /. 
+Table[{t, y[t], Abs[y[t] - 1/16*(4 + t^2)^2]}, {t, 0, 10}] /.
  First@NDSolve[{y'[t] == t*Sqrt[y[t]], y[0] == 1}, y, {t, 0, 10}]
 
 (* Numerical solution II (RK4) *)
@@ -2079,8 +2079,8 @@ phi[y_] := Module[{k1, k2, k3, k4},
   k4 = h*f[y + k3];
   y + k1/6 + k2/3 + k3/3 + k4/6]
 solution = NestList[phi, {0, 1}, 101];
-Table[{y[[1]], y[[2]], Abs[y[[2]] - 1/16 (y[[1]]^2 + 4)^2]}, 
-  {y,  solution[[1 ;; 101 ;; 10]]}] 
+Table[{y[[1]], y[[2]], Abs[y[[2]] - 1/16 (y[[1]]^2 + 4)^2]},
+  {y,  solution[[1 ;; 101 ;; 10]]}]
 
 ```
 
@@ -2237,7 +2237,7 @@ proc rk(start, stop, step: float) =
 
         if abs(cur_t - math.round(cur_t)) < 1e-5:
             echo "y(", cur_t, ") = ", cur_y, ", error = ", solution(cur_t) - cur_y
-        
+
         let dy1 = step * fn(cur_t, cur_y)
         let dy2 = step * fn(cur_t + 0.5 * step, cur_y + 0.5 * dy1)
         let dy3 = step * fn(cur_t + 0.5 * step, cur_y + 0.5 * dy2)
@@ -2270,24 +2270,24 @@ y(10.0) = 675.9999490167097, error = 5.098329029351589e-005
 
 
 ```objeck
-class RungeKuttaMethod {  
+class RungeKuttaMethod {
   function : Main(args : String[]) ~ Nil {
     x0 := 0.0; x1 := 10.0; dx := .1;
-    
+
     n := 1 + (x1 - x0)/dx;
     y := Float->New[n->As(Int)];
-    
+
     y[0] := 1;
     for(i := 1; i < n; i++;) {
       y[i] := Rk4(Rate(Float, Float) ~ Float, dx, x0 + dx * (i - 1), y[i-1]);
     };
-    
+
     for(i := 0; i < n; i += 10;) {
       x := x0 + dx * i;
       y2 := (x * x / 4 + 1)->Power(2.0);
-      
-      x_value := x->As(Int); 
-      y_value := y[i]; 
+
+      x_value := x->As(Int);
+      y_value := y[i];
       rel_value := y_value/y2 - 1.0;
       "y({$x_value})={$y_value}; error: {$rel_value}"->PrintLine();
     };
@@ -2298,10 +2298,10 @@ class RungeKuttaMethod {
     k2 := dx * f(x + dx / 2, y + k1 / 2);
     k3 := dx * f(x + dx / 2, y + k2 / 2);
     k4 := dx * f(x + dx, y + k3);
-    
+
     return y + (k1 + 2 * k2 + 2 * k3 + k4) / 6;
   }
-  
+
   function : native : Rate(x : Float, y : Float) ~ Float {
     return x * y->SquareRoot();
   }
@@ -2482,7 +2482,7 @@ uses sysutils;
 
 type
     TDerivative = function (t, y : Real) : Real;
-    
+
 procedure RungeKutta(yDer : TDerivative;
                      var t, y : array of Real;
                      dt   : Real);
@@ -2497,7 +2497,7 @@ begin
         dy2 := dt * yDer(t[idx] + dt / 2.0, y[idx] + dy1 / 2.0);
         dy3 := dt * yDer(t[idx] + dt / 2.0, y[idx] + dy2 / 2.0);
         dy4 := dt * yDer(t[idx] + dt,       y[idx] + dy3);
-        
+
         t[idx + 1] := t[idx] + dt;
         y[idx + 1] := y[idx] + (dy1 + 2.0 * (dy2 + dy3) + dy4) / 6.0;
     end;
@@ -2512,7 +2512,7 @@ begin
     CalcError := abs(trueVal - y);
 end;
 
-procedure Print(t, y : array of Real; 
+procedure Print(t, y : array of Real;
                 modnum : Integer);
 var
     idx : Cardinal;
@@ -2522,7 +2522,7 @@ begin
     begin
         if idx mod modnum = 0 then
         begin
-            WriteLn(Format('y(%4.1f) = %12.8f  Error: %12.6e', 
+            WriteLn(Format('y(%4.1f) = %12.8f  Error: %12.6e',
                 [t[idx], y[idx], CalcError(t[idx], y[idx])]));
         end;
     end;
@@ -2536,14 +2536,14 @@ end;
 const
     dt = 0.10;
     N = 100;
-    
+
 var
     tArr, yArr : array [0..N] of Real;
-    
+
 begin
     tArr[0] := 0.0;
     yArr[0] := 1.0;
-    
+
     RungeKutta(@YPrime, tArr, yArr, dt);
     Print(tArr, yArr, 10);
 end.
@@ -2589,9 +2589,9 @@ sub runge_kutta {
 	return $t + $dt, $y + ($dy[0] + 2*$dy[1] + 2*$dy[2] + $dy[3]) / 6;
     }
 }
- 
+
 my $RK = runge_kutta sub { $_[0] * sqrt $_[1] }, .1;
- 
+
 for(
     my ($t, $y) = (0, 1);
     sprintf("%.0f", $t) <= 10;
@@ -2635,10 +2635,10 @@ sub runge-kutta(&yp) {
         ($a + 2*($b + $c) + $d) / 6;
     }
 }
- 
+
 constant δt = .1;
 my &δy = runge-kutta { $^t * sqrt($^y) };
- 
+
 loop (
     my ($t, $y) = (0, 1);
     $t <= 10;
@@ -2731,7 +2731,7 @@ Runge_Kutta: procedure options (main);           /* 10 March 2014 */
 
       if mod(t, 1.0) = 0 then
          put skip edit('y(', trim(t), ')=', y, ', error = ', abs(y - (t**2 + 4)**2 / 16 ))
-                      (3 a, column(9), f(16,10), a, f(13,10));      
+                      (3 a, column(9), f(16,10), a, f(13,10));
       y = y + (dy1 + 2*dy2 + 2*dy3 + dy4)/6;
    end;
 
@@ -2801,7 +2801,7 @@ function Runge-Kutta (${function:F}, ${function:y}, $y0, $t0, $dt, $tEnd) {
 function F ($t,$y)  {
     $t * [MATH]::Sqrt($y)
 }
-function y ($t)  { 
+function y ($t)  {
     (1/16) * [MATH]::Pow($t*$t + 4,2)
 }
 $y0 = 1
@@ -2816,19 +2816,19 @@ Runge-Kutta  F y $y0 $t0  $dt  $tEnd
 
 ```txt
 
-t                                    y                                    error                              
--                                    -                                    -----                              
-0                                    1                                    0                                  
-1                                    1.56249985427811                     1.45721892108597E-07               
-2                                    3.9999990805208                      9.19479200778284E-07               
-3                                    10.5624970904376                     2.90956244874963E-06               
-4                                    24.9999937650906                     6.23490936391136E-06               
-5                                    52.5624891803026                     1.08196974153429E-05               
-6                                    99.9999834054036                     1.65945964170078E-05               
-7                                    175.562476482271                     2.35177287493116E-05               
-8                                    288.999968434799                     3.156520142511E-05                 
-9                                    451.56245927684                      4.07231603389846E-05               
-10                                   675.99994901671                      5.09832902935159E-05 
+t                                    y                                    error
+-                                    -                                    -----
+0                                    1                                    0
+1                                    1.56249985427811                     1.45721892108597E-07
+2                                    3.9999990805208                      9.19479200778284E-07
+3                                    10.5624970904376                     2.90956244874963E-06
+4                                    24.9999937650906                     6.23490936391136E-06
+5                                    52.5624891803026                     1.08196974153429E-05
+6                                    99.9999834054036                     1.65945964170078E-05
+7                                    175.562476482271                     2.35177287493116E-05
+8                                    288.999968434799                     3.156520142511E-05
+9                                    451.56245927684                      4.07231603389846E-05
+10                                   675.99994901671                      5.09832902935159E-05
 
 ```
 
@@ -2842,18 +2842,18 @@ EnableExplicit
 Define.i i
 Define.d y=1.0, k1=0.0, k2=0.0, k3=0.0, k4=0.0, t=0.0
 
-If OpenConsole()  
+If OpenConsole()
   For i=0 To 100
     t=i/10
     If Not i%10
-      PrintN("y("+RSet(StrF(t,0),2," ")+") ="+RSet(StrF(y,4),9," ")+#TAB$+"Error ="+RSet(StrF(Pow(Pow(t,2)+4,2)/16-y,10),14," "))            
-    EndIf    
+      PrintN("y("+RSet(StrF(t,0),2," ")+") ="+RSet(StrF(y,4),9," ")+#TAB$+"Error ="+RSet(StrF(Pow(Pow(t,2)+4,2)/16-y,10),14," "))
+    EndIf
     k1=t*Sqr(y)
     k2=(t+0.05)*Sqr(y+0.05*k1)
     k3=(t+0.05)*Sqr(y+0.05*k2)
-    k4=(t+0.10)*Sqr(y+0.10*k3)    
-    y+0.1*(k1+2*(k2+k3)+k4)/6    
-  Next  
+    k4=(t+0.10)*Sqr(y+0.10*k3)
+    y+0.1*(k1+2*(k2+k3)+k4)/6
+  Next
   Print("Press return to exit...") : Input()
 EndIf
 End
@@ -2895,12 +2895,12 @@ def RK4(f):
 	    )( dt * f( t + dt/2, y + dy2/2 ) )
 	    )( dt * f( t + dt/2, y + dy1/2 ) )
 	    )( dt * f( t       , y         ) )
- 
+
 def theory(t): return (t**2 + 4)**2 /16
- 
+
 from math import sqrt
 dy = RK4(lambda t, y: t*sqrt(y))
- 
+
 t, y, dt = 0., 1., .1
 while t <= 10:
     if abs(round(t) - t) < 1e-5:
@@ -2928,13 +2928,13 @@ y(10.0)	= 675.999949 	 error: 5.09833e-05
 
 
 
-###  Alternate solution 
+###  Alternate solution
 
 
 
 ```python
 from math import sqrt
- 
+
 def rk4(f, x0, y0, x1, n):
     vx = [0] * (n + 1)
     vy = [0] * (n + 1)
@@ -2949,10 +2949,10 @@ def rk4(f, x0, y0, x1, n):
         vx[i] = x = x0 + i * h
         vy[i] = y = y + (k1 + k2 + k2 + k3 + k3 + k4) / 6
     return vx, vy
- 
+
 def f(x, y):
     return x * sqrt(y)
- 
+
 vx, vy = rk4(f, 0, 1, 10, 100)
 for x, y in list(zip(vx, vy))[::10]:
     print("%4.1f %10.5f %+12.4e" % (x, y, y - (4 + x * x)**2 / 16))
@@ -2997,7 +2997,7 @@ rk4 <- function(f, x0, y0, x1, n) {
 sol <- rk4(function(x, y) x*sqrt(y), 0, 1, 10, 100)
 cbind(sol, sol[, 2] - (4 + sol[, 1]^2)^2/16)[seq(1, 101, 10), ]
 
-      vx         vy              
+      vx         vy
  [1,]  0   1.000000  0.000000e+00
  [2,]  1   1.562500 -1.457219e-07
  [3,]  2   3.999999 -9.194792e-07
@@ -3023,12 +3023,12 @@ The Runge-Kutta method
 ```racket
 
 (define (RK4 F δt)
-  (λ (t y) 
+  (λ (t y)
     (define δy1 (* δt (F t y)))
     (define δy2 (* δt (F (+ t (* 1/2 δt)) (+ y (* 1/2 δy1)))))
     (define δy3 (* δt (F (+ t (* 1/2 δt)) (+ y (* 1/2 δy2)))))
     (define δy4 (* δt (F (+ t δt) (+ y δy1))))
-    (list (+ t δt) 
+    (list (+ t δt)
           (+ y (* 1/6 (+ δy1 (* 2 δy2) (* 2 δy3) δy4))))))
 
 ```
@@ -3039,8 +3039,8 @@ The method modifier which divides each time-step into ''n'' sub-steps:
 ```racket
 
 (define ((step-subdivision n method) F h)
-  (λ (x . y) (last (ODE-solve F (cons x y) 
-                              #:x-max (+ x h) 
+  (λ (x . y) (last (ODE-solve F (cons x y)
+                              #:x-max (+ x h)
                               #:step (/ h n)
                               #:method method))))
 
@@ -3055,7 +3055,7 @@ Usage:
 
 (define (exact-solution t) (* 1/16 (sqr (+ 4 (sqr t)))))
 
-(define numeric-solution 
+(define numeric-solution
     (ODE-solve F '(0 1) #:x-max 10 #:step 1 #:method (step-subdivision 10 RK4)))
 
 (for ([s numeric-solution])
@@ -3142,10 +3142,10 @@ sqrt: procedure; parse arg x; if x=0  then return 0; d=digits(); m.=9; numeric f
         do k=j+5  to 0  by -1;  numeric digits m.k;  g=(g+x/g)*.5;  end /*k*/;    return g
 ```
 
-Programming note:   the   '''fmt'''   function is used to 
-align the output with attention paid to the different ways some 
+Programming note:   the   '''fmt'''   function is used to
+align the output with attention paid to the different ways some
 
-REXXes format numbers that are in floating point representation. 
+REXXes format numbers that are in floating point representation.
 
 
 {{out|output|text=  when using Regina REXX:}}
@@ -3197,7 +3197,7 @@ decimals(8)
 y = 1.0
 for i = 0 to 100
     t = i  / 10
-    if t = floor(t) 
+    if t = floor(t)
        actual = (pow((pow(t,2) + 4),2)) / 16
        see "y(" + t + ") = " + y + "  error = " + (actual - y) + nl ok
     k1 =  t * sqrt(y)
@@ -3767,7 +3767,7 @@ y(10.0) = 675.99994902	Error: 5.09832864e-05
 ```zkl
 fcn yp(t,y) { t * y.sqrt() }
 fcn exact(t){ u:=0.25*t*t + 1.0; u*u }
- 
+
 fcn rk4_step([(y,t)],h){
    k1:=h * yp(t,y);
    k2:=h * yp(t + 0.5*h, y + 0.5*k1);
@@ -3775,7 +3775,7 @@ fcn rk4_step([(y,t)],h){
    k4:=h * yp(t + h, y + k3);
    T(y + (k1+k4)/6.0 + (k2+k3)/3.0, t + h);
 }
- 
+
 fcn loop(h,n,[(y,t)]){
    if(n % 10 == 1)
       print("t = %f,\ty = %f,\terr = %g\n".fmt(t,y,(y - exact(t)).abs()));

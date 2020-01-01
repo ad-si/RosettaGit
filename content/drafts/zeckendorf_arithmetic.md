@@ -16,7 +16,7 @@ This task is a ''total immersion'' zeckendorf task; using decimal numbers will a
 The task is to implement addition, subtraction, multiplication, and division using [[Zeckendorf number representation]]. [[Zeckendorf number representation#Using_a_C.2B.2B11_User_Defined_Literal|Optionally]] provide decrement, increment and comparitive operation functions.
 
 ;Addition
-Like binary 1 + 1 = 10, note carry 1 left. There the similarity ends. 10 + 10 = 101, note carry 1 left and 1 right. 100 + 100 = 1001, note carry 1 left and 2 right, this is the general case. 
+Like binary 1 + 1 = 10, note carry 1 left. There the similarity ends. 10 + 10 = 101, note carry 1 left and 1 right. 100 + 100 = 1001, note carry 1 left and 2 right, this is the general case.
 
 Occurrences of 11 must be changed to 100. Occurrences of 111 may be changed from the right by replacing 11 with 100, or from the left converting 111 to 100 + 100;
 
@@ -70,7 +70,7 @@ Here you teach your computer its zeckendorf tables. eg. 101 * 1001:
   d = 1000 * 101 = c + b = 101010
 
   1001 = d + a therefore 101 * 1001 =
- 
+
   101010
    + 101
   ______
@@ -102,8 +102,8 @@ Lets try 1000101 divided by 101, so we can use the same table used for multiplic
 
 {{trans|D}}
 
-```c>#include <stdbool.h
-
+```c
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -911,33 +911,33 @@ sealed struct ZeckendorfNumber
 {
     int dVal;
     int dLen;
-    
+
     clone()
         = ZeckendorfNumber.newInternal(dVal,dLen);
-    
+
     cast n(string s)
     {
         int i := s.Length - 1;
         int q := 1;
-        
+
         dLen := i / 2;
         dVal := 0;
-        
+
         while (i >= 0)
         {
             dVal += ((intConvertor.convert(s[i]) - 48) * q);
             q *= 2;
-            
+
             i -= 1
         }
     }
-    
+
     internal readContent(ref int val, ref int len)
     {
         val := dVal;
         len := dLen;
     }
-    
+
     private a(int n)
     {
         int i := n;
@@ -948,10 +948,10 @@ sealed struct ZeckendorfNumber
             {
                 dLen := i
             };
-            
+
             int v2 := dVal $shr (i * 2);
             int v := (dVal $shr (i * 2)) && 3;
-            
+
             ((dVal $shr (i * 2)) && 3) =>
                 0 { ^ self }
                 1 { ^ self }
@@ -960,33 +960,33 @@ sealed struct ZeckendorfNumber
                     {
                         ^ self
                     };
-                    
+
                     dVal += (1 $shl (i*2 + 1));
-                    
+
                     ^ self
                 }
                 3 {
                     int tmp := 3 $shl (i * 2);
                     tmp := tmp.xor(-1);
                     dVal := dVal && tmp;
-                    
+
                     self.b((i+1)*2)
                 };
-            
+
             i += 1
         }
     }
-    
+
     inc()
     {
         dVal += 1;
         self.a(0)
     }
-    
+
     private b(int pos)
     {
         if (pos == 0) { ^ self.inc() };
-        
+
         ifnot((dVal $shr pos).allMask:1)
         {
             dVal += (1 $shl pos);
@@ -1008,14 +1008,14 @@ sealed struct ZeckendorfNumber
         {
             int tmp := 1 $shl pos;
             tmp := tmp.xor(-1);
-            
+
             dVal := dVal && tmp;
-            
+
             ^ self
         };
-                                        
+
         self.c(pos + 1);
-        
+
         if (pos > 0)
         {
             self.b(pos - 1)
@@ -1023,17 +1023,17 @@ sealed struct ZeckendorfNumber
         else
         {
             self.inc()
-        }            
+        }
     }
-            
+
     internal constructor sum(ZeckendorfNumber n, ZeckendorfNumber m)
     {
         int mVal := 0;
         int mLen := 0;
-        
-        n.readContent(ref dVal, ref dLen);        
+
+        n.readContent(ref dVal, ref dLen);
         m.readContent(ref mVal, ref mLen);
-        
+
         for(int GN := 0, GN < (mLen + 1) * 2, GN += 1)
         {
             if ((mVal $shr GN).allMask:1)
@@ -1042,39 +1042,39 @@ sealed struct ZeckendorfNumber
             }
         }
     }
-    
+
     internal constructor difference(ZeckendorfNumber n, ZeckendorfNumber m)
     {
         int mVal := 0;
         int mLen := 0;
-        
-        n.readContent(ref dVal, ref dLen);        
+
+        n.readContent(ref dVal, ref dLen);
         m.readContent(ref mVal, ref mLen);
-        
-        for(int GN := 0, GN < (mLen + 1) * 2, GN += 1) 
+
+        for(int GN := 0, GN < (mLen + 1) * 2, GN += 1)
         {
             if ((mVal $shr GN).allMask:1)
             {
                 self.c(GN)
             }
         };
-        
+
         while (((dVal $shr (dLen*2)) && 3) == 0 || dLen == 0)
         {
             dLen -= 1
         }
     }
-    
+
     internal constructor product(ZeckendorfNumber n, ZeckendorfNumber m)
     {
-        n.readContent(ref dVal, ref dLen);              
-        
+        n.readContent(ref dVal, ref dLen);
+
         ZeckendorfNumber Na := m;
         ZeckendorfNumber Nb := m;
         ZeckendorfNumber Nr := 0n;
         ZeckendorfNumber Nt := 0n;
-        
-        for(int i := 0, i < (dLen + 1) * 2, i += 1) 
+
+        for(int i := 0, i < (dLen + 1) * 2, i += 1)
         {
             if (((dVal $shr i) && 1) > 0)
             {
@@ -1084,42 +1084,42 @@ sealed struct ZeckendorfNumber
             Nb += Na;
             Na := Nt
         };
-        
+
         Nr.readContent(ref dVal, ref dLen);
     }
-    
+
     internal constructor newInternal(int v, int l)
     {
         dVal := v;
         dLen := l
     }
-    
+
     get string Printable()
     {
         if (dVal == 0)
             { ^ "0" };
-            
+
         //int n := dVal $shr (dLen * 2);
-        //int r := (dVal $shr (dLen * 2)) && 3;            
-            
+        //int r := (dVal $shr (dLen * 2)) && 3;
+
         string s := dig1[(dVal $shr (dLen * 2)) && 3];
         int i := dLen - 1;
         while (i >= 0)
         {
             s := s + dig[(dVal $shr (i * 2)) && 3];
-            
+
             i-=1
         };
-        
+
         ^ s
     }
-    
+
     add(ZeckendorfNumber n)
         = ZeckendorfNumber.sum(self, n);
-        
+
     subtract(ZeckendorfNumber n)
         = ZeckendorfNumber.difference(self, n);
-        
+
     multiply(ZeckendorfNumber n)
         = ZeckendorfNumber.product(self, n);
 }
@@ -1128,7 +1128,7 @@ public program()
 {
     console.printLine("Addition:");
     var n := 10n;
-    
+
     n += 10n;
     console.printLine(n);
     n += 10n;
@@ -1139,7 +1139,7 @@ public program()
     console.printLine(n);
     n += 10101n;
     console.printLine(n);
-    
+
     console.printLine("Subtraction:");
     n := 1000n;
     n -= 101n;
@@ -1147,7 +1147,7 @@ public program()
     n := 10101010n;
     n -= 1010101n;
     console.printLine(n);
-    
+
     console.printLine("Multiplication:");
     n := 1001n;
     n *= 101n;
@@ -1684,7 +1684,7 @@ function dec(z)
             end
         end
     end
-    tocanonical(z)    
+    tocanonical(z)
     z
 end
 
@@ -1796,16 +1796,16 @@ zeckendorftest()
  1001
  10101
  100101
- 1010000 
- 
+ 1010000
+
  Subtraction:
  1
  1000000
- 
+
  Multiplication:
  1000100
  101000101
- 
+
  Division:
  1001
  (1001, 1)
@@ -2066,13 +2066,13 @@ sub infix:<+z>($a is copy, $b is copy) { $a++z; $a++z while $b--z nez $z0; $a };
 sub infix:<-z>($a is copy, $b is copy) { $a--z; $a--z while $b--z nez $z0; $a };
 
 # multiplication
-sub infix:<*z>($a, $b) { 
+sub infix:<*z>($a, $b) {
     return $z0 if $a eqz $z0 or $b eqz $z0;
     return $a if $b eqz $z1;
     return $b if $a eqz $z1;
     my $c = $a;
     my $d = $z1;
-    repeat { 
+    repeat {
          my $e = $z0;
          repeat { $c++z; $e++z } until $e eqz $a;
          $d++z;
@@ -2085,7 +2085,7 @@ sub infix:</z>($a is copy, $b is copy) {
     fail "Divide by zero" if $b eqz $z0;
     return $a if $a eqz $z0 or $b eqz $z1;
     my $c = $z0;
-    repeat { 
+    repeat {
         my $d = $b +z ($z1 ~ $z0);
         $c++z;
         $a++z;
@@ -2206,7 +2206,7 @@ atom r = 0
     integer k = length(fib)
     while k>2 and n<fib[k] do
         k -= 1
-    end while   
+    end while
     for i=k to 2 by -1 do
         integer c = n>=fib[i]
         r += r+c
@@ -2238,7 +2238,7 @@ atom dec = 0, bit = 2
 end function
 
 function to_bits(integer x)
--- Simplified copy of int_to_bits(), but in reverse order, 
+-- Simplified copy of int_to_bits(), but in reverse order,
 -- and +ve only but (also only) as many bits as needed, and
 -- ensures there are *two* trailing 0 (most significant)
     sequence bits = {}
@@ -2275,7 +2275,7 @@ function to_int(sequence bits)
     end for
     return val
 end function
- 
+
 function zstr(object z)
     if sequence(z) then
         for i=1 to length(z) do
@@ -2287,7 +2287,7 @@ function zstr(object z)
 end function
 
 function rep(sequence res, integer ds, sequence was, wth)
--- helper for cleanup, validates replacements 
+-- helper for cleanup, validates replacements
     integer de = ds+length(was)-1
     if res[ds..de]!=was then ?9/0 end if
     if length(was)!=length(wth) then ?9/0 end if
@@ -2321,7 +2321,7 @@ function zcleanup(sequence res)
         if res[l-1]=0 then      res = rep(res,l-1,{0,2},{1,0})          -- 02 -> 10
                       else      res = rep(res,l-2,{0,1,2},{1,0,1})      -- 012 -> 101
         end if
-    end if      
+    end if
     -- second stage, pass 1, right to left, 011 -> 100
     for i=length(res)-2 to 1 by -1 do
         if res[i..i+2]={0,1,1} then res[i..i+2] = {1,0,0} end if
@@ -2552,13 +2552,13 @@ test(m,"/",0b1010,zdiv(m,0b1010),"10100 rem 0")
          '((X Y) (unless (=0 X) Y))
          Lst
          (uniq Fibs) ) ) )
-            
+
 (de incz (Lst)
    (addz Lst (1)) )
 
 (de decz (Lst)
    (subz Lst (1)) )
-   
+
 (de addz (Lst1 Lst2)
    (let Max (max (length Lst1) (length Lst2))
       (reorg
@@ -2569,7 +2569,7 @@ test(m,"/",0b1010,zdiv(m,0b1010),"10100 rem 0")
       (let
          (Max (max (length Lst1) (length Lst2))
             Lst (mapcar - (need Max Lst1 0) (need Max Lst2 0)) )
-         (loop 
+         (loop
             (while (match '(@A 1 0 0 @B) Lst)
                (setq Lst (append @A (0 1 1) @B)) )
             (while (match '(@A 1 -1 0 @B) Lst)
@@ -2598,15 +2598,15 @@ test(m,"/",0b1010,zdiv(m,0b1010),"10100 rem 0")
       (mapc
          '((X)
             (when (= 1 (car X))
-               (setq Mulz (addz (cdr X) Mulz)) ) 
+               (setq Mulz (addz (cdr X) Mulz)) )
             Mulz )
          (mapcar
             '((X)
                (cons
-                  X 
+                  X
                   (push 'Sums (addz (car Sums) (cadr Sums))) ) )
-            (reverse Lst2) ) ) ) ) 
-          
+            (reverse Lst2) ) ) ) )
+
 (de divz (Lst1 Lst2)
    (let Q 0
       (while (lez Lst2 Lst1)
@@ -2625,7 +2625,7 @@ test(m,"/",0b1010,zdiv(m,0b1010),"10100 rem 0")
                (setq Lst (append @A (0 0) @B) ) )
             (while (match '(@A 2 @B) Lst)
                (inc
-                  (if (cdr @A) 
+                  (if (cdr @A)
                      (tail 2 @A)
                      @A ) )
                (if @B
@@ -2861,7 +2861,7 @@ This implementation only handles natural (non-negative numbers).  The algorithms
   (for/sum ([i (reverse z)]
             [j (in-naturals)])
     (* i (F j))))
-            
+
 (define (natural->zeck n)
   (if (zero? n)
       null
@@ -2888,7 +2888,7 @@ This implementation only handles natural (non-negative numbers).  The algorithms
 (define (left->right width fn)
   (λ (lst)
     (let F ([a lst])
-      (if (< (length a) width) 
+      (if (< (length a) width)
           a
           (let ([f (fn (take a width))])
             (cons (first f) (F (append (rest f) (drop a width)))))))))
@@ -2898,7 +2898,7 @@ This implementation only handles natural (non-negative numbers).  The algorithms
 (define (right->left width fn)
   (λ (lst)
     (let F ([a lst])
-      (if (< (length a) width) 
+      (if (< (length a) width)
           a
           (let ([f (fn (take-right a width))])
             (append (F (append (drop-right a width) (drop-right f 1)))
@@ -2953,7 +2953,7 @@ This implementation only handles natural (non-negative numbers).  The algorithms
          [f3 (right->left 3 rule-b)]
          [f4 (left->right 3 rule-b)])
     ((compose1 unpad f4 f3 f2 f1 f reverse) (map op (f0 y) (f0 z)))))
- 
+
 (define (zeck+ y z)
   (zeck-combine + y z))
 
@@ -2963,17 +2963,17 @@ This implementation only handles natural (non-negative numbers).  The algorithms
 
 (define (zeck* y z)
   (define (M ry Zn Zn_1 [acc null])
-    (if (null? ry) 
+    (if (null? ry)
         acc
-        (M (rest ry) (zeck+ Zn Zn_1) Zn 
-           (if (zero? (first ry)) acc (zeck+ acc Zn))))) 
+        (M (rest ry) (zeck+ Zn Zn_1) Zn
+           (if (zero? (first ry)) acc (zeck+ acc Zn)))))
   (cond [(zeck< z y) (zeck* z y)]
         [(null? y) null]               ; 0 * z -> 0
         [else (M (reverse y) z z)]))
 
 (define (zeck-quotient/remainder y z)
   (define (M Zn acc)
-    (if (zeck< y Zn) 
+    (if (zeck< y Zn)
         (drop-right acc 1)
         (M (zeck+ Zn (first acc)) (cons Zn acc))))
   (define (D x m [acc null])
@@ -3003,13 +3003,13 @@ This implementation only handles natural (non-negative numbers).  The algorithms
 (define (zeck< y z)
   ; Compare equal-length unpadded zecks
   (define (LT a b)
-    (if (null? a) 
+    (if (null? a)
         #f
         (let ([a0 (first a)] [b0 (first b)])
-          (if (= a0 b0) 
+          (if (= a0 b0)
               (LT (rest a) (rest b))
               (= a0 0)))))
-        
+
   (let* ([a (unpad y)] [len-a (length a)]
          [b (unpad z)] [len-b (length b)])
     (cond [(< len-a len-b) #t]
@@ -3072,7 +3072,7 @@ object Z {
 
   // get multiply table from fmts
   def mt(z: Z): List[Z] = {fmts.getOrElse(z,Nil) match {case Nil => {val e = mwv(z); fmts=fmts+(z->e); e}; case l => l}}
-  
+
   // multiply weight vector
   def mwv(z: Z): List[Z] = {
     val wv = new ListBuffer[Z]; wv += z; wv += (z+z)
@@ -3080,7 +3080,7 @@ object Z {
     while ((zs.size<upper.size)) {wv += (wv.toList.last + wv.toList.reverse.tail.head); zs = "1"+zs}
     wv.toList
   }
-  
+
   // get division table (division weight vector)
   def dt(dd: Z, ds: Z): List[Z] = {
     val wv = new ListBuffer[Z]; mt(ds).copyToBuffer(wv)
@@ -3193,21 +3193,21 @@ case class Z(var zs: String) {
     }
     BigInt(zd.mkString)
   }
-  
+
   val fasig: (Z, Z) => Int = (z1, z2) => if (z1.z.abs>z2.z.abs) z1.z.signum else z2.z.signum
-  val fssig: (Z, Z) => Int = (z1, z2) => 
+  val fssig: (Z, Z) => Int = (z1, z2) =>
     if ((z1.z.abs>z2.z.abs && z1.z.signum>0)||(z1.z.abs<z2.z.abs && z1.z.signum<0)) 1 else -1
 
-  def +(that: Z): Z = 
-    if (this==Z("0")) that 
-    else if (that==Z("0")) this 
+  def +(that: Z): Z =
+    if (this==Z("0")) that
+    else if (that==Z("0")) this
     else if (this.z.signum == that.z.signum) Z((fa(this.z.abs.max(that.z.abs),this.z.abs.min(that.z.abs))*this.z.signum).toString)
     else if (this.z.abs == that.z.abs) Z("0")
     else Z((fs(this.z.abs.max(that.z.abs),this.z.abs.min(that.z.abs))*fasig(this, that)).toString)
 
   def ++ : Z = {val za = this + Z("1"); this.zs = za.zs; this.z = za.z; this}
 
-  def -(that: Z): Z = 
+  def -(that: Z): Z =
     if (this==Z("0")) Z((that.z*(-1)).toString)
     else if (that==Z("0")) this
     else if (this.z.signum != that.z.signum) Z((fa(this.z.abs.max(that.z.abs),this.z.abs.min(that.z.abs))*this.z.signum).toString)
@@ -3216,18 +3216,18 @@ case class Z(var zs: String) {
 
   def -- : Z = {val zs = this - Z("1"); this.zs = zs.zs; this.z = zs.z; this}
 
-  def * (that: Z): Z = 
+  def * (that: Z): Z =
     if (this==Z("0")||that==Z("0")) Z("0")
     else if (this==Z("1")) that
     else if (that==Z("1")) this
     else Z((fm(this.z.abs.max(that.z.abs),this.z.abs.min(that.z.abs))*this.z.signum*that.z.signum).toString)
 
-  def / (that: Z): Option[Z] = 
+  def / (that: Z): Option[Z] =
     if (that==Z("0")) None
     else if (this==Z("0")) Some(Z("0"))
     else if (that==Z("1")) Some(Z("1"))
     else if (this.z.abs < that.z.abs) Some(Z("0"))
-    else if (this.z == that.z) Some(Z("1")) 
+    else if (this.z == that.z) Some(Z("1"))
     else Some(Z((fd(this.z.abs.max(that.z.abs),this.z.abs.min(that.z.abs))*this.z.signum*that.z.signum).toString))
 
   def % (that: Z): Option[Z] =
@@ -3242,7 +3242,7 @@ case class Z(var zs: String) {
   def <= (that: Z): Boolean = this.z <= that.z
   def >  (that: Z): Boolean = this.z >  that.z
   def >= (that: Z): Boolean = this.z >= that.z
-  
+
 }
 
 val elapsed: (=> Unit) => Long = f => {val s = System.currentTimeMillis; f; (System.currentTimeMillis - s)/1000}
@@ -3305,7 +3305,7 @@ val iops = Map(("+",iadd),("-",isub),("*",imul),("/",idiv),("%",imod))
 println("elapsed time: "+elapsed{
     calcs foreach {case (op1,op,op2) => println(op1+" "+op+" "+op2+" = "
       +{(ops(op))(op1,op2) match {case None => None; case Some(z) => z; case z => z}}
-        .ensuring{x=>(iops(op))(z2i(op1),z2i(op2)) match {case None => None == x; case Some(i) => i == z2i(x.asInstanceOf[Z]); case i => i == z2i(x.asInstanceOf[Z])}})}   
+        .ensuring{x=>(iops(op))(z2i(op1),z2i(op2)) match {case None => None == x; case Some(i) => i == z2i(x.asInstanceOf[Z]); case i => i == z2i(x.asInstanceOf[Z])}})}
   }+" sec"
 )
 

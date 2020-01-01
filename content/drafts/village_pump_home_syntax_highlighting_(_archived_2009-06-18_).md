@@ -55,7 +55,8 @@ This will significantly clean up the Mediawiki extension namespace, and make for
 
 : It's happened!  I've replaced the GeSHiSyntaxHighlight Mediawiki extension with the GeSHiCodeTag extension.  The old tag format works (for now), but it ''will'' be removed as soon as possible.  All tags of <nowiki>&lt;mylang&gt;some_code&lt;mylang&gt;</nowiki> need to be changed to <nowiki>&lt;lang mylang&gt;some_code&lt;/lang&gt;</nowiki>.  So this block:
 
-```cpp>#include <stdio
+```cpp
+#include <stdio>
 
 int main()
 {
@@ -67,7 +68,8 @@ int main()
 
 : Should be rewrapped like this:
 
-```cpp>#include <stdio
+```cpp
+#include <stdio>
 
 int main()
 {
@@ -78,8 +80,7 @@ int main()
 
 : This is going to require a massive site-wide effort for all supported languages.  See [[Help:GeSHi]] for details. As soon as we're confident most of the pages have been handled, I'll disable support for <nowiki>&lt;lang&gt;</nowiki> entirely. --[[User:Short Circuit|Short Circuit]] 02:33, 23 January 2009 (UTC)
 :: When the <nowiki><lang></nowiki> tags are removed, [[Special:Version]] will not any more list all the languages in the tags section, right? Maybe there should be a (perhaps auto-generated) page listing all supported languages (or maybe it's even possible to include them in [[Special:Version]] as separate section). Or maybe there's already such a list somewhere, which I simply didn't notice? --[[User:Ce|Ce]] 08:18, 23 January 2009 (UTC)
-::: We are now only using <nowiki>
-```cpp></nowiki
+::: We are now only using <nowiki></nowiki>
  tags, where "cpp" is replaced by the language ID in question.  Additionally, all language IDs are now case-insensitive, so <nowiki>
 ```C></nowiki> works the same as <nowiki><lang c></nowiki
 .  This is a Good Thing, because the supported case was originally determined by the case of the language file name.  And those were all lower case... --[[User:Short Circuit|Short Circuit]] 08:11, 11 February 2009 (UTC)
@@ -119,9 +120,9 @@ PHP, QBasic, SQL, VHDL and Web3D. Unless I looked in the wrong place.
 
 I'd like to propose the following:
 
-* Add a page about syntax highlighting, what languages are available, and what one must do to extend/change the existing highlighting. 
+* Add a page about syntax highlighting, what languages are available, and what one must do to extend/change the existing highlighting.
 * Link that page from the homepage.
-* Make a copy of the php-files with the syntax highlighting code available via the Wiki. Then people can just grab the code that fits best, and turn it into code for a new language. 
+* Make a copy of the php-files with the syntax highlighting code available via the Wiki. Then people can just grab the code that fits best, and turn it into code for a new language.
 * When they've done that, they should ask someone with admin rights to incorporate the changes. That shouldn't happen too frequently, so the workload for the admins should be tolerable. For security reasons, it's probably a bad idea to allow editing of "life" php code.
 * Make &lt;code lang="xyz"&gt;...&lt;/code&gt; act the same as &lt;pre&gt;...&lt;/pre&gt;, if there's no syntax highlightling definition for '''xyz'''. This will allow to write syntax highlighting tags ''right now'', instead of having to replace them all later when syntax highlighting for that languages becomes available
 * Once the php code has settled, one can submit it back upstream.
@@ -172,16 +173,24 @@ I suspect that 'with' is also missing.
 While adding some example for C, I noticed the following oddities:
 * the parser is not case sensitive (C is!), since it hl-ed '''If''' as the keyword '''if'''--[[User:ShinTakezou|ShinTakezou]] 14:25, 17 December 2008 (UTC)
 
-```c>if</lang
+```c
+if
+```
 
 
-```c>If</lang
+```c
+If
+```
 
 
-```c>iF</lang
+```c
+iF
+```
 
 
-```c>IF</lang
+```c
+IF
+```
 
 : Fixed. I'll send the relevant changes upstream. --[[User:Short Circuit|Short Circuit]] 00:53, 23 January 2009 (UTC)
 
@@ -228,23 +237,23 @@ Can we get GeSHi updated? Also I created a Modula-3 language file for GeSHi and 
 If anyone ever feels like putting whitespace code on here (unlikely but possible) they may have trouble highlighting it:
 
 ```whitespace
-   
-	 	
-	 		 
 
-	 	 
-	 
+
+
+
+
+
 ```
 
 Taking out the nowiki tags eliminates the code:
 
 ```whitespace
-   
-	 	
-	 		 
 
-	 	 
-	 
+
+
+
+
+
 ```
 
 Not sure if that can be fixed or not. --[[User:Mwn3d|Mwn3d]] 18:58, 23 January 2009 (UTC)
@@ -272,9 +281,9 @@ int main()
 
 ```whitespace
 
-code: 	  	 	
- 		  	 		
-     
+code:
+
+
     end
 
 ```
@@ -285,11 +294,11 @@ code:
 
 ```whitespace
 
- 	 	 	
-  	  	  	
-	   	
-	   	
-        	   
+
+
+
+
+
 
 ```
 
@@ -373,10 +382,12 @@ There's a problem with this fallback: if the language is recognized, then the co
 ```foo>abc <fnord> def</lang
 
 
-```c>abc <fnord> def</lang
+```c
+abc <fnord> def
+```
 
 This difference means that code examples containing &lt; or &amp; will stop displaying correctly if the specified language becomes supported.
-I would prefer that everything be treated as HTML (as &lt;pre>, indenting, and the current unsupported-language behavior do) so that it's possible to insert markup in examples (e.g. hyperlinks in comments), 
+I would prefer that everything be treated as HTML (as &lt;pre>, indenting, and the current unsupported-language behavior do) so that it's possible to insert markup in examples (e.g. hyperlinks in comments),
 ```
  is not a magic string impossible to include, and for consistency with most of the rest of HTML.
 On the other hand, treating the content literally does have the advantage of making it easier to paste in examples containing &lt;s.

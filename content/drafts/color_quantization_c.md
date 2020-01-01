@@ -12,8 +12,8 @@ tags = []
 
 [[file:Quantum_frog_dithered.png|200px|thumb]]This is a complete program that takes a PPM P6 image and a number, then writes out the image reduced to the number of colors to out.ppm.  There is optional dithering, too, which doesn't make a whole lot of difference with say 64 colors or more.  And with low colors, the quantization did such a good job of picking average colors that it actually hurts the dithering process.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -281,7 +281,7 @@ void error_diffuse(image im, node_heap *h)
 #define C10 7
 #define C01 5
 #define C11 2
-#define C00 1 
+#define C00 1
 #define CTOTAL (C00 + C11 + C10 + C01)
 
 	for (px = npx, i = 0; i < im->h; i++) {

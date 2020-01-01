@@ -17,9 +17,9 @@ tags = []
 
 The IEEE floating point specification defines certain 'extreme' floating point values such as minus zero, -0.0, a value distinct from plus zero; not a number, NaN; and plus and minus infinity.
 
-The task is to use expressions involving other 'normal' floating point values in your language to calculate these, (and maybe other), extreme floating point values in your language and assign them to variables. 
+The task is to use expressions involving other 'normal' floating point values in your language to calculate these, (and maybe other), extreme floating point values in your language and assign them to variables.
 
-Print the values of these variables if possible; and show some arithmetic with these values and variables. 
+Print the values of these variables if possible; and show some arithmetic with these values and variables.
 
 If your language can directly enter these extreme floating point values then show it.
 
@@ -56,14 +56,14 @@ As stated above on a machine where Float is implemented by an IEEE 754 machine n
 ```Ada
 
 with Ada.Text_IO; use Ada.Text_IO;
- 
+
 procedure IEEE is -- Non portable, bad, never do this!
    Zero  : Float := 0.0;
    PInf  : Float := 1.0 / Zero;
    NInf  : Float := -PInf;
    PZero : Float := 1.0 / PInf;
    NZero : Float := 1.0 / NInf;
-   NaN   : Float := 0.0 / Zero; 
+   NaN   : Float := 0.0 / Zero;
 begin
    Put_Line (" -oo = " & Float'Image (NInf));
    Put_Line (" +oo = " & Float'Image (PInf));
@@ -87,9 +87,9 @@ end IEEE;
 
 ```
 
-The expression -1.0 / 0.0 were non-numeric and thus could not be used. 
-To fool the compiler the variable Zero is used, 
-which circumvents type checks giving desired broken result. 
+The expression -1.0 / 0.0 were non-numeric and thus could not be used.
+To fool the compiler the variable Zero is used,
+which circumvents type checks giving desired broken result.
 {{out}}
 
 ```txt
@@ -115,15 +115,15 @@ Valid NaN is FALSE
 
 ## AWK
 
-The One True Awk ([[nawk]]) uses the native floating-point numbers. 
-We can get the extreme values if these are IEEE numbers. 
+The One True Awk ([[nawk]]) uses the native floating-point numbers.
+We can get the extreme values if these are IEEE numbers.
 (If you run Awk on a VAX, there are no signed zeros, infinities nor NaN on a VAX.)
 
-Awk raises a fatal error if a program divides by zero. 
-If a call to exp(x), log(x) and sqrt(x) goes out of range, Awk displays a warning and changes the result to 1. 
-Therefore tricks like 1 / 0, or log(0), or sqrt(-1), will not provide the extreme values. 
-There remains some loopholes. Awk never checks for overflow, 
-so we can still get positive or negative infinity. 
+Awk raises a fatal error if a program divides by zero.
+If a call to exp(x), log(x) and sqrt(x) goes out of range, Awk displays a warning and changes the result to 1.
+Therefore tricks like 1 / 0, or log(0), or sqrt(-1), will not provide the extreme values.
+There remains some loopholes. Awk never checks for overflow,
+so we can still get positive or negative infinity.
 When we have infinity, we can get NaN.
 
 {{works with|nawk|20100523}}
@@ -167,11 +167,11 @@ BEGIN {
 
 
 ----
-{{out}} from [[nawk]] version 2010: 
+{{out}} from [[nawk]] version 2010:
 
 
 ```txt
-$ awk -f extreme.awk 
+$ awk -f extreme.awk
 nzero = -0
 nan = nan
 pinf = inf
@@ -188,7 +188,7 @@ nan == 42? yes
 ```
 
 
-The last two lines are wrong. IEEE says that NaN != NaN (and also NaN != 42). 
+The last two lines are wrong. IEEE says that NaN != NaN (and also NaN != 42).
 The problem is that Awk assumes <tt>a == b</tt> unless <tt>(a - b) < 0</tt> or <tt>(a - b) > 0</tt>; but NaN - NaN (or NaN - 42) is NaN, and NaN < 0 is false, and NaN > 0 is false, so Awk supposes that NaN == NaN (or NaN == 42) is true.
 
 ----
@@ -219,16 +219,16 @@ nan == 42? no
 
 The attempts to use negative zero have failed. GNU awk uses both integers and floating point; GNU awk converted negative zero to an integer and lost the negative sign.
 
-NaN works. Negative infinity seems to work, except when printing. 
+NaN works. Negative infinity seems to work, except when printing.
 Whenever GNU awk tries to print negative infinity, it prints "NaN".
 
 
 ## bc
 
-bc numbers are very different from IEEE floating-point numbers. 
-bc numbers have a variable number of digits. 
-They can always have more digits (until bc has no memory, 
-runs too slow or crashes), so there is no overflow, 
+bc numbers are very different from IEEE floating-point numbers.
+bc numbers have a variable number of digits.
+They can always have more digits (until bc has no memory,
+runs too slow or crashes), so there is no overflow,
 and no way to reach infinity.
 
 bc also has no negative zero, and no NaN.
@@ -263,8 +263,8 @@ Floating-point division by zero in the following examples to obtain infinity or 
 
 {{works with|gcc|4.4.3}}
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -355,13 +355,13 @@ NaN == NaN = false
 ```
 
 
-Some values may be directly defined in various headers.  
-Following code also shows some of those values' bit patterns 
-(most significant bit first for each byte).  
+Some values may be directly defined in various headers.
+Following code also shows some of those values' bit patterns
+(most significant bit first for each byte).
 It should be pretty portable.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <values.h>
 #include <math.h>
 
@@ -422,7 +422,7 @@ int main(void)
 ```txt
 
   Negative inf:  -Infinity
-  Positive inf:  Infinity 
+  Positive inf:  Infinity
            NaN:  NaN
     Negative 0:  -0.0
     inf + -inf:  NaN
@@ -435,9 +435,9 @@ NaN equals NaN:  true
 
 ## D
 
-D V.2 has a pretty comprehensive approach to floating point values, 
-and unlike Ada embraces IEEE 754. 
-This program shows only part of the floating point features 
+D V.2 has a pretty comprehensive approach to floating point values,
+and unlike Ada embraces IEEE 754.
+This program shows only part of the floating point features
 supported by D and its Phobos standard library.
 
 ```d
@@ -870,7 +870,7 @@ printf(1,"NaN + NaN = %f\n", nan + nan)
 
 The floating-point number services offered by computers over the decades have varied greatly in format and behaviour, being in base ten, two, four, eight, or sixteen, and of various storage sizes, with various choices for precision and exponent range - for a fixed size, more precision means a smaller dynamic range and ''vice-versa''. The IBM1620 offered (discrete transistor) floating-point hardware that allowed two decimal digits for the exponent and from two to 100 decimal digits for the mantissa; extreme values are easily deduced. For base two (or four, etc.) computers, presenting the exact extreme value in decimal produces troublesomely long strings of digits, and there is no clear guarantee that such a value, when converted by the compiler, will in fact manifest the desired extreme value in binary - the compiler is itself using computer arithmetic of limited precision. One must know ''exactly'' what format is used for floating-point numbers, on the specific computer in question. And if a programme using those values is moved to a different computer or a different compiler, you may well have to start again.
 
-F90 however contains facilities to help. Pseudo-function HUGE(x) returns the largest possible number of the type of its parameter - whether an integer or a floating-point variable, of single or double precision, etc. But, this does not solve the problem, as if you are dealing with a computer that represents integers in two's complement, the maximum sixteen-bit number is 32767 but for negative numbers it is -32768. Thus, if you intend to find the extrema of a set of numbers and it is not convenient to set MinX and MaxX to the first value, and you don't want to have special case code testing for N = 1, you might try MinX = HUGE(Minx) and MaxX = -HUGE(MaxX) and gain wrong results should there for instance be only one value and it -32768. 
+F90 however contains facilities to help. Pseudo-function HUGE(x) returns the largest possible number of the type of its parameter - whether an integer or a floating-point variable, of single or double precision, etc. But, this does not solve the problem, as if you are dealing with a computer that represents integers in two's complement, the maximum sixteen-bit number is 32767 but for negative numbers it is -32768. Thus, if you intend to find the extrema of a set of numbers and it is not convenient to set MinX and MaxX to the first value, and you don't want to have special case code testing for N = 1, you might try MinX = HUGE(Minx) and MaxX = -HUGE(MaxX) and gain wrong results should there for instance be only one value and it -32768.
 
 There is a TINY(x) pseudo-function, for floating-point types only, that gives the smallest possible floating-point number, but, it is not clear whether this is the smallest possible normalised floating-point number, or, does it allow "denormalised" floating-point numbers that are even smaller?
 
@@ -1208,7 +1208,7 @@ NaN equals NaN: true
 ```
 
 
-Note that the Groovy implementation of 'equals' incorrectly allows that "NaN == NaN" is true. 
+Note that the Groovy implementation of 'equals' incorrectly allows that "NaN == NaN" is true.
 In a correct IEEE implementation NaN is never equal to '''anything''', including itself.
 
 
@@ -1261,15 +1261,15 @@ nan + 1.0 = NaN
 nan + nan = NaN
 nan == nan = False
 0.0 == -0.0 = True
-inf == inf = True 
+inf == inf = True
 
 ```
 
 
 =={{header|Icon}} and {{header|Unicon}}==
 
-Icon and Unicon don't define minimum or maximum values of reals, or a negative 0.0.  Real numbers are implemented as C doubles and the behavior could vary somewhat from platform to platform. 
-Both explicitly check for divide by zero and treat it as a runtime error (201), so it's not clear how you could produce one of these with the possible exception of the value being introduced through externally called code. 
+Icon and Unicon don't define minimum or maximum values of reals, or a negative 0.0.  Real numbers are implemented as C doubles and the behavior could vary somewhat from platform to platform.
+Both explicitly check for divide by zero and treat it as a runtime error (201), so it's not clear how you could produce one of these with the possible exception of the value being introduced through externally called code.
 
 
 ## J
@@ -1284,7 +1284,7 @@ Both explicitly check for divide by zero and treat it as a runtime error (201), 
    NaN=. _.
 ```
 
-The numeric atom <code>_.</code> ([[j:Essays/Indeterminate|Indeterminate]]) is provided as a means for dealing with NaN in data from sources outside J. 
+The numeric atom <code>_.</code> ([[j:Essays/Indeterminate|Indeterminate]]) is provided as a means for dealing with NaN in data from sources outside J.
 J itself generates NaN errors rather than NaN values and recommends that <code>_.</code> be removed from data as soon as possible because, by definition, NaN values will produce inconsistent results in contexts where value is important.
 
 '''Extreme values from expressions'''
@@ -1553,13 +1553,13 @@ true
 
 ```mathematica
 Column@{ReleaseHold[
-   Function[expression, 
-     Row@{HoldForm@InputForm@expression, " = ", Quiet@expression}, 
-     HoldAll] /@ 
-    Hold[1./0., 0./0., Limit[-Log[x], x -> 0], Limit[Log[x], x -> 0], 
-     Infinity + 1, Infinity + Infinity, 2 Infinity, 
-     Infinity - Infinity, 0 Infinity, ComplexInfinity + 1, 
-     ComplexInfinity + ComplexInfinity, 2 ComplexInfinity, 
+   Function[expression,
+     Row@{HoldForm@InputForm@expression, " = ", Quiet@expression},
+     HoldAll] /@
+    Hold[1./0., 0./0., Limit[-Log[x], x -> 0], Limit[Log[x], x -> 0],
+     Infinity + 1, Infinity + Infinity, 2 Infinity,
+     Infinity - Infinity, 0 Infinity, ComplexInfinity + 1,
+     ComplexInfinity + ComplexInfinity, 2 ComplexInfinity,
      0 ComplexInfinity, Indeterminate + 1, 0 Indeterminate]]}
 ```
 
@@ -1591,7 +1591,7 @@ With ordinary floating point numbers, <code>1.0 / 0.0</code>, <code>0.0 / 0.0</c
 
 However, Maxima has big floats and knows how to manage the <code>inf</code>, <code>minf</code> and <code>infinity</code> symbols
 (resp. positive, negative and complex infinity), with the function <code>limit</code>. It also has <code>zeroa</code> and <code>zerob</code>
-for positive and negative infinitesimal (though their usage is quite obscure), 
+for positive and negative infinitesimal (though their usage is quite obscure),
 and <code>und</code> for undefined value.
 
 
@@ -1600,14 +1600,14 @@ and <code>und</code> for undefined value.
 
 ### ANSI MUMPS
 
-The 1995 Standard MUMPS (X11.1–1995) implementations do not deal with floating point numbers following IEEE 754. 
+The 1995 Standard MUMPS (X11.1–1995) implementations do not deal with floating point numbers following IEEE 754.
 Attempting to use a number over the precision of the system results in a <MAXNUMBER> error:
 
 ```txt
 USER>write 3e145
 30000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 USER>write 3e146
- 
+
 <MAXNUMBER>
 
 ```
@@ -1636,7 +1636,7 @@ EXTREMES
 
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 USER>d EXTREMES^ROSETTA
@@ -1843,7 +1843,7 @@ PARI t_REAL numbers have a maximum value of
 | <math>2^{2^{61}}(1-\epsilon)</math>
 | 694,127,911,065,419,642 decimal digits
 |}
-where <math>\epsilon</math> is the machine epsilon at the selected precision. 
+where <math>\epsilon</math> is the machine epsilon at the selected precision.
 The minimum value is the opposite of the maximum value (reverse the sign bit).
 
 
@@ -1854,13 +1854,13 @@ See [[Extreme_floating_point_values#Delphi | Delphi]]
 
 ## Perl
 
-Perl numbers have three formats (integer, floating-point, string) and [http://perldoc.perl.org/perlnumber.html perlnumber] explains the automatic conversions. Arithmetic tends to convert numbers to integers. 
-To get negative zero, one must negate a floating-point zero, not an integer zero. 
-So <tt>-0</tt> is "0", <tt>-0.0</tt> is "-0", but <tt>-(1.0 - 1.0)</tt> is again "0" because the result of <tt>1.0 - 1.0</tt> is an integer zero.  
-Stringification of minus zero may or may not keep the sign in the string, depending on the platform and Perl version.  
+Perl numbers have three formats (integer, floating-point, string) and [http://perldoc.perl.org/perlnumber.html perlnumber] explains the automatic conversions. Arithmetic tends to convert numbers to integers.
+To get negative zero, one must negate a floating-point zero, not an integer zero.
+So <tt>-0</tt> is "0", <tt>-0.0</tt> is "-0", but <tt>-(1.0 - 1.0)</tt> is again "0" because the result of <tt>1.0 - 1.0</tt> is an integer zero.
+Stringification of minus zero may or may not keep the sign in the string, depending on the platform and Perl version.
 If the sign is important, use <code>printf "%f"</code> instead (<code>"%g"</code> won't work: it gives "0").
 
-Division by zero, <tt>sqrt(-1)</tt> and <tt>log(0)</tt> are fatal errors. 
+Division by zero, <tt>sqrt(-1)</tt> and <tt>log(0)</tt> are fatal errors.
 To get infinity and NaN, use corresponding string and force a numeric conversion by adding zero to it, or prepending a "+" or "-":
 
 ```perl
@@ -1890,7 +1890,7 @@ printf "nan == 42? %s\n", ($nan == 42) ? "yes" : "no";
 ```
 
 
-{{out}} 
+{{out}}
 
 ```txt
 $nzero = -0.0
@@ -1912,9 +1912,9 @@ nan == 42? no
 
 ----
 
-Here is a rare example of NaN and infinity for an ''integer'' type. 
-Math::BigInt, a module that comes with Perl, provides integers of arbitrary sizes, 
-but also has NaN, positive infinity, and negative infinity. 
+Here is a rare example of NaN and infinity for an ''integer'' type.
+Math::BigInt, a module that comes with Perl, provides integers of arbitrary sizes,
+but also has NaN, positive infinity, and negative infinity.
 There is no negative zero.
 
 
@@ -1945,7 +1945,7 @@ printf "\$nan == \$huge? %s\n", defined($nan->bcmp($huge)) ? "maybe" : "no";
 ```
 
 
-{{out}} 
+{{out}}
 
 ```txt
 $nan = NaN
@@ -1965,7 +1965,7 @@ $nan == $huge? no
 ## Perl 6
 
 {{Works with|rakudo|2018.03}}
-Floating point limits are to a large extent implementation dependent, but currently both Perl 6 backends (MoarVM, JVM) running on a 64 bit OS have an infinity threshold of just under 1.8e308. 
+Floating point limits are to a large extent implementation dependent, but currently both Perl 6 backends (MoarVM, JVM) running on a 64 bit OS have an infinity threshold of just under 1.8e308.
 
 ```perl6
 print qq:to 'END'
@@ -1987,9 +1987,9 @@ END
 ```
 
 
-<code>0e0</code> is used to have floating point number. 
-Simply using <code>0.0</code> makes rational number that doesn't recognize <code>-0</code>. 
-<code>qq:to</code> is heredoc syntax, where <code>qq</code> means 
+<code>0e0</code> is used to have floating point number.
+Simply using <code>0.0</code> makes rational number that doesn't recognize <code>-0</code>.
+<code>qq:to</code> is heredoc syntax, where <code>qq</code> means
 that variables and closures (between braces) are interpolated.
 
 {{out}}
@@ -2063,7 +2063,7 @@ printf(1," nan>0: %d\n",{nan>0})
 
 The * lines are wrong. negative zero is not supported, and might not be practical. nan=nan should be false (0), as should nan<0. division by 0 is a fatal error.
 
-If you fancy having a go at getting nan to work properly (x86 assembly required), see builtins\VM\pJcc.e (search for nan, 4 places, marked with --DEV this may be the wrong thing to do entirely) 
+If you fancy having a go at getting nan to work properly (x86 assembly required), see builtins\VM\pJcc.e (search for nan, 4 places, marked with --DEV this may be the wrong thing to do entirely)
 and also (if you succeed) test\t41infan.exw will need a few corrections.
 
 If you fancy having a go at negative zero support (ditto), your first stop should be :%pStoreFlt in builtins\VM\pHeap.e and use whatever the test is for -0.0 there. I would be happiest if apps that needed support of -0.0 had to explicitly call something in pHeap.e to set a flag to enable any new code.
@@ -2071,9 +2071,9 @@ If you fancy having a go at negative zero support (ditto), your first stop shoul
 
 ## PicoLisp
 
-PicoLisp has only very limited built-in floating point support, 
-and handles the rest by calling native (typically C) libraries. 
-Minus zero and negative infinity cannot be represented, 
+PicoLisp has only very limited built-in floating point support,
+and handles the rest by calling native (typically C) libraries.
+Minus zero and negative infinity cannot be represented,
 while NaN is represented by NIL
 
 ```PicoLisp
@@ -2096,15 +2096,15 @@ Define.f
 If OpenConsole()
   inf =  Infinity() ; or 1/None ;None represents a variable of value = 0
   minus_inf  =  -Infinity() ; or -1/None
-  minus_zero = -1/inf 
+  minus_zero = -1/inf
   nan = NaN() ; or None/None
- 
+
   PrintN("positive infinity: "+StrF(inf))
   PrintN("negative infinity: "+StrF(minus_inf))
   PrintN("positive zero: "+StrF(None))
   PrintN("negative zero: "+StrF(minus_zero)) ; handles as 0.0
   PrintN("not a number: "+StrF(nan))
-  PrintN("Arithmetics")  
+  PrintN("Arithmetics")
   PrintN("+inf + 2.0 =  "+StrF(inf + 2.0))
   PrintN("+inf - 10.1 = "+StrF(inf - 10.1))
   PrintN("+inf + -inf = "+StrF(inf + minus_inf))
@@ -2115,7 +2115,7 @@ If OpenConsole()
   PrintN("Logics")
   If IsInfinity(inf): PrintN("Variable 'Infinity' is infinite"): EndIf
   If IsNAN(nan): PrintN("Variable 'nan' is not a number"): EndIf
- 
+
   Print(#CRLF$+"Press ENTER to EXIT"): Input()
 EndIf
 ```
@@ -2261,7 +2261,7 @@ possibly recover from the "error"), but usage   (doing arithmetic operations)
 
 Each implementation of REXX is allowed to "define" the extreme values, the REXX language
 dictates that a minimum number of decimal digits be supported as well as a minimum number
-of decimal digits in the exponent. 
+of decimal digits in the exponent.
 
 ```rexx
 /*REXX pgm shows smallest & largest positive numbers that can be expressed, compares 0's*/
@@ -2591,7 +2591,7 @@ The type [http://seed7.sourceforge.net/libraries/float.htm float] works accordin
 Constants like [http://seed7.sourceforge.net/libraries/float.htm#Infinity Infinity] and
 [http://seed7.sourceforge.net/libraries/float.htm#NaN NaN] are predefined in the library
 [http://seed7.sourceforge.net/libraries/float.htm float.s7i].
-A zero is always written without sign (e.g.: ''write(-0.0)'' writes ''0.0'', 
+A zero is always written without sign (e.g.: ''write(-0.0)'' writes ''0.0'',
 and ''write(-0.004 [http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29digits%28ref_integer%29 digits] 2);'' writes ''0.00'').
 To recognize negative zero the function [http://seed7.sourceforge.net/libraries/float.htm#isNegativeZero%28in_float%29 isNegativeZero]
 can be used. NaN can be checked with [http://seed7.sourceforge.net/libraries/float.htm#isNaN%28ref_float%29 isNaN].
@@ -2600,9 +2600,9 @@ can be used. NaN can be checked with [http://seed7.sourceforge.net/libraries/flo
 ```seed7
 $ include "seed7_05.s7i";
   include "float.s7i";
- 
+
 const proc: main is func
-  begin  
+  begin
     writeln("positive infinity: " <& Infinity);
     writeln("negative infinity: " <& -Infinity);
     writeln("negative zero: " <& -0.0);
@@ -2718,8 +2718,8 @@ say("atanh(Inf) = ", atanh(inf))
       nan * inf => NaN
           - nan => NaN
      nan == nan => false
-        nan > 0 => 
-        nan < 0 => 
+        nan > 0 =>
+        nan < 0 =>
        nan == 0 => false
     0.0 == -0.0 => true
 ----------------------------------------
@@ -2802,10 +2802,10 @@ NaN == NaN: false
 
 ## Tcl
 
-Tcl includes support in expressions for all IEEE “extreme” values except for NaN, 
-which it throws a catchable exception on encountering numerically. 
-Moreover, all can be just written directly as literals 
-(they are parsed case-insensitively). 
+Tcl includes support in expressions for all IEEE “extreme” values except for NaN,
+which it throws a catchable exception on encountering numerically.
+Moreover, all can be just written directly as literals
+(they are parsed case-insensitively).
 For example, see this log of an interactive session:
 
 ```tcl
@@ -2827,9 +2827,9 @@ domain error: argument not in valid range
 -0.0
 ```
 
-It ''is'' possible to introduce a real NaN though numeric computation, 
-but only by using the mechanisms for dealing with external binary data 
-(it being judged better to just deal with it in that case 
+It ''is'' possible to introduce a real NaN though numeric computation,
+but only by using the mechanisms for dealing with external binary data
+(it being judged better to just deal with it in that case
 rather than throwing an exception):
 
 ```tcl

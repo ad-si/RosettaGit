@@ -14,11 +14,11 @@ tags = []
 {{Wikipedia|Burrows–Wheeler_transform}}
 
 
-The Burrows–Wheeler transform (BWT, also called block-sorting compression) rearranges a character string into runs of similar characters. 
+The Burrows–Wheeler transform (BWT, also called block-sorting compression) rearranges a character string into runs of similar characters.
 
-This is useful for compression, since it tends to be easy to compress a string that has runs of repeated characters by techniques such as move-to-front transform and run-length encoding. 
+This is useful for compression, since it tends to be easy to compress a string that has runs of repeated characters by techniques such as move-to-front transform and run-length encoding.
 
-More importantly, the transformation is reversible, without needing to store any additional data. 
+More importantly, the transformation is reversible, without needing to store any additional data.
 
 The BWT is thus a "free" method of improving the efficiency of text compression algorithms, costing only some extra computation.
 
@@ -33,8 +33,8 @@ Source: [[wp:Burrows–Wheeler_transform|Burrows–Wheeler transform]]
 
 {{trans|Python}}
 
-```c>#include <string.h
-
+```c
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -75,7 +75,7 @@ void ibwt(const char *r, char s[]) {
     char **table = malloc(len * sizeof(const char *));
     for (i = 0; i < len; ++i) table[i] = calloc(len + 1, sizeof(char));
     for (i = 0; i < len; ++i) {
-        for (j = 0; j < len; ++j) {                        
+        for (j = 0; j < len; ++j) {
             memmove(table[j] + 1, table[j], len);
             table[j][0] = r[j];
         }
@@ -153,7 +153,7 @@ dogwood
  --> dogwood
 
 TO BE OR NOT TO BE OR WANT TO BE OR NOT?
- --> |?OOORREEETTRTW   BBB  ATTT   NNOOONOO^   
+ --> |?OOORREEETTRTW   BBB  ATTT   NNOOONOO^
  --> TO BE OR NOT TO BE OR WANT TO BE OR NOT?
 
 SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES
@@ -162,7 +162,7 @@ SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES
 
 ^ABC|
  --> ERROR: String can't contain STX or ETX
- --> 
+ -->
 
 ```
 
@@ -172,8 +172,8 @@ SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES
 
 {{trans|C#}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -679,27 +679,27 @@ func main() {
 
 banana
  --> |annb^aa
- --> banana 
+ --> banana
 
 appellee
  --> |e^elplepa
- --> appellee 
+ --> appellee
 
 dogwood
  --> |do^oodwg
- --> dogwood 
+ --> dogwood
 
 TO BE OR NOT TO BE OR WANT TO BE OR NOT?
- --> |?OOORREEETTRTW   BBB  ATTT   NNOOONOO^   
- --> TO BE OR NOT TO BE OR WANT TO BE OR NOT? 
+ --> |?OOORREEETTRTW   BBB  ATTT   NNOOONOO^
+ --> TO BE OR NOT TO BE OR WANT TO BE OR NOT?
 
 SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES
  --> |STEXYDST.E.IXXIIXXSSMPPS.B..EE.^.USFXDIIOIIIT
- --> SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES 
+ --> SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES
 
 ^ABC|
  --> ERROR: String can't contain STX or ETX
- -->  
+ -->
 
 ```
 
@@ -763,7 +763,7 @@ testBWT xs = let fwd = bwt xs
 
 
         |^
-        
+
 a
         ^|a
         a
@@ -797,7 +797,7 @@ function burrowswheeler_encode(s)
     s = "\x02" * s * "\x03"
     String([t[end] for t in bwsort([circshift([c for c in s], n) for n in 0:length(s)-1])])
 end
- 
+
 function burrowswheeler_decode(s)
     len, v = length(s), [c for c in s]
     m = fill(' ', len, len)
@@ -929,7 +929,7 @@ dogwood
  --> dogwood
 
 TO BE OR NOT TO BE OR WANT TO BE OR NOT?
- --> |?OOORREEETTRTW   BBB  ATTT   NNOOONOO^   
+ --> |?OOORREEETTRTW   BBB  ATTT   NNOOONOO^
  --> TO BE OR NOT TO BE OR WANT TO BE OR NOT?
 
 SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES
@@ -938,7 +938,7 @@ SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES
 
 ^ABC|
  --> ERROR: String can't contain STX or ETX
- --> 
+ -->
 
 ```
 
@@ -1016,8 +1016,8 @@ Inverse transformed: TO BE OR NOT TO BE OR WANT TO BE OR NOT?
 
 ```perl6
 # STX can be any character that doesn't appear in the text.
-# Using a visible character here for ease of viewing. 
- 
+# Using a visible character here for ease of viewing.
+
 constant \STX = '👍';
 
 # Burrows-Wheeler transform
@@ -1026,14 +1026,14 @@ sub transform (Str $s is copy) {
     $s = STX ~ $s;
     (^$s.chars).map({ $s.comb.list.rotate: $_ }).sort[*;*-1].join
 }
- 
+
 # Burrows-Wheeler inverse transform
 sub ɯɹoɟsuɐɹʇ (Str $s) {
     my @t = $s.comb.sort;
     @t = ($s.comb Z~ @t).sort for 1..^$s.chars;
     @t.first( *.ends-with: STX ).chop
 }
- 
+
 # TESTING
 for |<BANANA dogwood SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES>,
     'TO BE OR NOT TO BE OR WANT TO BE OR NOT?', "Oops{STX}"
@@ -1072,7 +1072,7 @@ String can't contain STX character.
 
 ## Phix
 
-An efficient implementation, based mainly on http://spencer-carroll.com/an-easy-to-understand-explanation-of-the-burrows-wheeler-transform/ 
+An efficient implementation, based mainly on http://spencer-carroll.com/an-easy-to-understand-explanation-of-the-burrows-wheeler-transform/
 
 Perhaps not ultra-fast, it takes around about ten seconds to transform and invert a 100K string. Note: requires 0.8.0+
 
@@ -1091,16 +1091,16 @@ The traditional method:
                               ^ desired answer == "annb$aa"
 
 First ignore the numbers: the desired answer is found by creating a table of all
-rotations of "banana$", sorting it, and then extracting the right-hand column. 
+rotations of "banana$", sorting it, and then extracting the right-hand column.
 
 However, there is no need to actually create such a table, which could be very
 expensive for long strings, instead just number them logically (admittedly that
 was somewhat arbitrarily chosen to get the indexes to work out nicely, I picked
 the original index of the last character), and perform a custom sort on those.
 
-The latter effectively just recreates the rotations one character at a time until 
-there is a mismatch (which there always will be since there is only one $). 
-The left hand column is my arbitrary numbering scheme and the right hand column 
+The latter effectively just recreates the rotations one character at a time until
+there is a mismatch (which there always will be since there is only one $).
+The left hand column is my arbitrary numbering scheme and the right hand column
 is those sorted into order, which is also the indexes to the original string of
 the characters that we want.
 
@@ -1111,7 +1111,7 @@ constant terminator = '$'
 
 function rot_sort(integer i,j, sequence s)
 -- i,j are indexes of the last character, so bump before first compare.
--- eg/ie rot_sort(i,j,s) should yield compare(rotate(s,i),rotate(s,j)), 
+-- eg/ie rot_sort(i,j,s) should yield compare(rotate(s,i),rotate(s,j)),
 --       as in rot_sort(7,6,"banana$") == compare("banana$","$banana")
 --       - but one character at a time rather than constructing both.
     integer l = length(s)
@@ -1151,12 +1151,12 @@ like above that would be hideously inefficient for large strings.
                 ^     ^            ^      ^  ^
                 f     l            f      l  t
 
-However, we already have the last column, and the first is just that 
+However, we already have the last column, and the first is just that
 sorted alphabetically, and with just those two, we have all possible
-character pairings of the original message. The trick is in figuring 
+character pairings of the original message. The trick is in figuring
 out how to stitch them together in the right order. If you carefully
 study the three that end in a, and the three that start in a, notice
-the $banan,na$ban,nana$b parts are sorted in the same order, whether 
+the $banan,na$ban,nana$b parts are sorted in the same order, whether
 they are prefixed with a or not. That is, the middle (parenthesised)
 matching numbers are both 123, not 123 and say 231. It is quite hard
 to see that being useful, but eventually the penny should drop. The
@@ -1191,7 +1191,7 @@ function inverse_burrows_wheeler(string s)
         c = s[i]
         x[i] = q[c]
         q[c] = i
-    end for     
+    end for
     -- Step 2. reform/pop char queues into pairing links
     for i=1 to l do
         c = f[i]
@@ -1271,9 +1271,9 @@ def ibwt(r):
 
 ## REXX
 
-Programming note:   a little bit of code was added to support more (legal) characters in the input string for the '''BWT''' 
+Programming note:   a little bit of code was added to support more (legal) characters in the input string for the '''BWT'''
 
-function.   The error recovery and error messages are rudimentary when an illegal character in the input is detected.  
+function.   The error recovery and error messages are rudimentary when an illegal character in the input is detected.
 
 ```rexx
 /*REXX program performs a  Burrows─Wheeler transform  (BWT)  on a character string(s).  */
@@ -1461,7 +1461,7 @@ dogwood
  --> dogwood
 
 TO BE OR NOT TO BE OR WANT TO BE OR NOT?
- --> |?OOORREEETTRTW   BBB  ATTT   NNOOONOO^   
+ --> |?OOORREEETTRTW   BBB  ATTT   NNOOONOO^
  --> TO BE OR NOT TO BE OR WANT TO BE OR NOT?
 
 SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES
@@ -1673,7 +1673,7 @@ class BurrowsWheelerTransform{
       str.len().pump(List().merge,'wrap(n){ String(str[n,*],str[0,n]) })
       .pump(String,T("get",-1));	// last char of each "permutation"
    }
-   fcn decode(str){      
+   fcn decode(str){
       table:=List.createLong(str.len(),"");	// ("",""..), mutable
       do(str.len()){
 	 foreach n in (str.len()){ table[n]=str[n] + table[n] }
@@ -1712,7 +1712,7 @@ dogwood
   -->do$oodwg
   -->dogwood
 TO BE OR NOT TO BE OR WANT TO BE OR NOT?
-  -->OOORREEETTR?TW   BBB  ATTT   NNOOONOO$   
+  -->OOORREEETTR?TW   BBB  ATTT   NNOOONOO$
   -->TO BE OR NOT TO BE OR WANT TO BE OR NOT?
 SIX.MIXED.PIXIES.SIFT.SIXTY.PIXIE.DUST.BOXES
   -->STEXYDST.E.IXXIIXXSSMPPS.B..EE.$.USFXDIIOIIIT

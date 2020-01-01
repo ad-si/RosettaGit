@@ -97,21 +97,21 @@ if A_Is64bitOS
 {
 	Loop, % MaxAncestor
 		Descendants.Insert({})
-	
+
 	for i, Prime in Primes
 	{
 		Descendants[Prime, Prime] := 0
-		
+
 		for Parent, Children in Descendants
 		{
 			if ((Sum := Parent+Prime) > MaxAncestor)
 				break
-			
+
 			for pr in Children
 				Descendants[Sum, pr*Prime] := 0
 		}
 	}
-	
+
 	for i, v in Exclusions
 		Descendants[v].Remove(v, "")
 }
@@ -123,17 +123,17 @@ else
 	for i, Prime in Primes
 	{
 		Descendants[Prime].Insert(Prime)
-		
+
 		for Parent, Children in Descendants
 		{
 			if ((Sum := Parent+Prime) > MaxAncestor)
 				break
-			
+
 			for j, pr in Children
 				Descendants[Sum].Insert(pr*Prime)
 		}
 	}
-	
+
 	for i, v in Exclusions
 		Descendants[v].Remove()
 }
@@ -167,18 +167,18 @@ for Parent, Children in Descendants
 		for i, pr in Children
 			ls_desc .= "," pr
 		ls_desc := LTrim(ls_desc, ",")
-		
+
 		Sort, ls_desc, N D`,
 		StringReplace, ls_desc, ls_desc, `,,`,%A_Space%, All
 	}
-	
+
 	ls_anc =
 	nb_anc := GetAncestors(ls_anc, Parent)
 	ls_anc := LTrim(ls_anc, ", ")
-	
+
 	FileAppend, % "[" Parent "] Level: " nb_anc "`r`nAncestors: " (nb_anc ? ls_anc : "None") "`r`n"
 				 , %A_ScriptName%.txt
-	
+
 	if nb_desc
 	{
 		Tot_desc += nb_desc
@@ -194,20 +194,20 @@ return
 GetAncestors(ByRef _lsAnc, _child)
 {
 	global Primes
-	
+
 	lChild := _child
 	lIndex := lParent := 0
-	
+
 	while lChild > 1
 	{
 		lPrime := Primes[++lIndex]
 		while !mod(lChild, lPrime)
 			lChild //= lPrime, lParent += lPrime
 	}
-	
+
 	if (lParent = _child or _child = 1)
 		return 0
-	
+
 	_lsAnc := ", " lParent _lsAnc
 	li := GetAncestors(_lsAnc, lParent)
 	return ++li
@@ -216,16 +216,16 @@ GetAncestors(ByRef _lsAnc, _child)
 GetPrimes(_maxPrime=0, _nbrPrime=0)
 {
 	lPrimes := []
-	
+
 	if (_maxPrime >= 2 or _nbrPrime >= 1)
 	{
 		lPrimes.Insert(2)
 		lValue = 1
-		
+
 		while (lValue += 2) <= _maxPrime or lPrimes.MaxIndex() < _nbrPrime
 		{
 			lMaxPrime := Floor(Sqrt(lValue))
-			
+
 			for lKey, lPrime in lPrimes
 			{
 				if (lPrime > lMaxPrime)		; if prime divisor is greater than Floor(Sqrt(lValue))
@@ -233,13 +233,13 @@ GetPrimes(_maxPrime=0, _nbrPrime=0)
 					lPrimes.Insert(lValue)
 					break
 				}
-				
+
 				if !Mod(lValue, lPrime)
 					break
 			}
 		}
 	}
-	
+
 	return lPrimes
 }
 ```
@@ -250,7 +250,7 @@ GetPrimes(_maxPrime=0, _nbrPrime=0)
 
 
 
-###  Full Approach 
+###  Full Approach
 
 You can decompose all the numbers from 1 to 3<sup>33</sup> (5.559.060.566.555.523).
 
@@ -258,8 +258,8 @@ This solution can take a while.
 
 The InsertChild function is replaced by the AppendChild function which appends directly the child as the new last item in the list.
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -296,10 +296,10 @@ int main()
 	long long Child;
 	short i, Parent, Level;
 	int TotDesc = 0;
-	
+
 	if ((iPrimes = GetPrimes(Primes, MAXPRIME)) < 0)
 		return 1;
-	
+
 	for (Child = 1; Child <= MaxDescendant; Child++)
 	{
 		if (Parent = GetParent(Child))
@@ -310,7 +310,7 @@ int main()
 			CptDescendants[Parent]++;
 		}
 	}
-	
+
 	if (MAXPARENT > MAXPRIME)
 		if (GetPrimes(Primes, MAXPARENT) < 0)
 			return 1;
@@ -321,13 +321,13 @@ int main()
 	for (Parent = 1; Parent <= MAXPARENT; Parent++)
 	{
 		Level = GetAncestors(Parent);
-		
+
 		fprintf(FileOut, "[%d] Level: %d\n", Parent, Level);
-		
+
 		if (Level)
 		{
 			fprintf(FileOut, "Ancestors: %d", Ancestors[0]);
-			
+
 			for (i = 1; i < Level; i++)
 				fprintf(FileOut, ", %d", Ancestors[i]);
 		}
@@ -360,7 +360,7 @@ short GetParent(long long child)
 	long long Child = child;
 	short Parent = 0;
 	short Index = 0;
-	
+
 	while (Child > 1 && Parent <= MAXPARENT)
 	{
 		if (Index > iPrimes)
@@ -374,17 +374,17 @@ short GetParent(long long child)
 
 		Index++;
 	}
-	
+
 	if (Parent == child || Parent > MAXPARENT || child == 1)
 		return 0;
-	
+
 	return Parent;
 }
 
 struct Children *AppendChild(struct Children *node, long long child)
 {
 	static struct Children *NodeNew;
-	
+
 	if (NodeNew = (struct Children *) malloc(sizeof(struct Children)))
 	{
 		NodeNew->Child = child;
@@ -392,7 +392,7 @@ struct Children *AppendChild(struct Children *node, long long child)
 		if (node != NULL)
 			node->pNext = NodeNew;
 	}
-	
+
 	return NodeNew;
 }
 
@@ -401,7 +401,7 @@ short GetAncestors(short child)
 	short Child = child;
 	short Parent = 0;
 	short Index = 0;
-	
+
 	while (Child > 1)
 	{
 		while (Child % Primes[Index] == 0)
@@ -409,15 +409,15 @@ short GetAncestors(short child)
 			Child /= Primes[Index];
 			Parent += Primes[Index];
 		}
-		
+
 		Index++;
 	}
-	
+
 	if (Parent == child || child == 1)
 		return 0;
-	
+
 	Index = GetAncestors(Parent);
-	
+
 	Ancestors[Index] = Parent;
 	return ++Index;
 }
@@ -445,7 +445,7 @@ int GetPrimes(int primes[], int maxPrime)
 {
 	if (maxPrime < 2)
 		return -1;
-	
+
 	int Index = 0, Value = 1;
 	int Max, i;
 
@@ -454,7 +454,7 @@ int GetPrimes(int primes[], int maxPrime)
 	while ((Value += 2) <= maxPrime)
 	{
 		Max = (int) floor(sqrt((double) Value));
-		
+
 		for (i = 0; i <= Index; i++)
 		{
 			if (primes[i] > Max)
@@ -477,7 +477,7 @@ int GetPrimes(int primes[], int maxPrime)
 
 
 
-###  Optimized Approach 
+###  Optimized Approach
 
 You sum the prime factors from the Prime factor table and you calculate the products.
 
@@ -485,8 +485,8 @@ The sums are the ancestors, the products are the descendants.
 
 It is based on the same logic as the Python script.
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -525,7 +525,7 @@ int main()
 	int Prime;
 	int TotDesc = 0;
 	int MidPrime;
-	
+
 	if ((iPrimes = GetPrimes(Primes, MAXPRIME)) < 0)
 		return 1;
 
@@ -565,13 +565,13 @@ int main()
 	for (Parent = 1; Parent <= MAXPARENT; Parent++)
 	{
 		Level = GetAncestors(Parent);
-		
+
 		fprintf(FileOut, "[%d] Level: %d\n", Parent, Level);
-		
+
 		if (Level)
 		{
 			fprintf(FileOut, "Ancestors: %d", Ancestors[0]);
-			
+
 			for (i = 1; i < Level; i++)
 				fprintf(FileOut, ", %d", Ancestors[i]);
 		}
@@ -593,7 +593,7 @@ int main()
 	}
 
 	fprintf(FileOut, "Total descendants %d\n\n", TotDesc);
-	
+
 	if (fclose(FileOut))
 		return 1;
 
@@ -661,7 +661,7 @@ short GetAncestors(short child)
 	short Child = child;
 	short Parent = 0;
 	short Index = 0;
-	
+
 	while (Child > 1)
 	{
 		while (Child % Primes[Index] == 0)
@@ -669,15 +669,15 @@ short GetAncestors(short child)
 			Child /= Primes[Index];
 			Parent += Primes[Index];
 		}
-		
+
 		Index++;
 	}
-	
+
 	if (Parent == child || child == 1)
 		return 0;
-	
+
 	Index = GetAncestors(Parent);
-	
+
 	Ancestors[Index] = Parent;
 	return ++Index;
 }
@@ -686,10 +686,10 @@ void PrintDescendants(struct Children *node)
 {
 	if (node->pLower)
 		PrintDescendants(node->pLower);
-	
+
 	fprintf(FileOut, format, node->Child);
 	strcpy_s(format, ", %lld");
-	
+
 	if (node->pHigher)
 		PrintDescendants(node->pHigher);
 
@@ -701,7 +701,7 @@ int GetPrimes(int primes[], int maxPrime)
 {
 	if (maxPrime < 2)
 		return -1;
-	
+
 	int Index = 0, Value = 1;
 	int Max, i;
 
@@ -710,7 +710,7 @@ int GetPrimes(int primes[], int maxPrime)
 	while ((Value += 2) <= maxPrime)
 	{
 		Max = (int) floor(sqrt((double) Value));
-		
+
 		for (i = 0; i <= Index; i++)
 		{
 			if (primes[i] > Max)
@@ -900,15 +900,15 @@ family=:3 :0 M.
     (y#~1 p:y),~.;p (* family)&.>y-p
   end.
 )
- 
+
 familytree=: +/@q:^:a: ::(''"_)
- 
+
 descendants=: family -. ]
 ancestors=: 1 }. familytree
 level=: #@ancestors"0
- 
+
 taskfmt=:'None'"_^:(0=#)@rplc&(' ';', ')@":
- 
+
 task1=:3 :0
   text=. '[',(":y),'] Level: ',(":level y),LF
   text=. text,'Ancestors: ',(taskfmt /:~ancestors y),LF
@@ -920,12 +920,12 @@ task1=:3 :0
   end.
   text=. text,LF
 )
- 
+
 task=:3 :0
   tot=. 'Total descendants ',(":#@; descendants&.> 1+i.y),LF
   ((;task1&.>1+i.y),tot) fwrite jpath '~user/temp/Ancestors.txt'
 )
- 
+
 task 99
 ```
 
@@ -937,7 +937,7 @@ The produced text file comes not from the task description but from Implementati
 Can we assume you use the '9!:11 +20' function in your profile? Otherwise the big values are shown in scientific notation.
 
 
-###  Some examples 
+###  Some examples
 
 
 
@@ -1130,7 +1130,7 @@ fun main(args: Array<String>) {
 
     for (s in 1..MAXSUM) {
         descendants[s].sort()
-        total += descendants[s].size        
+        total += descendants[s].size
         for (d in descendants[s].takeWhile { it <= MAXSUM.toLong() }) {
             ancestors[d.toInt()] = (ancestors[s] + s).toMutableList()
         }
@@ -1138,10 +1138,10 @@ fun main(args: Array<String>) {
         print("${"%2d".format(s)}: ${ancestors[s].size} Ancestor(s): ")
         print(ancestors[s].toString().padEnd(18))
         print("${"%5d".format(descendants[s].size)} Descendant(s): ")
-        println("${descendants[s].joinToString(", ", "[", "]", 10)}")        
+        println("${descendants[s].joinToString(", ", "[", "]", 10)}")
     }
 
-    println("\nTotal descendants $total")  
+    println("\nTotal descendants $total")
 }
 ```
 
@@ -1366,7 +1366,7 @@ end function
 function stringify(sequence s)
     for i=1 to length(s) do
         s[i] = sprintf("%d",s[i])
-    end for 
+    end for
     return s
 end function
 
@@ -1376,7 +1376,7 @@ integer p
     sequence descendants = repeat({},maxSum+1),
              ancestors = repeat({},maxSum+1),
              primes = getPrimes()
- 
+
     for i=1 to length(primes) do
         p = primes[i]
         descendants[p] = append(descendants[p], p)
@@ -1384,7 +1384,7 @@ integer p
             descendants[s+p] &= sq_mul(descendants[s], p)
         end for
     end for
- 
+
     p = 4
     for i=0 to length(primes) do
         if i>0 then p = primes[i] end if
@@ -1394,7 +1394,7 @@ integer p
     end for
 
     integer total = 0
- 
+
     for s=1 to maxSum do
         sequence x = sort(descendants[s])
         total += length(x)
@@ -1403,7 +1403,7 @@ integer p
             if d>maxSum then exit end if
             ancestors[d] &= append(ancestors[s], s)
         end for
-        if s<26 or find(s,{46,74,99}) then  
+        if s<26 or find(s,{46,74,99}) then
             sequence d = ancestors[s]
             integer l = length(d)
             string sp = iff(l=1?" ":"s")
@@ -1468,7 +1468,7 @@ Total descendants 546986
 
 ```
 
-The quick test at the end suggests that a 4Ghz chip would take at least 16 days just to count to 5559060566555523, let alone 
+The quick test at the end suggests that a 4Ghz chip would take at least 16 days just to count to 5559060566555523, let alone
 decompose those numbers into prime factors (and throwing away the ones you don't need, probably more like 10 million years),
 which as requested in the task description obviously demonstrates that the algorithm can be crucial in terms of performance.
 
@@ -1554,7 +1554,7 @@ We first define a macro to create memorized functions and a few auxiliary functi
   (if (> (length x) 5)
     (append (take x 2) '(...) (take-last x 2))
     x))
-  
+
 (define (add-tail list x)
   (reverse (cons x (reverse list))))
 ```
@@ -1582,7 +1582,7 @@ The main part of the program uses the memorized functions.
     [(not (prime? p)) (part-prod x (sub1 p))]
     [else (append (map* p (part-prod (- x p) p))
                   (part-prod x (sub1 p)))]))
- 
+
 (define/mem (descendants x)
   (if (= x 4)
       '()
@@ -1634,25 +1634,25 @@ Now we display some results.
 
 
 ```txt
-1 Ancestors: 0 () Descendants: 0 () 
-2 Ancestors: 0 () Descendants: 0 () 
-3 Ancestors: 0 () Descendants: 0 () 
-4 Ancestors: 0 () Descendants: 0 () 
-5 Ancestors: 0 () Descendants: 1 (6) 
-6 Ancestors: 1 (5) Descendants: 2 (8 9) 
-7 Ancestors: 0 () Descendants: 2 (10 12) 
-8 Ancestors: 2 (5 6) Descendants: 3 (15 16 18) 
-9 Ancestors: 2 (5 6) Descendants: 4 (14 20 24 27) 
-10 Ancestors: 1 (7) Descendants: 5 (21 25 30 32 36) 
-11 Ancestors: 0 () Descendants: 5 (28 40 45 48 54) 
-12 Ancestors: 1 (7) Descendants: 7 (35 42 ... 72 81) 
-13 Ancestors: 0 () Descendants: 8 (22 56 ... 96 108) 
-14 Ancestors: 3 (5 6 9) Descendants: 10 (33 49 ... 144 162) 
-15 Ancestors: 3 (5 6 8) Descendants: 12 (26 44 ... 216 243) 
+1 Ancestors: 0 () Descendants: 0 ()
+2 Ancestors: 0 () Descendants: 0 ()
+3 Ancestors: 0 () Descendants: 0 ()
+4 Ancestors: 0 () Descendants: 0 ()
+5 Ancestors: 0 () Descendants: 1 (6)
+6 Ancestors: 1 (5) Descendants: 2 (8 9)
+7 Ancestors: 0 () Descendants: 2 (10 12)
+8 Ancestors: 2 (5 6) Descendants: 3 (15 16 18)
+9 Ancestors: 2 (5 6) Descendants: 4 (14 20 24 27)
+10 Ancestors: 1 (7) Descendants: 5 (21 25 30 32 36)
+11 Ancestors: 0 () Descendants: 5 (28 40 45 48 54)
+12 Ancestors: 1 (7) Descendants: 7 (35 42 ... 72 81)
+13 Ancestors: 0 () Descendants: 8 (22 56 ... 96 108)
+14 Ancestors: 3 (5 6 9) Descendants: 10 (33 49 ... 144 162)
+15 Ancestors: 3 (5 6 8) Descendants: 12 (26 44 ... 216 243)
 
-18 Ancestors: 3 (5 6 8) Descendants: 19 (65 77 ... 648 729) 
-46 Ancestors: 3 (7 10 25) Descendants: 557 (129 205 ... 17006112 19131876) 
-99 Ancestors: 1 (17) Descendants: 38257 (194 1869 ... 4941387170271576 5559060566555523) 
+18 Ancestors: 3 (5 6 8) Descendants: 19 (65 77 ... 648 729)
+46 Ancestors: 3 (7 10 25) Descendants: 557 (129 205 ... 17006112 19131876)
+99 Ancestors: 1 (17) Descendants: 38257 (194 1869 ... 4941387170271576 5559060566555523)
 
 Total ancestors up to 99: 179
 Total descendants up to 99: 546986
@@ -1745,7 +1745,7 @@ Total descendants: 546986
 ```simula
 COMMENT cim --memory-pool-size=512 allocate-descendants-to-their-ancestors.sim ;
 BEGIN
- 
+
 
     COMMENT ABSTRACT FRAMEWORK CLASSES ;
 
@@ -1949,7 +1949,7 @@ BEGIN
     RETURN:
         GET_PRIMES :- LPRIMES;
     END GET_PRIMES;
-  
+
     INTEGER MAXSUM, I, S, PRI, TOTAL, DI;
     REF(LIST_OF_REALLIST) DESCENDANTS, ANCESTORS;
     REF(LIST_OF_REAL) PRIMES, LR, LRS;
@@ -1980,7 +1980,7 @@ BEGIN
             END;
         END;
     END;
-    
+
     FOR I := 0 STEP 1 UNTIL PRIMES.SIZE-1 DO
     BEGIN
         P := PRIMES.ELEMENT(I);
@@ -2376,7 +2376,7 @@ Using [[Extensible prime generator#zkl]]
 
 ```zkl
 const maxsum=99;
- 
+
 primes:=Utils.Generator(Import("sieve.zkl").postponed_sieve)
         .pump(List,'wrap(p){ (p<=maxsum) and p or Void.Stop });
 
@@ -2391,7 +2391,7 @@ foreach p in (primes){
 
     // descendants[prime] is a list that starts with prime, remove prime. 4: ???
 foreach p in (primes + 4) { descendants[p].pop(0) }
- 
+
 ta,td:=0,0;
 foreach s in ([1..maxsum]){
    foreach d in (descendants[s].filter('<=(maxsum))){
@@ -2399,10 +2399,10 @@ foreach s in ([1..maxsum]){
    }
 
    println("%2d Ancestors: ".fmt(s),ancestors[s].len() and ancestors[s] or "None");
-   println("   Descendants: ", if(z:=descendants[s]) 
+   println("   Descendants: ", if(z:=descendants[s])
 				String(z.len()," : ",z) else "None");
    ta+=ancestors[s].len(); td+=descendants[s].len();
-} 
+}
 println("Total ancestors: %,d".fmt(ta));
 println("Total descendants: %,d".fmt(td));
 ```

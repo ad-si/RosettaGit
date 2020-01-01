@@ -14,7 +14,7 @@ tags = []
 [[Category:Arithmetic operations]]
 
 ;Task:
-Given a sequence of integers, find a continuous subsequence which maximizes the sum of its elements, that is, the elements of no other single subsequence add up to a value larger than this one. 
+Given a sequence of integers, find a continuous subsequence which maximizes the sum of its elements, that is, the elements of no other single subsequence add up to a value larger than this one.
 
 
 An empty subsequence is considered to have the sum of   '''0''';   thus if all elements are negative, the result must be the empty sequence.
@@ -41,7 +41,7 @@ procedure Max_Subarray is
       if Item'Length = 0 then
          raise Empty_Error;
       end if;
-      
+
       for I in Item'range loop
          Sum := 0;
          for J in I..Item'Last loop
@@ -182,7 +182,7 @@ on maxSubseq(xs)
             Tuple(high, max(snd(ab), high))
         end |λ|
     end script
-    
+
     snd(foldl(go, Tuple(Tuple(0, {}), Tuple(0, {})), xs))
 end maxSubseq
 
@@ -227,7 +227,7 @@ on fst(tpl)
     end if
 end fst
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -363,7 +363,7 @@ maxseq = 3, 5, 6, -2, -1, 4
 
 ## AutoHotkey
 
-classic algorithm: 
+classic algorithm:
 
 ```AutoHotkey
 seq = -1,-2,3,5,6,-2,-1,4,-4,2,-1
@@ -478,7 +478,7 @@ function maxsubseq(subseq, ary, len,    b, bp, bs, c, cp, i) {
 ```
 
 
-Demonstration: 
+Demonstration:
 ```awk
 # Joins the elements ary[1] to ary[len] in a string.
 function join(ary, len,    i, s) {
@@ -509,7 +509,7 @@ BEGIN {
 ```
 
 
-{{out}} 
+{{out}}
 
 ```txt
 Array: [-1, -2, -3, -4, -5]
@@ -533,7 +533,7 @@ Array: [-1, -2, 3, 5, 6, -2, -1, 4, -4, 2, -1]
       DIM C%(4) : C%() = -1, -2, -3, -4, -5
       PRINT FNshowarray(C%()) " -> " FNmaxsubsequence(C%())
       END
-      
+
       DEF FNmaxsubsequence(a%())
       LOCAL a%, b%, i%, j%, m%, s%, a$
       a% = 1
@@ -554,7 +554,7 @@ Array: [-1, -2, 3, 5, 6, -2, -1, 4, -4, 2, -1]
         a$ += STR$(a%(i%)) + ", "
       NEXT
       = LEFT$(LEFT$(a$)) + "]"
-      
+
       DEF FNshowarray(a%())
       LOCAL i%, a$
       a$ = "["
@@ -748,7 +748,7 @@ int main(int argc, char **argv) {
 
 ```txt
 Max sum = 15
-3 5 6 -2 -1 4 
+3 5 6 -2 -1 4
 ```
 
 
@@ -756,8 +756,9 @@ Max sum = 15
 ## C++
 
 
-```cpp>#include <utility
-   // for std::pair
+```cpp
+#include <utility>
+// for std::pair
 #include <iterator>  // for std::iterator_traits
 #include <iostream>  // for std::cout
 #include <ostream>   // for output operator and std::endl
@@ -930,7 +931,7 @@ max_sum_seq = (sequence) ->
       sum = 0
       sum_start = i + 1
   sequence[max_start...max_end]
-  
+
 # tests
 console.log max_sum_seq [-1, 0, 15, 3, -9, 12, -4]
 console.log max_sum_seq [-1]
@@ -973,7 +974,7 @@ Returns the maximum subsequence sum, the subsequence with the maximum sum, and s
 ```
 
 
-For example, 
+For example,
 
  > (max-subseq '(-1 -2 -3 -4 -5))
  0
@@ -998,7 +999,7 @@ For example,
 (defun max-subseq (seq)
   (loop for subsequence in (mapcon (lambda (x) (maplist #'reverse (reverse x))) seq)
         for sum = (reduce #'+ subsequence :initial-value 0)
-        with max-subsequence   
+        with max-subsequence
         maximizing sum into max
         if (= sum max) do (setf max-subsequence subsequence)
         finally (return max-subsequence))))
@@ -1055,9 +1056,9 @@ Maximal subsequence: []
 ### Alternative Version
 
 {{trans|Haskell}}
-This version is much less efficient. The output is similar. 
-Currently the D standard library lacks the sum, inits, tails functions, 
-and max can't be used as the maximumBy functions 
+This version is much less efficient. The output is similar.
+Currently the D standard library lacks the sum, inits, tails functions,
+and max can't be used as the maximumBy functions
 (for the concatMap a map.join is enough).
 
 ```d
@@ -1114,28 +1115,28 @@ void main() {
 
 ;; return value of sub-sequence
 (define (max-max L into: result)
-(define value 
+(define value
 	(if
 	(empty? L) -Infinity
 	(max (first L)  (+ (first L) (max-max (cdr L) result )))))
-	
-    (when (> value (result-score result)) 
+
+    (when (> value (result-score result))
 		(set-result-score! result value) ;; remember best score
 		(set-result-starter! result L))  ;; and its location
-	value) 
+	value)
 
 ;; return (best-score (best sequence))
 (define (max-seq L)
 	(define best (result -Infinity null))
 	(max-max L into: best)
 	(define score (result-score best))
-	
+
 	(list score
 	(for/list (( n (result-starter best)))
 			   #:break (zero? score)
 			   (set! score (- score n))
 			   n)))
-	
+
 (define L '(-1 -2 3 5 6 -2 -1 4 -4 2 -1))
 (max-seq L)
     → (15 (3 5 6 -2 -1 4))
@@ -1315,13 +1316,13 @@ The following recursive system seems to have a run time of O(n), but it needs so
 ```Euler Math Toolbox
 
 >function %maxsubs (v,n) ...
-$if n==1 then 
+$if n==1 then
 $  if (v[1]<0) then return {zeros(1,0),zeros(1,0)}
-$  else return {v,v}; 
+$  else return {v,v};
 $  endif;
 $endif;
 ${v1,v2}=%maxsubs(v[1:n-1],n-1);
-$m1=sum(v1); m2=sum(v2); m3=m2+v[n]; 
+$m1=sum(v1); m2=sum(v2); m3=m2+v[n];
 $if m3>0 then v3=v2|v[n]; else v3=zeros(1,0); endif;
 $if m3>m1 then return {v2|v[n],v3};
 $else return {v1,v3};
@@ -1419,11 +1420,11 @@ def maxSubseq(seq) {
     }
     intervals
   }
-  
+
   # For recording the best result found
   var maxValue := 0
   var maxInterval := 0..!0
-  
+
   # Try all subsequences beginning and ending with such intervals.
   for firstIntervalIx => firstInterval in intervals {
     for lastInterval in intervals(firstIntervalIx) {
@@ -1437,7 +1438,7 @@ def maxSubseq(seq) {
       }
     }
   }
-  
+
   return ["value" => maxValue,
           "indexes" => maxInterval]
 }
@@ -1628,7 +1629,7 @@ For i = LBound(seq) To UBound(seq)
     If sum > maxSum Then
       maxSum = sum
       first = i
-      last = j 
+      last = j
     End If
   Next j
 Next i
@@ -1711,19 +1712,19 @@ func main() {
 
 Input:   [-1 -2 3 5 6 -2 -1 4 -4 2 -1]
 Sub seq: [3 5 6 -2 -1 4]
-Sum:     15 
+Sum:     15
 
 Input:   [-1 1 2 -5 -6]
 Sub seq: [1 2]
-Sum:     3 
+Sum:     3
 
 Input:   []
 Sub seq: []
-Sum:     0 
+Sum:     0
 
 Input:   [-1 -2 -1]
 Sub seq: []
-Sum:     0 
+Sum:     0
 
 ```
 
@@ -1777,13 +1778,13 @@ end
 
 link ximage      # to show lists
 
-procedure maxsubseq(L)                    #: return the subsequence of L with maximum positive sum 
+procedure maxsubseq(L)                    #: return the subsequence of L with maximum positive sum
 local i,maxglobal,maxglobalI,maxlocal,maxlocalI
 
 maxglobal := maxlocal := 0                                           # global and local maxima
 
 every i := 1 to *L do  {
-   if (maxlocal := max(maxlocal +L[i],0)) > 0 then 
+   if (maxlocal := max(maxlocal +L[i],0)) > 0 then
       if /maxlocalI then maxlocalI := [i,i] else maxlocalI[2] := i   # local maxima subscripts
    else maxlocalI := &null                                           # reset subsequence
    if maxglobal <:= maxlocal then                                    # global maxima
@@ -1796,26 +1797,26 @@ end
 
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 PROGRAM "Subseq.bas"
-110 RANDOMIZE 
+110 RANDOMIZE
 120 NUMERIC A(1 TO 15)
 130 PRINT "Sequence:"
 140 FOR I=LBOUND(A) TO UBOUND(A)
 150   LET A(I)=RND(11)-6
 160   PRINT A(I);
-170 NEXT 
+170 NEXT
 180 LET MAXSUM,ST=0:LET EN=-1
 190 FOR I=LBOUND(A) TO UBOUND(A)
 200   LET SUM=0
 210   FOR J=I TO UBOUND(A)
 220     LET SUM=SUM+A(J)
 230     IF SUM>MAXSUM THEN LET MAXSUM=SUM:LET ST=I:LET EN=J
-240   NEXT 
-250 NEXT 
+240   NEXT
+250 NEXT
 260 PRINT :PRINT "SubSequence with greatest sum:"
 270 IF ST>0 THEN PRINT TAB(ST*3-2);
 280 FOR I=ST TO EN
 290   PRINT A(I);
-300 NEXT 
+300 NEXT
 310 PRINT :PRINT "Sum:";MAXSUM
 ```
 
@@ -1835,14 +1836,14 @@ maxss=: monad define
 
 <tt>y</tt> is the input vector, an integer list.
 
-<tt>AS</tt>  means "all sub-sequences." It is a binary table. 
+<tt>AS</tt>  means "all sub-sequences." It is a binary table.
 Each row indicates one sub-sequence; the count of columns equals the length of the input.
 
-<tt>MX</tt>  means "maxima." It is the first location in <tt>AS</tt> where the corresponding sum is largest. 
+<tt>MX</tt>  means "maxima." It is the first location in <tt>AS</tt> where the corresponding sum is largest.
 
-Totals for the subsequences are calculated by the phrase '<tt>AS +/ . * y</tt>' which is the inner product of the binary table with the input vector. 
+Totals for the subsequences are calculated by the phrase '<tt>AS +/ . * y</tt>' which is the inner product of the binary table with the input vector.
 
-All solutions are found but only one is returned, to fit the output requirement. 
+All solutions are found but only one is returned, to fit the output requirement.
 If zero is the maximal sum the empty array is always returned, although sub-sequences of positive length (comprised of zeros) might be more interesting.
 
 Example use:
@@ -1928,7 +1929,7 @@ public class Sub{
                 }
             }while(nextIndices(array));//while we haven't tested all subarrays
         }
-        System.out.println("Sum: " + highSum + "\nSet: " + 
+        System.out.println("Sum: " + highSum + "\nSet: " +
         		highSet);
     }
     /**
@@ -1973,7 +1974,7 @@ private static int BiggestSubsum(int[] t) {
         if (sum < 0)
             sum = 0;
         maxsum = sum > maxsum ? sum : maxsum;
-    }        
+    }
     return maxsum;
 }
 ```
@@ -2135,14 +2136,14 @@ From Javascript entry.
 /* Greatest Subsequential Sum, in Jsish */
 function sumValues(arr) {
     var result = 0;
-    for (var i = 0, len = arr.length; i < len; i++) result += arr[i]; 
+    for (var i = 0, len = arr.length; i < len; i++) result += arr[i];
     return result;
 }
 
 function greatestSubsequentialSum(population:array):array {
     var maxValue = (population[0]) ? population[0] : 0;
     var subsequence = [], greatest = [];
- 
+
     for (var i = 0, len = population.length; i < len; i++) {
         for (var j = i; j < len; j++) {
             subsequence = population.slice(i, j);
@@ -2327,7 +2328,7 @@ sub maxsumseq a$
     print "Maximum sum ";maxsum
     print
 end sub
- 
+
 ```
 
 
@@ -2456,8 +2457,8 @@ param Lmax := 6;
 param:
 SOS:  Sx :=
  1     7
- 2     4 
- 3   -11 
+ 2     4
+ 3   -11
  4     6
  5     3
  6     1
@@ -2518,7 +2519,7 @@ Model has been successfully processed
 
 ```MATLAB
 function [S,GS]=gss(a)
-% Greatest subsequential sum 
+% Greatest subsequential sum
 a =[0;a(:);0]';
 ix1 = find(a(2:end) >0 & a(1:end-1) <= 0);
 ix2 = find(a(2:end)<=0 & a(1:end-1) > 0);
@@ -2526,10 +2527,10 @@ K = 0;
 S = 0;
 for k = 1:length(ix1)
 	s = sum(a(ix1(k)+1:ix2(k)));
-	if (s>S) 
+	if (s>S)
 		S=s; K=k;
 	end;
-end; 
+end;
 GS = a(ix1(K)+1:ix2(K));
 
 ```
@@ -2609,13 +2610,13 @@ Works with oo2c Version 2
 ```oberon2
 
 MODULE GreatestSubsequentialSum;
-IMPORT 
-  Out, 
+IMPORT
+  Out,
   Err,
   IntStr,
   ProgramArgs,
   TextRider;
-TYPE  
+TYPE
   IntSeq= POINTER TO ARRAY OF LONGINT;
 
 PROCEDURE ShowUsage();
@@ -2668,7 +2669,7 @@ BEGIN
     FOR i := 0 TO argc - 1 DO
       reader.ReadLine(param);
       IntStr.StrToInt(param,iseq[i],res);
-    END   
+    END
  END;
  RETURN iseq
 END GetParams;
@@ -2702,7 +2703,7 @@ Execute:<br/>
 ```txt
 
 GreatestSubsequentialSum -1 -2 3 5 6 -2 -1 4 -4 2 -2
-GreatestSubsequentialSum -1 -5 -3 
+GreatestSubsequentialSum -1 -5 -3
 
 ```
 
@@ -2849,9 +2850,9 @@ end.
 
 ```txt
 :> ./GreatestSubsequentialSum
-Sequence: 
+Sequence:
  -1 -2  3  5  6 -2 -1  4 -4  2 -1
-Subsequence with greatest sum: 
+Subsequence with greatest sum:
         3  5  6 -2 -1  4
 Sum:
 15
@@ -3034,7 +3035,7 @@ end function
 ```PHP
 
 <?php
- 
+
 function max_sum_seq($sequence) {
   // This runs in linear time.
   $sum_start = 0;
@@ -3057,7 +3058,7 @@ function max_sum_seq($sequence) {
   }
   return array_slice($sequence, $max_start, $max_len);
 }
- 
+
 function print_array($arr) {
   if (count($arr) > 0) {
     echo join(" ", $arr);
@@ -3066,7 +3067,7 @@ function print_array($arr) {
   }
   echo '
 ';
-}  
+}
 // tests
 print_array(max_sum_seq(array(-1, 0, 15, 3, -9, 12, -4)));
 print_array(max_sum_seq(array(-1)));
@@ -3157,7 +3158,7 @@ Sequence:
  -1 -2  3  5  6 -2 -1  4 -4  2 -1
 Subsequence with greatest sum:
         3  5  6 -2 -1  4
-Sum:   15 
+Sum:   15
 
 ```
 
@@ -3283,7 +3284,7 @@ memoseq(DC, LC, TTC), gss(_D, _L, TT) <=> TTC > TT |
 ```txt
  ?- greatest_subsequence.
 [-1,-2,3,5,6,-2,-1,4,-4,2,-1]
-3 5 6 -2 -1 4 ==> 15 
+3 5 6 -2 -1 4 ==> 15
 true ;
 false.
 
@@ -3312,7 +3313,7 @@ maxsubseq(List, Sub, Sum) :-
 | ?- maxsubseq([-1,-2,3,5,6,-2,-1,4,-4,2,-1], Sub, Sum).
 
 Sub = [3,5,6,-2,-1,4]
-Sum = 15 ? 
+Sum = 15 ?
 
 yes
 
@@ -3328,7 +3329,7 @@ If OpenConsole()
   Define s$, a, b, p1, p2, sum, max, dm=(?EndOfMyData-?MyData)
   Dim Seq.i(dm/SizeOf(Integer))
   CopyMemory(?MyData,@seq(),dm)
-  
+
   For a=0 To ArraySize(seq())
     sum=0
     For b=a To ArraySize(seq())
@@ -3340,15 +3341,15 @@ If OpenConsole()
       EndIf
     Next
   Next
-  
+
   For a=p1 To p2
     s$+str(seq(a))
-    If a<p2 
+    If a<p2
       s$+"+"
     EndIf
   Next
   PrintN(s$+" = "+str(max))
-  
+
   Print("Press ENTER to quit"): Input()
   CloseConsole()
 EndIf
@@ -3385,7 +3386,7 @@ def maxsum(sequence):
     """Return maximum sum."""
     maxsofar, maxendinghere = 0, 0
     for x in sequence:
-        # invariant: ``maxendinghere`` and ``maxsofar`` are accurate for ``x[0..i-1]``          
+        # invariant: ``maxendinghere`` and ``maxsofar`` are accurate for ``x[0..i-1]``
         maxendinghere = max(maxendinghere + x, 0)
         maxsofar = max(maxsofar, maxendinghere)
     return maxsofar
@@ -3405,7 +3406,7 @@ def maxsumseq(sequence):
         elif sum_ < 0: # start new sequence
             sum_ = 0
             sum_start = i
-    assert maxsum_ == maxsum(sequence) 
+    assert maxsum_ == maxsum(sequence)
     assert maxsum_ == sum(sequence[start + 1:end + 1])
     return sequence[start + 1:end + 1]
 ```
@@ -3419,7 +3420,7 @@ def maxsumit(iterable):
     maxsum_, sum_ = 0, 0
     for i, x in enumerate(iterable):
         seq.append(x); sum_ += x
-        if maxsum_ < sum_: 
+        if maxsum_ < sum_:
             maxseq = seq; maxsum_ = sum_
             start, end = sum_start, i
         elif sum_ < 0:
@@ -3438,14 +3439,14 @@ assert f([-1]) == []
 assert f([0])  == []
 assert f([1])       == [1]
 assert f([1, 0])    == [1]
-assert f([0, 1])    == [0, 1]   
-assert f([0, 1, 0]) == [0, 1]   
+assert f([0, 1])    == [0, 1]
+assert f([0, 1, 0]) == [0, 1]
 assert f([2])         == [2]
 assert f([2, -1])     == [2]
 assert f([-1, 2])     == [2]
 assert f([-1, 2, -1]) == [2]
 assert f([2, -1, 3])         == [2, -1, 3]
-assert f([2, -1, 3, -1])     == [2, -1, 3] 
+assert f([2, -1, 3, -1])     == [2, -1, 3]
 assert f([-1, 2, -1, 3])     == [2, -1, 3]
 assert f([-1, 2, -1, 3, -1]) == [2, -1, 3]
 assert f([-1, 1, 2, -5, -6]) == [1,2]
@@ -3523,7 +3524,7 @@ Linear time version, returns the maximum subsequence and its sum.
   (define-values (_ result _1 max-sum)
     (for/fold ([seq '()] [max-seq '()] [sum 0] [max-sum 0])
       ([i l])
-      (cond [(> (+ sum i) max-sum) 
+      (cond [(> (+ sum i) max-sum)
              (values (cons i seq) (cons i seq) (+ sum i) (+ sum i))]
             [(< (+ sum i) 0)
              (values '() max-seq 0 max-sum)]
@@ -3699,7 +3700,7 @@ Sequence:
  -1 -2  3  5  6 -2 -1  4 -4  2 -1
 Subsequence with greatest sum:
         3  5  6 -2 -1  4
-Sum: 15   
+Sum: 15
 
 ```
 
@@ -3716,9 +3717,9 @@ aList1 = [0, 1, 2, -3, 3, -1, 0, -4, 0, -1, -4, 2]
 see "[0, 1, 2, -3, 3, -1, 0, -4, 0, -1, -4, 2]  -> " + sum(aList1) + nl
 aList2 = [-1, -2, 3, 5, 6, -2, -1, 4, -4, 2, -1]
 see "[-1, -2, 3, 5, 6, -2, -1, 4, -4, 2, -1] -> " + sum(aList2) + nl
-aList3 = [-1, -2, -3, -4, -5] 
+aList3 = [-1, -2, -3, -4, -5]
 see "[-1, -2, -3, -4, -5] -> " + sum(aList3) + nl
-aList4 = [] 
+aList4 = []
 see "[] - > " + sum(aList4) + nl
 
 func sum aList
@@ -3837,9 +3838,9 @@ A better answer would run in O(n) instead of O(n**2) using numerical properties 
 
 
 ```ruby
-# the trick is that at any point 
+# the trick is that at any point
 # in the iteration if starting a new chain is
-# better than your current score with this element 
+# better than your current score with this element
 # added to it, then do so.
 # the interesting part is proving the math behind it
 def subarray_sum(arr)
@@ -3996,7 +3997,7 @@ This returns a cons of the maximum sum and (one of) the maximum subsequence(s).
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const func array integer: maxSubseq (in array integer: sequence) is func
   result
     var array integer: maxSequence is 0 times 0;
@@ -4024,7 +4025,7 @@ const func array integer: maxSubseq (in array integer: sequence) is func
       maxSequence := sequence[startPos .. endPos];
     end if;
   end func;
- 
+
 const proc: main is func
   local
     const array integer: a1 is [] (-1, -2, 3, 5, 6, -2, -1, 4, -4, 2, -1);
@@ -4132,7 +4133,7 @@ set a {-1 -2 3 5 6 -2 -1 4 -4 2 -1}
 proc maxsumseq1 {a} {
     set len [llength $a]
     set maxsum 0
-    
+
     for {set start 0} {$start < $len} {incr start} {
         for {set end $start} {$end < $len} {incr end} {
             set sum 0
@@ -4155,7 +4156,7 @@ proc maxsumseq2 {sequence} {
     for {set i 0} {$i < [llength $sequence]} {incr i} {
         set x [lindex $sequence $i]
         incr sum_ $x
-        if {$maxsum_ < $sum_} { 
+        if {$maxsum_ < $sum_} {
             set maxsum_ $sum_
             set end $i
         } elseif {$sum_ < 0} {
@@ -4278,8 +4279,8 @@ Text(0, "Sum = ");  IntOut(0, Best);  CrLf(0);
 
 ```txt
 
-Sequence = -1 -2 3 5 6 -2 -1 4 -4 2 -1 
-Greatest = 3 5 6 -2 -1 4 
+Sequence = -1 -2 3 5 6 -2 -1 4 -4 2 -1
+Greatest = 3 5 6 -2 -1 4
 Sum = 15
 
 ```
@@ -4340,7 +4341,7 @@ s:=maxsubseq(T); println(s.sum()," : ",s);
 90 PRINT a(i);
 100 IF i<l THEN PRINT ", ";
 110 NEXT i
-120 PRINT 
+120 PRINT
 130 LET a=1: LET m=0: LET b=0
 140 FOR i=1 TO l
 150 LET s=0

@@ -1745,8 +1745,8 @@ blsq ) 27{^^^^2.%{3.*1.+}\/{2./}\/ie}{1!=}w!bx{\/+]}{\/isn!}w!L[
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int hailstone(int n, int *arry)
@@ -1802,8 +1802,8 @@ Max 351 at j= 77031
 
 Much faster if you want to go over a million or so.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define N 10000000
 #define CS N	/* cache size */
@@ -1958,8 +1958,8 @@ max below 100000: 77031 (351 steps)
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 #include <utility>
 
@@ -6901,8 +6901,8 @@ Number 77031 has the longest sequence with 351 elements
 
 To display the length, and first and last elements, of the hailstone sequence for 27, we could do this:
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8hailstone ORDER_PP_FN(                  \
 8fn(8N,                                                       \

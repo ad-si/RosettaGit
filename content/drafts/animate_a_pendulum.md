@@ -13,7 +13,7 @@ tags = []
 [[File:pendulum.gif|160px|thumb|right|Capture of the Oz version.]]
 
 {{task|Temporal media}}{{requires|Graphics}}
-One good way of making an animation is by simulating a physical system and illustrating the variables in that system using a dynamically changing graphical display. 
+One good way of making an animation is by simulating a physical system and illustrating the variables in that system using a dynamically changing graphical display.
 The classic such physical system is a [[wp:Pendulum|simple gravity pendulum]].
 
 For this task, create a simple physical model of a pendulum and animate it.
@@ -225,11 +225,11 @@ ExitApp
       MODE 8
       *FLOAT 64
       VDU 23,23,4;0;0;0; : REM Set line thickness
-      
+
       theta = RAD(40) : REM initial displacement
       g = 9.81 : REM acceleration due to gravity
       l = 0.50 : REM length of pendulum in metres
-      
+
       REPEAT
         PROCpendulum(theta, l)
         WAIT 1
@@ -239,7 +239,7 @@ ExitApp
         theta += speed
       UNTIL FALSE
       END
-      
+
       DEF PROCpendulum(a, l)
       LOCAL pivotX, pivotY, bobX, bobY
       pivotX = 640
@@ -360,10 +360,10 @@ Loop Until Inkey()<>""
 500   DO
 510     FOR I=1 TO 24
 520       DISPLAY #I:AT 3 FROM 1 TO 8
-530     NEXT 
+530     NEXT
 540     FOR I=23 TO 2 STEP-1
 550       DISPLAY #I:AT 3 FROM 1 TO 8
-560     NEXT 
+560     NEXT
 570   LOOP UNTIL INKEY$=CHR$(27)
 580 END DEF
 590 DEF RESET
@@ -380,8 +380,8 @@ Loop Until Inkey()<>""
 
 {{libheader|GLUT}}
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <math.h>
 #include <GL/glut.h>
 #include <GL/gl.h>
@@ -503,12 +503,12 @@ class wxPendulumDlg : public wxDialog
 {
     public:
 
-        wxPendulumDlg(wxWindow *parent, wxWindowID id = 1, const wxString &title = wxT("wxPendulum"), 
-				 const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize, 
+        wxPendulumDlg(wxWindow *parent, wxWindowID id = 1, const wxString &title = wxT("wxPendulum"),
+				 const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
 				 long style = wxSUNKEN_BORDER | wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxDIALOG_NO_PARENT | wxMINIMIZE_BOX | wxMAXIMIZE_BOX | wxCLOSE_BOX);
 
         virtual ~wxPendulumDlg();
-	
+
 		// Event handler
         void wxPendulumDlgPaint(wxPaintEvent& event);
         void wxPendulumDlgSize(wxSizeEvent& event);
@@ -526,7 +526,7 @@ class wxPendulumDlg : public wxDialog
         enum wxIDs
         {
             ID_WXTIMER1 = 1001,
-            ID_DUMMY_VALUE_ 
+            ID_DUMMY_VALUE_
         };
 
         void OnClose(wxCloseEvent& event);
@@ -658,8 +658,8 @@ void wxPendulumDlg::OnTimer(wxTimerEvent& WXUNUSED(event))
 
 ```
 
-This program is tested with wxWidgets version 2.8 and 2.9. 
-The whole project, including makefile for compiling on Linux 
+This program is tested with wxWidgets version 2.8 and 2.9.
+The whole project, including makefile for compiling on Linux
 can be download from [https://github.com/orbitcowboy/wxPendulum github].
 [[File:WxPendulumScreenshot.png]]
 
@@ -681,12 +681,12 @@ class CSharpPendulum
 {
     Form _form;
     Timer _timer;
-    
-    double _angle = Math.PI / 2, 
-           _angleAccel, 
-           _angleVelocity = 0, 
+
+    double _angle = Math.PI / 2,
+           _angleAccel,
+           _angleVelocity = 0,
            _dt = 0.1;
-    
+
     int _length = 50;
 
     [STAThread]
@@ -710,7 +710,7 @@ class CSharpPendulum
             _angleAccel = -9.81 / _length * Math.Sin(_angle);
             _angleVelocity += _angleAccel * _dt;
             _angle += _angleVelocity * _dt;
-          
+
             Bitmap dblBuffer = new Bitmap(_form.Width, _form.Height);
             Graphics g = Graphics.FromImage(dblBuffer);
             Graphics f = Graphics.FromHwnd(_form.Handle);
@@ -718,14 +718,14 @@ class CSharpPendulum
             g.DrawLine(Pens.Black, new Point(anchorX, anchorY), new Point(ballX, ballY));
             g.FillEllipse(Brushes.Black, anchorX - 3, anchorY - 4, 7, 7);
             g.FillEllipse(Brushes.DarkGoldenrod, ballX - 7, ballY - 7, 14, 14);
-            
+
             f.Clear(Color.White);
-            f.DrawImage(dblBuffer, new Point(0, 0));    
+            f.DrawImage(dblBuffer, new Point(0, 0));
         };
 
         _timer.Start();
         Application.Run(_form);
-    }     
+    }
 }
 
 ```
@@ -744,7 +744,7 @@ Clojure solution using an atom and a separate rendering thread
   (:import
     (javax.swing JFrame)
     (java.awt Canvas Graphics Color)))
- 
+
 (def length 200)
 (def width (* 2 (+ 50 length)))
 (def height (* 3 (/ length 2)))
@@ -754,13 +754,13 @@ Clojure solution using an atom and a separate rendering thread
 (def anchor-x (/ width 2))
 (def anchor-y (/ height 8))
 (def angle (atom (/ (Math/PI) 2)))
- 
+
 (defn draw [#^Canvas canvas angle]
   (let [buffer  (.getBufferStrategy canvas)
         g       (.getDrawGraphics buffer)
         ball-x (+ anchor-x (* (Math/sin angle) length))
         ball-y (+ anchor-y (* (Math/cos angle) length))]
-    (try      
+    (try
       (doto g
         (.setColor Color/BLACK)
         (.fillRect 0 0 width height)
@@ -768,7 +768,7 @@ Clojure solution using an atom and a separate rendering thread
         (.drawLine anchor-x anchor-y ball-x ball-y)
         (.setColor Color/YELLOW)
         (.fillOval (- anchor-x 3) (- anchor-y 4) 7 7)
-        (.fillOval (- ball-x 7) (- ball-y 7) 14 14))      
+        (.fillOval (- ball-x 7) (- ball-y 7) 14 14))
       (finally (.dispose g)))
     (if-not (.contentsLost buffer)
       (.show buffer)) ))
@@ -778,30 +778,30 @@ Clojure solution using an atom and a separate rendering thread
     (fn [] (draw canvas @angle) (recur))
     (new Thread)
     (.start)))
- 
+
 (defn -main [& args]
   (let [frame  (JFrame. "Pendulum")
         canvas (Canvas.)]
- 
+
     (doto frame
-      (.setSize width height)      
+      (.setSize width height)
       (.setDefaultCloseOperation JFrame/EXIT_ON_CLOSE)
       (.setResizable false)
       (.add canvas)
       (.setVisible true))
- 
+
     (doto canvas
-      (.createBufferStrategy 2)      
+      (.createBufferStrategy 2)
       (.setVisible true)
       (.requestFocus))
- 
+
     (start-renderer canvas)
- 
-    (loop [v 0]      
+
+    (loop [v 0]
       (swap! angle #(+ % (* v dt)))
       (Thread/sleep 15)
       (recur (+ v (* k (Math/sin @angle) dt)))) ))
- 
+
 (-main)
 
 ```
@@ -876,11 +876,11 @@ The angle <math>\theta</math> of a pendulum with length <math>L</math> and accel
 :<math>\frac{d^2}{dt^2}\theta = -\frac{g}{L} \sin \theta</math>
 This simulation uses this formula directly, updating the velocity from the acceleration and the position from the velocity; inaccuracy results from the finite timestep.
 
-The event flow works like this: 
-The ''clock'' object created by the simulation steps the simulation on the specified in the interval. 
-The simulation writes its output to <code><var>angle</var></code>, which is a ''Lamport slot'' which can notify of updates. 
-The ''whenever'' set up by <code>makeDisplayComponent</code> listens for updates and triggers redrawing as long as ''interest'' has been expressed, which is done whenever the component actually redraws, which happens only if the component's window is still on screen. 
-When the window is closed, additionally, the simulation itself is stopped and the application allowed to exit. 
+The event flow works like this:
+The ''clock'' object created by the simulation steps the simulation on the specified in the interval.
+The simulation writes its output to <code><var>angle</var></code>, which is a ''Lamport slot'' which can notify of updates.
+The ''whenever'' set up by <code>makeDisplayComponent</code> listens for updates and triggers redrawing as long as ''interest'' has been expressed, which is done whenever the component actually redraws, which happens only if the component's window is still on screen.
+When the window is closed, additionally, the simulation itself is stopped and the application allowed to exit.
 (This logic is more general than necessary; it is designed to be suitable for a larger application as well.)
 
 
@@ -916,7 +916,7 @@ def makePendulumSim(length_m :float64,
 def makeDisplayComponent(&angle) {
   def c
   def updater := whenever([&angle], fn { c.repaint() })
-  
+
   bind c := makeEPainter(def paintCallback {
     to paintComponent(g) {
       try {
@@ -930,18 +930,18 @@ def makeDisplayComponent(&angle) {
         g.setColor(colors.getWhite())
         g.fillRect(0, 0, c.getWidth(), c.getHeight())
         g.setColor(colors.getBlack())
-        
+
         g.fillOval(originX - 2, originY - 2, 4, 4)
         g.drawLine(originX, originY, ballX, ballY)
         g.fillOval(ballX - ballRadius, ballY - ballRadius, ballRadius * 2, ballRadius * 2)
-      
+
         updater[] # provoke interest provided that we did get drawn (window not closed)
       } catch p {
         stderr.println(`In paint callback: $p${p.eStack()}`)
       }
     }
   })
-  
+
   c.setPreferredSize(<awt:makeDimension>(300, 300))
   return c
 }
@@ -1022,7 +1022,7 @@ type alias Model =
   , gravity : Float
   }
 
-type Msg 
+type Msg
     = Tick Time
 
 init : (Model,Cmd Msg)
@@ -1068,11 +1068,11 @@ view model =
         [ pendulum |> rotate model.angle ]
 
 subscriptions : Model -> Sub Msg
-subscriptions _ = 
+subscriptions _ =
     Time.every (dt * second) Tick
 
 main =
-  program 
+  program
       { init = init
       , view = view
       , update = update
@@ -1168,14 +1168,14 @@ end function
 
 procedure animation()
     atom alfa, omega, epsilon
-    
+
     if graphics_mode(18) then
     end if
-    
+
     vc = video_config()
     suspension = {vc[VC_XPIXELS]/2,vc[VC_YPIXELS]/2}
     len = vc[VC_YPIXELS]/2-20
-    
+
     alfa = PI/2
     omega = 0
 
@@ -1218,7 +1218,7 @@ $  setplot(-1,1,-1,1);
 $  markerstyle("o#");
 $  repeat
 $  for i=1 to cols(t)-1;
-$    clg; 
+$    clg;
 $    hold on;
 $    plot([0,sin(s[i])],[1,1-cos(s[i])]);
 $    mark([0,sin(s[i])],[1,1-cos(s[i])]);
@@ -1263,21 +1263,21 @@ END EVENTS
 SUB Swing()
 	TYPE RECT: %rcLeft, %rcTop, %rcRight, %rcBottom: END TYPE
 	STATIC rc AS RECT, !!acceleration, !!velocity, !!angle = M_PI_2, %pendulum = 100
-	
+
 	GetClientRect(ME, @rc)
-	
+
 	' Recalculate
 	DIM headX = rc.rcRight / 2, headY = rc.rcBottom / 4
 	DIM tailX = headX + SIN(angle) * pendulum
 	DIM tailY = headY + COS(angle) * pendulum
-	
+
 	acceleration = -9.81 / pendulum * SIN(angle)
 	INCR(velocity, acceleration * 0.1)(angle, velocity * 0.1)
-	
+
 	' Create backbuffer
 	CreateCompatibleDC(GetDC(ME))
 	SelectObject(CreateCompatibleDC, CreateCompatibleBitmap(GetDC, rc.rcRight, rc.rcBottom))
-	
+
 	' Draw to backbuffer
 	FILLSTYLE(FILL_SOLID): FILLCOLOR(RGB(200, 200, 0))
 	LINE(CreateCompatibleDC, 0, 0, rc.rcRight, rc.rcBottom, GetSysColor(COLOR_BTNHILIGHT), TRUE, TRUE)
@@ -1292,7 +1292,7 @@ SUB Swing()
 	BitBlt(GetDC, 0, 0, rc.rcRight, rc.rcBottom, CreateCompatibleDC, 0, 0, SRCCOPY)
 	ReleaseDC(ME, GetDC)
 
-	' Delete backbuffer	
+	' Delete backbuffer
 	DeleteObject(SelectObject(CreateCompatibleDC, SelectObject))
 	DeleteDC(CreateCompatibleDC)
 END SUB
@@ -1322,7 +1322,7 @@ CONSTANT: theta0 0.5
 : omega0 ( -- omega0 ) 2 pi * T0 / ;
 : theta ( -- theta ) current-time omega0 * cos theta0 * ;
 
-: relative-xy ( theta l -- xy ) 
+: relative-xy ( theta l -- xy )
     swap [ sin * ] [ cos * ] 2bi 2array ;
 : theta-to-xy ( origin theta l -- xy ) relative-xy v+ ;
 
@@ -1332,7 +1332,7 @@ TUPLE: pendulum-gadget < gadget alarm ;
 : window-l ( gadget -- l ) rect-bounds [ drop ] [ second ] bi* ;
 : gadget-xy ( gadget -- xy ) [ O ] [ drop theta ] [ window-l ] tri theta-to-xy ;
 
-M: pendulum-gadget draw-gadget* 
+M: pendulum-gadget draw-gadget*
     COLOR: black gl-color
     [ O ] [ gadget-xy ] bi gl-line ;
 
@@ -1341,8 +1341,8 @@ M:: pendulum-gadget graft* ( gadget -- )
     20 milliseconds every gadget (>>alarm) ;
 M: pendulum-gadget ungraft* alarm>> cancel-alarm ;
 
-: <pendulum-gadget> ( -- gadget ) 
-    pendulum-gadget new 
+: <pendulum-gadget> ( -- gadget )
+    pendulum-gadget new
     { 500 500 } >>pref-dim ;
 : pendulum-main ( -- )
     [ <pendulum-gadget> "pendulum" open-window ] with-ui ;
@@ -1440,283 +1440,283 @@ A small preview (truncated to a few steps of the pendulum changing direction). I
 
 ```txt
 
-                                                 |                                                  
+                                                 |
 -------------------------------------------------|--------------------------------------------------
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                G                                 
-                                                 |               #G#                                
-                                                 |              #GOG#                               
-                                                 |               #G#                                
-                                                 |                G                                 
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |                G
+                                                 |               #G#
+                                                 |              #GOG#
+                                                 |               #G#
+                                                 |                G
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
 
 
 
-                                                 |                                                  
+                                                 |
 -------------------------------------------------|--------------------------------------------------
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                       G                          
-                                                 |                      #G#                         
-                                                 |                     #GOG#                        
-                                                 |                      #G#                         
-                                                 |                       G                          
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |                       G
+                                                 |                      #G#
+                                                 |                     #GOG#
+                                                 |                      #G#
+                                                 |                       G
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
 
 
 
-                                                 |                                                  
+                                                 |
 -------------------------------------------------|--------------------------------------------------
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                            G                     
-                                                 |                           #G#                    
-                                                 |                          #GOG#                   
-                                                 |                           #G#                    
-                                                 |                            G                     
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |                            G
+                                                 |                           #G#
+                                                 |                          #GOG#
+                                                 |                           #G#
+                                                 |                            G
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
 
 
 
-                                                 |                                                  
+                                                 |
 -------------------------------------------------|--------------------------------------------------
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                 G                
-                                                 |                                #G#               
-                                                 |                               #GOG#              
-                                                 |                                #G#               
-                                                 |                                 G                
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |                                 G
+                                                 |                                #G#
+                                                 |                               #GOG#
+                                                 |                                #G#
+                                                 |                                 G
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
 
 
 
-                                                 |                                                  
+                                                 |
 -------------------------------------------------|--------------------------------------------------
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                     G            
-                                                 |                                    #G#           
-                                                 |                                   #GOG#          
-                                                 |                                    #G#           
-                                                 |                                     G            
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |                                     G
+                                                 |                                    #G#
+                                                 |                                   #GOG#
+                                                 |                                    #G#
+                                                 |                                     G
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
 
 
 
-                                                 |                                                  
+                                                 |
 -------------------------------------------------|--------------------------------------------------
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                       G          
-                                                 |                                      #G#         
-                                                 |                                     #GOG#        
-                                                 |                                      #G#         
-                                                 |                                       G          
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |                                       G
+                                                 |                                      #G#
+                                                 |                                     #GOG#
+                                                 |                                      #G#
+                                                 |                                       G
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
 
 
 
-                                                 |                                                  
+                                                 |
 -------------------------------------------------|--------------------------------------------------
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                         G        
-                                                 |                                        #G#       
-                                                 |                                       #GOG#      
-                                                 |                                        #G#       
-                                                 |                                         G        
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |                                         G
+                                                 |                                        #G#
+                                                 |                                       #GOG#
+                                                 |                                        #G#
+                                                 |                                         G
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
 
 
 
-                                                 |                                                  
+                                                 |
 -------------------------------------------------|--------------------------------------------------
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                          G       
-                                                 |                                         #G#      
-                                                 |                                        #GOG#     
-                                                 |                                         #G#      
-                                                 |                                          G       
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
-                                                 |                                                  
+                                                 |
+                                                 |
+                                                 |
+                                                 |                                          G
+                                                 |                                         #G#
+                                                 |                                        #GOG#
+                                                 |                                         #G#
+                                                 |                                          G
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
+                                                 |
 
 
 ```
@@ -1745,7 +1745,7 @@ type Pendulum =
 // calculate the next state of a pendulum
 let next pendulum deltaT : Pendulum =
   let k = -pendulum.gravity / pendulum.length
-  let acceleration = k * Math.Sin pendulum.angle * 1.0<m> 
+  let acceleration = k * Math.Sin pendulum.angle * 1.0<m>
   let newVelocity = pendulum.velocity + acceleration * deltaT
   let newAngle = pendulum.angle + newVelocity * deltaT / 1.0<m>
   { pendulum with velocity = newVelocity; angle = newAngle }
@@ -1769,7 +1769,7 @@ let paint pendulum (gr: System.Drawing.Graphics) =
   gr.FillEllipse( Brushes.Yellow,         x-15, y-15, 30, 30 )
   gr.DrawEllipse( new Pen(Brushes.Black), x-15, y-15, 30, 30 )
 
-// defines an operator "-?" that calculates the time from t2 to t1  
+// defines an operator "-?" that calculates the time from t2 to t1
 // where t2 is optional
 let (-?) (t1: DateTime) (t2: DateTime option) : float<s> =
   match t2 with
@@ -1777,7 +1777,7 @@ let (-?) (t1: DateTime) (t2: DateTime option) : float<s> =
   | Some t -> (t1 - t).TotalSeconds * 1.0<s>
 
 // our main window is double-buffered form that reacts to paint events
-type PendulumForm() as self = 
+type PendulumForm() as self =
   inherit Form(Width=325, Height=240, Text="Pendulum")
   let mutable pendulum = { length   = 1.0<m>;
                            gravity  = 9.81<m/s^2>
@@ -1790,7 +1790,7 @@ type PendulumForm() as self =
   do self.DoubleBuffered <- true
      self.Paint.Add( fun args ->
        let now = DateTime.Now
-       let deltaT = now -? lastPaintedAt |> min 0.01<s> 
+       let deltaT = now -? lastPaintedAt |> min 0.01<s>
        lastPaintedAt <- Some now
 
        pendulum <- next pendulum deltaT
@@ -1803,7 +1803,7 @@ type PendulumForm() as self =
        async { do! Async.Sleep( int( 1000.0 * updateFreq / 1.0<s> ) )
                self.Invalidate()
             }
-       |> Async.Start 
+       |> Async.Start
      )
 
 [<STAThread>]
@@ -1947,12 +1947,12 @@ import Graphics.HGL.Draw.Picture
 import Graphics.HGL.Utils
 import Graphics.HGL.Window
 import Graphics.HGL.Run
- 
+
 import Control.Exception (bracket, )
 import Control.Arrow
- 
+
 toInt = fromIntegral.round
- 
+
 pendulum = runGraphics $
   bracket
     (openWindowEx "Pendulum animation task" Nothing (600,400) DoubleBuffered (Just 30))
@@ -1964,7 +1964,7 @@ pendulum = runGraphics $
     dt = 1/30
     t = - pi/4
     l = 1
-    g = 9.812 
+    g = 9.812
     nextAVT (a,v,t) = (a', v', t + v' * dt) where
         a' = - (g / l) * sin t
         v' = v + a' * dt
@@ -1978,7 +1978,7 @@ Usage with <code>ghci</code>:
  *Main> pendulum
 
 
-###  Alternative solution 
+###  Alternative solution
 
 {{libheader|Gloss}}
 
@@ -1993,7 +1993,7 @@ dt  = 0.01          :: Float    --Time step
 t_f = 15            :: Float    --Final time for data logging
 l_  = 200           :: Float    --Rod length
 
--- Define a type to represent the pendulum: 
+-- Define a type to represent the pendulum:
 type Pendulum = (Float, Float, Float) -- (rod length, tangential speed, angle)
 
 -- Pendulum's initial state
@@ -2008,7 +2008,7 @@ movePendulum dt (l,v,a) = ( l , v_2 , a + v_2 / l * dt*10 )
 -- Convert from Pendulum to [Picture] for display
 renderPendulum :: Pendulum -> [Picture]
 renderPendulum (l,v,a) = map (uncurry Translate newOrigin)
-                            [ Line    [ ( 0 , 0 ) , ( l * (cos a), l * (sin a) ) ] 
+                            [ Line    [ ( 0 , 0 ) , ( l * (cos a), l * (sin a) ) ]
                             , polygon [ ( 0 , 0 ) , ( -5 , 8.66 ) , ( 5 , 8.66 ) ]
                             , Translate ( l * (cos a)) (l * (sin a)) (circleSolid (0.04*l_))
                             , Translate (-1.1*l) (-1.3*l) (Scale 0.1 0.1 (Text currSpeed))
@@ -2030,7 +2030,7 @@ main :: IO ()
 main = do   --plotOnGNU
             simulate window background fps initialstate render update
                 where   window      = InWindow "Animate a pendulum" windowSize (40, 40)
-                        background  = white         
+                        background  = white
                         fps         = round (1/dt)
                         render xs   = pictures $ renderPendulum xs
                         update _    = movePendulum
@@ -2242,7 +2242,7 @@ Updated for changes in '''J8'''
 ```j
 require 'gl2 trig'
 coinsert 'jgl2'
- 
+
 DT   =: %30      NB. seconds
 ANGLE=: 0.45p1   NB. radians
 L    =: 1        NB. metres
@@ -2254,7 +2254,7 @@ pc pend;pn "Pendulum";
 minwh 320 200; cc isi isigraph flush;
 )
 
-pend_run=: verb define 
+pend_run=: verb define
   wd PEND,'pshow'
   wd 'timer ',":DT * 1000
 )
@@ -2284,7 +2284,7 @@ drawPendulum=: verb define
   pe=. ps + 150 <.@* (cos , sin) 0.5p1 + y    NB. adjust orientation
   glclear''
   glbrush glrgb 91 91 91                      NB. gray
-  gllines ps , pe                             
+  gllines ps , pe
   glellipse (,~ ps - -:) 40 15
   glrect 0 0, width, 20
   glbrush glrgb 255 255 0                     NB. yellow
@@ -2386,7 +2386,7 @@ public class Pendulum extends JPanel implements Runnable {
       callback(angle);
     }, timestep_ms);
   }
-  
+
   var canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
   var prev=0;
@@ -2400,7 +2400,7 @@ public class Pendulum extends JPanel implements Runnable {
     context.fillStyle = "rgba(255,255,255,0.51)";
     context.globalCompositeOperation = "destination-out";
     context.fillRect(0, 0, canvas.width, canvas.height);
-    
+
     context.fillStyle = "yellow";
     context.strokeStyle = "rgba(0,0,0,"+Math.max(0,1-Math.abs(prev-angle)*10)+")";
     context.globalCompositeOperation = "source-over";
@@ -2408,12 +2408,12 @@ public class Pendulum extends JPanel implements Runnable {
     context.save();
       context.translate(canvas.width/2, canvas.height/2);
       context.rotate(angle);
-      
+
       context.beginPath();
       context.rect(-rBar, -rBar, rBar*2, rPend+rBar*2);
       context.fill();
       context.stroke();
-      
+
       context.beginPath();
       context.arc(0, rPend, rBall, 0, Math.PI*2, false);
       context.fill();
@@ -2440,10 +2440,10 @@ With some control elements to ease the usage.
 			<line id="string" x1="150" y1="50" x2="250" y2="50" stroke="brown" stroke-width="4" />
 			<circle id="ball" cx="250" cy="50" r="20" fill="black" />
 		</svg>
-		
+
 
 		Initial angle:<input id="in_angle" type="number" min="0" max="180" onchange="condReset()"/>(degrees)
-		
+
 
 		<button type="button" onclick="startAnimation()">Start</button>
 		<button type="button" onclick="stopAnimation()">Stop</button>
@@ -2468,7 +2468,7 @@ With some control elements to ease the usage.
 				if(!timerFunction) timerFunction = setInterval(swing, dx * 1000);
 			}
 			function swing(){
-				acc = g * Math.cos(angle); 
+				acc = g * Math.cos(angle);
 				vel += acc * dx;//Convert m/s/s to m/s
 				angle += vel/(radius/100) * dx; //convert m/s into rad/s and then into rad
 				setPenPos();
@@ -2506,7 +2506,7 @@ Differential equation based solution using the Luxor graphics library.
 using Luxor
 using Colors
 using BoundaryValueDiffEq
- 
+
 # constants for differential equations and movie
 const g = 9.81
 const L = 1.0                         # pendulum length in meters
@@ -2516,22 +2516,22 @@ const t0 = 0.0                        # start time (s)
 const tf = 2.3                        # end simulation time (s)
 const dtframe = 1.0/framerate         # time increment per frame
 const tspan = LinRange(t0, tf, Int(floor(tf*framerate)))  # array of time points in animation
- 
+
 const bgcolor = "black"               # gif background
 const leaderhue = (0.80, 0.70, 0.20)  # gif swing arm hue light gold
 const hslcolors = [HSL(col) for col in (distinguishable_colors(
                    Int(floor(tf*framerate)+3),[RGB(1,1,1)])[2:end])]
 const giffilename = "pendulum.gif"    # output file
- 
+
 # differential equations
 simplependulum(du, u, p, t) = (θ=u[1]; dθ=u[2]; du[1]=dθ; du[2]=-(g/L)*sin(θ))
 bc2(residual, u, p, t) = (residual[1] = u[end÷2][1] + pi/2; residual[2] = u[end][1] - pi/2)
 bvp2 = BVProblem(simplependulum, bc2, [pi/2,pi/2], (tspan[1],tspan[end]))
 sol2 = solve(bvp2, MIRK4(), dt=dtframe) # use the MIRK4 solver for TwoPointBVProblem
- 
+
 # movie making background
 backdrop(scene, framenumber) = background(bgcolor)
- 
+
 function frame(scene, framenumber)
     u1, u2 = sol2.u[framenumber]
     y, x = L*cos(u1), L*sin(u1)
@@ -2544,7 +2544,7 @@ function frame(scene, framenumber)
         Point(0.0, -190.0),
         halign=:center)
 end
- 
+
 muv = Movie(400, 400, "Pendulum Demo", 1:length(tspan))
 animate(muv, [Scene(muv, backdrop),
               Scene(muv, frame, easingfunction=easeinoutcubic)],
@@ -2665,27 +2665,27 @@ nomainwin
 ```Lingo
 global RODLEN, GRAVITY, DT
 global velocity, acceleration, angle, posX, posY
-    
+
 on startMovie
-    
+
     -- window properties
     _movie.stage.title = "Pendulum"
     _movie.stage.titlebarOptions.visible = TRUE
     _movie.stage.rect = rect(0, 0, 400, 400)
     _movie.centerStage = TRUE
     _movie.puppetTempo(30)
-    
+
     RODLEN = 180
     GRAVITY = -9.8
     DT = 0.03
-    
+
     velocity = 0.0
     acceleration = 0.0
     angle = PI/3
     posX = 200 - sin(angle) * RODLEN
-    posY = 100 + cos(angle) * RODLEN    
+    posY = 100 + cos(angle) * RODLEN
     paint()
-    
+
     -- show the window
     _movie.stage.visible = TRUE
 end
@@ -2809,7 +2809,7 @@ Module Pendulum {
             Pendulum(THETA)
             if KeyPress(32) Then Exit
       }
-      
+
       Sub back()
             If not IsWine then Smooth On
             Cls 7,0
@@ -2820,7 +2820,7 @@ Module Pendulum {
             circle fill #AAAAAA, scale.x/50
             Hold  ' hold this as background
       End Sub
-      
+
       Sub Pendulum(x)
             x+=pi/2
             Release  ' place stored background to screen
@@ -2847,8 +2847,8 @@ Pendulum
 ```Mathematica
 freq = 8; length = freq^(-1/2);
 Animate[Graphics[
-  List[{Line[{{0, 0}, length {Sin[T], -Cos[T]}} /. {T -> (Pi/6) Cos[2 Pi freq t]}], PointSize[Large], 
-               Point[{length {Sin[T], -Cos[T]}} /. {T -> (Pi/6) Cos[2 Pi freq t]}]}], 
+  List[{Line[{{0, 0}, length {Sin[T], -Cos[T]}} /. {T -> (Pi/6) Cos[2 Pi freq t]}], PointSize[Large],
+               Point[{length {Sin[T], -Cos[T]}} /. {T -> (Pi/6) Cos[2 Pi freq t]}]}],
   PlotRange -> {{-0.3, 0.3}, {-0.5, 0}}], {t, 0, 1}, AnimationRate -> 0.07]
 ```
 
@@ -2898,30 +2898,30 @@ hold off
 
 %Run simulation, all calculations are performed in cylindrical coordinates
 for time = (deltaTime:deltaTime:endTime)
-        
+
     drawnow; %Forces MATLAB to render the pendulum
-    
+
     %Find total force
     gravitationalForceCylindrical = [mass*g*cosd(theta) mass*g*sind(theta)];
-    
+
     %This code is just incase you want to add more forces,e.g friction
-    totalForce = gravitationalForceCylindrical; 
-    
+    totalForce = gravitationalForceCylindrical;
+
     %If the rod isn't massless or is a spring, etc., modify this line
     %accordingly
     rodForce = [-totalForce(1) 0]; %cylindrical coordinates
-    
+
     totalForce = totalForce + rodForce;
-    
+
     acceleration = totalForce / mass; %F = ma
     velocity = velocity + acceleration * deltaTime;
     rodLength = rodLength + velocity(1) * deltaTime;
-    theta = theta + velocity(2) * deltaTime; % Attention!! Mistake here. 
+    theta = theta + velocity(2) * deltaTime; % Attention!! Mistake here.
     % Velocity needs to be divided by pendulum length and scaled to degrees:
     % theta = theta + velocity(2) * deltaTime/rodLength/pi*180;
-    
+
     position = rodPivotPoint - (rodLength*[-sind(theta) cosd(theta)]);
-    
+
     %Update figure with new position info
     set(rectHandle,'Position',[(position - radius/2) radius radius]);
     set(lineHandle,'XData',[rodPivotPoint(1) position(1)],'YData',...
@@ -2934,7 +2934,7 @@ end
 
 ## ooRexx
 
-ooRexx does not have a portable GUI, but this version is similar to the Ada version and just prints out the coordinates of the end of the pendulum. 
+ooRexx does not have a portable GUI, but this version is similar to the Ada version and just prints out the coordinates of the end of the pendulum.
 
 ```ooRexx
 
@@ -3025,7 +3025,7 @@ declare
         home:pos(x:160 y:50)
         length:140.0
 	delay
-      
+
      meth init(Pendulum Canvas delay:Delay <= 25) %% milliseconds
 	self.Pend = Pendulum
 	self.delay = Delay
@@ -3052,7 +3052,7 @@ declare
 	catch system(tk(alreadyClosed ...) ...) then skip end
      end
   end
-   
+
   Pendulum = {New PendulumModel init}
 
   Canvas
@@ -3086,7 +3086,7 @@ This does not have the window resizing handling that Tcl does.
 
 use strict;
 use warnings;
-use Tk; 
+use Tk;
 use Math::Trig qw/:pi/;
 
 my $root =  new MainWindow( -title => 'Pendulum Animation' );
@@ -3114,7 +3114,7 @@ sub show_pendulum {
 }
 
 
- 
+
 sub recompute_angle {
   my $scaling = 3000.0 / ($length ** 2);
   # first estimate
@@ -3137,7 +3137,7 @@ sub recompute_angle {
   $dTheta  = $lastDTheta;
   $Theta = $lastTheta;
 }
- 
+
 
 sub animate {
   recompute_angle;
@@ -3147,7 +3147,7 @@ sub animate {
 
 show_pendulum;
 $after_id = $root->after(500 => sub {animate});
- 
+
 $canvas->bind('<Destroy>' => sub {$after_id->cancel});
 MainLoop;
 ```
@@ -3157,7 +3157,7 @@ MainLoop;
 ## Perl 6
 
 {{works with|Rakudo|2018.09}}
-Handles window resizing, modifies pendulum length and period as window height changes. May need to tweek $ppi scaling to get good looking animation.  
+Handles window resizing, modifies pendulum length and period as window height changes. May need to tweek $ppi scaling to get good looking animation.
 
 
 ```perl6
@@ -3535,9 +3535,9 @@ Procedure initPendulum(*pendulum.pendulum, length.d = 1.0, gravity.d = 9.81, ini
     \velocity = 0.0
   EndWith
 EndProcedure
-  
 
-Procedure updatePendulum(*pendulum.pendulum, deltaTime.d) 
+
+Procedure updatePendulum(*pendulum.pendulum, deltaTime.d)
   deltaTime = deltaTime / 1000.0 ;ms
   Protected acceleration.d = *pendulum\constant * Sin(*pendulum\angle)
   *pendulum\velocity + acceleration * deltaTime
@@ -3559,10 +3559,10 @@ Procedure drawPendulum(*pendulum.pendulum)
   StartDrawing(ScreenOutput())
     LineXY(154 + 5,43 + 5, 154 + 5 + x, 43 + 5 + y) ;draw from pivot-center to bob-center, adjusting for origins
   StopDrawing()
-  
+
   ;draw bob
   DisplayTransparentSprite(#bob_spr, 154 + 5 - 16 + x, 43 + 5 - 16 + y) ;adj for origin in upper-left
-EndProcedure 
+EndProcedure
 
 Define pendulum.pendulum, event
 initPendulum(pendulum)
@@ -3579,7 +3579,7 @@ Repeat
           updatePendulum(pendulum, 50)
           drawPendulum(pendulum)
       EndSelect
-      FlipBuffers() 
+      FlipBuffers()
     Case #PB_Event_CloseWindow
       Break
   EndSelect
@@ -3638,7 +3638,7 @@ class BobMass(pygame.sprite.Sprite):
         midDDtheta = -sin(radians(midtheta)) * scaling
         lastDtheta = midDtheta + midDDtheta
         lasttheta = midtheta + (midDtheta + lastDtheta)/2.0
-        
+
         lastDDtheta = -sin(radians(lasttheta)) * scaling
         lastDtheta = midDtheta + (midDDtheta + lastDDtheta)/2.0
         lasttheta = midtheta + (midDtheta + lastDtheta)/2.0
@@ -3646,7 +3646,7 @@ class BobMass(pygame.sprite.Sprite):
         self.dtheta = lastDtheta
         self.theta = lasttheta
         self.rect = pygame.Rect(PIVOT[0]-
-                                SWINGLENGTH*sin(radians(self.theta)), 
+                                SWINGLENGTH*sin(radians(self.theta)),
                                 PIVOT[1]+
                                 SWINGLENGTH*cos(radians(self.theta)),1,1)
 
@@ -3698,7 +3698,7 @@ while True:
   (define (x θ) (+ 200 (* 150 (sin θ))))
   (define (y θ) (* 150 (cos θ)))
   (λ (n)
-    (define p-image (underlay/xy (add-line (empty-scene 400 200) 200 0 (x θ) (y θ) "black") 
+    (define p-image (underlay/xy (add-line (empty-scene 400 200) 200 0 (x θ) (y θ) "black")
                                  (- (x θ) 5) (- (y θ) 5) (circle 5 "solid" "blue")))
     (set! θ (+ θ (* θ′ 0.04)))
     (set! θ′ (+ θ′ (* (accel θ) 0.04)))
@@ -3723,12 +3723,12 @@ load "stdlib.ring"
 CounterMan = 1
 paint = null
 pi = 22/7
-theta = pi/180*40 
-g = 9.81 
-l = 0.50 
-speed = 0 
+theta = pi/180*40
+g = 9.81
+l = 0.50
+speed = 0
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("Animate a pendulum")
@@ -3804,27 +3804,27 @@ Output video:
 
 ## RLaB
 
-The plane pendulum motion is an interesting and easy problem 
+The plane pendulum motion is an interesting and easy problem
 in which the facilities of RLaB for numerical computation and simulation
 are easily accessible.
-The parameters of the problem are <math>L</math>, the length of the arm, 
+The parameters of the problem are <math>L</math>, the length of the arm,
 and <math>g</math> the magnitude of the gravity.
 
-We start with the mathematical transliteration of the problem. 
-We solve it in plane (2-D) in terms of <math>\theta</math> describing 
-the angle between the <math>z</math>-axis and the arm of the pendulum, 
+We start with the mathematical transliteration of the problem.
+We solve it in plane (2-D) in terms of <math>\theta</math> describing
+the angle between the <math>z</math>-axis and the arm of the pendulum,
 where the downwards direction is taken as positive.
-The Newton equation of motion, which is a second-order non-linear 
+The Newton equation of motion, which is a second-order non-linear
 ordinary differential equation (ODE) reads
 :<math>\ddot\theta = -\frac{g}{L} \sin \theta</math>
-In our example, we will solve the problem as, so called, 
-initial value problem (IVP). 
+In our example, we will solve the problem as, so called,
+initial value problem (IVP).
 That is, we will specify that at the time ''t=0'' the pendulum was at rest <math>\dot\theta(0)=0</math>, extended at an angle <math>\theta(0)=0.523598776</math>
 radians (equivalent to 30 degrees).
 
 RLaB has the facilities to solve ODE IVP which are accessible through ''odeiv'' solver. This solver requires that the ODE be written as the first order differential equation,
 :<math>\dot u = f(u) </math>
-Here, we introduced  a vector <math>u = [\theta, \dot\theta] = [u_1, u_2]</math>, 
+Here, we introduced  a vector <math>u = [\theta, \dot\theta] = [u_1, u_2]</math>,
 for which the original ODE reads
 :<math>\dot\theta = \dot u_1 = u_2 = f_1(u)</math>
 :<math>\ddot\theta = \dot u_2 = -\frac{g}{L} \sin \theta = -\frac{g}{L} \sin u_1 =f_2(u)</math>.
@@ -3889,7 +3889,7 @@ for (i in 1:y.nr)
 {
   // plot a line between the pivot point at (0,0) and the current position of the pendulum
   arm_line = [0,0; L*sin(y[i;2]), -L*cos(y[i;2])]; // this is because theta is between the arm and the z-coordinate
-  plot  (arm_line); 
+  plot  (arm_line);
   sleep (0.1); // sleep 0.1 seconds between plots
 }
 
@@ -3904,10 +3904,10 @@ for (i in 1:y.nr)
 ==={{libheader|Ruby/Tk}}===
 
 {{trans|Tcl}}
-This does not have the window resizing handling that Tcl does -- 
-I did not spend enough time in the docs to figure out 
-how to get the new window size out of the configuration event.  
-Of interest when running this pendulum side-by-side with the Tcl one: 
+This does not have the window resizing handling that Tcl does --
+I did not spend enough time in the docs to figure out
+how to get the new window size out of the configuration event.
+Of interest when running this pendulum side-by-side with the Tcl one:
 the Tcl pendulum swings noticibly faster.
 
 
@@ -4361,7 +4361,7 @@ clear i
 
 scf(0); clf(); xname("Simple gravity pendulum");
 plot2d(real([0 rod_pos(1)]),imag([0 rod_pos(1)]));
-axes=gca(); 
+axes=gca();
 axes.isoview="on";
 axes.children(1).children.mark_style=3;
 axes.children(1).children.mark_size=1;
@@ -4397,7 +4397,7 @@ clear i
 ## SequenceL
 
 {{libheader|EaselSL}}
-Using the [https://github.com/bethune-bryant/Easel Easel Engine for SequenceL] 
+Using the [https://github.com/bethune-bryant/Easel Easel Engine for SequenceL]
 
 
 ```sequencel>import <Utilities/Sequence.sl
@@ -4449,7 +4449,7 @@ length := 450;
 
 anchor := point(500, 750);
 
-newState(I(0), S(0)) := 
+newState(I(0), S(0)) :=
     let
         newAngle := S.angle + newAngleVelocity * dt;
         newAngleVelocity := S.angleVelocity + newAngleAccel * dt;
@@ -4459,7 +4459,7 @@ newState(I(0), S(0)) :=
 
 sounds(I(0), S(0)) := ["ding"] when I.iClick.clicked else [];
 
-images(S(0)) := 
+images(S(0)) :=
     let
         pendulum := pendulumLocation(S.angle);
     in
@@ -4467,7 +4467,7 @@ images(S(0)) :=
          disc(pendulum, 30, dYellow),
          disc(anchor, 5, dBlack)];
 
-pendulumLocation(angle) := 
+pendulumLocation(angle) :=
     let
         x := anchor.x + round(sin(angle) * length);
         y := anchor.y - round(cos(angle) * length);
@@ -4780,7 +4780,7 @@ exit
 In a real Spectrum it is too slow. Use the BasinC emulator/editor at maximum speed for realistic animation.
 
 ```zxbasic
-10 OVER 1: CLS 
+10 OVER 1: CLS
 20 LET theta=1
 30 LET g=9.81
 40 LET l=0.5

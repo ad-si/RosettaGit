@@ -12,7 +12,7 @@ tags = []
 
 {{task|Randomness}}
 
-A ''subtractive generator'' calculates a sequence of [[random number generator|random numbers]], where each number is congruent to the subtraction of two previous numbers from the sequence. 
+A ''subtractive generator'' calculates a sequence of [[random number generator|random numbers]], where each number is congruent to the subtraction of two previous numbers from the sequence.
 
 The formula is
 
@@ -200,7 +200,7 @@ InitR(Seed) {
         PRINT FNsubrand(0)
       NEXT
       END
-      
+
       DEF FNsubrand(s%)
       PRIVATE r%(), p% : DIM r%(54)
       IF s% = 0 THEN
@@ -251,7 +251,7 @@ This is a translation of the C example.
 1000000000:?MOD;
 tbl$(state,55);
 0:?si:?sj;
- 
+
 (subrand-seed=
   i,j,p2
 .   1:?p2
@@ -277,7 +277,7 @@ tbl$(state,55);
       & subrand$
       & !i+1:?i
       ));
-             
+
 (subrand=
   x
 .   (!si:!sj&subrand-seed$0|)
@@ -288,7 +288,7 @@ tbl$(state,55);
     |
     )
   & !x:?(!si$?state));
-   
+
 (Main=
   i
 .   subrand-seed$292929
@@ -301,7 +301,7 @@ tbl$(state,55);
 
 Main$;
 ```
-  
+
 
 {{out}}
 
@@ -324,8 +324,8 @@ Main$;
 
 This is basically the same as the reference C code, only differs in that it's C89.
 
-```c>#include<stdio.h
-
+```c
+#include <stdio.h>
 
 #define MOD 1000000000
 int state[55], si = 0, sj = 0;
@@ -396,8 +396,8 @@ private:
     boost::circular_buffer<int> r;
 public:
     Subtractive_generator(int seed);
-    int next(); 
-    int operator()(){return next();} 
+    int next();
+    int operator()(){return next();}
 };
 
 Subtractive_generator::Subtractive_generator(int seed)
@@ -440,7 +440,7 @@ int main()
     cout << "result = " << rg() << endl;
 
     return 0;
-} 
+}
 
 ```
 
@@ -548,7 +548,7 @@ public class SubtractiveGenerator {
                 (get r n))
         _ (dotimes [_ 165] (xpat2))]
     xpat2))
-    
+
 (def xpat2 (xpat2-with-seed 292929))
 
 (println (xpat2) (xpat2) (xpat2)) ; prints: 467478574 512932792 539453717
@@ -743,7 +743,7 @@ defmodule Subtractive do
     {:ok, _pid} = Agent.start_link(fn -> state end, name: :Subtractive)
     Enum.each(1..220, fn _ -> rand end) # Discard first 220 elements of sequence.
   end
-  
+
   def rand do
     state = Agent.get(:Subtractive, &(&1))
     n = rem(Enum.at(state, -55) - Enum.at(state, -24) + 1_000_000_000, 1_000_000_000)
@@ -790,7 +790,7 @@ let main argv =
         yield! init
         yield! Seq.map2 (fun u v -> (m+u-v)%m) r (Seq.skip 31 r)
     }
-        
+
     r |> Seq.skip 220 |> Seq.take 3
     |> Seq.iter (printfn "%d")
     0
@@ -816,8 +816,8 @@ module subgenerator
 
   integer, parameter :: modulus = 1000000000
   integer :: s(0:54), r(0:54)
-  
-contains 
+
+contains
 
 subroutine initgen(seed)
   integer :: seed
@@ -830,15 +830,15 @@ subroutine initgen(seed)
     s(n) = mod(s(n-2) - s(n-1), modulus)
     if (s(n) < 0) s(n) = s(n) + modulus
   end do
-   
+
   do n = 0, 54
     r(n) = s(mod(34*(n+1), 55))
   end do
 
   do n = 1, 165
     rnum = subrand()
-  end do 
-  
+  end do
+
 end subroutine initgen
 
 integer function subrand()
@@ -851,21 +851,21 @@ integer function subrand()
   p1 = mod(p1 + 1, 55)
   p2 = mod(p2 + 1, 55)
 
-end function subrand  
+end function subrand
 end module subgenerator
-  
+
 program subgen_test
   use subgenerator
   implicit none
- 
+
   integer :: seed = 292929
   integer :: i
-  
+
   call initgen(seed)
   do i = 1, 10
     write(*,*) subrand()
-  end do 
- 
+  end do
+
 end program
 ```
 
@@ -988,7 +988,7 @@ func ptTest(nd, s int, rs []int) {
         a := sg()
         if r != a {
             fmt.Println("Fail")
-            os.Exit(1) 
+            os.Exit(1)
         }
     }
 }
@@ -1048,10 +1048,10 @@ main = mapM_ print $ take 10 $ subtractgen 292929
 
 ```Icon
 procedure main()
-   every 1 to 10 do 
+   every 1 to 10 do
       write(rand_sub(292929))
 end
- 
+
 procedure rand_sub(x)
 static ring,m
    if /ring then {
@@ -1062,9 +1062,9 @@ static ring,m
       every seed[n := 3 to 55] := (seed[n-2]-seed[n-1])%m
       every ring[(n := 0 to 54) + 1] := seed[1 + (34 * (n + 1)%55)]
       every  n := *ring to 219 do {
-         ring[1] -:= ring[-24]    
+         ring[1] -:= ring[-24]
          ring[1] %=  m
-         put(ring,get(ring))     
+         put(ring,get(ring))
          }
    }
    ring[1] -:= ring[-24]
@@ -1133,7 +1133,7 @@ $ jconsole
 467478574 512932792
    sg 4
 539453717 20349702 615542081 378707948
-   
+
 
 ```
 
@@ -1280,7 +1280,7 @@ fun subrandSeed(p: Int) {
     var p2 = 1
     state[0] = p1 % MOD
     var j = 21
-    for (i in 1..54) {       
+    for (i in 1..54) {
         if (j >=55) j -= 55
         state[j] = p2
         p2 = p1 - p2
@@ -1335,12 +1335,12 @@ r[229] = 380969305
 ```Mathematica
 initialize[n_] :=
  Module[{buffer},
-  buffer = 
+  buffer =
    Join[Nest[Flatten@{#, Mod[Subtract @@ #[[-2 ;;]], 10^9]} &, {n, 1},
        53][[1 + Mod[34 Range@54, 55]]], {n}];
   Nest[nextValue, buffer, 165]]
-  
-  nextValue[buffer_] := 
+
+  nextValue[buffer_] :=
  Flatten@{Rest@buffer, Mod[Subtract @@ buffer[[{1, 32}]], 10^9]}
 ```
 
@@ -1463,7 +1463,7 @@ Do n=m+1 To t
 Exit
 mod: Procedure
 Parse Arg a,b
-Return ((a//b)+b)//b  
+Return ((a//b)+b)//b
 ```
 
 {{out|output|text=  when using the default input:}}
@@ -1581,7 +1581,7 @@ Here we just make the seeder return the random sequence as a lazy list.
 ```Phix
 sequence state = repeat(0,55)
 integer pos
- 
+
 constant MAX = 1e9
 function cap(integer n)
     if n<0 then n += MAX end if
@@ -1601,16 +1601,16 @@ procedure init(integer seed)
     temp[2] = 1
     for i=3 to 55 do
         temp[i] = cap(temp[i-2]-temp[i-1])
-    end for 
+    end for
     for i=1 to 55 do
         state[i] = temp[mod(34*i,55)+1]
-    end for 
+    end for
     pos = 55
     for i=55 to 219 do
         {} = next()
     end for
 end procedure
- 
+
 init(292929)
 for i=220 to 222 do
     printf(1,"%d: %d\n",{i,next()})
@@ -1719,21 +1719,21 @@ end subtractive_generator;
 
 Required 3 results:
      467478574
-     512932792 
+     512932792
      539453717
 Subsequent values:
-      20349702 
-     615542081 
-     378707948 
-     933204586 
-     824858649 
-     506003769 
-     380969305 
-     442823364 
-     994162810 
-     261423281 
-     139610325 
-      80746560 
+      20349702
+     615542081
+     378707948
+     933204586
+     824858649
+     506003769
+     380969305
+     442823364
+     994162810
+     261423281
+     139610325
+      80746560
      563900213
 
 ```
@@ -1753,44 +1753,44 @@ An array object is used along with a rotating index object to simulate a ring.
 function Get-SubtractiveRandom ( [int]$Seed )
     {
     function Mod ( [int]$X, [int]$M = 1000000000 ) { ( $X % $M + $M ) % $M }
- 
+
     If ( $Seed )
         {
         $R = New-Object int[] 55
- 
+
         $N1 = 55 - 1
         $N2 = ( $N1 + 34 ) % 55
- 
+
         $R[$N1] = $Seed
         $R[$N2] = 1
- 
+
         ForEach ( $x in 2..(55-1) )
             {
             $N0, $N1, $N2 = $N1, $N2, ( ( $N2 + 34 ) % 55 )
             $R[$N2] = Mod ( $R[$N0] - $R[$N1] )
             }
- 
+
         $i = -55 - 1
         $j = -24 - 1
- 
+
         ForEach ( $x in 55..219 )
             {
             $i = ++$i % 55
             $j = ++$j % 55
             $R[$i] = Mod ( $R[$i] - $R[$j] )
             }
- 
+
         $Script:RandomRing  = $R
         $Script:RandomIndex = $i
         }
- 
+
     $i = $Script:RandomIndex = ++$Script:RandomIndex % 55
     $j = ( $i + 55 - 24 ) % 55
- 
+
     return ( $Script:RandomRing[$i] = Mod ( $Script:RandomRing[$i] - $Script:RandomRing[$j] ) )
     }
- 
- 
+
+
 Get-SubtractiveRandom 292929
 Get-SubtractiveRandom
 Get-SubtractiveRandom
@@ -1828,27 +1828,27 @@ s= collections.deque(maxlen=55)
 #    Start with a single seed in range 0 to 10**9 - 1.
 seed = 292929
 
-#    Set s0 = seed and s1 = 1. 
-#    The inclusion of s1 = 1 avoids some bad states 
+#    Set s0 = seed and s1 = 1.
+#    The inclusion of s1 = 1 avoids some bad states
 #    (like all zeros, or all multiples of 10).
 s.append(seed)
 s.append(1)
 
-#    Compute s2,s3,...,s54 using the subtractive formula 
+#    Compute s2,s3,...,s54 using the subtractive formula
 #    sn = s(n - 2) - s(n - 1)(mod 10**9).
 for n in xrange(2, 55):
     s.append((s[n-2] - s[n-1]) % 10**9)
 
-#    Reorder these 55 values so r0 = s34, r1 = s13, r2 = s47, ..., 
+#    Reorder these 55 values so r0 = s34, r1 = s13, r2 = s47, ...,
 #                               rn = s(34 * (n + 1)(mod 55)).
 
 r = collections.deque(maxlen=55)
 for n in xrange(55):
     i = (34 * (n+1)) % 55
     r.append(s[i])
-#        This is the same order as s0 = r54, s1 = r33, s2 = r12, ..., 
+#        This is the same order as s0 = r54, s1 = r33, s2 = r12, ...,
 #                                  sn = r((34 * n) - 1(mod 55)).
-#        This rearrangement exploits how 34 and 55 are relatively prime. 
+#        This rearrangement exploits how 34 and 55 are relatively prime.
 #    Compute the next 165 values r55 to r219. Store the last 55 values.
 
 
@@ -1880,21 +1880,21 @@ import collections
 _ten2nine = 10**9
 
 class Subtractive_generator():
-    
+
     def __init__(self, seed=292929):
         self.r = collections.deque(maxlen=55)
         s = collections.deque(maxlen=55)
         s.extend([seed, 1])
         s.extend((s[n-2] - s[n-1]) % _ten2nine for n in range(2, 55))
-        self.r.extend(s[(34 * (n+1)) % 55] for n in range(55)) 
+        self.r.extend(s[(34 * (n+1)) % 55] for n in range(55))
         for n in range(219 - 54):
             self()
-     
+
     def __call__(self):
         r = self.r
         r.append((r[0] - r[31]) % _ten2nine)
         return r[54]
-     
+
 if __name__ == '__main__':
     srand = Subtractive_generator()
     print([srand() for i in range(5)])
@@ -2070,7 +2070,7 @@ const type: subtractiveGenerator is new struct
     var integer: si is 0;
     var integer: sj is 24;
   end struct;
- 
+
 const func integer: subrand (inout subtractiveGenerator: generator) is forward;
 
 const func subtractiveGenerator: subrandSeed (in var integer: p1) is func
@@ -2092,7 +2092,7 @@ const func subtractiveGenerator: subrandSeed (in var integer: p1) is func
       ignore(subrand(generator));
     end for;
   end func;
- 
+
 const func integer: subrand (inout subtractiveGenerator: generator) is func
   result
     var integer: subrand is 0;
@@ -2105,7 +2105,7 @@ const func integer: subrand (inout subtractiveGenerator: generator) is func
     subrand := (generator.state[generator.si] - generator.state[generator.sj]) mod MOD;
     generator.state[generator.si] := subrand;
   end func;
- 
+
 const proc: main is func
   local
     var subtractiveGenerator: gen is subrandSeed(292929);

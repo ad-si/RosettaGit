@@ -12,16 +12,16 @@ tags = []
 
 {{task|Basic Data Operations}}
 [[Category:Arithmetic operations]]
-{{basic data operation}} 
+{{basic data operation}}
 [[Category:Simple]]
 
 Get two integers from the user.
 
 Then,   display a message if the first integer is:
-::::*   less than, 
-::::*   equal to,   or 
+::::*   less than,
+::::*   equal to,   or
 ::::*   greater than
-the second integer. 
+the second integer.
 
 
 Test the condition   ''for each case separately'',   so that   ''all three comparison operators are used''   in the code.
@@ -77,8 +77,8 @@ B        DS    F             31-bit signed integer
 
 
 ## 6502 Assembly
- 
-Code is called as a subroutine (i.e. JSR Compare).  
+
+Code is called as a subroutine (i.e. JSR Compare).
 Specific OS/hardware routines for user input and printing are left unimplemented.
 
 ```6502asm
@@ -323,12 +323,12 @@ aime FILE integer a 33 integer b 133
 
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d]}}
 
-Note: the standard includes the characters "&le;", "&ge;" and "&ne;". 
-These appear in the character sets [[wp:GOST 10859|GOST 10859]], [http://www.w3.org/TR/REC-MathML/chap6/ISOTECH1.html ISOtech] and 
-IBM's [[:wp:EBCDIC|EBCDIC]] e.g. code page [http://www.tachyonsoft.com/cp00293.htm 293], 
+Note: the standard includes the characters "&le;", "&ge;" and "&ne;".
+These appear in the character sets [[wp:GOST 10859|GOST 10859]], [http://www.w3.org/TR/REC-MathML/chap6/ISOTECH1.html ISOtech] and
+IBM's [[:wp:EBCDIC|EBCDIC]] e.g. code page [http://www.tachyonsoft.com/cp00293.htm 293],
 and in extended ASCII code pages [http://www.tachyonsoft.com/cp00907.htm 910] & [http://www.tachyonsoft.com/cp00907.htm 910]
 
-The above distributions of both [[ALGOL 68G]] and [[ELLA ALGOL 68]] compilers only 
+The above distributions of both [[ALGOL 68G]] and [[ELLA ALGOL 68]] compilers only
 allow [[wp:ASCII|ASCII]] characters (ASCII has neither "&le;", "&ge;" nor "&ne;" characters).
 
 ```algol68
@@ -447,21 +447,21 @@ szMessLarge: .asciz "Number 1 larger than number 2.\n"
 szCarriageReturn:  .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 sBuffer:    .skip    BUFFERSIZE
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* saves 2 registers */
     ldr r0,iAdrszMessNum1 @ message address
-    ldr r1,iAdrsBuffer   @ buffer address 
+    ldr r1,iAdrsBuffer   @ buffer address
     mov r2,#BUFFERSIZE
     bl numberEntry
     mov r5,r0               @ save number 1 -> r5
     ldr r0,iAdrszMessNum2  @ message address
-	ldr r1,iAdrsBuffer   @ buffer address 
+	ldr r1,iAdrsBuffer   @ buffer address
 	mov r2,#BUFFERSIZE
     bl numberEntry
 	cmp r5,r0         @ compar number 1 and number 2
@@ -471,18 +471,18 @@ main:                /* entry of program  */
 	@ never !!
 	b 100f
 equal:
-    ldr r0,iAdrszMessEqual    @ message address 
+    ldr r0,iAdrszMessEqual    @ message address
 	b aff
 small:
-    ldr r0,iAdrszMessSmall    @ message address 
+    ldr r0,iAdrszMessSmall    @ message address
 	b aff
 large:
-    ldr r0,iAdrszMessLarge    @ message address 
+    ldr r0,iAdrszMessLarge    @ message address
 	b aff
 aff:
     bl affichageMess      @ display message
- 
-    
+
+
 100:   /* standard end of the program */
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
@@ -497,39 +497,39 @@ iAdrszMessLarge: .int szMessLarge
 iAdrsBuffer:   .int  sBuffer
 iAdrszCarriageReturn:  .int  szCarriageReturn
 /******************************************************************/
-/*     Number entry with display message and conversion number    */ 
+/*     Number entry with display message and conversion number    */
 /******************************************************************/
 /* r0 contains message address */
-/* r1 contains buffer address 
+/* r1 contains buffer address
 /* r2 contains buffersize     */
 /* r0 return a number          */
 numberEntry:
-    push {fp,lr}         @ save  registres */ 
-    push {r4,r6,r7}          @ save others registers 
+    push {fp,lr}         @ save  registres */
+    push {r4,r6,r7}          @ save others registers
     mov r4,r1              @ save buffer address -> r4
     bl affichageMess
     mov r0,#STDIN         @ Linux input console
-    //ldr r1,iAdrsBuffer   @ buffer address 
-    //mov r2,#BUFFERSIZE   @ buffer size 
+    //ldr r1,iAdrsBuffer   @ buffer address
+    //mov r2,#BUFFERSIZE   @ buffer size
     mov r7, #READ         @ request to read datas
     swi 0                  @ call system
-    mov r1,r4              @ buffer address 
+    mov r1,r4              @ buffer address
     mov r2,#0                @ end of string
     strb r2,[r1,r0]         @ store byte at the end of input string (r0
-    @ 
+    @
     mov r0,r4              @ buffer address
     bl conversionAtoD    @ conversion string in number in r0
-	
+
 100:
     pop {r4,r6,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -543,70 +543,70 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 
  /******************************************************************/
-/*     Convert a string to a number stored in a registry          */ 
+/*     Convert a string to a number stored in a registry          */
 /******************************************************************/
 /* r0 contains the address of the area terminated by 0 or 0A */
 /* r0 returns a number                           */
 conversionAtoD:
-    push {fp,lr}         @ save 2 registers 
-    push {r1-r7}         @ save others registers 
+    push {fp,lr}         @ save 2 registers
+    push {r1-r7}         @ save others registers
     mov r1,#0
-    mov r2,#10           @ factor 
-    mov r3,#0            @ counter 
-    mov r4,r0            @ save address string -> r4 
-    mov r6,#0            @ positive sign by default 
-    mov r0,#0            @ initialization to 0 
+    mov r2,#10           @ factor
+    mov r3,#0            @ counter
+    mov r4,r0            @ save address string -> r4
+    mov r6,#0            @ positive sign by default
+    mov r0,#0            @ initialization to 0
 1:     /* early space elimination loop */
-    ldrb r5,[r4,r3]     @ loading in r5 of the byte located at the beginning + the position 
+    ldrb r5,[r4,r3]     @ loading in r5 of the byte located at the beginning + the position
     cmp r5,#0            @ end of string -> end routine
     beq 100f
     cmp r5,#0x0A        @ end of string -> end routine
     beq 100f
-    cmp r5,#' '          @ space ? 
-    addeq r3,r3,#1      @ yes we loop by moving one byte 
+    cmp r5,#' '          @ space ?
+    addeq r3,r3,#1      @ yes we loop by moving one byte
     beq 1b
-    cmp r5,#'-'          @ first character is -    
+    cmp r5,#'-'          @ first character is -
     moveq r6,#1         @  1 -> r6
-    beq 3f              @ then move on to the next position 
+    beq 3f              @ then move on to the next position
 2:   /* beginning of digit processing loop */
-    cmp r5,#'0'          @ character is not a number 
+    cmp r5,#'0'          @ character is not a number
     blt 3f
     cmp r5,#'9'          @ character is not a number
     bgt 3f
     /* character is a number */
     sub r5,#48
-    ldr r1,iMaxi       @ check the overflow of the register    
+    ldr r1,iMaxi       @ check the overflow of the register
     cmp r0,r1
     bgt 99f            @ overflow error
-    mul r0,r2,r0         @ multiply par factor 10 
-    add r0,r5            @ add to  r0 
+    mul r0,r2,r0         @ multiply par factor 10
+    add r0,r5            @ add to  r0
 3:
-    add r3,r3,#1         @ advance to the next position 
-    ldrb r5,[r4,r3]     @ load byte 
+    add r3,r3,#1         @ advance to the next position
+    ldrb r5,[r4,r3]     @ load byte
     cmp r5,#0            @ end of string -> end routine
     beq 4f
     cmp r5,#0x0A            @ end of string -> end routine
     beq 4f
-    b 2b                 @ loop 
+    b 2b                 @ loop
 4:
-    cmp r6,#1            @ test r6 for sign 
+    cmp r6,#1            @ test r6 for sign
     moveq r1,#-1
-    muleq r0,r1,r0       @ if negatif, multiply par -1 
+    muleq r0,r1,r0       @ if negatif, multiply par -1
     b 100f
 99:  /* overflow error */
     ldr r0,=szMessErrDep
     bl   affichageMess
     mov r0,#0      @ return  zero  if error
 100:
-    pop {r1-r7}          @ restaur other registers 
-    pop {fp,lr}          @ restaur   2 registers 
-    bx lr                 @return procedure 
-/* constante program */	
-iMaxi: .int 1073741824	
+    pop {r1-r7}          @ restaur other registers
+    pop {fp,lr}          @ restaur   2 registers
+    bx lr                 @return procedure
+/* constante program */
+iMaxi: .int 1073741824
 szMessErrDep:  .asciz  "Too large: overflow 32 bits.\n"
 
 
@@ -658,8 +658,8 @@ elif a == b:
 
 ## AutoHotkey
 
-Error checking is performed automatically by attaching UpDowns to each of the Edit controls. UpDown controls always yield an in-range number, even when the user has typed something non-numeric or out-of-range in the Edit control. 
-The default range is 0 to 100. 
+Error checking is performed automatically by attaching UpDowns to each of the Edit controls. UpDown controls always yield an in-range number, even when the user has typed something non-numeric or out-of-range in the Edit control.
+The default range is 0 to 100.
 
 ```autohotkey
 Gui, Add, Edit
@@ -698,7 +698,7 @@ GuiClose:
 ```
 
 
-In awk, a double equals symbol is required to test for equality. 
+In awk, a double equals symbol is required to test for equality.
 A single equals sign is used for assignment, and will cause a bug if it is used within a boolean expression:
 
 
@@ -779,7 +779,7 @@ PRINT "b"
 130   PRINT A;"is lesss than ";B
 140 ELSE IF A=B THEN
 150   PRINT A;"is equal to ";B
-160 ELSE 
+160 ELSE
 170   PRINT A;"is greater than ";B
 180 END IF
 ```
@@ -862,7 +862,7 @@ quit
 
 ## Befunge
 
-Befunge only has the greater-than operator (backtick `). 
+Befunge only has the greater-than operator (backtick `).
 The branch commands (underline _ and pipe |) test for zero.
 
 
@@ -922,8 +922,8 @@ The second one is less than the first one
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -964,8 +964,8 @@ fun void intComparison (int one, int two)
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main()
 {
@@ -1054,8 +1054,8 @@ Start world
 
 ## Clojure
 
-Creates an infinite sequence of calls to "read an object from the user", and assigns the first two elements to a and b, without evaluating the rest. 
-It evaluates the when/println body three times, each time with op and string bound to their corresponding entries in the list of three operator/string pairs. 
+Creates an infinite sequence of calls to "read an object from the user", and assigns the first two elements to a and b, without evaluating the rest.
+It evaluates the when/println body three times, each time with op and string bound to their corresponding entries in the list of three operator/string pairs.
 Note that this does no validation on input: if the user inputs a string then an exception will be thrown.
 
 ```Clojure
@@ -1113,7 +1113,7 @@ endif()
            DISPLAY "First number: " WITH NO ADVANCING
            ACCEPT A
            DISPLAY "Second number: " WITH NO ADVANCING
-           ACCEPT B 
+           ACCEPT B
 
 *          *> Note: Longer verbal forms may be used instead of symbols
 *          *> e.g. 'IS GREATER THAN' instead '<'
@@ -1226,13 +1226,13 @@ You can type this directly into a REPL:
 ```
 
 
-After hitting enter, the REPL is expecting the two numbers right away. 
-You can enter the two numbers, and the result will print immediately. 
+After hitting enter, the REPL is expecting the two numbers right away.
+You can enter the two numbers, and the result will print immediately.
 Alternatively, you can wrap this code in a function definition:
 
 
 ```lisp
-(defun compare-integers () 
+(defun compare-integers ()
   (let ((a (read *standard-input*))
         (b (read *standard-input*)))
     (cond
@@ -1435,7 +1435,7 @@ END;
 
 CompareThem(1,2); //Shows "1 is less than 2"
 CompareThem(2,2); //Shows "2 is equal to 2"
-CompareThem(2,1); //Shows "2 is greater than 1" 
+CompareThem(2,1); //Shows "2 is greater than 1"
 
 ```
 
@@ -1447,61 +1447,61 @@ The EDSAC offers two conditional branching orders, <tt>E</tt> (branch if the acc
 
 ```edsac
 [ Integer comparison
-  
+
 ### ============
 
-  
+
   A program for the EDSAC
-  
+
   Illustrates the use of the E
   (branch on accumulator sign
   bit clear) and G (branch on
   accumulator sign bit set)
   orders
-  
+
   The integers to be tested, x
   and y, should be stored in
   addresses 13@ and 14@
-  
+
   Output: the program causes the
   machine to print
     '+' if x > y,
     '=' if x = y,
     '-' if x < y.
-  
+
   Works with Initial Orders 2   ]
 
         T56K  [ load point      ]
         GK    [ base address    ]
-        
+
         O15@  [ figure shift    ]
-        
+
         A13@  [ a = x           ]
         S14@  [ a -= y          ]
         G10@  [ if a<0 go to 10 ]
-        
+
         S12@  [ a -= 1          ]
         E8@   [ if a>=0 go to 8 ]
-        
+
         O17@  [ write '='       ]
         ZF    [ halt            ]
-        
+
 [  8 ]  O16@  [ write '+'       ]
         ZF    [ halt            ]
-        
+
 [ 10 ]  O18@  [ write '-'       ]
         ZF    [ halt            ]
-        
+
 [ 12 ]  P0D   [ const: 1        ]
-        
+
 [ 13 ]  P16D  [ x = 37          ]
 [ 14 ]  P14F  [ y = 28          ]
-        
+
 [ 15 ]  #F    [ figure shift    ]
 [ 16 ]  ZF    [ + character     ]
 [ 17 ]  VF    [ = character     ]
 [ 18 ]  AF    [ - character     ]
-        
+
         EZPF  [ begin execution ]
 ```
 
@@ -1517,27 +1517,27 @@ since if does pattern matching the else is required to avoid the application fro
 compare = fn (A, B) {
     if A == B {
         io.format("~p equals ~p~n", [A, B])
-    } 
-    else { 
+    }
+    else {
         ok
     }
 
     if A < B {
         io.format("~p is less than ~p~n", [A, B])
-    } 
-    else { 
+    }
+    else {
         ok
     }
 
     if A > B {
         io.format("~p is greater than ~p~n", [A, B])
-    } 
-    else { 
+    }
+    else {
         ok
     }
 }
 
-@public 
+@public
 run = fn () {
     compare(5, 5)
     compare(6, 5)
@@ -1592,18 +1592,18 @@ ELENA 4.x:
 
 ```elena
 import extensions;
- 
+
 public program()
 {
    var a := console.readLine().toInt();
    var b := console.readLine().toInt();
- 
+
    if (a < b)
        { console.printLine(a," is less than ",b) };
- 
+
    if (a == b)
        { console.printLine(a," equals ",b) };
- 
+
    if (a > b)
        { console.printLine(a," is greater than ",b) }
 }
@@ -1642,7 +1642,7 @@ end
   (if (> 1 2) (insert "True\n") (insert "False\n") )
   (if (<= 1 2) (insert "True\n") (insert "False\n") )
   (if (>= 1 2) (insert "True\n") (insert "False\n") ))
- 
+
 ```
 
 <b>Output:</b>
@@ -1654,7 +1654,7 @@ False
 True
 False
 True
-False                                                                             
+False
 
 ```
 
@@ -1675,7 +1675,7 @@ False
 ```
 
 
-Invoke from within Emacs Lisp (or eg, with M-:) as 
+Invoke from within Emacs Lisp (or eg, with M-:) as
 ```Emacs Lisp
 (integer-comparison 12 42)
 ```
@@ -1762,8 +1762,8 @@ In a Google Docs spreadsheet, that becomes :
 
 
 ```factor
-: example ( -- ) 
-readln readln [ string>number ] bi@ 
+: example ( -- )
+readln readln [ string>number ] bi@
 [ > [ "A > B" print ] when ]
 [ < [ "A < B" print ] when ]
 [ = [ "A = B" print ] when ] 2tri ;
@@ -1795,7 +1795,7 @@ Uses Env.cur to access stdin and stdout.
 class Main
 {
   public static Void main ()
-  { 
+  {
     try
     {
       Env.cur.out.print ("Enter number 1: ").flush
@@ -1803,7 +1803,7 @@ class Main
       Env.cur.out.print ("Enter number 2: ").flush
       num2 := Env.cur.in.readLine.toInt
 
-      if (num1 < num2) 
+      if (num1 < num2)
         echo ("$num1 is smaller than $num2")
       else if (num1 == num2)
         echo ("$num1 is equal to $num2")
@@ -1990,7 +1990,7 @@ All integers in Frink can be arbitrarily large.
 ```frink
 
 [a,b] = eval[input["Enter numbers",["a","b"]]]
-if a<b 
+if a<b
    println["$a < $b"]
 if a==b
    println["$a == $b"]
@@ -2004,7 +2004,7 @@ if a>b
 
 ```fsharp
 let compare_ints a b =
-    let r = 
+    let r =
         match a with
         | x when x < b -> -1, printfn "%d is less than %d" x b
         | x when x = b -> 0,  printfn "%d is equal to %d" x b
@@ -2201,7 +2201,7 @@ myCompare a b
   | a < b  = "A is less than B"
   | a > b  = "A is greater than B"
   | a == b = "A equals B"
- 
+
 main = do
   a <- readLn
   b <- readLn
@@ -2246,7 +2246,7 @@ endif
 
 ```hicest
 DLG(NameEdit=a, NameEdit=b, Button='OK')
- 
+
 IF (a < b) THEN
     WRITE(Messagebox) a, ' is less than ', b
   ELSEIF(a == b) THEN
@@ -2299,15 +2299,15 @@ if (a > b)
 software {
 	a = number(read(' '))
 	b = number(read())
-	
+
 	if a < b
 		print(a, " is less than ", b)
 	end
-	
+
 	if a = b
 		print(a, " is equal to ", b)
 	end
-	
+
 	if a > b
 		print(a, " is greater than ", b)
 	end
@@ -2351,14 +2351,14 @@ Then 7 = 7
 ## J
 
 Comparison is accomplished by the verb <code>compare</code>, which provides logical-numeric output.
-Text elaborating the output of <code>compare</code> is provided by <code>cti</code>: 
+Text elaborating the output of <code>compare</code> is provided by <code>cti</code>:
 
 ```j
 compare=: < , = , >
 
-cti=: dyad define 
+cti=: dyad define
   select  =. ;@#
-  English =. ' is less than ';' is equal to ';' is greater than ' 
+  English =. ' is less than ';' is equal to ';' is greater than '
   x (":@[, (compare select English"_), ":@]) y
 )
 ```
@@ -2513,10 +2513,10 @@ $ jq -s -r -f Integer_comparison.jq
 function compare()
 int1 = readline(STDIN)
 int2 = readline(STDIN)
-print(int1, " is ", 
+print(int1, " is ",
        int1 <  int2 ? "less than "    :
        int1 == int2 ? "equal to "     :
-       int1 >  int2 ? "greater than " : 
+       int1 >  int2 ? "greater than " :
        "uncomparable to",
       int2)
 end
@@ -2602,8 +2602,8 @@ select case
     case (a>b)
         print "a>b " ; a ; " > " ; b
 end select
- 
- 
+
+
 ```
 
 
@@ -2616,7 +2616,7 @@ input "Enter an integer for b.  ";b
 for i = 1 to 3
     op$=word$("< = >", i)
     if eval("a"+op$+"b") then print "a"+op$+"b " ; a;" ";op$;" ";b
-next 
+next
 
 ```
 
@@ -2669,7 +2669,7 @@ if it is not empty then
         switch
             case (num1 < num2)
                 answer num1 && "is less! than" && num2; break
-            case (num1 > num2) 
+            case (num1 > num2)
                 answer num1 && "is greater! than" && num2; break
             case (num1 = num2)
                 answer num1 && "equal! to" && num2
@@ -2696,7 +2696,7 @@ Note, this targets the mingw-32 ABI.
 ;f for floats
 ;a for aggregate types
 ;s for stack objects
-;n: {size:size:size...}, best integer sizes 
+;n: {size:size:size...}, best integer sizes
 target datalayout = "e-p:32:32:32-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f32:32:32-f64:64:64-v64:64:64-v128:128:128-a0:0:64-f80:32:32-n8:16:32"
 ;this was compiled with mingw32; thus it must be linked to a compatible c library
 target triple = "i386-mingw32"
@@ -2955,7 +2955,7 @@ if integer1 > integer2 then print integer1 + " is greater than " + integer2
 
 ## ML/I
 
-This reads the two numbers from 'standard input' or similar, and outputs the results to 'standard output' or equivalent. 
+This reads the two numbers from 'standard input' or similar, and outputs the results to 'standard output' or equivalent.
 Note that ML/I only has tests for ''equality'', ''greater-than'', and ''greater-than-or-equal''.
 
 
@@ -3011,7 +3011,7 @@ GT	BYTE	"A is greater than B",#a,0
 // call: p points to the start of a 0-terminated numeric string
 //       leading chars + and - are allowed
 //       reg $72   0 if negative int
-//	 reg $73   gen. purpose 
+//	 reg $73   gen. purpose
 // return: reg $70 contains integer value
 readInt	XOR	$70,$70,$70	% reset result reg: N=0.
 	LDA	pp,p		% remember &p
@@ -3024,10 +3024,10 @@ readInt	XOR	$70,$70,$70	% reset result reg: N=0.
 	JMP	1F
 				% repeat
 3H	CMP	$73,$71,'0'	%  if c < '0' or c > '9'
-	BN	$73,4F		%  then print err and halt program 
+	BN	$73,4F		%  then print err and halt program
 	CMP	$73,$71,'9'
 	BP	$73,4F
-	SUB	$71,$71,'0'	%  'extract' number	
+	SUB	$71,$71,'0'	%  'extract' number
 	MUL	$70,$70,10
 	ADD	$70,$70,$71	%  N = 10 * N + digit
 	INCL	p,1
@@ -3044,7 +3044,7 @@ readInt	XOR	$70,$70,$70	% reset result reg: N=0.
 	TRAP	0,Fputs,StdErr
 	LDA	p,ILLT
 	TRAP	0,Fputs,StdErr
-	TRAP	0,Halt,0	
+	TRAP	0,Halt,0
 
 // entrance of program
 // e.g. ~> mmix compare2ints A B
@@ -3066,7 +3066,7 @@ Main	CMP	p,argc,3	% main (argc, argv) {
 // perform comparison
 	CMP	A,A,B		% case compare A B
 	LDA	p,LT
-	BN	A,2F		% LT:   print 'LT' 
+	BN	A,2F		% LT:   print 'LT'
 	LDA	p,EQ
 	BZ	A,2F		% EQ:   print 'EQ'
 	LDA	p,GT		% _ :   print 'GT'
@@ -3178,17 +3178,17 @@ INTCOMPREAD
 
 ```txt
 USER>d INTCOMP^ROSETTA
- 
+
 Enter an integer to test: 43
 Enter another integer: 44
 43 is less than 44
 USER>d INTCOMP^ROSETTA
- 
+
 Enter an integer to test: 44
 Enter another integer: 43
 44 is greater than 43
 USER>d INTCOMP^ROSETTA
- 
+
 Enter an integer to test: 2
 Enter another integer: 2
 2 is equal to 2
@@ -3209,21 +3209,21 @@ module IntComp
     Main() : void
     {
         def ReadInt() : int {Int32.Parse(ReadLine())}
-        def WriteResult(x : int, y : int, res : string) : void 
+        def WriteResult(x : int, y : int, res : string) : void
         {WriteLine($"$x is $res $y")}
-        
+
         def a = ReadInt();
         def b = ReadInt();
-        
+
         match(a)
         {
             |a when a > b  => WriteResult(a, b, "greater than")
             |a when a < b  => WriteResult(a, b, "less than")
             |a when a == b => WriteResult(a, b, "equal to")
         }
-        
+
         def x = a.CompareTo(b);
-        
+
         match(x)
         {
             |x when x > 0  => WriteResult(a, b, "greater than")
@@ -3310,9 +3310,9 @@ Function IntergerComparison
 	Push $1
 	StrCpy $0 8
 	StrCpy $1 2
-	
+
 	IntCmp $0 $1 Equal Val1Less Val1More
-	
+
 Equal:
 	DetailPrint "$0 = $1"
 	Goto End
@@ -3323,7 +3323,7 @@ Val1More:
 	DetailPrint "$0 > $1"
 	Goto End
 End:
-	
+
 	Pop $1
 	Pop $0
 FunctionEnd
@@ -3338,10 +3338,10 @@ FunctionEnd
 Function IntegerComparison
 	Push $0
 	Push $1
-	
+
 	StrCpy $0 8
 	StrCpy $1 2
-	
+
 	${If} $0 == $1
 		DetailPrint "$0 = $1"
 	${ElseIf} $0 < $1
@@ -3349,7 +3349,7 @@ Function IntegerComparison
 	${ElseIf} $0 > $1
 		DetailPrint "$0 > $1"
 	${EndIf}
-	
+
 	Pop $1
 	Pop $0
 FunctionEnd
@@ -3366,7 +3366,7 @@ MODULE Compare;
 
    VAR a,b: INTEGER;
 
-BEGIN 
+BEGIN
    In.Int(a);
    In.Int(b);
    IF a < b THEN
@@ -3508,15 +3508,15 @@ import: console
 ```oz
 functor
 import
-  Application(exit) 
+  Application(exit)
   Open(text file)
-define 
+define
 
 Txt = class from Open.file Open.text end
 Stdout = {New Open.file init(name:stdout)}
 Stdin  = {New Txt init(name:stdin)}
 
-proc{Print Msg} 
+proc{Print Msg}
   {Stdout write(vs:Msg)}
 end
 
@@ -3597,7 +3597,7 @@ sub test_num {
 ```
 
 
-All three tests in one. If $f is less than $s return -1, greater than return 1, equal to return 0 
+All three tests in one. If $f is less than $s return -1, greater than return 1, equal to return 0
 
 
 ```perl
@@ -3661,7 +3661,7 @@ say prompt("1st int: ") <=> prompt("2nd int: ");
 ```Phix
 atom a = prompt_number("first number:",{}),
      b = prompt_number("second number:",{})
- 
+
 printf(1,"%g is ",a)
 if a < b then
     puts(1,"less than")
@@ -3689,16 +3689,16 @@ extern scanf;
 	var a = 0;
 	var b = 0;
 	scanf("%i %i", ref (a), ref (b));
-	
+
 	if (a < b)
 		printf("%i is less than %i\n", a::get, b::get);
-	
+
 	if (a == b)
 		printf("%i is equal to %i\n", a::get, b::get);
-	
+
 	if (a > b)
 		printf("%i is greater than %i\n", a::get, b::get);
-	
+
 	return 0;
 ]
 ```
@@ -3776,7 +3776,7 @@ int main(int argc, array(int) argv){
       write("usage: `pike compare-two-ints.pike <x> <y>` where x and y are integers.\n");
       return 0;
    }
-   
+
    int a = argv[1];
    int b = argv[2];
 
@@ -3856,7 +3856,7 @@ if ($a -lt $b) {
 
 
 ```PureBasic
-If OpenConsole()  
+If OpenConsole()
 
   Print("Enter an integer: ")
   x.i = Val(Input())
@@ -3954,7 +3954,7 @@ if ( a < b ) {
           ((= a b) "equals")
           ((< a b) "is lesser than")))
   (format "~a ~a ~a" a compared b))
- 
+
 (compare-two-ints (read) (read))
 ```
 
@@ -3968,7 +3968,7 @@ if ( a < b ) {
 expect trim  1.1 prefer as $a
 "Enter the second number: " print
 expect trim  1.1 prefer as $b
- 
+
 $a $b < if  $b $a "%g is less than %g\n" print
 $a $b > if  $b $a "%g is greater than %g\n" print
 $a $b = if  $b $a "%g is equal to %g\n" print
@@ -3989,8 +3989,8 @@ REBOL [
 a: ask "First integer? "  b: ask "Second integer? "
 
 relation: [
-	a < b "less than"  
-	a = b "equal to"  
+	a < b "less than"
+	a = b "equal to"
 	a > b "greater than"
 ]
 print [a "is"  case relation  b]
@@ -4053,7 +4053,7 @@ bupkis                            ◄■■■■■■■■■■■■■■�
 ──────────────────── Please try again.
 
 ──────────────────── Please enter your 1st integer:
-1 2                               ◄■■■■■■■■■■■■■■■ user input.       
+1 2                               ◄■■■■■■■■■■■■■■■ user input.
 ──────────────────── ***error***  Too many arguments entered.
 ──────────────────── Please try again.
 
@@ -4162,13 +4162,13 @@ Idiomatic version:
 Listen to your soul
 Listen to my words
 
-If your soul is my words, 
+If your soul is my words,
 Say "They're the same"
 
 If your soul is stronger than my words,
 Say "The first was bigger"
 
-If your soul is smaller than my words, 
+If your soul is smaller than my words,
 Say "The second was bigger".
 
 ```
@@ -4424,7 +4424,7 @@ Lower
 
 ## Slate
 
- 
+
 
 ```slate
 [ |:a :b |
@@ -4460,7 +4460,7 @@ Comparisons in Snobol are not operators, but predicate functions that return a n
 
 
 ```SNOBOL4
-*       # Get user input        
+*       # Get user input
         output = 'Enter X,Y:'
         trim(input) break(',') . x ',' rem . y
 
@@ -4594,7 +4594,7 @@ DB20000I  The SQL command completed successfully.
 db2 => INSERT INTO TEST (VAL1, VAL2) VALUES
 db2 (cont.) =>   (1, 2),
 db2 (cont.) =>   (2, 2),
-db2 (cont.) =>   (2, 1); 
+db2 (cont.) =>   (2, 1);
 DB20000I  The SQL command completed successfully.
 db2 => SELECT
 db2 (cont.) =>   CASE
@@ -4604,11 +4604,11 @@ db2 (cont.) =>      WHEN VAL1 > VAL2 THEN VAL1 || ' greater than ' || VAL2
 db2 (cont.) =>   END COMPARISON
 db2 (cont.) => FROM TEST;
 
-COMPARISON                                  
+COMPARISON
 -----------------------------------
-1 less than 2                      
-2 equal to 2                       
-2 greater than 1                    
+1 less than 2
+2 equal to 2
+2 greater than 1
 
   3 record(s) selected.
 
@@ -4661,7 +4661,7 @@ db2 => CALL COMPARISON(1, 2) @
   Return Status = 0
 
 1 less than 2
-db2 => CALL COMPARISON(2, 2) @ 
+db2 => CALL COMPARISON(2, 2) @
   Return Status = 0
 
 2 equal to 2
@@ -4784,7 +4784,7 @@ if (a > b) {println("\(a) is greater than \(b)")}
 
 ```txt
 
-Enter two integers separated by a space: 
+Enter two integers separated by a space:
 234 233
 234 is greater than 233
 ```
@@ -5020,7 +5020,7 @@ end if
   ] when].
 
 |2 3 compare
- greater than 
+ greater than
 |3 2 compare
  less than
 |2 2 compare

@@ -14,7 +14,7 @@ tags = []
 I did not read up as fully as I should have on this task. The program is to output its own source without accessing files. This makes the examples here incorrect. See [http://en.wikipedia.org/wiki/Quine_%28computing%29 the wiki] for more clarification. --[[User:Mwn3d|Mwn3d]] 20:32, 17 November 2007 (MST)
 
 I don't think this task does illustrate the comparative features of different languages very well. As the Wikipedia article explains, one way to solve this task that will work in every language is put the program code into a string, together with some mechanism to replace it at a special location with a copy of itself. For languages which keep a more-or-less one-to-one representation of the code around at runtime (Lisp, Smalltalk, Forth, etc.), it just boils down to accessing this representation. Smaller solutions are in danger of becoming an exercise in obfuscation, or at least become unreadable very quickly. And the examples seen now which mostly access files are obviously missing the point.
- 
+
 So I'd propose to delete this task, and replace it with a task that shows how to access (and maybe manipulate) code at runtime
 for languages that support it. The general solution can be subsumed by task(s) that show how string manipulation works. [[User:DirkT|Dirk Thierbach]] 18 November 2007
 
@@ -23,7 +23,7 @@ The name of the task is '''Quine'''. A Quine is not allowed to open its source f
 The task states (perhaps not clearly enough) that the program itself should do the printing, not any toplevel read-eval-print loop, or equivalent. Otherwise, all constants in languages that have such a toplevel would be quines. But that is completely missing the point of the original problem, which (as explained for example in the book ''G&ouml;del, Escher, Bach'') is about self-application, and quoting. -- [[User:DirkT|Dirk Thierbach]] 21 November 2007
 :I clarified the task.  Different scenarios have different requirements for output.  The Lisp example satisfied the spirit of the task (produce a usable reproduction of one's own code), so the task itself needed to be adjusted.  I won't take that approach in all cases; It's a matter of the spirit of the task. --[[User:Short Circuit|Short Circuit]] 13:06, 21 November 2007 (MST)
 :: I beg to differ - it's not the "scenarios" which have requirement for output, it's the spirit of the task itself which is not correctly presented if you allow constants (or empty programs) as solutions. I strongly recommend to read at least the [http://en.wikipedia.org/wiki/Quine_%28computing%29 Wikipedia article], or the book mentioned above (your library should have a copy). The philosopher Quine studied '''self-reference''', as exemplified in the paradox "'Yields falsehood when preceded by its quotation' yields falsehood when preceded by its quotation."
-:: And it's this idea that makes up a Quine - A piece of code, applied to itself, once quoted and once unquoted. (BTW, this then again is the same technique used to prove undecidability theorems.) And the extra requirement "should '''print''' it's output" is one way to enforce that the quoting has to be done by the program itself, not by some external read-eval-print loop. 
+:: And it's this idea that makes up a Quine - A piece of code, applied to itself, once quoted and once unquoted. (BTW, this then again is the same technique used to prove undecidability theorems.) And the extra requirement "should '''print''' it's output" is one way to enforce that the quoting has to be done by the program itself, not by some external read-eval-print loop.
 :: The task is bad enough as it is (it doesn't really help in comparing programming languages), and it's not improved by allowing "fortunate" border cases which take away the main point. Ok, so what's the procedure to resolve differences in opinion? [[User:Dirkt|Dirkt]] 14:16, 21 November 2007 (MST)
 ::: To quote the Wikipedia page in question:
 
@@ -35,7 +35,7 @@ Note that programs that take input are not considered quines. This would allow t
 
 ::: While the question that Quine investigated implies the quote-interpreting solution, the definition of the problem (per Wikipedia, anyway), doesn't require it.  Reading it over, I'll agree that the Lisp example doesn't demonstrate anything one wouldn't get from [[Empty Program]], and would be better replaced with the Scheme/Common Lisp example from the Wikipedia page.  I'd have no problem modifying the task description to discard empty programs as trivial, or even requiring the program to use a human-readable output method.  Still, the task can still serve to compare languages.  Some languages make accessing the source simple, like in the Forth example, or the JavaScript example on the Wikipedia page.  Even the string-modifying solution allows for differences between languages; Different languages have different best solutions for replacing a substring.
 ::: It's not a 1:1 technique comparison, but neither is any task with both functional and procedural language examples.  Would you be reasonably satisified if the task was changed to require human-readable output and exclude empty programs? --[[User:Short Circuit|Short Circuit]] 21:35, 21 November 2007 (MST)
-:::: The problem with Wikipedia of course is that it is great to get a rough feeling for some topic, but it's neither precise nor authoritative. So it's dangerous to take some definition there literally and insist it's the "correct" one - using the context to determine the ''ideas'' is much more appropriate for Wikipedia. 
+:::: The problem with Wikipedia of course is that it is great to get a rough feeling for some topic, but it's neither precise nor authoritative. So it's dangerous to take some definition there literally and insist it's the "correct" one - using the context to determine the ''ideas'' is much more appropriate for Wikipedia.
 :::: It's true that this task exposes (a) access to source code and (b) ways to modify strings, but considering the amount of misunderstanding this task generates, I still think it is much better (and more informative) to handle those on pages of their own. Especially (a) could only benefit from greater detail. Languages like Forth, Smalltalk, Lisp and Tcl have interesting ways to access and modify code at runtime, but you need a code example to bring this out. A Quine isn't one.
 :::: I've expanded the task description with some background to better explain the "spirit", and required the "canonical" version as one of the code examples. I've also ruled out constant expressions, and replaced your Lisp version with the one from Wikipedia. If you've objections or improvements, feel free to modify it. [[User:Dirkt|Dirkt]] 03:43, 22 November 2007 (MST)
 
@@ -61,8 +61,8 @@ int main()
 :::Which works (with gcc statement expression extension) provided that cheater.h is
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #define __source__ ({					\
       char *s = "#include \"cheater.h\"\n\
 int main()\n\
@@ -94,8 +94,8 @@ If you're going to allow an expression that evaluates to itself, won't "blah" ev
 == C quine ==
 
 I removed some comments about style about the C quine: it's a bit silly to be serious about good coding style for this subject.  If you want properly indented, properly typed and properly header'ed C code, here you go:
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 int main(void){
 	char*p="#include <stdio.h>%cint main(void){%c%cchar*p=%c%s%c;%c%cprintf(p,10,10,9,34,p,34,10,9,10,9,10,10);%c%creturn 0;%c}%c";
 	printf(p,10,10,9,34,p,34,10,9,10,9,10,10);
@@ -110,13 +110,13 @@ int main(void){
 '''Error?'''
 
 
-The REXX program (below) produces an extra blank line in the output.  
+The REXX program (below) produces an extra blank line in the output.
 
-This extra blank line can't be noticed easily (or not at all) when just viewing the output, 
+This extra blank line can't be noticed easily (or not at all) when just viewing the output,
 
 but if the output is re-directed to a file, the extra blank line then becomes obvious.
 
-The definition of a quine isn't clear in this regard.  Is a listing (of a 19-line program) 
+The definition of a quine isn't clear in this regard.  Is a listing (of a 19-line program)
 
 with an extra blank line equal to a 19-line program?
 
@@ -126,7 +126,7 @@ with an extra blank line equal to a 19-line program?
 
 ```txt
 
-$ wc -lmw RQuine03.rex 
+$ wc -lmw RQuine03.rex
       53     215    1029 RQuine03.rex
 $ cat RQuine03.rex | wc -lmw
       53     215    1029

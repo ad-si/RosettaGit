@@ -14,17 +14,17 @@ tags = []
 [[Category:Randomness]]
 {{omit from|GUISS}}
 
-Generate an animated simulation of [[wp:Bean_machine|Sir Francis Galton's device]].  
+Generate an animated simulation of [[wp:Bean_machine|Sir Francis Galton's device]].
 An example can be found to the right. [[File:Galtonbox-Unicon.PNG|thumb|Example of a Galton Box at the end of animation.]]
 
-In a Galton box, there are a set of pins arranged in a triangular pattern. 
-A number of balls are dropped so that they fall in line with the top pin, deflecting to the left or the right of the pin. The ball continues to fall to the left or right of subsequent pins before arriving at one of the collection points between and to the sides of the bottom row of pins. 
+In a Galton box, there are a set of pins arranged in a triangular pattern.
+A number of balls are dropped so that they fall in line with the top pin, deflecting to the left or the right of the pin. The ball continues to fall to the left or right of subsequent pins before arriving at one of the collection points between and to the sides of the bottom row of pins.
 
-For the purpose of this task the box should have at least 5 pins on the bottom row.  
-Your solution can use graphics or ASCII animation.  
+For the purpose of this task the box should have at least 5 pins on the bottom row.
+Your solution can use graphics or ASCII animation.
 Provide a sample of the output/display such as a screenshot.
 
-Your solution can have either one or more balls in flight at the same time.  
+Your solution can have either one or more balls in flight at the same time.
 If multiple balls are in flight, ensure they don't interfere with each other.
 
 Your solution should allow users to specify the number of balls or it should run until full or a preset limit.  Optionally, display the number of balls.
@@ -48,7 +48,7 @@ Loop % bottompegs
 	out .= Space(bottompegs-A_Index+1)
 	Loop % A_Index
 		out .= "* "
-	out .= Space(bottompegs-A_Index+1) . "`n" 
+	out .= Space(bottompegs-A_Index+1) . "`n"
 }
 StringTrimRight, strboard, out, 1 ; remove last newline
 Loop % fallspace-1
@@ -128,19 +128,19 @@ ChangeChar(s, x, y, c){
 While the number of pegs, and falling space are configurable, here's output shortly after starting one configuration:
 
 ```txt
-            
-      *       
-     * *O     
-    * * *     
-   * * * *    
-  * * * * *   
- * * * * * *  
-             
-             
-    O        
-  O O        
-  O O O O    
-O O O O O    
+
+      *
+     * *O
+    * * *
+   * * * *
+  * * * * *
+ * * * * * *
+
+
+    O
+  O O
+  O O O O
+O O O O O
 
 ### =======
 
@@ -175,7 +175,7 @@ iters = 0
 # Draw pins
 for i = 1 to M
 	y = 3*rad*i
-	for j = 1 to i 
+	for j = 1 to i
 		dx = (j-i\2-1)*4*rad + ((i-1)%2)*2*rad
 		color purple
 		stamp CX+dx,y,1.0,diamond
@@ -200,17 +200,17 @@ do
 	end if
 	# Animate balls on this step
 	for it = 0 to stepx[?]-1
-		for b = 0 to R-1 
+		for b = 0 to R-1
 			gosub moveball
 		next b
 		gosub saverefresh
 		pause slow/stepx[?]
 	next it
 	# Where to go on the next step?
-	for b = 0 to R-1 
+	for b = 0 to R-1
 		ball[b,1] = ball[b,1] + 1
 		if ball[b,1]<=M then
-			if rand>=0.5 then 
+			if rand>=0.5 then
 				ball[b,4] = 1
 			else
 				ball[b,4] = -1
@@ -243,7 +243,7 @@ moveball:
 	if ball[b,4]<>0.0 then
 		ball[b,2] = ball[b,2]+ball[b,4]*stepx[it]
 		ball[b,3] = ball[b,3]+stepy[it]
-	else 
+	else
 		ball[b,3] = ball[b,3]+rad
 	end if
 	gosub drawball
@@ -253,7 +253,7 @@ drawball:
 	circle ball[b,2],ball[b,3],rad-1
 	color green
 	circle ball[b,2],ball[b,3],rad-2
-	return 
+	return
 
 eraseball:
 	color black
@@ -261,9 +261,9 @@ eraseball:
 	return
 
 saverefresh:
-	num$ = string(iters)	
+	num$ = string(iters)
 	for k = 1 to 4-length(num$)
-		num$ = "0"+num$ 
+		num$ = "0"+num$
 	next k
 	imgsave num$+"-Galton_box_BASIC-256.png", "PNG"
 	iters = iters + 1
@@ -281,11 +281,11 @@ saverefresh:
 ```bbcbasic
       maxBalls% = 10
       DIM ballX%(maxBalls%), ballY%(maxBalls%)
-      
+
       VDU 23,22,180;400;8,16,16,128
       ORIGIN 180,0
       OFF
-      
+
       REM Draw the pins:
       GCOL 9
       FOR row% = 1 TO 7
@@ -293,7 +293,7 @@ saverefresh:
           CIRCLE FILL 40*col% - 20*row% - 20, 800 - 40*row%, 12
         NEXT
       NEXT row%
-      
+
       REM Animate
       last% = 0
       tick% = 0
@@ -335,8 +335,8 @@ saverefresh:
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -549,11 +549,11 @@ private:
         }
         bmp.setPenColor( RGB( 255, 0, 0 ) );
         bmp.setBrushColor( RGB( 255, 0, 0 ) );
-        ball* b; 
+        ball* b;
         for( int x = 0; x < MAX_BALLS; x++ ) {
             b = &balls[x];
             if( b->alive )
-                Rectangle( bmp.getDC(), static_cast<int>( b->position.x - 3 ), static_cast<int>( b->position.y - 3 ), 
+                Rectangle( bmp.getDC(), static_cast<int>( b->position.x - 3 ), static_cast<int>( b->position.y - 3 ),
                                         static_cast<int>( b->position.x + 3 ), static_cast<int>( b->position.y + 3 ) );
         }
         for( int x = 0; x < 70; x++ ) {
@@ -666,7 +666,7 @@ private:
 };
 int APIENTRY WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow ) {
     srand( GetTickCount() );
-    wnd myWnd; 
+    wnd myWnd;
     return myWnd.Run( hInstance );
 }
 
@@ -953,23 +953,23 @@ initCoin : Int -> Seed -> Coin
 initCoin indx seed = Coin (InBox 0 0 seed) (colorCycle indx)
 
 drawCoin : Coin -> Form
-drawCoin (Coin state color) = 
+drawCoin (Coin state color) =
   let dropLevel = toFloat (height//2 - margin)
-      (level, shift, distance) = 
+      (level, shift, distance) =
         case state of
           InBox level shift seed -> (level, shift, 0)
           Falling shift distance _ _-> (levelCount, shift, distance)
           Landed shift distance -> (levelCount, shift, distance)
-      position = 
+      position =
         (             hscale * toFloat shift
         , dropLevel - vscale * (toFloat level) - distance + radius / 2.0)
 
-  in radius |> circle |> filled color |> move position 
+  in radius |> circle |> filled color |> move position
 
 drawGaltonBox : List Form
-drawGaltonBox = 
+drawGaltonBox =
   let levels = [0..levelCount-1]
- 
+
       -- doubles :
       -- [0,2,4,6,8...]
       doubles = List.map (\n -> 2 * n) levels
@@ -981,36 +981,36 @@ drawGaltonBox =
         Just ls -> ls
 
       -- galtonCoords :
-      -- [                            (0,0), 
-      --                       (-1,1),      (1,1), 
-      --                (-2,2),       (0,2),      (2,2), 
-      --         (-3,3),       (-1,3),      (1,3),      (3,3), 
+      -- [                            (0,0),
+      --                       (-1,1),      (1,1),
+      --                (-2,2),       (0,2),      (2,2),
+      --         (-3,3),       (-1,3),      (1,3),      (3,3),
       --  (-4,4),       (-2,4),       (0,4),      (2,4),      (4,4), ...]
-      galtonCoords = 
-        List.map2 
-          (\ls level -> List.map (\n -> (n - level, level)) ls) 
-          sequences 
+      galtonCoords =
+        List.map2
+          (\ls level -> List.map (\n -> (n - level, level)) ls)
+          sequences
           levels
         |> List.concat
 
-      peg = polygon [(0,0), (-4, -8), (4, -8)] |> filled black 
+      peg = polygon [(0,0), (-4, -8), (4, -8)] |> filled black
 
       apex = toFloat (height//2 - margin)
 
   in List.map (\(x,y) -> move (hscale*toFloat x,  apex - vscale*toFloat y) peg) galtonCoords
 
 coinsInBin : Int -> Dict Int Int -> Int
-coinsInBin binNumber bins = 
+coinsInBin binNumber bins =
   case get binNumber bins of
     Nothing -> 0
     Just n -> n
 
 addToBins : Int -> Dict Int Int -> Dict Int Int
-addToBins binNumber bins = 
+addToBins binNumber bins =
   insert binNumber (coinsInBin binNumber bins + 1) bins
 
 updateCoin : (Coin, Dict Int Int) -> (Coin, Dict Int Int)
-updateCoin (Coin state color as coin, bins) = 
+updateCoin (Coin state color as coin, bins) =
   case state of
     InBox level shift seed ->
       let deltaShift = map (\b -> if b then 1 else -1) bool
@@ -1024,7 +1024,7 @@ updateCoin (Coin state color as coin, bins) =
                floor = maxDrop - toFloat (coinsInBin newShift bins) * (radius*2 + 1)
            in (Coin (Falling newShift -((vscale)/2.0) 10 floor) color, addToBins newShift bins)
 
-    Falling shift distance velocity floor -> 
+    Falling shift distance velocity floor ->
       let newDistance = distance + velocity
       in if (newDistance < floor) then
            (Coin (Falling shift newDistance (velocity + 1) floor) color, bins)
@@ -1033,7 +1033,7 @@ updateCoin (Coin state color as coin, bins) =
 
     Landed _ _ -> (coin, bins) -- unchanged
 
-type alias Model = 
+type alias Model =
   { coins : List Coin
   , bins : Dict Int Int
   , count : Int
@@ -1055,20 +1055,20 @@ init =
 type Msg = Drop Time | Tick Time | SetCount String | Go
 
 update : Msg -> Model -> (Model, Cmd Msg)
-update action model = 
+update action model =
   case action of
     Go ->
       ({model | started = model.count > 0}, Cmd.none)
 
-    SetCount countString -> 
+    SetCount countString ->
       ({ model | count = toInt countString |> withDefault 0 }, Cmd.none)
 
-    Drop t -> 
+    Drop t ->
       if (model.started && model.count > 0) then
           let newcount = model.count - 1
               seed' =  if model.seedInitialized then model.seed else initialSeed (truncate t)
               (seed'', coinSeed) = step independentSeed seed'
-          in ({ model  
+          in ({ model
               | coins = initCoin (truncate t) coinSeed :: model.coins
               , count = newcount
               , started = newcount > 0
@@ -1077,18 +1077,18 @@ update action model =
       else
          (model, Cmd.none)
 
-    Tick _ -> 
+    Tick _ ->
       -- foldr to execute update, append to coins, replace bins
       let (updatedCoins, updatedBins) =
-        List.foldr (\coin (coinList, bins) -> 
-                       let (updatedCoin, updatedBins) = updateCoin (coin, bins) 
+        List.foldr (\coin (coinList, bins) ->
+                       let (updatedCoin, updatedBins) = updateCoin (coin, bins)
                        in (updatedCoin :: coinList, updatedBins))
                    ([], model.bins)
                    model.coins
       in ({ model | coins = updatedCoins, bins = updatedBins}, Cmd.none)
 
 view : Model -> Html Msg
-view model = 
+view model =
   div []
     [ input
         [ placeholder "How many?"
@@ -1103,7 +1103,7 @@ view model =
         []
 
      , button
-        [ onClick Go 
+        [ onClick Go
         , disabled model.started
         , style [ ("height", "20px") ]
         ]
@@ -1120,7 +1120,7 @@ subscriptions model =
         ]
 
 main =
-  program 
+  program
       { init = init
       , view = view
       , update = update
@@ -1243,7 +1243,7 @@ galton "gestures" f {
 MAIN-WINDOW: galton-box-animation
     {
         { title "Galton Box Animation" }
-        { window-controls 
+        { window-controls
             { normal-title-bar close-button minimize-button } }
     } <galton-gadget> >>gadgets ;
 ```
@@ -1461,12 +1461,12 @@ updateWorld (nRows, balls, bins)
     update (Ball (x,y) turns)
       | -nRows <= y && y < 0 = Ball (x + head turns, y - 1) (tail turns)
       | otherwise            = Ball (x, y - 1) turns
-        
+
 drawWorld :: World -> Picture
 drawWorld (nRows, balls, bins) = pictures [ color red ballsP
                                           , color black binsP
                                           , color blue pinsP ]
-  where ballsP = foldMap (disk 1) $ takeWhile ((3 >).snd) $ map position balls        
+  where ballsP = foldMap (disk 1) $ takeWhile ((3 >).snd) $ map position balls
         binsP  = foldMapWithKey drawBin bins
         pinsP  = foldMap (disk 0.2) $ [1..nRows] >>= \i ->
                                           [1..i] >>= \j -> [(2*j-i-1, -i-1)]
@@ -1503,15 +1503,15 @@ procedure main(args)    # galton box simulation from Unicon book
    pegsize2 := (pegsize := 10) * 2    # pegs & steps
    delay := 2                         # ms delay
    setup_galtonwindow(pegsize)
-   n := integer(args[1]) | 100        # balls to drop 
+   n := integer(args[1]) | 100        # balls to drop
    every 1 to n do galton(pegsize)
    WDone()
 end
 
-procedure setup_galtonwindow(n)  # Draw n levels of pegs, 
+procedure setup_galtonwindow(n)  # Draw n levels of pegs,
 local xpos, ypos, i, j
    # Pegboard size is 2n-1 square
-   # Expected max value of histogram is (n, n/2)/2^n 
+   # Expected max value of histogram is (n, n/2)/2^n
    # ... approximate with something simpler?
 
    height := n*n/2*pegsize + (width := (2*n+1)*pegsize)
@@ -1548,14 +1548,14 @@ procedure animate_actual(xfrom, yfrom, xto, yto, steps) # attribs already set
 local x, y, xstep, ystep, lastx, lasty
    x -:= xstep := (xto - (x := xfrom))/steps
    y -:= ystep := (yto - (y := yfrom))/steps
-   every 1 to steps do {      
+   every 1 to steps do {
       FillArc(lastx := x +:= xstep, lasty := y +:= ystep, pegsize, pegsize)
       WDelay(delay)      # wait in ms
       FillArc(x, y, pegsize, pegsize)
       }
 end
 
-procedure draw_ball(x)                      
+procedure draw_ball(x)
 static ballcounts
 initial ballcounts := table(0)
    FillArc(x, height-(ballcounts[x] +:= 1)*pegsize, pegsize, pegsize)
@@ -1580,9 +1580,9 @@ For example:
 
 ```j
    initpins 4
-   *   
-  * *  
- * * * 
+   *
+  * *
+ * * *
 * * * *
 ```
 
@@ -1605,19 +1605,19 @@ init=: ' ',. ' ',.~ ] ,~ ' ',~ ' o' {~  (# ' ' ~: 1&{.)
 ```
 
 
-For example: 
+For example:
 
 
 ```j
    3 (init initpins) 4
-    o    
-    o    
-    o    
-         
-    *    
-   * *   
-  * * *  
- * * * * 
+    o
+    o
+    o
+
+    *
+   * *
+  * * *
+ * * * *
 ```
 
 
@@ -1647,7 +1647,7 @@ We will also want some way of preventing the balls from falling forever.  For th
 pins=: '*'&=
 balls=: 'o'&=
 
-bounce=: (C.~ 0 1 <@(-/~) [: (+ ?@2:"0) I.)"1 
+bounce=: (C.~ 0 1 <@(-/~) [: (+ ?@2:"0) I.)"1
 
 nxt=: ' ',~ [: clean ' *o' {~ pins + 2 * _1 shift balls bounce balls *. 1 shift pins
 
@@ -1662,14 +1662,14 @@ For example:
 
 ```j
    nxt nxt 3 (init initpins) 4
-         
-    o    
-    o    
-   o*    
-   * *   
-  * * *  
- * * * * 
-         
+
+    o
+    o
+   o*
+   * *
+  * * *
+ * * * *
+
 ```
 
 
@@ -1841,21 +1841,21 @@ When only five balls have begun to fall through the pins:
 
 ```txt
          o
-         . 
+         .
           o
-        . . 
+        . .
            o
-       . . . 
+       . . .
         o
-      . . . . 
+      . . . .
          o
-     . . . . . 
+     . . . . .
 
-    . . . . . . 
+    . . . . . .
 
-   . . . . . . . 
+   . . . . . . .
 
-  . . . . . . . . 
+  . . . . . . . .
 ```
 
 
@@ -1863,21 +1863,21 @@ Later, some balls have arrived in the collectors:
 
 ```txt
          o
-         . 
+         .
           o
-        . . 
+        . .
          o
-       . . . 
+       . . .
           o
-      . . . . 
+      . . . .
          o
-     . . . . . 
+     . . . . .
           o
-    . . . . . . 
+    . . . . . .
            o
-   . . . . . . . 
+   . . . . . . .
         o
-  . . . . . . . . 
+  . . . . . . . .
 | | | | | |o| | | |
 | | | |o|o|o| | | |
 ```
@@ -1887,21 +1887,21 @@ Note that the collectors are as deep as required.
 Finally, all the balls are in the collectors:
 
 ```txt
-         . 
+         .
 
-        . . 
+        . .
 
-       . . . 
+       . . .
 
-      . . . . 
+      . . . .
 
-     . . . . . 
+     . . . . .
 
-    . . . . . . 
+    . . . . . .
 
-   . . . . . . . 
+   . . . . . . .
 
-  . . . . . . . . 
+  . . . . . . . .
 | | | | |o| | | | |
 | | | | |o| | | | |
 | | | | |o| | | | |
@@ -2098,34 +2098,34 @@ galtonBox(12, 50);
 {{out}}
 
 ```txt
-                         
-            .            
-           . .           
-          . . .          
-         . . . .         
-        . . . . .        
-       . . . . . .       
-      . . . . . . .      
-     . . . . . . . .     
-    . . . . . . . . .    
-   . . . . . . . . . .   
-  . . . . . . . . . . .  
- . . . . . . . . . . . . 
-          o              
-          o              
-          o              
-          o              
-          o   o          
-          o   o          
-          o   o          
-          o o o          
-          o o o          
-          o o o o        
-          o o o o        
-        o o o o o        
-        o o o o o o      
-      o o o o o o o      
-      o o o o o o o o   
+
+            .
+           . .
+          . . .
+         . . . .
+        . . . . .
+       . . . . . .
+      . . . . . . .
+     . . . . . . . .
+    . . . . . . . . .
+   . . . . . . . . . .
+  . . . . . . . . . . .
+ . . . . . . . . . . . .
+          o
+          o
+          o
+          o
+          o   o
+          o   o
+          o   o
+          o o o
+          o o o
+          o o o o
+          o o o o
+        o o o o o
+        o o o o o o
+      o o o o o o o
+      o o o o o o o o
 ```
 
 
@@ -2543,13 +2543,13 @@ sub hits_peg {
 
 ```perl6
 my $row-count = 6;
- 
+
 constant $peg = "*";
 constant @coin-icons = "\c[UPPER HALF BLOCK]", "\c[LOWER HALF BLOCK]";
- 
+
 sub display-board(@positions, @stats is copy, $halfstep) {
     my $coin = @coin-icons[$halfstep.Int];
- 
+
     state @board-tmpl = {
         # precompute a board
         my @tmpl;
@@ -2570,9 +2570,9 @@ sub display-board(@positions, @stats is copy, $halfstep) {
         }
         @tmpl
     }();
- 
+
     my $midpos = $row-count + 2;
- 
+
     my @output;
     {
         # collect all the output and output it all at once at the end
@@ -2582,10 +2582,10 @@ sub display-board(@positions, @stats is copy, $halfstep) {
         sub print(Str $foo) {
             @output.push: $foo;
         }
- 
+
         # make some space above the picture
         say "" for ^10;
- 
+
         my @output-lines = map { [ @$_ ] }, @board-tmpl;
         # place the coins
         for @positions.kv -> $line, $pos {
@@ -2596,7 +2596,7 @@ sub display-board(@positions, @stats is copy, $halfstep) {
         for @output-lines -> @line {
             say @line.chrs;
         }
- 
+
         # show the statistics
         my $padding = 0;
         while any(@stats) > 0 {
@@ -2624,17 +2624,17 @@ sub display-board(@positions, @stats is copy, $halfstep) {
     }
     say @output.join("");
 }
- 
+
 sub simulate($coins is copy) {
     my $alive = True;
- 
+
     sub hits-peg($x, $y) {
         if 3 <= $y < 3 + $row-count and -($y - 2) <= $x <= $y - 2 {
             return not ($x - $y) %% 2;
         }
         return False;
     }
- 
+
     my @coins = Int xx (3 + $row-count + 4);
     my @stats = 0 xx ($row-count * 2);
     # this line will dispense coins until turned off.
@@ -2647,11 +2647,11 @@ sub simulate($coins is copy) {
                 @stats[$_ + $row-count]++;
             }
         }
- 
+
         # move every coin down one row
         for ( 3 + $row-count + 3 )...1 -> $line {
             my $coinpos = @coins[$line - 1];
- 
+
             @coins[$line] = do if not $coinpos.defined {
                 Nil
             } elsif hits-peg($coinpos, $line) {
@@ -2668,14 +2668,14 @@ sub simulate($coins is copy) {
         if @coins[0].defined {
             @coins[0] = Nil
         } elsif --$coins > 0 {
-            @coins[0] = 0 
+            @coins[0] = 0
         }
- 
+
         # smooth out the two halfsteps of the animation
         my $start-time;
         ENTER { $start-time = now }
         my $wait-time = now - $start-time;
- 
+
         sleep 0.1 - $wait-time if $wait-time < 0.1;
         for @coin-icons.keys {
             sleep $wait-time max 0.1;
@@ -2683,7 +2683,7 @@ sub simulate($coins is copy) {
         }
     }
 }
- 
+
 sub MAIN($coins = 20, $peg-lines = 6) {
     $row-count = $peg-lines;
     simulate($coins);
@@ -2721,7 +2721,7 @@ while moved or top!=' ' do
             else
                 Dx = {-1,+1}[rand(2)]       -- try l;r or r;l
                 if screen[Py+1,Px+Dx]!=' ' then Dx = -Dx end if
-                if screen[Py+1,Px+Dx]==' ' then 
+                if screen[Py+1,Px+Dx]==' ' then
                     Dy = 1
                 end if
             end if
@@ -2803,7 +2803,7 @@ function redraw_cb(Ihandle /*ih*/, integer /*posx*/, integer /*posy*/)
         for x=-(y-4) to (y-4) by 4 do
             xx = w/2 + x*w/32
             yy = h -y*h/32
-            cdCanvasSector(cddbuffer, xx, yy, pinsize, pinsize, 0, 360) 
+            cdCanvasSector(cddbuffer, xx, yy, pinsize, pinsize, 0, 360)
         end for
     end for
     cdCanvasSetForeground(cddbuffer, CD_INDIGO)
@@ -2811,7 +2811,7 @@ function redraw_cb(Ihandle /*ih*/, integer /*posx*/, integer /*posy*/)
         {x, y} = balls[i]
         xx = w/2 + x*w/32
         yy = h -y*h/32
-        cdCanvasSector(cddbuffer, xx, yy, pinsize*4, pinsize*4, 0, 360) 
+        cdCanvasSector(cddbuffer, xx, yy, pinsize*4, pinsize*4, 0, 360)
     end for
     cdCanvasLineWidth(cddbuffer,w/9)
     for i=1 to length(bins) do
@@ -3204,9 +3204,9 @@ Procedure eventLoop()
     If event = #PB_Event_CloseWindow
       End
     EndIf
-  Until event = 0 
+  Until event = 0
 EndProcedure
- 
+
 Procedure animate_actual(x1, y1, x2, y2, steps)
   Protected x.f, y.f, xstep.f, ystep.f, i, lastX.f, lastY.f
   x = x1
@@ -3232,11 +3232,11 @@ Procedure animate_actual(x1, y1, x2, y2, steps)
   Next
 EndProcedure
 
-Procedure draw_ball(xpos, ypos)                      
+Procedure draw_ball(xpos, ypos)
   Static Dim ballcounts(0) ;tally drop positions
   If xpos > ArraySize(ballcounts())
     Redim ballcounts(xpos)
-  EndIf 
+  EndIf
   ballcounts(xpos) + 1
   animate_actual(xpos, ypos, xpos, height - ballcounts(xpos) * pegSize, 20)
   StartDrawing(CanvasOutput(0))
@@ -3244,15 +3244,15 @@ Procedure draw_ball(xpos, ypos)
   StopDrawing()
   eventLoop()
   If ballcounts(xpos) <= histogramSize
-    ProcedureReturn 1 
+    ProcedureReturn 1
   EndIf
   SetWindowTitle(0, "Ended after " + Str(ball) + " balls") ;histogramSize exceeded
-EndProcedure 
+EndProcedure
 
 Procedure animate(x1, y1, x2, y2)
   animate_actual(x1, y1, x2, y1, 4)
   animate_actual(x2, y1, x2, y2, 10)
-EndProcedure 
+EndProcedure
 
 Procedure galton(pegRows)
   ;drop a ball into the galton box
@@ -3263,32 +3263,32 @@ Procedure galton(pegRows)
   oldY = pegSize
   ypos = oldY
   animate_actual(oldX, 0, xpos, ypos, 10)
-  For i = 1 To pegRows 
+  For i = 1 To pegRows
     If Random(1)
-      xpos + pegSize 
+      xpos + pegSize
     Else
       xpos - pegSize
-    EndIf 
+    EndIf
     ypos + pegSize2
     animate(oldX, oldY, xpos, ypos)
     oldX = xpos
     oldY = ypos
   Next
-  
+
   ProcedureReturn draw_ball(xpos, ypos)
 EndProcedure
 
-Procedure setup_window(numRows, ballCount)  
+Procedure setup_window(numRows, ballCount)
   ;Draw numRows levels of pegs
   Protected xpos, ypos, i, j
-  
+
   width = (2 * numRows + 2) * pegSize
   histogramSize = (ballCount + 2) / 3
   If histogramSize > 500 / pegSize: histogramSize = 500 / pegSize: EndIf
   height = width + histogramSize * pegSize
   OpenWindow(0, 0, 0, width, height, "Galton box animation", #PB_Window_SystemMenu)
-  CanvasGadget(0, 0, 0, width, height) 
-  
+  CanvasGadget(0, 0, 0, width, height)
+
   StartDrawing(CanvasOutput(0))
     Box(0, 0, width, height, RGB($EB, $EB, $EB))
     For i = 1 To numRows
@@ -3301,7 +3301,7 @@ Procedure setup_window(numRows, ballCount)
     Next
     For i = 1 To numRows
       Line((numRows - i + 1) * pegSize2 - pegSize / 2, width - pegSize, 1, histogramSize * pegSize, 0)
-    Next 
+    Next
   StopDrawing()
 EndProcedure
 
@@ -3309,7 +3309,7 @@ EndProcedure
 Define pegRows = 10, ballCount
 pegRadius = 4
 pegSize = pegRadius * 2 + 1
-pegSize2 = pegSize * 2 
+pegSize2 = pegSize * 2
 delay = 2                      ; ms delay
 
 Repeat
@@ -3344,7 +3344,7 @@ class Ball():
     def __init__(self):
         self.x = 0
         self.y = 0
-        
+
     def update(self):
         self.x += random.randint(0,1)
         self.y += 1
@@ -3361,7 +3361,7 @@ class Board():
         self.well_depth = well_depth
         self.N = N
         self.shift = 4
-        
+
     def update(self):
         for ball in self.balls:
             if ball.y < self.width:
@@ -3372,10 +3372,10 @@ class Board():
                 self.fallen[ball.x] += 1
             else:
                 pass
-                
+
     def balls_on_board(self):
         return len(self.balls) - sum(self.fallen)
-                
+
     def add_ball(self):
         if(len(self.balls) <= self.N):
             self.balls.append(Ball())
@@ -3391,7 +3391,7 @@ class Board():
             x = 2*ball.x + self.shift
         y = ball.y + 1
         print_there(y, x, "*")
-         
+
     def print_all(self):
         print(chr(27) + "[2J")
         self.print_board();
@@ -3477,7 +3477,7 @@ Multiple balls are added each step, but they do not collide.
         (if (null? is)
             i
             (overlay/xy i (* -1 n x) 0 (spaced/x (add1 n) (car is) (cdr is)))))))
-  
+
 (define (draw-pin-row r) (spaced/x PIN-HOR-SPACING (make-list (add1 r) PIN)))
 
 ;draws all pins, using saved bitmap for efficiency
@@ -3557,9 +3557,9 @@ Balls are dropped continuously   (up to a number specified or the default),   th
 
 pins to fill the top   <big><sup>1</sup>/<sub>3</sub></big>   rows of the terminal screen.
 
-Extra code could've been added to check for which OS (operating system) is being used and which REXX is 
+Extra code could've been added to check for which OS (operating system) is being used and which REXX is
 
-running to determine which program to clear the terminal (screen).   Currently, it is 
+running to determine which program to clear the terminal (screen).   Currently, it is
 hard-coded to   '''CLS'''.
 
 ```rexx
@@ -3637,14 +3637,14 @@ halt: say '***warning***  REXX program'    !fn     "execution halted by user."; 
 
 Programming note:   the last seven lines of this REXX program are some general purpose (boilerplate code) that, among other things, finds:
 ::*   the REXX program's filename, filetype (file extension), and filemode (and/or path)
-::*   if the user wants documentation presented (not germane to this REXX program) 
+::*   if the user wants documentation presented (not germane to this REXX program)
 ::*   the environment name (not germane)
 ::*   what command to be used to clear the terminal screen
 ::*   the name of the operating system being used (not germane)
 ::*   the name of the REXX interpreter being used (not germane)
 ::*   various other bits of information (not germane)
 
-It is only intended to be used to make this particular REXX program independent of any particular REXX interpreter and/or independent of knowing which program is to be used for clearing the terminal screen.   As such, the boilerplate code isn't commented and isn't intended to be a teaching tool. 
+It is only intended to be used to make this particular REXX program independent of any particular REXX interpreter and/or independent of knowing which program is to be used for clearing the terminal screen.   As such, the boilerplate code isn't commented and isn't intended to be a teaching tool.
 
 This REXX program makes use of   '''SCRSIZE'''   REXX program (or
 BIF) which is used to determine the screen
@@ -3786,7 +3786,7 @@ press ENTER ···
                                       ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼
                                       ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼
                                       ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼
-                                      ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ 
+                                      ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼ ☼
 
 ```
 
@@ -3991,61 +3991,61 @@ After a sample run with input parameters <tt>10 55</tt>:
 
 ```txt
 
-                                          
-                                          
-                    *                     
-                                          
-                  *   *                   
-                                          
-                *   *   *                 
-                                          
-              *   *   *   *               
-                                          
-            *   *   *   *   *             
-                                          
-          *   *   *   *   *   *           
-                                          
-        *   *   *   *   *   *   *         
-                                          
-      *   *   *   *   *   *   *   *       
-                                          
-    *   *   *   *   *   *   *   *   *     
-                    o   o                 
-  *   *   *   *   * o * o *   *   *   *   
-                    o   o                 
-                    o   o                 
-                    o   o                 
-                    o   o                 
-                    o   o                 
-                    o   o                 
-                    o   o                 
-                    o   o                 
-                    o   o                 
-            o       o   o                 
-            o       o   o                 
-            o       o   o                 
-            o       o   o                 
-            o       o   o                 
-            o   o   o   o   o             
-            o   o   o   o   o             
-            o   o   o   o   o             
-            o   o   o   o   o             
-            o   o   o   o   o             
-            o   o   o   o   o             
-            o   o   o   o   o             
-            o   o   o   o   o             
-            o   o   o   o   o             
-            o   o   o   o   o             
-            o   o   o   o   o             
-            o   o   o   o   o             
-            o   o   o   o   o             
-        o   o   o   o   o   o             
-        o   o   o   o   o   o   o         
-    o   o   o   o   o   o   o   o         
-    o   o   o   o   o   o   o   o         
-    o   o   o   o   o   o   o   o         
-    o   o   o   o   o   o   o   o         
-    o   o   o   o   o   o   o   o         
+
+
+                    *
+
+                  *   *
+
+                *   *   *
+
+              *   *   *   *
+
+            *   *   *   *   *
+
+          *   *   *   *   *   *
+
+        *   *   *   *   *   *   *
+
+      *   *   *   *   *   *   *   *
+
+    *   *   *   *   *   *   *   *   *
+                    o   o
+  *   *   *   *   * o * o *   *   *   *
+                    o   o
+                    o   o
+                    o   o
+                    o   o
+                    o   o
+                    o   o
+                    o   o
+                    o   o
+                    o   o
+            o       o   o
+            o       o   o
+            o       o   o
+            o       o   o
+            o       o   o
+            o   o   o   o   o
+            o   o   o   o   o
+            o   o   o   o   o
+            o   o   o   o   o
+            o   o   o   o   o
+            o   o   o   o   o
+            o   o   o   o   o
+            o   o   o   o   o
+            o   o   o   o   o
+            o   o   o   o   o
+            o   o   o   o   o
+            o   o   o   o   o
+            o   o   o   o   o
+        o   o   o   o   o   o
+        o   o   o   o   o   o   o
+    o   o   o   o   o   o   o   o
+    o   o   o   o   o   o   o   o
+    o   o   o   o   o   o   o   o
+    o   o   o   o   o   o   o   o
+    o   o   o   o   o   o   o   o
 
 ```
 

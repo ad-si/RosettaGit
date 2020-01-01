@@ -98,9 +98,9 @@ end createDirectoryIfMissingMay
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     createOrFindDirectoryMay("~/Desktop/Notes/today")
-    
+
 end run
 
 -- GENERIC FUNCTIONS ---------------------------------------------------------
@@ -166,8 +166,8 @@ GAWK -f MAKE_DIRECTORY_PATH.AWK \TEMP\A \TEMP\A "\TEMP\A\B C"
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <libgen.h>
 #include <string.h>
@@ -348,7 +348,7 @@ val it : System.IO.DirectoryInfo =
         Name = "Temp";
         Parent = Local;
         Root = C:\;}
-> 
+>
 ```
 
 
@@ -421,7 +421,7 @@ main = do
 
 
 The verb <code>pathcreate</code> in the addon package [http://www.jsoftware.com/jwiki/Addons/general/dirutils general/dirutils] will create any non-existing directories in a path. It works on Windows, Linux and OS X.
- 
+
 
 ```J
 require 'general/dirutils'
@@ -577,7 +577,7 @@ Note that attempting to run lfs.mkdir for a path that already exists writes no c
 
 ## Mathematica
 
-Creates directory specified by path, creating intermediate directories as necessary, and never fails if path already exists. 
+Creates directory specified by path, creating intermediate directories as necessary, and never fails if path already exists.
 
 ```Mathematica
 mkdirp[path_] := Quiet[CreateDirectory[path,{CreateIntermediateDirectories->True}],{CreateDirectory::filex}]
@@ -894,7 +894,7 @@ func isdir cDir
 
 ```ruby
 require 'fileutils'
-FileUtils.mkdir_p("path/to/dir") 
+FileUtils.mkdir_p("path/to/dir")
 ```
 
 mkdir_p also takes an array of pathnames instead of a single pathname as an argument.

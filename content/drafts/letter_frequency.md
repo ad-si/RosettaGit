@@ -10,13 +10,13 @@ categories = []
 tags = []
 +++
 
-{{task|Probability_and_statistics}} 
+{{task|Probability_and_statistics}}
 [[Category:Randomness]]
 
 ;Task:
 Open a text file and count the occurrences of each letter.
 
-Some of these programs count all characters (including punctuation), 
+Some of these programs count all characters (including punctuation),
 but some only count letters A to Z.
 
 
@@ -237,7 +237,7 @@ z   2
 1 1
 2 2
 3 3
-4 4              
+4 4
 
       freq 'balloon'
 b 1
@@ -402,10 +402,10 @@ Z z : 904 - 2068
 
 ```bbcbasic
       DIM cnt%(255)
-      
+
       file% = OPENIN("C:\unixdict.txt")
       IF file%=0 ERROR 100, "Could not open file"
-      
+
       REPEAT
         A$ = GET$#file%
         L% = LEN(A$)
@@ -416,7 +416,7 @@ Z z : 904 - 2068
         ENDIF
       UNTIL EOF#file%
       CLOSE #file%
-      
+
       FOR c% = &41 TO &5A
         PRINT CHR$(c%)CHR$(c%+32) ": " cnt%(c%)+cnt%(c%+32)
       NEXT
@@ -659,8 +659,8 @@ y:2
 ## C++
 
 
-```cpp>#include <fstream
-
+```cpp
+#include <fstream>
 #include <iostream>
 
 int main()
@@ -730,7 +730,7 @@ w = 1
 
 
 ```Clojure
-(println (sort-by second > 
+(println (sort-by second >
 			(frequencies (map #(java.lang.Character/toUpperCase %)
 					  (filter #(java.lang.Character/isLetter %) (slurp "text.txt"))))))
 ```
@@ -759,10 +759,10 @@ BEGIN
 	loc := Files.dir.This("BBTest/Mod");
 	fd := Files.dir.Old(loc,"LetterFrecuency.odc",FALSE);
 	rd := fd.NewReader(NIL);
-	
+
 	(* init the frecuency array *)
 	FOR i := 0 TO LEN(frecuency) - 1 DO frecuency[i] := 0 END;
-	
+
 	(* collect frecuencies *)
 	WHILE ~rd.eof DO
 		rd.ReadByte(x);c := CAP(CHR(x));
@@ -779,7 +779,7 @@ BEGIN
 			INC(frecuency[ORD(c) - ORD('A')]);
 		END
 	END;
-	
+
 	(* show data *)
 	FOR i := 0 TO LEN(frecuency) - 1 DO
 		StdLog.Char(CHR(i + ORD('A')));StdLog.String(":> ");StdLog.Int(frecuency[i]);
@@ -863,7 +863,7 @@ We use a property list - plist for short - which is a hash table, to store the p
 (define (hash-counter hash key )
 		;; (set! key (string-downcase key)) - if ignore case wanted
 		(putprop hash (1+ (or (getprop hash key) 0 )) key))
-		
+
 ;;  apply to exploded string
 ;;  and sort result
 (define (hash-compare a b) ( < (first a) (first b)))
@@ -877,7 +877,7 @@ We use a property list - plist for short - which is a hash table, to store the p
 
 ```lisp
 
-(define (file-stats file string) 
+(define (file-stats file string)
 	(set-plist! 'file-stats null) ; reset counters
 	(writeln (count-letters 'file-stats string))
 	(writeln "Total letters:" (string-length string))
@@ -888,19 +888,19 @@ We use a property list - plist for short - which is a hash table, to store the p
 
 ➛ help.html -> string
 ➛ (( 28918) (! 138) (# 1035) (#\newline 4539) (#\tab 409) ($ 7) (% 24) (& 136) (' 1643) ((3577) () 3583) (* 233)
- (+ 303) (, 599) (- 3164) (. 1454) (/ 5388) (0 1567) (1 1769) (2 1258) (3 857) (4 1872) (5 453) (6 581) (7 344) 
+ (+ 303) (, 599) (- 3164) (. 1454) (/ 5388) (0 1567) (1 1769) (2 1258) (3 857) (4 1872) (5 453) (6 581) (7 344)
  (8 337) (9 411) (: 1235) (; 647) (< 9951) (= 1834) (> 10255) (? 392) (@ 11) (A 166) (B 92) (C 144) (D 72) (E 224)
  (F 52) (G 35) (H 42) (I 193) (J 31) (K 36) (L 196) (M 82) (N 94) (O 132) (P 192) (Q 27) (R 56) (S 220) (T 226) (U 37)
- (V 51) (W 28) (X 6) (Y 38) (Z 2) ([ 237) (\ 12) (] 215) (^ 28) (_ 107) (` 7) (a 8420) (b 4437) (c 3879) (d 4201) 
+ (V 51) (W 28) (X 6) (Y 38) (Z 2) ([ 237) (\ 12) (] 215) (^ 28) (_ 107) (` 7) (a 8420) (b 4437) (c 3879) (d 4201)
  (e 11905) (f 2989) (g 2068) (h 3856) (i 11313) (j 334) (k 653) (l 5748) (m 3048) (n 7020) (o 7207) (p 3585) (q 249)
  (r 8312) (s 8284) (t 8704) (u 3833) (v 1135) (w 861) (x 1172) (y 1451) (z 268) ({ 123) (| 62) (} 123) (~ 7) (§ 1) (© 1)
  (« 1) (» 1) (É 2) (à 18) (â 3) (ç 3) (è 6) (é 53) (î 1) (ö 9) (û 1) (œ 1) (ε 2) (λ 12) (μ 1) (ο 2) (ς 1)
  (τ 1) (а 1) (д 1) (е 1) (з 1) (л 1) (м 1) (н 1) (я 3) (ἄ 1) (— 2) (“ 2) (” 2) (… 184) (→ 465) (∅ 57) (∈ 4) (∏ 1)
- (∑ 2) (∘ 6) (√ 4)(∞ 12) (∫ 2) (⌚ 2) (⌛ 1) (⏳ 4) (☕ 1) (♠ 7) (♡ 2) (♢ 2) (♣ 6) (♤ 2) (♥ 8) (♦ 8) 
- (♧ 2) (⚁ 1) (⚃ 2) (⚪ 1) (⛔ 1) (✋ 1) (❄ 1) (❅ 1) (❆ 1) (❇ 1) (❈ 1) (❉ 1) (❊ 1) (❋ 1) (❌ 3) (❍ 1) 
- (❎ 1) (❗ 1) (➛ 900) (➰ 1) (⭕ 2) ... )    
-➛ Total letters:     212631    
-➛ Total lines:     4539     
+ (∑ 2) (∘ 6) (√ 4)(∞ 12) (∫ 2) (⌚ 2) (⌛ 1) (⏳ 4) (☕ 1) (♠ 7) (♡ 2) (♢ 2) (♣ 6) (♤ 2) (♥ 8) (♦ 8)
+ (♧ 2) (⚁ 1) (⚃ 2) (⚪ 1) (⛔ 1) (✋ 1) (❄ 1) (❅ 1) (❆ 1) (❇ 1) (❈ 1) (❉ 1) (❊ 1) (❋ 1) (❌ 3) (❍ 1)
+ (❎ 1) (❗ 1) (➛ 900) (➰ 1) (⭕ 2) ... )
+➛ Total letters:     212631
+➛ Total lines:     4539
 
 ```
 
@@ -1037,7 +1037,7 @@ main() ->
 		_FileNotExist ->
 			io:format("File do not exist~n")
 	end.
-	
+
 letter_freq(Data) ->
 	lists:foreach(fun(Char) ->
 					LetterCount = lists:foldl(fun(Element, Count) ->
@@ -1046,16 +1046,16 @@ letter_freq(Data) ->
 													Count+1;
 												false ->
 													Count
-											end		
+											end
 										end, 0, Data),
-						
+
 					case LetterCount >0 of
-						true ->					
+						true ->
 							io:format("~p	:	~p~n", [[Char], LetterCount]);
 						false ->
 							io:format("")
-					end		
-				end,  lists:seq(0, 222)).															
+					end
+				end,  lists:seq(0, 222)).
 
 ```
 
@@ -1382,7 +1382,7 @@ Sleep
 
 /'
    results for input.txt which contains the single line:
-   The quick brown fox jumps over the lazy dog. 
+   The quick brown fox jumps over the lazy dog.
 '/
 
 The frequency of each letter in the file input.txt is as follows:
@@ -1421,13 +1421,13 @@ Input:
 
 ```txt
 
-This is the one question that most people ask. Why bother learning a completely different computing environment, when the operating 
-system that ships with most desktops, laptops, and servers works just fine? To answer that question, I would pose another question. 
-Does that operating system you’re currently using really work “just fine”? Or are you constantly battling viruses, malware, slow 
+This is the one question that most people ask. Why bother learning a completely different computing environment, when the operating
+system that ships with most desktops, laptops, and servers works just fine? To answer that question, I would pose another question.
+Does that operating system you’re currently using really work “just fine”? Or are you constantly battling viruses, malware, slow
 downs, crashes, costly repairs, and licensing fees?
 
-If you struggle with the above, and want to free yourself from the constant fear of losing data or having to take your computer in 
-for the “yearly clean up,” Linux might be the perfect platform for you. Linux has evolved into one of the most reliable computer 
+If you struggle with the above, and want to free yourself from the constant fear of losing data or having to take your computer in
+for the “yearly clean up,” Linux might be the perfect platform for you. Linux has evolved into one of the most reliable computer
 ecosystems on the planet. Combine that reliability with zero cost of entry and you have the perfect solution for a desktop platform.
 
 ```
@@ -1443,14 +1443,14 @@ Dim iCount, iSpaces, iLetters, iOther As Integer
 Dim bPunctuation As Boolean
 
 For iCount = 1 To Len(sData)
-  If InStr("ABCDEFGHIJKLMNOPQRSTUVWXYZ", UCase(Mid(sData, iCount, 1))) Then 
+  If InStr("ABCDEFGHIJKLMNOPQRSTUVWXYZ", UCase(Mid(sData, iCount, 1))) Then
     Inc iLetters
     bPunctuation = True
   End If
-   If Mid(sData, icount, 1) = " " Then 
+   If Mid(sData, icount, 1) = " " Then
     Inc iSpaces
     bPunctuation = True
-  End If 
+  End If
   If bPunctuation = False Then Inc iOther
   bPunctuation = False
 Next
@@ -1627,7 +1627,7 @@ PROCEDURE Main()
    LOCAL s := hb_MemoRead( Left( __FILE__ , At( ".", __FILE__ )) +"prg")
    LOCAL c, n, i
    LOCAL a := {}
-   
+
    FOR EACH c IN s
       IF Asc( c ) > 31
          AAdd( a, c )
@@ -1654,9 +1654,9 @@ PROCEDURE Main()
 
 ```txt
 
-' '=190 '"'=12 ' ' '=2 '('=10 ')'=10 '+'=12 ','=5 '.'=3 '1'=3 '3'=1 ':'=6 ';'=2 '<'=2 '='=12 
-'>'=1 '?'=2 'A'=10 'C'=5 'D'=6 'E'=13 'F'=7 'H'=3 'I'=9 'L'=13 'M'=2 'N'=9 'O'=5 'P'=1 
-'R'=6 'S'=2 'T'=2 'U'=2 'W'=2 'X'=1 '['=3 ']'=3 '_'=10 'a'=12 'b'=2 'c'=9 'd'=3 'e'=5 
+' '=190 '"'=12 ' ' '=2 '('=10 ')'=10 '+'=12 ','=5 '.'=3 '1'=3 '3'=1 ':'=6 ';'=2 '<'=2 '='=12
+'>'=1 '?'=2 'A'=10 'C'=5 'D'=6 'E'=13 'F'=7 'H'=3 'I'=9 'L'=13 'M'=2 'N'=9 'O'=5 'P'=1
+'R'=6 'S'=2 'T'=2 'U'=2 'W'=2 'X'=1 '['=3 ']'=3 '_'=10 'a'=12 'b'=2 'c'=9 'd'=3 'e'=5
 'f'=1 'g'=1 'h'=2 'i'=11 'm'=1 'n'=7 'o'=3 'p'=1 'r'=2 's'=3 't'=5 'w'=1 '{'=1 '}'=1
 
 ```
@@ -1681,13 +1681,13 @@ The example below counts (case insensitive) letters and was run on a version of 
 link printf
 
 procedure main(A)
-every PrintCount(CountLetters(!A))    
+every PrintCount(CountLetters(!A))
 end
 
 procedure CountLetters(fn)  #: Return case insensitive count of letters
    K := table(0)
    if f := open(fn,"r") then {
-      every c := !map(|read(f)) do 
+      every c := !map(|read(f)) do
          if any(&lcase,c) then K[c] +:= 1
       close(f)
       return K
@@ -1695,15 +1695,15 @@ procedure CountLetters(fn)  #: Return case insensitive count of letters
    else write(&errout,"Unable to open file ",fn)
 end
 
-procedure PrintCount(T)    #: Print the letters 
+procedure PrintCount(T)    #: Print the letters
 every c := key(T) do
    printf("%s - %d\n",c,T[c])
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 
 {{out}}
 
@@ -1746,10 +1746,10 @@ v - 4
 200     LET A$=UCASE$(A$)
 210     IF A$>="A" AND A$<="Z" THEN LET LETT(ORD(A$))=LETT(ORD(A$))+1
 220   LOOP UNTIL EOF
-230 END WHEN 
+230 END WHEN
 240 FOR I=65 TO 90
 250   PRINT CHR$(I);":";LETT(I),
-260 NEXT 
+260 NEXT
 270 HANDLER IOERROR
 280   LET EOF=-1
 290   CLOSE #1
@@ -1768,7 +1768,7 @@ Input is a directory-path with filename. Result is 26 integers representing coun
 ```j
 ltrfreq=: 3 : 0
   letters=. u: 65 + i.26  NB. upper case letters
-  <: #/.~ letters (, -. -.~) toupper fread y  
+  <: #/.~ letters (, -. -.~) toupper fread y
 )
 ```
 
@@ -1809,7 +1809,7 @@ public class LetterFreq {
 		in.close();
 		return freqs;
 	}
-	
+
 	public static void main(String[] args) throws IOException{
 		System.out.println(Arrays.toString(countLetters("filename.txt")));
 	}
@@ -1855,8 +1855,8 @@ public static Map<Integer, Long> countLetters(String filename) throws IOExceptio
 ## JavaScript
 
 
-JavaScript is no longer used only in environments which are carefully isolated from file systems, but JavaScript standards still do not specify standard file-system functions. 
-Leaving aside the particular and variable details of how files will be opened and read in environments like Node.js and OS X JavaScript for Automation etc., 
+JavaScript is no longer used only in environments which are carefully isolated from file systems, but JavaScript standards still do not specify standard file-system functions.
+Leaving aside the particular and variable details of how files will be opened and read in environments like Node.js and OS X JavaScript for Automation etc.,
 we can still use core JavasScript (ES5 in the example below), to count the characters in a text once it has been read from a file system.
 
 
@@ -1868,12 +1868,12 @@ we can still use core JavasScript (ES5 in the example below), to count the chara
         dct =  {},
         c = '',
         keys;
-        
+
     while (i--) {
         c = cs[i];
         dct[c] = (dct[c] || 0) + 1;
     }
-    
+
     keys = Object.keys(dct);
     keys.sort();
     return keys.map(function (c) { return [c, dct[c]]; });
@@ -1889,18 +1889,18 @@ delighted with him. He was quite young, wonderfully handsome, extremely\
 agreeable, and, to crown the whole, he meant to be at the next assembly\
 with a large party. Nothing could be more delightful! To be fond of\
 dancing was a certain step towards falling in love; and very lively\
-hopes of Mr. Bingley's heart were entertained."); 
+hopes of Mr. Bingley's heart were entertained.");
 ```
- 
+
 
 {{Out}}
 
 
 ```JavaScript
-[[" ", 121], ["!", 1], ["'", 1], [",", 13], ["-", 3], [".", 9], [";", 2], 
-["B", 3], ["H", 2], ["L", 2], ["M", 3], ["N", 2], ["S", 1], ["T", 2], ["W", 1], 
+[[" ", 121], ["!", 1], ["'", 1], [",", 13], ["-", 3], [".", 9], [";", 2],
+["B", 3], ["H", 2], ["L", 2], ["M", 3], ["N", 2], ["S", 1], ["T", 2], ["W", 1],
 ["a", 53], ["b", 13], ["c", 17], ["d", 29], ["e", 82], ["f", 17], ["g", 16], ["h", 36],
-["i", 44], ["j", 1], ["k", 3], ["l", 34], ["m", 11], ["n", 41], ["o", 40], ["p", 8], 
+["i", 44], ["j", 1], ["k", 3], ["l", 34], ["m", 11], ["n", 41], ["o", 40], ["p", 8],
 ["q", 2], ["r", 35], ["s", 39], ["t", 55], ["u", 20], ["v", 7], ["w", 17], ["x", 2], ["y", 16]]
 ```
 
@@ -2005,11 +2005,11 @@ DataStructures.OrderedDict{Char,Int64} with 29 entries:
 ```
 
 
-Example: The file "hello.txt" contains the string "Hello, world!" 
+Example: The file "hello.txt" contains the string "Hello, world!"
 
 
 ```K
-   
+
   c:+(?a;#:'=a:,/0:`hello.txt)
 
 ```
@@ -2123,7 +2123,7 @@ Total letters = 64
 
 ## Liberty BASIC
 
-Un-rem a line to convert to all-upper-case. 
+Un-rem a line to convert to all-upper-case.
 Letter freq'y is printed as percentages.
 
 ```lb
@@ -2163,7 +2163,7 @@ local(
 )
 // as a loop. arguably quicker than query expression
 loop(#str->size) => {
-	#freq->keys !>> #str->get(loop_count) ? 
+	#freq->keys !>> #str->get(loop_count) ?
 		#freq->insert(#str->get(loop_count) = #str->values->find(#str->get(loop_count))->size)
 }
 
@@ -2201,7 +2201,7 @@ end
 -- Return a closure to keep track of letter counts
 function tally ()
   local t = {}
-  
+
   -- Add x to tally if supplied, return tally list otherwise
   local function count (x)
     if x then
@@ -2214,7 +2214,7 @@ function tally ()
       return t
     end
   end
-  
+
   return count
 end
 
@@ -2329,7 +2329,7 @@ StringTools:-CharacterFrequencies(readbytes("File.txt",infinity,TEXT))
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 
 ```Mathematica
@@ -2343,7 +2343,7 @@ Tally[Characters[Import["file.txt","Text"]]]
 function u = letter_frequency(t)
 	if ischar(t)
 		t = abs(t);
-	end; 
+	end;
 	A = sparse(t+1,1,1,256,1);
 	printf('"%c":%i\n',[find(A)-1,A(A>0)]')
 end
@@ -2471,7 +2471,7 @@ bundle Default {
         Console->Print(i->As(Char))->Print("=>")->PrintLine(freqs[i - 'A']);
       };
     }
-    
+
     function : CountLetters(filename : String) ~ Int[] {
       freqs := Int->New[26];
       reader := FileReader->New(filename);
@@ -2486,11 +2486,11 @@ bundle Default {
         };
       };
       reader->Close();
-      
+
       return freqs;
     }
   }
-}  
+}
 
 ```
 
@@ -2516,7 +2516,7 @@ int main (int argc, const char *argv[]) {
     for (NSNumber *chr in countedSet) {
       NSLog(@"%C => %lu", (unichar)[chr integerValue], [countedSet countForObject:chr]);
     }
-  
+
   }
   return 0;
 }
@@ -2556,11 +2556,11 @@ If we want to compute all characters in an UTF8 file, we must use an external li
 
 open Batteries
 
-let frequency file = 
+let frequency file =
   let freq = Hashtbl.create 52 in
     File.with_file_in file
       (Enum.iter (fun c -> Hashtbl.modify_def 1 c succ freq) % Text.chars_of);
-    List.iter (fun (k,v) -> Text.write_text stdout k; 
+    List.iter (fun (k,v) -> Text.write_text stdout k;
                             Printf.printf " %d\n" v)
     @@ List.sort (fun (_,v) (_,v') -> compare v v')
     @@ Hashtbl.fold (fun k v l -> (Text.of_uchar k,v) :: l) freq []
@@ -2625,14 +2625,14 @@ begin
 	begin
 		chart[c] := 0;
 	end;
-	
+
 	// parameter-less EOF() checks for EOF(input)
 	while not EOF() do
 	begin
 		read(c);
 		inc(chart[c]);
 	end;
-	
+
 	// now, chart[someLetter] gives you the letter’s frequency
 end.
 ```
@@ -2657,7 +2657,7 @@ In perl6, whenever you want to count things in a collection, the rule of thumb i
 ```perl6
 .&ws.say for slurp.comb.Bag.sort: -*.value;
 
-sub ws ($pair) { 
+sub ws ($pair) {
     $pair.key ~~ /\n/
     ?? ('NEW LINE' => $pair.value)
     !! $pair.key ~~ /\s/
@@ -2904,32 +2904,32 @@ JUMPSOVERTHELAZYDOG
 
 ```txt
 
-Letter                  Frequency 
-A                               1 
-B                               1 
-C                               1 
-D                               1 
-E                               3 
-F                               1 
-G                               1 
-H                               2 
-I                               1 
-J                               1 
-K                               1 
-L                               1 
-M                               1 
-N                               1 
-O                               4 
-P                               1 
-Q                               1 
-R                               2 
-S                               1 
-T                               2 
-U                               2 
-V                               1 
-W                               1 
-X                               1 
-Y                               1 
+Letter                  Frequency
+A                               1
+B                               1
+C                               1
+D                               1
+E                               3
+F                               1
+G                               1
+H                               2
+I                               1
+J                               1
+K                               1
+L                               1
+M                               1
+N                               1
+O                               4
+P                               1
+Q                               1
+R                               2
+S                               1
+T                               2
+U                               2
+V                               1
+W                               1
+X                               1
+Y                               1
 Z                               1
 
 ```
@@ -2942,7 +2942,7 @@ Z                               1
 ```PowerShell
 
 function frequency ($string) {
-    $arr = $string.ToUpper().ToCharArray() |where{$_ -match '[A-KL-Z]'} 
+    $arr = $string.ToUpper().ToCharArray() |where{$_ -match '[A-KL-Z]'}
     $n = $arr.count
     $arr | group | foreach{
         [pscustomobject]@{letter = "$($_.name)"; frequency  = "$([math]::round($($_.Count/$n),5))"; count = "$($_.count)"}
@@ -2959,31 +2959,31 @@ frequency $(get-content $file -Raw)
 
 letter frequency count
 ------ --------- -----
-A      0.06809   16   
-B      0.00426   1    
-C      0.06809   16   
-D      0.00851   2    
-E      0.11064   26   
-F      0.0383    9    
-G      0.01702   4    
-H      0.02979   7    
-I      0.03404   8    
-J      0.00426   1    
-K      0.00426   1    
-L      0.02553   6    
-M      0.04255   10   
-N      0.09362   22   
-O      0.08085   19   
-P      0.02128   5    
-Q      0.01277   3    
-R      0.10638   25   
-S      0.02128   5    
-T      0.10213   24   
-U      0.05957   14   
-V      0.00426   1    
-W      0.00851   2    
-Y      0.02979   7    
-Z      0.00426   1 
+A      0.06809   16
+B      0.00426   1
+C      0.06809   16
+D      0.00851   2
+E      0.11064   26
+F      0.0383    9
+G      0.01702   4
+H      0.02979   7
+I      0.03404   8
+J      0.00426   1
+K      0.00426   1
+L      0.02553   6
+M      0.04255   10
+N      0.09362   22
+O      0.08085   19
+P      0.02128   5
+Q      0.01277   3
+R      0.10638   25
+S      0.02128   5
+T      0.10213   24
+U      0.05957   14
+V      0.00426   1
+W      0.00851   2
+Y      0.02979   7
+Z      0.00426   1
 
 ```
 
@@ -2991,11 +2991,11 @@ Z      0.00426   1
 
 ## Prolog
 
-Works with SWI-Prolog. 
+Works with SWI-Prolog.
 
-Only alphabetic codes are computed in uppercase state. 
+Only alphabetic codes are computed in uppercase state.
 
-Uses '''packlist/2''' defined there : [[Run-length encoding#Prolog]] 
+Uses '''packlist/2''' defined there : [[Run-length encoding#Prolog]]
 
 
 ```Prolog
@@ -3078,14 +3078,14 @@ true .
 
 ## PureBasic
 
-Alphabetic codes are converted to uppercase before being used and no other codes are used as part of the calculations. 
+Alphabetic codes are converted to uppercase before being used and no other codes are used as part of the calculations.
 
 
 ```PureBasic
 Procedure countLetters(Array letterCounts(1), textLine.s)
   ;counts only letters A -> Z, uses index 0 of letterCounts() to keep a total of all counts
   Protected i, lineLength = Len(textLine), letter
-  
+
   textLine = UCase(textLine)
   For i = 1 To lineLength
     letter = Asc(Mid(textLine, i, 1)) - 'A' + 1
@@ -3095,31 +3095,31 @@ Procedure countLetters(Array letterCounts(1), textLine.s)
     EndIf
   Next
 EndProcedure
- 
+
 If OpenConsole()
   Define filename.s, fileID, i
   filename = OpenFileRequester("Select text file to examine", "*.txt", "Text (*.txt)|*.txt;|All files (*.*)|*.*", 0)
   fileID = 0
   If ReadFile(fileID, filename)
     Dim letterCounts(26) ;A - Z only, index 0 contains the total of all letter counts
-    
+
     Define textLine.s
     While Not Eof(fileID)
       textLine = ReadString(fileID)
       countLetters(letterCounts(), textLine)
     Wend
     CloseFile(fileID)
-    
+
     PrintN("File: " + filename + #CRLF$)
     PrintN("Letter  %Freq  Count")
     For i = 1 To 26
       Print("  " + Chr(64 + i) + "     ")
       Print(RSet(StrF(100 * letterCounts(i) / letterCounts(0), 1), 5, " ") + "  ")
       PrintN(Str(letterCounts(i)))
-    Next 
+    Next
     PrintN(#CRLF$ + "Total letter count in file: " + Str(letterCounts(0)))
-  EndIf 
-  
+  EndIf
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -3474,8 +3474,8 @@ Usage on itself:
 ```R>
  source('letter.frequency.r')
 > letter.frequency('letter.frequency.r')
-    -  ,  .  '  (  )  [  ]  {  }  <  =  1  a  c  d  e  f  h  i  l  L  m  n  N  o  p  q  r  s  t  u  U  y 
-22  3  2  1  2  6  6  2  2  1  1  3  1  1  9  6  1 14  7  2  7  8  3  4  6  1  3  3  1  8  8  7  3  1  2 
+    -  ,  .  '  (  )  [  ]  {  }  <  =  1  a  c  d  e  f  h  i  l  L  m  n  N  o  p  q  r  s  t  u  U  y
+22  3  2  1  2  6  6  2  2  1  1  3  1  1  9  6  1 14  7  2  7  8  3  4  6  1  3  3  1  8  8  7  3  1  2
 ```
 
 
@@ -3546,20 +3546,20 @@ It should be noted that the file being read is read one line at time, so the
 
 line-end characters (presumably the line-feed, carriage return, new-line, or
 
-whatever control characters are being used) are not reported. 
+whatever control characters are being used) are not reported.
 
-These characters could be read and reported if the   '''charin'''   BIF would be used instead of the   '''linein'''   BIF. 
+These characters could be read and reported if the   '''charin'''   BIF would be used instead of the   '''linein'''   BIF.
 
 
 Also note that this REXX program is ASCII or EBCDIC independent, but what constitutes a letter is restricted to
 
 the Latin (Roman) alphabet (that is, which characters are considered to be letters of a particular language.
- 
+
 The version of REXX that was used was the '''English''' version of Regina REXX.   It should be noted that almost all
 
 REXX interpreters assume the English language for such things as determining what characters are considered
 
-letters unless another language is specified   (Regina REXX uses an environmental variable for this purpose). 
+letters unless another language is specified   (Regina REXX uses an environmental variable for this purpose).
 
 All characters are still counted, whether a letter or not, including non-displayable characters.
 
@@ -3836,29 +3836,29 @@ Output:
 
 ```txt
 
->WaA  Pa12 :&-: :äüÖ2< 20                                
- E8C44D8FF015674BCDEF                                    
- 61100711200000000002                                    
-file ----- PRIV.V100(TEST) ----- has 1 records.          
-file ----- PRIV.V100(TEST) ----- has 20 characters.      
-                     (Latin) letter  a count:  2         
-                     (Latin) letter  A count:  1         
-                     (Latin) letter  P count:  1         
-                     (Latin) letter  W count:  1         
-file ----- PRIV.V100(TEST) ----- has 5 (Latin) letters.  
-                           other characters follow        
-                     '00'x character count:  1           
-                     '10'x character count:  1           
-                     blank character count:  3           
-                         & character count:  1           
-                         - character count:  1           
-                         : character count:  1           
-                         : character count:  1           
-                         ä character count:  1           
-                         ü character count:  1           
-                         Ö character count:  1           
-                         1 character count:  1           
-                         2 character count:  2           
+>WaA  Pa12 :&-: :äüÖ2< 20
+ E8C44D8FF015674BCDEF
+ 61100711200000000002
+file ----- PRIV.V100(TEST) ----- has 1 records.
+file ----- PRIV.V100(TEST) ----- has 20 characters.
+                     (Latin) letter  a count:  2
+                     (Latin) letter  A count:  1
+                     (Latin) letter  P count:  1
+                     (Latin) letter  W count:  1
+file ----- PRIV.V100(TEST) ----- has 5 (Latin) letters.
+                           other characters follow
+                     '00'x character count:  1
+                     '10'x character count:  1
+                     blank character count:  3
+                         & character count:  1
+                         - character count:  1
+                         : character count:  1
+                         : character count:  1
+                         ä character count:  1
+                         ü character count:  1
+                         Ö character count:  1
+                         1 character count:  1
+                         2 character count:  2
 file ----- PRIV.V100(TEST) ----- has 15 other characters.
 ```
 
@@ -3873,13 +3873,13 @@ textData = read("C:\Ring\ReadMe.txt")
 ln =len(textData)
 charCount = list(255)
 totCount = 0
- 
+
 for i =1 to ln
     char = ascii(substr(textData,i,1))
     charCount[char] = charCount[char] + 1
     if char > 31 totCount = totCount + 1 ok
 next
- 
+
 for i = 32 to 255
     if charCount[i] > 0 see char(i) + " = " + charCount[i] + " " + (charCount[i]/totCount)*100 + " %" + nl ok
 next
@@ -3898,7 +3898,7 @@ def letter_frequency(file)
        split(//) .
        group_by {|letter| letter.downcase} .
        select   {|key, val| letters.include? key} .
-       collect  {|key, val| [key, val.length]} 
+       collect  {|key, val| [key, val.length]}
 end
 
 letter_frequency(ARGV[0]).sort_by {|key, val| -val}.each {|pair| p pair}
@@ -4016,13 +4016,13 @@ ln =len(textData$)
 close #f
 
 dim charCount( 255)
- 
+
 for i =1 to ln
    char            = asc(mid$(textData$,i,1))
    charCount(char) = charCount(char) + 1
    if char > 31 then totCount = totCount + 1
 next i
- 
+
 for i = 32 to 255
 if charCount(i) > 0 then print "Ascii:";using("###",i);" char:";chr$(i);" Count:";using("#######",charCount(i));" ";using("##.#",(charCount(i) / totCount) * 100);"%"
 next i
@@ -4204,7 +4204,7 @@ Number of occurences per character
 ```scala
 import io.Source.fromFile
 
-def letterFrequencies(filename: String) = 
+def letterFrequencies(filename: String) =
   fromFile(filename).mkString groupBy (c => c) mapValues (_.length)
 ```
 
@@ -4307,9 +4307,9 @@ which shows: ((#\f . 1) (#\o . 2) (#\b . 1) (#\a . 1) (#\r . 1))
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const type: charHash is hash [char] integer;
- 
+
 const proc: main is func
   local
     var charHash: numberOfChars is charHash.EMPTY_HASH;
@@ -4365,7 +4365,7 @@ func letter_frequency(File file) {
         .map_val  {|_, val| val.len}            \
         .sort_by  {|_, val| -val}
 }
- 
+
 var top = letter_frequency(File(__FILE__))
 top.each{|pair| say "#{pair[0]}: #{pair[1]}"}
 ```
@@ -4783,32 +4783,32 @@ Output:
 
 LetterFrequency "d:\largetext.txt"
 Frequencies:
-a              24102 
-b              4985 
-c              4551 
-d              19127 
-e              61276 
-f              2734 
-g              10661 
-h              8243 
-i              21589 
-j              4904 
-k              7186 
-l              12026 
-m              7454 
-n              31963 
-o              19021 
-p              4960 
-q              37 
-r              21166 
-s              13403 
-t              21090 
-u              6117 
-v              8612 
-w              5017 
-x              168 
-y              299 
-z              4159 
+a              24102
+b              4985
+c              4551
+d              19127
+e              61276
+f              2734
+g              10661
+h              8243
+i              21589
+j              4904
+k              7186
+l              12026
+m              7454
+n              31963
+o              19021
+p              4960
+q              37
+r              21166
+s              13403
+t              21090
+u              6117
+v              8612
+w              5017
+x              168
+y              299
+z              4159
 
 ```
 
@@ -4838,7 +4838,7 @@ Next
 
 For Each key In objdict.Keys
 	WScript.StdOut.WriteLine key & " = " & objdict.Item(key)
-Next	
+Next
 
 objfile.Close
 Set objfso = Nothing
@@ -4904,57 +4904,57 @@ Z    2
 
 
 ```Whitespace
-   							
 
-    
- 
-     
-		    	
-	  	 
- 
-		 	
 
- 
-  
 
-   	
-    
- 
- 	
-	 			 
- 
-		 	 
- 
- 			   	
-	   		 
- 
- 	
 
-   	 
-	  	
-   		
-   	
-	    
-    	       
-	  	
-	  	  
- 
- 			
-	  		
- 
- 	
-     	     
-	
-   
- 				
- 	   	 	 
-	
-  
- 
- 		
 
-   	  
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5034,7 +5034,7 @@ $ cat freq.ws | wspace freq.ws
 
 This takes advantage of DOS's ability to redirect input from a file to
 the keyboard. The input file must be terminated with an end-of-file
-character ($1A). Usage: count <filename.ext 
+character ($1A). Usage: count <filename.ext
 
 
 ```XPL0
@@ -5073,7 +5073,7 @@ dim ascCodes(255)
 f = open("unixdict.txt", "r")
 
 if f then
-    while(not eof(#f)) 
+    while(not eof(#f))
         line input #f a$
         for i = 1 to len(a$)
             c = asc(mid$(a$, i, 1))

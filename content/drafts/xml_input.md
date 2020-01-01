@@ -42,7 +42,7 @@ Expected Output
 
 ```forth
 
- 
+
 \ Load the XML text into the var 'x':
 quote *
 <Students>
@@ -55,14 +55,14 @@ quote *
   <Student DateOfBirth="1993-09-10" Gender="F" Name="&#x00C9;mily" />
 </Students>
 * xml:parse var, x
- 
+
 \ print only xml nodes which have a tag of 'Student' and whose attributes are not empty
 : .xml \ xml --
 	xml:tag@ "Student" s:cmp if drop ;; then
-	xml:attrs null? if drop ;; then 
- 
+	xml:attrs null? if drop ;; then
+
 	"Name" m:@ . cr drop ;
- 
+
 \ Iterate over the XML document in the var 'x'
 x @ ' .xml xml:each bye
 
@@ -84,7 +84,7 @@ Dave
 
 
 ```actionscript
-package 
+package
 {
     import flash.display.Sprite;
 
@@ -246,7 +246,7 @@ end Extract_Students;
 output is the same.
 
 
-###  Alternative version using Matreshka 
+###  Alternative version using Matreshka
 
 
 Uses [http://forge.ada-ru.org/matreshka Matreshka's SAX API for XML].
@@ -422,30 +422,30 @@ The output is (Aikido doesn't support unicode rendering):
 /* structure linkedlist*/
     .struct  0
 xmlNode_private:                         @ application data
-    .struct  xmlNode_private + 4 
+    .struct  xmlNode_private + 4
 xmlNode_type:                            @ type number, must be second !
-    .struct  xmlNode_type + 4 
+    .struct  xmlNode_type + 4
 xmlNode_name:                            @ the name of the node, or the entity
-    .struct  xmlNode_name + 4 
+    .struct  xmlNode_name + 4
 xmlNode_children:                        @ parent->childs link
-    .struct  xmlNode_children + 4 
+    .struct  xmlNode_children + 4
 xmlNode_last:                            @ last child link
-    .struct  xmlNode_last + 4 
-xmlNode_parent:                          @ child->parent link 
-    .struct  xmlNode_parent + 4 
+    .struct  xmlNode_last + 4
+xmlNode_parent:                          @ child->parent link
+    .struct  xmlNode_parent + 4
 xmlNode_next:                            @ next sibling link
-    .struct  xmlNode_next + 4 
-xmlNode_prev:                            @ previous sibling link 
-    .struct  xmlNode_prev + 4 
+    .struct  xmlNode_next + 4
+xmlNode_prev:                            @ previous sibling link
+    .struct  xmlNode_prev + 4
 xmlNode_doc:                             @ the containing document
-    .struct  xmlNode_doc + 4 
+    .struct  xmlNode_doc + 4
 xmlNode_ns:                              @ pointer to the associated namespace
-    .struct  xmlNode_ns + 4 
+    .struct  xmlNode_ns + 4
 xmlNode_content:                         @ the content
-    .struct  xmlNode_content + 4 
+    .struct  xmlNode_content + 4
 xmlNode_properties:                      @ properties list
     .struct  xmlNode_properties + 4
-xmlNode_nsDef:                           @ namespace definitions on this node 
+xmlNode_nsDef:                           @ namespace definitions on this node
     .struct  xmlNode_nsDef + 4
 xmlNode_psvi:                            @ for type/PSVI informations
     .struct  xmlNode_psvi + 4
@@ -460,7 +460,7 @@ xmlNode_fin:
 /* Initialized data              */
 /*********************************/
 .data
-szMessEndpgm:      .asciz "Normal end of program.\n" 
+szMessEndpgm:      .asciz "Normal end of program.\n"
 szMessError:       .asciz "Error detected !!!!. \n"
 szText:            .ascii "<Students>\n"
                    .ascii "<Student Name=\"April\" Gender=\"F\" DateOfBirth=\"1989-01-02\" />\n"
@@ -479,15 +479,15 @@ szCarriageReturn:  .asciz "\n"
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 .align 4
 
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                     @ entry of program 
+.global main
+main:                                     @ entry of program
     ldr r0,iAdrszText                     @ text buffer
     mov r1,#LGSZTEXT                      @ text size
     mov r2,#0                             @ param 3
@@ -514,8 +514,8 @@ main:                                     @ entry of program
 99:
     @ error
     ldr r0,iAdrszMessError
-    bl affichageMess       
-100:                                       @ standard end of the program 
+    bl affichageMess
+100:                                       @ standard end of the program
     mov r0, #0                             @ return code
     mov r7, #EXIT                          @ request to exit program
     svc #0                                 @ perform the system call
@@ -526,7 +526,7 @@ iAdrszText:               .int szText
 iAdrszCarriageReturn:     .int szCarriageReturn
 
 /******************************************************************/
-/*     display name of student                             */ 
+/*     display name of student                             */
 /******************************************************************/
 /* r0 contains the address of node */
 affElement:
@@ -559,54 +559,54 @@ affElement:
     ldr r1,[r4,#xmlNode_next]         @ other element ?
     cmp r1,#0
     beq 100f                          @ no -> end procedure
- 
+
     mov r4,r1                         @ else loop with next element
     b 1b
 
 100:
-    pop {r1-r4,lr}                    @ restaur registers */ 
-    bx lr                             @ return  
+    pop {r1-r4,lr}                    @ restaur registers */
+    bx lr                             @ return
 iAdrszLibName:              .int szLibName
 iAdrszLibExtract:           .int szLibExtract
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                   @ save  registres
-    mov r2,#0                               @ counter length 
-1:                                          @ loop length calculation 
-    ldrb r1,[r0,r2]                         @ read octet start position + index 
-    cmp r1,#0                               @ if 0 its over 
-    addne r2,r2,#1                          @ else add 1 in the length 
-    bne 1b                                  @ and loop 
-                                            @ so here r2 contains the length of the message 
-    mov r1,r0                               @ address message in r1 
-    mov r0,#STDOUT                          @ code to write to the standard output Linux 
-    mov r7, #WRITE                          @ code call system "write" 
-    svc #0                                  @ call systeme 
-    pop {r0,r1,r2,r7,lr}                    @ restaur registers */ 
-    bx lr                                   @ return  
+    mov r2,#0                               @ counter length
+1:                                          @ loop length calculation
+    ldrb r1,[r0,r2]                         @ read octet start position + index
+    cmp r1,#0                               @ if 0 its over
+    addne r2,r2,#1                          @ else add 1 in the length
+    bne 1b                                  @ and loop
+                                            @ so here r2 contains the length of the message
+    mov r1,r0                               @ address message in r1
+    mov r0,#STDOUT                          @ code to write to the standard output Linux
+    mov r7, #WRITE                          @ code call system "write"
+    svc #0                                  @ call systeme
+    pop {r0,r1,r2,r7,lr}                    @ restaur registers */
+    bx lr                                   @ return
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                         @ save registers 
+    push {r1-r4,lr}                         @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 1:                                          @ start loop
     bl divisionpar10                        @ r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                              @ digit
     strb r1,[r3,r2]                         @ store digit on area
-    cmp r0,#0                               @ stop if quotient = 0 
-    subne r2,#1                               @ previous position    
+    cmp r0,#0                               @ stop if quotient = 0
+    subne r2,#1                               @ previous position
     bne 1b                                  @ else loop
                                             @ end replaces digit in front of area
     mov r4,#0
 2:
-    ldrb r1,[r3,r2] 
+    ldrb r1,[r3,r2]
     strb r1,[r3,r4]                         @ store in area begin
     add r4,#1
     add r2,#1                               @ previous position
@@ -619,11 +619,11 @@ conversion10:
     cmp r4,#LGZONECAL                       @ end
     ble 3b
 100:
-    pop {r1-r4,lr}                          @ restaur registres 
+    pop {r1-r4,lr}                          @ restaur registres
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
@@ -632,20 +632,20 @@ conversion10:
 divisionpar10:
   /* r0 contains the argument to be divided by 10 */
     push {r2-r4}                           @ save registers  */
-    mov r4,r0  
+    mov r4,r0
     mov r3,#0x6667                         @ r3 <- magic_number  lower
     movt r3,#0x6666                        @ r3 <- magic_number  upper
-    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) 
+    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0)
     mov r2, r2, ASR #2                     @ r2 <- r2 >> 2
     mov r1, r0, LSR #31                    @ r1 <- r0 >> 31
-    add r0, r2, r1                         @ r0 <- r2 + r1 
-    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5 
+    add r0, r2, r1                         @ r0 <- r2 + r1
+    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                   @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2-r4}
     bx lr                                  @ return
-/************************************/       
+/************************************/
 /* comparaison de chaines           */
-/************************************/      
+/************************************/
 /* r0 et r1 contiennent les adresses des chaines */
 /* retour 0 dans r0 si egalite */
 /* retour -1 si chaine r0 < chaine r1 */
@@ -653,7 +653,7 @@ divisionpar10:
 comparString:
     push {r1-r4}                @ save des registres
     mov r2,#0                   @ indice
-1:    
+1:
     ldrb r3,[r0,r2]             @ octet chaine 1
     ldrb r4,[r1,r2]             @ octet chaine 2
     cmp r3,r4
@@ -667,7 +667,7 @@ comparString:
     b 1b                        @ et boucle
 100:
     pop {r1-r4}
-    bx lr   
+    bx lr
 
 ```
 
@@ -690,7 +690,7 @@ Normal end of program.
 simply using regular expressions
 
 ```AutoHotkey
-students = 
+students =
 (
 <Students>
   <Student Name="April" Gender="F" DateOfBirth="1989-01-02" />
@@ -831,10 +831,10 @@ Output:
       INSTALL @lib$+"XMLLIB"
       xmlfile$ = "C:\students.xml"
       PROC_initXML(xmlobj{}, xmlfile$)
-      
+
       level% = FN_skipTo(xmlobj{}, "Students", 0)
       IF level%=0 ERROR 100, "Students not found"
-      
+
       REPEAT
         IF FN_isTag(xmlobj{}) THEN
           tag$ = FN_nextToken(xmlobj{})
@@ -846,7 +846,7 @@ Output:
           dummy$ = FN_nextToken(xmlobj{})
         ENDIF
       UNTIL FN_getLevel(xmlobj{}) < level%
-      
+
       PROC_exitXML(xmlobj{})
 ```
 
@@ -934,8 +934,8 @@ April Bob Chad Dave Émily
 {{uses from|Library|libxml|component1=xmlDoc|component2=xmlNode|component3=xmlReadMemory|component4=xmlDocGetRootElement|component5=xmlFreeDoc|component6=xmlCleanupParser|component7=xmlNode|component8=XML_ELEMENT_NODE|component9=xmlAttr|component10=xmlHasProp}}
 {{uses from|Library|C Runtime|component1=printf}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <libxml/parser.h>
@@ -950,7 +950,7 @@ static void print_names(xmlNode *node)
 	xmlAttr *prop = NULL;
 	if ( (prop = xmlHasProp(cur_node, "Name")) != NULL ) {
 	  printf("%s\n", prop->children->content);
-	  
+
 	}
       }
     }
@@ -1017,7 +1017,7 @@ int main() {
           "</Student>\n"
           "<Student DateOfBirth=\"1993-09-10\" Gender=\"F\" Name=\"&#x00C9;mily\" />\n"
           "</Students>"));
-    
+
     QDomElement n = doc.documentElement().firstChildElement("Student");
     while(!n.isNull()) {
         std::cout << qPrintable(n.attribute("Name")) << std::endl;
@@ -1037,7 +1037,7 @@ int main() {
 class Program
 {
     static void Main(string[] args)
-    {   
+    {
         XDocument xmlDoc = XDocument.Load("XMLFile1.xml");
         var query = from p in xmlDoc.Descendants("Student")
                     select p.Attribute("Name");
@@ -1047,7 +1047,7 @@ class Program
             Console.WriteLine(item.Value);
         }
         Console.ReadLine();
-    }  
+    }
 }
 
 ```
@@ -1080,14 +1080,14 @@ ClassMethod Output() As %Status
    If $$$ISERR(sc) Quit sc
    Set sc=##class(%XML.TextReader).ParseStream(xdata.Data, .hdlr)
    If $$$ISERR(sc) Quit sc
-   
+
    // iterate through document, node by node
    While hdlr.Read() {
 	   If hdlr.Path="/Students/Student", hdlr.MoveToAttributeName("Name") {
 		   Write hdlr.Value, !
 	   }
    }
-   
+
    // finished
    Quit $$$OK
 }
@@ -1383,7 +1383,7 @@ using xml
 
 class XmlInput
 {
-  public static Void main () 
+  public static Void main ()
   {
     // create the XML parser
     parser := XParser(File("sample-xml.xml".toUri).in)
@@ -1414,7 +1414,7 @@ include ffl/str.fs
 include ffl/xis.fs
 
 \ Build input string
-str-create xmlstr   
+str-create xmlstr
 : x+ xmlstr str-append-string ;
 
 s\" <Students>\n" x+
@@ -1466,7 +1466,7 @@ xmlparse
 
 
 
-###  tixi library 
+###  tixi library
 
 
 Uses [https://github.com/DLR-SC/tixi tixi library]  (+ LibXML, curl as dependencies)
@@ -1478,17 +1478,17 @@ program tixi_rosetta
   use tixi
   implicit none
   integer :: i
-  character (len=100) :: xml_file_name 
+  character (len=100) :: xml_file_name
   integer :: handle
-  integer :: error	
+  integer :: error
   character(len=100) :: name, xml_attr
   xml_file_name = 'rosetta.xml'
 
   call tixi_open_document( xml_file_name, handle, error )
   i = 1
-  do 
+  do
       xml_attr = '/Students/Student['//int2char(i)//']'
-      call tixi_get_text_attribute( handle, xml_attr,'Name', name, error )      
+      call tixi_get_text_attribute( handle, xml_attr,'Name', name, error )
       if(error /= 0) exit
       write(*,*) name
       i = i + 1
@@ -1524,11 +1524,11 @@ Output
 
 ```txt
 
-./tixi_rosetta.x 
- April                                                                                               
- Bob                                                                                                 
- Chad                                                                                                
- Dave                                                                                                
+./tixi_rosetta.x
+ April
+ Bob
+ Chad
+ Dave
  Émily
 
 ```
@@ -1577,11 +1577,11 @@ Output
 
 ```txt
 
-./fox_rosetta.x 
- April                                                                                               
- Bob                                                                                                 
- Chad                                                                                                
- Dave                                                                                                
+./fox_rosetta.x
+ April
+ Bob
+ Chad
+ Dave
  &mily
 
 ```
@@ -1695,7 +1695,7 @@ students="<Students>"++
         " <Student DateOfBirth=\"1993-09-10\" Gender=\"F\" Name=\"&#x00C9;mily\" />"++
         "</Students>"
 
-xmlRead elm name  = mapM_ putStrLn 
+xmlRead elm name  = mapM_ putStrLn
       . concatMap (map (fromJust.findAttr (unqual name)).filterElementsName (== unqual elm))
       . onlyElems.  parseXML
 ```
@@ -1739,11 +1739,11 @@ J's system includes several XML processing libraries.  This task is probably bes
 
 ```j
 load'xml/sax'
- 
+
 saxclass 'Students'
 startElement =: ([: smoutput 'Name' getAttribute~ [)^:('Student'-:])
 cocurrent'base'
- 
+
 process_Students_ XML
 ```
 
@@ -1836,13 +1836,13 @@ public class StudentHandler extends DefaultHandler {
 
 
 
-###  Browser version 
+###  Browser version
 
 This version tested against Chrome 37, Firefox 32, and IE 11:
 
 ```JavaScript
 
-var xmlstr = '<Students>' + 
+var xmlstr = '<Students>' +
   '<Student Name="April" Gender="F" DateOfBirth="1989-01-02" />' +
   '<Student Name="Bob" Gender="M"  DateOfBirth="1990-03-04" />' +
   '<Student Name="Chad" Gender="M"  DateOfBirth="1991-05-06" />' +
@@ -1861,7 +1861,7 @@ else // Internet Explorer
   {
   xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
   xmlDoc.async=false;
-  xmlDoc.loadXML(xmlstr); 
+  xmlDoc.loadXML(xmlstr);
   }
 
 var students=xmlDoc.getElementsByTagName('Student');
@@ -1874,7 +1874,7 @@ for(var e=0; e<=students.length-1; e++) {
 {{works with|Mozilla Firefox|32}}
 
 
-###  Node.js version 
+###  Node.js version
 
 
 ```JavaScript
@@ -1902,13 +1902,13 @@ parseString(xmlstr, function (err, result) {
 
 
 
-###  E4X version 
+###  E4X version
 
 Alternatively, use the E4X featureset (currently only in Firefox):
 
 ```JavaScript
 
-var xmlstr = '<Students>' + 
+var xmlstr = '<Students>' +
   '<Student Name="April" Gender="F" DateOfBirth="1989-01-02" />' +
   '<Student Name="Bob" Gender="M"  DateOfBirth="1990-03-04" />' +
   '<Student Name="Chad" Gender="M"  DateOfBirth="1991-05-06" />' +
@@ -1974,7 +1974,7 @@ Dave
 
 ## Kotlin
 
-As this is just a small XML document, the DOM parser has been used rather than the SAX parser: 
+As this is just a small XML document, the DOM parser has been used rather than the SAX parser:
 
 ```scala
 // version 1.1.3
@@ -1985,7 +1985,7 @@ import java.io.StringReader
 import org.w3c.dom.Node
 import org.w3c.dom.Element
 
-val xml = 
+val xml =
 """
 <Students>
     <Student Name="April" Gender="F" DateOfBirth="1989-01-02" />
@@ -2011,7 +2011,7 @@ fun main(args: Array<String>) {
             val name = element.getAttribute("Name")
             println(name)
         }
-    } 
+    }
 }
 ```
 
@@ -2119,7 +2119,7 @@ xml = "<Students>"&r&\
 
 parser = xtra("xmlparser").new()
 parser.parseString(xml)
-res = parser.makePropList()	
+res = parser.makePropList()
 repeat with c in res.child
   put c.attributes.name
 end repeat
@@ -2149,7 +2149,7 @@ put revXMLCreateTree(fld "FieldXML",true,true,false) into currTree
 put revXMLAttributeValues(currTree,"Students","Student","Name",return,-1)
 ```
 
-    
+
 
 ## Lua
 
@@ -2183,10 +2183,10 @@ Output:
 
 ```txt
 
-April 
-Bob 
-Chad 
-Dave 
+April
+Bob
+Chad
+Dave
 Émily
 ```
 
@@ -2215,7 +2215,7 @@ Module CheckIt {
       Declare Dom "Msxml2.DOMDocument"
       Method Dom, "LoadXML", xml$
       Method Dom, "getElementsByTagName", "Student" as Students
-      
+
       With Students, Enumerator as Student
       While Student {
             Method Student, "getAttribute", "Name" as Student.Name$
@@ -2233,10 +2233,10 @@ CheckIt
 
 ```txt
 
-April 
-Bob 
-Chad 
-Dave 
+April
+Bob
+Chad
+Dave
 Émily
 </pre >
 
@@ -2252,10 +2252,10 @@ Output:
 
 ```txt
 
-April 
-Bob 
-Chad 
-Dave 
+April
+Bob
+Chad
+Dave
 Émily
 ```
 
@@ -2316,10 +2316,10 @@ Output:
 
 ```txt
 
-April 
-Bob 
-Chad 
-Dave 
+April
+Bob
+Chad
+Dave
 Émily
 ```
 
@@ -2408,7 +2408,7 @@ Dave
 
 (set 'sexp (xml-parse xml-input))
 
-(dolist (x (ref-all "Name" sexp))	
+(dolist (x (ref-all "Name" sexp))
 	(if (= (length x) 6)
 		(println (last (sexp (chop x))))))
 
@@ -2419,10 +2419,10 @@ Output:
 
 ```txt
 
-April 
-Bob 
-Chad 
-Dave 
+April
+Bob
+Chad
+Dave
 Émily
 ```
 
@@ -2479,7 +2479,7 @@ bundle Default {
       in->Append("<Pet Type=\"dog\" Name=\"Rover\" />");
       in->Append("</Student>");
       in->Append("<Student DateOfBirth=\"1993-09-10\" Gender=\"F\" Name=\"&#x00C9;mily\" /></Students>");
-    
+
       parser := XmlParser->New(in);
       if(parser->Parse()) {
         root := parser->GetRoot();
@@ -2625,7 +2625,7 @@ DO ii[1] = 1 TO hxdoc:NUM-CHILDREN:
    IF hxstudents:NAME = 'Students' THEN DO ii[2] = 1 TO hxstudents:NUM-CHILDREN:
       CREATE X-NODEREF hxstudent.
       hxstudents:GET-CHILD( hxstudent, ii[2] ).
-      IF hxstudent:NAME = 'Student' THEN 
+      IF hxstudent:NAME = 'Student' THEN
          cstudents = cstudents + hxstudent:GET-ATTRIBUTE( 'Name' ) + '~n'.
       DELETE OBJECT hxstudent.
    END.
@@ -2650,7 +2650,7 @@ Chad
 Dave
 Émily
 ---------------------------
-OK   
+OK
 ---------------------------
 
 ```
@@ -2863,9 +2863,9 @@ object s = Parser.XML.Tree.simple_parse_input(in);
 
 array collect = ({});
 s->walk_inorder(lambda(object node)
-                { 
-                    if (node->get_tag_name() == "Student") 
-                        collect += ({ node->get_attributes()->Name }); 
+                {
+                    if (node->get_tag_name() == "Student")
+                        collect += ({ node->get_attributes()->Name });
                 });
 write("%{%s\n%}", collect);
 ```
@@ -2911,7 +2911,7 @@ foreach ($node in $xml.DocumentElement.ChildNodes) {$node.Name}
 
 ```OpenEdgeABL
 
-/** 
+/**
 ### = Definitions ==
  **/
 DEFINE VARIABLE chXMLString AS LONGCHAR NO-UNDO.
@@ -2921,11 +2921,11 @@ DEFINE TEMP-TABLE ttStudent NO-UNDO XML-NODE-NAME 'Student'
     FIELD DateOfBirth AS CHARACTER XML-NODE-TYPE 'attribute' XML-NODE-NAME 'DateOfBirth' LABEL 'Date Of Birth'.
 DEFINE DATASET dsStudents XML-NODE-NAME 'Students' FOR ttStudent.
 
-/** 
+/**
 ### = Main block =
 **/
 
-/** ASSIGN the XML string with the XML data.. **/ 
+/** ASSIGN the XML string with the XML data.. **/
 chXMLString = '<Students>~
                 <Student Name="April" Gender="F" DateOfBirth="1989-01-02" />~
                 <Student Name="Bob" Gender="M"  DateOfBirth="1990-03-04" />~
@@ -2976,7 +2976,7 @@ Procedure get_values(*cur_node, nodeName$, attribute$, *valueResults.String)
 
   While *cur_node
     If XMLNodeType(*cur_node) = #PB_XML_Normal
-      
+
       result$ = GetXMLNodeName(*cur_node)
       If result$ = nodeName$
         If ExamineXMLAttributes(*cur_node)
@@ -2984,17 +2984,17 @@ Procedure get_values(*cur_node, nodeName$, attribute$, *valueResults.String)
             If XMLAttributeName(*cur_node) = attribute$
               If *valueResults <> #Null
                 *valueResults\s + XMLAttributeValue(*cur_node) + Chr(13) ;value + carriage-return
-              EndIf 
+              EndIf
             EndIf
           Wend
         EndIf
-      EndIf 
-      
-    EndIf 
-    
+      EndIf
+
+    EndIf
+
     get_values(ChildXMLNode(*cur_node), nodeName$, attribute$, *valueResults)
     *cur_node = NextXMLNode(*cur_node)
-  Wend 
+  Wend
 EndProcedure
 
 CatchXML(0,@src$,Len(src$))
@@ -3003,7 +3003,7 @@ If IsXML(0)
   get_values(MainXMLNode(0), "Student", "Name",@studentNames)
   MessageRequester("Student Names", studentNames\s)
   FreeXML(0)
-EndIf 
+EndIf
 ```
 
 Sample output:
@@ -3064,13 +3064,13 @@ close(tc)
 str
 ```
 
- [1] "<Students>"                                                                 
- [2] "  <Student Name=\"April\" Gender=\"F\" DateOfBirth=\"1989-01-02\" />"       
- [3] "  <Student Name=\"Bob\" Gender=\"M\"  DateOfBirth=\"1990-03-04\" />"        
- [4] "  <Student Name=\"Chad\" Gender=\"M\"  DateOfBirth=\"1991-05-06\" />"       
- [5] "  <Student Name=\"Dave\" Gender=\"M\"  DateOfBirth=\"1992-07-08\">"         
- [6] "    <Pet Type=\"dog\" Name=\"Rover\" />"                                    
- [7] "  </Student>"                                                               
+ [1] "<Students>"
+ [2] "  <Student Name=\"April\" Gender=\"F\" DateOfBirth=\"1989-01-02\" />"
+ [3] "  <Student Name=\"Bob\" Gender=\"M\"  DateOfBirth=\"1990-03-04\" />"
+ [4] "  <Student Name=\"Chad\" Gender=\"M\"  DateOfBirth=\"1991-05-06\" />"
+ [5] "  <Student Name=\"Dave\" Gender=\"M\"  DateOfBirth=\"1992-07-08\">"
+ [6] "    <Pet Type=\"dog\" Name=\"Rover\" />"
+ [7] "  </Student>"
  [8] "  <Student DateOfBirth=\"1993-09-10\" Gender=\"F\" Name=\"&#x00C9;mily\" />"
  [9] "</Students>"
 
@@ -3087,7 +3087,7 @@ studentsnames <- character(nstudents)
 for(i in 1:nstudents)
 {
    this.student <- students$children[i]$Student
-   studentsnames[i] <- this.student$attributes["Name"]   
+   studentsnames[i] <- this.student$attributes["Name"]
 }
 
 #Change the encoding so that Emily displays correctly
@@ -3122,10 +3122,10 @@ END
   )
 
 (define students
-  (xml->xexpr 
+  (xml->xexpr
    (document-element
     (read-xml (open-input-string input)))))
- 
+
 (se-path*/list '(Student #:Name) students)
 
 ```
@@ -3421,20 +3421,20 @@ xml$ = "
   <Student DateOfBirth=""1993-09-10"" Gender=""F"" Name=""&#x00C9;mily"" />
 </Students>"
 
- 
+
 ' Creates the xml handler, using the string
 xmlparser #spies, xml$
- 
+
 ' Uses elementCount() to know how many elements are in betweeb <spies>...</spies>
 for count = 1 to #spies elementCount()
- 
+
   ' Uses "count" to work through the elements, and assigns the element to the
   ' handle "#spy"
   #spy = #spies #element(count)
- 
+
   ' Prints the value, or inner text, of "#spy": Sam, Clover, & Alex
   print count;" ";#spy value$();" ->";#spy ATTRIBVALUE$(1)
- 
+
 next count
 ```
 
@@ -3501,7 +3501,7 @@ Dave
 
 {{lines too long|Slate}}
 Slate's XML Reader is still being developed at the time of this writing.
- 
+
 
 ```slate
 slate[1]> [ |tree|
@@ -3693,9 +3693,9 @@ Sample run:
 ```txt
 $ txr students.txr students.xml
 NAME         G DOB        PET
-April        F 1989-01-02 none 
-Bob          M 1990-03-04 none 
-Chad         M 1991-05-06 none 
+April        F 1989-01-02 none
+Bob          M 1990-03-04 none
+Chad         M 1991-05-06 none
 Dave         M 1992-07-08 dog Rover
 Émily        F 1993-09-10 none
 ```
@@ -3807,9 +3807,9 @@ Dave
               <Student Name="Dave"/>
               <Student Name="Emily"/>
            </Students>
- 
+
 Dim names = (From node In xml...<Student> Select node.@Name).ToArray
- 
+
 For Each name In names
      Console.WriteLine(name)
 Next
@@ -3887,7 +3887,7 @@ Dave
 
 
 ```Yabasic
-// 
+//
 ### ======= routine for set code conversion =============
 
 
@@ -3916,7 +3916,7 @@ sub codeConversion(charcode, tocode)
     end if
 end sub
 
-// 
+//
 ### ======= end routine for set code conversion =========
 
 
@@ -3936,9 +3936,9 @@ ltag = len(tag2$)
 
 sub convASCII$(name$, mark$)
     local p, c, lm
-    
+
     lm = len(mark$)
-    
+
     do
         p = instr(name$, mark$, p)
         if not p break

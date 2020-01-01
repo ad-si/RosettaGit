@@ -14,7 +14,7 @@ tags = []
 
 {{task heading}}
 
-Find the index of a string (needle) in an indexable, ordered collection of strings (haystack). 
+Find the index of a string (needle) in an indexable, ordered collection of strings (haystack).
 
 Raise an exception if the needle is missing.
 
@@ -118,9 +118,9 @@ with Ada.Text_IO;            use Ada.Text_IO;
 
 procedure Test_List_Index is
    Not_In : exception;
-   
+
    type List is array (Positive range <>) of Unbounded_String;
-   
+
    function Index (Haystack : List; Needle : String) return Positive is
    begin
       for Index in Haystack'Range loop
@@ -136,12 +136,12 @@ procedure Test_List_Index is
    begin
       return (1 => To_Unbounded_String (X), 2 => To_Unbounded_String (Y));
    end "+";
-   
+
    function "+" (X : List; Y : String) return List is
    begin
       return X & (1 => To_Unbounded_String (Y));
    end "+";
-   
+
    Haystack : List := "Zig"+"Zag"+"Wally"+"Ronald"+"Bush"+"Krusty"+"Charlie"+"Bush"+"Bozo";
 
    procedure Check (Needle : String) is
@@ -221,17 +221,17 @@ Zag is at 1
 
 ```algol68
  FORMAT hay stack := $c("Zig","Zag","Wally","Ronald","Bush","Krusty","Charlie","Bush","Bozo")$;
- 
+
  FILE needle exception; STRING ref needle;
  associate(needle exception, ref needle);
- 
+
  PROC index = (FORMAT haystack, REF STRING needle)INT:(
    INT out;
    ref needle := needle;
    getf(needle exception,(haystack, out));
    out
  );
- 
+
  test:(
    []STRING needles = ("Washington","Bush");
    FOR i TO UPB needles DO
@@ -266,7 +266,7 @@ Washington is not in haystack
 
 ```algol68
  []STRING hay stack = ("Zig","Zag","Wally","Ronald","Bush","Krusty","Charlie","Bush","Bozo");
- 
+
  PROC index = ([]STRING hay stack, STRING needle)INT:(
    INT index;
    FOR i FROM LWB hay stack TO UPB hay stack DO
@@ -445,7 +445,7 @@ LOOP
 
 ## Batch File
 
-The index of this simple implementation is 1-based. The "haystack" data are borrowed from the [[Search_a_list#BASIC|BASIC]] implementation. 
+The index of this simple implementation is 1-based. The "haystack" data are borrowed from the [[Search_a_list#BASIC|BASIC]] implementation.
 
 ```dos
 @echo off
@@ -514,10 +514,10 @@ Press any key to continue . . .
       \             "hotel","india","juliet","kilo","lima","mike","needle",      \
       \             "november","oscar","papa","quebec","romeo","sierra","tango", \
       \             "needle","uniform","victor","whisky","x-ray","yankee","zulu"
-      
+
       needle$ = "needle"
       maxindex% = DIM(haystack$(), 1)
-      
+
       FOR index% = 0 TO maxindex%
         IF needle$ = haystack$(index%) EXIT FOR
       NEXT
@@ -597,8 +597,8 @@ blsq ) {"Zig" "Zag" "Wally" "Bush" "Ronald" "Bush"}{"Bush"==}fI
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 const char *haystack[] = {
@@ -659,8 +659,8 @@ Last index for Zag: 9
 The following code shows three different ways to solve the task.
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <algorithm>
 #include <iterator>
 #include <cstddef>
@@ -766,15 +766,15 @@ void test(std::string const& needle)
 int main()
 {
   std::cout << "\n
-###  Word which only occurs once 
+###  Word which only occurs once
 \n";
   test("Wally");
   std::cout << "\n
-###  Word occuring multiple times 
+###  Word occuring multiple times
 \n";
   test("Bush");
   std::cout << "\n
-###  Word not occuring at all 
+###  Word not occuring at all
 \n";
   test("Goofy");
 }
@@ -787,7 +787,7 @@ int main()
 
 
 
-###  Word which only occurs once 
+###  Word which only occurs once
 
 -- C style interface --
 Wally found at index 2
@@ -797,7 +797,7 @@ Wally found at index 2
 Wally found at index 2
 
 
-###  Word occuring multiple times 
+###  Word occuring multiple times
 
 -- C style interface --
 Bush found at index 4
@@ -807,7 +807,7 @@ Bush found at index 4
 Bush found at index 4
 
 
-###  Word not occuring at all 
+###  Word not occuring at all
 
 -- C style interface --
 Goofy not found
@@ -820,7 +820,7 @@ Goofy not found
 
 
 
-###  C++11 
+###  C++11
 
 {{works with|g++ version 4.8.4, clang++ version 3.4| "-std=c++11" }}
 
@@ -831,15 +831,15 @@ Goofy not found
  * auto typing
  * lambda functions
  * noexcept
- * find 
+ * find
  * for/in loop
  */
- 
+
 #include <iostream>   // std::cout, std::endl
 #include <algorithm>  // std::find
 #include <list>       // std::list
 #include <vector>     // std::vector
-#include <string>     // string::basic_string 
+#include <string>     // string::basic_string
 
 
 using namespace std;     // saves typing of "std::" before everything
@@ -847,26 +847,26 @@ using namespace std;     // saves typing of "std::" before everything
 int main()
 {
 
-  // initialization lists 
+  // initialization lists
   // create objects and fully initialize them with given values
 
-  list<string> l { "Zig", "Zag", "Wally", "Homer", "Madge", 
-                   "Watson", "Ronald", "Bush", "Krusty", "Charlie", 
-                   "Bush", "Bush", "Boz", "Zag" }; 
-  
+  list<string> l { "Zig", "Zag", "Wally", "Homer", "Madge",
+                   "Watson", "Ronald", "Bush", "Krusty", "Charlie",
+                   "Bush", "Bush", "Boz", "Zag" };
+
   list<string> n { "Bush" , "Obama", "Homer",  "Sherlock" };
 
 
   //  lambda function with auto typing
-  //  auto is easier to write than looking up the compicated 
-  //  specialized iterator type that is actually returned. 
+  //  auto is easier to write than looking up the compicated
+  //  specialized iterator type that is actually returned.
   //  Just know that it returns an iterator for the list at the position found,
   //  or throws an exception if s in not in the list.
-  //  runtime_error is used because it can be initialized with a message string. 
+  //  runtime_error is used because it can be initialized with a message string.
 
-  auto contains = [](list<string> l, string s) throw(runtime_error) 
-    { 
-      auto r = find(begin(l), end(l), s ); 
+  auto contains = [](list<string> l, string s) throw(runtime_error)
+    {
+      auto r = find(begin(l), end(l), s );
 
       if ( r == end(l) ) throw runtime_error( s + " not found" );
 
@@ -878,36 +878,36 @@ int main()
   // The & is a "default capture" meaning that it "allows in"
   // the variables that are in scope where it is called by their
   // name to simplify things.
-  
-  auto index = [&](list<string> l, string s) noexcept                                        
-    {  
-      vector<int> index_v;  
+
+  auto index = [&](list<string> l, string s) noexcept
+    {
+      vector<int> index_v;
 
       int idx = 0;
 
-      for(auto& r : l) 
+      for(auto& r : l)
 	{
 	  if ( s.compare(r) == 0 ) index_v.push_back(idx); // match -- add to vector
 	  idx++;
 	}
-            
-      // even though index_v is local to the lambda function, 
+
+      // even though index_v is local to the lambda function,
       // c++11 move semantics does what you want and returns it
-      // live and intact instead of destroying it or returning a copy. 
+      // live and intact instead of destroying it or returning a copy.
       // (very efficient for large objects!)
-      return index_v; 
+      return index_v;
     };
 
 
 
   // for/in loop
   for (const string& s : n) // new iteration syntax is simple and intuitive
-    { 
-      try 
+    {
+      try
 	{
-	  
+
 	  auto cont = contains( l , s); // checks if there is any match
-	  
+
 	  vector<int> vf = index( l, s );
 
 	  cout << "l contains: " << s <<  " at " ;
@@ -915,16 +915,16 @@ int main()
 	  for (auto x : vf)
 	    { cout << x << " "; }   // if vector is empty this doesn't run
 
-	  cout << endl ;	 
+	  cout << endl ;
 
       }
-      catch (const runtime_error& r)  // string not found 
+      catch (const runtime_error& r)  // string not found
 	{
 	  cout << r.what() << endl;
 	  continue;                   // try next string
 	}
     } //for
-  
+
 
   return 0;
 
@@ -933,13 +933,13 @@ int main()
 /* end */
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 
-l contains: Bush at 7 10 11 
+l contains: Bush at 7 10 11
 Obama not found
-l contains: Homer at 3 
+l contains: Homer at 3
 Sherlock not found
 
 ```
@@ -958,8 +958,8 @@ class Program {
 
         foreach (string needle in new string[] { "Washington", "Bush" }) {
             int index = haystack.IndexOf(needle);
-            
-            if (index < 0) Console.WriteLine("{0} is not in haystack",needle);                
+
+            if (index < 0) Console.WriteLine("{0} is not in haystack",needle);
             else Console.WriteLine("{0} {1}",index,needle);
         }
     }
@@ -993,7 +993,7 @@ shared test void searchAListTask() {
 ```clojure
 (let [haystack ["Zig" "Zag" "Wally" "Ronald" "Bush" "Krusty" "Charlie" "Bush" "Bozo"]]
   (let [idx (.indexOf haystack "Zig")]
-    (if (neg? idx) 
+    (if (neg? idx)
       (throw (Error. "item not found."))
       idx)))
 ```
@@ -1043,7 +1043,7 @@ Extra credit: Since Clojure vectors implement java.util.List, you can switch .in
 *          *> Extra task
            MOVE "Bush" TO needle
            PERFORM find-last-of-needle
-           
+
            GOBACK
            .
 
@@ -1248,22 +1248,22 @@ ELENA 4.1 :
 ```elena
 import system'routines;
 import extensions;
- 
+
 public program()
 {
     var haystack := new string[]::("Zig", "Zag", "Wally", "Ronald", "Bush", "Krusty", "Charlie", "Bush", "Bozo");
- 
+
     new string[]::("Washington", "Bush").forEach:(needle)
     {
         var index := haystack.indexOfElement:needle;
- 
+
         if (index == -1)
-        { 
+        {
             console.printLine(needle," is not in haystack")
         }
         else
-        { 
-            console.printLine(needle, " - ", index) 
+        {
+            console.printLine(needle, " - ", index)
         }
     }
 }
@@ -1342,7 +1342,7 @@ Bush at position 5.
 {{works with|Euphoria|4.0.3, 4.0.0 RC1 and later}}
 
 The find_all function from the standard library's search.e does nearly all the needed work here.There may be other ways to do this using Euphoria's various sequence searching functions as part of the standard library (std/search.e) and/or built into the language.
-The procedure can be made into a function to search with other strings, take user input and give output of the searched haystack. 
+The procedure can be made into a function to search with other strings, take user input and give output of the searched haystack.
 
 
 ```euphoria
@@ -1365,19 +1365,19 @@ procedure haystackSearch(sequence hStack)
     puts(1,"---------------------------------\r\n")
     if object(foundNeedles) and length(foundNeedles) > 0 then
         printf(1, "First needle found at index %d \r\n", foundNeedles[1])
-        
+
         if length(foundNeedles) > 1 then
             printf(1, "Last needle found at index %d \r\n", foundNeedles[length(foundNeedles)] )
-        
+
             for i = 1 to length(foundNeedles) do
-                printf(1, "Needle #%d ", i) 
+                printf(1, "Needle #%d ", i)
                 printf(1, "was at index %d .\r\n", foundNeedles[i])
             end for
-        
+
             else
-                puts(1, "There was only one needle found in this haystack. \r\n")           
+                puts(1, "There was only one needle found in this haystack. \r\n")
         end if
-    
+
         else
             puts(1, "Simulated exception - No needles found in this haystack.\r\n")
     end if
@@ -1510,10 +1510,10 @@ ${ Dishonest Fake Left Karl Hillary Monica Bubba Hillary Multi-Millionaire } con
   last-found if last-found
   else true abort" Not found"
   then ;
- 
+
 s" Hillary" haystack needleIndex . \ => 4
 s" Hillary" haystack LastIndexOf . \ => 7
-s" Washington" haystack needleIndex . \ => aborted: Not found 
+s" Washington" haystack needleIndex . \ => aborted: Not found
 
 ```
 
@@ -1585,7 +1585,7 @@ Function tryFindString(s() As String, search As String, ByRef index As Integer) 
   Next
   index = LBound(s) - 1  '' outside array
   Return False
-End Function  
+End Function
 
 Function tryFindLastString(s() As String, search As String, ByRef index As Integer) As Boolean
   Dim length As Integer = UBound(s) - LBound(s) + 1
@@ -1605,7 +1605,7 @@ Function tryFindLastString(s() As String, search As String, ByRef index As Integ
   Else
     Return False
   End If
-End Function  
+End Function
 
 Dim haystack(1 To 9) As String = {"Zig", "Zag", "Wally", "Ronald", "Bush", "Krusty", "Charlie", "Bush", "Bozo"}
 Dim needle(1 To 4)   As String = {"Zag", "Krusty", "Washington", "Bush"}
@@ -1658,7 +1658,7 @@ Dim sOutput As String = "No needle found!"
 Dim siCount As Short
 
 For siCount = 0 To sHaystack.Max
-  If sNeedle = sHaystack[siCount] Then 
+  If sNeedle = sHaystack[siCount] Then
     sOutPut = sNeedle & " found at index " & Str(siCount)
     Break
   End If
@@ -1703,8 +1703,8 @@ LastPosition := function(L, x)
 end;
 
 a := Shuffle(List([1 .. 100], x -> x mod 10));
-# [ 0, 2, 4, 5, 3, 1, 0, 4, 8, 8, 2, 7, 6, 3, 3, 6, 4, 4, 3, 0, 7, 1, 8, 7, 2, 4, 7, 9, 4, 9, 4, 5, 9, 9, 6, 7, 8, 2, 3, 
-#   5, 1, 5, 4, 2, 0, 9, 6, 1, 1, 2, 2, 0, 5, 7, 6, 8, 8, 3, 1, 9, 5, 1, 9, 6, 8, 9, 2, 0, 6, 2, 1, 6, 1, 1, 2, 5, 3, 3, 
+# [ 0, 2, 4, 5, 3, 1, 0, 4, 8, 8, 2, 7, 6, 3, 3, 6, 4, 4, 3, 0, 7, 1, 8, 7, 2, 4, 7, 9, 4, 9, 4, 5, 9, 9, 6, 7, 8, 2, 3,
+#   5, 1, 5, 4, 2, 0, 9, 6, 1, 1, 2, 2, 0, 5, 7, 6, 8, 8, 3, 1, 9, 5, 1, 9, 6, 8, 9, 2, 0, 6, 2, 1, 6, 1, 1, 2, 5, 3, 3,
 #   0, 3, 5, 7, 5, 4, 6, 8, 0, 9, 8, 3, 7, 8, 0, 4, 9, 7, 0, 6, 5, 7 ]
 Position(a, 0);
 # 1
@@ -1865,7 +1865,7 @@ needles.each { needle ->
     def index = haystack.indexOf(needle)
     def lastindex = haystack.lastIndexOf(needle)
     if (index < 0) {
-        assert lastindex < 0 
+        assert lastindex < 0
         println needle + " is not in haystack"
     } else {
         println "First index: " + index + " " + needle
@@ -1955,15 +1955,15 @@ ENDIF
 
 link lists
 
-procedure main()              
+procedure main()
 haystack := ["Zig","Zag","Wally","Ronald","Bush","Krusty","Charlie","Bush","Bozo"]  # the haystack
 every needle := !["Bush","Washington"] do {                                         # the needles
 
-   if i := lindex(haystack,needle) then {                                           # first occurrence 
-      write("needle=",needle, " is at position ",i," in haystack.")                
+   if i := lindex(haystack,needle) then {                                           # first occurrence
+      write("needle=",needle, " is at position ",i," in haystack.")
 
-      if i <:= last(lindex,[haystack,needle]) then                                  # last occurrence 
-         write("needle=",needle, " is at last position ",i," in haystack.")         
+      if i <:= last(lindex,[haystack,needle]) then                                  # last occurrence
+         write("needle=",needle, " is at last position ",i," in haystack.")
       }
    else {
       write("needle=",needle, " is not in haystack.")
@@ -1981,7 +1981,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}} 
+{{libheader|Icon Programming Library}}
 Taken from the public domain Icon Programming Library's [http://www.cs.arizona.edu/icon/library/src/procs/lists.icn lindex in lists] which generates list indices for x of any type
 
 ```Icon
@@ -2016,7 +2016,7 @@ Traceback:
 ## Io
 
 
-List has a <code>indexOf</code> method which does not raise an exception on lookup failure but returns <code>nil</code> therefore I extend List with a <code>firstIndex</code> method that does raise an exception.  I also create a <code>lastIndex</code> extension that finds the last index of a matching object by iterating in reverse over the list.  Note that all these methods find any object not just strings.  
+List has a <code>indexOf</code> method which does not raise an exception on lookup failure but returns <code>nil</code> therefore I extend List with a <code>firstIndex</code> method that does raise an exception.  I also create a <code>lastIndex</code> extension that finds the last index of a matching object by iterating in reverse over the list.  Note that all these methods find any object not just strings.
 
 
 ```Io
@@ -2064,13 +2064,13 @@ lastIndex("Bush"): 7
 
 J has a general and optimized lookup function, <code>i.</code>
 
-For example:  
+For example:
 
 
 ```j
    Haystack =: ;:'Zig Zag Wally Ronald Bush Krusty Charlie Bush Bozo'
    Needles  =: ;:'Washington Bush'
-    
+
    Haystack i. Needles     NB. first positions
 9 4
    Haystack i: Needles     NB. last positions
@@ -2128,18 +2128,18 @@ Bush 7
 ```
 
 
-To elaborate a bit:  Array-oriented languages (like J) consume the input and produce the output ''in toto''.  
+To elaborate a bit:  Array-oriented languages (like J) consume the input and produce the output ''in toto''.
 
-That is, all the results are produced simultaneously; consequently, throwing an exception for any part of the input would prohibit producing any output at all.  
+That is, all the results are produced simultaneously; consequently, throwing an exception for any part of the input would prohibit producing any output at all.
 
 And while it is both possible and simple to treat the input item by item, this is significantly slower and loses the great advantage of array processing.
 
-Therefore these languages generally produce a special, but conforming, 
-output for "bad" inputs (in this case, an index past the end of the list). 
-Then the functions which consume these outputs may be left untouched 
-(as the special outputs are already in their domain) or may be extended simply. 
- 
-In this case, there is only one function which formats and prints the results, and its treatment of "good" and "bad" outputs is identical (it cannot distinguish the two). 
+Therefore these languages generally produce a special, but conforming,
+output for "bad" inputs (in this case, an index past the end of the list).
+Then the functions which consume these outputs may be left untouched
+(as the special outputs are already in their domain) or may be extended simply.
+
+In this case, there is only one function which formats and prints the results, and its treatment of "good" and "bad" outputs is identical (it cannot distinguish the two).
 It is simply that the outputs of previous functions have been arranged such that the results are conformable.
 
 
@@ -2167,7 +2167,7 @@ for arrays, you have to do it manually:
 
 ```java
 import java.util.Arrays;
- 
+
 String[] haystack = { "Zig","Zag","Wally","Ronald","Bush","Krusty","Charlie","Bush","Bozo"};
 
 for (String needle : new String[]{"Washington","Bush"}) {
@@ -2255,7 +2255,7 @@ Or, generalising enough (in ES5) to allow for varying definitions of the type of
   };
 
   // DEFINING A PARTICULAR TYPE OF SEARCH MATCH
-  
+
   function matchCaseInsensitive(s, t) {
     return s.toLowerCase() === t.toLowerCase();
   }
@@ -2325,8 +2325,8 @@ Output:
 
 ## jq
 
-The jq index origin is 0.  
-The relevant methods for the tasks at hand are index/1 and rindex/1; indices/1 can also be used.  
+The jq index origin is 0.
+The relevant methods for the tasks at hand are index/1 and rindex/1; indices/1 can also be used.
 
 In the following, the output is shown after the "# =>":
 
@@ -2381,9 +2381,9 @@ find(["no", "?", "yes", "maybe", "yes"] .== "yes") = [3, 5]
 
 
 ```K
-  Haystack:("Zig";"Zag";"Wally";"Ronald";"Bush";"Krusty";"Charlie";"Bush";"Bozo")    
+  Haystack:("Zig";"Zag";"Wally";"Ronald";"Bush";"Krusty";"Charlie";"Bush";"Bozo")
   Needles:("Washington";"Bush")
-  {:[y _in x;(y;x _bin y);(y;"Not Found")]}[Haystack]'Needles 
+  {:[y _in x;(y;x _bin y);(y;"Not Found")]}[Haystack]'Needles
 ```
 
 
@@ -2397,8 +2397,8 @@ find(["no", "?", "yes", "maybe", "yes"] .== "yes") = [3, 5]
 ```
 
 
-Additional: 
-If more than one occurrence ("Bush"), also show position of the last occurrence. 
+Additional:
+If more than one occurrence ("Bush"), also show position of the last occurrence.
 Here we use the dyadic verb _sm (string match) instead of _bin (binary search).
 
 
@@ -2485,7 +2485,7 @@ Exception in thread "main" java.lang.Exception: Donald does not occur in the lis
 
 ## Lasso
 
-Lasso arrays have a findindex method which returns all matching indexes. [http://lassoguide.com/operations/containers.html?#array] 
+Lasso arrays have a findindex method which returns all matching indexes. [http://lassoguide.com/operations/containers.html?#array]
 
 
 ```Lasso
@@ -2649,7 +2649,7 @@ Module Checkit {
       Append  Haystack,  "spqr", "wombat", "shme", "foo", "bar", "baz", "bongo", "spam", "eggs", "snork", "foo", "bar"
       Append  Haystack,  "zot", "blarg", "wibble", "toto", "titi", "tata", "tutu", "pippo", "pluto", "paperino", "aap"
       Append  Haystack,  "noot", "mies", "oogle", "foogle", "boogle", "zork", "gork", "bork"
-      \\ Inventories are objects and we have access to properties using COM model 
+      \\ Inventories are objects and we have access to properties using COM model
       With HayStack, "index" as index
       Inventory Queue HayStackRev
       N=Each(HayStack, -1, 1)
@@ -2667,15 +2667,15 @@ Module Checkit {
                 If needle$ <> "" Then {
                           If Exist(haystackrev,lcase$(needle$) ) Then {
                               Print "Found "; CHR$(34); needle$; CHR$(34); " at index "; STR$(len(haystackrev)-indexrev,"")
-                              
+
                               If Exist(haystack,lcase$(needle$) ) Then  {
                                     if len(haystackrev)-1<>indexrev+index then {
                                                 Print "Found "; CHR$(34); needle$; CHR$(34); " at index "; STR$(Len(haystack)-index,"")
                                     }
                               }
-                        } Else  Print CHR$(34); needle$; CHR$(34); " not found"    
+                        } Else  Print CHR$(34); needle$; CHR$(34); " not found"
             } Else Exit
-      } Always     
+      } Always
 }
 CheckIt
 
@@ -2754,13 +2754,13 @@ searchCollection.m:
 
 ```MATLAB
 function index = searchCollection(list,searchItem,firstLast)
-    
+
     %firstLast is a string containing either 'first' or 'last'. The 'first'
     %flag will cause searchCollection to return the index of the first
     %instance of the item being searched. 'last' will cause
     %searchCollection to return the index of the last instance of the item
     %being searched.
-    
+
     indicies = cellfun(@(x)x==searchItem,list);
     index = find(indicies,1,firstLast);
     assert(~isempty(index),['The string ''' searchItem ''' does not exist in this collection of strings.']);
@@ -2801,7 +2801,7 @@ haystack=#("Zig","Zag","Wally","Ronald","Bush","Krusty","Charlie","Bush","Bozo")
 for needle in #("Washington","Bush") do
 (
     index = findItem haystack needle
-    
+
     if index == 0 then
     (
         format "% is not in haystack\n" needle
@@ -2896,7 +2896,7 @@ method searchIndexedList(haystack, needle, forwards = (1 == 1), respectCase = (1
 
     wp = 0
     loop ix = strtIx to endIx by incrIx
-      if respectCase then 
+      if respectCase then
         if needle == haystack[ix] then wp = ix
         else nop
       else
@@ -2915,20 +2915,20 @@ method driver(arg) public static
   TRUE_        = (1 == 1); FALSE_      = \TRUE_
   FORWARDS_    = TRUE_;    BACKWARDS_  = FALSE_
   CASERESPECT_ = TRUE_;    CASEIGNORE_ = \CASERESPECT_
-  
+
   -- test data
   needles = ['barley', 'quinoa']
-  
+
   -- a simple list of words.  Lists of words are indexable in NetRexx via the word(N) function
   hayrick = 'Barley maize barley sorghum millet wheat rice rye barley Barley oats flax'
-  
+
   -- a Rexx indexed string made up from the words in hayrick
   cornstook = ''
   loop w_ = 1 to hayrick.words() -- populate the indexed string
     cornstook[0]  = w_
     cornstook[w_] = hayrick.word(w_)
     end w_
-  
+
   loop needle over needles
     do -- process the list of words
       say 'Searching for "'needle'" in the list "'hayrick'"'
@@ -2945,7 +2945,7 @@ method driver(arg) public static
       say '  'ex.getMessage()
       say
     end
-  
+
     do -- process the indexed list
       corn = ''
       loop ci = 1 to cornstook[0]
@@ -2966,7 +2966,7 @@ method driver(arg) public static
       say
     end
     end needle
-  
+
   return
 ```
 
@@ -3114,9 +3114,9 @@ needleIndex("Washington", Haystack) println
 
 ## ooRexx
 
-All ooRexx collections support an index method that will search for an item. 
-For ordered collections, this will always be the first item.  
-For unordered collections, the index returned is undetermined. 
+All ooRexx collections support an index method that will search for an item.
+For ordered collections, this will always be the first item.
+For unordered collections, the index returned is undetermined.
 
 ```ooRexx
 -- ordered collections always return the first hit
@@ -3144,8 +3144,8 @@ say d~index(4)
 
 ## Oz
 
-No such function exists for the built-in list type 
-(the operation is quite inefficient, after all). 
+No such function exists for the built-in list type
+(the operation is quite inefficient, after all).
 A possible implementation:
 
 ```oz
@@ -3167,7 +3167,7 @@ declare
      end
   end
 
-  Haystack = ["Zig" "Zag" "Wally" "Ronald" "Bush" "Krusty" "Charlie" "Bush" "Bozo"] 
+  Haystack = ["Zig" "Zag" "Wally" "Ronald" "Bush" "Krusty" "Charlie" "Bush" "Bozo"]
 in
   {Show {Index "Bush" Haystack}}
   {Show {List.last {Indices "Bush" Haystack}}}
@@ -3284,7 +3284,7 @@ Washington is not in haystack
 
 ```perl6>my @haystack = <Zig Zag Wally Ronald Bush Krusty Charlie Bush Bozo
 ;
- 
+
 for <Washington Bush> -> $needle {
     say "$needle -- { @haystack.first($needle, :k) // 'not in haystack' }";
 }
@@ -3518,7 +3518,7 @@ function index($haystack,$needle) {
     } else {
         $index
     }
-    
+
 }
 $haystack = @("word", "phrase", "preface", "title", "house", "line", "chapter", "page", "book", "house")
 index $haystack "house"
@@ -3570,7 +3570,7 @@ function Find-Needle
             Write-Verbose "Needle not found in Haystack"
             return $index
         }
-        
+
         if ((($Haystack | Group-Object | Where-Object Count -GT 1).Group).IndexOf($Needle) -ne -1)
         {
             Write-Verbose "Last needle found in Haystack at index $index"
@@ -3606,7 +3606,7 @@ $haystack = @("word", "phrase", "preface", "title", "house", "line", "chapter", 
 
 ```PowerShell
 
-Find-Needle "house" $haystack 
+Find-Needle "house" $haystack
 
 ```
 
@@ -3739,7 +3739,7 @@ If OpenConsole()  ; Open a simple console to interact with user
   NewList Straws.s()
   Define Straw$, target$="TBA"
   Define found
-  
+
   Restore haystack ; Read in all the straws of the haystack.
   Repeat
     Read.s Straw$
@@ -3748,10 +3748,10 @@ If OpenConsole()  ; Open a simple console to interact with user
       Straws()=UCase(Straw$)
       Continue
     Else
-      Break 
+      Break
     EndIf
   ForEver
-  
+
   While target$<>""
     Print(#CRLF$+"Enter word to search for (leave blank to quit) :"): target$=Input()
     ResetList(Straws()): found=#False
@@ -3759,14 +3759,14 @@ If OpenConsole()  ; Open a simple console to interact with user
       If UCase(target$)=Straws()
         found=#True
         PrintN(target$+" found as index #"+Str(ListIndex(Straws())))
-      EndIf  
+      EndIf
     Wend
     If Not found
       PrintN("Not found.")
     EndIf
-  Wend 
+  Wend
 EndIf
- 
+
 DataSection
   haystack:
   Data.s "Zig","Zag","Zig","Wally","Ronald","Bush","Krusty","Charlie","Bush","Bozo",""
@@ -3798,8 +3798,8 @@ Washington is not in haystack
 ```
 
 
-Note that in Python, the index method of a list already raises an exception. 
-The following shows the default information given 
+Note that in Python, the index method of a list already raises an exception.
+The following shows the default information given
 when the exception is not captured in the program:
 
 ```python>>>
@@ -3815,8 +3815,8 @@ ValueError: list.index(x): x not in list
 ```
 
 
-There is no built-in method for returning the highest index of a repeated string in a Python list, tuple or array, (although strings have [http://docs.python.org/library/stdtypes.html?highlight=rindex#str.rindex rindex]). 
-Instead we need to look for the index in the reversed list and adjust the result. 
+There is no built-in method for returning the highest index of a repeated string in a Python list, tuple or array, (although strings have [http://docs.python.org/library/stdtypes.html?highlight=rindex#str.rindex rindex]).
+Instead we need to look for the index in the reversed list and adjust the result.
 
 ```python>>>
  def hi_index(needle, haystack):
@@ -3892,10 +3892,10 @@ Let us test with a linked list:
 ```racket
 (define haystack '("Zig" "Zag" "Wally" "Ronald" "Bush" "Krusty" "Charlie" "Bush" "Bozo"))
 
-(for/list ([needle '("Bender" "Bush")])   
+(for/list ([needle '("Bender" "Bush")])
     (index haystack needle))
 
-(for/list ([needle '("Bender" "Bush")])  
+(for/list ([needle '("Bender" "Bush")])
     (index-last haystack needle))
 ```
 
@@ -3974,15 +3974,15 @@ Bush => 8
 
 ### version 1
 
-This REXX program searches a collection of string (haystack) 
+This REXX program searches a collection of string (haystack)
 that are stored in a sequential REXX array.
 
 
-No counter is kept of the number of items, 
+No counter is kept of the number of items,
 but they should be numbered consecutively and can't have any gaps.
 
 
-The haystack items may have any character, including blanks.  
+The haystack items may have any character, including blanks.
 
 A ''null'' value isn't allowed in this method of representing values.
 
@@ -4022,11 +4022,11 @@ return 0                                         /*indicates the needle  wasn't 
 
 ### version 2
 
-This REXX program searches a collection of string (haystack) 
+This REXX program searches a collection of string (haystack)
 that are stored in a REXX array (which may have gaps).
 
 
-A safe counter is kept of the maximum (highest) index in the array, 
+A safe counter is kept of the maximum (highest) index in the array,
 this counter may be any sufficiently high number.
 
 
@@ -4073,14 +4073,14 @@ return 0                                         /*indicates the needle  wasn't 
 
 ### version 3
 
-This REXX program searches a collection of string (haystack) 
+This REXX program searches a collection of string (haystack)
 that are stored in a REXX array.
 
 
 This form uses a type of array called a '''sparse array'''   (with non-numeric indexes).
 
 
-One drawback of this approach is that the items can't have leading/trailing/imbedded blanks, 
+One drawback of this approach is that the items can't have leading/trailing/imbedded blanks,
 
 nor can they have special characters.
 
@@ -4095,9 +4095,9 @@ table look-up, the "finding" is done by REXX's own internal method of variable l
 and, for the most part, it based on a table hashing algorithm.
 
 
-This method pre-prends an underscore (underbar) to avoid collision with any REXX 
+This method pre-prends an underscore (underbar) to avoid collision with any REXX
 
-variable names.  Therefore, there shouldn't be any REXX variable names (in this 
+variable names.  Therefore, there shouldn't be any REXX variable names (in this
 
 program) that have a leading underscore   ('''_''').
 
@@ -4188,18 +4188,18 @@ return 0                                         /*indicates the needle  wasn't 
 
 ```ring
 
-haystack = ["alpha","bravo","charlie","delta","echo","foxtrot","golf",   
+haystack = ["alpha","bravo","charlie","delta","echo","foxtrot","golf",
 "hotel","india","juliet","kilo","lima","mike","needle",
-"november","oscar","papa","quebec","romeo","sierra","tango", 
+"november","oscar","papa","quebec","romeo","sierra","tango",
 "needle","uniform","victor","whisky","x-ray","yankee","zulu"]
 
 needle = "needle"
 maxindex = len(haystack)
- 
+
 for index = 1 to maxindex
     if needle = haystack[index] exit ok
 next
-if index <= maxindex 
+if index <= maxindex
    see "first found at index " + index + nl ok
 for last = maxindex to 0 step -1
     if needle = haystack[last] exit ok
@@ -4250,7 +4250,7 @@ search_a_list.rb:8:in `block in <main>': Washington is not in haystack (RuntimeE
 '''Extra credit'''
 
 ```ruby
-haystack.each do |item| 
+haystack.each do |item|
   last = haystack.rindex(item)
   if last > haystack.index(item)
     puts "#{item} last appears at index #{last}"
@@ -4285,16 +4285,16 @@ while word$(needle$,i+1," ") <> ""
   thisNeedle$ = word$(needle$,i," ") + " "
   j  = instr(haystack$,thisNeedle$)
   k1 = 0
-  k  = instr(haystack$,thisNeedle$,j+1) 
+  k  = instr(haystack$,thisNeedle$,j+1)
   while k <> 0
     k1 = k
-    k  = instr(haystack$,thisNeedle$,k+1) 
+    k  = instr(haystack$,thisNeedle$,k+1)
   wend
-  if j <> 0 then  
-    print thisNeedle$;" located at:";j; 
+  if j <> 0 then
+    print thisNeedle$;" located at:";j;
     if k1 <> 0 then print " Last position located at:";k1;
-    print 
-   else 
+    print
+   else
     print thisNeedle$;" is not in the list"
   end if
 wend
@@ -4319,7 +4319,7 @@ Rust encourages to encode possible errors in function's return type. For example
 
 ```rust
 fn main() {
-    let haystack=vec!["Zig", "Zag", "Wally", "Ronald", "Bush", "Krusty", "Charlie", 
+    let haystack=vec!["Zig", "Zag", "Wally", "Ronald", "Bush", "Krusty", "Charlie",
                         "Bush", "Boz", "Zag"];
 
     println!("First occurence of 'Bush' at {:?}",haystack.iter().position(|s| *s=="Bush"));
@@ -4348,7 +4348,7 @@ First occurence of 'Rob' at None
 
 ```rust
 fn main() {
-    let haystack=vec!["Zig", "Zag", "Wally", "Ronald", "Bush", "Krusty", "Charlie", 
+    let haystack=vec!["Zig", "Zag", "Wally", "Ronald", "Bush", "Krusty", "Charlie",
                         "Bush", "Boz", "Zag"];
 
     println!("First occurence of 'Bush' at {:?}",haystack.iter().position(|s| *s=="Bush").unwrap());
@@ -4373,7 +4373,7 @@ playpen: application terminated with error code 101
 
 =={{header|S-lang}}==
 <lang S-lang>variable haystack = ["Zig","Zag","Wally","Ronald","Bush","Krusty","Charlie","Bush","Bozo","Ronald"];
- 
+
 define find(needle)
 {
     variable i = where(haystack == needle);
@@ -4384,7 +4384,7 @@ define find(needle)
     else
        throw ApplicationError, "an exception";
 }
- 
+
 ($1, $2) = find("Ronald");     % returns 3, 9
 ($1, $2) = find("McDonald");   % throws ApplicationError, labelled "an exception"
 
@@ -4418,13 +4418,13 @@ end;
 
 ## Scala
 
-The method indexOf, defined for all classes inheriting from, 
+The method indexOf, defined for all classes inheriting from,
 or having an implicit conversion to,
-Seq returns the index of the first element, or -1 if none exists. 
-The method lastIndexOf does the same for the last element. 
+Seq returns the index of the first element, or -1 if none exists.
+The method lastIndexOf does the same for the last element.
 Neither throws an exception, but that's easily done afterwards.
 
-However, a simple implementation, 
+However, a simple implementation,
 not using those or similar methods might be written like this:
 
 
@@ -4539,7 +4539,7 @@ Smalltalk indexes start at 1.
 
 ```smalltalk
 | haystack |
-haystack := 
+haystack :=
    'Zig,Zag,Wally,Ronald,Bush,Krusty,Charlie,Bush,Bozo' subStrings: $,.
 { 'Washington' . 'Bush'  } do: [:i|
   |t l|
@@ -4547,8 +4547,8 @@ haystack :=
   (t = 0) ifTrue: [ ('%1 is not in the haystack' % { i }) displayNl ]
           ifFalse: [ ('%1 is at index %2' % { i . t }) displayNl.
                      l := ( (haystack size) - (haystack reverse indexOf: i) + 1 ).
-                     ( t = l ) ifFalse: [ 
-                       ('last occurence of %1 is at index %2' % 
+                     ( t = l ) ifFalse: [
+                       ('last occurence of %1 is at index %2' %
                              { i . l }) displayNl ]
                    ]
 ].
@@ -4618,7 +4618,7 @@ The second task:
 // the second part can be done several ways, but extending any Array of Comparable objects is the most generic approach
 extension Array where Element : Comparable {
     func lastIndexMatching(needle:Element) -> Int? {
-        
+
         for i in stride(from: count-1, through: 0, by: -1) {
             if self[i] == needle {
                 return i
@@ -4665,7 +4665,7 @@ foreach needle {Bush Washington} {
     if {[llength $indices] == 0} {
         error "$needle does not appear in the haystack"
     } else {
-        puts "$needle appears first at index [lindex $indices 0] and last at [lindex $indices end]" 
+        puts "$needle appears first at index [lindex $indices 0] and last at [lindex $indices end]"
     }
 }
 ```
@@ -4682,38 +4682,38 @@ Find multiple needles in a haystack:
 
 ```TorqueScript
 function findIn(%haystack,%needles)
-{	
+{
 	%hc = getWordCount(%haystack);
 	%nc = getWordCount(%needles);
-	
+
 	for(%i=0;%i<%nc;%i++)
 	{
 		%nword = getWord(%needles,%i);
 		%index[%nword] = -1;
 	}
-	
+
 	for(%i=0;%i<%hc;%i++)
 	{
 		%hword = getWord(%haystack,%i);
-		
+
 		for(%j=0;%j<%nc;%j++)
 		{
 			%nword = getWord(%needles,%j);
-			
+
 			if(%hword $= %nword)
 			{
 				%index[%nword] = %i;
 			}
 		}
 	}
-	
+
 	for(%i=0;%i<%nc;%i++)
 	{
 		%nword = getWord(%needles,%i);
 		%string = %string SPC %nword@"_"@%index[%nword];
 		%string = trim(%string);
-	}	
-	
+	}
+
 	return %string;
 }
 ```
@@ -4766,7 +4766,7 @@ ENDLOOP
 haystack=Zig'Zag'Wally'Ronald'Bush'Krusty'Charlie'Bush'Bozo
 haystack not contains Washington
 haystack contains Bush on position(s): 5'8
-haystack contains Wally on position(s): 3 
+haystack contains Wally on position(s): 3
 
 ```
 
@@ -4813,8 +4813,8 @@ else echo Must provide string to find in haystack.;fi
 
 ## Ursala
 
-The <code>indices</code> function takes a pair <math>(needle,haystack)</math> of any type, treats haystack as a list, and returns the pair of indices giving the first and last positions of needle in it, which are numbered from zero and may be equal. 
-If it's not present, an exception is thrown with a diagnostic message of 'missing'. 
+The <code>indices</code> function takes a pair <math>(needle,haystack)</math> of any type, treats haystack as a list, and returns the pair of indices giving the first and last positions of needle in it, which are numbered from zero and may be equal.
+If it's not present, an exception is thrown with a diagnostic message of 'missing'.
 The search is expressed by <code>~|</code>, the built-in distributing filter operator.
 
 ```Ursala
@@ -4917,7 +4917,7 @@ data = "foo,bar,baz,quux,quuux,quuuux,bazola,ztesch,foo,bar,thud,grunt," &_
 		"spqr,wombat,shme,foo,bar,baz,bongo,spam,eggs,snork,foo,bar," &_
 		"zot,blarg,wibble,toto,titi,tata,tutu,pippo,pluto,paperino,aap," &_
 		"noot,mies,oogle,foogle,boogle,zork,gork,bork"
-       
+
 haystack = Split(data,",")
 
 Do
@@ -4972,7 +4972,7 @@ F:\VBScript>
 
 ## Wart
 
-Wart uses the function <code>pos</code> to search a list for an element. 
+Wart uses the function <code>pos</code> to search a list for an element.
 Here's how it's implemented:
 
 ```python
@@ -5003,7 +5003,7 @@ pos 24 '(1 2 3 4 5)
 \Based on C example:
 include c:\cxpl\stdlib;     \provides StrCmp routine, etc.
 int Haystack;               \('int' is used instead of 'char' for 2D array)
- 
+
 func Search(Str, First);    \Return first (or last) index for string in haystack
 char Str; int First;
 int I, SI;

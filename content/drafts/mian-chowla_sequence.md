@@ -19,7 +19,7 @@ The sequence starts with:
 
 then for <span style="font-style:italic;font-weight:bold;font-size:125%;padding:.3em;">n > 1,</span> <span style="font-style:italic;font-weight:bold;font-size:125%;padding:.3em;">a<sub>n</sub></span> is the smallest positive integer such that every pairwise sum
 
-::<span style="font-style:italic;font-weight:bold;font-size:125%;">a<sub>i</sub> + a<sub>j</sub> 
+::<span style="font-style:italic;font-weight:bold;font-size:125%;">a<sub>i</sub> + a<sub>j</sub>
 
 is distinct, for all <span style="font-style:italic;font-weight:bold;font-size:125%;">i</span> and <span style="font-style:italic;font-weight:bold;font-size:125%;">j</span> less than or equal to <span style="font-style:italic;font-weight:bold;font-size:125%;">n</span>.
 
@@ -46,7 +46,7 @@ There are no repeated sums so '''2''' is the next number in the sequence.
 Speculatively try <span style="font-style:italic;font-weight:bold;font-size:125%;padding:.3em;">a<sub>3</sub> = 3</span>
 
 ::<span style="font-weight:bold;">1 + 1 = 2</span>
-::<span style="font-weight:bold;">1 + 2 = 3</span>  
+::<span style="font-weight:bold;">1 + 2 = 3</span>
 ::<span style="font-weight:bold;">1 + 3 = <span style="background-color:yellow;">4</span></span>
 ::<span style="font-weight:bold;">2 + 2 = <span style="background-color:yellow;">4</span></span>
 ::<span style="font-weight:bold;">2 + 3 = 5</span>
@@ -308,14 +308,14 @@ BEGIN \
             for ( k = 0; k <= i; k ++ ) # test new iteration of sums
             {
                 # test trial sum against old sums list
-                if ((sum = mc[k] + j) in sums) 
+                if ((sum = mc[k] + j) in sums)
                 {                # collision, so
                     delete ts;   # toss out any accumulated items,
                     break;       #  and break out to the next j
                 }
                 ts[sum] = sum;   # (else) accumulate to new sum list
             } # for k
-            if ( isEmpty( ts ) ) # nothing to add, 
+            if ( isEmpty( ts ) ) # nothing to add,
                 continue;        #  so try next j
             concat( sums, ts );  # combine new sums to old,
             delete ts;           #  clear out the new,
@@ -338,7 +338,7 @@ BEGIN \
 
 ```txt
 Mian Chowla sequence elements 1..30:
-1 2 4 8 13 21 31 45 66 81 97 123 148 182 204 252 290 361 401 475 565 593 662 775 822 916 970 1016 1159 1312 
+1 2 4 8 13 21 31 45 66 81 97 123 148 182 204 252 290 361 401 475 565 593 662 775 822 916 970 1016 1159 1312
 
 Mian Chowla sequence elements 91..100:
 22526 23291 23564 23881 24596 24768 25631 26037 26255 27219
@@ -351,11 +351,11 @@ Computation time is about 110 ms on ''tio.run
 
 {{trans|Go}}
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdbool.h>
 #include <time.h>
- 
+
 #define n 100
 #define nn ((n * (n + 1)) >> 1)
 
@@ -364,7 +364,7 @@ bool Contains(int lst[], int item, int size) {
  		if (item == lst[i]) return true;
 	return false;
 }
- 
+
 int * MianChowla()
 {
 	static int mc[n]; mc[0] = 1;
@@ -387,14 +387,14 @@ int * MianChowla()
 	}
 	return mc;
 }
- 
+
 int main() {
 	clock_t st = clock(); int * mc; mc = MianChowla();
         double et = ((double)(clock() - st)) / CLOCKS_PER_SEC;
 	printf("The first 30 terms of the Mian-Chowla sequence are:\n");
 	for (int i = 0; i < 30; i++) printf("%d ", mc[i]);
 	printf("\n\nTerms 91 to 100 of the Mian-Chowla sequence are:\n");
-	for (int i = 90; i < 100; i++) printf("%d ", mc[i]); 
+	for (int i = 90; i < 100; i++) printf("%d ", mc[i]);
 	printf("\n\nComputation time was %f seconds.", et);
 }
 ```
@@ -403,10 +403,10 @@ int main() {
 
 ```txt
 The first 30 terms of the Mian-Chowla sequence are:
-1 2 4 8 13 21 31 45 66 81 97 123 148 182 204 252 290 361 401 475 565 593 662 775 822 916 970 1016 1159 1312 
+1 2 4 8 13 21 31 45 66 81 97 123 148 182 204 252 290 361 401 475 565 593 662 775 822 916 970 1016 1159 1312
 
 Terms 91 to 100 of the Mian-Chowla sequence are:
-22526 23291 23564 23881 24596 24768 25631 26037 26255 27219 
+22526 23291 23564 23881 24596 24768 25631 26037 26255 27219
 
 Computation time was 1.575556 seconds.
 ```
@@ -414,8 +414,8 @@ Computation time was 1.575556 seconds.
 ===Quick, but...===
 ...is memory hungry. This will allocate a bigger buffer as needed to keep track of the sums involved.  Based on the '''ALGOL 68''' version.  The minimum memory needed is double of the highest entry calculated.  This program doubles the buffer size each time needed, so it will use more than the minimum.  The '''ALGOL 68''' increments by a fixed increment size. Which could be just as wasteful if the increment is too large and slower if the increment is too small).
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
@@ -424,7 +424,7 @@ Computation time was 1.575556 seconds.
 void approx(char* buf, double count)
 {
     const char* suffixes[] = { "Bytes", "KiB", "MiB" };
-    uint s = 0; 
+    uint s = 0;
     while (count >= 1024 && s < 3) { s++; count /= 1024; }
     if (count - (double)((int)count) == 0.0)
         sprintf(buf, "%d %s", (int)count, suffixes[s]);
@@ -471,10 +471,10 @@ int main() {
 
 ```txt
 The first 30 terms of the Mian-Chowla sequence are:
-1 2 4 8 13 21 31 45 66 81 97 123 148 182 204 252 290 361 401 475 565 593 662 775 822 916 970 1016 1159 1312 
+1 2 4 8 13 21 31 45 66 81 97 123 148 182 204 252 290 361 401 475 565 593 662 775 822 916 970 1016 1159 1312
 
 Terms 91 to 100 of the Mian-Chowla sequence are:
-22526 23291 23564 23881 24596 24768 25631 26037 26255 27219 
+22526 23291 23564 23881 24596 24768 25631 26037 26255 27219
 
 Computation time was  1.773 ms.  Allocation was 55 KiB.
 ```
@@ -484,10 +484,10 @@ Here is the output for a larger calculation:
 ```txt
 Computing terms 1 to 1300...
 The first 30 terms of the Mian-Chowla sequence are:
-1 2 4 8 13 21 31 45 66 81 97 123 148 182 204 252 290 361 401 475 565 593 662 775 822 916 970 1016 1159 1312 
+1 2 4 8 13 21 31 45 66 81 97 123 148 182 204 252 290 361 401 475 565 593 662 775 822 916 970 1016 1159 1312
 
 Terms 91 to 100 of the Mian-Chowla sequence are:
-22526 23291 23564 23881 24596 24768 25631 26037 26255 27219 
+22526 23291 23564 23881 24596 24768 25631 26037 26255 27219
 Term 1300 is: 29079927
 
 Computation time was 7979.042 ms.  Allocation was 110 MiB.
@@ -605,10 +605,10 @@ int main() {
 
 ```txt
 The first 30 terms of the Mian-Chowla sequence are:
-1 2 4 8 13 21 31 45 66 81 97 123 148 182 204 252 290 361 401 475 565 593 662 775 822 916 970 1016 1159 1312 
+1 2 4 8 13 21 31 45 66 81 97 123 148 182 204 252 290 361 401 475 565 593 662 775 822 916 970 1016 1159 1312
 
 Terms 91 to 100 of the Mian-Chowla sequence are:
-22526 23291 23564 23881 24596 24768 25631 26037 26255 27219 
+22526 23291 23564 23881 24596 24768 25631 26037 26255 27219
 
 Computation time was 1.92958 seconds.
 ```
@@ -754,7 +754,7 @@ func mianChowla(n int) []int {
             mc[i] = j
             for k := 0; k <= i; k++ {
                 sum = mc[k] + j
-                if is[sum] {                   
+                if is[sum] {
                     isx = isx[:0]
                     continue jloop
                 }
@@ -1126,7 +1126,7 @@ keep sum of all sorted.Memorizing the compare positions speeds up.
 const
   deltaK = 250;
   maxCnt = 25000;
- Using 
+ Using
   tElem = Uint64;
   t_n_sum_all = array of tElem; //dynamic array
     n          mian-chowla[n]  average dist    runtime
@@ -1150,7 +1150,7 @@ const
  24500          122795614247       14644721 107758962 ms
  24750          126491059919       14708578 111875949 ms
  25000          130098289096       14414457 115954691 ms //dt = 4078s ->16s/per number
- 
+
  real  1932m34,698s => 1d8h12m35
 ```
 
@@ -1340,7 +1340,7 @@ The terms 91 - 100 of the Mian-Chowla sequence are
 
 
 ```perl
-use strict; 
+use strict;
 use warnings;
 use feature 'say';
 
@@ -1387,7 +1387,7 @@ my @mian-chowla = 1, |(2..Inf).map: -> $test {
     my %these;
     @mian-chowla[^$index].map: { ++$next and last if %sums{$_ + $test}:exists; ++%these{$_ + $test} };
     next if $next;
-    ++%sums{$test + $test}; 
+    ++%sums{$test + $test};
     %sums.push: %these;
     ++$index;
     $test
@@ -1447,7 +1447,7 @@ sequence mc = {1},
     end for
     return mc
 end function
- 
+
 atom t0 = time()
 sequence mc = mian_chowla(100)
 printf(1,"The first 30 terms of the Mian-Chowla sequence are:\n %v\n",{mc[1..30]})
@@ -1644,7 +1644,7 @@ First 30 terms of the Mian-Chowla series:
  [1, 2, 4, 8, 13, 21, 31, 45, 66, 81, 97, 123, 148, 182, 204, 252, 290, 361, 401, 475, 565, 593, 662, 775, 822, 916, 970, 1016, 1159, 1312]
 
 Terms 91 to 100 of the Mian-Chowla series:
- [22526, 23291, 23564, 23881, 24596, 24768, 25631, 26037, 26255, 27219] 
+ [22526, 23291, 23564, 23881, 24596, 24768, 25631, 26037, 26255, 27219]
 
 (Computation time c. 27 ms)
 ```
@@ -1718,7 +1718,7 @@ for i in (1 .. (n-1))
       for k in (0 .. i)
          if (sums.include?(sum = mc[k]+j))
             ts.clear
-            break 
+            break
          end
          ts << sum
       end
@@ -1759,7 +1759,7 @@ mian_chowla = Enumerator.new do |yielder|
     if  mc.none?{|k| sums[k+n] } then
       mc.each{|k| sums[k+n] = true }
       yielder << n
-    else 
+    else
       mc.pop # n didn't work, get rid of it.
     end
   end
@@ -1787,7 +1787,7 @@ for i in (1 ..^ n) {
       mc[i] = j
       for k in (0 .. i) {
          var sum = mc[k]+j
-         if (sums.exists(sum)) { 
+         if (sums.exists(sum)) {
             ts.clear
             break
          }
@@ -1977,14 +1977,14 @@ Execution time: 40 min
     Dim sum, i, j, k, st : st = Timer
     wscript.echo "The Mian-Chowla sequence for elements 1 to 30:"
     wscript.stdout.write("1 ")
-    For i = 1 To n - 1 : j = mc(i - 1) + 1 : Do    
+    For i = 1 To n - 1 : j = mc(i - 1) + 1 : Do
             mc(i) = j : For k = 0 To i
                 sum = mc(k) + j : If Find(sums, sum) >= 0 Then _
                     tc = 0 : Exit For Else ts(tc) = sum : tc = tc + 1
             Next : If tc > 0 Then
-              nu = Merger(sums, ts, tc) : ReDim sums(ubound(nu)) 
+              nu = Merger(sums, ts, tc) : ReDim sums(ubound(nu))
               For e = 0 To ubound(nu) : sums(e) = nu(e) : Next
-              tc = 0 : Exit Do 
+              tc = 0 : Exit Do
             End If : j = j + 1 : Loop
         if i = 90 then wscript.echo vblf & vbLf & _
             "The Mian-Chowla sequence for elements 91 to 100:"

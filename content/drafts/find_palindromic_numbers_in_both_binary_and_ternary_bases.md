@@ -52,7 +52,7 @@ procedure Brute is
 
    function Palindrome(N: Long; Base: Natural) return Boolean is
       (Palindrome(BC.Image(N, Base =>Base)));
-	
+
   package IIO is new Ada.Text_IO.Integer_IO(Long);
 
 begin
@@ -160,8 +160,8 @@ On a modern machine, (core i5 for example), this code, compiled with the -O3 and
 
 Per the observations made by the Ruby code (which are correct), the numbers must have odd number of digits in base 3 with a 1 at the middle, and must have odd number of digits in base 2.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 typedef unsigned long long xint;
 
 int is_palin2(xint n)
@@ -539,7 +539,7 @@ Palindromic.task
         6643         100010001                      1100111110011
      1422773       2200021200022                101011011010110110101
      5415589      101012010210101              10100101010001010100101
- 90396755477  22122022220102222022122   1010100001100000100010000011000010101 
+ 90396755477  22122022220102222022122   1010100001100000100010000011000010101
 ```
 
 
@@ -1035,9 +1035,9 @@ public class Pali23 {
 	public static boolean isPali(String x){
 		return x.equals(new StringBuilder(x).reverse().toString());
 	}
-	
+
 	public static void main(String[] args){
-		
+
 		for(long i = 0, count = 0; count < 6;i++){
 			if((i & 1) == 0 && (i != 0)) continue; //skip non-zero evens, nothing that ends in 0 in binary can be in this sequence
 			//maybe speed things up through short-circuit evaluation by putting toString in the if
@@ -1208,7 +1208,7 @@ Decimal      Ternary                  Binary
 6643         100010001                1100111110011
 1422773      2200021200022            101011011010110110101
 5415589      101012010210101          10100101010001010100101
-90396755477  22122022220102222022122  1010100001100000100010000011000010101 
+90396755477  22122022220102222022122  1010100001100000100010000011000010101
 ```
 
 
@@ -1517,8 +1517,8 @@ Alternative approach. Works by finding the next palindrome, in either base, in a
 skip fairly large chunks of the search space. Prints the first 6 palindromes (the limit on
 32 bit) in about a second, but the 7th (on 64 bit only) takes just over half an hour.
 
-Theoretically it could be made a fair bit faster by replacing the string handling (which I 
-hope you will find very easy to follow) with maths/bit-fiddling, however my attempts at 
+Theoretically it could be made a fair bit faster by replacing the string handling (which I
+hope you will find very easy to follow) with maths/bit-fiddling, however my attempts at
 that turned out noticeably slower.
 
 
@@ -1575,7 +1575,7 @@ function from_base(string s, integer base)
 end function
 
 function sn(string s, integer f, base)
--- helper function, return s mirrored (if f!=0) 
+-- helper function, return s mirrored (if f!=0)
 --       and as a (decimal) number (if base!=0)
 -- all returns from next_palindrome() get fed through here.
     if f then
@@ -1596,8 +1596,8 @@ function next_palindrome(integer base, object s)
 -- example: next_palindrome(2,"10001000100") -> "10001010001"
 --
     if not string(s) then s = to_base(s,base) end if
-    integer l = length(s), 
-            f = floor(l/2), 
+    integer l = length(s),
+            f = floor(l/2),
             m = f+1, c
     if mod(l,2) then    -- optimisation: palindromes must be odd-length
         -- 1) is a plain mirror greater? (as in the example just given)
@@ -1699,7 +1699,7 @@ end while
 between 6 and 7 I have shown progress() in action, which is constantly overwritten, and mesmerising to watch.
 
 
-###  much simpler version 
+###  much simpler version
 
 (slightly but not alot faster)
 
@@ -1731,7 +1731,7 @@ function createpalindrome3(integer n)
     end for
     return tot + power3 + n*power3*3
 end function
- 
+
 atom t0 = time()
 printf(1,"%16s %15s %30s\n",{"decimal","ternary","binary"})
 show(0,0)
@@ -1768,14 +1768,14 @@ end while
 
 
 
-###  much faster version 
+###  much faster version
 
 Inspired by Scala 😏
 
 ```Phix
 function to_base(string s, integer base)
 -- convert decimal string s to specified base
-    string res = "" 
+    string res = ""
     while length(s) do
         integer q, r = 0
         for i=1 to length(s) do
@@ -2128,13 +2128,13 @@ if __name__ == '__main__':
 {{Out}}
 
 ```txt
-    Decimal                    Binary                           Ternary            
+    Decimal                    Binary                           Ternary
 
-          0 ->                   0                                 0           
-          1 ->                   1                                 1           
-       6643 ->             1100111110011                       100010001       
-    1422773 ->         101011011010110110101                 2200021200022     
-    5415589 ->        10100101010001010100101               101012010210101    
+          0 ->                   0                                 0
+          1 ->                   1                                 1
+       6643 ->             1100111110011                       100010001
+    1422773 ->         101011011010110110101                 2200021200022
+    5415589 ->        10100101010001010100101               101012010210101
 90396755477 -> 1010100001100000100010000011000010101    22122022220102222022122
 ```
 
@@ -2399,7 +2399,7 @@ end
 see "done..." + nl
 
 func basedigits(n,base)
-     if n = 0 
+     if n = 0
         return "0"
      ok
      result = ""
@@ -2417,9 +2417,9 @@ func ispalindrome(astring)
      for i=len(aString) to 1 step -1
          bString = bString + aString[i]
      next
-     if aString = bString 
-        return 1 
-     else 
+     if aString = bString
+        return 1
+     else
         return 0
      ok
 
@@ -2484,7 +2484,7 @@ end
  2:         6643         100010001                      1100111110011
  3:      1422773       2200021200022                101011011010110110101
  4:      5415589      101012010210101              10100101010001010100101
- 5:  90396755477  22122022220102222022122   1010100001100000100010000011000010101 
+ 5:  90396755477  22122022220102222022122   1010100001100000100010000011000010101
 ```
 
 
@@ -2885,17 +2885,17 @@ Public Declare Function GetTickCount Lib "kernel32.dll" () As Long
 Private Function DecimalToBinary(DecimalNum As Long) As String
     Dim tmp As String
     Dim n As Long
-    
+
     n = DecimalNum
-    
+
     tmp = Trim(CStr(n Mod 2))
     n = n \ 2
-    
+
     Do While n <> 0
     tmp = Trim(CStr(n Mod 2)) & tmp
     n = n \ 2
     Loop
-    
+
     DecimalToBinary = tmp
 End Function
 Function Dec2Bin(ByVal DecimalIn As Variant, _
@@ -2918,7 +2918,7 @@ End Function
 Public Sub base()
     'count integer n from 0 upwards
     'display representation in base 3
-    
+
     Time1 = GetTickCount
     Dim n As Long
     Dim three(19) As Integer

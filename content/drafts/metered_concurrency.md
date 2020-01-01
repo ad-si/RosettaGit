@@ -39,7 +39,7 @@ package body Semaphores is
 
    ------------------------
    -- Counting_Semaphore --
-   ------------------------ 
+   ------------------------
 
    protected body Counting_Semaphore is
 
@@ -164,20 +164,20 @@ In BBC BASIC concurrency can only be achieved by timer events (short of running 
 ```bbcbasic
       INSTALL @lib$+"TIMERLIB"
       DIM tID%(6)
-      
+
       REM Two workers may be concurrent
       DIM Semaphore%(2)
-      
+
       tID%(6) = FN_ontimer(11, PROCtimer6, 1)
       tID%(5) = FN_ontimer(10, PROCtimer5, 1)
       tID%(4) = FN_ontimer(11, PROCtimer4, 1)
       tID%(3) = FN_ontimer(10, PROCtimer3, 1)
       tID%(2) = FN_ontimer(11, PROCtimer2, 1)
       tID%(1) = FN_ontimer(10, PROCtimer1, 1)
-      
+
       ON CLOSE PROCcleanup : QUIT
       ON ERROR PRINT REPORT$ : PROCcleanup : END
-      
+
       sc% = 0
       REPEAT
         oldsc% = sc%
@@ -185,14 +185,14 @@ In BBC BASIC concurrency can only be achieved by timer events (short of running 
         IF sc%<>oldsc% PRINT "Semaphore count now ";sc%
         WAIT 0
       UNTIL FALSE
-      
+
       DEF PROCtimer1 : PROCtask(1) : ENDPROC
       DEF PROCtimer2 : PROCtask(2) : ENDPROC
       DEF PROCtimer3 : PROCtask(3) : ENDPROC
       DEF PROCtimer4 : PROCtask(4) : ENDPROC
       DEF PROCtimer5 : PROCtask(5) : ENDPROC
       DEF PROCtimer6 : PROCtask(6) : ENDPROC
-      
+
       DEF PROCtask(n%)
       LOCAL i%, temp%
       PRIVATE delay%(), sem%()
@@ -216,7 +216,7 @@ In BBC BASIC concurrency can only be achieved by timer events (short of running 
       delay%(n%) = 200
       PRINT "Task "; n% " acquired semaphore"
       ENDPROC
-      
+
       DEF PROCcleanup
       LOCAL i%
       FOR i% = 1 TO 6
@@ -253,8 +253,8 @@ Semaphore count now 0
 
 {{works with|POSIX}}
 
-```c>#include <semaphore.h
-
+```c
+#include <semaphore.h>
 #include <pthread.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -364,14 +364,14 @@ class Semaphore {
       throw new Exception("Negative Lock or Zero init. Lock") ;
     while(lockCnt == 0)
       Thread.getThis.yield ; // let other threads release lock
-    synchronized lockCnt-- ;  
+    synchronized lockCnt-- ;
   }
   void release() {
-    synchronized 
+    synchronized
       if (lockCnt < maxCnt)
         lockCnt++ ;
       else
-        throw new Exception("Release lock before acquire") ;    
+        throw new Exception("Release lock before acquire") ;
   }
   int getCnt() { synchronized return lockCnt ; }
 }
@@ -382,19 +382,19 @@ class Worker : Thread {
   private int myId ;
   this (Semaphore l) { super() ; lock = l ; myId = Id++ ; }
   override int run() {
-    lock.acquire ;  
+    lock.acquire ;
     writefln("Worker %d got a lock(%d left).", myId, lock.getCnt) ;
     msleep(2000) ;  // wait 2.0 sec
-    lock.release ; 
+    lock.release ;
     writefln("Worker %d released a lock(%d left).", myId, lock.getCnt) ;
     return 0 ;
-  } 
+  }
 }
 
 void main() {
   Worker[10] crew ;
   Semaphore lock = new Semaphore(4) ;
-  
+
   foreach(inout c ; crew)
     (c = new Worker(lock)).start ;
   foreach(inout c ; crew)
@@ -494,7 +494,7 @@ for i in 1..5 {
 	(sleep 2000)
 	(signal S) ;; release, v-op
 	id)
-	
+
 (define S (make-semaphore 4)) ;; semaphore with init count 4
 
 ;; run 10 // tasks
@@ -819,7 +819,7 @@ func (cs *countSem) release() {
 }
 
 func main() {
-    librarian := newCount(10) 
+    librarian := newCount(10)
     nStudents := 20
     var studied sync.WaitGroup
     studied.Add(nStudents)
@@ -1021,7 +1021,7 @@ public class CountingSemaphore{
    CountingSemaphore(int Max){
       maxCount = Max;
    }
-  
+
    public synchronized void acquire() throws InterruptedException{
       while( lockCount >= maxCount){
          wait();
@@ -1299,14 +1299,14 @@ Usage :
 ```oforth
 : mytask(s)
    while( true ) [
-      s acquire "Semaphore acquired" .cr 
+      s acquire "Semaphore acquired" .cr
       2000 sleep
       s release "Semaphore released" .cr
       ] ;
 
 : test(n)
 | s i |
-   Semaphore new(n) ->s     
+   Semaphore new(n) ->s
    10 loop: i [ #[ s mytask ] & ] ;
 ```
 
@@ -1393,7 +1393,7 @@ Uses a buffered channel to hand out a limited number of tickets.
 class Semaphore {
     has $.tickets = Channel.new;
     method new ($max) {
-        my $s = self.bless; 
+        my $s = self.bless;
         $s.tickets.send(True) xx $max;
         $s;
     }
@@ -1581,7 +1581,7 @@ EndProcedure
 Dim thread(#Threads)
 For i=0 To #Threads
   thread(i)=CreateThread(@Worker(),i)
-Next 
+Next
 Debug "Launcher done."
 
 ; Wait for all threads to finish before closing down
@@ -1714,7 +1714,7 @@ Thread joining is automatic by default.
 ## Ruby
 
 
-This one uses SizedQueue class from the standard library since it blocks when the size limit is reached. An alternative approach would be having a mutex and a counter and blocking explicitly. 
+This one uses SizedQueue class from the standard library since it blocks when the size limit is reached. An alternative approach would be having a mutex and a counter and blocking explicitly.
 
 ```ruby
 
@@ -1795,7 +1795,7 @@ class CountingSemaphore(var maxCount: Int) {
 object Worker {
   def main(args: Array[String]): Unit = {
     val (lock, crew) = (new CountingSemaphore(3), new Array[Worker](5))
-    
+
     for { i <- 0 until 5} {
       crew(i) = new Worker(lock, i)
       crew(i).start()
@@ -1931,8 +1931,8 @@ Semaphores are built in.
 
 ```zkl
 fcn job(name,sem){
-   name.println(" wait"); sem.acquire(); 
-   name.println(" go"); Atomic.sleep(2); 
+   name.println(" wait"); sem.acquire();
+   name.println(" go"); Atomic.sleep(2);
    sem.release(); name.println(" done")
 }
    // start 3 threads using the same semphore

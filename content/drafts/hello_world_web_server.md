@@ -25,16 +25,16 @@ The browser is the new [[GUI]] !
 
 
 ;Task:
-Serve our standard text   <big><big><code>Goodbye, World!</code></big></big>   to   http://localhost:8080/   so that it can be viewed with a web browser. 
+Serve our standard text   <big><big><code>Goodbye, World!</code></big></big>   to   http://localhost:8080/   so that it can be viewed with a web browser.
 
 The provided solution must start or implement a server that accepts multiple client connections and serves text as requested.
 
-Note that starting a web browser or opening a new window with this URL 
-is not part of the task. 
+Note that starting a web browser or opening a new window with this URL
+is not part of the task.
 
-Additionally, it is permissible to serve the provided page as a plain text file (there is no requirement to serve properly formatted [[HTML]] here). 
+Additionally, it is permissible to serve the provided page as a plain text file (there is no requirement to serve properly formatted [[HTML]] here).
 
-The browser will generally do the right thing with simple text like this.  
+The browser will generally do the right thing with simple text like this.
 
 
 
@@ -184,11 +184,11 @@ WEnd
 
 ## AWK
 
-With GNU AWK (gawk) a simple web server can be implemented. 
+With GNU AWK (gawk) a simple web server can be implemented.
 
-The example is taken from 
+The example is taken from
 [http://www.gnu.org/software/gawk/manual/gawkinet/gawkinet.html#Primitive-Service]
-(Documentation is licensed under GNU Free Documentation License, Version 1.3) 
+(Documentation is licensed under GNU Free Documentation License, Version 1.3)
 
 ```AWK
 #!/usr/bin/gawk -f
@@ -274,20 +274,20 @@ This explicitly supports multiple concurrent connections.
 ```bbcbasic
       INSTALL @lib$+"SOCKLIB"
       PROC_initsockets
-      
+
       maxSess% = 8
       DIM sock%(maxSess%-1), rcvd$(maxSess%-1), Buffer% 255
-      
+
       ON ERROR PRINT REPORT$ : PROC_exitsockets : END
       ON CLOSE PROC_exitsockets : QUIT
-      
+
       port$ = "8080"
       host$ = FN_gethostname
       PRINT "Host name is " host$
-      
+
       listen% = FN_tcplisten(host$, port$)
       PRINT "Listening on port ";port$
-      
+
       REPEAT
         socket% = FN_check_connection(listen%)
         IF socket% THEN
@@ -301,7 +301,7 @@ This explicitly supports multiple concurrent connections.
           NEXT i%
           listen% = FN_tcplisten(host$, port$)
         ENDIF
-        
+
         FOR i% = 0 TO maxSess%-1
           IF sock%(i%) THEN
             res% = FN_readsocket(sock%(i%), Buffer%, 256)
@@ -330,7 +330,7 @@ This explicitly supports multiple concurrent connections.
             ENDIF
           ENDIF
         NEXT i%
-        
+
         WAIT 0
       UNTIL FALSE
       END
@@ -342,11 +342,11 @@ This explicitly supports multiple concurrent connections.
 
 This is, um, slightly longer than what other languages would be.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <sys/types.h> 
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
@@ -414,10 +414,10 @@ using System.Net;
 namespace WebServer
 {
     class GoodByeWorld
-    {        
+    {
         static void Main(string[] args)
         {
-            const string msg = "<html>\n<body>\nGoodbye, world!\n</body>\n</html>\n";        
+            const string msg = "<html>\n<body>\nGoodbye, world!\n</body>\n</html>\n";
             const int port = 8080;
             bool serverRunning = true;
 
@@ -541,7 +541,7 @@ Here's an example of doing everything manually
 (defun serve (port &optional (log-stream *standard-output*))
   (let ((connections (list (socket-listen "127.0.0.1" port :reuse-address t))))
     (unwind-protect
-	 (loop 
+	 (loop
 	    (loop for ready in (wait-for-input connections :ready-only t)
 	       do (if (typep ready 'stream-server-usocket)
 		      (push (socket-accept ready) connections)
@@ -582,7 +582,7 @@ server.listen
 
 ## D
 
-Using sockets only, also shows use of heredoc syntax, std.array.replace, 
+Using sockets only, also shows use of heredoc syntax, std.array.replace,
 and casting to bool to satisfy the while conditional.
 
 
@@ -625,7 +625,7 @@ import 'dart:io';
 
 main() async {
   var server = await HttpServer.bind('127.0.0.1', 8080);
-  
+
   await for (HttpRequest request in server) {
     request.response
       ..write('Hello, world')
@@ -711,10 +711,10 @@ ver 1.1.0.0
 namespace WebServer
 
     class public GoodByeWorld
-           
+
         method public static void main(var args as string[])
-        
-            var msg as string = c"<html>\n<body>\nGoodbye, world!\n</body>\n</html>\n"        
+
+            var msg as string = c"<html>\n<body>\nGoodbye, world!\n</body>\n</html>\n"
             var port as integer = 8080
             var serverRunning as boolean = true
 
@@ -727,7 +727,7 @@ namespace WebServer
                 socketConnection::Send(bMsg)
                 socketConnection::Disconnect(true)
             end do
-        
+
         end method
 
     end class
@@ -740,8 +740,8 @@ end namespace
 
 ## Erlang
 
-Using builtin HTTP server with call back to do/1. 
-It only lasts 30 seconds (30000 milliseconds), then it is stopped. 
+Using builtin HTTP server with call back to do/1.
+It only lasts 30 seconds (30000 milliseconds), then it is stopped.
 I fail to see how a longer time will serve any purpose.
 
 
@@ -760,7 +760,7 @@ httpd_start( Port, Module ) ->
     {server_name,erlang:atom_to_list(Module)}, {server_root,"."}, {document_root,"."}],
   {ok, Pid} = inets:start( httpd, Arguments, stand_alone ),
   Pid.
-  
+
 httpd_stop( Pid ) ->
   inets:stop( stand_alone, Pid ).
 
@@ -808,7 +808,7 @@ class HelloWeb
 
 ## Fortran
 
-There is no network library in fortran. Use C interoperability and some C compatible library or just start node.js simple web server: 
+There is no network library in fortran. Use C interoperability and some C compatible library or just start node.js simple web server:
 
 ```fortran
 
@@ -915,9 +915,9 @@ But it is not stritctly needed, just the unit #listix# would do the job.
 
 #listix#
 
-   <main> 
+   <main>
       MICOHTTP, START, myServer, 8080
-   
+
    <GET />
       //<html><body>
       //  Goodbye world!
@@ -936,7 +936,7 @@ But it is not stritctly needed, just the unit #listix# would do the job.
  * Based on an example of Jezra Lickter http://hoof.jezra.net/snip/nV
  *
  * valac --pkg gio-2.0 --pkg gee-0.8 webserver.gs
- * ./webserver 
+ * ./webserver
  */
 [indent=8]
 uses
@@ -1053,7 +1053,7 @@ func main() {
 ## Haskell
 
 
-Lightweightly concurrent "hello world" web server 
+Lightweightly concurrent "hello world" web server
 using the [http://www.yesodweb.com/book/conduits conduit] stack:
 
 
@@ -1107,23 +1107,23 @@ Or using warp ([http://hackage.haskell.org/package/warp warp] [https://wiki.hask
 
 ```haskell
 {-# LANGUAGE OverloadedStrings #-}
- 
+
 import Network.Wai
 import Network.Wai.Handler.Warp
 import Network.HTTP.Types (status200)
 import Blaze.ByteString.Builder (copyByteString)
 import qualified Data.ByteString.UTF8 as BU
 import Data.Monoid
- 
+
 main = do
     let port = 8080
     putStrLn $ "Listening on port " ++ show port
     run port app
- 
+
 app req respond = respond $
     case pathInfo req of
         x -> index x
- 
+
 index x = responseBuilder status200 [("Content-Type", "text/plain")] $ mconcat $ map copyByteString
     [ "Hello World!\n" ]
 ```
@@ -1179,22 +1179,22 @@ WebServer start
 
 ## J
 
-If the desire is to use the browser as a gui, the easiest thing to do 
-would be to [http://www.jsoftware.com/stable.htm download] [http://www.jsoftware.com/docs/help701/user/relhigh.htm j7], edit the jhs script to start on port 8080, 
+If the desire is to use the browser as a gui, the easiest thing to do
+would be to [http://www.jsoftware.com/stable.htm download] [http://www.jsoftware.com/docs/help701/user/relhigh.htm j7], edit the jhs script to start on port 8080,
 start jhs, visit http://127.0.0.1:8080/jijx then enter the text:
 
 ```j
 'Goodbye, World!'
 ```
 
-This will compute the desired result and display it (actually, it will be displayed twice since the original string will also be displayed).  
-This would be even simpler if you could just use the default jhs port (65001)...  
+This will compute the desired result and display it (actually, it will be displayed twice since the original string will also be displayed).
+This would be even simpler if you could just use the default jhs port (65001)...
 Alternatively, a jhs form could be used (but this would not have the exact url structure specified).
 
-However, if the desire is to implement the task exactly, 
+However, if the desire is to implement the task exactly,
 any of approaches at [[j:JWebServer]] might be used.
 
-For example, here is a web server which ignores the client's request 
+For example, here is a web server which ignores the client's request
 and always returns Goodbye, World:
 
 ```j
@@ -1209,9 +1209,9 @@ hello=: verb define
  sdcheck sdbind server; AF_INET; ''; port
  sdcheck sdlisten server, 1
  while. 1 do.
-  while. 
+  while.
     server e. ready=: >{. sdcheck sdselect (sdcheck sdgetsockets ''),'';'';<1e3
-  do. 
+  do.
     sdcheck sdaccept server
   end.
   for_socket. ready do.
@@ -1233,14 +1233,14 @@ To deploy this server, once it has been defined, run
 hello''
 ```
 
-This version works because reasonable http requests fit in a single tcp packet.  
-(And note that the server waits for one tcp packet before responding.)  
+This version works because reasonable http requests fit in a single tcp packet.
+(And note that the server waits for one tcp packet before responding.)
 If parsing of the request is desired, one of the more complicated implementations at [[j:JWebServer]] should be used instead (but that's not really relevant for this task, except perhaps to require complete headers before responding, with broken browsers which send multiple tcp packets for the request).
 
 
 ## Java
 
-Multiple requests will be served in the order that they reach the server, 
+Multiple requests will be served in the order that they reach the server,
 with a queue size limit of 50 waiting requests imposed by default in the <code>ServerSocket</code> class (may be changed by adding a second positive integer argument to the <code>ServerSocket</code> constructor).
 
 ```java
@@ -1352,8 +1352,8 @@ fun main(args: Array<String>) {
 
 ## Lasso
 
-While Lasso has a built-in webserver you can use, 
-here's how you can create a basic multi-threaded webserver 
+While Lasso has a built-in webserver you can use,
+here's how you can create a basic multi-threaded webserver
 of your own to complete this request:
 
 ```lasso
@@ -1383,12 +1383,12 @@ handle => { #server->close }
 
 ## Liberty BASIC
 
-This is difficult, although possible, in Liberty BASIC, 
-but it's close relative ''Run BASIC'' is designed for serving webpages easily. 
+This is difficult, although possible, in Liberty BASIC,
+but it's close relative ''Run BASIC'' is designed for serving webpages easily.
 The task becomes simply ..
 
 ```lb
-print "hello world!" 
+print "hello world!"
 ```
 
 
@@ -1397,12 +1397,12 @@ print "hello world!"
 
 
 ```Mathematica
-listener = 
- SocketListen["127.0.0.1:8080", 
-  Function[{assoc}, 
-   With[{client = assoc["SourceSocket"]}, 
-    WriteString[client, 
-     "HTTP/1.0 200 OK\nContent-Length: 16\n\nGoodbye, World!\n"]; 
+listener =
+ SocketListen["127.0.0.1:8080",
+  Function[{assoc},
+   With[{client = assoc["SourceSocket"]},
+    WriteString[client,
+     "HTTP/1.0 200 OK\nContent-Length: 16\n\nGoodbye, World!\n"];
     Close[client]]]]
 SystemOpen["http://127.0.0.1:8080"]
 ```
@@ -1561,13 +1561,13 @@ let tcp_server treat_connection addr =
   ignore (Sys.signal Sys.sigpipe Sys.Signal_ignore);
   let server_sock = install_tcp_server_socket addr in
   while true do
-    let client = restart_on_EINTR Unix.accept server_sock in 
-    treat_connection server_sock client 
+    let client = restart_on_EINTR Unix.accept server_sock in
+    treat_connection server_sock client
   done
 
 let server () =
   let port = 8080 in
-  let host = (Unix.gethostbyname (Unix.gethostname())).Unix.h_addr_list.(0) in 
+  let host = (Unix.gethostbyname (Unix.gethostname())).Unix.h_addr_list.(0) in
   let addr = Unix.ADDR_INET (host, port) in
   let treat sock (client_sock, client_addr as client) =
     let service (s, _) =
@@ -1654,7 +1654,7 @@ my $protocol = getprotobyname( "tcp" );
 socket( SOCK, PF_INET, SOCK_STREAM, $protocol ) or die "couldn't open a socket: $!";
   # PF_INET to indicate that this socket will connect to the internet domain
   # SOCK_STREAM indicates a TCP stream, SOCK_DGRAM would indicate UDP communication
-  
+
 setsockopt( SOCK, SOL_SOCKET, SO_REUSEADDR, 1 ) or die "couldn't set socket options: $!";
   # SOL_SOCKET to indicate that we are setting an option on the socket instead of the protocol
   # mark the socket reusable
@@ -1673,8 +1673,8 @@ while( accept(CLIENT, SOCK) ){
 }
 ```
 
-Various modules exist for using sockets, including the popular IO::Socket 
-which provides a simpler and more friendly OO interface for the socket layer.  
+Various modules exist for using sockets, including the popular IO::Socket
+which provides a simpler and more friendly OO interface for the socket layer.
 Here is the solution using this module:
 {{libheader|IO::Socket::INET}}
 
@@ -1694,7 +1694,7 @@ while( my $client = $sock->accept() ){
 ```
 
 
-Using Perl's glue power, provide a suicide note 
+Using Perl's glue power, provide a suicide note
 with visitor counter via netcat:
 
 ```Perl
@@ -1729,7 +1729,7 @@ When using plackup, then this may be compressed to one line:
 my $app = sub { return [ 200, [ 'Content-Type' => 'text/html; charset=UTF-8' ], [ '<html><head><title>Goodbye, world!</title></head><body>Goodbye, world!</body></html>' ] ] };
 ```
 
-Use 
+Use
 ```Shell
 plackup --host localhost --port 8080 script.psgi
 ```
@@ -2127,7 +2127,7 @@ Class Server
                         show()
                 }
 
-                oTcpServer = new qTcpServer(win1) {		
+                oTcpServer = new qTcpServer(win1) {
                         setNewConnectionEvent("oServer.pNewConnection()")
                         oHostAddress = new qHostAddress()
                         oHostAddress.SetAddress("127.0.0.1")
@@ -2376,35 +2376,35 @@ Smalltalk loadPackage:'stx:goodies/webServer'. "usually already loaded"
 
 myServer := HTTPServer startServerOnPort:8082.
 service := HTTPPluggableActionService new.
-service 
-    register:[:request | 
-        self halt: 'debugging'. 
+service
+    register:[:request |
+        self halt: 'debugging'.
         request reply:'<HTML><BODY><H1>Hello World</H1></BODY></HTML>'
-    ] 
+    ]
     as:'hello'.
 service linkNames:#('/' ).
 service registerServiceOn: myServer.
 myServer start.
 ```
 
-Be aware that the above is an ad-hoc minimal scripting example. 
-Normally, a service subclass is used and 
+Be aware that the above is an ad-hoc minimal scripting example.
+Normally, a service subclass is used and
 response handlers are defined as methods of it (not as action blocks).
-Also, services and HTML generation is usually done using a framework 
-(at least DOM-based, but usually a higher level toolkit). 
+Also, services and HTML generation is usually done using a framework
+(at least DOM-based, but usually a higher level toolkit).
 Especially take a look at smalltalk frameworks like Aida, Seaside, VisualWave etc.
 
 
 ### Pharo Smalltalk
 
-Pharo ships with the Zinc HTTP Component frameworks 
-that includes a ZnServer class. 
+Pharo ships with the Zinc HTTP Component frameworks
+that includes a ZnServer class.
 Here's the simplest solution to start a web server:
 
 ```smalltalk
 
 (ZnServer startDefaultOn: 1701)
-   onRequestRespond: [ :request | 
+   onRequestRespond: [ :request |
       ZnResponse ok: (ZnEntity text: 'Hello World!') ].
 
 ```
@@ -2502,7 +2502,7 @@ class Servlet{
          socket:=jobPipe.read();
          if(socket.wait(60) != 1)	// what is Chrome doing?
             { socket.close(); continue; }
-         if (request:=socket.read()) 
+         if (request:=socket.read())
 	    try{ processRequest(request,socket); } catch{}
       }
    }
@@ -2532,7 +2532,7 @@ do(SERVLET_THREADS){ Servlet(jobPipe) }  // start threads
     // Create the HTTP server listen socket
     // Sits here forever passing client HTTP connects to Servlets
 serverSocket:=Network.TCPServerSocket.open(PORT);
-println("HTTP server started at http://", 
+println("HTTP server started at http://",
     serverSocket.hostname, ":", serverSocket.port);
 serverSocket.listen(jobPipe);
 ```

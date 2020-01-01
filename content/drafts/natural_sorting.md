@@ -38,12 +38,12 @@ There is no "one true way" to do this, but for the purpose of this task 'natural
 
 ;Task Description
 * '''Implement the first four''' of the eight given features in a natural sorting routine/function/method...
-* Test each feature implemented separately with an ordered list of test strings from the 'Sample inputs' section below, and make sure your naturally sorted output is in the same order as other language outputs such as Python. 
+* Test each feature implemented separately with an ordered list of test strings from the 'Sample inputs' section below, and make sure your naturally sorted output is in the same order as other language outputs such as Python.
 * Print and display your output.
 
 * '''For extra credit''' implement more than the first four.
 
-Note: It is not necessary to have individual control of which features are active in the natural sorting routine at any time. 
+Note: It is not necessary to have individual control of which features are active in the natural sorting routine at any time.
 
 ;Sample input:
 
@@ -101,8 +101,8 @@ Some differences from task requirement:
 
 Besides the numeric part, everything else was done in a uniform way by transforming input strings into some normalized format and comparing those instead.  All sort options flags can be freely mixed together.  C source is written in UTF-8 for easier reading here: don't do this for serious code.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <wchar.h>
 #include <wctype.h>
@@ -366,21 +366,21 @@ output<lang>Sort flags: (collapse spaces)
 100 niño
 99 Ninja
 The work is so difficult it took some 100 aeons.
-  The work is so diﬃcult   it took ſome 99 æons.  
- The work is so diﬃcult to do it took ſome 100 aeons.  
+  The work is so diﬃcult   it took ſome 99 æons.
+ The work is so diﬃcult to do it took ſome 100 aeons.
 
 Sort flags: (case insensitive)
-  The work is so diﬃcult   it took ſome 99 æons.  
+  The work is so diﬃcult   it took ſome 99 æons.
  0000098 nina
- The work is so diﬃcult to do it took ſome 100 aeons.  
+ The work is so diﬃcult to do it took ſome 100 aeons.
 100 NINA
 100 niño
 99 Ninja
 The work is so difficult it took some 100 aeons.
 
 Sort flags: (numeric)
-  The work is so diﬃcult   it took ſome 99 æons.  
- The work is so diﬃcult to do it took ſome 100 aeons.  
+  The work is so diﬃcult   it took ſome 99 æons.
+ The work is so diﬃcult to do it took ſome 100 aeons.
  0000098 nina
 The work is so difficult it took some 100 aeons.
 99 Ninja
@@ -393,8 +393,8 @@ Sort flags: (collapse spaces, discard common words)
 100 niño
 99 Ninja
 The work is so difficult it took some 100 aeons.
- The work is so diﬃcult to do it took ſome 100 aeons.  
-  The work is so diﬃcult   it took ſome 99 æons.  
+ The work is so diﬃcult to do it took ſome 100 aeons.
+  The work is so diﬃcult   it took ſome 99 æons.
 
 Sort flags: (collapse spaces, case insensitive, disregard accent)
  0000098 nina
@@ -402,12 +402,12 @@ Sort flags: (collapse spaces, case insensitive, disregard accent)
 100 niño
 99 Ninja
 The work is so difficult it took some 100 aeons.
-  The work is so diﬃcult   it took ſome 99 æons.  
- The work is so diﬃcult to do it took ſome 100 aeons.  
+  The work is so diﬃcult   it took ſome 99 æons.
+ The work is so diﬃcult to do it took ſome 100 aeons.
 
 Sort flags: (collapse spaces, case insensitive, disregard accent, decompose ligatures, discard common words, numeric)
- The work is so diﬃcult to do it took ſome 100 aeons.  
-  The work is so diﬃcult   it took ſome 99 æons.  
+ The work is so diﬃcult to do it took ſome 100 aeons.
+  The work is so diﬃcult   it took ſome 99 æons.
 The work is so difficult it took some 100 aeons.
  0000098 nina
 99 Ninja
@@ -627,7 +627,7 @@ defmodule Natural do
   def sorting(texts) do
     Enum.sort_by(texts, fn text -> compare_value(text) end)
   end
-  
+
   defp compare_value(text) do
     text
     |> String.downcase
@@ -643,7 +643,7 @@ defmodule Natural do
             end)
        end)
   end
-  
+
   def task(title, input) do
     IO.puts "\n#{title}:"
     IO.puts "< input >"
@@ -658,23 +658,23 @@ end
 [{"Ignoring leading spaces",
   ["ignore leading spaces: 2-2",   " ignore leading spaces: 2-1",
    "  ignore leading spaces: 2+0", "   ignore leading spaces: 2+1"]},
- 
+
  {"Ignoring multiple adjacent spaces (m.a.s)",
   ["ignore m.a.s spaces: 2-2",   "ignore m.a.s  spaces: 2-1",
    "ignore m.a.s   spaces: 2+0", "ignore m.a.s    spaces: 2+1"]},
- 
+
  {"Equivalent whitespace characters",
   ["Equiv. spaces: 3-3",    "Equiv.\rspaces: 3-2", "Equiv.\x0cspaces: 3-1",
    "Equiv.\x0bspaces: 3+0", "Equiv.\nspaces: 3+1", "Equiv.\tspaces: 3+2"]},
- 
+
  {"Case Indepenent sort",
   ["cASE INDEPENENT: 3-2", "caSE INDEPENENT: 3-1",
    "casE INDEPENENT: 3+0", "case INDEPENENT: 3+1"]},
- 
+
  {"Numeric fields as numerics",
   ["foo100bar99baz0.txt",   "foo100bar10baz0.txt",
    "foo1000bar99baz10.txt", "foo1000bar99baz9.txt"]},
- 
+
  {"Title sorts",
   ["The Wind in the Willows", "The 40th step more", "The 39 steps", "Wanda"]}
 ]
@@ -805,7 +805,7 @@ The standard way of supporting ordering rules that become complex is to prepare 
 
 The plan is to convert the texts into a series of <text><integer> pairs, carefully not incorporating signs into the numbers and also not periods, thanks to experiences with version numbers such as 3.14.15. Alas, a hyphen character follows a plus sign - swapping them in the auxiliary key would solve that. As it proceeds, the conversion process can ignore leading spaces and multiple included spaces, and convert all letters to uppercase. As a result, for this test many of the entries have identical text parts, and these are not stashed multiple times. Subroutine LIBRARIAN recognises leading articles such as "A", "An", and "The" and moves them to the end of the text in the approved manner. This really should be a part of a catalogue's subject classification system, as really, it is removing non-significant words from the start of a title so that titles might be ordered by subject, somewhat. For "The 39 steps", the ", The" is not appended to the end of the entry, because the entry's first part pair is ended by the digits, however for the example texts, it works...
 
-Objectives one to five are attained, presuming that "whitespace" character codes all precede a space, including the NUL character. The test caused trouble, because on output the special characters ''are'' acted upon, thereby wrecking the layout. Accordingly, a variant output routine converts such characters into the irritating "backslash-mnemonic" scheme, thereby only damaging the layout. In further vexation, the source highlighter here has difficulty in maintaining its context, so the source is presented with CALL PUT("!") instead of the actual backslash in the actual source file! The contents of a text literal should be ... literal. 
+Objectives one to five are attained, presuming that "whitespace" character codes all precede a space, including the NUL character. The test caused trouble, because on output the special characters ''are'' acted upon, thereby wrecking the layout. Accordingly, a variant output routine converts such characters into the irritating "backslash-mnemonic" scheme, thereby only damaging the layout. In further vexation, the source highlighter here has difficulty in maintaining its context, so the source is presented with CALL PUT("!") instead of the actual backslash in the actual source file! The contents of a text literal should be ... literal.
 
 Objectives six to eight are attainable, except that the character encodements available are not portable. Code page 850 doesn't offer the same accented character codes as for other systems, such as code page 437. But the auxiliary sort key approach easily accommodates substitute characters (and could also swap + and -, for example!), and could recognise ligatures as well. One might be prodded into escalating to 16-bit or even 32-bit character codes to maintain the same ease of manipulation.
 
@@ -1215,7 +1215,7 @@ Here, all previous worry over storage consumption is abandoned. An array of CHAR
 
 Each scan maintains a STATE, and if both achieve NUMERIC then both scans are looking at a digit in their respective texts. If so, there is a forwards probe to determine how many digits follow in each text, the results of which drive the interpolation of leading zero characters. That is, suppose the second text has fewer digits (looking at "007" versus "7", say) - then a "0" is created for the second text, its finger is backspaced one and the first text's digit count is decremented. The next time around, the digit counts are known so will not be re-scanned and again a "0" will be generated. The third time, the digit counts will be equal, so both texts will yield up their characters for comparison.
 
-When (if) a scan reaches the end of its text, the TAIL will be considered for the extraction of further characters. 
+When (if) a scan reaches the end of its text, the TAIL will be considered for the extraction of further characters.
 
 
 ```Fortran
@@ -1867,7 +1867,7 @@ ignoringMultipleAdjacentSpaces = map (unwords . words)
 caseIndependent :: [String] -> [String]
 caseIndependent = map (map toLower)
 
--- 4. Numeric fields as numerics (deals with up to 20 digits) 
+-- 4. Numeric fields as numerics (deals with up to 20 digits)
 numericFieldsAsNumbers :: [String] -> [[Int]]
 numericFieldsAsNumbers = map findOnlyNumerics
 
@@ -1889,7 +1889,7 @@ joiner = read . concatMap show
 removeLeadCommonWords l = map removeLeadCommonWord $ splitList l
 
 splitList = map words
-removeLeadCommonWord a = unwords $ if f a commonWords then tail a else a 
+removeLeadCommonWord a = unwords $ if f a commonWords then tail a else a
                         where f l1 = elem (map toLower (head l1))
                               commonWords = ["the","a","an","of"]
 
@@ -2025,14 +2025,14 @@ The natural way of approaching this task in J is to normalize the text based on 
 
 ```j
 require'strings regex'
- 
+
 lines=: <;.2
 titleFix=: ('^\s*(the|a|an)\b';'')&rxrplc
 isNum=: e.&'0123456789'
 num=: ".^:(isNum@{.)
 split=: <@num/.~ [:+/\1,2 ~:/\ isNum
 norm=: [: split (32 9 12 13 14 15{a.) -.~ [: titleFix tolower
- 
+
 natSor=:  lines ;@/: norm&.>@lines
 ```
 
@@ -2232,7 +2232,7 @@ def natural_sort:
     # Illustrative replacements:
     | gsub("ß" ; "ss")         # German scharfes S
     | gsub("ſ|ʒ"; "s")         # LATIN SMALL LETTER LONG S and LATIN SMALL LETTER EZH
-    
+
     | ascii_downcase
     | gsub("\\p{Cc}+";" ")     # control characters
     | gsub("^(the|a|an) "; "") # leading the/a/an (as words)
@@ -2253,7 +2253,7 @@ if type == "string" then "", . else natural_sort end
 ```
 
 {{out}} (scrollable)
-<div style="overflow:scroll; height:400px;"> 
+<div style="overflow:scroll; height:400px;">
 
 ```sh
 jq -r -f Natural_sorting.jq Natural_sorting.json
@@ -2318,7 +2318,7 @@ jq -r -f Natural_sorting.jq Natural_sorting.json
 The functional programming principle used was to customize the "lt" comparison option of Julia's basic sort() to the "natural" sort features required.
 
 ```julia
-#1 
+#1
 natural1(x, y) = strip(x) < strip(y)
 
 #2
@@ -2363,7 +2363,7 @@ const accentdict = Dict(
 'â'=> 'a', 'ã'=> 'a', 'ä'=> 'a', 'å'=> 'a', 'è'=> 'e',
 'é'=> 'e', 'ê'=> 'e', 'ë'=> 'e', 'ì'=> 'i', 'í'=> 'i',
 'î'=> 'i', 'ï'=> 'i', 'ð'=> 'd', 'ñ'=> 'n', 'ò'=> 'o',
-'ó'=> 'o', 'ô'=> 'o', 'õ'=> 'o', 'ö'=> 'o', 'ù'=> 'u', 
+'ó'=> 'o', 'ô'=> 'o', 'õ'=> 'o', 'ö'=> 'o', 'ù'=> 'u',
 'ú'=> 'u', 'û'=> 'u', 'ü'=> 'u', 'ý'=> 'y', 'ÿ'=> 'y')
 function tr(str, dict=accentdict)
     for (i, ch) in enumerate(str)
@@ -2432,7 +2432,7 @@ val r3 = Regex("""\s""")  // \s represents any whitespace character
 val r5 = Regex("""\d+""")
 
 /** Only covers ISO-8859-1 accented characters plus (for consistency) Ÿ */
-val ucAccented = arrayOf("ÀÁÂÃÄÅ", "Ç", "ÈÉÊË", "ÌÍÎÏ", "Ñ", "ÒÓÔÕÖØ", "ÙÚÛÜ", "ÝŸ")  
+val ucAccented = arrayOf("ÀÁÂÃÄÅ", "Ç", "ÈÉÊË", "ÌÍÎÏ", "Ñ", "ÒÓÔÕÖØ", "ÙÚÛÜ", "ÝŸ")
 val lcAccented = arrayOf("àáâãäå", "ç", "èéêë", "ìíîï", "ñ", "òóôõöø", "ùúûü", "ýÿ")
 val ucNormal = "ACEINOUY"
 val lcNormal = "aceinouy"
@@ -2459,7 +2459,7 @@ fun String.toDisplayString(): String {
 /** Ignoring leading space(s) */
 fun selector1(s: String) = s.trimStart(' ')
 
-/** Ignoring multiple adjacent spaces i.e. condensing to a single space */ 
+/** Ignoring multiple adjacent spaces i.e. condensing to a single space */
 fun selector2(s: String) = s.replace(r2, " ")
 
 /** Equivalent whitespace characters (equivalent to a space say) */
@@ -2468,7 +2468,7 @@ fun selector3(s: String) = s.replace(r3, " ")
 /** Case independent sort */
 fun selector4(s: String) = s.toLowerCase()
 
-/** Numeric fields as numerics (deals with up to 20 digits) */ 
+/** Numeric fields as numerics (deals with up to 20 digits) */
 fun selector5(s: String) = r5.replace(s) { it.value.padStart(20, '0') }
 
 /** Title sort */
@@ -2488,7 +2488,7 @@ fun selector7(s: String): String {
                 sb.append(ucNormal[i])
                 continue@outer
             }
-        } 
+        }
         for ((i, lcs) in lcAccented.withIndex()) {
             if (c in lcs) {
                 sb.append(lcNormal[i])
@@ -2498,7 +2498,7 @@ fun selector7(s: String): String {
         sb.append(c)
     }
     return sb.toString().toLowerCase()
-} 
+}
 
 /** Separated ligatures */
 fun selector8(s: String): String {
@@ -2520,7 +2520,7 @@ fun main(args: Array<String>) {
     val s1 = arrayOf(
         "ignore leading spaces: 2-2",
         " ignore leading spaces: 2-1",
-        "  ignore leading spaces: 2+0", 
+        "  ignore leading spaces: 2+0",
         "   ignore leading spaces: 2+1"
     )
     s1.sortBy(::selector1)
@@ -2529,19 +2529,19 @@ fun main(args: Array<String>) {
     val s2 = arrayOf(
         "ignore m.a.s spaces: 2-2",
         "ignore m.a.s  spaces: 2-1",
-        "ignore m.a.s   spaces: 2+0", 
+        "ignore m.a.s   spaces: 2+0",
         "ignore m.a.s    spaces: 2+1"
     )
     println()
     s2.sortBy(::selector2)
     println(s2.map { "'$it'" }.joinToString("\n"))
-    
+
     val s3 = arrayOf(
         "Equiv. spaces: 3-3",
         "Equiv.\rspaces: 3-2",
-        "Equiv.\u000cspaces: 3-1", 
-        "Equiv.\u000bspaces: 3+0", 
-        "Equiv.\nspaces: 3+1", 
+        "Equiv.\u000cspaces: 3-1",
+        "Equiv.\u000bspaces: 3+0",
+        "Equiv.\nspaces: 3+1",
         "Equiv.\tspaces: 3+2"
     )
     println()
@@ -2551,7 +2551,7 @@ fun main(args: Array<String>) {
     val s4 = arrayOf(
         "cASE INDEPENENT: 3-2",
         "caSE INDEPENENT: 3-1",
-        "casE INDEPENENT: 3+0", 
+        "casE INDEPENENT: 3+0",
         "case INDEPENENT: 3+1"
     )
     println()
@@ -2573,7 +2573,7 @@ fun main(args: Array<String>) {
         "The 40th step more",
         "The 39 steps",
         "Wanda"
-    ) 
+    )
     println()
     s6.sortBy(::selector6)
     println(s6.map { "'$it'" }.joinToString("\n"))
@@ -3020,9 +3020,9 @@ foreach (@testcases) {
     my ($name, $pattern, @args) = @$_;
     my $i = 0;
     my @strings = map { sprintf $pattern, ref $_ ? @$_ : $_, $i++ } @args;
-    
+
     is_deeply( [natural_sort(reverse sort @strings)], \@strings, $name );
-    
+
     dd @strings;
     print "\n";
 }
@@ -3117,7 +3117,7 @@ the sort function will apply a Schwartzian Transform so it only needs to calcula
 the transform once. Note that the transforms are non-destructive; The sort function
 returns the original strings.
 
-The following are a series of subroutines to perform the various natural 
+The following are a series of subroutines to perform the various natural
 sorting transforms. They may be applied individually or mixed and matched
 to get the particular result desired. When more than one is strung
 together, they apply left to right. Some combinations may yield
@@ -3139,7 +3139,7 @@ sub title ($a) { $a.subst( / :i ^ ( a | an | the ) >> \s* /, '' ) }
 
 # Decompose ISO-Latin1 glyphs to their base character.
 sub latin1_decompose ($a) {
-    $a.trans: < 
+    $a.trans: <
        Æ AE æ ae Þ TH þ th Ð TH ð th ß ss À A Á A Â A Ã A Ä A Å A à a á a
         â a ã a ä a å a Ç C ç c È E É E Ê E Ë E è e é e ê e ë e Ì I Í I Î
         I Ï I ì i í i î i ï i Ò O Ó O Ô O Õ O Ö O Ø O ò o ó o ô o õ o ö o
@@ -3425,7 +3425,7 @@ niño
 
 ## Phix
 
-As per C, common words anywhere in the string are omitted. All eight features. 
+As per C, common words anywhere in the string are omitted. All eight features.
 
 Needs chcp 65001 (or 28591) to get this to work on Windows, be sure to save as utf8.
 
@@ -4178,7 +4178,7 @@ def splitchar(c):
     else:
         base = c
     return base
-    
+
 
 def sortkeygen(s):
     '''Generate 'natural' sort key for s
@@ -4232,7 +4232,7 @@ def naturalsort(items):
 
 if __name__ == '__main__':
     import string
-    
+
     ns = naturalsort
 
     print '\n# Ignoring leading spaces'
@@ -4287,7 +4287,7 @@ if __name__ == '__main__':
     print 'Text strings:'; pp(txt)
     print 'Normally sorted :'; pp(sorted(txt))
     print 'Naturally sorted:'; pp(ns(txt))
-    
+
     print '\n# Character replacements'
     s = u'ʒſßs' # u'\u0292\u017f\xdfs'
     txt = ['Start with an %s: 2%+i' % (ch, i-2)
@@ -4494,7 +4494,7 @@ ar.sort_by{|str| str.downcase.gsub(/\Athe |\Aa |\Aan /, "").lstrip.gsub(/\s+/, "
 Almost all of the code below is handling requirement 4. The problem is that Ruby will happily sort ["a",1] against ["a",2] or even ["b"], but it does not know how to handle [1, "a"] against ["a", 2] and raises an ArgumentError. The code below does not define a new sort method, it defines a new class which is sortable by the existing method (falling back on string comparison).
 
 ```ruby
-class NatSortString 
+class NatSortString
   include Comparable
   attr_reader :scrubbed, :ints_and_strings, :i_s_pattern
 
@@ -4512,7 +4512,7 @@ class NatSortString
       scrubbed <=> other.scrubbed
     end
   end
-  
+
   def to_s
     @str.dup
   end
@@ -4524,7 +4524,7 @@ end
 Demo:
 
 ```ruby
-tests = 
+tests =
   {"Ignoring leading spaces" =>
   [ "ignore leading spaces: 2-2 ",  " ignore leading spaces: 2-1 ",  "  ignore leading spaces: 2+0 ",  "   ignore leading spaces: 2+1 "],
   "Ignoring multiple adjacent spaces" =>
@@ -4540,7 +4540,7 @@ tests =
 
 tests.each do |title, ar|
   nat_sorts = ar.map{|s| NatSortString.new(s)}
-  puts [title,"--input--", ar, "--normal sort--", ar.sort, "--natural sort--", nat_sorts.sort, "\n"] 
+  puts [title,"--input--", ar, "--normal sort--", ar.sort, "--natural sort--", nat_sorts.sort, "\n"]
 end
 
 ```
@@ -4551,37 +4551,37 @@ end
 
 Ignoring leading spaces
 --input--
-ignore leading spaces: 2-2 
- ignore leading spaces: 2-1 
-  ignore leading spaces: 2+0 
-   ignore leading spaces: 2+1 
+ignore leading spaces: 2-2
+ ignore leading spaces: 2-1
+  ignore leading spaces: 2+0
+   ignore leading spaces: 2+1
 --normal sort--
-   ignore leading spaces: 2+1 
-  ignore leading spaces: 2+0 
- ignore leading spaces: 2-1 
-ignore leading spaces: 2-2 
+   ignore leading spaces: 2+1
+  ignore leading spaces: 2+0
+ ignore leading spaces: 2-1
+ignore leading spaces: 2-2
 --natural sort--
-  ignore leading spaces: 2+0 
-   ignore leading spaces: 2+1 
- ignore leading spaces: 2-1 
-ignore leading spaces: 2-2 
+  ignore leading spaces: 2+0
+   ignore leading spaces: 2+1
+ ignore leading spaces: 2-1
+ignore leading spaces: 2-2
 
 Ignoring multiple adjacent spaces
 --input--
-ignore m.a.s spaces: 2-2 
-ignore m.a.s  spaces: 2-1 
-ignore m.a.s   spaces: 2+0 
-ignore m.a.s    spaces: 2+1 
+ignore m.a.s spaces: 2-2
+ignore m.a.s  spaces: 2-1
+ignore m.a.s   spaces: 2+0
+ignore m.a.s    spaces: 2+1
 --normal sort--
-ignore m.a.s    spaces: 2+1 
-ignore m.a.s   spaces: 2+0 
-ignore m.a.s  spaces: 2-1 
-ignore m.a.s spaces: 2-2 
+ignore m.a.s    spaces: 2+1
+ignore m.a.s   spaces: 2+0
+ignore m.a.s  spaces: 2-1
+ignore m.a.s spaces: 2-2
 --natural sort--
-ignore m.a.s   spaces: 2+0 
-ignore m.a.s    spaces: 2+1 
-ignore m.a.s  spaces: 2-1 
-ignore m.a.s spaces: 2-2 
+ignore m.a.s   spaces: 2+0
+ignore m.a.s    spaces: 2+1
+ignore m.a.s  spaces: 2-1
+ignore m.a.s spaces: 2-2
 
 Equivalent whitespace characters
 --input--
@@ -4617,54 +4617,54 @@ Equiv. spaces: 3-3
 
 Case Indepenent sort
 --input--
-cASE INDEPENENT: 3-2 
-caSE INDEPENENT: 3-1 
-casE INDEPENENT: 3+0 
-case INDEPENENT: 3+1 
+cASE INDEPENENT: 3-2
+caSE INDEPENENT: 3-1
+casE INDEPENENT: 3+0
+case INDEPENENT: 3+1
 --normal sort--
-cASE INDEPENENT: 3-2 
-caSE INDEPENENT: 3-1 
-casE INDEPENENT: 3+0 
-case INDEPENENT: 3+1 
+cASE INDEPENENT: 3-2
+caSE INDEPENENT: 3-1
+casE INDEPENENT: 3+0
+case INDEPENENT: 3+1
 --natural sort--
-casE INDEPENENT: 3+0 
-case INDEPENENT: 3+1 
-caSE INDEPENENT: 3-1 
-cASE INDEPENENT: 3-2 
+casE INDEPENENT: 3+0
+case INDEPENENT: 3+1
+caSE INDEPENENT: 3-1
+cASE INDEPENENT: 3-2
 
 Numeric fields as numerics
 --input--
-foo100bar99baz0.txt 
-foo100bar10baz0.txt 
-foo1000bar99baz10.txt 
-foo1000bar99baz9.txt 
+foo100bar99baz0.txt
+foo100bar10baz0.txt
+foo1000bar99baz10.txt
+foo1000bar99baz9.txt
 --normal sort--
-foo1000bar99baz10.txt 
-foo1000bar99baz9.txt 
-foo100bar10baz0.txt 
-foo100bar99baz0.txt 
+foo1000bar99baz10.txt
+foo1000bar99baz9.txt
+foo100bar10baz0.txt
+foo100bar99baz0.txt
 --natural sort--
-foo100bar10baz0.txt 
-foo100bar99baz0.txt 
-foo1000bar99baz9.txt 
-foo1000bar99baz10.txt 
+foo100bar10baz0.txt
+foo100bar99baz0.txt
+foo1000bar99baz9.txt
+foo1000bar99baz10.txt
 
 Title sorts
 --input--
-The Wind in the Willows 
-The 40th step more 
-The 39 steps 
-Wanda 
+The Wind in the Willows
+The 40th step more
+The 39 steps
+Wanda
 --normal sort--
-The 39 steps 
-The 40th step more 
-The Wind in the Willows 
-Wanda 
+The 39 steps
+The 40th step more
+The Wind in the Willows
+Wanda
 --natural sort--
-The 39 steps 
-The 40th step more 
-Wanda 
-The Wind in the Willows 
+The 39 steps
+The 40th step more
+Wanda
+The Wind in the Willows
 
 ```
 
@@ -4803,7 +4803,7 @@ Tasks 1-5 are completed.
 ;; Natural sort function
 (define (natural-sort lst)
   ; <1><2> ignores leading, trailing and multiple adjacent spaces
-  ;        by tokenizing on whitespace (all whitespace characters), 
+  ;        by tokenizing on whitespace (all whitespace characters),
   ;        and joining with a single space
   (define (ignore-spaces str)
     (string-join (string-tokenize str) " "))
@@ -4814,7 +4814,7 @@ Tasks 1-5 are completed.
              str)
             ((string-prefix-ci? (car articles) str)
              (string-drop str (string-length (car articles))))
-            (else 
+            (else
               (do-drop (cdr articles) str))))
     (do-drop '("a " "an " "the ") str))
   ; <4> split string into number/non-number groups
@@ -4828,7 +4828,7 @@ Tasks 1-5 are completed.
                  (string->number s)
                  s))
              (map list->string groups)) ; leave groups in reverse, as right-most significant
-        (let ((next-group (take-while (if doing-num? 
+        (let ((next-group (take-while (if doing-num?
                                         char-numeric?
                                         (lambda (c) (not (char-numeric? c))))
                                       chars)))
@@ -4836,7 +4836,7 @@ Tasks 1-5 are completed.
                 (not doing-num?)
                 (cons next-group groups))))))
   ;
-  (list-sort 
+  (list-sort
     (lambda (a b) ; implements the numeric fields comparison <4>
       (let loop ((lft (group-digits (drop-articles (ignore-spaces a))))
                  (rgt (group-digits (drop-articles (ignore-spaces b)))))
@@ -4865,7 +4865,7 @@ Tasks 1-5 are completed.
   (display title) (newline)
   (display "[\n") (for-each (lambda (i) (display i)(newline)) lst) (display "]\n"))
 
-(for-each 
+(for-each
   (lambda (title example)
     (display title) (newline)
     (display-list "Text strings:" example)
@@ -5565,7 +5565,7 @@ Now, mangle a copy of the original list to "normalize" it to the task requiremen
 
 ```zkl
 # Ignoring leading spaces
-ts1:=T("ignore leading spaces: 2-2", " ignore leading spaces: 2-1", 
+ts1:=T("ignore leading spaces: 2-2", " ignore leading spaces: 2-1",
   "  ignore leading spaces: 2+0", "   ignore leading spaces: 2+1");
 dsuSort(ts1.apply("strip"),ts1).println();
 ```
@@ -5585,7 +5585,7 @@ dsuSort(ts1.apply("strip"),ts1).println();
 
 ```zkl
 # Ignoring multiple adjacent spaces (m.a.s)
-ts2:=T("ignore m.a.s spaces: 2-2", "ignore m.a.s  spaces: 2-1", 
+ts2:=T("ignore m.a.s spaces: 2-2", "ignore m.a.s  spaces: 2-1",
   "ignore m.a.s   spaces: 2+0", "ignore m.a.s    spaces: 2+1");
 dsuSort(ts2.apply('-(" ")),ts2).println();
 ```
@@ -5627,7 +5627,7 @@ dsuSort(ts3.apply('-.fp1("\n\r\t\f\b\x0b ")),ts3).println();
 
 ```zkl
 # Case Indepenent sort
-ts4:=T("cASE INDEPENENT: 3-2", "caSE INDEPENENT: 3-1", 
+ts4:=T("cASE INDEPENENT: 3-2", "caSE INDEPENENT: 3-1",
        "casE INDEPENENT: 3+0", "case INDEPENENT: 3+1");
 dsuSort(ts4.apply("toLower"),ts4).println();
 ```

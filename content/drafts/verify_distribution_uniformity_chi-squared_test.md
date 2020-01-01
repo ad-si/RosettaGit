@@ -29,12 +29,12 @@ First, we specify a simple package to compute the Chi-Square Distance from the u
 
 ```Ada
 package Chi_Square is
-   
+
    type Flt is digits 18;
    type Bins_Type is array(Positive range <>) of Natural;
-   
+
    function Distance(Bins: Bins_Type) return Flt;
-   
+
 end Chi_Square;
 ```
 
@@ -44,7 +44,7 @@ Next, we implement that package:
 
 ```Ada
 package body Chi_Square is
-   
+
    function Distance(Bins: Bins_Type) return Flt is
       Bad_Bins: Natural := 0;
       Sum: Natural := 0;
@@ -52,15 +52,15 @@ package body Chi_Square is
       Result: Flt;
    begin
       for I in Bins'Range loop
-         if Bins(I) < 5 then 
+         if Bins(I) < 5 then
             Bad_Bins := Bad_Bins + 1;
          end if;
          Sum := Sum + Bins(I);
       end loop;
-      if 5*Bad_Bins > Bins'Length then 
+      if 5*Bad_Bins > Bins'Length then
          raise Program_Error with "too many (almost) empty bins";
       end if;
-      
+
       Expected := Flt(Sum) / Flt(Bins'Length);
       Result := 0.0;
       for I in Bins'Range loop
@@ -68,7 +68,7 @@ package body Chi_Square is
       end loop;
       return Result;
    end Distance;
-   
+
 end Chi_Square;
 ```
 
@@ -79,18 +79,18 @@ Finally, we actually implement the Chi-square test. We do not actually compute t
 with Ada.Text_IO, Ada.Command_Line, Chi_Square; use Ada.Text_IO;
 
 procedure Test_Chi_Square is
-   
+
    package Ch2 renames Chi_Square; use Ch2;
    package FIO is new Float_IO(Flt);
-   
+
    B: Bins_Type(1 .. Ada.Command_Line.Argument_Count);
    Bound_For_5_Per_Cent: constant array(Positive range <>) of Flt :=
      ( 1 => 3.84,   2 =>  5.99,  3 =>  7.82,  4 => 9.49,   5 =>  11.07,
        6 => 12.59,  7 => 14.07,  8 => 15.51,  9 => 16.92, 10 =>  18.31);
      -- picked from http://en.wikipedia.org/wiki/Chi-squared_distribution
-   
-   Dist: Flt; 
-   
+
+   Dist: Flt;
+
 begin
    for I in B'Range loop
       B(I) := Natural'Value(Ada.Command_Line.Argument(I));
@@ -110,7 +110,7 @@ end;
 {{out}}
 
 ```txt
-$ ./Test_Chi_Square 199809 200665 199607 200270 199649  
+$ ./Test_Chi_Square 199809 200665 199607 200270 199649
 Degrees of Freedom: 4, Distance:      4.15; (apparently uniform)
 $ ./Test_Chi_Square 522573 244456 139979 71531 21461
 Degrees of Freedom: 4, Distance: 790063.28; (deviates significantly from uniform)
@@ -123,8 +123,8 @@ Degrees of Freedom: 4, Distance: 790063.28; (deviates significantly from uniform
 This first sections contains the functions required to compute the Chi-Squared probability.
 These are not needed if a library containing the necessary function is availabile (e.g. see [[Numerical Integration]], [[Gamma function]]).
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <math.h>
 #ifndef M_PI
@@ -178,7 +178,7 @@ double Gamma_Spouge( double z )
 double aa1;
 double f0( double t)
 {
-    return  pow(t, aa1)*exp(-t); 
+    return  pow(t, aa1)*exp(-t);
 }
 
 double GammaIncomplete_Q( double a, double x)
@@ -203,7 +203,7 @@ double chi2UniformDistance( double *ds, int dslen)
     double sum = 0.0;
     int k;
 
-    for (k=0; k<dslen; k++) 
+    for (k=0; k<dslen; k++)
         expected += ds[k];
     expected /= k;
 
@@ -218,7 +218,7 @@ double chi2Probability( int dof, double distance)
 {
     return GammaIncomplete_Q( 0.5*dof, 0.5*distance);
 }
-    
+
 int chiIsUniform( double *dset, int dslen, double significance)
 {
     int dof = dslen -1;
@@ -242,9 +242,9 @@ int main(int argc, char **argv)
 
     for (k=0; k<2; k++) {
         printf("Dataset: [ ");
-        for(l=0;l<dslens[k]; l++) 
+        for(l=0;l<dslens[k]; l++)
             printf("%.0f, ", dsets[k][l]);
-            
+
         printf("]\n");
         dist = chi2UniformDistance(dsets[k], dslens[k]);
         dof = dslens[k]-1;
@@ -325,11 +325,11 @@ defmodule Verify do
     end)
     h * sum / gamma_spounge(a, make_coef)
   end
-  
+
   defp while_loop(f, x, y) do
     if f.(y)*(x-y) > 2.0e-8 and y < x, do: while_loop(f, x, y+0.3), else: min(x, y)
   end
-  
+
   @a  12
   defp make_coef do
     coef0 = [:math.sqrt(2.0 * :math.pi)]
@@ -339,21 +339,21 @@ defmodule Verify do
     end)
     Enum.reverse(coef) |> List.to_tuple
   end
-  
+
   defp gamma_spounge(z, coef) do
     accm = Enum.reduce(1..@a-1, elem(coef,0), fn k,res -> res + elem(coef,k) / (z+k) end)
     accm * :math.exp(-(z+@a)) * :math.pow(z+@a, z+0.5) / z
   end
-  
+
   def chi2UniformDistance(dataSet) do
     expected = Enum.sum(dataSet) / length(dataSet)
     Enum.reduce(dataSet, 0, fn d,sum -> sum + (d-expected)*(d-expected) end) / expected
   end
-  
+
   def chi2Probability(dof, distance) do
     1.0 - gammaInc_Q(0.5*dof, 0.5*distance)
   end
-  
+
   def chi2IsUniform(dataSet, significance\\0.05) do
     dof = length(dataSet) - 1
     dist = chi2UniformDistance(dataSet)
@@ -475,7 +475,7 @@ function chiIsUniform(dset, significance)
   dist = chi2UniformDistance(dset)
   chiIsUniform = chi2Probability(dof, dist) > significance
 end function chiIsUniform
- 
+
 function chi2UniformDistance(ds)
   real :: chi2UniformDistance
   real, dimension(:), intent(in) :: ds
@@ -484,7 +484,7 @@ function chi2UniformDistance(ds)
 
   expected = sum(ds) / size(ds)
   summa = sum( (ds - expected) ** 2 )
-  
+
   chi2UniformDistance = summa / expected
 end function chi2UniformDistance
 
@@ -505,9 +505,9 @@ import (
     "fmt"
     "math"
 )
-    
+
 type ifctn func(float64) float64
-    
+
 func simpson38(f ifctn, a, b float64, n int) float64 {
     h := (b - a) / float64(n)
     h1 := h / 3
@@ -521,7 +521,7 @@ func simpson38(f ifctn, a, b float64, n int) float64 {
     }
     return h * sum / 8
 }
-    
+
 func gammaIncQ(a, x float64) float64 {
     aa1 := a - 1
     var f ifctn = func(t float64) float64 {
@@ -575,13 +575,13 @@ func utest(dset []int) {
     fmt.Println(" dataset:", dset)
     fmt.Println(" samples:                      ", sum)
     fmt.Println(" categories:                   ", len(dset))
-    
+
     dof := len(dset) - 1
     fmt.Println(" degrees of freedom:           ", dof)
 
     dist := chi2ud(dset)
     fmt.Println(" chi square test statistic:    ", dist)
-    
+
     p := chi2p(dof, dist)
     fmt.Println(" p-value of test statistic:    ", p)
 
@@ -603,7 +603,7 @@ Uniform distribution test
  chi square test statistic:     4.14628
  p-value of test statistic:     0.3865708330827673
  significant at  5% level?      false
- uniform?                       true 
+ uniform?                       true
 
 Uniform distribution test
  dataset: [522573 244456 139979 71531 21461]
@@ -613,7 +613,7 @@ Uniform distribution test
  chi square test statistic:     790063.27594
  p-value of test statistic:     2.3528290427066167e-11
  significant at  5% level?      true
- uniform?                       false 
+ uniform?                       false
 
 ```
 
@@ -661,7 +661,7 @@ require 'stats/base'
 countCats=: #@~.                    NB. counts the number of unique items
 getExpected=: #@] % [               NB. divides no of items by category count
 getObserved=: #/.~@]                NB. counts frequency for each category
-calcX2=: [: +/ *:@(getObserved - getExpected) % getExpected   NB. calculates test statistic 
+calcX2=: [: +/ *:@(getObserved - getExpected) % getExpected   NB. calculates test statistic
 calcDf=: <:@[                       NB. calculates degrees of freedom for uniform distribution
 
 NB.*isUniform v Tests (5%) whether y is uniformly distributed
@@ -912,7 +912,7 @@ This code explicity assumes a discrete uniform distribution since the chi square
 
 ```Mathematica
 discreteUniformDistributionQ[data_, {min_Integer, max_Integer}, confLevel_: .05] :=
-If[$VersionNumber >= 8, 
+If[$VersionNumber >= 8,
   confLevel <= PearsonChiSquareTest[data, DiscreteUniformDistribution[{min, max}]],
   Block[{v, k = max - min, n = Length@data},
    v = (k + 1) (Plus @@ (((Length /@ Split[Sort@data]))^2))/n - n;
@@ -975,7 +975,7 @@ let _ =
     Printf.printf "\t[%g > 0.05]" (chi2Proba dof distance);
     if chi2IsUniform distrib 0.05 then Printf.printf " fair\n"
     else Printf.printf " unfair\n"
-  ) 
+  )
   [
     [| 199809; 200665; 199607; 200270; 199649 |];
     [| 522573; 244456; 139979; 71531; 21461 |]
@@ -1096,14 +1096,14 @@ sub incomplete-γ-series($s, $z) {
     my $M = 1 + [+] (numers Z/ denoms) ... * < 1e-6;
     $z**$s / $s * exp(-$z) * $M;
 }
- 
+
 sub postfix:<!>(Int $n) { [*] 2..$n }
- 
+
 sub Γ-of-half(Int $n where * > 0) {
     ($n %% 2) ?? (($_-1)!                            given  $n    div 2)
               !! ((2*$_)! / (4**$_ * $_!) * sqrt(pi) given ($n-1) div 2);
 }
- 
+
 # degrees of freedom constrained due to numerical limitations
 sub chi-squared-cdf(Int $k where 1..200, $x where * >= 0) {
     my $f = $k < 20 ?? 20 !! 10;
@@ -1113,7 +1113,7 @@ sub chi-squared-cdf(Int $k where 1..200, $x where * >= 0) {
         default                   { 1.0 }
     }
 }
- 
+
 sub chi-squared-test(@bins, :$significance = 0.05) {
     my $n = +@bins;
     my $N = [+] @bins;
@@ -1122,7 +1122,7 @@ sub chi-squared-test(@bins, :$significance = 0.05) {
     my $p-value = 1 - chi-squared-cdf($n-1, $chi-squared);
     return (:$chi-squared, :$p-value, :uniform($p-value > $significance));
 }
- 
+
 for [< 199809 200665 199607 200270 199649 >],
     [< 522573 244456 139979  71531  21461 >]
     -> $dataset
@@ -1152,7 +1152,7 @@ using gamma() from [[Gamma_function#Phix]]
 ```Phix
 function f(atom aa1, t)
     return power(t, aa1) * exp(-t)
-end function 
+end function
 
 function simpson38(atom aa1, a, b, integer n)
     atom h := (b - a) / n,
@@ -1163,7 +1163,7 @@ function simpson38(atom aa1, a, b, integer n)
     end for
     return h * tot / 8
 end function
- 
+
 function gammaIncQ(atom a, x)
     atom aa1 := a - 1,
          y := aa1,
@@ -1174,36 +1174,36 @@ function gammaIncQ(atom a, x)
     if y > x then y = x end if
     return 1 - simpson38(aa1, 0, y, floor(y/h/gamma(a)))
 end function
- 
+
 function chi2ud(sequence ds)
     atom expected = sum(ds)/length(ds),
          tot = sum(sq_power(sq_sub(ds,expected),2))
     return tot / expected
 end function
- 
+
 function chi2p(integer dof, atom distance)
     return gammaIncQ(0.5*dof, 0.5*distance)
 end function
- 
+
 constant sigLevel = 0.05
 constant tf = {"true","false"}
- 
+
 procedure utest(sequence dset)
     printf(1,"Uniform distribution test\n")
     integer tot = sum(dset)
     printf(1," dataset:%s\n",{sprint(dset)})
     printf(1," samples:                      %d\n", tot)
     printf(1," categories:                   %d\n", length(dset))
- 
+
     integer dof := length(dset) - 1
     printf(1," degrees of freedom:           %d\n", dof)
- 
+
     atom dist := chi2ud(dset)
     printf(1," chi square test statistic:    %g\n", dist)
- 
+
     atom p := chi2p(dof, dist)
     printf(1," p-value of test statistic:    %g\n", p)
- 
+
     bool sig := p < sigLevel
     printf(1," significant at %2.0f%% level?     %s\n", {sigLevel*100, tf[2-sig]})
     printf(1," uniform?                      %s\n",{tf[sig+1]})
@@ -1257,7 +1257,7 @@ def GammaInc_Q( a, x):
 
     def df0(t):
         return (a1-t)*t**a2*math.exp(-t)
-    
+
     y = a1
     while f0(y)*(x-y) >2.0e-8 and y < x: y += .3
     if y > x: y = x
@@ -1282,7 +1282,7 @@ def gamma_spounge( z):
        for k in range(1,a):
           c.append( math.exp(a-k) * (a-k)**(k-0.5) / k1_factrl )
           k1_factrl *= -k
-    
+
     accm = c[0]
     for k in range(1,a):
         accm += c[k] / (z+k)
@@ -1331,7 +1331,7 @@ dof: 4 distance: 790063.275940 probability: 0.0000 uniform?  No
 R being a statistical computating language, the chi-squared test is built in with the function "chisq.test"
 
 ```tcl
- 
+
 dset1=c(199809,200665,199607,200270,199649)
 dset2=c(522573,244456,139979,71531,21461)
 
@@ -1352,19 +1352,19 @@ Output:
 
 ```txt
 
-[1] "Data set:" "199809"    "200665"    "199607"    "200270"    "199649"   
+[1] "Data set:" "199809"    "200665"    "199607"    "200270"    "199649"
 
         Chi-squared test for given probabilities
 
-data:  ds 
+data:  ds
 X-squared = 4.1463, df = 4, p-value = 0.3866
 
 [1] "uniform? TRUE"
-[1] "Data set:" "522573"    "244456"    "139979"    "71531"     "21461"    
+[1] "Data set:" "522573"    "244456"    "139979"    "71531"     "21461"
 
         Chi-squared test for given probabilities
 
-data:  ds 
+data:  ds
 X-squared = 790063.3, df = 4, p-value < 2.2e-16
 
 [1] "uniform? FALSE"
@@ -1379,7 +1379,7 @@ X-squared = 790063.3, df = 4, p-value < 2.2e-16
 ```racket
 
 #lang racket
-(require 
+(require
  racket/flonum (planet williams/science:4:5/science)
  (only-in (planet williams/science/unsafe-ops-utils) real->float))
 
@@ -1409,7 +1409,7 @@ X-squared = 790063.3, df = 4, p-value < 2.2e-16
 
   ; Calculate the P-value:
   (define P (chi^2-goodness-of-fit-test o ex (- n 1)))
-  
+
   ; If the P-value is larger than α we accept the
   ; hypothesis that the numbers are distributed uniformly.
   (> P α))
@@ -1444,7 +1444,7 @@ The   '''gamma'''   was replaced with a simple version.   The argument
 for   '''gamma'''   is (in the cases used herein)   always
 
 positive,   and is
-either an integer,   or a number which is a multiple of   <big>'''<sup>1</sup>/<sub>2</sub>'''</big>,   both of these cases can be calculated with 
+either an integer,   or a number which is a multiple of   <big>'''<sup>1</sup>/<sub>2</sub>'''</big>,   both of these cases can be calculated with
 
 a straight─forward calculation.
 
@@ -1555,11 +1555,11 @@ def gammaInc_Q(a, x)
   a1, a2 = a-1, a-2
   f0  = lambda {|t| t**a1 * Math.exp(-t)}
   df0 = lambda {|t| (a1-t) * t**a2 * Math.exp(-t)}
-  
+
   y = a1
   y += 0.3  while f0[y]*(x-y) > 2.0e-8 and y < x
   y = x  if y > x
-  
+
   h = 3.0e-4
   n = (y/h).to_i
   h = y/n
@@ -1822,11 +1822,11 @@ End Sub
 
 {{out}
 ```txt
-[1] "Data set:"  199809   200665   199607   200270   199649  
+[1] "Data set:"  199809   200665   199607   200270   199649
    Chi-squared test for given frequencies
 X-squared = 4.14628 , df = 4 , p-value = 0.3866
 [1] "Uniform? True"
-[1] "Data set:"  522573   244456   139979   71531   21461  
+[1] "Data set:"  522573   244456   139979   71531   21461
    Chi-squared test for given frequencies
 X-squared = 790063.27594 , df = 4 , p-value = 0.0000
 [1] "Uniform? False"
@@ -1847,7 +1847,7 @@ fcn Simpson3_8(f,a,b,N){  // fcn,double,double,Int --> double
       sum + l1*f(a + h1*j);
    },f(a) + f(b))/8.0;
 }
- 
+
 const A=12;
 fcn Gamma_Spouge(z){  // double --> double
    var coefs=fcn{  // this runs only once, at construction time
@@ -1867,7 +1867,7 @@ fcn Gamma_Spouge(z){  // double --> double
 }
 
 fcn f0(t,aa1){ t.pow(aa1)*(-t).exp() }
- 
+
 fcn GammaIncomplete_Q(a,x){  // double,double --> double
    h:=1.5e-2;  /* approximate integration step size */
    /* this cuts off the tail of the integration to speed things up */
@@ -1886,9 +1886,9 @@ fcn chi2UniformDistance(ds){ // --> double
    sum     := dslen.reduce('wrap(sum,k){ x:=ds[k] - expected; sum + x*x },0.0);
    sum/expected
 }
- 
+
 fcn chi2Probability(dof,distance){ GammaIncomplete_Q(0.5*dof, 0.5*distance) }
- 
+
 fcn chiIsUniform(dset,significance=0.05){
    significance < chi2Probability(-1.0 + dset.len(),chi2UniformDistance(dset))
 }

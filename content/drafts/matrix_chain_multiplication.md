@@ -43,8 +43,8 @@ __TOC__
 
 {{trans|Kotlin}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <limits.h>
 #include <stdlib.h>
 
@@ -104,7 +104,7 @@ int main() {
         for (j = 0; j < n; ++j) {
             printf("%d", dims_list[i][j]);
             if (j < n - 1) printf(", "); else printf("]\n");
-        }        
+        }
         optimal_matrix_chain_order(dims_list[i], n);
         printf("Order : ");
         print_optimal_chain_order(0, n - 2);
@@ -665,7 +665,7 @@ r =
        38120
 
 
-s = 
+s =
 
     "((((((((1*2)*3)*4)*5)*6)*7)*(8*(9*10)))*(11*12))"
 
@@ -677,7 +677,7 @@ r =
      1773740
 
 
-s = 
+s =
 
     "(1*((((((2*3)*4)*(((5*6)*7)*8))*9)*10)*11))"
 ```
@@ -754,7 +754,7 @@ This example is based on Moritz Lenz's code, written for Carl Mäsak's Perl 6 Co
 ```perl6
 sub matrix-mult-chaining(@dimensions) {
     my @cp;
-    # @cp has a dual function: 
+    # @cp has a dual function:
     # * the upper triangle of the diagonal matrix stores the cost (c) for
     #   multiplying matrices $i and $j in @cp[$j][$i], where $j > $i
     # * the lower triangle stores the path (p) that was used for the lowest cost
@@ -791,7 +791,7 @@ sub matrix-mult-chaining(@dimensions) {
             take ')';
         }
     }
- 
+
    return @cp[$n-1][0], gather { find-path(0, $n - 1) }.join;
 }
 
@@ -841,7 +841,7 @@ function optimal_matrix_chain_order(sequence dims)
     end for
     return {optimal_chain_order(1,n,s),m[1,n]}
 end function
- 
+
 constant tests = {{5, 6, 3, 1},
                   {1, 5, 25, 30, 100, 70, 2, 1, 100, 250, 1, 1000, 2},
                   {1000, 1, 500, 12, 1, 700, 2500, 3, 2, 5, 14, 10}}
@@ -879,7 +879,7 @@ We will solve the task in three steps:
 3) The recursive solution has many duplicates computations. Memoize the previous function: this yields a dynamic programming approach.
 
 
-###  Enumeration of parenthesizations 
+###  Enumeration of parenthesizations
 
 
 
@@ -940,7 +940,7 @@ def optim1(a):
 
 
 
-###  Recursive cost optimization 
+###  Recursive cost optimization
 
 
 The previous function optim1 already used recursion, but only to compute the cost of a given parens configuration, whereas another function (a generator actually) provides these configurations. Here we will do both recursively in the same function, avoiding the computation of configurations altogether.
@@ -974,7 +974,7 @@ def optim2(a):
 
 
 
-###  Memoized recursive call 
+###  Memoized recursive call
 
 
 The only difference between optim2 and optim3 is the [[:wp:https://en.wikipedia.org/wiki/Memoization|@memoize]] [https://www.python.org/dev/peps/pep-0318/ decorator]. Yet the algorithm is way faster with this. According to Wikipedia, the complexity falls from O(2^n) to O(n^3). This is confirmed by plotting log(time) vs log(n) for n up to 580 (this needs [https://docs.python.org/3/library/sys.html#sys.setrecursionlimit changing Python's recursion limit]).
@@ -1020,7 +1020,7 @@ def optim3(a):
 
 
 
-###  Putting all together 
+###  Putting all together
 
 
 
@@ -1071,7 +1071,7 @@ optim3      0.307    1773740   [0, [[[[[[1, 2], 3], [[[4, 5], 6], 7]], 8], 9], 1
 A mean on 1000 loops to get a better precision on the optim3, yields respectively 0.365 ms and 0.287 ms.
 
 
-###  Iterative solution 
+###  Iterative solution
 
 In the previous solution, memoization is done blindly with a dictionary. However, we need to compute the optimal products for all sublists. A sublist is described by its first index and length (resp. i and j+1 in the following function), hence the set of all sublists can be described by the indices of elements in a triangular array u. We first fill the "solution" (there is no product) for sublists of length 1 (u[0]), then for each successive length we optimize using what when know about smaller sublists. Instead of keeping track of the optimal solutions, the single needed one is computed in the end.
 
@@ -1277,7 +1277,7 @@ Cost : 1773740
 
 == {{header|Stata}} ==
 
-###  Recursive solution 
+###  Recursive solution
 
 {{trans|Python}}
 
@@ -1295,7 +1295,7 @@ struct ans scalar function aux(n,k) {
 	external dim,opt
 	struct ans scalar r,r1,r2
 	real scalar s,i
-	
+
 	if (n==1) {
 		r.p = dim[k]
 		r.q = dim[k+1]
@@ -1332,7 +1332,7 @@ function optim(a) {
 	external dim,opt
 	struct ans scalar r
 	real scalar t
-	
+
 	timer_clear()
 	dim = a
 	opt = asarray_create("real",2)
@@ -1363,7 +1363,7 @@ end
 The timing is in milliseconds, but the time resolution is too coarse to get a usable result. A mean on 1000 loops doing the same computation yields respectively 5.772 ms and 4.430 ms for these two cases. For comparison, the computation was made on the same machine as the Python solution.
 
 
-###  Iterative solution 
+###  Iterative solution
 
 {{trans|Fortran}}
 
@@ -1442,7 +1442,7 @@ Sub Optimize(A As Variant)
         U(I, 1) = -1
         V(I, 1) = 0
     Next I
-    
+
     For J = 2 To N
         For I = 1 To N - J + 1
             V(I, J) = &H7FFFFFFF

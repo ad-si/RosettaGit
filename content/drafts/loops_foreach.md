@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Iteration}}
-Loop through and print each element in a collection in order. 
+Loop through and print each element in a collection in order.
 
 Use your language's "for each" loop if it has one, otherwise iterate through the collection in order with some other loop.
 
@@ -35,7 +35,7 @@ Use your language's "for each" loop if it has one, otherwise iterate through the
 
 
 
- 
+
 
 ## ACL2
 
@@ -117,18 +117,18 @@ procedure Doubly_Linked_List is
    begin
       Put (Element (Position));
    end Print_Node;
-   
+
    DL_List : List;
-   
+
 begin
-   
+
    DL_List.Append (1);
    DL_List.Append (2);
    DL_List.Append (3);
-   
+
    -- Iterates through every node of the list.
    DL_List.Iterate (Print_Node'Access);
-   
+
 end Doubly_Linked_List;
 ```
 
@@ -150,18 +150,18 @@ procedure Vector_Example is
    begin
       Put (Element (Position));
    end Print_Element;
-   
+
    V : Vector;
-   
+
 begin
-   
+
    V.Append (1);
    V.Append (2);
    V.Append (3);
-      
+
    -- Iterates through every element of the vector.
    V.Iterate (Print_Element'Access);
-   
+
 end Vector_Example;
 ```
 
@@ -303,7 +303,7 @@ foreach line s {
 
 
 ```aikido
-enum Color { 
+enum Color {
    RED, GREEN, BLUE
 }
 
@@ -331,8 +331,8 @@ for (i, v in list(2, 3, 5, 7, 11, 13, 17, 18)) {
 ## ALGOL 68
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}} 
-{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}} 
+{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
+{{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}}
 
 ```algol68
 []UNION(STRING, INT, PROC(REF FILE)VOID) collection = ("Mary","Had",1,"little","lamb.",new line);
@@ -436,7 +436,7 @@ name => john
 
 ```AutoHotkey
 string = mary,had,a,little,lamb
-Loop, Parse, string, `,  
+Loop, Parse, string, `,
   MsgBox %A_LoopField%
 ```
 
@@ -456,10 +456,10 @@ BEGIN {
 }
 ```
 
-If elements must be returned in some order, keys must be generated in that order. 
-In the example above the array is filled through the split function, 
-which uses indexes from 1. 
-So to iterate over the array's elements in the ''right'' order, 
+If elements must be returned in some order, keys must be generated in that order.
+In the example above the array is filled through the split function,
+which uses indexes from 1.
+So to iterate over the array's elements in the ''right'' order,
 a normal loop can be used:
 
 ```awk
@@ -472,7 +472,7 @@ BEGIN {
 ```
 
 
-Note that in awk, foreach loops can only be performed against an associative container. 
+Note that in awk, foreach loops can only be performed against an associative container.
 It is not possible to loop against an explicit list, so the following will not work:
 
 
@@ -520,7 +520,7 @@ The quick brown fox jumps over the lazy dog.
       DIM collection$(8)
       collection$() = "The", "quick", "brown", "fox", "jumps", \
       \               "over", "the", "lazy", "dog."
-      
+
       FOR index% = 0 TO DIM(collection$(), 1)
         PRINT collection$(index%) " ";
       NEXT
@@ -531,7 +531,7 @@ The quick brown fox jumps over the lazy dog.
 =
 ## Commodore BASIC
 =
-Commodore BASIC too does not have a FOR-EACH construct. FOR loop is used to iterate through a string array by index. READ-DATA is used to fill up the string array 
+Commodore BASIC too does not have a FOR-EACH construct. FOR loop is used to iterate through a string array by index. READ-DATA is used to fill up the string array
 
 ```qbasic
 10 DIM A$(9) :REM DECLARE STRING ARRAY
@@ -558,10 +558,10 @@ DEF AnArray[11]:INT
 AnArray=0,1,2,3,4,5,6,7,8,9,10
 
 'A console only program will work without OPENCONSOLE and
-'CLOSECONSOLE; however, it does not hurt to use them. 
+'CLOSECONSOLE; however, it does not hurt to use them.
 OPENCONSOLE
 
-FOR X=0 TO 10 
+FOR X=0 TO 10
     PRINT AnArray[X]
 NEXT X
 
@@ -586,7 +586,7 @@ END
 ' FreeBASIC doesn't have a foreach loop but it's easy to manufacture one using macros
 
 #Macro ForEach(I, A)
-For _i as integer = LBound(A) To UBound(A) 
+For _i as integer = LBound(A) To UBound(A)
 #Define I (A(_i))
 #EndMacro
 
@@ -640,13 +640,13 @@ End
 ==={{header|IS-BASIC}}===
 <lang IS-BASIC>100 STRING COLLECTION$(1 TO 9)*8
 110 LET I=1
-120 DO 
+120 DO
 130   READ IF MISSING EXIT DO:COLLECTION$(I)
 140   LET I=I+1
-150 LOOP 
+150 LOOP
 160 FOR J=1 TO I-1
 170   PRINT COLLECTION$(J);" ";
-180 NEXT 
+180 NEXT
 190 DATA The,quick,brown,fox,jumps,over,the,lazy,dog.
 ```
 
@@ -669,7 +669,7 @@ FOR X=0 TO 10
     #<INT>temp=X
 'The hash ("#") dereferencing operator is unique to IWBASIC and Creative Basic, and
 'it is suitable for most basic pointer needs. IWBASIC also supports a "C style"
-'dereferencing operator: "*". And that will work here too.     
+'dereferencing operator: "*". And that will work here too.
 NEXT X
 
 'A program compiled as console only does not need the commands to open and
@@ -678,7 +678,7 @@ OPENCONSOLE
 
 '***Iterate the list with the "for each" loop***
 FOR Temp=EACH AList AS INT
-     PRINT #Temp   
+     PRINT #Temp
 NEXT
 
 PRINT
@@ -836,7 +836,7 @@ Dim list As New List(Of String)
 list.Add("Car")
 list.Add("Boat")
 list.Add("Train")
- 
+
 For Each item In list
     Console.WriteLine(item)
 Next
@@ -929,12 +929,12 @@ The tail-recursive solution. When the auxiliary variable is reduced to nothing, 
 & ~!loop
 ```
 
-A completely different way of iteration is by using a pattern that matches an element in the list, does something useful as a side effect and then fails, forcing bracmat to backtrack and try the next element in the list. The <code>@</code> flag matches at most one element. The <code>%</code> flag matches at least one element. Together they ensure that exactly one language name is assigned to the variable <code>language</code>. After all elements have been done, control is passed to the rhs of the <code>|</code> operator. 
+A completely different way of iteration is by using a pattern that matches an element in the list, does something useful as a side effect and then fails, forcing bracmat to backtrack and try the next element in the list. The <code>@</code> flag matches at most one element. The <code>%</code> flag matches at least one element. Together they ensure that exactly one language name is assigned to the variable <code>language</code>. After all elements have been done, control is passed to the rhs of the <code>|</code> operator.
 
 ```bracmat
   (   !list
     : ? (%@?language&out$!language&~) ?
-  | 
+  |
   )
 ```
 
@@ -944,8 +944,8 @@ A completely different way of iteration is by using a pattern that matches an el
 
 C does not really have a native 'container' type, nor does it have a 'for each' type statement.  The following shows how to loop through an array and print each element.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 ...
 
 const char *list[] = {"Red","Green","Blue","Black","White"};
@@ -1024,8 +1024,8 @@ char* c1="collection";
 int c2[]={ 3 , 1 , 4 , 1, 5, 9 };
 double* c3;
 int c3len=4;
-c3=(double*)calloc(c3len,sizeof(double)); 
-c3[0]=1.2;c3[1]=3.4;c3[2]=5.6;c3[3]=7.8;  
+c3=(double*)calloc(c3len,sizeof(double));
+c3[0]=1.2;c3[1]=3.4;c3[2]=5.6;c3[3]=7.8;
 foreach( char,p1   , c1, strlen(c1) ) {
  printf("loop 1 : %c\n",*p1);
 }
@@ -1201,19 +1201,19 @@ import std.stdio: writeln;
 
 void main() {
     auto collection1 = "ABC";
-    foreach (element; collection1) 
+    foreach (element; collection1)
         writeln(element);
 
     auto collection2 = [1, 2, 3];
-    foreach (element; collection1) 
+    foreach (element; collection1)
         writeln(element);
 
     auto collection3 = [1:10, 2:20, 3:30];
-    foreach (element; collection3) 
+    foreach (element; collection3)
         writeln(element);
 
     foreach (key, value; collection3)
-        writeln(key, " ", value);        
+        writeln(key, " ", value);
 }
 ```
 
@@ -1364,7 +1364,7 @@ In E, the for ... in ... loop is also used for iterating over numeric ranges; se
 
 (define my-string "Longtemps")
 (for ((une-lettre my-string)) (write une-lettre))
-    "L" "o" "n" "g" "t" "e" "m" "p" "s" 
+    "L" "o" "n" "g" "t" "e" "m" "p" "s"
 
 ;; etc ... for other collections like Streams, Hashes, Graphs, ...
 
@@ -1393,7 +1393,7 @@ lists.foreach(fn (X) { io.format("~p~n", [X]) }, Collection)
 {{works with|EiffelStudio|6.6 beta (with provisional loop syntax)}}
 The iteration (foreach) form of the Eiffel loop construct is introduced by the keyword <code lang="eiffel">across</code>.
 
-```eiffel 
+```eiffel
             across my_list as ic loop print (ic.item) end
 ```
 
@@ -1401,7 +1401,7 @@ The local entity <code lang="eiffel">ic</code> is an instance of the library cla
 
 ### Boolean expression variant
 
-The iteration form of the Eiffel loop can also be used as a boolean expression when the keyword <code lang="eiffel">loop</code> is replaced by either <code lang="eiffel">all</code> (effecting [[wp:Universal quantification|universal quantification]]) or <code lang="eiffel">some</code> (effecting [[wp:Existential quantification|existential quantification]]). 
+The iteration form of the Eiffel loop can also be used as a boolean expression when the keyword <code lang="eiffel">loop</code> is replaced by either <code lang="eiffel">all</code> (effecting [[wp:Universal quantification|universal quantification]]) or <code lang="eiffel">some</code> (effecting [[wp:Existential quantification|existential quantification]]).
 
 This iteration is a boolean expression which is true if all items in <code>my_list</code> have counts greater than three:
 
@@ -1422,7 +1422,7 @@ Whereas, the following is true if at least one item has a count greater than thr
 
 ```ela
 open monad io
- 
+
 each [] = do return ()
 each (x::xs) = do
   putStrLn $ show x
@@ -1438,11 +1438,11 @@ ELENA 4.1 :
 ```elena
 import system'routines;
 import extensions;
- 
+
 public program()
 {
     var things := new string[]::("Apple", "Banana", "Coconut");
- 
+
     things.forEach:(thing)
     {
         console.printLine:thing
@@ -1518,7 +1518,7 @@ lists:foreach(fun(X) -> io:format("~p~n",[X]) end, Collection).
 It's an extension of 'standard' FOR loop: constant list must be explicit.
 
 ```ERRE
-      
+
       FOR INDEX$=("The","quick","brown","fox","jumps","over","the","lazy","dog.") DO
         PRINT(INDEX$;" ";)
       END FOR
@@ -1666,7 +1666,7 @@ program main
 
  !using a do loop:
  do i=1,size(colors)
-   write(*,'(A)') colors(i) 
+   write(*,'(A)') colors(i)
  end do
 
  !this will also print each element:
@@ -1766,7 +1766,7 @@ for(name in beatles) {
 
 "each()" method:
 
-Though technically not a loop, most Groovy programmers would use the somewhat more terse "each()" method on the list itself in preference to the "for" loop construct. 
+Though technically not a loop, most Groovy programmers would use the somewhat more terse "each()" method on the list itself in preference to the "for" loop construct.
 
 ```groovy
 beatles.each {
@@ -1864,12 +1864,12 @@ The example below X can be a list, string, table or other data type.
 ```Icon
 procedure main()
 X := [1,2,3,-5,6,9]
-every x := !L do   
+every x := !L do
    write(x)
 end
 ```
 
-This loop can be written somewhat more concisely as: 
+This loop can be written somewhat more concisely as:
 
 ```Icon
 every write(!L)
@@ -2334,7 +2334,7 @@ Lua has 2 built-in iterators over tables.
 
 ```lua
 t={monday=1, tuesday=2, wednesday=3, thursday=4, friday=5, saturday=6, sunday=0, [7]="fooday"}
-for key, value in pairs(t) do                       
+for key, value in pairs(t) do
   print(value, key)
 end
 ```
@@ -2359,7 +2359,7 @@ and is used to iterate over lists in order.
 
 ```lua
 l={'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', not_a_number='fooday', [0]='today', [-1]='yesterday' }
-for key, value in ipairs(l) do                                                                         
+for key, value in ipairs(l) do
   print(key, value)
 end
 ```
@@ -2435,10 +2435,10 @@ end do;
 
 ## Mathematica
 
-Foreach over list of strings 
+Foreach over list of strings
 
 ```mathematica
-s = (StringSplit@Import["ExampleData/USConstitution.txt"])[[1;;7]]; 
+s = (StringSplit@Import["ExampleData/USConstitution.txt"])[[1;;7]];
 Do[
  Print@i,
  {i, s}
@@ -2461,10 +2461,10 @@ States,
 =={{header|MATLAB}} / {{header|Octave}}==
 
 ```Matlab
-    list1 = [1,5,6,7,-7,-9];   
+    list1 = [1,5,6,7,-7,-9];
     for k = list1,    % list1 must be a row vector (i.e. array of size 1xn)
         printf('%i\n',k)
-    end; 
+    end;
 ```
 
 
@@ -2472,14 +2472,14 @@ States,
     list2 = {'AA','BB','CC'};
     for k = list2,    % list2 must be a row vector (i.e. array of size 1xn)
         printf('%s\n',k{1})
-    end; 
+    end;
 ```
 
 A vectorized version of the code is
 
 ```Matlab
-  printf('%d\n',list1);  
-  printf('%s\n',list2{:});  
+  printf('%d\n',list1);
+  printf('%s\n',list2{:});
 ```
 
 
@@ -2555,7 +2555,7 @@ The MiniScript <code>for</code> statement is always a "foreach", and the standar
 
 ```moo
 things = {"Apple", "Banana", "Coconut"};
- 
+
 for thing in (things)
     player:tell(thing);
 endfor
@@ -2700,7 +2700,7 @@ Array.iter
 ```
 
 
-But, apply can be used instead of a loop : 
+But, apply can be used instead of a loop :
 
 ```Oforth>#. Date.Months apply</lang
 
@@ -2736,7 +2736,7 @@ endfor
 ## ooRexx
 
 The <tt>OVER</tt> loop control keyword is used to select each item in a collection in turn.
-Open Object Rexx allows the <tt>DO</tt> block structure keyword to be used to start a loop for backward compatibility with classic Rexx; the <tt>LOOP</tt> keyword is preferred here as it is self-documenting.  
+Open Object Rexx allows the <tt>DO</tt> block structure keyword to be used to start a loop for backward compatibility with classic Rexx; the <tt>LOOP</tt> keyword is preferred here as it is self-documenting.
 
 ```ooRexx
 /* Rexx */
@@ -3227,7 +3227,7 @@ days = 'zuntik montik dinstik mitvokh donershtik fraytik shabes'
 
   do j=1  for words(days)              /*loop through days of the week. */
   say word(days,j)                     /*display the weekday to screen. */
-  end   /*j*/                        
+  end   /*j*/
                                        /*stick a fork in it, we're done.*/
 ```
 
@@ -3421,7 +3421,7 @@ The for loop of Seed7 can be used to loop over the elements of a container.
 $ include "seed7_05.s7i";
 
 var array string: things is [] ("Apple", "Banana", "Coconut");
- 
+
 const proc: main is func
   local
     var string: thing is "";
@@ -3799,10 +3799,10 @@ XLISP's <tt>FOR-EACH</tt> applies a procedure to each member of a list in turn.
 {{out}}
 
 ```txt
-CYRUS 
-CAMBYSES 
-DARIUS 
-XERXES 
+CYRUS
+CAMBYSES
+DARIUS
+XERXES
 ARTAXERXES
 ```
 

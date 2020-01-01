@@ -17,11 +17,11 @@ tags = []
 
 
 ;Task:
-Given a character value in your language, print its code   (could be ASCII code, Unicode code, or whatever your language uses). 
+Given a character value in your language, print its code   (could be ASCII code, Unicode code, or whatever your language uses).
 
 
 ;Example:
-The character   'a'   (lowercase letter A)   has a code of 97 in ASCII   (as well as Unicode, as ASCII forms the beginning of Unicode). 
+The character   'a'   (lowercase letter A)   has a code of 97 in ASCII   (as well as Unicode, as ASCII forms the beginning of Unicode).
 
 Conversely, given a code, print out the corresponding character.
 
@@ -72,12 +72,12 @@ CHARCODE CSECT
 *
          XDUMP  CHAR,L'CHAR        dump -> X'81'
 *
-RETURN   L      R13,4(0,R13)       epilog 
+RETURN   L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    " restore
          XR     R15,R15            " rc=0
          BR     R14                exit
 PG       DS     CL12
-CHAR     DS     CL1 
+CHAR     DS     CL1
          YREGS
          END    CHARCODE
 ```
@@ -131,7 +131,7 @@ Similar to Common Lisp:
 In ActionScript, you cannot take the character code of a character directly. Instead you must create a string and call charCodeAt with the character's position in the string as a parameter.
 
 ```ActionScipt
-trace(String.fromCharCode(97)); //prints 'a' 
+trace(String.fromCharCode(97)); //prints 'a'
 trace("a".charCodeAt(0));//prints '97'
 ```
 
@@ -149,7 +149,7 @@ begin
 end Char_Code;
 ```
 
-The predefined language attributes S'Pos and S'Val for every discrete subtype, and Character is such a type, yield the position of a value and value by its position correspondingly. 
+The predefined language attributes S'Pos and S'Val for every discrete subtype, and Character is such a type, yield the position of a value and value by its position correspondingly.
 {{out}}
 
 ```txt
@@ -183,7 +183,7 @@ main:(
 )
 ```
 
-''Character conversions'' may be available in the ''standard prelude'' so that when 
+''Character conversions'' may be available in the ''standard prelude'' so that when
 a foreign tape is mounted, the characters will be converted transparently as the tape's
 records are read.
 
@@ -194,8 +194,8 @@ make conv(tape, ebcdic conv);
 FOR record DO getf(tape, ( ~ )) OD; ~ # etc ... #
 ```
 
-Every '''channel''' has an associated standard character conversion that can be determined 
-using the ''stand conv'' query routine and then the conversion applied to a particular 
+Every '''channel''' has an associated standard character conversion that can be determined
+using the ''stand conv'' query routine and then the conversion applied to a particular
 file/tape. eg.
 
 ```algol68
@@ -283,14 +283,14 @@ sZoneconv:		 .fill 12,1,' '
 szCarriageReturn:  .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* saves 2 registers */
-	
+
     mov r0,#'A'
     ldr r1,iAdrsZoneconv
     bl conversion10S
@@ -306,7 +306,7 @@ main:                /* entry of program  */
     bl conversion10S
     ldr r0,iAdrszMessCodeChar
     bl affichageMess
- 
+
 100:   /* standard end of the program */
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
@@ -315,11 +315,11 @@ main:                /* entry of program  */
 iAdrsZoneconv:		.int  sZoneconv
 iAdrszMessCodeChar:		.int szMessCodeChar
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -333,9 +333,9 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
-	
+
 /***************************************************/
 /*   conversion register signed décimal     */
 /***************************************************/
@@ -352,36 +352,36 @@ conversion10S:
     mov r4,#10   /* longueur de la zone */
 1: /* debut de boucle de conversion */
     bl divisionpar10 /* division  */
-    add r1,#48        /* ajout de 48 au reste pour conversion ascii */	
+    add r1,#48        /* ajout de 48 au reste pour conversion ascii */
     strb r1,[r2,r4]  /* stockage du byte en début de zone r5 + la position r4 */
     sub r4,r4,#1      /* position précedente */
-    cmp r0,#0     
+    cmp r0,#0
     bne 1b	       /* boucle si quotient different de zéro */
     strb r5,[r2,r4]  /* stockage du signe à la position courante */
     subs r4,r4,#1   /* position précedente */
     blt  100f         /* si r4 < 0  fin  */
     /* sinon il faut completer le debut de la zone avec des blancs */
-    mov r3,#' '   /* caractere espace */	
+    mov r3,#' '   /* caractere espace */
 2:
     strb r3,[r2,r4]  /* stockage du byte  */
     subs r4,r4,#1   /* position précedente */
     bge 2b        /* boucle si r4 plus grand ou egal a zero */
 100:  /* fin standard de la fonction  */
     pop {r0-r5,lr}   /*restaur desregistres */
-    bx lr   
+    bx lr
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
-/* r0 retourne le quotient */	
+/* r0 retourne le quotient */
 /* r1 retourne le reste  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
    push {r2-r4}   /* save registers  */
-   mov r4,r0 
+   mov r4,r0
    ldr r3, .Ls_magic_number_10 /* r1 <- magic_number */
    smull r1, r2, r3, r0   /* r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) */
    mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
@@ -412,8 +412,8 @@ MsgBox % Asc("a")
 
 ## AWK
 
-AWK has no built-in way to convert a character into ASCII (or whatever) code; 
-but a function that does so can be easily built using an associative array (where the keys are the characters). 
+AWK has no built-in way to convert a character into ASCII (or whatever) code;
+but a function that does so can be easily built using an associative array (where the keys are the characters).
 The opposite can be done using <tt>printf</tt> (or <tt>sprintf</tt>) with <tt>%c</tt>
 
 ```awk
@@ -618,7 +618,7 @@ set codecount=32
 
 for /l %%i in (33,1,126) do (
   set /a codecount+=1
-  cmd /c exit %%i 
+  cmd /c exit %%i
   if %1==!=exitcodeAscii! (
     echo !codecount!
     exit /b
@@ -717,8 +717,8 @@ Cyrillic а (UTF-8): 1072 = а
 <tt>char</tt> is already an integer type in C, and it gets automatically promoted to <tt>int</tt>. So you can use a character where you would otherwise use an integer. Conversely, you can use an integer where you would normally use a character, except you may need to cast it, as <tt>char</tt> is smaller.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main() {
   printf("%d\n", 'a'); /* prints "97" */
@@ -735,8 +735,8 @@ int main() {
 
 In this case, the output operator <tt><<</tt> is overloaded to handle integer (outputs the decimal representation) and character (outputs just the character) types differently, so we need to cast it in both cases.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main() {
   std::cout << (int)'a' << std::endl; // prints "97"
@@ -747,7 +747,7 @@ int main() {
 
 
 =={{header|C sharp|C#}}==
-C# represents strings and characters internally as Unicode, 
+C# represents strings and characters internally as Unicode,
 so casting a char to an int returns its Unicode character encoding.
 
 ```csharp
@@ -812,7 +812,7 @@ prompt$ cobc -xj character-codes.cob
 000000043
 ```
 
- 
+
 
 ## CoffeeScript
 
@@ -962,7 +962,7 @@ feature {NONE} -- Initialization
 			c8 := '%/0x61/'			-- same as above, but using hexadecimal literal
 			print(c8.natural_32_code)	-- prints "97"
 			print(c8)			-- prints the character "a"
-			
+
 			c32 := 'a'			-- using character literal
 			print(c32.natural_32_code)	-- prints "97"
 			print(c32)			-- prints "U+00000061"
@@ -1036,7 +1036,7 @@ iex(2)> to_string([code])
 In Erlang, lists and strings are the same, only the representation changes. Thus:
 
 ```erlang>1
- F = fun([X]) -> X end. 
+ F = fun([X]) -> X end.
 #Fun<erl_eval.6.13229925>
 2> F("a").
 97
@@ -1130,7 +1130,7 @@ emit     \ a
 Functions ACHAR and IACHAR specifically work with the ASCII character set, while the results of CHAR and ICHAR will depend on the default character set being used.
 
 ```fortran
-WRITE(*,*) ACHAR(97), IACHAR("a")   
+WRITE(*,*) ACHAR(97), IACHAR("a")
 WRITE(*,*) CHAR(97), ICHAR("a")
 ```
 
@@ -1187,7 +1187,7 @@ println[[70, 114, 105, 110, 107, 32, 114, 117, 108, 101, 115, 33]]  // prints "F
 
 ```gambas
 Public Sub Form_Open()
-Dim sChar As String 
+Dim sChar As String
 
 sChar = InputBox("Enter a character")
 Print "Character " & sChar & " = ASCII " & Str(Asc(sChar))
@@ -1265,7 +1265,7 @@ func main() {
 
 97 960 aπ
 string cast to []rune: [97 960]
-    string range loop: 97 960 
+    string range loop: 97 960
          string bytes: 0x61 0xcf 0x80
 
 ```
@@ -1286,7 +1286,7 @@ a π
 a π
 ```
 
-You can think of the default formatting of strings as being the printable characters of the string.  In fact however, it is even simpler.  
+You can think of the default formatting of strings as being the printable characters of the string.  In fact however, it is even simpler.
 Since we expect our output device to interpret UTF-8, and we expect our string to contain UTF-8, the default formatting simply dumps the bytes of the string to the output.
 
 Examples showing strings constructed from integer constants and then printed:
@@ -1377,7 +1377,7 @@ software {
 procedure main(arglist)
 if *arglist > 0 then L := arglist else L := [97, "a"]
 
-every x := !L do 
+every x := !L do
    write(x, " ==> ", char(integer(x)) | ord(x) )  # char produces a character, ord produces a number
 end
 ```
@@ -1493,7 +1493,7 @@ in addition to the usual 2-byte unicode characters.
 ```JavaScript
 ['字'.codePointAt(0), '🐘'.codePointAt(0)]
 ```
- 
+
 
 {{Out}}
 
@@ -1727,7 +1727,7 @@ put numtochar(934)
 
 ```C
 puts("Unicode value of ñ is ${scan("ñ", "%c")}");
-printf("The code 241 in Unicode is the letter: %c.\n", 241); 
+printf("The code 241 in Unicode is the letter: %c.\n", 241);
 
 ```
 
@@ -1799,7 +1799,7 @@ Print ChrCode$(ChrCode("a"))
 \\ (,) is an empty array.
 
 Function Codes(a$) {
-      If Len(A$)=0 then =(,) : Exit          
+      If Len(A$)=0 then =(,) : Exit
       Buffer Mem as byte*Len(a$)
       \\ Str$(string) return one byte character
       Return Mem, 0:=Str$(a$)
@@ -1856,7 +1856,7 @@ FromCharacterCode[{97}]
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 There are two built-in function that perform these tasks.
 To convert from a number to a character use:
 
@@ -1945,7 +1945,7 @@ end
 
 
 ```vb
-TextWindow.WriteLine("The ascii code for 'A' is: " + Text.GetCharacterCode("A") + ".") 
+TextWindow.WriteLine("The ascii code for 'A' is: " + Text.GetCharacterCode("A") + ".")
 TextWindow.WriteLine("The character for '65' is: " + Text.GetCharacter(65) + ".")
 ```
 
@@ -2216,7 +2216,7 @@ END Ascii.
 97
 a
 ```
- 
+
 
 ## Objeck
 
@@ -2278,7 +2278,7 @@ Oforth has not type or class for characters. A character is an integer which val
 
 <lang Progress (Openedge ABL)>MESSAGE
    CHR(97) SKIP
-   ASC("a") 
+   ASC("a")
 VIEW-AS ALERT-BOX.
 ```
 
@@ -2450,9 +2450,9 @@ X = a.
 
 ## PureBasic
 
-PureBasic allows compiling code so that it will use either Ascii or a Unicode (UCS-2) encoding for representing its string content.  
-It also allows for the source code that is being compiled to be in either Ascii or UTF-8 encoding.  
-A one-character string is used here to hold the character and a numerical character type is used to hold the character code.  
+PureBasic allows compiling code so that it will use either Ascii or a Unicode (UCS-2) encoding for representing its string content.
+It also allows for the source code that is being compiled to be in either Ascii or UTF-8 encoding.
+A one-character string is used here to hold the character and a numerical character type is used to hold the character code.
 The character type is either one or two bytes in size, depending on whether compiling for Ascii or Unicode respectively.
 
 ```PureBasic
@@ -2475,8 +2475,8 @@ This version should be compiled with Unicode setting and the source code to be e
 ```PureBasic
 If OpenConsole()
   ;UTF-8 encoding compiled for Unicode (UCS-2)
-  charCode.c = 960 
-  Char.s = "π"            
+  charCode.c = 960
+  Char.s = "π"
   PrintN(Chr(charCode))   ;prints π
   PrintN(Str(Asc(Char)))  ;prints 960
 
@@ -2569,8 +2569,8 @@ Print Asc("a")
 Red []
 print to-integer first "a" ;; -> 97
 print to-integer #"a"      ;; -> 97
-print to-binary "a"        ;; -> #{61} 
-print to-char 97           ;; -> a 
+print to-binary "a"        ;; -> #{61}
+print to-char 97           ;; -> a
 
 ```
 
@@ -2846,72 +2846,72 @@ object CharacterCode extends App {
 Example string: ﻿́a$áabcde¢£¤¥©ÇßĲĳŁłʒλπक्तु•₠₡₢₣₤₥₦₧₨₩₪₫€₭₮₯₰₱₲₳₴₵℃←→⇒∙⌘☃☹☺☻ア字文𠀀𪚥
     | Chr C/C++/Java source  Code Point Hex      Dec Mn Name
 ----+ --- ------------------------- ------- -------- -- ---------------------------
-   0: ﻿	                   "\uFEFF" U+0FEFF  (65279) NN  ZERO WIDTH NO-BREAK SPACE 
-   1: ́	                   "\u0301" U+00301    (769) YY  COMBINING ACUTE ACCENT 
-   2: a	                   "\u0061" U+00061     (97) NN  LATIN SMALL LETTER A 
-   3: $	                   "\u0024" U+00024     (36) NN  DOLLAR SIGN 
-   4: á	                   "\u00E1" U+000E1    (225) NN  LATIN SMALL LETTER A WITH ACUTE 
-   5: a	                   "\u0061" U+00061     (97) NN  LATIN SMALL LETTER A 
-   6: b	                   "\u0062" U+00062     (98) NN  LATIN SMALL LETTER B 
-   7: c	                   "\u0063" U+00063     (99) NN  LATIN SMALL LETTER C 
-   8: d	                   "\u0064" U+00064    (100) NN  LATIN SMALL LETTER D 
-   9: e	                   "\u0065" U+00065    (101) NN  LATIN SMALL LETTER E 
-  10: ¢	                   "\u00A2" U+000A2    (162) NN  CENT SIGN 
-  11: £	                   "\u00A3" U+000A3    (163) NN  POUND SIGN 
-  12: ¤	                   "\u00A4" U+000A4    (164) NN  CURRENCY SIGN 
-  13: ¥	                   "\u00A5" U+000A5    (165) NN  YEN SIGN 
-  14: ©	                   "\u00A9" U+000A9    (169) NN  COPYRIGHT SIGN 
-  15: Ç	                   "\u00C7" U+000C7    (199) NN  LATIN CAPITAL LETTER C WITH CEDILLA 
-  16: ß	                   "\u00DF" U+000DF    (223) NN  LATIN SMALL LETTER SHARP S 
-  17: Ĳ	                   "\u0132" U+00132    (306) NN  LATIN CAPITAL LIGATURE IJ 
-  18: ĳ	                   "\u0133" U+00133    (307) NN  LATIN SMALL LIGATURE IJ 
-  19: Ł	                   "\u0141" U+00141    (321) NN  LATIN CAPITAL LETTER L WITH STROKE 
-  20: ł	                   "\u0142" U+00142    (322) NN  LATIN SMALL LETTER L WITH STROKE 
-  21: ʒ	                   "\u0292" U+00292    (658) NN  LATIN SMALL LETTER EZH 
-  22: λ	                   "\u03BB" U+003BB    (955) NN  GREEK SMALL LETTER LAMDA 
-  23: π	                   "\u03C0" U+003C0    (960) NN  GREEK SMALL LETTER PI 
-  24: क	                   "\u0915" U+00915   (2325) NN  DEVANAGARI LETTER KA 
-  25: ्	                   "\u094D" U+0094D   (2381) YY  DEVANAGARI SIGN VIRAMA 
-  26: त	                   "\u0924" U+00924   (2340) NN  DEVANAGARI LETTER TA 
-  27: ु	                   "\u0941" U+00941   (2369) YY  DEVANAGARI VOWEL SIGN U 
-  28: •	                   "\u2022" U+02022   (8226) NN  BULLET 
-  29: ₠	                   "\u20A0" U+020A0   (8352) NN  EURO-CURRENCY SIGN 
-  30: ₡	                   "\u20A1" U+020A1   (8353) NN  COLON SIGN 
-  31: ₢	                   "\u20A2" U+020A2   (8354) NN  CRUZEIRO SIGN 
-  32: ₣	                   "\u20A3" U+020A3   (8355) NN  FRENCH FRANC SIGN 
-  33: ₤	                   "\u20A4" U+020A4   (8356) NN  LIRA SIGN 
-  34: ₥	                   "\u20A5" U+020A5   (8357) NN  MILL SIGN 
-  35: ₦	                   "\u20A6" U+020A6   (8358) NN  NAIRA SIGN 
-  36: ₧	                   "\u20A7" U+020A7   (8359) NN  PESETA SIGN 
-  37: ₨	                   "\u20A8" U+020A8   (8360) NN  RUPEE SIGN 
-  38: ₩	                   "\u20A9" U+020A9   (8361) NN  WON SIGN 
-  39: ₪	                   "\u20AA" U+020AA   (8362) NN  NEW SHEQEL SIGN 
-  40: ₫	                   "\u20AB" U+020AB   (8363) NN  DONG SIGN 
-  41: €	                   "\u20AC" U+020AC   (8364) NN  EURO SIGN 
-  42: ₭	                   "\u20AD" U+020AD   (8365) NN  KIP SIGN 
-  43: ₮	                   "\u20AE" U+020AE   (8366) NN  TUGRIK SIGN 
-  44: ₯	                   "\u20AF" U+020AF   (8367) NN  DRACHMA SIGN 
-  45: ₰	                   "\u20B0" U+020B0   (8368) NN  GERMAN PENNY SIGN 
-  46: ₱	                   "\u20B1" U+020B1   (8369) NN  PESO SIGN 
-  47: ₲	                   "\u20B2" U+020B2   (8370) NN  GUARANI SIGN 
-  48: ₳	                   "\u20B3" U+020B3   (8371) NN  AUSTRAL SIGN 
-  49: ₴	                   "\u20B4" U+020B4   (8372) NN  HRYVNIA SIGN 
-  50: ₵	                   "\u20B5" U+020B5   (8373) NN  CEDI SIGN 
-  51: ℃	                   "\u2103" U+02103   (8451) NN  DEGREE CELSIUS 
-  52: ←	                   "\u2190" U+02190   (8592) NN  LEFTWARDS ARROW 
-  53: →	                   "\u2192" U+02192   (8594) NN  RIGHTWARDS ARROW 
-  54: ⇒	                   "\u21D2" U+021D2   (8658) NN  RIGHTWARDS DOUBLE ARROW 
-  55: ∙	                   "\u2219" U+02219   (8729) NN  BULLET OPERATOR 
-  56: ⌘	                   "\u2318" U+02318   (8984) NN  PLACE OF INTEREST SIGN 
-  57: ☃	                   "\u2603" U+02603   (9731) NN  SNOWMAN 
-  58: ☹	                   "\u2639" U+02639   (9785) NN  WHITE FROWNING FACE 
-  59: ☺	                   "\u263A" U+0263A   (9786) NN  WHITE SMILING FACE 
-  60: ☻	                   "\u263B" U+0263B   (9787) NN  BLACK SMILING FACE 
-  61: ア	                   "\u30A2" U+030A2  (12450) NN  KATAKANA LETTER A 
-  62: 字	                   "\u5B57" U+05B57  (23383) NN  CJK UNIFIED IDEOGRAPHS 5B57 
-  63: 文	                   "\u6587" U+06587  (25991) NN  CJK UNIFIED IDEOGRAPHS 6587 
-  64: 	                   "\uF8FF" U+0F8FF  (63743) NN  PRIVATE USE AREA F8FF 
-  65: 𠀀	             "\uD840\uDC00" U+20000 (131072) NN  HIGH SURROGATES D840 
+   0: ﻿	                   "\uFEFF" U+0FEFF  (65279) NN  ZERO WIDTH NO-BREAK SPACE
+   1: ́	                   "\u0301" U+00301    (769) YY  COMBINING ACUTE ACCENT
+   2: a	                   "\u0061" U+00061     (97) NN  LATIN SMALL LETTER A
+   3: $	                   "\u0024" U+00024     (36) NN  DOLLAR SIGN
+   4: á	                   "\u00E1" U+000E1    (225) NN  LATIN SMALL LETTER A WITH ACUTE
+   5: a	                   "\u0061" U+00061     (97) NN  LATIN SMALL LETTER A
+   6: b	                   "\u0062" U+00062     (98) NN  LATIN SMALL LETTER B
+   7: c	                   "\u0063" U+00063     (99) NN  LATIN SMALL LETTER C
+   8: d	                   "\u0064" U+00064    (100) NN  LATIN SMALL LETTER D
+   9: e	                   "\u0065" U+00065    (101) NN  LATIN SMALL LETTER E
+  10: ¢	                   "\u00A2" U+000A2    (162) NN  CENT SIGN
+  11: £	                   "\u00A3" U+000A3    (163) NN  POUND SIGN
+  12: ¤	                   "\u00A4" U+000A4    (164) NN  CURRENCY SIGN
+  13: ¥	                   "\u00A5" U+000A5    (165) NN  YEN SIGN
+  14: ©	                   "\u00A9" U+000A9    (169) NN  COPYRIGHT SIGN
+  15: Ç	                   "\u00C7" U+000C7    (199) NN  LATIN CAPITAL LETTER C WITH CEDILLA
+  16: ß	                   "\u00DF" U+000DF    (223) NN  LATIN SMALL LETTER SHARP S
+  17: Ĳ	                   "\u0132" U+00132    (306) NN  LATIN CAPITAL LIGATURE IJ
+  18: ĳ	                   "\u0133" U+00133    (307) NN  LATIN SMALL LIGATURE IJ
+  19: Ł	                   "\u0141" U+00141    (321) NN  LATIN CAPITAL LETTER L WITH STROKE
+  20: ł	                   "\u0142" U+00142    (322) NN  LATIN SMALL LETTER L WITH STROKE
+  21: ʒ	                   "\u0292" U+00292    (658) NN  LATIN SMALL LETTER EZH
+  22: λ	                   "\u03BB" U+003BB    (955) NN  GREEK SMALL LETTER LAMDA
+  23: π	                   "\u03C0" U+003C0    (960) NN  GREEK SMALL LETTER PI
+  24: क	                   "\u0915" U+00915   (2325) NN  DEVANAGARI LETTER KA
+  25: ्	                   "\u094D" U+0094D   (2381) YY  DEVANAGARI SIGN VIRAMA
+  26: त	                   "\u0924" U+00924   (2340) NN  DEVANAGARI LETTER TA
+  27: ु	                   "\u0941" U+00941   (2369) YY  DEVANAGARI VOWEL SIGN U
+  28: •	                   "\u2022" U+02022   (8226) NN  BULLET
+  29: ₠	                   "\u20A0" U+020A0   (8352) NN  EURO-CURRENCY SIGN
+  30: ₡	                   "\u20A1" U+020A1   (8353) NN  COLON SIGN
+  31: ₢	                   "\u20A2" U+020A2   (8354) NN  CRUZEIRO SIGN
+  32: ₣	                   "\u20A3" U+020A3   (8355) NN  FRENCH FRANC SIGN
+  33: ₤	                   "\u20A4" U+020A4   (8356) NN  LIRA SIGN
+  34: ₥	                   "\u20A5" U+020A5   (8357) NN  MILL SIGN
+  35: ₦	                   "\u20A6" U+020A6   (8358) NN  NAIRA SIGN
+  36: ₧	                   "\u20A7" U+020A7   (8359) NN  PESETA SIGN
+  37: ₨	                   "\u20A8" U+020A8   (8360) NN  RUPEE SIGN
+  38: ₩	                   "\u20A9" U+020A9   (8361) NN  WON SIGN
+  39: ₪	                   "\u20AA" U+020AA   (8362) NN  NEW SHEQEL SIGN
+  40: ₫	                   "\u20AB" U+020AB   (8363) NN  DONG SIGN
+  41: €	                   "\u20AC" U+020AC   (8364) NN  EURO SIGN
+  42: ₭	                   "\u20AD" U+020AD   (8365) NN  KIP SIGN
+  43: ₮	                   "\u20AE" U+020AE   (8366) NN  TUGRIK SIGN
+  44: ₯	                   "\u20AF" U+020AF   (8367) NN  DRACHMA SIGN
+  45: ₰	                   "\u20B0" U+020B0   (8368) NN  GERMAN PENNY SIGN
+  46: ₱	                   "\u20B1" U+020B1   (8369) NN  PESO SIGN
+  47: ₲	                   "\u20B2" U+020B2   (8370) NN  GUARANI SIGN
+  48: ₳	                   "\u20B3" U+020B3   (8371) NN  AUSTRAL SIGN
+  49: ₴	                   "\u20B4" U+020B4   (8372) NN  HRYVNIA SIGN
+  50: ₵	                   "\u20B5" U+020B5   (8373) NN  CEDI SIGN
+  51: ℃	                   "\u2103" U+02103   (8451) NN  DEGREE CELSIUS
+  52: ←	                   "\u2190" U+02190   (8592) NN  LEFTWARDS ARROW
+  53: →	                   "\u2192" U+02192   (8594) NN  RIGHTWARDS ARROW
+  54: ⇒	                   "\u21D2" U+021D2   (8658) NN  RIGHTWARDS DOUBLE ARROW
+  55: ∙	                   "\u2219" U+02219   (8729) NN  BULLET OPERATOR
+  56: ⌘	                   "\u2318" U+02318   (8984) NN  PLACE OF INTEREST SIGN
+  57: ☃	                   "\u2603" U+02603   (9731) NN  SNOWMAN
+  58: ☹	                   "\u2639" U+02639   (9785) NN  WHITE FROWNING FACE
+  59: ☺	                   "\u263A" U+0263A   (9786) NN  WHITE SMILING FACE
+  60: ☻	                   "\u263B" U+0263B   (9787) NN  BLACK SMILING FACE
+  61: ア	                   "\u30A2" U+030A2  (12450) NN  KATAKANA LETTER A
+  62: 字	                   "\u5B57" U+05B57  (23383) NN  CJK UNIFIED IDEOGRAPHS 5B57
+  63: 文	                   "\u6587" U+06587  (25991) NN  CJK UNIFIED IDEOGRAPHS 6587
+  64: 	                   "\uF8FF" U+0F8FF  (63743) NN  PRIVATE USE AREA F8FF
+  65: 𠀀	             "\uD840\uDC00" U+20000 (131072) NN  HIGH SURROGATES D840
   66: 𪚥	             "\uD869\uDEA5" U+2A6A5 (173733) NN  HIGH SURROGATES D869
 ```
 [http://illegalargumentexception.blogspot.nl/2009/05/java-rough-guide-to-character-encoding.html More background info: "Java: a rough guide to character encoding"]
@@ -2994,7 +2994,7 @@ PRINT ASC("a") '97
 
 ## SNOBOL4
 
-Snobol implementations may or may not have built-in char( ) and ord ( ) or asc( ). 
+Snobol implementations may or may not have built-in char( ) and ord ( ) or asc( ).
 These are based on examples in the Snobol4+ tutorial and work with the native (1-byte) charset.
 
 ```SNOBOL4
@@ -3096,7 +3096,7 @@ Conversely, the '''char''' function transforms a byte vector into a string:
 
 ## Swift
 
-The type that represent a Unicode code point is <code>UnicodeScalar</code>. 
+The type that represent a Unicode code point is <code>UnicodeScalar</code>.
 You can initialize it with a string literal:
 
 ```swift
@@ -3145,7 +3145,7 @@ puts [format %c 960] ;# ==> π
 
 
 =={{header|TI-83 BASIC}}==
-TI-83 BASIC provides no built in way to do this, so in all String<-->List routines and anything else which requires character codes, a workaround using inString( and sub( is used. 
+TI-83 BASIC provides no built in way to do this, so in all String<-->List routines and anything else which requires character codes, a workaround using inString( and sub( is used.
 In this example, the code of 'A' is displayed, and then the character matching a user-defined code is displayed.
 
 ```ti83b
@@ -3157,13 +3157,13 @@ Disp sub(Str1,A,1
 
 
 =={{header|TI-89 BASIC}}==
-The TI-89 uses an 8-bit charset/encoding which is similar to ISO-8859-1, but with more mathematical symbols and Greek letters. 
-At least codes 14-31, 128-160, 180 differ. 
+The TI-89 uses an 8-bit charset/encoding which is similar to ISO-8859-1, but with more mathematical symbols and Greek letters.
+At least codes 14-31, 128-160, 180 differ.
 The ASCII region is unmodified. (TODO: Give a complete list.)
 
 The TI Connect X desktop software converts between this unique character set and Unicode characters, though sometimes in a consistent but inappropriate fashion. <!-- Only Mac experience went into this statement; info for other platforms? -->
 
-The below program will display the character and code for any key pressed. Some keys do not correspond to characters and have codes greater than 255. 
+The below program will display the character and code for any key pressed. Some keys do not correspond to characters and have codes greater than 255.
 The portion of the program actually implementing the task is marked with a line of “©”s.
 
 ```ti89b

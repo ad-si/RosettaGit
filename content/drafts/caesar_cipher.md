@@ -1299,8 +1299,8 @@ abc
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -1347,8 +1347,8 @@ int main()
 ## C++
 
 
-```Cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 #include <algorithm>
 #include <cctype>

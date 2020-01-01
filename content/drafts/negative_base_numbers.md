@@ -24,9 +24,9 @@ Negative base numbers are an alternate way to encode numbers without the need fo
 
 ;extra credit:
 
-* supply an integer, that when encoded to base   -62   (or something "higher"),   expresses the 
-name of the language being used   (with correct capitalization).   If the computer language has 
-non-alphanumeric characters,   try to encode them into the negatory numerals,   or use other 
+* supply an integer, that when encoded to base   -62   (or something "higher"),   expresses the
+name of the language being used   (with correct capitalization).   If the computer language has
+non-alphanumeric characters,   try to encode them into the negatory numerals,   or use other
 characters instead.
 
 
@@ -130,8 +130,8 @@ Algol 68 decodes to: -36492107981104 base -63
 
 {{trans|modula-2}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 const char DIGITS[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 const int DIGITS_LEN = 64;
@@ -258,8 +258,8 @@ int main() {
 
 {{trans|C#}}
 
-```cpp>#include <iomanip
-
+```cpp
+#include <iomanip>
 #include <iostream>
 #include <tuple>
 #include <vector>
@@ -561,14 +561,14 @@ Seq.iter(printfn "%d ")[N2D -13 t0;N2D -3 t146;N2D -2 t10;N2D -10 t15]
 
 ```txt
 
-0 
-2 1 1 0 2 
-1 1 1 1 0 
-1 9 5 
-0 
-146 
-10 
-15 
+0
+2 1 1 0 2
+1 1 1 1 0
+1 9 5
+0
+146
+10
+15
 
 ```
 
@@ -722,7 +722,7 @@ main = do
 
 ```txt
 
-$ ./negbase 
+$ ./negbase
 11110
 21102
 195
@@ -795,12 +795,12 @@ neg_base =: #. (_10 |. AlphaNum_j_)&i.
    _2 _3 _10 neg_antibase&> 10 146 15
 11110
 21102
-195  
+195
 
    NB. in j we would write the tautology
    (":&.>11110 21102 195) -: _2 _3 _10 neg_antibase&.> 10 146 15
 1
-   
+
 
    NB. expressive numeric notation
    NB. we can write the numbers in arbitrary base
@@ -817,19 +817,19 @@ neg_base =: #. (_10 |. AlphaNum_j_)&i.
 
    _3 neg_base '21102'
 146
-   
+
    _10 neg_base '195'
 15
 
 
    [ EXTRA_CREDIT =: _63 neg_base&> ;: 'J j apl APL Iverson'
 19 45 139718 38136 1069471233985
-   
+
    _63 neg_antibase&> EXTRA_CREDIT
-J      
-j      
-apl    
-APL    
+J
+j
+apl
+APL
 Iverson
 
 ```
@@ -920,7 +920,7 @@ public class NegativeBaseNumbers {
 {{works with|jq|1.5}}
 If your jq does not have `trunc/0` then use this:
 
-```jq>def trunc: if . 
+```jq>def trunc: if .
 = 0 then floor else -(-(.)|trunc) end;
 ```
 
@@ -943,7 +943,7 @@ def sigma(stream): reduce stream as $x (null; .+$x);
 def invnegbase($b):
   (explode | reverse | map(. - 48)) as $s
   | sigma( range(0; $s|length) | ($s[.] * pow($b; .)));
- 
+
 def testset: {
    "11110": [10, -2],
    "21102": [146, -3],
@@ -1065,7 +1065,7 @@ fun decodeNegBase(ns: String, b: Int): Long {
         bb *= b
     }
     return total
-} 
+}
 
 fun main(args:Array<String>) {
     val nbl = listOf(10L to -2, 146L to -3, 15L to -10, -17596769891 to -62)
@@ -1423,9 +1423,9 @@ say  '  195 from base -10: ', decode("195",  -10);
 {{works with|Rakudo|2016.11}}
 Perl 6 provides built-in methods / routines base and parse-base to convert to and from bases 2 through 36. We'll just shadow the core routines with versions that accept negative bases.
 
-As a stretch goal, rather than implement something that can "Spell the name of the language with correct capitalization" (which is silly, trivial, and has absolutely '''''nothing''''' to do with negative base numbers,) we'll implement routines that correctly work with any Real number, not just integers. 
+As a stretch goal, rather than implement something that can "Spell the name of the language with correct capitalization" (which is silly, trivial, and has absolutely '''''nothing''''' to do with negative base numbers,) we'll implement routines that correctly work with any Real number, not just integers.
 
-The Real candidate has a 'precision' parameter, default -15, (15 places after the decimal point,) to limit the length of the fractional portion of the converted value. Change it if you need or want different precision. The Integer only routine is kept here as a multi-dispatch candidate since it is potentially much faster than the Real capable routine. The dispatcher will automatically use the most appropriate (fastest) routine. 
+The Real candidate has a 'precision' parameter, default -15, (15 places after the decimal point,) to limit the length of the fractional portion of the converted value. Change it if you need or want different precision. The Integer only routine is kept here as a multi-dispatch candidate since it is potentially much faster than the Real capable routine. The dispatcher will automatically use the most appropriate (fastest) routine.
 
 Note that the parse-base routine will handle 'illegal' negative negative-base values without blowing up.
 
@@ -1529,7 +1529,7 @@ function encodeNegBase(atom n, base b)
     end while
     return reverse(res)
 end function
- 
+
 function decodeNegBase(string ns, base b)
     atom total = 0,
          bb = 1
@@ -1541,7 +1541,7 @@ function decodeNegBase(string ns, base b)
     end for
     return total
 end function
- 
+
                 -- decimal, base, expected
 constant tests = {{10,      -2,   "11110"},
                   {146,     -3,   "21102"},
@@ -1603,14 +1603,14 @@ def EncodeNegBase(n, b): #Converts from decimal
 def DecodeNegBase(nstr, b): #Converts to decimal
 	if nstr == "0":
 		return 0
-	
+
 	total = 0
 	for i, ch in enumerate(nstr[::-1]):
 		total += int(ch) * b**i
 	return total
 
 if __name__=="__main__":
-	
+
 	print ("Encode 10 as negabinary (expect 11110)")
 	result = EncodeNegBase(10, -2)
 	print (result)
@@ -1666,7 +1666,7 @@ Converted back to decimal
         (values (+ q 1) (- r d))
         (values q r))))
 
-(define (negabase-convertors base) 
+(define (negabase-convertors base)
   (when (not (integer? base)) (raise "Non-integer base."))
   (when (not (<= 2 (abs base) max-base)) (raise (format "(abs base) must be inside [2 ~a] interval." max-base)))
   (values
@@ -1728,7 +1728,7 @@ Converted back to decimal
 
 ## REXX
 
-Both REXX versions use a type of   ''assert''   (a function call of '''OK''')   that converts the numbers in the 
+Both REXX versions use a type of   ''assert''   (a function call of '''OK''')   that converts the numbers in the
 
 negative base back to the original number in base ten   (and issues an error message if not correct).
 ===version 1 (up to base -10)===
@@ -1779,9 +1779,9 @@ pBase: procedure; parse arg x,r;    p=0;   $=0   /*obtain args; $ is the integer
 
 
 ===version 2 (up to base -71)===
-This REXX version supports up to negative base   '''─71''',   but it may not be compatible to other programming examples 
+This REXX version supports up to negative base   '''─71''',   but it may not be compatible to other programming examples
 
-because the symbols (glyphs or numerals) used herein may not be in the same exact order.   The symbols represented 
+because the symbols (glyphs or numerals) used herein may not be in the same exact order.   The symbols represented
 
 in this REXX program should be able to represent   ''any''   programming language used on Rosetta Code.
 
@@ -1857,8 +1857,8 @@ func encodeNegBase(n,b)
        while n != 0
                rem = (n%b)
                if rem < 0
-                  rem = rem - b 
-               ok 
+                  rem = rem - b
+               ok
                n = ceil(n/b)
                rem = fabs(rem)
                add(out,rem)
@@ -1904,7 +1904,7 @@ Output:
 ```scala
 object NegativeBase {
   val digits = ('0' to '9') ++ ('a' to 'z') ++ ('A' to 'Z')
-  
+
   def intToStr(n: Int, b: Int): String = {
     def _fromInt(n: Int): List[Int] = {
       if (n == 0) {
@@ -1918,7 +1918,7 @@ object NegativeBase {
     }
     _fromInt(n).map(digits).reverse.mkString
   }
-  
+
   def strToInt(s: String, b: Int): Int = {
     s.map(digits.indexOf).foldRight((0, 1)){ case (x, (sum, pow)) =>
       (sum + x * pow, pow * -b)
@@ -2194,16 +2194,16 @@ End Sub
 
 ```txt
 10 encoded in base -2  = 11110
-11110 decoded in base -2  =  10 
+11110 decoded in base -2  =  10
 
 146 encoded in base -3  = 21102
-21102 decoded in base -3  =  146 
+21102 decoded in base -3  =  146
 
 15 encoded in base -10  = 195
-195 decoded in base -10  =  15 
+195 decoded in base -10  =  15
 
 118492 encoded in base -62  = VBA
-VBA decoded in base -62  =  118492 
+VBA decoded in base -62  =  118492
 ```
 
 

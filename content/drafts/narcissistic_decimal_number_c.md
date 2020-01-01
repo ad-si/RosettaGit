@@ -12,8 +12,8 @@ tags = []
 
 Find narcissistic numbers in bases 2 to 36. Pass the base on commandline argument, or have it default to base 10.  It finds all 88 base-10 numbers in a few seconds.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -188,7 +188,7 @@ int main(int argc, char **argv)
 {
 	if (argc < 2 || (base = atoi(argv[1])) < 2 || base > 36)
 		base = 10;
-	
+
 	for (int i = '0'; i <= '9'; i++) trans[i] = i - '0';
 	for (int i = 'a'; i <= 'z'; i++) trans[i] = i + 10 - 'a';
 

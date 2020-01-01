@@ -96,7 +96,7 @@ begin
 ## AutoHotkey
 
 {{works with | AutoHotkey_L}}
-uses [http://www.autohotkey.com/forum/topic32238.html gdip.ahk] 
+uses [http://www.autohotkey.com/forum/topic32238.html gdip.ahk]
 
 ```AutoHotkey
 startup()
@@ -107,7 +107,7 @@ pixels2 := dibSection2.pBits
 z := 0
 loop % dibSection.width * dibSection.height * 4
 {
-x := numget(pixels - 1, A_Index, "uchar") 
+x := numget(pixels - 1, A_Index, "uchar")
 y := numget(pixels2 - 1, A_Index, "uchar")
 z += abs(y - x)
 }
@@ -164,7 +164,7 @@ pBitmapFile1 := Gdip_CreateBitmapFromFile(imageFile)
 hbmi := Gdip_CreateHBITMAPFromBitmap(pBitmapFile1)
 width := Gdip_GetImageWidth(pBitmapFile1)
 height := Gdip_GetImageHeight(pBitmapFile1)
- 
+
 	mDCo := DllCall("CreateCompatibleDC", "Uint", 0)
 	mDCi := DllCall("CreateCompatibleDC", "Uint", 0)
 	dibSection := CreateDIBSection2(mDCo, width, height)
@@ -197,13 +197,13 @@ I would have preferred to calculate the RMS difference but it would be inconsist
 ```bbcbasic
       hbm1% = FNloadimage("C:lenna50.jpg")
       hbm2% = FNloadimage("C:lenna100.jpg")
-      
+
       SYS "CreateCompatibleDC", @memhdc% TO hdc1%
       SYS "CreateCompatibleDC", @memhdc% TO hdc2%
-      
+
       SYS "SelectObject", hdc1%, hbm1%
       SYS "SelectObject", hdc2%, hbm2%
-      
+
       diff% = 0
       FOR y% = 0 TO 511
         FOR x% = 0 TO 511
@@ -215,31 +215,31 @@ I would have preferred to calculate the RMS difference but it would be inconsist
         NEXT
       NEXT y%
       PRINT "Image difference = "; 100 * diff% / 512^2 / 3 / 255 " %"
-      
+
       SYS "DeleteDC", hdc1%
       SYS "DeleteDC", hdc2%
       SYS "DeleteObject", hbm1%
       SYS "DeleteObject", hbm2%
       END
-      
+
       DEF FNloadimage(file$)
       LOCAL iid{}, hbm%, pic%, ole%, olpp%, text%
       DIM iid{a%,b%,c%,d%}, text% LOCAL 513
-      
+
       iid.a% = &7BF80980 : REM. 128-bit iid
       iid.b% = &101ABF32
       iid.c% = &AA00BB8B
       iid.d% = &AB0C3000
-      
+
       SYS "MultiByteToWideChar", 0, 0, file$, -1, text%, 256
-      
+
       SYS "LoadLibrary", "OLEAUT32.DLL" TO ole%
       SYS "GetProcAddress", ole%, "OleLoadPicturePath" TO olpp%
       IF olpp%=0 THEN = 0
-      
+
       SYS olpp%, text%, 0, 0, 0, iid{}, ^pic% : REM. OleLoadPicturePath
       IF pic%=0 THEN = 0
-      
+
       SYS !(!pic%+12), pic%, ^hbm% : REM. IPicture::get_Handle
       SYS "FreeLibrary", ole%
       = hbm%
@@ -261,8 +261,8 @@ Image difference = 1.6255931 %
 The <tt>read_image</tt> function is from [[Read image file through a pipe|here]].
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 /* #include "imglib.h" */
@@ -277,7 +277,7 @@ int main(int argc, char **argv)
    image im1, im2;
    double totalDiff = 0.0;
    unsigned int x, y;
-   
+
    if ( argc < 3 )
    {
       fprintf(stderr, "usage:\n%s FILE1 FILE2\n", argv[0]);
@@ -334,7 +334,7 @@ based upon C version, using Qt 4.4
 
 int main( int argc , char *argv[ ] ) {
    if ( argc != 3 ) {
-      std::cout << "Call this with imagecompare <file of image 1>" 
+      std::cout << "Call this with imagecompare <file of image 1>"
 	 << " <file of image 2>\n" ;
       return 1 ;
    }
@@ -348,7 +348,7 @@ int main( int argc , char *argv[ ] ) {
    if ( w != wsecond || h != hsecond ) {
       std::cerr << "Error, pictures must have identical dimensions!\n" ;
       return 2 ;
-   } 
+   }
    for ( int y = 0 ; y < h ; y++ ) {
       uint *firstLine = ( uint* )firstImage.scanLine( y ) ;
       uint *secondLine = ( uint* )secondImage.scanLine( y ) ;
@@ -438,7 +438,7 @@ This is based upon the C version. Strangely enough, the percentage is 1.77% whic
 (defun compare-images (file1 file2)
   (declare (optimize (speed 3) (safety 0) (debug 0)))
   (multiple-value-bind (image1 height width) (jpeg:decode-image file1)
-    (let ((image2 (jpeg:decode-image file2))) 
+    (let ((image2 (jpeg:decode-image file2)))
       (loop for i of-type (unsigned-byte 8) across (the simple-vector image1)
             for j of-type (unsigned-byte 8) across (the simple-vector image2)
             sum (the fixnum (abs (- i j))) into difference of-type fixnum
@@ -495,7 +495,7 @@ def imageDifference(a, b) {
   require(a.height() == b.height())
   def X := 0..!(a.width())
   def Y := 0..!(a.height())
-  
+
   var sumByteDiff := 0
   for y in Y {
     for x in X {
@@ -859,31 +859,31 @@ link printf   # for main only
 procedure main()    # % difference between images
    fn1 := "Lenna100.jpg"
    fn2 := "Lenna50.jpg"
-   printf("%%difference of files %i & %i = %r\n",fn1,fn2,ImageDiff(fn1,fn2)) 
+   printf("%%difference of files %i & %i = %r\n",fn1,fn2,ImageDiff(fn1,fn2))
 end
-	
+
 procedure ImageDiff(fn1,fn2)  #: return % difference of two images
    img1 := open(1,"g","canvas=hidden","image="||fn1) | stop("Open failed ",fn1)
    img2 := open(2,"g","canvas=hidden","image="||fn2) | stop("Open failed ",fn2)
-	
-   if WAttrib(img1,"width") ~= WAttrib(img2,"width") | 
-      WAttrib(img1,"height") ~= WAttrib(img2,"height") then 
+
+   if WAttrib(img1,"width") ~= WAttrib(img2,"width") |
+      WAttrib(img1,"height") ~= WAttrib(img2,"height") then
          stop("Images must be the same size")
 
    pix1    := create Pixel(img1)  # access pixels one at a time
    pix2    := create Pixel(img2)  # ... facilitate interleaved access
 
-   sum := pix := 0 
-   while pix +:= 1 & p1 := csv2l(@pix1) & p2 := csv2l(@pix2) do 
-      every sum +:= abs(p1[i := 1 to *p1] - p2[i])  
-   every close(img1|img2)      
+   sum := pix := 0
+   while pix +:= 1 & p1 := csv2l(@pix1) & p2 := csv2l(@pix2) do
+      every sum +:= abs(p1[i := 1 to *p1] - p2[i])
+   every close(img1|img2)
    return sum / (pix * 3 * 65535 / 100. )
 end
 
 procedure csv2l(p)   #: return a list from a comma separated string
 L := []
 p ? until pos(0) do {
-   put(L,tab(find(",")|0)) 
+   put(L,tab(find(",")|0))
    move(1)
    }
 return L
@@ -997,7 +997,7 @@ function compare(firstImage, secondImage, callback) {
 			}
 
 			var diff = 0;
-			
+
 			for (var i = 0; i < img1.data.length / 4; i++) {
 				diff += Math.abs(img1.data[4 * i + 0] - img2.data[4 * i + 0]) / 255;
 				diff += Math.abs(img1.data[4 * i + 1] - img2.data[4 * i + 1]) / 255;
@@ -1211,7 +1211,7 @@ end function
 img50 = ImageData@Import[NotebookDirectory[] <> "Lenna50.jpg"];
 img100 = ImageData@Import[NotebookDirectory[] <> "Lenna100.jpg"];
 diff = img50 - img100;
-Print["Total Difference between both Lenas = ", 
+Print["Total Difference between both Lenas = ",
  Total@Abs@Flatten@diff/Times @@ Dimensions@img50*100, "%"]
 ```
 
@@ -1231,7 +1231,7 @@ Total Difference between both Lenas = 1.62559%
 
 % Percentage difference between images
 function p = PercentageDifferenceBetweenImages(im1,im2)
-    
+
 if numel(im1)~=numel(im2),
     error('Error: images have to be the same size');
 end
@@ -1264,7 +1264,7 @@ fn diffImages =
 	(
 		local img1Row = getPixels img1 [0, i] img1.width
 		local img2Row = getPixels img2 [0, i] img2.width
-		
+
 		for j in 1 to img1.width do
 		(
 			totalDiff += (abs (img1Row[j].r - img2Row[j].r)) / 255.0
@@ -1478,8 +1478,8 @@ function percentage_diff(sequence img1, img2)
             integer {r1,g1,b1} = split_colour(img1[i,j]),
                     {r2,g2,b2} = split_colour(img2[i,j])
             diff += abs(r1-r2)+abs(g1-g2)+abs(b1-b2)
-        end for 
-    end for 
+        end for
+    end for
     return 100*diff/(length(img1)*length(img1[1]))/3/255
 end function
 
@@ -1533,14 +1533,14 @@ This program downloads both jpg files, decodes them & saves them in 2D-arrays fo
 ```PureBasic
 #URL1="http://rosettacode.org/mw/images/3/3c/Lenna50.jpg"
 #URL2="http://rosettacode.org/mw/images/b/b6/Lenna100.jpg"
- 
+
 Procedure.s GetTempFileName(basename$="",Extension$=".tmp")
   Protected file$, i
   Repeat: file$=GetTemporaryDirectory()+basename$+"_"+Str(i)+Extension$: i+1
   Until FileSize(file$) = -1 ; E.g. File not found
   ProcedureReturn file$
 EndProcedure
- 
+
 Procedure ImageToMatrix(Image,Array P(2))
   Protected Width=ImageWidth(0)-1, Height=ImageHeight(0)-1, x, y
   ; Scaling down Width & Height by -1 to compensate for using 0-based arrays
@@ -1553,25 +1553,25 @@ Procedure ImageToMatrix(Image,Array P(2))
   Next x
   StopDrawing()
 EndProcedure
- 
+
 Define File1$, File2$, totalDiff, x, y, w, h
- 
+
 ; Load the pictures from RoettaCode
 InitNetwork()
 File1$=GetTempFileName("",".jpg"): ReceiveHTTPFile(#URL1,File1$)
 File2$=GetTempFileName("",".jpg"): ReceiveHTTPFile(#URL2,File2$)
- 
+
 ; Decode the images & clean up temporary files
 UseJPEGImageDecoder()
 LoadImage(0,File1$):LoadImage(1,File2$)
 DeleteFile(File1$): DeleteFile(File2$)
- 
+
 ; Make two 2D arrays to hold the data
 Dim Pic1(0,0): Dim Pic2(0,0)
- 
+
 ;Load the image data into the matrixes
 ImageToMatrix(0,Pic1()): ImageToMatrix(1,Pic2())
- 
+
 ; Compare the data
 w=ArraySize(pic1()): h=ArraySize(pic1(),2)
 For x=0 To w
@@ -1581,7 +1581,7 @@ For x=0 To w
     totalDiff+ Abs( Blue(Pic1(x,y)) -  Blue(Pic2(x,y)))
   Next y
 Next x
- 
+
 MessageRequester("Result","Diff= "+StrD(100*totalDiff/(255*w*h*3),3)+" %")
 ```
 
@@ -1640,7 +1640,7 @@ print "Difference (percentage):", (dif / 255.0 * 100) / ncomponents
 ## Racket
 
 For some reason, the result is around 1.77% and I can't wrap my head about why. (Tom)
-Note: On OS X I get 1.6192% as the result. (soegaard) 
+Note: On OS X I get 1.6192% as the result. (soegaard)
 
 
 ```Racket
@@ -1719,7 +1719,7 @@ diff: to-image layout/tight [image diff effect [contrast 100]]
 
 view l: layout [
 	x: image diff
-	across 
+	across
 	button "a" #"a"          [flip 'a]
 	button "b" #"b"          [flip 'b]
 	button "difference" #"d" [flip 'diff]
@@ -1735,7 +1735,7 @@ Difference: 1.62559309816049%
 ```
 
 
-Note that this image has been contrast enhanced to highlight the differences. 
+Note that this image has been contrast enhanced to highlight the differences.
 
 [[File:pdiff.png]]
 
@@ -1881,7 +1881,7 @@ func pixelValues(fromCGImage imageRef: CGImage?) -> [UInt8]?
     var width = 0
     var height = 0
     var pixelValues: [UInt8]?
-    
+
     if let imageRef = imageRef {
         width = imageRef.width
         height = imageRef.height
@@ -1889,10 +1889,10 @@ func pixelValues(fromCGImage imageRef: CGImage?) -> [UInt8]?
         let bytesPerRow = imageRef.bytesPerRow
         let totalBytes = height * bytesPerRow
         let bitmapInfo = imageRef.bitmapInfo
-        
+
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         var intensities = [UInt8](repeating: 0, count: totalBytes)
-        
+
         let contextRef = CGContext(data: &intensities,
                                   width: width,
                                  height: height,
@@ -1901,10 +1901,10 @@ func pixelValues(fromCGImage imageRef: CGImage?) -> [UInt8]?
                                   space: colorSpace,
                              bitmapInfo: bitmapInfo.rawValue)
         contextRef?.draw(imageRef, in: CGRect(x: 0.0, y: 0.0, width: CGFloat(width), height: CGFloat(height)))
-        
+
         pixelValues = intensities
     }
-    
+
     return pixelValues
 }
 
@@ -1914,10 +1914,10 @@ func compareImages(image1: UIImage, image2: UIImage) -> Double? {
         data1.count == data2.count else {
             return nil
     }
-    
+
     let width = Double(image1.size.width)
     let height = Double(image1.size.height)
-    
+
     return zip(data1, data2)
         .enumerated()
         .reduce(0.0) {
@@ -2064,7 +2064,7 @@ println("Image difference = %f%%".fmt(
    imageDiff(readJPG2PPM("lenna50.jpg"),readJPG2PPM("lenna100.jpg")) * 100)
 );
 ```
- 
+
 {{out}}
 
 ```txt

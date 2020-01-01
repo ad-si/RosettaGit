@@ -11,10 +11,10 @@ tags = []
 +++
 
 {{task|Puzzles}}
-[[wp:Josephus problem|Josephus problem]] is a math puzzle with a grim description: <math>n</math> prisoners are standing on a circle, sequentially numbered from <math>0</math> to <math>n-1</math>.  
+[[wp:Josephus problem|Josephus problem]] is a math puzzle with a grim description: <math>n</math> prisoners are standing on a circle, sequentially numbered from <math>0</math> to <math>n-1</math>.
 
-An executioner walks along the circle, starting from prisoner <math>0</math>, 
-removing every <math>k</math>-th prisoner and killing him.  
+An executioner walks along the circle, starting from prisoner <math>0</math>,
+removing every <math>k</math>-th prisoner and killing him.
 
 As the process goes on, the circle becomes smaller and smaller, until only one prisoner remains, who is then freed. >
 
@@ -22,19 +22,19 @@ For example, if there are <math>n=5</math> prisoners and <math>k=2</math>, the o
 
 
 ;Task:
-Given any   <big><math>n, k > 0</math></big>,   find out which prisoner will be the final survivor.  
+Given any   <big><math>n, k > 0</math></big>,   find out which prisoner will be the final survivor.
 
-In one such incident, there were 41 prisoners and every 3<sup>rd</sup> prisoner was being killed   (<big><math>k=3</math></big>).  
+In one such incident, there were 41 prisoners and every 3<sup>rd</sup> prisoner was being killed   (<big><math>k=3</math></big>).
 
-Among them was a clever chap name Josephus who worked out the problem, stood at the surviving position, and lived on to tell the tale. 
- 
+Among them was a clever chap name Josephus who worked out the problem, stood at the surviving position, and lived on to tell the tale.
+
 Which number was he?
 
 
 ;Extra:
-The captors may be especially kind and let <math>m</math> survivors free, 
+The captors may be especially kind and let <math>m</math> survivors free,
 
-and Josephus might just have   <big><math>m-1</math></big>   friends to save.  
+and Josephus might just have   <big><math>m-1</math></big>   friends to save.
 
 Provide a way to calculate which prisoner is at any given position on the killing sequence.
 
@@ -51,7 +51,7 @@ Provide a way to calculate which prisoner is at any given position on the killin
 ## 360 Assembly
 
 {{trans|REXX}}
-The program uses two ASSIST macros (XDECO,XPRNT) to keep the code as short as possible. 
+The program uses two ASSIST macros (XDECO,XPRNT) to keep the code as short as possible.
 
 ```360asm
 *      Josephus problem               10/02/2017
@@ -78,19 +78,19 @@ JOSEPH CSECT
          XDECO  R1,DEC                  edit
          MVC    PG+8(4),DEC+8           output
          L      R1,W                    w
-         XDECO  R1,DEC                  edit 
+         XDECO  R1,DEC                  edit
          MVC    PG+12(4),DEC+8          output
          L      R1,S                    s
-         XDECO  R1,DEC                  edit 
+         XDECO  R1,DEC                  edit
          MVC    PG+16(4),DEC+8          output
          XPRNT  PG,L'PG                 print buffer
          MVI    DEAD,X'00'              dead(1)='0'B;
          MVC    DEAD+1(255),DEAD        dead(*)='0'B;
          L      R11,N                   nx=n
          L      R8,=F'-1'               p=-1
-         DO UNTIL=(C,R11,EQ,S)          do until n=s 
+         DO UNTIL=(C,R11,EQ,S)          do until n=s
            SR     R9,R9                   found=0
-           DO UNTIL=(C,R9,EQ,W)           do until found=w 
+           DO UNTIL=(C,R9,EQ,W)           do until found=w
              LA     R8,1(R8)                p=p+1
              IF C,R8,EQ,N THEN              if p=nn then
                SR     R8,R8                   p=0
@@ -121,7 +121,7 @@ JOSEPH CSECT
          XPRNT  PG,L'PG                 print buffer
          LA     R7,1(R7)                m=m+1
        ENDDO  ,                       end do
-       L      R13,4(0,R13)            epilog 
+       L      R13,4(0,R13)            epilog
        LM     R14,R12,12(R13)         " restore
        XR     R15,R15                 " rc=0
        BR     R14                     exit
@@ -196,7 +196,7 @@ RETURN: TXA             ; a <- index of survivor
 
 ## Ada
 
-The procedure reads up to 4 parameters from the command line: the number N of prisoners, the step size K, the number M of survivors, and an indicator whether the executions shall be printed ("1") or only surviving prisoners (any other input). The defaults are 41, 3, 1, 1. The prison cells are numbered from 0 to N-1. 
+The procedure reads up to 4 parameters from the command line: the number N of prisoners, the step size K, the number M of survivors, and an indicator whether the executions shall be printed ("1") or only surviving prisoners (any other input). The defaults are 41, 3, 1, 1. The prison cells are numbered from 0 to N-1.
 
 ```Ada
 with Ada.Command_Line, Ada.Text_IO;
@@ -294,8 +294,8 @@ Translated from ALGOL 68
 100 FUNCTION josephus (n, k, m)
 110 ! Return m-th on the reversed kill list; m=0 is final survivor.
 120    LET lm = m  ! Local copy OF m
-130    FOR a = m+1  TO n 
-140       LET lm = MOD(lm+k, a) 
+130    FOR a = m+1  TO n
+140       LET lm = MOD(lm+k, a)
 150    NEXT a
 160    LET josephus = lm
 170 END FUNCTION
@@ -471,7 +471,7 @@ Translated from the BASIC implementation above and the ANSI Standard BASIC.
  20  LM = 0: INPUT "GIVE N AND K (N,K): ";N,K
  30  IF N < 1 or K < 1 THEN GOTO 20
  40  FOR A = 1 TO N: LM =  FN MOD(LM + K): NEXT A
- 50  PRINT "N = ";N;", K = ";K;", SURVIVOR: ";LM 
+ 50  PRINT "N = ";N;", K = ";K;", SURVIVOR: ";LM
 
 ```
 
@@ -495,7 +495,7 @@ N = 41, K = 3, SURVIVOR: 30
 180 DEF JOSEPHUS(N,K,M)
 190   FOR I=M+1 TO N
 200     LET M=MOD((M+K),I)
-210   NEXT 
+210   NEXT
 220   LET JOSEPHUS=M
 230 END DEF
 ```
@@ -555,7 +555,7 @@ Press any key to continue . . .
 ## BBC BASIC
 
 
-```bbcbasic>REM 
+```bbcbasic>REM
 josephus
 PRINT "Survivor is number "; FNjosephus(41, 3, 0)
 END
@@ -602,8 +602,8 @@ Survivor:  30
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 // m-th on the reversed kill list; m = 0 is final survivor
 int jos(int n, int k, int m) {
@@ -812,7 +812,7 @@ int main( int argc, char* argv[] )
 	if( !n ) return 0;
 	cout << "Execution step: "; cin >> k;
 	cout << "How many survivors: "; cin >> s;
-		
+
 	cout << endl << "Survivor";
 	if( s == 1 )
 	{
@@ -884,16 +884,16 @@ Execution list:
 ```clojure
 (defn rotate [n s] (lazy-cat (drop n s) (take n s)))
 
-(defn josephus [n k] 
+(defn josephus [n k]
    (letfn [(survivor [[ h & r :as l] k]
              (cond (empty? r) h
                    :else      (survivor (rest (rotate (dec k) l)) k)))]
      (survivor (range n) k)))
 
 (let [n 41 k 3]
-   (println (str "Given " n " prisoners in a circle numbered 1.." n 
+   (println (str "Given " n " prisoners in a circle numbered 1.." n
                  ", an executioner moving around the"))
-   (println (str "circle " k " at a time will leave prisoner number " 
+   (println (str "circle " k " at a time will leave prisoner number "
                  (inc (josephus n k)) " as the last survivor.")))
 ```
 
@@ -1033,7 +1033,7 @@ Survivor: 30
 
 ```d
 import std.stdio, std.algorithm, std.range;
- 
+
 int[][] Josephus(in int n, int k, int s=1) {
     int[] ks, ps = n.iota.array;
     for (int i=--k; ps.length>s; i=(i+k)%ps.length) {
@@ -1043,7 +1043,7 @@ int[][] Josephus(in int n, int k, int s=1) {
     writefln("Josephus(%d,%d,%d) -> %(%d %) / %(%d %)%s", n, k, s, ps, ks[0..min($,45)], ks.length<45 ? "" : " ..." );
     return [ps, ks];
 }
- 
+
 void main() {
     Josephus(5, 2);
     Josephus(41, 3);
@@ -1092,8 +1092,8 @@ We use a circular list and apply the 'process'. Successive rests are marked 🔫
 ;; look at prisoners
 prisoners
 → ( 🔄 🔫 0 🔫 1 🔫 2 🔫 3 🔫 4 🔫 5 🔫 6 🔫 7 🔫 8 🔫 9 🔫 10 🔫 11 🔫 12 🔫 13 🔫 14 🔫 15 🔫 16
- 🔫 17 🔫 18 🔫 19 🔫 20 🔫 21 🔫 22 🔫 23 🔫 24 🔫 25 🔫 26 🔫 27 🔫 28 🔫 29 😥 30 🔫 31 🔫 32 
- 🔫 33 🔫 34 🔫 35 🔫 36 🔫 37 🔫 38 🔫 39 🔫 40 🔫 0 🔫 1  … ∞) 
+ 🔫 17 🔫 18 🔫 19 🔫 20 🔫 21 🔫 22 🔫 23 🔫 24 🔫 25 🔫 26 🔫 27 🔫 28 🔫 29 😥 30 🔫 31 🔫 32
+ 🔫 33 🔫 34 🔫 35 🔫 36 🔫 37 🔫 38 🔫 39 🔫 40 🔫 0 🔫 1  … ∞)
 
 ;; #30 seems happy
 ;; kill last
@@ -1106,9 +1106,9 @@ last-one
 (for ((i (- N SURVIVORS) )) (set! last-one (kill last-one  (1- K))))
 
 prisoners
-→  ( 🔄 🔫 0 🔫 1 🔫 2 🔫 3 🔫 4 🔫 5 🔫 6 🔫 7 🔫 8 🔫 9 🔫 10 🔫 11 🔫 12 🔫 13 🔫 14 😥 15 🔫 16 
-   🔫 17 🔫 18 🔫 19 🔫 20 🔫 21 🔫 22 🔫 23 🔫 24 🔫 25 🔫 26 🔫 27 🔫 28 🔫 29 😥 30 🔫 31 🔫 32 
-   🔫 33 😥 34 🔫 35 🔫 36 🔫 37 🔫 38 🔫 39 🔫 40 🔫 0 🔫 1  🔫 0 … ∞) 
+→  ( 🔄 🔫 0 🔫 1 🔫 2 🔫 3 🔫 4 🔫 5 🔫 6 🔫 7 🔫 8 🔫 9 🔫 10 🔫 11 🔫 12 🔫 13 🔫 14 😥 15 🔫 16
+   🔫 17 🔫 18 🔫 19 🔫 20 🔫 21 🔫 22 🔫 23 🔫 24 🔫 25 🔫 26 🔫 27 🔫 28 🔫 29 😥 30 🔫 31 🔫 32
+   🔫 33 😥 34 🔫 35 🔫 36 🔫 37 🔫 38 🔫 39 🔫 40 🔫 0 🔫 1  🔫 0 … ∞)
 
 
 ```
@@ -1181,16 +1181,16 @@ end
 ```txt
 
 Prisoners are executed in the order:
-3 
-7 
-11 
-4 
-9 
-2 
-10 
-6 
-5 
-8 
+3
+7
+11
+4
+9
+2
+10
+6
+5
+8
 1
 Survivor is prisoner: 0
 
@@ -1235,8 +1235,8 @@ Josephus.find(41,3)
 
 ```Lisp
 
-(defun jo(n k) 
-  (if (= 1 n) 1 (1+ (% (+ (1- k) 
+(defun jo(n k)
+  (if (= 1 n) 1 (1+ (% (+ (1- k)
 			  (jo (1- n) k)) n ) ) ))
 (princ-list (jo 50 2) "\n" (jo 60 3))
 ```
@@ -1291,7 +1291,7 @@ kill_few( Kill, Prisoners ) ->
 
 ```txt
 
-11> josephus_problem:task().        
+11> josephus_problem:task().
 {[30],
  [2,5,8,11,14,17,20,23,26,29,32,35,38,0,4,9,13,18,22,27,31,
   36,40,6,12,19,25|...]}
@@ -1408,7 +1408,7 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 
 
 ```txt
-josephus . 
+josephus .
 30
 
 ```
@@ -1541,13 +1541,13 @@ Prisoner William survived.
 int[] Josephus (int size, int kill, int survivors) {
     // init user pool
     def users = new int[size];
-    
+
     // give initial values such that [0] = 1 (first person) [1] = 2 (second person) etc
     users.eachWithIndex() {obj, i -> users[i] = i + 1};
-    
+
     // keep track of which person we are on (ranging from 1 to kill)
     def person = 1;
-    
+
     // keep going until we have the desired number of survivors
     while (users.size() > survivors)
     {
@@ -1556,15 +1556,15 @@ int[] Josephus (int size, int kill, int survivors) {
             if (person++ % kill == 0) {
                 users[i] = -1;
             }
-            
+
             // if person overflowed kill then reset back to 1
             if (person > kill) {person = 1;}
         }
-        
+
         // clear out all eliminated persons
         users = users.findAll{w -> w >= 0};
     }
-    
+
     // resulting set is the safe positions
     return users;
 }
@@ -1854,7 +1854,7 @@ With 41 people, counting by 3, the 4 safe places are:
 
 Using the executioner's algorithm.
 
-###  Tacit version 
+###  Tacit version
 
 
 
@@ -1870,16 +1870,16 @@ Structured derivation of the fixed tacit code
    MoreThanOne=. 1 < #@]
    WhileMoreThanOne=. (^:MoreThanOne f.) (^:_)
    prisoners=. i.@]
-   
+
    [ DropNext WhileMoreThanOne prisoners f.
 [ (1 }. <:@[ |. ])^:(1 < #@])^:_ i.@]
 ```
 
 
 
-###  Explicit version 
+###  Explicit version
 
-   
+
 
 ```J
 Josephus =: dyad define NB. explicit form, assume executioner starts at position 0
@@ -1894,7 +1894,7 @@ Josephus =: dyad define NB. explicit form, assume executioner starts at position
   PRISONERS =: EXECUTIONER kill PRISONERS
  end.
 )
-    
+
    3 Josephus 41
 30
 ```
@@ -1902,12 +1902,12 @@ Josephus =: dyad define NB. explicit form, assume executioner starts at position
 
 
 
-###  Explicit version 2 
+###  Explicit version 2
 
 
 ```J
    NB. this is a direct translation of the algo from C code above.
-   Josephus2 =: 4 : '(| x&+)/i. - 1+y' 
+   Josephus2 =: 4 : '(| x&+)/i. - 1+y'
 
    3 Josephus2 41
 30
@@ -1938,7 +1938,7 @@ public class Josephus {
         System.out.println();
         return prisoners.get(0);
     }
-    
+
     public static ArrayList<Integer> executeAllButM(int n, int k, int m){
         int killIdx = 0;
         ArrayList<Integer> prisoners = new ArrayList<Integer>(n);
@@ -1954,7 +1954,7 @@ public class Josephus {
         System.out.println();
         return prisoners;
     }
-    
+
     public static void main(String[] args){
         System.out.println("Survivor: " + execute(41, 3));
         System.out.println("Survivors: " + executeAllButM(41, 3, 3));
@@ -1966,10 +1966,10 @@ public class Josephus {
 
 ```txt
 Prisoners executed in order:
-2 5 8 11 14 17 20 23 26 29 32 35 38 0 4 9 13 18 22 27 31 36 40 6 12 19 25 33 39 7 16 28 37 10 24 1 21 3 34 15 
+2 5 8 11 14 17 20 23 26 29 32 35 38 0 4 9 13 18 22 27 31 36 40 6 12 19 25 33 39 7 16 28 37 10 24 1 21 3 34 15
 Survivor: 30
 Prisoners executed in order:
-2 5 8 11 14 17 20 23 26 29 32 35 38 0 4 9 13 18 22 27 31 36 40 6 12 19 25 33 39 7 16 28 37 10 24 1 21 3 
+2 5 8 11 14 17 20 23 26 29 32 35 38 0 4 9 13 18 22 27 31 36 40 6 12 19 25 33 39 7 16 28 37 10 24 1 21 3
 Survivors: [15, 30, 34]
 ```
 
@@ -2003,7 +2003,7 @@ public class Josephus {
 			ks.stream().mapToInt(Integer::intValue).toArray()
 		};
 	}
-	
+
 	private static String toString(List <Integer> ls) {
 		String dot = "";
 		if (ls.size() >= 45) {
@@ -2209,16 +2209,16 @@ fun josephus(n: Int, k: Int, m: Int): Pair<List<Int>, List<Int>> {
             if (survived.size == m) break@outer
             deleted++
             i += k
-        } 
+        }
         start = i - end - 1
     }
     return Pair(survived, killed)
 }
- 
+
 fun main(args: Array<String>) {
     val triples = listOf(Triple(5, 2, 1), Triple(41, 3, 1), Triple(41, 3, 3))
     for (triple in triples) {
-        val(n, k, m) = triple 
+        val(n, k, m) = triple
         println("Prisoners = $n, Step = $m, Survivors = $m")
         val (survived, killed)  = josephus(n, k, m)
         println("Survived   : $survived")
@@ -2314,18 +2314,18 @@ while (length(arrPeople(arrPeople == 1)) > 1)     % While more than 1 person is 
     counter = 0;
     while counter ~= count                       % Counting until we hit the count
         currInd = currInd + 1;                  % Move to the next person
-        
+
         if currInd > numPeople                  % If overflow, wraparound
             currInd = currInd - numPeople;
         end
-        
+
         if arrPeople(currInd)                   % If the current person is alive
             counter = counter + 1;                % Add 1 person to the count
             %fprintf("Index: %d \t| Counter: %d\n", currInd, counter)           % Uncomment to display index and counter location
         end
 
     end
-    
+
     arrPeople(currInd) = 0;                     % Kill the person we reached
     %fprintf("Killed person %d \n", currInd)                                   % Uncomment to display order of killing
     %disp(arrPeople)                                                           % Uncomment to display current status of people
@@ -2494,7 +2494,7 @@ class Josephus {
     for(i := 0;i < n;i+=1;){
       prisoners->AddBack(i);
     };
-    
+
     "Prisoners executed in order:"->PrintLine();
     while(prisoners->Size() > 1){
       killIdx := (killIdx + k - 1) % prisoners->Size();
@@ -2502,10 +2502,10 @@ class Josephus {
       "{$executed} "->Print();
       prisoners->Remove(killIdx);
     };
-    '\n'->Print();    
+    '\n'->Print();
     return prisoners->Get(0);
   }
-  
+
   function : ExecuteAllButM(n : Int, k : Int, m : Int) ~ Collection.IntVector {
     killIdx := 0;
     prisoners := Collection.IntVector->New();
@@ -2519,10 +2519,10 @@ class Josephus {
       "{$executed} "->Print();
       prisoners->Remove(killIdx);
     };
-    '\n'->Print();    
+    '\n'->Print();
     return prisoners;
   }
-  
+
   function : Main(args : String[]) ~ Nil {
     result := Execute(41, 3);
     "Survivor: {$result}"->PrintLine();
@@ -2554,9 +2554,9 @@ Oforth lists are 1-based : prisoners are numbered from 1 to n.
    n seq asListBuffer ->prisoners
    ListBuffer newSize(n) ->killed
 
-   0 n 1- loop: i [ 
+   0 n 1- loop: i [
       k 1- + prisoners size mod dup 1+ prisoners removeAt
-      killed add 
+      killed add
       ] drop
 
    System.Out "Killed : " << killed << "\nSurvivor : " << prisoners << cr
@@ -2621,7 +2621,7 @@ sub Execute(@prisoner, $k) {
 	@prisoner.shift;
     }
 }
- 
+
 my @prisoner = ^41;
 Execute @prisoner, 3;
 say "Prisoner {@prisoner} survived.";
@@ -2834,7 +2834,7 @@ The counting starts from one instead of zero. The last remaining person is retur
 ```txt
 killed:  02 05 08 11 14 17 20 23 26 29 32 35 38 00 04 09 13 18 22 27 31
          36 40 06 12 19 25 33 39 07 16 28 37 10 24 01 21 03 34 15
-Survivor(s):  30 
+Survivor(s):  30
 
 ```
 
@@ -2844,12 +2844,12 @@ Survivor(s):  30
 
 {{works with|PowerShell|2}}
 Adapted from the iterative algorithm in Sidef.
- 
+
 Rotating the circle K prisoners is equivalent to the executioner walking around the circle K prisoners.
 We rotate the circle to bring the next selectee to the "front" of the circle, then "select" him
 by moving past him to the remaining circle. After repeating through the entire prisoner population, we
 are left with the prisoners sorted into the order in which they are selected.
- 
+
 The lonely comma in the line where we create the $Prisoners arraylist is to prevent PowerShell from being too helpful.
 Normally when we present the PowerShell parser with an array within an array, it treats it as a cast, and
 we end up with the single array of elements. In those cases where we need an array to be treated as a single element of a parent array, we can use the unary comma to force PowerShell to treat it as an element.
@@ -2860,17 +2860,17 @@ function Get-JosephusPrisoners ( [int]$N, [int]$K )
     {
     #  Just for convenience
     $End = $N - 1
- 
+
     #  Create circle of prisoners
     $Prisoners = New-Object System.Collections.ArrayList ( , (0..$End) )
- 
+
     #  For each starting point of the reducing circle...
     ForEach ( $Start in 0..($End - 1) )
         {
         #  We subtract one from K for the one we advanced by incrementing $Start
         #  Then take K modulus the length of the remaining circle
         $RoundK = ( $K - 1 ) % ( $End - $Start + 1 )
-       
+
         #  Rotate the remaining prisoners K places around the remaining circle
         $Prisoners.SetRange( $Start, $Prisoners[ $Start..$End ][ ( $RoundK + $Start - $End - 1 )..( $RoundK - 1 ) ] )
         }
@@ -2884,13 +2884,13 @@ function Get-JosephusPrisoners ( [int]$N, [int]$K )
 
 #  Get the prisoner order for a circle of 41 prisoners, selecting every third
 $Prisoners = Get-JosephusPrisoners -N 41 -K 3
- 
+
 #  Display the prisoner order
 $Prisoners -join " "
- 
+
 #  Display the last remaining prisoner
 "Last prisoner remmaining: " + $Prisoners[-1]
- 
+
 #  Display the last three remaining prisoners
 $S = 3
 "Last $S remaining: " + $Prisoners[-$S..-1]
@@ -2965,33 +2965,33 @@ NewList prisoners.i()
 Procedure f2l(List p.i())
   FirstElement(p())    : tmp.i=p()
   DeleteElement(p(),1) : LastElement(p())
-  AddElement(p())      : p()=tmp 
+  AddElement(p())      : p()=tmp
 EndProcedure
 
 Procedure l2f(List p.i())
   LastElement(p())   : tmp.i=p()
   DeleteElement(p()) : FirstElement(p())
-  InsertElement(p()) : p()=tmp  
+  InsertElement(p()) : p()=tmp
 EndProcedure
 
 OpenConsole()
 Repeat
   Print(#LF$+#LF$)
   Print("Josephus problem - input prisoners : ") : n=Val(Input())
-  If n=0 : Break : EndIf  
+  If n=0 : Break : EndIf
   Print("                 - input steps     : ") : k=Val(Input())
   Print("                 - input survivors : ") : s=Val(Input()) : If s<1 : s=1 : EndIf
   ClearList(prisoners()) : For i=0 To n-1 : AddElement(prisoners()) : prisoners()=i : Next
   If n<100 : Print("Executed : ") : EndIf
-  While ListSize(prisoners())>s And n>0 And k>0 And k<n    
-    For j=1 To k : f2l(prisoners()) : Next    
-    l2f(prisoners()) : FirstElement(prisoners()) : If n<100 : Print(Str(prisoners())+Space(2)) : EndIf 
-    DeleteElement(prisoners())    
+  While ListSize(prisoners())>s And n>0 And k>0 And k<n
+    For j=1 To k : f2l(prisoners()) : Next
+    l2f(prisoners()) : FirstElement(prisoners()) : If n<100 : Print(Str(prisoners())+Space(2)) : EndIf
+    DeleteElement(prisoners())
   Wend
   Print(#LF$+"Surviving: ")
   ForEach prisoners()
     Print(Str(prisoners())+Space(2))
-  Next      
+  Next
 ForEver
 End
 ```
@@ -3045,7 +3045,7 @@ Survivor: 2
 >>> print(j(41, 3))
 Prisoner killing order: 2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35, 38, 0, 4, 9, 13, 18, 22, 27, 31, 36, 40, 6, 12, 19, 25, 33, 39, 7, 16, 28, 37, 10, 24, 1, 21, 3, 34, 15.
 Survivor: 30
->>> 
+>>>
 ```
 
 
@@ -3062,7 +3062,7 @@ def josephus(n, k):
 Survivor: 2
 >>> print(josephus(41, 3))
 Survivor: 30
->>> 
+>>>
 ```
 
 
@@ -3110,13 +3110,13 @@ def josephus(prisoner, kill, surviver):
     s = [1] * kill
     s[kill -1] = 0
     queue = p
-    
+
     queue = compress(queue, cycle(s))
     try:
         while True:
-            p.append(queue.next())        
+            p.append(queue.next())
     except StopIteration:
-        pass 
+        pass
 
     kil=[]
     killed = compress(p, cycle(k))
@@ -3124,8 +3124,8 @@ def josephus(prisoner, kill, surviver):
         while True:
             kil.append(killed.next())
     except StopIteration:
-        pass 
-        
+        pass
+
     print 'The surviver is: ', kil[-surviver:]
     print 'The kill sequence is ', kil[:prisoner-surviver]
 
@@ -3148,7 +3148,7 @@ The kill sequence is  [1, 3, 0, 4]
 jose <-function(s, r,n){
 y <- 0:(r-1)
  for (i in (r+1):n)
-  y <- (y + s) %% i 
+  y <- (y + s) %% i
  return(y)
 }
 > jose(3,1,41) # r is the number of remained prisoner.
@@ -3156,7 +3156,7 @@ y <- 0:(r-1)
 
 ```
 
- 
+
 
 
 ## Racket
@@ -3230,7 +3230,7 @@ William survived
 * 09.05.2013 Walter Pachl accept arguments n w s and fix output
 *                         thanks for the review/test
 * I see no need for specifying a start count (actually a start number)
-* This program should work on EVERY REXX. 
+* This program should work on EVERY REXX.
 * Pls report if this is not the case and let us know what's a problem.
 **********************************************************************/
 Parse Arg n w s .
@@ -3287,7 +3287,7 @@ This version allows the user to specify:
 ::*   the number of prisoners
 ::*   the count-off   [every K<sup>th</sup> prisoner]
 ::*   the start count   [zero or one]
-::*   the number of survivors 
+::*   the number of survivors
 ::*   the solving of the extra credit task requirement of multiple survivors
 The output echoes the choices specified and was made "English" readable.
 
@@ -3364,9 +3364,9 @@ k=3
 see "n =" + n + " k = " + k + " final survivor = " + josephus(n, k, 0) + nl
 
 func josephus (n, k, m)
-lm = m  
-for a = m+1  to n 
-     lm = (lm+k) % a 
+lm = m
+for a = m+1  to n
+     lm = (lm+k) % a
 next
 josephus = lm
 return josephus
@@ -3445,7 +3445,7 @@ Survivors: [15, 30, 34]
 ## Scala
 
 Executioner's Solution, not Josephus'
- 
+
 (Prisoners labeled 0 to n-1)
 
 ```scala
@@ -3455,7 +3455,7 @@ def executed( prisonerCount:Int, step:Int ) = {
 
   def behead( dead:Seq[String], alive:Seq[String] )(countOff:Int) : (Seq[String], Seq[String]) = {
     val group = if( alive.size < countOff ) countOff - alive.size else countOff
-	
+
     (dead ++ alive.take(group).drop(group-1), alive.drop(group) ++ alive.take(group-1))
   }
 
@@ -3471,10 +3471,10 @@ def executed( prisonerCount:Int, step:Int ) = {
 }
 
 val (dead,alive) = executed(41,3)
-  
+
 println( "Prisoners executed in order:" )
 print( dead.mkString(" ") )
-	
+
 println( "\n\nJosephus is prisoner " + alive(0) )
 ```
 
@@ -3535,7 +3535,7 @@ const func string: str (in array integer: intArr) is func
   end func;
 
 enable_output(array integer);
-    
+
 const proc: main is func
   begin
     writeln("Survivor: " <& executeAllButM(41, 3, 1));
@@ -3549,10 +3549,10 @@ const proc: main is func
 ```txt
 
 Prisoners executed in order:
-2 5 8 11 14 17 20 23 26 29 32 35 38 0 4 9 13 18 22 27 31 36 40 6 12 19 25 33 39 7 16 28 37 10 24 1 21 3 34 15 
+2 5 8 11 14 17 20 23 26 29 32 35 38 0 4 9 13 18 22 27 31 36 40 6 12 19 25 33 39 7 16 28 37 10 24 1 21 3 34 15
 Survivor: 30
 Prisoners executed in order:
-2 5 8 11 14 17 20 23 26 29 32 35 38 0 4 9 13 18 22 27 31 36 40 6 12 19 25 33 39 7 16 28 37 10 24 1 21 3 
+2 5 8 11 14 17 20 23 26 29 32 35 38 0 4 9 13 18 22 27 31 36 40 6 12 19 25 33 39 7 16 28 37 10 24 1 21 3
 Survivors: 15, 30, 34
 
 ```
@@ -3565,10 +3565,10 @@ Survivors: 15, 30, 34
 
 ```sequencel
 main := josephus(41, 3);
-    
+
 josephus(n, k) := josephusHelper(n, k, 1, 0);
 
-josephusHelper(n, k, i, r) :=  
+josephusHelper(n, k, i, r) :=
         r when i > n
     else
         josephusHelper(n, k, i + 1, (r + k) mod i);
@@ -3629,7 +3629,7 @@ Prisoner 30 survived.
 
 ```Swift
 class Josephus {
-    
+
     class func lineUp(#numberOfPeople:Int) -> [Int] {
         var people = [Int]()
         for (var i = 0; i < numberOfPeople; i++) {
@@ -3637,11 +3637,11 @@ class Josephus {
         }
         return people
     }
-    
+
     class func execute(#numberOfPeople:Int, spacing:Int) -> Int {
         var killIndex = 0
         var people = self.lineUp(numberOfPeople: numberOfPeople)
-        
+
         println("Prisoners executed in order:")
         while (people.count > 1) {
             killIndex = (killIndex + spacing - 1) % people.count
@@ -3650,7 +3650,7 @@ class Josephus {
         println()
         return people[0]
     }
-    
+
     class func executeAndRemove(inout people:[Int], killIndex:Int) {
         print("\(people[killIndex]) ")
         people.removeAtIndex(killIndex)
@@ -3659,7 +3659,7 @@ class Josephus {
     class func execucteAllButM(#numberOfPeople:Int, spacing:Int, save:Int) -> [Int] {
         var killIndex = 0
         var people = self.lineUp(numberOfPeople: numberOfPeople)
-        
+
         println("Prisoners executed in order:")
         while (people.count > save) {
             killIndex = (killIndex + spacing - 1) % people.count
@@ -3680,11 +3680,11 @@ println("Survivors: \(Josephus.execucteAllButM(numberOfPeople: 41, spacing: 3, s
 ```txt
 
 Prisoners executed in order:
-2 5 8 11 14 17 20 23 26 29 32 35 38 0 4 9 13 18 22 27 31 36 40 6 12 19 25 33 39 7 16 28 37 10 24 1 21 3 34 15 
+2 5 8 11 14 17 20 23 26 29 32 35 38 0 4 9 13 18 22 27 31 36 40 6 12 19 25 33 39 7 16 28 37 10 24 1 21 3 34 15
 Josephus is number: 30
 
 Prisoners executed in order:
-2 5 8 11 14 17 20 23 26 29 32 35 38 0 4 9 13 18 22 27 31 36 40 6 12 19 25 33 39 7 16 28 37 10 24 1 21 3 
+2 5 8 11 14 17 20 23 26 29 32 35 38 0 4 9 13 18 22 27 31 36 40 6 12 19 25 33 39 7 16 28 37 10 24 1 21 3
 Survivors: [15, 30, 34]
 
 ```
@@ -3979,14 +3979,14 @@ Survivors: [15,30,34]
 10 LET n=41: LET k=3: LET m=0
 20 GO SUB 100
 30 PRINT "n= ";n;TAB (7);"k= ";k;TAB (13);"final survivor= ";lm
-40 STOP 
+40 STOP
 100 REM Josephus
 110 REM Return m-th on the reversed kill list; m=0 is final survivor.
 120 LET lm=m: REM Local copy of m
 130 FOR a=m+1 TO n
 140 LET lm=FN m(lm+k,a)
 150 NEXT a
-160 RETURN 
+160 RETURN
 200 DEF FN m(x,y)=x-INT (x/y)*y: REM MOD function
 
 ```

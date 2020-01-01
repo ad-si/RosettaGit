@@ -19,9 +19,9 @@ tags = []
 {{omit from|SAS}}
 {{omit from|Scilab}}
 {{omit from|Stata}}
-The general idea behind an executable library is to create a library 
-that when used as a library does one thing; 
-but has the ability to be run directly via command line. 
+The general idea behind an executable library is to create a library
+that when used as a library does one thing;
+but has the ability to be run directly via command line.
 Thus the API comes with a CLI in the very same source code file.
 
 '''Task detail'''
@@ -37,7 +37,7 @@ Thus the API comes with a CLI in the very same source code file.
 
 * Explain any extra setup/run steps needed to complete the task.
 
-'''Notes:''' 
+'''Notes:'''
 * It is assumed that for a language that overwhelmingly ships in a compiled form, such as C, the library must also be an executable and the compiled user of that library is to do so without changing the compiled library. I.e. the compile tool-chain is assumed ''not'' to be present in the runtime environment.
 * Interpreters are present in the runtime environment.
 
@@ -45,7 +45,7 @@ Thus the API comes with a CLI in the very same source code file.
 ## Ada
 
 
-In Ada, '''any parameterless procedure''' can either '''run as a (stand-alone) main program''', or can '''be called from another program''' like a library function. 
+In Ada, '''any parameterless procedure''' can either '''run as a (stand-alone) main program''', or can '''be called from another program''' like a library function.
 For the task at hand, this appears useful -- except for the following two obstacles:
 
 1. There are neither ingoing parameters into a parameterless procedure, nor is there a return value.
@@ -63,9 +63,9 @@ end Parameter;
 ```
 
 
-Now comes our parameterless procedure Hailstone (''hailstone.adb''). Note that we are 
-using the the package Hailstones (''hailstones.adb/hailstones.ads'') from 
-[[Hailstone sequence#Alternative method]] to perform the real computation. 
+Now comes our parameterless procedure Hailstone (''hailstone.adb''). Note that we are
+using the the package Hailstones (''hailstones.adb/hailstones.ads'') from
+[[Hailstone sequence#Alternative method]] to perform the real computation.
 
 
 ```Ada
@@ -182,13 +182,13 @@ end Hailstone_Test;
 Compiling and running this gives the following output:
 
 ```txt
-> ./hailstone_test 
+> ./hailstone_test
 Most frequent length: 72; 1467 sequences of that length.
 The first such sequence: Hailstone( 444 ).
 ```
 
 
-Note that using global variables for parameter and return value passing works here, but is bad programming practice. Ada is a compiled language, and it is not clear how useful an executable library written in a compiled language is, anyway. 
+Note that using global variables for parameter and return value passing works here, but is bad programming practice. Ada is a compiled language, and it is not clear how useful an executable library written in a compiled language is, anyway.
 
 In fact, except for the constraints imposed by this task, there is no reason to ask the procedure Hailstone for the length of a Hailstone sequence -- solid software engineering practice would require to directly call the parameterized function Hailstones.Create_Sequence.
 
@@ -209,7 +209,7 @@ If (A_LineFile = A_ScriptFullPath){
 		. h27[1] ", " h27[2] ", " h27[3] ", " h27[4]
 		. "`nEnds with "
 		. h27[m-3] ", " h27[m-2] ", " h27[m-1] ", " h27[m]
-	
+
 	Loop 100000
 	{
 		h := hailstone(A_Index)
@@ -262,7 +262,7 @@ for length, count in col
 MsgBox % "the most common length was " highestN "; it occurred " highestCount " times."
 ```
 
-Running this '''does not''' trigger the output of the hailstone.ahk, 
+Running this '''does not''' trigger the output of the hailstone.ahk,
 instead it outputs this:
 
 ```txt
@@ -275,13 +275,13 @@ the most common length was 72; it occurred 1467 times.
 ## BBC BASIC
 
 {{works with|BBC BASIC for Windows}}
-To meet the terms of this task the BBC BASIC run-time engine '''bbcwrun.exe''' must be installed on the target PC and the file extension '''.bbc''' must be associated with this executable.  
+To meet the terms of this task the BBC BASIC run-time engine '''bbcwrun.exe''' must be installed on the target PC and the file extension '''.bbc''' must be associated with this executable.
 This is normally the case when ''BBC BASIC for Windows'' has been installed.
 
 
 ### Library
 
-This must be saved as the file HAILSTONE.BBC.  
+This must be saved as the file HAILSTONE.BBC.
 It may be used as a library (see below) or executed directly.
 
 ```bbcbasic
@@ -298,7 +298,7 @@ It may be used as a library (see below) or executed directly.
       PRINT "The number with the longest hailstone sequence is " ; maxnum%
       PRINT "Its sequence length is " ; maxlen%
       END
-      
+
       DEF FNhailstone(N%)
       LOCAL L%
       WHILE N% <> 1
@@ -326,7 +326,7 @@ This uses the above program as a library:
 
 ```bbcbasic
       INSTALL "HAILSTONE"
-      
+
       DIM freq%(351)
       FOR number% = 2 TO 100000
         seqlen% = FNhailstone(number%)
@@ -339,7 +339,7 @@ This uses the above program as a library:
           mostcommon% = i%
         ENDIF
       NEXT
-      
+
       PRINT "The most common sequence length is " ; mostcommon%
       PRINT "It occurs " ; max% " times"
       END
@@ -362,9 +362,9 @@ Solution for Linux/GCC. First, header file hailstone.h:
 
 ```C
 #ifndef HAILSTONE
-#define HAILSTONE       
-                                
-long hailstone(long, long**);   
+#define HAILSTONE
+
+long hailstone(long, long**);
 void free_sequence(long *);
 
 #endif/*HAILSTONE*/
@@ -372,8 +372,8 @@ void free_sequence(long *);
 
 Then the lib source code hailstone.c (actual name doesn't matter):
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 long hailstone(long n, long **seq)
@@ -421,23 +421,23 @@ int hail_main() /* entry point when running along, see compiler command line */
 
 A program to use the lib (I call it test.c):
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include "hailstone.h"
 
 int main()
-{       
+{
         long i, longest, longest_i, len;
- 
-        longest = 0;    
+
+        longest = 0;
         for (i = 1; i < 100000; i++) {
                 len = hailstone(i, 0);
                 if (len > longest) {
                         longest_i = i;
-                        longest = len; 
+                        longest = len;
                 }
         }
- 
+
         printf("Longest sequence at %ld, length %ld\n", longest_i, longest);
 
         return 0;
@@ -809,7 +809,7 @@ Hailstone sequence for the number 27:
 77031 has the longest Hailstone sequence, its length being 351.
 
 ```
- 
+
 
 Now create this file in the 'hailstone' directory:
 
@@ -856,7 +856,7 @@ The Hailstone length returned most is 72, which occurs 1467 times.
 '''HailStone.io'''
 
 ```io
-HailStone := Object clone 
+HailStone := Object clone
 HailStone sequence := method(n,
     if(n < 1, Exception raise("hailstone: expect n >= 1 not #{n}" interpolate))
     n = n floor         // make sure integer value
@@ -872,7 +872,7 @@ if( isLaunchScript,
     out := HailStone sequence(27)
     writeln("hailstone(27) has length ",out size,": ",
         out slice(0,4) join(" ")," ... ",out slice(-4) join(" "))
- 
+
     maxSize := 0
     maxN := 0
     for(n, 1, 100000-1,
@@ -882,7 +882,7 @@ if( isLaunchScript,
             maxN = n
         )
     )
- 
+
     writeln("For numbers < 100,000, ", maxN,
     " has the longest sequence of ", maxSize, " elements.")
 )
@@ -909,7 +909,7 @@ if(lengths size == 1,
         " occurring ",maxCount," times.")
 ,
     writeln("The most frequent sequence lengths for n < 100,000 are:\n",
-        lengths join(",")," occurring ",maxCount," times each.") 
+        lengths join(",")," occurring ",maxCount," times each.")
 )
 ```
 
@@ -993,8 +993,8 @@ Hailstone sequences for whole numbers less than 100000
 ```
 
 
-Notes:  <code>9!:29]1</code>  tells the interpeter to run a phrase.  <code>9!:27'phrase'</code>  tells the interpeter the phrase to execute.  (<code>9!:</code> means, in essence: standard library number 9, and <code>9!:29</code> identifies a specific entry point in that library.)  
-In 66.ijs we can not use the presence of <code>9!:29]1</code> from <code>hailseq.ijs</code> because hailseq.ijs was loaded with require which means that if it had already been loaded it will not be loaded again.  
+Notes:  <code>9!:29]1</code>  tells the interpeter to run a phrase.  <code>9!:27'phrase'</code>  tells the interpeter the phrase to execute.  (<code>9!:</code> means, in essence: standard library number 9, and <code>9!:29</code> identifies a specific entry point in that library.)
+In 66.ijs we can not use the presence of <code>9!:29]1</code> from <code>hailseq.ijs</code> because hailseq.ijs was loaded with require which means that if it had already been loaded it will not be loaded again.
 (And, <code>66</code> here is just an arbitrary temporary file name.)
 
 
@@ -1012,7 +1012,7 @@ function hailstone(n)
     while n > 1
         if n & 1 > 0
             n = 3n + 1
-        else 
+        else
             n = Int(n//2)
         end
         append!(ret, n)
@@ -1077,10 +1077,10 @@ The most common hailstone sequence length for hailstone(n) for 1 <= n < 100000 i
 ## Limbo
 
 
-There's no real difference in compilation or output 
-for libraries versus commands in Inferno; 
-commands (by convention) are expected to define an <code>init()</code> function that accepts a reference to a graphical context and a list of strings (i.e., the argument list) in order to satisy the type-checker.  
-So this task is fairly simple.  
+There's no real difference in compilation or output
+for libraries versus commands in Inferno;
+commands (by convention) are expected to define an <code>init()</code> function that accepts a reference to a graphical context and a list of strings (i.e., the argument list) in order to satisy the type-checker.
+So this task is fairly simple.
 First, <code>execlib.b</code> looks like this:
 
 
@@ -1108,7 +1108,7 @@ init(nil: ref Draw->Context, nil: list of string)
 		seq = tl seq;
 	}
 	sys->print("⋯");
-	
+
 	while(len seq > 4)
 		seq = tl seq;
 
@@ -1219,14 +1219,14 @@ The most common sequence length is 72 (encountered 1467 times)
 
 ```Mathematica
 hailstone[1] = {1};
-hailstone[n_] := 
+hailstone[n_] :=
   hailstone[n] = Prepend[hailstone[If[EvenQ[n], n/2, 3 n + 1]], n];
 If[$ScriptCommandLine[[1]] == $Input,
   val = hailstone[27];
-  Print["hailstone(27) starts with ", val[[;; 4]], ", ends with ", 
+  Print["hailstone(27) starts with ", val[[;; 4]], ", ends with ",
    val[[-4 ;;]], ", and has length ", Length[val], "."];
   val = MaximalBy[Range[99999], Length@*hailstone][[1]];
-  Print[val, " has the longest hailstone sequence with length ", 
+  Print[val, " has the longest hailstone sequence with length ",
    Length[hailstone[val]], "."]];
 ```
 
@@ -1244,7 +1244,7 @@ This assumes that the library is named <tt>hailstone.m</tt>.
 
 ```Mathematica
 << hailstone.m;
-Print["The most common hailstone length is ", 
+Print["The most common hailstone length is ",
   Commonest[Length@*hailstone /@ Range[99999]][[1]], "."];
 ```
 
@@ -1261,7 +1261,7 @@ The most common hailstone length is 72.
 The NetRexx compiler can generate Java classes and in common with all Java classes, public methods within each class are available for use by other programs.  Packaging a class in a JAR file effectively crates a library that can be used by any other Java program.  If this file is constructed correctly it can also by delivered as an &quot;executable JAR file&quot; which can be launched via the <tt>-jar</tt> switch of the <tt>java</tt> command.  The following command can be used to package the [[Hailstone sequence#NetRexx|NetRexx Hailstone Sequence]] sample as an executable JAR file:
 
 ```txt
-$ jar cvfe RHailstoneSequence.jar RHailstoneSequence RHailstoneSequence.class 
+$ jar cvfe RHailstoneSequence.jar RHailstoneSequence RHailstoneSequence.class
 added manifest
 adding: RHailstoneSequence.class(in = 2921) (out= 1567)(deflated 46%)
 ```
@@ -1451,7 +1451,7 @@ int main(void)
 
 Compile hailstone.c: ''gcc -O2 -Wall hailstone.c -fPIC -shared -o libhailstone.so -lpari -Wl,-e,main''
 
-Execute library: ''./libhailstone.so'': 
+Execute library: ''./libhailstone.so'':
 
 ```txt
 27: 82, 41, 124, 62, 31, 94, 47, 142, 71, 214, 107, 322, 161, 484, 242, 121, 364, 182, 91, 274, 137, 412, 206, 103, 310, 155, 466, 233, 700, 350, 175, 526, 263, 790, 395, 1186, 593, 1780, 890, 445, 1336, 668, 334, 167, 502, 251, 754, 377, 1132, 566, 283, 850, 425, 1276, 638, 319, 958, 479, 1438, 719, 2158, 1079, 3238, 1619, 4858, 2429, 7288, 3644, 1822, 911, 2734, 1367, 4102, 2051, 6154, 3077, 9232, 4616, 2308, 1154, 577, 1732, 866, 433, 1300, 650, 325, 976, 488, 244, 122, 61, 184, 92, 46, 23, 70, 35, 106, 53, 160, 80, 40, 20, 10, 5, 16, 8, 4, 2, 1, (112)
@@ -1521,17 +1521,17 @@ Main program in file <code>test.pl</code>:
 use Hailstone;
 use strict;
 use warnings;
- 
+
 my %seqs;
 for (1 .. 100_000) {
     $seqs{Hailstone::len($_)}++;
 }
- 
+
 my ($most_frequent) = sort {$seqs{$b} <=> $seqs{$a}} keys %seqs;
 print "Most frequent length: $most_frequent ($seqs{$most_frequent} occurrences)\n";
 ```
 
-Running the lib: 
+Running the lib:
 ```txt
 % perl Hailstone.pm
 seq of 27 - 112 elements: 27 82 41 124 62 31 94 47 142 ... 10 5 16 8 4 2 1
@@ -1584,7 +1584,7 @@ my %score;
 (1 .. 100_000).race.map: { %score{hailstone($_).elems}++ };
 say "Most common length is {.key}, occurring {.value} times." given max :by(*.value), %score;
 ```
- 
+
 
 Called with a command line as:
 
@@ -1646,14 +1646,14 @@ integer count = 1
 end function
 
 if isMainOrInclude() then
- 
+
     sequence s = hailstone(27)
     integer ls = length(s)
     s[5..-5] = {".."}
     puts(1,"hailstone(27) = ")
     ? s
     printf(1,"length = %d\n\n",ls)
- 
+
     integer hmax = 1, imax = 1,count
     for i=2 to 1e5-1 do
         count = hailstone_count(i)
@@ -1662,7 +1662,7 @@ if isMainOrInclude() then
             imax = i
         end if
     end for
- 
+
     printf(1,"The longest hailstone sequence under 100,000 is %d with %d elements.\n",{imax,hmax})
 end if
 ```
@@ -1718,7 +1718,7 @@ both can be used as an executable.
 
 ```Pike
 #!/usr/bin/env pike
- 
+
 int next(int n)
 {
     if (n==1)
@@ -1728,7 +1728,7 @@ int next(int n)
     else
         return n/2;
 }
- 
+
 array(int) hailstone(int n)
 {
     array seq = ({ n });
@@ -1736,15 +1736,15 @@ array(int) hailstone(int n)
         seq += ({ n });
     return seq;
 }
- 
+
 void main()
 {
     array(int) two = hailstone(27);
     if (equal(two[0..3], ({ 27, 82, 41, 124 })) && equal(two[<3..], ({ 8,4,2,1 })))
         write("sizeof(({ %{%d, %}, ... %{%d, %} }) == %d\n", two[0..3], two[<3..], sizeof(two));
- 
+
     mapping longest = ([ "length":0, "start":0 ]);
- 
+
     foreach(allocate(100000); int start; )
     {
         int length = sizeof(hailstone(start));
@@ -1760,7 +1760,7 @@ void main()
 
 
 if run directly we get:
- $ pike hailstone.pike 
+ $ pike hailstone.pike
  sizeof(({ 27, 82, 41, 124, , ... 8, 4, 2, 1,  }) == 112
  longest sequence starting at 77031 has 351 elements
 
@@ -1839,10 +1839,10 @@ void analyze(mapping long)
 
 ## PicoLisp
 
-There is no formal difference between libraries and other executable files 
-in PicoLisp. 
-Any function in a library can be called from the command line 
-by prefixing it with '-'. 
+There is no formal difference between libraries and other executable files
+in PicoLisp.
+Any function in a library can be called from the command line
+by prefixing it with '-'.
 Create an executable file (chmod +x) "hailstone.l":
 
 ```PicoLisp
@@ -1971,10 +1971,10 @@ When Racket runs a file (with <tt>racket some-file</tt>) it executes its
 toplevel expressions, and then it runs a submodule named <tt>main</tt> if there
 is one.  When a file is used as a library (with <tt>require</tt>), the toplevel
 expressions are executed as well, but the <tt>main</tt> is <em>not</em>
-executed.  
-The idea is that toplevel expressions might be used to initialize state 
-that the library needs -- a good example here is the initialization 
-of the memoization hash table.  
+executed.
+The idea is that toplevel expressions might be used to initialize state
+that the library needs -- a good example here is the initialization
+of the memoization hash table.
 (Note that this is better than the common hacks of check-the-loaded-script-name, since it is robust against failures due to symlinks, case normalization, etc etc.)
 
 We start with a "<tt>hs.rkt</tt>" file that has the exact code from the
@@ -2057,19 +2057,19 @@ Most frequent sequence length for x<=100000: 72, appearing 1467 times
 
 ### task 1
 
-The following REXX subroutine (or function, as it returns a value) 
-is normally stored in a folder that the REXX interpreter 
-searches first for subroutine/function call/invokes.  
+The following REXX subroutine (or function, as it returns a value)
+is normally stored in a folder that the REXX interpreter
+searches first for subroutine/function call/invokes.
 
-If not there, the REXX interpreter normally checks the 
-current drive (or default disk), and then through some sort of heirarchy --- depending upon the particular REXX interpreter and operating system. 
+If not there, the REXX interpreter normally checks the
+current drive (or default disk), and then through some sort of heirarchy --- depending upon the particular REXX interpreter and operating system.
 
 
 On Microsoft Windows systems using Regina, PC/REXX, Personal REXX, R4, or ROO, the program name is normally the function name with a file extension of '''REX'''   (but that isn't a strict requirement or rule, each REXX interpreter has multiple file extensions that are supported).
 
 On VM/CMS systems, the filetype (the file extension) is normally   '''EXEC'''.   If however, the REXX program was previously '''EXECLOAD'''ed, it may have a different name (identity) assigned to it.
 
-The following program (function) is named:   '''HAILSTONE.REX'''   (the case doesn't matter for Microsoft Windows systems).    
+The following program (function) is named:   '''HAILSTONE.REX'''   (the case doesn't matter for Microsoft Windows systems).
 
 All REXX interpreters support subroutines/functions being on the current drive ('''CD'''), default disk (or MDISK in the case of CMS), or the equivalent.
 
@@ -2146,7 +2146,7 @@ say '(between 1──►'z") "  p,
 
 ```txt
 
-(between 1──►99999)  72  is the most common hailstone sequence length  (with 1467 occurrences). 
+(between 1──►99999)  72  is the most common hailstone sequence length  (with 1467 occurrences).
 
 ```
 
@@ -2176,9 +2176,9 @@ where   '''xxx'''   is the name of the REXX interpreter, and if installed under 
 
 ## Ruby
 
-An executable library checks ''__FILE__ == $0''. Here, ''__FILE__'' is the path 
-of the current source file, and ''$0'' is the path of the current executable. 
-If ''__FILE__ == $0'', then the current source file is the executable, 
+An executable library checks ''__FILE__ == $0''. Here, ''__FILE__'' is the path
+of the current source file, and ''$0'' is the path of the current executable.
+If ''__FILE__ == $0'', then the current source file is the executable,
 else the current source file is a library for some other executable.
 
 * ''__FILE__ == $0'' also works with older versions of Ruby, but this Hailstone example calls new methods in Ruby 1.8.7.
@@ -2221,7 +2221,7 @@ end
 {{out|It runs like any Ruby program}}
 
 ```txt
-$ ruby scratch.rb                                                              
+$ ruby scratch.rb
 [112, [27, 82, 41, 124], [8, 4, 2, 1]]
 77031 has a hailstone sequence length of 351
 the largest number in that sequence is 21933016
@@ -2246,8 +2246,8 @@ puts "with #{count} such sequences."
 ```
 
 
-As with any library, ''hailstone.rb'' must be in <code>$:</code>, the search path for libraries. 
-One way is to leave ''hailstone.rb'' in the current directory and run <code>ruby -I. hsfreq.rb</code>. 
+As with any library, ''hailstone.rb'' must be in <code>$:</code>, the search path for libraries.
+One way is to leave ''hailstone.rb'' in the current directory and run <code>ruby -I. hsfreq.rb</code>.
 (Ruby older than 1.9.2 also searches the current directory by default.)
 
 
@@ -2263,7 +2263,7 @@ with 1467 such sequences.
 ## Scala
 
 {{libheader|Scala}}
-In Scala it is possible to combine several "main"s 
+In Scala it is possible to combine several "main"s
 (mixed-in by the App trait) in one file (e.g. HailstoneSequence.scala):
 
 ```Scala
@@ -2437,7 +2437,7 @@ if {[info script] eq $::argv0} {
 ```
 
 
-To make the package locatable, run this Tcl script 
+To make the package locatable, run this Tcl script
 in the same directory which builds the index file:
 
 ```tcl
@@ -2518,7 +2518,7 @@ L(351,77031)
 Number of different lengths: 314
 Most frequent length: 72; 1467 sequences of that length.
 
- $ 
+ $
 
 ```
 

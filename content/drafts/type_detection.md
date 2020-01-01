@@ -16,16 +16,16 @@ This draft task needs a purpose, a description and some way to tell whether exam
 
 
 ;Task:
-Show a function/procedure that processes a block of text by printing it. 
+Show a function/procedure that processes a block of text by printing it.
 
-The function takes one parameter (ideally) that describes the text. 
+The function takes one parameter (ideally) that describes the text.
 
 Demonstrate by calling the function twice, each time passing in a different type.
 
 
-This can be done with pattern matching, multi-methods, dynamic type detection, structure(s) with a tag, etc. 
+This can be done with pattern matching, multi-methods, dynamic type detection, structure(s) with a tag, etc.
 
-The objective is write a [e.g. library] function that processes text from multiple sources (such as a string/char *, socket, file, etc). 
+The objective is write a [e.g. library] function that processes text from multiple sources (such as a string/char *, socket, file, etc).
 
 If not practical, show how the caller would coerce a type that can be passed to the library function.
 
@@ -80,7 +80,7 @@ The closest C comes to meeting this task, short of building it into the compiler
 #include<stdio.h>
 #include<ctype.h>
 
-void typeDetector(char* str){	
+void typeDetector(char* str){
 	if(isalnum(str[0])!=0)
 		printf("\n%c is alphanumeric",str[0]);
 	if(isalpha(str[0])!=0)
@@ -100,7 +100,7 @@ void typeDetector(char* str){
 int main(int argC, char* argV[])
 {
 	int i;
-	
+
 	if(argC==1)
 		printf("Usage : %s <followed by ASCII characters>");
 	else{
@@ -167,8 +167,8 @@ C:\rosettaCode>typeDetector.exe 3
 
 {{trans|D}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 template <typename T>
 auto typeString(const T&) {
@@ -265,7 +265,7 @@ end
 
 print_type 123
 print_type 123.45
-print_type  rand < 0.5 ? "1" : 0 
+print_type  rand < 0.5 ? "1" : 0
 print_type rand < 1.5
 print_type nil
 print_type 'c'
@@ -354,7 +354,7 @@ M: string myprint "I'm a string: \"%s\"\n" printf ;
 M: fixnum myprint "I'm a fixnum: " write . ;
 M: array  myprint "I'm an array: { " write
     [ pprint bl ] each "}" print ;
-    
+
 "Hello world." myprint
 { 1 2 3 4 5 }  myprint
 123            myprint
@@ -592,7 +592,7 @@ true
 
 ## Perl
 
-The function <code>ref</code> takes a reference to a variable, via '\', and returns the type. Some of the more common are shown here.  
+The function <code>ref</code> takes a reference to a variable, via '\', and returns the type. Some of the more common are shown here.
 In the cases where the value in question is already a reference (<code>$regex</code> and <code>$subref</code>) the '\' is not used.
 
 ```perl
@@ -751,7 +751,7 @@ echo gettype(12345); // Returns integer
 
 
 
-###  Specific tester functions 
+###  Specific tester functions
 
 
 * [http://php.net/manual/en/function.is-array.php is_array()]
@@ -772,8 +772,8 @@ $str.GetType()
 
 ```txt
 
-IsPublic IsSerial Name                                     BaseType     
--------- -------- ----                                     --------                                                                                                                  
+IsPublic IsSerial Name                                     BaseType
+-------- -------- ----                                     --------
 True     True     String                                   System.Object
 
 ```
@@ -790,8 +790,8 @@ $int.GetType()
 
 ```txt
 
-IsPublic IsSerial Name                                     BaseType        
--------- -------- ----                                     --------                                                                                                                  
+IsPublic IsSerial Name                                     BaseType
+-------- -------- ----                                     --------
 True     True     Int32                                    System.ValueType
 
 ```
@@ -881,7 +881,7 @@ http://docs.racket-lang.org/ts-reference/type-ref.html
             stream? sequence? ; 4.14
             dict? ; 4.15
             set-equal? set-eqv? set-eq? set? set-mutable? set-weak? ; 4.16
-            continuation? procedure? ; 4.17            
+            continuation? procedure? ; 4.17
             ))
     ;; class/interface testing
     ,(list (λ (v) (is-a? v object%)) "object%")
@@ -931,7 +931,7 @@ http://docs.racket-lang.org/ts-reference/type-ref.html
           (hasheqv)
           (make-weak-hash)
           (make-weak-hasheq)
-          (make-weak-hasheqv)     
+          (make-weak-hasheqv)
           (make-immutable-hash)
           (make-immutable-hasheq)
           (make-immutable-hasheqv)
@@ -1058,11 +1058,11 @@ The following table is generated:
 
 ## REXX
 
-These are some of the tests that can be performed on REXX variables (values) to determine which   ''type''   they are. 
+These are some of the tests that can be performed on REXX variables (values) to determine which   ''type''   they are.
 
-Although everything   (as far as variables are concerning)   in the REXX language is a character string,   character 
+Although everything   (as far as variables are concerning)   in the REXX language is a character string,   character
 
-strings can be classified by having certain characteristics,   or in other words, ''types''. 
+strings can be classified by having certain characteristics,   or in other words, ''types''.
 
 Characteristics of these   ''types''   can overlap.
 
@@ -1410,7 +1410,7 @@ Dunno
 
 ## Scala
 
-  
+
 ```scala
 object TypeDetection extends App {
   def showType(a: Any) = a match {

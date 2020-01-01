@@ -214,7 +214,7 @@ Using the GNAT run-time library:
 
 with Ada.Text_IO;     use Ada.Text_IO;
 with System.OS_Lib;   use System.OS_Lib;
- 
+
 procedure Execute_Synchronously is
    Result    : Integer;
    Arguments : Argument_List :=
@@ -469,7 +469,7 @@ sys$dir
 
 
 ```brat
-include :subprocess 
+include :subprocess
 
 p subprocess.run :ls  #Lists files in directory
 ```
@@ -493,8 +493,8 @@ exec ls
 ISO C & POSIX:
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 
 int main()
 {
@@ -537,7 +537,7 @@ namespace Execute
 
 ```csharp
 using System;
- 
+
   class Execute {
      static void Main() {
          System.Diagnostics.Process proc = new System.Diagnostics.Process();
@@ -565,7 +565,7 @@ user=> (use '[clojure.java.shell :only [sh]])
 
 user=> (sh "ls" "-aul")
 
-{:exit 0, 
+{:exit 0,
  :out total 64
 drwxr-xr-x  11 zkim  staff    374 Jul  5 13:21 .
 drwxr-xr-x  25 zkim  staff    850 Jul  5 13:02 ..
@@ -590,9 +590,9 @@ user=> (use '[clojure.java.shell :only [sh]])
 
 user=> (println (:out (sh "cowsay" "Printing a command-line output")))
 
- _________________________________ 
+ _________________________________
 < Printing a command-line output. >
- --------------------------------- 
+ ---------------------------------
         \   ^__^
          \  (oo)\_______
             (__)\       )\/\
@@ -831,9 +831,9 @@ system( "/bin/ls -l /tmp" ) -- Linux BSD OSX --
 
 ----
 
- -- system_exec() --                                                                                                                                         
- -- system_exec does not spawn a new shell --                                                                                                                  
- -- ( like bash or cmd.exe ) --                                                                                                                                 
+ -- system_exec() --
+ -- system_exec does not spawn a new shell --
+ -- ( like bash or cmd.exe ) --
 
 integer exit_code = 0
 sequence ls_command = ""
@@ -1158,7 +1158,7 @@ See also: the [http://www.haskell.org/ghc/docs/latest/html/libraries/process-1.2
 
 ```hicest
 SYSTEM(CoMmand='pause')
-SYSTEM(CoMmand='dir & pause') 
+SYSTEM(CoMmand='dir & pause')
 ```
 
 
@@ -1191,7 +1191,7 @@ Unicon extends system to allow specification of files and a wait/nowait paramete
 
 ```Icon
 
-  pid := system(command_string,&input,&output,&errout,"wait") 
+  pid := system(command_string,&input,&output,&errout,"wait")
   pid := system(command_string,&input,&output,&errout,"nowait")
 
 ```
@@ -1244,13 +1244,13 @@ load'task'
 NB.  Execute a command and wait for it to complete
 shell 'dir'
 
-NB.  Execute a command but don't wait for it to complete 
+NB.  Execute a command but don't wait for it to complete
 fork 'notepad'
 
 NB.  Execute a command and capture its stdout
-stdout   =:  shell 'dir'  
+stdout   =:  shell 'dir'
 
-NB.  Execute a command, provide it with stdin, 
+NB.  Execute a command, provide it with stdin,
 NB.  and capture its stdout
 stdin    =:  'blahblahblah'
 stdout   =:  stdin spawn 'grep blah'
@@ -1269,10 +1269,10 @@ import java.util.Scanner;
 import java.io.*;
 
 public class Program {
-    public static void main(String[] args) {    	
+    public static void main(String[] args) {
     	try {
     		Process p = Runtime.getRuntime().exec("cmd /C dir");//Windows command, use "ls -oa" for UNIX
-    		Scanner sc = new Scanner(p.getInputStream());    		
+    		Scanner sc = new Scanner(p.getInputStream());
     		while (sc.hasNext()) System.out.println(sc.nextLine());
     	}
     	catch (IOException e) {
@@ -1307,7 +1307,7 @@ public class MainEntry {
             // Replace following code with your intends processing tools
             while(read >= 0) {
                 System.out.write(buffer, 0, read);
-                
+
                 read = pipedOut.read(buffer);
             }
         } catch (IOException e) {
@@ -1323,8 +1323,8 @@ public class MainEntry {
             }
         }
     }
-    
-    
+
+
 }
 ```
 
@@ -1349,10 +1349,10 @@ public class MainEntry {
             // These two thread shall stop by themself when the process end
             Thread pipeThread = new Thread(new StreamGobber(aProcess.getInputStream()));
             Thread errorThread = new Thread(new StreamGobber(aProcess.getErrorStream()));
-            
+
             pipeThread.start();
             errorThread.start();
-            
+
             aProcess.waitFor();
         } catch (IOException e) {
             e.printStackTrace();
@@ -1576,7 +1576,7 @@ For pretty output, compose with <code>io:format</code>:
 
  drive1$ = left$(Drives$,1)
 run "cmd.exe /";drive1$;" dir & pause"
- 
+
 ```
 
 
@@ -1737,8 +1737,8 @@ Sample Usage:
 ```MATLAB>>
  system('PAUSE')
 
-Press any key to continue . . . 
- 
+Press any key to continue . . .
+
 
 ans =
 
@@ -2325,7 +2325,7 @@ EndImport
 
 If OpenConsole()
   system("dir & pause")
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -2619,7 +2619,7 @@ Sys.exec('ls');     # replaces current process with another
 
 
 Run a command normally through the shell:
- 
+
 
 ```slate
 Platform run: 'ls'.
@@ -2746,7 +2746,7 @@ would execute "ls" and pipe the result into the channel whose name is put in the
 set nextline [gets $io]
 ```
 
- 
+
 or read the whole shebang in a fell swoop:
 
 
@@ -2968,19 +2968,19 @@ End Function
 '   I believe that the command in the command line must be an exe or a bat file.
 '   Maybe, however, it can reference any file the system knows how to "Open"
 '
-' commandLine is an executable. 
+' commandLine is an executable.
 ' expectedDuration - is for poping up a dialog for whatever
 ' infoText - text for progressDialog dialog
 
 Public Function ShellAndWait( commandLine As String, _
     expectedDuration As Integer ) As Boolean
-    
+
     Dim inst As Long
     Dim startTime As Long
     Dim expirationTime As Long
     Dim pid As Long
     Dim expiresSameDay As Boolean
-    
+
     On Error GoTo HandleError
 
     'Deal with timeout being reset at Midnight ($hitForBrains VB folks)
@@ -2992,7 +2992,7 @@ Public Function ShellAndWait( commandLine As String, _
     End If
 
     inst = Shell(commandLine, vbMinimizedNoFocus)
-    
+
     If inst <> 0 Then
         pid = OpenProcess(PROCESS_QUERY_INFORMATION, False, inst)
 
@@ -3001,15 +3001,15 @@ Public Function ShellAndWait( commandLine As String, _
             If Timer > expirationTime And (expiresSameDay Or Timer < startTime) Then
                 Exit Do
             End If
-        Loop 
+        Loop
         ShellAndWait = True
     Else
         MsgBox ("Couldn't execute command: " & commandLine)
         ShellAndWait = False
     End If
-        
+
     Exit Function
-   
+
 HandleError:
     MsgBox ("Couldn't execute command: " & commandLine)
     ShellAndWait = False

@@ -15,11 +15,11 @@ tags = []
 {{Wikipedia|Decision Table|en}}
 
 
-[[wp:Decision_table|Decision Tables]] are a precise yet compact way to model complicated logic.  
+[[wp:Decision_table|Decision Tables]] are a precise yet compact way to model complicated logic.
 
 
 ;Task:
-Demonstrate how your language implements decision tables. 
+Demonstrate how your language implements decision tables.
 
 Use this [[wp:Decision_table#Example|example]] of Printer Troubleshooting given in the Wikipedia article.
 
@@ -81,7 +81,7 @@ end Generic_Decision_Table;
 
 ```
 
-That was easy! Now we implement the printer troubleshooting application: 
+That was easy! Now we implement the printer troubleshooting application:
 
 ```Ada
 with Generic_Decision_Table, Ada.Text_IO;
@@ -157,7 +157,7 @@ end Printer_Decision_Table;
 Sample output:
 
 ```txt
-> ./printer_decision_table 
+> ./printer_decision_table
 Printer does not print? y/Y => 'yes', any other input: 'no'
 y
 A red light is flashing? y/Y => 'yes', any other input: 'no'
@@ -166,7 +166,7 @@ Printer is unrecognised? y/Y => 'yes', any other input: 'no'
 n
 Check for paper jam!
 
-> ./printer_decision_table 
+> ./printer_decision_table
 Printer does not print? y/Y => 'yes', any other input: 'no'
 y
 A red light is flashing? y/Y => 'yes', any other input: 'no'
@@ -176,7 +176,7 @@ n
 Check/replace ink!
 Check for paper jam!
 
-> ./printer_decision_table 
+> ./printer_decision_table
 Printer does not print? y/Y => 'yes', any other input: 'no'
 n
 A red light is flashing? y/Y => 'yes', any other input: 'no'
@@ -240,14 +240,14 @@ loop, parse, Conditions, `n
     Gui, add, text, y+0 , % A_LoopField
     Gui, add, text, wp h1 0x7 y+0
 }
-Gui, add, text, wp 
+Gui, add, text, wp
 Gui, add, text, wp h1 0x7 y+0
 loop, parse, Actions, `n
 {
     Gui, add, text, y+0 , % A_LoopField
     Gui, add, text, wp h1 0x7 y+0
 }
-Gui, add, text, wp 
+Gui, add, text, wp
 loop, % Condition.MaxIndex()
     Gui, add, Checkbox,vC%A_Index% gSubmit wp h15, % Cond%A_Index%
 Gui, add, text, wp , take the following actions(s):
@@ -400,9 +400,9 @@ actions:
 ## C
 
 With flaky keyboard input:
-```C>#include <stdio.h
+```c
+#include <stdio.h>
 
- 
 #define N_COND 3
 #define COND_LEN (1 << N_COND)
 
@@ -480,7 +480,7 @@ working-storage section.
 procedure division.
 start-decision-table.
 
-display space 
+display space
 
 display 'The printer does not print (Y or N) ' with no advancing
 accept notprinting
@@ -502,10 +502,10 @@ display space
 *>A red light is flashing              Y  Y  N  N  Y  Y  N  N
 *>Printer is unrecognized              Y  N  Y  N  Y  N  Y  N
 *>  actions
-*>Check the power cable                      X      
-*>Check the printer-computer cable     X     X      
-*>Ensure printer software is installed X     X     X     X  
-*>Check/replace ink                    X  X        X  X   
+*>Check the power cable                      X
+*>Check the printer-computer cable     X     X
+*>Ensure printer software is installed X     X     X     X
+*>Check/replace ink                    X  X        X  X
 *>Check for paper jam                     X     X
 
 *>end decision table
@@ -560,12 +560,12 @@ end program 'decisiontable'.
 {{out}}
 
 ```txt
-$ cobc -xj decisiontable.cob 
- 
+$ cobc -xj decisiontable.cob
+
 The printer does not print (Y or N) n
 A red light is flashing (Y or N) n
 The printer is unrecognized (Y or N) y
- 
+
 Ensure printer software is installed
 
 ```
@@ -845,13 +845,13 @@ procedure main()
       cond("Printer does not print",                  "YYYYNNNN"),
       cond("A red light is flashing",		      "YYNNYYNN"),
       cond("Printer is unrecognised",		      "YNYNYNYN"),
-      ,                                            # separator 
+      ,                                            # separator
       act("Check the power cable",		      "NNYNNNNN"),
       act("Check the printer-computer cable",	      "YNYNNNNN"),
       act("Ensure printer software is installed",     "YNYNYNYN"),
       act("Check/replace ink",			      "YYNNYYNN"),
       act("Check for paper jam",		      "NYNYNNNN") ]
-      
+
    every (act := [])[1 to *DT] := ''               # empty csets for actions
    ans := ''                                       # empty answer cset
    every d := DT[i := 1 to *DT] do {
@@ -866,13 +866,13 @@ procedure main()
          "act":{
             d.aflags := list(*conds,'')
             every j := 1 to *conds do {
-               if d.flags[j] == "Y" then 
+               if d.flags[j] == "Y" then
                   d.aflags[j] := conds[j]          # matching conditions
-               if d.aflags[j] == ans 
+               if d.aflags[j] == ans
                   then write(d.text)               # matched, write action
                }
             }
-         default: write("----------------------------")   # separator 
+         default: write("----------------------------")   # separator
          }
       }
 end
@@ -881,10 +881,10 @@ procedure ask(text)
 repeat {
    writes(text," ? ")
    a := map(trim(read()),&lcase,&ucase)
-   case a of { 
+   case a of {
       "Y": return a
       "N": fail
-      default: write(a," is an invalid response, enter a Y or N, ") 
+      default: write(a," is an invalid response, enter a Y or N, ")
       }
    }
 end
@@ -915,7 +915,7 @@ require'strings'
 )
 
 'ACTION_NAMES  ACTIONS'=: |:':'&cut;._2 noun define
- 	Check the power cable:               	-   -   X   -   -   -   -   - 
+ 	Check the power cable:               	-   -   X   -   -   -   -   -
  	Check the printer-computer cable:    	X   -   X   -   -   -   -   -
  	Ensure printer software is installed:	X   -   X   -   X   -   X   -
  	Check/replace ink:                   	X   X   -   -   X   X   -   -
@@ -925,10 +925,10 @@ require'strings'
 assert (-:~.)|: 'Y' =/&;: RULES
 RULE_TABLE=: (,/'X'=/&;: ACTIONS) /:&|: 'Y' =/&;: RULES
 
-troubleshoot =:  verb define 
+troubleshoot =:  verb define
    RULE_TABLE troubleshoot~ RULE_NAMES ,&< ACTION_NAMES
-:  
-   'q a'=.x 
+:
+   'q a'=.x
    smoutput 'Having trouble?  Let''s track down the problem:'
    options=. a #~ y {~ #. 'Y'={.@toupper@deb@(1!:1)@1:@smoutput@,&'?'@dtb"1 q
    (,~ ('/'cut'Suggested resolutions:/Solution unknown.') {::~ 0=#) options
@@ -946,10 +946,10 @@ Y
 Y
  	Printer is unrecognised?
 Y
-Suggested resolutions:                
- 	Check the printer-computer cable    
+Suggested resolutions:
+ 	Check the printer-computer cable
  	Ensure printer software is installed
- 	Check/replace ink                   
+ 	Check/replace ink
 ```
 
 '''Example''' (''solution not found''):
@@ -968,8 +968,8 @@ Solution unknown.
 
 
 
-###  Comments 
- 
+###  Comments
+
 The only interesting line in this solution is the one that assigns <tt>RULE_TABLE</tt>.  The rest is mostly ancillary support.
 
 For large numbers of rules and few actions, J's native support of sparse arrays might provide a performance advantage, particularly in space.  A minor note about the implementation here: the verb (function) <tt>troubleshoot</tt> is generalized, and reusable on any set of rule table, questions, and suggested actions.  The default is to use those given in the printer troubleshooting table.
@@ -1179,7 +1179,7 @@ Check/replace ink.
 {{trans|Perl}}
 
 ```julia
-const queries = [("Printer does not print",  0b11110000), 
+const queries = [("Printer does not print",  0b11110000),
                  ("A red light is flashing", 0b11001100),
                  ("Printer is unrecognised", 0b10101010)]
 
@@ -1243,7 +1243,7 @@ val conditions = listOf(
 val actions = listOf(
     "Check the power cable"                to "NNYNNNNN",
     "Check the printer-computer cable"     to "YNYNNNNN",
-    "Ensure printer software is installed" to "YNYNYNYN", 
+    "Ensure printer software is installed" to "YNYNYNYN",
     "Check/replace ink"                    to "YYNNNYNN",
     "Check for paper jam"                  to "NYNYNNNN"
 )
@@ -1368,16 +1368,16 @@ sub decide (@q, @s) {
 loop {
     decide
     (
-	  "Y Y Y Y N N N N" => "Printer does not print",              
-	  "Y Y N N Y Y N N" => "A red light is flashing",             
-	  "Y N Y N Y N Y N" => "Printer is unrecognised",             
-    ), 
+	  "Y Y Y Y N N N N" => "Printer does not print",
+	  "Y Y N N Y Y N N" => "A red light is flashing",
+	  "Y N Y N Y N Y N" => "Printer is unrecognised",
+    ),
     (
-	:2<0_0_1_0_0_0_0_0> => "Check the power cable",                
-	:2<1_0_1_0_0_0_0_0> => "Check the printer-computer cable",     
-	:2<1_0_1_0_1_0_1_0> => "Ensure printer software is installed", 
-	:2<1_1_0_0_1_1_0_0> => "Check/replace ink",                    
-	:2<0_1_0_1_0_0_0_0> => "Check for paper jam",                  
+	:2<0_0_1_0_0_0_0_0> => "Check the power cable",
+	:2<1_0_1_0_0_0_0_0> => "Check the printer-computer cable",
+	:2<1_0_1_0_1_0_1_0> => "Ensure printer software is installed",
+	:2<1_1_0_0_1_1_0_0> => "Check/replace ink",
+	:2<0_1_0_1_0_0_0_0> => "Check for paper jam",
     );
     say '';
 }
@@ -1448,7 +1448,7 @@ procedure validate(sequence s, integer l, string letters, name)
         end for
     end for
 end procedure
-    
+
 constant qa = split_any(conditions,"\n:",no_empty:=true),
          sa = split_any(actions,"\n:",no_empty:=true)
 integer l = length(qa[1])
@@ -1460,7 +1460,7 @@ function ask_questions()
         while true do
             puts(1,qa[i+1]&":? ")
             a = upper(wait_key())
-            if find(a,"YN") then exit end if        
+            if find(a,"YN") then exit end if
             puts(1,"\nplease enter Y or N\n")
         end while
         printf(1,"%c\n",a)
@@ -1617,7 +1617,7 @@ def dt_creator():
             name, _, rules = [x.strip() for x in action.partition(';')]
             rules = eval(rules)
             assert all(len(rule) == len(conditions) for rule in rules), \
-                   "The number of conditions in a rule to trigger this action is wrong" 
+                   "The number of conditions in a rule to trigger this action is wrong"
             action2rules.append((name, rules))
     actions = [x[0] for x in action2rules]
     # Map condition to actions
@@ -1661,7 +1661,7 @@ Input an action, a semicolon, then a list of tuples of rules that trigger it. En
 3: Ensure printer software is installed; [(1,1,1), (1,0,1), (0,1,1), (0,0,1)]
 4: Check/replace ink;  [(1,1,1), (1,1,0), (0,1,1), (0,1,0)]
 5: Check for paper jam; [(1,1,0), (1,0,0)]
-6: 
+6:
 
 
 USING THE DECISION TABLE
@@ -1726,10 +1726,10 @@ I thought it might be fun to merge them.
 
 (define (run-decision-table tbl)
   (match-define (list '2ddecision_table col-widths row-heights all-cells ...) tbl)
-  
+
   ;; after this, the rules without an X are removed
   (define full-cells (filter (match-lambda [(list _ _ _ ...) #t] [_ #f]) all-cells))
-  
+
   ;; cell addresses are (list column row)
   (match-define
     (list-no-order
@@ -1739,13 +1739,13 @@ I thought it might be fun to merge them.
      `(((,_ ,action-rows) ...)                          Actions)
      remaining-cells ...)
     full-cells)
-  
+
   (define remaining-cells# (cells->hash remaining-cells))
   (define (cell# c r (dflt #f))
     (hash-ref remaining-cells# (list c r) dflt))
-  
+
   (define text-column (first text-columns))
-  
+
   (let question-loop ((remain-conds condition-rows) (remain-acts action-rows))
     (match remain-conds
       [(list) (displayln "I give up... read the manual or something.")]
@@ -1816,7 +1816,7 @@ There was additional support added to the code for:
 ::*   a   ''no solution found''   message
 ::*   a   ''don't care''   requirement   (regarding the decision table)
 ::*   a method of specifying requirements and not needing recoding for future queries
-::*   used a minimalistic way in expressing the decision table 
+::*   used a minimalistic way in expressing the decision table
 ::*   extra prompting when there was a user response error
 ::*   handles superfluous blanks and some punctuation.
 ::*   displaying of a countdown so user knows length of interrogation
@@ -2038,14 +2038,14 @@ class DecisionTable
     @conditions = conditions
     @actions = []
     @rules = []
-    actions.each {|action, ruleset| @actions << action; @rules << ruleset} 
+    actions.each {|action, ruleset| @actions << action; @rules << ruleset}
   end
 
   def run
     puts "Conditions:"
     index = ask_conditions
     puts "Actions:"
-    results = @rules.each_with_index.inject([]) do |sum, (ruleset, idx)| 
+    results = @rules.each_with_index.inject([]) do |sum, (ruleset, idx)|
       sum << @actions[idx] if ruleset[index] == 1
       sum
     end
@@ -2053,7 +2053,7 @@ class DecisionTable
     results.each {|res| puts "  #{res}"}
     puts ""
   end
-  
+
   private
   def ask_conditions
     answers = @conditions.inject("") {|sum, c| sum + get_response(c)}
@@ -2076,7 +2076,7 @@ dt = DecisionTable.new(
         "Printer does not print",              #  Y Y Y Y N N N N
         "A red light is flashing",             #  Y Y N N Y Y N N
         "Printer is unrecognised",             #  Y N Y N Y N Y N
-      ], 
+      ],
       [
         ["Check the power cable",                [0,0,1,0,0,0,0,0]],
         ["Check the printer-computer cable",     [1,0,1,0,0,0,0,0]],

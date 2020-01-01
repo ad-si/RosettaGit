@@ -697,8 +697,8 @@ abcdefghijklmnopqrstuvwxyz
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 
 #define N 26
 
@@ -721,8 +721,8 @@ int main() {
 C++ can do the task in the identical way as C, or else, it can use a STL function.
 {{works with|C++11}}
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <numeric>
 
 int main() {

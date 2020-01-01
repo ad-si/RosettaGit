@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task|Text processing}} 
+{{task|Text processing}}
 [[Category:Regular expressions]]
 {{omit from|BASIC}}
 {{omit from|Brlcad}}
@@ -18,7 +18,7 @@ tags = []
 {{omit from|PARI/GP}}
 
 
-;Task: 
+;Task:
 :*   match a string against a regular expression
 :*   substitute part of a string using a regular expression
 
@@ -81,8 +81,8 @@ This is a Regex
 
 ## Ada
 
-There is no Regular Expression library in the Ada Standard, 
-so I am using one of the libraries provided by gnat/gcc. 
+There is no Regular Expression library in the Ada Standard,
+so I am using one of the libraries provided by gnat/gcc.
 
 ```ada
 with Ada.Text_IO; with Gnat.Regpat; use Ada.Text_IO;
@@ -174,7 +174,7 @@ end try
 
 ## ALGOL 68
 
-The routines ''grep in strings'' and ''sub in string'' 
+The routines ''grep in strings'' and ''sub in string''
 are not part of [[ALGOL 68]]'s standard prelude.
 
 <!-- {{does not work with|ALGOL 68|Standard - grep/sub in string are not part of the standard's prelude. }} -->
@@ -206,8 +206,8 @@ i am another string
 ```
 
 
-Standard ALGOL 68 does have an primordial form of pattern matching 
-called a '''format'''. 
+Standard ALGOL 68 does have an primordial form of pattern matching
+called a '''format'''.
 This is designed to extract values from input data.
 But it can also be used for outputting (and transputting) the original data.
 
@@ -288,7 +288,7 @@ $0m3 4ll0c4t3d $tr1ng
 
 
 ```AutoHotkey
-MsgBox % foundpos := RegExMatch("Hello World", "World$")  
+MsgBox % foundpos := RegExMatch("Hello World", "World$")
 MsgBox % replaced := RegExReplace("Hello World", "World$", "yourself")
 ```
 
@@ -296,7 +296,7 @@ MsgBox % replaced := RegExReplace("Hello World", "World$", "yourself")
 
 ## AWK
 
-AWK supports regular expressions, which are typically enclosed using slash symbols at the front and back, and the tilde regular expression binding operator: 
+AWK supports regular expressions, which are typically enclosed using slash symbols at the front and back, and the tilde regular expression binding operator:
 
 ```awk
 $ awk '{if($0~/[A-Z]/)print "uppercase detected"}'
@@ -351,16 +351,16 @@ Uses the [http://people.delphiforums.com/gjc/gnu_regex.html gnu_regex] library.
       IF gnu_regex% = 0 ERROR 100, "Cannot load gnu_regex.dll"
       SYS "GetProcAddress", gnu_regex%, "regcomp" TO regcomp
       SYS "GetProcAddress", gnu_regex%, "regexec" TO regexec
-      
+
       DIM regmatch{start%, finish%}, buffer% 256
-      
+
       REM Find all 'words' in a string:
       teststr$ = "I love PATTERN matching!"
       pattern$ = "([a-zA-Z]+)"
-      
+
       SYS regcomp, buffer%, pattern$, 1 TO result%
       IF result% ERROR 101, "Failed to compile regular expression"
-      
+
       first% = 1
       REPEAT
         SYS regexec, buffer%, MID$(teststr$, first%), 1, regmatch{}, 0 TO result%
@@ -371,11 +371,11 @@ Uses the [http://people.delphiforums.com/gjc/gnu_regex.html gnu_regex] library.
           first% += f%
         ENDIF
       UNTIL result%
-      
+
       REM Replace 'PATTERN' with 'pattern':
       teststr$ = "I love PATTERN matching!"
       pattern$ = "(PATTERN)"
-      
+
       SYS regcomp, buffer%, pattern$, 1 TO result%
       IF result% ERROR 101, "Failed to compile regular expression"
       SYS regexec, buffer%, teststr$, 1, regmatch{}, 0 TO result%
@@ -405,7 +405,7 @@ I love pattern matching!
 
 ## Bracmat
 
-Pattern matching in Bracmat is inspired by pattern matching in Snobol. 
+Pattern matching in Bracmat is inspired by pattern matching in Snobol.
 It also is quite different from regular expressions:
 * Patterns in Bracmat are not greedy
 * It is not possible to replace substrings, because values can never be changed
@@ -496,8 +496,8 @@ p str    # prints "I Am Another string"
 As far as I can see, POSIX defined function for regex matching, but nothing for substitution. So we must do all the hard work ''by hand''. The complex-appearing code could be turned into a function.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <regex.h>
@@ -511,7 +511,7 @@ int main()
    const char *t1 = "this is a matching string";
    const char *t2 = "this is not a matching string!";
    const char *ss = "istyfied";
-   
+
    regcomp(&preg, "string$", REG_EXTENDED);
    printf("'%s' %smatched with '%s'\n", t1,
                                         (regexec(&preg, t1, 0, NULL, 0)==0) ? "" : "did not ", tp);
@@ -532,12 +532,12 @@ int main()
       ns[ substmatch[0].rm_so + strlen(ss) +
           strlen(&t1[substmatch[0].rm_eo]) ] = 0;
       printf("mod string: '%s'\n", ns);
-      free(ns); 
+      free(ns);
    } else {
       printf("the string '%s' is the same: no matching!\n", t1);
    }
    regfree(&preg);
-   
+
    return 0;
 }
 ```
@@ -550,8 +550,8 @@ int main()
 
 {{libheader|Boost}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <iterator>
 #include <boost/regex.hpp>
@@ -819,7 +819,7 @@ true
 	(setq regex (format "%s.+$" word) )
 	(setq str (replace-regexp-in-string regex (format "%s right" word) str) )
 	(insert (format "result: %s\n"  str) ))
-    (insert (format "%s not found in: %s\n" word str) ))) 
+    (insert (format "%s not found in: %s\n" word str) )))
 
 (setq str1 "before center after" str2 "before centre after")
 
@@ -873,7 +873,7 @@ open System.Text.RegularExpressions
 let main argv =
     let str = "I am a string"
     if Regex("string$").IsMatch(str) then Console.WriteLine("Ends with string.")
- 
+
     let rstr = Regex(" a ").Replace(str, " another ")
     Console.WriteLine(rstr)
     0
@@ -950,7 +950,7 @@ for [first, last] = line =~ %r/my name is (\w+) (\w+)/ig
 {
    println["First name is: $first"]
    println["Last name is: $last"]
-} 
+}
 
 ```
 
@@ -959,7 +959,7 @@ Replacement:  (Replaces in the variable <code>line</code>)
 
 ```frink
 
-line =~ %s/Frank/Frink/g 
+line =~ %s/Frank/Frink/g
 
 ```
 
@@ -970,7 +970,7 @@ line =~ %s/Frank/Frink/g
 '''[https://gambas-playground.proko.eu/?gist=5a2a1052f8dff12596fa7f45242d25a9 Click this link to run this code]'''
 
 ```gambas
-Public Sub Main() 
+Public Sub Main()
 Dim sString As String = "Hello world!"
 
 If sString Ends "!" Then Print sString & " ends with !"
@@ -980,7 +980,7 @@ sString = Replace(sString, "world", "moon")
 
 Print sString
 
-End 
+End
 ```
 
 Output:
@@ -1178,7 +1178,7 @@ println ("'${woodchuck}' ${wwMatches ? 'does' : 'does not'} match '${containsWoo
 {{out}}
 
 ```txt
-=== Regular-expression String syntax (/string/)=== 
+=== Regular-expression String syntax (/string/)===
 [woodRE:[Ww]o\w+d, piperRE:[Pp]\w+r]
 
 === Pattern (~) operator ===
@@ -1286,8 +1286,8 @@ WRITE(ClipBoard) string ! Th** q****ck br**wn f**x j**mps **v**r th** l**zy d**g
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-Regex includes procedures to provide access to regular expressions within native string scanning and matching expressions. 
-'ReFind' and 'ReMatch' respectively generate the sequence of beginning and ending positions matched by a regular expression. 
+Regex includes procedures to provide access to regular expressions within native string scanning and matching expressions.
+'ReFind' and 'ReMatch' respectively generate the sequence of beginning and ending positions matched by a regular expression.
 Additionally, there is a regular expression pattern compiler 'RePat' and other supporting functions and variables.
 
 
@@ -1300,14 +1300,14 @@ p := "string$"                  # regular expression
 s ? write(image(s),if ReFind(p) then " matches " else " doesn't match ",image(p))
 
 s[j := ReFind(p,s):ReMatch(p,s,j)] := "replacement"
-write(image(s)) 
+write(image(s))
 end
 
-link regexp   # link to IPL regexp 
+link regexp   # link to IPL regexp
 ```
 
 {{libheader|Icon Programming Library}}
-[http://www.cs.arizona.edu/icon/library/procs/regexp.htm See regexp].  
+[http://www.cs.arizona.edu/icon/library/procs/regexp.htm See regexp].
 
 {{out}}
 
@@ -1335,7 +1335,7 @@ replace the regular expression "simple" in T with "replacement";
 ## J
 
 
-J's regex support is built on top of PCRE.  
+J's regex support is built on top of PCRE.
 
 
 ```j
@@ -1345,7 +1345,7 @@ str =: 'I am a string'   NB.  String used in examples.
 
 
 Matching:
-    
+
 
 ```j
    '.*string$' rxeq str     NB.  1 is true, 0 is false
@@ -1354,7 +1354,7 @@ Matching:
 
 
 Substitution:
-   
+
 
 ```j
    ('am';'am still') rxrplc str
@@ -1450,7 +1450,7 @@ Recent versions of jq (jq > 1.4) include PCRE regex support using the [http://ww
 '''Test''':
 
 ```jq
-"I am a string" | test("string$") 
+"I am a string" | test("string$")
 ```
 
 yields: true
@@ -1647,7 +1647,7 @@ Com objects always have one real pointer. We can't returned id (because at the e
 We can use named parameters (for Word)  Try {Method Documents, "add", "", DocumentType:=WdNewWebPage as doc1}
 
 New version using enumerator from object. Including a help SUB for displaying all functions of a COM object.
-Enumerators for some COM objects are number of function -4&, we can use this in place of string for the name of property. 
+Enumerators for some COM objects are number of function -4&, we can use this in place of string for the name of property.
 
 
 ```M2000 Interpreter
@@ -1672,13 +1672,13 @@ Module CheckIt {
       \\ Removing some spaces
       Print RegEx.Replace$("Myer Ken,  Vice President,  Sales and Services", " ")
       pattern$="(\d{3})-(\d{3})-(\d{4})"
- 
+
       Method ObjRegEx, "Execute", "555-123-4567, 555-943-6717" as MyMatches
       Print Type$(MyMatches)  ' it is a IMatchCollection2
       With MyMatches, "Count" as count, "Item" as List$()
       For i=0 to Count-1 : Print List$(i) : Next i
- 
- 
+
+
       Print RegEx.Replace$("555-123-4567, 555-943-6717", "($1) $2-$3")
       Pattern$ = "(\S+), (\S+)"
       Print RegEx.Replace$("Myer, Ken", "$2 $1")
@@ -1717,7 +1717,7 @@ Module Internal {
       \\ replace in place
       Insert  FindWhere, Len(what$)  a$="La Gioconda"
       Report a$
-      
+
       n$="The Mona Lisa is in the Louvre, not the Mona Lisa"
       Report Replace$("Mona Lisa", "La Gioconda", n$, 1, 1)  ' replace from start only one
       dim a$()
@@ -1800,12 +1800,12 @@ I'm a string
 samples = #("Some string 123","Example text 123","string",\
 	    "ThisString Will Not Match","A123,333,string","123451")
 samples2 = #("I am a string","Me too.")
-			
+
 regex = dotnetobject "System.Text.RegularExpressions.Regex" ".*\bstring*"
 regex2 = dotnetobject "System.Text.RegularExpressions.Regex" "\ba\b"
-			
+
 clearlistener()
-			
+
 format "Pattern is : %\n" (regex.toString())
 
 for i in samples do
@@ -1823,7 +1823,7 @@ for i in samples do
 -- replacement
 
 format "Pattern is : %\n" (regex2.toString())
-	
+
 for i in samples2 do
 (
 	if regex2.ismatch(i) then
@@ -1995,7 +1995,7 @@ Result string: "foo, foo, foo, fum, I smell the blood of an Englishman"
 ## NewLISP
 
 
-```NewLISP 
+```NewLISP
 (regex "[bB]+" "AbBBbABbBAAAA") -> ("bBBb" 1 4)
 ```
 
@@ -2145,7 +2145,7 @@ NSLog(@"%@", result);
 ## OCaml
 
 
-###  With the standard library 
+###  With the standard library
 
 Test
 
@@ -2171,7 +2171,7 @@ let result = Str.global_replace (Str.regexp "original") "modified" orig;;
 
 
 
-###  Using Pcre 
+###  Using Pcre
 
 '''Library:''' [http://ocaml.info/home/ocaml_sources.html#pcre-ocaml ocaml-pcre]
 
@@ -2285,21 +2285,21 @@ Result string: "foo, foo, foo, fum, I smell the blood of an Englishman"
 // Nigel Galloway - April 15th., 2012
 //
 namespace re;
- 
+
 interface
- 
+
 type
   re = class
   public
-    class method Main; 
+    class method Main;
   end;
- 
+
 implementation
- 
+
 class method re.Main;
 const
   myString = 'I think that I am Nigel';
-var 
+var
   r: System.Text.RegularExpressions.Regex;
   myResult : String;
 begin
@@ -2308,7 +2308,7 @@ begin
   myResult := r.Replace(myString, "you are");
   Console.WriteLine("{0} contains {1}", myResult, r.Match(myResult));
 end;
- 
+
 end.
 
 ```
@@ -2565,8 +2565,8 @@ String "a7z" matches pattern "a[0-9]z"
 
 ### Using Pattern Matching
 
-Regular expressions are static and inflexible. 
-Another possibility is dynamic pattern matching, 
+Regular expressions are static and inflexible.
+Another possibility is dynamic pattern matching,
 where arbitrary conditions can be programmed.
 
 ```PicoLisp
@@ -2798,11 +2798,11 @@ Replacement: This is a string.
 
 ## REXX
 
-Rexx does not directly support the use of regular expressions as part of the language. 
+Rexx does not directly support the use of regular expressions as part of the language.
 
-However, some rexx interpreters offer support for regular expressions via external function libraries or 
+However, some rexx interpreters offer support for regular expressions via external function libraries or
 
-through implementation specific extensions. 
+through implementation specific extensions.
 
 
 It is also possible to emulate regular expressions through appropriate coding techniques.
@@ -2944,7 +2944,7 @@ text = "I am a text"
 if right(text,4) = "text"
    see "'" + text +"' ends with 'text'" + nl
 ok
-i = substr(text,"am")           
+i = substr(text,"am")
 text = left(text,i - 1) + "was" + substr(text,i + 2)
 see "replace 'am' with 'was' = " + text + nl
 
@@ -2996,7 +2996,7 @@ str.gsub(/\bam\b/) { |match| match.upcase } #=> "I AM a string"
 ```runbasic
 string$ = "I am a string"
 if right$(string$,6) = "string" then print "'";string$;"' ends with 'string'"
-i = instr(string$,"am")           
+i = instr(string$,"am")
 string$ = left$(string$,i - 1) + "was" + mid$(string$,i + 2)
 print "replace 'am' with 'was' = ";string$
 
@@ -3013,7 +3013,7 @@ replace 'am' with 'was' = I was a string
 
 ## Rust
 
-Note that <code>Regex::new</code> checks for a valid regex and thus returns a <code>Result<Regex, Error></code>. 
+Note that <code>Regex::new</code> checks for a valid regex and thus returns a <code>Result<Regex, Error></code>.
 
 ```Rust
 use regex::Regex;
@@ -3244,9 +3244,9 @@ ifNotMatched: [
 |re s s1|
 re := 'm[a-z]+ing' asRegex.
 s := 'this is a matching string'.
- 
+
 (re search: s) ifTrue: [ 'matches!' ].
- 
+
 s1 := re copy: s replacingMatchesWith: 'modified'.
 
 ```
@@ -3415,7 +3415,7 @@ set theString "I am a string"
 if {[regexp -- {string$} $theString]} {
     puts "Ends with 'string'"
 }
- 
+
 if {![regexp -- {^You} $theString]} {
     puts "Does not start with 'You'"
 }
@@ -3459,11 +3459,11 @@ needs regex
 #! to match strings beginning with 'This'.
 " ^This" regex: expression
 
-#! An array to store the results of the match 
+#! An array to store the results of the match
 #! (Element 0 = starting offset, Element 1 = ending offset of match)
 2 cells is-array match
 
-#! Try both test strings against the expression. 
+#! Try both test strings against the expression.
 #! try-regex will return a flag.  -1 is TRUE, 0 is FALSE
 expression test.1 2 match try-regex .
 expression test.2 2 match try-regex .
@@ -3491,14 +3491,14 @@ Txr is not designed for sed-like filtering, but here is how to do <code>sed -e '
 ```
 
 
-How it works is that the body of the <code>coll</code> uses a double-variable match: 
-an unbound variable followed by a regex-match variable. 
+How it works is that the body of the <code>coll</code> uses a double-variable match:
+an unbound variable followed by a regex-match variable.
 The meaning of this combination is, "Search for the regular expression, and if successful, then bind all the characters whcih were skipped over by the search to the first variable, and the matching text to the second variable."
-So we collect pairs: pieces of mismatching text, and pieces of text which match the regex <code>dog</code>. 
-At the end, there is usually going to be a piece of text which does not match the body, because it has no match for the regex. 
+So we collect pairs: pieces of mismatching text, and pieces of text which match the regex <code>dog</code>.
+At the end, there is usually going to be a piece of text which does not match the body, because it has no match for the regex.
 Because <code>:gap 0</code> is specified, the coll construct will terminate when faced with this nonmatching text, rather than skipping it in a vain search for a match, which allows <code>@suffix</code> to take on this trailing text.
 
-To output the substitution, we simply spit out the mismatching texts 
+To output the substitution, we simply spit out the mismatching texts
 followed by the replacement text, and then add the suffix.
 
 
@@ -3506,9 +3506,9 @@ followed by the replacement text, and then add the suffix.
 
 
 Based on the technique of the previous example, here is a query for stripping C comments from a source file, replacing
-them by a space. 
-Here, the "non-greedy" version of the regex Kleene operator is used, 
-denoted by <code>%</code>. 
+them by a space.
+Here, the "non-greedy" version of the regex Kleene operator is used,
+denoted by <code>%</code>.
 This allows for a very simple, straightforward regex which correctly matches C comments. The <code>freeform</code> operator allows the entire input stream to be treated as one big line, so this works across multi-line comments.
 
 
@@ -3597,7 +3597,7 @@ echo "$modified"           # I am the modified string
 
 
 {{works with|bash}}
-have to break apart the original string to build the modified string. 
+have to break apart the original string to build the modified string.
 
 ```bash
 if [[ $s =~ $re ]]; then
@@ -3618,7 +3618,7 @@ fi
 void main(){
     string sentence = "This is a sample sentence.";
 
-    Regex a = new Regex("s[ai]mple"); // if using \n type expressions, use triple " for string literals as easy method to escape them                          
+    Regex a = new Regex("s[ai]mple"); // if using \n type expressions, use triple " for string literals as easy method to escape them
 
     if (a.match(sentence)){
         stdout.printf("\"%s\" is in \"%s\"!\n", a.get_pattern(), sentence);
@@ -3713,9 +3713,9 @@ Replace(" a ", " another ", REGEXP+NOERR)
 
 ```web68
 @1Introduction.
-Web 68 has access to a regular expression module 
+Web 68 has access to a regular expression module
 which can compile regular expressions,
-use them for matching strings, 
+use them for matching strings,
 and replace strings with the matched string.
 
 @a@<Compiler prelude@>

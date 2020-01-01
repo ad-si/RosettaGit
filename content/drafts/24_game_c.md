@@ -85,7 +85,7 @@ static void rpn_div()
 {
   double a, b;
   a = rpn_pop(); b = rpn_pop();
-  rpn_push( b / a );  
+  rpn_push( b / a );
 }
 static void rpn_neg()
 {
@@ -110,7 +110,7 @@ static struct op_func {
 static void rpn_call_op(char *op)
 {
   int i;
-  
+
   for(i=0; oplist[i].opname != NULL; i++)
   {
     if ( strcmp(op, oplist[i].opname) == 0 )
@@ -167,7 +167,7 @@ double rpn_get_number(char *e)
 bool rpn_evaluate(const char *expr)
 {
   char *tok;
-  
+
   char *buf = malloc( strlen(expr) + 1); assert( buf != NULL );
   strcpy(buf, expr);
 
@@ -192,8 +192,8 @@ bool rpn_evaluate(const char *expr)
 Now we have something able to evaluate simple expression; so here it is the game.
 {{uses from|Library|C Runtime|component1=rand|component2=RAND_MAX|component3=malloc|component4=strlen|component5=strcpy|component6=strtok|component7=printf|component8=free|component9=ranged_rand|component10=fgets|component11=fabs}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
@@ -237,7 +237,7 @@ bool check_expression(const char *expr, int *numbers)
 	break;
       } else {
 	int in = *tok - '0';
-	if ( (nc[in] <= 0) ) { 
+	if ( (nc[in] <= 0) ) {
 	  printf("you can't use more numbers than those given!\n");
 	  rv = false; break;
 	}
@@ -248,11 +248,11 @@ bool check_expression(const char *expr, int *numbers)
   free(expr_copy);
   if ( rv )
   {
-    for(i=0; i < 10; i++) { 
-      if ( nc[i] > 0 ) { 
+    for(i=0; i < 10; i++) {
+      if ( nc[i] > 0 ) {
 	printf("you must use all numbers!\n");
-	rv = false; break; 
-      } 
+	rv = false; break;
+      }
     }
   }
   return rv;

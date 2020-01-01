@@ -11,12 +11,12 @@ tags = []
 +++
 
 {{task|Programming environment operations}} [[Category:Simple]]
-Many languages have naming conventions regarding the identifiers used in the language, its libraries, and programs written in the language. Such conventions, which may be classified as ''de facto'' or ''de jure'' depending on how they are enforced,  
-often take the form of rules regarding prefixes, suffixes, and the use of upper-case and lower-case characters.  
+Many languages have naming conventions regarding the identifiers used in the language, its libraries, and programs written in the language. Such conventions, which may be classified as ''de facto'' or ''de jure'' depending on how they are enforced,
+often take the form of rules regarding prefixes, suffixes, and the use of upper-case and lower-case characters.
 
 The naming conventions are sometimes a bit haphazard, especially if the language and/or library has gone through periods of evolution. (In this case: give a brief example and description.)
 
-Document (with simple examples where possible) the evolution and current status of these naming conventions. 
+Document (with simple examples where possible) the evolution and current status of these naming conventions.
 For example, name conventions for:
 * Procedure and operator names.  (Intrinsic or external)
 * Class, Subclass and instance names.
@@ -24,8 +24,8 @@ For example, name conventions for:
 
 
 
-If possible, indicate where the naming conventions are implicit, explicit, mandatory or discretionary.  
-Any tools that enforced the the naming conventions.  
+If possible, indicate where the naming conventions are implicit, explicit, mandatory or discretionary.
+Any tools that enforced the the naming conventions.
 Any cases where the naming convention as commonly violated.
 
 If possible, indicate where the convention is used to hint at other issues. For example the C standard library uses a prefix of "_" to "hide" raw Operating System calls from the non systems-programmer, whereas Python embeds member functions in between "__" to make a member function "private".
@@ -42,9 +42,9 @@ If possible, indicate where the convention is used to hint at other issues. For 
 <!-- Naming conventions -->
 No real naming conventions for S/360 Assembler except the stric rule for names (called symbols).
 
-A symbol may contain from one to six characters; the characters may be any combination 
-of alphabetic (A through Z) and numerical (O through 9) characters. 
-The first character must be alphabetic. 
+A symbol may contain from one to six characters; the characters may be any combination
+of alphabetic (A through Z) and numerical (O through 9) characters.
+The first character must be alphabetic.
 Special characters and embedded blanks must not be used in symbols.
 
 
@@ -54,39 +54,39 @@ Special characters and embedded blanks must not be used in symbols.
 The revised report used "shorthand" to indicate an MODE was "private" to the language specification.  The character ℒ was used to indicate that the name could be repeated  for every precision... e.g. ℒ INT could mean: ... SHORT SHORT INT, SHORT INT, INT, LONG INT, LONG LONG INT etc and ℓ cos could mean: short short cos, short cos, cos, long cos, long long cos etc.
 
 ```algol68
-MODE ℵ SIMPLEOUT = UNION (≮ℒ INT≯, ≮ℒ REAL≯, ≮ℒ COMPL≯, BOOL, ≮ℒ BITS≯, CHAR, [ ] CHAR); 
-PROC ℓ cos = (ℒ REAL x) ℒ REAL: ¢ a ℒ real value close to the cosine of 'x' ¢;  
+MODE ℵ SIMPLEOUT = UNION (≮ℒ INT≯, ≮ℒ REAL≯, ≮ℒ COMPL≯, BOOL, ≮ℒ BITS≯, CHAR, [ ] CHAR);
+PROC ℓ cos = (ℒ REAL x) ℒ REAL: ¢ a ℒ real value close to the cosine of 'x' ¢;
 
-PROC ℓ complex cos = (ℒ COMPL z) ℒ COMPL: ¢ a ℒ complex value close to the cosine of 'z' ¢;  
+PROC ℓ complex cos = (ℒ COMPL z) ℒ COMPL: ¢ a ℒ complex value close to the cosine of 'z' ¢;
 
 PROC ℓ arccos = (ℒ REAL x) ℒ REAL: ¢ if ABS x ≤ ℒ 1, a ℒ real value close
-      to the inverse cosine of 'x', ℒ 0 ≤ ℒ arccos (x) ≤ ℒ pi ¢; 
+      to the inverse cosine of 'x', ℒ 0 ≤ ℒ arccos (x) ≤ ℒ pi ¢;
 ```
 
 For LONG LONG MODEs this would be coded as:
 
 ```algol68
-PROC long long cos = (LONG LONG REAL x) LONG LONG REAL: ¢ a ℒ real value close to the cosine of 'x' ¢;  
+PROC long long cos = (LONG LONG REAL x) LONG LONG REAL: ¢ a ℒ real value close to the cosine of 'x' ¢;
 
-PROC long long complex cos = (LONG LONG COMPL z) LONG LONG COMPL: ¢ a ℒ complex value close to the cosine of 'z' ¢;  
+PROC long long complex cos = (LONG LONG COMPL z) LONG LONG COMPL: ¢ a ℒ complex value close to the cosine of 'z' ¢;
 
 PROC long long arccos = (LONG LONG REAL x) LONG LONG REAL: ¢ if ABS x ≤ ℒ 1, a ℒ real value close
-      to the inverse cosine of 'x', ℒ 0 ≤ ℒ arccos (x) ≤ ℒ pi ¢; 
+      to the inverse cosine of 'x', ℒ 0 ≤ ℒ arccos (x) ≤ ℒ pi ¢;
 ```
 
 Note: The type returned by the '''proc'''edure is generally prefixed to the '''proc'''edure name.
 
 ;Standard language
-Because Algol68 was required on 6-bit and 7-bit, but could take advantage of wide character sets the naming convention could be mechanically varied across platforms.  In a 7-bit environment reserved words, '''mode'''s and '''op'''erators were typically upper-case.  Constants, variable and '''proc'''edure names were typically lower-case.  
+Because Algol68 was required on 6-bit and 7-bit, but could take advantage of wide character sets the naming convention could be mechanically varied across platforms.  In a 7-bit environment reserved words, '''mode'''s and '''op'''erators were typically upper-case.  Constants, variable and '''proc'''edure names were typically lower-case.
 
-The more peculiar convention was for '''reserved words''', '''mode'''s and '''op'''erators was for these to appear in code as '''bold''' typeface or even <u>underlined</u> when published.  
+The more peculiar convention was for '''reserved words''', '''mode'''s and '''op'''erators was for these to appear in code as '''bold''' typeface or even <u>underlined</u> when published.
 
 For example:
 {|border="1" style="border-collapse: collapse; border: 5px double grey;"  align="center"
 |-valign="top"
 || Algol68 "strict"
  as typically published
- ¢ underline or 
+ ¢ underline or
    bold typeface ¢
  '''mode''' '''xint''' = '''int''';
  '''xint''' sum sq:=0;
@@ -158,7 +158,7 @@ od
 |}
 Note that spaces are permitted in constants, variable and '''proc'''edure names.
 
-Various other prefixes and suffixes (grouped by type function) can be found in the standard prelude: 
+Various other prefixes and suffixes (grouped by type function) can be found in the standard prelude:
 {|border="1" style="border-collapse: collapse; border: 5px double grey;"  align="center"
 |-valign="top"
 || To query '''file''' capabilities
@@ -185,10 +185,10 @@ Various other prefixes and suffixes (grouped by type function) can be found in t
 *stand back channel
 ||
 * print, write, put, read, get
-* printf, writef, putf, readf, getf 
+* printf, writef, putf, readf, getf
 * print bin, put bin, read bin, get bin
 * print ℓ int, put ℓ int, read ℓ int, get ℓ int
-* print ℓ real, put ℓ real, read ℓ real, get ℓ real 
+* print ℓ real, put ℓ real, read ℓ real, get ℓ real
 * etc
 ||
 * on logical file end
@@ -327,7 +327,7 @@ If the first line of the program is a comment line of the form <tt>REM >myprog</
 * All reserved words and operators are lower-case. e.g. while, for, if, sizeof and return etc.
 
 ;Libraries
-Constants that appear in C "header" files are typically in upper-case: 
+Constants that appear in C "header" files are typically in upper-case:
 ```c
 O_RDONLY, O_WRONLY, or O_RDWR. O_CREAT, O_EXCL, O_NOCTTY, and O_TRUNC
 ```
@@ -345,7 +345,8 @@ However there are some instances where types use all upper-case.  The classic is
 
 In C, the standard library for floating point is focused on double precision, hence the function "cos" is for double precision, and a suffix of "f" and "l" indicate single precision and quad precision respectively.
 
-```c>#include <math.h
+```c
+#include <math.h>
 
 double cos(double x);
 float cosf(float x);
@@ -355,7 +356,8 @@ long double cosl(long double x);
 
 Whereas for complex variable a prefix of "c" is added.
 
-```c>#include <complex.h
+```c
+#include <complex.h>
 
 double complex ccos(double complex z);
 float complex ccosf(float complex z);
@@ -365,8 +367,8 @@ long double complex ccosl(long double complex z);
 
 This prefix/suffix convention extends to other standard c library function, for example in the following the "f" suffix indicates that an argument is a format string, the prefixes of "s", "v" and "n" hint at other argument types:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int printf(const char *format, ...);
 int fprintf(FILE *stream, const char *format, ...);
@@ -421,12 +423,12 @@ public enum Days {
 
 You should:<br/>
 - prefix interface names with I e.g. IPrinter
-- prefix generic type parameters with T e.g. 
+- prefix generic type parameters with T e.g.
 ```csharp
 Dictionary<TKey, TValue>
 ```
 
-  most of the time, a single T is sufficient e.g. 
+  most of the time, a single T is sufficient e.g.
 ```csharp>IPrinter<T></lang
 
 - postfix type names that inherit from EventArgs, Exception, Attribute and EventHandler e.g. MouseMoveEventArgs<br/>
@@ -458,7 +460,7 @@ You should NOT use:<br/>
 
 * Reader (Accessor) functions that return an attribute of an object are usually a noun-like phrase; eg, the function “<code>Symbol-Name</code>” takes a symbol object and returns its name as a string: <code>(Symbol-Name 'List) ⇒ "LIST"</code> Those that act only upon a certain class may prefix the field name, with the class name; eg, “Char-Code” returns the Unicode value for a character (like reading the “code” field from a Character-class object). With the exception of the built-in class <code>Character</code> (abbreviated Char in function names in the standard library), the class name is normally spelled-out in full. While the hash-table accessor is called <code>GetHash</code> due to historical reasons, accessors generally do <i>not</i> have a “Get-” prefix.
 
-** The SetF-accessors for altering a place are usually named identically to the reader functions; eg, a reader function named <code>Person-Surname</code> would be matched to a writer function named <code>(SetF Person-Surname)</code>. This is what is created automatically when using the <code>DefClass</code> macro's <code>:Accessor</code> option on object slots, or when defining slots in <code>DefStruct</code>. 
+** The SetF-accessors for altering a place are usually named identically to the reader functions; eg, a reader function named <code>Person-Surname</code> would be matched to a writer function named <code>(SetF Person-Surname)</code>. This is what is created automatically when using the <code>DefClass</code> macro's <code>:Accessor</code> option on object slots, or when defining slots in <code>DefStruct</code>.
 
 ** Writer functions generally are only defined in terms of SetF writers, and almost never as separately-named functions.
 
@@ -478,7 +480,7 @@ You should NOT use:<br/>
 
 * Type names for errors or warnings usually explicitly have the word “warning” or “error” in the name, eg, <code>Server-Unreachable-Error</code>
 
-* Macros that establish a dynamic state and clean up after it are usually named <code>With-</code>some-context; eg, <code>With-Open-File</code>, <code>With-Database-Connection</code>. Usually, such a macro will take a first argument as a list like a normal function call, followed by <code>&body</code>, mimicking <code>With-Open-File</code> and the like. 
+* Macros that establish a dynamic state and clean up after it are usually named <code>With-</code>some-context; eg, <code>With-Open-File</code>, <code>With-Database-Connection</code>. Usually, such a macro will take a first argument as a list like a normal function call, followed by <code>&body</code>, mimicking <code>With-Open-File</code> and the like.
 ```lisp
 
 (defvar *language* :en
@@ -521,7 +523,7 @@ It's too cold in winter
 
 * Function names ending in a <code>*</code> are minor variants of the same-named function without the star; eg, the standard <code>Let</code> and <code>Let*</code> special forms.
 
-* Keywords for keyword arguments tend to follow the names used in standard library functions when possible, or mimic the patterns of them. “Private” arguments that callers probably won't need/want to set are usually given non-keyword symbols as their names; eg 
+* Keywords for keyword arguments tend to follow the names used in standard library functions when possible, or mimic the patterns of them. “Private” arguments that callers probably won't need/want to set are usually given non-keyword symbols as their names; eg
 ```lisp
 
 (defun do-something (argument &key ((secret-arg secret) "default"))
@@ -529,7 +531,7 @@ It's too cold in winter
 
 ;; Normal caller
 (do-something "Foo")
-;; Special caller: 
+;; Special caller:
 (do-something "Foo" 'secret-arg "Bar")
 
 ```
@@ -545,7 +547,7 @@ It's too cold in winter
 
 ** Coërcion or conversion functions that explicitly change something from type “a” to type “b” are usually named one of these patterns: <code>a->b</code>, <code>b<-a</code>, <code>b-from-a</code>, or <code>a-b</code>. The last form, with just a hyphen, mimics the standard functions <code>code-char</code> and <code>char-code</code>, but is a bit more ambiguous.
 
-* The name <code>_</code> (and sometimes names like <code>__</code> or <code>_2</code> are sometimes used to indicate ignored values for which a more meaningful name isn't available; for example, skipping an always-blank field in input records. There's nothing “magical” about the name, though; you still need to <code>(declare (ignore _))</code>, so using a more meaningful name is usually preferred. <code>_</code> is most often used for <code>&rest</code> arguments. 
+* The name <code>_</code> (and sometimes names like <code>__</code> or <code>_2</code> are sometimes used to indicate ignored values for which a more meaningful name isn't available; for example, skipping an always-blank field in input records. There's nothing “magical” about the name, though; you still need to <code>(declare (ignore _))</code>, so using a more meaningful name is usually preferred. <code>_</code> is most often used for <code>&rest</code> arguments.
 ```lisp
 
 #+sbcl
@@ -617,44 +619,44 @@ Since words can be named anything as long as they don't parse as a number or a s
 | outputs a boolean
 | <tt>empty?</tt>
 |-
-| <tt>foo!</tt> 
+| <tt>foo!</tt>
 | a variant of <tt>foo</tt> which mutates one of its arguments
-| <tt>append!</tt>   
+| <tt>append!</tt>
 |-
-| <tt>?foo</tt> 
+| <tt>?foo</tt>
 | conditionally performs <tt>foo</tt>
 | <tt>?nth</tt>
 |-
-| <tt><foo></tt> 
+| <tt><foo></tt>
 | creates a new <tt>foo</tt>
 | <tt><array></tt>
 |-
-| <tt>>foo</tt> 
-| converts the top of the stack into a <tt>foo</tt>   
+| <tt>>foo</tt>
+| converts the top of the stack into a <tt>foo</tt>
 | <tt>>array</tt>
 |-
-| <tt>foo>bar</tt> 
-| converts a <tt>foo</tt> into a <tt>bar</tt>   
+| <tt>foo>bar</tt>
+| converts a <tt>foo</tt> into a <tt>bar</tt>
 | <tt>number>string</tt>
 |-
-| <tt>new-foo</tt> 
-| creates a new <tt>foo</tt>, taking some kind of parameter from the stack which determines the type of the object to be created   
+| <tt>new-foo</tt>
+| creates a new <tt>foo</tt>, taking some kind of parameter from the stack which determines the type of the object to be created
 | <tt>new-sequence, new-lexer, new</tt>
 |-
-| <tt>foo*</tt> 
+| <tt>foo*</tt>
 | alternative form of <tt>foo</tt>, or a generic word called by <tt>foo</tt>
-| <tt>at*, pprint*</tt>   
+| <tt>at*, pprint*</tt>
 |-
-| <tt>(foo)</tt> 
-| implementation detail word used by <tt>foo</tt>   
+| <tt>(foo)</tt>
+| implementation detail word used by <tt>foo</tt>
 | <tt>(clone)</tt>
 |-
-| <tt>set-foo</tt> 
+| <tt>set-foo</tt>
 | sets <tt>foo</tt> to a new value
 | <tt>set-length</tt>
 |-
-| <tt>foo>></tt> 
-| gets the <tt>foo</tt> slot of the tuple at the top of the stack   
+| <tt>foo>></tt>
+| gets the <tt>foo</tt> slot of the tuple at the top of the stack
 | <tt>name>></tt>
 |-
 | <tt>>>foo</tt>
@@ -723,7 +725,7 @@ True to form, Forth is very unconventional when it comes to Naming conventions. 
 
 What's more in Forth any ASCII character can be used to name a WORD with the exception of control characters and the space character. This sounds like a path to chaos and if the programmer chooses to use this power it can give new meaning to the phrase "code obfuscation".  However the language itself uses specific characters for some specific purposes and these have come to be used by Forth programmers when naming their own WORDs. The freedom in naming also allows Forth programmers to emulate naming conventions from other languages if it is appropriate.
 
-Older Forth systems were case sensitive and all keywords were upper case. Most modern systems allow case sensitivity to be on or off.  
+Older Forth systems were case sensitive and all keywords were upper case. Most modern systems allow case sensitivity to be on or off.
 Some programmers prefer all standard Forth words in the code to be uppercase. As with many aspects of Forth there are divergent opinions on the use of case in code but the language can accommodate them.
 
 Disclaimer: The naming convention examples shown are taken from the experience of the author and are by no means complete.
@@ -747,7 +749,7 @@ MYDOUBLE 2@ MYDOUBLE 2!
 
 1 PERSONEL RECORD@  \ read Record 1 and put pointer on data stack
 
-HR_RECORD 992 PERSONEL RECORD! \ store HR_RECORD 
+HR_RECORD 992 PERSONEL RECORD! \ store HR_RECORD
 
 ```
 
@@ -809,9 +811,9 @@ Rather than evoking an "undeclared" error message any misspelled variables will 
 Notoriously, the U.S.A.'s first Venus satellite probe was lost due to the difference between <code>DO 3 I = 1.3</code> and <code>DO 3 I = 1,3</code>  Such texts when printed in wobbly glyphs through a coarse ink ribbon onto rough paper by a lineprinter in a hurry are not obviously incorrect...
 
 ;Quirky response
-In Fortran 77 then 
+In Fortran 77 then
 ```fortran>IMPLICIT NONE</lang
- was available to disable implicit typing and thus evoke "undeclared variable" messages. Prior to this the code could use 
+ was available to disable implicit typing and thus evoke "undeclared variable" messages. Prior to this the code could use
 
 ```fortran>IMPLICIT LOGICAL</lang
  in the hope that the compiler would detect an undeclared LOGICAL variable used in a numerical context, and hence report a semantic type error.
@@ -826,7 +828,7 @@ Ordinary identifiers can only consist of letters (a-z), numerals (0-9) or the un
 Apart from intrinsic 'defines', underscores are not used in the language's keywords even though some of them are multi-word.
 
 There are no official or 'de facto' naming conventions for variables, constants, functions, types etc. and individual developers therefore tend to develop their own style. This may depend on their exposure to other languages such as C, C++, C#, Java or Pascal and the conventions commonly used in those languages.
- 
+
 As long as a consistent style is used, code readability does not seem to be an issue.
 
 
@@ -880,19 +882,19 @@ Other conventions are also in use.
 ## jq
 
 
-jq has some keywords (such as 'reduce') that impose certain restrictions on naming, but these are strictly enforced and so perhaps do not count as conventions. Similarly, there are strictly enforced restrictions regarding the use of the dollar-sign "$".  Perhaps the most important convention to know about, therefore, is that identifiers beginning with "_" are reserved for internal use as function names, and should therefore not in general be used as such. 
+jq has some keywords (such as 'reduce') that impose certain restrictions on naming, but these are strictly enforced and so perhaps do not count as conventions. Similarly, there are strictly enforced restrictions regarding the use of the dollar-sign "$".  Perhaps the most important convention to know about, therefore, is that identifiers beginning with "_" are reserved for internal use as function names, and should therefore not in general be used as such.
 
 Although it is permissible and sometimes appropriate to define a function using the name of an existing built-in function, it is generally better to avoid doing so.  With this in mind, it is useful to know that the built-in `builtins` emits a stream of strings representing the currently-defined built-ins.  Furthermore, it is likely that future built-in functions will be named in accordance with existing practice, so it is useful to know that the names of built-in functions currently fall into one of these categories:
 
 # names beginning with an underscore;
-# names composed of lowercase letters [a-z] only; 
+# names composed of lowercase letters [a-z] only;
 # names such as `map_values`, that is, names composed of strings of lowercase letters joined by a single underscore;
 # names of the form [a-z]+[0-9]+
 # names composed only of uppercase letters [A-Z] (currently: IN, INDEX, JOIN)
 # two exceptions: log1p, utf8bytelength
 
 
-###  Variables 
+###  Variables
 
 In 2017, the jq global $ARGS was introduced.  It behaves as if it had been defined on the command-line.  As with all such global variables, it can be shadowed.
 
@@ -902,8 +904,8 @@ In 2017, the jq global $ARGS was introduced.  It behaves as if it had been defin
 
 In general, modules and type names use capitalization and camel case: module SparseArrays, struct UnitRange.
 
-Variables and functions are lowercase (maximum, convert) and, when readable, with multiple words squashed together (isequal, haskey). 
-When necessary, use underscores as word separators. Underscores are also used to indicate a combination of concepts 
+Variables and functions are lowercase (maximum, convert) and, when readable, with multiple words squashed together (isequal, haskey).
+When necessary, use underscores as word separators. Underscores are also used to indicate a combination of concepts
 (remotecall_fetch as a more efficient implementation of fetch(remotecall(...))) or as modifiers (sum_kbn).
 
 Append ! to names of functions that modify their arguments.
@@ -939,7 +941,7 @@ class Star(val name: String) {
     }
 }
 
-class SolarSystem(val star: Star) { 
+class SolarSystem(val star: Star) {
     private val planets = mutableListOf<Planet>()  // some people might prefer _planets
 
     init {
@@ -1007,7 +1009,7 @@ M2000 is like Basic, identifiers are case insensitive. For Greek names also acce
 
 
 Labels although are case sensitive
-We have to use $ as last character in names for anything return string. We can use % as last character for integers (as values, because under it maybe double or something else, depends of the first value we assign it). 
+We have to use $ as last character in names for anything return string. We can use % as last character for integers (as values, because under it maybe double or something else, depends of the first value we assign it).
 
 We use <= to assign values to global variables, because = make new variables and shadow any global with same name.
 We use <= for group members also inside functions which are members too.
@@ -1094,7 +1096,7 @@ Terse names are generally preferred.
 
 Almost everything can be a word so almost every convention can be used.
 
-Oforth language built-ins use thoses conventions : 
+Oforth language built-ins use thoses conventions :
 - Global constants name are uppercase.
 Example : JUSTIFY_LEFT
 
@@ -1249,15 +1251,15 @@ PowerShell, of course, offers the option of naming a variable "anything" if the 
 ## Racket
 
 
-For more details, read the explanation in the Name section of the Style Guide: http://docs.racket-lang.org/style/Textual_Matters.html#%28part._names%29 . 
+For more details, read the explanation in the Name section of the Style Guide: http://docs.racket-lang.org/style/Textual_Matters.html#%28part._names%29 .
 
 The convention is to use full English lowercase words separated by dashes
 
 
 ```Racket
-#lang racket 
-render-game-state 
-send-message-to-client 
+#lang racket
+render-game-state
+send-message-to-client
 traverse-forest
 ```
 
@@ -1268,8 +1270,8 @@ Most functions names have as prefix the data type of the main argument. Some not
 
 
 ```Racket
-#lang racket 
-(string-ref "1234" 2) 
+#lang racket
+(string-ref "1234" 2)
 (string-length "123")
 (string-append "12" "34")
 ;exceptions:
@@ -1283,7 +1285,7 @@ This convention generalizes the selector-style naming scheme of <code>struct</co
 
 ```Racket
 #lang racket
-(struct pair (x y) #:transparent #:mutable) 
+(struct pair (x y) #:transparent #:mutable)
 (define p (pair 1 2))
 (pair-x p)    ; ==> 1
 (set-pair-y! p 3)
@@ -1313,7 +1315,7 @@ In addition to regular alphanumeric characters, some special characters are used
 ;setters and field mutators:   !
 (set! x 5)
 (vector-set! v 2 "x")
- 
+
 ; classes:   %
 game-state%
 button-snip%
@@ -1356,7 +1358,7 @@ is implicitly multiplied to the preceding number).
 
 Everything (for a number) is optional,   but there must be   ''at least''   one decimal digit.
 
-If an   '''e'''   or   '''E'''   is present, it must be immediately followed by an integer   (a decimal exponent), 
+If an   '''e'''   or   '''E'''   is present, it must be immediately followed by an integer   (a decimal exponent),
 
 with/without an optional sign.
 
@@ -1403,7 +1405,7 @@ w=length(abc)
 
 ─── where   '''length'''   is a REXX BIF for the   ''length''   of the   value   of the variable   '''ABC'''
 
-If there is an internal function with a built-in function's name in the program,   the built-in (REXX) 
+If there is an internal function with a built-in function's name in the program,   the built-in (REXX)
 
 function can be invoked using its name as an uppercase literal string as shown below:
 
@@ -1489,7 +1491,7 @@ The <code>sort</code> method just returns a sorted version of the array, but the
 
 ### Classes and Modules
 
-Classes and modules have the same naming convention in ruby. They should be in Pascal case and they should be descriptive. 
+Classes and modules have the same naming convention in ruby. They should be in Pascal case and they should be descriptive.
 
 
 ### Putting it all together
@@ -1577,7 +1579,7 @@ Sometimes suffixes are added to variables to indicate a significant way that the
 *  example_p The suffix '''_p''' implies Boolean value ie true/false represented as 1 or 0.
 *  example_list  Implies the variable contains a list of values.
 *  example_arr() The suffix _arr implies variable is an array of scalar values.
-*  example_larr() The suffix _larr implies the variable is an array of list values. 
+*  example_larr() The suffix _larr implies the variable is an array of list values.
 *  example_ts  The suffix _ts implies its value is a timestamp
 *  example_s  The suffix _s implies its value is in seconds or seconds from epoch.
 *  example_i  The suffix _i implies its value is an integer.
@@ -1613,37 +1615,37 @@ The real advantage is for the names of the VB controls.
 ! Meaning
 |-
 | <tt>frm</tt>
-| <tt>Form</tt> 
+| <tt>Form</tt>
 |-
-| <tt>mnu</tt> 
-| <tt>Menu</tt>   
+| <tt>mnu</tt>
+| <tt>Menu</tt>
 |-
-| <tt>cmd </tt> 
-| <tt>Command button</tt>   
+| <tt>cmd </tt>
+| <tt>Command button</tt>
 |-
-| <tt>chk</tt> 
-| <tt>Check button</tt>   
+| <tt>chk</tt>
+| <tt>Check button</tt>
 |-
-| <tt>opt</tt> 
-| <tt>Radio button</tt>   
+| <tt>opt</tt>
+| <tt>Radio button</tt>
 |-
-| <tt>lbl</tt> 
-| <tt>Text label</tt>   
+| <tt>lbl</tt>
+| <tt>Text label</tt>
 |-
-| <tt>txt</tt> 
-| <tt>Text edit box</tt>   
+| <tt>txt</tt>
+| <tt>Text edit box</tt>
 |-
-| <tt>pic</tt> 
-| <tt>Picture</tt>   
+| <tt>pic</tt>
+| <tt>Picture</tt>
 |-
-| <tt>cbo</tt> 
-| <tt>Combo box</tt>   
+| <tt>cbo</tt>
+| <tt>Combo box</tt>
 |-
-| <tt>tmr</tt> 
-| <tt>Timer</tt>   
+| <tt>tmr</tt>
+| <tt>Timer</tt>
 |-
-| <tt>...</tt> 
-| <tt>...</tt>   
+| <tt>...</tt>
+| <tt>...</tt>
 |}
 Exemple:
 

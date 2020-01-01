@@ -13,13 +13,13 @@ tags = []
 {{task|Sorting Algorithms}}
 {{Sorting Algorithm}}
 [[Category:Recursion]]
-{{Wikipedia|Quicksort}} 
+{{Wikipedia|Quicksort}}
 
 
 ;Task:
-Sort an array (or list) elements using the   [https://en.wikipedia.org/wiki/Quicksort ''quicksort'']   algorithm. 
+Sort an array (or list) elements using the   [https://en.wikipedia.org/wiki/Quicksort ''quicksort'']   algorithm.
 
-The elements must have a   [https://en.wikipedia.org/wiki/Weak_ordering strict weak order]   and the index of the array can be of any discrete type. 
+The elements must have a   [https://en.wikipedia.org/wiki/Weak_ordering strict weak order]   and the index of the array can be of any discrete type.
 
 For languages where this is not possible, sort an array of integers.
 
@@ -35,9 +35,9 @@ Quicksort, also known as   ''partition-exchange sort'',   uses these steps.
 
 
 
-The best pivot creates partitions of equal length (or lengths differing by   '''1'''). 
+The best pivot creates partitions of equal length (or lengths differing by   '''1''').
 
-The worst pivot creates an empty partition (for example, if the pivot is the first or last element of a sorted array). 
+The worst pivot creates an empty partition (for example, if the pivot is the first or last element of a sorted array).
 
 The run-time of Quicksort ranges from   <big> ''[[O]](n ''log'' n)'' </big>   with the best pivots, to   <big>  ''[[O]](n<sup>2</sup>)'' </big>   with the worst pivots, where   <big> ''n'' </big>   is the number of elements in the array.
 
@@ -46,7 +46,7 @@ This is a simple quicksort algorithm, adapted from Wikipedia.
 
  '''function''' ''quicksort''(array)
      less, equal, greater ''':=''' three empty arrays
-     '''if''' length(array) > 1  
+     '''if''' length(array) > 1
          pivot ''':=''' ''select any element of'' array
          '''for each''' x '''in''' array
              '''if''' x < pivot '''then add''' x '''to''' less
@@ -107,15 +107,15 @@ QUICKSOR CSECT
          DC     17F'0'             savearea
          STM    R14,R12,12(R13)    prolog
          ST     R13,4(R15)         "
-         ST     R15,8(R13)         " 
+         ST     R15,8(R13)         "
          LR     R13,R15            "
          MVC    A,=A(1)            a(1)=1
          MVC    B,=A(NN)           b(1)=hbound(t)
          L      R6,=F'1'           k=1
-       DO WHILE=(LTR,R6,NZ,R6)   do while k<>0    
+       DO WHILE=(LTR,R6,NZ,R6)   do while k<>0
 ### ============
 
-         LR     R1,R6              k 
+         LR     R1,R6              k
          SLA    R1,2               ~
          L      R10,A-4(R1)        l=a(k)
          LR     R1,R6              k
@@ -123,7 +123,7 @@ QUICKSOR CSECT
          L      R11,B-4(R1)        m=b(k)
          BCTR   R6,0               k=k-1
          LR     R4,R11             m
-         C      R4,=F'2'           if m<2 
+         C      R4,=F'2'           if m<2
          BL     ITERATE            then iterate
          LR     R2,R10             l
          AR     R2,R11             +m
@@ -173,7 +173,7 @@ QUICKSOR CSECT
          ENDIF  ,                  end if             ---+
          LA     R8,1(R10)          i=l+1
          L      R9,X               j=x
-FOREVER  EQU    *                  do forever  --------------------+  
+FOREVER  EQU    *                  do forever  --------------------+
          LR     R1,R8                i                             |
          SLA    R1,2                 ~                             |
          LA     R2,T-4(R1)           @t(i)                         |
@@ -245,8 +245,8 @@ LEAVE    EQU    *
          LA     R2,1(R2)             +1                  |
          ST     R2,4(R5)             b(k)=x-i+1          |
          ENDIF  ,                  end if            ----+
-ITERATE  EQU    *                  
-       ENDDO    ,                  end while  
+ITERATE  EQU    *
+       ENDDO    ,                  end while
 ### ===============
 
 *        ***    *********          print sorted table
@@ -260,7 +260,7 @@ ITERATE  EQU    *
          LA     R4,4(R4)             i=i+1
        ENDDO    ,                  end do
          XPRNT  PG,80              print buffer
-         L      R13,4(0,R13)       epilog 
+         L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
@@ -274,7 +274,7 @@ X        DS     F
 Y        DS     F
 PG       DS     CL80
 XD       DS     CL12
-         YREGS 
+         YREGS
          END    QUICKSOR
 ```
 
@@ -454,17 +454,17 @@ The procedure body deals with any discrete index type, either an integer type or
 ```ada
 -----------------------------------------------------------------------
 -- Generic Quick_Sort procedure
------------------------------------------------------------------------ 
+-----------------------------------------------------------------------
 
 procedure Quick_Sort (A : in out Element_Array) is
-   
+
    procedure Swap(Left, Right : Index) is
       Temp : Element := A (Left);
    begin
       A (Left) := A (Right);
       A (Right) := Temp;
    end Swap;
-  
+
 begin
    if A'Length > 1 then
    declare
@@ -503,35 +503,35 @@ An example of how this procedure may be used is:
 ```ada
 
 with Ada.Text_Io;
-with Ada.Float_Text_IO; use Ada.Float_Text_IO; 
+with Ada.Float_Text_IO; use Ada.Float_Text_IO;
 
 procedure Sort_Test is
    type Days is (Mon, Tue, Wed, Thu, Fri, Sat, Sun);
    type Sales is array (Days range <>) of Float;
    procedure Sort_Days is new Quick_Sort(Float, Days, Sales);
-   
+
    procedure Print (Item : Sales) is
    begin
       for I in Item'range loop
          Put(Item => Item(I), Fore => 5, Aft => 2, Exp => 0);
       end loop;
    end Print;
-  
-   Weekly_Sales : Sales := (Mon => 300.0, 
-      Tue => 700.0, 
-      Wed => 800.0, 
-      Thu => 500.0, 
-      Fri => 200.0, 
-      Sat => 100.0, 
+
+   Weekly_Sales : Sales := (Mon => 300.0,
+      Tue => 700.0,
+      Wed => 800.0,
+      Thu => 500.0,
+      Fri => 200.0,
+      Sat => 100.0,
       Sun => 900.0);
-  
+
 begin
-  
+
    Print(Weekly_Sales);
    Ada.Text_Io.New_Line(2);
    Sort_Days(Weekly_Sales);
    Print(Weekly_Sales);
-  
+
 end Sort_Test;
 ```
 
@@ -552,33 +552,33 @@ PROC swap = (REF []INT array, INT first, INT second) VOID:
 #--- Quick sort 3 arg function ---#
 PROC quick = (REF [] INT array, INT first, INT last) VOID:
 (
-    INT smaller := first + 1,  
+    INT smaller := first + 1,
         larger  := last,
         pivot   := array[first];
-  
+
     WHILE smaller <= larger DO
-        WHILE array[smaller] < pivot   AND   smaller < last DO   
-            smaller +:= 1        
+        WHILE array[smaller] < pivot   AND   smaller < last DO
+            smaller +:= 1
         OD;
-        WHILE array[larger]  > pivot   AND   larger > first DO   
-            larger  -:= 1       
-        OD; 
-        IF smaller < larger THEN 
-            swap(array, smaller, larger); 
+        WHILE array[larger]  > pivot   AND   larger > first DO
+            larger  -:= 1
+        OD;
+        IF smaller < larger THEN
+            swap(array, smaller, larger);
             smaller +:= 1;
             larger  -:= 1
         ELSE
             smaller +:= 1
         FI
     OD;
-    
-    swap(array, first, larger);    
+
+    swap(array, first, larger);
 
     IF first < larger-1 THEN
-        quick(array, first, larger-1)  
+        quick(array, first, larger-1)
     FI;
     IF last > larger +1 THEN
-        quick(array, larger+1, last)   
+        quick(array, larger+1, last)
     FI
 );
 
@@ -586,17 +586,17 @@ PROC quick = (REF [] INT array, INT first, INT last) VOID:
 PROC quicksort = (REF []INT array) VOID:
 (
   IF UPB array > 1 THEN
-    quick(array, 1, UPB array) 
+    quick(array, 1, UPB array)
   FI
 );
 
 #***************************************************************#
 main:
 (
-    [10]INT a; 
-    FOR i FROM 1 TO UPB a DO 
+    [10]INT a;
+    FOR i FROM 1 TO UPB a DO
         a[i] := ROUND(random*1000)
-    OD;                             
+    OD;
 
     print(("Before:", a));
     quicksort(a);
@@ -611,7 +611,7 @@ main:
 ```txt
 
 Before:        +73       +921       +179       +961        +50       +324        +82       +178       +243       +458
-                                                                                                                     
+
 After:         +50        +73        +82       +178       +179       +243       +324       +458       +921       +961
 
 ```
@@ -679,16 +679,16 @@ Emphasising clarity and simplicity more than run-time performance. (Practical sc
 on quickSort(xs)
     if length of xs > 1 then
         set {h, t} to uncons(xs)
-        
+
         -- lessOrEqual :: a -> Bool
         script lessOrEqual
             on |λ|(x)
                 x ≤ h
             end |λ|
         end script
-        
+
         set {less, more} to partition(lessOrEqual, t)
-        
+
         quickSort(less) & h & quickSort(more)
     else
         xs
@@ -698,11 +698,11 @@ end quickSort
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     quickSort([11.8, 14.1, 21.3, 8.5, 16.7, 5.7])
-    
+
     --> {5.7, 8.5, 11.8, 14.1, 16.7, 21.3}
-    
+
 end run
 
 
@@ -730,7 +730,7 @@ on uncons(xs)
     end if
 end uncons
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -775,7 +775,7 @@ szMessSortNok:      .asciz "Table not sorted !!!!!.\n"
 sMessResult:        .ascii "Value  : "
 sMessValeur:        .fill 11, 1, ' '            @ size => 11
 szCarriageReturn:   .asciz "\n"
- 
+
 .align 4
 iGraine:  .int 123456
 .equ NBELEMENTS,      10
@@ -788,39 +788,39 @@ TableNumber:	     .int   10,9,8,7,6,5,4,3,2,1
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                              @ entry of program 
- 
+.global main
+main:                                              @ entry of program
+
 1:
     ldr r0,iAdrTableNumber                         @ address number table
 
     mov r1,#0                                      @ indice first item
-    mov r2,#NBELEMENTS                             @ number of élements 
+    mov r2,#NBELEMENTS                             @ number of élements
     bl triRapide                                   @ call quicksort
     ldr r0,iAdrTableNumber                         @ address number table
     bl displayTable
- 
+
     ldr r0,iAdrTableNumber                         @ address number table
-    mov r1,#NBELEMENTS                             @ number of élements 
+    mov r1,#NBELEMENTS                             @ number of élements
     bl isSorted                                    @ control sort
     cmp r0,#1                                      @ sorted ?
-    beq 2f                                    
+    beq 2f
     ldr r0,iAdrszMessSortNok                       @ no !! error sort
     bl affichageMess
     b 100f
 2:                                                 @ yes
     ldr r0,iAdrszMessSortOk
     bl affichageMess
-100:                                               @ standard end of the program 
+100:                                               @ standard end of the program
     mov r0, #0                                     @ return code
     mov r7, #EXIT                                  @ request to exit program
     svc #0                                         @ perform the system call
- 
+
 iAdrsMessValeur:          .int sMessValeur
 iAdrszCarriageReturn:    .int szCarriageReturn
 iAdrsMessResult:          .int sMessResult
@@ -828,7 +828,7 @@ iAdrTableNumber:          .int TableNumber
 iAdrszMessSortOk:         .int szMessSortOk
 iAdrszMessSortNok:        .int szMessSortNok
 /******************************************************************/
-/*     control sorted table                                   */ 
+/*     control sorted table                                   */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the number of elements  > 0  */
@@ -850,7 +850,7 @@ isSorted:
     b 1b
 100:
     pop {r2-r4,lr}
-    bx lr                                              @ return 
+    bx lr                                              @ return
 
 
 /***************************************************/
@@ -862,7 +862,7 @@ isSorted:
 triRapide:
     push {r2-r5,lr}                                   @ save registers
     sub r2,#1                                         @ last item index
-    cmp r1,r2                                         @ first > last ? 
+    cmp r1,r2                                         @ first > last ?
     bge 100f                                          @ yes -> end
     mov r4,r0                                         @ save r0
     mov r5,r2                                         @ save r2
@@ -873,14 +873,14 @@ triRapide:
     add r1,r2,#1                                      @ index begin = index partition + 1
     add r2,r5,#1                                      @ number of elements
     bl triRapide                                      @ sort higter part
-   
+
  100:                                                 @ end function
-    pop {r2-r5,lr}                                    @ restaur  registers 
+    pop {r2-r5,lr}                                    @ restaur  registers
     bx lr                                             @ return
 
 
 /******************************************************************/
-/*      Partition table elements                                */ 
+/*      Partition table elements                                */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains index of first item  */
@@ -910,7 +910,7 @@ partition1:
     bx lr
 
 /******************************************************************/
-/*      Display table elements                                */ 
+/*      Display table elements                                */
 /******************************************************************/
 /* r0 contains the address of table */
 displayTable:
@@ -932,41 +932,41 @@ displayTable:
     pop {r0-r3,lr}
     bx lr
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
- 
+
 1:	                                            @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b	                                    @ and loop
                                                     @ and move digit from left of area
@@ -979,23 +979,23 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -1003,12 +1003,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 
@@ -1022,7 +1022,7 @@ iMagicNumber:  	.int 0xCCCCCCCD
 
 ```arturo
 quickSort [items]{
-	if $(size items) < 2 { items } { 
+	if $(size items) < 2 { items } {
 		$(quickSort|filter $(slice items 1) { & < items.0 }) + items.0 +  $(quickSort|filter $(slice items 1) { & >= items.0 })
 	}
 }
@@ -1084,7 +1084,7 @@ print $(quickSort #(3 1 2 8 5 7 9 4 6))
 #       for (i = 1; i <= n; i++) {
 #               printf("item at %s has value %d\n", outlist[i], foolist[outlist[i]]);
 #       }
-#      delete outlist; 
+#      delete outlist;
 #
 function qsortArbIndByValue(Arr, k,
                             ArrInd, ElNum)
@@ -1308,7 +1308,7 @@ END SUB
       NEXT
       PRINT
       END
-      
+
       DEF PROCquicksort(a(), s%, n%)
       LOCAL l%, p, r%, t%
       IF n% < 2 THEN ENDPROC
@@ -1594,8 +1594,8 @@ void quicksort(int A[], int p, int q) {
 
 The following implements quicksort with a median-of-three pivot. As idiomatic in C++, the argument <tt>last</tt> is a one-past-end iterator. Note that this code takes advantage of <tt>std::partition</tt>, which is O(n). Also note that it needs a random-access iterator for efficient calculation of the median-of-three pivot (more exactly, for O(1) calculation of the iterator <tt>mid</tt>).
 
-```cpp>#include <iterator
-
+```cpp
+#include <iterator>
 #include <algorithm> // for std::partition
 #include <functional> // for std::less
 
@@ -1670,8 +1670,8 @@ template<typename RandomAccessIterator>
 
 A simpler version of the above that just uses the first element as the pivot and only does one "partition".
 
-```cpp>#include <iterator
-
+```cpp
+#include <iterator>
 #include <algorithm> // for std::partition
 #include <functional> // for std::less
 
@@ -1941,7 +1941,7 @@ A very Haskell-like solution using list comprehensions and lazy evaluation.
 
 ```lisp
 (defn qsort [L]
-  (if (empty? L) 
+  (if (empty? L)
       '()
       (let [[pivot & L2] L]
            (lazy-cat (qsort (for [y L2 :when (<  y pivot)] y))
@@ -1957,7 +1957,7 @@ Another short version (using quasiquote):
 (defn qsort [[pvt & rs]]
   (if pvt
     `(~@(qsort (filter #(<  % pvt) rs))
-      ~pvt 
+      ~pvt
       ~@(qsort (filter #(>= % pvt) rs)))))
 ```
 
@@ -2004,28 +2004,28 @@ A lazier version of above (unlike group-by, filter returns (and reads) a lazy se
 ```cobol
        IDENTIFICATION DIVISION.
        PROGRAM-ID. quicksort RECURSIVE.
-       
+
        DATA DIVISION.
        LOCAL-STORAGE SECTION.
        01  temp                   PIC S9(8).
-       
+
        01  pivot                  PIC S9(8).
-       
+
        01  left-most-idx          PIC 9(5).
        01  right-most-idx         PIC 9(5).
-       
+
        01  left-idx               PIC 9(5).
        01  right-idx              PIC 9(5).
-       
+
        LINKAGE SECTION.
        78  Arr-Length             VALUE 50.
-       
+
        01  arr-area.
            03  arr                PIC S9(8) OCCURS Arr-Length TIMES.
-           
+
        01  left-val               PIC 9(5).
-       01  right-val              PIC 9(5).  
-       
+       01  right-val              PIC 9(5).
+
        PROCEDURE DIVISION USING REFERENCE arr-area, OPTIONAL left-val,
                OPTIONAL right-val.
            IF left-val IS OMITTED OR right-val IS OMITTED
@@ -2035,37 +2035,37 @@ A lazier version of above (unlike group-by, filter returns (and reads) a lazy se
                MOVE left-val TO left-most-idx, left-idx
                MOVE right-val TO right-most-idx, right-idx
            END-IF
-           
+
            IF right-most-idx - left-most-idx < 1
                GOBACK
            END-IF
-       
+
            COMPUTE pivot = arr ((left-most-idx + right-most-idx) / 2)
-       
+
            PERFORM UNTIL left-idx > right-idx
                PERFORM VARYING left-idx FROM left-idx BY 1
                    UNTIL arr (left-idx) >= pivot
                END-PERFORM
-               
+
                PERFORM VARYING right-idx FROM right-idx BY -1
                    UNTIL arr (right-idx) <= pivot
                END-PERFORM
-               
+
                IF left-idx <= right-idx
                    MOVE arr (left-idx) TO temp
                    MOVE arr (right-idx) TO arr (left-idx)
                    MOVE temp TO arr (right-idx)
-                   
+
                    ADD 1 TO left-idx
                    SUBTRACT 1 FROM right-idx
                END-IF
            END-PERFORM
-       
+
            CALL "quicksort" USING REFERENCE arr-area,
                CONTENT left-most-idx, right-idx
            CALL "quicksort" USING REFERENCE arr-area, CONTENT left-idx,
                right-most-idx
-               
+
            GOBACK
            .
 ```
@@ -2177,7 +2177,7 @@ Copied from [http://www.informatik.uni-kiel.de/~curry/examples/ Curry: Example P
 ```curry
 -- quicksort using higher-order functions:
 
-qsort :: [Int] -> [Int] 
+qsort :: [Int] -> [Int]
 qsort []     = []
 qsort (x:l)  = qsort (filter (<x) l) ++ x : qsort (filter (>=x) l)
 
@@ -2237,7 +2237,7 @@ void main() {
 Often short functional sieves are not a true implementations of the Sieve of Eratosthenes:
 http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf
 
-Similarly, one could argue that a true QuickSort is in-place, 
+Similarly, one could argue that a true QuickSort is in-place,
 as this more efficient version (same output):
 
 ```d
@@ -2268,14 +2268,14 @@ quickSort(List a) {
   if (a.length <= 1) {
     return a;
   }
-  
+
   var pivot = a[0];
   var less = [];
   var more = [];
   var pivotList = [];
-  
+
   // Partition
-  a.forEach((var i){    
+  a.forEach((var i){
     if (i.compareTo(pivot) < 0) {
       less.add(i);
     } else if (i.compareTo(pivot) > 0) {
@@ -2284,11 +2284,11 @@ quickSort(List a) {
       pivotList.add(i);
     }
   });
-  
+
   // Recursively sort sublists
   less = quickSort(less);
   more = quickSort(more);
-  
+
   // Concatenate results
   less.addAll(pivotList);
   less.addAll(more);
@@ -2321,15 +2321,15 @@ def quicksort := {
 
     def partition(array, var first :int, var last :int) {
         if (last <= first) { return }
-  
+
         # Choose a pivot
         def pivot := array[def pivotIndex := (first + last) // 2]
-  
+
         # Move pivot to end temporarily
         swap(array, pivotIndex, last)
-  
+
         var swapWith := first
-  
+
         # Scan array except for pivot, and...
         for i in first..!last {
             if (array[i] <= pivot) {   # items ≤ the pivot
@@ -2337,7 +2337,7 @@ def quicksort := {
                 swapWith += 1
             }
         }
-  
+
         # Swap pivot into between-partition position.
         # Because of the swapping we know that everything before swapWith is less
         # than or equal to the pivot, and the item at swapWith (since it was not
@@ -2365,7 +2365,7 @@ def quicksort := {
 ## EasyLang
 
 <lang>data[] = [ 29 4 72 44 55 26 27 77 92 5 ]
-# 
+#
 func qsort left right . .
   while left < right
     swap data[(left + right) / 2] data[left]
@@ -2381,7 +2381,7 @@ func qsort left right . .
     left = mid + 1
   .
 .
-# 
+#
 call qsort 0 len data[] - 1
 print data[]
 ```
@@ -2405,7 +2405,7 @@ print data[]
       ;; pivot = first element of list
      (set! part (list-partition (rest L) proc (first L)))
      (append (quicksort (first part) proc )
-            (list (first L)) 
+            (list (first L))
             (quicksort (second part) proc)))))
 
 ```
@@ -2425,13 +2425,13 @@ print data[]
 	(set! compare 0)
 	(quicksort (shuffle (iota n)) >)
 	(writeln 'n n 'compare# compare ))
-	
+
 (qtest 1000)
-  n     1000       compare#     12764    
+  n     1000       compare#     12764
 (qtest 10000)
-  n     10000      compare#     277868    
+  n     10000      compare#     277868
 (qtest 100000)
-  n     100000     compare#     6198601    
+  n     100000     compare#     6198601
 
 
 ```
@@ -2490,7 +2490,7 @@ Alternative implementation (not necessarily as efficient, but very readable)
 
 implementation Array (Quicksort)
 
-  plus: Array array, return Array = 
+  plus: Array array, return Array =
     self.arrayByAddingObjectsFromArray: array
 
   filter: BOOL (^)(id) predicate, return Array
@@ -2501,7 +2501,7 @@ implementation Array (Quicksort)
     return array.copy
 
   quicksort, return Array = self
-    if self.count > 1      
+    if self.count > 1
       id x = self[self.count / 2]
       lesser := self.filter: (id y | return y < x)
       greater := self.filter: (id y | return y > x)
@@ -2577,7 +2577,7 @@ int main()
 
 ## Eiffel
 
-The 
+The
 ```eiffel>QUICKSORT</lang
  class:
 
@@ -2724,26 +2724,26 @@ ELENA 4.1 :
 import extensions;
 import system'routines;
 import system'collections;
- 
+
 extension op
 {
     quickSort()
     {
         if (self.isEmpty()) { ^ self };
- 
+
         var pivot := self[0];
- 
+
         auto less := new ArrayList();
         auto pivotList := new ArrayList();
         auto more := new ArrayList();
- 
+
         self.forEach:(item)
         {
             if (item < pivot)
             {
                 less.append(item)
             }
-            else if (item > pivot) 
+            else if (item > pivot)
             {
                 more.append(item)
             }
@@ -2752,21 +2752,21 @@ extension op
                 pivotList.append(item)
             }
         };
- 
+
         less := less.quickSort();
         more := more.quickSort();
- 
+
         less.appendRange(pivotList);
         less.appendRange(more);
- 
+
         ^ less
     }
 }
- 
+
 public program()
 {
     var list := new int[]::(3, 14, 1, 5, 9, 2, 6, 3);
- 
+
     console.printLine("before:", list.asEnumerable());
     console.printLine("after :", list.quickSort().asEnumerable());
 }
@@ -2823,11 +2823,11 @@ multi-process implementation (number processes = number of processor cores):
 quick_sort(L) -> qs(L, trunc(math:log2(erlang:system_info(schedulers)))).
 
 qs([],_) -> [];
-qs([H|T], N) when N > 0  -> 
+qs([H|T], N) when N > 0  ->
     {Parent, Ref} = {self(), make_ref()},
-    spawn(fun()-> Parent ! {l1, Ref, qs([E||E<-T, E<H], N-1)} end), 
-    spawn(fun()-> Parent ! {l2, Ref, qs([E||E<-T, H =< E], N-1)} end), 
-    {L1, L2} = receive_results(Ref, undefined, undefined), 
+    spawn(fun()-> Parent ! {l1, Ref, qs([E||E<-T, E<H], N-1)} end),
+    spawn(fun()-> Parent ! {l2, Ref, qs([E||E<-T, H =< E], N-1)} end),
+    {L1, L2} = receive_results(Ref, undefined, undefined),
     L1 ++ [H] ++ L2;
 qs([H|T],_) ->
     qs([E||E<-T, E<H],0) ++ [H] ++ qs([E||E<-T, H =< E],0).
@@ -2956,7 +2956,7 @@ let rec qsort = function
 
 ```factor
 : qsort ( seq -- seq )
-    dup empty? [ 
+    dup empty? [
       unclip [ [ < ] curry partition [ qsort ] bi@ ] keep
       prefix append
     ] unless ;
@@ -2970,7 +2970,7 @@ let rec qsort = function
 ```Fexl
 # (sort xs) is the ordered list of all elements in list xs.
 # This version preserves duplicates.
-\sort== 
+\sort==
     (\xs
     xs [] \x\xs
     append (sort; filter (gt x) xs);   # all the items less than x
@@ -3121,7 +3121,7 @@ end program qsort_test
 
 ```txt
 
-Compiled with GNU Fortran 4.6.3 
+Compiled with GNU Fortran 4.6.3
  Unsorted Values:
     1 0.228570    2 0.352733    3 0.167898    4 0.883237
     5 0.968189    6 0.806234    7 0.117714    8 0.487401
@@ -3395,7 +3395,7 @@ func partition(a sort.Interface, first int, last int, pivotIndex int) int {
         }
     }
     a.Swap(first, right) // swap into right place
-    return right    
+    return right
 }
 
 func quicksortHelper(a sort.Interface, first int, last int) {
@@ -3480,26 +3480,26 @@ Example:
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main()                     #: demonstrate various ways to sort a list and string 
+procedure main()                     #: demonstrate various ways to sort a list and string
    demosort(quicksort,[3, 14, 1, 5, 9, 2, 6, 3],"qwerty")
 end
 
 procedure quicksort(X,op,lower,upper)                      #: return sorted list
-local pivot,x 
+local pivot,x
 
    if /lower := 1 then {                                   # top level call setup
-      upper := *X   
+      upper := *X
       op := sortop(op,X)                                   # select how and what we sort
       }
 
    if upper - lower > 0 then {
       every x := quickpartition(X,op,lower,upper) do       # find a pivot and sort ...
           /pivot | X := x                                  # ... how to return 2 values w/o a structure
-      X := quicksort(X,op,lower,pivot-1)                   # ... left            
+      X := quicksort(X,op,lower,pivot-1)                   # ... left
       X := quicksort(X,op,pivot,upper)                     # ... right
       }
 
-   return X                                             
+   return X
 end
 
 procedure quickpartition(X,op,lower,upper)                 #: quicksort partitioner helper
@@ -3517,10 +3517,10 @@ initial pivotL := list(3)
    lower -:= 1
    upper +:= 1
    while lower < upper do {                                # find values on wrong side of pivot ...
-      while op(pivot,X[upper -:= 1])                       # ... rightmost 
+      while op(pivot,X[upper -:= 1])                       # ... rightmost
       while op(X[lower +:=1],pivot)                        # ... leftmost
       if lower < upper then                                # not crossed yet
-         X[lower] :=: X[upper]                             # ... swap 
+         X[lower] :=: X[upper]                             # ... swap
       }
 
    suspend lower                                           # 1st return pivot point
@@ -3537,7 +3537,7 @@ Algorithm notes:
 * Sedgewick's suggestions for tail calling to recurse into the larger side and using insertion sort below a certain size were not implemented.  (Q: does Icon/Unicon has tail calling optimizations?)
 <br/>Note: This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'sortop', and 'demosort' in Bubble Sort]]. The full demosort exercises the named sort of a list with op = "numeric", "string", ">>" (lexically gt, descending),">" (numerically gt, descending), a custom comparator, and also a string.
 
-{{out}} Abbreviated 
+{{out}} Abbreviated
 
 ```txt
 Sorting Demo using procedure quicksort
@@ -3605,7 +3605,7 @@ for additional explanations and examples.
 
 
 
-###  Imperative 
+###  Imperative
 
 {{works with|Java|1.5+}}
 
@@ -3648,7 +3648,7 @@ for additional explanations and examples.
 
 
 
-###  Functional 
+###  Functional
 
 {{works with|Java|1.8}}
 
@@ -3749,7 +3749,7 @@ Emphasising clarity more than run-time optimisation (for which Array.sort() woul
 (function () {
     'use strict';
 
-    // quickSort :: (Ord a) => [a] -> [a]  
+    // quickSort :: (Ord a) => [a] -> [a]
     function quickSort(xs) {
 
         if (xs.length) {
@@ -3907,7 +3907,7 @@ def quicksort:
   end ;
 
 ```
-Fortunately, the example input used above produces the same output, 
+Fortunately, the example input used above produces the same output,
 and so both are omitted here.
 
 
@@ -3997,7 +3997,7 @@ Example:
 
 
 Explanation:
- 
+
 
 ```K
 
@@ -4011,7 +4011,7 @@ is the current function called recursively.
 
 ```K
 
-   :[....] 
+   :[....]
 
 ```
 
@@ -4037,20 +4037,20 @@ And here is the full if/then/else clause:
 ```K
 
     :[
-        0=#x;           / if length of x is zero 
+        0=#x;           / if length of x is zero
         x;              / then return x
                         / else
-        ,/(             / join the results of: 
+        ,/(             / join the results of:
           _f x@&x<f         / sort (recursively) elements less than f (pivot)
-          x@&x=f            / element equal to f 
-          _f x@&x>f)        / sort (recursively) elements greater than f 
+          x@&x=f            / element equal to f
+          _f x@&x>f)        / sort (recursively) elements greater than f
      ]
 
 ```
 
 
-Though - as with APL and J - for larger arrays it's much faster to 
-sort using "<" (grade up) which gives the indices of the 
+Though - as with APL and J - for larger arrays it's much faster to
+sort using "<" (grade up) which gives the indices of the
 list sorted ascending, i.e.
 
 
@@ -4197,7 +4197,7 @@ quicksort(List, Sorted) :-
     quicksort(List, [], Sorted).
 
 quicksort([], Sorted, Sorted).
-quicksort([Pivot| Rest], Acc, Sorted) :- 
+quicksort([Pivot| Rest], Acc, Sorted) :-
     partition(Rest, Pivot, Smaller0, Bigger0),
     quicksort(Smaller0, [Pivot| Bigger], Sorted),
     quicksort(Bigger0, Acc, Bigger).
@@ -4216,7 +4216,7 @@ partition([X| Xs], Pivot, Smalls, Bigs) :-
 
 ## Lua
 
-NOTE: If you want to use quicksort in a Lua script, you don't need to implement it yourself. Just do: 
+NOTE: If you want to use quicksort in a Lua script, you don't need to implement it yourself. Just do:
 ```txt
 table.sort(tableName)
 ```
@@ -4284,7 +4284,7 @@ qsort(a) = if eof(first a) then a else follow(qsort(b0),qsort(b1)) fi
     b1 = a whenever not p;
     follow(x,y) = if xdone then y upon xdone else x fi
                     where
-                       xdone = iseod x fby xdone or iseod x; 
+                       xdone = iseod x fby xdone or iseod x;
                     end;
  end
 ```
@@ -4368,7 +4368,7 @@ Module Checkit2 {
                         myQuick(number,  number - 1)
                         myQuick( number + 1, number)
                   End Sub
-             } 
+             }
       }
       Quick=Quick()
       Dim A(10)
@@ -4402,7 +4402,7 @@ Module Checkit3 {
             partition=lambda-> {
                   Read &A(), p, r : i = p-1 : x=A(r)
                   For j=p to r-1 {If .LE(A(j), x) Then i++:Swap A(i),A(j)
-                  } : Swap A(i+1), A(r) :  Push  i+2, i 
+                  } : Swap A(i+1), A(r) :  Push  i+2, i
             }
       Public:
             LE=Lambda->Number<=Number
@@ -4417,7 +4417,7 @@ Module Checkit3 {
                  Read ref$
                  {
                          loop : If Stackitem() >= Stackitem(2) Then Drop 2 : if  empty then {Break} else continue
-                         over 2,2 : call .partition(ref$) :shift 3 
+                         over 2,2 : call .partition(ref$) :shift 3
                  }
             }
       }
@@ -4600,24 +4600,24 @@ This should be placed in a file named ''quickSort.m''.
 ```Matlab
 function sortedArray = quickSort(array)
 
-    if numel(array) <= 1 %If the array has 1 element then it can't be sorted       
+    if numel(array) <= 1 %If the array has 1 element then it can't be sorted
         sortedArray = array;
         return
     end
-    
+
     pivot = array(end);
     array(end) = [];
-        
+
     %Create two new arrays which contain the elements that are less than or
     %equal to the pivot called "less" and greater than the pivot called
     %"greater"
     less = array( array <= pivot );
     greater = array( array > pivot );
-    
+
     %The sorted array is the concatenation of the sorted "less" array, the
     %pivot and the sorted "greater" array in that order
     sortedArray = [quickSort(less) pivot quickSort(greater)];
-    
+
 end
 ```
 
@@ -4627,16 +4627,16 @@ A slightly more vectorized version of the above code that removes the need for t
 ```Matlab
 function sortedArray = quickSort(array)
 
-    if numel(array) <= 1 %If the array has 1 element then it can't be sorted       
+    if numel(array) <= 1 %If the array has 1 element then it can't be sorted
         sortedArray = array;
         return
     end
-    
+
     pivot = array(end);
     array(end) = [];
-    
+
     sortedArray = [quickSort( array(array <= pivot) ) pivot quickSort( array(array > pivot) )];
-    
+
 end
 ```
 
@@ -4701,8 +4701,8 @@ The ISO standard for the "Generic Modula-2" language extension provides generici
 
 ```Modula2
 (*#####################*)
- DEFINITION MODULE QSORT; 
-(*#####################*)      
+ DEFINITION MODULE QSORT;
+(*#####################*)
 
 FROM SYSTEM IMPORT ADDRESS;
 
@@ -4711,7 +4711,7 @@ TYPE CmpFuncPtrs = PROCEDURE(ADDRESS, ADDRESS):INTEGER;
  PROCEDURE QuickSortPtrs(VAR Array:ARRAY OF ADDRESS; N:CARDINAL;
                          Compare:CmpFuncPtrs);
 END QSORT.
- 
+
 ```
 
 
@@ -4722,7 +4722,7 @@ Sedgewick suggests that faster sorting will be achieved if you drop back to an i
 
 ```Modula2
 (*##########################*)
- IMPLEMENTATION MODULE QSORT; 
+ IMPLEMENTATION MODULE QSORT;
 (*##########################*)
 
 FROM SYSTEM    IMPORT ADDRESS;
@@ -4981,7 +4981,7 @@ MODULE Main;
 
 IMPORT IO, TextSort;
 
-VAR arr := ARRAY [1..10] OF TEXT {"Foo", "bar", "!ooF", "Modula-3", "hickup", 
+VAR arr := ARRAY [1..10] OF TEXT {"Foo", "bar", "!ooF", "Modula-3", "hickup",
                                  "baz", "quuz", "Zeepf", "woo", "Rosetta Code"};
 
 BEGIN
@@ -5005,32 +5005,32 @@ fun quicksort( arr, cmp )
 {
     if( arr.length() < 2 )
         return arr;
-    
+
     if( !cmp )
         cmp = ( a, b ) -> a - b;
-    
+
     var a = [ ], b = [ ];
     var pivot = arr[0];
     var len = arr.length();
-    
+
     for( var i = 1; i < len; ++i )
     {
         var item = arr[i];
-        
+
         if( cmp( item, pivot ) < cmp( pivot, item ) )
             a.add( item );
         else
             b.add( item );
     }
-    
+
     a = quicksort( a, cmp );
     b = quicksort( b, cmp );
-    
+
     a.add( pivot );
-    
+
     foreach( var item in b )
         a.add( item );
-    
+
     return a;
 }
 ```
@@ -5071,7 +5071,7 @@ Shows quicksort on a 16-element array.
 
 ```MUMPS
 
-main 
+main
  new collection,size
  set size=16
  set collection=size for i=0:1:size-1 set collection(i)=$random(size)
@@ -5082,7 +5082,7 @@ main
  zwrite collection  ; This will only work on Intersystem's flavor of MUMPS
  q
 quicksort(array,low,high)
- if low<high do  
+ if low<high do
  . set pivot=$$partition(.array,low,high)
  . do quicksort(.array,low,pivot-1)
  . do quicksort(.array,pivot+1,high)
@@ -5090,8 +5090,8 @@ quicksort(array,low,high)
 partition(A,p,r)
  set pivot=A(r)
  set i=p-1
- for j=p:1:r-1 do  
- . i A(j)<=pivot do  
+ for j=p:1:r-1 do
+ . i A(j)<=pivot do
  . . set i=i+1
  . . set helper=A(j)
  . . set A(j)=A(i)
@@ -5185,7 +5185,7 @@ module Quicksort
         |[]    => []
         |x::xs => Qsort($[y|y in xs, (y.CompareTo(x) < 0)]) + [x] + Qsort($[y|y in xs, (y.CompareTo(x) > 0)])
     }
-    
+
     Main() : void
     {
         def empty = [];
@@ -5347,7 +5347,7 @@ US  Washington
 
 
 
-```nial>quicksort is fork [ 
+```nial>quicksort is fork [
 = [1 first,tally],
   pass,
   link [
@@ -5590,7 +5590,7 @@ let rec quicksort gt = function
   | x::xs ->
       let ys, zs = List.partition (gt x) xs in
       (quicksort gt ys) @ (x :: (quicksort gt zs))
- 
+
 let _ =
   quicksort (>) [4; 65; 2; -31; 0; 99; 83; 782; 1]
 ```
@@ -5612,7 +5612,7 @@ function f=quicksort(v)                       % v must be a column vector
      f  = [quicksort(f(ia)); f(ib); quicksort(f(ic))];
   end
 endfunction
- 
+
 N=30; v=rand(N,1); tic,u=quicksort(v); toc
 u
 ```
@@ -5669,7 +5669,7 @@ Oforth built-in sort uses quick sort algorithm (see lang/collect/ListBuffer.of f
 
 ```txt
 before: 4, 65, 2, -31, 0, 99, 83, 782, 1
- after: -31, 0, 1, 2, 4, 65, 83, 99, 782 
+ after: -31, 0, 1, 2, 4, 65, 83, 99, 782
 ```
 
 
@@ -5725,13 +5725,13 @@ median(v)={
 
 { X is array of LongInt }
 Procedure QuickSort ( Left, Right : LongInt );
-Var 
+Var
   i, j,
   tmp, pivot : LongInt;         { tmp & pivot are the same type as the elements of array }
 Begin
   i:=Left;
   j:=Right;
-  pivot := X[(Left + Right) shr 1]; // pivot := X[(Left + Rigth) div 2] 
+  pivot := X[(Left + Right) shr 1]; // pivot := X[(Left + Rigth) div 2]
   Repeat
     While pivot > X[i] Do inc(i);   // i:=i+1;
     While pivot < X[j] Do dec(j);   // j:=j-1;
@@ -5776,13 +5776,13 @@ print "@a\n";
 ```perl6
 # Empty list sorts to the empty list
  multi quicksort([]) { () }
- 
+
  # Otherwise, extract first item as pivot...
  multi quicksort([$pivot, *@rest]) {
      # Partition.
      my $before := @rest.grep(* before $pivot);
      my $after  := @rest.grep(* !before $pivot);
- 
+
      # Sort the partitions.
      flat quicksort($before), $pivot, quicksort($after)
  }
@@ -5927,7 +5927,7 @@ QUICKSORT: PROCEDURE (A,AMIN,AMAX,N) RECURSIVE ;
    DECLARE (I,J,IA,IB,IC,PIV)  FIXED BIN(31);
    DECLARE (P,Q)               POINTER;
    DECLARE (AP(1))             FIXED BIN(31) BASED(P);
-   
+
    IF(N <= 1)THEN RETURN;
    IA=0; IB=0; IC=N+1;
    PIV=(AMIN+AMAX)/2;
@@ -5952,7 +5952,7 @@ END QUICKSORT;
    DCL (AMIN,AMAX) FIXED BIN(31),
        (N,A(*))    FIXED BIN(31) NONASGN ;
    DCL (I,X,Y) FIXED BIN(31);
-   
+
    AMIN=A(N); AMAX=AMIN;
    DO I=1 TO N-1;
       X=A(I); Y=A(I+1);
@@ -6028,9 +6028,9 @@ Function QuickSort( [Array] $data, $rand = ( New-Object Random ) )
 	$data
 }
 
-QuickSort 5,3,1,2,4 
-QuickSort 'e','c','a','b','d' 
-QuickSort 0.5,0.3,0.1,0.2,0.4 
+QuickSort 5,3,1,2,4
+QuickSort 'e','c','a','b','d'
+QuickSort 0.5,0.3,0.1,0.2,0.4
 $l = 100; QuickSort ( 1..$l | ForEach-Object { $Rand = New-Object Random }{ $Rand.Next( 0, $l - 1 ) } )
 ```
 
@@ -6044,13 +6044,13 @@ $l = 100; QuickSort ( 1..$l | ForEach-Object { $Rand = New-Object Random }{ $Ran
 
 function quicksort($array) {
     $less, $equal, $greater = @(), @(), @()
-    if( $array.Count -gt 1 ) { 
+    if( $array.Count -gt 1 ) {
         $pivot = $array[0]
         foreach( $x in $array) {
             if($x -lt $pivot) { $less += @($x) }
             elseif ($x -eq $pivot) { $equal += @($x)}
             else { $greater += @($x) }
-        }    
+        }
         $array = (@(quicksort $less) + @($equal) + @(quicksort $greater))
     }
     $array
@@ -6094,29 +6094,29 @@ Procedure qSort(Array a(1), firstIndex, lastIndex)
   low = firstIndex
   high = lastIndex
   pivotValue = a((firstIndex + lastIndex) / 2)
-  
+
   Repeat
-    
+
     While a(low) < pivotValue
       low + 1
     Wend
-    
+
     While a(high) > pivotValue
       high - 1
     Wend
-    
+
     If low <= high
       Swap a(low), a(high)
       low + 1
       high - 1
     EndIf
-    
+
   Until low > high
-  
+
   If firstIndex < high
     qSort(a(), firstIndex, high)
   EndIf
-  
+
   If low < lastIndex
     qSort(a(), low, lastIndex)
   EndIf
@@ -6161,8 +6161,8 @@ In a Haskell fashion --
 
 ```python
 def qsort(L):
-    return (qsort([y for y in L[1:] if y <  L[0]]) + 
-            L[:1] + 
+    return (qsort([y for y in L[1:] if y <  L[0]]) +
+            L[:1] +
             qsort([y for y in L[1:] if y >= L[0]])) if len(L) > 1 else L
 ```
 
@@ -6282,10 +6282,10 @@ def _quicksort(array, start, stop):
 
 ```R
 qsort <- function(v) {
-  if ( length(v) > 1 ) 
+  if ( length(v) > 1 )
   {
     pivot <- (min(v) + max(v))/2.0                            # Could also use pivot <- median(v)
-    c(qsort(v[v < pivot]), v[v == pivot], qsort(v[v > pivot])) 
+    c(qsort(v[v < pivot]), v[v == pivot], qsort(v[v > pivot]))
   } else v
 }
 
@@ -6305,10 +6305,10 @@ print(u)
 (define (quicksort < l)
   (match l
     ['() '()]
-    [(cons x xs) 
+    [(cons x xs)
      (let-values ([(xs-gte xs-lt) (partition (curry < x) xs)])
-       (append (quicksort < xs-lt) 
-               (list x) 
+       (append (quicksort < xs-lt)
+               (list x)
                (quicksort < xs-gte)))]))
 ```
 
@@ -6337,7 +6337,7 @@ Red []
 qsort: function [list][
 ;;-------------------------------
   if 1 >= length? list [  return list ]
-  left: copy [] 
+  left: copy []
   right: copy []
   eq:   copy []  ;; "equal"
   pivot: list/2 ;; simply choose second element as pivot element
@@ -6353,14 +6353,14 @@ qsort: function [list][
 ]
 
 
-;; lets test the function with an array of 100k integers, range 1..1000  
+;; lets test the function with an array of 100k integers, range 1..1000
 list: []
 loop 100000 [append list random 1000]
 t0: now/time/precise  ;; start timestamp
 qsort list ;; the return value (block) contains the sorted list, original list has not changed
 print ["time1: "  now/time/precise   - t0]  ;; about 1.1 sec on my machine
-t0: now/time/precise  
-sort list  ;; just for fun time the builtin function also ( also implementation of quicksort ) 
+t0: now/time/precise
+sort list  ;; just for fun time the builtin function also ( also implementation of quicksort )
 print ["time2: " now/time/precise   - t0]
 
 ```
@@ -6485,7 +6485,7 @@ return
 '''output'''
 <pre style="height:60ex">
 element  1 before sort: ------------------------------------------------ Rivers that form part of a (USA) state's border -------------------------------------------------
-element  2 before sort: 
+element  2 before sort:
 ### ============================================================================================================================================
 
 element  3 before sort: Perdido River                       Alabama, Florida
@@ -6551,7 +6551,7 @@ element 62 before sort: Blackwater River                    North Carolina, Virg
 element 63 before sort: Columbia River                      Oregon, Washington
 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 element  1  after sort: ------------------------------------------------ Rivers that form part of a (USA) state's border -------------------------------------------------
-element  2  after sort: 
+element  2  after sort:
 ### ============================================================================================================================================
 
 element  3  after sort: Arkansas River                      Arkansas, Oklahoma
@@ -6730,9 +6730,9 @@ showarray(test)
 quicksort(test, 1, 10)
 see "after sort:" + nl
 showarray(test)
- 
+
 func quicksort(a, s, n)
-       if n < 2 
+       if n < 2
           return
        ok
        t = s + n - 1
@@ -6740,7 +6740,7 @@ func quicksort(a, s, n)
        r = t
        p = a[floor((l + r) / 2)]
        while l <= r
-               while a[l] < p 
+               while a[l] < p
                        l = l + 1
                end
                while a[r] > p
@@ -6754,10 +6754,10 @@ func quicksort(a, s, n)
                   r = r - 1
               ok
        end
-       if s < r 
+       if s < r
           quicksort(a, s, r - s + 1)
        ok
-       if l < t 
+       if l < t
          quicksort(a, l, t - l + 1 )
        ok
 
@@ -6865,7 +6865,7 @@ rht  = size
   if lft < pivot then
     rht = pivot - 1
     goto [qSort]
-  end if 
+  end if
  if rht > pivot then
     lft = pivot + 1
     goto [qSort]
@@ -6896,15 +6896,15 @@ fn main() {
 
     quick_sort(&mut strings, &|x,y| x < y);
     println!("After:  {:?}\n", strings);
-    
+
     println!("Sort strings by length");
     println!("Before: {:?}", strings);
 
     quick_sort(&mut strings, &|x,y| x.len() < y.len());
-    println!("After:  {:?}", strings);    
+    println!("After:  {:?}", strings);
 }
 
-fn quick_sort<T,F>(v: &mut [T], f: &F) 
+fn quick_sort<T,F>(v: &mut [T], f: &F)
     where F: Fn(&T,&T) -> bool
 {
     let len = v.len();
@@ -6915,7 +6915,7 @@ fn quick_sort<T,F>(v: &mut [T], f: &F)
     }
 }
 
-fn partition<T,F>(v: &mut [T], f: &F) -> usize 
+fn partition<T,F>(v: &mut [T], f: &F) -> usize
     where F: Fn(&T,&T) -> bool
 {
     let len = v.len();
@@ -7135,11 +7135,11 @@ collection types don't support pattern matching, "+:" or "::".
            (loop low (cons (car l) high) (cdr l)))
           (else
            (loop (cons (car l) low) high (cdr l))))))
- 
+
 (define (quicksort l gt?)
   (if (null? l)
       '()
-      (split-by (cdr l) 
+      (split-by (cdr l)
                 (lambda (x) (gt? x (car l)))
                 (lambda (low high)
                   (append (quicksort low gt?)
@@ -7286,7 +7286,7 @@ BEGIN
         IF RIGHT - LEFT + 1 > 1 THEN
         BEGIN
             REAL PIVOT;
-            PIVOT := A((LEFT + RIGHT) // 2); 
+            PIVOT := A((LEFT + RIGHT) // 2);
             WHILE LEFT <= RIGHT DO
             BEGIN
                 WHILE A(LEFT) < PIVOT DO LEFT := LEFT + 1;
@@ -7317,7 +7317,7 @@ END QUICKSORT;
 ```sml
 fun quicksort [] = []
   | quicksort (x::xs) =
-    let 
+    let
         val (left, right) = List.partition (fn y => y<x) xs
     in
         quicksort left @ [x] @ quicksort right
@@ -7334,8 +7334,8 @@ Without using List.partition
 ```sml
 
 fun par_helper([], x, l, r) = (l, r) |
-	par_helper(h::t, x, l, r) = 
-		if h <= x then 
+	par_helper(h::t, x, l, r) =
+		if h <= x then
 			par_helper(t, x, l @ [h], r)
 		else
 			par_helper(t, x, l, r @ [h]);
@@ -7344,7 +7344,7 @@ fun par(l, x) = par_helper(l, x, [], []);
 
 fun quicksort [] = []
   | quicksort (h::t) =
-    let 
+    let
         val (left, right) = par(t, h)
     in
         quicksort left @ [h] @ quicksort right
@@ -7392,7 +7392,7 @@ templates quicksort
    <>
      $ !
 end quicksort
- 
+
 [4,5,3,8,1,2,6,7,9,8,5] -> quicksort -> !OUT::write
 
 ```
@@ -7545,7 +7545,7 @@ export function testQuickSort(): void {
   PROC _Quicksort (n)
   PROC _ShowArray (n)
 PRINT
- 
+
 END
 
 
@@ -7584,30 +7584,30 @@ RETURN
 _Quicksort PARAM(1)                   ' Quick sort
   PROC _InnerQuick (0, a@)
 RETURN
- 
- 
+
+
 _Swap PARAM(2)                         ' Swap two array elements
   PUSH @(a@)
   @(a@) = @(b@)
   @(b@) = POP()
 RETURN
- 
- 
+
+
 _InitArray                             ' Init example array
   PUSH 4, 65, 2, -31, 0, 99, 2, 83, 782, 1
- 
+
   FOR i = 0 TO 9
     @(i) = POP()
   NEXT
- 
+
 RETURN (i)
- 
- 
+
+
 _ShowArray PARAM (1)                   ' Show array subroutine
   FOR i = 0 TO a@-1
     PRINT @(i),
   NEXT
- 
+
   PRINT
 RETURN
 ```
@@ -7776,8 +7776,8 @@ End Sub
 
 ```txt
 quicksorttest
- 0  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25 
-a-stuff b-stuff c-stuff d-stuff e-stuff f-stuff g-stuff h-stuff i-stuff j-stuff k-stuff l-stuff m-stuff n-stuff o-stuff p-stuff q-stuff r-stuff s-stuff t-stuff u-stuff v-stuff w-stuff x-stuff y-stuff z-stuff 
+ 0  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25
+a-stuff b-stuff c-stuff d-stuff e-stuff f-stuff g-stuff h-stuff i-stuff j-stuff k-stuff l-stuff m-stuff n-stuff o-stuff p-stuff q-stuff r-stuff s-stuff t-stuff u-stuff v-stuff w-stuff x-stuff y-stuff z-stuff
 ```
 
 

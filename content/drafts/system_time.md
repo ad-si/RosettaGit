@@ -10,15 +10,15 @@ categories = []
 tags = []
 +++
 
-{{task|Programming environment operations}} 
-[[Category:Date and time]] 
+{{task|Programming environment operations}}
+[[Category:Date and time]]
 [[Category:Simple]]
 
 {{omit from|ML/I}}
 {{omit from|ZX Spectrum Basic|Does not have a real time clock.}}
 
 ;Task:
-Output the system '''time'''   (any units will do as long as they are noted) either by a [[Execute a System Command|system command]] or one built into the language. 
+Output the system '''time'''   (any units will do as long as they are noted) either by a [[Execute a System Command|system command]] or one built into the language.
 
 The system time can be used for debugging, network information, random number seeds, or something as simple as program performance.
 
@@ -53,7 +53,7 @@ with Ada.Calendar; use Ada.Calendar;
 with Ada.Calendar.Formatting; use Ada.Calendar.Formatting;
 with Ada.Calendar.Time_Zones; use Ada.Calendar.Time_Zones;
 with Ada.Text_Io; use Ada.Text_Io;
- 
+
 procedure System_Time is
    Now : Time := Clock;
 begin
@@ -169,14 +169,14 @@ $ awk 'BEGIN{print systime(),strftime()}'
 
 ```awk
 
-function dos_date(  cmd,d,t,x) { 	# under MS Windows 
+function dos_date(  cmd,d,t,x) { 	# under MS Windows
 #   cmd = "DATE /T"
 #   cmd | getline d	# Format depends on locale, e.g. MM/DD/YYYY or YYYY-MM-DD
 #   close(cmd)        	# close pipe
 # ##print d
 #   cmd = "TIME /T"
 #   cmd | getline t   	# 13:59
-#   close(cmd) 		
+#   close(cmd)
 # ##print t
 #   return d t
 
@@ -244,7 +244,7 @@ PRINT TIME$
 
 ## Batch File
 
-There is no way to get a computer-readable date or time representation in batch files. 
+There is no way to get a computer-readable date or time representation in batch files.
 All output is human-readable and follows the current locale.
 
 Both <tt>date</tt> and <tt>time</tt> have a <tt>/t</tt> argument which makes them output only the value instead of prompting for a new one as well.
@@ -276,12 +276,14 @@ Outputs the date and time.  To output only the time:
 
 ## C
 
-This probably isn't the best way to do this, but it works. 
+This probably isn't the best way to do this, but it works.
 It shows system time as "Www Mmm dd hh:mm:ss yyyy", where Www is the weekday, Mmm the month in letters, dd the day of the month, hh:mm:ss the time, and yyyy the year.
-```c>#include<time.h
 
-#include<stdio.h>
-#include<stdlib.h>
+```c
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 int main(){
   time_t my_time = time(NULL);
   printf("%s", ctime(&my_time));
@@ -295,8 +297,8 @@ int main(){
 
 to be compiled under linux with g++ -lboost_date_time systemtime.cpp -o systemtime( or whatever you like)
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <boost/date_time/posix_time/posix_time.hpp>
 
 int main( ) {
@@ -311,8 +313,8 @@ int main( ) {
 ### C++ 11
 
 
-```cpp>#include <chrono
-
+```cpp
+#include <chrono>
 #include <ctime> //for conversion std::ctime()
 #include <iostream>
 
@@ -370,7 +372,7 @@ Console.WriteLine(DateTime.Now);
                10  WS-CURRENT-SECOND  PIC  9(2).
                10  WS-CURRENT-MS      PIC  9(2).
            05  WS-DIFF-FROM-GMT       PIC S9(4).
- 
+
        PROCEDURE DIVISION.
            MOVE FUNCTION CURRENT-DATE TO WS-CURRENT-DATE-FIELDS.
 ```
@@ -380,7 +382,7 @@ Console.WriteLine(DateTime.Now);
 ## ColdFusion
 
 
-###  Script Based CFML 
+###  Script Based CFML
 
 
 ```cfm><cfscript
@@ -422,7 +424,7 @@ Epoch: 1496763388434
 
 {{works with|Tango}}
 
-''Clock.now.span'' in the example below returnes the time-span since 1 Jan 1 A.D. 
+''Clock.now.span'' in the example below returnes the time-span since 1 Jan 1 A.D.
 Days are used in the example,
 but lower units are available, with the lowest being nanoseconds (nanos field).
 
@@ -507,7 +509,7 @@ ELENA 4.x :
 ```elena
 import extensions;
 import system'calendar;
- 
+
 public program()
 {
     console.printLine(Date.Now);
@@ -569,11 +571,11 @@ By default, Erlang timestamps are turned in the {megasecs, secs, microsecs} form
 
 These can be changed with the calendar module:
 ```erlang>2
- calendar:now_to_datetime(os:timestamp()). 
+ calendar:now_to_datetime(os:timestamp()).
 {{2009,8,14},{4,3,24}}
-3> calendar:now_to_universal_time(os:timestamp()). 
+3> calendar:now_to_universal_time(os:timestamp()).
 {{2009,8,14},{4,3,40}}
-4> calendar:now_to_local_time(os:timestamp()).    
+4> calendar:now_to_local_time(os:timestamp()).
 {{2009,8,14},{0,7,01}}
 ```
 Note that you will often encounter the function <tt>erlang:now/0</tt> giving a time similar to the system time. However, <tt>erlang:now/0</tt> may get delayed if the system time changes suddenly (i.e.: coming back from sleep mode). The delay is in place to make sure <tt>receive</tt> clauses that are millisecond-sensitive do not get false timeouts.
@@ -581,7 +583,7 @@ Note that you will often encounter the function <tt>erlang:now/0</tt> giving a t
 
 ## Excel
 
-NOW() returns the date and time to the minute. 
+NOW() returns the date and time to the minute.
 Type in a cell :
 ```Excel
 =NOW()
@@ -703,30 +705,30 @@ In ISO Fortran 90 or later, use the SYSTEM_CLOCK intrinsic subroutine:
 ```fortran
 integer :: start, stop, rate
 real :: result
-      
+
 ! optional 1st integer argument (COUNT) is current raw system clock counter value (not UNIX epoch millis!!)
 ! optional 2nd integer argument (COUNT_RATE) is clock cycles per second
 ! optional 3rd integer argument (COUNT_MAX) is maximum clock counter value
 call system_clock( start, rate )
-      
+
 result = do_timed_work()
-      
+
 call system_clock( stop )
-      
+
 print *, "elapsed time: ", real(stop - start) / real(rate)
 ```
 In ISO Fortran 95 or later, use the CPU_TIME intrinsic subroutine:
 ```fortran
 real :: start, stop
 real :: result
-      
+
 ! System clock value interpreted as floating point seconds
 call cpu_time( start )
-      
+
 result = do_timed_work()
-      
+
 call cpu_time( stop )
-      
+
 print *, "elapsed time: ", stop - start
 ```
 
@@ -939,7 +941,7 @@ procedure main()
     write("&date - current date in yyyy/mm/dd format = ",&date)
     write("&dateline - timestamp with day of the week, date, and current time to the minute = ",&dateline)
 
-    if find("Unicon",&version) then  
+    if find("Unicon",&version) then
        write("&now - time in seconds since the epoch = ", &now)  # Unicon only
 
 end
@@ -1125,7 +1127,7 @@ These can be changed to the more common date/time stamp with the <code>calendar<
 
 ```lisp
 
-> (calendar:now_to_datetime (os:timestamp)) 
+> (calendar:now_to_datetime (os:timestamp))
 #(#(2015 2 13) #(0 12 18))
 
 ```
@@ -1566,7 +1568,7 @@ Direct access to the C library <code>time()</code> function can be had by an <co
 
 ```parigp
 install(time, "lf");
-t = time();  
+t = time();
 print(t);    \\ integer seconds since the epoch (usually 1 Jan 1970)
 ```
 
@@ -1723,7 +1725,7 @@ sleep(0.9)
 
 ```
 
-Note the system clock tick rate mean times can be out by ~0.0155s; 
+Note the system clock tick rate mean times can be out by ~0.0155s;
 it is not unusual to see total elapsed times of 0,0,0,0.016,0.016,0.016,0.031,0.031,0.031, etc.
 
 
@@ -2219,7 +2221,7 @@ Output:
 db2 -t
 db2 => SELECT CURRENT DATE, CURRENT TIME, CURRENT TIMESTAMP FROM SYSIBM.SYSDUMMY1;
 
-1          2        3                         
+1          2        3
 ---------- -------- --------------------------
 04/29/2018 14:27:10 2018-04-29-14.27.10.674182
 

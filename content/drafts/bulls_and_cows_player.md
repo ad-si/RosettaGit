@@ -324,7 +324,7 @@ ButtonStart:
 			GuiControl, , History, % History .= ": " Bulls " Bulls " Cows " Cows`n"
 			GuiControl, , Bulls
 			GuiControl, , Cows
-			
+
 			S:=Remove(S, Guess, Bulls, Cows)
 		}
 		If !S
@@ -403,29 +403,29 @@ P(n,k="",opt=0,delim="",str="") {
         c$ = CHR$(&30 + RND(9))
         IF INSTR(secret$, c$) = 0 secret$ += c$
       UNTIL LEN(secret$) = 4
-      
+
       FOR i% = 1234 TO 9876
         possible$ += STR$(i%)
       NEXT
-      
+
       PRINT "Guess a four-digit number with no digit used twice."
       guesses% = 0
       REPEAT
-        
+
         IF LEN(possible$) = 4 THEN
           guess$ = possible$
         ELSE
           guess$ = MID$(possible$, 4*RND(LEN(possible$) / 4) - 3, 4)
         ENDIF
-        
+
         PRINT '"Computer guesses " guess$
         guesses% += 1
-        
+
         IF guess$ = secret$ PRINT "Correctly guessed after "; guesses% " guesses!" : END
-        
+
         PROCcount(secret$, guess$, bulls%, cows%)
         PRINT "giving " ;bulls% " bull(s) and " ;cows% " cow(s)."
-        
+
         i% = 1
         REPEAT
           temp$ = MID$(possible$, i%, 4)
@@ -436,12 +436,12 @@ P(n,k="",opt=0,delim="",str="") {
             possible$ = LEFT$(possible$, i%-1) + MID$(possible$, i%+4)
           ENDIF
         UNTIL i% > LEN(possible$)
-        
+
         IF INSTR(possible$, secret$) = 0 STOP
-        
+
       UNTIL FALSE
       END
-      
+
       DEF PROCcount(secret$, guess$, RETURN bulls%, RETURN cows%)
       LOCAL i%, c$
       bulls% = 0
@@ -464,8 +464,8 @@ P(n,k="",opt=0,delim="",str="") {
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
@@ -486,7 +486,7 @@ char* get_digits(int n, char *ret)
 	int i, j;
 	char d[] = "123456789";
 
-	for (i = 0; i < n; i++) { 
+	for (i = 0; i < n; i++) {
 		j = irand(9 - i);
 		ret[i] = d[i + j];
 		if (j) d[i + j] = d[i], d[i] = ret[i];
@@ -925,7 +925,7 @@ Hooray! The answer is 5936!
         (possible-guesses (loop for i from 1234 to 9876
                                 when (validp (map 'list #'digit-char-p (prin1-to-string i))) collect it)))
        (format t "Secret: ~a~%" number)
-       (loop with guess = (nth (random (length possible-guesses)) possible-guesses)    
+       (loop with guess = (nth (random (length possible-guesses)) possible-guesses)
              with b = (bulls number guess)
              with c = (- (bulls+cows number guess) b)
              do  (format t "Guess:  ~a B: ~a C: ~a~%" guess b c)
@@ -933,7 +933,7 @@ Hooray! The answer is 5936!
                    (return-from solve (format t "Solution found!")))
                  (setq possible-guesses (mapcan #'(lambda (x) (if (and (= b (bulls x guess))
 								       (= c (- (bulls+cows x guess) b)))
-							        (list x))) 
+							        (list x)))
 						(remove guess possible-guesses)))
                  (setq guess (nth (random (length possible-guesses)) possible-guesses))
                  (setq b (bulls number guess))
@@ -1047,7 +1047,7 @@ defmodule Bulls_and_cows do
     possibility = permute(size) |> Enum.shuffle
     player(size, possibility, 1)
   end
-  
+
   def player(size, possibility, i) do
     guess = hd(possibility)
     IO.puts "Guess #{i} is #{Enum.join(guess)}  (from #{length(possibility)} possibilities)"
@@ -1060,7 +1060,7 @@ defmodule Bulls_and_cows do
         end
     end
   end
-  
+
   defp get_score(size) do
     IO.gets("Answer (Bulls, cows)? ")
     |> String.split(~r/\D/, trim: true)
@@ -1070,7 +1070,7 @@ defmodule Bulls_and_cows do
          _ -> get_score(size)
        end
   end
-  
+
   defp select(size, possibility, guess, score) do
     Enum.filter(possibility, fn x ->
       bulls = Enum.zip(x, guess) |> Enum.count(fn {n,g} -> n==g end)
@@ -1078,7 +1078,7 @@ defmodule Bulls_and_cows do
       {bulls, cows} == score
     end)
   end
-  
+
   defp permute(size), do: permute(size, Enum.to_list(1..9))
   defp permute(0, _), do: [[]]
   defp permute(size, list) do
@@ -1147,11 +1147,11 @@ function score(sequence pattern, sequence guess)
             bull += 1
         end if
     end for
-    
+
     for i = 1 to length(guess) do
         cow += and_bits(bits,MASK(guess[i])) != 0
     end for
-    
+
     return {bull, cow}
 end function
 
@@ -1188,7 +1188,7 @@ procedure game(sequence tgt)
         bc = score(tgt,buf)
         printf(1,"Guess %2d| %s    (from: %d)\nScore   | %d bull, %d cow\n%s",
                     {p, buf, length(list)} & bc & {line})
-        
+
         list = filter(list, tester_id, {buf, bc})
         p+=1
     end while
@@ -1239,7 +1239,7 @@ contains
 subroutine Init(candidates)
   integer, intent(in out) :: candidates(:)
   integer :: a, b, c, d, n
-    
+
            n = 0
 thousands: do a = 1, 9
 hundreds:    do b = 1, 9
@@ -1257,12 +1257,12 @@ units:           do d = 1, 9
 
 end subroutine init
 
-subroutine Evaluate(bulls, cows, guess, candidates) 
+subroutine Evaluate(bulls, cows, guess, candidates)
   integer, intent(in) :: bulls, cows, guess
   integer, intent(in out) :: candidates(:)
   integer :: b, c, s, i, j
   character(4) :: n1, n2
-   
+
   write(n1, "(i4)") guess
   do i = 1, size(candidates)
     if (candidates(i) == 0) cycle
@@ -1270,7 +1270,7 @@ subroutine Evaluate(bulls, cows, guess, candidates)
     c = 0
     write(n2, "(i4)") candidates(i)
     do j = 1, 4
-      s = index(n1, n2(j:j)) 
+      s = index(n1, n2(j:j))
       if(s /= 0) then
         if(s == j) then
           b = b + 1
@@ -1316,8 +1316,8 @@ program Bulls_Cows
   initial = 3024 * rnum + 1
   guess = candidates(initial)
   candidates(initial) = 0
-  
-  do 
+
+  do
     write(*, "(a, i4)") "My guess is ", guess
     write(*, "(a)", advance = "no") "Please score number of Bulls and Cows: "
     read*, bulls, cows
@@ -1328,13 +1328,13 @@ program Bulls_Cows
     end if
 
 ! We haven't found the solution yet so evaluate the remaining candidates
-! and eliminate those that do not match the previous score given    
+! and eliminate those that do not match the previous score given
     call Evaluate(bulls, cows, guess, candidates)
 
 ! Get the next guess from the candidates that are left
     guess = Nextguess(candidates)
     if(guess == 0) then
-! If we get here then no solution is achievable from the scores given or the program is bugged     
+! If we get here then no solution is achievable from the scores given or the program is bugged
       write(*, "(a)") "Sorry! I can't find a solution. Possible mistake in the scoring"
       exit
     end if
@@ -1490,13 +1490,13 @@ combinationsOf k (x:xs) = map (x:) (combinationsOf (k-1) xs) ++ combinationsOf k
 player = do
   let ps = concatMap permutations $ combinationsOf 4 ['1'..'9']
   play ps   where
-  
+
   play ps =
-    if null ps then 
+    if null ps then
 	putStrLn "Unable to find a solution"
     else do i <- randomRIO(0,length ps - 1)
             let p = ps!!i :: String
-	    putStrLn ("My guess is " ++ p) >>  putStrLn "How many bulls and cows?" 
+	    putStrLn ("My guess is " ++ p) >>  putStrLn "How many bulls and cows?"
 	    input <- takeInput
 	    let bc = input ::[Int]
 		ps' = filter((==sum bc).length. filter id. map (flip elem p))
@@ -1541,7 +1541,7 @@ The answer is 4932
 ```j
 require'misc'
 
-poss=:1+~.4{."1 (i.!9)A.i.9 
+poss=:1+~.4{."1 (i.!9)A.i.9
 fmt=: ' ' -.~ ":
 
 play=:3 :0
@@ -1654,12 +1654,12 @@ fun countBullsAndCows(guess: IntArray, answer: IntArray): Pair<Int,Int> {
         else if (d in answer) cows++
     }
     return bulls to cows
-} 
+}
 
 fun main(args: Array<String>) {
     val r = Random()
     val choices = mutableListOf<IntArray>()
-    // generate all possible distinct 4 digit (1 to 9) integer arrays  
+    // generate all possible distinct 4 digit (1 to 9) integer arrays
     for (i in 1..9) {
         for (j in 1..9) {
             if (j == i) continue
@@ -1671,7 +1671,7 @@ fun main(args: Array<String>) {
                 }
             }
         }
-    } 
+    }
 
     // pick one at random as the answer
     val answer = choices[r.nextInt(choices.size)]
@@ -1687,10 +1687,10 @@ fun main(args: Array<String>) {
         }
         for (i in choices.size - 1 downTo 0) {
             val (bulls2, cows2) = countBullsAndCows(choices[i], answer)
-            // if score is no better remove it from the list of choices 
+            // if score is no better remove it from the list of choices
             if (bulls2 <= bulls && cows2 <= cows) choices.removeAt(i)
         }
-        if (choices.size == 0) 
+        if (choices.size == 0)
             println("Something went wrong as no choices left! Aborting program")
     }
 }
@@ -1824,7 +1824,7 @@ end function
 
 ```
 
- 
+
 
 ## Mathematica
 
@@ -1870,7 +1870,7 @@ Must be: 1639
 ```MATLAB
 function BullsAndCowsPlayer
 % Plays the game Bulls and Cows as the player
-    
+
     % Generate list of all possible numbers
     nDigits = 4;
     lowVal = 1;
@@ -1882,7 +1882,7 @@ function BullsAndCowsPlayer
     for k = 1:nCombs
         gList(nPermsPerComb*(k-1)+1:nPermsPerComb*k, :) = perms(combs(k, :));
     end
-    
+
     % Prompt user
     fprintf('Think of a number with:\n')
     fprintf('  %d digits\n', nDigits)
@@ -1893,7 +1893,7 @@ function BullsAndCowsPlayer
     fprintf('  1 Cow per correct digit in the wrong place\n')
     fprintf('Think of your number and press Enter when ready\n')
     pause
-    
+
     % Play game until all digits are correct
     nBulls = 0;
     nGuesses = 0;
@@ -2013,7 +2013,7 @@ sub read_score($) {
     (my $guess) = @_;
 
     for (;;) {
-        say "My guess: $guess   (from ", 0+@candidates, " possibilities)"; 
+        say "My guess: $guess   (from ", 0+@candidates, " possibilities)";
         if (<> =~ / ^ \h* (?<BULLS> \d) \h* (?<COWS> \d) \h* $ /x and
             $+{BULLS} + $+{COWS} <= 4) {
                 return ($+{BULLS}, $+{COWS});
@@ -2026,7 +2026,7 @@ sub read_score($) {
 sub score_correct($$$$) {
     my ($a, $b, $bulls, $cows) = @_;
 
-    # Count the positions at which the digits match: 
+    # Count the positions at which the digits match:
     my $exact = () = grep {substr($a, $_, 1) eq substr($b, $_, 1)} 0 .. 3;
 
     # Cross-match all digits in $a against all digits in $b, using a regex
@@ -2054,7 +2054,7 @@ say(@candidates?
 Sample game:
 
 ```perl
-msl@64Lucid:~/perl$ ./bulls-and-cows 
+msl@64Lucid:~/perl$ ./bulls-and-cows
 My guess: 1869   (from 3024 possibilities)
 1 0
 My guess: 3265   (from 240 possibilities)
@@ -2138,7 +2138,7 @@ Your secret number is 1234!
 ```Phix
 constant line = " +---------+-----------------------------+-------+------+\n"
 constant digits = "123456789"
- 
+
 function mask(integer ch)
     return power(2,ch-'1')
 end function
@@ -2159,7 +2159,7 @@ integer bits = 0, bulls = 0, cows = 0
 end function
 
 sequence list = {}
- 
+
 procedure pick(integer n, integer got, integer marker, sequence buf)
 integer bits = 1
     if got>=n then
@@ -2174,7 +2174,7 @@ integer bits = 1
         end for
     end if
 end procedure
- 
+
 procedure filter_list(sequence guess, integer bulls, integer cows)
 integer l = length(list), idx = 0
 sequence bc = {bulls,cows}
@@ -2186,9 +2186,9 @@ sequence bc = {bulls,cows}
     end for
     list = list[1..idx]
 end procedure
- 
+
 procedure game(sequence tgt)
-integer n = length(tgt), attempt = 1, bulls = 0, cows 
+integer n = length(tgt), attempt = 1, bulls = 0, cows
 sequence guess
     pick(n,0,0,repeat(0,n))
     while bulls<n do
@@ -2201,7 +2201,7 @@ sequence guess
     end while
     puts(1,line)
 end procedure
- 
+
 constant N = 4
 sequence secret = shuffle(digits)[1..N]
 printf(1,"%s | Secret  | %9s                   | BULLS | COWS |\n%s", {line, secret, line})
@@ -2542,13 +2542,13 @@ Procedure evaluateGuesses(*answer.history, List remainingGuesses.s())
   Protected i, cows, bulls
 
   ForEach remainingGuesses()
-    bulls = 0: cows = 0 
+    bulls = 0: cows = 0
     For i = 1 To #answerSize
       If Mid(remainingGuesses(), i, 1) = Mid(*answer\answer, i, 1)
         bulls + 1
       ElseIf FindString(remainingGuesses(), Mid(*answer\answer, i, 1), 1)
         cows + 1
-      EndIf 
+      EndIf
     Next
     If bulls <> *answer\bulls Or cows <> *answer\cows
       DeleteElement(remainingGuesses())
@@ -2560,15 +2560,15 @@ Procedure findPermutations(List permutations.s(), elementChar.s, permSize)
   Protected i, j, stackDepth, elementCount = Len(elementChar) - 1, working.s = Space(permSize), *working = @working
   permSize - 1
   Dim stack(permSize) ;holds index states
-  
+
   Dim elements(elementCount)
   Dim elementChar.c(elementCount)
   For i = 0 To elementCount
     elementChar(i) = PeekC(@elementChar + i * SizeOf(Character))
   Next
-  
+
   i = 0
-  Repeat 
+  Repeat
     While i <= elementCount
       If elements(i) = 0
         stack(stackDepth) = i
@@ -2583,14 +2583,14 @@ Procedure findPermutations(List permutations.s(), elementChar.s, permSize)
           stackDepth + 1
           i = 0
           Continue ;skip update
-        EndIf 
-      EndIf 
+        EndIf
+      EndIf
       i + 1
     Wend
     stackDepth - 1
     If stackDepth < 0
       Break
-    EndIf 
+    EndIf
     i = stack(stackDepth) + 1
     elements(i - 1) = 0
   ForEver
@@ -2602,7 +2602,7 @@ If OpenConsole()
   NewList remainingGuesses.s()
   NewList answer.history()
   findPermutations(remainingGuesses(), "123456789", 4)
-  
+
   PrintN("Playing Bulls & Cows with " + Str(#answerSize) + " unique digits." + #CRLF$)
   Repeat
     If ListSize(remainingGuesses()) = 0
@@ -2610,7 +2610,7 @@ If OpenConsole()
         PrintN(#CRLF$ + "Solved!")
         Break ;exit Repeat/Forever
       EndIf
-      
+
       PrintN(#CRLF$ + "BadScoring!  Nothing fits the scores you gave.")
       ForEach answer()
         PrintN(answer()\answer + " -> [" + Str(answer()\bulls) + ", " + Str(answer()\cows) + "]")
@@ -2621,11 +2621,11 @@ If OpenConsole()
       SelectElement(remainingGuesses(), Random(ListSize(remainingGuesses()) - 1))
       guess = remainingGuesses()
       DeleteElement(remainingGuesses())
-      
+
       Print("Guess #" + Str(guessNum) + " is " + guess + ".  What does it score (bulls, cows)?")
       score = Input()
       If CountString(score, ",") > 0: delimeter = ",": Else: delimeter = " ": EndIf
-      
+
       AddElement(answer())
       answer()\answer = guess
       answer()\bulls = Val(StringField(score, 1, delimeter))
@@ -2633,8 +2633,8 @@ If OpenConsole()
       evaluateGuesses(@answer(), remainingGuesses())
     EndIf
   ForEver
-  
-  Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input() 
+
+  Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
 ```
@@ -2673,7 +2673,7 @@ try:
     from itertools import izip
 except:
     izip = zip
-    
+
 digits = '123456789'
 size = 4
 
@@ -2696,7 +2696,7 @@ answers = []
 scores  = []
 
 print ("Playing Bulls & Cows with %i unique digits\n" % size)
-       
+
 while True:
     ans = choices[0]
     answers.append(ans)
@@ -2790,7 +2790,7 @@ Now define some auxiliary functions to parse the user input (with a minimum erro
             (apply values (map (lambda (s) (string->number (string-trim s))) splited-score))
             (values #f #f)))
       (values #f #f)))
- 
+
 (define (calculate-score guess chosen)
   (define (in-chosen x) (member x chosen))
   (let ([bulls (count = guess chosen)]
@@ -2803,7 +2803,7 @@ Main part of the game.
 
 ```Racket
 (printf "Playing Bulls & Cows with ~a unique digits\n" size)
- 
+
 (let loop ([choices all-choices] [num 1])
   (if (null? choices)
       (printf "Bad scoring! nothing fits those scores you gave.")
@@ -2813,16 +2813,16 @@ Main part of the game.
         (let-values ([(bulls cows) (parse-score (read-line))])
           ;parse-score returns (#f #f) on errors
           (if (and bulls cows)
-              (begin 
+              (begin
                 (printf "Bulls: ~a, Cows: ~a\n" bulls cows)
                 (if (and (= bulls size) (= cows 0))
                     (printf "Ye-haw!")
-                    (let () 
-                      (define (equal-score? chosen) 
+                    (let ()
+                      (define (equal-score? chosen)
                         (let-values ([(c-bulls c-cows) (calculate-score guess chosen)])
                           (and (= c-bulls bulls) (= c-cows cows))))
                       (loop (filter equal-score? choices) (+ num 1)))))
-              (begin 
+              (begin
                 (printf "Sorry, I didn't understand that. Please try again.\n")
                 (loop choices num)))))))
 ```
@@ -2932,33 +2932,33 @@ ask:   do forever; say $$1 g $$2;  pull x 1 bull cow . /*display prompt;  obtain
 secret = ""
 while len(secret) != 4
         c = char(48 + random(9))
-        if substr(secret, c) = 0 
+        if substr(secret, c) = 0
            secret = secret + c
         ok
-end 
+end
 see "secret = " + secret + nl
- 
+
 possible = ""
 for i = 1234 to 9876
      possible = possible + string(i)
 next
- 
+
 see "guess a four-digit number with no digit used twice." + nl
 guesses = 0
-while true 
+while true
         bulls = 0
         cows = 0
-        if len(possible) = 4 
+        if len(possible) = 4
            guess = possible
         else
            guess = substr(possible, 4*random(len(possible) / 4) - 3, 4)
-        ok 
+        ok
         see "computer guesses " + guess + nl
-        guesses = guesses + 1 
+        guesses = guesses + 1
         if guess = secret
            see "correctly guessed after " + guesses + " guesses!" + nl
            exit
-        ok 
+        ok
         if len(guess) = 4
            count(secret, guess, bulls, cows)
         ok
@@ -2970,33 +2970,33 @@ while true
                  if len(guess) = 4
                     count(temp, guess, testbulls, testcows)
                  ok
-                 if bulls=testbulls 
-                    if cows=testcows 
+                 if bulls=testbulls
+                    if cows=testcows
                        i = i + 4
                     ok
                  else
                     possible = left(possible, i-1) + substr(possible, i+4)
                  ok
-        end 
-        if substr(possible, secret) = 0 
+        end
+        if substr(possible, secret) = 0
            exit
-        ok 
+        ok
 end
- 
+
 func count(secret, guess, bulls,  cows)
        bulls = 0
        cows = 0
        for nr = 1 to 4
             c = secret[nr]
             if guess != 0
-               if guess[nr] = c 
+               if guess[nr] = c
                   bulls = bulls + 1
                   if substr(guess, c) > 0
                      cows = cows + 1
                   ok
                ok
             ok
-       next 
+       next
        see "giving " + bulls + " bull(s) and " + cows  + " cow(s)." + nl
        return [bulls, cows]
 
@@ -3019,17 +3019,17 @@ loop do
   guesses << current_guess = possible_guesses.pop
   print "Guess #{guesses.size} is #{current_guess.join}. Answer (bulls,cows)? "
   scores << score = gets.split(',').map(&:to_i)
-  
+
   # handle win
   break (puts "Yeah!") if score == [size,0]
-  
+
   # filter possible guesses
   possible_guesses.select! do |guess|
     bulls = guess.zip(current_guess).count{|g,cg| g == cg}
     cows = size - (guess - current_guess).size - bulls
     [bulls, cows] == score
   end
-  
+
   # handle 'no possible guesses left'
   if possible_guesses.empty?
     puts "Error in scoring?"
@@ -3076,34 +3076,34 @@ Error in scoring?
     def allCombinations: Seq[List[Byte]] = {
       (0 to 9).map(_.byteValue).toList.combinations(4).toList.flatMap(_.permutations)
     }
-    
+
     def nextGuess(possible: Seq[List[Byte]]): List[Byte] = possible match {
-      case Nil => throw new IllegalStateException 
+      case Nil => throw new IllegalStateException
       case List(only) => only
       case _ => possible(Random.nextInt(possible.size))
     }
-    
+
     def doGuess(guess: List[Byte]): Pair[Int, Int] = {
       println("My guess is " + guess);
       val arr = readLine().split(' ').map(Integer.valueOf(_))
       (arr(0), arr(1))
     }
-    
+
     def testGuess(alt: List[Byte], guess: List[Byte]): Pair[Int, Int] = {
       val bulls =alt.zip(guess).filter(p => p._1 == p._2).size
       val cows = guess.filter(alt.contains(_)).size - bulls
       (bulls, cows)
     }
-    
+
     def play(possible: Seq[List[Byte]]): List[Byte] = {
       val curGuess = nextGuess(possible)
       val bc = doGuess(curGuess)
-      if (bc._1 == 4) { println("Ye-haw!"); curGuess } 
-      else 
+      if (bc._1 == 4) { println("Ye-haw!"); curGuess }
+      else
         play(possible.filter(p => testGuess(p, curGuess) == bc))
-      
+
     }
-  
+
     def main(args: Array[String]) {
       play(allCombinations)
     }
@@ -3303,13 +3303,13 @@ Bad scoring? nothing fits those scores you gave:
 ```vb
 
 Option Explicit
- 
+
 Sub Main_Bulls_And_Cows_Player()
 Dim collSoluces As New Collection, Elem As Variant, Soluce As String
 Dim strNumber As String, cpt As Byte, p As Byte
 Dim i As Byte, Bulls() As Boolean, NbBulls As Byte, Cows As Byte, Poss As Long
 Const NUMBER_OF_DIGITS As Byte = 4
-        
+
         strNumber = CreateNb(NUMBER_OF_DIGITS)
         Debug.Print "TOSS : " & StrConv(strNumber, vbUnicode)
         Debug.Print "---------- START ------------"
@@ -3341,12 +3341,12 @@ Const NUMBER_OF_DIGITS As Byte = 4
                 Debug.Print "---------- THE END ------------"
         Debug.Print "TOSS WAS : " & StrConv(strNumber, vbUnicode) & " We found : " & StrConv(Soluce, vbUnicode)
 End Sub
- 
+
 Function CreateNb(NbDigits As Byte) As String
 Dim myColl As New Collection
 Dim strTemp As String
 Dim bytAlea As Byte
- 
+
     Randomize
     Do
         bytAlea = Int((Rnd * 9) + 1)
@@ -3360,14 +3360,14 @@ Dim bytAlea As Byte
     Loop While Len(strTemp) < NbDigits
     CreateNb = strTemp
 End Function
- 
+
 Function CollOfPossibleNumbers() As Collection
 Dim TempColl As New Collection
 Dim x As String
 Dim i As Long
 Dim Flag As Boolean
 Dim b As Byte
- 
+
     For i = 1234 To 9876
         Flag = False
         For b = 1 To 4
@@ -3380,7 +3380,7 @@ Dim b As Byte
     Next i
     Set CollOfPossibleNumbers = TempColl
 End Function
- 
+
 Function IsBull(strgNb As String, Digit As String, place As Byte) As Boolean
     IsBull = (Mid(strgNb, place, 1) = Digit)
 End Function
@@ -3391,18 +3391,18 @@ Function IsCow(C As Collection, strgNb As String, Digit As String, place As Byte
         RemoveIfNotCow C, Digit
     End If
 End Function
- 
+
 Sub RemoveIfNotBull(C As Collection, Digit As String, place As Byte)
 Dim E As Variant
- 
+
     For Each E In C
         If Mid(E, place, 1) <> Digit Then C.Remove E
     Next
 End Sub
- 
+
 Sub RemoveIfNotCow(C As Collection, Digit As String)
 Dim E As Variant
- 
+
     For Each E In C
         If (InStr(E, Digit) = 0) Then C.Remove E
     Next
@@ -3413,32 +3413,32 @@ End Sub
 {{out}}
 
 ```txt
-TOSS : 9 2 4 7 
+TOSS : 9 2 4 7
 ---------- START ------------
-Attempt : 1 2 3 4 
+Attempt : 1 2 3 4
 Bulls : 1, Cows : 1
-Attempt : 1 2 4 0 
+Attempt : 1 2 4 0
 Bulls : 2, Cows : 0
-Attempt : 1 2 4 3 
+Attempt : 1 2 4 3
 Bulls : 2, Cows : 0
-Attempt : 1 2 4 5 
+Attempt : 1 2 4 5
 Bulls : 2, Cows : 0
-Attempt : 1 2 4 6 
+Attempt : 1 2 4 6
 Bulls : 2, Cows : 0
-Attempt : 1 2 4 7 
+Attempt : 1 2 4 7
 Bulls : 3, Cows : 0
-Attempt : 3 2 4 7 
+Attempt : 3 2 4 7
 Bulls : 3, Cows : 0
-Attempt : 5 2 4 7 
+Attempt : 5 2 4 7
 Bulls : 3, Cows : 0
-Attempt : 6 2 4 7 
+Attempt : 6 2 4 7
 Bulls : 3, Cows : 0
-Attempt : 8 2 4 7 
+Attempt : 8 2 4 7
 Bulls : 3, Cows : 0
-Attempt : 9 2 4 7 
+Attempt : 9 2 4 7
 Bulls : 4, Cows : 0
 ---------- THE END ------------
-TOSS WAS : 9 2 4 7  We found : 9 2 4 7 
+TOSS WAS : 9 2 4 7  We found : 9 2 4 7
 ```
 
 
@@ -3517,12 +3517,12 @@ while(true)
 
     available$ = trim$(new$)
     k = kk
-    
+
 wend
 
 sub score$(a$, b$)    //   return as a csv string the number of bulls & cows.
     local i, c$, bulls, cows
-	
+
     bulls = 0 : cows = 0
     for i = 1 to 4
         c$ = mid$(a$, i, 1)
@@ -3537,7 +3537,7 @@ end sub
 
 sub check(i$)
     local t, i, j
-	
+
     t = 0    //    zero flags available: 1 means not available
     for i = 1 to 3
         for j = i + 1 to 4
@@ -3550,7 +3550,7 @@ end sub
 
 sub word$(l$, i, d$)
     local c$(1), n
-	
+
     n = token(l$, c$(), d$)
     return c$(i)
 end sub

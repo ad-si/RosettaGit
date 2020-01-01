@@ -39,7 +39,7 @@ with Ada.Calendar;                       use Ada.Calendar;
 with Ada.Numerics;                       use Ada.Numerics;
 with Ada.Numerics.Elementary_Functions;  use Ada.Numerics.Elementary_Functions;
 with Ada.Text_IO;                        use Ada.Text_IO;
- 
+
 procedure Test_Integrator is
    type Func is access function (T : Time) return Float;
 
@@ -60,7 +60,7 @@ procedure Test_Integrator is
       entry Output (Value : out Float);
       entry Shut_Down;
    end Integrator;
- 
+
    task body Integrator is
       K  : Func  := Zero'Access;
       S  : Float := 0.0;
@@ -88,7 +88,7 @@ procedure Test_Integrator is
          end select;
       end loop;
    end Integrator;
- 
+
    I : Integrator;
    S : Float;
 begin
@@ -120,18 +120,18 @@ Integrated-5.34100E-05s
       INSTALL @lib$+"CLASSLIB"
       INSTALL @lib$+"TIMERLIB"
       INSTALL @lib$+"NOWAIT"
-      
+
       REM Integrator class:
       DIM integ{f$, t#, v#, tid%, @init, @@exit, input, output, tick}
       PROC_class(integ{})
-      
+
       REM Methods:
       DEF integ.@init integ.f$ = "0" : integ.tid% = FN_ontimer(10, PROC(integ.tick), 1) : ENDPROC
       DEF integ.@@exit PROC_killtimer(integ.tid%) : ENDPROC
       DEF integ.input (f$) integ.f$ = f$ : ENDPROC
       DEF integ.output = integ.v#
       DEF integ.tick integ.t# += 0.01 : integ.v# += EVAL(integ.f$) : ENDPROC
-      
+
       REM Test:
       PROC_new(myinteg{}, integ{})
       PROC(myinteg.input) ("SIN(2*PI*0.5*myinteg.t#)")
@@ -158,8 +158,8 @@ Uses POSIX threads.
 {{libheader|pthread}}
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <math.h>
@@ -337,8 +337,8 @@ Output:
 
 {{works with|C++14|}}
 
-```cpp>#include <atomic
-
+```cpp
+#include <atomic>
 #include <chrono>
 #include <cmath>
 #include <iostream>
@@ -578,27 +578,27 @@ public class Integrator {
 def makeIntegrator() {
     var value := 0.0
     var input := fn { 0.0 }
-    
+
     var input1 := input()
     var t1 := timer.now()
-    
+
     def update() {
         def t2 := timer.now()
         def input2 :float64 := input()
         def dt := (t2 - t1) / 1000
-        
+
         value += (input1 + input2) * dt / 2
-        
+
         t1 := t2
         input1 := input2
     }
-    
+
     var task() {
         update <- ()
         task <- ()
     }
     task()
-    
+
     def integrator {
         to input(new) :void  { input := new }
         to output() :float64 { return value }
@@ -609,13 +609,13 @@ def makeIntegrator() {
 
 def test() {
     def result
-    
+
     def pi := (-1.0).acos()
     def freq := pi / 1000
-    
+
     def base := timer.now()
     def i := makeIntegrator()
-    
+
     i.input(fn { (freq * timer.now()).sin() })
     timer.whenPast(base + 2000, fn {
         i.input(fn {0})
@@ -637,8 +637,8 @@ We use the functions (at ..) : scheduling, (wait ...), and (every ...) ot the ti
 ```lisp
 
 (require 'timer)
-   
-;; returns an 'object' : (&lamdba; message [values]) 
+
+;; returns an 'object' : (&lamdba; message [values])
 ;; messages : input, output, sample, inspect
 (define (make-active)
 		(let [
@@ -650,21 +650,21 @@ We use the functions (at ..) : scheduling, (wait ...), and (every ...) ot the ti
 			((output) (// S 2))
 			((input ) (set! K (car args))  (set! t0 #f))
 			((inspect) (printf " Active obj : t0 %v t %v S %v "  t0 t Kt (// S 2 )))
-			((sample)  
-					(when (procedure? K) 
+			((sample)
+					(when (procedure? K)
 ;; recved new K : init
 					(unless t0
-						(set! t0  (first args)) 
+						(set! t0  (first args))
 						(set! t 0)
 						(set! Kt (K 0)))
-						
+
 ;; integrate K(t) every time 'sample message is received
 					(set! dt (- (first args) t t0)) ;; compute once K(t)
 					(set! S (+ S (* dt Kt)))
 					(set! t (+ t dt))
 					(set! Kt (K t))
 					(set! S (+ S (* dt Kt)))))
-					
+
 			    (else (error "active:bad message" message))))))
 
 ```
@@ -679,19 +679,19 @@ We use the functions (at ..) : scheduling, (wait ...), and (every ...) ot the ti
 	(define (stop)  (A 'input 0))
 	(define (sample t) (A 'sample (// t 1000)))
 	(define (result) (writeln 'result (A 'output)))
-	
+
 	(at 2.5 'seconds 'result)
 	(every 10 'sample) ;; integrate every 10 ms
-	
+
 	(A 'input K)
 	(wait 2000 'stop))
 
-(experiment) → 
+(experiment) →
     3/7/2015 20:34:18 : result
-    result     0.0002266920372221955    
-(experiment)  → 
+    result     0.0002266920372221955
+(experiment)  →
     3/7/2015 20:34:28 : result
-    result     0.00026510586971023164    
+    result     0.00026510586971023164
 
 ```
 
@@ -778,16 +778,16 @@ Working with dynamic quotations requires the stack effect to be known in advance
 USING: accessors alarms calendar combinators kernel locals math
 math.constants math.functions prettyprint system threads ;
 IN: rosettacode.active
- 
+
 TUPLE: active-object alarm function state previous-time ;
 
-: apply-stack-effect ( quot -- quot' ) 
+: apply-stack-effect ( quot -- quot' )
     [ call( x -- x ) ] curry ; inline
- 
+
 : nano-to-seconds ( -- seconds ) nano-count 9 10^ / ;
- 
-: object-times ( active-object -- t1 t2 ) 
-    [ previous-time>> ] 
+
+: object-times ( active-object -- t1 t2 )
+    [ previous-time>> ]
     [ nano-to-seconds [ >>previous-time drop ] keep ] bi ;
 :: adding-function ( t1 t2 active-object -- function )
     t2 t1 active-object function>> apply-stack-effect bi@ +
@@ -796,7 +796,7 @@ TUPLE: active-object alarm function state previous-time ;
     [ object-times ]
     [ adding-function ]
     [ swap apply-stack-effect change-state drop ] tri ;
- 
+
 : <active-object> ( -- object )
     active-object new
     0 >>state
@@ -804,10 +804,10 @@ TUPLE: active-object alarm function state previous-time ;
     [ drop 0 ] >>function
     dup [ integrate ] curry 1 nanoseconds every >>alarm ;
 : destroy ( active-object -- ) alarm>> cancel-alarm ;
- 
+
 : input ( object quot -- object ) >>function ;
 : output ( object -- val ) state>> ;
- 
+
 : active-test ( -- )
     <active-object>
     [ 2 pi 0.5 * * * sin ] input
@@ -847,17 +847,17 @@ PAUSE
 #DEFINE KillMutex CloseHandle(mutex)
 
 CLASS Integrator
-	
+
 	PRIVATE:
-	
+
 	TYPE LARGE_INTEGER
 		lowPart AS INTEGER
 		highPart AS INTEGER
 	END TYPE
-	
+
 	DIM dfreq AS DOUBLE, dlast AS DOUBLE, dnow AS DOUBLE, llint AS LARGE_INTEGER
 	DIM dret0 AS DOUBLE, dret1 AS DOUBLE, mutex AS INTEGER, sum AS DOUBLE, thread AS INTEGER
-	
+
 	' --------------------------------------------
 	SUB INITIALIZE()
 		mutex = SpawnMutex
@@ -872,7 +872,7 @@ CLASS Integrator
 		' nothing special
 	END SUB
 	' --------------------------------------------
-	
+
 	SUB Sampler()
 		DO
 			LockMutex
@@ -885,7 +885,7 @@ CLASS Integrator
 			UnlockMutex
 		LOOP
 	END SUB
-	
+
 	FUNCTION LargeInt2Double(obj AS VARIANT) AS DOUBLE
 		STATIC ret
 		ret = obj.highPart
@@ -895,15 +895,15 @@ CLASS Integrator
 		IF obj.lowPart < 0 THEN ret = ret + (2 ^ 32)
 		RETURN ret
 	END FUNCTION
-	
+
 	PUBLIC:
-	
+
 	METHOD Relax()
 		LockMutex
 		ADDRESSOF Task = ADDRESSOF Idle
 		UnlockMutex
 	END METHOD
-	
+
 	METHOD Yield() AS DOUBLE
 		LockMutex
 		Yield = sum
@@ -911,7 +911,7 @@ CLASS Integrator
 		UnlockMutex
 		KillMutex
 	END METHOD
-	
+
 END CLASS
 
 FUNCTION Idle(BYVAL t AS DOUBLE) AS DOUBLE
@@ -963,7 +963,7 @@ type Integrator( intervalMs ) as x =
               x.Update()
             }
       |> Async.Start
-    
+
 let i = new Integrator(10)
 
 i.Input( fun t -> Math.Sin (2.0 * Math.PI * 0.5 * t) )
@@ -1215,8 +1215,8 @@ newIntegrator = do
                                 value = 0,
                                 time  = now }
   thread <- forkIO (intThread state)  -- The state variable is shared between the thread
-  return (Integrator state)           --   and the client interface object.     
-                   
+  return (Integrator state)           --   and the client interface object.
+
 input  (Integrator stv) f = modifyMVar_ stv (\st -> return st { func = f })
 output (Integrator stv)   = fmap value $ readMVar stv
 stop   (Integrator stv)   = modifyMVar_ stv (\st -> return st { run = False })
@@ -1413,23 +1413,23 @@ Output:
 function Integrator(sampleIntervalMS) {
     var inputF = function () { return 0.0 };
     var sum = 0.0;
-  
+
     var t1 = new Date().getTime();
     var input1 = inputF(t1 / 1000);
-  
+
     function update() {
         var t2 = new Date().getTime();
         var input2 = inputF(t2 / 1000);
         var dt = (t2 - t1) / 1000;
-        
+
         sum += (input1 + input2) * dt / 2;
-        
+
         t1 = t2;
         input1 = input2;
     }
-    
+
     var updater = setInterval(update, sampleIntervalMS);
-  
+
     return ({
         input: function (newF) { inputF = newF },
         output: function () { return sum },
@@ -1450,7 +1450,7 @@ Test program as a HTML fragment:
 
     var i = new Integrator(1);
     var displayer = setInterval(function () { document.getElementById("b").firstChild.data = i.output() }, 100)
-  
+
     setTimeout(function () {
         i.input(function (t) { return Math.sin(2*Math.PI*f*t) }); // test step 1
         setTimeout(function () { // test step 2
@@ -1459,7 +1459,7 @@ Test program as a HTML fragment:
                 i.shutdown();
                 clearInterval(displayer);
                 document.getElementById("a").firstChild.data = "Done, should be about 0: "
-            }, 500);      
+            }, 500);
         }, 2000);
     }, 1)
 </script>
@@ -1470,7 +1470,7 @@ Test program as a HTML fragment:
 ## Julia
 
 {{works with|Julia|0.6}}
-Julia has inheritance of data structures and first-class types, but structures do not have methods. 
+Julia has inheritance of data structures and first-class types, but structures do not have methods.
 Instead, methods are functions with multiple dispatch based on argument type.
 
 ```julia
@@ -1661,12 +1661,12 @@ In some movie script:
 global gIntegrator
 
 -- entry point
-on startMovie   
+on startMovie
     gIntegrator = script("Integrator").new("sin(PI * t)")
     timeout().new("timer", 2000, #step1)
 end
 
-on step1 (_, timer)       
+on step1 (_, timer)
     gIntegrator.input("0.0")
     timer.timeoutHandler = #step2
     timer.period = 500
@@ -1692,10 +1692,10 @@ end
 
 
 ```Mathematica
-Block[{start = SessionTime[], K, t0 = 0, t1, kt0, S = 0}, 
- K[t_] = Sin[2 Pi f t] /. f -> 0.5; kt0 = K[t0]; 
- While[True, t1 = SessionTime[] - start; 
-  S += (kt0 + (kt0 = K[t1])) (t1 - t0)/2; t0 = t1; 
+Block[{start = SessionTime[], K, t0 = 0, t1, kt0, S = 0},
+ K[t_] = Sin[2 Pi f t] /. f -> 0.5; kt0 = K[t0];
+ While[True, t1 = SessionTime[] - start;
+  S += (kt0 + (kt0 = K[t1])) (t1 - t0)/2; t0 = t1;
   If[t1 > 2, K[t_] = 0; If[t1 > 2.5, Break[]]]]; S]
 ```
 
@@ -1707,7 +1707,7 @@ Curiously, this value never changes; it is always exactly the same (at 1.1309E-6
 
 ## ooRexx
 
-Not totally certain this is a correct implementation since the value coming out is not close to zero.  It does show all of the basics of multithreading and object synchronization though. 
+Not totally certain this is a correct implementation since the value coming out is not close to zero.  It does show all of the basics of multithreading and object synchronization though.
 
 
 ```ooRexx
@@ -1794,7 +1794,7 @@ integrater~stop          -- terminate the updater thread
 
 ## OxygenBasic
 
-Built from scratch. The ringmaster orchestrates all the active-objects, keeping a list of 
+Built from scratch. The ringmaster orchestrates all the active-objects, keeping a list of
 each individual and its method call.
 
 With a high precision timer the result is around -.0002
@@ -1862,7 +1862,7 @@ RingMaster *Master
 method fun0() as double
 end method
 '
-method fun1() as double 
+method fun1() as double
   return sin(2*pi()*freq*MainTime)
 end method
 '
@@ -2010,7 +2010,7 @@ declare
         s:0.0
         t1 k_t1
         t2 k_t2
-      
+
      meth init(SampleIntervalMS)
         t1 := {Now}
         k_t1 := {@k @t1}
@@ -2205,10 +2205,10 @@ f(0): 0
 
 Note that in Phix you cannot pass a variable to another procedure and have it "change under your feet".
 
-The copy-on-write semantics mean it would not have any effect, in that the original would be preserved 
+The copy-on-write semantics mean it would not have any effect, in that the original would be preserved
 (deemed in phix to be a "very good thing") while the value passed along, a shared reference until it gets
-modified and a copy made, would most likely simply be discarded, unless explicitly returned and stored, 
-which obviously cannot be done from a separate thread. 
+modified and a copy made, would most likely simply be discarded, unless explicitly returned and stored,
+which obviously cannot be done from a separate thread.
 Instead we pass around an index (dx) as a way of emulating the "pointer references" of other languages.
 
 If anything phix requires more locking that other languages due to the hidden shared reference counts.
@@ -2273,7 +2273,7 @@ end procedure
 
 puts(1,"")
 integer dx = new_integrator(routine_id("sine"),0.01)
-sleep(2) 
+sleep(2)
 printf(1,"%f\n",get_output(dx))
 set_input(dx,routine_id("zero"))
 sleep(0.5)
@@ -2359,7 +2359,7 @@ Class IntegralClass
   Thread.i
   Quit.i
   *func.ValueFunction
-  
+
   Protect Method Sampler()
     Repeat
       Delay(1)
@@ -2368,16 +2368,16 @@ Class IntegralClass
         This\S + This\func(This\Freq, ElapsedMilliseconds()-This\Time0)
         UnlockMutex(This\Mutex)
       EndIf
-    Until This\Quit 
+    Until This\Quit
   EndMethod
-  
+
   BeginPublic
     Method Input(*func.ValueFunction)
       LockMutex(This\Mutex)
       This\func = *func
       UnlockMutex(This\Mutex)
     EndMethod
-    
+
     Method.d Output()
       Protected Result.d
       LockMutex(This\Mutex)
@@ -2385,7 +2385,7 @@ Class IntegralClass
       UnlockMutex(This\Mutex)
       MethodReturn Result
     EndMethod
-    
+
     Method Init(F.d, *f)
       This\Freq   = F
       This\func   = *f
@@ -2394,13 +2394,13 @@ Class IntegralClass
       This\Thread = CreateThread(This\Sampler, This)
       ThreadPriority(This\Thread, 10)
     EndMethod
-    
+
     Method Release()
       This\Quit = #True
       WaitThread(This\Thread)
     EndMethod
   EndPublic
-  
+
 EndClass
 
 ;- Procedures for generating values
@@ -2463,7 +2463,7 @@ class Integrator(Thread):
 
 if __name__ == "__main__":
     from math import sin, pi
- 
+
     ai = Integrator(lambda t: sin(pi*t))
     sleep(2)
     print ai.S
@@ -2702,7 +2702,7 @@ fn solution() {
 object ActiveObject {
 
   class Integrator {
-    
+
     import java.util._
     import scala.actors.Actor._
 
@@ -2771,7 +2771,7 @@ input:aFunctionOfT
 startWithTickRate:r
     "setup and start sampling"
     tickRate := r.
-    s := 0.    
+    s := 0.
     thread := [ self integrateLoop ] fork.
 
 stop
@@ -2780,7 +2780,7 @@ stop
     ^ s
 
 integrateLoop
-    "no need for any locks 
+    "no need for any locks
      - the assignment to s is atomic in Smallalk; its either done or not, when terminated, so who cares"
 
     |tBegin tPrev tNow kPrev kNow deltaT delta|
@@ -2814,8 +2814,8 @@ example
         i input:[:t | 0].
         Delay waitForSeconds:0.5.
 
-        Transcript 
-            show:'Sample rate: '; showCR:sampleRate; 
+        Transcript
+            show:'Sample rate: '; showCR:sampleRate;
             showCR:(i stop).
     ].
 
@@ -2870,7 +2870,7 @@ a = TaskProxy { |envir|
 };
 )
 
-// run the test 
+// run the test
 (
 fork {
 	a.set(\dt, 0.0001);
@@ -2904,7 +2904,7 @@ class ActiveObject:NSObject {
     var S: Double
     var t0, t1: NSTimeInterval
     var thread = NSThread()
-    
+
     func integrateK() {
         t0 = t1
         t1 += sampling
@@ -2917,7 +2917,7 @@ class ActiveObject:NSObject {
             usleep(100000)
         }
     }
-    
+
     init(function: (NSTimeInterval) -> Double) {
         S = 0
         t0 = 0
@@ -2927,22 +2927,22 @@ class ActiveObject:NSObject {
         thread = NSThread(target: self, selector: "updateObject", object: nil)
         thread.start()
     }
-    
+
     func Input(function: (NSTimeInterval) -> Double) {
         K = function
 
     }
-    
+
     func Output() -> Double {
         return S
     }
-    
+
 }
 
 // main
 func sine(t: NSTimeInterval) -> Double {
     let f = 0.5
-    
+
     return sin(2 * M_PI * f * t)
 }
 
@@ -3041,7 +3041,7 @@ Since this object is CPU intensive, shutting it down when done is crucial. To fa
 
 ```vbnet
 Module Module1
- 
+
     Sub Main()
         Using active As New Integrator
             active.Operation = Function(t As Double) Math.Sin(2 * Math.PI * 0.5 * t)
@@ -3053,23 +3053,23 @@ Module Module1
         End Using
         Console.ReadLine()
     End Sub
- 
+
 End Module
-  
+
 Class Integrator
     Implements IDisposable
- 
+
     Private m_Operation As Func(Of Double, Double)
     Private m_Disposed As Boolean
     Private m_SyncRoot As New Object
     Private m_Value As Double
- 
+
     Public Sub New()
         m_Operation = Function(void) 0.0
         Dim t As New Threading.Thread(AddressOf MainLoop)
         t.Start()
     End Sub
- 
+
     Private Sub MainLoop()
         Dim epoch = Now
         Dim t0 = 0.0
@@ -3082,7 +3082,7 @@ Class Integrator
             Threading.Thread.Sleep(10)
         Loop Until m_Disposed
     End Sub
- 
+
     Public Property Operation() As Func(Of Double, Double)
         Get
             SyncLock m_SyncRoot
@@ -3095,7 +3095,7 @@ Class Integrator
             End SyncLock
         End Set
     End Property
- 
+
     Public ReadOnly Property Value() As Double
         Get
             SyncLock m_SyncRoot
@@ -3103,16 +3103,16 @@ Class Integrator
             End SyncLock
         End Get
     End Property
- 
+
     Protected Overridable Sub Dispose(ByVal disposing As Boolean)
         m_Disposed = True
     End Sub
- 
+
     Public Sub Dispose() Implements IDisposable.Dispose
         Dispose(True)
         GC.SuppressFinalize(Me)
     End Sub
- 
+
 End Class
 ```
 

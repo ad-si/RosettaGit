@@ -13,9 +13,9 @@ tags = []
 {{task|Arithmetic operations}}
 
 ;Task:
-Show how to spell out a number in English. 
+Show how to spell out a number in English.
 
-You can use a preexisting implementation or roll your own, but you should support inputs up to at least one million (or the maximum value of your language's default bounded integer type, if that's less). 
+You can use a preexisting implementation or roll your own, but you should support inputs up to at least one million (or the maximum value of your language's default bounded integer type, if that's less).
 
 Support for inputs other than positive integers (like zero, negative integers, and floating-point numbers) is optional.
 
@@ -32,7 +32,7 @@ Support for inputs other than positive integers (like zero, negative integers, a
 {{trans|AppleSoft Basic}}
 
 ```360asm
-*        Number names              20/02/2017 
+*        Number names              20/02/2017
 NUMNAME  CSECT
          USING  NUMNAME,R13
          B      72(R15)
@@ -106,7 +106,7 @@ NUMNAME  CSECT
          MVC    PG+10(1),Y           y
          L      R1,X                 x
          MH     R1,=H'10'
-         LA     R4,S(R1)             @s(x+1) 
+         LA     R4,S(R1)             @s(x+1)
          MVC    PG+11(10),0(R4)      s(x+1)
          MVC    PG+21(235),R         !!r
          MVC    R,PG                 r=u(h/d+1)!!y!!s(x+1)!!r
@@ -176,7 +176,7 @@ ITER     LA     R10,1(R10)         ir=ir+1            |
          LA     R7,1(R7)           j++
        ENDDO    ,                  enddo j
 LEAVEJ   L      R4,N               n
-       IF LTR,R4,M,R4 THEN         if n<0 then 
+       IF LTR,R4,M,R4 THEN         if n<0 then
          MVC    PG(6),=C'minus '   'minus '
          MVC    PG+6(250),R        !!r
          MVC    R,PG               r='minus '!!r
@@ -377,9 +377,9 @@ begin
 end Integers_In_English;
 ```
 
-The implementation goes up to 10<sup>18</sup>-1 
-and also supports negative and zero inputs. 
-The solution is recursive by the triplets of decimal numbers. 
+The implementation goes up to 10<sup>18</sup>-1
+and also supports negative and zero inputs.
+The solution is recursive by the triplets of decimal numbers.
 {{out}}
 
 ```txt
@@ -408,7 +408,7 @@ The solution is recursive by the triplets of decimal numbers.
 <!-- # From: www.codecodex.com/wiki/index.php%3Ftitle%3DConvert_an_integer_into_words - site states it is GPL # -->
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}} 
+{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8.8d.fc9.i386]}}
 
@@ -422,7 +422,7 @@ PROC number words = (INT n)STRING:(
       ("ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen")[@0];
     []STRING decades = []STRING
       ("twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety")[@2];
- 
+
     PROC three digits = (INT n)STRING: (
       # does the conversion for n from 0 to 999. #
         INT tens = n MOD 100 OVER 10;
@@ -440,7 +440,7 @@ PROC number words = (INT n)STRING:(
     ((m /= 0 OR k /= 0) AND u > 0 AND u < 100|" and " |: k /= 0 AND u /= 0|", "|"") +
     (u /= 0 OR n = 0|three digits(u)|"")
   );
- 
+
 on logical file end(stand in, (REF FILE f)BOOL: GOTO stop iteration);
 on value error(stand in, (REF FILE f)BOOL: GOTO stop iteration);
 DO # until user hits EOF #
@@ -468,7 +468,7 @@ forty-three million, one hundred and twelve thousand, six hundred and nine
 
 {{works with|ALGOL 68|Standard - no extensions to language used - note size of LONG LONG INT is implementation specific}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}} 
+{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 
 ```Algol68
 MODE EXCEPTION = STRUCT(STRING name, PROC VOID handler);
@@ -486,32 +486,32 @@ BOOL locale euro := TRUE;
 PROC spell integer = (LINT n)STRING: (
     []STRING tens = []STRING (~, ~, "twenty", "thirty", "forty",
             "fifty", "sixty", "seventy", "eighty", "ninety")[@0];
- 
+
     []STRING small = []STRING ("zero", "one", "two", "three", "four", "five",
              "six", "seven", "eight", "nine", "ten", "eleven",
              "twelve", "thirteen", "fourteen", "fifteen",
              "sixteen", "seventeen", "eighteen", "nineteen")[@0];
- 
+
     []STRING bl = []STRING (~, ~, "m", "b", "tr", "quadr",
           "quint", "sext", "sept", "oct", "non", "dec")[@0];
- 
+
     PROC nonzero = (STRING c, LINT n)STRING:
         IF n = 0 THEN "" ELSE c + spell integer(n) FI;
- 
+
     PROC big =(INT e, LINT n)STRING:
-        spell integer(n) + 
+        spell integer(n) +
         CASE e+1 IN
-        #0# "", 
+        #0# "",
         #1# " thousand"
         OUT
-            " " + 
+            " " +
             IF locale euro THEN # handle millard, billard & trillard etc #
               bl[e OVER 2 + 1 ]+"ill" + CASE e MOD 2 IN "ard" OUT "ion" ESAC
-            ELSE 
-              bl[e]+"illion" 
+            ELSE
+              bl[e]+"illion"
             FI
         ESAC;
- 
+
     PROC base1000 rev = (LINT in n, PROC (INT,LINT)VOID yield)VOID: (
         # generates the value of the digits of n in base 1000 #
         # (i.e. 3-digit chunks), in reverse. #
@@ -522,7 +522,7 @@ PROC spell integer = (LINT n)STRING: (
             yield(e, r)
         OD
     );
- 
+
     IF n < 1000 THEN
       INT ssn := SHORTEN SHORTEN n;
       IF ssn < 0 THEN
@@ -540,13 +540,13 @@ PROC spell integer = (LINT n)STRING: (
       FI
     ELSE
         STRING out := "", sep:="";
-      # FOR     e,      x IN # base1000 rev(n, # DO # 
+      # FOR     e,      x IN # base1000 rev(n, # DO #
            (INT e, LINT x)VOID:
                 IF x NE 0 THEN
                     big(e,x) + sep +=: out;
                     sep := IF e = 0 AND x < 100 THEN " and " ELSE ", " FI
                 FI
-       ) 
+       )
      # OD #;
        out
     FI
@@ -628,44 +628,44 @@ Handles zero and negative integers.  Rounding errors occur with big numbers.
 
 
 ```autohotkey
-Loop {                                 ; TEST LOOP 
-    n = 
-    Random Digits, 1, 36               ; random number with up to 36 digits 
-    Loop %Digits% { 
-        Random Digit, 0, 9             ; can have leading 0s 
-        n .= Digit 
-    } 
-    MsgBox 1, Number Names, % PrettyNumber(n) "`n`n" Spell(n) "`n`n" 
-    IfMsgBox Cancel, Break 
-} 
+Loop {                                 ; TEST LOOP
+    n =
+    Random Digits, 1, 36               ; random number with up to 36 digits
+    Loop %Digits% {
+        Random Digit, 0, 9             ; can have leading 0s
+        n .= Digit
+    }
+    MsgBox 1, Number Names, % PrettyNumber(n) "`n`n" Spell(n) "`n`n"
+    IfMsgBox Cancel, Break
+}
 
-Spell(n) { ; recursive function to spell out the name of a max 36 digit integer, after leading 0s removed 
-    Static p1=" thousand ",p2=" million ",p3=" billion ",p4=" trillion ",p5=" quadrillion ",p6=" quintillion " 
-         , p7=" sextillion ",p8=" septillion ",p9=" octillion ",p10=" nonillion ",p11=" decillion " 
-         , t2="twenty",t3="thirty",t4="forty",t5="fifty",t6="sixty",t7="seventy",t8="eighty",t9="ninety" 
-         , o0="zero",o1="one",o2="two",o3="three",o4="four",o5="five",o6="six",o7="seven",o8="eight" 
-         , o9="nine",o10="ten",o11="eleven",o12="twelve",o13="thirteen",o14="fourteen",o15="fifteen" 
-         , o16="sixteen",o17="seventeen",o18="eighteen",o19="nineteen" 
+Spell(n) { ; recursive function to spell out the name of a max 36 digit integer, after leading 0s removed
+    Static p1=" thousand ",p2=" million ",p3=" billion ",p4=" trillion ",p5=" quadrillion ",p6=" quintillion "
+         , p7=" sextillion ",p8=" septillion ",p9=" octillion ",p10=" nonillion ",p11=" decillion "
+         , t2="twenty",t3="thirty",t4="forty",t5="fifty",t6="sixty",t7="seventy",t8="eighty",t9="ninety"
+         , o0="zero",o1="one",o2="two",o3="three",o4="four",o5="five",o6="six",o7="seven",o8="eight"
+         , o9="nine",o10="ten",o11="eleven",o12="twelve",o13="thirteen",o14="fourteen",o15="fifteen"
+         , o16="sixteen",o17="seventeen",o18="eighteen",o19="nineteen"
 
-    n :=RegExReplace(n,"^0+(\d)","$1") ; remove leading 0s from n 
+    n :=RegExReplace(n,"^0+(\d)","$1") ; remove leading 0s from n
 
-    If  (11 < d := (StrLen(n)-1)//3)   ; #of digit groups of 3 
-        Return "Number too big" 
+    If  (11 < d := (StrLen(n)-1)//3)   ; #of digit groups of 3
+        Return "Number too big"
 
-    If (d)                             ; more than 3 digits 
-        Return Spell(SubStr(n,1,-3*d)) p%d% ((s:=SubStr(n,1-3*d)) ? ", " Spell(s) : "") 
+    If (d)                             ; more than 3 digits
+        Return Spell(SubStr(n,1,-3*d)) p%d% ((s:=SubStr(n,1-3*d)) ? ", " Spell(s) : "")
 
-    i := SubStr(n,1,1) 
-    If (n > 99)                        ; 3 digits 
-        Return o%i% " hundred" ((s:=SubStr(n,2)) ? " and " Spell(s) : "") 
+    i := SubStr(n,1,1)
+    If (n > 99)                        ; 3 digits
+        Return o%i% " hundred" ((s:=SubStr(n,2)) ? " and " Spell(s) : "")
 
-    If (n > 19)                        ; n = 20..99 
-        Return t%i% ((o:=SubStr(n,2)) ? "-" o%o% : "") 
+    If (n > 19)                        ; n = 20..99
+        Return t%i% ((o:=SubStr(n,2)) ? "-" o%o% : "")
 
-    Return o%n%                        ; n = 0..19 
-} 
+    Return o%n%                        ; n = 0..19
+}
 
-PrettyNumber(n) { ; inserts thousands separators into a number string 
+PrettyNumber(n) { ; inserts thousands separators into a number string
     Return RegExReplace( RegExReplace(n,"^0+(\d)","$1"), "\G\d+?(?=(\d{3})+(?:\D|$))", "$0,")
 }
 ```
@@ -819,7 +819,7 @@ FUNCTION int2Text$ (number AS LONG)
 
         num = num \ 1000
         IF num < 1 THEN EXIT DO
-       
+
         tmpLng1 = num MOD 1000
         IF tmpLng1 THEN outP = big(unit) + " " + outP
 
@@ -969,7 +969,7 @@ goto :EOF
         PRINT FNsaynumber(test%(i%))
       NEXT
       END
-      
+
       DEF FNsaynumber(n%)
       LOCAL number%(), number$(), i%, t%, a$
       DIM number%(29), number$(29)
@@ -980,11 +980,11 @@ goto :EOF
       \           "nineteen", "eighteen", "seventeen", "sixteen", "fifteen", \
       \           "fourteen", "thirteen", "twelve", "eleven", "ten", "nine", \
       \           "eight", "seven", "six", "five", "four", "three", "two"
-      
+
       IF n% < 0 THEN = "minus " + FNsaynumber(-n%)
       IF n% = 0 THEN = "zero"
       IF n% = 1 THEN = "one "
-      
+
       FOR i% = 0 TO DIM(number%(),1)
         IF n% >= number%(i%) THEN
           t% = n% DIV number%(i%)
@@ -1065,7 +1065,7 @@ Type TSpell
 		"fifty", "sixty", "seventy", "eighty", "ninety" ]
 
 	Field thousandPowers:String[] = [ " billion", " million",  " thousand", "" ]
-		
+
 	Method spellHundreds:String(number:Int)
 		Local result:String
 		If number > 99 Then
@@ -1076,7 +1076,7 @@ Type TSpell
 				result :+ " and "
 			End If
 		End If
-		
+
 		If number >= 20 Then
 			result :+ decades[number / 10]
 			number = number Mod 10
@@ -1087,7 +1087,7 @@ Type TSpell
 		If number > 0 And number < 20 Then
 			result :+ smallNumbers[number]
 		End If
-		
+
 		Return result
 	End Method
 
@@ -1096,7 +1096,7 @@ Type TSpell
 			Return smallNumbers[number]
 		End If
 		Local result:String
-		
+
 		Local scaleIndex:Int = 0
 		Local scaleFactor:Long = 1000000000:Long ' 1 billion
 		While scaleFactor > 0
@@ -1111,10 +1111,10 @@ Type TSpell
 			scaleFactor :/ 1000
 			scaleIndex :+ 1
 		Wend
-		
+
 		Return result
 	End Method
-	
+
 End Type
 
 Function spellIt(number:Long)
@@ -1142,12 +1142,12 @@ End Function
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 const char *ones[] = { 0, "one", "two", "three", "four",
-	"five", "six", "seven", "eight", "nine", 
+	"five", "six", "seven", "eight", "nine",
 	"ten", "eleven", "twelve", "thirteen", "fourteen",
 	"fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
 const char *tens[] = { 0, "ten", "twenty", "thirty", "forty",
@@ -1287,7 +1287,7 @@ int main()
 ```txt
 minus forty-two
 one thousand, nine hundred eighty-four
-ten thousand, 
+ten thousand,
 one thousand, and twenty-four
 one trillion, one billion, one million, one thousand, and one
 one hundred twenty-three million four hundred fifty-six thousand seven hundred eighty-nine trillion trillion trillion trillion, twelve billion three hundred forty-five million six hundred seventy-eight thousand nine hundredand one trillion trillion trillion, two hundred thirty-four billion five hundred sixty-seven million eight hundred ninety thousand one hundred twenty-three trillion trillion, four hundred fifty-six billion seven hundred eighty-nine million twelve thousand three hundred forty-five trillion, six hundred seventy-eight billion, nine hundred million, and one
@@ -1298,8 +1298,8 @@ one hundred twenty-three million four hundred fifty-six thousand seven hundred e
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 using std::string;
 
@@ -1309,7 +1309,7 @@ const char* smallNumbers[] = {
   "eleven", "twelve", "thirteen", "fourteen", "fifteen",
   "sixteen", "seventeen", "eighteen", "nineteen"
 };
- 
+
 string spellHundreds(unsigned n) {
   string res;
   if (n > 99) {
@@ -1507,24 +1507,24 @@ nine hundred and eighty seven million, six hundred and fifty four thousand, thre
 spell_integer = (n) ->
   tens = [null, null, "twenty", "thirty", "forty",
       "fifty", "sixty", "seventy", "eighty", "ninety"]
- 
+
   small = ["zero", "one", "two", "three", "four", "five",
        "six", "seven", "eight", "nine", "ten", "eleven",
        "twelve", "thirteen", "fourteen", "fifteen",
        "sixteen", "seventeen", "eighteen", "nineteen"]
- 
+
   bl = [null, null, "m", "b", "tr", "quadr",
       "quint", "sext", "sept", "oct", "non", "dec"]
- 
+
   divmod = (n, d) ->
     [Math.floor(n / d), n % d]
 
   nonzero = (c, n) ->
-    if n == 0 
+    if n == 0
       ""
     else
       c + spell_integer n
- 
+
   big = (e, n) ->
     if e == 0
       spell_integer n
@@ -1532,7 +1532,7 @@ spell_integer = (n) ->
       spell_integer(n) + " thousand"
     else
       spell_integer(n) + " " + bl[e] + "illion"
- 
+
   base1000_rev = (n) ->
     # generates the value of the digits of n in base 1000
     # (i.e. 3-digit chunks), in reverse.
@@ -1541,7 +1541,7 @@ spell_integer = (n) ->
       [n, r] = divmod n, 1000
       chunks.push r
     chunks
-    
+
   if n < 0
     throw Error "spell_integer: negative input"
   else if n < 20
@@ -1555,7 +1555,7 @@ spell_integer = (n) ->
   else
     chunks = (big(exp, x) for x, exp in base1000_rev(n) when x)
     chunks.reverse().join ', '
- 
+
 # example
 console.log spell_integer 1278
 console.log spell_integer 1752
@@ -1569,7 +1569,7 @@ console.log spell_integer 4000123007913
 
 ```txt
 
-> coffee spell_number.coffee 
+> coffee spell_number.coffee
 one thousand, two hundred seventy-eight
 one thousand, seven hundred fifty-two
 two thousand, ten
@@ -1718,7 +1718,7 @@ defmodule RC do
   @tens  ~w(wrong wrong twenty thirty forty fifty sixty seventy eighty ninety)
   @big  [nil, "thousand"] ++
         (~w( m b tr quadr quint sext sept oct non dec) |> Enum.map(&"#{&1}illion"))
-  
+
   def wordify(number) when number<0, do: "negative #{wordify(-number)}"
   def wordify(number) when number<20, do: Enum.at(@small,number)
   def wordify(number) when number<100 do
@@ -1739,7 +1739,7 @@ defmodule RC do
     |> Enum.reverse
     |> Enum.join(", ")
   end
-  
+
   defp chunk(0, res), do: Enum.reverse(res)
   defp chunk(number, res) do
     chunk(div(number,1000), [rem(number,1000) | res])
@@ -1849,7 +1849,7 @@ nr2eng(NR, 10) when NR =< 20 ->
         _  -> sym(NR)
    end;
 nr2eng(NR, 10) ->
-   concat( 
+   concat(
      case sym((NR div 10)*10) of
         "" -> strip(sym(NR div 10), right, $t) ++ "ty";
         _  -> sym((NR div 10)*10)
@@ -1879,10 +1879,10 @@ start() ->
 
 ```txt
 
-1999 "one thousand, nine hundred and ninety nine" 
-2000 "two thousand" 
-123123 "one hundred and twenty three thousand, one hundred and twenty three" 
-43234234 "forty three million, two hundred and thirty four thousand, two hundred and thirty four" 
+1999 "one thousand, nine hundred and ninety nine"
+2000 "two thousand"
+123123 "one hundred and twenty three thousand, one hundred and twenty three"
+43234234 "forty three million, two hundred and thirty four thousand, two hundred and thirty four"
 
 ```
 
@@ -1918,11 +1918,11 @@ function int2text(atom number)
     num = 0
     unit = 1
     tmpLng1 = 0
-    
+
     if number = 0 then
         return "zero"
     end if
-    
+
     num = abs(number)
     while 1 do
         tmpLng1 = remainder(num,100)
@@ -1935,29 +1935,29 @@ function int2text(atom number)
                 outP = tens[floor(tmpLng1/10)-1] & '-' & small[remainder(tmpLng1, 10)] & ' ' & outP
             end if
         end if
-        
+
         tmpLng1 = floor(remainder(num, 1000) / 100)
         if tmpLng1 then
             outP = small[tmpLng1] & " hundred " & outP
         end if
-        
+
         num = floor(num/1000)
         if num < 1 then
             exit
         end if
-        
+
         tmpLng1 = remainder(num,1000)
         if tmpLng1 then
             outP = big[unit] & ' ' & outP
         end if
-        
+
         unit = unit + 1
     end while
-    
+
     if number < 0 then
         outP = "negative " & outP
     end if
-    
+
     return outP[1..$-1]
 end function
 
@@ -2031,13 +2031,13 @@ and spellInteger = function
           (fun (i,acc) v -> i + 1, (i, v)::acc)
           (0, [])
           seg
-      
+
       let fsegn =
         (* remove right part "zero" *)
         List.filter
           (function (_, 0) -> false | _ -> true)
           segn
-      
+
       join (List.map big fsegn)
 ;;
 ```
@@ -2505,16 +2505,16 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers:spell] was used as a based for this procedure.
 
 
 ```Icon
 procedure spell(n)		#: spell out integer (short scale)
    local m, i
-   static scale 
+   static scale
    initial {
-      scale := [ "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion","septillion"]  
+      scale := [ "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion","septillion"]
       every scale[i := 1 to *scale ] := [ integer(repl("999",i + 1)), -3 * i, " "||scale[i] ]
       push(scale,[999,2," hundred"])
      }
@@ -2543,7 +2543,7 @@ procedure spell(n)		#: spell out integer (short scale)
       }
    else if n <= scale[i := 1 to *scale,1] then return {     # generalize based on scale
       spell(n[1:scale[i,2]]) || scale[i,3] ||
-         (if (m := n[scale[i,2]:0]) ~= 0 then " and " || spell(m) else "")   
+         (if (m := n[scale[i,2]:0]) ~= 0 then " and " || spell(m) else "")
       }
    else fail                                                # really big
 end
@@ -2885,15 +2885,15 @@ def say:
     | if . == 0 then sx
        else (. / 1000 | floor)
             | (. % 1000) as $p
-            | zillions(i + 1; 
-                       if $p > 0 then 
+            | zillions(i + 1;
+                       if $p > 0 then
                           (($p | say) + " " + $illions[i]) as $ix
                           | if sx != "" then $ix + ", " + sx
                             else $ix
                             end
                        else sx
-                       end) 
-       end 
+                       end)
+       end
   ;
 
   [ "", "one", "two", "three", "four", "five", "six", "seven",
@@ -2917,7 +2917,7 @@ def say:
         # Handle values larger than 1000 by considering
         # the rightmost three digits separately from the rest:
         ((. % 1000)
-         | if . == 0 then "" 
+         | if . == 0 then ""
            elif . < 100 then "and " + say
            else say
            end ) as $sx
@@ -2967,7 +2967,7 @@ const ordstext = ["million", "billion", "trillion", "quadrillion", "quintillion"
     "septillion", "octillion", "nonillion", "decillion", "undecillion", "duodecillion",
     "tredecillion", "quattuordecillion", "quindecillion", "sexdecillion", "septendecillion",
     "octodecillion", "novemdecillion", "vigintillion"]
- 
+
 function normalize_digits!(a::Array{T,1}) where T<:Integer
     while 0 < length(a) && a[end] == 0
         pop!(a)
@@ -3008,14 +3008,14 @@ function digits2text!(d::Array{T,1}, use_short_scale=true) where T<:Integer
         d = d[(dgrp+1):end]
         0 < length(t) || continue
         t = t * " " * ordstext[ord]
-        s = length(s) == 0 ? t : t * " " * s 
+        s = length(s) == 0 ? t : t * " " * s
     end
     ord += 1
     t = digits2text!(d) * " " * ordstext[ord]
     0 < length(s) || return t
     t * " " * s
 end
- 
+
 function num2text(n::T, use_short_scale=true) where T<:Integer
     -1 < n || return "minus "*num2text(-n, use_short_scale)
     0 < n || return "zero"
@@ -3036,7 +3036,7 @@ println("Some easy ones to start with\n")
 for i in [-1:21..., 100, 101, 10000, 10001, 1000000, 1010101]
     @printf("%8d is %s\n", i, num2text(i))
 end
- 
+
 println("\nSome larger numbers\n")
 
 println("The largest signed literal integer (short-scale)")
@@ -3300,7 +3300,7 @@ Using UK representation:
 
 
 ```logo
-make "numbers {one two three four five six seven eight nine ten 
+make "numbers {one two three four five six seven eight nine ten
      eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen}
 
 make "tens {twenty thirty forty fifty sixty seventy eighty ninety}@2
@@ -3389,26 +3389,26 @@ number_name(2001);
 
 ## Mathematica
 
-<lang>small = "zero"["one", "two", "three", "four", "five", "six", "seven", 
-  "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", 
-  "fifteen", "sixteen", "seventeen", "eighteen", 
-  "nineteen"]; tens = # <> "-" & /@ {"twenty", "thirty", "forty", 
+<lang>small = "zero"["one", "two", "three", "four", "five", "six", "seven",
+  "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
+  "fifteen", "sixteen", "seventeen", "eighteen",
+  "nineteen"]; tens = # <> "-" & /@ {"twenty", "thirty", "forty",
    "fifty", "sixty", "seventy", "eighty", "ninety"};
 big = Prepend[
-   " " <> # & /@ {"thousand", "million", "billion", "trillion", 
-     "quadrillion", "quintillion", "sextillion", "septillion", 
-     "octillion", "nonillion", "decillion", "undecillion", 
+   " " <> # & /@ {"thousand", "million", "billion", "trillion",
+     "quadrillion", "quintillion", "sextillion", "septillion",
+     "octillion", "nonillion", "decillion", "undecillion",
      "duodecillion", "tredecillion"}, ""];
 name[n_Integer] := "negative " <> name[-n] /; n < 0;
 name[n_Integer] := small[[n]] /; 0 <= n < 20;
-name[n_Integer] := 
-  StringTrim[tens[[#1 - 1]] <> small[[#2]] & @@ IntegerDigits[n], 
+name[n_Integer] :=
+  StringTrim[tens[[#1 - 1]] <> small[[#2]] & @@ IntegerDigits[n],
     "-zero"] /; 10 <= n < 100;
-name[n_Integer] := 
+name[n_Integer] :=
  StringTrim[
-   small[[#1]] <> " hundred and " <> name@#2 & @@ 
-    IntegerDigits[n, 100], " and zero"] /; 100 <= n < 1000; 
-name[n_Integer] := 
+   small[[#1]] <> " hundred and " <> name@#2 & @@
+    IntegerDigits[n, 100], " and zero"] /; 100 <= n < 1000;
+name[n_Integer] :=
  StringJoin@
   Riffle[Select[
     MapThread[StringJoin, {name /@ #, Reverse@big[[;; Length@#]]}] &@
@@ -3439,10 +3439,10 @@ fn numToEng num =
 (
 	num = num as integer -- convert to int
 	local originalNumber = num -- store the initial value, to check if it was negative afterwards
-	
+
 	num = abs num -- make positive
 	local numStr = num as string -- store as string to check the length
-	
+
 	local nonFirstDigits = (if numStr.count > 3 then ((substring numStr ((if mod numStr.count 3 ==0 then 3 else mod numStr.count 3)+1) -1)) else "0") -- this is the string of the number without the beginning, i.e 123456 will give 456, 12035 will give 2035
 	local singleDigits = #("One","Two","Three","Four","Five","Six","Seven","Eight","Nine")
 	local ElevenTwenty = #("Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen")
@@ -3458,17 +3458,17 @@ fn numToEng num =
 		(num < 20): ret += elevenTwenty[abs(10-num)] -- number is between 11 and 19
 		(num <= 90 and mod num 10 == 0): ret += tens[num/10] -- number is >= 20 and <= 90 and is dividable by 10
 		(num < 100): ret += (numToEng (floor(num/10.0)*10) +" "+ numtoEng (num-(floor(num/10.0))*10)) -- number is >= 20, < 100 and is not dividable by 10
-		(num < 1000): ret += (singledigits[floor(num/100) as integer] + " "+big[1]+ (if mod num 100 != 0 then (" and "+numtoeng (num-(floor(num/100.0)*100))) else "")) -- number is >= 100, < 1000 
+		(num < 1000): ret += (singledigits[floor(num/100) as integer] + " "+big[1]+ (if mod num 100 != 0 then (" and "+numtoeng (num-(floor(num/100.0)*100))) else "")) -- number is >= 100, < 1000
 		(num >= 1000): ret += -- number is >= 1000
 			(
 				numtoeng (substring numStr 1 (if mod numStr.count 3 ==0 then 3 else mod numStr.count 3)) + \
 				" " + big[1+((numStr.count-1)/3)] + (if nonFirstDigits as integer == 0 then "" else (if nonFirstDigits as integer < 100 then " and " else ", ")) + \
 				(if (mod num 1000 == 0) then "" else (numtoeng nonFirstDigits))
-				
+
 			)
 	)
-	
-	if originalNumber < 0 and (substring ret 1 8) != "Negative" do ret = ("Negative "+ret) -- if number is negative 
+
+	if originalNumber < 0 and (substring ret 1 8) != "Negative" do ret = ("Negative "+ret) -- if number is negative
 	ret = (toupper ret[1]) + (tolower (substring ret 2 -1)) -- make the first char uppercase and rest lowercase
 	return ret
 )
@@ -3543,7 +3543,7 @@ Output:
 42: forty-two
 4325: four thousand three hundred twenty-five
 1000004: one million four
-214837564: two hundred fourteen million eight hundred thirty-seven thousand five hundred sixty-four 
+214837564: two hundred fourteen million eight hundred thirty-seven thousand five hundred sixty-four
 ```
 
 
@@ -3670,13 +3670,13 @@ class NumberNames {
   big : static : String[];
 
   function : Main(args : String[]) ~ Nil {
-    small := ["one", "two", "three", "four", "five", "six", "seven", 
+    small := ["one", "two", "three", "four", "five", "six", "seven",
       "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
       "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
     tens := ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
     big := ["thousand", "million", "billion", "trillion"];
-  
-    Int2Text(900000001)->PrintLine();  
+
+    Int2Text(900000001)->PrintLine();
     Int2Text(1234567890)->PrintLine();
     Int2Text(-987654321)->PrintLine();
     Int2Text(0)->PrintLine();
@@ -3687,11 +3687,11 @@ class NumberNames {
     outP := "";
           unit := 0;
           tmpLng1 := 0;
- 
+
     if (number = 0) {
       return "zero";
     };
- 
+
     num := number->Abs();
 
     while(true) {
@@ -3702,7 +3702,7 @@ class NumberNames {
         tmp->Append(" ");
         tmp->Append(outP);
         outP := tmp;
-      } 
+      }
       else if (tmpLng1 >= 20 & tmpLng1 <= 99) {
         if (tmpLng1 % 10 = 0) {
           tmp := String->New();
@@ -3710,7 +3710,7 @@ class NumberNames {
           tmp->Append(" ");
           tmp->Append(outP);
           outP := tmp;
-        } 
+        }
         else {
           tmp := String->New();
           tmp->Append(tens[(tmpLng1 / 10) - 2]);
@@ -3730,12 +3730,12 @@ class NumberNames {
         tmp->Append(outP);
         outP := tmp;
       };
-    
+
       num /= 1000;
       if (num = 0) {
         break;
       };
- 
+
       tmpLng1 := num % 1000;
       if (tmpLng1 <> 0) {
         tmp := String->New();
@@ -3745,7 +3745,7 @@ class NumberNames {
         outP := tmp;
       };
       unit+=1;
-    };  
+    };
 
     if (number < 0) {
       tmp := String->New();
@@ -3753,8 +3753,8 @@ class NumberNames {
       tmp->Append(outP);
       outP := tmp;
     };
-      
-    return outP->Trim();  
+
+    return outP->Trim();
   }
 }
 
@@ -3784,11 +3784,11 @@ int main() {
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     numberFormatter.numberStyle = NSNumberFormatterSpellOutStyle;
     numberFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-    
+
     for (NSNumber *n in @[@900000001, @1234567890, @-987654321, @0, @3.14]) {
       NSLog(@"%@", [numberFormatter stringFromNumber:n]);
     }
-    
+
   }
   return 0;
 }
@@ -3924,23 +3924,23 @@ Edigit(n)={
 program NumberNames(output);
 
 const
-  smallies: array[1..19] of string = 
+  smallies: array[1..19] of string =
               ('one', 'two', 'three', 'four', 'five', 'six',
-               'seven', 'eight', 'nine', 'ten', 'eleven', 
-      	       'twelve', 'thirteen', 'fourteen', 'fifteen', 
+               'seven', 'eight', 'nine', 'ten', 'eleven',
+      	       'twelve', 'thirteen', 'fourteen', 'fifteen',
 	       'sixteen', 'seventeen', 'eighteen', 'nineteen');
-  tens: array[2..9] of string = 
-          ('twenty', 'thirty', 'forty', 'fifty', 
+  tens: array[2..9] of string =
+          ('twenty', 'thirty', 'forty', 'fifty',
            'sixty', 'seventy', 'eighty', 'ninety');
 
 function domaxies(number: int64): string;
   const
-    maxies: array[0..5] of string = 
+    maxies: array[0..5] of string =
               (' thousand', ' million', ' billion',
                ' trillion', ' quadrillion', ' quintillion');
   begin
     domaxies := '';
-    if number >= 0 then 
+    if number >= 0 then
       domaxies := maxies[number];
   end;
 
@@ -4027,7 +4027,7 @@ Output:
 
 23434545643565: twenty-three trillion, four hundred and thirty-four billion, five hundred and forty-five million, six hundred and forty-three thousand, five hundred and sixty-five
 
-2345286538456328: two quadrillion, three hundred and forty-five trillion, two hundred and eighty-six billion, five hundred and thirty-eight million, four hundred and fifty-six thousand, three 
+2345286538456328: two quadrillion, three hundred and forty-five trillion, two hundred and eighty-six billion, five hundred and thirty-eight million, four hundred and fifty-six thousand, three
 hundred and twenty-eight
 
 
@@ -4090,7 +4090,7 @@ Number: 0
 zero
 Number: 17
 seventeen
-Number: -1,234,567,890          
+Number: -1,234,567,890
 negative one billion, two hundred thirty four million, five hundred sixty seven thousand, eight hundred ninety
 Number: 42 000
 forty two thousand
@@ -4161,17 +4161,17 @@ Implemented as an [[Executable_library]] for use in [[Names_to_numbers#Phix|Name
 --
 constant twenties = {"zero","one","two","three","four","five","six","seven","eight","nine","ten",
     "eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"}
- 
+
 function Twenty(integer N)
     return twenties[mod(N,20)+1]
 end function
- 
+
 constant decades = {"twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"}
- 
+
 function Decade(integer N)
     return decades[mod(N,10)-1]
 end function
- 
+
 function Hundred(integer N)
     if N<20 then
         return Twenty(N)
@@ -4180,7 +4180,7 @@ function Hundred(integer N)
     end if
     return Decade(floor(N/10)) & '-' & Twenty(mod(N,10))
 end function
- 
+
 function Thousand(integer N, string withand)
     if N<100 then
         return withand & Hundred (N);
@@ -4189,13 +4189,13 @@ function Thousand(integer N, string withand)
     end if
     return Twenty(floor(N/100)) & " hundred and " & Hundred(mod(N,100))
 end function
- 
+
 constant orders = {{power(10,15),"quadrillion"},
                    {power(10,12),"trillion"},
                    {power(10,9),"billion"},
                    {power(10,6),"million"},
                    {power(10,3),"thousand"}}
- 
+
 function Triplet(atom N)
 atom Order, High, Low
 string Name, res = ""
@@ -4228,7 +4228,7 @@ integer n
     end if
     return res
 end function
- 
+
 global function spell(atom N)
 string res = ""
     if N<0 then
@@ -4238,14 +4238,14 @@ string res = ""
     res &= Triplet(N)
     return res
 end function
- 
-global 
+
+global
 constant Samples = {99, 300, 310, 417,1_501, 12_609, 200000000000100, 999999999999999,
-                    -123456787654321,102003000400005,1020030004,102003,102,1,0,-1,-99, 
+                    -123456787654321,102003000400005,1020030004,102003,102,1,0,-1,-99,
                     -1501,1234,12.34,10000001.2,1E-3,-2.7182818,
                     201021002001,-20102100200,2010210020,-201021002,20102100,-2010210,
                     201021,-20102,2010,-201,20,-2}
- 
+
 global function smartp(atom N)
 string res
     if N=floor(N) then return sprintf("%d",N) end if
@@ -4255,7 +4255,7 @@ string res
     end if
     return res
 end function
- 
+
 procedure main()
 atom si
     for i=1 to length(Samples) do
@@ -4737,11 +4737,11 @@ function Get-NumberName
 
 ```txt
 
-   Number Name                                                                                                    
-   ------ ----                                                                                                    
-        1 one                                                                                                     
-      234 two hundred and thirty four                                                                             
-    31337 thirty one thousand, three hundred and thirty seven                                                     
+   Number Name
+   ------ ----
+        1 one
+      234 two hundred and thirty four
+    31337 thirty one thousand, three hundred and thirty seven
 987654321 nine hundred and eighty seven million, six hundred and fifty four thousand, three hundred and twenty one
 
 ```
@@ -4853,7 +4853,7 @@ DataSection
   Data.s "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
   ;tens
   Data.s "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
-  ;big, non-Chuquet system 
+  ;big, non-Chuquet system
   Data.s "thousand", "million", "billion", "trillion", "quadrillion", "quintillion", "sextillion"
   Data.s "septillion", "octillion", "nonillion", "decillion", "undecillion", "duodecillion"
   Data.s "tredecillion"
@@ -4865,7 +4865,7 @@ Procedure.s numberWords(number.s)
   Static Dim small.s(19)
   Static Dim tens.s(9)
   Static Dim big.s(14)
-  
+
   If Not isInitialized
     Restore numberNames
     For i = 1 To 19
@@ -4878,32 +4878,32 @@ Procedure.s numberWords(number.s)
       Read.s big(i)
     Next
     isInitialized = #True
-  EndIf 
-  
+  EndIf
+
   For i = 1 To Len(number)
     If Not FindString("- 0123456789", Mid(number,i,1), 1)
       number = Left(number, i - 1) ;trim number to the last valid character
       Break ;exit loop
-    EndIf 
-  Next 
-  
+    EndIf
+  Next
+
   Protected IsNegative = #False
   number = Trim(number)
   If Left(number,1) = "-"
     IsNegative = #True
     number = Trim(Mid(number, 2))
-  EndIf 
-  
+  EndIf
+
   If CountString(number, "0") = Len(number)
     ProcedureReturn "zero"
-  EndIf 
-  
+  EndIf
+
   If Len(number) > 45
     ProcedureReturn "Number is too big!"
-  EndIf 
-  
+  EndIf
+
   Protected num.s = number, output.s, unit, unitOutput.s, working
-  
+
   Repeat
     working = Val(Right(num, 2))
     unitOutput = ""
@@ -4915,39 +4915,39 @@ Procedure.s numberWords(number.s)
           unitOutput = tens(working / 10) + "-" + small(working % 10)
         Else
           unitOutput = tens(working / 10)
-        EndIf 
+        EndIf
     EndSelect
-    
+
     working = Val(Right(num, 3)) / 100
     If working
       If unitOutput <> ""
         unitOutput = small(working) + " hundred " + unitOutput
       Else
         unitOutput = small(working) + " hundred"
-      EndIf 
-    EndIf 
-    
+      EndIf
+    EndIf
+
     If unitOutput <> "" And unit > 0
       unitOutput + " " + big(unit)
       If output <> ""
         unitOutput + ", "
-      EndIf 
-    EndIf 
-    
+      EndIf
+    EndIf
+
     output = unitOutput + output
-    
+
     If Len(num) > 3
       num = Left(num, Len(num) - 3)
       unit + 1
     Else
       Break ;exit loop
-    EndIf 
+    EndIf
   ForEver
-  
+
   If IsNegative
     output = "negative " + output
   EndIf
-  
+
   ProcedureReturn output
 EndProcedure
 
@@ -4958,12 +4958,12 @@ If OpenConsole()
       Print("Give me an integer (or q to quit)! ")
       n$ = Input()
     Until n$ <> ""
-    
+
     If Left(Trim(n$),1) = "q"
       Break ;exit loop
-    EndIf 
+    EndIf
     PrintN(numberWords(n$))
-  ForEver 
+  ForEver
   CloseConsole()
 EndIf
 
@@ -4994,8 +4994,8 @@ SMALL = ["zero", "one", "two", "three", "four", "five",
          "six", "seven", "eight", "nine", "ten", "eleven",
          "twelve", "thirteen", "fourteen", "fifteen",
          "sixteen", "seventeen", "eighteen", "nineteen"]
-HUGE = [None, None] + [h + "illion" 
-                       for h in ("m", "b", "tr", "quadr", "quint", "sext", 
+HUGE = [None, None] + [h + "illion"
+                       for h in ("m", "b", "tr", "quadr", "quint", "sext",
                                   "sept", "oct", "non", "dec")]
 
 def nonzero(c, n, connect=''):
@@ -5008,7 +5008,7 @@ def last_and(num):
             last = ' and' + last
         num = ''.join([pre, ',', last])
     return num
-    
+
 def big(e, n):
     if e == 0:
         return spell_integer(n)
@@ -5023,7 +5023,7 @@ def base1000_rev(n):
     while n != 0:
         n, r = divmod(n, 1000)
         yield r
- 
+
 def spell_integer(n):
     if n < 0:
         return "minus " + spell_integer(-n)
@@ -5044,8 +5044,8 @@ if __name__ == '__main__':
     # examples
     for n in (0, -3, 5, -7, 11, -13, 17, -19, 23, -29):
         print('%+4i -> %s' % (n, spell_integer(n)))
-    print('')  
-    
+    print('')
+
     n = 201021002001
     while n:
         print('%-12i -> %s' % (n, spell_integer(n)))
@@ -5133,7 +5133,7 @@ def int_to_english(n):
             else:
                 return first + " " + powers[idx][0] + " " + second
         idx = idx - 1
-                    
+
 if __name__ == "__main__":
     print(int_to_english(42))
     print(int_to_english(3 ** 7))
@@ -5225,8 +5225,8 @@ See also [http://planet.racket-lang.org/package-source/neil/numspell.plt/1/2/pla
 
 ## REXX
 
-The REXX program used for this entry is limited   (for the American-style)   numbers to   <big>10<sup>3002</sup>   -1</big>,   
-and roughly double that for the British-style numbers.  
+The REXX program used for this entry is limited   (for the American-style)   numbers to   <big>10<sup>3002</sup>   -1</big>,
+and roughly double that for the British-style numbers.
 
 For the REXX program and its associated help document, see   ───►   [[Number names/REXX]].
 
@@ -5258,7 +5258,7 @@ pointStr=" Point "
 while true
 	see "enter number to convert:"
 	give theNumber
-	
+
 	pointSplited=splitString(theNumber,".")
 	fraction=0
 
@@ -5276,30 +5276,30 @@ func getName num
 rtn=null
 if num=0
     rtn += OneList[floor(num+1)]
-	return rtn 
+	return rtn
 ok
 if num<0
 	return "minus " + getName(fabs(num))
 ok
-if num>= 1000000 
-	rtn += getName(num / 1000000) +" "+ millionStr 
+if num>= 1000000
+	rtn += getName(num / 1000000) +" "+ millionStr
 	num%=1000000
 ok
 if num>=1000
 	if len(rtn)>0 rtn += ", " ok
 
-	rtn += getName(num / 1000)+ " " + thousandStr 
+	rtn += getName(num / 1000)+ " " + thousandStr
 	num%=1000
 ok
 
-if num >=100 
+if num >=100
 if len(rtn)>0 rtn += ", " ok
-	rtn += OneList[floor((num / 100)+1)] + " " + hundredStr 
+	rtn += OneList[floor((num / 100)+1)] + " " + hundredStr
 	num%=100
 ok
 
-if num=0 
-	return rtn + 
+if num=0
+	return rtn +
 ok
 if len(rtn)>0 rtn += " " + andStr + " " ok
 if(num>=20)
@@ -5307,7 +5307,7 @@ if(num>=20)
 	rtn += tenList[floor((num / 10)+1)]
 	num%=10
 ok
-if num=0 
+if num=0
 	return rtn
 ok
 if len(rtn)>0 rtn +=  " " ok
@@ -5322,7 +5322,7 @@ func splitString str,chr
 ```
 
 {{out}}
-for input of: 
+for input of:
 
 ```txt
 
@@ -5414,18 +5414,18 @@ def wordify number
   case
   when number < 0
     "negative #{wordify -number}"
-    
+
   when number < 20
     SMALL[number]
-    
+
   when number < 100
     div, mod = number.divmod(10)
     TENS[div] + (mod==0 ? "" : "-#{wordify mod}")
-    
+
   when number < 1000
     div, mod = number.divmod(100)
     "#{SMALL[div]} hundred" + (mod==0 ? "" : " and #{wordify mod}")
-    
+
   else
     # separate into 3-digit chunks
     chunks = []
@@ -5434,9 +5434,9 @@ def wordify number
       div, mod = div.divmod(1000)
       chunks << mod                 # will store smallest to largest
     end
-    
+
     raise ArgumentError, "Integer value too large." if chunks.size > BIG.size
-    
+
     chunks.map{ |c| wordify c }.
            zip(BIG).    # zip pairs up corresponding elements from the two arrays
            find_all { |c| c[0] != 'zero' }.
@@ -5639,7 +5639,7 @@ trait LongHand {
     def compose(n: BigInt): String = {
       // "1234" becomes List((1,"thousand"), (234, ""))
       val decGroups = n.toString.reverse.grouped(3).map(_.reverse).toSeq.par // Group into powers of thousands
-      if (decGroups.size <= shortScale.size) // Detect overflow  
+      if (decGroups.size <= shortScale.size) // Detect overflow
       { // Send per group section to composeScale
         @tailrec
         def iter(elems: Seq[(String, String)], acc: String): String = {
@@ -5809,7 +5809,7 @@ object SpellNumber extends LongHand with App {
 
 
 
-###  Recursive 
+###  Recursive
 
 Recursive TreeMap solution (for values up to trillions):
 
@@ -5848,7 +5848,7 @@ Examples
 
 ```txt
 
-85001 eighty-five thousand and one 
+85001 eighty-five thousand and one
 155019 one hundred and fifty-five thousand and nineteen
 4547000 four million, five hundred and forty-seven thousand
 6766027 six million, seven hundred and sixty-six thousand and twenty-seven
@@ -5901,14 +5901,14 @@ magnitudes := ["", "thousand", "million", "billion", "trillion"];
 
 numberToEnglish(num(0)) :=
     let
-        triplets[i] := 
-                (num / integerPower(1000, i - 1)) mod 1000 
+        triplets[i] :=
+                (num / integerPower(1000, i - 1)) mod 1000
                 foreach i within 1 ... ceiling(log(1000, num + 1));
-        
+
         englishtTriplets[j] := numberToEnglishHelper(triplets[j]);
-        
-        partials[j] := 
-                englishtTriplets[j] ++ magnitudes[j] ++ ", " when size(englishtTriplets[j]) > 0 
+
+        partials[j] :=
+                englishtTriplets[j] ++ magnitudes[j] ++ ", " when size(englishtTriplets[j]) > 0
                 foreach j within reverse(1 ... size(triplets));
     in
             "zero" when num = 0
@@ -5923,28 +5923,28 @@ numberToEnglishHelper(num(0)) :=
         onesPlace := num mod 10;
         tensPlace := (num mod 100) / 10;
         hundredsPlace :=  (num mod 1000) / 100;
-        
+
         onesWord :=     "ten " when tensPlace = 1 and onesPlace = 0
                     else
                         "" when onesPlace = 0
                     else
                         teens[onesPlace] ++ " " when tensPlace = 1
-                    else 
+                    else
                         ones[onesPlace] ++ " ";
-                        
+
         tensWord :=    "" when tensPlace = 0 or tensPlace = 1
-                    else 
+                    else
                         tens[tensPlace] ++ " " when onesPlace = 0
-                    else 
+                    else
                         tens[tensPlace] ++ "-";
-                        
+
         hundredsWord :=     "" when hundredsPlace = 0
                          else
                              ones[hundredsPlace] ++ " hundred ";
-                             
+
         andWord := "" when hundredsPlace = 0 or (tensPlace = 0 and onesPlace = 0) else "and ";
-                          
-        
+
+
     in
         hundredsWord ++ andWord ++ tensWord ++ onesWord;
 ```
@@ -6152,7 +6152,7 @@ extension Int {
       name = String(name.dropLast(5) + "eight")
     }
 
-    return neg ? "minus \(name)" : name  
+    return neg ? "minus \(name)" : name
   }
 }
 
@@ -6208,7 +6208,7 @@ proc int2words {n} {
     if {[string length $n] > 36} {
         error "value too large to represent"
     }
-    
+
     set groups [get_groups $n]
     set l [llength $groups]
     foreach group $groups {
@@ -6387,11 +6387,11 @@ End Sub
 Private Function Twenty(N As Variant)
     Twenty = twenties(N Mod 20 + 1)
 End Function
- 
+
 Private Function Decade(N As Variant)
     Decade = decades(N Mod 10 - 1)
 End Function
- 
+
 Private Function Hundred(N As Variant)
     If N < 20 Then
         Hundred = Twenty(N)
@@ -6404,7 +6404,7 @@ Private Function Hundred(N As Variant)
     End If
     Hundred = Decade(N \ 10) & "-" & Twenty(N Mod 10)
 End Function
- 
+
 Private Function Thousand(N As Variant, withand As String)
     If N < 100 Then
         Thousand = withand & Hundred(N)
@@ -6450,7 +6450,7 @@ Private Function Triplet(N As Variant)
     End If
     Triplet = res
 End Function
- 
+
 Private Function spell(N As Variant)
     Dim res As String
     If N < 0 Then
@@ -6460,7 +6460,7 @@ Private Function spell(N As Variant)
     res = res & Triplet(N)
     spell = res
 End Function
- 
+
 Private Function smartp(N As Variant)
     Dim res As String
     If N = WorksheetFunction.Floor_Precise(N) Then
@@ -6473,7 +6473,7 @@ Private Function smartp(N As Variant)
     End If
     smartp = res
 End Function
- 
+
 Sub Main()
     Dim si As Variant
     init
@@ -6541,7 +6541,7 @@ This solution works for integers up to 1000. It should be fairly ovbious how it 
 
 ```vbnet
 Module Module1
-    
+
     Sub Main()
         Dim i As Integer
         Console.WriteLine("Enter a number")
@@ -6549,7 +6549,7 @@ Module Module1
         Console.WriteLine(words(i))
         Console.ReadLine()
     End Sub
-    
+
     Function words(ByVal Number As Integer) As String
         Dim small() As String = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
          "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
@@ -6640,7 +6640,7 @@ zero
 thirteen
 seven hundred eighty-nine
 minus six hundred four thousand one
-one million 
+one million
 one billion two hundred thirty-four million five hundred sixty-seven thousand eight hundred ninety
 
 ```
@@ -6652,7 +6652,7 @@ one billion two hundred thirty-four million five hundred sixty-seven thousand ei
 {{trans|Scala}}
 
 ```zkl
-var 
+var
    ns   =[1..20].chain([30..90,10]).walk(),
    names=T("one","two","three","four","five","six","seven","eight","nine",
            "ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen",
@@ -6665,8 +6665,8 @@ fcn numberToString(n){ // n>0
    fcn(n){
       if(100<=n<0d100_000_0000_000){
 	 idx,h,name,r := hs.filter1n('>(n))-1, hs[idx], hnames[idx], n%h;
-	 String(self.fcn(n/h),name, 
-	    if(r==0) "" else if(0<r<100) " and " else ", ", 
+	 String(self.fcn(n/h),name,
+	    if(r==0) "" else if(0<r<100) " and " else ", ",
 	    self.fcn(r));
       }else if(0<n<=90){
 	 idx,t,name,r := ns.filter1n('>(n))-1, ns[idx], names[idx], n-t;
@@ -6687,10 +6687,10 @@ foreach n in (T(85001,155019,4547000,6766027,55555555555)){
 
 ```txt
 
-85,001 is eighty-five thousand and one 
-155,019 is one hundred and fifty-five thousand and nineteen 
+85,001 is eighty-five thousand and one
+155,019 is one hundred and fifty-five thousand and nineteen
 4,547,000 is four million, five hundred and forty-seven thousand
-6,766,027 is six million, seven hundred and sixty-six thousand and twenty-seven 
+6,766,027 is six million, seven hundred and sixty-six thousand and twenty-seven
 55,555,555,555 is fifty-five billion, five hundred and fifty-five million, five hundred and fifty-five thousand, five hundred and fifty-five
 
 ```

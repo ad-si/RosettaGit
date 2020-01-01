@@ -11,18 +11,18 @@ tags = []
 +++
 
 {{Task|Matrices}}
-Every square matrix <math>A</math> can be decomposed into a product of a lower triangular matrix <math>L</math> and a upper triangular matrix <math>U</math>, 
+Every square matrix <math>A</math> can be decomposed into a product of a lower triangular matrix <math>L</math> and a upper triangular matrix <math>U</math>,
 as described in [[wp:LU decomposition|LU decomposition]].
 
 :<math>A = LU</math>
 
-It is a modified form of Gaussian elimination. 
-While the [[Cholesky decomposition]] only works for symmetric, 
-positive definite matrices, the more general LU decomposition 
-works for any square matrix. 
+It is a modified form of Gaussian elimination.
+While the [[Cholesky decomposition]] only works for symmetric,
+positive definite matrices, the more general LU decomposition
+works for any square matrix.
 
-There are several algorithms for calculating L and U. 
-To derive ''Crout's algorithm'' for a 3x3 example, 
+There are several algorithms for calculating L and U.
+To derive ''Crout's algorithm'' for a 3x3 example,
 we have to solve the following system:
 
 :<math>
@@ -107,7 +107,7 @@ and then for <math>L</math>
 
 :<math>l_{ij} = \frac{1}{u_{jj}} (a_{ij} - \sum_{k=1}^{j-1} u_{kj}l_{ik})</math>
 
-We see in the second formula that to get the <math>l_{ij}</math> below the diagonal, we have to divide by the diagonal element (pivot) <math>u_{jj}</math>, so we get problems when <math>u_{jj}</math> is either 0 or very small, which leads to numerical instability. 
+We see in the second formula that to get the <math>l_{ij}</math> below the diagonal, we have to divide by the diagonal element (pivot) <math>u_{jj}</math>, so we get problems when <math>u_{jj}</math> is either 0 or very small, which leads to numerical instability.
 
 The solution to this problem is ''pivoting'' <math>A</math>, which means rearranging the rows of <math>A</math>, prior to the <math>LU</math> decomposition, in a way that the largest element of each column gets onto the diagonal of <math>A</math>. Rearranging the rows means to multiply <math>A</math> by a permutation matrix <math>P</math>:
 
@@ -118,16 +118,16 @@ Example:
 :<math>
 \begin{pmatrix}
    0 & 1 \\
-   1 & 0 
+   1 & 0
 \end{pmatrix}
 \begin{pmatrix}
    1 & 4 \\
-   2 & 3 
+   2 & 3
 \end{pmatrix}
 \Rightarrow
 \begin{pmatrix}
    2 & 3 \\
-   1 & 4 
+   1 & 4
 \end{pmatrix}
 </math>
 
@@ -138,8 +138,8 @@ The decomposition algorithm is then applied on the rearranged matrix so that
 
 '''Task description'''
 
-The task is to implement a routine which will take a square nxn matrix <math>A</math> and return a lower triangular matrix <math>L</math>, a upper triangular matrix <math>U</math> and a permutation matrix <math>P</math>, 
-so that the above equation is fullfilled. 
+The task is to implement a routine which will take a square nxn matrix <math>A</math> and return a lower triangular matrix <math>L</math>, a upper triangular matrix <math>U</math> and a permutation matrix <math>P</math>,
+so that the above equation is fullfilled.
 You should then test it on the following two examples and include your output.
 
 Example 1:
@@ -321,7 +321,7 @@ procedure Decompose_Example is
      (Matrix => Ada.Numerics.Real_Arrays);
 
    package Real_IO is new Ada.Text_IO.Float_IO (Float);
-   
+
    procedure Print (M : Ada.Numerics.Real_Arrays.Real_Matrix) is
    begin
       for Row in M'Range (1) loop
@@ -425,7 +425,7 @@ P:
       PRINT "L1:" ' FNshowmatrix(L1())
       PRINT "U1:" ' FNshowmatrix(U1())
       PRINT "P1:" ' FNshowmatrix(P1())
-      
+
       DIM A2(3,3)
       A2() = 11, 9, 24, 2, 1, 5, 2, 6, 3, 17, 18, 1, 2, 5, 7, 1
       PROCLUdecomposition(A2(), L2(), U2(), P2())
@@ -433,7 +433,7 @@ P:
       PRINT "U2:" ' FNshowmatrix(U2())
       PRINT "P2:" ' FNshowmatrix(P2())
       END
-      
+
       DEF PROCLUdecomposition(a(), RETURN l(), RETURN u(), RETURN p())
       LOCAL i%, j%, k%, n%, s, b() : n% = DIM(a(),2)
       DIM l(n%,n%), u(n%,n%), b(n%,n%)
@@ -453,7 +453,7 @@ P:
         NEXT
       NEXT j%
       ENDPROC
-      
+
       DEF PROCpivot(a(), RETURN p())
       LOCAL i%, j%, m%, n%, r% : n% = DIM(a(),2)
       DIM p(n%,n%) : FOR i% = 0 TO n% : p(i%,i%) = 1 : NEXT
@@ -468,7 +468,7 @@ P:
         ENDIF
       NEXT i%
       ENDPROC
-      
+
       DEF FNshowmatrix(a())
       LOCAL @%, i%, j%, a$
       @% = &102050A
@@ -524,9 +524,9 @@ P2:
 
 ## C
 
-Compiled with <code>gcc -std=gnu99 -Wall -lm -pedantic</code>.  Demonstrating how to do LU decomposition, and how (not) to use macros. 
-```C>#include <stdio.h
-
+Compiled with <code>gcc -std=gnu99 -Wall -lm -pedantic</code>.  Demonstrating how to do LU decomposition, and how (not) to use macros.
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -915,37 +915,37 @@ void main() {
 (define PLU (matrix-lu-decompose A)) ;; -> list of three matrices, P, Lower, Upper
 
 (array-print (first PLU))
-0  1  0 
-1  0  0 
-0  0  1 
+0  1  0
+1  0  0
+0  0  1
 (array-print (second PLU))
-1    0   0 
-0.5  1   0 
-0.5  -1  1 
+1    0   0
+0.5  1   0
+0.5  -1  1
 (array-print (caddr PLU))
-2  4  7   
-0  1  1.5 
-0  0  -2  
+2  4  7
+0  1  1.5
+0  0  -2
 
 (define A (list->array '(11 9 24 2 1 5 2 6 3 17 18 1 2 5 7 1 ) 4 4))
 (define PLU (matrix-lu-decompose A)) ;; -> list of three matrices, P, Lower, Upper
 (array-print (first PLU))
-1  0  0  0 
-0  0  1  0 
-0  1  0  0 
-0  0  0  1 
+1  0  0  0
+0  0  1  0
+0  1  0  0
+0  0  0  1
 
 (array-print (second PLU))
-1        0        0       0 
-0.27273  1        0       0 
-0.09091  0.2875   1       0 
-0.18182  0.23125  0.0036  1 
+1        0        0       0
+0.27273  1        0       0
+0.09091  0.2875   1       0
+0.18182  0.23125  0.0036  1
 
 (array-print (caddr PLU))
-11  9         24        2       
-0   14.54545  11.45455  0.45455 
-0   0         -3.475    5.6875  
-0   0         0         0.51079 
+11  9         24        2
+0   14.54545  11.45455  0.45455
+0   0         -3.475    5.6875
+0   0         0         0.51079
 
 ```
 
@@ -961,9 +961,9 @@ program lu1
   implicit none
   call check( reshape([real(8)::1,2,1,3,4,1,5,7,0                  ],[3,3]) )
   call check( reshape([real(8)::11,1,3,2,9,5,17,5,24,2,18,7,2,6,1,1],[4,4]) )
- 
+
 contains
- 
+
   subroutine check(a)
     real(8), intent(in)   :: a(:,:)
     integer               :: i,j,n
@@ -991,7 +991,7 @@ contains
     print *, "residual"
     print *, "|| P.A - L.U || =  ", maxval(abs(matmul(p,a)-matmul(l,u)))
   end subroutine
- 
+
   subroutine lu(a,p)
 !   in situ decomposition, corresponds to LAPACK's dgebtrf
     real(8), intent(inout) :: a(:,:)
@@ -1002,7 +1002,7 @@ contains
     do k = 1,n-1
         kmax = maxloc(abs(a(p(k:),k)),1) + k-1
         if (kmax /= k ) p([k, kmax]) = p([kmax, k])
-        a(p(k+1:),k) = a(p(k+1:),k) / a(p(k),k) 
+        a(p(k+1:),k) = a(p(k+1:),k) / a(p(k),k)
         forall (j=k+1:n) a(p(k+1:),j) = a(p(k+1:),j) - a(p(k+1:),k) * a(p(k),j)
     end do
   end subroutine
@@ -1047,7 +1047,7 @@ end program
     0.00     1.00     1.50
     0.00     0.00    -2.00
  residual
- || P.A - L.U || =     0.0000000000000000     
+ || P.A - L.U || =     0.0000000000000000
  a
    11.00     9.00    24.00     2.00
     1.00     5.00     2.00     6.00
@@ -1069,7 +1069,7 @@ end program
     0.00     0.00    -3.47     5.69
     0.00     0.00     0.00     0.51
  residual
- || P.A - L.U || =     0.0000000000000000 
+ || P.A - L.U || =     0.0000000000000000
 
 ```
 
@@ -1087,7 +1087,7 @@ end program
 package main
 
 import "fmt"
-    
+
 type matrix [][]float64
 
 func zero(n int) matrix {
@@ -1095,18 +1095,18 @@ func zero(n int) matrix {
     a := make([]float64, n*n)
     for i := range r {
         r[i] = a[n*i : n*(i+1)]
-    } 
-    return r 
+    }
+    return r
 }
-    
+
 func eye(n int) matrix {
     r := zero(n)
     for i := range r {
         r[i][i] = 1
     }
     return r
-}   
-    
+}
+
 func (m matrix) print(label string) {
     if label > "" {
         fmt.Printf("%s:\n", label)
@@ -1119,10 +1119,10 @@ func (m matrix) print(label string) {
     }
 }
 
-func (a matrix) pivotize() matrix { 
+func (a matrix) pivotize() matrix {
     p := eye(len(a))
     for j, r := range a {
-        max := r[j] 
+        max := r[j]
         row := j
         for i := j; i < len(a); i++ {
             if a[i][j] > max {
@@ -1134,7 +1134,7 @@ func (a matrix) pivotize() matrix {
             // swap rows
             p[j], p[row] = p[row], p[j]
         }
-    } 
+    }
     return p
 }
 
@@ -1191,8 +1191,8 @@ func showLU(a matrix) {
     a.print("\na")
     l, u, p := a.lu()
     l.print("l")
-    u.print("u") 
-    p.print("p") 
+    u.print("u")
+    p.print("p")
 }
 ```
 
@@ -1543,7 +1543,7 @@ import Data.Maybe
 import Text.Printf
 
 -- a matrix is represented as a list of columns
-mmult :: Num a => [[a]] -> [[a]] -> [[a]] 
+mmult :: Num a => [[a]] -> [[a]] -> [[a]]
 mmult a b = [ [ sum $ zipWith (*) ak bj | ak <- (transpose a) ] | bj <- b ]
 
 nth mA i j = (mA !! j) !! i
@@ -1555,7 +1555,7 @@ permMatrix n ix1 ix2 =
     [ [ if ((i==ix1 && j==ix2) || (i==ix2 && j==ix1) || (i==j && j /= ix1 && i /= ix2))
         then 1 else 0| i <- [0..n-1]] | j <- [0..n-1]]
 permMatrix_inv n ix1 ix2 = permMatrix n ix2 ix1
-        
+
 -- count k from zero
 elimColumn :: Int -> [[Rational]] -> Int -> [Rational]
 elimMatrix :: Int -> [[Rational]] -> Int -> [[Rational]]
@@ -1576,8 +1576,8 @@ paStep_recP :: Int -> [[Rational]] -> [[Rational]] -> [[Rational]] -> Int -> [[[
 paStep_recM :: Int -> [[Rational]] -> [[Rational]] -> [[Rational]] -> Int -> [[[Rational]]]
 lupStep :: Int -> [[Rational]] -> [[[Rational]]]
 
-paStep_recP n mP mA mL cnt = 
-    let mPt = permMatrix n cnt (swapIndx mA cnt) in 
+paStep_recP n mP mA mL cnt =
+    let mPt = permMatrix n cnt (swapIndx mA cnt) in
         let mPtInv = permMatrix_inv n cnt (swapIndx mA cnt) in
     if (cnt >= n) then [(mmult mP mL),mA,mP] else
         (paStep_recM n (mmult mPt mP) (mmult mPt mA) (mmult mL mPtInv) cnt)
@@ -1591,8 +1591,8 @@ lupStep n mA = paStep_recP n (idMatrix n) mA (idMatrix n) 0
 
 --IO
 matrixFromRationalToString m = concat $ intersperse "\n"
-    (map (\x -> unwords $ printf "%8.4f" <$> (x::[Double])) 
-        (transpose (matrixFromRational m))) where 
+    (map (\x -> unwords $ printf "%8.4f" <$> (x::[Double]))
+        (transpose (matrixFromRational m))) where
         matrixFromRational m = map (\x -> map fromRational x) m
 
 solveTask mY = let mLUP = lupStep (length mY) mY in
@@ -1614,21 +1614,21 @@ main = putStrLn "Task1: \n" >> solveTask mY1 >>
 
 ```txt
 
-Task1: 
+Task1:
 
-A: 
+A:
   1.0000   3.0000   5.0000
   2.0000   4.0000   7.0000
   1.0000   7.0000   0.0000
-L: 
+L:
   1.0000   0.0000   0.0000
   2.0000   1.0000   0.0000
   1.0000  -2.0000   1.0000
-U: 
+U:
   1.0000   3.0000   5.0000
   0.0000  -2.0000  -3.0000
   0.0000   0.0000 -11.0000
-P: 
+P:
   1.0000   0.0000   0.0000
   0.0000   1.0000   0.0000
   0.0000   0.0000   1.0000
@@ -1640,24 +1640,24 @@ Verify: LU
   1.0000   3.0000   5.0000
   2.0000   4.0000   7.0000
   1.0000   7.0000   0.0000
-Task2: 
+Task2:
 
-A: 
+A:
  11.0000   9.0000  24.0000   2.0000
   1.0000   5.0000   2.0000   6.0000
   3.0000  17.0000  18.0000   1.0000
   2.0000   5.0000   7.0000   1.0000
-L: 
+L:
   1.0000   0.5556   0.2317   0.0000
   0.0000   1.0000   0.0000   0.0000
   0.0000   1.8889   1.0000   0.0000
   0.0000   0.0909   0.0000   1.0000
-U: 
+U:
   0.0081   0.0000   0.0000   0.5325
  11.0000   9.0000  24.0000   2.0000
 -17.7778   0.0000 -27.3333  -2.7778
   0.0000   4.1818  -0.1818   5.8182
-P: 
+P:
   0.0000   0.0000   0.0000   1.0000
   1.0000   0.0000   0.0000   0.0000
   0.0000   0.0000   1.0000   0.0000
@@ -1686,14 +1686,14 @@ Uses The Method Of Partial Pivoting
 
 ```Idris
 
-module Main 
+module Main
 
 import Data.Vect
- 
+
 Matrix : Nat -> Nat -> Type -> Type
 Matrix m n t = Vect m (Vect n t)
 
--- Creates list from 0 to n (not including n) 
+-- Creates list from 0 to n (not including n)
 upTo : (m : Nat) -> Vect m (Fin m)
 upTo Z = []
 upTo (S n) = 0 :: (map FS (upTo n))
@@ -1701,7 +1701,7 @@ upTo (S n) = 0 :: (map FS (upTo n))
 -- Creates list from 0 to n-1  (not including n-1)
 upToM1 : (m : Nat) -> (sz ** Vect sz (Fin m))
 upToM1 m = case (upTo m) of
-                  (y::ys) => (_ ** init(y::ys)) 
+                  (y::ys) => (_ ** init(y::ys))
                   [] => (_ ** [])
 
 -- Creates list from i to n (not including n)
@@ -1711,12 +1711,12 @@ fromUpTo {n} m = filter (>= m) (upTo n)
 -- Creates list from i+1 to n (not including n)
 fromUpTo1 : {n : Nat} -> Fin n -> (sz ** Vect sz (Fin n))
 fromUpTo1 {n} m with (fromUpTo m)
-  | (_ ** xs) = case xs of 
+  | (_ ** xs) = case xs of
                   (y::ys) => (_ ** ys)
                   [] => (_ ** [])
 
 
--- Create Zero Matrix of size m by n 
+-- Create Zero Matrix of size m by n
 zeros : (m : Nat) -> (n : Nat) -> Matrix m n Double
 zeros m n = replicate m (replicate n 0.0)
 
@@ -1736,16 +1736,16 @@ eye m = map create1Vec (upTo m)
 
 indexM : (Fin m, Fin n) -> Matrix m n t -> t
 indexM (i, j) a = index j (index i a)
- 
+
 
 -- Obtain index for the row containing the
 -- largest absolute value for the given column
 colAbsMaxIndex : Fin m -> Fin m -> Matrix m m Double -> Fin m
 colAbsMaxIndex startRow col a {m} with (fromUpTo startRow)
-  | (_ ** xs) = 
-    snd $ foldl (\(absMax, idx), curIdx => 
+  | (_ ** xs) =
+    snd $ foldl (\(absMax, idx), curIdx =>
           let curAbsVal = abs(indexM (curIdx, col) a) in
-            if (curAbsVal > absMax) 
+            if (curAbsVal > absMax)
               then (curAbsVal, curIdx)
               else (absMax, idx)
         ) (0.0, startRow) xs
@@ -1770,53 +1770,53 @@ lSwapRow row1 row2 l {m} with (filter (< row1) (upTo m))
   | (_ ** xs) =  foldl (\l',col => swapValues (row1, col) (row2, col) l') l xs
 
 
-rowSwap : Fin m -> (Matrix m m Double,  Matrix m m Double, Matrix m m Double) -> 
+rowSwap : Fin m -> (Matrix m m Double,  Matrix m m Double, Matrix m m Double) ->
                         (Matrix m m Double, Matrix m m Double, Matrix m m Double)
-rowSwap col (l,u,p) = (lSwapRow col row l, swapRows col row u, swapRows col row p) 
+rowSwap col (l,u,p) = (lSwapRow col row l, swapRows col row u, swapRows col row p)
       where row = colAbsMaxIndex col col u
 
- 
-calc : (Fin m) -> (Fin m) -> (Matrix m m Double, Matrix m m Double) -> 
+
+calc : (Fin m) -> (Fin m) -> (Matrix m m Double, Matrix m m Double) ->
                                 (Matrix m m Double, Matrix m m Double)
 calc i j (l, u) {m} = (l', u')
-   where 
+   where
          l' : Matrix m m Double
          l' = replaceAtM (j, i) ((indexM (j, i) u) / indexM (i, i) u) l
-         
+
          u'' : (Fin m) -> (Matrix m m Double) -> (Matrix m m Double)
-         u'' k u = replaceAtM (j, k) ((indexM (j, k) u) - 
+         u'' k u = replaceAtM (j, k) ((indexM (j, k) u) -
                   ((indexM (j, i) l') * (indexM (i, k) u))) u
-         
+
          u' : (Matrix m m Double)
          u' with (fromUpTo i) | (_ ** xs) = foldl (\curU, idx => u'' idx curU) u xs
 
 
 -- Perform a single iteration of the algorithm for the given column
 iteration : Fin m -> (Matrix m m Double, Matrix m m Double, Matrix m m Double) ->
-                        (Matrix m m Double, Matrix m m Double, Matrix m m Double) 
-iteration i lup {m} = iterate' (rowSwap i lup) 
- 
-          where 
-                modify : (Matrix m m Double, Matrix m m Double) -> 
+                        (Matrix m m Double, Matrix m m Double, Matrix m m Double)
+iteration i lup {m} = iterate' (rowSwap i lup)
+
+          where
+                modify : (Matrix m m Double, Matrix m m Double) ->
                             (Matrix m m Double, Matrix m m Double)
-                modify lu with (fromUpTo1 i) | (_ ** xs) = 
-                                            foldl (\lu',j => calc i j lu') lu xs 
-                                            
+                modify lu with (fromUpTo1 i) | (_ ** xs) =
+                                            foldl (\lu',j => calc i j lu') lu xs
+
                 iterate' : (Matrix m m Double, Matrix m m Double, Matrix m m Double) ->
                               (Matrix m m Double, Matrix m m Double, Matrix m m Double)
-                iterate' (l, u, p) with (modify (l, u)) | (l', u') = (l', u', p) 
+                iterate' (l, u, p) with (modify (l, u)) | (l', u') = (l', u', p)
 
 
 -- Generate L, U, P matricies from a given square matrix.
 -- Where L * U = A, and P is the permutation matrix
-luDecompose : Matrix m m Double -> (Matrix m m Double, Matrix m m Double, Matrix m m Double) 
-luDecompose a {m} with (upToM1 m) 
-  | (_ ** xs) = foldl (\lup,idx => iteration idx lup) (eye m,a,eye m) xs 
-      
-      
-      
+luDecompose : Matrix m m Double -> (Matrix m m Double, Matrix m m Double, Matrix m m Double)
+luDecompose a {m} with (upToM1 m)
+  | (_ ** xs) = foldl (\lup,idx => iteration idx lup) (eye m,a,eye m) xs
+
+
+
 ex1 : (Matrix 3 3 Double, Matrix 3 3 Double, Matrix 3 3 Double)
-ex1 = luDecompose [[1, 3, 5], [2, 4, 7], [1, 1, 0]] 
+ex1 = luDecompose [[1, 3, 5], [2, 4, 7], [1, 1, 0]]
 
 ex2 : (Matrix 4 4 Double, Matrix 4 4 Double, Matrix 4 4 Double)
 ex2 = luDecompose [[11, 9, 24, 2], [1, 5, 2, 6], [3, 17, 18, 1], [2, 5, 7, 1]]
@@ -1826,7 +1826,7 @@ printEx (l, u, p) = do
   putStr "l:"
   print l
   putStrLn "\n"
-  
+
   putStr "u:"
   print u
   putStrLn "\n"
@@ -1836,7 +1836,7 @@ printEx (l, u, p) = do
   putStrLn "\n"
 
 main : IO()
-main = do 
+main = do
   putStrLn "Solution 1:"
   printEx ex1
   putStrLn "Solution 2:"
@@ -2040,33 +2040,33 @@ public class Test {
 
 
 ```txt
-  1.0   0.0   0.0 
-  0.5   1.0   0.0 
-  0.5  -1.0   1.0 
+  1.0   0.0   0.0
+  0.5   1.0   0.0
+  0.5  -1.0   1.0
 
-  2.0   4.0   7.0 
-  0.0   1.0   1.5 
-  0.0   0.0  -2.0 
+  2.0   4.0   7.0
+  0.0   1.0   1.5
+  0.0   0.0  -2.0
 
-  0.0   1.0   0.0 
-  1.0   0.0   0.0 
-  0.0   0.0   1.0 
+  0.0   1.0   0.0
+  1.0   0.0   0.0
+  0.0   0.0   1.0
 
 
-  1.0   0.0   0.0   0.0 
-  0.3   1.0   0.0   0.0 
-  0.1   0.3   1.0   0.0 
-  0.2   0.2   0.0   1.0 
+  1.0   0.0   0.0   0.0
+  0.3   1.0   0.0   0.0
+  0.1   0.3   1.0   0.0
+  0.2   0.2   0.0   1.0
 
- 11.0   9.0  24.0   2.0 
-  0.0  14.5  11.5   0.5 
-  0.0   0.0  -3.5   5.7 
-  0.0   0.0   0.0   0.5 
+ 11.0   9.0  24.0   2.0
+  0.0  14.5  11.5   0.5
+  0.0   0.0  -3.5   5.7
+  0.0   0.0   0.0   0.5
 
-  1.0   0.0   0.0   0.0 
-  0.0   0.0   1.0   0.0 
-  0.0   1.0   0.0   0.0 
-  0.0   0.0   0.0   1.0 
+  1.0   0.0   0.0   0.0
+  0.0   0.0   1.0   0.0
+  0.0   1.0   0.0   0.0
+  0.0   0.0   0.0   1.0
 ```
 
 
@@ -2109,7 +2109,7 @@ def multiply(A; B):
   | (B|transpose) as $BT
   | reduce range(0; A|length) as $i
        ([];
-       reduce range(0; $p) as $j 
+       reduce range(0; $p) as $j
          (.;
           .[$i][$j] = dot_product( A[$i]; $BT[$j] ) ));
 
@@ -2283,7 +2283,7 @@ julia> lu([1 3 5 ; 2 4 7 ; 1 1 0])
 
 typealias Vector = DoubleArray
 typealias Matrix = Array<Vector>
- 
+
 operator fun Matrix.times(other: Matrix): Matrix {
     val rows1 = this.size
     val cols1 = this[0].size
@@ -2321,15 +2321,15 @@ fun pivotize(m: Matrix): Matrix {
         }
     }
     return im
-} 
-                
+}
+
 fun lu(a: Matrix): Array<Matrix> {
     val n = a.size
     val l = Array(n) { Vector(n) }
     val u = Array(n) { Vector(n) }
     val p = pivotize(a)
     val a2 = p * a
- 
+
     for (j in 0 until n) {
         l[j][j] = 1.0
         for (i in 0 until j + 1) {
@@ -2338,14 +2338,14 @@ fun lu(a: Matrix): Array<Matrix> {
             u[i][j] = a2[i][j] - sum
         }
         for (i in j until n) {
-            var sum2 = 0.0   
+            var sum2 = 0.0
             for(k in 0 until j) sum2 += u[k][j] * l[i][k]
             l[i][j] = (a2[i][j] - sum2) / u[j][j]
         }
-    } 
+    }
     return arrayOf(l, u, p)
 }
-   
+
 fun printMatrix(title: String, m: Matrix, f: String) {
     val n = m.size
     println("\n$title\n")
@@ -2392,57 +2392,57 @@ EXAMPLE 1:-
 
 A:
 
-1  3  5  
-2  4  7  
-1  1  0  
+1  3  5
+2  4  7
+1  1  0
 
 L:
 
- 1.00000   0.00000   0.00000  
- 0.50000   1.00000   0.00000  
- 0.50000  -1.00000   1.00000  
+ 1.00000   0.00000   0.00000
+ 0.50000   1.00000   0.00000
+ 0.50000  -1.00000   1.00000
 
 U:
 
- 2.00000   4.00000   7.00000  
- 0.00000   1.00000   1.50000  
- 0.00000   0.00000  -2.00000  
+ 2.00000   4.00000   7.00000
+ 0.00000   1.00000   1.50000
+ 0.00000   0.00000  -2.00000
 
 P:
 
-0  1  0  
-1  0  0  
-0  0  1  
+0  1  0
+1  0  0
+0  0  1
 
 EXAMPLE 2:-
 
 A:
 
-11   9  24   2  
- 1   5   2   6  
- 3  17  18   1  
- 2   5   7   1  
+11   9  24   2
+ 1   5   2   6
+ 3  17  18   1
+ 2   5   7   1
 
 L:
 
-1.00000  0.00000  0.00000  0.00000  
-0.27273  1.00000  0.00000  0.00000  
-0.09091  0.28750  1.00000  0.00000  
-0.18182  0.23125  0.00360  1.00000  
+1.00000  0.00000  0.00000  0.00000
+0.27273  1.00000  0.00000  0.00000
+0.09091  0.28750  1.00000  0.00000
+0.18182  0.23125  0.00360  1.00000
 
 U:
 
-11.00000   9.00000  24.00000   2.00000  
- 0.00000  14.54545  11.45455   0.45455  
- 0.00000   0.00000  -3.47500   5.68750  
- 0.00000   0.00000   0.00000   0.51079  
+11.00000   9.00000  24.00000   2.00000
+ 0.00000  14.54545  11.45455   0.45455
+ 0.00000   0.00000  -3.47500   5.68750
+ 0.00000   0.00000   0.00000   0.51079
 
 P:
 
-1  0  0  0  
-0  0  1  0  
-0  1  0  0  
-0  0  0  1  
+1  0  0  0
+0  0  1  0
+0  1  0  0
+0  0  0  1
 
 ```
 
@@ -2487,21 +2487,21 @@ LUDecomposition(A);
 
 ```txt
 
-    [1  0  0  0]  
-    [          ]  
-    [0  0  1  0]  
-    [          ], 
-    [0  1  0  0]  
-    [          ]  
-    [0  0  0  1]  
+    [1  0  0  0]
+    [          ]
+    [0  0  1  0]
+    [          ],
+    [0  1  0  0]
+    [          ]
+    [0  0  0  1]
 
-      [               1.0                 0.                   0.   0.]  
-      [                                                               ]  
-      [ 0.272727272727273                1.0                   0.   0.]  
-      [                                                               ], 
-      [0.0909090909090909  0.287500000000000                  1.0   0.]  
-      [                                                               ]  
-      [ 0.181818181818182  0.231250000000000  0.00359712230215807  1.0]  
+      [               1.0                 0.                   0.   0.]
+      [                                                               ]
+      [ 0.272727272727273                1.0                   0.   0.]
+      [                                                               ],
+      [0.0909090909090909  0.287500000000000                  1.0   0.]
+      [                                                               ]
+      [ 0.181818181818182  0.231250000000000  0.00359712230215807  1.0]
 
       [11.                9.                24.                 2.]
       [                                                           ]
@@ -2517,7 +2517,7 @@ LUDecomposition(A);
 
 
 ## Mathematica
- 
+
 
 ```Mathematica
 (*Ex1*)a = {{1, 3, 5}, {2, 4, 7}, {1, 1, 0}};
@@ -2541,9 +2541,9 @@ MatrixForm /@ {P.a , P, l, u, l.u}
 [[File:LUex2.png]]
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
-LU decomposition is part of language 
+LU decomposition is part of language
 
 
 ```Matlab
@@ -2614,7 +2614,7 @@ LU decomposition is part of language
    1   0   0   0
    0   0   1   0
    0   1   0   0
-   0   0   0   1 
+   0   0   0   1
 
 ```
 
@@ -2642,7 +2642,7 @@ U = A;
 
 for i=1:sz(1)
 
-    % Row reducing    
+    % Row reducing
     if U(i,i)==0
         maximum = max(abs(U(i:end,1)));
         for k=1:n
@@ -2650,34 +2650,34 @@ for i=1:sz(1)
                temp = U(1,:);
                U(1,:) = U(k,:);
                U(k,:) = temp;
-               
+
                temp = P(:,1);
                P(1,:) = P(k,:);
                P(k,:) = temp;
            end
         end
-        
+
     end
-    
+
     if U(i,i)~=1
         temp = eye(n);
         temp(i,i)=U(i,i);
         L = L * temp;
         U(i,:) = U(i,:)/U(i,i); %Ensures the pivots are 1.
     end
-    
+
     if i~=sz(1)
-        
+
         for j=i+1:length(U)
             temp = eye(n);
             temp(j,i) = U(j,i);
             L = L * temp;
             U(j,:) = U(j,:)-U(j,i)*U(i,:);
-            
+
         end
     end
-    
-    
+
+
 end
 P = P';
 end
@@ -2711,12 +2711,12 @@ get_lu_factors(lup);
            [0, 1, 0, 0],
            [0, 0, 1, 0],
            [0, 0, 0, 1]),
-           
+
     matrix([1,   0,    0,   0],
            [1/2, 1,    0,   0],
            [1/3, 1,    1,   0],
            [1/4, 9/10, 3/2, 1]),
-           
+
     matrix([1, 1/2,  1/3,   1/4   ],
            [0, 1/12, 1/12,  3/40  ],
            [0, 0,    1/180, 1/120 ],
@@ -2777,7 +2777,7 @@ gp > L
 [1/2 -1 1]
 
 gp > U
- 
+
 [2 4   7]
 
 [0 1 3/2]
@@ -3177,7 +3177,7 @@ function lu(sequence a)
              u = l,
              p = pivotize(a),
              a2 = matrix_mul(p,a)
- 
+
     for j=1 to n do
         l[j][j] = 1.0
         for i=1 to j do
@@ -3188,7 +3188,7 @@ function lu(sequence a)
             u[i][j] = a2[i][j] - sum1
         end for
         for i=j+1 to n do
-            atom sum2 = 0.0  
+            atom sum2 = 0.0
             for k=1 to j do
                 sum2 += u[k][j] * l[i][k]
             end for
@@ -3197,7 +3197,7 @@ function lu(sequence a)
     end for
     return {a, l, u, p}
 end function
- 
+
 constant a = {{{1, 3, 5},
                {2, 4, 7},
                {1, 1, 0}},
@@ -3349,38 +3349,38 @@ Results:
 
 ```txt
 
-A 
+A
    1.00000   3.00000   5.00000
    2.00000   4.00000   7.00000
    1.00000   1.00000   0.00000
-P 
+P
           0          1          0
           1          0          0
           0          0          1
-L 
+L
    1.00000   0.00000   0.00000
    0.50000   1.00000   0.00000
    0.50000  -1.00000   1.00000
-U 
+U
    2.00000   4.00000   7.00000
    0.00000   1.00000   1.50000
    0.00000   0.00000  -2.00000
-A 
+A
   11.00000   9.00000  24.00000   2.00000
    1.00000   5.00000   2.00000   6.00000
    3.00000  17.00000  18.00000   1.00000
    2.00000   5.00000   7.00000   1.00000
-P 
+P
           1          0          0          0
           0          0          1          0
           0          1          0          0
           0          0          0          1
-L 
+L
    1.00000   0.00000   0.00000   0.00000
    0.27273   1.00000   0.00000   0.00000
    0.09091   0.28750   1.00000   0.00000
    0.18182   0.23125   0.00360   1.00000
-U 
+U
   11.00000   9.00000  24.00000   2.00000
    0.00000  14.54545  11.45455   0.45455
    0.00000   0.00000  -3.47500   5.68750
@@ -3500,7 +3500,7 @@ $U
 
 $P
 3 x 3 sparse Matrix of class "pMatrix"
-          
+
 [1,] . | .
 [2,] | . .
 [3,] . . |
@@ -3524,11 +3524,11 @@ $P
 
 (matrix-lu A)
 ; result:
-; (mutable-array #[#[1 0 0] 
-;                  #[2 1 0] 
+; (mutable-array #[#[1 0 0]
+;                  #[2 1 0]
 ;                  #[1 1 1]])
-; (mutable-array #[#[1 3 5] 
-;                  #[0 -2 -3] 
+; (mutable-array #[#[1 3 5]
+;                  #[0 -2 -3]
 ;                  #[0 0 -2]])
 
 ```
@@ -3697,7 +3697,7 @@ class Matrix
     end
     [ Matrix[*l], Matrix[*u], p ]
   end
-  
+
   def get_pivot
     raise ArgumentError, "must be square" unless square?
     id = Matrix.identity(row_size).to_a
@@ -3714,7 +3714,7 @@ class Matrix
     end
     Matrix[*id]
   end
-  
+
   def pretty_print(format, head=nil)
     puts head if head
     puts each_slice(column_size).map{|row| format*row_size % row}
@@ -3732,9 +3732,9 @@ u.pretty_print(" %8.5f", "U")
 p.pretty_print(" %d",    "P")
 
 puts "\nExample 2:"
-a = Matrix[[11, 9,24,2], 
-           [ 1, 5, 2,6], 
-           [ 3,17,18,1], 
+a = Matrix[[11, 9,24,2],
+           [ 1, 5, 2,6],
+           [ 3,17,18,1],
            [ 2, 5, 7,1]]
 a.pretty_print(" %2d", "A")
 l, u, p = a.lu_decomposition
@@ -3744,7 +3744,7 @@ p.pretty_print(" %d",    "P")
 ```
 
 
-{{out}} 
+{{out}}
 <pre style="height: 40ex; overflow: scroll">
 Example 1:
 A
@@ -3898,43 +3898,43 @@ where T: NdFloat {
 
 
 
-{{out}} 
+{{out}}
 <pre style="height: 40ex; overflow: scroll">
 Example 1:
-A 
+A
  [[1, 3, 5],
  [2, 4, 7],
  [1, 1, 0]]
-L 
+L
  [[1, 0, 0],
  [0.5, 1, 0],
  [0.5, -1, 1]]
-U 
+U
  [[2, 4, 7],
  [0, 1, 1.5],
  [0, 0, -2]]
-P 
+P
  [[0, 1, 0],
  [1, 0, 0],
  [0, 0, 1]]
 
 Example 2:
-A 
+A
  [[11, 9, 24, 2],
  [1, 5, 2, 6],
  [3, 17, 18, 1],
  [2, 5, 7, 1]]
-L 
+L
  [[1, 0, 0, 0],
  [0.2727272727272727, 1, 0, 0],
  [0.09090909090909091, 0.2875, 1, 0],
  [0.18181818181818182, 0.23124999999999996, 0.0035971223021580693, 1]]
-U 
+U
  [[11, 9, 24, 2],
  [0, 14.545454545454547, 11.454545454545455, 0.4545454545454546],
  [0, 0, -3.4749999999999996, 5.6875],
  [0, 0, 0, 0.510791366906476]]
-P 
+P
  [[1, 0, 0, 0],
  [0, 0, 1, 0],
  [0, 1, 0, 0],
@@ -4088,7 +4088,7 @@ U Matrix
 ## Stata
 
 
-###  Builtin LU decoposition 
+###  Builtin LU decoposition
 
 See [http://www.stata.com/help.cgi?mf_lud LU decomposition] in Stata help.
 
@@ -4132,14 +4132,14 @@ mata
 
 
 
-###  Implementation 
+###  Implementation
 
 
 ```stata
 void ludec(real matrix a, real matrix l, real matrix u, real vector p) {
 	real scalar i,j,n,s
 	real vector js
-	
+
 	l = a
 	n = rows(a)
 	p = 1::n
@@ -4155,7 +4155,7 @@ void ludec(real matrix a, real matrix l, real matrix u, real vector p) {
 			l[j,i+1..n] = l[j,i+1..n]-s*l[i,i+1..n]
 		}
 	}
-	
+
 	u = uppertriangle(l)
 	l = lowertriangle(l, 1)
 }
@@ -4317,7 +4317,7 @@ namespace eval matrix {
 	}
     }
     proc Widest {m fmt} {
-	lassign [size $m] rows cols 
+	lassign [size $m] rows cols
 	set max [lrepeat $cols 0]
 	foreach row $m {
 	    for {set j 0} {$j < $cols} {incr j} {
@@ -4355,50 +4355,50 @@ demo {{11 9 24 2} {1 5 2 6} {3 17 18 1} {2 5 7 1}}
 ```txt
 
 A:
-1 3 5 
-2 4 7 
-1 1 0 
+1 3 5
+2 4 7
+1 1 0
 ---------------------------------
 L:
-  1  0 0 
-0.5  1 0 
-0.5 -1 1 
+  1  0 0
+0.5  1 0
+0.5 -1 1
 ---------------------------------
 U:
-2 4   7 
-0 1 1.5 
-0 0  -2 
+2 4   7
+0 1 1.5
+0 0  -2
 ---------------------------------
 P:
-0 1 0 
-1 0 0 
-0 0 1 
+0 1 0
+1 0 0
+0 0 1
 
 ### ===========================
 
 A:
-11  9 24 2 
- 1  5  2 6 
- 3 17 18 1 
- 2  5  7 1 
+11  9 24 2
+ 1  5  2 6
+ 3 17 18 1
+ 2  5  7 1
 ---------------------------------
 L:
-       1       0         0 0 
- 0.27273       1         0 0 
-0.090909  0.2875         1 0 
- 0.18182 0.23125 0.0035971 1 
+       1       0         0 0
+ 0.27273       1         0 0
+0.090909  0.2875         1 0
+ 0.18182 0.23125 0.0035971 1
 ---------------------------------
 U:
-11      9     24       2 
- 0 14.545 11.455 0.45455 
- 0      0 -3.475  5.6875 
- 0      0      0 0.51079 
+11      9     24       2
+ 0 14.545 11.455 0.45455
+ 0      0 -3.475  5.6875
+ 0      0      0 0.51079
 ---------------------------------
 P:
-1 0 0 0 
-0 0 1 0 
-0 1 0 0 
-0 0 0 1 
+1 0 0 0
+0 0 1 0
+0 1 0 0
+0 0 0 1
 
 ```
 
@@ -4439,7 +4439,7 @@ Private Function pivotize(m As Variant) As Variant
     Next i
     pivotize = im
 End Function
- 
+
 Private Function lu(a As Variant) As Variant
     Dim n As Integer: n = UBound(a)
     Dim l() As Double
@@ -4476,9 +4476,9 @@ Private Function lu(a As Variant) As Variant
     res(4) = p
     lu = res
 End Function
- 
+
 Public Sub main()
-    
+
     a = [{1, 3, 5; 2, 4, 7; 1, 1, 0}]
     Debug.Print "== a,l,u,p: =="
     result = lu(a)
@@ -4509,42 +4509,42 @@ End Sub
 
 ```txt
 == a,l,u,p: ==
- 1             3             5            
- 2             4             7            
- 1             1             0            
+ 1             3             5
+ 2             4             7
+ 1             1             0
 
- 1             0             0            
- 0,5           1             0            
- 0,5          -1             1            
+ 1             0             0
+ 0,5           1             0
+ 0,5          -1             1
 
- 2             4             7            
- 0             1             1,5          
- 0             0            -2            
+ 2             4             7
+ 0             1             1,5
+ 0             0            -2
 
- 0             1             0            
- 1             0             0            
- 0             0             1            
+ 0             1             0
+ 1             0             0
+ 0             0             1
 
 == a,l,u,p: ==
-11,           9,            24,           2,            
-1,            5,            2,            6,            
-3,            17,           18,           1,            
-2,            5,            7,            1,            
+11,           9,            24,           2,
+1,            5,            2,            6,
+3,            17,           18,           1,
+2,            5,            7,            1,
 
-1,            0,            0,            0,            
-0,27273       1,            0,            0,            
-0,09091       0,2875        1,            0,            
-0,18182       0,23125       0,0036        1,            
+1,            0,            0,            0,
+0,27273       1,            0,            0,
+0,09091       0,2875        1,            0,
+0,18182       0,23125       0,0036        1,
 
-11,           9,            24,           2,            
-0,            14,54545      11,45455      0,45455       
-0,            0,            -3,475        5,6875        
-0,            0,            0,            0,51079       
+11,           9,            24,           2,
+0,            14,54545      11,45455      0,45455
+0,            0,            -3,475        5,6875
+0,            0,            0,            0,51079
 
-1,            0,            0,            0,            
-0,            0,            1,            0,            
-0,            1,            0,            0,            
-0,            0,            0,            1,   
+1,            0,            0,            0,
+0,            0,            1,            0,
+0,            1,            0,            0,
+0,            0,            0,            1,
 ```
 
 
@@ -4611,7 +4611,7 @@ fcn eye(n){ // Creates a nxn identity matrix.
    foreach j in (n){ I[j][j]=1.0 }
    I
 }
- 
+
 // Creates the pivoting matrix for A.
 fcn pivotize(A){
    n:=A.len();	// rows
@@ -4640,7 +4640,7 @@ fcn lu(A){
          U[i][j]=A[i][j] - (i).reduce('wrap(s,k){ s + U[k][j]*L[i][k] },0.0);
       }
       foreach i in ([j..n-1]){
-         L[i][j]=( A[i][j] - 
+         L[i][j]=( A[i][j] -
 		   (j).reduce('wrap(s,k){ s + U[k][j]*L[i][k] },0.0) ) /
 		 U[j][j];
       }
@@ -4677,7 +4677,7 @@ L(L(0,1,0),L(1,0,0),L(0,0,1))
 Example 2
 
 ```zkl
-lu(L( L(11.0,  9.0, 24.0, 2.0), 
+lu(L( L(11.0,  9.0, 24.0, 2.0),
       L( 1.0,  5.0,  2.0, 6.0),
       L( 3.0, 17.0, 18.0, 1.0),
       L( 2.0,  5.0,  7.0, 1.0) )).apply2(T(printM,Console.writeln.fpM("-")));
@@ -4691,20 +4691,20 @@ The list apply2 method is side effects only, it doesn't aggregate results. When 
 
 ```txt
 
-  1.00000   0.00000   0.00000   0.00000 
-  0.27273   1.00000   0.00000   0.00000 
-  0.09091   0.28750   1.00000   0.00000 
-  0.18182   0.23125   0.00360   1.00000 
+  1.00000   0.00000   0.00000   0.00000
+  0.27273   1.00000   0.00000   0.00000
+  0.09091   0.28750   1.00000   0.00000
+  0.18182   0.23125   0.00360   1.00000
 
- 11.00000   9.00000  24.00000   2.00000 
-  0.00000  14.54545  11.45455   0.45455 
-  0.00000   0.00000  -3.47500   5.68750 
-  0.00000   0.00000   0.00000   0.51079 
+ 11.00000   9.00000  24.00000   2.00000
+  0.00000  14.54545  11.45455   0.45455
+  0.00000   0.00000  -3.47500   5.68750
+  0.00000   0.00000   0.00000   0.51079
 
-  1.00000   0.00000   0.00000   0.00000 
-  0.00000   0.00000   1.00000   0.00000 
-  0.00000   1.00000   0.00000   0.00000 
-  0.00000   0.00000   0.00000   1.00000 
+  1.00000   0.00000   0.00000   0.00000
+  0.00000   0.00000   1.00000   0.00000
+  0.00000   1.00000   0.00000   0.00000
+  0.00000   0.00000   0.00000   1.00000
 
 ```
 

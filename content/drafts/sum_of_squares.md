@@ -13,7 +13,7 @@ tags = []
 {{task|Arithmetic operations}}
 
 ;Task:
-Write a program to find the sum of squares of a numeric vector. 
+Write a program to find the sum of squares of a numeric vector.
 
 The program should work on a zero-length vector (with an answer of   '''0''').
 
@@ -132,7 +132,7 @@ procedure Test_Sum_Of_Squares is
       end loop;
       return Sum;
    end Sum_Of_Squares;
-   
+
 begin
    Put_Line (Float'Image (Sum_Of_Squares ((1..0 => 1.0)))); -- Empty array
    Put_Line (Float'Image (Sum_Of_Squares ((3.0, 1.0, 4.0, 1.0, 5.0, 9.0))));
@@ -388,7 +388,7 @@ end
 ## AppleScript
 
 
-Two ways of composing a sumOfSquares function: 
+Two ways of composing a sumOfSquares function:
 
 ```AppleScript
 -- TWO APPROACHES – SUM OVER MAP, AND DIRECT FOLD ----------------------------
@@ -400,9 +400,9 @@ on sumOfSquares(xs)
             x ^ 2
         end |λ|
     end script
-    
+
     sum(map(squared, xs))
-    
+
 end sumOfSquares
 
 -- sumOfSquares2 :: Num a => [a] -> a
@@ -412,18 +412,18 @@ on sumOfSquares2(xs)
             a + x ^ 2
         end |λ|
     end script
-    
+
     foldl(plusSquare, 0, xs)
-    
+
 end sumOfSquares2
 
 
 -- TEST ----------------------------------------------------------------------
 on run
     set xs to [3, 1, 4, 1, 5, 9]
-    
+
     {sumOfSquares(xs), sumOfSquares2(xs)}
-    
+
     -- {133.0, 133.0}
 end run
 
@@ -454,7 +454,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -473,7 +473,7 @@ on sum(xs)
             a + b
         end |λ|
     end script
-    
+
     foldl(add, 0, xs)
 end sum
 ```
@@ -601,7 +601,7 @@ BBC BASIC cannot have a zero-length array.
 ```bbcbasic
       DIM vector(5)
       vector() = 1, 2, 3, 4, 5, 6
-      
+
       PRINT "Sum of squares = " ; MOD(vector()) ^ 2
 ```
 
@@ -636,11 +636,11 @@ Sum of squares = 91
 ```bc
 define s(a[], n) {
     auto i, s
-    
+
     for (i = 0; i < n; i++) {
         s += a[i] * a[i]
     }
-    
+
     return(s)
 }
 ```
@@ -689,8 +689,8 @@ p 1.to(10).reduce 0 { res, n | res = res + n ^ 2 }  #Prints 385
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 double squaredsum(double *l, int e)
 {
@@ -702,7 +702,7 @@ double squaredsum(double *l, int e)
 int main()
 {
    double list[6] = {3.0, 1.0, 4.0, 1.0, 5.0, 9.0};
-   
+
    printf("%lf\n", squaredsum(list, 6));
    printf("%lf\n", squaredsum(list, 0));
    /* the same without using a real list as if it were 0-element long */
@@ -716,8 +716,8 @@ int main()
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <numeric>
 #include <vector>
 
@@ -748,8 +748,8 @@ int main()
 
 Alternative version using {{libheader|Boost.Lambda}}:
 
-```cpp>#include <numeric
-
+```cpp
+#include <numeric>
 #include <vector>
 #include "boost/lambda/lambda.hpp"
 
@@ -935,7 +935,7 @@ sumOfSquares(list) {
   list.forEach((var n) { sum+=(n*n); });
   return sum;
 }
- 
+
 main() {
   print(sumOfSquares([]));
   print(sumOfSquares([1,2,3]));
@@ -1072,13 +1072,13 @@ ELENA 4.1 :
 ```elena
 import system'routines;
 import extensions;
- 
+
 SumOfSquares(list)
     = list.selectBy:(x => x * x).summarize(new Integer());
- 
+
 public program()
 {
-    console 
+    console
         .printLine(SumOfSquares(new int[]::(4, 8, 15, 16, 23, 42)))
         .printLine(SumOfSquares(new int[]::(1, 2, 3, 4, 5)))
         .printLine(SumOfSquares(Array.MinValue))
@@ -1172,7 +1172,7 @@ The above expression will return zero if there are no values in any cell.
 
 <lang>
 12	3	5	23	13	67	15	9	4	2
-									
+
 5691
 
 ```
@@ -1197,7 +1197,7 @@ USE: math sequences ;
 
 ```FALSE
 
-0 3 1 4 1 5 9$*\ [$0=~][$*+\]#%. 
+0 3 1 4 1 5 9$*\ [$0=~][$*+\]#%.
 
 ```
 
@@ -1217,7 +1217,7 @@ class SumSquares
     return sum
   }
 
-  public static Void main () 
+  public static Void main ()
   {
     Int[] n := [,]
     echo ("Sum of squares of $n = ${sumSquares(n)}")
@@ -1304,7 +1304,7 @@ End Function
 Dim a(5) As Double = {1.0, 2.0, 3.0, -1.0, -2.0, -3.0}
 Dim sum As Double = SumSquares(a())
 Print "The sum of the squares is"; sum
-Print 
+Print
 Print "Press any key to quit"
 Sleep
 ```
@@ -1335,7 +1335,7 @@ println[sum[map[f,a], 0]]
 =={{header|F_Sharp|F#}}==
 
 ```fsharp
-[1 .. 10] |> List.fold (fun a x -> a + x * x) 0 
+[1 .. 10] |> List.fold (fun a x -> a + x * x) 0
 [|1 .. 10|] |> Array.fold (fun a x -> a + x * x) 0
 ```
 
@@ -1396,14 +1396,14 @@ results:
  8.000000000000000        << 11 data
  1.200000000000000E+0001
  1.500000000000000E+0001
- 6.000000000000000      
+ 6.000000000000000
  2.500000000000000E+0001
  1.900000000000000E+0001
  3.300000000000000E+0001
  2.700000000000000E+0001
- 3.000000000000000      
+ 3.000000000000000
  3.700000000000000E+0001
- 4.000000000000000      
+ 4.000000000000000
  4.667000000000000E+0003  << sum of squares
 
 ```
@@ -1689,7 +1689,7 @@ An alternative using a while loop and Math.pow
 
 ```javascript
 function sumsq(array) {
-  var sum = 0, 
+  var sum = 0,
       i = array.length;
 
   while (i--) sum += Math.pow(array[i], 2);
@@ -1780,7 +1780,7 @@ def SIGMA(exp; S): reduce (S|exp) as $x (0; . + $x);
 Finally, a "mapreduce" filter:
 ```jq
 
-def mapreduce(mapper; reducer; zero): 
+def mapreduce(mapper; reducer; zero):
   if length == 0 then zero
   else map(mapper) | reducer
   end;
@@ -2156,7 +2156,7 @@ nums : [3,1,4,1,5,9];
 sum(nums[i]^2,i,1,length(nums));
 ```
 
-or 
+or
 
 ```maxima
 nums : [3,1,4,1,5,9];
@@ -2385,7 +2385,7 @@ bundle Default {
        for(i := 0 ; i < values->Size()	; i += 1;) {
          sum += (values[i] * values[i]);
        };
-       
+
        return sum;
     }
 
@@ -2455,8 +2455,8 @@ sumsq = sum(a .^ 2);
 
 
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 ORDER_PP(8to_lit(
   8seq_fold(8plus, 0,
@@ -2626,7 +2626,7 @@ In PHP5.3 support for anonymous functions was reworked. While the above code wou
 ```php
 
 function sum_squares(array $args) {
-    return array_reduce($args, function($x, $y) { 
+    return array_reduce($args, function($x, $y) {
         return $x+$y*$y;
     }, 0);
 }
@@ -2760,9 +2760,9 @@ sum(pow(x, 2) for x in [1, 2, 3, 4, 5])
 ```python
 # using lambda and map:
 sum(map(lambda x: x * x, [1, 2, 3, 4, 5]))
-# or 
+# or
 sum(map(lambda x: x ** 2, [1, 2, 3, 4, 5]))
-# or 
+# or
 sum(map(lambda x: pow(x, 2), [1, 2, 3, 4, 5]))
 
 # using pow and repeat
@@ -2900,7 +2900,7 @@ say                                              /*stick a fork in it,  we're al
 say 'The sum of '       #     " squared elements for the  V  vector is: "      $
 ```
 
-'''output'''   using a vector (list) of numbers from the command line: 
+'''output'''   using a vector (list) of numbers from the command line:
 
 ```txt
 
@@ -3037,7 +3037,7 @@ def sum_of_squares(xs: Seq[Double]) = xs.foldLeft(0) {(a,x) => a + x*x}
 ```seed7
 $ include "seed7_05.s7i";
   include "float.s7i";
- 
+
 const array float: list1 is [] (3.0, 1.0, 4.0, 1.0, 5.0, 9.0);
 const array float: list2 is 0 times 0.0;
 
@@ -3051,7 +3051,7 @@ const func float: squaredSum (in array float: floatList) is func
       sum +:= number ** 2;
     end for;
   end func;
- 
+
 const proc: main is func
   begin
     writeln(squaredSum(list1));
@@ -3079,7 +3079,7 @@ say sum_of_squares([1,2,3]);    # 14
 
 ## Slate
 
- 
+
 
 ```slate
 {1. 2. 3} reduce: [|:x :y| y squared + x].
@@ -3157,7 +3157,7 @@ Note that this assumes that the values in our vector are named <code>x</code>.
 ## Stata
 
 
-###  Mata 
+###  Mata
 
 
 ```stata
@@ -3259,7 +3259,7 @@ PRINT sum
 
 ```txt
 
-133 
+133
 
 ```
 
@@ -3289,7 +3289,7 @@ fold() {
 ## Ursala
 
 
-The ssq function defined below zips two copies of its argument together, 
+The ssq function defined below zips two copies of its argument together,
 maps the product function to all pairs, and then sums the
 result by way of the reduction operator, -:.
 
@@ -3336,7 +3336,7 @@ End Sub
 {{out}}
 
 ```txt
- 385 
+ 385
 ```
 
 
@@ -3387,7 +3387,7 @@ WScript.StdOut.WriteLine sum_of_squares(Array())
         Dim a As Integer() = New Integer() {1, 2, 3, 4, 5}
         ' 55
         Console.WriteLine(sumsq(a))
- 
+
         For K As Integer = 0 To 16
                Console.WriteLine("SumOfSquares({0}) = {1}", K, SumOfSquares(K))
         Next
@@ -3411,7 +3411,7 @@ WScript.StdOut.WriteLine sum_of_squares(Array())
         Next
         Return Sum
  End Function
- 
+
 
 ```
 
@@ -3493,7 +3493,7 @@ The task specification calls for a function that takes a numeric vector. If you 
 {{out}}
 
 ```txt
-(THE SUM OF THE SQUARES OF THE FIRST SEVEN PRIME NUMBERS IS 666) 
+(THE SUM OF THE SQUARES OF THE FIRST SEVEN PRIME NUMBERS IS 666)
 (THE SUM OF THE SQUARES OF NO NUMBERS AT ALL IS 0)
 ```
 

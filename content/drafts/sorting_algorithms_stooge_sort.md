@@ -17,7 +17,7 @@ tags = []
 
 
 ;Task:
-Show the   [[wp:Stooge sort|Stooge Sort]]   for an array of integers. 
+Show the   [[wp:Stooge sort|Stooge Sort]]   for an array of integers.
 
 
 The Stooge Sort algorithm is as follows:
@@ -175,7 +175,7 @@ Outputs:
 
 {{works with|QuickBASIC|7.1}}
 
-This ''might'' work with older versions of QB, but that is untested. 
+This ''might'' work with older versions of QB, but that is untested.
 It ''definitely'' does '''not''' work with QBasic.
 
 
@@ -238,7 +238,7 @@ END SUB
       NEXT
       PRINT
       END
-      
+
       DEF PROCstoogesort(l%(), i%, j%)
       LOCAL t%
       IF l%(j%) < l%(i%) SWAP l%(i%), l%(j%)
@@ -264,15 +264,15 @@ END SUB
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define SWAP(r,s)  do{ t=r; r=s; s=t; } while(0)
 
-void StoogeSort(int a[], int i, int j) 
+void StoogeSort(int a[], int i, int j)
 {
    int t;
-   
+
    if (a[j] < a[i]) SWAP(a[i], a[j]);
    if (j - i > 1)
    {
@@ -282,18 +282,18 @@ void StoogeSort(int a[], int i, int j)
        StoogeSort(a, i, j - t);
    }
 }
-  
+
 int main(int argc, char *argv[])
 {
    int nums[] = {1, 4, 5, 3, -6, 3, 7, 10, -2, -5, 7, 5, 9, -3, 7};
    int i, n;
-  
+
    n = sizeof(nums)/sizeof(int);
    StoogeSort(nums, 0, n-1);
-   
+
    for(i = 0; i <= n-1; i++)
       printf("%5d", nums[i]);
-   
+
    return 0;
 }
 ```
@@ -328,11 +328,11 @@ public:
 //------------------------------------------------------------------------------
 int main( int argc, char* argv[] )
 {
-    srand( static_cast<unsigned int>( time( NULL ) ) ); stooge s; int a[80], m = 80; 
+    srand( static_cast<unsigned int>( time( NULL ) ) ); stooge s; int a[80], m = 80;
     cout << "before:\n";
     for( int x = 0; x < m; x++ ) { a[x] = rand() % 40 - 20;  cout << a[x] << " "; }
-    s.sort( a, 0, m ); cout << "\n\nafter:\n"; 
-    for( int x = 0; x < m; x++ ) cout << a[x] << " "; cout << "\n\n"; 
+    s.sort( a, 0, m ); cout << "\n\nafter:\n";
+    for( int x = 0; x < m; x++ ) cout << a[x] << " "; cout << "\n\n";
     return system( "pause" );
 }
 
@@ -384,7 +384,7 @@ after:
 
 
 ```clojure
-(defn swap [v x y] 
+(defn swap [v x y]
    (assoc! v y (v x) x (v y)))
 
 (defn stooge-sort
@@ -434,7 +434,7 @@ PROCEDURE DIVISION.
     DISPLAY SPACE
     .
 END PROGRAM stooge-sort-test.
-    
+
 
 IDENTIFICATION DIVISION.
 PROGRAM-ID. stooge-sort RECURSIVE.
@@ -468,13 +468,13 @@ PROCEDURE DIVISION USING arr-area, OPTIONAL i-val, OPTIONAL j-val.
     ELSE
         MOVE j-val TO j
     END-IF
-    
+
     IF arr-elt (j) < arr-elt (i)
         MOVE arr-elt (i) TO temp
         MOVE arr-elt (j) TO arr-elt (i)
         MOVE temp TO arr-elt (j)
-    END-IF   
-    
+    END-IF
+
     IF j - i + 1 >= 3
         COMPUTE t = (j - i + 1) / 3
         SUBTRACT t FROM j
@@ -544,7 +544,7 @@ void main() {
 
 {{out}}
  [-6, -5, -2, 1, 3, 3, 4, 5, 7, 10]
- 
+
 
 ## Eiffel
 
@@ -641,13 +641,13 @@ ELENA 4.x :
 ```elena
 import extensions;
 import system'routines;
- 
+
 extension op
 {
     stoogeSort()
         = self.stoogeSort(0, self.Length - 1);
- 
-    stoogeSort(IntNumber i, IntNumber j) 
+
+    stoogeSort(IntNumber i, IntNumber j)
     {
         if(self[j]<self[i])
         {
@@ -662,11 +662,11 @@ extension op
         }
     }
 }
- 
+
 public program()
 {
     var list := new Range(0, 15).selectBy:(n => randomGenerator.eval(20)).toArray();
- 
+
     console.printLine("before:", list.asEnumerable());
     console.printLine("after:", list.stoogeSort().asEnumerable())
 }
@@ -691,7 +691,7 @@ defmodule Sort do
   def stooge_sort(list) do
     stooge_sort(List.to_tuple(list), 0, length(list)-1) |> Tuple.to_list
   end
-  
+
   defp stooge_sort(tuple, i, j) do
     if (vj = elem(tuple, j)) < (vi = elem(tuple, i)) do
       tuple = put_elem(tuple,i,vj) |> put_elem(j,vi)
@@ -784,7 +784,7 @@ IN: rosetta-code.stooge-sort
         seq i j t - (stooge-sort)
         seq i t + j (stooge-sort)
         seq i j t - (stooge-sort)
-    ] when ; 
+    ] when ;
 
 PRIVATE>
 
@@ -817,7 +817,7 @@ program Stooge
 
   integer :: i
   integer :: array(50) = (/ (i, i = 50, 1, -1) /) ! Reverse sorted array
-  
+
   call Stoogesort(array)
   write(*,"(10i5)") array
 
@@ -826,7 +826,7 @@ contains
 recursive subroutine Stoogesort(a)
   integer, intent(in out) :: a(:)
   integer :: j, t, temp
- 
+
    j = size(a)
    if(a(j) < a(1)) then
      temp = a(j)
@@ -838,7 +838,7 @@ recursive subroutine Stoogesort(a)
     t = j / 3
     call Stoogesort(a(1:j-t))
     call Stoogesort(a(1+t:j))
-    call Stoogesort(a(1:j-t)) 
+    call Stoogesort(a(1:j-t))
   end if
 
 end subroutine
@@ -950,8 +950,8 @@ import Control.Monad
 insertAt e k = uncurry(++).second ((e:).drop 1). splitAt k
 
 swapElems :: [a] -> Int -> Int -> [a]
-swapElems xs i j = insertAt (xs!!j) i $ insertAt (xs!!i) j xs 
-	
+swapElems xs i j = insertAt (xs!!j) i $ insertAt (xs!!i) j xs
+
 stoogeSort [] = []
 stoogeSort [x] = [x]
 stoogeSort xs = doss 0 (length xs - 1) xs
@@ -976,12 +976,12 @@ Example:
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main()              #: demonstrate various ways to sort a list and string 
+procedure main()              #: demonstrate various ways to sort a list and string
    demosort(stoogesort,[3, 14, 1, 5, 9, 2, 6, 3],"qwerty")
 end
 
 procedure stoogesort(X,op,i,j)           #: return sorted list ascending(or descending)
-local t 
+local t
 
    if /i := 0 then {
       j := *X
@@ -992,7 +992,7 @@ local t
       X[i] :=: X[j]
    if j - i > 1 then {
       t := (j - i + 1) / 3
-      X := stoogesort(X,op,i,j-t) 
+      X := stoogesort(X,op,i,j-t)
       X := stoogesort(X,op,i+t,j)
       X := stoogesort(X,op,i,j-t)
       }
@@ -1001,11 +1001,11 @@ end
 ```
 
 
-Note: This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'sortop', and 'demosort' in Bubble Sort]]. 
-The full demosort exercises the named sort of a list with 
+Note: This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'sortop', and 'demosort' in Bubble Sort]].
+The full demosort exercises the named sort of a list with
 op = "numeric", "string", ">>" (lexically gt, descending),
 ">" (numerically gt, descending), a custom comparator, and also a string.
-{{out}} Abbreviated sample 
+{{out}} Abbreviated sample
 
 ```txt
 Sorting Demo using procedure stoogesort
@@ -1169,7 +1169,7 @@ console.log(arr);
 ```jq
 def stoogesort:
   def swap(i;j): .[i] as $t | .[i] = .[j] | .[j] = $t;
-  
+
   # for efficiency, define an auxiliary function
   # that takes as input [L, i, j]
   def ss: .[1] as $i | .[2] as $j
@@ -1269,7 +1269,7 @@ fun main(args: Array<String>) {
     val a = intArrayOf(100, 2, 56, 200, -52, 3, 99, 33, 177, -199)
     println("Original : ${a.asList()}")
     stoogeSort(a, 0, a.size - 1)
-    println("Sorted   : ${a.asList()}")  
+    println("Sorted   : ${a.asList()}")
 }
 ```
 
@@ -1288,7 +1288,7 @@ Sorted   : [-199, -52, 2, 3, 33, 56, 99, 100, 177, 200]
 ## Lua
 
 
-An example using a [[Y combinator]] for anonymous recursion 
+An example using a [[Y combinator]] for anonymous recursion
 and made generic with an optional predicate parameter.
 
 
@@ -1315,7 +1315,7 @@ function stoogesort(L, pred)
       end
     end
   end)(1,#L)
-  
+
   return L
 end
 
@@ -1332,7 +1332,7 @@ print(unpack(stoogesort{9,7,8,5,6,3,4,2,1,0}))
 ```Mathematica
 stoogeSort[lst_, I_, J_] := Module[{i = I, j = J, list = lst},
 
- If[list[[j]] < list[[i]], list[[{i,j}]] = list[[{j,i}]];] 
+ If[list[[j]] < list[[i]], list[[{i,j}]] = list[[{j,i}]];]
 
  If[(j-i) > 1, t = Round[(j-i+1)/3];
   list=stoogeSort[list,i,j-t];
@@ -1363,7 +1363,7 @@ function list = stoogeSort(list,i,j)
     if list(j) < list(i)
         list([i j]) = list([j i]);
     end
-    
+
     if (j - i) > 1
         t = round((j-i+1)/3);
         list = stoogeSort(list,i,j-t);
@@ -1394,7 +1394,7 @@ fn stoogeSort arr i: j: =
 (
 	if i == unsupplied do i = 1
 	if j == unsupplied do j = arr.count
-	
+
 	if arr[j] < arr[i] do
 	(
 		swap arr[j] arr[i]
@@ -1515,18 +1515,18 @@ bundle Default {
       };
       IO.Console->PrintLine();
     }
-   
+
     function : native : StoogeSort(l : Int[]) ~ Nil {
       StoogeSort(l, 0, l->Size() - 1);
     }
-   
+
     function : native : StoogeSort(l : Int[], i : Int, j : Int) ~ Nil {
        if(l[j] < l[i]) {
         tmp := l[i];
         l[i] := l[j];
         l[j] := tmp;
       };
-      
+
       if(j - i > 1) {
         t := (j - i + 1) / 3;
         StoogeSort(l, i, j - t);
@@ -1535,7 +1535,7 @@ bundle Default {
       };
     }
   }
-}  
+}
 
 ```
 
@@ -1707,7 +1707,7 @@ declare
         Arr.I := Arr.J
         Arr.J := Tmp
      end
-   
+
      proc {Sort I J}
         Size = J-I+1
      in
@@ -1745,7 +1745,7 @@ in
 {{out}}
 
 ```txt
-Unsorted: 1, 4, 5, 3, -6, 3, 7, 10, -2, -5, 7, 5, 9, -3, 7, 
+Unsorted: 1, 4, 5, 3, -6, 3, 7, 10, -2, -5, 7, 5, 9, -3, 7,
 Sorted  : -6, -5, -3, -2, 1, 3, 3, 4, 5, 5, 7, 7, 7, 9, 10,
 ```
 
@@ -1784,7 +1784,7 @@ ss(i,j)={
 
 ```pascal
 program StoogeSortDemo;
- 
+
 type
   TIntArray = array of integer;
 
@@ -1861,7 +1861,7 @@ sub stooge {
         if ( $j - $i > 1 ) {
                 my $t = ($j - $i + 1) / 3;
                 stooge( $x, $i,      $j - $t );
-                stooge( $x, $i + $t, $j      ); 
+                stooge( $x, $i + $t, $j      );
                 stooge( $x, $i,      $j - $t );
         }
 }
@@ -1884,7 +1884,7 @@ sub stoogesort( @L, $i = 0, $j = @L.end ) {
     @L[$j,$i] = @L[$i,$j] if @L[$i] > @L[$j];
 
     my $interval = $j - $i;
-    
+
     if $interval > 1 {
          my $t = ( $interval + 1 ) div 3;
          stoogesort( @L, $i   , $j-$t );
@@ -2002,9 +2002,9 @@ end stoogesort;
 ## PowerBASIC
 
 
-[[PowerBASIC for DOS]] can use the BASIC code above, 
-by removing <code>CONST</code> and changing 
-all instances of <code>arraysize</code> to 
+[[PowerBASIC for DOS]] can use the BASIC code above,
+by removing <code>CONST</code> and changing
+all instances of <code>arraysize</code> to
 <code>%arraysize</code> (note the percent sign).
 
 {{works with|PowerBASIC for Windows}}
@@ -2160,9 +2160,9 @@ EndDataSection
 ```
 
 
-This alternate solution uses a wrapper function 
-to compute the initial value of ''j'' 
-rather than detecting the sentinel value ''None''. 
+This alternate solution uses a wrapper function
+to compute the initial value of ''j''
+rather than detecting the sentinel value ''None''.
 
 ```python>>>
  def stoogesort(L, i, j):
@@ -2272,7 +2272,7 @@ stoogeSort: procedure expose @.;  parse arg i,j                  /*sort from  I 
             return
 ```
 
-{{out|output|text=  when using the default (internal generated) inputs: 
+{{out|output|text=  when using the default (internal generated) inputs:
 
 ```txt
 
@@ -2333,19 +2333,19 @@ for i = 1 to 10
     see "" + test[i] + " "
 next
 see nl
- 
+
 func stoogeSort list, i, j
      if list[j] < list[i]
         temp = list[i]
         list[i] = list[j]
         list[j] = temp ok
-     if j - i > 1 
+     if j - i > 1
         t = (j - i + 1)/3
         stoogeSort(list, i, j-t)
         stoogeSort(list, i+t, j)
         stoogeSort(list, i, j-t) ok
      return list
- 
+
 ```
 
 Output:
@@ -2381,7 +2381,7 @@ class Array
   end
 end
 
-p [1,4,5,3,-6,3,7,10,-2,-5].stoogesort 
+p [1,4,5,3,-6,3,7,10,-2,-5].stoogesort
 ```
 
 
@@ -2519,11 +2519,11 @@ func stoogeSort(inout arr:[Int], _ i:Int = 0, var _ j:Int = -1) {
     if j == -1 {
         j = arr.count - 1
     }
-    
+
     if arr[i] > arr[j] {
         swap(&arr[i], &arr[j])
     }
-    
+
     if j - i > 1 {
         let t = (j - i + 1) / 3
         stoogeSort(&arr, i, j - t)
@@ -2565,7 +2565,7 @@ proc stoogesort {L {i 0} {j -42}} {
    if {$Lj < $Li} {
       lset L $i $Lj
       lset L $j $Li
-   }      
+   }
    if {$j-$i > 1} {
       set t [expr {($j-$i+1)/3}]
       set L [stoogesort $L $i [expr {$j-$t}]]
@@ -2595,9 +2595,9 @@ stoogesort {1 4 5 3 -6 3 7 10 -2 -5}
   PROC _Stoogesort (n)
   PROC _ShowArray (n)
 PRINT
- 
+
 END
- 
+
 
 _InnerStooge PARAM(2)                  ' Stoogesort
   LOCAL(1)
@@ -2615,30 +2615,30 @@ RETURN
 _Stoogesort PARAM(1)
   PROC _InnerStooge (0, a@ -  1)
 RETURN
- 
- 
+
+
 _Swap PARAM(2)                         ' Swap two array elements
   PUSH @(a@)
   @(a@) = @(b@)
   @(b@) = POP()
 RETURN
- 
- 
+
+
 _InitArray                             ' Init example array
   PUSH 4, 65, 2, -31, 0, 99, 2, 83, 782, 1
- 
+
   FOR i = 0 TO 9
     @(i) = POP()
   NEXT
- 
+
 RETURN (i)
- 
- 
+
+
 _ShowArray PARAM (1)                   ' Show array subroutine
   FOR i = 0 TO a@-1
     PRINT @(i),
   NEXT
- 
+
   PRINT
 RETURN
 ```
@@ -2676,7 +2676,7 @@ for I:= 0 to 10-1 do [IntOut(0, A(I));  ChOut(0, ^ )];
 
 ```txt
 
--5 1 1 2 3 4 4 5 6 9 
+-5 1 1 2 3 4 4 5 6 9
 
 ```
 
@@ -2684,7 +2684,7 @@ for I:= 0 to 10-1 do [IntOut(0, A(I));  ChOut(0, ^ )];
 
 ## Yorick
 
-Based on pseudocode, except using Yorick's 1-based arrays. 
+Based on pseudocode, except using Yorick's 1-based arrays.
 Sorts in place.
 
 ```yorick

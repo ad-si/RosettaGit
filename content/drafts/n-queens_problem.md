@@ -15,11 +15,11 @@ tags = []
 
 [[File:N_queens_problem.png|400px||right]]
 
-Solve the [[WP:Eight_queens_puzzle|eight queens puzzle]]. 
+Solve the [[WP:Eight_queens_puzzle|eight queens puzzle]].
 
 
 You can extend the problem to solve the puzzle with a board of size   <big>'''N'''x'''N'''</big>.
- 
+
 For the number of solutions for small values of   '''N''',   see   [http://oeis.org/A000170 oeis.org sequence A170].
 
 
@@ -46,8 +46,8 @@ Translated from the Fortran 77 solution.
 For maximum compatibility, this program uses only the basic instruction set (S/360).
 
 ```360asm
-*        N-QUEENS PROBLEM          04/09/2015              
-         MACRO 
+*        N-QUEENS PROBLEM          04/09/2015
+         MACRO
 &LAB     XDECO  &REG,&TARGET
 &LAB     B      I&SYSNDX           branch around work area
 P&SYSNDX DS     0D,PL8             packed
@@ -172,7 +172,7 @@ ZERO     XDECO  R9,PG+0            edit N
          PUT    OUTDCB,PG          print buffer
          LA     R9,1(R9)           n=n+1
          B      LOOPN              loop do n
-ELOOPN   CLOSE  (OUTDCB)           close output 
+ELOOPN   CLOSE  (OUTDCB)           close output
          L      R13,SAVEA+4        previous save area addrs
          RETURN (14,12),RC=0       return to caller with rc=0
          LTORG
@@ -181,12 +181,12 @@ OUTDCB   DCB    DSORG=PS,MACRF=PM,DDNAME=OUTDD  use OUTDD in jcl
 LL       EQU    14                 ll<=16
 L        DC     AL2(LL)            input value
 A        DS     (LL)H
-S        DS     (LL)H 
+S        DS     (LL)H
 Z        DS     H
 Y        DS     H
 PG       DS     CL24               buffer
 U        DC     (4*LL-2)H'0'       stack
-         REGS                      make sure to include copybook jcl 
+         REGS                      make sure to include copybook jcl
          END    NQUEENS
 ```
 
@@ -702,7 +702,7 @@ end Queens;
 
 
 
-###  Alternate solution 
+###  Alternate solution
 
 {{trans|Fortran}}
 
@@ -719,7 +719,7 @@ procedure CountQueens is
         U : array (0 .. 2 * N - 1) of Boolean := (others => true);
         V : array (0 .. 2 * N - 1) of Boolean := (others => true);
         M : Long_Integer := 0;
-        
+
         procedure Sub (I: Integer) is
             K, P, Q: Integer;
         begin
@@ -769,7 +769,7 @@ end CountQueens;
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}} 
+{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8.8d.fc9.i386]}}
 
@@ -792,27 +792,27 @@ PROC unsafe = (INT y)BOOL:(
 break true:
   TRUE
 );
- 
+
 INT s := 0;
 
 PROC print board = VOID:(
   INT x, y;
   print((new line, "Solution # ", s+:=1, new line));
-  FOR y FROM LWB b TO UPB b DO 
+  FOR y FROM LWB b TO UPB b DO
     FOR x FROM LWB b TO UPB b DO
       print("|"+(b[y]=x|"Q"|: ODD(x+y)|"/"|" "))
     OD;
     print(("|", new line))
   OD
 );
- 
+
 main: (
   INT y := LWB b;
   b[LWB b] := LWB b - 1;
   FOR i WHILE y >= LWB b DO
     WHILE
       b[y]+:=1;
-  # BREAK # IF b[y] <= UPB b THEN unsafe(y) ELSE FALSE FI 
+  # BREAK # IF b[y] <= UPB b THEN unsafe(y) ELSE FALSE FI
     DO SKIP OD;
     IF b[y] <= UPB b  THEN
       IF y < UPB b THEN
@@ -836,11 +836,11 @@ More or less copied from the "DFS" lesson on tryapl.org .
 ```APL
 
 ⍝Solution
-accm←{⍺,((⍴⍵)=⍴⊃⍺)↑⊂⍵}               
-atk←{∪∊(⊂⍵)+¯1 0 1×⊂⌽⍳⍴⍵}            
-dfs←{⊃∇⍨/⌽(⊂⍺ ⍺⍺ ⍵),⍺ ⍵⍵ ⍵}          
-qfmt←{⍵∘.=⍳⍴⍵}      
-subs←{(⊂⍵),¨(⍳⍴⊃⍺)~atk ⍵}                 
+accm←{⍺,((⍴⍵)=⍴⊃⍺)↑⊂⍵}
+atk←{∪∊(⊂⍵)+¯1 0 1×⊂⌽⍳⍴⍵}
+dfs←{⊃∇⍨/⌽(⊂⍺ ⍺⍺ ⍵),⍺ ⍵⍵ ⍵}
+qfmt←{⍵∘.=⍳⍴⍵}
+subs←{(⊂⍵),¨(⍳⍴⊃⍺)~atk ⍵}
 queens←{qfmt¨(↓0 ⍵⍴0)accm dfs subs ⍬}
 printqueens←{i←1⋄{⎕←'answer'i⋄⎕←⍵⋄i+←1}¨queens ⍵}
 
@@ -906,23 +906,23 @@ on run
     local msg
     local rows
     local startTime
-    
+
     set Patterns to {}
     set Solutions to {}
     set Rotated to {}
-    
+
     set Test_Count to 0
-    
+
     set rows to Make_Empty_List(Grid_Size)
-    
+
     set startTime to current date
     Solve(1, rows)
     set endTime to current date
     set diff to endTime - startTime
-    
+
     set msg to ("Found " & (count Solutions) & " solutions with " & (count Patterns) & " patterns in " & diff & " seconds.") as text
     display alert msg
-    
+
     return Solutions
 end run
 
@@ -931,7 +931,7 @@ on Solve(row as integer, rows as list)
         Append_Solution(rows)
         return
     end if
-    
+
     repeat with column from 1 to Grid_Size
         set Test_Count to Test_Count + 1
         if Place_Queen(column, row, rows) then
@@ -953,21 +953,21 @@ on Place_Queen(column as integer, row as integer, rows as list)
     local previousRow
     local rowDiff
     local testColumn
-    
+
     repeat with previousRow from 1 to (row - 1)
         set testColumn to item previousRow of rows
-        
+
         if testColumn is equal to column then
             return false
         end if
-        
+
         set colDiff to abs(testColumn - column) as integer
         set rowDiff to row - previousRow
         if colDiff is equal to rowDiff then
             return false
         end if
     end repeat
-    
+
     set item row of rows to column
     return true
 end Place_Queen
@@ -980,11 +980,11 @@ on Append_Solution(rows as list)
     local testRotation
     local testRotationText
     local testRotations
-    
+
     copy rows to rowsCopy
     set end of Solutions to rowsCopy
     local rowsCopy
-    
+
     copy rows to testRotation
     set testRotations to {}
     repeat 3 times
@@ -994,7 +994,7 @@ on Append_Solution(rows as list)
             return
         end if
         set end of testRotations to testRotationText
-        
+
         set testReflection to Reflect(testRotation)
         set testReflectionText to testReflection as text
         if Rotated contains testReflectionText then
@@ -1002,20 +1002,20 @@ on Append_Solution(rows as list)
         end if
         set end of testRotations to testReflectionText
     end repeat
-    
+
     repeat with testRotationText in testRotations
         set end of Rotated to (contents of testRotationText)
     end repeat
     set end of Rotated to (rowsCopy as text)
     set end of Rotated to (Reflect(rowsCopy) as text)
-    
+
     set end of Patterns to rowsCopy
 end Append_Solution
 
 on Make_Empty_List(depth as integer)
     local i
     local emptyList
-    
+
     set emptyList to {}
     repeat with i from 1 to depth
         set end of emptyList to missing value
@@ -1030,7 +1030,7 @@ on Rotate(rows as list)
     local newRows
     local row
     local rowCount
-    
+
     set rowCount to (count rows)
     set newRows to Make_Empty_List(rowCount)
     repeat with row from 1 to rowCount
@@ -1039,19 +1039,19 @@ on Rotate(rows as list)
         set newColumn to rowCount - row + 1
         set item newRow of newRows to newColumn
     end repeat
-    
+
     return newRows
 end Rotate
 
 on Reflect(rows as list)
     local column
     local newRows
-    
+
     set newRows to {}
     repeat with column in rows
         set end of newRows to (count rows) - column + 1
     end repeat
-    
+
     return newRows
 end Reflect
 ```
@@ -1189,7 +1189,7 @@ implement main0() = ()
 ## AutoHotkey
 
 
-###  Output to formatted Message box 
+###  Output to formatted Message box
 
 {{trans|C}}
 
@@ -1277,10 +1277,10 @@ PutBoard(ByRef Output,QueensN)
 ```
 
 
-###  Includes a solution browser GUI 
+###  Includes a solution browser GUI
 
-This implementation supports N = 4..12 queens, and will find ALL solutions 
-for each of the different sizes. 
+This implementation supports N = 4..12 queens, and will find ALL solutions
+for each of the different sizes.
 The screenshot shows the first solution of 10 possible solutions for N = 5 queens.
 
 
@@ -1402,7 +1402,7 @@ The total number of solutions is displayed in the title bar and one solution is 
       SYS "SetWindowText", @hwnd%, "Total " + STR$(num%) + " solutions"
       REPEAT : WAIT 1 : UNTIL FALSE
       END
-      
+
       DEF FNqueens(n%, s%)
       LOCAL i%, j%, m%, p%, q%, r%, a%(), b%(), c%()
       DIM a%(n%), b%(n%), c%(4*n%-2)
@@ -1461,9 +1461,9 @@ The total number of solutions is displayed in the title bar and one solution is 
 // This can be run using Cintcode BCPL freely available from www.cl.cam.ac.uk/users/mr10.
 
 GET "libhdr.h"
- 
+
 GLOBAL { count:ug; all  }
- 
+
 LET try(ld, row, rd) BE TEST row=all
 
                         THEN count := count + 1
@@ -1478,7 +1478,7 @@ LET try(ld, row, rd) BE TEST row=all
 
 LET start() = VALOF
 { all := 1
-  
+
   FOR i = 1 TO 16 DO
   { count := 0
     try(0, 0, 0)
@@ -1532,7 +1532,7 @@ LET start() = VALOF
   UNLESS mcb DO
   { writef("Unable to create an mci386 instance*n")
     GOTO fin
-  } 
+  }
 
   mc := 0          // Currently no selected MC instance
   mcSelect(mcb)
@@ -1555,7 +1555,7 @@ LET start() = VALOF
 
 fin:
   IF mc    DO mcClose()
-  IF mcseg DO unloadseg(mcseg)  
+  IF mcseg DO unloadseg(mcseg)
 
   writef("*n*nEnd of run*n")
 }
@@ -1712,7 +1712,7 @@ Size: 8
     =   hor ver up down ups downs a z A Z x y Q
       .   !arg:(?hor.?ver.?ups.?downs.?Q)
         &   !ver
-          : (   
+          : (
               & 1+!solutions:?solutions
               { Comment the line below if you only want a count. }
               & out$(str$("\nsolution " !solutions) printBoard$!Q)
@@ -1740,7 +1740,7 @@ Size: 8
     )
 & 0:?solutions
 & 1 2 3 4 5 6 7 8:?H:?V   {You can edit this line to find solutions for other sizes.}
-& ( queens$(!H.!V...) 
+& ( queens$(!H.!V...)
   | out$(found !solutions solutions)
   )
 );
@@ -1797,8 +1797,8 @@ found 92 solutions
 ## C
 
 C99, compiled with <code>gcc -std=c99 -Wall</code>.  Take one commandline argument: size of board, or default to 8. Shows the board layout for each solution.
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int count = 0;
@@ -1833,8 +1833,8 @@ int main(int n, char **argv)
 
 
 Similiar to above, but using bits to save board configurations and quite a bit faster:
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 
@@ -1878,8 +1878,8 @@ int main(int n, char **argv)
 
 Take that and unwrap the recursion, plus some heavy optimizations, and we have a very fast and very unreadable solution:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef unsigned int uint;
@@ -1976,14 +1976,14 @@ int main(int c, char **v)
 A slightly cleaned up version of the code above where some optimizations were redundant. This version is also further optimized, and runs about 15% faster than the one above on modern compilers:
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #define MAXN 31
 
 int nqueens(int n)
 {
   int q0,q1;
-  int cols[MAXN], diagl[MAXN], diagr[MAXN], posibs[MAXN]; // Our backtracking 'stack' 
+  int cols[MAXN], diagl[MAXN], diagr[MAXN], posibs[MAXN]; // Our backtracking 'stack'
   int num=0;
   //
   // The top level is two fors, to save one bit of symmetry in the enumeration by forcing second queen to
@@ -1993,7 +1993,7 @@ int nqueens(int n)
     for (q1=q0+2; q1<n; q1++){
       int bit0 = 1<<q0;
       int bit1 = 1<<q1;
-      int d=0; // d is our depth in the backtrack stack 
+      int d=0; // d is our depth in the backtrack stack
       cols[0] = bit0 | bit1 | (-1<<n); // The -1 here is used to fill all 'coloumn' bits after n ...
       diagl[0]= (bit0<<1 | bit1)<<1;
       diagr[0]= (bit0>>1 | bit1)>>1;
@@ -2014,7 +2014,7 @@ int nqueens(int n)
           // since we save the depth+backtrack time at the end of the enumeration loop. However by noticing all coloumns are
           // filled (comparison to -1) we know a solution was reached ...
           // Notice also that avoiding an if on the ncols==-1 comparison is more efficient!
-          num += ncols==-1; 
+          num += ncols==-1;
 
           if (nposib) {
             if (posib) { // This if saves stack depth + backtrack operations when we passed the last possibility in a row.
@@ -2034,7 +2034,7 @@ int nqueens(int n)
 }
 
 
-main(int ac , char **av) 
+main(int ac , char **av)
 {
   if(ac != 2) {
     printf("usage: nq n\n");
@@ -2164,18 +2164,18 @@ int main()
 {{out}}Output for N = 4:
 
 ```txt
-  a  b  c  d                                                                                                  
-1    #                                                                                                        
-2          #                                                                                                  
-3 #                                                                                                           
-4       #                                                                                                     
-                                                                                                              
-                                                                                                              
-  a  b  c  d                                                                                                  
-1       #                                                                                                     
-2 #                                                                                                           
-3          #                                                                                                  
-4    #       
+  a  b  c  d
+1    #
+2          #
+3 #
+4       #
+
+
+  a  b  c  d
+1       #
+2 #
+3          #
+4    #
 ```
 
 
@@ -2464,7 +2464,7 @@ Q - - -
 ```
 
 
-###  Alternate version 
+###  Alternate version
 
 Windows-only
 
@@ -2668,13 +2668,13 @@ private:
 	    evn.erase( evn.begin() ); evn.push_back( 2 );
 	}
 	vector<uint>::iterator it = evn.begin();
-	while( it != evn.end() ) 
+	while( it != evn.end() )
 	{
 	    solution.push_back( ( *it ) );
 	    it++;
 	}
 	it = odd.begin();
-	while( it != odd.end() ) 
+	while( it != odd.end() )
 	{
 	    solution.push_back( ( *it ) );
 	    it++;
@@ -2730,7 +2730,7 @@ namespace N_Queens
             var solved = from v in cols.Permutations().Select(p => p.ToArray())
                          where combs.All(c => Abs(v[c[0]] - v[c[1]]) != Abs(c[0] - c[1]))
                          select v;
-            
+
             WriteLine($"{n}-queens has {solved.Count()} solutions");
             WriteLine("Position is row, value is column:-");
             var first = string.Join(" ", solved.First());
@@ -2738,7 +2738,7 @@ namespace N_Queens
             Read();
         }
 
-        //Helpers 
+        //Helpers
         public static IEnumerable<IEnumerable<T>> Permutations<T>(this IEnumerable<T> values)
         {
             if (values.Count() == 1)
@@ -2895,7 +2895,7 @@ This produces all solutions by essentially a backtracking algorithm. The heart i
 
 (defn queens [n]
   (filter (fn [x] (every? #(apply distinct? (map-indexed % x)) [+ -]))
-          (combo/permutations (range 1 (inc n))))) 
+          (combo/permutations (range 1 (inc n)))))
 ```
 
 
@@ -2907,13 +2907,13 @@ This produces all solutions by essentially a backtracking algorithm. The heart i
 
 # Unlike traditional N-Queens solutions that use recursion, this
 # program attempts to more closely model the "human" algorithm.
-# 
+#
 # In this algorithm, the function keeps placing queens on the board
 # until there is no longer a safe square.  If the 8th queen has been
 # placed, the solution is noted.  If fewer than 8th queens have been
 # placed, then you are at a dead end.  In either case, backtracking occurs.
 # The LAST queen placed on the board gets pulled, then it gets moved
-# to the next safe square.  (We backtrack even after a "good" attempt in 
+# to the next safe square.  (We backtrack even after a "good" attempt in
 # order to get to a new solution.)  This backtracking may repeat itself
 # several times until the original misplaced queen finally is proven to
 # be a dead end.
@@ -2938,20 +2938,20 @@ nqueens = (n) ->
 
   for p in [0...n*n]
     board.push 0
-  
+
   attack = (pos, delta=1) ->
     for neighbor in neighbors[pos]
       board[neighbor] += delta
-      
+
   backtrack = ->
     pos = queens.pop()
     attack pos, -1 # unattack queen you just pulled
     pos += 1
     num_backtracks += 1
 
-  # The following loop finds all 92 solutions to 
+  # The following loop finds all 92 solutions to
   # the 8-queens problem (for n=8).
-  while true  
+  while true
     if pos >= n*n
       if queens.length == 0
         break
@@ -2967,7 +2967,7 @@ nqueens = (n) ->
         show_queens queens, n
         backtrack()
     pos += 1
-    
+
   console.log "#{num_solutions} solutions"
   console.log "#{num_backtracks} backtracks"
 
@@ -2997,7 +2997,7 @@ precompute_neighbors = (n) ->
     arr
 
   for pos in [0...n*n]
-    neighbors.push find_neighbors(pos) 
+    neighbors.push find_neighbors(pos)
   neighbors
 
 
@@ -3049,7 +3049,7 @@ nqueens(8)
 
 
 
-###  Alternate solution 
+###  Alternate solution
 
 Translation of Fortran 77
 
@@ -3068,7 +3068,7 @@ Translation of Fortran 77
             (setf y (aref a j) z (aref a i))
             (setf p (+ (- i y) n -1) q (+ i y))
             (setf (aref a i) y (aref a j) z)
-            (when (and (aref u p) (aref u (+ q r))) 
+            (when (and (aref u p) (aref u (+ q r)))
                 (setf (aref s i) j (aref u p) nil (aref u (+ q r)) nil)
                 (incf i)
                 (go L1))
@@ -3578,21 +3578,21 @@ isConsistent(List q, int n) {
     if (q[i] == q[n]) {
       return false; // Same column
     }
-    
+
     if ((q[i] - q[n]) == (n - i)) {
       return false; // Same major diagonal
     }
-    
+
     if ((q[n] - q[i]) == (n - i)) {
       return false; // Same minor diagonal
     }
   }
-  
+
   return true;
 }
 
 /**
-Print out N-by-N placement of queens from permutation q in ASCII. 
+Print out N-by-N placement of queens from permutation q in ASCII.
 */
 printQueens(List q) {
   int N = q.length;
@@ -3627,7 +3627,7 @@ _enumerate(List q, int n) {
       if (isConsistent(q, n)){
         _enumerate(q, n+1);
       }
-    } 
+    }
   }
 }
 
@@ -3639,15 +3639,15 @@ void main() {
 {{out}}
 
 ```txt
-* Q * * 
-* * * Q 
-Q * * * 
-* * Q * 
+* Q * *
+* * * Q
+Q * * *
+* * Q *
 
-* * Q * 
-Q * * * 
-* * * Q 
-* Q * * 
+* * Q *
+Q * * *
+* * * Q
+* Q * *
 
 ```
 
@@ -3712,14 +3712,14 @@ print n_sol & " solutions"
 ```txt
 Solution 1
 
-  Q . . . . . . . 
-  . . . . Q . . . 
-  . . . . . . . Q 
-  . . . . . Q . . 
-  . . Q . . . . . 
-  . . . . . . Q . 
-  . Q . . . . . . 
-  . . . Q . . . . 
+  Q . . . . . . .
+  . . . . Q . . .
+  . . . . . . . Q
+  . . . . . Q . .
+  . . Q . . . . .
+  . . . . . . Q .
+  . Q . . . . . .
+  . . . Q . . . .
 
 92 solutions
 ```
@@ -3739,27 +3739,27 @@ Solution 1
 	(for [(i (in-range i0 N)) (j (in-range j0 N))]
 		;;(writeln   i j 'diag1 dnum)
 		(vector-set! dnum1 (sq i j) dnum)))
-		
+
 (define (do-diag2 i0 j0  dnum into: dnum2 N) ;; --i and ++j diags
 	(for [(i (in-range i0 -1 -1)) (j (in-range j0 N))]
 		;; (writeln i j 'diag2 dnum)
 		(vector-set! dnum2 (sq i j) dnum)))
-		
+
 (define (init-diags dnum1 dnum2 N)
 	(define dnum 0)
 		(for ((j N)) (do-diag1 0 j dnum dnum1 N) (++ dnum))
-		(for ((i (in-range 1 N))) 
+		(for ((i (in-range 1 N)))
                      (do-diag1 i 0 dnum dnum1  N) (++ dnum))
 	(set! dnum 0)
 		(for ((j N)) (do-diag2 (1- N) j dnum dnum2 N) (++ dnum))
 		(for ((i (1- N))) (do-diag2 i 0 dnum dnum2 N) (++ dnum)))
 ;; end boring diags part
-		
+
 (define (q-search i  N col diag1 diag2 dnum1 dnum2    &hits (ns))
 (cond
 [(= i N)  (set-box! &hits (1+ (unbox &hits))) ] ;;  (writeln  'HIT col)
 	[else
-	
+
 		(for ((j N))
 		(set! ns (sq i j))
 		#:continue (or [col j] [diag1 [dnum1 ns]] [diag2 [dnum2 ns]])
@@ -3771,21 +3771,21 @@ Solution 1
 			(vector-set! diag1 [dnum1 ns] #f)
 			(vector-set! diag2 [dnum2 ns] #f))
 			]))
-			
+
 (define (q-count (N 8))
 	(define dnum1 (make-vector (* N N)))
 	(define dnum2 (make-vector (* N N )))
 	(init-diags dnum1 dnum2 N)
-	
+
 	(define diag1 (make-vector (* 2 N) #f)) ; busy diag's
 	(define diag2 (make-vector (* 2 N) #f))
 	(define col (make-vector N  #f))
 	(define &hits (box 0))
-	
-	
+
+
 	(q-search 0 N col diag1 diag2 dnum1 dnum2  &hits)
 	(unbox &hits))
-	
+
 (define (task up-to-n)
 	(for ((i up-to-n)) (writeln i ' ♕ (q-count i) 'solutions)))
 
@@ -3797,19 +3797,19 @@ Solution 1
 
 (task 13)
 
-0     ♕     1     solutions    
-1     ♕     1     solutions    
-2     ♕     0     solutions    
-3     ♕     0     solutions    
-4     ♕     2     solutions    
-5     ♕     10     solutions    
-6     ♕     4     solutions    
-7     ♕     40     solutions    
-8     ♕     92     solutions    
-9     ♕     352     solutions    
-10     ♕     724     solutions    
-11     ♕     2680     solutions 
-12     ♕     14200     solutions    
+0     ♕     1     solutions
+1     ♕     1     solutions
+2     ♕     0     solutions
+3     ♕     0     solutions
+4     ♕     2     solutions
+5     ♕     10     solutions
+6     ♕     4     solutions
+7     ♕     40     solutions
+8     ♕     92     solutions
+9     ♕     352     solutions
+10     ♕     724     solutions
+11     ♕     2680     solutions
+12     ♕     14200     solutions
 
 ```
 
@@ -3939,7 +3939,7 @@ defmodule RC do
   def queen(n, display \\ true) do
     solve(n, [], [], [], display)
   end
-  
+
   defp solve(n, row, _, _, display) when n==length(row) do
     if display, do: print(n,row)
     1
@@ -3955,7 +3955,7 @@ defmodule RC do
       end
     end) |> Enum.sum                    # total of the solution
   end
-  
+
   defp print(n, row) do
     IO.puts frame = "+" <> String.duplicate("-", 2*n+1) <> "+"
     Enum.each(row, fn x ->
@@ -4326,7 +4326,7 @@ Note: The program prints solutions one per line. This version works well for the
 
 ```fsharp
 
-let rec iterate f value = seq { 
+let rec iterate f value = seq {
     yield value
     yield! iterate f (f value) }
 
@@ -4430,7 +4430,7 @@ IN: queens
 
 : .queens ( n -- )
     queens
-    [ 
+    [
       [ 1 + "%d " printf ] each nl
     ] each ;
 ```
@@ -4511,7 +4511,7 @@ program Nqueens
          if (rank < 1) then
            write(*, "(a,i0)") "No solution for n = ", n
            stop
-         end if  
+         end if
          do i = 1, n
            if (board(i, rank)) then
              file = i
@@ -4526,7 +4526,7 @@ program Nqueens
   end do
 
   call Printboard(board)
-  
+
 contains
 
 function is_safe(board, file, rank)
@@ -4534,7 +4534,7 @@ function is_safe(board, file, rank)
   logical, intent(in) :: board(:,:)
   integer, intent(in) :: file, rank
   integer :: i, f, r
-  
+
   is_safe = .true.
   do i = rank-1, 1, -1
     if(board(file, i)) then
@@ -4542,7 +4542,7 @@ function is_safe(board, file, rank)
       return
     end if
   end do
-  
+
   f = file - 1
   r = rank - 1
   do while(f > 0 .and. r > 0)
@@ -4564,13 +4564,13 @@ function is_safe(board, file, rank)
     f = f + 1
     r = r - 1
   end do
-end function    
+end function
 
 subroutine Printboard(board)
   logical, intent(in) :: board(:,:)
   character(n*4+1) :: line
   integer :: f, r
-  
+
   write(*, "(a, i0)") "n = ", n
   line = repeat("+---", n) // "+"
   do r = 1, n
@@ -4773,7 +4773,7 @@ C     print *,(a(k),k=1,n)
   100 print *,n,m
   110 continue
       end
- 
+
 C Output
 C          1           1
 C          2           0
@@ -4902,7 +4902,7 @@ program queens
         t2 = omp_get_wtime()
         print "(I4, I12, F12.3)", n, 2*sum(b(1:k)), t2 - t1
     end do
-    
+
 contains
     function pqueens(n, k1, k2) result(m)
         implicit none
@@ -4915,11 +4915,11 @@ contains
         do i = 1, n
             a(i) = i
         end do
-        
+
         do i = 1, 4*n - 2
             u(i) = 0
         end do
-        
+
         m = 0
         r = 2*n - 1
         if (k1 == k2) return
@@ -4956,7 +4956,7 @@ contains
         u(q + r) = 1
         i = i + 1
      40 if (i > n) go to 80
- 
+
         j = i
 
      50 z = a(i)
@@ -4966,24 +4966,24 @@ contains
         a(i) = y
         a(j) = z
         if ((u(p) == 0) .and. (u(q + r) == 0)) go to 30
-        
+
      60 j = j + 1
         if (j <= n) go to 50
-        
+
      70 j = j - 1
         if (j == i) go to 90
-        
+
         z = a(i)
         a(i) = a(j)
         a(j) = z
         go to 70
-        
+
         !valid queens position found
      80 m = m + 1
-     
+
      90 i = i - 1
         if (i == 2) return
-        
+
         p = i - a(i) + n
         q = i + a(i) - 1
         j = s(i)
@@ -5009,28 +5009,28 @@ Sub n_queens(row As ULong, n As ULong, show As ULong = 0)
     Dim As ULong x, y
 
     For x = 1 To n
-        
+
         For y = 1 To row -1
             If c(y) = x OrElse ((row - y) - Abs(x - c(y))) = 0 Then
                 Continue For, For
             End If
         Next
-        
+
         c(row) = x
         If row < n Then
             n_queens(row +1 , n, show)
         Else
             count += 1
-            
+
             If show <> 0 Then
                 For y = 1 To n
                     Print Using "###"; c(y);
                 Next
                 Print
             End If
-            
+
         End If
-        
+
     Next
 
 End Sub
@@ -5091,7 +5091,7 @@ A 14 x 14 board has   365596 solutions
 
 
 
-###  Alternate version : recursive 
+###  Alternate version : recursive
 
 
 
@@ -5141,7 +5141,7 @@ End If
 
 
 
-###  Alternate version : iterative 
+###  Alternate version : iterative
 
 
 
@@ -5294,9 +5294,9 @@ PrintArray(PermutationMat(PermList(a[1]), 8));
 // Pascal and was credited to Niklaus Wirth, from his "Algorithms +
 // Data Structures = Programs."
 package main
- 
+
 import "fmt"
- 
+
 var (
     i int
     q bool
@@ -5305,7 +5305,7 @@ var (
     c [15]bool // offset by 7 relative to the Pascal version
     x [9]int
 )
- 
+
 func try(i int) {
     for j := 1; ; j++ {
         q = false
@@ -5330,7 +5330,7 @@ func try(i int) {
         }
     }
 }
- 
+
 func main() {
     for i := 1; i <= 8; i++ {
         a[i] = true
@@ -5389,7 +5389,7 @@ func main() {
  *    5   6   7   8   9  10  11  12
  *    6   7   8   9  10  11  12  13
  *    7   8   9  10  11  12  13  14
- * 
+ *
  *	the upper-left to lower-right are numbered N-1 + row - col
  *    7   6   5   4   3   2   1   0
  *    8   7   6   5   4   3   2   1
@@ -5440,7 +5440,7 @@ func printresults() {
 /*
  * save a queen on the board by saving where we think it should go, and marking the diagonals as occupied
  */
- 
+
 func savequeen(row int, col int) {
     row_num[row] = col	// save queen column for this row
     right_2_left_diag[row+col] = HAS_QUEEN 	// mark forward diags as occupied
@@ -5453,7 +5453,7 @@ func savequeen(row int, col int) {
 
 func clearqueen(row int, col int) {
     row_num[row] = UNASSIGNED
-    right_2_left_diag[row+col] = EMPTY 
+    right_2_left_diag[row+col] = EMPTY
     left_2_right_diag[row-col+(N-1)] = EMPTY
 }
 
@@ -5475,7 +5475,7 @@ func trycol(col int)  bool {
 	        } else {
 		    // we have a solution on this row/col, start popping the stack.
 		    return true
-		} 
+		}
 	    }
 	}
 	return false // not a solution for this col, pop the stack, undo the last guess, and try the next one
@@ -5517,7 +5517,7 @@ func main() {
 ### Dancing Links / Algorithm X
 
 Using Knuth's
-[[WP:Dancing_Links|dancing links]] technique to implement his 
+[[WP:Dancing_Links|dancing links]] technique to implement his
 [[WP:Algorithm_X|Knuth's Algorithm X]].
 The Go code for this technique is in the
 [[N-queens_problem/dlx_go|dlx packge]].
@@ -5745,11 +5745,11 @@ class Reflect {
         (0..<n).each { tList[list[it]] = it }
         tList
     }
-    
+
     public static final vert = { list ->
         list.reverse()
     }
-    
+
     public static final horiz = { list ->
         final n = list.size()
         list.collect { n - it - 1 }
@@ -5761,17 +5761,17 @@ enum Rotations {
     r90([Reflect.vert, Reflect.diag]),
     r180([Reflect.vert, Reflect.diag, Reflect.vert, Reflect.diag]),
     r270([Reflect.diag, Reflect.vert]);
-    
+
     private final List operations
-    
+
     private Rotations(List ops) {
         operations = ops ?: []
     }
-    
+
     public static void eliminateDups(primary, solutions) {
         (r0..r270).each { rot -> rot.eliminateDuplicates(primary, solutions) }
     }
-    
+
     private void eliminateDuplicates(primary, solutions) {
         def rotated = [] + primary
         operations.each { rotated = it(rotated) }
@@ -5817,7 +5817,7 @@ Each individual result is given as a list of N numbers. Each number represents a
 [1, 3, 0, 2]
 ```
 
-    
+
 should be interpreted as follows:
 
 ```txt
@@ -5832,11 +5832,11 @@ In other words, this:
 
 ```txt
 |///| Q |///|   |
- --- --- --- --- 
+ --- --- --- ---
 |   |///|   |/Q/|
- --- --- --- --- 
+ --- --- --- ---
 |/Q/|   |///|   |
- --- --- --- --- 
+ --- --- --- ---
 |   |///| Q |///|
 ```
 
@@ -5899,16 +5899,16 @@ import Data.List
 -- safe arrangements. each solution is a list of the columns where the queens are
 -- located for each row
 queens :: Int -> [[Int]]
-queens n = map fst $ foldM oneMoreQueen ([],[1..n]) [1..n]  where 
+queens n = map fst $ foldM oneMoreQueen ([],[1..n]) [1..n]  where
 
   -- foldM :: (Monad m) => (a -> b -> m a) -> a -> [b] -> m a
-  -- foldM folds (from left to right) in the list monad, which is convenient for 
-  -- "nondeterminstically" finding "all possible solutions" of something. the 
+  -- foldM folds (from left to right) in the list monad, which is convenient for
+  -- "nondeterminstically" finding "all possible solutions" of something. the
   -- initial value [] corresponds to the only safe arrangement of queens in 0 rows
 
-  -- given a safe arrangement y of queens in the first i rows, and a list of 
-  -- possible choices, "oneMoreQueen y _" returns a list of all the safe 
-  -- arrangements of queens in the first (i+1) rows along with remaining choices 
+  -- given a safe arrangement y of queens in the first i rows, and a list of
+  -- possible choices, "oneMoreQueen y _" returns a list of all the safe
+  -- arrangements of queens in the first (i+1) rows along with remaining choices
   oneMoreQueen (y,d) _ = [(x:y, delete x d) | x <- d, safe x]  where
 
     -- "safe x" tests whether a queen at column x is safe from previous queens
@@ -5982,7 +5982,7 @@ queenPuzzle nRows nCols
   | nRows <= 0 = [[]]
   | otherwise =
     foldr (\qs a ->
-               a ++ foldr (\iCol b -> bool  b  (b ++ [qs ++ [iCol]]) 
+               a ++ foldr (\iCol b -> bool  b  (b ++ [qs ++ [iCol]])
                                            (safe (nRows - 1) iCol qs))
                           []
                           [1 .. nCols])
@@ -5991,8 +5991,8 @@ queenPuzzle nRows nCols
 
 safe :: Int -> Int -> [Int] -> Bool
 safe iRow iCol qs =
-  (not . or) $ zipWith (\sc sr -> (iCol == sc) || 
-                                  (sc + sr == (iCol + iRow)) || 
+  (not . or) $ zipWith (\sc sr -> (iCol == sc) ||
+                                  (sc + sr == (iCol + iRow)) ||
                                   (sc - sr == (iCol - iRow)))
                        qs
                        [0 .. iRow - 1]
@@ -6080,7 +6080,7 @@ attack :: Row -> [Row] -> Bool
 attack r rs = r `elem` rs
             || r `elem` (upperDiag rs)
             || r `elem` (lowerDiag rs)
-  where 
+  where
     upperDiag xs = zipWith (-) xs [1..]
     lowerDiag xs = zipWith (+) xs [1..]
 
@@ -6102,7 +6102,7 @@ bfs :: Int -> [(State, Thread)] -> (State, Thread)
 bfs n []                     = error "Could not find a feasible solution"
 bfs n sts | (not.empty) goal = head goal
           | otherwise        = bfs n sts2
-  where 
+  where
     goal = filter (isGoal n) sts2
     sts2 = filter (feasible n) $ (moves n) <*> sts
 
@@ -6151,13 +6151,13 @@ module NQueens {
         AddQueen(b : Board, row : Int, col : Int)
         {
             if (!b.TryAddQueen(row, col))
-                return;            
+                return;
             if (row < n - 1)
                 foreach (i in 0..n-1)
                    AddQueen(new Board(b), row + 1, i);
             else
                 sols.Add(b);
-        }        
+        }
         Main() {
             foreach (i in 0..n-1)
                 AddQueen(new Board(), 0, i);
@@ -6196,14 +6196,14 @@ class Board {
             rows[row][col] = b;
         }
         ValidPos(row : Int, col : Int) : Bool {
-            return ((row >= 0) && (row < n)) && ((col >= 0) && (col < n)); 
+            return ((row >= 0) && (row < n)) && ((col >= 0) && (col < n));
         }
         VectorOccupied(row : Int, col : Int, rowDir : Int, colDir : Int) : Bool {
             var nextRow = row + rowDir;
             var nextCol = col + colDir;
-            if (!ValidPos(nextRow, nextCol)) 
+            if (!ValidPos(nextRow, nextCol))
                 return false;
-            if (SpaceOccupied(nextRow, nextCol)) 
+            if (SpaceOccupied(nextRow, nextCol))
                 return true;
             return VectorOccupied(nextRow, nextCol, rowDir, colDir);
         }
@@ -6344,7 +6344,7 @@ solution: 1
 ->
 ```
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 Two solutions are in the IPL [http://www.cs.arizona.edu/icon/library/progs/queens.htm queens] and [http://www.cs.arizona.edu/icon/library/progs/genqueen.htm genqueen].
 
 =={{header|IS-BASIC}}==
@@ -6515,7 +6515,7 @@ function addQueen(newRow, columns, prevSolution) {
 function hasConflict(newRow, newColumn, solution) {
     for (var i = 0; i < newRow; i++) {
         if (solution[i]     == newColumn          ||
-            solution[i] + i == newColumn + newRow || 
+            solution[i] + i == newColumn + newRow ||
             solution[i] - i == newColumn - newRow) {
                 return true;
         }
@@ -6698,12 +6698,12 @@ def single_solution_queens(n):
   def place(stream; i; j):
     # jq indexing is based on offsets but we are using the 1-based formulae:
     reduce stream as $s (.; setpath([-1+($s|i), -1+($s|j)]; q) );
-  def even(k): 
+  def even(k):
     if ((k-2) % 6) != 0 then
          place( range(1; 1+(k/2));         .; 2*. )
        | place( range(1; 1+(k/2)); (k/2) + .; 2*. -1 )
-    else place( range(1; 1+(k/2));         .; 1 + ((2*. + (k/2) - 3) % k))  
-       | place( range(1; 1+(n/2)); n + 1 - .; n - ((2*. + (n/2) - 3) % n))  
+    else place( range(1; 1+(k/2));         .; 1 + ((2*. + (k/2) - 3) % k))
+       | place( range(1; 1+(n/2)); n + 1 - .; n - ((2*. + (n/2) - 3) % n))
     end;
 
   matrix(n)                          # the chess board
@@ -6956,13 +6956,13 @@ solutions = 95815104
 
 var count = 0
 var c = IntArray(0)
-var f = "" 
+var f = ""
 
 fun nQueens(row: Int, n: Int) {
     outer@ for (x in 1..n) {
         for (y in 1..row - 1) {
             if (c[y] == x) continue@outer
-            if (row - y == Math.abs(x - c[y])) continue@outer           
+            if (row - y == Math.abs(x - c[y])) continue@outer
         }
         c[row] = x
         if (row < n) nQueens(row + 1, n)
@@ -6971,7 +6971,7 @@ fun nQueens(row: Int, n: Int) {
 }
 
 fun main(args: Array<String>) {
-   for (n in 1..14) { 
+   for (n in 1..14) {
        count = 0
        c = IntArray(n + 1)
        f = ""
@@ -7351,14 +7351,14 @@ N_queens
 This code recurses through the possibilities, using the "safe" method to check if the current set is allowed. The recursive method has the advantage that finding all possibilities is about as hard (code-wise, not computation-wise) as finding just one.
 
 ```Mathematica
-safe[q_List, n_] := 
- With[{l = Length@q}, 
-  Length@Union@q == Length@Union[q + Range@l] == 
+safe[q_List, n_] :=
+ With[{l = Length@q},
+  Length@Union@q == Length@Union[q + Range@l] ==
    Length@Union[q - Range@l] == l]
-nQueen[q_List: {}, n_] := 
- If[safe[q, n], 
-  If[Length[q] == n, {q}, 
-   Cases[nQueen[Append[q, #], n] & /@ Range[n], 
+nQueen[q_List: {}, n_] :=
+ If[safe[q, n],
+  If[Length[q] == n, {q},
+   Cases[nQueen[Append[q, #], n] & /@ Range[n],
     Except[{Null} | {}], {2}]], Null]
 ```
 
@@ -7366,9 +7366,9 @@ nQueen[q_List: {}, n_] :=
 This returns a list of valid permutations by giving the queen's column number for each row. It can be displayed in a list of chess-board tables like this:
 
 ```Mathematica
-matrixView[n_] := 
+matrixView[n_] :=
  Grid[Normal@
-     SparseArray[MapIndexed[{#, First@#2} -> "Q" &, #], {n, n}, "."], 
+     SparseArray[MapIndexed[{#, First@#2} -> "Q" &, #], {n, n}, "."],
     Frame -> All] & /@ nQueen[n]
 matrixView[6] // OutputForm
 ```
@@ -7413,9 +7413,9 @@ Alternative Solution using Linear Programming:
 
 dispSol[sol_] := sol /. {1 -> "Q" , 0 -> "-"} // Grid
 
-solveNqueens[n_] := 
- Module[{c, m, b, vars}, c = cqueens[n]; m = mqueens[n]; 
-  vars = mqueens2[n]; b = bqueens[Length[m]]; 
+solveNqueens[n_] :=
+ Module[{c, m, b, vars}, c = cqueens[n]; m = mqueens[n];
+  vars = mqueens2[n]; b = bqueens[Length[m]];
   Partition[LinearProgramming[c, m, b, vars, Integers], n]]
 
 cqueens[n_] := Table[-1, {i, n^2}]
@@ -7424,33 +7424,33 @@ bqueens[l_] := Table[{1, -1}, {i, l}]
 
 mqueens2[n_] := Table[{0, 1}, {i, n^2}]
 
-mqueens[n_] := 
+mqueens[n_] :=
  Module[{t, t2, t3, t4}, t = mqueensh[n]; t2 = Append[t, mqueensv[n]];
-   t3 = Append[t2, mqueensd[n]]; t4 = Append[t3, mqueensdm[n]]; 
+   t3 = Append[t2, mqueensd[n]]; t4 = Append[t3, mqueensdm[n]];
   Partition[Flatten[t4], n^2]]
 
-mqueensh[n_] := 
- Module[{t}, t = Table[0, {i, n}, {j, n^2}]; 
-  For[i = 1, i <= n, i++, 
+mqueensh[n_] :=
+ Module[{t}, t = Table[0, {i, n}, {j, n^2}];
+  For[i = 1, i <= n, i++,
    For[j = 1, j <= n, j++, t[[i, ((i - 1)*n) + j]] = 1]]; t]
 
-mqueensv[n_] := 
- Module[{t}, t = Table[0, {i, n}, {j, n^2}]; 
-  For[i = 1, i <= n, i++, 
+mqueensv[n_] :=
+ Module[{t}, t = Table[0, {i, n}, {j, n^2}];
+  For[i = 1, i <= n, i++,
    For[j = 1, j <= n, j++, t[[j, ((i - 1)*n) + j]] = 1]]; t]
 
-mqueensd[n_] := 
- Module[{t}, t = Table[0, {i, (2*n) - 1}, {j, n^2}]; 
-  For[k = 2, k <= 2 n, k++, 
-   For[i = 1, i <= n, i++, 
-    For[j = 1, j <= n, j++, 
+mqueensd[n_] :=
+ Module[{t}, t = Table[0, {i, (2*n) - 1}, {j, n^2}];
+  For[k = 2, k <= 2 n, k++,
+   For[i = 1, i <= n, i++,
+    For[j = 1, j <= n, j++,
      If[i + j == k, t[[k - 1, ((i - 1)*n) + j]] = 1]]]]; t]
 
-mqueensdm[n_] := 
- Module[{t}, t = Table[0, {i, Sum[1, {i, 1 - n, n - 1}]}, {j, n^2}]; 
-  For[k = 1 - n, k <= n - 1, k++, 
-   For[i = 1, i <= n, i++, 
-    For[j = 1, j <= n, j++, 
+mqueensdm[n_] :=
+ Module[{t}, t = Table[0, {i, Sum[1, {i, 1 - n, n - 1}]}, {j, n^2}];
+  For[k = 1 - n, k <= n - 1, k++,
+   For[i = 1, i <= n, i++,
+    For[j = 1, j <= n, j++,
      If[i == j - k, t[[k + n, ((i - 1)*n) + j]] = 1]]]]; t]
 
 
@@ -7586,7 +7586,7 @@ Do Queens
 1 | Q|  |##|  |##|  |##|  | | Q|  |##|  |##|  |##|  | |##|  |##|  |##| Q|##|  |
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H
- 
+
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
 8 |  |##|  |##|  | Q|  |##| |  |##|  |##|  | Q|  |##| |  |##|  |##|  | Q|  |##|
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
@@ -7605,7 +7605,7 @@ Do Queens
 1 |##|  |##| Q|##|  |##|  | |##|  |##|  | Q|  |##|  | |##|  | Q|  |##|  |##|  |
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H
- 
+
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
 8 |  |##| Q|##|  |##|  |##| |  |##|  |##| Q|##|  |##| |  |##|  | Q|  |##|  |##|
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
@@ -7624,7 +7624,7 @@ Do Queens
 1 |##|  |##|  | Q|  |##|  | |##|  |##|  |##|  | Q|  | |##|  |##|  | Q|  |##|  |
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H
- 
+
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
 8 |  | Q|  |##|  |##|  |##| |  |##|  | Q|  |##|  |##| |  |##|  | Q|  |##|  |##|
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
@@ -7643,7 +7643,7 @@ Do Queens
 1 |##|  |##| Q|##|  |##|  | |##|  |##|  | Q|  |##|  | |##|  |##|  |##|  |##| Q|
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H
- 
+
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
 8 |  |##| Q|##|  |##|  |##| |  |##|  |##| Q|##|  |##| |  |##|  |##| Q|##|  |##|
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
@@ -7662,7 +7662,7 @@ Do Queens
 1 |##|  |##|  | Q|  |##|  | |##|  |##|  |##| Q|##|  | |##|  |##|  |##|  |##| Q|
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H
- 
+
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
 8 |  |##| Q|##|  |##|  |##| |  |##| Q|##|  |##|  |##| |  |##|  | Q|  |##|  |##|
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
@@ -7681,7 +7681,7 @@ Do Queens
 1 |##|  |##| Q|##|  |##|  | |##|  |##|  |##| Q|##|  | |##|  |##|  |##| Q|##|  |
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H
- 
+
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
 8 |  |##|  | Q|  |##|  |##| |  | Q|  |##|  |##|  |##| |  |##|  | Q|  |##|  |##|
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
@@ -7700,7 +7700,7 @@ Do Queens
 1 |##|  |##|  |##|  | Q|  | |##|  |##|  | Q|  |##|  | |##|  |##|  |##| Q|##|  |
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H
- 
+
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
 8 |  |##|  |##|  | Q|  |##| |  |##| Q|##|  |##|  |##| |  |##| Q|##|  |##|  |##|
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
@@ -7719,7 +7719,7 @@ Do Queens
 1 |##|  |##|  |##|  | Q|  | |##|  |##|  |##| Q|##|  | |##|  |##|  | Q|  |##|  |
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H
- 
+
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
 8 |  |##|  |##|  | Q|  |##| |  |##| Q|##|  |##|  |##| |  |##|  | Q|  |##|  |##|
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
@@ -7738,7 +7738,7 @@ Do Queens
 1 |##|  | Q|  |##|  |##|  | |##|  |##|  |##| Q|##|  | |##|  |##|  |##|  | Q|  |
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H
- 
+
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
 8 |  |##|  |##|  |##|  | Q| |  | Q|  |##|  |##|  |##| |  | Q|  |##|  |##|  |##|
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
@@ -7757,7 +7757,7 @@ Do Queens
 1 |##|  |##|  |##| Q|##|  | |##|  | Q|  |##|  |##|  | |##|  | Q|  |##|  |##|  |
   +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+ +--+--+--+--+--+--+--+--+
    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H    A  B  C  D  E  F  G  H
- 
+
   +--+--+--+--+--+--+--+--+
 8 |  | Q|  |##|  |##|  |##|
   +--+--+--+--+--+--+--+--+
@@ -7834,18 +7834,18 @@ for answer in solve(boardSize):
       while (y >= 0) {
         do {
           b[y]+=1;
-        } 
+        }
         while((b[y] < 8) & Unsafe(y));
 
         if(b[y] < 8) {
           if (y < 7) {
             b[y + 1] := -1;
             y += 1;
-          } 
+          }
           else {
             PutBoard();
           };
-        } 
+        }
         else {
           y-=1;
         };
@@ -7860,7 +7860,7 @@ for answer in solve(boardSize):
           return true;
         };
       };
-  
+
       return false;
     }
 
@@ -8200,7 +8200,7 @@ algo:
 ```txt
 
 recursion:
-  If row< n then 
+  If row< n then
     For each free column (in Freecol[row..n] )
       Take free column
       check diagonals
@@ -8210,7 +8210,7 @@ recursion:
     Solution found
 ```
 
-    
+
 
 ```pascal
 program NQueens;
@@ -8455,7 +8455,7 @@ sub MAIN(\N = 8) {
 ```Phix
 --
 -- demo\rosetta\n_queens.exw
--- 
+--
 ### ===================
 
 --
@@ -8550,9 +8550,9 @@ N=14 takes about 10s
 ## PHP
 
 
-Probably not a great solution given this is one of my first forays into PHP. 
-First solves the n rooks problem and then finds solutions for n-queens, 
-disregarding any rotations/reflections. Checked up to n=10. 
+Probably not a great solution given this is one of my first forays into PHP.
+First solves the n rooks problem and then finds solutions for n-queens,
+disregarding any rotations/reflections. Checked up to n=10.
 
 
 ```PHP
@@ -8631,7 +8631,7 @@ for ($y = 0; $y < $boardX; ++$y) {
 	for ($x = 0; $x < $boardX; ++$x){
 	if (($x+$y) & 1) { $cellCol = '#9C661F';}
 	else {$cellCol = '#FCE6C9';}
-	
+
 	if ($p[$y] == 1 << $x) { echo "<td bgcolor=".$cellCol."><img width=30 height=30 src='".$img."'></td>";}
 	else { echo "<td bgcolor=".$cellCol."> </td>";}
 	}
@@ -8644,36 +8644,36 @@ echo '<tr></tr></table>&nbsp';
 //This function allows me to generate the next order of rows.
 function pc_next_permutation($p) {
 $size = count($p) - 1;
-// slide down the array looking for where we're smaller than the next guy 
+// slide down the array looking for where we're smaller than the next guy
 
-for ($i = $size - 1; $p[$i] >= $p[$i+1]; --$i) { } 
+for ($i = $size - 1; $p[$i] >= $p[$i+1]; --$i) { }
 
-// if this doesn't occur, we've finished our permutations 
-// the array is reversed: (1, 2, 3, 4) => (4, 3, 2, 1) 
-if ($i == -1) { return false; } 
+// if this doesn't occur, we've finished our permutations
+// the array is reversed: (1, 2, 3, 4) => (4, 3, 2, 1)
+if ($i == -1) { return false; }
 
-// slide down the array looking for a bigger number than what we found before 
-for ($j = $size; $p[$j] <= $p[$i]; --$j) { } 
-// swap them 
-$tmp = $p[$i]; $p[$i] = $p[$j]; $p[$j] = $tmp; 
-// now reverse the elements in between by swapping the ends 
-for (++$i, $j = $size; $i < $j; ++$i, --$j) 
-{ $tmp = $p[$i]; $p[$i] = $p[$j]; $p[$j] = $tmp; } 
-return $p; 
-} 
+// slide down the array looking for a bigger number than what we found before
+for ($j = $size; $p[$j] <= $p[$i]; --$j) { }
+// swap them
+$tmp = $p[$i]; $p[$i] = $p[$j]; $p[$j] = $tmp;
+// now reverse the elements in between by swapping the ends
+for (++$i, $j = $size; $i < $j; ++$i, --$j)
+{ $tmp = $p[$i]; $p[$i] = $p[$j]; $p[$j] = $tmp; }
+return $p;
+}
 
-//This function needs to check the current state to see if there are any 
+//This function needs to check the current state to see if there are any
 function checkBoard($p,$boardX) {
 	$a = 0; //this is the row being checked
-	while ($a < count($p)) { 
+	while ($a < count($p)) {
 		$b = 1;
 		while ($b < ($boardX - $a)){
 		$x = $p[$a+$b] << $b;
 		$y = $p[$a+$b] >> $b;
-		if ($p[$a] == $x | $p[$a] == $y) { return false;}		
+		if ($p[$a] == $x | $p[$a] == $y) { return false;}
 		++$b;
 		}
-	++$a; 
+	++$a;
 	}
 	return true;
 }
@@ -8700,10 +8700,10 @@ while ($row != false) {
 			$solutions = findRotation($row,$boardX,$solutions);
 			++$solcount;
 		}
-		
+
 	}
-	$row = pc_next_permutation($row);	
-	
+	$row = pc_next_permutation($row);
+
 	}
 echo "
 
@@ -8762,7 +8762,7 @@ queens_cp(N, Q) =>
 queens_sat(N,Q) =>
   Q = new_array(N,N),
   Q :: 0..1,
-  
+
   foreach (K in 1-N..N-1)
     sum([Q[I,J] : I in 1..N, J in 1..N, I-J==K]) #=< 1
   end,
@@ -8789,9 +8789,9 @@ Output:
 ```txt
 
 Picat> queens_cp(100, QCP)
-QCP = [1,3,5,57,59,4,64,7,58,71,81,60,6,91,82,90,8,83,77,65,73,26,9,45,37,63,66,62,44,10,48,54,43,69,42,47,18,11,72,68,50,56,61,36,33,17,12,51,100,93,97,88,35,84,78,19,13,99,67,76,92,75,87,96,94,85,20,14,95,32,98,55,40,80,49,52,46,53,21,15,41,2,27,34,22,70,74,29,25,30,38,86,16,79,24,39,28,23,31,89] 
+QCP = [1,3,5,57,59,4,64,7,58,71,81,60,6,91,82,90,8,83,77,65,73,26,9,45,37,63,66,62,44,10,48,54,43,69,42,47,18,11,72,68,50,56,61,36,33,17,12,51,100,93,97,88,35,84,78,19,13,99,67,76,92,75,87,96,94,85,20,14,95,32,98,55,40,80,49,52,46,53,21,15,41,2,27,34,22,70,74,29,25,30,38,86,16,79,24,39,28,23,31,89]
 
-Picat> queens_sat(10,Q) 
+Picat> queens_sat(10,Q)
 Q = {{0,0,0,0,0,0,0,0,1,0},{0,1,0,0,0,0,0,0,0,0},{0,0,0,0,1,0,0,0,0,0},{0,0,1,0,0,0,0,0,0,0},{1,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,1},{0,0,0,0,0,0,0,1,0,0},{0,0,0,0,0,1,0,0,0,0},{0,0,0,1,0,0,0,0,0,0},{0,0,0,0,0,0,1,0,0,0}}
 
 % Number of solutions for N = 1..15
@@ -8873,7 +8873,7 @@ duplicates, instead of calling 'uniq' and 'length'. This is much faster.
 ## PowerBASIC
 
 
-###  Recursive version 
+###  Recursive version
 
 {{trans|Stata}}
 
@@ -8928,7 +8928,7 @@ END FUNCTION
 
 
 
-###  Iterative version 
+###  Iterative version
 
 {{trans|Stata}}
 
@@ -9003,7 +9003,7 @@ function PlaceQueen ( [ref]$Board, $Row, $N )
                     (   (0..($Row-1)).Where{ $Board.Value[$_] -eq $Board.Value[$Row] }.Count -or
                         (0..($Row-1)).Where{ $Board.Value[$_] -eq $Board.Value[$Row] - $Row + $_ }.Count -or
                         (0..($Row-1)).Where{ $Board.Value[$_] -eq $Board.Value[$Row] + $Row - $_ }.Count )
- 
+
         #  If no conflicts and the current column is a valid column...
         If ( -not $Conflict -and $Board.Value[$Row] -lt $N )
             {
@@ -9023,7 +9023,7 @@ function PlaceQueen ( [ref]$Board, $Row, $N )
                 return $True
                 }
             }
-        
+
         #  Try the next column
         $Board.Value[$Row]++
         }
@@ -9031,7 +9031,7 @@ function PlaceQueen ( [ref]$Board, $Row, $N )
     #  Everything was tried, nothing worked
     Return $False
     }
- 
+
 function Get-NQueensBoard ( $N )
     {
     #  Start with a default board (array of column positions for each row)
@@ -9069,35 +9069,35 @@ Get-NQueensBoard 14
 
 ```txt
 
-|Q| | | | | | | | 
-| | | | |Q| | | | 
-| | | | | | | |Q| 
-| | | | | |Q| | | 
-| | |Q| | | | | | 
-| | | | | | |Q| | 
-| |Q| | | | | | | 
-| | | |Q| | | | | 
+|Q| | | | | | | |
+| | | | |Q| | | |
+| | | | | | | |Q|
+| | | | | |Q| | |
+| | |Q| | | | | |
+| | | | | | |Q| |
+| |Q| | | | | | |
+| | | |Q| | | | |
 
 There is no solution for N = 3
 
-| |Q| | | 
-| | | |Q| 
-|Q| | | | 
-| | |Q| | 
+| |Q| | |
+| | | |Q|
+|Q| | | |
+| | |Q| |
 
-|Q| | | | | | | | | | | | | | 
-| | |Q| | | | | | | | | | | | 
-| | | | |Q| | | | | | | | | | 
-| | | | | | |Q| | | | | | | | 
-| | | | | | | | | | | |Q| | | 
-| | | | | | | | | |Q| | | | | 
-| | | | | | | | | | | | |Q| | 
-| | | |Q| | | | | | | | | | | 
-| | | | | | | | | | | | | |Q| 
-| | | | | | | | |Q| | | | | | 
-| |Q| | | | | | | | | | | | | 
-| | | | | |Q| | | | | | | | | 
-| | | | | | | |Q| | | | | | | 
+|Q| | | | | | | | | | | | | |
+| | |Q| | | | | | | | | | | |
+| | | | |Q| | | | | | | | | |
+| | | | | | |Q| | | | | | | |
+| | | | | | | | | | | |Q| | |
+| | | | | | | | | |Q| | | | |
+| | | | | | | | | | | | |Q| |
+| | | |Q| | | | | | | | | | |
+| | | | | | | | | | | | | |Q|
+| | | | | | | | |Q| | | | | |
+| |Q| | | | | | | | | | | | |
+| | | | | |Q| | | | | | | | |
+| | | | | | | |Q| | | | | | |
 | | | | | | | | | | |Q| | | |
 
 ```
@@ -9110,84 +9110,84 @@ This code compiles with PL/I compilers ranging from the ancient IBM MVT PL/I F c
 
 ```pli
 
-NQUEENS: PROC OPTIONS (MAIN);                                  
- DCL A(35) BIN FIXED(31) EXTERNAL;                             
- DCL COUNT BIN FIXED(31) EXTERNAL;                             
- COUNT = 0;                                                    
- DECLARE SYSIN FILE;                                           
- DCL ABS BUILTIN;                                              
- DECLARE SYSPRINT FILE;                                        
- DECLARE N BINARY FIXED (31); /* COUNTER */                    
- /* MAIN LOOP STARTS HERE */                                   
- GET LIST (N) FILE(SYSIN); /* N QUEENS, N X N BOARD */        
- PUT SKIP (1) FILE(SYSPRINT);                                  
- PUT SKIP LIST('BEGIN N QUEENS PROCESSING *****') FILE(SYSPRINT);    
- PUT SKIP LIST('SOLUTIONS FOR N: ',N) FILE(SYSPRINT);          
- PUT SKIP (1) FILE(SYSPRINT);                                  
-  IF N < 4 THEN DO;                                            
-    /* LESS THAN 4 MAKES NO SENSE  */                          
-      PUT SKIP (2) FILE(SYSPRINT);                             
-      PUT SKIP LIST (N,' N TOO LOW') FILE (SYSPRINT);               
-      PUT SKIP (2) FILE(SYSPRINT);                             
-      RETURN (1);                                              
-   END;                                                        
-   IF N > 35 THEN DO;                                                
-     /* WOULD TAKE WEEKS    */                               
-       PUT SKIP (2) FILE(SYSPRINT);                                  
-       PUT SKIP LIST (N,' N TOO HIGH') FILE (SYSPRINT);                   
-       PUT SKIP (2) FILE(SYSPRINT);                                  
-       RETURN (1);                                                   
-    END;                                                             
-                                                      
-    CALL QUEEN(N);                                                   
-                                                                     
-     PUT SKIP (2) FILE(SYSPRINT);                                    
-     PUT SKIP LIST (COUNT,' SOLUTIONS FOUND') FILE(SYSPRINT);             
-     PUT SKIP (1) FILE(SYSPRINT);                                    
-     PUT SKIP LIST ('END OF PROCESSING ****') FILE(SYSPRINT);             
-     RETURN(0);                                                      
-  /* MAIN LOOP ENDS ABOVE  */                                        
-                                                                     
-  PLACE: PROCEDURE (PS);                                             
-     DCL PS BIN FIXED(31);                                           
-     DCL I  BIN FIXED(31) INIT(0);                                  
-     DCL A(50) BIN FIXED(31) EXTERNAL;                               
-                                                                     
-  DO I=1 TO PS-1;                                                    
-       IF A(I) = A(PS) THEN  RETURN(0);                              
-       IF ABS ( A(I) - A(PS) ) = (PS-I) THEN RETURN(0);              
-  END;                                                               
-    RETURN (1);                                                      
-  END PLACE;                                                         
+NQUEENS: PROC OPTIONS (MAIN);
+ DCL A(35) BIN FIXED(31) EXTERNAL;
+ DCL COUNT BIN FIXED(31) EXTERNAL;
+ COUNT = 0;
+ DECLARE SYSIN FILE;
+ DCL ABS BUILTIN;
+ DECLARE SYSPRINT FILE;
+ DECLARE N BINARY FIXED (31); /* COUNTER */
+ /* MAIN LOOP STARTS HERE */
+ GET LIST (N) FILE(SYSIN); /* N QUEENS, N X N BOARD */
+ PUT SKIP (1) FILE(SYSPRINT);
+ PUT SKIP LIST('BEGIN N QUEENS PROCESSING *****') FILE(SYSPRINT);
+ PUT SKIP LIST('SOLUTIONS FOR N: ',N) FILE(SYSPRINT);
+ PUT SKIP (1) FILE(SYSPRINT);
+  IF N < 4 THEN DO;
+    /* LESS THAN 4 MAKES NO SENSE  */
+      PUT SKIP (2) FILE(SYSPRINT);
+      PUT SKIP LIST (N,' N TOO LOW') FILE (SYSPRINT);
+      PUT SKIP (2) FILE(SYSPRINT);
+      RETURN (1);
+   END;
+   IF N > 35 THEN DO;
+     /* WOULD TAKE WEEKS    */
+       PUT SKIP (2) FILE(SYSPRINT);
+       PUT SKIP LIST (N,' N TOO HIGH') FILE (SYSPRINT);
+       PUT SKIP (2) FILE(SYSPRINT);
+       RETURN (1);
+    END;
 
-  QUEEN: PROCEDURE (N);                                          
-      DCL N BIN FIXED (31);                                      
-      DCL K BIN FIXED (31);                                      
-      DCL A(50) BIN FIXED(31) EXTERNAL;                          
-      DCL COUNT BIN FIXED(31) EXTERNAL;                          
-      K = 1;                                                     
-      A(K) = 0;                                                  
-      DO WHILE (K > 0);                                          
-         A(K) = A(K) + 1;                                        
-         DO WHILE ( ( A(K)<= N) & (PLACE(K) =0) );               
-             A(K) = A(K) +1;                                     
-         END;                                     
-         IF (A(K) <= N) THEN DO;                                 
-           IF (K = N ) THEN DO;                                  
-                         COUNT = COUNT + 1;                      
-                 END;                                            
-           ELSE DO;                                              
-             K= K +1;                                            
-             A(K) = 0;                                           
-           END; /* OF INSIDE ELSE */                              
-         END; /* OF FIRST IF */                                  
-         ELSE DO;                                                
-              K = K -1;                                          
-         END;                                                    
-      END;  /* OF EXTERNAL WHILE LOOP  */                                         
-   END QUEEN;                                                    
-                                                                 
- END NQUEENS;  
+    CALL QUEEN(N);
+
+     PUT SKIP (2) FILE(SYSPRINT);
+     PUT SKIP LIST (COUNT,' SOLUTIONS FOUND') FILE(SYSPRINT);
+     PUT SKIP (1) FILE(SYSPRINT);
+     PUT SKIP LIST ('END OF PROCESSING ****') FILE(SYSPRINT);
+     RETURN(0);
+  /* MAIN LOOP ENDS ABOVE  */
+
+  PLACE: PROCEDURE (PS);
+     DCL PS BIN FIXED(31);
+     DCL I  BIN FIXED(31) INIT(0);
+     DCL A(50) BIN FIXED(31) EXTERNAL;
+
+  DO I=1 TO PS-1;
+       IF A(I) = A(PS) THEN  RETURN(0);
+       IF ABS ( A(I) - A(PS) ) = (PS-I) THEN RETURN(0);
+  END;
+    RETURN (1);
+  END PLACE;
+
+  QUEEN: PROCEDURE (N);
+      DCL N BIN FIXED (31);
+      DCL K BIN FIXED (31);
+      DCL A(50) BIN FIXED(31) EXTERNAL;
+      DCL COUNT BIN FIXED(31) EXTERNAL;
+      K = 1;
+      A(K) = 0;
+      DO WHILE (K > 0);
+         A(K) = A(K) + 1;
+         DO WHILE ( ( A(K)<= N) & (PLACE(K) =0) );
+             A(K) = A(K) +1;
+         END;
+         IF (A(K) <= N) THEN DO;
+           IF (K = N ) THEN DO;
+                         COUNT = COUNT + 1;
+                 END;
+           ELSE DO;
+             K= K +1;
+             A(K) = 0;
+           END; /* OF INSIDE ELSE */
+         END; /* OF FIRST IF */
+         ELSE DO;
+              K = K -1;
+         END;
+      END;  /* OF EXTERNAL WHILE LOOP  */
+   END QUEEN;
+
+ END NQUEENS;
 ```
 
 
@@ -9200,25 +9200,25 @@ Solution #1:
 
 ```Prolog
 solution([]).
- 
+
 solution([X/Y|Others]) :-
  solution(Others),
  member(Y, [1,2,3,4,5,6,7,8]),
  noattack(X/Y, Others).
- 
+
 noattack(_,[]).
- 
+
 noattack(X/Y,[X1/Y1|Others]) :-
  Y =\= Y1,
  Y1 - Y =\= X1 - X,
  Y1 - Y =\= X - X1,
  noattack(X/Y,Others).
- 
+
 member(Item,[Item|Rest]).
- 
+
 member(Item,[First|Rest]) :-
  member(Item,Rest).
- 
+
 template([1/Y1,2/Y2,3/Y3,4/Y4,5/Y5,6/Y6,7/Y7,8/Y8]).
 ```
 
@@ -9229,26 +9229,26 @@ Solution #2:
 solution(Queens) :-
  permutation([1,2,3,4,5,6,7,8], Queens),
  safe(Queens).
- 
+
 permutation([],[]).
- 
+
 permutation([Head|Tail],PermList) :-
  permutation(Tail,PermTail),
  del(Head,PermList,PermTail).
- 
+
 del(Item,[Item|List],List).
- 
+
 del(Item,[First|List],[First|List1]) :-
  del(Item,List,List1).
- 
+
 safe([]).
- 
+
 safe([Queen|Others]) :-
  safe(Others),
  noattack(Queen,Others,1).
- 
+
 noattack(_,[],_).
- 
+
 noattack(Y,[Y1|Ylist],Xdist) :-
  Y1-Y=\=Xdist,
  Y-Y1=\=Xdist,
@@ -9265,9 +9265,9 @@ solution(Ylist) :-
     [1,2,3,4,5,6,7,8],
     [-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7],
     [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]).
- 
+
 sol([],[],[],Du,Dv).
- 
+
 sol([Y|Ylist],[X|Dx1],Dy,Du,Dv) :-
  del(Y,Dy,Dy1),
  U is X-Y,
@@ -9275,9 +9275,9 @@ sol([Y|Ylist],[X|Dx1],Dy,Du,Dv) :-
  V is X+Y,
  del(V,Dv,Dv1),
  sol(Ylist,Dx1, Dy1,Du1,Dv1).
- 
+
 del(Item,[Item|List],List).
- 
+
 del(Item,[First|List],[First|List1]) :-
  del(Item,List,List1).
 ```
@@ -9397,7 +9397,7 @@ From the Pure (programming language) Wikipedia page
  n-queens.pure
  Tectonics:
      pure -c queens.pure -o queens
-  or 
+  or
      pure -q -i queens.pure
 */
 using system;
@@ -9410,7 +9410,7 @@ queens n = search n 1 [] with
                  = i1==i2 || j1==j2 || i1+j1==i2+j2 || i1-j1==i2-j2;
 end;
 
-compiling || (puts("queens 4: " + str(queens 4)) $$ 
+compiling || (puts("queens 4: " + str(queens 4)) $$
               puts("Solutions to queens 7: " + str(#queens 7)));
 ```
 
@@ -9429,7 +9429,7 @@ sys 0.00
 prompt$ pure -i -q queens.pure
 > #queens 10;
 724
-> 
+>
 ```
 
 
@@ -9462,23 +9462,23 @@ Macro advanceIfPossible()
   While x <= n And columns(x): x + 1: Wend
   If x > n
     ProcedureReturn #False ;backtrack
-  EndIf 
+  EndIf
 EndMacro
 
 Procedure placeQueens(Array queenCol(1), Array columns(1), row = 0)
   Protected n = ArraySize(queenCol())
-  
+
   If row > n
     solutions + 1
     showBoard(queenCol())
     ProcedureReturn #False ;backtrack
   EndIf
-  
+
   Protected x, queen, passed
   While columns(x): x + 1: Wend
-    
+
   ;place a new queen in one of the available columns
-  Repeat 
+  Repeat
     passed = #True
     For queen = 0 To row - 1
       If ((queenCol(queen) - x) = (queen - row)) Or ((queenCol(queen) - x) = -(queen - row))
@@ -9487,14 +9487,14 @@ Procedure placeQueens(Array queenCol(1), Array columns(1), row = 0)
         Break ;ForNext loop
       EndIf
     Next
-    
+
     If passed
       queenCol(row) = x: columns(x) = 1
       If Not placeQueens(queenCol(), columns(), row + 1)
         columns(x) = 0
         advanceIfPossible()
-      EndIf 
-    EndIf 
+      EndIf
+    EndIf
   ForEver
 EndProcedure
 
@@ -9502,8 +9502,8 @@ Procedure queens(n)
   If n > 0
     Dim queenCol(n - 1)
     Dim columns(n - 1)
-    placeQueens(queenCol(), columns()) 
-  EndIf 
+    placeQueens(queenCol(), columns())
+  EndIf
 EndProcedure
 
 If OpenConsole()
@@ -9513,8 +9513,8 @@ If OpenConsole()
     queens(i)
     PrintN(#CRLF$ + Str(solutions) + " solutions found for " + Str(i) + "-queens.")
     Input()
-  Next 
-  
+  Next
+
   Print(#CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -9662,7 +9662,7 @@ for vec in permutations(cols):
 ```
 
 
-The output is presented in vector form (each number represents the column position of a queen on consecutive rows). 
+The output is presented in vector form (each number represents the column position of a queen on consecutive rows).
 The vector can be pretty printed by substituting a call to <code>board</code> instead of <code>print</code>, with the same argument, and where board is pre-defined as:
 
 ```python
@@ -9678,7 +9678,7 @@ Raymond's description is:
 
 :Any permutation with non-overlapping diagonals is a solution. So, we print it and continue checking other permutations.
 
-One disadvantage with this solution is that we can't simply "skip" all the permutations that start with a certain prefix, after discovering that that prefix is incompatible. 
+One disadvantage with this solution is that we can't simply "skip" all the permutations that start with a certain prefix, after discovering that that prefix is incompatible.
 For example, it is easy to verify that no permutation of the form (1,2,...) could ever be a solution, but since we don't have control over the generation of the permutations, we can't just tell it to "skip" all the ones that start with (1,2).
 
 
@@ -9710,7 +9710,7 @@ for answer in solve(BOARD_SIZE): print(list(enumerate(answer, start=1)))
 
 ### Python: Simple Backtracking Solution
 
-A surprisingly simple change to the above code (changing the list comprehension 
+A surprisingly simple change to the above code (changing the list comprehension
 to a generator expression) produces a backtracking solution:
 {{works with|Python|2.6, 3.x}}
 
@@ -10092,7 +10092,7 @@ queens <- function(n) {
 }
 
 queens(8)
-# 1 5 8 6 3 7 2 4 
+# 1 5 8 6 3 7 2 4
 # ...
 # 92
 ```
@@ -10334,7 +10334,7 @@ public set[list[int]] Nqueens(int n){
 	cols = upTill(n);
 	result = {};
 	for (vector <- permutations(cols)){
-		if (n == size({vector[j] + j |j <- cols}) && n == size({vector[j] - j |j <- cols})) 
+		if (n == size({vector[j] + j |j <- cols}) && n == size({vector[j] - j |j <- cols}))
 			result += vector;}
 	return result;
 }
@@ -10344,9 +10344,9 @@ public set[list[int]] Nqueens(int n){
 
 ## REXX
 
-The logic was borrowed from the Fortran example and modified for speed;   the display of the chessboard was 
+The logic was borrowed from the Fortran example and modified for speed;   the display of the chessboard was
 
-also changed to allow for the aspect ratio of display terminals to make the chessboard appear square. 
+also changed to allow for the aspect ratio of display terminals to make the chessboard appear square.
 
 Logic was added to the REXX program to preserve the color for a black square when a queen occupies it.
 
@@ -10507,33 +10507,33 @@ def n_queens(n)
     puts "no solutions for n=#{n}"
     return ""
   end
- 
+
   evens = (2..n).step(2).to_a
   odds = (1..n).step(2).to_a
- 
+
   rem = n % 12  # (1)
   nums = evens  # (2)
- 
+
   nums.rotate if rem == 3 or rem == 9  # (3)
- 
+
   # (4)
   if rem == 8
     odds = odds.each_slice(2).flat_map(&:reverse)
   end
   nums.concat(odds)
- 
+
   # (5)
   if rem == 2
     nums[nums.index(1)], nums[nums.index(3)] = nums[nums.index(3)], nums[nums.index(1)]
     nums << nums.delete(5)
   end
- 
+
   # (6)
   if rem == 3 or rem == 9
     nums << nums.delete(1)
     nums << nums.delete(3)
   end
- 
+
   # (7)
   nums.map do |q|
     a = Array.new(n,".")
@@ -10541,7 +10541,7 @@ def n_queens(n)
     a*(" ")
   end
 end
- 
+
 (1 .. 15).each {|n| puts "n=#{n}"; puts n_queens(n); puts}
 ```
 
@@ -10706,7 +10706,7 @@ If there is not specification, it outputs all solutions.
 ```ruby
 class Queen
   attr_reader :count
-  
+
   def initialize(num=8, out=true)
     @num   = num
     @out   = out
@@ -10717,7 +10717,7 @@ class Queen
     sub = Array.new(2 * @num - 1, true)       # / direction check
     solve([], add, sub)
   end
-  
+
   private
   def solve(row, add, sub)
     y = row.size
@@ -10733,7 +10733,7 @@ class Queen
       end
     end
   end
-  
+
   def print_out(row)
     puts @frame
     row.each do |i|
@@ -10913,7 +10913,7 @@ dim q(n+20)
 dim e(n+20)
 dim o(n+20)
 r=n mod 6
-if r<>2 and r<>3 then 
+if r<>2 and r<>3 then
   gosub [samp]
   goto [shoBoard]
 end if
@@ -10927,13 +10927,13 @@ if r = 2 then gosub [edt2]
 if r = 3 then gosub [edt3]
 s = 1
 for i=1 to n
-  if e(i)>0 then 
+  if e(i)>0 then
     q(s) = e(i)
     s    = s+1
   end if
 next
 for i=1 to n
-  if o(i) > 0 then 
+  if o(i) > 0 then
     q(s) = o(i)
     s    = s + 1
   end if
@@ -10955,16 +10955,16 @@ next ii
 end
 
 ' the simple case
-[samp] 
+[samp]
 p = 1
 for i = 1 to n
-  if i mod 2=0 then 
+  if i mod 2=0 then
     q(p) = i
     p    = p + 1
   end if
 next i
 for i = 1 to n
-  if i mod 2 then 
+  if i mod 2 then
     q(p) = i
     p    = p + 1
   end if
@@ -10973,15 +10973,15 @@ return
 ' edit list when remainder is 2
 [edt2]
 for i=1 to n
-  if o(i) = 3 then 
-    o(i) = 1 
-   else 
+  if o(i) = 3 then
+    o(i) = 1
+   else
     if o(i)=1 then o(i) = 3
   end if
-  if o(i) = 5 then 
-    o(i)= o(i) -1 
-   else 
-    if o(i) = 0 then 
+  if o(i) = 5 then
+    o(i)= o(i) -1
+   else
+    if o(i) = 0 then
       o(i) = 5
       return
     end if
@@ -10991,10 +10991,10 @@ next
 ' edit list when remainder is 3
 [edt3]
 for i = 1 to n
-  if e(i) = 2 then 
-    e(i)  = e(i)-1 
-   else 
-    if e(i) = 0 then 
+  if e(i) = 2 then
+    e(i)  = e(i)-1
+   else
+    if e(i) = 0 then
       e(i) = 2
       goto [more]
     end if
@@ -11003,10 +11003,10 @@ next i
 ' edit list some more
 [more]
 for i = 1 to n
-  if (o(i)=1 or o(i)=3) then 
-    o(i) = o(i)-1 
-   else 
-    if o(i) = 0 then 
+  if (o(i)=1 or o(i)=3) then
+    o(i) = o(i)-1
+   else
+    if o(i) = 0 then
       o(i)   = 1
       o(i+1) = 3
       return
@@ -11017,14 +11017,14 @@ next
 
 
 ```txt
-abcdefgh                                                                                            
-   *    8                                                                                           
-       *7                                                                                           
-  *     6                                                                                           
-        5                                                                                           
- *    * 4                                                                                           
-    *   3                                                                                           
-*       2                                                                                           
+abcdefgh
+   *    8
+       *7
+  *     6
+        5
+ *    * 4
+    *   3
+*       2
      *  1
 ```
 
@@ -11091,7 +11091,7 @@ fn permutations<'a, T, I>(collection: I) -> Box<Iterator<Item=LinkedList<T>> + '
     if collection.clone().into_iter().count() == 0 {
         Box::new(vec![LinkedList::new()].into_iter())
     }
-    else { 
+    else {
         Box::new(
             collection.clone().into_iter().flat_map(move |i| {
                 permutations(collection.clone().into_iter()
@@ -11116,9 +11116,9 @@ impl NQueens {
                     iter.clone().all(|(col, &row)| {
                         iter.clone().filter(|&(c,_)| c != col)
                             .all(|(ocol, &orow)| {
-                            col as i32 - row as i32 != 
+                            col as i32 - row as i32 !=
                                 ocol as i32 - orow as i32 &&
-                            col as u32 + row != ocol as u32 + orow 
+                            col as u32 + row != ocol as u32 + orow
                         })
                     })
                 })
@@ -11244,7 +11244,7 @@ object NQueens {
     def safe(x: T, y: T): Boolean =
       pair._1 - pair._2 != abs(x - y)
   }
-  
+
   def solve(n: Int): Iterator[Seq[Int]] = {
     (0 to n-1)
       .permutations
@@ -11276,7 +11276,7 @@ object NQueens {
 
   def output(n: Int)(board: Seq[Int]): Unit = {
     board.foreach { queen =>
-      val row = 
+      val row =
         "_|" * queen + "Q" + "|_" * (n-queen-1)
       Console.out.println(row)
     }
@@ -11319,7 +11319,7 @@ Found 92 solutions
 ## Scheme
 
 
-This is a simple breadth-first technique to retrieve all solutions. 
+This is a simple breadth-first technique to retrieve all solutions.
 
 
 ```scheme
@@ -11334,7 +11334,7 @@ This is a simple breadth-first technique to retrieve all solutions.
     (list-tabulate n (lambda (col) (list (cons 0 col)))))
   (define (place-on-row soln-so-far row)
     (define (invalid? col)
-      (any (lambda (posn) 
+      (any (lambda (posn)
              (or (= col (cdr posn)) ; on same column
                  (= (abs (- row (car posn))) ; on same diagonal
                     (abs (- col (cdr posn))))))
@@ -11347,8 +11347,8 @@ This is a simple breadth-first technique to retrieve all solutions.
                           res))))
       ((= col n) res)))
   ;
-  (do ((res (place-initial-row) 
-            (apply append 
+  (do ((res (place-initial-row)
+            (apply append
                    (map (lambda (soln-so-far) (place-on-row soln-so-far row))
                         res)))
        (row 1 (+ 1 row)))
@@ -11361,15 +11361,15 @@ This is a simple breadth-first technique to retrieve all solutions.
        (car posn)))
   (define (pp solution)
     (let ((board (make-vector (square n) ".")))
-      (for-each (lambda (queen) (vector-set! board 
+      (for-each (lambda (queen) (vector-set! board
                                              (posn->index queen)
                                              "Q"))
                 solution)
       (let loop ((row 0)
                  (col 0))
-        (cond ((= row n) 
+        (cond ((= row n)
                (newline))
-              ((= col n) 
+              ((= col n)
                (newline)
                (loop (+ 1 row) 0))
               (else
@@ -11489,10 +11489,10 @@ function flag_out = no_attack(side, board, pos)
     //board (sidexside matrix): matrix of 0s and 1s representing queens on a board
     //pos (1x2 matrix): postition on board to be evaluated
     //flag_out (bool): %T if position is available, and %F otherwise
-    
+
     //Counting queens on rows and columns
     row_col = sum(board(pos(1),:)) + sum(board(:,pos(2)));
-    
+
     //Counting queens on first diagonal
     diag_1 = sum(...
                  diag(board, 0 +...
@@ -11500,7 +11500,7 @@ function flag_out = no_attack(side, board, pos)
                      (pos(1)>pos(2))*(pos(2)-pos(1))...
                      )...
                  );
-    
+
     //Counting queens on second diagonal
     a = pos(1) + pos(2);
     if a<=side+1 then
@@ -11516,20 +11516,20 @@ function flag_out = no_attack(side, board, pos)
     for i = 1:length(rows)
         diag_2 = diag_2 + board(rows(i),cols(i));
     end
-    
+
     //Check if there's any queen
     flag_out = ( ~(row_col | diag_1 | diag_2) );
 endfunction
 
 //Solution counter
 Sol_count = 0;
-   
+
 //"Soltion found" flag
 Sol_found = %F;
- 
+
 //Empty board
 Board = zeros(Board_size,Board_size);
- 
+
 //Matrix for backtracking
 Queens= zeros(Board_size,2);
 
@@ -11550,27 +11550,27 @@ while i <= Board_size
         if (0 < i & 0 < j) & (i <= Board_size & j <= Board_size) then
             flag = no_attack(Board_size,Board,[i j]);
         end
-        
+
         //Reset solution flag
         Sol_found = %F;
-        
+
         if flag then
             //Put a queen on the board if position is available
             Board(i,j) = 1;
-            
+
             //Update number of remaining queens
             N_queens = N_queens - 1;
-            
+
             //Keep track of queens positions
             Queens(Board_size - N_queens,:) = [i j];
-            
+
             //Jump to next row end of line is reached
             if i+1<=Board_size
                 i = i + 1;
             end
             //Start over from the begining of new line
             j = 0;
-            
+
             //Count and flag a solution if all queens have
             //been placed on the board
             if N_queens == 0 then
@@ -11579,24 +11579,24 @@ while i <= Board_size
                 break
             end
         end
-        
+
         //Increment column number
         j = j + 1;
     end
-    
+
     //Increment row number and start from first column
     if ~Sol_found then
         i = i + 1;
         j = 1;
-        
+
         //Limiting placement of the first queen to the first row
-        //Stop searching solutions if columns of first row 
+        //Stop searching solutions if columns of first row
         //have been tested
         if i == 2 & j == 1 & sum(Board) == 0  then
             break
         end
     end
-    
+
     //Backtracking: if (i,j) reaches the and of the board
     //and there are queens left to be placed on it
     if ~Sol_found & i == Board_size + 1 & j == 1 then
@@ -11605,16 +11605,16 @@ while i <= Board_size
             //Recover last queen's position
             i = Queens(ind,1);
             j = Queens(ind,2);
-            
+
             //Remove it from the board and from the counter
             Board(i,j) = 0;
             Queens(ind,:) = [0 0];
             N_queens = N_queens + 1;
-            
+
             //Move to next column
             j = j + 1;
         end
-    end 
+    end
 end
 
 //Printing result on console
@@ -11869,12 +11869,12 @@ WITH RECURSIVE
     i+1 FROM positions WHERE i < 63
     ),
   solutions(board, n_queens) AS (
-    SELECT '----------------------------------------------------------------', cast(0 AS bigint) 
+    SELECT '----------------------------------------------------------------', cast(0 AS bigint)
       FROM positions
     UNION
     SELECT
       substr(board, 1, i) || '*' || substr(board, i+2),n_queens + 1 as n_queens
-      FROM positions AS ps, solutions 
+      FROM positions AS ps, solutions
     WHERE n_queens < 8
       AND substr(board,1,i) != '*'
       AND NOT EXISTS (
@@ -11887,7 +11887,7 @@ WITH RECURSIVE
                 cast(i / 8 AS INT) - (i % 8) = cast(ps.i / 8 AS INT) - (ps.i % 8)
             )
         LIMIT 1
-        ) 
+        )
    ORDER BY n_queens DESC -- remove this when using Postgres (they don't support ORDER BY in CTEs)
   )
 SELECT board,n_queens FROM solutions WHERE n_queens = 8;
@@ -11903,7 +11903,7 @@ This implementation uses failure continuations for backtracking.
 
 ```Standard ML
 
-(* 
+(*
  * val threat : (int * int) -> (int * int) -> bool
  * Returns true iff the queens at the given positions threaten each other
  *)
@@ -11950,7 +11950,7 @@ queens(2);
 ## Stata
 
 
-###  Iterative version 
+###  Iterative version
 
 Adapted from the Fortran 77 program, to illustrate the '''[http://www.stata.com/help.cgi?m2_goto goto]''' statement in Stata.
 
@@ -11961,7 +11961,7 @@ real matrix queens(real scalar n) {
 	real scalar i, j, k, p, q
 	real rowvector a, s, u, v
 	real matrix m
-	
+
 	m = J(0, n, .)
 	a = 1..n
 	s = J(1, n, 0)
@@ -12029,7 +12029,7 @@ save queens, replace
 
 
 
-###  Recursive version 
+###  Recursive version
 
 
 The recursive solution is adapted from one of the Python programs.
@@ -12040,7 +12040,7 @@ mata
 real matrix queens_rec(real scalar n) {
 	real rowvector a, u, v
 	real matrix m
-	
+
 	a = 1..n
 	u = J(1, 2*n-1, 1)
 	v = J(1, 2*n-1, 1)
@@ -12052,7 +12052,7 @@ real matrix queens_rec(real scalar n) {
 void queens_aux(real scalar n, real scalar i, real rowvector a,
 	real rowvector u, real rowvector v, real matrix m) {
 	real scalar j, k
-	
+
 	if (i > n) {
 		m = m\a
 	} else {
@@ -12228,15 +12228,15 @@ templates queens
   <[]($n)> $ !
   <> $ -> addColumn -> #
 end queens
- 
+
 def solutions: [ 8 -> queens ];
 'For 8 queens there are $solutions::length; solutions
 ' -> !OUT::write
- 
+
 def columns: ['abcdefgh'...];
 'One of them is $solutions(1) -> [i]('$columns($i);$;' !);
 ' -> !OUT::write
- 
+
 'For 3 queens there are $:[3 -> queens] -> $::length; solutions
 ' -> !OUT::write
 
@@ -12420,18 +12420,18 @@ Solution #4
 ## UNIX Shell
 
 {{works with|Bash}}
-The total number of solutions for 8 queens is displayed at the end of the run.  The code could be adapted to display a selected solution or multiple solutions. This code runs anywhere you can get bash to run. 
+The total number of solutions for 8 queens is displayed at the end of the run.  The code could be adapted to display a selected solution or multiple solutions. This code runs anywhere you can get bash to run.
 
 
 ```bash
 #!/bin/bash
- 
+
 # variable declaration
 typeset -i BoardSize=8
 typeset -i p=0
 typeset -i total=0
 typeset -i board
- 
+
 # initialization
 function init
 {
@@ -12440,9 +12440,9 @@ function init
         (( board[$i]=-1 ))
     done
 }
- 
+
 # check if queen can be placed
-function place 
+function place
 {
         typeset -i flag=1
         for (( i=0;i<$1;i++ ))
@@ -12455,13 +12455,13 @@ function place
         [[ $flag -eq 0 ]]
         return $?
 }
- 
+
 # print the result
 function out
 {
         printf "Problem of queen %d:%d\n" $BoardSize $total
 }
- 
+
 # free the variables
 function depose
 {
@@ -12470,7 +12470,7 @@ function depose
     unset board
     unset BoardSize
 }
- 
+
 # back tracing
 function work
 {
@@ -12496,7 +12496,7 @@ function work
         fi
     done
 }
- 
+
 # entry
 init
 work
@@ -12533,17 +12533,17 @@ queens =
    ^/~&NNXS+iota -<&l+ ~&plll2llr2lrPrNCCCCNXS*=irSxPSp+ ^H/block iota; *iiK0 ^/~& sum+-
 ```
 
-The output shows one solution on each line. 
-A solution is reported as a sequence of <math>n</math> numbers 
+The output shows one solution on each line.
+A solution is reported as a sequence of <math>n</math> numbers
 with the <math>i</math>-th number being the index of the occupied row
 in the <math>i</math>-th column.
 
 ```txt
 
-$ queens -4                     
-2 3 0 1                         
-$ queens -5                     
-0 2 1 3 4                       
+$ queens -4
+2 3 0 1
+$ queens -5
+0 2 1 3 4
 2 4 3 0 1
 1 3 2 4 0
 $ queens 6
@@ -12622,21 +12622,21 @@ End Sub 'n_queens
 
 ```txt
 
- 1             1 
- 2             0 
- 3             0 
- 4             2 
- 5             10 
- 6             4 
- 7             40 
- 8             92 
- 9             352 
- 10            724 
- 11            2680 
- 12            14200 
- 13            73712 
- 14            365596 
- 15            2279184 
+ 1             1
+ 2             0
+ 3             0
+ 4             2
+ 5             10
+ 6             4
+ 7             40
+ 8             92
+ 9             352
+ 10            724
+ 11            2680
+ 12            14200
+ 13            73712
+ 14            365596
+ 15            2279184
 
 ```
 
@@ -12790,18 +12790,18 @@ End Sub 'n_queens
 
 ```txt
 
- 1             1 
- 2             0 
- 3             0 
- 4             2 
- 5             10 
- 6             4 
- 7             40 
- 8             92 
- 9             352 
- 10            724 
- 11            2680 
- 12            14200 
+ 1             1
+ 2             0
+ 3             0
+ 4             2
+ 5             10
+ 6             4
+ 7             40
+ 8             92
+ 9             352
+ 10            724
+ 11            2680
+ 12            14200
  13            73712
  14            365596
  15            2279184
@@ -12896,7 +12896,7 @@ End Module
 12  14200
 13  73712
 14  365596
-15  2279184 
+15  2279184
 
 ```
 
@@ -12975,7 +12975,7 @@ bool test (j: int(j), board[size]: int) {
   invariant: [i:nat] (i: int(i))
   for (i = 0; i < j; i = i + 1) {
     qi = board[i]; diff = abs (qi - qj);
-    if (diff == 0) { return false; } 
+    if (diff == 0) { return false; }
     else { if (diff == j - i) return false; }
   }
   return true;
@@ -13016,8 +13016,8 @@ int main () {
 
 ## XSLT
 
-Below simple stylesheet does produce this output 
-(either by XSLT processors saxon-6.5.5, xsltproc, xalan, 
+Below simple stylesheet does produce this output
+(either by XSLT processors saxon-6.5.5, xsltproc, xalan,
 or any of the big5 browsers):
 <lang>
 15863724
@@ -13055,8 +13055,8 @@ Here is stylesheet 8-queens.xsl.xml which produces the (simple) output by having
 <?xml-stylesheet href="#" type="text/xsl"?>
 
 <!-- alternative over specifying input in data:data section -->
-<!DOCTYPE xsl:stylesheet [ 
-  <!ENTITY N "8"> 
+<!DOCTYPE xsl:stylesheet [
+  <!ENTITY N "8">
 ]>
 
 <!-- this is the stylesheet being referenced by href="#" above -->
@@ -13068,7 +13068,7 @@ Here is stylesheet 8-queens.xsl.xml which produces the (simple) output by having
 >
 <!-- find David Carlisle's  exslt:node-set() for IE browsers at bottom -->
 
-<!-- 
+<!--
      Pattern allowing repeated processing of produced node-set results:
        <xsl:variable name="blah0">...</xsl:variable>
        <xsl:variable name="blah" select="exslt:node-set($blah0)"/>
@@ -13108,13 +13108,13 @@ Here is stylesheet 8-queens.xsl.xml which produces the (simple) output by having
 
 
   <!-- recursive search for all solutions -->
-  <xsl:template name="n-queens:search">    
+  <xsl:template name="n-queens:search">
     <xsl:param name="b"/>  <!-- remaining rows of not threatened fields -->
     <xsl:param name="s"/>  <!-- partial solution of queens fixated sofar -->
 
     <!-- complete board filled means solution found -->
-    <xsl:if test="not($b)"> 
-      <xsl:value-of select="$s"/><xsl:text>&#10;</xsl:text> 
+    <xsl:if test="not($b)">
+      <xsl:value-of select="$s"/><xsl:text>&#10;</xsl:text>
     </xsl:if>
 
     <!-- check each remaining possible position in next row -->
@@ -13138,7 +13138,7 @@ Here is stylesheet 8-queens.xsl.xml which produces the (simple) output by having
   </xsl:template>
 
   <!-- sieve out fields in remaining rows attacked by queen at column $c -->
-  <xsl:template name="n-queens:sieve">    
+  <xsl:template name="n-queens:sieve">
     <xsl:param name="c"/>  <!-- column of newly fixed queen -->
     <xsl:param name="b"/>  <!-- remaining rows -->
 
@@ -13152,7 +13152,7 @@ Here is stylesheet 8-queens.xsl.xml which produces the (simple) output by having
   </xsl:template>
 
   <!-- generate node-set of the form "<f>1</f><f>2</f>...<f>$n</f>" -->
-  <xsl:template name="n-queens:row">    
+  <xsl:template name="n-queens:row">
     <xsl:param name="n"/>
 
     <xsl:if test="$n>0">
@@ -13175,7 +13175,7 @@ Here is stylesheet 8-queens.xsl.xml which produces the (simple) output by having
 >
   this['node-set'] = function (x) {
     return x;
-  } 
+  }
 </msxsl:script>
 
 </xsl:stylesheet>
@@ -13262,7 +13262,7 @@ N = 8 // try some other sizes
 
 sub threat(q1r, q1c, q2r, q2c)
 // do two queens threaten each other?
-    
+
    if q1c = q2c then    return true
    elsif (q1r - q1c) = (q2r - q2c) then return true
    elsif (q1r + q1c) = (q2r + q2c) then return true

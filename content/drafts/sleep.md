@@ -36,119 +36,119 @@ Sleep (logically swapped out task) is established through STIMER macro (SVC 47)
 
 ```360 Assembly
 
-         START 
-         PRINT DATA,GEN 
-         YREGS ,                      REGISTER EQUATES (e.g. 0 = R0) 
-SLEEP    CSECT  
-SLEEP    AMODE 31                     addressing mode 31 bit 
+         START
+         PRINT DATA,GEN
+         YREGS ,                      REGISTER EQUATES (e.g. 0 = R0)
+SLEEP    CSECT
+SLEEP    AMODE 31                     addressing mode 31 bit
 SLEEP    RMODE ANY                    loader determines 31 or 24
 ***********************************************************************
-* REENTRANT. Logically swap out a task for a number of seconds 
-*            specified in PARM. Minimum 0, maximum 60 seconds 
-* 
-* MVS rexx (the original rexx) does not have a sleep function. This 
-* program can be called from rexx, assuming this program is in 
-* LINKLIST, as follows: 
-* 
-*         /* rexx */ 
-*         wait_time = '6' /* number of seconds to sleep */ 
+* REENTRANT. Logically swap out a task for a number of seconds
+*            specified in PARM. Minimum 0, maximum 60 seconds
+*
+* MVS rexx (the original rexx) does not have a sleep function. This
+* program can be called from rexx, assuming this program is in
+* LINKLIST, as follows:
+*
+*         /* rexx */
+*         wait_time = '6' /* number of seconds to sleep */
 *         say 'Sleeping...'
-*         address LINKMVS "SLEEP wait_time"  /* invoke SLEEP */ 
+*         address LINKMVS "SLEEP wait_time"  /* invoke SLEEP */
 *         say 'Awake!
 ***********************************************************************
-PROLOG   BAKR  R14,0                 satck caller's registers 
-         LR    R4,R1                 save parm pointer 
-         LR    R12,R15               entry point addr to R12 
-         USING SLEEP,R12             tell assembler about that 
-         B     AROUND                avoid abend S0C1 
-         DC    C'SLEEP '             CSECT NAME 
-         DC    C'C=2014.05.10 '      CHANGE DATE 
-         DC    C'A=&SYSDATE '        ASSEMBLY DATE 
-         DC    C'T=&SYSTIME '        CHANGE TIME 
-         DC    C'MarcvdM. '          PROGRAMMER NAME 
-AROUND   L     R10,0(0,R4)           load parm address in R10 
-         XR    R15,R15               clear R15 
-         LH    R15,0(0,R10)          load parm length in R15 
-         LR    R6,R15                save length in R6 
-         LTR   R15,R15               parm length 0? 
-         BZ    NOPARM                yes, exit before getmain 
-         C     R6,F2                 parmlength > 2 ? 
-         BH    NOPARM                yes, exit before getmain 
-        STORAGE OBTAIN,LENGTH=WALEN,LOC=ANY  get some storage 
-         LR    R9,R1                 address of storage in R9 
-         USING WAREAX,R9             base for data section (DSECT) 
-         MVC   EYECAT,=C'**MARC**'   make storage easy to find in dump 
-         MVC   SECONDS,C00           set field to F0F0 
-         C     R6,F1                 parmlength = 1? 
-         BNE   COPYSECS              no, copy both bytes 
-         MVC   SECONDS+1(1),2(R10)   yes, just copy one byte. 
-         B     TRTEST 
-COPYSECS MVC   SECONDS,2(R10) 
-* test supplied parameter for valid integer values 
-TRTEST   TRT   SECONDS(1),VALINT6    first parm byte no higher as 6? 
+PROLOG   BAKR  R14,0                 satck caller's registers
+         LR    R4,R1                 save parm pointer
+         LR    R12,R15               entry point addr to R12
+         USING SLEEP,R12             tell assembler about that
+         B     AROUND                avoid abend S0C1
+         DC    C'SLEEP '             CSECT NAME
+         DC    C'C=2014.05.10 '      CHANGE DATE
+         DC    C'A=&SYSDATE '        ASSEMBLY DATE
+         DC    C'T=&SYSTIME '        CHANGE TIME
+         DC    C'MarcvdM. '          PROGRAMMER NAME
+AROUND   L     R10,0(0,R4)           load parm address in R10
+         XR    R15,R15               clear R15
+         LH    R15,0(0,R10)          load parm length in R15
+         LR    R6,R15                save length in R6
+         LTR   R15,R15               parm length 0?
+         BZ    NOPARM                yes, exit before getmain
+         C     R6,F2                 parmlength > 2 ?
+         BH    NOPARM                yes, exit before getmain
+        STORAGE OBTAIN,LENGTH=WALEN,LOC=ANY  get some storage
+         LR    R9,R1                 address of storage in R9
+         USING WAREAX,R9             base for data section (DSECT)
+         MVC   EYECAT,=C'**MARC**'   make storage easy to find in dump
+         MVC   SECONDS,C00           set field to F0F0
+         C     R6,F1                 parmlength = 1?
+         BNE   COPYSECS              no, copy both bytes
+         MVC   SECONDS+1(1),2(R10)   yes, just copy one byte.
+         B     TRTEST
+COPYSECS MVC   SECONDS,2(R10)
+* test supplied parameter for valid integer values
+TRTEST   TRT   SECONDS(1),VALINT6    first parm byte no higher as 6?
          BNZ   NOPARM_REL            higher, release storage and return
-         TRT   SECONDS+1(1),VALINT9  second byte valid? 
-         BNZ   NOPARM_REL            no, release storage and return 
-         CLC   SECONDS(1),=C'6'      first parm byte < 6? 
-         BNE   DOWAIT                yes, do wait 
-         CLC   SECONDS+1(1),=C'0'    first eq. 6, second > 0? 
-         BNE   NOPARM_REL            yes, release storage and return 
-DOWAIT   DS    0H 
+         TRT   SECONDS+1(1),VALINT9  second byte valid?
+         BNZ   NOPARM_REL            no, release storage and return
+         CLC   SECONDS(1),=C'6'      first parm byte < 6?
+         BNE   DOWAIT                yes, do wait
+         CLC   SECONDS+1(1),=C'0'    first eq. 6, second > 0?
+         BNE   NOPARM_REL            yes, release storage and return
+DOWAIT   DS    0H
          MVC   WAWTO(DWTOL),DWTO     copy WTO list form to obtained st.
-         MVC   WAWTO+18(2),SECONDS   copy in nr. of seconds 
-        WTO    MF=(E,WAWTO)          issue WTO, execute form 
-         MVC   HOURS,C00             zero out hours 
-         MVC   MINUTS,C00             and minutes 
-         MVC   REST,C00                and milliseconds 
-        STIMER WAIT,DINTVL=TIMEVAL   SVC 47: logical swap out (sleep) 
-         B     EXIT                  done 
-NOPARM_REL DS  0H 
-        STORAGE RELEASE,ADDR=(R9),LENGTH=WALEN  free obtained storage 
-         LA    R15,4                 set return code 4 
-         B     RETURN                return to caller 
-EXIT     DS    0H 
-        STORAGE RELEASE,ADDR=(R9),LENGTH=WALEN  free obtained storage 
-        WTO    ' Awake!',ROUTCDE=11   fixed wake-up string 
-NOPARM   EQU   * 
-RETURN   PR    ,                     return to caller 
-* 
+         MVC   WAWTO+18(2),SECONDS   copy in nr. of seconds
+        WTO    MF=(E,WAWTO)          issue WTO, execute form
+         MVC   HOURS,C00             zero out hours
+         MVC   MINUTS,C00             and minutes
+         MVC   REST,C00                and milliseconds
+        STIMER WAIT,DINTVL=TIMEVAL   SVC 47: logical swap out (sleep)
+         B     EXIT                  done
+NOPARM_REL DS  0H
+        STORAGE RELEASE,ADDR=(R9),LENGTH=WALEN  free obtained storage
+         LA    R15,4                 set return code 4
+         B     RETURN                return to caller
+EXIT     DS    0H
+        STORAGE RELEASE,ADDR=(R9),LENGTH=WALEN  free obtained storage
+        WTO    ' Awake!',ROUTCDE=11   fixed wake-up string
+NOPARM   EQU   *
+RETURN   PR    ,                     return to caller
+*
 * --------------------------------------------------------------------
-* CONSTANTS 
+* CONSTANTS
 * --------------------------------------------------------------------
-DWTO     WTO    ' Sleeping... (XX seconds)',ROUTCDE=11,MF=L 
-DWTOL     EQU   *-DWTO             length of WTO list form 
-F1        DC    F'1' 
-F2        DC    F'2' 
-C00       DC    C'00' 
-VALINT6   DC    256XL1'01' 
-          ORG   *-16 
-VALOK6    DC    7XL1'00'           F0-F6: OFFSETS 240-246 
-VALINT9   DC    256XL1'01' 
-          ORG   *-16 
-VALOK9    DC    10XL1'00'          F0-F9: OFFSETS 240-249 
-          DS    0D 
-         LTORG ,                   FORCE DISPLACEMENT LITERALS 
+DWTO     WTO    ' Sleeping... (XX seconds)',ROUTCDE=11,MF=L
+DWTOL     EQU   *-DWTO             length of WTO list form
+F1        DC    F'1'
+F2        DC    F'2'
+C00       DC    C'00'
+VALINT6   DC    256XL1'01'
+          ORG   *-16
+VALOK6    DC    7XL1'00'           F0-F6: OFFSETS 240-246
+VALINT9   DC    256XL1'01'
+          ORG   *-16
+VALOK9    DC    10XL1'00'          F0-F9: OFFSETS 240-249
+          DS    0D
+         LTORG ,                   FORCE DISPLACEMENT LITERALS
 * --------------------------------------------------------------------
-* DSECT (data section) 
+* DSECT (data section)
 * --------------------------------------------------------------------
-WAREAX   DSECT , 
-WAWTO    DS    CL(DWTOL)           reentrant WTO area 
-EYECAT   DS    CL8 
-TIMEVAL  DS    0CL8 
-HOURS    DS    CL2                 will be zeroed 
-MINUTS   DS    CL2                 will be zeroed 
-SECONDS  DS    CL2                 from parm 
-REST     DS    CL2                 will be zeroed 
-WALEN    EQU   *-WAREAX            length of DSECT 
+WAREAX   DSECT ,
+WAWTO    DS    CL(DWTOL)           reentrant WTO area
+EYECAT   DS    CL8
+TIMEVAL  DS    0CL8
+HOURS    DS    CL2                 will be zeroed
+MINUTS   DS    CL2                 will be zeroed
+SECONDS  DS    CL2                 from parm
+REST     DS    CL2                 will be zeroed
+WALEN    EQU   *-WAREAX            length of DSECT
 * --------------------------------------------------------------------
-         END   SLEEP 
+         END   SLEEP
 
 ```
 
 '''output''' invoked with PARM='6' (+ sign indicates "problem state" (non system key) execution
 <pre style="overflow:scroll">
-+ Sleeping... (06 seconds)  
-+ Awake!                    
++ Sleeping... (06 seconds)
++ Awake!
 
 ```
 
@@ -191,9 +191,9 @@ main:
 
 ```forth
 
-f:stdin f:getline 
-"Sleeping..." . cr  
-eval sleep 
+f:stdin f:getline
+"Sleeping..." . cr
+eval sleep
 "Awake!" . cr bye
 
 ```
@@ -209,7 +209,7 @@ The Ada delay statement takes an argument of type Duration, which is a real numb
 ```ada
 with Ada.Text_Io; use Ada.Text_Io;
 with Ada.Float_Text_Io; use Ada.Float_Text_Io;
- 
+
 procedure Sleep is
    In_Val : Float;
 begin
@@ -289,7 +289,7 @@ The cycles and times calculated should only be taken as a minimum delay.
 Output:
 ```txt
 ENTER WAIT VALUE (1-256) : 256
-WAIT FOR 167309 CYCLES OR 
+WAIT FOR 167309 CYCLES OR
 163591.032 MICROSECONDS
 SLEEPING
 AWAKE
@@ -320,14 +320,14 @@ AWAKE
 /* Initialized data */
 .data
 szMessQuest:             .asciz "Enter the time to sleep in seconds : "
-szMessError:             .asciz "Error occured.\n" 
-szMessSleep:             .asciz "Sleeping Zzzzzzz.\n" 
+szMessError:             .asciz "Error occured.\n"
+szMessSleep:             .asciz "Sleeping Zzzzzzz.\n"
 szMessAwake:             .asciz "Awake!!!\n"
 
 szCarriageReturn:        .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 .align 4
 ZonesAttente:
   iSecondes:      .skip 4
@@ -337,29 +337,29 @@ sBuffer:          .skip BUFFERSIZE
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
     ldr r0,iAdrszMessQuest            @ display invite message
     bl affichageMess
     mov r0,#STDIN                     @ input standard linux
     ldr r1,iAdrsBuffer
     mov r2,#BUFFERSIZE
     mov r7,#READ                      @ read input string
-    svc 0 
+    svc 0
     cmp r0,#0                         @ read error ?
     ble 99f
-    @ 
+    @
     ldr r0,iAdrsBuffer                @ buffer address
     bl conversionAtoD                 @ conversion string in number in r0
 
-    ldr r1,iAdriSecondes 
+    ldr r1,iAdriSecondes
     str r0,[r1]                       @ store second number in area
     ldr r0,iAdrszMessSleep            @ display sleeping message
     bl affichageMess
     ldr r0,iAdrZonesAttente           @ delay area
     ldr r1,iAdrZonesTemps             @
     mov r7,#SLEEP                     @ call system SLEEP
-    svc 0 
+    svc 0
     cmp r0,#0                         @ error sleep ?
     blt 99f
     ldr r0,iAdrszMessAwake            @ display awake message
@@ -386,85 +386,85 @@ iAdrszCarriageReturn:     .int szCarriageReturn
 
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
  /******************************************************************/
-/*     Convert a string to a number stored in a registry          */ 
+/*     Convert a string to a number stored in a registry          */
 /******************************************************************/
 /* r0 contains the address of the area terminated by 0 or 0A */
 /* r0 returns a number                           */
 conversionAtoD:
-    push {fp,lr}         @ save 2 registers 
-    push {r1-r7}         @ save others registers 
+    push {fp,lr}         @ save 2 registers
+    push {r1-r7}         @ save others registers
     mov r1,#0
-    mov r2,#10           @ factor 
-    mov r3,#0            @ counter 
-    mov r4,r0            @ save address string -> r4 
-    mov r6,#0            @ positive sign by default 
-    mov r0,#0            @ initialization to 0 
+    mov r2,#10           @ factor
+    mov r3,#0            @ counter
+    mov r4,r0            @ save address string -> r4
+    mov r6,#0            @ positive sign by default
+    mov r0,#0            @ initialization to 0
 1:     /* early space elimination loop */
-    ldrb r5,[r4,r3]      @ loading in r5 of the byte located at the beginning + the position 
+    ldrb r5,[r4,r3]      @ loading in r5 of the byte located at the beginning + the position
     cmp r5,#0            @ end of string -> end routine
     beq 100f
     cmp r5,#0x0A         @ end of string -> end routine
     beq 100f
-    cmp r5,#' '          @ space ? 
-    addeq r3,r3,#1       @ yes we loop by moving one byte 
+    cmp r5,#' '          @ space ?
+    addeq r3,r3,#1       @ yes we loop by moving one byte
     beq 1b
-    cmp r5,#'-'          @ first character is -    
+    cmp r5,#'-'          @ first character is -
     moveq r6,#1          @  1 -> r6
-    beq 3f               @ then move on to the next position 
+    beq 3f               @ then move on to the next position
 2:   /* beginning of digit processing loop */
-    cmp r5,#'0'          @ character is not a number 
+    cmp r5,#'0'          @ character is not a number
     blt 3f
     cmp r5,#'9'          @ character is not a number
     bgt 3f
     /* character is a number */
     sub r5,#48
-    ldr r1,iMaxi         @ check the overflow of the register    
+    ldr r1,iMaxi         @ check the overflow of the register
     cmp r0,r1
     bgt 99f              @ overflow error
-    mul r0,r2,r0         @ multiply par factor 10 
-    add r0,r5            @ add to  r0 
+    mul r0,r2,r0         @ multiply par factor 10
+    add r0,r5            @ add to  r0
 3:
-    add r3,r3,#1         @ advance to the next position 
-    ldrb r5,[r4,r3]      @ load byte 
+    add r3,r3,#1         @ advance to the next position
+    ldrb r5,[r4,r3]      @ load byte
     cmp r5,#0            @ end of string -> end routine
     beq 4f
     cmp r5,#0x0A            @ end of string -> end routine
     beq 4f
-    b 2b                 @ loop 
+    b 2b                 @ loop
 4:
-    cmp r6,#1            @ test r6 for sign 
+    cmp r6,#1            @ test r6 for sign
     moveq r1,#-1
-    muleq r0,r1,r0       @ if negatif, multiply par -1 
+    muleq r0,r1,r0       @ if negatif, multiply par -1
     b 100f
 99:  /* overflow error */
     ldr r0,=szMessErrDep
     bl   affichageMess
     mov r0,#0            @ return  zero  if error
 100:
-    pop {r1-r7}          @ restaur other registers 
-    pop {fp,lr}          @ restaur   2 registers 
-    bx lr                @return procedure 
-/* constante program */	
-iMaxi: .int 1073741824	
+    pop {r1-r7}          @ restaur other registers
+    pop {fp,lr}          @ restaur   2 registers
+    bx lr                @return procedure
+/* constante program */
+iMaxi: .int 1073741824
 szMessErrDep:  .asciz  "Too large: overflow 32 bits.\n"
 .align 4
 
@@ -628,7 +628,7 @@ The usual way to do this is to use the <code>ping</code> utility which waits a s
 
 ```dos
 @echo off
-set /p Seconds=Enter the number of seconds to sleep: 
+set /p Seconds=Enter the number of seconds to sleep:
 set /a Seconds+=1
 echo Sleeping ...
 ping -n %Seconds% localhost >nul 2>&1
@@ -641,7 +641,7 @@ A similar trick can be used to wait a certain number of milliseconds. The <code>
 
 ```dos
 @echo off
-set /p MilliSeconds=Enter the number of milliseconds to sleep: 
+set /p MilliSeconds=Enter the number of milliseconds to sleep:
 echo Sleeping ...
 ping -n 1 -w %MilliSeconds% 1.2.3.4 >nul 2>&1
 echo Awake!
@@ -654,7 +654,7 @@ Starting with Windows Vista there is a command-line utility to wait a number of 
 
 ```dos
 @echo off
-set /p Seconds=Enter the number of seconds to sleep: 
+set /p Seconds=Enter the number of seconds to sleep:
 echo Sleeping ...
 timeout /t %Seconds% /nobreak >nul
 echo Awake!
@@ -684,8 +684,8 @@ Whilst sleeping BBC BASIC for Windows periodically tests for the ESCape key bein
 The function <tt>sleep</tt> needs seconds, which are read from the standard input.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <unistd.h>
 
 int main()
@@ -727,8 +727,8 @@ class Program
 {{works with|C++11}}
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <thread>
 #include <chrono>
 int main()
@@ -746,8 +746,8 @@ int main()
 {{works with|POSIX}}
 
 
-```cpp>#include <unistd.h
-
+```cpp
+#include <unistd.h>
 #include <iostream>
 
 using namespace std;
@@ -783,7 +783,7 @@ SLEEP
 SAMPLES>do ^SLEEP
 How long to sleep in seconds?: 7.25
 Sleeping... time is 14:48:29.27
-Awake!  Time is 14:48:36.55            
+Awake!  Time is 14:48:36.55
 
 ```
 
@@ -996,7 +996,7 @@ program Sleep type BasicProgram{}
     function main()
     	SysLib.writeStdout("Sleeping!");
         sysLib.wait(15); // waits for 15 seconds
-        SysLib.writeStdout("Awake!");	
+        SysLib.writeStdout("Awake!");
     end
 
 end
@@ -1007,12 +1007,12 @@ end
 ## Eiffel
 
 
-The feature <code lang="eiffel">sleep</code> is defined in the library class EXECUTION_ENVIRONMENT. So the demonstration class APPLICATION inherits from EXECUTION_ENVIRONMENT in order to make <code lang="eiffel">sleep</code> available. 
+The feature <code lang="eiffel">sleep</code> is defined in the library class EXECUTION_ENVIRONMENT. So the demonstration class APPLICATION inherits from EXECUTION_ENVIRONMENT in order to make <code lang="eiffel">sleep</code> available.
 
 <code lang="eiffel">sleep</code> takes an argument which declares the number of nanoseconds to suspend the thread's execution.
 
 
-```eiffel 
+```eiffel
 class
     APPLICATION
 inherit
@@ -1050,7 +1050,7 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     int sleep := console.readLine().toInt();
@@ -1080,7 +1080,7 @@ sleep.(sec)
 
 ## Emacs Lisp
 
- 
+
 ```lisp
 (let ((seconds (read-number "Time in seconds: ")))
   (message "Sleeping ...")
@@ -1151,7 +1151,7 @@ which is the way it is implemented in the <tt>timer</tt> module.
 ```fsharp
 open System
 open System.Threading
- 
+
 [<EntryPoint>]
 let main args =
     let sleep = Convert.ToInt32(Console.ReadLine())
@@ -1215,7 +1215,7 @@ Output:
 
 ```txt
 
-Enter a time to sleep: 
+Enter a time to sleep:
 5sec
 sleeping ...
 awake!
@@ -1478,7 +1478,7 @@ print,'Awake!'
 ## J
 
 
-'''Solution''': 
+'''Solution''':
 
 ```j
 sleep =: 6!:3
@@ -1491,7 +1491,7 @@ sleeping=: monad define
 ```
 
 
-'''Example''': 
+'''Example''':
 
 ```j
    sleeping 0.500          NB.  Sleep 500 milliseconds
@@ -1748,7 +1748,7 @@ Module CheckIt {
       Input "Input a number of milliseconds to sleep:", N
       Print "Sleeping..."
       Wait N
-      Print "Awake" 
+      Print "Awake"
 }
 CheckIt
 
@@ -1771,8 +1771,8 @@ sleep := proc(secs)
 
 ## Mathematica
 
-This function, as you can probably guess, takes its argument in seconds. 
-While this function does tie up execution (but not with a busy wait), the Mathematica front end remains fully functional and can be used to stop the sleeping with Evaluation -> Abort Evaluation. 
+This function, as you can probably guess, takes its argument in seconds.
+While this function does tie up execution (but not with a busy wait), the Mathematica front end remains fully functional and can be used to stop the sleeping with Evaluation -> Abort Evaluation.
 
 
 ```Mathematica
@@ -1792,7 +1792,7 @@ function sleep()
     disp('Sleeping...');
     pause(time);
     disp('Awake!');
-    
+
 end
 ```
 
@@ -1867,7 +1867,7 @@ method runSample(arg) public static
 
 
 ## NewLISP
- 
+
 
 ```NewLISP
 (println "Sleeping..." )
@@ -1878,7 +1878,7 @@ method runSample(arg) public static
 
 
 ## Nim
- 
+
 
 ```Nim
 import os, strutils
@@ -1992,7 +1992,7 @@ Say time()
 14:23:50
 ```
 
-       
+
 
 ## Oz
 
@@ -2256,7 +2256,7 @@ rosetta_sleep(Time) :-
 Sleeping is performed with Delay() and a value in milliseconds.  The time is accurate to approximately +/- 15 milliseconds.
 
 ```PureBasic
-If OpenConsole()  
+If OpenConsole()
 
   Print("Enter a time(milliseconds) to sleep: ")
   x.i = Val(Input())
@@ -2295,7 +2295,7 @@ The call to flush.console is only needed if buffering is turned on.  See [http:/
 sleep <- function(time=1)
 {
    message("Sleeping...")
-   flush.console()      
+   flush.console()
    Sys.sleep(time)
    message("Awake!")
 }
@@ -2392,7 +2392,7 @@ This REXX version supplied   ''as is''   works with   (without the accompanying 
 :::* PC/REXX
 :::* Personal REXX
 
-Note:   the above two REXX interpreters support fractional seconds. 
+Note:   the above two REXX interpreters support fractional seconds.
 
 ```rexx
 /*REXX program sleeps  X  seconds  (the number of seconds is supplied via the argument).*/
@@ -2491,7 +2491,7 @@ noValue: !sigl=sigl;  call er 17, !fid(2)  !fid(3)  !sigl  condition('D')  sourc
 syntax:  !sigl=sigl;  call er 13, !fid(2)  !fid(3)  !sigl  !cal()  condition('D')  sourceline(!sigl)
 ```
 
-Coding note:   the   '''!'''   subroutines  (above) deal mostly with determining what version of REXX is being invoked and what operating system is being used;   and based on that information, appropriate flags (variables) are set.   This is an example of a robust boilerplate code checking for various versions of REXX and operating systems, and it also defines additional flags not used within this particular program. 
+Coding note:   the   '''!'''   subroutines  (above) deal mostly with determining what version of REXX is being invoked and what operating system is being used;   and based on that information, appropriate flags (variables) are set.   This is an example of a robust boilerplate code checking for various versions of REXX and operating systems, and it also defines additional flags not used within this particular program.
 
 Programming note:   The subroutine   '''$ERR'''   isn't included here; so here is the gist of the error messages:
 ::*   er 59       too many arguments specified for the ─── DELAY ─── command.
@@ -2551,7 +2551,7 @@ use std::{io, time, thread};
 
 fn main() {
     println!("How long should we sleep in milliseconds?");
-    
+
     let mut sleep_string = String::new();
 
     io::stdin().read_line(&mut sleep_string)
@@ -2561,7 +2561,7 @@ fn main() {
                                        .parse()
                                        .expect("Not an integer");
     let sleep_duration = time::Duration::from_millis(sleep_timer);
-    
+
     println!("Sleeping...");
     thread::sleep(sleep_duration);
     println!("Awake!");
@@ -2779,7 +2779,7 @@ Define seconds() = Func
   Return ((hms[1] * 60 + hms[2]) * 60) + hms[3]
 EndFunc
 ClockOn
-  
+
 Prompt dur_secs
 Disp "Sleeping..."
 seconds()→st
@@ -2882,7 +2882,7 @@ End Function
 
 ```VBScript
 
-iSeconds=InputBox("Enter a time in seconds to sleep: ","Sleep Example for RosettaCode.org")    
+iSeconds=InputBox("Enter a time in seconds to sleep: ","Sleep Example for RosettaCode.org")
 WScript.Echo "Sleeping..."
 WScript.Sleep iSeconds*1000		'Sleep is done in Milli-Seconds
 WScript.Echo "Awake!"

@@ -10,19 +10,19 @@ categories = []
 tags = []
 +++
 
-{{task|Programming environment operations}} 
+{{task|Programming environment operations}}
 [[Category:Date and time]]
 {{omit from|Batch File|No way to programmatically retrieving the current or elapsed time. Only human-readable formats available, which can't be parsed accurately.}}
 {{omit from|GUISS}}
 {{omit from|ML/I}}
 
 ;Task:
-Write a program which uses a timer (with the least granularity available 
+Write a program which uses a timer (with the least granularity available
 on your system) to time how long a function takes to execute.
 
-Whenever possible, use methods which measure only the processing time used 
-by the current process; instead of the difference in [[system time]] 
-between start and finish, which could include time used by 
+Whenever possible, use methods which measure only the processing time used
+by the current process; instead of the difference in [[system time]]
+between start and finish, which could include time used by
 other processes on the computer.
 
 This task is intended as a subtask for [[Measure relative performance of sorting algorithms implementations]].
@@ -34,16 +34,16 @@ This task is intended as a subtask for [[Measure relative performance of sorting
 ## 8051 Assembly
 
 
-Using a timer requires knowledge on two things: the oscillator frequency 
+Using a timer requires knowledge on two things: the oscillator frequency
 (which limits the maximum precision) and the desired precision.
-This code uses a common crystal of 11.0592MHz - but provides values 
-for a few others as examples. 
-This code also uses a precision of 4 bits (2^(-4) = 0.0625 seconds). 
-Those familiar with binary can think of this as a right shift of 4 
-of the multi-byte value, where the low 4 bits represent the fraction of a second, 
-and the remaining bits represent whole seconds. 
-The maximum time value depends on the number of bytes used and the precision. 
-For x bytes and p precision, the maximum value you can count to 
+This code uses a common crystal of 11.0592MHz - but provides values
+for a few others as examples.
+This code also uses a precision of 4 bits (2^(-4) = 0.0625 seconds).
+Those familiar with binary can think of this as a right shift of 4
+of the multi-byte value, where the low 4 bits represent the fraction of a second,
+and the remaining bits represent whole seconds.
+The maximum time value depends on the number of bytes used and the precision.
+For x bytes and p precision, the maximum value you can count to
 is (256^x - 1) * 2^(-p).
 
 
@@ -100,8 +100,8 @@ inc_reg_:
 	pop 0
 	pop acc
 	pop psw
-endm	
-	
+endm
+
 ORG RESET
 	jmp init
 ORG TIMER0
@@ -113,14 +113,14 @@ timer_0: ; interrupt every 6.25ms
 	increment_counter
 	start_timer
 	reti
-		
+
 init:
 	mov sp, #TEND
 	setb ea			; enable interrupts
 	setb et0		; enable timer0 interrupt
 	mov tmod, #01h		; timer0 16-bit mode
 	reset_timer
-	
+
 	; reset timer counter registers
 	clr a
 	mov r0, #TSTART
@@ -128,14 +128,14 @@ clear:
 	mov @r0, a
 	inc r0
 	cjne r0, #TEND, clear
-	
+
 	start_timer
 	call function		; the function to time
 	stop_timer
-	
+
 	; at this point the registers from TSTART
 	; through TEND indicate the current time
-	; multiplying the 8/16/24/etc length value by 0.0625 (2^-4) gives 
+	; multiplying the 8/16/24/etc length value by 0.0625 (2^-4) gives
 	; the elapsed number of seconds
 	; e.g. if the three registers were 02a0f2h then the elapsed time is:
 	; 02a0f2h = 172,274 and 172,274 * 0.0625 = 10,767.125 seconds
@@ -145,9 +145,9 @@ clear:
 	; (mid byte) a0h = 160 and 160 * 2^(8-4) = 2560
 	; (low byte) f2h = 242 and 242 * 2^(0-4) = 15.125
 	; 8192 + 2560 + 15.125 = 10,767.125 seconds
-	
+
 	jmp $
-	
+
 function:
 	; do whatever here
 	ret
@@ -170,7 +170,7 @@ END
 Output (for Clozure):
 
 ```txt
-; (EV-REC *RETURN-LAST-ARG3* ...) took 
+; (EV-REC *RETURN-LAST-ARG3* ...) took
 ; 2.53 seconds realtime, 2.48 seconds runtime
 ; (160,001,648 bytes allocated).
 (NIL)
@@ -208,7 +208,7 @@ procedure Query_Performance is
    end Sum;
    Id_Access : Proc_Access := Identity'access;
    Sum_Access : Proc_Access := Sum'access;
-   
+
 begin
    Put_Line("Identity(4) takes" & Duration'Image(Time_It(Id_Access, 4)) & " seconds.");
    Put_Line("Sum(4) takes:" & Duration'Image(Time_It(Sum_Access, 4)) & " seconds.");
@@ -312,7 +312,7 @@ szCarriageReturn:  .asciz "\n"
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 .align 4
 dwDebut:           .skip 8
 dwFin:             .skip 8
@@ -320,8 +320,8 @@ dwFin:             .skip 8
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                     @ entry of program 
+.global main
+main:                                     @ entry of program
     adr r0,mult                           @ function address to measure
     mov r1,#1                             @ parameter 1 function
     mov r2,#2                             @ parameter 2 function
@@ -338,8 +338,8 @@ main:                                     @ entry of program
 99:
     @ error
     ldr r0,iAdrszMessError
-    bl affichageMess       
-100:                                       @ standard end of the program 
+    bl affichageMess
+100:                                       @ standard end of the program
     mov r0, #0                             @ return code
     mov r7, #EXIT                          @ request to exit program
     svc #0                                 @ perform the system call
@@ -384,7 +384,7 @@ timeMesure:
     ldr r0,iAdrdwDebut                   @ start time area
     mov r1,#0
     mov r7, #0x4e                        @ call system gettimeofday
-    svc #0 
+    svc #0
     cmp r0,#0                            @ error ?
     blt 100f                             @ return error
     ldr r7,iMax                          @ run number
@@ -398,7 +398,7 @@ timeMesure:
     ldr r0,iAdrdwFin                     @ end time area
     mov r1,#0
     mov r7, #0x4e                        @ call system gettimeofday
-    svc #0 
+    svc #0
     cmp r0,#0                            @ error ?
     blt 100f                             @ return error
                                          @ compute time
@@ -414,7 +414,7 @@ timeMesure:
     sublt r2,#1                          @ if negative sub 1 seconde to secondes
     ldr r1,iSecMicro
     addlt r3,r1                          @ and add 1000000 to microsecondes number
-    mov r0,r2                            @ conversion secondes 
+    mov r0,r2                            @ conversion secondes
     ldr r1,iAdrsSecondes
     bl conversion10
     mov r0,r3                            @ conversion microsecondes
@@ -426,11 +426,11 @@ timeMesure:
     cmp r8,#NBMEASURE
     ble 1b
     ldr r0,iAdrszMessSep                 @ display separator
-    bl affichageMess   
+    bl affichageMess
 100:
     pop {r1-r8,lr}                       @ restaur registers
     bx lr                                @ function return
-iMax:                 .int N1 
+iMax:                 .int N1
 iAdrdwDebut:          .int dwDebut
 iAdrdwFin:            .int dwFin
 iSecMicro:            .int 1000000
@@ -440,44 +440,44 @@ iAdrszMessTemps:      .int szMessTemps
 iAdrszMessSep:        .int szMessSep
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                   @ save  registres
-    mov r2,#0                               @ counter length 
-1:                                          @ loop length calculation 
-    ldrb r1,[r0,r2]                         @ read octet start position + index 
-    cmp r1,#0                               @ if 0 its over 
-    addne r2,r2,#1                          @ else add 1 in the length 
-    bne 1b                                  @ and loop 
-                                            @ so here r2 contains the length of the message 
-    mov r1,r0                               @ address message in r1 
-    mov r0,#STDOUT                          @ code to write to the standard output Linux 
-    mov r7, #WRITE                          @ code call system "write" 
-    svc #0                                  @ call systeme 
-    pop {r0,r1,r2,r7,lr}                    @ restaur registers */ 
-    bx lr                                   @ return  
+    mov r2,#0                               @ counter length
+1:                                          @ loop length calculation
+    ldrb r1,[r0,r2]                         @ read octet start position + index
+    cmp r1,#0                               @ if 0 its over
+    addne r2,r2,#1                          @ else add 1 in the length
+    bne 1b                                  @ and loop
+                                            @ so here r2 contains the length of the message
+    mov r1,r0                               @ address message in r1
+    mov r0,#STDOUT                          @ code to write to the standard output Linux
+    mov r7, #WRITE                          @ code call system "write"
+    svc #0                                  @ call systeme
+    pop {r0,r1,r2,r7,lr}                    @ restaur registers */
+    bx lr                                   @ return
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                         @ save registers 
+    push {r1-r4,lr}                         @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 1:                                          @ start loop
     bl divisionpar10                        @ r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                              @ digit
     strb r1,[r3,r2]                         @ store digit on area
-    cmp r0,#0                               @ stop if quotient = 0 
-    subne r2,#1                               @ previous position    
+    cmp r0,#0                               @ stop if quotient = 0
+    subne r2,#1                               @ previous position
     bne 1b                                  @ else loop
                                             @ end replaces digit in front of area
     mov r4,#0
 2:
-    ldrb r1,[r3,r2] 
+    ldrb r1,[r3,r2]
     strb r1,[r3,r4]                         @ store in area begin
     add r4,#1
     add r2,#1                               @ previous position
@@ -490,11 +490,11 @@ conversion10:
     cmp r4,#LGZONECAL                       @ end
     ble 3b
 100:
-    pop {r1-r4,lr}                          @ restaur registres 
+    pop {r1-r4,lr}                          @ restaur registres
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
@@ -503,14 +503,14 @@ conversion10:
 divisionpar10:
   /* r0 contains the argument to be divided by 10 */
     push {r2-r4}                           @ save registers  */
-    mov r4,r0  
+    mov r4,r0
     mov r3,#0x6667                         @ r3 <- magic_number  lower
     movt r3,#0x6666                        @ r3 <- magic_number  upper
-    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) 
+    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0)
     mov r2, r2, ASR #2                     @ r2 <- r2 >> 2
     mov r1, r0, LSR #31                    @ r1 <- r0 >> 31
-    add r0, r2, r1                         @ r0 <- r2 + r1 
-    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5 
+    add r0, r2, r1                         @ r0 <- r2 + r1
+    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                   @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2-r4}
     bx lr                                  @ return
@@ -599,7 +599,7 @@ time(function, parameter=0)
 ```
 
 
-###  Using QueryPerformanceCounter 
+###  Using QueryPerformanceCounter
 
 QueryPerformanceCounter allows even more precision:
 
@@ -693,7 +693,7 @@ goto:eof
 
 :clock
 if not defined timed set timed=0
-for /F "tokens=1-4 delims=:.," %%a in ("%time%") do ( 
+for /F "tokens=1-4 delims=:.," %%a in ("%time%") do (
 set /A timed = "(((1%%a - 100) * 60 + (1%%b - 100)) * 60 + (1%%c - 100))  * 100 + (1%%d - 100)- %timed%"
 )
 goto:eof
@@ -749,8 +749,8 @@ On some system (like GNU/Linux) to be able to use the <tt>clock_gettime</tt> fun
 <code>CLOCK_PROCESS_CPUTIME_ID</code> is preferred when available (eg. Linux kernel 2.6.12 up), being CPU time used by the current process.  (<code>CLOCK_MONOTONIC</code> generally includes CPU time of unrelated processes, and may be drifted by <code>adjtime()</code>.)
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <time.h>
 
 int identity(int x) { return x; }
@@ -796,8 +796,8 @@ int main()
 ## C++
 
 
-```cpp>#include <ctime
-
+```cpp
+#include <ctime>
 #include <iostream>
 using namespace std;
 
@@ -877,7 +877,7 @@ class Program {
         end = DateTime.Now;
 
         Console.WriteLine("DoSomething() took " + (end - start).TotalMilliseconds + "ms");
-    }    
+    }
 
     static void DoSomething() {
         Thread.Sleep(1000);
@@ -898,8 +898,8 @@ Output:
 ```clojure
 
   (defn fib []
-    (map first 
-      (iterate 
+    (map first
+      (iterate
         (fn [[a b]] [b (+ a b)])
         [0 1])))
 
@@ -1065,22 +1065,22 @@ import system'routines;
 import system'threading;
 import system'math;
 import extensions;
- 
+
 someProcess()
 {
     threadControl.sleep(1000);
- 
+
     new Range(0,10000).filterBy:(x => x.mod:2 == 0).summarize();
 }
- 
+
 public program()
 {
     var start := now;
- 
+
     someProcess();
- 
+
     var end := now;
- 
+
     console.printLine("Time elapsed in msec:",(end - start).Milliseconds)
 }
 ```
@@ -1200,7 +1200,7 @@ let myfunc data =
 
 Output:
  Running time: 0.002888635 seconds
- 
+
  Additional information was collected.
  dispatch-stats.  - Print method dispatch statistics
  gc-events.       - Print all garbage collection events
@@ -1241,10 +1241,10 @@ c Main Program
       program timing
       integer(kind=8) start,finish,rate
       call system_clock(count_rate=rate)
-      call system_clock(start)         
+      call system_clock(start)
 c Here comes the function we want to time
       call do_something()
-      call system_clock(finish)         
+      call system_clock(finish)
       write(6,*) 'Elapsed Time in seconds:',float(finish-start)/rate
       return
       end
@@ -1592,9 +1592,9 @@ every put(gcol  := [], -&collections)            # baseline collections count
 every put(alloc := [], -&allocated)              # . total allocated space by region
 every put(used  := [], -&storage)                # . currently used space by region - no total
 every put(size  := [], -&regions)                # . current size of regions        - no total
-           
-write("Performance and Timing measurement for ",image(f),":")  
-runtime := &time                                 # base time  
+
+write("Performance and Timing measurement for ",image(f),":")
+runtime := &time                                 # base time
 f()
 write("Execution time=",&time-runtime," ms.")
 
@@ -1609,7 +1609,7 @@ push(used,"N/A","currently used:")
 push(size,"N/A","current size:")
 
 write("Memory Region and Garbage Collection Summary (delta):")
-every (i := 0) <:= *!(title|gcol|alloc|used|size)   
+every (i := 0) <:= *!(title|gcol|alloc|used|size)
 every x := (title|gcol|alloc|used|size) do {
    f := left
    every writes(f(!x,i + 3)) do f := right
@@ -1694,7 +1694,7 @@ public class TimeIt {
 		final ThreadMXBean threadMX = ManagementFactory.getThreadMXBean();
 		assert threadMX.isCurrentThreadCpuTimeSupported();
 		threadMX.setThreadCpuTimeEnabled(true);
-		
+
 		long start, end;
 		start = threadMX.getCurrentThreadCpuTime();
 		countTo(100000000);
@@ -1704,9 +1704,9 @@ public class TimeIt {
 		countTo(1000000000L);
 		end = threadMX.getCurrentThreadCpuTime();
 		System.out.println("Counting to 1000000000 takes "+(end-start)/1000000+"ms");
- 
+
 	}
- 
+
 	public static void countTo(long x){
 		System.out.println("Counting...");
 		for(long i=0;i<x;i++);
@@ -1800,7 +1800,7 @@ fun main(args: Array<String>) {
     val counts = intArrayOf(100_000_000, 1_000_000_000)
     val threadMX = ManagementFactory.getThreadMXBean()
     assert(threadMX.isCurrentThreadCpuTimeSupported)
-    threadMX.isThreadCpuTimeEnabled = true 
+    threadMX.isThreadCpuTimeEnabled = true
     for (count in counts) {
         val start = threadMX.currentThreadCpuTime
         countTo(count)
@@ -2314,7 +2314,7 @@ function fun($n){
         }
 
     }
-    $res   
+    $res
 }
 "$((Measure-Command {fun 10000}).TotalSeconds) Seconds"
 
@@ -2403,19 +2403,19 @@ This version still relies on the Windows API but does not make use of any additi
 
 ```PureBasic
 Procedure.f ticksHQ(reportIfPresent = #False)
-  Static maxfreq.q 
-  Protected T.q 
-  If reportIfPresent Or maxfreq = 0 
-    QueryPerformanceFrequency_(@maxfreq) 
+  Static maxfreq.q
+  Protected T.q
+  If reportIfPresent Or maxfreq = 0
+    QueryPerformanceFrequency_(@maxfreq)
     If maxfreq
       ProcedureReturn 1.0
     Else
       ProcedureReturn 0
-    EndIf 
-  EndIf 
-  QueryPerformanceCounter_(@T) 
+    EndIf
+  EndIf
+  QueryPerformanceCounter_(@T)
   ProcedureReturn T / maxfreq ;Result is in milliseconds
-EndProcedure 
+EndProcedure
 
 If OpenConsole()
   Define timed.f, cnt
@@ -2456,11 +2456,11 @@ def usec(function, arguments):
                          setup='from %(modname)s import %(funcname)s; args=%(arguments)r' % vars())
     try:
         t, N = 0, 1
-        while t < 0.2:            
-            t = min(timer.repeat(repeat=3, number=N))            
+        while t < 0.2:
+            t = min(timer.repeat(repeat=3, number=N))
             N *= 10
         microseconds = round(10000000 * t / N, 1) # per loop
-        return microseconds 
+        return microseconds
     except:
         timer.print_exc(file=sys.stderr)
         raise
@@ -2588,15 +2588,15 @@ Finer measurements are not possible with the standard implementation.
 
 ### elapsed time version
 
-REXX doesn't have a language feature for obtaining true CPU time (except under 
+REXX doesn't have a language feature for obtaining true CPU time (except under
 
-IBM mainframes which have commands that can retrieve such times), but it does 
+IBM mainframes which have commands that can retrieve such times), but it does
 
 have a built-in function for elapsed time(s).
 
-The main reason for the true CPU time omission is that REXX was developed under VM/CMS and 
+The main reason for the true CPU time omission is that REXX was developed under VM/CMS and
 
-there's a way to easily query the host (VM/CP) to indicate how much   ''true''   CPU time was used by 
+there's a way to easily query the host (VM/CP) to indicate how much   ''true''   CPU time was used by
 
 (normally) your own userID.  The result can then be placed into a REXX variable (as an option).
 
@@ -2650,7 +2650,7 @@ function SILLY took 0.44 seconds for 100000 iterations.
 
 ```txt
 
-function SILLY took 0.69 seconds for 100000 iterations. 
+function SILLY took 0.69 seconds for 100000 iterations.
 
 ```
 
@@ -2662,7 +2662,7 @@ This version   ''only''   works with Regina REXX as the   '''J'''   option   (fo
 
 Since the   '''silly'''   function (by far) consumes the bulk of the CPU time of the REXX program, what is
 
-being measured is essentially the same as the wall clock time (duration) of the function execution;   the 
+being measured is essentially the same as the wall clock time (duration) of the function execution;   the
 
 overhead of the invocation is minimal compared to the overall time used.
 
@@ -2774,7 +2774,7 @@ Or with a function:
 ```scala
 
 def count(i:Int) = for(j <- 1 to i){}
-	
+
 println(time (count(10000000)))
 
 ```
@@ -2797,10 +2797,10 @@ println(time (count(10000000)))
 $ include "seed7_05.s7i";
   include "time.s7i";
   include "duration.s7i";
- 
+
 const func integer: identity (in integer: x) is
   return x;
- 
+
 const func integer: sum (in integer: num) is func
   result
     var integer: result is 0;
@@ -2812,7 +2812,7 @@ const func integer: sum (in integer: num) is func
       result +:= number;
     end for;
   end func;
- 
+
 const func duration: timeIt (ref func integer: aFunction) is func
   result
     var duration: result is duration.value;
@@ -2823,7 +2823,7 @@ const func duration: timeIt (ref func integer: aFunction) is func
     ignore(aFunction);
     result := time(NOW) - before;
   end func;
- 
+
 const proc: main is func
   begin
     writeln("Identity(4) takes " <& timeIt(identity(4)));
@@ -2899,7 +2899,7 @@ fac_iter 7332/s     106%       --
 
 ```smalltalk
 
-Time millisecondsToRun: [ 
+Time millisecondsToRun: [
 	Transcript show: 2000 factorial ].
 
 ```
@@ -2959,7 +2959,7 @@ end
 
 ## Tcl
 
-The Tcl <code>time</code> command returns the real time elapsed 
+The Tcl <code>time</code> command returns the real time elapsed
 averaged over a number of iterations.
 
 ```tcl
@@ -3124,20 +3124,20 @@ time 1+1
 
 ## XPL0
 
-This works fine under pure DOS but has problems under Windows. 
-Windows can execute other processes, although it could be argued 
-that this should be included as part of the total time 
-to accomplish the task at hand. 
-DOS does go off to service a timer interrupt, 
-but it's usually very fast, although beware of TSRs 
+This works fine under pure DOS but has problems under Windows.
+Windows can execute other processes, although it could be argued
+that this should be included as part of the total time
+to accomplish the task at hand.
+DOS does go off to service a timer interrupt,
+but it's usually very fast, although beware of TSRs
 that hook this interrupt handler.
 
-There's a more serious problem with the GetTime intrinsic 
-under Windows XP. 
-GetTime provides microsecond resolution by combining 
-the BIOS timer interrupt count at location 046C 
-with the count in the 8254 chip (or its equivalent). 
-Unfortunately, Windows virtualizes the 8254 
+There's a more serious problem with the GetTime intrinsic
+under Windows XP.
+GetTime provides microsecond resolution by combining
+the BIOS timer interrupt count at location 046C
+with the count in the 8254 chip (or its equivalent).
+Unfortunately, Windows virtualizes the 8254
 and thus the two values can be out of sync.
 
 
@@ -3168,7 +3168,7 @@ IntOut(0, T1-T0); Text(0, " microseconds^M^J");
 ```Yabasic
 sub count(n)
 	local i
-	
+
 	for i = 1 to n
 	next i
 end sub

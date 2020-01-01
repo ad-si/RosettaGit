@@ -103,23 +103,23 @@ Decoding the indices back to the original symbol order:
 | brooo
 | 'orbacdefghijklmnpqstuvwxyz'
 |-
-| 1 17 15 0 0 '''5''' 
+| 1 17 15 0 0 '''5'''
 | broood
 | 'orbacdefghijklmnpqstuvwxyz'
 |}
 
 ;Task:
-* Encode and decode the following three strings of characters using the symbol table of the characters 'a'-to-'z' as above. 
+* Encode and decode the following three strings of characters using the symbol table of the characters 'a'-to-'z' as above.
 * Show the strings and their encoding here.
 * Add a check to ensure that the decoded string is the same as the original.
 
 
 
-The strings are: 
+The strings are:
 
-   <big> broood       </big>   
+   <big> broood       </big>
    <big> bananaaa     </big>
-   <big> hiphophiphop </big> 
+   <big> hiphophiphop </big>
 
 (Note the spellings.)
 
@@ -134,23 +134,23 @@ The strings are:
 ```Ada
 with Ada.Text_IO;
 
-procedure Move_To_Front is 
-   
+procedure Move_To_Front is
+
    subtype Lower_Case is Character range 'a' .. 'z';
    subtype Index is Integer range 0 .. 25;
    type Table is array (Index) of Lower_Case;
    Alphabet: constant Table := "abcdefghijklmnopqrstuvwxyz";
    type Number_String is array(Positive range <>) of Natural;
-   
+
    function Encode(S: String) return Number_String is
       Key: Table := Alphabet;
-   
+
       function Encode(S: String; Tab: in out Table) return Number_String is
-	 
-	 procedure Look_Up(A: in out Table; Ch: Lower_Case; Pos: out Index) is  
+
+	 procedure Look_Up(A: in out Table; Ch: Lower_Case; Pos: out Index) is
 	 begin
 	    for I in A'Range loop
-	       if A(I) = Ch then 
+	       if A(I) = Ch then
 		  Pos := I;
 		  A := A(Pos) & A(A'First .. Pos-1) & A(Pos+1 .. A'Last);
 		  return;
@@ -158,33 +158,33 @@ procedure Move_To_Front is
 	    end loop;
 	    raise Program_Error with "unknown character";
 	 end Look_Up;
-	 
+
 	 Empty: Number_String(1 .. 0);
-	 Result: Natural;   
+	 Result: Natural;
       begin
-	 if S'Length = 0 then 
+	 if S'Length = 0 then
 	    return Empty;
 	 else
 	    Look_Up(Tab, S(S'First), Result);
 	    return Result & Encode(S(S'First+1 .. S'Last), Tab);
 	 end if;
       end Encode;
-   
+
    begin
       return Encode(S, Key);
    end Encode;
-      
+
    function Decode(N: Number_String) return String is
       Key: Table := Alphabet;
-   
+
       function Decode(N: Number_String; Tab: in out Table) return String is
-	 
-	 procedure Look_Up(A: in out Table; Pos: Index; Ch: out Lower_Case) is  
+
+	 procedure Look_Up(A: in out Table; Pos: Index; Ch: out Lower_Case) is
 	 begin
 	    Ch := A(Pos);
 	    A := A(Pos) & A(A'First .. Pos-1) & A(Pos+1 .. A'Last);
 	 end Look_Up;
-	 
+
 	 Result: String(N'Range);
       begin
 	 for I in N'Range loop
@@ -192,11 +192,11 @@ procedure Move_To_Front is
 	 end loop;
 	 return Result;
       end Decode;
-      
+
    begin
       return Decode(N, Key);
    end Decode;
-      
+
    procedure Encode_Write_Check(S: String) is
       N: Number_String := Encode(S);
       T: String := Decode(N);
@@ -208,7 +208,7 @@ procedure Move_To_Front is
       end loop;
       Ada.Text_IO.Put_Line(". This decodes to '" & T & "'. " & Check);
    end Encode_Write_Check;
-   
+
 begin
    Encode_Write_Check("broood");
    Encode_Write_Check("bananaaa");
@@ -490,7 +490,7 @@ hiphophiphop	7,8,15,2,15,2,2,3,2,2,3,2	hiphophiphop
   =   string symboltable
     .   !arg:(?string.?symboltable)
       &   vap
-        $ ( ( 
+        $ ( (
             =   A Z i
               .   !symboltable:?A [?i !arg ?Z
                 & !arg !A !Z:?symboltable
@@ -504,7 +504,7 @@ hiphophiphop	7,8,15,2,15,2,2,3,2,2,3,2	hiphophiphop
     .   !arg:(?indices.?symboltable)
       &   str
         $ ( map
-          $ ( ( 
+          $ ( (
               =   A Z symbol
                 .   !symboltable:?A [!arg %?symbol ?Z
                   & !symbol !A !Z:?symboltable
@@ -539,8 +539,8 @@ hiphophiphop	7,8,15,2,15,2,2,3,2,2,3,2	hiphophiphop
 ## C
 
 
-```c>#include<stdio.h
-
+```c
+#include <stdio.h>
 #include<stdlib.h>
 #include<string.h>
 
@@ -789,7 +789,7 @@ namespace MoveToFront
                         break;
                     }
                 }
-            }         
+            }
             return output.ToArray();
         }
 
@@ -809,7 +809,7 @@ namespace MoveToFront
         {
             string[] testInputs = new string[] { "broood", "bananaaa", "hiphophiphop" };
             int[] encoding;
-            foreach (string s in testInputs) 
+            foreach (string s in testInputs)
             {
                 Console.WriteLine($"Encoding for '{s}':");
                 encoding = Encode(s);
@@ -878,7 +878,7 @@ hiphophiphop encodes to [7 8 15 2 15 2 2 3 2 2 3 2] which decodes back to hiphop
   (cons x (remove x xs)))
 
 (defun enc (text table)
-  (map 'list 
+  (map 'list
        (lambda (c)
                (let ((idx (position c table)))
                  (setf table (move-to-front c table))
@@ -983,22 +983,22 @@ void main() {
 ```elixir
 defmodule MoveToFront do
   @table  Enum.to_list(?a..?z)
-  
+
   def encode(text), do: encode(to_char_list(text), @table, [])
-  
+
   defp encode([], _, output), do: Enum.reverse(output)
   defp encode([h|t], table, output) do
     i = Enum.find_index(table, &(&1 == h))
     encode(t, move2front(table, i), [i | output])
   end
-  
+
   def decode(indices), do: decode(indices, @table, [])
-  
+
   defp decode([], _, output), do: Enum.reverse(output) |> to_string
   defp decode([h|t], table, output) do
     decode(t, move2front(table, h), [Enum.at(table, h) | output])
   end
-  
+
   def move2front(table, i), do: [Enum.at(table,i) | List.delete_at(table, i)]
 end
 
@@ -1077,7 +1077,7 @@ Dim sHold As New String[]                                         'To store resu
 Dim siCount, siCounter, siPos As Short                            'Various variables
 Dim sOutput, sCode, sWork, sEach As String                        'Various variables
 
-For siCounter = 0 To sToCode.Max                                  'To loop through each 'Sample' 
+For siCounter = 0 To sToCode.Max                                  'To loop through each 'Sample'
   sCode = "abcdefghijklmnopqrstuvwxyz"                            'Set sCode to default setting
   For siCount = 1 To Len(sToCode[siCounter])                      'Loop through each letter in 'Sample'
     sWork = Mid(sToCode[siCounter], siCount, 1)                   'sWork to store the Letter
@@ -1092,7 +1092,7 @@ Next
 
 Print                                                             'Print a blank line
 
-For siCounter = 0 To sHold.Max                                    'To loop through each coded 'Sample' 
+For siCounter = 0 To sHold.Max                                    'To loop through each coded 'Sample'
   sCode = "abcdefghijklmnopqrstuvwxyz"                            'Set sCode to default setting
   For Each sEach In Split(sHold[siCounter], " ")                  'For each 'code' in coded 'Sample'
     sWork = Mid(sCode, Val(sEach) + 1, 1)                         'sWork = the decoded letter
@@ -1110,9 +1110,9 @@ Output:
 
 ```txt
 
-broood = 1 17 15 0 0 5 
-bananaaa = 1 1 13 1 1 1 0 0 
-hiphophiphop = 7 8 15 2 15 2 2 3 2 2 3 2 
+broood = 1 17 15 0 0 5
+bananaaa = 1 1 13 1 1 1 0 0
+hiphophiphop = 7 8 15 2 15 2 2 3 2 2 3 2
 
 1 17 15 0 0 5 = broood
 1 1 13 1 1 1 0 0 = bananaaa
@@ -1339,7 +1339,7 @@ public class MTF{
 		}
 		return output;
 	}
-	
+
 	public static String decode(List<Integer> idxs, String symTable){
 		StringBuilder output = new StringBuilder();
 		StringBuilder s = new StringBuilder(symTable);
@@ -1350,14 +1350,14 @@ public class MTF{
 		}
 		return output.toString();
 	}
-	
+
 	private static void test(String toEncode, String symTable){
 		List<Integer> encoded = encode(toEncode, symTable);
 		System.out.println(toEncode + ": " + encoded);
 		String decoded = decode(encoded, symTable);
 		System.out.println((toEncode.equals(decoded) ? "" : "in") + "correctly decoded to " + decoded);
 	}
-	
+
 	public static void main(String[] args){
 		String symTable = "abcdefghijklmnopqrstuvwxyz";
 		test("broood", symTable);
@@ -1440,14 +1440,14 @@ from decoded:
 # Input is the string to be encoded, st is the initial symbol table (an array)
 # Output: the encoded string (an array)
 def m2f_encode(st):
-  reduce explode[] as $ch 
+  reduce explode[] as $ch
     ( [ [], st];                  # state: [ans, st]
       (.[1]|index($ch)) as $ix
       | .[1] as $st
       | [ (.[0] + [ $ix ]),  [$st[$ix]] + $st[0:$ix] + $st[$ix+1:] ] )
   | .[0];
 
-# Input should be the encoded string (an array) 
+# Input should be the encoded string (an array)
 # and st should be the initial symbol table (an array)
 def m2f_decode(st):
   reduce .[] as $ix
@@ -1464,7 +1464,7 @@ def m2f_decode(st):
 ("abcdefghijklmnopqrstuvwxyz" | explode) as $ST
   | ("broood", "bananaaa", "hiphophiphop")
   | . as $string
-  | m2f_encode($ST) 
+  | m2f_encode($ST)
   | . as $encoded
   | m2f_decode($ST) as $decoded
   | if $string == $decoded then "\($string) => \($encoded) => \($decoded)"
@@ -1554,7 +1554,7 @@ fun encode(s: String): IntArray {
     val result = IntArray(s.length)
     for ((i, c) in s.withIndex()) {
         val index = symbols.indexOf(c)
-        if (index == -1) 
+        if (index == -1)
             throw IllegalArgumentException("$s contains a non-alphabetic character")
         result[i] = index
         if (index == 0) continue
@@ -1577,9 +1577,9 @@ fun decode(a: IntArray): String {
         symbols[0] = result[i]
     }
     return result.joinToString("")
-} 
-              
-fun main(args: Array<String>) {    
+}
+
+fun main(args: Array<String>) {
     val strings = arrayOf("broood", "bananaaa", "hiphophiphop")
     val encoded = Array<IntArray?>(strings.size) { null }
     for ((i, s) in strings.withIndex()) {
@@ -1953,7 +1953,7 @@ sub encode ( Str $word ) {
         @sym[0 .. take (@sym ... $c).end] .= rotate(-1);
     }
 }
- 
+
 sub decode ( @enc ) {
     my @sym = 'a' .. 'z';
     [~] gather for @enc -> $pos {
@@ -1961,7 +1961,7 @@ sub decode ( @enc ) {
         @sym[0..$pos] .= rotate(-1);
     }
 }
- 
+
 use Test;
 plan 3;
 for <broood bananaaa hiphophiphop> -> $word {
@@ -2173,18 +2173,18 @@ Function Test-MTF
     {
         Function Encode
         {
-            Param 
+            Param
             (
                 [Parameter(Mandatory=$true,Position=0)]
                 [string]$word,
-        
+
                 [Parameter(Mandatory=$false)]
                 [string]$SymbolTable = 'abcdefghijklmnopqrstuvwxyz'
             )
             foreach ($letter in $word.ToCharArray())
             {
                 $index = $SymbolTable.IndexOf($letter)
-                
+
                 $prop = [ordered]@{
                     Input = $letter
                     Output = [int]$index
@@ -2200,7 +2200,7 @@ Function Test-MTF
             (
                 [Parameter(Mandatory=$true,Position=0)]
                 [int[]]$index,
-        
+
                 [Parameter(Mandatory=$false)]
                 [string]$SymbolTable = 'abcdefghijklmnopqrstuvwxyz'
             )
@@ -2208,7 +2208,7 @@ Function Test-MTF
             {
                 #Write-host $i -ForegroundColor Red
                 $letter = $SymbolTable.Chars($i)
-                
+
                 $prop = [ordered]@{
                     Input = $i
                     Output = $letter
@@ -2229,7 +2229,7 @@ Function Test-MTF
         #Decoding
         Write-Host "`nDecoding $($Encoded -join ',')" -NoNewline
         $Decoded = (Decode -index $Encoded).output -join ''
-        Write-Host -NoNewline ": $Decoded`n"   
+        Write-Host -NoNewline ": $Decoded`n"
     }
     End{}
 }
@@ -2376,7 +2376,7 @@ Similar to that of the procedural version above.
     (define dec (move-to-front:decode enc))
     (define crt (if (equal? dec str) "correctly" "incorrectly"))
     (printf "~s encodes to ~s, which decodes ~s to ~s.~%" str enc crt dec))
-  
+
   (for-each encode+decode-string '("broood" "bananaaa" "hiphophiphop")))
 ```
 
@@ -2510,22 +2510,22 @@ test("hiphophiphop")
 func encode(s)
         symtab = "abcdefghijklmnopqrstuvwxyz"
         res = ""
-        for i=1 to len(s) 
+        for i=1 to len(s)
              ch = s[i]
              k = substr(symtab, ch)
              res = res + " " + (k-1)
-             for j=k to 2 step -1 
+             for j=k to 2 step -1
                   symtab[j] = symtab[j-1]
              next
              symtab[1] = ch
         next
         return res
- 
+
 func decode(s)
-        s = str2list( substr(s, " ", nl) )        
+        s = str2list( substr(s, " ", nl) )
         symtab = "abcdefghijklmnopqrstuvwxyz"
         res = ""
-        for i=1 to len(s) 
+        for i=1 to len(s)
              k = number(s[i]) + 1
              ch = symtab[k]
              res = res + " " + ch
@@ -2561,9 +2561,9 @@ Use a module as namespace:
 
 ```ruby
 module MoveToFront
-  
+
   ABC = ("a".."z").to_a.freeze
-  
+
   def self.encode(str)
     ar = ABC.dup
     str.chars.each_with_object([]) do |char, memo|
@@ -2571,7 +2571,7 @@ module MoveToFront
       ar = m2f(ar,i)
     end
   end
-  
+
   def self.decode(indices)
     ar = ABC.dup
     indices.each_with_object("") do |i, str|
@@ -2579,12 +2579,12 @@ module MoveToFront
       ar = m2f(ar,i)
     end
   end
-  
+
   private
   def self.m2f(ar,i)
     [ar.delete_at(i)] + ar
   end
-  
+
 end
 
 ['broood', 'bananaaa', 'hiphophiphop'].each do |word|
@@ -2685,12 +2685,12 @@ package rosetta
 import scala.annotation.tailrec
 
 object MoveToFront {
-  /** 
+  /**
    *  Default radix
    */
   private val R = 256
-  
-  /** 
+
+  /**
    *  Default symbol table
    */
   private def symbolTable = (0 until R).map(_.toChar).mkString
@@ -2702,7 +2702,7 @@ object MoveToFront {
     encode(s, symbolTable)
   }
 
-  /** 
+  /**
    *  Apply move-to-front encoding using symbol table <tt>symTable</tt>.
    */
   def encode(s: String, symTable: String): List[Int] = {
@@ -2732,21 +2732,21 @@ object MoveToFront {
    *  Apply move-to-front decoding using default symbol table.
    */
   def decode(ints: List[Int]): String = {
-    decode(ints, symbolTable)   
+    decode(ints, symbolTable)
   }
-  
+
   /**
    *  Apply move-to-front decoding using symbol table <tt>symTable</tt>.
    */
   def decode(lst: List[Int], symTable: String): String = {
     val table = symTable.toCharArray
-    
+
     @inline def moveToFront(c: Char, index: Int) {
       for (i <- index-1 to 0 by -1)
         table(i+1) = table(i)
       table(0) = c
     }
-    
+
     @tailrec def decodeList(output: List[Char], lst: List[Int]): List[Char] = lst match {
       case Nil => output
       case x :: xs => {
@@ -2757,14 +2757,14 @@ object MoveToFront {
     }
     decodeList(Nil, lst).reverse.mkString
   }
-  
+
   def test(toEncode: String, symTable: String) {
 		val encoded = encode(toEncode, symTable)
 		println(toEncode + ": " + encoded)
 		val decoded = decode(encoded, symTable)
 		if (toEncode != decoded)
 		  print("in")
-		println("correctly decoded to " + decoded) 
+		println("correctly decoded to " + decoded)
 	}
 }
 
@@ -2895,9 +2895,9 @@ var number:[Int]=[1,17,15,0,0,5]
 //function to encode the string
 func encode(st:String)->[Int]
 {
-	
+
 var array:[Character]=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-	
+
 	var num:[Int]=[]
 	var temp:Character="a"
 	var i1:Int=0
@@ -2914,23 +2914,23 @@ var array:[Character]=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","
 				{
 					array[i1]=array[i1-1]
 					i1=i1-1
-		
+
 				}
 				array[0]=temp
 			}
-			
+
 		}
-		
-		
+
+
 	}
-	
+
 	return num
-	
+
 }
 
 func decode(s:[Int])->[Character]
 {
-	
+
 	var st1:[Character]=[]
 	var alph:[Character]=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 	var temp1:Character="a"
@@ -2940,18 +2940,18 @@ func decode(s:[Int])->[Character]
 		i2=s[i]
 		st1.append(alph[i2])
 		temp1=alph[i2]
-			
+
 				while(i2>0)
 				{
 					alph[i2]=alph[i2-1]
 					i2=i2-1
-		
+
 				}
 				alph[0]=temp1
-		
+
 	}
-	return st1					  
-	
+	return st1
+
 }
 
 var encarr:[Int]=encode(st:str)
@@ -3064,7 +3064,7 @@ Function mtf_decode(s)
 			symbol_table.Insert 0,char
 		End If
 	Next
-	mtf_decode = output	
+	mtf_decode = output
 End Function
 
 'Testing the functions

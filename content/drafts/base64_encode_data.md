@@ -89,22 +89,22 @@ PROC get web page = (STRING host, path) STRING:
 	    IF reply[i] = carriage return ANDF reply[i+1] = line feed AND reply[i+2] = carriage return AND reply[i+3] = line feed THEN
 	       p := i
 	    FI
-	 OD;	       
+	 OD;
 	 IF p /= 0 THEN
 	    STRING headers = reply[:p],
 	           body = reply[p+4:];
 	    body
 	 ELSE
 	    ""
-	 FI 
-      ELSE 
+	 FI
+      ELSE
 	 print (strerror (rc)); ""
       FI
    END;
 
 
 PROC base64_encode = (STRING s) STRING:
-   BEGIN 
+   BEGIN
       STRING result := "";
       BITS u;
       FOR i BY 3 TO UPB s DO
@@ -112,12 +112,12 @@ PROC base64_encode = (STRING s) STRING:
 	      IF i+1 <= UPB s THEN BIN ABS s[i+1] SHL 8 OR
 	         IF i+2 <= UPB s THEN BIN ABS s[i+2]
 		 ELSE 16r0
-                 FI 
+                 FI
 	      ELSE 16r0
 	      FI;
 
 	 result +:= codes[ABS (u SHR 18 AND 16r3f)] +
-                    codes[ABS (u SHR 12 AND 16r3f)] + 
+                    codes[ABS (u SHR 12 AND 16r3f)] +
 	            (i + 1 <= UPB s | codes[ABS (u SHR 6 AND 16r3f)] | "=") +
 		    (i + 2 <= UPB s | codes[ABS (u AND 16r3f)] | "=")
       OD;
@@ -297,13 +297,13 @@ _start:
     ldr r1, =example_text
     mov r2, #11
     bl base64_encode
-    
+
     mov r2, r0
     mov r7, #4
     mov r0, #1
     ldr r1, =buffer
     swi #0
-    
+
     ldr r0, =buffer
     ldr r1, =example_base64
     mov r2, #16
@@ -330,8 +330,8 @@ _start:
 
 {{libheader|libresolv}} (libresolv is included on most Unix-like systems)
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <resolv.h>
 #include <fcntl.h>
@@ -384,8 +384,8 @@ gcc -lresolv -o base64encode base64encode.c
 
 The following reads standard input and writes base64-encoded stream to standard output, e.g. <tt>./a.out <some_random_file >/dev/null</tt> if you don't want to see the output.  It gives identical output as the common <tt>base64</tt> utility program, though much less efficiently.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <unistd.h>
 
 typedef unsigned long UL;
@@ -444,9 +444,9 @@ public:
 	unsigned d, a = 0, l = static_cast<unsigned>( v.size() );
 	while( l > 2 )
 	{
-	    d = v[a++] << 16 | v[a++] << 8 | v[a++];	
-	    res.append( 1, char_set.at( ( d & m1 ) >> 18 ) );	
-	    res.append( 1, char_set.at( ( d & m2 ) >> 12 ) );	
+	    d = v[a++] << 16 | v[a++] << 8 | v[a++];
+	    res.append( 1, char_set.at( ( d & m1 ) >> 18 ) );
+	    res.append( 1, char_set.at( ( d & m2 ) >> 12 ) );
 	    res.append( 1, char_set.at( ( d & m3 ) >>  6 ) );
 	    res.append( 1, char_set.at( d & 63 ) );
 	    l -= 3;
@@ -454,16 +454,16 @@ public:
 	if( l == 2 )
 	{
 	    d = v[a++] << 16 | v[a++] << 8;
-	    res.append( 1, char_set.at( ( d & m1 ) >> 18 ) );	
-	    res.append( 1, char_set.at( ( d & m2 ) >> 12 ) );	
+	    res.append( 1, char_set.at( ( d & m1 ) >> 18 ) );
+	    res.append( 1, char_set.at( ( d & m2 ) >> 12 ) );
 	    res.append( 1, char_set.at( ( d & m3 ) >>  6 ) );
 	    res.append( 1, '=' );
 	}
 	else if( l == 1 )
 	{
 	    d = v[a++] << 16;
-	    res.append( 1, char_set.at( ( d & m1 ) >> 18 ) );	
-	    res.append( 1, char_set.at( ( d & m2 ) >> 12 ) );	
+	    res.append( 1, char_set.at( ( d & m1 ) >> 18 ) );
+	    res.append( 1, char_set.at( ( d & m2 ) >> 12 ) );
 	    res.append( "==", 2 );
 	}
 	return res;
@@ -702,9 +702,9 @@ let encode s =
     |> List.map calc
     |> List.reduce (+)
     |> fun r -> r.Substring(0, String.length r - paddingSize) + String.replicate paddingSize "="
- 
+
 let url = "https://rosettacode.org/favicon.ico"
- 
+
 let download (url: string) =
     use client = new WebClient()
     client.DownloadData url
@@ -987,7 +987,7 @@ main = B.readFile "favicon.ico" >>= (B.putStrLn . Base64.encode)
 
 '''Solution''' (''handrolled''):
 ```j
-   tobase64 =:  padB64~ b2B64 
+   tobase64 =:  padB64~ b2B64
      padB64 =:  , '=' #~ 0 2 1 i. 3 | #
      b2B64  =:  BASE64 {~ _6 #.\ (8#2) ,@:#: a.&i.
 ```
@@ -1088,7 +1088,7 @@ AAABAAIAEBAAAAAAAABoBQ...QAAAAEAAAABAAAAAQAAAAE=
 
 
 
-###  Java 8 version 
+###  Java 8 version
 
 
 ```java
@@ -1131,7 +1131,7 @@ AAABAAIAEBAAAAAAAABoBQ...QAAAAEAAAABAAAAAQAAAAE=
         var a=6-_offsetlength,b=8-a;//Oh god, 8 is HARDCODED! Because 8 is the number of bits in a byte!!!
         //And 6 is the mini-byte used by wikipedia base64 article... at least on 2013.
         //I imagine this code being read in 2432 or something, that probably won't happen..
-        return [_number&generateOnesByLength(b),b,(_offset<<a)|(_number>>b)];//offset & offsetlength & number 
+        return [_number&generateOnesByLength(b),b,(_offset<<a)|(_number>>b)];//offset & offsetlength & number
     }
     function toBase64(uint8array){//of bits, each value may not have more than 255 bits... //a normal "array" should work fine too..
         //From 0x29 to 0x5a plus from 0x61 to 0x7A AND from 0x30 to 0x39
@@ -1303,7 +1303,7 @@ AAABAAIAEBAAAAAAAABoBQ.....AAAAEAAAABAAAAAQAAAAE=
 ## Lasso
 
 
-```Lasso 
+```Lasso
 local(
 	src = curl('http://rosettacode.org/favicon.ico'),
 	srcdata = #src->result
@@ -1335,8 +1335,8 @@ AAABAA...S0tLS0tLS0t...QAAAAE=
 ```lua
 
 local dic = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-function encode( t, f ) 
-    local b1, b2, b3, b4	
+function encode( t, f )
+    local b1, b2, b3, b4
     b1 = 1 + ( ( t & 0xfc0000 ) >> 18 )
     b2 = 1 + ( ( t & 0x03f000 ) >> 12 )
     b3 = 1 + ( ( t & 0x000fc0 ) >>  6 )
@@ -1349,13 +1349,13 @@ end
 local i = assert( io.open( "favicon.ico", "rb" ) )
 local iconData = i:read( "*all" )
 local dataLen, s, t = #iconData, 1
-while( dataLen > 2 ) do 
+while( dataLen > 2 ) do
     t =     ( iconData:sub( s, s ):byte() << 16 ); s = s + 1
     t = t + ( iconData:sub( s, s ):byte() <<  8 ); s = s + 1
     t = t + ( iconData:sub( s, s ):byte()       ); s = s + 1
     dataLen = dataLen - 3
     encode( t, 3 )
-end 
+end
 if dataLen == 2 then
     t =	    ( iconData:sub( s, s ):byte() << 16 ); s = s + 1;
     t = t + ( iconData:sub( s, s ):byte() <<  8 ); s = s + 1;
@@ -1442,7 +1442,7 @@ $ rlwrap ocaml -I $(ocamlfind query base64) base64.cma
     let n = in_channel_length ic in
     let s = Bytes.create n in
     really_input ic s 0 n;
-    close_in ic;          
+    close_in ic;
     (Bytes.to_string s)
   ;;
 val load_file : string -> string = <fun>
@@ -1619,9 +1619,9 @@ n the continued and indefatigable generation of knowledge, exceeds the short veh
 ```PowerShell
 $webClient = [Net.WebClient]::new()
 $bytes = $webClient.DownloadData('http://rosettacode.org/favicon.ico')
- 
+
 $output = [Convert]::ToBase64String($bytes)
- 
+
 $output
 ```
 
@@ -1640,7 +1640,7 @@ AAABAAIAEBAAAAAAAABoBQAAJgAAACAg...AAABAAAAAQAAAAEAAAABAAAAAQAAAAE=
 
 ```purebasic
 InitNetwork()
- 
+
 *BufferRaw = ReceiveHTTPMemory("http://rosettacode.org/favicon.ico")
 If *BufferRaw
 	Debug Base64Encoder(*BufferRaw, MemorySize(*BufferRaw))
@@ -1672,7 +1672,7 @@ print base64.b64encode(data)
 
 #lang racket
 (require net/url net/base64)
-(base64-encode (call/input-url (string->url "http://rosettacode.org/favicon.ico") 
+(base64-encode (call/input-url (string->url "http://rosettacode.org/favicon.ico")
                                get-pure-port port->bytes))
 
 ```
@@ -1689,11 +1689,11 @@ Output:
 
 ## REXX
 
-Some computers   (or REXX implementations)   are limited in virtual memory, so the   ''chunk''   size (below) is 
+Some computers   (or REXX implementations)   are limited in virtual memory, so the   ''chunk''   size (below) is
 
-specified as   '''20000'''   to show how the file   (if specified)   can be read in chunks instead of reading it whole. 
+specified as   '''20000'''   to show how the file   (if specified)   can be read in chunks instead of reading it whole.
 
-A much higher value for   '''chunk'''   could be used for modern systems or implementations.   
+A much higher value for   '''chunk'''   could be used for modern systems or implementations.
 
 ```rexx
 /*REXX program  converts  text  (from a file  or  the C.L.)  to a  base64  text string. */
@@ -2016,7 +2016,7 @@ Using shared libraries for cURL and message hashing:
 
 ```zkl
 var [const] MsgHash=Import("zklMsgHash"), Curl=Import("zklCurl");
- 
+
 icon:=Curl().get("http://rosettacode.org/favicon.ico"); //-->(Data(4,331),693,0)
 icon=icon[0][icon[1],*];	// remove header
 b64:=MsgHash.base64encode(icon);

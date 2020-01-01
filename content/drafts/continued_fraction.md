@@ -297,7 +297,7 @@ print (("Pi:        ", cf(precision, api, bpi)))
 {{out}}
 
 ```txt
- 
+
 Precision:      +10000
 Sqr(2):    +1.41421356237310e  +0
 Napier:    +2.71828182845905e  +0
@@ -481,7 +481,7 @@ Output:
                                                                   Type: Float
 ```
 
-The value for <math>\pi</math> has an accuracy to only 9 decimal places after 1000 iterations, with an accuracy to 12 decimal places after 10000 iterations. 
+The value for <math>\pi</math> has an accuracy to only 9 decimal places after 1000 iterations, with an accuracy to 12 decimal places after 10000 iterations.
 
 We could re-implement this, with the same output:
 
@@ -506,12 +506,12 @@ cf(3, [i^2 for i in 1.. by 2], repeating [6], 1000) :: Float
 ```bbcbasic
       *FLOAT64
       @% = &1001010
-      
+
       PRINT "SQR(2) = " ; FNcontfrac(1, 1, "2", "1")
       PRINT "     e = " ; FNcontfrac(2, 1, "N", "N")
       PRINT "    PI = " ; FNcontfrac(3, 1, "6", "(2*N+1)^2")
       END
-      
+
       REM a$ and b$ are functions of N
       DEF FNcontfrac(a0, b1, a$, b$)
       LOCAL N, expr$
@@ -625,8 +625,8 @@ int main(void)
 ## C++
 
 
-```cpp>#include <iomanip
-
+```cpp
+#include <iomanip>
 #include <iostream>
 #include <tuple>
 
@@ -662,7 +662,7 @@ coeff_t pi(int n)
 int main()
 {
     std::streamsize old_prec = std::cout.precision(15); // set output digits
-    std::cout 
+    std::cout
         << calc(sqrt2, 20) << '\n'
         << calc(napier, 15) << '\n'
         << calc(pi, 10000) << '\n'
@@ -783,7 +783,7 @@ user=> sq2 e pi
       *> **************************************************************
        identification division.
        function-id. continued-fractions.
-      
+
        data division.
        working-storage section.
        01 alpha-function       usage program-pointer.
@@ -1003,7 +1003,7 @@ do ->
 
 ```txt
 
-> coffee continued_fraction.coffee 
+> coffee continued_fraction.coffee
 1.4142135623730951
 1.4142135623730951
 ---
@@ -1026,7 +1026,7 @@ do ->
 (defun estimate-continued-fraction (generator n)
   (let ((temp 0))
     (loop for n1 from n downto 1
-       do (multiple-value-bind (a b) 
+       do (multiple-value-bind (a b)
 	      (funcall generator n1)
 	    (setf temp (/ b (+ a temp)))))
     (+ (funcall generator 0) temp)))
@@ -1078,7 +1078,7 @@ proc calc(f, n) {
 
 record Sqrt2 {
         proc pair(n) {
-                return (if n == 0 then 1 else 2, 
+                return (if n == 0 then 1 else 2,
                         1);
         }
 }
@@ -1192,7 +1192,7 @@ continued_fraction(FA,FB,N,Acc) ->
     continued_fraction(FA,FB,N-1,FB(N)/ (FA(N) + Acc)).
 
 test_pi (N) ->
-    continued_fraction(fun pi_a/1,fun pi_b/1,N).                                                                                                                                                                                                                                                                              
+    continued_fraction(fun pi_a/1,fun pi_b/1,N).
 
 test_sqrt2 (N) ->
     continued_fraction(fun sqrt2_a/1,fun sqrt2_b/1,N).
@@ -1409,7 +1409,7 @@ M: sqrt2 cfrac-b
 ! Napier's constant
 SINGLETON: napier
 M: napier cfrac-a
-    ! If n is 1, then a_n is 2, else a_n is n - 1. 
+    ! If n is 1, then a_n is 2, else a_n is n - 1.
     drop { { 1 [ 2 ] } [ 1 - ] } case ;
 M: napier cfrac-b
     ! If n is 1, then b_n is 1, else b_n is n - 1.
@@ -1469,7 +1469,7 @@ Napier's constant: 2.718281828459045235360287471352
 
 ```felix
 fun pi (n:int) : (double*double) =>
-    let a = match n with | 0 => 3.0 | _ => 6.0 endmatch in 
+    let a = match n with | 0 => 3.0 | _ => 6.0 endmatch in
     let b = pow(2.0 * n.double - 1.0, 2.0) in
     (a,b);
 
@@ -1544,7 +1544,7 @@ f else fdup then ;
 ```Fortran
 module continued_fractions
   implicit none
-  
+
   integer, parameter :: long = selected_real_kind(7,99)
 
   type continued_fraction
@@ -1583,7 +1583,7 @@ contains
 
   pure integer function const_1(n)
     integer,intent(in) :: n
-    const_1 = 1  
+    const_1 = 1
   end function
 
   pure real(kind=long) function output(x,iterations)
@@ -1596,7 +1596,7 @@ contains
     end do
     output = x%a0 + (x%b1 / output)
   end function output
-  
+
 end module continued_fractions
 
 
@@ -1818,7 +1818,7 @@ main = do
 
    100 10 100 dec sqrt2, pi, e
 1.4142135623730950488016887242096980785696718753769480731766797379907324784621205551109457595775322165
-3.1415924109                                                                                          
+3.1415924109
 2.7182818284590452353602874713526624977572470936999595749669676277240766303535475945713821785251664274
 ```
 
@@ -2363,7 +2363,7 @@ Perl6 has a builtin composition operator.  We can use it with the triangular red
 sub continued-fraction(@a, @b) {
     map { .(Inf) }, [\o] map { @a[$_] + @b[$_] / * }, ^Inf
 }
- 
+
 printf "√2 ≈ %.9f\n", continued-fraction((1, |(2 xx *)), (1 xx *))[10];
 printf "e  ≈ %.9f\n", continued-fraction((2, |(1 .. *)), (1, |(1 .. *)))[10];
 printf "π  ≈ %.9f\n", continued-fraction((3, |(6 xx *)), ((1, 3, 5 ... *) X** 2))[100];
@@ -2391,18 +2391,18 @@ atom res = 0
   end for
   return call_func(rid_a,{0}) + res
 end function
- 
+
 function sqr2_a(integer n) return iff(n=0?1:2) end function
 function sqr2_b(integer n) return 1 end function
- 
+
 function nap_a(integer n) return iff(n=0?2:n) end function
 function nap_b(integer n) return iff(n=1?1:n-1) end function
- 
+
 function pi_a(integer n) return iff(n=0?3:6) end function
 function pi_b(integer n) return iff(n=1?1:power(2*n-1,2)) end function
- 
+
 constant precision = 10000
- 
+
 printf(1,"Precision: %d\n", {precision})
 printf(1,"Sqr(2):    %.10g\n", {continued_fraction(precision, routine_id("sqr2_a"), routine_id("sqr2_b"))})
 printf(1,"Napier:    %.10g\n", {continued_fraction(precision, routine_id("nap_a"), routine_id("nap_b"))})
@@ -2444,8 +2444,8 @@ Pi:        3.141592654
             (if (=1 A) 3.0 6.0)
             (*/
                (* (** (dec (* 2 A)) 2) 1.0)
-               1.0 
-               (pi N (inc A)) ) ) ) ) ) 
+               1.0
+               (pi N (inc A)) ) ) ) ) )
 (de napier (N A)
    (default A 0)
    (cond
@@ -2453,9 +2453,9 @@ Pi:        3.141592654
       (T
          (+
             (if (=0 A) 2.0 (* A 1.0))
-            (*/ 
-               (if (> 1 A) 1.0 (* A 1.0)) 
-               1.0 
+            (*/
+               (if (> 1 A) 1.0 (* A 1.0))
+               1.0
                (napier N (inc A)) ) ) ) ) )
 (prinl (format (fsqrt2 200) *Scl))
 (prinl (format (napier 200) *Scl))
@@ -2497,7 +2497,7 @@ end test;
 {{out}}
 
 ```txt
- 1.41421356237309505E+0000 
+ 1.41421356237309505E+0000
 ```
 
 Version for NAPIER:
@@ -2520,7 +2520,7 @@ end test;
 
 
 ```txt
- 2.71828182845904524E+0000 
+ 2.71828182845904524E+0000
 ```
 
 Version for SQRT2, NAPIER, PI
@@ -2655,7 +2655,7 @@ from fractions import Fraction
 import itertools
 try: zip = itertools.izip
 except: pass
- 
+
 # The Continued Fraction
 def CF(a, b, t):
   terms = list(itertools.islice(zip(a, b), t))
@@ -2663,7 +2663,7 @@ def CF(a, b, t):
   for a, b in reversed(terms):
     z = a + b / z
   return z
- 
+
 # Approximates a fraction to a string
 def pRes(x, d):
   q, x = divmod(x, 1)
@@ -2674,47 +2674,47 @@ def pRes(x, d):
     q, x = divmod(x, 1)
     res += str(q)
   return res
- 
+
 # Test the Continued Fraction for sqrt2
 def sqrt2_a():
   yield 1
   for x in itertools.repeat(2):
     yield x
- 
+
 def sqrt2_b():
   for x in itertools.repeat(1):
     yield x
- 
+
 cf = CF(sqrt2_a(), sqrt2_b(), 950)
 print(pRes(cf, 200))
 #1.41421356237309504880168872420969807856967187537694807317667973799073247846210703885038753432764157273501384623091229702492483605585073721264412149709993583141322266592750559275579995050115278206057147
- 
- 
+
+
 # Test the Continued Fraction for Napier's Constant
 def Napier_a():
   yield 2
   for x in itertools.count(1):
     yield x
- 
+
 def Napier_b():
   yield 1
   for x in itertools.count(1):
     yield x
- 
+
 cf = CF(Napier_a(), Napier_b(), 950)
 print(pRes(cf, 200))
 #2.71828182845904523536028747135266249775724709369995957496696762772407663035354759457138217852516642742746639193200305992181741359662904357290033429526059563073813232862794349076323382988075319525101901
- 
+
 # Test the Continued Fraction for Pi
 def Pi_a():
   yield 3
   for x in itertools.repeat(6):
     yield x
- 
+
 def Pi_b():
   for x in itertools.count(1,2):
     yield x*x
- 
+
 cf = CF(Pi_a(), Pi_b(), 950)
 print(pRes(cf, 10))
 #3.1415926532
@@ -2817,11 +2817,11 @@ This versions uses big floats (arbitrary precision floating point):
         (for/fold ([t (bf 0)]) ([i (in-range (+ n 1) 0 -1)])
           (match/values (cf i)
                         [(a b) (bf/ (bf b) (bf+ (bf a) t))])))]))
- 
+
 (define (cf-sqrt i)   (values  (if (> i 0) 2 1)  1))
 (define (cf-napier i) (values  (if (> i 0) i 2)  (if (> i 1) (- i 1) 1)))
 (define (cf-pi i)     (values  (if (> i 0) 6 3)  (sqr (- (* 2 i) 1))))
- 
+
 (calc cf-sqrt   200)
 (calc cf-napier 200)
 (calc cf-pi     200)
@@ -3107,7 +3107,7 @@ func contfrac(a0, b1, a, b)
                  eval("temp1=" + a)
                  eval("temp2=" + b)
                  expr = expr + string(temp1) + char(43) + string(temp2) + "/("
-        end 
+        end
         str = copy(")",n)
         eval("temp3=" + expr + "1" + str)
         return a0 + b1 / temp3
@@ -3182,7 +3182,7 @@ puts estimate(pi, 10).to_s('F')
 {{out}}
 
 ```txt
-$ ruby cfrac.rb                                                              
+$ ruby cfrac.rb
 1.41421356237309504880168872420969807856967187537695
 2.71828182845904523536028747135266249775724709369996
 3.1415926536
@@ -3276,7 +3276,7 @@ object CF extends App {
   def calc(cf: Stream[(Int, Int)], numberOfIters: Int=200): BigDecimal = {
     (cf take numberOfIters toList).foldRight[BigDecimal](1)((a, z) => a._1+a._2/z)
   }
-  
+
   def approx(cfV: BigDecimal, cfRefV: String): String = {
     val p: Pair[Char,Char] => Boolean = pair =>(pair._1==pair._2)
     ((cfV.toString+" "*34).substring(0,34) zip cfRefV.toString.substring(0,34))
@@ -3331,11 +3331,11 @@ object CFI extends App {
   def calc_i(cf: Stream[(Int, Int)], numberOfIters: Int=50): BigDecimal = {
     val cfl = cf take numberOfIters toList
     var z: BigDecimal = 1.0
-    for (i <- 0 to cfl.size-1 reverse) 
+    for (i <- 0 to cfl.size-1 reverse)
       z=cfl(i)._1+cfl(i)._2/z
     z
   }
-  
+
   def approx(cfV: BigDecimal, cfRefV: String): String = {
     val p: Pair[Char,Char] => Boolean = pair =>(pair._1==pair._2)
     ((cfV.toString+" "*34).substring(0,34) zip cfRefV.toString.substring(0,34))
@@ -3558,7 +3558,7 @@ Private Function continued_fraction(steps As Integer, rid_a As String, rid_b As 
     Next n
     continued_fraction = Application.Run(rid_a, 0) + res
 End Function
-     
+
 Function sqr2_a(n As Integer) As Integer
     sqr2_a = IIf(n = 0, 1, 2)
 End Function
@@ -3566,7 +3566,7 @@ End Function
 Function sqr2_b(n As Integer) As Integer
     sqr2_b = 1
 End Function
- 
+
 Function nap_a(n As Integer) As Integer
     nap_a = IIf(n = 0, 2, n)
 End Function
@@ -3574,7 +3574,7 @@ End Function
 Function nap_b(n As Integer) As Integer
     nap_b = IIf(n = 1, 1, n - 1)
 End Function
- 
+
 Function pi_a(n As Integer) As Integer
     pi_a = IIf(n = 0, 3, 6)
 End Function
@@ -3593,10 +3593,10 @@ End Sub
 {{out}}
 
 ```txt
-Precision:     10000 
-Sqr(2):        1,4142135623731 
-Napier:        2,71828182845905 
-Pi:            3,14159265358954 
+Precision:     10000
+Sqr(2):        1,4142135623731
+Napier:        2,71828182845905
+Pi:            3,14159265358954
 ```
 
 
@@ -3732,7 +3732,7 @@ pi:=cf((6.0).noop,fcn(n){ n=2*n-1; (n*n).toFloat() },3.0);
 10 LET a0=1: LET b1=1: LET a$="2": LET b$="1": PRINT "SQR(2) = ";: GO SUB 1000
 20 LET a0=2: LET b1=1: LET a$="N": LET b$="N": PRINT "e = ";: GO SUB 1000
 30 LET a0=3: LET b1=1: LET a$="6": LET b$="(2*N+1)^2": PRINT "PI = ";: GO SUB 1000
-100 STOP 
+100 STOP
 1000 LET n=0: LET e$="": LET p$=""
 1010 LET n=n+1
 1020 LET e$=e$+STR$ VAL a$+"+"+STR$ VAL b$+"/("

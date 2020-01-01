@@ -119,12 +119,12 @@ property maxLimit : 100
 on run
 	-- ask the user to think of  a number in the given range
 	display dialog "Please think of a number between " & minLimit & " and " & maxLimit
-	
-	-- prepare a variable for the lowest guessed value	
+
+	-- prepare a variable for the lowest guessed value
 	set lowGuess to minLimit
-	-- prepare a variable for the highest guessed value	
+	-- prepare a variable for the highest guessed value
 	set highGuess to maxLimit
-	
+
 	repeat
 		-- guess a number inside the logical range
 		set computersGuess to (random number from lowGuess to highGuess)
@@ -296,8 +296,8 @@ Guesses: 7
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main(){
   int bounds[ 2 ] = {1, 100};
@@ -350,8 +350,8 @@ Awwwright
 The following is a hacky solution using <tt>bsearch()</tt> and pointers to represent integers. Although the pointers do not point to valid things, <tt>bsearch()</tt> doesn't actually dereference the pointers or care what they point to; it just passes them to the comparator and searches the space of pointers. We can use that to search any space of integers.
 {{trans|Java}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 
@@ -412,12 +412,12 @@ int main() {
 A clever solution that takes advantage of C++'s built-in binary search function <code>lower_bound()</code>. Instead of searching a slice of a container, we search a range of numbers by implementing a specially-designed custom iterator.
 {{trans|Go}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <algorithm>
 #include <string>
 #include <iterator>
- 
+
 struct GuessNumberIterator : std::iterator<std::random_access_iterator_tag, int> {
   int i;
   GuessNumberIterator() { }
@@ -450,10 +450,10 @@ struct GuessNumberIterator : std::iterator<std::random_access_iterator_tag, int>
   bool operator>=(const GuessNumberIterator &y) { return i >= y.i; }
 };
 inline GuessNumberIterator operator+(int n, GuessNumberIterator &i) { return i + n; }
- 
+
 const int lower = 0;
 const int upper = 100;
- 
+
 int main() {
   std::cout << "Instructions:\n"
 	    << "Think of integer number from " << lower << " (inclusive) to "
@@ -823,7 +823,7 @@ defmodule Game do
     x = Enum.random(a..b)
     guess(x, a..b, div(a+b, 2))
   end
-  
+
   defp guess(x, a.._b, guess) when x < guess do
     IO.puts "Is it #{guess}? Too High."
     guess(x, a..guess-1, div(a+guess, 2))
@@ -867,7 +867,7 @@ Is it 10?
 main() ->
 	L = 1 ,	 	% Lower Limit
 	U = 100, 	  % Upper Limit
-	
+
 	io:fwrite("Player 1 : Guess my number between ~p and ", [L]),
 	io:fwrite("and ~p until you get it right.\n", [U]),
 	N = random:uniform(100),
@@ -876,21 +876,21 @@ main() ->
 guess(L,U,N) ->
 	K = (L+U) div 2,
 	io:format("Player 2 : Number guessed : ~p~n",[K]),
-	if 
+	if
 		K=:=N ->
 			io:format("Well guessed!! by Player 2\n");
-		true -> 
-			if 
+		true ->
+			if
 				K > N ->
 					io:format("Player 1 : Your guess is too high!\n"),
 					guess(L,K,N);
 				true ->
 					io:format("Player 1 : Your guess is too low!\n"),
 					guess(K,U,N)
-			end			
+			end
 	end.
 ```
-	
+
 {{out}}
 
 ```txt
@@ -966,7 +966,7 @@ class Main
     echo ("Think of a number between 1 and 100")
     echo ("Press 'enter' when ready")
     Env.cur.in.readLine
-    
+
     while (true)
     {
       if (higherLimit < lowerLimit)
@@ -979,10 +979,10 @@ class Main
       echo ("Enter 'H' if your number is higher, 'L' if lower, or 'E' if equal")
       switch (Env.cur.in.readLine.trim.upper)
       {
-        case "E": 
+        case "E":
           echo ("I got it correct - thankyou!")
           break // game over
-        case "H": 
+        case "H":
           lowerLimit = myGuess + 1
         case "L":
           higherLimit = myGuess - 1
@@ -1040,14 +1040,14 @@ I got it correct - thankyou!
 ```fortran
 program Guess_a_number_Player
   implicit none
-  
+
   integer, parameter :: limit = 100
   integer :: guess, mx = limit, mn = 1
   real :: rnum
   character(1) :: score
-  
+
   write(*, "(a, i0, a)") "Think of a number between 1 and ", limit, &
-                         " and I will try to guess it." 
+                         " and I will try to guess it."
   write(*, "(a)")  "You score my guess by entering: h if my guess is higher than that number"
   write(*, "(a)")  "                                l if my guess is lower than that number"
   write(*, "(a/)") "                                c if my guess is the same as that number"
@@ -1061,11 +1061,11 @@ program Guess_a_number_Player
     select case(score)
       case("l", "L")
         mn = guess
-        guess = (mx-guess+1) / 2 + mn 
-        
+        guess = (mx-guess+1) / 2 + mn
+
       case("h", "H")
         mx = guess
-        guess = mx - (guess-mn+1) / 2 
+        guess = mx - (guess-mn+1) / 2
 
       case("c", "C")
         write(*, "(a)") "I solved it!"
@@ -1088,9 +1088,9 @@ You score my guess by entering: h if my guess is higher than that number
 
 My guess is: 58   Score(h, l or c)?: h
 My guess is: 29   Score(h, l or c)?: l
-My guess is: 44   Score(h, l or c)?: l 
-My guess is: 51   Score(h, l or c)?: l 
-My guess is: 55   Score(h, l or c)?: l 
+My guess is: 44   Score(h, l or c)?: l
+My guess is: 51   Score(h, l or c)?: l
+My guess is: 55   Score(h, l or c)?: l
 My guess is: 57   Score(h, l or c)?: c
 I solved it!
 ```
@@ -1120,17 +1120,17 @@ Do
     ElseIf hle = "h" AndAlso guess = lowest Then
       Print "It can't be less than"; lowest; ", try again"
       hle = "i"
-    End If    
+    End If
   Loop Until hle = "h" OrElse hle = "l" OrElse hle = "e"
   If hle = "e" Then
     Print "Good, thanks for playing the gaame with me!"
     Exit Do
   ElseIf hle = "h" Then
-    If highest > guess - 1 Then highest = guess - 1   
+    If highest > guess - 1 Then highest = guess - 1
   Else
     If lowest < guess + 1  Then lowest = guess + 1
-  End If  
-  guess = (lowest + highest)\2  
+  End If
+  guess = (lowest + highest)\2
 Loop
 End
 ```
@@ -1250,7 +1250,7 @@ main = do
     case (from, to) of
          (_) | [(from', "")] <- reads from
              , [(to'  , "")] <- reads to
-             , from'         < to' -> loop from' to' 
+             , from'         < to' -> loop from' to'
          (_)  -> putStrLn "Invalid input." >> main
 
 loop :: Integer -> Integer -> IO ()
@@ -1292,13 +1292,13 @@ main = f 0 100
 procedure main ()
   lower_limit := 1
   higher_limit := 100
-  
+
   write ("Think of a number between 1 and 100")
   write ("Press 'enter' when ready")
   read ()
 
   repeat {
-    if (higher_limit < lower_limit) 
+    if (higher_limit < lower_limit)
       then { # check that player is not cheating!
         write ("Something has gone wrong ... I give up")
         exit ()
@@ -1308,14 +1308,14 @@ procedure main ()
     write ("Enter 'H' if your number is higher, 'L' if lower, or 'E' if equal")
     reply := map(trim(read ()))
     case (reply) of {
-      "e" : { 
+      "e" : {
         write ("I got it correct - thankyou!")
         exit () # game over
       }
       "h" : lower_limit := my_guess + 1
       "l" : higher_limit := my_guess - 1
       default : write ("Pardon? Let's try that again")
-    }     
+    }
   }
 end
 
@@ -1453,7 +1453,7 @@ public class GuessNumber {
 ## JavaScript
 
 
-###  Spidermonkey version 
+###  Spidermonkey version
 
 
 A boring solution that does nothing clever or inscrutable.
@@ -1476,7 +1476,7 @@ function guess(low, high) {
         print("I can't guess it. Perhaps you changed your number.");
         return DONE;
     }
-    
+
     var g = Math.floor((low + high) / 2);
     var result = getResult(g);
     switch (result) {
@@ -1497,7 +1497,7 @@ function getResult(g) {
             case 'R':
                 print('I got it! Thanks for the game.');
                 return RIGHT;
-            case 'L': 
+            case 'L':
                 return LOW;
             case 'H':
                 return HIGH;
@@ -1583,7 +1583,7 @@ while true
 
     print("I guess ", guess, ".\n[l]ower, [h]igher, or [c]orrect? ")
     input = chomp(readline())
-    
+
     while input ∉ ["c", "l", "h"]
         print("Please enter one of \"c\", \"l\", or \"h\". ")
         input = chomp(readline())
@@ -1613,7 +1613,7 @@ println("\nI win after ", attempts, attempts == 1 ? " attempt." : " attempts.")
 // version 1.0.5-2
 
 fun main(args: Array<String>) {
-    var hle: Char 
+    var hle: Char
     var lowest  = 1
     var highest = 20
     var guess   = 10
@@ -1625,21 +1625,21 @@ fun main(args: Array<String>) {
         do {
             print("Is this higher/lower than or equal to your chosen number h/l/e : ")
             hle = readLine()!!.first().toLowerCase()
-            if (hle == 'l' && guess == highest) { 
-                println("It can't be more than $highest, try again") 
+            if (hle == 'l' && guess == highest) {
+                println("It can't be more than $highest, try again")
                 hle = 'i' // signifies invalid
             }
             else if (hle == 'h' && guess == lowest) {
-                println("It can't be less than $lowest, try again") 
-                hle = 'i' 
+                println("It can't be less than $lowest, try again")
+                hle = 'i'
             }
         }
         while (hle !in "hle")
-   
+
         when (hle) {
             'e' -> { println("Good, thanks for playing the game with me!") ; return }
-            'h' ->   if (highest > guess - 1) highest = guess - 1 
-            'l' ->   if (lowest  < guess + 1) lowest  = guess + 1  
+            'h' ->   if (highest > guess - 1) highest = guess - 1
+            'l' ->   if (lowest  < guess + 1) lowest  = guess + 1
         }
 
         guess = (lowest + highest) / 2
@@ -1779,10 +1779,10 @@ maxi=100
 print "Think of a number between ";mini;" and ";maxi
 print "Each time I guess a number you must state whether my"
 print "guess was too high, too low, or equal to your number."
-print 
+print
 
 while response$<>"="
-   if not(mini<=maxi) then 
+   if not(mini<=maxi) then
 		print "Error"
 		exit while
 	end if
@@ -1802,7 +1802,7 @@ while response$<>"="
 			print "Your response was not helpful."
 	end select
  wend
-print "Thanks for playing." 
+print "Thanks for playing."
 ```
 
 
@@ -1854,7 +1854,7 @@ end
 
 ```MATLAB
 function GuessNumberFeedbackPlayer
-    
+
     lowVal = input('Lower limit: ');
     highVal = input('Upper limit: ');
     fprintf('Think of your number. Press Enter when ready.\n')
@@ -1915,12 +1915,12 @@ Incorrect scoring. No further guesses.
 
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
-<lang>guessnumber[min0_, max0_] := 
-  DynamicModule[{min = min0, max = max0, guess, correct = False}, 
-   guess[] := Round@Mean@{min, max}; 
-   Dynamic@If[correct, Row@{"Your number is ", guess[], "."}, 
-     Column@{Row@{"I guess ", guess[], "."}, 
-       Row@{Button["too high", max = guess[]], 
+<lang>guessnumber[min0_, max0_] :=
+  DynamicModule[{min = min0, max = max0, guess, correct = False},
+   guess[] := Round@Mean@{min, max};
+   Dynamic@If[correct, Row@{"Your number is ", guess[], "."},
+     Column@{Row@{"I guess ", guess[], "."},
+       Row@{Button["too high", max = guess[]],
          Button["too low", min = guess[]],
          Button["correct", correct = True]}}]];
 guessnumber[1, 100]
@@ -2143,7 +2143,7 @@ A clever solution that uses the built-in binary search functions with a virtual 
 
 int main(int argc, const char *argv[]) {
   @autoreleasepool {
-  
+
     printf("Instructions:\n"
            "Think of integer number from %d (inclusive) to %d (exclusive) and\n"
            "I will guess it. After each guess, you respond with L, H, or C depending\n"
@@ -2158,7 +2158,7 @@ int main(int argc, const char *argv[]) {
       printf("That is impossible.\n");
     else
       printf("Your number is %d.", LOWER + (int)result);
-  
+
   }
   return 0;
 }
@@ -2209,7 +2209,7 @@ var
   done, ok:        boolean;
   guess, upp, low: integer;
   res:             char;
- 
+
 begin
   writeln ('Choose a number between 0 and 1000.');
   write ('Press Enter and I will start to guess the number.');
@@ -2264,18 +2264,18 @@ It was nice to play with you.
 
 ```perl
 #!/usr/bin/perl
- 
+
 my $min = 1;
-my $max = 99; 
+my $max = 99;
 my $guess = int(rand $max) + $min;
 my $tries = 0;
- 
+
 print "=>> Think of a number between $min and $max and I'll guess it!\n
 Press <ENTER> when are you ready... ";
- 
+
 <STDIN>;
 
-{ 
+{
     do {
 
         $tries++;
@@ -2293,9 +2293,9 @@ Press <ENTER> when are you ready... ";
             print "\nI knew it! It took me only $tries tries.\n" and last;
         } else {
             print "error: invalid score\n";
-        }   
+        }
 
-        $guess = int(($max + $min) / 2); 
+        $guess = int(($max + $min) / 2);
 
     } while(1);
 }
@@ -2305,7 +2305,7 @@ Press <ENTER> when are you ready... ";
 ```txt
 =>> Think of a number between 1 and 99 and I'll guess it!
 
-Press <ENTER> when are you ready... 
+Press <ENTER> when are you ready...
 
 =>> My guess is: 88. Is your number higher, lower or equal? (h/l/e)
 > l
@@ -2536,7 +2536,7 @@ while True:
     if (mn > mx) or (mn < inclusive_range[0]) or (mx > inclusive_range[1]):
         print("Please check your scoring as I cannot find the value")
         break
-        
+
 print("\nThanks for keeping score.")
 ```
 
@@ -2626,7 +2626,7 @@ Your number is 72.
         input
         (begin
           (printf "Invalid Input\n") (input-loop available))))
-  
+
   (define (guess-loop low high)
     (define guess (floor (/ (+ low high) 2)))
     (printf "My guess is ~a.\n" guess)
@@ -2635,7 +2635,7 @@ Your number is 72.
       ((#\c) (displayln "I knew it!\n"))
       ((#\l) (guess-loop low (sub1 guess)))
       ((#\h) (guess-loop (add1 guess) high))))
-  
+
   (printf "Think of a number between ~a and ~a.
 Use (h)igh, (l)ow and (c)orrect to guide me.\n" low high)
   (guess-loop low high))
@@ -2648,9 +2648,9 @@ Another way with loops and mutation
 #lang racket
 (define (guess minimum maximum)
   (printf "Think of a number from ~a to ~a, use (h)igh, (l)ow and (c)orrect." minimum maximum)
-  
+
   (define input "")
-  
+
   (do ((guess (round (/ (+ maximum minimum) 2))  (round (/ (+ maximum minimum) 2))))
     ((string=? input "c"))
     (printf "My guess is: ~a\n(h/l/=) > ")
@@ -2836,7 +2836,7 @@ Congratulations!   You guessed the secret number in 26 tries.
 
 
 
-###  with positive numbers 
+###  with positive numbers
 
 This version handles decimal fractions,   the method used can generate numbers from zero to five fractional digits.
 
@@ -3031,14 +3031,14 @@ max = 100
 see "think of a number between " + min + " and " + max + nl
 see "i will try to guess your number." + nl
 while true
-      guess =floor((min + max) / 2) 
+      guess =floor((min + max) / 2)
       see "my guess is " + guess + nl
       see "is it higher than, lower than or equal to your number " give answer
       ans = left(answer,1)
       switch ans
-             on "l" min = guess + 1 
-             on "h" max = guess - 1 
-             on "e" exit 
+             on "l" min = guess + 1
+             on "h" max = guess - 1
+             on "e" exit
              other see "sorry, i didn't understand your answer." + nl
       off
 end
@@ -3122,7 +3122,7 @@ Since Ruby 2.0 it can be done actually using a built-in binary search (output as
 r = (1..100)
 secret = rand(r)
 turns = 0
- 
+
 puts "Guess a number between #{r.min} and #{r.max}"
 r.bsearch do |guess|                # bsearch works on ranges
   print "Guessing #{guess} \t"
@@ -3374,7 +3374,7 @@ Object subclass: #NumberGuesser
 
 ```
 
-    
+
 Enter these methods into it:
 
 
@@ -3383,22 +3383,22 @@ playBetween: low and: high
     Transcript clear.
     number := (low to: high) atRandom.
     self playBetween: low and: high atTurn: 1.
-    
+
 playBetween: low and: high atTurn: turn
     | guess |
     guess := (low + ((high - low) / 2)) asInteger.
     self showGuessing: guess atTurn: turn.
-    true caseOf: { 
-        [number > guess] -> 
+    true caseOf: {
+        [number > guess] ->
             [self showNumberBeing: #low. self playBetween: guess and: high atTurn: turn+1 ].
-        [number < guess] -> 
+        [number < guess] ->
             [self showNumberBeing: #high. self playBetween: low and: guess atTurn: turn+1 ].
-        [true] -> 
+        [true] ->
             [self showNumberFoundAtTurnNr: turn ] }.
 
 showGuessing: guess atTurn: turn
     Transcript show: ('{1}. guessing: {2}' format: {turn asString. guess asString}).
-    
+
 showNumberBeing: comparisonToken
     Transcript show: ' ==> too ', (comparisonToken asString); cr.
 
@@ -3421,7 +3421,7 @@ playBetween: low and: high atTurn: turn
         ifTrue: [self showNumberFoundAtTurnNr: turn ]
         ifFalse: [
           (number > guess)
-              ifTrue: [self showNumberBeing: #low. self playBetween: guess and: high  atTurn: turn+1 ] 
+              ifTrue: [self showNumberBeing: #low. self playBetween: guess and: high  atTurn: turn+1 ]
               ifFalse: [self showNumberBeing: #high. self playBetween: low and: guess  atTurn: turn+1]].
 
 ```
@@ -3544,7 +3544,7 @@ func guess() -> Double? {
         println("I can't guess it. I think you cheated.");
         return nil
     }
-    
+
     return floor((low + high) / 2)
 }
 
@@ -3577,7 +3577,7 @@ while (!found) {
 
 ```txt
 
-Enter an integer between 1 and 100 for me to guess: 
+Enter an integer between 1 and 100 for me to guess:
 10
 My guess is: 50
 How was my guess? Enter "higher" if it was higher, "lower" if it was lower, and "correct" if I got it
@@ -3798,7 +3798,7 @@ Yea! the number is 26
 65 LET a$=a$(1)
 70 IF a$="L" OR a$="l" THEN LET min=guess+1: GO TO 40
 80 IF a$="H" OR a$="h" THEN LET max=guess-1: GO TO 40
-90 IF a$="E" OR a$="e" THEN PRINT "Goodbye.": STOP 
+90 IF a$="E" OR a$="e" THEN PRINT "Goodbye.": STOP
 100 PRINT "Sorry, I didn't understand your answer.": GO TO 60
 ```
 

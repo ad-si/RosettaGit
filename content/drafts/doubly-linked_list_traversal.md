@@ -64,36 +64,36 @@ LinkedList.alg:
 ```algol68
 # Node struct - contains next and prev NODE pointers and DATA #
 MODE NODE = STRUCT(
-    DATA data, 
-    REF NODE prev, 
-    REF NODE next 
+    DATA data,
+    REF NODE prev,
+    REF NODE next
     );
 
-# List structure - contains head and tail NODE pointers #    
+# List structure - contains head and tail NODE pointers #
 MODE LIST = STRUCT(
-    REF NODE head, 
-    REF NODE tail 
+    REF NODE head,
+    REF NODE tail
     );
 
 # --- PREPEND - Adds a node to the beginning of the list ---#
 PRIO PREPEND = 1;
-OP   PREPEND = (REF LIST list, DATA data) VOID: 
-(    		
-    HEAP NODE n := (data, NIL, NIL); 
+OP   PREPEND = (REF LIST list, DATA data) VOID:
+(
+    HEAP NODE n := (data, NIL, NIL);
     IF head OF list IS REF NODE(NIL) THEN
-        head OF list := tail OF list := n 
+        head OF list := tail OF list := n
     ELSE
-        next OF n := head OF list; 
+        next OF n := head OF list;
         prev OF head OF list := head OF list := n
     FI
 );
 #--- APPEND - Adds a node to the end of the list ---#
-PRIO APPEND = 1; 
-OP   APPEND = (REF LIST list, DATA data) VOID: 
-(                                              
+PRIO APPEND = 1;
+OP   APPEND = (REF LIST list, DATA data) VOID:
+(
     HEAP NODE n := (data, NIL, NIL);
     IF head OF list IS REF NODE(NIL) THEN
-        head OF list := tail OF list := n     
+        head OF list := tail OF list := n
     ELSE
         prev OF n := tail OF list;
         next OF tail OF list := tail OF list := n
@@ -102,8 +102,8 @@ OP   APPEND = (REF LIST list, DATA data) VOID:
 
 #--- REMOVE_FIRST - removes & returns node at end of the list ---#
 PRIO REMOVE_FIRST = 1;
-OP   REMOVE_FIRST = (REF LIST list) DATA: 
-(                                         
+OP   REMOVE_FIRST = (REF LIST list) DATA:
+(
     IF head OF list ISNT REF NODE(NIL) THEN
         DATA d := data OF head OF list;
         prev OF next OF head OF list := NIL;
@@ -126,23 +126,23 @@ OP   REMOVE_LAST = (REF LIST list) DATA:
 PRIO PURGE = 2;
 OP   PURGE = (REF LIST list) VOID:
 (
-    head OF list := tail OF list := NIL 
+    head OF list := tail OF list := NIL
 );
 
 #--- returns the data at the end of the list ---#
 PRIO LAST_IN = 2;
-OP LAST_IN = (REF LIST list) DATA: (  
+OP LAST_IN = (REF LIST list) DATA: (
     IF head OF list ISNT REF NODE(NIL) THEN
-        data OF tail OF list  
-    FI 
+        data OF tail OF list
+    FI
 );
 
 #--- returns the data at the front of the list ---#
 PRIO FIRST_IN  = 2;
-OP FIRST_IN = (REF LIST list) DATA: (  
-    IF head OF list ISNT REF NODE(NIL) THEN 
-        data OF head OF list 
-    FI 
+OP FIRST_IN = (REF LIST list) DATA: (
+    IF head OF list ISNT REF NODE(NIL) THEN
+        data OF head OF list
+    FI
 );
 
 #--- Traverses through the list forwards ---#
@@ -169,13 +169,13 @@ PROC backward traversal = (LIST list) VOID:
 
 main.alg:
 ```algol68
-PR READ "LinkedList.alg" PR; 
+PR READ "LinkedList.alg" PR;
 
 MODE EMPLOYEE = STRUCT(STRING name, INT salary, INT years);
 MODE DATA = EMPLOYEE; #Sets the data type that is in the list#
 
 # Function that traversals call for each node in list  #
-PROC list visit = (REF DATA data) VOID:  
+PROC list visit = (REF DATA data) VOID:
 (
     print((
         "EMPLOYEE NAME  :  ", name OF data ,  newline,
@@ -191,18 +191,18 @@ main:
     name OF empl := "one";
     salary OF empl := 100;
     years OF empl := 10;
-    
+
     LIST list := (NIL, NIL);
 
-    list PREPEND empl; 
+    list PREPEND empl;
     name OF empl := "two";
     salary OF empl := 200;
     years OF empl := 20;
-    list APPEND empl; 
+    list APPEND empl;
     name OF empl := "three";
     salary OF empl := 300;
     years OF empl := 30;
-    list APPEND empl; 
+    list APPEND empl;
     salary OF empl := 400;
     years OF empl := 40;
     name OF empl := "four";
@@ -218,18 +218,18 @@ main:
 
 ```txt
 
-EMPLOYEE NAME  :  one                                                                                                
-         SALARY:        +100                                                                                         
-         YEARS :         +10                                                                                         
-EMPLOYEE NAME  :  two                                                                                                
-         SALARY:        +200                                                                                         
-         YEARS :         +20                                                                                         
-EMPLOYEE NAME  :  three                                                                                              
-         SALARY:        +300                                                                                         
-         YEARS :         +30                                                                                         
-EMPLOYEE NAME  :  four                                                                                               
-         SALARY:        +400                                                                                         
-         YEARS :         +40   
+EMPLOYEE NAME  :  one
+         SALARY:        +100
+         YEARS :         +10
+EMPLOYEE NAME  :  two
+         SALARY:        +200
+         YEARS :         +20
+EMPLOYEE NAME  :  three
+         SALARY:        +300
+         YEARS :         +30
+EMPLOYEE NAME  :  four
+         SALARY:        +400
+         YEARS :         +40
 
 ```
 
@@ -242,9 +242,9 @@ EMPLOYEE NAME  :  four
 
 /* ARM assembly Raspberry PI  */
 /*  program transDblList.s   */
-/* REMARK 1 : this program use routines in a include file 
-   see task Include a file language arm assembly 
-   for the routine affichageMess conversion10S 
+/* REMARK 1 : this program use routines in a include file
+   see task Include a file language arm assembly
+   for the routine affichageMess conversion10S
    see at end of this program the instruction include */
 
 /* Constantes    */
@@ -266,11 +266,11 @@ dllist_fin:
 /* structure Node Doublylinked List*/
     .struct  0
 NDlist_next:                    @ next element
-    .struct  NDlist_next + 4 
+    .struct  NDlist_next + 4
 NDlist_prev:                    @ previous element
-    .struct  NDlist_prev + 4 
+    .struct  NDlist_prev + 4
 NDlist_value:                   @ element value or key
-    .struct  NDlist_value + 4 
+    .struct  NDlist_value + 4
 NDlist_fin:
 /* Initialized data */
 .data
@@ -283,13 +283,13 @@ szMessResult:            .ascii "Result value :"
 sValue:                  .space 12,' '
                          .asciz "\n"
 /* UnInitialized data */
-.bss 
-dllist1:              .skip dllist_fin    @ list memory place 
+.bss
+dllist1:              .skip dllist_fin    @ list memory place
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
     ldr r0,iAdrdllist1
     bl newDList                      @ create new list
     ldr r0,iAdrszMessInitListe
@@ -335,35 +335,35 @@ iAdrszMessListInv:         .int szMessListInv
 iAdrszCarriageReturn:      .int szCarriageReturn
 iAdrdllist1:               .int dllist1
 /******************************************************************/
-/*     create new list                         */ 
+/*     create new list                         */
 /******************************************************************/
 /* r0 contains the address of the list structure */
 newDList:
-    push {r1,lr}                         @ save  registers 
+    push {r1,lr}                         @ save  registers
     mov r1,#0
     str r1,[r0,#dllist_tail]
     str r1,[r0,#dllist_head]
     pop {r1,lr}                          @ restaur registers
     bx lr                                @ return
 /******************************************************************/
-/*     list is empty ?                         */ 
+/*     list is empty ?                         */
 /******************************************************************/
 /* r0 contains the address of the list structure */
 /* r0 return 0 if empty  else return 1 */
 isEmpty:
-    //push {r1,lr}                         @ save  registers 
+    //push {r1,lr}                         @ save  registers
     ldr r0,[r0,#dllist_head]
     cmp r0,#0
     movne r0,#1
     //pop {r1,lr}                          @ restaur registers
     bx lr                                @ return
 /******************************************************************/
-/*     insert value at list head                        */ 
+/*     insert value at list head                        */
 /******************************************************************/
 /* r0 contains the address of the list structure */
 /* r1 contains value */
 insertHead:
-    push {r1-r4,lr}                         @ save  registers 
+    push {r1-r4,lr}                         @ save  registers
     mov r4,r0                            @ save address
     mov r0,r1                            @ value
     bl createNode
@@ -373,7 +373,7 @@ insertHead:
     str r2,[r0,#NDlist_next]             @ store in next pointer on new node
     mov r1,#0
     str r1,[r0,#NDlist_prev]             @ store zero in previous pointer on new node
-    str r0,[r4,#dllist_head]             @ store address new node in address head list 
+    str r0,[r4,#dllist_head]             @ store address new node in address head list
     cmp r2,#0                            @ address first node is null ?
     strne r0,[r2,#NDlist_prev]           @ no store adresse new node in previous pointer
     streq r0,[r4,#dllist_tail]           @ else store new node in tail address
@@ -381,12 +381,12 @@ insertHead:
     pop {r1-r4,lr}                          @ restaur registers
     bx lr                                @ return
 /******************************************************************/
-/*     insert value at list tail                        */ 
+/*     insert value at list tail                        */
 /******************************************************************/
 /* r0 contains the address of the list structure */
 /* r1 contains value */
 insertTail:
-    push {r1-r4,lr}                         @ save  registers 
+    push {r1-r4,lr}                         @ save  registers
     mov r4,r0                               @ save list address
     mov r0,r1                               @ value
     bl createNode                           @ new node
@@ -404,13 +404,13 @@ insertTail:
     pop {r1-r4,lr}                          @ restaur registers
     bx lr                                   @ return
 /******************************************************************/
-/*     insert value after other element                        */ 
+/*     insert value after other element                        */
 /******************************************************************/
 /* r0 contains the address of the list structure */
 /* r1 contains value to search*/
 /* r2 contains value to insert */
 insertAfter:
-    push {r1-r5,lr}                         @ save  registers 
+    push {r1-r5,lr}                         @ save  registers
     mov r4,r0
     bl searchValue                          @ search node with this value in r1
     cmp r0,#-1
@@ -425,19 +425,19 @@ insertAfter:
     str r5,[r0,#NDlist_prev]                @ store address find node in previous pointer on new node
     str r2,[r0,#NDlist_next]                @ store pointer next of find node on pointer next on new node
     cmp r2,#0                               @ next pointer is null ?
-    strne r0,[r2,#NDlist_prev]              @ no store address new node in previous pointer 
+    strne r0,[r2,#NDlist_prev]              @ no store address new node in previous pointer
     streq r0,[r4,#dllist_tail]              @ else store in list tail
 100:
     pop {r1-r5,lr}                          @ restaur registers
     bx lr                                @ return
 /******************************************************************/
-/*     search value                                               */ 
+/*     search value                                               */
 /******************************************************************/
 /* r0 contains the address of the list structure */
 /* r1 contains the value to search  */
 /* r0 return address of node or -1 if not found */
 searchValue:
-    push {r2,lr}                         @ save  registers 
+    push {r2,lr}                         @ save  registers
     ldr r0,[r0,#dllist_head]             @ load first node
 1:
     cmp r0,#0                            @ null -> end search not found
@@ -446,17 +446,17 @@ searchValue:
     ldr r2,[r0,#NDlist_value]            @ load node value
     cmp r2,r1                            @ equal ?
     beq 100f
-    ldr r0,[r0,#NDlist_next]             @ load addresse next node 
+    ldr r0,[r0,#NDlist_next]             @ load addresse next node
     b 1b                                 @ and loop
 100:
     pop {r2,lr}                          @ restaur registers
     bx lr                                @ return
 /******************************************************************/
-/*     transversal for head to tail                                               */ 
+/*     transversal for head to tail                                               */
 /******************************************************************/
 /* r0 contains the address of the list structure */
 transHeadTail:
-    push {r2,lr}                         @ save  registers 
+    push {r2,lr}                         @ save  registers
     ldr r2,[r0,#dllist_head]             @ load first node
 1:
     ldr r0,[r2,#NDlist_value]
@@ -473,11 +473,11 @@ transHeadTail:
 iAdrszMessResult:          .int szMessResult
 iAdrsValue:                .int sValue
 /******************************************************************/
-/*     transversal for tail to head                                               */ 
+/*     transversal for tail to head                                               */
 /******************************************************************/
 /* r0 contains the address of the list structure */
 transTailHead:
-    push {r2,lr}                         @ save  registers 
+    push {r2,lr}                         @ save  registers
     ldr r2,[r0,#dllist_tail]             @ load last node
 1:
     ldr r0,[r2,#NDlist_value]
@@ -492,12 +492,12 @@ transTailHead:
     pop {r2,lr}                          @ restaur registers
     bx lr                                @ return
 /******************************************************************/
-/*     Create new node                                            */ 
+/*     Create new node                                            */
 /******************************************************************/
 /* r0 contains the value */
 /* r0 return node address or -1 if allocation error*/
 createNode:
-    push {r1-r7,lr}                         @ save  registers 
+    push {r1-r7,lr}                         @ save  registers
     mov r4,r0                            @ save value
     @ allocation place on the heap
     mov r0,#0                                   @ allocation place heap
@@ -538,7 +538,7 @@ see [[Doubly-linked list/AutoHotkey]]
 LINK(L₁,1)→A
 LINK(L₁+10,2)→B
 LINK(L₁+50,3)→C
- 
+
 INSERT(A,B)
 INSERT(A,C)
 
@@ -566,15 +566,15 @@ End
 ```bbcbasic
       DIM node{pPrev%, pNext%, iData%}
       DIM a{} = node{}, b{} = node{}, c{} = node{}
-      
+
       a.pNext% = b{}
       a.iData% = 123
       b.pPrev% = a{}
       b.iData% = 789
       c.iData% = 456
-      
+
       PROCinsert(a{}, c{})
-      
+
       PRINT "Traverse forwards:"
       pnode% = a{}
       REPEAT
@@ -582,7 +582,7 @@ End
         PRINT node.iData%
         pnode% = node.pNext%
       UNTIL pnode% = 0
-      
+
       PRINT "Traverse backwards:"
       pnode% = b{}
       REPEAT
@@ -590,9 +590,9 @@ End
         PRINT node.iData%
         pnode% = node.pPrev%
       UNTIL pnode% = 0
-      
+
       END
-      
+
       DEF PROCinsert(here{}, new{})
       LOCAL temp{} : DIM temp{} = node{}
       new.pNext% = here.pNext%
@@ -648,14 +648,14 @@ LinkedList NewList() {
     return le;
 }
 
-int LL_Append(LinkedList ll, const char *newVal) 
+int LL_Append(LinkedList ll, const char *newVal)
 {
     ListEntry le = malloc(sizeof(struct sListEntry));
     if (le) {
         le->value = strdup(newVal);
         le->prev = ll->prev;
         le->next = NULL;
-        if (le->prev) 
+        if (le->prev)
             le->prev->next = le;
         else
             ll->next = le;
@@ -676,7 +676,7 @@ int LI_Insert(LIterator iter, const char *newVal)
             crnt->next = le;
             if (le->next)
                 le->next->prev = le;
-            else 
+            else
                 crnt->prev = le;
         }
         else {
@@ -686,16 +686,16 @@ int LI_Insert(LIterator iter, const char *newVal)
                 le->prev->next = le;
             else
                 iter->head->next = le;
-            if (crnt) 
+            if (crnt)
                 crnt->prev = le;
-            else 
+            else
                 iter->head->prev = le;
         }
     }
     return (le!= NULL);
 }
 
-LIterator LL_GetIterator(LinkedList ll ) 
+LIterator LL_GetIterator(LinkedList ll )
 {
     LIterator liter = malloc(sizeof(struct sListIterator));
     liter->head = ll;
@@ -726,9 +726,9 @@ int LLI_Prev(LIterator iter)
     return(iter->link != NULL);
 }
 
-int main() 
+int main()
 {
-    static const char *contents[] = {"Read", "Orage", "Yeller", 
+    static const char *contents[] = {"Read", "Orage", "Yeller",
                                      "Glean", "Blew", "Burple"};
     int ix;
     LinkedList ll = NewList();    //new linked list
@@ -740,12 +740,12 @@ int main()
     iter = LL_GetIterator(ll);    //get an iterator
     printf("forward\n");
     while(LLI_Next(iter))         //iterate forward
-        printf("value=%s\n", LLI_Value(iter));    
+        printf("value=%s\n", LLI_Value(iter));
     LLI_Delete(iter);             //delete iterator
 
     printf("\nreverse\n");
     iter = LL_GetIterator(ll);
-    while(LLI_Prev(iter))         //iterate reverse 
+    while(LLI_Prev(iter))         //iterate reverse
         printf("value=%s\n", LLI_Value(iter));
     LLI_Delete(iter);
                         //uhhh-- delete list??
@@ -759,8 +759,8 @@ int main()
 
 {{works with|C++11}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <list>
 
 int main ()
@@ -776,7 +776,7 @@ int main ()
 
 ```txt
 
-1 5 7 0 3 2 
+1 5 7 0 3 2
 
 ```
 
@@ -850,7 +850,7 @@ Given the definition in [[../Definition#Clojure]],
 ;=>  #:double_list.Node{:prev #<Object...>, :next #<Object...>, :data :b, :key #<Object...>}
 ;=>  #:double_list.Node{:prev #<Object...>, :next #<Object...>, :data :c, :key #<Object...>}
 ;=>  #:double_list.Node{:prev #<Object...>, :next nil,          :data :d, :key #<Object...>})
- 
+
 (take-while identity (iterate get-prev (get-tail dl)))
 
 ;=> (#:double_list.Node{:prev #<Object...>, :next nil,          :data :d, :key #<Object...>}
@@ -879,8 +879,8 @@ void main() {
 {{out}}
 
 ```txt
-ABCD 
-DCBA 
+ABCD
+DCBA
 ```
 
 
@@ -943,13 +943,13 @@ type
 // since this task is just showing the traversal I am not allocating the memory and setting up the root node etc.
 // Note the use of the carat symbol for de-referencing the pointer.
 
-begin   
+begin
 
    // beginning to end
    while not (pList^.Next = NIL) do pList := pList^.Next ;
 
    // end to beginning
-   while not (pList^.prev = NIL) do pList := pList^.prev ;   
+   while not (pList^.prev = NIL) do pList := pList^.prev ;
 
 end;
 ```
@@ -963,7 +963,7 @@ Given the definition in [[../Definition#E]],
 
 ```e
 def traverse(list) {
-    var node := list.atFirst() 
+    var node := list.atFirst()
     while (true) {
         println(node[])
         if (node.hasNext()) {
@@ -1162,7 +1162,7 @@ isLeaf _       = False
 lastNode Leaf  = Leaf
 lastNode dl    = until (isLeaf.next) next dl
 
-traverse _    Leaf            = []  
+traverse _    Leaf            = []
 traverse True (Node l v Leaf) = v : v : traverse False l
 traverse dir  (Node l v r)    = v : traverse dir (if dir then r else l)
 ```
@@ -1182,17 +1182,17 @@ class DoubleLink (value, prev_link, next_link)
     self.next_link := node
   end
 
-  # use a generator to traverse 
+  # use a generator to traverse
   # - keep suspending the prev/next link until a null node is reached
-  method traverse_backwards () 
+  method traverse_backwards ()
     current := self
-    while \current do { 
+    while \current do {
       suspend current
       current := current.prev_link
     }
   end
 
-  method traverse_forwards () 
+  method traverse_forwards ()
     current := self
     while \current do {
       suspend current
@@ -1213,11 +1213,11 @@ procedure main ()
   l1.insert_after (DoubleLink (3))
 
   write ("Traverse from beginning to end")
-  every (node := l1.traverse_forwards ()) do  
+  every (node := l1.traverse_forwards ()) do
     write (node.value)
 
   write ("Traverse from end to beginning")
-  every (node := l2.traverse_backwards ()) do  
+  every (node := l2.traverse_backwards ()) do
     write (node.value)
 end
 ```
@@ -1306,7 +1306,7 @@ DoublyLinkedList.prototype.getTail = function() {
     var tail;
     this.traverse(function(node){tail = node;});
     return tail;
-} 
+}
 DoublyLinkedList.prototype.traverseBackward = function(func) {
     func(this);
     if (this.prev() != null)
@@ -1367,7 +1367,7 @@ function printconnected(nd; fromtail = false)
     if fromtail
         nd = last(nd)
         print(nd.value)
-        while nd.pred != nothing 
+        while nd.pred != nothing
             nd = nd.pred
             print(" -> $(nd.value)")
         end
@@ -1391,7 +1391,7 @@ print("From beginning to end: "); printconnected(node1)
 print("From end to beginning: "); printconnected(node1, fromtail = true)
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 From beginning to end: 1 -> 2 -> 3
@@ -1853,7 +1853,7 @@ DList method: forEachPrev
 : test
 | dl n |
    DList new ->dl
-   dl insertFront("A") 
+   dl insertFront("A")
    dl insertBack("B")
    dl head insertAfter(DNode new("C", null , null))
 
@@ -1911,7 +1911,7 @@ declare
      [] NextNode=node(...) then {GetLast NextNode}
      end
   end
-  
+
   fun {CreateNewNode Value}
      node(prev:{NewCell nil}
           next:{NewCell nil}
@@ -2119,27 +2119,27 @@ Output:
 
 ```txt
 
-In a forwards direction, the list has: 
-       1 
-       2 
-       3 
-       4 
-       5 
-      16 
-       7 
-       8 
-       9 
-      10 
-In the reverse direction, the list has: 
-      10 
-       9 
-       8 
-       7 
-      16 
-       5 
-       4 
-       3 
-       2 
+In a forwards direction, the list has:
+       1
+       2
+       3
+       4
+       5
+      16
+       7
+       8
+       9
+      10
+In the reverse direction, the list has:
+      10
+       9
+       8
+       7
+      16
+       5
+       4
+       3
+       2
        1
 ```
 
@@ -2157,13 +2157,13 @@ For i=0 To (Random(100)+25)
   MyData()=Random(314)        ; Inert a vale into it
 Next
 ;
-;Traverse from the beginning of a doubly-linked list to the end. 
+;Traverse from the beginning of a doubly-linked list to the end.
 FirstElement(MyData())
 Repeat
   Debug MyData()              ; Present the value in the current cell
-Until Not NextElement(MyData()) 
+Until Not NextElement(MyData())
 ;
-;Traverse from the end to the beginning. 
+;Traverse from the end to the beginning.
 LastElement(MyData())
 Repeat
    Debug MyData()             ; Present the value in the current cell
@@ -2334,7 +2334,7 @@ sy:      say; say left('',30) "───" arg(1) '───'; return
          return
 ```
 
-'''output''' 
+'''output'''
 <pre style="height:30ex;overflow:scroll">
                                ─── initializing the list. ───
 
@@ -2654,7 +2654,7 @@ println();
 
 ```txt
 
-a  b  c  
+a  b  c
 c  b  a
 
 ```

@@ -18,9 +18,9 @@ Write a game (computer program) that follows the following rules:
 ::* The player is asked for repeated guesses until the the target number is guessed correctly
 ::* At each guess, the computer responds with whether the guess is:
 :::::* higher than the target,
-:::::* equal to the target, 
+:::::* equal to the target,
 :::::* less than the target,   or
-:::::* the input was inappropriate. 
+:::::* the input was inappropriate.
 
 
 ;Related task:
@@ -185,13 +185,13 @@ on run
 		try
 			set guessedNumber to usersChoice as integer
 			if guessedNumber is greater than maxLimit or guessedNumber is less than minLimit then
-				-- the user guessed a number outside the given range 
+				-- the user guessed a number outside the given range
 				set tip to "(Tipp: Enter a number between " & minLimit & " and " & maxLimit & ")"
 			else if guessedNumber is less than numberToGuess then
-				-- the user guessed a number less than the correct number 
+				-- the user guessed a number less than the correct number
 				set tip to "(Tipp: The number is greater than " & guessedNumber & ")"
 			else if guessedNumber is greater than numberToGuess then
-				-- the user guessed a number greater than the correct number 
+				-- the user guessed a number greater than the correct number
 				set tip to "(Tipp: The number is less than " & guessedNumber & ")"
 			else if guessedNumber is equal to numberToGuess then
 				-- the user guessed the correct number and gets informed
@@ -320,11 +320,11 @@ BEGIN {
 ```basic256
 
 Min = 5: Max = 15
-chosen = int(rand*(Max-Min+1)) + Min 
+chosen = int(rand*(Max-Min+1)) + Min
 print "Guess a whole number between "+Min+" and "+Max
 do
    input "Enter your number " ,guess
-   if guess < Min OR guess > Max then 
+   if guess < Min OR guess > Max then
 	print "That was an invalid number"
 	end
    else
@@ -353,11 +353,11 @@ Well guessed!
 
 ==={{header|IS-BASIC}}===
 <lang IS-BASIC>100 PROGRAM "Guess.bas"
-110 RANDOMIZE 
+110 RANDOMIZE
 120 LET UP=10:LET LO=1 ! Limits
 130 PRINT "I'm thinking of a number between";LO;"and";UP
 140 LET COUNT=0:LET NR=RND(UP-LO+1)+LO
-150 DO 
+150 DO
 160   LET COUNT=COUNT+1
 170   INPUT PROMPT "Guess a number: ":GU
 180   SELECT CASE GU
@@ -367,7 +367,7 @@ Well guessed!
 220     PRINT "My number is higher that."
 230   CASE ELSE
 240     PRINT "Well guessed! Numner of tips:";COUNT
-250   END SELECT 
+250   END SELECT
 260 LOOP UNTIL NR=GU
 ```
 
@@ -382,7 +382,7 @@ Well guessed!
 :A
 set /a number=%random% %% 10 + 1
 :B
-set /p guess=Choose a number between 1 and 10: 
+set /p guess=Choose a number between 1 and 10:
 if %guess equ %number% goto win
 if %guess% gtr 10 msg * "Number must be between 1 and 10."
 if %guess% leq 0 msg * "Number must be between 1 and 10."
@@ -483,8 +483,8 @@ until {
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <time.h>
 
@@ -536,8 +536,8 @@ You guessed correctly!
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cstdlib>
 #include <ctime>
 
@@ -651,7 +651,7 @@ Make a guess: hello, world
 Input was not an integer.
 Make a guess: 7
 You guessed the right number!
- 
+
 Press any key to exit.
 
 ```
@@ -661,30 +661,30 @@ Press any key to exit.
 <lang Caché ObjectScript>GUESSNUM
     ; get a random number between 1 and 100
     set target = ($random(100) + 1)    ; $r(100) gives 0-99
-    
+
     ; loop until correct
     set tries = 0
     for {
         write !,"Guess the integer between 1 and 100: "
         read "",guess    ; gets input following write
-        
+
         ; validate input
         if (guess?.N) && (guess > 0) && (guess < 101) {
             ; increment attempts
             set tries = tries + 1
-            
+
             ; evaluate the guess
             set resp = $select(guess < target:"too low.",guess > target:"too high.",1:"correct!")
-            
+
             ; display result, conditionally exit loop
             write !,"Your guess was "_resp
-            quit:resp="correct!"        
+            quit:resp="correct!"
         }
         else {
             write !,"Please enter an integer between 1 and 100."
         }
     }    ; guess loop
-    
+
     write !!,"You guessed the number in "_tries_" attempts."
     quit
 ```
@@ -798,17 +798,17 @@ shared void run() {
        01  Seed       PIC 9(8).
        01  Random-Num PIC 99.
        01  Guess      PIC 99.
- 
+
        PROCEDURE DIVISION.
            ACCEPT Seed FROM TIME
            COMPUTE Random-Num =
                FUNCTION REM(FUNCTION RANDOM(Seed) * 1000, 10) + 1
 
            DISPLAY "Guess a number between 1 and 10:"
- 
+
            PERFORM FOREVER
                ACCEPT Guess
- 
+
                IF Guess > Random-Num
                    DISPLAY "Your guess was too high."
                ELSE IF Guess < Random-Num
@@ -817,7 +817,7 @@ shared void run() {
                    DISPLAY "Well guessed!"
                    EXIT PERFORM
            END-PERFORM
- 
+
            GOBACK
            .
 ```
@@ -1028,7 +1028,7 @@ begin
 
   // Initialise last number
   last := 0;
-  
+
   // Initialise user input
   s := '';
 
@@ -1067,7 +1067,7 @@ begin
       // Input invalid
       if not SameText(s,'bored') then
         Writeln('Invalid input! Try again...');
-      
+
   until
     SameText(s,'bored');
 
@@ -1111,14 +1111,14 @@ print "correct"
    (set! user (read user msg))
    (play-sound 'ko)
    (unless (eq? n user ) ; user is the last user answer
-       (guess-feed 
+       (guess-feed
                (cond ;; adapt prompt according to condition
                     ((not (integer? user)) "❌ Please, enter an integer")
                     (( < user 0) (error "🌵 - It was:" n)) ; exit to top level
                     ((> n user) "Too low ...")
                     ((< n user) "Too high ..."))
               n user))
-    (play-sound 'ok )  
+    (play-sound 'ok )
     " 🔮 Well played!!  🍒 🍇 🍓")
 
 ```
@@ -1138,7 +1138,7 @@ guess () = do
   main ub
   where main ub
           | ub < 0 = "Bound should be greater than 0."
-          | else = do 
+          | else = do
               putStrLn $ format "Guess a number from 1 to {0}" ub
               dt <- datetime.now
               guesser (rnd (milliseconds $ dt) 1 ub)
@@ -1149,7 +1149,7 @@ guess () = do
             else if x < v then
               do putStrLn "Too small!"
                  guesser v
-            else 
+            else
               do putStrLn "Too big!"
                  guesser v
         cont () = do
@@ -1161,7 +1161,7 @@ guess () = do
               guess ()
             else if a == "n" || a == "N" then
               do putStrLn "Bye!"
-            else 
+            else
               do putStrLn "Say what?"
                  ask ()
 
@@ -1175,7 +1175,7 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     int randomNumber := randomGenerator.eval(1,10);
@@ -1241,7 +1241,7 @@ defmodule GuessingGame do
     end
   end
 end
- 
+
 GuessingGame.play(1, 100)
 ```
 
@@ -1252,16 +1252,16 @@ GuessingGame.play(1, 100)
 
 ```Lisp
 
-(let ((num (1+ (random 100)))) 
-  (princ "Guess the no: ") 
-  (loop 
-   (setq guess (read)) 
+(let ((num (1+ (random 100))))
+  (princ "Guess the no: ")
+  (loop
+   (setq guess (read))
    (cond
     ((not (numberp guess)) (print "Please enter a number"))
-   ((eq guess num) 
-       (progn (princ-list "Guess was right! " num) 
-	      (return))) 
-     ((> guess num) 
+   ((eq guess num)
+       (progn (princ-list "Guess was right! " num)
+	      (return)))
+     ((> guess num)
       (print "Too High!"))
      ((< guess num)
        (print "Too low!"))) ) )
@@ -1280,7 +1280,7 @@ GuessingGame.play(1, 100)
 main() ->
 	L = 1 ,	 	% Lower Limit
 	U = 100, 	  % Upper Limit
-	
+
 	io:fwrite("Guess my number between ~p and ", [L]),
 	io:fwrite("and ~p until you get it right.\n", [U]),
 	N = random:uniform(100),
@@ -1288,25 +1288,25 @@ main() ->
 
 guess(N) ->
 	{ok, [K]} = io:fread("Guess the number :  ","~d"),
-	if 
+	if
 		K=:=N ->
 			io:format("Well guessed!!\n");
-		true -> 
-			if 
+		true ->
+			if
 				K > N ->
 					io:format("Your guess is too high.\n");
 				true ->
 					io:format("Your guess is too low.\n")
-			end,			
-			guess(N)	
-	end.	
+			end,
+			guess(N)
+	end.
 
 ```
 
 {{out}}
 
 ```txt
-1> c(guess_number).    
+1> c(guess_number).
 {ok,guess_number}
 2> guess_number:main().
 Guess my number between 1 and and 100 until you get it right.
@@ -1376,15 +1376,15 @@ let main argv =
             | true, number -> Some(number)
             | false,_ -> None
 
-        match guess with 
+        match guess with
             | Some(number) ->
-                match number with 
+                match number with
                     | number when number > aim ->   Console.WriteLine("You guessed to high!")
                     | number when number < aim ->   Console.WriteLine("You guessed to low!")
                     | _                        ->   Console.WriteLine("You guessed right!")
                                                     correct <- true
             | None -> Console.WriteLine("Error: You didn't entered a parsable number!")
-         
+
     0
 
 ```
@@ -1460,9 +1460,9 @@ class Main
           echo ("Failed - your guess is too large")
         }
       }
-      catch (Err e) 
-      { 
-        echo ("Your guess must be an integer") 
+      catch (Err e)
+      {
+        echo ("Your guess must be an integer")
       }
     }
   }
@@ -1475,25 +1475,25 @@ Sample game:
 
 ```txt
 
-Enter a guess: 
+Enter a guess:
 50
 Failed - your guess is too small
-Enter a guess: 
+Enter a guess:
 75
 Failed - your guess is too large
-Enter a guess: 
+Enter a guess:
 67
 Failed - your guess is too large
-Enter a guess: 
+Enter a guess:
 60
 Failed - your guess is too large
-Enter a guess: 
+Enter a guess:
 55
 Failed - your guess is too large
-Enter a guess: 
+Enter a guess:
 53
 Failed - your guess is too small
-Enter a guess: 
+Enter a guess:
 54
 Well guessed!
 
@@ -1508,15 +1508,15 @@ Well guessed!
 ```fortran
 program Guess_a_number
   implicit none
-  
+
   integer, parameter :: limit = 100
   integer :: guess, number
   real :: rnum
-  
+
   write(*, "(a, i0, a)") "I have chosen a number between 1 and ", limit, &
-                         " and you have to try to guess it." 
+                         " and you have to try to guess it."
   write(*, "(a/)")  "I will score your guess by indicating whether it is higher, lower or the same as that number"
- 
+
   call random_seed
   call random_number(rnum)
   number = rnum * limit + 1
@@ -1578,7 +1578,7 @@ Do
   ElseIf guess < n AndAlso guess >= 1 Then
     Print "Your guess is lower than the chosen number, try again"
   Else
-    Print "Your guess is inappropriate, try again"   
+    Print "Your guess is inappropriate, try again"
   End If
 Loop
 End
@@ -1619,19 +1619,19 @@ class NumberGuessing
 
     prop min:int
     prop max:int
-    
+
     construct(m:int, n:int)
         self.min = m
         self.max = n
-    
+
     def start()
         try_count:int = 0
         number:int = Random.int_range(min, max)
-        
+
         stdout.printf("Welcome to Number Guessing!\n\n")
         stdout.printf("I have thought up a number between %d and %d\n", min, max)
         stdout.printf("which you have to guess. I will give hints as we go.\n\n")
-    
+
         while true
             stdout.printf("Try #%d, ", ++try_count)
             stdout.printf("please enter a number between %d and %d: ", min, max)
@@ -1664,8 +1664,8 @@ init
 {{out}}
 
 ```txt
-prompt$ valac numberGuessing.gs      
-prompt$ ./numberGuessing        
+prompt$ valac numberGuessing.gs
+prompt$ ./numberGuessing
 Welcome to Number Guessing!
 
 I have thought up a number between 1 and 100
@@ -1861,9 +1861,9 @@ procedure main()
     repeat {
       writes("Pick a number from ", smallest, " through ", highest, ": ")
       guess := read ()
-         
-      if n = numeric(guess) 
-        then { 
+
+      if n = numeric(guess)
+        then {
           write ("Well guessed!")
           exit ()
         }
@@ -1909,7 +1909,7 @@ game=: verb define
   smoutput 'Guess my integer, which is bounded by 1 and ',":y
   whilst. -. x -: n do.
     x=. {. 0 ". prompt 'Guess: '
-    if. 0 -: x do. 'Giving up.' return. end. 
+    if. 0 -: x do. 'Giving up.' return. end.
     smoutput (*x-n){::'You win.';'Too high.';'Too low.'
   end.
 )
@@ -2006,11 +2006,11 @@ You got it!
 
 ```javascript
 var number = Math.ceil(Math.random() * 100);
- 
+
 function verify() {
     var guess = Number(this.elements.guess.value),
         output = document.getElementById('output');
- 
+
     if (isNaN(guess)) {
         output.innerHTML = 'Enter a number.';
     } else if (number === guess) {
@@ -2033,7 +2033,7 @@ document.getElementById('guessNumber').onsubmit = verify;
 
 
 
-###  Spidermonkey Version 
+###  Spidermonkey Version
 
 
 ```javascript
@@ -2046,7 +2046,7 @@ function main() {
 function guessTheNumber(low, high) {
     var num = randOnRange(low, high);
     var guessCount = 0;
-    
+
     function checkGuess(n) {
         if (n < low || n > high) {
             print('That number is not between ' + low + ' and ' + high + '!');
@@ -2131,7 +2131,7 @@ guesswithfeedback(10)
 I choose a number between 1 and 10
 Your guess? 11
 Too big, new guess? 1
-Too small, new guess? 5 
+Too small, new guess? 5
 Too small, new guess? 6
 Too small, new guess? 7
 You guessed right!
@@ -2205,8 +2205,8 @@ Correct, well guessed!
  {lambda {:n}
   {let { {:n :n}                                // :n redefined
          {:N {floor {* :n {random}}}}}          // compute a random number
-   Find {b :N} between 0 and :n {game.rec :N 0 :n} 
-}}} 
+   Find {b :N} between 0 and :n {game.rec :N 0 :n}
+}}}
 
 {game {pow 2 32}}       // 2**32 = 4294967296
 
@@ -2218,38 +2218,38 @@ Sample inout/output
 
 ```txt
 
-Find 2037303041 between 0 and 4294967296 
-2147483648 too high! 
-1073741824 too low! 
-1610612736 too low! 
-1879048192 too low! 
-2013265920 too low! 
-2080374784 too high! 
-2046820352 too high! 
-2030043136 too low! 
-2038431744 too high! 
-2034237440 too low! 
-2036334592 too low! 
-2037383168 too high! 
-2036858880 too low! 
-2037121024 too low! 
-2037252096 too low! 
-2037317632 too high! 
-2037284864 too low! 
-2037301248 too low! 
-2037309440 too high! 
-2037305344 too high! 
-2037303296 too high! 
-2037302272 too low! 
-2037302784 too low! 
-2037303040 too low! 
-2037303168 too high! 
-2037303104 too high! 
-2037303072 too high! 
-2037303056 too high! 
-2037303048 too high! 
-2037303044 too high! 
-2037303042 too high! 
+Find 2037303041 between 0 and 4294967296
+2147483648 too high!
+1073741824 too low!
+1610612736 too low!
+1879048192 too low!
+2013265920 too low!
+2080374784 too high!
+2046820352 too high!
+2030043136 too low!
+2038431744 too high!
+2034237440 too low!
+2036334592 too low!
+2037383168 too high!
+2036858880 too low!
+2037121024 too low!
+2037252096 too low!
+2037317632 too high!
+2037284864 too low!
+2037301248 too low!
+2037309440 too high!
+2037305344 too high!
+2037303296 too high!
+2037302272 too low!
+2037302784 too low!
+2037303040 too low!
+2037303168 too high!
+2037303104 too high!
+2037303072 too high!
+2037303056 too high!
+2037303048 too high!
+2037303044 too high!
+2037303042 too high!
 2037303041 Got it!
 
 ```
@@ -2344,7 +2344,7 @@ Well guessed!
 ```
 
 
-From the LFE REPL (assuming the above code was saved in the file "guessing-game.lfe"): 
+From the LFE REPL (assuming the above code was saved in the file "guessing-game.lfe"):
 
 
 ```lisp
@@ -2393,8 +2393,8 @@ wend
 
 ```
 
- 
- 
+
+
 
 
 ## LiveCode
@@ -2408,7 +2408,7 @@ command guessTheNumber lowN highN
     else
         put lowN into tmin
     end if
-    if highN is empty then 
+    if highN is empty then
         put 10 into tmax
     else
         put highN into tmax
@@ -2418,11 +2418,11 @@ command guessTheNumber lowN highN
         ask question "Please enter a number between" && tmin && "and" && tmax titled "Guess the number"
         if it is not empty then
             put it into tguess
-            if tguess is tNumber then 
+            if tguess is tNumber then
                 answer "Well guessed!"
-            else if tguess < tNumber then 
+            else if tguess < tNumber then
                 answer "too low"
-            else  
+            else
                 answer "too high"
             end if
         else
@@ -2598,7 +2598,7 @@ Module GuessNumber {
                         print "Sorry, your number was too low"
                   case chosen+1 to max
                         print "Sorry, your number was too high"
-                  case chosen 
+                  case chosen
                         print "Well guessed!"
                   else case
                         print "That was an invalid number"
@@ -2646,14 +2646,14 @@ GuessANumber(2,5);
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```mathematica
-guessnumber[min_, max_] := 
- Module[{number = RandomInteger[{min, max}], guess}, 
-  While[guess =!= number, 
+guessnumber[min_, max_] :=
+ Module[{number = RandomInteger[{min, max}], guess},
+  While[guess =!= number,
    guess = Input[
-     If[guess > number, "Too high.Guess again.", 
-      "Too low.Guess again.", 
-      "Guess a number between " <> ToString@min <> " and " <> 
-       ToString@max <> "."]]]; 
+     If[guess > number, "Too high.Guess again.",
+      "Too low.Guess again.",
+      "Guess a number between " <> ToString@min <> " and " <>
+       ToString@max <> "."]]];
   CreateDialog[{"Well guessed!", DefaultButton[]}]];
 guessnumber[1, 10]
 ```
@@ -2760,7 +2760,7 @@ while !guessed do
     if userNumber == number
       guessed = true
       puts "You guessed it."
-    elsif userNumber > number  
+    elsif userNumber > number
       puts "Too high."
     else
       puts "Too low."
@@ -2849,11 +2849,11 @@ module GuessHints
         def     rand   = Random();
         def     secret = rand.Next(1, 101);
         mutable guess  = 0;
-        
-        def GetGuess() : int {Int32.Parse(ReadLine())} 
-        
+
+        def GetGuess() : int {Int32.Parse(ReadLine())}
+
         WriteLine("Guess a number between 1 and 100:");
-        
+
         do
         {
             guess = GetGuess();
@@ -2951,7 +2951,7 @@ return
 
 (seed (time-of-day)) ; Initialize random number generator from clock.
 (setq low  -5
-      high 62 
+      high 62
       number (+ low (rand (- high low)))
       found nil
 )
@@ -3186,24 +3186,24 @@ function guess_a_number(low,high)
 
 if nargin<1,
 	low=1;
-end; 
+end;
 if nargin<2,
 	high=10;
-end; 
+end;
 
 n = floor(rand(1)*(high-low+1))+low;
 [guess,state] = str2num(input(sprintf('Guess a number between %i and %i: ',low,high),'s'));
 while (~state || guess~=n)
 	if guess < n,
 		g = input('to low, guess again: ','s');
-		[guess, state] = str2num(g); 
+		[guess, state] = str2num(g);
 	elseif guess > n,
 		g = input('to high, guess again: ','s');
-		[guess, state] = str2num(g); 
-	end; 
-	while ~state	
+		[guess, state] = str2num(g);
+	end;
+	while ~state
 		g = input('invalid input, guess again: ','s');
-		[guess, state] = str2num(g); 
+		[guess, state] = str2num(g);
 	end
 end
 disp('Well guessed!')
@@ -3292,7 +3292,7 @@ guess_the_number(N=10)={
 
 ## ooRexx
 
-While the program for REXX works perfectly well with ooRexx, here is a version 
+While the program for REXX works perfectly well with ooRexx, here is a version
 written in an alternate (my) style.
  Select instead of a series of If's
  simple comparison instead of strict
@@ -3427,7 +3427,7 @@ say "Great you guessed right after $count attempts!";
 
 
 ```txt
-Hello, please give me an upper boundary: 10 
+Hello, please give me an upper boundary: 10
 I'm thinking of a number from 1 to 10, try to guess it!
 Your guess: 5
 Sorry, my number is bigger.
@@ -3480,7 +3480,7 @@ if($_POST["guess"]){
 
 	echo $guess . "<br />";
     if ($guess < $number)
-	{ 
+	{
         echo "Your guess is too low";
     }
 	elseif($guess > $number)
@@ -3491,7 +3491,7 @@ if($_POST["guess"]){
 	{
         echo "You got the correct number!";
     }
-    
+
 }
 ?>
 
@@ -3649,7 +3649,7 @@ Repeat
   Print("Enter high limit: "): High =Val(Input())
 Until High>low
 
-TheNumber=Random(High-low)+low  
+TheNumber=Random(High-low)+low
 Debug TheNumber
 Repeat
   Print("Guess what number I have: "): Guess=Val(Input())
@@ -3797,7 +3797,7 @@ Your guess(2): 101
   Out of range!
 Your guess(3): Howdy
   I don't understand your input of 'Howdy' ?
-Your guess(4): 
+Your guess(4):
 ```
 
 
@@ -3927,7 +3927,7 @@ if try==1 then say 'Gadzooks!!!       You guessed the number right away!'
 ```ring
 fr = 1 t0 = 10
 while true
-see "Hey There, 
+see "Hey There,
 
 ### ==================
 
@@ -3947,9 +3947,9 @@ if x = n see "
 "
 exit
 else
-see "Oops its not true, you were just few steps" 
-if x > n see " up :)" else see " down :)" ok 
-see copy(nl,3) 
+see "Oops its not true, you were just few steps"
+if x > n see " up :)" else see " down :)" ok
+see copy(nl,3)
 ok
 end
 
@@ -3977,7 +3977,7 @@ loop do
     if user_number == number
       puts "You guessed it."
       break
-    elsif user_number > number  
+    elsif user_number > number
       puts "Too high."
     else
       puts "Too low."
@@ -4087,7 +4087,7 @@ do {
 (define minimum -5)
 (define number (+ (random (- (+ maximum 1) minimum)) minimum))
 
-(display "Pick a number from ") 
+(display "Pick a number from ")
 (display minimum)
 (display " through ")
 (display maximum)
@@ -4110,10 +4110,10 @@ do {
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const integer: lower_limit is 0;
 const integer: upper_limit is 100;
- 
+
 const proc: main is func
   local
     var integer: number is 0;
@@ -4200,7 +4200,7 @@ print();
 while true {
     printf("Your guess: ");
     guess = toint(getline());
-    
+
     if guess < n {
         print("too low");
     } else if guess > n {
@@ -4227,7 +4227,7 @@ println("Guess a number between 1 and 100\n")
 
 while (!found) {
     var fh = NSFileHandle.fileHandleWithStandardInput()
-    
+
     println("Enter a number: ")
     let data = fh.availableData
     let str = NSString(data: data, encoding: NSUTF8StringEncoding)
@@ -4421,7 +4421,7 @@ while (not (= answer target))
 	inc i
 	out "Your guess(" i "): " console
 	set answer (in int console)
-	
+
 	if (or (< answer low) (> answer high))
 		out "  Out of range!" endl console
 		continue
@@ -4452,7 +4452,7 @@ void main(){
 	const int from = 1;
 	const int to = 100;
 
-	int random = Random.int_range(from, to);	
+	int random = Random.int_range(from, to);
 	int guess = 0;
 
 	while (guess != random){
@@ -4460,11 +4460,11 @@ void main(){
 
 		string? num = stdin.read_line ();
 		num.canon("0123456789", '!'); // replaces any character in num that's not in "0123456789" with "!"
-		
+
 		if ("!" in num)
 			stdout.printf("Please enter a number!\n");
 
-		else{		
+		else{
 			guess = int.parse(num);
 
 			if (guess > random && guess <= to)

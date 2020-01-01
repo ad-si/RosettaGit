@@ -14,27 +14,27 @@ tags = []
 [[Category: String manipulation]]
 {{omit from|GUISS|Can use Microsoft Word document properties, but this might not be accurate}}
 {{omit from|Openscad}}
- 
+
 ;Task:
 Find the <em>character</em> and <em>byte</em> length of a string.
- 
-This means encodings like [[UTF-8]] need to be handled properly, as there is not necessarily a one-to-one relationship between bytes and characters. 
 
-By ''character'', we mean an individual Unicode ''code point'', not a user-visible ''grapheme'' containing combining characters. 
+This means encodings like [[UTF-8]] need to be handled properly, as there is not necessarily a one-to-one relationship between bytes and characters.
+
+By ''character'', we mean an individual Unicode ''code point'', not a user-visible ''grapheme'' containing combining characters.
 
 For example, the character length of "møøse" is 5 but the byte length is 7 in UTF-8 and 10 in UTF-16.
 
-Non-BMP code points (those between 0x10000 and 0x10FFFF) must also be handled correctly: answers should produce actual character counts in code points, not in code unit counts. 
+Non-BMP code points (those between 0x10000 and 0x10FFFF) must also be handled correctly: answers should produce actual character counts in code points, not in code unit counts.
 
-Therefore a string like "𝔘𝔫𝔦𝔠𝔬𝔡𝔢" (consisting of the 7 Unicode characters U+1D518  U+1D52B U+1D526 U+1D520 U+1D52C U+1D521 U+1D522) is 7 characters long, '''not''' 14 UTF-16 code units; and it is 28 bytes long whether encoded in UTF-8 or in  UTF-16.  
+Therefore a string like "𝔘𝔫𝔦𝔠𝔬𝔡𝔢" (consisting of the 7 Unicode characters U+1D518  U+1D52B U+1D526 U+1D520 U+1D52C U+1D521 U+1D522) is 7 characters long, '''not''' 14 UTF-16 code units; and it is 28 bytes long whether encoded in UTF-8 or in  UTF-16.
 
 Please mark your examples with <nowiki>
 ### Character Length=== or ===Byte Length
-</nowiki>. 
+</nowiki>.
 
 If your language is capable of providing the string length in graphemes, mark those examples with <nowiki>
 ### Grapheme Length
-</nowiki>.  
+</nowiki>.
 
 For example, the string "J̲o̲s̲é̲" ("J\x{332}o\x{332}s\x{332}e\x{301}\x{332}") has 4 user-visible graphemes, 9 characters (code points), and 14 bytes when encoded in UTF-8.
 
@@ -49,7 +49,7 @@ For example, the string "J̲o̲s̲é̲" ("J\x{332}o\x{332}s\x{332}e\x{301}\x{332
 
 ## 360 Assembly
 
-Assembler 360 use EBCDIC coding, so one character is one byte. 
+Assembler 360 use EBCDIC coding, so one character is one byte.
 The L' atrribute can be seen as the length function for assembler 360.
 
 ```360asm
@@ -74,7 +74,7 @@ LEN      CSECT
          BR     14                 exit           length
 C        DS     C                  character       1
 H        DS     H                  half word       2
-F        DS     F                  full word       4    
+F        DS     F                  full word       4
 D        DS     D                  double word     8
 PG       DS     CL12               string         12
          END    LEN
@@ -116,38 +116,38 @@ This uses UTF-8 encoding. For other encodings, the ByteArray's <code>writeMultiB
 ```ActionScript
 
 package {
- 
+
     import flash.display.Sprite;
     import flash.events.Event;
     import flash.utils.ByteArray;
- 
+
     public class StringByteLength extends Sprite {
-  
+
         public function StringByteLength() {
             if ( stage ) _init();
             else addEventListener(Event.ADDED_TO_STAGE, _init);
         }
- 
+
         private function _init(e:Event = null):void {
             var s1:String = "The quick brown fox jumps over the lazy dog";
             var s2:String = "𝔘𝔫𝔦𝔠𝔬𝔡𝔢";
             var s3:String = "José";
-            
+
             var b:ByteArray = new ByteArray();
             b.writeUTFBytes(s1);
             trace(b.length);  // 43
-            
+
             b.clear();
             b.writeUTFBytes(s2);
             trace(b.length);  // 28
-            
+
             b.clear();
             b.writeUTFBytes(s3);
             trace(b.length);  // 5
         }
- 
+
     }
- 
+
 }
 
 ```
@@ -290,7 +290,7 @@ System.debug('Size of String', myString.length());
 count of "Hello World"
 ```
 
-Mac OS X 10.5 (Leopard) includes AppleScript 2.0 which uses only Unicode (UTF-16) character strings. 
+Mac OS X 10.5 (Leopard) includes AppleScript 2.0 which uses only Unicode (UTF-16) character strings.
 This example has been tested on OSX 10.8.5. Added a combining char for testing.
 
 ```applescript
@@ -583,7 +583,7 @@ will produce an "o" character overprinted with a quotation mark, resulting in a 
 =
 ## Commodore BASIC
 =
-Commodore BASIC needs line numbers too, and can't use mixed case. When in mixed case mode, everything must be in lower case letters. However, the default is UPPERCASE + graphic characters; thus everything appears as UPPER case character. 
+Commodore BASIC needs line numbers too, and can't use mixed case. When in mixed case mode, everything must be in lower case letters. However, the default is UPPERCASE + graphic characters; thus everything appears as UPPER case character.
 
 
 ```basic
@@ -618,11 +618,11 @@ Commodore BASIC needs line numbers too, and can't use mixed case. When in mixed 
 ```bbcbasic
       CP_ACP = 0
       CP_UTF8 = &FDE9
-      
+
       textA$ = "møøse"
       textW$ = "                 "
       textU$ = "                 "
-      
+
       SYS "MultiByteToWideChar", CP_ACP, 0, textA$, -1, !^textW$, LEN(textW$)/2 TO nW%
       SYS "WideCharToMultiByte", CP_UTF8, 0, textW$, -1, !^textU$, LEN(textU$), 0, 0
       PRINT "Length in bytes (ANSI encoding) = " ; LEN(textA$)
@@ -669,7 +669,7 @@ Answer:
 
 ```bracmat
 (CharacterLength=
-  length c 
+  length c
 .     0:?length
     & @( !arg
        :   ?
@@ -732,14 +732,14 @@ Later versions of Bracmat have the built in function <code>vap</code> that "vapo
 
 {{works with|GCC|3.3.3}}
 
-```c>#include <string.h
+```c
+#include <string.h>
 
-
-int main(void) 
+int main(void)
 {
   const char *string = "Hello, world!";
   size_t length = strlen(string);
-         
+
   return 0;
 }
 ```
@@ -748,14 +748,14 @@ or by hand:
 
 
 ```c
-int main(void) 
+int main(void)
 {
   const char *string = "Hello, world!";
   size_t length = 0;
-  
+
   const char *p = string;
-  while (*p++ != '\0') length++;                                         
-  
+  while (*p++ != '\0') length++;
+
   return 0;
 }
 ```
@@ -764,14 +764,14 @@ int main(void)
 or (for arrays of char only)
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 
 int main(void)
 {
   char s[] = "Hello, world!";
   size_t length = sizeof s - 1;
-  
+
   return 0;
 }
 ```
@@ -783,11 +783,11 @@ int main(void)
 For wide character strings (usually Unicode uniform-width encodings such as UCS-2 or UCS-4):
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <wchar.h>
 
-int main(void) 
+int main(void)
 {
    wchar_t *s = L"\x304A\x306F\x3088\x3046"; /* Japanese hiragana ohayou */
    size_t length;
@@ -795,7 +795,7 @@ int main(void)
    length = wcslen(s);
    printf("Length in characters = %d\n", length);
    printf("Length in bytes      = %d\n", sizeof(s) * sizeof(wchar_t));
-   
+
    return 0;
 }
 ```
@@ -806,8 +806,8 @@ int main(void)
 
 Following code is written in UTF-8, and environment locale is assumed to be UTF-8 too.  Note that "møøse" is here directly written in the source code for clarity, which is not a good idea in general.  <code>mbstowcs()</code>, when passed NULL as the first argument, effectively counts the number of chars in given string under current locale.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
 
@@ -837,8 +837,8 @@ chars: 5
 {{works with|ISO C++}}
 {{works with|g++|4.0.2}}
 
-```cpp>#include <string
- // (not <string.h>!)
+```cpp
+#include <string> // (not <string.h>!)
 using std::string;
 
 int main()
@@ -847,17 +847,17 @@ int main()
   string::size_type length = s.length(); // option 1: In Characters/Bytes
   string::size_type size = s.size();     // option 2: In Characters/Bytes
   // In bytes same as above since sizeof(char) == 1
-  string::size_type bytes = s.length() * sizeof(string::value_type); 
+  string::size_type bytes = s.length() * sizeof(string::value_type);
 }
 ```
 
 For wide character strings:
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 using std::wstring;
-  
+
 int main()
 {
   wstring s = L"\u304A\u306F\u3088\u3046";
@@ -875,8 +875,8 @@ int main()
 For wide character strings:
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 using std::wstring;
 
 int main()
@@ -893,8 +893,8 @@ For narrow character strings:
 {{works with|clang++|3.0}}
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <codecvt>
 int main()
 {
@@ -909,8 +909,9 @@ int main()
 {{works with|C++98}}
 {{works with|g++|4.1.2 20061115 (prerelease) (SUSE Linux)}}
 
-```cpp>#include <cwchar
-  // for mbstate_t
+```cpp
+#include <cwchar>
+// for mbstate_t
 #include <locale>
 
 // give the character length for a given named locale
@@ -953,8 +954,8 @@ std::size_t char_length(std::string const& text, char const* locale_name)
 Example usage (note that the locale names are OS specific):
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main()
 {
@@ -1015,7 +1016,7 @@ Clean Strings are unboxed arrays of characters. Characters are always a single b
 import StdEnv
 
 strlen :: String -> Int
-strlen string = size string 
+strlen string = size string
 
 Start = strlen "Hello, world!"
 ```
@@ -1388,8 +1389,8 @@ lL x f
 
 ```txt
 
-Hello world!                                                                                        
-12                                                                                                  
+Hello world!
+12
 
 ```
 
@@ -1462,12 +1463,12 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     var s := "Hello, world!";             // UTF-8 literal
     var ws := "Привет мир!"w;             // UTF-16 literal
- 
+
     var s_length := s.Length;             // Number of UTF-8 characters
     var ws_length := ws.Length;           // Number of UTF-16 characters
     var u_length := ws.toArray().Length;    //Number of UTF-32 characters
@@ -1482,12 +1483,12 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     var s := "Hello, world!";                     // UTF-8 literal
     var ws := "Привет мир!"w;                     // UTF-16 literal
- 
+
     var s_byte_length := s.toByteArray().Length;  // Number of bytes
     var ws_byte_length := ws.toByteArray().Length;  // Number of bytes
 }
@@ -1664,7 +1665,7 @@ møøse
 fansh> c.toBuf.size   // find the byte length of the string in default (UTF8) encoding
 7
 fansh> c.toBuf.toHex  // display UTF8 representation
-6dc3b8c3b87365  
+6dc3b8c3b87365
 fansh> c.toBuf(Charset.utf16LE).size    // byte length in UTF16 little-endian
 10
 fansh> c.toBuf(Charset.utf16LE).toHex   // display as UTF16 little-endian
@@ -1765,7 +1766,7 @@ Fortran 77 introduced variables of type CHARACTER and associated syntax. These a
 
 Previously, character data would be stored in arithmetic variables, using format codes such as <code>A1</code> to store one character per variable, which might be an integer or a floating-point variable of much larger size. Format <code>A2</code> would store two such characters, and so on. Code A1 would give ease of manipulation, while A8 (say for a REAL*8 variable) would save space. Numerical values would be strange, and word sizes may not be a multiple of eight bits nor character encodements require eight bits, especially on a decimal computer such as the IBM1620 where storage usage was counted in digits, and a character required two.
 
-An intrinsic function LEN(text) reports the number of characters in the variable (with no consideration of any storage needed anywhere to hold the length), while SIZE(array) reports the number of elements in an array and SIZEOF(''x'') may be available to report the number of bytes of storage of ''x''. Since these days, everyone uses computers with eight-bit characters and this is deemed universal, the result from LEN will be equivalent to both a byte and a character count. 
+An intrinsic function LEN(text) reports the number of characters in the variable (with no consideration of any storage needed anywhere to hold the length), while SIZE(array) reports the number of elements in an array and SIZEOF(''x'') may be available to report the number of bytes of storage of ''x''. Since these days, everyone uses computers with eight-bit characters and this is deemed universal, the result from LEN will be equivalent to both a byte and a character count.
 
 There is no facility for fancy Unicode schemes, other than by writing suitable routines. In that regard, plotting packages often supply a special function that returns the length of a text string, ''as it would appear on the plot, in plotting units'', especially useful when the plotter's rendition of text employs a proportionally-spaced typeface and interprets superscripts and subscripts and so forth, so that the programmer can prepare code to juggle with the layout, perhaps of mathematical expressions. This is of course not in any standard.
 
@@ -1787,23 +1788,23 @@ LEN(text)
 
 Dim s As String      = "moose"  '' variable length ascii string
 Dim f As String  * 5 = "moose"  '' fixed length ascii string (in practice a zero byte is appended)
-Dim z As ZString * 6 = "moose"  '' fixed length zero terminated ascii string 
+Dim z As ZString * 6 = "moose"  '' fixed length zero terminated ascii string
 Dim w As WString * 6 = "møøse"  '' fixed length zero terminated unicode string
 
 ' Variable length strings have a descriptor consisting of 3 Integers (12 bytes on 32 bit, 24 bytes on 64 bit systems)
 ' In order, the descriptor contains the address of the data, the memory currently used and the memory allocated
 
 ' In Windows, WString uses UCS-2 encoding (i.e. 2 bytes per character, surrogates are not supported)
-' In Linux,   WString uses UCS-4 encoding (i.e. 4 bytes per character) 
+' In Linux,   WString uses UCS-4 encoding (i.e. 4 bytes per character)
 
 ' The Len function always returns the length of the string in characters
 ' The SizeOf function returns the bytes used (by the descriptor in the case of variable length strings)
 
 Print "s : " ; s, "Character Length : "; Len(s), "Byte Length : "; Len(s); "  (data)"
 Print "s : " ; s, "Character Length : "; Len(s), "Byte Length : "; SizeOf(s); " (descriptor)"
-Print "f : " ; f, "Character Length : "; Len(s), "Byte Length : "; SizeOf(f) 
-Print "z : " ; z, "Character Length : "; Len(s), "Byte Length : "; SizeOf(z) 
-Print "w : " ; w, "Character Length : "; Len(s), "Byte Length : "; SizeOf(w) 
+Print "f : " ; f, "Character Length : "; Len(s), "Byte Length : "; SizeOf(f)
+Print "z : " ; z, "Character Length : "; Len(s), "Byte Length : "; SizeOf(z)
+Print "w : " ; w, "Character Length : "; Len(s), "Byte Length : "; SizeOf(w)
 Print
 Sleep
 ```
@@ -2049,10 +2050,10 @@ There are several (non-standard, so far) Unicode encoding libraries available on
 import Data.Encoding
 import Data.ByteString as B
 
-strUTF8  :: ByteString 
+strUTF8  :: ByteString
 strUTF8  = encode UTF8  "Hello World!"
 
-strUTF32 :: ByteString 
+strUTF32 :: ByteString
 strUTF32 = encode UTF32 "Hello World!"
 
 strlenUTF8  = B.length strUTF8
@@ -2064,7 +2065,7 @@ strlenUTF32 = B.length strUTF32
 
 {{works with|GHC|GHCi|6.6}}
 {{works with|Hugs}}
-The base type ''Char'' defined by the standard is already intended for (plain) Unicode characters. 
+The base type ''Char'' defined by the standard is already intended for (plain) Unicode characters.
 
 
 ```haskell
@@ -2187,10 +2188,10 @@ Another way to know the byte length of a string -who cares- is to explicitly spe
 
 
 ```java5
-String s = "Hello, world!"; 
+String s = "Hello, world!";
 int byteCountUTF16 = s.getBytes("UTF-16").length; // Incorrect: it yields 28 (that is with the BOM)
 int byteCountUTF16LE = s.getBytes("UTF-16LE").length; // Correct: it yields 26
-int byteCountUTF8  = s.getBytes("UTF-8").length; // yields 13 
+int byteCountUTF8  = s.getBytes("UTF-8").length; // yields 13
 ```
 
 
@@ -2203,7 +2204,7 @@ The length method of String objects is not the length of that String in characte
 
 ```java5
 String s = "Hello, world!";
-int not_really_the_length = s.length(); // XXX: does not (always) count Unicode characters (code points)! 
+int not_really_the_length = s.length(); // XXX: does not (always) count Unicode characters (code points)!
 ```
 
 
@@ -2228,7 +2229,7 @@ public class Grapheme {
     printLength("𝔘𝔫𝔦𝔠𝔬𝔡𝔢");
     printLength("J̲o̲s̲é̲");
   }
-  
+
   public static void printLength(String s) {
     BreakIterator it = BreakIterator.getCharacterInstance();
     it.setText(s);
@@ -2336,7 +2337,7 @@ $ jq -n -f String_length.jq
 
 ## Kotlin
 
-As in Java, a string in Kotlin is essentially a sequence of UTF-16 encoded characters and the 'length' property simply returns the number of such characters in the string. Surrogates or graphemes are not treated specially for this purpose - they are just represented by the appropriate number of UTF-16 characters. 
+As in Java, a string in Kotlin is essentially a sequence of UTF-16 encoded characters and the 'length' property simply returns the number of such characters in the string. Surrogates or graphemes are not treated specially for this purpose - they are just represented by the appropriate number of UTF-16 characters.
 
 As each UTF-16 character occupies 2 bytes, it follows that the number of bytes occupied by the string will be twice the length:
 
@@ -2472,7 +2473,7 @@ LabVIEW is using a special variant of UTF-8, so byte length == character length.
 
 
 
-###  Character Length 
+###  Character Length
 
 
 
@@ -2491,7 +2492,7 @@ LabVIEW is using a special variant of UTF-8, so byte length == character length.
 
 
 
-###  Byte Length 
+###  Byte Length
 
 
 
@@ -2650,7 +2651,7 @@ Print Filelen("Checklen.doc")=17
 ## Maple
 
 
-###  Character length 
+###  Character length
 
 
 ```maple
@@ -2658,7 +2659,7 @@ length("Hello world");
 ```
 
 
-###  Byte count 
+###  Byte count
 
 
 ```maple
@@ -2670,7 +2671,7 @@ nops(convert("Hello world",bytes));
 ## Mathematica
 
 
-###  Character length 
+###  Character length
 
 
 ```mathematica
@@ -2678,7 +2679,7 @@ StringLength["Hello world"]
 ```
 
 
-###  Byte length 
+###  Byte length
 
 
 ```mathematica
@@ -2853,25 +2854,25 @@ This only supports ASCII encoding, so it'll return both byte length and char len
 
 ```mips
 
-.data 
+.data
 	#.asciiz automatically adds the NULL terminator character, \0 for us.
 	string: .asciiz "Nice string you got there!"
 
 .text
 main:
 	la $a1,string           #load the beginning address of the string.
-	
+
 loop:
 	lb $a2,($a1)            #load byte (i.e. the char) at $a1 into $a2
 	addi $a1,$a1,1          #increment $a1
 	beqz $a2,exit_procedure #see if we've hit the NULL char yet
 	addi $a0,$a0,1          #increment counter
 	j loop                  #back to start
-	
+
 exit_procedure:
 	li $v0,1                #set syscall to print integer
-	syscall                 
-	
+	syscall
+
 	li $v0,10               #set syscall to cleanly exit EXIT_SUCCESS
 	syscall
 
@@ -3021,7 +3022,7 @@ MODULE Size;
    VAR s: LONGINT;
       string: ARRAY 5 OF CHAR;
 
-BEGIN 
+BEGIN
    string := "Foo";
    s := LEN(string);
    Out.String("Size: ");
@@ -3052,7 +3053,7 @@ MODULE Length;
    VAR l: INTEGER;
       string: ARRAY 5 OF CHAR;
 
-BEGIN 
+BEGIN
    string := "Foo";
    l := Strings.Length(string);
    Out.String("Length: ");
@@ -3084,7 +3085,7 @@ The length method of NSString objects is not the length of that string in charac
 
 ```objc
 // Return the length in characters
-// XXX: does not (always) count Unicode characters (code points)! 
+// XXX: does not (always) count Unicode characters (code points)!
 unsigned int numberOfCharacters = [@"møøse" length];  // 5
 ```
 
@@ -3184,7 +3185,7 @@ Run this code with the command:
 
 ```txt
 
-$ ocaml bigarray.cma -I $(ocamlfind query camomile)/library/ camomileLibrary.cma strlen.ml 
+$ ocaml bigarray.cma -I $(ocamlfind query camomile)/library/ camomileLibrary.cma strlen.ml
  7
  5
 
@@ -3208,7 +3209,7 @@ This gives the number of bytes, not of characters. e.g. length("è") is 2 when "
 ## Oforth
 
 
-Oforth strings are UTF8 encoded. 
+Oforth strings are UTF8 encoded.
 
 size method returns number of UTF8 characters into a string
 
@@ -3242,7 +3243,7 @@ The codepage can be set independently for input / output and internal operations
 
 ```progress
 DEF VAR lcc AS LONGCHAR.
- 
+
 FIX-CODEPAGE( lcc ) = "UTF-8".
 lcc = "møøse".
 
@@ -3255,7 +3256,7 @@ MESSAGE LENGTH( lcc ) VIEW-AS ALERT-BOX.
 
 ```progress
 DEF VAR lcc AS LONGCHAR.
- 
+
 FIX-CODEPAGE( lcc ) = "UTF-8".
 lcc = "møøse".
 
@@ -3274,7 +3275,7 @@ MESSAGE LENGTH( lcc, "RAW" ) VIEW-AS ALERT-BOX.
 {Show {Length "Hello World"}}
 ```
 
-Oz uses a single-byte encoding by default. So for normal strings, this will also show the correct character length. 
+Oz uses a single-byte encoding by default. So for normal strings, this will also show the correct character length.
 
 
 ## PARI/GP
@@ -3307,7 +3308,7 @@ len(s)=sizebyte(s);
 
 ```pascal
 
-const 
+const
   s = 'abcdef';
 begin
   writeln (length(s))
@@ -3444,8 +3445,8 @@ Program in a UTF8 linux:
 
 ```PHP
 <?php
-foreach (array('møøse', '𝔘𝔫𝔦𝔠𝔬𝔡𝔢', 'J̲o̲s̲é̲') as $s1) { 
-   printf('String "%s" measured with strlen: %d mb_strlen: %s grapheme_strlen %s%s', 
+foreach (array('møøse', '𝔘𝔫𝔦𝔠𝔬𝔡𝔢', 'J̲o̲s̲é̲') as $s1) {
+   printf('String "%s" measured with strlen: %d mb_strlen: %s grapheme_strlen %s%s',
                   $s1, strlen($s1),mb_strlen($s1), grapheme_strlen($s1), PHP_EOL);
 }
 
@@ -3501,7 +3502,7 @@ put skip list ('Byte length=', size(trim(SM)));
 
 LENGTH calculates length using characters as defined by the input character set.
 LENGTHB uses bytes instead of characters.
-LENGTHC uses Unicode complete characters. 
+LENGTHC uses Unicode complete characters.
 LENGTH2 uses UCS2 code points.
 LENGTH4 uses UCS4 code points.
 
@@ -3626,9 +3627,9 @@ For UTF-8:
 
 ### Byte Length
 
-Returns the number of bytes required to store the string in memory in the given format in bytes. 'Format' can be #PB_Ascii, #PB_UTF8 or #PB_Unicode.  PureBasic code can be compiled using either Unicode (2-byte) or Ascii (1-byte) encodings for strings.  If 'Format' is not specified, the mode of the executable (unicode or ascii) is used. 
+Returns the number of bytes required to store the string in memory in the given format in bytes. 'Format' can be #PB_Ascii, #PB_UTF8 or #PB_Unicode.  PureBasic code can be compiled using either Unicode (2-byte) or Ascii (1-byte) encodings for strings.  If 'Format' is not specified, the mode of the executable (unicode or ascii) is used.
 
-Note: The number of bytes returned does not include the terminating Null-Character of the string. The size of the Null-Character is 1 byte for Ascii and UTF8 mode and 2 bytes for Unicode mode. 
+Note: The number of bytes returned does not include the terminating Null-Character of the string. The size of the Null-Character is 1 byte for Ascii and UTF8 mode and 2 bytes for Unicode mode.
 
 
 ```PureBasic
@@ -3693,7 +3694,7 @@ len() returns the number of code units (not code points!) in a Unicode string or
 
 ```python
 import sys
-sys.maxunicode # 1114111 on a wide build, 65535 on a narrow build 
+sys.maxunicode # 1114111 on a wide build, 65535 on a narrow build
 ```
 
 
@@ -3769,13 +3770,13 @@ assert len(u.encode('UTF-16-BE')) == 28
 ### =Character Length=
 
 
-Since Python3.3 the internal storage of unicode strings has been optimized: strings that don't contain characters outside the latin-1 set, are stored with 8 bits for each character, strings that don't contain codepoints outside the BMP (lone surrogates aren't allowed) are stored as UCS-2, while all the others use UCS-4. 
+Since Python3.3 the internal storage of unicode strings has been optimized: strings that don't contain characters outside the latin-1 set, are stored with 8 bits for each character, strings that don't contain codepoints outside the BMP (lone surrogates aren't allowed) are stored as UCS-2, while all the others use UCS-4.
 
 Thus Python is able to avoid memory overhead when dealing with only ASCII strings, while handling correctly all codepoints in Unicode. len() returns the number of characters/codepoints:
 
 
 ```python
-print(len("𝔘𝔫𝔦𝔠𝔬𝔡𝔢")) 
+print(len("𝔘𝔫𝔦𝔠𝔬𝔡𝔢"))
 # 7
 ```
 
@@ -4078,7 +4079,7 @@ To run these programs, you must convert them to different encodings.
 ! Program
 ! Output
 |-
-| 
+|
 ```ruby
 # -*- coding: iso-8859-1 -*-
 s = "møøse"
@@ -4086,14 +4087,14 @@ puts "Byte length: %d" % s.bytesize
 puts "Character length: %d" % s.length
 ```
 
-| 
+|
 ```txt
 Byte length: 5
 Character length: 5
 ```
 
 |-
-| 
+|
 ```ruby
 # -*- coding: utf-8 -*-
 s = "møøse"
@@ -4101,14 +4102,14 @@ puts "Byte length: %d" % s.bytesize
 puts "Character length: %d" % s.length
 ```
 
-| 
+|
 ```txt
 Byte length: 7
 Character length: 5
 ```
 
 |-
-| 
+|
 ```ruby
 # -*- coding: gb18030 -*-
 s = "møøse"
@@ -4116,7 +4117,7 @@ puts "Byte length: %d" % s.bytesize
 puts "Character length: %d" % s.length
 ```
 
-| 
+|
 ```txt
 Byte length: 11
 Character length: 5
@@ -4396,10 +4397,10 @@ BEGIN
             LEN := LEN + 1;
             BYTES :=
                 IF R >=   0 AND R <= 127 THEN 1 ELSE ! 0....... ASCII ;
-                IF R >= 128 AND R <= 191 THEN 0 ELSE ! 10...... CONTINUATION ; 
+                IF R >= 128 AND R <= 191 THEN 0 ELSE ! 10...... CONTINUATION ;
                 IF R >= 192 AND R <= 223 THEN 2 ELSE ! 110..... 10x ;
-                IF R >= 224 AND R <= 239 THEN 3 ELSE ! 1110.... 10x 10x ; 
-                IF R >= 240 AND R <= 247 THEN 4 ELSE ! 11110... 10x 10x 10x ; 
+                IF R >= 224 AND R <= 239 THEN 3 ELSE ! 1110.... 10x 10x ;
+                IF R >= 240 AND R <= 247 THEN 4 ELSE ! 11110... 10x 10x 10x ;
                   -1;
             IF BYTES = -1 THEN ERROR("ILLEGAL UTF8 STRING");
             WHILE BYTES > 1 DO
@@ -4515,7 +4516,7 @@ PackageLoader fileInPackage: 'Iconv'
 ## SNOBOL4
 
 
-### Byte Length 
+### Byte Length
 
 
 ```snobol4
@@ -4527,7 +4528,7 @@ end
 
 
 
-### Character Length 
+### Character Length
 
 The example works AFAIK only with CSnobol4 by Phil Budne
 
@@ -4666,35 +4667,35 @@ Output:
 
 db2 -t
 db2 => VALUES LENGTH('møøse', CODEUNITS16);
-1          
+1
 -----------
           5
 
   1 record(s) selected.
 
 db2 => VALUES LENGTH('møøse', CODEUNITS32);
-1          
+1
 -----------
           5
 
   1 record(s) selected.
 
 db2 => VALUES CHARACTER_LENGTH('møøse', CODEUNITS32);
-1          
+1
 -----------
           5
 
   1 record(s) selected.
 
 db2 => VALUES LENGTH2('møøse');
-1          
+1
 -----------
           5
 
   1 record(s) selected.
 
 db2 => VALUES LENGTH4('møøse');
-1          
+1
 -----------
           5
 
@@ -4702,35 +4703,35 @@ db2 => VALUES LENGTH4('møøse');
 
 db2 => VALUES LENGTH('𝔘𝔫𝔦𝔠𝔬𝔡𝔢', CODEUNITS16);
 
-1          
+1
 -----------
          14
 
   1 record(s) selected.
 
 db2 => VALUES LENGTH('𝔘𝔫𝔦𝔠𝔬𝔡𝔢', CODEUNITS32);
-1          
+1
 -----------
           7
 
   1 record(s) selected.
 
 db2 => VALUES CHARACTER_LENGTH('𝔘𝔫𝔦𝔠𝔬𝔡𝔢', CODEUNITS32);
-1          
+1
 -----------
           7
 
   1 record(s) selected.
 
 db2 => VALUES LENGTH2('𝔘𝔫𝔦𝔠𝔬𝔡𝔢');
-1          
+1
 -----------
          14
 
   1 record(s) selected.
 
 db2 => VALUES LENGTH4('𝔘𝔫𝔦𝔠𝔬𝔡𝔢');
-1          
+1
 -----------
           7
 
@@ -4738,35 +4739,35 @@ db2 => VALUES LENGTH4('𝔘𝔫𝔦𝔠𝔬𝔡𝔢');
 
 db2 => VALUES LENGTH('J̲o̲s̲é̲', CODEUNITS16);
 
-1          
+1
 -----------
           8
 
   1 record(s) selected.
 
 db2 => VALUES LENGTH('J̲o̲s̲é̲', CODEUNITS32);
-1          
+1
 -----------
           8
 
   1 record(s) selected.
 
 db2 => VALUES CHARACTER_LENGTH('J̲o̲s̲é̲', CODEUNITS32);
-1          
+1
 -----------
           8
 
   1 record(s) selected.
 
 db2 => VALUES LENGTH2('J̲o̲s̲é̲');
-1          
+1
 -----------
           8
 
   1 record(s) selected.
 
 db2 => VALUES LENGTH4('J̲o̲s̲é̲');
-1          
+1
 -----------
           8
 
@@ -4799,42 +4800,42 @@ Output:
 db2 -t
 db2 => VALUES LENGTH('møøse');
 
-1          
+1
 -----------
           7
 
   1 record(s) selected.
 
 db2 => VALUES LENGTHB('møøse');
-1          
+1
 -----------
           7
 
   1 record(s) selected.
 
 db2 => VALUES LENGTH('𝔘𝔫𝔦𝔠𝔬𝔡𝔢');
-1          
+1
 -----------
          28
 
   1 record(s) selected.
 
 db2 => VALUES LENGTHB('𝔘𝔫𝔦𝔠𝔬𝔡𝔢');
-1          
+1
 -----------
          28
 
   1 record(s) selected.
 
 db2 => VALUES LENGTH('J̲o̲s̲é̲');
-1          
+1
 -----------
          13
 
   1 record(s) selected.
 
 db2 => VALUES LENGTHB('J̲o̲s̲é̲');
-1          
+1
 -----------
          13
 
@@ -5073,7 +5074,7 @@ The TI-89 uses an fixed 8-bit encoding so there is no difference between charact
 ## TUSCRIPT
 
 
-### Character Length 
+### Character Length
 
 
 ```tuscript
@@ -5089,7 +5090,7 @@ Output:
 
 ```txt
 
-Character length of string 'hello, world': 12 
+Character length of string 'hello, world': 12
 
 ```
 
@@ -5132,7 +5133,7 @@ echo $length # if you want it printed to the terminal
 
 
 ### Character Length
- 
+
 
 ```vala
 
@@ -5389,7 +5390,7 @@ main:
         dec     %ecx
         popl    %edi
 
-        ;; string length is stored in %ecx register                                                                                                                  
+        ;; string length is stored in %ecx register
 
         leave
         ret

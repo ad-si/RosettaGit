@@ -12,9 +12,9 @@ tags = []
 
 {{task}}
 
-[[wp:Comma-separated values|CSV spreadsheet files]] are suitable for storing tabular data in a relatively portable way. 
+[[wp:Comma-separated values|CSV spreadsheet files]] are suitable for storing tabular data in a relatively portable way.
 
-The CSV format is flexible but somewhat ill-defined.  
+The CSV format is flexible but somewhat ill-defined.
 
 For present purposes, authors may assume that the data fields contain no commas, backslashes, or quotation marks.
 
@@ -75,15 +75,15 @@ Ada has no build-in or predefined functions to read or write CSV tables. We thus
 
 ```Ada
 package CSV is
-   
+
    type Row(<>) is tagged private;
-   
+
    function Line(S: String; Separator: Character := ',') return Row;
-   function Next(R: in out Row) return Boolean; 
+   function Next(R: in out Row) return Boolean;
      -- if there is still an item in R, Next advances to it and returns True
    function Item(R: Row) return String;
      -- after calling R.Next i times, this returns the i'th item (if any)
-   
+
 private
    type Row(Length: Natural) is tagged record
       Str: String(1 .. Length);
@@ -101,20 +101,20 @@ The implementation of the package is
 
 ```Ada
 package body CSV is
-   
+
    function Line(S: String; Separator: Character := ',')
                 return Row is
-      (Length => S'Length, Str => S, 
+      (Length => S'Length, Str => S,
        Fst => S'First, Lst => S'Last, Nxt => S'First, Sep => Separator);
-      
-   function Item(R: Row) return String is 
+
+   function Item(R: Row) return String is
       (R.Str(R.Fst .. R.Lst));
 
    function Next(R: in out Row) return Boolean is
       Last: Natural := R.Nxt;
    begin
       R.Fst := R.Nxt;
-      while Last <= R.Str'Last and then R.Str(Last) /= R.Sep loop 
+      while Last <= R.Str'Last and then R.Str(Last) /= R.Sep loop
          -- find Separator
          Last := Last + 1;
       end loop;
@@ -122,7 +122,7 @@ package body CSV is
       R.Nxt := Last + 1;
       return (R.Fst <= R.Str'Last);
    end Next;
-      
+
 end CSV;
 ```
 
@@ -157,7 +157,7 @@ end CSV_Data_Manipulation;
 
 
 ```txt
->./csv_data_manipulation < csv_sample.csv 
+>./csv_data_manipulation < csv_sample.csv
 C1,C2,C3,C4,C5, SUM
 1,5,9,13,17, 45
 2,6,10,14,18, 50
@@ -271,7 +271,7 @@ PROC char count = (CHAR c, STRING str) INT:
 	 FI
       OD;
       count
-   END; 
+   END;
 
 # split string on separator #
 PROC char split = (STRING str, CHAR sep) FLEX[]STRING :
@@ -280,7 +280,7 @@ PROC char split = (STRING str, CHAR sep) FLEX[]STRING :
       INT len, p;
       INT start := 1;
       [char count (sep, str) + 1] STRING list;
-      WHILE start <= strlen ANDF char in string (sep, p, str[start:]) DO 
+      WHILE start <= strlen ANDF char in string (sep, p, str[start:]) DO
 	 p +:= start - 1;
 	 list[cnt +:= 1] := str[start:p-1];
 	 start := p + 1
@@ -292,7 +292,7 @@ PROC char split = (STRING str, CHAR sep) FLEX[]STRING :
    END;
 
 PROC join = ([]STRING words, STRING sep) STRING:
-   IF UPB words > 0 THEN 
+   IF UPB words > 0 THEN
       STRING str := words [1];
       FOR i FROM 2 TO UPB words DO
 	 str +:= sep + words[i]
@@ -312,7 +312,7 @@ PROC readline = (REF FILE f) STRING:
 
 # Add one item to tuple #
 OP +:= = (REF FLEX[]STRING tuple, STRING item) VOID:
-   BEGIN 
+   BEGIN
       [UPB tuple+1]STRING new;
       new[:UPB tuple] := tuple;
       new[UPB new] := item;
@@ -398,13 +398,13 @@ adds a column sum to a csv table
 ```AWK
 #!/usr/bin/awk -f
 BEGIN { FS = OFS = "," }
-NR==1 { 
+NR==1 {
     print $0, "SUM"
-    next 
-} 
+    next
+}
 {
     sum = 0
-    for (i=1; i<=NF; i++) {	
+    for (i=1; i<=NF; i++) {
         sum += $i
     }
     print $0, sum
@@ -413,7 +413,7 @@ NR==1 {
 
 
 ```txt
-awk -f csv_data_manipulation.awk data.csv 
+awk -f csv_data_manipulation.awk data.csv
 C1,C2,C3,C4,C5,SUM
 1,5,9,13,17,45
 2,6,10,14,18,50
@@ -454,19 +454,19 @@ typedef struct {
 } CSV;
 
 
-/** 
+/**
  * Utility function to trim whitespaces from left & right of a string
  */
 int trim(char ** str) {
 	int trimmed;
 	int n;
 	int len;
-	
+
 	len = strlen(*str);
 	n = len - 1;
 	/* from right */
 	while((n>=0) && isspace((*str)[n])) {
-		(*str)[n] = '\0'; 
+		(*str)[n] = '\0';
 		trimmed += 1;
 		n--;
 	}
@@ -474,7 +474,7 @@ int trim(char ** str) {
 	/* from left */
 	n = 0;
 	while((n < len) && (isspace((*str)[0]))) {
-		(*str)[0] = '\0'; 
+		(*str)[0] = '\0';
 		*str = (*str)+1;
 		trimmed += 1;
 		n++;
@@ -483,8 +483,8 @@ int trim(char ** str) {
 }
 
 
-/** 
- * De-allocate csv structure 
+/**
+ * De-allocate csv structure
  */
 int csv_destroy(CSV * csv) {
 	if (csv == NULL) { return 0; }
@@ -496,11 +496,11 @@ int csv_destroy(CSV * csv) {
 
 
 /**
- * Allocate memory for a CSV structure 
+ * Allocate memory for a CSV structure
  */
 CSV * csv_create(unsigned int cols, unsigned int rows) {
 	CSV * csv;
-	
+
 	csv = malloc(sizeof(CSV));
 	csv->rows = rows;
 	csv->cols = cols;
@@ -563,8 +563,8 @@ void csv_display(CSV * csv) {
  * Resize CSV table
  */
 int csv_resize(CSV * old_csv, unsigned int new_cols, unsigned int new_rows) {
-	unsigned int cur_col, 
-				 cur_row, 
+	unsigned int cur_col,
+				 cur_row,
 				 max_cols,
 				 max_rows;
 	CSV * new_csv;
@@ -598,7 +598,7 @@ int csv_resize(CSV * old_csv, unsigned int new_cols, unsigned int new_rows) {
 			} else { /* skip */ }
 		}
 	}
-	/* on rows */		
+	/* on rows */
 	free(old_csv->table);
 	old_csv->rows = new_rows;
 	old_csv->cols = new_cols;
@@ -669,7 +669,7 @@ int csv_save(CSV * csv, char * filename) {
 	for (row=0; row<csv->rows; row++) {
 		for (col=0; col<csv->cols; col++) {
 			content = csv_get(csv, col, row);
-            fprintf(fp, "%s%s", content, 
+            fprintf(fp, "%s%s", content,
             		((col == csv->cols-1) ? "" : csv->delim) );
 		}
         fprintf(fp, "\n");
@@ -680,7 +680,7 @@ int csv_save(CSV * csv, char * filename) {
 }
 
 
-/** 
+/**
  * Test
  */
 int main(int argc, char ** argv) {
@@ -724,8 +724,8 @@ Column0,C2,C3,C4,C5
 ## C++
 
 
-```cpp>#include <map
-
+```cpp
+#include <map>
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -745,7 +745,7 @@ public:
     bool open( const char* filename, char delim = ',' )
     {
         std::ifstream file( filename );
-    
+
         clear();
         if ( file.is_open() )
         {
@@ -825,9 +825,9 @@ public:
 
 private:
     // trim string for empty spaces in begining and at the end
-    inline std::string &trim(std::string &s) 
+    inline std::string &trim(std::string &s)
     {
-        
+
         s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
         s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
         return s;
@@ -920,10 +920,10 @@ Column0,C2,C3,C4,C5,SUM
 (require '[clojure.data.csv :as csv]
          '[clojure.java.io :as io])
 
-(defn add-sum-column [coll] 
+(defn add-sum-column [coll]
   (let [titles (first coll)
         values (rest coll)]
-    (cons (conj titles "SUM") 
+    (cons (conj titles "SUM")
       (map #(conj % (reduce + (map read-string %))) values))))
 
 (with-open [in-file (io/reader "test_in.csv")]
@@ -985,7 +985,7 @@ Used only built-in functions which are in the standard. There are widespread lib
          (data-list (csvfile-to-nested-list csvfile-path #\,))
          (list-of-sums (sublist-sum-list data-list))
          (result-header "C1,C2,C3,C4,C5,SUM"))
-    
+
     (setf data-list    ; add list of sums as additional column
           (rest    ; remove old header
            (append-each-sublist data-list
@@ -1061,12 +1061,12 @@ C1,C2,C3,C4,C5
  	((table (csv->table file))
  	(header (first table))
  	(rows (rest table)))
- 	
+
  	(table->csv
  		(append header "SUM") ;; add last column
  		(for/list ((row rows)) (append row (apply + row))))))
- 
-	
+
+
 
 ```
 
@@ -1103,30 +1103,30 @@ STRING Field2;
 STRING Field3;
 STRING Field4;
 STRING Field5;
-END;							
+END;
 
 MyDataset := DATASET ('~Rosetta::myCSVFile', MyFileLayout,CSV(SEPARATOR(',')));
 
-MyFileLayout Appended(MyFileLayout pInput):= TRANSFORM 
+MyFileLayout Appended(MyFileLayout pInput):= TRANSFORM
   SELF.Field1 := pInput.Field1 +'x';
   SELF.Field2 := pInput.Field2 +'y';
   SELF.Field3 := pInput.Field3 +'z';
   SELF.Field4 := pInput.Field4 +'a';
   SELF.Field5 := pInput.Field5 +'b';
-END ; 
+END ;
 
-MyNewDataset := PROJECT(MyDataset,Appended(LEFT)); 
+MyNewDataset := PROJECT(MyDataset,Appended(LEFT));
 OUTPUT(myNewDataset,,'~Rosetta::myNewCSVFile',CSV,OVERWRITE);
 ```
 
 {{Out}} (contents of Rosetta::myNewCSVFile):
 
 ```txt
-C1x,C2y,C3z,C4a,C5b 
-1x,5y,9z,13a,17b  
-2x,6y,10z,14a,18b 
-3x,7y,11z,15a,19b 
-4x,8y,12z,16a,20b 
+C1x,C2y,C3z,C4a,C5b
+1x,5y,9z,13a,17b
+2x,6y,10z,14a,18b
+3x,7y,11z,15a,19b
+4x,8y,12z,16a,20b
 ```
 
 
@@ -1289,7 +1289,7 @@ function split(sequence s, integer c)
         first = delim + 1
     end while
     return out
-end function                            
+end function
 
 procedure main()
     integer fn    -- the file number
@@ -1300,32 +1300,32 @@ procedure main()
     sequence headerNames = {} -- array saving column names
     atom sum = 0.0     -- sum for each row
     sequence var  -- holds numerical data read
-    
+
     -- First we try to open the file called "data.csv".
     fn = open("data.csv", "r")
     if fn = -1 then
-        puts(1, "Can't open data.csv\n") 
-	-- abort(); 
-    end if 
+        puts(1, "Can't open data.csv\n")
+	-- abort();
+    end if
 
-    -- Then we create an output file for processed data. 
+    -- Then we create an output file for processed data.
     fn2 = open("newdata.csv", "w")
     if fn2 = -1 then
         puts(1, "Can't create newdata.csv\n")
     end if
-    
-    -- By successfully opening the file we have established that 
+
+    -- By successfully opening the file we have established that
     -- the file exists, and open() gives us a file number (or "handle")
     -- that we can use to perform operations on the file.
-    
+
     e = 1
-    while 1 do 
+    while 1 do
         line = gets(fn)
         if atom(line) then
             exit
         end if
         data = split(line, ',')
-        
+
         if (e=1) then
             -- Save the header labels and
 	    -- write them to output file.
@@ -1335,10 +1335,10 @@ procedure main()
 	    end for
 	    printf(fn2, "SUM\n")
         end if
-        
+
         -- Run a sum for the numerical data.
         if (e >= 2) then
-	    for i=1 to length(data) do     
+	    for i=1 to length(data) do
 	        printf(fn2, "%s,", {data[i]})
 		var = value(data[i])
 		if var[1] = 0 then
@@ -1352,7 +1352,7 @@ procedure main()
         end if
         e = e + 1
     end while
-    
+
     close(fn)
     close(fn2)
 end procedure
@@ -1384,10 +1384,10 @@ open System.IO
 [<EntryPoint>]
 let main _ =
     let input = File.ReadAllLines "test_in.csv"
-    let output = 
+    let output =
         input
-        |> Array.mapi (fun i line -> 
-            if i = 0 then line + ",SUM" 
+        |> Array.mapi (fun i line ->
+            if i = 0 then line + ",SUM"
             else
                 let sum = Array.sumBy int (line.Split(','))
                 sprintf "%s,%i" line sum)
@@ -1509,7 +1509,7 @@ C1,C2,C3,C4,C5,SUM
 
 =={{Header|Fortran}}==
 
-###  Fortran 2003 
+###  Fortran 2003
 
 It's fairly easy to read arbitrary lines using allocatable character strings, available since Fortran 2003.
 
@@ -1521,13 +1521,13 @@ program rowsum
     character(20) :: fmt
     double precision, allocatable :: v(:)
     integer :: n, nrow, ncol, i
-    
+
     call get_command_argument(1, length=n)
     allocate(character(n) :: name)
     call get_command_argument(1, name)
     open(unit=10, file=name, action="read", form="formatted", access="stream")
     deallocate(name)
-    
+
     call get_command_argument(2, length=n)
     allocate(character(n) :: name)
     call get_command_argument(2, name)
@@ -1538,9 +1538,9 @@ program rowsum
     ncol = 0
     do while (readline(10, line))
         nrow = nrow + 1
-        
+
         call split(line, a)
-        
+
         if (nrow == 1) then
             ncol = size(a)
             write(11, "(A)", advance="no") line
@@ -1569,7 +1569,7 @@ contains
         integer :: unit, ios, n
         character(:), allocatable :: line
         character(10) :: buffer
-        
+
         line = ""
         readline = .false.
         do
@@ -1587,13 +1587,13 @@ contains
         character, optional :: separator
         character :: sep
         integer :: n, m, p, i, k
-        
+
         if (present(separator)) then
             sep = separator
         else
             sep = ","
         end if
-        
+
         n = len(line)
         m = 0
         p = 1
@@ -1606,7 +1606,7 @@ contains
             end if
         end do
         m = max(m, n - k + 1)
-        
+
         if (allocated(array)) deallocate(array)
         allocate(character(m) :: array(p))
 
@@ -1626,7 +1626,7 @@ end program
 
 
 
-###  Old Fortran 
+###  Old Fortran
 
 This task in general soon becomes messy, especially when texts instead of numbers are amongst the input possibilities. Primarily, what is the upper bound on the number of values to a line? Will all lines have the same number of values; if not, is this an error? Do the data have special types (such as calendar dates?) or are all simple numbers? Very soon it becomes better to read a record as text and scan the text: problems can then be dealt with and good complaints made. So, how long is the longest record? Only the B6700 filesystem would make available a file's maximum record length: others offer no help. I have confronted a singularly witless format for supplying electricity data that would write up to an entire year's worth of half-hourly values to one line though it might be used to write just a few day's worth of data also. The header line specified the date and time slot for each column as <code>Country,Island,Node,MEAN Energy,01AUG2010 Daily ENERGY,01AUG2010 01,01AUG2010 02,01AUG2010 03, ''etc.''</code> so all-in-all it was less trouble to specify CHARACTER*246810 for the input record scratchpad so as not to have to struggle with piecemeal input. More generally, I have a routine for reading this sort of data that, provoked by multiple methods of specifying dates and times, is 1,500 lines long...
 
@@ -1634,7 +1634,7 @@ Rather than present a monster, what follows is a simple programme that employs t
 
 So much for the header. The data lines can be read as numbers without difficulty, as they are numbers, so all that is necessary is that the input list be of type number. Chosen to be integer here, to match the example.
 
-Output presents some worries, the usual one being how long is a piece of string? Unlike a number, which can be read as input with arbitrary size (0007 or 7, or 7.000000, etc.) character sequences are not translated into a number. Until there is provision for reading a string of arbitrary length, which will be stored by the READ statement as a string of an arbitrary length as encountered, an upper bound must be specified, and for this problem, six will do. For output, the special function TRIM removes trailing spaces, but is an intrinsic function only for F90 and later. Alas, it does not work for an array span, only a specific element at a time, so an implicit DO-loop is needed in the WRITE statement. Text literals in a FORMAT statement are rolled forth until such time as there is an edit code for a list item for which the output list is already exhausted. This would normally mean that the last datum written would be followed by a comma (from the text literal ",") however the mysterious colon in the FORMAT statement (instead of the more usual comma) means that text literals following it are ''not'' to be rolled forth unless a value from the output list is still waiting for its opportunity. One could instead use 666(",",I0) to omit the trailing comma but now there would be a leading comma. So, ... I0,666(",",I0) would avoid the leading comma, except if there was only one value to send forth, there would still be a trailing comma...  
+Output presents some worries, the usual one being how long is a piece of string? Unlike a number, which can be read as input with arbitrary size (0007 or 7, or 7.000000, etc.) character sequences are not translated into a number. Until there is provision for reading a string of arbitrary length, which will be stored by the READ statement as a string of an arbitrary length as encountered, an upper bound must be specified, and for this problem, six will do. For output, the special function TRIM removes trailing spaces, but is an intrinsic function only for F90 and later. Alas, it does not work for an array span, only a specific element at a time, so an implicit DO-loop is needed in the WRITE statement. Text literals in a FORMAT statement are rolled forth until such time as there is an edit code for a list item for which the output list is already exhausted. This would normally mean that the last datum written would be followed by a comma (from the text literal ",") however the mysterious colon in the FORMAT statement (instead of the more usual comma) means that text literals following it are ''not'' to be rolled forth unless a value from the output list is still waiting for its opportunity. One could instead use 666(",",I0) to omit the trailing comma but now there would be a leading comma. So, ... I0,666(",",I0) would avoid the leading comma, except if there was only one value to send forth, there would still be a trailing comma...
 
 Another F90 feature is the SUM function that adds the elements of an array span. Even though for the example the first column looks rather like a record number, all five columns will be added, but otherwise the statement would be SUM(X(2:N)). Other modifications can be made without much difficulty, if desired. The output format is I0 rather than say I2, as it provides only the needed number of characters to present the integer's value. There is no corresponding F format code, and free-format output would roll out many spaces as padding in case of large numbers, that are not present here. It would be needed for a more general solution, but for this example, I0 will do.
 
@@ -1688,7 +1688,7 @@ Open "manip.csv" For Input As #1 ' existing CSV file
 Open "manip2.csv" For Output As #2 ' new CSV file for writing changed data
 
 Dim header As String
-Line Input #1, header 
+Line Input #1, header
 header += ",SUM"
 Print #2, header
 
@@ -1731,39 +1731,39 @@ data Table( header, rows )
 
 def read( file ) =
   l = lines( file )
-  
+
   def next = vector( l.next().split(',') )
-  
+
   if l.isEmpty() then
     return Table( vector(), [] )
-  
+
   header = next()
   rows = seq()
-  
+
   while l.hasNext()
     rows += next()
-    
+
   Table( header, rows.toList() )
-  
+
 def write( table, out ) =
   w = if out is String then PrintWriter( out ) else out
 
   w.println( table.header.mkString(',') )
-  
+
   for r <- table.rows
     w.println( r.mkString(',') )
-  
+
   if out is String
     w.close()
-  
+
 def updateRow( header, row, updates ) =
   r = dict( (header(i), row(i)) | i <- 0:header.length() )
   updates( r )
   vector( r(f) | f <- header )
 
-def update( table, updates ) =		
+def update( table, updates ) =
   Table( table.header, (updateRow(table.header, r, updates) | r <- table.rows).toList() )
-  
+
 def addColumn( table, column, updates ) =
   Table( table.header + [column], (updateRow(table.header + [column], r + [null], updates) | r <- table.rows).toList() )
 
@@ -1800,7 +1800,7 @@ Dim siCount As Short
 Dim bLine1 As Boolean
 
 For Each sLine In Split(sData, gb.NewLine)
-  If Not bLine1 Then 
+  If Not bLine1 Then
     sLine &= ",SUM"
     sOutput.Add(sLine)
     bLine1 = True
@@ -2655,7 +2655,7 @@ C1,C2,C3,C4,C5,SUM
 
 ### Node.js
 
-We can easily manipulate files with Node.js. 
+We can easily manipulate files with Node.js.
 Below is a toy example to add new columns to an CSV file. Other manipulations, i.e. adding new rows, modifying existing values and so forth, can be accomplished very easily.
 
 
@@ -2723,7 +2723,7 @@ C1,C2,C3,C4,C5,sum,id
 {{Works with|jq|1.4}}
 The following adds a column with header "SUM" as suggested in the task description.
 
-The writing out of each line is facilitated by jq's @csv builtin. We must "slurp in" the file (using the -s option) so the header line can be handled specially. 
+The writing out of each line is facilitated by jq's @csv builtin. We must "slurp in" the file (using the -s option) so the header line can be handled specially.
 
 ```jq
 # Omit empty lines
@@ -2739,7 +2739,7 @@ def add_column(label):
   [.[0] + [label],
    (reduce .[1:][] as $line
      ([]; ($line|map(tonumber)) as $line | . + [$line + [$line|add]]))[] ] ;
-  
+
 read_csv | add_column("SUM") | map(@csv)[]
 ```
 
@@ -2770,7 +2770,7 @@ CSV.write(ofn, df)
 
 ```txt
 
-$ cat csv_data_manipulation_out.dat 
+$ cat csv_data_manipulation_out.dat
 C1,C2,C3,C4,C5,SUM
 1,5,9,13,17,45
 2,6,10,14,18,50
@@ -3060,7 +3060,7 @@ Module Checkit {
       Input #M, h1$, h2$, h3$, h4$, h5$
       Write #M1, h1$, h2$, h3$, h4$, h5$
       Print h1$, h2$, h3$, h4$, h5$
-      
+
       While not Eof(#M) {
             Input #M, A1, A2, A3, A4, A5
             Write #M1, A1, A2, A3, A4, A5, Sum(A1, A2, A3, A4, A5)
@@ -3147,21 +3147,21 @@ Running this script showing interactive results:
                            [ 4       8       12      16      20       60   ]
 
 > ExportMatrix("data_out.csv",M,target=csv);
-                                               96  
+                                               96
 
 ```
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
-###  Using file manipulation 
+###  Using file manipulation
 
 
 ```Matlab
 filename='data.csv';
 fid = fopen(filename);
 header = fgetl(fid);
-fclose(fid); 
+fclose(fid);
 X = dlmread(filename,',',1,0);
 
 fid = fopen('data.out.csv','w+');
@@ -3175,7 +3175,7 @@ fclose(fid);
 
 
 
-###  Using <code>table</code> 
+###  Using <code>table</code>
 
 
 ```Matlab
@@ -3226,7 +3226,7 @@ options replace format comments java crossref symbols
 
 import org.apache.commons.csv.
 
--- 
+--
 ### =======================================================================
 
 class RCsv public final
@@ -3402,7 +3402,7 @@ while true:
       tmp += parseInt(n)
     line.add(",")
     line.add($tmp)
-  
+
   outf.writeLn($line)
 
   inc lineNumber
@@ -3455,7 +3455,7 @@ class CsvData {
 
       output := csv->ToString();
       output->PrintLine();
-      
+
       file_out := FileWriter->New("new-csv.csv");
       file_out->WriteString(output);
     };
@@ -3562,7 +3562,7 @@ begin
   Rewrite(outFile);
 
   ts:=tStringList.Create;
-  ts.StrictDelimiter:=True;             
+  ts.StrictDelimiter:=True;
 
   // Handle the header
   ReadLn(inFile,s);                     // Read a line from input file
@@ -3786,27 +3786,27 @@ $handle_output = fopen('data_out.csv','w');
 $row = 0;
 $arr = array();
 
-while ($line = fgetcsv($handle)) 
+while ($line = fgetcsv($handle))
 {
     $arr[] = $line;
 }
 
-//change some data to zeroes 
+//change some data to zeroes
 $arr[1][0] = 0; // 1,5,9,13,17 => 0,5,9,13,17
 $arr[2][1] = 0; // 2,6,10,14,18 => 2,0,10,14,18
 
 //add sum and write file
-foreach ($arr as $line) 
+foreach ($arr as $line)
 {
-    if ($row==0) 
+    if ($row==0)
     {
         array_push($line,"SUM");
-    } 
-    else 
+    }
+    else
     {
         array_push($line,array_sum($line));
     }
-    fputcsv($handle_output, $line);  
+    fputcsv($handle_output, $line);
     $row++;
 }
 ?>
@@ -3927,7 +3927,7 @@ C1,C2,C3,C4,C5,SUM
 1,5,9,13,17,45
 2,6,10,14,18,50
 3,7,11,15,19,55
-4,8,12,16,20,60                           
+4,8,12,16,20,60
 
 ```
 
@@ -3943,8 +3943,8 @@ demonstrate that it is not necessary to read more than a line at a time.
 ```Prolog
 test :- augment('test.csv', 'test.out.csv').
 
-% augment( +InFileName, +OutFileName) 
-augment(InFile, OutFile)  :- 
+% augment( +InFileName, +OutFileName)
+augment(InFile, OutFile)  :-
 	open(OutFile, write, OutStream),
 	( ( csv_read_file_row(InFile, Row, [line(Line)]),
 	    % Row is of the form row( Item1, Item2, ....).
@@ -3996,7 +3996,7 @@ $sums = $records | ForEach-Object {
 
 ## Add a column (Sum) and its value to each object in the array
 $records = for ($i = 0; $i -lt $sums.Count; $i++)
-{ 
+{
     $records[$i] | Select-Object *,@{Name='Sum';Expression={$sums[$i]}}
 }
 
@@ -4011,7 +4011,7 @@ $records | Format-Table -AutoSize
 {{out}}
 
 ```txt
- 
+
 C1 C2 C3 C4 C5 Sum
 -- -- -- -- -- ---
 1  5  9  13 17  45
@@ -4033,7 +4033,7 @@ EnableExplicit
 #Separator$ = ","
 
 Define fInput$ = "input.csv"; insert path to input file
-Define fOutput$ = "output.csv"; insert path to output file  
+Define fOutput$ = "output.csv"; insert path to output file
 Define header$, row$, field$
 Define nbColumns, sum, i
 
@@ -4042,13 +4042,13 @@ If OpenConsole()
     PrintN("Error opening input file")
     Goto Finish
   EndIf
-  
+
   If Not CreateFile(1, fOutput$)
     PrintN("Error creating output file")
     CloseFile(0)
-    Goto Finish 
+    Goto Finish
   EndIf
-  
+
   ; Read header row
   header$ = ReadString(0)
   ; Determine number of columns
@@ -4057,7 +4057,7 @@ If OpenConsole()
   header$ + #Separator$ + "SUM"
   ; Write to output file
   WriteStringN(1, header$)
-  
+
   ; Read remaining rows, process and write to output file
   While Not Eof(0)
     row$ = ReadString(0)
@@ -4069,10 +4069,10 @@ If OpenConsole()
     row$ + #Separator$ + sum
     WriteStringN(1, row$)
   Wend
-  
+
   CloseFile(0)
   CloseFile(1)
-  
+
   Finish:
   PrintN("")
   PrintN("Press any key to close the console")
@@ -4101,7 +4101,7 @@ C1,C2,C3,C4,C5,SUM
 
 
 
-###  Using <code>fileinput</code> 
+###  Using <code>fileinput</code>
 
 Note that the [http://docs.python.org/3.3/library/csv.html csv module] is not required for such a simple and regular CSV file. Here overwriting is done in place.
 
@@ -4172,7 +4172,7 @@ C1,C2,C3,C4,C5,SUM
 
 
 
-###  Using <code>pandas</code> 
+###  Using <code>pandas</code>
 
 
 ```python
@@ -4235,7 +4235,7 @@ This output can also be saved to a file:
 
 
 ```R
- write.csv(df,row.names = FALSE,file = "foo.csv") 
+ write.csv(df,row.names = FALSE,file = "foo.csv")
 ```
 
 
@@ -4266,7 +4266,7 @@ This output can also be saved to a file:
 Example:
 
 ```racket
-(define csv-file 
+(define csv-file
   "C1, C2, C3, C4, C5
     1,  5,  9, 13, 17
     2,  6, 10, 14, 18
@@ -4306,7 +4306,7 @@ filein: read/lines %file.csv
 forall data [either (index? data) = 1[
 	append data/1 "SUM"
 ][
-	append data/1 to string! 
+	append data/1 to string!
 	(to integer! data/1/1) + (to integer! data/1/2) + (to integer! data/1/3) + (to integer! data/1/4) + (to integer! data/1/5)
 ]]
 ```
@@ -4376,7 +4376,7 @@ This REXX version has no need to use an operating system command to ERASE the (i
 
 an idiomatic REXX method to write to the input file   (starting at record one).
 
-Also supported is the ability to specify the fileID of the data file to be specified. 
+Also supported is the ability to specify the fileID of the data file to be specified.
 
 ```rexx
 /*REXX program reads a CSV file & appends a SUM column (which is the sum of all columns)*/
@@ -4408,7 +4408,7 @@ call lineout iFID,@.1,1                           /*set file ptr to 1st rec., wr
 
 ```
 
-{{out|output|text=  to the file is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  to the file is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -4653,7 +4653,7 @@ object parseCSV extends App {
 
   println(output)
   /* Outputs:
-     
+
 C1,C2,C3,C4,C5,SUM
 1,5,9,13,17,45
 2,6,10,14,18,50
@@ -4763,7 +4763,7 @@ var out = csvfile.open_w;
 
 
 ```stata
-import delim input.csv, clear 
+import delim input.csv, clear
 replace c5=c3+c4
 egen sum=rowtotal(c*)
 drop if mod(c3,3)==0
@@ -4827,7 +4827,7 @@ Although, for this specific small task,
 ```tcl
 set f [open example.csv r]
 puts "[gets $f],SUM"
-while { [gets $f row] > 0 } { 
+while { [gets $f row] > 0 } {
 	puts "$row,[expr [string map {, +} $row]]"
 }
 close $f
@@ -4917,15 +4917,15 @@ exec 1>"$1.new"             # open an output file on stdout
         #   sum=$(( $(IFS=+; echo "${numbers[*]}") ))
 
         echo "${numbers[*]},$sum"
-    done 
+    done
 } &&
-mv "$1" "$1.bak" && 
+mv "$1" "$1.bak" &&
 mv "$1.new" "$1"
 ```
 
 
 {{works with|ksh}}
-To make this work with ksh, change 
+To make this work with ksh, change
  read -a
 to
  read -A
@@ -5080,7 +5080,7 @@ for (#1 = 0; #1 < 4; #1++) {
     Del_Char(Chars_Matched)                     // delete old value
     Num_Ins(#2+100, LEFT+NOCR)                  // write new value
 }
-File_Save_As("output.csv", OK+NOMSG) 
+File_Save_As("output.csv", OK+NOMSG)
 ```
 
 output.csv:
@@ -5124,7 +5124,7 @@ SET SAFETY ON
 csvFile:=File("test.csv");
 header:=csvFile.readln().strip(); // remove trailing "\n" and leading white space
 listOfLines:=csvFile.pump(List,fcn(line){ line.strip().split(",").apply("toInt") });
- 
+
 newFile:=File("test2.csv","w");
 newFile.writeln(header + ",sum");
 listOfLines.pump(newFile.writeln,fcn(ns){ String(ns.concat(","),",",ns.sum()) });
@@ -5135,7 +5135,7 @@ newFile.close();
 
 ```txt
 
-$ cat test2.csv 
+$ cat test2.csv
 C1,C2,C3,C4,C5,sum
 1,5,9,13,17,45
 2,6,10,14,18,50

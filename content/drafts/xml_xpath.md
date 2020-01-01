@@ -67,30 +67,30 @@ XML Document:
 /* structure xmlNode*/
     .struct  0
 xmlNode_private:                         @ application data
-    .struct  xmlNode_private + 4 
+    .struct  xmlNode_private + 4
 xmlNode_type:                            @ type number, must be second !
-    .struct  xmlNode_type + 4 
+    .struct  xmlNode_type + 4
 xmlNode_name:                            @ the name of the node, or the entity
-    .struct  xmlNode_name + 4 
+    .struct  xmlNode_name + 4
 xmlNode_children:                        @ parent->childs link
-    .struct  xmlNode_children + 4 
+    .struct  xmlNode_children + 4
 xmlNode_last:                            @ last child link
-    .struct  xmlNode_last + 4 
-xmlNode_parent:                          @ child->parent link 
-    .struct  xmlNode_parent + 4 
+    .struct  xmlNode_last + 4
+xmlNode_parent:                          @ child->parent link
+    .struct  xmlNode_parent + 4
 xmlNode_next:                            @ next sibling link
-    .struct  xmlNode_next + 4 
-xmlNode_prev:                            @ previous sibling link 
-    .struct  xmlNode_prev + 4 
+    .struct  xmlNode_next + 4
+xmlNode_prev:                            @ previous sibling link
+    .struct  xmlNode_prev + 4
 xmlNode_doc:                             @ the containing document
-    .struct  xmlNode_doc + 4 
+    .struct  xmlNode_doc + 4
 xmlNode_ns:                              @ pointer to the associated namespace
-    .struct  xmlNode_ns + 4 
+    .struct  xmlNode_ns + 4
 xmlNode_content:                         @ the content
-    .struct  xmlNode_content + 4 
+    .struct  xmlNode_content + 4
 xmlNode_properties:                      @ properties list
     .struct  xmlNode_properties + 4
-xmlNode_nsDef:                           @ namespace definitions on this node 
+xmlNode_nsDef:                           @ namespace definitions on this node
     .struct  xmlNode_nsDef + 4
 xmlNode_psvi:                            @ for type/PSVI informations
     .struct  xmlNode_psvi + 4
@@ -103,33 +103,33 @@ xmlNode_fin:
 /* structure xmlNodeSet*/
     .struct  0
 xmlNodeSet_nodeNr:                       @ number of nodes in the set
-    .struct  xmlNodeSet_nodeNr + 4 
-xmlNodeSet_nodeMax:                      @ size of the array as allocated 
-    .struct  xmlNodeSet_nodeMax + 4 
+    .struct  xmlNodeSet_nodeNr + 4
+xmlNodeSet_nodeMax:                      @ size of the array as allocated
+    .struct  xmlNodeSet_nodeMax + 4
 xmlNodeSet_nodeTab:                      @ array of nodes in no particular order
-    .struct  xmlNodeSet_nodeTab + 4 
+    .struct  xmlNodeSet_nodeTab + 4
 xmlNodeSet_fin:
 /********************************************/
 /* structure xmlXPathObject*/
     .struct  0
 xmlPathObj_type:                         @
-    .struct  xmlPathObj_type + 4 
+    .struct  xmlPathObj_type + 4
 xmlPathObj_nodesetval:                   @
-    .struct  xmlPathObj_nodesetval + 4 
+    .struct  xmlPathObj_nodesetval + 4
 xmlPathObj_boolval:                      @
-    .struct  xmlPathObj_boolval + 4 
+    .struct  xmlPathObj_boolval + 4
 xmlPathObj_floatval:                     @
-    .struct  xmlPathObj_floatval + 4 
+    .struct  xmlPathObj_floatval + 4
 xmlPathObj_stringval:                    @
-    .struct  xmlPathObj_stringval + 4 
+    .struct  xmlPathObj_stringval + 4
 xmlPathObj_user:                         @
-    .struct  xmlPathObj_user + 4 
+    .struct  xmlPathObj_user + 4
 xmlPathObj_index:                        @
-    .struct  xmlPathObj_index + 4 
+    .struct  xmlPathObj_index + 4
 xmlPathObj_user2:                        @
-    .struct  xmlPathObj_user2 + 4 
+    .struct  xmlPathObj_user2 + 4
 xmlPathObj_index2:                       @
-    .struct  xmlPathObj_index2 + 4 
+    .struct  xmlPathObj_index2 + 4
 
 
 
@@ -137,10 +137,10 @@ xmlPathObj_index2:                       @
 /* Initialized data              */
 /*********************************/
 .data
-szMessEndpgm:      .asciz "\nNormal end of program.\n" 
-szMessDisVal:      .asciz "\nDisplay set values.\n" 
-szMessDisArea:     .asciz "\nDisplay area values.\n" 
-szFileName:        .asciz "testXml.xml" 
+szMessEndpgm:      .asciz "\nNormal end of program.\n"
+szMessDisVal:      .asciz "\nDisplay set values.\n"
+szMessDisArea:     .asciz "\nDisplay area values.\n"
+szFileName:        .asciz "testXml.xml"
 szMessError:       .asciz "Error detected !!!!. \n"
 
 
@@ -153,16 +153,16 @@ szCarriageReturn:  .asciz "\n"
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 .align 4
 tbExtract:          .skip 4 * NBMAXELEMENTS      @ result extract area
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                     @ entry of program 
-    ldr r0,iAdrszFileName 
+.global main
+main:                                     @ entry of program
+    ldr r0,iAdrszFileName
     bl xmlParseFile                       @ create doc
     mov r9,r0                             @ doc address
     mov r0,r9                             @ doc
@@ -207,8 +207,8 @@ main:                                     @ entry of program
 99:
     @ error
     ldr r0,iAdrszMessError
-    bl affichageMess       
-100:                                       @ standard end of the program 
+    bl affichageMess
+100:                                       @ standard end of the program
     mov r0, #0                             @ return code
     mov r7, #EXIT                          @ request to exit program
     svc #0                                 @ perform the system call
@@ -224,7 +224,7 @@ iAdrtbExtract:            .int tbExtract
 iAdrszMessDisVal:          .int szMessDisVal
 iAdrszMessDisArea:         .int szMessDisArea
 /******************************************************************/
-/*     extravt value of set                                       */ 
+/*     extravt value of set                                       */
 /******************************************************************/
 /* r0 contains the doc address
 /* r1 contains the address of the libel to extract */
@@ -247,7 +247,7 @@ extractValue:
     ldr r6,[r4,#xmlNodeSet_nodeNr]       @ set size
     mov r7,#0                            @ index
     ldr r4,[r4,#xmlNodeSet_nodeTab]      @ area of nods
-1:                                       @ start loop 
+1:                                       @ start loop
     ldr r3,[r4,r7,lsl #2]                @ load node
     mov r0,r9
     ldr r1,[r3,#xmlNode_children]        @ load string value
@@ -261,28 +261,28 @@ extractValue:
     cmp r7,r6
     blt 1b
 100:
-    pop {r1-r10,lr}                      @ restaur registers */ 
-    bx lr                                @ return  
+    pop {r1-r10,lr}                      @ restaur registers */
+    bx lr                                @ return
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                   @ save  registres
-    mov r2,#0                               @ counter length 
-1:                                          @ loop length calculation 
-    ldrb r1,[r0,r2]                         @ read octet start position + index 
-    cmp r1,#0                               @ if 0 its over 
-    addne r2,r2,#1                          @ else add 1 in the length 
-    bne 1b                                  @ and loop 
-                                            @ so here r2 contains the length of the message 
-    mov r1,r0                               @ address message in r1 
-    mov r0,#STDOUT                          @ code to write to the standard output Linux 
-    mov r7, #WRITE                          @ code call system "write" 
-    svc #0                                  @ call systeme 
-    pop {r0,r1,r2,r7,lr}                    @ restaur registers */ 
-    bx lr                                   @ return  
+    mov r2,#0                               @ counter length
+1:                                          @ loop length calculation
+    ldrb r1,[r0,r2]                         @ read octet start position + index
+    cmp r1,#0                               @ if 0 its over
+    addne r2,r2,#1                          @ else add 1 in the length
+    bne 1b                                  @ and loop
+                                            @ so here r2 contains the length of the message
+    mov r1,r0                               @ address message in r1
+    mov r0,#STDOUT                          @ code to write to the standard output Linux
+    mov r7, #WRITE                          @ code call system "write"
+    svc #0                                  @ call systeme
+    pop {r0,r1,r2,r7,lr}                    @ restaur registers */
+    bx lr                                   @ return
 
 
 ```
@@ -420,11 +420,11 @@ end getBlock
 
 tell application "System Events"
 	set xmlData to make new XML data with properties {name:"xmldata", text:theXMLdata}
-	
-	return my getBlock(xmlData's text, "item", 1) -- Solution to part 1 of problem. 
+
+	return my getBlock(xmlData's text, "item", 1) -- Solution to part 1 of problem.
 	return my getElementValuesByName(xmlData's contents, "name") -- Solution to part 2 of problem.
 	return my getElementValuesByName(xmlData's contents, "price") -- Solution to part 3 of problem.
-	
+
 end tell
 ```
 Output for the three results (respectively):
@@ -534,7 +534,7 @@ xmlDocPtr getdoc (char *docname) {
 }
 
 xmlXPathObjectPtr getnodeset (xmlDocPtr doc, xmlChar *xpath){
-	
+
 	xmlXPathContextPtr context;
 	xmlXPathObjectPtr result;
 
@@ -552,7 +552,7 @@ int main(int argc, char **argv) {
 		printf("Usage: %s <XML Document Name> <XPath expression>\n", argv[0]);
 		return 0;
 	}
-	
+
 	char *docname;
 	xmlDocPtr doc;
 	xmlChar *xpath = (xmlChar*) argv[2];
@@ -580,7 +580,7 @@ int main(int argc, char **argv) {
 }
 
 ```
- 
+
 testXML.xml contains the XML mentioned in the task description. Code must be compiled with the correct flags.
 
 ```txt
@@ -606,45 +606,45 @@ Value 4: Grob winglets
 
 ```csharp
 XmlReader XReader;
- 
+
 // Either read the xml from a string ...
 XReader = XmlReader.Create(new StringReader("<inventory title=... </inventory>"));
- 
+
 // ... or read it from the file system.
 XReader = XmlReader.Create("xmlfile.xml");
- 
+
 // Create a XPathDocument object (which implements the IXPathNavigable interface)
 // which is optimized for XPath operation. (very fast).
 IXPathNavigable XDocument = new XPathDocument(XReader);
- 
+
 // Create a Navigator to navigate through the document.
 XPathNavigator Nav = XDocument.CreateNavigator();
 Nav = Nav.SelectSingleNode("//item");
- 
+
 // Move to the first element of the selection. (if available).
 if(Nav.MoveToFirst())
 {
   Console.WriteLine(Nav.OuterXml); // The outer xml of the first item element.
 }
- 
+
 // Get an iterator to loop over multiple selected nodes.
 XPathNodeIterator Iterator = XDocument.CreateNavigator().Select("//price");
- 
+
 while (Iterator.MoveNext())
 {
   Console.WriteLine(Iterator.Current.Value);
 }
- 
+
 Iterator = XDocument.CreateNavigator().Select("//name");
- 
+
 // Use a generic list.
 List<string> NodesValues = new List<string>();
- 
+
 while (Iterator.MoveNext())
 {
   NodesValues.Add(Iterator.Current.Value);
 }
- 
+
 // Convert the generic list to an array and output the count of items.
 Console.WriteLine(NodesValues.ToArray().Length);
 ```
@@ -655,8 +655,8 @@ Console.WriteLine(NodesValues.ToArray().Length);
 
 {{improve|C++|Does not use XPath}}
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <string>
 #include <iostream>
 #include <boost/regex.hpp>
@@ -664,7 +664,7 @@ Console.WriteLine(NodesValues.ToArray().Length);
 #include <iterator>
 
 int main( ) {
-   const std::string xmltext( 
+   const std::string xmltext(
       "<inventory title=\"OmniCorp Store #45x10^3\">"
 	"<section name=\"health\">"
 	  "<item upc=\"123456789\" stock=\"12\">"
@@ -701,9 +701,9 @@ int main( ) {
    boost::regex pricefind( "<price>(\\d+\\.?\\d+)</price>" ) ;//this regex finds the prices
    start = xmltext.begin( ) ;
    std::cout << "The prices are:\n" ;
-   while ( boost::regex_search( start , end , what , pricefind ) ) { 
+   while ( boost::regex_search( start , end , what , pricefind ) ) {
       std::string price( what[ 1 ].first , what[ 1 ].second ) ;//find the first price
-      std::cout << price << std::endl ;                        
+      std::cout << price << std::endl ;
       start = what[ 1 ].second ;                               //continue search after first price found
    }
    start = xmltext.begin( ) ;
@@ -765,10 +765,10 @@ ClassMethod QueryXMLDoc(Output names As %List) As %Status
    If $$$ISERR(sc) Quit sc
    Set sc=##class(%XML.XPATH.Document).CreateFromStream(xdata.Data, .xdoc)
    If $$$ISERR(sc) Quit sc
-   
+
    // retrieve the first 'item' element
    Set sc=xdoc.EvaluateExpression("//section[1]", "item[1]", .res)
-   
+
    // perform an action on each 'price' element (print it out)
    Set sc=xdoc.EvaluateExpression("//price", "text()", .res)
    If $$$ISERR(sc) Quit sc
@@ -776,7 +776,7 @@ ClassMethod QueryXMLDoc(Output names As %List) As %Status
 	   If i>1 Write ", "
 	   Write res.GetAt(i).Value
    }
-   
+
    // get an array of all the 'name' elements
    Set sc=xdoc.EvaluateExpression("//item", "name", .res)
    If $$$ISERR(sc) Quit sc
@@ -788,7 +788,7 @@ ClassMethod QueryXMLDoc(Output names As %List) As %Status
 		   If dom.HasValue Set $List(names, key)=dom.Value
 	   }
    } While key'=""
-   
+
    // finished
    Quit $$$OK
 }
@@ -802,7 +802,7 @@ ClassMethod QueryXMLDoc(Output names As %List) As %Status
 
 USER>Do ##class(XML.Inventory).QueryXMLDoc(.list)
 14.50, 23.99, 4.95, 3.56
-USER>Write $ListToString(list, ", ")             
+USER>Write $ListToString(list, ", ")
 Invisibility Cream, Levitation Salve, Blork and Freen Instameal, Grob winglets
 
 ```
@@ -852,15 +852,15 @@ doc = new DOMParser().parseFromString '
 
 ```coffeescript
 
-# Retrieve the first "item" element 
+# Retrieve the first "item" element
 doc.evaluate('//item', doc, {}, 7, {}).snapshotItem 0
 
-# Perform an action on each "price" element (print it out) 
+# Perform an action on each "price" element (print it out)
 prices = doc.evaluate "//price", doc, {}, 7, {}
 for i in [0...prices.snapshotLength] by 1
     console.log prices.snapshotItem(i).textContent
 
-# Get an array of all the "name" elements 
+# Get an array of all the "name" elements
 names = doc.evaluate "//name", doc, {}, 7, {}
 names = for i in [0...names.snapshotLength] by 1
     names.snapshotItem i
@@ -1130,7 +1130,7 @@ Item name = Grob winglets
 ## Erlang
 
 
-{{libheader|xmerl}} 
+{{libheader|xmerl}}
 
 
 ```erlang
@@ -1140,8 +1140,8 @@ Item name = Grob winglets
 
 -export([main/0]).
 
-main() -> 
-   XMLDocument = 
+main() ->
+   XMLDocument =
       "<inventory title=\"OmniCorp Store #45x10^3\">
         <section name=\"health\">
           <item upc=\"123456789\" stock=\"12\">
@@ -1173,15 +1173,15 @@ main() ->
    io:format("First item:\n~s\n",
       [lists:flatten(
          xmerl:export_simple(
-            [hd(xmerl_xpath:string("//item[1]", Document))], 
+            [hd(xmerl_xpath:string("//item[1]", Document))],
             xmerl_xml, [{prolog, ""}]))]),
-   
+
    io:format("Prices:\n"),
-   [ io:format("~s\n",[Content#xmlText.value]) 
+   [ io:format("~s\n",[Content#xmlText.value])
       || #xmlElement{content = [Content|_]} <- xmerl_xpath:string("//price", Document)],
 
    io:format("Names:\n"),
-   [ Content#xmlText.value 
+   [ Content#xmlText.value
       || #xmlElement{content = [Content|_]} <- xmerl_xpath:string("//name", Document)].
 
 ```
@@ -1358,14 +1358,14 @@ let names = seq { for name in nav.Select(@"//name") do yield name } |> Seq.toArr
 
 ## Gastona
 
-The example uses the command XMELON which parses a XML file of any schema and stores its 
-contents into db tables. This parser is described in the article [http://web3.codeproject.com/Articles/680642/XMeLon-Schema XMeLon-Schema]  
+The example uses the command XMELON which parses a XML file of any schema and stores its
+contents into db tables. This parser is described in the article [http://web3.codeproject.com/Articles/680642/XMeLon-Schema XMeLon-Schema]
 
 ```gastona
 #javaj#
 
    <frames> oSal, XML Path sample, 300, 400
-         
+
 #data#
 
    <xml>
@@ -1395,7 +1395,7 @@ contents into db tables. This parser is described in the article [http://web3.co
       //    </item>
       //  </section>
       //</inventory>
-   
+
    <DEEP_SQL_XML>
       DEEP DB, SELECT, xmelon_data
              ,, path pathStr
@@ -1403,7 +1403,7 @@ contents into db tables. This parser is described in the article [http://web3.co
              ,, patCnt
              ,, dataPlace
              ,, value
-   
+
 #listix#
 
    <main>
@@ -1666,7 +1666,7 @@ takeWhileIncl           :: (a -> Bool) -> [a] -> [a]
 takeWhileIncl _ []      =  []
 takeWhileIncl p (x:xs)
             | p x       =  x : takeWhileIncl p xs
-            | otherwise =  [x] 
+            | otherwise =  [x]
 
 getmultiLineItem n = takeWhileIncl(not.isInfixOf ("</" ++ n)). dropWhile(not.isInfixOf ('<': n))
 getsingleLineItems n = map (takeWhile(/='<'). drop 1. dropWhile(/='>')). filter (isInfixOf ('<': n))
@@ -1674,13 +1674,13 @@ getsingleLineItems n = map (takeWhile(/='<'). drop 1. dropWhile(/='>')). filter 
 main = do
   xml <- readFile "./Rosetta/xmlpath.xml"
   let xmlText = lines xml
-      
+
   putStrLn "\n== First item ==\n"
   mapM_ putStrLn $ head $ unfoldr (Just. liftM2 (id &&&) (\\) (getmultiLineItem "item")) xmlText
-  
+
   putStrLn "\n== Prices ==\n"
   mapM_ putStrLn $ getsingleLineItems "price" xmlText
-  
+
   putStrLn "\n== Names ==\n"
   print $ getsingleLineItems "name" xmlText
 ```
@@ -1701,7 +1701,7 @@ process = proc doc -> do
   _ <- listA (arrIO print <<< deepElem "price") -< doc
   names <- listA (deepElem "name") -< doc
   returnA -< (item, names)
-  
+
 main = do
   [(item, names)] <- runX (readDocument [] "xmlpath.xml" >>> process)
   print item
@@ -1728,7 +1728,7 @@ CHARACTER xml*1000, output*1000
   ENDIF
 
   EDIT(Text=xml, SPR='<>', R='<name>', W=1, WordEnd=$CR, APpendTo=output, DO=999)
-  WRITE(ClipBoard) TRIM(output) 
+  WRITE(ClipBoard) TRIM(output)
 ```
 
 
@@ -1737,7 +1737,7 @@ CHARACTER xml*1000, output*1000
       <name>Invisibility Cream</name>
       <price>14.50</price>
       <description>Makes you invisible</description>
-    
+
 Price element = 14.50
 Price element = 23.99
 Price element = 4.95
@@ -1766,7 +1766,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 public class XMLParser {
-	final static String xmlStr = 
+	final static String xmlStr =
 			  "<inventory title=\"OmniCorp Store #45x10^3\">"
 			+ "  <section name=\"health\">"
 			+ "    <item upc=\"123456789\" stock=\"12\">"
@@ -1791,7 +1791,7 @@ public class XMLParser {
 			+ "      <price>3.56</price>"
 			+ "      <description>Tender winglets of Grob. Just add priwater</description>"
 			+ "    </item>"
-			+ "  </section>" 
+			+ "  </section>"
 			+ "</inventory>";
 
 	public static void main(String[] args) {
@@ -1880,8 +1880,8 @@ alert( names );
 
 ## Julia
 
-Uses the LibExpat module for XML pathing. The exercise description is very 
-vague about output format, so this is varied in the solution below. The first 
+Uses the LibExpat module for XML pathing. The exercise description is very
+vague about output format, so this is varied in the solution below. The first
 test prints the raw XML node, and the second and third are further processed.
 
 ```julia
@@ -1915,7 +1915,7 @@ xdoc = raw"""<inventory title="OmniCorp Store #45x10^3">
 </inventory>
 """
 
-debracket(s) = replace(s, r".+\>(.+)\<.+" => s"\1") 
+debracket(s) = replace(s, r".+\>(.+)\<.+" => s"\1")
 
 etree = xp_parse(xdoc)
 firstshow = LibExpat.find(etree, "//item")[1]
@@ -1971,7 +1971,7 @@ import javax.xml.xpath.XPathConstants
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 
-val xml = 
+val xml =
 """
 <inventory title="OmniCorp Store #45x10^3">
   <section name="health">
@@ -2033,7 +2033,7 @@ fun main(args: Array<String>) {
 
 For the first item :  upc = 123456789 and stock = 12
 
-The prices of each item are : 14.50  23.99  4.95  3.56  
+The prices of each item are : 14.50  23.99  4.95  3.56
 
 The names of each item are as follows :
   Invisibility Cream
@@ -2142,7 +2142,7 @@ staticarray(Invisibility Cream, Levitation Salve, Blork and Freen Instameal, Gro
 
 
 ## LiveCode
- 
+
 Copy the xml in this task into a text field called "FieldXML"
 
 ```LiveCode
@@ -2165,7 +2165,7 @@ put namenodes is an array
 
 
 ## Lua
- 
+
 Requires LuaExpat
 
 ```lua
@@ -2200,7 +2200,7 @@ local first = true
 local names, prices = {}, {}
 p = lxp.new({StartElement = function (parser, name)
 	local a, b, c = parser:pos() --line, offset, pos
-	if name == 'item' and first then 
+	if name == 'item' and first then
 		print(data:match('.-</item>', c - b + 1))
 		first = false
 	end
@@ -2231,7 +2231,7 @@ Price: 	14.50, 23.99, 4.95, 3.56
 
 
 ## Mathematica
- 
+
 
 ```Mathematica
 example = Import["test.txt", "XML"];
@@ -2428,7 +2428,7 @@ bundle Default {
       in->Append("</item>");
       in->Append("</section>");
       in->Append("</inventory>");
-    
+
       parser := XmlParser->New(in);
       if(parser->Parse()) {
         # get first item
@@ -2439,7 +2439,7 @@ bundle Default {
         # get all prices
         results := parser->FindElements("//inventory/section/item/price");
         if(results <> Nil) {
-          each(i : results) {          
+          each(i : results) {
             element := results->Get(i)->As(XMLElement);
             element->GetContent()->PrintLine();
           };
@@ -2520,7 +2520,7 @@ declare
   in
      {FoldR Texts ByteString.append {ByteString.make nil}}
   end
-  
+
   Data =
    "<inventory title=\"OmniCorp Store #45x10^3\">"
   #"  <section name=\"health\">"
@@ -2641,12 +2641,12 @@ Invisibility Cream, Levitation Salve, Blork and Freen Instameal, Grob winglets
 $doc = DOMDocument::loadXML('<inventory title="OmniCorp Store #45x10^3">...</inventory>');
 //Load from file instead with $doc = DOMDocument::load('filename');
 $xpath = new DOMXPath($doc);
-/* 
+/*
     1st Task: Retrieve the first "item" element
 */
 $nodelist = $xpath->query('//item');
 $result = $nodelist->item(0);
-/* 
+/*
     2nd task: Perform an action on each "price" element (print it out)
 */
 $nodelist = $xpath->query('//price');
@@ -2655,16 +2655,16 @@ for($i = 0; $i < $nodelist->length; $i++)
   //print each price element in the DOMNodeList instance, $nodelist, as text/xml followed by a newline
   print $doc->saveXML($nodelist->item($i))."\n";
 }
-/* 
+/*
     3rd Task: Get an array of all the "name" elements
 */
 $nodelist = $xpath->query('//name');
 //our array to hold all the name elements, though in practice you'd probably not need to do this and simply use the DOMNodeList
-$result = array(); 
+$result = array();
 //a different way of iterating through the DOMNodeList
 foreach($nodelist as $node)
 {
-  $result[] = $node; 
+  $result[] = $node;
 }
 ```
 
@@ -2782,8 +2782,8 @@ name                      price
 ----                      -----
 Invisibility Cream        14.50
 Levitation Salve          23.99
-Blork and Freen Instameal 4.95 
-Grob winglets             3.56 
+Blork and Freen Instameal 4.95
+Grob winglets             3.56
 
 ```
 
@@ -2835,10 +2835,10 @@ Grob winglets
 
 from xml.dom import minidom
 
-xmlfile = file("test3.xml") # load xml document from file 
+xmlfile = file("test3.xml") # load xml document from file
 xmldoc = minidom.parse(xmlfile).documentElement # parse from file stream or...
 xmldoc = minidom.parseString("<inventory title="OmniCorp Store #45x10^3">...</inventory>").documentElement # alternatively, parse a string
-	
+
 #  1st Task: Retrieve the first "item" element
 i = xmldoc.getElementsByTagName("item") # get a list of all "item" tags
 firstItemElement = i[0] # get the first element
@@ -3151,7 +3151,7 @@ doc = Document.new(
           @
                           )
 # The invisibility cream is the first <item>
-invisibility = XPath.first( doc, "//item" ) 
+invisibility = XPath.first( doc, "//item" )
 # Prints out all of the prices
 XPath.each( doc, "//price") { |element| puts element.text }
 # Gets an array of all of the "name" elements in the document.
@@ -3365,7 +3365,7 @@ names        = *
            1 = Invisibility Cream
            2 = Levitation Salve
            3 = Blork and Freen Instameal
-           4 = Grob winglets 
+           4 = Grob winglets
 
 ```
 
@@ -3418,9 +3418,9 @@ WScript.StdOut.WriteBlankLines(2)
 	<description>Makes you invisible</description>
 </item>
 
-14.50, 23.99, 4.95, 3.56, 
+14.50, 23.99, 4.95, 3.56,
 
-Invisibility Cream, Levitation Salve, Blork and Freen Instameal, Grob winglets, 
+Invisibility Cream, Levitation Salve, Blork and Freen Instameal, Grob winglets,
 
 ```
 
@@ -3433,11 +3433,11 @@ Invisibility Cream, Levitation Salve, Blork and Freen Instameal, Grob winglets,
 ```vbnet
 Dim first_item = xml.XPathSelectElement("//item")
 Console.WriteLine(first_item)
- 
+
 For Each price In xml.XPathSelectElements("//price")
     Console.WriteLine(price.Value)
 Next
- 
+
 Dim names = (From item In xml.XPathSelectElements("//name") Select item.Value).ToArray
 ```
 
@@ -3476,7 +3476,7 @@ Dim names = (From item In xml.XPathSelectElements("//name") Select item.Value).T
     <p:input port="insertion" select="//name">
       <p:pipe port="source" step="one-two-three"/>
     </p:input>
-  </p:insert>  
+  </p:insert>
 </p:pipeline>
 ```
 
@@ -3485,8 +3485,8 @@ Dim names = (From item In xml.XPathSelectElements("//name") Select item.Value).T
 
 
 ```xquery
-(: 
-  1. Retrieve the first "item" element  
+(:
+  1. Retrieve the first "item" element
   Notice the braces around //item. This evaluates first all item elements and then retrieving the first one.
   Whithout the braces you get the first item for every section.
 :)
@@ -3495,7 +3495,7 @@ let $firstItem := (//item)[1]
 (: 2. Perform an action on each "price" element (print it out) :)
 let $price := //price/data(.)
 
-(: 3. Get an array of all the "name" elements  :) 
+(: 3. Get an array of all the "name" elements  :)
 let $names := //name
 
 return
@@ -3507,7 +3507,7 @@ return
 ```
 
 
-Performing this XQuery on the given input document results in 
+Performing this XQuery on the given input document results in
 
 ```xquery
 <?xml version="1.0" encoding="UTF-8"?>
@@ -3538,12 +3538,12 @@ Performing this XQuery on the given input document results in
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="text" />
   <xsl:template match="/">
-  
+
     <!-- 1. first item element -->
     <xsl:text>
 The first item element is</xsl:text>
     <xsl:value-of select="//item[1]" />
-    
+
     <!-- 2. Print each price element -->
     <xsl:text>
 The prices are: </xsl:text>
@@ -3552,12 +3552,12 @@ The prices are: </xsl:text>
       </xsl:text>
       <xsl:copy-of select="." />
     </xsl:for-each>
-    
+
     <!-- 3. Collect all the name elements -->
     <xsl:text>
 The names are: </xsl:text>
     <xsl:copy-of select="//name" />
-  </xsl:template>  
+  </xsl:template>
 </xsl:stylesheet>
 ```
 

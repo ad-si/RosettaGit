@@ -18,12 +18,12 @@ tags = []
 
 
 ;Task:
-Demonstrate a method of deriving the [[wp:Computation of cyclic redundancy checks|Cyclic Redundancy Check]] from within the language. 
+Demonstrate a method of deriving the [[wp:Computation of cyclic redundancy checks|Cyclic Redundancy Check]] from within the language.
 
 
-The result should be in accordance with ISO 3309, [http://www.itu.int/rec/T-REC-V.42-200203-I/en ITU-T V.42], [http://tools.ietf.org/html/rfc1952 Gzip] and [http://www.w3.org/TR/2003/REC-PNG-20031110/ PNG]. 
+The result should be in accordance with ISO 3309, [http://www.itu.int/rec/T-REC-V.42-200203-I/en ITU-T V.42], [http://tools.ietf.org/html/rfc1952 Gzip] and [http://www.w3.org/TR/2003/REC-PNG-20031110/ PNG].
 
-Algorithms are described on [[wp:Cyclic redundancy check|Computation of CRC]] in Wikipedia. 
+Algorithms are described on [[wp:Cyclic redundancy check|Computation of CRC]] in Wikipedia.
 This variant of CRC-32 uses LSB-first order, sets the initial CRC to FFFFFFFF<sub>16</sub>, and complements the final CRC.
 
 For the purpose of this task, generate a CRC-32 checksum for the ASCII encoded string:
@@ -71,7 +71,7 @@ print(hex(crc32(‘The quick brown fox jumps over the lazy dog’)))
 
 ## Ada
 
-{{works with|GNAT}} 
+{{works with|GNAT}}
 
 ```Ada
 with Ada.Text_IO; use Ada.Text_IO;
@@ -107,12 +107,12 @@ end TestCRC;
 BOOL crc_table_computed := FALSE;
 
 PROC make_crc_table = VOID:
-   BEGIN 
+   BEGIN
       INT n, k;
-      FOR n FROM 0 TO 255 DO 
+      FOR n FROM 0 TO 255 DO
          BITS c := BIN n;
-         FOR k TO 8 DO 
-            c := IF 32 ELEM c THEN 
+         FOR k TO 8 DO
+            c := IF 32 ELEM c THEN
                     16redb88320 XOR (c SHR 1)
                  ELSE
                     c SHR 1
@@ -124,12 +124,12 @@ PROC make_crc_table = VOID:
    END;
 
 PROC update_crc = (BITS crc, STRING buf) BITS:
-   BEGIN 
+   BEGIN
       BITS c := crc XOR 16rffffffff;
       INT n;
 
       IF NOT crc_table_computed THEN make_crc_table FI;
-      FOR n TO UPB buf DO 
+      FOR n TO UPB buf DO
          c := crc_table[ABS ((c XOR BIN ABS buf[n]) AND 16rff)] XOR (c SHR 8)
       OD ;
       c XOR 16rffffffff
@@ -232,11 +232,11 @@ MsgBox % CRC32("The quick brown fox jumps over the lazy dog")
 
 Using [http://www.stillhq.com/gpg/source-modified-1.0.3/zlib/crc32.html zlib's crc32]:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <zlib.h>
- 
+
 int main()
 {
 	const char *s = "The quick brown fox jumps over the lazy dog";
@@ -253,8 +253,8 @@ int main()
 This code is a translation from [[{{FULLPAGENAME}}#Ruby|Ruby]], with an adjustment to use 32-bit integers. This code happens to resemble the examples from [http://tools.ietf.org/html/rfc1952#section-8 RFC 1952 section 8] and from [http://www.w3.org/TR/2003/REC-PNG-20031110/#D-CRCAppendix PNG annex D], because those examples use an identical table.
 
 
-```c>#include <inttypes.h
-
+```c
+#include <inttypes.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -299,7 +299,7 @@ main()
 {
 	const char *s = "The quick brown fox jumps over the lazy dog";
 	printf("%" PRIX32 "\n", rc_crc32(0, s, strlen(s)));
- 
+
 	return 0;
 }
 ```
@@ -310,8 +310,8 @@ main()
 
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <array>
 #include <cstdint>
 #include <numeric>
@@ -325,7 +325,7 @@ main()
 std::array<std::uint_fast32_t, 256> generate_crc_lookup_table() noexcept
 {
   auto const reversed_polynomial = std::uint_fast32_t{0xEDB88320uL};
-  
+
   // This is a function object that calculates the checksum for a value,
   // then increments the value, starting from zero.
   struct byte_checksum
@@ -333,19 +333,19 @@ std::array<std::uint_fast32_t, 256> generate_crc_lookup_table() noexcept
     std::uint_fast32_t operator()() noexcept
     {
       auto checksum = static_cast<std::uint_fast32_t>(n++);
-      
+
       for (auto i = 0; i < 8; ++i)
         checksum = (checksum >> 1) ^ ((checksum & 0x1u) ? reversed_polynomial : 0);
-      
+
       return checksum;
     }
-    
+
     unsigned n = 0;
   };
-  
+
   auto table = std::array<std::uint_fast32_t, 256>{};
   std::generate(table.begin(), table.end(), byte_checksum{});
-  
+
   return table;
 }
 
@@ -356,20 +356,20 @@ std::uint_fast32_t crc(InputIterator first, InputIterator last)
 {
   // Generate lookup table only on first use then cache it - this is thread-safe.
   static auto const table = generate_crc_lookup_table();
-  
+
   // Calculate the checksum - make sure to clip to 32 bits, for systems that don't
   // have a true (fast) 32-bit type.
   return std::uint_fast32_t{0xFFFFFFFFuL} &
     ~std::accumulate(first, last,
       ~std::uint_fast32_t{0} & std::uint_fast32_t{0xFFFFFFFFuL},
-        [](std::uint_fast32_t checksum, std::uint_fast8_t value) 
+        [](std::uint_fast32_t checksum, std::uint_fast8_t value)
           { return table[(checksum ^ value) & 0xFFu] ^ (checksum >> 8); });
 }
 
 int main()
 {
   auto const s = std::string{"The quick brown fox jumps over the lazy dog"};
-  
+
   std::cout << std::hex << std::setw(8) << std::setfill('0') << crc(s.begin(), s.end()) << '\n';
 }
 
@@ -399,8 +399,8 @@ FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF FF6CAB0B
 
 {{libheader|boost}}
 
-```cpp>#include <boost\crc.hpp
-
+```cpp
+#include <boost\crc.hpp>
 #include <string>
 #include <iostream>
 
@@ -435,7 +435,7 @@ Checksum: 414fa339
     {
         #region Constants
         /// <summary>
-        /// Generator polynomial (modulo 2) for the reversed CRC32 algorithm. 
+        /// Generator polynomial (modulo 2) for the reversed CRC32 algorithm.
         /// </summary>
         private const UInt32 s_generator = 0xEDB88320;
         #endregion
@@ -453,7 +453,7 @@ Checksum: 414fa339
                 for (var j = 0; j < 8; ++j)
                 {
                     tableEntry = ((tableEntry & 1) != 0)
-                        ? (s_generator ^ (tableEntry >> 1)) 
+                        ? (s_generator ^ (tableEntry >> 1))
                         : (tableEntry >> 1);
                 }
                 return tableEntry;
@@ -472,7 +472,7 @@ Checksum: 414fa339
             try
             {
                 // Initialize checksumRegister to 0xFFFFFFFF and calculate the checksum.
-                return ~byteStream.Aggregate(0xFFFFFFFF, (checksumRegister, currentByte) => 
+                return ~byteStream.Aggregate(0xFFFFFFFF, (checksumRegister, currentByte) =>
                           (m_checksumTable[(checksumRegister & 0xFF) ^ Convert.ToByte(currentByte)] ^ (checksumRegister >> 8)));
             }
             catch (FormatException e)
@@ -636,8 +636,8 @@ Output:
 (ql:quickload :ironclad)
 (defun string-to-digest (str digest)
   "Return the specified digest for the ASCII string as a hex string."
-  (ironclad:byte-array-to-hex-string 
-    (ironclad:digest-sequence digest 
+  (ironclad:byte-array-to-hex-string
+    (ironclad:digest-sequence digest
                               (ironclad:ascii-string-to-byte-array str))))
 
 (string-to-digest "The quick brown fox jumps over the lazy dog" :crc32)
@@ -665,7 +665,7 @@ IMPORT ZlibCrc32,StdLog;
 PROCEDURE Do*;
 VAR
 	s: ARRAY 128 OF SHORTCHAR;
-BEGIN	
+BEGIN
 	s := "The quick brown fox jumps over the lazy dog";
 	StdLog.IntForm(ZlibCrc32.CRC32(0,s,0,LEN(s$)),16,12,'0',TRUE);
 	StdLog.Ln;
@@ -823,7 +823,7 @@ contains
         integer :: n, i
         character(*) :: a
         integer(int32) :: crc
-        
+
         crc = not(crc)
         n = len(a)
         do i = 1, n
@@ -831,11 +831,11 @@ contains
         end do
         crc = not(crc)
     end subroutine
-    
+
     subroutine init_table
         integer :: i, j
         integer(int32) :: k
-        
+
         do i = 0, 255
             k = i
             do j = 1, 8
@@ -894,7 +894,7 @@ Function crc32(buf As String) As UInteger<32>
     End If
 
     crc = Not crc ' crc = &Hffffffff
-    
+
     For i = 0 To Len(buf) -1
         crc = (crc Shr 8) Xor table((crc And &hff) Xor buf[i])
     Next
@@ -1109,32 +1109,32 @@ procedure crc32(s)      #: return crc-32 (ISO 3309, ITU-T V.42, Gzip, PNG) of s
 static crcL,mask
 initial {
    crcL := list(256)                            # crc table
-   p := [0,1,2,4,5,7,8,10,11,12,16,22,23,26]    # polynomial terms 
-   mask := 2^32-1                               # word size mask   
+   p := [0,1,2,4,5,7,8,10,11,12,16,22,23,26]    # polynomial terms
+   mask := 2^32-1                               # word size mask
    every (poly := 0) := ior(poly,ishift(1,31-p[1 to *p]))
-   every c := n := 0 to *crcL-1 do {            # table 
-      every 1 to 8 do 
-         c := iand(mask, 
+   every c := n := 0 to *crcL-1 do {            # table
+      every 1 to 8 do
+         c := iand(mask,
                    if iand(c,1) = 1 then
-                      ixor(poly,ishift(c,-1)) 
-                   else 
+                      ixor(poly,ishift(c,-1))
+                   else
                       ishift(c,-1)
                   )
       crcL[n+1] := c
       }
    }
-   
+
    crc := ixor(0,mask)                          # invert bits
    every crc := iand(mask,
-                     ixor(crcL[iand(255,ixor(crc,ord(!s)))+1],ishift(crc,-8)))               
+                     ixor(crcL[iand(255,ixor(crc,ord(!s)))+1],ishift(crc,-8)))
    return hexstring(ixor(crc,mask))             # return hexstring
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn hexcvt.icn] (provides hex and hexstring)
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn] (provides formatting) 
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn] (provides formatting)
 
 {{out}}
 
@@ -1553,15 +1553,15 @@ Module CheckIt {
                     }
                     table(i) = k
              }
-             =table()      
-      }       
+             =table()
+      }
       crctable=PrepareTable()
       crc32= lambda crctable (buf$) -> {
                 crc =0xFFFFFFFF
                 For i = 0 To Len(buf$) -1
                      crc = binary.xor(binary.shift(crc, -8), array(crctable, binary.xor(binary.and(crc, 0xff), asc(mid$(buf$, i+1, 1)))))
                 Next i
-                =0xFFFFFFFF-crc       
+                =0xFFFFFFFF-crc
       }
       Print crc32("The quick brown fox jumps over the lazy dog")=0x414fa339
 }
@@ -1800,7 +1800,7 @@ myCRC32~update(BsfRawBytes(toBeEncoded))
 numeric digits 20
 say 'The CRC-32 value of "'toBeEncoded'" is:' myCRC32~getValue~d2x
 
-::requires "BSF.CLS"    -- get Java bridge      
+::requires "BSF.CLS"    -- get Java bridge
 ```
 
 {{out}}
@@ -1863,15 +1863,15 @@ The checksum is 414fa339
 
 
 
-###  Call to native function crc32 in zlib 
+###  Call to native function crc32 in zlib
 
 
 
 ```perl6
 use NativeCall;
- 
+
 sub crc32(int32 $crc, Buf $buf, int32 $len --> int32) is native('z') { * }
- 
+
 my $buf = 'The quick brown fox jumps over the lazy dog'.encode;
 say crc32(0, $buf, $buf.bytes).fmt('%08x');
 ```
@@ -1887,7 +1887,7 @@ The libary name "z" resolves to <tt>/usr/lib/libz.so</tt> on a typical Linux sys
 
 
 
-###  Pure Perl 6 
+###  Pure Perl 6
 
 
 A fairly generic implementation with no regard to execution speed:
@@ -2114,10 +2114,10 @@ printf("%x\n", crc32("The quick brown fox jumps over the lazy dog"));
 The quick brown fox jumps over the lazy dog       CRC_32=414FA339
                                                  decimal 1095738169
 Generate CRC32 Checksum For Byte Array Example    CRC_32=D1370232
-                                                 decimal 3510043186 
+                                                 decimal 3510043186
 
 ```
-           
+
 
 
 ## PicoLisp
@@ -2135,7 +2135,7 @@ Library and implementation.
                   (x| (>> 1 N) `(hex "EDB88320"))
                   (>> 1 N) ) ) ) )
       (range 0 255) ) )
- 
+
 (de crc32 (Lst)
    (let Crc `(hex "FFFFFFFF")
       (for I (chop Lst)
@@ -2146,12 +2146,12 @@ Library and implementation.
                   (inc (x| (& Crc 255) (char I))) )
                (>> 8 Crc) ) ) )
       (x| `(hex "FFFFFFFF") Crc) ) )
- 
+
 (let Str "The quick brown fox jumps over the lazy dog"
    (println (hex (crc32 Str)))
    (println
       (hex (native "libz.so" "crc32" 'N 0 Str (length Str))) ) )
- 
+
 (bye)
 ```
 
@@ -2291,7 +2291,7 @@ def crc_update(buf, crc):
     for k in buf:
         crc = (crc >> 8) ^ crc_table[(crc & 0xff) ^ k]
     return crc ^ 0xffffffff
-    
+
 crc_table = create_table()
 print(hex(crc_update(b"The quick brown fox jumps over the lazy dog", 0)))
 ```
@@ -2839,26 +2839,26 @@ With the same input data, it produces identical output.
 ```VAX Assembly
                            EDB88320  0000     1 poly:   .long   ^xedb88320                      ;crc32
                            00000044  0004     2 table:  .blkl   16
-                                     0044     3 
+                                     0044     3
          4C 58 21 0000004C'010E0000' 0044     4 fmt:    .ascid  "!XL"                           ;result format
 36 35 34 33 32 31 00000057'010E0000' 004F     5 result: .ascid  "12345678"                      ; and buffer
-                              38 37  005D       
+                              38 37  005D
                                0000  005F     6 .entry  crc,0
                          A0 AF   7F  0061     7         pushaq  table                           ;fill table
                          99 AF   DF  0064     8         pushal  poly                            ; for
               00000000'GF   02   FB  0067     9         calls   #2, g^lib$crc_table             ;  crc opcode
       2B'  FFFFFFFF 8F   93 AF   0B  006E    10         crc     table, #-1, s^#len, b^msg       ;table,init,len,string
-                         98'AF       0077       
+                         98'AF       0077
                        50   50   D2  0079    11         mcoml   r0, r0                          ;invert result
                                      007C    12         $fao_s	ctrstr = fmt, outbuf = result, p1 = r0 ; format
                          BF AF   7F  008D    13 	pushaq	result				;and show
               00000000'GF   01   FB  0090    14         calls   #1, g^lib$put_output            ;  result 414fa339
                                  04  0097    15         ret
-                                     0098    16 
+                                     0098    16
 72 62 20 6B 63 69 75 71 20 65 68 54  0098    17 msg:    .ascii  "The quick brown fox jumps over the lazy dog"
-70 6D 75 6A 20 78 6F 66 20 6E 77 6F  00A4       
-6C 20 65 68 74 20 72 65 76 6F 20 73  00B0       
-               67 6F 64 20 79 7A 61  00BC       
+70 6D 75 6A 20 78 6F 66 20 6E 77 6F  00A4
+6C 20 65 68 74 20 72 65 76 6F 20 73  00B0
+               67 6F 64 20 79 7A 61  00BC
                            0000002B  00C3    18 len = .-msg
                                      00C3    19 .end	crc
 ```
@@ -2884,7 +2884,7 @@ Sub Main()
 Dim s As String
 Dim b() As Byte
 Dim l As Long
-  
+
   s = "The quick brown fox jumps over the lazy dog"
   b() = StrConv(s, vbFromUnicode) 'convert Unicode to ASCII
   l = RtlComputeCrc32(0&, b(0), Len(s))

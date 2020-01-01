@@ -14,11 +14,11 @@ tags = []
 
 {{task heading}}
 
-Write a program to find the   [[wp:Median|median]]   value of a vector of floating-point numbers. 
+Write a program to find the   [[wp:Median|median]]   value of a vector of floating-point numbers.
 
 The program need not handle the case where the vector is empty, but ''must'' handle the case where there are an even number of elements.   In that case, return the average of the two middle values.
 
-There are several approaches to this.   One is to sort the elements, and then pick the element(s) in the middle. 
+There are several approaches to this.   One is to sort the elements, and then pick the element(s) in the middle.
 
 Sorting would take at least   <big><span style="font-family: serif">O(''n'' log''n'')</span></big>.   Another approach would be to build a priority queue from the elements, and then extract half of the elements to get to the middle element(s).   This would also take   <big><span style="font-family: serif">O(''n'' log''n'')</span></big>.   The best solution is to use the   [[wp:Selection algorithm|selection algorithm]]   to find the median in   <big><span style="font-family: serif">O(''n'')</span></big>   time.
 
@@ -74,20 +74,20 @@ begin
             if f(j) < min_val then
                 min_idx := j;
                 min_val := f(j);
-            end if;                
+            end if;
         end loop;
         swap := f(i); f(i) := f(min_idx); f(min_idx) := swap;
-    end loop;      
+    end loop;
 
     if f'length mod 2 /= 0 then
         median_val := f( f'length/2+1 );
     else
         median_val := ( f(f'length/2) + f(f'length/2+1) ) / 2.0;
     end if;
-    
+
     Ada.Text_IO.Put( "Median value: " );
     Ada.Float_Text_IO.Put( median_val );
-    Ada.Text_IO.New_line;    
+    Ada.Text_IO.New_line;
 end FindMedian;
 ```
 
@@ -97,13 +97,13 @@ end FindMedian;
 {{trans|C}}
 ```algol68
 INT max_elements = 1000000;
- 
+
 # Return the k-th smallest item in array x of length len #
 PROC quick_select = (INT k, REF[]REAL x) REAL:
    BEGIN
 
       PROC swap = (INT a, b) VOID:
-         BEGIN 
+         BEGIN
 	    REAL t = x[a];
 	    x[a] := x[b]; x[b] := t
          END;
@@ -112,12 +112,12 @@ PROC quick_select = (INT k, REF[]REAL x) REAL:
       INT pos, i;
       REAL pivot;
 
-      WHILE left < right DO 
+      WHILE left < right DO
 	 pivot := x[k];
 	 swap (k, right);
 	 pos := left;
 	 FOR i FROM left TO right DO
-	    IF x[i] < pivot THEN 
+	    IF x[i] < pivot THEN
 	       swap (i, pos);
 	       pos +:= 1
 	    FI
@@ -132,11 +132,11 @@ break:
       SKIP;
       x[k]
    END;
- 
+
  # Initialize random length REAL array with random doubles #
  INT length = ENTIER (next random * max_elements);
  [length]REAL x;
- FOR i TO length DO 
+ FOR i TO length DO
     x[i] := (next random * 1e6 - 0.5e6)
  OD;
 
@@ -151,7 +151,7 @@ break:
 
  # Sanity testing of median #
  INT less := 0, more := 0, eq := 0;
- FOR i TO length DO 
+ FOR i TO length DO
     IF x[i] < median THEN less +:= 1
     ELIF x[i] > median THEN more +:= 1
     ELSE eq +:= 1
@@ -196,7 +196,7 @@ median←{v←⍵[⍋⍵]⋄.5×v[⌈¯1+.5×⍴v]+v[⌊.5×⍴v]} ⍝ Assumes �
 
 First, the input vector ⍵ is sorted with ⍵[⍋⍵] and the result placed in v. If the dimension ⍴v of v is odd, then both ⌈¯1+.5×⍴v and ⌊.5×⍴v give the index of the middle element. If ⍴v is even, ⌈¯1+.5×⍴v and ⌊.5×⍴v give the indices of the two middle-most elements. In either case, the average of the elements at these indices gives the median.
 
-Note that the index origin ⎕IO is assumed zero. To set it to zero use: 
+Note that the index origin ⎕IO is assumed zero. To set it to zero use:
 ```APL
 ⎕IO←0
 ```
@@ -235,7 +235,7 @@ median 4.1 7.2 1.7 9.3 4.4 3.2
 ```
 
 
-Caveats: To keep it simple, no input validation is done. If you input a vector with zero elements (e.g., ⍳0), you get an INDEX ERROR. If you input a vector with 1 element, you get a RANK ERROR. Only (rank 1) numeric vectors of dimension 2 or more are supported. If you input a (rank 2 or more) matrix, you get a RANK ERROR. If you input a string (vector of chars), you get a DOMAIN ERROR: 
+Caveats: To keep it simple, no input validation is done. If you input a vector with zero elements (e.g., ⍳0), you get an INDEX ERROR. If you input a vector with 1 element, you get a RANK ERROR. Only (rank 1) numeric vectors of dimension 2 or more are supported. If you input a (rank 2 or more) matrix, you get a RANK ERROR. If you input a string (vector of chars), you get a DOMAIN ERROR:
 
 
 ```txt
@@ -265,7 +265,7 @@ set alist to {1, 2, 3, 4, 5, 6, 7, 8}
 set med to medi(alist)
 
 on medi(alist)
-    
+
     set temp to {}
     set lcount to count every item of alist
     if lcount is equal to 2 then
@@ -281,29 +281,29 @@ on medi(alist)
         set med to medi(temp)
     end if
     return med
-    
+
 end medi
 
 on findmin(alist)
-    
+
     set min to 1
     set alength to count every item of alist
     repeat with x from 1 to alength
         if item x of alist is less than item min of alist then set min to x
     end repeat
     return min
-    
+
 end findmin
 
 on findmax(alist)
-    
+
     set max to 1
     set alength to count every item of alist
     repeat with x from 1 to alength
         if item x of alist is greater than item max of alist then set max to x
     end repeat
     return max
-    
+
 end findmax
 ```
 
@@ -325,13 +325,13 @@ on median(xs)
         on |λ|(xxs, n)
             if length of xxs > 0 then
                 set {x, xs} to uncons(xxs)
-                
+
                 script belowX
                     on |λ|(y)
                         y < x
                     end |λ|
                 end script
-                
+
                 set {ys, zs} to partition(belowX, xs)
                 set k to length of ys
                 if k = n then
@@ -348,7 +348,7 @@ on median(xs)
             end if
         end |λ|
     end script
-    
+
     set n to length of xs
     if n > 0 then
         tell nth
@@ -365,14 +365,14 @@ end median
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     map(median, [¬
         [], ¬
         [5, 3, 4], ¬
         [5, 4, 2, 3], ¬
         [3, 4, 1, -8.4, 7.2, 4, 1, 1.2]])
-    
-    --> {missing value, 4, 3.5, 2.1}    
+
+    --> {missing value, 4, 3.5, 2.1}
 end run
 
 -- GENERIC FUNCTIONS ----------------------------------------------------------
@@ -389,7 +389,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -551,8 +551,8 @@ function showD(p,   i) {
 
 
 Example output:
- Before: 3 4 1 -8.4 7.2 4 1 1.2 
- Sorted: -8.4 1 1 1.2 3 4 4 7.2 
+ Before: 3 4 1 -8.4 7.2 4 1 1.2
+ Sorted: -8.4 1 1 1.2 3 4 4 7.2
  Median: 2.100000
 
 
@@ -704,10 +704,10 @@ Each number is packaged in a little list and these lists are accumulated in a su
 ```
 
 
-  
+
 
 ```txt
- median$" 4.1 4 1.2 6.235 7868.33"      
+ median$" 4.1 4 1.2 6.235 7868.33"
  41/10
 
  median$"4.4, 2.3, -1.7, 7.5, 6.6, 0.0, 1.9, 8.2, 9.3, 4.5"
@@ -725,8 +725,8 @@ Each number is packaged in a little list and these lists are accumulated in a su
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct floatList {
@@ -764,13 +764,13 @@ int main()
 
 Average O(n) time:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
- 
+
 #define MAX_ELEMENTS 1000000
- 
+
 /* Return the k-th smallest item in array x of length len */
 double quick_select(int k, double *x, int len)
 {
@@ -779,11 +779,11 @@ double quick_select(int k, double *x, int len)
       double t = x[a];
       x[a] = x[b], x[b] = t;
    }
- 
+
    int left = 0, right = len - 1;
    int pos, i;
    double pivot;
- 
+
    while (left < right)
    {
       pivot = x[k];
@@ -803,12 +803,12 @@ double quick_select(int k, double *x, int len)
    }
    return x[k];
 }
- 
+
 int main(void)
 {
    int i, length;
    double *x, median;
- 
+
    /* Initialize random length double array with random doubles */
    srandom(time(0));
    length = random() % MAX_ELEMENTS;
@@ -819,17 +819,17 @@ int main(void)
       // divide by a random number for floating point
       x[i] = (double)(random() - RAND_MAX / 2) / (random() + 1); // + 1 to not divide by 0
    }
- 
+
 
    if (length % 2 == 0) // Even number of elements, median is average of middle two
    {
       median = (quick_select(length / 2, x, length) + quick_select(length / 2 - 1, x, length / 2)) / 2;
-   } 
+   }
    else // select middle element
    {
       median = quick_select(length / 2, x, length);
    }
- 
+
 
    /* Sanity testing of median */
    int less = 0, more = 0, eq = 0;
@@ -864,8 +864,8 @@ median: 0.000473
 
 This function runs in linear time on average.
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 
 // inputs must be random-access iterators of doubles
 // Note: this function modifies the input range
@@ -1099,7 +1099,7 @@ def median(list) {
 
 
 <lang>func quickselect k . list#[] res# .
-  # 
+  #
   subr partition
     swap list#[(left + right) / 2] list#[left]
     mid = left
@@ -1153,7 +1153,7 @@ print med#
 
 
 ## EchoLisp
- 
+
 
 ```scheme
 
@@ -1178,15 +1178,15 @@ print med#
 
 
 ## Elena
- 
+
 ELENA 4.1 :
 
 ```elena
 import system'routines;
 import system'math;
 import extensions;
- 
-extension op 
+
+extension op
 {
     get Median()
     {
@@ -1194,32 +1194,32 @@ extension op
 
         var len := sorted.Length;
         if (len == 0)
-        { 
-            ^ nil 
+        {
+            ^ nil
         }
         else
         {
             var middleIndex := len / 2;
             if (len.mod:2 == 0)
-            { 
-                ^ (sorted[middleIndex - 1] + sorted[middleIndex]) / 2 
+            {
+                ^ (sorted[middleIndex - 1] + sorted[middleIndex]) / 2
             }
             else
-            { 
-                ^ sorted[middleIndex] 
+            {
+                ^ sorted[middleIndex]
             }
         }
     }
-}    
+}
 
 public program()
 {
     var a1 := new real[]::(4.1r, 5.6r, 7.2r, 1.7r, 9.3r, 4.4r, 3.2r);
     var a2 := new real[]::(4.1r, 7.2r, 1.7r, 9.3r, 4.4r, 3.2r);
-    
+
     console.printLine("median of (",a1,") is ",a1.Median);
     console.printLine("median of (",a2,") is ",a2.Median);
-    
+
     console.readChar()
 }
 ```
@@ -1248,9 +1248,9 @@ defmodule Average do
     mid = div(len, 2)
     if rem(len,2) == 0, do: (Enum.at(sorted, mid-1) + Enum.at(sorted, mid)) / 2,
                       else: Enum.at(sorted, mid)
-  end 
+  end
 end
- 
+
 median = fn list -> IO.puts "#{inspect list} => #{inspect Average.median(list)}" end
 median.([])
 Enum.each(1..6, fn i ->
@@ -1276,7 +1276,7 @@ end)
 
 
 ## Erlang
- 
+
 
 ```erlang
 -module(median).
@@ -1350,10 +1350,10 @@ v. Moreover it can search for the p median, not only the p=0.5 median.
 
 >type median
  function median (x, v: none, p)
- 
+
  ## Default for v : none
  ## Default for p : 0.5
- 
+
      m=rows(x);
      if m>1 then
          y=zeros(m,1);
@@ -1369,20 +1369,20 @@ v. Moreover it can search for the p median, not only the p=0.5 median.
              i=1+p*(ns-1); i0=floor(i);
              vs=cumsum(vsh);
              loop 1 to n
-                 if vs[#]>i0 then 
-                     return xs[#]; 
+                 if vs[#]>i0 then
+                     return xs[#];
                  elseif vs[#]+1>i0 then
-                     k=#+1; 
-                     repeat; 
-                         if vsh[k]>0 or k>n then break; endif; 
+                     k=#+1;
+                     repeat;
+                         if vsh[k]>0 or k>n then break; endif;
                          k=k+1;
                      end;
-                     return (1-(i-i0))*xs[#]+(i-i0)*xs[k]+0; 
+                     return (1-(i-i0))*xs[#]+(i-i0)*xs[k]+0;
                  endif;
              end;
              return xs[n];
          else
-             xs=sort(x); 
+             xs=sort(x);
              n=cols(x);
              i=1+p*(n-1); i0=floor(i);
              if i0==n then return xs[n]; endif;
@@ -1471,15 +1471,15 @@ The output for the first expression, for any 10 numbers is
 
 <lang>
 23	11,5
-21	
-12	
-3	
-19	
-7	
-23	
-11	
-9	
-0	
+21
+12
+3
+19
+7
+23
+11
+9
+0
 
 ```
 
@@ -1489,21 +1489,21 @@ Median of Medians algorithm implementation
 
 ```fsharp
 
-let rec splitToFives list = 
+let rec splitToFives list =
     match list with
         | a::b::c::d::e::tail ->
             ([a;b;c;d;e])::(splitToFives tail)
         | [] -> []
-        | _ -> 
+        | _ ->
                 let left = 5 - List.length (list)
                 let last = List.append list (List.init left (fun _ -> System.Double.PositiveInfinity) )
                 in [last]
 
 let medianFromFives =
     List.map ( fun (i:float list) ->
-        List.nth (List.sort i) 2 ) 
+        List.nth (List.sort i) 2 )
 
-let start l = 
+let start l =
     let rec magicFives list k =
         if List.length(list) <= 10 then
             List.nth (List.sort list) (k-1)
@@ -1514,7 +1514,7 @@ let start l =
             let (ll,lg) = List.partition ( fun i -> i < m ) list
             let (le,lg) = List.partition ( fun i -> i = m ) lg
             in
-               if (List.length ll >= k) then 
+               if (List.length ll >= k) then
                     magicFives ll k
                else if (List.length ll + List.length le >= k ) then m
                else
@@ -1615,7 +1615,7 @@ defer lessthan ( a@ b@ -- ? )   ' < is lessthan
     over midpoint <= if drop rot drop swap ( r2 r ) else
     2drop 2drop exit then then
   repeat 2drop ;
-  
+
 : median ( array len -- m )
   1- cells over +  2dup mid to midpoint
   select           midpoint @ ;
@@ -1683,11 +1683,11 @@ end program Median_Test
 ```
 
 
-If one refers to [[Quickselect_algorithm#Fortran]] which offers function FINDELEMENT(K,A,N) that returns the value of A(K) when the array of N elements has been rearranged if necessary so that A(K) is the K'th in order, then, supposing that a version is devised using the appropriate type for array A, 
+If one refers to [[Quickselect_algorithm#Fortran]] which offers function FINDELEMENT(K,A,N) that returns the value of A(K) when the array of N elements has been rearranged if necessary so that A(K) is the K'th in order, then, supposing that a version is devised using the appropriate type for array A,
 ```Fortran
       K = N/2
       MEDIAN = FINDELEMENT(K + 1,A,N)
-      IF (MOD(N,2).EQ.0) MEDIAN = (FINDELEMENT(K,A,N) + MEDIAN)/2 
+      IF (MOD(N,2).EQ.0) MEDIAN = (FINDELEMENT(K,A,N) + MEDIAN)/2
 ```
 
 As well as returning a result, the function possibly re-arranges the elements of the array, which is not "pure" behaviour. Not to the degree of fully sorting them, merely that all elements before K are not larger than A(K) as it now is, and all elements after K are not smaller than A(K).
@@ -1701,10 +1701,10 @@ As well as returning a result, the function possibly re-arranges the elements of
 
 Sub quicksort(a() As Double, first As Integer, last As Integer)
   Dim As Integer length = last - first + 1
-  If length < 2 Then Return 
+  If length < 2 Then Return
   Dim pivot As Double = a(first + length\ 2)
-  Dim lft As Integer = first 
-  Dim rgt As Integer = last 
+  Dim lft As Integer = first
+  Dim rgt As Integer = last
   While lft <= rgt
     While a(lft) < pivot
       lft +=1
@@ -1716,7 +1716,7 @@ Sub quicksort(a() As Double, first As Integer, last As Integer)
        Swap a(lft), a(rgt)
        lft += 1
        rgt -= 1
-    End If 
+    End If
   Wend
   quicksort(a(), first, rgt)
   quicksort(a(), lft, last)
@@ -1733,11 +1733,11 @@ Function median(a() As Double) As Double
   Return (a(mb) + a(mb + 1))/2.0
 End Function
 
-Dim a(0 To 9) As Double = {4.4, 2.3, -1.7, 7.5, 6.6, 0.0, 1.9, 8.2, 9.3, 4.5} 
+Dim a(0 To 9) As Double = {4.4, 2.3, -1.7, 7.5, 6.6, 0.0, 1.9, 8.2, 9.3, 4.5}
 quicksort(a(), 0, 9)
 Print "Median for all 10 elements  : "; median(a())
 ' now get rid of final element
-Dim b(0 To 8) As Double = {4.4, 2.3, -1.7, 7.5, 6.6, 0.0, 1.9, 8.2, 9.3} 
+Dim b(0 To 8) As Double = {4.4, 2.3, -1.7, 7.5, 6.6, 0.0, 1.9, 8.2, 9.3}
 quicksort(b(), 0, 8)
 Print "Median for first 9 elements : "; median(b())
 Print
@@ -1761,7 +1761,7 @@ Median for first 9 elements :  4.4
 
 
 ```gap
-Median := function(v) 
+Median := function(v)
   local n, w;
   w := SortedList(v);
   n := Length(v);
@@ -1769,7 +1769,7 @@ Median := function(v)
 end;
 
 a := [41, 56, 72, 17, 93, 44, 32];
-b := [41, 72, 17, 93, 44, 32];     
+b := [41, 72, 17, 93, 44, 32];
 
 Median(a);
 # 44
@@ -1813,7 +1813,7 @@ func median(a []float64) float64 {
 ### Partial selection sort
 
 
-The task description references the WP entry for "selection algorithm" which (as of this writing) gives just one pseudocode example, which is implemented here.  As the WP article notes, it is O(kn).  
+The task description references the WP entry for "selection algorithm" which (as of this writing) gives just one pseudocode example, which is implemented here.  As the WP article notes, it is O(kn).
 Unfortunately in the case of median, k is n/2 so the algorithm is O(n^2).  Still, it gives the idea of median by selection.  Note that the partial selection sort does leave the k smallest values sorted, so in the case of an even number of elements, the two elements to average are available after a single call to sel().
 
 
@@ -1925,7 +1925,7 @@ def median(Iterable col) {
     def n = s.size()
     def m = n.intdiv(2)
     def l = s.collect { it }
-    n%2 == 1 ? l[m] : (l[m] + l[m-1])/2 
+    n%2 == 1 ? l[m] : (l[m] + l[m-1])/2
 }
 ```
 
@@ -2149,7 +2149,7 @@ function median(ary) {
     var mid = Math.floor(ary.length / 2);
     if ((ary.length % 2) == 1)  // length is odd
         return ary[mid];
-    else 
+    else
         return (ary[mid - 1] + ary[mid]) / 2;
 }
 
@@ -2177,7 +2177,7 @@ Using a quick select algorithm
         // nth :: [Num] -> Int -> Maybe Num
         let nth = (xxs, n) => {
                 if (xxs.length > 0) {
-                    let [x, xs] = uncons(xxs), 
+                    let [x, xs] = uncons(xxs),
                         [ys, zs] = partition(y => y < x, xs),
                         k = ys.length;
 
@@ -2245,16 +2245,16 @@ def median:
   length as $length
   | sort as $s
   | if $length == 0 then null
-    else ($length / 2 | floor) as $l2 
+    else ($length / 2 | floor) as $l2
       | if ($length % 2) == 0 then
           ($s[$l2 - 1] + $s[$l2]) / 2
         else $s[$l2]
         end
   end ;
 ```
-This definition can be used in a jq program, but to  illustrate how it can be used as a command line filter, suppose the definition and the program '''median''' are in a file named median.jq, and that the file in.dat contains a sequence of arrays, such as 
+This definition can be used in a jq program, but to  illustrate how it can be used as a command line filter, suppose the definition and the program '''median''' are in a file named median.jq, and that the file in.dat contains a sequence of arrays, such as
 ```sh
-[4.1, 5.6, 7.2, 1.7, 9.3, 4.4, 3.2] 
+[4.1, 5.6, 7.2, 1.7, 9.3, 4.4, 3.2]
 [4.1, 7.2, 1.7, 9.3, 4.4, 3.2]
 ```
 Then invoking the jq program yields a stream of values:
@@ -2285,7 +2285,7 @@ end
 a = [4.1, 5.6, 7.2, 1.7, 9.3, 4.4, 3.2]
 b = [4.1, 7.2, 1.7, 9.3, 4.4, 3.2]
 
-@show a b median2(a) median(a) median2(b) median(b) 
+@show a b median2(a) median(a) median2(b) median(b)
 ```
 
 
@@ -2352,7 +2352,7 @@ fun main(args: Array<String>) {
 
 ## Lasso
 
-can't use Lasso's built in median method because 
+can't use Lasso's built in median method because
 that takes 3 values, not an array of indeterminate length
 
 Lasso's built in function is "median( value_1, value_2, value_3 )"
@@ -2506,7 +2506,7 @@ function median2 x
     end if
 end median2
 
-returns the same as the built-in median, viz. 
+returns the same as the built-in median, viz.
 put median2("4.1,5.6,7.2,1.7,9.3,4.4,3.2") & "," & median2("4.1,7.2,1.7,9.3,4.4,3.2")
 4.4,4.25
 ```
@@ -2581,7 +2581,7 @@ print(median({4.1, 7.2, 1.7, 9.3, 4.4, 3.2}))
 ## Maple
 
 
-###  Builtin 
+###  Builtin
 
 This works for numeric lists or arrays, and is designed for large data sets.
 
@@ -2596,7 +2596,7 @@ This works for numeric lists or arrays, and is designed for large data sets.
 ```
 
 
-###  Using a sort 
+###  Using a sort
 
 This solution can handle exact numeric inputs.  Instead of inputting a container of some kind, it simply finds the median of its arguments.
 
@@ -2670,7 +2670,7 @@ mymedian[{1, 5, 3, 6, 4, 2}]
 If the input has an even number of elements, function returns the mean of the middle two values:
 
 ```Matlab
-function medianValue = findmedian(setOfValues)    
+function medianValue = findmedian(setOfValues)
    medianValue = median(setOfValues);
 end
 ```
@@ -2780,18 +2780,18 @@ class RAvgMedian00 public
     run_samples()
     return
 
--- 
+--
 ### =======================================================================
 
 class RAvgMedian00.RexxComparator implements Comparator
 
   -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  method compare(i1=Object, i2=Object) public returns int 
-    i = Rexx i1 
-    j = Rexx i2 
+  method compare(i1=Object, i2=Object) public returns int
+    i = Rexx i1
+    j = Rexx i2
 
-    if i < j then return -1 
-    if i > j then return +1 
+    if i < j then return -1
+    if i > j then return +1
     else return 0
 
 ```
@@ -2872,12 +2872,12 @@ Sample output:
 
 ```nim
 import algorithm, strutils
- 
+
 proc median(xs: seq[float]): float =
   var ys = xs
   sort(ys, system.cmp[float])
-  0.5 * (ys[ys.high div 2] + ys[ys.len div 2]) 
- 
+  0.5 * (ys[ys.high div 2] + ys[ys.len div 2])
+
 var a = @[4.1, 5.6, 7.2, 1.7, 9.3, 4.4, 3.2]
 echo formatFloat(median(a), precision = 0)
 a = @[4.1, 7.2, 1.7, 9.3, 4.4, 3.2]
@@ -2898,7 +2898,7 @@ MODULE Median;
 IMPORT Out;
 CONST
 	MAXSIZE = 100;
-	
+
 PROCEDURE Partition(VAR a: ARRAY OF REAL; left, right: INTEGER): INTEGER;
 VAR
 	pValue,aux: REAL;
@@ -2908,7 +2908,7 @@ BEGIN
 	pValue := a[pivot];
 	aux := a[right];a[right] := a[pivot];a[pivot] := aux; (* a[pivot] <-> a[right] *)
 	store := left;
-	FOR i := left TO right -1 DO 
+	FOR i := left TO right -1 DO
 		IF a[i] <= pValue THEN
 			aux := a[store];a[store] := a[i];a[i]:=aux;
 			INC(store)
@@ -2959,12 +2959,12 @@ BEGIN
 	ary[0] := 5;
 	ary[1] := 3;
 	ary[2] := 4;
-	Out.Fixed(Median(ary,0,2),4,2);Out.Ln;	
+	Out.Fixed(Median(ary,0,2),4,2);Out.Ln;
 	ary[0] := 5;
 	ary[1] := 4;
 	ary[2] := 2;
 	ary[3] := 3;
-	Out.Fixed(Median(ary,0,3),4,2);Out.Ln;	
+	Out.Fixed(Median(ary,0,3),4,2);Out.Ln;
 	ary[0] := 3;
 	ary[1] := 4;
 	ary[2] := 1;
@@ -2973,7 +2973,7 @@ BEGIN
 	ary[5] := 4;
 	ary[6] := 1;
 	ary[7] := 1.2;
-	Out.Fixed(Median(ary,0,7),4,2);Out.Ln;	
+	Out.Fixed(Median(ary,0,7),4,2);Out.Ln;
 END Median.
 
 ```
@@ -3015,14 +3015,14 @@ bundle Default {
       else if(numbers->Size() = 1) {
         return numbers->Get(0);
       };
-      
+
       numbers->Sort();
 
       i := numbers->Size() / 2;
       if(numbers->Size() % 2 = 0) {
-        return (numbers->Get(i - 1) + numbers->Get(i)) / 2.0;              
+        return (numbers->Get(i - 1) + numbers->Get(i)) / 2.0;
       };
-      
+
       return numbers->Get(i);
     }
   }
@@ -3074,7 +3074,7 @@ b = [4.1, 7.2, 1.7, 9.3, 4.4, 3.2];
 
 disp(median2(a))   % 4.4
 disp(median(a))
-disp(median2(b))   % 4.25   
+disp(median2(b))   % 4.25
 disp(median(b))
 ```
 
@@ -3195,7 +3195,7 @@ Program AveragesMedian(output);
 
 type
   TDoubleArray = array of double;
- 
+
 procedure bubbleSort(var list: TDoubleArray);
 var
   i, j, n: integer;
@@ -3254,9 +3254,9 @@ Output:
 
 ```txt
 % ./Median
- 28.207  74.916  51.695  72.486  51.118   3.241  73.807 
+ 28.207  74.916  51.695  72.486  51.118   3.241  73.807
 Median:  51.695
- 27.984  89.172   0.250  66.316  41.805  60.043 
+ 27.984  89.172   0.250  66.316  41.805  60.043
 Median:  50.924
 
 ```
@@ -3454,11 +3454,11 @@ function Measure-Data
 
         function Get-StandardDeviation ([double[]]$Data)
         {
-            $variance = 0            
+            $variance = 0
             $average  = $Data | Measure-Object -Average | Select-Object -Property Count, Average
 
             foreach ($number in $Data)
-            {            
+            {
                 $variance +=  [Math]::Pow(($number - $average.Average),2)
             }
 
@@ -3575,7 +3575,7 @@ Output:
 2.5
 
 ```
-    
+
 
 
 ## PureBasic
@@ -3747,7 +3747,7 @@ median: procedure; call eSORT arg(1);   m= # % 2    /*   %   is REXX's integer d
                         return (@.m + @.n) / 2      /*process an  even─element  vector. */
 ```
 
-{{out|output}} 
+{{out|output}}
 
 ```txt
 
@@ -3778,7 +3778,7 @@ see "medium : " + median(aList) + nl
 func median aray
      srtd = sort(aray)
      alen = len(srtd)
-     if alen % 2 = 0 
+     if alen % 2 = 0
         return (srtd[alen/2] + srtd[alen/2 + 1]) / 2.0
      else return srtd[ceil(alen/2)] ok
 
@@ -3832,7 +3832,7 @@ a$ ="4.1,7.2,1.7,9.3,4.4,3.2"		:gosub [median]
 a$ ="4.1,4,1.2,6.235,7868.33"  		:gosub [median]
 a$ ="1,5,3,2,4"       			:gosub [median]
 a$ ="1,5,3,6,4,2"       		:gosub [median]
-a$ ="4.4,2.3,-1.7,7.5,6.6,0.0,1.9,8.2,9.3,4.5"   :gosub [median]' 
+a$ ="4.4,2.3,-1.7,7.5,6.6,0.0,1.9,8.2,9.3,4.5"   :gosub [median]'
 end
 [median]
 #mem execute("DELETE FROM med")
@@ -3842,8 +3842,8 @@ for i = 1 to 100
 	mem$	= "INSERT INTO med values(";v$;")"
 	#mem execute(mem$)
 next i
-mem$ = "SELECT AVG(x) as median FROM (SELECT x FROM med 
-ORDER BY x LIMIT 2 - (SELECT COUNT(*) FROM med) % 2  
+mem$ = "SELECT AVG(x) as median FROM (SELECT x FROM med
+ORDER BY x LIMIT 2 - (SELECT COUNT(*) FROM med) % 2
 OFFSET (SELECT (COUNT(*) - 1) / 2
 FROM med))"
 
@@ -3914,7 +3914,7 @@ def median[T](s: Seq[T])(implicit n: Fractional[T]) = {
 ```
 
 
-This isn't really optimal. The methods <tt>splitAt</tt> and <tt>last</tt> are O(n/2) 
+This isn't really optimal. The methods <tt>splitAt</tt> and <tt>last</tt> are O(n/2)
 on many sequences, and then there's the lower bound imposed by the sort. Finally,
 we call <tt>size</tt> two times, and it can be O(n).
 
@@ -3947,9 +3947,9 @@ Using [http://srfi.schemers.org/srfi-95/srfi-95.html SRFI-95]:
 ```seed7
 $ include "seed7_05.s7i";
   include "float.s7i";
- 
+
 const type: floatList is array float;
- 
+
 const func float: median (in floatList: floats) is func
   result
     var float: median is 0.0;
@@ -3964,7 +3964,7 @@ const func float: median (in floatList: floats) is func
                        sortedFloats[succ(length(sortedFloats) div 2)]);
     end if;
   end func;
- 
+
 const proc: main is func
   local
     const floatList: flist1 is [] (5.1, 2.6, 6.2, 8.8, 4.6, 4.1);
@@ -4028,7 +4028,7 @@ OrderedCollection extend [
         ifFalse: [ |s l|
           l := self size.
           s := self asSortedCollection.
-	  (l rem: 2) = 0 
+	  (l rem: 2) = 0
 	    ifTrue: [ ^ ((s at: (l//2 + 1)) + (s at: (l//2))) / 2 ]
 	    ifFalse: [ ^ s at: (l//2 + 1) ]
 	]
@@ -4212,7 +4212,7 @@ End Sub
 {{out}}
 
 ```txt
- 3,5 
+ 3,5
 ```
 
 
@@ -4252,7 +4252,7 @@ Reg_Copy(10, 1)
 }
 ```
 
-Returns: 
+Returns:
 ```txt
 [2 3 2 3]
 ```
@@ -4269,7 +4269,7 @@ sub floor(x)
 end sub
 
 sub ceil(x)
-    if x > int(x) x = x + 1 
+    if x > int(x) x = x + 1
     return x
 end sub
 
@@ -4309,11 +4309,11 @@ END SUB
 
 sub median(numlist$)
     local numlist$(1), n
-    
+
     n = token(numlist$, numlist$(), ", ")
-    
+
     ASort$(numlist$())
-    
+
     if mod(n, 2) = 0 then return (val(numlist$(n / 2)) + val(numlist$(n / 2 + 1))) / 2 end if
     return val(numlist$(ceil(n / 2)))
 end sub
@@ -4344,7 +4344,7 @@ begin
 	pValue := a[pivot];
 	aux := a[right];a[right] := a[pivot];a[pivot] := aux; (* a[pivot] <-> a[right] *)
 	store := left;
-	for i := left to right -1 do 
+	for i := left to right -1 do
 		if a[i] <= pValue then
 			aux := a[store];a[store] := a[i];a[i]:=aux;
 			inc(store)

@@ -20,13 +20,13 @@ Reverse the order of all tokens in each of a number of strings and display the r
 <big><big><code>Hey you, Bub! </code></big></big>   would be shown reversed as:   <big><big><code> Bub! you, Hey </code></big></big>
 
 
-Tokens are any non-space characters separated by spaces (formally, white-space);   the visible punctuation form part of the word within which it is located and should not be modified. 
+Tokens are any non-space characters separated by spaces (formally, white-space);   the visible punctuation form part of the word within which it is located and should not be modified.
 
 You may assume that there are no significant non-visible characters in the input.   Multiple or superfluous spaces may be compressed into a single space.
 
 Some strings have no tokens, so an empty string   (or one just containing spaces)   would be the result.
 
-'''Display''' the strings in order   (1<sup>st</sup>, 2<sup>nd</sup>, 3<sup>rd</sup>, ···),   and one string per line. 
+'''Display''' the strings in order   (1<sup>st</sup>, 2<sup>nd</sup>, 3<sup>rd</sup>, ···),   and one string per line.
 
 (You can consider the ten strings as ten lines, and the tokens as words.)
 
@@ -65,20 +65,20 @@ Some strings have no tokens, so an empty string   (or one just containing spaces
 
 ===Simple_Parse===
 
-To Split a string into words, we define a Package "Simple_Parse". This package is also used for the Phrase Reversal Task [[http://rosettacode.org/wiki/Phrase_reversals#Ada]]. 
+To Split a string into words, we define a Package "Simple_Parse". This package is also used for the Phrase Reversal Task [[http://rosettacode.org/wiki/Phrase_reversals#Ada]].
 
 
 ```Ada
 package Simple_Parse is
    -- a very simplistic parser, useful to split a string into words
-   
-   function Next_Word(S: String; Point: in out Positive) 
+
+   function Next_Word(S: String; Point: in out Positive)
 		     return String;
    -- a "word" is a sequence of non-space characters
    -- if S(Point .. S'Last) holds at least one word W
-   -- then  Next_Word increments Point by len(W) and returns W. 
+   -- then  Next_Word increments Point by len(W) and returns W.
    -- else  Next_Word sets Point to S'Last+1 and returns ""
-      
+
 end Simple_Parse;
 ```
 
@@ -88,14 +88,14 @@ The implementation of "Simple_Parse":
 
 ```Ada
 package body Simple_Parse is
-   
+
    function Next_Word(S: String; Point: in out Positive) return String is
       Start: Positive := Point;
       Stop: Natural;
    begin
       while Start <= S'Last and then S(Start) = ' ' loop
 	 Start := Start + 1;
-      end loop; -- now S(Start) is the first non-space, 
+      end loop; -- now S(Start) is the first non-space,
 		-- or Start = S'Last+1 if S is empty or space-only
       Stop := Start-1; -- now S(Start .. Stop) = ""
       while Stop < S'Last and then S(Stop+1) /= ' ' loop
@@ -105,7 +105,7 @@ package body Simple_Parse is
       Point := Stop+1;
       return S(Start .. Stop);
    end Next_Word;
-      
+
 end Simple_Parse;
 ```
 
@@ -116,21 +116,21 @@ end Simple_Parse;
 
 
 ```Ada
-with Ada.Text_IO, Simple_Parse; 
+with Ada.Text_IO, Simple_Parse;
 
 procedure Reverse_Words is
-   
+
    function Reverse_Words(S: String) return String is
       Cursor: Positive := S'First;
       Word: String := Simple_Parse.Next_Word(S, Cursor);
    begin
-      if Word = "" then 
+      if Word = "" then
          return "";
       else
          return Reverse_Words(S(Cursor .. S'Last)) & " " & Word;
       end if;
    end Reverse_Words;
-   
+
    use Ada.Text_IO;
 begin
    while not End_Of_File loop
@@ -222,7 +222,7 @@ PROC reverse word order = ( STRING original phrase )STRING:
         OD;
         words reversed
      END # reverse word order # ;
- 
+
 # reverse the words in the lines as per the task #
 print( ( reverse word order ( "--------- Ice and Fire ------------ " ), newline ) );
 print( ( reverse word order ( "                                    " ), newline ) );
@@ -264,14 +264,14 @@ I hold with those who favor fire.
 on run
 
     unlines(map(reverseWords, |lines|("---------- Ice and Fire ------------
- 
+
 fire, in end will world the say Some
 ice. in say Some
 desire of tasted I've what From
 fire. favor who those with hold I
- 
+
 ... elided paragraph last ...
- 
+
 Frost Robert -----------------------")))
 
 end run
@@ -423,7 +423,7 @@ fire. favor who those with hold I
 
 ... elided paragraph last ...
 
-Frost Robert ----------------------- 
+Frost Robert -----------------------
 )"
 
 Loop, Parse, Data, `n, `r
@@ -542,7 +542,7 @@ call :reverse "fire. favor who those with hold I"
 call :reverse
 call :reverse "... elided paragraph last ..."
 call :reverse
-call :reverse "Frost Robert -----------------------" 
+call :reverse "Frost Robert -----------------------"
 echo.
 pause>nul
 exit
@@ -632,14 +632,14 @@ I hold with those who favor fire.
 
 ```bracmat
 ("---------- Ice and Fire ------------
-                                    
+
 fire, in end will world the say Some
-ice. in say Some                    
-desire of tasted I've what From     
-fire. favor who those with hold I   
-                                    
-... elided paragraph last ...       
-                                    
+ice. in say Some
+desire of tasted I've what From
+fire. favor who those with hold I
+
+... elided paragraph last ...
+
 Frost Robert -----------------------"
   : ?text
 & ( reverse
@@ -704,8 +704,8 @@ blsq ) "ice. in say some"wd<-wd
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <ctype.h>
 
 void rev_print(char *s, int n)
@@ -763,7 +763,7 @@ void block_reverse_cpp11(BidirectionalIterator first, BidirectionalIterator last
    auto block_last = first;
    do {
       using std::placeholders::_1;
-      auto block_first = std::find_if_not(block_last, last, 
+      auto block_first = std::find_if_not(block_last, last,
          std::bind(std::equal_to<T>(),_1, separator));
       block_last = std::find(block_first, last, separator);
       std::reverse(block_first, block_last);
@@ -776,7 +776,7 @@ void block_reverse_cpp03(BidirectionalIterator first, BidirectionalIterator last
    std::reverse(first, last);
    BidirectionalIterator block_last = first;
    do {
-      BidirectionalIterator block_first = std::find_if(block_last, last, 
+      BidirectionalIterator block_first = std::find_if(block_last, last,
          std::bind2nd(std::not_equal_to<T>(), separator));
       block_last = std::find(block_first, last, separator);
       std::reverse(block_first, block_last);
@@ -784,7 +784,7 @@ void block_reverse_cpp03(BidirectionalIterator first, BidirectionalIterator last
 }
 
 int main() {
-   std::string str1[] = 
+   std::string str1[] =
     {
         "---------- Ice and Fire ------------",
         "",
@@ -802,7 +802,7 @@ int main() {
       block_reverse_cpp11(begin(s), end(s), ' ');
       std::cout << s << std::endl;
    });
-   
+
    std::for_each(begin(str1), end(str1), [](std::string& s){
       block_reverse_cpp03(begin(s), end(s), ' ');
       std::cout << s << std::endl;
@@ -823,7 +823,7 @@ int main() {
 #include <string>
 #include <iostream>
 using namespace std;
- 
+
 string invertString( string s )
 {
     string st, tmp;
@@ -838,10 +838,10 @@ string invertString( string s )
     }
     return tmp + st;
 }
- 
+
 int main( int argc, char* argv[] )
 {
-    string str[] = 
+    string str[] =
     {
         "---------- Ice and Fire ------------",
         "",
@@ -856,7 +856,7 @@ int main( int argc, char* argv[] )
     };
     for( int i = 0; i < 10; i++ )
         cout << invertString( str[i] ) << "\n";
- 
+
     cout << "\n";
     return system( "pause" );
 }
@@ -903,16 +903,16 @@ public class ReverseWordsInString
 
 ```clojure
 
-(def poem 
+(def poem
   "---------- Ice and Fire ------------
- 
+
    fire, in end will world the say Some
-   ice. in say Some 
+   ice. in say Some
    desire of tasted I've what From
    fire. favor who those with hold I
- 
+
    ... elided paragraph last ...
- 
+
    Frost Robert -----------------------")
 
 (dorun
@@ -1040,7 +1040,7 @@ As JavaScript.
 
 ```lisp
 (defun split-and-reverse (str)
-  (labels 
+  (labels
     ((iter (s lst)
        (let ((s2 (string-trim '(#\space) s)))
          (if s2
@@ -1052,16 +1052,16 @@ As JavaScript.
                lst))))
   (iter str NIL)))
 
-(defparameter *poem* 
+(defparameter *poem*
   "---------- Ice and Fire ------------
-   
+
    fire, in end will world the say Some
-   ice. in say Some 
+   ice. in say Some
    desire of tasted I've what From
    fire. favor who those with hold I
- 
+
    ... elided paragraph last ...
- 
+
    Frost Robert -----------------------")
 
 (with-input-from-string (s *poem*)
@@ -1109,19 +1109,19 @@ Using a here-string input :
 
 (define S #<<
 ---------- Ice and Fire ------------
- 
-fire, in end will world the say Some 
-ice. in say Some             
-desire of tasted I've what From 
-fire. favor who those with hold I 
- 
-... elided paragraph last ... 
- 
+
+fire, in end will world the say Some
+ice. in say Some
+desire of tasted I've what From
+fire. favor who those with hold I
+
+... elided paragraph last ...
+
 Frost Robert -----------------------
 >>#)
-			
-(for-each writeln 
-    (for/list ((line (string-split S "\n"))) 
+
+(for-each writeln
+    (for/list ((line (string-split S "\n")))
         (string-join (reverse (string-split line " ")) " ")))
 
 ```
@@ -1130,16 +1130,16 @@ Frost Robert -----------------------
 
 ```txt
 
------------- Fire and Ice ----------    
-    
-Some say the world will end in fire,    
-Some say in ice.    
-From what I've tasted of desire    
-I hold with those who favor fire.    
-    
-... last paragraph elided ...    
-    
------------------------ Robert Frost    
+------------ Fire and Ice ----------
+
+Some say the world will end in fire,
+Some say in ice.
+From what I've tasted of desire
+I hold with those who favor fire.
+
+... last paragraph elided ...
+
+----------------------- Robert Frost
 
 ```
 
@@ -1152,7 +1152,7 @@ ELENA 4.1:
 ```elena
 import extensions;
 import system'routines;
- 
+
 public program()
 {
     var text := new string[]::("---------- Ice and Fire ------------",
@@ -1165,7 +1165,7 @@ public program()
                   "... elided paragraph last ...",
                   "",
                   "Frost Robert -----------------------");
- 
+
     text.forEach:(line)
     {
         line.splitBy:" ".sequenceReverse().forEach:(word)
@@ -1191,7 +1191,7 @@ defmodule RC do
                 |> Enum.reverse       # reverse words
                 |> Enum.join(" ")))   # rejoin words
         |> Enum.join("\n")          # rejoin lines
-  end 
+  end
 end
 ```
 
@@ -1200,14 +1200,14 @@ Usage:
 ```elixir
 txt = """
 ---------- Ice and Fire ------------
-                                    
+
 fire, in end will world the say Some
-ice. in say Some                    
-desire of tasted I've what From     
-fire. favor who those with hold I   
-                                    
-... elided paragraph last ...       
-                                    
+ice. in say Some
+desire of tasted I've what From
+fire. favor who those with hold I
+
+... elided paragraph last ...
+
 Frost Robert -----------------------
 """
 
@@ -1225,14 +1225,14 @@ IO.puts RC.reverse_words(txt)
 reversedPoem =
   String.trim """
     ---------- Ice and Fire ------------
-  
+
     fire, in end will world the say Some
     ice. in say Some
     desire of tasted I've what From
     fire. favor who those with hold I
-  
+
     ... elided paragraph last ...
-  
+
     Frost Robert -----------------------
     """
 
@@ -1242,7 +1242,7 @@ reverseWords string =
 reverseLinesWords string =
   string |> String.lines |> List.map reverseWords |> String.join "\n"
 
-poem = 
+poem =
   reverseLinesWords reversedPoem
 
 ```
@@ -1377,14 +1377,14 @@ reverse Frost Robert -----------------------
 Interpreted above code at the Forth console
 
 ```txt
-Some say the world will end in fire, 
-Some say in ice. 
-From what I've tasted of desire 
-I hold with those who favor fire. 
+Some say the world will end in fire,
+Some say in ice.
+From what I've tasted of desire
+I hold with those who favor fire.
 
-... last paragraph elided ... 
+... last paragraph elided ...
 
------------------------ Robert Frost 
+----------------------- Robert Frost
  ok
 ```
 
@@ -1392,7 +1392,7 @@ I hold with those who favor fire.
 
 ## Fortran
 
-Compiled using G95 on x86 system running Puppy Linux.  
+Compiled using G95 on x86 system running Puppy Linux.
 Fortran syntax is mostly Fortran 77.
 
 
@@ -1438,14 +1438,14 @@ where file frostPoem.txt contains the input text.
 
 
  ---------- Ice and Fire -----------     => ----------- Fire and Ice ----------
-                                         => 
+                                         =>
  fire, in end will world the say Some    => Some say the world will end in fire,
  ice. in say Some                        => Some say in ice.
  desire of tasted I've what From         => From what I've tasted of desire
  fire. favor who those with hold I       => I hold with those who favor fire.
-                                         => 
+                                         =>
  ... elided paragraph last ...           => ... last paragraph elided ...
-                                         => 
+                                         =>
  Frost Robert -----------------------    => ----------------------- Robert Frost
 
 
@@ -1460,7 +1460,7 @@ where file frostPoem.txt contains the input text.
 ' FB 1.05.0 Win64
 
 Sub split (s As String, sepList As String, result() As String, removeEmpty As Boolean = False)
-  If s = "" OrElse sepList = "" Then 
+  If s = "" OrElse sepList = "" Then
      Redim result(0)
      result(0) = s
      Return
@@ -1468,12 +1468,12 @@ Sub split (s As String, sepList As String, result() As String, removeEmpty As Bo
   Dim As Integer i, j, count = 0, empty = 0, length
   Dim As Integer position(Len(s) + 1)
   position(0) = 0
- 
+
   For i = 0 To len(s) - 1
     For j = 0 to Len(sepList) - 1
-      If s[i] = sepList[j] Then 
+      If s[i] = sepList[j] Then
         count += 1
-        position(count) = i + 1       
+        position(count) = i + 1
       End If
     Next j
   Next i
@@ -1485,9 +1485,9 @@ Sub split (s As String, sepList As String, result() As String, removeEmpty As Bo
   End If
 
   position(count + 1) = len(s) + 1
- 
-  For i = 1 To count + 1  
-    length = position(i) - position(i - 1) - 1 
+
+  For i = 1 To count + 1
+    length = position(i) - position(i - 1) - 1
     result(i - 1 - empty) = Mid(s, position(i - 1) + 1, length)
     If removeEmpty Andalso CBool(length = 0) Then empty += 1
   Next
@@ -1528,16 +1528,16 @@ Reversed String = Bub! you, Hey
 
 ```frink
 
-lines=split["\n", 
+lines=split["\n",
 """---------- Ice and Fire ------------
-                                       
+
 fire, in end will world the say Some
 ice. in say Some
 desire of tasted I've what From
 fire. favor who those with hold I
-                                  
- .. elided paragraph last ...  
-                                  
+
+ .. elided paragraph last ...
+
 Frost Robert -----------------------"""]
 
 for line = lines
@@ -1572,7 +1572,7 @@ sString[1] = "                                    "
 sString[2] = "fire, in end will world the say Some"
 sString[3] = "ice. in say Some                    "
 sString[4] = "desire of tasted I've what From     "
-sString[5] = "fire. favor who those with hold I   " 
+sString[5] = "fire. favor who those with hold I   "
 sString[6] = "                                    "
 sString[7] = "... elided paragraph last ...       "
 sString[8] = "                                    "
@@ -1580,15 +1580,15 @@ sString[9] = "Frost Robert -----------------------"
 
 For siCount0 = 0 To 9                                             'To work through each line of input text
   If Trim(sString[siCount0]) = "" Then sString[siCount0] = " "    'If the line is all spaces then make it 1 space
-  
+
   For Each sTemp In Split(Trim(sString[siCount0]), " ")           'Split the trimmed line by spaces
     sLine.Add(sTemp)                                              'Add each word to the sLine array
   Next
-  
+
   For siCount1 = sLine.max DownTo 0                               'Loop from the last in the sLine array to 0
     sReverse &= sLine[siCount1] & " "                             'Fill sReverse with words reversed, adding a space
   Next
-  
+
   sOutput &= Trim(sReverse) & gb.NewLine                          'Add the reversed words to sOutput and add a newline
   sReverse = ""                                                   'Clear sReverse
   sLine.Clear                                                     'Clear sLine array
@@ -1704,14 +1704,14 @@ text.eachLine { line ->
 
 ```txt
 ---------- Ice and Fire ------------   -->   ------------ Fire and Ice ----------
-                                       -->   
+                                       -->
 fire, in end will world the say Some   -->   Some say the world will end in fire,
 ice. in say Some                       -->   Some say in ice.
 desire of tasted I've what From        -->   From what I've tasted of desire
 fire. favor who those with hold I      -->   I hold with those who favor fire.
-                                       -->   
+                                       -->
 ... elided paragraph last ...          -->   ... last paragraph elided ...
-                                       -->   
+                                       -->
 Frost Robert -----------------------   -->   ----------------------- Robert Frost
 ```
 
@@ -1773,16 +1773,16 @@ end
 ```txt
 
 ->rw <rw.in
------------- Fire and Ice ----------  
- 
-Some say the world will end in fire,  
-Some say in ice.  
-From what I've tasted of desire  
-I hold with those who favor fire.  
- 
-... last paragraph elided ...  
- 
------------------------ Robert Frost  
+------------ Fire and Ice ----------
+
+Some say the world will end in fire,
+Some say in ice.
+From what I've tasted of desire
+I hold with those who favor fire.
+
+... last paragraph elided ...
+
+----------------------- Robert Frost
 ->
 
 ```
@@ -1808,16 +1808,16 @@ Treated interactively:
 
   Frost Robert -----------------------
 )
- ------------ Fire and Ice ----------  
-                                       
- Some say the world will end in fire,  
- Some say in ice.                      
- From what I've tasted of desire       
- I hold with those who favor fire.     
-                                       
- ... last paragraph elided ...         
-                                       
- ----------------------- Robert Frost  
+ ------------ Fire and Ice ----------
+
+ Some say the world will end in fire,
+ Some say in ice.
+ From what I've tasted of desire
+ I hold with those who favor fire.
+
+ ... last paragraph elided ...
+
+ ----------------------- Robert Frost
 
 ```
 
@@ -1888,7 +1888,7 @@ public interface ReverseWords {
       .toArray(String[]::new)
     ;
   }
- 
+
   public static void main(String... arguments) {
     stream(reverseWords(LINES))
       .forEach(System.out::println)
@@ -1902,16 +1902,16 @@ public interface ReverseWords {
 
 
 ```txt
------------ Fire and Ice ----------- 
+----------- Fire and Ice -----------
 
-Some say the world will end in fire,   
-Some say in ice.   
-From what I've tasted of desire   
-I hold with those who favor fire.   
+Some say the world will end in fire,
+Some say in ice.
+From what I've tasted of desire
+I hold with those who favor fire.
 
-... last paragraph elided ...   
+... last paragraph elided ...
 
------------------------ Robert Frost 
+----------------------- Robert Frost
 ```
 
 
@@ -1931,7 +1931,7 @@ fire. favor who those with hold I\n\
 ... elided paragraph last ...\n\
 \n\
 Frost Robert -----------------------";
-    
+
 function reverseString(s) {
   return s.split('\n').map(
     function (line) {
@@ -1939,7 +1939,7 @@ function reverseString(s) {
     }
   ).join('\n');
 }
-  
+
 console.log(
   reverseString(strReversed)
 );
@@ -2002,7 +2002,7 @@ desire of tasted I've what From
 fire. favor who those with hold I
 \n... elided paragraph last ...\n
 Frost Robert -----------------------";
- 
+
 function reverseString(s) {
     return s.split('\n').map(
       function (line) {
@@ -2067,28 +2067,28 @@ julia> revstring("Hey you, Bub!")
 
 julia> s = IOBuffer(
 "---------- Ice and Fire ------------
- 
+
 fire, in end will world the say Some
 ice. in say Some
 desire of tasted I've what From
 fire. favor who those with hold I
- 
+
 ... elided paragraph last ...
- 
+
 Frost Robert -----------------------")
 
 julia>  for line in eachline(s)
           println(revstring(chomp(line)))
         end
 ------------ Fire and Ice ----------
- 
+
 Some say the world will end in fire,
 Some say in ice.
 From what I've tasted of desire
 I hold with those who favor fire.
- 
+
 ... last paragraph elided ...
- 
+
 ----------------------- Robert Frost
 ```
 
@@ -2107,17 +2107,17 @@ fun main(args: Array<String>) {
     println(reversedWords(s))
     println()
     val sl = listOf(
-        " ---------- Ice and Fire ------------ ", 
+        " ---------- Ice and Fire ------------ ",
         "                                      ",
-        " fire, in end will world the say Some ", 
-        " ice. in say Some                     ", 
-        " desire of tasted I've what From      ", 
-        " fire. favor who those with hold I    ",  
-        "                                      ",  
-        " ... elided paragraph last ...        ", 
-        "                                      ",  
+        " fire, in end will world the say Some ",
+        " ice. in say Some                     ",
+        " desire of tasted I've what From      ",
+        " fire. favor who those with hold I    ",
+        "                                      ",
+        " ... elided paragraph last ...        ",
+        "                                      ",
         " Frost Robert ----------------------- "
-    ) 
+    )
     sl.forEach { println(reversedWords(it).trimStart()) }
 }
 ```
@@ -2222,7 +2222,7 @@ poem =
     ---------- Ice and Fire ------------
 
     fire, in end will world the say Some
-    ice. in say Some 
+    ice. in say Some
     desire of tasted I've what From
     fire. favor who those with hold I
 
@@ -2254,7 +2254,7 @@ bye
 
 
 {{Out}}
-Given this input: 
+Given this input:
 ```txt
 ---------- Ice and Fire ------------
 
@@ -2313,14 +2313,14 @@ Original response:
 (''Note:'' The Wiki's syntax highlighting for Lua does not highlight the following valid string literal correctly, so the listing is split in two parts.)
 
     s = [[---------- Ice and Fire ------------
-    
+
     fire, in end will world the say Some
     ice. in say Some
     desire of tasted I've what From
     fire. favor who those with hold I
-    
+
     ... elided paragraph last ...
-    
+
     Frost Robert -----------------------
     ]]
 
@@ -2387,19 +2387,19 @@ I hold with those who favor fire.
 
 ```Mathematica
 poem = "---------- Ice and Fire ------------
-   
+
      fire, in end will world the say Some
-     ice. in say Some 
+     ice. in say Some
      desire of tasted I've what From
      fire. favor who those with hold I
-   
+
      ... elided paragraph last ...
-   
+
      Frost Robert -----------------------";
 lines = StringSplit[poem, "\n"];
 wordArray = StringSplit[#] &   @ lines ;
 reversedWordArray = Reverse[#] & /@ wordArray ;
-linesWithReversedWords = 
+linesWithReversedWords =
   StringJoin[Riffle[#, " "]] & /@ reversedWordArray;
 finaloutput = StringJoin[Riffle[#, "\n"]] &  @ linesWithReversedWords
 ```
@@ -2486,7 +2486,7 @@ nextLine = (readLine text)
 if nextLine == "" then
 (
 print ""
-continue	
+continue
 ) -- end of if
 revLine = ""
 eachWord = filterString nextLine " "
@@ -2540,7 +2540,7 @@ lines = ["
     "
 ### ====================================
 "]
-    
+
 for line in lines
     oldLine = line.split
     newLine = []
@@ -2768,11 +2768,11 @@ class Reverselines {
     lines->AddBack("... elided paragraph last ...");
     lines->AddBack("");
     lines->AddBack("Frost Robert -----------------------");
-    
+
     lines->Rewind();
     each(i : lines) {
       words := lines->Get()->As(String)->Split(" ");
-      if(words <> Nil) {      
+      if(words <> Nil) {
         for(j := words->Size() - 1; j > -1; j-=1;) {
           IO.Console->Print(words[j])->Print(" ");
         };
@@ -2788,16 +2788,16 @@ class Reverselines {
 {{out}}
 
 ```txt
------------- Fire and Ice ---------- 
+------------ Fire and Ice ----------
 
-Some say the world will end in fire, 
-Some say in ice. 
-From what I've tasted of desire 
-I hold with those who favor fire. 
+Some say the world will end in fire,
+Some say in ice.
+From what I've tasted of desire
+I hold with those who favor fire.
 
-... last paragraph elided ... 
+... last paragraph elided ...
 
------------------------ Robert Frost 
+----------------------- Robert Frost
 ```
 
 
@@ -2848,7 +2848,7 @@ I hold with those who favor fire.
 
 
 ```Oforth
-: revWords(s) 
+: revWords(s)
    s words reverse unwords ;
 
 : reverseWords
@@ -2963,14 +2963,14 @@ I hold with those who favor fire.
 print join(" ", reverse split), "\n" for <DATA>;
 __DATA__
 ---------- Ice and Fire ------------
- 
+
 fire, in end will world the say Some
-ice. in say Some                    
-desire of tasted I've what From     
-fire. favor who those with hold I   
- 
-... elided paragraph last ...       
- 
+ice. in say Some
+desire of tasted I've what From
+fire. favor who those with hold I
+
+... elided paragraph last ...
+
 Frost Robert -----------------------
 
 ```
@@ -3049,7 +3049,7 @@ I hold with those who favor fire.
 
 ```PicoLisp
 
-(in "FireIce.txt" 
+(in "FireIce.txt"
  (until (eof)
   (prinl (glue " " (flip (split (line) " "))))))
 
@@ -3068,7 +3068,7 @@ rev: procedure options (main);          /* 5 May 2014 */
    declare (i, j) fixed binary;
    declare in file;
 
-   open file (in) title ('/REV-WRD.DAT,type(text),recsize(5> Nil) {      
+   open file (in) title ('/REV-WRD.DAT,type(text),recsize(5> Nil) {
         for(j := words->Size() - 1; j > -1; j-=1;) {
           IO.Console->Print(words[j])->Print(" ");
         };
@@ -3102,16 +3102,16 @@ end rev;
 
 ```txt
 
----------- Ice and Fire ------------   ---> ------------ Fire and Ice ---------- 
-                                       ---> 
-fire, in end will world the say Some   ---> Some say the world will end in fire, 
-ice. in say Some                       ---> Some say in ice. 
-desire of tasted I've what From        ---> From what I've tasted of desire 
-fire. favor who those with hold I      ---> I hold with those who favor fire. 
-                                       ---> 
-... elided paragraph last ...          ---> ... last paragraph elided ... 
-                                       ---> 
-Frost Robert -----------------------   ---> ----------------------- Robert Frost 
+---------- Ice and Fire ------------   ---> ------------ Fire and Ice ----------
+                                       --->
+fire, in end will world the say Some   ---> Some say the world will end in fire,
+ice. in say Some                       ---> Some say in ice.
+desire of tasted I've what From        ---> From what I've tasted of desire
+fire. favor who those with hold I      ---> I hold with those who favor fire.
+                                       --->
+... elided paragraph last ...          ---> ... last paragraph elided ...
+                                       --->
+Frost Robert -----------------------   ---> ----------------------- Robert Frost
 
 ```
 
@@ -3124,10 +3124,10 @@ Frost Robert -----------------------   ---> ----------------------- Robert Frost
 ```PowerShell
 
 Function Reverse-Words($lines) {
-    $lines | foreach { 
-        $array = $PSItem.Split(' ') 
+    $lines | foreach {
+        $array = $PSItem.Split(' ')
         $array[($array.Count-1)..0] -join ' '
-    } 
+    }
 }
 
 $lines =
@@ -3184,11 +3184,11 @@ a$ =    "Hey you, Bub!                       " +#CRLF$+#CRLF$+ a$
 
 OpenConsole()
 For p1=1 To CountString(a$,#CRLF$)
-  b$=StringField(a$,p1,#CRLF$) : c$=""  
-  For p2=1 To CountString(b$,Chr(32))+1  
-    c$=StringField(b$,p2,Chr(32))+Space(1)+c$    
-  Next  
-  PrintN(LSet(b$,36,Chr(32))+" ---> "+Trim(c$))  
+  b$=StringField(a$,p1,#CRLF$) : c$=""
+  For p2=1 To CountString(b$,Chr(32))+1
+    c$=StringField(b$,p2,Chr(32))+Space(1)+c$
+  Next
+  PrintN(LSet(b$,36,Chr(32))+" ---> "+Trim(c$))
 Next
 Input()
 
@@ -3219,12 +3219,12 @@ Frost Robert ----------------------- ---> ----------------------- Robert Frost
 
 
 ```php
- 
+
 <?php
- 
+
  function strInv ($string) {
 
- 	$str_inv = '' ; 
+ 	$str_inv = '' ;
 
 	 for ($i=0,$s=count($string);$i<$s;$i++){
 	 	$str_inv .= implode(' ',array_reverse(explode(' ',$string[$i])));
@@ -3235,7 +3235,7 @@ Frost Robert ----------------------- ---> ----------------------- Robert Frost
  	return $str_inv;
 
  }
-  
+
  $string[] =  "---------- Ice and Fire ------------";
  $string[] =  "";
  $string[] =  "fire, in end will world the say Some";
@@ -3380,20 +3380,20 @@ You had better restart your REPL after trying this.
 (require racket/string)
 
 (define (split-reverse str)
-  (string-join 
-   (reverse 
+  (string-join
+   (reverse
     (string-split str))))
 
-(define poem 
+(define poem
   "---------- Ice and Fire ------------
- 
+
 fire, in end will world the say Some
 ice. in say Some
 desire of tasted I've what From
 fire. favor who those with hold I
- 
+
 ... elided paragraph last ...
- 
+
 Frost Robert -----------------------")
 
 
@@ -3412,16 +3412,16 @@ Frost Robert -----------------------")
 ```Red
 Red []
 foreach line
-split 
+split
 {---------- Ice and Fire ------------
- 
+
 fire, in end will world the say Some
 ice. in say Some
 desire of tasted I've what From
 fire. favor who those with hold I
- 
+
 ... elided paragraph last ...
- 
+
 Frost Robert -----------------------} newline [
  print reverse split line " "
 ]
@@ -3505,7 +3505,7 @@ This REXX version process the words in reverse order (last to first).
   end      /*j*/                       /*stick a fork in it,  we're all done. */
 ```
 
-'''output'''   is the same as the 1<sup>st</sup> REXX version. 
+'''output'''   is the same as the 1<sup>st</sup> REXX version.
 
 
 
@@ -3593,7 +3593,7 @@ for i = 1 to 10
     print r$
 next
 end
- 
+
 data "---------- Ice and Fire ------------"
 data ""
 data "fire, in end will world the say Some"
@@ -3609,16 +3609,16 @@ data "Frost Robert -----------------------"
 Output:
 
 ```txt
------------- Fire and Ice ---------- 
+------------ Fire and Ice ----------
 
-Some say the world will end in fire, 
-Some say in ice. 
-From what I''ve tasted of desire 
-I hold with those who favor fire. 
+Some say the world will end in fire,
+Some say in ice.
+From what I''ve tasted of desire
+I hold with those who favor fire.
 
-... last paragraph elided ... 
+... last paragraph elided ...
 
------------------------ Robert Frost 
+----------------------- Robert Frost
 ```
 
 
@@ -3627,20 +3627,20 @@ I hold with those who favor fire.
 
 
 ```rust
-const TEXT: &'static str = 
+const TEXT: &'static str =
 "---------- Ice and Fire ------------
- 
+
 fire, in end will world the say Some
 ice. in say Some
 desire of tasted I've what From
 fire. favor who those with hold I
- 
+
 ... elided paragraph last ...
- 
+
 Frost Robert -----------------------";
- 
+
 fn main() {
-    println!("{}", 
+    println!("{}",
              TEXT.lines() // Returns iterator over lines
              .map(|line|  // Applies closure to each item in iterator (for each line)
                   line.split_whitespace() // Returns iterator of words
@@ -3699,18 +3699,18 @@ object ReverseWords extends App {
 
   """|  ---------- Ice and Fire ------------
      |
-     |  fire, in end will world the say Some  
-     |  ice. in say Some                      
-     |  desire of tasted I've what From       
-     |  fire. favor who those with hold I     
+     |  fire, in end will world the say Some
+     |  ice. in say Some
+     |  desire of tasted I've what From
+     |  fire. favor who those with hold I
      |
-     |  ... elided paragraph last ...         
+     |  ... elided paragraph last ...
      |
      |  Frost Robert -----------------------  """
     .stripMargin.lines.toList.map{_.split(" ")}.map{_.reverse}
     .map(_.mkString(" "))
     .foreach{println}
-  
+
 }
 ```
 
@@ -3816,16 +3816,16 @@ const proc: main is func
 
 ```txt
 
------------- Fire and Ice ---------- 
- 
-Some say the world will end in fire, 
-Some say in ice. 
-From what I've tasted of desire 
-I hold with those who favor fire. 
- 
-... last paragraph elided ... 
- 
------------------------ Robert Frost 
+------------ Fire and Ice ----------
+
+Some say the world will end in fire,
+Some say in ice.
+From what I've tasted of desire
+I hold with those who favor fire.
+
+... last paragraph elided ...
+
+----------------------- Robert Frost
 
 ```
 
@@ -3858,14 +3858,14 @@ Frost Robert -----------------------
 ```smalltalk
 
 poem := '---------- Ice and Fire ------------
- 
+
 fire, in end will world the say Some
 ice. in say Some
 desire of tasted I''ve what From
 fire. favor who those with hold I
- 
+
 ... elided paragraph last ...
- 
+
 Frost Robert -----------------------'.
 
 (poem lines collect: [ :line | ((line splitOn: ' ') reverse) joinUsing: ' '  ]) joinUsing: (String cr).
@@ -3878,14 +3878,14 @@ Frost Robert -----------------------'.
 ```txt
 
 '------------ Fire and Ice ----------
- 
+
 Some say the world will end in fire,
 Some say in ice.
 From what I''ve tasted of desire
 I hold with those who favor fire.
- 
+
 ... last paragraph elided ...
- 
+
 ----------------------- Robert Frost'
 
 ```
@@ -3985,12 +3985,12 @@ def input: ['---------- Ice and Fire ------------',
                     '',
                     'Frost Robert -----------------------']
 ;
- 
+
 composer words
   [ <word>* ]
   rule word: <~WS> <WS>?
 end words
- 
+
 $input... -> '$ -> words -> $(-1..1:-1)...;
 ' -> !OUT::write
 
@@ -4102,22 +4102,22 @@ done << END
 ---------- Ice and Fire ------------
 
 fire, in end will world the say Some
-ice. in say Some                   
-desire of tasted I've what From   
+ice. in say Some
+desire of tasted I've what From
 fire. favor who those with hold I
 
-... elided paragraph last ...       
+... elided paragraph last ...
 
-Frost Robert ----------------------- 
+Frost Robert -----------------------
 END
 ```
 
 {{works with|ksh}}
-Same as above, except change 
+Same as above, except change
 ```bash
 read -a
 ```
- to 
+ to
 ```bash
 read -A
 ```

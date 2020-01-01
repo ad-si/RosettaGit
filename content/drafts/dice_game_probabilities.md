@@ -70,8 +70,8 @@ print(‘#.16’.format(beating_probability(10, 5, 7, 6)))
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdint.h>
 
 typedef uint32_t uint;
@@ -300,7 +300,7 @@ For iCount0 = 0 To 1
   Print "Player1 with " & Str(iDice1) & " dice of " & Str(iSides1) & " sides"
   Print "Player2 with " & Str(iDice2) & " dice of " & Str(iSides2) & " sides"
   Print "Total wins Player1 = " & Str(iTotal1) & " - " & Str(iTotal2 / iTotal1)
-  Print "Total wins Player2 = " & Str(iTotal2) 
+  Print "Total wins Player2 = " & Str(iTotal2)
   Print Str((iCount - 1) - (iTotal1 + iTotal2)) & " draws" & gb.NewLine
 
   iDice1 = 5
@@ -539,7 +539,7 @@ public class Dice{
 		}
 		return sum;
 	}
-	
+
 	private static int diceGame(int p1Dice, int p1Sides, int p2Dice, int p2Sides, int rolls){
 		int p1Wins = 0;
 		for(int i = 0; i < rolls; i++){
@@ -549,7 +549,7 @@ public class Dice{
 		}
 		return p1Wins;
 	}
-	
+
 	public static void main(String[] args){
 		int p1Dice = 9; int p1Sides = 4;
 		int p2Dice = 6; int p2Sides = 6;
@@ -557,27 +557,27 @@ public class Dice{
 		int p1Wins = diceGame(p1Dice, p1Sides, p2Dice, p2Sides, rolls);
 		System.out.println(rolls + " rolls, p1 = " + p1Dice + "d" + p1Sides + ", p2 = " + p2Dice + "d" + p2Sides);
 		System.out.println("p1 wins " + (100.0 * p1Wins / rolls) + "% of the time");
-		
+
 		System.out.println();
-		
+
 		p1Dice = 5; p1Sides = 10;
 		p2Dice = 6; p2Sides = 7;
 		rolls = 10000;
 		p1Wins = diceGame(p1Dice, p1Sides, p2Dice, p2Sides, rolls);
 		System.out.println(rolls + " rolls, p1 = " + p1Dice + "d" + p1Sides + ", p2 = " + p2Dice + "d" + p2Sides);
 		System.out.println("p1 wins " + (100.0 * p1Wins / rolls) + "% of the time");
-		
+
 		System.out.println();
-		
+
 		p1Dice = 9; p1Sides = 4;
 		p2Dice = 6; p2Sides = 6;
 		rolls = 1000000;
 		p1Wins = diceGame(p1Dice, p1Sides, p2Dice, p2Sides, rolls);
 		System.out.println(rolls + " rolls, p1 = " + p1Dice + "d" + p1Sides + ", p2 = " + p2Dice + "d" + p2Sides);
 		System.out.println("p1 wins " + (100.0 * p1Wins / rolls) + "% of the time");
-		
+
 		System.out.println();
-		
+
 		p1Dice = 5; p1Sides = 10;
 		p2Dice = 6; p2Sides = 7;
 		rolls = 1000000;
@@ -765,7 +765,7 @@ Probability for player 1 to win: 0.573144076782980082947530864198
 
 Player 1 has 5 dice with 10 sides each
 Player 2 has 6 dice with 7 sides each
-Probability for player 1 to win: 0.642788628717626159168373721835   
+Probability for player 1 to win: 0.642788628717626159168373721835
 ```
 
 
@@ -1078,7 +1078,7 @@ Probability for player 1 to win: 3781171969/5882450000
 
 
 ### Test
-    
+
 Result from 10 million tries.
 
 ```oorexx
@@ -1113,7 +1113,7 @@ Do i=min(n1,n2) To max(n1*s1,n2*s2)
   End
 */
 Call o time('E') 'seconds elapsed'
-Return            
+Return
 
 sum: Parse Arg n s
 sum=0
@@ -1214,12 +1214,12 @@ sub likelihoods ($roll) {
     @counts[$_]++ for [X+] |(1..$faces,) xx $dice;
     return [@counts[]:p], $faces ** $dice;
 }
- 
+
 sub beating-probability ([$roll1, $roll2]) {
     my (@c1, $p1) := likelihoods $roll1;
     my (@c2, $p2) := likelihoods $roll2;
     my $p12 = $p1 * $p2;
- 
+
     [+] gather for flat @c1 X @c2 -> $p, $q {
 	take $p.value * $q.value / $p12 if $p.key > $q.key;
     }
@@ -1255,7 +1255,7 @@ function throwDie(integer nSides, nDice, s, sequence counts)
     end if
     return counts
 end function
- 
+
 function beatingProbability(integer nSides1, nDice1, nSides2, nDice2)
     integer len1 := (nSides1 + 1) * nDice1,
             len2 := (nSides2 + 1) * nDice2
@@ -1270,7 +1270,7 @@ function beatingProbability(integer nSides1, nDice1, nSides2, nDice2)
     end for
     return tot
 end function
- 
+
 printf(1,"%0.16f\n",beatingProbability(4, 9, 6, 6))
 printf(1,"%0.16f\n",beatingProbability(10, 5, 7, 6))
 ```
@@ -1700,7 +1700,7 @@ print(winning(5, 10, 6, 7))
 
 (define (game-probs N1 D1 N2 D2)
   (define P1 (NdD N1 D1))
-  (define P2 (NdD N2 D2))  
+  (define P2 (NdD N2 D2))
   (define-values (W D L)
     (for*/fold ((win 0) (draw 0) (lose 0)) (((r1 p1) (in-hash P1)) ((r2 p2) (in-hash P2)))
       (define p (* p1 p2))
@@ -1708,10 +1708,10 @@ print(winning(5, 10, 6, 7))
         [(< r1 r2) (values win draw (+ lose p))]
         [(= r1 r2) (values win (+ draw p) lose)]
         [(> r1 r2) (values (+ win p) draw lose)])))
-  
+
   (printf "P(P1 win): ~a~%" (real->decimal-string W 6))
   (printf "P(draw):   ~a~%" (real->decimal-string D 6))
-  (printf "P(P2 win): ~a~%" (real->decimal-string L 6))  
+  (printf "P(P2 win): ~a~%" (real->decimal-string L 6))
   (list W D L))
 
 (printf "GAME 1 (9D4 vs 6D6)~%")
@@ -2099,7 +2099,7 @@ proc range {b} {    ;# a common standard proc:  [range 5] -> {0 1 2 3 4}
 
 # This proc builds up a nested foreach call, then evaluates it.
 #
-# The script is built up in $script, starting with the body using "%%" as 
+# The script is built up in $script, starting with the body using "%%" as
 # a placeholder.
 #
 # For each die, a level is wrapped around it as follows:
@@ -2228,7 +2228,7 @@ fcn combos(sides, n){
    }
    ret
 }
- 
+
 fcn winning(sides1,n1, sides2,n2){
    p1, p2 := combos(sides1, n1), combos(sides2, n2);
    win,loss,tie := 0,0,0; # 'win' is 1 beating 2

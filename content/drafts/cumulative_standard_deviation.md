@@ -14,9 +14,9 @@ tags = []
 
 {{task heading}}
 
-Write a stateful function, class, generator or co-routine that takes a series of floating point numbers, ''one at a time'', and returns the running [[wp:Standard Deviation|standard deviation]] of the series. 
+Write a stateful function, class, generator or co-routine that takes a series of floating point numbers, ''one at a time'', and returns the running [[wp:Standard Deviation|standard deviation]] of the series.
 
-The task implementation should use the most natural programming style of those listed for the function in the implementation language; the task ''must'' state which is being used. 
+The task implementation should use the most natural programming style of those listed for the function in the implementation language; the task ''must'' state which is being used.
 
 Do not apply [[wp:Bessel's correction|Bessel's correction]]; the returned standard deviation should always be computed as if the sample seen so far is the entire population.
 
@@ -75,7 +75,7 @@ L(value) [2, 4, 4, 4, 5, 5, 7, 9]
 
 ## 360 Assembly
 
-For maximum compatibility, this program uses only the basic instruction set. 
+For maximum compatibility, this program uses only the basic instruction set.
 Part of the code length is due to the square root algorithm and to the nice output.
 
 ```360asm
@@ -159,7 +159,7 @@ ENDWHILE EQU    *
          MVC    C18,MASK18
          ED     C18,P8
          MVC    BUF+31(5),C18+12
-         WTO    MF=(E,WTOMSG)		  
+         WTO    MF=(E,WTOMSG)
          B      LOOPI
 ENDLOOPI EQU    *
          L      R13,4(0,R13)
@@ -172,14 +172,14 @@ T        DC     H'2',H'4',H'4',H'4',H'5',H'5',H'7',H'9'
 WW       DS     F
 AVG      DS     F
 P8       DS     PL8
-MASK17   DC     C' ',13X'20',X'2120',C'-'              
-MASK18   DC     C' ',10X'20',X'2120',C'.',3X'20',C'-' 
+MASK17   DC     C' ',13X'20',X'2120',C'-'
+MASK18   DC     C' ',10X'20',X'2120',C'.',3X'20',C'-'
 C17      DS     CL17
 C18      DS     CL18
 WTOMSG   DS     0F
          DC     H'80',XL2'0000'
 BUF      DC     CL80'N=1  ITEM=1  AVG=1.234  STDDEV=1.234 '
-         YREGS  
+         YREGS
          END    STDDEV
 ```
 
@@ -264,7 +264,7 @@ N=8 ITEM=9 AVG=5.000  STDDEV=2.000
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release 2.8-win32}} 
+{{works with|ALGOL 68G|Any - tested with release 2.8-win32}}
 
 <!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8.8d.fc9.i386]}} -->
 Note: the use of a UNION to mimic C's enumerated types is "experimental" and probably not typical of "production code".  However it is a example of '''ALGOL 68'''s ''conformity CASE clause'' useful for classroom dissection.
@@ -276,18 +276,18 @@ MODE VALUE = STRUCT(CHAR value),
      VAR = STRUCT(CHAR var),
      COUNT = STRUCT(CHAR count),
      RESET = STRUCT(CHAR reset);
- 
+
 MODE ACTION = UNION ( VALUE, STDDEV, MEAN, VAR, COUNT, RESET );
- 
+
 LONG REAL sum := 0;
 LONG REAL sum2 := 0;
 INT num := 0;
- 
+
 PROC stat object = (LONG REAL v, ACTION action)LONG REAL:
 (
- 
+
   LONG REAL m;
- 
+
   CASE action IN
   (VALUE):(
     num +:= 1;
@@ -309,18 +309,18 @@ PROC stat object = (LONG REAL v, ACTION action)LONG REAL:
     sum := sum2 := num := 0
   ESAC
 );
- 
+
 []LONG REAL v = ( 2,4,4,4,5,5,7,9 );
- 
+
 main:
 (
   LONG REAL sd;
- 
+
   FOR i FROM LWB v TO UPB v DO
     sd := stat object(v[i], LOC VALUE);
     printf(($"value: "g(0,6)," standard dev := "g(0,6)l$, v[i], sd))
   OD
- 
+
 )
 ```
 
@@ -342,7 +342,7 @@ value: 9.000000 standard dev := 2.000000
 
 {{trans|python}}
 {{works with|ALGOL 68|Standard - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release 2.8-win32}} 
+{{works with|ALGOL 68G|Any - tested with release 2.8-win32}}
 <!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8.8d.fc9.i386]}} -->
 
 A code sample in an object oriented style:
@@ -353,30 +353,30 @@ MODE STAT = STRUCT(
   LONG REAL sum2,
   INT num
 );
- 
+
 OP INIT = (REF STAT new)REF STAT:
   (init OF class stat)(new);
- 
+
 MODE CLASSSTAT = STRUCT(
   PROC (REF STAT, LONG REAL #value#)VOID plusab,
   PROC (REF STAT)LONG REAL stddev, mean, variance, count,
   PROC (REF STAT)REF STAT init
 );
- 
+
 CLASSSTAT class stat;
- 
+
 plusab OF class stat := (REF STAT self, LONG REAL value)VOID:(
     num OF self +:= 1;
     sum OF self +:= value;
     sum2 OF self +:= value*value
   );
- 
+
 OP +:= = (REF STAT lhs, LONG REAL rhs)VOID: # some syntatic sugar #
   (plusab OF class stat)(lhs, rhs);
- 
+
 stddev OF class stat := (REF STAT self)LONG REAL:
     long sqrt((variance OF class stat)(self));
- 
+
 OP STDDEV = ([]LONG REAL value)LONG REAL: ( # more syntatic sugar #
   REF STAT stat = INIT LOC STAT;
   FOR i FROM LWB value TO UPB value DO
@@ -384,32 +384,32 @@ OP STDDEV = ([]LONG REAL value)LONG REAL: ( # more syntatic sugar #
   OD;
   (stddev OF class stat)(stat)
 );
- 
+
 mean OF class stat := (REF STAT self)LONG REAL:
     sum OF self/LONG REAL(num OF self);
- 
+
 variance OF class stat := (REF STAT self)LONG REAL:(
     LONG REAL m = (mean OF class stat)(self);
     sum2 OF self/LONG REAL(num OF self)-m*m
   );
- 
+
 count OF class stat := (REF STAT self)LONG REAL:
     num OF self;
- 
+
 init OF class stat := (REF STAT self)REF STAT:(
     sum OF self := sum2 OF self := num OF self := 0;
     self
   );
- 
+
 []LONG REAL value = ( 2,4,4,4,5,5,7,9 );
- 
+
 main:
 (
 #  printf(($"standard deviation operator = "g(0,6)l$, STDDEV value));
 #
- 
+
   REF STAT stat = INIT LOC STAT;
- 
+
   FOR i FROM LWB value TO UPB value DO
     stat +:= value[i];
     printf(($"value: "g(0,6)," standard dev := "g(0,6)l$, value[i], (stddev OF class stat)(stat)))
@@ -444,7 +444,7 @@ value: 9.000000 standard dev := 2.000000
 
 {{trans|python}}
 {{works with|ALGOL 68|Standard - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}} 
+{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 <!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8.8d.fc9.i386]}} -->
 
 A simple - but "unpackaged" - code example, useful if the standard deviation is required on only one set of concurrent data:
@@ -459,7 +459,7 @@ PROC sd = (LONG REAL x)LONG REAL:(
     n    +:= 1;
     IF n = 0 THEN 0 ELSE long sqrt(sum2/n - sum*sum/n/n) FI
 );
- 
+
 sum := sum2 := n := 0;
 []LONG REAL values = (2,4,4,4,5,5,7,9);
 FOR i TO UPB values DO
@@ -495,7 +495,7 @@ begin
 
     long real sum, sum2;
     integer   n;
- 
+
     long real procedure sd (long real value x) ;
     begin
         sum  := sum  + x;
@@ -503,7 +503,7 @@ begin
         n    := n    + 1;
         if n = 0 then 0 else longsqrt(sum2/n - sum*sum/n/n)
     end sd;
- 
+
     sum := sum2 := n := 0;
 
     r_format := "A"; r_w := 14; r_d := 6; % set output to fixed point format %
@@ -544,13 +544,13 @@ Accumulation across a fold
 ```AppleScript
 -- stdDevInc :: Accumulator -> Num -> Index -> Accumulator
 -- stdDevInc :: {sum:, squaresSum:, stages:} -> Real -> Integer
---                -> {sum:, squaresSum:, stages:} 
+--                -> {sum:, squaresSum:, stages:}
 on stdDevInc(a, n, i)
     set sum to (sum of a) + n
     set squaresSum to (squaresSum of a) + (n ^ 2)
     set stages to (stages of a) & ¬
         ((squaresSum / i) - ((sum / i) ^ 2)) ^ 0.5
-    
+
     {sum:sum, squaresSum:squaresSum, stages:stages}
 end stdDevInc
 
@@ -558,10 +558,10 @@ end stdDevInc
 -- TEST
 on run
     set lstSample to [2, 4, 4, 4, 5, 5, 7, 9]
-    
+
     stages of foldl(stdDevInc, ¬
         {sum:0, squaresSum:0, stages:[]}, lstSample)
-    
+
     --> {0.0, 1.0, 0.942809041582, 0.866025403784, 0.979795897113, 1.0, 1.399708424448, 2.0}
 end run
 
@@ -581,7 +581,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -598,7 +598,7 @@ end mReturn
 {{Out}}
 
 ```AppleScrip
-{0.0, 1.0, 0.942809041582, 0.866025403784, 
+{0.0, 1.0, 0.942809041582, 0.866025403784,
 0.979795897113, 1.0, 1.399708424448, 2.0}
 ```
 
@@ -609,7 +609,7 @@ end mReturn
 
 ```AutoHotkey
 Data := [2,4,4,4,5,5,7,9]
- 
+
 for k, v in Data {
     FileAppend, % "#" a_index " value = " v " stddev = " stddev(v) "`n", * ; send to stdout
 }
@@ -620,7 +620,7 @@ stddev(x) {
 	n++
 	sum += x
 	sum2 += x*x
- 
+
 	return sqrt((sum2/n) - (((sum*sum)/n)/n))
 }
 ```
@@ -705,7 +705,7 @@ TestDomain(T : Join(Field,RadicalCategory)): Exports == Implementation where
     obj + (obj2:%) == [obj.n + obj2.n, obj.sum + obj2.sum, obj.ssq + obj2.ssq]
     obj + (x:T) == obj + [1, x, x*x]
     (x:T) + obj == obj + x
-    sd obj == 
+    sd obj ==
       mean : T := obj.sum / (obj.n::T)
       sqrt(obj.ssq / (obj.n::T) - mean*mean)
 ```
@@ -741,9 +741,9 @@ Uses the MOD(array()) and SUM(array()) functions.
         PRINT "Value = "; n ", running SD = " FNrunningsd(n)
       NEXT
       END
-      
+
       DATA 2,4,4,4,5,5,7,9
-      
+
       DEF FNrunningsd(n)
       PRIVATE list(), i%
       DIM list(MAXITEMS)
@@ -773,8 +773,8 @@ Value = 9, running SD = 2
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -783,7 +783,7 @@ typedef enum Action { STDDEV, MEAN, VAR, COUNT } Action;
 typedef struct stat_obj_struct {
    double sum, sum2;
    size_t num;
-   Action action; 
+   Action action;
 } sStatObject, *StatObject;
 
 StatObject NewStatObject( Action action )
@@ -802,7 +802,7 @@ StatObject NewStatObject( Action action )
 double stat_obj_value(StatObject so, Action action)
 {
   double num, mean, var, stddev;
-    
+
   if (so->num == 0.0) return 0.0;
   num = so->num;
   if (action==COUNT) return num;
@@ -857,7 +857,7 @@ namespace standardDeviation
         static void Main(string[] args)
         {
             List<double> nums = new List<double> { 2, 4, 4, 4, 5, 5, 7, 9 };
-            for (int i = 1; i <= nums.Count; i++)            
+            for (int i = 1; i <= nums.Count; i++)
                 Console.WriteLine(sdev(nums.GetRange(0, i)));
         }
 
@@ -865,7 +865,7 @@ namespace standardDeviation
         {
             List<double> store = new List<double>();
             foreach (double n in nums)
-                store.Add((n - nums.Average()) * (n - nums.Average()));           
+                store.Add((n - nums.Average()) * (n - nums.Average()));
 
             return Math.Sqrt(store.Sum() / store.Count);
         }
@@ -981,11 +981,11 @@ working-storage section.
 01  ws-tb-data.
   03  ws-tb-size         pic 9(03).
   03  ws-tb-table.
-    05  ws-tb-fld     pic s9(05)v9999 comp-3 occurs 0 to 100 times 
+    05  ws-tb-fld     pic s9(05)v9999 comp-3 occurs 0 to 100 times
         depending on ws-tb-size.
 01 ws-stddev       pic s9(05)v9999 comp-3.
 PROCEDURE DIVISION.
-  move 0 to ws-tb-size 
+  move 0 to ws-tb-size
   open  input input-file
     read input-file
     at end
@@ -996,7 +996,7 @@ PROCEDURE DIVISION.
     until no-more-input
       add 1 to ws-tb-size
       move inp-fld to ws-tb-fld (ws-tb-size)
-      call 'stddev' using  by reference ws-tb-data 
+      call 'stddev' using  by reference ws-tb-data
          ws-stddev
       display  'inp=' inp-fld ' stddev=' ws-stddev
       read input-file at end set no-more-input to true end-read
@@ -1017,13 +1017,13 @@ linkage section.
 01  ws-tb-data.
   03  ws-tb-size         pic 9(03).
   03  ws-tb-table.
-    05  ws-tb-fld     pic s9(05)v9999 comp-3 occurs 0 to 100 times 
+    05  ws-tb-fld     pic s9(05)v9999 comp-3 occurs 0 to 100 times
         depending on ws-tb-size.
 01  ws-stddev       pic s9(05)v9999 comp-3.
 PROCEDURE DIVISION using  ws-tb-data  ws-stddev.
     compute ws-sum = 0
     perform test before varying ws-tbx from 1 by +1 until ws-tbx > ws-tb-size
-        compute ws-sum = ws-sum + ws-tb-fld (ws-tbx) 
+        compute ws-sum = ws-sum + ws-tb-fld (ws-tbx)
     end-perform
     compute ws-avg rounded = ws-sum / ws-tb-size
     compute ws-sumsq = 0
@@ -1031,7 +1031,7 @@ PROCEDURE DIVISION using  ws-tb-data  ws-stddev.
         compute ws-sumsq = ws-sumsq
         + (ws-tb-fld (ws-tbx) - ws-avg) ** 2.0
     end-perform
-    compute ws-stddev = ( ws-sumsq / ws-tb-size) ** 0.5 
+    compute ws-stddev = ( ws-sumsq / ws-tb-size) ** 0.5
     goback.
 end program stddev.
 
@@ -1301,8 +1301,8 @@ See: [[#Pascal]]
 ## E
 
 
-This implementation produces two (function) objects sharing state. 
-It is idiomatic in E to separate input from output (read from write) 
+This implementation produces two (function) objects sharing state.
+It is idiomatic in E to separate input from output (read from write)
 rather than combining them into one object.
 
 The algorithm is {{trans|Perl}} and the results were checked against [[#Python]].
@@ -1313,13 +1313,13 @@ def makeRunningStdDev() {
     var sum := 0.0
     var sumSquares := 0.0
     var count := 0.0
-    
+
     def insert(v) {
         sum += v
         sumSquares += v ** 2
         count += 1
     }
-    
+
     /** Returns the standard deviation of the inputs so far, or null if there
         have been no inputs. */
     def stddev() {
@@ -1330,7 +1330,7 @@ def makeRunningStdDev() {
             return variance.sqrt()
         }
     }
-    
+
     return [insert, stddev]
 }
 ```
@@ -1367,28 +1367,28 @@ def makeRunningStdDev() {
 ```elixir
 defmodule Standard_deviation do
   def add_sample( pid, n ), do: send( pid, {:add, n} )
-  
+
   def create, do: spawn_link( fn -> loop( [] ) end )
-  
+
   def destroy( pid ), do: send( pid, :stop )
-  
+
   def get( pid ) do
     send( pid, {:get, self()} )
     receive do
       { :get, value, _pid } -> value
     end
   end
-  
+
   def task do
     pid = create()
     for x <- [2,4,4,4,5,5,7,9], do: add_print( pid, x, add_sample(pid, x) )
     destroy( pid )
   end
-  
+
   defp add_print( pid, n, _add ) do
     IO.puts "Standard deviation #{ get(pid) } when adding #{ n }"
   end
-  
+
   defp loop( ns ) do
     receive do
       {:add, n} -> loop( [n | ns] )
@@ -1398,12 +1398,12 @@ defmodule Standard_deviation do
       :stop -> :ok
     end
   end
-  
+
   defp loop_calculate( ns ) do
     average = loop_calculate_average( ns )
     :math.sqrt( loop_calculate_average( for x <- ns, do: :math.pow(x - average, 2) ) )
   end
-  
+
   defp loop_calculate_average( ns ), do: Enum.sum( ns ) / length( ns )
 end
 
@@ -1451,8 +1451,8 @@ This implementation uses a temporary buffer (the central data structure of emacs
   (setq running-len (1+ running-len))
   (setq running-squared-sum (+ running-squared-sum (* x x)))
   ; and calculate the new standard deviation
-  (sqrt (- (/ running-squared-sum 
-              running-len) (/ (* running-sum running-sum) 
+  (sqrt (- (/ running-squared-sum
+              running-len) (/ (* running-sum running-sum)
                                  (* running-len running-len )))))
 ```
 
@@ -1460,7 +1460,7 @@ This implementation uses a temporary buffer (the central data structure of emacs
 
 ```lisp
 (with-temp-buffer
-  (loop for i in '(2 4 4 4 5 5 7 9) do 
+  (loop for i in '(2 4 4 4 5 5 7 9) do
         (insert (number-to-string (running-std i)))
         (newline))
   (message (buffer-substring (point-min) (1- (point-max)))))
@@ -1510,7 +1510,7 @@ Emacs Lisp with generator library (introduced in Emacs 25.1)
       (generator (std-dev-gen test-data)))
   (dolist (i test-data)
     (princ (format "with %d : " i))
-    (princ (format "%f\n" (iter-next generator))))) 
+    (princ (format "%f\n" (iter-next generator)))))
 ```
 
 
@@ -1762,7 +1762,7 @@ With more complex operating systems, routines that relied on retaining values ac
 
 Since the standard deviation can be calculated in a single pass through the data, producing values for the standard deviation of all values so far supplied is easily done without re-calculation. Accuracy is quite another matter. Calculations using deviances from a working mean are much better, and capturing the first X as the working mean would be easy, just test on N = 0. The sum and sum-of-squares method is quite capable of generating a negative variance, but the second method cannot, because the terms being added in to V are never negative. This is demonstrated by comparing the results computed from StdDev(A), StdDev(A + 10), StdDev(A + 100), StdDev(A + 1000), etc.
 
-Incidentally, Fortran implementations rarely enable re-entrancy for the WRITE statement, so, since here the functions are invoked in a WRITE statement, the functions cannot themselves use WRITE statements, say for debugging. 
+Incidentally, Fortran implementations rarely enable re-entrancy for the WRITE statement, so, since here the functions are invoked in a WRITE statement, the functions cannot themselves use WRITE statements, say for debugging.
 
 ```Fortran
 
@@ -1929,7 +1929,7 @@ In other words, a two-pass method will be more accurate (where the second pass c
 
 Function calcStandardDeviation(number As Double) As Double
   Static a() As Double
-  Redim Preserve a(0 To UBound(a) + 1)   
+  Redim Preserve a(0 To UBound(a) + 1)
   Dim ub As UInteger = UBound(a)
   a(ub) = number
   Dim sum As Double = 0.0
@@ -2106,13 +2106,13 @@ Or, simply accumulating across a fold:
 ```Haskell
 type Index = Int
 type DataPoint = Float
- 
+
 type Sum = Float
 type SumOfSquares = Float
- 
+
 type Deviations = [Float]
 type Accumulator = (Sum, SumOfSquares, Deviations)
- 
+
 stdDevInc :: Accumulator -> (DataPoint, Index) -> Accumulator
 stdDevInc (s, q, ds) (x, i) = (_s, _q, _ds)
   where
@@ -2120,7 +2120,7 @@ stdDevInc (s, q, ds) (x, i) = (_s, _q, _ds)
     _q = q + (x ^ 2)
     _i = fromIntegral i
     _ds = ds ++ [sqrt ((_q / _i) - ((_s / _i) ^ 2))]
- 
+
 sample :: [DataPoint]
 sample = [2, 4, 4, 4, 5, 5, 7, 9]
 
@@ -2129,7 +2129,7 @@ sample = [2, 4, 4, 4, 5, 5, 7, 9]
 foldl_ :: Foldable t => (b -> a -> b) -> b -> t a -> b
 foldl_ f z0 xs = foldr f_ id xs z0
   where f_ x k z = k $! f z x
- 
+
 main :: IO ()
 main = mapM_ print devns
   where
@@ -2160,10 +2160,10 @@ using Lambda;
 class Main {
 	static function main():Void {
 		var nums = [2, 4, 4, 4, 5, 5, 7, 9];
-		for (i in 1...nums.length+1)			
+		for (i in 1...nums.length+1)
 			Sys.println(sdev(nums.slice(0, i)));
 	}
-	
+
 	static function average<T:Float>(nums:Array<T>):Float {
 		return nums.fold(function(n, t) return n + t, 0) / nums.length;
 	}
@@ -2174,7 +2174,7 @@ class Main {
 		for (n in nums) {
 			store.push((n - avg) * (n - avg));
 		}
-		
+
 		return Math.sqrt(average(store));
 	}
 }
@@ -2276,17 +2276,17 @@ stddev (so far) := 2.0
 120 NUMERIC ARR(1 TO N)
 130 FOR I=1 TO N
 140   READ ARR(I)
-150 NEXT 
+150 NEXT
 160 DEF STDEV(N)
 170   LET S1,S2=0
 180   FOR I=1 TO N
 190     LET S1=S1+ARR(I)^2:LET S2=S2+ARR(I)
-200   NEXT 
+200   NEXT
 210   LET STDEV=SQR((N*S1-S2^2)/N^2)
-220 END DEF 
+220 END DEF
 230 FOR J=1 TO N
 240   PRINT J;"item =";ARR(J),"standard dev =";STDEV(J)
-250 NEXT 
+250 NEXT
 260 DATA 2,4,4,4,5,5,7,9
 ```
 
@@ -2295,7 +2295,7 @@ stddev (so far) := 2.0
 ## J
 
 
-J is block-oriented; it expresses algorithms with the semantics of all the data being available at once.  It does not have native lexical closure or coroutine semantics.  It is possible to implement these semantics in J; see [[Moving Average]] for an example.  We will not reprise that here.  
+J is block-oriented; it expresses algorithms with the semantics of all the data being available at once.  It does not have native lexical closure or coroutine semantics.  It is possible to implement these semantics in J; see [[Moving Average]] for an example.  We will not reprise that here.
 
 ```j
    mean=: +/ % #
@@ -2316,7 +2316,7 @@ Using verbose names for J primitives.
 
 ```j
    of     =: @:
-   sqrt   =: %:         
+   sqrt   =: %:
    sum    =: +/
    squares=: *:
    data   =: ]
@@ -2396,7 +2396,7 @@ function running_stddev() {
 var sd = running_stddev();
 var nums = [2,4,4,4,5,5,7,9];
 var stddev = [];
-for (var i in nums) 
+for (var i in nums)
     stddev.push( sd(nums[i]) );
 
 // using WSH
@@ -2418,7 +2418,7 @@ Accumulating across a fold
 
 ```JavaScript
 (function (xs) {
-    
+
     return xs.reduce(function (a, x, i) {
         var n = i + 1,
             sum_ = a.sum + x,
@@ -2445,7 +2445,7 @@ Accumulating across a fold
 {{Out}}
 
 ```JavaScript
-[0, 1, 0.9428090415820626, 0.8660254037844386, 
+[0, 1, 0.9428090415820626, 0.8660254037844386,
 0.9797958971132716, 1, 1.3997084244475297, 2]
 ```
 
@@ -2458,7 +2458,7 @@ Accumulating across a fold
 
 We first define a filter, "simulate", that, if given a file of
 observations, will emit the standard deviations of the observations
-seen so far.  
+seen so far.
 The current state is stored in a JSON object, with this structure:
 
  { "n": _, "ssd": _, "mean": _ }
@@ -2472,11 +2472,11 @@ The challenge here is to ensure accuracy for very large n, without sacrificing e
 
 
 ```jq
-# Compute the standard deviation of the observations 
+# Compute the standard deviation of the observations
 # seen so far, given the current state as input:
 def standard_deviation: .ssd / .n | sqrt;
 
-def update_state(observation): 
+def update_state(observation):
   def sq: .*.;
   ((.mean * .n + observation) / (.n + 1)) as $newmean
   | (.ssd + .n * ((.mean - $newmean) | sq)) as $ssd
@@ -2491,7 +2491,7 @@ def initial_state: { "n": 0, "ssd": 0, "mean": 0 };
 def simulate:
   def _simulate(i; observations):
     if (observations|length) <= i then empty
-    else update_state(observations[i]) 
+    else update_state(observations[i])
       | standard_deviation, _simulate(i+1; observations)
     end ;
   . as $in | initial_state | _simulate(0; $in);
@@ -2529,11 +2529,11 @@ $ jq -s -f Dynamic_standard_deviation.jq observations.txt
 
 ### =Observations from a stream=
 
-Recent versions of jq (after 1.4) support retention of state while processing a stream. This means that any generator (including generators that produce items indefinitely) can be used as the source of observations, without first having to capture all the observations, e.g. in a file or array. 
+Recent versions of jq (after 1.4) support retention of state while processing a stream. This means that any generator (including generators that produce items indefinitely) can be used as the source of observations, without first having to capture all the observations, e.g. in a file or array.
 
-```jq># requires jq version 
+```jq># requires jq version
  1.4
-def simulate(stream): 
+def simulate(stream):
   foreach stream as $observation
     (initial_state;
      update_state($observation);
@@ -2541,7 +2541,7 @@ def simulate(stream):
 ```
 
 '''Example 2''':
- simulate( range(0;10) )  
+ simulate( range(0;10) )
 {{out}}
  0
  0.5
@@ -2569,7 +2569,7 @@ The definitions of the filters update_state/1 and initial_state/0 are as above b
 PROGRAM='
 def standard_deviation: .ssd / .n | sqrt;
 
-def update_state(observation): 
+def update_state(observation):
   def sq: .*.;
   ((.mean * .n + observation) / (.n + 1)) as $newmean
   | (.ssd + .n * ((.mean - $newmean) | sq)) as $ssd
@@ -2800,16 +2800,16 @@ The simple form is, computing only the standand deviation of the whole data set:
   m  = mean (x);
   x2 = mean (x .* x);
   dev= sqrt (x2 - m * m)
-  dev = 2 
+  dev = 2
 ```
 
 
-When the intermediate results are also needed, one can use this vectorized form: 
+When the intermediate results are also needed, one can use this vectorized form:
 
 
 ```Matlab
   m = cumsum(x) ./ [1:n];	% running mean
-  x2= cumsum(x.^2) ./ [1:n];   % running squares 
+  x2= cumsum(x.^2) ./ [1:n];   % running squares
 
   dev = sqrt(x2 - m .* m)
   dev =
@@ -2884,11 +2884,11 @@ use Structure;
 bundle Default {
   class StdDev {
     nums : FloatVector;
-    
+
     New() {
       nums := FloatVector->New();
     }
-    
+
     function : Main(args : String[]) ~ Nil {
       sd := StdDev->New();
       test_data := [2.0, 4.0, 4.0, 4.0, 5.0, 5.0, 7.0, 9.0];
@@ -2897,11 +2897,11 @@ bundle Default {
         sd->GetSD()->PrintLine();
       };
     }
-    
+
     method : public : AddNum(num : Float) ~ Nil {
       nums->AddBack(num);
     }
-    
+
     method : public : native : GetSD() ~ Float {
       sq_diffs := 0.0;
       avg := nums->Average();
@@ -2909,7 +2909,7 @@ bundle Default {
         num := nums->Get(i);
         sq_diffs += (num - avg) * (num - avg);
       };
-      
+
       return (sq_diffs / nums->Size())->SquareRoot();
     }
   }
@@ -3270,7 +3270,7 @@ begin
       writeln(rr,' -> ',AppendAndCalc(rr));
     end;
   Readln;
-end. 
+end.
 ```
 
 {{out}}
@@ -3294,7 +3294,7 @@ end.
 
 
 ```perl
-{ 
+{
     package SDAccum;
     sub new {
 	my $class = shift;
@@ -3392,12 +3392,12 @@ sub sd (@a) {
     my $mean = @a R/ [+] @a;
     sqrt @a R/ [+] map (* - $mean)**2, @a;
 }
- 
+
 sub sdaccum {
     my @a;
     return { push @a, $^x; sd @a; };
 }
- 
+
 my &f = sdaccum;
 say f $_ for 2, 4, 4, 4, 5, 5, 7, 9;
 ```
@@ -3584,11 +3584,11 @@ Adding 9: result 2
  stddev: proc options(main);
    declare a(10) float init(1,2,3,4,5,6,7,8,9,10);
    declare stdev float;
-   declare i fixed binary;   
-  
+   declare i fixed binary;
+
    stdev=std_dev(a);
-   put skip list('Standard deviation', stdev);   
-  
+   put skip list('Standard deviation', stdev);
+
    std_dev: procedure(a) returns(float);
      declare a(*) float, n fixed binary;
      n=hbound(a,1);
@@ -3603,7 +3603,7 @@ Adding 9: result 2
        return( sqrt(sum(b**2)/n - average**2) );
      end;
    end std_dev;
- 
+
  end;
 ```
 
@@ -3611,14 +3611,14 @@ Adding 9: result 2
 
 ```txt
 AVERAGE= 5.50000E+0000;
-Standard deviation       2.87228E+0000 
+Standard deviation       2.87228E+0000
 ```
 
 
 
 ## PowerShell
 
-This implementation takes the form of an advanced function 
+This implementation takes the form of an advanced function
 which can act like a cmdlet and receive input from the pipeline.
 
 ```powershell
@@ -3711,7 +3711,7 @@ EndDataSection
 
 ### Python: Using a function with attached properties
 
-The program should work with Python 2.x and 3.x, 
+The program should work with Python 2.x and 3.x,
 although the output would not be a tuple in 3.x
 
 ```python>>>
@@ -3727,7 +3727,7 @@ although the output would not be a tuple in 3.x
 >>> for value in (2,4,4,4,5,5,7,9):
     print (value, sd(value))
 
-    
+
 (2, 0.0)
 (4, 1.0)
 (4, 0.94280904158206258)
@@ -3788,7 +3788,7 @@ You could rename the method <code>sd</code> to <code>__call__</code> this would 
 >>> for value in (2,4,4,4,5,5,7,9):
 	print (value, sd(value))
 
-	
+
 2 0.0
 4 1.0
 4 0.942809041582
@@ -3821,7 +3821,7 @@ You could rename the method <code>sd</code> to <code>__call__</code> this would 
 >>> for value in (2,4,4,4,5,5,7,9):
 	print (value, sd.send(value))
 
-	
+
 2 0.0
 4 1.0
 4 0.942809041582
@@ -3988,7 +3988,7 @@ standard deviation:  2
 # Project : Cumulative standard deviation
 
 decimals(6)
-sdsave = list(100) 
+sdsave = list(100)
 sd = "2,4,4,4,5,5,7,9"
 sumval = 0
 sumsqs = 0
@@ -3997,11 +3997,11 @@ for num = 1 to 8
      sd = substr(sd, ",", "")
      stddata = number(sd[num])
      sumval = sumval + stddata
-     sumsqs = sumsqs + pow(stddata,2) 
-     standdev = pow(((sumsqs / num) - pow((sumval /num),2)),0.5) 
+     sumsqs = sumsqs + pow(stddata,2)
+     standdev = pow(((sumsqs / num) - pow((sumval /num),2)),0.5)
      sdsave[num] = string(num) + " " + string(sumval) +" " + string(sumsqs)
      see "" + num + " value in = " + stddata + " Stand Dev = " + standdev + nl
-next 
+next
 
 ```
 
@@ -4025,7 +4025,7 @@ Output:
 ## Ruby
 
 
-###  Object 
+###  Object
 
 Uses an object to keep state.
 
@@ -4037,7 +4037,7 @@ class StdDevAccumulator
   def initialize
     @n, @sum, @sumofsquares = 0, 0.0, 0.0
   end
-  
+
   def <<(num)
     # return self to make this possible:  sd << 1 << 2 << 3 # => 0.816496580927726
     @n += 1
@@ -4045,11 +4045,11 @@ class StdDevAccumulator
     @sumofsquares += num**2
     self
   end
-  
+
   def stddev
     Math.sqrt( (@sumofsquares / @n) - (@sum / @n)**2 )
   end
-  
+
   def to_s
     stddev.to_s
   end
@@ -4075,7 +4075,7 @@ adding 9: stddev of 8 samples is 2.0
 
 
 
-###  Closure 
+###  Closure
 
 
 ```ruby
@@ -4096,7 +4096,7 @@ sd = sdaccum
 
 
 ```txt
-0.0, 1.0, 0.942809041582063, 0.866025403784439, 0.979795897113272, 1.0, 1.39970842444753, 2.0, 
+0.0, 1.0, 0.942809041582063, 0.866025403784439, 0.979795897113272, 1.0, 1.39970842444753, 2.0,
 ```
 
 
@@ -4108,15 +4108,15 @@ sd = sdaccum
 dim sdSave$(100) 'can call up to 100 versions
                   'holds (space-separated) number of data , sum of values and sum of squares
 sd$ = "2,4,4,4,5,5,7,9"
- 
+
 for num = 1 to 8
  stdData = val(word$(sd$,num,","))
   sumVal = sumVal + stdData
   sumSqs = sumSqs + stdData^2
- 
+
   ' standard deviation = square root of (the average of the squares less the square of the average)
   standDev   =((sumSqs / num) - (sumVal /num) ^ 2) ^ 0.5
- 
+
   sdSave$(num) = str$(num);" ";str$(sumVal);" ";str$(sumSqs)
   print num;" value in = ";stdData; " Stand Dev = "; using("###.######", standDev)
 
@@ -4340,7 +4340,7 @@ object StddevCalc extends App {
 
 (define (standart-deviation-generator)
   (let ((nums '()))
-    (lambda (x) 
+    (lambda (x)
       (set! nums (cons x nums))
       (let* ((mean (/ (apply + nums) (length nums)))
       (mean-sqr (lambda (y) (expt (- y mean) 2)))
@@ -4461,12 +4461,12 @@ func stddev(x) {
 ```smalltalk
 Object subclass: SDAccum [
     |sum sum2 num|
-    SDAccum class >> new [  |o| 
+    SDAccum class >> new [  |o|
         o := super basicNew.
         ^ o init.
     ]
     init [ sum := 0. sum2 := 0. num := 0 ]
-    value: aValue [ 
+    value: aValue [
       sum := sum + aValue.
       sum2 := sum2 + ( aValue * aValue ).
       num := num + 1.
@@ -4477,7 +4477,7 @@ Object subclass: SDAccum [
     variance [ |m| m := self mean.
                num>0 ifTrue: [^ (sum2/num) - (m*m) ] ifFalse: [ ^ 0.0 ]
              ]
-    stddev [ ^ (self variance) sqrt ] 
+    stddev [ ^ (self variance) sqrt ]
 ].
 ```
 
@@ -4543,13 +4543,13 @@ CREATE TABLE
 FEHLER:  Relation »vteststd« existiert bereits
 CREATE FUNCTION
 INSERT 0 1
- std_deviation 
+ std_deviation
 ---------------
              0
 (1 Zeile)
 
 INSERT 0 1
- std_deviation 
+ std_deviation
 ---------------
              1
  0.942809041582063
@@ -4570,30 +4570,30 @@ DELETE 8
 ```Swift
 import Darwin
 class stdDev{
-    
+
     var n:Double = 0.0
     var sum:Double = 0.0
     var sum2:Double = 0.0
-    
+
     init(){
-        
+
         let testData:[Double] = [2,4,4,4,5,5,7,9];
         for x in testData{
-            
+
             var a:Double = calcSd(x)
             println("value \(Int(x)) SD = \(a)");
         }
-        
+
     }
-    
+
     func calcSd(x:Double)->Double{
-        
+
         n += 1
         sum += x
         sum2 += x*x
         return sqrt( sum2 / n - sum*sum / n / n)
     }
-    
+
 }
 var aa = stdDev()
 ```
@@ -4626,9 +4626,9 @@ func standardDeviation(arr : [Double]) -> Double
     let sumOfSquaredAvgDiff = arr.map { pow($0 - avg, 2.0)}.reduce(0, {$0 + $1})
     return sqrt(sumOfSquaredAvgDiff / length)
 }
- 
+
 let responseTimes = [ 18.0, 21.0, 41.0, 42.0, 48.0, 50.0, 55.0, 90.0 ]
- 
+
 standardDeviation(responseTimes) // 20.8742514835862
 standardDeviation([2,4,4,4,5,5,7,9]) // 2.0
 
@@ -4718,7 +4718,7 @@ puts "the standard deviation is: $sd"
 [[Category:Stateful transactions]]
 
 =={{header|TI-83 BASIC}}==
-On the TI-83 family, standard deviation of a population is 
+On the TI-83 family, standard deviation of a population is
 a builtin function (σx):
  • Press [STAT] select [EDIT] followed by [ENTER]
  • then enter for list L1 in the table : 2, 4, 4, 4, 5, 5, 7, 9
@@ -4883,9 +4883,9 @@ CrLf(0);
 
 
 ```zkl
-fcn sdf{ fcn(x,xs){ 
-      m:=xs.append(x.toFloat()).sum(0.0)/xs.len(); 
-      (xs.reduce('wrap(p,x){(x-m)*(x-m) +p},0.0)/xs.len()).sqrt() 
+fcn sdf{ fcn(x,xs){
+      m:=xs.append(x.toFloat()).sum(0.0)/xs.len();
+      (xs.reduce('wrap(p,x){(x-m)*(x-m) +p},0.0)/xs.len()).sqrt()
     }.fp1(L())
 }
 ```

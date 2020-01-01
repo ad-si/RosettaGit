@@ -16,8 +16,8 @@ tags = []
 [[Category:Stateful transactions]]
 
 A generator is an executable entity (like a function or procedure) that contains code that yields a sequence of values, one at a time, so that each time you call the generator, the next value in the sequence is provided.
- 
-Generators are often built on top of coroutines or objects so that the internal state of the object is handled “naturally”. 
+
+Generators are often built on top of coroutines or objects so that the internal state of the object is handled “naturally”.
 
 Generators are often used in situations where a sequence is potentially infinite, and where it is possible to construct the next value of the sequence with only minimal state.
 
@@ -26,7 +26,7 @@ Generators are often used in situations where a sequence is potentially infinite
 * Create a function that returns a generation of the m'th powers of the positive integers starting from zero, in order, and without obvious or simple upper limit. (Any upper limit to the generator should not be stated in the source but should be down to factors such as the languages natural integer size limit or computational time/size).
 * Use it to create a generator of:
 :::*   Squares.
-:::*   Cubes. 
+:::*   Cubes.
 * Create a new generator that filters all cubes from the generator of squares.
 * Drop the first 20 values from this last generator of filtered results, and then show the next 10 values.
 
@@ -45,9 +45,9 @@ Note that this task ''requires'' the use of generators in the calculation of the
 
 {{works with|Ada 2005}}
 
-To modify the internal state, the function uses an access parameter. 
-For a different approach, see the Random packages of the Ada compiler, which use the so-called "Rosen trick". 
-With the next release of Ada 2012 functions are allowed to have in-out parameters, which would solve this problem, too. 
+To modify the internal state, the function uses an access parameter.
+For a different approach, see the Random packages of the Ada compiler, which use the so-called "Rosen trick".
+With the next release of Ada 2012 functions are allowed to have in-out parameters, which would solve this problem, too.
 You could also use procedures instead of functions.
 
 generator.ads:
@@ -318,7 +318,7 @@ on run
     take(10, ¬
         drop(20, ¬
             differenceGen(powers(2), powers(3))))
-    
+
     --> {529, 576, 625, 676, 784, 841, 900, 961, 1024, 1089}
 end run
 
@@ -436,7 +436,7 @@ on |length|(xs)
 end |length|
 
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if script is class of f then
@@ -628,7 +628,7 @@ printf(($g(0)x$, get list(gen slice(fil, 20, 30, )) ))
 
 ```txt
 
-529 576 625 676 784 841 900 961 1024 1089 
+529 576 625 676 784 841 900 961 1024 1089
 
 ```
 
@@ -637,15 +637,15 @@ printf(($g(0)x$, get list(gen slice(fil, 20, 30, )) ))
 ## C
 
 ==={{libheader|libco}}===
-libco is a tiny library that adds ''cooperative multithreading'', also known as ''coroutines'', to the C language. 
+libco is a tiny library that adds ''cooperative multithreading'', also known as ''coroutines'', to the C language.
 Its <tt>co_switch(x)</tt> function pauses the current cothread and resumes the other cothread <tt>x</tt>.
 
-This example provides <tt>next64()</tt> and <tt>yield64()</tt>, to generate 64-bit integers. <tt>next64()</tt> switches to a generator. 
+This example provides <tt>next64()</tt> and <tt>yield64()</tt>, to generate 64-bit integers. <tt>next64()</tt> switches to a generator.
 Then the generator passes some 64-bit integer to <tt>yield64()</tt>, which switches to the first cothread, where <tt>next64()</tt> returns this 64-bit integer.
 
 
-```c>#include <inttypes.h
-	/* int64_t, PRId64 */
+```c
+#include <inttypes.h> /* int64_t, PRId64 */
 #include <stdlib.h>	/* exit() */
 #include <stdio.h>	/* printf() */
 
@@ -825,8 +825,8 @@ $ ./main
 ### Using struct to store state
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -924,8 +924,8 @@ int main()
 A templated solution.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 using namespace std;
 
 template<class T>
@@ -946,12 +946,12 @@ class PowersGenerator<int, P>: Generator<int>
 public:
   int i;
   PowersGenerator() { i = 1; }
-  virtual int operator()() 
-  { 
-    int o = 1; 
-    for(int j = 0; j < P; ++j) o *= i; 
+  virtual int operator()()
+  {
+    int o = 1;
+    for(int j = 0; j < P; ++j) o *= i;
     ++i;
-    return o; 
+    return o;
   }
 };
 
@@ -966,7 +966,7 @@ public:
 
   Filter() { lastG = gen(); lastF = filter(); }
 
-  virtual T operator()() 
+  virtual T operator()()
   {
     while(lastG >= lastF)
     {
@@ -1059,18 +1059,18 @@ Thus we can define squares and cubes as lazy sequences:
 
 The definition here of the squares-not-cubes lazy sequence uses the loop/recur construct,
 which isn't lazy. So we use ''lazy-seq'' explicity:
- 
+
 
 ```clojure
-(defn squares-not-cubes 
+(defn squares-not-cubes
   ([] (squares-not-cubes (powers 2) (powers 3)))
-  ([squares cubes] 
+  ([squares cubes]
     (loop [[p2first & p2rest :as p2s] squares, [p3first & p3rest :as p3s] cubes]
       (cond
         (= p2first p3first) (recur p2rest p3rest)
         (> p2first p3first) (recur p2s p3rest)
         :else (cons p2first (lazy-seq (squares-not-cubes p2rest p3s)))))))
-        
+
 (->> (squares-not-cubes) (drop 20) (take 10))
 ; => (529 576 625 676 784 841 900 961 1024 1089)
 ```
@@ -1085,7 +1085,7 @@ function ''repeatedly''.)
 (defn seq->fn [sequence]
   (let [state (atom (cons nil sequence))]
     (fn [] (first (swap! state rest)))
-    
+
 (def f (seq->fn (squares-not-cubes)))
 [(f) (f) (f)] ; => [4 9 16]
 ```
@@ -1262,7 +1262,7 @@ void main() {
 {{out}}
 
 ```txt
-529 576 625 676 784 841 900 961 1024 1089 
+529 576 625 676 784 841 900 961 1024 1089
 ```
 
 
@@ -1366,7 +1366,7 @@ println()
 (define (gen-power power)
 	(make-generator
 		(lambda(n) (yield (expt n power)) (1+ n))  1))
-		
+
 (define powers-2 (gen-power 2))
 (define powers-3 (gen-power 3))
 
@@ -1390,7 +1390,7 @@ println()
 ;; application
 (define task    (gen-substract (gen-power 2) (gen-power 3)))
 
-(drop task 20) 
+(drop task 20)
 (take task 10)
     → (529 576 625 676 784 841 900 961 1024 1089)
 
@@ -1411,16 +1411,16 @@ defmodule Generator do
     first_remove = next( remove_pid )
     spawn( fn -> filter_loop(source_pid, remove_pid, first_remove) end )
   end
-  
+
   def next( pid ) do
     send(pid, {:next, self})
     receive do
       x -> x
     end
   end
-  
+
   def power( m ), do: spawn( fn -> power_loop(m, 0) end )
-  
+
   def task do
     squares_pid = power( 2 )
     cubes_pid = power( 3 )
@@ -1428,7 +1428,7 @@ defmodule Generator do
     for _x <- 1..20, do: next(filter_pid)
     for _x <- 1..10, do: next(filter_pid)
   end
-  
+
   defp filter_loop( pid1, pid2, n2 ) do
     receive do
       {:next, pid} ->
@@ -1437,13 +1437,13 @@ defmodule Generator do
         filter_loop( pid1, pid2, new_n2 )
     end
   end
-  
+
   defp filter_loop_next( n1, n2, pid1, pid2 ) when n1 > n2, do:
        filter_loop_next( n1, next(pid2), pid1, pid2 )
   defp filter_loop_next( n, n, pid1, pid2 ), do:
        filter_loop_next( next(pid1), next(pid2), pid1, pid2 )
   defp filter_loop_next( n1, n2, _pid1, _pid2 ), do: {n1, n2}
-  
+
   defp power_loop( m, n ) do
     receive do
       {:next, pid} -> send( pid, round(:math.pow(n, m) ) )
@@ -1494,7 +1494,7 @@ This code requires generator library which was introduced in Emacs 25.2
 	(setq j (iter-next f)))
       (unless (= i j)
 	(iter-yield i)))))
-	
+
 
 (let ((g (flt-gen))
       (o 'nil))
@@ -1719,10 +1719,10 @@ class Main
         VARIABLE Cbroot         \ last cubic  root
 : square?       ( u -- f  ;test U for square number)
         BEGIN
-                Sqroot @ square over < 
+                Sqroot @ square over <
         WHILE
-                1 Sqroot +! 
-        REPEAT 
+                1 Sqroot +!
+        REPEAT
         Sqroot @ square =
 ;
 : cube?         ( u -- f  ;test U for cubic  number)
@@ -1736,7 +1736,7 @@ class Main
         VARIABLE Counter
 : (go)  ( u -- u' )
         GEN 1+ Counter @ 30 >= STOP
-        dup square? | dup cube? 0= | Counter @ 20 >= 1 Counter +! | dup . 
+        dup square? | dup cube? 0= | Counter @ 20 >= 1 Counter +! | dup .
 ;
 :noname 0 Counter ! 1 Sqroot ! 1 Cbroot ! 0 (go) drop ;
 execute cr bye
@@ -1748,8 +1748,8 @@ execute cr bye
 ```txt
 
 $ gforth -e "include genexp-rcode.fs"
-529 576 625 676 784 841 900 961 1024 1089 
-$ 
+529 576 625 676 784 841 900 961 1024 1089
+$
 
 ```
 
@@ -1844,13 +1844,13 @@ func main() {
 ```
 
 
-Alternatively, generators can be implemented in Go with goroutines and channels.  
+Alternatively, generators can be implemented in Go with goroutines and channels.
 There are tradeoffs however, and often one technique is a significantly better choice.
 
-Goroutines can run concurrently, but there is overhead associated with thread scheduling and channel communication.  Flow control is also different.  
-A generator implemented as a closure is a function with a single entry point fixed at the beginning.  
-On repeated calls, execution always starts over at the beginning and ends when a value is returned.  
-A generator implemented as a goroutine, on the other hand, "returns" a value by sending it on a channel, and then the goroutine continues execution from that point.  
+Goroutines can run concurrently, but there is overhead associated with thread scheduling and channel communication.  Flow control is also different.
+A generator implemented as a closure is a function with a single entry point fixed at the beginning.
+On repeated calls, execution always starts over at the beginning and ends when a value is returned.
+A generator implemented as a goroutine, on the other hand, "returns" a value by sending it on a channel, and then the goroutine continues execution from that point.
 This allows more flexibility in structuring code.
 
 ```go
@@ -1912,10 +1912,10 @@ Generators in most cases can be implemented using infinite lists in Haskell. Bec
 
 ```haskell
 import Data.List.Ordered
- 
+
 powers :: Int -> [Int]
 powers m = map (^ m) [0..]
- 
+
 squares :: [Int]
 squares = powers 2
 
@@ -1924,7 +1924,7 @@ cubes = powers 3
 
 foo :: [Int]
 foo = filter (not . has cubes) squares
- 
+
 main :: IO ()
 main = print $ take 10 $ drop 20 foo
 ```
@@ -1937,17 +1937,17 @@ main = print $ take 10 $ drop 20 foo
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-Generators are close to the heart and soul of Icon/Unicon. 
-Co-expressions let us circumvent the normal backtracking mechanism and get results where we need them. 
+Generators are close to the heart and soul of Icon/Unicon.
+Co-expressions let us circumvent the normal backtracking mechanism and get results where we need them.
 
 
 ```Icon
 procedure main()
 
-write("Non-cube Squares (21st to 30th):") 
-every (k := 0, s := noncubesquares()) do 
+write("Non-cube Squares (21st to 30th):")
+every (k := 0, s := noncubesquares()) do
    if(k +:= 1) > 30 then break
-   else write(20 < k," : ",s)  
+   else write(20 < k," : ",s)
 end
 
 procedure mthpower(m)   #: generate i^m for i = 0,1,...
@@ -1955,23 +1955,23 @@ while (/i := 0) | (i +:= 1) do suspend i^m
 end
 
 procedure noncubesquares()  #: filter for squares that aren't cubes
-cu := create mthpower(3)    # co-expressions so that we can 
+cu := create mthpower(3)    # co-expressions so that we can
 sq := create mthpower(2)    # ... get our results where we need
 
 repeat {
-   if c === s then  ( c := @cu , s := @sq ) 
+   if c === s then  ( c := @cu , s := @sq )
    else if s > c then c := @cu
    else {
       suspend s
-      s := @sq 
+      s := @sq
       }
    }
 end
 ```
 
 
-Note: The task could be written without co-expressions but would be likely be ugly. 
-If there is an elegant non-co-expression version please add it as an alternate example. 
+Note: The task could be written without co-expressions but would be likely be ugly.
+If there is an elegant non-co-expression version please add it as an alternate example.
 
 {{out}}
 
@@ -2146,7 +2146,7 @@ class CubesGen implements LongSupplier {
 
 ### Procedural
 
-{{works with|Firefox 3.6 using JavaScript 1.7|}} 
+{{works with|Firefox 3.6 using JavaScript 1.7|}}
 
 
 ```JavaScript
@@ -2155,14 +2155,14 @@ function PowersGenerator(m) {
 	var n=0;
 	while(1) {
 		yield Math.pow(n, m);
-		n += 1;	
+		n += 1;
 	}
 }
 
 function FilteredGenerator(g, f){
 	var value = g.next();
 	var filter = f.next();
-	
+
 	while(1) {
 		if( value < filter ) {
 			yield value;
@@ -2173,7 +2173,7 @@ function FilteredGenerator(g, f){
 			value = g.next();
 			filter = f.next();
 		}
-	}	
+	}
 }
 
 
@@ -2466,7 +2466,7 @@ streams of values have been added, notably "foreach" and "limit".
 If your version of jq has these enhancements, then it is often
 preferable to use them in conjunction with functions that emit streams of values rather than the "next-value" functions that are the focus of this page.
 
-'''Part 2: selection from 2 ^ m''' 
+'''Part 2: selection from 2 ^ m'''
 
 ```jq
 # Infrastructure:
@@ -2616,28 +2616,28 @@ Non-cubic squares (21st to 30th) : 529 576 625 676 784 841 900 961 1024 1089
 Module Generator {
       PowGen = Lambda (e)-> {
             =lambda i=0, e -> {
-                  i++            
+                  i++
                   =i**e
             }
       }
-      
+
       Squares=lambda PowGen=PowGen(2) ->{
             =PowGen()
       }
-      
+
       Cubes=Lambda PowGen=PowGen(3) -> {
             =PowGen()
       }
-      
+
       Filter=Lambda  z=Squares(), Squares, m, Cubes->{
             while m<Z {m=cubes()}
             if z=m then z=Squares()
             =z
             z=Squares()
       }
-      
+
       For i=1 to 20 : dropit=Filter() :Next i
-      
+
       Document doc$="Non-cubic squares (21st to 30th)"
       Print doc$
       \\ a new line to doc$
@@ -2646,7 +2646,7 @@ Module Generator {
       For i=1 to  10 {
             f=Filter()
             Print Format$("I: {0::-2}, F: {1}",i+20, f)
-            doc$=Format$("I: {0::-2}, F: {1}",i+20, f)+{  
+            doc$=Format$("I: {0::-2}, F: {1}",i+20, f)+{
             }
       }
       Clipboard doc$
@@ -2659,16 +2659,16 @@ Generator
 {{out}}
 <pre >
 Non-cubic squares (21st to 30th)
-I: 21, F: 529  
-I: 22, F: 576  
-I: 23, F: 625  
-I: 24, F: 676  
-I: 25, F: 784  
-I: 26, F: 841  
-I: 27, F: 900  
-I: 28, F: 961  
-I: 29, F: 1024  
-I: 30, F: 1089  
+I: 21, F: 529
+I: 22, F: 576
+I: 23, F: 625
+I: 24, F: 676
+I: 25, F: 784
+I: 26, F: 841
+I: 27, F: 900
+I: 28, F: 961
+I: 29, F: 1024
+I: 30, F: 1089
 </pre >
 
 
@@ -3048,7 +3048,7 @@ say (@squares with-out @cubes)[20 ..^ 20+10].join(', ');
 ```Phix
 --
 -- demo\rosetta\Generator_Exponential.exw
--- 
+--
 ### ================================
 
 --
@@ -3123,7 +3123,7 @@ function powers($m) {
         yield pow($n, $m);
     }
 }
-    
+
 function filtered($s1, $s2) {
     while (true) {
         list($v, $f) = [$s1->current(), $s2->current()];
@@ -3287,7 +3287,7 @@ from itertools import islice, count
 def powers(m):
     for n in count():
         yield n ** m
-    
+
 def filtered(s1, s2):
     v, f = next(s1), next(s2)
     while True:
@@ -3566,7 +3566,7 @@ end
 
 def squares_without_cubes
   return enum_for(__method__) unless block_given?
-  
+
   cubes = powers(3)
   c = cubes.next
   powers(2) do |s|
@@ -3603,7 +3603,7 @@ end
 
 def squares_without_cubes
   return enum_for(__method__) unless block_given?
-  
+
   cubes = powers(3) #no block, so this is the first generator
   c = cubes.next
   squares = powers(2) # second generator
@@ -3663,7 +3663,7 @@ object Generators {
    def main(args: Array[String]): Unit = {
       def squares(n:Int=0):Stream[Int]=(n*n) #:: squares(n+1)
       def cubes(n:Int=0):Stream[Int]=(n*n*n) #:: cubes(n+1)
-		
+
       def filtered(s:Stream[Int], c:Stream[Int]):Stream[Int]={
          if(s.head>c.head) filtered(s, c.tail)
          else if(s.head<c.head) Stream.cons(s.head, filtered(s.tail, c))
@@ -3741,7 +3741,7 @@ fn main() {
 {{out}}
 
 ```txt
-529 576 625 676 784 841 900 961 1024 1089 
+529 576 625 676 784 841 900 961 1024 1089
 ```
 
 
@@ -3754,7 +3754,7 @@ fn main() {
     (lambda ()
       (set! i (+ 1 i))
       (expt i n))))
- 
+
 (define (filter-seq m n)
   (let* ((s1 (power-seq m)) (s2 (power-seq n))
 			    (a 0) (b 0))
@@ -3766,7 +3766,7 @@ fn main() {
 			     ((= a b) (set! a (s1))))
 		       (loop))))
       a)))
- 
+
 (let loop ((seq (filter-seq 2 3)) (i 0))
   (if (< i 30)
     (begin
@@ -3963,7 +3963,7 @@ answers: [ 529, 576, 625, 676, 784, 841, 900, 961, 1024, 1089 ]
 ## Tcl
 
 {{works with|Tcl|8.6}}
-Tcl implements generators in terms of coroutines. 
+Tcl implements generators in terms of coroutines.
 If these generators were terminating, they would finish by doing <code>return -code break</code> so as to terminate the calling loop context that is doing the extraction of the values from the generator.
 
 ```tcl
@@ -4071,7 +4071,7 @@ End Sub
 {{out}}
 
 ```txt
- 529  576  625  676  784  841  900  961  1024  1089 
+ 529  576  625  676  784  841  900  961  1024  1089
 ```
 
 
@@ -4182,7 +4182,7 @@ int  I;
 
 ```txt
 
-529 576 625 676 784 841 900 961 1024 1089 
+529 576 625 676 784 841 900 961 1024 1089
 
 ```
 
@@ -4199,8 +4199,8 @@ var squared=Utils.Generator(powers,2), cubed=Utils.Generator(powers,3);
 
 fcn filtered(sg,cg){s:=sg.next(); c:=cg.next();
    while(1){
-      if(s>c){c=cg.next(); continue;} 
-      else if(s<c) vm.yield(s); 
+      if(s>c){c=cg.next(); continue;}
+      else if(s<c) vm.yield(s);
       s=sg.next()
    }
 }
@@ -4215,9 +4215,9 @@ f.walk(10).println();
 L(529,576,625,676,784,841,900,961,1024,1089)
 ```
 
-For this task, generators are overkill and overweight, 
-and lazy infinite squences can be used. 
-There is no real change to the algorithms (since generators are lazy sequences), 
+For this task, generators are overkill and overweight,
+and lazy infinite squences can be used.
+There is no real change to the algorithms (since generators are lazy sequences),
 it just has been rewritten in a more functional style.
 {{trans|Clojure}}
 
@@ -4226,7 +4226,7 @@ fcn powers(m){[0.0..].tweak(fcn(n,m){a:=n; do(m-1){a*=n} a}.fp1(m))}
 var squared=powers(2), cubed=powers(3);
 
 fcn filtered(sg,cg){s:=sg.peek(); c:=cg.peek();
-   if(s==c){ cg.next(); sg.next(); return(self.fcn(sg,cg)) } 
+   if(s==c){ cg.next(); sg.next(); return(self.fcn(sg,cg)) }
    if(s>c) { cg.next(); return(self.fcn(sg,cg)); }
    sg.next(); return(s);
 }

@@ -12,13 +12,13 @@ tags = []
 
 {{task}}
 
-Imaginary base numbers are a non-standard positional numeral system which uses an imaginary number as its radix. The most common is quater-imaginary with radix 2i. 
+Imaginary base numbers are a non-standard positional numeral system which uses an imaginary number as its radix. The most common is quater-imaginary with radix 2i.
 
 ''The quater-imaginary numeral system was first proposed by [https://en.wikipedia.org/wiki/Donald_Knuth Donald Knuth] in 1955 as a submission for a high school science talent search. [http://www.fact-index.com/q/qu/quater_imaginary_base.html  [Ref.]]''
 
 Other imaginary bases are possible too but are not as widely discussed and aren't specifically named.
 
-'''Task:''' Write a set of procedures (functions, subroutines, however they are referred to in your language) to convert base 10 numbers to an imaginary base and back. 
+'''Task:''' Write a set of procedures (functions, subroutines, however they are referred to in your language) to convert base 10 numbers to an imaginary base and back.
 
 At a minimum, support quater-imaginary (base 2i).
 
@@ -26,7 +26,7 @@ For extra kudos, support positive or negative bases 2i through 6i (or higher).
 
 As a stretch goal, support converting non-integer numbers ( E.G. 227.65625+10.859375i ) to an imaginary base.
 
-See [https://en.wikipedia.org/wiki/Quater-imaginary_base Wikipedia: Quater-imaginary_base] for more details. 
+See [https://en.wikipedia.org/wiki/Quater-imaginary_base Wikipedia: Quater-imaginary_base] for more details.
 
 For reference, here are some some decimal and complex numbers converted to quater-imaginary.
 <table class="multicol" role="presentation" style="border-collapse: collapse; padding: 0; border: 0; background:transparent; width:100%;">
@@ -327,8 +327,8 @@ For reference, here are some some decimal and complex numbers converted to quate
 
 {{trans|C++}}
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -643,8 +643,8 @@ int main() {
 
 {{trans|C#}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <complex>
 #include <iomanip>
 #include <iostream>
@@ -1458,35 +1458,35 @@ import Data.Char (chr, digitToInt, intToDigit, isDigit, ord)
 import Data.Complex (Complex(..), imagPart, realPart)
 import Data.List (elemIndex, delete)
 import Data.Maybe (fromMaybe)
- 
- 
+
+
 base :: Complex Float
 base = 0 :+ 2
- 
+
 quotRemPositive :: Int -> Int -> (Int, Int)
 quotRemPositive a b
   | r < 0 = (1 + q, floor (realPart (-base ^^ 2)) + r)
   | otherwise = (q, r)
   where
     (q, r) = quotRem a b
- 
+
 digitToIntQI :: Char -> Int
 digitToIntQI c
   | isDigit c = digitToInt c
   | otherwise = ord c - ord 'a' + 10
- 
+
 shiftRight :: String -> String
 shiftRight n
   | l == '0' = h
   | otherwise = h ++ "." ++ [l]
   where
     (l, h) = (last n, init n)
- 
+
 intToDigitQI :: Int -> Char
 intToDigitQI i
   | i `elem` [0 .. 9] = intToDigit i
   | otherwise = chr (i - 10 + ord 'a')
- 
+
 fromQItoComplex :: String -> Complex Float -> Complex Float
 fromQItoComplex num b =
   let dot = fromMaybe (length num) (elemIndex '.' num)
@@ -1496,21 +1496,21 @@ fromQItoComplex num b =
            (a + fromIntegral (digitToIntQI x) * (b ^^ (dot - indx)), indx + 1))
        (0, 1)
        (delete '.' num)
- 
+
 euclidEr :: Int -> Int -> [Int] -> [Int]
 euclidEr a b l
   | a == 0 = l
   | otherwise =
     let (q, r) = quotRemPositive a b
     in euclidEr q b (0 : r : l)
- 
+
 fromIntToQI :: Int -> [Int]
 fromIntToQI 0 = [0]
 fromIntToQI x = tail (euclidEr x (floor $ realPart (base ^^ 2)) [])
- 
+
 getCuid :: Complex Int -> Int
 getCuid c = imagPart c * floor (imagPart (-base))
- 
+
 qizip :: Complex Int -> [Int]
 qizip c =
   let (r, i) = (fromIntToQI (realPart c) ++ [0], fromIntToQI (getCuid c))
@@ -1518,10 +1518,10 @@ qizip c =
      in take (length r - m) r ++
         take (length i - m) i ++
         reverse (zipWith (+) (take m (reverse r)) (take m (reverse i)))
- 
+
 fromComplexToQI :: Complex Int -> String
 fromComplexToQI = shiftRight . fmap intToDigitQI . qizip
- 
+
 main :: IO ()
 main = print (fromComplexToQI (35 :+ 23)) >> print (fromQItoComplex "10.2" base)
 ```
@@ -1989,7 +1989,7 @@ testquim()
 
 The following deals with conversions to and from quater-imaginary only.
 
-As the JDK lacks a complex number class, I've included a very basic one in the program. 
+As the JDK lacks a complex number class, I've included a very basic one in the program.
 
 ```scala
 // version 1.2.10
@@ -2114,8 +2114,8 @@ class QuaterImaginary(val b2i: String) {
     }
 }
 
-fun main(args: Array<String>) { 
-    val fmt = "%4s -> %8s -> %4s"   
+fun main(args: Array<String>) {
+    val fmt = "%4s -> %8s -> %4s"
     for (i in 1..16) {
         var c1 = Complex(i, 0)
         var qi = c1.toQuaterImaginary()
@@ -2188,7 +2188,7 @@ fun main(args: Array<String>) {
 ```modula2
 MODULE ImaginaryBase;
 FROM FormatString IMPORT FormatString;
-FROM RealMath IMPORT round;   
+FROM RealMath IMPORT round;
 FROM Terminal IMPORT WriteString,WriteLn,ReadChar;
 
 (* Helper *)
@@ -2198,7 +2198,7 @@ TYPE
         buf : String;
         ptr : CARDINAL;
     END;
-    
+
 PROCEDURE ToChar(n : INTEGER) : CHAR;
 BEGIN
     CASE n OF
@@ -2218,14 +2218,14 @@ BEGIN
 END ToChar;
 
 PROCEDURE AppendChar(VAR sb : StringBuilder; c : CHAR);
-BEGIN        
+BEGIN
     sb.buf[sb.ptr] := c;
     INC(sb.ptr);
     sb.buf[sb.ptr] := 0C
 END AppendChar;
 
 PROCEDURE AppendInt(VAR sb : StringBuilder; n : INTEGER);
-BEGIN        
+BEGIN
     sb.buf[sb.ptr] := ToChar(n);
     INC(sb.ptr);
     sb.buf[sb.ptr] := 0C
@@ -2233,8 +2233,8 @@ END AppendInt;
 
 PROCEDURE Ceil(r : REAL) : REAL;
 VAR t : REAL;
-BEGIN       
-    t := FLOAT(INT(r));    
+BEGIN
+    t := FLOAT(INT(r));
     IF r - t > 0.0 THEN
         t := t + 1.0
     END;
@@ -2257,7 +2257,7 @@ BEGIN
     WHILE i > 0 DO
         sb.buf[i] := sb.buf[i-1];
         DEC(i)
-    END;       
+    END;
     sb.buf[0] := ToChar(n)
 END PrependInt;
 
@@ -2275,7 +2275,7 @@ BEGIN
         c := str[i];
         str[i] := str[j];
         str[j] := c;
-        
+
         DEC(i);
         INC(j)
     END
@@ -2283,7 +2283,7 @@ END Reverse;
 
 PROCEDURE TrimStart(VAR str : String; c : CHAR);
 VAR i : CARDINAL;
-BEGIN            
+BEGIN
     WHILE str[0] = c DO
         i := 0;
         WHILE str[i] # 0C DO
@@ -2303,23 +2303,23 @@ END WriteInteger;
 (* Imaginary *)
 TYPE
     Complex = RECORD
-        real,imag : REAL; 
+        real,imag : REAL;
     END;
     QuaterImaginary = RECORD
         b2i : String;
     END;
-    
+
 PROCEDURE ComplexMul(lhs,rhs : Complex) : Complex;
-BEGIN         
+BEGIN
     RETURN Complex{
         rhs.real * lhs.real - rhs.imag * lhs.imag,
         rhs.real * lhs.imag + rhs.imag * lhs.real
-    }                            
+    }
 END ComplexMul;
-    
+
 PROCEDURE ComplexMulR(lhs : Complex; rhs : REAL) : Complex;
-BEGIN         
-    RETURN Complex{lhs.real * rhs, lhs.imag * rhs}                            
+BEGIN
+    RETURN Complex{lhs.real * rhs, lhs.imag * rhs}
 END ComplexMulR;
 
 PROCEDURE ComplexInv(c : Complex) : Complex;
@@ -2328,9 +2328,9 @@ BEGIN
     denom := c.real * c.real + c.imag * c.imag;
     RETURN Complex{c.real / denom, -c.imag / denom}
 END ComplexInv;
-    
+
 PROCEDURE ComplexDiv(lhs,rhs : Complex) : Complex;
-BEGIN                                     
+BEGIN
     RETURN ComplexMul(lhs, ComplexInv(rhs))
 END ComplexDiv;
 
@@ -2338,16 +2338,16 @@ PROCEDURE ComplexNeg(c : Complex) : Complex;
 BEGIN
     RETURN Complex{-c.real, -c.imag}
 END ComplexNeg;
-    
+
 PROCEDURE ComplexSum(lhs,rhs : Complex) : Complex;
-BEGIN                                     
+BEGIN
     RETURN Complex{lhs.real + rhs.real, lhs.imag + rhs.imag}
 END ComplexSum;
 
 PROCEDURE WriteComplex(c : Complex);
 VAR buf : ARRAY[0..15] OF CHAR;
-BEGIN                    
-    IF c.imag = 0.0 THEN      
+BEGIN
+    IF c.imag = 0.0 THEN
         WriteInteger(INT(c.real))
     ELSIF c.real = 0.0 THEN
         WriteInteger(INT(c.imag));
@@ -2364,7 +2364,7 @@ BEGIN
         WriteString("i")
     END
 END WriteComplex;
-    
+
 PROCEDURE ToQuaterImaginary(c : Complex) : QuaterImaginary;
 VAR
     re,im,fi,rem,index : INTEGER;
@@ -2376,7 +2376,7 @@ BEGIN
     re := INT(c.real);
     im := INT(c.imag);
     fi := -1;
-    sb := StringBuilder{"", 0};    
+    sb := StringBuilder{"", 0};
     WHILE re # 0 DO
         rem := Modulus(re, -4);
         re := re / (-4);
@@ -2419,7 +2419,7 @@ BEGIN
     IF sb.buf[0] = '.' THEN
         PrependInt(sb, 0)
     END;
-    
+
     RETURN QuaterImaginary{sb.buf}
 END ToQuaterImaginary;
 
@@ -2428,11 +2428,11 @@ VAR
     j,pointPos,posLen,b2iLen : INTEGER;
     k : REAL;
     sum,prod : Complex;
-BEGIN       
+BEGIN
     pointPos := 0;
     WHILE (qi.b2i[pointPos] # 0C) AND (qi.b2i[pointPos] # '.') DO
         INC(pointPos)
-    END;            
+    END;
     IF qi.b2i[pointPos] # '.' THEN
         pointPos := -1;
         posLen := 0;
@@ -2445,7 +2445,7 @@ BEGIN
 
     sum := Complex{0.0, 0.0};
     prod := Complex{1.0, 0.0};
-    
+
     FOR j:=0 TO posLen - 1 DO
         k := FLOAT(ORD(qi.b2i[posLen - 1 - j]) - ORD('0'));
         IF k > 0.0 THEN
@@ -2453,7 +2453,7 @@ BEGIN
         END;
         prod := ComplexMul(prod, Complex{0.0, 2.0})
     END;
-    
+
     IF pointPos # -1 THEN
         prod := ComplexInv(Complex{0.0, 2.0});
         b2iLen := 0;
@@ -2466,12 +2466,12 @@ BEGIN
             prod := ComplexMul(prod, ComplexInv(Complex{0.0, 2.0}))
         END
     END;
-    
+
     RETURN sum
 END ToComplex;
 
 (* Main *)
-VAR 
+VAR
     c1,c2 : Complex;
     qi : QuaterImaginary;
     i : INTEGER;
@@ -2486,7 +2486,7 @@ BEGIN
         c2 := ToComplex(qi);
         WriteComplex(c2);
         WriteString("   ");
-        
+
         c1 := ComplexNeg(c1);
         WriteComplex(c1);
         WriteString(" -> ");
@@ -2681,7 +2681,7 @@ function base2(atom num, integer radix, precision = -8)
             place += 1
             v = num/power(radix,place)
         end while
- 
+
         while (v or place > 0) and (place > precision) do
             integer digit = floor(radix*v - lower_bound)
             v = (radix*v - digit)
@@ -2719,21 +2719,21 @@ function zip(string a, string b)
 end function
 
 function base(complexn num, integer radix, precision = -8)
- 
+
     integer absrad = abs(radix),
             radix2 = -power(radix,2)
     if absrad<2 or absrad>6 then throw("base radix out of range") end if
- 
+
     atom {re, im}         = {complex_real(num), complex_imag(num)}
     string {re_wh, re_fr} = base2(re,       radix2, precision),
            {im_wh, im_fr} = base2(im/radix, radix2, precision)
- 
+
     string whole = reverse(zip(reverse(re_wh), reverse(im_wh))),
            fraction = zip(im_fr, re_fr)
     if fraction!="0" then whole &= '.'&fraction end if
     return whole
 end function
- 
+
 function parse_base(string str, integer radix)
 
     complexn fraction = 0
@@ -2758,7 +2758,7 @@ function parse_base(string str, integer radix)
 
     return fraction
 end function
- 
+
 constant tests = {{0,2},{1,2},{5,2},{-13,2},{{0,9},2},{{0,-3},2},{{7.75,-7.5}, 2},{.25, 2}, -- base 2i tests
                   {{5,5}, 2},{{5,5}, 3},{{5,5}, 4},{{5,5}, 5},{{5,5}, 6}, -- same value, positive imaginary bases
                   {{5,5},-2},{{5,5},-3},{{5,5},-4},{{5,5},-5},{{5,5},-6}, -- same value, negative imaginary bases

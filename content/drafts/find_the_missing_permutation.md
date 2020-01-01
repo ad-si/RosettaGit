@@ -41,7 +41,7 @@ DCAB
 
 ```
 
-Listed above are all of the permutations of the symbols   '''A''',   '''B''',   '''C''',   and   '''D''',   ''except''   for one permutation that's   ''not''   listed.  
+Listed above are all of the permutations of the symbols   '''A''',   '''B''',   '''C''',   and   '''D''',   ''except''   for one permutation that's   ''not''   listed.
 
 
 ;Task:
@@ -49,17 +49,17 @@ Find that missing permutation.
 
 
 ;Methods:
-* Obvious method: 
-         enumerate all permutations of   '''A''',  '''B''',  '''C''',  and  '''D''',  
-         and then look for the missing permutation. 
+* Obvious method:
+         enumerate all permutations of   '''A''',  '''B''',  '''C''',  and  '''D''',
+         and then look for the missing permutation.
 
 * alternate method:
-         Hint:  if all permutations were shown above,  how many 
-         times would  '''A'''  appear in each position?     
+         Hint:  if all permutations were shown above,  how many
+         times would  '''A'''  appear in each position?
          What is the  ''parity''  of this number?
 
 * another alternate method:
-         Hint:  if you add up the letter values of each column, 
+         Hint:  if you add up the letter values of each column,
          does a missing letter   '''A''',  '''B''',  '''C''',  and  '''D'''   from each
          column cause the total value for each column to be unique?
 
@@ -249,7 +249,7 @@ on run
                     "ADCB CDAB DABC BCAD CADB CDBA " & ¬
                     "CBAD ABDC ADBC BDCA DCBA BACD " & ¬
                     "BADC BDAC CBDA DBCA DCAB")))))
-    
+
     --> "DBAC"
 end run
 
@@ -290,7 +290,7 @@ on composeAll(fs)
                     mReturn(f)'s |λ|(a)
                 end |λ|
             end script
-            
+
             foldr(result, x, fs)
         end |λ|
     end script
@@ -340,14 +340,14 @@ on group(xs)
             a = b
         end |λ|
     end script
-    
+
     groupBy(eq, xs)
 end group
 
 -- groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
 on groupBy(f, xs)
     set mf to mReturn(f)
-    
+
     script enGroup
         on |λ|(a, x)
             if length of (active of a) > 0 then
@@ -355,7 +355,7 @@ on groupBy(f, xs)
             else
                 set h to missing value
             end if
-            
+
             if h is not missing value and mf's |λ|(h, x) then
                 {active:(active of a) & x, sofar:sofar of a}
             else
@@ -363,7 +363,7 @@ on groupBy(f, xs)
             end if
         end |λ|
     end script
-    
+
     if length of xs > 0 then
         set dct to foldl(enGroup, {active:{item 1 of xs}, sofar:{}}, tail(xs))
         if length of (active of dct) > 0 then
@@ -410,7 +410,7 @@ on map(f, xs)
     end tell
 end map
 
--- minimumBy :: (a -> a -> Ordering) -> [a] -> a 
+-- minimumBy :: (a -> a -> Ordering) -> [a] -> a
 on minimumBy(f, xs)
     if length of xs < 1 then return missing value
     tell mReturn(f)
@@ -422,7 +422,7 @@ on minimumBy(f, xs)
     end tell
 end minimumBy
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -458,11 +458,11 @@ on transpose(xss)
                     item iCol of xs
                 end |λ|
             end script
-            
+
             map(row, xss)
         end |λ|
     end script
-    
+
     map(column, item 1 of xss)
 end transpose
 
@@ -525,11 +525,11 @@ This reads the list of permutations as standard input and outputs the missing on
 
 
 ```awk
-{ 
-  split($1,a,""); 
-  for (i=1;i<=4;++i) { 
-    t[i,a[i]]++; 
-  } 
+{
+  split($1,a,"");
+  for (i=1;i<=4;++i) {
+    t[i,a[i]]++;
+  }
 }
 END {
   for (k in t) {
@@ -560,7 +560,7 @@ DBAC
       perms$() = "ABCD", "CABD", "ACDB", "DACB", "BCDA", "ACBD", "ADCB", \
       \  "CDAB", "DABC", "BCAD", "CADB", "CDBA", "CBAD", "ABDC", "ADBC", \
       \  "BDCA", "DCBA", "BACD", "BADC", "BDAC", "CBDA", "DBCA", "DCAB"
-      
+
       FOR i% = 0 TO DIM(perms$(),1)
         FOR j% = 1 TO DIM(miss&(),1)
           miss&(j%-1) EOR= ASCMID$(perms$(i%),j%)
@@ -608,8 +608,8 @@ ln)XXtp)><)F:)<]u[/v\[
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define N 4
 const char *perms[] = {
@@ -640,7 +640,7 @@ int main()
 	printf("Missing: %.*s\n", N, miss);
 
 	return 0;
-		
+
 }
 ```
 
@@ -655,8 +655,8 @@ Missing: DBAC
 ## C++
 
 
-```Cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <vector>
 #include <set>
 #include <iterator>
@@ -714,17 +714,17 @@ namespace MissingPermutation
     {
         static void Main()
         {
-            string[] given = new string[] { "ABCD", "CABD", "ACDB", "DACB", 
-                                            "BCDA", "ACBD", "ADCB", "CDAB", 
-                                            "DABC", "BCAD", "CADB", "CDBA", 
-                                            "CBAD", "ABDC", "ADBC", "BDCA", 
-                                            "DCBA", "BACD", "BADC", "BDAC", 
+            string[] given = new string[] { "ABCD", "CABD", "ACDB", "DACB",
+                                            "BCDA", "ACBD", "ADCB", "CDAB",
+                                            "DABC", "BCAD", "CADB", "CDBA",
+                                            "CBAD", "ABDC", "ADBC", "BDCA",
+                                            "DCBA", "BACD", "BADC", "BDAC",
                                             "CBDA", "DBCA", "DCAB" };
-            
+
             List<string> result = new List<string>();
             permuteString(ref result, "", "ABCD");
-            
-            foreach (string a in result)            
+
+            foreach (string a in result)
                 if (Array.IndexOf(given, a) == -1)
                     Console.WriteLine(a + " is a missing Permutation");
         }
@@ -732,15 +732,15 @@ namespace MissingPermutation
         public static void permuteString(ref List<string> result, string beginningString, string endingString)
         {
             if (endingString.Length <= 1)
-            {                 
+            {
                 result.Add(beginningString + endingString);
             }
             else
             {
                 for (int i = 0; i < endingString.Length; i++)
-                {                     
+                {
                     string newString = endingString.Substring(0, i) + endingString.Substring(i + 1);
-                    permuteString(ref result, beginningString + (endingString.ToCharArray())[i], newString);                    
+                    permuteString(ref result, beginningString + (endingString.ToCharArray())[i], newString);
                 }
             }
         }
@@ -763,7 +763,7 @@ public class Test
             "ACBD","ADCB","CDAB","DABC","BCAD","CADB",
             "CDBA","CBAD","ABDC","ADBC","BDCA","DCBA",
             "BACD","BADC","BDAC","CBDA","DBCA","DCAB"};
-        
+
         int[] values = {0,0,0,0};
         foreach (string s in input)
             for (int i = 0; i < 4; i++)
@@ -784,7 +784,7 @@ public class Test
 (use 'clojure.set)
 
 (def given (apply hash-set (partition 4 5 "ABCD CABD ACDB DACB BCDA ACBD ADCB CDAB DABC BCAD CADB CDBA CBAD ABDC ADBC BDCA DCBA BACD BADC BDAC CBDA DBCA DCAB" )))
-(def s1 (apply hash-set (permutations "ABCD")))  	   
+(def s1 (apply hash-set (permutations "ABCD")))
 (def missing (difference s1 given))
 
 ```
@@ -792,10 +792,10 @@ public class Test
 Here's a version based on the hint in the description. ''freqs'' is a sequence of letter frequency maps, one for each column. There should be 6 of each letter in each column, so we look for the one with 5.
 
 ```clojure
-(def abcds ["ABCD" "CABD" "ACDB" "DACB" "BCDA" "ACBD" "ADCB" "CDAB" 
-            "DABC" "BCAD" "CADB" "CDBA" "CBAD" "ABDC" "ADBC" "BDCA" 
+(def abcds ["ABCD" "CABD" "ACDB" "DACB" "BCDA" "ACBD" "ADCB" "CDAB"
+            "DABC" "BCAD" "CADB" "CDBA" "CBAD" "ABDC" "ADBC" "BDCA"
             "DCBA" "BACD" "BADC" "BDAC" "CBDA" "DBCA" "DCAB"])
-             
+
 (def freqs (->> abcds (apply map vector) (map frequencies)))
 
 (defn v->k [fqmap v] (->> fqmap (filter #(-> % second (= v))) ffirst))
@@ -820,7 +820,7 @@ missing_permutation = (arr) ->
     throw Error "Need more data"
   if arr.length == 1
       return [arr[0][1] + arr[0][0]]
-  
+
   # Now we know that for each position in the string, elements should appear
   # an even number of times (N-1 >= 2).  We can use a set to detect the element appearing
   # an odd number of times.  Detect odd occurrences by toggling admission/expulsion
@@ -839,12 +839,12 @@ missing_permutation = (arr) ->
         result += c
         break
   result
-  
-given = '''ABCD CABD ACDB DACB BCDA ACBD ADCB CDAB DABC BCAD CADB CDBA 
+
+given = '''ABCD CABD ACDB DACB BCDA ACBD ADCB CDAB DABC BCAD CADB CDBA
   CBAD ABDC ADBC BDCA DCBA BACD BADC BDAC CBDA DBCA DCAB'''
 
 arr = (s for s in given.replace('\n', ' ').split ' ' when s != '')
-           
+
 console.log missing_permutation(arr)
 
 ```
@@ -854,7 +854,7 @@ console.log missing_permutation(arr)
 
 ```txt
 
- > coffee missing_permute.coffee 
+ > coffee missing_permute.coffee
 DBAC
 
 ```
@@ -984,12 +984,12 @@ defmodule RC do
   def find_miss_perm(head, perms) do
     all_permutations(head) -- perms
   end
-  
+
   defp all_permutations(string) do
     list = String.split(string, "", trim: true)
     Enum.map(permutations(list), fn x -> Enum.join(x) end)
   end
-  
+
   defp permutations([]), do: [[]]
   defp permutations(list), do: (for x <- list, y <- permutations(list -- [x]), do: [x|y])
 end
@@ -1284,7 +1284,7 @@ Data "BADC", "BDAC", "CBDA", "DBCA", "DCAB"
 
 ' ------=< MAIN >=------
 
-Dim As ULong i,j 
+Dim As ULong i,j
 Dim As String tmp, missing = chr(0, 0, 0, 0) ' or string(4, 0)
 
 For i = 1 To 23
@@ -1562,7 +1562,7 @@ main = print $ missingPerm deficientPermsList
 link strings    # for permutes
 
 procedure main()
-givens := set![ "ABCD", "CABD", "ACDB", "DACB", "BCDA", "ACBD", "ADCB", "CDAB", "DABC", "BCAD", "CADB", 
+givens := set![ "ABCD", "CABD", "ACDB", "DACB", "BCDA", "ACBD", "ADCB", "CDAB", "DABC", "BCAD", "CADB",
                 "CDBA", "CBAD", "ABDC", "ADBC", "BDCA", "DCBA", "BACD", "BADC", "BDAC", "CBDA", "DBCA", "DCAB"]
 
 every insert(full := set(), permutes("ABCD"))  # generate all permutations
@@ -1574,11 +1574,11 @@ end
 ```
 
 
-The approach above generates a full set of permutations and calculates the difference.  Changing the two commented lines to the three below will calculate on the fly and would be more efficient for larger data sets. 
+The approach above generates a full set of permutations and calculates the difference.  Changing the two commented lines to the three below will calculate on the fly and would be more efficient for larger data sets.
 
 
 ```Icon
-every x := permutes("ABCD") do                    # generate all permutations 
+every x := permutes("ABCD") do                    # generate all permutations
    if member(givens,x) then delete(givens,x)      # remove givens as they are generated
    else insert(givens,x)                          # add back any not given
 ```
@@ -1588,21 +1588,21 @@ A still more efficient version is:
 
 ```Icon
 link strings
- 
+
 procedure main()
     givens := set("ABCD", "CABD", "ACDB", "DACB", "BCDA", "ACBD",
                   "ADCB", "CDAB", "DABC", "BCAD", "CADB", "CDBA",
                   "CBAD", "ABDC", "ADBC", "BDCA", "DCBA", "BACD",
                   "BADC", "BDAC", "CBDA", "DBCA", "DCAB")
 
-    every p := permutes("ABCD") do 
+    every p := permutes("ABCD") do
         if not member(givens, p) then write(p)
- 
+
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/strings.icn member 'strings' provides permutes(s) which generates all permutations of a string]
 
 
@@ -1634,7 +1634,7 @@ Or the above could be a single definition that works the same way:
 
 
 ```J
-missingPerms=: -.~ (A.~ i.@!@#) @ {.   
+missingPerms=: -.~ (A.~ i.@!@#) @ {.
 ```
 
 
@@ -1775,7 +1775,7 @@ public class FindMissingPermutation
 ### =Imperative=
 
 
-The permute() function taken from http://snippets.dzone.com/posts/show/1032 
+The permute() function taken from http://snippets.dzone.com/posts/show/1032
 
 ```javascript
 permute = function(v, m){ //v1.0
@@ -2067,7 +2067,7 @@ def parities:
 # Output: the corresponding letter, e.g. "B".
 def decode:
   [index(1) + 65] | implode;
-  
+
 # encode a string (e.g. "ABCD") as an array (e.g. [0,1,2,3]):
 def encode_string: [explode[] - 65];
 ```
@@ -2202,7 +2202,7 @@ missingperm2(arr) = "DBAC"
    / It's the 20th permutation that is missing
    &~p2 _lin p
 ,20
-  
+
    p2@&~p2 _lin p
 "DBAC"
 ```
@@ -2211,7 +2211,7 @@ missingperm2(arr) = "DBAC"
 Alternative approach:
 
 ```K
-   
+
 table:{b@<b:(x@*:'a),'#:'a:=x}
 ,/"ABCD"@&:'{5=(table p[;x])[;1]}'!4
 "DBAC"
@@ -2331,8 +2331,8 @@ print(StringTools:-Join(ListTools:-Flatten([indices(perm)], 4)[sort(map(x->60-x,
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-ProvidedSet = {"ABCD" , "CABD" , "ACDB" , "DACB" , "BCDA" , "ACBD", 
-"ADCB" , "CDAB", "DABC", "BCAD" , "CADB", "CDBA" , "CBAD" , "ABDC", 
+ProvidedSet = {"ABCD" , "CABD" , "ACDB" , "DACB" , "BCDA" , "ACBD",
+"ADCB" , "CDAB", "DABC", "BCAD" , "CADB", "CDBA" , "CBAD" , "ABDC",
 "ADBC" , "BDCA",  "DCBA" , "BACD", "BADC", "BDAC" , "CBDA", "DBCA", "DCAB"};
 
 Complement[StringJoin /@ Permutations@Characters@First@#, #] &@ProvidedSet
@@ -2353,28 +2353,28 @@ function perm = findMissingPerms(list)
 
     permsList = perms(list(1,:)); %Generate all permutations of the 4 letters
     perm = []; %This is the functions return value if the list is not missing a permutation
-    
+
     %Normally the rest of this would be vectorized, but because this is
     %done on a vector of strings, the vectorized functions will only access
     %one character at a time. So, in order for this to work we have to use
     %loops.
     for i = (1:size(permsList,1))
-        
+
         found = false;
-        
+
         for j = (1:size(list,1))
             if (permsList(i,:) == list(j,:))
                 found = true;
                 break
             end
         end
-        
+
         if not(found)
             perm = permsList(i,:);
             return
         end
-        
-    end %for   
+
+    end %for
 end %fingMissingPerms
 ```
 
@@ -2487,7 +2487,7 @@ let rec insert x = function
   | a::m as li -> (x::li) :: (List.map (fun y -> a::y) (insert x m))
 
 (* list of all permutations of li *)
-let permutations li = 
+let permutations li =
   List.fold_right (fun a z -> List.concat (List.map (insert a) z)) li [[]]
 
 (* convert a string to a char list *)
@@ -2525,18 +2525,18 @@ let () = List.iter print_endline results
 ```
 
 
-Alternate method : if we had all permutations, 
+Alternate method : if we had all permutations,
 each letter would appear an even number of times at each position.
-Since there is only one permutation missing, 
-we can find where each letter goes by looking at the parity 
-of the number of occurences of each letter. 
+Since there is only one permutation missing,
+we can find where each letter goes by looking at the parity
+of the number of occurences of each letter.
 The following program works with permutations of at least 3 letters:
 
 ```ocaml
 let array_of_perm s =
 	let n = String.length s in
 	Array.init n (fun i -> int_of_char s.[i] - 65);;
-	
+
 let perm_of_array a =
 	let n = Array.length a in
 	let s = String.create n in
@@ -2593,7 +2593,7 @@ missing = dec2base(find(bits)-1,'ABCD')
 ## Oz
 
 Using constraint programming for this problem may be a bit overkill...
- 
+
 
 ```oz
 declare
@@ -2715,7 +2715,7 @@ DBAC is missing
 ## Perl
 
 
-Because the set of all permutations contains all its own rotations, 
+Because the set of all permutations contains all its own rotations,
 the first missing rotation is the target.
 
 
@@ -2758,7 +2758,7 @@ my @perms = <A B C D>.permutations.map: *.join;
 DBAC
 ```
 
-Of course, all of these solutions are working way too hard, 
+Of course, all of these solutions are working way too hard,
 when you can just xor all the bits,
 and the missing one will just pop right out:
 
@@ -2781,7 +2781,7 @@ DBAC
 constant perms = {"ABCD", "CABD", "ACDB", "DACB", "BCDA", "ACBD", "ADCB", "CDAB",
                   "DABC", "BCAD", "CADB", "CDBA", "CBAD", "ABDC", "ADBC", "BDCA",
                   "DCBA", "BACD", "BADC", "BDAC", "CBDA", "DBCA", "DCAB"}
- 
+
 -- 1: sum of letters
 sequence r = repeat(0,4)
 for i=1 to length(perms) do
@@ -2791,7 +2791,7 @@ r = sq_sub(max(r)+'A',r)
 puts(1,r&'\n')
 -- based on the notion that missing = sum(full)-sum(partial) would be true,
 --  and that sum(full) would be like {M,M,M,M} rather than a mix of numbers.
--- the final step is equivalent to eg {1528,1530,1531,1529} 
+-- the final step is equivalent to eg {1528,1530,1531,1529}
 --                        max-r[i] -> {   3,   1,   0,   2}
 --                        to chars -> {   D,   B,   A,   C}
 -- (but obviously both done in one line)
@@ -2855,14 +2855,14 @@ function permut($arr,$result=array()){
 			$newres = $result;
 			$newres[] = $val;
 			unset($newArr[$key]);
-			permut($newArr,$newres);		
+			permut($newArr,$newres);
 		}
 	}
 }
 $givenPerms = Array("ABCD","CABD","ACDB","DACB","BCDA","ACBD","ADCB","CDAB","DABC","BCAD","CADB","CDBA","CBAD","ABDC","ADBC","BDCA","DCBA","BACD","BADC","BDAC","CBDA","DBCA","DCAB");
 $given = Array("A","B","C","D");
 permut($given);
-print_r(array_diff($finalres,$givenPerms)); // Array ( [20] => DBAC ) 
+print_r(array_diff($finalres,$givenPerms)); // Array ( [20] => DBAC )
 
 ```
 
@@ -3002,7 +3002,7 @@ If OpenConsole()
           Define.s test=Chr(z)+Chr(x)+Chr(c)+Chr(v)
           If Not in_List(test)
             PrintN(test+" is missing.")
-          EndIf 
+          EndIf
         Next
       Next
     Next
@@ -3019,7 +3019,7 @@ EndDataSection
 ```
 
 
-Based on the [[Permutations#PureBasic|Permutations]] task, 
+Based on the [[Permutations#PureBasic|Permutations]] task,
 the solution could be:
 
 ```PureBasic
@@ -3035,7 +3035,7 @@ If OpenConsole()
         PrintN(A()+" is missing.")
     EndSelect
   Next
-  
+
   Print(#CRLF$ + "Press ENTER to exit"): Input()
 EndIf
 ```
@@ -3064,7 +3064,7 @@ missing = list(set(allPerms) - set(given)) # ['DBAC']
 
 ### Python:Counting lowest frequency character at each position
 
-Here is a solution that is more in the spirit of the challenge, 
+Here is a solution that is more in the spirit of the challenge,
 i.e. it never needs to generate the full set of expected permutations.
 
 
@@ -3072,13 +3072,13 @@ i.e. it never needs to generate the full set of expected permutations.
 
 def missing_permutation(arr):
   "Find the missing permutation in an array of N! - 1 permutations."
-  
+
   # We won't validate every precondition, but we do have some basic
   # guards.
   if len(arr) == 0: raise Exception("Need more data")
   if len(arr) == 1:
       return [arr[0][1] + arr[0][0]]
-  
+
   # Now we know that for each position in the string, elements should appear
   # an even number of times (N-1 >= 2).  We can use a set to detect the element appearing
   # an odd number of times.  Detect odd occurrences by toggling admission/expulsion
@@ -3095,10 +3095,10 @@ def missing_permutation(arr):
             s.add(c)
       missing_permutation += list(s)[0]
   return missing_permutation
-  
+
 given = '''ABCD CABD ACDB DACB BCDA ACBD ADCB CDAB DABC BCAD CADB CDBA
            CBAD ABDC ADBC BDCA DCBA BACD BADC BDAC CBDA DBCA DCAB'''.split()
-           
+
 print missing_permutation(given)
 
 ```
@@ -3107,7 +3107,7 @@ print missing_permutation(given)
 
 ### Python:Counting lowest frequency character at each position: functional
 
-Uses the same method as explained directly above, 
+Uses the same method as explained directly above,
 but calculated in a more functional manner:
 
 ```python>>>
@@ -3116,16 +3116,16 @@ but calculated in a more functional manner:
            CBAD ABDC ADBC BDCA DCBA BACD BADC BDAC CBDA DBCA DCAB'''.split()
 >>> ''.join(Counter(x).most_common()[-1][0] for x in zip(*given))
 'DBAC'
->>> 
+>>>
 ```
 
 
 ;Explanation
-It is rather obfuscated, but can be explained 
-by showing these intermediate results and noting 
-that <code>zip(*x)</code> transposes x; 
-and that at the end of the list 
-created by the call to <code>most_common()</code> 
+It is rather obfuscated, but can be explained
+by showing these intermediate results and noting
+that <code>zip(*x)</code> transposes x;
+and that at the end of the list
+created by the call to <code>most_common()</code>
 is the least common character.
 
 ```python>>>
@@ -3146,7 +3146,7 @@ is the least common character.
 ['D', 'B', 'A', 'C']
 >>> ''.join([Counter(x).most_common()[-1][0] for x in zip(*given)])
 'DBAC'
->>> 
+>>>
 ```
 
 
@@ -3162,8 +3162,8 @@ perms  <- permn(permute.me)  # list of all permutations
 perms2 <- matrix(unlist(perms), ncol=length(permute.me), byrow=T)  # matrix of all permutations
 perms3 <- apply(perms2, 1, paste, collapse="")  # vector of all permutations
 
-incomplete <- c("ABCD", "CABD", "ACDB", "DACB", "BCDA", "ACBD", "ADCB", "CDAB", 
-                "DABC", "BCAD", "CADB", "CDBA", "CBAD", "ABDC", "ADBC", "BDCA", 
+incomplete <- c("ABCD", "CABD", "ACDB", "DACB", "BCDA", "ACBD", "ADCB", "CDAB",
+                "DABC", "BCAD", "CADB", "CDBA", "CBAD", "ABDC", "ADBC", "BDCA",
                 "DCBA", "BACD", "BADC", "BDAC", "CBDA", "DBCA", "DCAB")
 
 setdiff(perms3, incomplete)
@@ -3253,7 +3253,7 @@ for x = 1 to 4
     next
 next
 
-showmessage MPerm 
+showmessage MPerm
 '= DBAC
 
 ```
@@ -3311,18 +3311,18 @@ DBAC  is missing from the list.
 ```ring
 
 list = "ABCD CABD ACDB DACB BCDA ACBD ADCB CDAB DABC BCAD CADB CDBA CBAD ABDC ADBC BDCA DCBA BACD BADC BDAC CBDA DBCA DCAB"
- 
+
 for a = ascii("A") to ascii("D")
     for b = ascii("A") to ascii("D")
         for c = ascii("A") to ascii("D")
-            for d = ascii("A") to ascii("D") 
+            for d = ascii("A") to ascii("D")
                 x = char(a) + char(b) + char(c)+ char(d)
                 if a!=b and a!=c and a!=d and b!=c and b!=d and c!=d
                    if substr(list,x) = 0 see x + " missing" + nl ok ok
             next
         next
-    next 
-next 
+    next
+next
 
 ```
 
@@ -3345,9 +3345,9 @@ given = %w{
   ABCD CABD ACDB DACB BCDA ACBD ADCB CDAB DABC BCAD CADB CDBA
   CBAD ABDC ADBC BDCA DCBA BACD BADC BDAC CBDA DBCA DCAB
 }
- 
+
 all = given[0].chars.permutation.collect(&:join)
- 
+
 puts "missing: #{all - given}"
 ```
 
@@ -3457,7 +3457,7 @@ println("missing perms: "+("ABCD".permutations.toSet
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const func string: missingPermutation (in array string: perms) is func
   result
     var string: missing is "";
@@ -3656,7 +3656,7 @@ DBAC
 
 ## XPL0
 
-The list of permutations is input by using a command line like this: 
+The list of permutations is input by using a command line like this:
 missperm <missperm.txt
 
 
@@ -3691,7 +3691,7 @@ var data=L("ABCD","CABD","ACDB","DACB","BCDA","ACBD","ADCB","CDAB",
 Utils.Helpers.permute(["A".."D"]).apply("concat").copy().remove(data.xplode());
 ```
 
-Copy creates a read/write list from a read only list. 
+Copy creates a read/write list from a read only list.
 xplode() pushes all elements of data as parameters to remove.
 {{out}}
 

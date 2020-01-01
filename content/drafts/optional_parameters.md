@@ -161,7 +161,7 @@ script sort_colex
 end script
 
 -- Populate a table (list) with data.
-set table to {{1,2},{3,4}} 
+set table to {{1,2},{3,4}}
 
 sortTable({sequence:table, ordering:sort_lexicographic, column:1, reverse:false})
 sortTable({sequence:table, ordering:sort_colex, column:2, reverse:true})
@@ -204,7 +204,7 @@ sort_table(ordering = "Text", column = 0, reverse = 0)
 {
   If reverse
     desc = desc
-  LV_ModifyCol(column, "sort" . desc . " " . ordering)  
+  LV_ModifyCol(column, "sort" . desc . " " . ordering)
 }
 
 GuiClose:
@@ -253,7 +253,7 @@ BBC BASIC doesn't have optional parameters, but functions can have multiple entr
       PROCsort_default(table$())
       PROCsort_options(table$(), TRUE, 1, FALSE)
       END
-      
+
       DEF PROCsort_options(table$(), ordering%, column%, reverse%)
       DEF PROCsort_default(table$()) : LOCAL ordering%, column%, reverse%
       REM The sort goes here, controlled by the options
@@ -291,14 +291,14 @@ Bracmat functions always have exactly one parameter, which is references by <cod
 & sortTable$(!table.(column.2) (reverse.yes))
 );
 ```
- 
+
 
 
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdarg.h>
 #include <stdio.h>
 #include <ctype.h>
@@ -332,11 +332,11 @@ int CmprRows( const void *aa, const void *bb)
 /** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * tbl parameter is a table of rows of strings
  * argSpec is a string containing zero or more of the letters o,c,r
- * if o is present - the corresponding optional argument is a function which 
+ * if o is present - the corresponding optional argument is a function which
  *      determines the ordering of the strings.
  * if c is present - the corresponding optional argument is an integer that
  *      specifies the column to sort on.
- * if r is present - the corresponding optional argument is either 
+ * if r is present - the corresponding optional argument is either
  *      true(nonzero) or false(zero) and if true, the sort will b in reverse order
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 int sortTable(Table tbl, const char* argSpec,... )
@@ -392,7 +392,7 @@ int ord(char v)
 /* an alternative comparison function */
 int cmprStrgs(String s1, String s2)
 {
-    const char *p1 = s1; 
+    const char *p1 = s1;
     const char *p2 = s2;
     const char *mrk1, *mrk2;
     while ((tolower(*p1) == tolower(*p2)) && *p1) {
@@ -420,7 +420,7 @@ int cmprStrgs(String s1, String s2)
             v2 = 10*v2+ord(*p2);
             p2++;
         }
-        if (v1 == v2) 
+        if (v1 == v2)
            return(p2-mrk2)-(p1-mrk1);
         return v1 - v2;
     }
@@ -473,8 +473,8 @@ int main()
 
 This implementation only accepts function pointers for the comparators, and does not accept function objects, for simplicity.
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <algorithm>
 #include <string>
 
@@ -709,10 +709,10 @@ def sort {
     to run(table) {
         return sort(table, 0, false, defaultOrdering)
     }
-    to run(table, column) { 
+    to run(table, column) {
         return sort(table, column, false, defaultOrdering)
     }
-    to run(table, column, reverse) { 
+    to run(table, column, reverse) {
         return sort(table, column, reverse, defaultOrdering)
     }
 
@@ -744,14 +744,14 @@ defmodule Optional_parameters do
     sorted = sort( table, ordering, column )
     if reverse, do: Enum.reverse( sorted ), else: sorted
   end
-  
+
   defp sort( table, :lexicographic, column ) do
     Enum.sort_by( table, &elem( &1, column ) )
   end
   defp sort( table, :numeric, column ) do
-    Enum.sort_by( table, &elem( &1, column ) |> String.to_integer ) 
+    Enum.sort_by( table, &elem( &1, column ) |> String.to_integer )
   end
-  
+
   def task do
     table = [ { "123", "456", "0789" },
               { "456", "0789", "123" },
@@ -991,16 +991,16 @@ type Table(rows:string[][]) =
          factor * ordering row1.[column] row2.[column]
 
       Array.sortInPlaceWith comparer rows
-  
+
    member x.Print() =
-      for row in rows do printfn "%A" row  
+      for row in rows do printfn "%A" row
 
 // Example usage
 let t = new Table([| [|"a";   "b"; "c"|]
                      [|"";    "q"; "z"|]
                      [|"can"; "z"; "a"|] |])
 
-printfn "Unsorted"; t.Print()   
+printfn "Unsorted"; t.Print()
 
 t.Sort()
 printfn "Default sort"; t.Print()
@@ -1459,8 +1459,8 @@ import Data.Maybe (fromMaybe)
 (//) = flip fromMaybe
 
 sorter :: Maybe String -> Maybe Int -> Maybe Bool -> [[String]] -> [[String]]
-sorter ((// "lex") -> cmp) 
-       ((// 0) -> col) 
+sorter ((// "lex") -> cmp)
+       ((// 0) -> col)
        ((// False) -> rev) = undefined
 
 main = do
@@ -1474,7 +1474,7 @@ main = do
 Optional named parameters are not the norm in Icon/Unicon.  In the example below ''bubblesortf'' would be a version of [[Sorting_algorithms/Bubble_sort#Icon_and_Unicon|Bubble Sort]] modified to sort on a column number (Ordering is already supported).  It could equally be replaced by any similarly modified Rosetta sort.  The use of ''reverse'' on a list is a Unicon extension; in Icon a procedure from the IPL must be linked.
 
 ```Icon
-        
+
 procedure main()
    X := [ [1,2,3], [2,3,1], [3,1,2])                       # A list of lists
    Sort(X)                                                 # vanilla sort
@@ -1656,7 +1656,7 @@ function sorter(table, options) {
     opts.ordering = options.ordering || 'lexicographic';
     opts.column   = options.column || 0;
     opts.reverse  = options.reverse || false;
-    
+
     // ...
 }
 
@@ -1693,7 +1693,7 @@ Since jq objects are JSON objects, it might be surprising that arity-0
 filters can be specified as a value within a JSON object.  This is
 possible because of the way expressions such as {"function": f} are
 interpreted by jq.  The key to understanding this is that jq functions
-are compiled into closures. Here is an example: 
+are compiled into closures. Here is an example:
 
 ```jq
 def bar: 2 *.;
@@ -1758,21 +1758,21 @@ Example output:
 ```julia>julia
  data = {["a", "b", "c"], ["", "q", "z"], ["zap", "zip", "Zot"]}
 3-element Array{Any,1}:
- ["a","b","c"]      
- ["","q","z"]       
+ ["a","b","c"]
+ ["","q","z"]
  ["zap","zip","Zot"]
 
 julia> sorttable(data, column=2, reverse=true) # named arguments
 3-element Array{Any,1}:
  ["zap","zip","Zot"]
- ["","q","z"]       
- ["a","b","c"] 
+ ["","q","z"]
+ ["a","b","c"]
 
 julia> sorttable(data, >, 2) # the same thing, with positional arguments
 3-element Array{Any,1}:
  ["zap","zip","Zot"]
- ["","q","z"]       
- ["a","b","c"] 
+ ["","q","z"]
+ ["a","b","c"]
 ```
 
 
@@ -1835,44 +1835,44 @@ fun main(args: Array<String>) {
 ```txt
 
 Original:
-a    b    c    
-     q    z    
-zap  zip  Zot  
+a    b    c
+     q    z
+zap  zip  Zot
 
 Sorted by col 0:
-     q    z    
-a    b    c    
-zap  zip  Zot  
+     q    z
+a    b    c
+zap  zip  Zot
 
 Sorted by col 1:
-a    b    c    
-     q    z    
-zap  zip  Zot  
+a    b    c
+     q    z
+zap  zip  Zot
 
 Sorted by col 2:
-zap  zip  Zot  
-a    b    c    
-     q    z    
+zap  zip  Zot
+a    b    c
+     q    z
 
 Reverse sorted by col 0:
-zap  zip  Zot  
-a    b    c    
-     q    z    
+zap  zip  Zot
+a    b    c
+     q    z
 
 Reverse sorted by col 1:
-zap  zip  Zot  
-     q    z    
-a    b    c    
+zap  zip  Zot
+     q    z
+a    b    c
 
 Reverse Sorted by col 2
-     q    z    
-a    b    c    
-zap  zip  Zot  
+     q    z
+a    b    c
+zap  zip  Zot
 
 Reverse case insensitive sort by col 2:
-zap  zip  Zot  
-     q    z    
-a    b    c    
+zap  zip  Zot
+     q    z
+a    b    c
 
 ```
 
@@ -2071,7 +2071,7 @@ SortBy[x,#[[OptionValue[column]]]&] ]
 OptionalSort[{{"a" ,"b", "c"}, {"", "q", "z"},{"zap" ,"zip", "Zot"}} ]
 ->{{,q,z},{a,b,c},{zap,zip,Zot}}
 
-OptionalSort[{{"a" ,"b", "c"}, {"", "q", "z"},{"zap" ,"zip", "Zot"}},{ordering->lexicographic,column->2,reverse-> True} ] 
+OptionalSort[{{"a" ,"b", "c"}, {"", "q", "z"},{"zap" ,"zip", "Zot"}},{ordering->lexicographic,column->2,reverse-> True} ]
 ->{{zap,zip,Zot},{,q,z},{a,b,c}}
 ```
 
@@ -2121,29 +2121,29 @@ printTable sortTable(data, ordering = (a,b) => cmp[int](b.len,a.len))
 Output:
 
 ```txt
-a   b   c   
-    q   z   
-zap zip Zot 
+a   b   c
+    q   z
+zap zip Zot
 
-    q   z   
-a   b   c   
-zap zip Zot 
+    q   z
+a   b   c
+zap zip Zot
 
-zap zip Zot 
-a   b   c   
-    q   z   
+zap zip Zot
+a   b   c
+    q   z
 
-a   b   c   
-    q   z   
-zap zip Zot 
+a   b   c
+    q   z
+zap zip Zot
 
-zap zip Zot 
-    q   z   
-a   b   c   
+zap zip Zot
+    q   z
+a   b   c
 
-zap zip Zot 
-a   b   c   
-    q   z 
+zap zip Zot
+a   b   c
+    q   z
 ```
 
 
@@ -2442,36 +2442,36 @@ Using a pretty-printer for the table
     for row in data:
         print ' '.join('%-5s' % ('"%s"' % cell) for cell in row)
 
-        
+
 >>> import operator
 >>> def sorttable(table, ordering=None, column=0, reverse=False):
     return sorted(table, cmp=ordering, key=operator.itemgetter(column), reverse=reverse)
 
 >>> data = [["a", "b", "c"], ["", "q", "z"], ["zap", "zip", "Zot"]]
 >>> printtable(data)
-"a"   "b"   "c"  
-""    "q"   "z"  
+"a"   "b"   "c"
+""    "q"   "z"
 "zap" "zip" "Zot"
 >>> printtable( sorttable(data) )
-""    "q"   "z"  
-"a"   "b"   "c"  
+""    "q"   "z"
+"a"   "b"   "c"
 "zap" "zip" "Zot"
 >>> printtable( sorttable(data, column=2) )
 "zap" "zip" "Zot"
-"a"   "b"   "c"  
-""    "q"   "z"  
+"a"   "b"   "c"
+""    "q"   "z"
 >>> printtable( sorttable(data, column=1) )
-"a"   "b"   "c"  
-""    "q"   "z"  
+"a"   "b"   "c"
+""    "q"   "z"
 "zap" "zip" "Zot"
 >>> printtable( sorttable(data, column=1, reverse=True) )
 "zap" "zip" "Zot"
-""    "q"   "z"  
-"a"   "b"   "c"  
+""    "q"   "z"
+"a"   "b"   "c"
 >>> printtable( sorttable(data, ordering=lambda a,b: cmp(len(b),len(a))) )
 "zap" "zip" "Zot"
-"a"   "b"   "c"  
-""    "q"   "z"  
+"a"   "b"   "c"
+""    "q"   "z"
 >>>
 ```
 
@@ -2485,7 +2485,7 @@ Note that expression for a default argument of an optional parameter is evaluate
 >>> def foo(x, lst=[]):
 ...   lst.append(x)
 ...   print lst
-... 
+...
 >>> foo(1)
 [1]
 >>> foo(2)
@@ -2521,7 +2521,7 @@ tablesort(mytable, column=3)
 
 #lang racket
 
-(define (sort-table table 
+(define (sort-table table
                     [ordering string<=?]
                     [column 0]
                     [reverse? #f])
@@ -2587,7 +2587,7 @@ def table_sort(table, ordering=:<=>, column=0, reverse=false)
 ```
 
 
-Ruby 2.0 added keyword arguments to the language. These provide the most natural solution. 
+Ruby 2.0 added keyword arguments to the language. These provide the most natural solution.
 
 {{works with|Ruby|2.0}}
 
@@ -2855,7 +2855,7 @@ class String {
         || (self <=> arg)
     }
 }
- 
+
 say table_sort(table, column: 1, ordering: 'my_sort');
 ```
 
@@ -3071,7 +3071,7 @@ defaults. The table is stored as a list of lists, with one list for each
 row, hence three rows and two columns.
 
 ```Ursala
-example_table = 
+example_table =
 
 <
    <'foo','b  '>,

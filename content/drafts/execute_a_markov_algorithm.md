@@ -16,16 +16,16 @@ tags = []
 
 
 ;Task:
-Create an interpreter for a [[wp:Markov algorithm|Markov Algorithm]]. 
+Create an interpreter for a [[wp:Markov algorithm|Markov Algorithm]].
 
 Rules have the syntax:
  <ruleset> ::= ((<comment> | <rule>) <newline>+)*
  <comment> ::= # {<any character>}
  <rule> ::= <pattern> <whitespace> -> <whitespace> [.] <replacement>
  <whitespace> ::= (<tab> | <space>) [<whitespace>]
-There is one rule per line. 
+There is one rule per line.
 
-If there is a   <b>.</b>   (period)   present before the   '''<replacement>''',   then this is a terminating rule in which case the interpreter must halt execution. 
+If there is a   <b>.</b>   (period)   present before the   '''<replacement>''',   then this is a terminating rule in which case the interpreter must halt execution.
 
 A ruleset consists of a sequence of rules, with optional comments.
 
@@ -133,7 +133,7 @@ y_ -> _
 # Termination cleanup for addition
 _1 -> 1
 1+_ -> 1
-_+_ -> 
+_+_ ->
 
 ```
 
@@ -144,10 +144,10 @@ should generate the output:
 
 
 ;Ruleset 5:
-A simple [http://en.wikipedia.org/wiki/Turing_machine Turing machine], 
-implementing a three-state [http://en.wikipedia.org/wiki/Busy_beaver busy beaver]. 
+A simple [http://en.wikipedia.org/wiki/Turing_machine Turing machine],
+implementing a three-state [http://en.wikipedia.org/wiki/Busy_beaver busy beaver].
 
-The tape consists of '''0'''s and '''1'''s,   the states are '''A''', '''B''', '''C''' and '''H''' (for '''H'''alt), and the head position is indicated by writing the state letter before the character where the head is. 
+The tape consists of '''0'''s and '''1'''s,   the states are '''A''', '''B''', '''C''' and '''H''' (for '''H'''alt), and the head position is indicated by writing the state letter before the character where the head is.
 All parts of the initial tape the machine operates on have to be given in the input.
 
 Besides demonstrating that the Markov algorithm is Turing-complete, it also made me catch a bug in the C++ implementation which wasn't caught by the first four rulesets.
@@ -748,7 +748,7 @@ Output(Text) { ; append text to output
       PRINT FNmarkov("ruleset4.txt", "_1111*11111_")
       PRINT FNmarkov("ruleset5.txt", "000000A000000")
       END
-      
+
       DEF FNmarkov(rulefile$, text$)
       LOCAL i%, done%, rules%, rule$, old$, new$
       rules% = OPENIN(rulefile$)
@@ -830,12 +830,12 @@ matches the problem description, which is nice.
     =   ( (\n|\r)
         & ( :!pattern:!replacement {Do nothing. We matched an empty line.}
           |   (!pattern.!replacement.!stop) !rules:?rules
-                { 
+                {
                 Add pattern, replacement and the stop (empty string or "stop")
                 to a list of triplets. This list will contain the rules in
                 reverse order.
                 Then, reset these variables, so they are not added once more
-                if an empty line follows. 
+                if an empty line follows.
                 }
             & :?stop:?pattern:?replacement
           )
@@ -863,7 +863,7 @@ Compile the textual rules to a single Bracmat pattern.
                 The single quote introduces a macro substition. All symbols
                 preceded with a $ are substituted.
                 }
-        &     
+        &
             ' ( ?A ()$pat ?Z
               & $stp:?stop
               & $rep:?replacement
@@ -875,7 +875,7 @@ Compile the textual rules to a single Bracmat pattern.
                 }
         &   whl
           ' ( !rules:(?pat.?rep.?stp) ?rules
-            &     
+            &
                 ' (   ?A ()$pat ?Z
                     & $stp:?stop
                     & $rep:?replacement
@@ -896,7 +896,7 @@ Compile the textual rules to a single Bracmat pattern.
       .   !arg:(?rulesSetAsText.?subject)
         & compileRules$!rulesSetAsText:(=?ruleSetAsPattern)
                 {
-                Apply rule until no match 
+                Apply rule until no match
                 or until variable "stop" has been set to the value "stop".
                 }
         &   whl
@@ -982,7 +982,7 @@ y_ -> _
 # Termination cleanup for addition
 _1 -> 1
 1+_ -> 1
-_+_ -> 
+_+_ ->
 "
         . "_1111*11111_"
         )
@@ -1041,8 +1041,8 @@ I bought a bag of apples with my money from T shop.
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -1281,7 +1281,7 @@ Note: Non-use of <code>iswhite</code> is intentional, since depending on the loc
 #include <fstream>
 #include <vector>
 #include <string>
- 
+
 struct rule
 {
   std::string pattern;
@@ -1294,10 +1294,10 @@ struct rule
   {
   }
 };
- 
+
 std::string const whitespace = " \t";
 std::string::size_type const npos = std::string::npos;
- 
+
 bool is_whitespace(char c)
 {
   return whitespace.find(c) != npos;
@@ -1310,39 +1310,39 @@ std::vector<rule> read_rules(std::ifstream& rulefile)
   while (std::getline(rulefile, line))
   {
     std::string::size_type pos;
- 
+
     // remove comments
     pos = line.find('#');
     if (pos != npos)
       line.resize(pos);
- 
+
     // ignore lines consisting only of whitespace
     if (line.find_first_not_of(whitespace) == npos)
       continue;
- 
+
     // find "->" surrounded by whitespace
     pos = line.find("->");
     while (pos != npos && (pos == 0 || !is_whitespace(line[pos-1])))
       pos = line.find("->", pos+1);
- 
+
     if (pos == npos || line.length() < pos+3 || !is_whitespace(line[pos+2]))
     {
       std::cerr << "invalid rule: " << line << "\n";
       std::exit(EXIT_FAILURE);
     }
- 
+
     std::string pattern = line.substr(0, pos-1);
     std::string replacement = line.substr(pos+3);
- 
+
     // remove additional separating whitespace
     pattern.erase(pattern.find_last_not_of(whitespace)+1);
     replacement.erase(0, replacement.find_first_not_of(whitespace));
- 
+
     // test for terminal rule
     bool terminal = !replacement.empty() && replacement[0] == '.';
     if (terminal)
       replacement.erase(0,1);
- 
+
     rules.push_back(rule(pattern, replacement, terminal));
   }
 
@@ -1372,7 +1372,7 @@ std::string markov(std::vector<rule> rules, std::string input)
 
   return output;
 }
- 
+
 int main(int argc, char* argv[])
 {
   if (argc != 3)
@@ -1380,7 +1380,7 @@ int main(int argc, char* argv[])
     std::cout << "usage:\n " << argv[0] << " rulefile text\n";
     return EXIT_FAILURE;
   }
- 
+
   std::ifstream rulefile(argv[1]);
   std::vector<rule> rules = read_rules(rulefile);
 
@@ -1413,7 +1413,7 @@ I should mention that this uses the regular expression machinery present in Alle
 
 ;;; Create a rule and add it to the markov object
 (defmethod update-markov ((mkv markov) lhs terminating rhs)
-  (setf (rules mkv) (cons 
+  (setf (rules mkv) (cons
                      (make-instance 'rule :pattern lhs :replacement rhs :terminal terminating)
                      (rules mkv))))
 
@@ -1425,8 +1425,8 @@ I should mention that this uses the regular expression machinery present in Alle
               (equal "" trimmed)))
         (let ((vals (multiple-value-list (match-re *rex->* line))))
           (if (not (car vals))
-              (progn 
-                (format t "syntax error in ~A" line) 
+              (progn
+                (format t "syntax error in ~A" line)
                 (throw 'fail t)))
           (update-markov mkv (nth 2 vals) (equal "." (nth 3 vals)) (nth 4 vals))))))
 
@@ -1634,12 +1634,12 @@ markov rules:
     (map term-rule
     (for/list [(line (string-split lines "\n"))]
         #:continue (string=? (string-first line) "#")
-        (map string-trim 
+        (map string-trim
         (string-split (string-replace line "/\\t/g" " ") " -> ")))))
-        
+
 ;; markov machine
 (define (markov i-string rules)
-    (while 
+    (while
         (for/fold (run #f) ((rule rules))
         #:when (string-index (pattern rule) i-string)
           (set! i-string (string-replace i-string (pattern rule) (repl rule)))
@@ -1647,7 +1647,7 @@ markov rules:
             #:break (term? rule)  => #f
             #:break #t  => #t ))
     i-string)
-    
+
 (define (task i-string  RS)
     (markov i-string (parse-rules RS)))
 
@@ -1668,7 +1668,7 @@ T -> the
 the shop -> my brother
 a never used -> .terminating rule
 >>#)
-        
+
 ;; [ Other rules sets here ...]
 
 (define i-string-1 "I bought a B of As and Cs from T S.")
@@ -1923,7 +1923,7 @@ y_ -> _
 # Termination cleanup for addition
 _1 -> 1
 1+_ -> 1
-_+_ -> 
+_+_ ->
 `,
         `_1111*11111_`,
         `11111111111111111111`,
@@ -2142,7 +2142,7 @@ I bought a B of As from T S. -> I bought a bag of apples from my brother.
 I bought a B of As from T S.
 I bought a B of As from T S. -> I bought a bag of apples from T shop.
 ->ma mars.3
-I bought a B of As W my Bgage from T S.   
+I bought a B of As W my Bgage from T S.
 I bought a B of As W my Bgage from T S. -> I bought a bag of apples with my money from T shop.
 ->ma mars.4
 _1111*11111_
@@ -2167,16 +2167,16 @@ markovLexer =:  verb define
   rules =.  0 _1 {"1 '\s+->\s+' (rxmatch rxcut ])S:0 rules
   (,. ] (}.&.>~ ,. ]) ('.'={.)&.>)/ |: rules
 )
- 
+
 
 replace     =:  dyad define
   'index patternLength replacement'=.  x
   'head tail' =.  index split y
   head, replacement, patternLength }. tail
 )
- 
+
 matches     =:  E. i. 1:
- 
+
 markov      =:  dyad define
   ruleIdx =. 0 [ rules =.  markovLexer x
   while. ruleIdx < #rules do.
@@ -2205,7 +2205,7 @@ markov      =:  dyad define
 	a never used -> .terminating rule
 )
 
-   m1 markov 'I bought a B of As from T S.' 
+   m1 markov 'I bought a B of As from T S.'
 I bought a bag of apples from my brother.
 
 ```
@@ -2295,8 +2295,8 @@ I bought a bag of apples from my brother.
 I bought a B of As from T S.
 I bought a bag of apples from T shop.
 
-I bought a B of As W my Bgage from T S.   
-I bought a bag of apples with my money from T shop.   
+I bought a B of As W my Bgage from T S.
+I bought a bag of apples with my money from T shop.
 
 _1111*11111_
 11111111111111111111
@@ -2738,13 +2738,13 @@ found = false
 
 for i,v in ipairs(finders) do
 	local found_now = false -- did we find this rule?
-	if sample_input:find(v) then 
+	if sample_input:find(v) then
 		found = true
 		found_now = true
 	end
 	sample_input = sample_input:gsub(v, rules[v].replacement, 1)
 	-- handle terminating rules
-	if found_now then 
+	if found_now then
 		if rules[v].terminating then terminate = true end
 		break
 	end
@@ -2767,7 +2767,7 @@ T -> the
 the shop -> my brother
 a never used -> .terminating rule
 ]]
- 
+
 local grammar2 = [[
 # Slightly modified from the rules on Wikipedia
 A -> apple
@@ -2777,7 +2777,7 @@ T -> the
 the shop -> my brother
 a never used -> .terminating rule
 ]]
- 
+
 local grammar3 = [[
 # BNF Syntax testing rules
 A -> apple
@@ -2791,7 +2791,7 @@ T -> the
 the shop -> my brother
 a never used -> .terminating rule
 ]]
- 
+
 local grammar4 = [[
 ### Unary Multiplication Engine, for testing Markov Algorithm implementations
 ### By Donal Fellows.
@@ -2820,9 +2820,9 @@ y_ -> _
 # Termination cleanup for addition
 _1 -> 1
 1+_ -> 1
-_+_ -> 
+_+_ ->
 ]]
- 
+
 local grammar5 = [[
 # Turing machine: three-state busy beaver
 #
@@ -2843,7 +2843,7 @@ B1 -> 1B
 0C1 -> H01
 1C1 -> H11
 ]]
- 
+
 local text1 = "I bought a B of As from T S."
 local text2 = "I bought a B of As W my Bgage from T S."
 local text3 = '_1111*11111_'
@@ -2871,16 +2871,16 @@ do_markov(grammar5, text4, '00011H1111000')
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```mathematica
-markov[ruleset_, text_] := 
-  Module[{terminating = False, output = text, 
+markov[ruleset_, text_] :=
+  Module[{terminating = False, output = text,
     rules = StringCases[
-      ruleset, {StartOfLine ~~ pattern : Except["\n"] .. ~~ 
-         " " | "\t" .. ~~ "->" ~~ " " | "\t" .. ~~ dot : "" | "." ~~ 
-         replacement : Except["\n"] .. ~~ EndOfLine :> {pattern, 
-         replacement, dot == "."}}]}, 
-   While[! terminating, terminating = True; 
-    Do[If[! StringFreeQ[output, rule[[1]]], 
-      output = StringReplace[output, rule[[1]] -> rule[[2]]]; 
+      ruleset, {StartOfLine ~~ pattern : Except["\n"] .. ~~
+         " " | "\t" .. ~~ "->" ~~ " " | "\t" .. ~~ dot : "" | "." ~~
+         replacement : Except["\n"] .. ~~ EndOfLine :> {pattern,
+         replacement, dot == "."}}]},
+   While[! terminating, terminating = True;
+    Do[If[! StringFreeQ[output, rule[[1]]],
+      output = StringReplace[output, rule[[1]] -> rule[[2]]];
       If[! rule[[3]], terminating = False]; Break[]], {rule, rules}]];
     output];
 ```
@@ -3005,23 +3005,23 @@ With the above compiled to an executable 'markov', and the five rule-sets in fil
 
 ```txt
 
-<~/rosetta$> markov rules1                                                                   
+<~/rosetta$> markov rules1
 I bought a B of As from T S.
 I bought a bag of apples from my brother.
 
-<~/rosetta$> markov rules2                                                                   
+<~/rosetta$> markov rules2
 I bought a B of As from T S.
 I bought a bag of apples from T shop.
 
-<~/rosetta$> markov rules3                                                                   
+<~/rosetta$> markov rules3
 I bought a B of As W my Bgage from T S.
 I bought a bag of apples with my money from T shop.
 
-<~/rosetta$> markov rules4                                                                   
+<~/rosetta$> markov rules4
 _1111*11111_
 11111111111111111111
 
-<~/rosetta$> markov rules5                                                                   
+<~/rosetta$> markov rules5
 000000A000000
 00011H1111000
 
@@ -3088,7 +3088,7 @@ grammar Markov {
                 :terminal($<terminal>.Str eq ".")} }
     }
 }
- 
+
 sub run(:$ruleset, :$start_value, :$verbose?) {
     my $value = $start_value;
     my @rules = Markov.parse($ruleset).ast.list;
@@ -3105,28 +3105,28 @@ sub run(:$ruleset, :$start_value, :$verbose?) {
     }
     return $value;
 }
- 
+
 multi sub MAIN(Bool :$verbose?) {
     my @rulefiles = dir.grep(/rules.+/).sort;
     for @rulefiles -> $rulefile {
         my $testfile = $rulefile.subst("rules", "test");
         my $start_value = (try slurp($testfile).trim-trailing)
                           // prompt("please give a start value: ");
- 
+
         my $ruleset = slurp($rulefile);
         say $start_value.perl();
         say run(:$ruleset, :$start_value, :$verbose).perl;
         say '';
     }
 }
- 
+
 multi sub MAIN(Str $rulefile where *.IO.f, Str $input where *.IO.f, Bool :$verbose?) {
     my $ruleset = slurp($rulefile);
     my $start_value = slurp($input).trim-trailing;
     say "starting with $start_value.perl()";
     say run(:$ruleset, :$start_value, :$verbose).perl;
 }
- 
+
 multi sub MAIN(Str $rulefile where *.IO.f, *@pieces, Bool :$verbose?) {
     my $ruleset = slurp($rulefile);
     my $start_value = @pieces.join(" ");
@@ -3241,7 +3241,7 @@ y_ -> _
 # Termination cleanup for addition
 _1 -> 1
 1+_ -> 1
-_+_ -> 
+_+_ ->
 """
 markov(ruleset4,"_1111*11111_","11111111111111111111")
 
@@ -3594,11 +3594,11 @@ EndStructure
 Procedure parseRule(text.s, List rules.mRule())
   #tab = 9: #space = 32: #whiteSpace$ = Chr(#space) + Chr(#tab)
   Protected tLen, cPtr, nChar.c, pEnd, pLast, pattern.s
-  
+
   cPtr = 1
   If FindString(#whiteSpace$, Left(text, cPtr), 1): ProcedureReturn 0: EndIf ;parse error
   If Left(text, cPtr) = "#": ProcedureReturn 2: EndIf ;comment skipped
-   
+
   tLen = Len(text)
   Repeat
     cPtr + 1
@@ -3614,27 +3614,27 @@ Procedure parseRule(text.s, List rules.mRule())
             pattern = Left(text, pLast)
         EndSelect
       Case '-'
-        If pEnd = 1: pEnd = 2: EndIf 
+        If pEnd = 1: pEnd = 2: EndIf
       Case '>'
-        If pEnd = 2: pEnd = 3: EndIf 
+        If pEnd = 2: pEnd = 3: EndIf
     EndSelect
   Until pattern <> ""
-  
+
   Repeat
     cPtr + 1
   Until Not FindString(#whiteSpace$, Mid(text, cPtr, 1), 1)
   Protected isTerminal
   If Mid(text, cPtr, 1) = "."
     isTerminal = #True: cPtr + 1
-  EndIf 
-  
+  EndIf
+
   LastElement(rules()): AddElement(rules())
   rules()\pattern = pattern
   rules()\replacement = Right(text, tLen - cPtr + 1)
   rules()\isTerminal = isTerminal
   ProcedureReturn 1 ;processed rule
 EndProcedure
-  
+
 Procedure.s interpretMarkov(text.s, List rules.mRule())
   Repeat
     madeReplacement = #False
@@ -3668,7 +3668,7 @@ TextGadget(5, 5, 100, 35, 20, "Output:")
 ButtonGadget(6, 160, 70, 70, 20, "Clear Output")
 EditorGadget(7, 45, 100, 300, 195, #PB_Editor_ReadOnly)
 
-NewList rules.mRule()  
+NewList rules.mRule()
 Define event, isDone, text.s, result, file.s
 Repeat
   event = WaitWindowEvent()
@@ -3733,7 +3733,7 @@ def extractreplacements(grammar):
     return [ (matchobj.group('pat'), matchobj.group('repl'), bool(matchobj.group('term')))
                 for matchobj in re.finditer(syntaxre, grammar)
                 if matchobj.group('rule')]
- 
+
 def replace(text, replacements):
     while True:
         for pat, repl, term in replacements:
@@ -3746,13 +3746,13 @@ def replace(text, replacements):
             return text
 
 syntaxre = r"""(?mx)
-^(?: 
+^(?:
   (?: (?P<comment> \# .* ) ) |
   (?: (?P<blank>   \s*  ) (?: \n | $ )  ) |
   (?: (?P<rule>    (?P<pat> .+? ) \s+ -> \s+ (?P<term> \.)? (?P<repl> .+) ) )
 )$
 """
- 
+
 grammar1 = """\
 # This rules file is extracted from Wikipedia:
 # http://en.wikipedia.org/wiki/Markov_Algorithm
@@ -3763,7 +3763,7 @@ T -> the
 the shop -> my brother
 a never used -> .terminating rule
 """
- 
+
 grammar2 = '''\
 # Slightly modified from the rules on Wikipedia
 A -> apple
@@ -3773,7 +3773,7 @@ T -> the
 the shop -> my brother
 a never used -> .terminating rule
 '''
- 
+
 grammar3 = '''\
 # BNF Syntax testing rules
 A -> apple
@@ -3816,7 +3816,7 @@ y_ -> _
 # Termination cleanup for addition
 _1 -> 1
 1+_ -> 1
-_+_ -> 
+_+_ ->
 '''
 
 grammar5 = '''\
@@ -3841,14 +3841,14 @@ B1 -> 1B
 '''
 
 text1 = "I bought a B of As from T S."
- 
+
 text2 = "I bought a B of As W my Bgage from T S."
 
 text3 = '_1111*11111_'
 
 text4 = '000000A000000'
 
- 
+
 if __name__ == '__main__':
     assert replace(text1, extractreplacements(grammar1)) \
            == 'I bought a bag of apples from my brother.'
@@ -3883,7 +3883,7 @@ The <tt>Markov-algorithm</tt> for a set of rules returns a function which maps f
 (struct ->. (A B))
 
 (define ((Markov-algorithm . rules) initial-string)
-  (let/cc stop 
+  (let/cc stop
     ; rewriting rules
     (define (rewrite rule str)
       (match rule
@@ -3915,7 +3915,7 @@ Example of use:
 ```racket
 
 > (define MA
-    (Markov-algorithm 
+    (Markov-algorithm
      (->  "A" "apple")
      (->  "B" "bag")
      (->. "S" "shop")
@@ -3950,7 +3950,7 @@ To read from a file just replace <tt>with-input-from-string</tt> ==> <tt>with-in
 ;; the new pattern for the match form
 (define-match-expander rx-split
   (syntax-rules ()
-    [(rx-split A rx B) 
+    [(rx-split A rx B)
      (app (λ (s) (regexp-split (pregexp rx) s)) (list A B))]))
 
 ;; skip empty lines and comments
@@ -4236,7 +4236,7 @@ y_ -> _
 # Termination cleanup for addition
 _1 -> 1
 1+_ -> 1
-_+_ -> 
+_+_ ->
 EOS
 
 puts morcov(ruleset4, "_1111*11111_")
@@ -4290,21 +4290,21 @@ import scala.io.Source
 object MarkovAlgorithm {
   val RulePattern = """(.*?)\s+->\s+(\.?)(.*)""".r
   val CommentPattern = """#.*|\s*""".r
-  
+
   def rule(line: String) = line match {
     case CommentPattern() => None
     case RulePattern(pattern, terminal, replacement) => Some(pattern, replacement, terminal == ".")
     case _ => error("Syntax error on line "+line)
   }
-  
+
   def main(args: Array[String]) {
     if (args.size != 2 ) {
       println("Syntax: MarkovAlgorithm inputFile inputPattern")
       exit(1)
     }
-    
+
     val rules = (Source fromPath args(0) getLines () map rule).toList.flatten
-    
+
     def algorithm(input: String): String = rules find (input contains _._1) match {
       case Some((pattern, replacement, true)) => input replaceFirst ("\\Q"+pattern+"\\E", replacement)
       case Some((pattern, replacement, false)) => algorithm(input replaceFirst ("\\Q"+pattern+"\\E", replacement))
@@ -4329,7 +4329,7 @@ if (argv.size != 2 ) error("Syntax: MarkovAlgorithm inputFile inputPattern")
 val rulePattern = """(.*?)\s+->\s+(\.?)(.*)""".r
 val isComment = (_: String) matches "#.*|\\s*"
 val rules = Source fromPath args(0) getLines () filterNot isComment map (rulePattern unapplySeq _ get) toList;
-    
+
 def algorithm(input: String): String = rules find (input contains _.head) match {
   case Some(Seq(pattern, ".", replacement)) => input replaceFirst ("\\Q"+pattern+"\\E", replacement)
   case Some(Seq(pattern, "", replacement)) => algorithm(input replaceFirst ("\\Q"+pattern+"\\E", replacement))
@@ -4436,7 +4436,7 @@ The following implementation uses several string-related procedures provided by 
 
 import <Utilities/Sequence.sl>;
 
-Rule ::= ( pattern : char(1), 
+Rule ::= ( pattern : char(1),
 		   replacement : char(1),
 		   terminal : bool);
 
@@ -4597,7 +4597,7 @@ y_ -> _
 # Termination cleanup for addition
 _1 -> 1
 1+_ -> 1
-_+_ -> 
+_+_ ->
 ENDRULE
 _1111*11111_
 END
@@ -4793,11 +4793,11 @@ class markovparser
 		dim i
 		aRules = split( sBlock, vbNewLine )
 		'~ remove blank lines from end of array
-		do while aRules( ubound( aRules ) ) = vbnullstring 
+		do while aRules( ubound( aRules ) ) = vbnullstring
 			redim preserve aRules( ubound( aRules ) - 1 )
 		loop
 		'~ parse array
-		for i = lbound( aRules ) to ubound( aRules ) 
+		for i = lbound( aRules ) to ubound( aRules )
 			if left( aRules( i ), 1 ) = "#" then
 				aRules( i ) = Array( vbnullstring, aRules(i))
 			else
@@ -4805,7 +4805,7 @@ class markovparser
 			end if
 		next
 	end property
-	
+
 	public function apply( sArg )
 		dim ruleapplied
 		dim terminator
@@ -4813,7 +4813,7 @@ class markovparser
 		dim i
 		dim repl
 		dim changes
-		
+
 		ruleapplied = true
 		terminator = false
 
@@ -4843,14 +4843,14 @@ class markovparser
 		loop
 		apply = sArg
 	end function
-	
+
 	sub dump
 		dim i
 		for i = lbound( aRules ) to ubound( aRules )
 			wscript.echo eef(aRules(i)(0)=vbnullstring,aRules(i)(1),aRules(i)(0)& " -> " & aRules(i)(1))  & eef( left( aRules(i)(1), 1 ) = ".", " #terminator", "" )
 		next
 	end sub
-	
+
 	private function eef( bCond, sExp1, sExp2 )
 		if bCond then
 			eef = sExp1
@@ -5010,7 +5010,7 @@ markov("I bought a B of As from T S.",_).println();
 
 parseRuleSet("# BNF Syntax testing rules", "A -> apple",
    "WWWW -> with", "Bgage -> ->.*", "B -> bag", "->.* -> money",
-   "W -> WW", "S -> .shop", "T -> the", 
+   "W -> WW", "S -> .shop", "T -> the",
    "the shop -> my brother", "a never used -> .terminating rule") :
 markov("I bought a B of As W my Bgage from T S.",_).println();
 ```

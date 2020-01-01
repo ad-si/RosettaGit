@@ -40,7 +40,7 @@ type Days is (Mon, Tue, Wed, Thu, Fri, Sat, Sun);
 type Daily_Counts is array(Days) of Natural;
 This_week : Daily_Counts := (200, 212, 175 220, 201, 120, 0);
 Monday_Sales : Natural;
-Monday_Sales := This_Week(Mon); 
+Monday_Sales := This_Week(Mon);
 
 ```
 
@@ -70,19 +70,19 @@ main:(
  REAL x, y, z;
  [5,4]REAL p, q, r; INIT p; # two-dimensional arrays row-indexed from 1 to 5, column-indexed from 1 to 3 #
  [2,3,2,2,3,4,2]REAL f;     # a seven-dimensional array (max dimensions allowed is 7) #
-   
+
  x := a[-5];                # gets element at index -5 #
  y := a[0];                 # gets element at index 0 #
  z := a[20];                # gets element at index 20 #
  z := p[5,2];               # gets element in row 5, column 2 #
- 
+
  p := q;                    # gets all elements of Q into P #
  p[:,2] := a[1:5];          # gets elements at indices 1 to 5 of A into the 2nd column of P #
 
                             # Note: ALGOL 68 does not have the concept of a slice with a stride #
 
  r[1:4,] := p[2:5,];        # gets 4x4 subarray of P starting in 2nd row into 4x4 subarray of R starting in 1st row #
- 
+
  r[3:5,] := f[1,1,1,1,,,1]  # gets a 3x4 subarray of F into a 3x4 subarray of R starting in row 3 #
 
 )
@@ -139,11 +139,12 @@ This shows how a string is split into elements of the array a, which is iterated
 ==[[C++]]==
 
 
-```cpp>  template<typename T
+```cpp
+template<typename T>
 
-  T array_index(T array[], size_t index) {
-    return array[index];
-  }
+T array_index(T array[], size_t index) {
+  return array[index];
+}
 ```
 
 
@@ -180,7 +181,7 @@ template GetItemType(T) { alias ReturnTypeOf!(T.opIndex) GetItemType; }
 template GetItemType(T : T[]) { alias T GetItemType; }
 
 GetItemType!(T) GetElem(T, U)(T array, U idx)
-{   
+{
     return array[idx];
 }
 
@@ -202,7 +203,7 @@ public:
 }
 
 void main()
-{   
+{
     auto y = new SampleContainer;
     auto x =  [5, 1, 7, 3, 6, 4, 2 ];
 
@@ -292,7 +293,7 @@ All arrays are accessed the same way regardless of declaration method.
 
 ```pascal
  i : integer ;
- 
+
  i := foo[n] ;
 ```
 
@@ -317,21 +318,21 @@ In ANSI Fortran 90 or later:
   real :: x, y, z
   real, dimension(5,4) :: p, q, r        ! two-dimensional arrays row-indexed from 1 to 5, column-indexed from 1 to 3
   real, dimension(2,3,2,2,3,4,2) :: f    ! a seven-dimensional array (max dimensions allowed is 7)
-    
+
   x = a(-5)             ! gets element at index -5
   y = a(0)              ! gets element at index 0
   z = a(20)             ! gets element at index 20
   z = p(5,2)            ! gets element in row 5, column 2
-  
+
   p = q                 ! gets all elements of Q into P
   p(:,2) = a(1:5)       ! gets elements at indices 1 to 5 of A into the 2nd column of P
   q(1,:) = a(-10:20:10) ! gets elements at indices -10, 0, 10, and 20 into the 1st row of Q (stride of 10)
   q(1,:) = a(::10)      ! gets same elements previous assignment (implicit first and last elements, stride of 10)
   r(1:4,:) = p(2:5,:)   ! gets 4x4 subarray of P starting in 2nd row into 4x4 subarray of R starting in 1st row
-  
+
   a(0:-10:-1) = a(5:15) ! gets elements at indices 5 through 15 and places them in elements at indices 0 through -10
                         ! (in reverse order, stride of -1)
-  
+
   r(3:5,:) = f(1,1,1,1,:,:,1) ! gets a 3x4 subarray of F into a 3x4 subarray of R starting in row 3
 
 
@@ -356,16 +357,16 @@ Mix n Match
 Arrays can have arbitrary bounds (not restricted to integer values, any instance of ''Ix'' will do):
 
  import Data.Array
- 
+
  example = listArray (2,5) ["This", "is", "an", example"]
- 
+
  result = example ! 4
 
 Here, ''result'' will be equal to "an". It should be noted that in Haskell lists are often used instead of arrays.
 
 ==[[IDL]]==
   ; this is allowed:
-  result = arr(5) 
+  result = arr(5)
   ; but this is preferred:
   result = arr[5]
 
@@ -380,7 +381,7 @@ The natural unit of access in J is the item. (Every piece of data can be treated
     NB. Define example one-axis array, in which each item is an atom
     ]ex1=: 10+ i. 6  NB. ] means display the full array (after =: defines it)
  10 11 12 13 14 15
-    4 { ex1          NB. Single specific item 
+    4 { ex1          NB. Single specific item
  14
     _1 { ex1         NB. Last item, using negative indexing
  15
@@ -388,9 +389,9 @@ The natural unit of access in J is the item. (Every piece of data can be treated
  15
     0 5 2 { ex1      NB. Multiple specific items
  10 15 12
-  
+
     NB. Two-axis array, in which each item is a one-axis array
-    ]ex2=: 4 6 $ 10+i. 24 
+    ]ex2=: 4 6 $ 10+i. 24
  10 11 12 13 14 15
  16 17 18 19 20 21
  22 23 24 25 26 27
@@ -400,7 +401,7 @@ The natural unit of access in J is the item. (Every piece of data can be treated
  10 11 12 13 14 15
     (<3 4) { ex2     NB. Atom selection (index list length equals array shape length)
  32
-  
+
     NB. Four-axis array, shaped 5 by 3 by 2 by 2
     ex4=: 5 3 2 2 $ i. 60
     (<2 1) { ex4     NB. Subarray selection: table at given indexing of top two axes
@@ -500,14 +501,14 @@ disp(a(10:-1:1)); % display elements in reversed order
 
 
 ==[[Perl]]==
-{{works with|Perl|5.8.8}} 
+{{works with|Perl|5.8.8}}
  $elem = $array[0];
 
 ==[[PHP]]==
 
 ```php
  $array = array('php', 'has', 'arrays');
- // First element 
+ // First element
  $elem  = $array[0];
 ```
 
@@ -624,18 +625,18 @@ set result [lindex $list $index]
 This retrieves the value 20 from the second item in the array:
 
   3 cells is-array table
- 
+
   ( Populate the array )
   10 0 table array.put
   20 1 table array.put
   30 2 table array.put
-  
+
   table 1 array.get
 
 ==[[X86 assembly]]==
 {{works with|nasm}}
 
-This retrieves the '''third''' 32bit element of an array made of 4-bytes long (32bit) elements. 
+This retrieves the '''third''' 32bit element of an array made of 4-bytes long (32bit) elements.
 
 ```asm
  mov esi, array_offset

@@ -15,19 +15,19 @@ tags = []
 
 Idiomatically determine all the lowercase and uppercase letters   (of the Latin [English] alphabet)   being used currently by a computer programming language.
 The method should find the letters regardless of the hardware architecture that is being used (ASCII, EBCDIC, or other).
- 
+
 
 ;Task requirements
 
 Display the set of all:
-::::::*   lowercase letters 
+::::::*   lowercase letters
 ::::::*   uppercase letters
 
 
 that can be used (allowed) by the computer program,
 
 
-where   ''letter''   is a member of the Latin (English) alphabet:     '''a''' ──► '''z'''     and     '''A''' ──► '''Z'''. 
+where   ''letter''   is a member of the Latin (English) alphabet:     '''a''' ──► '''z'''     and     '''A''' ──► '''Z'''.
 
 
 You may want to mention what hardware architecture is being used, and if applicable, the operating system.
@@ -113,8 +113,8 @@ uppercase 60: ABCDEFGHIJKLMNOPQRSTUVWXYZSOZYAAAAÄÅÆÇEÉEEIIIIDÑOOOOÖOUUUÜ
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main(int argc, char const *argv[]) {
   for (char c = 0x41; c < 0x5b; c ++) putchar(c);
@@ -144,7 +144,7 @@ Of note: COBOL is a one relative ordinal language.  CHAR(1) is the NUL byte, val
 The COBOL ''ALPHABETIC-LOWER'' and ''ALPHABETIC-UPPER'' category tests both include space as in the set.
 
 NATIONAL character sets not tested here, code is commented out to satisfy the task spec of Latin/ENGLISH but left in listing for the benefit of the reader.
- 
+
 
 ```cobol
        identification division.
@@ -193,7 +193,7 @@ NATIONAL character sets not tested here, code is commented out to satisfy the ta
        if high-slide equal 0 then
            display "no upper case letters detected" upon syserr
        else
-           display upper-8bit(1:high-slide)        
+           display upper-8bit(1:high-slide)
        end-if
 
       *> COBOL standard NATIONAL data type, a 16 bit encoding
@@ -236,7 +236,7 @@ prompt$ cobc -xj determine-letters.cob
  ABCDEFGHIJKLMNOPQRSTUVWXYZ
 ```
 
-As noted, space is included in the category tests. 
+As noted, space is included in the category tests.
 
 =={{header|F_Sharp|F#}}==
 
@@ -565,7 +565,7 @@ Lower case: abcdefghijklmnopqrstuvwxyzªµºßàáâãäåæçèéêëìíîïð
 ==jq==
 {{works with|jq|with regex support}}
 
-We first define a function for generating a JSON string of all the Unicode characters that have codepoints within a specified range and which belong to a specified "\p" character class. 
+We first define a function for generating a JSON string of all the Unicode characters that have codepoints within a specified range and which belong to a specified "\p" character class.
 
 ```jq
 # The range of codepoints is from m up to but excluding n;
@@ -643,7 +643,7 @@ function countunicode()
                 az *= "$c"
             else
                 AZ *= "$c"
-            end            
+            end
         end
     end
     count, az, AZ
@@ -850,7 +850,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØ
 ```
 
 That code is now part of demo\HelloUTF8.exw, which has the necessary Windows console code page setting code, though it has
-clearly fouled up on 2 or 3 characters somehow - probably quite easy to fix, should you care enough. (I also tried displaying 
+clearly fouled up on 2 or 3 characters somehow - probably quite easy to fix, should you care enough. (I also tried displaying
 them in a MessageBox, which hid the 2/3 glitches, but got exactly the same results on copy and paste, btw.)
 
 
@@ -937,7 +937,7 @@ All uppercase characters: 𝟊𝞨𝞧𝞦𝞥𝞤𝞣𝞢𝞡𝞠𝞟𝞞𝞝�
 
 ## REXX
 
-Both versions will work correctly on an ASCII or EBCDIC system.   
+Both versions will work correctly on an ASCII or EBCDIC system.
 ===non-spaced list===
 
 ```rexx
@@ -955,7 +955,7 @@ say '    uppercase letters: '   $U               /*   "     "   "   uppercase   
                                                  /*stick a fork in it,  we're all done. */
 ```
 
-'''output''' 
+'''output'''
 
 ```txt
 
@@ -984,7 +984,7 @@ say '    uppercase letters: '   $U               /*   "     "   "   uppercase   
                                                  /*stick a fork in it,  we're all done. */
 ```
 
-'''output''' 
+'''output'''
 
 ```txt
 

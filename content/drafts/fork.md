@@ -235,8 +235,8 @@ mySubroutine3: mySubroutine1 has been run
 ## C
 
 {{libheader|POSIX}}
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
@@ -272,9 +272,9 @@ child 3604 finished
 
 {{libheader|POSIX}}
 
-```cpp>#include<iostream
-
-#include<unistd.h>
+```cpp
+#include <iostream>
+#include <unistd.h>
 
 int main()
 {
@@ -341,7 +341,7 @@ Though this starts a separate process, the code in ''shell/sh'' blocks until the
   (while (and (other-stuff-to-do?) (not (future-done? search)))
     (do-other-stuff))
   (let [{:keys [exit out err]} @search]
-    (if (zero? exit) 
+    (if (zero? exit)
       (do-something-with out)
       (report-errors-in err))))
 ```
@@ -467,17 +467,17 @@ $  if i .gt. 0 then $  goto loop
 ```txt
 $ spawn /nowait /notify @looper 0::2  ! up to 8 parameters are allowed
 %DCL-S-SPAWNED, process DAVID_51258 spawned  ! random number suffix assigned
-$ 
+$
    4-JUN-2015 13:13:50
 show default5 13:13:52  ! display anomaly due to parent and child overwriting output
    4-JUN-2015 13:13:54
   USER_ROOT:[DAVID]
-$ 
+$
    4-JUN-2015 13:13:57
    4-JUN-2015 13:13:59
  Interrupt  ! ctrl-c is the interrupt character; all child processes are deleted immediately
 
-$ 
+$
 Subprocess DAVID_51258 has completed
 $
 ```
@@ -518,7 +518,7 @@ defmodule Fork do
     spawn(fn -> child end)
     IO.puts "This is the original process"
   end
-  
+
   def child, do: IO.puts "This is the new process"
 end
 
@@ -636,14 +636,14 @@ At the next level up, we can define a "spawn" function which makes it easy to fo
 
     # Now here's the spawn function itself.
     \child_fn\next
-    
+
     # First flush the parent's stdout and stderr to avoid any pending output
     # accidentally getting pushed into the child's input.  I've noticed this
     # can happen when your script output is sent to a file or pipe instead of
     # a console.
     get_stdout \fh fflush fh \_
     get_stderr \fh fflush fh \_
-    
+
     # Now create a series of pipes, each with a read and write side.
     pipe \r_in\w_in
     pipe \r_out\w_out
@@ -921,7 +921,7 @@ SYSTEM(SHell='Fork.hic')
 
 BEEP("c e g 'c")
 WRITE(Messagebox="!") "Waiting ..."
-ALARM(999)              ! quit immediately 
+ALARM(999)              ! quit immediately
 ```
 
 
@@ -938,7 +938,7 @@ procedure main()
 end
 ```
 
-Notes: 
+Notes:
 * Fork should not fail.  If an error 500 is generated there is a problem.
 * Fork is not supported under windows.  Multitasking should be used instead.
 
@@ -1029,8 +1029,8 @@ public class RFork {
 
 ```txt
 
-Output of running [ps, -f, -U, developer] is: 
-  UID   PID  PPID   C STIME   TTY           TIME CMD 
+Output of running [ps, -f, -U, developer] is:
+  UID   PID  PPID   C STIME   TTY           TIME CMD
   502 74079     1   0  8:13PM ??         0:00.02 /sbin/launchd
   ...
   502 74047 74045   0  8:13PM ttys000    0:00.05 bash
@@ -1244,8 +1244,8 @@ method runSample(arg) private static
 
 ```txt
 
-Output of running [ps, -f, -U, nrxuser] is: 
-  UID   PID  PPID   C STIME   TTY           TIME CMD 
+Output of running [ps, -f, -U, nrxuser] is:
+  UID   PID  PPID   C STIME   TTY           TIME CMD
   501   277     1   0 21Aug13 ??         0:32.05 /sbin/launchd
   ...
     0   366   291   0 21Aug13 ttys001    0:00.02 login -pfl nrxuser /bin/bash -c exec -la bash /bin/bash
@@ -1324,7 +1324,7 @@ Do 3
 
 ::class fork
 :: method sub
-Reply 
+Reply
 Do 6
   Say 'subroutine' time()
   Call syssleep 1
@@ -1445,7 +1445,7 @@ foo()
 ## Perl
 
 {{works with|Perl|5.x}}
-In the child code, you may have to re-open database handles and such. 
+In the child code, you may have to re-open database handles and such.
 
 
 ```perl
@@ -1457,14 +1457,14 @@ if ($pid = fork()) {
     # disconnect ourselves from input, output, and errors
     close(STDOUT);
     close(STDIN);
-    close(STDERR);    
+    close(STDERR);
     # re-open to /dev/null to prevent irrelevant warn messages.
     open(STDOUT, '>/dev/null');
     open(STDIN, '>/dev/null');
     open(STDERR, '>>/home/virtual/logs/err.log');
-    
+
     # child code
-    
+
     exit; # important to exit
 } elsif($! =~ /emporar/){
     warn '[' . localtime() . "] Failed to Fork - Will try again in 10 seconds.\n";
@@ -1561,7 +1561,7 @@ I am a child.  Have you seen my mommy?
 Phix has create_thread which creates a separate thread, with its own call stack, but sharing common data (like most fork examples here).
 
 To run something completely independently, use system() or system_exec(), depending on whether you want a shell and/or to wait for a result.
-    
+
 
 ```Phix
 procedure mythread()
@@ -1747,7 +1747,7 @@ end
 
 You can run a program until that program executes a wait statement.
 Once the program waits,you can use it's functions.
- 
+
 
 ```runbasic
 run "someProgram.bas",#handle
@@ -1873,7 +1873,7 @@ p@(Process traits) forkAndDo: b
 'Here I am' displayNl.
 |a|
 a := [
-  (Delay forSeconds: 2) wait . 
+  (Delay forSeconds: 2) wait .
   1 to: 100 do: [ :i | i displayNl ]
 ] fork.
 'Child will start after 2 seconds' displayNl.
@@ -2055,7 +2055,7 @@ _start:
     mov rdi, 1 ; sleep so the child process can print befor the parent exits
     call Sleep ; you might not see the child output if you don't do this
 
-    jmp exit 
+    jmp exit
 
   printChild:
 
@@ -2078,7 +2078,7 @@ _start:
     mov rsi, newLine
     mov rdx, 1
     syscall
-    
+
   exit:
     mov rax, 60
     mov rdi, 0

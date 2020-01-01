@@ -107,8 +107,8 @@ Almost all terminal devices can do NAWS (Negotiate About Window Size). A termina
 
 {{works with|BSD|4.4}}
 
-```c>#include <sys/ioctl.h
-	/* ioctl, TIOCGWINSZ */
+```c
+#include <sys/ioctl.h>  /* ioctl, TIOCGWINSZ */
 #include <err.h>	/* err */
 #include <fcntl.h>	/* open */
 #include <stdio.h>	/* printf */
@@ -125,14 +125,14 @@ main()
 	if (fd < 0)
 		err(1, "/dev/tty");
 
-	/* Get window size of terminal. */ 
+	/* Get window size of terminal. */
 	if (ioctl(fd, TIOCGWINSZ, &ws) < 0)
 		err(1, "/dev/tty");
 
 	printf("%d rows by %d columns\n", ws.ws_row, ws.ws_col);
 	printf("(%d by %d pixels)\n", ws.ws_xpixel, ws.ws_ypixel);
 
-	close(fd);	
+	close(fd);
 	return 0;
 }
 ```
@@ -143,8 +143,8 @@ Grab a console screen handle, then call <code>GetConsoleScreenBufferInfo()</code
 
 {{works with|MinGW}}
 
-```c>#include <windows.h
-
+```c
+#include <windows.h>
 #include <wchar.h>
 
 int
@@ -656,7 +656,7 @@ def get_windows_terminal():
     res = windll.kernel32.GetConsoleScreenBufferInfo(h, csbi)
 
     #return default size if actual size can't be determined
-    if not res: return 80, 25 
+    if not res: return 80, 25
 
     import struct
     (bufx, bufy, curx, cury, wattr, left, top, right, bottom, maxx, maxy)\
@@ -713,7 +713,7 @@ This information is provided by Retro in the '''ch''' (height) and '''cw''' (wid
 {{works with|regina}}
 {{works with|rexximc}}
 
-Some REXX interpreters don't provide basic [[terminal control]] as part of the language. However, it's possible to determine the size of the terminal window by using external system commands: 
+Some REXX interpreters don't provide basic [[terminal control]] as part of the language. However, it's possible to determine the size of the terminal window by using external system commands:
 
 ```rexx
 width = 'tput'( 'cols' )
@@ -733,7 +733,7 @@ The <code>LINESIZE</code> built-in function returns the (terminal) screen's widt
 width=linesize()
 ```
 
-The above example makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console). 
+The above example makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console).
 
 The   '''LINESIZE.REX'''   REXX program is included here ──► [[LINESIZE.REX]].
 
@@ -746,7 +746,7 @@ The   '''LINESIZE.REX'''   REXX program is included here ──► [[LINESIZE.RE
  parse value scrsize() with sd sw
 ```
 
-The above example makes use of   '''SCRSIZE'''   REXX program (of BIF) which is used to determine the screen size of the terminal (console). 
+The above example makes use of   '''SCRSIZE'''   REXX program (of BIF) which is used to determine the screen size of the terminal (console).
 
 The   '''SCRSIZE.REX'''   REXX program is included here ──► [[SCRSIZE.REX]].
 

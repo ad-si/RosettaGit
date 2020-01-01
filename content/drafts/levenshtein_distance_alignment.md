@@ -27,7 +27,7 @@ PALACE
 
 
 ;Task:
-Write a function that shows the alignment of two strings for the corresponding levenshtein distance.  
+Write a function that shows the alignment of two strings for the corresponding levenshtein distance.
 
 As an example, use the words "rosettacode" and "raisethysword".
 
@@ -40,8 +40,8 @@ You can either implement an algorithm, or use a dedicated library (thus showing 
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -400,7 +400,7 @@ fun levenshteinAlign(a: String, b: String): Array<String> {
     for (i in 1..a.length) {
         costs[i][0] = i
         for (j in 1..b.length) {
-            val temp = costs[i - 1][j - 1] + (if (aa[i - 1] == bb[j - 1]) 0 else 1) 
+            val temp = costs[i - 1][j - 1] + (if (aa[i - 1] == bb[j - 1]) 0 else 1)
             costs[i][j] = minOf(1 + minOf(costs[i - 1][j], costs[i][j - 1]), temp)
         }
     }
@@ -436,7 +436,7 @@ fun main(args: Array<String>) {
     var result = levenshteinAlign("place", "palace")
     println(result[0])
     println(result[1])
-    println()    
+    println()
     result = levenshteinAlign("rosettacode","raisethysword")
     println(result[0])
     println(result[1])
@@ -457,7 +457,7 @@ raisethysword
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 {{incorrect}}
 {{works with|Mathematica|7}}
 
@@ -481,11 +481,11 @@ use strict;
 use warnings;
 
 use List::Util qw(min);
- 
+
 sub levenshtein_distance_alignment {
     my @s = ('^', split //, shift);
     my @t = ('^', split //, shift);
- 
+
     my @A;
     @{$A[$_][0]}{qw(d s t)} = ($_, join('', @s[1 .. $_]), ('~' x $_)) for 0 .. $#s;
     @{$A[0][$_]}{qw(d s t)} = ($_, ('-' x $_), join '', @t[1 .. $_])  for 0 .. $#t;
@@ -511,7 +511,7 @@ sub levenshtein_distance_alignment {
     }
     return @{$A[-1][-1]}{'s', 't'};
 }
- 
+
 print  join "\n", levenshtein_distance_alignment "rosettacode", "raisethysword";
 ```
 
@@ -532,11 +532,11 @@ raisethysword-
 sub align ( Str $σ, Str $t ) {
     my @s = flat *, $σ.comb;
     my @t = flat *, $t.comb;
-     
+
     my @A;
     @A[$_][ 0]<d s t> = $_, @s[1..$_].join, '-' x $_ for ^@s;
     @A[ 0][$_]<d s t> = $_, '-' x $_, @t[1..$_].join for ^@t;
-     
+
     for 1 ..^ @s X 1..^ @t -> (\i, \j) {
 	if @s[i] ne @t[j] {
 	    @A[i][j]<d> = 1 + my $min =
@@ -549,10 +549,10 @@ sub align ( Str $σ, Str $t ) {
 	    @A[i][j]<d s t> = @A[i-1][j-1]<d s t> Z~ '', @s[i], @t[j];
 	}
     }
-     
+
     return @A[*-1][*-1]<s t>;
 }
- 
+
 .say for align 'rosettacode', 'raisethysword';
 ```
 
@@ -602,7 +602,7 @@ function LevenshteinAlignment(string a, b)
     end while
     return {reverse(arev),reverse(brev)}
 end function
- 
+
 procedure test(string a,b)
     {a,b} = LevenshteinAlignment(a,b)
     string c = sq_add(repeat(' ',length(a)),sq_mul(sq_ne(a,b),'|'-' '))
@@ -662,7 +662,7 @@ for a discussion of the code.
 '''Demonstration:'''
 
 ```racket
-(levenshtein (string->list "rosettacode") 
+(levenshtein (string->list "rosettacode")
              (string->list "raisethysword"))
 ```
 
@@ -700,11 +700,11 @@ Now we extend the code from http://blog.racket-lang.org/2012/08/dynamic-programm
   (memoize
    (lambda (s t)
      (cond
-       [(and (empty? s) (empty? t)) 
+       [(and (empty? s) (empty? t))
         (lev 0 '() '())]
-       [(empty? s) 
+       [(empty? s)
         (lev (length t) (list-repeat (length t) #\-) t)]
-       [(empty? t) 
+       [(empty? t)
         (lev (length s) s (list-repeat (length s) #\-))]
        [else
         (if (equal? (first s) (first t))
@@ -718,17 +718,17 @@ Now we extend the code from http://blog.racket-lang.org/2012/08/dynamic-programm
                                          1 (first s) (first t)))))]))))
 
 (define (levenshtein s t)
-  (let ([result (levenshtein/list (string->list s) 
+  (let ([result (levenshtein/list (string->list s)
                                   (string->list t))])
     (values (lev-n result)
-            (list->string (lev-s result)) 
+            (list->string (lev-s result))
             (list->string (lev-t result)))))
 ```
 
 '''Demonstration:'''
 
 ```racket
-(let-values ([(dist exp-s exp-t) 
+(let-values ([(dist exp-s exp-t)
               (levenshtein "rosettacode" "raisethysword")])
   (printf "levenshtein: ~a edits\n" dist)
   (displayln exp-s)
@@ -755,7 +755,7 @@ require 'lcs'
 
 def levenshtein_align(a, b)
   apos, bpos = LCS.new(a, b).backtrack2
-  
+
   c = ""
   d = ""
   x0 = y0 = -1
@@ -774,7 +774,7 @@ def levenshtein_align(a, b)
     d += b[y0+1..y]
     y0 = y
   end
-  
+
   c += a[x0+1..-1]
   d += b[y0+1..-1]
   diff = a.length + y0 - b.length - x0
@@ -988,14 +988,14 @@ fcn alignment(a,b){
    a,b = a.toLower(), b.toLower();
    costs := (a.len()+1).pump(List(),'wrap(a){ [1..b.len()].pump(List(a)) });
    foreach i,j in (a.len()+1, [1..b.len()]){
-      costs[i][j] = ( 1 + costs[i-1][j].min(costs[i][j-1]) ) 
+      costs[i][j] = ( 1 + costs[i-1][j].min(costs[i][j-1]) )
          .min(if(a[i-1] == b[j-1]) costs[i-1][j-1] else costs[i-1][j-1] + 1);
    }
    // walk back through matrix to figure out path
    aPathRev,bPathRev := Data(),Data();  // byte buckets
-   i,j := a.len(), b.len(); 
+   i,j := a.len(), b.len();
    while(i!=0 and j!= 0){
-      if (costs[i][j] == 
+      if (costs[i][j] ==
           ( if(a[i-1]==b[j-1]) costs[i-1][j-1] else costs[i-1][j-1]+1 )){
          aPathRev.append(a[i-=1]);
 	 bPathRev.append(b[j-=1]);

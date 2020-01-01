@@ -31,7 +31,7 @@ Acceptable output:
 
 Finite decimals are of course no problem:
 
-* 0.75      → 3 / 4 
+* 0.75      → 3 / 4
 
 
 
@@ -39,7 +39,7 @@ Finite decimals are of course no problem:
 
 ## Ada
 
-Specification of a procedure Real_To_Rational, which is searching for the best approximation of a real number. The procedure is generic. I.e., you can instantiate it by your favorite "Real" type (Float, Long_Float, ...). 
+Specification of a procedure Real_To_Rational, which is searching for the best approximation of a real number. The procedure is generic. I.e., you can instantiate it by your favorite "Real" type (Float, Long_Float, ...).
 
 
 ```Ada
@@ -144,17 +144,17 @@ Finally, the output (reading the input from a file):
 
 ```applescript
 on run
-    
+
     script ratioString
         -- Using a tolerance epsilon of 1/10000
         on |λ|(x)
             showRatio(approxRatio(1.0E-4, x))
         end |λ|
     end script
-    
+
     map(ratioString, ¬
         {0.9054054, 0.518518, 0.75})
-    
+
     --> {"67/74", "14/27", "3/4"}
 end run
 
@@ -166,7 +166,7 @@ on approxRatio(epsilon, n)
     else
         set e to 1 / 10000
     end if
-    
+
     script gcde
         on |λ|(e, x, y)
             script _gcd
@@ -181,7 +181,7 @@ on approxRatio(epsilon, n)
             |λ|(abs(x), abs(y)) of _gcd
         end |λ|
     end script
-    
+
     set c to |λ|(e, 1, n) of gcde
     Ratio((n div c), (1 div c))
 end approxRatio
@@ -211,7 +211,7 @@ on abs(x)
 end abs
 
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -271,7 +271,7 @@ end map
     loop
     {
     loop, % To_rn
-     
+
     {
     Check1 .= Array[k]
     Check2 .= Array[M_M]
@@ -316,7 +316,7 @@ end map
     Index := 2
     loop
     {
-           
+
             if (mod(denominator, numerator) = 0 )
                     HCF := numerator
             if ( index = floor(numerator/2) )
@@ -343,7 +343,7 @@ end map
 
 0.9054054 -> 67/74
 0.518518 -> 14/27
-0.75 -> 3/4 
+0.75 -> 3/4
 
 ```
 
@@ -451,8 +451,8 @@ Output:
 ## C
 
 Since the intention of the task giver is entirely unclear, here's another version of best rational approximation of a floating point number.  It's somewhat more rigorous than the Perl version below, but is still not quite complete.
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <stdint.h>
@@ -462,7 +462,7 @@ Since the intention of the task giver is entirely unclear, here's another versio
  * md: max denominator value.  Note that machine floating point number
  *     has a finite resolution (10e-16 ish for 64 bit double), so specifying
  *     a "best match with minimal error" is often wrong, because one can
- *     always just retrieve the significand and return that divided by 
+ *     always just retrieve the significand and return that divided by
  *     2**52, which is in a sense accurate, but generally not very useful:
  *     1.0/7.0 would be "2573485501354569/18014398509481984", for example.
  */
@@ -766,29 +766,29 @@ The '''rationalize''' function uses a Stern-Brocot tree [http://en.wikipedia.org
    → 0.9054054054054054
 (inexact->exact 0.9054054054054054)
    → 67/74
-   
+
 (rationalize 0.7978723404255319)
   → 75/94
 
 ;; finding rational approximations of PI
-(for ((ε (in-range -1 -15 -1))) 
-	(writeln ( format "precision:10^%d %t PI = %d" ε 
+(for ((ε (in-range -1 -15 -1)))
+	(writeln ( format "precision:10^%d %t PI = %d" ε
         (rationalize PI (expt 10 e)))))
-	
-"precision:10^-1                   PI = 16/5"    
+
+"precision:10^-1                   PI = 16/5"
 "precision:10^-2                   PI = 22/7"    ;;🎩
-"precision:10^-3                   PI = 201/64"    
-"precision:10^-4                   PI = 333/106"    
-"precision:10^-5                   PI = 355/113"  ;; 🎩 🎩  
-"precision:10^-6                   PI = 355/113"    
-"precision:10^-7                   PI = 75948/24175"    
-"precision:10^-8                   PI = 100798/32085"    
-"precision:10^-9                   PI = 103993/33102"    
-"precision:10^-10                  PI = 312689/99532"    
-"precision:10^-11                  PI = 833719/265381"    
-"precision:10^-12                  PI = 4272943/1360120"    
-"precision:10^-13                  PI = 5419351/1725033"    
-"precision:10^-14                  PI = 58466453/18610450"    
+"precision:10^-3                   PI = 201/64"
+"precision:10^-4                   PI = 333/106"
+"precision:10^-5                   PI = 355/113"  ;; 🎩 🎩
+"precision:10^-6                   PI = 355/113"
+"precision:10^-7                   PI = 75948/24175"
+"precision:10^-8                   PI = 100798/32085"
+"precision:10^-9                   PI = 103993/33102"
+"precision:10^-10                  PI = 312689/99532"
+"precision:10^-11                  PI = 833719/265381"
+"precision:10^-12                  PI = 4272943/1360120"
+"precision:10^-13                  PI = 5419351/1725033"
+"precision:10^-14                  PI = 58466453/18610450"
 
 ```
 
@@ -832,35 +832,35 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 \ Brute force search, optimized to search only within integer bounds surrounding target
 \ Forth 200x compliant
 
-: RealToRational  ( float_target int_denominator_limit -- numerator denominator ) 
+: RealToRational  ( float_target int_denominator_limit -- numerator denominator )
     {:  f: thereal denlimit | realscale  numtor denom neg? f: besterror f: temperror :}
-    0 to numtor 
+    0 to numtor
     0 to denom
     9999999e to besterror                 \ very large error that will surely be improved upon
     thereal F0< to neg?                   \ save sign for later
-    thereal FABS to thereal              
+    thereal FABS to thereal
 
-    thereal FTRUNC f>s 1+ to realscale      \ realscale helps set integer bounds around target            
-    
-    denlimit 1+ 1 ?DO                    \ search through possible denominators ( 1 to denlimit)     
+    thereal FTRUNC f>s 1+ to realscale      \ realscale helps set integer bounds around target
 
-        I realscale *  I realscale 1- *  ?DO    \ search within integer limits bounding the real 
-            I s>f  J s>f  F/                    \ e.g. for 3.1419e search only between 3 and 4 
+    denlimit 1+ 1 ?DO                    \ search through possible denominators ( 1 to denlimit)
+
+        I realscale *  I realscale 1- *  ?DO    \ search within integer limits bounding the real
+            I s>f  J s>f  F/                    \ e.g. for 3.1419e search only between 3 and 4
             thereal F- FABS to temperror
-            
-            temperror besterror F< IF  
-                temperror to besterror I to numtor J to denom  
-            THEN 
+
+            temperror besterror F< IF
+                temperror to besterror I to numtor J to denom
+            THEN
         LOOP
 
-    LOOP  
+    LOOP
 
-    neg? IF numtor NEGATE to numtor THEN 
-    
-    numtor denom 
-; 
+    neg? IF numtor NEGATE to numtor THEN
+
+    numtor denom
+;
 (run)
-1.618033988e 100 RealToRational  swap . . 144 89 
+1.618033988e 100 RealToRational  swap . . 144 89
 3.14159e 1000 RealToRational swap . . 355 113
 2.71828e 1000 RealToRational swap . . 1264 465
 0.9054054e 100 RealToRational swap . . 67  74
@@ -876,7 +876,7 @@ This sort of calculation works best in base ten and with an input scheme that re
 
 Rather than engage in fancy schemes, here are two "brute force" methods. The first simply multiplies the value by a large power of ten, then casts out common factors in P/Q = x*1000000000/100000000. But if the best value for Q involves factors other than two and five, this won't work well. The second method is to jiggle either P or Q upwards depending on whether P/Q is smaller or larger than X, reporting improvements as it goes. Once beyond small numbers there are many small improvements to be found, so only those much better than the previous best are reported. Loosely speaking, the number of digits correct in good values of P/Q should be the sum of the number of digits in P and Q, and more still for happy fits, but a factor of eight suffices to suppress the rabble. Thus for Pi, the famous 22/7 and 355/113 appear as desired. Later pairs use lots more digits without a surprise hit, except for the short decimal sequence which comes out as 314159/100000 that reconstitutes the given decimal fraction exactly. Which is not a good approximation for Pi, and its pairs diverge from those of the more accurate value. In other words, one must assess the precision of the given value and not be distracted by the spurious precision offered by the larger P/Q pairs, so for 3·14159 with six digits, there is little point in going further than 355/113 - with their six digits. Contrariwise, if a P/Q with few digits matches many more digits of the given number, then a source rational number can be suspected. But if given just a few digits, such as 0·518 (or 0·519, when rounded), 13/25 could be just as likely a source number as 14/27 which is further away.
 
-The source uses the MODULE facility of F90 merely to avoid the annoyance of having to declare the type of integer function GCD. The T ("tab") format code is employed to facilitate the alignment of output, given that P/Q is presented with I0 format so that there are no spaces (as in "   22/    7" for example), the latter being standard in F90 but an extension in earlier Fortrans.  
+The source uses the MODULE facility of F90 merely to avoid the annoyance of having to declare the type of integer function GCD. The T ("tab") format code is employed to facilitate the alignment of output, given that P/Q is presented with I0 format so that there are no spaces (as in "   22/    7" for example), the latter being standard in F90 but an extension in earlier Fortrans.
 ```Fortran
       MODULE PQ	!Plays with some integer arithmetic.
        INTEGER MSG	!Output unit number.
@@ -1131,44 +1131,44 @@ end function
 function parserational(n as const string) as string
     dim as string whole, dec, num, denom
     dim as number iwhole, idec, inum, idenom, igcd
-    
+
     '' find positions of '.', '(' and ')' in code
     dim as integer dpos, r1pos, r2pos
     dpos = instr(n & ".", ".")
     r1pos = instr(n & "(", "(")
     r2pos = instr(n & ")", ")")
-    
+
     '' extract sections of number (whole, decimal, repeated numerator), generate '999' denominator
     whole = left(n, dpos - 1)
     dec = mid(n, dpos + 1, r1pos - dpos - 1)
     num = mid(n, r1pos + 1, r2pos - r1pos - 1)
     denom = string(len(num), "9"): if denom = "" then denom = "1"
-    
+
     '' parse sections to integer
     iwhole = str2num(whole)
     idec = str2num(dec)
     inum = str2num(num)
     idenom = str2num(denom)
-    
+
     '' if whole was negative, decimal and repeated sections need to be negative too
     if left(ltrim(whole), 1) = "-" then idec = -idec: inum = -inum
-    
+
     '' add decimal part to repeated fraction, and scale down
     inum += idec * idenom
     idenom *= pow10(len(dec))
-    
+
     '' add integer part to fraction
     inum += iwhole * idenom
-    
+
     '' simplify fraction
     igcd = abs(gcd(inum, idenom))
     if igcd <> 0 then
         inum \= igcd
         idenom \= igcd
     end if
-    
+
     return inum & " / " & idenom & " = " & (inum / idenom)
-    
+
 end function
 
 data "0.9(054)", "0.(518)", "-.12(345)", ""
@@ -1315,7 +1315,7 @@ Here are some other alternatives for dealing with decimals and fractions:
 
 ```j
    0j10": x:inv x: 0.9054054 0.518518 0.75  NB. invertible (shown to 10 decimal places)
-0.9054054000 0.5185180000 0.7500000000      
+0.9054054000 0.5185180000 0.7500000000
    0j10": x:inv 67r74 42r81 3r4             NB. decimal representation (shown to 10 decimal places)
 0.9054054054 0.5185185185 0.7500000000
    x: x:inv 67r74 42r81 3r4                 NB. invertible
@@ -1456,7 +1456,7 @@ function rat(x::AbstractFloat, tol::Real=eps(x))::Rational
     x, y = abs(x), 1.0
     r, a = modf(x)
     nt, t, tt = tol, 0.0, tol
-    
+
     while r > nt        # convergents of the continued fraction: np//nq = (p*a + pp) // (q*a + qq)
         np, nq = Int(a).*(p,q) .+ (pp,qq)
         p, pp, q, qq = np, p, nq, q
@@ -1753,7 +1753,7 @@ method rat(in, high='') public static
 * 16.08.2012 Walter Pachl derived from Rexx Version 2
 **********************************************************************/
   if high=='' then
-    high=10**(digits - 1)           /* maximum nominator/denominator */ 
+    high=10**(digits - 1)           /* maximum nominator/denominator */
   x=in                                 /* working copy               */
   nom=0                                /* start values nominator     */
   den=1                                /*              denominator   */
@@ -1935,7 +1935,7 @@ for (map { 10 ** $_ } 1 .. 10) {
 }
 ```
 
-Output: 
+Output:
 ```txt
 3/8 = 0.375:
 machine: 3/8
@@ -2093,7 +2093,7 @@ function asRational($val, $tolerance = 1.e-6)
 
     return $h1.'/'.$k1;
 }
- 
+
 echo asRational(1/5)."\n"; // "1/5"
 echo asRational(1/4)."\n"; // "1/4"
 echo asRational(1/3)."\n"; // "1/3"
@@ -2185,14 +2185,14 @@ Output:
 
 ```purebasic
 Procedure.i ggT(a.i, b.i)
-  Define t.i : If a < b : Swap a, b : EndIf    
-  While a%b : t=a : a=b : b=t%a : Wend : ProcedureReturn b    
+  Define t.i : If a < b : Swap a, b : EndIf
+  While a%b : t=a : a=b : b=t%a : Wend : ProcedureReturn b
 EndProcedure
 
 Procedure.s Dec2Rat(dn.d)
   Define nk$, gt.i, res$
-  nk$=Trim(StringField(StrD(dn),2,"."),"0")  
-  gt=ggT(Val(nk$),Int(Pow(10.0,Len(nk$))))  
+  nk$=Trim(StringField(StrD(dn),2,"."),"0")
+  gt=ggT(Val(nk$),Int(Pow(10.0,Len(nk$))))
   res$=Str(Val(nk$)/gt)+"/"+Str(Int(Pow(10.0,Len(nk$)))/gt)
   ProcedureReturn res$
 EndProcedure
@@ -2240,7 +2240,7 @@ The first loop limits the size of the denominator, because the floating-point re
 0.9054054 4527027/5000000
 0.518518 259259/500000
 0.75 3/4
->>> 
+>>>
 ```
 
 
@@ -2443,29 +2443,29 @@ They have some amount of inaccuracy, but i guess it can be tolerated.
 
 ### version 1
 
-This REXX example supports almost any form of numeric input,   some examples are: 
+This REXX example supports almost any form of numeric input,   some examples are:
 ::*   ±nnn
 ::*   ±nnn<b>.</b>
 ::*   ±nnn<b>.</b>fff
 ::*   ±<b>.</b>fff
-::*   ±nnnE±ppp 
+::*   ±nnnE±ppp
 ::*   <b>.</b>fffE±ppp
 ::*   ±nnn<b>.</b>fffE±ppp       (with an uppercase exponent signifier)
 ::*   ±nnn<b>.</b>fffe±ppp       (with an lowercase exponent signifier)
-::*   numeratorNumber/denominatorNumber 
+::*   numeratorNumber/denominatorNumber
 ::*   denominator is optional   (but if a   <big>'''/'''</big>   is used, it must be present)
-::*   superfluous blanks are permitted (for whitespace) 
+::*   superfluous blanks are permitted (for whitespace)
 ::*   leading zeroes are permitted
 ::*   leading signs are permitted
 ::*   improper fractions are permitted
 
-─── where: 
+─── where:
 :* '''nnn'''                   represent decimal digits       before        the decimal point (if there is one)
 :* '''fff'''              represent decimal digits   after   the decimal point (if there is one)
 :* '''ppp'''                   represent decimal digits of the (base ten) exponent
 :*   '''<big>±</big>'''     represent an optional (leading) sign, either   '''+'''   or   '''-'''
 :*   '''<b>.</b>'''           if it's trailing, the decimal point is optional
-  
+
 
 REXX can support almost any number of decimal digits, but   '''10'''   was chosen for practicality for this task.
 
@@ -2532,9 +2532,9 @@ new = 1/7
 
 ```rexx
 /*REXX program to convert decimal numbers to fractions ****************
-* 15.08.2012 Walter Pachl derived from above for readability 
+* 15.08.2012 Walter Pachl derived from above for readability
 * It took me time to understand :-) I need descriptive variable names
-* Output shows where the fraction only approximates the number 
+* Output shows where the fraction only approximates the number
 * due to the limit (high) imposed on nominator and denominator
 **********************************************************************/
   Numeric Digits 10               /* use "only" 10 digs of precision */
@@ -2751,17 +2751,17 @@ This loop finds the simplest fractions within a given radius, because the floati
 ```
 
 {{works with|Ruby|2.1.0+}}
-A suffix for integer and float literals was introduced: 
+A suffix for integer and float literals was introduced:
 
 
 ```txt
 
 2.1.0p0 :001 > 0.9054054r
- => (4527027/5000000) 
+ => (4527027/5000000)
 2.1.0p0 :002 > 0.518518r
- => (259259/500000) 
+ => (259259/500000)
 2.1.0p0 :003 > 0.75r
- => (3/4) 
+ => (3/4)
 
 ```
 
@@ -2790,8 +2790,8 @@ fn decimal_to_rational (mut n : f64) -> [isize;2] {
     let aux1 = isize::max_value()/2;
     while c < aux1  && d < aux1 {
         let aux2 : f64 = (a as f64 + c as f64)/(b as f64 + d as f64);
-        if (n - aux2).abs() < std::f64::EPSILON { break } 
-        if n > aux2 { 
+        if (n - aux2).abs() < std::f64::EPSILON { break }
+        if n > aux2 {
             a = a + c;
             b = b + d;
         } else {
@@ -2802,7 +2802,7 @@ fn decimal_to_rational (mut n : f64) -> [isize;2] {
     // Make sure that the fraction is irreducible
     let gcd = (a+c).gcd(&(b+d));
     if flag_neg { [-(a + c)/gcd, (b + d)/gcd] } else { [(a + c)/gcd, (b + d)/gcd] }
-} 
+}
 
 #[test]
 fn test1 () {

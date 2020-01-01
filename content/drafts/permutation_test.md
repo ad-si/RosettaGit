@@ -13,11 +13,11 @@ tags = []
 {{Clarified-review}}{{task|Probability and statistics}}
 A new medical treatment was tested on a population of <math>n + m</math>
 volunteers, with each volunteer randomly assigned either to a group of
-<math>n</math> treatment subjects, or to a group of <math>m</math> control subjects.  
+<math>n</math> treatment subjects, or to a group of <math>m</math> control subjects.
 
-Members of the treatment group were given the treatment, 
-and members of the control group were given a placebo. 
-The effect of the treatment or placebo on each volunteer 
+Members of the treatment group were given the treatment,
+and members of the control group were given a placebo.
+The effect of the treatment or placebo on each volunteer
 was measured and reported in this table.
 
 {| style="text-align: left; width: 50%;" border="4" cellpadding="2" cellspacing="2"
@@ -48,7 +48,7 @@ was measured and reported in this table.
 Write a program that performs a
 [[wp:Permutation_test#Permutation_tests|permutation test]] to judge
 whether the treatment had a significantly stronger effect than the
-placebo. 
+placebo.
 
 * Do this by considering every possible alternative assignment from the same pool of volunteers to a treatment group of size <math>n</math> and a control group of size <math>m</math> (i.e., the same group sizes used in the actual experiment but with the group members chosen differently), while assuming that each volunteer's effect remains constant regardless.
 * Note that the number of alternatives will be the [[wp:Binomial_coefficient|binomial coefficient]] <math>\tbinom{n+m}{n}</math>.
@@ -219,7 +219,7 @@ More:           12.8 11827
       DIM results%(ntreated% + nplacebo% - 1)
       results%() = 85, 88, 75, 66, 25, 29, 83, 39, 97, \    REM treated group
       \            68, 41, 10, 49, 16, 65, 32, 92, 28, 98 : REM placebo group
-      
+
       greater% = 0
       FOR comb% = 0 TO 2^(ntreated%+nplacebo%)-1
         IF FNnbits(comb%) = ntreated% THEN
@@ -240,12 +240,12 @@ More:           12.8 11827
           ENDIF
         ENDIF
       NEXT
-      
+
       percent = 100 * greater%/groups%
       PRINT "Percentage groupings <= actual experiment: "; 100 - percent
       PRINT "Percentage groupings >  actual experiment: "; percent
       END
-      
+
       DEF FNnbits(N%)
       N% -= N% >>> 1 AND &55555555
       N% = (N% AND &33333333) + (N% >>> 2 AND &33333333)
@@ -268,8 +268,8 @@ Percentage groupings >  actual experiment: 12.8029704
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int data[] = {  85, 88, 75, 66, 25, 29, 83, 39, 97,
                 68, 41, 10, 49, 16, 65, 32, 92, 28, 98 };
@@ -310,11 +310,11 @@ Output:<lang><= : 87.197168%  80551
 
 This is a translaion of C
 
-```cpp>#include<iostream
-
-#include<vector>
-#include<numeric>
-#include<functional>
+```cpp
+#include <iostream>
+#include <vector>
+#include <numeric>
+#include <functional>
 
 class
 {
@@ -525,7 +525,7 @@ defmodule Permutation do
     suma  = Enum.sum(a)
     suma / length(a) - (sumab - suma) / (length(ab) - length(a))
   end
-  
+
   def test(a, b) do
     ab = a ++ b
     tobs = statistic(ab, a)
@@ -535,7 +535,7 @@ defmodule Permutation do
     end)
     under * 100.0 / count
   end
-  
+
   defp comb(_, 0), do: [[]]
   defp comb([], _), do: []
   defp comb([h|t], m) do
@@ -904,9 +904,9 @@ def permutationTest(a; b):
   def statistic(ab; a):
     (a | add) as $suma
     # (ab|add) should be 0, by normalization
-    | ($suma / (a|length)) + 
+    | ($suma / (a|length)) +
       ($suma / ((ab|length) - (a|length)));
- 
+
   normalize(a;b)
   | (a + b) as $ab                               # pooled observations
   | .[0] as $a | .[1] as $b
@@ -1022,7 +1022,7 @@ val data = intArrayOf(
 fun pick(at: Int, remain: Int, accu: Int, treat: Int): Int {
     if (remain == 0) return if (accu > treat) 1 else 0
     return pick(at - 1, remain - 1, accu + data[at - 1], treat) +
-           if (at > remain) pick(at - 1, remain, accu, treat) else 0 
+           if (at > remain) pick(at - 1, remain, accu, treat) else 0
 }
 
 fun main(args: Array<String>) {
@@ -1032,7 +1032,7 @@ fun main(args: Array<String>) {
     for (i in 19 downTo 11) total *= i
     for (i in 9 downTo 1) total /= i
     val gt = pick(19, 9, 0, treat)
-    val le = (total - gt).toInt() 
+    val le = (total - gt).toInt()
     System.out.printf("<= : %f%%  %d\n", 100.0 * le / total, le)
     System.out.printf(" > : %f%%  %d\n", 100.0 * gt / total, gt)
 }
@@ -1100,9 +1100,9 @@ Module CheckThis {
             c1=lambda c2=c,n=p, z=(,) (&f, &m) ->{if len(z)=0 then z=cdr(m)
                   =cons(car(m),c2(&f, &z)):if f then z=(,) : m=cdr(m) : f=len(m)+len(z)<n
              }
-            c=c1  
+            c=c1
             p++
-            m--    
+            m--
             }
             =lambda c, a (&f) ->c(&f, &a)
       }
@@ -1142,11 +1142,11 @@ CheckThis
 
 
 ```mathematica
-"<=: " <> ToString[#1] <> " " <> ToString[100. #1/#2] <> "%\n >: " <> 
+"<=: " <> ToString[#1] <> " " <> ToString[100. #1/#2] <> "%\n >: " <>
      ToString[#2 - #1] <> " " <> ToString[100. (1 - #1/#2)] <> "%" &[
-   Count[Total /@ Subsets[Join[#1, #2], {Length@#1}], 
-    n_ /; n <= Total@#1], 
-   Binomial[Length@#1 + Length@#2, Length@#1]] &[{85, 88, 75, 66, 25, 
+   Count[Total /@ Subsets[Join[#1, #2], {Length@#1}],
+    n_ /; n <= Total@#1],
+   Binomial[Length@#1 + Length@#2, Length@#1]] &[{85, 88, 75, 66, 25,
   29, 83, 39, 97}, {68, 41, 10, 49, 16, 65, 32, 92, 28, 98}]
 ```
 
@@ -1258,7 +1258,7 @@ __DATA__
 ## Perl 6
 
 The use of <code>.race</code> to allow concurrent calculations means that multiple 'workers' will be updating <code>@trials</code> simultaneously. To avoid race conditions, the <code>⚛++</code> operator is used, which guarantees safe updates without the use of locks. That is turn requires declaring that array as being composed of <code>atomicint</code>.
-{{works with|Rakudo|2018.09}} 
+{{works with|Rakudo|2018.09}}
 
 
 ```perl6
@@ -1305,22 +1305,22 @@ Less or Equal: %87.197168
 ```Phix
 constant data = {85, 88, 75, 66, 25, 29, 83, 39, 97,
                  68, 41, 10, 49, 16, 65, 32, 92, 28, 98 }
- 
+
 function pick(int at, int remain, int accu, int treat)
     if remain=0 then return iff(accu>treat?1:0) end if
     return pick(at-1, remain-1, accu+data[at], treat) +
            iff(at>remain?pick(at-1, remain, accu, treat):0)
 end function
- 
+
 int treat = 0, le, gt
 atom total = 1;
 for i=1 to 9 do treat += data[i] end for
 for i=19 to 11 by -1 do total *= i end for
 for i=9 to 1 by -1 do total /= i end for
- 
+
 gt = pick(19, 9, 0, treat)
 le = total - gt;
- 
+
 printf(1,"<= : %f%%  %d\n > : %f%%  %d\n",
        {100*le/total, le, 100*gt/total, gt})
 ```
@@ -1586,8 +1586,8 @@ permutation.test <- function(treatment, control) {
 ```r>
  permutation.test(c(85, 88, 75, 66, 25, 29, 83, 39, 97),
 +                  c(68, 41, 10, 49, 16, 65, 32, 92, 28, 98))
-    under      over 
-0.8719717 0.1280283 
+    under      over
+0.8719717 0.1280283
 ```
 
 
@@ -1607,7 +1607,7 @@ permutation.test <- function(treatment, control) {
 (define (permutation-test control-gr treatment-gr)
   (let ([both-gr (append control-gr treatment-gr)]
         [threshold (apply + control-gr)]
-        [more 0] 
+        [more 0]
         [leq 0])
     (let loop ([data both-gr] [sum 0] [needed (length control-gr)] [available (length both-gr)])
       (cond [(zero? needed) (if (>= sum threshold)
@@ -1969,7 +1969,7 @@ fcn permutationTest(a,b){
    under := combs.reduce('wrap(sum,perm){ sum+(perm.sum(0) <= tObs) },0);
    100.0 * under / combs.len();
 }
- 
+
 treatmentGroup := T(85, 88, 75, 66, 25, 29, 83, 39, 97);
 controlGroup   := T(68, 41, 10, 49, 16, 65, 32, 92, 28, 98);
 under          := permutationTest(treatmentGroup, controlGroup);

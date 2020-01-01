@@ -13,9 +13,9 @@ tags = []
 {{task|Data Structures}}
 
 ;Task:
-Define the data structure for a [[Linked_List#Doubly-Linked_List|doubly-linked list]] element. 
+Define the data structure for a [[Linked_List#Doubly-Linked_List|doubly-linked list]] element.
 
-The element should include a data member to hold its value and pointers to both the next element in the list and the previous element in the list. 
+The element should include a data member to hold its value and pointers to both the next element in the list and the previous element in the list.
 
 The pointers should be mutable.
 
@@ -121,11 +121,11 @@ PROC obj link free = (REF OBJLINK free)VOID:
 /* structure Node Doublylinked List*/
     .struct  0
 NDlist_next:                    @ next element
-    .struct  NDlist_next + 4 
+    .struct  NDlist_next + 4
 NDlist_prev:                    @ previous element
-    .struct  NDlist_prev + 4 
+    .struct  NDlist_prev + 4
 NDlist_value:                   @ element value or key
-    .struct  NDlist_value + 4 
+    .struct  NDlist_value + 4
 NDlist_fin:
 
 ```
@@ -187,7 +187,7 @@ link=(prev=) (next=) (data=)
 
 
 ```c
-struct link 
+struct link
 {
   struct link *next;
   struct link *prev;
@@ -202,7 +202,8 @@ struct link
 
 C++ has doubly linked list class template in standard library. However actual list noded are treated as implementation detail and encapsulated inside list. If we were to reimplement list, then node could look like that:
 
-```cpp>template <typename T
+```cpp
+template <typename T>
 
 struct Node
 {
@@ -316,9 +317,9 @@ def makeElement(var value, var next, var prev) {
         to getNext() { return next }
 
         to setPrev(p) { prev := p }
-        to getPrev() { return prev }     
+        to getPrev() { return prev }
     }
-   
+
     return element
 }
 ```
@@ -408,7 +409,7 @@ updateLeft new@(Node nl _ _) (Node _ v r) = current
           prev = updateLeft nl new
 
 updateRight _ Leaf = Leaf
-updateRight Leaf (Node l v _) = Node l v Leaf  
+updateRight Leaf (Node l v _) = Node l v Leaf
 updateRight new@(Node _ _ nr) (Node l v _) = current
     where current = Node l v next
           next = updateRight nr new
@@ -533,7 +534,7 @@ function DoublyLinkedList(value, next, prev) {
 DoublyLinkedList.prototype = new LinkedList();
 
 DoublyLinkedList.prototype.prev = function() {
-    if (arguments.length == 1) 
+    if (arguments.length == 1)
         this._prev = arguments[0];
     else
         return this._prev;
@@ -680,7 +681,7 @@ class ListNode {
   New(value : Base) {
     @value := value;
   }
-  
+
   method : public : Set(value : Base) ~ Nil {
     @value := value;
   }
@@ -1022,7 +1023,7 @@ enddefine;
 Structure node
   *prev.node
   *next.node
-  value.i 
+  value.i
 EndStructure
 ```
 
@@ -1182,7 +1183,7 @@ Was it a black cat I saw there, in the shadows, stalking its prey (and next meal
                                ─── adding to head: Oy! ───
 
                                ─── showing list ───
-Oy! Was it a black cat I saw there, in the shadows, stalking its prey (and next meal). 
+Oy! Was it a black cat I saw there, in the shadows, stalking its prey (and next meal).
 
 ```
 
@@ -1222,7 +1223,7 @@ list = DListNode.from_values 1,2,3,4
 
 
 
-###  Simply using the standard library 
+###  Simply using the standard library
 
 
 ```rust
@@ -1237,7 +1238,7 @@ fn main() {
 === The behind-the-scenes implementation ===
 Doubly linked lists present a problem in Rust due to its ownership model. There cannot be two mutable references to the same object, so what are we to do? Below are the relevant lines (with added comments) from the <code>std</code> implementation ([https://doc.rust-lang.org/std/collections/struct.LinkedList.html Documentation] [https://github.com/rust-lang/rust/blob/master/src/libcollections/linked_list.rs Source]).
 
-The standard library uses the (currently) unstable `Shared<T>` type which indicates that the ownership of its contained type has shared ownership. It is guaranteed not to be null, is variant over <code>T</code> (meaning that an <code>&Shared<&'static T></code> may be used where a <code>&Shared<&'a T></code> is expected, indicates to the compiler that it may own a <code>T</code>) and may be dereferenced to a mutable pointer (<code>*mut T</code>). All of the above may be accomplished in standard stable Rust, except for the non-null guarantee which allows the compiler to make a few extra optimizations. 
+The standard library uses the (currently) unstable `Shared<T>` type which indicates that the ownership of its contained type has shared ownership. It is guaranteed not to be null, is variant over <code>T</code> (meaning that an <code>&Shared<&'static T></code> may be used where a <code>&Shared<&'a T></code> is expected, indicates to the compiler that it may own a <code>T</code>) and may be dereferenced to a mutable pointer (<code>*mut T</code>). All of the above may be accomplished in standard stable Rust, except for the non-null guarantee which allows the compiler to make a few extra optimizations.
 
 
 ```rust>pub struct LinkedList<T

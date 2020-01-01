@@ -18,7 +18,7 @@ A [[wp:Truth table|truth table]] is a display of the inputs to, and the output o
 ;Task:
 # Input a Boolean function from the user as a string then calculate and print a formatted truth table for the given function.
  (One can assume that the user input is correct).
-# Print and show output for Boolean functions of two and three input variables, but any program should not be limited to that many variables in the function. 
+# Print and show output for Boolean functions of two and three input variables, but any program should not be limited to that many variables in the function.
 # Either reverse-polish or infix notation expressions are allowed.
 
 
@@ -98,7 +98,7 @@ PROC print truth table = ( STRING expr )VOID:
             IF used[ v ] THEN print( ( " - " ) ) FI
         OD;
         print( ( " -----", newline ) );
-        # evaluate the expression for each cobination of variables # 
+        # evaluate the expression for each cobination of variables #
         IF at least one variable
         THEN
              # the expression does not consist of literals only #
@@ -175,8 +175,8 @@ expression>
 
 {{trans|D}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -332,9 +332,9 @@ int main() {
     while (TRUE) {
         printf("\nBoolean expression: ");
         fgets(expr, BUFFER_SIZE, stdin);
-        fflush(stdin);       
+        fflush(stdin);
         process_expr();
-        expr_len = strlen(expr);    
+        expr_len = strlen(expr);
         if (expr_len == 0) break;
         vars_len = 0;
         for (i = 0; i < expr_len; ++i) {
@@ -971,29 +971,29 @@ IN: rosetta-code.truth-table
 
 : replace-var ( str -- str' )
     dup length 1 = [ drop "%s" ] when ;
-    
+
 : replace-vars ( str -- str' )
     " " split [ replace-var ] map " " join ;
-    
+
 : extract-vars ( str -- seq )
     " " split [ length 1 = ] filter ;
-    
+
 : count-vars ( str -- n )
     " " split [ "%s" = ] count ;
-    
+
 : truth-table ( n -- seq )
     qw{ t f } swap selections ;
-    
+
 : print-row ( seq -- )
     [ write bl ] each ;
-    
+
 : print-table ( seq -- )
     [ print-row nl ] each ;
-    
+
 ! Adds a column to the end of a two-dimensional array.
 : add-col ( seq col -- seq' )
     [ flip ] dip 1array append flip ;
-    
+
 : header ( str -- )
     [ extract-vars ] [ ] bi
     [ print-row "| " write ] [ print ] bi*
@@ -1004,18 +1004,18 @@ IN: rosetta-code.truth-table
 : solve-expr ( seq str -- ? )
     vsprintf [ "kernel" use-vocab ( -- x ) (eval) ]
     with-interactive-vocabs ;
-    
+
 : results ( str -- seq )
     replace-vars dup count-vars truth-table
     [ swap solve-expr unparse ] with map ;
-    
+
 : main ( -- )
     prompt
     [ header t ]
     [ replace-vars count-vars truth-table ]
     [ results [ "| " prepend ] map ] tri
     add-col print-table drop ;
-    
+
 MAIN: main
 ```
 
@@ -1261,7 +1261,7 @@ true  true  true    true
 
 
 
-###  Reverse Polish Notation 
+###  Reverse Polish Notation
 
 Accepts expressions given in RPN, tokenized by whitespace.
 Uses operators "&", "|", "!", "^" (xor), "=>" (implication); all other words are interpreted as variable names.
@@ -1294,13 +1294,13 @@ calculate = foldM interprete []
     interprete (x:y:s) "=>" = (: s) <$> pure (not y || x)
     interprete (x:s)   "!"  = (: s) <$> pure (not x)
     interprete s var        = (: s) <$> fromJust . lookup var
- 
+
 -- pretty printing
 showTable tbl = unlines $ map (unwords . map align) tbl
   where
     align txt = take colWidth $ txt ++ repeat ' '
     colWidth = max 6 $ maximum $ map length (head tbl)
- 
+
 main = forever $ getLine >>= putStrLn . truthTable
 ```
 
@@ -1311,28 +1311,28 @@ main = forever $ getLine >>= putStrLn . truthTable
 λ> main
 x !
 x      result
-True   False 
-False  True 
+True   False
+False  True
 
 A B &
 A      B      result
-True   True   True  
-True   False  False 
-False  True   False 
-False  False  False 
+True   True   True
+True   False  False
+False  True   False
+False  False  False
 
 x1 x2 ! ^ x2 &
 x1     x2     result
-True   True   True  
-True   False  False 
-False  True   False 
-False  False  False 
+True   True   True
+True   False  False
+False  True   False
+False  False  False
 
 ```
 
 
 
-###  Infix Notation 
+###  Infix Notation
 
 
 Translation from infix notation to RPN using Parsec:
@@ -1360,14 +1360,14 @@ toRPN = parse impl "expression" . filter (/= ' ')
 λ> putStr $ truthTable $ toRPN "(Human => Mortal) & (Socratus => Human) => (Socratus => Mortal)"
 
 Human  Mortal Socratus result
-True   True   True     True  
-True   True   False    True  
-True   False  True     True  
-True   False  False    True  
-False  True   True     True  
-False  True   False    True  
-False  False  True     True  
-False  False  False    True 
+True   True   True     True
+True   True   False    True
+True   False  True     True
+True   False  False    True
+False  True   True     True
+False  True   False    True
+False  False  True     True
+False  False  False    True
 ```
 
 
@@ -2144,8 +2144,8 @@ lsubst(e, r, l):= ev(e, maplist( lambda([x, y], x=y), r, l), 'simp)$
 cartesian_power([true, false], 2);
 [[true, true], [true, false], [false, true], [false, false]];
 cartesian_power([true, false], 3);
-[[true, true, true], [true, true, false], [true, false, true], 
-[true, false, false], [false, true, true], [false, true, false], 
+[[true, true, true], [true, true, false], [true, false, true],
+[true, false, false], [false, true, true], [false, true, false],
 [false, false, true], [false, false, false]];
 */
 cartesian_power(b, n) := block(
@@ -2171,7 +2171,7 @@ gen_table('(V xor (B xor (K xor D ) )));
 
 
 OUtput of the last example:
-<lang> 
+<lang>
             [   V      B      K      D    V xor (B xor (K xor D)) ]
             [                                                     ]
             [ true   true   true   true            false          ]
@@ -2690,22 +2690,22 @@ object op = 0   -- 0 = none
 string s        -- the expression being parsed
 integer sidx    -- idx to ""
 integer ch      -- s[sidx]
- 
+
 procedure err(string msg)
     printf(1,"%s\n%s^ %s\n\nPressEnter...",{s,repeat(' ',sidx-1),msg})
     {} = wait_key()
     abort(0)
 end procedure
- 
+
 procedure nxtch()
     sidx += 1
     ch = iff(sidx>length(s)?-1:s[sidx])
 end procedure
- 
+
 procedure skipspaces()
     while find(ch," \t\r\n")!=0 do nxtch() end while
 end procedure
- 
+
 procedure get_token()
     skipspaces()
     if find(ch,"()!") then
@@ -2721,12 +2721,12 @@ procedure get_token()
         token = s[tokstart..sidx-1]
     end if
 end procedure
- 
+
 procedure Match(string t)
     if token!=t then err(t&" expected") end if
     get_token()
 end procedure
- 
+
 procedure PopFactor()
 object p2 = opstack[$]
     if op="not" then
@@ -2740,7 +2740,7 @@ end procedure
 
 sequence names -- {"false","true",...}
 sequence flags -- {   0,     1,  ,...}
- 
+
 procedure PushFactor(string t)
     if op!=0 then PopFactor() end if
     integer k = find(t,names)
@@ -2750,12 +2750,12 @@ procedure PushFactor(string t)
     end if
     opstack = append(opstack,k)
 end procedure
- 
+
 procedure PushOp(string t)
     if op!=0 then PopFactor() end if
     op = t
 end procedure
- 
+
 procedure Factor()
     if token="not"
     or token="!" then
@@ -2776,13 +2776,13 @@ procedure Factor()
         err("syntax error")
     end if
 end procedure
- 
+
 constant {operators,
           precedence} = columnize({{"not",6},
                                    {"and",5},
                                    {"xor",4},
                                    {"or",3}})
- 
+
 procedure Expr(integer p)
     Factor()
     while 1 do
@@ -2976,22 +2976,22 @@ T      T      T      NIL
 ```prolog
 /*
 	To evaluate the truth table a line of text is inputted and then there are three steps
-	Let's say the expression is: 
+	Let's say the expression is:
 	'not a and (b or c)'
-	
+
 	Step 1: tokenize into atoms and brackets
 	eg: Tokenized = [ not, a, and, '(', b, or, c, ')' ].
-	
+
 	Step 2: convert to a term that can be evaluated, and get out the variables
 	eg: Expression = op(and, op(not, a), op(or, b, c)), Variables = [ a, b, c ]
-	
+
 	Step 3: permeate over the variables, substituting the values for each var, and evaluate the expression for each permutation
 	eg: [ 0, 0, 0]
 		op(and, op(not, 0), op(or, 0, 0))
 		op(and, 1, op(or, 0, 0))
 		op(and, 1, 0)
 		0
-		
+
 		[ 0, 0, 1]
 		op(and, op(not, 0), op(or, 0, 1))
 		op(and, 1, op(or, 0, 0))
@@ -2999,7 +2999,7 @@ T      T      T      NIL
 		1
 */
 truth_table :-
-	current_input(In), 
+	current_input(In),
 	read_line_to_codes(In, Line),
 	atom_codes(A, Line),
 	atom_chars(A, Chars),
@@ -3008,7 +3008,7 @@ truth_table :-
 	phrase(tok(Tok), Chars, _),
 	phrase(expr(Expr,Vars), Tok, _),
 	list_to_set(Vars,VarSet),
-		
+
 	% evaluate
 	print_expr(Expr, VarSet), !.
 
@@ -3016,15 +3016,15 @@ print_expr(Expr, Vars) :-
 	% write the header (once)
 	maplist(format('~p '), Vars),
 	format('~n'),
-	
+
 	% write the results for as many times as there are rows
 	eval_expr(Expr, Vars, Tvals, R),
 	maplist(format('~p '), Tvals),
 	format('~p~n', R),
-	fail.	
-print_expr(_, _).	
-	
-	
+	fail.
+print_expr(_, _).
+
+
 % Step 1 - tokenize the input into spaces, brackets and atoms
 tok([A|As]) --> spaces(_), chars([X|Xs]), {atom_codes(A, [X|Xs])}, spaces(_), tok(As).
 tok([A|As]) --> spaces(_), bracket(A), spaces(_), tok(As).
@@ -3035,10 +3035,10 @@ spaces([X|Xs]) --> space(X), !, spaces(Xs).
 spaces([]) --> [].
 bracket('(') --> ['('].
 bracket(')') --> [')'].
-	
-	
+
+
 % Step 2 - Parse the expression into an evaluable term
-expr(op(I, E, E2), V) --> starter(E, V1), infix(I), expr(E2, V2), { append(V1, V2, V) }. 
+expr(op(I, E, E2), V) --> starter(E, V1), infix(I), expr(E2, V2), { append(V1, V2, V) }.
 expr(E, V) --> starter(E, V).
 
 starter(op(not, E),V) --> [not], expr(E, V).
@@ -3051,15 +3051,15 @@ infix(xor) --> [xor].
 infix(nand) --> [nand].
 
 variable(V) --> [V], \+ infix(V), \+ bracket(V).
-space(' ') --> [' ']. 
-char(X) --> [X], { dif(X, ' ') }.	
-	
-	
+space(' ') --> [' '].
+char(X) --> [X], { dif(X, ' ') }.
+
+
 % Step 3 - evaluate the parsed expression
 eval_expr(Expr, Vars, Tvals, R) :-
-	length(Vars,Len), 
-	length(Tvals, Len), 
-	maplist(truth_val, Tvals), 
+	length(Vars,Len),
+	length(Tvals, Len),
+	maplist(truth_val, Tvals),
 	eval(Expr, [Tvals,Vars],R).
 
 eval(X, [Vals,Vars], R) :- nth1(N,Vars,X), nth1(N,Vals,R).
@@ -3162,7 +3162,7 @@ A B C D : A ^ (B ^ (C ^ D))
 1 1 1 0 : 1
 1 1 1 1 : 0
 
-Boolean expression: 
+Boolean expression:
 
 Thank you
 ```
@@ -3238,13 +3238,13 @@ I later added support for all 16 boolean functions --- REXX natively supports th
 ::*   '''&'''     (and)
 ::*   '''|'''        (or)
 ::*   '''&&'''     (xor)
-and one prefix operator: 
-::*   '''¬'''     (not,   negation).  
+and one prefix operator:
+::*   '''¬'''     (not,   negation).
 Some REXX interpreters also (or instead) support:
-::*   '''\'''     (backslash) 
+::*   '''\'''     (backslash)
 ::*   '''/'''     (forward slash,   solidus)
 ::*   '''~'''     (tilde)
-::*   '''^'''     (caret,   circumflex,   hat) 
+::*   '''^'''     (caret,   circumflex,   hat)
 Also included is support for two boolean values: '''TRUE''' and '''FALSE''' which are part of boolean expressions.
 
 ```rexx
@@ -3594,7 +3594,7 @@ Uses <code>eval</code>, so blindly trusts the user's input. The core <code>true<
 ```ruby
 loop do
   print "\ninput a boolean expression (e.g. 'a & b'): "
-  expr = gets.strip.downcase 
+  expr = gets.strip.downcase
   break if expr.empty?
 
   vars = expr.scan(/\p{Alpha}+/)
@@ -3613,7 +3613,7 @@ loop do
     suffix << "end"
   end
 
-  body = vars.inject("puts ") {|str, v| str + "#{v}.to_s + '\t' + "} 
+  body = vars.inject("puts ") {|str, v| str + "#{v}.to_s + '\t' + "}
   body += '"| " + eval(expr).to_s'
 
   eval (prefix + [body] + suffix).join("\n")

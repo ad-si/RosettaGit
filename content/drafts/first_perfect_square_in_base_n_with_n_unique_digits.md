@@ -41,9 +41,9 @@ You may use analytical methods to reduce the search space, but the code must do 
 {{trans|C#}}
 A stripped down version of the C#, using unsigned longs instead of BigIntegers, and shifted bits instead of a HashSet accumulator.
 
-```Cpp>#include <string
-
-#include <iostream> 
+```cpp
+#include <string>
+#include <iostream>
 #include <cstdlib>
 #include <math.h>
 #include <chrono>
@@ -474,7 +474,7 @@ func main() {
     for n, k, base := uint64(2), uint64(1), 2; ; n += k {
         if base > 2 && n%uint64(base) == 0 {
             continue
-        } 
+        }
         nb.SetUint64(n)
         sq := nb.Mul(&nb, &nb).Text(base)
         if !containsAll(sq, base) {
@@ -571,7 +571,7 @@ func main() {
     n.SetUint64(2)
     k.SetUint64(1)
     b.SetUint64(2)
-    for base := 2; ; n.Add(&n, &k) { 
+    for base := 2; ; n.Add(&n, &k) {
        if base > 2 && t.Rem(&n, &b).Cmp(bigZero) == 0 {
             continue
         }
@@ -716,7 +716,7 @@ Base 28: 58a3ckp3n4cqd7² = 1023456cgjbirqedhp98kmoan7fl in  911.059s
     };
 
     // GENERIC FUNCTIONS ----------------------------------
-    
+
     const
         ceil = Math.ceil,
         floor = Math.floor,
@@ -833,7 +833,7 @@ Runs in about 4 seconds with using occursin().
 ```julia
 const num = "0123456789abcdef"
 hasallin(n, nums, b) = (s = string(n, base=b); all(x -> occursin(x, s), nums))
- 
+
 function squaresearch(base)
     basenumerals = [c for c in num[1:base]]
     highest = parse(Int, "10" * num[3:base], base=base)
@@ -843,7 +843,7 @@ function squaresearch(base)
         end
     end
 end
- 
+
 println("Base     Root   N")
 for b in 2:16
     n = squaresearch(b)
@@ -891,9 +891,9 @@ program project1;
 uses
   sysutils;
 const
- charSet : array[0..36] of char ='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';  
+ charSet : array[0..36] of char ='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 type
-  tNumtoBase = record 
+  tNumtoBase = record
                  ntb_dgt : array[0..31-4] of byte;
                  ntb_cnt,
                  ntb_bas  : Word;
@@ -901,24 +901,24 @@ type
 var
   Num,
   sqr2B,
-  deltaNum  : tNumtoBase;                  
- 
+  deltaNum  : tNumtoBase;
+
 function Minimal_n(base:NativeUint):Uint64;
 //' 1023456789ABCDEFGHIJ...'
 var
   i : NativeUint;
 Begin
   result := base;  // aka '10'
-  IF base > 2 then 
+  IF base > 2 then
     For i := 2 to base-1 do
       result := result*base+i;
-  result := trunc(sqrt(result)+0.99999);        
+  result := trunc(sqrt(result)+0.99999);
 end;
 
 procedure Conv2num(var num:tNumtoBase;n:Uint64;base:NativeUint);
 var
   quot :UInt64;
-  i :NativeUint; 
+  i :NativeUint;
 Begin
   i := 0;
   repeat
@@ -930,7 +930,7 @@ Begin
   Num.ntb_cnt := i;
   Num.ntb_bas := base;
   //clear upper digits
-  For i := i to high(tNumtoBase.ntb_dgt) do 
+  For i := i to high(tNumtoBase.ntb_dgt) do
      Num.ntb_dgt[i] := 0;
 end;
 
@@ -940,11 +940,11 @@ var
 Begin
   with num do
   Begin
-    For i := 17-ntb_cnt-1 downto 0 do 
+    For i := 17-ntb_cnt-1 downto 0 do
       write(' ');
     For i := ntb_cnt-1 downto 0 do
       write(charSet[ntb_dgt[i]]);
-  end;  
+  end;
 end;
 
 procedure IncNumBig(var add1:tNumtoBase;n:NativeUInt);
@@ -964,8 +964,8 @@ Begin
     add1.ntb_dgt[i] := s;
     n := n div b;
     inc(i);
-  end;   
-  
+  end;
+
   while carry <> 0 do
   Begin
     s := add1.ntb_dgt[i]+carry;
@@ -973,7 +973,7 @@ Begin
     s := s- (-carry AND b);
     add1.ntb_dgt[i] := s;
     inc(i);
-  end;   
+  end;
 
   IF add1.ntb_cnt < i then
     add1.ntb_cnt := i;
@@ -993,7 +993,7 @@ Begin
     s := s- (-carry AND b);
     add1.ntb_dgt[i] := s;
     inc(i);
-  end;   
+  end;
   IF add1.ntb_cnt < i then
     add1.ntb_cnt := i;
 end;
@@ -1006,14 +1006,14 @@ var
 Begin
   b := add1.ntb_bas;
   carry := 0;
-  For i := 0 to add2.ntb_cnt-1 do 
+  For i := 0 to add2.ntb_cnt-1 do
   begin
     s := add1.ntb_dgt[i]+add2.ntb_dgt[i]+carry;
     carry := Ord(s>=b);
     s := s- (-carry AND b);
     add1.ntb_dgt[i] := s;
-  end;  
-  
+  end;
+
   i := add2.ntb_cnt;
   while carry = 1 do
   Begin
@@ -1023,15 +1023,15 @@ Begin
     s := s- (-carry AND b);
     add1.ntb_dgt[i] := s;
     inc(i);
-  end;   
-  
+  end;
+
   IF add1.ntb_cnt < i then
     add1.ntb_cnt := i;
 end;
 
 procedure Test(base:NativeInt);
 var
-  n : Uint64;  
+  n : Uint64;
   i,j,TestSet : NativeInt;
 Begin
   write(base:5);
@@ -1040,31 +1040,31 @@ Begin
   Conv2num(Num,n,base);
   deltaNum := num;
   AddNum(deltaNum,deltaNum);
-  IncNum(deltaNum,1);  
-  
+  IncNum(deltaNum,1);
+
   i := 0;
   repeat
     //count used digits
     TestSet := 0;
     For j := sqr2B.ntb_cnt-1 downto 0 do
       TestSet := TestSet OR (1 shl sqr2B.ntb_dgt[j]);
-    inc(TestSet);  
+    inc(TestSet);
     IF (1 shl base)=TestSet  then
-       BREAK;   
+       BREAK;
     //next square number
     AddNum(sqr2B,deltaNum);
     IncNum(deltaNum,2);
     inc(i);
   until false;
   IncNumBig(num,i);
-  OutNum(Num);  
+  OutNum(Num);
   OutNum(sqr2B);
-  Writeln(i:14);  
+  Writeln(i:14);
 end;
 
 var
   T0: TDateTime;
-  base :nativeInt;   
+  base :nativeInt;
 begin
   T0 := now;
   writeln('base                 n        square(n)       Testcnt');
@@ -1731,7 +1731,7 @@ Begin
        while (Add1.ntb_cntbts > 0) AND (ntb_dgt[Add1.ntb_cntbts] = 0) do
          dec(Add1.ntb_cntbts);
        inc(Add1.ntb_cntbts);
-     end;   
+     end;
   end;
 end;
 
@@ -2562,7 +2562,7 @@ Begin
        while (Add1.ntb_cntbts > 0) AND (ntb_dgt[Add1.ntb_cntbts] = 0) do
          dec(Add1.ntb_cntbts);
        inc(Add1.ntb_cntbts);
-     end;   
+     end;
   end;
 end;
 
@@ -2773,228 +2773,228 @@ end.
 //{{out}}
 
 ```txt
- Num 10  sqr 100 
- Num 10  sqr 100 
+ Num 10  sqr 100
+ Num 10  sqr 100
 Base 2 test every 1 threads = 1
-Start  : Num 10  sqr 100 
-Result : Num 10  sqr 100 
+Start  : Num 10  sqr 100
+Result : Num 10  sqr 100
     0.000 s Testcount :              0                 0
- Num 11  sqr 121 
- Num 11  sqr 121 
+ Num 11  sqr 121
+ Num 11  sqr 121
 Base 3 test every 1 threads = 1
-Start  : Num 11  sqr 121 
-Result : Num 11  sqr 121 
+Start  : Num 11  sqr 121
+Result : Num 11  sqr 121
     0.000 s Testcount :              0                 0
- Num 21  sqr 1101 
+ Num 21  sqr 1101
 Base 4 test every 1 threads = 1
-Start  : Num 21  sqr 1101 
-Result : Num 33  sqr 3201 
+Start  : Num 21  sqr 1101
+Result : Num 33  sqr 3201
     0.000 s Testcount :              6                 6
- Num 214  sqr 102411 
+ Num 214  sqr 102411
 Base 5 test every 1 threads = 1
-Start  : Num 214  sqr 102411 
-Result : Num 243  sqr 132304 
+Start  : Num 214  sqr 102411
+Result : Num 243  sqr 132304
     0.000 s Testcount :             14                14
- Num 232  sqr 103104 
+ Num 232  sqr 103104
 Base 6 test every 5 threads = 1
-Start  : Num 235  sqr 105441 
-Result : Num 523  sqr 452013 
+Start  : Num 235  sqr 105441
+Result : Num 523  sqr 452013
     0.000 s Testcount :             20               100
- Num 1012  sqr 1024144 
+ Num 1012  sqr 1024144
 Base 7 test every 6 threads = 1
-Start  : Num 1020  sqr 1040400 
-Result : Num 1431  sqr 2450361 
+Start  : Num 1020  sqr 1040400
+Result : Num 1431  sqr 2450361
     0.000 s Testcount :             34               204
- Num 2704  sqr 10237020 
+ Num 2704  sqr 10237020
 Base 8 test every 7 threads = 1
-Start  : Num 2705  sqr 10244631 
-Result : Num 3344  sqr 13675420 
+Start  : Num 2705  sqr 10244631
+Result : Num 3344  sqr 13675420
     0.000 s Testcount :             41               287
- Num 10117  sqr 102363814 
+ Num 10117  sqr 102363814
 Base 9 test every 4 threads = 1
-Start  : Num 10117  sqr 102363814 
-Result : Num 11642  sqr 136802574 
+Start  : Num 10117  sqr 102363814
+Result : Num 11642  sqr 136802574
     0.000 s Testcount :            289              1156
- Num 31992  sqr 1023488064 
+ Num 31992  sqr 1023488064
 Base 10 test every 3 threads = 1
-Start  : Num 31992  sqr 1023488064 
-Result : Num 32043  sqr 1026753849 
+Start  : Num 31992  sqr 1023488064
+Result : Num 32043  sqr 1026753849
     0.000 s Testcount :             17                51
- Num 101172  sqr 10234761064 
+ Num 101172  sqr 10234761064
 Base 11 test every 10 threads = 1
-Start  : Num 101175  sqr 10235267A63 
-Result : Num 111453  sqr 1240A536789 
+Start  : Num 101175  sqr 10235267A63
+Result : Num 111453  sqr 1240A536789
     0.001 s Testcount :           1498             14980
- Num 35A924  sqr 102345A32554 
+ Num 35A924  sqr 102345A32554
 Base 12 test every 11 threads = 1
-Start  : Num 35A924  sqr 102345A32554 
-Result : Num 3966B9  sqr 124A7B538609 
+Start  : Num 35A924  sqr 102345A32554
+Result : Num 3966B9  sqr 124A7B538609
     0.000 s Testcount :           6883             75713
- Num 3824C73  sqr 10233460766739 
+ Num 3824C73  sqr 10233460766739
 Base 13 test every 1 threads = 1
-Start  : Num 3824C73  sqr 10233460766739 
-Result : Num 3828943  sqr 10254773CA86B9 
+Start  : Num 3824C73  sqr 10233460766739
+Result : Num 3828943  sqr 10254773CA86B9
     0.000 s Testcount :           8242              8242
- Num 3A9774B  sqr 102345706AC8C9 
+ Num 3A9774B  sqr 102345706AC8C9
 Base 14 test every 13 threads = 1
-Start  : Num 3A9774C  sqr 1023457801D984 
-Result : Num 3A9DB7C  sqr 10269B8C57D3A4 
+Start  : Num 3A9774C  sqr 1023457801D984
+Result : Num 3A9DB7C  sqr 10269B8C57D3A4
     0.000 s Testcount :           1330             17290
- Num 10119106  sqr 10234567A153C26 
+ Num 10119106  sqr 10234567A153C26
 Base 15 test every 14 threads = 1
-Start  : Num 10119108  sqr 1023456BA5BA144 
-Result : Num 1012B857  sqr 102597BACE836D4 
+Start  : Num 10119108  sqr 1023456BA5BA144
+Result : Num 1012B857  sqr 102597BACE836D4
     0.000 s Testcount :           4216             59024
- Num 4046641A  sqr 10234567E55C52A4 
+ Num 4046641A  sqr 10234567E55C52A4
 Base 16 test every 15 threads = 1
-Start  : Num 40466424  sqr 1023456CEADC2510 
-Result : Num 404A9D9B  sqr 1025648CFEA37BD9 
+Start  : Num 40466424  sqr 1023456CEADC2510
+Result : Num 404A9D9B  sqr 1025648CFEA37BD9
     0.000 s Testcount :          18457            276855
- Num 423F5E486  sqr 101234567967G80FD2 
+ Num 423F5E486  sqr 101234567967G80FD2
 Base 17 test every 1 threads = 1
-Start  : Num 423F5E486  sqr 101234567967G80FD2 
-Result : Num 423F82GA9  sqr 101246A89CGFB357ED 
+Start  : Num 423F5E486  sqr 101234567967G80FD2
+Result : Num 423F82GA9  sqr 101246A89CGFB357ED
     0.003 s Testcount :         195112            195112
- Num 44B433H7D  sqr 102345678F601E1FB7 
+ Num 44B433H7D  sqr 102345678F601E1FB7
 Base 18 test every 17 threads = 1
-Start  : Num 44B433H7F  sqr 102345679E6908HD69 
-Result : Num 44B482CAD  sqr 10236B5F8EG4AD9CH7 
+Start  : Num 44B433H7F  sqr 102345679E6908HD69
+Result : Num 44B482CAD  sqr 10236B5F8EG4AD9CH7
     0.001 s Testcount :          30440            517480
- Num 1011B10785  sqr 102345678A30GF85556 
+ Num 1011B10785  sqr 102345678A30GF85556
 Base 19 test every 6 threads = 1
-Start  : Num 1011B10789  sqr 102345678I39A8G87F5 
-Result : Num 1011B55E9A  sqr 10234DHBG7CI8F6A9E5 
+Start  : Num 1011B10789  sqr 102345678I39A8G87F5
+Result : Num 1011B55E9A  sqr 10234DHBG7CI8F6A9E5
     0.001 s Testcount :          93021            558126
- Num 49DDBE2J9C  sqr 1023456789DHDH9DH834 
+ Num 49DDBE2J9C  sqr 1023456789DHDH9DH834
 Base 20 test every 19 threads = 12
-Start  : Num 49DDBE2JA0  sqr 102345678D5CCEH05000 
-Result : Num 49DGIH5D3G  sqr 1024E7CDI3HB695FJA8G 
+Start  : Num 49DDBE2JA0  sqr 102345678D5CCEH05000
+Result : Num 49DGIH5D3G  sqr 1024E7CDI3HB695FJA8G
     0.021 s Testcount :       11310604         214901476
- Num 4C9HE5CC2DB  sqr 10234566789GK362F7BGIG 
+ Num 4C9HE5CC2DB  sqr 10234566789GK362F7BGIG
 Base 21 test every 1 threads = 12
-Start  : Num 4C9HE5CC2DB  sqr 10234566789GK362F7BGIG 
-Result : Num 4C9HE6GHFJF  sqr 102345H7AC86GE9BKI6JDF 
+Start  : Num 4C9HE5CC2DB  sqr 10234566789GK362F7BGIG
+Result : Num 4C9HE6GHFJF  sqr 102345H7AC86GE9BKI6JDF
     0.006 s Testcount :        4914193           4914193
- Num 4F942523JK5  sqr 1023456789AF71694A3533 
+ Num 4F942523JK5  sqr 1023456789AF71694A3533
 Base 22 test every 21 threads = 12
-Start  : Num 4F942523JL0  sqr 1023456789HL35DJ1I4100 
-Result : Num 4F94788GJ0F  sqr 102369FBGDEJ48CHI7LKA5 
+Start  : Num 4F942523JL0  sqr 1023456789HL35DJ1I4100
+Result : Num 4F94788GJ0F  sqr 102369FBGDEJ48CHI7LKA5
     0.054 s Testcount :       27804949         583903929
- Num 1011D108L541  sqr 1023456789ABD6D2675E381 
+ Num 1011D108L541  sqr 1023456789ABD6D2675E381
 Base 23 test every 22 threads = 12
-Start  : Num 1011D108L54M  sqr 1023456789C7F59L30C8ED1 
-Result : Num 1011D3EL56MC  sqr 10234ACEDKG9HM8FBJIL756 
+Start  : Num 1011D108L54M  sqr 1023456789C7F59L30C8ED1
+Result : Num 1011D3EL56MC  sqr 10234ACEDKG9HM8FBJIL756
     0.038 s Testcount :       17710217         389624774
- Num 4LJ0HD4763F4  sqr 1023456789ABE8FFN20B4E0G 
+ Num 4LJ0HD4763F4  sqr 1023456789ABE8FFN20B4E0G
 Base 24 test every 23 threads = 12
-Start  : Num 4LJ0HD4763F6  sqr 1023456789AC9NJIL6HG54DC 
-Result : Num 4LJ0HDGF0HD3  sqr 102345B87HFECKJNIGMDLA69 
+Start  : Num 4LJ0HD4763F6  sqr 1023456789AC9NJIL6HG54DC
+Result : Num 4LJ0HDGF0HD3  sqr 102345B87HFECKJNIGMDLA69
     0.008 s Testcount :        4266555          98130765
- Num 1011E109GHMMM  sqr 1023456789ABD5AHDHG370GC9 
+ Num 1011E109GHMMM  sqr 1023456789ABD5AHDHG370GC9
 Base 25 test every 12 threads = 12
-Start  : Num 1011E109GHMMM  sqr 1023456789ABD5AHDHG370GC9 
-Result : Num 1011E145FHGHM  sqr 102345DOECKJ6GFB8LIAM7NH9 
+Start  : Num 1011E109GHMMM  sqr 1023456789ABD5AHDHG370GC9
+Result : Num 1011E145FHGHM  sqr 102345DOECKJ6GFB8LIAM7NH9
     0.160 s Testcount :       78092125         937105500
- Num 52K8N4MNP7AMA  sqr 1023456789ABCMPE8HDDJL8P1M 
+ Num 52K8N4MNP7AMA  sqr 1023456789ABCMPE8HDDJL8P1M
 Base 26 test every 5 threads = 12
-Start  : Num 52K8N4MNP7AME  sqr 1023456789ABEBLL1L0F3FG7PE 
-Result : Num 52K8N53BDM99K  sqr 1023458LO6IEMKG79FPCHNJDBA 
+Start  : Num 52K8N4MNP7AME  sqr 1023456789ABEBLL1L0F3FG7PE
+Result : Num 52K8N53BDM99K  sqr 1023458LO6IEMKG79FPCHNJDBA
     0.884 s Testcount :      402922568        2014612840
- Num 1011F10AB5HL6J  sqr 1023456789ABCF787BM8395B5PA 
+ Num 1011F10AB5HL6J  sqr 1023456789ABCF787BM8395B5PA
 Base 27 test every 26 threads = 12
-Start  : Num 1011F10AB5HL71  sqr 1023456789ABD6808CDF1LQ7AE1 
-Result : Num 1011F11E37OBJJ  sqr 1023458ELOMDHBIJFGKP7CQ9N6A 
+Start  : Num 1011F10AB5HL71  sqr 1023456789ABD6808CDF1LQ7AE1
+Result : Num 1011F11E37OBJJ  sqr 1023458ELOMDHBIJFGKP7CQ9N6A
     1.049 s Testcount :      457555293       11896437618
- Num 58A3CKOHN4IK4D  sqr 1023456789ABCDIK29E6HB1R37Q1 
+ Num 58A3CKOHN4IK4D  sqr 1023456789ABCDIK29E6HB1R37Q1
 Base 28 test every 9 threads = 12
-Start  : Num 58A3CKOHN4IK4L  sqr 1023456789ABCGJDO8M4JG8HMMFL 
-Result : Num 58A3CKP3N4CQD7  sqr 1023456CGJBIRQEDHP98KMOAN7FL 
+Start  : Num 58A3CKOHN4IK4L  sqr 1023456789ABCGJDO8M4JG8HMMFL
+Result : Num 58A3CKP3N4CQD7  sqr 1023456CGJBIRQEDHP98KMOAN7FL
     1.672 s Testcount :      749593054        6746337486
-completed in 3.898 seconds 
+completed in 3.898 seconds
 
 Base 29 test every 1 threads = 12
-Start  : Num 5BAEFC5QHESPCLA  sqr 10223456789ABCDKM4JI4S470KCSHD 
+Start  : Num 5BAEFC5QHESPCLA  sqr 10223456789ABCDKM4JI4S470KCSHD
     1.00 min      24099604789
     2.00 min      48201071089
     3.00 min      72295381621
-Result : Num 5BAEFC62RGS0KJF  sqr 102234586REOSIGJD9PCF7HBLKANQM 
+Result : Num 5BAEFC62RGS0KJF  sqr 102234586REOSIGJD9PCF7HBLKANQM
   230.632 s Testcount :    92238034003       92238034003
- Num 5EF7R2P77FFPBMR  sqr 1023456789ABCDEPPNIG6S4MJNB8C9 
+ Num 5EF7R2P77FFPBMR  sqr 1023456789ABCDEPPNIG6S4MJNB8C9
 Base 30 test every 29 threads = 12
-Start  : Num 5EF7R2P77FFPBN5  sqr 1023456789ABCDHNHROTMC0MS6RGKP 
-Result : Num 5EF7R2POS9MQRN7  sqr 1023456DMAPECBQOLSITK9FR87GHNJ 
+Start  : Num 5EF7R2P77FFPBN5  sqr 1023456789ABCDHNHROTMC0MS6RGKP
+Result : Num 5EF7R2POS9MQRN7  sqr 1023456DMAPECBQOLSITK9FR87GHNJ
    35.626 s Testcount :    13343410738      386958911402
- Num 1011H10BS64GFL6U  sqr 1023456789ABCDEH3122BRSP7T7G6H1 
+ Num 1011H10BS64GFL6U  sqr 1023456789ABCDEH3122BRSP7T7G6H1
 Base 31 test every 30 threads = 12
-Start  : Num 1011H10BS64GFL76  sqr 1023456789ABCDF03FNNQ29H0ULION5 
-Result : Num 1011H10CDMAUP44O  sqr 10234568ABQUJGCNFP7KEM9RHDLTSOI 
+Start  : Num 1011H10BS64GFL76  sqr 1023456789ABCDF03FNNQ29H0ULION5
+Result : Num 1011H10CDMAUP44O  sqr 10234568ABQUJGCNFP7KEM9RHDLTSOI
    41.251 s Testcount :    15152895679      454586870370
- Num 5L6HID7BTGM6RU9L  sqr 1023456789ABCDEFGQNN3264K1GRK97P 
+ Num 5L6HID7BTGM6RU9L  sqr 1023456789ABCDEFGQNN3264K1GRK97P
 Base 32 test every 31 threads = 12
-Start  : Num 5L6HID7BTGM6RUAA  sqr 1023456789ABCDEMULAP8DRPBULSA2B4 
-Result : Num 5L6HID7BVGE2CIEC  sqr 102345678VS9CMJDRAIOPLHNFQETBUKG 
+Start  : Num 5L6HID7BTGM6RUAA  sqr 1023456789ABCDEMULAP8DRPBULSA2B4
+Result : Num 5L6HID7BVGE2CIEC  sqr 102345678VS9CMJDRAIOPLHNFQETBUKG
     5.626 s Testcount :     2207946558       68446343298
 completed in 317.047 seconds
- Num 1011I10CLMTDCMPC1  sqr 1023456789ABCDEFHSSWJ340NGCV8MTO1 
+ Num 1011I10CLMTDCMPC1  sqr 1023456789ABCDEFHSSWJ340NGCV8MTO1
 Base 33 test every 8 threads = 12
-Start  : Num 1011I10CLMTDCMPC6  sqr 1023456789ABCDEFRT6F1D7S9EA03JJD3 
- Num 1011I10CLMTDCMPC1  sqr 1023456789ABCDEFHSSWJ340NGCV8MTO1 
+Start  : Num 1011I10CLMTDCMPC6  sqr 1023456789ABCDEFRT6F1D7S9EA03JJD3
+ Num 1011I10CLMTDCMPC1  sqr 1023456789ABCDEFHSSWJ340NGCV8MTO1
 Base 33 test every 8 threads = 12
-Start  : Num 1011I10CLMTDCMPC6  sqr 1023456789ABCDEFRT6F1D7S9EA03JJD3 
+Start  : Num 1011I10CLMTDCMPC6  sqr 1023456789ABCDEFRT6F1D7S9EA03JJD3
     1.00 min     184621467265
     2.00 min     369105711649
-Result : Num 1011I10CLWWNS6SKS  sqr 102345678THKFAERNWJGDOSQ9BCIUVMLP 
+Result : Num 1011I10CLWWNS6SKS  sqr 102345678THKFAERNWJGDOSQ9BCIUVMLP
   140.634 s Testcount :    53808573863      430468590904
- Num 5SEMXRII09S90UO6V  sqr 1023456789ABCDEFGKNK3JK9NREFLEH5Q9 
+ Num 5SEMXRII09S90UO6V  sqr 1023456789ABCDEFGKNK3JK9NREFLEH5Q9
 Base 34 test every 33 threads = 12
-Start  : Num 5SEMXRII09S90UO7P  sqr 1023456789ABCDEFQ7HPX8WRC9L0GV31SD 
+Start  : Num 5SEMXRII09S90UO7P  sqr 1023456789ABCDEFQ7HPX8WRC9L0GV31SD
     1.00 min     747770289553
     2.00 min    1495002801997
 ..  8.00 min    5978195501257
     9.00 min    6725222258833
-Result : Num 5SEMXRII42NG8AKSL  sqr 102345679JIESRPA8BLCVKDNMHUFTGOQWX 
+Result : Num 5SEMXRII42NG8AKSL  sqr 102345679JIESRPA8BLCVKDNMHUFTGOQWX
   549.392 s Testcount :   205094427126     6768116095158
- Num 1011J10DE6M9QOAY42  sqr 1023456789ABCDEFGHSOEHTX34IF9YB1CG4 
+ Num 1011J10DE6M9QOAY42  sqr 1023456789ABCDEFGHSOEHTX34IF9YB1CG4
 Base 35 test every 34 threads = 12
-Start  : Num 1011J10DE6M9QOAY42  sqr 1023456789ABCDEFGHSOEHTX34IF9YB1CG4 
+Start  : Num 1011J10DE6M9QOAY42  sqr 1023456789ABCDEFGHSOEHTX34IF9YB1CG4
     1.00 min     749708230993
     2.00 min    1496695534873
 .. 27.00 min   20178502394905
    28.00 min   20925398930617  //<== > solution, because finsich tested every 1.875 seconds
-Result : Num 1011J10DEFW1QTVBXR  sqr 102345678RUEPV9KGQIWFOBAXCNSLDMYJHT 
+Result : Num 1011J10DEFW1QTVBXR  sqr 102345678RUEPV9KGQIWFOBAXCNSLDMYJHT
  1681.925 s Testcount :   614575698110    20895573735740
- Num 6069962AODK1L20LTW  sqr 1023456789ABCDEFGHSWJSDUGHWCR30SK5CG 
+ Num 6069962AODK1L20LTW  sqr 1023456789ABCDEFGHSWJSDUGHWCR30SK5CG
 Base 36 test every 35 threads = 12
-Start  : Num 6069962AODK1L20LUU  sqr 1023456789ABCDEFGT58D9PASNXYM2SLPEP0 
+Start  : Num 6069962AODK1L20LUU  sqr 1023456789ABCDEFGT58D9PASNXYM2SLPEP0
     1.00 min     787213111441
     2.00 min    1586599478101
 ..192.00 min  152890333403641
   193.00 min  153686150046241
-Result : Num 6069962APW1QG36EV8  sqr 102345678RGQKMOCBLZIYHN9WDJEUXFVPATS 
+Result : Num 6069962APW1QG36EV8  sqr 102345678RGQKMOCBLZIYHN9WDJEUXFVPATS
 11584.118 s Testcount :  4392178427722   153726244970270
 completed in 11584.118 seconds
 
 //Base 37 still missing :-(
 
- Num 66FVHSMH0OXH39bH6LT  sqr 1023456789ABCDEFGHIV4YWaF08URZ5H135NO5 
+ Num 66FVHSMH0OXH39bH6LT  sqr 1023456789ABCDEFGHIV4YWaF08URZ5H135NO5
 Base 38 test every 37 threads = 12
-Start  : Num 66FVHSMH0OXH39bH6MN  sqr 1023456789ABCDEFGHT7ZLWWKUXYO9YZW62QbZ 
+Start  : Num 66FVHSMH0OXH39bH6MN  sqr 1023456789ABCDEFGHT7ZLWWKUXYO9YZW62QbZ
     1.00 min     785788279813
     2.00 min    1568354438749
 .. 58.00 min   45309747953833
-   59.00 min   46095937872493 
-Result : Num 66FVHSMH0P60WK173YQ  sqr 1023456789DRTAINWaFJCHLYMQPGEBZVOKXSbU 
+   59.00 min   46095937872493
+Result : Num 66FVHSMH0P60WK173YQ  sqr 1023456789DRTAINWaFJCHLYMQPGEBZVOKXSbU
  3547.633 s Testcount :  1242398966051    45968761743887
 completed in 3547.634 seconds
- Num 1011L10EZ7510RFTU2Ia  sqr 1023456789ABCDEFGHIKb22ISU7MJC5GAPVLY39 
+ Num 1011L10EZ7510RFTU2Ia  sqr 1023456789ABCDEFGHIKb22ISU7MJC5GAPVLY39
 Base 39 test every 38 threads = 12
-Start  : Num 1011L10EZ7510RFTU2J0  sqr 1023456789ABCDEFGHIQb8BRYWIcN3BKJ3F7A00 
+Start  : Num 1011L10EZ7510RFTU2J0  sqr 1023456789ABCDEFGHIQb8BRYWIcN3BKJ3F7A00
     1.00 min     795117225457
     2.00 min    1589942025409
 ..398.00 min  315778732951561
   399.00 min  316570538706841
-Result : Num 1011L10EZ76L0a5UAJOF  sqr 1023456789DCFaKJPGLcEVSIBYZRTOMAbQHWXNU 
-23998.810 s Testcount :  8310508262457   315799313973366 // old version 68000s 
+Result : Num 1011L10EZ76L0a5UAJOF  sqr 1023456789DCFaKJPGLcEVSIBYZRTOMAbQHWXNU
+23998.810 s Testcount :  8310508262457   315799313973366 // old version 68000s
 
 ```
 
@@ -3039,7 +3039,7 @@ say first_square($_) for 2..16;
 {{out}}
 
 ```txt
-First perfect square with N unique digits in base N: 
+First perfect square with N unique digits in base N:
 Base  2:         10² == 100
 Base  3:         22² == 2101
 Base  4:         33² == 3201
@@ -3092,7 +3092,7 @@ foreach my $n (2 .. 16) {
 ## Perl 6
 
 {{works with|Rakudo|2019.03}}
-As long as you have the patience, this will work for bases 2 through 36. 
+As long as you have the patience, this will work for bases 2 through 36.
 
 Bases 2 through 19 finish quickly, (about 10 seconds on my system), 20 takes a while, 21 is pretty fast, 22 is glacial. 23 through 26 takes several hours.
 
@@ -3229,12 +3229,12 @@ function str_conv(sequence s, integer mode=+1)
     end for
     return res
 end function
- 
+
 procedure do_one(integer base)
 -- tabulates one base
     integer bm1 = base-1,
             dr = iff(and_bits(base,1) ? floor(base/2) : 0),
-            id = 0, 
+            id = 0,
             rc = 0,
             sdri
     atom st = time()
@@ -3271,7 +3271,7 @@ procedure do_one(integer base)
     integer d = 1,
             inc = 1
     if base>3 and rc>0 then
-        while mpz_fdiv_ui(sqz,bm1)!=dr do 
+        while mpz_fdiv_ui(sqz,bm1)!=dr do
             -- align sqz to dr
             mpz_add_ui(rtz,rtz,1)   -- rtz += 1
             mpz_add(sqz,sqz,dnz)    -- sqz += dnz
@@ -3354,7 +3354,7 @@ procedure do_one(integer base)
              {base, inc, idstr, rt, sq, icount, ethis, etotal})
     {sqz,rtz,dnz,tmp} = mpz_free({sqz,rtz,dnz,tmp})
 end procedure
- 
+
 puts(1,"base inc id             root -> square" &
         "                       test count    time        total\n")
 for base=2 to 19 do
@@ -3626,7 +3626,7 @@ c. 30 seconds.
 
 The   '''REXX'''   language doesn't have
 a   '''sqrt'''   function,   nor does it have a general purpose
-radix (base) convertor, 
+radix (base) convertor,
 
 so RYO versions were included here.
 
@@ -3747,7 +3747,7 @@ iSqrt: procedure; parse arg x;  r=0;  q=1;             do while q<=x;  q=q*4;  e
 lower: @abc= 'abcdefghijklmnopqrstuvwxyz'; return translate(arg(1), @abc, translate(@abc))
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -3770,17 +3770,17 @@ end
 {{out}}
 
 ```txt
-Base  2:        10² = 100           
-Base  3:        22² = 2101          
-Base  4:        33² = 3201          
-Base  5:       243² = 132304        
-Base  6:       523² = 452013        
-Base  7:      1431² = 2450361       
-Base  8:      3344² = 13675420      
-Base  9:     11642² = 136802574     
-Base 10:     32043² = 1026753849    
-Base 11:    111453² = 1240a536789   
-Base 12:    3966b9² = 124a7b538609  
+Base  2:        10² = 100
+Base  3:        22² = 2101
+Base  4:        33² = 3201
+Base  5:       243² = 132304
+Base  6:       523² = 452013
+Base  7:      1431² = 2450361
+Base  8:      3344² = 13675420
+Base  9:     11642² = 136802574
+Base 10:     32043² = 1026753849
+Base 11:    111453² = 1240a536789
+Base 12:    3966b9² = 124a7b538609
 Base 13:   3828943² = 10254773ca86b9
 Base 14:   3a9db7c² = 10269b8c57d3a4
 Base 15:  1012b857² = 102597bace836d4
@@ -3914,7 +3914,7 @@ Module Program
 End Module
 ```
 
-{{out}}This output is on a somewhat modern PC.  For comparison, it takes TIO.run around 30 seconds to reach base20, so TIO.run is around 3 times slower there. 
+{{out}}This output is on a somewhat modern PC.  For comparison, it takes TIO.run around 30 seconds to reach base20, so TIO.run is around 3 times slower there.
 
 ```txt
 base inc id                root    square                                 test count    time        total

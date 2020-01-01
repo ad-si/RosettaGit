@@ -37,7 +37,7 @@ Note that because all bags are identical, the two 4-bag strings <code>((())())</
 It's easy to see that each configuration for ''n'' bags represents a ''n''-node rooted tree, where a bag is a tree node, and a bag with its content forms a subtree.  The outermost bag is the tree root.  Number of configurations for given ''n'' is given by [https://oeis.org/A000081 OEIS A81].
 
 
-;Task: 
+;Task:
 Write a program that, when given ''n'', enumerates all ways of nesting ''n'' bags.   You can use the parentheses notation above, or any tree representation that's unambiguous and preferably intuitive.
 
 This task asks for enumeration of trees only; for counting solutions without enumeration, that OEIS page lists various formulas, but that's not encouraged by this task, especially if implementing it would significantly increase code size.
@@ -52,8 +52,8 @@ As an example output, run 5 bags.   There should be 9 ways.
 
 Trees are represented by integers.  When written out in binary with LSB first, 1 is opening bracket and 0 is closing.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef unsigned int uint;
@@ -543,7 +543,7 @@ Task:
 ```
 
 
-Explanation: while building the trees, we are using the [[Tree_traversal#J:_Alternate_implementation|parent index]] representation of a tree. The tree is represented as a sequence of indices of the parent nodes. We use _ to represent the root node (so our root node has no parent). 
+Explanation: while building the trees, we are using the [[Tree_traversal#J:_Alternate_implementation|parent index]] representation of a tree. The tree is represented as a sequence of indices of the parent nodes. We use _ to represent the root node (so our root node has no parent).
 
 In the boxed representation we use here, each square box represents a bag.
 
@@ -851,12 +851,12 @@ Composing a solution from generic functions.
 {{trans|Python}}
 
 ```julia
-bags(n,cache="") = n < 1 ? [(0, "")] : 
-    [(c + 1, "(" * s * ")") for (c, s) in bagchain((0, ""), n - 1, 
+bags(n,cache="") = n < 1 ? [(0, "")] :
+    [(c + 1, "(" * s * ")") for (c, s) in bagchain((0, ""), n - 1,
         n < 2 ? [] : reduce(append!, [bags(x) for x in n-1:-1:1]))]
- 
+
 bagchain(x, n, bb, start=1) = n < 1 ? [x] :
-    reduce(append!, [bagchain((x[1] + bb[i][1], x[2] * bb[i][2]), 
+    reduce(append!, [bagchain((x[1] + bb[i][1], x[2] * bb[i][2]),
         n - bb[i][1], bb, i) for i in start:length(bb) if bb[i][1] <= n])
 
 for bag in bags(5)
@@ -893,7 +893,7 @@ end
 typealias Tree = Long
 
 val treeList = mutableListOf<Tree>()
-val offset = IntArray(32) { if (it == 1) 1 else 0 } 
+val offset = IntArray(32) { if (it == 1) 1 else 0 }
 
 fun append(t: Tree) {
     treeList.add(1L or (t shl 1))
@@ -960,14 +960,14 @@ fun main(args: Array<String>) {
     }
     val n = args[0].toIntOrNull()
     if (n == null) throw IllegalArgumentException("Argument is not a valid number")
-    // n limited to 12 to avoid overflowing default stack 
+    // n limited to 12 to avoid overflowing default stack
     if (n !in 1..12) throw IllegalArgumentException("Argument must be between 1 and 12")
 
     // init 1-tree
     append(0)
-    
+
     makeTrees(n)
-    println("Number of $n-trees: ${offset[n + 1] - offset[n]}") 
+    println("Number of $n-trees: ${offset[n + 1] - offset[n]}")
     listTrees(n)
 }
 ```
@@ -1011,7 +1011,7 @@ multi expand-tree ( Bag $tree ) {
 
 multi expand-trees ( Bag $trees ) {
     [(+)] $trees.keys.map:  { $_.&expand-tree } ;
-}      
+}
 
 my $n = 5;
 for ( bag(), bag(bag()), *.&expand-trees ... * )[$n] {
@@ -1062,13 +1062,13 @@ function show(integer t, l)
     if level!=0 then ?9/0 end if
     return res
 end function
- 
+
 procedure listTrees(integer n)
     for i:=offset[n+1]+1 to offset[n+2] do
         printf(1,"%s\n",{show(list[i], n*2)})
     end for
 end procedure
- 
+
 procedure assemble(atom t, integer n, sl, pos, rem)
 --
 -- assemble tree from subtrees
@@ -1090,13 +1090,13 @@ procedure assemble(atom t, integer n, sl, pos, rem)
             pos = offset[sl]
             sl -= 1
         end if
- 
+
         atom u = or_bits(t*power(2,2*sl),list[pos+1])
         assemble(u, n, sl, pos, rem-sl)
         assemble(t, n, sl, pos+1, rem)
     end if
 end procedure
- 
+
 procedure mktrees(integer n)
     if offset[n+2]=0 then
         if n>0 then
@@ -1106,7 +1106,7 @@ procedure mktrees(integer n)
         offset[n+2] = length(list)
     end if
 end procedure
- 
+
 procedure main(integer n)
     mktrees(n)
     atom nt = offset[n+2]-offset[n+1],
@@ -1311,7 +1311,7 @@ for x in trees(5): print(tostr(x))
                                  (p (partitions (- N m)))
                                  #:when (or (null? p) (>= m (car p))))
                        (cons m p)))))
-  
+
   ;; positive-integer -> (listof trees)
   (define (LRTs N)
     (hash-ref! t# N
@@ -1418,7 +1418,7 @@ np = [1,2,3,4]
 for nr = 1 to len(np)
       if nr = 1
          bg1 = "bag"
-       else 
+       else
          bg1 = "bags"
       ok
       see "for " + nr + " " + bg1 + " :" + nl
@@ -1435,7 +1435,7 @@ func listroot(pn)
                 addstr[n]
              ok
         next
- 
+
 func result(list,pn)
         flag = 0
         newstr = list
@@ -1449,14 +1449,14 @@ func result(list,pn)
                  if left(list,2) = "()" or right(list,2) = "()" or left(list,4) = "(())" or right(list,4) = "(())"
                     flag = 0
                     exit
-                 else 
+                 else
                     if len(list) != 2 and len(list) != 4 and newstr = ""
                        flag = 1
                        exit
                     ok
                  ok
         end
-        
+
 func permutation(list,pn)
        addstr = []
        while true
@@ -1576,10 +1576,10 @@ fcn bags(n){
 
    [n-1 .. 1, -1].pump(List,bags).flatten() :
    bagchain(T(0,""), n-1, _).apply(fcn([(c,s)]){ T(c+1,String("(",s,")")) })
-} 
+}
 fcn bagchain(x,n,bb,start=0){
    if(not n) return(T(x));
- 
+
    out := List();
    foreach i in ([start..bb.len()-1]){
       c,s := bb[i];
@@ -1600,7 +1600,7 @@ fcn replace_brackets(s){
       }
    }
    out.close()
-} 
+}
 foreach x in (bags(5)){ println(replace_brackets(x[1])) }
 println("or");
 b:=bags(5); b.apply("get",1).println(b.len());

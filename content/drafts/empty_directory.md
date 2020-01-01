@@ -13,7 +13,7 @@ tags = []
 {{task}}
 Starting with a path to some directory, determine whether the directory is empty.
 
-An empty directory contains no files nor subdirectories. 
+An empty directory contains no files nor subdirectories.
 With [[Unix]] or [[Windows]] systems, every directory contains an entry for “<code>.</code>” and almost every directory contains “<code>..</code>” (except for a root directory); an empty directory contains no other entries.
 
 
@@ -260,7 +260,7 @@ for /f %%T in ('cd') do set curr_dir=%%T
 cd %samp_path% 2>nul ||goto :folder_not_found
 
 	%== The current directory is now samp_path ==%
-	%== Scan what is inside samp_path ==%	
+	%== Scan what is inside samp_path ==%
 for /f "usebackq delims=" %%D in (
 	`dir /b 2^>nul ^& dir /b /ah 2^>nul`
 ) do set "tst_var=1"
@@ -322,7 +322,7 @@ C:\>
       IF FNisdirectoryempty("C:\") PRINT "C:\ is empty" ELSE PRINT "C:\ is not empty"
       IF FNisdirectoryempty("C:\temp") PRINT "C:\temp is empty" ELSE PRINT "C:\temp is not empty"
       END
-      
+
       DEF FNisdirectoryempty(dir$)
       LOCAL dir%, sh%, res%
       DIM dir% LOCAL 317
@@ -343,8 +343,8 @@ C:\>
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <dirent.h>
 #include <string.h>
 
@@ -552,8 +552,8 @@ From the Erlang shell, or in a program, match {ok, []}. It this works the direct
 
 ```txt
 
-3> {ok, []} = file:list_dir_all("/usr").   
-** exception error: no match of right hand side value 
+3> {ok, []} = file:list_dir_all("/usr").
+** exception error: no match of right hand side value
                     {ok,["X11R6","X11","standalone","share","sbin","local",
                          "libexec","lib","bin"]}
 4> {ok, []} = file:list_dir_all("/asd").
@@ -764,15 +764,15 @@ This example uses Unicon extensions.  The 'empty' sub-directory was manually set
 
 ```Icon
 procedure main()
-   every dir := "." | "./empty" do 
+   every dir := "." | "./empty" do
       write(dir, if isdirempty(dir) then " is empty" else " is not empty")
 end
- 
+
 procedure isdirempty(s)  #: succeeds if directory s is empty (and a directory)
 local d,f
    if ( stat(s).mode ? ="d" ) & ( d := open(s) ) then {
-         while f := read(d) do 
-            if f == ("."|"..") then next else fail 
+         while f := read(d) do
+            if f == ("."|"..") then next else fail
          close(d)
          return s
          }
@@ -989,8 +989,8 @@ end
 
 ```Maple
 
-emptydirectory := proc (dir) 
-is(listdir(dir) = [".", ".."]); 
+emptydirectory := proc (dir)
+is(listdir(dir) = [".", ".."]);
 end proc;
 
 ```
@@ -1013,13 +1013,13 @@ EmptyDirectoryQ["C:\\Program Files\\Wolfram Research\\Mathematica\\9"]
 ```Matlab
 
   function x = isEmptyDirectory(p)
-    if isdir(p)		
+    if isdir(p)
       f = dir(p)
       x = length(f)>2;
-    else 
-      error('Error: %s is not a directory');     
-    end; 
-  end; 
+    else
+      error('Error: %s is not a directory');
+    end;
+  end;
 
 ```
 
@@ -1048,7 +1048,7 @@ module EmptyDirectory
     {
         Directory.GetFileSystemEntries(dir).Length == 0
     }
-    
+
     Main(args : array[string]) : void
     {
         foreach (dir in args) {
@@ -1153,7 +1153,7 @@ Directory D:\somedir contains 3 files (some nested)
 ## PARI/GP
 
 
-Define a function ''chkdir(<path>)'' that returns count of entries in a directory (without . and .. ): 
+Define a function ''chkdir(<path>)'' that returns count of entries in a directory (without . and .. ):
 
 ```parigp
 chkdir(d)=extern(concat(["[ -d '",d,"' ]&&ls -A '",d,"'|wc -l||echo -1"]))
@@ -1315,7 +1315,7 @@ if((Dir $path).Count -eq 0) {
     "$path is empty"
 } else {
     "$path is not empty"
-} 
+}
 
 ```
 
@@ -1337,17 +1337,17 @@ Procedure isDirEmpty(path$)
   If Right(path$, 1) <> "\": path$ + "\": EndIf
   Protected dirID = ExamineDirectory(#PB_Any, path$, "*.*")
   Protected result
-  
+
   If dirID
     result = 1
     While NextDirectoryEntry(dirID)
       If DirectoryEntryType(dirID) = #PB_DirectoryEntry_File Or (DirectoryEntryName(dirID) <> "." And DirectoryEntryName(dirID) <> "..")
         result = 0
         Break
-      EndIf 
-    Wend 
+      EndIf
+    Wend
     FinishDirectory(dirID)
-  EndIf 
+  EndIf
   ProcedureReturn result
 EndProcedure
 
@@ -1359,9 +1359,9 @@ If path$
     result$ = " is empty."
   Else
     result$ = " is not empty."
-  EndIf 
+  EndIf
   MessageRequester("Empty directory test", #DQUOTE$ + path$ + #DQUOTE$ + result$)
-EndIf 
+EndIf
 ```
 
 {{out}} when selecting directories "L:\vv\6\" and "L:\vv\" :
@@ -1460,7 +1460,7 @@ else see "C:\Ring\bin is empty" + nl ok
 Raises a SystemCallError if the named directory doesn’t exist.
 
 ```ruby
-Dir.entries("testdir").empty? 
+Dir.entries("testdir").empty?
 ```
 
 
@@ -1469,8 +1469,8 @@ Dir.entries("testdir").empty?
 
 
 ```runbasic
-files #f, DefaultDir$ + "\*.*"         ' open some directory. 
- 
+files #f, DefaultDir$ + "\*.*"         ' open some directory.
+
 print "hasanswer: ";#f HASANSWER()     ' if it has an answer it is not MT
 print "rowcount:  ";#f ROWCOUNT()      ' if not MT, how many files?
 ```
@@ -1563,14 +1563,14 @@ func is_empty(dir) {
 
 
 ```sml
-fun isDirEmpty(path: string) = 
+fun isDirEmpty(path: string) =
   let
     val dir = OS.FileSys.openDir path
     val dirEntryOpt = OS.FileSys.readDir dir
   in
     (
       OS.FileSys.closeDir(dir);
-      case dirEntryOpt of 
+      case dirEntryOpt of
         NONE => true
       | _    => false
     )

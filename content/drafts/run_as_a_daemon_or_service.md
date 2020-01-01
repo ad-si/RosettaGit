@@ -28,8 +28,8 @@ Note that in some language implementations it may not be possible to disconnect 
 The task also wants to redirect stdout. This program does so with [http://netbsd.gw.com/cgi-bin/man-cgi?dup2+2+NetBSD-current dup2(2)]. Had we wanted to directly write to a file, we could open the file with <code>file = fopen(argv[1], "a")</code>, and write to ''file'' instead of ''stdout''.
 
 
-```c>#include <err.h
-
+```c
+#include <err.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <stdlib.h>
@@ -87,7 +87,7 @@ main(int argc, char **argv)
 
 ```txt
 $ make dumper
-cc -O2 -pipe    -o dumper dumper.c 
+cc -O2 -pipe    -o dumper dumper.c
 $ ./dumper dump
 $ tail -f dump
 Fri Nov 18 13:50:41 2011

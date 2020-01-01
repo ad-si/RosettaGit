@@ -68,12 +68,12 @@ This calls the SAPI5 API directly, it does not need an external program.
       SPF_ASYNC = 1
       ON ERROR SYS `CoUninitialize` : PRINT 'REPORT$ : END
       ON CLOSE SYS `CoUninitialize` : QUIT
-      
+
       SYS "LoadLibrary","OLE32.DLL" TO O%
       SYS "GetProcAddress",O%,"CoInitialize" TO `CoInitialize`
       SYS "GetProcAddress",O%,"CoUninitialize" TO `CoUninitialize`
       SYS "GetProcAddress",O%,"CoCreateInstance" TO `CoCreateInstance`
-      
+
       SYS `CoInitialize`,0
       voice% = FN_voice_create
       PROC_voice_speak(voice%, "This is an example of speech synthesis")
@@ -81,7 +81,7 @@ This calls the SAPI5 API directly, it does not need an external program.
       PROC_voice_free(voice%)
       SYS `CoUninitialize`
       END
-      
+
       DEF FN_voice_create
       LOCAL C%, D%, F%, I%, M%, P%, V%
       DIM C% LOCAL 15, I% LOCAL 15
@@ -90,17 +90,17 @@ This calls the SAPI5 API directly, it does not need an external program.
       SYS `CoCreateInstance`, C%, 0, 5, I%, ^V%
       IF V%=0 ERROR 100, "SAPI5 not available"
       = V%
-      
+
       DEF PROC_voice_speak(V%, M$)
       DIM M% LOCAL 2*LENM$+1
       SYS "MultiByteToWideChar", 0, 0, M$, -1, M%, LENM$+1
       SYS !(!V%+80), V%, M%, SPF_ASYNC, 0
       ENDPROC
-      
+
       DEF PROC_voice_wait(V%)
       SYS !(!V%+128), V%
       ENDPROC
-      
+
       DEF PROC_voice_free(V%)
       SYS !(!V%+8), V%
       ENDPROC
@@ -141,8 +141,8 @@ Following shining examples of <code>exec</code>ing external programs around here
 
 {{libheader|POSIX}}
 
-```c>#include <sys/wait.h
-
+```c
+#include <sys/wait.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -315,9 +315,9 @@ julia> run(`espeak $a`)
 {{works with|Ubuntu 16.04}}
 Note that this code does not work on Windows 10.
 
-Note also that Kotlin Native does not support the automatic translation of C function-like macros such as WIFEXITED and WEXITSTATUS. 
+Note also that Kotlin Native does not support the automatic translation of C function-like macros such as WIFEXITED and WEXITSTATUS.
 
-Whilst it is often possible to wrap such macros in 'ordinary' C functions and then expose the latter to Kotlin via a .klib, it is not worth the effort here. I have therefore confined myself to simply reporting a non-zero error status. 
+Whilst it is often possible to wrap such macros in 'ordinary' C functions and then expose the latter to Kotlin via a .klib, it is not worth the effort here. I have therefore confined myself to simply reporting a non-zero error status.
 
 
 ```scala
@@ -360,7 +360,7 @@ Assumes that 'espeak' is available at the path shown.
 nomainwin
 run "C:\Program Files\eSpeak\command_line\espeak  "; chr$( 34); "This is an example of speech synthesis."; chr$( 34)
 end
- 
+
 ```
 
 Another dll has been posted to do the same job, at [http://basic.wikispaces.com/SpeechLibrary LB Community Wiki]
@@ -429,11 +429,11 @@ Module UsingEvents {
       Const  SVEAudioLevel = 512
       Const  SVEPrivate = 32768
       Const  SVEAllEvents = 33790
-      
+
       Const SVSFDefault = 0&
       Const SVSFlagsAsync = 1&
       Const SVSFPurgeBeforeSpeak=2&
-      
+
       With sp, "EventInterests", SVEWordBoundary+SVEEndInputStream
       Method sp, "Speak", That$, SVSFlagsAsync
       While Not EndStream {Wait 10}
@@ -517,7 +517,7 @@ run 'espeak', 'This is an example of speech synthesis.';
 ```Phix
 -- demo/rosetta/Speak.exw
 string text = """
-Pete, I know that you are trying to get me to talk, 
+Pete, I know that you are trying to get me to talk,
 but I'm afraid that is something I simply cannot allow to happen.
 Oops, I just spoke didn't I? That is a shame, now I have to kill you.
 <rate speed="-15"><pitch absmiddle="35">Hai.<pitch absmiddle="-15">Fuh shum. Squelch. Thud."""
@@ -561,10 +561,10 @@ Windows example uses built in Windows Speech API.
 /*
   _      _____ _   _ _    ___   __
  | |    |_   _| \ | | |  | \ \ / /
- | |      | | |  \| | |  | |\ V / 
- | |      | | | . ` | |  | | > <  
- | |____ _| |_| |\  | |__| |/ . \ 
- |______|_____|_| \_|\____//_/ \_\                                  
+ | |      | | |  \| | |  | |\ V /
+ | |      | | | . ` | |  | | > <
+ | |____ _| |_| |\  | |__| |/ . \
+ |______|_____|_| \_|\____//_/ \_\
 */
 // Install eSpeak - Run this command in a terminal
 /*
@@ -573,16 +573,16 @@ Windows example uses built in Windows Speech API.
 
 
 /*
-  __  __          _____ 
+  __  __          _____
  |  \/  |   /\   / ____|
- | \  / |  /  \ | |     
- | |\/| | / /\ \| |     
- | |  | |/ ____ \ |____ 
+ | \  / |  /  \ | |
+ | |\/| | / /\ \| |
+ | |  | |/ ____ \ |____
  |_|  |_/_/    \_\_____|
 */
 
 // Install Homebrew Package Manager & eSpeak - Run these commands in a terminal
-/* 
+/*
 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -715,7 +715,7 @@ $voice->Speak('Opening audio file stream');
 $file_stream->Open($filename, $mode); // Open stream and create file
 $voice_file_stream->AudioOutputStream = $file_stream; // Begin streaming TTS
 // Have $voice_file_stream (David) speak $statement
-$voice_file_stream->Speak($statement); 
+$voice_file_stream->Speak($statement);
 $file_stream->Close; // Close stream
 
 // Have $voice (Zira) announce file stream completion
@@ -808,11 +808,11 @@ rate= 1                                          /*talk:   -10 (slow)   to   10 
 
 Note:   The name of the above REXX program is   '''speak.rex'''
 
-'''usage'''   using the command: 
+'''usage'''   using the command:
 
 ```txt
 
-speak This is an example of speech synthesis. 
+speak This is an example of speech synthesis.
 
 ```
 

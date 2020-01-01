@@ -33,15 +33,15 @@ Euler's identity is often cited as an example of deep mathematical beauty. Three
     The number ''i'', the imaginary unit of the complex numbers.
 
 ;Task
-Show in your language that Euler's identity is true. As much as possible and practical, mimic the Euler's identity equation. 
+Show in your language that Euler's identity is true. As much as possible and practical, mimic the Euler's identity equation.
 
-Most languages are limited to IEEE 754 floating point calculations so will have some error in the calculation. 
+Most languages are limited to IEEE 754 floating point calculations so will have some error in the calculation.
 
-If that is the case, or there is some other limitation, show 
-that   <big>e<sup>i<math>\pi</math></sup> + 1</big>   is ''approximately'' equal to zero and 
+If that is the case, or there is some other limitation, show
+that   <big>e<sup>i<math>\pi</math></sup> + 1</big>   is ''approximately'' equal to zero and
 show the amount of error in the calculation.
 
-If your language is capable of symbolic calculations, show 
+If your language is capable of symbolic calculations, show
 that   <big>e<sup>i<math>\pi</math></sup> + 1</big>   is ''exactly'' equal to zero for bonus kudos points.
 
 
@@ -127,8 +127,8 @@ The C99  standard did, of course, introduce built-in support for complex number 
 
 The following code has been tested with gcc 5.4.0 on Ubuntu 16.04.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 #include <complex.h>
 #include <wchar.h>
@@ -158,8 +158,8 @@ e ^ πi + 1 = [0.0000000000000000, 0.0000000000000001] ≅ 0
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <complex>
 
 int main() {
@@ -251,13 +251,13 @@ C{ 0.0 1.224646799147353e-016 }
 
 ```go
 package main
- 
+
 import (
     "fmt"
     "math"
     "math/cmplx"
 )
- 
+
 func main() {
     fmt.Println(cmplx.Exp(math.Pi * 1i) + 1.0)
 }
@@ -312,7 +312,7 @@ import Data.Complex
 eulerIdentityZeroIsh :: Complex Double
 eulerIdentityZeroIsh =
   exp (0 :+ pi) + 1
-  
+
 main :: IO ()
 main = print eulerIdentityZeroIsh
 ```
@@ -336,7 +336,7 @@ Zero and a little floating dust ...
    NB. using j's expressive numeric notation:
    1 + ^ 0j1p1
 0j1.22465e_16
-   
+
 
    NB. Customize the comparison tolerance to 10 ^ (-15)
    NB. to show that
@@ -344,7 +344,7 @@ Zero and a little floating dust ...
 1
 
 
-   
+
    TAU =: 2p1
 
    NB. tauday.com  pi is wrong
@@ -565,7 +565,7 @@ print exp(pi * i) + 1, "\n";
 {{works with|Rakudo|2018.03}}
 Implementing an "invisible times" operator (Unicode character (U+2062)) to more closely emulate the layout. Alas, Perl 6 does not do symbolic calculations at this time and is limited to IEEE 754 floating point for transcendental and irrational number calculations.
 
-e, i and π are all available as built-in constants in Perl 6. 
+e, i and π are all available as built-in constants in Perl 6.
 
 
 ```perl6
@@ -660,19 +660,19 @@ RYO versions are included here.
 
 The   '''sqrt'''   function below supports complex roots.
 
-Note that REXX uses decimal floating point, not binary.   REXX also 
-uses a   ''guard''   (decimal) digit when multiplying 
+Note that REXX uses decimal floating point, not binary.   REXX also
+uses a   ''guard''   (decimal) digit when multiplying
 
- and dividing,   which aids in increasing the precision. 
+ and dividing,   which aids in increasing the precision.
 
-This REXX program calculates the trigonometric functions   ('''sin''' and 
-'''cos''')   to around half of the number of decimal 
+This REXX program calculates the trigonometric functions   ('''sin''' and
+'''cos''')   to around half of the number of decimal
 
-digits that are used in defining the   pi   constant in the REXX program;   so 
-the limiting factor for accuracy for the 
+digits that are used in defining the   pi   constant in the REXX program;   so
+the limiting factor for accuracy for the
 
-trigonometric functions is based on the number of decimal digits (accuracy) 
-of   pi   being defined within the REXX 
+trigonometric functions is based on the number of decimal digits (accuracy)
+of   pi   being defined within the REXX
 
 program.
 
@@ -724,7 +724,7 @@ To increase the decimal precision of the trigonometric functions past the
 current '''500''' decimal digits in the above REXX program,
 
 use the following REXX assignment statement   (the author has a REXX
-program with '''1,000,052''' decimal digits of pi that can be 
+program with '''1,000,052''' decimal digits of pi that can be
 
 programmatically invoked with the requested number of decimal digits).
 
@@ -752,7 +752,7 @@ pi= pi || 50244594553469083026425223082533446850352619311881
 pi= pi || 71010003137838752886587533208381420617177669147303
 pi= pi || 59825349042875546873115956286388235378759375195778
 pi= pi || 18577805321712268066130019278766111959092164201989
-pi= pi || 38095257201065485863278865936153381827968230301952 
+pi= pi || 38095257201065485863278865936153381827968230301952
 ```
 
 
@@ -807,7 +807,7 @@ object Scratch extends App{
   val pi = Complex[Real](Real.pi, 0)
   val i = Complex[Real](0, 1)
   val one = Complex.one[Real]
-  
+
   println(e.pow(pi*i) + one)
 }
 ```

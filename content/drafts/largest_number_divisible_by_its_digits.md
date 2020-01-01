@@ -18,7 +18,7 @@ Find the largest base 10 integer whose digits are all different,   and   is even
 
 
 These numbers are also known as   '''Lynch-Bell numbers''',   numbers   '''n'''   such that the
-(base ten) digits are all different (and do not include zero)   and   '''n'''   is divisible by each of its individual digits. 
+(base ten) digits are all different (and do not include zero)   and   '''n'''   is divisible by each of its individual digits.
 
 
 For example: 135 is evenly divisible by 1, 3 and 5.
@@ -33,7 +33,7 @@ Do the same thing for hexadecimal.
 
 
 ;Also see:
-*   The OEIS sequence:   [http://oeis.org/A115569 A115569: Lynch-Bell numbers]. 
+*   The OEIS sequence:   [http://oeis.org/A115569 A115569: Lynch-Bell numbers].
 
 
 
@@ -178,7 +178,7 @@ fedcb59726a1348
 
 ### Base 10
 
-The number can't contain 0 and 5, 0 is obvious, 5 because the number must end in 5 for it to be a multiple of that number and if that happens, all the even digits are ruled out which severely reduces the number's length since the other condition is that all digits must be unique. However, this means the number must be even and thus end only in 2,4,6,8. This speeds up the search by a factor of 2. The same approach when applied to hexadecimals takes a very long, long time. 
+The number can't contain 0 and 5, 0 is obvious, 5 because the number must end in 5 for it to be a multiple of that number and if that happens, all the even digits are ruled out which severely reduces the number's length since the other condition is that all digits must be unique. However, this means the number must be even and thus end only in 2,4,6,8. This speeds up the search by a factor of 2. The same approach when applied to hexadecimals takes a very long, long time.
 
 ```C
 
@@ -188,7 +188,7 @@ int main()
 {
 	int num = 9876432,diff[] = {4,2,2,2},i,j,k=0;
 	char str[10];
-	
+
 		start:snprintf(str,10,"%d",num);
 
 		for(i=0;str[i+1]!=00;i++){
@@ -203,8 +203,8 @@ int main()
 					k = (k+1)%4;
 					goto start;
 			}
-		}	
-	
+		}
+
 	printf("Number found : %d",num);
 	return 0;
 }
@@ -297,11 +297,11 @@ Largest hex number is fedcb59726a1348
 {{trans|D}}
 
 
-###  Base 10 
+###  Base 10
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <sstream>
 #include <set>
 
@@ -349,7 +349,7 @@ int main() {
 {{trans|D}}
 
 
-###  Base 10 
+###  Base 10
 
 
 ```csharp
@@ -389,7 +389,7 @@ namespace LargestNumber {
 ## Clojure
 
 
-###  Base Agnostic 
+###  Base Agnostic
 
 
 This is a generic solution that works for any number base. Just change the line '''(def the_base 16)'''. The performance may be questionable for large bases which do not have a Lynch-Bell number using all digits.
@@ -397,7 +397,7 @@ This is a generic solution that works for any number base. Just change the line 
 Rather than searching through all numbers with unique digits, a space whose size verges on N factorial,
 this algorithm instead works with the non-empty sets of non-zero digits, a space of size 2^(N-1) - 1.
 For a given subset, it finds the least common multiple for that subset and examines each multiple of the LCM which is between
-the largest and smallest positive numbers that can be constructed using each digit from that subset exactly once. 
+the largest and smallest positive numbers that can be constructed using each digit from that subset exactly once.
 
 ```clojure
 
@@ -417,14 +417,14 @@ the largest and smallest positive numbers that can be constructed using each dig
 (defn duplicity [n p partial] (if (= 0 (mod n p)) (duplicity (/ n p) p (conj partial p)) partial))
 
 ;Constructs the prime factorization of a given integer.
-(defn factorize [n] (let [a (flatten (for [p (filter #(< % n) primes)] 
+(defn factorize [n] (let [a (flatten (for [p (filter #(< % n) primes)]
   (remove #(= 1 %) (duplicity n p [1]))))] (if (= 0 (count a)) (lazy-seq [n]) a) ))
 
 ;Determines the number of times a given number appears in a given sequence of numbers.
 (defn multiplicity [s n] (count (filter #(= n %) s)))
 
-;Combines two sequence two create their "union" in the sense that in the resulting sequence 
-;each element from each sequence is uniquely represented and no smaller sequence would suffice. 
+;Combines two sequence two create their "union" in the sense that in the resulting sequence
+;each element from each sequence is uniquely represented and no smaller sequence would suffice.
 ;For example if one sequence contains two A's and other contains three A's, then the result will contain three A's.
 ;This is used to generate representations of prime factorizations and to construct least common multiples from them.
 (defn combine [x y] (concat x (flatten (for [w (dedupe y)] (repeat (- (multiplicity y w) (multiplicity x w)) w) ))))
@@ -436,14 +436,14 @@ the largest and smallest positive numbers that can be constructed using each dig
 (defn exp [x n] (reduce * (repeat n x)))
 
 ;Generates all non-empty subsequences for a sequence.
-(defn non_empty_subsets [s] (for [x (reverse (rest (range (exp 2 (count s)))))] 
+(defn non_empty_subsets [s] (for [x (reverse (rest (range (exp 2 (count s)))))]
   (remove nil? (for [i (range (count s))] (if (bit-test x i) (nth s i))))))
 
 
 ;Generates from a given sequence of digits in the current base the number that is s[0]s[1]s[2]...s[n].
-;More generally, produces s[0]*the_base^n + s[1]*the_base^(n-1) + ... + s[n-1]*the_base^1 + s[n]*the_base^0 
+;More generally, produces s[0]*the_base^n + s[1]*the_base^(n-1) + ... + s[n-1]*the_base^1 + s[n]*the_base^0
 ;for an arbitrary sequence of numbers.
-(defn power_up [s] (reduce + (loop [idx (- (count s) 1) s_next s] 
+(defn power_up [s] (reduce + (loop [idx (- (count s) 1) s_next s]
   (if (zero? idx) s_next (recur (dec idx) (map-indexed #(if (< %1 idx) (* %2 the_base) %2) s_next))))))
 
 ;Here is an alternative version of power_up that could be more efficient as it does not repeatedly recalculate powers of the base.
@@ -466,30 +466,30 @@ the largest and smallest positive numbers that can be constructed using each dig
 ;Removes the zeros from a sequence
 (defn remove_zeros [s] (remove #(= % 0) s))
 
-;Returns the largest integer that is a multiple of a given integer and does not exceed another given integer. 
+;Returns the largest integer that is a multiple of a given integer and does not exceed another given integer.
 (defn first_multiple_not_after [n ub] (loop [m ub] (if (= 0 (mod m n)) m (recur (dec m)))))
 
 ;creates a representation in the current base of a positive integer as a sequence listing the digits for the number in the base.
-(defn representation [n] (let [full_power (int (log_base n))] 
-  (loop [power full_power place (exp the_base full_power) rep [] rem n ] (if (= power -1) rep 
+(defn representation [n] (let [full_power (int (log_base n))]
+  (loop [power full_power place (exp the_base full_power) rep [] rem n ] (if (= power -1) rep
     (recur (dec power) (/ place the_base) (conj rep (int (/ rem place))) (- rem (* place (int (/ rem place)))))))))
 
 ;determines if a given number is exactly comprised of a given set of digits.
 (defn digit_qualifies [m s] (let [rep_m (representation m)] (= (sort s) (sort rep_m))))
 
-;Returns a sequence containing the largest Lynch-Bell number for the current base and a given sequence of digits 
+;Returns a sequence containing the largest Lynch-Bell number for the current base and a given sequence of digits
 ;or an empty sequence if there is none.
-(defn find_s_largest_lb [s] (let [lb (min_for_digits s)] (let [m (lcm s)] 
-  (loop [v (first_multiple_not_after m (max_for_digits s))] (if (< v lb) [] 
-    (if (digit_qualifies v s) (representation v) (recur (- v m)))))))) 
+(defn find_s_largest_lb [s] (let [lb (min_for_digits s)] (let [m (lcm s)]
+  (loop [v (first_multiple_not_after m (max_for_digits s))] (if (< v lb) []
+    (if (digit_qualifies v s) (representation v) (recur (- v m))))))))
 
-;Finds the largest Lynch-Bell number for the current base by looking for the largest for all subsets of a given size 
+;Finds the largest Lynch-Bell number for the current base by looking for the largest for all subsets of a given size
 ;and picking the largest from those working from the largest size (most digits) to the smallest.
-(defn find_largest_lb [] (let [subsets (non_empty_subsets (reverse digits))] 
-  (loop [s_size (- the_base 1)] (let [hits (remove #(= (count %) 0) (map find_s_largest_lb (filter #(= (count %) s_size) subsets)))] 
+(defn find_largest_lb [] (let [subsets (non_empty_subsets (reverse digits))]
+  (loop [s_size (- the_base 1)] (let [hits (remove #(= (count %) 0) (map find_s_largest_lb (filter #(= (count %) s_size) subsets)))]
     (if (pos? (count hits)) (first (sort #(first (remove_zeros (map - %2 %1))) hits)) (recur (dec s_size)))))))
 
-;Converts small integers to hexidecimal digits. 
+;Converts small integers to hexidecimal digits.
 ;This isn't being used but could be leveraged to make output that looks normal for base 16.
 (defn hex_digit [v] (case v 15 "F" 14 "E" 13 "D" 12 "C" 11 "B" 10 "A" (str v)))
 
@@ -515,7 +515,7 @@ the largest and smallest positive numbers that can be constructed using each dig
 {{trans|Scala}}
 
 
-###  Base 10 
+###  Base 10
 
 
 ```d
@@ -576,7 +576,7 @@ IN: rosetta-code.largest-divisible
     [ [ all-div? ] filter-permutations ] map concat ;
 
 : largest-divisible ( -- str )
-    8 [ dup n-digit-all-div dup empty? ] [ drop 1 - ] while 
+    8 [ dup n-digit-all-div dup empty? ] [ drop 1 - ] while
     nip supremum ;
 
 : largest-divisible-demo ( -- )
@@ -866,15 +866,15 @@ Working in base 16 using the largest possible solution also a multiple of the le
 {{works with|JDK 1.8.0}}
 
 
-###  Base 10 
+###  Base 10
 
 Using the analysis provided in the Perl 6 (base 10) example:
 
 ```java
 public class LynchBell {
-    
+
     static String s = "";
-    
+
     public static void main(String args[]) {
         //Highest number with unique digits (no 0 or 5)
         int i = 98764321;
@@ -894,7 +894,7 @@ public class LynchBell {
             i--;
         }
     }
-    
+
     public static boolean uniqueDigits(int i) {
         //returns true, if unique digits, false otherwise
         for (int k = 0; k<s.length();k++) {
@@ -911,19 +911,19 @@ public class LynchBell {
         }
         return true;
     }
-    
+
     public static boolean testNumber(int i) {
         //Tests, if i is divisible by all its digits (0 is not a digit already)
         int j = 0;
         boolean divisible = true;
-        // TODO: divisible by all its digits 
+        // TODO: divisible by all its digits
         for (char ch: s.toCharArray()) {
             j = Character.getNumericValue(ch);
             divisible = ((i%j)==0);
             if (!divisible) {
                 return false;
             }
-        }       
+        }
         return true;
     }
 }
@@ -943,7 +943,7 @@ Number found: 9867312
 {{works with|Julia|0.6}}
 
 
-###  Base 10 
+###  Base 10
 
 {{trans|C}}
 
@@ -1288,7 +1288,7 @@ FEDCB59726A1348 / 8 = 1FDB96B2E4D4269  |  1147797065081426760 /  8 =  1434746331
 ## Phix
 
 
-###  base 10 
+###  base 10
 
 {{trans|Go}}
 
@@ -1326,7 +1326,7 @@ printf(1,"%d (%d iterations)\n",{n,(high-n)/magic})
 
 
 
-###  base 16 
+###  base 16
 
 {{trans|Haskell}}
 {{libheader|mpfr}}
@@ -1372,25 +1372,25 @@ This will work with any radix, including base 10 and base 16.
 %  Find the largest integer divisible by all it's digits, with no digit repeated.
 %  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 %  We go for a generic algorithm here.  Test for divisibility is done by
-%  calculating the least common multiplier for all digits, and testing 
+%  calculating the least common multiplier for all digits, and testing
 %  whether a candidate can be divided by the LCM without remainder.
 %
-%  Instead of iterating numbers and checking whether the number has 
+%  Instead of iterating numbers and checking whether the number has
 %  repeating digits, it is more efficient to generate permutations of
-%  digits and then convert to a number.  Doing it this way reduces search 
+%  digits and then convert to a number.  Doing it this way reduces search
 %  space greatly.
 %
 % Notes:
 %  For decimal numbers we could improve times by testing only numbers
-%  of length 7 (since 5x2=10 and 0 is not one of our digits, and 9x2=18 
-%  which needs 2 digits to store), but that sort of logic does not 
+%  of length 7 (since 5x2=10 and 0 is not one of our digits, and 9x2=18
+%  which needs 2 digits to store), but that sort of logic does not
 %  hold for hexadecimal numbers.
-%  We could also explicitly eliminate odd numbers, but the double validity 
+%  We could also explicitly eliminate odd numbers, but the double validity
 %  check actually slows us down very slightly instead of speeding us up.
 
 :- dynamic
 	trial/1.       % temporarily store digit combinations here.
-	
+
 gcd(X, X, X).  % Calculate greatest common divisor
 gcd(M, N, X) :- N > M, B is N-M, gcd(M,B,X).
 gcd(M, N, X) :- N < M, A is M-N, gcd(A,N,X).
@@ -1754,7 +1754,7 @@ if __name__ == '__main__':
 
 ### base 10
 
-This REXX version uses mostly the same logic and deductions that the   '''Perl 6'''   example does,   but it performs 
+This REXX version uses mostly the same logic and deductions that the   '''Perl 6'''   example does,   but it performs
 
 the tests in a different order for maximum speed.
 
@@ -1824,7 +1824,7 @@ t=0                                              /*the number of divisibility tr
 
 say 'found '   h    "  (in "   t   ' trials)'    /*stick a fork in it,  we're all done. */
 ```
- 
+
 {{out|output|:}}
 
 ```txt
@@ -1873,7 +1873,7 @@ for n = 9867000  to 9867400
           next
           if flag3 = 1
              see n + nl
-          ok            
+          ok
        ok
     ok
 next
@@ -1904,7 +1904,7 @@ candidates   = div.step(0, -magic_number)
 
 res = candidates.find do |c|
   digits = c.digits
-  (digits & [0,5]).empty? && digits == digits.uniq 
+  (digits & [0,5]).empty? && digits == digits.uniq
 end
 
 puts res # => 9867312
@@ -1958,19 +1958,19 @@ object LargestNumDivisibleByDigits {
       println(s"Base $b: $res [${tDur}ms]")
     }
   }
-  
+
   def getLargestNum(base: SafeLong): SafeLong = {
     def chkNum(digits: Vector[SafeLong])(num: SafeLong): Boolean = {
       val lst = LazyList.iterate((num%base, num/base)){case (_, src) => (src%base, src/base)}.take(digits.length).map(_._1)
       lst.diff(digits).isEmpty
     }
-    
+
     def chkChunk(combo: Vector[SafeLong]): Option[SafeLong] = {
       val lcm = combo.reduce(_.lcm(_))
       val ulim = combo.zipWithIndex.map{case (n, i) => n*(base ** i)}.reduce(_+_)
       Iterator.iterate(ulim - (ulim%lcm))(_ - lcm).takeWhile(_ > 0).find(chkNum(combo))
     }
-  
+
     val baseDigits: Vector[SafeLong] = Vector.range(1, base.toInt).map(SafeLong(_))
     def chkBlock(digits: Iterator[Vector[SafeLong]]): Option[SafeLong] = digits.map(chkChunk).collect{case Some(n) => n}.maxOption
     Iterator.from(base.toInt - 1, -1).map(len => chkBlock(baseDigits.combinations(len))).collect{case Some(n) => n}.next
@@ -2024,13 +2024,13 @@ say largest_number(10)   #=> 9867312
 ```zkl
 const magic_number=9*8*7; # 504
 const div=9876432 / magic_number * magic_number; #largest 7 digit multiple of 504 < 9876432
- 
+
 foreach test in ([div..0,-magic_number]){
    text:=test.toString();
    if(text.holds("0","5"))		 continue; # skip numbers containing 0 or 5
    if(text.unique().len()!=text.len())   continue; # skip numbers with non unique digits
    if(test.split().filter1('%.fp(test))) continue; # skip numbers that don't divide evenly by all digits
- 
+
    println("Found ",test); # Found a solution, display it
    foreach d in (test.split()){
       println("%s / %s = %s".fmt(test,d, test/d));

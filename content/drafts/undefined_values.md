@@ -43,7 +43,7 @@ This one has the effect similar to Normalize_Scalars, but is [[GNAT]]-specific:
 
 ```Ada
 
-pragma Initialize_Scalars; 
+pragma Initialize_Scalars;
 with Ada.Text_IO;  use Ada.Text_IO;
 
 procedure Invalid_Value is
@@ -57,7 +57,7 @@ begin
    X := 1.0;
    if X'Valid then
       Put_Line ("X is" & Float'Image (X));
-   end if;   
+   end if;
    if not Y'Valid then
       Put_Line ("Y is not valid");
    end if;
@@ -170,13 +170,13 @@ Arrays and structures however '''can''' have an undefined state; for example aft
 ```bbcbasic
       PROCtest
       END
-      
+
       DEF PROCtest
       LOCAL array()
       IF !^array() < 2 PRINT "Array is undefined"
       DIM array(1,2)
       IF !^array() > 1 PRINT "Array is defined"
-      
+
       !^array() = 0 : REM Set array to undefined state
       ENDPROC
 ```
@@ -192,8 +192,8 @@ A function that wants to return an undefined value might indicate failure. Somet
 C programs can also read garbage values from uninitialized memory. There is no way to test for these garbage values, because they might equal anything.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int main()
@@ -403,7 +403,7 @@ In Erlang a variable is created by assigning to it, so all variables have a valu
 -record( a_record, {member_1, member_2} ).
 
 task() ->
-    Record = #a_record{member_1=a_value},   
+    Record = #a_record{member_1=a_value},
     io:fwrite( "Record member_1 ~p, member_2 ~p~n", [Record#a_record.member_1, Record#a_record.member_2] ),
     io:fwrite( "Member_2 is undefined ~p~n", [Record#a_record.member_2 =:= undefined] ).
 
@@ -438,7 +438,7 @@ More modern Fortrans recognise the NaN state of floating-point variables on comp
 ```Fortran
 IsNaN(x)
 ```
- 
+
 This is the only safe way to detect them as tests to detect the special behaviour of NaN states such as ''if x = x then...else aha!;'' might be optimised away by the compiler, and other tests may behave oddly. For instance x ¬= 0 might be compiled as ¬(x = 0) and the special NaN behaviour will not be as expected. Such NaN values can come via READ statements, because "NaN" is a recognised numerical input option, and could be used instead of "999" in a F3.0 data field, etc. Or, your system's input processing might recognise "?" or other special indicators and so on.
 
 
@@ -705,7 +705,7 @@ end
 procedure undeftest(P1)
 static S1
 local L1,L2
-every                                                                   #write all local, parameter, static, and global variable names 
+every                                                                   #write all local, parameter, static, and global variable names
    write((localnames|paramnames|staticnames|globalnames)(&current,0))   # ... visible in the current co-expression at this calling level (0)
 return
 end
@@ -835,15 +835,15 @@ Given a JSON object, o, and a key, k, that is not present in that object, then o
 ```
 
 
-In an important sense, therefore, null in jq represents an undefined value.  However, it should be noted that in jq, 1/0 does not yield null: 
+In an important sense, therefore, null in jq represents an undefined value.  However, it should be noted that in jq, 1/0 does not yield null:
 
 ```jq>1/0 == null #=>false</lang
 
 
 It should also be noted that in jq, null can combine with other values to form non-null values. Specifically, for any JSON entity, e,
-both null + e and e + null evaluate to e.  This is often convenient as it avoids having to handle edge cases specially. 
+both null + e and e + null evaluate to e.  This is often convenient as it avoids having to handle edge cases specially.
 
-For example, suppose it is agreed that the "sum" of the elements of an empty array should be null. Then one can simply write: 
+For example, suppose it is agreed that the "sum" of the elements of an empty array should be null. Then one can simply write:
 
 ```jq
 def sum: reduce .[] as $x (null; . + $x);
@@ -863,7 +863,7 @@ Julia has two different notions of undefined values:
  Stacktrace:
   [1] top-level scope at none:0
 </code>
-2. For variables that are defined for the Julia program but have undefined values, there are two types of undefined value in Julia (version > 0.7): <code> nothing </code> and <code> missing </code>. "nothing" and "missing" are typed constants used by convention to refer to either (with <code> nothing </code>) an absent result, such as a search with nothing found, or in the case of <code> missing, </code> a data location containing a missing value, such as a data table with missing values. <code>nothing</code> generally produces an error if any calculations incorporate it, but <code>missing</code> can be propagated along a calculation: 
+2. For variables that are defined for the Julia program but have undefined values, there are two types of undefined value in Julia (version > 0.7): <code> nothing </code> and <code> missing </code>. "nothing" and "missing" are typed constants used by convention to refer to either (with <code> nothing </code>) an absent result, such as a search with nothing found, or in the case of <code> missing, </code> a data location containing a missing value, such as a data table with missing values. <code>nothing</code> generally produces an error if any calculations incorporate it, but <code>missing</code> can be propagated along a calculation:
 
 ```julia
 
@@ -904,7 +904,7 @@ julia> x = arr .+ 5
 
 Kotlin distinguishes between nullable and non-nullable types but, as this has already been covered in the Null Object task (http://rosettacode.org/wiki/Null_object#Kotlin), there is no point in repeating it here. It is any case debatable whether 'null' is an undefined value or not since, in Kotlin, it is technically the only value of the nullable Nothing? type.
 
-However, the non-nullable Nothing type which has no instances and is a sub-type of all other types can be said to represent an undefined value as expressions of this type (such as a 'throw' expression) clearly have no defined value. 'Nothing' can be used in Kotlin to represent the return type of a function which never returns, because it always throws an exception or error. This can be useful when developing an application where the implementation of a function is being left until later. 
+However, the non-nullable Nothing type which has no instances and is a sub-type of all other types can be said to represent an undefined value as expressions of this type (such as a 'throw' expression) clearly have no defined value. 'Nothing' can be used in Kotlin to represent the return type of a function which never returns, because it always throws an exception or error. This can be useful when developing an application where the implementation of a function is being left until later.
 
 Generally speaking, the compiler ensures that all variables and properties have a value before they are used. However, there is one exception to this - mutable properties of non-null, non-primitive types, marked with the 'lateinit' modifier don't need to be initialized in place or in the constructor where it would be inconvenient to do so. If such a property is used before it has been initialized, a special error is thrown. During the period prior to being initialized, a 'lateinit' property can therefore be said to be undefined.
 
@@ -913,7 +913,7 @@ Here are some simple examples illustrating these points:
 ```scala
 // version 1.1.2
 
-class SomeClass 
+class SomeClass
 
 class SomeOtherClass {
     lateinit var sc: SomeClass
@@ -929,12 +929,12 @@ class SomeOtherClass {
     fun someFunc(): String {
         // for now calls a library function which throws an error and returns Nothing
         TODO("someFunc not yet implemented")
-    }  
+    }
 }
 
 fun main(args: Array<String>) {
     val soc = SomeOtherClass()
- 
+
     try {
         soc.printSomething()
     }
@@ -1096,7 +1096,7 @@ Mathematical expressions containing Undefined evaluate to Undefined:
 
 ```Mathematica
 Sin[Undefined]
--> Undefined 
+-> Undefined
 ```
 
 Of course you can assign Undefined to be the value of a variable. Here "Undefined" is itself a value.
@@ -1113,29 +1113,29 @@ ValueQ[a]
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
-If a variable is generated without defing a value, e.g. with 
+If a variable is generated without defing a value, e.g. with
 
 ```Matlab>  global var; </lang
 
-the variable is empty, and can be tested with 
+the variable is empty, and can be tested with
 
 ```Matlab
-  isempty(var) 
+  isempty(var)
 ```
 
 
-For numerical values (e.g. vectors or arrays) with a predefined size, often not-a-numbers (NaN's) user used to indicate missing values, 
+For numerical values (e.g. vectors or arrays) with a predefined size, often not-a-numbers (NaN's) user used to indicate missing values,
 
 ```Matlab
-  var = [1, 2, NaN, 0/0, inf-inf, 5] 
+  var = [1, 2, NaN, 0/0, inf-inf, 5]
 ```
 
-These can be tested with: 
+These can be tested with:
 
 ```Matlab
-  isnan(var) 
+  isnan(var)
 ```
 
 
@@ -1186,7 +1186,7 @@ inc None;;
 ## Oforth
 
 
-In Oforth, there is the null object, which is an instance of Null Class. 
+In Oforth, there is the null object, which is an instance of Null Class.
 
 null is used as the default value for local variables and attributes.
 
@@ -1588,7 +1588,7 @@ True
 
 ## Prolog
 
-Prolog has two predicates to know if a variable is instancied or not : '''var/1''' and '''nonvar/1'''  
+Prolog has two predicates to know if a variable is instancied or not : '''var/1''' and '''nonvar/1'''
 
 
 ```txt
@@ -1621,18 +1621,18 @@ If OpenConsole()
     PrintN("var is undefined at first check")
     Define var
   CompilerEndIf
-  
+
   CompilerIf Defined(var, #PB_Variable)
     PrintN("var is defined at second check")
   CompilerElse
     PrintN("var is undefined at second check")
     Define var
   CompilerEndIf
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
-  
+
 EndIf
 ```
 
@@ -1696,7 +1696,7 @@ Done
 
 ## R
 
-There are four cases to consider.  To test whether a varaible has previously been defined, use <code>exists</code>.  
+There are four cases to consider.  To test whether a varaible has previously been defined, use <code>exists</code>.
 
 ```r
 
@@ -1735,7 +1735,7 @@ print_is_missing <- function(x)
 }
 
 print_is_missing()                # TRUE
-print_is_missing(123)             # FALSE        
+print_is_missing(123)             # FALSE
 
 ```
 
@@ -1806,9 +1806,9 @@ tlaloc isn't defined.
 # Project : Undefined values
 
 test()
-func test 
-       x=10 y=20 
-       see islocal("x") + nl + 
+func test
+       x=10 y=20
+       see islocal("x") + nl +
        islocal("y") + nl +
        islocal("z") + nl
 

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task|Basic language learning}} 
+{{task|Basic language learning}}
 [[Category:Simple]]
 
 ;Task:
@@ -19,8 +19,8 @@ Demonstrate a language's methods of:
 :::*   initialization
 :::*   assignment
 :::*   datatypes
-:::*   scope  
-:::*   referencing,     and 
+:::*   scope
+:::*   referencing,     and
 :::*   other variable related facilities
 
 
@@ -48,8 +48,8 @@ C        DS     C                  character        1
 X        DS     X                  character hexa   1
 B        DS     B                  character bin    1
 H        DS     H                  half word        2
-F        DS     F                  full word        4    
-E        DS     F                  single float     4    
+F        DS     F                  full word        4
+E        DS     F                  single float     4
 D        DS     D                  double float     8
 L        DS     L                  extended float  16
 S        DS     CL12               string          12
@@ -60,8 +60,8 @@ CI       DC     C'7'               character        1
 XI       DC     X'F7'              character hexa   1
 BI       DC     B'11110111'        character bin    1
 HI       DC     H'7'               half word        2
-FI       DC     F'7'               full word        4    
-EI       DC     F'7.8E3'           single float     4    
+FI       DC     F'7'               full word        4
+EI       DC     F'7.8E3'           single float     4
 DI       DC     D'7.8E3'           double float     8
 LI       DC     L'7.8E3'           extended float  16
 SI       DC     CL12'789'          string          12
@@ -312,7 +312,7 @@ Properties behave exactly as global variables except that they are persistent. T
 
 /* ARM assembly Raspberry PI  */
 /*  program variable.s   */
- 
+
 /************************************/
 /* Constantes Définition            */
 /************************************/
@@ -350,24 +350,24 @@ sfFLOAT2:       .float  0f-31415926535897932384626433832795028841971.693993751E-
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 sBuffer:         .skip  500                       @ 500 bytes values zero
 iInteger2:       .skip 4                          @ 4 bytes value zero
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                             @ entry of program 
+.global main
+main:                                             @ entry of program
     ldr r0,iAdriInteger2                          @ load variable address
-    mov r1,#100                                    
+    mov r1,#100
     str r1,[r0]                                   @ init variable iInteger2
 
-100:                                              @ standard end of the program 
+100:                                              @ standard end of the program
     mov r0, #0                                    @ return code
     mov r7, #EXIT                                 @ request to exit program
     svc #0                                        @ perform the system call
- 
+
 iAdriInteger2:             .int iInteger2         @ variable address iInteger2
 
 
@@ -404,13 +404,13 @@ dict #{
 
 ```autohotkey
 x = hello       ; assign verbatim as a string
-z := 3 + 4      ; assign an expression 
+z := 3 + 4      ; assign an expression
 if !y       ; uninitialized variables are assumed to be 0 or "" (blank string)
 Msgbox %x%  ; variable dereferencing is done by surrounding '%' signs
 fx()
 {
 local x   ; variable default scope in a function is local anyways
-global y  ; 
+global y  ;
 static z=4  ; initialized once, then value is remembered between function calls
 }
 ```
@@ -424,18 +424,18 @@ static z=4  ; initialized once, then value is remembered between function calls
 
 
 ```awk
-BEGIN { 
+BEGIN {
 # Variables are dynamically typecast, and do not need declaration prior to use:
-  fruit = "banana"    # create a variable, and fill it with a string 
+  fruit = "banana"    # create a variable, and fill it with a string
   a = 1               # create a variable, and fill it with a numeric value
   a = "apple"         # re-use the above variable for a string
   print a, fruit
-  
-# Multiple assignments are possible from within a single statement: 
+
+# Multiple assignments are possible from within a single statement:
   x = y = z = 3
   print "x,y,z:", x,y,z
-  
-# "dynamically typecast" means the content of a variable is used 
+
+# "dynamically typecast" means the content of a variable is used
 # as needed by the current operation, e.g. for a calculation:
   a = "1"
   b = "2banana"
@@ -489,8 +489,8 @@ x=9, y=3, z=12
 
 ```txt
 
-x,y,z:  3 3   
-x=0, y=3, z=3 
+x,y,z:  3 3
+x=0, y=3, z=3
 
 ```
 
@@ -500,16 +500,16 @@ x=0, y=3, z=3
 
 Variables have global scope, and there is no way to make a variable local to a block.
 
-However, function arguments are local, 
-so it is possible to make a variable local to a function 
+However, function arguments are local,
+so it is possible to make a variable local to a function
 
-by listing the variable as an additional dummy function argument 
+by listing the variable as an additional dummy function argument
 after the required arguments:
 
 ```awk
 function foo(s,  k) {
   # s is an argument passed from caller
-  # k is a dummy not passed by caller, but because it is 
+  # k is a dummy not passed by caller, but because it is
   # in the argument list, it will have a scope local to the function
   k = length(s)
   print "'" s "' contains", k, "characters"
@@ -528,9 +528,9 @@ BEGIN {
 
 ```txt
 
-'Demo' contains 4 characters 
+'Demo' contains 4 characters
 k is still 42
-'Test' contains 4 characters 
+'Test' contains 4 characters
 k still is 42
 
 ```
@@ -539,9 +539,9 @@ k still is 42
 
 ### Builtin variables
 
-There are some [[Special_variables#AWK|special variables]]: 
+There are some [[Special_variables#AWK|special variables]]:
 
-When reading a line of input, the contents of that line 
+When reading a line of input, the contents of that line
 are automatically split into a number of variables:
 * $0 is the whole input-line
 * $1 is the first field
@@ -684,32 +684,32 @@ pause>nul
       REM the type is explicitly indicated by means of a suffix character.
       REM Variable names must start with A-Z, a-z, _ or `, and may contain
       REM any of those characters plus 0-9 and @; they are case-sensitive.
-      
+
       A& = 123      : REM Unsigned 8-bit byte (0 to 255)
       A% = 12345678 : REM Signed 32-bit integer (-2147483648 to +2147483647)
       A  = 123.45E6 : REM Variant 40-bit float or 32-bit integer (no suffix)
       A# = 123.45E6 : REM Variant 64-bit double or 32-bit integer
       A$ = "Abcdef" : REM String (0 to 65535 bytes)
-      
+
       REM Scalar variables do not need to be declared but must be initialised
       REM before being read, otherwise a 'No such variable' error is reported
       REM The static integer variables A% to Z% are permanently defined.
-      
+
       REM BBC BASIC also has indirection operators which allow variable-like
       REM entities to be created in memory:
-      
+
       DIM addr 7    : REM Allocate 8 bytes of heap
       ?addr = 123   : REM Unsigned 8-bit byte (0 to 255)
       !addr = 12345 : REM Signed 32-bit integer (-2147483648 to +2147483647)
       |addr = 12.34 : REM Variant 40-bit or 64-bit float or 32-bit integer
       $addr = "Abc" : REM String terminated by CR (0 to 65535 bytes)
       $$addr = "Abc": REM String terminated by NUL (0 to 65535 bytes)
-      
+
       REM The integer indirection operators may be used in a dyadic form:
       offset = 4
       addr?offset = 12345678 : REM Unsigned 8-bit byte at addr+offset
       addr!offset = 12345678 : REM Signed 32-bit integer at addr+offset
-      
+
       REM All variables in BBC BASIC have global scope unless they are used
       REM as a formal parameter of a function or procedure, or are declared
       REM as LOCAL or PRIVATE.  This is different from most other BASICs.
@@ -720,19 +720,19 @@ pause>nul
 ## Bracmat
 
 <strong>Variable declaration.</strong>
-Variables local to a function (<code>i</code> and <code>j</code> in the example below) can be declared just before the body of a function. 
+Variables local to a function (<code>i</code> and <code>j</code> in the example below) can be declared just before the body of a function.
 
 ```bracmat
 (myfunc=i j.!arg:(?i.?j)&!i+!j)
 ```
- 
+
 Global variables are created the first time they are assigned a value.
 
 <strong>Initialization.</strong>
 Local variables are initialised to <code>0</code>.
 
 <strong>Assignment.</strong>
-There are two ways. 
+There are two ways.
 
 To assign unevaluated code to a variable, you normally would use the <code>&lt;<i>variable</i>>=&lt;<i>unevaluated expression</i>></code> syntax.
 
@@ -744,7 +744,7 @@ To assign an evaluated expression to a variable, you use pattern matching as in 
 
 <strong>Referencing.</strong> Variables are referenced using the <code>!&lt;<i>variable</i>></code> syntax.
 
-<strong>Other variable related facilities.</strong> 
+<strong>Other variable related facilities.</strong>
 Global variables (name as well as value) can be removed from memory with the built-in <code>tbl</code> function.
 The names of built-in functions such as <code>put</code> and <code>lst</code> can be used as variable names without adverse effects on the built-in function. It is not possible to redefine built-in functions to do something different.
 
@@ -785,7 +785,7 @@ short: -32768 to 32767
 
 int: -2147483648 to 2147483647
 
-long: -9223372036854775808 to 9223372036854775807 
+long: -9223372036854775808 to 9223372036854775807
 
 byte: 0 to 255
 
@@ -810,7 +810,9 @@ bool: True or False
 
 Local variables are generally called <i>auto</i> variables in C. Variables must be declared before use. The declaration of a variable, without assigning a value takes the form <i><typename> <variablename>;</i>
 
-```c>int j;</lang
+```c
+int j;
+```
 
 Some common types are: <i>char, short, int, long, float, double</i> and <i>unsigned</i>.
 
@@ -854,13 +856,13 @@ set MyFloat = 1.3
 
 
 Array variables use a subscript as an element index.<br />
-The size is set automatically when a new element is added.<br /> 
+The size is set automatically when a new element is added.<br />
 Each element can have an arbitrary number of sub elements.<br />
 Arrays are automatically sorted by subscript.<br />
 
 <lang>set MyArray(1) = "element 1"
 set MyArray(2) = "element 2"
-set MyArray(2,1) = "sub element 1 of element 2" 
+set MyArray(2,1) = "sub element 1 of element 2"
 set MyArray("Element 3") "element indexed by a string"
 set MyArray = "Root element"
 
@@ -880,17 +882,17 @@ Process private global variables exist for the lifetime of the process, can only
 set ^||MyProcessPrivateGlobal("subscript 1") = "value"
 
 ```
- 
+
 
 
 ## ChucK
 
 Much like C or C++, declared but not initialized:
-<lang> int a;  
+<lang> int a;
 ```
 
 Multiple declaration:
-<lang>int b,c,d; 
+<lang>int b,c,d;
 ```
 
 Declared and initialized:
@@ -904,12 +906,16 @@ Declared and initialized:
 Much like C, C++ variables are declared at the very start of the program after the headers are declared.
 To declare a as an integer you say: the type of variable; then the variable followed by a semicolon ";".
 
-```cpp>int a;</lang
+```cpp
+int a;
+```
 
 
 Template variables are specified with template parameters in angle brackets after the class name:
 
-```cpp>std::vector<int> intVec;</lang
+```cpp
+std::vector<int> intVec;
+```
 
 
 =={{header|C sharp|C#}}==
@@ -1007,8 +1013,8 @@ Variable type is defined in a <code>PICTURE</code> clause and/or a <code>USAGE</
 
 The <code>USAGE</code> clause is used to define pointers, floating-point numbers, binary numbers, [http://en.wikipedia.org/wiki/Binary-coded_decimal#Packed_BCD packed decimals] and object references amongst others.
 
-Each variable has a ''level-number'', which is a number from 1 to 49, or 77, which goes before the variable name. Level-numbers indicate how data is grouped together. 
-Variables with higher level-numbers are subordinate to variables with lower level-numbers. 
+Each variable has a ''level-number'', which is a number from 1 to 49, or 77, which goes before the variable name. Level-numbers indicate how data is grouped together.
+Variables with higher level-numbers are subordinate to variables with lower level-numbers.
 The 77 level-number indicates the variable has no subordinate data and is therefore not a group item. Group items can include <code>FILLER</code> items which are parts of a group item which are not directly accessible.
 
 ```cobol
@@ -1231,11 +1237,11 @@ float[] more_bites;	///_Defines a dynamic array of floats
 
 Types, procs (functions) and variables in DM are built with a very "tree" structure. Because of this, there are lots of ways to define variables. Fundamentally however, the "var" keyword is always used.
 
-Declaring variables: 
+Declaring variables:
 
 ```DM
 // Both of the following declarations can be seen as a tree,
-// var -> <varname> 
+// var -> <varname>
 var/x
 var y
 
@@ -1342,7 +1348,7 @@ func parent() {
         //It shadows a parent's variable
         var x = 2
 
-        //But this is how we can reference a variable from 
+        //But this is how we can reference a variable from
         //a parent function
         base.x
     }
@@ -1548,8 +1554,8 @@ public program()
    var c := nil;                  // declaring variable.
    var a := 3;                    // declaring and initializing variables
    var b := "my string".Length;
-   long l := 200l;                // declaring strongly typed variable  
-   auto lst := new List<int>();     
+   long l := 200l;                // declaring strongly typed variable
+   auto lst := new List<int>();
 
    c := b + a;                    // assigning variable
 }
@@ -1648,7 +1654,7 @@ b = 1			// variable declaration
 e = 1.0  		// float
 f = "string"	// string
 
-/* There are plenty more 
+/* There are plenty more
 data types in Falcon */
 
 ```
@@ -1658,7 +1664,7 @@ data types in Falcon */
 ## Forth
 
 
-###  Local Variables 
+###  Local Variables
 
 Historically, Forth has preferred open access to the parameter stack over named local variables. The 1994 standard however added a cell-sized local variable facility and syntax.  The semantics are similar to VALUEs: locals are initialized from stack contents at declaration, the name retrieves the value, and TO sets the value of the local name parsed at compile time ("value TO name").
 
@@ -1687,7 +1693,7 @@ Modern systems may also allow different local data types than just integer cells
 
 
 
-###  Global Variables 
+###  Global Variables
 
 As mentioned Forth normally uses the parameter stack for input/output arguments. When there is the need for a Global variable Forth simply creates a label and allocates a piece of memory to the variable. When the variable is invoked it does not return the value in the memory but rather it returns the address of the variable on the parameter stack. This is like what other languages call a pointer, however Forth has no such obfuscation.  A named memory address is simple to understand. To store a value in the variable the '!' (store) operator is used and to fetch a value from a variable the '@' (fetch) operator is used.  VARIABLEs have the same size as the processor's native integer with a minimum size of 16 bits. Double precision variables are created with the word 2VARIABLE that are used with corresponding 2@ and 2! operators.<lang>VARIABLE X   999 X !                \ create variable x, store 999 in X
 VARIABLE Y   -999 Y !               \ create variable y, store -999 in Y
@@ -1717,7 +1723,7 @@ W 2@ D. 140569874 ok
  program test
  implicit none
 
- integer :: i  !scalar integer 
+ integer :: i  !scalar integer
  integer,dimension(10) :: ivec !integer vector
  real :: r !scalar real
  real,dimension(10) :: rvec !real vector
@@ -2064,7 +2070,7 @@ a := 1.0
 i := 10
 b := [x,a,i,b]
 
-# ... rest of program 
+# ... rest of program
 end
 ```
 
@@ -2199,7 +2205,7 @@ var a=1;
 
 // global scope
 function one(){
-    alert(a); 
+    alert(a);
 }
 
 // local scope
@@ -2234,7 +2240,7 @@ var six = function(){
     var foo = 6;
 
     return function(){
-        // javascript "closure" means I have access to foo in here, 
+        // javascript "closure" means I have access to foo in here,
         // because it is defined in the function in which I was defined.
         alert(foo);
     }
@@ -2318,7 +2324,7 @@ This establishes $NAME as a reference to the value of EXPRESSION.  There is no s
 Global variables can be given values on the jq command line.  For example, suppose the following two lines are in a file named test.jq:
 
 ```jq
-def test: $x; 
+def test: $x;
 test
 ```
 
@@ -2368,7 +2374,7 @@ will result in the string "123" being output.
 
 ```
 
- 
+
 
 ## Julia
 
@@ -2416,7 +2422,7 @@ Local variables in Kotlin (i.e. variables created within a function, constructor
 A variable's type can either be inferred from the type of the initialization expression or can be declared explicitly.
 There are essentially two types of variables: read-only (declared with 'val') and mutable (declared with 'var').
 
-Variables declared at top-level or class/object scope are technically properties rather than variables and only have hidden backing fields where necessary. However, like local variables, they are either read-only or mutable and (in the case of top level or object properties) can be declared to be compile-time constants using the 'const val' modifier. 
+Variables declared at top-level or class/object scope are technically properties rather than variables and only have hidden backing fields where necessary. However, like local variables, they are either read-only or mutable and (in the case of top level or object properties) can be declared to be compile-time constants using the 'const val' modifier.
 
 Here are some examples of local variables:
 
@@ -2429,17 +2435,17 @@ fun main(args: Array<String>) {
     val d = 2.4        // type inferred to be double
     val sh: Short = 2  // type specified as Short
     val ch = 'A'       // type inferred to be Char
-    val bt: Byte = 1   // type specified as Byte 
+    val bt: Byte = 1   // type specified as Byte
 
     /* mutable variables */
     var s = "Hey"      // type inferred to be String
     var l =  4L        // type inferred to be Long
     var b: Boolean     // type specified as Boolean, not initialized immediately
-    var f =  4.4f      // type inferred to be Float 
+    var f =  4.4f      // type inferred to be Float
 
-    b = true           // now initialized 
+    b = true           // now initialized
     println("$i, $d, $sh, $ch, $bt, $s, $l, $b, $f")
-           
+
     s = "Bye"          // OK as mutable
     l = 5L             // OK as mutable
     b = false          // OK as mutable
@@ -2627,7 +2633,7 @@ Dim doc as NotesDocument 'doc is EMTPY
 
 '...
 
-End Sub 
+End Sub
 
 ```
 
@@ -2641,7 +2647,7 @@ In lua, variables are dynamically typecast, and do not need declaration prior to
 a = 1    -- Here we declare a numeric variable
 fruit = "banana"    -- Here we declare a string datatype
 needspeeling = True    -- This is a boolean
-local b = 2    -- This variable declaration is prefixed with a scope modifier 
+local b = 2    -- This variable declaration is prefixed with a scope modifier
 ```
 
 
@@ -2705,7 +2711,7 @@ Module TopA {
                   \\ If we do this: G1=1=0 we make a local variable, and shadow global
                   \\ In a For Object {} we can make temporary variables
                   For This {
-                        Local G1=122.1212   
+                        Local G1=122.1212
                         Print G1, Type$(G1)="Double"
                   }
                   Print G1, Type$(G1)="Boolean"
@@ -2732,7 +2738,7 @@ Module CheckStatic {
       For i=1 to 10 : K : Next i
       Print A=10000
 }
-CheckStatic 
+CheckStatic
 Print A=10000
 
 \\ reference and use of stack of values
@@ -2899,12 +2905,12 @@ lhs:=rhs (delayed assignment)	rhs is evaluated each time the value of lhs is req
 
 
 ```txt
-All expressions in Mathematica are ultimately made up from a small number of basic or atomic types of objects. 
+All expressions in Mathematica are ultimately made up from a small number of basic or atomic types of objects.
 
 Symbol / String / Integer / Real / Rational / Complex
 
-These objects have heads which are symbols that can be thought of as "tagging" their types. 
-The objects contain "raw data", which can usually be accessed only by functions specific to the particular type of object. 
+These objects have heads which are symbols that can be thought of as "tagging" their types.
+The objects contain "raw data", which can usually be accessed only by functions specific to the particular type of object.
 You can extract the head of the object using Head, but you cannot directly extract any of its other parts.
 ```
 
@@ -2927,10 +2933,10 @@ aa$nn	unique local symbol generated in a module
 
 
 ```txt
-aaaa`x is a symbol with short name x, and context aaaa. 
-Contexts in Mathematica work somewhat like file directories in many operating systems. 
-You can always specify a particular file by giving its complete name, including its directory. 
-But at any given point, there is usually a current working directory, analogous to the current Mathematica context. 
+aaaa`x is a symbol with short name x, and context aaaa.
+Contexts in Mathematica work somewhat like file directories in many operating systems.
+You can always specify a particular file by giving its complete name, including its directory.
+But at any given point, there is usually a current working directory, analogous to the current Mathematica context.
 Files that are in this directory can then be specified just by giving their short names.
 ```
 
@@ -2940,7 +2946,7 @@ Files that are in this directory can then be specified just by giving their shor
 
 
 ```txt
-With[] evaluate with specified variables replaced by values 
+With[] evaluate with specified variables replaced by values
 Module[] localize names of variables (lexical scoping)
 Block[] localize values of variables (dynamic scoping)
 DynamicModule[] localize names of variables in dynamic interface constructs
@@ -2953,31 +2959,31 @@ BlockRandom localize pseudorandom variables
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 
 ```Matlab
-	a = 4; % declare variable and initialize double value,  
-        s = 'abc'; % string 
-        i8 = int8(5);	% signed byte 
+	a = 4; % declare variable and initialize double value,
+        s = 'abc'; % string
+        i8 = int8(5);	% signed byte
         u8 = uint8(5);	% unsigned byte
-        i16 = int16(5);	% signed 2 byte 
+        i16 = int16(5);	% signed 2 byte
         u16 = uint16(5); % unsigned 2 byte integer
         i32 = int32(5);	% signed 4 byte integer
-        u32 = uint32(5);% unsigned 4 byte integers 
+        u32 = uint32(5);% unsigned 4 byte integers
         i64 = int64(5);	% signed 8 byte integer
         u64 = uint64(5);% unsigned 8 byte integer
-	f32 = float32(5); % single precision floating point number 
-	f64 = float64(5); % double precision floating point number , float 64 is the default data type. 
+	f32 = float32(5); % single precision floating point number
+	f64 = float64(5); % double precision floating point number , float 64 is the default data type.
 
 	c = 4+5i; %	complex number
-        colvec = [1;2;4];   % column vector 
-        crowvec = [1,2,4];   % row vector 
+        colvec = [1;2;4];   % column vector
+        crowvec = [1,2,4];   % row vector
         m = [1,2,3;4,5,6];  % matrix with size 2x3
 ```
 
 
-Variables within functions have local scope, except when they are declared as global  
+Variables within functions have local scope, except when they are declared as global
 
 
 ```Matlab>   global b </lang
@@ -3215,8 +3221,8 @@ Different ways to declare and initialize an integer.
 
 ```objeck
 
-a : Int; 
-b : Int := 13; 
+a : Int;
+b : Int := 13;
 c := 7;
 
 ```
@@ -3267,7 +3273,7 @@ let sum () =  (* sum is a function which returns 181 *)
 ## Oforth
 
 
-Oforth does not have : 
+Oforth does not have :
 
 - Global variables.
 
@@ -3522,11 +3528,11 @@ sub dofruit {
   $fruit='apple';
 }
 
-dofruit; 
+dofruit;
 print "The fruit is $fruit";
 ```
 
- 
+
 Variables can be declared prior to use and may be prefixed with [[scope modifiers]] <code>our</code>, <code>my</code>, or <code>local</code> see [[scope modifiers]] for the differences. Variables which haven't been assigned to have the undefined value by default. The undefined value acts just like <code>0</code> (if used as a number) or the empty string (if used as a string), except it can be distinguished from either of these with the <code>defined</code> function. If warnings are enabled, perl will print a message like "Use of uninitialized value $foo in addition (+)" whenever you use the undefined value as a number or string.
 
 Initialization and assignment are the same thing in Perl: just use the <code>=</code> operator. Note that the rvalue's context (scalar or list) is determined based on the lvalue.
@@ -3551,7 +3557,7 @@ The kind of value a variable can hold depends on its sigil, "sigil" being a slan
 There are two other sigils, but they behave quite unlike the others. A token of the form <code>&foo</code> refers to a subroutine named <code>foo</code>. In older versions of Perl, ampersands were necessary for calling user-defined subroutines, but since they no longer are, they have only a handful of obscure uses, like making references to named subroutines. Note that you can't assign to an ampersand-marked name. But you can assign to a typeglob, a kind of object represented with the notation <code>*var</code>. A typeglob <code>*foo</code> represents the symbol-table entry for all of the otherwise independent variables <code>$foo</code>, <code>@foo</code>, <code>%foo</code>, and <code>&foo</code>. Assigning a string <code>"bar"</code> to <code>*foo</code> makes these variables aliases for <code>$bar</code>, <code>@bar</code>, <code>%bar</code>, and <code>&bar</code> respectively. Alternatively, you can assign a reference to a typeglob, which creates an alias only for the variable of the appropriate type. In particular, you can say <code>*twiddle = sub {...}</code> to change the definition of the subroutine <code>&twiddle</code> without affecting <code>$twiddle</code> and friends.
 
 
-###  The strict pragmatic directive 
+###  The strict pragmatic directive
 
 
 If the strict pragmatic directive is in effect, then variables need explicit scope declaration, so should be prefixed with a my or our keyword depending on the required level of scope:
@@ -3565,7 +3571,7 @@ our $veg = "carrot";    # declare a global variable and define its value
 
 
 
-###  Local and global variables 
+###  Local and global variables
 
 
 The following example shows the use of local and global variables:
@@ -3666,10 +3672,10 @@ Phix has just five builtin data types:
 
 <ul>
 <li>An <b>object</b> can hold any Phix data, specifically either an atom or a sequence.</li>
-<li>An <b>atom</b> can hold a single floating point numeric value, or an integer. 
-<li>An <b>integer</b> can hold a single whole number (at least +/- 1,000,000,000). 
-<li>A <b>sequence</b> can hold a collection of values, nested to any depth, or a string 
-<li>A <b>string</b> can hold a series of characters, or raw binary data. 
+<li>An <b>atom</b> can hold a single floating point numeric value, or an integer.
+<li>An <b>integer</b> can hold a single whole number (at least +/- 1,000,000,000).
+<li>A <b>sequence</b> can hold a collection of values, nested to any depth, or a string
+<li>A <b>string</b> can hold a series of characters, or raw binary data.
 </ul>
 
 
@@ -3686,7 +3692,7 @@ integer x = 25, y = 25, z
 object {a, b, c} = {{}, 5, "string"}
 ```
 
-In the latter statement, c is set to "string", b is set to 5, and a is set to {}. (In multiple assignment, values are assigned right-to-left to avoid having to reorder any subscripts.) You could also use 
+In the latter statement, c is set to "string", b is set to 5, and a is set to {}. (In multiple assignment, values are assigned right-to-left to avoid having to reorder any subscripts.) You could also use
 the @= ("all equal") operator to assign a, b and c to the same (entire) thing.
 Attempts to reference a variable before it has been assigned a value trigger a run-time error, except for object(<i>id</i>) which yields false in that case.
 Constants are really just variables which must be assigned on declaration and for which subsequent assignment is prohibited.
@@ -3706,7 +3712,7 @@ h2 = 25      -- error! program aborts with a message
 
 Phix has no notion of unsigned numeric types, except via user defined types such as the above which explicitly prevent their use.
 
-You could theoretically write an entire application declaring all variables and parameters as type object, except that it would probably not catch errors the way you might expect it to. 
+You could theoretically write an entire application declaring all variables and parameters as type object, except that it would probably not catch errors the way you might expect it to.
 
 An online copy of the manual can be found at http://phix.x10.mx/docs/html/phix.htm
 
@@ -3838,7 +3844,7 @@ $assoc = array(
 var_dump($assoc);
 
 // output:
-// 
+//
 ### =
 
 //	array
@@ -4122,7 +4128,7 @@ Remove-Variable   # deletes a variable completely
 
 ## Python
 
-[http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html#python-has-names Names] in Python are not typed, although all the objects referred to by them, are. Names are lexically scoped by function/method/class definitions, and must be defined before use. 
+[http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html#python-has-names Names] in Python are not typed, although all the objects referred to by them, are. Names are lexically scoped by function/method/class definitions, and must be defined before use.
 
 Names in global statements are looked up in the outermost context of the program or module. Names in a nonlocal statement are looked up in the order of closest enclosing scope outwards.
 
@@ -4175,7 +4181,7 @@ assignmentdemo <- function()
    a <- 5
    message(paste("inside assignmentdemo, a = ", a))
    message(paste("in the global environment, a = ", get("a", envir=globalenv())))
-   
+
    message("assign 'a' globally")
    a <<- 7
    message(paste("inside assignmentdemo, a = ", a))
@@ -4262,7 +4268,7 @@ The effect of a variable declaration is to introduce a new variable Name and to 
 
 ```rascal> Type Name = Exp;</lang
 
-A mention of Name later on in the same scope will be replaced by this value, provided that Name’s value has not been changed by an intermediate assignment. When a variable is declared, it has as scope the nearest enclosing block, or the module when declared at the module level. 
+A mention of Name later on in the same scope will be replaced by this value, provided that Name’s value has not been changed by an intermediate assignment. When a variable is declared, it has as scope the nearest enclosing block, or the module when declared at the module level.
 
 There are two rules you have to take into account. Double declarations in the same scope are not allowed. Additionally, the type of Exp should be compatible with Type, i.e., it should be a subtype of Type.
 
@@ -4270,15 +4276,15 @@ As a convenience, also declarations without an initialization expression are per
 
 ```rascal>Type Name;</lang
 
-and only introduce the variable Name. 
+and only introduce the variable Name.
 
-Rascal provides local type inference, which allows the implicit declaration of variables that are used locally in functions. There are four rules that apply when doing so. 
+Rascal provides local type inference, which allows the implicit declaration of variables that are used locally in functions. There are four rules that apply when doing so.
 (1) An implicitly declared variable is declared at the level of the current scope, this may the whole function body or a block nested in it.
 (2) An implicitly declared variable gets as type the type of the first value that is assignment to it.
 (3) If a variable is implicitly declared in different execution path of a function, all these implicit declarations should result in the same type.
 (4) All uses of an implicitly declared variable must be compatible with its implicit type.
 
-'''Examples''' 
+'''Examples'''
 
 Two explicit variable declarations:
 
@@ -4293,7 +4299,7 @@ int: 0
 An implicit variable declaration
 
 ```rascal>rascal
-day = {<"mon", 1>, <"tue", 2>, <"wed",3>, 
+day = {<"mon", 1>, <"tue", 2>, <"wed",3>,
 >>>>>>>       <"thu", 4>, <"fri", 5>, <"sat",6>, <"sun",7>};
 rel[str, int]: {
   <"thu",4>,
@@ -4318,7 +4324,7 @@ rascal>month ="December";
 
 
 Pitfalls
-Local type inference for variables always uses the smallest possibe scope for a variable; this implies that a variable introduced in an inner scope is not available outside that scope. Here is how things can go wrong: 
+Local type inference for variables always uses the smallest possibe scope for a variable; this implies that a variable introduced in an inner scope is not available outside that scope. Here is how things can go wrong:
 
 ```rascal>rascal
 if( 4 > 3){ x = "abc"; } else { x = "def";}
@@ -4333,7 +4339,7 @@ rascal>x;
 ## REXX
 
 
-### assignments via = 
+### assignments via =
 
 REXX has only one type of variable:   a (character) string.
 
@@ -4399,7 +4405,7 @@ Assignments can be made via the   '''value'''   BIF   ['''B'''uilt-'''I'''n '''F
 capability used here is to create a variable name programmatically (normally using concatenation or abuttal).
 
 ```rexx
-call value 'CAT', "When the cat's away, the mice will play."  
+call value 'CAT', "When the cat's away, the mice will play."
                                        /*assigns a literal ───►  CAT    */
 yyy='CA'
 call value yyy'T', "Honest as the Cat when the meat's out of reach."
@@ -4438,10 +4444,10 @@ say
 exit 13
 ```
 
-Note:   the value (result) of the   '''condition'''   BIF can vary in different implementations of a REXX interpreter. 
+Note:   the value (result) of the   '''condition'''   BIF can vary in different implementations of a REXX interpreter.
 
- 
-'''output''' using Regina (various versions), PC/REXX, Personal REXX, and ooRexx. 
+
+'''output''' using Regina (various versions), PC/REXX, Personal REXX, and ooRexx.
 
 ```txt
 
@@ -4452,7 +4458,7 @@ xxx=aaaaa                              /*tries to assign aaaaa ───► xxx 
 
 ```
 
-'''output''' using R4 REXX: 
+'''output''' using R4 REXX:
 
 ```txt
 
@@ -4507,7 +4513,7 @@ sand q= Monty
 
 ```
 
-Programming note:   there is also a method in REXX to '''expose''' a ''list'' of variables. 
+Programming note:   there is also a method in REXX to '''expose''' a ''list'' of variables.
 
 
 ### default value for an array
@@ -4533,11 +4539,11 @@ In REXX, dropping a variable (this can be thought of as deallocating it or setti
 
 Note that the storage used by the variable's (old) value is not truly deallocated, but its storage is returned to the
 
-pool of storage available for allocation of other REXX variables (and their values).   This action isn't mandatory 
+pool of storage available for allocation of other REXX variables (and their values).   This action isn't mandatory
 
-for the REXX language   (or for that matter, not even specified),   but it's apparently what all   (Classic) REXX 
+for the REXX language   (or for that matter, not even specified),   but it's apparently what all   (Classic) REXX
 
-interpreters do at the the time of this writing. 
+interpreters do at the the time of this writing.
 
 ```rexx
 radius=6.28                            /*assign a value to a variable.  */
@@ -4546,7 +4552,7 @@ drop radius                            /*now, "undefine" the variable.  */
                 say 'radius =' radius
 ```
 
-Note:   The value of an undefined (or deallocated) REXX variable is the uppercased name of the REXX variable name. 
+Note:   The value of an undefined (or deallocated) REXX variable is the uppercased name of the REXX variable name.
 
 
 '''output'''
@@ -4895,7 +4901,7 @@ foo_end
 ```
 
 
-This defines a function foo( ) taking two arguments x,y and three localized variables a,b,c. Both the argument parameters and vars are dynamically scoped to the function body, and visible to any called functions within that scope. The function name also behaves as a local variable, and may be assigned to as the return value of the function. Any variable initialization or assignment is done explicitly within the function body. Unassigned variables have a null string value, which behaves as zero in numeric context. 
+This defines a function foo( ) taking two arguments x,y and three localized variables a,b,c. Both the argument parameters and vars are dynamically scoped to the function body, and visible to any called functions within that scope. The function name also behaves as a local variable, and may be assigned to as the return value of the function. Any variable initialization or assignment is done explicitly within the function body. Unassigned variables have a null string value, which behaves as zero in numeric context.
 
 Snobol does not support static or lexical scoping, or module level namespaces. Any variables not defined in a prototype are global to the program.
 
@@ -4992,7 +4998,7 @@ a = 10; x = a - 8;
 a = 10; a = [1, 2, 3]; a = nil;
 
 // immutable variables (only in class definitions)
-const z = 42; 
+const z = 42;
 
 // lexical scope
 // the closures g and h refer to different values of their c
@@ -5109,7 +5115,7 @@ var myFunc:(() -> Void)
 func showScopes() {
     // Variable is scoped to function
     let myFunctionVariable = "foo bar function"
-    
+
     // Nested functions inherit variables declared in enclosing scope
     func nestFunc() {
         println(myFunctionVariable)
@@ -5161,7 +5167,7 @@ The main thing to note about Tcl is that the "<tt>$</tt>" syntax is a language l
 
 Variables will remain global, even after the program is complete. Global variables persist until deleted (or reset or power loss, unless they are ''archived'').
 
-Variables may be assigned with the <code>→</code> to a value. 
+Variables may be assigned with the <code>→</code> to a value.
 
 
 ```ti83b
@@ -5338,7 +5344,7 @@ set test 10
 # datatypes
 #
 # ursa currently has 10 built-in types, but
-# more may be added in the future. 
+# more may be added in the future.
 #     boolean
 #     double
 #     file
@@ -5471,7 +5477,7 @@ Although called variables, XSLT "variable" elements are single-assignment, and s
 <tr bgcolor="#C0C0C0"><th>Data type<th>Runtime
 type<th>Category<th>Storage
 allocation<th>Value range
-<tr><td>Boolean<td>Boolean<td><td>1 byte<td>True or False 
+<tr><td>Boolean<td>Boolean<td><td>1 byte<td>True or False
 <tr><td>Integer<td>Int16<td>signed
 integer<td>2 bytes<td>-32768 through 32767
 <tr><td>Long<td>Int32<td>signed
@@ -5489,16 +5495,16 @@ floating point<td>4 bytes
 precision: 6 decimals
 <tr><td>Double<td>Double<td>double precision
 floating point<td>8 bytes
-<td>-1.7E+308 through -4.9E-324 for negative values; 
+<td>-1.7E+308 through -4.9E-324 for negative values;
 
 4.9E-324 through 1.7E+308 for positive values;
 
 precision: 16 decimals
 <tr><td>Currency<td>Decimal<td>extended precision
 fixed point<td>8 bytes
-<td>-922,337,203,685,477.5808 to 922,337,203,685,477.5807 
+<td>-922,337,203,685,477.5808 to 922,337,203,685,477.5807
 
-0 through &plusmn;9.2E14 
+0 through &plusmn;9.2E14
 
 smallest nonzero number is 0.0001;
 <tr><td>String(n)<td>String<td>fixed length
@@ -5521,7 +5527,7 @@ string<td>10+(string length)<td>
 <tr bgcolor="#C0C0C0"><th>Data type<th>Runtime
 type<th>Category<th>Storage
 allocation<th>Value range
-<tr><td>Boolean<td>Boolean<td><td>1 byte<td>True or False 
+<tr><td>Boolean<td>Boolean<td><td>1 byte<td>True or False
 <tr><td>Integer<td>Int16<td>signed
 integer<td>2 bytes<td>-32768 through 32767
 <tr><td>Long<td>Int32<td>signed
@@ -5539,16 +5545,16 @@ floating point<td>4 bytes
 precision: 6 decimals
 <tr><td>Double<td>Double<td>double precision
 floating point<td>8 bytes
-<td>-1.7E+308 through -4.9E-324 for negative values; 
+<td>-1.7E+308 through -4.9E-324 for negative values;
 
 4.9E-324 through 1.7E+308 for positive values;
 
 precision: 16 decimals
 <tr><td>Currency<td>Decimal<td>extended precision
 fixed point<td>8 bytes
-<td>-922,337,203,685,477.5808 to 922,337,203,685,477.5807 
+<td>-922,337,203,685,477.5808 to 922,337,203,685,477.5807
 
-0 through &plusmn;9.2E14 
+0 through &plusmn;9.2E14
 
 smallest nonzero number is 0.0001;
 <tr><td>String(n)<td>String<td>fixed length
@@ -5600,7 +5606,7 @@ Dim wholeNumber1,wholeNumber2 as Integer = 3
 Dim realNumber as Double = 3.0
 Dim isRaining as Boolean = False
 Dim greeting as String = "Hello, this is World speaking."
-Dim longArray() As Long = {0, 1, 2, 3}  
+Dim longArray() As Long = {0, 1, 2, 3}
 Dim twoDimensions(,) As Integer = {{0, 1, 2}, {10, 11, 12}}
 ```
 
@@ -5642,7 +5648,7 @@ Dim twoDimensions(,) As Integer = {{0, 1, 2}, {10, 11, 12}}
 <tr bgcolor="#C0C0C0"><th>Data type<th>Runtime
 type<th>Category<th>Storage
 allocation<th>Value range
-<tr><td>Boolean<td>Boolean<td><td>1 byte<td>True or False 
+<tr><td>Boolean<td>Boolean<td><td>1 byte<td>True or False
 <tr><td>Char<td>Char<td>unsigned<td>2 bytes<td>0 through 65535
 <tr><td>SByte<td>Int8<td>signed
 byte<td>1 byte<td>-128 through 127
@@ -5661,7 +5667,7 @@ short integer<td>2 bytes<td>0 through 65,535
 <tr><td>UInteger<td>UInt32<td>unsigned
 integer<td>4 bytes<td>0 through 4,2E+9
 <tr><td>ULong<td>UInt64<td>unsigned
-long integer<td>8 bytes<td>0 through 1.8E+19 
+long integer<td>8 bytes<td>0 through 1.8E+19
 <tr><td>Single<td>Single<td>single precision
 floating point<td>4 bytes
 <td>-3.45E+38 through -1.4E-45 for negative values;
@@ -5707,7 +5713,7 @@ Attributes <code>Public</code> or <code>Private</code> can mofidy these scopes.
 
 <table border>
 <tr height=200 bgcolor="#C0C0C0"><th>Subtype<th>Category<th>Value range
-<tr><td>Boolean<td><td>True or False 
+<tr><td>Boolean<td><td>True or False
 <tr><td>Integer<td>signed
 integer<td>-32768 through 32767
 <tr><td>Long<td>signed

@@ -13,7 +13,7 @@ tags = []
 {{task}}
 
 
-One form of   '''Pythagorean quadruples'''   is   (for positive integers   '''a''',   '''b''',   '''c''',   and   '''d'''): 
+One form of   '''Pythagorean quadruples'''   is   (for positive integers   '''a''',   '''b''',   '''c''',   and   '''d'''):
 
 
 ::::::::   <big><big> a<sup>2</sup>   +   b<sup>2</sup>   +   c<sup>2</sup>     =     d<sup>2</sup> </big></big>
@@ -30,8 +30,8 @@ An example:
 
 ;Task:
 
-For positive integers up   '''2,200'''   (inclusive),   for all values of   '''a''',  
-'''b''',   '''c''',   and   '''d''', 
+For positive integers up   '''2,200'''   (inclusive),   for all values of   '''a''',
+'''b''',   '''c''',   and   '''d''',
 
 find   (and show here)   those values of   '''d'''   that   ''can't''   be represented.
 
@@ -39,7 +39,7 @@ Show the values of   '''d'''   on one line of output   (optionally with a title)
 
 
 ;Related tasks:
-*   [[Euler's sum of powers conjecture]]. 
+*   [[Euler's sum of powers conjecture]].
 *   [[Pythagorean triples]].
 
 
@@ -117,21 +117,21 @@ end powersOfTwo
 
 on run
     -- Two infinite lists, from each of which we can draw an arbitrary number of initial terms
-    
+
     set xs to powersOfTwo() -- {1, 2, 4, 8, 16, 32 ...
-    
+
     set ys to fmapGen(timesFive, powersOfTwo()) -- {5, 10, 20, 40, 80, 160 ...
-    
-    
+
+
     -- Another infinite list, derived from the first two (sorted in rising value)
-    
+
     set zs to mergeInOrder(xs, ys) -- {1, 2, 4, 5, 8, 10 ...
-    
-    
+
+
     -- Taking terms from the derived list while their value is below 2200 ...
-    
+
     takeWhileGen(le2200, zs)
-    
+
     --> {1, 2, 4, 5, 8, 10, 16, 20, 32, 40, 64, 80, 128, 160, 256, 320, 512, 640, 1024, 1280, 2048}
 end run
 
@@ -220,7 +220,7 @@ on |length|(xs)
     end if
 end |length|
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -370,8 +370,8 @@ BEGIN {
 
 Five seconds on my Intel Linux box.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 #include <string.h>
 
@@ -405,15 +405,15 @@ int main(int argc, char **argv){
 
 $ clang -O3 foo.c -lm
 $ ./a.out
-1 2 4 5 8 10 16 20 32 40 64 80 128 160 256 320 512 640 1024 1280 2048 
+1 2 4 5 8 10 16 20 32 40 64 80 128 160 256 320 512 640 1024 1280 2048
 
 ```
 
 ===Version 2 (much faster)===
 Translation of second version of FreeBASIC entry. Runs in about 0.15 seconds.
 
-```C>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <string.h>
 
@@ -421,7 +421,7 @@ Translation of second version of FreeBASIC entry. Runs in about 0.15 seconds.
 #define N2 2200 * 2200 * 2
 
 int main(int argc, char **argv) {
-    int a, b, c, d, a2, s = 3, s1, s2; 
+    int a, b, c, d, a2, s = 3, s1, s2;
     int r[N + 1];
     memset(r, 0, sizeof(r));
     int *ab = calloc(N2 + 1, sizeof(int));  // allocate on heap, zero filled
@@ -447,7 +447,7 @@ int main(int argc, char **argv) {
     }
     printf("\n");
     free(ab);
-    return 0; 
+    return 0;
 }
 ```
 
@@ -465,8 +465,8 @@ Same as first version.
 
 {{trans|D}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 
 constexpr int N = 2200;
@@ -581,8 +581,8 @@ The values of d <= 2200 which can't be represented:
 n = 2200
 l_add, l = Hash(Int32, Bool).new(false), Hash(Int32, Bool).new(false)
 (1..n).each do |x|
-  x2 = x * x 
-  (x..n).each { |y| l_add[x2 + y * y] = true } 
+  x2 = x * x
+  (x..n).each { |y| l_add[x2 + y * y] = true }
 end
 
 s = 3
@@ -687,7 +687,7 @@ Dim As UInteger limit = max * 4 \ 15
 Dim As UInteger max2 = limit * limit * 2
 ReDim As Ubyte list_1(max2), list_2(max2 +1)
 
-' prime sieve, list_2(l) contains a 0 if l = prime  
+' prime sieve, list_2(l) contains a 0 if l = prime
 For l = 4 To max2 Step 2
     list_1(l) = 1
 Next
@@ -724,7 +724,7 @@ For l = 1 To max
 Next
 Print
 
-' empty keyboard buffer 
+' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "hit any key to end program"
 Sleep
@@ -804,8 +804,8 @@ const (
 )
 
 func main() {
-    s  := 3 
-    var s1, s2 int    
+    s  := 3
+    var s1, s2 int
     var r  [N + 1]bool
     var ab [N2 + 1]bool
 
@@ -832,7 +832,7 @@ func main() {
     for d := 1; d <= N; d++ {
         if !r[d] {
             fmt.Printf("%d ", d)
-        }       
+        }
     }
     fmt.Println()
 }
@@ -843,7 +843,7 @@ func main() {
 
 ```txt
 
-1 2 4 5 8 10 16 20 32 40 64 80 128 160 256 320 512 640 1024 1280 2048 
+1 2 4 5 8 10 16 20 32 40 64 80 128 160 256 320 512 640 1024 1280 2048
 
 ```
 
@@ -925,7 +925,7 @@ public class PythagoreanQuadruple {
         for (int a = 1; a <= MAX; a++) {
             int a2 = a * a;
             for (int b = a; b <= MAX; b++) a2b2[a2 + b * b] = true;
-        } 
+        }
 
         for (int c = 1; c <= MAX; c++) {
             int s1 = s;
@@ -953,7 +953,7 @@ public class PythagoreanQuadruple {
 ```txt
 
 The values of d <= 2200 which can't be represented:
-1  2  4  5  8  10  16  20  32  40  64  80  128  160  256  320  512  640  1024  1280  2048  
+1  2  4  5  8  10  16  20  32  40  64  80  128  160  256  320  512  640  1024  1280  2048
 
 ```
 
@@ -1140,7 +1140,7 @@ def is_pythagorean_quad:
     | (($d2-($a2+$b2)) | sqrt) as $c
     | if ($c | floor) == $c then [$a, $b, $c] else empty end )
   // false;
-  
+
 # The specific task:
 
 [range(1; 2201) | select( is_pythagorean_quad | not )] | join(" ")
@@ -1200,7 +1200,7 @@ Pythagorean quadruples up to 2200: 1, 2, 4, 5, 8, 10, 16, 20, 32, 40, 64, 80, 12
 ## Kotlin
 
 
-### Version 1 
+### Version 1
 
 This uses a similar approach to the REXX optimized version. It also takes advantage of a hint in the C entry that there is no solution if both a and b are odd (confirmed by Wikipedia article). Runs in about 7 seconds on my modest laptop which is more than 4 times faster than the brute force version would have been:
 
@@ -1218,7 +1218,7 @@ fun main(args: Array<String>) {
     val dc = mutableMapOf<Int, MutableList<Int>>()
     for (d in 1..MAX) {
         for (c in 1 until d) {
-            val diff = p2[d] - p2[c]              
+            val diff = p2[d] - p2[c]
             val v = dc[diff]
             if (v == null)
                 dc.put(diff, mutableListOf(d))
@@ -1226,7 +1226,7 @@ fun main(args: Array<String>) {
                 v.add(d)
         }
     }
-  
+
     for (a in 1..MAX) {
         for (b in 1..a) {
             if ((a and 1) != 0 && (b and 1) != 0) continue
@@ -1248,7 +1248,7 @@ fun main(args: Array<String>) {
 ```txt
 
 The values of d <= 2200 which can't be represented:
-1 2 4 5 8 10 16 20 32 40 64 80 128 160 256 320 512 640 1024 1280 2048 
+1 2 4 5 8 10 16 20 32 40 64 80 128 160 256 320 512 640 1024 1280 2048
 
 ```
 
@@ -1270,9 +1270,9 @@ fun main(args: Array<String>) {
 
     for (a in 1..MAX) {
         val a2 = a * a
-        for (b in a..MAX) a2b2[a2 + b * b] = true   
+        for (b in a..MAX) a2b2[a2 + b * b] = true
     }
- 
+
     for (c in 1..MAX) {
         var s1 = s
         s += 2
@@ -1286,7 +1286,7 @@ fun main(args: Array<String>) {
 
     println("The values of d <= $MAX which can't be represented:")
     for (d in 1..MAX) if (!found[d]) print("$d ")
-    println()    
+    println()
 }
 ```
 
@@ -1350,13 +1350,13 @@ print()
 
 ```modula2
 MODULE PythagoreanQuadruples;
-FROM FormatString IMPORT FormatString;    
+FROM FormatString IMPORT FormatString;
 FROM RealMath IMPORT sqrt;
 FROM Terminal IMPORT WriteString,WriteLn,ReadChar;
 
 PROCEDURE WriteInteger(i : INTEGER);
 VAR buffer : ARRAY[0..16] OF CHAR;
-BEGIN                             
+BEGIN
     FormatString("%i", buffer, i);
     WriteString(buffer)
 END WriteInteger;
@@ -1367,12 +1367,12 @@ VAR
     r : ARRAY[0..N] OF BOOLEAN;
     a,b,c,d : INTEGER;
     aabb,aabbcc : INTEGER;
-BEGIN    
+BEGIN
     (* Initialize *)
     FOR a:=0 TO HIGH(r) DO
         r[a] := FALSE
-    END;             
-    
+    END;
+
     (* Process *)
     FOR a:=1 TO N DO
         FOR b:=a TO N DO
@@ -1391,9 +1391,9 @@ BEGIN
             END
         END
     END;
-    
+
     FOR a:=1 TO N DO
-        IF NOT r[a] THEN  
+        IF NOT r[a] THEN
             (* pritn non-solution *)
             WriteInteger(a);
             WriteString(" ")
@@ -1408,7 +1408,7 @@ END PythagoreanQuadruples.
 {{out}}
 
 ```txt
-1 2 4 5 8 10 16 20 32 40 64 80 128 160 256 320 512 640 1024 1280 2048 
+1 2 4 5 8 10 16 20 32 40 64 80 128 160 256 320 512 640 1024 1280 2048
 ```
 
 
@@ -1464,7 +1464,7 @@ var
   s = 3
   r = newSeq[bool](N + 1)
   ab = newSeq[bool](N2 + 1)
-  
+
 for a in 1..N:
   a2 = a * a
   for b in a..N:
@@ -1527,13 +1527,13 @@ var
   s1 : tSum;
   d : tSum;
 begin
-  d := trunc(sqrt(s+idx*idx));// calculate first sqrt 
+  d := trunc(sqrt(s+idx*idx));// calculate first sqrt
   For idx := idx to MaxFactor do
   Begin
     s1 := s+idx*idx;
     If s1 <= limit then
     Begin
-      while s1 > d*d do //adjust sqrt  
+      while s1 > d*d do //adjust sqrt
         inc(d);
       inc(checkCnt);
       IF s1=d*d then
@@ -1631,7 +1631,7 @@ var
   s : tSum;
 begin
   For d := 1 to MaxFactor do
-    //c < d => (d*d-c*c) > 0 
+    //c < d => (d*d-c*c) > 0
     For c := d-1 downto 1 do
     Begin
       s := d*d-c*c;
@@ -1852,7 +1852,7 @@ def quad(top=2200):
             s1 += s2
             s2 += 2
     return [i for i, val in enumerate(r) if not val and i]
-    
+
 if __name__ == '__main__':
     n = 2200
     print(f"Those values of d in 1..{n} that can't be represented: {quad(n)}")
@@ -2028,7 +2028,7 @@ Those values of d in 1..2200 that can't be represented: (1 2 4 5 8 10 16 20 32 4
 
 ### brute force
 
-This version is a brute force algorithm, with some optimization (to save compute time) 
+This version is a brute force algorithm, with some optimization (to save compute time)
 
 which pre-computes some of the squares of the positive integers used in the search.
 
@@ -2077,12 +2077,12 @@ Not possible positive integers for   d ≤ 2200   using equation:  a² + b² + c
 
 This REXX version is an optimized version, it solves the formula:
 
-::::::::   <big><big> a<sup>2</sup>   +   b<sup>2</sup>         =         d<sup>2</sup>   -   c<sup>2</sup>    
+::::::::   <big><big> a<sup>2</sup>   +   b<sup>2</sup>         =         d<sup>2</sup>   -   c<sup>2</sup>
 </big></big>
 
 This REXX version is around   '''60'''   times faster then the previous version.
 
-Programming note:   testing for   '''a'''   and   '''b'''   both being   <big>odd</big>   (lines '''15''' and '''16'''   that each contain a   '''do'''   loop)   as 
+Programming note:   testing for   '''a'''   and   '''b'''   both being   <big>odd</big>   (lines '''15''' and '''16'''   that each contain a   '''do'''   loop)   as
 
 being a case that won't produce any solutions actually slows up the calculations and makes the program execute slower.
 
@@ -2120,7 +2120,7 @@ $=                                               /* [↓]  find all the  "not po
 say substr($, 2)                                 /*stick a fork in it,  we're all done. */
 ```
 
-{{out|output|text=  is the same as the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is the same as the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -2166,8 +2166,8 @@ see pqstr + nl
 n = 2200
 l_add, l = {}, {}
 1.step(n) do |x|
-  x2 = x*x 
-  x.step(n) {|y| l_add[x2 + y*y] = true} 
+  x2 = x*x
+  x.step(n) {|y| l_add[x2 + y*y] = true}
 end
 
 s = 3
@@ -2231,7 +2231,7 @@ puts pyth_quad.take_while{|n| n <= 1000000000}.join(" ")
 
 {{output?}}
 
-This is equivalent to https://oeis.org/A094958 
+This is equivalent to https://oeis.org/A094958
 which simply contains positive integers of the form 2^n or 5*2^n. Multiple implementations are provided.
 
 
@@ -2546,7 +2546,7 @@ End Sub
 {{out}}
 
 ```txt
- 1  2  4  5  8  10  16  20  32  40  64  80  128  160  256  320  512  640  1024  1280  2048 
+ 1  2  4  5  8  10  16  20  32  40  64  80  128  160  256  320  512  640  1024  1280  2048
 ```
 
 

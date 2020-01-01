@@ -34,11 +34,11 @@ Interesting features of the sequence are that:
 *   a(n)/n   where   n   is a power of   2   is   0.5
 *   For   n>4   the maximal value of   a(n)/n   between successive powers of 2 decreases.
 
-[[File:Hofstadter conway 10K.gif|center|a(n) / n   for   n   in   1..256]] 
+[[File:Hofstadter conway 10K.gif|center|a(n) / n   for   n   in   1..256]]
 
 
 The sequence is so named because [[wp:John Horton Conway|John Conway]] [http://www.nytimes.com/1988/08/30/science/intellectual-duel-brash-challenge-swift-response.html offered a prize] of $10,000 to the first person who could
-find the first position,   p   in the sequence where 
+find the first position,   p   in the sequence where
     │a(n)/n│ < 0.55  for all  n > p
 It was later found that [[wp:Douglas Hofstadter|Hofstadter]] had also done prior work on the sequence.
 
@@ -64,10 +64,10 @@ The 'prize' was won quite quickly by [http://www.research.avayalabs.com/gcm/usa/
 ## 360 Assembly
 
 {{trans|BBC BASIC}}
-For maximum compatibility, this program uses only the basic instruction set (S/360) 
+For maximum compatibility, this program uses only the basic instruction set (S/360)
 with 2 ASSIST macros (XDECO,XPRNT).
 
-The program addresses the problem for l=2**12 (4K). For l=2**20 (1M) you must 
+The program addresses the problem for l=2**12 (4K). For l=2**20 (1M) you must
 allocate dynamic storage instead using static storage.
 
 ```360asm
@@ -145,7 +145,7 @@ RETURN   L      R13,4(0,R13)       restore savearea pointer
          LM     R14,R12,12(R13)    restore registers
          XR     R15,R15            return code = 0
          BR     R14                return to caller
-         LTORG  
+         LTORG
 L        DC     F'12'
 UPRDIM   DC     F'4096'            2^L
 PEAK     DC     F'5000'            0.5 fixed point 4dec
@@ -303,10 +303,10 @@ BEGIN
     INT k1 := 2,
         lg2 := 1,
         v := a list[1] := a list[2] := 1; # Concurrent declaration and assignment in declarations are allowed #
- 
+
     INT nmax;
     LONG REAL amax := 0.0;
- 
+
     INT mallows number;
 
     FOR n FROM 3 TO max DO
@@ -328,7 +328,7 @@ BEGIN
     OD;
     mallows number   # the result of the last expression evaluated is returned as the result of the PROC #
 END;
- 
+
 INT mallows number = do sqnc(2**20); # This definition of 'mallows number' does not clash with the variable
                                        of the same name inside PROC do sqnc - they are in different scopes#
 
@@ -447,31 +447,31 @@ Mallows Number = 1489
 ## AWK
 
 
-Iterative approach:  	
+Iterative approach:
 
 ```AWK
 #!/usr/bin/awk -f
-BEGIN { 
+BEGIN {
   NN = 20;
-  iterativeHCsequence(2^NN+1,Q); 
+  iterativeHCsequence(2^NN+1,Q);
   for (K=1; K<NN; K++) {
-    m = 0; 
+    m = 0;
     for (n=2^K+1; n<=2^(K+1); n++) {
-        v = Q[n]/n; 
-	if (m < v) {nn=n; m = v}; 
+        v = Q[n]/n;
+	if (m < v) {nn=n; m = v};
     }
     printf "Maximum a(n)/n between 2^%i and 2^%i is %f at n=%i\n",K,K+1,m,nn;
   }
   print "number of Q(n)<Q(n+1) for n<=100000 : " NN;
 }
- 
+
 function iterativeHCsequence(N,Q) {
-  Q[1] = 1;  
-  Q[2] = 1;  
+  Q[1] = 1;
+  Q[2] = 1;
   for (n=3; n<=N; n++) {
     Q[n] = Q[Q[n-1]]+Q[n-Q[n-1]];
-  } 
-} 
+  }
+}
 ```
 
 
@@ -480,26 +480,26 @@ Recursive variant:
 
 ```AWK
 #!/usr/bin/awk -f
-BEGIN { 
-  Q[1] = 1;  
-  Q[2] = 1;  
-  S[1] = 1;  
-  S[2] = 1;  
+BEGIN {
+  Q[1] = 1;
+  Q[2] = 1;
+  S[1] = 1;
+  S[2] = 1;
 
   NN = 20;
   for (K=1; K<NN; K++) {
-    m = 0; 
+    m = 0;
     for (n=2^K+1; n<=2^(K+1); n++) {
-        v = HCsequence(n,Q,S)/n; 
-	if (m < v) {nn=n; m = v}; 
+        v = HCsequence(n,Q,S)/n;
+	if (m < v) {nn=n; m = v};
     }
     printf "Maximum between 2^%i and 2^%i is %f at n=%i\n",K,K+1,m,nn;
   }
 }
 
 function HCsequence(n,Q,S) {
-  ## recursive definition  
-  if (S[n]==0) {  
+  ## recursive definition
+  if (S[n]==0) {
 
   k = n-1;
   if (S[k]==0) {
@@ -516,9 +516,9 @@ function HCsequence(n,Q,S) {
 
   }
   Q[n] = Q[Q[n-1]]+Q[n-Q[n-1]];
-  S[n] = 1;	
+  S[n] = 1;
   return (Q[n]);
-} 
+}
 ```
 
 
@@ -610,7 +610,7 @@ Mallows number is 1489
 
 ```bracmat
 ( ( a
-  =   
+  =
     .   !arg:(1|2)&1
       | (as..find)$!arg:(?.?arg)&!arg
       |     (as..insert)
@@ -644,10 +644,10 @@ Mallows number is 1489
     & a$!n*!n^-1:?an/n
     & (   !an/n:>!maxan/n:?maxan/n
         & !n:?maxn
-      | 
+      |
       )
     & ( !an/n:~<11/20:?Man/n&!n:?Mallows
-      | 
+      |
       )
     )
 &   out
@@ -698,8 +698,8 @@ Mallows number is 1489, where a(1489)/1489 == 819/1489, which is greater than 0.
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int a_list[1<<20 + 1];
@@ -1068,7 +1068,7 @@ Max in [2^19, 2^20]: 0.533779
 
 (define (a n)
 	(+ (a (a (1- n))) (a (- n (a (1- n))))))
-	
+
 (remember 'a #(0 1 1)) ;; memoize
 
 ;; prints max a(n)/n in [2**i 2**i+1] intervals
@@ -1076,17 +1076,17 @@ Max in [2^19, 2^20]: 0.533779
 (define (task  (maxv) (start 1) (end 2) (v) (mrange 0))
 	(for ((i  (in-range 1 21)))
 	(set! maxv 0)
-	
+
 	(for ((n  (in-range start end)))
 	(set! v (// (a n) n))
 	#:when (> v maxv)
 		(set! maxv v))
 	    (when (and (zero? mrange) (< maxv 0.55)) (set! mrange end))
-	
+
 	(printf "[%d .. %d]  →  max a(n)/n:  %d " start end maxv)
 	(set! start end)
 	(set! end (* start 2)))
-	
+
 ;; mallows
 	(for ((n (in-range mrange 2 -1)))
 		#:break (> (// (a n) n) 0.55) => n )
@@ -1200,7 +1200,7 @@ As the run time is quite slow, the test output is shown only up to 2^15.
 ```txt
 
 Between 2^1 and 2^2 the max is: 0.66666666666666663 at 3.
-Between 2^2 and 2^3 the max is: 0.66666666666666663 at 6. 
+Between 2^2 and 2^3 the max is: 0.66666666666666663 at 6.
 Between 2^3 and 2^4 the max is: 0.63636363636363635 at 11.
 Between 2^4 and 2^5 the max is: 0.60869565217391308 at 23.
 Between 2^5 and 2^6 the max is: 0.59090909090909094 at 44.
@@ -1335,7 +1335,7 @@ while a.Count <= (1 <<< 20) do
 for p = 1 to 19 do
   Seq.max [|for i in 1 <<< p .. 1 <<< p+1 -> float a.[i] / float i|]
   |> printf "Maximum in %6d..%7d is %g\n" (1 <<< p) (1 <<< p+1)
-let mallows, _ = a 
+let mallows, _ = a
                  |> List.ofSeq
                  |> List.mapi (fun i n -> i, n)
                  |> List.rev
@@ -1555,10 +1555,10 @@ for n = 3 to 2 ^ uprLim
    a(n) = a( a( n-1 ) ) + a( n-a( n-1 ) )
    r = a(n) / n
       if r >= 0.55 then Mallows = n
-      if r > p 
+      if r > p
          p = r
          pPos = n
-      end if 
+      end if
 
       if n == p2
          print "Maximum of a(n)/n between", " 2^"; pow2-1; " and 2^"; pow2," is "; p;, " at n = "; pPos
@@ -1756,7 +1756,7 @@ Mallow's number is 1489
 
 ## J
 
-'''Solution''' (tacit):  
+'''Solution''' (tacit):
 ```j
    hc10k =:  , ] +/@:{~ (,&<: -.)@{:    NB.  Actual sequence a(n)
    AnN   =:  % 1+i.@:#                  NB.  a(n)/n
@@ -1775,7 +1775,7 @@ The first, naive, formulation of <code>hc10k</code> grows by a single term every
 ```
 
 
-'''Example''': 
+'''Example''':
 ```j
    ] A=:1 1 hc10k @]^:[~ 2^20x
 1 1 2 2 3 4 4 4 5 6 7 7 8 8 8 8 9 ...
@@ -1804,7 +1804,7 @@ public class HofCon
   int[] a_list = new int[m + 1];
   int max_df = 0;
   int p2_max = 2;
-  int k1 = 2; 
+  int k1 = 2;
   int lg2 = 1;
   double amax = 0;
   a_list[0] = a_list[1] = 1;
@@ -1849,9 +1849,9 @@ var hofst_10k = function(n) {
 	var a = function(n) {
 		var result = memo[n-1];
 		if (typeof result !== 'number') {
-			result = a(a(n-1))+a(n-a(n-1));	
+			result = a(a(n-1))+a(n-a(n-1));
 			memo[n-1] = result;
-		}	
+		}
 		return result;
 	}
 	return a;
@@ -2072,9 +2072,9 @@ for p=1,20 do
 			fdiv=div
 		end
 	end
-	write(fmt("From 2^%-2d to 2^%-2d the max is %.4f the %6dth Hofstadter number.\n", 
+	write(fmt("From 2^%-2d to 2^%-2d the max is %.4f the %6dth Hofstadter number.\n",
 		p-1, p, max, num))
-	if max>.55 and p>4 then 
+	if max>.55 and p>4 then
 		mallows, mdiv=last, fdiv
 	end
 end
@@ -2149,30 +2149,30 @@ Mallows number: 1489
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
- 	
+
 
 ```matlab
  function Q = HCsequence(N)
   Q = zeros(1,N);
-  Q(1:2) = 1;  
-  for n = 3:N, 
+  Q(1:2) = 1;
+  for n = 3:N,
     Q(n) = Q(Q(n-1))+Q(n-Q(n-1));
-  end; 
+  end;
 end;
 ```
 
 
-The function can be tested in this way: 
+The function can be tested in this way:
 
 ```matlab
-NN = 20; 
+NN = 20;
 Q = HCsequence(2^NN+1);
 V = Q./(1:2^NN);
 for k=1:NN,
   [m,i] = max(V(2^k:2^(k+1)));
   i = i + 2^k - 1;
   printf('Maximum between 2^%i and 2^%i is %f at n=%i\n',k,k+1,m,i);
-end; 
+end;
 ```
 
 
@@ -2258,19 +2258,19 @@ bundle Default {
       a_list := Int->New[m + 1];
       max_df := 0;
       p2_max := 2;
-      k1 := 2; 
+      k1 := 2;
       lg2 := 1;
       amax := 0.0;
 
-      a_list[0] := 1; 
+      a_list[0] := 1;
       a_list[1] := 1;
 
       v := a_list[2];
 
       for(n := 2; n <= m; n+=1;) {
-        r := a_list[v] + a_list[n - v];  
+        r := a_list[v] + a_list[n - v];
         v := r;
-        a_list[n] := r;  
+        a_list[n] := r;
 
         if(amax < v * 1.0 / n) {
           amax := v * 1.0 / n;
@@ -2329,19 +2329,19 @@ Maximum between 2^19 and 2^20 was 0.53377923
    ListBuffer newSize(n) dup add(1) dup add(1) ->l
    n 2 - loop: i [ l at(l last) l at(l size l last - 1+ ) + l add ]
    l dup freeze ;
- 
+
 : hofTask
 | h m i |
    2 20 pow ->m
    hofstadter(m) m seq zipWith(#[ tuck asFloat / swap Pair new ]) ->h
- 
+
    19 loop: i [
-      i . "^2 ==>" . 
+      i . "^2 ==>" .
       h extract(2 i pow , 2 i 1+ pow) reduce(#maxKey) println
       ]
- 
-   "Mallows number ==>" . h reverse detect(#[ first 0.55 >= ], true) println 
-;   
+
+   "Mallows number ==>" . h reverse detect(#[ first 0.55 >= ], true) println
+;
 ```
 
 
@@ -2610,7 +2610,7 @@ Mallows number with limit 0.55000000 at 1489
 
 ```Perl
 #!/usr/bin/perl
-use warnings ; 
+use warnings ;
 use strict ;
 
 my $limit = 2 ** 20 ;
@@ -2883,7 +2883,7 @@ If OpenConsole()
     k1=n
     n+1
   Wend
-  
+
   Print(#CRLF$+"Press ENTER to exit."): Input()
   CloseConsole()
 EndIf
@@ -3028,7 +3028,7 @@ The macro define/memoize1 creates an 1-argument procedure and handles all the de
 #lang racket/base
 
 (define-syntax-rule (define/memoize1 (proc x) body ...)
-  (define proc 
+  (define proc
     (let ([cache (make-hash)]
           [direct (lambda (x) body ...)])
       (lambda (x)
@@ -3046,16 +3046,16 @@ The macro for/max1 is like for, but the result is the maximum of the values prod
 
 ```Racket
 (define-syntax-rule (for/max1 ([i sequence]) body ...)
-  (for/fold ([max -inf.0] [arg-max #f]) ([i sequence]) 
+  (for/fold ([max -inf.0] [arg-max #f]) ([i sequence])
     (define val (begin body ...))
     (if (< max val)
         (values val i)
         (values max arg-max))))
- 
+
 (for ([i (in-range 0 20)])
   (define low-b (expt 2 i))
   (define up-b (expt 2 (add1 i)))
-  (define-values (max arg-max) (for/max1 ([k (in-range low-b up-b)]) 
+  (define-values (max arg-max) (for/max1 ([k (in-range low-b up-b)])
                                  (/ (conway k) k)))
   (printf "Max. between 2^~a and 2^~a is ~a at ~a ~n" i (add1 i) (real->decimal-string max 5) arg-max))
 ```
@@ -3071,7 +3071,7 @@ The macro for/prev is like for/and, it stops when it finds the first #f, but the
     #:break (not val)
     val))
 
-(define mallows (for/prev ([i (in-naturals)]) 
+(define mallows (for/prev ([i (in-naturals)])
                    (define low-b (expt 2 i))
                    (define up-b (expt 2 (add1 i)))
                    (for/last ([k (in-range low-b up-b)]
@@ -3085,26 +3085,26 @@ The macro for/prev is like for/and, it stops when it finds the first #f, but the
 '''Sample Output:'''
 
 ```txt
-Max. between 2^0 and 2^1 is 1.00000 at 1 
-Max. between 2^1 and 2^2 is 0.66667 at 3 
-Max. between 2^2 and 2^3 is 0.66667 at 6 
-Max. between 2^3 and 2^4 is 0.63636 at 11 
-Max. between 2^4 and 2^5 is 0.60870 at 23 
-Max. between 2^5 and 2^6 is 0.59091 at 44 
-Max. between 2^6 and 2^7 is 0.57609 at 92 
-Max. between 2^7 and 2^8 is 0.56742 at 178 
-Max. between 2^8 and 2^9 is 0.55946 at 370 
-Max. between 2^9 and 2^10 is 0.55494 at 719 
-Max. between 2^10 and 2^11 is 0.55010 at 1487 
-Max. between 2^11 and 2^12 is 0.54746 at 2897 
-Max. between 2^12 and 2^13 is 0.54414 at 5969 
-Max. between 2^13 and 2^14 is 0.54244 at 11651 
-Max. between 2^14 and 2^15 is 0.54007 at 22223 
-Max. between 2^15 and 2^16 is 0.53878 at 45083 
-Max. between 2^16 and 2^17 is 0.53704 at 89516 
-Max. between 2^17 and 2^18 is 0.53602 at 181385 
-Max. between 2^18 and 2^19 is 0.53465 at 353683 
-Max. between 2^19 and 2^20 is 0.53378 at 722589 
+Max. between 2^0 and 2^1 is 1.00000 at 1
+Max. between 2^1 and 2^2 is 0.66667 at 3
+Max. between 2^2 and 2^3 is 0.66667 at 6
+Max. between 2^3 and 2^4 is 0.63636 at 11
+Max. between 2^4 and 2^5 is 0.60870 at 23
+Max. between 2^5 and 2^6 is 0.59091 at 44
+Max. between 2^6 and 2^7 is 0.57609 at 92
+Max. between 2^7 and 2^8 is 0.56742 at 178
+Max. between 2^8 and 2^9 is 0.55946 at 370
+Max. between 2^9 and 2^10 is 0.55494 at 719
+Max. between 2^10 and 2^11 is 0.55010 at 1487
+Max. between 2^11 and 2^12 is 0.54746 at 2897
+Max. between 2^12 and 2^13 is 0.54414 at 5969
+Max. between 2^13 and 2^14 is 0.54244 at 11651
+Max. between 2^14 and 2^15 is 0.54007 at 22223
+Max. between 2^15 and 2^16 is 0.53878 at 45083
+Max. between 2^16 and 2^17 is 0.53704 at 89516
+Max. between 2^17 and 2^18 is 0.53602 at 181385
+Max. between 2^18 and 2^19 is 0.53465 at 353683
+Max. between 2^19 and 2^20 is 0.53378 at 722589
 Mallows number: 1489
 ```
 
@@ -3189,12 +3189,12 @@ for n=3 to pow(2,size)
     r=a[n]/n
     if r>=0.55 mallows=n ok
     if r>peak peak=r peakpos=n ok
-    if n=p2 
+    if n=p2
        see "maximum between 2^" + (power - 1) + " and 2^" + power + " is " + peak + " at n=" + peakpos + nl
        power += 1
        p2=pow(2,power)
        peak=0.5 ok
-next 
+next
 see "mallows number is : " + mallows + nl
 
 ```
@@ -3231,7 +3231,7 @@ class HofstadterConway10000
   def initialize
     @sequence = [nil, 1, 1]
   end
-  
+
   def [](n)
     raise ArgumentError, "n must be >= 1" if n < 1
     a = @sequence
@@ -3305,10 +3305,10 @@ for n	= 3 TO 2^uprLim
    a(n)	= a(a(n-1)) + a(n-a(n-1))
    r	= a(n)/n
    if r >= 0.55 THEN Mallows = n
-   if r > p  THEN 
+   if r > p  THEN
      p    = r
      pPos = n
-   end if 
+   end if
    if n	= p2 THEN
       print "Maximum between";chr$(9);" 2^";pow2-1;" and 2^";pow2;chr$(9);" is ";p;chr$(9);" at n = ";pPos
       pow2 = pow2 + 1
@@ -3350,26 +3350,26 @@ Mallows number is 1489
 
 
 ```scala
-object HofstadterConway { 
+object HofstadterConway {
   def pow2(n: Int): Int = (Iterator.fill(n)(2)).product
- 
-  def makeHCSequence(max: Int): Seq[Int] = 
+
+  def makeHCSequence(max: Int): Seq[Int] =
     (0 to max - 1).foldLeft (Vector[Int]()) { (v, idx) =>
       if (idx <= 1) v :+ 1 else v :+ (v(v(idx - 1) - 1) + v(idx - v(idx - 1)))
     }
- 
+
   val max = pow2(20)
- 
+
   val maxSeq = makeHCSequence(max)
- 
+
   def hcRatio(n: Int, seq: Seq[Int]): Double = seq(n - 1).toDouble / n
- 
+
   def maximumHCRatioBetween(a: Int, b: Int): (Int, Double) =
     Iterator.range(a, b + 1) map (n => (n, hcRatio(n, maxSeq))) maxBy (_._2)
- 
+
   lazy val mallowsNumber: Int =
     ((max to 1 by -1) takeWhile (hcRatio(_, maxSeq) < 0.55) last) - 1
- 
+
   def main(args: Array[String]): Unit = {
     for (n <- 1 to 19) {
       val (value, ratio) = maximumHCRatioBetween(pow2(n), pow2(n+1))
@@ -3427,7 +3427,7 @@ Mallow's number = 1489
 
 (vector-set! *seq* 1 1)
 (vector-set! *seq* 2 1)
-(for-each 
+(for-each
   (lambda (n)
     (let ((x (vector-ref *seq* (- n 1))))
       (vector-set! *seq* n (+ (vector-ref *seq* x)
@@ -3435,15 +3435,15 @@ Mallow's number = 1489
   (iota (- *size* 2) 3))
 
 ;; Task 2: Show maxima of a(n)/n between successive powers of two
-(for-each 
+(for-each
   (lambda (power)
     (let ((start-idx (+ (expt 2 (- power 1)) 1))
           (end-idx (expt 2 power)))
       (do ((i start-idx (+ 1 i))
            (maximum 0 (max maximum (/ (vector-ref *seq* i)
                                       i))))
-        ((> i end-idx) 
-         (display 
+        ((> i end-idx)
+         (display
            (string-append
              "Maximum between 2^" (number->string (- power 1))
              " and 2^" (number->string power)
@@ -3563,18 +3563,18 @@ func doSqnc(m:Int) {
     var amax:Double = 0
     aList[0] = 1
     aList[1] = 1
-    
+
     var v = aList[2]
-    
+
     for n in 2...m {
         let add = aList[v] + aList[n - v]
         aList[n] = add
         v = aList[n]
-        
+
         if amax < Double(v) * 1.0 / Double(n) {
             amax = Double(v) * 1.0 / Double(n)
         }
-        
+
         if (k1 & n == 0) {
             println("Maximum between 2^\(lg2) and 2^\(lg2 + 1) was \(amax)")
             amax = 0
@@ -3697,7 +3697,7 @@ Sub make_q()
         q(l) = q(q(l - 1)) + q(l - q(l - 1))
     Next l
 End Sub
- 
+
 Public Sub hcsequence()
     Dim mallows As Long: mallows = -1
     Dim max_n As Long, n As Long
@@ -3745,7 +3745,7 @@ Maximum in range  65536 to 131072  occurs at  89516: 0,537044
 Maximum in range 131072 to 262144  occurs at 181385: 0,536020
 Maximum in range 262144 to 524288  occurs at 353683: 0,534645
 Maximum in range 524288 to 1048576 occurs at 722589: 0,533779
-Mallows number is 1489 
+Mallows number is 1489
 ```
 
 
@@ -3802,7 +3802,7 @@ fcn hofstadterConwaySequence(m){
    a:=List.createLong(m + 1,0);
    a[0]=a[1]=1;
    v,p2,lg2, amax, mallow := a[2],4,1, 0.0, Void;
- 
+
    foreach n in ([2 .. m]){
       v=a[n]=a[v] + a[n - v];
       f:=1.0*v/n;
@@ -3816,7 +3816,7 @@ fcn hofstadterConwaySequence(m){
    }
    if(mallow) println("Winning number = ",mallow);
 }
- 
+
 hofstadterConwaySequence((2).pow(20));
 ```
 

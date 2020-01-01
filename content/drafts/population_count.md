@@ -13,7 +13,7 @@ tags = []
 {{task}}[[Category:Mathematics]]
 The ''[[wp:Hamming weight|population count]]''   is the number of   <big>'''1'''</big>s   (ones)   in the binary representation of a non-negative integer.
 
-''Population count'' is also known as   ''pop count'',   ''popcount'',   ''sideways sum'',   and   ''Hamming weight''. 
+''Population count'' is also known as   ''pop count'',   ''popcount'',   ''sideways sum'',   and   ''Hamming weight''.
 
 : For example,   <big>'''5'''</big>   (which is   <big>'''101'''</big>   in binary)   has a population count of   <big>'''2'''</big>.
 
@@ -65,8 +65,8 @@ POPCNT   CSECT
          MVC    PG(7),=C'pow  3:'  init buffer
          L      R10,NN             nn
          BCTR   R10,0              nn-1
-         LA     R9,PG+7            @pg 
-         LA     R6,0               i=0 
+         LA     R9,PG+7            @pg
+         LA     R6,0               i=0
        DO WHILE=(CR,R6,LE,R10)     do i=0 to nn-1
          LM     R0,R1,BB             r0r1=bb
          BAL    R14,POPCOUNT         call popcount(bb)
@@ -78,10 +78,10 @@ POPCNT   CSECT
          AW     F0,BB                bb*3
          STD    F0,BB                bb=bb*3
          LA     R9,3(R9)             @pg
-         LA     R6,1(R6)             i++ 
+         LA     R6,1(R6)             i++
        ENDDO    ,                  enddo i
          XPRNT  PG,L'PG            print buffer
-         SR     R7,R7              j=0 
+         SR     R7,R7              j=0
        DO WHILE=(C,R7,LE,=F'1')    do j=0 to 1
          MVC    PG,=CL132' '         clear buffer
        IF   LTR,R7,Z,R7 THEN         if j=0 then
@@ -104,14 +104,14 @@ POPCNT   CSECT
          MVC    0(3,R9),XDEC+9           output i
          LA     R9,3(R9)                 @pg
        ENDIF    ,                      endif
-         LA     R6,1(R6)             i++ 
+         LA     R6,1(R6)             i++
        ENDDO    ,                    enddo i
          XPRNT  PG,L'PG              print buffer
          LA     R7,1(R7)             j++
        ENDDO    ,                  enddo j
          L      R13,4(0,R13)       restore previous savearea pointer
          RETURN (14,12),RC=0       restore registers from calling sav
-*------- ----   ------------------ 
+*------- ----   ------------------
 POPCOUNT EQU    *                  popcount(x)
          ICM    R0,B'1000',=X'00'  zap exponant part
          XR     R3,R3              y=0
@@ -120,11 +120,11 @@ LOOP     STC    R1,CC              do i=1 to 56
          TM     CC,X'01'             if bit(x,i)=1
          BNO    NOTONE               then{
          LA     R3,1(R3)               y++}
-NOTONE   SRDA   R0,1                 shift right double arithmetic 
+NOTONE   SRDA   R0,1                 shift right double arithmetic
          BCT    R4,LOOP            enddo i
          LR     R0,R3              return(y)
          BR     R14                return
-*------- ----   ------------------ 
+*------- ----   ------------------
 NN       DC     F'30'              nn=30
 BB       DS     D                  bb
 UN       DC     X'4E00000000000001'  un=1 (unnormalized)
@@ -132,7 +132,7 @@ PG       DC     CL132' '           buffer
 XDEC     DS     CL12               temp for xdeco
 CC       DS     C
          REGEQU
-         END    POPCNT 
+         END    POPCNT
 ```
 
 {{out}}
@@ -166,7 +166,7 @@ end Population_Count;
 
 ```Ada
 package body Population_Count is
-   
+
    function Pop_Count(N: Num) return Natural is
       use Interfaces;
       K5555:  constant Unsigned_64 := 16#5555555555555555#;
@@ -175,13 +175,13 @@ package body Population_Count is
       K0101:  constant Unsigned_64 := 16#0101010101010101#;
       X: Unsigned_64 := N;
    begin
-      X :=  X            - (Shift_Right(X, 1)   and k5555); 
-      X := (X and k3333) + (Shift_Right(X, 2)   and k3333); 
-      X := (X            +  (Shift_Right(X, 4)) and K0f0f); 
-      X := Shift_Right((x * k0101), 56); 
+      X :=  X            - (Shift_Right(X, 1)   and k5555);
+      X := (X and k3333) + (Shift_Right(X, 2)   and k3333);
+      X := (X            +  (Shift_Right(X, 4)) and K0f0f);
+      X := Shift_Right((x * k0101), 56);
       return Natural(X);
    end Pop_Count;
-      
+
 end Population_Count;
 ```
 
@@ -193,18 +193,18 @@ The main program:
 with Ada.Text_IO, Population_Count; use Ada.Text_IO; use Population_Count;
 
 procedure Test_Pop_Count is
-   
+
    X: Num; use type Num;
-   
+
 begin
    Put("Pop_Cnt(3**i):"); -- print pop_counts of powers of three
    X := 1; -- X=3**0
    for I in 1 .. 30 loop
       Put(Natural'Image(Pop_Count(X)));
-      X := X * 3; 
+      X := X * 3;
    end loop;
    New_Line;
-   
+
    Put("Evil:         ");    -- print first thirty evil numbers
    X := 0;
    for I in 1 .. 30 loop
@@ -215,10 +215,10 @@ begin
       X := X + 1;
    end loop;
    New_Line;
-   
+
    Put("Odious:       "); -- print thirty oudous numbers
    X := 1;
-   for I in 1 .. 30 loop 
+   for I in 1 .. 30 loop
       while Pop_Count(X) mod 2 /= 1 loop -- X is not odious
          X := X + 1;
       end loop;
@@ -348,7 +348,7 @@ begin
             end for_b ;
             writeon( i_w := 1, s_w := 0, " ", arrayPopulationCount( power, 8 ) )
         end for_p ;
-   
+
         % evil numbers (even population count) %
         write( "evil    numbers:" );
         n     := 0;
@@ -400,7 +400,7 @@ on popCount(n)
             a + (x as integer)
         end |λ|
     end script
-    
+
     foldl(bitSum, 0, characters of showIntAtBase(n, 2))
 end popCount
 
@@ -412,13 +412,13 @@ on run
             popCount(3 ^ x)
         end |λ|
     end script
-    
+
     script popCountisEven
         on |λ|(x)
             popCount(x) mod 2 = 0
         end |λ|
     end script
-    
+
     {popCounts:¬
         map(powerOfThreePopCount, enumFromTo(0, 30)), evenThenOdd:¬
         partition(popCountisEven, enumFromTo(0, 59))}
@@ -501,13 +501,13 @@ on showIntAtBase(n, base)
             else
                 set prefix to ""
             end if
-            
+
             if m < 10 then
                 set baseCode to 48 -- "0"
             else
                 set baseCode to 55 -- "A" - 10
             end if
-            
+
             prefix & character id (baseCode + m)
         else
             "0"
@@ -522,9 +522,9 @@ end showIntAtBase
 
 ```AppleScript
 {popCounts:
-{1, 2, 2, 4, 3, 6, 6, 5, 6, 8, 9, 13, 10, 11, 14, 15, 11, 14, 14, 17, 17, 20, 19, 22, 16, 18, 24, 30, 25, 25, 25}, 
+{1, 2, 2, 4, 3, 6, 6, 5, 6, 8, 9, 13, 10, 11, 14, 15, 11, 14, 14, 17, 17, 20, 19, 22, 16, 18, 24, 30, 25, 25, 25},
 evenThenOdd:
-{{0, 3, 5, 6, 9, 10, 12, 15, 17, 18, 20, 23, 24, 27, 29, 30, 33, 34, 36, 39, 40, 43, 45, 46, 48, 51, 53, 54, 57, 58}, 
+{{0, 3, 5, 6, 9, 10, 12, 15, 17, 18, 20, 23, 24, 27, 29, 30, 33, 34, 36, 39, 40, 43, 45, 46, 48, 51, 53, 54, 57, 58},
 {1, 2, 4, 7, 8, 11, 13, 14, 16, 19, 21, 22, 25, 26, 28, 31, 32, 35, 37, 38, 41, 42, 44, 47, 49, 50, 52, 55, 56, 59}}}
 ```
 
@@ -552,9 +552,9 @@ PopCount(x) {	;https://en.wikipedia.org/wiki/Hamming_weight#Efficient_implementa
 {{Output}}
 
 ```txt
-3^x:	1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25 
-Evil:	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 
-Odious:	1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59 
+3^x:	1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25
+Evil:	0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58
+Odious:	1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59
 ```
 
 
@@ -563,8 +563,8 @@ Odious:	1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50
 
 {{works with|GCC}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main() {
   {
@@ -609,9 +609,9 @@ int main() {
 
 ```txt
 
-1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25 
-evil  : 0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 
-odious: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59 
+1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25
+evil  : 0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58
+odious: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59
 
 ```
 
@@ -644,8 +644,8 @@ static uint32_t bitcount32(uint32_t b) {
 
 {{works with|C++11}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <bitset>
 #include <climits>
 
@@ -693,9 +693,9 @@ int main() {
 
 ```txt
 
-1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25 
-evil  : 0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 
-odious: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59 
+1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25
+evil  : 0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58
+odious: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59
 
 ```
 
@@ -794,11 +794,11 @@ Odious: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50
 
 
 ```lisp
-(format T "3^x: ~{~a ~}~%" 
-        (loop for i below 30 
+(format T "3^x: ~{~a ~}~%"
+        (loop for i below 30
               collect (logcount (expt 3 i))))
 
-(multiple-value-bind 
+(multiple-value-bind
   (evil odious)
   (loop for i below 60
         if (evenp (logcount i)) collect i into evil
@@ -811,8 +811,8 @@ Odious: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50
 {{Out}}
 
 ```txt
-3^x: 1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25 
-evil: 0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 
+3^x: 1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25
+evil: 0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58
 odious: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59
 ```
 
@@ -854,9 +854,9 @@ defmodule Population do
   defp count(<<>>, acc), do: acc
 
   defp count(<<bit :: integer-1, rest :: bitstring>>, sum), do: count(rest, sum + bit)
-  
+
   def evil?(n), do: n >= 0 and rem(count(n),2) == 0
-  
+
   def odious?(n), do: n >= 0 and rem(count(n),2) == 1
 
 end
@@ -1006,7 +1006,7 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
    BEGIN dup WHILE tuck 1 AND +  swap 1 rshift REPEAT
    DROP ;
 : odious? ( n -- t|f)  popcnt 1 AND ;
-: evil? ( n -- t|f)  odious? 0= ;    
+: evil? ( n -- t|f)  odious? 0= ;
 
 CREATE A 30 ,
 : task1   1 0  ." 3**i popcnt: "
@@ -1027,8 +1027,8 @@ task1 task2 task3 BYE
 {{out}}
 
 ```txt
-3**i popcnt: 1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25 
-evil       : 0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 
+3**i popcnt: 1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25
+evil       : 0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58
 odious     : 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59
 ```
 
@@ -1045,7 +1045,7 @@ program population_count
   integer, parameter :: i64 = selected_int_kind(18)
   integer(i64) :: x
   integer :: i, n
-    
+
   x = 1
   write(*, "(a8)", advance = "no") "3**i :"
   do i = 1, 30
@@ -1056,7 +1056,7 @@ program population_count
   write(*,*)
   write(*, "(a8)", advance = "no") "Evil :"
   n = 0
-  x = 0 
+  x = 0
   do while(n < 30)
     if(mod(popcnt(x), 2) == 0) then
       n = n + 1
@@ -1068,7 +1068,7 @@ program population_count
   write(*,*)
   write(*, "(a8)", advance = "no") "Odious :"
   n = 0
-  x = 0 
+  x = 0
   do while(n < 30)
     if(mod(popcnt(x), 2) /= 0) then
       n = n + 1
@@ -1128,12 +1128,12 @@ begin
 		write(popCnt(number):3);
 	end;
 	writeLn();
-	
+
 	// evil numbers
 	// (while preserving calculated odious numbers for next sub-task)
 	evilCount := 0;
 	odiousIterator := low(odiousNumber);
-	
+
 	// for-loop: because we (pretend to) don’t know,
 	// when and where we’ve found the first 30 numbers of each
 	for iterator := 0 to high(iterator) do
@@ -1156,14 +1156,14 @@ begin
 				inc(evilCount);
 			end;
 		end;
-		
+
 		if evilCount + odiousIterator > 60 then
 		begin
 			break;
 		end;
 	end;
 	writeLn();
-	
+
 	// odious numbers
 	for number in odiousNumber do
 	begin
@@ -1189,7 +1189,7 @@ end.
 
 ```gambas
 Public Sub Main()
-Dim sEvil, sOdious As String                         'To store the output for printing Evil and Odious 
+Dim sEvil, sOdious As String                         'To store the output for printing Evil and Odious
 Dim iCount, iEvil, iOdious As Integer                'Counters
 
 Print "First 30 numbers ^3\t";                       'Print title
@@ -1222,8 +1222,8 @@ Output:
 
 ```txt
 
-First 30 numbers ^3     1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25 
-1st 30 Evil numbers =   0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 
+First 30 numbers ^3     1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25
+1st 30 Evil numbers =   0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58
 1st 30 Odious numbers = 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59
 
 ```
@@ -1283,9 +1283,9 @@ func main() {
 ```txt
 
 Pop counts, powers of 3:
-1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25 
+1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25
 Evil numbers:
-0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 
+0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58
 Odious numbers:
 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59
 
@@ -1412,23 +1412,23 @@ popcnt 0 = 0
 popcnt x = case isOdd x of
   False => popcnt (shiftR x 1)
   True => 1 + popcnt (shiftR x 1)
-  
+
 isOdious : Int -> Bool
 isOdious k = isOdd (popcnt k)
 
 isEvil : Int -> Bool
 isEvil k = not (isOdious k)
 
-filterUnfoldN : (n : Nat) -> 
-                (pred : Int -> Bool) -> (f : Int -> a) -> 
+filterUnfoldN : (n : Nat) ->
+                (pred : Int -> Bool) -> (f : Int -> a) ->
                 (next : Int -> Int) -> (seed : Int) ->
                 Vect n a
 filterUnfoldN Z pred f next seed = []
-filterUnfoldN (S k) pred f next seed = 
+filterUnfoldN (S k) pred f next seed =
   if pred seed
   then (f seed) :: filterUnfoldN k pred f next (next seed)
   else filterUnfoldN (S k) pred f next (next seed)
-  
+
 printCompact : (Show a) => Vect n a -> IO ()
 printCompact v = putStrLn (unwords (map show (toList v)))
 
@@ -1545,11 +1545,11 @@ public class PopCount {
 
 ```txt
 
-32-bit integer: 1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 
-64-bit integer: 1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25 
-big integer   : 1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25 
-evil   : 0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 
-odious : 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59 
+32-bit integer: 1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17
+64-bit integer: 1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25
+big integer   : 1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25
+evil   : 0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58
+odious : 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59
 
 ```
 
@@ -1639,7 +1639,7 @@ odious : 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 5
 ```JavaScript
 {"popCounts":[1, 2, 2, 4, 3, 6, 6, 5, 6, 8, 9, 13, 10, 11, 14, 15, 11, 14, 14, 17, 17, 20, 19, 22, 16, 18, 24, 30, 25, 25, 25],
 "evenThenOdd":[
-[0, 3, 5, 6, 9, 10, 12, 15, 17, 18, 20, 23, 24, 27, 29, 30, 33, 34, 36, 39, 40, 43, 45, 46, 48, 51, 53, 54, 57, 58], 
+[0, 3, 5, 6, 9, 10, 12, 15, 17, 18, 20, 23, 24, 27, 29, 30, 33, 34, 36, 39, 40, 43, 45, 46, 48, 51, 53, 54, 57, 58],
 [1, 2, 4, 7, 8, 11, 13, 14, 16, 19, 21, 22, 25, 26, 28, 31, 32, 35, 37, 38, 41, 42, 44, 47, 49, 50, 52, 55, 56, 59]]}
 ```
 
@@ -1650,14 +1650,14 @@ odious : 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 5
 {{works with|jq|1.4}}
 
 ```jq
-def popcount: 
+def popcount:
   def bin: recurse( if . == 0 then empty else ./2 | floor end ) % 2;
   [bin] | add;
 
 def firstN(count; condition):
   if count > 0 then
     if condition then ., (1+.| firstN(count-1; condition))
-    else (1+.) | firstN(count; condition) 
+    else (1+.) | firstN(count; condition)
     end
   else empty
   end;
@@ -1754,7 +1754,7 @@ fun main(args: Array<String>) {
         }
         i++
     }
-    println() 
+    println()
 }
 ```
 
@@ -1790,7 +1790,7 @@ function dec2bin (n)
     end
     return bin
 end
- 
+
 -- Take decimal number, return population count as number
 function popCount (n)
     local bin, count = dec2bin(n), 0
@@ -1921,7 +1921,7 @@ Odious: (1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 5
 : test
 | i count |
    30 seq map(#[ 3 swap 1- pow ]) map(#popcount) println
-   
+
    0 ->count
    0 while( count 30 <> ) [ dup popcount isEven ifTrue: [ dup . count 1+ ->count ] 1+ ] drop printcr
 
@@ -2141,13 +2141,13 @@ We'll emulate infinite lists with closures.
 use strict;
 use warnings;
 
-sub population_count { 
+sub population_count {
     my $n = shift;
     die "argument can't be negative" if $n < 0;
     my $c;
-    for ($c = 0; $n; $n >>= 1) { 
-        $c += $n & 1; 
-    } 
+    for ($c = 0; $n; $n >>= 1) {
+        $c += $n & 1;
+    }
     $c;
 }
 
@@ -2228,10 +2228,10 @@ Odious: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50
 That's the convenient way to write it, but the following avoids string processing and is therefore about twice as fast:
 
 ```perl6
-sub population-count(Int $n is copy where * >= 0) { 
-    loop (my $c = 0; $n; $n +>= 1) { 
-        $c += $n +& 1; 
-    } 
+sub population-count(Int $n is copy where * >= 0) {
+    loop (my $c = 0; $n; $n +>= 1) {
+        $c += $n +& 1;
+    }
     $c;
 }
 ```
@@ -2340,7 +2340,7 @@ function convertToBinary($integer) {
     do {
         $quotient = (int) ($integer / 2);
         $binary .= $integer % 2;
-        $integer = $quotient;    
+        $integer = $quotient;
     } while ($quotient > 0);
 
     return $binary;
@@ -2425,7 +2425,7 @@ first 30 odious numbers: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 
 ```PowerShell
 
 function pop-count($n) {
-    (([Convert]::ToString($n, 2)).toCharArray() | where {$_ -eq '1'}).count 
+    (([Convert]::ToString($n, 2)).toCharArray() | where {$_ -eq '1'}).count
 }
 "pop_count 3^n: $(1..29 | foreach -Begin {$n = 1; (pop-count $n)} -Process {$n = 3*$n; (pop-count $n)} )"
 "even pop_count: $($m = $n = 0; while($m -lt 30) {if(0 -eq ((pop-count $n)%2)) {$m += 1; $n}; $n += 1} )"
@@ -2453,7 +2453,7 @@ odd pop_count: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 4
 
 ```python>>>
  def popcount(n): return bin(n).count("1")
-... 
+...
 >>> [popcount(3**i) for i in range(30)]
 [1, 2, 2, 4, 3, 6, 6, 5, 6, 8, 9, 13, 10, 11, 14, 15, 11, 14, 14, 17, 17, 20, 19, 22, 16, 18, 24, 30, 25, 25]
 >>> evil, odious, i = [], [], 0
@@ -2462,12 +2462,12 @@ odd pop_count: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 4
 ...     if p % 2: odious.append(i)
 ...     else: evil.append(i)
 ...     i += 1
-... 
+...
 >>> evil[:30]
 [0, 3, 5, 6, 9, 10, 12, 15, 17, 18, 20, 23, 24, 27, 29, 30, 33, 34, 36, 39, 40, 43, 45, 46, 48, 51, 53, 54, 57, 58]
 >>> odious[:30]
 [1, 2, 4, 7, 8, 11, 13, 14, 16, 19, 21, 22, 25, 26, 28, 31, 32, 35, 37, 38, 41, 42, 44, 47, 49, 50, 52, 55, 56, 59]
->>> 
+>>>
 ```
 
 
@@ -2636,10 +2636,10 @@ First thirty 'odious' numbers:
   (require rackunit)
   (check-equal?
    (for/list ((p (sequence-map population-count (in-range 16)))) p)
-   '(0 1 1 2 1 2 2 3 1 2 2 3 2 3 3 4))  
+   '(0 1 1 2 1 2 2 3 1 2 2 3 2 3 3 4))
   (check-true (evil? 0) "0 has just *got* to be evil")
   (check-true (evil? #b011011011) "six bits... truly evil")
-  (check-false (evil? #b1011011011) "seven bits, that's odd!")  
+  (check-false (evil? #b1011011011) "seven bits, that's odd!")
   (check-true (odious? 1) "the least odious number")
   (check-true (odious? #b1011011011) "seven (which is odd) bits")
   (check-false (odious? #b011011011) "six bits... is evil"))
@@ -2771,7 +2771,7 @@ see "Evil numbers :" + nl
 showarray(bineven)
 see nl
 see "Odious numbers:" + nl
-showarray(binodd)  
+showarray(binodd)
 see nl
 
 func showarray(vect)
@@ -2809,17 +2809,17 @@ Demonstrating lazy enumerators.
 
 ```ruby
 class Integer
- 
+
   def popcount
     digits(2).count(1)     #pre Ruby 2.4: self.to_s(2).count("1")
   end
- 
+
   def evil?
     self >= 0 && popcount.even?
   end
 
 end
- 
+
 puts "Powers of 3:",  (0...30).map{|n| (3**n).popcount}.join(' ')
 puts "Evil:"  , 0.step.lazy.select(&:evil?).first(30).join(' ')
 puts "Odious:", 0.step.lazy.reject(&:evil?).first(30).join(' ')
@@ -2920,10 +2920,10 @@ is used to compute the population count of the bitset.
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const func integer: popcount (in integer: n) is
     return card(bitset(n));
- 
+
 const proc: main is func
   local
     var integer: count is 0;
@@ -2956,9 +2956,9 @@ const proc: main is func
 {{out}}
 
 ```txt
-1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25 
-evil:   0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58 
-odious: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59 
+1 2 2 4 3 6 6 5 6 8 9 13 10 11 14 15 11 14 14 17 17 20 19 22 16 18 24 30 25 25
+evil:   0 3 5 6 9 10 12 15 17 18 20 23 24 27 29 30 33 34 36 39 40 43 45 46 48 51 53 54 57 58
+odious: 1 2 4 7 8 11 13 14 16 19 21 22 25 26 28 31 32 35 37 38 41 42 44 47 49 50 52 55 56 59
 ```
 
 
@@ -3074,7 +3074,7 @@ popcount() {
     local -i n=$1
     (( n < 0 )) && return 1
     local ones=0
-    while (( n > 0 )); do 
+    while (( n > 0 )); do
         (( ones += n%2 ))
         (( n /= 2 ))
     done
@@ -3094,7 +3094,7 @@ odious=()
 n=0
 while (( ${#evil[@]} < 30 || ${#odious[@]} < 30 )); do
     p=$( popcount $n )
-    if (( $p%2 == 0 )); then 
+    if (( $p%2 == 0 )); then
         evil+=( $n )
     else
         odious+=( $n )
@@ -3158,7 +3158,7 @@ Private Function popcount(x)
         xx = xq
     Wend
     popcount = y
-End Function 'popcount 
+End Function 'popcount
 ```
 
 {{out}}
@@ -3179,7 +3179,7 @@ odious numbers:
 
 ## VBScript
 
-Use of the variant currency subtype. Currency mode is a gray area where some operators do not work, 
+Use of the variant currency subtype. Currency mode is a gray area where some operators do not work,
 for instance: ^ \ Mod
 
 ```vb
@@ -3215,7 +3215,7 @@ Function popcount(x)
 		xx=xq
 	Wend
 	popcount=y
-End Function 'popcount 
+End Function 'popcount
 ```
 
 {{out}}
@@ -3321,7 +3321,7 @@ print "\n"
 
 sub EvilOdious(limit, type)
     local i, count, eo
-    
+
     repeat
         eo = mod(population(i), 2)
         if (type and eo) or (not type and not eo) count = count + 1 : print i;
@@ -3331,7 +3331,7 @@ end sub
 
 sub population(number)
     local i, binary$, popul
-    
+
     binary$ = bin$(number)
     for i = 1 to len(binary$)
         popul = popul + val(mid$(binary$, i, 1))
@@ -3348,7 +3348,7 @@ Ints have the 1s count as a property.
 
 ```zkl
 n:=1; do(30){ print(n.num1s,","); n*=3 } println();
- 
+
 println("evil: ",[0..].filter(30,fcn(n){ n.num1s.isEven }).concat(","));
 
 // now, as an iterator aka lazy:

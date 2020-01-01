@@ -42,7 +42,7 @@ procedure Test_Dining_Philosophers is
 
    Life_Span : constant := 20;    -- In his life a philosopher eats 20 times
    Forks : aliased Mutexes_Array; -- Forks for hungry philosophers
-   
+
    function Left_Of (Fork : Philosopher) return Philosopher is
    begin
       if Fork = Philosopher'First then
@@ -109,9 +109,9 @@ procedure Test_Dining_Philosophers is
          Seized := False;
       end Put_Down;
    end Fork;
-   
+
    Life_Span : constant := 20;    -- In his life a philosopher eats 20 times
-   
+
    task type Person (ID : Philosopher; First, Second : not null access Fork);
    task body Person is
       Dice : Generator;
@@ -154,14 +154,14 @@ with Ada.Text_IO;                use Ada.Text_IO;
 
 procedure Test_Dining_Philosophers is
    type Philosopher is (Aristotle, Kant, Spinoza, Marx, Russel);
-   
+
    protected type Fork is
       entry Grab;
       procedure Put_Down;
    private
       Seized : Boolean := False;
    end Fork;
-   
+
    protected Host is
       entry Greet;
       procedure Farewell;
@@ -192,7 +192,7 @@ procedure Test_Dining_Philosophers is
    end Host;
 
    Life_Span : constant := 20;    -- In his life a philosopher eats 20 times
-   
+
    task type Person (ID : Philosopher; Left, Right : not null access Fork);
    task body Person is
       Dice : Generator;
@@ -308,9 +308,9 @@ ReturnForks(Philosopher, ByRef ThisFork, ByRef OtherFork, ByRef CurrentThisForkC
 	CurrentOtherForkCount := 0 ; release other fork
 	OutputDebug, %Philosopher% returns all forks.
 	FileAppend, %Philosopher% returns all forks.`n,output.txt
-	
+
 	; do something while resting
-	
+
 	Random, Rand, 0, 1
 	Rand := Rand ? "Left" : "Right"
 	SetTimer, %Philosopher%WaitFor%Rand%Fork
@@ -334,9 +334,9 @@ WaitForFork(Philosopher, This, ByRef ThisFork, ByRef OtherFork, ByRef CurrentThi
 		{
 			OutputDebug, %Philosopher% starts eating.
 			FileAppend, %Philosopher% starts eating.`n,output.txt
-			
+
 			; do something while eating
-		
+
 			SetTimer, %Philosopher%FinishEating, -250
 		}
 		Else If (EnoughForks=2)
@@ -494,34 +494,34 @@ This avoids deadlocks using the same strategy as the C solution (one of the phil
 
 ```bbcbasic
       INSTALL @lib$+"TIMERLIB"
-      
+
       nSeats% = 5
       DIM Name$(nSeats%-1), Fork%(nSeats%-1), tID%(nSeats%-1), Leftie%(nSeats%-1)
-      
+
       Name$() = "Aristotle", "Kant", "Spinoza", "Marx", "Russell"
       Fork%() = TRUE : REM All forks are initially on the table
       Leftie%(RND(nSeats%)-1) = TRUE : REM One philosopher is lefthanded
-      
+
       tID%(0) = FN_ontimer(10, PROCphilosopher0, 1)
       tID%(1) = FN_ontimer(10, PROCphilosopher1, 1)
       tID%(2) = FN_ontimer(10, PROCphilosopher2, 1)
       tID%(3) = FN_ontimer(10, PROCphilosopher3, 1)
       tID%(4) = FN_ontimer(10, PROCphilosopher4, 1)
-      
+
       ON CLOSE PROCcleanup : QUIT
       ON ERROR PRINT REPORT$ : PROCcleanup : END
-      
+
       DEF PROCphilosopher0 : PROCtask(0) : ENDPROC
       DEF PROCphilosopher1 : PROCtask(1) : ENDPROC
       DEF PROCphilosopher2 : PROCtask(2) : ENDPROC
       DEF PROCphilosopher3 : PROCtask(3) : ENDPROC
       DEF PROCphilosopher4 : PROCtask(4) : ENDPROC
-      
+
       REPEAT
         WAIT 0
       UNTIL FALSE
       END
-      
+
       DEF PROCtask(n%)
       PRIVATE state%(), lh%(), rh%()
       DIM state%(nSeats%-1), lh%(nSeats%-1), rh%(nSeats%-1)
@@ -552,7 +552,7 @@ This avoids deadlocks using the same strategy as the C solution (one of the phil
           ENDIF
       ENDCASE
       ENDPROC
-      
+
       DEF PROCcleanup
       LOCAL I%
       FOR I% = 0 TO nSeats%-1
@@ -604,8 +604,8 @@ Aristotle is eating (74 ticks)
 
 Avoid deadlocks by making each philosopher have a different order of picking up forks.  As long as one person waits for left fork first and another waits for right first, cycles can't form.
 
-```c>#include <pthread.h
-
+```c
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -805,8 +805,8 @@ int main()
 
 This version uses C11 threads and the approach of making one of the philosophers left-handed to avoid deadlock.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <threads.h>
 #include <stdlib.h>
 
@@ -826,13 +826,13 @@ Philosopher *create(char *nam, int lef, int righ) {
 	x->name = nam;
 	x->left = lef;
 	x->right = righ;
-	return x; 
+	return x;
 }
 
 int eat(void *data) {
 	time1.tv_sec = 1;
 	Philosopher *foo = (Philosopher *) data;
-	mtx_lock(&forks[foo->left]);   
+	mtx_lock(&forks[foo->left]);
 	mtx_lock(&forks[foo->right]);
 	printf("%s is eating\n",  foo->name);
 	thrd_sleep(&time1, NULL);
@@ -844,9 +844,9 @@ int eat(void *data) {
 
 int main(void) {
     thrd_t threadId[NUM_THREADS];
-	Philosopher *all[NUM_THREADS] = {create("Teral", 0 ,1), 
-					create("Billy", 1, 2), 
-					create("Daniel", 2,3), 
+	Philosopher *all[NUM_THREADS] = {create("Teral", 0 ,1),
+					create("Billy", 1, 2),
+					create("Daniel", 2,3),
 					create("Philip", 3, 4),
 					create("Bennet", 0, 4)};
 	for (int i = 0; i < NUM_THREADS; i++){
@@ -921,19 +921,19 @@ typedef boost::shared_ptr< AtomicLoggerOstream > AtomicLoggerOstreamPtr;
 class Philosopher {
 public:
 
-  Philosopher( 
-	      const std::string& name, 
-	      ForkPtr fork_left, 
-	      ForkPtr fork_right, 
+  Philosopher(
+	      const std::string& name,
+	      ForkPtr fork_left,
+	      ForkPtr fork_right,
 	      AtomicLoggerOstreamPtr p_logger ) :
     m_name( name ),
     m_continue( true ),
     mp_fork_left( fork_left ),
     mp_fork_right( fork_right ),
-    m_thread( boost::thread( boost::bind( &Philosopher::thread_func, 
-					  this, 
-					  &m_continue, 
-					  mp_fork_left, 
+    m_thread( boost::thread( boost::bind( &Philosopher::thread_func,
+					  this,
+					  &m_continue,
+					  mp_fork_left,
 					  mp_fork_right ) ) ),
     m_meals_left( NUM_MEALS ),
     mp_logger( p_logger )
@@ -976,7 +976,7 @@ private:
       } else {
 	failed_to_grab_fork = true;
       }
-      
+
       if( failed_to_grab_fork ) {
 	mp_logger->log( boost::str( boost::format( "%1% couldn't get forks; waiting..." ) % m_name ) );
 	failed_to_grab_fork = false;
@@ -986,15 +986,15 @@ private:
 
     mp_logger->log( boost::str( boost::format( "%1% is done dining" ) % m_name ) );
   }
-	     
+
   inline void wait() {
     wait( MIN_WAIT_TIME + ( std::rand() % MAX_JITTER ) );
   }
-	     
-  inline void wait( boost::uint32_t time_in_ms ) { 
-    boost::this_thread::sleep( boost::posix_time::milliseconds( time_in_ms ) ); 
+
+  inline void wait( boost::uint32_t time_in_ms ) {
+    boost::this_thread::sleep( boost::posix_time::milliseconds( time_in_ms ) );
   }
-	     
+
   std::string m_name;
   volatile bool m_continue;
   ForkPtr mp_fork_left;  // must be declared before the thread
@@ -1027,7 +1027,7 @@ int main() {
     philosophers.push_back( PhilosopherPtr(
 					   new Philosopher( names[ i ], forks[ i ], forks[ (i + 1) % N ], p_logger ) ) );
   }
-  
+
   // wait for them to finish
   for( int i = 0; i < N; ++i ) {
     philosophers[ i ]->wait_for_cmplt();
@@ -1035,7 +1035,7 @@ int main() {
 
   p_logger->log( "Everyone is done dining." );
 
-  return 0;  
+  return 0;
 }
 
 
@@ -1043,12 +1043,12 @@ int main() {
 
 
 
-###  Standard C++ only 
+###  Standard C++ only
 
 {{works with|C++11|}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <array>
 #include <atomic>
 #include <chrono>
@@ -1617,7 +1617,7 @@ namespace Dining_Philosophers
 Clojure's STM allows us to avoid low-level synchronization primitives like semaphores.  In order to simulate the Dining Philosophers scenario, the forks are [http://clojure.org/refs references] to a boolean indicating whether or not it is available for use.  Each philosopher (also held in a ref) has a fixed amount of food he will try to eat, first by trying to acquire both forks, eating for some period of time, releasing both forks, then thinking for some period of time; if the forks cannot be acquired, the philosopher waits for a fixed amount of time and tries again.
 
 ```clojure
-(defn make-fork [] 
+(defn make-fork []
   (ref true))
 
 (defn make-philosopher [name forks food-amt]
@@ -1654,13 +1654,13 @@ The second line of the <tt>start-eating</tt> function contains the essential sol
 ```clojure
 (def *forks* (cycle (take 5 (repeatedly #(make-fork)))))
 
-(def *philosophers* 
+(def *philosophers*
   (doall (map #(make-philosopher %1 [(nth *forks* %2) (nth *forks* (inc %2))] 1000)
-              ["Aristotle" "Kant" "Spinoza" "Marx" "Russell"] 
+              ["Aristotle" "Kant" "Spinoza" "Marx" "Russell"]
               (range 5))))
 
 (defn start []
-  (doseq [phil *philosophers*] 
+  (doseq [phil *philosophers*]
     (.start (Thread. #(dine phil 5 100 100)))))
 
 (defn status []
@@ -1669,8 +1669,8 @@ The second line of the <tt>start-eating</tt> function contains the essential sol
       (let [f @(nth *forks* i)
             p @(nth *philosophers* i)]
         (println (str "fork: available=" f))
-        (println (str (:name p) 
-                      ": eating=" (:eating? p) 
+        (println (str (:name p)
+                      ": eating=" (:eating? p)
                       " food=" (:food p)))))))
 ```
 
@@ -1691,29 +1691,29 @@ Random times are calculated based upon a normal distribution; the main loop does
 (in-package :common-lisp-user)
 
 ;;
-;; FLAG -- if using quicklisp, you can get bordeaux-threads loaded up 
+;; FLAG -- if using quicklisp, you can get bordeaux-threads loaded up
 ;; with: (ql:quickload :bordeaux-threads)
 ;;
 
 (defvar *philosophers* '(Aristotle Kant Spinoza Marx Russell))
- 
+
 (defclass philosopher ()
   ((name :initarg :name :reader name-of)
    (left-fork :initarg :left-fork :accessor left-fork-of)
    (right-fork :initarg :right-fork :accessor right-fork-of)
    (meals-left :initarg :meals-left :accessor meals-left-of)))
- 
+
 (defclass fork ()
   ((lock :initform (bt:make-lock "fork") :reader lock-of)))
- 
+
 (defun random-normal (&optional (mean 0.0) (sd 1.0))
   (do* ((x1 #1=(1- (* 2.0d0 (random 1d0))) #1#)
         (x2 #2=(1- (* 2.0d0 (random 1d0))) #2#)
         (w  #3=(+ (* x1 x1) (* x2 x2)) #3#))
       ((< w 1d0) (+ (* (* x1 (sqrt (/ (* -2d0 (log w)) w))) sd) mean))))
- 
+
 (defun sleep* (time) (sleep (max time (/ (expt 10 7)))))
- 
+
 (defun dining-philosophers (&key (philosopher-names *philosophers*)
                                  (meals 30)
                                  (dining-time'(1 2))
@@ -1729,9 +1729,9 @@ Random times are calculated based upon a normal distribution; the main loop does
                                     :name name
                                     :meals-left meals)))
          (condition (bt:make-condition-variable))
-         (lock (bt:make-lock "main loop")) 
+         (lock (bt:make-lock "main loop"))
          (output-lock (bt:make-lock "output lock")))
-    (dolist (p philosophers) 
+    (dolist (p philosophers)
       (labels ((think ()
                  (/me "is now thinking")
                  (sleep* (apply #'random-normal thinking-time))
@@ -1761,10 +1761,10 @@ Random times are calculated based upon a normal distribution; the main loop does
                    (write-char #\Space e)
                    (apply #'format e (concatenate 'string control "~%")
                           args))))
-        (bt:make-thread #'think))) 
+        (bt:make-thread #'think)))
     (loop (bt:with-lock-held (lock)
             (when (endp philosophers)
-              (format e "all philosophers are done dining~%") 
+              (format e "all philosophers are done dining~%")
               (return)))
           (bt:with-lock-held (lock)
             (bt:condition-wait condition lock)))))
@@ -1952,7 +1952,7 @@ A classic article on solving a version of this problem in E is [http://www.erigh
 
 ## EchoLisp
 
-We introduce a laquais who checks that no more than 4 philosophers are sitting at the same time. This prevents deadlocks. Reference : [http://greenteapress.com/semaphores/downey08semaphores.pdf The little book of semaphores]. 
+We introduce a laquais who checks that no more than 4 philosophers are sitting at the same time. This prevents deadlocks. Reference : [http://greenteapress.com/semaphores/downey08semaphores.pdf The little book of semaphores].
 
 
 ```scheme
@@ -1960,15 +1960,15 @@ We introduce a laquais who checks that no more than 4 philosophers are sitting a
 (lib 'tasks)
 
 (define names #(Aristotle Kant Spinoza Marx Russell))
-(define abouts #("Wittgenstein" "the nature of the World" "Kant"  "starving" 
-    "spaghettis" "the essence of things" "Ω" "📞" "⚽️" "🍅" "🌿" 
+(define abouts #("Wittgenstein" "the nature of the World" "Kant"  "starving"
+    "spaghettis" "the essence of things" "Ω" "📞" "⚽️" "🍅" "🌿"
     "philosophy" "💔"  "👠" "rosetta code" "his to-do list" ))
 (define (about) (format "thinking about %a." (vector-ref abouts (random (vector-length abouts)))))
 
 ;; statistics
 (define rounds (make-vector 5 0))
 (define (eat i) (vector-set! rounds i (1+ (vector-ref rounds i))))
- 
+
 ;; forks are resources = semaphores
 (define (left i) i)
 (define (right i) (modulo (1+ i) 5))
@@ -2008,7 +2008,7 @@ We introduce a laquais who checks that no more than 4 philosophers are sitting a
 		#t)
 (define observer (make-task observe #t ))
 
-(define (dinner) 
+(define (dinner)
 	(task-run observer 5000)
 	(for ((t tasks)) (task-run t)))
 
@@ -2017,105 +2017,105 @@ We introduce a laquais who checks that no more than 4 philosophers are sitting a
 ```
 
 <small>
-Marx     thinking about philosophy.    
+Marx     thinking about philosophy.
 
-Russell     thinking about Kant.    
+Russell     thinking about Kant.
 
-Aristotle     thinking about 🌿.    
+Aristotle     thinking about 🌿.
 
-Spinoza     thinking about Ω.    
+Spinoza     thinking about Ω.
 
-Kant     thinking about 🍅.    
+Kant     thinking about 🍅.
 
-Marx     sitting    
+Marx     sitting
 
-Marx     eating    
+Marx     eating
 
-Russell     sitting    
+Russell     sitting
 
-Aristotle     sitting    
+Aristotle     sitting
 
-Aristotle     eating    
+Aristotle     eating
 
-Spinoza     sitting    
+Spinoza     sitting
 
-observer     rounds=     #( 1 0 0 1 0)    
+observer     rounds=     #( 1 0 0 1 0)
 
-observer     rounds=     #( 1 0 0 1 0)    
+observer     rounds=     #( 1 0 0 1 0)
 
-Spinoza     eating    
+Spinoza     eating
 
-Marx     thinking about 🍅.    
+Marx     thinking about 🍅.
 
-Kant     sitting    
+Kant     sitting
 
-Russell     eating    
+Russell     eating
 
-Aristotle     thinking about 💔.    
+Aristotle     thinking about 💔.
 
-observer     rounds=     #( 1 0 1 1 1)    
+observer     rounds=     #( 1 0 1 1 1)
 
-Marx     sitting    
+Marx     sitting
 
-Kant     eating    
+Kant     eating
 
-Aristotle     sitting    
+Aristotle     sitting
 
-Spinoza     thinking about Ω.    
+Spinoza     thinking about Ω.
 
-observer     rounds=     #( 1 1 1 1 1)    
+observer     rounds=     #( 1 1 1 1 1)
 
-Marx     eating    
+Marx     eating
 
-Russell     thinking about 🌿.    
+Russell     thinking about 🌿.
 
-Spinoza     sitting    
+Spinoza     sitting
 
-observer     rounds=     #( 1 1 1 2 1)    
+observer     rounds=     #( 1 1 1 2 1)
 
-Russell     sitting    
+Russell     sitting
 
-Aristotle     eating    
+Aristotle     eating
 
-Kant     thinking about 💔.    
+Kant     thinking about 💔.
 
-Spinoza     eating    
+Spinoza     eating
 
-Marx     thinking about 📞.    
+Marx     thinking about 📞.
 
-Kant     sitting    
+Kant     sitting
 
-observer     rounds=     #( 2 1 2 2 1)    
+observer     rounds=     #( 2 1 2 2 1)
 
-Russell     eating    
+Russell     eating
 
-Marx     sitting    
+Marx     sitting
 
-Aristotle     thinking about Kant.    
+Aristotle     thinking about Kant.
 
-Kant     eating    
+Kant     eating
 
-Spinoza     thinking about spaghettis.    
+Spinoza     thinking about spaghettis.
 
-observer     rounds=     #( 2 2 2 2 2)    
+observer     rounds=     #( 2 2 2 2 2)
 
-Aristotle     sitting    
+Aristotle     sitting
 
-observer     rounds=     #( 2 2 2 2 2)    
+observer     rounds=     #( 2 2 2 2 2)
 
-Spinoza     sitting    
+Spinoza     sitting
 
-Marx     eating    
+Marx     eating
 
-Russell     thinking about 📞.    
+Russell     thinking about 📞.
 
-Aristotle     eating    
+Aristotle     eating
 
-Kant     thinking about the essence of things.    
+Kant     thinking about the essence of things.
 
-Russell     sitting   
- 
-[...] CTRL-C to stop. 
+Russell     sitting
+
+[...] CTRL-C to stop.
 
 </small>
 
@@ -2126,14 +2126,14 @@ Russell     sitting
 
 {{works with|EiffelStudio|6.8, with provisional syntax enabled}}
 
-This solution for the dining philosophers is programmed in Eiffel using [http://docs.eiffel.com/book/solutions/concurrent-eiffel-scoop Simple Concurrent Object-Oriented Programming] (SCOOP). In SCOOP for Eiffel, the keyword <code lang="eiffel">separate</code> in a declaration designates that the associated object may be handled by a SCOOP processor other than (separate from) the one handling the current object. So, in this example, philosophers and forks are all declared as separate types. 
+This solution for the dining philosophers is programmed in Eiffel using [http://docs.eiffel.com/book/solutions/concurrent-eiffel-scoop Simple Concurrent Object-Oriented Programming] (SCOOP). In SCOOP for Eiffel, the keyword <code lang="eiffel">separate</code> in a declaration designates that the associated object may be handled by a SCOOP processor other than (separate from) the one handling the current object. So, in this example, philosophers and forks are all declared as separate types.
 
 The synchronization of access to the resources (the forks) occurs when the routine <code lang="eiffel">eat</code> is called. The two arguments are the two separate forks adjacent to the philosopher. The <code lang="eiffel">eat</code> routine will not proceed until exclusive access to all separate arguments is assured. The resources are released when the routine terminates.
 
 The example uses numbers (versus names) to identify the philosophers in order to allow the user to vary the number of philosophers.
 
 
-```eiffel 
+```eiffel
 class
     DINING_PHILOSOPHERS
 
@@ -2195,7 +2195,7 @@ end -- class DINING_PHILOSOPHERS
 ```
 
 
-```eiffel 
+```eiffel
 class
     PHILOSOPHER
 
@@ -2295,7 +2295,7 @@ feature {NONE} -- Status
             -- Number of times philosopher has eaten so far.
 
     left_fork: separate FORK
-            -- Left fork used for eating.	
+            -- Left fork used for eating.
 
     right_fork: separate FORK
             -- Right fork used for eating.
@@ -2309,7 +2309,7 @@ end -- class PHILOSOPHER
 ```
 
 
-```eiffel 
+```eiffel
 class
     FORK
 
@@ -2350,31 +2350,31 @@ end -- class FORK
 
 ## Elixir
 
-Implements the Chandy-Misra algorithm. 
+Implements the Chandy-Misra algorithm.
 
 
 ```Elixir
 
 defmodule Philosopher do
- 
+
   defstruct missing: [], clean: [], promised: []
- 
+
   def run_demo do
     pid1 = spawn(__MODULE__, :init, ["Russell"])
     pid2 = spawn(__MODULE__, :init, ["Marx"])
     pid3 = spawn(__MODULE__, :init, ["Spinoza"])
     pid4 = spawn(__MODULE__, :init, ["Kant"])
     pid5 = spawn(__MODULE__, :init, ["Aristotle"])
- 
+
     # a chopstick is simply represented by the pid of the neighbour that shares it.
- 
+
     send(pid1, {:run, %Philosopher{}})
     send(pid2, {:run, %Philosopher{missing: [pid1]}})
     send(pid3, {:run, %Philosopher{missing: [pid2]}})
     send(pid4, {:run, %Philosopher{missing: [pid3]}})
     send(pid5, {:run, %Philosopher{missing: [pid1, pid4]}})
   end
- 
+
   def init(philosopher_name) do
     receive do
       {:run, state} ->
@@ -2385,7 +2385,7 @@ defmodule Philosopher do
         end
     end
   end
- 
+
   defp thinking(philosopher_name, state) do
     receive do
       {:change_state} ->
@@ -2400,14 +2400,14 @@ defmodule Philosopher do
         end
     end
   end
- 
+
   defp hungry(philosopher_name, state) do
     IO.puts "#{philosopher_name} is hungry."
     %{missing: missing} = state
     for pid <- missing, do: request_chopstick(philosopher_name, self(), pid)
     wait_for_chopsticks(philosopher_name, state)
   end
- 
+
   defp wait_for_chopsticks(philosopher_name, state) do
     if has_chopsticks?(state) do
       eating(philosopher_name, state)
@@ -2427,7 +2427,7 @@ defmodule Philosopher do
         wait_for_chopsticks(philosopher_name, %{state | missing: List.delete(missing, pid), clean: [pid | clean]})
     end
   end
- 
+
   defp eating(philosopher_name, state) do
     IO.puts "*** #{philosopher_name} is eating."
     receive do
@@ -2437,40 +2437,40 @@ defmodule Philosopher do
         thinking(philosopher_name, %Philosopher{missing: promised})
     end
   end
- 
+
   defp clean?(pid, state) do
     %{clean: clean} = state
     Enum.member?(clean, pid)
   end
-  
+
   defp has_chopsticks?(state) do
     %{missing: missing} = state
     Enum.empty?(missing)
   end
- 
+
   defp promise_chopstick(philosopher_name, pid, state) do
     IO.puts "#{philosopher_name} promises a chopstick."
     %{promised: promised} = state
     %{state | promised: [pid | promised]}
   end
- 
+
   defp request_chopstick(philosopher_name, snd_pid, recv_pid) do
     IO.puts "#{philosopher_name} requests a chopstick."
     send(recv_pid, {:chopstick_request, snd_pid})
   end
- 
+
   defp give_chopstick(philosopher_name, snd_pid, recv_pid) do
     IO.puts "#{philosopher_name} gives a chopstick."
     send(recv_pid, {:chopstick_response, snd_pid})
   end
-  
+
   defp flip_coin do
     case Enum.random(0..1) do
       0 -> :heads
       1 -> :tails
     end
-  end	
-  
+  end
+
   def change_state(pid) do
     Process.sleep(Enum.random(1..10) * 1000)
     send(pid, {:change_state})
@@ -2500,8 +2500,8 @@ doForks(ForkList) ->
   receive
 	{grabforks, {Left, Right}} -> doForks(ForkList -- [Left, Right]);
 	{releaseforks, {Left, Right}} -> doForks([Left, Right| ForkList]);
-	{available, {Left, Right}, Sender} -> 
-          Sender ! {areAvailable, lists:member(Left, ForkList) andalso lists:member(Right, ForkList)},		     
+	{available, {Left, Right}, Sender} ->
+          Sender ! {areAvailable, lists:member(Left, ForkList) andalso lists:member(Right, ForkList)},
           doForks(ForkList);
 	{die} -> io:format("Forks put away.~n")
   end.
@@ -2512,7 +2512,7 @@ areAvailable(Forks) ->
 		{areAvailable, false} -> false;
 		{areAvailable, true} -> true
 	end.
-	
+
 
 processWaitList([]) -> false;
 processWaitList([H|T]) ->
@@ -2523,7 +2523,7 @@ processWaitList([H|T]) ->
 		false -> processWaitList(T)
 	end.
 
-doWaiter([], 0, 0, false) -> 
+doWaiter([], 0, 0, false) ->
 	forks ! {die},
 	io:format("Waiter is leaving.~n"),
 	diningRoom ! {allgone};
@@ -2531,33 +2531,33 @@ doWaiter(WaitList, ClientCount, EatingCount, Busy) ->
 	receive
 		{waiting, Client} ->
 			WaitList1 = [Client|WaitList],	%% add to waiting list
-			case (not Busy) and (EatingCount<2) of	
+			case (not Busy) and (EatingCount<2) of
 				true ->	Busy1 = processWaitList(WaitList1);
 				false -> Busy1 = Busy
 			end,
 			doWaiter(WaitList1, ClientCount, EatingCount, Busy1);
 
 		{eating, Client} ->
-			doWaiter(WaitList -- [Client], ClientCount, EatingCount+1, false);		
+			doWaiter(WaitList -- [Client], ClientCount, EatingCount+1, false);
 
 		{finished} ->
-			doWaiter(WaitList, ClientCount, EatingCount-1, 
-				processWaitList(WaitList)); 
+			doWaiter(WaitList, ClientCount, EatingCount-1,
+				processWaitList(WaitList));
 		{leaving} ->
 			doWaiter(WaitList, ClientCount-1, EatingCount, Busy)
 	end.
 
 
-philosopher(Name, Forks, 0) -> 	
+philosopher(Name, Forks, 0) ->
 	io:format("~s is leaving.~n", [Name]),
-	
+
 	waiter ! {leaving};
-	
-					
+
+
 philosopher(Name, Forks, Cycle) ->
 	io:format("~s is thinking.~n", [Name]),
 	sleep(random:uniform(1000)),
-	
+
 	io:format("~s is hungry.~n", [Name]),
 	waiter ! {waiting, {self(), Forks}}, %%sit at table
 
@@ -2577,7 +2577,7 @@ philosopher(Name, Forks, Cycle) ->
 dining() ->	AllForks = [1, 2, 3, 4, 5],
 		Clients = 5,
 		register(diningRoom, self()),
-		
+
 		register(forks, spawn(fun()-> doForks(AllForks) end)),
 		register(waiter, spawn(fun()-> doWaiter([], Clients, 0, false) end)),
 		Life_span = 20,
@@ -2586,10 +2586,10 @@ dining() ->	AllForks = [1, 2, 3, 4, 5],
 		spawn(fun()-> philosopher('Spinoza', {2, 3}, Life_span) end),
 		spawn(fun()-> philosopher('Marx', {3, 4}, Life_span) end),
 		spawn(fun()-> philosopher('Russel', {4, 5}, Life_span) end),
-		
+
 		receive
  			{allgone} -> io:format("Dining room closed.~n")
-				
+
 		end,
 		unregister(diningRoom).
 ```
@@ -2616,7 +2616,7 @@ procedure person(sequence name, integer left_fork, integer right_fork)
             puts(1, name & " is waiting.\n")
             task_yield()
         end while
-        
+
         puts(1, name & " grabs forks.\n")
         forks[left_fork] = LOCKED
         forks[right_fork] = LOCKED
@@ -2627,7 +2627,7 @@ procedure person(sequence name, integer left_fork, integer right_fork)
         puts(1, name & " puts forks down and leaves the dinning room.\n")
         forks[left_fork] = FREE
         forks[right_fork] = FREE
-        
+
         for i = 1 to rand(10) do
             puts(1, name & " is thinking.\n")
             task_yield()
@@ -2725,7 +2725,7 @@ type Message = Waiting of (Set<int> * AsyncReplyChannel<unit>) | Done of Set<int
 
 let reply (c: AsyncReplyChannel<_>) = c.Reply()
 
-let strategy forks waiting = 
+let strategy forks waiting =
     let aux, waiting = List.partition (fst >> flip Set.isSubset forks) waiting
     let forks = aux |> List.map fst |> List.fold (-) forks
     List.iter (snd >> reply) aux
@@ -2745,7 +2745,7 @@ let philosopher (waiter: Agent<_>) name forks =
   let rng = new Random()
   let forks = Set.ofArray forks
   Agent<_>.Start(fun inbox ->
-    let rec loop () = 
+    let rec loop () =
       async { printfn "%s is thinking" name
               do! Async.Sleep(rng.Next(100, 500))
               printfn "%s is hungry" name
@@ -3105,14 +3105,14 @@ type Name = String
 runPhilosopher :: Name -> (Fork, Fork) -> IO ()
 runPhilosopher name (left, right) = forever $ do
   putStrLn (name ++ " is hungry.")
-  
+
   -- Run the transactional action atomically.
   -- The type system ensures this is the only way to run transactional actions.
   (leftNum, rightNum) <- atomically $ do
     leftNum <- takeFork left
     rightNum <- takeFork right
     return (leftNum, rightNum)
-  
+
   putStrLn (name ++ " got forks " ++ show leftNum ++ " and " ++ show rightNum ++ " and is now eating.")
   delay <- randomRIO (1,10)
   threadDelay (delay * 1000000) -- 1, 10 seconds. threadDelay uses nanoseconds.
@@ -3121,7 +3121,7 @@ runPhilosopher name (left, right) = forever $ do
   atomically $ do
     releaseFork leftNum left
     releaseFork rightNum right
-    
+
   delay <- randomRIO (1, 10)
   threadDelay (delay * 1000000)
 
@@ -3133,11 +3133,11 @@ main = do
   let namedPhilosophers  = map runPhilosopher philosophers
       forkPairs          = zip forks (tail . cycle $ forks)
       philosophersWithForks = zipWith ($) namedPhilosophers forkPairs
-  
+
   putStrLn "Running the philosophers. Press enter to quit."
-  
+
   mapM_ forkIO philosophersWithForks
-  
+
   -- All threads exit when the main thread exits.
   getLine
 
@@ -3248,7 +3248,7 @@ Aristotle eating
 
 These philosophers are very smart and polite: they figured out immediately that at most two of them can eat simultaneously (take the floor of n divided by 2 for n philosophers); so, when they are hungry and it is necessary, they wait in line.  (In general, for n > 1, because they are very smart and polite, when a philosopher seats he leaves exactly one empty seat between himself and one of the philosophers which are already eating if any.)
 
-J does not support concurrency; so, this is a discrete-event simulation (DES).  The time spent thinking and eating is assumed to be exponentially distributed, respectively, at the rates of 1 and 0.5 per time unit.  
+J does not support concurrency; so, this is a discrete-event simulation (DES).  The time spent thinking and eating is assumed to be exponentially distributed, respectively, at the rates of 1 and 0.5 per time unit.
 
 
 ### The simulation code
@@ -3260,9 +3260,9 @@ The simulation is defined in terms of fixed tacit (stateless point-free) code (a
 ". noun define -. CRLF     NB. Fixed tacit simulation code...
 
 simulate=.
-''"_@:((<@:(1 -~ 1&({::)) 1} ])@:(([ 0 0&$@(1!:2&2)@:(((6j3 ": 9&({::)) , ': 
+''"_@:((<@:(1 -~ 1&({::)) 1} ])@:(([ 0 0&$@(1!:2&2)@:(((6j3 ": 9&({::)) , ':
 '"_) , ' starts waiting and thinking about hunger.' ,~ 8&({::) {:: 0&({::)))@
-:(<@:(6&({::) , 8&({::)) 6} ])@:((<@:((0 (0 {:: ])`(<@:(1 {:: ]))`(2 {:: ])} 
+:(<@:(6&({::) , 8&({::)) 6} ])@:((<@:((0 (0 {:: ])`(<@:(1 {:: ]))`(2 {:: ])}
 ])@:(3 8 2&{)) 2} ])@:(<@:2: 3} ]))@:((<@:((0 (0 {:: ])`(<@:(1 {:: ]))`(2 {::
  ])} ])@:(5 8 4&{)) 4} ])@:(<@:_: 5} ]))`(([ 0 0&$@(1!:2&2)@:(((6j3 ": 9&({::
 )) , ': '"_) , ' starts eating.' ,~ 8&({::) {:: 0&({::)))@:((<@:((0 (0 {:: ])
@@ -3281,7 +3281,7 @@ simulate=.
 @:(4&({::))) 9} ])^:(0 < 1&({::))^:_)@:(([ 0 0&$@(1!:2&2)@:(((6j3 ": 9&({::))
  , ': '"_) , 'All of them start thinking.'"_))@:((0 ; <.@:(2 %~ #@:(0&({::)))
 ) 9 7} ])@:((0:"_1 ,&< (_1 * ^.@:?@:0:)&>)@:(0&({::)) 2 4} ])@:((;:@:(0&({::)
-) ,&< ''"_) 0 6} ]))@:(,&(;:8$','))@:;        
+) ,&< ''"_) 0 6} ]))@:(,&(;:8$','))@:;
 
 )
 ```
@@ -3290,7 +3290,7 @@ simulate=.
 
 ### Simulation of 11 chronological events for five philosophers
 
- 
+
 
 ```j
    'Aristotle Kant Spinoza Marx Russell' simulate 11
@@ -3316,7 +3316,7 @@ simulate=.
 
 ### Simulation of 22 chronological events for eight philosophers
 
-  
+
 
 ```j
    'Aristotle Kant Spinoza Marx Russell Laozi Nezahualcoyotl Averroes' simulate 22
@@ -3359,41 +3359,41 @@ The fixed tacit code of the verb (simulate) was produced by means of an unorthod
 
 ```j
 NB. Quick and dirty tacit toolkit...
- 
+
 o=. @:
 c=."_
- 
+
 ver=. (0:`)([:^:)
- 
+
 d=. (fix=. (;:'f.')ver) (train=.(;:'`:')ver&6) (an=. <@:((,'0') (,&<) ]))
-ver=. (an f. o fix'ver')ver o an f. 
+ver=. (an f. o fix'ver')ver o an f.
 z=. ((an'')`($ ,)`) (`:6)
 d=. (a0=. `'') (a1=. (@[) ((<'&')`) (`:6)) (a2=. (`(<(":0);_)) (`:6))
 av=. ((an o fix'a0')`)  (`(an o fix'a1')) (`(an o fix'a2') ) (`:6)
- 
+
 Fetch=. (ver o train ;:'&{::')&.> o i. f.av
 tie=. ver o train ;:'`'
- 
+
 indices=. (, $~ 1 -.~ $) o (train"0 o ((1 -: L.)S:1 # <S:1) o (tie&'') o fix :: ])
 f=. ((ver o train ;:'&{')) o indices o train f.av
- 
+
 'A B'=. 2 Fetch
 head=. (;:'<@:') {.~ 2 * 1 = #@[
 h=. train o (indices o train o (A f) (head , (B f)@] , < o an@[  , (;:'}]')c) ]) f.av
- 
+
 DropIfNB=. < o ('('"_ , ] , ')'"_) o ((}: ^: ('NB.' -: 3&{. o > o {:)) &. ;:)
 pipe=. ([ , ' o ' , ])&:>/ o |.
- 
+
 is=. ". o (, o ": o > , '=. ' , pipe o (DropIfNB;._2) o ". o ('0 ( : 0)'c)) f.av
- 
+
 NB.--------------------------------------------------------------------------------------
-   
+
 NB. Producing the verb simulate...
 
 Note 0
 
 NB. X and Y...
-  N - Philosophers names 
+  N - Philosophers names
   C - Number of chronological events to simulate
 
 NB. Local...
@@ -3442,7 +3442,7 @@ enqueue is
 thinking=. enqueue`eat@.CanEat  NB. Either enqueues or eats after thinking
 
 dequeue is
-  P`({. o Q)h  NB. Activating the one in front of the queue 
+  P`({. o Q)h  NB. Activating the one in front of the queue
   eat          NB. and starts eating
   Q`(}. o Q)h  NB. dequeuing
 )
@@ -3586,7 +3586,7 @@ public class Main {
                 sb.append(holder==-1?"   ":String.format("P%02d",holder));
                 sb.append("|");
             }
-            
+
             System.out.println(sb.toString());
             try {Thread.sleep(1000);} catch (Exception ex) {}
         } while (System.currentTimeMillis() < endTime);
@@ -3615,7 +3615,7 @@ What this simple solution achieves:
 *no "livelock" (trying to pick up and put down forks forever)
 *philosophers can eat at any time (no fixed order is imposed)
 
-Deficiencies of this solution: 
+Deficiencies of this solution:
 
 *Supports only a fixed set of philosophers, since all channels are declared statically. More philosophers needs more lines of code.
 *The mean time of waiting while hungry is not bounded and grows very slowly (logarithmically) with time.
@@ -3630,10 +3630,10 @@ let will_think s = print s "thinking"; random_wait 20; print s "hungry";;
   (* a,b,c,d,e are thinking philosophers; ah,bh,ch,dh,eh are the same philosophers when hungry;
      fab is the fork located between philosophers a and b; similarly for fbc, fcd, ... *)
 
-def  ah() & fab() & fea() = will_eat "Aristotle"; a() & fab() & fea() 
- or  bh() & fab() & fbc() = will_eat "Kant";      b() & fab() & fbc() 
- or  ch() & fbc() & fcd() = will_eat "Spinoza";   c() & fbc() & fcd() 
- or  dh() & fcd() & fde() = will_eat "Marx";      d() & fcd() & fde() 
+def  ah() & fab() & fea() = will_eat "Aristotle"; a() & fab() & fea()
+ or  bh() & fab() & fbc() = will_eat "Kant";      b() & fab() & fbc()
+ or  ch() & fbc() & fcd() = will_eat "Spinoza";   c() & fbc() & fcd()
+ or  dh() & fcd() & fde() = will_eat "Marx";      d() & fcd() & fde()
  or  eh() & fde() & fea() = will_eat "Russell";   e() & fde() & fea()
 
  and a() = will_think "Aristotle"; ah()
@@ -3641,7 +3641,7 @@ def  ah() & fab() & fea() = will_eat "Aristotle"; a() & fab() & fea()
  and c() = will_think "Spinoza";   ch()
  and d() = will_think "Marx";      dh()
  and e() = will_think "Russell";   eh()
-;; 
+;;
 spawn fab() & fbc() & fcd() & fde() & fea() & a() & b() & c() & d() & e();;
 ```
 
@@ -3699,9 +3699,9 @@ and  counter_sentinel() = Unix.sleep 1; update_counter(); counter_sentinel()
 spawn counter(0) & counter_sentinel();;
 
 def stats(n, waited, maxwaited) & report_wait_time(m) =
- let (n', waited', maxwaited') = (n+1, waited+m, max maxwaited m) in 
- Printf.printf "waiting average %f, max waited %d\n" 
-   (float_of_int waited' /. float_of_int n') 
+ let (n', waited', maxwaited') = (n+1, waited+m, max maxwaited m) in
+ Printf.printf "waiting average %f, max waited %d\n"
+   (float_of_int waited' /. float_of_int n')
    maxwaited';
  flush(stdout);
  stats(n',waited',maxwaited') & reply () to report_wait_time
@@ -3709,7 +3709,7 @@ def stats(n, waited, maxwaited) & report_wait_time(m) =
 
 spawn stats(0,0,0);;
 
-let eat s t = print s t "eating"; random_wait 10;; 
+let eat s t = print s t "eating"; random_wait 10;;
 let think s = print s (ts()) "thinking"; random_wait 20;;
 
 (* "p" will be a philosopher channel, to be defined later
@@ -3717,20 +3717,20 @@ let think s = print s (ts()) "thinking"; random_wait 20;;
 
 let will_eat s t = let t' = ts() in report_wait_time(t'-t); eat s t';;
 
-def ah(t,p) & fab() & fea() = will_eat "Aristotle" t; p() & fab() & fea() 
-or  bh(t,p) & fab() & fbc() = will_eat "Kant" t; p() & fab() & fbc() 
-or  ch(t,p) & fbc() & fcd() = will_eat "Spinoza" t; p() & fbc() & fcd() 
-or  dh(t,p) & fcd() & fde() = will_eat "Marx" t; p() & fcd() & fde() 
+def ah(t,p) & fab() & fea() = will_eat "Aristotle" t; p() & fab() & fea()
+or  bh(t,p) & fab() & fbc() = will_eat "Kant" t; p() & fab() & fbc()
+or  ch(t,p) & fbc() & fcd() = will_eat "Spinoza" t; p() & fbc() & fcd()
+or  dh(t,p) & fcd() & fde() = will_eat "Marx" t; p() & fcd() & fde()
 or  eh(t,p) & fde() & fea() = will_eat "Russell" t; p() & fde() & fea()
 ;;
 
 spawn fab() & fbc() & fcd() & fde() & fea();;
 
 (* define the thinking -> hungry transitions using local philosophers, and inject the philosophers *)
-List.map 
+List.map
  (fun (h,s) -> def p() = think s; let t = ts() in print s t "hungry"; h(t,p) in spawn p())
  [(ah,"Aristotle"); (bh,"Kant"); (ch,"Spinoza"); (dh,"Marx"); (eh,"Russell")]
-;; 
+;;
 (* this replaces repetitive code such as that shown in the previous solution *)
 
 (* now we need to wait and do nothing; nobody will be able to inject godot() *)
@@ -3802,7 +3802,7 @@ spawn unique_ts_counter(0);;
 (* functions that wait and print diagnostics *)
 let name i = List.nth ["Aristotle"; "Kant"; "Spinoza"; "Marx"; "Russell"] i;;
 let message i m = Printf.printf "philosopher %s is %s\n" (name i) m; flush(stdout);;
-let eat i = message i "eating"; random_wait eating_max_interval;; 
+let eat i = message i "eating"; random_wait eating_max_interval;;
 let think i = message i "thinking"; random_wait thinking_max_interval;;
 
 type philosopher_state_t = Eating | Hungry of int | Thinking;;
@@ -3837,7 +3837,7 @@ let is_more_hungry p q = match q with
 let may_eat_first i =
   is_hungry states.(i)
   && not_eating states.(next_phil i) && not_eating states.(prev_phil i)
-  && is_more_hungry states.(i) states.(next_phil i) 
+  && is_more_hungry states.(i) states.(next_phil i)
   && is_more_hungry states.(i) states.(prev_phil i);;
 
 let decide_eating i =
@@ -3926,14 +3926,14 @@ mutable struct FiveForkTable
     fork12::Channel
     fork23::Channel
     fork34::Channel
-    fork45::Channel    
+    fork45::Channel
     function FiveForkTable()
         this = new()
         this.fork51 = Channel(1); put!(this.fork51, "fork") # start with one fork per channel
-        this.fork12 = Channel(1); put!(this.fork12, "fork") 
-        this.fork23 = Channel(1); put!(this.fork23, "fork") 
-        this.fork34 = Channel(1); put!(this.fork34, "fork") 
-        this.fork45 = Channel(1); put!(this.fork45, "fork") 
+        this.fork12 = Channel(1); put!(this.fork12, "fork")
+        this.fork23 = Channel(1); put!(this.fork23, "fork")
+        this.fork34 = Channel(1); put!(this.fork34, "fork")
+        this.fork45 = Channel(1); put!(this.fork45, "fork")
         this
     end
 end
@@ -3953,7 +3953,7 @@ function dine(t,p)
     else
        take!(p.leftforkheld); println("$(p.name) takes left fork")
        take!(p.rightforkheld); println("$(p.name) takes right fork")
-    end    
+    end
 end
 
 function leavetothink(t, p)
@@ -4238,7 +4238,7 @@ Works when using SWI-Prolog, XSB, or YAP as the backend compiler:
         ::LeftStick::put_down,
         ::RightStick::put_down.
 
-    % writing a message needs to be synchronized as it's accomplished  
+    % writing a message needs to be synchronized as it's accomplished
     % using a combination of individual write/1 and nl/0 calls:
     message([]) :-
         nl,
@@ -4304,7 +4304,7 @@ To handle deadlock we have to alter the way which a philosopher get the first fo
 
 In the output we have time in milliseconds when the philosopher status show eating or thinking.
 
-Threads are code running in same scope when defined. From a thread we can see any variable or function or other modules local to module, but not the static variables of module because a thread has own static variables. Also we can change the time interval from the thread, and we do that defining the eating time and the thinking time. If we place all philosophers with R=0 we get soon a deadlock. Some philosophers eat more than other, but this depends on how long stay at thinking (maybe X1 to X5 of a base thinking time) 
+Threads are code running in same scope when defined. From a thread we can see any variable or function or other modules local to module, but not the static variables of module because a thread has own static variables. Also we can change the time interval from the thread, and we do that defining the eating time and the thinking time. If we place all philosophers with R=0 we get soon a deadlock. Some philosophers eat more than other, but this depends on how long stay at thinking (maybe X1 to X5 of a base thinking time)
 
 The Main.Task is a thread which display the eating counting for each philosopher, and the table with five values (Fork or No Fork). Also there is a counter which advance if table has no Forks and reset to zero if one or more forks exist. So if we get a deadlock the program stops after some seconds.
 
@@ -4329,16 +4329,16 @@ Module Dining_philosophers (whichplan) {
 			thread.plan sequential
 			\\ need time_to_think>time_to_eat, but time_to_appear maybe the same for all
 			time_to_think=150  ' one or more intervals
-			time_to_eat=100 ' one interval to eat only	
+			time_to_eat=100 ' one interval to eat only
 			time_to_appear=(150,150,150,150,150)
-			Return time_to_appear, random(0,3):=300	   
+			Return time_to_appear, random(0,3):=300
 		else
 			Doc$="Concurrent threads  - to execute a statement or a block of code"+nl$
-			thread.plan concurrent 
+			thread.plan concurrent
 			time_to_think=100  ' one or more intervals
 			time_to_eat=50 ' one interval to eat only
 			time_to_appear=(100,100,100,100,100)
-			Return time_to_appear, random(1,4):=200	 
+			Return time_to_appear, random(1,4):=200
 		end if
 		Print #-2,Doc$
 		Print @(0,2),"Press left mouse button to exit"
@@ -4360,7 +4360,7 @@ Module Dining_philosophers (whichplan) {
 		Return RoundTable, where:=NoFork
 	}
 	PlaceForks=lambda RoundTable (ph as philosopher) -> {
-		Return RoundTable,  (ph+4) mod 5:=Fork, ph mod 5:=Fork 
+		Return RoundTable,  (ph+4) mod 5:=Fork, ph mod 5:=Fork
 	}
 	ShowTable=lambda RoundTable -> {
 		m=each(RoundTable)
@@ -4387,7 +4387,7 @@ Module Dining_philosophers (whichplan) {
 		\\ a thread has module scope (except for own static variables, and stack of values)
 		thread {
 			Page$=format$("{0::-12} - ",tick-basetick)+eval$(f)+if$(forkL=Nofork or forkR=Nofork->" thinking",  " eating")+nl$
-			if not think then 
+			if not think then
 				{ \\ a block always run blocking all other threads
 					eattimes(f)++
 					Call PlaceForks(f) : forkL=Nofork:forkR=NoFork
@@ -4402,7 +4402,7 @@ Module Dining_philosophers (whichplan) {
 					if forkL=fork and forkR=Nofork then forkR=GetRight(f)
 					if forkR=fork then think=false:thread this interval  time_to_eat
 			end if
-		} as a interval time_to_appear#val(m^)		
+		} as a interval time_to_appear#val(m^)
 		\\ a is a variable which hold the number of thread (as returned from task manager)
 		\\ so we can get 5 times a new number.
 		\\ for each thread we make some static variables (only for each thread)
@@ -4416,7 +4416,7 @@ Module Dining_philosophers (whichplan) {
 	basetick=tick
 	\\ 4hz display results
 	Main.Task 1000/4 {
-		{ \\ a block always run blocking all other threads		
+		{ \\ a block always run blocking all other threads
 			cls
 			Print $(1),eattimes()
 			Print $(0)
@@ -4447,7 +4447,7 @@ So the thread code can be this:
 
 		thread {
 			Page$=format$("{0::-12} - ",tick-basetick)+eval$(f)+if$(forkL=Nofork or forkR=Nofork->" thinking",  " eating")+nl$
-			if not think then 
+			if not think then
 				{ \\ a block always run blocking all other threads
 					eattimes(f)++
 					Call PlaceForks(f) : forkL=Nofork:forkR=NoFork
@@ -4689,16 +4689,16 @@ proc run(p: Philosopher) {.thread.} =
   # random deprecated, use rand(x .. y)
   sleep rand(1..10) * 500
   echo p.name, " is hungry."
- 
+
   acquire forks[min(p.forkLeft, p.forkRight)]
   sleep rand(1..5) * 500
   acquire forks[max(p.forkLeft, p.forkRight)]
- 
+
   echo p.name, " starts eating", p.food, "."
   sleep rand(1..10) * 500
- 
+
   echo p.name, " finishes eating", p.food, " and leaves to think."
- 
+
   release forks[p.forkLeft]
   release forks[p.forkRight]
 
@@ -4840,7 +4840,7 @@ Using first-class computation spaces as transactions on dataflow variables. Comp
 ```oz
 declare
   Philosophers = [aristotle kant spinoza marx russell]
-   
+
   proc {Start}
      Forks = {MakeList {Length Philosophers}}
   in
@@ -4859,7 +4859,7 @@ declare
   proc {Philosopher Name LeftFork RightFork}
      for do
         {ShowInfo Name#" is hungry."}
-      
+
         {TakeForks [LeftFork RightFork]}
         {ShowInfo Name#" got forks."}
         {WaitRandom}
@@ -5300,7 +5300,7 @@ end.
 
 ```
 
-And the last: deadlock can only happen if all the members are seated at the table. 
+And the last: deadlock can only happen if all the members are seated at the table.
 
 This variant tries to avoid this situation.
 
@@ -5529,7 +5529,7 @@ for(my $i = $#philosophers; $i >= 0; $i--){
 
 			$$forks_got[$no]->up();
 			$$forks_got[$no-1]->up();
-			
+
 			say $name . " is thinking.";
 			Coro::AnyEvent::sleep(1 + rand 8);
 		}
@@ -5559,26 +5559,26 @@ class Fork {
 	$!lock.unlock;
     }
 }
- 
+
 class Lollipop {
     has $!channel = Channel.new;
     method mine($who) { $!channel.send($who) }
     method yours { $!channel.receive }
 }
- 
+
 sub dally($sec) { sleep 0.01 + rand * $sec }
- 
+
 sub MAIN(*@names) {
     @names ||= <Aristotle Kant Spinoza Marx Russell>;
- 
+
     my @lfork = Fork.new xx @names;
     my @rfork = @lfork.rotate;
- 
+
     my $lollipop = Lollipop.new;
     start { $lollipop.yours; }
- 
+
     my @philosophers = do for flat @names Z @lfork Z @rfork -> $n, $l, $r {
-	start { 
+	start {
 	    sleep 1 + rand*4;
 	    loop {
 		$l.grab($n,'left');
@@ -5588,11 +5588,11 @@ sub MAIN(*@names) {
 		dally 10;
 		$l.drop($n,'left');
 		$r.drop($n,'right');
- 
+
 		$lollipop.mine($n);
 		sleep 1;  # lick at least once
 		say "$n lost lollipop to $lollipop.yours(), now digesting";
- 
+
 		dally 20;
 	    }
 	}
@@ -5808,7 +5808,7 @@ using Pike Backend call_out(), this solution avoids deadlocks by adding a 20% ch
 
 ```Pike
 class Philosopher
-{ 
+{
     string name;
     object left;
     object right;
@@ -5821,28 +5821,28 @@ class Philosopher
     }
 
     void take_forks()
-    { 
+    {
         if (left->take(this) && right->take(this))
         {
             write("%s is EATING\n", name);
-            call_out(drop_forks, random(30)); 
+            call_out(drop_forks, random(30));
         }
         else
         {
             write("%s is WAITING\n", name);
             if (random(10) >= 8)
                 drop_forks();
-            call_out(take_forks, random(10)); 
+            call_out(take_forks, random(10));
         }
-    } 
+    }
 
     void drop_forks()
-    { 
+    {
         left->drop(this);
         right->drop(this);
         write("%s is THINKING\n", name);
-        call_out(take_forks, random(30)); 
-    } 
+        call_out(take_forks, random(30));
+    }
 }
 
 class Fork
@@ -5884,16 +5884,16 @@ class Fork
 
 int main(int argc, array argv)
 {
-            
+
   array forks = ({ Fork(1), Fork(2), Fork(3), Fork(4), Fork(5) });
-  array philosophers = ({ 
-                           Philosopher("einstein", forks[0], forks[1]), 
-                           Philosopher("plato", forks[1], forks[2]), 
-                           Philosopher("sokrates", forks[2], forks[3]), 
-                           Philosopher("chomsky", forks[3], forks[4]), 
-                           Philosopher("archimedes", forks[4], forks[0]), 
+  array philosophers = ({
+                           Philosopher("einstein", forks[0], forks[1]),
+                           Philosopher("plato", forks[1], forks[2]),
+                           Philosopher("sokrates", forks[2], forks[3]),
+                           Philosopher("chomsky", forks[3], forks[4]),
+                           Philosopher("archimedes", forks[4], forks[0]),
                         });
-                           
+
   call_out(philosophers[0]->take_forks, random(5));
   call_out(philosophers[1]->take_forks, random(5));
   call_out(philosophers[2]->take_forks, random(5));
@@ -5907,7 +5907,7 @@ int main(int argc, array argv)
 
 ## Prolog
 
-Works with SWI-Prolog and XPCE. 
+Works with SWI-Prolog and XPCE.
 
 Use the same solution as in Erlang (a waiter gives the forks to philosophers).
 
@@ -6374,7 +6374,7 @@ compute(N, used, right, point(XS,YS), point(XE,YE)) :-
 ## PureBasic
 
 
-My Philosophers are very polite, if one can not get both forks they then  
+My Philosophers are very polite, if one can not get both forks they then
 put down the first and waits a few breaths, then boldly tries in the opposite order.
 
 
@@ -6442,7 +6442,7 @@ Procedure TryFork(n)  ; Se is fork #n is free and if so pick it up
   EndSelect
 EndProcedure
 
-Procedure PutDownFork(n) ; put down fork #n and free it to be used by neighbors. 
+Procedure PutDownFork(n) ; put down fork #n and free it to be used by neighbors.
   Select n
     Case 1: UnlockMutex(Mutex1)
     Case 2: UnlockMutex(Mutex2)
@@ -6475,7 +6475,7 @@ Procedure _philosophers(*arg.Thread_Parameters)
       f1=TryFork(j)
       If f1
         f2=TryFork(k)
-        If Not f2   ; I got only one fork  
+        If Not f2   ; I got only one fork
           PutDownFork(j)
           f1=0
         EndIf
@@ -6517,11 +6517,11 @@ import time
 # Procedure is to do block while waiting to get first fork, and a nonblocking
 # acquire of second fork.  If failed to get second fork, release first fork,
 # swap which fork is first and which is second and retry until getting both.
-#  
+#
 # See discussion page note about 'live lock'.
 
 class Philosopher(threading.Thread):
-    
+
     running = True
 
     def __init__(self, xname, forkOnLeft, forkOnRight):
@@ -6554,7 +6554,7 @@ class Philosopher(threading.Thread):
         fork2.release()
         fork1.release()
 
-    def dining(self):			
+    def dining(self):
         print '%s starts eating '% self.name
         time.sleep(random.uniform(1,10))
         print '%s finishes eating and leaves to think.' % self.name
@@ -6680,7 +6680,7 @@ DiningPhilosophers()
 
 Programming notes:   This REXX version allows a specification of the names and numbers of dining philosophers   (but no check was made for the number of philosophers less than two).   The philosopher's names may have imbedded blanks in them, blanks are signified by an underscore   (<big>'''_'''</big>).   A random number   ''seed''   can be specified to allow for repeatability.   The duration of any of the activities the philosophers partake in are herein designated in   ''minutes'',   but any consistent timer unit may be used.   Intermediate steps (such as putting the forks down after finishing eating, leaving the dining room to contemplating the nature of the universe, then getting hungry and entering the dining room) are not shown.   If the   ''seed''   (first argument) has a leading plus sign   ('''+'''),   then no status trace is shown.   A random selection of diners (for determining who gets to grab for the forks first) could've been implemented to make a more realistic simulation.
 
-Deadlocks are eliminated by the method of acquiring the resources (forks):   both forks are (attempted to be) grabbed at the same time (by both hands).   
+Deadlocks are eliminated by the method of acquiring the resources (forks):   both forks are (attempted to be) grabbed at the same time (by both hands).
 
 ```rexx
 /*REXX program demonstrates a solution in solving the  dining philosophers problem.     */
@@ -6833,12 +6833,12 @@ n = 5
 Fork = Struct.new(:fork_id, :mutex)
 forks = Array.new(n) {|i| Fork.new(i, Object.new.extend(Mutex_m))}
 
-philosophers = Array.new(n) do |i| 
+philosophers = Array.new(n) do |i|
                  Thread.new(i, forks[i], forks[(i+1)%n]) do |id, f1, f2|
                    ph = Philosopher.new(id, f1, f2).go
                  end
                end
-  
+
 philosophers.each {|thread| thread.join}
 ```
 
@@ -6846,7 +6846,7 @@ philosophers.each {|thread| thread.join}
 
 ## Rust
 
-A Rust implementation of a solution for the Dining Philosophers Problem. We prevent a deadlock by using Dijkstra's solution of making a single diner "left-handed." That is, all diners except one pick up the chopstick "to their left" and then the chopstick "to their right." The remaining diner performs this in reverse. 
+A Rust implementation of a solution for the Dining Philosophers Problem. We prevent a deadlock by using Dijkstra's solution of making a single diner "left-handed." That is, all diners except one pick up the chopstick "to their left" and then the chopstick "to their right." The remaining diner performs this in reverse.
 
 
 ```rust
@@ -7209,12 +7209,12 @@ createfork
 	^ Semaphore forMutualExclusion! !
 
 !Philosopher methodsFor: 'private'!
-displayState: aStateName 
+displayState: aStateName
 	Transcript show: name , ' is ' , aStateName;
 		 cr! !
 
 !Philosopher methodsFor: 'private'!
-pickUpForkAt: relativePosition 
+pickUpForkAt: relativePosition
 	| fork pos |
 	pos := self tableIndex: seat + relativePosition.
 	(fork := table at: pos)
@@ -7225,7 +7225,7 @@ pickUpForkAt: relativePosition
 	^ (forks at: relativePosition put: fork) notNil! !
 
 !Philosopher methodsFor: 'private'!
-putBackForkAt: aRelativePosition 
+putBackForkAt: aRelativePosition
 	| fork |
 	fork := forks at: aRelativePosition.
 	fork
@@ -7235,7 +7235,7 @@ putBackForkAt: aRelativePosition
 			forks at: aRelativePosition put: nil]! !
 
 !Philosopher methodsFor: 'private'!
-tableIndex: aNum 
+tableIndex: aNum
 	^ aNum - 1 \\ table size + 1! !
 
 !Philosopher methodsFor: 'private'!
@@ -7266,7 +7266,7 @@ think
 
 
 !Philosopher methodsFor: 'initialize-release'!
-beginDining: aName at: aTable 
+beginDining: aName at: aTable
 	name := aName.
 	table := aTable.
 	forks := Dictionary new at: -1 put: nil;
@@ -7486,11 +7486,11 @@ End Sub
 Stats         Gets          Gets          Eats          Puts          Puts          Thinks
               First         Second        Spag-         First         Second        About
               Fork          Fork          hetti         Fork          Fork          Universe
-Aquinas        5595          1902          5843          550           550           5560 
-Babbage        5811          2360          5585          529           529           5186 
-Carroll        6445          2359          4929          523           523           5221 
-Derrida        6341          1828          5479          545           545           5262 
-Erasmus        5998          1556          5891          550           550           5455 
+Aquinas        5595          1902          5843          550           550           5560
+Babbage        5811          2360          5585          529           529           5186
+Carroll        6445          2359          4929          523           523           5221
+Derrida        6341          1828          5479          545           545           5262
+Erasmus        5998          1556          5891          550           550           5455
 
 ```
 
@@ -7511,7 +7511,7 @@ Module Module1
    Public rnd As New Random
 
    Sub Main()
-       'Aristotle, Kant, Spinoza, Marx, and Russel 
+       'Aristotle, Kant, Spinoza, Marx, and Russel
        Dim f1 As New Fork(1)
        Dim f2 As New Fork(2)
        Dim f3 As New Fork(3)
@@ -7612,7 +7612,7 @@ End Class
 
 
 
-###  Deadlock 
+###  Deadlock
 
 
 
@@ -7652,7 +7652,7 @@ End Class
 
 
 
-###  Live Lock 
+###  Live Lock
 
 
 ```vbnet
@@ -7701,7 +7701,7 @@ End Class
 
 
 
-###  Working 
+###  Working
 
 
 ```vbnet
@@ -7762,7 +7762,7 @@ fcn sitAndEat(name,n){  // assigned seating
       fa,fb:=seats[n].shuffle(); // ambidextrous
       if(fa.setIf(True,False)){  // got the first fork
 	 if(fb.setIf(True,False)){  // got the other fork, nom nom time
-	    name.println(" is eating"); 
+	    name.println(" is eating");
 	    Atomic.sleep((1).random(5));
 	    fa.set(False); fb.set(False);  // put forks down
 	    return();  // leave the table

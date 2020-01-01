@@ -12,7 +12,7 @@ tags = []
 
 {{task|Basic language learning}}
 
-Assertions are a way of breaking out of code when there is an error or an unexpected input. 
+Assertions are a way of breaking out of code when there is an error or an unexpected input.
 
 Some languages throw [[exceptions]] and some treat it as a break point.
 
@@ -66,8 +66,8 @@ aime: assert: 5: x is not 42
 ## ALGOL 68
 
 The "Revised Report on the Algorithmic Language - ALGOL 68" suggest that
-ASSERT may be made available by a particular implementation, quote: "Pragmats may 
-... convey to the implementation some piece of information affecting some aspect 
+ASSERT may be made available by a particular implementation, quote: "Pragmats may
+... convey to the implementation some piece of information affecting some aspect
 of the meaning of the program which is not defined by this Report,..."
 
 Example given[http://www.xs4all.nl/~jmvdveer/report_4.html#92]:
@@ -140,7 +140,7 @@ System.assertEquals(6, i, 'Expected 6, received ' + i);
 ```
 
 
-Asserts that the first two arguments are different. If they are the same, a fatal error is returned that causes code execution to halt. 
+Asserts that the first two arguments are different. If they are the same, a fatal error is returned that causes code execution to halt.
 
 ```apex
 
@@ -175,7 +175,7 @@ BEGIN {
 	exit
 }
 
-# Errormsg is optional, displayed if assertion fails 
+# Errormsg is optional, displayed if assertion fails
 function assert(cond, errormsg){
 	if (!cond) {
 		if (errormsg != "") print errormsg
@@ -199,7 +199,7 @@ Ford Prefect's experiment failed
 ## AutoHotkey
 
 
-###  Exceptions 
+###  Exceptions
 
 {{works with|AutoHotkey_L}}
 
@@ -215,14 +215,14 @@ Assert(bool){
 ```
 
 
-###  Legacy versions 
+###  Legacy versions
 
 
 ```AutoHotkey
 if (a != 42)
 {
 OutputDebug, "a != 42" ; sends output to a debugger if connected
-ListVars ; lists values of local and global variables 
+ListVars ; lists values of local and global variables
 Pause ; pauses the script, use ExitApp to exit instead
 }
 ```
@@ -275,7 +275,7 @@ END FUNCTION
 prompt$ bacon -q assertion.bac && ./assertion
 Converting 'assertion.bac'... done, 24 lines were processed in 0.006 seconds.
 Compiling 'assertion.bac'... cc  -c assertion.bac.c
-cc -o assertion assertion.bac.o -lbacon -lm 
+cc -o assertion assertion.bac.o -lbacon -lm
 Done, program 'assertion' ready.
 The ultimate answer is indeed 42
 Now, expect a failure, unless NDEBUG defined at compile time
@@ -285,7 +285,7 @@ ERROR: signal ABORT received - internal error. Try to compile the program with T
 prompt$ bacon -q -o '-DNDEBUG' assertion.bac && ./assertion
 Converting 'assertion.bac'... done, 24 lines were processed in 0.003 seconds.
 Compiling 'assertion.bac'... cc  -DNDEBUG -c assertion.bac.c
-cc -o assertion assertion.bac.o -lbacon -lm 
+cc -o assertion assertion.bac.o -lbacon -lm
 Done, program 'assertion' ready.
 The ultimate answer is indeed 42
 Now, expect a failure, unless NDEBUG defined at compile time
@@ -300,7 +300,7 @@ Now, expect a failure, unless NDEBUG defined at compile time
 ```bbcbasic
       PROCassert(a% = 42)
       END
-      
+
       DEF PROCassert(bool%)
       IF NOT bool% THEN ERROR 100, "Assertion failed"
       ENDPROC
@@ -323,8 +323,8 @@ assert_equal 13 42  #Raises an exception
 ## C
 
 
-```c>#include <assert.h
-
+```c
+#include <assert.h>
 
 int main(){
    int a;
@@ -374,7 +374,7 @@ static class Program
 
         Console.WriteLine("After Trace.Assert");
 
-        // Only hit in debug builds.        
+        // Only hit in debug builds.
         Debug.Assert(a == 42, "Debug assertion failed");
 
         Console.WriteLine("After Debug.Assert");
@@ -400,7 +400,7 @@ Module Program
 
         Console.WriteLine("After Trace.Assert")
 
-        ' Only hit in debug builds.        
+        ' Only hit in debug builds.
         Debug.Assert(a = 42, "Debug assertion failed: The Answer was incorrect")
 
         Console.WriteLine("After Debug.Assert")
@@ -452,8 +452,8 @@ Trace.Listeners.Add(new ConsoleTraceListener())
 
 {{trans|C}}
 
-```cpp>#include <cassert
- // assert.h also works
+```cpp
+#include <cassert> // assert.h also works
 
 int main()
 {
@@ -497,10 +497,10 @@ Works with BlackBox Component Builder
 ```oberon2
 
 MODULE Assertions;
-VAR 
+VAR
 	x: INTEGER;
 PROCEDURE DoIt*;
-BEGIN 
+BEGIN
 	x := 41;
 	ASSERT(x = 42);
 END DoIt;
@@ -516,8 +516,8 @@ Output:
 
 TRAP 0
 
- Assertions.DoIt   [0000001DH] 
- Kernel.Call   [00001A7CH] 
+ Assertions.DoIt   [0000001DH]
+ Kernel.Call   [00001A7CH]
 	.adr	INTEGER	1685454913
 	.kind	INTEGER	0
 	.n	INTEGER	0
@@ -528,7 +528,7 @@ TRAP 0
 	.size	INTEGER	2287288
 	.sp	INTEGER	256
 	.typ	POINTER	NIL
- Meta.Item.ParamCallVal   [00002B5EH] 
+ Meta.Item.ParamCallVal   [00002B5EH]
 	.adr	INTEGER	1685454913
 	.data	ARRAY 256 OF INTEGER	elements
 
@@ -684,7 +684,7 @@ This function throws an exception if assertion fails.
 ## E
 
 
-E does not have the specific feature of assertions which may be disabled by a global option. But it does have a utility to throw an exception if a condition is false: 
+E does not have the specific feature of assertions which may be disabled by a global option. But it does have a utility to throw an exception if a condition is false:
 
 
 ```e
@@ -771,9 +771,9 @@ ExUnit.start
 
 defmodule AssertionTest do
   use ExUnit.Case
-  
+
   def return_5, do: 5
-  
+
   test "not equal" do
     assert 42 == return_5
   end
@@ -867,7 +867,7 @@ USING: kernel ;
 
 ## FBSL
 
-One needs to DECLARE the asserter variable at the top of script. 
+One needs to DECLARE the asserter variable at the top of script.
 
 This implementation evaluates the expression given to the function and displays a message if it evaluates to false.
 
@@ -1059,7 +1059,7 @@ main = let a = someValue in
 
 ```Icon
 ...
-runerr(n,( expression ,"Assertion/error - message."))  # Throw (and possibly trap) an error number n if expression succeeds. 
+runerr(n,( expression ,"Assertion/error - message."))  # Throw (and possibly trap) an error number n if expression succeeds.
 ...
 stop(( expression ,"Assertion/stop - message."))       # Terminate program if expression succeeds.
 ...
@@ -1138,12 +1138,12 @@ Note: assertion checking is disabled by default when you run your program with t
 
 ```julia
 const x = 5
- 
+
 # @assert macro checks the supplied conditional expression, with the expression
 # returned in the failed-assertion message
 @assert x == 42
 # ERROR: LoadError: AssertionError: x == 42
- 
+
 # Julia also has type assertions of the form, x::Type which can be appended to
 # variable for type-checking at any point
 x::String
@@ -1200,7 +1200,7 @@ fail_if(
 
 ## Liberty BASIC
 
-Liberty BASIC has no exceptions or user-defined error messages, 
+Liberty BASIC has no exceptions or user-defined error messages,
 but we could break program if condition is not met.
 We can even make it spell "AssertionFailed". In a way.
 
@@ -1238,7 +1238,7 @@ Stops with error message
 
 ```txt
 
-RuntimeError: Subscript out of range: -1, AssertionFailed() 
+RuntimeError: Subscript out of range: -1, AssertionFailed()
 
 ```
 
@@ -1327,26 +1327,26 @@ Module Assert {
       }
       Module Checkit {
             Function Error1 (x) {
-                  if x<10 then  Print "Normal" : exit 
+                  if x<10 then  Print "Normal" : exit
                   =130   ' error code
             }
-            Call Error1(5) 
+            Call Error1(5)
             Try ok {
                   Call Error1(100)
-            } 
-            If not Ok then Rec.Error Error$ : Flush Error 
-            
+            }
+            If not Ok then Rec.Error Error$ : Flush Error
+
             Test "breakpoint A"   ' open Control form, show code as executed, press next or close it
-            
+
             Try {
                   Report "Run this"
                   Error "Hello"
                   Report "Not run this"
             }
             Rec.Error Error$
-            
+
             Module Error1 (x) {
-                  if x<10 then  Print "Normal" : exit 
+                  if x<10 then  Print "Normal" : exit
                   Error "Big Error"
             }
             Try ok {
@@ -1357,7 +1357,7 @@ Module Assert {
       Checkit
       Rec.Display
       Rec.SaveIt
-      win "notepad.exe", dir$+Rec.lastfilename$     
+      win "notepad.exe", dir$+Rec.lastfilename$
 }
 Assert
 
@@ -1435,10 +1435,10 @@ Output (failed assertion):
 This is METAFONT, Version 2.71828 (Web2C 7.5.5)
 (./assert.mf
 ! assertion failed.
-<to be read again> 
+<to be read again>
                    ;
 l.4 assert(n=42);
-                 
+
 ?
 ```
 
@@ -1472,7 +1472,7 @@ using Nemerle.Assertions;
 class SampleClass
 {
 	public SomeMethod (input : list[int]) : int
-	  requires input.Length > 0                 // requires keyword indicates precondition, 
+	  requires input.Length > 0                 // requires keyword indicates precondition,
                                                     // there can be more than one condition per method
 	{ ... }
 
@@ -1619,7 +1619,7 @@ declare
   end
 in
   {PrintNumber 42} %% ok
-  {PrintNumber 11} %% throws 
+  {PrintNumber 11} %% throws
 ```
 
 
@@ -1745,7 +1745,7 @@ assert('$a == 42');
 
 ## Phix
 
-User defined types allow the value to be automatically tested whenever it changes, and 
+User defined types allow the value to be automatically tested whenever it changes, and
 can be disabled using the "without type_check" directive:
 
 ```Phix
@@ -1758,7 +1758,7 @@ int42 i
 i = 41 -- type-check failure
 ```
 
-When a type check occurs, program execution halts and if the program was run from the 
+When a type check occurs, program execution halts and if the program was run from the
 editor, it automatically jumps to the offending source file and line.
 
 Note that, under "without type_check", the run-time reserves the right to continue to
@@ -1787,7 +1787,7 @@ assert(i=42,"i is not 42!!")
 
 Note that while the body of assert() and the call to it are suppressed, the calculation
 of the expression (i=42) may still generate code; sometimes further improvements to the
-compiler may be possible, sometimes the asserts may need "if DEBUG" around them. Also 
+compiler may be possible, sometimes the asserts may need "if DEBUG" around them. Also
 note that, as things stand, the constants 42 and "i is not 42!!" will be created in the
 executable file whatever DEBUG is set to, though again there is nothing to prevent the
 compiler from being enhanced to avoid emitting such unnecessary values, one day.
@@ -1895,7 +1895,7 @@ test(A):-
 
 PureBasic does not have a native function for assertion, but allows for the definition of one.
 
-The Macro below will only be included in the code if is compiled in debug mode, if so it will test the condition and if it fails it will inform with the message defined by the programmer, the line where it happened and in which source code file. 
+The Macro below will only be included in the code if is compiled in debug mode, if so it will test the condition and if it fails it will inform with the message defined by the programmer, the line where it happened and in which source code file.
 
 
 ```PureBasic
@@ -2026,7 +2026,7 @@ Look around
     Here I enter Say i
 2
     and then I press just enter
-program terminated    
+program terminated
 
 ```
 
@@ -2039,7 +2039,7 @@ RLaB does not have a special function to deal with assertions. The following wor
 
 ```RLaB
 
-// test if 'a' is 42, and if not stop the execution of the code and print 
+// test if 'a' is 42, and if not stop the execution of the code and print
 // some error message
 if (a != 42)
 {
@@ -2083,7 +2083,7 @@ end
 ```
 
 
-Output: 
+Output:
 ```txt
 <42> expected but was
 <5>.
@@ -2523,9 +2523,9 @@ n=41;  (n==42) or throw(Exception.AssertionError("I wanted 42!"));
 ```txt
 
 Stack trace for VM#1 ():
-   Cmd.__constructor addr:38  args(0) reg(1) 
+   Cmd.__constructor addr:38  args(0) reg(1)
    startup.__constructor addr:2242  args(0) reg(1) ER
-   startup.__constructor addr:2178  args(0) reg(22) 
+   startup.__constructor addr:2178  args(0) reg(22)
 Exception thrown: AssertionError(I wanted 42!)
 
 ```

@@ -16,8 +16,8 @@ Run the program to see a short help message about key bindings.
 
 Compile with <code>gcc -lpthread -lglut -lGL -lGLU</code>.  Run with <code>a.out file_name</code>.  There are a couple of larger test files on the talk page.  By default the program is compiled to use grayscale; compile time macro is available to switch to RGB.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>

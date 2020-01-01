@@ -27,8 +27,8 @@ Isn't the C sample here a bit useless?  After all this work, one ends up with a 
 : When I read the task, the requirements boil down to this sentence: "The purpose of this task is to create a basic class with a method, a constructor, an instance variable and how to instantiate it. ". It appears to only cover encapsulation, not polymorphism or inheritance. There's nothing in there about polymorphism or dispatching based on type. However, I think it may be perfectly appropriate to create multiple tasks, one to an aspect of OO, and deprecate this task in favor of them. That's likely to produce far better results. --[[User:Short Circuit|Michael Mol]] 10:30, 20 June 2011 (UTC)
 : While C isn't OO, it can be used to create class-like things.  If you stick some function pointers in a struct, it can start to act like a rudimentary class from any number of OO languages.  With some work, one struct could also "inherit" from another by copying function pointers and data out of one class and into a second.  While none of this would happen automatically, it could be made to happen. Consider:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <malloc.h>
 
 struct foo{

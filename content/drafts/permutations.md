@@ -14,9 +14,9 @@ tags = []
 
 ;Task:
 Write a program that generates all   [[wp:Permutation|permutations]]   of   '''n'''   different objects.   (Practically numerals!)
- 
 
-;Related tasks: 
+
+;Related tasks:
 *   [[Find the missing permutation]]
 *   [[Permutations/Derangements]]
 
@@ -232,7 +232,7 @@ form permute using iv_set like lt_numbers
 endform.
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 
@@ -253,10 +253,10 @@ endform.
 ## Ada
 
 
-We split the task into two parts: The first part is to represent permutations, to initialize them and to go from one permutation to another one, until the last one has been reached. This can be used elsewhere, e.g., for the Topswaps [[http://rosettacode.org/wiki/Topswops]] task. The second part is to read the N from the command line, and to actually print all permutations over 1 .. N. 
+We split the task into two parts: The first part is to represent permutations, to initialize them and to go from one permutation to another one, until the last one has been reached. This can be used elsewhere, e.g., for the Topswaps [[http://rosettacode.org/wiki/Topswops]] task. The second part is to read the N from the command line, and to actually print all permutations over 1 .. N.
 
 ===The generic package Generic_Perm===
-When given N, this package defines the Element and Permutation types and exports procedures to set a permutation P to the first one, and to change P into the next one: 
+When given N, this package defines the Element and Permutation types and exports procedures to set a permutation P to the first one, and to change P into the next one:
 
 ```ada
 generic
@@ -264,9 +264,9 @@ generic
 package Generic_Perm is
    subtype Element is Positive range 1 .. N;
    type Permutation is array(Element) of Element;
-   
+
    procedure Set_To_First(P: out Permutation; Is_Last: out Boolean);
-   procedure Go_To_Next(P: in out Permutation; Is_Last: out Boolean); 
+   procedure Go_To_Next(P: in out Permutation; Is_Last: out Boolean);
 end Generic_Perm;
 ```
 
@@ -275,27 +275,27 @@ Here is the implementation of the package:
 
 ```ada
 package body Generic_Perm is
-   
+
 
    procedure Set_To_First(P: out Permutation; Is_Last: out Boolean) is
    begin
       for I in P'Range loop
 	 P (I) := I;
       end loop;
-      Is_Last := P'Length = 1; 
+      Is_Last := P'Length = 1;
       -- if P has a single element, the fist permutation is the last one
    end Set_To_First;
-   
+
    procedure Go_To_Next(P: in out Permutation; Is_Last: out Boolean) is
-      
+
       procedure Swap (A, B : in out Integer) is
          C : Integer := A;
       begin
          A := B;
          B := C;
       end Swap;
-      
-      I, J, K : Element;      
+
+      I, J, K : Element;
    begin
       -- find longest tail decreasing sequence
       -- after the loop, this sequence is I+1 .. n,
@@ -309,19 +309,19 @@ package body Generic_Perm is
 	    Is_Last := False;
 	    exit;
 	 end if;
-	 
+
 	 -- next instruction will raise an exception if I = 1, so
 	 -- exit now (this is the last permutation)
 	 exit when I = 1;
 	 I := I - 1;
       end loop;
-      
+
       -- if all the elements of the permutation are in
       -- decreasing order, this is the last one
       if Is_Last then
 	 return;
       end if;
-      
+
       -- sort the tail, i.e. reverse it, since it is in decreasing order
       J := I + 1;
       K := N;
@@ -330,20 +330,20 @@ package body Generic_Perm is
 	 J := J + 1;
 	 K := K - 1;
       end loop;
-      
+
       -- find lowest element in the tail greater than the ith element
       J := N;
       while P (J) > P (I) loop
 	 J := J - 1;
       end loop;
       J := J + 1;
-      
+
       -- exchange them
       -- this will give the next permutation in lexicographic order,
       -- since every element from ith to the last is minimum
       Swap (P (I), P (J));
    end Go_To_Next;
-   
+
 end Generic_Perm;
 ```
 
@@ -352,7 +352,7 @@ end Generic_Perm;
 
 ```ada
 with Ada.Text_IO, Ada.Command_Line, Generic_Perm;
- 
+
 procedure Print_Perms is
    package CML renames Ada.Command_Line;
    package TIO renames Ada.Text_IO;
@@ -361,14 +361,14 @@ begin
       package Perms is new Generic_Perm(Positive'Value(CML.Argument(1)));
       P : Perms.Permutation;
       Done : Boolean := False;
-      
+
       procedure Print(P: Perms.Permutation) is
       begin
          for I in P'Range loop
             TIO.Put (Perms.Element'Image (P (I)));
          end loop;
          TIO.New_Line;
-      end Print;         
+      end Print;
    begin
       Perms.Set_To_First(P, Done);
       loop
@@ -378,7 +378,7 @@ begin
       end loop;
    end;
 exception
-   when Constraint_Error 
+   when Constraint_Error
      => TIO.Put_Line ("*** Error: enter one numerical argument n with n >= 1");
 end Print_Perms;
 ```
@@ -481,7 +481,7 @@ PROC perm gen permutations = (PERMDATALIST data list, PERMDATALISTYIELD yield)VO
     OD
   FI
 );
- 
+
 SKIP
 ```
 '''File: test_permutations.a68'''
@@ -500,7 +500,7 @@ main:(
   FLEX[0]PERMDATA test case := (1, 22, 333, 44444);
 
   INT upb data list = UPB test case;
-  FORMAT 
+  FORMAT
     data fmt := $g(0)$,
     data list fmt := $"("n(upb data list-1)(f(data fmt)", ")f(data fmt)")"$;
 
@@ -508,7 +508,7 @@ main:(
 ##   (PERMDATALIST permutation)VOID:(
     printf((data list fmt, permutation, $l$))
 # OD #))
- 
+
 )
 ```
 '''Output:'''
@@ -572,7 +572,7 @@ on permutations(xs)
                     concatMap(ts, go's |λ|(|delete|(x, xs)))
                 end |λ|
             end script
-            
+
             if {} ≠ xs then
                 concatMap(h, xs)
             else
@@ -586,9 +586,9 @@ end permutations
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     permutations({"aardvarks", "eat", "ants"})
-    
+
 end run
 
 
@@ -621,7 +621,7 @@ on |delete|(x, xs)
 end |delete|
 
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -646,8 +646,8 @@ end uncons
 {{Out}}
 
 ```txt
-{{"aardvarks", "eat", "ants"}, {"aardvarks", "ants", "eat"}, 
-{"eat", "aardvarks", "ants"}, {"eat", "ants", "aardvarks"}, 
+{{"aardvarks", "eat", "ants"}, {"aardvarks", "ants", "eat"},
+{"eat", "aardvarks", "ants"}, {"eat", "ants", "aardvarks"},
 {"ants", "aardvarks", "eat"}, {"ants", "eat", "aardvarks"}}
 ```
 
@@ -733,9 +733,9 @@ end permutations
 
 -- TEST ---------------------------------------------------
 on run
-    
+
     permutations({1, 2, 3})
-    
+
     --> {{1, 2, 3}, {2, 1, 3}, {2, 3, 1}, {1, 3, 2}, {3, 1, 2}, {3, 2, 1}}
 end run
 
@@ -788,7 +788,7 @@ on foldr(f, startValue, xs)
     end tell
 end foldr
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -1018,7 +1018,7 @@ permute.ahk
 312
 321
 ---------------------------
-OK   
+OK
 ---------------------------
 ```
 
@@ -1073,7 +1073,7 @@ ole
 olH
 ole
 ---------------------------
-OK   
+OK
 ---------------------------
 ```
 
@@ -1107,7 +1107,7 @@ permute.ahk
 54
 55
 ---------------------------
-OK   
+OK
 ---------------------------
 ```
 
@@ -1119,68 +1119,68 @@ MsgBox % P("11 a text ] u+z",3,0," ")
 <pre style="height:40ex;overflow:scroll">---------------------------
 permute.ahk
 ---------------------------
-11 a text 
-11 a ] 
-11 a u+z 
-11 text a 
-11 text ] 
-11 text u+z 
-11 ] a 
-11 ] text 
-11 ] u+z 
-11 u+z a 
-11 u+z text 
-11 u+z ] 
-a 11 text 
-a 11 ] 
-a 11 u+z 
-a text 11 
-a text ] 
-a text u+z 
-a ] 11 
-a ] text 
-a ] u+z 
-a u+z 11 
-a u+z text 
-a u+z ] 
-text 11 a 
-text 11 ] 
-text 11 u+z 
-text a 11 
-text a ] 
-text a u+z 
-text ] 11 
-text ] a 
-text ] u+z 
-text u+z 11 
-text u+z a 
-text u+z ] 
-] 11 a 
-] 11 text 
-] 11 u+z 
-] a 11 
-] a text 
-] a u+z 
-] text 11 
-] text a 
-] text u+z 
-] u+z 11 
-] u+z a 
-] u+z text 
-u+z 11 a 
-u+z 11 text 
-u+z 11 ] 
-u+z a 11 
-u+z a text 
-u+z a ] 
-u+z text 11 
-u+z text a 
-u+z text ] 
-u+z ] 11 
-u+z ] a 
-u+z ] text 
+11 a text
+11 a ]
+11 a u+z
+11 text a
+11 text ]
+11 text u+z
+11 ] a
+11 ] text
+11 ] u+z
+11 u+z a
+11 u+z text
+11 u+z ]
+a 11 text
+a 11 ]
+a 11 u+z
+a text 11
+a text ]
+a text u+z
+a ] 11
+a ] text
+a ] u+z
+a u+z 11
+a u+z text
+a u+z ]
+text 11 a
+text 11 ]
+text 11 u+z
+text a 11
+text a ]
+text a u+z
+text ] 11
+text ] a
+text ] u+z
+text u+z 11
+text u+z a
+text u+z ]
+] 11 a
+] 11 text
+] 11 u+z
+] a 11
+] a text
+] a u+z
+] text 11
+] text a
+] text u+z
+] u+z 11
+] u+z a
+] u+z text
+u+z 11 a
+u+z 11 text
+u+z 11 ]
+u+z a 11
+u+z a text
+u+z a ]
+u+z text 11
+u+z text a
+u+z text ]
+u+z ] 11
+u+z ] a
+u+z ] text
 ---------------------------
-OK   
+OK
 ---------------------------
 ```
 
@@ -1207,7 +1207,7 @@ Recursive permutation generator.
 ```Batch File
 
 @echo off
-setlocal enabledelayedexpansion  
+setlocal enabledelayedexpansion
 set arr=ABCD
 set /a n=4
 :: echo !arr!
@@ -1220,7 +1220,7 @@ if %1 equ 1 call echo(!%2! & exit /b
 set /a "num=%1-1,n2=num-1"
 set arr=!%2!
 for /L %%c in (0,1,!n2!) do (
-   call:permu !num! arr 
+   call:permu !num! arr
    set /a  n1="num&1"
    if !n1! equ 0 (call:swapit !num! 0 arr) else (call:swapit !num! %%c arr)
    )
@@ -1290,7 +1290,7 @@ The procedure PROC_NextPermutation() will give the next lexicographic permutatio
         PROC_NextPermutation(List%())
       NEXT
       END
-      
+
       DEF PROC_NextPermutation(A%())
       LOCAL first, last, elementcount, pos
       elementcount = DIM(A%(),1)
@@ -1310,7 +1310,7 @@ The procedure PROC_NextPermutation() will give the next lexicographic permutatio
       SWAP A%(pos), A%(last)
       PROC_Permutation_Reverse(A%(), pos+1, elementcount)
       ENDPROC
-      
+
       DEF PROC_Permutation_Reverse(A%(), first, last)
       WHILE first < last
         SWAP A%(first), A%(last)
@@ -1511,8 +1511,8 @@ for (j = 0; j < i; i--, j++) {
 
 See [[wp:Permutation#Systematic_generation_of_all_permutations|lexicographic generation]] of permutations.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 /* print a list of ints */
@@ -1528,19 +1528,19 @@ int show(int *x, int len)
 int next_lex_perm(int *a, int n) {
 #	define swap(i, j) {t = a[i]; a[i] = a[j]; a[j] = t;}
 	int k, l, t;
- 
+
 	/* 1. Find the largest index k such that a[k] < a[k + 1]. If no such
 	      index exists, the permutation is the last permutation. */
 	for (k = n - 1; k && a[k - 1] >= a[k]; k--);
 	if (!k--) return 0;
- 
+
 	/* 2. Find the largest index l such that a[k] < a[l]. Since k + 1 is
 	   such an index, l is well defined */
 	for (l = n - 1; a[l] <= a[k]; l--);
- 
+
 	/* 3. Swap a[k] with a[l] */
 	swap(k, l);
- 
+
 	/* 4. Reverse the sequence from a[k + 1] to the end */
 	for (k++, l = n - 1; l > k; l--, k++)
 		swap(k, l);
@@ -1621,8 +1621,8 @@ int main()
 
 See [[wp:Permutation#Systematic_generation_of_all_permutations|lexicographic generation]] of permutations.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 /* print a list of ints */
@@ -1638,19 +1638,19 @@ int show(int *x, int len)
 int next_lex_perm(int *a, int n) {
 #	define swap(i, j) {t = a[i]; a[i] = a[j]; a[j] = t;}
 	int k, l, t;
- 
+
 	/* 1. Find the largest index k such that a[k] < a[k + 1]. If no such
 	      index exists, the permutation is the last permutation. */
 	for (k = n - 1; k && a[k - 1] >= a[k]; k--);
 	if (!k--) return 0;
- 
+
 	/* 2. Find the largest index l such that a[k] < a[l]. Since k + 1 is
 	   such an index, l is well defined */
 	for (l = n - 1; a[l] <= a[k]; l--);
- 
+
 	/* 3. Swap a[k] with a[l] */
 	swap(k, l);
- 
+
 	/* 4. Reverse the sequence from a[k + 1] to the end */
 	for (k++, l = n - 1; l > k; l--, k++)
 		swap(k, l);
@@ -1731,8 +1731,8 @@ int main()
 
 The C++ standard library provides for this in the form of <code>std::next_permutation</code> and <code>std::prev_permutation</code>.
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -1862,7 +1862,7 @@ Recursive Linq
 {
      if (values.Count() == 1)
          return new [] {values};
-     return values.SelectMany(v => Permutations(values.Where(x=> x != v)),(v, p) => p.Prepend(v));    
+     return values.SelectMany(v => Permutations(values.Where(x=> x != v)),(v, p) => p.Prepend(v));
 }
 ```
 
@@ -1987,7 +1987,7 @@ class Permutations
   static void rec(int ind)
   {
     for (int i = n; next[i] != n; i = next[i])
-    {                              
+    {
       buf [ind] = next[i];
       next[i]=next[next[i]];
       if (ind < n - 1) rec(ind + 1);
@@ -2052,7 +2052,7 @@ Replacing the call to the combinatorics library function by its real implementat
      (if (zero? (count vec-sorted))
        (list [])
        (vec-lex-permutations vec-sorted)))))
-  
+
 (defn permutations
   "All the permutations of items, lexicographic by index"
   [items]
@@ -2082,10 +2082,10 @@ arrayExcept = (arr, idx) ->
 permute = (arr) ->
 	arr = Array::slice.call arr, 0
 	return [[]] if arr.length == 0
-	
+
 	permutations = (for value,idx in arr
 		[value].concat perm for perm in permute arrayExcept arr, idx)
-	
+
 	# Flatten the array before returning it.
 	[].concat permutations...
 ```
@@ -2593,7 +2593,7 @@ function nextPermutation(sequence s)
     if length(s) < 1 then
         return 0
     end if
-    
+
     pos = length(s)-1
     while compare(s[pos], s[pos+1]) >= 0 do
         pos -= 1
@@ -2601,7 +2601,7 @@ function nextPermutation(sequence s)
             return -1
         end if
     end while
-    
+
     last = length(s)
     while compare(s[last], s[pos]) <= 0 do
         last -= 1
@@ -2609,7 +2609,7 @@ function nextPermutation(sequence s)
     x = s[pos]
     s[pos] = s[last]
     s[last] = x
-    
+
     return reverse(s, pos+1, length(s))
 end function
 
@@ -2641,7 +2641,7 @@ dbac    dbca    dcab    dcba
 let rec insert left x right = seq {
     match right with
     | [] -> yield left @ [x]
-    | head :: tail -> 
+    | head :: tail ->
         yield left @ [x] @ right
         yield! insert (left @ [head]) x tail
     }
@@ -2652,9 +2652,9 @@ let rec perms permute =
         | [] -> yield []
         | head :: tail -> yield! Seq.collect (insert [] head) (perms tail)
     }
-            
+
 [<EntryPoint>]
-let main argv = 
+let main argv =
     perms (Seq.toList argv)
     |> Seq.iter (fun x -> printf "%A\n" x)
     0
@@ -2680,7 +2680,7 @@ Translation of Haskell "insertion-based approach" (last version)
 
 ```fsharp
 
-let permutations xs = 
+let permutations xs =
     let rec insert x = function
         | [] -> [[x]]
         | head :: tail -> (x :: (head :: tail)) :: (List.map (fun l -> head :: l) (insert x tail))
@@ -2747,7 +2747,7 @@ end program permutations
 
 
 
-###  Alternate solution 
+###  Alternate solution
 
 
 Instead of looking up unused values, this program starts from [1, ..., n] and does only swaps, hence the array always represents a valid permutation.
@@ -2787,7 +2787,7 @@ end program
 
 
 
-###  Fortran Speed Test 
+###  Fortran Speed Test
 
 So ... what is the fastest algorithm?
 
@@ -2797,22 +2797,22 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
 ```fortran
    program testing_permutation_algorithms
 
-   implicit none 
-   integer :: nmax 
+   implicit none
+   integer :: nmax
    integer, dimension(:),allocatable :: ida
    logical :: mtc
    logical :: even
    integer :: i
    integer(8) :: ic
    integer :: clock_rate, clock_max, t1, t2
-   real(8) :: dt 
-   integer :: pos_min, pos_max 
+   real(8) :: dt
+   integer :: pos_min, pos_max
 !
 !
 !  Beginning:
 !
    write(*,*) 'INPUT N:'
-   read *, nmax 
+   read *, nmax
    write(*,*) 'N =', nmax
    allocate ( ida(1:nmax) )
 !
@@ -2828,12 +2828,12 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
 !
    mtc = .false.
 !
-   do 
+   do
       call subnexper ( nmax, ida, mtc, even )
 !
 !     1) counting the number of permutatations
 !
-      ic = ic + 1 
+      ic = ic + 1
 !
 !     2) writing out the result:
 !
@@ -2844,22 +2844,22 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
 !
 !     repeat if not being finished yet, otherwise exit.
 !
-      if (mtc) then 
-         cycle 
-      else 
-         exit 
-      endif 
+      if (mtc) then
+         cycle
+      else
+         exit
+      endif
 !
    enddo
 !
    call system_clock ( t2, clock_rate, clock_max )
    dt =  ( dble(t2) - dble(t1) )/ dble(clock_rate)
 !
-!  Finishing (1) 
+!  Finishing (1)
 !
    write(*,*) "1) subnexper:"
    write(*,*) 'Total permutations :', ic
-   write(*,*) 'Total time elapsed :', dt 
+   write(*,*) 'Total time elapsed :', dt
 !
 !
 !  (2) Starting:
@@ -2869,7 +2869,7 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
    enddo
 !
    pos_min = 1
-   pos_max = nmax 
+   pos_max = nmax
 !
    ic = 0
    call system_clock ( t1, clock_rate, clock_max )
@@ -2879,11 +2879,11 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
    call system_clock ( t2, clock_rate, clock_max )
    dt =  ( dble(t2) - dble(t1) )/ dble(clock_rate)
 !
-!  Finishing (2) 
+!  Finishing (2)
 !
    write(*,*) "2) generate:"
    write(*,*) 'Total permutations :', ic
-   write(*,*) 'Total time elapsed :', dt 
+   write(*,*) 'Total time elapsed :', dt
 !
 !
 !  (3) Starting:
@@ -2901,11 +2901,11 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
    call system_clock ( t2, clock_rate, clock_max )
    dt =  ( dble(t2) - dble(t1) )/ dble(clock_rate)
 !
-!  Finishing (3) 
+!  Finishing (3)
 !
    write(*,*) "3) perm:"
    write(*,*) 'Total permutations :', ic
-   write(*,*) 'Total time elapsed :', dt 
+   write(*,*) 'Total time elapsed :', dt
 !
 !
 !  (4) Starting:
@@ -2917,11 +2917,11 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
    ic = 0
    call system_clock ( t1, clock_rate, clock_max )
 !
-   do 
+   do
 !
 !     1) counting the number of permutatations
 !
-      ic = ic + 1 
+      ic = ic + 1
 !
 !     2) writing out the result:
 !
@@ -2932,40 +2932,40 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
 !
 !     repeat if not being finished yet, otherwise exit.
 !
-      if ( nextp(nmax,ida) ) then 
-         cycle 
-      else 
-         exit 
-      endif 
+      if ( nextp(nmax,ida) ) then
+         cycle
+      else
+         exit
+      endif
 !
    enddo
 !
    call system_clock ( t2, clock_rate, clock_max )
    dt =  ( dble(t2) - dble(t1) )/ dble(clock_rate)
 !
-!  Finishing (4) 
+!  Finishing (4)
 !
    write(*,*) "4) nextp:"
    write(*,*) 'Total permutations :', ic
-   write(*,*) 'Total time elapsed :', dt 
+   write(*,*) 'Total time elapsed :', dt
 !
 !
 !  What's else?
 !  ...
 !
 !==
-   deallocate(ida) 
+   deallocate(ida)
 !
-   stop 
-!==  
-   contains 
-!==  
-!     Modified version of SUBROUTINE NEXPER from the book of 
-!     Albert Nijenhuis and Herbert S. Wilf, "Combinatorial 
+   stop
+!==
+   contains
+!==
+!     Modified version of SUBROUTINE NEXPER from the book of
+!     Albert Nijenhuis and Herbert S. Wilf, "Combinatorial
 !     Algorithms For Computers and Calculators", 2nd Ed, p.59.
 !
       subroutine subnexper ( n, a, mtc, even )
-      implicit none 
+      implicit none
       integer,intent(in)    ::  n
       integer,dimension(n),intent(inout)  :: a
       logical,intent(inout) :: mtc, even
@@ -2981,7 +2981,7 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
 
       do i = 1,n
          a(i) = i
-      enddo 
+      enddo
 
       mtc  = .true.
 5     even = .true.
@@ -3031,7 +3031,7 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
 35    m = mod(s+1,2)*(n+1)
 
       do j = 1,i
-         if(isign(1,a(j)-ia) .eq. isign(1,a(j)-m)) cycle 
+         if(isign(1,a(j)-ia) .eq. isign(1,a(j)-m)) cycle
          m = a(j)
          l = j
       enddo
@@ -3041,27 +3041,27 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
       even = .true.
 
       return
-      end subroutine 
+      end subroutine
 !=====
 !
 !     http://rosettacode.org/wiki/Permutations#Fortran
 !
       recursive subroutine generate (pos)
- 
+
       implicit none
       integer,intent(in) :: pos
       integer :: val
- 
+
       if (pos > pos_max) then
 !
 !        1) counting the number of permutatations
 !
-         ic = ic + 1 
+         ic = ic + 1
 !
 !        2) writing out the result:
 !
 !        write (*,*) permutation
-!      
+!
       else
          do val = 1, nmax
             if (.not. any (ida( : pos-1) == val)) then
@@ -3070,7 +3070,7 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
             endif
          enddo
       endif
- 
+
       end subroutine
 !=====
 !
@@ -3079,21 +3079,21 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
       recursive subroutine perm (i)
       implicit none
       integer,intent(inout) :: i
-!      
-      integer :: j, t, ip1 
+!
+      integer :: j, t, ip1
 !
       if (i == nmax) then
 !
 !        1) couting the number of permutatations
 !
-         ic = ic + 1 
+         ic = ic + 1
 !
 !        2) writing out the result:
 !
 !        write (*,*) a
-!            
+!
       else
-         ip1 = i+1 
+         ip1 = i+1
          do j = i, nmax
             t = ida(i)
             ida(i) = ida(j)
@@ -3104,7 +3104,7 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
             ida(j) = t
          enddo
       endif
-      return 
+      return
       end subroutine
 !=====
 !
@@ -3134,9 +3134,9 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
       if ( j .lt. k ) goto 30
       j = i
       if (j .ne. 0 ) goto 40
-!      
+!
       nextp = .false.
-!      
+!
       return
 !
    40 j = j+1
@@ -3144,10 +3144,10 @@ Here below is the speed test for a couple of algorithms of permutation. We can a
       t = a(i)
       a(i) = a(j)
       a(j) = t
-!      
+!
       nextp = .true.
-!      
-      return 
+!
+      return
       end function
 !=====
 !
@@ -3163,7 +3163,7 @@ An example of performance:
 
 1) Compiled with GNU fortran compiler:
 
-gfortran -O3  testing_permutation_algorithms.f90 ; ./a.out 
+gfortran -O3  testing_permutation_algorithms.f90 ; ./a.out
 
  INPUT N:
 10
@@ -3171,10 +3171,10 @@ gfortran -O3  testing_permutation_algorithms.f90 ; ./a.out
  1) subnexper:
  Total permutations :              3628800
  Total time elapsed :   4.9000000000000002E-002
- 2) generate: 
+ 2) generate:
  Total permutations :              3628800
- Total time elapsed :  0.84299999999999997     
- 3) perm: 
+ Total time elapsed :  0.84299999999999997
+ 3) perm:
  Total permutations :              3628800
  Total time elapsed :   5.6000000000000001E-002
  4) nextp:
@@ -3183,7 +3183,7 @@ gfortran -O3  testing_permutation_algorithms.f90 ; ./a.out
 
 b) Compiled with Intel compiler:
 
-ifort -O3  testing_permutation_algorithms.f90 ; ./a.out 
+ifort -O3  testing_permutation_algorithms.f90 ; ./a.out
 
 INPUT N:
 10
@@ -3191,10 +3191,10 @@ INPUT N:
  1) subnexper:
  Total permutations :               3628800
  Total time elapsed :  8.240000000000000E-002
- 2) generate: 
+ 2) generate:
  Total permutations :               3628800
- Total time elapsed :  0.616200000000000     
- 3) perm: 
+ Total time elapsed :  0.616200000000000
+ 3) perm:
  Total permutations :               3628800
  Total time elapsed :  5.760000000000000E-002
  4) nextp:
@@ -3210,7 +3210,7 @@ So far, we have conclusion from the above performance:
 Note: It is worth mentioning that the performance of this test is dependent not only on algorithm, but also on computer where the test runs. Therefore we should run the test on our own computer and make conclusion by ourselves.
 
 
-###  Fortran 77 
+###  Fortran 77
 
 Here is an alternate, iterative version in Fortran 77.
 {{trans|Ada}}
@@ -3228,7 +3228,7 @@ Here is an alternate, iterative version in Fortran 77.
    10 print *,(a(i),i=1,n)
       if(nextp(n,a)) go to 10
       end
-      
+
       function nextp(n,a)
       integer n,a,i,j,k,t
       logical nextp
@@ -3275,7 +3275,7 @@ Sub perms(n As Long)
 
     For j = 0 To n -1
         a(j) = j +1
-        Print a(j); 
+        Print a(j);
     Next
     Print " ";
 
@@ -3292,9 +3292,9 @@ Sub perms(n As Long)
             Next
             count += 1
             If count = 12 Then
-                Print 
+                Print
                 count = 0
-            Else 
+            Else
                 Print " ";
             End If
             c(i) += 1
@@ -3383,12 +3383,12 @@ NextPermutation := function(a)
       return true;
    fi;
 end;
-   
+
 Permutations := function(n)
    local a, L;
    a := List([1 .. n], x -> x);
    L := [ ];
-   repeat 
+   repeat
       Add(L, ShallowCopy(a));
    until not NextPermutation(a);
    return L;
@@ -3452,7 +3452,7 @@ Hello • 7.9 123
 
 
 
-###  recursive 
+###  recursive
 
 
 
@@ -3663,7 +3663,7 @@ permutations = foldr (concatMap . insertEverywhere) [[]]
 ```
 
 
-A serialized version: 
+A serialized version:
 {{Trans|Mathematica}}
 
 ```haskell
@@ -3702,13 +3702,13 @@ end
 {{out}}
 
 ```txt
-->permute Aardvarks eat ants      
-Aardvarks eat ants 
-Aardvarks ants eat 
-eat Aardvarks ants 
-eat ants Aardvarks 
-ants eat Aardvarks 
-ants Aardvarks eat 
+->permute Aardvarks eat ants
+Aardvarks eat ants
+Aardvarks ants eat
+eat Aardvarks ants
+eat ants Aardvarks
+ants eat Aardvarks
+ants Aardvarks eat
 ->
 ```
 
@@ -3729,7 +3729,7 @@ ants Aardvarks eat
 220   IF I=1 THEN
 230     FOR X=1 TO N
 240       PRINT T(X);
-250     NEXT 
+250     NEXT
 260     PRINT :LET S=S+1
 270   ELSE
 280     CALL PERM(I-1)
@@ -3862,12 +3862,12 @@ public class PermutationGenerator {
 
 ```txt
 
-1 2 3 
-1 3 2 
-2 1 3 
-2 3 1 
-3 1 2 
-3 2 1 
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
 
 ```
 
@@ -4002,7 +4002,7 @@ ants,eat,Aardvarks
 
     // deleteBy :: (a -> a -> Bool) -> a -> [a] -> [a]
     var deleteBy = function (f, x, xs) {
-        return xs.length > 0 ? f(x, xs[0]) ? xs.slice(1) : 
+        return xs.length > 0 ? f(x, xs[0]) ? xs.slice(1) :
         [xs[0]].concat(deleteBy(f, x, xs.slice(1))) : [];
     };
 
@@ -4010,13 +4010,13 @@ ants,eat,Aardvarks
     return permutations(['Aardvarks', 'eat', 'ants']);
 })();
 ```
- 
+
 
 {{Out}}
 
 ```JavaScript
 [["Aardvarks", "eat", "ants"], ["Aardvarks", "ants", "eat"],
- ["eat", "Aardvarks", "ants"], ["eat", "ants", "Aardvarks"], 
+ ["eat", "Aardvarks", "ants"], ["eat", "ants", "Aardvarks"],
 ["ants", "Aardvarks", "eat"], ["ants", "eat", "Aardvarks"]]
 ```
 
@@ -4072,7 +4072,7 @@ Recursively, in terms of concatMap and delete:
 
 ```JavaScript
 [["Aardvarks", "eat", "ants"], ["Aardvarks", "ants", "eat"],
- ["eat", "Aardvarks", "ants"], ["eat", "ants", "Aardvarks"], 
+ ["eat", "Aardvarks", "ants"], ["eat", "ants", "Aardvarks"],
 ["ants", "Aardvarks", "eat"], ["ants", "eat", "Aardvarks"]]
 ```
 
@@ -4147,7 +4147,7 @@ def permutations:
 
 ```
 
-'''Example 1''': list them    
+'''Example 1''': list them
  [range(0;3)] | permutations
  [0,1,2]
  [0,2,1]
@@ -4156,7 +4156,7 @@ def permutations:
  [2,0,1]
  [2,1,0]
 
-'''Example 2''': count them    
+'''Example 2''': count them
  [[range(0;3)] | permutations] | length
  6
 
@@ -4201,16 +4201,16 @@ println()
 ```txt
 
 All the permutations of RCode (120):
-    RCode RCoed RCdoe RCdeo RCeod RCedo RoCde RoCed RodCe RodeC RoeCd RoedC 
-    RdCoe RdCeo RdoCe RdoeC RdeCo RdeoC ReCod ReCdo ReoCd ReodC RedCo RedoC 
-    CRode CRoed CRdoe CRdeo CReod CRedo CoRde CoRed CodRe CodeR CoeRd CoedR 
-    CdRoe CdReo CdoRe CdoeR CdeRo CdeoR CeRod CeRdo CeoRd CeodR CedRo CedoR 
-    oRCde oRCed oRdCe oRdeC oReCd oRedC oCRde oCRed oCdRe oCdeR oCeRd oCedR 
-    odRCe odReC odCRe odCeR odeRC odeCR oeRCd oeRdC oeCRd oeCdR oedRC oedCR 
-    dRCoe dRCeo dRoCe dRoeC dReCo dReoC dCRoe dCReo dCoRe dCoeR dCeRo dCeoR 
-    doRCe doReC doCRe doCeR doeRC doeCR deRCo deRoC deCRo deCoR deoRC deoCR 
-    eRCod eRCdo eRoCd eRodC eRdCo eRdoC eCRod eCRdo eCoRd eCodR eCdRo eCdoR 
-    eoRCd eoRdC eoCRd eoCdR eodRC eodCR edRCo edRoC edCRo edCoR edoRC edoCR 
+    RCode RCoed RCdoe RCdeo RCeod RCedo RoCde RoCed RodCe RodeC RoeCd RoedC
+    RdCoe RdCeo RdoCe RdoeC RdeCo RdeoC ReCod ReCdo ReoCd ReodC RedCo RedoC
+    CRode CRoed CRdoe CRdeo CReod CRedo CoRde CoRed CodRe CodeR CoeRd CoedR
+    CdRoe CdReo CdoRe CdoeR CdeRo CdeoR CeRod CeRdo CeoRd CeodR CedRo CedoR
+    oRCde oRCed oRdCe oRdeC oReCd oRedC oCRde oCRed oCdRe oCdeR oCeRd oCedR
+    odRCe odReC odCRe odCeR odeRC odeCR oeRCd oeRdC oeCRd oeCdR oedRC oedCR
+    dRCoe dRCeo dRoCe dRoeC dReCo dReoC dCRoe dCReo dCoRe dCoeR dCeRo dCeoR
+    doRCe doReC doCRe doCeR doeRC doeCR deRCo deRoC deCRo deCoR deoRC deoCR
+    eRCod eRCdo eRoCd eRodC eRdCo eRdoC eCRod eCRdo eCoRd eCodR eCdRo eCdoR
+    eoRCd eoRdC eoCRd eoCdR eodRC eodCR edRCo edRoC edCRo edCoR edoRC edoCR
 
 ```
 
@@ -4263,7 +4263,7 @@ Alternative:
 ```K
 
    perm:{x@m@&n=(#?:)'m:!n#n:#x}
-   
+
    perm[!3]
 (0 1 2
  0 2 1
@@ -4271,7 +4271,7 @@ Alternative:
  1 2 0
  2 0 1
  2 1 0)
-  
+
    perm "abc"
 ("abc"
  "acb"
@@ -4279,7 +4279,7 @@ Alternative:
  "bca"
  "cab"
  "cba")
-   
+
    `0:{1_,/" ",/: $x}' perm `$" "\"some random text"
 some random text
 some text random
@@ -4672,11 +4672,11 @@ ipermutations(3, 3)
 
 ```txt
 
-1 2 3 
-1 3 2 
-2 1 3 
-2 3 1 
-3 1 2 
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
 3 2 1
 
 ```
@@ -4698,7 +4698,7 @@ Module Checkit {
             Module Level (n, s, h)   {
                   If n=1 then {
                         while Len(s) {
-                              m1=each(h)     
+                              m1=each(h)
                               while m1 {
                                     Print Array$(m1);" ";
                               }
@@ -4710,7 +4710,7 @@ Module Checkit {
                         for i=1 to len(s) {
                               call Level n-1, cdr(s),  cons(h, car(s))
                               s=cons(cdr(s), car(s))
-                        }  
+                        }
                   }
                   Sub ToClipBoard()
                         local m=each(h)
@@ -4723,15 +4723,15 @@ Module Checkit {
                         a$<=b$   ' assign to global need <=
                   End Sub
             }
-            If len(s)=0 then Error 
+            If len(s)=0 then Error
             Head=(,)
             Call Level Len(s),  s, Head
       }
       Clear a$
       Permutations (1,2,3,4)
       Permutations (100, 200, 500)
-      Permutations ("A", "B", "C","D")  
-      Permutations ("DOG", "CAT", "BAT")    
+      Permutations ("A", "B", "C","D")
+      Permutations ("DOG", "CAT", "BAT")
       ClipBoard a$
 }
 Checkit
@@ -4758,8 +4758,8 @@ Module StepByStep {
                         =cons(car(m),c2(&f, cdr(m)))
                         if f then f=false:p++:  m=cons(cdr(m), car(m)) : if p=len(m) then p=0 : m=(,):: f=true
                   }
-                  c=c1  
-                  m--    
+                  c=c1
+                  m--
             }
             =lambda c, a (&f) -> {
                   =c(&f, a)
@@ -4768,23 +4768,23 @@ Module StepByStep {
       k=false
       StepA=PermutationStep((1,2,3,4))
       while not k {
-                 Print StepA(&k) 
+                 Print StepA(&k)
       }
       k=false
       StepA=PermutationStep((100,200,300))
       while not k {
-                 Print StepA(&k) 
+                 Print StepA(&k)
       }
       k=false
       StepA=PermutationStep(("A", "B", "C", "D"))
       while not k {
-                 Print StepA(&k) 
+                 Print StepA(&k)
       }
       k=false
       StepA=PermutationStep(("DOG", "CAT", "BAT"))
       while not k {
-                 Print StepA(&k) 
-      }      
+                 Print StepA(&k)
+      }
 }
 StepByStep
 
@@ -4793,66 +4793,66 @@ StepByStep
 
 {{out}}
 <pre style="height:30ex;overflow:scroll">
-1  2  3  4 
-1  2  4  3 
-1  3  4  2 
-1  3  2  4 
-1  4  2  3 
-1  4  3  2 
-2  3  4  1 
-2  3  1  4 
-2  4  1  3 
-2  4  3  1 
-2  1  3  4 
-2  1  4  3 
-3  4  1  2 
-3  4  2  1 
-3  1  2  4 
-3  1  4  2 
-3  2  4  1 
-3  2  1  4 
-4  1  2  3 
-4  1  3  2 
-4  2  3  1 
-4  2  1  3 
-4  3  1  2 
-4  3  2  1 
-100  200  500 
-100  500  200 
-200  500  100 
-200  100  500 
-500  100  200 
-500  200  100 
-A  B  C  D 
-A  B  D  C 
-A  C  D  B 
-A  C  B  D 
-A  D  B  C 
-A  D  C  B 
-B  C  D  A 
-B  C  A  D 
-B  D  A  C 
-B  D  C  A 
-B  A  C  D 
-B  A  D  C 
-C  D  A  B 
-C  D  B  A 
-C  A  B  D 
-C  A  D  B 
-C  B  D  A 
-C  B  A  D 
-D  A  B  C 
-D  A  C  B 
-D  B  C  A 
-D  B  A  C 
-D  C  A  B 
-D  C  B  A 
-DOG  CAT  BAT 
-DOG  BAT  CAT 
-CAT  BAT  DOG 
-CAT  DOG  BAT 
-BAT  DOG  CAT 
-BAT  CAT  DOG 
+1  2  3  4
+1  2  4  3
+1  3  4  2
+1  3  2  4
+1  4  2  3
+1  4  3  2
+2  3  4  1
+2  3  1  4
+2  4  1  3
+2  4  3  1
+2  1  3  4
+2  1  4  3
+3  4  1  2
+3  4  2  1
+3  1  2  4
+3  1  4  2
+3  2  4  1
+3  2  1  4
+4  1  2  3
+4  1  3  2
+4  2  3  1
+4  2  1  3
+4  3  1  2
+4  3  2  1
+100  200  500
+100  500  200
+200  500  100
+200  100  500
+500  100  200
+500  200  100
+A  B  C  D
+A  B  D  C
+A  C  D  B
+A  C  B  D
+A  D  B  C
+A  D  C  B
+B  C  D  A
+B  C  A  D
+B  D  A  C
+B  D  C  A
+B  A  C  D
+B  A  D  C
+C  D  A  B
+C  D  B  A
+C  A  B  D
+C  A  D  B
+C  B  D  A
+C  B  A  D
+D  A  B  C
+D  A  C  B
+D  B  C  A
+D  B  A  C
+D  C  A  B
+D  C  B  A
+DOG  CAT  BAT
+DOG  BAT  CAT
+CAT  BAT  DOG
+CAT  DOG  BAT
+BAT  DOG  CAT
+BAT  CAT  DOG
 
 </pre >
 
@@ -4890,8 +4890,8 @@ insert[L_, x_, n_] := Join[L[[;; n - 1]], {x}, L[[n ;;]]]
 
 (***Generate all permutations of a list S:*)
 
-permutations[S_] := 
- fold[Join @@ (Function[{L}, 
+permutations[S_] :=
+ fold[Join @@ (Function[{L},
        Table[insert[L, #2, k + 1], {k, 0, Length[L]}]] /@ #1) &, {{}},
    S]
 
@@ -4901,11 +4901,11 @@ permutations[S_] :=
 {{out}}
 
 ```txt
-{{4, 3, 2, 1}, {3, 4, 2, 1}, {3, 2, 4, 1}, {3, 2, 1, 4}, {4, 2, 3, 
-  1}, {2, 4, 3, 1}, {2, 3, 4, 1}, {2, 3, 1, 4}, {4, 2, 1, 3}, {2, 4, 
-  1, 3}, {2, 1, 4, 3}, {2, 1, 3, 4}, {4, 3, 1, 2}, {3, 4, 1, 2}, {3, 
-  1, 4, 2}, {3, 1, 2, 4}, {4, 1, 3, 2}, {1, 4, 3, 2}, {1, 3, 4, 
-  2}, {1, 3, 2, 4}, {4, 1, 2, 3}, {1, 4, 2, 3}, {1, 2, 4, 3}, {1, 2, 
+{{4, 3, 2, 1}, {3, 4, 2, 1}, {3, 2, 4, 1}, {3, 2, 1, 4}, {4, 2, 3,
+  1}, {2, 4, 3, 1}, {2, 3, 4, 1}, {2, 3, 1, 4}, {4, 2, 1, 3}, {2, 4,
+  1, 3}, {2, 1, 4, 3}, {2, 1, 3, 4}, {4, 3, 1, 2}, {3, 4, 1, 2}, {3,
+  1, 4, 2}, {3, 1, 2, 4}, {4, 1, 3, 2}, {1, 4, 3, 2}, {1, 3, 4,
+  2}, {1, 3, 2, 4}, {4, 1, 2, 3}, {1, 4, 2, 3}, {1, 2, 4, 3}, {1, 2,
   3, 4}}
 ```
 
@@ -4919,8 +4919,8 @@ Permutations[{1,2,3,4}]
 {{out}}
 
 ```txt
-{{1, 2, 3, 4}, {1, 2, 4, 3}, {1, 3, 2, 4}, {1, 3, 4, 2}, {1, 4, 2, 3}, {1, 4, 3, 2}, {2, 1, 3, 4}, {2, 1, 4, 3}, {2, 3, 1, 4}, {2, 3, 
-  4, 1}, {2, 4, 1, 3}, {2, 4, 3, 1}, {3, 1, 2, 4}, {3, 1, 4, 2}, {3, 2, 1, 4}, {3, 2, 4, 1}, {3, 4, 1, 2}, {3, 4, 2, 1}, {4, 1, 2, 
+{{1, 2, 3, 4}, {1, 2, 4, 3}, {1, 3, 2, 4}, {1, 3, 4, 2}, {1, 4, 2, 3}, {1, 4, 3, 2}, {2, 1, 3, 4}, {2, 1, 4, 3}, {2, 3, 1, 4}, {2, 3,
+  4, 1}, {2, 4, 1, 3}, {2, 4, 3, 1}, {3, 1, 2, 4}, {3, 1, 4, 2}, {3, 2, 1, 4}, {3, 2, 4, 1}, {3, 4, 1, 2}, {3, 4, 2, 1}, {4, 1, 2,
   3}, {4, 1, 3, 2}, {4, 2, 1, 3}, {4, 2, 3, 1}, {4, 3, 1, 2}, {4, 3, 2, 1}}
 ```
 
@@ -4977,12 +4977,12 @@ next_permutation(v) := block([n, i, j, k, t],
    t: v[j], v[j]: v[i], v[i]: t,
    true
 )$
- 
+
 print_perm(n) := block([v: makelist(i, i, 1, n)],
    disp(v),
    while next_permutation(v) do disp(v)
 )$
- 
+
 print_perm(3);
 /* [1, 2, 3]
    [1, 3, 2]
@@ -5113,7 +5113,7 @@ sol([[1, 2, 3, 4], [1, 2, 4, 3], [1, 3, 2, 4], [1, 3, 4, 2], [1, 4, 2, 3], [1, 4
     p[i] = p[j]
     p[j] = t
   EndWhile
-  TextWindow.WriteLine("Number of permutations: "+count) 
+  TextWindow.WriteLine("Number of permutations: "+count)
 ```
 
 {{out}}
@@ -5477,13 +5477,13 @@ END GPermutations.
 {{out}} (somewhat edited!)
 
 ```txt
-Printing 5040 permutations of 7 elements 
-1 2 3 4 5 6 7 
-1 2 3 4 5 7 6 
-1 2 3 4 6 5 7 
+Printing 5040 permutations of 7 elements
+1 2 3 4 5 6 7
+1 2 3 4 5 7 6
+1 2 3 4 6 5 7
 ...
-7 6 5 4 2 3 1 
-7 6 5 4 3 1 2 
+7 6 5 4 2 3 1
+7 6 5 4 3 1 2
 7 6 5 4 3 2 1
 
 ```
@@ -5500,7 +5500,7 @@ options replace format comments java crossref symbols nobinary
 import java.util.List
 import java.util.ArrayList
 
--- 
+--
 ### =======================================================================
 
 /**
@@ -5564,7 +5564,7 @@ class RPermutationIterator implements Iterator
   method hasNext() public returns boolean
     status = isTrue
     if getCurrentN() == factorial(getMaxN()) then status = isFalse
-    setCurrentN(getCurrentN() + 1)    
+    setCurrentN(getCurrentN() + 1)
     return status
 
   -- ---------------------------------------------------------------------------
@@ -5744,33 +5744,33 @@ Output:
 {{trans|Go}}
 
 ```nim
-# nim implementation of the (very fast) Go example 
+# nim implementation of the (very fast) Go example
 # http://rosettacode.org/wiki/Permutations#Go
-# implementing a recursive https://en.wikipedia.org/wiki/Steinhaus–Johnson–Trotter_algorithm 
+# implementing a recursive https://en.wikipedia.org/wiki/Steinhaus–Johnson–Trotter_algorithm
 
 proc perm( s: openArray[int], emit: proc(emit:openArray[int]) ) =
     var s = @s
-    if s.len == 0: 
+    if s.len == 0:
         emit(s)
         return
 
     var rc : proc(np: int)
-    rc = proc(np: int) = 
+    rc = proc(np: int) =
 
-        if np == 1: 
+        if np == 1:
             emit(s)
             return
-        
-        var 
+
+        var
             np1 = np - 1
             pp = s.len - np1
-        
+
         rc(np1) # recurs prior swaps
 
         for i in countDown(pp, 1):
             swap s[i], s[i-1]
-            rc(np1) # recurs swap 
-        
+            rc(np1) # recurs swap
+
         let w = s[0]
         s[0..<pp] = s[1..pp]
         s[pp] = w
@@ -5779,7 +5779,7 @@ proc perm( s: openArray[int], emit: proc(emit:openArray[int]) ) =
 
 var se = @[0, 1, 2, 3] #, 4, 5, 6, 7, 8, 9, 10]
 
-perm(se, proc(seq: openArray[int])= 
+perm(se, proc(seq: openArray[int])=
     echo seq
     )
 ```
@@ -5794,7 +5794,7 @@ perm(se, proc(seq: openArray[int])=
    Translation of Ada version. *)
 let next_perm p =
 	let n = Array.length p in
-	let i = let rec aux i = 
+	let i = let rec aux i =
 		if (i < 0) || (p.(i) < p.(i+1)) then i
 		else aux (i - 1) in aux (n - 2) in
 	let rec aux j k = if j < k then
@@ -5851,8 +5851,8 @@ let rec permutations l =
       let subperms = permutations (sub e l) in
       let t = List.map (fun a -> e::a) subperms in
       if k < n-1 then List.rev_append t (aux (k+1)) else t in
-   aux 0;; 
-      
+   aux 0;;
+
 let print l = List.iter (Printf.printf " %d") l; print_newline() in
 List.iter print (permutations [1;2;3;4])
 ```
@@ -5867,10 +5867,10 @@ let rec pr_perm k n l =
       | [] -> failwith "sub"
       | h :: t -> if h = e then t else h :: sub e t in
    (Printf.printf " %d" e; if n > 1 then pr_perm a (n-1) (sub e l))
-      
-let show_perms l = 
-   let n = List.length l in 
-   let rec fact n = if n < 3 then n else n * fact (n-1) in 
+
+let show_perms l =
+   let n = List.length l in
+   let rec fact n = if n < 3 then n else n * fact (n-1) in
    for i = 0 to (fact n)-1 do
       pr_perm i n l;
       print_newline()
@@ -5893,34 +5893,34 @@ sizeOfArray = EXTENT(charArray).
 
 RUN GetPermutations(1).
 
-PROCEDURE GetPermutations:   
-    DEFINE INPUT PARAMETER n AS INTEGER. 
-           
-    DEFINE VARIABLE i AS INTEGER.          
-    DEFINE VARIABLE j AS INTEGER. 
-    DEFINE VARIABLE currentPermutation AS CHARACTER.          
+PROCEDURE GetPermutations:
+    DEFINE INPUT PARAMETER n AS INTEGER.
 
-    REPEAT i = n TO sizeOfArray: 
+    DEFINE VARIABLE i AS INTEGER.
+    DEFINE VARIABLE j AS INTEGER.
+    DEFINE VARIABLE currentPermutation AS CHARACTER.
+
+    REPEAT i = n TO sizeOfArray:
         RUN swapValues(i,n).
-        RUN GetPermutations(n + 1).            
-        RUN swapValues(i,n).             
-    END.  
+        RUN GetPermutations(n + 1).
+        RUN swapValues(i,n).
+    END.
     IF n = sizeOfArray THEN DO:
         DO j = 1 TO EXTENT(charArray):
             currentPermutation = currentPermutation + charArray[j].
         END.
         DISPLAY currentPermutation WITH FRAME A DOWN.
     END.
-END PROCEDURE.  
+END PROCEDURE.
 
-PROCEDURE swapValues:                       
+PROCEDURE swapValues:
     DEFINE INPUT PARAMETER a AS INTEGER.
-    DEFINE INPUT PARAMETER b AS INTEGER.   
+    DEFINE INPUT PARAMETER b AS INTEGER.
     DEFINE VARIABLE temp AS CHARACTER.
-    temp = charArray[a].                     
-    charArray[a] = charArray[b].                   
-    charArray[b] = temp. 
-END PROCEDURE. 
+    temp = charArray[a].
+    charArray[a] = charArray[b].
+    charArray[b] = temp.
+END PROCEDURE.
 ```
 
 {{out}}
@@ -5983,7 +5983,7 @@ if not is_last then
 		j := j + 1;
 		k := k - 1;
 		end;
-		
+
 	j := n;
 	while p[j] > p[i] do j := j - 1;
 	j := j + 1;
@@ -6109,7 +6109,7 @@ end.
 //PermKoutOfN(12,12);
 
 ```txt
- 
+
 479001600 //= 12!
 00:00:01.328
 ```
@@ -6302,7 +6302,7 @@ sequence res
 integer w
     n -= 1
     res = set
-    for i=length(set) to 1 by -1 do 
+    for i=length(set) to 1 by -1 do
         w = remainder(n,i)+1
         res[i] = set[w]
         set[w] = set[i]
@@ -6460,7 +6460,7 @@ C B A
 
 ## Prolog
 
-Works with SWI-Prolog and library clpfd, 
+Works with SWI-Prolog and library clpfd,
 
 ```Prolog
 :- use_module(library(clpfd)).
@@ -6527,15 +6527,15 @@ Macro reverse(firstIndex, lastIndex)
     Swap cur(first), cur(last)
     first + 1
     last - 1
-  Wend 
+  Wend
 EndMacro
 
 Procedure nextPermutation(Array cur(1))
   Protected first, last, elementCount = ArraySize(cur())
   If elementCount < 1
     ProcedureReturn #False ;nothing to permute
-  EndIf 
-  
+  EndIf
+
   ;Find the lowest position pos such that [pos] < [pos+1]
   Protected pos = elementCount - 1
   While cur(pos) >= cur(pos + 1)
@@ -6543,7 +6543,7 @@ Procedure nextPermutation(Array cur(1))
     If pos < 0
       reverse(0, elementCount)
       ProcedureReturn #False ;no higher lexicographic permutations left, return lowest one instead
-    EndIf 
+    EndIf
   Wend
 
   ;Swap [pos] with the highest positional value that is larger than [pos]
@@ -6573,7 +6573,7 @@ If OpenConsole()
   a(0) = 1: a(1) = 2: a(2) =  3
   display(a())
   While nextPermutation(a()): display(a()): Wend
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -6621,7 +6621,7 @@ for values in itertools.permutations([1,2,3]):
 
 
 
-###  Recursive implementation 
+###  Recursive implementation
 
 
 The follwing functions start from a list [0 ... n-1] and exchange elements to always have a valid permutation. This is done recursively: first exchange a[0] with all the other elements, then a[1] with a[2] ... a[n-1], etc. thus yielding all permutations.
@@ -6682,7 +6682,7 @@ for u in perm2(3): print(u)
 
 
 
-###  Iterative implementation 
+###  Iterative implementation
 
 
 Given a permutation, one can easily compute the ''next'' permutation in some order, for example lexicographic order, here. Then to get all permutations, it's enough to start from [0, 1, ... n-1], and store the next permutation until [n-1, n-2, ... 0], which is the last in lexicographic order.
@@ -6732,7 +6732,7 @@ for p in perm3(3): print(p)
 
 
 
-###  Implementation using destructive list updates 
+###  Implementation using destructive list updates
 
 
 ```python
@@ -6957,7 +6957,7 @@ linsert <- function(x,s) lapply(0:length(s), function(k) append(s,x,k))
 # list of all permutations of 1:n
 perm <- function(n){
     if (n == 1) list(1)
-    else unlist(lapply(perm(n-1), function(s) linsert(n,s)), 
+    else unlist(lapply(perm(n-1), function(s) linsert(n,s)),
                 recursive = F)}
 
 # permutations of a vector s
@@ -7186,7 +7186,7 @@ platypus~stegosaurus~gnu
 
 This version is modeled after the   '''Maxima'''   program   (as far as output).
 
-It doesn't have the formatting capabilities of the REXX version 1,   nor can it handle taking   '''X'''   items taken   '''Y'''   at-a-time. 
+It doesn't have the formatting capabilities of the REXX version 1,   nor can it handle taking   '''X'''   items taken   '''Y'''   at-a-time.
 
 ```rexx
 /*REXX program displays  permutations  of   N   number of  objects  (1, 2, 3, ···).     */
@@ -7235,12 +7235,12 @@ for perm = 1 to 24
     see nl
     nextPermutation(list)
 next
- 
+
 func nextPermutation a
      elementcount = len(a)
      if elementcount < 1 then return ok
      pos = elementcount-1
-     while a[pos] >= a[pos+1] 
+     while a[pos] >= a[pos+1]
            pos -= 1
            if pos <= 0 permutationReverse(a, 1, elementcount)
               return ok
@@ -7321,16 +7321,16 @@ Works with Run BASIC, Liberty BASIC and Just BASIC
 
 ```Runbasic
 list$ = "h,e,l,l,o"		' supply list seperated with comma's
- 
+
 while word$(list$,d+1,",") <> ""  'Count how many in the list
 d = d + 1
 wend
- 
+
 dim theList$(d)			' place list in array
 for i = 1 to d
   theList$(i) = word$(list$,i,",")
 next i
- 
+
 for i = 1 to d			' print the Permutations
  for j = 2 to d
    perm$ = ""
@@ -7548,7 +7548,7 @@ If you need the unique permutations, use <code>distinct</code> or <code>toSet</c
 (define (insert l n e)
   (if (= 0 n)
       (cons e l)
-      (cons (car l) 
+      (cons (car l)
             (insert (cdr l) (- n 1) e))))
 
 (define (seq start end)
@@ -7583,7 +7583,7 @@ If you need the unique permutations, use <code>distinct</code> or <code>toSet</c
 (let aux ((j (+ i 1)) (k (- n 1)))
 	(if (< j k) (begin (vector-swap! p j k) (aux (+ j 1) (- k 1)))))
 (if (< i 0) #f (begin
-	(vector-swap! p i (let aux ((j (+ i 1))) 
+	(vector-swap! p i (let aux ((j (+ i 1)))
 		(if (> (vector-ref p j) (vector-ref p i)) j (aux (+ j 1)))))
 	#t))))
 
@@ -7599,11 +7599,11 @@ If you need the unique permutations, use <code>distinct</code> or <code>toSet</c
 (do ( ) ((not (next-perm p))) (print-perm p))))
 
 (print-all-perm 3)
-; 0 1 2 
-; 0 2 1 
-; 1 0 2 
-; 1 2 0 
-; 2 0 1 
+; 0 1 2
+; 0 2 1
+; 1 0 2
+; 1 2 0
+; 2 0 1
 ; 2 1 0
 
 ;a more recursive implementation
@@ -7624,11 +7624,11 @@ If you need the unique permutations, use <code>distinct</code> or <code>toSet</c
 (permute p 0)))
 
 (print-all-perm-rec 3)
-; 0 1 2 
-; 0 2 1 
-; 1 0 2 
-; 1 2 0 
-; 2 0 1 
+; 0 1 2
+; 0 2 1
+; 1 0 2
+; 1 2 0
+; 2 0 1
 ; 2 1 0
 ```
 
@@ -7678,7 +7678,7 @@ const func permutations: permutations (in array integer: items) is func
   begin
     perms(items, 0 times 0);
   end func;
- 
+
 const proc: main is func
   local
     var array integer: perm is 0 times 0;
@@ -7697,12 +7697,12 @@ const proc: main is func
 
 ```txt
 
-1 2 3 
-1 3 2 
-2 1 3 
-2 3 1 
-3 1 2 
-3 2 1 
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
 
 ```
 
@@ -7719,7 +7719,7 @@ const proc: main is func
 X -> (permute-helper [] X))
 
 (define permute-helper
-_ [] -> []                  
+_ [] -> []
 Done [X|Rest] -> (append (prepend-all X (permute (append Done Rest))) (permute-helper [X|Done] Rest))
 )
 
@@ -7747,7 +7747,7 @@ For lexical order, make a small change:
 ```Shen
 
 (define permute-helper
-_ [] -> []                  
+_ [] -> []
 Done [X|Rest] -> (append (prepend-all X (permute (append Done Rest))) (permute-helper (append Done [X]) Rest))
 )
 
@@ -7834,7 +7834,7 @@ permutations({|p| say p }, [0,1,2])
 {{works with|Pharo}}
 
 ```smalltalk
-(1 to: 4) permutationsDo: [ :x | 
+(1 to: 4) permutationsDo: [ :x |
 	Transcript show: x printString; cr ].
 ```
 
@@ -7929,7 +7929,7 @@ void genperm() {
 			j = i
 			k = n
 			while (j < k) u[(j++, k--)] = u[(k, j)]
-			
+
 			s = u[i-1]
 			for (j = i; u[j] < s; j++) {
 			}
@@ -7983,7 +7983,7 @@ templates permutations
     end expand
     $n - 1 -> permutations -> expand !
 end permutations
- 
+
 def alpha: ['ABCD'...];
 [ $alpha::length -> permutations -> '$alpha($)...;' ] -> !OUT::write
 
@@ -8045,7 +8045,7 @@ templates perms
   @: [1..$];
   1 -> findPerms !
 end perms
- 
+
 def alpha: ['ABCD'...];
 [4 -> perms -> '$alpha($)...;' ] -> !OUT::write
 
@@ -8100,7 +8100,7 @@ In practice there's no need to write this because it's in the standard library.
 ```Ursala
 #import std
 
-permutations = 
+permutations =
 
 ~&itB^?a(                     # are both the input argument list and its tail non-empty?
    @ahPfatPRD *= refer ^C(      # yes, recursively generate all permutations of the tail, and for each one
@@ -8138,12 +8138,12 @@ test = permutations <1,2,3>
 ```VB
 Public Sub Permute(n As Integer, Optional printem As Boolean = True)
 'Generate, count and print (if printem is not false) all permutations of first n integers
- 
+
 Dim P() As Integer
 Dim t As Integer, i As Integer, j As Integer, k As Integer
 Dim count As Long
 Dim Last As Boolean
- 
+
 If n <= 1 Then
 
   Debug.Print "Please give a number greater than 1"
@@ -8160,7 +8160,7 @@ Next
 
 count = 0
 Last = False
- 
+
 Do While Not Last
    'print?
    If printem Then
@@ -8172,7 +8172,7 @@ Do While Not Last
       Debug.Print
 
    End If
-   
+
 count = count + 1
 
 Last = True
@@ -8192,7 +8192,7 @@ i = n - 1
 
   j = i + 1
   k = n
-  
+
   While j < k
     ' Swap p(j) and p(k)
     t = P(j)
@@ -8201,22 +8201,22 @@ i = n - 1
     j = j + 1
     k = k - 1
   Wend
-  
+
   j = n
-  
+
   While P(j) > P(i)
     j = j - 1
   Wend
-  
+
   j = j + 1
   'Swap p(i) and p(j)
   t = P(i)
   P(i) = P(j)
   P(j) = t
 Loop 'While not last
- 
+
 Debug.Print "Number of permutations: "; count
- 
+
 End Sub
 ```
 
@@ -8227,37 +8227,37 @@ End Sub
 permute 1
 give a number greater than 1!
 permute 2
- 1  2 
- 2  1 
-Number of permutations:  2 
+ 1  2
+ 2  1
+Number of permutations:  2
 permute 4
- 1  2  3  4 
- 1  2  4  3 
- 1  3  2  4 
- 1  3  4  2 
- 1  4  2  3 
- 1  4  3  2 
- 2  1  3  4 
- 2  1  4  3 
- 2  3  1  4 
- 2  3  4  1 
- 2  4  1  3 
- 2  4  3  1 
- 3  1  2  4 
- 3  1  4  2 
- 3  2  1  4 
- 3  2  4  1 
- 3  4  1  2 
- 3  4  2  1 
- 4  1  2  3 
- 4  1  3  2 
- 4  2  1  3 
- 4  2  3  1 
- 4  3  1  2 
- 4  3  2  1 
-Number of permutations:  24 
+ 1  2  3  4
+ 1  2  4  3
+ 1  3  2  4
+ 1  3  4  2
+ 1  4  2  3
+ 1  4  3  2
+ 2  1  3  4
+ 2  1  4  3
+ 2  3  1  4
+ 2  3  4  1
+ 2  4  1  3
+ 2  4  3  1
+ 3  1  2  4
+ 3  1  4  2
+ 3  2  1  4
+ 3  2  4  1
+ 3  4  1  2
+ 3  4  2  1
+ 4  1  2  3
+ 4  1  3  2
+ 4  2  1  3
+ 4  2  3  1
+ 4  3  1  2
+ 4  3  2  1
+Number of permutations:  24
 permute 10,False
-Number of permutations:  3628800 
+Number of permutations:  3628800
 
 ```
 

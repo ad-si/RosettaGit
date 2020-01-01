@@ -13,7 +13,7 @@ tags = []
 {{draft task}}
 
 ;Task:
-Find a graph with 17 Nodes such that any 4 Nodes are neither totally connected nor totally unconnected, so demonstrating [[wp:Ramsey's theorem|Ramsey's theorem]]. 
+Find a graph with 17 Nodes such that any 4 Nodes are neither totally connected nor totally unconnected, so demonstrating [[wp:Ramsey's theorem|Ramsey's theorem]].
 
 A specially-nominated solution may be used, but if so it '''must''' be checked to see if if there are any sub-graphs that are totally connected or totally unconnected.
 
@@ -91,7 +91,7 @@ RAMSEY   CSECT
          XDECO  R4,XDEC                  edit a(i,j)
          MVC    0(2,R10),XDEC+10         output a(i,j)
        ENDIF    ,                      endif
-         LA     R10,2(R10)             pgi+=2          
+         LA     R10,2(R10)             pgi+=2
          LA     R7,1(R7)               j++
        ENDDO    ,                    enddo j
          XPRNT  PG,L'PG              print buffer
@@ -264,8 +264,8 @@ For 17 nodes, (4,4) happens to have a special solution: arrange nodes on a circl
 
 No issue with the code or the output, there seems to be a bug with Rosettacode's tag handlers. - aamrun
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int a[17][17], idx[4];
 
@@ -333,23 +333,23 @@ int main()
 
 ```txt
 
-- 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 
-1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 
-1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 0 
-0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 
-1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 
-0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 
-0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 
-0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 
-1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 
-1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 
-0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 
-0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 
-0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 
-1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 
-0 1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 
-1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 
-1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 - 
+- 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1
+1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1
+1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 0
+0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 1
+1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 0
+0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 0
+0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 0
+0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 1
+1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 1
+1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 0
+0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 0
+0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 0
+0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 1
+1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 0
+0 1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 1
+1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 - 1
+1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 -
 all good
 
 ```
@@ -462,7 +462,7 @@ defmodule Ramsey do
     end
     |> IO.puts
   end
-  
+
   def create_graph(n,vertices) do
     g = :digraph.new([:cyclic])
     for v <- vertices, do: :digraph.add_vertex(g,v)
@@ -473,7 +473,7 @@ defmodule Ramsey do
     end
     g
   end
-  
+
   def print_graph(vertices,edges) do
     Enum.each(vertices, fn j ->
       Enum.map_join(vertices, " ", fn i ->
@@ -486,7 +486,7 @@ defmodule Ramsey do
       |> IO.puts
     end)
   end
-  
+
   def ramsey_check(vertices,edges) do
     listconditions =
       for v1 <- vertices, v2 <- vertices, v3 <- vertices, v4 <- vertices,
@@ -560,13 +560,13 @@ Function EncontrarGrupo(tipo As Integer, min As Integer, max As Integer, fondo A
         Print
         Return true
     End If
-    
+
     For i = min To max
         k = 0
         For j = k To fondo
             If a(idx(k),i) <> tipo Then Exit For
         Next j
-        
+
         If k = fondo Then
             idx(k) = i
             If EncontrarGrupo(tipo, 1, max, fondo+1) Then Return true
@@ -586,7 +586,7 @@ While k <= 8
 Wend
 For i = 1 To 17
     For j = 1 To 17
-        If a(i,j) = 2 Then 
+        If a(i,j) = 2 Then
             Print "- ";
         Else
             Print a(i,j) & " ";
@@ -723,23 +723,23 @@ func main() {
 
 ```txt
 
-- 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 
-1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 
-1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 0 
-0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 
-1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 
-0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 
-0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 
-0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 
-1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 
-1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 
-0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 
-0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 
-0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 
-1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 
-0 1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 
-1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 
-1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 - 
+- 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1
+1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1
+1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 0
+0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 1
+1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 0
+0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 0
+0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 0
+0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 1
+1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 1
+1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 0
+0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 0
+0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 0
+0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 1
+1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 0
+0 1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 1
+1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 - 1
+1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 -
 All good.
 
 ```
@@ -757,12 +757,12 @@ All good.
 main() ->
 	Vertices = lists:seq(0,16),
 	G = create_graph(Vertices),
-	String_ramsey = 
-		case ramsey_check(G,Vertices) of 
-			true -> 
+	String_ramsey =
+		case ramsey_check(G,Vertices) of
+			true ->
 				"Satisfies Ramsey condition.";
-			{false,Reason} -> 
-				"Not satisfies Ramsey condition:\n" 
+			{false,Reason} ->
+				"Not satisfies Ramsey condition:\n"
 				++ io_lib:format("~p\n",[Reason])
 		end,
 	io:format("~s\n~s\n",[print_graph(G,Vertices),String_ramsey]).
@@ -770,7 +770,7 @@ main() ->
 create_graph(Vertices) ->
 	G = digraph:new([cyclic]),
 	[digraph:add_vertex(G,V) || V <- Vertices],
-	[begin 
+	[begin
 		J = ((I + K) rem 17),
 		digraph:add_edge(G, I, J),
 		digraph:add_edge(G, J, I)
@@ -778,9 +778,9 @@ create_graph(Vertices) ->
 	G.
 
 print_graph(G,Vertices) ->
-	Edges = 
-		[{V1,V2} || 
-			V1 <- digraph:vertices(G), 
+	Edges =
+		[{V1,V2} ||
+			V1 <- digraph:vertices(G),
 			V2 <- digraph:out_neighbours(G, V1)],
 	lists:flatten(
 		[[
@@ -788,21 +788,21 @@ print_graph(G,Vertices) ->
 			 	J ->
 			 		$-;
 			 	_ ->
-			 		case lists:member({I,J},Edges) of 
+			 		case lists:member({I,J},Edges) of
 			 			true -> $1;
 			 			false -> $0
 			 		end
 			 end,$ ]
 		 || I <- Vertices] ++ [$\n] || J <- Vertices]).
 
-ramsey_check(G,Vertices) -> 
-	Edges = 
-		[{V1,V2} || 
-			V1 <- digraph:vertices(G), 
+ramsey_check(G,Vertices) ->
+	Edges =
+		[{V1,V2} ||
+			V1 <- digraph:vertices(G),
 			V2 <- digraph:out_neighbours(G, V1)],
-	ListConditions = 
+	ListConditions =
 		[begin
-			All_cases = 
+			All_cases =
 				[lists:member({V1,V2},Edges),
 				 lists:member({V1,V3},Edges),
 				 lists:member({V1,V4},Edges),
@@ -815,13 +815,13 @@ ramsey_check(G,Vertices) ->
 		end
 		 || V1 <- Vertices, V2 <- Vertices, V3 <- Vertices, V4 <- Vertices,
 		 	V1/=V2,V1/=V3,V1/=V4,V2/=V3,V2/=V4,V3/=V4],
-	case lists:all(fun({_,_,_,_,C1,C2}) -> C1 and C2 end,ListConditions) of 
+	case lists:all(fun({_,_,_,_,C1,C2}) -> C1 and C2 end,ListConditions) of
 		true -> true;
-		false -> 
+		false ->
 			{false,
-				[{wholly_unconnected,V1,V2,V3,V4} 
+				[{wholly_unconnected,V1,V2,V3,V4}
 				 || {V1,V2,V3,V4,false,_} <- ListConditions]
-				++ [{wholly_connected,V1,V2,V3,V4} 
+				++ [{wholly_connected,V1,V2,V3,V4}
 				 || {V1,V2,V3,V4,_,false} <- ListConditions]}
 	end.
 ```
@@ -829,22 +829,22 @@ ramsey_check(G,Vertices) ->
 {{out}}
 
 ```txt
-- 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 
-1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 
-1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 0 
-0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 
-1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 
-0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 
-0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 
-0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 
-1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 
-1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 
-0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 
-0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 
-0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 
-1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 
-0 1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 
-1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 
+- 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1
+1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1
+1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 1 0
+0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 0 1
+1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 0 0
+0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 0 0
+0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 1 0
+0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 1 1
+1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 0 1
+1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 0 0
+0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 0 0
+0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 1 0
+0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 0 1
+1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 1 0
+0 1 0 0 0 1 1 0 0 0 1 0 1 1 - 1 1
+1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 - 1
 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 -
 
 Satisfies Ramsey condition.
@@ -854,7 +854,7 @@ Satisfies Ramsey condition.
 
 ## J
 
-Interpreting this task as "reproduce the output of all the other examples", then here's a stroll to the goal through the J interpreter: 
+Interpreting this task as "reproduce the output of all the other examples", then here's a stroll to the goal through the J interpreter:
 ```j
    i.@<.&.(2&^.) N =: 17                                           NB.  Count to N by powers of 2
 1 2 4 8
@@ -882,8 +882,8 @@ _ 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1
 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 _
 
    NB. Packaged up as a re-usable function
-   ramsey =: _1&|.^:((<@])`(_ , [: (, |.) 1 #~ 1 j. 0 _1:} [: <: i.@<.&.(2&^.)@])) 
- 
+   ramsey =: _1&|.^:((<@])`(_ , [: (, |.) 1 #~ 1 j. 0 _1:} [: <: i.@<.&.(2&^.)@]))
+
    ramsey 17
 _ 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1
 1 _ 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1
@@ -1052,7 +1052,7 @@ fun findGroup(type: Int, minN: Int, maxN: Int, depth: Int): Boolean {
     return false
 }
 
-fun main(args: Array<String>) {   
+fun main(args: Array<String>) {
     for (i in 0 until 17) a[i][i] = 2
     var j: Int
     var k = 1
@@ -1067,7 +1067,7 @@ fun main(args: Array<String>) {
     val mark = "01-"
     for (i in 0 until 17) {
         for (m in 0 until 17) print("${mark[a[i][m]]} ")
-        println() 
+        println()
     }
     for (i in 0 until 17) {
         idx[0] = i
@@ -1124,10 +1124,10 @@ CirculantGraph[17, {1, 2, 4, 8}]
 
 {{lines too long|Mathprog}}
 <lang>/*Ramsey 4 4 17
- 
+
   This model finds a graph with 17 Nodes such that no clique of 4 Nodes is either fully
   connected, nor fully disconnected
- 
+
   Nigel_Galloway
   January 18th., 2012
 */
@@ -1291,14 +1291,14 @@ OK
 ```Phix
 sequence a = repeat(repeat('0',17),17),
          idx = repeat(0,4)
- 
+
 function findGroup(integer ch, lo, hi, depth)
     if depth == 4 then
         string cs = iff(ch='1'?"":"un")
         printf(1,"Totally %sconnected group:%s\n", {cs,sprint(idx)})
         return true
     end if
- 
+
     for i=lo to hi do
         bool all_same = true
         for n=1 to depth do
@@ -1316,11 +1316,11 @@ function findGroup(integer ch, lo, hi, depth)
     end for
     return false
 end function
- 
+
 for i=1 to 17 do
     a[i][i] = '-'
 end for
- 
+
 integer k = 1
 while k<=8 do
     for i=1 to 17 do
@@ -1329,16 +1329,16 @@ while k<=8 do
     end for
     k *= 2
 end while
- 
+
 -- Test case breakage
 --{a[2][1],a[1][2]} @= '0'
 
 puts(1,join(a,'\n')&"\n\n")
- 
+
 bool all_good = true
 for i=1 to 17 do
     idx[1] = i
-    if findGroup('1', i+1, 17, 1) 
+    if findGroup('1', i+1, 17, 1)
     or findGroup('0', i+1, 17, 1) then
         all_good = false
         exit
@@ -1441,7 +1441,7 @@ if __name__ == '__main__':
 ## Racket
 
 
-{{output?|Racket| 
+{{output?|Racket|
 }}
 
 {{incorrect|Racket|The task has been changed to also require demonstrating that the graph is a solution.}}
@@ -1550,7 +1550,7 @@ load "stdlib.ring"
 a = newlist(17,17)
 for i = 1 to 17
     a[i][i] = -1
-next 
+next
 k = 1
 while k <= 8
       for i = 1 to 17
@@ -1672,22 +1672,22 @@ next i
 
 
 ```txt
--1 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 
-1 -1 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 
-1 1 -1 1 1 0 1 0 0 0 1 1 0 0 0 1 0 
-0 1 1 -1 1 1 0 1 0 0 0 1 1 0 0 0 1 
-1 0 1 1 -1 1 1 0 1 0 0 0 1 1 0 0 0 
-0 1 0 1 1 -1 1 1 0 1 0 0 0 1 1 0 0 
-0 0 1 0 1 1 -1 1 1 0 1 0 0 0 1 1 0 
-0 0 0 1 0 1 1 -1 1 1 0 1 0 0 0 1 1 
-1 0 0 0 1 0 1 1 -1 1 1 0 1 0 0 0 0 
-1 1 0 0 0 1 0 1 1 -1 1 1 0 1 0 0 0 
-0 1 1 0 0 0 1 0 1 1 -1 1 1 0 1 0 0 
-0 0 1 1 0 0 0 1 0 1 1 -1 1 1 0 1 0 
-0 0 0 1 1 0 0 0 1 0 1 1 -1 1 1 0 0 
-1 0 0 0 1 1 0 0 0 1 0 1 1 -1 1 1 0 
-0 1 0 0 0 1 1 0 0 0 1 0 1 1 -1 1 0 
-1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 -1 0 
+-1 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1
+1 -1 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1
+1 1 -1 1 1 0 1 0 0 0 1 1 0 0 0 1 0
+0 1 1 -1 1 1 0 1 0 0 0 1 1 0 0 0 1
+1 0 1 1 -1 1 1 0 1 0 0 0 1 1 0 0 0
+0 1 0 1 1 -1 1 1 0 1 0 0 0 1 1 0 0
+0 0 1 0 1 1 -1 1 1 0 1 0 0 0 1 1 0
+0 0 0 1 0 1 1 -1 1 1 0 1 0 0 0 1 1
+1 0 0 0 1 0 1 1 -1 1 1 0 1 0 0 0 0
+1 1 0 0 0 1 0 1 1 -1 1 1 0 1 0 0 0
+0 1 1 0 0 0 1 0 1 1 -1 1 1 0 1 0 0
+0 0 1 1 0 0 0 1 0 1 1 -1 1 1 0 1 0
+0 0 0 1 1 0 0 0 1 0 1 1 -1 1 1 0 0
+1 0 0 0 1 1 0 0 0 1 0 1 1 -1 1 1 0
+0 1 0 0 0 1 1 0 0 0 1 0 1 1 -1 1 0
+1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 -1 0
 1 1 0 1 0 0 0 1 0 0 0 0 0 0 0 0 -1
 ```
 

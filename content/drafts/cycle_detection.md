@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{draft task}} 
+{{draft task}}
 
 ;Task:
 Detect a cycle in an iterated function using Brent's algorithm.
@@ -38,7 +38,7 @@ With these as inputs, a sample program output would be:
 
 '''Start index = 2'''
 
-The output prints the first several items in the number series produced by the iterated function, then identifies how long the cycle is (6) followed by the zero-based index of the start of the first cycle (2). From this you can see that the cycle is: 
+The output prints the first several items in the number series produced by the iterated function, then identifies how long the cycle is (6) followed by the zero-based index of the start of the first cycle (2). From this you can see that the cycle is:
 
 101,2,5,26,167,95
 
@@ -106,8 +106,8 @@ Cycle: [101, 2, 5, 26, 167, 95]
 
 {{trans|Modula-2}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef int(*I2I)(int);
@@ -208,7 +208,7 @@ struct ListNode {
       ListNode *next;
       ListNode(int x) : val(x), next(NULL) {}
  };
- 
+
 ListNode* Solution::detectCycle(ListNode* A) {
     ListNode* slow = A;
     ListNode* fast = A;
@@ -234,7 +234,7 @@ ListNode* Solution::detectCycle(ListNode* A) {
     for (ListNode* pNode = A; true; pNode = pNode->next)
     {
         std::set<ListNode*>::iterator iter = setPerimeter.find(pNode);
-        if (iter != setPerimeter.end()) 
+        if (iter != setPerimeter.end())
         {
             return pNode;
         }
@@ -264,14 +264,14 @@ namespace DetectCycles
   {
     /// <summary>
     /// Find the cycle length and start position of a series using Brent's cycle algorithm.
-    /// 
+    ///
     ///  Given a recurrence relation X[n+1] = f(X[n]) where f() has
     ///  a finite range, you will eventually repeat a value that you have seen before.
     ///  Once this happens, all subsequent values will form a cycle that begins
     ///  with the first repeated value. The period of that cycle may be of any length.
     /// </summary>
     /// <returns>A tuple where:
-    ///    Item1 is lambda (the length of the cycle) 
+    ///    Item1 is lambda (the length of the cycle)
     ///    Item2 is mu, the zero-based index of the item that started the first cycle.</returns>
     /// <param name="x0">First item in the series.</param>
     /// <param name="yielder">Function delegate that generates the series by iterated execution.</param>
@@ -288,7 +288,7 @@ namespace DetectCycles
         if (power == lambda) {
           tortoise = hare;
           power *= 2;
-          lambda = 0;  
+          lambda = 0;
         }
         hare = yielder (hare);
         lambda += 1;
@@ -297,10 +297,10 @@ namespace DetectCycles
       // Find mu, the zero-based index of the start of the cycle
       var mu = 0;
       tortoise = hare = x0;
-      for (var times = 0; times < lambda; times++) 
+      for (var times = 0; times < lambda; times++)
         hare = yielder (hare);
-      
-      while (!tortoise.Equals (hare)) 
+
+      while (!tortoise.Equals (hare))
       {
         tortoise = yielder (tortoise);
         hare = yielder (hare);
@@ -328,7 +328,7 @@ namespace DetectCycles
 			// Display the first 41 numbers in the test series
 			var x = 3;
 			Console.Write(x);
-			for (var times = 0; times < 40; times++) 
+			for (var times = 0; times < 40; times++)
 			{
 				x = sequence(x);
 				Console.Write(String.Format(",{0}", x));
@@ -420,14 +420,14 @@ defmodule Cycle_detection do
     mu = find_mu(f, x0, hare, 0)
     {lambda, mu}
   end
-  
+
   # Find lambda, the cycle length
   defp find_lambda(_, tortoise, hare, _, lambda) when tortoise==hare, do: lambda
   defp find_lambda(f, tortoise, hare, power, lambda) do
     if power == lambda, do: find_lambda(f, hare, f.(hare), power*2, 1),
                       else: find_lambda(f, tortoise, f.(hare), power, lambda+1)
   end
-  
+
   # Find mu, the zero-based index of the start of the cycle
   defp find_mu(_, tortoise, hare, mu) when tortoise==hare, do: mu
   defp find_mu(f, tortoise, hare, mu) do
@@ -476,7 +476,7 @@ USING: formatting kernel locals make math prettyprint ;
         power λ = [
             hare tortoise!
             power 2 * power!
-            0 λ! 
+            0 λ!
         ] when
         hare quot call hare!
         λ 1 + λ!
@@ -761,8 +761,8 @@ func main() {
 {{out}}
 
 ```txt
-Cycle length: 6 
-Cycle start index: 2 
+Cycle length: 6
+Cycle start index: 2
 Cycle: [101 2 5 26 167 95]
 ```
 
@@ -1215,7 +1215,7 @@ Do i=1 By 1
   list=list x
   End
 Exit
-f: Return (arg(1)**2+1)//255 
+f: Return (arg(1)**2+1)//255
 ```
 
 {{out}}
@@ -1301,7 +1301,7 @@ Cycle start index 2
 ## Perl 6
 
 {{works with|Rakudo|2016-01}}
-Pretty much a line for line translation of the Python code on the Wikipedia page. 
+Pretty much a line for line translation of the Python code on the Wikipedia page.
 
 
 ```perl6
@@ -1360,13 +1360,13 @@ Translation of the Wikipedia code, but using the more descriptive len and pos, i
 function f(integer x)
     return mod(x*x+1,255)
 end function
- 
+
 function brent(integer x0)
 integer pow2 = 1, len = 1, pos = 1
 integer tortoise = x0,
         hare = f(x0)
 sequence s = {tortoise,hare} -- (kept for output only)
- 
+
     -- main phase: search successive powers of two
     while tortoise!=hare do
         if pow2 = len then
@@ -1381,7 +1381,7 @@ sequence s = {tortoise,hare} -- (kept for output only)
         s &= hare
         len += 1
     end while
- 
+
     -- Find the position of the first repetition of length len
     tortoise = x0
     hare = x0
@@ -1389,17 +1389,17 @@ sequence s = {tortoise,hare} -- (kept for output only)
         hare = f(hare)
     end for
     -- The distance between the hare and tortoise is now len.
- 
+
     -- Next, the hare and tortoise move at same speed until they agree
     while tortoise<>hare do
         tortoise = f(tortoise)
         hare = f(hare)
         pos += 1
     end while
- 
+
     return {s,len,pos}
 end function
- 
+
 sequence s
 integer len, pos, x0 = 3
 {s,len,pos} = brent(x0)
@@ -1460,7 +1460,7 @@ def brent(f, x0):
         tortoise = f(tortoise)
         hare = f(hare)
         mu += 1
- 
+
     return lam, mu
 
 def iterate(f, x0):
@@ -1522,7 +1522,7 @@ def brent(f, x0):
         tortoise = f(tortoise)
         hare = f(hare)
         mu += 1
- 
+
     return lam, mu
 
 def iterate(f, x0):
@@ -2168,7 +2168,7 @@ I feel a bit bad about overloading λ, but it&rsquo;s in the spirit of the algor
             ;; time to start a new power of two?
             [(= power λ) (main-phase (* power 2) 1 hare (f hare))]
             [else (main-phase power (add1 λ) tortoise (f hare))])))
-  
+
   (values
    λ
    ;; Find the position of the first repetition of length λ
@@ -2184,11 +2184,11 @@ I feel a bit bad about overloading λ, but it&rsquo;s in the spirit of the algor
   (define (f x) (modulo (+ (* x x) 1) 255))
   (define (make-generator f x0)
     (generator () (let loop ((x x0)) (yield x) (loop (f x)))))
-  
+
   (define g (make-generator f 3))
-  
+
   (define l (for/list ((_ 20)) (g)))
-  (check-equal? l '(3 10 101 2 5 26 167 95 101 2 5 26 167 95 101 2 5 26 167 95))  
+  (check-equal? l '(3 10 101 2 5 26 167 95 101 2 5 26 167 95 101 2 5 26 167 95))
   (displayln l)
   (let-values (([µ λ] (brent f 3)))
     (printf "Cycle length = ~a~%Start Index = ~a~%" µ λ)))
@@ -2300,7 +2300,7 @@ cycle sequence = 101 2 5 26 167 95
 
 ### hash table algorithm
 
-This REXX version is a lot faster   (than the sequential search algorithm)   if the   ''cycle length''   and/or   ''start index''   is large. 
+This REXX version is a lot faster   (than the sequential search algorithm)   if the   ''cycle length''   and/or   ''start index''   is large.
 
 ```rexx
 /*REXX program detects a cycle in an iterated function  [F]  using a hash table.        */
@@ -2319,26 +2319,26 @@ exit                                             /*stick a fork in it,  we're al
 f:   return ( arg(1) **2  +  1)   //   255       /*this defines/executes the function F.*/
 ```
 
-{{out|output|text=  is identical to the 2<sup>nd</sup> REXX version.}} 
+{{out|output|text=  is identical to the 2<sup>nd</sup> REXX version.}}
 
 
 
 
 ### robust hash table algorithm
 
-This REXX version implements a   ''robust''   hash table algorithm, which means that when the divisor 
+This REXX version implements a   ''robust''   hash table algorithm, which means that when the divisor
 
-(in the   '''F'''   function)   is fairly large, the cycle length can be very large, making the creation of the 
+(in the   '''F'''   function)   is fairly large, the cycle length can be very large, making the creation of the
 
 iterated function sequence.   This becomes problematic when the mechanism to append a number to
 
-the sequence becomes time consuming because the sequence contains many hundreds of thousands  
+the sequence becomes time consuming because the sequence contains many hundreds of thousands
 
 of numbers.
 
-This REXX version allows the divisor for the   '''F'''   function to be specified, which can be chosen to stress 
+This REXX version allows the divisor for the   '''F'''   function to be specified, which can be chosen to stress
 
-test the hash table algorithm.   A divisor which is   <big> ''two raised to the 49<sup>th</sup>  power'' </big>   was chosen;   it  
+test the hash table algorithm.   A divisor which is   <big> ''two raised to the 49<sup>th</sup>  power'' </big>   was chosen;   it
 
 generates a cyclic sequence that contains over 1.5 million numbers.
 
@@ -2370,7 +2370,7 @@ exit                                             /*stick a fork in it,  we're al
 f:   return ( arg(1) **2  +  1)   //   255       /*this defines/executes the function F.*/
 ```
 
-{{out|output|text=   when the input (power of two) used is:     <tt> 49 </tt>}} 
+{{out|output|text=   when the input (power of two) used is:     <tt> 49 </tt>}}
 
 ```txt
 
@@ -2381,7 +2381,7 @@ f:   return ( arg(1) **2  +  1)   //   255       /*this defines/executes the fun
 numbers in list= 9
   cycle length = 6
   start index  = 2   ◄─── zero based
-cycle sequence = 101 2 5 26 167 95 
+cycle sequence = 101 2 5 26 167 95
 
 ```
 
@@ -2433,7 +2433,7 @@ f: Return (arg(1)**2+1)// 255;                /*define the function F*/
 #
 # Parameters:
 #   x0 ...... First integer value in the sequence
-#   block ... Block that takes a single integer as input 
+#   block ... Block that takes a single integer as input
 #             and returns a single integer as output.
 #             This yields a sequence of numbers that eventually repeats.
 # Returns:
@@ -2445,7 +2445,7 @@ def findCycle(x0)
   power = lambda = 1
   tortoise = x0
   hare = yield(x0)
-  
+
   # Find lambda, the cycle length
   while tortoise != hare
     if power == lambda
@@ -2456,18 +2456,18 @@ def findCycle(x0)
     hare = yield(hare)
     lambda += 1
   end
-  
+
   # Find mu, the zero-based index of the start of the cycle
   hare = x0
   lambda.times { hare = yield(hare) }
-  
+
   tortoise, mu = x0, 0
   while tortoise != hare
     tortoise = yield(tortoise)
     hare = yield(hare)
     mu += 1
   end
-  
+
   return lambda, mu
 end
 
@@ -2711,7 +2711,7 @@ fcn cycleDetection(f,x0){ // f(int), x0 is the integer starting value of the seq
   while(tortoise!=hare){
      tortoise,hare=f(tortoise),f(hare);
      mu+=1;
-  } 
+  }
   return(lam,mu);
 }
 ```

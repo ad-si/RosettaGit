@@ -17,8 +17,8 @@ tags = []
 {{libheader|GLUT}}
 OpenGL program with glut.  Compile with <code>gcc -std=c99 -lglut -lGL -lGLU</code>, run with <code>a.out -s [size]</code>.  Program will print a help message at start.
 
-```c>#include <GL/glut.h
-
+```c
+#include <GL/glut.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <stdio.h>

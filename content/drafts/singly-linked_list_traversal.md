@@ -81,7 +81,7 @@ end traversal_example;
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 {{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d]}}
-Linked lists are not built into ALGOL 68 ''per se'', nor any available standard library.  However Linked lists are presented in standard text 
+Linked lists are not built into ALGOL 68 ''per se'', nor any available standard library.  However Linked lists are presented in standard text
 book examples.  Or can be manually constructed, eg:
 
 ```algol68
@@ -101,7 +101,7 @@ WHILE node ISNT REF STRINGLIST(NIL) DO
 OD;
 print(newline)
 ```
- 
+
 {{out}}
 
 ```txt
@@ -150,11 +150,11 @@ end.
 
 ```txt
 
-          1701  
-          9000  
-          4077  
-            42  
-         90210  
+          1701
+          9000
+          4077
+            42
+         90210
 
 ```
 
@@ -182,9 +182,9 @@ end.
 /* structure linkedlist*/
     .struct  0
 llist_next:                            @ next element
-    .struct  llist_next + 4 
+    .struct  llist_next + 4
 llist_value:                           @ element value
-    .struct  llist_value + 4 
+    .struct  llist_value + 4
 llist_fin:
 /* Initialized data */
 .data
@@ -200,12 +200,12 @@ sValue:                  .space 12,' '
                          .asciz "\n"
 
 /* UnInitialized data */
-.bss 
-lList1:              .skip llist_fin * NBELEMENTS    @ list memory place 
+.bss
+lList1:              .skip llist_fin * NBELEMENTS    @ list memory place
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
     ldr r0,iAdrlList1
     mov r1,#0                           @ list init
     str r1,[r0,#llist_next]
@@ -247,22 +247,22 @@ iAdrsNumElement:           .int sNumElement
 iAdrsValue:                .int sValue
 
 /******************************************************************/
-/*     insert element at end of list                          */ 
+/*     insert element at end of list                          */
 /******************************************************************/
 /* r0 contains the address of the list */
 /* r1 contains the value of element  */
 /* r0 returns address of element or - 1 if error */
 insertElement:
-    push {r1-r3,lr}                       @ save  registers 
+    push {r1-r3,lr}                       @ save  registers
     mov r2,#llist_fin * NBELEMENTS
     add r2,r0                             @ compute address end list
-1:                                        @ start loop 
+1:                                        @ start loop
     ldr r3,[r0,#llist_next]               @ load next pointer
     cmp r3,#0                             @ = zero
     movne r0,r3                           @ no -> loop with pointer
     bne 1b
     add r3,r0,#llist_fin                  @ yes -> compute next free address
-    cmp r3,r2                             @ > list end 
+    cmp r3,r2                             @ > list end
     movge r0,#-1                          @ yes -> error
     bge 100f
     str r3,[r0,#llist_next]               @ store next address in current pointer
@@ -274,21 +274,21 @@ insertElement:
     pop {r1-r3,lr}                        @ restaur registers
     bx lr                                 @ return
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -300,7 +300,7 @@ conversion10S:
     push {r0-r4,lr}       @ save registers
     mov r2,r1             @ debut zone stockage
     mov r3,#'+'           @ par defaut le signe est +
-    cmp r0,#0             @ negative number ? 
+    cmp r0,#0             @ negative number ?
     movlt r3,#'-'         @ yes
     mvnlt r0,r0           @ number inversion
     addlt r0,#1
@@ -311,9 +311,9 @@ conversion10S:
     strb r1,[r2,r4]       @ store digit on area
     sub r4,r4,#1          @ previous position
     cmp r0,#0             @ stop if quotient = 0
-    bne 1b	
+    bne 1b
 
-    strb r3,[r2,r4]       @ store signe 
+    strb r3,[r2,r4]       @ store signe
     subs r4,r4,#1         @ previous position
     blt  100f             @ if r4 < 0 -> end
 
@@ -322,9 +322,9 @@ conversion10S:
     strb r1,[r2,r4]       @store byte space
     subs r4,r4,#1         @ previous position
     bge 2b                @ loop if r4 > 0
-100: 
+100:
     pop {r0-r4,lr}        @ restaur registers
-    bx lr  
+    bx lr
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
@@ -337,12 +337,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 ```
@@ -383,10 +383,10 @@ traverse(element)
 LINK(L₁,1)→A
 LINK(L₁+10,2)→B
 LINK(L₁+50,3)→C
- 
+
 INSERT(A,B)
 INSERT(A,C)
- 
+
 A→I
 While I≠0
  Disp VALUE(I)▶Dec,i
@@ -403,14 +403,14 @@ End
 ```bbcbasic
       DIM node{pNext%, iData%}
       DIM a{} = node{}, b{} = node{}, c{} = node{}
-      
+
       a.pNext% = b{}
       a.iData% = 123
       b.iData% = 789
       c.iData% = 456
-      
+
       PROCinsert(a{}, c{})
-      
+
       PRINT "Traverse list:"
       pnode% = a{}
       REPEAT
@@ -418,9 +418,9 @@ End
         PRINT node.iData%
         pnode% = node.pNext%
       UNTIL pnode% = 0
-      
+
       END
-      
+
       DEF PROCinsert(here{}, new{})
       new.pNext% = here.pNext%
       here.pNext% = new{}
@@ -460,8 +460,8 @@ for(iter = first; iter != NULL; iter = iter->next) {
 {{works with|C++11}}
 For each traversal version.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <forward_list>
 
 int main()
@@ -616,7 +616,7 @@ void main() {
 {{out}}
 
 ```txt
-1 2 3 4 
+1 2 3 4
 ```
 
 
@@ -645,26 +645,26 @@ void main() {
 
 ```delphi
 uses system ;
- 
+
 type
- 
+
    // declare the list pointer type
    plist = ^List ;
- 
+
    // declare the list type, a generic data pointer prev and next pointers
    List = record
       data : pointer ;
       next : pList ;
    end;
- 
+
 // since this task is just showing the traversal I am not allocating the memory and setting up the root node etc.
 // Note the use of the carat symbol for de-referencing the pointer.
- 
-begin   
- 
+
+begin
+
    // beginning to end
    while not (pList^.Next = NIL) do pList := pList^.Next ;
- 
+
 end;
 ```
 
@@ -770,8 +770,8 @@ Lists - linked-lists - are '''the''' fundamental data type in EchoLisp. A lot of
 
 ; recursive way
 (define (rscan L)
-    (unless (null? L) 
-        (write (first L)) 
+    (unless (null? L)
+        (write (first L))
          (rscan (rest L))))
 
 (rscan friends)  →  albert ludwig elvis 🌀
@@ -812,7 +812,7 @@ Simple iteration with a while loop.
 
 ```elena
 
-while(nil != current){ 
+while(nil != current){
     console printLine(current.Item);
     current := current.Next
 }
@@ -957,7 +957,7 @@ for iter := start; iter != nil; iter = iter.Next {
 
 ## Haskell
 
-Lists are ubiquitous in Haskell, simply use Haskell's <em>map</em> library function: 
+Lists are ubiquitous in Haskell, simply use Haskell's <em>map</em> library function:
 
 ```haskell
 map (>5) [1..10] -- [False,False,False,False,False,True,True,True,True,True]
@@ -1157,15 +1157,15 @@ fun main(args: Array<String>) {
 {{out}}
 
 ```txt
-   1    2    3    4    5    6    7    8    9   10 
-  11   12   13   14   15   16   17   18   19   20 
-  21   22   23   24   25   26   27   28   29   30 
-  31   32   33   34   35   36   37   38   39   40 
-  41   42   43   44   45   46   47   48   49   50 
-  50   49   48   47   46   45   44   43   42   41 
-  40   39   38   37   36   35   34   33   32   31 
-  30   29   28   27   26   25   24   23   22   21 
-  20   19   18   17   16   15   14   13   12   11 
+   1    2    3    4    5    6    7    8    9   10
+  11   12   13   14   15   16   17   18   19   20
+  21   22   23   24   25   26   27   28   29   30
+  31   32   33   34   35   36   37   38   39   40
+  41   42   43   44   45   46   47   48   49   50
+  50   49   48   47   46   45   44   43   42   41
+  40   39   38   37   36   35   34   33   32   31
+  30   29   28   27   26   25   24   23   22   21
+  20   19   18   17   16   15   14   13   12   11
   10    9    8    7    6    5    4    3    2    1
 ```
 
@@ -1214,7 +1214,7 @@ end
 
 ## Logtalk
 
-The built-in list type can be viewed as a singly linked list. 
+The built-in list type can be viewed as a singly linked list.
 Traversing can be trivially done using a tail-recursive predicate:
 
 ```logtalk
@@ -1265,14 +1265,14 @@ raisethysword
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
-Matlab and Octave do not have pointers. 
+Matlab and Octave do not have pointers.
 Linked lists are implemented as vectors (i.e. arrays of size 1xN)
 
 ```Matlab
-list = 1:10; 
+list = 1:10;
     for k=1:length(list)
-        printf('%i\n',list(k))	
-    end; 
+        printf('%i\n',list(k))
+    end;
 ```
 
 
@@ -1280,7 +1280,7 @@ It is recommended to avoid loops and "vectorize" the code:
 
 
 ```Matlab
-  printf('%d\n', list(:));    
+  printf('%d\n', list(:));
 ```
 
 
@@ -1400,7 +1400,7 @@ nymph
 
 
 See [[Singly-linked_list/Element_insertion#Oforth|Singly-Linked List/Element_insertion in Oforth]] for the full class definition.
- 
+
 Because forEachNext is defined, a linked list responds to all methods defined for Collections : apply, map, filter, ....
 
 
@@ -1466,7 +1466,7 @@ See [[Singly-linked_list#Delphi | Delphi]]
 
 ## Peloton
 
-This makes a list of the Chinese Public Holiday and lists them first till last and then last till first. 
+This makes a list of the Chinese Public Holiday and lists them first till last and then last till first.
 
 ```sgml><@ LETCNSLSTLIT
 public holidays|開國紀念日^和平紀念日^婦女節、兒童節合併假期^清明節^國慶日^春節^端午節^中秋節^農曆除夕</@>
@@ -1548,7 +1548,7 @@ print "\n";
 ### With <tt>Pair</tt>
 
 
-Built-in list processing in Perl is not specifically based on singly-linked lists, 
+Built-in list processing in Perl is not specifically based on singly-linked lists,
 but works at a higher abstraction level that encapsulates such implementation choices.  Nonetheless, it's trivial to use the <tt>Pair</tt> type to build what is essentially a Lisp-style cons list, and in fact, the <tt>=></tt> pair constructor is right associative for precisely that reason.
 We traverse such a list here using a 3-part loop:
 
@@ -1571,13 +1571,13 @@ loop (my $l = $list; $l; $l.=value) {
 6
 ```
 
-It would be pretty easy to make such lists iterable as normal Perl lists, 
+It would be pretty easy to make such lists iterable as normal Perl lists,
 if anyone really cared to...
 
-Well, shoot, let's just go ahead and do it.  
-We'll pretend the <tt>Pair</tt> type is really a list type.  
-(And we show how you turn an ordinary list into a cons list using a reduction.  
-Note how the <tt>[=>]</tt> reduction is also right associative, 
+Well, shoot, let's just go ahead and do it.
+We'll pretend the <tt>Pair</tt> type is really a list type.
+(And we show how you turn an ordinary list into a cons list using a reduction.
+Note how the <tt>[=>]</tt> reduction is also right associative,
 just like the base operator.)
 
 ```perl6
@@ -1770,7 +1770,7 @@ a
 ```PureBasic
 Procedure traverse(*node.MyData)
   While *node
-    ;access data, i.e. PrintN(Str(*node\Value)) 
+    ;access data, i.e. PrintN(Str(*node\Value))
     *node = *node\next
   Wend
 EndProcedure
@@ -1789,9 +1789,9 @@ for node in lst:
     print node.value
 ```
 
-Any Python class can define ''next()'' and ''__iter__()'' methods so that it can be used with the normal ''for'' iteration syntax.  
-In this example the "lst" could be an instance of any Python list, tuple, dictionary, or any sort of object which defines an iterator.  
-It could also be a generator (a type of function which ''yields'' results upon each successive invocation).  
+Any Python class can define ''next()'' and ''__iter__()'' methods so that it can be used with the normal ''for'' iteration syntax.
+In this example the "lst" could be an instance of any Python list, tuple, dictionary, or any sort of object which defines an iterator.
+It could also be a generator (a type of function which ''yields'' results upon each successive invocation).
 The notion of a "singly linked list" is somewhat more primitive than normal Python built-in objects.
 
 ```python
@@ -1981,7 +1981,7 @@ The following will demonstrate iteration all three ways.
 
 
 ```rust
-// 
+//
 //
 // Iteration by value (simply empties the list as the caller now owns all values)
 //
@@ -1991,7 +1991,7 @@ pub struct IntoIter<T>(List<T>);
 impl<T> Iterator for IntoIter<T> {
     type Item = T;
     fn next(&mut self) -> Option<Self::Item> {
-        self.0.head.take().map(|node| { 
+        self.0.head.take().map(|node| {
             let node = *node;
             self.0.head = node.next;
             node.elem

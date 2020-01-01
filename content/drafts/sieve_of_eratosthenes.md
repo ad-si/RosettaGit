@@ -13,11 +13,11 @@ tags = []
 {{task|Prime Numbers}}
 {{clarified-review}}
 
-The [[wp:Sieve_of_Eratosthenes|Sieve of Eratosthenes]] is a simple algorithm that finds the prime numbers up to a given integer. 
+The [[wp:Sieve_of_Eratosthenes|Sieve of Eratosthenes]] is a simple algorithm that finds the prime numbers up to a given integer.
 
 
 ;Task:
-Implement the   Sieve of Eratosthenes   algorithm, with the only allowed optimization that the outer loop can stop at the square root of the limit, and the inner loop may start at the square of the prime just found. 
+Implement the   Sieve of Eratosthenes   algorithm, with the only allowed optimization that the outer loop can stop at the square root of the limit, and the inner loop may start at the square of the prime just found.
 
 That means especially that you shouldn't optimize by using pre-computed ''wheels'', i.e. don't assume you need only to cross out odd numbers (wheel based on 2), numbers equal to 1 or 5 modulo 6 (wheel based on 2 and 3), or similar wheels based on low primes.
 
@@ -47,23 +47,23 @@ If there's an easy way to add such a wheel based optimization, implement it as a
 ## 360 Assembly
 
 For maximum compatibility, this program uses only the basic instruction set.
-<lang 360_Assembly>*        Sieve of Eratosthenes 
-ERATOST  CSECT  
+<lang 360_Assembly>*        Sieve of Eratosthenes
+ERATOST  CSECT
          USING  ERATOST,R12
 SAVEAREA B      STM-SAVEAREA(R15)
          DC     17F'0'
          DC     CL8'ERATOST'
 STM      STM    R14,R12,12(R13) save calling context
-         ST     R13,4(R15)      
+         ST     R13,4(R15)
          ST     R15,8(R13)
          LR     R12,R15         set addessability
 *        ----   CODE
-         LA     R4,1            I=1  
+         LA     R4,1            I=1
          LA     R6,1            increment
          L      R7,N            limit
 LOOPI    BXH    R4,R6,ENDLOOPI  do I=2 to N
          LR     R1,R4           R1=I
-         BCTR   R1,0             
+         BCTR   R1,0
          LA     R14,CRIBLE(R1)
          CLI    0(R14),X'01'
          BNE    ENDIF           if not CRIBLE(I)
@@ -80,7 +80,7 @@ ENDLOOPJ EQU    *
 ENDIF    EQU    *
          B      LOOPI
 ENDLOOPI EQU    *
-         LA     R4,1            I=1  
+         LA     R4,1            I=1
          LA     R6,1
          L      R7,N
 LOOP     BXH    R4,R6,ENDLOOP   do I=1 to N
@@ -88,13 +88,13 @@ LOOP     BXH    R4,R6,ENDLOOP   do I=1 to N
          BCTR   R1,0
          LA     R14,CRIBLE(R1)
          CLI    0(R14),X'01'
-         BNE    NOTPRIME        if not CRIBLE(I) 
+         BNE    NOTPRIME        if not CRIBLE(I)
          CVD    R4,P            P=I
          UNPK   Z,P             Z=P
          MVC    C,Z             C=Z
          OI     C+L'C-1,X'F0'   zap sign
          MVC    WTOBUF(8),C+8
-         WTO    MF=(E,WTOMSG)		  
+         WTO    MF=(E,WTOMSG)
 NOTPRIME EQU    *
          B      LOOP
 ENDLOOP  EQU    *
@@ -108,15 +108,15 @@ J        DS     F
          DS     0F
 P        DS     PL8             packed
 Z        DS     ZL16            zoned
-C        DS     CL16            character 
+C        DS     CL16            character
 WTOMSG   DS     0F
          DC     H'80'           length of WTO buffer
          DC     H'0'            must be binary zeroes
 WTOBUF   DC     80C' '
-         LTORG  
+         LTORG
 N        DC     F'100000'
 CRIBLE   DC     100000X'01'
-         YREGS  
+         YREGS
          END    ERATOST
 ```
 
@@ -246,7 +246,7 @@ POP	MACRO
 DROP	MACRO
 	ADDQ	#4,SP
 	ENDM
-	
+
 PUTS	MACRO
 	** Print a null-terminated string w/o CRLF **
 	** Usage: PUTS stringaddress
@@ -255,9 +255,9 @@ PUTS	MACRO
 	LEA	\1,A1	; address of string
 	TRAP	#15	; display it
 	ENDM
-	
+
 GETN	MACRO
-	MOVEQ	#4,D0	; Read a number from the keyboard into D1.L. 
+	MOVEQ	#4,D0	; Read a number from the keyboard into D1.L.
 	TRAP	#15
 	ENDM
 
@@ -268,7 +268,7 @@ val	MACRO		; Used by bit sieve. Converts bit address to the number it represents
 	ADDQ	#3,\1	; add offset because initial primes (1, 2) are omitted
 	ENDM
 
-* ** 
+* **
 ### ==========================================================================
  **
 * ** Integer square root routine, bisection method **
@@ -317,12 +317,12 @@ SquareRoot:
 	MOVEM.L	(SP)+,D2-D4	; restore saved registers
 	RTS
 *
-* ** 
+* **
 ### ==========================================================================
  **
 
 
-** 
+**
 ### =================================================================
  **
 *
@@ -353,7 +353,7 @@ GetBit:		** sub-part of Sieve subroutine **
 		** Exit: A6 holds the byte number, D7 holds the bit number within the byte
 		** Note: Input param is still on TOS after return. Could have passed via a register, but
                 **  wanted to practice with stack. :)
-*		
+*
 	MOVE.L	(4,SP),D7	; get value from (pre-call) TOS
 	ASR.L	#3,D7	; /8
 	MOVEA	D7,A6	; byte #
@@ -388,7 +388,7 @@ CxLoop:		; Goes through array marking multiples of d1 as composite numbers
 	BRA	CxLoop
 ExitCx:
 	CLR.L	D1	; Clear new-prime-found flag
-	ADDQ	#1,D3	; Start just past last prime found 
+	ADDQ	#1,D3	; Start just past last prime found
 PxLoop:		; Searches for next unmarked (not composite) number
 	CMP.L	D2,D3	; no point searching past where first unmarked multiple would be past end of array
 	BHI	ExitPx	; if past end of array
@@ -416,7 +416,7 @@ ExitPx:
 *
 *	D4 == Column count
 *
-*	Print header and assumed primes (#1, #2) 
+*	Print header and assumed primes (#1, #2)
     	PUTS	Header	; Print string @ Header, no CR/LF
 	MOVEQ	#2,D6	; Start counter at 2 because #1 and #2 are assumed primes
 	MOVEQ	#2,D4
@@ -452,7 +452,7 @@ NotPrime:
 ExitPL:
 	RTS
 
-** 
+**
 ### =================================================================
  **
 
@@ -471,7 +471,7 @@ START:                  	; first instruction of program
 
 	SIMHALT             	; halt simulator
 
-** 
+**
 ### =================================================================
  **
 
@@ -874,7 +874,7 @@ PROC eratosthenes = (INT n)[]BOOL:
   OD;
   sieve
 );
- 
+
  print((eratosthenes(80),new line))
 ```
 
@@ -894,7 +894,7 @@ FTTFTFTFFFTFTFFFTFTFFFTFFFFFTFTFFFFFTFFFTFTFFFTFFFFFTFFFFFTFTFFFFFTFFFTFTFFFFFTF
 BEGIN
 
 COMMENT
-  FIND PRIMES UP TO THE SPECIFIED LIMIT (HERE 1,000) USING 
+  FIND PRIMES UP TO THE SPECIFIED LIMIT (HERE 1,000) USING
   THE SIEVE OF ERATOSTHENES;
 
 % CALCULATE INTEGER SQUARE ROOT %
@@ -936,10 +936,10 @@ FOR I := 2 STEP 1 UNTIL ISQRT(LIMIT) DO
 % WRITE OUT THE PRIMES EIGHT PER LINE %
 COUNT := 0;
 COL := 1;
-WRITE(" ");  
+WRITE(" ");
 FOR I := 2 STEP 1 UNTIL LIMIT DO
   BEGIN
-    IF FLAGS[I] = TRUE THEN 
+    IF FLAGS[I] = TRUE THEN
       BEGIN
          WRITEON(I);
          COUNT := COUNT + 1;
@@ -974,7 +974,7 @@ begin
     procedure sieve( logical array s ( * ); integer value n ) ;
     begin
 
-        % start with everything flagged as prime                             % 
+        % start with everything flagged as prime                             %
         for i := 1 until n do s( i ) := true;
 
         % sieve out the non-primes                                           %
@@ -1014,7 +1014,7 @@ end.
 
 ```txt
 
- 2  3  5  7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 
+ 2  3  5  7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 
 ```
 
@@ -1032,12 +1032,12 @@ easier than producing the list of primes.
 
 
 ```apl
-sieve2←{                          
-  b←⍵⍴1             
-  b[⍳2⌊⍵]←0         
-  2≥⍵:b             
-  p←{⍵/⍳⍴⍵}∇⌈⍵*0.5  
-  m←1+⌊(⍵-1+p×p)÷p  
+sieve2←{
+  b←⍵⍴1
+  b[⍳2⌊⍵]←0
+  2≥⍵:b
+  p←{⍵/⍳⍴⍵}∇⌈⍵*0.5
+  m←1+⌊(⍵-1+p×p)÷p
   b ⊣ p {b[⍺×⍺+⍳⍵]←0}¨ m
 }
 
@@ -1048,18 +1048,18 @@ primes2←{⍵/⍳⍴⍵}∘sieve2
 The required list of prime divisors obtains by recursion (<tt>{⍵/⍳⍴⍵}∇⌈⍵*0.5</tt>).
 
 
-###  Optimized Version 
+###  Optimized Version
 
 
 
 ```apl
-sieve←{                           
+sieve←{
   b←⍵⍴{∧⌿↑(×/⍵)⍴¨~⍵↑¨1}2 3 5
-  b[⍳6⌊⍵]←(6⌊⍵)⍴0 0 1 1 0 1 
-  49≥⍵:b                    
-  p←3↓{⍵/⍳⍴⍵}∇⌈⍵*0.5        
-  m←1+⌊(⍵-1+p×p)÷2×p        
-  b ⊣ p {b[⍺×⍺+2×⍳⍵]←0}¨ m      
+  b[⍳6⌊⍵]←(6⌊⍵)⍴0 0 1 1 0 1
+  49≥⍵:b
+  p←3↓{⍵/⍳⍴⍵}∇⌈⍵*0.5
+  m←1+⌊(⍵-1+p×p)÷2×p
+  b ⊣ p {b[⍺×⍺+2×⍳⍵]←0}¨ m
 }
 
 primes←{⍵/⍳⍴⍵}∘sieve
@@ -1072,7 +1072,7 @@ The optimizations are as follows:
 * Multiples of a prime to be marked start at its square.
 
 
-###  Examples 
+###  Examples
 
 
 
@@ -1106,18 +1106,18 @@ to sieve(N)
 	script
 		on array()
 			set L to {}
-			
+
 			repeat with i from 1 to N
 				set end of L to i
 			end repeat
-			
+
 			L
 		end array
 	end script
-	
+
 	set L to result's array()
 	set item 1 of L to false
-	
+
 	repeat with x in L
 		repeat with y in L
 			try
@@ -1129,7 +1129,7 @@ to sieve(N)
 			end try
 		end repeat
 	end repeat
-	
+
 	numbers in L
 end sieve
 
@@ -1151,21 +1151,21 @@ sieve(1000)
 {{AutoHotkey case}}Source: [http://www.autohotkey.com/forum/topic44657.html AutoHotkey forum] by Laszlo
 
 ```autohotkey
-MsgBox % "12345678901234567890`n" Sieve(20) 
+MsgBox % "12345678901234567890`n" Sieve(20)
 
-Sieve(n) { ; Sieve of Eratosthenes => string of 0|1 chars, 1 at position k: k is prime 
-   Static zero := 48, one := 49 ; Asc("0"), Asc("1") 
-   VarSetCapacity(S,n,one) 
-   NumPut(zero,S,0,"char") 
-   i := 2 
-   Loop % sqrt(n)-1 { 
-      If (NumGet(S,i-1,"char") = one) 
-         Loop % n//i 
-            If (A_Index > 1) 
-               NumPut(zero,S,A_Index*i-1,"char") 
-      i += 1+(i>2) 
-   } 
-   Return S 
+Sieve(n) { ; Sieve of Eratosthenes => string of 0|1 chars, 1 at position k: k is prime
+   Static zero := 48, one := 49 ; Asc("0"), Asc("1")
+   VarSetCapacity(S,n,one)
+   NumPut(zero,S,0,"char")
+   i := 2
+   Loop % sqrt(n)-1 {
+      If (NumGet(S,i-1,"char") = one)
+         Loop % n//i
+            If (A_Index > 1)
+               NumPut(zero,S,A_Index*i-1,"char")
+      i += 1+(i>2)
+   }
+   Return S
 }
 ```
 
@@ -1193,8 +1193,8 @@ _ArrayDisplay($r)
 
 ## AWK
 
-An initial array holds all numbers 2..max (which is entered on stdin); 
-then all products of integers are deleted from it; 
+An initial array holds all numbers 2..max (which is entered on stdin);
+then all products of integers are deleted from it;
 the remaining are displayed in the unsorted appearance of a hash table.
 Here, the script is entered directly on the commandline,
 and input entered on stdin:
@@ -1204,7 +1204,7 @@ and input entered on stdin:
  100
  71 53 17 5 73 37 19 83 47 29 7 67 59 11 97 79 89 31 13 41 23 2 61 43 3
 
-The following variant does not unset non-primes, but sets them to 0, 
+The following variant does not unset non-primes, but sets them to 0,
 to preserve order in output:
  $ awk '{for(i=2;i<=$1;i++) a[i]=1;
  >       for(i=2;i<=sqrt($1);i++) for(j=2;j<=$1;j++) a[i*j]=0;
@@ -1212,7 +1212,7 @@ to preserve order in output:
  100
  2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 
-Now with the script from a file, 
+Now with the script from a file,
 input from commandline as well as stdin,
 and input is checked for valid numbers:
 
@@ -1246,12 +1246,12 @@ Here is an alternate version that uses an associative array to record composites
 
 BEGIN {  ULIMIT=100
 
-for ( n=1 ; (n++) < ULIMIT ; ) 
+for ( n=1 ; (n++) < ULIMIT ; )
     if (n in S) {
         p = S[n]
         delete S[n]
         for ( m = n ; (m += p) in S ; )  { }
-        S[m] = p 
+        S[m] = p
         }
     else  print ( S[(n+n)] = n )
 }
@@ -1421,7 +1421,7 @@ A note on <code>FAST</code> and <code>SLOW</code>: under normal circumstances th
 ```bbcbasic
       limit% = 100000
       DIM sieve% limit%
-      
+
       prime% = 2
       WHILE prime%^2 < limit%
         FOR I% = prime%*2 TO limit% STEP prime%
@@ -1429,7 +1429,7 @@ A note on <code>FAST</code> and <code>SLOW</code>: under normal circumstances th
         NEXT
         REPEAT prime% += 1 : UNTIL sieve%?prime%=0
       ENDWHILE
-      
+
       REM Display the primes:
       FOR I% = 1 TO limit%
         IF sieve%?I% = 0 PRINT I%;
@@ -1447,7 +1447,7 @@ A note on <code>FAST</code> and <code>SLOW</code>: under normal circumstances th
 setlocal ENABLEDELAYEDEXPANSION
 setlocal ENABLEEXTENSIONS
 rem echo on
-set /p n=limit: 
+set /p n=limit:
 rem set n=100
 for /L %%i in (1,1,%n%) do set crible.%%i=1
 for /L %%i in (2,1,%n%) do (
@@ -1459,7 +1459,7 @@ for /L %%i in (2,1,%n%) do (
   )
 )
 for /L %%i in (2,1,%n%) do (
-  if !crible.%%i! EQU 1 echo %%i 
+  if !crible.%%i! EQU 1 echo %%i
 )
 pause
 ```
@@ -1539,8 +1539,8 @@ This solution does not use an array. Instead, numbers themselves are used as var
 ## C
 
 Plain sieve, without any optimizations:
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <math.h>
 
 char*
@@ -1563,7 +1563,7 @@ eratosthenes(int n, int *c)
 		if(!sieve[i])
 			for (j = i*i; j <= n; j += i)
 				if(!sieve[j]){
-					sieve[j] = 1; 
+					sieve[j] = 1;
 					--(*c);
 				}
   	return sieve;
@@ -1573,12 +1573,12 @@ Possible optimizations include sieving only odd numbers (or more complex wheels)
 
 '''Another example:'''
 
-We first fill ones into an array and assume all numbers are prime. 
-Then, in a loop, fill zeroes into those places where i * j is less than or equal to n (number of primes requested), which means they have multiples! 
-To understand this better, look at the output of the following example. 
-To print this back, we look for ones in the array and only print those spots. 
-```C>#include <stdio.h
-
+We first fill ones into an array and assume all numbers are prime.
+Then, in a loop, fill zeroes into those places where i * j is less than or equal to n (number of primes requested), which means they have multiples!
+To understand this better, look at the output of the following example.
+To print this back, we look for ones in the array and only print those spots.
+```c
+#include <stdio.h>
 #include <malloc.h>
 void sieve(int *, int);
 
@@ -1644,7 +1644,7 @@ i:7
 i:8
 i:9
 i:10
-Primes numbers from 1 to 10 are : 2, 3, 5, 7, 
+Primes numbers from 1 to 10 are : 2, 3, 5, 7,
 ```
 
 
@@ -1658,8 +1658,8 @@ Primes numbers from 1 to 10 are : 2, 3, 5, 7,
 This implementation follows the standard library pattern of [http://en.cppreference.com/w/cpp/algorithm/iota std::iota]. The start and end iterators are provided for the container. The destination container is used for marking primes and then filled with the primes which are less than the container size. This method requires no memory allocation inside the function.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <algorithm>
 #include <vector>
 
@@ -1711,23 +1711,23 @@ int main(int argc, const char* argv[])
 
 
 
-###  Boost 
+###  Boost
 
 
 
 ```cpp
-// yield all prime numbers less than limit. 
+// yield all prime numbers less than limit.
 template<class UnaryFunction>
 void primesupto(int limit, UnaryFunction yield)
 {
   std::vector<bool> is_prime(limit, true);
-  
+
   const int sqrt_limit = static_cast<int>(std::sqrt(limit));
   for (int n = 2; n <= sqrt_limit; ++n)
     if (is_prime[n]) {
 	yield(n);
 
-	for (unsigned k = n*n, ulim = static_cast<unsigned>(limit); k < ulim; k += n) 
+	for (unsigned k = n*n, ulim = static_cast<unsigned>(limit); k < ulim; k += n)
       //NOTE: "unsigned" is used to avoid an overflow in `k+=n` for `limit` near INT_MAX
 	  is_prime[k] = false;
     }
@@ -1766,7 +1766,7 @@ int main(int argc, char *argv[])
     ss >> limit;
 
     if (limit < 1 or ss.fail()) {
-      cerr << "USAGE:\n  sieve LIMIT\n\nwhere LIMIT in the range [1, " 
+      cerr << "USAGE:\n  sieve LIMIT\n\nwhere LIMIT in the range [1, "
 	   << numeric_limits<int>::max() << ")" << endl;
       return 2;
     }
@@ -1774,14 +1774,14 @@ int main(int argc, char *argv[])
 
   // print primes less then 100
   primesupto(100, cout << _1 << " ");
-  cout << endl;  
+  cout << endl;
 
   // find number of primes less then limit and their sum
   int count = 0;
   uintmax_t sum = 0;
   primesupto(limit, (var(sum) += _1, var(count) += 1));
 
-  cout << "limit sum pi(n)\n" 
+  cout << "limit sum pi(n)\n"
        << limit << " " << sum << " " << count << endl;
 }
 ```
@@ -2325,7 +2325,7 @@ Calculates primes up to and including ''n'' using a mutable boolean array but ot
 ```
 
 This implemantation is about twice fast than previous one and use only half memory.
-From the index of array calculates the value it represents as (2*i + 1), the step between two index that represents 
+From the index of array calculates the value it represents as (2*i + 1), the step between two index that represents
 the multiples of primes to mark as composite is also (2*i + 1).
 The index of the square of the prime to start composite marking is 2*i*(i+1).
 
@@ -2449,7 +2449,7 @@ The following code overcomes many of those limitations by using an internal (OPS
                   (let [w (dec (alength cmpsts))] ;; fast results count bit counter
                     (loop [i 0, cnt (bit-shift-left (alength cmpsts) 6)]
                       (if (> i w) cnt
-                        (recur (inc i) 
+                        (recur (inc i)
                                (- cnt (java.lang.Long/bitCount (aget cmpsts i))))))))]
     (if (< n 2) nil
       (cons 2 (if (< n 3) nil
@@ -2492,7 +2492,7 @@ The following code overcomes many of those limitations by using an internal (OPS
                         clojure.lang.Sequential
                         Object
                           (toString [this] (if (= cnt tcnt) "()"
-                                             (.toString (seq (map identity this)))))) 
+                                             (.toString (seq (map identity this))))))
                     (->OPSeq 0 cmpsts 0 (numprms))))))))
 
 ```
@@ -3001,7 +3001,7 @@ endfunction(eratosthenes)
                    OCCURS 1 TO 10000000 TIMES DEPENDING ON Max-Number
                    INDEXED BY Num-Index.
                88  Is-Prime VALUE "P" FALSE "N".
-               
+
        01  Current-Prime    USAGE UNSIGNED-INT.
 
        01  I                USAGE UNSIGNED-INT.
@@ -3056,7 +3056,7 @@ endfunction(eratosthenes)
      for candidate from 2 to maximum
      when (zerop (bit sieve candidate))
      collect candidate
-     and do (loop for composite from (expt candidate 2) 
+     and do (loop for composite from (expt candidate 2)
                to maximum by candidate
                do (setf (bit sieve composite) 1))))
 ```
@@ -3067,7 +3067,7 @@ Working with odds only (above twice speedup), and marking composites only for pr
 
 ```lisp
 (defun sieve-odds (maximum)
-  "Prime numbers sieve for odd numbers. 
+  "Prime numbers sieve for odd numbers.
    Returns a list with all the primes that are less than or equal to maximum."
   (loop :with maxi = (ash (1- maximum) -1)
         :with stop = (ash (isqrt maximum) -1)
@@ -3236,7 +3236,7 @@ main() {
   int limit = 1000;
   int strt = new DateTime.now().millisecondsSinceEpoch;
   Set<int> sieve = new Set<int>();
-  
+
   for(int i = 2; i <= limit; i++) {
     sieve.add(i);
   }
@@ -3447,7 +3447,7 @@ int _countComposites(Uint8List cmpsts) {
     count += CLUT[buf[i]];
   }
   return count;
-} 
+}
 
 // converts an entire sieved array of bytes into an array of UInt32 primes,
 // to be used as a source of base primes...
@@ -3496,7 +3496,7 @@ void _sieveComposites(int low, Uint8List buffer, Iterable<Uint32List> bpas) {
         }
       }
     }
-  } 
+  }
 }
 
 // starts the secondary base primes feed with minimum size in bits set to 4K...
@@ -3714,7 +3714,7 @@ end.
 Output:
 
 ```txt
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 ```
 
 
@@ -3736,7 +3736,7 @@ begin
             sieve[k] := True;
       end;
    end;
-   
+
    for k:=2 to limit do
       if not sieve[k] then
          Result.Add(k);
@@ -3864,7 +3864,7 @@ public class FindPrime
    bool HasPrimeFactor(int x)
    {
       int max = (int)floor(sqrt((double)x));
-     
+
       for(i : primeList)
       {
          if(i > max) break;
@@ -3913,11 +3913,11 @@ class PrimeApp : Application
 ;; converts sieve->list for integers in [nmin .. nmax[
 (define (s-range sieve nmin nmax (base 0))
 	(for/list ([ i (in-range nmin nmax)]) #:when (bit-vector-ref sieve i) (+ i base)))
-	
+
 ;; next prime in sieve > p, or #f
-(define (s-next-prime sieve p ) ;; 
+(define (s-next-prime sieve p ) ;;
 		(bit-vector-scan-1 sieve (1+ p)))
-		
+
 
 ;; returns a bit-vector - sieve- all numbers in [0..n[
 (define (eratosthenes n)
@@ -3928,8 +3928,8 @@ class PrimeApp : Application
   		 #:when (bit-vector-ref primes  p)
          (for ([j (in-range (* p p) n p)])
     (bit-vector-set! primes j #f)))
-   primes) 
-  
+   primes)
+
 (define s-primes (eratosthenes 10_000_000))
 
 (s-range s-primes 0 100)
@@ -3959,9 +3959,9 @@ Allow to extend the basis sieve (n)  up to n^2. Memory requirement is O(√n)
 	  (while p
 	  #:break (> p pmax)
 	 (set! first (+ left (modulo (- p (modulo left p)) p )))
-			
+
  	(for   [(q (in-range first (1+ right) p))]
-	(bit-vector-set! segment (- q left) #f))	
+	(bit-vector-set! segment (- q left) #f))
         (set! p (bit-vector-scan-1 sieve (1+ p))))
 	segment)
 
@@ -3971,12 +3971,12 @@ Allow to extend the basis sieve (n)  up to n^2. Memory requirement is O(√n)
 
 (seg-range 10_000_000_000 1000) ;; 15 milli-sec
 
-    → (10000000019 10000000033 10000000061 10000000069 10000000097 10000000103 10000000121 
-       10000000141 10000000147 10000000207 10000000259 10000000277 10000000279 10000000319 
-       10000000343 10000000391 10000000403 10000000469 10000000501 10000000537 10000000583 
-       10000000589 10000000597 10000000601 10000000631 10000000643 10000000649 10000000667 
-       10000000679 10000000711 10000000723 10000000741 10000000753 10000000793 10000000799 
-       10000000807 10000000877 10000000883 10000000889 10000000949 10000000963 10000000991 
+    → (10000000019 10000000033 10000000061 10000000069 10000000097 10000000103 10000000121
+       10000000141 10000000147 10000000207 10000000259 10000000277 10000000279 10000000319
+       10000000343 10000000391 10000000403 10000000469 10000000501 10000000537 10000000583
+       10000000589 10000000597 10000000601 10000000631 10000000643 10000000649 10000000667
+       10000000679 10000000711 10000000723 10000000741 10000000753 10000000793 10000000799
+       10000000807 10000000877 10000000883 10000000889 10000000949 10000000963 10000000991
        10000000993 10000000999)
 
 ;; 8 msec using the native (prime?) function
@@ -3996,12 +3996,12 @@ A 2x3 wheel gives a 50% performance gain.
   (bit-vector-set! primes 2 #t)
   (bit-vector-set! primes 3 #t)
   (bit-vector-set! primes 5 #t)
-  
+
   (for ([i  (in-range 6 n 6) ]) ;; set candidate primes
   		(bit-vector-set! primes (1+ i) #t)
   		(bit-vector-set! primes (+ i 5) #t)
   		)
-  		
+
   (for ([p  (in-range 5 (1+ (sqrt n)) 2 ) ])
   		 #:when (bit-vector-ref primes  p)
          (for ([j (in-range (* p p) n p)])
@@ -4018,17 +4018,17 @@ A 2x3 wheel gives a 50% performance gain.
 ```eiffel
 class
     APPLICATION
- 
+
 create
     make
- 
+
 feature
        make
             -- Run application.
         do
             across primes_through (100) as ic loop print (ic.item.out + " ") end
         end
- 
+
     primes_through (a_limit: INTEGER): LINKED_LIST [INTEGER]
             -- Prime numbers through `a_limit'
         require
@@ -4081,7 +4081,7 @@ defmodule Prime do
       end
     end)
   end
-  
+
   defp clear(sieve, list) do
     Enum.reduce(list, sieve, fn i, acc -> put_elem(acc, i, false) end)
   end
@@ -4090,7 +4090,7 @@ end
 limit = 199
 sieve = Prime.eratosthenes(limit)
 Enum.each(0..limit, fn n ->
-  if x=elem(sieve, n), do: :io.format("~3w", [x]), else: :io.format("  .") 
+  if x=elem(sieve, n), do: :io.format("~3w", [x]), else: :io.format("  .")
   if rem(n+1, 20)==0, do: IO.puts ""
 end)
 ```
@@ -4370,44 +4370,44 @@ find_prime( {ok, _Value}, N, {Max, Dict} ) -> {Max, lists:foldl( fun dict:erase/
 ===Erlang Lists of Tuples, Sloww===
 
 A much slower, perverse method, using only lists of tuples. Especially evil is the P = lists:filtermap operation which yields a list for every iteration of the X * M row.
-Has the virtue of working for any -> N :) 
+Has the virtue of working for any -> N :)
 
 
 ```Erlang
 
--module( sieve ).                                                                                                    
--export( [main/1,primes/2] ).                                                                                        
-                                                                                                                     
-main(N) -> io:format("Primes: ~w~n", [ primes(2,N) ]).                                                               
-                                                                                                                     
-primes(M,N) -> primes(M, N,lists:seq( M, N ),[]).                                                                    
-                                                                                                                     
-primes(M,N,_Acc,Tuples) when M > N/2-> out(Tuples);                                                                  
+-module( sieve ).
+-export( [main/1,primes/2] ).
 
-primes(M,N,Acc,Tuples) when length(Tuples) < 1 -> 
-        primes(M,N,Acc,[{X, X} || X <- Acc]);                              
+main(N) -> io:format("Primes: ~w~n", [ primes(2,N) ]).
 
-primes(M,N,Acc,Tuples) ->                                                                                            
-        {SqrtN, _T} = lists:split( erlang:round(math:sqrt(N)), Acc ),                                                
-        F = Tuples,                                                                                                  
-        Ms = lists:filtermap(fun(X) -> if X > 0 -> {true, X * M}; true -> false end end, SqrtN),                     
-        P = lists:filtermap(fun(T) -> 
-            case lists:keymember(T,1,F) of true -> 
-            {true, lists:keyreplace(T,1,F,{T,0})}; 
-             _-> false end end,  Ms),                                                                                              
-        AA = mergeT(P,lists:last(P),1 ),                                                                             
-        primes(M+1,N,Acc,AA).                                                                                        
-                                                                                                                     
-mergeT(L,M,Acc) when Acc == length(L) -> M;                                                                          
-mergeT(L,M,Acc) ->                                                                                                   
-        A = lists:nth(Acc,L),                                                                                        
-        B = M,                                                                                                       
-        Mer = lists:zipwith(fun(X, Y) -> if X < Y -> X; true -> Y end end, A, B),                                    
-        mergeT(L,Mer,Acc+1).                                                                                         
-                                                                                                                     
-out(Tuples) ->                                                                                                       
-        Primes = lists:filter( fun({_,Y}) -> Y > 0 end,  Tuples),                                                    
-        [ X || {X,_} <- Primes ].                                                                                    
+primes(M,N) -> primes(M, N,lists:seq( M, N ),[]).
+
+primes(M,N,_Acc,Tuples) when M > N/2-> out(Tuples);
+
+primes(M,N,Acc,Tuples) when length(Tuples) < 1 ->
+        primes(M,N,Acc,[{X, X} || X <- Acc]);
+
+primes(M,N,Acc,Tuples) ->
+        {SqrtN, _T} = lists:split( erlang:round(math:sqrt(N)), Acc ),
+        F = Tuples,
+        Ms = lists:filtermap(fun(X) -> if X > 0 -> {true, X * M}; true -> false end end, SqrtN),
+        P = lists:filtermap(fun(T) ->
+            case lists:keymember(T,1,F) of true ->
+            {true, lists:keyreplace(T,1,F,{T,0})};
+             _-> false end end,  Ms),
+        AA = mergeT(P,lists:last(P),1 ),
+        primes(M+1,N,Acc,AA).
+
+mergeT(L,M,Acc) when Acc == length(L) -> M;
+mergeT(L,M,Acc) ->
+        A = lists:nth(Acc,L),
+        B = M,
+        Mer = lists:zipwith(fun(X, Y) -> if X < Y -> X; true -> Y end end, A, B),
+        mergeT(L,Mer,Acc+1).
+
+out(Tuples) ->
+        Primes = lists:filter( fun({_,Y}) -> Y > 0 end,  Tuples),
+        [ X || {X,_} <- Primes ].
 
 ```
 
@@ -4418,7 +4418,7 @@ out(Tuples) ->
 109> sieve:main(20).
 Primes: [2,3,5,7,11,13,17,19]
 ok
-110> timer:tc(sieve, main, [20]).        
+110> timer:tc(sieve, main, [20]).
 Primes: [2,3,5,7,11,13,17,19]
 {129,ok}
 
@@ -4426,7 +4426,7 @@ Primes: [2,3,5,7,11,13,17,19]
 
 
 
-###  Erlang with ordered sets 
+###  Erlang with ordered sets
 
 Since I had written a really odd and slow one, I thought I'd best do a better performer. Inspired by an example from https://github.com/jupp0r
 
@@ -4446,12 +4446,12 @@ sieve(Candidates,SearchList,Primes,Maximum)  ->
      NewPrimes = ordsets:add_element(H,Primes),
      sieve(Reduced2, ReducedSearch, NewPrimes, Maximum).
 
-remove_multiples_of(Number,Candidates,SearchList) ->                                 
-    NewSearchList = ordsets:filter( fun(X) -> X >= Number * Number end, SearchList), 
+remove_multiples_of(Number,Candidates,SearchList) ->
+    NewSearchList = ordsets:filter( fun(X) -> X >= Number * Number end, SearchList),
     RemoveList = ordsets:filter( fun(X) -> X rem Number == 0 end, NewSearchList),
     {ordsets:subtract(Candidates, RemoveList), ordsets:subtract(NewSearchList, RemoveList)}.
 
-main(N) ->      
+main(N) ->
     io:fwrite("Creating Candidates...~n"),
     CandidateList = lists:seq(3,N,2),
     Candidates = ordsets:from_list(CandidateList),
@@ -4476,31 +4476,31 @@ ok
 
 
 
-### Erlang Canonical 
+### Erlang Canonical
 
 
-A pure list comprehension approach. 
+A pure list comprehension approach.
 
 
 ```Erlang
 
 -module(sieveof).
--export([main/1,primes/1, primes/2]).                 
-                                                      
-main(X) -> io:format("Primes: ~w~n", [ primes(X) ]).  
-                                 
-primes(X) -> sieve(range(2, X)).                                         
-primes(X, Y) -> remove(primes(X), primes(Y)).                            
-                                                                         
-range(X, X) -> [X];                                                      
-range(X, Y) -> [X | range(X + 1, Y)].                                    
-                                                                         
-sieve([X]) -> [X];                                                       
-sieve([H | T]) -> [H | sieve(remove([H * X || X <-[H | T]], T))].        
-                                                                         
-remove(_, []) -> [];                                                     
-remove([H | X], [H | Y]) -> remove(X, Y);                                
-remove(X, [H | Y]) -> [H | remove(X, Y)].                                
+-export([main/1,primes/1, primes/2]).
+
+main(X) -> io:format("Primes: ~w~n", [ primes(X) ]).
+
+primes(X) -> sieve(range(2, X)).
+primes(X, Y) -> remove(primes(X), primes(Y)).
+
+range(X, X) -> [X];
+range(X, Y) -> [X | range(X + 1, Y)].
+
+sieve([X]) -> [X];
+sieve([H | T]) -> [H | sieve(remove([H * X || X <-[H | T]], T))].
+
+remove(_, []) -> [];
+remove([H | X], [H | Y]) -> remove(X, Y);
+remove(X, [H | Y]) -> [H | remove(X, Y)].
 
 ```
 
@@ -4508,10 +4508,10 @@ remove(X, [H | Y]) -> [H | remove(X, Y)].
 
 ```txt
 
-> timer:tc(sieve, main, [100]). 
+> timer:tc(sieve, main, [100]).
 Primes: [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
 {7350,ok}
-61> timer:tc(sieveof, main, [100]). 
+61> timer:tc(sieveof, main, [100]).
 Primes: [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
 {363,ok}
 
@@ -4521,7 +4521,7 @@ Primes: [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
 Clearly not only more elegant, but faster :) Thanks to http://stackoverflow.com/users/113644/g-b
 
 
-### Erlang ets + cpu distributed implementation 
+### Erlang ets + cpu distributed implementation
 
 much faster previous erlang examples
 
@@ -4582,7 +4582,7 @@ composite_mc(N,I,M,0) ->
     after 1000    -> composite_mc(N,I,M,0)
     end.
 
-comp_i_mc(J, I, N) -> 
+comp_i_mc(J, I, N) ->
     Parent = self(),
     spawn(fun() ->
         comp_i(J, I, N),
@@ -4650,12 +4650,12 @@ last lines of the output screen
 
 ```txt
 
- 15749  15761  15767  15773  15787  15791  15797  15803  15809  15817  15823 
- 15859  15877  15881  15887  15889  15901  15907  15913  15919  15923  15937 
- 15959  15971  15973  15991  16001  16007  16033  16057  16061  16063  16067 
- 16069  16073  16087  16091  16097  16103  16111  16127  16139  16141  16183 
- 16187  16189  16193  16217  16223  16229  16231  16249  16253  16267  16273 
- 16301  16319  16333  16339  16349  16361  16363  16369  16381 
+ 15749  15761  15767  15773  15787  15791  15797  15803  15809  15817  15823
+ 15859  15877  15881  15887  15889  15901  15907  15913  15919  15923  15937
+ 15959  15971  15973  15991  16001  16007  16033  16057  16061  16063  16067
+ 16069  16073  16087  16091  16097  16103  16111  16127  16139  16141  16183
+ 16187  16189  16193  16217  16223  16229  16231  16249  16253  16267  16273
+ 16301  16319  16333  16339  16349  16361  16363  16369  16381
  1899  PRIMES
 
 ```
@@ -4719,7 +4719,7 @@ Well lists may not be lazy, but if you call it a sequence then it's a lazy list!
 *)
 let SofE =
   let rec fn n g = seq{ match n with
-                        |1 -> yield false; yield! fn g g 
+                        |1 -> yield false; yield! fn g g
                         |_ -> yield  true; yield! fn (n - 1) g}
   let rec fg ng = seq {
     let g = (Seq.findIndex(id) ng) + 2 // decreasingly inefficient with range at O(n)!
@@ -4852,7 +4852,7 @@ module MinHeap =
   let peekMin = function | Br(kv, _, _) -> Some(kv.k, kv.v)
                          | _            -> None
 
-  let rec push wk wv = 
+  let rec push wk wv =
     function | Mt -> Br(HeapEntry(wk, wv), Mt, Mt)
              | Br(vkv, ll, rr) ->
                  if wk <= vkv.k then
@@ -4871,7 +4871,7 @@ module MinHeap =
                   if wk <= vkvl.k && wk <= vkvr.k then Br(HeapEntry(wk, wv), pl, pr)
                   elif vkvl.k <= vkvr.k then Br(vkvl, sift pll plr, pr)
                   else Br(vkvr, pl, sift prl prr)
-    sift pql pqr                                        
+    sift pql pqr
 
   let replaceMin wk wv = function | Mt -> Mt
                                   | Br(_, ll, rr) -> siftdown wk wv ll rr
@@ -5210,15 +5210,15 @@ let primes(): unit -> Prime =
     makePrimePages (primendx 0) cPGSZBTS sb2prms
   let mutable lwi = nlwi in let mutable sb = nsb
   let mutable pgtlf = npgtlf
-  let mutable baseprm = prime 3 + prime (lwi + lwi) 
-  fun() -> 
+  let mutable baseprm = prime 3 + prime (lwi + lwi)
+  fun() ->
     if ndx < 0 then ndx <- 0; prime 2 else
     let inline notprm i = sb.[i >>> 3] &&& cBITMASK.[i &&& 7] <> 0uy
     while ndx < cPGSZBTS && notprm ndx do ndx <- ndx + 1
     if ndx >= cPGSZBTS then // get next page if over
       let (CIS((nlwi, nsb), npgtlf)) = pgtlf() in ndx <- 0
       lwi <- nlwi; sb <- nsb; pgtlf <- npgtlf
-      baseprm <- prime 3 + prime (lwi + lwi) 
+      baseprm <- prime 3 + prime (lwi + lwi)
       while notprm ndx do ndx <- ndx + 1
     let ni = ndx in ndx <- ndx + 1 // ready for next call!
     baseprm + prime (ni + ni)
@@ -5240,7 +5240,7 @@ let primesSeq() = primes() |> Seq.unfold (fun gen -> Some(gen(), gen))
 printfn "The first 25 primes are:  %s"
   ( primesSeq() |> Seq.take 25
       |> Seq.fold (fun s p -> s + string p + " ") "" )
-printfn "There are %d primes up to a million." 
+printfn "There are %d primes up to a million."
   ( primesSeq() |> Seq.takeWhile ((>=) (prime 1000000)) |> Seq.length )
 
 let rec cntto gen lmt cnt = // faster than seq's but still slow
@@ -5258,7 +5258,7 @@ printfn "Found %d primes to %A in %d milliseconds." answr limit elpsd
 {{out}}
 
 ```txt
-The first 25 primes are:  2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 
+The first 25 primes are:  2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 There are 78498 primes up to a million.
 Found 50847534 primes to 1000000000 in 2161 milliseconds.
 ```
@@ -5293,7 +5293,7 @@ IN: rosetta-code.sieve-of-erato
     [ length 1 - ] [ dup dup * ] bi* -rot <range> ;
 
 ! Mark multiples of prime n as composite.
-: mark-nths ( seq n -- ) 
+: mark-nths ( seq n -- )
     dupd to-mark [ swap [ f ] 2dip set-nth ] with each ;
 
 : next-prime ( index seq -- n ) [ t = ] find-from drop ;
@@ -5302,7 +5302,7 @@ PRIVATE>
 
 :: sieve ( n -- seq )
     n sqrt 2 n init-sieve :> ( limit i! s )
-    [ i limit < ]             ! sqrt optimization 
+    [ i limit < ]             ! sqrt optimization
     [ s i mark-nths i 1 + s next-prime i! ] while t s indices ;
 
 : sieve-demo ( -- )
@@ -5326,7 +5326,7 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 
  : prime? ( n -- ? ) here + c@ 0= ;
  : composite! ( n -- ) here + 1 swap c! ;
- 
+
  : sieve ( n -- )
    here over erase
    2
@@ -5342,7 +5342,7 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
    repeat
    drop
    ." Primes: " 2 do i prime? if i . then loop ;
- 
+
  100 sieve
 
 
@@ -5428,7 +5428,7 @@ Sub sieve(n As Integer)
         q = j
         Exit For
       End If
-    Next j    
+    Next j
     If q = 0 Then Exit Do
     p = q
   Loop
@@ -5436,7 +5436,7 @@ Sub sieve(n As Integer)
   ' print the non-zero numbers remaining i.e. the primes
   For i As Integer = 2 To n
     If a(i) <> 0 Then
-      Print Using "####"; a(i);      
+      Print Using "####"; a(i);
     End If
   Next
   Print
@@ -5741,7 +5741,7 @@ local fn SieveOfEratosthenes( n as long )
 dim as long i, j
 
 for i = 2 to  n
-  for j = i * i to n step i 
+  for j = i * i to n step i
     gPrimes(j) = _true
   next
   if gPrimes(i) = 0 then print i;
@@ -5805,11 +5805,11 @@ Eratosthenes(100);
 
 
 GLOBAL n%, k%, limit%, flags%[]
- 
+
 limit = 100			// search primes up to this number
 
 DIM flags[limit+1]		// GLBasic arrays start at 0
- 
+
 FOR n = 2 TO SQR(limit)
     IF flags[n] = 0
         FOR k = n*n TO limit STEP n
@@ -5817,7 +5817,7 @@ FOR n = 2 TO SQR(limit)
         NEXT
     ENDIF
 NEXT
- 
+
 // Display the primes
 FOR n = 2 TO limit
     IF flags[n] = 0 THEN STDOUT n + ", "
@@ -5957,7 +5957,7 @@ func main() {
 {{output}}
 
 ```txt
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 78498
 ```
 
@@ -6037,14 +6037,14 @@ A concurrent prime sieve adopted from the example in the "Go Playground" window 
 ```go
 package main
 import "fmt"
- 
+
 // Send the sequence 2, 3, 4, ... to channel 'out'
 func Generate(out chan<- int) {
 	for i := 2; ; i++ {
 		out <- i                  // Send 'i' to channel 'out'
 	}
 }
- 
+
 // Copy the values from 'in' channel to 'out' channel,
 //   removing the multiples of 'prime' by counting.
 // 'in' is assumed to send increasing numbers
@@ -6060,7 +6060,7 @@ func Filter(in <-chan int, out chan<- int, prime int) {
 			}
 	}
 }
- 
+
 // The prime sieve: Daisy-chain Filter processes
 func Sieve(out chan<- int) {
 	gen := make(chan int)             // Create a new channel
@@ -6079,8 +6079,8 @@ func main() {
 	go Sieve(sv)                      // Launch Sieve goroutine
 	for i := 0; i < 1000; i++ {
 		prime := <- sv
-		if i >= 990 { 
-		    fmt.Printf("%4d ", prime) 
+		if i >= 990 {
+		    fmt.Printf("%4d ", prime)
 		    if (i+1)%20==0 {
 			fmt.Println("")
 		    }
@@ -6093,7 +6093,7 @@ The output:
 
 ```txt
 
-7841 7853 7867 7873 7877 7879 7883 7901 7907 7919 
+7841 7853 7867 7873 7877 7879 7883 7901 7907 7919
 
 ```
 
@@ -6106,14 +6106,14 @@ Here we postpone the ''creation'' of filters until the prime's square is seen in
 ```go
 package main
 import "fmt"
- 
+
 // Send the sequence 2, 3, 4, ... to channel 'out'
 func Generate(out chan<- int) {
 	for i := 2; ; i++ {
 		out <- i                  // Send 'i' to channel 'out'
 	}
 }
- 
+
 // Copy the values from 'in' channel to 'out' channel,
 //   removing the multiples of 'prime' by counting.
 // 'in' is assumed to send increasing numbers
@@ -6129,7 +6129,7 @@ func Filter(in <-chan int, out chan<- int, prime int) {
 			}
 	}
 }
- 
+
 // The prime sieve: Postponed-creation Daisy-chain of Filters
 func Sieve(out chan<- int) {
 	gen := make(chan int)             // Create a new channel
@@ -6138,9 +6138,9 @@ func Sieve(out chan<- int) {
 	out <- p
 	p = <- gen          // make recursion shallower ---->
 	out <- p            // (Go channels are _push_, not _pull_)
-	
-	base_primes := make(chan int)     // separate primes supply  
-	go Sieve(base_primes)             
+
+	base_primes := make(chan int)     // separate primes supply
+	go Sieve(base_primes)
 	bp := <- base_primes              // 2           <---- here
 	bq := bp * bp                     // 4
 
@@ -6161,11 +6161,11 @@ func Sieve(out chan<- int) {
 func main() {
 	sv := make(chan int)              // Create a new channel
 	go Sieve(sv)                      // Launch Sieve goroutine
-	lim := 25000              
+	lim := 25000
 	for i := 0; i < lim; i++ {
 		prime := <- sv
-		if i >= (lim-10) { 
-		    fmt.Printf("%4d ", prime) 
+		if i >= (lim-10) {
+		    fmt.Printf("%4d ", prime)
 		    if (i+1)%20==0 {
 			fmt.Println("")
 		    }
@@ -6179,7 +6179,7 @@ The output:
 
 ```txt
 
-286999 287003 287047 287057 287059 287087 287093 287099 287107 287117 
+286999 287003 287047 287057 287059 287087 287093 287099 287107 287117
 
 ```
 
@@ -6265,7 +6265,7 @@ The output:
 This solution uses a BitSet for compactness and speed, but in [[Groovy]], BitSet has full List semantics. It also uses both the "square root of the boundary" shortcut and the "square of the prime" shortcut.
 
 ```groovy
-def sievePrimes = { bound -> 
+def sievePrimes = { bound ->
     def isPrime  = new BitSet(bound)
     isPrime[0..1] = false
     isPrime[2..bound] = true
@@ -6333,7 +6333,7 @@ sieveUO top = runSTUArray $ do
     sieve <- newArray (1,m) True          -- :: ST s (STUArray s Int Bool)
     forM_ [1..r `div` 2] $ \i -> do       -- prime(i) = 2i+1
       isPrime <- readArray sieve i        -- ((2i+1)^2-1)`div`2 = 2i(i+1)
-      when isPrime $ do                   
+      when isPrime $ do
         forM_ [2*i*(i+1), 2*i*(i+2)+1..m] $ \j -> do
           writeArray sieve j False
     return sieve
@@ -6353,10 +6353,10 @@ Monolithic sieving array. ''Even'' numbers above 2 are pre-marked as composite, 
 
 ```haskell
 import Data.Array.Unboxed
- 
+
 primesToA m = sieve 3 (array (3,m) [(i,odd i) | i<-[3..m]] :: UArray Int Bool)
   where
-    sieve p a 
+    sieve p a
       | p*p > m   = 2 : [i | (i,True) <- assocs a]
       | a!p       = sieve (p+2) $ a//[(i,False) | i <- [p*p, p*p+2*p..m]]
       | otherwise = sieve (p+2) a
@@ -6373,12 +6373,12 @@ Works by segments between consecutive primes' squares. Should be the fastest of 
 import Data.Array.Unboxed
 
 primesSA = 2 : prs ()
-  where 
+  where
     prs () = 3 : sieve 3 [] (prs ())
-    sieve x fs (p:ps) = [i*2 + x | (i,True) <- assocs a] 
+    sieve x fs (p:ps) = [i*2 + x | (i,True) <- assocs a]
                         ++ sieve (p*p) fs2 ps
      where
-      q     = (p*p-x)`div`2                  
+      q     = (p*p-x)`div`2
       fs2   = (p,0) : [(s, rem (y-q) s) | (s,y) <- fs]
       a     :: UArray Int Bool
       a     = accumArray (\ b c -> False) True (1,q-1)
@@ -6391,17 +6391,17 @@ Straightforward implementation of the sieve of Eratosthenes in its original boun
 
 ```haskell
 primesTo m = eratos [2..m] where
-   eratos (p : xs) 
+   eratos (p : xs)
       | p*p > m   = p : xs
       | otherwise = p : eratos (xs `minus` [p*p, p*p+p..m])
-                                    -- map (p*) [p..]  
+                                    -- map (p*) [p..]
                                     -- map (p*) (p:xs)   -- (Euler's sieve)
-   
+
 minus a@(x:xs) b@(y:ys) = case compare x y of
          LT -> x : minus  xs b
          EQ ->     minus  xs ys
          GT ->     minus  a  ys
-minus a        b        = a 
+minus a        b        = a
 ```
 
 Its time complexity is similar to that of optimal [[Primality_by_trial_division#Haskell|trial division]] because of limitations of Haskell linked lists, where <code>(minus a b)</code> takes time proportional to <code>length(union a b)</code> and not <code>(length b)</code>, as achieved in imperative setting with direct-access memory. Uses ordered list representation of sets.
@@ -6414,7 +6414,7 @@ This is reasonably useful up to ranges of fifteen million or about the first mil
 Unbounded, "naive", too eager to subtract (see above for the definition of <code>minus</code>):
 
 ```haskell
-primesE  = sieve [2..] 
+primesE  = sieve [2..]
            where
            sieve (p:xs) = p : sieve (minus xs [p, p+p..])
 -- unfoldr (\(p:xs)-> Just (p, minus xs [p, p+p..])) [2..]
@@ -6430,9 +6430,9 @@ primesPE = 2 : sieve [3..] 4 primesPE
                sieve (x:xs) q (p:t)
                  | x < q     = x : sieve xs q (p:t)
                  | otherwise =     sieve (minus xs [q, q+p..]) (head t^2) t
--- fix $ (2:) . concat 
---     . unfoldr (\(p:ps,xs)-> Just . second ((ps,) . (`minus` [p*p, p*p+p..])) 
---                                  . span (< p*p) $ xs) . (,[3..]) 
+-- fix $ (2:) . concat
+--     . unfoldr (\(p:ps,xs)-> Just . second ((ps,) . (`minus` [p*p, p*p+p..]))
+--                                  . span (< p*p) $ xs) . (,[3..])
 ```
 
 
@@ -6441,18 +6441,18 @@ Transposing the workflow, going by segments between the consecutive squares of p
 ```haskell
 import Data.List (inits)
 
-primesSE = 2 : sieve 3 4 (tail primesSE) (inits primesSE) 
+primesSE = 2 : sieve 3 4 (tail primesSE) (inits primesSE)
                where
-               sieve x q ps (fs:ft) =  
+               sieve x q ps (fs:ft) =
                   foldl minus [x..q-1] [[n, n+f..q-1] | f <- fs, let n=div x f * f]
-                          -- [i|(i,True) <- assocs ( accumArray (\ b c -> False) 
+                          -- [i|(i,True) <- assocs ( accumArray (\ b c -> False)
                           --     True (x,q-1) [(i,()) | f <- fs, let n=div(x+f-1)f*f,
                           --         i <- [n, n+f..q-1]] :: UArray Int Bool )]
                   ++ sieve q (head ps^2) (tail ps) ft
 ```
 
 
-The basic gradually-deepening left-leaning <code>(((a-b)-c)- ... )</code> workflow of <code>foldl minus a bs</code> above can be rearranged into the right-leaning <code>(a-(b+(c+ ... )))</code> workflow of <code>minus a (foldr union [] bs)</code>. This is the idea behind Richard Bird's unbounded code presented in [http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf M. O'Neill's article], equivalent to: 
+The basic gradually-deepening left-leaning <code>(((a-b)-c)- ... )</code> workflow of <code>foldl minus a bs</code> above can be rearranged into the right-leaning <code>(a-(b+(c+ ... )))</code> workflow of <code>minus a (foldr union [] bs)</code>. This is the idea behind Richard Bird's unbounded code presented in [http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf M. O'Neill's article], equivalent to:
 
 
 ```haskell
@@ -6463,7 +6463,7 @@ primesB = _Y ( (2:) . minus [3..] . foldr (\p-> (p*p :) . union [p*p+p, p*p+2*p.
 
 _Y g = g (_Y g)  -- = g (g (g ( ... )))      non-sharing multistage fixpoint combinator
 --                  = g . g . g . ...            ... = g^inf
---   = let x = g x in g x -- = g (fix g)     two-stage fixpoint combinator 
+--   = let x = g x in g x -- = g (fix g)     two-stage fixpoint combinator
 --   = let x = g x in x   -- = fix g         sharing fixpoint combinator
 
 union a@(x:xs) b@(y:ys) = case compare x y of
@@ -6483,7 +6483,7 @@ Linear merging structure can further be replaced with an wiki.haskell.org/Prime_
 This merges primes' multiples streams in a ''tree''-like fashion, as a sequence of balanced trees of <code>union</code> nodes, likely achieving theoretical time complexity only a ''log n'' factor above the optimal ''n log n log (log n)'', for ''n'' primes produced. Indeed, empirically it runs at about ''~ n<sup>1.2</sup>'' (for producing first few million primes), similarly to priority-queue&ndash;based version of M. O'Neill's, and with very low  space complexity too (not counting the produced sequence of course):
 
 ```haskell
-primes :: [Int]   
+primes :: [Int]
 primes = 2 : _Y ( (3:) . gaps 5 . _U . map(\p-> [p*p, p*p+2*p..]) )
 
 gaps k s@(c:cs) | k < c     = k : gaps (k+2) s      -- ~= ([k,k+2..] \\ s)
@@ -6500,12 +6500,12 @@ Works with odds only, the simplest kind of wheel. Here's the [http://ideone.com/
 
 ### =With Wheel=
 
-Using <code>_U</code> defined above, 
+Using <code>_U</code> defined above,
 
 ```haskell
-primesW :: [Int]   
+primesW :: [Int]
 primesW = [2,3,5,7] ++ _Y ( (11:) . gapsW 13 (tail wheel) . _U .
-                            map (\p->  
+                            map (\p->
                               map (p*) . dropWhile (< p) $
                                 scanl (+) (p - rem (p-11) 210) wheel) )
 
@@ -6535,7 +6535,7 @@ data PriorityQ k v = Mt
 
 emptyPQ :: PriorityQ k v
 emptyPQ = Mt
- 
+
 peekMinPQ :: PriorityQ k v -> Maybe (k, v)
 peekMinPQ Mt           = Nothing
 peekMinPQ (Br k v _ _) = Just (k, v)
@@ -6545,7 +6545,7 @@ pushPQ wk wv Mt           = Br wk wv Mt Mt
 pushPQ wk wv (Br vk vv pl pr)
              | wk <= vk   = Br wk wv (pushPQ vk vv pr) pl
              | otherwise  = Br vk vv (pushPQ wk wv pr) pl
- 
+
 siftdown :: Ord k => k -> v -> PriorityQ k v -> PriorityQ k v -> PriorityQ k v
 siftdown wk wv Mt _          = Br wk wv Mt Mt
 siftdown wk wv (pl @ (Br vk vv _ _)) Mt
@@ -6555,7 +6555,7 @@ siftdown wk wv (pl @ (Br vkl vvl pll plr)) (pr @ (Br vkr vvr prl prr))
     | wk <= vkl && wk <= vkr = Br wk wv pl pr
     | vkl <= vkr             = Br vkl vvl (siftdown wk wv pll plr) pr
     | otherwise              = Br vkr vvr pl (siftdown wk wv prl prr)
- 
+
 replaceMinPQ :: Ord k => k -> v -> PriorityQ k v -> PriorityQ k v
 replaceMinPQ wk wv Mt             = Mt
 replaceMinPQ wk wv (Br _ _ pl pr) = siftdown wk wv pl pr
@@ -6656,7 +6656,7 @@ primesPaged() = 2 : _Y (listPagePrms . pagesFrom 0) where
     let limi = lowi + szPGBTS - 1
     let nxt = 3 + limi + limi -- last candidate in range
     cmpsts <- newArray (lowi, limi) False
-    let pbts = fromIntegral szPGBTS    
+    let pbts = fromIntegral szPGBTS
     let cull (p:ps) =
           let sqr = p * p in
           if sqr > nxt then return cmpsts
@@ -6697,7 +6697,7 @@ Rolling set subtraction over the rolling element-wise addition on integers. Basi
 
 ```haskell
 zipWith (flip (!!)) [0..]    -- or: take n . last . take n ...
-     . scanl1 minus 
+     . scanl1 minus
      . scanl1 (zipWith (+)) $ repeat [2..]
 ```
 
@@ -6712,7 +6712,7 @@ unfoldr (\(a:b:t) -> Just . (head &&& (:t) . (`minus` b)
 A bit optimized, much faster, with better complexity,
 
 ```haskell
-tail . concat 
+tail . concat
      . unfoldr (\(a:b:t) -> Just . second ((:t) . (`minus` b))
                                  . span (< head b) $ a)
      . scanl1 (zipWith (+) . tail) $ tails [1..]
@@ -6723,7 +6723,7 @@ tail . concat
 getting nearer to the functional equivalent of the <code>primesPE</code> above, i.e.
 
 ```haskell
-fix ( (2:) . concat 
+fix ( (2:) . concat
       . unfoldr (\(a:b:t) -> Just . second ((:t) . (`minus` b))
                                   . span (< head b) $ a)
       . ([3..] :) . map (\p-> [p*p, p*p+p..]) )
@@ -6777,7 +6777,7 @@ ENDDO
 
 DO i = 1, N
   IF( sieve(i) ) WRITE() i
-ENDDO 
+ENDDO
 ```
 
 
@@ -6959,7 +6959,7 @@ sieve2=: 3 : 0
 ```
 
 
-The use of<tt> 2 3 5 7 </tt>as wheels provides a 
+The use of<tt> 2 3 5 7 </tt>as wheels provides a
 20% time improvement for<tt> n=1000 </tt>and 2% for<tt> n=1e6</tt> but note that sieve2 is still 25 times slower than i.&.(p:inv) for <tt>n=1e6</tt>. Then again, the value of the sieve of eratosthenes was not efficiency but simplicity. So perhaps we should ignore resource consumption issues and instead focus on intermediate results for reasonably sized example problems?
 
 
@@ -7121,7 +7121,7 @@ public class Sieve{
     public static LinkedList<Integer> sieve(int n){
         LinkedList<Integer> primes = new LinkedList<Integer>();
         BitSet nonPrimes = new BitSet(n+1);
-        
+
         for (int p = 2; p <= n ; p = nonPrimes.nextClearBit(p+1)) {
             for (int i = p * p; i <= n; i += p)
                 nonPrimes.set(i);
@@ -7223,7 +7223,7 @@ The adding of each discovered prime's incremental step information to the mappin
 ```java5
 import java.util.Iterator;
 import java.util.HashMap;
- 
+
 // generates all prime numbers up to about 10 ^ 19 if one can wait 1000's of years or so...
 public class SoEInfHashMap implements Iterator<Long> {
 
@@ -7269,16 +7269,16 @@ public class SoEInfHashMap implements Iterator<Long> {
     long tmp = candidate; this.candidate += 2; return tmp;
   }
 
-  public static void main(String[] args) {    
-    int n = 100000000;    
-    long strt = System.currentTimeMillis();    
+  public static void main(String[] args) {
+    int n = 100000000;
+    long strt = System.currentTimeMillis();
     SoEInfHashMap sieve = new SoEInfHashMap();
     int count = 0;
-    while (sieve.next() <= n) count++;    
-    long elpsd = System.currentTimeMillis() - strt;    
+    while (sieve.next() <= n) count++;
+    long elpsd = System.currentTimeMillis() - strt;
     System.out.println("Found " + count + " primes up to " + n + " in " + elpsd + " milliseconds.");
   }
-  
+
 }
 ```
 
@@ -7311,7 +7311,7 @@ public class SoEPagedOdds implements Iterator<Long> {
   private final ArrayList<Integer> bpa = new ArrayList<>();
   private Iterator<Long> bps;
   private final int[] buf = new int[BFSZ];
-  
+
   @Override public boolean hasNext() { return true; }
   @Override public Long next() {
     if (this.bi < 1) {
@@ -7364,7 +7364,7 @@ public class SoEPagedOdds implements Iterator<Long> {
     }
   }
 
-  public static void main(String[] args) {    
+  public static void main(String[] args) {
     long n = 1000000000;
     long strt = System.currentTimeMillis();
     Iterator<Long> gen = new SoEPagedOdds();
@@ -7373,7 +7373,7 @@ public class SoEPagedOdds implements Iterator<Long> {
     long elpsd = System.currentTimeMillis() - strt;
     System.out.println("Found " + count + " primes up to " + n + " in " + elpsd + " milliseconds.");
   }
-  
+
 }
 ```
 
@@ -7507,10 +7507,10 @@ The above code can be used to find the nth prime (which would require estimating
 
 
 ```javascript
-var gen = new SoEIncClass(); 
+var gen = new SoEIncClass();
 for (var i = 1; i < 1000000; i++, gen.next());
 var prime = gen.next();
- 
+
 if (typeof print == "undefined")
     print = (typeof WScript != "undefined") ? WScript.Echo : alert;
 print(prime);
@@ -7653,7 +7653,7 @@ DONE. OPEN OUTPUT MYOUTPUT $
             OUTPUT MYOUTPUT I $
         END
     END
-TERM$ 
+TERM$
 
 ```
 
@@ -8354,7 +8354,7 @@ fun main(args: Array<String>) {
 {{output}}
 
 ```txt
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 78498
 ```
 
@@ -8497,7 +8497,7 @@ fun primes(): Sequence<Int> {
     return CIS(xs.head) { -> merge(xs.tailf(), union(pairs(css.tailf()))) }
   }
   tailrec fun minus(n: Int, cs: CIS<Int>): CIS<Int> =
-    if (n >= cs.head) minus(n + 2, cs.tailf()) else CIS(n) { ->minus(n + 2, cs) }    
+    if (n >= cs.head) minus(n + 2, cs.tailf()) else CIS(n) { ->minus(n + 2, cs) }
   fun oddprms(): CIS<Int> = CIS(3) { -> CIS(5) { ->minus(7, union(allmults(oddprms()))) } }
   return CIS(2) { ->oddprms() } .toSequence()
 }
@@ -8604,7 +8604,7 @@ fun sieveComposites(low: Prime, buffer: SieveBuffer,
                 cull(s0)
             }
         }
-    } 
+    }
 }
 
 // starts the secondary base primes feed with minimum size in bits set to 4K...
@@ -8782,9 +8782,9 @@ init (ctxt: ref Draw->Context, args: list of string)
 		} else {
 			print("   .");
 		};
-		if ((n%20) == 0) 
+		if ((n%20) == 0)
 			print("\n\n");
-	}	
+	}
 }
 
 ```
@@ -8869,7 +8869,7 @@ function sieveE int
     put 2 into n
     repeat while n < int
         repeat with p = n to int step n
-            if p = n then 
+            if p = n then
                 next repeat
             else
                 put empty into sieve[p]
@@ -9138,18 +9138,18 @@ Output:
 
 
 ```Maple
-Eratosthenes := proc(n::posint) 
-  local numbers_to_check, i, k; 
-  numbers_to_check := [seq(2 .. n)]; 
-  for i from 2 to floor(sqrt(n)) do 
-      for k from i by i while k <= n do 
+Eratosthenes := proc(n::posint)
+  local numbers_to_check, i, k;
+  numbers_to_check := [seq(2 .. n)];
+  for i from 2 to floor(sqrt(n)) do
+      for k from i by i while k <= n do
           if evalb(k <> i) then
-            numbers_to_check[k - 1] := 0; 
-          end if; 
-      end do; 
-  end do; 
-  numbers_to_check := remove(x -> evalb(x = 0), numbers_to_check); 
-  return numbers_to_check; 
+            numbers_to_check[k - 1] := 0;
+          end if;
+      end do;
+  end do;
+  numbers_to_check := remove(x -> evalb(x = 0), numbers_to_check);
+  return numbers_to_check;
   end proc:
 
 ```
@@ -9170,7 +9170,7 @@ Eratosthenes(100);
 
 ```Mathematica
 Eratosthenes[n_] := Module[{numbers = Range[n]},
-  Do[If[numbers[[i]] != 0, Do[numbers[[i j]] = 0, {j, 2, n/i}]], {i, 
+  Do[If[numbers[[i]] != 0, Do[numbers[[i j]] = 0, {j, 2, n/i}]], {i,
     2, Sqrt[n]}];
   Select[numbers, # > 1 &]]
 
@@ -9194,7 +9194,7 @@ Eratosthenes[100]
 The below has been further improved to only sieve odd numbers for a further reduction in execution time by a factor of over two:
 
 ```Mathematica
-Eratosthenes2[n_] := Module[{numbers = Range[3, n, 2], limit = (n - 1)/2}, 
+Eratosthenes2[n_] := Module[{numbers = Range[3, n, 2], limit = (n - 1)/2},
   Do[c = numbers[[i]]; If[c != 0,
     Do[numbers[[j]] = 0, {j,(c c - 1)/2,limit,c}]], {i,1,(Sqrt[n] - 1)/2}];
   Prepend[Select[numbers, # > 1 &], 2]]
@@ -9211,7 +9211,7 @@ Eratosthenes2[100]
 
 ```MATLAB
 function P = erato(x)        % Sieve of Eratosthenes: returns all primes between 2 and x
-        
+
     P = [0 2:x];             % Create vector with all ints between 2 and x where
                              %   position 1 is hard-coded as 0 since 1 is not a prime.
 
@@ -9243,7 +9243,7 @@ function P = sieveOfEratosthenes(x)
         end
     end
     % The ISP vector that we have calculated is essentially the output of the ISPRIME function called on 1:x
-    P = find(ISP); % Convert the ISPRIME output to the values of the primes by finding the locations 
+    P = find(ISP); % Convert the ISPRIME output to the values of the primes by finding the locations
                    % of the TRUE values in S.
 end
 ```
@@ -9287,7 +9287,7 @@ sieve(n):=block(
          )
      )
  )
- 
+
  eratosthenes 100
 
 
@@ -9366,7 +9366,7 @@ sift(I, N, Limit, !A) :-
 
 TextWindow.Write("Enter number to search to: ")
 limit = TextWindow.ReadNumber()
-For n = 2 To limit 
+For n = 2 To limit
   flags[n] = 0
 EndFor
 For n = 2 To math.SquareRoot(limit)
@@ -9380,9 +9380,9 @@ EndFor
 If limit >= 2 Then
   TextWindow.Write(2)
   For n = 3 To limit
-    If flags[n] = 0 Then 
+    If flags[n] = 0 Then
       TextWindow.Write(", " + n)
-    EndIf  
+    EndIf
   EndFor
   TextWindow.WriteLine("")
 EndIf
@@ -9514,7 +9514,7 @@ ERATO1(HI)
 Example:
 
 ```txt
-USER>SET MAX=100,C=0 DO ERATO1^ROSETTA(MAX) 
+USER>SET MAX=100,C=0 DO ERATO1^ROSETTA(MAX)
 USER>WRITE !,"PRIMES BETWEEN 1 AND ",MAX,! FOR  SET I=$ORDER(ERATO1(I)) Q:+I<1  WRITE I,", "
 
 PRIMES BETWEEN 1 AND 100
@@ -9682,7 +9682,7 @@ Using it
 
 ```nim
 from math import sqrt
- 
+
 iterator primesUpto(limit: int): int =
   let sqrtLimit = int(sqrt(float64(limit)))
   var composites = newSeq[bool](limit + 1)
@@ -9693,12 +9693,12 @@ iterator primesUpto(limit: int): int =
   for n in 2 .. limit: # separate iteration over results
     if not composites[n]:
       yield n
- 
+
 stdout.write "The primes up to 100 are:  "
 for x in primesUpto(100):
    stdout.write(x, " ")
 echo ""
- 
+
 var count = 0
 for p in primesUpto(1000000):
   count += 1
@@ -9940,7 +9940,7 @@ proc countSieveBuffer(lsti: int; cmpsts: SieveBuffer): int =
     result -= cast[ptr uint64](csa)[].popCount # subtract number of found ones!
   let msk = (0'u64 - 2'u64) shl lstm # mask for the unused bits in last word!
   result -= (cast[ptr uint64](cmpstslsta)[] or msk).popCount
- 
+
 # a fast fill SieveBuffer routine using pointers...
 proc fillSieveBuffer(sb: var SieveBuffer) = zeroMem(sb[0].unsafeAddr, sb.len)
 
@@ -9985,7 +9985,7 @@ proc makePrimePages[T](
     while true:
       fillSieveBuffer(cmpsts); cullSieveBuffer(lwi, bpas, cmpsts)
       yield cnvrtrf(lwi, cmpsts); lwi += cmpsts.len shl 3
- 
+
 # starts the secondary base primes feed with minimum size in bits set to 4K...
 # thus, for the first buffer primes up to 8293,
 # the seeded primes easily cover it as 97 squared is 9409.
@@ -10009,7 +10009,7 @@ proc makeBasePrimeArrays(): BasePrimeArrayLazyList =
   cullSieveBuffer(0, fakebps, cmpsts)
   return makeBasePrimeArrayLazyList(sb2bpa(0, cmpsts)):
     nxtbparr(makePrimePages(4096, 512, sb2bpa)) # lazy recursive call breaks race!
- 
+
 # iterator over primes from above page iterator;
 # takes at least as long to enumerate the primes as sieve them...
 iterator primesPaged(): Prime {.inline.} =
@@ -10023,7 +10023,7 @@ iterator primesPaged(): Prime {.inline.} =
   let gen = makePrimePages(0, CPUL1CACHE, mkprmarr)
   for prmpg in gen():
     for prm in prmpg: yield prm
- 
+
 proc countPrimesTo(range: Prime): int64 =
   if range < FRSTSVPRM: return (if range < 2: 0 else: 1)
   result = 1; let rngi = ((range - FRSTSVPRM) shr 1).int
@@ -10070,7 +10070,7 @@ echo "Found ", counter, " primes up to ", LIMIT, " in ", elpsd, " seconds."
 Page Segmented Bit-Packed Odds-Only Sieve of Eratosthenes
 Needs at least 16384 bytes of CPU L1 cache memory.
 
-First 25 primes:  2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 
+First 25 primes:  2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 The number of primes up to a million is:  78498 - these both found by (slower) enumeration.
 Found 50847534 primes up to 1000000000 in 1.399795055389404 seconds.
 ```
@@ -10100,7 +10100,7 @@ Many further improvements in speed can be made, as in tuning the medium ranges t
 [ dup * ] 'sqr ;
 
 [ set-base
-  v sqr 2 at > not 
+  v sqr 2 at > not
   [ [ dup v = not swap v is-factor and ] remove-if incr-n run ] when ] 'run ;
 
 [ fill-stack run ] 'sieve ;
@@ -10108,7 +10108,7 @@ Many further improvements in speed can be made, as in tuning the medium ranges t
 ( tests )
 
 10 sieve .s ( => 2 3 5 7 9 ) reset newline
-30 sieve .s ( => 2 3 5 7 11 13 17 19 23 29 ) 
+30 sieve .s ( => 2 3 5 7 11 13 17 19 23 29 )
 ```
 
 =={{header|Oberon-2}}==
@@ -10134,7 +10134,7 @@ BEGIN
 
    FOR i := 2 TO m DO
       IF a[i] THEN
-         FOR j := 2 TO (N - 1) DIV i DO 
+         FOR j := 2 TO (N - 1) DIV i DO
             a[i*j] := FALSE;
          END;
       END;
@@ -10253,7 +10253,7 @@ val primes : int -> int list = <fun>
 
 
 
-###  Another functional version 
+###  Another functional version
 
 
 This uses zero to denote struck-out numbers. It is slightly inefficient as it strikes-out multiples above p rather than p<sup>2</sup>
@@ -10463,7 +10463,7 @@ end.
 ```
 
 
-### alternative using wheel 
+### alternative using wheel
 
 Using growing wheel to fill array for sieving for minimal unmark operations.
 Sieving only with possible-prime factors.
@@ -10661,7 +10661,7 @@ sub sieve2 {
      }
   }
   my @primes = (2);
-  for (my $t = 3;  $t <= $n;  $t += 2) { 
+  for (my $t = 3;  $t <= $n;  $t += 2) {
      $composite[$t] || push @primes, $t;
   }
   @primes;
@@ -10706,7 +10706,7 @@ sub string_sieve {
     do { substr($_, $s, 1, '1') } until ($s += $d) > $n;
     1 while substr($_, $i += 2, 1);
   }
-  $_ = substr($_, 1, $n); 
+  $_ = substr($_, 1, $n);
   # For just the count:  return ($_ =~ tr/0//);
   push @primes, pos while m/0/g;
   @primes;
@@ -10764,7 +10764,7 @@ Or with bit strings (much slower than the vector version above):
 
 ```perl
 sub sieve{ my ($s, $i);
-	grep { not vec $s, $i  = $_, 1 and do 
+	grep { not vec $s, $i  = $_, 1 and do
 		{ (vec $s, $i += $_, 1) = 1 while $i <= $_[0]; 1 }
 	} 2..$_[0]
 }
@@ -10838,7 +10838,7 @@ BEGIN {
 	my $incr = WHEEL2 ? 2 : 1;
 	my $candidate = $primes[-1] + $incr;
 	my %sieve;
-	
+
 	print "Initial: p = $p, q = $q, candidate = $candidate\n" if DEBUG;
 
 	sub FETCH {
@@ -10868,7 +10868,7 @@ BEGIN {
 				push @primes, $candidate;
 				$candidate += $incr;
 				next OUTER if exists $sieve{$candidate};
-			} 
+			}
 
 			die "Candidate = $candidate, p = $p, q = $q" if $candidate > $q;
 			print "Candidate $candidate is equal to $p squared;\t" if DEBUG;
@@ -10879,11 +10879,11 @@ BEGIN {
 			$composite += $step while exists $sieve{$composite};
 			print "The next multiple of $p is $composite\n" if DEBUG;
 			$sieve{$composite} = $step;
-		
+
 			# and fetch out a new value for p from our primes array.
 			$p = $primes[++$ps];
-			$q = $p * $p;	
-			
+			$q = $p * $p;
+
 			# And since $candidate was equal to some prime squared,
 			# it's obviously composite, and we need to increment it.
 			$candidate += $incr;
@@ -11024,7 +11024,7 @@ This gives:
   (2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97)
 
 
-###  Using a chain of filters 
+###  Using a chain of filters
 
 
 {{incorrect|Perl6|This version uses modulo (division) testing and so is a trial division algorithm, not a sieve of Eratosthenes.}}
@@ -11109,7 +11109,7 @@ function iprimes_upto($limit)
     {
 	$primes[$i] = true;
     }
-    
+
     for ($n = 2; $n < $limit; $n++)
     {
 	if ($primes[$n])
@@ -11120,7 +11120,7 @@ function iprimes_upto($limit)
 	    }
 	}
     }
-    
+
     return $primes;
 }
 
@@ -11179,7 +11179,7 @@ begin;
   do while(i <= sn);
     do j = i ** 2 by i to hbound(primes, 1);
       /* Adding a test would just slow down processing! */
-      primes(j) = '0'b; 
+      primes(j) = '0'b;
      end;
 
     do i = i + 1 to sn until(primes(i));
@@ -11209,7 +11209,7 @@ class Primes is Iterator[U32] // returns an Iterator of found primes...
   let _cmpsts: Array[U8]
   var _ndx: USize = 2
   var _curr: U32 = 2
-  
+
   new create(limit: U32) ? =>
     _lmt = USize.from[U32](limit)
     let sqrtlmt = USize.from[F64](F64.from[U32](limit).sqrt())
@@ -11233,7 +11233,7 @@ class Primes is Iterator[U32] // returns an Iterator of found primes...
     end
 
   fun ref has_next(): Bool val => _ndx < (_lmt + 1)
-  
+
   fun ref next(): U32 ? =>
     _curr = U32.from[USize](_ndx); _ndx = _ndx + 1
     while (_ndx <= _lmt) and ((_cmpsts(_ndx >> 3)? and _bitmask(_ndx and 7)?) != 0) do
@@ -11264,7 +11264,7 @@ actor Main
 {{out}}
 
 ```txt
-Primes to 100:  2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 
+Primes to 100:  2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 There are 78498 primes to a million.
 Found 50847534 primes to 1000000000.
 This took 28123 milliseconds.
@@ -11292,7 +11292,7 @@ class Primes is Iterator[U32] // returns an Iterator of found primes...
   let _cmpsts: Array[U8]
   var _ndx: USize = 0
   var _curr: U32 = 0
-  
+
   new create(limit: U32) ? =>
     if limit < 3 then _lmti = 0; _cmpsts = Array[U8](); return end
     _lmti = USize.from[U32]((limit - 3) / 2)
@@ -11316,7 +11316,7 @@ class Primes is Iterator[U32] // returns an Iterator of found primes...
     end
 
   fun ref has_next(): Bool val => _ndx < (_lmti + 1)
-  
+
   fun ref next(): U32 ? =>
     if _curr < 1 then _curr = 3; if _lmti == 0 then _ndx = 1 end; return 2 end
     _curr = U32.from[USize](_ndx + _ndx + 3); _ndx = _ndx + 1
@@ -11437,11 +11437,11 @@ Calculate the primes up to 1000000 with Processing, including a visualisation of
 int maxx,maxy;
 int max;
 boolean[] sieve;
- 
+
 void plot(int pos, boolean active) {
   set(pos%maxx,pos/maxx, active?#000000:#ffffff);
 }
- 
+
 void setup() {
   size(1000, 1000, P2D);
   frameRate(2);
@@ -11449,7 +11449,7 @@ void setup() {
   maxy=height;
   max=width*height;
   sieve=new boolean[max+1];
- 
+
   sieve[1]=false;
   plot(0,false);
   plot(1,false);
@@ -11458,9 +11458,9 @@ void setup() {
     plot(i,true);
   }
 }
- 
+
 int i=2;
- 
+
 void draw() {
   if(!sieve[i]) {
     while(i*i<max && !sieve[i]) {
@@ -11500,13 +11500,13 @@ void draw() {
 primes(N, L) :- numlist(2, N, Xs),
 	        sieve(Xs, L).
 
-sieve([H|T], [H|X]) :- H2 is H + H, 
+sieve([H|T], [H|X]) :- H2 is H + H,
                        filter(H, H2, T, R),
                        sieve(R, X).
 sieve([], []).
 
 filter(_, _, [], []).
-filter(H, H2, [H1|T], R) :- 
+filter(H, H2, [H1|T], R) :-
     (   H1 < H2 -> R = [H1|R1], filter(H, H2, T, R1)
     ;   H3 is H2 + H,
         (   H1 =:= H2  ->       filter(H, H3, T, R)
@@ -11527,7 +11527,7 @@ N = 1000 .
 
 ====Basic bounded Euler's sieve====
 
-{{trans|Erlang Canonical}} 
+{{trans|Erlang Canonical}}
 
 This is actually the Euler's variant of the sieve of Eratosthenes, generating (and thus removing) each multiple only once, though a sub-optimal implementation.
 
@@ -11541,12 +11541,12 @@ range(X, Y, [X | R]) :- X < Y, X1 is X + 1, range(X1, Y, R).
 mult(A, B, C) :- C is A*B.
 
 sieve([X], [X]) :- !.
-sieve([H | T], [H | S]) :- maplist( mult(H), [H | T], MS), 
+sieve([H | T], [H | S]) :- maplist( mult(H), [H | T], MS),
                            remove(MS, T, R), sieve(R, S).
- 
+
 remove( _,       [],      []     ) :- !.
 remove( [H | X], [H | Y], R      ) :- !, remove(X, Y, R).
-remove( X,       [H | Y], [H | R]) :- remove(X, Y, R). 
+remove( X,       [H | Y], [H | R]) :- remove(X, Y, R).
 ```
 
 
@@ -11571,7 +11571,7 @@ We can stop early, with massive improvement in complexity (below ~ <i>n<sup>1.5<
 primes(X, PS) :- X > 1, range(2, X, R), sieve(X, R, PS).
 
 sieve(X, [H | T], [H | T]) :- H*H > X, !.
-sieve(X, [H | T], [H | S]) :- maplist( mult(H), [H | T], MS), 
+sieve(X, [H | T], [H | S]) :- maplist( mult(H), [H | T], MS),
                               remove(MS, T, R), sieve(X, R, S).
 ```
 
@@ -11609,7 +11609,7 @@ mults( H, M, Lim, [M|MS]):- M2 is M+H, mults( H, M2, Lim, MS).
 remove( _,       [],      []     ) :- !.
 remove( [H | X], [H | Y], R      ) :- !, remove(X, Y, R).
 remove( [H | X], [G | Y], R      ) :- H < G, !, remove(X, [G | Y], R).
-remove( X,       [H | Y], [H | R]) :- remove(X, Y, R). 
+remove( X,       [H | Y], [H | R]) :- remove(X, Y, R).
 ```
 
 
@@ -11628,7 +11628,7 @@ N = 1000.
 ### Using lazy lists
 
 
-In SWI Prolog and others, where <code>freeze/2</code> is available. 
+In SWI Prolog and others, where <code>freeze/2</code> is available.
 
 
 ### =Basic variant=
@@ -11645,7 +11645,7 @@ sieve([N|NS],[N|PS]):- N2 is N*N, count(N2,N,A), remove(A,NS,B), freeze(PS, siev
 take(N, X, A):- length(A, N), append(A, _, X).
 
 remove([A|T],[B|S],R):- A < B -> remove(T,[B|S],R) ;
-                        A=:=B -> remove(T,S,R) ; 
+                        A=:=B -> remove(T,S,R) ;
                         R = [B|R2], freeze(R2, remove([A|T], S, R2)).
 ```
 
@@ -11668,13 +11668,13 @@ false.
 Showing only changed predicates.
 
 ```prolog
-primes([2|PS]):- 
-    freeze(PS, (primes(BPS), count(3, 1, NS), sieve(NS, BPS, 4, PS))). 
+primes([2|PS]):-
+    freeze(PS, (primes(BPS), count(3, 1, NS), sieve(NS, BPS, 4, PS))).
 
-sieve([N|NS], BPS, Q, PS):- 
+sieve([N|NS], BPS, Q, PS):-
     N < Q -> PS = [N|PS2], freeze(PS2, sieve(NS, BPS, Q, PS2))
     ;  BPS = [BP,BP2|BPS2], Q2 is BP2*BP2, count(Q, BP, MS),
-       remove(MS, NS, R), sieve(R, [BP2|BPS2], Q2, PS). 
+       remove(MS, NS, R), sieve(R, [BP2|BPS2], Q2, PS).
 ```
 
 
@@ -11691,7 +11691,7 @@ false.       %% odds only: 487,441 inferences
 
 
 
-###  Using facts to record composite numbers 
+###  Using facts to record composite numbers
 
 The first two solutions use Prolog "facts" to record the composite (i.e. already-visited) numbers.
 
@@ -11715,7 +11715,7 @@ sieve( N, [2|Rest]) :-
 sieve( N, P, [I|Rest] ) :-
   sieve_once(P, N),
   (P = 2 -> P2 is P+1; P2 is P+2),
-  between(P2, N, I), 
+  between(P2, N, I),
   (composite(I) -> fail; sieve( N, I, Rest )).
 
 % It is OK if there are no more primes less than or equal to N:
@@ -11727,12 +11727,12 @@ sieve_once(P, N) :-
 
 
 % To avoid division, we use the iterator
-% between(+Min, +Max, +By, -I) 
+% between(+Min, +Max, +By, -I)
 % where we assume that By > 0
 % This is like "for(I=Min; I <= Max; I+=By)" in C.
-between(Min, Max, By, I) :- 
-  Min =< Max, 
-  A is Min + By, 
+between(Min, Max, By, I) :-
+  Min =< Max,
+  A is Min + By,
   (I = Min; between(A, Max, By, I) ).
 
 
@@ -11772,9 +11772,9 @@ sieve(N, [2|PS]) :-       % PS is list of odd primes up to N
 sieve_O(I,N,PS) :-        % sieve odds from I up to N to get PS
     I =< N, !, I1 is I+2,
     (   mult(I) -> sieve_O(I1,N,PS)
-    ;   (   I =< N / I -> 
+    ;   (   I =< N / I ->
             ISq is I*I, DI  is 2*I, add_mults(DI,ISq,N)
-        ;   true 
+        ;   true
         ),
         PS = [I|T],
         sieve_O(I1,N,T)
@@ -11789,10 +11789,10 @@ add_mults(DI,I,N) :-
 add_mults(_,I,N) :- I > N.
 
 main(N) :- current_prolog_flag(verbose,F),
-  set_prolog_flag(verbose,normal), 
+  set_prolog_flag(verbose,normal),
   time( sieve( N,P)), length(P,Len), last(P, LP), writeln([Len,LP]),
   set_prolog_flag(verbose,F).
- 
+
 :- dynamic( mult/1 ).
 :- main(100000), main(1000000).
 ```
@@ -11815,7 +11815,7 @@ Running it produces
 which indicates <i>~ N<sup>1.1</sup></i> [http://en.wikipedia.org/wiki/Analysis_of_algorithms#Empirical_orders_of_growth empirical orders of growth], which is consistent with the ''O(N log log N)'' theoretical runtime complexity.
 
 
-###  Using a priority queue 
+###  Using a priority queue
 
 
 Uses a ariority queue, from the paper "The Genuine Sieve of Eratosthenes" by Melissa O'Neill.  Works with YAP (Yet Another Prolog)
@@ -11886,7 +11886,7 @@ If OpenConsole()
   Print("Enter limit for this search: ")
   lim=Val(Input())
   ReDim Nums(lim)
-  
+
   ; Use a basic Sieve of Eratosthenes
   For n=2 To Sqr(lim)
     If Nums(n)=#False
@@ -11897,7 +11897,7 @@ If OpenConsole()
       Wend
     EndIf
   Next n
-  
+
   ;Present the result to our user
   PrintN(#CRLF$+"The Prims up to "+Str(lim)+" are;")
   m=0: l=Log10(lim)+1
@@ -11910,7 +11910,7 @@ If OpenConsole()
       EndIf
     EndIf
   Next
-  
+
   Print(#CRLF$+#CRLF$+"Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -11919,7 +11919,7 @@ EndIf
 
 Output may look like;
  Enter limit for this search: 750
- 
+
  The Prims up to 750 are;
     2    3    5    7   11   13   17   19   23   29   31   37   41   43   47
    53   59   61   67   71   73   79   83   89   97  101  103  107  109  113
@@ -11930,13 +11930,13 @@ Output may look like;
   467  479  487  491  499  503  509  521  523  541  547  557  563  569  571
   577  587  593  599  601  607  613  617  619  631  641  643  647  653  659
   661  673  677  683  691  701  709  719  727  733  739  743
- 
+
  Press ENTER to exit
 
 
 ## Python
 
-Note that the examples use range instead of xrange for Python 3 and Python 2 compatability, but when using Python 2 xrange is the nearest equivalent to Python 3's implementation of range and should be substituted for ranges with a very large number of items. 
+Note that the examples use range instead of xrange for Python 3 and Python 2 compatability, but when using Python 2 xrange is the nearest equivalent to Python 3's implementation of range and should be substituted for ranges with a very large number of items.
 
 
 ### Using set lookup
@@ -11964,7 +11964,7 @@ The version below uses array lookup to test for primality. The function <tt>prim
 
 ```python
 def primes_upto(limit):
-    is_prime = [False] * 2 + [True] * (limit - 1) 
+    is_prime = [False] * 2 + [True] * (limit - 1)
     for n in range(int(limit**0.5 + 1.5)): # stop at ``sqrt(limit)``
         if is_prime[n]:
             for i in range(n*n, limit+1, n):
@@ -12086,7 +12086,7 @@ Below code adapted from [http://en.literateprograms.org/Sieve_of_Eratosthenes_(P
 import numpy
 def primes_upto2(limit):
     is_prime = numpy.ones(limit + 1, dtype=numpy.bool)
-    for n in xrange(2, int(limit**0.5 + 1.5)): 
+    for n in xrange(2, int(limit**0.5 + 1.5)):
         if is_prime[n]:
             is_prime[n*n::n] = 0
     return numpy.nonzero(is_prime)[0][2:]
@@ -12111,16 +12111,16 @@ def makepattern(smallprimes):
         pattern[p::p] = 0
     return pattern
 #
-def primes_upto3(limit, smallprimes=(2,3,5,7,11)):    
+def primes_upto3(limit, smallprimes=(2,3,5,7,11)):
     sp = array(smallprimes)
     if limit <= sp.max(): return sp[sp <= limit]
     #
-    isprime = resize(makepattern(sp), limit + 1) 
-    isprime[:2] = 0; put(isprime, sp, 1) 
+    isprime = resize(makepattern(sp), limit + 1)
+    isprime[:2] = 0; put(isprime, sp, 1)
     #
-    for n in range(sp.max() + 2, int(limit**0.5 + 1.5), 2): 
+    for n in range(sp.max() + 2, int(limit**0.5 + 1.5), 2):
         if isprime[n]:
-            isprime[n*n::n] = 0 
+            isprime[n*n::n] = 0
     return nonzero(isprime)[0]
 ```
 
@@ -12159,7 +12159,7 @@ def sieve():
     # priority queue of the sequences of non-primes
     # the priority queue allows us to get the "next" non-prime quickly
     nonprimes = []
-    
+
     i = 2
     while True:
         if nonprimes and i == nonprimes[0][0]: # non-prime
@@ -12170,7 +12170,7 @@ def sieve():
                 x = nonprimes[0]
                 x[0] += x[1]
                 heapq.heapreplace(nonprimes, x)
-        
+
         else: # prime
             # insert a 2-element list into the priority queue:
             # [current multiple, prime]
@@ -12178,7 +12178,7 @@ def sieve():
             # we start with i^2
             heapq.heappush(nonprimes, [i*i, i])
             yield i
-        
+
         i += 1
 ```
 
@@ -12189,7 +12189,7 @@ Example:
 >>> foo = sieve()
 >>> for i in range(8):
 ...     print(next(foo))
-... 
+...
 2
 3
 5
@@ -12230,7 +12230,7 @@ def primes():
             while nxt in sieve: nxt += s    # ensure each entry is unique
             sieve[nxt] = s                  # nxt is next non-marked multiple of this prime
         n += 2                              # work on odds only
- 
+
 import itertools
 def primes_up_to(limit):
     return list(itertools.takewhile(lambda p: p <= limit, primes()))
@@ -12418,7 +12418,7 @@ Imperative version using a bit vector:
 '(2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97)
 
 
-###  Infinite list of primes Using laziness 
+###  Infinite list of primes Using laziness
 
 
 These examples use infinite lists (streams) to implement the sieve of Eratosthenes in a functional way, and producing all prime numbers. The following functions are used as a prefix for pieces of code that follow:
@@ -12461,15 +12461,15 @@ Runs at ~ n^2.1 [http://en.wikipedia.org/wiki/Analysis_of_algorithms#Empirical_o
 
 ### = With merged composites =
 
-Note that the first number, 2, and its multiples stream <code>(ints-from 4 2)</code> are handled separately to ensure that the non-primes list is never empty, which simplifies the code for <code>union</code> which assumes non-empty infinite lists. 
+Note that the first number, 2, and its multiples stream <code>(ints-from 4 2)</code> are handled separately to ensure that the non-primes list is never empty, which simplifies the code for <code>union</code> which assumes non-empty infinite lists.
 
 
 ```Racket
 (define (sieve l non-primes)
   (let ([x (car l)] [np (car non-primes)])
     (cond [(= x np)     (sieve (cdr l) (cdr  non-primes))]    ; else x < np
-          [else (cons x (sieve (cdr l) (union (ints-from (* x x) x)  
-                                               non-primes)))]))) 
+          [else (cons x (sieve (cdr l) (union (ints-from (* x x) x)
+                                               non-primes)))])))
 (define primes (cons 2 (sieve (ints-from 3 1) (ints-from 4 2))))
 ```
 
@@ -12477,7 +12477,7 @@ Note that the first number, 2, and its multiples stream <code>(ints-from 4 2)</c
 
 ### = Basic sieve Optimized with postponed processing =
 
-Since a prime's multiples that count start from its square, we should only start removing them when we reach that square. 
+Since a prime's multiples that count start from its square, we should only start removing them when we reach that square.
 
 ```Racket
 (define (sieve l prs)
@@ -12493,17 +12493,17 @@ Runs at ~ n^1.4 up to n=10,000. The initial 2 in the self-referential primes def
 
 ### = Merged composites Optimized with postponed processing =
 
-Since prime's multiples that matter start from its square, we should only add them when we reach that square. 
+Since prime's multiples that matter start from its square, we should only add them when we reach that square.
 
 
 ```Racket
 (define (composites l q primes)
-  (after q l 
-    (λ(t) 
+  (after q l
+    (λ(t)
       (let ([p (car primes)] [r (cadr primes)])
         (composites (union t (ints-from q p))   ; q = p*p
                     (* r r) (cdr primes))))))
-(define primes (cons 2 
+(define primes (cons 2
                  (diff (ints-from 3 1)
                        (composites (ints-from 4 2) 9 (cdr primes)))))
 ```
@@ -12524,7 +12524,7 @@ Appears in [http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf M.O'Neill's paper
 
 
 
-###  Using threads and channels 
+###  Using threads and channels
 
 
 Same algorithm as [[#With merged composites|"merged composites" above]] (without the postponement optimization), but now using threads and channels to produce a channel of all prime numbers (similar to newsqueak).  The macro at the top is a convenient wrapper around definitions of channels using a thread that feeds them.
@@ -12551,7 +12551,7 @@ Same algorithm as [[#With merged composites|"merged composites" above]] (without
   (let loop ([x (channel-get l)] [np (channel-get non-primes)])
     (cond [(> x np) (loop x (channel-get non-primes))]
           [(= x np) (loop (channel-get l) (channel-get non-primes))]
-          [else     (out! x) 
+          [else     (out! x)
                     (set! non-primes (merge (ints-from (* x x) x) non-primes))
                     (loop (channel-get l)  np)])))
 (define-thread-loop (cons x l)
@@ -12562,7 +12562,7 @@ Same algorithm as [[#With merged composites|"merged composites" above]] (without
 
 
 
-###  Using generators 
+###  Using generators
 
 
 Yet another variation of the same algorithm as above, this time using generators.
@@ -12828,7 +12828,7 @@ say right(#,  1 + w + length(@prime) )    'primes found up to and including '   
 
 {{out|output|text=  is identical to the first (non-wheel) version;   program execution is over   ''twice''   as fast.}}
 
-The addition of the short-circuit test   (using the REXX variable  <big>'''!'''</big>)   makes it about   ''another''   '''20%'''   faster. 
+The addition of the short-circuit test   (using the REXX variable  <big>'''!'''</big>)   makes it about   ''another''   '''20%'''   faster.
 
 
 
@@ -12879,11 +12879,11 @@ tell: Parse Arg prime
 limit = 100
 sieve = list(limit)
 for i = 2 to limit
-    for k = i*i to limit step i 
+    for k = i*i to limit step i
         sieve[k] = 1
     next
     if sieve[i] = 0 see "" + i + " " ok
-next 
+next
 
 ```
 
@@ -12909,7 +12909,7 @@ def eratosthenes(n)
   end
   nums.compact
 end
- 
+
 p eratosthenes(100)
 ```
 
@@ -12992,7 +12992,7 @@ Benchmark.bmbm {|x|
 ''eratosthenes2'' runs about 4 times faster than ''eratosthenes''.
 
 
-###  With the standard library 
+###  With the standard library
 
 [[MRI]] 1.9.x implements the sieve of Eratosthenes at file [http://redmine.ruby-lang.org/projects/ruby-19/repository/entry/lib/prime.rb prime.rb], <code>class EratosthensesSeive</code> (around [http://redmine.ruby-lang.org/projects/ruby-19/repository/entry/lib/prime.rb#L421 line 421]). This implementation optimizes for space, by packing the booleans into 16-bit integers. It also hardcodes all primes less than 256.
 
@@ -13011,7 +13011,7 @@ p Prime::EratosthenesGenerator.new.take_while {|i| i <= 100}
 input "Gimme the limit:"; limit
 dim flags(limit)
 for i = 2 to  limit
- for k = i*i to limit step i 
+ for k = i*i to limit step i
   flags(k) = 1
  next k
 if flags(i) = 0 then print i;", ";
@@ -13021,7 +13021,7 @@ next i
 
 ```txt
 Gimme the limit:?100
-2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 
+2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97,
 ```
 
 
@@ -13080,7 +13080,7 @@ fn basic_sieve(limit: usize) -> Box<Iterator<Item = usize>> {
     let mut is_prime = vec![true; limit+1];
     is_prime[0] = false;
     if limit >= 1 { is_prime[1] = false }
-    let sqrtlmt = (limit as f64).sqrt() as usize + 1; 
+    let sqrtlmt = (limit as f64).sqrt() as usize + 1;
 
     for num in 2..sqrtlmt {
         if is_prime[num] {
@@ -13096,7 +13096,7 @@ fn basic_sieve(limit: usize) -> Box<Iterator<Item = usize>> {
                 .filter_map(|(p, is_prm)| if is_prm { Some(p) } else { None }))
 
 }
- 
+
 fn main() {
     let n = 1000000;
     let vrslt = basic_sieve(100).collect::<Vec<_>>();
@@ -13188,13 +13188,13 @@ const RANGE: u64 = 1000000000;
 const SZ_PAGE_BTS: u64 = (1 << 14) * 8; // this should be the size of the CPU L1 cache
 const SZ_BASE_BTS: u64 = (1 << 7) * 8;
 static CLUT: [u8; 256] = [
-	8, 7, 7, 6, 7, 6, 6, 5, 7, 6, 6, 5, 6, 5, 5, 4, 7, 6, 6, 5, 6, 5, 5, 4, 6, 5, 5, 4, 5, 4, 4, 3, 
-	7, 6, 6, 5, 6, 5, 5, 4, 6, 5, 5, 4, 5, 4, 4, 3, 6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2, 
-	7, 6, 6, 5, 6, 5, 5, 4, 6, 5, 5, 4, 5, 4, 4, 3, 6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2, 
-	6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2, 5, 4, 4, 3, 4, 3, 3, 2, 4, 3, 3, 2, 3, 2, 2, 1, 
-	7, 6, 6, 5, 6, 5, 5, 4, 6, 5, 5, 4, 5, 4, 4, 3, 6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2, 
-	6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2, 5, 4, 4, 3, 4, 3, 3, 2, 4, 3, 3, 2, 3, 2, 2, 1, 
-	6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2, 5, 4, 4, 3, 4, 3, 3, 2, 4, 3, 3, 2, 3, 2, 2, 1, 
+	8, 7, 7, 6, 7, 6, 6, 5, 7, 6, 6, 5, 6, 5, 5, 4, 7, 6, 6, 5, 6, 5, 5, 4, 6, 5, 5, 4, 5, 4, 4, 3,
+	7, 6, 6, 5, 6, 5, 5, 4, 6, 5, 5, 4, 5, 4, 4, 3, 6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2,
+	7, 6, 6, 5, 6, 5, 5, 4, 6, 5, 5, 4, 5, 4, 4, 3, 6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2,
+	6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2, 5, 4, 4, 3, 4, 3, 3, 2, 4, 3, 3, 2, 3, 2, 2, 1,
+	7, 6, 6, 5, 6, 5, 5, 4, 6, 5, 5, 4, 5, 4, 4, 3, 6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2,
+	6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2, 5, 4, 4, 3, 4, 3, 3, 2, 4, 3, 3, 2, 3, 2, 2, 1,
+	6, 5, 5, 4, 5, 4, 4, 3, 5, 4, 4, 3, 4, 3, 3, 2, 5, 4, 4, 3, 4, 3, 3, 2, 4, 3, 3, 2, 3, 2, 2, 1,
 	5, 4, 4, 3, 4, 3, 3, 2, 4, 3, 3, 2, 3, 2, 2, 1, 4, 3, 3, 2, 3, 2, 2, 1, 3, 2, 2, 1, 2, 1, 1, 0 ];
 
 fn count_page(lmti: usize, pg: &[u32]) -> i64 {
@@ -13312,7 +13312,7 @@ fn primes_pages() -> Box<Iterator<Item = (u64, Vec<u32>)>> {
 	*bpas.1.borrow_mut() = vec!(cnvrt2bppg(frstpg)); // fixed for subsequent pages
 	pages_from(0, SZ_PAGE_BTS, bpas) // and bpas also used here for main pages
 }
- 
+
 fn primes_paged() -> Box<Iterator<Item = u64>> {
 	fn list_paged_primes(cmpstpgs: Box<Iterator<Item = (u64, Vec<u32>)>>)
 			-> Box<Iterator<Item = u64>> {
@@ -13513,7 +13513,7 @@ object GenuineEratosthenesSieve extends App {
 
 {{out}}
  Successfully completed without errors. [total 39807 ms]
- 
+
  Process finished with exit code 0
 
 While concise, the above code is quite slow but a little faster not using the ParSet ('''take out the '.par' for speed'''), in which case the sorting ('sorted') is not necessary for an additional small gain in speed; the above code is slow because of all the overhead in processing the bit packed "BitSet" bib-by-bit using complex "higher-order" method calls.
@@ -13557,12 +13557,12 @@ object SoEwithArray {
       if (cndNdx <= sqrtLmtNdx) {
         if (!isCmpst(cndNdx)) { //is prime
           val p = cndNdx + cndNdx + 3
-          
+
           @tailrec def cullPrmCmpstsFrom(cmpstNdx: Int): Unit =
             if (cmpstNdx <= topNdx) { setCmpst(cmpstNdx); cullPrmCmpstsFrom(cmpstNdx + p) }
-          
+
           cullPrmCmpstsFrom((p * p - 3) >>> 1) }
-        
+
         forCndNdxsFrom(cndNdx + 1) }; forCndNdxsFrom(0)
 
     @tailrec def getNxtPrmFrom(cndNdx: Int): Int =
@@ -13605,15 +13605,15 @@ The above code still uses an amount of memory proportional to the range of the s
 ```Scala
 object APFSoEPagedOdds {
   import scala.annotation.tailrec
-  
+
   private val CACHESZ = 1 << 18 //used cache buffer size
   private val PGSZ = CACHESZ / 4 //number of int's in cache
   private val PGBTS = PGSZ * 32 //number of bits in buffer
-  
+
   //processing output type is a tuple of low bit (odds) address,
   // bit range size, and the actual culled page segment buffer.
   private type Chunk = (Long, Int, Array[Int])
-  
+
   //produces an iteration of all the primes from an iteration of Chunks
   private def enumChnkPrms(chnks: Stream[Chunk]): Iterator[Long] = {
     def iterchnk(chnk: Chunk) = { //iterating primes per Chunk
@@ -13623,7 +13623,7 @@ object APFSoEPagedOdds {
       Iterator.iterate(nxtpi(0))(i => nxtpi(i + 1)).takeWhile { _ < rng }
         .map { i => ((lw + i) << 1) + 3 } } //map from index to prime value
     chnks.toIterator.flatMap { iterchnk } }
-  
+
   //culls the composite number bit representations from the bit-packed page buffer
   //using a given source of a base primes iterator
   private def cullPg(bsprms: Iterator[Long],
@@ -13648,29 +13648,29 @@ object APFSoEPagedOdds {
       cull(enumChnkPrms(Stream((0, buf.length << 5, buf))))
     //otherwise use the given source of base primes
     else if (bsprms.hasNext) cull(bsprms) }
-  
+
   //makes a chunk given a low address in (odds) bits
   private def mkChnk(lwi: Long): Chunk = {
     val rng = PGBTS; val buf = new Array[Int](rng / 32);
     val bps = if (lwi <= 0) Iterator.empty else enumChnkPrms(basePrms)
     cullPg(bps, lwi, buf); (lwi, rng, buf) }
-  
+
   //new independent source of base primes in a stream of packed-bit arrays
   //memoized by converting it to a Stream and retaining a reference here
   private val basePrms: Stream[Chunk] =
     Stream.iterate(mkChnk(0)) { case (lw, rng, bf) => { mkChnk(lw + rng) } }
-  
+
   //produces an infinite iterator over all the chunk results
   private def itrRslts[R](rsltf: Chunk => R): Iterator[R] = {
     def mkrslt(lwi: Long) = { //makes tuple of result and next low index
       val c = mkChnk(lwi); val (_, rng, _) = c; (rsltf(c), lwi + rng) }
     Iterator.iterate(mkrslt(0)) { case (_, nlwi) => mkrslt(nlwi) }
             .map { case (rslt, _) => rslt} } //infinite iteration of results
-  
+
   //iterates across the "infinite" produced output primes
   def enumSoEPrimes(): Iterator[Long] = //use itrRsltsMP to produce Chunks iteration
     Iterator.single(2L) ++ enumChnkPrms(itrRslts { identity }.toStream)
- 
+
   //counts the number of remaining primes in a page segment buffer
   //using a very fast bitcount per integer element
   //with special treatment for the last page
@@ -13683,7 +13683,7 @@ object APFSoEPagedOdds {
       val w = bi >>> 5; b(w) |= -2 << (bi & 31) //mark all following as composite
       for (i <- w + 1 until b.length) b(i) = -1 } //for all int's to end of buffer
     cnt(0, numbts) } //counting the entire buffer in every case
-  
+
   //counts all the primes up to a top value
   def countSoEPrimesTo(top: Long): Long = {
     if (top < 2) return 0L else if (top < 3) return 1L //no work necessary
@@ -13736,19 +13736,19 @@ The following code uses delayed recursion via Streams to implement the Richard B
     def oddPrimes: Stream[Int] = {
       def merge(xs: Stream[Int], ys: Stream[Int]): Stream[Int] = {
         val (x, y) = (xs.head, ys.head)
-   
+
         if (y > x) x #:: merge(xs.tail, ys) else if (x > y) y #:: merge(xs, ys.tail) else x #:: merge(xs.tail, ys.tail)
       }
-   
+
       def primeMltpls(p: Int): Stream[Int] = Stream.iterate(p * p)(_ + p + p)
-   
+
       def allMltpls(ps: Stream[Int]): Stream[Stream[Int]] = primeMltpls(ps.head) #:: allMltpls(ps.tail)
-   
+
       def join(ams: Stream[Stream[Int]]): Stream[Int] = ams.head.head #:: merge(ams.head.tail, join(ams.tail))
-   
+
       def oddPrms(n: Int, composites: Stream[Int]): Stream[Int] =
         if (n >= composites.head) oddPrms(n + 2, composites.tail) else n #:: oddPrms(n + 2, composites)
-   
+
       //following uses a new recursive source of odd base primes
       3 #:: oddPrms(5, join(allMltpls(oddPrimes)))
     }
@@ -13927,8 +13927,8 @@ Vector-based (faster), works with R<math>^5</math>RS:
 ```scheme
 ; initialize v to vector of sequential integers
 (define (initialize! v)
-  (define (iter v n) (if (>= n (vector-length v)) 
-                         (values) 
+  (define (iter v n) (if (>= n (vector-length v))
+                         (values)
                          (begin (vector-set! v n n) (iter v (+ n 1)))))
   (iter v 0))
 
@@ -13948,7 +13948,7 @@ Vector-based (faster), works with R<math>^5</math>RS:
 
 ; remove elements satisfying pred? from list lst
 (define (remove pred? lst)
-  (cond 
+  (cond
     ((null? lst) '())
     ((pred? (car lst))(remove pred? (cdr lst)))
     (else (cons (car lst) (remove pred? (cdr lst))))))
@@ -13957,13 +13957,13 @@ Vector-based (faster), works with R<math>^5</math>RS:
 (define (sieve n)
   (define stop (sqrt n))
   (define (iter v p)
-    (cond 
+    (cond
       ((> p stop) v)
-      (else 
+      (else
        (begin
          (strike! v (* p p) p)
          (iter v (nextprime v (+ p 1)))))))
-  
+
   (let ((v (make-vector (+ n 1))))
     (initialize! v)
     (vector-set! v 1 0) ; 1 is not a prime
@@ -13977,21 +13977,21 @@ Using SICP-style ''head''-forced streams. Works with MIT-Scheme, Chez Scheme, &n
 
 ```scheme
  ;;;; Stream Implementation
- (define (head s) (car s))   
- (define (tail s) ((cdr s)))  
+ (define (head s) (car s))
+ (define (tail s) ((cdr s)))
  (define-syntax s-cons
-   (syntax-rules () ((s-cons h t) (cons h (lambda () t))))) 
+   (syntax-rules () ((s-cons h t) (cons h (lambda () t)))))
 
  ;;;; Stream Utility Functions
  (define (from-By x s)
    (s-cons x (from-By (+ x s) s)))
- (define (take n s) 
-   (cond 
+ (define (take n s)
+   (cond
      ((> n 1) (cons (head s) (take (- n 1) (tail s))))
      ((= n 1) (list (head s)))      ;; don't force it too soon!!
      (else '())))     ;; so (take 4 (s-map / (from-By 4 -1))) works
  (define (drop n s)
-   (cond 
+   (cond
      ((> n 0) (drop (- n 1) (tail s)))
      (else s)))
  (define (s-map f s)
@@ -14015,9 +14015,9 @@ Using SICP-style ''head''-forced streams. Works with MIT-Scheme, Chez Scheme, &n
 Very slow, running at ~ <i>n<sup>2.2</sup></i>, empirically, and worsening:
 
 ```scheme
- (define (sieve s) 
-	(let ((p (head s))) 
-	  (s-cons p 
+ (define (sieve s)
+	(let ((p (head s)))
+	  (s-cons p
 	          (sieve (s-diff s (from-By p p))))))
  (define primes (sieve (from-By 2 1)))
 ```
@@ -14029,11 +14029,11 @@ of numbers which is only valid up to ''m'', includes composites above it:
 
 ```scheme
  (define (primes-To m)
-   (define (sieve s) 
-     (let ((p (head s))) 
-       (cond ((> (* p p) m) s) 
-             (else (s-cons p 
-	             (sieve (s-diff (tail s) 
+   (define (sieve s)
+     (let ((p (head s)))
+       (cond ((> (* p p) m) s)
+             (else (s-cons p
+	             (sieve (s-diff (tail s)
 	                     (from-By (* p p) p))))))))
    (sieve (from-By 2 1)))
 ```
@@ -14047,15 +14047,15 @@ Archetypal, straightforward approach by Richard Bird, presented in [http://www.c
 ```scheme
  (define (primes-stream-ala-Bird)
    (define (mults p) (from-By (* p p) p))
-   (define primes                                          ;; primes are 
-       (s-cons 2 (s-diff (from-By 3 1)                     ;;  numbers > 1, without 
+   (define primes                                          ;; primes are
+       (s-cons 2 (s-diff (from-By 3 1)                     ;;  numbers > 1, without
                   (s-linear-join (s-map mults primes)))))  ;;   multiples of primes
    primes)
 
  ;;;; join streams using linear structure
  (define (s-linear-join sts)
-   (s-cons (head (head sts)) 
-           (s-union (tail (head sts)) 
+   (s-cons (head (head sts))
+           (s-union (tail (head sts))
                     (s-linear-join (tail sts)))))
 ```
 
@@ -14085,7 +14085,7 @@ Here is a version of the same sieve, which is self contained with all the requis
       (cons n (lambda () (minusstrtat (+ n 2) cmps)))
       (minusstrtat (+ n 2) ((cdr cmps)))))
   (define (cmpsts) (mrgmltpls (allmltpls (oddprms)))) ;; internal define's are mutually recursive
-  (define (oddprms) (cons 3 (lambda () (minusstrtat 5 (cmpsts)))))  
+  (define (oddprms) (cons 3 (lambda () (minusstrtat 5 (cmpsts)))))
   (cons 2 (lambda () (oddprms))))
 ```
 
@@ -14107,7 +14107,7 @@ It can be tested with the following code:
 The same code can easily be modified to perform the folded tree case just by writing and integrating a "pairs" function to do the folding along with the merge, which has been done as an alternate tree folding case below.
 
 ====Tree-folding====
-The most efficient. Finds composites as a tree of unions of each prime's multiples. 
+The most efficient. Finds composites as a tree of unions of each prime's multiples.
 
 
 ```scheme
@@ -14118,7 +14118,7 @@ The most efficient. Finds composites as a tree of unions of each prime's multipl
    (define (odd-primes-From from)              ;; odd primes from (odd) f are
        (s-diff (from-By from 2)                ;; all odds from f without the
                (s-tree-join (s-map mults odd-primes))))  ;; multiples of odd primes
-   (define odd-primes 
+   (define odd-primes
        (s-cons 3 (odd-primes-From 5)))         ;; inner feedback loop
    (s-cons 2 (odd-primes-From 3)))             ;; result stream
 
@@ -14130,8 +14130,8 @@ The most efficient. Finds composites as a tree of unions of each prime's multipl
                     (s-tree-join (pairs (tail sts))))))
 
  (define (pairs sts)                        ;; {a.(b.t)} -> (a+b).{t}
-     (s-cons (s-cons (head (head sts)) 
-                     (s-union (tail (head sts)) 
+     (s-cons (s-cons (head (head sts))
+                     (s-union (tail (head sts))
                               (head (tail sts))))
              (pairs (tail (tail sts)))))
 ```
@@ -14139,7 +14139,7 @@ The most efficient. Finds composites as a tree of unions of each prime's multipl
 
 [http://ideone.com/Uuil5M Print 10 last primes] of the first thousand primes:
 
- (display (take 10 (drop 990 (primes-stream)))) 
+ (display (take 10 (drop 990 (primes-stream))))
  ;
  (7841 7853 7867 7873 7877 7879 7883 7901 7907 7919)
 
@@ -14172,7 +14172,7 @@ This can be also accomplished by the following self contained code which follows
       (cons n (lambda () (minusstrtat (+ n 2) cmps)))
       (minusstrtat (+ n 2) ((cdr cmps)))))
   (define (cmpsts) (mrgmltpls (allmltpls (oddprms)))) ;; internal define's are mutually recursive
-  (define (oddprms) (cons 3 (lambda () (minusstrtat 5 (cmpsts)))))  
+  (define (oddprms) (cons 3 (lambda () (minusstrtat 5 (cmpsts)))))
   (cons 2 (lambda () (oddprms))))
 ```
 
@@ -14191,7 +14191,7 @@ It can be tested with the same code as the self-contained Richard Bird sieve, ju
       (set! n (+ n 1))
       ans)))
 
-(define natural-numbers (integers 0)) 
+(define natural-numbers (integers 0))
 
 (define (remove-multiples g n)
   (letrec ((m (+ n n))
@@ -14209,7 +14209,7 @@ It can be tested with the same code as the self-contained Richard Bird sieve, ju
       (set! g (remove-multiples g x))
       x)))
 
-(define primes (sieve (integers 2))) 
+(define primes (sieve (integers 2)))
 ```
 
 
@@ -14243,7 +14243,7 @@ sum(sieve(1000))
 
 ## Seed7
 
-The program below computes the number of primes between 1 and 10000000: 
+The program below computes the number of primes between 1 and 10000000:
 
 ```seed7
 $ include "seed7_05.s7i";
@@ -14596,7 +14596,7 @@ sv2     str break(' ') . k  span(' ') = :f(sv3)
 sv3     str = res :(sv1)
 sieve_end
 
-*       # Test and display        
+*       # Test and display
         output = sieve(100)
 end
 ```
@@ -14663,7 +14663,7 @@ list in 1/10 // show only the first ten primes
 
 
 
-###  Mata 
+###  Mata
 
 
 
@@ -14704,10 +14704,10 @@ end
 import Foundation
 
 func primes(_ n: Int)
-    -> UnfoldSequence<Int, (Int?, Bool)> { 
+    -> UnfoldSequence<Int, (Int?, Bool)> {
   var sieve = Array<Bool>(repeating: true, count: n + 1)
   let lim = Int(sqrt(Double(n)))
- 
+
   for i in 2...lim {
     if sieve[i] {
       for notPrime in stride(from: i*i, through: n, by: i) {
@@ -14760,12 +14760,12 @@ The most obvious two improvements are to sieve for only odds as two is the only 
 ```swift
 func soePackedOdds(_ n: Int) ->
     LazyMapSequence<UnfoldSequence<Int, (Int?, Bool)>, Int> {
- 
+
   let lmti = (n - 3) / 2
   let size = lmti / 8 + 1
   var sieve = Array<UInt8>(repeating: 0, count: size)
   let sqrtlmti = (Int(sqrt(Double(n))) - 3) / 2
- 
+
   for i in 0...sqrtlmti {
     if sieve[i >> 3] & (1 << (i & 7)) == 0 {
       let p = i + i + 3
@@ -15208,7 +15208,7 @@ struct PagedPrimesSeqIter: LazySequenceProtocol, IteratorProtocol {
     return PagedPrimesSeqIter()
   }
 }
- 
+
 // sequence over primes using the above prime iterator from page iterator;
 // unless doing something special with individual primes, usually unnecessary;
 // better to do manipulations based on the composites bit arrays...
@@ -15259,7 +15259,7 @@ templates sieve
   @: [ 2..$limit ];
   1 -> #
   $@ !
- 
+
   <..$@::length ?($@($) * $@($) <..$limit>)>
     templates sift
       def prime: $;
@@ -15271,11 +15271,11 @@ templates sieve
         @: $@ + $prime;
         $ -> #
     end sift
- 
+
     $@($) -> sift !
     $ + 1 -> #
 end sieve
- 
+
 1000 -> sieve ...->  '$; ' -> !OUT::write
 
 ```
@@ -15284,7 +15284,7 @@ end sieve
 
 ```txt
 
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199 211 223 227 229 233 239 241 251 257 263 269 271 277 281 283 293 307 311 313 317 331 337 347 349 353 359 367 373 379 383 389 397 401 409 419 421 431 433 439 443 449 457 461 463 467 479 487 491 499 503 509 521 523 541 547 557 563 569 571 577 587 593 599 601 607 613 617 619 631 641 643 647 653 659 661 673 677 683 691 701 709 719 727 733 739 743 751 757 761 769 773 787 797 809 811 821 823 827 829 839 853 857 859 863 877 881 883 887 907 911 919 929 937 941 947 953 967 971 977 983 991 997 
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199 211 223 227 229 233 239 241 251 257 263 269 271 277 281 283 293 307 311 313 317 331 337 347 349 353 359 367 373 379 383 389 397 401 409 419 421 431 433 439 443 449 457 461 463 467 479 487 491 499 503 509 521 523 541 547 557 563 569 571 577 587 593 599 601 607 613 617 619 631 641 643 647 653 659 661 673 677 683 691 701 709 719 727 733 739 743 751 757 761 769 773 787 797 809 811 821 823 827 829 839 853 857 859 863 877 881 883 887 907 911 919 929 937 941 947 953 967 971 977 983 991 997
 
 ```
 
@@ -15313,7 +15313,7 @@ end sieve
 
 ```txt
 
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199 211 223 227 229 233 239 241 251 257 263 269 271 277 281 283 293 307 311 313 317 331 337 347 349 353 359 367 373 379 383 389 397 401 409 419 421 431 433 439 443 449 457 461 463 467 479 487 491 499 503 509 521 523 541 547 557 563 569 571 577 587 593 599 601 607 613 617 619 631 641 643 647 653 659 661 673 677 683 691 701 709 719 727 733 739 743 751 757 761 769 773 787 797 809 811 821 823 827 829 839 853 857 859 863 877 881 883 887 907 911 919 929 937 941 947 953 967 971 977 983 991 997 
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199 211 223 227 229 233 239 241 251 257 263 269 271 277 281 283 293 307 311 313 317 331 337 347 349 353 359 367 373 379 383 389 397 401 409 419 421 431 433 439 443 449 457 461 463 467 479 487 491 499 503 509 521 523 541 547 557 563 569 571 577 587 593 599 601 607 613 617 619 631 641 643 647 653 659 661 673 677 683 691 701 709 719 727 733 739 743 751 757 761 769 773 787 797 809 811 821 823 827 829 839 853 857 859 863 877 881 883 887 907 911 919 929 937 941 947 953 967 971 977 983 991 997
 
 ```
 
@@ -15327,16 +15327,16 @@ package require Tcl 8.5
 
 proc sieve n {
     if {$n < 2} {return {}}
-    
+
     # create a container to hold the sequence of numbers.
-    # use a dictionary for its speedy access (like an associative array) 
+    # use a dictionary for its speedy access (like an associative array)
     # and for its insertion order preservation (like a list)
     set nums [dict create]
     for {set i 2} {$i <= $n} {incr i} {
         # the actual value is never used
         dict set nums $i ""
     }
-    
+
     set primes [list]
     while {[set nextPrime [lindex [dict keys $nums] 0]] <= sqrt($n)} {
         dict unset nums $nextPrime
@@ -15353,7 +15353,7 @@ puts [sieve 100]   ;# 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73
 
 
 
-Summary :/* {{header|TI-83 BASIC}} */ 
+Summary :/* {{header|TI-83 BASIC}} */
 
 =={{header|TI-83 BASIC}}==
 
@@ -15544,7 +15544,7 @@ sourc | sink
 ```
 
 
-This version works by piping 1s and 0s through ''sed''. The string of 1s and 0s represents the array of primes. 
+This version works by piping 1s and 0s through ''sed''. The string of 1s and 0s represents the array of primes.
 
 {{works with|Bourne Shell}}
 
@@ -15654,14 +15654,14 @@ using Gee;
 ArrayList<int> primes(int limit){
 	var sieve = new ArrayList<bool>();
 	var prime_list = new ArrayList<int>();
-	
+
 	for(int i = 0; i <= limit; i++){
 		sieve.add(true);
 	}
-	
+
 	sieve[0] = false;
 	sieve[1] = false;
-	
+
 	for (int i = 2; i <= limit/2; i++){
 		if (sieve[i] != false){
 			for (int j = 2; i*j <= limit; j++){
@@ -15675,16 +15675,16 @@ ArrayList<int> primes(int limit){
 			prime_list.add(i);
 		}
 	}
-	
+
 	return prime_list;
 } // end primes
 
 public static void main(){
 	var prime_list = primes(50);
-	
+
 	foreach(var prime in prime_list)
 		stdout.printf("%s ", prime.to_string());
-	
+
 	stdout.printf("\n");
 }
 ```
@@ -15700,7 +15700,7 @@ public static void main(){
                             7E 7CFD  0002     3 	clro	-(sp)			;result buffer
                             5E   DD  0005     4 	pushl	sp			;pointer to buffer
                             10   DD  0007     5 	pushl	#16			;descriptor -> len of buffer
-                                     0009     6 
+                                     0009     6
                             02   DD  0009     7 	pushl	#2			;1st candidate
                                      000B     8 test:
                  09 46'AF   6E   E1  000B     9 	bbc	(sp), b^bits, found	;bc - bit clear
@@ -15713,7 +15713,7 @@ public static void main(){
               00000000'GF   02   FB  001F    16 	calls	#2, g^ots$cvt_l_ti	;convert integer to string
                          04 AE   7F  0026    17 	pushaq	4(sp)			;
               00000000'GF   01   FB  0029    18 	calls	#1, g^lib$put_output	;show result
-                                     0030    19 
+                                     0030    19
                        53   6E   D0  0030    20 	movl	(sp), r3
                                      0033    21 mult:
     0002 53   6E   000F4240 8F   F1  0033    22 	acbl    #n, (sp), r3, set_mult	;limit,add,index
@@ -15721,7 +15721,7 @@ public static void main(){
                                      003F    24 set_mult:				;set bits for multiples
                  EF 46'AF   53   E2  003F    25 	bbss	r3, b^bits, mult	;branch on bit set & set
                             ED   11  0044    26 	brb	mult
-                                     0046    27 
+                                     0046    27
                            0001E892  0046    28 bits:	.blkl	<n+2+31>/32
                                      E892    29 .end	main
 ```
@@ -15737,7 +15737,7 @@ To run in console mode with cscript.
     Dim sieve()
 	If WScript.Arguments.Count>=1 Then
 	    n = WScript.Arguments(0)
-	Else 
+	Else
 	    n = 99
 	End If
     ReDim sieve(n)
@@ -15825,7 +15825,7 @@ For n = 2 To b
 
     For k = n * n To p Step n
         nprimes(k) = 1
-        
+
     Next k
 Next n
 
@@ -15834,7 +15834,7 @@ For a = 2 To p
     If nprimes(a) = 0 Then
       c = c + 1
       Range("A" & c).Value = a
-        
+
     End If
  Next a
 
@@ -15884,7 +15884,7 @@ For n = 2 To Math.Sqrt(limit)
         Next k
     End If
 Next n
- 
+
 ' Display the primes
 For n = 2 To limit
     If flags(n) = 0 Then
@@ -15901,12 +15901,12 @@ Since the sieves are being removed only above the current iteration, the separat
 ```vbnet
 Module Module1
     Sub Main(args() As String)
-        Dim lmt As Integer = 500 
+        Dim lmt As Integer = 500
         If args.Count > 0 Then Integer.TryParse(args(0), lmt)
         Dim flags(lmt) As Boolean           ' non-primes are true in this array.
         For n = 2 To lmt
-            If Not flags(n) Then            ' a prime was found, 
-                Console.Write($"{n} ")      ' so show it, 
+            If Not flags(n) Then            ' a prime was found,
+                Console.Write($"{n} ")      ' so show it,
                 For k = n * n To lmt Step n ' and eliminate any multiple of at it's square and beyond
                     flags(k) = True
                 Next
@@ -15917,7 +15917,7 @@ End Module
 ```
 {{out}}
 ```txt
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199 211 223 227 229 233 239 241 251 257 263 269 271 277 281 283 293 307 311 313 317 331 337 347 349 353 359 367 373 379 383 389 397 401 409 419 421 431 433 439 443 449 457 461 463 467 479 487 491 499 
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199 211 223 227 229 233 239 241 251 257 263 269 271 277 281 283 293 307 311 313 317 331 337 347 349 353 359 367 373 379 383 389 397 401 409 419 421 431 433 439 443 449 457 461 463 467 479 487 491 499
 ```
 
 
@@ -15952,7 +15952,7 @@ self.print_primes(100)
 ```
 {{out|Result}}
  primes: 25 in 100
- 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 
+ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97,
 
 
 ## WebAssembly
@@ -15960,11 +15960,11 @@ self.print_primes(100)
  (module
   (import "js" "print" (func $print (param i32)))
   (memory 4096)
-  
+
   (func $sieve (export "sieve") (param $n i32)
     (local $i i32)
     (local $j i32)
-  
+
     (set_local $i (i32.const 0))
     (block $endLoop
       (loop $loop
@@ -15972,11 +15972,11 @@ self.print_primes(100)
         (i32.store8 (get_local $i) (i32.const 1))
         (set_local $i (i32.add (get_local $i) (i32.const 1)))
         (br $loop)))
-  
+
     (set_local $i (i32.const 2))
     (block $endLoop
       (loop $loop
-        (br_if $endLoop (i32.ge_s (i32.mul (get_local $i) (get_local $i)) 
+        (br_if $endLoop (i32.ge_s (i32.mul (get_local $i) (get_local $i))
                                   (get_local $n)))
         (if (i32.eq (i32.load8_s (get_local $i)) (i32.const 1))
           (then
@@ -15989,7 +15989,7 @@ self.print_primes(100)
                 (br $innerLoop)))))
         (set_local $i (i32.add (get_local $i) (i32.const 1)))
         (br $loop)))
-  
+
     (set_local $i (i32.const 2))
     (block $endLoop
       (loop $loop
@@ -16204,7 +16204,7 @@ ONN = 1 : OFF = 0
 dim flags(SIZE)
 
 sub main()
-    
+
     cmd = peek("arguments")
     if cmd = 1 then
        iterations = val(peek$("argument"))
@@ -16213,7 +16213,7 @@ sub main()
        print "1000 iterations."
        iterations = 1000
     end if
-    
+
     for iter = 1 to iterations
         count = 0
         for n= 1 to SIZE : flags(n) = ONN: next n
@@ -16225,7 +16225,7 @@ sub main()
                     flags(k) = OFF
                  next k
                end if
-               count = count + 1                 
+               count = count + 1
             end if
         next i
     next iter

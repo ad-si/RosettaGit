@@ -16,7 +16,7 @@ tags = []
 {{omit from|M4}}
 {{omit from|Retro}}
 
-This task is to give an example of an exception handling routine 
+This task is to give an example of an exception handling routine
 and to "throw" a new exception.
 
 
@@ -63,7 +63,7 @@ begin
 end Foo;
 ```
 
-Re-raising once caught exception: 
+Re-raising once caught exception:
 
 ```ada
   ...
@@ -255,8 +255,8 @@ no exception thrown for 8
 Typically: In the Algol68 ''transput'' an attempt is first made to "mend" an "event" on an object.  However: After a
 '''mend''' has failed, the event may be "sent" (via a GO TO) then "caught" by in an outside scope.
 
-The "GOST 27975-88 Programming language ALGOL 68 extended" Soviet standard - 
-([http://vak.ru/lib/exe/fetch.php/book/gost/pdf/gost-27975-88.pdf Язык программирования АЛГОЛ 68 расширенный (PDF)]) 
+The "GOST 27975-88 Programming language ALGOL 68 extended" Soviet standard -
+([http://vak.ru/lib/exe/fetch.php/book/gost/pdf/gost-27975-88.pdf Язык программирования АЛГОЛ 68 расширенный (PDF)])
 had the addition mechanisms, e.g.: ''on'', ''exception'' & ''raise''.
 
 {{works with|ALGOL 68|Revision 1 - one extension to language used - PRAGMA READ - a non standard feature similar to C's #include directive.}}
@@ -265,7 +265,7 @@ had the addition mechanisms, e.g.: ''on'', ''exception'' & ''raise''.
 ﻿'''File: prelude/event_base(obj).a68'''
 ```algol68
 COMMENT
-  Define an general event handling mechanism on MODE OBJ: 
+  Define an general event handling mechanism on MODE OBJ:
   * try to parallel pythons exception handling flexibility
 END COMMENT
 
@@ -515,7 +515,7 @@ error "Error message." number 2000
 ## AutoHotkey
 
 
-###  True exceptions 
+###  True exceptions
 
 {{works with|AutoHotkey_L}}
 In [[AutoHotkey_L]] [http://l.autohotkey.net/docs/commands/Try.htm Try], [http://l.autohotkey.net/docs/commands/Catch.htm Catch], and [http://l.autohotkey.net/docs/commands/Throw.htm Throw] are available to handle exceptions.<br/>
@@ -525,7 +525,7 @@ From the [http://l.autohotkey.net/docs/commands/Throw.htm Throw documentation]:
 try
     BadlyCodedFunc()
 catch e
-    MsgBox % "Error in " e.What ", which was called at line " e.Line 
+    MsgBox % "Error in " e.What ", which was called at line " e.Line
 
 BadlyCodedFunc() {
     throw Exception("Fail", -1)
@@ -557,10 +557,10 @@ foo()
 
 ```bbcbasic
       ON ERROR PROCerror(ERR, REPORT$) : END
-      
+
       ERROR 100, "User-generated exception"
       END
-      
+
       DEF PROCerror(er%, rpt$)
       PRINT "Exception occurred"
       PRINT "Error number was " ; er%
@@ -598,7 +598,7 @@ end
 
 ## Bracmat
 
-After completed evaluation, each Bracmat expression not only has a value, but also a success or failure status attached to it. 
+After completed evaluation, each Bracmat expression not only has a value, but also a success or failure status attached to it.
 Pattern matching expressions are the most common expressions to test some condition, but also other expressions can obtain a
 status different from 'success'. Here are some situations where an expression fails:
 * pattern matching fails if the pattern does not match the subject
@@ -641,7 +641,7 @@ percolates further up, so calling the function <code>MyFunction</code> fails as 
 ```
 
 If you copy/paste this code to the Bracmat prompt <em>without the statement delimiter <code>;</code></em>, you will see an 'F' after the output, indicating that your input failed to
-evaluate successfully. 
+evaluate successfully.
 
 ```txt
 Something went wrong when reading your file "Tralula.txt". Or was it the Corporate Data? Hard to say. Anyhow, now I throw you out.
@@ -660,18 +660,18 @@ The setjmp()/longjmp() functions in the C standard library header <setjmp.h> are
 '''try-catch'''
 
 
-```c>#include <setjmp.h
+```c
+#include <setjmp.h>
 
- 
 enum { MY_EXCEPTION = 1 }; /* any non-zero number */
- 
+
 jmp_buf env;
- 
+
 void foo()
 {
   longjmp(env, MY_EXCEPTION); /* throw MY_EXCEPTION */
 }
- 
+
 void call_foo()
 {
   switch (setjmp(env)) {
@@ -698,7 +698,7 @@ With multi-thread support and nested exceptions
 #include <stdio.h>
 #include <setjmp.h>
 #include <stdlib.h>
-        
+
 enum exceptions {
         EXCEPTION_1 = 1,
         EXCEPTION_2,
@@ -735,7 +735,7 @@ enum exceptions {
 #define catch(exception, block) \
         case exception: do block while (0); break;
 
-                
+
 #define throws  jmp_buf* exp
 
 // define a throwing function
@@ -805,7 +805,8 @@ struct MyException
 There's also a class <tt>std::exception</tt> which you can, but are not required to derive your exception class from. The advantage of doing so is that you can catch unknown exceptions and still get some meaningful information out. There are also more specific classes like <tt>std::runtime_error</tt> which derive from <tt>std::exception</tt>.
 
 
-```cpp>#include <exception
+```cpp
+#include <exception>
 
 struct MyException: std::exception
 {
@@ -1290,7 +1291,7 @@ catch:(MyException e)
 '''Catching any exception'''
 
 ```elena
-o.foo() | on:(e) 
+o.foo() | on:(e)
 {
     // handle any type of exception
 };
@@ -1308,7 +1309,7 @@ o.foo() | on:(e)
 -export( [task/0] ).
 
 task() ->
-    try    
+    try
     erlang:throw( new_exception )
 
     catch
@@ -1404,9 +1405,9 @@ try {
 ```fantom
 
 // Create a new error class by subclassing sys::Err
-const class SpecialErr : Err 
+const class SpecialErr : Err
 {
-  // you must provide some message about the error 
+  // you must provide some message about the error
   // to the parent class, for reporting
   new make () : super ("special error") {}
 }
@@ -1434,7 +1435,7 @@ class Main
 
 ```txt
 
-$ fan exceptions.fan 
+$ fan exceptions.fan
 Caught exceptions_0::SpecialErr: special error
 
 ```
@@ -1480,20 +1481,20 @@ Note that CATCH only restores the stack pointers, not the stack values, so any v
 
 ## FreeBASIC
 
-FreeBASIC does not support exceptions or the Try/Catch/Finally statement, as such. 
+FreeBASIC does not support exceptions or the Try/Catch/Finally statement, as such.
 However, you can use the Err() function, together with a Switch statement, to provide somewhat similar functionality:
 
 ```freebasic
 ' FB 1.05.0 Win64
 
 Enum ErrorType
-  myError = 1000 
+  myError = 1000
 End Enum
- 
+
 Sub foo()
   Err = 1000 ' raise a user-defined error
 End Sub
- 
+
 Sub callFoo()
   foo()
   Dim As Long errNo = Err ' cache Err in case it's reset by a different function
@@ -1502,7 +1503,7 @@ Sub callFoo()
       ' No error (system defined)
     Case 1 To 17
       ' System defined runtime errors
-    Case myError:   ' catch myError 
+    Case myError:   ' catch myError
       Print "Caught myError : Error number"; errNo
     Case Else
       ' catch any other type of errors here
@@ -1669,7 +1670,7 @@ do
 ```
 
 
-Note: Control.Exception's "catch" is different than Prelude's "catch". 
+Note: Control.Exception's "catch" is different than Prelude's "catch".
 
 To catch a user-defined exception, use "catchDyn":
 
@@ -1707,7 +1708,7 @@ The following Unicon example makes use of support for exceptions found in the
 [http://tapestry.tucson.az.us/unilib/ The Unicon Code Library].  <i>Since
 exception support is not built into Unicon, but rather implemented as
 Unicon code, there are limitations not found in languages that natively
-support exceptions.</i>   
+support exceptions.</i>
 
 
 ```Unicon
@@ -1773,7 +1774,7 @@ An exception in an explicit definition can be detected with <tt>try.</tt> and <t
         'thanks!'
      end.
    )
-   
+
    tryThis  =: verb define
      try.
         pickyPicky y
@@ -1899,7 +1900,7 @@ The ability to "catch" exceptions was introduced after jq version
 
 Exceptions, as before, can be raised by the execution of an error statement: error(STRING)
 
-The "try" clause takes the form: 
+The "try" clause takes the form:
 
 ```jq>try FILTER catch CATCHER</lang
 
@@ -1963,7 +1964,7 @@ end
 // version 1.0.6
 
 // In Kotlin all Exception classes derive from Throwable and, by convention, end with the word 'Exception'
-class MyException (override val message: String?): Throwable(message) 
+class MyException (override val message: String?): Throwable(message)
 
 fun foo() {
     throw MyException("Bad foo!")
@@ -2235,12 +2236,12 @@ Module Errors {
             Module Error1 {
                   A=1/0
             }
-            
+
             Try ok {
                   Error1
             }
             ' we get an Error, and Error$ print division by zero in module Error1
-            If Error or not ok then Print Error$ 
+            If Error or not ok then Print Error$
             Error "New Error"
       }
       Try {
@@ -2327,7 +2328,7 @@ end proc;
 ```Mathematica
 f[x_] := If[x > 10, Throw[overflow], x!]
 
-Example usage : 
+Example usage :
 Catch[f[2] + f[11]]
 -> overflow
 
@@ -2499,7 +2500,7 @@ As <tt>NetRexx</tt> runs under the control of a JVM it has the same exception mo
 /* NetRexx */
 options replace format comments java crossref symbols nobinary
 
--- 
+--
 ### =======================================================================
 
 class RExceptions public
@@ -2519,7 +2520,7 @@ class RExceptions public
 
     return;
 
--- 
+--
 ### =======================================================================
 
 class RExceptions.TakeException public extends Exception
@@ -2603,7 +2604,7 @@ Exceptions can be any Objective-C object, though they are usually instances of <
 }
 @catch (NSException *exc) {
   //Catch any NSException or subclass
-  NSLog(@"caught exception named %@, with reason: %@", [exc name], [exc reason]);  
+  NSLog(@"caught exception named %@, with reason: %@", [exc name], [exc reason]);
 }
 @catch (id exc) {
   //Catch any kind of object
@@ -2668,7 +2669,7 @@ It is also possible to create new exception classes (see Exception.of).
 
 ```Oforth
 : iwillThrowAnException  "A new exception" Exception throw ;
- 
+
 : iwillCatch
 | e |
    try: e [ iwillThrowAnException ] when: [ "Exception catched :" . e .cr ]
@@ -2937,7 +2938,7 @@ print $@ if $@;
 die $@;
 ```
 
- 
+
 See http://perldoc.perl.org/perlvar.html#%24EVAL_ERROR for the meaning of the special variable <tt>$@</tt>. See http://search.cpan.org/dist/Error for advanced object based-exception handling.
 
 '''Using Try::Tiny'''
@@ -3057,7 +3058,7 @@ throw(501,{"she",made[me],Do(it)})
 
 '''Catching exceptions'''
 
-There is one and only one non-optional catch clause per try statement. 
+There is one and only one non-optional catch clause per try statement.
 
 The variable caught is a sequence, augmented with run-time diagnostics, with whatever was thrown in e[E_CODE] and/or e[E_USER].
 
@@ -3158,9 +3159,9 @@ try {
 ## PicoLisp
 
 [http://software-lab.de/doc/refC.html#catch catch], [http://software-lab.de/doc/refT.html#throw throw]
-(and [http://software-lab.de/doc/refF.html#finally finally]) 
-can be used for exception handling. 
-'throw' will transfer control to a 'catch' environment 
+(and [http://software-lab.de/doc/refF.html#finally finally])
+can be used for exception handling.
+'throw' will transfer control to a 'catch' environment
 that was set up with the given label.
 
 ```PicoLisp
@@ -3215,7 +3216,7 @@ end;
 
 '''Handle an exception'''
 
-Hande division by zero and re-raising once caught other exception: 
+Hande division by zero and re-raising once caught other exception:
 
 ```SQL
 
@@ -3229,12 +3230,12 @@ EXCEPTION
          return 'Inf';
       ELSIF p_num<0 then
          return '-Inf';
-      else 
+      else
          return 'INDEF';
       end if;
    when others then
       raise;
-end; 
+end;
 
 ```
 
@@ -3361,22 +3362,22 @@ $Error[0] | Get-Member
 
    TypeName: System.Management.Automation.ErrorRecord
 
-Name                  MemberType     Definition                                                                                      
-----                  ----------     ----------                                                                                      
-Equals                Method         bool Equals(System.Object obj)                                                                  
-GetHashCode           Method         int GetHashCode()                                                                               
+Name                  MemberType     Definition
+----                  ----------     ----------
+Equals                Method         bool Equals(System.Object obj)
+GetHashCode           Method         int GetHashCode()
 GetObjectData         Method         void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serial...
-GetType               Method         type GetType()                                                                                  
-ToString              Method         string ToString()                                                                               
-writeErrorStream      NoteProperty   bool writeErrorStream=True                                                                      
-CategoryInfo          Property       System.Management.Automation.ErrorCategoryInfo CategoryInfo {get;}                              
-ErrorDetails          Property       System.Management.Automation.ErrorDetails ErrorDetails {get;set;}                               
-Exception             Property       System.Exception Exception {get;}                                                               
-FullyQualifiedErrorId Property       string FullyQualifiedErrorId {get;}                                                             
-InvocationInfo        Property       System.Management.Automation.InvocationInfo InvocationInfo {get;}                               
-PipelineIterationInfo Property       System.Collections.ObjectModel.ReadOnlyCollection[int] PipelineIterationInfo {get;}             
-ScriptStackTrace      Property       string ScriptStackTrace {get;}                                                                  
-TargetObject          Property       System.Object TargetObject {get;}                                                               
+GetType               Method         type GetType()
+ToString              Method         string ToString()
+writeErrorStream      NoteProperty   bool writeErrorStream=True
+CategoryInfo          Property       System.Management.Automation.ErrorCategoryInfo CategoryInfo {get;}
+ErrorDetails          Property       System.Management.Automation.ErrorDetails ErrorDetails {get;set;}
+Exception             Property       System.Exception Exception {get;}
+FullyQualifiedErrorId Property       string FullyQualifiedErrorId {get;}
+InvocationInfo        Property       System.Management.Automation.InvocationInfo InvocationInfo {get;}
+PipelineIterationInfo Property       System.Collections.ObjectModel.ReadOnlyCollection[int] PipelineIterationInfo {get;}
+ScriptStackTrace      Property       string ScriptStackTrace {get;}
+TargetObject          Property       System.Object TargetObject {get;}
 PSMessageDetails      ScriptProperty System.Object PSMessageDetails {get=& { Set-StrictMode -Version 1; $this.Exception.InnerExcep...
 
 ```
@@ -3426,7 +3427,7 @@ true.
 
 ?- go(test).
 ERROR: Unhandled exception: b('not even an int')
-?- 
+?-
 
 ```
 
@@ -3577,7 +3578,7 @@ tryCatch(
   {
     if(runif(1) > 0.5)
     {
-      message("This doesn't throw an error")  
+      message("This doesn't throw an error")
     } else
     {
       stop("This is an error")
@@ -3636,10 +3637,10 @@ catch
 
 ## REXX
 
-While the REXX language doesn't have a ''throw'' capability ''per se'', 
+While the REXX language doesn't have a ''throw'' capability ''per se'',
 it does have the ability to catch exceptions (by label).
 
-This type of exception handling (in REXX) has its limitation 
+This type of exception handling (in REXX) has its limitation
 (the label is local to the program, not external subroutines).
 
 ```rexx
@@ -3847,8 +3848,8 @@ mod tests {
 ## Scala
 
 {{libheader|Scala}}
-In Scala there is, thank heavens, no "checked exception" doctrine. 
-Exceptions can be freely implemented, it's the skill of the programmer to use them right. 
+In Scala there is, thank heavens, no "checked exception" doctrine.
+Exceptions can be freely implemented, it's the skill of the programmer to use them right.
 This example is bad example of using exceptions, only to show that they can be used.
 
 In there are 3 main entries: object CheckingAccount, CheckingBlockingAccount and NotImplementedErrorTest to selective start this solution and demonstrate the working of exceptions and handling.
@@ -3922,9 +3923,9 @@ object NotImplementedErrorTest extends App {
 
 {{out}}Running entry point CheckingAccount
  Depositing $500...
- 
+
  Withdrawing $100...
- 
+
  Withdrawing $600...
  Sorry, but you are short $ 200.0
  Have a nice day
@@ -3949,16 +3950,16 @@ Exception handling can be created with any language supporting continuations, us
       (exception)))
 
 ;example that does nothing special on exception
-(call/cc 
+(call/cc
   (lambda (exception)
     (me-errors 222 exception)
     (display "I guess everything is alright")))
 
 ;example that laments oddness on exception
-(call/cc 
+(call/cc
   (lambda (all-ok) ;used to "jump" over exception handling
 
-    (call/cc 
+    (call/cc
       (lambda (exception-handle)
         (me-errors 333 exception-handle)
         (display "I guess everything is alright")
@@ -3998,7 +3999,7 @@ const proc: main is func
 
 ## Sidef
 
-An exception is thrown by the ''die'' keyword, which, if not caught, it terminates the program with an appropriate exit code. 
+An exception is thrown by the ''die'' keyword, which, if not caught, it terminates the program with an appropriate exit code.
 
 ```ruby
 try  {
@@ -4091,7 +4092,7 @@ self error: 'Yawp!'.
 
 
 ```shell
-$ ./yawp.st 
+$ ./yawp.st
 Throwing yawp
 Object: nil error: Yawp!
 Error(Exception)>>signal (AnsiExcept.st:216)
@@ -4119,7 +4120,7 @@ Handling an Exception
 
 
 ```shell
-$ ./yawp.st 
+$ ./yawp.st
 Throwing yawp
 Caught yawp
 ```
@@ -4296,7 +4297,7 @@ proc e {args} {
 # Catch and rethrow
 proc f {} {
     if {[catch {e 1 2 3 4} errMsg options] != 0} {
-        return -options $options $errMsg 
+        return -options $options $errMsg
     }
 }
 
@@ -4322,7 +4323,7 @@ error message for stack trace
 
 Here is a complicated exceptions example straight from the manual.
 
-This is a deliberately convoluted way to process input consisting of lines which have the form: 
+This is a deliberately convoluted way to process input consisting of lines which have the form:
 ```txt
 {monkey | gorilla | human} <name>
 ```
@@ -4451,13 +4452,13 @@ catching them
 '''Defining exceptions'''
 
 ```vbnet
-Class MyException 
+Class MyException
   Inherits Exception
   'data with info about exception
 End Class
 ```
 
- 
+
 
 '''Throw exceptions'''
 
@@ -4523,7 +4524,7 @@ catch:
     MsgBox Err.Number & vbCrLf & Err.Description
     Exit Sub
 End Sub
- 
+
 Sub bar2()
 'a more complex handler, illustrating some of the flexibility of VBA exception handling
     On Error GoTo catch
@@ -4585,9 +4586,9 @@ If you want "finally" functionality, use onExit or onExitBlock:
 
 ```zkl
 fcn f(b){
-   try{ 
+   try{
       onExitBlock("Exit code".println);
-      if (b) throw(Exception.BadDay) 
+      if (b) throw(Exception.BadDay)
    }
    catch{ println(__exception," was thrown") }
    fallthrough{  println("No exception was thrown") }

@@ -12,16 +12,16 @@ tags = []
 
 {{task|Discrete math}}
 
-The set of combinations with repetitions is computed from a set, <math>S</math> (of cardinality <math>n</math>), and a size of resulting selection, <math>k</math>, by reporting the sets of cardinality <math>k</math> where each member of those sets is chosen from <math>S</math>. 
-In the real world, it is about choosing sets where there is a “large” supply of each type of element and where the order of choice does not matter. 
-For example: 
+The set of combinations with repetitions is computed from a set, <math>S</math> (of cardinality <math>n</math>), and a size of resulting selection, <math>k</math>, by reporting the sets of cardinality <math>k</math> where each member of those sets is chosen from <math>S</math>.
+In the real world, it is about choosing sets where there is a “large” supply of each type of element and where the order of choice does not matter.
+For example:
 :Q: How many ways can a person choose two doughnuts from a store selling three types of doughnut: iced, jam, and plain? (i.e., <math>S</math> is <math>\{\mathrm{iced}, \mathrm{jam}, \mathrm{plain}\}</math>, <math>|S| = 3</math>, and <math>k = 2</math>.)
 
 :A: 6: {iced, iced}; {iced, jam}; {iced, plain}; {jam, jam}; {jam, plain}; {plain, plain}.
 
 <small>Note that both the order of items within a pair, and the order of the pairs given in the answer is not significant; the pairs represent multisets.</small>
 
-<small>Also note that ''doughnut'' can also be spelled ''donut''.</small> 
+<small>Also note that ''doughnut'' can also be spelled ''donut''.</small>
 
 
 ;Task:
@@ -139,7 +139,7 @@ on combsWithRep(k, xs)
     -- A list of lists, representing
     -- sets of cardinality k, with
     -- members drawn from xs.
-    
+
     script combsBySize
         script f
             on |λ|(a, x)
@@ -148,7 +148,7 @@ on combsWithRep(k, xs)
                         {x} & z
                     end |λ|
                 end script
-                
+
                 script go
                     on |λ|(ys, xs)
                         xs & map(prefix, ys)
@@ -157,12 +157,12 @@ on combsWithRep(k, xs)
                 scanl1(go, a)
             end |λ|
         end script
-        
+
         on |λ|(xs)
             foldl(f, {{{}}} & take(k, |repeat|({})), xs)
         end |λ|
     end script
-    
+
     |Just| of |index|(|λ|(xs) of combsBySize, 1 + k)
 end combsWithRep
 
@@ -254,7 +254,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if script is class of f then
@@ -398,12 +398,12 @@ choices = 6
       PRINT "Choices of 2 from 3:"
       choices% = FNchoose(0, 2, 0, 3, chosen%(), list$())
       PRINT "Total choices = " ; choices%
-      
+
       PRINT '"Choices of 3 from 10:"
       choices% = FNchoose(0, 3, 0, 10, chosen%(), nul$())
       PRINT "Total choices = " ; choices%
       END
-      
+
       DEF FNchoose(n%, l%, p%, m%, g%(), RETURN n$())
       LOCAL i%, c%
       IF n% = l% THEN
@@ -480,8 +480,8 @@ iced^2+jam^2+plain^2+iced*jam+iced*plain+jam*plain
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 const char * donuts[] = { "iced", "jam", "plain", "something completely different" };
 long choose(int * got, int n_chosen, int len, int at, int max_types)
@@ -537,43 +537,43 @@ Non recursive version.
 
 ```cpp
 
-#include <cstdio> 
-#include <vector> 
-#include <string>   
- 
-using namespace std; 
- 
-void print_vector(const vector<int> &v, size_t n, const vector<string> &s){ 
-        for (size_t i = 0; i < n; ++i) 
-                printf("%s\t", s[v[i]].c_str()); 
-        printf("\n"); 
-} 
- 
-void combination_with_repetiton(int sabores, int bolas, const vector<string>& v_sabores){ 
-        sabores--; 
-        vector<int> v(bolas+1, 0); 
-        while (true){ 
-                for (int i = 0; i < bolas; ++i){                //vai um 
-                        if (v[i] > sabores){ 
-                                v[i + 1] += 1; 
-                                for (int k = i; k >= 0; --k){ 
-                                        v[k] = v[i + 1]; 
-                                } 
-                                //v[i] = v[i + 1]; 
-                        } 
-                } 
- 
-                if (v[bolas] > 0) 
-                        break; 
-                print_vector(v, bolas, v_sabores); 
-                v[0] += 1; 
+#include <cstdio>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+void print_vector(const vector<int> &v, size_t n, const vector<string> &s){
+        for (size_t i = 0; i < n; ++i)
+                printf("%s\t", s[v[i]].c_str());
+        printf("\n");
+}
+
+void combination_with_repetiton(int sabores, int bolas, const vector<string>& v_sabores){
+        sabores--;
+        vector<int> v(bolas+1, 0);
+        while (true){
+                for (int i = 0; i < bolas; ++i){                //vai um
+                        if (v[i] > sabores){
+                                v[i + 1] += 1;
+                                for (int k = i; k >= 0; --k){
+                                        v[k] = v[i + 1];
+                                }
+                                //v[i] = v[i + 1];
+                        }
+                }
+
+                if (v[bolas] > 0)
+                        break;
+                print_vector(v, bolas, v_sabores);
+                v[0] += 1;
         }
 }
- 
-int main(){ 
-        vector<string> options{ "iced", "jam", "plain" }; 
-        combination_with_repetiton(3, 2, options); 
-        return 0; 
+
+int main(){
+        vector<string> options{ "iced", "jam", "plain" };
+        combination_with_repetiton(3, 2, options);
+        return 0;
 }
 
 ```
@@ -583,12 +583,12 @@ int main(){
 
 ```txt
 
-iced	iced	
-jam	iced	
-plain	iced	
-jam	jam	
-plain	jam	
-plain	plain	
+iced	iced
+jam	iced
+plain	iced
+jam	jam
+plain	jam
+plain	plain
 
 ```
 
@@ -622,7 +622,7 @@ public static class MultiCombinations
 
         Console.WriteLine("{0} ways to order 3 donuts given 10 types", donutsCombinationsNumber);
     }
-    
+
     private static List<List<T>> GenerateCombinations<T>(List<T> combinationList, int k)
     {
         var combinations = new List<List<T>>();
@@ -642,7 +642,7 @@ public static class MultiCombinations
 
         T head = combinationList[0];
         var copiedCombinationList = new List<T>(combinationList);
-        
+
         List<List<T>> subcombinations = GenerateCombinations(copiedCombinationList, k - 1);
 
         foreach (var subcombination in subcombinations)
@@ -743,11 +743,11 @@ user> (combinations '[iced jam plain] 2)
 combos = (arr, k) ->
   return [ [] ] if k == 0
   return [] if arr.length == 0
-    
+
   combos_with_head = ([arr[0]].concat combo for combo in combos arr, k-1)
   combos_sans_head = combos arr[1...], k
   combos_with_head.concat combos_sans_head
-  
+
 arr = ['iced', 'jam', 'plain']
 console.log "valid pairs from #{arr.join ','}:"
 console.log combos arr, 2
@@ -807,7 +807,7 @@ The code below is a modified version of the Clojure solution.
 possible_doughnuts = ["iced", "jam", "plain"].repeated_combinations(2)
 puts "There are #{possible_doughnuts.size} possible doughnuts:"
 possible_doughnuts.each{|doughnut_combi| puts doughnut_combi.join(" and ")}
- 
+
 # Extra credit
 possible_doughnuts = (1..10).to_a.repeated_combinations(3)
 # size returns the size of the enumerator, or nil if it can’t be calculated lazily.
@@ -981,7 +981,7 @@ n = len items$[]
 k = 2
 len result[] k
 n_results = 0
-# 
+#
 func output . .
   n_results += 1
   if len items$[] > 0
@@ -1003,7 +1003,7 @@ func combine pos val . .
   .
 .
 call combine 0 0
-# 
+#
 n = 10
 k = 3
 len result[] k
@@ -1019,12 +1019,12 @@ print n_results & " results with 10 donuts"
 
 ```txt
 
-iced iced 
-iced jam 
-iced plain 
-jam jam 
-jam plain 
-plain plain 
+iced iced
+iced jam
+iced plain
+jam jam
+jam plain
+plain plain
 
 220 results with 10 donuts
 
@@ -1038,7 +1038,7 @@ We can use the native '''combinations/rep''' function, or use a '''combinator'''
 
 ```scheme
 
-;; 
+;;
 ;; native function : combinations/rep in list.lib
 ;;
 (lib 'list)
@@ -1063,7 +1063,7 @@ We can use the native '''combinations/rep''' function, or use a '''combinator'''
 	[(null? nums) null]
 	[(<= k 0) null]
 	[(= k 1) (map list nums)]
-	[else 
+	[else
 		(for/fold (acc null) ((anum nums))
 		(append acc
 	  		(for/list ((xs (comb/rep nums (1- k))))
@@ -1190,14 +1190,14 @@ comb_rep(N,[H|T]=S) ->
 program main
 	integer :: chosen(4)
 	integer :: ssize
-	
+
 	character(len=50) :: donuts(4) = [ "iced", "jam", "plain", "something completely different" ]
-	
+
 	ssize = choose( chosen, 2, 3 )
 	write(*,*) "Total = ", ssize
-	
+
 	contains
-	
+
 	recursive function choose( got, len, maxTypes, nChosen, at ) result ( output )
 		integer :: got(:)
 		integer :: len
@@ -1205,36 +1205,36 @@ program main
 		integer :: output
 		integer, optional :: nChosen
 		integer, optional :: at
-		
+
 		integer :: effNChosen
 		integer :: effAt
-		
+
 		integer :: i
 		integer :: counter
-		
+
 		effNChosen = 1
 		if( present(nChosen) ) effNChosen = nChosen
-		
+
 		effAt = 1
 		if( present(at) ) effAt = at
-		
+
 		if ( effNChosen == len+1 ) then
 			do i=1,len
 				write(*,"(A10,5X)", advance='no') donuts( got(i)+1 )
 			end do
-			
+
 			write(*,*) ""
-			
+
 			output = 1
 			return
 		end if
-		
+
 		counter = 0
 		do i=effAt,maxTypes
 			got(effNChosen) = i-1
 			counter = counter + choose( got, len, maxTypes, effNChosen + 1, i )
 		end do
-		
+
 		output = counter
 		return
 	end function choose
@@ -1247,12 +1247,12 @@ end program main
 
 ```txt
 
-iced           iced            
-iced           jam             
-iced           plain           
-jam            jam             
-jam            plain           
-plain          plain           
+iced           iced
+iced           jam
+iced           plain
+jam            jam
+jam            plain
+plain          plain
  Total =            6
 
 ```
@@ -1381,12 +1381,12 @@ func main() {
 
 ```txt
 
-plain plain 
-plain jam 
-plain iced 
-jam jam 
-jam iced 
-iced iced 
+plain plain
+plain jam
+plain iced
+jam jam
+jam iced
+iced iced
 
 picking 3 of 10: 220
 
@@ -1411,7 +1411,7 @@ import (
 // We follow the convention of always storing true for the value.
 type set      map[string]bool
 
-// Multisets of strings are easy in the same way. 
+// Multisets of strings are easy in the same way.
 // We store the multiplicity of the element as the value.
 type multiset map[string]int
 
@@ -1523,7 +1523,7 @@ map[iced:2]
 
 ```haskell
 -- Return the combinations, with replacement, of k items from the
--- list.  We ignore the case where k is greater than the length of 
+-- list.  We ignore the case where k is greater than the length of
 -- the list.
 combsWithRep :: Int -> [a] -> [[a]]
 combsWithRep 0 _ = [[]]
@@ -1560,7 +1560,7 @@ main = do
 ### Dynamic Programming
 
 
-The first solution is inefficient because it repeatedly calculates the same subproblem in different branches of recursion. For example, <code>combsWithRep k (x:xs)</code> involves computing <code>combsWithRep (k-1) (x:xs)</code> and <code>combsWithRep k xs</code>, both of which (separately) compute <code>combsWithRep (k-1) xs</code>. To avoid repeated computation, we can use dynamic programming: 
+The first solution is inefficient because it repeatedly calculates the same subproblem in different branches of recursion. For example, <code>combsWithRep k (x:xs)</code> involves computing <code>combsWithRep (k-1) (x:xs)</code> and <code>combsWithRep k xs</code>, both of which (separately) compute <code>combsWithRep (k-1) xs</code>. To avoid repeated computation, we can use dynamic programming:
 
 
 ```haskell
@@ -1609,7 +1609,7 @@ Following procedure is a generator, which generates each combination of length n
 
 ```Icon
 
-# generate all combinations of length n from list L, 
+# generate all combinations of length n from list L,
 # including repetitions
 procedure combinations_repetitions (L, n)
   if n = 0
@@ -1617,13 +1617,13 @@ procedure combinations_repetitions (L, n)
     else if *L > 0
       then {
         # keep the first element
-        item := L[1]                                         
+        item := L[1]
         # get all of length n in remaining list
-        every suspend (combinations_repetitions (L[2:0], n)) 
+        every suspend (combinations_repetitions (L[2:0], n))
         # get all of length n-1 in remaining list
         # and add kept element to make list of size n
-        every i := combinations_repetitions (L, n-1) do      
-          suspend [item] ||| i                               
+        every i := combinations_repetitions (L, n-1) do
+          suspend [item] ||| i
       }
 end
 
@@ -1659,12 +1659,12 @@ end
 
 ```txt
 
-plain plain 
-jam plain 
-jam jam 
-iced plain 
-iced jam 
-iced iced 
+plain plain
+jam plain
+jam jam
+iced plain
+iced jam
+iced iced
 There are 220 possible combinations of 3 from 10
 
 ```
@@ -1692,7 +1692,7 @@ There are 220 possible combinations of 3 from 10
 Cartesian product, the monadic j verb { solves the problem.  The rest of the code handles the various data types, order, and quantity to choose, and makes a set from the result.
 
 
-```j>rcomb=: 
+```j>rcomb=:
 @~.@:(/:~&.>)@,@{@# <
 ```
 
@@ -1847,12 +1847,12 @@ public class MultiCombinations {
 
 ```txt
 
-iced iced 
-iced jam 
-iced plain 
-jam jam 
-jam plain 
-plain plain 
+iced iced
+iced jam
+iced plain
+jam jam
+jam plain
+plain plain
 ----------
 The ways to choose 3 items from 10 with replacement = 220
 
@@ -2167,9 +2167,9 @@ class CombsWithReps<T>(val m: Int, val n: Int, val items: List<T>, val countOnly
     private var count = 0
 
     init {
-        generate(0) 
+        generate(0)
         if (!countOnly) println()
-        println("There are $count combinations of $n things taken $m at a time, with repetitions")     
+        println("There are $count combinations of $n things taken $m at a time, with repetitions")
     }
 
     private fun generate(k: Int) {
@@ -2180,13 +2180,13 @@ class CombsWithReps<T>(val m: Int, val n: Int, val items: List<T>, val countOnly
             }
             count++
         }
-        else { 
+        else {
             for (j in 0 until n)
                 if (k == 0 || j >= combination[k - 1]) {
                     combination[k] = j
                     generate(k + 1)
                 }
-        }        
+        }
     }
 }
 
@@ -2195,7 +2195,7 @@ fun main(args: Array<String>) {
     CombsWithReps(2, 3, doughnuts)
     println()
     val generic10 = "0123456789".split("")
-    CombsWithReps(3, 10, generic10, true)   
+    CombsWithReps(3, 10, generic10, true)
 }
 ```
 
@@ -2292,14 +2292,14 @@ function GenerateCombinations(tList, nMaxElements, tOutput, nStartIndex, nChosen
 	if not tCurrentCombination then
 		tCurrentCombination = {}
 	end
-	
+
 	if nChosen == nMaxElements then
 		-- Must copy the table to avoid all elements referring to a single reference
 		local tCombination = {}
 		for k,v in pairs(tCurrentCombination) do
 			tCombination[k] = v
 		end
-		
+
 		table.insert(tOutput, tCombination)
 		return
 	end
@@ -2310,10 +2310,10 @@ function GenerateCombinations(tList, nMaxElements, tOutput, nStartIndex, nChosen
 			tCurrentCombination[nChosen + 1] = tList[nIndex]
 			GenerateCombinations(tList, nMaxElements, tOutput, nIndex, nChosen + 1, tCurrentCombination)
 		end
-		
+
 		nIndex = nIndex + 1
 	end
-	
+
 	return tOutput
 end
 
@@ -2351,18 +2351,18 @@ A better method therefore:
 
 ```Mathematica
 CombinWithRep[S_List, k_] := Module[{occupation, assignment},
-  occupation = 
-   Flatten[Permutations /@ 
+  occupation =
+   Flatten[Permutations /@
      IntegerPartitions[k, {Length[S]}, Range[0, k]], 1];
-  assignment = 
-   Flatten[Table[ConstantArray[z, {#[[z]]}], {z, Length[#]}]] & /@ 
+  assignment =
+   Flatten[Table[ConstantArray[z, {#[[z]]}], {z, Length[#]}]] & /@
     occupation;
   Thread[S[[#]]] & /@ assignment
   ]
 
 In[2]:= CombinWithRep[{"iced", "jam", "plain"}, 2]
 
-Out[2]= {{"iced", "iced"}, {"jam", "jam"}, {"plain", 
+Out[2]= {{"iced", "iced"}, {"jam", "jam"}, {"plain",
   "plain"}, {"iced", "jam"}, {"iced", "plain"}, {"jam", "plain"}}
 
 ```
@@ -2425,7 +2425,7 @@ Usage:
 :- implementation.
 :- import_module comb, list, string.
 
-:- type doughtnuts 
+:- type doughtnuts
         --->    iced ; jam ; plain
         ;       glazed ; chocolate ; cream_filled ; mystery
         ;       cubed ; cream_covered ; explosive.
@@ -2643,7 +2643,7 @@ Alternatively, a recursive solution:
 
 ```perl6
 proto combs_with_rep (UInt, @) {*}
- 
+
 multi combs_with_rep (0,  @)  { () }
 multi combs_with_rep (1,  @a)  { map { $_, }, @a }
 multi combs_with_rep ($,  []) { () }
@@ -2651,13 +2651,13 @@ multi combs_with_rep ($n, [$head, *@tail]) {
     |combs_with_rep($n - 1, ($head, |@tail)).map({ $head, |@_ }),
     |combs_with_rep($n, @tail);
 }
- 
+
 .say for combs_with_rep( 2, [< iced jam plain >] );
- 
+
 # Extra credit:
 sub postfix:<!> { [*] 1..$^n }
 sub combs_with_rep_count ($k, $n) { ($n + $k - 1)! / $k! / ($n - 1)! }
- 
+
 say combs_with_rep_count( 3, 10 );
 ```
 
@@ -2705,7 +2705,7 @@ choose({"iced","jam","plain"},2)
 
 ```
 
-The second part suggests enough differences (collecting and showing vs only counting) to strike me as ugly and confusing. 
+The second part suggests enough differences (collecting and showing vs only counting) to strike me as ugly and confusing.
 While I could easily, say, translate the C version, I'd rather forego the extra credit and use a completely different routine:
 
 ```Phix
@@ -2735,7 +2735,7 @@ end function
 
 
 Non-recursive algorithm to generate all combinations with repetitons. Taken from here: [https://habrahabr.ru/post/311934/]
- You must set k n variables and fill arrays b and c. 
+ You must set k n variables and fill arrays b and c.
 
 
 ```PHP
@@ -2751,7 +2751,7 @@ $b=array(1,1,1);
 $j=$k-1;
 //Вывод
 	function printt($b,$k) {
-	
+
 	$z=0;
 
 	while ($z < $k) print $b[$z++].' ';
@@ -2759,17 +2759,17 @@ $j=$k-1;
 ';
 }
 printt ($b,$k);
- 
+
         while (1) {
 //Увеличение на позиции K до N
-    
-       	 if (array_search($b[$j]+1,$c)!==false ) {	     	
+
+       	 if (array_search($b[$j]+1,$c)!==false ) {
   	      	$b[$j]=$b[$j]+1;
         	printt ($b,$k);
        }
-        
+
        	if ($b[$k-1]==$n) {
-	 $i=$k-1; 
+	 $i=$k-1;
 //Просмотр массива справа налево
 	 while ($i >= 0) {
 		//Условие выхода
@@ -2777,11 +2777,11 @@ printt ($b,$k);
 //Поиск элемента для увеличения
        		  $m=array_search($b[$i]+1,$c);
 		if ($m!==false) {
-		           $c[$m]=$c[$m]-1; 
+		           $c[$m]=$c[$m]-1;
 			  $b[$i]=$b[$i]+1;
-		 
+
 			$g=$i;
-//Сортировка массива B 
+//Сортировка массива B
 		while ($g != $k-1) {
 			array_unshift ($c, $b[$g+1]);
 			$b[$g+1]=$b[$i];
@@ -2791,16 +2791,16 @@ printt ($b,$k);
 	                            $c=array_diff($c,$b);
 				    printt ($b,$k);
                                     array_unshift ($c, $n);
-                
-		 	     break;  
+
+		 	     break;
        			 }
 	 	$i--;
-	
+
 		}
-	
+
 	}
-	
-             
+
+
 }
 
 ?>
@@ -2818,13 +2818,13 @@ printt ($b,$k);
     if ($k == 0) {
       return array(array());
     }
-    
+
     if (count($arr) == 0) {
       return array();
     }
-    
+
     $head = $arr[0];
-    
+
     $combos = array();
     $subcombos = combos($arr, $k-1);
     foreach ($subcombos as $subcombo) {
@@ -2835,7 +2835,7 @@ printt ($b,$k);
     $combos = array_merge($combos, combos($arr, $k));
     return $combos;
   }
-  
+
   $arr = array("iced", "jam", "plain");
   $result = combos($arr, 2);
   foreach($result as $combo) {
@@ -2900,32 +2900,32 @@ Procedure nextCombination(Array combIndex(1), elementCount)
   ;combIndex() must be dimensioned to 'k' - 1, elementCount equals 'n' - 1
   ;combination produced includes repetition of elements and is represented by the array combIndex()
   Protected i, indexValue, combSize = ArraySize(combIndex()), curIndex
-  
+
   ;update indexes
   curIndex = combSize
-  Repeat 
+  Repeat
     combIndex(curIndex) + 1
     If combIndex(curIndex) > elementCount
-      
+
       curIndex - 1
       If curIndex < 0
         For i = 0 To combSize
           combIndex(i) = 0
-        Next 
+        Next
         ProcedureReturn #False ;array reset to first combination
-      EndIf 
-      
+      EndIf
+
     ElseIf curIndex < combSize
-      
+
       indexValue = combIndex(curIndex)
       Repeat
         curIndex + 1
         combIndex(curIndex) = indexValue
       Until curIndex = combSize
-      
+
     EndIf
   Until  curIndex = combSize
-  
+
   ProcedureReturn #True ;array contains next combination
 EndProcedure
 
@@ -2946,7 +2946,7 @@ If OpenConsole()
   Dim combIndex(k - 1)
   Dim dougnut.s(n - 1)
   For i = 0 To n - 1: Read.s dougnut(i): Next
-  
+
   PrintN("Combinations of " + Str(k) + " dougnuts taken " + Str(n) + " at a time with repetitions.")
   combinationCount = 0
   Repeat
@@ -2954,17 +2954,17 @@ If OpenConsole()
     combinationCount + 1
   Until Not nextCombination(combIndex(), n - 1)
   PrintN("Total combination count: " + Str(combinationCount))
-  
+
   ;extra credit
   n = 10: k = 3
   Dim combIndex(k - 1)
   combinationCount = 0
   Repeat: combinationCount + 1: Until Not nextCombination(combIndex(), n - 1)
   PrintN(#CRLF$ + "Ways to select " + Str(k) + " items from " + Str(n) + " types: " + Str(combinationCount))
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
-EndIf 
+EndIf
 ```
 The nextCombination() procedure operates on an array of indexes to produce the next combination.  This generalization allows producing a combination from any collection of elements.  nextCombination() returns the value #False when the indexes have reach their maximum values and are then reset.
 
@@ -2996,7 +2996,7 @@ Ways to select 3 items from 10 types: 220
 >>> # Extra credit
 >>> len(list(combinations_with_replacement(range(10), 3)))
 220
->>> 
+>>>
 ```
 
 
@@ -3154,7 +3154,7 @@ show:   L=;      do c=1  for y;   _=@.c;   L=L $._;   end  /*c*/;       say L;  
 
 
 ### version 2
- 
+
 recursive (taken from version 1)
 Reformatted and variable names suitable for OoRexx.
 
@@ -3253,7 +3253,7 @@ show_index: Procedure Expose index. ns debug
 
 
 ### version 3
- 
+
 iterative (transformed from version 1)
 
 ```rexx
@@ -3355,7 +3355,7 @@ comb = sortfirst(comb, 1)
 see showarray(comb) + nl
 
 func combinations(n, k)
-while true 
+while true
          temp = []
          for nr = 1 to k
                tm = random(n-1) + 1
@@ -3363,8 +3363,8 @@ while true
          next
              add(comb, temp)
          for p = 1  to len(comb) - 1
-               for q = p + 1 to len(comb) 
-                     if (comb[p][1] = comb[q][1]) and (comb[p][2] = comb[q][2]) and (comb[p][3] = comb[q][3]) 
+               for q = p + 1 to len(comb)
+                     if (comb[p][1] = comb[q][1]) and (comb[p][2] = comb[q][2]) and (comb[p][3] = comb[q][3])
                         del(comb, p)
                      ok
                 next
@@ -3382,27 +3382,27 @@ func showarray(vect)
         svect = ""
         for nrs = 1 to len(vect)
               svect = "[" + vect[nrs][1] + " " + vect[nrs][2] + " " + vect[nrs][3] + "]" + nl
-              see svect 
+              see svect
         next
 
 Func sortfirst(alist, ind)
         aList = sort(aList,ind)
         for n = 1 to len(alist)-1
-             for m= n + 1 to len(aList)  
+             for m= n + 1 to len(aList)
                   if alist[n][1] = alist[m][1] and alist[m][2] < alist[n][2]
                      temp = alist[n]
                      alist[n] = alist[m]
                      alist[m] = temp
-                   ok 
+                   ok
              next
         next
         for n = 1 to len(alist)-1
-             for m= n + 1 to len(aList)  
+             for m= n + 1 to len(aList)
                   if alist[n][1] = alist[m][1] and alist[n][2] = alist[m][2] and alist[m][3] < alist[n][3]
                      temp = alist[n]
                      alist[n] = alist[m]
                      alist[m] = temp
-                   ok 
+                   ok
              next
        next
        return aList
@@ -3467,13 +3467,13 @@ Scala has a combinations method in the standard library.
 
 object CombinationsWithRepetition {
 
-  def multi[A](as: List[A], k: Int): List[List[A]] = 
+  def multi[A](as: List[A], k: Int): List[List[A]] =
     (List.fill(k)(as)).flatten.combinations(k).toList
-  
+
   def main(args: Array[String]): Unit = {
     val doughnuts = multi(List("iced", "jam", "plain"), 2)
     for (combo <- doughnuts) println(combo.mkString(","))
-  
+
     val bonus = multi(List(0,1,2,3,4,5,6,7,8,9), 3).size
     println("There are "+bonus+" ways to choose 3 items from 10 choices")
   }
@@ -3900,12 +3900,12 @@ Text(0, "Combos = ");  IntOut(0, Count);  CrLf(0);
 
 ```txt
 
-iced iced 
-iced jam 
-iced plain 
-jam jam 
-jam plain 
-plain plain 
+iced iced
+iced jam
+iced plain
+jam jam
+jam plain
+plain plain
 Combos = 6
 Combos = 220
 

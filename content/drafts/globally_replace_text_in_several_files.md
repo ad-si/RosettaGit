@@ -13,7 +13,7 @@ tags = []
 {{task}}
 
 ;Task:
-Replace every occurring instance of a piece of text in a group of text files with another one. 
+Replace every occurring instance of a piece of text in a group of text files with another one.
 
 
 For this task we want to replace the text   "'''Goodbye London!'''"   with   "'''Hello New York!'''"   for a list of files.
@@ -55,11 +55,11 @@ procedure Global_Replace is
 
    procedure File_Replace(Filename: String; Pattern, Replacement: String) is
       -- applies String_Rplace to each line in the file with the given Filename
-      -- propagates any exceptions, when, e.g., the file does not exist 
+      -- propagates any exceptions, when, e.g., the file does not exist
 
       I_File, O_File: Ada.Text_IO.File_Type;
       Line: U_String;
-      Tmp_Name: String := Filename & ".tmp"; 
+      Tmp_Name: String := Filename & ".tmp";
          -- name of temporary file; if that file already exists, it will be overwritten
    begin
       Ada.Text_IO.Open(I_File, Ada.Text_IO.In_File, Filename);
@@ -90,7 +90,7 @@ end Global_Replace;
 ```
 
 
-Ouput: 
+Ouput:
 
 ```txt
 > ls ?.txt
@@ -98,18 +98,18 @@ Ouput:
 
 > more 2.txt
 This is a text.
-"Goodbye London!" 
-"Goodbye London!" 
-"Byebye London!" "Byebye London!" "Byebye London!" 
+"Goodbye London!"
+"Goodbye London!"
+"Byebye London!" "Byebye London!" "Byebye London!"
 
 > ./global_replace "Goodbye London" "Hello New York" ?.txt
 Replacing "Goodbye London" by "Hello New York" in 4 files.
 
 > more 2.txt
 This is a text.
-"Hello New York!" 
-"Hello New York!" 
-"Byebye London!" "Byebye London!" "Byebye London!" 
+"Hello New York!"
+"Hello New York!"
+"Byebye London!" "Byebye London!" "Byebye London!"
 ```
 
 
@@ -175,8 +175,8 @@ END {
 ```awk
 @include "readfile"
 BEGIN {
-    while(++i < ARGC) 
-        print gensub("Goodbye London!","Hello New York!","g", readfile(ARGV[i])) > ARGV[i] 
+    while(++i < ARGC)
+        print gensub("Goodbye London!","Hello New York!","g", readfile(ARGV[i])) > ARGV[i]
 }
 ```
 
@@ -239,17 +239,17 @@ WEND
 ```bbcbasic
       FindThis$ = "Goodbye London!"
       ReplaceWith$ = "Hello New York!"
-      
+
       DIM Files$(3)
       Files$() = "C:\test1.txt", "C:\test2.txt", "C:\test3.txt", "C:\test4.txt"
-      
+
       FOR f% = 0 TO DIM(Files$(),1)
         infile$ = Files$(f%)
         infile% = OPENIN(infile$)
         IF infile%=0 ERROR 100, "Failed to open file " + infile$
         tmpfile$ = @tmp$+"replace.txt"
         tmpfile% = OPENOUT(tmpfile$)
-        
+
         WHILE NOT EOF#infile%
           INPUT #infile%, a$
           IF ASCa$=10 a$ = MID$(a$,2)
@@ -262,7 +262,7 @@ WEND
         ENDWHILE
         CLOSE #infile%
         CLOSE #tmpfile%
-        
+
         OSCLI "DEL """ + infile$ + """"
         OSCLI "REN """ + tmpfile$ + """ """ + infile$ + """"
       NEXT
@@ -274,8 +274,8 @@ WEND
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
 #include <string.h>
@@ -357,8 +357,8 @@ int main()
 ## C++
 
 
-```cpp>#include <fstream
-
+```cpp
+#include <fstream>
 #include <iterator>
 #include <boost/regex.hpp>
 #include <string>
@@ -375,12 +375,12 @@ int main( int argc , char *argv[ ] ) {
 	 std::string changed ( boost::regex_replace( filetext , to_be_replaced , replacement )) ;
 	 infile.close( ) ;
 	 std::ofstream outfile( argv[ i ] , std::ios_base::out | std::ios_base::trunc ) ;
-	 if ( outfile.is_open( ) ) { 
+	 if ( outfile.is_open( ) ) {
 	    outfile << changed ;
 	    outfile.close( ) ;
 	 }
       }
-      else 
+      else
 	 std::cout << "Can't find file " << argv[ i ] << " !\n" ;
    }
    return 0 ;
@@ -390,8 +390,8 @@ int main( int argc , char *argv[ ] ) {
 
 Modern C++ version:
 
-```cpp>#include <regex
-
+```cpp
+#include <regex>
 #include <fstream>
 
 using namespace std;
@@ -529,20 +529,20 @@ replace_in_file_return( File, {error, Error} ) ->
 macbook-pro:rosettacode bengt$ ls ?.txt
 1.txt	2.txt
 macbook-pro:rosettacode bengt$ more ?.txt
-"Goodbye London!" 
-"Goodbye London!" 
+"Goodbye London!"
+"Goodbye London!"
 "Byebye London!" "Byebye London!" "Byebye London!"
 ...skipping...
-"Goodbye London!" 
+"Goodbye London!"
 "Byebye London!" "Byebye London!" "Byebye London!"
 "Goodbye London!"
 macbook-pro:rosettacode bengt$ escript globally_replace_text.erl "Goodbye London\!" "Hello New York\!" ?.txt
 macbook-pro:rosettacode bengt$ more ?.txt
-"Hello New York!" 
-"Hello New York!" 
+"Hello New York!"
+"Hello New York!"
 "Byebye London!" "Byebye London!" "Byebye London!"
 ...skipping...
-"Hello New York!" 
+"Hello New York!"
 "Byebye London!" "Byebye London!" "Byebye London!"
 "Hello New York!"
 
@@ -773,9 +773,9 @@ procedure main()
 globalrepl("Goodbye London","Hello New York","a.txt","b.txt") # variable args for files
 end
 
-procedure globalrepl(old,new,files[])  
+procedure globalrepl(old,new,files[])
 
-every fn := !files do 
+every fn := !files do
    if s := reads(f := open(fn,"bu"),stat(f).size) then {
       writes(seek(f,1),replace(s,old,new))
       close(f)
@@ -833,12 +833,12 @@ public class GloballyReplaceText {
 ## jq
 
 {{works with|jq|1.5}}
-jq delegates filename manipulation to the shell. For simplicity, in the following we assume the availability of `sponge` to simplify the mechanics of editing a file "in-place". 
+jq delegates filename manipulation to the shell. For simplicity, in the following we assume the availability of `sponge` to simplify the mechanics of editing a file "in-place".
 
 ```bash
 for file
 do
-  jq -Rr 'gsub($from; $to)' --arg from 'Goodbye London!' --arg to 'Hello New York!' "$file" | 
+  jq -Rr 'gsub($from; $to)' --arg from 'Goodbye London!' --arg to 'Hello New York!' "$file" |
     sponge "$file"
 done
 ```
@@ -1078,20 +1078,20 @@ Do[
 File b.txt before the code is run:
 
 ```txt
-second file for the Globally replace text in several files problem. 
-Goodbye London! 
+second file for the Globally replace text in several files problem.
 Goodbye London!
-Bye bye London! 
+Goodbye London!
+Bye bye London!
 Bye bye London! Bye bye London!
 ```
 
 File b.txt after the code is run:
 
 ```txt
-second file for the Globally replace text in several files problem. 
-Hello New York! 
+second file for the Globally replace text in several files problem.
 Hello New York!
-Bye bye London! 
+Hello New York!
+Bye bye London!
 Bye bye London! Bye bye London!
 
 ```
@@ -1131,10 +1131,10 @@ FUNCTION replaceText RETURNS LOGICAL (
       lcfile = REPLACE( lcfile, i_cfrom, i_cto ).
       COPY-LOB FROM lcfile TO FILE ENTRY( ii, i_cfile_list ).
    END.
-   
+
 END FUNCTION. /* replaceText */
 
-replaceText( 
+replaceText(
    "a.txt,b.txt,c.txt",
    "Goodbye London!",
    "Hello New York!"
@@ -1550,7 +1550,7 @@ Select
     'erase' oid
     Say left(f,50) 'no changes'
     End
-  When cnt.0changes=1 Then 
+  When cnt.0changes=1 Then
     Say left(f,50) '1 change'
   Otherwise
     Say left(f '->' oid,50) cnt.0changes 'changes'
@@ -1622,7 +1622,7 @@ for fn in filenames
     fp = fopen(fn,"r")
     str = fread(fp,getFileSize(fp))
     str = substr(str, "Greetings", "Hello")
-    fclose(fp) 
+    fclose(fp)
 
     fp = fopen(fn,"w")
     fwrite(fp, str)
@@ -1660,19 +1660,19 @@ ruby -pi -e "gsub('Goodbye London!', 'Hello New York!')" a.txt b.txt c.txt
 file$(1) ="data1.txt"
 file$(2) ="data2.txt"
 file$(3) ="data3.txt"
- 
+
 for i = 1 to 3
     open file$(i) for input as #in
         fileBefore$ = input$( #in, lof( #in))
     close #in
- 
+
     fileAfter$ = strRep$(fileBefore$, "Goodbye London!", "Hello New York!")
     open "new_" +  file$(i) for output as #out
         print #out,fileAfter$;
     close #out
 next i
 end
- 
+
 ' --------------------------------
 ' string replace - rep str with
 ' --------------------------------
@@ -1730,7 +1730,7 @@ sed -i 's/Goodbye London!/Hello New York!/g' a.txt b.txt c.txt
 ```seed7
 $ include "seed7_05.s7i";
   include "getf.s7i";
- 
+
 const proc: main is func
   local
     var string: fileName is "";
@@ -2063,7 +2063,7 @@ fcn sedFile(fname,src,dst){
 }
 ```
 
-This is a read file/blast it/write if changed. You could also do it line by line. 
+This is a read file/blast it/write if changed. You could also do it line by line.
 
 ```zkl
 vm.arglist.apply2(sedFile);

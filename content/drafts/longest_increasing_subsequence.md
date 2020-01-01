@@ -59,7 +59,7 @@ LNGINSQ  CSECT
          MVC    LO,=H'1'             lo=1
          MVC    HI,LL                hi=l
          LH     R4,LO                lo
-       DO WHILE=(CH,R4,LE,HI)        do while lo<=hi 
+       DO WHILE=(CH,R4,LE,HI)        do while lo<=hi
          LH     R1,LO                  lo
          AH     R1,HI                  lo+hi
          SRA    R1,1                   /2
@@ -91,7 +91,7 @@ LNGINSQ  CSECT
          LR     R1,R10               newl
          SLA    R1,1                 *2
          STH    R7,MM(R1)            m(newl+1)=j
-       IF CH,R10,GT,LL               if newl>l then 
+       IF CH,R10,GT,LL               if newl>l then
          STH    R10,LL                 l=newl
        ENDIF    ,                    endif
          LA     R7,1(R7)             j++
@@ -208,8 +208,8 @@ LIS(L) {
 
 Using an array that doubles as linked list (more like reversed trees really). O(n) memory and O(n<sup>2</sup>) runtime.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 struct node {
@@ -270,8 +270,8 @@ int main(void)
 
 Patience sorting
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 #include <tr1/memory>
 #include <algorithm>
@@ -338,8 +338,8 @@ int main() {
 {{out}}
 
 ```txt
-2, 4, 5, 
-0, 2, 6, 9, 11, 15, 
+2, 4, 5,
+0, 2, 6, 9, 11, 15,
 ```
 
 
@@ -436,8 +436,8 @@ public static class LIS
 
 ## Clojure
 
-Implementation using the Patience Sort approach. 
-The elements (''newelem'') put on a pile combine the "card" with a reference to the top of the previous stack, as per the algorithm. 
+Implementation using the Patience Sort approach.
+The elements (''newelem'') put on a pile combine the "card" with a reference to the top of the previous stack, as per the algorithm.
 The combination is done using ''cons'', so what gets put on a pile is a list -- a descending subsequence.
 
 
@@ -514,7 +514,7 @@ This is 5 times faster and and uses a third of the memory compared to the approa
 
 (defun insert-item (item piles)
   (let ((not-found t))
-    (loop 
+    (loop
        while not-found
        for pile in piles
        and prev = nil then pile
@@ -774,12 +774,12 @@ defmodule Longest_increasing_subsequence do
     (for ss <- combos(l), ss == Enum.sort(ss), do: ss)
     |> Enum.max_by(fn ss -> length(ss) end)
   end
-  
+
   defp combos(l) do
     Enum.reduce(1..length(l), [[]], fn k, acc -> acc ++ (combos(k, l)) end)
   end
   defp combos(1, l), do: (for x <- l, do: [x])
-  defp combos(k, l) when k == length(l), do: [l] 
+  defp combos(k, l) when k == length(l), do: [l]
   defp combos(k, [h|t]) do
     (for subcombos <- combos(k-1, t), do: [h | subcombos]) ++ combos(k, t)
   end
@@ -808,25 +808,25 @@ IO.inspect Longest_increasing_subsequence.lis([0,8,4,12,2,10,6,14,1,9,5,13,3,11,
 defmodule Longest_increasing_subsequence do
   # Patience sort implementation
   def patience_lis(l), do: patience_lis(l, [])
- 
+
   defp patience_lis([h | t], []), do: patience_lis(t, [[{h,[]}]])
   defp patience_lis([h | t], stacks), do: patience_lis(t, place_in_stack(h, stacks, []))
   defp patience_lis([], []), do: []
   defp patience_lis([], stacks), do: get_previous(stacks) |> recover_lis |> Enum.reverse
-  
-  defp place_in_stack(e, [stack = [{h,_} | _] | tstacks], prevstacks) when h > e do 
+
+  defp place_in_stack(e, [stack = [{h,_} | _] | tstacks], prevstacks) when h > e do
     prevstacks ++ [[{e, get_previous(prevstacks)} | stack] | tstacks]
   end
-  defp place_in_stack(e, [stack | tstacks], prevstacks) do 
+  defp place_in_stack(e, [stack | tstacks], prevstacks) do
     place_in_stack(e, tstacks, prevstacks ++ [stack])
   end
-  defp place_in_stack(e, [], prevstacks) do 
+  defp place_in_stack(e, [], prevstacks) do
     prevstacks ++ [[{e, get_previous(prevstacks)}]]
   end
-  
+
   defp get_previous(stack = [_|_]), do: hd(List.last(stack))
   defp get_previous([]), do: []
- 
+
   defp recover_lis({e, prev}), do: [e | recover_lis(prev)]
   defp recover_lis([]), do: []
 end
@@ -849,13 +849,13 @@ IO.inspect Longest_increasing_subsequence.patience_lis([0,8,4,12,2,10,6,14,1,9,5
 
 ## Erlang
 
-Both implementations: 
+Both implementations:
 - Naive version{{trans|Haskell}}
 - Patience sort version.
 
-Function ''combos'' is copied from  [http://panduwana.wordpress.com/2010/04/21/combination-in-erlang/ panduwana blog]. 
+Function ''combos'' is copied from  [http://panduwana.wordpress.com/2010/04/21/combination-in-erlang/ panduwana blog].
 
-Function ''maxBy'' is copied from  [http://stackoverflow.com/a/4762387/4162959 Hynek -Pichi- Vychodil's answer]. 
+Function ''maxBy'' is copied from  [http://stackoverflow.com/a/4762387/4162959 Hynek -Pichi- Vychodil's answer].
 
 
 ```erlang
@@ -890,8 +890,8 @@ show_result(Res) ->
 lis(L) ->
     maxBy(
         fun(SS) -> length(SS) end,
-        [ lists:usort(SS) 
-            ||  SS <- combos(L), 
+        [ lists:usort(SS)
+            ||  SS <- combos(L),
                 SS == lists:sort(SS)]
     ).
 
@@ -905,27 +905,27 @@ patience_lis(L) ->
     patience_lis(L, []).
 
 patience_lis([H | T], Stacks) ->
-    NStacks = 
-        case Stacks of 
-            [] -> 
+    NStacks =
+        case Stacks of
+            [] ->
                 [[{H,[]}]];
             _ ->
                 place_in_stack(H, Stacks, [])
         end,
     patience_lis(T, NStacks);
 patience_lis([], Stacks) ->
-    case Stacks of 
-        [] -> 
+    case Stacks of
+        [] ->
             [];
         [_|_] ->
             lists:reverse( recover_lis( get_previous(Stacks) ) )
     end.
 
-place_in_stack(E, [Stack = [{H,_} | _] | TStacks], PrevStacks) when H > E -> 
+place_in_stack(E, [Stack = [{H,_} | _] | TStacks], PrevStacks) when H > E ->
     PrevStacks ++ [[{E, get_previous(PrevStacks)} | Stack] | TStacks];
-place_in_stack(E, [Stack = [{H,_} | _] | TStacks], PrevStacks) when H =< E -> 
+place_in_stack(E, [Stack = [{H,_} | _] | TStacks], PrevStacks) when H =< E ->
     place_in_stack(E, TStacks, PrevStacks ++ [Stack]);
-place_in_stack(E, [], PrevStacks)-> 
+place_in_stack(E, [], PrevStacks)->
     PrevStacks ++ [[{E, get_previous(PrevStacks)}]].
 
 get_previous(Stack = [_|_]) ->
@@ -933,9 +933,9 @@ get_previous(Stack = [_|_]) ->
 get_previous([]) ->
     [].
 
-recover_lis({E,Prev}) -> 
+recover_lis({E,Prev}) ->
     [E|recover_lis(Prev)];
-recover_lis([]) -> 
+recover_lis([]) ->
     [].
 
 % **************************************************
@@ -944,9 +944,9 @@ recover_lis([]) ->
 % Copied from http://stackoverflow.com/a/4762387/4162959
 % **************************************************
 
-maxBy(F, L) -> 
+maxBy(F, L) ->
     element(
-        2, 
+        2,
         lists:max([ {F(X), X} || X <- L])
     ).
 
@@ -963,12 +963,12 @@ combos(L) ->
         lists:seq(1, length(L))
     ).
 
-combos(1, L) -> 
+combos(1, L) ->
     [[X] || X <- L];
-combos(K, L) when K == length(L) -> 
+combos(K, L) when K == length(L) ->
     [L];
 combos(K, [H|T]) ->
-    [[H | Subcombos] 
+    [[H | Subcombos]
         || Subcombos <- combos(K-1, T)]
     ++ (combos(K, T)).
 
@@ -1070,8 +1070,8 @@ import Data.List         ( maximumBy, subsequences )
 import Data.List.Ordered ( isSorted, nub )
 
 lis :: Ord a => [a] -> [a]
-lis = maximumBy (comparing length) . map nub  . filter isSorted . subsequences                 
---    longest                    <-- unique <-- increasing    <-- all      
+lis = maximumBy (comparing length) . map nub  . filter isSorted . subsequences
+--    longest                    <-- unique <-- increasing    <-- all
 
 main = do
   print $ lis [3,2,6,4,5,1]
@@ -1344,7 +1344,7 @@ Recent versions of jq have functions that obviate the need for the two generic f
 ```jq
 def until(cond; update):
   def _until:
-    if cond then . else (update | _until) end; 
+    if cond then . else (update | _until) end;
   try _until catch if .== "break" then empty else . end;
 
 # binary search for insertion point
@@ -1380,8 +1380,8 @@ def lis:
                 {"val": $x,
                  "back": (if $i > 0 then .[$i-1] else null end) })
     )
-  | .[length - 1] 
-  | reverse( recurse(.back) | .val ) ; 
+  | .[length - 1]
+  | reverse( recurse(.back) | .val ) ;
 ```
 
 
@@ -1450,16 +1450,16 @@ Uses the algorithm in the Wikipedia L.I.S. article:
 ```scala
 // version 1.1.0
 
-fun longestIncreasingSubsequence(x: IntArray): IntArray = 
+fun longestIncreasingSubsequence(x: IntArray): IntArray =
     when (x.size) {
         0    -> IntArray(0)
         1    -> x
         else -> {
             val n = x.size
-            val p = IntArray(n) 
+            val p = IntArray(n)
             val m = IntArray(n + 1)
             var len = 0
-            for (i in 0 until n) { 
+            for (i in 0 until n) {
                 var lo = 1
                 var hi = len
                 while (lo <= hi) {
@@ -1467,19 +1467,19 @@ fun longestIncreasingSubsequence(x: IntArray): IntArray =
                     if (x[m[mid]] < x[i]) lo = mid + 1
                     else hi = mid - 1
                 }
-                val newLen = lo 
+                val newLen = lo
                 p[i] = m[newLen - 1]
                 m[newLen] = i
                 if (newLen > len) len = newLen
-            } 
+            }
             val s = IntArray(len)
             var k = m[len]
             for (i in len - 1 downTo 0) {
                 s[i] = x[k]
                 k = p[k]
             }
-            s   
-        } 
+            s
+        }
     }
 
 fun main(args: Array<String>) {
@@ -1552,7 +1552,7 @@ buildLIS({0,8,4,12,2,10,6,14,1,9,5,13,3,11,7,15})
 
 ### Using Stack objects in an array
 
-stack:=stackitem(L(i)), ! stack(L(j))  returns a refence to a new stack object, with the first item on L(i) (which is a reference to stack object) and merge using ! the copy of L(j) stack. 
+stack:=stackitem(L(i)), ! stack(L(j))  returns a refence to a new stack object, with the first item on L(i) (which is a reference to stack object) and merge using ! the copy of L(j) stack.
 
 
 ```M2000 Interpreter
@@ -1582,7 +1582,7 @@ Module LIS_example {
 	Disp(subseq$, LIS(0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15))
 	Print #-2,Doc$
 	Clipboard Doc$
-	
+
 	Sub Disp(title$, m)
 		local n=each(m), s$
 		while n
@@ -1631,7 +1631,7 @@ Module LIS_example {
 	Disp(subseq$, LIS(0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15))
 	Print #-2,Doc$
 	Clipboard Doc$
- 
+
 	Sub Disp(title$, m)
 		local n=each(m), s$
 		while n
@@ -1739,7 +1739,7 @@ Patience sorting
       node->back = pileTops[i-1];
     pileTops[i] = node;
   }
-  
+
   // follow pointers from last node
   NSMutableArray *result = [[NSMutableArray alloc] init];
   for (Node *node = [pileTops lastObject]; node; node = node->back)
@@ -1962,7 +1962,7 @@ foreach my $r ([3, 2, 6, 4, 5, 1],
     my @d = @$r;
     my @lis = lis(@d);
     print "an L.I.S. of [@d] is [@lis]\n";
-    
+
 }
 ```
 
@@ -1980,7 +1980,7 @@ an L.I.S. of [0 8 4 12 2 10 6 14 1 9 5 13 3 11 7 15] is [0 2 6 9 11 15]
 {{works with|rakudo|2018.03}}
 ===<!--Perl 6-->Dynamic programming===
 Straight-forward implementation of the algorithm described in the video.
- 
+
 
 ```perl6
 sub lis(@d) {
@@ -2196,13 +2196,13 @@ Original recursive glutton:
                         (list (cons N R) R)
                         (list (list N) R) ) )
                   (recurse (car L) (cdr L)) ) ) ) ) ) )
- 
+
 (test (2 4 5)
    (glutton (3 2 6 4 5 1)))
- 
+
 (test (2 6 9 11 15)
    (glutton (8 4 12 2 10 6 14 1 9 5 13 3 11 7 15)))
- 
+
 (test (-31 0 83 782)
    (glutton (4 65 2 -31 0 99 83 782 1)) )
 ```
@@ -2217,27 +2217,27 @@ Original recursive glutton:
 function Get-LongestSubsequence ( [int[]]$A )
     {
     If ( $A.Count -lt 2 ) { return $A }
-   
+
     #  Start with an "empty" pile
     #  (We will only store the top value in each "pile".)
     $Pile = @( [int]::MaxValue )
     $Last = 0
- 
+
     #  Hashtable to hold the back pointers
     $BP = @{}
- 
+
     #  For each number in the orginal sequence...
     ForEach ( $N in $A )
         {
         #  Find the first pile with a value greater than N
         $i = 0..$Last | Where { $N -lt $Pile[$_] } | Select -First 1
- 
+
         #  Place N on the pile
         $Pile[$i] = $N
- 
+
         #  Set the back pointer for this value to the value of the previous pile
         $BP["$N"] = $Pile[$i-1]
- 
+
         #  If this is the previously empty pile, add a new empty pile
         If ( $i -eq $Last )
             {
@@ -2245,20 +2245,20 @@ function Get-LongestSubsequence ( [int[]]$A )
             $Last++
             }
         }
- 
+
     #  Ignore the empty pile
     $Last--
- 
+
     #  Start with the value of the last pile
     $N = $Pile[$Last]
     $S = @( $N )
- 
+
     #  Add the remainder of the values by walking through the back pointers
     ForEach ( $i in $Last..1 )
         {
         $S += ( $N = $BP["$N"] )
         }
- 
+
     #  Return the series (reversed into the correct order)
     return $S[$Last..0]
     }
@@ -2339,14 +2339,14 @@ def longest_increasing_subsequence(X):
                lo = mid+1
            else:
                hi = mid-1
-    
+
        newL = lo
        P[i] = M[newL-1]
        M[newL] = i
-    
+
        if (newL > L):
            L = newL
-    
+
     S = []
     k = M[L]
     for i in range(L-1, -1, -1):
@@ -2377,7 +2377,7 @@ def longest_increasing_subsequence(d):
     'Return one of the L.I.S. of list d'
     l = []
     for i in range(len(d)):
-        l.append(max([l[j] for j in range(i) if l[j][-1] < d[i]] or [[]], key=len) 
+        l.append(max([l[j] for j in range(i) if l[j][-1] < d[i]] or [[]], key=len)
                   + [d[i]])
     return max(l, key=len)
 
@@ -2462,7 +2462,7 @@ Patience sorting. The program saves only the top card of each pile, with a link 
     (for ([item (in-list input-list)])
       (insert-item! piles item))
     (reverse (gvector-last piles))))
- 
+
 (define (insert-item! piles item)
   (if (zero? (gvector-count piles))
       (gvector-add! piles (cons item '()))
@@ -2555,7 +2555,7 @@ res = []
 for x=1 to len(tests)
     lis(tests[x])
     showarray(res)
-end 
+end
 
 func lis(X)
      N = len(X)
@@ -2568,10 +2568,10 @@ func lis(X)
          P[nr] = 0
      next
      len = 0
-     for i=1 to N 
+     for i=1 to N
          lo = 1
          hi = len
-         while lo <= hi 
+         while lo <= hi
                mid = floor((lo+hi)/2)
                if X[M[mid]]<X[i]
                   lo = mid + 1
@@ -2583,14 +2583,14 @@ func lis(X)
             P[i] = M[lo-1]
          ok
          M[lo] = i
-         if lo>len 
+         if lo>len
             len = lo
          ok
      next
      res = list(len)
-     if len>0 
+     if len>0
         k = M[len]
-        for i=len to 1 step -1 
+        for i=len to 1 step -1
             res[i] = X[k]
             k = P[k]
         next
@@ -2646,7 +2646,7 @@ def lis(n)
     node.back = pileTops[i-1]  if i > 0
     pileTops[i] = node
   end
-  
+
   result = []
   node = pileTops.last
   while node
@@ -2927,7 +2927,7 @@ fun lis cmp n =
       end
     fun f x =
       let
-        val i = bsearch_piles x 
+        val i = bsearch_piles x
       in
         DynamicArray.update (pile_tops, i,
 	  x :: (if i = 0 then [] else DynamicArray.sub (pile_tops, i-1)))
@@ -3164,13 +3164,13 @@ fcn longestSequence(ns){ // based on Patience sorting
       foreach e,p in (piles.enumerate()){
 	 if(n<p[-1][0]){
 	    p.del(1,-1)  // only need the first and last elements
-	    .append(T(n,backPtr(e))); newPile=False; 
-	    break; 
+	    .append(T(n,backPtr(e))); newPile=False;
+	    break;
 	 }
       }
       if(newPile) piles.append(L(T(n,backPtr(piles.len()))));
    }
-   reg r=L(),p=-1,n=0; 
+   reg r=L(),p=-1,n=0;
    do{ n,p=piles[p][n]; r.write(n); p,n=p; }while(p!=-1);
    r.reverse()
 }

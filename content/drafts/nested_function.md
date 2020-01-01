@@ -39,23 +39,23 @@ The inner function (called <tt>MakeItem</tt> or equivalent) is responsible for c
 ```Ada
 with Ada.Text_IO;
 
-procedure Nested_Functions is -- 'Nested_Functions' is the name of 'main' 
-   
+procedure Nested_Functions is -- 'Nested_Functions' is the name of 'main'
+
    type List is array(Natural range <>) of String(1 .. 10);
-   
+
    function Make_List(Separator: String) return List is
       Counter: Natural := 0;
-      
+
       function Make_Item(Item_Name: String) return String is
       begin
 	 Counter := Counter + 1; -- local in Make_List, global in Make_Item
 	 return(Natural'Image(Counter) & Separator & Item_Name);
       end Make_Item;
-      
+
    begin
       return (Make_Item("First "), Make_Item("Second"), Make_Item("Third "));
    end Make_List;
-   
+
 begin -- iterate through the result of Make_List
    for Item of Make_List(". ") loop
       Ada.Text_IO.Put_Line(Item);
@@ -66,10 +66,10 @@ end Nested_Functions;
 {{out}}
 
 ```txt
-$ ./nested_functions 
- 1. First 
+$ ./nested_functions
+ 1. First
  2. Second
- 3. Third 
+ 3. Third
 
 ```
 
@@ -139,24 +139,24 @@ end.
 -- makeList :: String -> String
 on makeList(separator)
     set counter to 0
-    
+
     -- makeItem :: String -> String
     script makeItem
         on |λ|(x)
             set counter to counter + 1
-            
+
             (counter & separator & x & linefeed) as string
         end |λ|
     end script
-    
+
     map(makeItem, ["first", "second", "third"]) as string
 end makeList
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     makeList(". ")
-    
+
 end run
 
 
@@ -174,7 +174,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -203,14 +203,14 @@ Note, however, that mutation creates redundant complexity and loss of referentia
 ```AppleScript
 -- makeList :: String -> String
 on makeList(separator)
-    
+
     -- makeItem :: String -> Int -> String
     script makeItem
         on |λ|(x, i)
             (i & separator & x & linefeed) as string
         end |λ|
     end script
-    
+
     map(makeItem, ["first", "second", "third"]) as string
 end makeList
 ```
@@ -285,20 +285,20 @@ typedef struct{
 item* makeList(char* separator){
 	int counter = 0,i;
 	item* list = (item*)malloc(3*sizeof(item));
-	
+
 	item makeItem(){
 		item holder;
-		
+
 		char names[5][10] = {"first","second","third","fourth","fifth"};
-		
+
 		sprintf(holder.str,"%d%s%s",++counter,separator,names[counter]);
-		
+
 		return holder;
 	}
-	
+
 	for(i=0;i<3;i++)
 		list[i] = makeItem();
-	
+
 	return list;
 }
 
@@ -306,10 +306,10 @@ int main()
 {
 	int i;
 	item* list = makeList(". ");
-	
+
 	for(i=0;i<3;i++)
 		printf("\n%s",list[i].str);
-	
+
 	return 0;
 }
 
@@ -331,11 +331,11 @@ Output:
 
 {{works with|C++11}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <vector>
- 
+
 std::vector<std::string> makeList(std::string separator) {
   auto counter = 0;
   auto makeItem = [&](std::string item) {
@@ -468,16 +468,16 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 MakeList(separator)
 {
     var counter := 1;
- 
+
     var makeItem := (item){ var retVal := counter.Printable + separator + item + (forward newLine); counter += 1; ^ retVal };
- 
+
     ^ makeItem("first") + makeItem("second") + makeItem("third")
 }
- 
+
 public program()
 {
     console.printLine(MakeList(". "))
@@ -504,13 +504,13 @@ Elixir data are immutable. Anonymous functions are closures and as such they can
 defmodule Nested do
   def makeList(separator) do
     counter = 1
-    
+
     makeItem = fn {}, item ->
                       {"#{counter}#{separator}#{item}\n", counter+1}
                   {result, counter}, item ->
                       {result <> "#{counter}#{separator}#{item}\n", counter+1}
                end
-    
+
     {} |> makeItem.("first") |> makeItem.("second") |> makeItem.("third") |> elem(0)
   end
 end
@@ -543,14 +543,14 @@ USING: io kernel math math.parser locals qw sequences ;
 IN: rosetta-code.nested-functions
 
 :: make-list ( separator -- str )
-    1 :> counter!    
+    1 :> counter!
     [| item |
         counter number>string separator append item append
         counter 1 + counter!
     ] :> make-item
     qw{ first second third } [ make-item call ] map "\n" join
 ;
-    
+
 ". " make-list write
 ```
 
@@ -586,7 +586,7 @@ This (deranged) function contains within it the definition of function DIST (whi
 
 With the advent of F90 comes the CONTAINS statement, whereby within a function (or subroutine) but oddly, at its ''end'' (but before its END) appears the key word CONTAINS, after which further functions (and subroutines) may be defined in the established manner. These have access to all the variables defined in the containing routine, though if the contained routine declares a name used in the containing routine then that outside name becomes inaccessible.
 
-Such contained routines are not themselves allowed to contain routines, so that the nesting is limited to two levels - except that arithmetic statement functions are available, so that three levels could be employed. Languages such as Algol, pl/i, Pascal, etc. impose no such constraint. 
+Such contained routines are not themselves allowed to contain routines, so that the nesting is limited to two levels - except that arithmetic statement functions are available, so that three levels could be employed. Languages such as Algol, pl/i, Pascal, etc. impose no such constraint.
 ```Fortran
       SUBROUTINE POOBAH(TEXT,L,SEP)	!I've got a little list!
        CHARACTER*(*) TEXT	!The supplied scratchpad.
@@ -660,7 +660,7 @@ Another way of providing a "list" is via an array as in <code>CHARACTER*28 TEXT(
       END
 ```
 
-The output statement could be <code>WRITE (6,"(A)") TEXT(1:N)</code> but this would write out the trailing spaces in each element. A TRIM intrinsic function may be available, but, leading spaces may be desired in the case that there are to be more than nine elements. If so, <code>FORMAT (I2,2A)</code> would be needed up to ninety-nine, or more generally, I0 format. Except that would not write out leading spaces and would spoil the neatness of a columnar layout. With file names, the lack of leading spaces (or zero digits) leads to the ideas explored in [[Natural_sorting|"Natural" sorting]]. One could define constants via the PARAMETER statement to document the linkage between the number of array elements and the correct FORMAT code, though this is messy because for NMAX elements the format code requires <Log10(NMAX) + 1> digits, and in such an attempt I've seen Log10(10) come out not as one but as 0·9999932 or somesuch, truncating to zero. 
+The output statement could be <code>WRITE (6,"(A)") TEXT(1:N)</code> but this would write out the trailing spaces in each element. A TRIM intrinsic function may be available, but, leading spaces may be desired in the case that there are to be more than nine elements. If so, <code>FORMAT (I2,2A)</code> would be needed up to ninety-nine, or more generally, I0 format. Except that would not write out leading spaces and would spoil the neatness of a columnar layout. With file names, the lack of leading spaces (or zero digits) leads to the ideas explored in [[Natural_sorting|"Natural" sorting]]. One could define constants via the PARAMETER statement to document the linkage between the number of array elements and the correct FORMAT code, though this is messy because for NMAX elements the format code requires <Log10(NMAX) + 1> digits, and in such an attempt I've seen Log10(10) come out not as one but as 0·9999932 or somesuch, truncating to zero.
 
 F95 introduced facilities whereby a string-style compound variable with both content and current length could be defined and manipulated, and when assigned to it would be reallocated storage so as to have exactly the size to hold the result. Later fortran standardised such a scheme. Similarly, one could define a data aggregate containing a count <code>N</code> as well as the <code>TEXT</code> array and a function could return such a compound entity as its result. It may also be possible to arrange that array TEXT becomes "ragged", that is, TEXT(i) is not always 28 characters long, but only as much as is needed to store the actual item.
 
@@ -678,11 +678,11 @@ by reference to the second procedure so it can be modified by the latter.
 
 Sub makeItem(sep As String, ByRef counter As Integer, text As String)
   counter += 1
-  Print counter; sep; text 
+  Print counter; sep; text
 End Sub
 
 Sub makeList(sep As String)
-  Dim a(0 To 2) As String = {"first", "second", "third"} 
+  Dim a(0 To 2) As String = {"first", "second", "third"}
   Dim counter As Integer = 0
   While counter < 3
     makeItem(sep, counter, a(counter))
@@ -722,7 +722,7 @@ procedure makeList(const separator: string);
 // has to appear /before/ the nested routines’ definitions.
 var
 	counter: 1..high(integer);
-	
+
 	procedure makeItem;
 	begin
 		write(counter, separator);
@@ -921,15 +921,15 @@ def makeList(separator):
      | .text += "\($counter)\(separator)\(item)\n"
      | .counter = $counter;
 
-   {text:"", counter:0} | makeItem("first") | makeItem("second") | makeItem("third") 
+   {text:"", counter:0} | makeItem("first") | makeItem("second") | makeItem("third")
    | .text
 ;
- 
+
 makeList(". ")
 ```
 
 
-With the above in a file, say program.jq, the invocation: 
+With the above in a file, say program.jq, the invocation:
 
     $ jq -n -r -f program.jq
 
@@ -1015,7 +1015,7 @@ fun makeList(sep: String): String {
     fun makeItem(item: String): String {
         count++
         return "$count$sep$item\n"
-    }    
+    }
     return makeItem("first") + makeItem("second") + makeItem("third")
 }
 
@@ -1050,7 +1050,7 @@ function makeList (separator)
         end
     return makeItem("first") .. makeItem("second") .. makeItem("third")
 end
- 
+
 print(makeList(". "))
 ```
 
@@ -1091,7 +1091,7 @@ Module Make_List  {
       Make_Item("First")
       Make_Item("Second")
       Make_Item("Third")
-      
+
       Sub Make_Item(Item_Name$)
             Counter++
             Print Str$(Counter,"")+Separator$+Item_Name$
@@ -1106,9 +1106,9 @@ Module Make_List1  {
             Counter++
             Print Str$(Counter,"")+Separator$+Item_Name$
       }
-      Make_Item "First" 
-      Make_Item "Second" 
-      Make_Item "Third" 
+      Make_Item "First"
+      Make_Item "Second"
+      Make_Item "Third"
 }
 
 Make_List1 ". "
@@ -1213,11 +1213,11 @@ Output:
 ```objc
 NSString *makeList(NSString *separator) {
   __block int counter = 1;
-  
+
   NSString *(^makeItem)(NSString *) = ^(NSString *item) {
     return [NSString stringWithFormat:@"%d%@%@\n", counter++, separator, item];
   };
-  
+
   return [NSString stringWithFormat:@"%@%@%@", makeItem(@"first"), makeItem(@"second"), makeItem(@"third")];
 }
 
@@ -1333,7 +1333,7 @@ properly separate in the runtime/VM, but the front-end will happily emit nonsens
 ```Phix
 --
 -- demo\rosetta\Nested_function.exw
--- 
+--
 ### ==========================
 
 --
@@ -1437,7 +1437,7 @@ integer counter = 0
                 mov [l_sep],rbx     -- (in lieu of proper refcounting)
             []
               }
-        return res              
+        return res
     end function
     sequence res = {}
     for i=1 to 3 do
@@ -1527,14 +1527,14 @@ See also [[#Scheme]]; this demonstrates <code>map</code> a higher order function
 
 (define (make-list separator)
   (define counter 1)
- 
+
   (define (make-item item)
     (begin0
       (format "~a~a~a~%" counter separator item)
       (set! counter (add1 counter))))
- 
+
   (apply string-append (map make-item '(first second third))))
- 
+
 (display (make-list ". "))
 ```
 
@@ -1593,9 +1593,9 @@ makeList: parse arg sep;  string= 'first second third' /*get arguments; define a
 makeList(". ")
 func makeitem(sep, counter, text)
        see "" + counter + sep + text + nl
- 
+
 func makelist(sep)
-       a = ["first", "second", "third"] 
+       a = ["first", "second", "third"]
        counter = 0
        while counter < 3
                 counter = counter + 1
@@ -1676,7 +1676,7 @@ fn main() {
 
 ## Scala
 
-   
+
 ```Scala
 
    def main(args: Array[String]) {
@@ -1690,7 +1690,7 @@ fn main() {
       go("second")
       go("third")
    }
-  
+
 ```
 
 
@@ -1713,12 +1713,12 @@ fn main() {
 ```scheme
 (define (make-list separator)
   (define counter 1)
-  
+
   (define (make-item item)
     (let ((result (string-append (number->string counter) separator item "\n")))
       (set! counter (+ counter 1))
       result))
-  
+
   (string-append (make-item "first") (make-item "second") (make-item "third")))
 
 (display (make-list ". "))
@@ -1850,13 +1850,13 @@ f.(".")
 ```swift
 func makeList(_ separator: String) -> String {
   var counter = 1
-  
+
   func makeItem(_ item: String) -> String {
     let result = String(counter) + separator + item + "\n"
     counter += 1
     return result
   }
-  
+
   return makeItem("first") + makeItem("second") + makeItem("third")
 }
 
@@ -1901,7 +1901,7 @@ fcn makeList(separator){
   makeItem:='wrap(item){ c:=counter.inc(); String(c,separator,item,"\n") };
   makeItem("first") + makeItem("second") + makeItem("third")
 }
- 
+
 print(makeList(". "));
 ```
 

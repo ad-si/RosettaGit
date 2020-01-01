@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 This task is a variation of the [[wp:The Nine Billion Names of God#Plot_summary|short story by Arthur C. Clarke]].
- 
+
 (Solvers should be aware of the consequences of completing this task.)
 
 In detail, to specify what is meant by a   “name”:
@@ -30,7 +30,7 @@ Display the first 25 rows of a number triangle which begins:
 
                                       1
                                     1   1
-                                  1   1   1 
+                                  1   1   1
                                 1   2   1   1
                               1   2   2   1   1
                             1   3   3   2   1   1
@@ -40,11 +40,11 @@ Display the first 25 rows of a number triangle which begins:
 
 Where row   <math>n</math>   corresponds to integer   <math>n</math>,   and each column   <math>C</math>   in row   <math>m</math>   from left to right corresponds to the number of names beginning with   <math>C</math>.
 
-A function   <math>G(n)</math>   should return the sum of the   <math>n</math>-th   row. 
+A function   <math>G(n)</math>   should return the sum of the   <math>n</math>-th   row.
 
-Demonstrate this function by displaying:   <math>G(23)</math>,   <math>G(123)</math>,   <math>G(1234)</math>,   and   <math>G(12345)</math>.  
+Demonstrate this function by displaying:   <math>G(23)</math>,   <math>G(123)</math>,   <math>G(1234)</math>,   and   <math>G(12345)</math>.
 
-Optionally note that the sum of the   <math>n</math>-th   row   <math>P(n)</math>   is the    [http://mathworld.wolfram.com/PartitionFunctionP.html   integer partition function]. 
+Optionally note that the sum of the   <math>n</math>-th   row   <math>P(n)</math>   is the    [http://mathworld.wolfram.com/PartitionFunctionP.html   integer partition function].
 
 Demonstrate this is equivalent to   <math>G(n)</math>   by displaying:   <math>P(23)</math>,   <math>P(123)</math>,   <math>P(1234)</math>,   and   <math>P(12345)</math>.
 
@@ -78,7 +78,7 @@ Loop
 	, y := 2
 	, index := x
 	, new := 1
-	
+
 	Loop, % base_r - 1
 	{
 		array[x, new+1] := array[x-1, new] + array[base_r, y]
@@ -101,7 +101,7 @@ Loop
 	{
 		array[x, y2] := array[x-1, y2-1]
 		, y2++
-		If ( y2 = Enter_value + 1 ) && ( x = Enter_value ) 
+		If ( y2 = Enter_value + 1 ) && ( x = Enter_value )
 		{
 			Loop, % Enter_value
 			{
@@ -126,31 +126,31 @@ If user inputs 25, the result shall be:
 
 ```txt
 
-1 
-1 1 
-1 1 1 
-1 2 1 1 
-1 2 2 1 1 
-1 3 3 2 1 1 
-1 3 4 3 2 1 1 
-1 4 5 5 3 2 1 1 
-1 4 7 6 5 3 2 1 1 
-1 5 8 9 7 5 3 2 1 1 
-1 5 10 11 10 7 5 3 2 1 1 
-1 6 12 15 13 11 7 5 3 2 1 1 
-1 6 14 18 18 14 11 7 5 3 2 1 1 
-1 7 16 23 23 20 15 11 7 5 3 2 1 1 
-1 7 19 27 30 26 21 15 11 7 5 3 2 1 1 
-1 8 21 34 37 35 28 22 15 11 7 5 3 2 1 1 
-1 8 24 39 47 44 38 29 22 15 11 7 5 3 2 1 1 
-1 9 27 47 57 58 49 40 30 22 15 11 7 5 3 2 1 1 
-1 9 30 54 70 71 65 52 41 30 22 15 11 7 5 3 2 1 1 
-1 10 33 64 84 90 82 70 54 42 30 22 15 11 7 5 3 2 1 1 
-1 10 37 72 101 110 105 89 73 55 42 30 22 15 11 7 5 3 2 1 1 
-1 11 40 84 119 136 131 116 94 75 56 42 30 22 15 11 7 5 3 2 1 1 
-1 11 44 94 141 163 164 146 123 97 76 56 42 30 22 15 11 7 5 3 2 1 1 
-1 12 48 108 164 199 201 186 157 128 99 77 56 42 30 22 15 11 7 5 3 2 1 1 
-1 12 52 120 192 235 248 230 201 164 131 100 77 56 42 30 22 15 11 7 5 3 2 1 1 
+1
+1 1
+1 1 1
+1 2 1 1
+1 2 2 1 1
+1 3 3 2 1 1
+1 3 4 3 2 1 1
+1 4 5 5 3 2 1 1
+1 4 7 6 5 3 2 1 1
+1 5 8 9 7 5 3 2 1 1
+1 5 10 11 10 7 5 3 2 1 1
+1 6 12 15 13 11 7 5 3 2 1 1
+1 6 14 18 18 14 11 7 5 3 2 1 1
+1 7 16 23 23 20 15 11 7 5 3 2 1 1
+1 7 19 27 30 26 21 15 11 7 5 3 2 1 1
+1 8 21 34 37 35 28 22 15 11 7 5 3 2 1 1
+1 8 24 39 47 44 38 29 22 15 11 7 5 3 2 1 1
+1 9 27 47 57 58 49 40 30 22 15 11 7 5 3 2 1 1
+1 9 30 54 70 71 65 52 41 30 22 15 11 7 5 3 2 1 1
+1 10 33 64 84 90 82 70 54 42 30 22 15 11 7 5 3 2 1 1
+1 10 37 72 101 110 105 89 73 55 42 30 22 15 11 7 5 3 2 1 1
+1 11 40 84 119 136 131 116 94 75 56 42 30 22 15 11 7 5 3 2 1 1
+1 11 44 94 141 163 164 146 123 97 76 56 42 30 22 15 11 7 5 3 2 1 1
+1 12 48 108 164 199 201 186 157 128 99 77 56 42 30 22 15 11 7 5 3 2 1 1
+1 12 52 120 192 235 248 230 201 164 131 100 77 56 42 30 22 15 11 7 5 3 2 1 1
 
 ```
 
@@ -162,8 +162,8 @@ If user inputs 25, the result shall be:
 
 If we forgo the rows and only want to calculate <math>P(n)</math>, using the recurrence relation <math>P_n = \sum_{k=1}^n (-1)^{k+1} \Big(P_{n-k(3k-1)/2} + P_{n-k(3k+1)/2}\Big)</math> is a better way.  This requires <math>O(n^2)</math> storage for caching instead the <math>O(n^3)</math>-ish for storing all the rows.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <gmp.h>
 
 #define N 100000
@@ -312,7 +312,7 @@ namespace NamesOfGod
 
     class Program
     {
-        static void Main(string[] args) 
+        static void Main(string[] args)
         {
             var rpr = new RowPrinter();
             rpr.PrintRows();
@@ -458,7 +458,7 @@ int main(){
       t.append(6-t.size(),' ');
       std::cout << t;
     }
-    std::cout << "1     1" << std::endl; 
+    std::cout << "1     1" << std::endl;
   }
 
 ```
@@ -546,7 +546,7 @@ G(123456) = 30817659578536496678545317146533980855296613274507139217608776782063
 
 (defn print-row [row]
   (doseq [x (range 1 (inc row))]
-    (print (nine-billion-names row x) \space)) 
+    (print (nine-billion-names row x) \space))
     (println))
 
 (defn print-triangle [rows]
@@ -570,7 +570,7 @@ G(123456) = 30817659578536496678545317146533980855296613274507139217608776782063
 	(t (let ((addend (9-billion-names (1- row) (1- column)))
 		 (augend (9-billion-names (- row column) column)))
 	     (+ addend augend)))))
-			     
+
 (defun 9-billion-names-triangle (rows)
   (loop for row from 1 to rows
      collect (loop for column from 1 to row
@@ -594,7 +594,7 @@ def g(n,g)
   return 1 unless 1 < g && g < n-1
   (2..g).reduce(1){|res,q| res + (q > n-g ? 0 : g(n-g,q))}
 end
- 
+
 (1..25).each {|n|
   puts (1..n).map {|g| "%4s" % g(n,g)}.join
 }
@@ -766,7 +766,7 @@ void main() {
 {{out}} for a larger input, with newlines:
 
 ```txt
-123456: 
+123456:
 3081765957853649667854531714653398085529661327450713921760877
 6782063054452191537379312358383342446230621170608408020911309
 2594076112571516833722219251283883871684519438000271280453696
@@ -782,7 +782,7 @@ Runtime up to 123456: about 56 seconds (about 50 with ldc2) because currently st
 ## Dart
 
 
-{{works with|Dart|2}} 
+{{works with|Dart|2}}
 
 {{trans|Python}}
 
@@ -938,7 +938,7 @@ Output:
 
 ## Elixir
 
-{{trans|Ruby}} 
+{{trans|Ruby}}
 Naive Solution
 
 ```elixir
@@ -1028,31 +1028,31 @@ If user inputs 25, the result shall be:
 
 ```txt
 
-1 
-1 1 
-1 1 1 
-1 2 1 1 
-1 2 2 1 1 
-1 3 3 2 1 1 
-1 3 4 3 2 1 1 
-1 4 5 5 3 2 1 1 
-1 4 7 6 5 3 2 1 1 
-1 5 8 9 7 5 3 2 1 1 
-1 5 10 11 10 7 5 3 2 1 1 
-1 6 12 15 13 11 7 5 3 2 1 1 
-1 6 14 18 18 14 11 7 5 3 2 1 1 
-1 7 16 23 23 20 15 11 7 5 3 2 1 1 
-1 7 19 27 30 26 21 15 11 7 5 3 2 1 1 
-1 8 21 34 37 35 28 22 15 11 7 5 3 2 1 1 
-1 8 24 39 47 44 38 29 22 15 11 7 5 3 2 1 1 
-1 9 27 47 57 58 49 40 30 22 15 11 7 5 3 2 1 1 
-1 9 30 54 70 71 65 52 41 30 22 15 11 7 5 3 2 1 1 
-1 10 33 64 84 90 82 70 54 42 30 22 15 11 7 5 3 2 1 1 
-1 10 37 72 101 110 105 89 73 55 42 30 22 15 11 7 5 3 2 1 1 
-1 11 40 84 119 136 131 116 94 75 56 42 30 22 15 11 7 5 3 2 1 1 
-1 11 44 94 141 163 164 146 123 97 76 56 42 30 22 15 11 7 5 3 2 1 1 
-1 12 48 108 164 199 201 186 157 128 99 77 56 42 30 22 15 11 7 5 3 2 1 1 
-1 12 52 120 192 235 248 230 201 164 131 100 77 56 42 30 22 15 11 7 5 3 2 1 1 
+1
+1 1
+1 1 1
+1 2 1 1
+1 2 2 1 1
+1 3 3 2 1 1
+1 3 4 3 2 1 1
+1 4 5 5 3 2 1 1
+1 4 7 6 5 3 2 1 1
+1 5 8 9 7 5 3 2 1 1
+1 5 10 11 10 7 5 3 2 1 1
+1 6 12 15 13 11 7 5 3 2 1 1
+1 6 14 18 18 14 11 7 5 3 2 1 1
+1 7 16 23 23 20 15 11 7 5 3 2 1 1
+1 7 19 27 30 26 21 15 11 7 5 3 2 1 1
+1 8 21 34 37 35 28 22 15 11 7 5 3 2 1 1
+1 8 24 39 47 44 38 29 22 15 11 7 5 3 2 1 1
+1 9 27 47 57 58 49 40 30 22 15 11 7 5 3 2 1 1
+1 9 30 54 70 71 65 52 41 30 22 15 11 7 5 3 2 1 1
+1 10 33 64 84 90 82 70 54 42 30 22 15 11 7 5 3 2 1 1
+1 10 37 72 101 110 105 89 73 55 42 30 22 15 11 7 5 3 2 1 1
+1 11 40 84 119 136 131 116 94 75 56 42 30 22 15 11 7 5 3 2 1 1
+1 11 44 94 141 163 164 146 123 97 76 56 42 30 22 15 11 7 5 3 2 1 1
+1 12 48 108 164 199 201 186 157 128 99 77 56 42 30 22 15 11 7 5 3 2 1 1
+1 12 52 120 192 235 248 230 201 164 131 100 77 56 42 30 22 15 11 7 5 3 2 1 1
 
 ```
 
@@ -1067,7 +1067,7 @@ NEEDS -xopg
 ANEW -nbnog \ The Nine Billion Names of God
 .arbitrary.p
 
-#100000 =: N  
+#100000 =: N
 CREATE idx[ #23 , #123 , #1234 , #12345 , #20000 , #30000 , #40000 , #50000 , N , 0 ,
 N GARRAY p
 
@@ -1080,13 +1080,13 @@ N GARRAY p
 	      LOOP ;
 
 : .GOD ( -- )
-	0 LOCAL at  
-	LET p[0]=1: N 1 DO  I CALC  
-			    idx[ at CELL[] @ I = IF  CR I 5 .R ." : " LET. p[I]:  
-			    			     1 +TO at  
-			    		      ENDIF  
+	0 LOCAL at
+	LET p[0]=1: N 1 DO  I CALC
+			    idx[ at CELL[] @ I = IF  CR I 5 .R ." : " LET. p[I]:
+			    			     1 +TO at
+			    		      ENDIF
 		      LOOP ;
-	
+
 : .ABOUT ( -- ) ." Try: .GOD" ;
 
 ```
@@ -1153,7 +1153,7 @@ End Sub
 ' ------=< MAIN >=------
 
 Dim As ULong n, k, max = 25              ' with max > 479 the numbers become
-Dim As ULongInt p(max, max)              ' to big for a 64bit unsigned integer         
+Dim As ULongInt p(max, max)              ' to big for a 64bit unsigned integer
 
 p(1, 1) = 1                              ' fill the first 3 rows
 p(2, 1) = 1 : p(2, 2) = 1
@@ -1163,7 +1163,7 @@ For n = 4 To max                         ' fill the rest
     For k = 1 To n
         If k * 2 > n  Then
            p(n,k)= p(n-1,k-1)
-        Else 
+        Else
            p(n,k) = p(n-1,k-1) + p(n-k, k)
         End If
     Next
@@ -1314,31 +1314,31 @@ testRow[12345]
 
 ```txt
 
-1 
-1 1 
-1 1 1 
-1 2 1 1 
-1 2 2 1 1 
-1 3 3 2 1 1 
-1 3 4 3 2 1 1 
-1 4 5 5 3 2 1 1 
-1 4 7 6 5 3 2 1 1 
-1 5 8 9 7 5 3 2 1 1 
-1 5 10 11 10 7 5 3 2 1 1 
-1 6 12 15 13 11 7 5 3 2 1 1 
-1 6 14 18 18 14 11 7 5 3 2 1 1 
-1 7 16 23 23 20 15 11 7 5 3 2 1 1 
-1 7 19 27 30 26 21 15 11 7 5 3 2 1 1 
-1 8 21 34 37 35 28 22 15 11 7 5 3 2 1 1 
-1 8 24 39 47 44 38 29 22 15 11 7 5 3 2 1 1 
-1 9 27 47 57 58 49 40 30 22 15 11 7 5 3 2 1 1 
-1 9 30 54 70 71 65 52 41 30 22 15 11 7 5 3 2 1 1 
-1 10 33 64 84 90 82 70 54 42 30 22 15 11 7 5 3 2 1 1 
-1 10 37 72 101 110 105 89 73 55 42 30 22 15 11 7 5 3 2 1 1 
-1 11 40 84 119 136 131 116 94 75 56 42 30 22 15 11 7 5 3 2 1 1 
-1 11 44 94 141 163 164 146 123 97 76 56 42 30 22 15 11 7 5 3 2 1 1 
-1 12 48 108 164 199 201 186 157 128 99 77 56 42 30 22 15 11 7 5 3 2 1 1 
-1 12 52 120 192 235 248 230 201 164 131 100 77 56 42 30 22 15 11 7 5 3 2 1 1 
+1
+1 1
+1 1 1
+1 2 1 1
+1 2 2 1 1
+1 3 3 2 1 1
+1 3 4 3 2 1 1
+1 4 5 5 3 2 1 1
+1 4 7 6 5 3 2 1 1
+1 5 8 9 7 5 3 2 1 1
+1 5 10 11 10 7 5 3 2 1 1
+1 6 12 15 13 11 7 5 3 2 1 1
+1 6 14 18 18 14 11 7 5 3 2 1 1
+1 7 16 23 23 20 15 11 7 5 3 2 1 1
+1 7 19 27 30 26 21 15 11 7 5 3 2 1 1
+1 8 21 34 37 35 28 22 15 11 7 5 3 2 1 1
+1 8 24 39 47 44 38 29 22 15 11 7 5 3 2 1 1
+1 9 27 47 57 58 49 40 30 22 15 11 7 5 3 2 1 1
+1 9 30 54 70 71 65 52 41 30 22 15 11 7 5 3 2 1 1
+1 10 33 64 84 90 82 70 54 42 30 22 15 11 7 5 3 2 1 1
+1 10 37 72 101 110 105 89 73 55 42 30 22 15 11 7 5 3 2 1 1
+1 11 40 84 119 136 131 116 94 75 56 42 30 22 15 11 7 5 3 2 1 1
+1 11 44 94 141 163 164 146 123 97 76 56 42 30 22 15 11 7 5 3 2 1 1
+1 12 48 108 164 199 201 186 157 128 99 77 56 42 30 22 15 11 7 5 3 2 1 1
+1 12 52 120 192 235 248 230 201 164 131 100 77 56 42 30 22 15 11 7 5 3 2 1 1
 
 23	1255	correct
 123	2552338241	correct
@@ -1437,7 +1437,7 @@ func main() {
 		row(x)
 	}
 	fmt.Println()
-	
+
 	fmt.Println("sums:")
 	for _, num := range [...]int{23, 123, 1234, 12345} {
 		r := cumu(num)
@@ -1451,22 +1451,22 @@ func main() {
 ```txt
 
 rows:
- 1 
- 1  1 
- 1  1  1 
- 1  2  1  1 
- 1  2  2  1  1 
- 1  3  3  2  1  1 
- 1  3  4  3  2  1  1 
- 1  4  5  5  3  2  1  1 
- 1  4  7  6  5  3  2  1  1 
- 1  5  8  9  7  5  3  2  1  1 
+ 1
+ 1  1
+ 1  1  1
+ 1  2  1  1
+ 1  2  2  1  1
+ 1  3  3  2  1  1
+ 1  3  4  3  2  1  1
+ 1  4  5  5  3  2  1  1
+ 1  4  7  6  5  3  2  1  1
+ 1  5  8  9  7  5  3  2  1  1
 
  sums:
-23 1255 
-123 2552338241 
-1234 156978797223733228787865722354959930 
-12345 69420357953926116819562977205209384460667673094671463620270321700806074195845953959951425306140971942519870679768681736 
+23 1255
+123 2552338241
+1234 156978797223733228787865722354959930
+12345 69420357953926116819562977205209384460667673094671463620270321700806074195845953959951425306140971942519870679768681736
 
 ```
 
@@ -1480,16 +1480,16 @@ rows:
 def partitions(c)
 {
 
-    def p=[]; 
-    int k = 0;   
-     p[k] = c;   
+    def p=[];
+    int k = 0;
+     p[k] = c;
     int counter=0;
     def counts=[];
 	for (i in 0..c-1)
 	{counts[i]=0;}
     while (true)
     {
-     
+
         counter++;
 		counts[p[0]-1]=counts[p[0]-1]+1;
 		int rem_val = 0;
@@ -1644,7 +1644,7 @@ end
 
 ```txt
 
-->9bnogti           
+->9bnogti
  1: [1]
  2: [1, 1]
  3: [1, 1, 1]
@@ -1684,15 +1684,15 @@ rows=: <@(#~0<])@({: T ])\@i.
 
 ```j
    ({.~1+1 i:~ '1'=])"1 ":> }.rows 1+10
-1                  
-1 1                
-1 1 1              
-1 2 1 1            
-1 2 2 1 1          
-1 3 3 2 1 1        
-1 3 4 3 2 1 1      
-1 4 5 5 3 2 1 1    
-1 4 7 6 5 3 2 1 1  
+1
+1 1
+1 1 1
+1 2 1 1
+1 2 2 1 1
+1 3 3 2 1 1
+1 3 4 3 2 1 1
+1 4 5 5 3 2 1 1
+1 4 7 6 5 3 2 1 1
 1 5 8 9 7 5 3 2 1 1
 ```
 
@@ -1710,7 +1710,7 @@ rowSums=: 3 :0"0
     s=.#d=.({.~* i._1:)c-r{.k
     'v i'=.|: \:~(c,d),. r ,&({.&k) s
     a=. +/(n{z),(_1^1x+2|i) * v{z
-    z=. a n}z 
+    z=. a n}z
   end.
 )
 ```
@@ -1816,7 +1816,7 @@ Sums:
         var arr = [];
         for (var i = start; i < end; i += step) arr.push(i);
         return arr;
-    }*/ 
+    }*/
 
     function cumu(n) {
         var /*ra = PyRange(cache.length, n + 1),*/ //Seems there is a better version for this
@@ -1910,7 +1910,7 @@ end
 
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
                                                  [1]
@@ -2054,12 +2054,12 @@ define cumu(n::integer) => {
 }
 define row(n::integer) => {
 	// cache gets reset & rebuilt for each row, slower but more accurate
-	var(cache = array(array(1))) 
+	var(cache = array(array(1)))
 	local(r = cumu(#n+1))
 	local(o = array)
 	loop(#n) => {
 		protect => { #o->insert(#r->get(loop_count+1) - #r->get(loop_count)) }
-	}	
+	}
 	return #o
 }
 'rows:\r'
@@ -2069,7 +2069,7 @@ loop(25) => {^
 
 'sums:\r'
 with x in array(23, 123, 1234) do => {^
-	var(cache = array(array(1))) 
+	var(cache = array(array(1)))
 	cumu(#x+1)->last
 	'\r'
 ^}
@@ -2120,11 +2120,11 @@ sums:
 
 ```maple
 TriangleLine(n) := map(rhs, Statistics :- Tally(map(x -> x[-1],  combinat:-partition(n)))):
-Triangle := proc(m)  
-            local i;  
-            for i  from 1 to m do 
-                print(op(TriangleLine(i)));  
-            end do  
+Triangle := proc(m)
+            local i;
+            for i  from 1 to m do
+                print(op(TriangleLine(i)));
+            end do
             end proc:
 
 ```
@@ -2154,20 +2154,20 @@ Table[Last /@ Reverse@Tally[First /@ IntegerPartitions[n]], {n, 10}] // Grid
 {{out}}
 
 ```txt
-1									
-1	1								
-1	1	1							
-1	2	1	1						
-1	2	2	1	1					
-1	3	3	2	1	1				
-1	3	4	3	2	1	1			
-1	4	5	5	3	2	1	1		
-1	4	7	6	5	3	2	1	1	
+1
+1	1
+1	1	1
+1	2	1	1
+1	2	2	1	1
+1	3	3	2	1	1
+1	3	4	3	2	1	1
+1	4	5	5	3	2	1	1
+1	4	7	6	5	3	2	1	1
 1	5	8	9	7	5	3	2	1	1
 ```
 
 
-Here I use the bulit-in function PartitionsP to calculate <math>P(n)</math>. 
+Here I use the bulit-in function PartitionsP to calculate <math>P(n)</math>.
 
 ```mathematica
 PartitionsP /@ {23, 123, 1234, 12345}
@@ -2382,36 +2382,36 @@ let () =
 
 ```txt
 
-2: 1 
-3: 1 1 
-4: 1 1 1 
-5: 1 2 1 1 
-6: 1 2 2 1 1 
-7: 1 3 3 2 1 1 
-8: 1 3 4 3 2 1 1 
-9: 1 4 5 5 3 2 1 1 
-10: 1 4 7 6 5 3 2 1 1 
-11: 1 5 8 9 7 5 3 2 1 1 
-12: 1 5 10 11 10 7 5 3 2 1 1 
-13: 1 6 12 15 13 11 7 5 3 2 1 1 
-14: 1 6 14 18 18 14 11 7 5 3 2 1 1 
-15: 1 7 16 23 23 20 15 11 7 5 3 2 1 1 
-16: 1 7 19 27 30 26 21 15 11 7 5 3 2 1 1 
-17: 1 8 21 34 37 35 28 22 15 11 7 5 3 2 1 1 
-18: 1 8 24 39 47 44 38 29 22 15 11 7 5 3 2 1 1 
-19: 1 9 27 47 57 58 49 40 30 22 15 11 7 5 3 2 1 1 
-20: 1 9 30 54 70 71 65 52 41 30 22 15 11 7 5 3 2 1 1 
-21: 1 10 33 64 84 90 82 70 54 42 30 22 15 11 7 5 3 2 1 1 
-22: 1 10 37 72 101 110 105 89 73 55 42 30 22 15 11 7 5 3 2 1 1 
-23: 1 11 40 84 119 136 131 116 94 75 56 42 30 22 15 11 7 5 3 2 1 1 
-24: 1 11 44 94 141 163 164 146 123 97 76 56 42 30 22 15 11 7 5 3 2 1 1 
-25: 1 12 48 108 164 199 201 186 157 128 99 77 56 42 30 22 15 11 7 5 3 2 1 1 
-26: 1 12 52 120 192 235 248 230 201 164 131 100 77 56 42 30 22 15 11 7 5 3 2 1 1 
-27: 1 13 56 136 221 282 300 288 252 212 169 133 101 77 56 42 30 22 15 11 7 5 3 2 1 1 
-28: 1 13 61 150 255 331 364 352 318 267 219 172 134 101 77 56 42 30 22 15 11 7 5 3 2 1 1 
-29: 1 14 65 169 291 391 436 434 393 340 278 224 174 135 101 77 56 42 30 22 15 11 7 5 3 2 1 1 
-30: 1 14 70 185 333 454 522 525 488 423 355 285 227 175 135 101 77 56 42 30 22 15 11 7 5 3 2 1 1 
-31: 1 15 75 206 377 532 618 638 598 530 445 366 290 229 176 135 101 77 56 42 30 22 15 11 7 5 3 2 1 1 
+2: 1
+3: 1 1
+4: 1 1 1
+5: 1 2 1 1
+6: 1 2 2 1 1
+7: 1 3 3 2 1 1
+8: 1 3 4 3 2 1 1
+9: 1 4 5 5 3 2 1 1
+10: 1 4 7 6 5 3 2 1 1
+11: 1 5 8 9 7 5 3 2 1 1
+12: 1 5 10 11 10 7 5 3 2 1 1
+13: 1 6 12 15 13 11 7 5 3 2 1 1
+14: 1 6 14 18 18 14 11 7 5 3 2 1 1
+15: 1 7 16 23 23 20 15 11 7 5 3 2 1 1
+16: 1 7 19 27 30 26 21 15 11 7 5 3 2 1 1
+17: 1 8 21 34 37 35 28 22 15 11 7 5 3 2 1 1
+18: 1 8 24 39 47 44 38 29 22 15 11 7 5 3 2 1 1
+19: 1 9 27 47 57 58 49 40 30 22 15 11 7 5 3 2 1 1
+20: 1 9 30 54 70 71 65 52 41 30 22 15 11 7 5 3 2 1 1
+21: 1 10 33 64 84 90 82 70 54 42 30 22 15 11 7 5 3 2 1 1
+22: 1 10 37 72 101 110 105 89 73 55 42 30 22 15 11 7 5 3 2 1 1
+23: 1 11 40 84 119 136 131 116 94 75 56 42 30 22 15 11 7 5 3 2 1 1
+24: 1 11 44 94 141 163 164 146 123 97 76 56 42 30 22 15 11 7 5 3 2 1 1
+25: 1 12 48 108 164 199 201 186 157 128 99 77 56 42 30 22 15 11 7 5 3 2 1 1
+26: 1 12 52 120 192 235 248 230 201 164 131 100 77 56 42 30 22 15 11 7 5 3 2 1 1
+27: 1 13 56 136 221 282 300 288 252 212 169 133 101 77 56 42 30 22 15 11 7 5 3 2 1 1
+28: 1 13 61 150 255 331 364 352 318 267 219 172 134 101 77 56 42 30 22 15 11 7 5 3 2 1 1
+29: 1 14 65 169 291 391 436 434 393 340 278 224 174 135 101 77 56 42 30 22 15 11 7 5 3 2 1 1
+30: 1 14 70 185 333 454 522 525 488 423 355 285 227 175 135 101 77 56 42 30 22 15 11 7 5 3 2 1 1
+31: 1 15 75 206 377 532 618 638 598 530 445 366 290 229 176 135 101 77 56 42 30 22 15 11 7 5 3 2 1 1
 
 23: 1255 ?= 1255
 123: 2552338241 ?= 2552338241
@@ -2750,16 +2750,16 @@ end for
 ```
 
 
-###  Part 2 
+###  Part 2
 
 {{trans|C}}
 {{libheader|mpfr}}
 
 ```Phix
 include mpfr.e
- 
+
 sequence p
- 
+
 procedure calc(integer n)
     n += 1
     for k=1 to n-1 do
@@ -2773,7 +2773,7 @@ procedure calc(integer n)
                          else mpz_sub(p[n],p[n],p[d]) end if
     end for
 end procedure
- 
+
 constant cx = {23, 123, 1234, 12345}
 puts(1,"sums:\n")
 integer at = 1
@@ -2853,7 +2853,7 @@ IupClose()
             (when (cdr L)
                (cons (- (cadr L) (car L))) ) )
          (car C) ) ) )
-            
+
 (de grow (Lst)
    (let (L (length Lst)  S 0)
       (cons
@@ -2864,10 +2864,10 @@ IupClose()
                   (get I (inc (min X (- L X)))) ) )
             Lst
             (range 1 L) ) ) ) )
-            
+
 (de sumr (N)
-   (let 
-      (K 1 
+   (let
+      (K 1
          S 1
          O (cons 1 (need N 0))
          D
@@ -2888,9 +2888,9 @@ IupClose()
                   (* (car Y) (cadr L)) ) ) ) )
       (last O) ) )
 
-(for I 25            
+(for I 25
    (println (row I)) )
-   
+
 (bench
    (for I '(23 123 1234 12345)
       (println (sumr I)) ) )
@@ -2951,10 +2951,10 @@ Procedure.s Sigma(sx.s, sums.s)
   For i=1 To Len(s)*Bool(Len(s)>Len(sums))+Len(sums)*Bool(Len(sums)>=Len(s))
     v1=Val(Mid(s,i,1))
     v2=Val(Mid(sums,i,1))
-    r+v1+v2    
+    r+v1+v2
     sa+Str(r%10)
     r/10
-  Next i  
+  Next i
   If r : sa+Str(r%10) : EndIf
   ProcedureReturn ReverseString(sa)
 EndProcedure
@@ -2969,9 +2969,9 @@ Procedure Triangle(row.i,Array pfx.s(1))
   nMax=row
   ReDim pfx(Adr(nMax,nMax))
   For n=1 To nMax
-    For k=1 To n    
+    For k=1 To n
       If k>n    : pfx(Adr(n,k))="0"    : Continue : EndIf
-      If n=k    : pfx(Adr(n,k))="1"    : Continue : EndIf    
+      If n=k    : pfx(Adr(n,k))="1"    : Continue : EndIf
       If k<=n/2
         zs=""
         zs=Sigma(pfx(Adr(n-k,k)),zs)
@@ -2998,7 +2998,7 @@ OpenConsole()
 Triangle(nMax, pfx())
 For n=1 To nMax
   Print(Space(((nMax*4-1)-(n*4-1))/2))
-  For k=1 To n    
+  For k=1 To n
     Print(RSet(pfx(Adr(n,k)),3,Chr(32))+Space(1))
   Next k
   PrintN("")
@@ -3191,8 +3191,8 @@ main()
   (define (names-of-tail ans raws-rest n)
     (if (zero? n)
         ans
-        (names-of-tail (cons 1 (append (map + 
-                                            (take ans (length raws-rest)) 
+        (names-of-tail (cons 1 (append (map +
+                                            (take ans (length raws-rest))
                                             (map car raws-rest))
                                        (drop ans (length raws-rest))))
                        (filter (compose not empty?)
@@ -3254,15 +3254,15 @@ If the number of rows is entered as a signed positive integer, only the number o
 
 (that is, the sum of the numbers on the last line of the number triangle).
 
-If the number of rows is entered as a signed integer, the triangle isn't shown. 
+If the number of rows is entered as a signed integer, the triangle isn't shown.
 
-Memoization is used to quickly obtain information of previously calculated numbers in the left-hand side of  
+Memoization is used to quickly obtain information of previously calculated numbers in the left-hand side of
 
-the triangle and also previous calculated partitions. 
+the triangle and also previous calculated partitions.
 
 The right half of the triangle isn't calculated but rather the value is taken from a previous row and column.
 
-Also, the left two columns of the triangle are computed directly   [either   '''1'''   or   '''row%2'''   (integer divide)] 
+Also, the left two columns of the triangle are computed directly   [either   '''1'''   or   '''row%2'''   (integer divide)]
 
 as well as the rightmost three columns   (either   '''1'''   or   '''2''').
 
@@ -3407,7 +3407,7 @@ partitions(123456): 308176595785364966785453171465339808552966132745071392176087
 
 ```
 
-(For the extra credit part)   to view a horizontal histogram (plot) for the values for the number of partitions of   1 ──► 999   here at: 
+(For the extra credit part)   to view a horizontal histogram (plot) for the values for the number of partitions of   1 ──► 999   here at:
 
 :::::: [[9 billion names of God the integer (REXX) histogram]].
 
@@ -3426,7 +3426,7 @@ def g(n,g)
   return 1 unless 1 < g and g < n-1
   (2..g).inject(1){|res,q| res + (q > n-g ? 0 : g(n-g,q))}
 end
- 
+
 (1..25).each {|n|
   puts (1..n).map {|g| "%4s" % g(n,g)}.join
 }
@@ -3496,7 +3496,7 @@ end
   @ng[n-1] = nil
 }
 @ipn2.pop if N.even?
- 
+
 puts "G(23) = #{@ipn1[21]}"
 puts "G(123) = #{@ipn1[121]}"
 puts "G(1234) = #{@ipn1[1232]}"
@@ -3628,20 +3628,20 @@ object Main {
   // Naive, but memoized solution
   lazy val namesStartingMemo : Memo[Tuple2[Int, Int], BigInt] = Memo {
     case (1, 1) => 1
-    case (a, n) => 
+    case (a, n) =>
 	    if (a > n/2) namesStartingMemo(a - 1, n - 1)
 	    else if (n < a) 0
 	    else if (n == a) 1
 	    else (1 to a).map(i => namesStartingMemo(i, n - a)).sum
-    
+
   }
-  
+
   def partitions(n: Int) = (1 to n).map(namesStartingMemo(_, n)).sum
-  
+
   // main method
   def main(args: Array[String]): Unit = {
     for (i <- 1 to 25) {
-    	for (j <- 1 to i) { 
+    	for (j <- 1 to i) {
 	      print(namesStartingMemo(j, i));
 	      print(' ');
 	    }
@@ -3660,31 +3660,31 @@ object Main {
 
 ```txt
 
-1 
-1 1 
-1 1 1 
-1 2 1 1 
-1 2 2 1 1 
-1 3 3 2 1 1 
-1 3 4 3 2 1 1 
-1 4 5 5 3 2 1 1 
-1 4 7 6 5 3 2 1 1 
-1 5 8 9 7 5 3 2 1 1 
-1 5 10 11 10 7 5 3 2 1 1 
-1 6 12 15 13 11 7 5 3 2 1 1 
-1 6 14 18 18 14 11 7 5 3 2 1 1 
-1 7 16 23 23 20 15 11 7 5 3 2 1 1 
-1 7 19 27 30 26 21 15 11 7 5 3 2 1 1 
-1 8 21 34 37 35 28 22 15 11 7 5 3 2 1 1 
-1 8 24 39 47 44 38 29 22 15 11 7 5 3 2 1 1 
-1 9 27 47 57 58 49 40 30 22 15 11 7 5 3 2 1 1 
-1 9 30 54 70 71 65 52 41 30 22 15 11 7 5 3 2 1 1 
-1 10 33 64 84 90 82 70 54 42 30 22 15 11 7 5 3 2 1 1 
-1 10 37 72 101 110 105 89 73 55 42 30 22 15 11 7 5 3 2 1 1 
-1 11 40 84 119 136 131 116 94 75 56 42 30 22 15 11 7 5 3 2 1 1 
-1 11 44 94 141 163 164 146 123 97 76 56 42 30 22 15 11 7 5 3 2 1 1 
-1 12 48 108 164 199 201 186 157 128 99 77 56 42 30 22 15 11 7 5 3 2 1 1 
-1 12 52 120 192 235 248 230 201 164 131 100 77 56 42 30 22 15 11 7 5 3 2 1 1 
+1
+1 1
+1 1 1
+1 2 1 1
+1 2 2 1 1
+1 3 3 2 1 1
+1 3 4 3 2 1 1
+1 4 5 5 3 2 1 1
+1 4 7 6 5 3 2 1 1
+1 5 8 9 7 5 3 2 1 1
+1 5 10 11 10 7 5 3 2 1 1
+1 6 12 15 13 11 7 5 3 2 1 1
+1 6 14 18 18 14 11 7 5 3 2 1 1
+1 7 16 23 23 20 15 11 7 5 3 2 1 1
+1 7 19 27 30 26 21 15 11 7 5 3 2 1 1
+1 8 21 34 37 35 28 22 15 11 7 5 3 2 1 1
+1 8 24 39 47 44 38 29 22 15 11 7 5 3 2 1 1
+1 9 27 47 57 58 49 40 30 22 15 11 7 5 3 2 1 1
+1 9 30 54 70 71 65 52 41 30 22 15 11 7 5 3 2 1 1
+1 10 33 64 84 90 82 70 54 42 30 22 15 11 7 5 3 2 1 1
+1 10 37 72 101 110 105 89 73 55 42 30 22 15 11 7 5 3 2 1 1
+1 11 40 84 119 136 131 116 94 75 56 42 30 22 15 11 7 5 3 2 1 1
+1 11 44 94 141 163 164 146 123 97 76 56 42 30 22 15 11 7 5 3 2 1 1
+1 12 48 108 164 199 201 186 157 128 99 77 56 42 30 22 15 11 7 5 3 2 1 1
+1 12 52 120 192 235 248 230 201 164 131 100 77 56 42 30 22 15 11 7 5 3 2 1 1
 1255
 2552338241
 156978797223733228787865722354959930
@@ -3965,31 +3965,31 @@ g(n)=
 
 ```txt
 
-                                                 1 
-                                               1   1 
-                                             1   1   1 
-                                           1   2   1   1 
-                                         1   2   2   1   1 
-                                       1   3   3   2   1   1 
-                                     1   3   4   3   2   1   1 
-                                   1   4   5   5   3   2   1   1 
-                                 1   4   7   6   5   3   2   1   1 
-                               1   5   8   9   7   5   3   2   1   1 
-                             1   5  10  11  10   7   5   3   2   1   1 
-                           1   6  12  15  13  11   7   5   3   2   1   1 
-                         1   6  14  18  18  14  11   7   5   3   2   1   1 
-                       1   7  16  23  23  20  15  11   7   5   3   2   1   1 
-                     1   7  19  27  30  26  21  15  11   7   5   3   2   1   1 
-                   1   8  21  34  37  35  28  22  15  11   7   5   3   2   1   1 
-                 1   8  24  39  47  44  38  29  22  15  11   7   5   3   2   1   1 
-               1   9  27  47  57  58  49  40  30  22  15  11   7   5   3   2   1   1 
-             1   9  30  54  70  71  65  52  41  30  22  15  11   7   5   3   2   1   1 
-           1  10  33  64  84  90  82  70  54  42  30  22  15  11   7   5   3   2   1   1 
-         1  10  37  72  101 110 105 89  73  55  42  30  22  15  11   7   5   3   2   1   1 
-       1  11  40  84  119 136 131 116 94  75  56  42  30  22  15  11   7   5   3   2   1   1 
-     1  11  44  94  141 163 164 146 123 97  76  56  42  30  22  15  11   7   5   3   2   1   1 
-   1  12  48  108 164 199 201 186 157 128 99  77  56  42  30  22  15  11   7   5   3   2   1   1 
- 1  12  52  120 192 235 248 230 201 164 131 100 77  56  42  30  22  15  11   7   5   3   2   1   1 
+                                                 1
+                                               1   1
+                                             1   1   1
+                                           1   2   1   1
+                                         1   2   2   1   1
+                                       1   3   3   2   1   1
+                                     1   3   4   3   2   1   1
+                                   1   4   5   5   3   2   1   1
+                                 1   4   7   6   5   3   2   1   1
+                               1   5   8   9   7   5   3   2   1   1
+                             1   5  10  11  10   7   5   3   2   1   1
+                           1   6  12  15  13  11   7   5   3   2   1   1
+                         1   6  14  18  18  14  11   7   5   3   2   1   1
+                       1   7  16  23  23  20  15  11   7   5   3   2   1   1
+                     1   7  19  27  30  26  21  15  11   7   5   3   2   1   1
+                   1   8  21  34  37  35  28  22  15  11   7   5   3   2   1   1
+                 1   8  24  39  47  44  38  29  22  15  11   7   5   3   2   1   1
+               1   9  27  47  57  58  49  40  30  22  15  11   7   5   3   2   1   1
+             1   9  30  54  70  71  65  52  41  30  22  15  11   7   5   3   2   1   1
+           1  10  33  64  84  90  82  70  54  42  30  22  15  11   7   5   3   2   1   1
+         1  10  37  72  101 110 105 89  73  55  42  30  22  15  11   7   5   3   2   1   1
+       1  11  40  84  119 136 131 116 94  75  56  42  30  22  15  11   7   5   3   2   1   1
+     1  11  44  94  141 163 164 146 123 97  76  56  42  30  22  15  11   7   5   3   2   1   1
+   1  12  48  108 164 199 201 186 157 128 99  77  56  42  30  22  15  11   7   5   3   2   1   1
+ 1  12  52  120 192 235 248 230 201 164 131 100 77  56  42  30  22  15  11   7   5   3   2   1   1
 
 G(23) =    1255
 G(123) =   2552338241
@@ -4120,7 +4120,7 @@ rows:
 24: [1, 12, 48, 108, 164, 199, 201, 186, 157, 128, 99, 77, 56, 42, 30, 22, 15, 11, 7, 5, 3, 2, 1, 1]
 25: [1, 12, 52, 120, 192, 235, 248, 230, 201, 164, 131, 100, 77, 56, 42, 30, 22, 15, 11, 7, 5, 3, 2, 1, 1]
 
-sums: 
+sums:
     23: 1255
    123: 2552338241
   1234: 156978797223733228787865722354959930
@@ -4250,9 +4250,9 @@ clear screen
 
 Sub nine_billion_names(rows)
     local p(rows, rows), i, j, column
-    
+
     p(1, 1) = 1
-    
+
     For i = 2 To rows
         For j = 1 To i
             p(i, j) = p(i - 1, j - 1) + p(i - j, j)
@@ -4278,7 +4278,7 @@ Takes its time getting to 100,000 but it does. Uses the GMP big int library. Doe
 
 ```zkl
 var [const] BN=Import.lib("zklBigNum");
- 
+
 const N=0d100_000;
 p:=List.createLong(N+1,BN.fp(0),True);  // (0,0,...) all different
 

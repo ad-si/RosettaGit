@@ -73,10 +73,10 @@ SendWinLogEvent(hSource, String="", evType=0x0004, evId=0x03EA, evCat=0, pData=0
 		, UInt, VarSetCapacity(pData)					; DWORD, data size
 		, Ptr, &eventMessage							; LPCTSTR*, ptr to a buffer ...
 		, Ptr, (VarSetCapacity(pData)) ? &pData : 0 )	; ptr to a buffer of binary data
-	
+
 	; Release memory.
 	VarSetCapacity(eventMessage, 0)
-	
+
 	Return r
 }
 /*
@@ -129,11 +129,11 @@ StrPut2(String, Address="", Length=-1, Encoding=0)
 		Encoding := Address,	Length := 0,	Address := 1024
 	else if Length is not integer	 ; StrPut(String, Address, Encoding)
 		Encoding := Length,	Length := -1
-	
+
 	; Check for obvious errors.
 	if (Address+0 < 1024)
 		return
-	
+
 	; Ensure 'Encoding' contains a numeric identifier.
 	if Encoding = UTF-16
 		Encoding = 1200
@@ -141,7 +141,7 @@ StrPut2(String, Address="", Length=-1, Encoding=0)
 		Encoding = 65001
 	else if SubStr(Encoding,1,2)="CP"
 		Encoding := SubStr(Encoding,3)
-	
+
 	if !Encoding ; "" or 0
 	{
 		; No conversion required.
@@ -181,7 +181,7 @@ StrPut2(String, Address="", Length=-1, Encoding=0)
 	{
 		; Convert native ANSI string to UTF-16 first.	NOTE - wbuf_len includes the null-terminator.
 		VarSetCapacity(wbuf, 2 * wbuf_len := StrPut2(String, "UTF-16")), StrPut2(String, &wbuf, "UTF-16")
-		
+
 		; UTF-8 and some other encodings do not support this flag.	Avoid it for UTF-8
 		; (which is probably common) and rely on the fallback behaviour for other encodings.
 		flags := Encoding=65001 ? 0 : 0x400	; WC_NO_BEST_FIT_CHARS
@@ -295,10 +295,10 @@ Writes to the Application Log:
 ```bbcbasic
       INSTALL @lib$+"COMLIB"
       PROC_cominitlcid(1033)
-      
+
       WshShell% = FN_createobject("WScript.Shell")
       PROC_callmethod(WshShell%, "LogEvent(0, ""Test from BBC BASIC"")")
-      
+
       PROC_releaseobject(WshShell%)
       PROC_comexit
 ```
@@ -317,14 +317,14 @@ The following is a wrapper on the EventCreate utility provided in Windows. Note 
 int main(int argC,char* argV[])
 {
 	char str[1000];
-	
+
 	if(argC!=5)
 		printf("Usage : %s < Followed by level, id, source string and description>",argV[0]);
 	else{
 		sprintf(str,"EventCreate /t %s /id %s /l APPLICATION /so %s /d \"%s\"",argV[1],argV[2],argV[3],argV[4]);
 		system(str);
 	}
-	
+
 	return 0;
 }
 
@@ -347,8 +347,8 @@ Microsoft does provide an C/C++ API for EventCreate, but as with everything Micr
 
 {{trans|C}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <sstream>
 
 int main(int argc, char *argv[]) {
@@ -768,7 +768,7 @@ myType = win32evtlog.EVENTLOG_WARNING_TYPE
 descr = ["A warning", "An even more dire warning"]
 data = "Application\0Data".encode("ascii")
 
-win32evtlogutil.ReportEvent(applicationName, eventID, eventCategory=category, 
+win32evtlogutil.ReportEvent(applicationName, eventID, eventCategory=category,
 	eventType=myType, strings=descr, data=data, sid=my_sid)
 ```
 
@@ -854,7 +854,7 @@ SUCCESS: A 'INFORMATION' type event is created in the 'REXX' log/source.
                                                  /*stick a fork in it,  we're all done. */
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 

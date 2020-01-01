@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 
-Suppose   <math>n_1</math>,   <math>n_2</math>,   <math>\ldots</math>,   <math>n_k</math>   are positive [[integer]]s that are pairwise co-prime.   
+Suppose   <math>n_1</math>,   <math>n_2</math>,   <math>\ldots</math>,   <math>n_k</math>   are positive [[integer]]s that are pairwise co-prime.
 
 Then, for any given sequence of integers   <math>a_1</math>,   <math>a_2</math>,   <math>\dots</math>,   <math>a_k</math>,   there exists an integer   <math>x</math>   solving the following system of simultaneous congruences:
 
@@ -27,11 +27,11 @@ Furthermore, all solutions   <math>x</math>   of this system are congruent modul
 
 
 ;Task:
-Write a program to solve a system of linear congruences by applying the   [[wp:Chinese Remainder Theorem|Chinese Remainder Theorem]]. 
+Write a program to solve a system of linear congruences by applying the   [[wp:Chinese Remainder Theorem|Chinese Remainder Theorem]].
 
-If the system of equations cannot be solved, your program must somehow indicate this. 
+If the system of equations cannot be solved, your program must somehow indicate this.
 
-(It may throw an exception or return a special false value.) 
+(It may throw an exception or return a special false value.)
 
 Since there are infinitely many solutions, the program should return the unique solution   <math>s</math>   where   <math>0 \leq s \leq n_1n_2\ldots n_k</math>.
 
@@ -39,19 +39,19 @@ Since there are infinitely many solutions, the program should return the unique 
 ''Show the functionality of this program'' by printing the result such that the   <math>n</math>'s   are   <math>[3,5,7]</math>   and the   <math>a</math>'s   are   <math>[2,3,2]</math>.
 
 
-'''Algorithm''':   The following algorithm only applies if the   <math>n_i</math>'s   are pairwise co-prime. 
+'''Algorithm''':   The following algorithm only applies if the   <math>n_i</math>'s   are pairwise co-prime.
 
 Suppose, as above, that a solution is required for the system of congruences:
 
 ::: <math>x \equiv a_i \pmod{n_i} \quad\mathrm{for}\; i = 1, \ldots, k</math>
 
-Again, to begin, the product   <math>N = n_1n_2 \ldots n_k</math>   is defined. 
+Again, to begin, the product   <math>N = n_1n_2 \ldots n_k</math>   is defined.
 
 Then a solution   <math>x</math>   can be found as follows:
 
-For each   <math>i</math>,   the integers   <math>n_i</math>   and   <math>N/n_i</math>   are co-prime. 
+For each   <math>i</math>,   the integers   <math>n_i</math>   and   <math>N/n_i</math>   are co-prime.
 
-Using the   [[wp:Extended Euclidean algorithm|Extended Euclidean algorithm]],   we can find integers   <math>r_i</math>   and   <math>s_i</math>   such that   <math>r_i n_i + s_i N/n_i = 1</math>. 
+Using the   [[wp:Extended Euclidean algorithm|Extended Euclidean algorithm]],   we can find integers   <math>r_i</math>   and   <math>s_i</math>   such that   <math>r_i n_i + s_i N/n_i = 1</math>.
 
 Then, one solution to the system of simultaneous congruences is:
 
@@ -175,9 +175,9 @@ Using the package Mod_Inv from [[http://rosettacode.org/wiki/Modular_inverse#Ada
 ```Ada
 with Ada.Text_IO, Mod_Inv;
 
-procedure Chin_Rema is   
+procedure Chin_Rema is
    N: array(Positive range <>) of Positive := (3, 5, 7);
-   A: array(Positive range <>) of Positive := (2, 3, 2);   
+   A: array(Positive range <>) of Positive := (2, 3, 2);
    Tmp: Positive;
    Prod: Positive := 1;
    Sum: Natural := 0;
@@ -186,7 +186,7 @@ begin
    for I in N'Range loop
       Prod := Prod * N(I);
    end loop;
-   
+
    for I in A'Range loop
       Tmp := Prod / N(I);
       Sum := Sum + A(I) * Mod_Inv.Inverse(Tmp, N(I)) * Tmp;
@@ -307,8 +307,8 @@ Output:
 
 When n are not pairwise coprime, the program crashes due to division by zero, which is one way to convey error.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 // returns x where (a * x) % b == 1
 int mul_inv(int a, int b)
@@ -354,8 +354,8 @@ int main(void)
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <numeric>
 #include <vector>
 #include <execution>
@@ -549,7 +549,7 @@ crt = (n,a) ->
 		p = prod // ni
 		sum += ai * p * mulInv p,ni
 	sum % prod
-	
+
 mulInv = (a,b) ->
 	b0 = b
 	[x0,x1] = [0,1]
@@ -560,7 +560,7 @@ mulInv = (a,b) ->
 		[x0,x1] = [x1-q*x0, x0]
 	if x1 < 0 then x1 += b0
 	x1
-	
+
 print crt [3,5,7], [2,3,2]
 ```
 
@@ -618,7 +618,7 @@ restarts (invokable by number or by possibly-abbreviated name):
   0: [ABORT] Exit debugger, returning to top level.
 
 (INVMOD 418 11)
-0] 
+0]
 
 ```
 
@@ -864,7 +864,7 @@ let rec sieve cs x N =
     let cs =
         congruences
         |> List.map (fun (a,n) -> (a % n, n))
-        |> List.sortBy (snd>>(~-)) 
+        |> List.sortBy (snd>>(~-))
     let an = List.head cs
     match sieve (List.tail cs) (fst an) (snd an) with
     | None    -> printfn "no solution"
@@ -982,7 +982,7 @@ Gforth 0.7.2, Copyright (C) 1995-2008 Free Software Foundation, Inc.
 Gforth comes with ABSOLUTELY NO WARRANTY; for details type `license'
 Type `bye' to exit
 10 11  4 12  12 13  3 crt . 1000  ok
-10 11  4 22   9 19  3 crt . 
+10 11  4 22   9 19  3 crt .
 :2: Invalid numeric argument
 10 11  4 22   9 19  3 >>>crt<<< .
 
@@ -1175,9 +1175,9 @@ No solution!
    crt =: (1 + ] - {:@:[ -: {.@:[ | ])^:_&0@:,:
 ```
 
-'''Example''': 
+'''Example''':
 ```j
-   3 5 7 crt 2 3 2 
+   3 5 7 crt 2 3 2
 23
    11 12 13 crt 10 4 12
 1000
@@ -1287,7 +1287,7 @@ def chinese_remainder(mods; remainders):
 ```
 
 '''Examples''':
- chinese_remainder([3,5,7]; [2,3,2])   
+ chinese_remainder([3,5,7]; [2,3,2])
  # => 23
  chinese_remainder([100,23]; [19,0])
  # => 1219
@@ -1343,7 +1343,7 @@ fun multInv(a: Int, b: Int): Int {
     }
     if (x1 < 0) x1 += b
     return x1
-} 
+}
 
 fun chineseRemainder(n: IntArray, a: IntArray): Int {
     val prod = n.fold(1) { acc, i -> acc * i }
@@ -1447,7 +1447,7 @@ This is a Maple built-in procedure, so it is trivial:
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 Very easy, because it is a built-in function:
 
-```Mathematica 
+```Mathematica
 ChineseRemainder[{2, 3, 2}, {3, 5, 7}]
 23
 ```
@@ -1644,10 +1644,10 @@ let chinese_remainder congruences =
 ```txt
 
 utop # chinese_remainder [(10, 11); (4, 12); (12, 13)];;
-- : int option = Some 1000 
-                                                                                                        
+- : int option = Some 1000
+
 utop # chinese_remainder [(10, 11); (4, 22); (9, 19)];;
-- : int option = None  
+- : int option = None
 
 ```
 
@@ -1782,7 +1782,7 @@ say chinese-remainder(3, 5, 7)(2, 3, 2);
 
 ## Phix
 
-{{trans|C}} 
+{{trans|C}}
 Uses the function mul_inv() from [[Modular_inverse#Phix]]
 
 ```Phix
@@ -1797,7 +1797,7 @@ function chinese_remainder(sequence n, a)
     end for
     return mod(tot,prod)
 end function
- 
+
 ?chinese_remainder({3,5,7},{2,3,2})
 ?chinese_remainder({11,12,13},{10,4,12})
 ?chinese_remainder({11,22,19},{10,4,9})
@@ -1862,9 +1862,9 @@ EnableExplicit
 DisableDebugger
 DataSection
   LBL_n1:
-  Data.i 3,5,7    
+  Data.i 3,5,7
   LBL_a1:
-  Data.i 2,3,2    
+  Data.i 2,3,2
   LBL_n2:
   Data.i 11,12,13
   LBL_a2:
@@ -1905,21 +1905,21 @@ EndProcedure
 
 Procedure.i Eval_x1(a.i,b.i)
   Define b0.i=b, x0.i=0, x1.i=1, q.i, t.i
-  If b=1 : ProcedureReturn x1 : EndIf  
+  If b=1 : ProcedureReturn x1 : EndIf
   While a>1
     q=Int(a/b)
     t=b : b=a%b : a=t
     t=x0 : x0=x1-q*x0 : x1=t
   Wend
   If x1<0 : ProcedureReturn x1+b0 : EndIf
-  ProcedureReturn x1  
+  ProcedureReturn x1
 EndProcedure
 
 Procedure.i ChineseRem(n_Adr.i,a_Adr.i)
   Define prod.i=Produkt_n(n_Adr,a_Adr), a.i, b.i, p.i, Idx.i=0, sum.i
-  While n_Adr+SizeOf(Integer)*Idx<a_Adr  
+  While n_Adr+SizeOf(Integer)*Idx<a_Adr
     b=PeekI(n_Adr+SizeOf(Integer)*Idx)
-    p=Int(prod/b) : a=p 
+    p=Int(prod/b) : a=p
     sum+PeekI(a_Adr+SizeOf(Integer)*Idx)*Eval_x1(a,b)*p
     Idx+1
   Wend
@@ -2009,8 +2009,8 @@ def chinese_remainder(n, a):
         p = prod // n_i
         sum += a_i * mul_inv(p, n_i) * p
     return sum % prod
- 
- 
+
+
 
 def mul_inv(a, b):
     b0 = b
@@ -2022,7 +2022,7 @@ def mul_inv(a, b):
         x0, x1 = x1 - q * x0, x0
     if x1 < 0: x1 += b0
     return x1
- 
+
 
 
 if __name__ == '__main__':
@@ -2264,9 +2264,9 @@ Chinese remainder theorem:
          (moduli, residues) -> Either solution or explanation
 
 ([10, 4, 12], [11, 12, 13]) -> 'No solution: no modular inverse for 48 and 10'
-([11, 12, 13], [10, 4, 12]) ->  1000 
+([11, 12, 13], [10, 4, 12]) ->  1000
  ([10, 4, 9], [11, 22, 19]) -> 'No solution: no modular inverse for 36 and 10'
-     ([3, 5, 7], [2, 3, 2]) ->  23 
+     ([3, 5, 7], [2, 3, 2]) ->  23
      ([2, 3, 2], [3, 5, 7]) -> 'No solution: no modular inverse for 6 and 2'
 ```
 
@@ -2282,20 +2282,20 @@ mul_inv <- function(a, b)
   b0 <- b
   x0 <- 0L
   x1 <- 1L
-  
+
   if (b == 1) return(1L)
   while(a > 1){
     q <- as.integer(a/b)
-    
+
     t <- b
     b <- a %% b
     a <- t
-    
+
     t <- x0
     x0 <- x1 - q*x0
     x1 <- t
   }
-  
+
   if (x1 < 0) x1 <- x1 + b0
   return(x1)
 }
@@ -2303,17 +2303,17 @@ mul_inv <- function(a, b)
 chinese_remainder <- function(n, a)
 {
   len <- length(n)
-  
+
   prod <- 1L
   sum <- 0L
-  
+
   for (i in 1:len) prod <- prod * n[i]
-  
+
   for (i in 1:len){
     p <- as.integer(prod / n[i])
     sum <- sum + a[i] * mul_inv(p, n[i]) * p
   }
-  
+
   return(sum %% prod)
 }
 
@@ -2439,7 +2439,7 @@ N=1                                              /*the product─to─be  for  p
 say 'no solution found.'                         /*oops, announce that solution ¬ found.*/
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -2451,8 +2451,8 @@ Brute-force.
 ```ruby
 
 def chinese_remainder(mods, remainders)
-  max = mods.inject( :* )                            
-  series = remainders.zip( mods ).map{|r,m| r.step( max, m ).to_a } 
+  max = mods.inject( :* )
+  series = remainders.zip( mods ).map{|r,m| r.step( max, m ).to_a }
   series.inject( :& ).first #returns nil when empty
 end
 
@@ -2488,7 +2488,7 @@ end
 def chinese_remainder(mods, remainders)
   max = mods.inject( :* )  # product of all moduli
   series = remainders.zip(mods).map{ |r,m| (r * max * invmod(max/m, m) / m) }
-  series.inject( :+ ) % max 
+  series.inject( :+ ) % max
 end
 
 p chinese_remainder([3,5,7], [2,3,2])     #=> 23
@@ -2744,23 +2744,23 @@ func crt(_ a_i:[Int], _ n_i:[Int]) -> Int {
     // can be used instead, to determine if two elements of the same
     // array are the same.
     let divs = n_i.enumerated()
-    
+
     // Check if elements of n_i are pairwise coprime divs.filter{ $0.0 < n.0 }
     divs.forEach{
         n in divs.filter{ $0.0 < n.0 }.forEach{
             assert(coprime(n.1, $0.1))
         }
     }
-    
+
     // Calculate factor N
     let N = n_i.map{$0}.reduce(1, *)
-    
+
     // Euclidean algorithm determines s_i (and r_i)
     var s:[Int] = []
-    
+
     // Using euclidean algorithm to calculate r_i, s_i
     n_i.forEach{ s += [euclid($0, N / $0).1] }
-    
+
     // Solve for x
     var x = 0
     a_i.enumerated().forEach{
@@ -2926,10 +2926,10 @@ End Sub
 {{out}}
 
 ```txt
- 23 
- 1000 
+ 23
+ 1000
 fail
- 1219 
+ 1219
 ```
 
 
@@ -2995,7 +2995,7 @@ Using the GMP library, gcdExt is the Extended Euclidean algorithm.
 
 ```zkl
 var BN=Import("zklBigNum"), one=BN(1);
- 
+
 fcn crt(xs,ys){
    p:=xs.reduce('*,BN(1));
    X:=BN(0);
@@ -3036,17 +3036,17 @@ println(crt(T(11,22,19), T(10,4,9))); //-->ValueError: 11 not coprime
 150 LET sum=sum+a(i)*x1*p
 160 NEXT i
 170 PRINT FN m(sum,prod)
-180 STOP 
+180 STOP
 200 DEF FN m(a,b)=a-INT (a/b)*b: REM Modulus function
 1000 LET b0=b: LET x0=0: LET x1=1
-1010 IF b=1 THEN RETURN 
+1010 IF b=1 THEN RETURN
 1020 IF a<=1 THEN GO TO 1100
 1030 LET q=INT (a/b)
 1040 LET t=b: LET b=FN m(a,b): LET a=t
 1050 LET t=x0: LET x0=x1-q*x0: LET x1=t
 1060 GO TO 1020
 1100 IF x1<0 THEN LET x1=x1+b0
-1110 RETURN 
+1110 RETURN
 ```
 
 

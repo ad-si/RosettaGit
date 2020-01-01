@@ -13,7 +13,7 @@ tags = []
 {{draft task|Physics}}
 
 ;Task
-Implement a Vector class (or a set of functions) that models a Physical Vector. The four basic operations and a ''pretty print'' function should be implemented. 
+Implement a Vector class (or a set of functions) that models a Physical Vector. The four basic operations and a ''pretty print'' function should be implemented.
 
 
 The Vector may be initialized in any reasonable way.
@@ -84,46 +84,46 @@ typedef struct{
 
 vector initVector(double r,double theta){
 	vector c;
-	
+
 	c.x = r*cos(theta);
 	c.y = r*sin(theta);
-	
+
 	return c;
 }
 
 vector addVector(vector a,vector b){
 	vector c;
-	
+
 	c.x = a.x + b.x;
 	c.y = a.y + b.y;
-	
+
 	return c;
 }
 
 vector subtractVector(vector a,vector b){
 	vector c;
-	
+
 	c.x = a.x - b.x;
 	c.y = a.y - b.y;
-	
+
 	return c;
 }
 
 vector multiplyVector(vector a,double b){
 	vector c;
-	
+
 	c.x = b*a.x;
 	c.y = b*a.y;
-	
+
 	return c;
 }
 
 vector divideVector(vector a,double b){
 	vector c;
-	
+
 	c.x = a.x/b;
 	c.y = a.y/b;
-	
+
 	return c;
 }
 
@@ -135,25 +135,25 @@ int main()
 {
 	vector a = initVector(3,pi/6);
 	vector b = initVector(5,2*pi/3);
-	
+
 	printf("\nVector a : ");
 	printVector(a);
-	
+
 	printf("\n\nVector b : ");
 	printVector(b);
-	
+
 	printf("\n\nSum of vectors a and b : ");
 	printVector(addVector(a,b));
-	
+
 	printf("\n\nDifference of vectors a and b : ");
 	printVector(subtractVector(a,b));
-	
+
 	printf("\n\nMultiplying vector a by 3 : ");
 	printVector(multiplyVector(a,3));
-	
+
 	printf("\n\nDividing vector b by 2.5 : ");
 	printVector(divideVector(b,2.5));
-	
+
 	return 0;
 }
 
@@ -183,8 +183,8 @@ Dividing vector b by 2.5 : -1.000000 î + 1.732051 û
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cmath>
 #include <cassert>
 using namespace std;
@@ -410,7 +410,7 @@ let div (ax, ay) c =
     (ax/c, ay/c)
 
 [<EntryPoint>]
-let main _ = 
+let main _ =
     let a = (5.0, 7.0)
     let b = (2.0, 3.0)
 
@@ -451,15 +451,15 @@ C: <vec> vec
 : devec ( vec1 vec2 -- x1 y1 x2 y2 ) [ parts ] bi@ rot swap ;
 
 : binary-op ( vec1 vec2 quot -- vec3 )
-    [ devec ] dip 2bi@ <vec> ; inline  
-    
+    [ devec ] dip 2bi@ <vec> ; inline
+
 : scalar-op ( vec1 scalar quot -- vec2 )
     [ parts ] 2dip curry bi@ <vec> ; inline
-    
+
 PRIVATE>
 
 SYNTAX: VEC{ \ } [ first2 <vec> ] parse-literal ;
-    
+
 : v+ ( vec1 vec2   -- vec3 ) [ + ] binary-op ;
 : v- ( vec1 vec2   -- vec3 ) [ - ] binary-op ;
 : v* ( vec1 scalar -- vec2 ) [ * ] scalar-op ;
@@ -522,22 +522,22 @@ Operator Vector.Cast() As String
 End Operator
 
 Operator + (vec1 As Vector, vec2 As Vector) As Vector
-  Return Type<Vector>(vec1.x + vec2.x, vec1.y + vec2.y) 
+  Return Type<Vector>(vec1.x + vec2.x, vec1.y + vec2.y)
 End Operator
 
 Operator - (vec1 As Vector, vec2 As Vector) As Vector
-  Return Type<Vector>(vec1.x - vec2.x, vec1.y - vec2.y) 
+  Return Type<Vector>(vec1.x - vec2.x, vec1.y - vec2.y)
 End Operator
 
 Operator * (vec As Vector, scalar As Double) As Vector
-  Return Type<Vector>(vec.x * scalar, vec.y * scalar) 
+  Return Type<Vector>(vec.x * scalar, vec.y * scalar)
 End Operator
 
 Operator / (vec As Vector, scalar As Double) As Vector
   ' No need to check for division by zero as we're using Doubles
-  Return Type<Vector>(vec.x / scalar, vec.y / scalar) 
+  Return Type<Vector>(vec.x / scalar, vec.y / scalar)
 End Operator
- 
+
 Dim v1 As Vector = (5, 7)
 Dim v2 As Vector = (2, 3)
 Print v1; " +  "; v2; " = "; v1 + v2
@@ -756,7 +756,7 @@ These are primitive (built in) operations in J:
    5 7+2 3
 7 10
    5 7-2 3
-3 4   
+3 4
    5 7*11
 55 77
    5 7%2
@@ -877,7 +877,7 @@ def sum:
   if length <= 1 then .
   else reduce .[1:][] as $v (.[0] ; [., $v]|sum2)
   end;
- 
+
 def multiply(scalar): [ .[] * scalar ];
 
 def negate: multiply(-1);
@@ -888,7 +888,7 @@ def divide(scalar):
   if scalar == 0 then error("division of a vector by 0 is not supported")
   else [ .[] / scalar ]
   end;
- 
+
 def r: (.[0] | .*.) + (.[1] | .*.) | sqrt;
 
 def atan2:
@@ -924,7 +924,7 @@ def examples:
     "w / 2 is \($w | divide(2))",
     "v|topolar is \($v|topolar)",
     "w|topolar is \($w|topolar)",
-    "z = polar(1; pi/2) is \($z)", 
+    "z = polar(1; pi/2) is \($z)",
     "z|topolar is \($z|topolar)",
     "z2 = polar(-2; pi/4) is \($z2)",
     "z2|topolar is \($z2|topolar)",
@@ -1044,7 +1044,7 @@ fun main(args: Array<String>) {
     println()
     println("v1 + v2 = ${v1 + v2}")
     println("v1 - v2 = ${v1 - v2}")
-    println("v1 * 11 = ${v1 * 11.0}") 
+    println("v1 * 11 = ${v1 * 11.0}")
     println("11 * v2 = ${11.0 * v2}")
     println("v1 / 2  = ${v1 / 2.0}")
 }
@@ -1085,7 +1085,7 @@ function vector.mt.__add (v1, v2)
 end
 
 function vector.mt.__sub (v1, v2)
-    return vector.new(v1.x - v2.x, v1.y - v2.y) 
+    return vector.new(v1.x - v2.x, v1.y - v2.y)
 end
 
 function vector.mt.__mul (v, s)
@@ -1096,7 +1096,7 @@ function vector.mt.__div (v, s)
     return vector.new(v.x / s, v.y / s)
 end
 
-function vector.print (vec)    
+function vector.print (vec)
     print("(" .. vec.x .. ", " .. vec.y .. ")")
 end
 
@@ -1242,7 +1242,7 @@ class Test {
 class Vec2 {
   @x : Float;
   @y : Float;
-   
+
   New(x : Float, y : Float) {
     @x := x;
     @y := y;
@@ -1251,7 +1251,7 @@ class Vec2 {
   method : GetX() ~ Float {
     return @x;
   }
-  
+
   method : GetY() ~ Float {
     return @y;
   }
@@ -1505,15 +1505,15 @@ class Vector {
         $!x = $x2 - $x1;
         $!y = $y2 - $y1;
     }
-    
+
     method length { sqrt $.x ** 2 + $.y ** 2 }
     method angle  { atan2 $.y, $.x }
-    
+
     method add      ($v) { Vector.new(x => $.x + $v.x,  y => $.y + $v.y) }
     method subtract ($v) { Vector.new(x => $.x - $v.x,  y => $.y - $v.y) }
     method multiply ($n) { Vector.new(x => $.x * $n,    y => $.y * $n  ) }
     method divide   ($n) { Vector.new(x => $.x / $n,    y => $.y / $n  ) }
-    
+
     method gist { "vec[$.x, $.y]" }
 }
 
@@ -1709,7 +1709,7 @@ class Vector:
 
     def __sub__(self,vector):
         return self + (- vector)
-        
+
     def __mul__(self,scalar):
         """
         >>> Vector(4,5) * 2
@@ -1725,7 +1725,7 @@ class Vector:
 
     def __div__(self,scalar):
         return self * (1 / scalar)
-    
+
     def __repr__(self):
         """
         Returns a nicely formatted list of the properties of the Vector.
@@ -1737,7 +1737,7 @@ class Vector:
             - Value: 10
             - X component: 7.07
             - Y component: 7.07
-        
+
         """
         return """Vector:
     - Angular coefficient: {}
@@ -1787,7 +1787,7 @@ class Vector(NamedTuple):
     @lru_cache(CACHE_SIZE)
     def y(self) -> float:
         return self.length * math.cos(self.angle)
- 
+
     def __add__(self, other: Vector) -> Vector:
         """Returns self + other"""
         new_x = self.x + other.x
@@ -1795,19 +1795,19 @@ class Vector(NamedTuple):
         new_length = hypotenuse(new_x, new_y)
         new_slope = new_y / new_x
         return Vector(new_slope, new_length)
- 
+
     def __neg__(self) -> Vector:
         """Returns -self"""
         return Vector(self.slope, -self.length)
- 
+
     def __sub__(self, other: Vector) -> Vector:
         """Returns self - other"""
         return self + (-other)
- 
+
     def __mul__(self, scalar: float) -> Vector:
         """Returns self * scalar"""
         return Vector(self.slope, self.length * scalar)
- 
+
     def __truediv__(self, scalar: float) -> Vector:
         """Returns self / scalar"""
         return self * (1 / scalar)
@@ -1869,8 +1869,8 @@ We use <code>fl*</code> and <code>fl/</code> to try to get the most sensible res
 (define (rad->deg x) (fl* 180. (fl/ (exact->inexact x) pi)))
 
 ;Custom printer
-;no shared internal structures 
-(define (vec-print v port mode) 
+;no shared internal structures
+(define (vec-print v port mode)
   (write-string "Vec:\n" port)
   (write-string (format " -Slope: ~a\n" (vec-slope v)) port)
   (write-string (format " -Angle(deg): ~a\n" (rad->deg (vec-angle v))) port)
@@ -1879,7 +1879,7 @@ We use <code>fl*</code> and <code>fl/</code> to try to get the most sensible res
   (write-string (format " -Y: ~a\n" (vec-y v)) port))
 
 (struct vec (x y)
-        #:methods gen:custom-write 
+        #:methods gen:custom-write
         [(define write-proc vec-print)])
 
 ;Alternative constructor
@@ -1995,7 +1995,7 @@ Vec:
 
 Classic REXX has no trigonometric functions, so a minimal set is included here (needed to handle the   '''sin'''   and   '''cos'''   functions, along with angular conversion and normalization).
 
-The angular part of the vector (when defining) is assumed to be in degrees for this program. 
+The angular part of the vector (when defining) is assumed to be in degrees for this program.
 
 ```rexx
 /*REXX program shows how to support mathematical functions for vectors using functions. */
@@ -2120,32 +2120,32 @@ class Vector
   def self.polar(r, angle=0)
     new(r*Math.cos(angle), r*Math.sin(angle))
   end
-  
+
   attr_reader :x, :y
-  
+
   def initialize(x, y)
     raise TypeError unless x.is_a?(Numeric) and y.is_a?(Numeric)
     @x, @y = x, y
   end
-  
+
   def +(other)
     raise TypeError if self.class != other.class
     self.class.new(@x + other.x, @y + other.y)
   end
-  
+
   def -@;       self.class.new(-@x, -@y)        end
   def -(other)  self + (-other)                 end
-  
+
   def *(scalar)
     raise TypeError unless scalar.is_a?(Numeric)
     self.class.new(@x * scalar, @y * scalar)
   end
-  
+
   def /(scalar)
     raise TypeError unless scalar.is_a?(Numeric) and scalar.nonzero?
     self.class.new(@x / scalar, @y / scalar)
   end
-  
+
   def r;        @r     ||= Math.hypot(@x, @y)   end
   def angle;    @angle ||= Math.atan2(@y, @x)   end
   def polar;    [r, angle]                      end
@@ -2595,9 +2595,9 @@ let vmath f v1 v2 =>
     )
     -> s.collect
     ;
-    
+
 let smath f scalar vector => a.stream vector -> s.map (f scalar) -> s.collect;
-    
+
 let v+ => vmath +;
 let v- => vmath -;
 

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task|Arithmetic operations}} 
+{{task|Arithmetic operations}}
 [[Category:Simple]]
 
 ;Task:
@@ -115,33 +115,33 @@ PORT     DC     C'--+-------------------------------------------------'
 ```ActionScript
 
 package {
-    
+
     import flash.display.Sprite;
     import flash.events.Event;
     import flash.text.TextField;
     import flash.text.TextFieldAutoSize;
     import flash.text.TextFormat;
-    
+
     [SWF (width = 550, height = 550)]
     public class MultiplicationTable extends Sprite {
-        
+
         public function MultiplicationTable() {
             if ( stage ) _init();
             else addEventListener(Event.ADDED_TO_STAGE, _init);
         }
-        
+
         private function _init(e:Event = null):void {
-            
+
             removeEventListener(Event.ADDED_TO_STAGE, _init);
-            
+
             var format:TextFormat = new TextFormat();
             format.size = 15;
             var blockSize:uint = 40;
             var max:uint = 12;
-            
+
             var i:uint, j:uint;
             var tf:TextField;
-            
+
             for ( i = 1; i <= max; i++ ) {
                 tf = new TextField();
                 tf.defaultTextFormat = format;
@@ -151,7 +151,7 @@ package {
                 tf.autoSize = TextFieldAutoSize.CENTER;
                 tf.text = String(i);
                 addChild(tf);
-                
+
                 tf = new TextField();
                 tf.defaultTextFormat = format;
                 tf.x = 0;
@@ -161,22 +161,22 @@ package {
                 tf.text = String(i);
                 addChild(tf);
             }
-            
+
             var yOffset:Number = tf.textHeight / 2;
             y += yOffset;
-            
+
             graphics.lineStyle(1, 0x000000);
             graphics.moveTo(blockSize, -yOffset);
             graphics.lineTo(blockSize, (blockSize * (max + 1)) - yOffset);
             graphics.moveTo(0, blockSize - yOffset);
             graphics.lineTo(blockSize * (max + 1), blockSize - yOffset);
-            
-            
+
+
             for ( i = 1; i <= max; i++ ) {
                 for ( j = 1; j <= max; j++ ) {
                     if ( j > i )
                         continue;
-                        
+
                     tf = new TextField();
                     tf.defaultTextFormat = format;
                     tf.x = blockSize * i;
@@ -187,9 +187,9 @@ package {
                     addChild(tf);
                 }
             }
-            
+
         }
-        
+
     }
 
 }
@@ -301,7 +301,7 @@ epocs
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}} 
+{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 
 <!-- {{does not work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386 - missing printf and FORMAT}} -->
 
@@ -401,7 +401,7 @@ end.
 ### Iteration
 
 
-```AppleScript 
+```AppleScript
 set n to 12 -- Size of table.
 repeat with x from 0 to n
 	if x = 0 then set {table, x} to {{return}, -1}
@@ -458,9 +458,9 @@ tableText(multTable(1, 12))
 
 -- multTable :: Int -> [[String]]
 on multTable(m, n)
-    
+
     set axis to enumFromTo(m, n)
-    
+
     script column
         on |λ|(x)
             script row
@@ -472,11 +472,11 @@ on multTable(m, n)
                     end if
                 end |λ|
             end script
-            
+
             {x & map(row, axis)}
         end |λ|
     end script
-    
+
     {{"x"} & axis} & concatMap(column, axis)
 end multTable
 
@@ -491,11 +491,11 @@ on tableText(lstTable)
                     (characters -4 thru -1 of ("    " & int)) as string
                 end |λ|
             end script
-            
+
             intercalate(" ", map(tableCell, lstLine))
         end |λ|
     end script
-    
+
     intercalate(linefeed, map(tableLine, lstTable))
 end tableText
 
@@ -569,7 +569,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -630,14 +630,14 @@ sBlanc3:            .asciz "   "
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                @ entry of program 
-    push {fp,lr}      @ saves 2 registers 
+.global main
+main:                @ entry of program
+    push {fp,lr}      @ saves 2 registers
     @ display first line
     mov r4,#0
 1:    @ begin loop
@@ -655,7 +655,7 @@ main:                @ entry of program
     add r4,#1                      @ increment counter
     cmp r4,#MAXI
     ble 1b                       @ loop
-    ldr r0,iAdrszCarriageReturn   
+    ldr r0,iAdrszCarriageReturn
     bl affichageMess            @ display carriage return
 
     mov r5,#1                   @ line counter
@@ -670,7 +670,7 @@ main:                @ entry of program
     cmp r5,#10                      @ one or two digit in N° line
     ldrge r0,iAdrsBlanc2
     ldrlt r0,iAdrsBlanc3
-    bl affichageMess  
+    bl affichageMess
     mov r4,#1                     @ counter column
 3:  @ begin loop columns
     mul r0,r4,r5                   @ multiplication
@@ -692,13 +692,13 @@ main:                @ entry of program
     add r4,#1                      @ increment counter column
     cmp r4,r5                      @ < counter lines
     ble 3b                        @ loop
-    ldr r0,iAdrszCarriageReturn  
+    ldr r0,iAdrszCarriageReturn
     bl affichageMess            @ display carriage return
     add r5,#1                      @ increment line counter
     cmp r5,#MAXI                  @ MAXI ?
     ble 2b                        @ loop
 
-100:   @ standard end of the program 
+100:   @ standard end of the program
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
     mov r7, #EXIT              @ request to exit program
@@ -710,39 +710,39 @@ iAdrsBlanc1:		.int sBlanc1
 iAdrsBlanc2:		.int sBlanc2
 iAdrsBlanc3:		.int sBlanc3
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}      @ save  registres
-    mov r2,#0                  @ counter length 
-1:      @ loop length calculation 
-    ldrb r1,[r0,r2]           @ read octet start position + index 
-    cmp r1,#0                  @ if 0 its over 
-    addne r2,r2,#1            @ else add 1 in the length 
-    bne 1b                    @ and loop 
-                                @ so here r2 contains the length of the message 
-    mov r1,r0        			@ address message in r1 
-    mov r0,#STDOUT      		@ code to write to the standard output Linux 
-    mov r7, #WRITE             @ code call system "write" 
-    svc #0                      @ call systeme 
-    pop {r0,r1,r2,r7,lr}        @ restaur des  2 registres */ 
-    bx lr                       @ return  
+    mov r2,#0                  @ counter length
+1:      @ loop length calculation
+    ldrb r1,[r0,r2]           @ read octet start position + index
+    cmp r1,#0                  @ if 0 its over
+    addne r2,r2,#1            @ else add 1 in the length
+    bne 1b                    @ and loop
+                                @ so here r2 contains the length of the message
+    mov r1,r0        			@ address message in r1
+    mov r0,#STDOUT      		@ code to write to the standard output Linux
+    mov r7, #WRITE             @ code call system "write"
+    svc #0                      @ call systeme
+    pop {r0,r1,r2,r7,lr}        @ restaur des  2 registres */
+    bx lr                       @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}    @ save registers 
+    push {r1-r4,lr}    @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 
 1:	   @ start loop
     bl divisionpar10U   @unsigned  r0 <- dividende. quotient ->r0 reste -> r1
-    add r1,#48        @ digit	
+    add r1,#48        @ digit
     strb r1,[r3,r2]  @ store digit on area
     cmp r0,#0         @ stop if quotient = 0 */
     subne r2,#1      @ else previous position
@@ -757,8 +757,8 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
     @ and move spaces in end on area
-    mov r0,r4     @ result length 
-    mov r1,#' '   @ space	
+    mov r0,r4     @ result length
+    mov r1,#' '   @ space
 3:
     strb r1,[r3,r4]  @ store space in area
     add r4,#1         @ next position
@@ -766,26 +766,26 @@ conversion10:
     ble 3b           @ loop if r4 <= area size
 
 100:
-    pop {r1-r4,lr}    @ restaur registres 
+    pop {r1-r4,lr}    @ restaur registres
     bx lr             @return
 
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
     mov r4,r0         @ save value
     mov r3,#0xCCCD   @ r3 <- magic_number  lower
     movt r3,#0xCCCC  @ r3 <- magic_number  upper
-    umull r1, r2, r3, r0      @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0      @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3      @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2     @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2     @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1     @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                  @ leave function 
+    bx lr                  @ leave function
 
 
 
@@ -905,7 +905,7 @@ BEGIN {
 {{out}}
 
 ```txt
- 
+
    1   2   3   4   5   6   7   8   9  10  11  12
    2   4   6   8  10  12  14  16  18  20  22  24
    3       9  12  15  18  21  24  27  30  33  36
@@ -1226,8 +1226,8 @@ w^p2<y|!`+66:+1,+*84*"\"!:g25$_,#!>#:<$$_^#!:-1g10/+55\-**<<
                 & "-" !d:?d
                 )
             & str$!w:?w
-            & (   
-                ' ( 
+            & (
+                ' (
                   .   @(str$(rev$!arg ()$w):?arg [($L) ?)
                     & rev$!arg
                   )
@@ -1292,13 +1292,13 @@ w^p2<y|!`+66:+1,+*84*"\"!:g25$_,#!>#:<$$_^#!:-1g10/+55\-**<<
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main(void)
 {
 	int i, j, n = 12;
- 
+
 	for (j = 1; j <= n; j++) printf("%3d%c", j, j != n ? ' ' : '\n');
 	for (j = 0; j <= n; j++) printf(j != n ? "----" : "+\n");
 
@@ -1307,7 +1307,7 @@ int main(void)
 			printf(j < i ? "    " : "%3d ", i * j);
                 printf("| %d\n", i);
         }
- 
+
 	return 0;
 }
 ```
@@ -1335,13 +1335,13 @@ int main(void)
 
 ## C++
 
-This is a slightly more-generalized version 
-that takes any minimum and maximum table value, 
+This is a slightly more-generalized version
+that takes any minimum and maximum table value,
 and formats the table columns.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iomanip>
 #include <cmath> // for log10()
 #include <algorithm> // for max()
@@ -1621,7 +1621,7 @@ Serves 2.
 
 ## Clojure
 
-This is more generalized. 
+This is more generalized.
 Any size can be used and the table will be formatted appropriately.
 
 ```lisp
@@ -1744,7 +1744,7 @@ x 12|                                             144|
 
 print_multiplication_tables = (n) ->
   width = 4
-  
+
   pad = (s, n=width, c=' ') ->
     s = s.toString()
     result = ''
@@ -1771,7 +1771,7 @@ print_multiplication_tables = (n) ->
     for j in [i..n]
        s += pad i*j
     console.log s
-    
+
 print_multiplication_tables 12
 
 ```
@@ -1781,7 +1781,7 @@ print_multiplication_tables 12
 
 ```txt
 
-> coffee multiply.coffee 
+> coffee multiply.coffee
     |   1   2   3   4   5   6   7   8   9  10  11  12
 ----+------------------------------------------------
    1|   1   2   3   4   5   6   7   8   9  10  11  12
@@ -2030,7 +2030,7 @@ end;
 ```
 
 
-Targets MediaWiki markup. 
+Targets MediaWiki markup.
 {{out}}
 <blockquote>
 {|style="border-collapse: collapse; text-align: right;"
@@ -2063,7 +2063,7 @@ Targets MediaWiki markup.
 |  12
 |-
 |style="border-right: 1px solid black;" | 2
-|  
+|
 |  4
 |  6
 |  8
@@ -2077,8 +2077,8 @@ Targets MediaWiki markup.
 |  24
 |-
 |style="border-right: 1px solid black;" | 3
-|  
-|  
+|
+|
 |  9
 |  12
 |  15
@@ -2091,9 +2091,9 @@ Targets MediaWiki markup.
 |  36
 |-
 |style="border-right: 1px solid black;" | 4
-|  
-|  
-|  
+|
+|
+|
 |  16
 |  20
 |  24
@@ -2105,10 +2105,10 @@ Targets MediaWiki markup.
 |  48
 |-
 |style="border-right: 1px solid black;" | 5
-|  
-|  
-|  
-|  
+|
+|
+|
+|
 |  25
 |  30
 |  35
@@ -2119,11 +2119,11 @@ Targets MediaWiki markup.
 |  60
 |-
 |style="border-right: 1px solid black;" | 6
-|  
-|  
-|  
-|  
-|  
+|
+|
+|
+|
+|
 |  36
 |  42
 |  48
@@ -2133,12 +2133,12 @@ Targets MediaWiki markup.
 |  72
 |-
 |style="border-right: 1px solid black;" | 7
-|  
-|  
-|  
-|  
-|  
-|  
+|
+|
+|
+|
+|
+|
 |  49
 |  56
 |  63
@@ -2147,13 +2147,13 @@ Targets MediaWiki markup.
 |  84
 |-
 |style="border-right: 1px solid black;" | 8
-|  
-|  
-|  
-|  
-|  
-|  
-|  
+|
+|
+|
+|
+|
+|
+|
 |  64
 |  72
 |  80
@@ -2161,59 +2161,59 @@ Targets MediaWiki markup.
 |  96
 |-
 |style="border-right: 1px solid black;" | 9
-|  
-|  
-|  
-|  
-|  
-|  
-|  
-|  
+|
+|
+|
+|
+|
+|
+|
+|
 |  81
 |  90
 |  99
 |  108
 |-
 |style="border-right: 1px solid black;" | 10
-|  
-|  
-|  
-|  
-|  
-|  
-|  
-|  
-|  
+|
+|
+|
+|
+|
+|
+|
+|
+|
 |  100
 |  110
 |  120
 |-
 |style="border-right: 1px solid black;" | 11
-|  
-|  
-|  
-|  
-|  
-|  
-|  
-|  
-|  
-|  
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
 |  121
 |  132
 |-
 |style="border-right: 1px solid black;" | 12
-|  
-|  
-|  
-|  
-|  
-|  
-|  
-|  
-|  
-|  
-|  
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
 |  144
 |}
 </blockquote>
@@ -2282,19 +2282,19 @@ for i = 1 to n
 
 ```txt
 
-  😅   1   2   3   4    5    6    7    8    9    10    11    12  
-  1    1   2   3   4    5    6    7    8    9    10    11    12  
-  2        4   6   8    10   12   14   16   18   20    22    24  
-  3            9   12   15   18   21   24   27   30    33    36  
-  4                16   20   24   28   32   36   40    44    48  
-  5                     25   30   35   40   45   50    55    60  
-  6                          36   42   48   54   60    66    72  
-  7                               49   56   63   70    77    84  
-  8                                    64   72   80    88    96  
-  9                                         81   90    99    108 
-  10                                             100   110   120 
-  11                                                   121   132 
-  12                                                         144 
+  😅   1   2   3   4    5    6    7    8    9    10    11    12
+  1    1   2   3   4    5    6    7    8    9    10    11    12
+  2        4   6   8    10   12   14   16   18   20    22    24
+  3            9   12   15   18   21   24   27   30    33    36
+  4                16   20   24   28   32   36   40    44    48
+  5                     25   30   35   40   45   50    55    60
+  6                          36   42   48   54   60    66    72
+  7                               49   56   63   70    77    84
+  8                                    64   72   80    88    96
+  9                                         81   90    99    108
+  10                                             100   110   120
+  11                                                   121   132
+  12                                                         144
 
 ```
 
@@ -2312,7 +2312,7 @@ defmodule RC do
     Enum.each(1..n, fn j ->
       :io.fwrite("~2B |", [j])
       Enum.each(1..n, fn i ->
-        if i<j, do: (IO.write "    "), else: :io.fwrite("~4B", [i*j]) 
+        if i<j, do: (IO.write "    "), else: :io.fwrite("~4B", [i*j])
       end)
       IO.puts ""
     end)
@@ -2362,7 +2362,7 @@ print_upto( N ) ->
 	io:nl(),
 	io:nl(),
 	[print_upto(X, proplists:get_all_values(X, Upto_tuples)) || X <- lists:seq(1, N)].
-	
+
 
 task() -> print_upto( 12 ).
 
@@ -2574,7 +2574,7 @@ class Main
     (1..n).each |i|
     {
       echo ( i.toStr.padl(4) + "|" +
-             Str.spaces(4*(i-1)) + 
+             Str.spaces(4*(i-1)) +
              (i..n).map |Int j -> Str| { (i*j).toStr.padl(4)}.join("") )
     }
   }
@@ -2705,7 +2705,7 @@ The output is the same, so instead, here are the generated FORMAT texts:
  (I3,'|',44X,1I4)
 A zero count for spacing (the 0X, due to there being no omitted results on the first line) was possibly a weak point, but if not handled, the fallback position would have been to arrange that instead of 12I4 format, the first would be 1X,I3.
 
-Some fortrans offer an extension to FORMAT statements, whereby a variable can appear in place of an integer constant, thus instead of say FORMAT (12I4) there could be FORMAT (<n>I4) for example. Then, during the interpretation of the FORMAT text, the current value of variable ''n'' would be accessed. Note that this is on-the-fly: 
+Some fortrans offer an extension to FORMAT statements, whereby a variable can appear in place of an integer constant, thus instead of say FORMAT (12I4) there could be FORMAT (<n>I4) for example. Then, during the interpretation of the FORMAT text, the current value of variable ''n'' would be accessed. Note that this is on-the-fly:
  READ(in,"(I2,<N>I4)") N,(A(I),I = 1,N)
 would read N as a two-digit integer, and, as the READ statement executes further, use that value of N both in the FORMAT text's interpretation and in the further processing of the READ statement.
 
@@ -2719,7 +2719,7 @@ would read N as a two-digit integer, and, as the READ statement executes further
       IMPLICIT NONE
 C
 C     Produce a formatted multiplication table of the kind memorised by rote
-C     when in primary school. Only print the top half triangle of products. 
+C     when in primary school. Only print the top half triangle of products.
 C
 C     23 Nov 15 - 0.1   - Adapted from original for VAX FORTRAN - MEJT
 C
@@ -2748,10 +2748,10 @@ Based on the above code but with a slight modification as VAX FORTRAN doesn't al
       PROGRAM TABLES
 C
 C     Produce a formatted multiplication table of the kind memorised by rote
-C     when in primary school. Only print the top half triangle of products. 
+C     when in primary school. Only print the top half triangle of products.
 C
 C     23 Nov 15 - 0.1   - Adapted from original for VAX FORTRAN - MEJT
-C     24 Nov 15 - 0.2   - FORTRAN IV version adapted from VAX FORTRAN and 
+C     24 Nov 15 - 0.2   - FORTRAN IV version adapted from VAX FORTRAN and
 C                         compiled using Microsoft FORTRAN-80 - MEJT
 C
       DIMENSION K(12)
@@ -2767,8 +2767,8 @@ C
     1 FORMAT(4H0  |,12I4,/,4H --+12(4H----))
 C
 C     Overlaying the format specifier with an integer array makes it possibe
-C     to modify the number of blank spaces.  The number of blank spaces is 
-C     stored as two consecuitive ASCII characters that overlay on the 
+C     to modify the number of blank spaces.  The number of blank spaces is
+C     stored as two consecuitive ASCII characters that overlay on the
 C     integer value in L(7) in the ordr low byte, high byte.
 C
       DO 3 I=1,12
@@ -2790,14 +2790,14 @@ The use of a non standard(?) BYTE data type available in Microsoft FORTRAN-80 ma
       PROGRAM TABLES
 C
 C     Produce a formatted multiplication table of the kind memorised by rote
-C     when in primary school. Only print the top half triangle of products. 
+C     when in primary school. Only print the top half triangle of products.
 C
 C     23 Nov 15 - 0.1   - Adapted from original for VAX FORTRAN - MEJT
-C     24 Nov 15 - 0.2   - FORTRAN IV version adapted from VAX FORTRAN and 
+C     24 Nov 15 - 0.2   - FORTRAN IV version adapted from VAX FORTRAN and
 C                         compiled using Microsoft FORTRAN-80 - MEJT
 C     25 Nov 15 - 0.3   - Microsoft FORTRAN-80 version using a BYTE array
 C                         which makes it easier to understand what is going
-C                         on. - MEJT 
+C                         on. - MEJT
 C
       BYTE A
       DIMENSION A(24)
@@ -2861,11 +2861,11 @@ Print
 Print "---+"; String(48, "-")
 
 For i As Integer = 1 To 12
-  Print Using "###"; i; 
+  Print Using "###"; i;
   Print"|"; Spc(4 * (i - 1));
-  For j As Integer = i To 12   
+  For j As Integer = i To 12
     Print Using "####"; i * j;
-  Next j 
+  Next j
   Print
 Next i
 
@@ -2912,18 +2912,18 @@ Print "  X|";
 For i = 1 To 12
   Print Format(i, "####");
 Next
- 
+
 Print
 Print "---+"; String(48, "-")
- 
+
 For i = 1 To 12
   Print Format(i, "###");
   Print "|"; Space(4 * (i - 1));
   For j = i To 12
-    Print Format(i * j, "####"); 
-  Next  
+    Print Format(i * j, "####");
+  Next
   Print
-Next 
+Next
 
 End
 ```
@@ -2995,13 +2995,13 @@ Solution:
 ```groovy
 def printMultTable = { size = 12 ->
     assert size > 1
-    
+
     // factor1 line
     print '  |'; (1..size).each { f1 -> printf('%4d', f1) }; println ''
-    
+
     // dividing line
     print '--+'; (1..size).each { printf('----', it) }; println ''
-    
+
     // factor2 result lines
     (1..size).each { f2 ->
         printf('%2d|', f2)
@@ -3044,7 +3044,7 @@ printMultTable()
 10  ' Multiplication Tables
 20  LET N% = 12
 30  FOR J% = 1 TO N% - 1
-40   PRINT USING "###"; J%; 
+40   PRINT USING "###"; J%;
 50   PRINT " ";
 60  NEXT J%
 70  PRINT USING "###"; N%
@@ -3052,7 +3052,7 @@ printMultTable()
 90   PRINT "----";
 100 NEXT J%
 110 PRINT "+"
-120 FOR I% = 1 TO N% 
+120 FOR I% = 1 TO N%
 130  FOR J% = 1 TO N%
 140   IF J% < I% THEN PRINT "    "; ELSE PRINT USING "###"; I% * J%;: PRINT " ";
 150  NEXT J%
@@ -3065,20 +3065,20 @@ printMultTable()
 
 ```txt
 
-  1   2   3   4   5   6   7   8   9  10  11  12                                 
-------------------------------------------------+                               
-  1   2   3   4   5   6   7   8   9  10  11  12 |  1                            
-      4   6   8  10  12  14  16  18  20  22  24 |  2                            
-          9  12  15  18  21  24  27  30  33  36 |  3                            
-             16  20  24  28  32  36  40  44  48 |  4                            
-                 25  30  35  40  45  50  55  60 |  5                            
-                     36  42  48  54  60  66  72 |  6                            
-                         49  56  63  70  77  84 |  7                            
-                             64  72  80  88  96 |  8                            
-                                 81  90  99 108 |  9                            
-                                    100 110 120 | 10                            
-                                        121 132 | 11                            
-                                            144 | 12 
+  1   2   3   4   5   6   7   8   9  10  11  12
+------------------------------------------------+
+  1   2   3   4   5   6   7   8   9  10  11  12 |  1
+      4   6   8  10  12  14  16  18  20  22  24 |  2
+          9  12  15  18  21  24  27  30  33  36 |  3
+             16  20  24  28  32  36  40  44  48 |  4
+                 25  30  35  40  45  50  55  60 |  5
+                     36  42  48  54  60  66  72 |  6
+                         49  56  63  70  77  84 |  7
+                             64  72  80  88  96 |  8
+                                 81  90  99 108 |  9
+                                    100 110 120 | 10
+                                        121 132 | 11
+                                            144 | 12
 
 ```
 
@@ -3271,37 +3271,37 @@ for (i = 1; i <= n; i++) {
 
 ```Icon
 procedure main()
-lim := 13 
+lim := 13
 wid :=  5
-every writes(right("* |" | (1 to lim) | "\n",wid)|right("\n",wid*(lim+1),"_"))         # header row and separator 
-every (i := 1 to lim) & 
+every writes(right("* |" | (1 to lim) | "\n",wid)|right("\n",wid*(lim+1),"_"))         # header row and separator
+every (i := 1 to lim) &
    writes(right( i||" |" | (j := 1 to lim, if j < i then "" else i*j) | "\n",wid))     # table content and triangle
-end 
+end
 ```
 
 
-The above example is a somewhat exaggerated example of contractions.  
-In both cases 'every' is used to force all alternatives including row labels, column headings, content, line terminators.  
-The upper triangle is produced by embedding an 'if' expression inside the object of an 'every' (normally an error prone construct which would malfunction if not carefully separated from the generators for 'i' and 'j' - an all too tempting possibility once you get into this mind set.) 
+The above example is a somewhat exaggerated example of contractions.
+In both cases 'every' is used to force all alternatives including row labels, column headings, content, line terminators.
+The upper triangle is produced by embedding an 'if' expression inside the object of an 'every' (normally an error prone construct which would malfunction if not carefully separated from the generators for 'i' and 'j' - an all too tempting possibility once you get into this mind set.)
 
 {{out}}
 
 ```txt
- * |    1    2    3    4    5    6    7    8    9   10   11   12   13    
+ * |    1    2    3    4    5    6    7    8    9   10   11   12   13
 _____________________________________________________________________
-  1 |    1    2    3    4    5    6    7    8    9   10   11   12   13    
-  2 |         4    6    8   10   12   14   16   18   20   22   24   26    
-  3 |              9   12   15   18   21   24   27   30   33   36   39    
-  4 |                  16   20   24   28   32   36   40   44   48   52    
-  5 |                       25   30   35   40   45   50   55   60   65    
-  6 |                            36   42   48   54   60   66   72   78    
-  7 |                                 49   56   63   70   77   84   91    
-  8 |                                      64   72   80   88   96  104    
-  9 |                                           81   90   99  108  117    
- 10 |                                               100  110  120  130    
- 11 |                                                    121  132  143    
- 12 |                                                         144  156    
- 13 |                                                              169 
+  1 |    1    2    3    4    5    6    7    8    9   10   11   12   13
+  2 |         4    6    8   10   12   14   16   18   20   22   24   26
+  3 |              9   12   15   18   21   24   27   30   33   36   39
+  4 |                  16   20   24   28   32   36   40   44   48   52
+  5 |                       25   30   35   40   45   50   55   60   65
+  6 |                            36   42   48   54   60   66   72   78
+  7 |                                 49   56   63   70   77   84   91
+  8 |                                      64   72   80   88   96  104
+  9 |                                           81   90   99  108  117
+ 10 |                                               100  110  120  130
+ 11 |                                                    121  132  143
+ 12 |                                                         144  156
+ 13 |                                                              169
 ```
 
 
@@ -3343,7 +3343,7 @@ public class MultiplicationTable {
     public static void main(String[] args) {
         for (int i = 1; i <= 12; i++)
             System.out.print("\t" + i);
-        
+
         System.out.println();
         for (int i = 0; i < 100; i++)
             System.out.print("-");
@@ -3460,53 +3460,53 @@ public class MultiplicationTable {
 
 ```JavaScript
 (function (m, n) {
- 
+
     // [m..n]
     function range(m, n) {
         return Array.apply(null, Array(n - m + 1)).map(function (x, i) {
             return m + i;
         });
     }
- 
+
     // Monadic bind (chain) for lists
     function mb(xs, f) {
         return [].concat.apply([], xs.map(f));
     }
- 
+
     var rng = range(m, n),
- 
+
         lstTable = [['x'].concat(   rng )]
                          .concat(mb(rng,   function (x) {
         return       [[x].concat(mb(rng,   function (y) {
-    
+
             return y < x ? [''] : [x * y];               // triangle only
-        
+
     }))]}));
-  
+
     /*                        FORMATTING OUTPUT                             */
- 
+
     // [[a]] -> bool -> s -> s
     function wikiTable(lstRows, blnHeaderRow, strStyle) {
         return '{| class="wikitable" ' + (
             strStyle ? 'style="' + strStyle + '"' : ''
         ) + lstRows.map(function (lstRow, iRow) {
             var strDelim = ((blnHeaderRow && !iRow) ? '!' : '|');
- 
+
             return '\n|-\n' + strDelim + ' ' + lstRow.map(function (v) {
                 return typeof v === 'undefined' ? ' ' : v;
             }).join(' ' + strDelim + strDelim + ' ');
         }).join('') + '\n|}';
     }
- 
+
     // Formatted as WikiTable
     return wikiTable(
         lstTable, true,
         'text-align:center;width:33em;height:33em;table-layout:fixed;'
     ) + '\n\n' +
- 
+
     // or simply stringified as JSON
     JSON.stringify(lstTable);
- 
+
 })(1, 12);
 ```
 
@@ -3798,7 +3798,7 @@ fun main(args: Array<String>) {
     print("  x|")
     for (i in 1..12) print("%4d".format(i))
     println("\n---+${"-".repeat(48)}")
-    for (i in 1..12) { 
+    for (i in 1..12) {
         print("%3d".format(i) +"|${" ".repeat(4 * i - 4)}")
         for (j in i..12) print("%4d".format(i * j))
         println()
@@ -3967,7 +3967,7 @@ io.write( "\n", string.rep( "-", 12*5+4 ), "\n" )
 
 for i = 1, 12 do
     io.write( string.format( "%#2d |", i ) )
-    
+
     for j = 1, 12 do
         if j < i then
             io.write( "     " )
@@ -4021,7 +4021,7 @@ Module CheckIt {
       Print
       Print "--+"+string$("-",4*12)
       For i=1 to 12 {
-            Print Format$("{0:0:-2}|",i); 
+            Print Format$("{0:0:-2}|",i);
             For j=1 to 12 {
                   If len(A(j)())>=i then {
                         Print Format$("{0:0:-4}",A(j)(i-1));
@@ -4041,7 +4041,7 @@ Final loop can be this, using Each() and r1 as pointer to array.
 
 For i=1 to 12 {
       j=Each(A())
-      Print Format$("{0:0:-2}|",i); 
+      Print Format$("{0:0:-2}|",i);
       While j {
             r1=A(j^+1)
             If len(r1)>=i then {
@@ -4104,19 +4104,19 @@ end do
 
 ```txt
 
-    1     2     3     4     5     6     7     8     9     10    11    12    
+    1     2     3     4     5     6     7     8     9     10    11    12
 ---------------------------------------------------------------------------
- 1| 1     2     3     4     5     6     7     8     9     10    11    12    
- 2|       4     6     8     10    12    14    16    18    20    22    24    
- 3|             9     12    15    18    21    24    27    30    33    36    
- 4|                   16    20    24    28    32    36    40    44    48    
- 5|                         25    30    35    40    45    50    55    60    
- 6|                               36    42    48    54    60    66    72    
- 7|                                     49    56    63    70    77    84    
- 8|                                           64    72    80    88    96    
- 9|                                                 81    90    99    108   
-10|                                                       100   110   120   
-11|                                                             121   132   
+ 1| 1     2     3     4     5     6     7     8     9     10    11    12
+ 2|       4     6     8     10    12    14    16    18    20    22    24
+ 3|             9     12    15    18    21    24    27    30    33    36
+ 4|                   16    20    24    28    32    36    40    44    48
+ 5|                         25    30    35    40    45    50    55    60
+ 6|                               36    42    48    54    60    66    72
+ 7|                                     49    56    63    70    77    84
+ 8|                                           64    72    80    88    96
+ 9|                                                 81    90    99    108
+10|                                                       100   110   120
+11|                                                             121   132
 12|                                                                   144
 
 ```
@@ -4133,7 +4133,7 @@ Grid[{{Range[12]//Column,Grid[UpperTriangularize[KroneckerProduct[Range[12],Rang
 {{out}}
 
 ```txt
- 
+
 1 1	2	3	4	5	6	7	8	9	10	11	12
 2	4	6	8	10	12	14	16	18	20	22	24
 3		9	12	15	18	21	24	27	30	33	36
@@ -4169,22 +4169,22 @@ function table = timesTable(N)
 
     %Generates a column vector with integers from 1 to N
     rowLabels = (1:N)';
-    
+
     %Generate a row vector with integers from 0 to N
     columnLabels = (0:N);
-    
+
     %Generate the multiplication table using the kronecker tensor product
     %of two vectors one a column vector and the other a row vector
     table = kron((1:N),(1:N)');
-    
-    %Make it upper triangular and concatenate the rowLabels and 
+
+    %Make it upper triangular and concatenate the rowLabels and
     %columnLabels to the table
     table = [columnLabels; rowLabels triu(table)];
-      
+
 end
 ```
 
- 
+
 {{out}}
 For N=12:
 
@@ -4275,7 +4275,7 @@ For j = 0 To n - 1
 EndFor
 TextWindow.WriteLine("+")
 For i = 1 To n
-  For j = 1 To n 
+  For j = 1 To n
     If j < i Then
       TextWindow.Write("    ")
     Else
@@ -4416,7 +4416,7 @@ MULTTABLE(SIZE)
 
 ```txt
 USER>D MULTTABLE^ROSETTA
- 
+
    X|  1    2    3    4    5    6    7    8    9   10   11   12
 -----------------------------------------------------------------
   1 |  1    2    3    4    5    6    7    8    9   10   11   12
@@ -4678,7 +4678,7 @@ our $width = length($max**2) + 1;
 
 printf "%*s", $width, $_ foreach 'x|', 1..$max;
 print "\n", '-' x ($width - 1), '+', '-' x ($max*$width), "\n";
-foreach my $i (1..$max) { 
+foreach my $i (1..$max) {
 	printf "%*s", $width, $_
             foreach "$i|", map { $_ >= $i and $_*$i } 1..$max;
 	print "\n";
@@ -4720,7 +4720,7 @@ foreach my $i (1..$max) {
 my $max = 12;
 my $width = chars $max**2;
 my $f = "%{$width}s";
- 
+
 say 'x'.fmt($f), '│ ', (1..$max).fmt($f);
 say '─' x $width, '┼', '─' x $max*$width + $max;
 for 1..$max -> $i {
@@ -4886,22 +4886,22 @@ Result:
 ```powershell
 #  For clarity
 $Tab = "`t"
- 
+
 #  Create top row
 $Tab + ( 1..12 -join $Tab )
- 
+
 #  For each row
 ForEach ( $i in 1..12 )
     {
     $(  #  The number in the left column
         $i
- 
+
         #  An empty slot for the bottom triangle
         @( "" ) * ( $i - 1 )
- 
+
         #  Calculate the top triangle
         $i..12 | ForEach { $i * $_ }
- 
+
         #  Combine them all together
         ) -join $Tab
     }
@@ -4932,27 +4932,27 @@ function Get-TimesTable ( [int]$Size )
     {
     #  For clarity
     $Tab = "`t"
- 
+
     #  Create top row
     $Tab + ( 1..$Size -join $Tab )
- 
+
     #  For each row
     ForEach ( $i in 1..$Size )
         {
         $(  #  The number in the left column
             $i
- 
+
             #  An empty slot for the bottom triangle
             @( "" ) * ( $i - 1 )
- 
+
             #  Calculate the top triangle
             $i..$Size | ForEach { $i * $_ }
- 
+
          #  Combine them all together (and send them to the out put stream, which in PowerShell implicityly returns them)
          ) -join $Tab
         }
     }
- 
+
 Get-TimesTable 18
 ```
 
@@ -5000,7 +5000,7 @@ Procedure PrintMultiplicationTable(maxx, maxy)
     header$ + RSet(Str(a), sp)
     header$ + "|"
   Next
-  PrintN(trenner$) 
+  PrintN(trenner$)
   PrintN(header$)
   PrintN(trenner$)
   For y = 1 To maxy
@@ -5047,28 +5047,28 @@ Ouput similar to ALGOL 68
 					              else (row*col,"")))
 			       for col in range(size+1)))
 
-		
-  x│  1   2   3   4   5   6   7   8   9  10  11  12 
+
+  x│  1   2   3   4   5   6   7   8   9  10  11  12
 ───┼───────────────────────────────────────────────
-  1│  1   2   3   4   5   6   7   8   9  10  11  12 
-  2│      4   6   8  10  12  14  16  18  20  22  24 
-  3│          9  12  15  18  21  24  27  30  33  36 
-  4│             16  20  24  28  32  36  40  44  48 
-  5│                 25  30  35  40  45  50  55  60 
-  6│                     36  42  48  54  60  66  72 
-  7│                         49  56  63  70  77  84 
-  8│                             64  72  80  88  96 
-  9│                                 81  90  99 108 
- 10│                                    100 110 120 
- 11│                                        121 132 
- 12│                                            144 
->>> 
+  1│  1   2   3   4   5   6   7   8   9  10  11  12
+  2│      4   6   8  10  12  14  16  18  20  22  24
+  3│          9  12  15  18  21  24  27  30  33  36
+  4│             16  20  24  28  32  36  40  44  48
+  5│                 25  30  35  40  45  50  55  60
+  6│                     36  42  48  54  60  66  72
+  7│                         49  56  63  70  77  84
+  8│                             64  72  80  88  96
+  9│                                 81  90  99 108
+ 10│                                    100 110 120
+ 11│                                        121 132
+ 12│                                            144
+>>>
 ```
 
 
-The above works with Python 3.X, which uses Unicode strings by default. 
+The above works with Python 3.X, which uses Unicode strings by default.
 
-Declaring a file type of UTF-8 and adding a u to all string literals to transform them into Unicode literals would make the above work in Python 2.X. 
+Declaring a file type of UTF-8 and adding a u to all string literals to transform them into Unicode literals would make the above work in Python 2.X.
 <small>(As would using ASCII minus, plus, and pipe characters: "-", "+", "|"; instead of the non-ASCII chars used to draw a frame)</small>.
 
 
@@ -5617,14 +5617,14 @@ size: 12
 pad: func [pad n][
     n: to-string n
     insert/dup n " " (pad - length? n)
-    n 
+    n
 ]
 p3: func [v][pad 3 v]  ; A shortcut, I hate to type...
 
 --: has [x][repeat x size + 1 [prin "+---"]  print "+"]  ; Special chars OK.
 
 .row: func [label y /local row x][
-	row: reduce ["|" label "|"]  
+	row: reduce ["|" label "|"]
 	repeat x size [append row reduce [either x < y ["   "][p3 x * y] "|"]]
 	print rejoin row
 ]
@@ -5806,14 +5806,14 @@ buildLine: parse arg row,,$;    do col=0  to high       /*step through  zero ─
 
 multiplication_table(12)
 func multiplication_table n
-  nSize = 4   See "    |   " 
-  for t = 1 to n see  fsize(t, nSize) next 
+  nSize = 4   See "    |   "
+  for t = 1 to n see  fsize(t, nSize) next
   see nl + "----+-" + copy("-", nSize*n) + nl
   for t1 = 1 to n
      see fsize(t1, nSize) + "|   "
      for t2 = 1 to n if t2 >= t1 see  fsize(t1*t2,nSize) else see copy(" ", nSize) ok next
      see nl
-  next 
+  next
 func fsize x,n return string(x) + copy(" ",n-len(string(x)))
 
 ```
@@ -5887,7 +5887,7 @@ multiplication_table 12
 
 
 ```Runbasic
-html "<TABLE border=1 ><TR bgcolor=silver align=center><TD><TD>1<TD>2<TD>3<TD>4<TD>5<TD>6<TD>7<TD>8<TD>9<TD>10<TD>11<TD>12</td></TR>" 
+html "<TABLE border=1 ><TR bgcolor=silver align=center><TD><TD>1<TD>2<TD>3<TD>4<TD>5<TD>6<TD>7<TD>8<TD>9<TD>10<TD>11<TD>12</td></TR>"
 For i = 1 To 12
 	html "<TR align=right><TD>";i;"</td>"
 	For ii = 1 To 12
@@ -5921,7 +5921,7 @@ fn main() {
         for j in 1..LIMIT+1 {
             if j < i {
                 print!("    ")
-            } else { 
+            } else {
                 print!("{:3} ", j * i)
             }
         }
@@ -5962,7 +5962,7 @@ for (i <- 1 to 12) {
 
 
 
-###  case 
+###  case
 
 
 ```scala
@@ -6066,9 +6066,9 @@ A better implementation of <tt>iota</tt> is provided by SRFI-1 [http://srfi.sche
     for i=1:nmax
         s=part(blanks(xx)+string(i),$-xx+1:$)+" |"
         for j = 1:nmax
-            if j >= i then 
-                s=s+part(blanks(xx)+string(i*j),$-xx:$) 
-            else 
+            if j >= i then
+                s=s+part(blanks(xx)+string(i*j),$-xx:$)
+            else
                 s=s+blanks(xx+1)
 	    end
         end
@@ -6102,7 +6102,7 @@ A better implementation of <tt>iota</tt> is provided by SRFI-1 [http://srfi.sche
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const proc: main is func
   local
     const integer: n is 12;
@@ -6132,7 +6132,7 @@ const proc: main is func
 
 ```txt
 
-  1   2   3   4   5   6   7   8   9  10  11  12 
+  1   2   3   4   5   6   7   8   9  10  11  12
 ------------------------------------------------
   1   2   3   4   5   6   7   8   9  10  11  12 |  1
       4   6   8  10  12  14  16  18  20  22  24 |  2
@@ -6477,7 +6477,7 @@ Const NB_END As Byte = 12
         Case Else: MsgBox "Number too large": Exit Sub
     End Select
     strBuff = String(NbDigits, " ")
-    
+
     For i = 1 To NB_END
         strTemp = Right(strBuff & i, NbDigits)
         For j = 2 To NB_END
@@ -6638,18 +6638,18 @@ fcn multiplicationTable(n){
 
  x   1   2   3   4   5   6   7   8   9  10  11  12
    -----------------------------------------------
- 1|  1   2   3   4   5   6   7   8   9  10  11  12 
- 2|  -   4   6   8  10  12  14  16  18  20  22  24 
- 3|  -   -   9  12  15  18  21  24  27  30  33  36 
- 4|  -   -   -  16  20  24  28  32  36  40  44  48 
- 5|  -   -   -   -  25  30  35  40  45  50  55  60 
- 6|  -   -   -   -   -  36  42  48  54  60  66  72 
- 7|  -   -   -   -   -   -  49  56  63  70  77  84 
- 8|  -   -   -   -   -   -   -  64  72  80  88  96 
- 9|  -   -   -   -   -   -   -   -  81  90  99 108 
-10|  -   -   -   -   -   -   -   -   - 100 110 120 
-11|  -   -   -   -   -   -   -   -   -   - 121 132 
-12|  -   -   -   -   -   -   -   -   -   -   - 144 
+ 1|  1   2   3   4   5   6   7   8   9  10  11  12
+ 2|  -   4   6   8  10  12  14  16  18  20  22  24
+ 3|  -   -   9  12  15  18  21  24  27  30  33  36
+ 4|  -   -   -  16  20  24  28  32  36  40  44  48
+ 5|  -   -   -   -  25  30  35  40  45  50  55  60
+ 6|  -   -   -   -   -  36  42  48  54  60  66  72
+ 7|  -   -   -   -   -   -  49  56  63  70  77  84
+ 8|  -   -   -   -   -   -   -  64  72  80  88  96
+ 9|  -   -   -   -   -   -   -   -  81  90  99 108
+10|  -   -   -   -   -   -   -   -   - 100 110 120
+11|  -   -   -   -   -   -   -   -   -   - 121 132
+12|  -   -   -   -   -   -   -   -   -   -   - 144
 
 ```
 

@@ -50,7 +50,7 @@ The program is self explanatory. :)
 int main()
 {
 	FILE* fp = fopen("TAPE.FILE","w");
-	
+
 	fprintf(fp,"This code should be able to write a file to magnetic tape.\n");
 	fprintf(fp,"The Wikipedia page on Magnetic tape data storage shows that magnetic tapes are still in use.\n");
 	fprintf(fp,"In fact, the latest format, at the time of writing this code is TS1155 released in 2017.\n");
@@ -59,9 +59,9 @@ int main()
 	fprintf(fp,"My creator tested me on an i5 machine with SSD and RAM that couldn't have even been dreamt of by Denis Ritchie.\n");
 	fprintf(fp,"Who knows ? Maybe he did foresee today, after all he created something which is still young after 44-45 years and counting...\n");
 	fprintf(fp,"EOF");
-	
+
 	fclose(fp);
-	
+
 	return 0;
 }
 
@@ -74,8 +74,8 @@ int main()
 
 {{trans|D}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <fstream>
 
 #if defined(_WIN32) || defined(WIN32)
@@ -130,7 +130,7 @@ FD TAPE-FILE.
 
 PROCEDURE DIVISION.
     OPEN OUTPUT SHARING WITH ALL OTHER TAPE-FILE
-    WRITE TAPE-FILE-RECORD 
+    WRITE TAPE-FILE-RECORD
         FROM "COBOL treats tape files and text files identically."
     END-WRITE
     STOP RUN.
@@ -162,7 +162,7 @@ Fortran performs reads and writes to some device, without caring much about the 
 
 Of the simplest sort: "Unlabelled". Such a tape consists of a sequence of data blocks, separated by inter-record-gaps, with two in a row at the end to specify the end-of-data on the tape. Although called inter-record, they are actually inter-block: the tape unit reads or writes blocks of say 5,000 characters, not caring that each block might be regarded as containing 50 records of length 100, or 100 records of length 50, etc. The inter-record gap is a sequence of three quarters of an inch of magnetic tape, containing special magnetisation that can be written or sensed at any speed, because these spaces are where the tape is brought to rest between reads or writes. That is, having written the data of a block at full speed, the tape write head writes an IRG as the tape is brought to a stop, and later, when it resumes motion to reach operating speed for the writing of the next block. With adequate data buffering, tape is moved past the head without pause through the IRG as blocks are read or written. If the tape is being read (and written!) with random access the width of the IRG allows for some slop in positioning. Some caution is in order: a "fast forward" action, followed by a few seconds pause to allow the attainment of maximum speed, then a REWIND resulted in a piece of tape being stretched to double length and half width...
 
-Unlabelled tapes are quite inconvenient in a non-user operated computer installation, as mistakes are very easy to make. The wrong tape gets overwritten and the ensuing conversation sours. Computer-readable labels were introduced to supplement human-readable written labels affixed to the tape reel. Co-ordination and standardisation were weak in the 1970s, so there was a lot of variation and partial interoperability between manufacturers and ANSI standards. The first step was of course non-standard labels: some data would be written to the start of the tape that constituted a label, followed by a tape mark, then the actual data file, and so on. Users at an installation would attempt to conform to the local style, and there would be discussions, especially when tapes were exchanged with different systems. A large organisation such as IBM would have its method, and the basic idea was that at the start of the tape would be a volume label and additional information to allow for a data file (or multiple data files) that extended over many reels of tape, each tape identified in turn. This would start with an eighty-character record, beginning "VOL1" - but in EBCDIC, and only later in ASCII. None of this would be visible to the user's programme because it would be handled by the operating system with statements in Job Control Language for the run to identify the file on tape that is to be accessed when the user's programme executes an OPEN statement of a suitable form. And this access would revert to sequential reading or writing with quite ordinary READ and WRITE statements. 
+Unlabelled tapes are quite inconvenient in a non-user operated computer installation, as mistakes are very easy to make. The wrong tape gets overwritten and the ensuing conversation sours. Computer-readable labels were introduced to supplement human-readable written labels affixed to the tape reel. Co-ordination and standardisation were weak in the 1970s, so there was a lot of variation and partial interoperability between manufacturers and ANSI standards. The first step was of course non-standard labels: some data would be written to the start of the tape that constituted a label, followed by a tape mark, then the actual data file, and so on. Users at an installation would attempt to conform to the local style, and there would be discussions, especially when tapes were exchanged with different systems. A large organisation such as IBM would have its method, and the basic idea was that at the start of the tape would be a volume label and additional information to allow for a data file (or multiple data files) that extended over many reels of tape, each tape identified in turn. This would start with an eighty-character record, beginning "VOL1" - but in EBCDIC, and only later in ASCII. None of this would be visible to the user's programme because it would be handled by the operating system with statements in Job Control Language for the run to identify the file on tape that is to be accessed when the user's programme executes an OPEN statement of a suitable form. And this access would revert to sequential reading or writing with quite ordinary READ and WRITE statements.
 
 This was developed when tape drives used half-inch tapes in lengths up to 2,400 feet and seven or nine-track recording, storing up to about 150MB per reel - much depended on the length lost to IRG usage between blocks, but block sizes beyond 20,000 were considered large. Subsequent tape designs have included 18, 36, and 128 tracks, helical recording and storage capacities in tens of gigabytes. Naturally, the tape labelling protocols have become even more complex, but, these matters are handled by more complex operating systems.
 
@@ -170,7 +170,7 @@ This was developed when tape drives used half-inch tapes in lengths up to 2,400 
 
 ## Go
 
-Taking a cue from the [[Talk:Create_a_file_on_magnetic_tape|discussion page]], this creates 
+Taking a cue from the [[Talk:Create_a_file_on_magnetic_tape|discussion page]], this creates
 an optionally compressed [https://en.wikipedia.org/wiki/Tar_%28computing%29 tar (tape archive)] file
 on stdout
 (or written to a file or a device such as /dev/tape).
@@ -304,15 +304,15 @@ public class CreateFile {
 
 
 ```JCL
-// EXEC PGM=IEBGENER 
-//* Create a file named "TAPE.FILE" on magnetic tape; "UNIT=TAPE" 
-//*    may vary depending on site-specific esoteric name assignment 
-//SYSPRINT DD SYSOUT=* 
-//SYSIN    DD DUMMY 
-//SYSUT2   DD UNIT=TAPE,DSN=TAPE.FILE,DISP=(,CATLG) 
-//SYSUT1   DD * 
-DATA TO BE WRITTEN TO TAPE 
-/* 
+// EXEC PGM=IEBGENER
+//* Create a file named "TAPE.FILE" on magnetic tape; "UNIT=TAPE"
+//*    may vary depending on site-specific esoteric name assignment
+//SYSPRINT DD SYSOUT=*
+//SYSIN    DD DUMMY
+//SYSUT2   DD UNIT=TAPE,DSN=TAPE.FILE,DISP=(,CATLG)
+//SYSUT1   DD *
+DATA TO BE WRITTEN TO TAPE
+/*
 ```
 
 
@@ -416,8 +416,8 @@ write_file(file_path,"Hello world!")
 
 ```python>>>
  with open('/dev/tape', 'w') as t: t.write('Hi Tape!\n')
-... 
->>> 
+...
+>>>
 ```
 
 
@@ -442,12 +442,12 @@ The actual mounting and attaching would be performed by the appropriate operatin
 
 DSNAME   (below)   would be the REXX variable that is associated with a dataset that is assigned to a magnetic tape
 
-device.   The association would be different, depending on upon the operating system being used. 
+device.   The association would be different, depending on upon the operating system being used.
 
 
 VM/CMS would use a   '''CP ATTACH'''   command, coupled with a   '''CMS FILEDEF'''   command which associates a
 
-DSNAME   (dataset name)   that will be written to on the attached (and mounted) magnetic tape device.                       
+DSNAME   (dataset name)   that will be written to on the attached (and mounted) magnetic tape device.
 
 ```rexx
 /*REXX pgm  demonstrates  writing records  to an attached magnetic tape.*/
@@ -567,9 +567,9 @@ tar c hello.jnk                  # Traditional archivers use magnetic tape by de
 
 ## ZX Spectrum Basic
 
-The ZX Spectrum does not have file type extensions, so we save as TAPEFILE, 
-rather than TAPE.FILE. 
-We can use any start address, depending on where we want the data to come from. 
+The ZX Spectrum does not have file type extensions, so we save as TAPEFILE,
+rather than TAPE.FILE.
+We can use any start address, depending on where we want the data to come from.
 Here we dump the contents of the screen:
 
 ```zxbasic

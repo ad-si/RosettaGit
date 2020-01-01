@@ -28,7 +28,7 @@ Pass a function ''as an argument'' to another function.
 
 ```forth
 
-: pass-me 
+: pass-me
   "I was passed\n" . ;
 : passer
   w:exec ;
@@ -50,11 +50,11 @@ package {
         public function first(func:Function):String {
             return func.call();
         }
-     
+
         public function second():String {
             return "second";
         }
-        
+
         public static function main():void {
             var result:String = first(second);
             trace(result);
@@ -78,12 +78,12 @@ with Ada.Text_Io; use Ada.Text_Io;
 
 procedure Subprogram_As_Argument is
    type Proc_Access is access procedure;
-   
+
    procedure Second is
    begin
       Put_Line("Second Procedure");
    end Second;
-  
+
    procedure First(Proc : Proc_Access) is
    begin
       Proc.all;
@@ -101,11 +101,11 @@ end Subprogram_As_Argument;
 with Ada.Text_Io; use Ada.Text_Io;
 
 procedure Subprogram_As_Argument_2 is
-   
+
    -- Definition of an access to long_float
 
    type Lf_Access is access Long_Float;
-   
+
    -- Definition of a function returning Lf_Access taking an
    -- integer as a parameter
 
@@ -115,16 +115,16 @@ procedure Subprogram_As_Argument_2 is
       Result.All := 3.14159 * Long_Float(Item);
       return Result;
    end Func_To_Be_Passed;
-   
+
    -- Definition of an access to function type matching the function
    -- signature above
 
    type Func_Access is access function(Item : Integer) return Lf_Access;
-   
+
    -- Definition of an integer access type
 
    type Int_Access is access Integer;
-   
+
    -- Define a function taking an instance of Func_Access as its
    -- parameter and returning an integer access type
 
@@ -134,11 +134,11 @@ procedure Subprogram_As_Argument_2 is
       Result.All := Integer(Item(Parm2).all / 3.14149);
       return Result;
    end Complex_Func;
-   
+
    -- Declare an access variable to hold the access to the function
 
    F_Ptr : Func_Access := Func_To_Be_Passed'access;
-   
+
    -- Declare an access to integer variable to hold the result
 
    Int_Ptr : Int_Access;
@@ -259,7 +259,7 @@ ENDPROC
 on sing about topic by singer
     call of singer for "Of " & topic & " I sing"
 end sing
- 
+
 -- Define a handler in a script object,
 -- then pass the script object.
 script cellos
@@ -268,7 +268,7 @@ script cellos
     end call
 end script
 sing about "functional programming" by cellos
- 
+
 -- Pass a different handler. This one is a closure
 -- that uses a variable (voice) from its context.
 on hire for voice
@@ -291,25 +291,25 @@ We could, for example, write '''map''', '''fold/reduce''' and '''filter''' funct
 on run
     -- PASSING FUNCTIONS AS ARGUMENTS TO
     -- MAP, FOLD/REDUCE, AND FILTER, ACROSS A LIST
-    
+
     set lstRange to {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-    
+
     map(squared, lstRange)
     --> {0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100}
-    
+
     foldl(summed, 0, map(squared, lstRange))
     --> 385
-    
+
     filter(isEven, lstRange)
     --> {0, 2, 4, 6, 8, 10}
-    
-    
+
+
     -- OR MAPPING OVER A LIST OF FUNCTIONS
-    
+
     map(testFunction, {doubled, squared, isEven})
-    
-    --> {{0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20}, 
-    --    {0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100}, 
+
+    --> {{0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20},
+    --    {0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100},
     --    {true, false, true, false, true, false, true, false, true, false, true}}
 end run
 
@@ -321,7 +321,7 @@ end testFunction
 
 -- MAP, REDUCE, FILTER
 
--- Returns a new list consisting of the results of applying the 
+-- Returns a new list consisting of the results of applying the
 -- provided function to each element of the first list
 -- map :: (a -> b) -> [a] -> [b]
 on map(f, xs)
@@ -336,7 +336,7 @@ on map(f, xs)
 end map
 
 -- Applies a function against an accumulator and
--- each list element (from left-to-right) to reduce it 
+-- each list element (from left-to-right) to reduce it
 -- to a single return value
 
 -- In some languages, like JavaScript, this is called reduce()
@@ -370,7 +370,7 @@ on filter(f, xs)
     end tell
 end filter
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -408,8 +408,8 @@ end isEven
 {{Out}}
 
 ```applescript
-{{0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20}, 
-{0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100}, 
+{{0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20},
+{0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100},
 {true, false, true, false, true, false, true, false, true, false, true}}
 ```
 
@@ -492,10 +492,10 @@ return
       REM Test passing a function to a function:
       PRINT FNtwo(FNone(), 10, 11)
       END
-      
+
       REM Function to be passed:
       DEF FNone(x, y) = (x + y) ^ 2
-      
+
       REM Function taking a function as an argument:
       DEF FNtwo(RETURN f%, x, y) = FN(^f%)(x, y)
 ```
@@ -582,7 +582,7 @@ Definition of a function whose only parameter is a pointer to a function with no
 void myFuncSimple( void (*funcParameter)(void) )
 {
     /* ... */
-   
+
     (*funcParameter)();  /* Call the passed function. */
     funcParameter();     /* Same as above with slight different syntax. */
 
@@ -607,7 +607,7 @@ myFuncSimple(&funcToBePassed);
 
 '''Complex example'''
 
-Definition of a function whose return value is a pointer to int and whose only parameter is a pointer to a function, whose (in turn) return value is a pointer to double and whose only parameter is a pointer to long. 
+Definition of a function whose return value is a pointer to int and whose only parameter is a pointer to a function, whose (in turn) return value is a pointer to double and whose only parameter is a pointer to long.
 
 
 ```c
@@ -634,7 +634,7 @@ double* funcToBePassed(long* parameter);
 
 /* ... */
 
-int* outInt;  
+int* outInt;
 
 outInt = myFuncComplex(&funcToBePassed);
 ```
@@ -672,7 +672,7 @@ C++ can pass function pointers in the same manner as C.
 ### Function class template
 
 
-Using the std::tr1::function class template allows more powerful usage. function<> can be used to pass around arbitrary function objects. This permits them to be used as closures. 
+Using the std::tr1::function class template allows more powerful usage. function<> can be used to pass around arbitrary function objects. This permits them to be used as closures.
 
 For C++11 this is now std::function.
 
@@ -712,8 +712,8 @@ int main()
 {{works with|Visual C++|2005}}
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <functional>
 
 template<class Func>
@@ -772,17 +772,17 @@ class Program
     {
         return a + b;
     }
-    
+
     static int Mul(int a, int b)
     {
         return a * b;
     }
-    
+
     static int Div(int a, int b)
     {
         return a / b;
     }
-    
+
     static int Call(Func2 f, int a, int b)
     {
         // Invoking a delegate like a method is syntax sugar; this compiles down to f.Invoke(a, b);
@@ -798,7 +798,7 @@ class Program
         Func2 add = new Func2(Add);
         Func2 mul = new Func2(Mul);
         Func2 div = new Func2(Div);
-        
+
         Console.WriteLine("f=Add, f({0}, {1}) = {2}", a, b, Call(add, a, b));
         Console.WriteLine("f=Mul, f({0}, {1}) = {2}", a, b, Call(mul, a, b));
         Console.WriteLine("f=Div, f({0}, {1}) = {2}", a, b, Call(div, a, b));
@@ -862,7 +862,7 @@ class Program
     {
         int a = 6;
         int b = 2;
-        
+
                                                                  // No lengthy delegate keyword.
         Console.WriteLine("f=Add, f({0}, {1}) = {2}", a, b, Call((int x, int y) => { return x + y; }, a, b));
 
@@ -1025,7 +1025,7 @@ CL-USER> (reduce #'/ '(1 2 3 4 5))
 1/120
 CL-USER> (mapcar #'(lambda (n) (expt 2 n)) '(0 1 2 3 4 5))
 (1 2 4 8 16 32)
-CL-USER> 
+CL-USER>
 ```
 
 
@@ -1168,17 +1168,17 @@ twice:
 
 ```delphi
 type TFnType = function(x : Float) : Float;
- 
+
 function First(f : TFnType) : Float;
 begin
    Result := f(1) + 2;
 end;
- 
+
 function Second(f : Float) : Float;
 begin
    Result := f/2;
 end;
- 
+
 PrintLn(First(Second));
 ```
 
@@ -1194,7 +1194,7 @@ PrintLn(First(Second));
 func call(f, a, b) {
     f(a, b)
 }
- 
+
 const a = 6
 const b = 2
 
@@ -1257,15 +1257,15 @@ INTEGER applyPrototype(INTEGER v1, actionPrototype actionFunc) := 0;
 INTEGER applyValue2(INTEGER v1,
                     actionPrototype actionFunc = aveValues) :=
                     actionFunc(v1, v1+1)*2;
-                       
+
 //Defining the Function parameter inline, witha default value:
 INTEGER applyValue4(INTEGER v1,
                     INTEGER actionFunc(INTEGER v1,INTEGER v2) = aveValues)
-               := actionFunc(v1, v1+1)*4; 
+               := actionFunc(v1, v1+1)*4;
 INTEGER doApplyValue(INTEGER v1,
                      INTEGER actionFunc(INTEGER v1, INTEGER v2))
         := applyValue2(v1+1, actionFunc);
-       
+
 //producing simple results:
 OUTPUT(applyValue2(1));                           // 2
 OUTPUT(applyValue2(2));                           // 4
@@ -1277,7 +1277,7 @@ OUTPUT(doApplyValue(1, multiValues));             // 12
 OUTPUT(doApplyValue(2, multiValues));             // 24
 
 
-          
+
 //A definition taking function parameters which themselves
 //have parameters that are functions...
 
@@ -1286,12 +1286,12 @@ STRING doMany(INTEGER v1,
                                   INTEGER actionFunc(INTEGER v1,INTEGER v2)),
               INTEGER secondAction(INTEGER v1,
                                    INTEGER actionFunc(INTEGER v1,INTEGER v2)),
-              INTEGER actionFunc(INTEGER v1,INTEGER v2)) 
+              INTEGER actionFunc(INTEGER v1,INTEGER v2))
        := (STRING)firstAction(v1, actionFunc) + ':' + (STRING)secondaction(v1, actionFunc);
 
 OUTPUT(doMany(1, applyValue2, applyValue4, addValues));
      // produces "6:12"
-     
+
 OUTPUT(doMany(2, applyValue4, applyValue2,multiValues));
      // produces "24:12"
 ```
@@ -1307,7 +1307,7 @@ first = fn (F) {
   F()
 }
 
-second = fn () { 
+second = fn () {
   io.format("hello~n")
 }
 
@@ -1337,7 +1337,7 @@ ELENA 4.1 :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     var first := (f => f());
@@ -1591,7 +1591,7 @@ use the EXTERNAL attribute to show the dummy argument is another function rather
 
 ```fortran
 FUNCTION FUNC3(FUNC1, FUNC2, x, y)
-  REAL, EXTERNAL :: FUNC1, FUNC2 
+  REAL, EXTERNAL :: FUNC1, FUNC2
   REAL :: FUNC3
   REAL :: x, y
 
@@ -1664,7 +1664,7 @@ end program FuncArg
 ```freebasic
 ' FB 1.05.0 Win64
 
-Function square(n As Integer) As Integer  
+Function square(n As Integer) As Integer
   Return n * n
 End Function
 
@@ -1677,7 +1677,7 @@ Sub doCalcs(from As Integer, upTo As Integer, title As String, func As Function(
   For i As Integer = from To upTo
     Print Using "#####"; func(i);
   Next
-  Print  
+  Print
 End Sub
 
 doCalcs 1, 10, "Squares", @square
@@ -1740,7 +1740,7 @@ dim as pointer functionOneAddress
 
 def fn FunctionOne( x as long, y as long ) as long = (x + y) ^ 2
 functionOneAddress = @fn FunctionOne
- 
+
 def fn FunctionTwo( x as long, y as long ) using functionOneAddress
 
 print fn FunctionTwo( 12, 12 )
@@ -1825,7 +1825,7 @@ main = putStrLn $ func1 func2
 Or, with an anonymous function:
 
 ```haskell
-func f = f 1 2 
+func f = f 1 2
 
 main = print $ func (\x y -> x+y)
 -- output: 3
@@ -1962,7 +1962,7 @@ There is no real callback in Java like in C or C++, but we can do the same as sw
 
 ```java
 public class NewClass {
-   
+
    public NewClass() {
        first(new AnEventOrCallback() {
            public void call() {
@@ -1970,15 +1970,15 @@ public class NewClass {
            }
        });
    }
-   
+
    public void first(AnEventOrCallback obj) {
        obj.call();
    }
-   
+
    public void second() {
        System.out.println("Second");
    }
-   
+
    public static void main(String[] args) {
        new NewClass();
    }
@@ -1994,22 +1994,22 @@ From Java 8, lambda expressions may be used. Example (from Oracle):
 
 ```java
 public class ListenerTest {
-   public static void main(String[] args) {   
+   public static void main(String[] args) {
      JButton testButton = new JButton("Test Button");
      testButton.addActionListener(new ActionListener(){
      @Override public void actionPerformed(ActionEvent ae){
          System.out.println("Click Detected by Anon Class");
        }
      });
-     
+
      testButton.addActionListener(e -> System.out.println("Click Detected by Lambda Listner"));
-     
+
      // Swing stuff
      JFrame frame = new JFrame("Listener Test");
      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
      frame.add(testButton, BorderLayout.CENTER);
      frame.pack();
-     frame.setVisible(true);     
+     frame.setVisible(true);
    }
 }
 ```
@@ -2132,7 +2132,7 @@ In the following sequence of interactions, we pass the function *is_even/0* to s
 
 ```jq
 def is_even:
-  if floor == . then (. % 2) == 0 
+  if floor == . then (. % 2) == 0
   else error("is_even expects its input to be an integer")
   end;
 ```
@@ -2144,9 +2144,9 @@ def is_even:
 # though it requires a release of jq after jq 1.4;
 # we do so to highlight the fact that all/2
 # terminates the generator once the condition is satisfied:
-all( range(1;6); is_even )       
+all( range(1;6); is_even )
 false
- 
+
 # Display the even integers in the given range:
 range(1;6) | select(is_even)
 2
@@ -2468,7 +2468,7 @@ Tan[Cos[x] Sin[x]]
    F1=@sin;	% F1 refers to function sin()
    F2=@cos;	% F2 refers to function cos()
 
-   % varios ways to call the referred function 	
+   % varios ways to call the referred function
    F1(pi/4)
    F2(pi/4)
    feval(@sin,pi/4)
@@ -2476,7 +2476,7 @@ Tan[Cos[x] Sin[x]]
    feval(F1,pi/4)
    feval(F2,pi/4)
 
-   % named functions, stored as strings	
+   % named functions, stored as strings
    feval('sin',pi/4)
    feval('cos',pi/4)
    F3 = 'sin';
@@ -2645,7 +2645,7 @@ TYPE
   Formatter = PROCEDURE (s: STRING; len: LONGINT): STRING;
 VAR
   words: ARRAY 8 OF STRING;
-  
+
   PROCEDURE PrintWords(w: ARRAY OF STRING; format: Formatter);
   VAR
     i: INTEGER;
@@ -2666,7 +2666,7 @@ BEGIN
   words[5] := "field";
   words[6] := "of";
   words[7] := "medicine";
-  
+
   PrintWords(words,Tools.AdjustLeft);
   PrintWords(words,Tools.AdjustCenter);
   PrintWords(words,Tools.AdjustRight)
@@ -2795,7 +2795,7 @@ Here we pass #1+ to map :
 
 ## ooRexx
 
-routines are first class ooRexx objects that can be passed to other routines or methods and invoked. 
+routines are first class ooRexx objects that can be passed to other routines or methods and invoked.
 
 ```ooRexx
 say callit(.routines~fib, 10)
@@ -3149,11 +3149,11 @@ Copy of [[Higher-order_functions#Euphoria|Euphoria]]
 procedure use(integer fi, integer a, integer b)
     print(1,call_func(fi,{a,b}))
 end procedure
- 
+
 function add(integer a, integer b)
     return a + b
 end function
- 
+
 use(routine_id("add"),23,45)
 ```
 
@@ -3506,7 +3506,7 @@ print ["Unnamed:"  mold map func [i][i * 2 + 1] x]
 ```
 
 
-Output: 
+Output:
 
 
 ```txt
@@ -3571,19 +3571,19 @@ square:   return $**2
 docalcs(1,10,"squares",:square)
 docalcs(1,10,"cubes",:cube)
 
-func square(n)  
+func square(n)
         return n * n
- 
+
 func cube(n)
         return n * n * n
- 
+
 func docalcs(from2,upto,title,func2)
        see title + " -> " + nl
        for i = from2 to upto
             x = call func2(i)
             see x + nl
        next
-       see nl 
+       see nl
 
 ```
 
@@ -3591,7 +3591,7 @@ Output:
 
 ```txt
 
-squares -> 
+squares ->
 1
 4
 9
@@ -3603,7 +3603,7 @@ squares ->
 81
 100
 
-cubes -> 
+cubes ->
 1
 8
 27
@@ -3633,7 +3633,7 @@ to2(&succ) #=> 3
 to2{|x| x+1} #=> 3
 ```
 
-  
+
 With a method:
 
 ```ruby
@@ -3843,8 +3843,8 @@ Note that <tt>{(x, y) in x + y}</tt> can also be written as <tt>{$0 + $1}</tt> o
 
 ```tcl
 # this procedure executes its argument:
-proc demo {function} { 
-    $function 
+proc demo {function} {
+    $function
 }
 # for example:
 demo bell
@@ -4148,7 +4148,7 @@ End Module
 
 domains
   intFunction = (integer In) -> integer Out procedure (i).
-  
+
 class predicates
   addone : intFunction.
   doTwice : (intFunction, integer) -> integer procedure (i, i).

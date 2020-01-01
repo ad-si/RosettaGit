@@ -22,9 +22,9 @@ R(n)&=R(n-1)+S(n-1), \quad n>1.
 
 The sequence <big><math>S(n)</math></big> is further defined as the sequence of positive integers '''''not''''' present in <big><math>R(n)</math></big>.
 
-Sequence <big><math>R</math></big> starts: 
+Sequence <big><math>R</math></big> starts:
     1, 3, 7, 12, 18, ...
-Sequence <big><math>S</math></big> starts: 
+Sequence <big><math>S</math></big> starts:
     2, 4, 5, 6, 8, ...
 
 
@@ -338,7 +338,7 @@ R[1..40] and S[1..960] uniquely contain all 1..1000
       NEXT
       IF r% = 41 AND s% = 961 PRINT "Test passed" ELSE PRINT "Test failed"
       END
-      
+
       DEF FNffr(N%)
       LOCAL I%, J%, R%, S%, V%
       DIM V% LOCAL 2*N%+1
@@ -356,7 +356,7 @@ R[1..40] and S[1..960] uniquely contain all 1..1000
         IF R% <= 2*N% V%?R% = 1
       NEXT I%
       = R%
-      
+
       DEF FNffs(N%)
       LOCAL I%, J%, R%, S%, V%
       DIM V% LOCAL 2*N%+1
@@ -393,8 +393,8 @@ Test passed
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 // simple extensible array stuff
@@ -487,8 +487,8 @@ int main(void)
 {{works with|gcc}}
 {{works with|C++|11, 14, 17}}
 
-```cpp>#include <iomanip
-
+```cpp
+#include <iomanip>
 #include <iostream>
 #include <set>
 #include <vector>
@@ -619,7 +619,7 @@ namespace HofstadterFigureFigure
 			int rCount = _r.Count;
 			int oldR = _r[rCount - 1];
 			int sVal;
-			
+
 			// Take care of first two cases specially since S won't be larger than R at that point
 			switch (rCount)
 			{
@@ -881,13 +881,13 @@ void main() {
 ```scheme
 (define (FFR n)
 	(+ (FFR (1- n)) (FFS (1- n))))
-	
+
 (define (FFS n)
 	(define next (1+ (FFS (1- n))))
 	(for ((k (in-naturals next)))
 		  #:break (not (vector-search* k (cache 'FFR))) => k
 		  ))
-	
+
 (remember 'FFR #(0 1)) ;; init cache
 (remember 'FFS #(0 2))
 
@@ -1190,7 +1190,7 @@ test 1000: True
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-link printf,ximage 
+link printf,ximage
 
 procedure main()
    printf("Hofstader ff sequences R(n:= 1 to %d)\n",N := 10)
@@ -1198,52 +1198,52 @@ procedure main()
 
    L := list(N := 1000,0)
    zero := dup := oob := 0
-   every n := 1 to (RN := 40) do 
+   every n := 1 to (RN := 40) do
       if not L[ffr(n)] +:= 1 then    # count R occurrence
          oob +:= 1                   # count out of bounds
 
-   every n := 1 to (N-RN) do 
-      if not L[ffs(n)] +:= 1 then    # count S occurrence 
-         oob +:= 1                   # count out of bounds  
-   
+   every n := 1 to (N-RN) do
+      if not L[ffs(n)] +:= 1 then    # count S occurrence
+         oob +:= 1                   # count out of bounds
+
    every zero +:= (!L = 0)           # count zeros / misses
    every dup  +:= (!L > 1)           # count > 1's / duplicates
-      
+
    printf("Results of R(1 to %d) and S(1 to %d) coverage is ",RN,(N-RN))
-   if oob+zero+dup=0 then 
+   if oob+zero+dup=0 then
       printf("complete.\n")
-   else 
+   else
       printf("flawed\noob=%i,zero=%i,dup=%i\nL:\n%s\nR:\n%s\nS:\n%s\n",
              oob,zero,dup,ximage(L),ximage(ffr(ffr)),ximage(ffs(ffs)))
 end
 
-procedure ffr(n)             
+procedure ffr(n)
 static R,S
 initial {
    R := [1]
    S := ffs(ffs)               # get access to S in ffs
    }
-   
+
    if n === ffr then return R  # secret handshake to avoid globals :)
-   
-   if integer(n) > 0 then 
+
+   if integer(n) > 0 then
       return R[n] | put(R,ffr(n-1) + ffs(n-1))[n]
 end
 
 procedure ffs(n)
 static R,S
 initial {
-   S := [2] 
+   S := [2]
    R := ffr(ffr)               # get access to R in ffr
    }
-   
+
    if n === ffs then return S  # secret handshake to avoid globals :)
-   
+
    if integer(n) > 0 then {
       if S[n] then return S[n]
       else {
-         t := S[*S]  
-         until *S = n do 
+         t := S[*S]
+         until *S = n do
             if (t +:= 1) = !R then next # could be optimized with more code
             else return put(S,t)[*S]    # extend S
          }
@@ -1252,9 +1252,9 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
-[http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn ximage.icn allows formatting entire structures] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
+[http://www.cs.arizona.edu/icon/library/src/procs/ximage.icn ximage.icn allows formatting entire structures]
 
 Output:
 ```txt
@@ -1337,28 +1337,28 @@ class Hofstadter
     }
     return list;
   }
-  
+
   public static int ffr(int n)
   {  return getSequence(n, 0).get(n - 1).intValue();  }
-  
+
   public static int ffs(int n)
   {  return getSequence(0, n).get(n - 1).intValue();  }
-  
+
   public static void main(String[] args)
   {
     System.out.print("R():");
     for (int n = 1; n <= 10; n++)
       System.out.print(" " + ffr(n));
     System.out.println();
-    
+
     Set<Integer> first40R = new HashSet<Integer>();
     for (int n = 1; n <= 40; n++)
       first40R.add(Integer.valueOf(ffr(n)));
-      
+
     Set<Integer> first960S = new HashSet<Integer>();
     for (int n = 1; n <= 960; n++)
       first960S.add(Integer.valueOf(ffs(n)));
-    
+
     for (int i = 1; i <= 1000; i++)
     {
       Integer n = Integer.valueOf(i);
@@ -1429,8 +1429,8 @@ for (var i = 1; i <= 960; i += 1) {
 int_array.sort(function(a,b){return a-b;});
 
 for (var i = 1; i <= 1000; i += 1) {
-	if (int_array[i-1] !== i) { 
-		throw "Something's wrong!" 
+	if (int_array[i-1] !== i) {
+		throw "Something's wrong!"
 	} else { console.log("1000 integer check ok."); }
 }
 ```
@@ -1489,7 +1489,7 @@ function FigureFigure{T<:Integer}(rnmax::T=10)
     ff = FigureFigure([1], 1, 0, 2)
     grow!(ff, rnmax)
     return ff
-end    
+end
 
 function FigureFigure{T<:Integer}(rnmax::T, snmax::T)
     ff = FigureFigure(rnmax)
@@ -1579,7 +1579,7 @@ println("cover the entire interval.")
 ```txt
 
 The first 10 values of R are:
-    1  3  7  12  18  26  35  45  56  69  
+    1  3  7  12  18  26  35  45  56  69
 
 The first 40 values of R and 960 of S are contained in the interval 1:1000.
 These values cover the entire interval.
@@ -1633,7 +1633,7 @@ fun main(args: Array<String>) {
 
 1. Create two functions named ffr and ffs that when given n return R(n) or S(n) respectively.
     The instructions call for two functions.
-    Because S[n] is generated while computing R[n], one would normally avoid redundancy by combining 
+    Because S[n] is generated while computing R[n], one would normally avoid redundancy by combining
     R and S into a single function that returns both sequences.
 
 2. No maximum value for n should be assumed.
@@ -1685,10 +1685,10 @@ fun main(args: Array<String>) {
 
 
 ```MATLAB
-  function [R,S] = ffr_ffs(N) 
-    t = [1,0]; 
+  function [R,S] = ffr_ffs(N)
+    t = [1,0];
     T = 1;
-    n = 1; 
+    n = 1;
     %while T<=1000,
     while n<=N,
         R = find(t,n);
@@ -1696,19 +1696,19 @@ fun main(args: Array<String>) {
         T = R(n)+S(n);
 
         % pre-allocate memory, this improves performance
-	if T > length(t), t = [t,zeros(size(t))]; end;  
+	if T > length(t), t = [t,zeros(size(t))]; end;
 
-        t(T) = 1; 
+        t(T) = 1;
         n = n + 1;
-    end; 
-    if nargout>0, 
-      r = max(R); 
+    end;
+    if nargout>0,
+      r = max(R);
       s = max(S);
-    else 
+    else
       printf('Sequence R:\n'); disp(R);
       printf('Sequence S:\n'); disp(S);
-    end; 
-  end; 
+    end;
+  end;
 ```
 
 
@@ -1725,14 +1725,14 @@ Sequence S:
 ```
 
 
-4. This is self-evident from the function definition, but also because R and S are complementary in t and ~t. However, one can also 
-Calculate and show that the first 40 values of ffr plus the first 960 values of ffs include all the integers from 1 to 1000 exactly once. 
+4. This is self-evident from the function definition, but also because R and S are complementary in t and ~t. However, one can also
+Calculate and show that the first 40 values of ffr plus the first 960 values of ffs include all the integers from 1 to 1000 exactly once.
 Modify the function above in such a way that, instead of r and s, R and S are returned, and run
 
 ```txt
-  [R1,S1] = ffr_ffs(40);	
-  [R2,S2] = ffr_ffs(960);	
-  all(sort([R1,S2])==1:1000) 
+  [R1,S1] = ffr_ffs(40);
+  [R2,S2] = ffr_ffs(960);
+  all(sort([R1,S2])==1:1000)
 ans =  1
 
 ```
@@ -1781,8 +1781,8 @@ else: echo "All Integers 1..1000 NOT found only once: ERROR"
 Output:
 
 ```txt
-/home/deen/git/nim-unsorted/hofstadter 
-1 3 7 12 18 26 35 45 56 69 
+/home/deen/git/nim-unsorted/hofstadter
+1 3 7 12 18 26 35 45 56 69
 All Integers 1..1000 found OK
 ```
 
@@ -1798,11 +1798,11 @@ ListBuffer new 1 over add R put
 tvar: S
 ListBuffer new 2 over add S put
 
-: buildnext 
+: buildnext
 | r s current i |
-   R at ->r 
+   R at ->r
    S at ->s
-   r last  r size s at  + dup ->current  r add 
+   r last  r size s at  + dup ->current  r add
    s last 1+  current 1-  for: i [ i s add ]
    current 1+ s add ;
 
@@ -1845,7 +1845,7 @@ use warnings;
 
 my @r = ( undef, 1 );
 my @s = ( undef, 2 );
- 
+
 sub ffsr {
   my $n = shift;
   while( $#r < $n ) {
@@ -1854,10 +1854,10 @@ sub ffsr {
   }
   return $n;
 }
- 
+
 sub ffr { $r[ffsr shift] }
 sub ffs { $s[ffsr shift] }
- 
+
 printf "  i: R(i) S(i)\n";
 printf "
 ### ========
@@ -1934,7 +1934,7 @@ function ffs(integer n)
         fmax += 1
         if fmax>length(F) then {} = ffr(fmax) end if
         S &= tagset(lim:=F[fmax]-1,start:=F[fmax-1]+1)
-        -- ie/eg if fmax was 3, then F[2..3] being {3,7} 
+        -- ie/eg if fmax was 3, then F[2..3] being {3,7}
         --       ==> tagset(lim:=6,start:=4), ie {4,5,6}.
     end while
     return S[n]
@@ -2032,7 +2032,7 @@ Output:
 
 ```txt
 
-Please type a value for n: 
+Please type a value for n:
     1    3    7   12   18   26   35   45   56   69   83   98  114  131  150
   170  191  213  236  260  285  312  340  369  399  430  462  495  529  565
   602  640  679  719  760  802  845  889  935  982
@@ -2070,7 +2070,7 @@ Output of first 960 values:
 
 ```txt
 
-Please type a value for n: 
+Please type a value for n:
     2    4    5    6    8    9   10   11   13   14   15   16   17   19   20
    21   22   23   24   25   27   28   29   30   31   32   33   34   36   37
   ...
@@ -2103,9 +2103,9 @@ Output:
 
 ```txt
 
-Verification that the first 40 FFR numbers and the first 
-960 FFS numbers result in the integers 1 to 1000 only. 
-passed test 
+Verification that the first 40 FFR numbers and the first
+960 FFS numbers result in the integers 1 to 1000 only.
+passed test
 
 ```
 
@@ -2141,7 +2141,7 @@ ffs(N, S), ffs(N1,S1) ==>
          N > 1, N1 is N - 1 |
 	 V is S1 + 1,
 	 (   find_chr_constraint(ffr(_, V)) ->  S is V+1; S = V).
- 
+
 % init
 hofstadter(N) ==>  ffr(1,1), ffs(1,2).
 % loop
@@ -2223,7 +2223,7 @@ def ffr(n):
         r, s = ffr.r, ffs.s
         ffr_n_1 = ffr(n-1)
         lastr = r[-1]
-        # extend s up to, and one past, last r 
+        # extend s up to, and one past, last r
         s += list(range(s[-1] + 1, lastr))
         if s[-1] < lastr: s += [lastr + 1]
         # access s[n-1] temporarily extending s if necessary
@@ -2389,7 +2389,7 @@ The functions ffr and ffs simply retrieve the value from the hash table if it ex
 ```Racket
 (define (ffr n)
   (hash-ref r-cache n (lambda () (extend-r-s!) (ffr n))))
- 
+
 (define (ffs n)
   (hash-ref s-cache n (lambda () (extend-r-s!) (ffs n))))
 ```
@@ -2480,7 +2480,7 @@ FFS: procedure expose r. s. rr.; parse arg n     /*search for not null  R or S  
 ser: errs=errs+1;    say  '***error***'  arg(1);                  return
 ```
 
-To see the talk section about this REXX program's timings, click here:     [http://rosettacode.org/wiki/Talk:Hofstadter_Figure-Figure_sequences#timings_for_the_REXX_solutions timings for the REXX solutions]. 
+To see the talk section about this REXX program's timings, click here:     [http://rosettacode.org/wiki/Talk:Hofstadter_Figure-Figure_sequences#timings_for_the_REXX_solutions timings for the REXX solutions].
 
 
 '''output'''   when using the default inputs:
@@ -2504,7 +2504,7 @@ verification completed for all numbers from  1 ──► 1000   [inclusive].
 
 
 
-### Version 2  from PL/I 
+### Version 2  from PL/I
 
 
 ```rexx
@@ -2590,7 +2590,7 @@ Verification that the first 40 FFR numbers and the first
 0.011000 seconds elapsed
    1   3   7  12  18  26  35  45  56  69  83  98 114 131 150
  170 191 213 236 260 285 312 340 369 399 430 462 495 529 565
- 602 640 679 719 760 802 845 889 935 982                    
+ 602 640 679 719 760 802 845 889 935 982
 passed test
 Windows (ooRexx)  33.183000 seconds elapsed
 Windows (Regina)  22.627000 seconds elapsed
@@ -3167,8 +3167,8 @@ End Sub
 
 ```txt
 The first ten values of R are:
- 1  3  7  12  18  26  35  45  56  69 
-The first 40 values of ffr plus the first 960 values of ffs 
+ 1  3  7  12  18  26  35  45  56  69
+The first 40 values of ffr plus the first 960 values of ffs
 include all the integers from 1 to 1000 exactly once is True
 ```
 

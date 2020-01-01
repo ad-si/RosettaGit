@@ -17,14 +17,14 @@ tags = []
 Walk a given directory ''tree'' and print files matching a given pattern.
 
 
-'''Note:''' This task is for recursive methods.   These tasks should read an entire directory tree, not a ''single directory''.  
+'''Note:''' This task is for recursive methods.   These tasks should read an entire directory tree, not a ''single directory''.
 
 
 '''Note:''' Please be careful when running any code examples found here.
 
 
 ;Related task:
-*   [[Walk a directory/Non-recursively]]   (read a ''single directory''). 
+*   [[Walk a directory/Non-recursively]]   (read a ''single directory'').
 
 
 
@@ -185,7 +185,7 @@ FOR /R C:\Windows\System32 %F IN (*.DLL) DO ECHO "%F"
       pattern$ = "*.chm"
       PROClisttree(directory$, pattern$)
       END
-      
+
       DEF PROClisttree(dir$, filter$)
       LOCAL dir%, sh%, res%
       DIM dir% LOCAL 317
@@ -328,8 +328,8 @@ int main()
 With the [http://www.openbsd.org/cgi-bin/man.cgi?query=fts&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html fts(3)] functions from 4.4BSD, this program can sort the files, and can also detect cycles (when a link puts a directory inside itself). This program makes a ''logical traversal'' that follows symbolic links to directories.
 {{works with|OpenBSD|4.9}}
 
-```c>#include <sys/types.h
-
+```c
+#include <sys/types.h>
 #include <err.h>
 #include <errno.h>
 #include <fnmatch.h>
@@ -419,8 +419,8 @@ main()
 {{libheader|Win32}}
 {{works with|MinGW}}
 
-```c>#include <windows.h
-
+```c
+#include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <wchar.h>
@@ -584,7 +584,7 @@ subdirs:
 		} else {
 			/* Find next possible subdirectory. */
 			if (FindNextFileW(dir->ffh, &dir->ffd) == 0)
-				goto closeffh;				
+				goto closeffh;
 		}
 
 		/* Enter subdirectories. */
@@ -765,7 +765,7 @@ ClassMethod WalkTree(pDir As %String = "", pMask As %String = "*.*") As %Status
 {
 	// do some validation
 	If pDir="" Quit $$$ERROR($$$GeneralError, "No directory specified.")
-	
+
 	// search input directory for files matching wildcard
 	Set fs=##class(%ResultSet).%New("%File.FileSet")
 	Set sc=fs.Execute(pDir, pMask)
@@ -774,7 +774,7 @@ ClassMethod WalkTree(pDir As %String = "", pMask As %String = "*.*") As %Status
 		// sub-directory
 		If fs.Type="D" Set sc=..WalkTree(fs.Name, pMask)
 	}
-	
+
 	// finished
 	Quit $$$OK
 }
@@ -838,7 +838,7 @@ walk = (dir, f_match, f_visit) ->
       if fs.statSync(fn).isDirectory()
         _walk fn
   _walk(dir)
-  
+
 dir = '..'
 matcher = (fn) -> fn.match /\.coffee/
 action = console.log
@@ -979,7 +979,7 @@ Use builtin function filelib:fold_files/5
 
 ```txt
 
-10> filelib:fold_files( "/tmp", ".*", true, fun(File, Acc) -> [File|Acc] end, []).   
+10> filelib:fold_files( "/tmp", ".*", true, fun(File, Acc) -> [File|Acc] end, []).
 ["/tmp/clearcase_inst/local.conf", "/tmp/.X0-lock","/tmp/.cron-check-4000-was-here",
  "/tmp/kerneloops.XyN0SP","/tmp/npicagwD7tf"]
 11> filelib:fold_files( "/tmp", ".*\.conf", true, fun(File, Acc) -> [File|Acc] end, []).
@@ -1052,7 +1052,7 @@ file-stat buffer: statbuf
       isdir if
         pad count + swap recurse
       else drop then
-    else drop then 
+    else drop then
   repeat
   drop  r> pad c!
   close-dir throw
@@ -1084,7 +1084,7 @@ s" ." ls-r cr
 ```gambas
 Public Sub Main()
 Dim sTemp As String
- 
+
 For Each sTemp In RDir("/etc", "*.d")
   Print sTemp
 Next
@@ -1254,7 +1254,7 @@ dir_walk :: FilePath -> (FilePath -> IO ()) -> IO ()
 dir_walk top filefunc = do
   isDirectory <- doesDirectoryExist top
   if isDirectory
-    then 
+    then
       do
         files <- listDirectory top
         mapM_ (\file -> dir_walk (top </> file) filefunc) files
@@ -1265,7 +1265,7 @@ main :: IO ()
 main = do
          hSetEncoding stdout utf8
          hSetEncoding stdin  utf8
-         let worker fname = 
+         let worker fname =
               do if (takeExtension fname == ".hs")
                    then putStrLn fname
                    else return ()
@@ -1277,14 +1277,14 @@ main = do
 =
 ## Icon
 =
-Icon doesn't support 'stat' or 'open' of a directory; however, information can be obtained by use of the <code>system</code> function to access command line. 
+Icon doesn't support 'stat' or 'open' of a directory; however, information can be obtained by use of the <code>system</code> function to access command line.
 =
 ## Unicon
 =
 
 ```Unicon
 
-########################### 
+###########################
 #  A sequential solution  #
 ###########################
 
@@ -1297,7 +1297,7 @@ local D,d,f
 
 if ( stat(s).mode ? ="d" ) & ( d := open(s) ) then {
       D := [s]
-      while f := read(d) do 
+      while f := read(d) do
          if not ( ".." ? =f ) then          # skip . and ..
             D |||:= getdirs(s || "/" ||f)
       close(d)
@@ -1305,7 +1305,7 @@ if ( stat(s).mode ? ="d" ) & ( d := open(s) ) then {
       }
 end
 
-######################### 
+#########################
 #  A threaded solution  #
 #########################
 
@@ -1317,13 +1317,13 @@ global n,           # number of the concurrently running threads
 
 procedure main(argv)
    target := argv[1] | stop("Usage: tdir [dir name] [#threads]. #threads default to 2* the number of cores in the machine.")
-   tot_threads := n := 1 
+   tot_threads := n := 1
    maxT := ( integer(argv[2])|
 	    (&features? if ="CPU cores " then cores := integer(tab(0)) * 2) | # available cores * 2
    	    4) # default to 4 threads
    t := milliseconds()
    L := getdirs(target)  # writes out all directories from the current directory down
-   write((*\L)| 0, " directories in ", milliseconds() - t, 
+   write((*\L)| 0, " directories in ", milliseconds() - t,
 	           " ms using ", maxT, "-concurrent/", tot_threads, "-total threads" )
 end
 
@@ -1332,20 +1332,20 @@ local D,d,f, thrd
 
 if ( stat(s).mode ? ="d" ) & ( d := open(s) ) then {
       D := [s]
-      while f := read(d) do 
+      while f := read(d) do
          if not ( ".." ? =f ) then          # skip . and ..
             if n>=maxT then # max thread count reached
                D |||:= getdirs(s || "/" ||f)
             else # spawn a new thread for this directory
 	       {/thrd:=[]; n +:= 1; put(thrd, thread getdirs(s || "/" ||f))}
-      
+
       close(d)
 
       if \thrd then{  # If I have threads, collect their results
          tot_threads +:= *thrd
          n -:= 1      # allow new threads to be spawned while I'm waiting/collecting results
 	 every wait(th := !thrd) do { # wait for the thread to finish
-	    n -:= 1        
+	    n -:= 1
 	    D |||:= <@th   # If the thread produced a result, it is going to be
 	                   # stored in its "outbox", <@th in this case serves as
 	                   # a deferred return since the thread was created by
@@ -1397,15 +1397,15 @@ public class MainEntry {
     public static void main(String[] args) {
         walkin(new File("/home/user")); //Replace this with a suitable directory
     }
-    
+
     /**
-     * Recursive function to descend into the directory tree and find all the files 
+     * Recursive function to descend into the directory tree and find all the files
      * that end with ".mp3"
      * @param dir A file object defining the top directory
      **/
     public static void walkin(File dir) {
         String pattern = ".mp3";
-        
+
         File listFile[] = dir.listFiles();
         if (listFile != null) {
             for (int i=0; i<listFile.length; i++) {
@@ -1429,7 +1429,7 @@ Luckily, <code>java.nio.file.Files</code> gives us a <code>walkFileTree</code> m
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
- 
+
 public class WalkTree {
 	public static void main(String[] args) throws IOException {
 		Path start = FileSystems.getDefault().getPath("/path/to/file");
@@ -1605,7 +1605,7 @@ do #matchingfilenames -> insert(#filename)
 
 ```LiveCode
 function recurDir dir, ext
-    set the defaultFolder to dir    
+    set the defaultFolder to dir
     repeat for each line fi in the files
         if fileExt(fi) = ext then
             put the longfilepath of fi & cr after fileList
@@ -1660,12 +1660,12 @@ local function files(directory, recursively)
     -- Use windows" dir command
     local directory = directory:gsub("/", "\\")
     local filenames = getOutput(string.format("dir %s %s/B/A:A", directory, recursively and '/S' or ''))
-    
+
     -- Function to be called in "for filename in files(directory)"
     return coroutine.wrap(function()
         for filename in filenames:gmatch("([^\r\n]+)") do
             coroutine.yield(filename)
-        end    
+        end
     end)
 end
 
@@ -1709,13 +1709,13 @@ function walk_a_directory_recursively(d, pattern)
 	end;
 
 	f = dir(d);
-	n = find([f.isdir]);	
+	n = find([f.isdir]);
 	for k=n(:)'
-		if any(f(k).name~='.') 
+		if any(f(k).name~='.')
 			walk_a_directory_recursively(fullfile(d,f(k).name), pattern);
 		end;
 	end;
-end; 
+end;
 ```
 
 
@@ -1780,7 +1780,7 @@ class Test {
         dir_path := String->New(path);
         dir_path += '/';
         dir_path += file;
-        
+
         if(Directory->Exists(dir_path)) {
           DescendDir(dir_path, pattern);
         }
@@ -1889,7 +1889,7 @@ Say file.0 'files found'
 do i=1 to file.0
   If pos('TTTT',translate(file.i))>0 Then
     say file.i
-  end    
+  end
 ```
 
 {{out}}
@@ -1898,7 +1898,7 @@ do i=1 to file.0
 3 files found
  1/21/15  10:31p         340  A----  D:\tttt.txt
  1/21/15  10:37p           8  A----  D:\test\test2\test3\attttb.txt
- 1/21/15  10:32p         340  A----  D:\_l\TtTttt.txt     
+ 1/21/15  10:32p         340  A----  D:\_l\TtTttt.txt
 ```
 
 
@@ -1955,7 +1955,7 @@ sub shellquote { "'".(shift =~ s/'/'\\''/gr). "'" }
 sub find_files {
     my $dir = shellquote(shift);
     my $test = shellquote(shift);
-    
+
     local $/ = "\0";
     open my $pipe, "find $dir -iname $test -print0 |" or die "find: $!.\n";
     while (<$pipe>) { print "$_\n"; }  # Here you could do something else with each file path, other than simply printing it.
@@ -1989,7 +1989,7 @@ sub find-files ($dir, Mu :$test) {
         if $path.d                 { .take for find-files $path, :$test };
     }
 }
- 
+
 .put for find-files '.', test => /'.txt' $/;
 ```
 
@@ -2232,11 +2232,11 @@ Get-ChildItem -Recurse |
 
 ```PureBasic
 Procedure.s WalkRecursive(dir,path.s,Pattern.s="\.txt$")
-  Static RegularExpression 
+  Static RegularExpression
   If Not RegularExpression
     RegularExpression=CreateRegularExpression(#PB_Any,Pattern)
   EndIf
-  
+
   While NextDirectoryEntry(dir)
     If DirectoryEntryType(dir)=#PB_DirectoryEntry_Directory
       If DirectoryEntryName(dir)<>"." And DirectoryEntryName(dir)<>".."
@@ -2247,7 +2247,7 @@ Procedure.s WalkRecursive(dir,path.s,Pattern.s="\.txt$")
           Debug "Error in "+path+DirectoryEntryName(dir)
         EndIf
       EndIf
-    Else ; e.g. #PB_DirectoryEntry_File 
+    Else ; e.g. #PB_DirectoryEntry_File
       If MatchRegularExpression(RegularExpression,DirectoryEntryName(dir))
         Debug DirectoryEntryName(dir)
       EndIf
@@ -2278,7 +2278,7 @@ import os
 
 rootPath = '/'
 pattern = '*.mp3'
- 
+
 for root, dirs, files in os.walk(rootPath):
     for filename in fnmatch.filter(files, pattern):
         print( os.path.join(root, filename))
@@ -2286,7 +2286,7 @@ for root, dirs, files in os.walk(rootPath):
 
 {{works with|Python|<nowiki>2.x</nowiki>}}
 {{works with|Python|<nowiki>3.x</nowiki>}}
-A more strictly comparable port of this 2.3+ code to earlier versions of Python would be: 
+A more strictly comparable port of this 2.3+ code to earlier versions of Python would be:
 
 ```python
 from fnmatch import fnmatch
@@ -2347,7 +2347,7 @@ dir("/bar/foo", "mp3",recursive=T)
 
 
 ```rascal
-//usage example: To list just Rascal source files,    Walk(|home:///workspace/|, ".rsc");  
+//usage example: To list just Rascal source files,    Walk(|home:///workspace/|, ".rsc");
 module Walk
 import String;
 import IO;
@@ -2553,7 +2553,7 @@ This is not implemented in the Scala library. Here is a simple solution, buildin
 ```scala
 import java.io.File
 
-object `package` { 
+object `package` {
   def walkTree(file: File): Iterable[File] = {
     val children = new Iterable[File] {
       def iterator = if (file.isDirectory) file.listFiles.iterator else Iterator.empty
@@ -2582,7 +2582,7 @@ Varies slightly depending on the implementation of scheme.
 (use srfi-13)
 
 (define (walk FN PATH)
-  (for-each (lambda (ENTRY) 
+  (for-each (lambda (ENTRY)
     (cond ((not (null? ENTRY))
 
 	   (let ((MYPATH (make-pathname PATH ENTRY)))
@@ -2603,13 +2603,13 @@ See also: '''(find-files ...)''' function in the '''posix''' module.
 (use srfi-13)
 
 (define (walk FN PATH)
-  (for-each (lambda (ENTRY) 
+  (for-each (lambda (ENTRY)
     (cond ((not (null? ENTRY))
 	   (let ((MYPATH ENTRY))
 
 	     (cond ((file-is-directory? MYPATH)
 		    (walk FN MYPATH) ))
-	     
+
 	     (FN MYPATH) )))) (directory-list PATH :add-path? #t :children? #t ) ))
 
 (walk (lambda (X) (cond ((string-suffix? ".scm" X) (display X)(newline) ))) "/home/user/")
@@ -2624,14 +2624,14 @@ See also: '''(find-file-in-paths ...)''' function in the '''file.util''' module.
 (require srfi/13)
 
 (define (walk FN PATH)
-  (for-each (lambda (ENTRY) 
+  (for-each (lambda (ENTRY)
     (cond ((not (null? ENTRY))
 
 	   (let ((MYPATH (build-path PATH ENTRY)))
 
 	     (cond ((directory-exists? MYPATH)
 		    (walk FN MYPATH) ))
-	     
+
 	     (FN MYPATH) )))) (directory-list PATH)))
 
 (walk (lambda (X) (cond ((string-suffix? ".scm" (path->string X)) (display X)(newline) ))) "/home/user/")
@@ -2725,7 +2725,7 @@ traverse(
 
 ```smalltalk
 Directory extend [
-  wholeContent: aPattern do: twoBlock [ 
+  wholeContent: aPattern do: twoBlock [
     self wholeContent: aPattern withLevel: 0 do: twoBlock.
   ]
   wholeContent: aPattern withLevel: l do: twoBlock [
@@ -2735,7 +2735,7 @@ Directory extend [
     cont
     do: [ :n | |fn ps|
       ps := (Directory pathSeparator) asString.
-      fn := (self name), ps, n. 
+      fn := (self name), ps, n.
       ((File name: fn) isDirectory)
       ifTrue: [
         twoBlock value: (n, ps) value: l.
@@ -2778,14 +2778,14 @@ let rootPath = "/"
 // Enumerate the directory tree (which likely recurses internally)...
 
 if let fsTree = fileSystem.enumerator(atPath: rootPath) {
-	
+
     while let fsNodeName = fsTree.nextObject() as? NSString {
-				
+
         let fullPath = "\(rootPath)/\(fsNodeName)"
-				
+
         var isDir: ObjCBool = false
         fileSystem.fileExists(atPath: fullPath, isDirectory: &isDir)
-				
+
         if !isDir.boolValue && fsNodeName.pathExtension == "txt" {
             print(fsNodeName)
         }
@@ -2831,7 +2831,7 @@ walkin /home/usr {apply {fname {
     if {[string match *.mp3 $tail]} {
         puts $fname
     }
-}}} 
+}}}
 
 ```
 
@@ -2903,7 +2903,7 @@ A nice approach would be to capture a continuation in the callback, and then obt
 The "find" command gives a one-line solution for simple patterns:
 
 ```bash
-find . -name '*.txt' -type f 
+find . -name '*.txt' -type f
 ```
 
 "find" can also be used to find files matching more complex patterns as illustrated in the section on [[#UnixPipes|Unix Pipes]] below.
@@ -2976,7 +2976,7 @@ A simplified version that gives the same output:
 
 ```bash
 #! /usr/bin/env bash
-  
+
 walk_tree() {
 	ls "$1" | while IFS= read i; do
 		if [ -d "$1/$i" ]; then
@@ -2987,7 +2987,7 @@ walk_tree() {
 		fi
 	done
 }
- 
+
 walk_tree "$1" "\.sh$"
 ```
 

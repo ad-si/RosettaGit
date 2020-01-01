@@ -754,8 +754,8 @@ p "olleh".reverse  #Prints "hello"
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
 #include <wchar.h>
@@ -834,7 +834,8 @@ as⃝df̅ => f̅ds⃝a
 
 {{libheader|GLib}}
 
-```c>#include <glib.h
+```c
+#include <glib.h>
 
 gchar *srev (const gchar *s) {
     if (g_utf8_validate(s,-1,NULL)) {
@@ -855,8 +856,8 @@ int main (void) {
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <algorithm>
 

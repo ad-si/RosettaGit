@@ -14,7 +14,7 @@ tags = []
 
 ;Task:
 Create a window that has:
-::#   a label that says   "There have been no clicks yet" 
+::#   a label that says   "There have been no clicks yet"
 ::#   a button that says   "click me"
 
 
@@ -28,9 +28,9 @@ Upon clicking the button with the mouse, the label should change and show the nu
 
 {{libheader|GTK|GtkAda}}
 {{libheader|GtkAda}}
-The following solution is based on bindings to GTK+. 
-Ada as a language does not provide standard GUI. 
-Apart from GtkAda, there exist numerous other GUI bindings and libraries: 
+The following solution is based on bindings to GTK+.
+Ada as a language does not provide standard GUI.
+Apart from GtkAda, there exist numerous other GUI bindings and libraries:
 CLAW, AdaGLUT, GWindow, JEWL, win32ada, QtAda etc.
 
 ```ada
@@ -118,7 +118,7 @@ end Simple_Windowed_Application;
 'Lbl'Frm.⎕WC'Label' 'There have been no clicks yet.' (10 10)
 'Btn'Frm.⎕WC'Button' 'Click Me' (35 35) (25 25) ('Event' 'Select' 'Click')
 
-⍝ callback function 
+⍝ callback function
 Frm.Clicks←0
 Frm.Click←{
     Clicks+←1
@@ -145,7 +145,7 @@ Return ; end of the auto-execute section
 ButtonClick: ; the subroutine executed each time the Button-Control is clicked
    count++ ; increment the click-counting var
    GuiControl, , TextCtl, %count% ; update the Text-Control with the click-counting var
-Return ; end of the subroutine 
+Return ; end of the subroutine
 
 GuiClose: ; the subroutine executed when the Window is closed
    ExitApp ; exit this process
@@ -193,9 +193,9 @@ WEnd
 
 ```freebasic
 
-#Region  Project Attributes 
+#Region  Project Attributes
 	#MainFormWidth: 593
-	#MainFormHeight: 179 
+	#MainFormHeight: 179
 #End Region
 
 Sub Process_Globals
@@ -272,17 +272,17 @@ Layout1.fxml (as B4J uses JavaFX's Scene Builder)
 ```bbcbasic
       INSTALL @lib$+"WINLIB2"
       INSTALL @lib$+"WINLIB5"
-      
+
       window% = FN_newdialog("Rosetta Code", 100, 100, 120, 52, 8, 1000)
       PROC_static(window%, "There have been no clicks yet", 100, 10, 10, 100, 14, 0)
       PROC_pushbutton(window%, "Click me", FN_setproc(PROCclick), 40, 30, 40, 16, 0)
       PROC_showdialog(window%)
-      
+
       REPEAT
         WAIT 1
       UNTIL !window% = 0
       QUIT
-      
+
       DEF PROCclick
       PRIVATE clicks%
       clicks% += 1
@@ -296,8 +296,8 @@ Layout1.fxml (as B4J uses JavaFX's Scene Builder)
 
 {{libheader|GTK}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <gtk/gtk.h>
 
 const gchar *clickme = "Click Me";
@@ -308,7 +308,7 @@ void clickedme(GtkButton *o, gpointer d)
 {
     GtkLabel *l = GTK_LABEL(d);
     char nt[MAXLEN];
-    
+
     counter++;
     snprintf(nt, MAXLEN, "You clicked me %d times", counter);
     gtk_label_set_text(l, nt);
@@ -377,11 +377,11 @@ private slots :
 ### clickcounter.cpp
 
 
-```cpp>#include <QPushButton
-
+```cpp
+#include <QPushButton>
 #include <QLabel>
 #include <QVBoxLayout>
-#include "clickcounter.h" 
+#include "clickcounter.h"
 
 Counter::Counter( QWidget * parent ) : QWidget( parent ) {
    number = 0 ;
@@ -404,8 +404,8 @@ void Counter::countClicks( ) {
 ### main.cpp
 
 
-```Cpp>#include <QApplication
-
+```cpp
+#include <QApplication>
 #include "clickcounter.h"
 
 int main( int argc , char *argv[ ] ) {
@@ -470,7 +470,7 @@ class RosettaForm : Form
   (let [counter (atom 0)
         label (JLabel. "There have been no clicks yet")
         button (doto (JButton. "Click me!")
-                 (on-action evnt  
+                 (on-action evnt
                    (.setText label
                       (str "Counter: " (swap! counter inc)))))
         panel (doto (JPanel.)
@@ -591,7 +591,7 @@ class MainForm: Form {
     with(label = new Label) {
       text = "There have been no clicks yet" ;
       dock = DockStyle.TOP ;
-      parent = this ;     
+      parent = this ;
     }
     with(button = new Button) {
       dock = DockStyle.BOTTOM ;
@@ -608,7 +608,7 @@ class MainForm: Form {
 }
 
 void main() {
-    Application.run(new MainForm);  
+    Application.run(new MainForm);
 }
 ```
 
@@ -621,14 +621,14 @@ void main() {
 Hybrid uses config files to describe GUI layout.
 SimpleWindow.cfg:
  import "themes/default.cfg"
- 
+
  new FramedTopLevelWindow main {
  	frame.text = "Simple Window";
- 
+
  	new Label label {
  		text = "There have been no clicks yet";
  	}
- 
+
  	new Button button {
  		text = "Click me";
  		size = 201 20;
@@ -691,25 +691,25 @@ Filename = SingleWinApp.dpr
 -- begin file --
 
    Program SingleWinApp ;
- 
+
    // This is the equivalent of the C #include
    Uses Forms, Windows, Messages, Classes, Graphics, Controls, StdCtrls ;
 
-   
+
    type
-     
+
      // The only reason for this declaration is to allow the connection of the
      // on click method to the forms button object. This class declaration adds
      // a procedure.
 
-     TMainForm class(tform) 
+     TMainForm class(tform)
        Procedure AddClicks(sender : tObject);
      end;
 
 
-   // Use these globals.  
+   // Use these globals.
    var
-  
+
      MainForm : tForm ;
      aLabel   : tLabel ;
      aButton  : tButton ;
@@ -726,24 +726,24 @@ Filename = SingleWinApp.dpr
 
 
     Begin
-      // Do all the behind the scenes stuff that sets up the Windows environment 
+      // Do all the behind the scenes stuff that sets up the Windows environment
       Application.Initialize ;
 
       // Create the form
-      
+
       // Forms can either be created with an owner, like I have done here, or with
       // the owner set to Nil. In pascal (all versions of Borland) '''NIL''' is a
-      // reserved, (the equivalent of '''NULL''' in Ansi C) word and un-sets any pointer 
+      // reserved, (the equivalent of '''NULL''' in Ansi C) word and un-sets any pointer
       // variable. Setting the owner to the application object will ensure that the form is
       // freed by the application object when the application shuts down. If I had set
       // the owner to NIL then i would have had to make sure I freed the form explicitly
       // or it would have been orphaned, thus creating a memory leak.
 
-      // I must direct your attention to the CreateNew constructor.  This is 
+      // I must direct your attention to the CreateNew constructor.  This is
       // a non standard usage.  Normally the constructor Create() will call this
       // as part of the initialization routine for the form. Normally as you drop
-      // various components on a form in deign mode, a DFM file is created with 
-      // all the various initial states of the controls. This bypasses the 
+      // various components on a form in deign mode, a DFM file is created with
+      // all the various initial states of the controls. This bypasses the
       // DFM file altogether although all components AND the form are created
       // with default values. (see the Delphi help file).
 
@@ -771,7 +771,7 @@ Filename = SingleWinApp.dpr
       // demonstration if you only call the SHOW method, the form will appear and
       // disappear in a split second.
       MainForm.ShowModal ;
-      
+
       Application.Run ;
 
    end. // Program
@@ -793,7 +793,7 @@ when (currentVat.morphInto("awt")) -> {
             ${def b := <swing:makeJButton>("Click Me")}
     `)
     b.addActionListener(def _ {
-        to actionPerformed(_) { 
+        to actionPerformed(_) {
             clicks += 1
             l.setText(`Number of clicks: $clicks`)
         }
@@ -815,7 +815,7 @@ UI elements are HTML DOM Nodes. '''ui-add''' adds an element to the UI. '''ui-on
     (define b (ui-create-element "button" '((type "button"))))
     (ui-set-html b text)
     (ui-add b))
-    
+
 (define (panel )
     (ui-clear)
     (define *clicks* 0)
@@ -850,37 +850,37 @@ public class MainWindow : SDIDialog
 {
     Label  lblClicks;
     Button btmClickMe;
-    
+
     //Store how much clicks the user doed
     int clicksCount;
-    
+
     constructor new()
        <= new()
-    {        
+    {
         lblClicks := new Label();
         btmClickMe := new Button();
-        
+
         clicksCount := 0;
         self
             .appendControl(lblClicks)
-            .appendControl(btmClickMe);        
-    
+            .appendControl(btmClickMe);
+
         self.Caption := "Rosseta Code";
         self.setRegion(100, 100, 160, 80);
-    
+
         lblClicks.Caption := "Clicks: 0";
         lblClicks.setRegion(10, 2, 160, 20);
 
         btmClickMe.Caption := "Click me";
         btmClickMe.setRegion(7, 20, 140, 30);
-        
+
         btmClickMe.onClick := (args){ self.onButtonClick(); };
     }
-    
+
     private onButtonClick()
     {
         clicksCount := clicksCount + 1;
-        
+
         lblClicks.Caption := "Clicks: " + clicksCount.toString();
     }
 }
@@ -1100,7 +1100,7 @@ Dim As String Text
 Window_Main = CreateWindow("#32770", "Simple Windowed Application", WS_OVERLAPPEDWINDOW Or WS_VISIBLE, 100, 100, 350, 200, 0, 0, 0, 0)
 Static_Text = CreateWindow("STATIC", "There have been no clicks yet", WS_VISIBLE Or WS_CHILD Or WS_BORDER, 10, 30, 300, 20, Window_Main, 0, 0, 0)
 Button_Click = CreateWindow("BUTTON", "Click me", WS_VISIBLE Or WS_CHILD, 100, 70, 100, 20, Window_Main, 0, 0, 0)
-													
+
 'Windows message loop:
 Num_Click = 0
 While GetMessage(@msg, Window_Main, 0, 0)
@@ -1110,7 +1110,7 @@ While GetMessage(@msg, Window_Main, 0, 0)
     Case Button_Click
       If msg.message = WM_LBUTTONDOWN Then
         Num_Click = Num_Click + 1
-        If Num_Click = 1 Then 
+        If Num_Click = 1 Then
           Text = "Button has been clicked once"
         Else
           Text = "Button has been clicked " + Str(Num_Click) + " times"
@@ -1143,7 +1143,7 @@ With Me                                                           'Set the Form'
   .Width = 300                                                    'Set the Width
   .Arrangement = Arrange.Vertical                                 'Arrange items vertically
   .Padding = 5                                                    'Border area
-  .Title = "Click counter!"                                       'Title displayed on the Form 
+  .Title = "Click counter!"                                       'Title displayed on the Form
 End With
 
 hlabel = New Label(Me)                                            'Add a Label to the form
@@ -1180,16 +1180,16 @@ End
 #javaj#
 
    <frames> main, Simple click counter
-   
+
    <layout of main>
       PANEL, X
       bClick me, lClicks
-      
+
 #data#
 
    <NN> 0
    <lClicks> //There have been no clicks yet
-   
+
 #listix#
 
    <-- bClick me>
@@ -1251,7 +1251,7 @@ import groovy.swing.SwingBuilder
 count = 0
 new SwingBuilder().edt {
   frame(title:'Click frame', pack: true, show: true) {
-    vbox {  
+    vbox {
       countLabel = label("There have been no clicks yet.")
       button('Click Me', actionPerformed: {count++; countLabel.text = "Clicked ${count} time(s)."})
     }
@@ -1272,7 +1272,7 @@ import groovy.beans.Bindable
 model = new Model()
 new SwingBuilder().edt {
   frame(title:'Click frame', pack: true, show: true) {
-    vbox {  
+    vbox {
       label(text: bind(source: model, sourceProperty: 'count',
         converter: { v -> !v ? "There have been no clicks yet." : "Clicked ${v} time(s)."}))
       button('Click Me', actionPerformed: {model.count++})
@@ -1302,12 +1302,12 @@ main = do
   hbox <- hBoxNew True 5
 
   set window [ containerChild := hbox ]
-  
+
   lab <- labelNew (Just "There have been no clicks yet")
   button <- buttonNewWithLabel "Click me"
   set hbox [ containerChild := lab ]
   set hbox [ containerChild := button ]
-  
+
   m <- newIORef 0
 
   onClicked button $ do
@@ -1387,13 +1387,13 @@ pro counter, ev
   widget_control, tst[0], set_value="Number of clicks: "+string(tst[1],format='(i0)')
   widget_control, ev.top, set_uvalue=tst
 end
- 
+
 id = widget_base(title = 'Window Title',column=1)
 ld = widget_label(id, value = 'There have been no clicks yet.')
 widget_control, /realize, id, set_uvalue=[ld,0]
 dummy = widget_button(id,value=' Click Me ',event_pro='counter')
 xmanager, "Simple", Id
- 
+
 end
 ```
 
@@ -1641,9 +1641,9 @@ fun main(args: Array<String>) = launch<ClicksApp>(args)
 
 ## Lambdatalk
 
-The environment is a small wiki: http://epsilonwiki.free.fr/lambdaway/ 
+The environment is a small wiki: http://epsilonwiki.free.fr/lambdaway/
 
-The code is tested in this page: http://epsilonwiki.free.fr/lambdaway/?view=popup 
+The code is tested in this page: http://epsilonwiki.free.fr/lambdaway/?view=popup
 
 ```Scheme
 
@@ -1655,8 +1655,8 @@ var CLICKAPP = (function() {
   var counter = 0;
   var inc = function() {
       counter++;
-      getId('label').innerHTML = 
-      'There are ' + counter + ' clicks now'; 
+      getId('label').innerHTML =
+      'There are ' + counter + ' clicks now';
   };
   return {inc:inc}
 })();
@@ -1708,23 +1708,23 @@ on startMovie
   m.rect = rect(0,0,320,0)
   m.text = "There have been no clicks yet"
   m.alignment = "center"
-  
+
   -- create sprite, assign field
   _movie.puppetSprite(1, TRUE)
   sprite(1).member = m
   sprite(1).loc = point(0,80)
-  
+
   -- create a button
   m = new(#button)
   m.rect = rect(0,0,220,0)
   m.text = "click me"
   m.alignment = "center"
-  
+
   -- create sprite, assign button
   _movie.puppetSprite(2, TRUE)
   sprite(2).member = m
   sprite(2).loc = point(50,105)
-  
+
   -- create new script at runtime, assign it to button sprite
   m = new(#script)
   m.scriptType = #score
@@ -1736,7 +1736,7 @@ on startMovie
 
   -- force immediate update
   _movie.updateStage()
-  
+
   -- show the window
   _movie.stage.visible = 1
 
@@ -1831,9 +1831,9 @@ Checkit
 
 
 ```Mathematica
-DynamicModule[{n = 0}, 
+DynamicModule[{n = 0},
  CreateDialog[{Dynamic@
-    TextCell@If[n == 0, "There have been no clicks yet", n], 
+    TextCell@If[n == 0, "There have been no clicks yet", n],
    Button["click me", n++]}]]
 ```
 
@@ -1935,7 +1935,7 @@ $b.setText("click me")
 $b.setPosition(0,100)
 $l.setText("There have been no clicks yet")
 
-// set the button's event handler to the function updateLabel 
+// set the button's event handler to the function updateLabel
 $b.setHandler($updateLabel)
 
 // show the window
@@ -1977,8 +1977,8 @@ main()
 =={{header|Objective-C}}==
 {{works with|GNUstep}}
 
-```objc>#include <Foundation/Foundation.h
-
+```objc
+#include <Foundation/Foundation.h>
 #include <AppKit/AppKit.h>
 
 @interface ClickMe : NSWindow
@@ -2007,7 +2007,7 @@ main()
   [button setAction: @selector(advanceCounter:)];
   NSRect buttonRect = [button frame];
 
-  NSTextField *text = [[NSTextField alloc] 
+  NSTextField *text = [[NSTextField alloc]
 	   initWithFrame: NSMakeRect(buttonRect.origin.x, buttonRect.size.height,
 				     buttonRect.size.width, buttonRect.size.height)];
   [text setAlignment: NSCenterTextAlignment];
@@ -2016,12 +2016,12 @@ main()
   [text sizeToFit];
 
   // reset size of button according to size of (larger...?) text
-  [button 
+  [button
     setFrameSize: NSMakeSize( [text frame].size.width, buttonRect.size.height ) ];
 
   int totalWindowHeight = buttonRect.size.height + [text frame].size.height;
-  
-  if ((self = [super initWithContentRect: NSMakeRect(100, 100, 
+
+  if ((self = [super initWithContentRect: NSMakeRect(100, 100,
 				    [text frame].size.width, totalWindowHeight)
         styleMask: (NSTitledWindowMask | NSClosableWindowMask)
       backing: NSBackingStoreBuffered
@@ -2368,7 +2368,7 @@ $app.set-content(
 
 $app.border-width = 40;
 
-$button.clicked.tap: { 
+$button.clicked.tap: {
     state $clicks += 1;
     $label.text = "There has been $clicks click{ 's' if $clicks != 1 }";
 }
@@ -2410,13 +2410,13 @@ The above is cross platform (win/lnx), 32/64 bit. On request, I have restored th
 The included demo\edita contains a window painter that lets you reposition/resize this very easily (alas the equivalent for the above is progressing rather leisurely).
 
 ```Phix
-include arwen.ew 
- 
+include arwen.ew
+
 constant main  = create(Window,"Simple windowed application",0,0,100,100,300,200, 0)
 constant label = create(Label, "There have been no clicks yet",0,main,10,10,250,30,0)
 constant btn   = create(Button,"Click me",0,main,100,50,100,30,0)
 integer count = 0
- 
+
 function mainHandler(integer id, integer msg, atom /*wParam*/, object /*lParam*/)
     if id=btn and msg=WM_COMMAND then
         count += 1
@@ -2425,7 +2425,7 @@ function mainHandler(integer id, integer msg, atom /*wParam*/, object /*lParam*/
     return 0
 end function
 setHandler(btn,routine_id("mainHandler"))
- 
+
 WinMain(main,SW_NORMAL)
 ```
 
@@ -2506,19 +2506,19 @@ $Label1  = [System.Windows.Forms.Label]@{
 $Button1 = [System.Windows.Forms.Button]@{
             Text = 'Click me'
             Location = '0, 20' }
- 
+
 $Button1.Add_Click(
     {
     $Script:Clicks++
     If ( $Clicks -eq 1 ) { $Label1.Text = "There has been 1 click" }
     Else                 { $Label1.Text = "There have been $Clicks clicks" }
     } )
- 
+
 $Form1 = New-Object System.Windows.Forms.Form
 $Form1.Controls.AddRange( @( $Label1, $Button1 ) )
- 
+
 $Clicks = 0
- 
+
 $Result = $Form1.ShowDialog()
 
 ```
@@ -2528,27 +2528,27 @@ $Result = $Form1.ShowDialog()
 ```PowerShell
 
 Add-Type -AssemblyName System.Windows.Forms
- 
+
 $Label1 = New-Object System.Windows.Forms.Label
 $Label1.Text = 'There have been no clicks yet'
 $Label1.Size = '200, 20'
- 
+
 $Button1 = New-Object System.Windows.Forms.Button
 $Button1.Text = 'Click me'
 $Button1.Location = '0, 20'
- 
+
 $Button1.Add_Click(
     {
     $Script:Clicks++
     If ( $Clicks -eq 1 ) { $Label1.Text = "There has been 1 click" }
     Else                 { $Label1.Text = "There have been $Clicks clicks" }
     } )
- 
+
 $Form1 = New-Object System.Windows.Forms.Form
 $Form1.Controls.AddRange( @( $Label1, $Button1 ) )
- 
+
 $Clicks = 0
- 
+
 $Result = $Form1.ShowDialog()
 
 ```
@@ -2581,21 +2581,21 @@ $Result = $Form1.ShowDialog()
     </StackPanel>
 </Window>
 "@
- 
+
 $Window1 = [Windows.Markup.XamlReader]::Load( [System.Xml.XmlNodeReader]$Xaml )
- 
+
 $Label1  = $Window1.FindName( "Label1"  )
 $Button1 = $Window1.FindName( "Button1" )
- 
+
 $Button1.Add_Click(
     {
     $Script:Clicks++
     If ( $Clicks -eq 1 ) { $Label1.Content = "There has been 1 click" }
     Else                 { $Label1.Content = "There have been $Clicks clicks" }
     } )
- 
+
 $Clicks = 0
- 
+
 $Result = $Window1.ShowDialog()
 
 ```
@@ -2661,7 +2661,7 @@ simple_windowed :-
 Define window_0
 Define window_0_Text_0, window_0_Button_1
 Define clicks, txt$, flags
- 
+
 flags = #PB_Window_SystemMenu | #PB_Window_SizeGadget | #PB_Window_ScreenCentered
 window_0 = OpenWindow(#PB_Any, 408, 104, 280, 45, "Simple windowed application", flags)
 If window_0
@@ -2856,7 +2856,7 @@ library(gWidgets)
 library(gWidgetstcltk)
 win <- gwindow()
 lab <- glabel("There have been no clicks yet", container=win)
-btn <- gbutton("click me", container=win, handle=function(h, ...) 
+btn <- gbutton("click me", container=win, handle=function(h, ...)
    {
       val <- as.numeric(svalue(lab))
       svalue(lab) <- ifelse(is.na(val) ,"1", as.character(val + 1))
@@ -2943,7 +2943,7 @@ clicks: 0
 ; number of clicks and update the label text.
 
 ; The 'view' function paints the layout on the screen and listens for
-; events. 
+; events.
 
 view layout [
 	backdrop effect [gradient 0x1 black coal]
@@ -3019,7 +3019,7 @@ Shoes.app do
   stack do
     @count = 0
     @label = para "no clicks yet"
-    button "click me" do 
+    button "click me" do
       @count += 1
       @label.text = "click: #@count"
     end
@@ -3128,9 +3128,9 @@ top extent:300@100.
 top add:((Label new labelChannel:lh) origin: 0 @ 10 corner: 1.0 @ 40).
 top add:((button := Button label:'Eat Me') origin: 10 @ 50 corner: 100 @ 80).
 
-button action:[ 
+button action:[
         clickCount := clickCount + 1.
-        lh value: ('number of clicks: %1' bindWith:clickCount) 
+        lh value: ('number of clicks: %1' bindWith:clickCount)
        ].
 
 top open
@@ -3227,7 +3227,7 @@ repeat (ALL) {
     #2 = Dialog_Input_1(3, "`Simple Windowed Application`,
                         `|@(10)`,
                         `[&Click me]`,`[&Exit]`",
-                        APP+CENTER, 0, 0) 
+                        APP+CENTER, 0, 0)
     if (#2 != 1) { break }    // ESC or Exit
     #1++
     Num_Str(#1, 10)
@@ -3245,7 +3245,7 @@ In VB, windows are usually created in the IDE. The generated code is hidden from
 
 ```vb
 VERSION 5.00
-Begin VB.Form Form2 
+Begin VB.Form Form2
    Caption         =   "There have been no clicks yet"
    ClientHeight    =   2940
    ClientLeft      =   60
@@ -3255,7 +3255,7 @@ Begin VB.Form Form2
    ScaleHeight     =   2940
    ScaleWidth      =   8340
    StartUpPosition =   3  'Windows Default
-   Begin VB.CommandButton Command1 
+   Begin VB.CommandButton Command1
       Caption         =   "Click me!"
       Height          =   495
       Left            =   3600

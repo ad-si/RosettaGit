@@ -15,9 +15,9 @@ tags = []
 ;Task:
 Create a function,   or show a built-in function,   to count the number of non-overlapping occurrences of a substring inside a string.
 
-The function should take two arguments: 
-:::*   the first argument being the string to search,   and 
-:::*   the second a substring to be searched for. 
+The function should take two arguments:
+:::*   the first argument being the string to search,   and
+:::*   the second a substring to be searched for.
 
 
 It should return an integer count.
@@ -32,7 +32,7 @@ print countSubstring("ababababab","abab")
 ```
 
 
-The matching should yield the highest number of non-overlapping matches. 
+The matching should yield the highest number of non-overlapping matches.
 
 In general, this essentially means matching from left-to-right or right-to-left   (see proof on talk page).
 
@@ -65,7 +65,7 @@ print(‘ababababab’.count(‘abab’))
 
 ## 360 Assembly
 
-The program uses two ASSIST macros (XDECO,XPRNT) to keep the code as short as possible. 
+The program uses two ASSIST macros (XDECO,XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Count occurrences of a substring  05/07/2016
@@ -75,7 +75,7 @@ COUNTSTR CSECT
          DC     17F'0'             savearea
          STM    R14,R12,12(R13)    prolog
          ST     R13,4(R15)         "
-         ST     R15,8(R13)         " 
+         ST     R15,8(R13)         "
          LR     R13,R15            "
          MVC    HAYSTACK,=CL32'the three truths'
          MVC    LENH,=F'17'        lh=17
@@ -87,7 +87,7 @@ COUNTSTR CSECT
          MVC    NEEDLE,=CL8'abab'  needle='abab'
          MVC    LENN,=F'4'         ln=4
          BAL    R14,SHOW           call show
-         L      R13,4(0,R13)       epilog 
+         L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
@@ -269,18 +269,18 @@ end countSubstring
 
 -- evalOSA :: ("JavaScript" | "AppleScript") -> String -> String
 on evalOSA(strLang, strCode)
-    
+
     set ca to current application
     set oScript to ca's OSAScript's alloc's initWithSource:strCode ¬
         |language|:(ca's OSALanguage's languageForName:(strLang))
-    
+
     set {blnCompiled, oError} to oScript's compileAndReturnError:(reference)
-    
+
     if blnCompiled then
         set {oDesc, oError} to oScript's executeAndReturnError:(reference)
         if (oError is missing value) then return oDesc's stringValue as text
     end if
-    
+
     return oError's NSLocalizedDescription as text
 end evalOSA
 ```
@@ -298,8 +298,8 @@ end evalOSA
 
 ## AutoHotkey
 
-While it is simple enough to parse the string, 
-AutoHotkey has a rather unconventional method which outperforms this. 
+While it is simple enough to parse the string,
+AutoHotkey has a rather unconventional method which outperforms this.
 StringReplace sets the number of replaced strings to ErrorLevel.
 
 ```AutoHotkey
@@ -326,7 +326,7 @@ CountSubstring(fullstring, substring){
 #
 function countsubstring(str, pat,    len, i, c) {
   c = 0
-  if( ! (len = length(pat) ) ) 
+  if( ! (len = length(pat) ) )
     return 0
   while(i = index(str, pat)) {
     str = substr(str, i + len)
@@ -337,7 +337,7 @@ function countsubstring(str, pat,    len, i, c) {
 #
 # countsubstring_regex(string, regex_pattern)
 #   Returns number of occurrences of pattern in string
-#   Pattern treated as regex       
+#   Pattern treated as regex
 #
 function countsubstring_regex(str, pat,    c) {
   c = 0
@@ -538,7 +538,7 @@ exit /b
       sub$ = "abab"
       PRINT ; FNcountSubstring(tst$, sub$) " """ sub$ """ in """ tst$ """"
       END
-      
+
       DEF FNcountSubstring(A$, B$)
       LOCAL I%, N%
       I% = 1 : N% = 0
@@ -593,8 +593,8 @@ exit /b
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 int match(const char *s, const char *p, int overlap)
@@ -621,8 +621,8 @@ int main()
 
 Alternate version:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 // returns count of non-overlapping occurrences of 'sub' in 'str'
@@ -661,8 +661,8 @@ int main()
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 
 // returns count of non-overlapping occurrences of 'sub' in 'str'
@@ -711,7 +711,7 @@ class SubStringTestClass
    public static int CountSubStrings(this string testString, string testSubstring)
    {
         int count = 0;
-            
+
         if (testString.Contains(testSubstring))
         {
             for (int i = 0; i < testString.Length; i++)
@@ -790,7 +790,7 @@ Use the trick of blank replacement and maths to count occurrences.
            MOVE 0 TO occurrences
            INSPECT "ababababab" TALLYING occurrences FOR ALL "abab"
            DISPLAY occurrences
-           
+
            MOVE 0 TO occurrences
            INSPECT "abaabba*bbaba*bbab" TALLYING occurrences
                FOR ALL "a*b"
@@ -1069,7 +1069,7 @@ match([], [], _OrigSub, Acc) ->
 %% String exhausted, present result
 match([], _Sub, _OrigSub, Acc) ->
   Acc;
-	
+
 %% Sub exhausted, count a match
 match(String, [], Sub, Acc) ->
   match(String, Sub, Sub, Acc+1);
@@ -1081,12 +1081,12 @@ match([X|MainTail], [X|SubTail], Sub, Acc) ->
 %% First characters do not match. Keep scanning for sub in remainder of string
 match([_X|MainTail], [_Y|_SubTail], Sub, Acc)->
   match(MainTail, Sub, Sub, Acc).
-	
+
 main(String, Sub) ->
    match(String, Sub, Sub, 0).
 ```
 
-Command: 
+Command:
 ```Erlang
 substrings:main("ababababab","abab").
 ```
@@ -1151,7 +1151,7 @@ The "remove and count the difference" and "manual loop" methods. Implementation 
 
 ```EGL
 program CountStrings
-	
+
     function main()
         SysLib.writeStdout("Remove and Count:");
         SysLib.writeStdout(countSubstring("th", "the three truths"));
@@ -1180,14 +1180,14 @@ program CountStrings
 	else
 	    return 0;
 	end
-    end 
-	
+    end
+
     function countSubstringWithLoop(substr string in, str string in) returns(int)
         count int = 0;
         loc, index int = 1;
         strlen int = str.length();
         substrlen int = substr.length();
-		
+
         if(strlen > 0 and substrlen > 0)
             while(loc != 0 and index <= strlen)
                 loc = str.indexOf(substr, index);
@@ -1272,24 +1272,24 @@ s" ababababab" s" abab" str-count .     \ 2
 program Example
   implicit none
   integer :: n
-  
+
   n = countsubstring("the three truths", "th")
   write(*,*) n
   n = countsubstring("ababababab", "abab")
   write(*,*) n
   n = countsubstring("abaabba*bbaba*bbab", "a*b")
   write(*,*) n
- 
+
 contains
 
 function countsubstring(s1, s2) result(c)
   character(*), intent(in) :: s1, s2
   integer :: c, p, posn
- 
+
   c = 0
   if(len(s2) == 0) return
   p = 1
-  do 
+  do
     posn = index(s1(p:), s2)
     if(posn == 0) return
     c = c + 1
@@ -1357,7 +1357,7 @@ let countSubstring (where :string) (what : string) =
     match what with
     | "" -> 0 // just a definition; infinity is not an int
     | _ -> (where.Length - where.Replace(what, @"").Length) / what.Length
-    
+
 
 [<EntryPoint>]
 let main argv =
@@ -1541,10 +1541,10 @@ count sub = length . catMaybes . map (stripPrefix sub) . tails
 
 ```Icon
 procedure main()
-every A := ![ ["the three truths","th"], ["ababababab","abab"] ] do        
+every A := ![ ["the three truths","th"], ["ababababab","abab"] ] do
    write("The string ",image(A[2])," occurs as a non-overlapping substring ",
          countSubstring!A , " times in ",image(A[1]))
-end   
+end
 
 procedure countSubstring(s1,s2) #: return count of non-overlapping substrings
 c := 0
@@ -1600,7 +1600,7 @@ public class CountSubstring {
 	public static int countSubstring(String subStr, String str){
 		return (str.length() - str.replace(subStr, "").length()) / subStr.length();
 	}
-	
+
 	public static void main(String[] args){
 		System.out.println(countSubstring("th", "the three truths"));
 		System.out.println(countSubstring("abab", "ababababab"));
@@ -1630,7 +1630,7 @@ public class CountSubstring {
 		// the "-1" second argument makes it not discard trailing empty strings
 		return str.split(Pattern.quote(subStr), -1).length - 1;
 	}
-	
+
 	public static void main(String[] args){
 		System.out.println(countSubstring("th", "the three truths"));
 		System.out.println(countSubstring("abab", "ababababab"));
@@ -1659,7 +1659,7 @@ public class CountSubstring {
 			count++;
 		return count;
 	}
-	
+
 	public static void main(String[] args){
 		System.out.println(countSubstring("th", "the three truths"));
 		System.out.println(countSubstring("abab", "ababababab"));
@@ -1943,8 +1943,8 @@ Solution 2:
 ```Lua
 function countSubstring(s1, s2)
     local count = 0
-    for eachMatch in s1:gmatch(s2) do 
-        count = count + 1 
+    for eachMatch in s1:gmatch(s2) do
+        count = count + 1
     end
     return count
 end
@@ -1999,7 +1999,7 @@ StringPosition["ababababab","abab",Overlaps->False]//Length
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 
 ```Matlab
@@ -2008,7 +2008,7 @@ StringPosition["ababababab","abab",Overlaps->False]//Length
   length(findstr("the three truths","th",0))
 
   % Count occurrences of a substring with overlap
-  length(findstr("ababababab","abab",1)) 
+  length(findstr("ababababab","abab",1))
 ```
 
 
@@ -2024,7 +2024,7 @@ ans =  3
 >>   % Count occurrences of a substring with overlap
 >>   length(findstr("ababababab","abab",1))
 ans =  4
->> 
+>>
 ```
 
 
@@ -2079,7 +2079,7 @@ import java.util.regex.Matcher
 def count_substring(pattern:string, source:string)
     (source.length() - source.replace(pattern, "").length()) / pattern.length()
 end
- 
+
 puts count_substring("th", "the three truths")      # ==> 3
 puts count_substring("abab", "ababababab")          # ==> 2
 puts count_substring("a*b", "abaabba*bbaba*bbab")   # ==> 2
@@ -2131,14 +2131,14 @@ module CountSubStrings
             |_ => (text.Length - text.Replace(target, "").Length) / target.Length
         }
     }
-    
+
     Main() : void
     {
         def text1 = "the three truths";
         def target1 = "th";
         def text2 = "ababababab";
         def target2 = "abab";
-        
+
         WriteLine($"$target1 occurs $(text1.CountSubStrings(target1)) times in $text1");
         WriteLine($"$target2 occurs $(text2.CountSubStrings(target2)) times in $text2");
     }
@@ -2174,13 +2174,13 @@ method main(args = String[]) public static
   ix = 0
   ix = ix + 1; strings[0] = ix; find[0] = ix; strings[ix] = 'the three truths'; strings[ix, find] = 'th'
   ix = ix + 1; strings[0] = ix; find[0] = ix; strings[ix] = 'ababababab';       strings[ix, find] = 'abab'
-  
+
   loop ix = 1 to strings[0]
     str = strings[ix]
     fnd = strings[ix, find]
     say 'there are' countSubstring(str, fnd) 'occurences of "'fnd'" in "'str'"'
     end ix
-  
+
   return
 
 ```
@@ -2233,7 +2233,7 @@ there are 2 occurences of "abab" in "ababababab"
 ; Test
 
 (define (test f needle haystack)
-  (println "Found " (f needle haystack) 
+  (println "Found " (f needle haystack)
            " occurences of '" needle "' in '" haystack "'."))
 
 (dolist (f (list scount rcount))
@@ -2310,7 +2310,7 @@ int main(int argc, const char *argv[]) {
     NSLog(@"%lu", [@"the three truths" occurrencesOfSubstring:@"th"]);
     NSLog(@"%lu", [@"ababababab" occurrencesOfSubstring:@"abab"]);
     NSLog(@"%lu", [@"abaabba*bbaba*bbab" occurrencesOfSubstring:@"a*b"]);
- 
+
   }
   return 0;
 }
@@ -2435,7 +2435,7 @@ let () =
 ```Oforth
 
 : countSubString(s, sub)
-   0 1 while(sub swap s indexOfAllFrom dup notNull) [ sub size +  1 under+ ] 
+   0 1 while(sub swap s indexOfAllFrom dup notNull) [ sub size +  1 under+ ]
    drop ;
 ```
 
@@ -2528,7 +2528,7 @@ sub countSubstring {
   return $count;
 #  or return scalar( () = $str =~ /$sub/g );
 }
-  
+
 print countSubstring("the three truths","th"), "\n"; # prints "3"
 print countSubstring("ababababab","abab"), "\n"; # prints "2"
 ```
@@ -2649,14 +2649,14 @@ end cnt;
 ```
 
 
-Output for the two specified strings is as expected.  
+Output for the two specified strings is as expected.
 {{out}} for the following data:
 
 ```txt
 
 TEXT='AAAAAAAAAAAAAAA';
 KEY='AA';
-        7 
+        7
 
 ```
 
@@ -2692,7 +2692,7 @@ END FUNCTION
 
 ```PureBasic
 a = CountString("the three truths","th")
-b = CountString("ababababab","abab")        
+b = CountString("ababababab","abab")
 ; a = 3
 ; b = 2
 ```
@@ -2822,7 +2822,7 @@ print(str_count("hello", fixed("l")))
 
 ```racket
 
-(define count-substring 
+(define count-substring
   (compose length regexp-match*))
 
 ```
@@ -2847,7 +2847,7 @@ Red []
 count-sub1: func [hay needle][
 ;;-----------------------------------
   prin rejoin ["hay: " pad copy hay  20 ",needle: " pad copy needle 6  ",count: " ]
-  i: 0 
+  i: 0
   parse hay [ some [thru needle (i: i + 1)] ]
   print i
 ]
@@ -2879,14 +2879,14 @@ hay: ababababab          ,needle: abab  ,count: 2
 version 2
 hay: the three truths    ,needle: th    ,count: 3
 hay: ababababab          ,needle: abab  ,count: 2
->> 
+>>
 ```
 
 
 
 ## REXX
 
-Some older REXXes don't have the built-in function   '''countstr''',   so one is included within the REXX program as a function. 
+Some older REXXes don't have the built-in function   '''countstr''',   so one is included within the REXX program as a function.
 
 The   '''countstr'''   subroutine (below) mimics the BIF in newer REXXes   (except for error checking).
 
@@ -3008,7 +3008,7 @@ print countSubstring("the three truths","th")
 print countSubstring("ababababab","abab")
 
 FUNCTION countSubstring(s$,find$)
-WHILE instr(s$,find$,i) <> 0 
+WHILE instr(s$,find$,i) <> 0
   countSubstring = countSubstring + 1
   i = instr(s$,find$,i) + len(find$)
 WEND
@@ -3132,7 +3132,7 @@ const func integer: countSubstring (in string: stri, in string: searched) is fun
       offset := pos(stri, searched, offset + length(searched));
     end while;
   end func;
- 
+
 const proc: main is func
   begin
     writeln(countSubstring("the three truths", "th"));
@@ -3466,7 +3466,7 @@ End Module
 }
 ```
 
-Returns: 
+Returns:
 ```txt
 [3 2]
 ```
@@ -3585,13 +3585,13 @@ zkl: println(countSubstring("ababababab","v"))
 ```zxbasic
 10 LET t$="ABABABABAB": LET p$="ABAB": GO SUB 1000
 20 LET t$="THE THREE TRUTHS": LET p$="TH": GO SUB 1000
-30 STOP 
+30 STOP
 1000 PRINT t$: LET c=0
 1010 LET lp=LEN p$
 1020 FOR i=1 TO LEN t$-lp+1
 1030 IF (t$(i TO i+lp-1)=p$) THEN LET c=c+1: LET i=i+lp-1
 1040 NEXT i
 1050 PRINT p$;"=";c''
-1060 RETURN 
+1060 RETURN
 ```
 

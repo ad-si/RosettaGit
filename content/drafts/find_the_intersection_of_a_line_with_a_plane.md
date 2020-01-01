@@ -49,32 +49,32 @@ vector scaleVector(double l,vector a){
 
 vector intersectionPoint(vector lineVector, vector linePoint, vector planeNormal, vector planePoint){
 	vector diff = subVectors(linePoint,planePoint);
-	
+
 	return addVectors(addVectors(diff,planePoint),scaleVector(-dotProduct(diff,planeNormal)/dotProduct(lineVector,planeNormal),lineVector));
 }
 
 int main(int argC,char* argV[])
 {
 	vector lV,lP,pN,pP,iP;
-	
+
 	if(argC!=5)
 		printf("Usage : %s <line direction, point on line, normal to plane and point on plane given as (x,y,z) tuples separated by space>");
 	else{
 		sscanf(argV[1],"(%lf,%lf,%lf)",&lV.x,&lV.y,&lV.z);
 		sscanf(argV[3],"(%lf,%lf,%lf)",&pN.x,&pN.y,&pN.z);
-		
+
 		if(dotProduct(lV,pN)==0)
 			printf("Line and Plane do not intersect, either parallel or line is on the plane");
 		else{
 			sscanf(argV[2],"(%lf,%lf,%lf)",&lP.x,&lP.y,&lP.z);
 			sscanf(argV[4],"(%lf,%lf,%lf)",&pP.x,&pP.y,&pP.z);
-			
+
 			iP = intersectionPoint(lV,lP,pN,pP);
-			
+
 			printf("Intersection point is (%lf,%lf,%lf)",iP.x,iP.y,iP.z);
 		}
 	}
-		
+
 	return 0;
 }
 
@@ -95,8 +95,8 @@ Intersection point is (0.000000,-5.000000,5.000000)
 
 {{trans|Java}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <sstream>
 
 class Vector3D {
@@ -323,7 +323,7 @@ let IntersectPoint rayVector rayPoint planeNormal planePoint =
     rayPoint - rayVector * prod3
 
 [<EntryPoint>]
-let main _ = 
+let main _ =
     let rv = Vector(0.0, -1.0, -1.0)
     let rp = Vector(0.0, 0.0, 10.0)
     let pn = Vector(0.0, 0.0, 1.0)
@@ -375,7 +375,7 @@ Operator - (lhs As vector3d, rhs As vector3d) As vector3d
     Return Type(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z)
 End Operator
 
-Operator * (lhs As vector3d, d As Double) As vector3d 
+Operator * (lhs As vector3d, d As Double) As vector3d
     Return Type(lhs.x * d, lhs.y * d, lhs.z * d)
 End Operator
 
@@ -1054,13 +1054,13 @@ intersection at [ 0 -5  5]
 ;; vectors are represented by lists
 
 (struct Line (P0 u⃗))
- 
+
 (struct Plane (V0 n⃗))
 
 (define (· a b) (apply + (map * a b)))
 
-(define (line-plane-intersection L P)  
-  (match-define (cons (Line P0 u⃗) (Plane V0 n⃗)) (cons L P))  
+(define (line-plane-intersection L P)
+  (match-define (cons (Line P0 u⃗) (Plane V0 n⃗)) (cons L P))
   (define cos (· n⃗ u⃗))
   (when (zero? cos) (error "vectors are orthoganal"))
   (define W (map - P0 V0))
@@ -1120,7 +1120,7 @@ Intersection: P(0,-5,5)
 
 
 ### version 2
- 
+
 handle the case that the line is parallel to the plane or lies within it.
 
 ```rexx
@@ -1246,7 +1246,7 @@ Select
       res=u'*'v
     End
   End
-Return res 
+Return res
 ```
 
 {{out}}
@@ -1402,7 +1402,7 @@ object LinePLaneIntersection extends App {
     def dot(v: Vector3D): Double = x * v.x + y * v.y + z * v.z
     override def toString = s"($x, $y, $z)"
   }
-  
+
   println(s"The ray intersects the plane at $ip")
 }
 ```

@@ -11,26 +11,26 @@ tags = []
 +++
 
 {{task}}
-One of the foundational mathematical constructs behind computer science 
-is the [[wp:Universal Turing machine|universal Turing Machine]].  
+One of the foundational mathematical constructs behind computer science
+is the [[wp:Universal Turing machine|universal Turing Machine]].
 
-Indeed one way to definitively prove that a language 
-is [[wp:Turing_completeness|turing-complete]] 
+Indeed one way to definitively prove that a language
+is [[wp:Turing_completeness|turing-complete]]
 is to implement a universal Turing machine in it.
 
 
 ;Task:
 
-Simulate such a machine capable 
-of taking the definition of any other Turing machine and executing it. 
- 
-Of course, you will not have an infinite tape, 
-but you should emulate this as much as is possible.  
+Simulate such a machine capable
+of taking the definition of any other Turing machine and executing it.
+
+Of course, you will not have an infinite tape,
+but you should emulate this as much as is possible.
 
 The three permissible actions on the tape are "left", "right" and "stay".
 
-To test your universal Turing machine (and prove your programming language 
-is Turing complete!), you should execute the following two Turing machines 
+To test your universal Turing machine (and prove your programming language
+is Turing complete!), you should execute the following two Turing machines
 based on the following definitions.
 
 
@@ -104,11 +104,11 @@ This machine runs for more than 47 millions steps.
 
 ### The specification of the universal machine
 
-Note that due to Ada's strict type system, a machine cannot be compiled 
-if there is not _exactly_ one rule for each state/symbol pair. 
-Thus, the specified machine is always deterministic. 
+Note that due to Ada's strict type system, a machine cannot be compiled
+if there is not _exactly_ one rule for each state/symbol pair.
+Thus, the specified machine is always deterministic.
 
-The execution of the machine, i.e., the procedure Run, allows to define a number Max_Steps, after which the execution stops -- when, e.g., the specified machine runs infinitively. The procedure also allows to optionally output the configuration of the machine before every step. 
+The execution of the machine, i.e., the procedure Run, allows to define a number Max_Steps, after which the execution stops -- when, e.g., the specified machine runs infinitively. The procedure also allows to optionally output the configuration of the machine before every step.
 
 
 ```Ada
@@ -489,17 +489,17 @@ While, ((MaxIterations = "") || IterationCount <= MaxIterations) ; process until
 	GuiControl, , Iterations, %IterationCount%
 	If (State = TerminalState)
 		Break
-	
+
 	StringSplit, Temp, Action%State%%CurrentCell%, |
 	GuiControl, , Actions, % "Actions: Print " . Temp1 . ", Move " . ((Temp2 = -1) ? "left" : "right") . ", " . ((State <> Temp3) ? "Switch to state " . Temp3 : "Do not switch state")
-	
+
 	IterationCount++
 	, CellPut(Index,Temp1)
 	, Index += Temp2
 	, State := Temp3
 	;, (Index > MaxIndex) ? MaxIndex := Index : ""
 	;, (Index < MinIndex) ? MinIndex := Index : ""
-	
+
 	Sleep, 0.1*1000
 }
 MsgBox, 64, Complete, Completed %IterationCount% iterations of the Turing machine.
@@ -610,7 +610,7 @@ DefaultCell=B
 RuleCount=2
 Rule1=q01,1|1|q0
 Rule2=q0B,1|0|qf
-ProgramCode=111 
+ProgramCode=111
 
 [Three-state_busy_beaver]
 States=a|b|c|halt
@@ -625,7 +625,7 @@ Rule3=b0,1|-1|a
 Rule4=b1,1|1|b
 Rule5=c0,1|-1|b
 Rule6=c1,1|0|halt
-ProgramCode= 
+ProgramCode=
 
 [Probable_busy_beaver_Wikipedia]
 States=A|B|C|D|E|H
@@ -643,7 +643,7 @@ Rule6=C1,0|-1|E
 Rule7=D0,1|-1|A
 Rule8=D1,1|-1|D
 Rule9=E0,1|0|H
-Rule10=E1,0|-1|A 
+Rule10=E1,0|-1|A
 ProgramCode=
 ```
 
@@ -744,8 +744,8 @@ If it is true that the <b>five-state probable beaver</b> runs for 47m cycles, th
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <string.h>
@@ -985,8 +985,8 @@ int main () {
 
 ```txt
 Simple incrementer
-q0         [1] 1  1 
-q0          1 [1] 1 
+q0         [1] 1  1
+q0          1 [1] 1
 q0          1  1 [1]
 q0          1  1  1 [B]
 qf          1  1  1 [1]
@@ -994,17 +994,17 @@ qf          1  1  1 [1]
 Three-state busy beaver
 a          [0]
 b           1 [0]
-a          [1] 1 
-c          [0] 1  1 
-b          [0] 1  1  1 
-a          [0] 1  1  1  1 
-b           1 [1] 1  1  1 
-b           1  1 [1] 1  1 
-b           1  1  1 [1] 1 
+a          [1] 1
+c          [0] 1  1
+b          [0] 1  1  1
+a          [0] 1  1  1  1
+b           1 [1] 1  1  1
+b           1  1 [1] 1  1
+b           1  1  1 [1] 1
 b           1  1  1  1 [1]
 b           1  1  1  1  1 [0]
-a           1  1  1  1 [1] 1 
-c           1  1  1 [1] 1  1 
+a           1  1  1  1 [1] 1
+c           1  1  1 [1] 1  1
 halt        1  1  1 [1] 1  1
 ```
 
@@ -1037,12 +1037,12 @@ public:
     void input( string a ){ if( a == "" ) return; for( uint s = 0; s < a.length(); s++ ) _t[headPos + s] = a[s]; }
     void clear( char c ) {  _t.clear(); blk = c; _t.resize( MAX_LEN, blk ); }
     void action( const action* a ) { write( a->write ); move( a->direction ); }
-    void print( int c = 10 ) 
+    void print( int c = 10 )
     {
 	int ml = static_cast<int>( MAX_LEN ), st = static_cast<int>( headPos ) - c, ed = static_cast<int>( headPos ) + c + 1, tx;
-	for( int x = st; x < ed; x++ ) 
-	{ tx = x; if( tx < 0 ) tx += ml; if( tx >= ml ) tx -= ml; cout << _t[tx]; } 
-	cout << endl << setw( c + 1 ) << "^" << endl; 
+	for( int x = st; x < ed; x++ )
+	{ tx = x; if( tx < 0 ) tx += ml; if( tx >= ml ) tx -= ml; cout << _t[tx]; }
+	cout << endl << setw( c + 1 ) << "^" << endl;
     }
 private:
     void move( char d ) { if( d == 'N' ) return; headPos += d == 'R' ? 1 : -1; if( headPos >= MAX_LEN ) headPos = d == 'R' ? 0 : MAX_LEN - 1; }
@@ -1484,12 +1484,12 @@ End state: halt = Success
 13 steps
 tape length: 6
 
-Sorted:  *(a)a a a a b b b b b * 
+Sorted:  *(a)a a a a b b b b b *
 End state: X = Success
 72 steps
 tape length: 12
 
-Sorted:  *(a)a a a a a b b b b b b b * 
+Sorted:  *(a)a a a a a b b b b b b b *
 End state: X = Success
 118 steps
 tape length: 15
@@ -1538,7 +1538,7 @@ tape length: 12289
 
 
 
-###  Tests 
+###  Tests
 
 
 
@@ -1609,17 +1609,17 @@ The infinite tape is represented by two lists:
                     (list (cons new-content old-front)
                           (cdr old-back)))
                    ((eq move 'left)
-                    (list (cdr old-front) 
+                    (list (cdr old-front)
                           (list* (car old-front) new-content (cdr old-back))))
-                   (T (list old-front 
+                   (T (list old-front
                             (cons new-content (cdr old-back))))))
-    
+
            (show-tape (front back)
              (format T "~{~a~}[~a]~{~a~}~%"
                      (nreverse (subseq front 0 (min 10 (length front))))
                      (or (car back) blank)
                      (subseq (cdr back) 0 (min 10 (length (cdr back)))))))
-           
+
     (loop for back = tape then new-back
           for front = '() then new-front
           for state = initial then new-state
@@ -1650,21 +1650,21 @@ Using the same interface and general idea as the iterative version.
                    (show-tape front back))
                  (combine front back))
                (let ((current-content (or (car back) blank)))
-                 (destructuring-bind 
-                   (new-state new-content move) 
+                 (destructuring-bind
+                   (new-state new-content move)
                    (gethash (cons state current-content) rules)
                    (when verbose
                      (show-tape front back))
                    (cond ((eq move 'right)
-                          (run new-state 
-                               (cons new-content front) 
+                          (run new-state
+                               (cons new-content front)
                                (cdr back)))
                          ((eq move 'left)
-                          (run new-state 
-                               (cdr front) 
+                          (run new-state
+                               (cdr front)
                                (list* (car front) new-content (cdr back))))
-                         (T (run new-state 
-                                 front 
+                         (T (run new-state
+                                 front
                                  (cons new-content (cdr back)))))))))
 
             (show-tape (front back)
@@ -1672,7 +1672,7 @@ Using the same interface and general idea as the iterative version.
                       (nreverse (subseq front 0 (min 10 (length front))))
                       (or (car back) blank)
                       (subseq (cdr back) 0 (min 10 (length (cdr back))))))
-            
+
             (combine (front back)
              (if front
                (combine (cdr front) (cons (car front) back))
@@ -1691,7 +1691,7 @@ Using the same interface and general idea as the iterative version.
 (defun make-rules-table (rules-list)
   (let ((rules (make-hash-table :test 'equal)))
     (loop for (state content new-content dir new-state) in rules-list
-          do (setf (gethash (cons state content) rules) 
+          do (setf (gethash (cons state content) rules)
                    (list new-state new-content dir)))
     rules))
 
@@ -1699,7 +1699,7 @@ Using the same interface and general idea as the iterative version.
 (turing 'q0 'qf 'B (make-rules-table '((q0 1 1 right q0) (q0 B 1 stay qf))) '(1 1 1) T)
 
 (format T "Three-state busy beaver~%")
-(turing 'a 'halt 0 
+(turing 'a 'halt 0
         (make-rules-table '((a 0 1 right b)
                             (a 1 1 left c)
                             (b 0 1 left a)
@@ -1728,7 +1728,7 @@ Using the same interface and general idea as the iterative version.
                 '(2 1 2 2 2 1 1)))
 
 (format T "5-state busy beaver (first 20 cells)~%")
-(format T "~{~a~}...~%" 
+(format T "~{~a~}...~%"
   (subseq (turing 'A 'H 0
                   (make-rules-table '((A 0 1 right B)
                                       (A 1 1 left  C)
@@ -2112,17 +2112,17 @@ void main() {
 ```txt
 (0)
  1 (0)
-(1) 1 
-(0) 1  1 
-(0) 1  1  1 
-(0) 1  1  1  1 
- 1 (1) 1  1  1 
- 1  1 (1) 1  1 
- 1  1  1 (1) 1 
+(1) 1
+(0) 1  1
+(0) 1  1  1
+(0) 1  1  1  1
+ 1 (1) 1  1  1
+ 1  1 (1) 1  1
+ 1  1  1 (1) 1
  1  1  1  1 (1)
  1  1  1  1  1 (0)
- 1  1  1  1 (1) 1 
- 1  1  1 (1) 1  1 
+ 1  1  1  1 (1) 1
+ 1  1  1 (1) 1  1
 ```
 
 
@@ -2243,7 +2243,7 @@ universal-turing-machine transitions initial final tape:
 
 We define a Turing machine as an instance of TM struct, which stores the definition values (states,symbols,rules) and the current state values (state, tape, position). It can be stopped, restarted, called as a sub-program, or transformed into a sequence or stream.'Huge' TM are run in the background. Rules are compiled into a vector indexed by state * symbol.
 
-###  Turing Machines 
+###  Turing Machines
 
 
 ```scheme
@@ -2254,16 +2254,16 @@ We define a Turing machine as an instance of TM struct, which stores the definit
 
 (define-syntax-rule (rule-idx state symb numstates)
     (+ state (* symb numstates)))
-    
-(define-syntax-rule (make-TM name states symbs rules) 
+
+(define-syntax-rule (make-TM name states symbs rules)
     (_make-TM  name 'states 'symbs 'rules))
-    
+
 ;; a rule is (state symbol --> write move new-state)
 ;; index for rule = state-num + (number of states)  * symbol-num
 ;; convert states/symbol into vector indices
 (define (compile-rule T rule  into: rules)
     (define numstates (vector-length (TM-states T)))
-    (define state (vector-index [rule 0](TM-states T) )) ; index 
+    (define state (vector-index [rule 0](TM-states T) )) ; index
     (define symb (vector-index [rule 1](TM-symbs T) ))
     (define write-symb (vector-index [rule 2] (TM-symbs T)  ))
     (define move (1- (vector-index  [rule 3] #(left stay right) )))
@@ -2272,35 +2272,35 @@ We define a Turing machine as an instance of TM struct, which stores the definit
     (vector-set! rules rulenum (vector write-symb move new-state))
     ; (writeln 'rule  rulenum [rules rulenum])
     )
-    
+
 (define (_make-TM name states symbs rules)
     (define T (TM  name (list->vector states) (list->vector symbs) null null))
     (set-TM-final! T (1-  (length states))) ;; assume one final state
     (set-TM-rules! T (make-vector (* (length states) (length symbs))))
     (for ((rule rules)) (compile-rule T (list->vector rule) into: (TM-rules T)))
     T ) ; returns a TM
-    
+
 ;;------------------
-;; TM-trace 
+;; TM-trace
 ;;-------------------
 (string-delimiter "")
 
 (define (TM-print T symb-index: symb (hilite #f))
-	(cond 
+	(cond
 	((= 0 symb) (if hilite "🔲"  "◽️" ))
 	((= 1 symb) (if hilite  "🔳 " "◾️" ))
 	(else "X")))
-		
+
 (define (TM-trace T tape pos state step)
 	(if (= (TM-final T) state)
 		(write "🔴")
 		(write "🔵"))
-		
+
     (for [(p (in-range  (- (TM-mem T) 7) (+ (TM-mem T) 8)))]
         (write (TM-print T [tape p] (= p pos))))
     (write step)
     (writeln))
-    
+
 ;;---------------
 ;; TM-init : alloc and init tape
 ;;---------------
@@ -2329,7 +2329,7 @@ We define a Turing machine as an instance of TM struct, which stores the definit
     (define pos (TM-pos T))
     (define state (TM-state T))
     (define tape (TM-tape T))
-    
+
     (when (and (zero? state) (= pos (TM-mem T)))
     	 (writeln 'Starting (TM-name T))
     	 (TM-trace T tape pos 0 count))
@@ -2348,7 +2348,7 @@ We define a Turing machine as an instance of TM struct, which stores the definit
     (set-TM-pos! T pos)
     (set-TM-state! T state)
     (when (= final state)  (writeln 'Stopping (TM-name T) 'at-pos (- pos (TM-mem T))))
-    count)  
+    count)
 
 ```
 
@@ -2361,19 +2361,19 @@ We define a Turing machine as an instance of TM struct, which stores the definit
     (B 1)
     ((q0  1 1 right q0)
        (q0 B 1 stay qf))))
-    
+
 (TM-init T '(1 1 1) 20)
 (TM-run T #t)
 
 (TM-run T #t)
 🔵 ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ 🔳 ◾️ ◾️ ◽️ ◽️ ◽️ ◽️ ◽️ 0
-Starting     TM: incrementer    
+Starting     TM: incrementer
 🔵 ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ 🔳 ◾️ ◾️ ◽️ ◽️ ◽️ ◽️ ◽️ 0
 🔵 ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◾️ 🔳 ◾️ ◽️ ◽️ ◽️ ◽️ ◽️ 1
 🔵 ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◾️ ◾️ 🔳 ◽️ ◽️ ◽️ ◽️ ◽️ 2
 🔵 ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◾️ ◾️ ◾️ 🔲 ◽️ ◽️ ◽️ ◽️ 3
 🔴 ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◾️ ◾️ ◾️ 🔳 ◽️ ◽️ ◽️ ◽️ 4
-Stopping     TM: incrementer     at-pos     3  
+Stopping     TM: incrementer     at-pos     3
 
 ;; three-states busy beaver
 (define T (make-TM "TM: three-states busy beaver"
@@ -2385,9 +2385,9 @@ Stopping     TM: incrementer     at-pos     3
         (b 1 1 right b)
         (c 0 1 left b)
         (c 1 1 stay halt))))
-    
+
 (TM-init T null 100)
-Starting     TM: three-states busy beaver    
+Starting     TM: three-states busy beaver
 🔵 ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ 🔲 ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ 0
 🔵 ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◾️ 🔲 ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ 1
 🔵 ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ 🔳 ◾️ ◽️ ◽️ ◽️ ◽️ ◽️ ◽️ 2
@@ -2402,7 +2402,7 @@ Starting     TM: three-states busy beaver
 🔵 ◽️ ◽️ ◽️ ◽️ ◾️ ◾️ ◾️ ◾️ 🔳 ◾️ ◽️ ◽️ ◽️ ◽️ ◽️ 11
 🔵 ◽️ ◽️ ◽️ ◽️ ◾️ ◾️ ◾️ 🔳 ◾️ ◾️ ◽️ ◽️ ◽️ ◽️ ◽️ 12
 🔴 ◽️ ◽️ ◽️ ◽️ ◾️ ◾️ ◾️ 🔳 ◾️ ◾️ ◽️ ◽️ ◽️ ◽️ ◽️ 13
-Stopping     TM: three-states busy beaver     at-pos     0      
+Stopping     TM: three-states busy beaver     at-pos     0
 
 ```
 
@@ -2416,7 +2416,7 @@ We create a task to run it in the background.
 
 (define steps 0)
 (define (TM-task T)
-    (define count (TM-run T #f 1000000)) 
+    (define count (TM-run T #f 1000000))
     (when (zero? steps) (writeln 'START (date)))
     (+= steps count)
     (writeln 'TM-steps steps (date))
@@ -2445,17 +2445,17 @@ We create a task to run it in the background.
         (D 1 1 left D)
         (E 0 1 stay H)
         (E 1 0 left A))))
-        
+
 (TM-init T null 20000)
 (task-run (make-task TM-task T) 1000)
 
 ;; Firefox : 192 sec Chrome:342 sec Safari: 232 sec
-START     Mon Feb 08 2016 18:34:15 GMT+0100 (CET)    
-TM-steps     47176870     Mon Feb 08 2016 18:38:23 GMT+0100 (CET)    
-END     47176870     Mon Feb 08 2016 18:38:23 GMT+0100 (CET)   
+START     Mon Feb 08 2016 18:34:15 GMT+0100 (CET)
+TM-steps     47176870     Mon Feb 08 2016 18:38:23 GMT+0100 (CET)
+END     47176870     Mon Feb 08 2016 18:38:23 GMT+0100 (CET)
 
 ;; check result : count written "1"
- 
+
 (for/sum ((s (TM-tape T))) s)
     → 4098
 
@@ -2583,7 +2583,7 @@ The input scheme initially required a numbers-only style of description (so free
 
 Since only one number was required on the STATE lines, a comment can follow the value. Although this avoided redundant data (there being no need to give the state number on every line as well) it proved to be troublesome to prepare, so for the larger descriptions (involving a conversion of state names to numbers, and symbol glyphs to symbol numbers), a retreat: present the symbol number, and allow the entries to be in any order - such as increasing. When the transition table as ingested is printed, this means that the entry numbers are in an odd order, but no matter. Should there be an error in the input, a mess will result but preparing a more flexible input arrangement would require a lot more code.
 
-Specifying the initial state of the tape proved a bit tricky in the case when it was to be entirely blank, as end-of-file problems arose. So for that case a single zero was supplied and the problem went away... The tape's initial state is all zero anyway. Remember that in the scheme here this is symbol number zero, not "0". 
+Specifying the initial state of the tape proved a bit tricky in the case when it was to be entirely blank, as end-of-file problems arose. So for that case a single zero was supplied and the problem went away... The tape's initial state is all zero anyway. Remember that in the scheme here this is symbol number zero, not "0".
 
 After the first version was working, annoyance with the numerical symbol specification scheme prompted an escalation to the ability to specify an alphabet of arbitrary symbols, rather than symbol number 0, number 1, etc. but this could cause difficulty with the free-format reading, especially if one symbol were to be a blank. It transpired that character data could be read into character variables in free-format with or without quotes around them, provided that outside quotes a desired symbol is neither a space nor a comma. Thus the initial specification of two symbols might be "01" or "10" or "AB" or AB for the content of SYMBOLS, and when the transition table is read, the supplied symbol is sought within SYMBOLS. The internal working continues with the number of the symbol, not the symbol's numerical value.
 
@@ -3657,11 +3657,11 @@ func main() {
 Turing machine halts after 4 operations
 Resulting tape:  1  1  1 [1]
 Turing machine halts after 13 operations
-Resulting tape:  1  1  1 [1] 1  1 
+Resulting tape:  1  1  1 [1] 1  1
 Turing machine halts after 47176870 operations
 Resulting tape has 12289 cells
 Turing machine halts after 118 operations
-Resulting tape:    [a] a  a  a  a  a  b  b  b  b  b  b  b  b    
+Resulting tape:    [a] a  a  a  a  a  b  b  b  b  b  b  b  b
 ```
 
 
@@ -3691,7 +3691,7 @@ tape blank lts rts | null rts = Tape blank left blanks
                    | otherwise = Tape (head rts) left right
                    where blanks = repeat blank
                          left = reverse lts ++ blanks
-                         right = tail rts ++ blanks   
+                         right = tail rts ++ blanks
 
 -- Turing Machine
 step rules (state, Tape x (lh:lts) (rh:rts)) = (state', tape')
@@ -3924,7 +3924,7 @@ loadMachine n = do
         ei = head . words . tail . snd $ break (== ':') e1
         va = head . words . tail . snd $ break (== ':') e3
         ci = words . intersperse ' ' . tail . snd $ break (== ':') $ last rest
-                
+
     return Machine
         { rules = re
         , initialState = ei
@@ -4069,7 +4069,7 @@ end
 
 procedure get_tm()
     D := table()
- 
+
     writes("What is the start state? ")
     start := !&input
     writes("What are the final states (colon separated)? ")
@@ -4077,7 +4077,7 @@ procedure get_tm()
     (finals||":") ? every insert(fStates := set(), 1(tab(upto(':')),move(1)))
     writes("What is the tape blank symbol?")
     blank := !&input
- 
+
     write("Enter the delta mappings, using the following format:")
     write("\tenter delta(curState,tapeSymbol) = (newState,newSymbol,direct) as")
     write("\t   curState:tapeSymbol:newState:newSymbol:direct");
@@ -4141,7 +4141,7 @@ procedure trace(tm,cs,ls,rs)
 
     count +:= 1
     if \show_count & (count % show_count = 0) then show_tape(tm,ls,rs)
-    if find(":"||cs||":",trace_list) & (last_state ~== cs) then { 
+    if find(":"||cs||":",trace_list) & (last_state ~== cs) then {
         writes("\tnow in state: ",cs," ")
         if \full_display then show_delta(tm.delta[cs||":"||rs[1]])
         else write()
@@ -4158,7 +4158,7 @@ procedure show_delta(m)
         write("(",m.new_state,",",m.output_symbol,",",m.direction,")")
         }
 end
- 
+
 procedure show_tape(tm,l,r)
     l := reverse(trim(reverse(l),tm.blank))
     r := trim(r,tm.blank)
@@ -4256,15 +4256,15 @@ The universal Turing machine is defined in terms of fixed tacit (stateless point
 utm=.
 (((":@:(]&:>)@:(6&({::)) ,: (":@] 9&({::))) ,. ':'"_) ,. 2&({::) >@:(((48 + ]
 ) { a."_)@[ ; (] $ ' '"_) , '^'"_) 3&({::))@:([ (0 0 $ 1!:2&2)@:('A changeles
-s cycle was detected!'"_)^:(-.@:(_1"_ = 1&({::))))@:((((3&({::) + 8&({::)) ; 
+s cycle was detected!'"_)^:(-.@:(_1"_ = 1&({::))))@:((((3&({::) + 8&({::)) ;
 1 + 9&({::)) 3 9} ])@:(<@:((0 (0 {:: ])`(<@:(1 {:: ]))`(2 {:: ])} ])@:(7 3 2&
 {)) 2} ])@:(<"0@:(6&({::) (<@[ { ]) 0&({::)) 7 8 1} ])@:([ (0 0 $ 1!:2&2)@:((
-(":@:(]&:>)@:(6&({::)) ,: (":@] 9&({::))) ,. ':'"_) ,. 2&({::) >@:(((48 + ]) 
+(":@:(]&:>)@:(6&({::)) ,: (":@] 9&({::))) ,. ':'"_) ,. 2&({::) >@:(((48 + ])
 { a."_)@[ ; (] $ ' '"_) , '^'"_) 3&({::))^:(0 = 4&({::) | 9&({::)))@:(<@:(1&(
 {::) ; 3&({::) { 2&({::)) 6} ])@:(<@:(3&({::) + _1 = 3&({::)) 3} ])@:(<@:(((_
 1 = 3&({::)) {:: 5&({::)) , 2&({::) , (3&({::) = #@:(2&({::))) {:: 5&({::)) 2
 } ])^:(-.@:(_1"_ = 1&({::)))^:_)@:((0 ; (({. , ({: % 3:) , 3:)@:$ $ ,)@:(}."1
-)@:(".;._2)@:(0&({::))) 9 0} ])@:(<@:('' ; 0"_) 5} ])@:(,&(;:',,,,,'))@:(,~) 
+)@:(".;._2)@:(0&({::))) 9 0} ])@:(<@:('' ; 0"_) 5} ])@:(,&(;:',,,,,'))@:(,~)
 
 )
 
@@ -4277,7 +4277,7 @@ s cycle was detected!'"_)^:(-.@:(_1"_ = 1&({::))))@:((((3&({::) + 8&({::)) ;
 
 ```j
    Noun=. ".@('(0 : 0)'"_)
-   
+
    NB. Simple Incrementer...
    NB.        0         1     Tape Symbol Scan
    NB. S   p  m  g   p  m  g  (p,m,g) → (print,move,goto)
@@ -4285,12 +4285,12 @@ s cycle was detected!'"_)^:(-.@:(_1"_ = 1&({::))))@:((((3&({::) + 8&({::)) ;
        0   1  0 _1   1  1  0
 )
    TPF=. 1 1 1 ; 0 ; 1        NB. Setting the tape, its pointer and the display frequency
-   
+
    TPF utm QS                 NB. Running the Turing machine...
 0 1:111
-0  :^  
+0  :^
 0 1:111
-1  : ^ 
+1  : ^
 0 1:111
 2  :  ^
 0 0:1110
@@ -4312,34 +4312,34 @@ s cycle was detected!'"_)^:(-.@:(_1"_ = 1&({::))))@:((((3&({::) + 8&({::)) ;
        2   1 _1  1   1  0 _1
 )
    TPF=. 0 ; 0 ; 1            NB. Setting the tape, its pointer and the display frequency
-   
+
    TPF utm QS                 NB. Running the Turing machine...
 0 0:0
 0  :^
 1 0:10
 1  : ^
 0 1:11
-2  :^ 
+2  :^
 2 0:011
-3  :^  
+3  :^
 1 0:0111
-4  :^   
+4  :^
 0 0:01111
-5  :^    
+5  :^
 1 1:11111
-6  : ^   
+6  : ^
 1 1:11111
-7  :  ^  
+7  :  ^
 1 1:11111
-8  :   ^ 
+8  :   ^
 1 1:11111
 9  :    ^
 1 0:111110
 10 :     ^
 0 1:111111
-11 :    ^ 
+11 :    ^
 2 1:111111
-12 :   ^  
+12 :   ^
 2 1:111111
 13 :   ^
 ```
@@ -4350,16 +4350,16 @@ s cycle was detected!'"_)^:(-.@:(_1"_ = 1&({::))))@:((((3&({::) + 8&({::)) ;
 ```j
    NB. Probable 5-state, 2-symbol busy beaver...
    NB.        0         1      Tape Symbol Scan
-   NB. S   p  m  g   p  m  g  (p,m,g) → (print,move,goto)     
+   NB. S   p  m  g   p  m  g  (p,m,g) → (print,move,goto)
    QS=. (Noun _) ; 0          NB. Reading the transition table and setting the state
        0   1  1  1   1 _1  2
        1   1  1  2   1  1  1
        2   1  1  3   0 _1  4
        3   1 _1  0   1 _1  3
        4   1  1 _1   0 _1  0
-)   
+)
    TPF=. 0 ; 0 ; _            NB. Setting the tape, its pointer and the display frequency
-   
+
    TPF utm QS                 NB. Running the Turing machine...
 0 0:0
 0 :^
@@ -4384,21 +4384,21 @@ s cycle was detected!'"_)^:(-.@:(_1"_ = 1&({::))))@:((((3&({::) + 8&({::)) ;
        4   0  1 _1   1 _1  4   _  _  _   _  _  _
 )
    TPF=. 1 2 2 1 2 2 1 2 1 2 1 2 1 2 ; 0 ; 50   NB. Setting the tape, its pointer and the display frequency
-   
-   TPF utm QS                 NB. Running the Turing machine...    
+
+   TPF utm QS                 NB. Running the Turing machine...
 0 1:12212212121212
-0  :^             
+0  :^
 3 2:113122121222220
-50 :    ^          
+50 :    ^
 1 2:111111322222220
-100:            ^  
+100:            ^
 4 0:0111111222222220
 118: ^
 ```
 
 
 
-###  The structured derivation of the universal Turing machine 
+###  The structured derivation of the universal Turing machine
 
 The fixed tacit code was produced by means of an unorthodox tacit toolkit; however, the verb produced is orthodox (i.e., compliant with the language specifications):
 
@@ -4415,7 +4415,7 @@ c=."_
 ver=. (0:`)([:^:)
 
 d=. (fix=. (;:'f.')ver) (train=.(;:'`:')ver&6) (an=. <@:((,'0') (,&<) ]))
-ver=. (an f. o fix'ver')ver o an f. 
+ver=. (an f. o fix'ver')ver o an f.
 z=. ((an'')`($ ,)`) (`:6)
 d=. (a0=. `'') (a1=. (@:[) ((<'&')`) (`:6)) (a2=. (`(<(":0);_)) (`:6))
 av=. ((an o fix'a0')`)  (`(an o fix'a1')) (`(an o fix'a2') ) (`:6)
@@ -4454,11 +4454,11 @@ NB. Local...
   M     - State and tape symbol read
   PRINT - Printing symbol
   MOVE  - Tape head moving instruction
-  C     - Step Counter 
+  C     - Step Counter
 )
 
 'Q S T P F B M PRINT MOVE C'=. 10 Fetch  NB. Fetching 10 Boxes
-   
+
 DisplayTape=. > o (((48 + ]) { a.c)@[ ; ((] $ ' 'c) , '^'c))
 display=. ((((": o (]&:>) o M) ,: (":@] C)) ,. ':'c ) ,. (T DisplayTape P))
   NB. Displaying state, symbol, tape / step and pointer
@@ -4466,16 +4466,16 @@ display=. ((((": o (]&:>) o M) ,: (":@] C)) ,. ':'c ) ,. (T DisplayTape P))
 amend=. 0 (0 {:: ])`(<@:(1 {:: ]))`(2 {:: ])} ]
 
 NB. execute (monadic verb)...
-   
+
 FillLeft=.  (_1 = P    ) {:: B        NB. Expanding and filling the tape
 FillRight=. ( P = # o T) {:: B        NB. with 0's (if necessary)
 ia=. <@[ { ]                          NB. Selecting by the indices of an array
 
-execute is   
+execute is
   T`(FillLeft , T , FillRight)h       NB. Adjusting the tape
   P`(P + _1 = P)                 h    NB. and the pointer (if necessary)
-  M`(S ; P { T)                  h    NB. Updating the state and reading the tape symbol 
-  [ (smoutput o display)^:(0 = F | C) NB. Displaying intermediate cycles		       		
+  M`(S ; P { T)                  h    NB. Updating the state and reading the tape symbol
+  [ (smoutput o display)^:(0 = F | C) NB. Displaying intermediate cycles
   (PRINT MOVE S)`(<"0 o (M ia Q))h    NB. Performing the printing, moving and state actions
   T`(amend o ((PRINT P T)f))     h    NB. Printing symbol on tape at the pointer position
   (P C)`((P + MOVE) ; 1 + C)     h    NB. Updating the pointer and the counter
@@ -4486,7 +4486,7 @@ halt=. _1 c = S                        NB. Halting when the current state is _1
 rt=. ((({. , ({: % 3:) , 3:) o $) $ ,) o (}."1) o (". ;. _2)
   NB. Reshaping the transition table as a 3D array (state,symbol,action)
 
-utm is  NB. Universal Turing Machine (dyadic verb)  
+utm is  NB. Universal Turing Machine (dyadic verb)
   ,~                                  NB. Appending the arguments in reverse order
   ,&(;:5$',')                         NB. Appending 5 local boxes (B M PRINT MOVE C)
   B`('' ; 0 c)      h                 NB. Setting empty blank defaults as 0
@@ -4495,7 +4495,7 @@ utm is  NB. Universal Turing Machine (dyadic verb)
   [ smoutput o cc ^: (-. o halt)      NB. or a changeless single cycle is detected
   display                             NB. Displaying (returning) the final status
 )
-   
+
 utm=. utm f.   NB. Fixing the universal Turing machine code
 
 NB. The simulation code is produced by  77 (-@:[ ]\ 5!:5@<@:]) 'utm'
@@ -4526,7 +4526,7 @@ public class UTM {
     private Map<StateTapeSymbolPair, Transition> transitions = new HashMap<StateTapeSymbolPair, Transition>();
     private Set<String> terminalStates;
     private String initialState;
-    
+
     public UTM(Set<Transition> transitions, Set<String> terminalStates, String initialState, String blankSymbol) {
         this.blankSymbol = blankSymbol;
         for (Transition t : transitions) {
@@ -4535,7 +4535,7 @@ public class UTM {
         this.terminalStates = terminalStates;
         this.initialState = initialState;
     }
-    
+
     public static class StateTapeSymbolPair {
         private String state;
         private String tapeSymbol;
@@ -4587,7 +4587,7 @@ public class UTM {
             return "(" + state + "," + tapeSymbol + ")";
         }
     }
-    
+
     public static class Transition {
         private StateTapeSymbolPair from;
         private StateTapeSymbolPair to;
@@ -4604,29 +4604,29 @@ public class UTM {
             return from + "=>" + to + "/" + direction;
         }
     }
-    
+
     public void initializeTape(List<String> input) { // Arbitrary Strings as symbols.
         tape = input;
     }
-    
+
     public void initializeTape(String input) { // Uses single characters as symbols.
         tape = new LinkedList<String>();
         for (int i = 0; i < input.length(); i++) {
             tape.add(input.charAt(i) + "");
         }
     }
-    
+
     public List<String> runTM() { // Returns null if not in terminal state.
         if (tape.size() == 0) {
             tape.add(blankSymbol);
         }
-        
+
         head = tape.listIterator();
         head.next();
         head.previous();
-        
+
         StateTapeSymbolPair tsp = new StateTapeSymbolPair(initialState, tape.get(0));
-        
+
         while (transitions.containsKey(tsp)) { // While a matching transition exists.
             System.out.println(this + " --- " + transitions.get(tsp));
             Transition trans = transitions.get(tsp);
@@ -4649,9 +4649,9 @@ public class UTM {
                 tsp.tapeSymbol = trans.to.tapeSymbol;
             }
         }
-        
+
         System.out.println(this + " --- " + tsp);
-        
+
         if (terminalStates.contains(tsp.state)) {
             return tape;
         } else {
@@ -4664,13 +4664,13 @@ public class UTM {
         try {
         	int headPos = head.previousIndex();
             String s = "[ ";
-            
+
             for (int i = 0; i <= headPos; i++) {
                 s += tape.get(i) + " ";
             }
 
             s += "[H] ";
-            
+
             for (int i = headPos + 1; i < tape.size(); i++) {
                 s += tape.get(i) + " ";
             }
@@ -4680,32 +4680,32 @@ public class UTM {
             return "";
         }
     }
-    
+
     public static void main(String[] args) {
         // Simple incrementer.
         String init = "q0";
         String blank = "b";
-        
+
         Set<String> term = new HashSet<String>();
         term.add("qf");
-        
+
         Set<Transition> trans = new HashSet<Transition>();
-        
+
         trans.add(new Transition(new StateTapeSymbolPair("q0", "1"), new StateTapeSymbolPair("q0", "1"), 1));
         trans.add(new Transition(new StateTapeSymbolPair("q0", "b"), new StateTapeSymbolPair("qf", "1"), 0));
-        
+
         UTM machine = new UTM(trans, term, init, blank);
         machine.initializeTape("111");
         System.out.println("Output (si): " + machine.runTM() + "\n");
-        
+
         // Busy Beaver (overwrite variables from above).
         init = "a";
-        
+
         term.clear();
         term.add("halt");
-        
+
         blank = "0";
-        
+
         trans.clear();
 
         // Change state from "a" to "b" if "0" is read on tape, write "1" and go to the right. (-1 left, 0 nothing, 1 right.)
@@ -4715,7 +4715,7 @@ public class UTM {
         trans.add(new Transition(new StateTapeSymbolPair("b", "1"), new StateTapeSymbolPair("b", "1"), 1));
         trans.add(new Transition(new StateTapeSymbolPair("c", "0"), new StateTapeSymbolPair("b", "1"), -1));
         trans.add(new Transition(new StateTapeSymbolPair("c", "1"), new StateTapeSymbolPair("halt", "1"), 0));
-        
+
         machine = new UTM(trans, term, init, blank);
         machine.initializeTape("");
         System.out.println("Output (bb): " + machine.runTM());
@@ -4723,12 +4723,12 @@ public class UTM {
         // Sorting test (overwrite variables from above).
         init = "s0";
         blank = "*";
-        
+
         term = new HashSet<String>();
         term.add("see");
-        
+
         trans = new HashSet<Transition>();
-        
+
         trans.add(new Transition(new StateTapeSymbolPair("s0", "a"), new StateTapeSymbolPair("s0", "a"), 1));
         trans.add(new Transition(new StateTapeSymbolPair("s0", "b"), new StateTapeSymbolPair("s1", "B"), 1));
         trans.add(new Transition(new StateTapeSymbolPair("s0", "*"), new StateTapeSymbolPair("se", "*"), -1));
@@ -4915,14 +4915,14 @@ tm( 'Three-state busy beaver',
   *: a [<u>1</u>11]
   1: a [<u> </u>111]
   2: h [<u>1</u>111]
- 
+
 Unary adder
    *: 1 [<u>1</u>11 111]
    1: 2 [ <u>1</u>1 111]
    2: 3 [ 1<u>1</u> 111]
    3: 3 [ 11<u> </u>111]
    4: 0 [ 11<u>1</u>111]
-  
+
 Three-state busy beaver
    *: 1 [<u> </u>]
    1: 2 [1<u> </u>]
@@ -5117,7 +5117,7 @@ class Turing(
         for (i in 0 until rules.size) {
             val rule = rules[i]
             transitions[stateIndex(rule.state1)][symbolIndex(rule.symbol1)] = rule
-        }            
+        }
     }
 
     private fun stateIndex(state: String): Int {
@@ -5257,8 +5257,8 @@ fun main(args: Array<String>) {
 ```txt
 
 Simple incrementer
-q0         [1] 1  1 
-q0          1 [1] 1 
+q0         [1] 1  1
+q0          1 [1] 1
 q0          1  1 [1]
 q0          1  1  1 [B]
 qf          1  1  1 [1]
@@ -5266,40 +5266,40 @@ qf          1  1  1 [1]
 Three-state busy beaver
 a          [0]
 b           1 [0]
-a          [1] 1 
-c          [0] 1  1 
-b          [0] 1  1  1 
-a          [0] 1  1  1  1 
-b           1 [1] 1  1  1 
-b           1  1 [1] 1  1 
-b           1  1  1 [1] 1 
+a          [1] 1
+c          [0] 1  1
+b          [0] 1  1  1
+a          [0] 1  1  1  1
+b           1 [1] 1  1  1
+b           1  1 [1] 1  1
+b           1  1  1 [1] 1
 b           1  1  1  1 [1]
 b           1  1  1  1  1 [0]
-a           1  1  1  1 [1] 1 
-c           1  1  1 [1] 1  1 
-halt        1  1  1 [1] 1  1 
+a           1  1  1  1 [1] 1
+c           1  1  1 [1] 1  1
+halt        1  1  1 [1] 1  1
 
 Five-state two-symbol probable busy beaver
 A          [0]
 B           1 [0]
 C           1  1 [0]
 D           1  1  1 [0]
-A           1  1 [1] 1 
-C           1 [1] 1  1 
-E          [1] 0  1  1 
-A          [0] 0  0  1  1 
-B           1 [0] 0  1  1 
-C           1  1 [0] 1  1 
-D           1  1  1 [1] 1 
-D           1  1 [1] 1  1 
-D           1 [1] 1  1  1 
-D          [1] 1  1  1  1 
-D          [0] 1  1  1  1  1 
-A          [0] 1  1  1  1  1  1 
-B           1 [1] 1  1  1  1  1 
-B           1  1 [1] 1  1  1  1 
-B           1  1  1 [1] 1  1  1 
-B           1  1  1  1 [1] 1  1 
+A           1  1 [1] 1
+C           1 [1] 1  1
+E          [1] 0  1  1
+A          [0] 0  0  1  1
+B           1 [0] 0  1  1
+C           1  1 [0] 1  1
+D           1  1  1 [1] 1
+D           1  1 [1] 1  1
+D           1 [1] 1  1  1
+D          [1] 1  1  1  1
+D          [0] 1  1  1  1  1
+A          [0] 1  1  1  1  1  1
+B           1 [1] 1  1  1  1  1
+B           1  1 [1] 1  1  1  1
+B           1  1  1 [1] 1  1  1
+B           1  1  1  1 [1] 1  1
 (Only the first 20 lines displayed)
 
 ```
@@ -5463,22 +5463,22 @@ Functionally equivalent to computing a matrix for a set of inputs.
 
 left = 1; right = -1; stay = 0;
 cmp[s_] := ToExpression[StringSplit[s, ","]];
-utm[rules_, initial_, head_] := 
+utm[rules_, initial_, head_] :=
   Module[{tape = initial, rh = head, n = 1},
    Clear[nxt];
-   nxt[state_, field_] := 
+   nxt[state_, field_] :=
     nxt[state, field] = Position[rules, {rules[[state, 5]], field, _, _, _}][[1, 1]];
    n = Position[rules, {rules[[n, 1]], BitGet[tape, rh], _, _, _}][[1,1]];
    While[rules[[n, 4]] != 0,
     If[rules[[n, 3]] != BitGet[tape, rh],
-     If[rules[[n, 3]] == 1, tape = BitSet[tape, rh], 
+     If[rules[[n, 3]] == 1, tape = BitSet[tape, rh],
       tape = BitClear[tape, rh]]];
     rh = rh + rules[[n, 4]];
     If[rh < 0, rh = 0; tape = 2*tape];
     n = nxt[n, BitGet[tape, rh]];
     ]; {tape, rh}
    ];
-]; 
+];
 ```
 
 
@@ -5517,9 +5517,9 @@ Summary output from the 2 short machines
 ```txt
 
 1110
-   ^ 
+   ^
 111111
-   ^ 
+   ^
 
 ```
 
@@ -5681,9 +5681,9 @@ This will, on execution, fill TapeOut with [1, 1, 1, 1, 1, 1].
 
 
 The following is the Code section of the NetLogo file UTMachine_RSdan3dewey.nlogo which can be
-downloaded from the page: 
+downloaded from the page:
 
-http://sites.google.com/site/dan3deweyscspaimsportfolio/extra-turing-machine 
+http://sites.google.com/site/dan3deweyscspaimsportfolio/extra-turing-machine
 
 This page also has other information, screen shots, etc.
 
@@ -6348,7 +6348,7 @@ New    State  :qf
 Tape position :3
 -----------------------
 Program has finished
-Time taken 
+Time taken
 00:000
 4 steps taken
 
@@ -6594,7 +6594,7 @@ New    State  :halt
 Tape position :10
 -----------------------
 Program has finished
-Time taken 
+Time taken
 00:001
 13 steps taken
 
@@ -6768,7 +6768,7 @@ New    State  :H
 Tape position :1757
 -----------------------
 Program has finished
-Time taken 
+Time taken
 40:856
 47176870 steps taken
 
@@ -7140,7 +7140,7 @@ constant incrementer = {
         {"q0", "B", "1", "stay", "qf"}
     }
 }
- 
+
 constant threeStateBB = {
     /*name =*/ "Three-state busy beaver",
     /*initState =*/ "a",
@@ -7155,7 +7155,7 @@ constant threeStateBB = {
         {"c", "1", "1", "stay", "halt"}
     }
 }
- 
+
 constant fiveStateBB = {
     /*name =*/ "Five-state busy beaver",
     /*initState =*/ "A",
@@ -7174,7 +7174,7 @@ constant fiveStateBB = {
         {"E", "1", "0", "left", "A"}
     }
 }
- 
+
 procedure show(string state, integer headpos, sequence tape)
     printf(1," %-6s | ",{state})
     for p=1 to length(tape) do
@@ -7182,7 +7182,7 @@ procedure show(string state, integer headpos, sequence tape)
     end for
     printf(1,"\n")
 end procedure
- 
+
 -- a universal turing machine
 procedure UTM(sequence machine, sequence tape, integer countOnly=0)
 string state = machine[initState]
@@ -7216,7 +7216,7 @@ integer headpos = 1, counter = 0
         show(state, headPos, tape)
     end if
 end procedure
- 
+
 UTM(incrementer, {"1", "1", "1"})
 UTM(threeStateBB, {})
 UTM(fiveStateBB, {}, countOnly:=1)
@@ -7278,17 +7278,17 @@ Steps taken: 47176870
 # Finite state machine
 (de turing (Tape Init Halt Blank Rules Verbose)
    (let
-      (Head 1 
+      (Head 1
          State Init
          Rule NIL
-         S 'start 
+         S 'start
          C (length Tape))
       (catch NIL
          (loop
             (state 'S
                (start 'print
                   (when (=0 C)
-                     (setq Tape (insert Head Tape Blank)) 
+                     (setq Tape (insert Head Tape Blank))
                      (inc 'C) ) )
                (print 'lookup
                   (when Verbose
@@ -7320,15 +7320,15 @@ Steps taken: 47176870
                      ((> Head C)
                         (setq Tape (insert Head Tape Blank))
                         (inc 'C) ) )
-                  (setq State (last Rule)) ) ) ) ) ) 
+                  (setq State (last Rule)) ) ) ) ) )
    Tape )
 
 (println "Simple incrementer")
 (turing '(1 1 1) 'A 'H 'B '((A 1 1 R A) (A B 1 S H)) T)
 
 (println "Three-state busy beaver")
-(turing '() 'A 'H 0 
-   '((A 0 1 R B) 
+(turing '() 'A 'H 0
+   '((A 0 1 R B)
      (A 1 1 L C)
      (B 0 1 L A)
      (B 1 1 R B)
@@ -7349,7 +7349,7 @@ Steps taken: 47176870
      (E 1 0 L A)) NIL)
    (println '0s: (cnt '((X) (= 0 X)) Tape))
    (println '1s: (cnt '((X) (= 1 X)) Tape)) )
-    
+
 (bye)
 ```
 
@@ -7397,7 +7397,7 @@ struct @Command {
 	field @Integer tape {get:tape,set:stape};
 	field @Integer move {get:move,set:smove};
 	field @Integer next {get:next,set:snext};
-	
+
 	@Command init(@Integer tape, @Integer move, @Integer next) [
 		this.stape(tape);
 		this.smove(move);
@@ -7409,20 +7409,20 @@ struct @Command {
 doc 2 dimansional array structure;
 
 struct @Rules {
-	
+
 	field @Integer maxstates { get: maxstates, set: smaxstates };
 	field @Integer maxvalue  { get: maxvalue, set: smaxvalue };
-	
+
 	field @Array<@Array<@Command> > table {get: t, set: st};
-	
-	@Rules init(@Integer states, @Integer values) 
+
+	@Rules init(@Integer states, @Integer values)
 	[
 		this.smaxstates(states);
 		this.smaxvalue(values);
 		this.st(new @Array<@Array<@Command> >.init(states));
 		return this;
 	]
-	
+
 	@Void setRule(@Integer state, @Integer tape, @Command command)
 	[
 		if (null == this::t.get(state)) {
@@ -7430,7 +7430,7 @@ struct @Rules {
 		}
 		this::t.get(state).set(tape, command);
 	]
-	
+
 	@Command getRule(@Integer state, @Integer tape)
 	[
 		return this::t.get(state).get(tape);
@@ -7441,15 +7441,15 @@ struct @Rules {
 @Void emulateTuring(@Rules rules, @Integer start, @Integer stop, @Array<@Integer> tape, @Integer blank) [
 	var tapepointer = 0;
 	var state = start;
-	
+
 	doc output;
 	printf("Tape\tState\n");
-	
+
 	while (state != stop) {
 		doc add more cells to the tape;
 		if (tapepointer == tape::size) tape.add(blank);
 		if (tapepointer == 0-1) { tape = (new @Array<@Integer>..blank).addAll(tape); tapepointer = 0; }
-		
+
 		doc output;
 		for (var i = 0; i < tape::size; i=i+1) {
 			printf("%i", tape.get(i));
@@ -7459,18 +7459,18 @@ struct @Rules {
 			printf(" ");
 		}
 		printf("^\n");
-		
+
 		doc the value of the current cell;
 		var tapeval = tape.get(tapepointer);
-		
+
 		doc the current state;
 		var command = rules.getRule(state, tapeval);
-		
+
 		tape.set(tapepointer, command::tape);
 		tapepointer = tapepointer + command::move;
 		state = command::next;
 	}
-	
+
 	doc output;
 	for (var i = 0; i < tape::size; i=i+1) {
 		printf("%i", tape.get(i));
@@ -7483,35 +7483,35 @@ struct @Rules {
 ]
 
 @Integer main [
-	
+
 	doc incrementer;
-	
+
 	doc 2 states, 2 symbols;
-	
+
 	var rules = new @Rules.init(2, 2);
-	
+
 	doc q0, 1 -> 1, right, q0;
 	doc q0, B -> 1, stay, qf;
-	
+
 	rules.setRule(0, 1, new @Command.init(1, 1, 0));
 	rules.setRule(0, 0, new @Command.init(1, 0, 1));
-	
+
 	doc tape = [1, 1, 1];
-	
+
 	var tape = new @Array<@Integer>..1..1..1;
-	
+
 	doc start turing machine;
-	
+
 	emulateTuring(rules, 0, 1, tape, 0);
-	
+
 	doc ---------------------------------------------------;
-	
+
 	doc three state busy beaver;
-	
+
 	doc 4 states, 2 symbols;
-	
+
 	rules = new @Rules.init(4, 2);
-	
+
 	doc	a, 0 -> 1, right, b
 		a, 1 -> 1, left, c
 		b, 0 -> 1, left, a
@@ -7524,20 +7524,20 @@ struct @Rules {
 		b = 1,
 		c = 2,
 		halt = 3;
-	
+
 	rules.setRule(0, 0, new @Command.init(1, 1, 1));
 	rules.setRule(0, 1, new @Command.init(1, 0-1, 2));
 	rules.setRule(1, 0, new @Command.init(1, 0-1, 0));
 	rules.setRule(1, 1, new @Command.init(1, 1, 1));
 	rules.setRule(2, 0, new @Command.init(1, 0-1, 1));
 	rules.setRule(2, 1, new @Command.init(1, 0, 3));
-	
+
 	doc tape = [];
-	
+
 	tape = new @Array<@Integer>;
-	
+
 	doc start turing machine;
-	
+
 	emulateTuring(rules, 0, 3, tape, 0);
 	return 0;
 ]
@@ -7708,19 +7708,19 @@ def run_utm(
             else: tape.insert(0, blank)
         if dr == 'right':
             pos += 1
-            if pos >= len(tape): tape.append(blank) 
+            if pos >= len(tape): tape.append(blank)
         st = s1
-    
+
 
 # EXAMPLES
-            
+
 print("incr machine\n")
 run_utm(
     halt = 'qf',
 	state = 'q0',
 	tape = list("111"),
 	blank = 'B',
-	rules = map(tuple, 
+	rules = map(tuple,
                ["q0 1 1 right q0".split(),
 		        "q0 B 1 stay  qf".split()]
         )
@@ -7792,8 +7792,8 @@ run_utm(halt = 'STOP',
 ;;;
 ### =======================================================
 
-;;; The definition of a functional type Tape, 
-;;; representing infinite tape with O(1) operations: 
+;;; The definition of a functional type Tape,
+;;; representing infinite tape with O(1) operations:
 ;;; put, get, shift-right and shift-left.
 ;;;
 ### =======================================================
@@ -7803,7 +7803,7 @@ run_utm(halt = 'STOP',
               the-right-part))   ; i+1 i+2 i+3 ...
 
 ;; the initial record on the tape
-(define-m initial-tape 
+(define-m initial-tape
   [(cons h t) (Tape '() h t)])
 
 ;; shifts caret to the right
@@ -7816,14 +7816,14 @@ run_utm(halt = 'STOP',
 ;; shifts caret to the left
 (define-m flip-tape [(Tape l x r) (Tape r x l)])
 
-(define shift-left 
+(define shift-left
   (compose flip-tape shift-right flip-tape))
 
 ;; returns the current record on the tape
 (define-m get [(Tape _ v _) v])
 
 ;; writes to the current position on the tape
-(define-m* put 
+(define-m* put
   [('() t) t]
   [(v (Tape l _ r)) (Tape l v r)])
 
@@ -7869,14 +7869,14 @@ run_utm(halt = 'STOP',
         (F fx (f fx)))))
 
 ;; A macro for definition of a Turing-Machines.
-;; Transforms to a function which accepts a list of initial 
-;; tape records as input and returns the tape after stopping. 
+;; Transforms to a function which accepts a list of initial
+;; tape records as input and returns the tape after stopping.
 (define-syntax-rule (Turing-Machine #:start start (a b c d e) ...)
   (λ (l)
     (displayln "STATE\tTAPE")
-    ((match-lambda [(list _ t) (flatten (show-tape t))]) 
-     (run-turing 
-      (match-lambda ['(a b) '(c d e)] ... [x x]) 
+    ((match-lambda [(list _ t) (flatten (show-tape t))])
+     (run-turing
+      (match-lambda ['(a b) '(c d e)] ... [x x])
       l start))))
 
 ```
@@ -8082,7 +8082,7 @@ STOP	((1) 1 1 2 2 2 2)
 
 Programming notes:   the tape is essentially infinite in two directions, but the tape starts at location one (unity), and
 
-may extend to   -<big>'''∞'''</big>   and   +<big>'''∞'''</big>   (subject to virtual memory limitations), something short of ≈ 2 billion bytes. 
+may extend to   -<big>'''∞'''</big>   and   +<big>'''∞'''</big>   (subject to virtual memory limitations), something short of ≈ 2 billion bytes.
 
 Minimal error checking is done, but if no rule is found to be applicable, an appropriate error message is issued.
 
@@ -8167,7 +8167,7 @@ call Turing_init                                 /*initialize the tape to some s
 call TM                                          /*go and invoke the  Turning machine.  */
 exit                                             /*stick a fork in it,  we're all done. */
 /*──────────────────────────────────────────────────────────────────────────────────────*/
-TM: ∙∙∙ 
+TM: ∙∙∙
 ```
 
 '''output'''
@@ -8209,7 +8209,7 @@ call Turing_init                                 /*initialize the tape to some s
 call TM                                          /*go and invoke the  Turning machine.  */
 exit                                             /*stick a fork in it, we're done.*/
 /*──────────────────────────────────────────────────────────────────────────────────────*/
-TM: ∙∙∙ 
+TM: ∙∙∙
 ```
 
 '''output'''
@@ -8273,7 +8273,7 @@ call Turing_init   1 2 2 1 2 2 1 2 1 2 1 2 1 2   /*initialize the tape to some s
 call TM                                          /*go and invoke the Turning machine.   */
 exit                                             /*stick a fork in it,  we're all done. */
 /*──────────────────────────────────────────────────────────────────────────────────────*/
-TM: ∙∙∙ 
+TM: ∙∙∙
 ```
 
 '''output'''
@@ -8741,12 +8741,12 @@ TRACE_HEADER := ["Config:\t| Place:\t| Tape:"];
 //endregion
 
 //region Helpers
-    
+
 StateToString(state(0)) :=
-    state.CurrentConfig ++ 
-    "  \t\t| " ++ intToString(state.CurrentPosition) ++ 
+    state.CurrentConfig ++
+    "  \t\t| " ++ intToString(state.CurrentPosition) ++
     "  \t| " ++ state.Tape;
-    
+
 StateToArrowString(state(0)) :=
     state.Tape ++ "\n" ++
     duplicate(' ', state.CurrentPosition - 1) ++ "|\n" ++
@@ -8754,9 +8754,9 @@ StateToArrowString(state(0)) :=
 
 HeadOfEach(strings(2))[i] :=
     head(strings[i]);
-    
+
 RemoveCharacter(character(0), string(1))[i] :=
-    string[i] when not(string[i] = character); 
+    string[i] when not(string[i] = character);
 
 GetFSquares(Tape(1))[i] :=
     Tape[i] when (i mod 2) = 1;
@@ -8773,7 +8773,7 @@ ParseConfig(Line(1)) :=
         operations := split(entries[3], ',');
         finalConfig := entries[4];
     in
-        ((Label: label, Symbols: symbols, Operations: operations, FinalConfig: finalConfig) when not((Line[1] = '/') and (Line[2] = '/'))) 
+        ((Label: label, Symbols: symbols, Operations: operations, FinalConfig: finalConfig) when not((Line[1] = '/') and (Line[2] = '/')))
             when size(Line) > 0;
 
 ParseTextFile(Text(1)) :=
@@ -8787,7 +8787,7 @@ ParseTextFile(Text(1)) :=
         mConfigs := ParseConfig(lines[5 ... size(lines)]);
     in
         (Iterations: iterations, InitialTape: initialTape, StartingPosition: initialPosition, InitialConfig: initialConfig, MConfigs: mConfigs);
-        
+
 //endregion
 
 //region Config Finding
@@ -8806,7 +8806,7 @@ Matches(currentSymbol(0), symbols(2)) :=
 
 GetCurrentSymbol(State(0)) :=
         State.Tape[State.CurrentPosition] when size(State.Tape) >= State.CurrentPosition and State.CurrentPosition > 0
-    else 
+    else
         SPACE_CHAR;
 
 GetConfigHelper(label(1), symbol(0), mConfigs(1))[i] :=
@@ -8829,7 +8829,7 @@ TrimTapeEnd(tape(1), position(0)) :=
     else
         tape when not(last(tape) = SPACE_CHAR)
     else
-        TrimTapeEnd(allButLast(tape), position);        
+        TrimTapeEnd(allButLast(tape), position);
 
 ApplyOperations(State(0), Operations(2)) :=
     let
@@ -8841,7 +8841,7 @@ ApplyOperations(State(0), Operations(2)) :=
 
 ApplyOperation(State(0), Operation(1)) :=
     let
-        newTape := 
+        newTape :=
                 PrintOperation(head(tail(Operation)), State.CurrentPosition, State.Tape) when head(Operation) = 'P'
             else
                 EraseOperation(State.CurrentPosition, State.Tape) when head(Operation) = 'E'
@@ -8851,8 +8851,8 @@ ApplyOperation(State(0), Operation(1)) :=
                 State.Tape ++ [SPACE_CHAR] when head(Operation) = 'R' and State.CurrentPosition = size(State.Tape)
             else
                 State.Tape;
-        
-        newPosition := 
+
+        newPosition :=
                 1 when head(Operation) = 'L' and State.CurrentPosition = 1
             else
                 State.CurrentPosition + 1 when head(Operation) = 'R'
@@ -8860,7 +8860,7 @@ ApplyOperation(State(0), Operation(1)) :=
                 State.CurrentPosition - 1 when head(Operation) = 'L'
             else
                 State.CurrentPosition;
-                
+
         trimmedTape := TrimTapeEnd(newTape, newPosition);
     in
             State when size(Operation) = 0
@@ -8874,7 +8874,7 @@ PrintOperation(Symbol(0), Position(0), Tape(1)) :=
         finalTape := setElementAt(expandedTape, Position, Symbol);
     in
         finalTape;
-        
+
 EraseOperation(Position(0), Tape(1)) :=
     PrintOperation(SPACE_CHAR, Position, Tape);
 
@@ -8886,7 +8886,7 @@ RunMachine(Text(1), Flag(1)) :=
     let
         input := ParseTextFile(Text);
         initialState := (CurrentConfig: input.InitialConfig, CurrentPosition: input.StartingPosition, Tape: input.InitialTape);
-        
+
         processed := Process(initialState, input.MConfigs, input.Iterations);
         processedWithTrace := ProcessWithTrace(initialState, input.MConfigs, input.Iterations);
     in
@@ -8901,7 +8901,7 @@ RunMachine(Text(1), Flag(1)) :=
             boolToString(DoesMachineHalt(initialState, input.MConfigs, input.Iterations)) when equalList(Flag, "halts")
         else
             StateToString(processed);
-            
+
 DoesMachineHalt(InitialState(0), mConfigs(1), Iterations(0)) :=
     let
         resultState := Process(InitialState, mConfigs, Iterations);
@@ -8924,7 +8924,7 @@ Iterate(State(0), mConfigs(1)) :=
         newState := Execute(State, currentConfig);
     in
         newState;
-    
+
 Execute(State(0), mConfig(0)) :=
     let
         newState := ApplyOperations(State, mConfig.Operations);
@@ -8938,8 +8938,8 @@ Execute(State(0), mConfig(0)) :=
 '''C++ Driver Code:'''
 
 
-```c>#include <iostream
-
+```c
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <cerrno>
@@ -8981,9 +8981,9 @@ int main( int argc, char** argv )
     Sequence<char> result;
 
     sl_init(cores);
-    
+
     sl_RunMachine(input, flagSeq, cores, result);
-    
+
     cout<<result<<endl;
 
     sl_done();
@@ -9353,7 +9353,7 @@ end
 (*** Implementation ***)
 
 structure Tape :> TAPE = struct
-	
+
 	(*
 	 * NONE   => blank field
 	 * SOME a => written field
@@ -9391,7 +9391,7 @@ structure Tape :> TAPE = struct
 	  | rightOf (Middle (_, _, rs))  = rs
 	  | rightOf (RightOf _)          = nil
 	  | rightOf (LeftOf (l, ls, i))  = rep NONE i @ l :: ls
-	
+
 	fun write (NONE) t = t (* Cannot write a blank field! *)
 	  | write a      t = Middle (leftOf t, a, rightOf t)
 
@@ -9468,14 +9468,14 @@ structure Machine :> MACHINE = struct
 end
 
 structure UniversalMachine :> UNIVERSALMACHINE = struct
-	
+
 	structure Machine = Machine
-	
+
 	fun start ({ start, tapes, ... } : ''a Machine.machine) : ''a Machine.configuration = {
 			state = start,
 			tapes = tapes
 		}
-	
+
 	fun doTransition ({ state, tapes } : ''a Machine.configuration)
 	    ((state', actions) : (Machine.state * (Machine.Tape.move * ''a option) Vector.vector))
 		: ''a Machine.configuration = {
@@ -9489,13 +9489,13 @@ structure UniversalMachine :> UNIVERSALMACHINE = struct
 
 	fun getSymbols ({ tapes, ... } : ''a Machine.configuration) : ''a option Vector.vector =
 		Vector.map (Machine.Tape.getSymbol) tapes
-	
+
 	fun step ({ transitions, ... } : ''a Machine.machine) (conf : ''a Machine.configuration) : ''a Machine.configuration =
 		doTransition conf (transitions (#state conf, getSymbols conf))
-		
+
 	fun isFinal ({final, ...} : ''a Machine.machine) ({state, ...} : ''a Machine.configuration) : bool =
 		final = state
-	
+
 	fun iter term (SOME 0) f s = NONE
 	  | iter term (SOME n) f s = if term s then SOME s else iter term (SOME (n-1)) f (f s)
 	  | iter term NONE     f s = if term s then SOME s else iter term NONE f (f s)
@@ -9504,12 +9504,12 @@ structure UniversalMachine :> UNIVERSALMACHINE = struct
 	fun simulate handler (machine : ''a Machine.machine) optcount =
 		let val endconf = iter (isFinal machine) optcount (fn conf => (handler conf; step machine conf)) (start machine)
 		in case endconf of NONE => NONE | SOME conf => (handler conf; endconf) end
-		
+
 end
 
 
 structure ExampleMachines = struct
-	
+
 	structure Machine = UniversalMachine.Machine
 
 	(* Tranform the 5-Tuple notation into the vector function *)
@@ -9527,10 +9527,10 @@ structure ExampleMachines = struct
 	(* `createTape xs` creates an tape initialized by xs, where the head stands on the first element of xs *)
 	fun createTape' nil     = Machine.Tape.empty
 	  | createTape' (x::xs) = Machine.Tape.moveLeft (Machine.Tape.write x (createTape' xs))
-	
+
 	fun createTape xs = Machine.Tape.moveRight (createTape' (rev xs))
 
-	
+
 	(* Convert a tape into a string to print it. It needs a function that converts each symbol to string *)
 	fun tapeToStr (symStr : ''a -> string) (tape : ''a Machine.Tape.tape) : string =
 		let val left     : ''a option list = rev (Machine.Tape.leftOf tape)
@@ -9540,7 +9540,7 @@ structure ExampleMachines = struct
 		in
 		    String.concatWith " " ((map symToStr left) @ [ "|" ^ symToStr current ^ "|" ] @ (map symToStr right))
 		end
-	
+
 	(* Convert a vector to a list *)
 	fun vectToList vect = List.tabulate (Vector.length vect, fn i => Vector.sub (vect, i))
 
@@ -9563,7 +9563,7 @@ structure ExampleMachines = struct
 		  NONE => "Did not terminate."
 		| SOME ({state, tapes} : ''a Machine.configuration) => "Terminated."
 
-	
+
 
 	(* Now finaly the machines! *)
 
@@ -9913,7 +9913,7 @@ run_utm() {
 }
 
 print_state() {
-  local state=$1 head=$2 
+  local state=$1 head=$2
   shift 2
   local tape=("$@")
   printf '%s' "$state"
@@ -10013,7 +10013,7 @@ Private Sub show(state As String, headpos As Long, tape As Collection)
     Next p
     Debug.Print
 End Sub
- 
+
 '-- a universal turing machine
 Private Sub UTM(machine As Variant, tape As Collection, Optional countOnly As Long = 0)
     Dim state As String: state = machine(initState)
@@ -10062,7 +10062,7 @@ Private Sub UTM(machine As Variant, tape As Collection, Optional countOnly As Lo
         Debug.Print
     End If
 End Sub
- 
+
 Public Sub main()
     init
     Dim tap As New Collection
@@ -10083,8 +10083,8 @@ Simple incrementer
 
  State  | Tape [head]
 ---------------------
- q0     | [1] 1  1 
- q0     |  1 [1] 1 
+ q0     | [1] 1  1
+ q0     |  1 [1] 1
  q0     |  1  1 [1]
  q0     |  1  1  1 [B]
  qf     |  1  1  1 [1]
@@ -10097,18 +10097,18 @@ Three-state busy beaver
 ---------------------
  a      | [0]
  b      |  1 [0]
- a      | [1] 1 
- c      | [0] 1  1 
- b      | [0] 1  1  1 
- a      | [0] 1  1  1  1 
- b      |  1 [1] 1  1  1 
- b      |  1  1 [1] 1  1 
- b      |  1  1  1 [1] 1 
+ a      | [1] 1
+ c      | [0] 1  1
+ b      | [0] 1  1  1
+ a      | [0] 1  1  1  1
+ b      |  1 [1] 1  1  1
+ b      |  1  1 [1] 1  1
+ b      |  1  1  1 [1] 1
  b      |  1  1  1  1 [1]
  b      |  1  1  1  1  1 [0]
- a      |  1  1  1  1 [1] 1 
- c      |  1  1  1 [1] 1  1 
- halt   |  1  1  1 [1] 1  1 
+ a      |  1  1  1  1 [1] 1
+ c      |  1  1  1 [1] 1  1
+ halt   |  1  1  1 [1] 1  1
 
 Five-state busy beaver
 
@@ -10130,7 +10130,7 @@ name = 1 : initState = 2 : endState = 3 : blank = 4 : countOnly = true
 
 incrementer$ = "Simple incrementer,q0,qf,B"
 incrementer$ = incrementer$ + ",q0,1,1,right,q0,q0,B,1,stay,qf"
- 
+
 threeStateBB$ = "Three-state busy beaver,a,halt,0"
 data "a,0,1,right,b"
 data "a,1,1,left,c"
@@ -10146,7 +10146,7 @@ do
     threeStateBB$ = threeStateBB$ + "," + a$
 loop
 
- 
+
 fiveStateBB$ = "Five-state busy beaver,A,H,0"
 data "A,0,1,right,B"
 data "A,1,1,left,C"
@@ -10165,13 +10165,13 @@ do
     if a$ = "" break
     fiveStateBB$ = fiveStateBB$ + "," + a$
 loop
- 
+
 clear screen
 
 // Display a representation of the tape and machine state on the screen
 sub show(state$, headPos, tape$)
     local pos
-    
+
     print " ", state$, "\t| ";
     for pos = 1 to len(tape$)
         if pos = headPos then print "[", mid$(tape$, pos, 1), "] "; else print " ", mid$(tape$, pos, 1), "  "; end if
@@ -10181,19 +10181,19 @@ end sub
 
 sub string.rep$(s$, n)
     local i, r$
-    
+
     for i = 1 to n
         r$ = r$ + s$
     next
-    
+
     return r$
 end sub
 
- 
+
 // Simulate a turing machine
 sub UTM(mach$, tape$, countOnly)
     local state$, headPos, counter, machine$(1), n, m, rule
-    
+
     m = len(tape$)
     n = token(mach$, machine$(), ",")
     state$ = machine$(initState)
@@ -10214,7 +10214,7 @@ sub UTM(mach$, tape$, countOnly)
                     headPos = headPos - 1
                     if headPos < 1  then
                         headPos = 1
-                        tape$ = " " + tape$ 
+                        tape$ = " " + tape$
                     end if
                 end if
                 if machine$(rule + 3) = "right" then
@@ -10232,7 +10232,7 @@ sub UTM(mach$, tape$, countOnly)
     until(state$ = machine$(endState))
     if countOnly then print "Steps taken: ", counter else show(state$, headPos, tape$) end if
 end sub
- 
+
 // Main procedure
 UTM(incrementer$, "111")
 UTM(threeStateBB$, " ")
@@ -10259,8 +10259,8 @@ fcn printTape(tape,pos){
 fcn turing(state,[D]tape,[Int]pos,[D]rules,verbose=True,n=0){
    if(not state){
       print("%d steps. Length %d. Tape: ".fmt(n,tape.len()));
-      printTape(tape,Void); 
-      return(tape); 
+      printTape(tape,Void);
+      return(tape);
    }
    r:=rules[state][tape[pos] = tape.find(pos)];
    if(verbose) printTape(tape,pos);
@@ -10304,30 +10304,30 @@ turing("A",D(),0,
 ```txt
 
 Simple incrementer
-(1) 1  1 
- 1 (1) 1 
+(1) 1  1
+ 1 (1) 1
  1  1 (1)
  1  1  1 (Void)
-4 steps. Lenght 4. Tape:  1  1  1  1 
+4 steps. Lenght 4. Tape:  1  1  1  1
 
 Three-state busy beaver
 (Void)
  1 (Void)
-(1) 1 
-(Void) 1  1 
-(Void) 1  1  1 
-(Void) 1  1  1  1 
- 1 (1) 1  1  1 
- 1  1 (1) 1  1 
- 1  1  1 (1) 1 
+(1) 1
+(Void) 1  1
+(Void) 1  1  1
+(Void) 1  1  1  1
+ 1 (1) 1  1  1
+ 1  1 (1) 1  1
+ 1  1  1 (1) 1
  1  1  1  1 (1)
  1  1  1  1  1 (Void)
- 1  1  1  1 (1) 1 
- 1  1  1 (1) 1  1 
-13 steps. Lenght 6. Tape:  1  1  1  1  1  1 
+ 1  1  1  1 (1) 1
+ 1  1  1 (1) 1  1
+13 steps. Lenght 6. Tape:  1  1  1  1  1  1
 
 Sort
-128 steps. Length 16. Tape:  Void  1  1  1  1  1  2  2  2  2  2  2  2  2  2  Void 
+128 steps. Length 16. Tape:  Void  1  1  1  1  1  2  2  2  2  2  2  2  2  2  Void
 
 Five-state busy beaver
 47176870 steps. Length 12289. Tape:  1  Void  1  Void  Void  1  Void  Void  1

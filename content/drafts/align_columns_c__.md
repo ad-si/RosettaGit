@@ -17,8 +17,8 @@ The following code fragments are all in one source file for this example (and in
 A reusable template function that handles the tokenizing, and is independent of any work that might wish to be done with the results:
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <string>       // for getline etc.
 #include <iostream>
 #include <sstream>      // for istringstream
@@ -145,7 +145,7 @@ The test program, that makes a pass through the data to determine the column wid
 ```cpp
 int main()
 {
-    const string strInput( 
+    const string strInput(
         "Given$a$text$file$of$many$lines,$where$fields$within$a$line$\n"
         "are$delineated$by$a$single$'dollar'$character,$write$a$program\n"
         "that$aligns$each$column$of$fields$by$ensuring$that$words$in$each$\n"

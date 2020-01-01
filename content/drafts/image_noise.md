@@ -21,7 +21,7 @@ tags = []
 {{omit from|Sed}}
 {{omit from|Batch File}}
 [[Category:Raster graphics operations]]
-Generate a random black and white   '''320'''<small>x</small>'''240'''   image continuously, 
+Generate a random black and white   '''320'''<small>x</small>'''240'''   image continuously,
 showing FPS (frames per second).
 
 
@@ -335,13 +335,13 @@ Return
       dy% = 240
       images% = 100000
       VDU 23,22,dx%;dy%;8,8,16,0
-      
+
       REM Create a block of random data in memory:
       DIM random% dx%*dy%+images%
       FOR R% = random% TO random%+dx%*dy%+images%
         ?R% = RND(256)-1
       NEXT
-      
+
       REM Create a BMP file structure:
       DIM bmpfile{bfType{l&,h&}, bfSize%, bfReserved%, bfOffBits%, \
       \   biSize%, biWidth%, biHeight%, biPlanes{l&,h&}, biBitCount{l&,h&}, \
@@ -355,7 +355,7 @@ Return
       FOR C% = 0 TO 255
         bmpfile.biPalette%(C%) = C% OR C%<<8 OR C%<<16
       NEXT
-      
+
       REM Display image at a random offset into the data:
       frame% = 0
       TIME = 0
@@ -378,15 +378,15 @@ Return
 {{libheader|SDL}}
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <time.h>
 #include <SDL/SDL.h>
- 
+
 unsigned int frames = 0;
 unsigned int t_acc = 0;
- 
+
 void print_fps ()
 {
   static Uint32 last_t = 0;
@@ -403,7 +403,7 @@ void print_fps ()
   }
   last_t = t;
 }
- 
+
 void blit_noise(SDL_Surface *surf)
 {
   unsigned int i;
@@ -420,7 +420,7 @@ void blit_noise(SDL_Surface *surf)
     print_fps();
   }
 }
- 
+
 int main(void)
 {
   SDL_Surface *surf = NULL;
@@ -437,24 +437,24 @@ int main(void)
 {{libheader|GLUT}}
 Depending on your hardware, you might be able to get thousands of frames per second.  Compiled with <code>gcc -lglut -lGL -g -Wall -O2</code>.
 
-```c>#include <GL/glut.h
-
+```c
+#include <GL/glut.h>
 #include <GL/gl.h>
 #include <stdio.h>
 #include <time.h>
- 
+
 #define W 320
 #define H 240
 #define slen W * H / sizeof(int)
- 
+
 time_t start, last;
- 
+
 void render()
 {
 	static int frame = 0, bits[slen];
 	register int i = slen, r;
 	time_t t;
- 
+
 	r = bits[0] + 1;
 	while (i--) r *= 1103515245, bits[i] = r ^ (bits[i] >> 16);
 
@@ -470,8 +470,8 @@ void render()
 		}
 	}
 }
- 
-int main(int argc, char **argv) 
+
+int main(int argc, char **argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_INDEX);
@@ -479,9 +479,9 @@ int main(int argc, char **argv)
 	glutCreateWindow("noise");
 	glutDisplayFunc(render);
 	glutIdleFunc(render);
- 
+
 	last = start = time(0);
- 
+
 	glutMainLoop();
 	return 0;
 }
@@ -549,7 +549,7 @@ public:
 
     void setPenColor( DWORD c ) { clr = c; createPen(); }
     void setPenWidth( int w ) { wid = w; createPen(); }
-   
+
     void saveBitmap( string path )
     {
 	BITMAPFILEHEADER fileheader;
@@ -638,7 +638,7 @@ public:
 	_frames++; _frameTime = getTime() - now;
 	if( _frameTime > 1.0f ) _frameTime = 1.0f;
     }
-	
+
     void setHWND( HWND hwnd ) { _hwnd = hwnd; }
 
 private:
@@ -765,11 +765,11 @@ class Program
 
     static IEnumerable<byte> YieldVodoo()
     {
-        // Yield 3 times same number (i.e 255 255 255) for numpixels times. 
+        // Yield 3 times same number (i.e 255 255 255) for numpixels times.
 
         for (int i = 0; i < numpixels; i++)
         {
-            tmp = rand.Next() < halfmax ? black : white; // no more lists!  
+            tmp = rand.Next() < halfmax ? black : white; // no more lists!
 
             // no more loops! yield! yield! yield!
             yield return tmp;
@@ -780,7 +780,7 @@ class Program
 
     static Image Randimg()
     {
-        // Low-level bitmaps  
+        // Low-level bitmaps
         var bitmap = new Bitmap(size.Width, size.Height);
         var data = bitmap.LockBits(rectsize, ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
 
@@ -1160,7 +1160,7 @@ While InKey = ""
     For x = 0 To 319
         For y = 0 To 199
             ' color is as integer, a float gets rounded off by FreeBASIC
-            PSet(x, y), Rnd 
+            PSet(x, y), Rnd
         Next
     Next
     c += 1
@@ -1269,7 +1269,7 @@ func main() {
 
 ### Optimized example
 
-A second example that is somewhat more optimized but maybe more complicated. 
+A second example that is somewhat more optimized but maybe more complicated.
 (~3000fps on a Thinkpad x220 laptop)
 
 ```go
@@ -1432,7 +1432,7 @@ glLoop win = do
                    GLFW.swapBuffers win
                    GLFW.pollEvents
                    time <- GLFW.getTime
-                   let fps = 
+                   let fps =
                            case time of
                              Just t  -> show $ (fromIntegral frames) / t
                              Nothing -> "???"
@@ -1470,19 +1470,19 @@ There are several possible approaches to painting this random noise.
 ```Icon
 link printf
 
-procedure main() 
-   &window := open("B&W noise 320x240","g","size=320,240","bg=white","fg=black") | 
+procedure main()
+   &window := open("B&W noise 320x240","g","size=320,240","bg=white","fg=black") |
               stop("Open window failed ")
    runtime := 10 # seconds to run
    sec := &now
    frames := 0
    until (&now - sec) >= runtime do {
       s := "320,#"
-      every 1 to 240 & 1 to 320/4 do s ||:= ?"0123456789ABCDEF" 
+      every 1 to 240 & 1 to 320/4 do s ||:= ?"0123456789ABCDEF"
       DrawImage(0,0,s)
       frames +:= 1
       }
-   sec := &now - sec 
+   sec := &now - sec
    printf("frames=%d, elapsed time=%r, fps=%r\n",frames,sec, frames/real(sec))
    Event()   # wait for any window event
    close(&window)
@@ -1490,8 +1490,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides a family of print formatting routines] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides a family of print formatting routines]
 
 
 ## J
@@ -1500,7 +1500,7 @@ end
 ```j
 coclass'example'
 (coinsert[require)'jzopengl'
- 
+
 P=: 0 : 0
 pc p nosize;
 xywh 0 0 160 120;cc c isigraph opengl;
@@ -1509,9 +1509,9 @@ rem form end;
  pshow;
  timer 1;
 )
- 
+
 timestamp=: (6!:8'') %~ 6!:9
- 
+
 create=:3 :0
   ogl=:''conew'jzopengl'
   frames=:0
@@ -1519,11 +1519,11 @@ create=:3 :0
   sys_timer_base_=: ''1 :('p_c_paint_',(;coname''),'_')
   wd P
 )
- 
+
 p_run=: 3 : 0
   ''conew'example'
 )
- 
+
 destroy=:3 :0
   end=:timestamp''
   smoutput 'frames per second: ',":frames%end-start
@@ -1532,9 +1532,9 @@ destroy=:3 :0
   wd'pclose'
   codestroy''
 )
- 
+
 p_close=: destroy
- 
+
 p_c_paint=: 3 : 0
   rc__ogl''
   glClear GL_COLOR_BUFFER_BIT
@@ -1544,7 +1544,7 @@ p_c_paint=: 3 : 0
   show__ogl''
   frames=:frames+1
 )
- 
+
 p_run''
 ```
 
@@ -1609,7 +1609,7 @@ public class ImageNoise {
             g.drawImage(image, 0, 0, null);
 
             switch (show_fps) {
-            case 0: 
+            case 0:
                 // add blur behind FPS
                 int xblur = getWidth() - 130, yblur = getHeight() - 32;
                 BufferedImage bc = image.getSubimage(xblur, yblur, 115, 32);
@@ -1617,7 +1617,7 @@ public class ImageNoise {
                                                      BufferedImage.TYPE_BYTE_GRAY);
                 cop.filter(bc, bs);
                 g.drawImage(bs, xblur, yblur , null);
-            case 1: 
+            case 1:
                 // add FPS text; case fallthough is deliberate
                 g.setColor(Color.RED);
                 g.setFont(new Font("Monospaced", Font.BOLD, 20));
@@ -1626,7 +1626,7 @@ public class ImageNoise {
             framecount++;
         }
     };
-    
+
     // Timer to trigger update display, with 1 ms delay
     Timer repainter = new Timer(1, new ActionListener() {
         @Override
@@ -1634,7 +1634,7 @@ public class ImageNoise {
             panel.repaint();
         }
     });
-    
+
     // Timer to check FPS, once per second
     Timer framerateChecker = new Timer(1000, new ActionListener() {
         @Override
@@ -1643,14 +1643,14 @@ public class ImageNoise {
             framecount = 0;
         }
     });
-    
+
     public ImageNoise() {
         // Intitalize kernel describing blur, and convolve operation based on this
         float[] vals = new float[121];
         Arrays.fill(vals, 1/121f);
         kernel = new Kernel(11, 11, vals);
         cop = new ConvolveOp(kernel, ConvolveOp.EDGE_NO_OP, null);
-        
+
         // Initialize frame and timers
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -1662,7 +1662,7 @@ public class ImageNoise {
 
     void drawNoise() {
         int w = panel.getWidth(), h = panel.getHeight();
-        
+
         // Check if our image is null or window has been resized, requiring new image
         if (null == image || image.getWidth() != w || image.getHeight() != h) {
             image = new BufferedImage(w, h, BufferedImage.TYPE_BYTE_GRAY);
@@ -1680,7 +1680,7 @@ public class ImageNoise {
         // Copy raw data to the image's raster
         image.getRaster().setPixels(0, 0, w, h, data);
     }
-    
+
     public static void main(String[] args) {
         // Invoke GUI on the Event Dispatching Thread
         SwingUtilities.invokeLater(new Runnable() {
@@ -1987,7 +1987,7 @@ print "Creating BMP random body"
         for y =1 To h
             l$=l$+chr$((rnd(1)>0.5)*255)
         next
-        body$=body$+l$ 
+        body$=body$+l$
     next
 
 [main]
@@ -2032,7 +2032,7 @@ a:=0;
 t:=time[real]();
 while a< 50 do
 a:=a+1;
-data := Matrix(`<|>`(`<,>`(Statistics:-Sample(Uniform(0, 1), [1000, 2])), LinearAlgebra:-RandomVector(1000, generator = rand(0 .. 2)))); 
+data := Matrix(`<|>`(`<,>`(Statistics:-Sample(Uniform(0, 1), [1000, 2])), LinearAlgebra:-RandomVector(1000, generator = rand(0 .. 2))));
 
 f := plots:-pointplot(data[NULL .. NULL, 1], data[NULL .. NULL, 2], symbolsize = 20, symbol = solidbox, colorscheme = ["valuesplit", data[NULL .. NULL, 3], [0 = "Black", 1 = "White", 2 = "Grey"]], axes = none);
 DocumentTools:-SetProperty('Plot0', 'value', plots:-display(f,plots:-textplot([0.5,0.5,sprintf("FPS: %a", (a/(time[real]()-t)))],color=red)), refresh=true);
@@ -2047,7 +2047,7 @@ end do:
 ```Mathematica
 
 time = AbsoluteTime[]; Animate[
- Column[{Row[{"FPS: ", Round[n/(AbsoluteTime[] - time)]}], 
+ Column[{Row[{"FPS: ", Round[n/(AbsoluteTime[] - time)]}],
    RandomImage[1, {320, 240}]}], {n, 1, Infinity, 1}]
 
 ```
@@ -2060,37 +2060,37 @@ time = AbsoluteTime[]; Animate[
 ```MAXScript
 
 try destroydialog testRollout catch ()
- 
+
 fn randomBitmap width height =
 (
 	local newBmp = bitmap width height
- 
+
 	for row = 0 to (height-1) do
 	(
 		local pixels =  for i in 1 to width collect (white*random 0 1)
 		setpixels newBmp [0,row] pixels
 	)
- 
+
 	return newBmp
 )
- 
+
 rollout testRollout "Test" width:320 height:240
 (
 	bitmap image width:320 height:240 pos:[0,0]
 	timer updateTimer interval:1 active:true
- 
+
 	on updateTimer tick do
 	(
 		local startTime = timestamp()
 		image.bitmap = randomBitmap 320 240
 		local endTime = timestamp()
 		local fps = ((endTime-startTime)/1000.0)*60.0
- 
+
 		if mod updatetimer.ticks 10 == 0 do (testRollout.title = ("Test (FPS: "+fps as string+")"))
- 
+
 	)
 )
- 
+
 createdialog testrollout
 
 ```
@@ -2265,7 +2265,7 @@ let () =
   let width = 320
   and height = 240 in
   resize_window width height;
-  try 
+  try
     while true do
       for y = 0 to pred height do
         for x = 0 to pred width do
@@ -2445,7 +2445,7 @@ var
   surface: PSDL_Surface;
   pixel: ^byte;
   frameNumber, totalTime, lastTime, time, i: longint;
- 
+
 begin
   frameNumber := 0;
   totalTime   := 0;
@@ -2453,7 +2453,7 @@ begin
   randomize;
   SDL_Init(SDL_INIT_TIMER or SDL_INIT_VIDEO);
   surface := SDL_SetVideoMode(320, 240, 8, SDL_DOUBLEBUF or SDL_HWSURFACE);
-  
+
   while (true) do
   begin
     pixel := surface^.pixels;
@@ -2466,7 +2466,7 @@ begin
     SDL_UnlockSurface(surface);
     SDL_Flip(surface);
     inc (frameNumber);
- 
+
     time := SDL_GetTicks();
     totalTime := totalTime + time - lastTime;
     if (totalTime > 1000) then
@@ -2812,7 +2812,7 @@ About 28 FPS max, Python 2.6.6.
    w h))
 
 (define (draw w)
-  (underlay/xy 
+  (underlay/xy
    (noise 320 240) 0 0
    (text (number->string (world-fps w)) 64 "Red")))
 
@@ -2901,14 +2901,14 @@ begSec = time$("seconds")
 graphic #g, 320,240
 tics  = 320 * 240
 for i = 1 to tics
-    x = int((rnd(1) * 320) + 1) 
+    x = int((rnd(1) * 320) + 1)
     y = int((rnd(1) * 240) + 1)
     if int(x mod 2) then  #g "color black ; set "; x; " "; y else #g "color white ; set "; x; " "; y
 next i
 endSec = time$("seconds")
 totSec = endSec - begSec
 print "Seconds;";totSec;" Count:";tics;" Tics / sec:";tics/totSec;" fps:";1/totSec
-render #g 
+render #g
 #g "flush"
 ```
 
@@ -3030,7 +3030,7 @@ Public Class frmSnowExercise
                            ByVal e As System.EventArgs) Handles MyBase.Load
 
         ' Tell windows we want to handle all the painting and that we want it
-        '  to double buffer the form's rectangle (Double Buffering 
+        '  to double buffer the form's rectangle (Double Buffering
         '  removes/ reduces flickering).
         SetStyle(ControlStyles.AllPaintingInWmPaint Or ControlStyles.UserPaint _
             Or ControlStyles.OptimizedDoubleBuffer, True)
@@ -3042,13 +3042,13 @@ Public Class frmSnowExercise
         MaximizeBox = False
 
         ' The window size and the client rectangle aren't the same.
-        ' To get the proper dimensions for our exercise we need to 
-        ' figure out the difference and add it to our 320x240 
+        ' To get the proper dimensions for our exercise we need to
+        ' figure out the difference and add it to our 320x240
         ' requirement.
         Width = 320 + Size.Width - ClientSize.Width
         Height = 240 + Size.Height - ClientSize.Height
 
-        ' Pop the window, bring it to the front and give windows time to 
+        ' Pop the window, bring it to the front and give windows time to
         ' reflect the changes.
         Show()
         Activate()
@@ -3102,7 +3102,7 @@ Public Class frmSnowExercise
         oBMPData = b.LockBits(New Rectangle(0, 0, b.Width, b.Height),
                           ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb)
 
-        ' Allocate sufficient space for the pixel data and 
+        ' Allocate sufficient space for the pixel data and
         ' flash copy it to our array.
         ' We want an integer to hold the color for each pixel in the canvas.
         Array.Resize(oPixels, b.Width * b.Height)
@@ -3111,7 +3111,7 @@ Public Class frmSnowExercise
         b.UnlockBits(oBMPData)
         ' Start looping.
         Do
-            ' Find our frame time and add it to the total amount of time 
+            ' Find our frame time and add it to the total amount of time
             ' elapsed since our last FPS update (once per second).
             fElapsed += oStopwatch.ElapsedMilliseconds / 1000.0F
             oStopwatch.Reset() : oStopwatch.Start()
@@ -3119,11 +3119,11 @@ Public Class frmSnowExercise
             iLoops += 1
             If fElapsed >= 1.0F Then
                 ' Since we've now had a whole second elapse
-                ' figure the Frames Per Second, 
+                ' figure the Frames Per Second,
                 ' measure our string,
                 ' setup our backing rectangle for the FPS string
                 '        (so it's clearly visible over the snow)
-                ' reset our loop counter 
+                ' reset our loop counter
                 ' and our elapsed counter.
                 sFPS = (iLoops / fElapsed).ToString("0.0") & " FPS"
                 oFPSSize = g.MeasureString(sFPS, Font)

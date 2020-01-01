@@ -99,25 +99,25 @@ int byte order: ABCD, Hex:44434241
 ```
 
 On older CPUs the results would vary:
-{|border="1" align="center" 
-|style="text-align: center;"| ALGOL 68R 
-|colspan="2" style="text-align: center;"| ALGOL 68RS 
+{|border="1" align="center"
+|style="text-align: center;"| ALGOL 68R
+|colspan="2" style="text-align: center;"| ALGOL 68RS
 |-
-|| ~ 
+|| ~
 ```txt
 bits per char:   6
 bits per int:   24
 chars per int:   4
 ```
 
-|| [[wp:ICL 2900|ICL 2900]] 
+|| [[wp:ICL 2900|ICL 2900]]
 ```txt
 bits per char:   8
 bits per int:   32
 chars per int:   4
 ```
 
-|| [[wp:Multics|Multics]] 
+|| [[wp:Multics|Multics]]
 ```txt
 bits per char:   6
 bits per int:   36
@@ -135,7 +135,7 @@ chars per int:   6
 2  DATA6,24,251,144,2,251,56
 3  DATA216,105,0,133,251,96
 4  FOR I = 768 TO 787
-5  READ B: POKE I,B: NEXT 
+5  READ B: POKE I,B: NEXT
 6  CALL 768:M =  PEEK (251)
 7  PRINT " WORD SIZE: ";
 8  IF  NOT M THEN  PRINT 8
@@ -151,8 +151,8 @@ chars per int:   6
 
 
 ```babel
-main : 
-    { "Word size: " << msize 3 shl %d << " bits" cr << 
+main :
+    { "Word size: " << msize 3 shl %d << " bits" cr <<
      "Endianness: " << { endian } { "little" } { "big" } ifte cr << }
 ```
 
@@ -177,8 +177,8 @@ The 'word size' is reported as the number of bytes accessed by the ! indirection
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stddef.h> /* for size_t */
 #include <limits.h> /* for CHAR_BIT */
 
@@ -205,8 +205,8 @@ int main() {
 
 On POSIX-compatible systems, the following also tests the endianness (this makes use of the fact that network order is big endian):
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <arpa/inet.h>
 
 int main()
@@ -325,8 +325,8 @@ To find the word size:
 ```
 
 
-In the case of endianness, Erlang's bit syntax by default has a 'native' option which lets you use what is supported natively. 
-As such, there is no function to find endianness. 
+In the case of endianness, Erlang's bit syntax by default has a 'native' option which lets you use what is supported natively.
+As such, there is no function to find endianness.
 However, one could write one by using bit syntax, setting endianness and then comparing to the native format:
 
 
@@ -694,8 +694,8 @@ That said, this does not deal with endianness.  For the most part, J programs do
 
 
 ```j
-   ":&> (|: 32 64  ;"0 big`little) {"_1~ 2 2 #: 16b_e0 + a. i. 0 { 3!:1  '' 
-64    
+   ":&> (|: 32 64  ;"0 big`little) {"_1~ 2 2 #: 16b_e0 + a. i. 0 { 3!:1  ''
+64
 little
 ```
 
@@ -822,12 +822,12 @@ Checkit
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-If[$ByteOrdering > 0, Print["Big endian"], Print["Little endian" ]] 
+If[$ByteOrdering > 0, Print["Big endian"], Print["Little endian" ]]
 $SystemWordLength "bits"
 ```
- 
 
-{{out}} x86 
+
+{{out}} x86
 
 ```txt
 
@@ -867,7 +867,7 @@ The concept of "word size" is not meaningful in Matlab and Octave, uint64 is als
 {{out}}
 
 ```txt
-  octave:128> computer 
+  octave:128> computer
   x86_64-unknown-linux-gnu
   octave:129> endian
   endian = little
@@ -959,8 +959,8 @@ $print("wordsize: ", wordsize(), " bits\n")
 ```txt
 
 prompt$ gcc -shared -fPIC host-introspection.c -o native.ndll
-prompt$ nekoc host-introspection.neko                        
-prompt$ neko host-introspection.n                            
+prompt$ nekoc host-introspection.neko
+prompt$ neko host-introspection.n
 isbigendian: false
 wordsize: 64 bits
 ```
@@ -1010,7 +1010,7 @@ switch (NSHostByteOrder()) {
   case NS_UnknownByteOrder:
     NSLog(@"%@", @"endianness unknown");
     break;
-} 
+}
 ```
 
 
@@ -1322,7 +1322,7 @@ details: procedure options (main); /* 6 July 2012 */
 		put skip list ('Big endian');
 	else
 		put skip list ('Little endian');
-	
+
 end details;
 
 ```
@@ -1331,8 +1331,8 @@ end details;
 
 ```txt
 
-word size=                          32 
-Little endian 
+word size=                          32
+Little endian
 
 ```
 
@@ -1351,9 +1351,9 @@ if ([BitConverter]::IsLittleEndian) {
 }
 ```
 
-Note that endianness is essentially a moot point with PowerShell, 
-as there is only a Windows implementation currently 
-and current Windows versions don't run on big-endian systems. 
+Note that endianness is essentially a moot point with PowerShell,
+as there is only a Windows implementation currently
+and current Windows versions don't run on big-endian systems.
 But in theory this check should work.
 
 
@@ -1361,7 +1361,7 @@ But in theory this check should work.
 
 
 ```PureBasic
-Enumeration 
+Enumeration
   #LittleEndian
   #BigEndian
 EndEnumeration
@@ -1372,11 +1372,11 @@ ProcedureDLL EndianTest()
   If "A"=Chr(PeekA(@dummy))
     Endian=#BigEndian
   EndIf
-  ProcedureReturn Endian  
+  ProcedureReturn Endian
 EndProcedure
 
 ;- *** Start of test code
-If OpenConsole()  
+If OpenConsole()
   PrintN("Your word size is "+Str(SizeOf(Integer)) +" bytes,")
   Select EndianTest()
     Case #LittleEndian
@@ -1470,15 +1470,15 @@ Returns 0 for little endian, and 1 for big endian.
 
 ## REXX
 
-Since all variables in the REXX language are stored as characters, the wordsize is immaterial (REXX supports variable precision for numbers).  
+Since all variables in the REXX language are stored as characters, the wordsize is immaterial (REXX supports variable precision for numbers).
 
-This also applies to the "endianness" of words or how they are stored. 
+This also applies to the "endianness" of words or how they are stored.
 
-The REXX language was designed for scripting and interfacing with the operating system. 
+The REXX language was designed for scripting and interfacing with the operating system.
 
-However, there is a STORAGE built-in function that allows a program to look at (local) storage, and if there is an 
+However, there is a STORAGE built-in function that allows a program to look at (local) storage, and if there is an
 
-indicator stored anywhere in the virtual address space, it can be examined.  
+indicator stored anywhere in the virtual address space, it can be examined.
 
 ```rexx
 /*REXX program to examine which operating system that REXX is running under. */

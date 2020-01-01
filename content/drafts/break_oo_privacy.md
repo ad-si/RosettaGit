@@ -26,12 +26,12 @@ tags = []
 {{omit from|SmileBASIC}}
 {{omit from|ZX Spectrum Basic}}
 
-Show how to access private or protected members of a class in an object-oriented language from outside an instance of the class, without calling non-private or non-protected members of the class as a proxy.  
-The intent is to show how a debugger, serializer, or other meta-programming tool might access information that is barred by normal access methods to the object  but can nevertheless be accessed from within the language by some provided escape hatch or reflection mechanism. 
+Show how to access private or protected members of a class in an object-oriented language from outside an instance of the class, without calling non-private or non-protected members of the class as a proxy.
+The intent is to show how a debugger, serializer, or other meta-programming tool might access information that is barred by normal access methods to the object  but can nevertheless be accessed from within the language by some provided escape hatch or reflection mechanism.
 The intent is specifically not to demonstrate heroic measures such as peeking and poking raw memory.
 
-Note that cheating on your type system is almost universally regarded 
-as unidiomatic at best, and poor programming practice at worst.  
+Note that cheating on your type system is almost universally regarded
+as unidiomatic at best, and poor programming practice at worst.
 Nonetheless, if your language intentionally maintains a double-standard for OO privacy, here's where you can show it off.
 
 
@@ -91,7 +91,7 @@ endclass.
 ## Ada
 
 
-One of the great criticisms of Pascal was "there is no escape". The reason was that sometimes you have to convert the incompatible. For this purpose, Ada has the generic function Unchecked_Conversion, that can be used for such purposes 
+One of the great criticisms of Pascal was "there is no escape". The reason was that sometimes you have to convert the incompatible. For this purpose, Ada has the generic function Unchecked_Conversion, that can be used for such purposes
 as breaking OO privacy. We start with the package that holds the "secret":
 
 
@@ -177,8 +177,8 @@ public class Program
 C++ has the 'friend' keyword to indicate that one class should have access to the private data of another. Here's a simple use case. (Please note that this code is not thread-safe.)
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 class CWidget; // Forward-declare that we have a class named CWidget.
 
@@ -262,8 +262,8 @@ Widget dieing. There are now 0 Widgets instanciated.
 Without the "friend" mechanism, it's still possible to meaningfully modify any member in another class, as long as you know that member's address in memory, and its type. Here's the same program as above, but using a pointer to m_uicount, rather a reference to the factory:
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 class CWidget; // Forward-declare that we have a class named CWidget.
 
@@ -363,17 +363,17 @@ user=> (get-field Double "serialVersionUID" (Double/valueOf 1.0))
 ## Common Lisp
 
 
-Common Lisp doesn't have concepts like class scopes, name lookup rules, or access. Essentially, the way things are referenced in the source code (the static view of the program) is not involved in the class hierarchy. 
-For instance, when a class is derived from another one, it is purely an object-oriented inheritance. 
+Common Lisp doesn't have concepts like class scopes, name lookup rules, or access. Essentially, the way things are referenced in the source code (the static view of the program) is not involved in the class hierarchy.
+For instance, when a class is derived from another one, it is purely an object-oriented inheritance.
 There is no parallel symbol-table inheritance going on whereby one namespace becomes a tributary of another (the identifier scope of a derived class inheriting symbols from, or a visibility window into the base class).
 
-The primary concept of naming privacy in Lisp is located in the package system. 
-An external symbol S in package P can be accessed using P:S. If S is internal then P:S results in error at read time. 
-This is completely independent of context and orthogonal to the use of symbols to denote class slots (instance variables), methods, functions, class names themselves, global variables, et cetera. 
-Even if the private symbol appears in a literal piece of data like a quoted list, it is an error to refer to it: <code>(1 2 3 P:S)</code>.  
-The internal symbol S in package P can be accessed using <code>P::S</code>. 
-This is easy to do because programmers are assumed to be responsible grownups who can be trusted to know what they are doing.  
-Also, note that this privacy is a property of the relationship between a symbol and a package. 
+The primary concept of naming privacy in Lisp is located in the package system.
+An external symbol S in package P can be accessed using P:S. If S is internal then P:S results in error at read time.
+This is completely independent of context and orthogonal to the use of symbols to denote class slots (instance variables), methods, functions, class names themselves, global variables, et cetera.
+Even if the private symbol appears in a literal piece of data like a quoted list, it is an error to refer to it: <code>(1 2 3 P:S)</code>.
+The internal symbol S in package P can be accessed using <code>P::S</code>.
+This is easy to do because programmers are assumed to be responsible grownups who can be trusted to know what they are doing.
+Also, note that this privacy is a property of the relationship between a symbol and a package.
 A symbol can be present in more than one package, such that it can be internal in some of them, and external in others.
 
 
@@ -459,7 +459,7 @@ type MyClass() =
 
 
 [<EntryPoint>]
-let main argv = 
+let main argv =
     let myInstance = MyClass()
     let fieldInfo = myInstance.GetType().GetField("answer", BindingFlags.NonPublic ||| BindingFlags.Instance)
     let answer = fieldInfo.GetValue(myInstance)
@@ -514,13 +514,13 @@ include FMS-SI.f
 
 99 value x  \ create a global variable named x
 
-:class foo   
+:class foo
  ivar x  \ this x is private to the class foo
  :m init: 10 x ! ;m  \ constructor
- :m print x ? ;m 
-;class 
+ :m print x ? ;m
+;class
 
-foo f1    \ instantiate a foo object  
+foo f1    \ instantiate a foo object
 f1 print  \ 10 access the private x with the print message
 
 x .  \ 99  x is a globally scoped name
@@ -534,7 +534,7 @@ f1 print  \ 50
 
 ## FreeBASIC
 
-FreeBASIC generally does a good job of maintaining OO privacy as it doesn't support reflection and even its OffsetOf keyword cannot obtain the offset within a user defined type of a private or protected field. You therefore have to guess the offset of a non-public field in order to be able to access it using a raw pointer though this is not generally a difficult task. 
+FreeBASIC generally does a good job of maintaining OO privacy as it doesn't support reflection and even its OffsetOf keyword cannot obtain the offset within a user defined type of a private or protected field. You therefore have to guess the offset of a non-public field in order to be able to access it using a raw pointer though this is not generally a difficult task.
 
 However, as usual, macros come to the rescue and one can easily access non-public members by the simple expedient (or, if you prefer, 'dirty hack') of redefining the Private and Protected keywords to mean Public:
 
@@ -547,7 +547,7 @@ However, as usual, macros come to the rescue and one can easily access non-publi
 #Define Protected Public
 
 Type MyType
-  Public : 
+  Public :
     x As Integer = 1
   Protected :
     y As Integer = 2
@@ -692,7 +692,7 @@ bufio.ReadByte returned error: unsafely injected error value into bufio inner wo
 
 ==Icon and {{header|Unicon}}==
 {{omit from|Icon}}
-Unicon implements object environments with records and supporting procedures for creation, initialization, and methods.  The variables in the class environment can be accessed like any other record field.  Additionally, with the ''fieldnames'' procedure you can obtain the names of the class variables. 
+Unicon implements object environments with records and supporting procedures for creation, initialization, and methods.  The variables in the class environment can be accessed like any other record field.  Additionally, with the ''fieldnames'' procedure you can obtain the names of the class variables.
 
 In addition to debuggers and diagnostic tools, these techniques could be used in 'monkey patching' extensions (see [[Add_a_variable_to_a_class_instance_at_runtime]]).
 
@@ -719,8 +719,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 
 Output:
 ```txt
@@ -759,7 +759,7 @@ public class BreakPrivacy {
     public static final void main(String[] args) throws Exception {
         Example foo = new Example("Eric");
 
-        for (Field f : Example.class.getDeclaredFields()) { 
+        for (Field f : Example.class.getDeclaredFields()) {
 	    if (f.getName().equals("_name")) {
                 // make it accessible
                 f.setAccessible(true);
@@ -891,7 +891,7 @@ true
 
 ## M2000 Interpreter
 
-We want to read two private variables, and change values without using a public method (a module or a function), and without attach a temporary method (we can do that in M2000). There is a variant in READ statemend to set references from group members (for variables and arrays, and objects) to names with a reference for each. So using these names (here in the exaample K, M) we can read and write private variables.  
+We want to read two private variables, and change values without using a public method (a module or a function), and without attach a temporary method (we can do that in M2000). There is a variant in READ statemend to set references from group members (for variables and arrays, and objects) to names with a reference for each. So using these names (here in the exaample K, M) we can read and write private variables.
 
 ```M2000 Interpreter
 
@@ -1015,16 +1015,16 @@ One solution is to use Key-Value Coding. It treats properties and instance varia
 
 int main (int argc, const char * argv[]) {
   @autoreleasepool{
-    
+
     Example *foo = [[Example alloc] initWithName:@"Eric"];
-    
+
     // get private field
     NSLog(@"%@", [foo valueForKey:@"name"]);
-    
+
     // set private field
     [foo setValue:@"Edith" forKey:@"name"];
     NSLog(@"%@", foo);
-  
+
   }
   return 0;
 }
@@ -1084,16 +1084,16 @@ Another solution is to use a category to add methods to the class (you can have 
 
 int main (int argc, const char * argv[]) {
   @autoreleasepool{
-    
+
     Example *foo = [[Example alloc] initWithName:@"Eric"];
-    
+
     // get private field
     NSLog(@"%@", [foo getName]);
-    
+
     // set private field
     [foo setNameTo:@"Edith"];
     NSLog(@"%@", foo);
-  
+
   }
   return 0;
 }
@@ -1140,17 +1140,17 @@ Finally, you can access the instance variable directly using runtime functions.
 
 int main (int argc, const char * argv[]) {
   @autoreleasepool{
-    
+
     Example *foo = [[Example alloc] initWithName:@"Eric"];
-    
+
     // get private field
     Ivar nameField = class_getInstanceVariable([foo class], "_name");
     NSLog(@"%@", object_getIvar(foo, nameField));
-    
+
     // set private field
     object_setIvar(foo, nameField, @"Edith");
     NSLog(@"%@", foo);
-  
+
   }
   return 0;
 }
@@ -1231,7 +1231,7 @@ Broken coord: (-1, -1)
 ## Oforth
 
 
-In Oforth, all attributes are private. 
+In Oforth, all attributes are private.
 
 There is no other way to access attributes values from outside but to call methods on the object.
 
@@ -1347,16 +1347,16 @@ While normally accessing private variables causes fatal errors, it's possible to
 class SimpleClass {
     private $answer = "hello\"world\nforever :)";
 }
- 
+
 $class = new SimpleClass;
 ob_start();
- 
+
 // var_export() expects class to contain __set_state() method which would import
 // data from array. But let's ignore this and remove from result the method which
-// sets state and just leave data which can be used everywhere... 
+// sets state and just leave data which can be used everywhere...
 var_export($class);
 $class_content = ob_get_clean();
- 
+
 $class_content = preg_replace('"^SimpleClass::__set_state\("', 'return ', $class_content);
 $class_content = preg_replace('"\)$"', ';', $class_content);
 
@@ -1424,7 +1424,7 @@ Python isn't heavily into private class names. Although private class names can 
 	__private = 123
 	non_private = __private * 2
 
-	
+
 >>> mine = MyClassName()
 >>> mine.non_private
 246
@@ -1435,7 +1435,7 @@ Traceback (most recent call last):
 AttributeError: 'MyClassName' object has no attribute '__private'
 >>> mine._MyClassName__private
 123
->>> 
+>>>
 ```
 
 
@@ -1515,7 +1515,7 @@ say obj{:private};              #=> "secret"
 
 ## Swift
 
-Swift reflection provides a Collection of label-value pairs for struct properties 
+Swift reflection provides a Collection of label-value pairs for struct properties
 
 ```Swift
 struct Example {

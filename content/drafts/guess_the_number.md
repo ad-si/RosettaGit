@@ -10,14 +10,14 @@ categories = []
 tags = []
 +++
 
-{{task|Games}} 
-[[Category: Conditional loops]] 
+{{task|Games}}
+[[Category: Conditional loops]]
 [[Category:Randomness]]
 
 ;Task:
-Write a program where the program chooses a number between   '''1'''   and   '''10'''. 
+Write a program where the program chooses a number between   '''1'''   and   '''10'''.
 
-A player is then prompted to enter a guess.   If the player guesses wrong,   then the prompt appears again until the guess is correct. 
+A player is then prompted to enter a guess.   If the player guesses wrong,   then the prompt appears again until the guess is correct.
 
 When the player has made a successful guess the computer will issue a   "Well guessed!"   message,   and the program exits.
 
@@ -150,7 +150,7 @@ main:
           puts("Try another guess!")
         FI
     OD;
-    break: 
+    break:
     puts("You have won! ")
 )
 ```
@@ -160,15 +160,15 @@ Sample output:
 ```txt
 
 I'm thinking of a number between 1 and 10.
-Try to guess it! 
+Try to guess it!
 1
-That's not my number. 
+That's not my number.
 Try another guess!
 2
-That's not my number. 
+That's not my number.
 Try another guess!
 3
-You have won! 
+You have won!
 
 ```
 
@@ -220,7 +220,7 @@ on run
             tell x to its guess = its secret
         end |λ|
     end script
-    
+
     -- challenge :: () -> {secret: Int, guess: Int}
     script challenge
         on response()
@@ -228,24 +228,24 @@ on run
                 "Guess the number in range 1-10" default answer ¬
                 "" buttons {"Esc", "Check"} default button ¬
                 "Check" cancel button "Esc"))
-            
+
             if isInteger(v) then
                 v as integer
             else
                 -1
             end if
         end response
-        
+
         on |λ|(rec)
             {secret:(random number from 1 to 10), guess:response() ¬
                 of challenge, attempts:(attempts of rec) + 1}
         end |λ|
     end script
-    
-    
+
+
     -- MAIN LOOP -------------------------------------------------------------
     set rec to |until|(isMatch, challenge, {secret:-1, guess:0, attempts:0})
-    
+
     display dialog (((guess of rec) as string) & ":    Well guessed ! " & ¬
         linefeed & linefeed & "Attempts: " & (attempts of rec))
 end run
@@ -263,7 +263,7 @@ on isInteger(e)
     true
 end isInteger
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -279,7 +279,7 @@ end mReturn
 on |until|(p, f, x)
     set mp to mReturn(p)
     set v to x
-    
+
     tell mReturn(f)
         repeat until mp's |λ|(v)
             set v to |λ|(v)
@@ -310,11 +310,11 @@ print "Well guessed!"
 
 
 ```txt
-Guess the number: 
+Guess the number:
 5
-Wrong! Guess again: 
+Wrong! Guess again:
 2
-Wrong! Guess again: 
+Wrong! Guess again:
 7
 Well guessed!
 ```
@@ -499,10 +499,10 @@ At the line set /a answer=%random%%%(10-1+1)+1, if you want to change the minimu
 ```dos
 @echo off
 set /a answer=%random%%%(10-1+1)+1
-set /p guess=Pick a number between 1 and 10: 
+set /p guess=Pick a number between 1 and 10:
 :loop
 if %guess%==%answer% (echo Well guessed!
-pause) else (set /p guess=Nope, guess again: 
+pause) else (set /p guess=Nope, guess again:
 goto loop)
 ```
 
@@ -597,8 +597,8 @@ until {
 
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <time.h>
 
@@ -636,8 +636,8 @@ int main(void)
 
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cstdlib>
 #include <ctime>
 
@@ -677,7 +677,7 @@ class GuessTheNumberGame
         bool numberCorrect = false;
         Random randomNumberGenerator = new Random();
         int randomNumber = randomNumberGenerator.Next(1, 10+1);
-        
+
         Console.WriteLine("I'm thinking of a number between 1 and 10.  Can you guess it?");
         do
         {
@@ -744,7 +744,7 @@ class GuessTheNumberGame
                    DISPLAY "That isn't it. Try again."
                END-IF
            END-PERFORM
-           
+
            GOBACK
            .
 ```
@@ -785,7 +785,7 @@ do ->
       else
         console.log "Sorry, guess again"
         guess()
-      
+
   guess()
 
 ```
@@ -1063,7 +1063,7 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     int randomNumber := randomGenerator.eval(1,10);
@@ -1111,7 +1111,7 @@ defmodule GuessingGame do
   def play do
     play(Enum.random(1..10))
   end
-  
+
   defp play(number) do
     guess = Integer.parse(IO.gets "Guess a number (1-10): ")
     case guess do
@@ -1126,7 +1126,7 @@ defmodule GuessingGame do
     end
   end
 end
- 
+
 GuessingGame.play
 ```
 
@@ -1138,10 +1138,10 @@ GuessingGame.play
 ```Lisp
 
 (let ((num (1+ (random 10))))
-   (princ "Guess the no") 
-  (loop 
-   (setq guess (read)) 
-     (if (eq guess num) 
+   (princ "Guess the no")
+  (loop
+   (setq guess (read))
+     (if (eq guess num)
 	 (progn(princ-list "Guess was right! " num) (return)) (print "Wrong, try again.") ) ) )
 ```
 
@@ -1163,13 +1163,13 @@ main() ->
 
 guess(N) ->
 	{ok, [K]} = io:fread("Guess number :  ","~d"),
-	
-	if 
+
+	if
 		K=:=N ->
 			io:format("Well guessed!!\n");
-		true -> 
-			guess(N)	
-	end.	
+		true ->
+			guess(N)
+	end.
 
 ```
 
@@ -1337,7 +1337,7 @@ program guess_the_number
  integer                          :: i, clock, count, n
  integer,dimension(:),allocatable :: seed
 
- real,parameter :: rmax = 10	
+ real,parameter :: rmax = 10
 
 !initialize random number generator:
  call random_seed(size=n)
@@ -1522,7 +1522,7 @@ import System.Random
 -- Repeat the action until the predicate is true.
 until_ act pred = act >>= pred >>= flip unless (until_ act pred)
 
-answerIs ans guess 
+answerIs ans guess
     | ans == guess = putStrLn "You got it!" >> return True
     | otherwise = putStrLn "Nope. Guess again." >> return False
 
@@ -1546,9 +1546,9 @@ import System.Random
 main = randomRIO (1,10) >>= gameloop
 
 gameloop :: Int -> IO ()
-gameloop r = do	
+gameloop r = do
 	i <- fmap read getLine
-	if i == r 
+	if i == r
 	  then putStrLn "You got it!"
 	  else putStrLn "Nope. Guess again." >> gameloop r
 
@@ -1609,7 +1609,7 @@ game=: verb define
   smoutput 'Guess my integer, which is bounded by 1 and 10'
   whilst. -. guess -: n do.
     guess=. {. 0 ". prompt 'Guess: '
-    if. 0 -: guess do. 'Giving up.' return. end. 
+    if. 0 -: guess do. 'Giving up.' return. end.
     smoutput (guess=n){::'no.';'Well guessed!'
   end.
 )
@@ -1675,7 +1675,7 @@ Requires a host environment that supports <code>prompt</code> and <code>alert</c
 
 {{works with|jq|1.5}}
 
-jq currently does not have a built-in random number generator, so a suitable PRNG for this task is defined below. Once `rand(n)` has been defined, the task can be accomplished as follows: 
+jq currently does not have a built-in random number generator, so a suitable PRNG for this task is defined below. Once `rand(n)` has been defined, the task can be accomplished as follows:
 
 ```jq
 
@@ -1705,7 +1705,7 @@ def next_rand_Microsoft:
 def rand_Microsoft(seed):
   [0,seed]
   | next_rand_Microsoft  # the seed is not so random
-  | next_rand_Microsoft | .[2]; 
+  | next_rand_Microsoft | .[2];
 
 # A random integer in [0 ... (n-1)]:
 def rand(n): n * (rand_Microsoft($seed|tonumber) / 32768) | trunc;
@@ -1723,7 +1723,7 @@ function guessNumber() {
     var num = Math.ceil(Math.random() * 10);
     var guess;
     var tries = 0;
- 
+
     while (guess != num) {
         tries += 1;
         printf('%s', 'Guess the number between 1 and 10 inclusive: ');
@@ -2038,7 +2038,7 @@ command guessTheNumber
         ask question "Please enter a number between 1 and 10" titled "Guess the number"
         if it is not empty then
             put it into tguess
-            if tguess is tNumber then 
+            if tguess is tNumber then
                 answer "Well guessed!"
             end if
         else
@@ -2131,13 +2131,13 @@ Module QBASIC_Based {
       GOSUB initialize
       GOSUB guessing
       GOTO continue
-       
+
       initialize:
       \\ Not need to RANDOMIZE TIMER
       \\ we can use Random(1, 100) to get a number from 1 to 100
       n = 0: r = INT(RND * 100 + 1): g = 0: c$ = ""
       RETURN
-       
+
       guessing:
       WHILE g <> r {
                 INPUT "Pick a number between 1 and 100:"; g
@@ -2154,7 +2154,7 @@ Module QBASIC_Based {
                 }
       }
       RETURN
-       
+
       continue:
       WHILE c$ <> "YES" AND c$ <> "NO" {
           INPUT "Do you want to continue? (YES/NO)"; c$
@@ -2165,7 +2165,7 @@ Module QBASIC_Based {
               Goto End
           }
       }
-      End:     
+      End:
 }
 QBASIC_Based
 
@@ -2315,46 +2315,46 @@ end while
 	#retrieve system time as a seed
 	li $v0,30
 	syscall
-	
+
 	#use the high order time stored in $a1 as the seed arg
 	move $a1,$a0
 
 	#set the seed
 	li $v0,40
 	syscall
-	
+
 	#generate number 0-9 (random int syscall generates a number where):
 	# 0 <= $v0 <= $a1
 	li $a1,10
 	li $v0,42
 	syscall
-	
+
 	#increment the randomly generated number and store in $v1
 	add $v1,$a0,1
-	
+
 loop:	jal print_take_a_guess
 	jal read_int
-	
+
 	#go back to beginning of loop if user hasn't guessed right,
 	#    else, just "fall through" to exit_procedure
 	bne $v0,$v1,loop
-	
+
 exit_procedure:
 	#set syscall to print_string, then set good_job string as arg
 	li $v0,4
 	la $a0,good_job
 	syscall
-	
+
 	#exit program
 	li $v0,10
 	syscall
-	
+
 print_take_a_guess:
 	li $v0,4
 	la $a0,take_a_guess
 	syscall
 	jr $ra
-	
+
 read_int:
 	li $v0,5
 	syscall
@@ -2378,14 +2378,14 @@ module Guess
         def rand = Random();
         def x = rand.Next(1, 11);  // returns 1 <= x < 11
         mutable guess = 0;
-    
+
         do
         {
             WriteLine("Guess a nnumber between 1 and 10:");
             guess = Int32.Parse(ReadLine());
         } while (guess != x);
-    
-        WriteLine("Well guessed!");   
+
+        WriteLine("Well guessed!");
     }
 }
 ```
@@ -2495,7 +2495,7 @@ Works with oo2c Version 2
 ```oberon2
 
 MODULE GuessTheNumber;
-IMPORT 
+IMPORT
   RandomNumbers,
   In,
   Out;
@@ -2507,8 +2507,8 @@ IMPORT
     n := RandomNumbers.RND(10);
     Out.String("Guess a number between 1 and 10: ");Out.Flush();
     LOOP
-      In.LongInt(guess);  
-      IF  guess = n THEN 
+      In.LongInt(guess);
+      IF  guess = n THEN
         Out.String("You guessed!!"); Out.Ln; EXIT
       END;
       Out.String(" Sorry, try again: ");Out.Flush()
@@ -2572,35 +2572,35 @@ int main(int argc, const char * argv[])
 {
 
     @autoreleasepool {
-        
+
         NSLog(@"I'm thinking of a number between 1 - 10. Can you guess what it is?\n");
-        
+
         int rndNumber = arc4random_uniform(10) + 1;
-        
+
         // Debug (Show rndNumber in console)
         //NSLog(@"Random number is %i", rndNumber);
-        
+
         int userInput;
-        
+
         do {
-           
+
             NSLog(@"Input the number below\n");
             scanf("%i", &userInput);
-          
+
             if (userInput > 10) {
-              
+
                 NSLog(@"Please enter a number less than 10\n");
             }
-            
+
             if (userInput > 10 || userInput != rndNumber) {
-                
+
                 NSLog(@"Your guess %i is incorrect, please try again", userInput);
-                
+
             } else {
-                
+
                 NSLog(@"Your guess %i is correct!", userInput);
             }
-        
+
         } while (userInput > 10 || userInput != rndNumber);
     }
     return 0;
@@ -2764,17 +2764,17 @@ else
 if(isset($_POST["guess"])){
 	if($_POST["guess"]){
 	    $guess  = htmlspecialchars($_POST['guess']);
-	 
+
 		echo $guess . "<br />";
 	    if ($guess != $number)
-		{ 
+		{
 	        echo "Your guess is not correct";
 	    }
 		elseif($guess == $number)
 		{
 	        echo "You got the correct number!";
 	    }
-	} 
+	}
 }
 ?>
 
@@ -2915,14 +2915,14 @@ true.
 ```PureBasic
 If OpenConsole()
   Define TheNumber=Random(9)+1
-  
+
   PrintN("I've picked a number from 1 to 10." + #CRLF$)
   Repeat
     Print("Guess the number: ")
-  Until TheNumber=Val(Input()) 
-  
+  Until TheNumber=Val(Input())
+
   PrintN("Well guessed!")
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2984,7 +2984,7 @@ RANDOMIZE
 number = rnd(10) + 1
 Print "I selected a number between 1 and 10, try to find it:" + chr$(10)
 
-while Guess <> Number 
+while Guess <> Number
     input "Your guess: "; Guess
 wend
 
@@ -3011,13 +3011,13 @@ public void Guess(){
 			text("Try to guess the number from 0 to 9."),
 			textfield("Put your guess here", void(str s){guess = (toInt(s)==random); entered = s; }, fillColor("white")),
 			text(str(){return guess ? "Correct answer!" : "This is false, the number is not <entered>.";}),
-			button("Start over", void(){random = arbInt(10);}) ]));	 	
+			button("Start over", void(){random = arbInt(10);}) ]));
 	render(figure);
 }
 ```
 
 
-Output: 
+Output:
 
 [[File:Guess.png]]
 
@@ -3272,7 +3272,7 @@ println("Well guessed!")
 {{works with|Guile}}
 
 ```scheme
-(define (guess) 
+(define (guess)
   (define number (random 11))
   (display "Pick a number from 1 through 10.\n> ")
   (do ((guess (read) (read)))
@@ -3334,7 +3334,7 @@ Well factored:
 
 
 ```self
-(| 
+(|
 parent* = traits clonable.
 copy = (resend.copy secretNumber: random integerBetween: 1 And: 10).
 secretNumber.
@@ -3354,7 +3354,7 @@ Simple method:
 
 
 ```self
-| n | 
+| n |
 userQuery report: 'Try to guess my secret number between 1 and 10.'.
 n: random integerBetween: 1 And: 10.
 [(userQuery askString: 'Guess the Number.') asInteger = n] whileFalse: [
@@ -3404,9 +3404,9 @@ Unoptimised.
                          />+++++++.>-.+/
         / \              />++++++>++\
         < +              ?
-        < >              \ -<<++++++/   
+        < >              \ -<<++++++/
  $++++\ - +              !
- /++++/   >              \++++++++++\ 
+ /++++/   >              \++++++++++\
  \+ %!/!\?/>>>,>>>>>>+++\/ !/?\<?\>>/
        /++++++++++++++++/   > -  \\
        \+++++++++\  /    /  - <
@@ -3427,7 +3427,7 @@ Unoptimised.
                         + -
                         < >
                         < +
-                        \ /             
+                        \ /
 
 
 ## Swift
@@ -3442,7 +3442,7 @@ let randomNum = Int(arc4random_uniform(10) + 1)
 println("Guess a number between 1 and 10\n")
 while (!found) {
     var fh = NSFileHandle.fileHandleWithStandardInput()
-    
+
     println("Enter a number: ")
     let data = fh.availableData
     var str = NSString(data: data, encoding: NSUTF8StringEncoding)
@@ -3530,7 +3530,7 @@ wrong insert: a Please insert a digit
 [4] Please insert a number >2
 [5] Please insert a number >9
 [6] Please insert a number >8
-BINGO 
+BINGO
 
 ```
 
@@ -3591,7 +3591,7 @@ echo 'Well done! You guessed it.'
 int main() {
 	int x = Random.int_range(1, 10);
 	stdout.printf("Make a guess (1-10): ");
-	while(int.parse(stdin.read_line()) != x) 
+	while(int.parse(stdin.read_line()) != x)
                 stdout.printf("Wrong! Try again: ");
 	stdout.printf("Got it!\n");
 	return 0;
@@ -3729,7 +3729,7 @@ fn main() {
     rand.seed(s)
 
     num := rand.next(10) // Random number
-    
+
     // Game loop
     for {
         println('Please guess a number from 1-10 and press <Enter>')
@@ -3829,14 +3829,14 @@ section .text
         div ebx
         inc edx
         mov [rand], edx
-        
+
         ; print msg1
         mov eax, 4
         mov ebx, 1
         mov ecx, msg1
         mov edx, len1
         int 80h
-        
+
     input:
         ; get input
         mov eax, 3
@@ -3856,7 +3856,7 @@ section .text
         mul ebx
         add [guess], eax
         jmp input
-        
+
     check:
         ; else check number
         mov eax, 4
@@ -3870,7 +3870,7 @@ section .text
         mov dword [guess], 0
         int 80h
         jmp input
-        
+
     done:
         ; well guessed
         mov ecx, msg3
@@ -3954,7 +3954,7 @@ Strings are used to avoid dealing with error handling
 r:=((0).random(10)+1).toString();
 while(1){
    n:=ask("Num between 1 & 10: ");
-   if(n==r){ println("Well guessed!"); break; } 
+   if(n==r){ println("Well guessed!"); break; }
    println("Nope")
 }
 ```

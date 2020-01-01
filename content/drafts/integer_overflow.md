@@ -144,9 +144,9 @@ If you mask, you can test it in your program:
 OVERFLOW EQU   *
 ```
 
-On the other hand, 
+On the other hand,
 you will have the S0C8 system abend code : '''fixed point overflow exception'''
-with the same program, if you unmask bit 20 by: 
+with the same program, if you unmask bit 20 by:
 
 ```360asm
          IPM   1                  Insert Program Mask
@@ -161,55 +161,55 @@ BITFPO   DC    BL1'00001000'      bit20=1    [start at 16]
 
 ## Ada
 
-In Ada, both predefined and user-defined integer types are in a given range, between Type'First and Type'Last, inclusive. The range of predefined types is implementation specific. When the result of a computation is out of the type's range, the program <b>does not continue with a wrong result, but</b> instead <b>raises an exception</b>. 
+In Ada, both predefined and user-defined integer types are in a given range, between Type'First and Type'Last, inclusive. The range of predefined types is implementation specific. When the result of a computation is out of the type's range, the program <b>does not continue with a wrong result, but</b> instead <b>raises an exception</b>.
 
 
 ```Ada
 with Ada.Text_IO; use Ada.Text_IO;
 
 procedure Overflow is
-   
-   generic 
+
+   generic
       type T is Range <>;
       Name_Of_T: String;
    procedure Print_Bounds; -- first instantiate this with T, Name
                            -- then call the instantiation
    procedure Print_Bounds is
    begin
-      Put_Line("   " & Name_Of_T & " " & T'Image(T'First) 
+      Put_Line("   " & Name_Of_T & " " & T'Image(T'First)
 		 & " .." & T'Image(T'Last));
    end Print_Bounds;
-   
+
    procedure P_Int  is new Print_Bounds(Integer,      "Integer ");
    procedure P_Nat  is new Print_Bounds(Natural,      "Natural ");
    procedure P_Pos  is new Print_Bounds(Positive,     "Positive");
    procedure P_Long is new Print_Bounds(Long_Integer, "Long    ");
-   
+
    type Unsigned_Byte is range 0 .. 255;
    type Signed_Byte   is range -128 .. 127;
    type Unsigned_Word is range 0 .. 2**32-1;
    type Thousand is range 0 .. 999;
    type Signed_Double is range - 2**63 .. 2**63-1;
    type Crazy is range -11 .. -3;
-   
+
    procedure P_UB is new Print_Bounds(Unsigned_Byte, "U 8  ");
    procedure P_SB is new Print_Bounds(Signed_Byte, "S 8  ");
    procedure P_UW is new Print_Bounds(Unsigned_Word, "U 32 ");
    procedure P_Th is new Print_Bounds(Thousand, "Thous");
    procedure P_SD is new Print_Bounds(Signed_Double, "S 64 ");
    procedure P_Cr is new Print_Bounds(Crazy, "Crazy");
-   
+
    A: Crazy := Crazy'First;
-   
+
 begin
    Put_Line("Predefined Types:");
-   P_Int; P_Nat; P_Pos; P_Long; 
+   P_Int; P_Nat; P_Pos; P_Long;
    New_Line;
-   
+
    Put_Line("Types defined by the user:");
    P_UB; P_SB; P_UW; P_Th; P_SD; P_Cr;
    New_Line;
-   
+
    Put_Line("Forcing a variable of type Crazy to overflow:");
    loop -- endless loop
       Put("  " & Crazy'Image(A) &  "+1");
@@ -267,7 +267,7 @@ END
 ```txt
 +2147483647
 3        print (1+max int)
-                 1        
+                 1
 a68g: runtime error: 1: INT math error (numerical result out of range) (detected in VOID closed-clause starting at "BEGIN" in line 1).
 ```
 
@@ -290,7 +290,7 @@ END
 
 +99999999999999999999999999999999999
 3        print (1+ long max int)
-                 1              
+                 1
 a68g: runtime error: 1: LONG INT value out of bounds (numerical result out of range) (detected in VOID closed-clause starting at "BEGIN" in line 1).
 ```
 
@@ -385,8 +385,8 @@ Unsigned integer arithmetic is defined to be modulus a power of two.
 An overflow for signed integer arithmetic is undefined behavior.
 A C program does <b>not</b> recognize a signed integer overflow and the program <b>continues with wrong results</b>.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main (int argc, char *argv[])
 {
@@ -461,7 +461,7 @@ The default behavior can be changed with a compiler flag.
 
 ```csharp
 using System;
-    
+
 public class IntegerOverflow
 {
     public static void Main() {
@@ -473,7 +473,7 @@ public class IntegerOverflow
             Console.WriteLine(46341 * 46341);
             Console.WriteLine((-2147483647 - 1) / -1);
             Console.WriteLine();
-            
+
             Console.WriteLine("For 64-bit signed integers:");
             Console.WriteLine(-(-9223372036854775807L - 1));
             Console.WriteLine(5000000000000000000L + 5000000000000000000L);
@@ -498,7 +498,7 @@ public class IntegerOverflow
             Console.WriteLine(4294967296UL * 4294967296UL);
             Console.WriteLine();
         }
-        
+
         int i = 2147483647;
         Console.WriteLine(i + 1);
         try {
@@ -507,7 +507,7 @@ public class IntegerOverflow
             Console.WriteLine("Overflow!");
         }
     }
-    
+
 }
 ```
 
@@ -553,8 +553,8 @@ A C++ program does <b>not</b> recognize a signed integer overflow and the progra
 
 {{works with | g++ | 4.7}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cstdint>
 #include <limits>
 
@@ -752,20 +752,20 @@ A small example:
 {{out}}
 
 ```txt
-prompt$ cobc -xj overflowing.cob 
+prompt$ cobc -xj overflowing.cob
 -2147483647
 32bit signed SIZE ERROR
 -2147483647
- 
+
 bit8-unsigned SIZE ERROR
 000
 you asked for it: 001
- 
+
 picture-sized SIZE ERROR
 +999
 you asked for it: +000
 really? you want to keep doing this?: +001
- 
+
 How many bytes in a C long? 8, varies by platform
 Regardless, ON SIZE ERROR will catch any invalid result
 binary-c-long SIZE ERROR
@@ -831,7 +831,7 @@ void main() @safe {
 
     import core.checkedint;
     bool overflow = false;
-    // Checked signed multiplication. 
+    // Checked signed multiplication.
     // Eventually such functions will be recognized by D compilers
     // and they will be implemented with efficient intrinsics.
     immutable r = muls(46_341, 46_341, overflow);
@@ -920,8 +920,8 @@ The Fortran standard does not specify the behaviour of program during integer ov
 
 For the 64-bit integer type a FreeBASIC program does <b>not</b> recognize a signed integer overflow and the program <b>continues with wrong results</b>.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 
 ```freebasic
@@ -930,7 +930,7 @@ For the 64-bit integer type a FreeBASIC program does <b>not</b> recognize a sign
 ' The suffixes L, LL, UL and ULL are added to the numbers to make it
 ' clear to the compiler that they are to be treated as:
 ' signed 4 byte, signed 8 byte, unsigned 4 byte and unsigned 8 byte
-' integers, respectively. 
+' integers, respectively.
 
 ' Integer types in FB are freely convertible to each other.
 ' In general if the result of a computation would otherwise overflow
@@ -966,7 +966,7 @@ Print 2147483647UL - 4294967295UL
 Print 65537UL * 65537UL
 Print
 Print "Unsigned 64-bit:"
-Print -18446744073709551615ULL  ' compiler warning : Implicit conversion 
+Print -18446744073709551615ULL  ' compiler warning : Implicit conversion
 Print 10000000000000000000ULL + 10000000000000000000ULL
 Print 9223372036854775807ULL - 18446744073709551615ULL
 Print 4294967296ULL * 4294967296ULL
@@ -1012,7 +1012,7 @@ Unsigned 64-bit:
 
 ## Frink
 
-Frink's numerical type is designed to "do the right thing" with all mathematics.  It will not overflow, and integers can be of any size.  
+Frink's numerical type is designed to "do the right thing" with all mathematics.  It will not overflow, and integers can be of any size.
 
 Frink's numerical type automatically promotes and demotes between arbitrary-size integers, arbitrary-size rational numbers, arbitrary-precision floating-point numbers, complex numbers, and arbitrary-sized intervals of real values.
 
@@ -1359,7 +1359,7 @@ _4.29497e9
 2.14749e9
    (_2147483647-1) % -1
 2.14748e9
-   
+
    -(_9223372036854775807-1)
 9.22337e18
    5000000000000000000+5000000000000000000
@@ -1370,7 +1370,7 @@ _1.84467e19
 9.22337e18
    (_9223372036854775807-1) % -1
 9.22337e18
-   
+
    _4294967295
 _4.29497e9
    3000000000 + 3000000000
@@ -1379,7 +1379,7 @@ _4.29497e9
 _2.14748e9
    65537 * 65537
 4.2951e9
-   
+
    _18446744073709551615
 _1.84467e19
    10000000000000000000 + 10000000000000000000
@@ -1405,7 +1405,7 @@ _4294967294
 2147488281
    (_2147483647-1) % -1
 2.14748e9
-   
+
    -(_9223372036854775807-1)
 9.22337e18
    5000000000000000000+5000000000000000000
@@ -1416,7 +1416,7 @@ _1.84467e19
 9.22337e18
    (_9223372036854775807-1) % -1
 9.22337e18
-   
+
    _4294967295
 _4294967295
    3000000000 + 3000000000
@@ -1425,7 +1425,7 @@ _4294967295
 _2147483648
    65537 * 65537
 4295098369
-   
+
    _18446744073709551615
 _1.84467e19
    10000000000000000000 + 10000000000000000000
@@ -1453,7 +1453,7 @@ _4294967294
 2147488281
    (_2147483647-1) % -1
 2147483648
-   
+
    -(_9223372036854775807-1)
 9223372036854775800
    5000000000000000000+5000000000000000000
@@ -1464,7 +1464,7 @@ _18446744073709552000
 9223372037000249300
    (_9223372036854775807-1) % -1
 9223372036854775800
-   
+
    _4294967295
 _4294967295
    3000000000 + 3000000000
@@ -1473,7 +1473,7 @@ _4294967295
 _2147483648
    65537 * 65537
 4295098369
-   
+
    _18446744073709551615
 _18446744073709552000
    10000000000000000000 + 10000000000000000000
@@ -1499,7 +1499,7 @@ _4294967294
 2147488281
    (_2147483647-1) % -1
 2147483648
-   
+
    -(_9223372036854775807-1)
 9223372036854775800
    5000000000000000000+5000000000000000000
@@ -1510,7 +1510,7 @@ _18446744073709552000
 9223372037000249300
    (_9223372036854775807-1) % -1
 9223372036854775800
-   
+
    _4294967295
 _4294967295
    3000000000 + 3000000000
@@ -1519,7 +1519,7 @@ _4294967295
 _2147483648
    65537 * 65537
 4295098369
-   
+
    _18446744073709551615
 _18446744073709552000
    10000000000000000000 + 10000000000000000000
@@ -1715,8 +1715,8 @@ fun main(args: Array<String>) {
 Lingo uses 32-bit signed integers.
 A Lingo program does <b>not</b> recognize a signed integer overflow and the program <b>continues with wrong results</b>.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 
 ```lingo
@@ -1732,7 +1732,7 @@ put -2147483647 - 2147483647
 put 46341 * 46341
 -- -2147479015
 
-put (-2147483647-1) / -1 
+put (-2147483647-1) / -1
 --> crashes Director (jeez!)
 ```
 
@@ -1788,9 +1788,9 @@ Print Eval(DataMem, 0!b)=Eval(DataMem, 0!a2)*0x10000+Eval(DataMem, 0!a1)
 
 ## Mathematica
 
-Mathematica uses arbitrary number types. There is a $MaxNumber which is approximately 1.60521676193366172702774105306375828321e1355718576299609, but extensive research has shown it to allow numbers up to 
+Mathematica uses arbitrary number types. There is a $MaxNumber which is approximately 1.60521676193366172702774105306375828321e1355718576299609, but extensive research has shown it to allow numbers up to
 ```Mathematica
-$MaxNumber + 
+$MaxNumber +
  10^-15.954589770191003298111788092733772206160314 $MaxNumber
 ```
 I haven't bothered testing it to any more precision. If you try to use any number above that, it returns an Overflow[].
@@ -1976,8 +1976,8 @@ Of course PARI can use the same techniques as [[#C|C]].
 Using Perl 5.18 on 64-bit Linux with use integer:
 The Perl 5 program below does <b>not</b> recognize a signed integer overflow and the program <b>continues with wrong results</b>.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 
 ```perl
@@ -2039,7 +2039,7 @@ my int64 ($a, $b, $c) = 9223372036854775807, 5000000000000000000, 3037000500;
 Phix has both 32 and 64 bit implementations. Integers are signed and limited to 31 (or 63) bits, ie
 -1,073,741,824 to +1,073,741,823 (-#40000000 to #3FFFFFFF) on 32 bit, whereas on
 64-bit it is -4,611,686,018,427,387,904 to +4,611,686,018,427,387,903 (-#4000000000000000 to #3FFFFFFFFFFFFFFF).
-Integer overflow is handled by automatic promotion to atom (an IEEE float, 64/80 bit for the 32/64 bit implementations respectively), 
+Integer overflow is handled by automatic promotion to atom (an IEEE float, 64/80 bit for the 32/64 bit implementations respectively),
 which triggers a run-time type check if stored in a variable declared as integer, eg:
 
 ```Phix>integer i = 1000000000 + 1000000000</lang
@@ -2163,13 +2163,13 @@ Type "copyright", "credits" or "license()" for more information.
 	print('Expression: %r evaluates to %s of type %s'
 	      % (calc.strip(), ans, type(ans)))
 
-	
+
 Expression: '-(-2147483647-1)' evaluates to 2147483648 of type <type 'long'>
 Expression: '2000000000 + 2000000000' evaluates to 4000000000 of type <type 'long'>
 Expression: '-2147483647 - 2147483647' evaluates to -4294967294 of type <type 'long'>
 Expression: '46341 * 46341' evaluates to 2147488281 of type <type 'long'>
 Expression: '(-2147483647-1) / -1' evaluates to 2147483648 of type <type 'long'>
->>> 
+>>>
 ```
 
 
@@ -2190,13 +2190,13 @@ Type "copyright", "credits" or "license()" for more information.
 	print('Expression: %r evaluates to %s of type %s'
 	      % (calc.strip(), ans, type(ans)))
 
-	
+
 Expression: '-(-2147483647-1)' evaluates to 2147483648 of type <class 'int'>
 Expression: '2000000000 + 2000000000' evaluates to 4000000000 of type <class 'int'>
 Expression: '-2147483647 - 2147483647' evaluates to -4294967294 of type <class 'int'>
 Expression: '46341 * 46341' evaluates to 2147488281 of type <class 'int'>
 Expression: '(-2147483647-1) / -1' evaluates to 2147483648.0 of type <class 'float'>
->>> 
+>>>
 ```
 
 
@@ -2205,7 +2205,7 @@ Note: In Python 3.X the division operator used between two ints returns a floati
 
 ## Racket
 
-The 32-bit version of Racket stores internally the fixnum <code>n</code> as the signed integer <code>2n+1</code>, to distinguish it from the pointers to objects that are stored as even integers. This is invisible from inside Racket because in the usual operations when the result is not a fixnum, it's promoted to a bignum. 
+The 32-bit version of Racket stores internally the fixnum <code>n</code> as the signed integer <code>2n+1</code>, to distinguish it from the pointers to objects that are stored as even integers. This is invisible from inside Racket because in the usual operations when the result is not a fixnum, it's promoted to a bignum.
 
 The effect of this representation is that the fixnums have only 31 bits available, and one of them is used for the sign. So all the examples have to be reduced to the half in order to fit into 31-bit signed values.
 
@@ -2248,9 +2248,9 @@ When the value exceeds   '''9'''   decimal digits   (or whatever was specified v
 statement), REXX will quietly automatically change to   ''exponential format''   and
 round the given number, if necessary.
 
-For newer versions of REXX, the   '''signal on lostDigits'''   statement can be used to accomplish the same results   
+For newer versions of REXX, the   '''signal on lostDigits'''   statement can be used to accomplish the same results
 
-(for detecting a loss of significance [digits]).  
+(for detecting a loss of significance [digits]).
 
 ```rexx
 /*REXX program  displays values  when  integers  have an   overflow  or  underflow.     */
@@ -2271,7 +2271,7 @@ showResult: procedure;  parse arg x,,_;  x=x/1                      /*normalize 
             return x                                                /*return the value. */
 ```
 
-'''output'''   using the default input(s): 
+'''output'''   using the default input(s):
 
 
 Output note:   (as it happens, all of the results below are numerically correct)
@@ -2294,17 +2294,17 @@ Output note:   (as it happens, all of the results below are numerically correct)
 
 Ruby has unlimited precision integers.
 
-The Integer class  is the basis for two concrete classes that hold whole numbers, Bignum and Fixnum. Bignum objects hold integers outside the range of Fixnum. 
-Bignum objects are created automatically when integer calculations would otherwise overflow a Fixnum. 
+The Integer class  is the basis for two concrete classes that hold whole numbers, Bignum and Fixnum. Bignum objects hold integers outside the range of Fixnum.
+Bignum objects are created automatically when integer calculations would otherwise overflow a Fixnum.
 When a calculation involving Bignum objects returns a result that will fit in a Fixnum, the result is automatically converted.
 
-```ruby>2.1.1 :001 
+```ruby>2.1.1 :001
  a = 2**62 -1
- => 4611686018427387903 
+ => 4611686018427387903
 2.1.1 :002 > a.class
- => Fixnum 
+ => Fixnum
 2.1.1 :003 > (b = a + 1).class
- => Bignum 
+ => Bignum
 2.1.1 :004 > (b-1).class
  => Fixnum
 
@@ -2619,11 +2619,11 @@ Tcl 8.4 used a mix of 32-bit and 64-bit numbers on 32-bit platforms and 64-bit n
 ## VBScript
 
 In VBScript, if we declare a variable, there is no type. "As Integer" or "As Long" cannot be specified. Integer is a flexible type, internally it can be Integer (Fixed 16-bits), Long (Fixed 32-bits) or Double (Floating point).
-So, in VBScript is there an integer overflow? Answer: No and Yes. 
+So, in VBScript is there an integer overflow? Answer: No and Yes.
 
 - No, because 2147483647+1 is equal to 2147483648.
 
-- Yes, because typename(2147483647)="Long" and typename(2147483648)="Double", so we have switched from fixed binary integer to double floating point. But thanks to mantissa precision there is no harm. The integer overflow is when you reach 10^15, because you are now out of the integer set : (1E+15)+1=1E+15 !?. 
+- Yes, because typename(2147483647)="Long" and typename(2147483648)="Double", so we have switched from fixed binary integer to double floating point. But thanks to mantissa precision there is no harm. The integer overflow is when you reach 10^15, because you are now out of the integer set : (1E+15)+1=1E+15 !?.
 
 A good way to test integer overflow is to use the vartype() or typename() builtin functions.
 
@@ -2633,7 +2633,7 @@ i=(-2147483647-1)/-1
 wscript.echo i
 i0=32767 	    '=32767      Integer (Fixed)  type=2
 i1=2147483647	    '=2147483647 Long    (Fixed)  type=3
-i2=-(-2147483647-1) '=2147483648 Double  (Float)  type=5  
+i2=-(-2147483647-1) '=2147483648 Double  (Float)  type=5
 wscript.echo Cstr(i0) & " : " & typename(i0) & " , " & vartype(i0) & vbcrlf _
            & Cstr(i1) & " : " & typename(i1) & " , " & vartype(i1) & vbcrlf _
            & Cstr(i2) & " : " & typename(i2) & " , " & vartype(i2)
@@ -2679,14 +2679,14 @@ Overflow is well handled, except for a strange bug in the computation of f the c
     i = (-2147483647 - 1) / -1       'Run-time error '6' : Overflow
 
 ```
- 
+
 '''Error handling - method 1'''
 
 ```vb
     i=0
     On Error Resume Next
     i = 2147483647 + 1
-    Debug.Print i                    'i=0 
+    Debug.Print i                    'i=0
 
 ```
 
@@ -2715,7 +2715,7 @@ overflow:
 
 ## Visual Basic .NET
 
-All the examples for the task are in error before any compilation or execution! 
+All the examples for the task are in error before any compilation or execution!
 The visual studio editor spots the overflow errors with the message:
 
 ```txt
@@ -2738,14 +2738,14 @@ To have an execution time overflow we must have something else than constant exp
 
 ```vbnet
         i = -(-2147483647 - 1)
-        i = 0 - (-2147483647 - 1) 
+        i = 0 - (-2147483647 - 1)
         i = -(-2147483647L - 1)
         i = -(-2147483647 - 2)
-        i = 2147483647 + 1 
+        i = 2147483647 + 1
         i = 2000000000 + 2000000000
         i = -2147483647 - 2147483647
-        i = 46341 * 46341 
-        i = (-2147483647 - 1) / -1 
+        i = 46341 * 46341
+        i = (-2147483647 - 1) / -1
 ```
 
   Execution error:
@@ -2754,8 +2754,8 @@ To have an execution time overflow we must have something else than constant exp
   for:
 
 ```vbnet
-        i = -Int(-2147483647 - 1)        
-        i = -2147483647: i = -(i - 1) 
+        i = -Int(-2147483647 - 1)
+        i = -2147483647: i = -(i - 1)
 ```
 
 '''32-bit unsigned integer'''
@@ -2774,9 +2774,9 @@ In Visual Basic .Net there is no specific UInteger constants as in C.
         i = -4294967295
         i = 3000000000 + 3000000000
         i = 2147483647 - 4294967295
-        i = 65537 * 65537  
+        i = 65537 * 65537
 ```
- 
+
   Execution error:
     'An unhandled exception of type 'System.OverflowException' occurred
     'Additional information: Arithmetic operation resulted in an overflow.
@@ -2795,13 +2795,13 @@ In Visual Basic .Net there is no specific UInteger constants as in C.
   for:
 
 ```vbnet
-        i = -(-9223372036854775807 - 1)                 
+        i = -(-9223372036854775807 - 1)
         i = 5000000000000000000 + 5000000000000000000
         i = -9223372036854775807 - 9223372036854775807
         i = 3037000500 * 3037000500
         i = (-9223372036854775807 - 1) / -1
 ```
- 
+
   Execution error:
     'An unhandled exception of type 'System.OverflowException' occurred
     'Additional information: Arithmetic operation resulted in an overflow.
@@ -2810,11 +2810,11 @@ In Visual Basic .Net there is no specific UInteger constants as in C.
 ```vbnet
         i = -9223372036854775807 : i = -(i - 1)
 ```
- 
+
 
 '''64-bit unsigned integer'''
 
-In Visual Basic .Net there is no specific ULong constants as in C. 
+In Visual Basic .Net there is no specific ULong constants as in C.
 And 'Long' constants are not good enough.
 
 ```vbnet
@@ -2830,7 +2830,7 @@ And 'Long' constants are not good enough.
         i = 10000000000000000000 + 10000000000000000000
         i = 9223372036854775807 - 18446744073709551615
 ```
-  
+
   Pre-compilation error:
     'Error: Constant expression not representable in type 'Long'
   for:
@@ -2838,7 +2838,7 @@ And 'Long' constants are not good enough.
 ```vbnet
         i = 4294967296 * 4294967296
 ```
-  
+
   Execution error:
     'An unhandled exception of type 'System.OverflowException' occurred
     'Additional information: Arithmetic operation resulted in an overflow.
@@ -2847,7 +2847,7 @@ And 'Long' constants are not good enough.
 ```vbnet
         i = 4294967296 : i = i * i
 ```
-  
+
 
 '''how the exception is catched'''
 

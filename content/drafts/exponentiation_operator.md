@@ -10,19 +10,19 @@ categories = []
 tags = []
 +++
 
-{{task|Arithmetic operations}} 
+{{task|Arithmetic operations}}
 [[Category:Arithmetic]]
 
-Most programming languages have a built-in implementation of exponentiation. 
- 
+Most programming languages have a built-in implementation of exponentiation.
+
 
 ;Task:
 Re-implement integer exponentiation for both   <big>int<sup>int</sup></big>   and   <big>float<sup>int</sup></big>   as both a procedure,   and an operator (if your language supports operator definition).
 
-If the language supports operator (or procedure) overloading, then an overloaded form should be provided for both   <big>int<sup>int</sup></big>   and   <big>float<sup>int</sup></big>   variants. 
+If the language supports operator (or procedure) overloading, then an overloaded form should be provided for both   <big>int<sup>int</sup></big>   and   <big>float<sup>int</sup></big>   variants.
 
 
- 
+
 
 
 ## Ada
@@ -214,7 +214,7 @@ One Gibi-unit is: 2.0**30.0=1073741824.0 - (cost: depends on precision)
 
 
 
-###  Recursive operator calls 
+###  Recursive operator calls
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 
@@ -225,7 +225,7 @@ One Gibi-unit is: 2.0**30.0=1073741824.0 - (cost: depends on precision)
 main:(
   INT two=2, thirty=30; # test constants #
   PROC VOID undefined;
- 
+
 # First implement exponentiation using a rather slow but sure FOR loop #
   PROC int pow = (INT base, exponent)INT: ( # PROC cannot be over loaded #
     IF exponent<0 THEN undefined FI;
@@ -233,10 +233,10 @@ main:(
     FROM 2 TO exponent DO out*:=base OD;
     out
   );
- 
+
   printf(($" One Gibi-unit is: int pow("g(0)","g(0)")="g(0)" - (cost: "g(0)
            " INT multiplications)"l$,two, thirty, int pow(two,thirty),thirty-1));
- 
+
 # implement exponentiation using a faster binary technique and WHILE LOOP #
   OP ** = (INT base, exponent)INT:
     IF   base = 0 THEN 0 ELIF base = 1 THEN 1
@@ -249,7 +249,7 @@ main:(
 
   printf(($" One Gibi-unit is: "g(0)"**"g(0)"="g(0)" - (cost: "g(0)
            " INT multiplications)"l$,two, thirty, two ** thirty,8));
- 
+
   OP ** = (REAL in base, INT in exponent)REAL: ( # ** INT Operator can be overloaded #
     REAL base := ( in exponent<0 | 1/in base | in base);
     INT exponent := ABS in exponent;
@@ -261,14 +261,14 @@ main:(
       (base*base) ** (exponent OVER 2)
     FI
   );
- 
+
   printf(($" One Gibi-unit is: "g(0,1)"**"g(0)"="g(0,1)" - (cost: "g(0)
            " REAL multiplications)"l$, 2.0, thirty, 2.0 ** thirty,8));
- 
+
   OP ** = (REAL base, REAL exponent)REAL: ( # ** REAL Operator can be overloaded #
     exp(ln(base)*exponent)
   );
- 
+
   printf(($" One Gibi-unit is: "g(0,1)"**"g(0,1)"="g(0,1)" - (cost: "
            "depends on precision)"l$, 2.0, 30.0, 2.0 ** 30.0))
 )
@@ -443,7 +443,7 @@ END FUNCTION
       PRINT "11^5 = " ; FNipow(11, 5)
       PRINT "PI^3 = " ; FNfpow(PI, 3)
       END
-      
+
       DEF FNipow(A%, B%)
       LOCAL I%, P%
       P% = 1
@@ -453,7 +453,7 @@ END FUNCTION
         B% = B% << 1
       NEXT
       = P%
-      
+
       DEF FNfpow(A, B%)
       LOCAL I%, P
       P = 1
@@ -524,8 +524,8 @@ p 2 ^ 5   #Prints 32
 Two versions are given - one for integer  bases, the other for floating point. The
 integer version returns 0 when the abs(base) is != 1 and the exponent is negative.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <assert.h>
 
 int ipow(int base, int exp)
@@ -536,7 +536,7 @@ int ipow(int base, int exp)
       assert (base != 0);  /* divide by zero */
       return (base*base != 1)? 0: (exp&1)? base : 1;
    }
-       
+
    while(exp > 0 )
    {
       if (exp & 1) v *= pow;
@@ -594,7 +594,7 @@ int main()
 
 
 =={{header|C sharp|C#}}==
-In C# it is possible to [http://msdn.microsoft.com/en-us/library/s53ehcz3%28VS.71%29.aspx overload operators] (+, -, *, etc..), but to do so requires the overload to implement at least one argument as the calling type. 
+In C# it is possible to [http://msdn.microsoft.com/en-us/library/s53ehcz3%28VS.71%29.aspx overload operators] (+, -, *, etc..), but to do so requires the overload to implement at least one argument as the calling type.
 
 What this means, is that if we have the class, A, to do an overload of + - we must set one of the arguments as the type "A".
 This is because in C#, overloads are defined on a class basis - so when doing an operator, .Net looks at the class to find the operators. In this manner, one of the arguments must be of the class, else .Net would be looking there in vain.
@@ -614,7 +614,7 @@ static void Main(string[] args)
 	Console.ReadLine();
 }
 
-static double Expon(int Val, int Pow) 
+static double Expon(int Val, int Pow)
 {
 	return Math.Pow(Val, Pow);
 }
@@ -648,9 +648,11 @@ The third option somewhat resembles the integer division rules, and has the nice
 * whether the result of <tt>a%b</tt> is positive or negative if <tt>a</tt> is negative, and in which direction the corresponding division is rounded (however, it ''is'' guaranteed that <tt>(a/b)*b + a%b == a</tt>)
 The code below tries to avoid those platform dependencies. Note that bitwise operations wouldn't help here either, because the representation of negative numbers can vary as well.
 
-```cpp>template<typename Number
 
- Number power(Number base, int exponent)
+```cpp
+template<typename Number>
+
+Number power(Number base, int exponent)
 {
   int zerodir;
   Number factor;
@@ -721,11 +723,11 @@ Common Lisp has a few forms of iteration. One of the more general is the do loop
 
 <tt>do</tt> takes three forms. The first is a list of variable initializers and incrementers. In this case, <tt>x</tt>, the eventual return value, is initialized to 1, and every iteration of the <tt>do</tt> loop replaces the value of <tt>x</tt> with ''x * a''. Similarly, <tt>y</tt> is initialized to 0 and is replaced with ''y + 1''. The second is a list of conditions and return values. In this case, when y = b, the loop stops, and the current value of <tt>x</tt> is returned. Common Lisp has no explicit return keyword, so <tt>x</tt> ends up being the return value for the function. The last form is the body of the loop, and usually consists of some action to perform (that has some side-effect). In this case, all the work is being done by the first and second forms, so there are no extra actions.
 
-Of course, Lisp programmers often prefer recursive solutions. 
+Of course, Lisp programmers often prefer recursive solutions.
 
 ```lisp
 (defun my-expt-rec (a b)
-  (cond 
+  (cond
     ((= b 0) 1)
     (t (* a (my-expt-rec a (- b 1))))))
 ```
@@ -842,11 +844,11 @@ def power(base, exponent :int) {
 ;; this exponentiation function handles integer, rational or float x.
 ;; n is a positive or negative integer.
 
-(define (** x n) (cond 
-    ((zero? n) 1) 
+(define (** x n) (cond
+    ((zero? n) 1)
     ((< n 0) (/ (** x (- n)))) ;; x**-n = 1 / x**n
-    ((= n 1) x) 
-    ((= n 0) 1) 
+    ((= n 1) x)
+    ((= n 0) 1)
     ((odd? n) (* x (** x (1- n)))) ;; x**(2p+1) = x * x**2p
     (else (let ((m (** x (/ n 2)))) (* m m))))) ;; x**2p = (x**p) * (x**p)
 
@@ -862,7 +864,7 @@ def power(base, exponent :int) {
 (** 2/3 7) → 128/2187
 
 (lib 'bigint)
-(** 666 42) → 
+(** 666 42) →
 38540524895511613165266748863173814985473295063157418576769816295283207864908351682948692085553606681763707358759878656
 
 
@@ -992,10 +994,10 @@ defmodule My do
     exp_float(x,y)
   end
   def exp(x,y), do: (IO.write("       "); :math.pow(x,y))
-  
+
   defp exp_int(_,0), do: 1
   defp exp_int(x,y), do: Enum.reduce(1..y, 1, fn _,acc -> x * acc end)
-  
+
   defp exp_float(_,y) when y==0, do: 1.0
   defp exp_float(x,y) when y<0, do: 1/exp_float(x,-y)
   defp exp_float(x,y), do: Enum.reduce(1..y, 1, fn _,acc -> x * acc end)
@@ -1130,13 +1132,13 @@ Simple, unoptimized implementation which accepts a positive or negative exponent
     dup 0 < [ abs pow recip ]
     [ [ 1 ] 2dip swap [ * ] curry times ] if ;
 ```
- 
+
 
 Here is a recursive implementation which splits the exponent in two:
 
 ```factor
 : pow ( f n -- f' )
-    {  
+    {
         { [ dup 0 < ] [ abs pow recip ] }
         { [ dup 0 = ] [ 2drop 1 ] }
         [ [ 2 mod 1 = swap 1 ? ] [ [ sq ] [ 2 /i ] bi* pow ] 2bi * ]
@@ -1167,7 +1169,7 @@ A non-recursive version of (pow) can be written as:
 
 ```factor
 : (pow) ( f n -- f' )
-    [ 1 ] 2dip     
+    [ 1 ] 2dip
     [ dup 1 = ] [
         dup even? [ [ sq ] [ 2 /i ] bi* ] [ [ [ * ] keep ] dip 1 - ] if
     ] until
@@ -1237,13 +1239,13 @@ CONTAINS
     REAL, INTENT(IN) :: base
     INTEGER, INTENT(IN) :: exponent
     INTEGER :: i
-  
+
     Realexp = 1.0
     IF (exponent < 0) THEN
        DO i = exponent, -1
           Realexp = Realexp / base
        END DO
-    ELSE  
+    ELSE
        DO i = 1, exponent
           Realexp = Realexp * base
        END DO
@@ -1293,12 +1295,12 @@ End Function
 ' check results of these functions using FB's built in '^' operator
 Print "Pow(2, 2)       = "; Pow(2, 2)
 Print "Pow(2.5, 2)     = "; Pow(2.5, 2)
-Print "Pow(2, -3)      = "; Pow(2, -3) 
+Print "Pow(2, -3)      = "; Pow(2, -3)
 Print "Pow(1.78, 3)    = "; Pow(1.78, 3)
 Print
 Print "2 ^ 2           = "; 2 ^ 2
 Print "2.5 ^ 2         = "; 2.5 ^ 2
-Print "2 ^ -3          = "; 2 ^ -3 
+Print "2 ^ -3          = "; 2 ^ -3
 Print "1.78 ^ 3        = "; 1.78 ^ 3
 Print
 Print "Press any key to quit"
@@ -1514,7 +1516,7 @@ FUNCTION pow(x, n)
    DO i = 1, n
       pow = pow * x
    ENDDO
-END 
+END
 ```
 
 
@@ -1535,7 +1537,7 @@ base := numeric(base)            | runerror(102,base)
 power := power = integer(power)  | runerr(101,power)
 
 if power = 0 then return 1
-else op := if power < 1 then 
+else op := if power < 1 then
               (base := real(base)) & "/"   # force real base
               else "*"
 
@@ -1556,11 +1558,11 @@ So we have any number of options.  Here's the simplest, equivalent to the <code>
 
 
 ```j
-   exp  =:  */@:#~ 
-   
+   exp  =:  */@:#~
+
    10 exp 3
 1000
-   
+
    10 exp 0
 1
 ```
@@ -1571,7 +1573,7 @@ We can make this more general by allowing the exponent to be any integer (includ
 
 ```j
    exp  =:  *@:] %: */@:(#~|)
-   
+
    10 exp _3
 0.001
 ```
@@ -1597,13 +1599,13 @@ J's calculus of functions permits us to define exponentiation in its full genera
 
 ```j
  exp  =:  ^.^:_1
- 
- 81 exp 0.5   
+
+ 81 exp 0.5
 9
 ```
 
 
-Note that the definition above does '''not''' use the primitive exponentiation function <code>^</code>  .  The carets in it represent different (but related) things .  The function is composed of three parts:  <code>^.  ^:  _1</code>  .  The first part, <code>^.</code>, is the primitive logarithm operator (e.g. <code>3 = 10^.1000</code>)  .  
+Note that the definition above does '''not''' use the primitive exponentiation function <code>^</code>  .  The carets in it represent different (but related) things .  The function is composed of three parts:  <code>^.  ^:  _1</code>  .  The first part, <code>^.</code>, is the primitive logarithm operator (e.g. <code>3 = 10^.1000</code>)  .
 
 The second part,  <code>^:</code>  , is interesting:  it is a "meta operator". It takes two arguments:  a function <code>f</code> on its left, and a number <code>N</code> on its right.  It produces a new function, which, when given an argument, applies <code>f</code> to that argument <code>N</code> times.  For example, if we had a function <code>increment</code>, then <code>increment^:3 X</code> would increment <code>X</code> three times, so the result would be <code>X+3</code>.
 
@@ -1614,17 +1616,17 @@ Similarly, we can define exponentiation as the reverse of the inverse of root.  
 
 ```j
  exp  =:  %:^:_1~
- 
+
  81 exp 0.5
 9
 ```
 
 
-Compare this with the previous definition:  it is the same, except that  <code>%:</code>  , ''root'', has been substituted for  <code>^.</code>  , ''logarithm'', and the arguments have been reversed (or ''reflected'') with <code>~</code>.  
+Compare this with the previous definition:  it is the same, except that  <code>%:</code>  , ''root'', has been substituted for  <code>^.</code>  , ''logarithm'', and the arguments have been reversed (or ''reflected'') with <code>~</code>.
 
 That is, J is telling us that '''power is the same as the reflex of the inverse of root''', exactly as we'd expect.
 
-One last note:  we said these definitions are the same as <code>^</code> in its full generality.  What is meant by that?  Well, in the context of this puzzle, it means both the base and exponent may be any real number.  But J goes further than that: it also permits '''complex numbers'''. 
+One last note:  we said these definitions are the same as <code>^</code> in its full generality.  What is meant by that?  Well, in the context of this puzzle, it means both the base and exponent may be any real number.  But J goes further than that: it also permits '''complex numbers'''.
 
 Let's use Euler's famous formula, ''e<sup>pi*i</sup> = -1'' as an example:
 
@@ -1633,7 +1635,7 @@ Let's use Euler's famous formula, ''e<sup>pi*i</sup> = -1'' as an example:
    pi =: 3.14159265358979323846
    e  =: 2.71828182845904523536
    i  =: 2 %: _1                  NB.  Square root of -1
-   
+
    e^(pi*i)
 _1
 ```
@@ -1644,7 +1646,7 @@ And, as stated, our redefinition is equivalent:
 
 ```j
    exp =: %:^:_1~
-   
+
    e exp (pi*i)
 _1
 ```
@@ -1689,9 +1691,9 @@ public class Exp{
 
 ```javascript
 function pow(base, exp) {
-    if (exp != Math.floor(exp)) 
+    if (exp != Math.floor(exp))
         throw "exponent must be an integer";
-    if (exp < 0) 
+    if (exp < 0)
         return 1 / pow(base, -exp);
     var ans = 1;
     while (exp > 0) {
@@ -1786,10 +1788,10 @@ Kotlin does not have a dedicated exponentiation operator (we would normally use 
 ```scala
 // version 1.0.6
 
-infix fun Int.ipow(exp: Int): Int = 
+infix fun Int.ipow(exp: Int): Int =
     when {
         this ==  1 -> 1
-        this == -1 -> if (exp % 2 == 0) 1 else -1 
+        this == -1 -> if (exp % 2 == 0) 1 else -1
         exp <  0   -> throw IllegalArgumentException("invalid exponent")
         exp == 0   -> 1
         else       -> {
@@ -1807,7 +1809,7 @@ infix fun Int.ipow(exp: Int): Int =
 
 infix fun Double.dpow(exp: Int): Double {
     var ans = 1.0
-    var e   = exp 
+    var e   = exp
     var base = if (e < 0) 1.0 / this else this
     if (e < 0) e = -e
     while (e > 0) {
@@ -1886,7 +1888,7 @@ fun main(args: Array<String>) {
 Lingo doesn't support user-defined operators.
 
 ```lingo
--- As for built-in power() function: 
+-- As for built-in power() function:
 -- base can be either integer or float; returns float.
 on pow (base, exp)
   if exp=0 then return 1.0
@@ -1934,7 +1936,7 @@ function number.pow( a, b )
         for i = b, -1 do
             ret = ret / a.val
         end
-    end    
+    end
     return ret
 end
 
@@ -1944,8 +1946,8 @@ function number.New( v )
     setmetatable( num, mt )
     return num
 end
-             
-x = number.New( 5 )    
+
+x = number.New( 5 )
 print( x^2 )                   --> 25
 print( number.pow( x, -4 ) )   --> 0.016
 ```
@@ -1976,7 +1978,7 @@ Module Exponentiation {
 	\\ a variable can be any type except  a string (no $ in name)
 	\\ variable b is long type.
 	\\ by default we pass by value arguments to a function
-	\\ to pass by reference we have to use & before name, 
+	\\ to pass by reference we have to use & before name,
 	\\ in the signature and in the call
 	function pow(a, b as long) {
 		p=a-a  ' make p same type as a
@@ -1998,8 +2000,8 @@ Module Exponentiation {
 	\\ send to clipboard
 	clipboard exp$
 	\\ send  monospaced type text to console using cr char to change lines
-	Print #-2, exp$ 
-	Rem Report exp$  ' send to console using proportional spacing and justification  
+	Print #-2, exp$
+	Rem Report exp$  ' send to console using proportional spacing and justification
 }
 Exponentiation
 
@@ -2233,7 +2235,7 @@ module Expon
         }
         result
     }
-    
+
     Expon(val : double, pow : int) : double     // demonstrates shift and square method
     {
         mutable neg = false;
@@ -2241,7 +2243,7 @@ module Expon
         when (pow < 0) {neg = true; p = -pow};
         mutable v = val;
         mutable result = 1d;
-        
+
         while (p > 0) {
             when (p & 1 == 1) result *= v;
             v *= v;
@@ -2249,14 +2251,14 @@ module Expon
         }
         if (neg) 1d/result else result
     }
-    
+
     Main() : void
     {
         def eight = 2^3;
         // def oops = 2^1.5; // compilation error as operator is defined for integer exponentiation
         def four = Expon(2, 2);
         def four_d = Expon(2.0, 2);
-        
+
         WriteLine($"$eight, $four, $four_d");
     }
 }
@@ -2305,18 +2307,18 @@ class Exp {
     Pow(2.0,30)->PrintLine();
     Pow(2.0,-2)->PrintLine();
    }
-  
+
   function : native : Pow(base : Float, exp : Int) ~ Float {
     if(exp < 0) {
       return 1 / base->Power(exp * -1.0);
     };
-    
+
     ans := 1.0;
     while(exp > 0) {
       ans *= base;
       exp -= 1;
     };
-    
+
     return ans;
   }
 }
@@ -2378,8 +2380,8 @@ This function works either for int or floats :
 
 
 ```Oforth
-: powint(r, n) 
-| i | 
+: powint(r, n)
+| i |
    1 n abs loop: i [ r * ]
    n isNegative ifTrue: [ inv ] ;
 
@@ -2461,11 +2463,11 @@ function realexp (base: real; exponent: integer): real;
     if (exponent < 0) then
       for i := exponent to -1 do
         realexp := realexp / base
-    else 
+    else
       for i := 1 to exponent do
         realexp := realexp * base;
   end;
-  
+
 begin
   writeln('2^30: ', intexp(2, 30));
   writeln('2.0^30: ', realexp(2.0, 30));
@@ -2537,7 +2539,7 @@ Output is as before.
 
 
 ```Perl
-#!/usr/bin/perl -w 
+#!/usr/bin/perl -w
 use strict ;
 
 sub expon {
@@ -2731,7 +2733,7 @@ function pow($a, [int]$b) {
 
 The function works for both integers and floating-point values as first argument.
 
-PowerShell does not support operator overloading directly 
+PowerShell does not support operator overloading directly
 (and there wouldn't be an exponentiation operator to overload).
 
 {{out}}
@@ -2745,7 +2747,7 @@ PS> pow (-1.35) 3
 −2,460375
 ```
 
-The negative first argument needs to be put in parentheses because it would otherwise be passed as string. 
+The negative first argument needs to be put in parentheses because it would otherwise be passed as string.
 This can be circumvented by declaring the first argument to the function as <code>double</code>, but then the return type would be always double while currently <code>pow 2 3</code> returns an <code>int</code>.
 
 
@@ -2768,34 +2770,34 @@ Procedure powI(base, exponent)
   Next
   ProcedureReturn result
 EndProcedure
-        
+
 Procedure.f powF(base.f, exponent)
   Protected i, magExponent = Abs(exponent), result.d
   If base <> 0
     result = 1.0
-    If exponent <> 0 
+    If exponent <> 0
       For i = 1 To magExponent
         result * base
       Next
-      If exponent < 0 
+      If exponent < 0
         result = 1.0 / result
       EndIf
-    EndIf 
+    EndIf
   EndIf
   ProcedureReturn result
 EndProcedure
 
 If OpenConsole()
   Define x, a.f, exp
-  
+
   x = Random(10) - 5
   a = Random(10000) / 10000 * 10
   For exp = -3 To 3
     PrintN(Str(x) + " ^ " + Str(exp) + " = " + Str(powI(x, exp)))
     PrintN(StrF(a) + " ^ " + Str(exp) + " = " + StrF(powF(a, exp)))
     PrintN("--------------")
-  Next 
- 
+  Next
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -2836,7 +2838,7 @@ EndIf
 {{works with|SWI-Prolog|6}}
 
 
-###  Declaring an Operator as an Arithmetic Function 
+###  Declaring an Operator as an Arithmetic Function
 
 
 In Prolog, we define ''predicates'' rather than ''functions''. Still, functions and predicates are related: going one way, we can think of an n-place predicate as a function from its arguments to a member of the set <code>{true, false}</code>; going the other way, we can think of functions as predicates with a hidden ultimate argument, called a "return value". Following the latter approach, Prolog sometimes uses macro expansion to provide functional syntax by
@@ -2874,14 +2876,14 @@ This solution employs the higher-order predicate <code>foldl/4</code> from the s
     ; Exp > 0   ->  length(Powers, Exp),                         % If exponent is positive, then
                     foldl( exp_folder(Base), Powers, 1, Power )  %    Powers is a list of free variables with length Exp
                                                                  %    and Power is Powers folded with exp_folder/4
-             
+
     ; Power = 1                                                  % otherwise Exp must be 0, so
     ).
 
 %% exp_folder/4
 %
 %       True when Power is the product of Base and Powers.
-%       
+%
 %       This predicate is designed to work with foldl and a list of free variables.
 %       It passes the result of each evaluation to the next application through its
 %       fourth argument, instantiating the elements of Powers to each successive Power of the Base.
@@ -2910,10 +2912,10 @@ X = 15.625.
 
 
 
-###  Recursive Predicate 
+###  Recursive Predicate
 
 
-An implementation of exponentiation using recursion and no control predicates. 
+An implementation of exponentiation using recursion and no control predicates.
 
 
 ```prolog
@@ -2965,10 +2967,10 @@ print num(2.3) ** 8
 
 ```r
 # Method
-pow <- function(x, y) 
+pow <- function(x, y)
 {
    x <- as.numeric(x)
-   y <- as.integer(y)   
+   y <- as.integer(y)
    prod(rep(x, y))
 }
 #Operator
@@ -3033,11 +3035,11 @@ drop drop ;
 
 ## REXX
 
-The   '''iPow'''   function doesn't care what kind of number is to be raised to a power, 
+The   '''iPow'''   function doesn't care what kind of number is to be raised to a power,
 
 it can be an integer or floating point number.
 
-Extra error checking was added to verify that the invocation is syntactically correct. 
+Extra error checking was added to verify that the invocation is syntactically correct.
 
 ```rexx
 /*REXX program  computes and displays  various   (integer)   exponentiations.           */
@@ -3132,7 +3134,7 @@ func ipow a, b
          b = b << 1
      next
      return p2
- 
+
 func fpow a, b
      p = 1
      for i = 1 to 32
@@ -3272,7 +3274,7 @@ extern crate num;
 use num::traits::One;
 use std::ops::Mul;
 
-fn pow<T>(mut base: T, mut exp: usize) -> T 
+fn pow<T>(mut base: T, mut exp: usize) -> T
     where T: Clone + One + Mul<T, Output=T>
 {
     if exp == 0 { return T::one() }
@@ -3307,7 +3309,7 @@ To use it, one has to import the implicit from the appropriate object. ExponentI
 ```scala
 object Exponentiation {
   import scala.annotation.tailrec
-  
+
   @tailrec def powI[N](n: N, exponent: Int)(implicit num: Integral[N]): N = {
     import num._
     exponent match {
@@ -3316,7 +3318,7 @@ object Exponentiation {
       case _ => powI(n, (exponent - 1)) * n
     }
   }
-  
+
   @tailrec def powF[N](n: N, exponent: Int)(implicit num: Fractional[N]): N = {
     import num._
     exponent match {
@@ -3326,7 +3328,7 @@ object Exponentiation {
       case _ => powF(n, (exponent - 1)) * n
     }
   }
-  
+
   class ExponentI[N : Integral](n: N) {
     def \u2191(exponent: Int): N = powI(n, exponent)
   }
@@ -3338,11 +3340,11 @@ object Exponentiation {
   object ExponentI {
     implicit def toExponentI[N : Integral](n: N): ExponentI[N] = new ExponentI(n)
   }
-  
+
   object ExponentF {
     implicit def toExponentF[N : Fractional](n: N): ExponentF[N] = new ExponentF(n)
   }
-  
+
   object Exponents {
     implicit def toExponent(n: Int): ExponentI[Int] = new ExponentI(n)
     implicit def toExponent(n: Double): ExponentF[Double] = new ExponentF(n)
@@ -3406,7 +3408,7 @@ and [http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29**%28ref_in
 (additionally there is a ** operator
 for [http://seed7.sourceforge.net/libraries/float.htm#%28ref_float%29**%28ref_float%29 float<sup>float</sup>]).
 The following re-implementation of both functions does not use another exponentiation
-function to do the computation. 
+function to do the computation.
 Instead the exponentiation-by-squaring algorithm is used.
 
 
@@ -3478,7 +3480,7 @@ const func float: fltIPow (in var float: base, in var integer: exponent) is func
 Original source: [http://seed7.sourceforge.net/algorith/math.htm#fltIPow]
 
 Since Seed7 supports operator and function overloading a new exponentiation
-operator like ^* can be defined for 
+operator like ^* can be defined for
 [http://seed7.sourceforge.net/libraries/integer.htm integer]
 and [http://seed7.sourceforge.net/libraries/float.htm float] bases:
 
@@ -3820,17 +3822,17 @@ End Sub
 
 ```txt
 Integer exponentiation
-10^7=          10000000 
-10^4=          10000 
-(-3)^3=       -27 
-(-1)^(-5)=    -1 
+10^7=          10000000
+10^4=          10000
+(-3)^3=       -27
+(-1)^(-5)=    -1
 10^(-1)=      Fout 2019
-0^2=           0 
+0^2=           0
 Float exponentiation
-10.0^(-3)=     0,001 
-10.0^(-4)=     0,0001 
-(-3.0)^(-5)=  -4,11522633744856E-03 
-(-3.0)^(-4)=   1,23456790123457E-02 
+10.0^(-3)=     0,001
+10.0^(-4)=     0,0001
+(-3.0)^(-5)=  -4,11522633744856E-03
+(-3.0)^(-4)=   1,23456790123457E-02
 0.0^(-4)=     Fout 11
 ```
 
@@ -3842,7 +3844,7 @@ Float exponentiation
 
 Function pow(x,y)
 	pow = 1
-	If y < 0 Then 
+	If y < 0 Then
 		For i = 1 To Abs(y)
 			pow = pow * (1/x)
 		Next
@@ -3962,7 +3964,7 @@ fcn pow(n,exp){
    reg v;
    if(n.isType(1)){ // Int
       if (exp<0) return(if(n*n!=1) 0 else (if(exp.isOdd) n else 1));
-      v=1; 
+      v=1;
    }else{
       if(exp<0){ n=1.0/n; exp=-exp; }
       v=1.0;
@@ -4000,7 +4002,7 @@ println("2.71^-6 = %f".fmt(pow(2.71,-6)));
 ## ZX Spectrum Basic
 
 
-ZX Spectrum Basic does not support custom operators or integer datatypes, but here we implement exponentation using a function. 
+ZX Spectrum Basic does not support custom operators or integer datatypes, but here we implement exponentation using a function.
 The function itself makes use of the inbuilt exponentiation operator, which is kind of cheating, but hey this provides a working implementation.
 
 

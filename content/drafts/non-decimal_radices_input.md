@@ -91,28 +91,28 @@ o_byte('\n');
 ```algol68
 main:
 (
-  FILE fbuf; STRING sbuf; 
+  FILE fbuf; STRING sbuf;
 
   OP FBUF = (STRING in sbuf)REF FILE: (
-    sbuf := in sbuf; 
+    sbuf := in sbuf;
     associate(fbuf, sbuf);
     fbuf
   );
 
   BITS num;
- 
+
   getf(FBUF("0123459"), ($10r7d$, num));
   printf(($gl$, ABS num)); # prints 123459 #
- 
+
   getf(FBUF("abcf123"), ($16r7d$, num));
   printf(($gl$, ABS num)); # prints 180154659 #
- 
+
   getf(FBUF("7651"), ($8r4d$, num));
   printf(($gl$, ABS num)); # prints 4009 #
- 
+
   getf(FBUF("1010011010"), ($2r10d$, num));
   printf(($gl$, ABS num)) # prints 666 #
- 
+
 )
 ```
 
@@ -145,7 +145,7 @@ Please see [[Number base conversion#AutoHotkey|Number base conversion]]
       PRINT VAL("0")
       PRINT VAL("123456789")
       PRINT VAL("-987654321")
-      
+
       REM EVAL can be used to parse binary and hexadecimal strings:
       PRINT EVAL("%10101010")
       PRINT EVAL("%1111111111")
@@ -174,8 +174,8 @@ Please see [[Number base conversion#AutoHotkey|Number base conversion]]
 
 In addition to <tt>strtol()</tt> described in the Number base conversion task, you could also use the <code>scanf</code> family of functions to parse un-prefixed hexadecimal, decimal, and octal numbers:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -199,8 +199,8 @@ int main()
 
 The <code>strtol()</code> function can also parse prefixed hexadecimal, octal, and decimal strings based on the prefix, when passed a base of 0:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 
@@ -260,8 +260,8 @@ Output:
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <sstream>
 
 int main()
@@ -444,7 +444,7 @@ Arbitrary base 2-36 parsing is supported by the same mechanism as [[User Input#F
 
 ```forth
 : parse# ( str len -- u true | false )
-   0. 2SWAP DUP >R >NUMBER NIP NIP 
+   0. 2SWAP DUP >R >NUMBER NIP NIP
    R> <> DUP 0= IF NIP THEN ;
 
 : base# ( str len base -- u true | false )
@@ -466,7 +466,7 @@ program Example
 
   str = "0123459"
   read(str, "(i10)") num   ! Decimal
-  write(*,*) num           ! Prints 123459   
+  write(*,*) num           ! Prints 123459
 
   str = "abcf123"
   read(str, "(z8)") num    ! Hexadecimal
@@ -497,7 +497,7 @@ an example:
 Dim s(1 To 4) As String = {"&H1a", "26", "&O32", "&B11010"} '' 26 in various bases
 For i As Integer = 1 To 4
   Print s(i); Tab(9); "="; CInt(s(i))
-Next 
+Next
 
 Sleep
 ```
@@ -883,7 +883,7 @@ parse(Int,"0b101011001") = 345
 fun main(args: Array<String>) {
     val s = "100"
     val bases = intArrayOf(2, 8, 10, 16, 19, 36)
-    for (base in bases) 
+    for (base in bases)
         println("$s in base ${"%2d".format(base)} is ${s.toInt(base)}")
 }
 ```
@@ -1214,7 +1214,7 @@ put skip edit (BS) (B);
 
 ```txt
 
-       23 
+       23
 11010101010111111110000000011101
 
 ```
@@ -1264,22 +1264,22 @@ function Select-NumberFromString
         $InputObject,
 
         [Parameter(ParameterSetName="Decimal")]
-        [Alias("d","Dec")] 
+        [Alias("d","Dec")]
         [switch]
         $Decimal,
 
         [Parameter(ParameterSetName="Hexadecimal")]
-        [Alias("h","Hex")] 
+        [Alias("h","Hex")]
         [switch]
         $Hexadecimal,
 
         [Parameter(ParameterSetName="Octal")]
-        [Alias("o","Oct")] 
+        [Alias("o","Oct")]
         [switch]
         $Octal,
 
         [Parameter(ParameterSetName="Binary")]
-        [Alias("b","Bin")] 
+        [Alias("b","Bin")]
         [switch]
         $Binary
     )
@@ -1350,8 +1350,8 @@ $file | Select-NumberFromString -Hexadecimal | Format-Table
 
 ```txt
 
-Number String Base IsNumber InputString             
------- ------ ---- -------- -----------             
+Number String Base IsNumber InputString
+------ ------ ---- -------- -----------
  43969 abc1     16     True John Doe abc1 K2hdystkrs
                 16    False Jane Doe xyz2 Ew3jtdkufy
  57075 def3     16     True Joe Blow def3 Ouy1ttluyl
@@ -1378,10 +1378,10 @@ The [http://docs.python.org/library/functions.html#int int] function will interp
 ```python>>>
  text = '100'
 >>> for base in range(2,21):
-    print ("String '%s' in base %i is  %i in base 10" 
+    print ("String '%s' in base %i is  %i in base 10"
            % (text, base, int(text, base)))
 
-	
+
 String '100' in base 2 is  4 in base 10
 String '100' in base 3 is  9 in base 10
 String '100' in base 4 is  16 in base 10
@@ -1502,7 +1502,7 @@ as.octmode(as.numeric("20")) # "24"
 ```rexx
 /*REXX program demonstrates REXX's ability to handle non-decimal radices*/
 a=123                        /*all of these assignments are identical:  */
-b='123'                 
+b='123'
 c='1' || "2" || '3'
 d= 1  ||  2  ||  3
 e= 12        ||  3
@@ -1621,7 +1621,7 @@ p oct3.oct    # => 4009
 
 
 The String class has '''to_i(base)''' method ( base : 2 .. 36 ).
-Invalid characters past the end of a valid number are ignored. 
+Invalid characters past the end of a valid number are ignored.
 (This method never raises an exception when base is valid.)
 
 ```ruby
@@ -1706,7 +1706,7 @@ converts a numeric string, with a specified radix, to an [http://seed7.sourcefor
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const proc: main is func
   begin
     writeln(integer("0123459", 10));

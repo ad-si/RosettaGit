@@ -13,7 +13,7 @@ tags = []
 {{task|File System Operations}}
 
 ;Task:
-Delete a file called "input.txt" and delete a directory called "docs". 
+Delete a file called "input.txt" and delete a directory called "docs".
 
 This should be done twice: once "here", i.e. in the current working directory and once in the filesystem root.
 
@@ -98,7 +98,7 @@ Note: <tt>scratch</tt> does not appear to do anything on [[ALGOL 68G]].  Also no
 
 ```algol68
 main:(
-  PROC remove = (STRING file name)INT: 
+  PROC remove = (STRING file name)INT:
   BEGIN
     FILE actual file;
     INT errno = open(actual file, file name, stand back channel);
@@ -265,11 +265,11 @@ If the names are known only at run time:
 120   EXT "del \input.txt"
 130   EXT "rmdir docs"
 140   EXT "rmdir \docs"
-150 END WHEN 
+150 END WHEN
 160 HANDLER IOERROR
 170   PRINT "Error in line";EXLINE
 180   PRINT "*** ";EXSTRING$(EXTYPE)
-190   CONTINUE 
+190   CONTINUE
 200 END HANDLER
 ```
 
@@ -279,8 +279,8 @@ If the names are known only at run time:
 
 ISO C:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main() {
   remove("input.txt");
@@ -294,8 +294,8 @@ int main() {
 
 POSIX:
 
-```c>#include <unistd.h
-
+```c
+#include <unistd.h>
 
 int main() {
   unlink("input.txt");
@@ -311,8 +311,8 @@ int main() {
 ## C++
 
 
-```cpp>#include <cstdio
-
+```cpp
+#include <cstdio>
 #include <direct.h>
 
 int main() {
@@ -474,7 +474,7 @@ END ...
 import std.file: remove;
 
 void main() {
-    remove("data.txt"); 
+    remove("data.txt");
 }
 ```
 
@@ -547,15 +547,15 @@ ELENA 4.x :
 
 ```elena
 import system'io;
- 
+
 public program()
 {
     File.assign("output.txt").delete();
- 
-    File.assign("\output.txt").delete();        
- 
+
+    File.assign("\output.txt").delete();
+
     Directory.assign("docs").delete();
- 
+
     Directory.assign("\docs").delete();
 }
 ```
@@ -580,8 +580,8 @@ File.rmdir!("/docs")
 ```Lisp
 
 ;; function to remove file & directory
-(defun my-files-rm () 
-  (delete-file "input.txt") 
+(defun my-files-rm ()
+  (delete-file "input.txt")
   (delete-directory "docs"))
 
 (my-files-rm)
@@ -668,18 +668,18 @@ I don't know a way of deleting directories in Fortran
 
 ```freebasic
 ' FB 1.05.0 Win64
- 
+
 ' delete file and empty sub-directory in current directory
 
 Kill "input.txt"
 RmDir "docs"
- 
+
 ' delete file and empty sub-directory in root directory c:\
 ' deleting file in root requires administrative privileges in Windows 10
 
 'Kill "c:\input.txt"
 'RmDir "c:\docs"
- 
+
 Print "Press any key to quit"
 Sleep
 
@@ -702,12 +702,12 @@ var
 begin
 	assign(fd, inputTextFilename);
 	erase(fd);
-	
+
 	rmDir(docsFilename);
-	
+
 	assign(fd, rootDirectory + inputTextFilename);
 	erase(fd);
-	
+
 	rmDir(rootDirectory + docsFilename);
 end.
 ```
@@ -779,9 +779,9 @@ def fsRoot = File.listRoots().first()
 
 // Create our list of files (including directories)
 def files = [
-        new File("input.txt"), 
-        new File(fsRoot, "input.txt"), 
-        new File("docs"), 
+        new File("input.txt"),
+        new File(fsRoot, "input.txt"),
+        new File("docs"),
         new File(fsRoot, "docs")
 ]
 
@@ -855,7 +855,7 @@ Icon supports 'remove' for files.
 
 ```Unicon
 every dir := !["./","/"] do {
-   remove(f := dir || "input.txt")  |stop("failure for file remove ",f) 
+   remove(f := dir || "input.txt")  |stop("failure for file remove ",f)
    rmdir(f := dir || "docs")        |stop("failure for directory remove ",f)
    }
 
@@ -875,7 +875,7 @@ The J standard library comes with a set of file access utilities.
    ferase 'docs'
    ferase '\docs'
 
-NB. Or all at once... 
+NB. Or all at once...
    ferase 'input.txt';'/input.txt';'docs';'/docs'
 ```
 
@@ -883,7 +883,7 @@ NB. Or all at once...
 The function above actually uses a foreign conjunction and defined in the <tt>files</tt> library like so:
 
 ```j
-NB. 
+NB.
 ### ===================================================
 
 NB.*ferase v erases a file
@@ -915,7 +915,7 @@ public class FileDeleteTest {
        return exists;
    }
    public static void test(String type, String filename) {
-       System.out.println("The following " + type + " called " + filename + 
+       System.out.println("The following " + type + " called " + filename +
            (deleteFile(filename) ? " was deleted." : " could not be deleted.")
        );
    }
@@ -1004,7 +1004,7 @@ rm("docs", recursive = true)
 
 /* testing on Windows 10 which needs administrative privileges
    to delete files from the root */
- 
+
 import java.io.File
 
 fun main(args: Array<String>) {
@@ -1016,7 +1016,7 @@ fun main(args: Array<String>) {
             println("$path successfully deleted")
         else
             println("$path could not be deleted")
-    }            
+    }
 }
 ```
 
@@ -1205,7 +1205,7 @@ DeleteDirectory["/" <> "docs"]
    delete('/input.txt');   % delete file /input.txt
    rmdir('docs');    % remove local directory docs
    rmdir('/docs');   % remove directory /docs
- 
+
 ```
 
 
@@ -1282,7 +1282,7 @@ module DeleteFile
         catch {
             |e is UnauthorizedAccessException => WriteLine(e.Message)
         }
-        
+
         when (Directory.Exists("docs")) Directory.Delete("docs");
         when (Directory.Exists(@"\docs")) Directory.Delete(@"\docs");
     }
@@ -1392,7 +1392,7 @@ bundle Default {
     function : Main(args : String[]) ~ Nil {
       File->Delete("output.txt");
       File->Delete("/output.txt");
- 
+
       Directory->Delete("docs");
       Directory->Delete("/docs");
     }
@@ -1435,7 +1435,7 @@ res=sysFileDelete(file); Say file 'res='res
 File= 'bfile.txt'                     /*name of a file  to be deleted.*/
 res=sysFileDelete(file); Say file 'res='res
 ```
-       
+
 {{out}}
 
 ```txt
@@ -1575,7 +1575,7 @@ int main(){
 
 ```powershell
 # possible aliases for Remove-Item: rm, del, ri
-Remove-Item input.txt   
+Remove-Item input.txt
 Remove-Item \input.txt  # file system root
 
 Remove-Item -Recurse docs  # recurse for deleting folders including content
@@ -1785,23 +1785,23 @@ use std::io::{self, Write};
 use std::fs::{remove_file,remove_dir};
 use std::path::Path;
 use std::{process,display};
- 
+
 const FILE_NAME: &'static str = "output.txt";
 const DIR_NAME : &'static str = "docs";
- 
+
 fn main() {
     delete(".").and(delete("/"))
                .unwrap_or_else(|e| error_handler(e,1));
 }
- 
- 
+
+
 fn delete<P>(root: P) -> io::Result<()>
     where P: AsRef<Path>
 {
     remove_file(root.as_ref().join(FILE_NAME))
         .and(remove_dir(root.as_ref().join(DIR_NAME)))
 }
- 
+
 fn error_handler<E: fmt::Display>(error: E, code: i32) -> ! {
     let _ = writeln!(&mut io::stderr(), "{:?}", error);
     process::exit(code)
@@ -1946,7 +1946,7 @@ rmdir docs
 
 
 ```tcl
-file delete input.txt /input.txt 
+file delete input.txt /input.txt
 
 # preserve directory if non-empty
 file delete docs /docs
@@ -2014,18 +2014,18 @@ f.delete "/docs"
 
 ```VAX Assembly
 74 75 70 6E 69 20 65 74 65 6C 65 64  0000     1 dcl:	.ascii	"delete input.txt;,docs.dir;"
-64 2E 73 63 6F 64 2C 3B 74 78 74 2E  000C       
-                           3B 72 69  0018       
+64 2E 73 63 6F 64 2C 3B 74 78 74 2E  000C
+                           3B 72 69  0018
 69 76 65 64 73 79 73 24 73 79 73 2C  001B     2 	.ascii	",sys$sysdevice:[000000]input.txt;"
-69 5D 30 30 30 30 30 30 5B 3A 65 63  0027       
-         3B 74 78 74 2E 74 75 70 6E  0033       
+69 5D 30 30 30 30 30 30 5B 3A 65 63  0027
+         3B 74 78 74 2E 74 75 70 6E  0033
 69 76 65 64 73 79 73 24 73 79 73 2C  003C     3 	.ascii	",sys$sysdevice:[000000]docs.dir;"
-64 5D 30 30 30 30 30 30 5B 3A 65 63  0048       
-            3B 72 69 64 2E 73 63 6F  0054       
-                                     005C     4 
+64 5D 30 30 30 30 30 30 5B 3A 65 63  0048
+            3B 72 69 64 2E 73 63 6F  0054
+                                     005C     4
                            0000005C  005C     5 desc:	.long	.-dcl					;character count
                            00000000' 0060     6 	.address dcl
-                                     0064     7 
+                                     0064     7
                                0000  0064     8 .entry	main,0
                          F3 AF   7F  0066     9 	pushaq	desc
               00000000'GF   01   FB  0069    10 	calls	#1, g^lib$do_command			;execute shell command
@@ -2138,38 +2138,38 @@ IO.File.Delete(IO.Path.DirectorySeparatorChar & "output.txt")
 
 section .text
 	global _start
-	
+
 	_start:
 		mov ebx, fn
 		mov eax, sys_unlink
 		int 0x80
 		test eax, eax
 		js _ragequit
-		
+
 		mov ebx, dn
-		mov eax, sys_rmdir			
+		mov eax, sys_rmdir
 		int 0x80
-		
+
 		mov ebx, rfn
 		mov eax, sys_unlink
 		int 0x80
 		cmp eax, 0
 		je _exit
-		
+
 		_ragequit:
 			mov edx, err_len
 			mov ecx, err_msg
 			mov ebx, 4
 			mov eax ,1
 			int 0x80
-			
+
 		_exit:
 			push 0x1
 			mov eax, 1
 			push eax
 			int 0x80
 			ret
-	
+
 section .data
 fn		db 'input.txt',0
 rfn		db '/input.txt',0

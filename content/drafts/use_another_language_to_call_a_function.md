@@ -14,8 +14,8 @@ tags = []
 {{clarified-review}}
 This task is inverse to the task [[Call foreign language function]]. Consider the following [[C]] program:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 extern int Query (char * Data, size_t * Length);
 
@@ -23,7 +23,7 @@ int main (int argc, char * argv [])
 {
    char     Buffer [1024];
    size_t   Size = sizeof (Buffer);
-   
+
    if (0 == Query (Buffer, &Size))
    {
       printf ("failed to call Query\n");
@@ -111,7 +111,7 @@ DetectHiddenWindows On  ; Due to fast-mode, this setting will go into effect for
 ; Pass control to EnumWindows(), which calls the callback repeatedly:
 DllCall("EnumWindows", UInt, EnumAddress, UInt, 0)
 MsgBox %Output%  ; Display the information accumulated by the callback.
-    
+
 EnumWindowsProc(hwnd, lParam)
 {
     global Output
@@ -147,10 +147,10 @@ Compilation finished at Mon Mar 12 20:25:27
 #endif
 
 #include <stdio.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 
 extern int Query(char *Data, unsigned *Length);
- 
+
 int main(int argc, char *argv[]) {
   char Buffer[1024], *pc;
   unsigned Size = sizeof(Buffer);
@@ -207,8 +207,8 @@ $
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 using std::string;
 
 // C++ functions with extern "C" can get called from C.
@@ -336,8 +336,8 @@ This generates a <code>query_func.lib</code> file.
 Then create a C file named "mainc.c", given in the task description and here improved a little:
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdbool.h>
 
 extern bool query(char *data, size_t *length);
@@ -439,8 +439,8 @@ Cgo, Go's interface to C, allows calls from C to Go, but only if it gets to star
 
 Thus, I changed the specified C code to begin as follows,
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include "_cgo_export.h"
 
 void Run()
@@ -496,7 +496,7 @@ Here am I
 
 
 
-###  Alternative Method 
+###  Alternative Method
 
 As of Go 1.5, this is now possible without modifying the C code thanks to the addition of buildmodes. Buildmodes allow Go code to be compiled to standard C libraries (both dynamic and static).
 
@@ -675,7 +675,7 @@ Here I am
 ## Haxe
 
 
-###  PHP 
+###  PHP
 
 
 ```haxe
@@ -745,7 +745,7 @@ Query.c
 #define _stdcall
 #include <dlfcn.h>
 #define GETPROCADDRESS(h,p)	dlsym(h,p)
-#ifdef __MACH__ 
+#ifdef __MACH__
 #define JDLLNAME "/libj.dylib"
 #else
 #define JDLLNAME "/libj.so"
@@ -874,7 +874,7 @@ Finally, build and execution.  Again, adjust LD_LIBRARY_PATH to the directory of
 
 $ make main && LD_LIBRARY_PATH=~/Downloads/jgplsrc/j/bin ./main
 Here am I
-$ 
+$
 
 ```
 
@@ -1059,7 +1059,7 @@ fun query(data: CPointer<ByteVar>, length: CPointer<size_tVar>): Int {
     val bufferSize = length.pointed.value
     if (strLen > bufferSize) return 0  // buffer not large enough
     for (i in 0 until strLen) data[i] = s[i].toByte()
-    length.pointed.value = strLen.signExtend<size_t>()    
+    length.pointed.value = strLen.signExtend<size_t>()
     return 1
 }
 ```
@@ -1108,13 +1108,13 @@ extern libQuery_ExportedSymbols* libQuery_symbols(void);
 
 We now compile a slightly modified version of the C program required for this task, linking to the above library, and 'including' the header file:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include "libQuery_api.h"
 
-static int Query (char * Data, size_t * Length) 
-{    
+static int Query (char * Data, size_t * Length)
+{
     return libQuery_symbols() -> kotlin.root.query(Data, Length);
 }
 
@@ -1122,7 +1122,7 @@ int main (int argc, char * argv [])
 {
     char     Buffer [1024];
     size_t   Size = sizeof (Buffer);
- 
+
     if (0 == Query (Buffer, &Size))
     {
         printf ("failed to call Query\n");
@@ -1281,8 +1281,8 @@ proc Query*(data: var array[1024, char], length: var cint): cint {.exportc.} =
 
 Compile the above with <code>nim c --app:staticlib --no_main query.nim</code>.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 extern int Query (char * Data, size_t * Length);
 
@@ -1317,8 +1317,8 @@ Here am I
 ## OCaml
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <caml/mlvalues.h>
 #include <caml/callback.h>
@@ -1389,7 +1389,7 @@ ROT13() is implemented as a PARI one-liner:
 Strchr(Vecsmall(apply(k->if(k>96&&k<123,(k-84)%26+97,if(k>64&&k<91,(k-52)%26+65,k)),Vec(Vecsmall(s)))))
 ```
 
-  
+
 PARI's interface for Query()... query.c:
 
 ```C>#include <pari/pari.h
@@ -1424,7 +1424,7 @@ Compile main() C code from above and link against this library: ''gcc -O2 -Wall 
 
 Start main(): ''LD_LIBRARY_PATH=. ./main''
 
-PARI solves the ROT13 encrypted message and returns result to caller. 
+PARI solves the ROT13 encrypted message and returns result to caller.
 
 Output:
 ```txt
@@ -1551,7 +1551,7 @@ In Query.c I don't promise to have tested every case with missing module, missin
 #include<stdlib.h>
 #include<string.h>
 #include<Python.h>
- 
+
 int Query(char*Data,unsigned*Length) {
   char *module = "rc_embed", *function = "query";
   PyObject *pName, *pModule, *pFunc, *pResult, *pArgs, *pLength;
@@ -1575,7 +1575,7 @@ int Query(char*Data,unsigned*Length) {
       Py_DECREF(pFunc);
     Py_DECREF(pModule);
     return 0;
-  }	
+  }
   pArgs = PyTuple_New(1);
   pLength = PyLong_FromUnsignedLong((unsigned long)(*Length));
   if (NULL == pLength) {
@@ -1626,7 +1626,7 @@ In file included from /usr/include/python3.2mu/Python.h:8:0,
 $ gcc -o main main.o Query.o $( $D/python3.2-config --ldflags )
 $ ./main
 Here am I
-$ 
+$
 
 ```
 
@@ -2082,8 +2082,8 @@ proc Query {} {
 
 You would also need a short piece of code in <code>main()</code> to initialize the Tcl library and create an interpreter instance, and you would need to build and link against [[libtcl]].
 
-```c>#include <tcl.h
-
+```c
+#include <tcl.h>
 Tcl_Interp *interp;
 
 int main(int argc, char **argv) {
@@ -2104,8 +2104,8 @@ This is really two tasks: how to accept foreign callbacks, and how to link code 
 The TXR run-time is not available as a library that can be linked to a C program. Instead, we can put the C driver into a small library and call out to it from TXR, then accept its callback. Here is that library:
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int query(int (*callback)(char *, size_t *))
 {
@@ -2139,7 +2139,7 @@ gcc -g --shared query.c -o query.c
 
 
 In this situation, the most appropriate FFI type to use for the foreign buffer is the <code>carray</code> type. This type allows TXR Lisp code to manipulate a foreign array while retaining its identity, so that it is able to pass the same pointer to the foreign code that it received from that code. <code>carray</code> also solves the problem of dealing with the common representational approach in C when arrays are represented by pointers, and do not include their size as part of their type information. A <code>carray</code> object can be constructed with an zero size, which can be adjusted when the size is known, using <code>carray-set-length</code>.
- 
+
 Like the <code>array</code> type, <code>carray</code> has specialized behaviors when its element type is <code>char</code>, <code>bchar</code> or <code>wchar</code>. The <code>carray-get</code> function will decode a string from the underlying array, and <code>carray-put</code> will encode a string into the array. In the case of the <code>char</code> type, this involves UTF-8 coding.
 
 Callbacks are modeled as "FFI closures". The macro <code>deffi-cb</code> defines a function which itself isn't a callback, but is rather a combinator which converts a Lisp function into a FFI callback.
@@ -2174,28 +2174,28 @@ Here am I
 Note that the obvious way of passing a <code>size_t</code> value by pointer, namely <code>(ptr size-t)</code> doesn't work. While the callback will receive the size (FFI will decode the pointer type's semantics and get the size value), updating the size will not propagate back to the caller, because it becomes, effectively, a by-value parameter. A <code>(ptr size-t)</code> object has to be embedded in an aggregate that is passed by reference, in order to have two-way semantics. Here we use the trick of treating the <code>size_t *</code> as an array of 1, which it ''de facto'' is. In the callback, we establish local symbol macro which lets us just refer to <code>[sizeptr 0]</code> it as <code>size</code>.
 
 
-###  Using <code>cptr</code> and <code>memcpy</code> 
+###  Using <code>cptr</code> and <code>memcpy</code>
 
 
 An alternative approach is possible if we avail ourselves of the <code>memcpy</code> function via FFI. We can receive the data as an opaque foreign pointer represented by the <code>cptr</code> type.  We can set up <code>memcpy</code> so that its destination argument and return value is a <code>cptr</code>, but the source argument is a string:
 
 
 ```txrlisp
-(with-dyn-lib "./query.so" 
-  (deffi query "query" void (closure))) 
- 
-(with-dyn-lib nil 
-  (deffi memcpy "memcpy" cptr (cptr str size-t))) 
- 
-(deffi-cb query-cb int (cptr (ptr (array 1 size-t)))) 
- 
+(with-dyn-lib "./query.so"
+  (deffi query "query" void (closure)))
+
+(with-dyn-lib nil
+  (deffi memcpy "memcpy" cptr (cptr str size-t)))
+
+(deffi-cb query-cb int (cptr (ptr (array 1 size-t))))
+
 (query (query-cb (lambda (buf sizeptr)              ;  int lambda(void *buf, siz
                    (symacrolet ((size [sizeptr 0])) ;  { #define size sizeptr[0]
-                     (let* ((s "Here am I")         ;    char *s = "Here am I"; 
-                            (l (length s)))         ;    size_t l = strlen(s); 
-                       (cond                        ;    if (length > size) 
-                         ((> l size) 0)             ;    { return 0; } else 
-                         (t (memcpy buf s l)        ;    { memcpy(buf, s, l); 
+                     (let* ((s "Here am I")         ;    char *s = "Here am I";
+                            (l (length s)))         ;    size_t l = strlen(s);
+                       (cond                        ;    if (length > size)
+                         ((> l size) 0)             ;    { return 0; } else
+                         (t (memcpy buf s l)        ;    { memcpy(buf, s, l);
                             (set size l))))))))     ;      return size = l; } }
 ```
 

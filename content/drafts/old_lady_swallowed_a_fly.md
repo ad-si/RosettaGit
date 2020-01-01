@@ -13,7 +13,7 @@ tags = []
 {{task}}
 
 ;Task:
-Present a program which emits the lyrics to the song   ''[[wp:There Was an Old Lady Who Swallowed a Fly|I Knew an Old Lady Who Swallowed a Fly]]'',   taking advantage of the repetitive structure of the song's lyrics. 
+Present a program which emits the lyrics to the song   ''[[wp:There Was an Old Lady Who Swallowed a Fly|I Knew an Old Lady Who Swallowed a Fly]]'',   taking advantage of the repetitive structure of the song's lyrics.
 
 This song has multiple versions with slightly different lyrics, so all these programs might not emit identical output.
 
@@ -209,7 +209,7 @@ Animals := [["fly",	"I don't know why she swallowed the "]
 for i, V in Animals {
 	Output .= "I know an old lady who swallowed a " V.1 ".`n"
 	. (i = 1 ? Saved := V.2 V.1 ".`nPerhaps she'll die.`n`n"
-	: V.2 (i = Animals.MaxIndex() ? "" : (i = 2 ? "" : ". To swallow a " V.1) ".`n" 
+	: V.2 (i = Animals.MaxIndex() ? "" : (i = 2 ? "" : ". To swallow a " V.1) ".`n"
 	. (Saved := "She swallowed the " V.1 " to catch the " Animals[i - 1].1 ".`n" Saved)))
 }
 
@@ -267,7 +267,7 @@ BEGIN {
 ```babel
 ((main {fly !})
 
-(fly 
+(fly
     {{"There was an old lady who swallowed a " <<
         iter 1 - dup
         <- 0 animal ! nl << ->
@@ -275,7 +275,7 @@ BEGIN {
         {iter 10 ~=}{
             " " <<
             {iter 1 =}{last}{fnord} ifte
-            iter 1 - 0 animal ! nl << 
+            iter 1 - 0 animal ! nl <<
                 {"She swallowed the " <<
                 this_iter ! 0 animal ! <<
                 " to catch the " <<
@@ -298,7 +298,7 @@ BEGIN {
 (animal { <- <- animals -> ith -> ith})
 
 -- There are 10 animals
-(animals 
+(animals
    (("horse"    "She's dead of course...\n")
     ("donkey"   "It was rather wonkey! To swallow a")
     ("cow"      "I don't know how she swallowed a")
@@ -350,7 +350,7 @@ goto count
 :print_song
 for /l %%i in (1,1,!cnt!) do (
 	echo There was an old lady who swallowed a !animal%%i!.
-	if not "!comment%%i!"=="" echo !comment%%i:_= !	
+	if not "!comment%%i!"=="" echo !comment%%i:_= !
 	if %%i equ !cnt! goto done
 
 	for /l %%j in (%%i,-1,2) do (
@@ -391,7 +391,7 @@ ead, of course!|
 
 This prints the lyrics from the Wikipedia page, more or less. I don't know anything about goats and donkeys and the like.
 
-```bbcbasic>REM 
+```bbcbasic>REM
 oldlady
 DIM swallowings$(6, 1)
 swallowings$() = "fly", "+why", "spider", "That wriggled and wiggled and tickled inside her", "bird", ":How absurd", "cat", ":Fancy that", "dog", ":What a hog", "cow", "+how", "horse", "She's dead, of course"
@@ -427,16 +427,16 @@ ENDPROC
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 static char const *animals[] = {
-    "fly", 
-    "spider", 
-    "bird", 
-    "cat", 
-    "dog", 
-    "goat", 
-    "cow", 
+    "fly",
+    "spider",
+    "bird",
+    "cat",
+    "dog",
+    "goat",
+    "cow",
     "horse"
 };
 static char const *verses[]  = {
@@ -472,8 +472,8 @@ int main(void)
 
 {{trans|C#}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 const char *REASON = "She swallowed the %s to catch the %s\n";
 const char *CREATURES[] = { "fly", "spider", "bird", "cat", "dog", "goat", "cow", "horse" };
@@ -694,7 +694,7 @@ namespace OldLady
             IF A-IDX = 8 THEN
                 EXIT SECTION
             END-IF.
-            PERFORM DO-SWALLOW 
+            PERFORM DO-SWALLOW
                 VARYING S-IDX FROM A-IDX BY -1 UNTIL S-IDX = 1.
             DISPLAY VERSE OF ANIMAL(1).
             DISPLAY SPACES.
@@ -709,7 +709,7 @@ namespace OldLady
                 INTO LINE-OUT
             END-STRING.
             DISPLAY LINE-OUT.
-            
+
 
 ```
 
@@ -727,15 +727,15 @@ A rather iterative, rather than recursive solution.  The lyrics match the origin
 (defun always (verse) (third verse))
 (defun die    (verse) (fourth verse))
 
-(defun ssa (what remark &optional always die ) 
+(defun ssa (what remark &optional always die )
     (verse what (format nil "~a she swallowed a ~a!" remark what always die)))
-(defun tsa (what remark &optional always die) 
+(defun tsa (what remark &optional always die)
     (verse what (format nil "~a, to swallow a ~a!" remark what)))
-(defun asa (what remark &optional always die) 
+(defun asa (what remark &optional always die)
     (verse what (format nil "~a, and swallowed a ~a!" remark what)))
 
 
-(let ((verses (list 
+(let ((verses (list
         (verse "fly" "I don't know why she swallowed the fly" T)
         (verse "spider" "That wriggled and jiggled and tickled inside her" T)
         (tsa   "bird" "Now how absurd")
@@ -749,8 +749,8 @@ A rather iterative, rather than recursive solution.  The lyrics match the origin
     (let ((it (what verse)))
       (format t "I know an old lady who swallowed a ~a~%" it)
       (format t "~a~%" (remark verse))
-      (if (not (die verse)) (progn 
-        (if (> i 0) 
+      (if (not (die verse)) (progn
+        (if (> i 0)
           (loop for j from (1- i) downto 0 doing
             (let* ((v (nth j verses)))
               (format t "She swallowed the ~a to catch the ~a~%" it (what v))
@@ -885,7 +885,7 @@ ELENA 4.1 :
 
 ```elena
 import extensions;
- 
+
 const Creatures = new string[]::("fly", "spider", "bird", "cat", "dog", "goat", "cow", "horse");
 const Comments = new string[]::
 (
@@ -898,7 +898,7 @@ const Comments = new string[]::
             "I don't know how she swallowed that cow",
             "She's dead of course"
 );
- 
+
 public program()
 {
     for(int i := 0, i < Creatures.Length, i += 1)
@@ -906,17 +906,17 @@ public program()
         console
             .printLineFormatted("There was an old lady who swallowed a {0}",Creatures[i])
             .printLine(Comments[i]);
- 
+
         if(i != 0 && i != Creatures.Length - 1)
         {
             for(int j := i, j > 0, j -= 1)
             {
                 console.printLineFormatted("She swallowed the {0} to catch the {1}",Creatures[j],Creatures[j - 1])
             };
- 
+
             console.writeLine(Comments[0])
         };
- 
+
         console.writeLine()
     }
 }
@@ -940,7 +940,7 @@ defmodule Old_lady do
     cow:    "I don't know how S",
     horse:  "She's dead, of course.",
   ]
-  
+
   def swallowed do
     {descriptions, animals} = setup(@descriptions)
     Enum.each(Enum.with_index(animals), fn {animal, idx} ->
@@ -960,7 +960,7 @@ defmodule Old_lady do
       IO.puts "Perhaps she'll die.\n"
     end)
   end
-  
+
   def setup(descriptions) do
     animals = Keyword.keys(descriptions)
     descs = Enum.reduce(animals, descriptions, fn animal, acc ->
@@ -1022,7 +1022,7 @@ variable first
   >animal + count ;
 
 : swallow ( "animal" -- )
-  align swallowed @ if here swallowed @ cell+ ! else here first ! then 
+  align swallowed @ if here swallowed @ cell+ ! else here first ! then
   here swallowed @ , swallowed !
   0 , 0 , parse-word string, ; \ data structure still needs the aside
 : always ( -- )  \ set aside? of last-defined swallow to true
@@ -1085,13 +1085,13 @@ program fly
   line(8,1) = 'horse'
   line(0,2) = "Perhaps she'll die."
   line(1,2) = "I don't know why she swallowed that fly."
-  line(2,2) = "That wiggled and jiggled and tickled inside her." 
-  line(3,2) = "How absurd to swallow a bird."                      
-  line(4,2) = "Imagine that. She swallowed a cat."                  
-  line(5,2) = "What a hog to swallow a dog."                        
-  line(6,2) = "She just opened her throat and swallowed that goat." 
-  line(7,2) = "I don't know how she swallowed that cow."            
-  line(8,2) = "She's dead of course."                                  
+  line(2,2) = "That wiggled and jiggled and tickled inside her."
+  line(3,2) = "How absurd to swallow a bird."
+  line(4,2) = "Imagine that. She swallowed a cat."
+  line(5,2) = "What a hog to swallow a dog."
+  line(6,2) = "She just opened her throat and swallowed that goat."
+  line(7,2) = "I don't know how she swallowed that cow."
+  line(8,2) = "She's dead of course."
 
   !List each verse
   verses:do i = 1,8
@@ -1104,7 +1104,7 @@ program fly
      write(*,*)  trim(line(0,2))
      write(*,*)
   end do verses
-     
+
 end program fly
 
 ```
@@ -1123,7 +1123,7 @@ uses
   SysUtils;
 
 const
-  MaxLadies = 9; //Number of iterations and array items  
+  MaxLadies = 9; //Number of iterations and array items
   Animals: array[1..MaxLadies + 1] of shortstring = (  //Add one for the song's end
     'fly',
     'spider',
@@ -1346,7 +1346,7 @@ She swallowed the spider to catch the fly.
 I don't know why she swallowed a fly.
 Perhaps she'll die.
 
-There was an old lady who swallowed a bird.	
+There was an old lady who swallowed a bird.
 How absurd, to swallow a bird.
 She swallowed the bird to catch the spider.
 That wiggled and jiggled and tickled inside her.
@@ -1354,7 +1354,7 @@ She swallowed the spider to catch the fly.
 I don't know why she swallowed a fly.
 Perhaps she'll die.
 
-There was an old lady who swallowed a cat.	
+There was an old lady who swallowed a cat.
 Imagine that. She swallowed a cat.
 She swallowed the cat to catch the bird.
 She swallowed the bird to catch the spider.
@@ -1363,7 +1363,7 @@ She swallowed the spider to catch the fly.
 I don't know why she swallowed a fly.
 Perhaps she'll die.
 
-There was an old lady who swallowed a dog.	
+There was an old lady who swallowed a dog.
 What a hog to swallow a dog.
 She swallowed the dog to catch the cat.
 She swallowed the cat to catch the bird.
@@ -1373,7 +1373,7 @@ She swallowed the spider to catch the fly.
 I don't know why she swallowed a fly.
 Perhaps she'll die.
 
-There was an old lady who swallowed a goat.	
+There was an old lady who swallowed a goat.
 She just opened her throat and swallowed a goat.
 She swallowed the goat to catch the dog.
 She swallowed the dog to catch the cat.
@@ -1552,20 +1552,20 @@ verse["goat"]   := [["%s,\nShe just opened her throat, %s %s;\n",1,2,1],["%s,\n"
 verse["cow"]    := [["%s,\nI don't know how, %s %s;\n",1,2,1],["%s,\n",1]]
 verse["donkey"] := [["%s,\nIt was rather wonky, %s %s;\n",1,2,1],["%s,\n",1]]
 
-                   # just long versions of these 
-verse["fly"]    := [["%s,\nBut I don't know why %s %s,\nPerhaps she'll die!\n\n",1,2,1]] 
+                   # just long versions of these
+verse["fly"]    := [["%s,\nBut I don't know why %s %s,\nPerhaps she'll die!\n\n",1,2,1]]
 verse["spider"] := [["%s,\nThat wriggled and jiggled and tickled inside her;\n",1]]
 verse["horse"]  := [["%s...\nShe's dead, of course!\n",1]]
 
 every (f := verse[k := key(verse)][1|2])[i := 1 to *f] do   # fix every printf args
    f[i] := case f[i] of { 1 : k ; 2 : "she swallowed the"; default : f[i]}
-   
+
 zoofilo := []
 "fly,spider,bird,cat,dog,pig,goat,cow,donkey,horse," ?   # order
    while push(zoofilo,tab(find(","))) & move(1) do {
       printf("There was an old lady who swallowed a ")
       every critter := !zoofilo do {
-         printf!verse[critter,(critter == (zoofilo[1] | "spider" | "fly"),1)|2]     
+         printf!verse[critter,(critter == (zoofilo[1] | "spider" | "fly"),1)|2]
          if critter == "horse" then stop()               # dead
          printf("She swallowed the %s to catch the ","fly" ~== critter)
          }
@@ -1577,8 +1577,8 @@ link printf
 
 Sample output omitted.
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf formatting] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf formatting]
 
 
 ## J
@@ -1723,17 +1723,17 @@ fun sing() {
        println("There was an old lady who swallowed a ${animals[i]};")
        if (i > 0) println("${phrases[i]}!")
        if (i == 7) return
-       println()                  
+       println()
        if (i > 0) {
            for (j in i downTo 1) {
                print("  She swallowed the ${animals[j]} to catch the ${animals[j - 1]}")
                println(if (j < 3) ";" else ",")
-               if (j == 2) println("  ${phrases[1]}!")               
+               if (j == 2) println("  ${phrases[1]}!")
            }
        }
        println("  I don't know why she swallowed a fly - Perhaps she'll die!\n")
     }
-}  
+}
 
 fun main(args: Array<String>) {
     sing()
@@ -1768,7 +1768,7 @@ while 1
     animal$ = word$(animalList$, i)
     if animal$ ="" then exit while
     verse$ = "I know an old lady who "
-    verse2$ = "swallowed a " +animal$ 
+    verse2$ = "swallowed a " +animal$
     print verse$ +verse2$+","
     print reason$(i)
     if i = 8 then end
@@ -1824,8 +1824,8 @@ foreach :data [
   if greater? :include 0 [
     if greater? :i 1 [
       repeat difference :i 1 [
-        local "j make "j difference :i repcount 
-        print (se [She swallowed the] (first item sum 1 :j :data) 
+        local "j make "j difference :i repcount
+        print (se [She swallowed the] (first item sum 1 :j :data)
                   [to catch the] (first item :j :data))
         if greater? item 2 item :j :data 1 [print item 3 item :j :data]
       ]
@@ -1956,22 +1956,22 @@ She's dead, of course.
 
 
 ```Mathematica
-animals = {"fly", "spider", "bird", "cat", "dog", "goat", "cow", 
+animals = {"fly", "spider", "bird", "cat", "dog", "goat", "cow",
    "horse"};
-notes = {"", "That wiggled and jiggled and tickled inside her.\n", 
-   "How absurd, to swallow a bird.\n", 
-   "Imagine that. She swallowed a cat.\n", 
-   "What a hog to swallow a dog.\n", 
-   "She just opened her throat and swallowed that goat.\n", 
-   "I don't know how she swallowed that cow.\n", 
-   "She's dead, of course.", 
+notes = {"", "That wiggled and jiggled and tickled inside her.\n",
+   "How absurd, to swallow a bird.\n",
+   "Imagine that. She swallowed a cat.\n",
+   "What a hog to swallow a dog.\n",
+   "She just opened her throat and swallowed that goat.\n",
+   "I don't know how she swallowed that cow.\n",
+   "She's dead, of course.",
    "I don't know why she swallowed that fly.\nPerhaps she'll die.\n\n\
 "};
-Print[StringJoin @@ ("There was an old lady who swallowed a " <> 
-       animals[[#]] <> ".\n" <> notes[[#]] <> 
-       If[# == 8, "", 
-        StringJoin @@ ("She swallowed the " <> animals[[#]] <> 
-              " to catch the " <> animals[[# - 1]] <> ".\n" & /@ 
+Print[StringJoin @@ ("There was an old lady who swallowed a " <>
+       animals[[#]] <> ".\n" <> notes[[#]] <>
+       If[# == 8, "",
+        StringJoin @@ ("She swallowed the " <> animals[[#]] <>
+              " to catch the " <> animals[[# - 1]] <> ".\n" & /@
             Range[#, 2, -1]) <> notes[[9]]] & /@ Range[8])];
 ```
 
@@ -2262,14 +2262,14 @@ let dict = [|
   tickled inside her;_aspider_b_c";", to_s a ";"_sed ";"There_qan old lady who_\
   g";"_a_r_bpig,_d";"_acat_b_p,_";"_acow_b_r,_i";"_adog_bcat,_j";"I don't know \
   ";"iggled and ";"donkey";"bird";" was ";"goat";" swallow";"he_gthe" |]
- 
+
 let rec old_lady part s =
   ExtString.String.fold_left (fun s c ->
     if s then old_lady dict.(Char.code c - 95) false
     else if c = '_' then true
     else (print_char c; s)
   ) s part
- 
+
 let _ =
   old_lady dict.(0) false
 ```
@@ -2418,7 +2418,7 @@ And that's how I larned it!
 
 ```Phix
 sequence lines = {"Perhaps she'll die!\n"}, animals = {}
- 
+
 procedure swallow(string animal, second_line, integer permanent_second_line=TRUE)
     printf(1,"There was an old lady who swallowed a %s,\n%s\n",{animal,second_line})
     if length(animals)!=0 then
@@ -2430,14 +2430,14 @@ procedure swallow(string animal, second_line, integer permanent_second_line=TRUE
     end if
     animals = append(animals,animal)
 end procedure
- 
+
 procedure swallow_all(sequence all)
     for i=1 to length(all) do
         string {animal,line2} = all[i]
         swallow(animal, sprintf("%s, %s a %s;",{line2,iff(animal="cow"?"she swallowed":"to swallow"),animal}), FALSE);
     end for
 end procedure
- 
+
 swallow("fly", "But I don't know why she swallowed the fly,");
 swallow("spider",  "That wriggled and jiggled and tickled inside her;");
 swallow_all({{"bird", "Quite absurd"},{"cat", "Fancy that"},{"dog", "What a hog"},
@@ -2571,10 +2571,10 @@ for($i=0; $i -lt $lines.Count; $i++)
     $eatenThings += $creature
 
     "I know an old lady who swallowed a $creature,"
-    
+
     if ($comment) {$comment}
     if ($i -eq ($lines.Count - 1)) {continue}
-	
+
     for($j=$i; $j -ge 1; $j--)
     {
         "She swallowed the {0} to catch the {1}," -f $eatenThings[$j, ($j-1)]
@@ -3216,7 +3216,7 @@ text:=
   "lvY1OFJsgaNybXcK4LYA/4Bvj4zlaUgZ8GIC1SzbsBEZN9n/LN5izfXa+hTbPZQ/fxZY+HDB"
   "wPMtqesBk2K/+V+QtvI7B3zP7OqZWYzJTI7aBNooLQFPlMdA5aYRH3dS5jc=";
 
-MsgHash.base64decode(text) : 
+MsgHash.base64decode(text) :
 ZLib.Inflator().write(_).close().read().text.println();
 ```
 

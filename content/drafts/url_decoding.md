@@ -13,7 +13,7 @@ tags = []
 {{task}}
 [[Category:String manipulation]]
 
-This task   (the reverse of   [[URL encoding]]   and distinct from   [[URL parser]])   is to provide a function 
+This task   (the reverse of   [[URL encoding]]   and distinct from   [[URL parser]])   is to provide a function
 or mechanism to convert an URL-encoded string into its original unencoded form.
 
 
@@ -83,7 +83,7 @@ package body URL is
    begin
       while Position in URL'Range loop
          Filled := Filled + 1;
- 
+
         case URL (Position) is
             when '+' =>
                Buffer (Filled) := ' ';
@@ -205,7 +205,7 @@ MsgBox % out ; http://foo bar/
 ```AWK
 
 # syntax:
-awk ' 
+awk '
 BEGIN {
     str = "http%3A%2F%2Ffoo%20bar%2F" # "http://foo bar/"
     printf("%s\n",str)
@@ -278,7 +278,7 @@ google.com/search?q=`Abdu'l-Bahá
 ```bbcbasic
       PRINT FNurldecode("http%3A%2F%2Ffoo%20bar%2F")
       END
-      
+
       DEF FNurldecode(url$)
       LOCAL i%
       REPEAT
@@ -290,7 +290,7 @@ google.com/search?q=`Abdu'l-Bahá
         ENDIF
       UNTIL i% = 0
       = url$
-      
+
       DEF FNupper(A$)
       LOCAL A%,C%
       FOR A% = 1 TO LEN(A$)
@@ -338,8 +338,8 @@ http://foo bar/
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 inline int ishex(int x)
@@ -388,8 +388,8 @@ int main()
 {{libheader|Poco}}
 {{works with|g++}}
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include "Poco/URI.h"
 #include <iostream>
 
@@ -476,7 +476,7 @@ console.log decodeURIComponent "http%3A%2F%2Ffoo%20bar%2F?name=Foo%20Barson"
 
 
 <lang>
-> coffee foo.coffee 
+> coffee foo.coffee
 http://foo bar/?name=Foo Barson
 
 ```
@@ -588,7 +588,7 @@ Built in.
 
 
 =={{header|F_Sharp|F#}}==
-{{trans|C#}} 
+{{trans|C#}}
 
 ```fsharp
 open System
@@ -769,7 +769,7 @@ link hexcvt
 procedure main()
 ue := "http%3A%2F%2Ffoo%20bar%2F"
 ud := decodeURL(ue) | stop("Improperly encoded string ",image(ue))
-write("encoded = ",image(ue)) 
+write("encoded = ",image(ue))
 write("decoded = ",image(ue))
 end
 
@@ -789,7 +789,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn hexcvt provides hexstring]
 
 {{out}}
@@ -1007,7 +1007,7 @@ function url2string$( i$)
         c$ =mid$( i$, j, 1)
         if c$ ="%" then
             nc$         =chr$( hexdec( mid$( i$, j +1, 2)))
-            url2string$ =url2string$ +nc$ 
+            url2string$ =url2string$ +nc$
             j =j +2
         else
             url2string$ =url2string$ +c$
@@ -1121,7 +1121,7 @@ Module CheckIt {
             \\ convert to one byte per character using str$(string)
             acc$=str$(a$(0))
             While k {
-                        \\ chr$() convert to UTF16LE 
+                        \\ chr$() convert to UTF16LE
                         \\ str$()  convert to ANSI using locale (can be 1033 we can set it before as Locale 1033)
                         \\ so chr$(0x93) give 0x201C
                         \\ str$(chr$(0x93)) return one byte 93 in ANSI as string of one byte length
@@ -1162,9 +1162,9 @@ StringTools:-Decode("http%3A%2F%2Ffoo%20bar%2F", encoding=percent);
 
 
 ```mathematica
-URLDecoding[url_] := 
- StringReplace[url, "%" ~~ x_ ~~ y_ :> FromDigits[x ~~ y, 16]] //. 
-  StringExpression[x___, Longest[n__Integer], y___] :> 
+URLDecoding[url_] :=
+ StringReplace[url, "%" ~~ x_ ~~ y_ :> FromDigits[x ~~ y, 16]] //.
+  StringExpression[x___, Longest[n__Integer], y___] :>
    StringExpression[x, FromCharacterCode[{n}, "UTF8"], y]
 ```
 
@@ -1197,12 +1197,12 @@ function u = urldecoding(s)
         else
             u = sprintf('%s%c', u, s(k));
             k = k + 1;
-        end        
+        end
     end
 end
 ```
 
-Usage: 
+Usage:
 
 ```txt
 octave:3> urldecoding('http%3A%2F%2Ffoo%20bar%2F')
@@ -1233,7 +1233,7 @@ loop u_ = 0 to url.length - 1
 return
 
 method DecodeURL(arg) public static
-  
+
   Parse arg encoded
   decoded = ''
   PCT = '%'
@@ -1308,12 +1308,12 @@ echo decodeUrl("http%3A%2F%2Ffoo%20bar%2F")
 ```oberon2
 
 MODULE URLDecoding;
-IMPORT 
+IMPORT
   URI := URI:String,
   Out := NPCT:Console;
 BEGIN
   Out.String(URI.Unescape("http%3A%2F%2Ffoo%20bar%2F"));Out.Ln;
-  Out.String(URI.Unescape("google.com/search?q=%60Abdu%27l-Bah%C3%A1"));Out.Ln;  
+  Out.String(URI.Unescape("google.com/search?q=%60Abdu%27l-Bah%C3%A1"));Out.Ln;
 END URLDecoding.
 
 ```
@@ -1414,7 +1414,7 @@ DecodeURL: Procedure
         decoded = decoded || PCT
         tail = code || tail
         End
-      otherwise 
+      otherwise
         Nop
       End
     encoded = tail
@@ -1494,7 +1494,7 @@ say $url;
 ```Phix
 --
 -- demo\rosetta\decode_url.exw
--- 
+--
 ### =====================
 
 --
@@ -2176,7 +2176,7 @@ WScript.Echo "Encoded URL: " & url & vbCrLf &_
 	"Decoded URL: " & UrlDecode(url)
 ```
 
-	
+
 {{out}}
 
 ```txt
@@ -2233,7 +2233,7 @@ http://foo bar/
 ```Yabasic
 sub decode_url$(s$)
     local res$, ch$
-	
+
     while(s$ <> "")
         ch$ = left$(s$, 1)
         if ch$ = "%" then

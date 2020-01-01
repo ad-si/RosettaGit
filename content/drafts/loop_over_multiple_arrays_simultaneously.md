@@ -13,17 +13,17 @@ tags = []
 {{task|Iteration}}
 
 ;Task:
-Loop over multiple arrays   (or lists or tuples or whatever they're called in 
-your language)   and display the   <big><big> ''i'' <sup>th</sup> </big></big>   element of each. 
+Loop over multiple arrays   (or lists or tuples or whatever they're called in
+your language)   and display the   <big><big> ''i'' <sup>th</sup> </big></big>   element of each.
 
-Use your language's   "for each"   loop if it has one, otherwise iterate 
+Use your language's   "for each"   loop if it has one, otherwise iterate
 through the collection in order with some other loop.
 
 
-For this example, loop over the arrays: 
+For this example, loop over the arrays:
      (a,b,c)
-     (A,B,C) 
-     (1,2,3) 
+     (A,B,C)
+     (1,2,3)
 to produce the output:
      aA1
      bB2
@@ -69,7 +69,7 @@ LOOP     LR     R1,R6              i
          SLA    R1,1               *2
          LH     R2,R-2(R1)         r(i)
          XDECO  R2,PG              edit r(i)
-         LA     R1,S-1(R6)         @s(i) 
+         LA     R1,S-1(R6)         @s(i)
          MVC    PG+3(1),0(R1)      output s(i)
          LA     R1,Q-1(R6)         @q(i)
          MVC    PG+7(1),0(R1)      output q(i)
@@ -131,7 +131,7 @@ procedure Array_Loop_Test is
    A3 : array (Array_Index) of Integer   := (1, 2, 3);
 begin
    for Index in Array_Index'Range loop
-      Put_Line (A1 (Index) & A2 (Index) & Integer'Image (A3 
+      Put_Line (A1 (Index) & A2 (Index) & Integer'Image (A3
 (Index))(2));
    end loop;
 end Array_Loop_Test;
@@ -143,18 +143,18 @@ end Array_Loop_Test;
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release 
+{{works with|ALGOL 68G|Any - tested with release
 [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download
 
  1.18.0-9h.tiny]}}
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested
- with release 
+ with release
 [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download
 
  1.8-8d] - due to extensive use of '''format'''[ted] ''transput''}}
 
 ```algol68
-[]UNION(CHAR,INT) x=("a","b","c"), y=("A","B","C"), 
+[]UNION(CHAR,INT) x=("a","b","c"), y=("A","B","C"),
 z=(1,2,3);
 FOR i TO UPB x DO
   printf(($ggd$, x[i], y[i], z[i], $l$))
@@ -187,7 +187,7 @@ begin
     c(1) :=  1;  c(2) :=  2;  c(3) :=  3;
     % loop over the arrays                                                   %
     for i := 1 until 3 do write( i_w := 1, s_w := 0, a(i), b(i), c(i) );
-end. 
+end.
 ```
 
 
@@ -210,7 +210,7 @@ If we have a generic Applescript '''map''' function, we can use it to write a ge
 -- zipListsWith :: ([a] -> b) -> [[a]] -> [[b]]
 on zipListsWith(f, xss)
     set n to length of xss
-    
+
     script
         on |λ|(_, i)
             script
@@ -218,7 +218,7 @@ on zipListsWith(f, xss)
                     item i of xs
                 end |λ|
             end script
-            
+
             if i ≤ n then
                 apply(f, (map(result, xss)))
             else
@@ -226,7 +226,7 @@ on zipListsWith(f, xss)
             end if
         end |λ|
     end script
-    
+
     if n > 0 then
         map(result, item 1 of xss)
     else
@@ -237,11 +237,11 @@ end zipListsWith
 
 -- TEST  ( zip lists with concat ) -------------------------------------------
 on run
-    
+
     intercalate(linefeed, ¬
         zipListsWith(concat, ¬
             [["a", "b", "c"], ["A", "B", "C"], [1, 2, 3]]))
-    
+
 end run
 
 
@@ -285,7 +285,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -313,9 +313,9 @@ But a transpose function might be simpler:
 ```Applescript
 -- CONCAT MAPPED OVER A TRANSPOSITION ----------------------------------------
 on run
-    
+
     unlines(map(concat, transpose([["a", "b", "c"], ["A", "B", "C"], [1, 2, 3]])))
-    
+
 end run
 
 -- GENERIC FUNCTIONS ---------------------------------------------------------
@@ -353,7 +353,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -374,11 +374,11 @@ on transpose(xss)
                     item iCol of xs
                 end |λ|
             end script
-            
+
             map(row, xss)
         end |λ|
     end script
-    
+
     map(column, item 1 of xss)
 end transpose
 
@@ -401,7 +401,7 @@ cC3
 ## AutoHotkey
 
 === Pseudo-arrays ===
-[http://www.autohotkey.com/docs/commands/StringSplit.htm StringSplit] 
+[http://www.autohotkey.com/docs/commands/StringSplit.htm StringSplit]
 creates a pseudo-array
 
 ```autohotkey
@@ -433,7 +433,7 @@ LoopMultiArrays()
 }
 ```
 
-An array that is too short on creation will return empty strings when 
+An array that is too short on creation will return empty strings when
 trying to retrieve further elements. The 2nd Message box shows:
 
 ```txt
@@ -445,11 +445,11 @@ e
 ```
 
 
-###  Real arrays 
+###  Real arrays
 
 {{works with|AutoHotkey_L}}
-In [[AutoHotkey_L]], we can use true arrays 
-([http://l.autohotkey.com/docs/Objects.htm Objects]) and the 
+In [[AutoHotkey_L]], we can use true arrays
+([http://l.autohotkey.com/docs/Objects.htm Objects]) and the
 [http://l.autohotkey.net/docs/commands/For.htm For loop].
 
 ```AHK
@@ -494,8 +494,8 @@ BEGIN {
 
 ## Axe
 
-Note that in this example, we use a few bytes from each of L₁, L₂, and 
-L₃ for simplicity. In practice, one would want to arrange the arrays to 
+Note that in this example, we use a few bytes from each of L₁, L₂, and
+L₃ for simplicity. In practice, one would want to arrange the arrays to
 all fit within L₁ to avoid volatility issues with L₂ and L₃.
 
 ```axe
@@ -517,12 +517,12 @@ End
 
 ## Babel
 
-There are two ways to do this in Babel. 
+There are two ways to do this in Babel.
 First, you could transpose the lists:
 
 
 ```babel
-main: { (('a' 'b' 'c')('A' 'B' 'C')('1' '2' '3')) 
+main: { (('a' 'b' 'c')('A' 'B' 'C')('1' '2' '3'))
 simul_array }
 
 simul_array!:
@@ -531,24 +531,24 @@ simul_array!:
 ```
 
 
-The 'trans' operator substitutes nil in the portions of each transposed 
-column 
-wherever a row list was shorter than the longest row list. The 
+The 'trans' operator substitutes nil in the portions of each transposed
+column
+wherever a row list was shorter than the longest row list. The
 '<<' operator
 prints nothing if the top-of-stack is nil.
 
-A more literal solution to the problem as presented would be to iterate 
+A more literal solution to the problem as presented would be to iterate
 across
 each list using a user-defined cdrall operator:
 
 
 ```babel
-main: { (('a' 'b' 'c')('A' 'B' 'C')('1' '2' '3')) 
+main: { (('a' 'b' 'c')('A' 'B' 'C')('1' '2' '3'))
 simul_array }
 
-simul_array!: 
-    {{ dup 
-        { car << } each 
+simul_array!:
+    {{ dup
+        { car << } each
         cdrall }
         { allnil? not }
     while }
@@ -556,19 +556,19 @@ simul_array!:
 cdrall!: { { { cdr } each -1 take } nest }
 
 -- only returns true if all elements of a list are nil
-allnil?!: 
+allnil?!:
     { 1 <->
-    { car nil? 
+    { car nil?
         { zap 0 last }
         { nil }
     if} each }
 ```
 
 
-This solution is formally identical to the first and will handle lists 
+This solution is formally identical to the first and will handle lists
 of varying
 lengths by printing inserting nil and printing nothing for the tail ends
- of the 
+ of the
 short lists.
 
 
@@ -580,7 +580,7 @@ short lists.
       array1$() = "a", "b", "c"
       array2$() = "A", "B", "C"
       array3%() = 1, 2, 3
-      
+
       FOR index% = 0 TO 2
         PRINT array1$(index%) ; array2$(index%) ; array3%(index%)
       NEXT
@@ -595,7 +595,7 @@ You'd then loop over the range of indices required to access those arrays, and u
 For arrays of differing lengths, you'd need to manually check for an out-of-range index and deal with it appropriately.
 
 
-```befunge>0 
+```befunge>0
 :2g,:3g,:4gv
 @_^#`2:+1,+55,<
 abc
@@ -608,14 +608,14 @@ ABC
 ## C
 
 
-Given several arrays, especially if they are heterogeneous, the most 
-ordinary way to loop over all of them is to simply use an index 
-variable. Determining when to stop is generally done in some 
+Given several arrays, especially if they are heterogeneous, the most
+ordinary way to loop over all of them is to simply use an index
+variable. Determining when to stop is generally done in some
 application-specific way.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 char a1[] = {'a','b','c'};
 char a2[] = {'A','B','C'};
@@ -629,14 +629,14 @@ int main(void) {
 ```
 
 
-(Note: Some compilers may require a flag to accept this modern C code, 
+(Note: Some compilers may require a flag to accept this modern C code,
 such as <code>gcc -std=c99</code>.)
 
-On the other hand, it is possible to write a more generic higher-order 
-iteration scheme, as demonstrated in 
+On the other hand, it is possible to write a more generic higher-order
+iteration scheme, as demonstrated in
 [[Loop_over_multiple_arrays_simultaneously/C-Elaboration|this example]].
  There, a type for arrays with runtime-specified lengths and polymorphic
- printing is defined, and the iteration continues up to the length of 
+ printing is defined, and the iteration continues up to the length of
 the shortest array.
 
 =={{header|C sharp|C#}}==
@@ -653,7 +653,7 @@ class Program
         min = Math.Min(min, c.Length);
         for (int i = 0; i < min; i++)
             Console.WriteLine("{0}{1}{2}", a[i], b[i], c[i]);
-    }             
+    }
 }
 ```
 
@@ -679,7 +679,7 @@ Like how a perl programmer would write it (still using Zip):
 
 ```csharp
 
-Console.WriteLine((new[] { 1, 2, 3, 4 }).Zip(new[] { "a", "b", "c" }, 
+Console.WriteLine((new[] { 1, 2, 3, 4 }).Zip(new[] { "a", "b", "c" },
 (f, s) => f + " " + s));
 
 ```
@@ -711,8 +711,8 @@ Multiloop(new char[] { 'a', 'b', 'c', 'd' }, new char[] { 'A', 'B', 'C' }, new i
 
 With <code>std::vector</code>s:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 
 int main(int argc, char* argv[])
@@ -724,7 +724,7 @@ int main(int argc, char* argv[])
    std::vector<char>::const_iterator lIt = ls.begin();
    std::vector<char>::const_iterator uIt = us.begin();
    std::vector<int>::const_iterator nIt = ns.begin();
-   for(; lIt != ls.end() && uIt != us.end() && nIt != 
+   for(; lIt != ls.end() && uIt != us.end() && nIt !=
 ns.end();
        ++lIt, ++uIt, ++nIt)
    {
@@ -736,8 +736,8 @@ ns.end();
 
 Using static arrays:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main(int argc, char* argv[])
 {
@@ -746,7 +746,7 @@ int main(int argc, char* argv[])
    int ns[] = {1, 2, 3};
 
    for(size_t li = 0, ui = 0, ni = 0;
-       li < sizeof(ls) && ui < sizeof(us) && ni 
+       li < sizeof(ls) && ui < sizeof(us) && ni
 < sizeof(ns) / sizeof(int);
        ++li, ++ui, ++ni)
    {
@@ -762,8 +762,8 @@ int main(int argc, char* argv[])
 
 With <code>std::vector</code>s:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 
 int main(int argc, char* argv[])
@@ -776,8 +776,8 @@ int main(int argc, char* argv[])
     auto iup = uppers.cbegin();
     auto inum = nums.cbegin();
 
-    for(; ilow != lowers.end() 
-        and iup != uppers.end() 
+    for(; ilow != lowers.end()
+        and iup != uppers.end()
         and inum != nums.end()
         ; ++ilow, ++iup, ++inum)
     {
@@ -789,8 +789,8 @@ int main(int argc, char* argv[])
 
 Using static arrays:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iterator>
 
 int main(int argc, char* argv[])
@@ -816,8 +816,8 @@ int main(int argc, char* argv[])
 
 With <code>std::array</code>s:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <array>
 
 int main(int argc, char* argv[])
@@ -843,8 +843,8 @@ int main(int argc, char* argv[])
 
 With <code>std::array</code>s by indexes:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <array>
 #include <algorithm>
 
@@ -857,7 +857,7 @@ int main(int argc, char* argv[])
     auto const minsize = std::min(
                 lowers.size(),
                 std::min(
-                    uppers.size(), 
+                    uppers.size(),
                     nums.size()
                     )
                 );
@@ -890,7 +890,7 @@ for (x,y,z) in zip(a1, a2, a3) do
 
 
 ```clojure
-(doseq [s (map #(str %1 %2 %3) "abc" "ABC" "123")] 
+(doseq [s (map #(str %1 %2 %3) "abc" "ABC" "123")]
   (println s))
 ```
 
@@ -932,7 +932,7 @@ The sequence stops when the shortest list is exhausted.
 
 
 
-###  Using functional application 
+###  Using functional application
 
 
 ```lisp
@@ -946,7 +946,7 @@ The sequence stops when the shortest list is exhausted.
 If lists are different lengths, it stops after the shortest one.
 
 
-###  Using LOOP 
+###  Using LOOP
 
 
 ```lisp
@@ -981,7 +981,7 @@ cC3
 ```
 
 zip() allows to specify the stopping policy.
-On default it stops when the shortest range is exhausted 
+On default it stops when the shortest range is exhausted
 (same as StoppingPolicy.shortest):
 
 ```d
@@ -1022,7 +1022,7 @@ void main () {
 22
 ```
 
-Followed by an exception with message "Inequal-length ranges passed to 
+Followed by an exception with message "Inequal-length ranges passed to
 Zip".
 
 There is also std.range.lockstep:
@@ -1097,8 +1097,8 @@ end.
 
 ## DWScript
 
-If the arrays don't have the same bounds, an index out of bound 
-exception will be triggered when attempting to access a non-existing 
+If the arrays don't have the same bounds, an index out of bound
+exception will be triggered when attempting to access a non-existing
 element.
 
 
@@ -1117,9 +1117,9 @@ for i := 0 to 2 do
 ## E
 
 
-E lacks a nice way to do this; this is 
-[http://wiki.erights.org/wiki/Parallel_iteration to be fixed, once we 
-figure out what to do]. However, iteration over an List produces its 
+E lacks a nice way to do this; this is
+[http://wiki.erights.org/wiki/Parallel_iteration to be fixed, once we
+figure out what to do]. However, iteration over an List produces its
 indexes as keys, so a not entirely awful idiom exists:
 
 
@@ -1147,12 +1147,12 @@ for [v1, v2, v3] in zip(a1, a2, a3) {
 ```
 
 
-<code>zip</code> cannot yet be defined for all collections 
+<code>zip</code> cannot yet be defined for all collections
 (other than by iterating over each one and storing the results in a List
- first); but we can define it for numeric-indexed collections such as 
+ first); but we can define it for numeric-indexed collections such as
 Lists, as below. Both a definition for any number of collections and two
- collections is given; the latter in order to demonstrate the principle 
-without the clutter resulting from handling a variable number of 
+ collections is given; the latter in order to demonstrate the principle
+without the clutter resulting from handling a variable number of
 collections.
 
 
@@ -1197,19 +1197,19 @@ def zip {
 ```scheme
 
 ;; looping over different sequences : infinite stream, string, list and vector
-;; loop stops as soon a one sequence ends. 
+;; loop stops as soon a one sequence ends.
 ;; the (iota 6) = ( 0 1 2 3 4 5) sequence will stop first.
 
 
-(for ((i (in-naturals 1000)) (j "ABCDEFGHIJK") (k (iota 6)) (m #(o p q r s t u v w))) 
+(for ((i (in-naturals 1000)) (j "ABCDEFGHIJK") (k (iota 6)) (m #(o p q r s t u v w)))
     (writeln i j k m))
 
-1000     "A"     0     o    
-1001     "B"     1     p    
-1002     "C"     2     q    
-1003     "D"     3     r    
-1004     "E"     4     s    
-1005     "F"     5     t    
+1000     "A"     0     o
+1001     "B"     1     p
+1002     "C"     2     q
+1003     "D"     3     r
+1004     "E"     4     s
+1005     "F"     5     t
 
 ```
 
@@ -1219,9 +1219,9 @@ def zip {
 
 
 ```efene
-@public 
+@public
 run = fn () {
-    lists.foreach(fn ((A, B, C)) { io.format("~s~n", [[A, B, C]]) }, 
+    lists.foreach(fn ((A, B, C)) { io.format("~s~n", [[A, B, C]]) },
 lists.zip3("abc", "ABC", "123"))
 }
 
@@ -1237,8 +1237,8 @@ If the lists are not all the same length, an error is thrown.
 
 ```ela
 open monad io list imperative
- 
-xs = zipWith3 (\x y z -> show x ++ show y ++ show z) ['a','b','c'] 
+
+xs = zipWith3 (\x y z -> show x ++ show y ++ show z) ['a','b','c']
   ['A','B','C'] [1,2,3]
 
 print x = do putStrLn x
@@ -1251,9 +1251,9 @@ print_and_calc xs ::: IO
 ```
 
 
-The code above can be written shorter. First there is no need in lists 
-as soon as strings in Ela can be treated as lists. Also instead of 
-explicit labmda one can use partial application and a standard 
+The code above can be written shorter. First there is no need in lists
+as soon as strings in Ela can be treated as lists. Also instead of
+explicit labmda one can use partial application and a standard
 composition operator:
 
 
@@ -1309,18 +1309,18 @@ import system'routines;
 import extensions;
 
 public program()
-{  
+{
     var a1 := new string[]::("a","b","c");
     var a2 := new string[]::("A","B","C");
     var a3 := new int[]::(1,2,3);
-    
+
     for(int i := 0, i < a1.Length, i += 1)
     {
         console.printLine(a1[i], a2[i], a3[i])
     };
-    
+
     programUsingZip();
-    
+
     console.readChar()
 }
 ```
@@ -1339,10 +1339,10 @@ public program
     var a3 := new int[]::(1,2,3);
     var zipped := a1.zipBy(a2,(first,second => first + second.toString() ))
                        .zipBy(a3, (first,second => first + second.toString() ));
-    
+
     zipped.forEach:(e)
         { console.writeLine:e };
-        
+
     console.readChar();
 }
 ```
@@ -1364,16 +1364,16 @@ cC3
 Shortest option:
 
 ```erlang
-lists:zipwith3(fun(A,B,C)-> 
+lists:zipwith3(fun(A,B,C)->
 io:format("~s~n",[[A,B,C]]) end, "abc", "ABC", "123").
 ```
 
-However, as every expression in Erlang has to return something, printing text returns 'ok'. A list with as many 'ok's as there are lines printed will thus be created. The technically cleanest way to do things would be with 
-<tt>lists:foreach/2</tt>, which also guarantees evaluation 
+However, as every expression in Erlang has to return something, printing text returns 'ok'. A list with as many 'ok's as there are lines printed will thus be created. The technically cleanest way to do things would be with
+<tt>lists:foreach/2</tt>, which also guarantees evaluation
 order:
 
 ```erlang
-lists:foreach(fun({A,B,C}) ->  
+lists:foreach(fun({A,B,C}) ->
 io:format("~s~n",[[A,B,C]]) end,
               lists:zip3("abc", "ABC", "123")).
 ```
@@ -1420,9 +1420,9 @@ end for
 ```
 
 
-A general solution for any arbitrary strings of characters or numbers 
-can get a bit complex.  This is because of how sequences are stored and 
-printed out.  One possible answer is as follows, if you know that only 
+A general solution for any arbitrary strings of characters or numbers
+can get a bit complex.  This is because of how sequences are stored and
+printed out.  One possible answer is as follows, if you know that only
 alphanumeric characters are used:
 
 ```Euphoria
@@ -1442,8 +1442,8 @@ end for
 
 ```
 
-Just as in Java, using single quotes around a character gives you its 
-"char value".  In Euphoria, though, it is simply that character's code 
+Just as in Java, using single quotes around a character gives you its
+"char value".  In Euphoria, though, it is simply that character's code
 in ASCII.
 
 With all three of the above solutions, if any of the strings are smaller
@@ -1452,13 +1452,13 @@ With all three of the above solutions, if any of the strings are smaller
 =={{header|F_Sharp|F#}}==
 
 ```fsharp
-for c1,c2,n in Seq.zip3 ['a';'b';'c'] ['A';'B';'C'] 
+for c1,c2,n in Seq.zip3 ['a';'b';'c'] ['A';'B';'C']
 [1;2;3] do
   printfn "%c%c%d" c1 c2 n
 ```
 
 
-When one sequence is exhausted, any remaining elements in the other 
+When one sequence is exhausted, any remaining elements in the other
 sequences are ignored.
 
 
@@ -1466,7 +1466,7 @@ sequences are ignored.
 
 
 ```factor
-"abc" "ABC" "123" [ [ write1 ] tri@ nl ] 
+"abc" "ABC" "123" [ [ write1 ] tri@ nl ]
 3each
 ```
 
@@ -1664,11 +1664,11 @@ cC3
 
 ```gap
 
-# The Loop function will apply some function to every tuple built by 
+# The Loop function will apply some function to every tuple built by
 taking
-# the i-th element of each list. If one of them is exhausted before the 
+# the i-th element of each list. If one of them is exhausted before the
 others,
-# the loop continues at its begining. Only the longests lists will be 
+# the loop continues at its begining. Only the longests lists will be
 precessed only once.
 Loop := function(a, f)
     local i, j, m, n, v;
@@ -1705,17 +1705,17 @@ aE2
 
 ## Go
 
-Go's "range clause" of a for statement only looks at a single iterable 
+Go's "range clause" of a for statement only looks at a single iterable
 value (array, slice, etc).
 To access the three in parallel, they have to be explicitly indexed.
 
-If <code>a2</code> or <code>a3</code> were 
-shorter, the program would panic with "runtime error: index out of 
+If <code>a2</code> or <code>a3</code> were
+shorter, the program would panic with "runtime error: index out of
 range".
-If <code>a2</code> or <code>a3</code> were 
+If <code>a2</code> or <code>a3</code> were
 longer, extra elements would be ignored.
-Go's philosophy is that you should explicitly check for whatever 
-conditions are meaningful in your application and explicitly handle 
+Go's philosophy is that you should explicitly check for whatever
+conditions are meaningful in your application and explicitly handle
 whatever errors are plausible.
 
 ```go
@@ -1747,7 +1747,7 @@ func main() {
 ```
 
 
-If there are arrays of different size, the shorter are treated as 
+If there are arrays of different size, the shorter are treated as
 "null-padded" array.
 
 
@@ -1797,7 +1797,7 @@ PROCEDURE Main()
 	      a2 := { "A", "B", "C", "D" }, ; // the last element "D" of this array will be ignored
 	      a3 := { 1, 2, 3 }
 	LOCAL e1, e2, e3
-	
+
 	FOR EACH e1, e2, e3 IN a1, a2, a3
 		Qout( e1 + e2 + hb_ntos( e3 ) )
 	NEXT
@@ -1809,7 +1809,7 @@ Output:
    aA1
    bB2
    cC3
-If the arrays are not of equal length, the iteration stops after the last item of the smaller array has been processed;  
+If the arrays are not of equal length, the iteration stops after the last item of the smaller array has been processed;
 any extra items of lengthier arrays are ignored (or in other words, the iteration counter never exceeds the length of the smaller array, thus preventing an 'out of subscript range' error).
 
 
@@ -1864,15 +1864,15 @@ main = sequence $ getZipList $ (\x y z -> putStrLn [x, y, z]) <$> ZipList "abd" 
 using Lambda;
 using Std;
 
-class Main 
+class Main
 {
-	
-	static function main() 
+
+	static function main()
 	{
 		var a = ['a', 'b', 'c'];
 		var b = ['A', 'B', 'C'];
 		var c = [1, 2, 3];
-		
+
 		//Find smallest array
 		var len = [a, b, c]
 			.map(function(a) return a.length)
@@ -1916,7 +1916,7 @@ end
 ```
 
 
-The second solution is more like other procedural languages 
+The second solution is more like other procedural languages
 and also handles unequal list lengths.
 
 ```Icon
@@ -1934,8 +1934,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/procs/numbers.htm Uses max from 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/procs/numbers.htm Uses max from
 numbers]
 
 
@@ -1981,7 +1981,7 @@ aA1
 bB2
 cC3
 ```
- 
+
 These implementations pad short arrays with spaces.
 
 Or:
@@ -1999,15 +1999,15 @@ Or:
 ```
 
 
-This implementation puts each item from each of the original lists 
+This implementation puts each item from each of the original lists
 into a box and forms an array of boxes.
-(A "box" is a immutable pointer to immutable data 
+(A "box" is a immutable pointer to immutable data
 -- in other words value semantics instead of reference semantics --
-and "putting an item into a box" is obtaining one of these pointers for 
-that item.)  
-This implementation extends any short array by providing empty boxes 
-to represent the missing elements. 
-(An "empty box" is what a programmer in another language might call 
+and "putting an item into a box" is obtaining one of these pointers for
+that item.)
+This implementation extends any short array by providing empty boxes
+to represent the missing elements.
+(An "empty box" is what a programmer in another language might call
 "a pointer to a zero length array".)
 
 
@@ -2024,10 +2024,10 @@ for(int i = 0;i < a.length;i++){
 }
 ```
 
-If the first array is too short, it will stop 
-when it gets to the end of the first array.  
-If one of the other arrays is too short, 
-an <code>ArrayIndexOutOfBoundException</code> will be 
+If the first array is too short, it will stop
+when it gets to the end of the first array.
+If one of the other arrays is too short,
+an <code>ArrayIndexOutOfBoundException</code> will be
 thrown.
 
 
@@ -2037,7 +2037,7 @@ thrown.
 
 ### Imperative
 
-This loops over the indices of the first array, 
+This loops over the indices of the first array,
 and uses that to index into the others.
 
 ```javascript
@@ -2051,7 +2051,7 @@ for (i = 0; i < a.length; i += 1) {
 }
 ```
 
-If the b or c arrays are too "short", 
+If the b or c arrays are too "short",
 you will see the string "undefined" appear in the output.
 
 Alternatively, we can nest a couple of calls to '''.forEach()''': one for the array of three arrays, and one for each of the three index positions:
@@ -2158,7 +2158,7 @@ Or we could write a generic '''zipListsWith''' applying some supplied function o
 
     // TEST
     return zipListsWith(
-        concat, 
+        concat,
         [["a", "b", "c"], ["A", "B", "C"], [1, 2, 3]]
     )
     .join('\n');
@@ -2228,12 +2228,12 @@ cC3
 
 ## jq
 
-The following solution is based on the assumption that all the arrays 
-can be presented as an array of arrays. 
-This allows any number of arrays to be handled. 
+The following solution is based on the assumption that all the arrays
+can be presented as an array of arrays.
+This allows any number of arrays to be handled.
 
-Specifically, zip/0 expects an array of 0 or more arrays as its input. 
-The first array determines the number of items in the output; 
+Specifically, zip/0 expects an array of 0 or more arrays as its input.
+The first array determines the number of items in the output;
 nulls are used for padding.
 
 ```jq
@@ -2255,7 +2255,7 @@ Example 1:
 
 ```
 
-To obtain the compact output used in the the task description, 
+To obtain the compact output used in the the task description,
 we can filter the results through a "pretty-print" function:
  def pp: reduce .[] as $i (""; . + "\($i)");
 
@@ -2275,9 +2275,9 @@ Example 2:
 
 
 As already mentioned, the above definition of zip/0 privileges the first
- array, 
+ array,
 and if the subsequent arrays are of different lengths, null is used as a
- filler. 
+ filler.
 Thus:
  [["a","b","c"], ["A","B"], [1]] | zip
 
@@ -2285,8 +2285,8 @@ produces:
  [["a","A",1],["b","B",null],["c",null,null]]
 
 '''Handling jagged input'''
-An alternative approach would be use a variant of zip/0 
-that pads all arrays shorter than the longest with nulls.  
+An alternative approach would be use a variant of zip/0
+that pads all arrays shorter than the longest with nulls.
 Here is such a variant:
 
 ```jq
@@ -2316,7 +2316,7 @@ var a3 = [1, 2, 3];
 puts('Equal sizes');
 var arr = [a1, a2, a3];
 var m = arr[0].length;
-for (var a of arr) if (a.length > m) m = a.length; 
+for (var a of arr) if (a.length > m) m = a.length;
 for (var i = 0; i < m; i++) printf("%q%q%q\n", a1[i], a2[i], a3[i]);
 
 puts('\nUnequal sizes');
@@ -2399,15 +2399,15 @@ cC3
 
 ("aA1"
  "bB2"
- "cC3")    
+ "cC3")
 
 ```
 
 
-If the length of the arrays are different, 
+If the length of the arrays are different,
 then K croaks with "length error".
 
-The following is a more general approach where 
+The following is a more general approach where
 
 ```K
 
@@ -2434,11 +2434,11 @@ and is used to index the first elements in each array.
 ("aA1"
  "bB2"
  "cC3")
- 
+
 ```
 
 
-If the arrays are of different type, 
+If the arrays are of different type,
 then the arrays must be converted to strings.
 
 
@@ -2459,7 +2459,7 @@ then the arrays must be converted to strings.
 fun main(args: Array<String>) {
     val a1 = charArrayOf('a', 'b', 'c')
     val a2 = charArrayOf('A', 'B', 'C')
-    val a3 = intArrayOf(1, 2, 3) 
+    val a3 = intArrayOf(1, 2, 3)
     for(i in 0 .. 2) println("${a1[i]}${a2[i]}${a3[i]}")
     println()
     // For arrays of different sizes we would need to iterate up to the mimimm size of all 3 in order
@@ -2502,15 +2502,15 @@ B5e
 ```
 
 
-If any of the data lists differ in size from the other, 
-the results will print out up to the shortest data list, 
+If any of the data lists differ in size from the other,
+the results will print out up to the shortest data list,
 and then raise a <code>function_clause</code> error.
 
-Erlang, and thus LFE, have <code>zipwith</code> and 
-<code>zipwith3</code> for working with 2 and 3 simultaneous 
-sets of data respectively. 
-If you need more than that, you'll need to create your own "zip" 
-function with something like <code lisp>(: lists map 
+Erlang, and thus LFE, have <code>zipwith</code> and
+<code>zipwith3</code> for working with 2 and 3 simultaneous
+sets of data respectively.
+If you need more than that, you'll need to create your own "zip"
+function with something like <code lisp>(: lists map
 ...)</code>.
 
 
@@ -2575,7 +2575,7 @@ command loopArrays
     put "a,b,c" into lowA
     put "A,B,C" into uppA
     put "1,2,3" into nums
-    
+
     split lowA by comma
     split uppA by comma
     split nums by comma
@@ -2598,7 +2598,7 @@ command loopDelimitedList
     put "1,2,3" into nums
 
     repeat with n = 1 to the number of items of lowA
-        put item n of lowA & item n of uppA & item n of nums 
+        put item n of lowA & item n of uppA & item n of nums
 & return after z
     end repeat
     put z
@@ -2606,7 +2606,7 @@ command loopDelimitedList
 end loopDelimitedList
 ```
 
-Output - both behave similarly for this exercise. 
+Output - both behave similarly for this exercise.
 
 ```txt
 aA1
@@ -2615,8 +2615,8 @@ cC3
 ```
 
 
-When there are fewer elements than the first (or whatever the loop is 
-based on), livecode will add an "empty" value. If we add a "d" to lowA 
+When there are fewer elements than the first (or whatever the loop is
+based on), livecode will add an "empty" value. If we add a "d" to lowA
 and a 4 to nums we get the following:
 
 ```txt
@@ -2634,10 +2634,10 @@ d4
 
 
 ```logo
-show (map [(word ?1 ?2 ?3)] [a b c] [A B C] [1 2 3])   
+show (map [(word ?1 ?2 ?3)] [a b c] [A B C] [1 2 3])
  ; [aA1 bB2 cC3]
 
-(foreach [a b c] [A B C] [1 2 3] [print (word ?1 ?2 ?3)])  ; as above, 
+(foreach [a b c] [A B C] [1 2 3] [print (word ?1 ?2 ?3)])  ; as above,
 one per line
 ```
 
@@ -2654,7 +2654,7 @@ for i = 1, 3 do print(a1[i]..a2[i]..a3[i]) end
 
 ```
 
-but it may be more enlightening 
+but it may be more enlightening
 (and in line with the spirit of the challenge) to use the generic for:
 
 ```lua
@@ -2711,7 +2711,7 @@ print_elems(A, B, C, !IO) :-
 
 ```
 
-The foldl_corresponding family of procedures all throw a 
+The foldl_corresponding family of procedures all throw a
 software_error/1
 exception if the lengths of the lists are not the same.
 
@@ -2724,14 +2724,14 @@ IMPORT IO, Fmt;
 
 TYPE ArrIdx = [1..3];
 
-VAR 
+VAR
   arr1 := ARRAY ArrIdx OF CHAR {'a', 'b', 'c'};
   arr2 := ARRAY ArrIdx OF CHAR {'A', 'B', 'C'};
   arr3 := ARRAY ArrIdx OF INTEGER {1, 2, 3};
 
 BEGIN
   FOR i := FIRST(ArrIdx) TO LAST(ArrIdx) DO
-    IO.Put(Fmt.Char(arr1[i]) & Fmt.Char(arr2[i]) & 
+    IO.Put(Fmt.Char(arr1[i]) & Fmt.Char(arr2[i]) &
 Fmt.Int(arr3[i]) & "\n");
   END;
 END MultiArray.
@@ -2757,14 +2757,14 @@ LOOPMULT
 
 ```
 
-When there aren't enough elements, 
+When there aren't enough elements,
 a null string will be returned from the $Piece function.
 
 {{out}}
 
 ```txt
 USER>d LOOPMULT^ROSETTA
- 
+
 aA1
 bB2
 cC3
@@ -2781,9 +2781,9 @@ LOOPMULU
  S A(1)="a",A(2)="b",A(3)="c",A(4)="d"
  S B(1)="A",B(2)="B",B(3)="C",B(4)="D"
  S C(1)="1",C(2)="2",C(3)="3"
- ; will error    S %=$O(A("")) F  Q:%=""  W !,A(%),B(%),C(%) S 
+ ; will error    S %=$O(A("")) F  Q:%=""  W !,A(%),B(%),C(%) S
 %=$O(A(%))
- S %=$O(A("")) F  Q:%=""  W !,$G(A(%)),$G(B(%)),$G(C(%)) S %=$O(A(%)) 
+ S %=$O(A("")) F  Q:%=""  W !,$G(A(%)),$G(B(%)),$G(C(%)) S %=$O(A(%))
  K A,B,C,D,%
 
 ```
@@ -2791,14 +2791,14 @@ LOOPMULU
 
 The commented out line will throw an <UNDEFINED> error when trying
  to look up D(4). Using the $Get function as a wrapper means that if the
- subscript for the array doesn't exist, a null string will be returned. 
-This same syntax is used for globals (permanent variables, that have a 
+ subscript for the array doesn't exist, a null string will be returned.
+This same syntax is used for globals (permanent variables, that have a
 caret "^" as the first character).
 {{out}}
 
 ```txt
 USER>D LOOPMULU^ROSETTA
- 
+
 aA1
 bB2
 cC3
@@ -2818,7 +2818,7 @@ dD
 
 ## Nemerle
 
-It "feels" better to use zip() for this, 
+It "feels" better to use zip() for this,
 unfortunately the built in zip() only takes two lists.
 
 ```Nemerle
@@ -2827,7 +2827,7 @@ using System.Console;
 
 module LoopMultiple
 {
-    Zip3[T1, T2, T3] (x : list[T1], y : list[T2], z : list[T3]) : 
+    Zip3[T1, T2, T3] (x : list[T1], y : list[T2], z : list[T3]) :
 list[T1 * T2 * T3]
     {
         |(x::xs, y::ys, z::zs) => (x, y, z)::Zip3(xs, ys, zs)
@@ -2836,13 +2836,13 @@ list[T1 * T2 * T3]
         |(_, [], _)            => throw ArgumentNullException()
         |([], _, _)            => throw ArgumentNullException()
     }
-    
+
     Main() : void
     {
         def first  = ['a', 'b', 'c'];
         def second = ["A", "B", "C"];
         def third  = [1, 2, 3];
-        
+
         foreach ((x, y, z) in Zip3(first, second, third))
             WriteLine($"$x$y$z");
     }
@@ -2862,8 +2862,8 @@ module LoopMult
         def first  = array['a', 'b', 'c'];
         def second = array['A', 'B', 'C'];
         def third  = array[1, 2, 3];
-        
-        when (first.Length == second.Length && second.Length == 
+
+        when (first.Length == second.Length && second.Length ==
 third.Length)
             foreach (i in [0 .. (first.Length - 1)])
                 WriteLine("{0}{1}{2}", first[i], second[i], third[i]);
@@ -2920,7 +2920,7 @@ method sampleData(arg) public static returns Rexx
   loop i_ = 1 to smp[0]
     smp[i_] = arg.word(i_)
     end i_
-    
+
   return smp
 
 ```
@@ -2946,7 +2946,7 @@ d 4
 
 
 ```NewLISP
-(map println '(a b c) '(A B C) '(1 2 
+(map println '(a b c) '(A B C) '(1 2
 3))
 ```
 
@@ -2972,7 +2972,7 @@ Works with oo2c version 2
 ```oberon2
 
 MODULE LoopMArrays;
-IMPORT 
+IMPORT
 	Out;
 VAR
 	x,y: ARRAY 3 OF CHAR;
@@ -3020,7 +3020,7 @@ class MultipleArrayAccess {
     a := ["a", "b", "c"];
     b := ["A", "B", "C"];
     c := [1, 2, 3];
-    
+
     each(i : a) {
       a[i]->Append(b[i]);
       a[i]->Append(c[i]);
@@ -3032,7 +3032,7 @@ class MultipleArrayAccess {
 ```
 
 
-If the arrays are different lengths, 
+If the arrays are different lengths,
 then an out-of-bounds error will be raised.
 
 
@@ -3054,7 +3054,7 @@ Array.iteri (fun i c1 ->
 ```
 
 
-a more generic solution could be to use a function 
+a more generic solution could be to use a function
 which iterates over a list of arrays:
 
 
@@ -3064,7 +3064,7 @@ let n_arrays_iter ~f = function
   | x::xs as al ->
       let len = Array.length x in
       let b = List.for_all (fun a -> Array.length a = len) xs in
-      if not b then invalid_arg "n_arrays_iter: arrays of different 
+      if not b then invalid_arg "n_arrays_iter: arrays of different
 length";
       for i = 0 to pred len do
         let ai = List.map (fun a -> a.(i)) al in
@@ -3074,12 +3074,12 @@ length";
 
 
 this function raises Invalid_argument exception if arrays have different
- length, 
+ length,
 and has this signature:
 
 
 ```ocaml
-val n_arrays_iter : f:('a list -> unit) -> 'a 
+val n_arrays_iter : f:('a list -> unit) -> 'a
 array list -> unit
 ```
 
@@ -3104,7 +3104,7 @@ If arrays don't have the same size, zipAll reduces to the minimum size
 
 
 ```Oforth
-[ "a", "b", "c" ] [ "A", "B", "C" ] [ 1, 2, 3 ] 
+[ "a", "b", "c" ] [ "A", "B", "C" ] [ 1, 2, 3 ]
 zipAll(3) apply(#[ apply(#print) printcr ])
 ```
 
@@ -3219,7 +3219,7 @@ zip { print @_,"\n" }\(@a1, @a2, @a3);
 ```
 
 
-This implementation will stop producing items when the shortest array 
+This implementation will stop producing items when the shortest array
 ends.
 
 
@@ -3241,7 +3241,7 @@ The <code>Z</code> operator stops emitting items as soon as the shortest input l
 Since <code>Z</code> will return a list of lists (in this example, the first list is <code>('a', 'A', 1)</code>, parentheses are used around in the lambda signature <code>($x, $y, $z)</code> to unpack the list for each iteration.
 
 
-###  Factoring out concatenation 
+###  Factoring out concatenation
 
 
 Note that we can also factor out the concatenation by making the <tt>Z</tt> metaoperator apply the <tt>~</tt> concatenation operator across each triple:
@@ -3261,7 +3261,7 @@ We could also use the zip-to-string with the reduction metaoperator:
 
 
 
-###  A list and its indices 
+###  A list and its indices
 
 
 The common case of iterating over a list and a list of its indices can be done using the same method:
@@ -3315,7 +3315,7 @@ cC3
 ```PHP
 $a = array('a', 'b', 'c');
 $b = array('A', 'B', 'C');
-$c = array('1', '2', '3'); //These don't *have* to be strings, but it 
+$c = array('1', '2', '3'); //These don't *have* to be strings, but it
 saves PHP from casting them later
 
 if ((sizeOf($a) !== sizeOf($b)) || (sizeOf($b) !== sizeOf($c))){
@@ -3327,7 +3327,7 @@ foreach ($a as $key => $value){
 ```
 
 
-This implementation throws an exception if the arrays are not all the 
+This implementation throws an exception if the arrays are not all the
 same length.
 
 
@@ -3341,8 +3341,8 @@ same length.
    (1 2 3) )
 ```
 
-The length of the first argument list controls the operation. 
-If subsequent lists are longer, their remaining values are ignored. 
+The length of the first argument list controls the operation.
+If subsequent lists are longer, their remaining values are ignored.
 If they are shorter, NIL is passed to the function.
 
 
@@ -3529,19 +3529,19 @@ Input() ;wait for Enter before ending
 
 If they have different lengths there are two cases:
 
-a() is the shortest one: Only elements up to maximum index of a() are 
-printed  
+a() is the shortest one: Only elements up to maximum index of a() are
+printed
 
-a() is bigger than another one:  if exceeding index to much, program 
-crashes, 
+a() is bigger than another one:  if exceeding index to much, program
+crashes,
 
-else it may work because there is some "free space" after end of 
-assigned array memory. 
+else it may work because there is some "free space" after end of
+assigned array memory.
 
-For example if a has size 4, line dD4 will also be printed. size 20 
-leads to an crash 
+For example if a has size 4, line dD4 will also be printed. size 20
+leads to an crash
 
-This is because ReDim becomes slow if everytime there is a change to 
+This is because ReDim becomes slow if everytime there is a change to
 array size new memory has to be allocated.
 
 
@@ -3550,7 +3550,7 @@ array size new memory has to be allocated.
 Using <tt>zip()</tt>:
 
 ```python>>>
- print ( '\n'.join(''.join(x) for x in 
+ print ( '\n'.join(''.join(x) for x in
 zip('abc', 'ABC', '123')) )
 aA1
 bB2
@@ -3558,7 +3558,7 @@ cC3
 >>>
 ```
 
-If lists are different lengths, <tt>zip()</tt> stops after 
+If lists are different lengths, <tt>zip()</tt> stops after
 the shortest one.
 
 Using <tt>map()</tt>:
@@ -3571,7 +3571,7 @@ cC3
 >>>
 ```
 
-If lists are different lengths, <tt>map()</tt> in Python 2.x pretends that the shorter lists were extended with 
+If lists are different lengths, <tt>map()</tt> in Python 2.x pretends that the shorter lists were extended with
 <tt>None</tt> items; <tt>map()</tt> in Python 3.x stops after the shortest one.
 
 Using <tt>itertools.imap()</tt> (Python 2.x):
@@ -3585,16 +3585,16 @@ def join3(a,b,c):
 imap(join3,'abc','ABC','123')
 ```
 
-If lists are differnt lengths, <tt>imap()</tt> stops after 
+If lists are differnt lengths, <tt>imap()</tt> stops after
 the shortest is exhausted.
 
-Python 3.X has <tt>zip_longest</tt> which fills shorter iterables with its 
-fillvalue argument which defaults to <tt>None</tt> (similar to the behavior of 
+Python 3.X has <tt>zip_longest</tt> which fills shorter iterables with its
+fillvalue argument which defaults to <tt>None</tt> (similar to the behavior of
 ''map()'' in Python 2.x):
 
 ```python>>>
  from itertools import zip_longest
->>> print ( '\n'.join(''.join(x) for x in zip_longest('abc', 
+>>> print ( '\n'.join(''.join(x) for x in zip_longest('abc',
 'ABCD', '12345', fillvalue='#')) )
 aA1
 bB2
@@ -3612,10 +3612,10 @@ cC3
 
 ```R
 multiloop <- function(...)
-{  
+{
    # Retrieve inputs and convert to a list of character strings
    arguments <- lapply(list(...), as.character)
-   
+
    # Get length of each input
    lengths <- sapply(arguments, length)
 
@@ -3635,7 +3635,7 @@ multiloop(letters[1:3], LETTERS[1:3], 1:3)
 ```
 
 
-Same thing as a single function call. 
+Same thing as a single function call.
 But throws error if the arrays differ in length.
 
 
@@ -3651,7 +3651,7 @@ apply(data.frame(letters[1:3], LETTERS[1:3], 1:3), 1,
 ## Racket
 
 
-Racket <tt>for</tt> loops can loop over an arbitrary number 
+Racket <tt>for</tt> loops can loop over an arbitrary number
 of sequences of any kind at once:
 
 
@@ -3685,8 +3685,8 @@ When a variable is used in a path notation, we put a colon in front of it.   :co
 blk: [["a" "b" "c"] ["A" "B" "C"] [1 2 3]]
 == [["a" "b" "c"] ["A" "B" "C"] [1 2 3]]
 
->> repeat counter 3 [print [blk/1/:counter blk/2/:counter blk/3/:counter]]                                     
-a A 1                                                                  
+>> repeat counter 3 [print [blk/1/:counter blk/2/:counter blk/3/:counter]]
+a A 1
 b B 2
 c C 3
 ```
@@ -3698,7 +3698,7 @@ c C 3
 
 ### same size arrays
 
-If any of the array's elements are missing or it is a short list, 
+If any of the array's elements are missing or it is a short list,
 a blank is substituted to retain visual fidelity in the output.
 
 
@@ -3774,7 +3774,7 @@ z =  1 2 3 4
                say output
                end    /*j*/            /*stick a fork in it, we're done.*/
 ```
- 
+
 '''output'''
 
 ```txt
@@ -3823,10 +3823,10 @@ d4
 array1 = ["a", "b", "c"]
 array2 = ["A", "B", "C"]
 array3 = [1, 2, 3]
- 
+
 for n = 1 to 3
     see array1[n] + array2[n] + array3[n] + nl
-next 
+next
 
 ```
 
@@ -3848,8 +3848,8 @@ or
 
 Both of these loops print <code>aA1</code>, <code>bB2</code>, <code>cC3</code>.
 
-<code>Array#zip</code> iterates once for each element of the receiver.  
-If an argument array is longer, the excess elements are ignored.  
+<code>Array#zip</code> iterates once for each element of the receiver.
+If an argument array is longer, the excess elements are ignored.
 If an argument array is shorter, the value <code>nil</code> is supplied.
 
 ```ruby
@@ -3872,7 +3872,7 @@ for i = 1 to 3
  a$(i) = chr$(i+96)
  b$(i) = chr$(i+64)
  c(i)  = i
-next i 
+next i
 
 for i = 1 to 3
     print a$(i);b$(i);c(i)
@@ -3939,10 +3939,10 @@ iterate (x; zip(a, b, c))
 ```
 
 
-The preceding code will throw an exception if the lists aren't the same 
-length.  
-Here's an example that will print a number of lines equal to the length 
-of the longest list and print nothing for elements that are missing if 
+The preceding code will throw an exception if the lists aren't the same
+length.
+Here's an example that will print a number of lines equal to the length
+of the longest list and print nothing for elements that are missing if
 some lists are shorter than the longest:
 
 
@@ -4014,10 +4014,10 @@ If the index ''i'' is out of bounds, a runtime error is raised.
 ## Scheme
 
 
-Scheme provides <code>for-each</code> and 
-<code>map</code> to iterate a function over one or more 
-lists.  
-The <code>map</code> form is used to collect the results 
+Scheme provides <code>for-each</code> and
+<code>map</code> to iterate a function over one or more
+lists.
+The <code>map</code> form is used to collect the results
 into a new list.
 
 
@@ -4026,11 +4026,11 @@ into a new list.
 (let ((a '("a" "b" "c"))
       (b '("A" "B" "C"))
       (c '(1 2 3)))
-  (for-each 
-    (lambda (i1 i2 i3) 
-      (display i1) 
-      (display i2) 
-      (display i3) 
+  (for-each
+    (lambda (i1 i2 i3)
+      (display i1)
+      (display i2)
+      (display i3)
       (newline))
     a b c))
 
@@ -4038,8 +4038,8 @@ into a new list.
 
 
 Scheme has a <code>vector</code> datatype with constant-time
- retrieval of items held in an ordered sequence.  Use srfi-43 to get 
-similar iterators for vectors, <code>vector-for-each</code> 
+ retrieval of items held in an ordered sequence.  Use srfi-43 to get
+similar iterators for vectors, <code>vector-for-each</code>
 and <code>vector-map</code>:
 
 
@@ -4050,9 +4050,9 @@ and <code>vector-map</code>:
       (c (vector 1 2 3)))
   (vector-for-each
     (lambda (current-index i1 i2 i3)
-      (display i1) 
-      (display i2) 
-      (display i3) 
+      (display i1)
+      (display i2)
+      (display i3)
       (newline))
     a b c))
 
@@ -4108,7 +4108,7 @@ If index ''i'' is out of bound, a runtime error is raised.
 
 ## Standard ML
 
-The below code will combine arbitrarily many lists of strings 
+The below code will combine arbitrarily many lists of strings
 into a single list with length equal to that of the shortest list.
 
 ```Standard ML
@@ -4143,7 +4143,7 @@ forv i=1/3 {
 
 
 
-###  Mata 
+###  Mata
 
 
 
@@ -4330,12 +4330,12 @@ foreach i $list1 j $list2 k $list3 {
 }
 ```
 
-If lists are different lengths, the manual 
+If lists are different lengths, the manual
 [http://www.tcl.tk/man/tcl8.5/TclCmd/foreach.htm] says:
-"The total number of loop iterations is large enough to use up all the 
-values from all the value lists. 
-If a value list does not contain enough elements for each of its loop 
-variables in each iteration, empty values are used for the missing 
+"The total number of loop iterations is large enough to use up all the
+values from all the value lists.
+If a value list does not contain enough elements for each of its loop
+variables in each iteration, empty values are used for the missing
 elements."
 
 
@@ -4408,13 +4408,13 @@ cC3
 
 ===TXR Lisp, using <code>mapcar</code>===
 
-Here we actually loop over four things: three strings and an infinite 
-list of newlines. The output is built up as one string object that is 
+Here we actually loop over four things: three strings and an infinite
+list of newlines. The output is built up as one string object that is
 finally printed in one go.
 
 
 ```bash
-$ txr -e '(pprint (mappend (op list) "abc" "ABC" "123" 
+$ txr -e '(pprint (mappend (op list) "abc" "ABC" "123"
 (repeat "\n"))))'
 aA1
 bB2
@@ -4426,7 +4426,7 @@ cC3
 
 
 ```bash
-$ txr -e '(each ((x "abc") (y "ABC") (z "123")) 
+$ txr -e '(each ((x "abc") (y "ABC") (z "123"))
 (put-line `@x@y@z`))'
 aA1
 bB2
@@ -4504,11 +4504,11 @@ cC3
 
 ## UNIX Shell
 
-With the Bourne shell, its <code>for</code> loop (from 
-[[Loops/Foreach#UNIX Shell]]) can iterate only one list. 
-We use an index <code>i</code> to access the other lists: 
-<code>set -- $list</code> loads the positional parameters, 
-and <code>shift $i</code> moves our element to 
+With the Bourne shell, its <code>for</code> loop (from
+[[Loops/Foreach#UNIX Shell]]) can iterate only one list.
+We use an index <code>i</code> to access the other lists:
+<code>set -- $list</code> loads the positional parameters,
+and <code>shift $i</code> moves our element to
 <code>$1</code>.
 
 {{works with|Bourne Shell}}
@@ -4546,14 +4546,14 @@ cC3
 
 
 When the lists have different lengths, this code uses the length of list
- <code>a</code>. Longer lists ignore their extra elements, 
+ <code>a</code>. Longer lists ignore their extra elements,
 and shorter lists give extra empty strings.
 
 
 
 ----
 Inspired by the previous example, below is the way to
-loop over two arrays simultaneously using <code>set -- 
+loop over two arrays simultaneously using <code>set --
 $ARGS</code>.
 It is less general than the previous example
 but it is shorter and works just fine.
@@ -4587,7 +4587,7 @@ a3 b3
 
 
 ----
-Some shells have real arrays, so the iteration is much more simple and 
+Some shells have real arrays, so the iteration is much more simple and
 easy.
 
 {{works with|bash}}
@@ -4647,8 +4647,8 @@ done
 =
 ## C Shell
 =
-Uses the length of array ''a''. 
-Longer arrays ignore their extra elements, but shorter arrays force the 
+Uses the length of array ''a''.
+Longer arrays ignore their extra elements, but shorter arrays force the
 shell to exit with an error like ''b: Subscript out of range.''
 
 
@@ -4683,7 +4683,7 @@ cC3
 > _
 ```
 
-If either of the arrays are smaller than (size a), then an indexerror is thrown. This could be caught with a <code>try...catch</code> block. 
+If either of the arrays are smaller than (size a), then an indexerror is thrown. This could be caught with a <code>try...catch</code> block.
 
 
 ## Ursala
@@ -4882,7 +4882,7 @@ cC3
 
 ```
 
-zip[With] stops at the end of the shortest sequence, 
+zip[With] stops at the end of the shortest sequence,
 which means it can work with infinite sequences
 
 
@@ -4899,7 +4899,7 @@ which means it can work with infinite sequences
 60 IF szb > max THEN LET max = szb: REM now try b
 70 IF szc > max THEN LET max = szc: REM or c
 80 REM populate our arrays, and as a bonus we already have our demo loop
-90 REM we might as well print as we populate showing the arrays in 
+90 REM we might as well print as we populate showing the arrays in
 columns
 100 FOR l = 1 TO max
 110 IF l <= sza THEN READ a$(l): PRINT a$(l);

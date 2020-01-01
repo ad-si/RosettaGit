@@ -12,7 +12,7 @@ tags = []
 
 {{task|text processing}}
 
-Soundex is an algorithm for creating indices for words based on their pronunciation. 
+Soundex is an algorithm for creating indices for words based on their pronunciation.
 
 
 ;Task:
@@ -152,7 +152,7 @@ with Ada.Characters.Handling; use Ada.Characters.Handling;
 procedure Soundex is
    type UStrings is array(Natural range <>) of Unbounded_String;
    function "+"(S:String) return Unbounded_String renames To_Unbounded_String;
-   
+
    function toSoundex (instr : String) return String is
       str  : String := To_Upper(instr);
       output : String := "0000";
@@ -176,7 +176,7 @@ procedure Soundex is
       output(1) := To_Upper(instr(instr'First));
       return output;
    end toSoundex;
-   
+
    cases : constant UStrings := (+"Soundex", +"Example", +"Sownteks",
       +"Ekzampul", +"Euler", +"Gauss", +"Hilbert", +"Knuth", +"Lloyd",
       +"Lukasiewicz", +"Ellery", +"Ghosh", +"Heilbronn", +"Kant",
@@ -263,11 +263,11 @@ These are easy enough to write, vide [[String case#ALGOL 68|String case]]
         FI;
         result
     END;
-    
+
     # Test code to persuade one that it does work. #
-    
+
     MODE TEST = STRUCT (STRING input, STRING expected output);
-    
+
     [] TEST soundex test = (
         ("Soundex",    "S532"), ("Example",     "E251"),
         ("Sownteks",   "S532"), ("Ekzampul",    "E251"),
@@ -284,12 +284,12 @@ These are easy enough to write, vide [[String case#ALGOL 68|String case]]
         ("Jackson",    "J250"), ("Tymczak",     "T522"),
         ("VanDeusen",  "V532"), ("Ashcraft",    "A261")
     );
-    
+
     #
       Apologies for the magic number in the padding of the input
       and the wired-in heading.
     #
-    
+
     print(("Test name   Code Got", newline, "----------------------", newline));
     FOR i FROM LWB soundex test TO UPB soundex test
     DO
@@ -310,7 +310,7 @@ Note: Line numbers (strict ANSI interpretation), LET and the variable after NEXT
 
 ```ANSI
 100 DECLARE EXTERNAL FUNCTION FNSoundex$
-110 
+110
 120 DATA Ashcraft, Ashcroft, Gauss, Ghosh, Hilbert, Heilbronn, Lee, Lloyd
 130 DATA Moses, Pfister, Robert, Rupert, Rubin, Tymczak, Soundex, Example
 140 FOR i = 1 TO 16
@@ -318,7 +318,7 @@ Note: Line numbers (strict ANSI interpretation), LET and the variable after NEXT
 160    PRINT """"; name$; """"; TAB(15); FNsoundex$(name$)
 170 NEXT i
 180 END
-190 
+190
 200 EXTERNAL FUNCTION FNsoundex$(name$)
 210 LET name$ = UCASE$(name$)
 220 LET n$ = "01230129022455012623019202"
@@ -355,7 +355,7 @@ getCode(c){
         If c = R
             return 6
 }
- 
+
 soundex(s){
     code := SubStr(s, 1, 1)
    ,previous := 7
@@ -444,7 +444,7 @@ function showHoms(toShow,    i, n, wl, j) {
         printf i " "
         n = split(homs[i], wl, subsep)
         for (j = 1; j <= toShow && j <= n; j++) {
-            printf wl[j] "  " 
+            printf wl[j] "  "
         }
         print (n > toShow ? "..." : "")
     }
@@ -461,50 +461,50 @@ Example run:
 # ./soundex.awk ../unixdict.txt |sort
 A000 a  aaa  aau  ...
 A100 a&p  aba  abbe  ...
-A110 ababa  above  aviv  
-A111 aboveboard  
-A112 aboveground  
-A114 affable  
-A115 abovementioned  
+A110 ababa  above  aviv
+A111 aboveboard
+A112 aboveground
+A114 affable
+A115 abovementioned
 A120 aback  abase  abash  ...
-A121 abusable  abusive  appeasable  
+A121 abusable  abusive  appeasable
 A122 abacus  abject  abscess  ...
 A123 abstain  abstention  abstinent  ...
 A124 abigail  absolute  absolution  ...
 A125 absence  absent  absentee  ...
 A126 absorb  absorbent  absorption  ...
 A130 abate  abbot  abbott  ...
-A131 affidavit  
+A131 affidavit
 A132 abdicate  abduct  abidjan  ...
 A133 abetted  abutted  apathetic  ...
 A135 abdomen  abdominal  abetting  ...
 A136 abater  aftereffect  afterglow  ...
 A140 abel  able  afoul  ...
-A141 appleby  
+A141 appleby
 A142 abelson  ablaze  abolish  ...
 .
 .
 .
-Z324 zodiacal  
-Z400 zeal  
-Z420 zealous  zilch  zoology  
-Z430 zealot  zloty  
-Z453 zealand  
-Z461 zellerbach  
+Z324 zodiacal
+Z400 zeal
+Z420 zealous  zilch  zoology
+Z430 zealot  zloty
+Z453 zealand
+Z461 zellerbach
 Z500 zan  zen  zion  ...
-Z510 zambia  zomba  zombie  
-Z520 zinc  zing  
-Z521 zanzibar  
-Z525 zionism  
-Z530 zenith  
-Z532 zounds  
-Z565 zimmerman  
-Z600 zaire  zero  
-Z620 zeroes  zurich  
-Z623 zoroaster  zoroastrian  
-Z625 zircon  zirconium  
-Z630 zeroth  
-Z650 zorn  
+Z510 zambia  zomba  zombie
+Z520 zinc  zing
+Z521 zanzibar
+Z525 zionism
+Z530 zenith
+Z532 zounds
+Z565 zimmerman
+Z600 zaire  zero
+Z620 zeroes  zurich
+Z623 zoroaster  zoroastrian
+Z625 zircon  zirconium
+Z630 zeroth
+Z650 zorn
 #
 
 ```
@@ -522,7 +522,7 @@ Z650 zorn
         PRINT """" name$ """" TAB(15) FNsoundex(name$)
       NEXT
       END
-      
+
       DEF FNsoundex(name$)
       LOCAL i%, n%, p%, n$, s$
       name$ = FNupper(name$)
@@ -535,7 +535,7 @@ Z650 zorn
         IF n% <> 9 p% = n%
       NEXT
       = LEFT$(s$ + "000", 4)
-      
+
       DEF FNupper(A$)
       LOCAL A%,C%
       FOR A% = 1 TO LEN(A$)
@@ -617,8 +617,8 @@ A226
 
 Some string examples and rules from [[http://www.archives.gov/research/census/soundex.html]].
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -895,7 +895,7 @@ namespace Soundex
         }
 
         // List<TestWord> wrapper to make declaration simpler.
-        private class TestWords : List<TestWord> 
+        private class TestWords : List<TestWord>
         {
             public void Add(string word, string expectedSoundex)
             {
@@ -1049,8 +1049,8 @@ Ashcraft = A261
 FUNCTION Soundex(cWord)
 
  /*
- 
- This is a Clipper/XBase++ implementation of the standard American Soundex procedure. 
+
+ This is a Clipper/XBase++ implementation of the standard American Soundex procedure.
 
  */
 LOCAL cSoundex, i, nLast, cChar, nCode
@@ -1342,34 +1342,34 @@ Bug here? The distinct function eliminates duplicates. What is needed in Soundex
 
 ```txt
 
-S532 soundex        
-E251 example        
-S532 sownteks       
-E251 ekzampul       
-E460 Euler          
-G200 Gauss          
-H416 Hilbert        
-K530 Knuth          
-L300 Lloyd          
-L222 Lukasiewicz    
-E460 Ellery         
-G200 ghosh          
-H416 Heilbronn      
-K530 Kand           
-L300 Ladd           
-L222 lissajous      
-W350 Wheaton        
-B620 Burroughs      
-B620 burrows        
-O600 O'Hara         
-W252 Washington     
-L000 lee            
-G362 Gutierrez      
-P236 Phister        
-J250 Jackson        
-T522 tymczak        
-V532 Vandeusen      
-A261 Ashcraft   
+S532 soundex
+E251 example
+S532 sownteks
+E251 ekzampul
+E460 Euler
+G200 Gauss
+H416 Hilbert
+K530 Knuth
+L300 Lloyd
+L222 Lukasiewicz
+E460 Ellery
+G200 ghosh
+H416 Heilbronn
+K530 Kand
+L300 Ladd
+L222 lissajous
+W350 Wheaton
+B620 Burroughs
+B620 burrows
+O600 O'Hara
+W252 Washington
+L000 lee
+G362 Gutierrez
+P236 Phister
+J250 Jackson
+T522 tymczak
+V532 Vandeusen
+A261 Ashcraft
 
 ```
 
@@ -1414,7 +1414,7 @@ A261 Ashcraft
 
 def get_code(c : Char)
   case c
-  when 'B', 'F', 'P', 'V' 
+  when 'B', 'F', 'P', 'V'
     "1"
   when 'C', 'G', 'J', 'K', 'Q', 'S', 'X', 'Z'
     "2"
@@ -1428,7 +1428,7 @@ def get_code(c : Char)
     "6"
   when 'H', 'W'
     "-"
-  else 
+  else
     ""
   end
 end
@@ -1436,7 +1436,7 @@ end
 def soundex(s : String)
   return "" if s == ""
   s = s.upcase
-  result = s[0,1] 
+  result = s[0,1]
   prev = get_code s[0]
   s.lchop.each_char {|c|
     curr = get_code c
@@ -1462,7 +1462,7 @@ pairs = [
           ["Rubin"     , "R150"],
           ["Tymczak"   , "T522"],
           ["Soundex"   , "S532"],
-          ["Example"   , "E251"] 
+          ["Example"   , "E251"]
         ]
 
 pairs.each { |pair|
@@ -1645,7 +1645,7 @@ defmodule Soundex do
     [head|tail] = String.upcase(str) |> to_char_list
     [head | isoundex(tail, [], todigit(head))]
   end
-  
+
   defp isoundex([], acc, _) do
     case length(acc) do
       n when n == 3 -> Enum.reverse(acc)
@@ -1666,9 +1666,9 @@ defmodule Soundex do
       end
     end
   end
-  
+
   @digits  '01230120022455012623010202'
-  defp todigit(chr) do    
+  defp todigit(chr) do
     if chr in ?A..?Z, do: Enum.at(@digits, chr - ?A),
                     else: ?0            # Treat non alpha characters as a vowel
   end
@@ -1735,7 +1735,7 @@ isoundex([Head|Tail], Acc, Lastn) ->
 	    end
     end.
 
-todigit(Chr) ->	    
+todigit(Chr) ->
     Digits = "01230120022455012623010202",
     HeadOff = Chr - $A + 1,
     case HeadOff of
@@ -1753,8 +1753,8 @@ todigit(Chr) ->
 ```FSharp
 module Soundex
 
-let soundex (s : string) = 
-    let code c = 
+let soundex (s : string) =
+    let code c =
         match c with
         | 'B' | 'F' | 'P' | 'V' -> Some('1')
         | 'C' | 'G' | 'J' | 'K' | 'Q' | 'S' | 'X' | 'Z' -> Some('2')
@@ -1764,7 +1764,7 @@ let soundex (s : string) =
         | 'R' -> Some('6')
         | _ -> None
 
-    let rec p l = 
+    let rec p l =
         match l with
         | [] -> []
         | x :: y :: tail when (code x) = (code y) -> (p (y :: tail))
@@ -1772,19 +1772,19 @@ let soundex (s : string) =
         | x :: 'H' :: y :: tail when (code x) = (code y) -> (p (y :: tail))
         | x :: tail -> (code x) :: (p tail)
 
-    let chars = 
+    let chars =
         match (p (s.ToUpper() |> List.ofSeq)) with
         | [] -> ""
         | head :: tail -> new string((s.[0] :: (tail |> List.filter (fun x -> x.IsSome) |> List.map (fun x -> x.Value))) |> List.toArray)
     chars.PadRight(4, '0').Substring(0, 4)
 
-let test (input, se) = 
+let test (input, se) =
     printfn "%12s\t%s\t%s" input se (soundex input)
 
 let testCases = [|
     ("Ashcraft", "A261"); ("Ashcroft", "A261"); ("Burroughs", "B620"); ("Burrows", "B620");
-    ("Ekzampul", "E251"); ("Example", "E251"); ("Ellery", "E460"); ("Euler", "E460"); 
-    ("Ghosh", "G200"); ("Gauss", "G200"); ("Gutierrez", "G362"); ("Heilbronn", "H416"); 
+    ("Ekzampul", "E251"); ("Example", "E251"); ("Ellery", "E460"); ("Euler", "E460");
+    ("Ghosh", "G200"); ("Gauss", "G200"); ("Gutierrez", "G362"); ("Heilbronn", "H416");
     ("Hilbert", "H416"); ("Jackson", "J250"); ("Kant", "K530"); ("Knuth", "K530");
     ("Lee", "L000"); ("Lukasiewicz", "L222"); ("Lissajous", "L222"); ("Ladd", "L300");
     ("Lloyd", "L300"); ("Moses", "M220"); ("O'Hara", "O600"); ("Pfister", "P236");
@@ -1794,7 +1794,7 @@ let testCases = [|
     |]
 
 [<EntryPoint>]
-let main args = 
+let main args =
     testCases |> Array.sortBy (fun (_, x) -> x) |> Array.iter test
     System.Console.ReadLine() |> ignore
 
@@ -2378,7 +2378,7 @@ main =
 
 ```icon
 procedure main(arglist)             # computes soundex of each argument
-every write(x := !arglist, " => ",soundex(x)) 
+every write(x := !arglist, " => ",soundex(x))
 end
 
 procedure soundex(name)
@@ -2388,15 +2388,15 @@ procedure soundex(name)
       x := ["bfpv","cgjkqsxz","dt","l","mn","r"]
       every ( dig := con := "") ||:= repl(i := 1 to *x,*x[i]) do con ||:= x[i]
       con := map(map(&lcase,con,dig),&lcase,repl(".",*&lcase))
-      } 
-  
+      }
+
    name := map(name)                           # lower case
    name[1] := map(name[1],&lcase,&ucase)       # upper case 1st
    name := map(name,&lcase,con)                # map cons
    every x := !"123456" do
        while name[find(x||x,name)+:2] := x     # kill duplicates
    while name[upto('.',name)] := ""            # kill .
-   return left(name,4,"0")                     
+   return left(name,4,"0")
 end
 ```
 
@@ -2407,7 +2407,7 @@ end
 110 FOR I=1 TO 20
 120   READ NAME$
 130   PRINT """";NAME$;"""";TAB(20);SOUNDEX$(NAME$)
-140 NEXT 
+140 NEXT
 150 DEF SOUNDEX$(NAME$)
 160   NUMERIC I,N,P
 170   LET NAME$=UCASE$(NAME$):LET S$=NAME$(1)
@@ -2417,10 +2417,10 @@ end
 210     LET N=VAL(N$(ORD(NAME$(I))-64))
 220     IF N<>0 AND N<>9 AND N<>P THEN LET S$=S$&STR$(N)
 230     IF N<>9 THEN LET P=N
-240   NEXT 
+240   NEXT
 250   LET S$=S$&"000"
 260   LET SOUNDEX$=S$(1:4)
-270 END DEF 
+270 END DEF
 280 DATA Aschraft,Ashcroft,Euler,Gauss,Ghosh,Hilbert,Heilbronn,Lee,Lissajous,Lloyd
 290 DATA Moses,Pfister,Robert,Rupert,Rubin,Tymczak,VanDeusen,Wheaton,Soundex,Example
 ```
@@ -2434,7 +2434,7 @@ end
 ```j
 removeDups =: {.;.1~ (1 , }. ~: }: )
 codes  =: ;: 'BFPV CGJKQSXZ DT L MN R HW'
- 
+
 soundex =: 3 : 0
  if. 0=# k=.toupper y do. '0' return. end.
  ({.k), ,": ,. 3 {. 0-.~ }. removeDups 7 0:`(I.@:=)`]} , k >:@I.@:(e. &>)"0 _ codes
@@ -2551,13 +2551,13 @@ var soundex = function (s) {
              m: 5, n: 5,
              r: 6
          };
- 
+
      r = f +
          a
          .map(function (v, i, a) { return codes[v] })
          .filter(function (v, i, a) { return ((i === 0) ? v !== codes[f] : v !== a[i - 1]); })
          .join('');
- 
+
      return (r + '000').slice(0, 4).toUpperCase();
 };
 
@@ -2673,7 +2673,7 @@ function soundex(t) {
    if (d !== t) {
     console.log('soundex("' + a + '") was ' + d + ' should be ' + t);
   }
-}); 
+});
 ```
 
 
@@ -2978,7 +2978,7 @@ Adapt from D Alternative
 
 ```Lua
 local d, digits, alpha = '01230120022455012623010202', {}, ('A'):byte()
-d:gsub(".",function(c) 
+d:gsub(".",function(c)
   digits[string.char(alpha)] = c
   alpha = alpha + 1
 end)
@@ -2992,8 +2992,8 @@ function soundex(w)
         res[1] =  c
       elseif #res==1 or d~= res[#res] then
         res[1+#res] = d
-      end      
-    end    
+      end
+    end
   end
   if #res == 0 then
     return '0000'
@@ -3379,14 +3379,14 @@ class SoundEx {
 
   function : GetCode(c : Char) ~ String {
     select(c) {
-        label 'B': label 'F': 
+        label 'B': label 'F':
         label 'P': label 'V': {
         return "1";
       }
 
-      label 'C': label 'G': 
+      label 'C': label 'G':
       label 'J': label 'K':
-      label 'Q': label 'S': 
+      label 'Q': label 'S':
       label 'X': label 'Z': {
         return "2";
       }
@@ -3518,26 +3518,26 @@ let () =
 ```txt
 
  Word            Code  Found Status
- "Soundex"       S532  S532  OK 
- "Example"       E251  E251  OK 
- "Sownteks"      S532  S532  OK 
- "Ekzampul"      E251  E251  OK 
- "Euler"         E460  E460  OK 
- "Gauss"         G200  G200  OK 
- "Hilbert"       H416  H416  OK 
- "Knuth"         K530  K530  OK 
- "Lloyd"         L300  L300  OK 
- "Lukasiewicz"   L222  L222  OK 
- "Ellery"        E460  E460  OK 
- "Ghosh"         G200  G200  OK 
- "Heilbronn"     H416  H416  OK 
- "Kant"          K530  K530  OK 
- "Ladd"          L300  L300  OK 
- "Lissajous"     L222  L222  OK 
- "Wheaton"       W350  W350  OK 
- "Ashcraft"      A226  A226  OK 
- "Burroughs"     B622  B622  OK 
- "Burrows"       B620  B620  OK 
+ "Soundex"       S532  S532  OK
+ "Example"       E251  E251  OK
+ "Sownteks"      S532  S532  OK
+ "Ekzampul"      E251  E251  OK
+ "Euler"         E460  E460  OK
+ "Gauss"         G200  G200  OK
+ "Hilbert"       H416  H416  OK
+ "Knuth"         K530  K530  OK
+ "Lloyd"         L300  L300  OK
+ "Lukasiewicz"   L222  L222  OK
+ "Ellery"        E460  E460  OK
+ "Ghosh"         G200  G200  OK
+ "Heilbronn"     H416  H416  OK
+ "Kant"          K530  K530  OK
+ "Ladd"          L300  L300  OK
+ "Lissajous"     L222  L222  OK
+ "Wheaton"       W350  W350  OK
+ "Ashcraft"      A226  A226  OK
+ "Burroughs"     B622  B622  OK
+ "Burrows"       B620  B620  OK
  "O'Hara"        O600  O600  OK
 
 ```
@@ -4016,7 +4016,7 @@ Soundex: procedure (pword) returns (character(4));
    word = pword;
 
    /* Buffer to build up with character codes */
-   value = ''; 
+   value = '';
 
    /* Make sure the word is at least two characters in length. */
    if length(word) <= 1 then return (word);
@@ -4024,7 +4024,7 @@ Soundex: procedure (pword) returns (character(4));
    word = uppercase(word); /* Convert to uppercase. */
 
    /* The current and previous character codes */
-   prevCode = '0'; 
+   prevCode = '0';
 
    value = substr(word, 1, 1); /* The first character is unchanged. */
 
@@ -4038,11 +4038,11 @@ Soundex: procedure (pword) returns (character(4));
          /* If the current code is a vowel, ignore it. */
          value = value || currCode;
       /* Set the new previous character code */
-      prevCode = currCode; 
+      prevCode = currCode;
    end; /* of do i = ... */
 
    return ( left(value, 4, '0') ); /* Pad, if necessary. */
-         
+
 end Soundex;
 ```
 
@@ -4062,7 +4062,7 @@ function Get-Soundex
     (
         [Parameter(Mandatory=$true,
                    ValueFromPipeline=$true,
-                   ValueFromPipelineByPropertyName=$true, 
+                   ValueFromPipelineByPropertyName=$true,
                    Position=0)]
         [string[]]
         $InputObject
@@ -4105,7 +4105,7 @@ function Get-Soundex
             $soundex.Append($String[0]) | Out-Null
 
             for ($i = 1; $i -lt $String.Length; $i++)
-            { 
+            {
                 $currentCharacterDigit = ConvertTo-SoundexDigit $String[$i]
 
                 if ($currentCharacterDigit -ne 0)
@@ -4152,22 +4152,22 @@ function Get-Soundex
 
 String    Soundex
 ------    -------
-Ashcraft  A261   
-Ashcroft  A261   
-Gauss     G000   
-Ghosh     G000   
-Hilbert   H416   
-Heilbronn H465   
-Lee       L000   
-Lloyd     L300   
-Moses     M220   
-Pfister   P236   
-Robert    R163   
-Rupert    R163   
-Rubin     R150   
-Tymczak   T522   
-Soundex   S532   
-Example   E251   
+Ashcraft  A261
+Ashcroft  A261
+Gauss     G000
+Ghosh     G000
+Hilbert   H416
+Heilbronn H465
+Lee       L000
+Lloyd     L300
+Moses     M220
+Pfister   P236
+Robert    R163
+Rupert    R163
+Rubin     R150
+Tymczak   T522
+Soundex   S532
+Example   E251
 
 ```
 
@@ -4182,7 +4182,7 @@ Here we're using as much PowerShell native functionaity as possible, without rea
 Param([string]$Phrase)
 Process {
     $src = $Phrase.ToUpper().Trim()
-    $coded = $src[0..($src.Length - 1)] | %{ 
+    $coded = $src[0..($src.Length - 1)] | %{
         if('BFPV'.Contains($_)) { '1' }
         elseif('CGJKQSXZ'.Contains($_)) { '2' }
         elseif('DT'.Contains($_)) { '3' }
@@ -4209,8 +4209,8 @@ Process {
 }
 @(
 (t "Ashcraft" "A261"); (t "Ashcroft" "A261"); (t "Burroughs" "B620"); (t "Burrows" "B620");
-(t "Ekzampul" "E251"); (t "Example" "E251"); (t "Ellery" "E460"); (t "Euler" "E460"); 
-(t "Ghosh" "G200"); (t "Gauss" "G200"); (t "Gutierrez" "G362"); (t "Heilbronn" "H416"); 
+(t "Ekzampul" "E251"); (t "Example" "E251"); (t "Ellery" "E460"); (t "Euler" "E460");
+(t "Ghosh" "G200"); (t "Gauss" "G200"); (t "Gutierrez" "G362"); (t "Heilbronn" "H416");
 (t "Hilbert" "H416"); (t "Jackson" "J250"); (t "Kant" "K530"); (t "Knuth" "K530");
 (t "Lee" "L000"); (t "Lukasiewicz" "L222"); (t "Lissajous" "L222"); (t "Ladd" "L300");
 (t "Lloyd" "L300"); (t "Moses" "M220"); (t "O'Hara" "O600"); (t "Pfister" "P236");
@@ -4355,21 +4355,21 @@ test.  % Succeeds only if all the tests succeed
 ```PureBasic
 Procedure.s getCode(c.s)
     Protected  getCode.s = ""
-     
+
     If FindString("BFPV", c ,1)     : getCode = "1" : EndIf
-    If FindString("CGJKQSXZ", c ,1) : getCode = "2" : EndIf 
+    If FindString("CGJKQSXZ", c ,1) : getCode = "2" : EndIf
     If FindString("DT", c ,1)       : getCode = "3" : EndIf
     If "L" = c                      : getCode = "4" : EndIf
     If FindString("MN", c ,1)       : getCode = "5" : EndIf
-    If "R" = c                      : getCode = "6" : EndIf 
+    If "R" = c                      : getCode = "6" : EndIf
     If FindString("HW", c ,1)       : getCode = "." : EndIf
     ProcedureReturn getCode
 EndProcedure
- 
+
 Procedure.s soundex(word.s)
     Protected.s previous.s = "" , code.s , current , soundex
     Protected.i i
-    
+
     word = UCase(word)
     code = Mid(word,1,1)
     previous = ""
@@ -4382,9 +4382,9 @@ Procedure.s soundex(word.s)
         previous = current
         If Len(code) = 4
           Break
-        EndIf  
+        EndIf
     Next
-    If Len(code) < 4 
+    If Len(code) < 4
         code = LSet(code, 4,"0")
     EndIf
     ProcedureReturn code
@@ -4438,7 +4438,7 @@ The [http://rosettacode.org/wiki/Soundex#Scheme Scheme solution] runs as is in R
 ## REXX
 
 Some assumptions made:
-:*   rules are from the algorithm for the '''American Soundex'''. 
+:*   rules are from the algorithm for the '''American Soundex'''.
 :*   rules were taken from the Wikipedia article: http://en.wikipedia.org/wiki/Soundex
 :*   multiple words   (like ''Van de Graaff'')    are treated as one word.
 :*   anything that's not a letter of the Latin alphabet is ignored.
@@ -4637,7 +4637,7 @@ for i = 1 to 16
      sp = 10 - len(name[i])
      see '"' + name[i] + '"' + copy(" ", sp) + " " + soundex(name[i]) + nl
 next
- 
+
 func soundex(name2)
 name2 = upper(name2)
 n = "01230129022455012623019202"
@@ -4645,7 +4645,7 @@ s = left(name2,1)
 p = number(substr(n, ascii(s) - 64, 1))
 for i = 2 to len(name2)
      n2 = number(substr(n, ascii(name2[i]) - 64, 1))
-     if n2 > 0 and n2 != 9 and n2 != p s = s + string(n2) ok 
+     if n2 > 0 and n2 != 9 and n2 != p s = s + string(n2) ok
      if n2 != 9 p = n2 ok
 next
 return left(s + "000", 4)
@@ -4740,7 +4740,7 @@ val$(3) = "DT"
 val$(4) = "L"
 val$(5) = "MN"
 val$(6) = "R"
- 
+
 ' ---------------------------------
 ' show soundex on these words
 ' ---------------------------------
@@ -4750,12 +4750,12 @@ w$(3) = "Rubin"       'R150
 w$(4) = "moses"       'M220
 w$(5) = "O'Mally"     'O540
 w$(6) = "d jay"       'D200
- 
+
 for i = 1 to 6
   print w$(i);" soundex:";soundex$(w$(i))
 next i
 wait
- 
+
 ' ---------------------------------
 ' Return soundex of word
 ' ---------------------------------
@@ -5549,7 +5549,7 @@ The first algorithm described at https://en.wikipedia.org/wiki/Soundex#American_
 soundex() {
     local -u word=${1//[^[:alpha:]]/.}
     local letter=${word:0:1}
-    local soundex=$letter 
+    local soundex=$letter
     local previous=$letter
 
     word=${word:1}
@@ -5569,8 +5569,8 @@ soundex() {
                 word=${word:1}
             fi
 
-        elif [[ -z $previous ]] || 
-             [[ $letter != $previous && ${value[$letter]} -ne ${value[$previous]} ]] 
+        elif [[ -z $previous ]] ||
+             [[ $letter != $previous && ${value[$letter]} -ne ${value[$previous]} ]]
         then
             previous=$letter
             soundex+=${value[$letter]}
@@ -5717,7 +5717,7 @@ Testing with function soundex3
 
 
 ```vb
-' Soundex 
+' Soundex
     tt=array( _
       "Ashcraft","Ashcroft","Gauss","Ghosh","Hilbert","Heilbronn","Lee","Lloyd", _
       "Moses","Pfister","Robert","Rupert","Rubin","Tymczak","Soundex","Example")
@@ -5729,7 +5729,7 @@ Testing with function soundex3
         If ts<>tv(i) Then ok=" KO "& tv(i) Else ok=""
         Wscript.echo right(" "& i ,2) & " " & left( tt(i) &space(12),12) & " " & ts & ok
     Next 'i
-    
+
 Function getCode(c)
     Select Case c
         Case "B", "F", "P", "V"
@@ -5748,7 +5748,7 @@ Function getCode(c)
             getCode = "-"
     End Select
 End Function 'getCode
- 
+
 Function soundex(s)
     Dim code, previous, i
     code = UCase(Mid(s, 1, 1))

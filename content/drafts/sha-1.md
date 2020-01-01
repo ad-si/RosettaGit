@@ -11,19 +11,19 @@ tags = []
 +++
 
 {{task}} [[Category:Checksums]]
-'''SHA-1''' or '''SHA1''' is a one-way hash function; 
-it computes a 160-bit message digest. 
-SHA-1 often appears in security protocols; for example, 
-many HTTPS websites use RSA with SHA-1 to secure their connections. 
-BitTorrent uses SHA-1 to verify downloads. 
+'''SHA-1''' or '''SHA1''' is a one-way hash function;
+it computes a 160-bit message digest.
+SHA-1 often appears in security protocols; for example,
+many HTTPS websites use RSA with SHA-1 to secure their connections.
+BitTorrent uses SHA-1 to verify downloads.
 Git and Mercurial use SHA-1 digests to identify commits.
 
 A US government standard, [[SHA-1/FIPS-180-1|FIPS 180-1]], defines SHA-1.
 
 Find the SHA-1 message digest for a string of [[octet]]s. You may either call a SHA-1 library, or implement SHA-1 in your language. Both approaches interest Rosetta Code.
 
-{{alertbox|lightgray|'''Warning:''' SHA-1 has [https://en.wikinews.org/wiki/Chinese_researchers_crack_major_U.S._government_algorithm_used_in_digital_signatures known weaknesses]. Theoretical attacks may find a collision after [http://lwn.net/Articles/337745/ 2<sup>52</sup> operations], or perhaps fewer. 
-This is much faster than a brute force attack of 2<sup>80</sup> operations. USgovernment [http://csrc.nist.gov/groups/ST/hash/statement.html deprecated SHA-1]. 
+{{alertbox|lightgray|'''Warning:''' SHA-1 has [https://en.wikinews.org/wiki/Chinese_researchers_crack_major_U.S._government_algorithm_used_in_digital_signatures known weaknesses]. Theoretical attacks may find a collision after [http://lwn.net/Articles/337745/ 2<sup>52</sup> operations], or perhaps fewer.
+This is much faster than a brute force attack of 2<sup>80</sup> operations. USgovernment [http://csrc.nist.gov/groups/ST/hash/statement.html deprecated SHA-1].
 For production-grade cryptography, users may consider a stronger alternative, such as SHA-256 (from the SHA-2 family) or the upcoming SHA-3.}}
 
 
@@ -74,7 +74,7 @@ MsgBox, % "String:`n" (str) "`n`nSHA:`n" SHA(str)
 
 
 
-; SHA 
+; SHA
 ### =========================================================================
 
 SHA(string, encoding = "utf-8")
@@ -82,7 +82,7 @@ SHA(string, encoding = "utf-8")
     return CalcStringHash(string, 0x8004, encoding)
 }
 
-; CalcAddrHash 
+; CalcAddrHash
 ### ================================================================
 
 CalcAddrHash(addr, length, algid, byref hash = 0, byref hashlength = 0)
@@ -116,7 +116,7 @@ CalcAddrHash(addr, length, algid, byref hash = 0, byref hashlength = 0)
     return o
 }
 
-; CalcStringHash 
+; CalcStringHash
 ### ==============================================================
 
 CalcStringHash(string, algid, encoding = "utf-8", byref hash = 0, byref hashlength = 0)
@@ -148,7 +148,7 @@ SHA-1:     48C98F7E5A6E736D790AB740DFC3F51A61ABE2B5
 ```bbcbasic
       PRINT FNsha1("Rosetta Code")
       END
-      
+
       DEF FNsha1(message$)
       LOCAL buflen%, buffer%, hprov%, hhash%, hash$, i%
       CALG_SHA1 = &8004
@@ -187,62 +187,62 @@ SHA-1:     48C98F7E5A6E736D790AB740DFC3F51A61ABE2B5
       *FLOAT64
       PRINT FNsha1("Rosetta Code")
       END
-      
+
       DEF FNsha1(message$)
       LOCAL a%, b%, c%, d%, e%, f%, i%, j%, k%, l%, t%
       LOCAL h0%, h1%, h2%, h3%, h4%, w%()
-      
+
       REM Initialize variables:
       h0% = &67452301
       h1% = &EFCDAB89
       h2% = &98BADCFE
       h3% = &10325476
       h4% = &C3D2E1F0
-      
+
       l% = LEN(message$)*8
-      
+
       REM Pre-processing:
       REM append the bit '1' to the message:
       message$ += CHR$&80
-      
+
       REM append k bits '0', where k is the minimum number >= 0 such that
       REM the resulting message length (in bits) is congruent to 448 (mod 512)
       WHILE (LEN(message$) MOD 64) <> 56
         message$ += CHR$0
       ENDWHILE
-      
+
       REM append length of message (before pre-processing), in bits, as
       REM 64-bit big-endian integer
       FOR i% = 56 TO 0 STEP -8
         message$ += CHR$(l% >>> i%)
       NEXT
-      
+
       REM Process the message in successive 512-bit chunks:
       REM break message into 512-bit chunks, for each chunk
       REM break chunk into sixteen 32-bit big-endian words w[i], 0 <= i <= 15
-      
+
       DIM w%(79)
       FOR j% = 0 TO LEN(message$) DIV 64 - 1
-        
+
         FOR i% = 0 TO 15
           w%(i%) = !(!^message$ + 64*j% + 4*i%)
           SWAP ?(^w%(i%)+0),?(^w%(i%)+3)
           SWAP ?(^w%(i%)+1),?(^w%(i%)+2)
         NEXT i%
-        
+
         REM Extend the sixteen 32-bit words into eighty 32-bit words:
         FOR i% = 16 TO 79
           w%(i%) = w%(i%-3) EOR w%(i%-8) EOR w%(i%-14) EOR w%(i%-16)
           w%(i%) = (w%(i%) << 1) OR (w%(i%) >>> 31)
         NEXT i%
-        
+
         REM Initialize hash value for this chunk:
         a% = h0%
         b% = h1%
         c% = h2%
         d% = h3%
         e% = h4%
-        
+
         REM Main loop:
         FOR i% = 0 TO 79
           CASE TRUE OF
@@ -259,29 +259,29 @@ SHA-1:     48C98F7E5A6E736D790AB740DFC3F51A61ABE2B5
               f% = b% EOR c% EOR d%
               k% = &CA62C1D6
           ENDCASE
-          
+
           t% = FN32(((a% << 5) OR (a% >>> 27)) + f% + e% + k% + w%(i%))
           e% = d%
           d% = c%
           c% = (b% << 30) OR (b% >>> 2)
           b% = a%
           a% = t%
-          
+
         NEXT i%
-        
+
         REM Add this chunk's hash to result so far:
         h0% = FN32(h0% + a%)
         h1% = FN32(h1% + b%)
         h2% = FN32(h2% + c%)
         h3% = FN32(h3% + d%)
         h4% = FN32(h4% + e%)
-        
+
       NEXT j%
-      
+
       = FNhex(h0%) + FNhex(h1%) + FNhex(h2%) + FNhex(h3%) + FNhex(h4%)
-      
+
       DEF FNhex(A%) = RIGHT$("0000000"+STR$~A%,8)
-      
+
       DEF FN32(n#)
       WHILE n# > &7FFFFFFF : n# -= 2^32 : ENDWHILE
       WHILE n# < &80000000 : n# += 2^32 : ENDWHILE
@@ -302,8 +302,8 @@ SHA-1:     48C98F7E5A6E736D790AB740DFC3F51A61ABE2B5
 
 {{libheader|OpenSSL}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <openssl/sha.h>
@@ -313,12 +313,12 @@ int main()
   int i;
   unsigned char result[SHA_DIGEST_LENGTH];
   const char *string = "Rosetta Code";
- 
+
   SHA1(string, strlen(string), result);
- 
+
   for(i = 0; i < SHA_DIGEST_LENGTH; i++)
     printf("%02x%c", result[i], i < (SHA_DIGEST_LENGTH-1) ? ' ' : '\n');
- 
+
   return EXIT_SUCCESS;
 }
 ```
@@ -330,8 +330,8 @@ int main()
 {{libheader|Poco}}
 Compiling with <code>g++ -lPocoCrypto shaexample.cpp -o shaexample</code>:
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 #include "Poco/SHA1Engine.h"
 #include "Poco/DigestStream.h"
@@ -347,7 +347,7 @@ int main( ) {
    outstr << myphrase ;
    outstr.flush( ) ; //to pass everything to the digest engine
    const DigestEngine::Digest& digest = sha1.digest( ) ;
-   std::cout << myphrase << " as a sha1 digest :" << DigestEngine::digestToHex( digest ) 
+   std::cout << myphrase << " as a sha1 digest :" << DigestEngine::digestToHex( digest )
       << " !" << std::endl ;
    return 0 ;
 }
@@ -563,7 +563,7 @@ b18c883f4da750164b5af362ea9b9f27f90904b4
 
 ```txt
 
-12> crypto:hash( sha, "A string" ).                                              
+12> crypto:hash( sha, "A string" ).
 <<110,185,174,8,151,66,9,104,174,225,10,43,9,92,82,190,197,150,224,92>>
 
 ```
@@ -625,33 +625,33 @@ contains
         integer(BYTE) :: buffer(BUFLEN)
         integer(BYTE) :: hash(SHA1LEN)
         integer(UINT64) :: filesize
- 
+
         dwStatus = 0
         filesize = 0
         hFile = CreateFile(trim(name) // char(0), GENERIC_READ, FILE_SHARE_READ, NULL, &
                            OPEN_EXISTING, FILE_FLAG_SEQUENTIAL_SCAN, NULL)
- 
+
         if (hFile == INVALID_HANDLE_VALUE) then
             dwStatus = GetLastError()
             print *, "CreateFile failed."
             return
         end if
- 
+
         if (CryptAcquireContext(hProv, NULL, NULL, PROV_RSA_FULL, &
                                 CRYPT_VERIFYCONTEXT) == FALSE) then
- 
+
             dwStatus = GetLastError()
             print *, "CryptAcquireContext failed."
             goto 3
         end if
- 
+
         if (CryptCreateHash(hProv, CALG_SHA1, 0_ULONG_PTR, 0_DWORD, hHash) == FALSE) then
- 
+
             dwStatus = GetLastError()
             print *, "CryptCreateHash failed."
             go to 2
         end if
- 
+
         do
             status = ReadFile(hFile, loc(buffer), BUFLEN, nRead, NULL)
             if (status == FALSE .or. nRead == 0) exit
@@ -662,25 +662,25 @@ contains
                 go to 1
             end if
         end do
- 
+
         if (status == FALSE) then
             dwStatus = GetLastError()
             print *, "ReadFile failed."
             go to 1
         end if
- 
+
         nRead = SHA1LEN
         if (CryptGetHashParam(hHash, HP_HASHVAL, hash, nRead, 0) == FALSE) then
             dwStatus = GetLastError()
             print *, "CryptGetHashParam failed.", status, nRead, dwStatus
         end if
- 
+
       1 status = CryptDestroyHash(hHash)
       2 status = CryptReleaseContext(hProv, 0)
       3 status = CloseHandle(hFile)
     end subroutine
 end module
- 
+
 program sha1
     use sha1_mod
     implicit none
@@ -689,7 +689,7 @@ program sha1
     integer(DWORD) :: dwStatus
     integer(BYTE) :: hash(SHA1LEN)
     integer(UINT64) :: filesize
- 
+
     n = command_argument_count()
     do i = 1, n
         call get_command_argument(i, length=m)
@@ -715,7 +715,7 @@ end program
 ```freebasic
 ' version 18-10-2016
 ' started with SHA-1/FIPS-180-1
-' but used the BBC BASIC native version to finish. 
+' but used the BBC BASIC native version to finish.
 ' compile with: fbc -s console
 
 Function SHA_1(test_str As String) As String
@@ -723,8 +723,8 @@ Function SHA_1(test_str As String) As String
   Dim As String message = test_str   ' strings are passed as ByRef's
 
   Dim As Long i, j
-  Dim As UByte Ptr ww1 
-  Dim As UInteger<32> Ptr ww4 
+  Dim As UByte Ptr ww1
+  Dim As UInteger<32> Ptr ww4
 
   Dim As ULongInt l = Len(message)
   ' set the first bit after the message to 1
@@ -758,15 +758,15 @@ Function SHA_1(test_str As String) As String
     ww1 = Cast(Ubyte Ptr, @message[j * 64])
     ww4 = Cast(UInteger<32> Ptr, @message[j * 64])
 
-    For i = 0 To 60 Step 4  'little endian -> big endian 
+    For i = 0 To 60 Step 4  'little endian -> big endian
       Swap ww1[i   ], ww1[i +3]
       Swap ww1[i +1], ww1[i +2]
     Next
-    
+
     For i = 0 To 15    ' copy the 16 32bit block into the array
       W(i) = ww4[i]
     Next
-  
+
     For i = 16 To 79   ' fill the rest of the array
       temp = W(i -3) Xor W(i -8) Xor W(i -14) Xor W(i -16)
       temp = temp Shl 1 + temp Shr 31
@@ -797,13 +797,13 @@ Function SHA_1(test_str As String) As String
       C = (B Shl 30) or (B Shr 2)
       B = A
       A = temp
-      
+
     Next
-  
-    h0 += A : h1 += B : h2 += C : h3 += D : h4 += E 
+
+    h0 += A : h1 += B : h2 += C : h3 += D : h4 += E
 
   Next
-  
+
   Return Hex(h0, 8) + Hex(h1, 8) + Hex(h2, 8) + Hex(h3, 8) + Hex(h4, 8)
 
 End Function
@@ -894,7 +894,7 @@ echo sha1($var);
 
 
 ```Haskell
-module Digestor 
+module Digestor
    where
 import Data.Digest.Pure.SHA
 import qualified Data.ByteString.Lazy as B
@@ -903,7 +903,7 @@ convertString :: String -> B.ByteString
 convertString phrase = B.pack $ map ( fromIntegral . fromEnum ) phrase
 
 convertToSHA1 :: String -> String
-convertToSHA1 word = showDigest $ sha1 $ convertString word 
+convertToSHA1 word = showDigest $ sha1 $ convertString word
 
 main = do
    putStr "Rosetta Code SHA1-codiert: "
@@ -1084,7 +1084,7 @@ fun main(args: Array<String>) {
     val md = MessageDigest.getInstance("SHA-1")
     val digest = md.digest(bytes)
     for (byte in digest) print("%02x".format(byte))
-    println() 
+    println()
 }
 ```
 
@@ -1110,7 +1110,7 @@ cipher_digest('Rosetta Code', -digest='SHA1',-hex=true)
 {{out}}
 
 ```txt
- 48c98f7e5a6e736d790ab740dfc3f51a61abe2b5 
+ 48c98f7e5a6e736d790ab740dfc3f51a61abe2b5
 ```
 
 
@@ -1226,7 +1226,7 @@ command shaRosettaCode
     local shex, sha1
     put sha1Digest("Rosetta Code") into sha1
     get binaryDecode("H*",sha1,shex)
-    put shex  
+    put shex
 end shaRosettaCode
 ```
 
@@ -1335,7 +1335,7 @@ method getDigest(messageText = Rexx, algorithm = Rexx 'MD5', encoding = Rexx 'UT
   catch ex = Exception
     ex.printStackTrace
   end
-  
+
   return digestSum
 
 ```
@@ -1393,7 +1393,7 @@ echo SHA1("Rosetta Code")
 ```oberon2
 
 MODULE SHA1;
-IMPORT 
+IMPORT
   Crypto:SHA1,
   Crypto:Utils,
   Strings,
@@ -1416,7 +1416,7 @@ END SHA1.
 
 ```txt
 
-SHA1: 
+SHA1:
    48C98F7E   5A6E736D   790AB740   DFC3F51A   61ABE2B5
 
 ```
@@ -1471,7 +1471,7 @@ The code above creates a new function sha1(s) which returns SHA-1 hash of item s
 ```txt
 
 sha1("Rosetta Code") = "48c98f7e5a6e736d790ab740dfc3f51a61abe2b5"
-sha1(1+2) = "77de68daecd823babbb58edb1c8e14d7106e83bb"  ; sha(3) 
+sha1(1+2) = "77de68daecd823babbb58edb1c8e14d7106e83bb"  ; sha(3)
 
 ```
 
@@ -1550,14 +1550,14 @@ my \f = -> \B,\C,\D { (B +& C) +| ((+^B)mod2³² +& D)   },
 my \K = 0x5A827999, 0x6ED9EBA1, 0x8F1BBCDC, 0xCA62C1D6;
 
 sub sha1-pad(Blob $msg)
-{   
+{
     my \bits = 8 * $msg.elems;
     my @padded = flat $msg.list, 0x80, 0x00 xx (-($msg.elems + 1 + 8) % 64);
     flat @padded.map({ :256[$^a,$^b,$^c,$^d] }), (bits +> 32)mod2³², (bits)mod2³²;
 }
 
 sub sha1-block(@H, @M is copy)
-{   
+{
     @M.push: S(1, [+^] @M[$_ «-« <3 8 14 16>] ) for 16 .. 79;
 
     my ($A,$B,$C,$D,$E) = @H;
@@ -1570,7 +1570,7 @@ sub sha1-block(@H, @M is copy)
 }
 
 sub sha1(Blob $msg) returns Blob
-{   
+{
     my @M = sha1-pad($msg);
     my @H = 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0;
     sha1-block(@H,@M[$_..$_+15]) for 0, 16...^ +@M;
@@ -1601,31 +1601,31 @@ Buf:0x<e6 40 d2 85 24 28 86 eb 96 ab 80 cb f8 58 38 9b 3d f5 2f 43>  Ars longa, 
 ```Phix
 --
 -- demo\rosetta\sha1.exw
--- 
+--
 ### ===============
 
 --
 --  NB no longer considered secure. Non-optimised.
 --
 constant m4 = allocate(4)   -- scratch area, for uint32
- 
+
 function uint32(atom v)
     poke4(m4,v)
     return peek4u(m4)
 end function
- 
+
 function sq_uint32(sequence s)
     for i=1 to length(s) do
         s[i] = uint32(s[i])
     end for
     return s
 end function
- 
+
 function dword(string msg, integer i)
 -- get dword as big-endian
     return msg[i]*#1000000+msg[i+1]*#10000+msg[i+2]*#100+msg[i+3]
 end function
- 
+
 function xor_all(sequence s)
 atom result = 0
     for i=1 to length(s) do
@@ -1633,7 +1633,7 @@ atom result = 0
     end for
     result = uint32(result)
     return result
-end function 
+end function
 
 function rol(atom word, integer bits)
 -- left rotate the bits of a 32-bit number by the specified number of bits
@@ -1686,7 +1686,7 @@ atom h0 = 0x67452301,
     end for
     return join(res)
 end function
- 
+
 ?sha1("Rosetta Code")
 ```
 
@@ -1728,26 +1728,26 @@ Library and implementation.
 
 (de mod32 (N)
    (& N `(hex "FFFFFFFF")) )
-  
+
 (de not32 (N)
    (x| N `(hex "FFFFFFFF")) )
-   
+
 (de add32 @
    (mod32 (pass +)) )
-   
+
 (de sha1 (Str)
    (let Len (length Str)
       (setq Str
          (conc
             (need
-               (- 
-                  8 
+               (-
+                  8
                   (* 64 (/ (+ Len 1 8 63) 64)) )
-               (conc 
+               (conc
                   (mapcar char (chop Str))
                   (cons `(hex "80")) )
-               0 ) 
-            (flip 
+               0 )
+            (flip
                (make
                   (setq Len (* 8 Len))
                   (do 8
@@ -1766,7 +1766,7 @@ Library and implementation.
                     (make
                        (do 16
                           (link
-                             (apply 
+                             (apply
                                 |
                                 (mapcar >> (-24 -16 -8 0) (cut 4 'Str)) ) ) ) )
                   (need 64 0) ) )
@@ -1809,7 +1809,7 @@ Library and implementation.
                   H0 (add32 H0 A)
                   H1 (add32 H1 B)
                   H2 (add32 H2 C)
-                  H3 (add32 H3 D) 
+                  H3 (add32 H3 D)
                   H4 (add32 H4 E) ) ) )
       (mapcan
          '((N)
@@ -1823,21 +1823,21 @@ Library and implementation.
 (let Str "Rosetta Code"
    (println
       (pack
-         (mapcar 
-            '((B) (pad 2 (hex B))) 
+         (mapcar
+            '((B) (pad 2 (hex B)))
             (sha1 Str) ) ) )
    (println
       (pack
-         (mapcar 
+         (mapcar
             '((B) (pad 2 (hex B)))
-            (native 
+            (native
                "libcrypto.so"
                "SHA1"
                '(B . 20)
                Str
                (length Str)
                '(NIL (20)) ) ) ) ) )
-               
+
 (bye)
 ```
 
@@ -1850,12 +1850,12 @@ Library and implementation.
 
 Function Calculate-SHA1( $String ){
     $Enc = [system.Text.Encoding]::UTF8
-    $Data = $enc.GetBytes($String) 
+    $Data = $enc.GetBytes($String)
 
-    # Create a New SHA1 Crypto Provider 
-    $Sha = New-Object System.Security.Cryptography.SHA1CryptoServiceProvider 
+    # Create a New SHA1 Crypto Provider
+    $Sha = New-Object System.Security.Cryptography.SHA1CryptoServiceProvider
 
-    # Now hash and display results 
+    # Now hash and display results
     $Result = $sha.ComputeHash($Data)
     [System.Convert]::ToBase64String($Result)
 }
@@ -2018,30 +2018,30 @@ def sha1(string)
     proc {|b, c, d| b ^ c ^ d},
   ].freeze
   k = [0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6].freeze
- 
+
   # initial hash
   h = [0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476, 0xc3d2e1f0]
- 
+
   bit_len = string.size << 3
   string += "\x80"
   while (string.size % 64) != 56
     string += "\0"
   end
   string = string.force_encoding('ascii-8bit') + [bit_len >> 32, bit_len & mask].pack("N2")
- 
+
   if string.size % 64 != 0
     fail "failed to pad to correct length"
   end
- 
+
   io = StringIO.new(string)
   block = ""
- 
+
   while io.read(64, block)
     w = block.unpack("N16")
- 
+
     # Process block.
     (16..79).each {|t| w[t] = s[1, w[t-3] ^ w[t-8] ^ w[t-14] ^ w[t-16]]}
- 
+
     a, b, c, d, e = h
     t = 0
     4.times do |i|
@@ -2051,13 +2051,13 @@ def sha1(string)
         t += 1
       end
     end
- 
+
     [a,b,c,d,e].each_with_index {|x,i| h[i] = (h[i] + x) & mask}
   end
- 
+
   h.pack("N5")
 end
- 
+
 if __FILE__ == $0
   # Print some example SHA-1 digests.
   # FIPS 180-1 has correct digests for 'abc' and 'abc...opq'.
@@ -2111,7 +2111,7 @@ import java.nio._
 
 case class Hash(message: List[Byte]) {
   val defaultHashes = List(0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0)
-  
+
   val hash = {
     val padded = generatePadding(message)
     val chunks: List[List[Byte]] = messageToChunks(padded)
@@ -2268,7 +2268,7 @@ object Hash extends App {
       (band (>> x 16) #xFF)
       (band (>> x  8) #xFF)
       (band (>> x  0) #xFF)))
-         
+
 (define (message->words message)
    (let cycle ((W
                (let loop ((t (iota 0 1 16)))
@@ -2369,7 +2369,7 @@ object Hash extends App {
                                     d
                                     (+ t 1))
                               (values a b c d e)))))
-                              
+
                   (main (+ i 1)
                      (->32 (+ A a))
                      (->32 (+ B b))

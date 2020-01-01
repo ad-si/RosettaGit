@@ -111,7 +111,7 @@ If the lower bounds are not 1, they can be temporarily be changed to 1 by using 
 [ 2 : 6, 2 : 5, 2 : 4, 2 : 3 ]INT b;
 
 # set b to the same values as a above:                                       #
-b[ AT 1, AT 1, AT 1, AT 1 ] := 
+b[ AT 1, AT 1, AT 1, AT 1 ] :=
      ( ( ( ( 1111, 1112 ), ( 1121, 1122 ), ( 1131, 1132 ) )
        , ( ( 1211, 1212 ), ( 1221, 1222 ), ( 1231, 1232 ) )
        , ( ( 1311, 1312 ), ( 1321, 1322 ), ( 1331, 1332 ) )
@@ -271,26 +271,26 @@ When arrays are declared with all dimensions at the outset, all memory is alloca
 int main()
 {
 	int hyperCube[5][4][3][2];
-	
+
 	/*An element is set*/
-	
+
 	hyperCube[4][3][2][1] = 1;
-	
-	/*IMPORTANT : C ( and hence C++ and Java and everyone of the family ) arrays are zero based. 
+
+	/*IMPORTANT : C ( and hence C++ and Java and everyone of the family ) arrays are zero based.
 	The above element is thus actually the last element of the hypercube.*/
-	
+
 	/*Now we print out that element*/
-	
+
 	printf("\n%d",hyperCube[4][3][2][1]);
-	
+
 	/*But that's not the only way to get at that element*/
 	printf("\n%d",*(*(*(*(hyperCube + 4) + 3) + 2) + 1));
 
 	/*Yes, I know, it's beautiful*/
 	*(*(*(*(hyperCube+3)+2)+1)) = 3;
-	
+
 	printf("\n%d",hyperCube[3][2][1][0]);
-	
+
 	return 0;
 }
 
@@ -310,61 +310,61 @@ int main()
 {
 	/*Declaring a four fold integer pointer, also called
 	a pointer to a pointer to a pointer to an integer pointer*/
-	
+
 	int**** hyperCube, i,j,k;
 
 	/*We will need i,j,k for the memory allocation*/
-	
+
 	/*First the five lines*/
-	
+
 	hyperCube = (int****)malloc(5*sizeof(int***));
-	
+
 	/*Now the four planes*/
-	
+
 	for(i=0;i<5;i++){
 		hyperCube[i] = (int***)malloc(4*sizeof(int**));
-		
+
 		/*Now the 3 cubes*/
-		
+
 		for(j=0;j<4;j++){
 			hyperCube[i][j] = (int**)malloc(3*sizeof(int*));
-			
+
 			/*Now the 2 hypercubes (?)*/
-			
+
 			for(k=0;k<3;k++){
 				hyperCube[i][j][k] = (int*)malloc(2*sizeof(int));
 			}
 		}
 	}
-	
+
 	/*All that looping and function calls may seem futile now,
 	but imagine real applications when the dimensions of the dataset are
 	not known beforehand*/
-	
+
 	/*Yes, I just copied the rest from the first program*/
-	
+
 	hyperCube[4][3][2][1] = 1;
-	
-	/*IMPORTANT : C ( and hence C++ and Java and everyone of the family ) arrays are zero based. 
+
+	/*IMPORTANT : C ( and hence C++ and Java and everyone of the family ) arrays are zero based.
 	The above element is thus actually the last element of the hypercube.*/
-	
+
 	/*Now we print out that element*/
-	
+
 	printf("\n%d",hyperCube[4][3][2][1]);
-	
+
 	/*But that's not the only way to get at that element*/
 	printf("\n%d",*(*(*(*(hyperCube + 4) + 3) + 2) + 1));
 
 	/*Yes, I know, it's beautiful*/
 	*(*(*(*(hyperCube+3)+2)+1)) = 3;
-	
+
 	printf("\n%d",hyperCube[3][2][1][0]);
-	
+
 	/*Always nice to clean up after you, yes memory is cheap, but C is 45+ years old,
 	and anyways, imagine you are dealing with terabytes of data, or more...*/
-	
+
 	free(hyperCube);
-	
+
 	return 0;
 }
 ```
@@ -375,8 +375,8 @@ C does not do bound checking / range checking or for that matter any type of saf
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 
 // convienince for printing the contents of a collection
@@ -740,22 +740,22 @@ EchoLisp natively supports 1 and 2-dimensions arrays : lib '''matrix'''. The fol
 	;; allocate 2 + d1*d2*d3... consecutive cells
 	(define msize (apply * (vector->list dims)))
 	(define m-array (make-vector (+ 2 msize) init))
-	
+
 	;; compute displacements vector once for all
 	;; m-array[0] = [1 d1 d1*d2 d1*d2*d3 ...]
 	(define disps (vector-rotate! (vector-dup dims) 1))
 	(vector-set! disps 0 1)
-	(for [(i(in-range 1 (vector-length disps)) )] 
+	(for [(i(in-range 1 (vector-length disps)) )]
 	      (vector-set! disps i (* [disps i] [disps (1- i)])))
 	(vector-set! m-array 0 disps)
-	
+
 	(vector-set! m-array 1 dims) ;; remember dims
 	m-array)
 
 ;; from indices = #(i j k ...) to displacement
 (define-syntax-rule (m-array-index ma indices)
 	(+ 2 (dot-product (ma 0)  indices)))
-	
+
 ;; check i < d1, j < d2, ...
 (define (m-array-check ma indices)
 	(for [(dim [ma 1]) (idx indices)]
@@ -770,7 +770,7 @@ EchoLisp natively supports 1 and 2-dimensions arrays : lib '''matrix'''. The fol
 (define (m-array-dims ma) [ma 1])
 
 ; return ma[indices]
-(define (m-array-ref ma indices) 
+(define (m-array-ref ma indices)
 	(m-array-check ma indices)
 	[ma (m-array-index ma indices)])
 ; sets ma[indices]
@@ -803,7 +803,7 @@ Messing with multi-dimensional arrays has been central from the introduction of 
 
 ```Fortran
       DIMENSION A(5,4,3,2)                 !Declares a (real) array A of four dimensions, storage permitting.
-      X = 3*A(2,I,1,K)                     !Extracts a certain element, multiplies its value by three, result to X. 
+      X = 3*A(2,I,1,K)                     !Extracts a certain element, multiplies its value by three, result to X.
       A(1,2,3,4) = X + 1                   !Places a value (the result of the expression X + 1) ... somewhere...
 ```
 
@@ -813,7 +813,7 @@ With Fortran 90 came a large expansion of abilities. Lower bounds could also be 
 
 As well, array data could be manipulated with array processing statements, rather than always having to prepare DO-loops or similar, in particular <code>A = 0</code> would set all values of array A to zero, whatever its dimensionality. Thus, given an array B(0:2,0:2), a two-dimensional array, <code>B(1:2,1:2) = 6*A(1,3:4,1,1:2) - 7</code> would select certain elements scattered about in A, perform the calculation, and store the results in a part of B. Hopefully, element-by element without using a temporary array. Even more complicated selections can be made via the RESHAPE intrinsic now available.
 
-Data are stored in Fortran arrays in "column-major" order, with the result that successive elements are indexed with the ''left''-most subscript varying most rapidly. Thus, given an array <code>DIMENSION A(3,3)</code> the elements are ordered as A(1,1), A(2,1), A(3,1), A(1,2), A(2,2), A(3,2), A(1,3), A(2,3), A(3,3). This doesn't matter when the array is referenced via something like A(''row'',''column''). However, should the array A be written (or read) or initialised via a DATA statement without specification of indices, that is the order of the values. Consider 
+Data are stored in Fortran arrays in "column-major" order, with the result that successive elements are indexed with the ''left''-most subscript varying most rapidly. Thus, given an array <code>DIMENSION A(3,3)</code> the elements are ordered as A(1,1), A(2,1), A(3,1), A(1,2), A(2,2), A(3,2), A(1,3), A(2,3), A(3,3). This doesn't matter when the array is referenced via something like A(''row'',''column''). However, should the array A be written (or read) or initialised via a DATA statement without specification of indices, that is the order of the values. Consider
 ```Fortran
       INTEGER A(3,3)	!An array, regarded as being a matrix.
       DATA A/1,2,3,	!Some initial values.
@@ -1218,7 +1218,7 @@ def multiarray(d):
     end;
 ```
 
-    
+
 A four-dimensional array as specified by the task description can now be created as follows:
 
 0 | multiarray( [5, 4, 3, 2] )
@@ -1297,7 +1297,7 @@ ary | dimensions
 
 ## Julia
 
-Julia supports multi-dimensional arrays in its syntax and usual implementation. Multidimensional arrays in Julia are stored in column-major order. This means that arrays are stacked one column at a time, in contiguous memory so storage is optimized. Bounds on array accesses are checked by default, though this can be disabled with a macro pragma if desired for speed. 
+Julia supports multi-dimensional arrays in its syntax and usual implementation. Multidimensional arrays in Julia are stored in column-major order. This means that arrays are stacked one column at a time, in contiguous memory so storage is optimized. Bounds on array accesses are checked by default, though this can be disabled with a macro pragma if desired for speed.
 <br /><br />
 Demonstrated below, from a Julia REPL session, using a random integer four-dimensional array:
 
@@ -1407,7 +1407,7 @@ Stricly speaking Kotlin only supports single dimensional arrays but multi-dimens
 
 This means, of course, that multi-dimensional array storage is not contiguous. However, it also means that arrays can be 'jagged' i.e. sub-arrays do not necessarily need to have the same size and that it easy to replace one sub-array with another.
 
-Arrays in Kotlin always start from an index of zero and, in the version which targets the JVM, bounds are checked automatically. 
+Arrays in Kotlin always start from an index of zero and, in the version which targets the JVM, bounds are checked automatically.
 
 ```scala
 // version 1.1.2
@@ -1492,7 +1492,7 @@ put a[1][2][3][4]
 Lua does not support straightforward declaration of multidimensional arrrays but they can be created in the form of nested tables.  Once such a structure has been created, elements can be read and written in a manner that will be familiar to users of C-like languages.
 
 ```Lua
--- Variadic, first argument is the value with which to populate the array.  
+-- Variadic, first argument is the value with which to populate the array.
 function multiArray (initVal, ...)
     local function copy (t)
         local new = {}
@@ -1514,7 +1514,7 @@ function multiArray (initVal, ...)
     end
     return arr
 end
- 
+
 -- Function to print out the specific example created here
 function show4dArray (a)
     print("\nPrinting 4D array in 2D...")
@@ -1528,7 +1528,7 @@ function show4dArray (a)
         end
     end
 end
- 
+
 -- Main procedure
 local t = multiArray("a", 2, 3, 4, 5)
 show4dArray(t)
@@ -1618,8 +1618,8 @@ This is not memory-efficient and any advanced operations will have to be written
 use feature 'say';
 
 # Perl arrays are internally always one-dimensional, but multi-dimension arrays are supported via references.
-# So a two-dimensional array is an arrays-of-arrays, (with 'rows' that are references to arrays), while a 
-# three-dimensional array is an array of arrays-of-arrays, and so on. There are no arbitrary limits on the 
+# So a two-dimensional array is an arrays-of-arrays, (with 'rows' that are references to arrays), while a
+# three-dimensional array is an array of arrays-of-arrays, and so on. There are no arbitrary limits on the
 # sizes or number of dimensions (i.e. the 'depth' of nesting references).
 
 # To generate a zero-initialized 2x3x4x5 array
@@ -1642,14 +1642,14 @@ say $b[0][5];           # prints '32'
 say $b[1][2];           # prints 'Wed'
 say $b[2][0]->(40,2);   # prints '42', sum of 40 and 2
 
-# Pre-allocation is possible, can result in a more efficient memory layout 
+# Pre-allocation is possible, can result in a more efficient memory layout
 # (in general though Perl allows minimal control over memory)
 $#$big = 1_000_000;
 
-# But dimensions do not need to be pre-declared or pre-allocated. 
+# But dimensions do not need to be pre-declared or pre-allocated.
 # Perl will auto-vivify the necessary storage slots on first access.
 $c[2][2] = 42;
-# @c = 
+# @c =
 #    [undef]
 #    [undef]
 #    [undef, undef, 42]
@@ -1831,7 +1831,7 @@ an easily readable fashion:
 ## Python
 
 ===Python: In-built===
-Python has ''syntax'' (and hidden) support for the access of multi-dimensional arrays, but no in-built datatype that supports it. 
+Python has ''syntax'' (and hidden) support for the access of multi-dimensional arrays, but no in-built datatype that supports it.
 
 A common method of simulating multi-dimensional arrays is to use dicts with N-element tuples as keys.
 
@@ -1840,11 +1840,11 @@ Function <code>dict_as_mdarray</code> allows for the creation of an initialised 
 ```python>>>
  from pprint import pprint as pp   # Pretty printer
 >>> from itertools import product
->>> 
+>>>
 >>> def dict_as_mdarray(dimensions=(2, 3), init=0.0):
 ...     return {indices: init for indices in product(*(range(i) for i in dimensions))}
-... 
->>> 
+...
+>>>
 >>> mdarray = dict_as_mdarray((2, 3, 4, 5))
 >>> pp(mdarray)
 {(0, 0, 0, 0): 0.0,
@@ -1905,7 +1905,7 @@ In Fortran, one would expect the result [1, 3, 2, 4].
 
 ```python>>>
  from numpy import *
->>> 
+>>>
 >>> mdarray = zeros((2, 3, 4, 5), dtype=int8, order='F')
 
 >>> mdarray
@@ -1984,7 +1984,7 @@ array([[[[   0,    0,    0,    0,    0],
          [   0,    0,    0,    0,    0],
          [   0,    0,    0,    0,    0],
          [   0,    0,    0,    0,    0]]]], dtype=int8)
->>> 
+>>>
 ```
 
 
@@ -1997,22 +1997,22 @@ Racket has [http://docs.racket-lang.org/math/array.html multi-dimensional arrays
 
 ## REXX
 
-REXX supports multi-dimension (stemmed) arrays and the limit of the number of dimension varies with individual REXX 
-interpreters,   ''most'' (but not all)   ''will probably be''   limited by the largest allowable clause 
-length or source-line length, the <u>smallest</u> of which is '''250''' characters   (included the periods),   which 
+REXX supports multi-dimension (stemmed) arrays and the limit of the number of dimension varies with individual REXX
+interpreters,   ''most'' (but not all)   ''will probably be''   limited by the largest allowable clause
+length or source-line length, the <u>smallest</u> of which is '''250''' characters   (included the periods),   which
 would be around '''125''' dimensions.   However, most modern REXXes have at least a clause length of '''4,095''' characters.
 
-The REXX language has something called   '''stemmed arrays'''. 
+The REXX language has something called   '''stemmed arrays'''.
 
-For instance, for a stemmed array named   '''antenna'''   with two dimensions,   to reference the 
-element   '''2, 0'''   (and set that value to the variable   '''g'''),   one could code   (note 
+For instance, for a stemmed array named   '''antenna'''   with two dimensions,   to reference the
+element   '''2, 0'''   (and set that value to the variable   '''g'''),   one could code   (note
 the use of periods after the variable name and also between the indices to the array dimensions:
 
 ```rexx>g = antenna.2.0</lang
 
-Memory allocation for stemmed arrays is not optimized, and the array elements are not contiguous. 
+Memory allocation for stemmed arrays is not optimized, and the array elements are not contiguous.
 
-The index to the array dimensions may be any integer, and indeed, even non-numeric   (and possible non-viewable). 
+The index to the array dimensions may be any integer, and indeed, even non-numeric   (and possible non-viewable).
 
 ```rexx
     a = '"'                    /*set variable  A  to a quote character  ["].  */
@@ -2097,7 +2097,7 @@ func main()
              next
        next
        see "First element = " + a4[1][1][1][1] + nl
-       a4[1][1][1][1] = 121 
+       a4[1][1][1][1] = 121
        see nl
        for i = 1 to 5
             for j = 1 to 4
@@ -2145,7 +2145,7 @@ Output:
 ```txt
 First element = 1
 
-121 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 
+121 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120
 ```
 
 
@@ -2159,7 +2159,7 @@ Scala basically supports single linear arrays but multi-dimensional arrays of an
 
 Their presents indicates low level engineering. Arrays are more machine-oriented (lineair memory) than problem-oriented (thinking in e.g. collections, sets).
 
-Arrays in Scala always start (of course as the great Dijkstra in his [https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html EWD831] pointed out) from an index of zero and, insofar the target machine can handle, bounds can be checked automatically e.g. by the JVM (throwing an exception) or ES aka JavaScript (resulting "undefined"). 
+Arrays in Scala always start (of course as the great Dijkstra in his [https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html EWD831] pointed out) from an index of zero and, insofar the target machine can handle, bounds can be checked automatically e.g. by the JVM (throwing an exception) or ES aka JavaScript (resulting "undefined").
 
 ```Scala
 object MultiDimensionalArray extends App {
@@ -2284,7 +2284,7 @@ Using arrays like this for ordered data is suboptimal for this reason, and becau
 }
 Fido is green and has 0 points
 Scratchy is pink and has 99 points
-% 
+%
 ```
 
 The interested reader should also be aware of the difference between arrays and [http://www.tcl.tk/man/tcl/TclCmd/dict.htm dict]ionaries, and know that the latter are often preferred for record-like structures.

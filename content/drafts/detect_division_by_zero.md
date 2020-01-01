@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task}} 
+{{task}}
 [[Category:Simple]]
 
 ;Task:
@@ -46,7 +46,7 @@ try.
   x = 1 / 0.
 catch CX_SY_ZERODIVIDE.
   write 'Divide by zero.'.
-endtry.  
+endtry.
 
 ```
 
@@ -150,12 +150,12 @@ aime: can_divide: 4: division by zero
 
 ## ALGOL 68
 
-The USSR's ALGOL 68 had a [http://vak.ru/lib/exe/fetch.php/book/gost/pdf/gost-27975-88.pdf "GOST 27975-88 Programming language ALGOL 68 extended (Язык программирования АЛГОЛ 68 расширенный)"] that included additional 
-keywords '''on''', '''exception''', '''raise'''.  This was an extension, 
-and probably made only an appearance in the Leningrad compiler (Алгола 
+The USSR's ALGOL 68 had a [http://vak.ru/lib/exe/fetch.php/book/gost/pdf/gost-27975-88.pdf "GOST 27975-88 Programming language ALGOL 68 extended (Язык программирования АЛГОЛ 68 расширенный)"] that included additional
+keywords '''on''', '''exception''', '''raise'''.  This was an extension,
+and probably made only an appearance in the Leningrad compiler (Алгола
 68 Ленинград).
 
-The following code sample implements ''zero division'', 
+The following code sample implements ''zero division'',
 without using language extensions or access to hardware interrupts.
 
 {{trans|C}}
@@ -172,7 +172,7 @@ PROC raise exception= ([]STRING args)VOID: (
   stop
 );
 
-PROC raise zero division error := VOID: 
+PROC raise zero division error := VOID:
   raise exception("integer division or modulo by zero");
 
 PROC int div  = (INT a,b)REAL: a/b;
@@ -188,7 +188,7 @@ BEGIN
       put(stand error,("caught division by zero",new line));
       stop
   );
- 
+
   INT x:=1, y:=0;
   raise zero division error := a different handler;
   print(x/y)
@@ -267,7 +267,7 @@ ZeroDiv(3, 0) ; divize by zero alert
 =
 ## Applesoft BASIC
 =
-The error code for division by zero is 133.  There is a good overview of Applesoft ONERR GOTO handling here: 
+The error code for division by zero is 133.  There is a good overview of Applesoft ONERR GOTO handling here:
 http://newsgroups.derkeiler.com/Archive/Comp/comp.sys.apple2.programmer/2010-04/msg00000.html
 
 
@@ -296,7 +296,7 @@ http://newsgroups.derkeiler.com/Archive/Comp/comp.sys.apple2.programmer/2010-04/
       PROCdivide(0, 5)
       PROCdivide(5, 0)
       END
-      
+
       DEF PROCdivide(numerator, denominator)
       ON ERROR LOCAL IF FALSE THEN
         REM 'Try' clause:
@@ -363,9 +363,9 @@ End Function
 {{out}}
 
 ```txt
- 0.666666667 
- 0.6 
-Division by zero in line 40 
+ 0.666666667
+ 0.6
+Division by zero in line 40
 ```
 
 
@@ -402,12 +402,12 @@ Procedure MyErrorHandler()
   Define txt$="The following error happened."+#CRLF$+ ErrorMessage()+"at line  "+Str(ErrorLine())
   MessageRequester("OnError test", txt$)
 EndProcedure
- 
+
 ; Tell where to go if an Error happens
 OnErrorCall(@MyErrorHandler())
- 
+
 ;Now, do something very stupid so that we may see an Error...
-Repeat 
+Repeat
   A=Random(100)/Random(100)
 ForEver
 ```
@@ -468,8 +468,8 @@ Technically, under the C standard, division by zero (regardless of type) is unde
 Some systems will raise SIGFPE if a program divides by zero.
 
 
-```c>#include <limits.h
-	/* INT_MIN */
+```c
+#include <limits.h> /* INT_MIN */
 #include <setjmp.h>	/* siglongjmp(), sigsetjmp() */
 #include <stdio.h>	/* perror(), printf() */
 #include <stdlib.h>	/* exit() */
@@ -572,7 +572,7 @@ main()
 ```
 
 
-{{out}} using OpenBSD/amd64: 
+{{out}} using OpenBSD/amd64:
 
 ```txt
 -44 / 0: caught division by zero!
@@ -636,7 +636,7 @@ namespace RosettaCode {
             } catch (DivideByZeroException e) {
                 Console.WriteLine(e);
             }
-            
+
         }
     }
 }
@@ -649,7 +649,7 @@ namespace RosettaCode {
 
 ```ceylon
 shared void run() {
-	
+
 	//integers divided by zero throw an exception
 	try {
 		value a = 1 / 0;
@@ -775,8 +775,8 @@ real    1/ 0:     inf | Division by Zero
 real   -1/ 0:    -inf | Division by Zero
 real    0/ 0:    -nan | NaN (Zero Division by Zero)
 
-real   -4/-2:       2 
-real    2/-inf:    -0 
+real   -4/-2:       2
+real    2/-inf:    -0
 
 real -inf/-2:     inf | Inf numerator
 real +inf/-2:    -inf | Inf numerator
@@ -888,9 +888,9 @@ DBZ(REAL8 Dividend,INTEGER8 Divisor) := Quotient/Divisor;
 #option ('divideByZero', 'nan');
 DBZ(10,0); //returns 'nan'
 
-/* NOTE: This is only currently supported for real numbers. Division by zero creates a quiet NaN, 
-   which will propogate through any real expressions it is used in. 
-   You can use NOT ISVALID(x) to test if the value is a NaN. 
+/* NOTE: This is only currently supported for real numbers. Division by zero creates a quiet NaN,
+   which will propogate through any real expressions it is used in.
+   You can use NOT ISVALID(x) to test if the value is a NaN.
    Integer and decimal division by zero continue to return 0.
 */
 
@@ -940,7 +940,7 @@ open core number
 
 x /. y = try Some (x `div` y) with
              _ = None
- 
+
 (12 /. 2, 12 /. 0)
 ```
 
@@ -1091,7 +1091,7 @@ Output:
 ```factor
 USE: math.floats.env
 
-: try-div ( a b -- ) 
+: try-div ( a b -- )
     '[ { +fp-zero-divide+ } [ _ _ /f . ] with-fp-traps ] try ;
 ```
 
@@ -1100,7 +1100,7 @@ USE: math.floats.env
  0.5
  ( scratchpad ) 1 0 try-div
  Floating point trap
- 
+
  Type :help for debugging help.
 
 
@@ -1205,26 +1205,26 @@ end program rosetta_integer_divbyzero
 ## FreeBASIC
 
 In FreeBASIC integer division by zero is a fatal error and cannot be caught by the language's built-in error handling constructs.
- 
-However, it is possible to detect such an error by using floating point division instead and relying on the fact that when Infinity, -Infinity and NaN are converted back to a 4 or 8 byte signed integer, the result is the lower bound of the range of the relevant integer type. 
+
+However, it is possible to detect such an error by using floating point division instead and relying on the fact that when Infinity, -Infinity and NaN are converted back to a 4 or 8 byte signed integer, the result is the lower bound of the range of the relevant integer type.
 
 For Win64, an Integer is a signed 8 byte type and the returned value is therefore -9223372036854775808 which would be unlikely to arise in any other integer division scenario.
 
-The following code relies on this 'hack':- 
+The following code relies on this 'hack':-
 
 
 ```freebasic
 ' FB 1.05.0 Win64
 
-Const divByZeroResult As Integer = -9223372036854775808 
+Const divByZeroResult As Integer = -9223372036854775808
 
 Sub CheckForDivByZero(result As Integer)
-  If result = divByZeroResult Then 
+  If result = divByZeroResult Then
     Print "Division by Zero"
   Else
     Print "Division by Non-Zero"
   End If
-End Sub 
+End Sub
 
 Dim As Integer x, y
 
@@ -1442,7 +1442,7 @@ concept IsDivisionByZero(a, b) {
 	end
 	print( a, "/", b, " is not division by zero.")
 }
- 
+
 software {
 	IsDivisionByZero(5, 0)
 	IsDivisionByZero(5, 2)
@@ -1462,7 +1462,7 @@ if not finite( <i>expression</i> ) then ...
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-Setting &error to a non-zero number traps errors and converts then to failures.  Division by zero generates error 201 
+Setting &error to a non-zero number traps errors and converts then to failures.  Division by zero generates error 201
 
 ```Icon
 procedure main()
@@ -1559,7 +1559,7 @@ This will output "0" instead of "NaN". In this case, when checking against for t
 
 ## jq
 
-jq 1.4, like JavaScript, does not raise an error on division by 0, but unlike JavaScript, the result of division by zero is a number: either -1.7976931348623157e+308 or 1.7976931348623157e+308. 
+jq 1.4, like JavaScript, does not raise an error on division by 0, but unlike JavaScript, the result of division by zero is a number: either -1.7976931348623157e+308 or 1.7976931348623157e+308.
 
 We can however define div(x;y) so that it raises an error, "NaN", if y equals 0:
 
@@ -1663,7 +1663,7 @@ If the division node receives zero on both nodes (0/0), the Result will be "NaN"
 define dividehandler(a,b) => {
 	(
 		#a->isNotA(::integer) && #a->isNotA(::decimal) ||
-		#b->isNotA(::integer) && #b->isNotA(::decimal) 
+		#b->isNotA(::integer) && #b->isNotA(::decimal)
 	) ? return 'Error: Please supply all params as integers or decimals'
 	protect => {
 		handle_error => { return 'Error: Divide by zero' }
@@ -1718,7 +1718,7 @@ end
 
 ## M2000 Interpreter
 
-To place a division as argument for lazy evaluation we have to use lazy$() which make a proper anonymous function. So we get a() as a function in DetectDivisionByZero() and try to execute. So if we get the specific error we get true. 
+To place a division as argument for lazy evaluation we have to use lazy$() which make a proper anonymous function. So we get a() as a function in DetectDivisionByZero() and try to execute. So if we get the specific error we get true.
 
 Lazy$() not only make a function but also pass the same scope to that function where we use it. So Variables A, B, Z which they are in scope in module Checkit, and not in Function DetectDivisionByZero(), they used by the lazy evaluation contraction. References in M2000 passed as weak references, and for functions passed as code in a string (for objects passed the weak reference of the object plus the code).
 
@@ -1748,7 +1748,7 @@ Module Checkit {
             }
             =Error$=" division by zero"
       }
-      
+
       Print DetectDivisionByZero(lazy$(10/0))=True
       Z=10
       A=4
@@ -1849,7 +1849,7 @@ Check[2/0, Print["division by 0"], Power::infy]
 
 
 ```Matlab
-function [isDividedByZero] = dividebyzero(numerator, denomenator)    
+function [isDividedByZero] = dividebyzero(numerator, denomenator)
    isDividedByZero = isinf( numerator/denomenator );
    % If isDividedByZero equals 1, divide by zero occured.
 ```
@@ -1905,10 +1905,10 @@ USER>W $$DIV^ROSETTA(1,2)
 USER>W $$DIV^ROSETTA(1,4)
 .25
 USER>W $$DIV^ROSETTA(1,0)
- 
+
 Error: Division by zero
 USER>W $$DIV^ROSETTA(1,C)
- 
+
 W $$DIV^ROSETTA(1,C)
 ^
 <UNDEFINED> *C
@@ -1965,9 +1965,9 @@ carefully
 ]
 [ ;; commands to run if an error occurs in the previous block.
   set result false
-] 
+]
 ifelse is-number? result
-[ output-print (word a " / " b " = " result) 
+[ output-print (word a " / " b " = " result)
 ]
 [ output-print (word a " / " b " is not calculable"
 ]
@@ -2025,7 +2025,7 @@ netrexx.lang.DivideException: Divide by 0
 
 (define (check-division x y)
     (catch (/ x y) 'check-zero)
-    (if (not (integer? check-zero))   
+    (if (not (integer? check-zero))
         (setq check-zero "Division by zero."))
      check-zero
 )
@@ -2190,7 +2190,7 @@ rc=42 (Arithmetic overflow/underflow)
 
 ## Oz
 
-For integer division only. 
+For integer division only.
 
 ```oz
 try
@@ -2353,8 +2353,8 @@ function div_check($x, $y) {
 
 
 ```pli
-Proc DivideDZ(a,b) Returns(Float Bin(33)); 
-    Dcl (a,b,c) Float Bin(33);	
+Proc DivideDZ(a,b) Returns(Float Bin(33));
+    Dcl (a,b,c) Float Bin(33);
     On ZeroDivide GoTo MyError;
     c=a/b;
     Return(c);
@@ -2387,7 +2387,7 @@ end divide;
 
 
 ```PL/SQL
-divide(0,1) --false 
+divide(0,1) --false
 divide(1,0) --true, division by zero
 ```
 
@@ -2398,7 +2398,7 @@ divide(1,0) --true, division by zero
 
 ```PowerShell
 
-function div ($a, $b) { 
+function div ($a, $b) {
     try{$a/$b}
     catch{"Bad parameters: `$a = $a and `$b = $b"}
 }
@@ -2557,9 +2557,9 @@ Caught script error: cannot-use
 
 ## REXX
 
-The task's requirements are to write a ''function'', but this example program was written to solve the spirit of the requirement. 
+The task's requirements are to write a ''function'', but this example program was written to solve the spirit of the requirement.
 
-This version isn't really a function so much as it is a method.  
+This version isn't really a function so much as it is a method.
 
 Also, a ''function'' and a ''subroutine'' doesn't have that much of a distinction in the REXX language.
 
@@ -2637,7 +2637,7 @@ Done
          result = 0;
        endmon;
 
-       *inlr = *on;  
+       *inlr = *on;
 
 ```
 
@@ -2731,11 +2731,11 @@ always return false.
 
 ```scala
 object DivideByZero extends Application {
-  
+
   def check(x: Int, y: Int): Boolean = {
     try {
       val result = x / y
-      println(result) 
+      println(result)
       return false
     } catch {
       case x: ArithmeticException => {
@@ -2743,7 +2743,7 @@ object DivideByZero extends Application {
       }
     }
   }
-  
+
   println("divided by zero = " + check(1, 0))
 
   def check1(x: Int, y: Int): Boolean = {
@@ -2842,7 +2842,7 @@ say div_check(1, 0)   # nil (detected)
 
 ## Slate
 
- 
+
 
 ```slate
 [ 1 / 0 ] on: Error do: [|:err| err return: PositiveInfinity].
@@ -2876,7 +2876,7 @@ of course, as ZeroDivide inherits from Error, you could also write [...] on: Err
 {{works with|Macro Spitbol}}
 
 Using setexit( ) to trap and ignore division by zero.
-        
+
 
 ```SNOBOL4
         define('zdiv(x,y)') :(zdiv_end)
@@ -2951,7 +2951,7 @@ DB20000I  The SQL command completed successfully.
 
 VALUES DIVISION(10, 2)
 
-1     
+1
 ------
      0
 
@@ -2960,7 +2960,7 @@ VALUES DIVISION(10, 2)
 
 VALUES DIVISION(10, 3)
 
-1     
+1
 ------
      0
 
@@ -2969,7 +2969,7 @@ VALUES DIVISION(10, 3)
 
 VALUES DIVISION(10, 0)
 
-1     
+1
 ------
      1
 
@@ -3116,17 +3116,17 @@ end
 
 ```VAX Assembly
 65 64 69 76 69 64 00000008'010E0000' 0000     1 desc:	.ascid	"divide by zero"
-            6F 72 65 7A 20 79 62 20  000E       
+            6F 72 65 7A 20 79 62 20  000E
                                0000  0016     2 .entry	handler,0
                          E5 AF   7F  0018     3 	pushaq	desc
               00000000'GF   01   FB  001B     4 	calls	#1, g^lib$put_output
                                  04  0022     5 	ret
-                                     0023     6 
+                                     0023     6
                                0000  0023     7 .entry	main,0
                     6D   EE AF   9E  0025     8 	movab	handler, (fp)	;register exception handler
                   50   01   00   C7  0029     9 	divl3	#0, #1, r0
                                  04  002D    10 	ret
-                                     002E    11 
+                                     002E    11
                                      002E    12 .end	main
 $ run dv
 divide by zero
@@ -3162,7 +3162,7 @@ End Function
 Error
 15,2
 ```
- 
+
 
 
 ## VBScript

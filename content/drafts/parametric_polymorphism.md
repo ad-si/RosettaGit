@@ -17,7 +17,7 @@ tags = []
 
 
 ;Task:
-Write a small example for a type declaration that is parametric over another type, together with a short bit of code (and its type signature) that uses it. 
+Write a small example for a type declaration that is parametric over another type, together with a short bit of code (and its type signature) that uses it.
 
 
 A good example is a container type, let's say a binary tree, together with some function that traverses the tree, say, a ''map''-function that operates on every element of the tree.
@@ -69,8 +69,8 @@ end Container;
 ## C
 
 If the goal is to separate algorithms from types at compile type, C may do it by macros. Here's sample code implementing binary tree with node creation and insertion:
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 #define decl_tree_type(T)                                                       \
@@ -128,8 +128,9 @@ Arguably more interesting is run time polymorphism, which can't be trivially don
 
 
 
-```cpp>template<class T
- 
+```cpp
+template<class T>
+
 class tree
 {
   T value;
@@ -144,12 +145,13 @@ public:
 For simplicity, we replace all values in the tree with a new value:
 
 
-```cpp>template<class T
+```cpp
+template<class T>
 
 void tree<T>::replace_all (T new_value)
 {
   value = new_value;
-  if (left != NULL) 
+  if (left != NULL)
     left->replace_all (new_value);
   if (right != NULL)
     right->replace_all (new_value);
@@ -283,7 +285,7 @@ static class Program
 
 ```ceylon>class BinaryTree<Data
 (shared Data data, shared BinaryTree<Data>? left = null, shared BinaryTree<Data>? right = null) {
-	
+
 	shared BinaryTree<NewData> myMap<NewData>(NewData f(Data d)) =>
 			BinaryTree {
 				data = f(data);
@@ -293,7 +295,7 @@ static class Program
 }
 
 shared void run() {
-	
+
 	value tree1 = BinaryTree {
 		data = 3;
 		left = BinaryTree {
@@ -306,10 +308,10 @@ shared void run() {
 			};
 		};
 	};
-	
+
 	tree1.myMap(print);
 	print("");
-	
+
 	value tree2 = tree1.myMap((x) => x * 333.33);
 	tree2.myMap(print);
 }
@@ -458,15 +460,15 @@ void main() { // Demo code.
 
 ```dart>class TreeNode<T
  {
-  
+
   T value;
   TreeNode<T> left;
   TreeNode<T> right;
-  
+
   TreeNode(this.value);
-  
+
   TreeNode map(T f(T t)) {
-    var node = new TreeNode(f(value)); 
+    var node = new TreeNode(f(value));
     if(left != null) {
       node.left = left.map(f);
     }
@@ -475,7 +477,7 @@ void main() { // Demo code.
     }
     return node;
   }
-  
+
   void forEach(void f(T t)) {
     f(value);
     if(left != null) {
@@ -587,8 +589,8 @@ def makeTree(T, var value :T, left :nullOk[Tree[T]], right :nullOk[Tree[T]]) {
 
     namespace RosettaCode
 
-    type BinaryTree<'T> = 
-      | Element of 'T 
+    type BinaryTree<'T> =
+      | Element of 'T
       | Tree of 'T * BinaryTree<'T> * BinaryTree<'T>
       member this.Map(f) =
         match this with
@@ -614,7 +616,7 @@ We can test this binary tree like so:
 
 Fortran does not offer polymorphism by parameter type, which is to say, enables the same source code to be declared applicable for parameters of different types, so that a contained statement such as <code>X = A + B*C</code> would work for any combination of integer or floating-point or complex variables as actual parameters, since exactly that (source) code would be workable in every case. Further, there is no standardised pre-processor protocol whereby one could replicate such code to produce a separate subroutine or function specific to every combination.
 
-However, with F90 came the MODULE protocol with facilities suitable for defining "generic" subroutines or functions, or so it appears: 
+However, with F90 came the MODULE protocol with facilities suitable for defining "generic" subroutines or functions, or so it appears:
 ```Fortran
       MODULE SORTSEARCH		!Genuflect towards Prof. D. Knuth.
 
@@ -650,28 +652,28 @@ Caught it! THIS = NUMB(P)
     4   FINDI4 = P		!So, THIS is found, here!
       END FUNCTION FINDI4	!On success, THIS = NUMB(FINDI4); no fancy index here...
 
-      END MODULE SORTSEARCH 
+      END MODULE SORTSEARCH
 ```
 
 
-There would be a function (with a unique name) for each of the contemplated variations in parameter types, and when the compiler reached an invocation of FIND(...) it would select by matching amongst the combinations that had been defined in the routines named in the INTERFACE statement. The various actual functions could have different code, and in this case, only the <code>INTEGER*4 THIS,NUMB(1:*)</code> need be changed, say to <code>REAL*4 THIS,NUMB(1:*)</code> for FINDF4, which is why both variables are named in the one statement. However, for searching CHARACTER arrays, because the character comparison operations differ from those for numbers (and, no three-way IF-test either), additional changes are required. Thus, function FIND would appear to be a polymorphic function that accepts and returns a variety of types, but it is not, and indeed, there is actually no function called FIND anywhere in the compiled code. 
+There would be a function (with a unique name) for each of the contemplated variations in parameter types, and when the compiler reached an invocation of FIND(...) it would select by matching amongst the combinations that had been defined in the routines named in the INTERFACE statement. The various actual functions could have different code, and in this case, only the <code>INTEGER*4 THIS,NUMB(1:*)</code> need be changed, say to <code>REAL*4 THIS,NUMB(1:*)</code> for FINDF4, which is why both variables are named in the one statement. However, for searching CHARACTER arrays, because the character comparison operations differ from those for numbers (and, no three-way IF-test either), additional changes are required. Thus, function FIND would appear to be a polymorphic function that accepts and returns a variety of types, but it is not, and indeed, there is actually no function called FIND anywhere in the compiled code.
 
 That said, some systems had polymorphic variables, such as the B6700 whereby integers were represented as floating-point numbers and so exactly the same function could be presented with an integer or a floating-point variable (provided the compiler didn't check for parameter type matching - but this was routine) and it would work - so long as no divisions were involved since addition, subtraction, and multiplication are the same for both, but integer division discards any remainders. More recent computers following the Intel 8087 floating-point processor and similar add novel states to the scheme for floating-point arithmetic: not just zero and "gradual underflow" but "Infinity" and "Not a Number", which last violates even more of the axia of mathematics in that ''NaN'' does not equal ''NaN''. In turn, this forces a modicum of polymorphism into the language so as to contend with the additional features, such as the special function IsNaN(x).
 
-More generally, using the same code for different types of variable can be problematical. A scheme that works in single precision may not work in double precision (or ''vice-versa'') or may not give corresponding levels of accuracy, or not converge at all, ''etc.'' While F90 also standardised special functions that give information about the precision of variables and the like, and in principle, a method could be coded that, guided by such information, would work for different precisions, this sort of scheme is beset by all manner of difficulties in problems more complex than the simple examples of text books. 
+More generally, using the same code for different types of variable can be problematical. A scheme that works in single precision may not work in double precision (or ''vice-versa'') or may not give corresponding levels of accuracy, or not converge at all, ''etc.'' While F90 also standardised special functions that give information about the precision of variables and the like, and in principle, a method could be coded that, guided by such information, would work for different precisions, this sort of scheme is beset by all manner of difficulties in problems more complex than the simple examples of text books.
 
 Polymorphism just exacerbates the difficulties, thus, on page 219 of ''16-Bit Modern Microcomputers'' by G. M. Corsline appears the remark "At least some of the generalized numerical solutions to common mathematical procedures have coding that is so involved and tricky in order to take care of all possible roundoff contingencies that they have been termed 'pornographic algorithms'.". And "Mathematical software is easy for the uninitiated to write but notoriously hard for the expert. This paradox exists because the beginner is satisfied if his code usually works in his own machine while the expert attempts, against overwhelming obstacles, to produce programs that always work on a large number of computers. The problem is that while standard formulas of mathematics are fairly easy to translate into FORTRAN they often are subject to instabilities due to roundoff error." - quoting John Palmer, 1980, Intel Corporation.
 
 But sometimes it is not so troublesome, as in [[Pathological_floating_point_problems#The_Chaotic_Bank_Society]] whereby the special EPSILON(x) function that reports on the precision of a nominated variable of type ''x'' is used to determine the point beyond which further calculation (in that precision, for that formula) will make no difference.
 
-Having flexible facilities available my lead one astray. Consider the following data aggregate, as became available with F90: 
+Having flexible facilities available my lead one astray. Consider the following data aggregate, as became available with F90:
 ```Fortran
       TYPE STUFF
        INTEGER CODE       !A key number.
        CHARACTER*6 NAME   !Associated data.
        INTEGER THIS       !etc.
       END TYPE STUFF
-      TYPE(STUFF) TABLE(600)   !An array of such entries. 
+      TYPE(STUFF) TABLE(600)   !An array of such entries.
 ```
 
 Suppose the array was in sorted order by each entry's value of CODE so that TABLE(1).CODE <= TABLE(2).CODE, etc. and one wished to find the index of an entry with a specific value, ''x'', of CODE. It is pleasing to be able to write <code>FIND(x,TABLE.CODE,N)</code> and have it accepted by the compiler. Rather less pleasing is that it runs very slowly.
@@ -793,13 +795,13 @@ Solution:
     T value
     Tree<T> left
     Tree<T> right
-    
+
     Tree(T value = null, Tree<T> left = null, Tree<T> right = null) {
         this.value = value
         this.left = left
         this.right = right
     }
-    
+
     void replaceAll(T value) {
         this.value = value
         left?.replaceAll(value)
@@ -970,9 +972,9 @@ end
 // version 1.0.6
 
 class BinaryTree<T>(var value: T) {
-    var left : BinaryTree<T>? = null 
+    var left : BinaryTree<T>? = null
     var right: BinaryTree<T>? = null
-   
+
     fun <U> map(f: (T) -> U): BinaryTree<U> {
         val tree = BinaryTree<U>(f(value))
         if (left  != null) tree.left  = left?.map(f)
@@ -980,7 +982,7 @@ class BinaryTree<T>(var value: T) {
         return tree
     }
 
-    fun showTopThree() = "(${left?.value}, $value, ${right?.value})" 
+    fun showTopThree() = "(${left?.value}, $value, ${right?.value})"
 }
 
 fun main(args: Array<String>) {
@@ -1121,7 +1123,7 @@ The standard builtin type hierarcy is trivial:
           +-integer        +-string
 
 ```
-       
+
 User defined types are subclasses of those.
 
 If you declare a parameter as type integer then obviously it is optimised for that, and crashes when given something else (with a clear human-readable message and file name/line number).
@@ -1146,9 +1148,9 @@ Most programming languages would throw a hissy fit if you tried to sort (or prin
 For comparison purposes (and because this entry looked a bit sparse without it) this is the D example from this page translated to Phix.
 
 Note that tmap has to be a function rather than a procedure with a reference parameter, but this still achieves
-pass-by-reference/in-situ updates, mainly because root is a local rather than global/static, and is the target of 
-(aka assigned to/overwritten on return from) the top-level tmap() call, and yet also manages the C#/Dart/Kotlin 
-thing (by which I am referring to those specific examples on this page) of creating a whole new tree, simply 
+pass-by-reference/in-situ updates, mainly because root is a local rather than global/static, and is the target of
+(aka assigned to/overwritten on return from) the top-level tmap() call, and yet also manages the C#/Dart/Kotlin
+thing (by which I am referring to those specific examples on this page) of creating a whole new tree, simply
 because lhs assignee!=rhs reference (aka root2!=root) in "root2 = tmap(root,rid)", not that such a "deep clone"
 would (barring a few dirty low-level tricks) behave any differently to "root2=root", which is "a straightforward shared reference
 with cow semantics".
@@ -1166,7 +1168,7 @@ end function
 function newnode(object v)
     return {v,null,null}
 end function
- 
+
 function add10(atom x) return x+10 end function
 
 procedure main()
@@ -1175,17 +1177,17 @@ procedure main()
     root[left] = newnode(1.10)
     root[left][left] = newnode(1.11)
     root[left][right] = newnode(1.12)
- 
+
     root[right] = newnode(1.20)
     root[right][left] = newnode(1.21)
     root[right][right] = newnode(1.22)
- 
+
     -- Now the tree has seven nodes.
- 
+
     -- Show the whole tree.
     ppOpt({pp_Nest,2})
     pp(root)
- 
+
     -- Modify the whole tree.
     root = tmap(root,routine_id("add10"))
 
@@ -1486,7 +1488,7 @@ val treeOfNames = t.map(toName)
 
 This works, even though <tt>map</tt> is expecting a function from <tt>Manager</tt> into something,
 but <tt>toName</tt> is a function of <tt>Employee</tt> into <tt>String</tt>, and <tt>Employee</tt>
-is a supertype, not a subtype, of <tt>Manager</tt>. It works because functions have the following 
+is a supertype, not a subtype, of <tt>Manager</tt>. It works because functions have the following
 definition in Scala:
 
 
@@ -1497,7 +1499,7 @@ trait Function1[-T1, +R]
 
 The minus sign indicates that this trait is ''contra-variant'' in <tt>T1</tt>, which happens to be
 the type of the argument of the function. In other words, it tell us that, <tt>Employee => String</tt>
-is a ''subtype'' of <tt>Manager => String</tt>, because <tt>Employee</tt> is a ''supertype'' of 
+is a ''subtype'' of <tt>Manager => String</tt>, because <tt>Employee</tt> is a ''supertype'' of
 <tt>Manager</tt>. While the concept of contra-variance is not intuitive, it should be clear to anyone
 that <tt>toName</tt> can handle arguments of type <tt>Manager</tt>, but, were not for the contra-variance,
 it would ''not'' be usable with a <tt>Tree[Manager]</tt>.
@@ -1605,7 +1607,7 @@ Output:
 
 ```txt
 
-2 3 5 7 11 13 17 19 23 
+2 3 5 7 11 13 17 19 23
 
 ```
 
@@ -1633,7 +1635,7 @@ fun map_tree f Empty = Empty
   var value: T?
   var left: Tree<T>?
   var right: Tree<T>?
-  
+
   func replaceAll(value: T?) {
     self.value = value
     left?.replaceAll(value)
@@ -1650,7 +1652,7 @@ Another version based on Algebraic Data Types:
  {
   case Empty
   indirect case Node(T, Tree<T>, Tree<T>)
-  
+
   func map<U>(f : T -> U) -> Tree<U> {
     switch(self) {
     case     .Empty        : return .Empty
@@ -1803,7 +1805,7 @@ clauses
    treewalk(branch(Left,Right),Func) = branch(NewLeft,NewRight) :-
         NewLeft = treewalk(Left,Func), NewRight = treewalk(Right,Func).
 
-   treewalk(leaf(Value),Func) = leaf(X) :- 
+   treewalk(leaf(Value),Func) = leaf(X) :-
         X = Func(Value).
 
    run():-
@@ -1818,7 +1820,7 @@ clauses
 
 
 
-   
+
 
 
 

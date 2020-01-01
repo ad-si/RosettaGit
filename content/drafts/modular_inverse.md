@@ -26,7 +26,7 @@ It can be shown that such an inverse exists   if and only if   <big> ''a'' </big
 
 
 ;Task:
-Either by implementing the algorithm, by using a dedicated library or by using a built-in function in 
+Either by implementing the algorithm, by using a dedicated library or by using a built-in function in
 your language,   compute the modular inverse of   42 modulo 2017.
 
 
@@ -83,21 +83,21 @@ your language,   compute the modular inverse of   42 modulo 2017.
 with Ada.Text_IO;use Ada.Text_IO;
 procedure modular_inverse is
   -- inv_mod calculates the inverse of a mod n. We should have n>0 and, at the end, the contract is a*Result=1 mod n
-  -- If this is false then we raise an exception (don't forget the -gnata option when you compile 
-  function inv_mod (a : Integer; n : Positive) return Integer with post=> (a * inv_mod'Result) mod n = 1 is 
-    -- To calculate the inverse we do as if we would calculate the GCD with the Euclid extended algorithm 
+  -- If this is false then we raise an exception (don't forget the -gnata option when you compile
+  function inv_mod (a : Integer; n : Positive) return Integer with post=> (a * inv_mod'Result) mod n = 1 is
+    -- To calculate the inverse we do as if we would calculate the GCD with the Euclid extended algorithm
     -- (but we just keep the coefficient on a)
     function inverse (a, b, u, v : Integer) return Integer is
      (if b=0 then u else inverse (b, a mod b, v, u-(v*a)/b));
   begin
     return inverse (a, n, 1, 0);
   end inv_mod;
-begin 
+begin
   -- This will output -48 (which is correct)
   Put_Line (inv_mod (42,2017)'img);
   -- The further line will raise an exception since the GCD will not be 1
   Put_Line (inv_mod (42,77)'img);
-  exception when others => Put_Line ("The inverse doesn't exist."); 
+  exception when others => Put_Line ("The inverse doesn't exist.");
 end modular_inverse;
 
 ```
@@ -132,7 +132,7 @@ CO
 	 (a, b, g)
       END;
       [] INT egcd = extended gcd (a, m);
-      (egcd[3] > 1 | 0 | egcd[1] MOD m)      
+      (egcd[3] > 1 | 0 | egcd[1] MOD m)
    END;
    printf (($"42 ^ -1 (mod 2017) = ", g(0)$, modular inverse (42, 2017)))
 CO
@@ -333,8 +333,8 @@ Output
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int mul_inv(int a, int b)
 {
@@ -360,8 +360,8 @@ int main(void) {
 The above method has some problems.  Most importantly, when given a pair (a,b) with no solution, it generates an FP exception.  When given <tt>b=1</tt>, it returns 1 which is not a valid result mod 1.  When given negative a or b the results are incorrect.  The following generates results that should match Pari/GP for numbers in the int range.
 {{trans|Perl}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int mul_inv(int a, int b)
 {
@@ -406,10 +406,10 @@ int main(void) {
 
 {{trans|C}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
  using namespace std;
- 
+
 int mul_inv(int a, int b)
 {
 	int b0 = b, t, q;
@@ -423,7 +423,7 @@ int mul_inv(int a, int b)
 	if (x1 < 0) x1 += b0;
 	return x1;
 }
- 
+
 int main(void) {
 	cout<<mul_inv(42, 2017)<<endl;
 	return 0;
@@ -434,8 +434,8 @@ int main(void) {
 
 Recursive implementation
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 short ObtainMultiplicativeInverse(int a, int b, int s0 = 1, int s1 = 0)
 {
@@ -570,13 +570,13 @@ No inverse since gcd is: 2
     (setq q (floor (/ (cdr r) (car r))))))                     ; inside loop; calculate the q
 
 ;;
-;; Calculates the inverse module for a = 1 (mod m). 
+;; Calculates the inverse module for a = 1 (mod m).
 ;;
 ;; Note: The inverse is only defined when a and m are coprimes, i.e. gcd(a, m) = 1.”
 ;;
 (defun invmod (a m)
   (multiple-value-bind (r s k) (egcd a m)
-    (unless (= 1 r) (error "invmod: Values ~a and ~a are not coprimes." a m))  
+    (unless (= 1 r) (error "invmod: Values ~a and ~a are not coprimes." a m))
      s))
 
 ```
@@ -665,14 +665,14 @@ defmodule Modular do
     {last_remainder, last_x} = extended_gcd(abs(a), abs(b), 1, 0, 0, 1)
     {last_remainder, last_x * (if a < 0, do: -1, else: 1)}
   end
-  
+
   defp extended_gcd(last_remainder, 0, last_x, _, _, _), do: {last_remainder, last_x}
   defp extended_gcd(last_remainder, remainder, last_x, x, last_y, y) do
     quotient   = div(last_remainder, remainder)
     remainder2 = rem(last_remainder, remainder)
     extended_gcd(remainder, remainder2, x, last_x - quotient*x, y, last_y - quotient*y)
   end
-  
+
   def inverse(e, et) do
       {g, x} = extended_gcd(e, et)
       if g != 1, do: raise "The maths are broken!"
@@ -750,7 +750,7 @@ let MI n g =
     match e with
     | 0 -> g
     | _ -> let o = n/e
-           fN e l a (n-o*e) (i-o*l) (g-o*a) 
+           fN e l a (n-o*e) (i-o*l) (g-o*a)
   (n+(fN n 1 0 g 0 1))%n
 
 ```
@@ -786,8 +786,8 @@ ANS Forth with double-number word set
 ```forth
 
 : invmod { a m | v b c -- inv }
-  m to v  
-  1 to c  
+  m to v
+  1 to c
   0 to b
   begin a
   while v a / >r
@@ -863,8 +863,8 @@ Function magic_box(x As Integer, y As Integer) As ext_euclid
         'Print a(i),b(i),d(i),k(i)
         If d(i -1) Mod d(i) = 0 Then Exit While
     Wend
-    
-    If d(i) = -1 Then '  -1 * (ab + by) = -1 * -1 ==> -ab -by = 1 
+
+    If d(i) = -1 Then '  -1 * (ab + by) = -1 * -1 ==> -ab -by = 1
         a(i) = -a(i)
         b(i) = -b(i)
     End If
@@ -883,17 +883,17 @@ Do
     result = magic_box(x, y)
     With result
         gcd = .a * x + .b * y
-        Print "a * "; Str(x); " + b * "; Str(y);  
+        Print "a * "; Str(x); " + b * "; Str(y);
         Print " = GCD("; Str(x); ", "; Str(y); ") ="; gcd
-        If gcd > 1 Then 
+        If gcd > 1 Then
             Print "No solution, numbers are not coprime"
-        Else 
+        Else
             Print "a = "; .a; ", b = ";.b
             Print "The Modular inverse of "; x; " modulo "; y; " = ";
-            While .a < 0 : .a += IIf(y > 0, y, -y) : Wend 
+            While .a < 0 : .a += IIf(y > 0, y, -y) : Wend
             Print .a
             'Print "The Modular inverse of "; y; " modulo "; x; " = ";
-            'While .b < 0 : .b += IIf(x > 0, x, -x) : Wend 
+            'While .b < 0 : .b += IIf(x > 0, x, -x) : Wend
             'Print .b
         End if
     End With
@@ -948,7 +948,7 @@ def modinv( a, m ) =
     val (g, x, _) = egcd( a, m )
 
     if g != 1 then error( a + ' and ' + m + ' not coprime' )
-        
+
     val res = x % m
 
     if res < 0 then res + m else res
@@ -1011,7 +1011,7 @@ func main() {
 
 990  ' increments e stp (step) times until bal is greater than t
 992  ' repeats until bal = 1 (mod = 1) and returns count
-994  ' bal will not be greater than t + e 
+994  ' bal will not be greater than t + e
 1000 LET D% = 0
 1010 IF E% >= T% THEN GOTO 1140
 1020  LET BAL% = E%
@@ -1177,9 +1177,9 @@ end
 1969
 ```
 
-'''Notes''': 
+'''Notes''':
 
-* Calculates the modular inverse as <tt>a^( totient(m) - 1 ) mod m</tt>.  
+* Calculates the modular inverse as <tt>a^( totient(m) - 1 ) mod m</tt>.
 
 * 5 p: y is Euler's totient function of y.
 
@@ -1234,7 +1234,7 @@ invmod(a, b)
 ### C translation
 
 {{trans|C}}
-The following code works on any integer type.  
+The following code works on any integer type.
 To maximize performance, we ensure (via a promotion rule) that the operands are the same type (and use built-ins <code>zero(T)</code> and <code>one(T)</code> for initialization of temporary variables to ensure that they remain of the same type throughout execution).
 
 ```julia
@@ -1317,7 +1317,7 @@ fun main(args: Array<String>) {
 The built-in function <code>FindInstance</code> works well for this
 
 ```Mathematica
-modInv[a_, m_] := 
+modInv[a_, m_] :=
  Block[{x,k}, x /. FindInstance[a x == 1 + k m, {x, k}, Integers]]
 ```
 
@@ -1418,15 +1418,15 @@ Modular inverse
 (define (modular-multiplicative-inverse a n)
     (if (< n 0)
         (setf n (abs n)))
-        
+
     (if (< a 0)
         (setf a (- n (% (- 0 a) n))))
-    
+
     (setf t 0)
     (setf nt 1)
     (setf r n)
     (setf nr (mod a n))
-    
+
     (while (not (zero? nr))
         (setf q (int (div r nr)))
         (setf tmp nt)
@@ -1435,14 +1435,14 @@ Modular inverse
         (setf tmp nr)
         (setf nr (sub r (mul q nr)))
         (setf r tmp))
-    
+
     (if (> r 1)
         (setf retvalue nil))
-    
+
     (if (< t 0)
         (setf retvalue (add t n))
         (setf retvalue t))
-    retvalue)  
+    retvalue)
 
 (println (modular-multiplicative-inverse 42 2017))
 
@@ -1602,7 +1602,7 @@ Mod(1/42,2017)
 
 
 ```Pascal
-  
+
 // increments e step times until bal is greater than t
 // repeats until bal = 1 (mod = 1) and returns count
 // bal will not be greater than t + e
@@ -1682,8 +1682,8 @@ sub invmod {
 say invmod(42,2017);
 ```
 
-'''Notes''': Special cases to watch out for include (1) where the inverse doesn't exist, such as invmod(14,28474), which should return undef or raise an exception, not return a wrong value.   (2) the high bit of a or n is set, e.g. invmod(11,2**63), (3) negative first arguments, e.g. invmod(-11,23).  
-The modules and code above handle these cases, 
+'''Notes''': Special cases to watch out for include (1) where the inverse doesn't exist, such as invmod(14,28474), which should return undef or raise an exception, not return a wrong value.   (2) the high bit of a or n is set, e.g. invmod(11,2**63), (3) negative first arguments, e.g. invmod(-11,23).
+The modules and code above handle these cases,
 but some other language implementations for this task do not.
 
 
@@ -1715,7 +1715,7 @@ function mul_inv(integer a, n)
     if n<0 then n = -n end if
     if a<0 then a = n - mod(-a,n) end if
     integer t = 0,  nt = 1,
-            r = n,  nr = a;   
+            r = n,  nr = a;
     while nr!=0 do
         integer q = floor(r/nr)
         {t, nt} = {nt, t-q*nt}
@@ -1886,7 +1886,7 @@ invmod 42 2017
 ```txt
 PS> .\INVMOD.PS1
 1969
-PS> 
+PS>
 ```
 
 
@@ -1904,10 +1904,10 @@ If OpenConsole("MODULAR-INVERSE")
   main() : Input() : End
 EndIf
 
-Macro ModularInverse(a, b)  
-  PrintN(~"\tMODULAR-INVERSE(" + RSet(Str(a),5) + "," + 
-         RSet(Str(b),5)+") = " + 
-         RSet(Str(mi(a, b)),5))   
+Macro ModularInverse(a, b)
+  PrintN(~"\tMODULAR-INVERSE(" + RSet(Str(a),5) + "," +
+         RSet(Str(b),5)+") = " +
+         RSet(Str(mi(a, b)),5))
 EndMacro
 
 Procedure main()
@@ -1921,17 +1921,17 @@ EndProcedure
 Procedure.i mi(a.i, b.i)
   Define x.i = 1,
          y.i = Int(Abs(b)),
-         r.i = 0  
-  If y = 1 : ProcedureReturn 0 : EndIf  
+         r.i = 0
+  If y = 1 : ProcedureReturn 0 : EndIf
   While x < y
-    r = (a * x) % b   
+    r = (a * x) % b
     If r = 1 Or (y + r) = 1
       Break
     EndIf
     x + 1
   Wend
-  If x > y - 1 : x = -1 : EndIf  
-  ProcedureReturn x  
+  If x > y - 1 : x = -1 : EndIf
+  ProcedureReturn x
 EndProcedure
 ```
 
@@ -1970,7 +1970,7 @@ Implementation of this [http://en.wikipedia.org/wiki/Extended_Euclidean_algorith
 
 >>> modinv(42, 2017)
 1969
->>> 
+>>>
 ```
 
 
@@ -2142,18 +2142,18 @@ modular inverse of  42  by  2017  ───►  1969
 see "42 %! 2017 = " + multInv(42, 2017) + nl
 
 func multInv a,b
-     b0 = b  
+     b0 = b
      x0 = 0
      multInv = 1
      if b = 1 return 0 ok
      while a > 1
            q = floor(a / b)
-           t = b  
+           t = b
            b = a % b
            a = t
-           t = x0 
+           t = x0
            x0 = multInv - q * x0
-           multInv = t  
+           multInv = t
      end
      if multInv < 0 multInv = multInv + b0 ok
      return multInv
@@ -2198,7 +2198,7 @@ end
 
 
 ```txt
- 
+
 > invmod(42,2017)
 => 1969
 ```
@@ -2246,10 +2246,10 @@ function multInv(a,b)
 	if b = 1 then goto [endFun]
 	while a > 1
 		q	= a / b
-		t	= b 
+		t	= b
 		b	= a mod b
 		a	= t
-		t	= x0 
+		t	= x0
 		x0	= multInv - q * x0
 		multInv	= int(t)
 	wend
@@ -2276,12 +2276,12 @@ end function
 fn mod_inv(a: isize, module: isize) -> isize {
   let mut mn = (module, a);
   let mut xy = (0, 1);
-  
+
   while mn.1 != 0 {
     xy = (xy.1, xy.0 - (mn.0 / mn.1) * xy.1);
     mn = (mn.1, mn.0 % mn.1);
   }
-  
+
   while xy.0 < 0 {
     xy.0 += module;
   }
@@ -2318,7 +2318,7 @@ fn modinv(a0: isize, m0: isize) -> isize {
         std::mem::swap(&mut a, &mut m);
         std::mem::swap(&mut x0, &mut inv);
     }
-    
+
     if inv < 0 { inv += m0 }
     inv
 }
@@ -2531,14 +2531,14 @@ no inverse exists of 2 %! 4
 ```tsql
 ;WITH Iterate(N,A,B,X0,X1)
 	AS (
-		SELECT 
+		SELECT
 			1
 			,CASE WHEN @a < 0 THEN @b-(-@a % @b) ELSE @a END
 			,CASE WHEN @b < 0 THEN -@b ELSE @b END
 			,0
 			,1
 		UNION ALL
-		SELECT 
+		SELECT
 			N+1
 			,B
 			,A%B
@@ -2678,10 +2678,10 @@ End Sub
 {{out}}
 
 ```txt
- 1969 
- 0 
- 96 
- 121 
+ 1969
+ 0
+ 96
+ 121
 a is not invertible
 ```
 

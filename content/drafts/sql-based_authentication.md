@@ -38,8 +38,8 @@ create table users (
 {{libheader|mysqlclient}} (MySQL client library)
 {{libheader|OpenSSL}} (for MD5)
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>

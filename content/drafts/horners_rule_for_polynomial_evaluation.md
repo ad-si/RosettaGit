@@ -48,13 +48,13 @@ LOOP     M      R4,X               accumulator=accumulator*x
          L      R3,COEF-4(R1)      coef(i)
          AR     R5,R3              accumulator=accumulator+coef(i)
          BCT    R2,LOOP            i=i-1; loop n times
-         XDECO  R5,PG              edit accumulator 
+         XDECO  R5,PG              edit accumulator
          XPRNT  PG,12              print buffer
          XR     R15,R15            set return code
          BR     R14                return to caller
 COEF     DC     F'-19',F'7',F'-4',F'6'    <== input values
 X        DC     F'3'                      <== input value
-N        EQU    (X-COEF)/4         number of coefficients 
+N        EQU    (X-COEF)/4         number of coefficients
 PG       DS     CL12               buffer
          YREGS
          END    HORNER
@@ -235,7 +235,7 @@ Message box shows:
 ```awk
 #!/usr/bin/awk -f
 function horner(x, A) {
-	acc = 0;	
+	acc = 0;
 	for (i = length(A); 0<i; i--) {
 		acc = acc*x + A[i];
 	}
@@ -312,7 +312,7 @@ exit /b
       coefficients() = -19, 7, -4, 6
       PRINT FNhorner(coefficients(), 3)
       END
-      
+
       DEF FNhorner(coeffs(), x)
       LOCAL i%, v
       FOR i% = DIM(coeffs(), 1) TO 0 STEP -1
@@ -353,14 +353,14 @@ Output:
 
 {{trans|Fortran}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 double horner(double *coeffs, int s, double x)
 {
   int i;
   double res = 0.0;
-  
+
   for(i=s-1; i >= 0; i--)
   {
     res = res * x + coeffs[i];
@@ -372,7 +372,7 @@ double horner(double *coeffs, int s, double x)
 int main()
 {
   double coeffs[] = { -19.0, 7.0, -4.0, 6.0 };
-  
+
   printf("%5.1f\n", horner(coeffs, sizeof(coeffs)/sizeof(double), 3.0));
   return 0;
 }
@@ -413,8 +413,8 @@ Output:
 The same C function works too, but another solution could be:
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 
 using namespace std;
@@ -422,7 +422,7 @@ using namespace std;
 double horner(vector<double> v, double x)
 {
   double s = 0;
-  
+
   for( vector<double>::const_reverse_iterator i = v.rbegin(); i != v.rend(); i++ )
     s = s*x + *i;
   return s;
@@ -486,7 +486,7 @@ eval_poly = (x, coefficients) ->
   return 0 if coefficients.length == 0
   ones_place = coefficients.shift()
   x * eval_poly(x, coefficients) + ones_place
-  
+
 console.log eval_poly 3, [-19, 7, -4, 6] # 128
 console.log eval_poly 10, [4, 3, 2, 1] # 1234
 console.log eval_poly 2, [1, 1, 0, 0, 1] # 19
@@ -598,7 +598,7 @@ def makeHornerPolynomial(coefficients :List) {
 ## EchoLisp
 
 
-###  Functional version 
+###  Functional version
 
 
 ```lisp
@@ -611,7 +611,7 @@ def makeHornerPolynomial(coefficients :List) {
 ```
 
 
-###  Library 
+###  Library
 
 
 ```lisp
@@ -620,7 +620,7 @@ def makeHornerPolynomial(coefficients :List) {
 Lib: math.lib loaded.
 
 (define P '(-19 7 -4 6))
-(poly->string 'x P) → 6x^3 -4x^2 +7x -19 
+(poly->string 'x P) → 6x^3 -4x^2 +7x -19
 (poly 3 P) → 128
 
 ```
@@ -634,12 +634,12 @@ ELENA 4.1 :
 ```elena
 import extensions;
 import system'routines;
- 
+
 horner(coefficients,variable)
 {
     ^ coefficients.clone().sequenceReverse().accumulate(new Real(),(accumulator,coefficient => accumulator * variable + coefficient))
 }
- 
+
 public program()
 {
     console.printLine(horner(new real[]::(-19.0r, 7.0r, -4.0r, 6.0r), 3.0r))
@@ -693,7 +693,7 @@ IO.puts horner.([-19,7,-4,6], 3)
 <b>Output:</b>
 
 ```txt
- 
+
 128
 
 ```
@@ -856,7 +856,7 @@ Output:
 
 
 
-###  Fortran 77 
+###  Fortran 77
 
 
 ```fortran
@@ -1113,7 +1113,7 @@ END
 
 procedure poly_eval (x, coeffs)
   accumulator := 0
-  every index := *coeffs to 1 by -1 do 
+  every index := *coeffs to 1 by -1 do
     accumulator := accumulator * x + coeffs[index]
   return accumulator
 end
@@ -1131,8 +1131,8 @@ end
 '''Solution''':
 ```j
 
-   
-   horner =: 4 :  '  (+ *&y)/x'   
+
+   horner =: 4 :  '  (+ *&y)/x'
 
    horner1 =: (#."0 _ |.)~
 
@@ -1319,7 +1319,7 @@ function horner(coefficients$, x)
     next
     horner = accumulator
 end function
- 
+
 ```
 
 
@@ -1343,7 +1343,7 @@ show horner 3 [-19 7 -4 6]   ; 128
 
 ```lua
 function horners_rule( coeff, x )
-    local res = 0    
+    local res = 0
     for i = #coeff, 1, -1 do
         res = res * x + coeff[i]
     end
@@ -1402,11 +1402,11 @@ Horner[{6, -4, 7, -19}, x]
 function accumulator = hornersRule(x,coefficients)
 
     accumulator = 0;
-    
+
     for i = (numel(coefficients):-1:1)
         accumulator = (accumulator * x) + coefficients(i);
     end
-    
+
 end
 ```
 
@@ -1420,7 +1420,7 @@ ans =
    128
 ```
 
-Matlab also has a built-in function "polyval" which uses Horner's Method to evaluate polynomials. The list of coefficients is in descending order of power, where as to task spec specifies ascending order. 
+Matlab also has a built-in function "polyval" which uses Horner's Method to evaluate polynomials. The list of coefficients is in descending order of power, where as to task spec specifies ascending order.
 
 ```MATLAB>>
  polyval(fliplr([-19, 7, -4, 6]),3)
@@ -1588,11 +1588,11 @@ Say 6*x**3-4*x**2+7*x-19
 iterator reversed[T](x: openArray[T]): T =
   for i in countdown(x.high, x.low):
     yield x[i]
- 
+
 proc horner[T](coeffs: openArray[T], x: T): int =
   for c in reversed(coeffs):
     result = result * x + c
- 
+
 echo horner([-19, 7, -4, 6], 3)
 ```
 
@@ -1603,14 +1603,14 @@ echo horner([-19, 7, -4, 6], 3)
 ```oberon2
 
 MODULE HornerRule;
-IMPORT 
+IMPORT
   Out;
- 
+
 TYPE
   Coefs = POINTER TO ARRAY OF LONGINT;
 VAR
   coefs: Coefs;
-  
+
 PROCEDURE Eval(coefs: ARRAY OF LONGINT;size,x: LONGINT): LONGINT;
 VAR
   i,acc: LONGINT;
@@ -1641,7 +1641,7 @@ END HornerRule.
 
 ```
 
-   
+
 =={{header|Objective-C}}==
 {{works with|Mac OS X|10.6+}} Using blocks
 
@@ -1699,20 +1699,20 @@ int main()
 
 class Horner {
   function : Main(args : String[]) ~ Nil {
-    coeffs := Collection.FloatVector->New();  
+    coeffs := Collection.FloatVector->New();
     coeffs->AddBack(-19.0);
     coeffs->AddBack(7.0);
     coeffs->AddBack(-4.0);
     coeffs->AddBack(6.0);
     PolyEval(coeffs, 3)->PrintLine();
   }
-  
+
   function : PolyEval(coefficients : Collection.FloatVector , x : Float) ~ Float {
     accumulator := coefficients->Get(coefficients->Size() - 1);
     for(i := coefficients->Size() - 2; i > -1; i -= 1;) {
        accumulator := (accumulator * x) + coefficients->Get(i);
     };
-    
+
     return accumulator;
   }
 }
@@ -1779,7 +1779,7 @@ Say 6*x**3-4*x**2+7*x-19
 128
 ```
 
-   
+
 
 ## Oz
 
@@ -1787,12 +1787,12 @@ Say 6*x**3-4*x**2+7*x-19
 ```oz
 declare
   fun {Horner Coeffs X}
-     {FoldL1 {Reverse Coeffs} 
+     {FoldL1 {Reverse Coeffs}
       fun {$ Acc Coeff}
          Acc*X + Coeff
       end}
   end
-  
+
   fun {FoldL1 X|Xr Fun}
      {FoldL Xr Fun X}
   end
@@ -1856,14 +1856,14 @@ Horner calculated polynomial of 6*x^3 - 4*x^2 + 7*x - 19 for x = 3: 128.0000
 use 5.10.0;
 use strict;
 use warnings;
- 
+
 sub horner(\@$){
 	my ($coef, $x) = @_;
 	my $result = 0;
 	$result = $result * $x + $_ for reverse @$coef;
 	return $result;
 }
- 
+
 my @coeff = (-19.0, 7, -4, 6);
 my $x = 3;
 say horner @coeff, $x;
@@ -1893,9 +1893,9 @@ print horner(\@coeff, $x), "\n";
 sub horner {
     my ($coeff, $x) = @_;
     @$coeff and
-    $$coeff[0] + $x * horner( [@$coeff[1 .. $#$coeff]], $x ) 
+    $$coeff[0] + $x * horner( [@$coeff[1 .. $#$coeff]], $x )
 }
- 
+
 print horner( [ -19, 7, -4, 6 ], 3 );
 ```
 
@@ -1919,9 +1919,9 @@ A recursive version would spare us the need for reversing the list of coefficien
 ```perl6
 multi horner(Numeric $c, $) { $c }
 multi horner(Pair $c, $x) {
-    $c.key + $x * horner( $c.value, $x ) 
+    $c.key + $x * horner( $c.value, $x )
 }
- 
+
 say horner( [=>](-19, 7, -4, 6 ), 3 );
 ```
 
@@ -1932,7 +1932,7 @@ We can also use the composition operator:
 sub horner ( @coeffs, $x ) {
     ([o] map { $_ + $x * * }, @coeffs)(0);
 }
- 
+
 say horner( [ -19, 7, -4, 6 ], 3 );
 ```
 
@@ -1944,13 +1944,13 @@ say horner( [ -19, 7, -4, 6 ], 3 );
 ```
 
 
-One advantage of using the composition operator is that it allows for the use of an infinite list of coefficients. 
+One advantage of using the composition operator is that it allows for the use of an infinite list of coefficients.
 
 ```perl6
 sub horner ( @coeffs, $x ) {
     map { .(0) }, [\o] map { $_ + $x * * }, @coeffs;
 }
- 
+
 say horner( [ 1 X/ (1, |[\*] 1 .. *) ], i*pi )[20];
 
 ```
@@ -1999,7 +1999,7 @@ function horner($coeff, $x) {
         $result = $result * $x + $c;
     return $result;
 }
- 
+
 $coeff = array(-19.0, 7, -4, 6);
 $x = 3;
 echo horner($coeff, $x), "\n";
@@ -2091,7 +2091,7 @@ horner(3, (-19, 7, -4, 6)) print
 
 function horner($coefficients, $x) {
     $accumulator = 0
-    foreach($i in ($coefficients.Count-1)..0){ 
+    foreach($i in ($coefficients.Count-1)..0){
         $accumulator = ( $accumulator * $x ) + $coefficients[$i]
     }
     $accumulator
@@ -2105,7 +2105,7 @@ horner $coefficients $x
 <b>Output:</b>
 
 ```txt
- 
+
 128
 
 ```
@@ -2284,7 +2284,7 @@ Translated from Haskell
 ```racket
 
 #lang racket
-(define (horner x l) 
+(define (horner x l)
     (foldr (lambda (a b) (+ a (* b x))) 0 l))
 
 (horner 3 '(-19 7 -4 6))
@@ -2456,12 +2456,12 @@ say '    answer = ' a                            /*stick a fork in it,  we're al
 
 ```ring
 
-coefficients = [-19, 7, -4, 6] 
+coefficients = [-19, 7, -4, 6]
 see "x =  3" + nl +
 "degree =  3" + nl +
 "equation =  6*x^3-4*x^2+7*x-19" + nl +
 "result = " + horner(coefficients, 3) + nl
- 
+
 func horner coeffs, x
 w = 0
 for n = len(coeffs) to 1 step -1
@@ -2574,7 +2574,7 @@ print horner("1 0 1 1 1 0 0 1", 2)        '157
 end
 
 function horner(coef$,x)
-  while word$(coef$, i + 1) <> ""        
+  while word$(coef$, i + 1) <> ""
      i = i + 1                          ' count the num of values
   wend
   for j = i to 1 step -1
@@ -2591,7 +2591,7 @@ end function
 
 ```sather
 class MAIN is
-  
+
   action(s, e, x:FLT):FLT is
     return s*x + e;
   end;
@@ -2817,7 +2817,7 @@ Output:
 ```txt
 
 print Horner(3, -19, 7, -4, 6)
- 128 
+ 128
 
 ```
 
@@ -2875,7 +2875,7 @@ FOR k = n TO 1 STEP -1
 	s = s*x + c[k]
 ENDFOR
 RETURN s
-ENDFUNC	 	
+ENDFUNC
 
 ```
 
@@ -2901,9 +2901,9 @@ LOCAL s As Double, e
 s = 0
 FOR EACH e IN c FOXOBJECT
 	s = s*x + e
-ENDFOR	
+ENDFOR
 RETURN s
-ENDFUNC	 	
+ENDFUNC
 
 ```
 

@@ -30,7 +30,7 @@ Create a program that downloads the time from this URL:   [http://tycho.usno.nav
 <!-- As of March 2014, the page is available
 {{task|Networking and Web Interaction}}
 
-The page http://tycho.usno.navy.mil/cgi-bin/timer.pl is no longer available since July 2011. 
+The page http://tycho.usno.navy.mil/cgi-bin/timer.pl is no longer available since July 2011.
 The relevant part of that page source looked like this:
 
 ```txt
@@ -65,13 +65,13 @@ If possible, only use libraries that come at no ''extra'' monetary cost with the
 ```forth
 \ Web-scrape sample: get UTC time from the US Naval Observatory:
 : read-url \ -- s
- "http://tycho.usno.navy.mil/cgi-bin/timer.pl" net:get 
- not if "Could not connect" throw then 
+ "http://tycho.usno.navy.mil/cgi-bin/timer.pl" net:get
+ not if "Could not connect" throw then
  >s ;
 
 : get-time
   read-url
-  /<BR>.*?(\d{2}:\d{2}:\d{2})\sUTC/   
+  /<BR>.*?(\d{2}:\d{2}:\d{2})\sUTC/
   tuck r:match if
     1 r:@ . cr
   then ;
@@ -183,7 +183,7 @@ BEGIN {
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of ''grep in string'' and ''http content''}}
 
 ```algol68
-STRING 
+STRING
    domain="tycho.usno.navy.mil",
    page="cgi-bin/timer.pl";
 
@@ -215,7 +215,7 @@ PROC is html page = (REF STRING page) BOOL: (
 STRING reply;
 INT rc = http content (reply, domain, haystack, 0);
 IF rc = 0 AND is html page (reply)
-THEN 
+THEN
   STRING line; FILE freply; associate(freply, reply);
   on logical file end(freply, (REF FILE freply)BOOL: (done; SKIP));
   DO
@@ -227,7 +227,7 @@ ELSE raise error (strerror (rc))
 FI
 ```
 
-{{out}} Sample 
+{{out}} Sample
 
 ```txt
 
@@ -299,14 +299,14 @@ Note that the URL cache is cleared so the code works correctly if run more than 
       SYS "GetProcAddress", urlmon%, "URLDownloadToFileA" TO UDTF%
       SYS "LoadLibrary", "WININET.DLL" TO wininet%
       SYS "GetProcAddress", wininet%, "DeleteUrlCacheEntryA" TO DUCE%
-      
+
       url$ = "http://tycho.usno.navy.mil/cgi-bin/timer.pl"
       file$ = @tmp$+"navytime.txt"
-      
+
       SYS DUCE%, url$
       SYS UDTF%, 0, url$, file$, 0, 0 TO result%
       IF result% ERROR 100, "Download failed"
-      
+
       file% = OPENIN(file$)
       REPEAT
         text$ = GET$#file%
@@ -326,8 +326,8 @@ Note that the URL cache is cleared so the code works correctly if run more than 
 There is no proper error handling.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <curl/curl.h>
 #include <sys/types.h>
@@ -361,7 +361,7 @@ int main()
   curl_easy_cleanup(curlHandle);
 
   buffer[lr] = 0;
-  
+
   regcomp(&cregex, " UTC", REG_NEWLINE);
   regexec(&cregex, buffer, 1, &amatch, 0);
   int bi = amatch.rm_so;
@@ -385,8 +385,8 @@ int main()
 {{works with|Visual Studio| 2010 Express Edition with boost-1.46.1 from boostpro.com}}
 {{works with|gcc|4.5.2 with boost-1.46.1, compiled with -lboost_regex -lboost_system -lboost_thread}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <boost/asio.hpp>
 #include <boost/regex.hpp>
@@ -432,7 +432,7 @@ class Program
                         break;
                     }
                 }
-                
+
             }
             Console.WriteLine(html.Remove(0, 4));
 
@@ -458,29 +458,29 @@ ClassMethod ExtractHTMLData(pHost As %String = "", pPath As %String = "", pRegEx
 
     // some initialisation
     Set list="", sc=$$$OK
-  
+
     // check input parameters
     If $Match(pHost, "^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$")=0 {
       Set sc=$$$ERROR($$$GeneralError, "Invalid host name.")
       Quit
     }
-    
+
     // create http request and get page
     Set req=##class(%Net.HttpRequest).%New()
     Set req.Server=pHost
     Do req.Get(pPath)
-    
+
     // check for success
     If $Extract(req.HttpResponse.StatusCode)'=2 {
       Set sc=$$$ERROR($$$GeneralError, "Page not loaded.")
       Quit
     }
-    
+
     // read http response stream
     Set html=req.HttpResponse.Data
     Set html.LineTerminator=$Char(10)
     Set sc=html.Rewind()
-    
+
     // read http response stream
     While 'html.AtEnd {
       Set line=html.ReadLine(, .sc, .eol)
@@ -491,18 +491,18 @@ ClassMethod ExtractHTMLData(pHost As %String = "", pPath As %String = "", pRegEx
         Set $List(list, slot)=parse
       }
     }
-    
+
   } Catch err {
-    
+
     // an error has occurred
     If err.Name="<REGULAR EXPRESSION>" {
       Set sc=$$$ERROR($$$GeneralError, "Invalid regular expression.")
     } Else {
       Set sc=$$$ERROR($$$CacheError, $ZError)
     }
-    
+
   }
-  
+
   // return status
   Quit sc
 }
@@ -519,8 +519,8 @@ USER>Do ##class(Utils.Net).ExtractHTMLData("tycho.usno.navy.mil", "/cgi-bin/time
 USER>Write $List(list)
 Mar. 29, 20:45:27 UTC
 
-USER>Do ##class(Utils.Net).ExtractHTMLData("tycho.usno.navy.mil", "/cgi-bin/timer.pl", "[A-Za-z\.]{3,5} \d{1,2}, \d{1,2}:\d{2}:\d{2}", .list)    
-USER>Write $ListToString(list, $Char(13,10))                                                                                           
+USER>Do ##class(Utils.Net).ExtractHTMLData("tycho.usno.navy.mil", "/cgi-bin/timer.pl", "[A-Za-z\.]{3,5} \d{1,2}, \d{1,2}:\d{2}:\d{2}", .list)
+USER>Write $ListToString(list, $Char(13,10))
 Mar. 29, 20:47:42 UTC
 Mar. 29, 04:47:42 PM EDT
 Mar. 29, 03:47:42 PM CDT
@@ -619,7 +619,7 @@ wget = (host, path, cb) ->
     path: path
     headers:
       "Cache-Control": "max-age=0"
-  
+
   req = http.request options, (res) ->
     s = ''
     res.on 'data', (chunk) ->
@@ -627,9 +627,9 @@ wget = (host, path, cb) ->
     res.on 'end', ->
       cb s
   req.end()
- 
+
 # Do our web scrape
-do -> 
+do ->
   wget CONFIG.host, CONFIG.path, (data) ->
     scrape_tycho_ust_time data
 
@@ -639,7 +639,7 @@ do ->
 
 ```txt
 
-> coffee web_scrape.coffee 
+> coffee web_scrape.coffee
 Jan. 09, 19:19:07 UTC
 
 ```
@@ -796,7 +796,7 @@ begin
                        or need one for this exercise, we must include the "Connection: close"
                        header in our request }
                      'Connection: close' + CRLF +
-                     
+
                      CRLF; // Request must end with an empty line!
 
               // Try to send the request to the host
@@ -1197,7 +1197,7 @@ UTC Time was 'Feb. 26, 11:02:30'
 Using package HTTP-4000.0.8 from [http://hackage.haskell.org/packages/hackage.html HackgageDB]
 
 ```Haskell
-import Data.List 
+import Data.List
 import Network.HTTP (simpleHTTP, getResponseBody, getRequest)
 
 tyd = "http://tycho.usno.navy.mil/cgi-bin/timer.pl"
@@ -1224,7 +1224,7 @@ Icon has capability to read web pages using the external function cfunc.  The Un
 =
 
 ```Unicon
-procedure main() 
+procedure main()
 m := open(url := "http://tycho.usno.navy.mil/cgi-bin/timer.pl","m") | stop("Unable to open ",url)
 every (p := "") ||:= |read(m)                                                    # read the page into a single string
 close(m)
@@ -1329,7 +1329,7 @@ I'm using the <code>Requests.jl</code> package for this solution.  Note, I used 
 
 ```Julia
 using Requests
- 
+
 function getusnotime()
     const url = "http://tycho.usno.navy.mil/timer.pl"
     s = try
@@ -1342,9 +1342,9 @@ function getusnotime()
     isa(t, RegexMatch) || return (@sprintf("raw html:\n %s", readstring(s)), false)
     return (t.match, true)
 end
- 
+
 (t, issuccess) = getusnotime();
- 
+
 if issuccess
     println("The USNO time is ", t)
 else
@@ -1411,7 +1411,7 @@ raw html:
 import java.net.URL
 import java.io.InputStreamReader
 import java.util.Scanner
- 
+
 fun main(args: Array<String>) {
     val url = URL("http://tycho.usno.navy.mil/cgi-bin/timer.pl")
     val isr = InputStreamReader(url.openStream())
@@ -1422,7 +1422,7 @@ fun main(args: Array<String>) {
             println(line.drop(4).take(17))
             break
         }
-    } 
+    }
     sc.close()
 }
 ```
@@ -1662,13 +1662,13 @@ on *:SOCKREAD:UTC: {
 url_name = "http://tycho.usno.navy.mil/cgi-bin/timer.pl"
 url_data = Network.GetWebPageContents(url_name)
 find = "UTC"
-' the length from the UTC to the time is -18 so we need 
+' the length from the UTC to the time is -18 so we need
 ' to subtract from the UTC position
 pos = Text.GetIndexOf(url_data,find)-18
 result = Text.GetSubText(url_data,pos,(18+3)) 'plus 3 to add the UTC
 TextWindow.WriteLine(result)
 
-'you can eleminate a line of code by putting the 
+'you can eleminate a line of code by putting the
 ' GetIndexOf insde the GetSubText
 'result2 = Text.GetSubText(url_data,Text.GetIndexOf(url_data,find)-18,(18+3))
 'TextWindow.WriteLine(result2)
@@ -1774,8 +1774,8 @@ bundle Default {
     function : Main(args : String[]) ~ Nil {
       client := HttpClient->New();
       lines := client->Get("http://tycho.usno.navy.mil/cgi-bin/timer.pl", 80);
-      
-       i := 0; 
+
+       i := 0;
        found := false;
       while(found <> true & i < lines->Size()) {
          line := lines->Get(i)->As(String);
@@ -1910,7 +1910,7 @@ English dialect, padded variable-length form:
 
 English dialect, padded short form, using string functions AFT and BEF:
 
-```html><@ SAY AFT BEF URL LIT LIT LIT 
+```html><@ SAY AFT BEF URL LIT LIT LIT
 http://tycho.usno.navy.mil/cgi-bin/timer.pl| UTC|<BR></@>
 ```
 
@@ -2094,8 +2094,8 @@ Tuesday, December 13, 2016 6:06:25 PM
 
 ```Purebasic
 URLDownloadToFile_( #Null, "http://tycho.usno.navy.mil/cgi-bin/timer.pl", "timer.htm", 0, #Null)
-ReadFile(0, "timer.htm") 
-While Not Eof(0)    :    Text$ + ReadString(0)    :    Wend  
+ReadFile(0, "timer.htm")
+While Not Eof(0)    :    Text$ + ReadString(0)    :    Wend
 MessageRequester("Time", Mid(Text$, FindString(Text$, "UTC", 1) - 9 , 8))
 ```
 
@@ -2128,7 +2128,7 @@ Aug. 12, 15:22:08 UTC           Universal Time
 There are two ways of scraping data from webpages.  You can either convert the page into an array of strings containing each line of HTML and use regular expressions to locate the useful data, or you can parse the HTML and use xPath to locate them.  The first method is quicker for simpler pages, but may become more difficult for more complicated ones.
 
 
-###  Regex method 
+###  Regex method
 
 
 Read the page as lines, find the line containing the string "UTC", then extract the portion of that string that is the date.
@@ -2148,7 +2148,7 @@ The last three lines can be made simpler by using {{libheader|stringr}}
 
 
 ```R
-                   
+
 library(stringr)
 utc_line <- all_lines[str_detect(all_lines, "UTC")]
 utc_time_str <- str_extract(utc_line, "\\w{3}.*UTC")
@@ -2160,7 +2160,7 @@ Finally, the date and time must be parsed and printed in the desired format.
 
 
 ```R
-       
+
 utc_time <- strptime(utc_time_str, "%b. %d, %H:%M:%S UTC")
 strftime(utc_time, "%A, %d %B %Y, %H:%M:%S")
 
@@ -2170,7 +2170,7 @@ strftime(utc_time, "%A, %d %B %Y, %H:%M:%S")
  Friday, 13 May 2011, 15:12:20
 
 
-###  Parsing method 
+###  Parsing method
 
 
 {{libheader|RCurl}}
@@ -2260,7 +2260,7 @@ service: http://tycho.usno.navy.mil/cgi-bin/timer.pl
 
 html: read service
 
-; I parse the HTML to find the first 
+; I parse the HTML to find the first
  (note the unquoted HTML tag
 ; -- REBOL understands those too), then copy the current time from
 ; there to the "UTC" terminator.
@@ -2268,7 +2268,7 @@ html: read service
 ; I have the "to end" in the parse rule so the parse will succeed.
 ; Not strictly necessary once I've got the time, but good practice.
 
-parse html [thru 
+parse html [thru
  copy current thru "UTC" to end]
 
 print ["Current UTC time:" current]
@@ -2524,7 +2524,7 @@ If the web page changes too much, the query will fail to match. TXR will print t
 
 Sample run:
 ```txt
-$ txr navytime.txr 
+$ txr navytime.txr
 Nov-22 22:49:41    UTC
 Nov-22 05:49:41 PM EST
 Nov-22 04:49:41 PM CST
@@ -2539,7 +2539,7 @@ Get just the UTC time:
 
 
 ```txt
-$ txr -DTZ=UTC navytime.txr 
+$ txr -DTZ=UTC navytime.txr
 Nov-22 22:50:16    UTC
 ```
 
@@ -2587,7 +2587,7 @@ echo `awk -v s="${page[22]}" 'BEGIN{print substr(s,5,length(s))}'` ${page[23]} $
 
 ## Ursala
 
-This works by launching the wget command in a separate process and capturing its output. 
+This works by launching the wget command in a separate process and capturing its output.
 The program is compiled to an executable command.
 
 ```Ursala
@@ -2631,12 +2631,12 @@ Function GetUTC() As String
     For Each t In arrt
         If InStr(t, "UTC") Then
             GetUTC = StripHttpTags(t)
-            
+
             Exit For
         End If
     Next
 End Function
- 
+
 Function StripHttpTags(s)
     With New RegExp
         .Global = True
@@ -2648,7 +2648,7 @@ Function StripHttpTags(s)
         End If
     End With
 End Function
- 
+
 Sub getTime()
     Rem starting point
     Dim ReturnValue As String
@@ -2687,12 +2687,12 @@ Function GetUTC() As String
     For Each t In arrt
         If InStr(t, "UTC") Then
             GetUTC = StripHttpTags(t)
-            
+
             Exit For
         End If
     Next
 End Function
- 
+
 Function StripHttpTags(s)
     With New RegExp
         .Global = True
@@ -2715,7 +2715,7 @@ WScript.StdOut.WriteLine
 ```txt
 
 Run getTime Subroutine
-  
+
 Apr. 21, 21:02:03 UTC          Universal Time
 
 ```
@@ -2750,7 +2750,7 @@ Alternative, old fashioned way using VB "Split" function:
 Imports System.Net
         Dim client As WebClient = New WebClient()
         Dim content As String = client.DownloadString("http://tycho.usno.navy.mil/cgi-bin/timer.pl")
-        Dim lines() As String = Split(content, vbLf) 'may need vbCrLf 
+        Dim lines() As String = Split(content, vbLf) 'may need vbCrLf
         For Each line In lines
             If line.Contains("UTC") Then
                 Dim time As String() = line.Substring(4).Split(vbTab)
@@ -2792,7 +2792,7 @@ line:=data[c,data.seek(Void,1)-c].text;
 line.print(); // the HTML UTC line
 
 re:=RegExp(0'|.*(\d\d:\d\d:\d\d)|);  // get time
-re.search(line); 
+re.search(line);
 re.matched[1].println();
 ```
 

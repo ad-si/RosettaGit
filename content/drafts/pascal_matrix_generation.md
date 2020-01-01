@@ -14,7 +14,7 @@ tags = []
 
 A pascal matrix is a two-dimensional square matrix holding numbers from   [[Pascal's triangle]],   also known as   [[Evaluate binomial coefficients|binomial coefficients]]   and which can be shown as    <big><sup>n</sup>C<sub>r</sub>.</big>
 
-Shown below are truncated   5-by-5   matrices   M[i, j]   for   i,j   in range   0..4. 
+Shown below are truncated   5-by-5   matrices   M[i, j]   for   i,j   in range   0..4.
 
 
 A Pascal upper-triangular matrix that is populated with   <big><sup>j</sup>C<sub>i</sub>:</big>
@@ -43,7 +43,7 @@ A Pascal lower-triangular matrix that is populated with   <big><sup>i</sup>C<sub
 ```
 
 
-A Pascal symmetric matrix that is populated with   <big><sup>i+j</sup>C<sub>i</sub>:</big> 
+A Pascal symmetric matrix that is populated with   <big><sup>i+j</sup>C<sub>i</sub>:</big>
 
 ```txt
 
@@ -60,16 +60,16 @@ A Pascal symmetric matrix that is populated with   <big><sup>i+j</sup>C<sub>i</s
 ;Task:
 Write functions capable of generating each of the three forms of   n-by-n   matrices.
 
-Use those functions to display upper, lower, and symmetric Pascal   5-by-5   matrices on this page. 
+Use those functions to display upper, lower, and symmetric Pascal   5-by-5   matrices on this page.
 
 The output should distinguish between different matrices and the rows of each matrix   (no showing a list of 25 numbers assuming the reader should split it into rows).
 
 
-;Note:  
-The   [[Cholesky decomposition]]   of a Pascal symmetric matrix is the Pascal lower-triangle matrix of the same size. 
+;Note:
+The   [[Cholesky decomposition]]   of a Pascal symmetric matrix is the Pascal lower-triangle matrix of the same size.
 
 
- 
+
 
 
 ## 360 Assembly
@@ -89,7 +89,7 @@ PASCMATR CSECT
          LA     R6,1               i=1
        DO WHILE=(C,R6,LE,N)        do i=1 to n;
          LA     R7,1                 j=1
-       DO WHILE=(C,R7,LE,N)          do j=1 to n;       
+       DO WHILE=(C,R7,LE,N)          do j=1 to n;
          LR     R2,R6                  i
          LA     R3,1(R7)               r3=j+1
          LR     R1,R6                  i
@@ -118,7 +118,7 @@ PASCMATR CSECT
          LA     R6,1               i=1
        DO WHILE=(C,R6,LE,N)        do i=1 to n;
          LA     R7,1                 j=1
-       DO WHILE=(C,R7,LE,N)          do j=1 to n;       
+       DO WHILE=(C,R7,LE,N)          do j=1 to n;
          LR     R2,R6                  i
          LA     R3,1(R7)               r3=j+1
          LR     R1,R6                  i
@@ -150,7 +150,7 @@ PASCMATR CSECT
          LA     R6,1               i=1
        DO WHILE=(C,R6,LE,N)        do i=1 to n;
          LA     R7,1                 j=1
-       DO WHILE=(C,R7,LE,N)          do j=1 to n;       
+       DO WHILE=(C,R7,LE,N)          do j=1 to n;
          LR     R2,R6                  i
          LA     R3,1(R7)               r3=j+1                 j
          LR     R1,R6                  i
@@ -182,7 +182,7 @@ PRINTMAT XPRNT  TITLE,L'TITLE      print title  -----------------------
          LA     R6,1               i=1
        DO WHILE=(C,R6,LE,N)        do i=1 to n;
          LA     R7,1                 j=1
-       DO WHILE=(C,R7,LE,N)          do j=1 to n;       
+       DO WHILE=(C,R7,LE,N)          do j=1 to n;
          LR     R2,R6                  i
          LR     R3,R7                  j
          LA     R3,1(R3)               j+1
@@ -258,7 +258,7 @@ procedure PascalMatrix is
   -- instantiate Generic_Elementary_Functions for Float type
   package Math is new Ada.Numerics.Generic_Elementary_Functions(Float_Type => Float);
   use Math;
-  
+
   procedure Print(m: in Matrix) is
     -- determine the maximum width of a column
     w: Float := Log(Float(m'Length(1)**(m'Length(1)/2)), 10.0);
@@ -272,7 +272,7 @@ procedure PascalMatrix is
         Put(" )"); New_Line(1);
       end loop;
     end Print;
-  
+
   function Upper_Triangular(n: in Positive) return Matrix is
     result: Matrix(1..n, 1..n) := (
                                     1 => ( others => 1 ),
@@ -287,7 +287,7 @@ procedure PascalMatrix is
       end loop;
       return result;
     end Upper_Triangular;
-  
+
   function Lower_Triangular(n: in Positive) return Matrix is
     result: Matrix(1..n, 1..n) := (
                                     others => ( 1 => 1, others => 0 )
@@ -301,7 +301,7 @@ procedure PascalMatrix is
       end loop;
       return result;
     end Lower_Triangular;
-  
+
   function Symmetric(n: in Positive) return Matrix is
     result: Matrix(1..n, 1..n) := (
                                    1 => ( others => 1 ),
@@ -315,9 +315,9 @@ procedure PascalMatrix is
       end loop;
       return result;
     end Symmetric;
-  
+
   n: Positive;
-  
+
   begin
     Put("What dimension Pascal matrix would you like? ");
     Get(n);
@@ -578,20 +578,20 @@ end bc
 -- TEST ----------------------------------------------------------------------
 on run
     set matrixSize to 5
-    
+
     script symm
         on |λ|(ab)
             set {a, b} to ab
             {a + b, a}
         end |λ|
     end script
-    
+
     script format
         on |λ|(s, xs)
             unlines(concat({{s}, map(my show, xs), {""}}))
         end |λ|
     end script
-    
+
     unlines(zipWith(format, ¬
         {"Lower", "Upper", "Symmetric"}, ¬
         |<*>|(map(curry(pascalMatrix), [|id|, swap, symm]), {matrixSize})))
@@ -755,7 +755,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -780,7 +780,7 @@ on range({a, b})
         set {xs, ys} to {{a}, {b}}
     end if
     set lng to length of xs
-    
+
     if lng = length of ys then
         if lng > 1 then
             script
@@ -812,7 +812,7 @@ on show(e)
                 show(v)
             end |λ|
         end script
-        
+
         "[" & intercalate(", ", map(serialized, e)) & "]"
     else if c = record then
         script showField
@@ -821,7 +821,7 @@ on show(e)
                 "\"" & k & "\":" & show(ev)
             end |λ|
         end script
-        
+
         "{" & intercalate(", ", ¬
             map(showField, zip(allKeys(e), allValues(e)))) & "}"
     else if c = date then
@@ -979,7 +979,7 @@ int main(int argc, char * argv[]) {
 
     /* Matrix computation */
     printf("
-###  Pascal upper matrix 
+###  Pascal upper matrix
 \n");
     pascal_upp(mat, n);
     for (i = 0; i < n; i++)
@@ -987,7 +987,7 @@ int main(int argc, char * argv[]) {
             printf("%4d%c", mat[i][j], j < n - 1 ? ' ' : '\n');
 
     printf("
-###  Pascal lower matrix 
+###  Pascal lower matrix
 \n");
     pascal_low(mat, n);
     for (i = 0; i < n; i++)
@@ -995,7 +995,7 @@ int main(int argc, char * argv[]) {
             printf("%4d%c", mat[i][j], j < n - 1 ? ' ' : '\n');
 
     printf("
-###  Pascal symmetric matrix 
+###  Pascal symmetric matrix
 \n");
     pascal_sym(mat, n);
     for (i = 0; i < n; i++)
@@ -1012,7 +1012,7 @@ int main(int argc, char * argv[]) {
 ```txt
 
 
-###  Pascal upper matrix 
+###  Pascal upper matrix
 
    1    1    1    1    1
    0    1    2    3    4
@@ -1020,7 +1020,7 @@ int main(int argc, char * argv[]) {
    0    0    0    1    4
    0    0    0    0    1
 
-###  Pascal lower matrix 
+###  Pascal lower matrix
 
    1    0    0    0    0
    1    1    0    0    0
@@ -1028,7 +1028,7 @@ int main(int argc, char * argv[]) {
    1    3    3    1    0
    1    4    6    4    1
 
-###  Pascal symmetric matrix 
+###  Pascal symmetric matrix
 
    1    1    1    1    1
    1    2    3    4    5
@@ -1044,8 +1044,8 @@ int main(int argc, char * argv[]) {
 
 {{works with|GCC|version 7.2.0 (Ubuntu 7.2.0-8ubuntu3.2) }}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 
 typedef std::vector<std::vector<int>> vv;
@@ -1200,7 +1200,7 @@ public static class PascalMatrixGeneration
         }
         return m;
     }
-    
+
 }
 ```
 
@@ -1241,7 +1241,7 @@ public static class PascalMatrixGeneration
             (setf (aref a (1+ i) (1+ j))
                 (+ (aref a i j)
                    (aref a i (1+ j)))))))
-                   
+
 (defun pascal-upper (n &aux (a (make-array (list n n) :initial-element 0)))
     (dotimes (i n)
         (setf (aref a 0 i) 1))
@@ -1369,7 +1369,7 @@ Symmetric:
 ```elixir
 defmodule Pascal do
   defp ij(n), do: for i <- 1..n, j <- 1..n, do: {i,j}
-  
+
   def upper_triangle(n) do
     Enum.reduce(ij(n), Map.new, fn {i,j},acc ->
       val = cond do
@@ -1380,7 +1380,7 @@ defmodule Pascal do
       Map.put(acc, {i,j}, val)
     end) |> print(1..n)
   end
-  
+
   def lower_triangle(n) do
     Enum.reduce(ij(n), Map.new, fn {i,j},acc ->
       val = cond do
@@ -1391,7 +1391,7 @@ defmodule Pascal do
       Map.put(acc, {i,j}, val)
     end) |> print(1..n)
   end
-  
+
   def symmetic_triangle(n) do
     Enum.reduce(ij(n), Map.new, fn {i,j},acc ->
       val = if i==1 or j==1, do: 1,
@@ -1399,7 +1399,7 @@ defmodule Pascal do
       Map.put(acc, {i,j}, val)
     end) |> print(1..n)
   end
-  
+
   def print(matrix, range) do
     Enum.each(range, fn i ->
       Enum.map(range, fn j -> Map.get(matrix, {i,j}) end) |> IO.inspect
@@ -1524,7 +1524,7 @@ contains
             end do
         end do
     end function
-    
+
     function pascal_upper(n) result(a)
         integer :: n, i, j
         integer, allocatable :: a(:, :)
@@ -1975,26 +1975,26 @@ public class PascalMatrix {
 
 
 ```txt
-Upper: 
- 1  1  1  1  1 
- 0  1  2  3  4 
- 0  0  1  3  6 
- 0  0  0  1  4 
- 0  0  0  0  1 
+Upper:
+ 1  1  1  1  1
+ 0  1  2  3  4
+ 0  0  1  3  6
+ 0  0  0  1  4
+ 0  0  0  0  1
 
-Lower: 
- 1  0  0  0  0 
- 1  1  0  0  0 
- 1  2  1  0  0 
- 1  3  3  1  0 
- 1  4  6  4  1 
+Lower:
+ 1  0  0  0  0
+ 1  1  0  0  0
+ 1  2  1  0  0
+ 1  3  3  1  0
+ 1  4  6  4  1
 
 Symmetric:
- 1  1  1  1  1 
- 1  2  3  4  5 
- 1  3  6 10 15 
- 1  4 10 20 35 
- 1  5 15 35 70 
+ 1  1  1  1  1
+ 1  2  3  4  5
+ 1  3  6 10 15
+ 1  4 10 20 35
+ 1  5 15 35 70
 ```
 
 
@@ -2214,7 +2214,7 @@ julia> [binomial(j+i,i) for i in 0:4, j in 0:4]
 ```jq
 # Generic functions
 
-# Note: 'transpose' is defined in recent versions of jq 
+# Note: 'transpose' is defined in recent versions of jq
 def transpose:
   if (.[0] | length) == 0 then []
   else [map(.[0])] + (map(.[1:]) | transpose)
@@ -2243,7 +2243,7 @@ def pp:
 def pascal_upper:
     . as $n
     | matrix($n; $n; 0)
-    | .[0] = [range(0; $n) | 1 ] 
+    | .[0] = [range(0; $n) | 1 ]
     | reduce range(1; $n) as $i
         (.; reduce range($i; $n) as $j
               (.; .[$i][$j] = .[$i-1][$j-1] + .[$i][$j-1]) ) ;
@@ -2309,7 +2309,7 @@ Symmetric:
 // version 1.1.3
 
 fun binomial(n: Int, k: Int): Int {
-    if (n < k) return 0 
+    if (n < k) return 0
     if (n == 0 || k == 0) return 1
     val num = (k + 1..n).fold(1) { acc, i -> acc * i }
     val den = (2..n - k).fold(1) { acc, i -> acc * i }
@@ -2380,7 +2380,7 @@ function factorial (n)
         f = f * i
     end
     return f
-end 
+end
 
 function binomial (n, k)
     if k > n then return 0 end
@@ -2452,7 +2452,7 @@ Symmetric:
 
 ## Mathematica
 
-One solution is to generate a symmetric Pascal matrix then use the built in method to 
+One solution is to generate a symmetric Pascal matrix then use the built in method to
 compute the upper Pascal matrix. This would be done as follows:
 
 ```Mathematica
@@ -2463,7 +2463,7 @@ upperPascal[size_] := CholeskyDecomposition[symPascal@size]
 lowerPascal[size_] := Transpose@CholeskyDecomposition[symPascal@size]
 
 Column[MapThread[
-  Labeled[Grid[#1@5], #2, Top] &, {{upperPascal, lowerPascal, 
+  Labeled[Grid[#1@5], #2, Top] &, {{upperPascal, lowerPascal,
     symPascal}, {"Upper", "Lower", "Symmetric"}}]]
 ```
 
@@ -2498,7 +2498,7 @@ Symmetric
 It is also possible to directly compute a lower Pascal matrix as follows:
 
 ```Mathematica
-lowerPascal[size_] := 
+lowerPascal[size_] :=
  MatrixExp[
   SparseArray[{Band[{2, 1}] -> Range[size - 1]}, {size, size}]]]
 ```
@@ -2813,7 +2813,7 @@ show_m symmetric[4];
 sub show_m (@m) {
 my \n = @m.shape[0];
 for ^n X ^n -> (\i, \j) {
-    print @m[i;j].fmt("%{1+max(@m).chars}d"); 
+    print @m[i;j].fmt("%{1+max(@m).chars}d");
     print "\n" if j+1 eq n;
 }
 say '';
@@ -2889,15 +2889,15 @@ end function
 
 ppOpt({pp_Nest,1,pp_StrFmt,-2,pp_IntFmt,"%2d"})
 puts(1,"
-###  Pascal upper matrix 
+###  Pascal upper matrix
 \n")
 pp(pascal_upper(5))
 puts(1,"
-###  Pascal lower matrix 
+###  Pascal lower matrix
 \n")
 pp(pascal_lower(5))
 puts(1,"
-###  Pascal symmetrical matrix 
+###  Pascal symmetrical matrix
 \n")
 pp(pascal_symmetric(5))
 ```
@@ -2907,7 +2907,7 @@ pp(pascal_symmetric(5))
 ```txt
 
 
-###  Pascal upper matrix 
+###  Pascal upper matrix
 
 {{ 1, 1, 1, 1, 1},
  { 0, 1, 2, 3, 4},
@@ -2915,7 +2915,7 @@ pp(pascal_symmetric(5))
  { 0, 0, 0, 1, 4},
  { 0, 0, 0, 0, 1}}
 
-###  Pascal lower matrix 
+###  Pascal lower matrix
 
 {{ 1, 0, 0, 0, 0},
  { 1, 1, 0, 0, 0},
@@ -2923,7 +2923,7 @@ pp(pascal_symmetric(5))
  { 1, 3, 3, 1, 0},
  { 1, 4, 6, 4, 1}}
 
-###  Pascal symmetrical matrix 
+###  Pascal symmetrical matrix
 
 {{ 1, 1, 1, 1, 1},
  { 1, 2, 3, 4, 5},
@@ -3126,36 +3126,36 @@ Define.i x=5, I, J
 Macro Print_Pascal_matrix(typ)
   PrintN(typ)
   For I=1 To x
-    For J=1 To x : Print(RSet(Str(p(I,J)),3," ")+Space(3)) : Next  
+    For J=1 To x : Print(RSet(Str(p(I,J)),3," ")+Space(3)) : Next
     PrintN("")
   Next
-  Print(~"\n\n")  
+  Print(~"\n\n")
 EndMacro
 
-Procedure Pascal_sym(n.i,Array p.i(2))  
-  Define.i I,J  
+Procedure Pascal_sym(n.i,Array p.i(2))
+  Define.i I,J
   p(1,0)=1
   For I=1 To n
     For J=1 To n : p(I,J)=p(I-1,J)+p(I,J-1) : Next
   Next
 EndProcedure
 
-Procedure Pascal_upp(n.i,Array p.i(2))  
-  Define.i I,J  
+Procedure Pascal_upp(n.i,Array p.i(2))
+  Define.i I,J
   p(0,0)=1
   For I=1 To n
     For J=1 To n : p(I,J)=p(I-1,J-1)+p(I,J-1) : Next
-  Next  
+  Next
 EndProcedure
 
 Procedure Pascal_low(n.i,Array p.i(2))
   Define.i I,J
   Pascal_upp(n,p())
   Dim p2.i(n,n)
-  CopyArray(p(),p2())  
+  CopyArray(p(),p2())
   For I=1 To n
     For J=1 To n : Swap p(J,I),p2(I,J) : Next
-  Next  
+  Next
 EndProcedure
 
 OpenConsole()
@@ -3232,7 +3232,7 @@ def pascal_sym(n):
         for j in range(1, n):
             s[i][j] = s[i-1][j] + s[i][j-1]
     return s
-    
+
 
 if __name__ == "__main__":
     n = 5
@@ -3554,7 +3554,7 @@ show: procedure; parse arg s,@;   w=0;    #=0                               /*ge
                  return
 ```
 
-'''output'''   is identical to the 1<sup>st</sup> REXX version. 
+'''output'''   is identical to the 1<sup>st</sup> REXX version.
 
 
 
@@ -3570,19 +3570,19 @@ load "stdlib.ring"
 res = newlist(5,5)
 
 see "
-###  Pascal upper matrix 
+###  Pascal upper matrix
 " + nl
 result = pascalupper(5)
 showarray(result)
 
 see nl + "
-###  Pascal lower matrix 
+###  Pascal lower matrix
 " + nl
 result = pascallower(5)
 showarray(result)
 
 see nl + "
-###  Pascal symmetrical matrix 
+###  Pascal symmetrical matrix
 " + nl
 result = pascalsymmetric(5)
 showarray(result)
@@ -3592,45 +3592,45 @@ func pascalupper(n)
           for p=1 to n
                res[m][p] = 0
           next
-    next 
+    next
     for p=1 to n
          res[1][p] = 1
-    next    
-    for i=2 to n 
-        for j=2 to i 
+    next
+    for i=2 to n
+        for j=2 to i
             res[j][i] = res[j][i-1]+res[j-1][i-1]
-        end 
-    end 
+        end
+    end
     return res
- 
+
 func pascallower(n)
         for m=1 to n
               for p=1 to n
                    res[m][p] = 0
               next
         next
-       for p=1 to n  
+       for p=1 to n
              res[p][1] = 1
        next
-       for i=2 to n 
-            for j=2 to i 
+       for i=2 to n
+            for j=2 to i
                  res[i][j] = res[i-1][j]+res[i-1][j-1]
             next
         next
         return res
- 
+
 func pascalsymmetric(n)
         for m=1 to n
               for p=1 to n
                    res[m][p] = 0
               next
         next
-        for p=1 to n 
+        for p=1 to n
               res[p][1] = 1
               res[1][p] = 1
         next
-        for i=2 to n 
-             for j = 2 to n 
+        for i=2 to n
+             for j = 2 to n
                   res[i][j] = res[i-1][j]+res[i][j-1]
              next
         next
@@ -3651,31 +3651,31 @@ Output:
 ```txt
 
 
-###  Pascal upper matrix 
+###  Pascal upper matrix
 
-1 1 1 1 1 
-0 1 2 3 4 
-0 0 1 3 6 
-0 0 0 1 4 
-0 0 0 0 1 
-
-
-###  Pascal lower matrix 
-
-1 0 0 0 0 
-1 1 0 0 0 
-1 2 1 0 0 
-1 3 3 1 0 
-1 4 6 4 1 
+1 1 1 1 1
+0 1 2 3 4
+0 0 1 3 6
+0 0 0 1 4
+0 0 0 0 1
 
 
-###  Pascal symmetrical matrix 
+###  Pascal lower matrix
 
-1 1 1 1 1 
-1 2 3 4 5 
-1 3 6 10 15 
-1 4 10 20 35 
-1 5 15 35 70 
+1 0 0 0 0
+1 1 0 0 0
+1 2 1 0 0
+1 3 3 1 0
+1 4 6 4 1
+
+
+###  Pascal symmetrical matrix
+
+1 1 1 1 1
+1 2 3 4 5
+1 3 6 10 15
+1 4 10 20 35
+1 5 15 35 70
 
 ```
 
@@ -3784,21 +3784,21 @@ Pascal symmetric matrix:
 
 object pascal{
 	def main( args:Array[String] ){
-		
+
 		println("Enter the order of matrix")
 		val n = scala.io.StdIn.readInt()
-		
+
 		var F = new Factorial()
-		
+
 		var mx = Array.ofDim[Int](n,n)
-		
+
 		for( i <- 0 to (n-1); j <- 0 to (n-1) ){
-			
+
 			if( i>=j ){			//iCj
 				mx(i)(j) = F.fact(i) / ( ( F.fact(j) )*( F.fact(i-j) ) )
 			}
 		}
-		
+
 		println("iCj:")
 		for( i <- 0 to (n-1) ){		//iCj print
 			for( j <- 0 to (n-1) ){
@@ -3806,7 +3806,7 @@ object pascal{
 			}
 			println("")
 		}
-		
+
 		println("jCi:")
 		for( i <- 0 to (n-1) ){		//jCi print
 			for( j <- 0 to (n-1) ){
@@ -3814,10 +3814,10 @@ object pascal{
 			}
 			println("")
 		}
-		
+
 		//(i+j)C j
 		for( i <- 0 to (n-1); j <- 0 to (n-1) ){
-			
+
 			mx(i)(j) = F.fact(i+j) / ( ( F.fact(j) )*( F.fact(i) ) )
 		}
 		//print (i+j)Cj
@@ -3828,16 +3828,16 @@ object pascal{
 			}
 			println("")
 		}
-		
+
 	}
 }
 
 class Factorial(){
-	
+
 	def fact( a:Int ): Int = {
-		
+
 		var b:Int = 1
-		
+
 		for( i <- 2 to a ){
 			b = b*i
 		}
@@ -4037,14 +4037,14 @@ foreach type {upper lower symmetric} {
 
 ```txt
 
-* upper 
+* upper
         1       1       1       1       1
         0       1       2       3       4
         0       0       1       3       6
         0       0       0       1       4
         0       0       0       0       1
 
-* lower 
+* lower
         1       0       0       0       0
         1       1       0       0       0
         1       2       1       0       0
@@ -4084,7 +4084,7 @@ Private Function pascal_upper(n As Integer)
     Next i
     pascal_upper = res
 End Function
- 
+
 Private Function pascal_symmetric(n As Integer)
     Dim res As Variant: ReDim res(n, n)
     For i = 1 To n
@@ -4110,15 +4110,15 @@ End Sub
 
 Public Sub main()
     Debug.Print "
-###  Pascal upper matrix 
+###  Pascal upper matrix
 "
     pp pascal_upper(5)
     Debug.Print "
-###  Pascal lower matrix 
+###  Pascal lower matrix
 "
     pp WorksheetFunction.Transpose(pascal_upper(5))
     Debug.Print "
-###  Pascal symmetrical matrix 
+###  Pascal symmetrical matrix
 "
     pp pascal_symmetric(5)
 End Sub
@@ -4127,7 +4127,7 @@ End Sub
 
 ```txt
 
-###  Pascal upper matrix 
+###  Pascal upper matrix
 
   1  1  1  1  1
   0  1  2  3  4
@@ -4135,7 +4135,7 @@ End Sub
   0  0  0  1  4
   0  0  0  0  1
 
-###  Pascal lower matrix 
+###  Pascal lower matrix
 
   1  0  0  0  0
   1  1  0  0  0
@@ -4143,7 +4143,7 @@ End Sub
   1  3  3  1  0
   1  4  6  4  1
 
-###  Pascal symmetrical matrix 
+###  Pascal symmetrical matrix
 
   1  1  1  1  1
   1  2  3  4  5
@@ -4187,13 +4187,13 @@ Function pascal_lower(i,j)
 		Next
 		WScript.StdOut.WriteLine
 	Next
-	WScript.StdOut.WriteLine	
+	WScript.StdOut.WriteLine
 End Function
 
 Function pascal_symmetric(i,j)
 	WScript.StdOut.Write "Pascal Symmetric"
 	WScript.StdOut.WriteLine
-	For l = i To j 
+	For l = i To j
 		For m = i To j
 			WScript.StdOut.Write binomial(l+m,m) & vbTab
 		Next
@@ -4232,25 +4232,25 @@ Call pascal_symmetric(0,4)
 ```txt
 
 Pascal Upper
-1	1	1	1	1	
-0	1	2	3	4	
-0	0	1	3	6	
-0	0	0	1	4	
-0	0	0	0	1	
+1	1	1	1	1
+0	1	2	3	4
+0	0	1	3	6
+0	0	0	1	4
+0	0	0	0	1
 
 Pascal Lower
-1	0	0	0	0	
-1	1	0	0	0	
-1	2	1	0	0	
-1	3	3	1	0	
-1	4	6	4	1	
+1	0	0	0	0
+1	1	0	0	0
+1	2	1	0	0
+1	3	3	1	0
+1	4	6	4	1
 
 Pascal Symmetric
-1	1	1	1	1	
-1	2	3	4	5	
-1	3	6	10	15	
-1	4	10	20	35	
-1	5	15	35	70	
+1	1	1	1	1
+1	2	3	4	5
+1	3	6	10	15
+1	4	10	20	35
+1	5	15	35	70
 
 ```
 
@@ -4288,25 +4288,25 @@ println("Symmetric:\n",pascal_sym(N):prettyPrint(_));
 ```txt
 
 Upper:
-  1   1   1   1   1 
-  0   1   2   3   4 
-  0   0   1   3   6 
-  0   0   0   1   4 
-  0   0   0   0   1 
+  1   1   1   1   1
+  0   1   2   3   4
+  0   0   1   3   6
+  0   0   0   1   4
+  0   0   0   0   1
 
 Lower:
-  1   0   0   0   0 
-  1   1   0   0   0 
-  1   2   1   0   0 
-  1   3   3   1   0 
-  1   4   6   4   1 
+  1   0   0   0   0
+  1   1   0   0   0
+  1   2   1   0   0
+  1   3   3   1   0
+  1   4   6   4   1
 
 Symmetric:
-  1   1   1   1   1 
-  1   2   3   4   5 
-  1   3   6  10  15 
-  1   4  10  20  35 
-  1   5  15  35  70 
+  1   1   1   1   1
+  1   2   3   4   5
+  1   3   6  10  15
+  1   4  10  20  35
+  1   5  15  35  70
 
 ```
 

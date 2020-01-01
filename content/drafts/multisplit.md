@@ -11,29 +11,29 @@ tags = []
 +++
 
 {{task}} [[Category:String manipulation]]
-It is often necessary to split a string into pieces 
-based on several different (potentially multi-character) separator strings, 
-while still retaining the information about which separators were present in the input. 
+It is often necessary to split a string into pieces
+based on several different (potentially multi-character) separator strings,
+while still retaining the information about which separators were present in the input.
 
-This is particularly useful when doing small parsing tasks. 
+This is particularly useful when doing small parsing tasks.
 
 The task is to write code to demonstrate this.
 
-The function (or procedure or method, as appropriate) should 
-take an input string and an ordered collection of separators. 
+The function (or procedure or method, as appropriate) should
+take an input string and an ordered collection of separators.
 
-The order of the separators is significant: 
+The order of the separators is significant:
 
-The delimiter order represents priority in matching, with the first defined delimiter having the highest priority. 
-In cases where there would be an ambiguity as to 
-which separator to use at a particular point 
-(e.g., because one separator is a prefix of another) 
-the separator with the highest priority should be used. 
+The delimiter order represents priority in matching, with the first defined delimiter having the highest priority.
+In cases where there would be an ambiguity as to
+which separator to use at a particular point
+(e.g., because one separator is a prefix of another)
+the separator with the highest priority should be used.
 Delimiters can be reused and the output from the function should be an ordered sequence of substrings.
 
 Test your code using the input string “<code>a!===b=!=c</code>” and the separators “<code>==</code>”, “<code>!=</code>” and “<code>=</code>”.
 
-For these inputs the string should be parsed as <code>"a" (!=) "" (==) "b" (=) "" (!=) "c"</code>, where matched delimiters are shown in parentheses, and separated strings are quoted, so our resulting output is <code>"a", empty string, "b", empty string, "c"</code>. 
+For these inputs the string should be parsed as <code>"a" (!=) "" (==) "b" (=) "" (!=) "c"</code>, where matched delimiters are shown in parentheses, and separated strings are quoted, so our resulting output is <code>"a", empty string, "b", empty string, "c"</code>.
 Note that the quotation marks are shown for clarity and do not form part of the output.
 
 '''Extra Credit:''' provide information that indicates which separator was matched at each separation point and where in the input string that separator was matched.
@@ -231,7 +231,7 @@ Str := "a!===b=!=c"
 Sep := ["==","!=", "="]
 Res := StrSplit(Str, Sep)
 for k, v in Res
-	Out .= (Out?",":"")  v 
+	Out .= (Out?",":"")  v
 MsgBox % Out
 for k, v in Sep
 	N .= (N?"|":"") "\Q" v "\E"
@@ -305,7 +305,7 @@ separators: '!=' '==' '=' '!='
       PRINT "For extra credit:"
       PRINT FNmultisplit("a!===b=!=c", sep$(), TRUE)
       END
-      
+
       DEF FNmultisplit(s$, d$(), info%)
       LOCAL d%, i%, j%, m%, p%, o$
       p% = 1
@@ -374,8 +374,8 @@ a {!=} {==} b {=} {!=} c
 
 What kind of silly parsing is this?
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 void parse_sep(const char *str, const char *const *pat, int len)
@@ -410,8 +410,8 @@ int main()
 
 using the Boost library tokenizer!
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <boost/tokenizer.hpp>
 #include <string>
 
@@ -425,7 +425,7 @@ int main( ) {
       output.append( *tok_iter ) ;
    tokenizer nexttok ( output , sep ) ;
    for ( tok_iter = nexttok.begin( ) ; tok_iter != nexttok.end( ) ;
-	 ++tok_iter ) 
+	 ++tok_iter )
       std::cout << *tok_iter << " " ;
    std::cout << '\n' ;
    return 0 ;
@@ -544,7 +544,7 @@ multi_split = (text, separators) ->
       i += 1
   result.push s
   result
-  
+
 console.log multi_split 'a!===b=!=c', ['==', '!=', '='] # [ 'a', '', 'b', '', 'c' ]
 console.log multi_split '', ['whatever'] # [ '' ]
 
@@ -640,12 +640,12 @@ Sub Split(s As String, sepList() As String, result() As String, removeEmpty As B
      result(0) = s
      Return
   End If
-  Dim As Integer i = 0, j, count = 0, empty = 0, length 
+  Dim As Integer i = 0, j, count = 0, empty = 0, length
   Dim As Integer position(len(s) + 1)
   Dim As Integer sepIndex(1 To len(s))
   Dim As Integer sepLength(len(s))
   position(0) = 0 : sepLength(0) = 1
- 
+
   While i  < Len(s)
     For j = lbound(sepList) To ubound(sepList)
       length = len(sepList(j))
@@ -666,13 +666,13 @@ Sub Split(s As String, sepList() As String, result() As String, removeEmpty As B
   If count  = 0 Then
     If showSepInfo Then
       Print "No delimiters were found" : Print
-    End If 
+    End If
     result(0) = s
     Return
   End If
   position(count + 1) = len(s) + 1
-  
-  For i = 1 To count + 1  
+
+  For i = 1 To count + 1
     length = position(i) - position(i - 1) - sepLength(i - 1)
     result(i - 1 - empty) = Mid(s, position(i - 1) + sepLength(i - 1), length)
     If removeEmpty AndAlso cbool(length = 0) Then empty += 1
@@ -684,10 +684,10 @@ Sub Split(s As String, sepList() As String, result() As String, removeEmpty As B
     Print "The 1-based indices of the delimiters found are : "
     Print
     For x As Integer = 1 To count
-      Print "At index"; position(x), sepList(sepIndex(x)) 
+      Print "At index"; position(x), sepList(sepIndex(x))
     Next
     Print
-  End If 
+  End If
 End Sub
 
 
@@ -700,7 +700,7 @@ split s, b(), a(), False, True  '' show separator info
 Print "The sub-strings are : "
 Print
 For i As integer = 0 To ubound(a)
- Print Using "##"; i + 1; 
+ Print Using "##"; i + 1;
  Print " : "; a(i)
 Next
 Print
@@ -878,11 +878,11 @@ procedure main()
    s := "a!===b=!=c"
    # just list the tokens
    every writes(multisplit(s,["==", "!=", "="])," ") | write()
-   
+
    # list tokens and indices
-   every ((p := "") ||:= t := multisplit(s,sep := ["==", "!=", "="])) | break write() do 
+   every ((p := "") ||:= t := multisplit(s,sep := ["==", "!=", "="])) | break write() do
       if t == !sep then writes(t," (",*p+1-*t,") ") else writes(t," ")
-      
+
 end
 
 procedure multisplit(s,L)
@@ -890,7 +890,7 @@ s ? while not pos(0) do {
    t := =!L | 1( arb(), match(!L)|pos(0) )
    suspend t
    }
-end 
+end
 
 procedure arb()
 suspend .&subject[.&pos:&pos <- &pos to *&subject + 1]
@@ -1206,7 +1206,7 @@ Both helper functions could be made inner functions of the main function, but ar
 
 
 ```jq
-# peeloff(delims) either peels off a delimiter or 
+# peeloff(delims) either peels off a delimiter or
 # a single character from the input string.
 # The input should be a nonempty string, and delims should be
 # a non-empty array of delimiters;
@@ -1243,8 +1243,8 @@ def multisplit_parse(delims):
 def multisplit(delims):
   [.] | multisplit_parse(delims)
   # insert "" between delimiters, compress strings, remove trailing "" if any
-  | reduce .[] as $x ([]; 
-      if length == 0 then [ $x ] 
+  | reduce .[] as $x ([];
+      if length == 0 then [ $x ]
       elif ($x|type) == "array"
       then if (.[length-1]|type) == "array" then . + ["",  $x]
            else  . + [$x]
@@ -1297,12 +1297,12 @@ fun main(args: Array<String>) {
         if (output[i].isEmpty()) output[i] = "empty string"
         else output[i] = "\"" + output[i] + "\""
     }
-    println("The splits are:")         
+    println("The splits are:")
     println(output)
 
     // now find positions of matched delimiters
     val matches = mutableListOf<Pair<String, Int>>()
-    var index = 0 
+    var index = 0
     while (index < input.length) {
         var matched = false
         for (d in delimiters) {
@@ -1341,12 +1341,12 @@ The function I've written here is really excessive for this task but it has hist
 
 ```Lua
 --[[
-Returns a table of substrings by splitting the given string on 
-occurrences of the given character delimiters, which may be specified 
+Returns a table of substrings by splitting the given string on
+occurrences of the given character delimiters, which may be specified
 as a single- or multi-character string or a table of such strings.
-If chars is omitted, it defaults to the set of all space characters, 
-and keep is taken to be false. The limit and keep arguments are 
-optional: they are a maximum size for the result and a flag 
+If chars is omitted, it defaults to the set of all space characters,
+and keep is taken to be false. The limit and keep arguments are
+optional: they are a maximum size for the result and a flag
 determining whether empty fields should be kept in the result.
 ]]
 function split (str, chars, limit, keep)
@@ -1424,7 +1424,7 @@ Module CheckIt {
             PRINT "For extra credit:"
             FNmultisplit("a!===b=!=c", sep$(), TRUE)
             END
-       
+
             SUB FNmultisplit(s$, d$(), info%)
             LOCAL d%, i%, j%, m%, p%, o$
             p% = 1
@@ -1439,7 +1439,7 @@ Module CheckIt {
                             IF info% THEN  {o$ += " (" + d$(j%) + ") "} ELSE o$ += ", "
                             p% = m% + LEN(d$(j%))
                   }
-                   
+
             } UNTIL m% = LEN(s$)
             PRINT  o$ + """" + MID$(s$, p%) + """"
             END SUB
@@ -1547,7 +1547,7 @@ sub multisplit {
    split /$sep/, $string, -1;
 }
 
-print "'$_' " for multisplit ['==','!=','='], "a!===b=!=c"; 
+print "'$_' " for multisplit ['==','!=','='], "a!===b=!=c";
 print "\n";
 print "'$_' " for multisplit ['==','!=','='], "a!===b=!=c", keep_separators => 1;
 print "\n";
@@ -1558,8 +1558,8 @@ print "\n";
 
 ```txt
 
-'a' '' 'b' '' 'c' 
-'a' '!=' '' '==' 'b' '=' '' '!=' 'c' 
+'a' '' 'b' '' 'c'
+'a' '!=' '' '==' 'b' '=' '' '!=' 'c'
 
 ```
 
@@ -1690,9 +1690,9 @@ array result = replace(input, sep, `+("\0", sep[*], "\0"))/"\0";
 result;
 Result: ({ "a", "!=", "", "==", "b", "=", "", "!=", "c" })
 
-int pos = 0; 
+int pos = 0;
 foreach(result; int index; string data)
-{ 
+{
     if ((<"==", "!=", "=">)[data])
         result[index] = ({ data, pos });
     pos+=sizeof(data);
@@ -1729,9 +1729,9 @@ $matchInfo
 
 Separator Count Position
 --------- ----- --------
-!=            2 {1, 7}  
-==            1 3       
-=             1 6       
+!=            2 {1, 7}
+==            1 3
+=             1 6
 
 ```
 
@@ -1757,7 +1757,7 @@ next_sep([], T, Lst, Token, Sep, T1) :-
 	(   Lst = [] ->
 	Token = T, Sep = '', T1 = '';
 
-	% we sort the list to get nearest longest separator 
+	% we sort the list to get nearest longest separator
 	predsort(my_sort, Lst, [(_,_, Sep)|_]),
 	atomic_list_concat([Token|_], Sep, T),
 	atom_concat(Token, Sep, Tmp),
@@ -1971,7 +1971,7 @@ say 'new string:' $                              /*now, display the new string t
                                                  /*stick a fork in it,  we're all done. */
 ```
 
-Some older REXXes don't have a   '''changestr'''   BIF, so one is included here   ──►   [[CHANGESTR.REX]]. 
+Some older REXXes don't have a   '''changestr'''   BIF, so one is included here   ──►   [[CHANGESTR.REX]].
 
 
 '''output'''   when using the default input:
@@ -1992,7 +1992,7 @@ new string=a {} b {} c
 
 # Project : Multisplit
 
-str = "a!===b=!=c" 
+str = "a!===b=!=c"
 sep = "=== != =! b =!="
 sep = str2list(substr(sep, " ", nl))
 for n = 1 to len(sep)
@@ -2064,7 +2064,7 @@ Also demonstrating a method to rejoin the string given the separator information
 
 ```ruby
 def multisplit_rejoin(info)
-  str = info[0].zip(info[1])[0..-2].inject("") {|str, (piece, (sep, idx))| str << piece << sep} 
+  str = info[0].zip(info[1])[0..-2].inject("") {|str, (piece, (sep, idx))| str << piece << sep}
   str << info[0].last
 end
 
@@ -2078,7 +2078,7 @@ p multisplit_rejoin(multisplit(text, separators)) == text
 
 
 ```runbasic
-str$ = "a!===b=!=c" 
+str$ = "a!===b=!=c"
 sep$ = "=== != =! b =!="
 
 while word$(sep$,i+1," ") <> ""
@@ -2211,9 +2211,9 @@ puts [simplemultisplit "a!===b=!=c" {"==" "!=" "="}]
 a {} b {} c
 ```
 
-However, to keep the match information a more sophisticated technique is best. Note that the most natural model of result here 
-is to return the split substrings as a separate list 
-to the match information (because the two collections of information 
+However, to keep the match information a more sophisticated technique is best. Note that the most natural model of result here
+is to return the split substrings as a separate list
+to the match information (because the two collections of information
 are of different lengths).
 
 ```tcl
@@ -2327,8 +2327,8 @@ multisplit() {
     local str=$1
     shift
     local regex=$( IFS='|'; echo "$*" )
-    local sep 
-    while [[ $str =~ $regex ]]; do 
+    local sep
+    while [[ $str =~ $regex ]]; do
         sep=${BASH_REMATCH[0]}
         words+=( "${str%%${sep}*}" )
         seps+=( "$sep" )
@@ -2381,7 +2381,7 @@ Function multisplit(s,sep)
 	Next
 	multisplit = s
 End Function
- 
+
 Function multisplit_extra(s,sep)
 	Set dict_sep = CreateObject("Scripting.Dictionary")
 	arr_sep = Split(sep,"|")
@@ -2395,7 +2395,7 @@ Function multisplit_extra(s,sep)
 	Next
 	multisplit_extra = s
 End Function
- 
+
 WScript.StdOut.Write "Standard: " & multisplit("a!===b=!=c","!=|==|=")
 WScript.StdOut.WriteLine
 WScript.StdOut.Write "Extra Credit: " & multisplit_extra("a!===b=!=c","!=|==|=")

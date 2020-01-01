@@ -25,7 +25,7 @@ An   ''emirp''   ('''prime''' spelled backwards)   are primes that when reversed
 
 In each list, the numbers should be in order.
 
-Invoke the (same) program once per task requirement, this will show what limit is used as the upper bound for calculating surplus (regular) primes. 
+Invoke the (same) program once per task requirement, this will show what limit is used as the upper bound for calculating surplus (regular) primes.
 
 The specific method of how to determine if a range or if specific values are to be shown will be left to the programmer.
 
@@ -50,16 +50,16 @@ he solution uses the package Miller_Rabin from the [[Miller-Rabin primality test
 with Ada.Text_IO, Miller_Rabin;
 
 procedure Emirp_Gen is
-   
+
    type Num is range 0 .. 2**63-1; -- maximum for the gnat Ada compiler
-   
-   MR_Iterations: constant Positive := 25; 
-     -- the probability Pr[Is_Prime(N, MR_Iterations) = Probably_Prime] 
+
+   MR_Iterations: constant Positive := 25;
+     -- the probability Pr[Is_Prime(N, MR_Iterations) = Probably_Prime]
      -- is 1 for prime N and < 4**(-MR_Iterations) for composed N
-   
+
    function Is_Emirp(E: Num) return Boolean is
       package MR is new Miller_Rabin(Num); use MR;
-      
+
       function Rev(E: Num) return Num is
 	 N: Num := E;
 	 R: Num := 0;
@@ -70,14 +70,14 @@ procedure Emirp_Gen is
 	 end loop;
 	 return R;
       end Rev;
-      
-      R: Num := Rev(E); 
+
+      R: Num := Rev(E);
    begin
       return E /= R and then
 	     (Is_Prime(E, MR_Iterations) = Probably_Prime) and then
 	     (Is_Prime(R, MR_Iterations) = Probably_Prime);
    end Is_Emirp;
-	
+
    function Next(P: Num) return Num is
       N: Num := P+1;
    begin
@@ -86,10 +86,10 @@ procedure Emirp_Gen is
       end loop;
       return N;
    end Next;
-   
+
    Current: Num;
    Count: Num := 0;
-   
+
 begin
    -- show the first twenty emirps
    Ada.Text_IO.Put("First 20 emirps:");
@@ -99,7 +99,7 @@ begin
       Ada.Text_IO.Put(Num'Image(Current));
    end loop;
    Ada.Text_IO.New_Line;
-   
+
    -- show the emirps between 7700 and 8000
    Ada.Text_IO.Put("Emirps between 7700 and 8000:");
    Current := 7699;
@@ -108,7 +108,7 @@ begin
       exit when Current > 8000;
        Ada.Text_IO.Put(Num'Image(Current));
    end loop;
-   
+
    -- the 10_000th emirp
    Ada.Text_IO.Put("The 10_000'th emirp:");
    for I in 1 .. 10_000 loop
@@ -139,7 +139,7 @@ Allows the user to specify the from and to range values or ordinals on the comma
 # sieve of Eratosthenes: sets s[i] to TRUE if i is prime, FALSE otherwise     #
 PROC sieve = ( REF[]BOOL s )VOID:
      BEGIN
-        # start with everything flagged as prime                              # 
+        # start with everything flagged as prime                              #
         FOR i TO UPB s DO s[ i ] := TRUE OD;
         # sieve out the non-primes                                            #
         s[ 1 ] := FALSE;
@@ -327,8 +327,8 @@ Reverse(s) {
 {{Output}}
 
 ```txt
-First twenty emirps: 13 17 31 37 71 73 79 97 107 113 149 157 167 179 199 311 337 347 359 389 
-Emirps between 7,700 and 8,000: 7717 7757 7817 7841 7867 7879 7901 7927 7949 7951 7963 
+First twenty emirps: 13 17 31 37 71 73 79 97 107 113 149 157 167 179 199 311 337 347 359 389
+Emirps between 7,700 and 8,000: 7717 7757 7817 7841 7867 7879 7901 7927 7949 7951 7963
 10,000th emirp: 948349
 ```
 
@@ -366,7 +366,7 @@ function is_emirp(n,   r)
         r = reverse(n)
 	return ((r != n) && is_prime(n) && is_prime(r)) ? 1 : 0
 }
- 
+
 BEGIN {
 	c = 0
 	for (x = 11; c < 20; x += 2) {
@@ -394,7 +394,7 @@ BEGIN {
 
 ```txt
 
-$ awk -f emirp.awk 
+$ awk -f emirp.awk
  13, 17, 31, 37, 71, 73, 79, 97, 107, 113, 149, 157, 167, 179, 199, 311, 337, 347, 359, 389,
  7717, 7757, 7817, 7841, 7867, 7879, 7901, 7927, 7949, 7951, 7963,
  948349
@@ -407,8 +407,8 @@ $ awk -f emirp.awk
 
 Note the unusual commandline argument parsing to sastisfy the "invoke three times" magic requirement.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef unsigned uint;
 int is_prime(uint n)
@@ -480,8 +480,8 @@ int main(int argc, char **argv)
 ## C++
 
 
-```Cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <iostream>
 #include <algorithm>
 #include <sstream>
@@ -489,7 +489,7 @@ int main(int argc, char **argv)
 #include <cmath>
 
 bool isPrime ( int number ) {
-   if ( number <= 1 ) 
+   if ( number <= 1 )
       return false ;
    if ( number == 2 )
       return true ;
@@ -523,12 +523,12 @@ int main( ) {
       i++ ;
    }
    std::cout << "The first 20 emirps:\n" ;
-   for ( int i : emirps ) 
+   for ( int i : emirps )
       std::cout << i << " " ;
    std::cout << '\n' ;
    int newstart = 7700 ;
    while ( newstart < 8001 ) {
-      if ( isEmirp ( newstart ) ) 
+      if ( isEmirp ( newstart ) )
 	std::cout << newstart << '\n' ;
       newstart++ ;
    }
@@ -547,7 +547,7 @@ int main( ) {
 {{out}}
 
 ```txt
-13 17 31 37 71 73 79 97 107 113 149 157 167 179 199 311 337 347 359 389 
+13 17 31 37 71 73 79 97 107 113 149 157 167 179 199 311 337 347 359 389
 7717
 7757
 7817
@@ -582,36 +582,36 @@ public class Program
         WriteLine("First 20:");
         WriteLine(FindEmirpPrimes(limit).Take(20).Delimit());
         WriteLine();
-		
+
         WriteLine("Between 7700 and 8000:");
         WriteLine(FindEmirpPrimes(limit).SkipWhile(p => p < 7700).TakeWhile(p => p < 8000).Delimit());
         WriteLine();
-		
+
         WriteLine("10000th:");
         WriteLine(FindEmirpPrimes(limit).ElementAt(9999));
     }
-	
+
     private static IEnumerable<int> FindEmirpPrimes(int limit)
     {
         var primes = Primes(limit).ToHashSet();
-		
+
         foreach (int prime in primes) {
             int reverse = prime.Reverse();
             if (reverse != prime && primes.Contains(reverse)) yield return prime;
 	}
     }
-	
+
     private static IEnumerable<int> Primes(int bound) {
         if (bound < 2) yield break;
         yield return 2;
-		
+
         BitArray composite = new BitArray((bound - 1) / 2);
         int limit = ((int)(Math.Sqrt(bound)) - 1) / 2;
         for (int i = 0; i < limit; i++) {
             if (composite[i]) continue;
 	    int prime = 2 * i + 3;
 	    yield return prime;
-			
+
 	    for (int j = (prime * prime - 2) / 2; j < composite.Count; j += prime)
 	        composite[j] = true;
         }
@@ -701,7 +701,7 @@ It uses a primitive prime function found in http://www.rosettacode.org/wiki/Prim
 ```Lisp
 (defun primep (n)
   "Is N prime?"
-  (and (> n 1) 
+  (and (> n 1)
        (or (= n 2) (oddp n))
        (loop for i from 3 to (isqrt n) by 2
 	  never (zerop (rem n i)))))
@@ -734,8 +734,8 @@ It uses a primitive prime function found in http://www.rosettacode.org/wiki/Prim
 {{out}}
 
 ```txt
-First 20 emirps: 13 17 31 37 71 73 79 97 107 113 149 157 167 179 199 311 337 347 359 389 
-Emirps between 7700 and 8000: 7717 7757 7817 7841 7867 7879 7901 7927 7949 7951 7963 
+First 20 emirps: 13 17 31 37 71 73 79 97 107 113 149 157 167 179 199 311 337 347 359 389
+Emirps between 7700 and 8000: 7717 7757 7817 7841 7867 7879 7901 7927 7949 7951 7963
 The 10,000'th emirp: 948349
 ```
 
@@ -854,18 +854,18 @@ defmodule Emirp do
   defp prime?(2), do: true
   defp prime?(n) when n<2 or rem(n,2)==0, do: false
   defp prime?(n), do: prime?(n,3)
-  
+
   defp prime?(n,k) when n<k*k, do: true
   defp prime?(n,k) when rem(n,k)==0, do: false
   defp prime?(n,k), do: prime?(n,k+2)
-  
+
   def emirp?(n) do
     if prime?(n) do
       reverse = to_string(n) |> String.reverse |> String.to_integer
       n != reverse and prime?(reverse)
     end
   end
-  
+
   def task do
     emirps = Stream.iterate(1, &(&1+1)) |> Stream.filter(&emirp?/1)
     first = Enum.take(emirps,20) |> Enum.join(" ")
@@ -934,7 +934,7 @@ emirps |> (Seq.take 20) |> Seq.iter (printf "%d ")
 
 ```fsharp
 
-emirps |> Seq.skipWhile (fun n->n<7700) |> Seq.takeWhile (fun n->n<=8000) |> Seq.iter (printf "%d ") 
+emirps |> Seq.skipWhile (fun n->n<7700) |> Seq.takeWhile (fun n->n<=8000) |> Seq.iter (printf "%d ")
 
 ```
 
@@ -964,7 +964,7 @@ printfn "%d" (Seq.item 9999 emirps)
 
 ```fsharp
 
-// count # of emirps with n = 2 to 7 digits. Nigel Galloway: August 8th., 2018 
+// count # of emirps with n = 2 to 7 digits. Nigel Galloway: August 8th., 2018
 let n=emirp |> Seq.takeWhile(fun n->n<10000000) |> Seq.countBy(fun n->match n with |n when n>999999->7
                                                                                    |n when n> 99999->6
                                                                                    |n when n>  9999->5
@@ -979,7 +979,7 @@ for n,g in n do printfn "%d -> %d" n g
 
 ```txt
 
-2 -> 8                      
+2 -> 8
 3 -> 28
 4 -> 204
 5 -> 1406
@@ -1005,26 +1005,26 @@ IN: rosetta-code.emirp
 
 : emirp? ( n -- ? )
     dup rev [ = not ] [ [ prime? ] bi@ ] 2bi and and ;
-    
+
 : nemirps ( n -- seq )
     0 lfrom [ emirp? ] lfilter ltake list>array ;
-    
+
 : print-seq ( seq -- )
     [ pprint bl ] each nl ;
-    
+
 : part1 ( -- )
     "First 20 emirps:" print 20 nemirps print-seq ;
-    
+
 : part2 ( -- )
     "Emirps between 7700 and 8000:" print
     7700 ... 8000 [ emirp? ] filter print-seq ;
-    
+
 : part3 ( -- )
     "10,000th emirp:" print 10,000 nemirps last . ;
-    
+
 : main ( -- )
     part1 nl part2 nl part3 ;
-    
+
 MAIN: main
 ```
 
@@ -1055,7 +1055,7 @@ The source would be F77, except for the idea of having the assistant routines GE
 
 For factoring numbers up to the 32-bit two's complement integer limit, the table need not be large, and it can easily enough be stored as a collection of sixteen and thirty-two bit numbers to save some space. Accessing an array PRIME(i) can be made a function GETPRIME(i) without a change in syntax (as needed in pascal: Prime[i] for an array, GetPrime(i) for a function), at least for reading. So, instead of 4792x4 = 19168 bytes, 12144 are needed, to set against the additional code complexity. These days, this is a difference of small importance. Actually, a further value is needed to hold Prime(4793) = 46349. Function ISPRIME does not determine its stepping point via the near universal usage of SQRT(n). If calculated in double precision this will give acceptable results for a 32-bit integer, but I have been burnt by an ad-hoc calculation nDgits = LOG10(x) + 1 failing for x = 10 because Log10(10) = 0·9999etc. which may well round to one, but truncates to zero. So, a SQRT-free demonstration, needed if the MOD function were unavailable. Actually, if P(i) is the last factor to be checked, this suffices up to the square of P(i + 1), not P(i). But this bound is only useful when successive numbers are being tested; for an individual factorisation it is too messy.
 
-The initial version ran very slowly once past the first run, and this prompted some instrumentation, the addition of counters for the invocations. It transpired that GETPRIME(i) was being invoked thousands of millions of times... Once again, a N<sup>2</sup> process is to be avoided, here when NEXTPRIME(n) was stepping linearly along the array of primes (in the hope of knowing the next prime along without having to recalculate it) and being invoked many times to do so. This was fixed by introducing a binary search, the list of primes being of course in order. The early version of NEXTPRIME(n) also did not attempt to save new primes, as it might be invoked with a value well beyond the end of the table and the next value on from ''n'' might be past many lesser primes. But by working on from PRIME(NP) up to ''n'' they can be found and saved along the way. Saving new primes in NEXTPRIME meant that GETPRIME should no longer itself attempt saving, as it is invoking NEXTPRIME. Mutual recursion is all very well, but organisation is important also. 
+The initial version ran very slowly once past the first run, and this prompted some instrumentation, the addition of counters for the invocations. It transpired that GETPRIME(i) was being invoked thousands of millions of times... Once again, a N<sup>2</sup> process is to be avoided, here when NEXTPRIME(n) was stepping linearly along the array of primes (in the hope of knowing the next prime along without having to recalculate it) and being invoked many times to do so. This was fixed by introducing a binary search, the list of primes being of course in order. The early version of NEXTPRIME(n) also did not attempt to save new primes, as it might be invoked with a value well beyond the end of the table and the next value on from ''n'' might be past many lesser primes. But by working on from PRIME(NP) up to ''n'' they can be found and saved along the way. Saving new primes in NEXTPRIME meant that GETPRIME should no longer itself attempt saving, as it is invoking NEXTPRIME. Mutual recursion is all very well, but organisation is important also.
 ```Fortran
       MODULE BAG	!A mixed assortment.
        INTEGER MSG	!I/O unit number to share about.
@@ -1582,13 +1582,13 @@ Usage of ./emirp:
   -start=0: start at x>=start
 
 $ ./emirp -oneline -n 20 -primes # not asked for, just demonstrating SequenceGen interface
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71
 
 $ ./emirp -oneline -n 20
-13 17 31 37 71 73 79 97 107 113 149 157 167 179 199 311 337 347 359 389 
+13 17 31 37 71 73 79 97 107 113 149 157 167 179 199 311 337 347 359 389
 
 $ ./emirp -oneline -start 7800 -end 8000
-7817 7841 7867 7879 7901 7927 7949 7951 7963 
+7817 7841 7867 7879 7901 7927 7949 7951 7963
 
 $ ./emirp -skip 9999 -n 1
 948349
@@ -1708,7 +1708,7 @@ Using list-based incremental sieve from [[Sieve_of_Eratosthenes#With_Wheel|here]
  λ> let emirp p = let q=(read.reverse.show) p in q /= p && noDivsBy primesW q
 
  λ> take 20 . filter emirp $ primesW
-[13,17,31,37,71,73,79,97,107,113,149,157,167,179,199,311,337,347,359,389] 
+[13,17,31,37,71,73,79,97,107,113,149,157,167,179,199,311,337,347,359,389]
 
  λ> filter emirp . takeWhile (< 8000) . dropWhile (< 7700) $ primesW
 [7717,7757,7817,7841,7867,7879,7901,7927,7949,7951,7963]  --  0.02 secs
@@ -1728,7 +1728,7 @@ Using list-based incremental sieve from [[Sieve_of_Eratosthenes#With_Wheel|here]
 ```
 
 
-In other words: select numbers from the argument list whose decimal reverse is both different and prime and return those decimal reversed values as numbers. (For simplicity, we require that our argument be a list of prime numbers.) 
+In other words: select numbers from the argument list whose decimal reverse is both different and prime and return those decimal reversed values as numbers. (For simplicity, we require that our argument be a list of prime numbers.)
 
 '''Examples'''
 ```j
@@ -1738,9 +1738,9 @@ In other words: select numbers from the argument list whose decimal reverse is b
    (#~ 7700&< * 8000&>) /:~ emirp i.&.(_1&p:) 9999
 7717 7757 7817 7841 7867 7879 7901 7927 7949 7951 7963
 
-   # emirp p: i.74791                          NB. 10,000th emirp is 74,790th prime 
+   # emirp p: i.74791                          NB. 10,000th emirp is 74,790th prime
 10000
-   p: 74790  
+   p: 74790
 948349
 
    NB. alternative approach (first emirp value would be at index 0):
@@ -1756,20 +1756,20 @@ This implementation uses a slight optimization discussed in the talk page. It wi
 
 ```java
 public class Emirp{
-	
+
 	//trivial prime algorithm, sub in whatever algorithm you want
 	public static boolean isPrime(long x){
 		if(x < 2) return false;
 		if(x == 2) return true;
 		if((x & 1) == 0) return false;
-		
+
 		for(long i = 3; i <= Math.sqrt(x);i+=2){
 			if(x % i == 0) return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	public static boolean isEmirp(long x){
 		String xString = Long.toString(x);
 		if(xString.length() == 1) return false;
@@ -1778,11 +1778,11 @@ public class Emirp{
 		if(xR == x) return false;
 		return isPrime(x) && isPrime(xR);
 	}
-	
+
 	public static void main(String[] args){
 		int count = 0;
 		long x = 1;
-		
+
 		System.out.println("First 20 emirps:");
 		while(count < 20){
 			if(isEmirp(x)){
@@ -1791,14 +1791,14 @@ public class Emirp{
 			}
 			x++;
 		}
-		
+
 		System.out.println("\nEmirps between 7700 and 8000:");
 		for(x = 7700; x <= 8000; x++){
 			if(isEmirp(x)){
 				System.out.print(x +" ");
 			}
 		}
-		
+
 		System.out.println("\n10,000th emirp:");
 		for(x = 1, count = 0;count < 10000; x++){
 			if(isEmirp(x)){
@@ -1815,9 +1815,9 @@ public class Emirp{
 
 ```txt
 First 20 emirps:
-13 17 31 37 71 73 79 97 107 113 149 157 167 179 199 311 337 347 359 389 
+13 17 31 37 71 73 79 97 107 113 149 157 167 179 199 311 337 347 359 389
 Emirps between 7700 and 8000:
-7717 7757 7817 7841 7867 7879 7901 7927 7949 7951 7963 
+7717 7757 7817 7841 7867 7879 7901 7927 7949 7951 7963
 10,000th emirp:
 948349
 ```
@@ -1955,7 +1955,7 @@ def relatively_prime:
 
 def primes:
   # The helper function, next, has arity 0 for tail recursion optimization;
-  # its input must be an array of primes of length at least 2, 
+  # its input must be an array of primes of length at least 2,
   # the last also being the greatest.
   def next:
      . as $previous
@@ -2320,7 +2320,7 @@ reverseDigits[n_Integer] := FromDigits@Reverse@IntegerDigits@n
 A function to test whether n is an emirp prime
 
 ```Mathematica
-emirpQ[n_Integer] := 
+emirpQ[n_Integer] :=
  Block[{rev = reverseDigits@n}, And[n != rev, PrimeQ[rev]]]
 ```
 
@@ -2330,7 +2330,7 @@ an impact on execution time for finding the mth emirp prime particularly when m 
 Finally, a function which returns the first emirp prime larger than the supplied argument
 
 ```Mathematica
-nextEmirp[n_Integer] := 
+nextEmirp[n_Integer] :=
  NestWhile[NextPrime, NextPrime[n], ! emirpQ[#] &]
 ```
 
@@ -2385,7 +2385,7 @@ Nest[nextEmirp, 1, 10000]
 
 NN=(1:1:1e6); %Natural numbers between 1 and t
 pns=NN(isprime(NN)); %prime numbers
-p=fliplr(str2num(fliplr(num2str(pns)))); 
+p=fliplr(str2num(fliplr(num2str(pns))));
 a=pns(isprime(p)); b=p(isprime(p)); c=a-b;
 emirps=NN(a(c~=0));
 
@@ -2409,7 +2409,7 @@ ans =
 
 
 ```txt
-The emirp primes betweewn 7700 and 8000 are: 
+The emirp primes betweewn 7700 and 8000 are:
 emirps(emirps>=7700 & emirps<=8000)
 ans =
 
@@ -2549,7 +2549,7 @@ END Emirp.
 ## Oforth
 
 
-Using isPrime function of Primality by trial division task : 
+Using isPrime function of Primality by trial division task :
 
 
 ```Oforth
@@ -2561,9 +2561,9 @@ Using isPrime function of Primality by trial division task :
 | l |
    ListBuffer new ->l
    min while(l size length < ) [
-      dup max > ifTrue: [ break ] 
-      dup isEmirp ifTrue: [ dup l add ] 1 + 
-      ] 
+      dup max > ifTrue: [ break ]
+      dup isEmirp ifTrue: [ dup l add ] 1 +
+      ]
    drop l ;
 ```
 
@@ -2578,7 +2578,7 @@ Using isPrime function of Primality by trial division task :
 >main(7700, 8000, 300) println
 [7717, 7757, 7817, 7841, 7867, 7879, 7901, 7927, 7949, 7951, 7963]
 
->main(2, 9999999999, 10000) last println 
+>main(2, 9999999999, 10000) last println
 948349
 
 ```
@@ -2883,7 +2883,7 @@ real    0m0.033s
 a little "stress test"
 Emirp primes between 300000000 and 400000000 :
    1058667
-rumtime for this: 2m 3 secs  
+rumtime for this: 2m 3 secs
 
 ```
 
@@ -2991,7 +2991,7 @@ sub MAIN ($start, $stop = Nil, $display = <slice>) {
 {{out}}
 Run with passed parameters: 1 20
 
-('slice' is the default. you <i>could</i> pass it in, but it isn't necessary.) 
+('slice' is the default. you <i>could</i> pass it in, but it isn't necessary.)
 
 ```txt
 13 17 31 37 71 73 79 97 107 113 149 157 167 179 199 311 337 347 359 389
@@ -3137,7 +3137,7 @@ sequence cl = command_line()
     elsif length(cl)!=3 then
         usage()
     else
-        main(cl[3]) 
+        main(cl[3])
     end if
     {} = wait_key()
 ```
@@ -3398,9 +3398,9 @@ the 10000th emirp:
 
 ## Python
 
-This uses [[Prime_decomposition#Python:_Using_Croft_Spiral_sieve]] and so the prime number generator self-extends to generate ever larger primes automatically. 
+This uses [[Prime_decomposition#Python:_Using_Croft_Spiral_sieve]] and so the prime number generator self-extends to generate ever larger primes automatically.
 
-There is no explicit hard-coded ceiling added to the code for the prime generator, which is the reason given for the need to invoke a program three times in the task description. 
+There is no explicit hard-coded ceiling added to the code for the prime generator, which is the reason given for the need to invoke a program three times in the task description.
 
 ```python
 from __future__ import print_function
@@ -3457,7 +3457,7 @@ This implementation seems to have exploded somewhat due to
 
 So there are two versions presented below. The first is minimalist, providing
 basic functions, unburdened by accounting or (too many) performance
-considerations (please don't mark this as needing attention... I know it falls short of 
+considerations (please don't mark this as needing attention... I know it falls short of
 
 ```racket
 #lang racket
@@ -3581,7 +3581,7 @@ The second is somewhat larger and seems to be a playground for all sorts of code
          [(3) #t])) ; we already knew it's an emirp
      (lambda () (set! sieve-size 2) (set! the-sieve (bytes 0 0)))
      (lambda () (printf "Sieve size: ~a~%Max prime generated (sieve): ~a~%" sieve-size
-                        (for/last ((n the-sieve) (p (in-naturals)) #:unless (fx= 0 n)) p)))          
+                        (for/last ((n the-sieve) (p (in-naturals)) #:unless (fx= 0 n)) p)))
      extend-sieve!)))
 
 ;; ---------------------------------------------------------------------------------------------------
@@ -3676,11 +3676,11 @@ Specifications of arguments note:   The following REXX program accepts:
 :*   two numbers     '''N     M''',   indicates to display the   '''N'''<sup>th</sup>   ──►   '''M'''<sup>th</sup>   emirp primes.
 :*   two numbers     '''N   -M''',   indicates to display the emirp primes between   '''N'''   and  '''<big><big><b>│</b></big></big>M<big><big><b>│</b></big></big>'''   (inclusive).
 
-Programming note:   the trial division method of generating (regular) primes is a bit on the slow side, so some 
+Programming note:   the trial division method of generating (regular) primes is a bit on the slow side, so some
 
-memoization was added (assisting with the <big>√{{overline| j }}</big>),   and some of the trial divisions were hard-coded to minimize 
+memoization was added (assisting with the <big>√{{overline| j }}</big>),   and some of the trial divisions were hard-coded to minimize
 
-the CPU time a bit. 
+the CPU time a bit.
 
 ```rexx
 /*REXX program finds  emirp  primes (base 10):  when a prime reversed, is another prime.*/
@@ -3923,7 +3923,7 @@ while nr < 21
       if emirp = 1 see m see " "
          nr++ ok
       m++
-end  
+end
 see nl + nl
 
 nr = 1
@@ -3948,7 +3948,7 @@ see m + nl
 
 func isEmirp n
      if not isPrime(n) return false ok
-     cStr = string(n)  
+     cStr = string(n)
      cstr2 = ""
      for x = len(cStr) to 1 step -1 cStr2 += cStr[x] next
      rev = number(cstr2)
@@ -3959,7 +3959,7 @@ func isPrime n
      if n < 2 return false ok
      if n < 4 return true ok
      if n % 2 = 0 return false ok
-     for d = 3 to sqrt(n) step 2 
+     for d = 3 to sqrt(n) step 2
          if n % d = 0 return false ok
      next
      return true
@@ -4000,7 +4000,7 @@ end
 First 20 emirps:
 13 17 31 37 71 73 79 97 107 113 149 157 167 179 199 311 337 347 359 389
 Emirps between 7,700 and 8,000:
-7717 7757 7817 7841 7867 7879 7901 7927 7949 7951 7963 
+7717 7757 7817 7841 7867 7879 7901 7927 7949 7951 7963
 10,000th emirp:
 948349
 
@@ -4089,7 +4089,7 @@ def isEmirp( v:Long ) : Boolean = {
  val r = BigInt(v.toString.reverse.toLong)
  b != r && b.isProbablePrime(16) && r.isProbablePrime(16)
 }
-                                              
+
 // Generate the output
 {
   val (a,b1,b2,c) = (20,7700,8000,10000)
@@ -4168,8 +4168,8 @@ The code is functional, looking somewhat Scheme'isch (that's what blocks are for
 First an emirp checker:
 
 ```smalltalk
-isEmirp := 
-    [:p | |e| 
+isEmirp :=
+    [:p | |e|
         (e := p asString reversed asNumber) isPrime
         and:[ e ~= p ]
     ].
@@ -4179,8 +4179,8 @@ isEmirp :=
 an infinite list of primes:
 
 ```smalltalk
-primeGen := 
-    [:n | 
+primeGen :=
+    [:n |
         LazyCons car:n cdr:[primeGen value:(n nextPrime)]
     ].
 ```
@@ -4189,7 +4189,7 @@ primeGen :=
 an infinite list of emirps, taking an infinite list of primes as arg:
 
 ```smalltalk
-emirpGen := 
+emirpGen :=
     [:l | |rest el|
         rest := l.
         [ el := rest car. rest := rest cdr. isEmirp value:el ] whileFalse.
@@ -4207,16 +4207,16 @@ listOfEmirps := emirpGen value:listOfPrimes.
 generating output:
 
 ```smalltalk
-Transcript 
-    show:'first 20 emirps: '; 
+Transcript
+    show:'first 20 emirps: ';
     showCR:(listOfEmirps take:20) asArray.
 
-Transcript 
-    show:'emirps between 7700 and 8000 are: '; 
+Transcript
+    show:'emirps between 7700 and 8000 are: ';
     showCR:((7700 to:8000) select:[:n | n isPrime and:[isEmirp value:n]]).
 
-Transcript 
-    show:'10000''th emirp: '; 
+Transcript
+    show:'10000''th emirp: ';
     showCR:(listOfEmirps nth:10000).
 ```
 
@@ -4233,7 +4233,7 @@ emirps between 7700 and 8000 are: OrderedCollection(7717 7757 7817 7841 7867 787
 LazyCons is easily defined as:
 
 ```smalltalk
-Object subclass: #Cons 
+Object subclass: #Cons
     instancevariableNames:'car cdr'.
 
 car:newCar cdr:newCdr
@@ -4246,7 +4246,7 @@ cdr
     ^cdr
 
 Cons subclass:#LazyCons
-    
+
 cdr
     cdr := cdr value.
     self changeClassTo:Cons.
@@ -4647,7 +4647,7 @@ Uses the solution from task [[Extensible prime generator#zkl]]. Saves the primes
 
 ```zkl
 var PS=Import("Src/ZenKinetic/sieve").postponed_sieve;
-var ps=Utils.Generator(PS), plist=ps.walk(10).copy();  
+var ps=Utils.Generator(PS), plist=ps.walk(10).copy();
 
 fcn isEmirp(p){ rp:=p.toString().reverse().toInt();
    if(p==rp) return(False);

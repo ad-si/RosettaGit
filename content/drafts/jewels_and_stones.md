@@ -24,10 +24,10 @@ The function should count (and return) how many 'stones' are 'jewels' or, in oth
 
 
 Note that:
-:# Only letters in the [https://en.wikipedia.org/wiki/ISO_basic_Latin_alphabet ISO basic Latin alphabet] i.e. 'A to Z' or 'a to z' need be considered. 
+:# Only letters in the [https://en.wikipedia.org/wiki/ISO_basic_Latin_alphabet ISO basic Latin alphabet] i.e. 'A to Z' or 'a to z' need be considered.
 :# A lower case letter is considered to be different to its upper case equivalent for this purpose i.e. 'a' != 'A'.
 :# The parameters do not need to have exactly the same names.
-:# Validating the arguments is unnecessary.  
+:# Validating the arguments is unnecessary.
 
 So, for example, if passed "aAAbbbb" for 'stones' and "aA" for 'jewels', the function should return 3.
 
@@ -62,7 +62,7 @@ BEGIN
                  CHAR j = jewels[ j pos ];
                  IF   j >= "A" AND j <= "Z" THEN count +:= letter counts[ upper a pos + ( ABS j - ABS "A" ) ]
                  ELIF j >= "a" AND j <= "z" THEN count +:= letter counts[ lower a pos + ( ABS j - ABS "a" ) ]
-                 FI 
+                 FI
              OD;
              count
          END # count jewels # ;
@@ -123,10 +123,10 @@ end jewelCount2
 
 -- TEST --------------------------------------------------
 on run
-    
+
     unlines(map(uncurry(jewelCount), ¬
         {Tuple("aA", "aAAbbbb"), Tuple("z", "ZZ")}))
-    
+
 end run
 
 
@@ -322,8 +322,8 @@ Igual que la entrada de FreeBASIC.
 
 {{trans|Kotlin}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 int count_jewels(const char *s, const char *j) {
@@ -355,8 +355,8 @@ int main() {
 
 {{trans|D}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 
 int countJewels(const std::string& s, const std::string& j) {
@@ -522,7 +522,7 @@ The two more complex solutions are analogous to the two simpler ones but build a
 
 ```go
 package main
-  
+
 import (
     "fmt"
     "strings"
@@ -598,15 +598,15 @@ func js(stones, jewels string) (n int) {
 
 
 ```haskell>jewelCount :: Eq a =
- [a] -> [a] -> Int 
-jewelCount jewels = 
+ [a] -> [a] -> Int
+jewelCount jewels =
   foldr (\c -> if elem c jewels then succ else id) 0
-  
+
 
 -- TEST ----------------------------------------------
 
 main :: IO ()
-main = mapM_ print $ 
+main = mapM_ print $
   (uncurry jewelCount) <$> [
        ("aA", "aAAbbbb")
       ,("z", "ZZ")
@@ -625,10 +625,10 @@ Or in terms of filter rather than foldr
 
 
 ```haskell>jewelCount :: Eq a =
- [a] -> [a] -> Int 
-jewelCount jewels = 
+ [a] -> [a] -> Int
+jewelCount jewels =
   length . filter (flip elem jewels)
-  
+
 -- Which could be further reduced to
 -- jewelCount = (length .) . filter . flip elem
 
@@ -666,7 +666,7 @@ main = do
 0
    'ZZ' jewels 'z'
 0
-   
+
 
 ```
 
@@ -929,7 +929,7 @@ class JewelsStones {
         count++;
       };
     };
- 
+
     return count;
   }
 }
@@ -1089,7 +1089,7 @@ print(countJewels("ZZ", "z"))
 
 
 ## REXX
- 
+
 Programming note:   a check is made so that only (Latin) letters are counted as a match.
 
 ```rexx
@@ -1121,7 +1121,7 @@ count: procedure;  parse arg stones,jewels       /*obtain the two strings specif
 
 ```ring
 # Project  Jewels and Stones
- 
+
 jewels = "aA"
 stones = "aAAbbbb"
 see jewelsandstones(jewels,stones) + nl
@@ -1260,8 +1260,8 @@ End Sub
 {{out}}
 
 ```txt
- 3 
- 0 
+ 3
+ 0
 ```
 
 

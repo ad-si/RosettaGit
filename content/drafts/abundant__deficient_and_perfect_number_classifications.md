@@ -13,14 +13,14 @@ tags = []
 {{task}}
 These define three classifications of positive integers based on their   [[Proper divisors|proper divisors]].
 
-Let   P(n)   be the sum of the proper divisors of   '''n'''   where the proper divisors are all positive divisors of   '''n'''   other than   '''n'''   itself. 
+Let   P(n)   be the sum of the proper divisors of   '''n'''   where the proper divisors are all positive divisors of   '''n'''   other than   '''n'''   itself.
     if   <code> P(n) <  n </code>   then  '''n'''  is classed as  '''deficient'''  ([https://oeis.org/A005100 OEIS A005100]).
     if   <code> P(n) == n </code>   then  '''n'''  is classed as  '''perfect'''    ([https://oeis.org/A000396 OEIS A000396]).
     if   <code> P(n) >  n </code>   then  '''n'''  is classed as  '''abundant'''   ([https://oeis.org/A005101 OEIS A005101]).
 
 
 ;Example:
-'''6'''   has proper divisors of   '''1''',   '''2''',   and   '''3'''. 
+'''6'''   has proper divisors of   '''1''',   '''2''',   and   '''3'''.
 
 '''1 + 2 + 3 = 6''',   so   '''6'''    is classed as a perfect number.
 
@@ -79,8 +79,8 @@ Abundant  = 4953
 ## 360 Assembly
 
 {{trans|VBScript}}
-For maximum compatibility, this program uses only the basic instruction set (S/360) 
-with 2 ASSIST macros (XDECO,XPRNT). 
+For maximum compatibility, this program uses only the basic instruction set (S/360)
+with 2 ASSIST macros (XDECO,XPRNT).
 
 ```360asm
 *        Abundant, deficient and perfect number  08/05/2016
@@ -113,7 +113,7 @@ LOOPJ    CR     R7,R9              do j=1 to i/2
 NOTMOD   LA     R7,1(R7)           j=j+1
          B      LOOPJ
 ELOOPJ   CR     R8,R6              if sum?i
-         BL     SLI                      < 
+         BL     SLI                      <
          BE     SEI                      =
          BH     SHI                      >
 SLI      LA     R10,1(R10)         deficient+=1
@@ -153,7 +153,7 @@ deficient=15043 perfect=    4 abundant= 4953
 
 ## Ada
 
-This solution uses the package ''Generic_Divisors'' from the Proper Divisors task 
+This solution uses the package ''Generic_Divisors'' from the Proper Divisors task
 [[http://rosettacode.org/wiki/Proper_divisors#Ada]].
 
 
@@ -161,20 +161,20 @@ This solution uses the package ''Generic_Divisors'' from the Proper Divisors tas
 with Ada.Text_IO, Generic_Divisors;
 
 procedure ADB_Classification is
-   function Same(P: Positive) return Positive is (P);   
+   function Same(P: Positive) return Positive is (P);
    package Divisor_Sum is new Generic_Divisors
      (Result_Type => Natural, None => 0, One => Same, Add =>  "+");
-   
+
    type Class_Type is (Deficient, Perfect, Abundant);
-   
+
    function Class(D_Sum, N: Natural) return Class_Type is
       (if D_Sum < N then Deficient
        elsif D_Sum = N then Perfect
        else Abundant);
-      
-   Cls: Class_Type;              
+
+   Cls: Class_Type;
    Results: array (Class_Type) of Natural := (others => 0);
-       
+
    package NIO is new Ada.Text_IO.Integer_IO(Natural);
    package CIO is new Ada.Text_IO.Enumeration_IO(Class_Type);
 begin
@@ -350,9 +350,9 @@ Loop
         result := "Deficient"
         Deficient++
     }
-    if ( m == 20000 )	
+    if ( m == 20000 )
     {
-        MsgBox % "number: " . m . "`nFactors:`n" . list . "`nSum of Factors: " . Sum . "`nResult: " . result . "`n_______________________`nTotals up to: " . m . "`nPerfect: " . perfect . "`nAbundant: " . Abundant . "`nDeficient: " . Deficient 
+        MsgBox % "number: " . m . "`nFactors:`n" . list . "`nSum of Factors: " . Sum . "`nResult: " . result . "`n_______________________`nTotals up to: " . m . "`nPerfect: " . perfect . "`nAbundant: " . Abundant . "`nDeficient: " . Deficient
         ExitApp
     }
     list := ""
@@ -395,21 +395,21 @@ sum=1
 root=sqrt(num)
 for ( i=2; i < root; i++) {
     if (num % i == 0 )
-    { 
+    {
     sum = sum + i + num/i
     }
     }
-if (num % root == 0) 
+if (num % root == 0)
    {
     sum = sum + root
-   }    
+   }
 return sum
 }
 
 BEGIN{
 limit = 20000
 abundant = 0
-defiecient =0 
+defiecient =0
 perfect = 0
 
 for (j=1; j < limit+1; j++)
@@ -422,7 +422,7 @@ for (j=1; j < limit+1; j++)
 print "For 1 through " limit
 print "Perfect: " perfect
 print "Abundant: " abundant
-print "Deficient: " deficient    
+print "Deficient: " deficient
 }
 
 ```
@@ -443,7 +443,7 @@ Deficient: 15043
 
 ## Batch File
 
-As batch files aren't particularly well-suited to increasingly large arrays of data, this code will chew through processing power. 
+As batch files aren't particularly well-suited to increasingly large arrays of data, this code will chew through processing power.
 
 ```dos
 
@@ -453,9 +453,9 @@ setlocal enabledelayedexpansion
 :_main
 
 for /l %%i in (1,1,20000) do (
-  
+
   echo Processing %%i
-  
+
   call:_P %%i
   set Pn=!errorlevel!
   if !Pn! lss %%i set /a deficient+=1
@@ -565,9 +565,9 @@ Two solutions are given. The first solution first decomposes the current number 
           & (   !arg*!f^-1:~/:?g
               & !S+!f:?S
               & ( !g:~!f&!S+!g:?S
-                | 
+                |
                 )
-            | 
+            |
             )
           )
       & 1/2*!S
@@ -700,7 +700,7 @@ public static class ClassifyNumbers
         deficient = d;
         perfect = p;
     }
-    
+
     //Much slower, but doesn't use storage
     public static void UsingDivision(int bound, out int abundant, out int deficient, out int perfect) {
         int a = 0, d = 0, p = 0;
@@ -732,15 +732,15 @@ Abundant: 4953, Deficient: 15043, Perfect: 4
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <algorithm>
 #include <vector>
 
 std::vector<int> findProperDivisors ( int n ) {
    std::vector<int> divisors ;
    for ( int i = 1 ; i < n / 2 + 1 ; i++ ) {
-      if ( n % i == 0 ) 
+      if ( n % i == 0 )
 	 divisors.push_back( i ) ;
    }
    return divisors  ;
@@ -785,13 +785,13 @@ Abundant  : 4953
 ```ceylon
 shared void run() {
 
-	function divisors(Integer int) => 
+	function divisors(Integer int) =>
 			if(int <= 1) then {} else (1..int / 2).filter((Integer element) => element.divides(int));
-	
+
 	function classify(Integer int) => sum {0, *divisors(int)} <=> int;
-	
+
 	value counts = (1..20k).map(classify).frequencies();
-	
+
 	print("deficient: ``counts[smaller] else "none"``");
 	print("perfect:   ``counts[equal] else "none"``");
 	print("abundant:  ``counts[larger] else "none"``");
@@ -1014,19 +1014,19 @@ Abundant: 4953, Deficient: 15043, Perfect: 4
 	 	((< delta 0) (++ deficient))
 	 	((> delta 0) (++ abondant))
 	 	(else (writeln 'perfect→ n) (++ perfect))))
-	 	
+
 	(printf "In range 1.. %d" N)
 	(for-each (lambda(x) (writeln x (eval x))) '(abondant deficient perfect)))
 
 (abondance)
-    perfect→     6    
-    perfect→     28    
-    perfect→     496    
-    perfect→     8128    
+    perfect→     6
+    perfect→     28
+    perfect→     496
+    perfect→     8128
     In range 1.. 20000
-    abondant     4953    
-    deficient     15043    
-    perfect     4    
+    abondant     4953
+    deficient     15043
+    perfect     4
 
 ```
 
@@ -1040,9 +1040,9 @@ Abundant: 4953, Deficient: 15043, Perfect: 4
 ```ela
 open monad io number list
 
-divisors n = filter ((0 ==) << (n `mod`)) [1 .. (n `div` 2)] 
+divisors n = filter ((0 ==) << (n `mod`)) [1 .. (n `div` 2)]
 classOf n = compare (sum $ divisors n) n
- 
+
 do
   let classes = map classOf [1 .. 20000]
   let printRes w c = putStrLn $ w ++ (show << length $ filter (== c) classes)
@@ -1075,7 +1075,7 @@ classifyNumbers(int bound, ref int abundant, ref int deficient, ref int perfect)
     int d := 0;
     int p := 0;
     int[] sum := new int[](bound + 1);
-    
+
     for(int divisor := 1, divisor <= bound / 2, divisor += 1)
     {
         for(int i := divisor + divisor, i <= bound, i += divisor)
@@ -1083,11 +1083,11 @@ classifyNumbers(int bound, ref int abundant, ref int deficient, ref int perfect)
             sum[i] := sum[i] + divisor
         }
     };
-    
+
     for(int i := 1, i <= bound, i += 1)
     {
         int t := sum[i];
-    
+
         if (sum[i]<i)
         {
             d += 1
@@ -1104,12 +1104,12 @@ classifyNumbers(int bound, ref int abundant, ref int deficient, ref int perfect)
             }
         }
     };
-    
+
     abundant := a;
     deficient := d;
     perfect := p
 }
- 
+
 public program()
 {
     int abundant := 0;
@@ -1137,7 +1137,7 @@ Abundant: 4953, Deficient: 15043, Perfect: 4
 defmodule Proper do
   def divisors(1), do: []
   def divisors(n), do: [1 | divisors(2,n,:math.sqrt(n))] |> Enum.sort
-  
+
   defp divisors(k,_n,q) when k>q, do: []
   defp divisors(k,n,q) when rem(n,k)>0, do: divisors(k+1,n,q)
   defp divisors(k,n,q) when k * k == n, do: [k | divisors(k+1,n,q)]
@@ -1177,14 +1177,14 @@ Deficient: 15043   Perfect: 4   Abundant: 4953
 divs(0) -> [];
 divs(1) -> [];
 divs(N) -> lists:sort(divisors(1,N)).
- 
-divisors(1,N) -> 
+
+divisors(1,N) ->
       divisors(2,N,math:sqrt(N),[1]).
- 
+
 divisors(K,_N,Q,L) when K > Q -> L;
-divisors(K,N,_Q,L) when N rem K =/= 0 -> 
+divisors(K,N,_Q,L) when N rem K =/= 0 ->
     divisors(K+1,N,_Q,L);
-divisors(K,N,_Q,L) when K * K  =:= N -> 
+divisors(K,N,_Q,L) when K * K  =:= N ->
     divisors(K+1,N,_Q,[K|L]);
 divisors(K,N,_Q,L) ->
     divisors(K+1,N,_Q,[N div K, K|L]).
@@ -1193,15 +1193,15 @@ sumdivs(N) -> lists:sum(divs(N)).
 
 class(Limit) -> class(0,0,0,sumdivs(2),2,Limit).
 
-class(D,P,A,_Sum,Acc,L) when Acc > L +1-> 
+class(D,P,A,_Sum,Acc,L) when Acc > L +1->
     io:format("Deficient: ~w, Perfect: ~w, Abundant: ~w~n", [D,P,A]);
 
-class(D,P,A,Sum,Acc,L) when Acc < Sum ->                 
-       class(D,P,A+1,sumdivs(Acc+1),Acc+1,L);      
-class(D,P,A,Sum,Acc,L) when Acc == Sum ->                
-       class(D,P+1,A,sumdivs(Acc+1),Acc+1,L);      
-class(D,P,A,Sum,Acc,L) when Acc > Sum  ->                
-       class(D+1,P,A,sumdivs(Acc+1),Acc+1,L).      
+class(D,P,A,Sum,Acc,L) when Acc < Sum ->
+       class(D,P,A+1,sumdivs(Acc+1),Acc+1,L);
+class(D,P,A,Sum,Acc,L) when Acc == Sum ->
+       class(D,P+1,A,sumdivs(Acc+1),Acc+1,L);
+class(D,P,A,Sum,Acc,L) when Acc > Sum  ->
+       class(D+1,P,A,sumdivs(Acc+1),Acc+1,L).
 
 ```
 
@@ -1210,7 +1210,7 @@ class(D,P,A,Sum,Acc,L) when Acc > Sum  ->
 
 ```txt
 
-24> c(properdivs).        
+24> c(properdivs).
 {ok,properdivs}
 25> properdivs:class(20000).
 Deficient: 15043, Perfect: 4, Abundant: 4953
@@ -1220,7 +1220,7 @@ ok
 
 
 The above divisors method was slightly rewritten to satisfy the observation below but preserve the different programming style.
-Now has comparable performance. 
+Now has comparable performance.
 
 
 ### Erlang 2
@@ -1277,7 +1277,7 @@ proper_divisors(I, L, N, A) ->
 
 ```F#
 
-let mutable a=0 
+let mutable a=0
 let mutable b=0
 let mutable c=0
 let mutable d=0
@@ -1285,7 +1285,7 @@ let mutable e=0
 let mutable f=0
 for i=1 to 20000 do
     b <- 0
-    f <- i/2    
+    f <- i/2
     for j=1 to f do
         if i%j=0 then
            b <- b+i
@@ -1371,11 +1371,11 @@ CREATE A 0 ,
        OVER TUCK OVER <> * -  ( s c c+?d)
        ROT + SWAP ( s' c)
      THEN 1+
-   REPEAT  DROP R> DROP A @  ( sum n)  SLOT ; 
+   REPEAT  DROP R> DROP A @  ( sum n)  SLOT ;
 CREATE COUNTS 0 , 0 , 0 ,
 : INIT   COUNTS 3 CELLS ERASE  1 COUNTS ! ;
 : CLASSIFY-NUMBERS ( n --)  INIT
-   BEGIN DUP WHILE 
+   BEGIN DUP WHILE
      1 OVER CLASSIFY  CELLS COUNTS + +!  1-
    REPEAT  DROP ;
 : .COUNTS
@@ -1388,8 +1388,8 @@ CREATE COUNTS 0 , 0 , 0 ,
 {{out}}
 
 ```txt
-Deficient : 15043 
-Perfect   : 5 
+Deficient : 15043
+Perfect   : 5
 Abundant  : 4953
 ```
 
@@ -1425,7 +1425,7 @@ Changes to instead count the number of factors, or prime factors, etc. would be 
           DO F = 2,LOTS/2		!Step through all the possible divisors of numbers not exceeding LOTS.
             FORALL(I = F + F:LOTS:F) KNOWNSUM(I) = KNOWNSUM(I) + F	!And augment each corresponding slot.
           END DO			!Different divisors can hit the same slot. For instance, 6 by 2 and also by 3.
-        END SUBROUTINE PREPARESUMF	!Could alternatively generate all products of prime numbers.  
+        END SUBROUTINE PREPARESUMF	!Could alternatively generate all products of prime numbers.
          PURE INTEGER FUNCTION SIGN3(N)	!Returns -1, 0, +1 according to the sign of N.
 Confounded by the intrinsic function SIGN distinguishing only two states: < 0 from >= 0. NOT three-way.
          INTEGER, INTENT(IN):: N	!The number.
@@ -1436,7 +1436,7 @@ Confounded by the intrinsic function SIGN distinguishing only two states: < 0 fr
           RETURN
     3     SIGN3 = +1	!Positive.
         END FUNCTION SIGN3	!Rather basic.
-      END MODULE FACTORSTUFF	!Enough assistants. 
+      END MODULE FACTORSTUFF	!Enough assistants.
        PROGRAM THREEWAYS	!Classify N against the sum of proper divisors of N, for N up to 20,000.
        USE FACTORSTUFF		!This should help.
        INTEGER I		!Stepper.
@@ -1718,7 +1718,7 @@ abundant:  4953
 
 ## J
 
-[[Proper divisors#J|Supporting implementation]]: 
+[[Proper divisors#J|Supporting implementation]]:
 
 
 ```J
@@ -1776,12 +1776,12 @@ The sign of the difference is negative for the abundant case - where the sum is 
 import java.util.stream.LongStream;
 
 public class NumberClassifications {
- 
+
     public static void main(String[] args) {
         int deficient = 0;
         int perfect = 0;
         int abundant = 0;
- 
+
         for (long i = 1; i <= 20_000; i++) {
             long sum = properDivsSum(i);
             if (sum < i)
@@ -1795,7 +1795,7 @@ public class NumberClassifications {
         System.out.println("Perfect: " + perfect);
         System.out.println("Abundant: " + abundant);
     }
- 
+
     public static long properDivsSum(long n) {
         return LongStream.rangeClosed(1, (n + 1) / 2).filter(i -> n != i && n % i == 0).sum();
     }
@@ -1866,7 +1866,7 @@ function factorize(f, t) {
         var ts = {}
         ts[p] = 1
         if ( ps[n /= p] ) {
-            if ( !ts[n]++ ) ts[n]=1 
+            if ( !ts[n]++ ) ts[n]=1
         }
         else {
             var fs = cs[n]
@@ -1996,20 +1996,20 @@ Deficient: 15043, Perfect: 4, Abundant: 4953
 
 
 This post was created with <code>Julia</code> version <code>0.3.6</code>.  The code uses no exotic features and should work for a wide range of <code>Julia</code> versions.
- 
+
 '''The Math'''
 
-A natural number can be written as a product of powers of its prime factors, 
+A natural number can be written as a product of powers of its prime factors,
 <math>
 \prod_{i} p_{i}^{a_{i}}
-</math>.  Handily <code>Julia</code> has the <code>factor</code> function, which provides these parameters.  The sum of n's divisors (n inclusive) is 
+</math>.  Handily <code>Julia</code> has the <code>factor</code> function, which provides these parameters.  The sum of n's divisors (n inclusive) is
 <math>
 \prod_{i} \frac{p_{i}^{a_{i}+1} - 1}{p_{i} - 1} = \prod_{i} p_{i}^{a_{i}} + p_{i}^{a_{i}-1} + \cdots + p_{i} + 1
 </math>.
 
 '''Functions'''
 
-<code>divisorsum</code> calculates the sum of aliquot divisors.  It uses <code>pcontrib</code> to calculate the contribution of each prime factor.  
+<code>divisorsum</code> calculates the sum of aliquot divisors.  It uses <code>pcontrib</code> to calculate the contribution of each prime factor.
 
 
 ```Julia
@@ -2318,7 +2318,7 @@ Perfect:        4
 
 
 ## Maple
- 
+
 
 ```Maple
   classify_number := proc(n::posint);
@@ -2345,15 +2345,15 @@ Perfect:        4
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
 classify[n_Integer] := Sign[Total[Most@Divisors@n] - n]
 
 StringJoin[
  Flatten[Tally[
-     Table[classify[n], {n, 20000}]] /. {-1 -> "deficient: ", 
-     0 -> "  perfect: ", 1 -> "  abundant: "}] /. 
+     Table[classify[n], {n, 20000}]] /. {-1 -> "deficient: ",
+     0 -> "  perfect: ", 1 -> "  abundant: "}] /.
   n_Integer :> ToString[n]]
 ```
 
@@ -2394,9 +2394,9 @@ disp(table([deficient;perfect;abundant],'RowNames',{'Deficient','Perfect','Abund
                 Quantities
                  __________
 
-    Deficient    15042     
-    Perfect          4     
-    Abundant      4953    
+    Deficient    15042
+    Perfect          4
+    Abundant      4953
 
 ```
 
@@ -2410,10 +2410,10 @@ disp(table([deficient;perfect;abundant],'RowNames',{'Deficient','Perfect','Abund
 ```ocaml
 fun proper
 		(number, count, limit, remainder, results) where (count > limit) = rev results
-	|	(number, count, limit, remainder, results) = 
-			proper (number, count + 1, limit, number rem (count+1), if remainder = 0 then 
+	|	(number, count, limit, remainder, results) =
+			proper (number, count + 1, limit, number rem (count+1), if remainder = 0 then
 				count :: results
-			else 
+			else
 				results)
 	|	number = (proper (number, 1, number div 2, 0, []))
 ;
@@ -2510,7 +2510,7 @@ proc sumProperDivisors(number: int) : int =
   for i in 1 .. number div 2 :
     if number mod i == 0 : result += i
 
-var 
+var
   sum : int
   deficient = 0
   perfect = 0
@@ -2522,13 +2522,13 @@ for n in 1 .. 20000 :
     inc(deficient)
   elif sum == n :
     inc(perfect)
-  else : 
+  else :
     inc(abundant)
 
 echo "The classification of the numbers between 1 and 20,000 is as follows :\n"
 echo "  Deficient = " , deficient
 echo "  Perfect   = " , perfect
-echo "  Abundant  = " , abundant 
+echo "  Abundant  = " , abundant
 
 ```
 
@@ -2556,10 +2556,10 @@ import: mapping
 
 Integer method: properDivs -- []
     self 2 / seq  filter( #[ self swap mod 0 == ] ) ;
- 
+
 : numberClasses
 | i deficient perfect s |
-   0 0 ->deficient ->perfect 
+   0 0 ->deficient ->perfect
    0 20000 loop: i [
       0 #+ i properDivs apply ->s
       s i <  ifTrue: [ deficient 1+ ->deficient continue ]
@@ -2568,8 +2568,8 @@ Integer method: properDivs -- []
       ]
    "Deficients :" . deficient .cr
    "Perfects   :" . perfect   .cr
-   "Abundant   :" . .cr 
-; 
+   "Abundant   :" . .cr
+;
 ```
 
 
@@ -2814,7 +2814,7 @@ begin
   T1:= time;
   APCnt := Check;
   T2:= time;
-  
+
   //AmPairOutput(APCnt);
   writeln(Max:10,' upper limit');
   writeln(DpaCnt[0]:10,' deficient');
@@ -2822,7 +2822,7 @@ begin
   writeln(DpaCnt[2]:10,' abundant');
   writeln(DpaCnt[2]/Max:14:10,' ratio abundant/upper Limit ');
   writeln(DpaCnt[0]/Max:14:10,' ratio abundant/upper Limit ');
-  writeln(DpaCnt[2]/DpaCnt[0]:14:10,' ratio abundant/deficient   ');  
+  writeln(DpaCnt[2]/DpaCnt[0]:14:10,' ratio abundant/deficient   ');
   writeln('Time to calc sum of divs    ',FormatDateTime('HH:NN:SS.ZZZ' ,T1-T0));
   writeln('Time to find amicable pairs ',FormatDateTime('HH:NN:SS.ZZZ' ,T2-T1));
   {$IFNDEF UNIX}
@@ -2840,9 +2840,9 @@ output
      15043 deficient
          4 perfect
       4953 abundant
-  0.2476500000 ratio abundant/upper Limit 
-  0.7521500000 ratio abundant/upper Limit 
-  0.3292561324 ratio abundant/deficient   
+  0.2476500000 ratio abundant/upper Limit
+  0.7521500000 ratio abundant/upper Limit
+  0.3292561324 ratio abundant/deficient
 Time to calc sum of divs    00:00:00.000
 Time to find amicable pairs 00:00:00.000
 
@@ -2851,9 +2851,9 @@ Time to find amicable pairs 00:00:00.000
  394250308 deficient
          5 perfect
  129749687 abundant
-  0.2476139065 ratio abundant/upper Limit 
-  0.7523860840 ratio abundant/upper Limit 
-  0.3291048463 ratio abundant/deficient   
+  0.2476139065 ratio abundant/upper Limit
+  0.7523860840 ratio abundant/upper Limit
+  0.3291048463 ratio abundant/deficient
 Time to calc sum of divs    00:00:12.597
 Time to find amicable pairs 00:00:04.064
 
@@ -3118,7 +3118,7 @@ In the range 1 - 20000
 function Get-ProperDivisorSum ( [int]$N )
     {
     If ( $N -lt 2 ) { return 0 }
- 
+
     $Sum = 1
     If ( $N -gt 3 )
         {
@@ -3131,10 +3131,10 @@ function Get-ProperDivisorSum ( [int]$N )
         }
     return $Sum
     }
- 
- 
+
+
 $Deficient = $Perfect = $Abundant = 0
- 
+
 ForEach ( $N in 1..20000 )
     {
     Switch ( [math]::Sign( ( Get-ProperDivisorSum $N ) - $N ) )
@@ -3144,7 +3144,7 @@ ForEach ( $N in 1..20000 )
          1 { $Abundant++  }
         }
     }
- 
+
 "Deficient: $Deficient"
 "Perfect  : $Perfect"
 "Abundant : $Abundant"
@@ -3239,10 +3239,10 @@ function Get-NumberClassification
 
 ```txt
 
-Count Class     Number             
------ -----     ------             
-15043 Deficient {1, 2, 3, 4...}    
-    4 Perfect   {6, 28, 496, 8128} 
+Count Class     Number
+----- -----     ------
+15043 Deficient {1, 2, 3, 4...}
+    4 Perfect   {6, 28, 496, 8128}
  4953 Abundant  {12, 18, 20, 24...}
 
 ```
@@ -3330,7 +3330,7 @@ Procedure.i SumProperDivisors(Number)
   Next
   ProcedureReturn sum
 EndProcedure
-  
+
 Define n, sum, deficient, perfect, abundant
 
 If OpenConsole()
@@ -3380,19 +3380,19 @@ Importing [[Proper_divisors#Python:_From_prime_factors|Proper divisors from prim
 ```python>>>
  from proper_divisors import proper_divs
 >>> from collections import Counter
->>> 
+>>>
 >>> rangemax = 20000
->>> 
+>>>
 >>> def pdsum(n):
 ...     return sum(proper_divs(n))
-... 
+...
 >>> def classify(n, p):
 ...     return 'perfect' if n == p else 'abundant' if p > n else 'deficient'
-... 
+...
 >>> classes = Counter(classify(n, pdsum(n)) for n in range(1, 1 + rangemax))
 >>> classes.most_common()
 [('deficient', 15043), ('abundant', 4953), ('perfect', 4)]
->>> 
+>>>
 ```
 
 
@@ -3424,7 +3424,7 @@ propdivcls <- function(n) {
   c1 <- c2 <- c3 <- 0;
   for(i in 1:n){
     if(V[i]<i){c1 = c1 +1} else if(V[i]==i){c2 = c2 +1} else{c3 = c3 +1}
-  } 
+  }
   cat(" *** Between 1 and ", n, ":\n");
   cat("   * ", c1, "deficient numbers\n");
   cat("   * ", c2, "perfect numbers\n");
@@ -3433,7 +3433,7 @@ propdivcls <- function(n) {
 propdivcls(20000);
 
 ```
- 
+
 
 {{Output}}
 
@@ -3447,7 +3447,7 @@ Loading required package: numbers
    *  15043 deficient numbers
    *  4 perfect numbers
    *  4953 abundant numbers
-> 
+>
 
 ```
 
@@ -3571,7 +3571,7 @@ sigma: procedure; parse arg x 1 z;  if x<5  then return max(0, x-1)  /*sets X&Z 
                         return s                 /*return (sigma) sum of the divisors.  */
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -3662,7 +3662,7 @@ for i = 1 to n
     see i
     if sum = i see " is a perfect number" + nl
     but sum < i see " is a deficient number" + nl
-    else see " is a abundant number" + nl ok   
+    else see " is a abundant number" + nl ok
 next
 
 ```
@@ -3881,25 +3881,25 @@ deficients++
 for i in 2...20000 {
 
     var sumPd = 1 // 1 is a proper divisor of all integer above 1
-    
+
     var maxPdToTest = i/2 // the max divisor to test
 
     for var j = 2; j < maxPdToTest; j++ {
-        
+
         if (i%j) == 0 {
             // j is a proper divisor
             sumPd += j
-            
+
             // New maximum for divisibility check
             maxPdToTest = i / j
-            
+
             // To add to sum of proper divisors unless already done
             if maxPdToTest != j {
                 sumPd += maxPdToTest
             }
         }
     }
-    
+
     // Select type according to sum of Proper divisors
     if sumPd < i {
         deficients++
@@ -4093,7 +4093,7 @@ Perfect: 4 Deficient: 15043 Abundant: 4953
 ```VB
 
 Option Explicit
- 
+
 Public Sub Nb_Classifications()
 Dim A As New Collection, D As New Collection, P As New Collection
 Dim n As Long, l As Long, s As String, t As Single
@@ -4108,7 +4108,7 @@ Dim n As Long, l As Long, s As String, t As Single
             Case l: P.Add s, s
         End Select
     Next
-    
+
     'End. Return :
     Debug.Print "Execution Time : " & Timer - t & " seconds."
     Debug.Print "-------------------------------------------"
@@ -4256,7 +4256,7 @@ PRINT "Number abundant:  ",Abundant
 
 sub sumprop(num)
 	local i, sum, root
-	
+
 	if num>1 then
 		sum=1
 		root=sqrt(num)
@@ -4279,12 +4279,12 @@ end sub
 
 ```zkl
 fcn properDivs(n){ [1.. (n + 1)/2 + 1].filter('wrap(x){ n%x==0 and n!=x }) }
- 
+
 fcn classify(n){
    p:=properDivs(n).sum();
    return(if(p<n) -1 else if(p==n) 0 else 1);
 }
- 
+
 const rangeMax=20_000;
 classified:=[1..rangeMax].apply(classify);
 perfect   :=classified.filter('==(0)).len();

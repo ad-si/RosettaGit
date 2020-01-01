@@ -12,17 +12,17 @@ tags = []
 
 {{task}}
 
-Consider a simplified CSV format where all rows are separated by a newline 
-and all columns are separated by commas. 
+Consider a simplified CSV format where all rows are separated by a newline
+and all columns are separated by commas.
 
-No commas are allowed as field data, but the data may contain 
-other characters and character sequences that would 
+No commas are allowed as field data, but the data may contain
+other characters and character sequences that would
 normally be   ''escaped''   when converted to HTML
 
 
 ;Task:
 Create a function that takes a string representation of the CSV data
-and returns a text string of an HTML table representing the CSV data. 
+and returns a text string of an HTML table representing the CSV data.
 
 Use the following  data as the CSV text to convert, and show your output.
 : Character,Speech
@@ -34,7 +34,7 @@ Use the following  data as the CSV text to convert, and show your output.
 
 
 ;Extra credit:
-''Optionally'' allow special formatting for the first row of the table as if it is the tables header row 
+''Optionally'' allow special formatting for the first row of the table as if it is the tables header row
 (via <nowiki><thead></nowiki> preferably; CSS if you must).
 
 
@@ -201,7 +201,7 @@ table.tmplt:
 # encoded[ABS""""] := "&quot;"; optional #
   encoded[ABS "&"] := "&amp;";
   encoded[ABS "<"] := "&lt;";
-# encoded[ABS ">"] := "&gt;"; optional # 
+# encoded[ABS ">"] := "&gt;"; optional #
 
 OP ENCODE = (STRING s)STRING: (
   STRING out := "";
@@ -288,7 +288,7 @@ thead TD {background-color:#ddffdd; text-align:center; }
 Very basic implementation
 
 ```AutoHotkey
-CSVData = 
+CSVData =
 (
 Character,Speech
 The multitude,The messiah! Show us the messiah!
@@ -438,7 +438,7 @@ File csv2html.awk
 BEGIN {
         FS=","
         print "<table>"
-}       
+}
 
 {
         gsub(/</, "\\&lt;")
@@ -448,11 +448,11 @@ BEGIN {
         for(f = 1; f <= NF; f++)  {
                 if(NR == 1 && header) {
                         printf "\t\t<th>%s</th>\n", $f
-                }       
+                }
                 else printf "\t\t<td>%s</td>\n", $f
-        }       
+        }
         print "\t</tr>"
-}       
+}
 
 END {
         print "</table>"
@@ -487,7 +487,7 @@ $ awk -f csv2html.awk input.csv
         </tr>
         <tr>
                 <td>Brians mother</td>
-                <td>I'm his mother; that's who!</td>        
+                <td>I'm his mother; that's who!</td>
         </tr>
         <tr>
                 <td>The multitude</td>
@@ -497,7 +497,7 @@ $ awk -f csv2html.awk input.csv
 ```
 
 
-Extra credit: 
+Extra credit:
 
 
 ```txt
@@ -525,7 +525,7 @@ $ awk -v header=1 -f csv2html.awk input.csv
         </tr>
         <tr>
                 <td>Brians mother</td>
-                <td>I'm his mother; that's who!</td>        
+                <td>I'm his mother; that's who!</td>
         </tr>
         <tr>
                 <td>The multitude</td>
@@ -601,19 +601,19 @@ echo ^</table^>
       DATA "Brian's mother,I'm his mother; that's who!"
       DATA "The multitude,Behold his mother! Behold his mother!"
       DATA "***"
-      
+
       *SPOOL CSVtoHTML.htm
       PRINT "<HTML>"
       PRINT "<HEAD>"
       PRINT "</HEAD>"
       PRINT "<BODY>"
       PRINT "<table border=1 cellpadding =10 cellspacing=0>"
-      
+
       header% = TRUE
       REPEAT
         READ csv$
         IF csv$ = "***" THEN EXIT REPEAT
-        
+
         IF header% PRINT "<tr><th>"; ELSE PRINT "<tr><td>";
         FOR i% = 1 TO LEN(csv$)
           c$ = MID$(csv$, i%, 1)
@@ -626,15 +626,15 @@ echo ^</table^>
           ENDCASE
         NEXT i%
         IF header% PRINT "</th></tr>" ELSE PRINT "</td></tr>"
-        
+
         header% = FALSE
       UNTIL FALSE
-      
+
       PRINT "</table>"
       PRINT "</BODY>"
       PRINT "</HTML>"
       *spool
-      
+
       SYS "ShellExecute", @hwnd%, 0, "CSVtoHTML.htm", 0, 0, 1
 
 ```
@@ -666,7 +666,7 @@ echo ^</table^>
 ## Bracmat
 
 
-### Extra credit solution using pattern matching 
+### Extra credit solution using pattern matching
 
 This is not the most concise solution, but it is relatively efficient. To collect the lines we use a pattern that matches a line starting from position <code>[!p</code>. Each time a line is matched, <code>p</code> is updated, the two found elements are collected and the pattern is forced to fail, so the pattern matcher finds the next line. The found rows are collected in reverse order, because prepending to a list is faster than appending. When all lines are read, the collected lines are reversed, interspersed with newline characters. Finally the predefined function toML is used to create HTML.
 
@@ -719,9 +719,9 @@ Output:
 
 
 
-### Simple solution NOT using pattern matching 
+### Simple solution NOT using pattern matching
 
-Newer versions of Bracmat have the built in function <code>vap</code> that splits an input string in 
+Newer versions of Bracmat have the built in function <code>vap</code> that splits an input string in
 single characters or that splits it everywhere where a given separator character occurs. Each single character or slab of characters is
 passed to a function. The values returned from this function become the elements in a list that is returned from the <code>vap</code> function. For example, <code>vap$(upp.Википедию)</code> "vaporizes" the word Википедию into characters and produces the list of
 uppercased characters В И К И П Е Д И Ю. Instead of the name of a function we can choose to just give <code>vap</code> the definition of an anonymous function, like so: <code>vap$((=.!arg:~и|).Википедию)</code>. This returns a list of the characters in the word Википедию, except for the и character: В к п е д ю.
@@ -856,10 +856,10 @@ $    > \#v_$0";tl&"v v"</t"<0 > : |
 
 
 
-```c>#include <stdio.h
+```c
+#include <stdio.h>
 
-
-const char *input = 
+const char *input =
 	"Character,Speech\n"
 	"The multitude,The messiah! Show us the messiah!\n"
 	"Brians mother,<angry>Now you listen here! He's not the messiah; "
@@ -915,19 +915,19 @@ $ ./csv
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <boost/regex.hpp>
 #include <iostream>
 
 std::string csvToHTML( const std::string & ) ;
 
 int main( ) {
-   std::string text = "Character,Speech\n" 
-                            "The multitude,The messiah! Show us the messiah!\n" 
-			    "Brians mother,<angry>Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!</angry>\n" 
-	                    "The multitude,Who are you?\n" 
-		            "Brians mother,I'm his mother; that's who!\n" 
+   std::string text = "Character,Speech\n"
+                            "The multitude,The messiah! Show us the messiah!\n"
+			    "Brians mother,<angry>Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!</angry>\n"
+	                    "The multitude,Who are you?\n"
+		            "Brians mother,I'm his mother; that's who!\n"
 		            "The multitude,Behold his mother! Behold his mother!\n" ;
   std::cout << csvToHTML( text ) ;
   return 0 ;
@@ -936,8 +936,8 @@ int main( ) {
 std::string csvToHTML( const std::string & csvtext ) {
    //the order of the regexes and the replacements is decisive!
    std::string regexes[ 5 ] = { "<" , ">" , "^(.+?)\\b" , "," , "\n" } ;
-   const char* replacements [ 5 ] = { "&lt;" , "&gt;" , "    <TR><TD>$1" , "</TD><TD>", "</TD></TR>\n"  } ;  
-   boost::regex e1( regexes[ 0 ] ) ; 
+   const char* replacements [ 5 ] = { "&lt;" , "&gt;" , "    <TR><TD>$1" , "</TD><TD>", "</TD></TR>\n"  } ;
+   boost::regex e1( regexes[ 0 ] ) ;
    std::string tabletext = boost::regex_replace( csvtext , e1 ,
      replacements[ 0 ] , boost::match_default | boost::format_all ) ;
    for ( int i = 1 ; i < 5 ; i++ ) {
@@ -1061,7 +1061,7 @@ The multitude,Behold his mother! Behold his mother!";
             for (int index = 0; index < rows.Length; index++) // Iterate through each row.
             {
                 var row = rows[index];
-                var tag = (index == 0 && formatHeaders) ? "th" : "td"; /* Check if this is the first row, and if to format headers. 
+                var tag = (index == 0 && formatHeaders) ? "th" : "td"; /* Check if this is the first row, and if to format headers.
                                                                         * If so, then set the tags as table headers.
                                                                         * Otherwise, set the tags as table data. */
 
@@ -1297,7 +1297,7 @@ The multitude,Behold his mother! Behold his mother!")
 	   for pos = (position-if #'needs-escape-p in :start start)
 	   do (write-sequence in out :start start :end pos)
 	   when pos do (write-sequence (escape-char (char in pos)) out)
-	   while pos)))))  
+	   while pos)))))
 
 (defun html-row (values headerp)
   (let ((tag (if headerp "th" "td")))
@@ -1525,7 +1525,7 @@ begin
 
           // Check if first row and FirstRowIsHeader flag set
           if (i = 0) and FirstRowIsHeader then
-          
+
             // Render HTML
             htmlOut.Text := htmlOut.Text + hrowstart + pieces[0] + hcellendstart + pieces[1] + hrowend + CRLF
             else
@@ -1686,9 +1686,9 @@ td.c {width:15%}
 		 	(push html (format "<%s>" tag )))
 		 (html-proc content)
 		 (push html (format "</%s> " tag )))
-		 
+
 ;; html procs : 1 tag, 1 proc
-(define (h-raw content) 
+(define (h-raw content)
 		(push html (format "%s" content)))
 (define (h-header headers)
 		(for ((h headers)) (emit-tag 'th h-raw h)))
@@ -1697,9 +1697,9 @@ td.c {width:15%}
 (define (h-table table )
 	(emit-tag 'tr h-header (first table))
 	(for ((row (rest table))) (emit-tag 'tr h-row row)))
-	
+
 (define (html-dump) (string-join (stack->list html) " "))
-	
+
 ;; STYLES
 (style 'td "text-align:left")
 (style 'table "border-spacing: 10px;border:28px ridge orange") ;; special biblical border
@@ -1713,12 +1713,12 @@ td.c {width:15%}
 
 ;; changed <angry> to <b> to show that html tags inside text are correctly transmitted.
 (define MontyPython #<<
-    Character,Speech 
-    The multitude,The messiah! Show us the messiah! 
-    Brians mother,<b>Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!</b> 
-    The multitude,Who are you? 
-    Brians mother,I'm his mother; that's who! 
-    The multitude,Behold his mother! Behold his mother! 
+    Character,Speech
+    The multitude,The messiah! Show us the messiah!
+    Brians mother,<b>Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!</b>
+    The multitude,Who are you?
+    Brians mother,I'm his mother; that's who!
+    The multitude,Behold his mother! Behold his mother!
 >>#)
 
 (define (task speech)
@@ -1726,13 +1726,13 @@ td.c {width:15%}
 	(stack html)
 	(emit-tag 'table h-table table)
 	(html-dump))
-	
+
 (task MontyPython)
 
 ```
 
 
-<table style='border-spacing: 10px;border:28px ridge orange'> <tr> <th style='color:blue;'> Character </th> <th style='color:blue;'> Speech </th> </tr> <tr> <td style='text-align:left'> The multitude </td> <td style='text-align:left'> The messiah! Show us the messiah! </td> </tr> <tr> <td style='text-align:left'> Brians mother </td> <td style='text-align:left'> <b>Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!</b> </td> </tr> <tr> <td style='text-align:left'> The multitude </td> <td style='text-align:left'> Who are you? </td> </tr> <tr> <td style='text-align:left'> Brians mother </td> <td style='text-align:left'> I'm his mother; that's who! </td> </tr> <tr> <td style='text-align:left'> The multitude </td> <td style='text-align:left'> Behold his mother! Behold his mother! </td> </tr> </table> 
+<table style='border-spacing: 10px;border:28px ridge orange'> <tr> <th style='color:blue;'> Character </th> <th style='color:blue;'> Speech </th> </tr> <tr> <td style='text-align:left'> The multitude </td> <td style='text-align:left'> The messiah! Show us the messiah! </td> </tr> <tr> <td style='text-align:left'> Brians mother </td> <td style='text-align:left'> <b>Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!</b> </td> </tr> <tr> <td style='text-align:left'> The multitude </td> <td style='text-align:left'> Who are you? </td> </tr> <tr> <td style='text-align:left'> Brians mother </td> <td style='text-align:left'> I'm his mother; that's who! </td> </tr> <tr> <td style='text-align:left'> The multitude </td> <td style='text-align:left'> Behold his mother! Behold his mother! </td> </tr> </table>
 
 
 
@@ -1856,7 +1856,7 @@ let main argv =
             td, th { border: 1px solid black; padding: .25em}
             th { background-color: #EEE; }
             tbody th { font-weight: normal; font-size: 85%; }
-        """)        
+        """)
         x.WriteEndElement() // style
     x.WriteEndElement() // head
     x.WriteStartElement("body")
@@ -1953,14 +1953,14 @@ The multitude,Behold his mother! Behold his mother!"
             [ 1string ]
         } case
     ] { } map-as concat ;
-    
+
 : tag ( str tag -- <tag>str</tag> )
     [ "<" ">" surround ] [ "</" ">" surround ] bi surround ;
-    
+
 : csv>table ( seq -- str )
     [ [ "td" tag ] map concat "tr" tag "  " prepend ] map
     { "<table>" } prepend { "</table>" } append "\n" join ;
-    
+
 input escape-chars string>csv csv>table print
 ```
 
@@ -2399,7 +2399,7 @@ thead td {background-color:#ddffdd; text-align:center; }
 </html>
 ```
 </div>
-[[File:Groovy-csv-to-html-basic.jpg]] 
+[[File:Groovy-csv-to-html-basic.jpg]]
 Appearance as rendered in Google Chrome.
 
 {{out|Extra Credit output}}
@@ -2430,7 +2430,7 @@ thead td {background-color:#ddffdd; text-align:center; }
 </html>
 ```
 </div>
-[[File:Groovy-csv-to-html-extra.jpg]] 
+[[File:Groovy-csv-to-html-extra.jpg]]
 Appearance as rendered in Google Chrome.
 
 
@@ -2452,7 +2452,7 @@ def formatPage = { titleString, csv, header=false ->
     doc.html {
         head {
             title (titleString)
-            style (type:"text/css") { 
+            style (type:"text/css") {
                 mkp.yield('''
                     td {background-color:#ddddff; }
                     thead td {background-color:#ddffdd; text-align:center; }
@@ -2613,7 +2613,7 @@ split p = unfoldr (\s -> case dropWhile p s of [] -> Nothing
 
 main = interact (\csv -> "<table>\n" ++
     (unlines $ map ((\cols -> "<tr>\n" ++
-        (concatMap (\x -> "  <td>" ++ concatMap (\c -> 
+        (concatMap (\x -> "  <td>" ++ concatMap (\c ->
             case c of {'<' -> "&lt;"; '>' -> "&gt;";
 			'&' -> "&amp;"; '"' -> "&quot;"; _ -> [c]}) x
         ++ "</td>\n") cols)
@@ -2654,9 +2654,9 @@ main = interact (\csv -> "<table>\n" ++
 </div>
 
 =={{header|Icon}} and {{header|Unicon}}==
-This solution for the extra credit works in both Icon and Unicon.  
-The simple CSV is read from standard input and written to standard output.  
-The presence/abscend of "-heading" in the argument list sets the variable thead 
+This solution for the extra credit works in both Icon and Unicon.
+The simple CSV is read from standard input and written to standard output.
+The presence/abscend of "-heading" in the argument list sets the variable thead
 to the procedure writes or a 1 (for more on this see [[Icon%2BUnicon/Intro#Conjunction.2C_yielding_a_different_result|Introduction to Icon/Unicon - Conjunction yielding different results]]).
 
 
@@ -2792,7 +2792,7 @@ class Csv2Html {
 		for (int i = 0; i < lineLength; i++) {
 			char c = lineIn.charAt(i);
 			switch (c) {
-				case '"': 
+				case '"':
 					sb.append("&quot;");
 					break;
 				case '&':
@@ -2822,7 +2822,7 @@ class Csv2Html {
 		}
 		ps.println("</tr>");
 	}
-	
+
 	public static void tableRow(PrintStream ps, String[] columns) {
 		ps.print("<tr>");
 		for (int i = 0; i < columns.length; i++) {
@@ -2832,14 +2832,14 @@ class Csv2Html {
 		}
 		ps.println("</tr>");
 	}
-	
+
 	public static void main(String[] args) throws Exception {
 		boolean withTableHeader = (args.length != 0);
-		
+
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
 		PrintStream stdout = System.out;
-		
+
 		stdout.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">");
 		stdout.println("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
 		stdout.println("<head><meta http-equiv=\"Content-type\" content=\"text/html;charset=UTF-8\"/>");
@@ -2986,7 +2986,7 @@ console.log('<table>\n\t<thead>\n'      + lines[0] +
 We will assume the input is in a file named csv2html.csv, and that the jq program as given below is in a file named csv2html.jqn.  To simplify things, we will invoke the jq processor twice -- the first invocation simply converts the text input into a sequence of JSON strings:
 
 ```jq
-jq -R . csv2html.csv | jq -r -s -f csv2html.jq  
+jq -R . csv2html.csv | jq -r -s -f csv2html.jq
 
 ```
 
@@ -3064,7 +3064,7 @@ var csv = "Character,Speech\n" +
            "The multitude,Who are you?\n" +
            "Brians mother,I'm his mother; that's who!\n" +
            "The multitude,Behold his mother! Behold his mother!";
- 
+
 var lines = csv.replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
@@ -3118,7 +3118,7 @@ function csv2html(fname; header::Bool=false)
     @assert(size(csv, 2) > 0)
     str = """
 <html>
- 
+
 <head>
     <style type="text/css">
         body {
@@ -3151,33 +3151,33 @@ function csv2html(fname; header::Bool=false)
         }
     </style>
 </head>
- 
+
 <body>
     <h1>csv2html Example</h1>
     <table>
         <tr>
 """
     tags = header ? ("<th>", "</th>") : ("<td>", "</td>")
- 
+
     for i=1:size(csv, 2)
         str *= "            " * tags[1] * csv[1, i] * tags[2] * "\n"
     end
- 
+
     str *= " "^8 * "</tr>\n"
- 
+
     for i=2:size(csv, 1)
         str *= "        <tr>\n"
- 
+
         for j=1:size(csv, 2)
             str *= "            " * "<td>" * csv[i, j] * "</td>\n"
         end
- 
+
         str *= "        </tr>\n"
     end
- 
+
     str * "    </table>\n</body>\n\n</html>\n"
 end
- 
+
 print(csv2html("input.csv", header=true))
 
 ```
@@ -3259,7 +3259,7 @@ print(csv2html("input.csv", header=true))
 ```scala
 // version 1.1.3
 
-val csv = 
+val csv =
     "Character,Speech\n" +
     "The multitude,The messiah! Show us the messiah!\n" +
     "Brians mother,<angry>Now you listen here! He's not the messiah; " +
@@ -3276,9 +3276,9 @@ fun main(args: Array<String>) {
             '\n' -> "</td>\n$i</tr>\n$i<tr>\n$i$i<td>"
             ','  -> "</td>\n$i$i<td>"
             '&'  -> "&amp;"
-            '\'' -> "&apos;" 
+            '\'' -> "&apos;"
             '<'  -> "&lt;"
-            '>'  -> "&gt;"           
+            '>'  -> "&gt;"
             else -> c.toString()
         })
     }
@@ -3302,14 +3302,14 @@ fun main(args: Array<String>) {
             '\n' -> "</td>\n$i$i</tr>\n$i$i<tr>\n$i$i$i<td>"
             ','  -> "</td>\n$i$i$i<td>"
             '&'  -> "&amp;"
-            '\'' -> "&apos;" 
+            '\'' -> "&apos;"
             '<'  -> "&lt;"
-            '>'  -> "&gt;"           
+            '>'  -> "&gt;"
             else -> c.toString()
         })
     }
     sb.append("</td>\n$i$i</tr>\n$i</tbody>\n</table>")
-    println(sb.toString())     
+    println(sb.toString())
 }
 ```
 
@@ -3450,7 +3450,7 @@ The multitude</td><td>Behold his mother! Behold his mother!</td></tr>
 </HTML>
 
 ```
- 
+
  Rendered output is available at http://www.diga.me.uk/csvhtml.gif
 
 
@@ -3467,16 +3467,16 @@ Brians mother,<angry>Now you listen here! He's not the messiah; he's a very naug
 The multitude,Who are you?
 Brians mother,I'm his mother; that's who!
 The multitude,Behold his mother! Behold his mother!
-]]    
+]]
 
 csv = csv:gsub( "<", "&lt;" )
 csv = csv:gsub( ">", "&gr;" )
 
-html = { "<table>" } 
+html = { "<table>" }
 for line in string.gmatch( csv, "(.-\n)" ) do
     str = "<tr>"
     for field in string.gmatch( line, "(.-)["..FS.."?\n?]" ) do
-        str = str .. "<td>" .. field .. "</td>"    
+        str = str .. "<td>" .. field .. "</td>"
     end
     str = str .. "</tr>"
     html[#html+1] = str;
@@ -3511,7 +3511,7 @@ end
  #A translation of the C code posted
 html_table := proc(str)
 	local char;
-     printf("<table>\n<tr><td>");  
+     printf("<table>\n<tr><td>");
      for char in str do
          if char = "\n" then
          	printf("</td></tr>\n<tr><td>")
@@ -3523,9 +3523,9 @@ html_table := proc(str)
           printf("&gt;")
          elif char = "&" then
          	printf("&amp;")
-         else 
+         else
           printf(char)
-         end if;                                   
+         end if;
     end do;
     printf("</td></tr>\n</table>");
 end proc;
@@ -3575,7 +3575,7 @@ StringJoin["<table>\n",StringJoin["<tr><th>",#,"</th></tr>\n"]&[
 StringSplit[StringReplace[a,{","->"</td><td>","<"->"&lt;",">"->"&gt;"}],"\n"]//First]
 ,Map[StringJoin["<tr><td>",#,"</td></tr>\n"]&,
 StringSplit[StringReplace[a,{","->"</td><td>","<"->"&lt;",">"->"&gt;"}],"\n"]//Rest]
-,"</table>"] 
+,"</table>"]
 
 ```
 
@@ -3613,10 +3613,10 @@ StringSplit[StringReplace[a,{","->"</td><td>","<"->"&lt;",">"->"&gt;"}],"\n"]//R
 ## MATLAB
 
 
-Many specialized MATLAB file IO functions are painfully slow, 
-and with large files it is often better to use a lower-level functions such as fread. 
-Here we use fileread, which does a little bit of error handling and calls fread, specifying the input data as text. 
-From this text string, we can easily convert any special html characters, 
+Many specialized MATLAB file IO functions are painfully slow,
+and with large files it is often better to use a lower-level functions such as fread.
+Here we use fileread, which does a little bit of error handling and calls fread, specifying the input data as text.
+From this text string, we can easily convert any special html characters,
 split it into a cell array, and print it out specifying format.
 
 
@@ -3891,7 +3891,7 @@ println $htmltable
 
 ## NetRexx
 
-Uses the [[NetRexx]] solution for [[Read_a_file_line_by_line#Using_Java_Scanner|Read a file line by line]] to read the CSV file into the program. 
+Uses the [[NetRexx]] solution for [[Read_a_file_line_by_line#Using_Java_Scanner|Read a file line by line]] to read the CSV file into the program.
 
 ```NetRexx
 /* NetRexx */
@@ -4172,7 +4172,7 @@ echo csv2html(csvtext)
 ```oberon2
 
 MODULE CSV2HTML;
-IMPORT 
+IMPORT
   Object,
   IO,
   IO:FileChannel,
@@ -4187,20 +4187,20 @@ VAR
   rd: TextRider.Reader;
   line: ARRAY 1024 OF CHAR;
   table: SB.StringBuffer;
-  parts: ARRAY 2 OF STRING;  
-  
+  parts: ARRAY 2 OF STRING;
+
   PROCEDURE DoTableHeader(sb: SB.StringBuffer;parts: ARRAY OF STRING);
   BEGIN
     sb.Append("<tr><th>"+Utils.EscapeHTML(parts[0])+"</th><th>"+Utils.EscapeHTML(parts[1])+"</th></tr>");
     sb.AppendLn
   END DoTableHeader;
-  
+
   PROCEDURE DoTableRow(sb: SB.StringBuffer;parts: ARRAY OF STRING);
   BEGIN
     sb.Append("<tr><td>"+Utils.EscapeHTML(parts[0])+"</td><td>"+Utils.EscapeHTML(parts[1])+"</td></tr>");
     sb.AppendLn
   END DoTableRow;
-  
+
   PROCEDURE DoTable(sb: SB.StringBuffer): STRING;
   VAR
     aux: SB.StringBuffer;
@@ -4208,7 +4208,7 @@ VAR
      aux := SB.New("<table>");aux.AppendLn;
      RETURN aux.ToString() + sb.ToString() + "</table>";
   END DoTable;
-  
+
 BEGIN
   TRY
     fileChannel := FileChannel.OpenUnbuffered("script.csv",{FileChannel.read});
@@ -4227,7 +4227,7 @@ BEGIN
     Out.Object(ex.Name() + ": " + ex.GetMessage());Out.Ln;
     HALT(2)
   END;
-  
+
   (* Extract data *)
   LOOP
     TRY
@@ -4313,20 +4313,20 @@ class CsvToHtml {
     each(i : in) {
       c := in->Get(i);
       select(c) {
-        label '&': { 
+        label '&': {
           out->Append("&amp;");
-          
+
         }
 
-        label '\'': { 
+        label '\'': {
           out->Append("&apos;");
         }
 
-        label '<': { 
+        label '<': {
           out->Append("&lt;");
         }
 
-        label '>': { 
+        label '>': {
           out->Append("&gt;");
         }
 
@@ -4359,7 +4359,7 @@ Output:
 ### Simple solution
 
 
-OCaml possesses a [http://forge.ocamlcore.org/projects/csv/ CSV module] 
+OCaml possesses a [http://forge.ocamlcore.org/projects/csv/ CSV module]
 but we do not use it hereafter because the CSV data does not contain comas.
 
 
@@ -4405,14 +4405,14 @@ let () =
  {{Out|Sample html output}}
 
 ```html5><table
- 
-<tr><td>Character</td><td>Speech</td></tr> 
-<tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr> 
-<tr><td>Brians mother</td><td>&#0060;angry&#0062;Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!&#0060;/angry&#0062;</td></tr> 
-<tr><td>The multitude</td><td>Who are you?</td></tr> 
-<tr><td>Brians mother</td><td>I'm his mother; that's who!</td></tr> 
-<tr><td>The multitude</td><td>Behold his mother! Behold his mother!</td></tr> 
-</table> 
+
+<tr><td>Character</td><td>Speech</td></tr>
+<tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
+<tr><td>Brians mother</td><td>&#0060;angry&#0062;Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!&#0060;/angry&#0062;</td></tr>
+<tr><td>The multitude</td><td>Who are you?</td></tr>
+<tr><td>Brians mother</td><td>I'm his mother; that's who!</td></tr>
+<tr><td>The multitude</td><td>Behold his mother! Behold his mother!</td></tr>
+</table>
 ```
 
 
@@ -4472,22 +4472,22 @@ let () =
 {{out}}
 
 ```html5><html
- 
-  <head> 
-    <style type="text/css"> 
+
+  <head>
+    <style type="text/css">
       td {background-color:#ddddff; }
       thead td {background-color:#ddffdd; text-align:center; }
-    </style> 
-  </head><table> 
-<thead><tr><td>Character</td><td>Speech</td></tr> 
-</thead><tbody> 
-<tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr> 
-<tr><td>Brians mother</td><td>&#0060;angry&#0062;Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!&#0060;/angry&#0062;</td></tr> 
-<tr><td>The multitude</td><td>Who are you?</td></tr> 
-<tr><td>Brians mother</td><td>I'm his mother; that's who!</td></tr> 
-<tr><td>The multitude</td><td>Behold his mother! Behold his mother!</td></tr> 
-</tbody> 
-</table> 
+    </style>
+  </head><table>
+<thead><tr><td>Character</td><td>Speech</td></tr>
+</thead><tbody>
+<tr><td>The multitude</td><td>The messiah! Show us the messiah!</td></tr>
+<tr><td>Brians mother</td><td>&#0060;angry&#0062;Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!&#0060;/angry&#0062;</td></tr>
+<tr><td>The multitude</td><td>Who are you?</td></tr>
+<tr><td>Brians mother</td><td>I'm his mother; that's who!</td></tr>
+<tr><td>The multitude</td><td>Behold his mother! Behold his mother!</td></tr>
+</tbody>
+</table>
 </html>
 ```
 
@@ -4509,13 +4509,13 @@ FUNCTION csvToHtml RETURNS CHARACTER (
    DEFINE VARIABLE ccell   AS CHARACTER   NO-UNDO.
 
    coutput = "<html>~n~t<table>".
-   
+
    DO irow = 1 TO NUM-ENTRIES( i_cinput, "~n":U ):
 
       coutput = coutput + "~n~t~t<tr>".
-      
+
       crow = ENTRY( irow, i_cinput, "~n":U ).
-      
+
       DO icolumn = 1 TO NUM-ENTRIES( crow ):
          ccell = ENTRY( icolumn, crow ).
 
@@ -4526,7 +4526,7 @@ FUNCTION csvToHtml RETURNS CHARACTER (
       END.
 
       coutput = coutput + "~n~t~t</tr>".
-      
+
    END.
 
    coutput = coutput + "~n~t</table>~n</html>".
@@ -4536,7 +4536,7 @@ FUNCTION csvToHtml RETURNS CHARACTER (
 END FUNCTION. /* csvToHtml */
 
 MESSAGE
-   csvToHtml( 
+   csvToHtml(
       TRUE,
       "Character,Speech" + "~n" +
       "The multitude,The messiah! Show us the messiah!" + "~n" +
@@ -4652,7 +4652,7 @@ printf
 ', [~]                                # concatenation reduction ('a', 'b', 'c') → 'abc'
 (escape($str).split(/\n/)             # escape the string and split at newline
   ==> map -> $line {tag 'tr',         # feed that into a map, that map function will tag as 'tr, and has an argument called $line
-    ([~] $line.split(/','/)\          # split $line at ',', 
+    ([~] $line.split(/','/)\          # split $line at ',',
                                       # that / at the end is just an unspace, you can omit it, but then you have to delete
                                       # all whitespace  and comments between split(…) and .map
       .map({tag 'td', $^cell}))})\    # map those cells as td
@@ -4690,7 +4690,7 @@ constant input = "Character,Speech\n" &
     "The multitude,Who are you?\n" &
     "Brians mother,I'm his mother; that's who!\n" &
     "The multitude,Behold his mother! Behold his mother!"
- 
+
 puts(1,"<table>\n<tr><td>")
 for i = 1 to length(input) do
     switch input[i] do
@@ -4895,7 +4895,7 @@ Invoke-Expression .\csv_html_test.html
 
 ## Prolog
 
-Uses DCG. 
+Uses DCG.
 {{Works with|SWI-Prolog}}
 
 ### Simple solution
@@ -5190,7 +5190,7 @@ def _row2trextra(row, attr=None):
 
 def csv2htmlextra(txt, header=True, attr=None):
     ' attr is a dictionary mapping tags to attributes to add to that tag'
-    
+
     attr_table = attr.get('TABLE', '')
     attr_thead = attr.get('THEAD', '')
     attr_tbody = attr.get('TBODY', '')
@@ -5206,7 +5206,7 @@ def csv2htmlextra(txt, header=True, attr=None):
 htmltxt = csv2htmlextra(csvtxt, True,
                         dict(TABLE=' border="1" summary="csv2html extra program output"',
                              THEAD=' bgcolor="yellow"',
-                             TBODY=' bgcolor="orange"' 
+                             TBODY=' bgcolor="orange"'
                              )
                         )
 print(htmltxt)
@@ -5325,7 +5325,7 @@ Uses X-exprs:
   (define csv-row-cells
     (map (lambda (row) (regexp-split "," row)) csv-rows))
   (define (cell-data->HTML-data data)
-    `(td () ,data))  
+    `(td () ,data))
   (define (row-data->HTML-row CSV-row)
     `(tr () ,@(map cell-data->HTML-data CSV-row) "\n"))
   `(table
@@ -5363,7 +5363,7 @@ The multitude,The messiah! Show us the messiah!
 Brians mother,<angry>Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!</angry>
 The multitude,Who are you?
 Brians mother,I'm his mother; that's who!
-The multitude,Behold his mother! Behold his mother!} 
+The multitude,Behold his mother! Behold his mother!}
 
 add2html: func [ bl ] [append html rejoin bl ]  ;; helper function to add block data to html string
 
@@ -5372,19 +5372,19 @@ csv2html: func ["function to generate string with html table from csv data file"
 ;;----------------------------------------------------------------------
     s [string!] "input .csv data"
 ][
-arr: split s newline    ;; generate array (series) from string 
+arr: split s newline    ;; generate array (series) from string
 html: copy "<table border=1>^/" ;; init html string
 
 forall arr  [  ;; i use forall here so that i can test for head? of series ...
   either head? arr [ append html "<tr bgcolor=wheat>"]
                       [ append html "<tr>"]
   replace/all first arr "<" "&lt;"    ;; escape "<" and ">" characters
-  replace/all first arr ">" "&gt;"    
+  replace/all first arr ">" "&gt;"
   foreach col split first arr "," [
       either head? arr [
         add2html ['<th> col '</th>]
-      ][   
-        add2html ['<td> col '</td>]   
+      ][
+        add2html ['<td> col '</td>]
       ]
   ]
   add2html ['</tr> newline]
@@ -5433,7 +5433,7 @@ The multitude,The messiah! Show us the messiah!
 Brians mother,<angry>Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!</angry>
 The multitude,Who are you?
 Brians mother,I'm his mother; that's who!
-The multitude,Behold his mother! Behold his mother!" remapping on 
+The multitude,Behold his mother! Behold his mother!" remapping on
 keepString constant CSV
 
 : display  ( c- )
@@ -5471,8 +5471,8 @@ CSV displayHTML
 ## REXX
 
 The rendered output was verified using Firefox Aurora with:
-:::*   file:///c:/output.html 
-:::*   file:///c:/outputh.html 
+:::*   file:///c:/output.html
+:::*   file:///c:/outputh.html
 
 ```rexx
 /*REXX program converts   CSV  ───►  HTML  table   representing  the  CSV  data.        */
@@ -5513,7 +5513,7 @@ exit                                             /*stick a fork in it,  we're al
 write:   call lineout  oFID,  left('', 0 || arg(1) )arg(2);                         return
 ```
 
-Some older REXXes don't have a   '''changestr'''   BIF, so one is included here   ──►   [[CHANGESTR.REX]]. 
+Some older REXXes don't have a   '''changestr'''   BIF, so one is included here   ──►   [[CHANGESTR.REX]].
 
 
 '''output'''
@@ -5546,8 +5546,8 @@ Some older REXXes don't have a   '''changestr'''   BIF, so one is included here 
 
 ```
 
-'''rendered output''' 
- 
+'''rendered output'''
+
 
 <table border=4 cellpadding=9 cellspacing=1>
      <tr>
@@ -5572,7 +5572,7 @@ Some older REXXes don't have a   '''changestr'''   BIF, so one is included here 
 </table>
 
 
-'''output'''   (extra credit solution)   when the first argument is HEADER in upper/lower/mixed case (with/without leading/trailing blanks). 
+'''output'''   (extra credit solution)   when the first argument is HEADER in upper/lower/mixed case (with/without leading/trailing blanks).
 
 ```txt
 
@@ -5604,8 +5604,8 @@ Some older REXXes don't have a   '''changestr'''   BIF, so one is included here 
 
 
 
-'''rendered output''' 
- 
+'''rendered output'''
+
 
 <table border=4 cellpadding=9 cellspacing=1>
      <tr>
@@ -5635,7 +5635,7 @@ Some older REXXes don't have a   '''changestr'''   BIF, so one is included here 
 
 ## Ruby
 
-The extra credit version has one extra line compared to the non-extra credit version. 
+The extra credit version has one extra line compared to the non-extra credit version.
 To output a header, simply add "header" to the command line:
   ruby csv2html.rb header
 I/O is done through standard input/output.
@@ -6230,8 +6230,8 @@ td {background-color:yellow}
 <table>
 @  (repeat)
   <tr>
-     <td>@char</td> 
-     <td>@speech</td> 
+     <td>@char</td>
+     <td>@speech</td>
   </tr>
 @  (end)
 </table>
@@ -6250,28 +6250,28 @@ $ txr csv.txr  csv.txt
 ```html5><table
 
   <tr>
-     <td>Character</td> 
-     <td>Speech</td> 
+     <td>Character</td>
+     <td>Speech</td>
   </tr>
   <tr>
-     <td>The multitude</td> 
-     <td>The messiah! Show us the messiah!</td> 
+     <td>The multitude</td>
+     <td>The messiah! Show us the messiah!</td>
   </tr>
   <tr>
-     <td>Brians mother</td> 
+     <td>Brians mother</td>
      <td>&lt;angry&gt;Now you listen here! He's not the messiah; he's a very naughty boy! Now go away!&lt;/angry&gt;</td>
   </tr>
   <tr>
-     <td>The multitude</td> 
-     <td>Who are you?</td> 
+     <td>The multitude</td>
+     <td>Who are you?</td>
   </tr>
   <tr>
-     <td>Brians mother</td> 
-     <td>I'm his mother; that's who!</td> 
+     <td>Brians mother</td>
+     <td>I'm his mother; that's who!</td>
   </tr>
   <tr>
-     <td>The multitude</td> 
-     <td>Behold his mother! Behold his mother!</td> 
+     <td>The multitude</td>
+     <td>Behold his mother! Behold his mother!</td>
   </tr>
 </table>
 ```
@@ -6391,7 +6391,7 @@ htmlrow() {
     cell=${3:-td}
     printf "<tr><%s>%s</%s><%s>%s</%s></tr>\n" \
         "$cell" "$(escape_html "$1")" "$cell" \
-        "$cell" "$(escape_html "$2")" "$cell" 
+        "$cell" "$(escape_html "$2")" "$cell"
 }
 
 escape_html() {
@@ -6401,7 +6401,7 @@ escape_html() {
     echo "$str"
 }
 
-html=$( 
+html=$(
     csv2html <<-END
 	Character,Speech
 	The multitude,The messiah! Show us the messiah!
@@ -6446,7 +6446,7 @@ Public Sub CSV_TO_HTML()
         "The multitude,Who are you?\n" & _
         "Brians mother,I'm his mother; that's who!\n" & _
         "The multitude,Behold his mother! Behold his mother!"
-     
+
     Debug.Print "<table>" & vbCrLf & "<tr><td>"
     For i = 1 To Len(input_)
         Select Case Mid(input_, i, 1)
@@ -6507,7 +6507,7 @@ Function csv_to_html(s)
 	For i = 0 To UBound(row)
 		field = Split(row(i),",")
 		If i = 0 Then
-			tmp = tmp & "<tr><th>" & replace_chars(field(0)) & "</th><th>" & replace_chars(field(1)) & "</th><tr>"		
+			tmp = tmp & "<tr><th>" & replace_chars(field(0)) & "</th><th>" & replace_chars(field(1)) & "</th><tr>"
 		Else
 			tmp = tmp & "<tr><td>" & replace_chars(field(0)) & "</td><td>" & replace_chars(field(1)) & "</td><tr>"
 		End If
@@ -6549,7 +6549,7 @@ Replace_Block(">","&gt;", BB, BE, BEGIN+ALL+NOERR)
 
 // Convert CSV into HTML table
 Goto_Pos(BB)
-IT('<table>') IN 
+IT('<table>') IN
 #80 = Cur_Pos
 Goto_Pos(BE)
 IT("</table>")
@@ -6688,10 +6688,10 @@ The multitude,Behold his mother! Behold his mother!
 # Download to a local copy of the [http://pascaliburnus.seanbdurkin.id.au/index.php?/archives/17-A-Generalised-and-Comprehensive-Solution-to-CSV-to-XML-and-XML-to-CSV-Transformations.html#extended csv-to-xml.xslt library] style-sheet listed in the linked blog entry. Alternatively a copy of the style-sheet on this wiki can be found here: [[csv-to-xml.xslt]]
 # Pass as the URI of the input csv as a parameter (named url-of-csv) to your XSLT 2.0 processor
 
- <lang><xsl:stylesheet 
-   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-   xmlns:xcsvt="http://www.seanbdurkin.id.au/xslt/csv-to-xml.xslt" 
-   xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+ <lang><xsl:stylesheet
+   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+   xmlns:xcsvt="http://www.seanbdurkin.id.au/xslt/csv-to-xml.xslt"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
    xmlns:xcsv="http://www.seanbdurkin.id.au/xslt/xcsv.xsd"
    version="2.0"
    exclude-result-prefixes="xsl xs xcsvt xcsv">

@@ -16,7 +16,7 @@ The digital root, <math>X</math>, of a number, <math>n</math>, is calculated:
 : find <math>X</math> as the sum of the digits of <math>n</math>
 : find a new <math>X</math> by summing the digits of <math>X</math>, repeating until <math>X</math> has only one digit.
 
-The additive persistence is the number of summations required to obtain the single digit. 
+The additive persistence is the number of summations required to obtain the single digit.
 
 The task is to calculate the additive persistence and the digital root of a number, e.g.:
 :<math>627615</math> has additive persistence <math>2</math> and digital root of <math>9</math>;
@@ -139,24 +139,24 @@ number=2147483647  persistence=  3  root=1
 
 ## Ada
 
-We first specify a Package "Generic_Root" with a generic procedure "Compute". The package is reduced for the implementation of multiplicative digital roots [[http://rosettacode.org/wiki/Digital_root/Multiplicative_digital_root#Ada]]. Further note the tunable parameter for the number base (default 10). 
+We first specify a Package "Generic_Root" with a generic procedure "Compute". The package is reduced for the implementation of multiplicative digital roots [[http://rosettacode.org/wiki/Digital_root/Multiplicative_digital_root#Ada]]. Further note the tunable parameter for the number base (default 10).
 
 
 ```Ada
-package Generic_Root is 
+package Generic_Root is
    type Number is range 0 .. 2**63-1;
    type Number_Array is array(Positive range <>) of Number;
    type Base_Type is range 2 .. 16; -- any reasonable base to write down numb
-   
+
    generic
       with function "&"(X, Y: Number) return Number;
       -- instantiate with "+" for additive digital roots
       -- instantiate with "*" for multiplicative digital roots
-   procedure Compute_Root(N: Number; 
+   procedure Compute_Root(N: Number;
                      Root, Persistence: out Number;
                      Base: Base_Type := 10);
    -- computes Root and Persistence of N;
-   
+
 end Generic_Root;
 ```
 
@@ -166,11 +166,11 @@ The implementation is straightforward: If the input N is a digit, then the root 
 
 ```Ada
 package body Generic_Root is
-   
-   procedure Compute_Root(N: Number; 
+
+   procedure Compute_Root(N: Number;
                      Root, Persistence: out Number;
                      Base: Base_Type := 10) is
-      
+
       function Digit_Sum(N: Number) return Number is
       begin
          if N < Number(Base) then
@@ -179,7 +179,7 @@ package body Generic_Root is
             return (N mod Number(Base)) & Digit_Sum(N / Number(Base));
          end if;
       end Digit_Sum;
- 
+
    begin
       if N < Number(Base) then
          Root := N;
@@ -189,12 +189,12 @@ package body Generic_Root is
          Persistence := Persistence + 1;
       end if;
    end Compute_Root;
-   
+
 end Generic_Root;
 ```
 
 
-Finally the main program.  The procedure "Print_Roots" is for our convenience. 
+Finally the main program.  The procedure "Print_Roots" is for our convenience.
 
 
 ```Ada
@@ -204,10 +204,10 @@ procedure Digital_Root is
 
    procedure Compute is new Compute_Root("+");
      -- "+" for additive digital roots
-   
+
    package TIO renames Ada.Text_IO;
 
-    procedure Print_Roots(Inputs: Number_Array; Base: Base_Type) is 
+    procedure Print_Roots(Inputs: Number_Array; Base: Base_Type) is
       package NIO is new TIO.Integer_IO(Number);
       Root, Pers: Number;
    begin
@@ -219,7 +219,7 @@ procedure Digital_Root is
          TIO.Put_Line("   " & Base_Type'Image(Base));
       end loop;
    end Print_Roots;
-begin 
+begin
    TIO.Put_Line("      Number     Root Persistence  Base");
    Print_Roots((961038, 923594037444, 670033, 448944221089), Base => 10);
    Print_Roots((16#7e0#, 16#14e344#, 16#12343210#), Base => 16);
@@ -264,7 +264,7 @@ PROC digital root = ( LONG LONG INT n, REF INT root, persistance )VOID:
          DO
                SKIP
          OD;
-         root := SHORTEN SHORTEN number  
+         root := SHORTEN SHORTEN number
      END; # digital root #
 
 # calculates and prints the digital root and persistace of number #
@@ -389,16 +389,16 @@ on digitalroot(N as integer)
 			(item 1 of L) + sum(rest of L)
 		end sum
 	end script
-	
+
 	set i to 0
 	set M to N
-	
+
 	repeat until M < 10
 		set digits to the characters of (M as text)
 		set M to math's sum(digits)
 		set i to i + 1
 	end repeat
-	
+
 	{N:N, persistences:i, root:M}
 end digitalroot
 
@@ -459,7 +459,7 @@ REM DIGIT SUM OF X$, RETURNS S$
 210 R$ = X$
 220 L = LEN(R$)
 230 FOR L = L TO 1 STEP -1
-240     E$ = "" : V$ = RIGHT$(R$, 1) 
+240     E$ = "" : V$ = RIGHT$(R$, 1)
 250     GOSUB 400 : S = LEN(S$)
 260     ON R$ <> "0" GOSUB 300
 270     R$ = MID$(R$, 1, L - 1)
@@ -536,10 +536,10 @@ for key, val in [30,1597,381947,92524902,448944221089]
     }
     p[A_Index] := [val, n, i]
 }
- 
+
 for key, val in p
     Output .= val[1] ": Digital Root = " val[2] ", Additive Persistence = " val[3] "`n"
- 
+
 MsgBox, 524288, , % Output
 ```
 
@@ -727,7 +727,7 @@ Press any key to continue . . .
       PRINT "Digital root of 9992 is "; FNdigitalroot(9992, 10, p) ;
       PRINT " (additive persistence " ; p ")"
       END
-      
+
       DEF FNdigitalroot(n, b, RETURN c)
       c = 0
       WHILE n >= b
@@ -735,7 +735,7 @@ Press any key to continue . . .
         n = FNdigitsum(n, b)
       ENDWHILE
       = n
-      
+
       DEF FNdigitsum(n, b)
       LOCAL q, s
       WHILE n <> 0
@@ -849,8 +849,8 @@ Additive Persistence: 3
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int droot(long long int x, int base, int *pers)
 {
@@ -934,7 +934,7 @@ For details of SumDigits see: http://rosettacode.org/wiki/Sum_digits_of_an_integ
 
 template<class P_> P_ IncFirst(const P_& src) {return P_(src.first + 1, src.second);}
 
-std::pair<int, int> DigitalRoot(unsigned long long digits, int base = 10) 
+std::pair<int, int> DigitalRoot(unsigned long long digits, int base = 10)
 {
     int x = SumDigits(digits, base);
     return x < base ? std::make_pair(1, x) : IncFirst(DigitalRoot(x, base));  // x is implicitly converted to unsigned long long; this is lossless
@@ -1049,7 +1049,7 @@ Using <code>SUM-DIGITS</code> from the task "[[Sum_digits_of_an_integer#Common_L
 
 (loop for (nr base) in '((627615 10) (393900588225 10) (#X14e344 16) (#36Rdg9r 36))
       do (multiple-value-bind (dr ap) (digital-root nr base)
-           (format T "~vR (base ~a): additive persistence = ~a, digital root = ~vR~%" 
+           (format T "~vR (base ~a): additive persistence = ~a, digital root = ~vR~%"
                    base nr base ap base dr)))
 ```
 
@@ -1242,7 +1242,7 @@ feature {NONE} -- Initialization
 			until
 				i > digital_root_test_values.count
 			loop
-				results := compute_digital_root (digital_root_test_values [i], 10) 
+				results := compute_digital_root (digital_root_test_values [i], 10)
 				if results [2] ~ digital_root_expected_result [i] then
 					print ("%N" + digital_root_test_values [i].out + " has additive persistence " + results [1].out + " and digital root " + results [2].out)
 				else
@@ -1284,7 +1284,7 @@ compute_digital_root (a_number: INTEGER_64;  a_base: INTEGER): ARRAY [INTEGER_64
 {{out}}
 
 ```txt
- 
+
 670033 has additive persistence 3 and digital root 1
 39390 has additive persistence 2 and digital root 6
 588225 has additive persistence 2 and digital root 3
@@ -1302,31 +1302,31 @@ ELENA 4.1 :
 import extensions;
 import system'routines;
 import system'collections;
- 
+
 extension op
 {
     get DigitalRoot()
     {
         int  additivepersistence := 0;
         long num := self;
- 
+
         while (num > 9)
         {
             num := num.Printable.toArray().selectBy:(ch => ch.toInt() - 48).summarize(new LongInteger());
- 
+
             additivepersistence += 1
         };
- 
+
         ^ new Tuple<int,int>(additivepersistence, num.toInt())
     }
 }
- 
+
 public program()
 {
     new long[]::(627615l, 39390l, 588225l, 393900588225l).forEach:(num)
     {
         var t := num.DigitalRoot;
- 
+
         console.printLineFormatted("{0} has additive persistence {1} and digital root {2}", num, t.Item1, t.Item2)
     }
 }
@@ -1352,7 +1352,7 @@ public program()
 ```elixir
 defmodule Digital do
   def root(n, base\\10), do: root(n, base, 0)
-  
+
   defp root(n, base, ap) when n < base, do: {n, ap}
   defp root(n, base, ap) do
     Integer.digits(n, base) |> Enum.sum |> root(base, ap+1)
@@ -1478,12 +1478,12 @@ IN: rosetta-code.digital-root
 : digital-root ( n -- persistence root )
     0 swap [ 1 digit-groups dup length 1 > ] [ sum [ 1 + ] dip ]
     while first ;
- 
+
 : print-root ( n -- )
     dup digital-root
     "%-12d has additive persistence %d and digital root %d.\n"
     printf ;
- 
+
 { 627615 39390 588225 393900588225 } [ print-root ] each
 ```
 
@@ -1605,8 +1605,8 @@ That one will take care of the last one:
 Function digitalRoot(n As UInteger, ByRef ap As Integer, base_ As Integer = 10) As Integer
   Dim dr As Integer
   ap = 0
-  Do 
-    dr = 0 
+  Do
+    dr = 0
     While n > 0
       dr += n Mod base_
       n = n \ base_
@@ -1935,7 +1935,7 @@ Example use:
 
 
 ```J
-   (, addper, digrot)&> 627615 39390 588225 393900588225 
+   (, addper, digrot)&> 627615 39390 588225 393900588225
       627615 2 9
        39390 2 6
       588225 2 3
@@ -2061,7 +2061,7 @@ function digitalRootBase(x,b) {
       x = (x / b) | 0;
       fauxroot += x % b;
    }
-   
+
    var rootobj = digitalRootBase(fauxroot,b);
    rootobj.addpers += 1;
    return rootobj;
@@ -2093,7 +2093,7 @@ def digital_root(n):
 
 def neatly:
   . as $in
-  | range(0;length) 
+  | range(0;length)
   | "\(.): \($in[.])";
 
 def rjust(n): tostring | (n-length)*" " + .;
@@ -2231,7 +2231,7 @@ fun digitalRoot(n: Long): Pair<Int, Int> = when {
                 ap++
             }
             Pair(dr.toInt(), ap)
-        } 
+        }
     }
 
 fun main(args: Array<String>) {
@@ -2422,7 +2422,7 @@ number -> digital_root persistence
 39390 -> 6 2 ok
 588225 -> 3 2 ok
 393900588225 -> 9 2 ok
-393900588225 -> 9 2 expected: 9 3     
+393900588225 -> 9 2 expected: 9 3
 
 ```
 
@@ -2463,13 +2463,13 @@ for n in [627615'i64, 39390'i64, 588225'i64, 393900588225'i64]:
 ## Oforth
 
 
-Using result of sum digit task : 
+Using result of sum digit task :
 
 
 ```Oforth
 : sumDigits(n, base)  0 while(n) [ n base /mod ->n + ] ;
 
-: digitalRoot(n, base)  
+: digitalRoot(n, base)
    0 while(n 9 >) [ 1 + sumDigits(n, base) ->n ] n swap Pair new ;
 ```
 
@@ -2935,7 +2935,7 @@ digital_root(393900588225)
 627615             9  2
 39390              6  2
 588225             3  2
-393900588225       9  2  
+393900588225       9  2
 
 ```
 
@@ -3089,7 +3089,7 @@ DigitalRoot          9
 ; i must have missed something because it seems too simple
 ; http://en.wikipedia.org/wiki/Digital_root#Congruence_formula
 
-Procedure.q DigitalRoot(N.q) 
+Procedure.q DigitalRoot(N.q)
 Protected M.q=N%9
 if M=0:ProcedureReturn 9
 Else  :ProcedureReturn M:EndIf
@@ -3138,7 +3138,7 @@ Next
 {{out}}
 
 ```txt
- 
+
          627615 has additive persistance 2 and digital root of X(slow) =9 M(fast) =9 ok
           39390 has additive persistance 2 and digital root of X(slow) =6 M(fast) =6 ok
          588225 has additive persistance 2 and digital root of X(slow) =3 M(fast) =3 ok
@@ -3166,7 +3166,7 @@ def digital_root (n):
 if __name__ == '__main__':
     for n in [627615, 39390, 588225, 393900588225, 55]:
         persistance, root = digital_root(n)
-        print("%12i has additive persistance %2i and digital root %i." 
+        print("%12i has additive persistance %2i and digital root %i."
               % (n, persistance, root))
 ```
 
@@ -3301,20 +3301,20 @@ print("Given number has additive persistence",y)
 ```racket
 #lang racket
 (define/contract (additive-persistence/digital-root n (ap 0))
-  (->* (natural-number/c) (natural-number/c) (values natural-number/c natural-number/c))  
+  (->* (natural-number/c) (natural-number/c) (values natural-number/c natural-number/c))
   (define/contract (sum-digits x (acc 0))
     (->* (natural-number/c) (natural-number/c) natural-number/c)
     (if (= x 0)
         acc
         (let-values (((q r) (quotient/remainder x 10)))
-          (sum-digits q (+ acc r)))))  
+          (sum-digits q (+ acc r)))))
   (if (< n 10)
       (values ap n)
       (additive-persistence/digital-root (sum-digits n) (+ ap 1))))
 
 (module+ test
   (require rackunit)
-  
+
   (for ((n (in-list '(627615 39390 588225 393900588225)))
         (ap (in-list '(2 2 2 2)))
         (dr (in-list '(9 6 3 9))))
@@ -3344,32 +3344,32 @@ print("Given number has additive persistence",y)
 
 
 ```rexx
-/* REXX *************************************************************** 
-* Test digroot                                                          
-**********************************************************************/ 
-                                                 /*           n r p */  
-say right(7           ,12) digroot(7           ) /*           7 7 0 */  
-say right(627615      ,12) digroot(627615      ) /*      627615 9 2 */  
-say right(39390       ,12) digroot(39390       ) /*       39390 6 2 */  
-say right(588225      ,12) digroot(588225      ) /*      588225 3 2 */  
-say right(393900588225,12) digroot(393900588225) /*393900588225 9 2 */  
-  Exit                                                                  
-digroot: Procedure                                                      
-/********************************************************************** 
-* Compute the digital root and persistence of the given decimal number  
+/* REXX ***************************************************************
+* Test digroot
+**********************************************************************/
+                                                 /*           n r p */
+say right(7           ,12) digroot(7           ) /*           7 7 0 */
+say right(627615      ,12) digroot(627615      ) /*      627615 9 2 */
+say right(39390       ,12) digroot(39390       ) /*       39390 6 2 */
+say right(588225      ,12) digroot(588225      ) /*      588225 3 2 */
+say right(393900588225,12) digroot(393900588225) /*393900588225 9 2 */
+  Exit
+digroot: Procedure
+/**********************************************************************
+* Compute the digital root and persistence of the given decimal number
 * 25.07.2012 Walter Pachl
-**************************** Bottom of Data **************************/ 
-Parse Arg n                         /* the number                    */ 
-p=0                                 /* persistence                   */ 
-Do While length(n)>1                /* more than one digit in n      */ 
-  s=0                               /* initialize sum                */ 
-  p=p+1                             /* increment persistence         */ 
-  Do while n<>''                    /* as long as there are digits   */ 
-    Parse Var n c +1 n              /* pick the first one            */ 
-    s=s+c                           /* add to the new sum            */ 
-    End                                                                 
-  n=s                               /* the 'new' number              */ 
-  End                                                                   
+**************************** Bottom of Data **************************/
+Parse Arg n                         /* the number                    */
+p=0                                 /* persistence                   */
+Do While length(n)>1                /* more than one digit in n      */
+  s=0                               /* initialize sum                */
+  p=p+1                             /* increment persistence         */
+  Do while n<>''                    /* as long as there are digits   */
+    Parse Var n c +1 n              /* pick the first one            */
+    s=s+c                           /* add to the new sum            */
+    End
+  n=s                               /* the 'new' number              */
+  End
 return n p                          /* return root and persistence   */
 ```
 
@@ -3439,7 +3439,7 @@ digRoot: procedure;  parse arg x 1 ox            /*get the number, also get anot
          return
 ```
 
-'''output'''   is the same as the 2<sup>nd</sup> REXX version. 
+'''output'''   is the same as the 2<sup>nd</sup> REXX version.
 
 
 
@@ -3454,15 +3454,15 @@ see "Digital root of 627615 is " + digitRoot(627615, 10) + " persistance is " + 
 see "Digital root of 39390  is " + digitRoot(39390, 10) +  " persistance is " + c + nl
 see "Digital root of 588225 is " + digitRoot(588225, 10) +  " persistance is " + c + nl
 see "Digital root of 9992   is " + digitRoot(9992, 10) +  " persistance is " + c + nl
- 
-func digitRoot n,b  
-     c = 0           
+
+func digitRoot n,b
+     c = 0
      while n >= b
            c = c + 1
            n = digSum(n, b)
      end
-     return n             
- 
+     return n
+
 func digSum n, b
      s = 0
      while n != 0
@@ -3530,9 +3530,9 @@ end
 
 
 ```runbasic
-print "Digital root of 627615       is "; digitRoot$(627615, 10) 
-print "Digital root of 39390        is "; digitRoot$(39390, 10) 
-print "Digital root of 588225       is "; digitRoot$(588225, 10) 
+print "Digital root of 627615       is "; digitRoot$(627615, 10)
+print "Digital root of 39390        is "; digitRoot$(39390, 10)
+print "Digital root of 588225       is "; digitRoot$(588225, 10)
 print "Digital root of 393900588225 is "; digitRoot$(393900588225, 10)
 print "Digital root of 9992         is "; digitRoot$(9992, 10)
 END
@@ -3861,12 +3861,12 @@ foreach n {627615 39390 588225 393900588225} {
 :sum(L₁→N
 :{0,.5,1→L₂
 :NL₂→L₃
-:Med-Med L₂,L₃,Y₁   
+:Med-Med L₂,L₃,Y₁
 :Equ►String(Y₁,Str1
 :sub(Str1,1,length(Str1)-3→Str1
 :X+1→X
 :End
-:Pause 
+:Pause
 :ClrHome
 :Disp Str2,"DIGITAL ROOT",expr(Str1),"ADDITIVE","PERSISTENCE",X
 :Pause
@@ -4033,7 +4033,7 @@ Function digital_root(n)
 		ap = ap + 1
 	Loop
 	digital_root = "Additive Persistence = " & ap & vbCrLf &_
-		"Digital Root = " & n & vbCrLf	
+		"Digital Root = " & n & vbCrLf
 End Function
 
 WScript.StdOut.Write digital_root(WScript.Arguments(0))
@@ -4107,7 +4107,7 @@ End Module
 @let {
   sumDigits ^(@sum @arr)
   drootl    &\@rangef [. sumDigits ^(\~>1 #@arr)]
-  
+
   droot     ^(@last drootl)
   apers     ^(#-drootl)
 
@@ -4286,12 +4286,12 @@ end Main.
 50 PRINT "Digital root of ";n;" is"
 60 GO SUB 1000
 70 NEXT i
-80 STOP 
+80 STOP
 1000 REM Digital Root
 1010 LET c=0
 1020 IF n>=b THEN LET c=c+1: GO SUB 2000: GO TO 1020
 1030 PRINT n;" persistance is ";c''
-1040 RETURN 
+1040 RETURN
 2000 REM Digit sum
 2010 LET s=0
 2020 IF n<>0 THEN LET q=INT (n/b): LET s=s+n-q*b: LET n=q: GO TO 2020

@@ -15,7 +15,7 @@ tags = []
 
 [[File:dragon_curve.png|400px||right]]
 
-Create and display a [[wp:dragon curve|dragon curve]] fractal. 
+Create and display a [[wp:dragon curve|dragon curve]] fractal.
 
 (You may either display the curve directly or write it to an image file.)
 
@@ -64,14 +64,14 @@ Here are some brief notes the algorithms used and how they might suit various la
 
 
 ```txt
-                       *       
+                       *
 *-----*   becomes     / \      bend to left
                      /   \     if N odd
                     *     *
 
-                    *     *   
-*-----*   becomes    \   /     bend to right  
-                      \ /      if N even 
+                    *     *
+*-----*   becomes    \   /     bend to right
+                      \ /      if N even
                        *
 ```
 
@@ -136,7 +136,7 @@ This always has F at even positions and S at odd.  Eg. after 3 levels <code>F_S_
 
 Variations are possible if you have only a single symbol for line draw, for example the [[#Icon and Unicon|Icon and Unicon]] and [[#Xfractint|Xfractint]] code.  The angles can also be broken into 45-degree parts to keep the expansion in a single direction rather than the endpoint rotating around.
 
-The string rewrites can be done recursively without building the whole string, just follow its instructions at the target level.  See for example [[#C by IFS Drawing|C by IFS Drawing]] code.  The effect is the same as "recursive with parameter" above but can draw other curves defined by L-systems. 
+The string rewrites can be done recursively without building the whole string, just follow its instructions at the target level.  See for example [[#C by IFS Drawing|C by IFS Drawing]] code.  The effect is the same as "recursive with parameter" above but can draw other curves defined by L-systems.
 
 
 
@@ -152,20 +152,20 @@ The string rewrites can be done recursively without building the whole string, j
 # -*- coding: utf-8 -*- #
 
 STRUCT (REAL x, y, heading, BOOL pen down) turtle;
- 
+
 PROC turtle init = VOID: (
   draw erase (window);
   turtle := (0.5, 0.5, 0, TRUE);
   draw move (window, x OF turtle, y OF turtle);
   draw colour name(window, "white")
 );
- 
+
 PROC turtle left = (REAL left turn)VOID:
   heading OF turtle +:= left turn;
- 
+
 PROC turtle right = (REAL right turn)VOID:
   heading OF turtle -:= right turn;
- 
+
 PROC turtle forward = (REAL distance)VOID:(
   x OF turtle +:= distance * cos(heading OF turtle) / width * height;
   y OF turtle +:= distance * sin(heading OF turtle);
@@ -243,9 +243,9 @@ OP FIRMSTR = (EXCEPTOBJ obj)STRING: "FILE";
 PR read "prelude/exception.a68" PR;
 
 REAL sqrt 2 = sqrt(2), degrees = pi/180;
- 
+
 STRUCT ( INT count, depth, current shade, upb lines, upb colours ) morph;
- 
+
 PROC morph init = (INT depth)VOID: (
   count OF morph := 0;
   depth OF morph := depth;
@@ -253,7 +253,7 @@ PROC morph init = (INT depth)VOID: (
   upb lines OF morph := 2**depth;
   upb colours OF morph := 16
 );
- 
+
 PROC morph colour = VOID: (
   INT colour sectors = 3; # RGB #
   INT candidate shade = ENTIER ( count OF morph / upb lines OF morph * upb colours OF morph );
@@ -270,14 +270,14 @@ PROC morph colour = VOID: (
   FI;
   count OF morph +:= 1
 );
- 
+
 PROC dragon init = VOID: (
   pen down OF turtle := FALSE;
     turtle forward(23/64); turtle right(90*degrees);
     turtle forward (1/8);  turtle right(90*degrees);
   pen down OF turtle := TRUE
 );
- 
+
 PROC dragon = (REAL in step, in length, PROC(REAL)VOID zig, zag)VOID: (
   IF in step <= 0 THEN
     morph colour;
@@ -285,7 +285,7 @@ PROC dragon = (REAL in step, in length, PROC(REAL)VOID zig, zag)VOID: (
   ELSE
     REAL step = in step - 1;
     REAL length = in length / sqrt 2;
- 
+
     zig(45*degrees);
     dragon(step, length, turtle right, turtle left);
     zag(90*degrees);
@@ -293,7 +293,7 @@ PROC dragon = (REAL in step, in length, PROC(REAL)VOID zig, zag)VOID: (
     zig(45*degrees)
   FI
 );
- 
+
 PROC window init = VOID: (
   STRING aspect; FILE f; associate(f, aspect); putf(f, ($g(-4)"x"g(-3)$, width, height));
 CO # depricated #
@@ -305,7 +305,7 @@ END CO
   IF NOT make device (window, "X", aspect) THEN
     raise undefined(window, "cannot make device X draw device") FI
 );
- 
+
 INT width = 800-15, height = 600-15;
 
 FILE window; window init;
@@ -361,15 +361,15 @@ See: [[Dragon curve/AutoHotkey]]
 
 ```qbasic
 DIM SHARED angle AS Double
- 
+
 SUB turn (degrees AS Double)
     angle = angle + degrees*3.14159265/180
 END SUB
- 
+
 SUB forward (length AS Double)
     LINE - STEP (cos(angle)*length, sin(angle)*length), 7
 END SUB
- 
+
 SUB dragon (length AS Double, split AS Integer, d AS Double)
     IF split=0 THEN
         forward length
@@ -381,9 +381,9 @@ SUB dragon (length AS Double, split AS Integer, d AS Double)
 	turn d*45
     END IF
 END SUB
- 
+
 ' Main program
- 
+
 SCREEN 12
 angle = 0
 PSET (150,180), 0
@@ -452,12 +452,12 @@ imgsave "Dragon_curve_BASIC-256.png", "PNG"
 end
 
 dragon:
-	if level<=0 then 
+	if level<=0 then
 		yn = sin(rotation)*insize + y
 		xn = cos(rotation)*insize + x
-		if iter*2<iters then 
+		if iter*2<iters then
 			color 0,iter*qiter,255-iter*qiter
-		else 
+		else
 			color qiter*iter-255,(iters-iter)*qiter,0
 		end if
 		line x,y,xn,yn
@@ -492,7 +492,7 @@ dragon:
       GCOL 11
       PROCdragon(512, 12, 1)
       END
-      
+
       DEF PROCdragon(size, split%, d)
       PRIVATE angle
       IF split% = 0 THEN
@@ -563,8 +563,8 @@ See: [[Dragon curve/C]]
 [[file:dragon-C.png|thumb|center]]
 C code that writes PNM of dragon curve.  run as <code>a.out [depth] > dragon.pnm</code>.  Sample image was with depth 9 (512 pixel length).
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -868,7 +868,7 @@ private:
 		{
 		    case NORTH:
 			if( *x ) { a += LEN; dir = EAST; }
-			else { a -= LEN; dir = WEST; }				
+			else { a -= LEN; dir = WEST; }
 		    break;
 		    case EAST:
 			if( *x ) { b += LEN; dir = SOUTH; }
@@ -888,7 +888,7 @@ private:
 	// !!! change this path !!!
 	bmp.saveBitmap( "f:/rc/dragonCpp.bmp" );
     }
-	
+
     int dir;
     myBitmap bmp;
     string generator;
@@ -1248,7 +1248,7 @@ The Dragon curve drawn using an [[wp:Lindenmayer_system#Example_7:_Dragon_curve|
 *constants : + −
 *start  : FX
 *rules  : (X → X+YF+),(Y → -FX-Y)
-*angle  : 90° 
+*angle  : 90°
 
 ```d
 import std.stdio, std.string;
@@ -1362,37 +1362,37 @@ void main() {
 {{out}}
 
 ```txt
-           -   -           -   -               
-          | | | |         | | | |              
-         - - - -         - - - -               
-        | | | |         | | | |                
-         -   - -   -     -   - -   -           
-              | | | |         | | | |          
-             - - - -         - - - -           
-            | | | |         | | | |            
-   -   -   - - - - -   -   - - - -             
-  | | | | | | | | | | | | | | | |              
- - - - - -   - - -   - - - - - -               
-| | | | |     | |     | | | | |                
- -   - - -     - -     - - - - -   -           
-      | | |     | |     | | | | | | |          
-     -   -       -     - - - - - - -           
-    |                 | | | | | | |            
-   - -                 - - - - - -             
-  | | |                 | | | | |              
- - - -                 - -   - -           -   
-| | |                 | |     |           | |  
- -   -     -           - -     -   -         - 
+           -   -           -   -
+          | | | |         | | | |
+         - - - -         - - - -
+        | | | |         | | | |
+         -   - -   -     -   - -   -
+              | | | |         | | | |
+             - - - -         - - - -
+            | | | |         | | | |
+   -   -   - - - - -   -   - - - -
+  | | | | | | | | | | | | | | | |
+ - - - - -   - - -   - - - - - -
+| | | | |     | |     | | | | |
+ -   - - -     - -     - - - - -   -
+      | | |     | |     | | | | | | |
+     -   -       -     - - - - - - -
+    |                 | | | | | | |
+   - -                 - - - - - -
+  | | |                 | | | | |
+ - - -                 - -   - -           -
+| | |                 | |     |           | |
+ -   -     -           - -     -   -         -
       |     |           | |     | | |         |
-     - -   -             -     - - -         - 
-    | | | |                   | | |         |  
-     -   -                     - - -   -   - - 
+     - -   -             -     - - -         -
+    | | | |                   | | |         |
+     -   -                     - - -   -   - -
                                 | | | | | | | |
-                               - -   - - -   - 
-                              | |     | |      
-                               - -     - -     
-                                | |     | |    
-                                 -       -     
+                               - -   - - -   -
+                              | |     | |
+                               - -     - -
+                                | |     | |
+                                 -       -
 ```
 
 
@@ -1506,7 +1506,7 @@ x = 25
 y = 60
 move x y
 angle = 0
-# 
+#
 func dragon size lev% d . .
   if lev% = 0
     x -= cos angle * size
@@ -1550,33 +1550,33 @@ type Msg = Tick Time
 
 init : (Model,Cmd Msg)
 init = ( { points = [(-200.0, -70.0), (200.0, -70.0)]
-         , level = 0 
+         , level = 0
          , frame = 0
          }
        , Cmd.none )
 
 -- New point between two existing points.  Offset to left or right
 newPoint : Point -> Point -> Float -> Point
-newPoint  (x0,y0) (x1,y1) offset = 
-  let (vx, vy) = ((x1 - x0) / 2.0, (y1 - y0) / 2.0) 
+newPoint  (x0,y0) (x1,y1) offset =
+  let (vx, vy) = ((x1 - x0) / 2.0, (y1 - y0) / 2.0)
       (dx, dy) = (-vy * offset , vx * offset )
-  in  (x0 + vx + dx, y0 + vy + dy) --offset from midpoint 
+  in  (x0 + vx + dx, y0 + vy + dy) --offset from midpoint
 
 -- Insert between existing points. Offset to left or right side.
 newPoints : Float -> List Point -> List Point
-newPoints offset points = 
+newPoints offset points =
   case points of
     [] -> []
-    [p0] -> [p0]  
+    [p0] -> [p0]
     p0::p1::rest -> p0 :: newPoint p0 p1 offset :: newPoints -offset (p1::rest)
 
 update : Msg -> Model -> (Model, Cmd Msg)
-update _ model = 
+update _ model =
   let mo = if (model.level == maxLevel)
            then model
            else let nextFrame = model.frame + 1
-                in if (nextFrame == frameCount) 
-                   then { points = newPoints 1.0 model.points 
+                in if (nextFrame == frameCount)
+                   then { points = newPoints 1.0 model.points
                         , level = model.level+1
                         , frame = 0
                         }
@@ -1586,36 +1586,36 @@ update _ model =
 
 -- break a list up into n equal sized lists.
 breakupInto : Int -> List a -> List (List a)
-breakupInto n ls = 
-    let segmentCount = (List.length ls) - 1 
+breakupInto n ls =
+    let segmentCount = (List.length ls) - 1
         breakup n ls = case ls of
           [] -> []
           _ -> List.take (n+1) ls :: breakup n (List.drop n ls)
-    in if n > segmentCount 
+    in if n > segmentCount
        then [ls]
        else breakup (segmentCount // n) ls
 
 view : Model -> Html Msg
-view model = 
+view model =
   let offset = toFloat (model.frame) / toFloat frameCount
-      colors = [red, orange, green, blue] 
-  in toHtml 
+      colors = [red, orange, green, blue]
+  in toHtml
        <| layers
             [ collage 700 500
-              (model.points 
+              (model.points
                 |> newPoints offset
                 |> breakupInto (List.length colors) -- for coloring
-                |> List.map path 
+                |> List.map path
                 |> List.map2 (\color path -> traced (solid color) path ) colors )
               , show model.level
             ]
 
 subscriptions : Model -> Sub Msg
-subscriptions _ = 
+subscriptions _ =
     Time.every (5*millisecond) Tick
 
 main =
-  program 
+  program
       { init = init
       , view = view
       , update = update
@@ -2037,7 +2037,7 @@ plot real(dragon(t)),imag(dragon(t)) with lines
 ### Version #2.
 
 ;Note:
-* '''plotdcf.gp''' file-functions for the load command is the only possible imitation of the fine functions in the '''gnuplot'''. 
+* '''plotdcf.gp''' file-functions for the load command is the only possible imitation of the fine functions in the '''gnuplot'''.
 {{Works with|gnuplot|5.0 (patchlevel 3) and above}}
 [[File:DCF11gp.png|right|thumb|Output DCF11gp.png]]
 [[File:DCF13gp.png|right|thumb|Output DCF13gp.png]]
@@ -2048,7 +2048,7 @@ plot real(dragon(t)),imag(dragon(t)) with lines
 ```gnuplot
 
 ## plotdcf.gp 1/11/17 aev
-## Plotting a Dragon curve fractal to the png-file. 
+## Plotting a Dragon curve fractal to the png-file.
 ## Note: assign variables: ord (order), clr (color), filename and ttl (before using load command).
 ## ord (order)  # a.k.a. level - defines size of fractal (also number of mini-curves).
 reset
@@ -2130,7 +2130,7 @@ to 1,0.
     .x2. = \.word6.
     .y2. = \.word7.
     .level. = \.word9.
-    
+
     if {rpn \.words. 5 >=}
         .x2. = 1
         .y2. = 0
@@ -2138,7 +2138,7 @@ to 1,0.
     if {rpn \.words. 7 >=}
         .level. = 6
     end if
-    
+
     if {rpn 0 .level. <=}
         draw line from .x1. .y1. to .x2. .y2.
     else
@@ -2156,17 +2156,17 @@ to 1,0.
         new .xmid. .ymid.
         .xmid. = {rpn .x1. .x2. + .y2. .y1. - + 2 /}
         .ymid. = {rpn .x1. .x2. - .y1. .y2. + + 2 /}
-        
+
         # The recursion is a level-1 dragon from x1,y1 to the midpoint
         # and the same from x2,y2 to the midpoint (the latter
         # effectively being a revered dragon.)
         #
         Draw Dragon from .x1. .y1. to .xmid. .ymid. level .level.
         Draw Dragon from .x2. .y2. to .xmid. .ymid. level .level.
-        
+
         delete .xmid. .ymid.
     end if
-    
+
     delete .x1. .y1. .x2. .y2. .level.
 }
 
@@ -2401,7 +2401,7 @@ A straightforward approach, since HicEst does not know recursion (rarely needed 
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-The following implements a Heighway Dragon using the [[Lindenmayer system]].  It's based on the ''linden'' program in the Icon Programming Library.  
+The following implements a Heighway Dragon using the [[Lindenmayer system]].  It's based on the ''linden'' program in the Icon Programming Library.
 
 ```Icon
 link linddraw,wopen
@@ -2417,9 +2417,9 @@ procedure main()
 
  WOpen("size=" || w || "," || h, "dx=" || (w / 2),  "dy=" || (h / 2)) | stop("*** cannot open window")
  WAttrib("fg=blue")
-         
- linddraw(0, 0, "FX", rewrite, 5, 90.0, gener, 0) 
- #        x,y, axiom, rules, length, angle, generations, delay  
+
+ linddraw(0, 0, "FX", rewrite, 5, 90.0, gener, 0)
+ #        x,y, axiom, rules, length, angle, generations, delay
 
  WriteImage("dragon-unicon" || ".gif")   # save the image
  WDone()
@@ -2427,9 +2427,9 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/linddraw.icn linddraw] 
-[http://www.cs.arizona.edu/icon/library/src/procs/wopen.icn wopen] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/linddraw.icn linddraw]
+[http://www.cs.arizona.edu/icon/library/src/procs/wopen.icn wopen]
 [http://www.cs.arizona.edu/icon/library/src/gprogs/linden.icn linden]
 
 
@@ -2588,7 +2588,7 @@ var DRAGON = (function () {
 
       // make a new <path>
       var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute( "class",  "dragon"); 
+      path.setAttribute( "class",  "dragon");
       path.setAttribute( "d", toSVGpath(ptA, ptC) );
 
       // append the new path to the existing <svg>
@@ -2600,15 +2600,15 @@ var DRAGON = (function () {
 
          // make a new point, either to the left or right
          var growNewPoint = function (ptA, ptC, lr) {
-            var left  = [[ 1/2,-1/2 ], 
-                         [ 1/2, 1/2 ]]; 
+            var left  = [[ 1/2,-1/2 ],
+                         [ 1/2, 1/2 ]];
 
             var right = [[ 1/2, 1/2 ],
                          [-1/2, 1/2 ]];
 
-            return matrix.plus(ptA, matrix.mult( lr ? left : right, 
+            return matrix.plus(ptA, matrix.mult( lr ? left : right,
                                                  matrix.minus(ptC, ptA) ));
-         }; 
+         };
 
          var ptB = growNewPoint(ptA, ptC, lr, state);
 
@@ -2651,14 +2651,14 @@ var DRAGON = (function () {
 ```
 
 
-My current demo page includes the following to invoke this: 
+My current demo page includes the following to invoke this:
 
 ```html
 ...
 <script src='./dragon.js'></script>
 ...
 <div>
-   <svg xmlns='http://www.w3.org/2000/svg' id='fractal'></svg> 
+   <svg xmlns='http://www.w3.org/2000/svg' id='fractal'></svg>
 </div>
 <script>
    DRAGON.fractal('fractal', [100,300], [500,300], 15, false, 700);
@@ -2744,12 +2744,12 @@ ord scale x-shift y-shift color   [File name to save]
 ```
 
 
-{{Output}} 
+{{Output}}
 
 ```txt
 
 Page with different plotted Dragon curves. Right-clicking on the canvas you can save each of them
-as a png-file. 
+as a png-file.
 
 ```
 
@@ -2792,7 +2792,7 @@ where:
        .dragon { stroke:\($s.stroke); stroke-width:\($s["stroke-width"]); }
        </style>";
 
-  def svg(id; width; height): 
+  def svg(id; width; height):
     "<svg width='\(width // "100%")' height='\(height // "100%") '
           id='\(id)'
           xmlns='http://www.w3.org/2000/svg'>";
@@ -2809,10 +2809,10 @@ where:
     def growNewPoint(ptA; ptC; left):
         [[ 1/2,-1/2 ], [ 1/2, 1/2 ]]  as $left
       | [[ 1/2, 1/2 ], [-1/2, 1/2 ]]  as $right
-      | plus(ptA; 
+      | plus(ptA;
              mult(if left then $left else $right end;
                   minus(ptC; ptA)));
-  
+
     def grow(ptA; ptC; steps; left):
       # if we have more iterations to go...
       if steps > 1 then
@@ -2832,7 +2832,7 @@ where:
     "</svg>";
 ```
 
-'''Example''': 
+'''Example''':
 
 ```jq
 # Default values are provided for the last argument
@@ -2883,7 +2883,7 @@ function dragon(turtle::Turtle, level=4, size=200, direction=45)
 end
 
 Drawing(900, 500, "./Dragon.png")
-t = Turtle(300, 300, true, 0, (0., 0.0, 0.0)); 
+t = Turtle(300, 300, true, 0, (0., 0.0, 0.0));
 dragon(t, 10,400)
 finish()
 preview()
@@ -3073,7 +3073,7 @@ end
 
 to W :step :length
   if :step=1 [Lt 90 fd :length Rt 90] [W (:step - 1) (:length / 1.41421) S (:step - 1) (:length / 1.41421)]
-end 
+end
 
 to S :step :length
   if :step=1 [Rt 180 fd :length Lt 180] [O (:step - 1) (:length / 1.41421) S (:step - 1) (:length / 1.41421)]
@@ -3153,9 +3153,9 @@ function dragon()
     local r = "r"
     local inverse = {l = r, r = l}
     local field = {r}
-    local num = 1 
+    local num = 1
     local loop_limit = 6 --increase this number to render a bigger curve
-    for discard=1,loop_limit do 
+    for discard=1,loop_limit do
         field[num+1] = r
         for i=1,num do
             field[i+num+1] = inverse[field[num-i+1]]
@@ -3240,59 +3240,59 @@ function dump_points()
 end
 
 --replace this line with dump_points() to output a list of coordinates:
-render_text_mode() 
+render_text_mode()
 ```
 
 Output:
 
 ```txt
 
-      ****  ****                     
-      *  *  *  *                     
-      *  *  *  *                     
-   ****  *******                     
-   *        *                        
-   *        *                        
-   ****     ****  ****               
-               *  *  *               
-               *  *  *               
-            **********               
-            *  *  *                  
-            *  *  *                  
-            *******                  
-               *                     
-               *                     
-      ****  ****                     
-      *  *  *                        
-      *  *  *                        
-      **********  ****               
-         *  *  *  *  *               
-         *  *  *  *  *               
-****  ****************               
-*  *  *  *  *  *  *                  
-*  *  *  *  *  *  *                  
-*******************                  
-   *  *  *  *  *                     
-   *  *  *  *  *                     
-*******  *******              ****   
-*  *        *                    *   
-*  *        *                    *   
+      ****  ****
+      *  *  *  *
+      *  *  *  *
+   ****  *******
+   *        *
+   *        *
+   ****     ****  ****
+               *  *  *
+               *  *  *
+            **********
+            *  *  *
+            *  *  *
+            *******
+               *
+               *
+      ****  ****
+      *  *  *
+      *  *  *
+      **********  ****
+         *  *  *  *  *
+         *  *  *  *  *
+****  ****************
+*  *  *  *  *  *  *
+*  *  *  *  *  *  *
+*******************
+   *  *  *  *  *
+   *  *  *  *  *
+*******  *******              ****
+*  *        *                    *
+*  *        *                    *
 *******     ****  ****           ****
    *  *        *  *  *              *
    *  *        *  *  *              *
    ****     **********           ****
-            *  *  *              *   
-            *  *  *              *   
+            *  *  *              *
+            *  *  *              *
             **********  ****  *******
                *  *  *  *  *  *  *  *
                *  *  *  *  *  *  *  *
             *******  **********  ****
-            *  *        *  *         
-            *  *        *  *         
-            *******     *******      
-               *  *        *  *      
-               *  *        *  *      
-               ****        ****      
+            *  *        *  *
+            *  *        *  *
+            *******     *******
+               *  *        *  *
+               *  *        *  *
+               ****        ****
 
 ```
 
@@ -3332,7 +3332,7 @@ Module Checkit {
       d90=pi/2
       Move scale.x/3, scale.y*2/3
       bck=point
-      \\ twipsx is width in twips of pixel. twipsy are height in twips of a pixel 
+      \\ twipsx is width in twips of pixel. twipsy are height in twips of a pixel
       \\ so we use length:twips.x*scale.x/40  or scale.x/40 pixels.
       \\ use % for integer - we can omit these, and we get integer by automatic conversion (overflow raise error)
       dragon(twipsx*scale.x/40,14%, 1)
@@ -3360,14 +3360,14 @@ Module Checkit {
                   dragon(length*sr2,split-1,1)
                   turn(-d*d90)
                   dragon(length*sr2,split-1,-1)
-                  turn(d*d45) 
+                  turn(d*d45)
                   change--
                   If change else {
                         push 0: do {drop: push random(11,15) : over } until number<>pen: pen number
                         change=5000
                   }
             }
-      End Sub     
+      End Sub
 }
 Checkit
 
@@ -3546,33 +3546,33 @@ dragon_ascii(-6,5,      dnl X range
 0000001111100011111000000000000
 0000000111100001111000000000000
 0000000000000000000000000000000
-     
+
 # ASCII art lines.
 #
-         +--+  +--+                 
-         |  |  |  |                 
-         +--+--+  +--+              
-            |        |              
-   +--+  +--+     +--+              
-   |  |  |                          
-   +--+--+--+                       
-      |  |  |                       
-      +--+--+                       
-         |                          
-         +--+  +--+        +--+     
-            |  |  |        |  |     
-   +--+  +--+--+--+     +--+--+     
-   |  |  |  |  |        |  |        
+         +--+  +--+
+         |  |  |  |
+         +--+--+  +--+
+            |        |
+   +--+  +--+     +--+
+   |  |  |
+   +--+--+--+
+      |  |  |
+      +--+--+
+         |
+         +--+  +--+        +--+
+            |  |  |        |  |
+   +--+  +--+--+--+     +--+--+
+   |  |  |  |  |        |  |
    +--+--+--+--+--+  +--+--+--+  +--
-      |  |  |  |  |  |  |  |  |  |  
-      +--+  +--+  +--+--+--+--+--+  
-                     |  |  |  |     
-                     +--+--+--+--+  
-                        |  |  |  |  
-               +--+  +--+--+  +--+  
-               |  |  |  |           
-               +--+--+--+--+        
-                  |  |  |  |        
+      |  |  |  |  |  |  |  |  |  |
+      +--+  +--+  +--+--+--+--+--+
+                     |  |  |  |
+                     +--+--+--+--+
+                        |  |  |  |
+               +--+  +--+--+  +--+
+               |  |  |  |
+               +--+--+--+--+
+                  |  |  |  |
                   +--+  +--+
 ```
 
@@ -3612,7 +3612,7 @@ beginchar("D", 25pt#, 25pt#, 0pt#);
 	sg := -1*sg;
       fi
     endfor
-    mstep := mstep/2; 
+    mstep := mstep/2;
   endfor
   draw for v:=1 step 2mstep until (2-2mstep): z[v] -- endfor z[2];
 endchar;
@@ -3647,7 +3647,7 @@ class dragon_curve_computer initial_x initial_y total_length total_splits =
     val mutable current_x = (float_of_int initial_x)  (* current x coordinate in curve *)
     val mutable current_y = (float_of_int initial_y)  (* current y coordinate in curve *)
     val mutable current_angle = 0.0                   (* current angle *)
-    
+
     (*
     ** METHOD compute_coords:
     ** ----------------------
@@ -3672,7 +3672,7 @@ class dragon_curve_computer initial_x initial_y total_length total_splits =
         begin
           (* Compute length for next iteration *)
           let sub_length = length /. sqrt 2.0 in
-          (* Turn 45 degrees to left or right depending on current direction and draw part 
+          (* Turn 45 degrees to left or right depending on current direction and draw part
              of curve in this direction *)
           current_angle <- current_angle +. direction *. pi /. 4.0;
           let coords1 = self#compute_coords sub_length (nb_splits - 1) 1.0 in
@@ -3684,7 +3684,7 @@ class dragon_curve_computer initial_x initial_y total_length total_splits =
           (* Concatenate both sub-curves to get the full curve for this iteration *)
           coords1 @ coords2
         end
-          
+
     (*
     ** METHOD get_coords:
     ** ------------------
@@ -3692,11 +3692,11 @@ class dragon_curve_computer initial_x initial_y total_length total_splits =
     *)
     method get_coords = self#compute_coords total_length total_splits 1.0
   end;;
-    
-    
+
+
 (*
 ** MAIN PROGRAM:
-** 
+**
 ### =======
 
 *)
@@ -3714,7 +3714,7 @@ let () =
 ```
 
 
-###  A functional version 
+###  A functional version
 
 Here is another OCaml solution, in a functional rather than OO style:
 
@@ -3786,7 +3786,7 @@ p = [0, 1];  \\ complex number points, initially 0 to 1
 
 \\ "unfold" at the current endpoint p[#p].
 \\ p[^-1] so as not to duplicate that endpoint.
-\\ 
+\\
 \\           *  end
 \\      -->  |
 \\     /     |
@@ -3863,7 +3863,7 @@ Dragon(23); \\ No result
 
 
 ```
- 
+
 
 {{Output}}
 
@@ -3873,13 +3873,13 @@ Dragon(23); \\ No result
 
  *** Dragon curve, level 13
  ***   last result computed in 282 ms.
- 
+
  *** Dragon curve, level 17
  ***   last result computed in 453 ms.
- 
+
  *** Dragon curve, level 21
  ***   last result computed in 7,266 ms.
- 
+
  *** Dragon curve, level 23
  *** concat: the PARI stack overflows !
  ***   last result computed in 0 ms.
@@ -3939,7 +3939,7 @@ procedure dcr(step,dir:integer;length:real);
 end;
 ```
 
-main program: 
+main program:
 
 ```pascal
 begin
@@ -4014,7 +4014,7 @@ use SVG;
 
 role Lindenmayer {
     has %.rules;
-    method succ { 
+    method succ {
 	    self.comb.map( { %!rules{$^c} // $c } ).join but Lindenmayer(%!rules)
     }
 }
@@ -4076,7 +4076,7 @@ procedure Dragon(integer depth, atom x1, y1, x2, y2)
         Dragon(depth,x2,y2,nx,ny)
     end if
 end procedure
- 
+
 function redraw_cb(Ihandle /*ih*/, integer /*posx*/, integer /*posy*/)
     cdCanvasActivate(cddbuffer)
     cdCanvasClear(cddbuffer)
@@ -4453,9 +4453,9 @@ END TEST;
          } def
 
 /dragon { % [ length, split, d ]
-          dup 
+          dup
           dup 1 get 0 eq
-              { 0 get forward } 
+              { 0 get forward }
               { dup 2 get 45 mul turn
                   dup aload pop pop
                   1 sub exch srootii div exch
@@ -4470,7 +4470,7 @@ END TEST;
           pop
         } def
 150 150 moveto pendown [ 300 12 1 ] dragon stroke
-% 0 0 moveto 550 0 rlineto 0 400 rlineto -550 0 rlineto closepath stroke 
+% 0 0 moveto 550 0 rlineto 0 400 rlineto -550 0 rlineto closepath stroke
 showpage
 %%END
 ```
@@ -4583,7 +4583,7 @@ Output  :
 
 ```txt
 1 ?- dragonCurve(13).
-true 
+true
 ```
 [[File : Prolog-DragonCurve.jpg]]
 
@@ -4622,13 +4622,13 @@ EndProcedure
 OpenWindow(0, 0, 0, #SizeH, #SizeV, "DragonCurve", #PB_Window_SystemMenu)
 imageNum = CreateImage(#PB_Any, #SizeH, #SizeV, 32)
 ImageGadget(0, 0, 0, 0, 0, ImageID(imageNum))
-  
+
 angle = 0: px = 185: py = 190
 If StartDrawing(ImageOutput(imageNum))
     dragon(400, 15, 1)
   StopDrawing()
   SetGadgetState(0, ImageID(imageNum))
-EndIf 
+EndIf
 
 Repeat: Until WaitWindowEvent(10) = #PB_Event_CloseWindow
 ```
@@ -4756,7 +4756,7 @@ for(j in half){########################################Rotate all points 90 degr
 Move[[i]]<-matrix(rep(0,4),ncol=4)
 Move[[i]][1,1:2]<-Move[[i]][1,3:4]<-(Iteration[[i]][Moveposition[i],c(3,4)]*-1)
 Iteration[[i+1]]<-matrix(rep(0,2*dim(Iteration[[i]])[1]*4),ncol=4)##########move the dragon, set next Iteration's matrix
-for(k in 1:dim(Iteration[[i]])[1]){#########################################move dragon by shifting all previous iterations point 
+for(k in 1:dim(Iteration[[i]])[1]){#########################################move dragon by shifting all previous iterations point
   Iteration[[i+1]][k,]<-Iteration[[i]][k,]+Move[[i]]###so the start is at the origin
 }
 xlimits<-c(min(Iteration[[i]][,3])-2,max(Iteration[[i]][,3]+2))#Plot
@@ -4789,9 +4789,9 @@ See samples using the same algorithm in JavaScript version #2 (order is up to 25
 
 # Generate and plot Dragon curve.
 # translation of JavaScript v.#2: http://rosettacode.org/wiki/Dragon_curve#JavaScript
-# 2/27/16 aev 
+# 2/27/16 aev
 # gpDragonCurve(ord, clr, fn, d, as, xsh, ysh)
-# Where: ord - order (defines the number of line segments); 
+# Where: ord - order (defines the number of line segments);
 #   clr - color, fn - file name (.ext will be added), d - segment length,
 #   as - axis scale, xsh - x-shift, ysh - y-shift
 gpDragonCurve <- function(ord, clr, fn, d, as, xsh, ysh) {
@@ -4824,24 +4824,24 @@ gpDragonCurve(16, "darkgreen", "", 10, 3, -1050, -500)
 ```
 
 
-{{Output}} 
+{{Output}}
 
 ```txt
 
 > gpDragonCurve(7, "red", "", 20, 0.2, -30, -30)
- *** START: Mon Feb 27 12:53:57 2017 order= 7 color= red 
- *** Plot file - DCR7.png title: Dragon curve, ord=7 n= 128 
- *** END: Mon Feb 27 12:53:57 2017 
+ *** START: Mon Feb 27 12:53:57 2017 order= 7 color= red
+ *** Plot file - DCR7.png title: Dragon curve, ord=7 n= 128
+ *** END: Mon Feb 27 12:53:57 2017
 
 > gpDragonCurve(13, "navy", "", 10, 1, 300, -200)
- *** START: Mon Feb 27 12:44:04 2017 order= 13 color= navy 
- *** Plot file - DCR13.png title: Dragon curve, ord=13 n= 8192 
- *** END: Mon Feb 27 12:44:06 2017 
+ *** START: Mon Feb 27 12:44:04 2017 order= 13 color= navy
+ *** Plot file - DCR13.png title: Dragon curve, ord=13 n= 8192
+ *** END: Mon Feb 27 12:44:06 2017
 
 > gpDragonCurve(16, "darkgreen", "", 10, 3, -1050, -500)
- *** START: Mon Feb 27 12:18:56 2017 order= 16 color= darkgreen 
- *** Plot file - DCR16.png title: Dragon curve, ord=16  n= 65536 
- *** END: Mon Feb 27 12:19:03 2017 
+ *** START: Mon Feb 27 12:18:56 2017 order= 16 color= darkgreen
+ *** Plot file - DCR16.png title: Dragon curve, ord=16  n= 65536
+ *** END: Mon Feb 27 12:19:03 2017
 
 ```
 
@@ -4918,7 +4918,7 @@ END CREATE
 SUB turn (degrees AS Double)
     angle = angle + degrees*3.14159265/180
 END SUB
- 
+
 SUB forward (length AS Double)
     x2 = x + cos(angle)*length
     y2 = y + sin(angle)*length
@@ -4951,7 +4951,7 @@ form.ShowModal
 
 ## REXX
 
-This REXX version uses a unique plot character to indicate which part of the dragon curve is being shown;   the 
+This REXX version uses a unique plot character to indicate which part of the dragon curve is being shown;   the
 
 number of "parts" of the dragon curve can be specified   (the 1<sup>st</sup> argument).
 
@@ -4959,7 +4959,7 @@ The initial (facing) direction may be specified   ('''N'''orth, '''E'''ast, '''S
 
 A specific plot character can be specified instead for all curve parts   (the 3<sup>rd</sup> argument).
 
-This, in effect, allows the dragon curve to be plotted/displayed with a different (starting) orientation. 
+This, in effect, allows the dragon curve to be plotted/displayed with a different (starting) orientation.
 
 ```rexx
 /*REXX program creates & draws an ASCII  Dragon Curve (or Harter-Heighway dragon curve).*/
@@ -5225,14 +5225,14 @@ import javax.swing.JFrame
 import java.awt.Graphics
 
 class DragonCurve(depth: Int) extends JFrame(s"Dragon Curve (depth $depth)") {
-  
+
   setBounds(100, 100, 800, 600);
   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-  
+
   val len = 400 / Math.pow(2, depth / 2.0);
   val startingAngle = -depth * (Math.PI / 4);
   val steps = getSteps(depth).filterNot(c => c == 'X' || c == 'Y')
-  
+
   def getSteps(depth: Int): Stream[Char] = {
     if (depth == 0) {
       "FX".toStream
@@ -5244,7 +5244,7 @@ class DragonCurve(depth: Int) extends JFrame(s"Dragon Curve (depth $depth)") {
       }
     }
   }
-  
+
   override def paint(g: Graphics): Unit = {
     var (x, y) = (230, 350)
     var (dx, dy) = ((Math.cos(startingAngle) * len).toInt, (Math.sin(startingAngle) * len).toInt)
@@ -5290,22 +5290,22 @@ vectors=[];
 i=[];
 
 for i=2:n_folds+1
-    
+
     curve_length=length(folds);
-    
+
     vectors=folds(1:curve_length-1)-folds(curve_length);
-    
+
     vectors=vectors.*exp(90/180*%i*%pi);
-    
+
     new_folds=folds(curve_length)+vectors;
-    
+
     j=curve_length;
-    
+
     while j>1
         folds=[folds new_folds(j-1)]
         j=j-1;
     end
-    
+
 end
 
 scf(0); clf();
@@ -5328,7 +5328,7 @@ $ include "seed7_05.s7i";
   include "math.s7i";
   include "draw.s7i";
   include "keybd.s7i";
- 
+
 var float: angle is 0.0;
 var integer: x is 220;
 var integer: y is 220;
@@ -5337,7 +5337,7 @@ const proc: turn (in integer: degrees) is func
   begin
     angle +:= flt(degrees) * PI / 180.0
   end func;
- 
+
 const proc: forward (in float: length) is func
   local
     var integer: x2 is 0;
@@ -5349,7 +5349,7 @@ const proc: forward (in float: length) is func
     x := x2;
     y := y2;
   end func;
- 
+
 const proc: dragon (in float: length, in integer: split, in integer: direct) is func
   begin
     if split = 0 then
@@ -5362,7 +5362,7 @@ const proc: dragon (in float: length, in integer: split, in integer: direct) is 
       turn(direct * 45);
     end if;
   end func;
- 
+
 const proc: main is func
   begin
     screen(976, 654);
@@ -5394,7 +5394,7 @@ f1(point(1)) :=
 				   [sin(45 * (pi/180)), cos(45 * (pi/180))]];
 	in
 		head(transpose((1/sqrt(2)) * matmul(matrix, transpose([point]))));
-		
+
 f2(point(1)) :=
 	let
 		matrix := [[cos(135 * (pi/180)), -sin(135 * (pi/180))],
@@ -5408,13 +5408,13 @@ entry(steps(0), maxX(0), maxY(0)) :=
 	let
 		scaleX := maxX / 1.5;
 		scaleY := maxY;
-	
+
 		shiftX := maxX / 3.0 / 1.5;
 		shiftY := maxY / 3.0;
 	in
 		round(run(steps, initPoints) * [scaleX, scaleY] + [shiftX, shiftY]);
 
-run(steps(0), result(2)) := 
+run(steps(0), result(2)) :=
 	let
 		next := f1(result) ++ f2(result);
 	in
@@ -5428,8 +5428,9 @@ run(steps(0), result(2)) :=
 
 {{libheader|CImg}}
 
-```c>#include <iostream
 
+```c
+#include <iostream>
 #include <vector>
 #include "SL_Generated.h"
 
@@ -5632,7 +5633,7 @@ This version also places circles at the endpoints of each subdivision, size vary
 <?xml version="1.0" standalone="yes"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
  "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" 
+<svg xmlns="http://www.w3.org/2000/svg"
      xmlns:l="http://www.w3.org/1999/xlink"
      width="400" height="400">
   <style type="text/css"><![CDATA[
@@ -5641,18 +5642,18 @@ This version also places circles at the endpoints of each subdivision, size vary
   ]]></style>
 
 <defs>
-  
+
   <g id="marks">
     <circle cx="0" cy="0" r=".03"/>
     <circle cx="1" cy="0" r=".03"/>
   </g>
-  
+
   <g id="l0">
     <line x1="0" y1="0" x2="1" y2="0"/>
     <!-- useful for studying the transformation stages:
          <line x1="0.1" y1="0" x2="0.9" y2="0.1"/> -->
   </g>
-  
+
   <!-- These are identical except for the id and href. -->
   <g id="l1"> <use l:href="#l0" transform="matrix( .5 .5  -.5  .5  0 0)"/>
               <use l:href="#l0" transform="matrix(-.5 .5  -.5 -.5  1 0)"/>
@@ -5948,7 +5949,7 @@ return
 for (#1 = 0; #1 < 4; #1++) {
   Ins_Char(#10 & 0xff)
   #10 = #10 >> 8
-}	
+}
 return
 ```
 
@@ -5982,7 +5983,7 @@ Sub DragonProc(size As Double, ByVal split As Integer, d As Integer)
         angle = angle + d * Pi / 4
     End If
 End Sub
-      
+
 Sub DragonCurve()
     Const xcoefi = 0.74
     Const xcoefl = 0.59
@@ -6197,16 +6198,16 @@ println(0'|<?xml version='1.0' encoding='utf-8' standalone='no'?>|"\n"
    0'|'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>|"\n"
    0'|<svg width='100%' height='100%' version='1.1'|"\n"
    0'|xmlns='http://www.w3.org/2000/svg'>|);
- 
+
 order:=13.0; # akin to number of recursion steps
 d_size:=1000.0; # size in pixels
 pi:=(1.0).pi;
 turn_angle:=pi/2; # turn angle of each segment, 90 degrees for the canonical dragon
- 
+
 angle:=pi - (order * (pi/4)); # starting angle
 len:=(d_size/1.5) / (2.0).sqrt().pow(order); # size of each segment
 x:=d_size*5/6; y:=d_size*1/3; # starting point
- 
+
 foreach i in ([0 .. (2.0).pow(order-1)]){
    # find which side to turn based on the iteration
    angle += i.bitAnd(-i).shiftLeft(1).bitAnd(i) and -turn_angle or turn_angle;
@@ -6224,9 +6225,9 @@ println("</svg>");
 ```txt
 
 $zkl bbb > dragon.svg
-$ls -l dragon.svg 
+$ls -l dragon.svg
 ... 408780 May 18 00:29 dragon.svg
-$less dragon.svg 
+$less dragon.svg
 <?xml version='1.0' encoding='utf-8' standalone='no'?>
 <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
@@ -6253,7 +6254,7 @@ http://home.comcast.net/~zenkinetic/Images/dragon.svg
 50 LET sq=SQR (2): LET qpi=PI/4
 60 LET rotation=0: LET iter=0: LET rq=1
 70 DIM r(level)
-75 GO SUB 80: STOP 
+75 GO SUB 80: STOP
 80 REM Dragon
 90 IF level>1 THEN GO TO 200
 100 LET yn=SIN (rotation)*insize+y
@@ -6261,7 +6262,7 @@ http://home.comcast.net/~zenkinetic/Images/dragon.svg
 120 PLOT x,y: DRAW xn-x,yn-y
 130 LET iter=iter+1
 140 LET x=xn: LET y=yn
-150 RETURN 
+150 RETURN
 200 LET insize=insize/sq
 210 LET rotation=rotation+rq*qpi
 220 LET level=level-1
@@ -6274,7 +6275,7 @@ http://home.comcast.net/~zenkinetic/Images/dragon.svg
 290 LET rotation=rotation+rq*qpi
 300 LET level=level+1
 310 LET insize=insize*sq
-320 RETURN 
+320 RETURN
 ```
 
 

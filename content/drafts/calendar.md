@@ -11,8 +11,8 @@ tags = []
 +++
 
 {{task|Date and time}}
-Create a routine that will generate a text calendar for any year.  
-Test the calendar by generating a calendar for the year 1969, on a device of the time. 
+Create a routine that will generate a text calendar for any year.
+Test the calendar by generating a calendar for the year 1969, on a device of the time.
 Choose one of the following devices:
 
 * A line printer with a width of 132 characters.
@@ -41,7 +41,7 @@ For economy of size, do not actually include Snoopy generation in either the cod
 ## 360 Assembly
 
 {{trans|Free Basic}}
-This program uses no external functions but two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible. 
+This program uses no external functions but two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        calendar                  08/06/2016
@@ -51,7 +51,7 @@ CALENDAR CSECT
          DC     17F'0'             savearea
          STM    R14,R12,12(R13)    prolog
          ST     R13,4(R15)         "
-         ST     R15,8(R13)         " 
+         ST     R15,8(R13)         "
          LR     R13,R15            "
          L      R4,YEAR            year
          SRDA   R4,32              .
@@ -62,7 +62,7 @@ CALENDAR CSECT
          SRDA   R4,32              .
          D      R4,=F'100'         year//100
          LTR    R4,R4              if year//100=0
-         BNZ    LY 
+         BNZ    LY
          L      R4,YEAR            year
          SRDA   R4,32              .
          D      R4,=F'400'         if year//400
@@ -98,23 +98,23 @@ LOOPI2   C      R6,=F'12'          do i=1 to 12
 GE3      L      R2,YY              yy
          LR     R1,R2              yy
          SRA    R1,2               yy/4
-         AR     R2,R1              yy+(yy/4)         
+         AR     R2,R1              yy+(yy/4)
          L      R4,YY              yy
          SRDA   R4,32              .
-         D      R4,=F'100'         yy/100      
+         D      R4,=F'100'         yy/100
          SR     R2,R5              yy+(yy/4)-(yy/100)
          L      R4,YY              yy
          SRDA   R4,32              .
-         D      R4,=F'400'         yy/400                          
-         AR     R2,R5              yy+(yy/4)-(yy/100)+(yy/400)  
+         D      R4,=F'400'         yy/400
+         AR     R2,R5              yy+(yy/4)-(yy/100)+(yy/400)
          A      R2,D               r2=yy+(yy/4)-(yy/100)+(yy/400)+d
-         LA     R5,153             153 
-         M      R4,M               153*m            
-         LA     R5,8(R5)           153*m+8                                     
-         D      R4,=F'5'           (153*m+8)/5               
-         AR     R5,R2              ((153*m+8)/5+r2  
+         LA     R5,153             153
+         M      R4,M               153*m
+         LA     R5,8(R5)           153*m+8
+         D      R4,=F'5'           (153*m+8)/5
+         AR     R5,R2              ((153*m+8)/5+r2
          LA     R4,0               .
-         D      R4,=F'7'           r4=mod(r5,7)  0=sun 1=mon ... 6=sat                  
+         D      R4,=F'7'           r4=mod(r5,7)  0=sun 1=mon ... 6=sat
          LTR    R4,R4              if j=0
          BNZ    JNE0
          LA     R4,7               j=7
@@ -143,7 +143,7 @@ ELOOPI2  L      R1,YEAR            year
          XPRNT  PG,35              print year
          MVC    WDLINE,BLANK       wdline=' '
          LA     R10,1              lwdline=1
-         LA     R8,1               k=1 
+         LA     R8,1               k=1
 LOOPK3   C      R8,=F'3'           do k=1 to 3
          BH     ELOOPK3
          LA     R4,WDLINE          @wdline
@@ -198,7 +198,7 @@ ELOOPK5  XPRNT  PG,L'PG            print buffer
          B      LOOPJ4
 ELOOPJ4  LA     R6,3(R6)           i=i+3
          B      LOOPI4
-ELOOPI4  L      R13,4(0,R13)       epilog 
+ELOOPI4  L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
@@ -271,8 +271,8 @@ DA       DS     12CL144
 ## Ada
 
 
-We first specify a "Printable_Calendar" package (printable_calendar.ads). 
-One can easily override the default names for weekdays and months, see  
+We first specify a "Printable_Calendar" package (printable_calendar.ads).
+One can easily override the default names for weekdays and months, see
 the [[Calendar_-_for_"real"_programmers#Ada]] task.
 
 
@@ -328,7 +328,7 @@ end Printable_Calendar;
 ```
 
 
-We continue with the implementation (printable_calendar.ads): 
+We continue with the implementation (printable_calendar.ads):
 
 
 ```Ada
@@ -533,44 +533,44 @@ Here is the output:
 
 
 ```txt
-                        [reserved for Snoopy]                        
+                        [reserved for Snoopy]
 
-                         Nineteen-Sixty-Nine                         
+                         Nineteen-Sixty-Nine
 
-       January                 February                 March        
+       January                 February                 March
  Mo Tu We Th Fr Sa So    Mo Tu We Th Fr Sa So    Mo Tu We Th Fr Sa So
         1  2  3  4  5                    1  2                    1  2
   6  7  8  9 10 11 12     3  4  5  6  7  8  9     3  4  5  6  7  8  9
  13 14 15 16 17 18 19    10 11 12 13 14 15 16    10 11 12 13 14 15 16
  20 21 22 23 24 25 26    17 18 19 20 21 22 23    17 18 19 20 21 22 23
  27 28 29 30 31          24 25 26 27 28          24 25 26 27 28 29 30
-                                                 31                  
+                                                 31
 
-        April                    May                     June        
+        April                    May                     June
  Mo Tu We Th Fr Sa So    Mo Tu We Th Fr Sa So    Mo Tu We Th Fr Sa So
      1  2  3  4  5  6              1  2  3  4                       1
   7  8  9 10 11 12 13     5  6  7  8  9 10 11     2  3  4  5  6  7  8
  14 15 16 17 18 19 20    12 13 14 15 16 17 18     9 10 11 12 13 14 15
  21 22 23 24 25 26 27    19 20 21 22 23 24 25    16 17 18 19 20 21 22
  28 29 30                26 27 28 29 30 31       23 24 25 26 27 28 29
-                                                 30                  
+                                                 30
 
-         July                   August                 September     
+         July                   August                 September
  Mo Tu We Th Fr Sa So    Mo Tu We Th Fr Sa So    Mo Tu We Th Fr Sa So
      1  2  3  4  5  6                 1  2  3     1  2  3  4  5  6  7
   7  8  9 10 11 12 13     4  5  6  7  8  9 10     8  9 10 11 12 13 14
  14 15 16 17 18 19 20    11 12 13 14 15 16 17    15 16 17 18 19 20 21
  21 22 23 24 25 26 27    18 19 20 21 22 23 24    22 23 24 25 26 27 28
- 28 29 30 31             25 26 27 28 29 30 31    29 30               
-                                                                     
+ 28 29 30 31             25 26 27 28 29 30 31    29 30
 
-        October                November                December      
+
+        October                November                December
  Mo Tu We Th Fr Sa So    Mo Tu We Th Fr Sa So    Mo Tu We Th Fr Sa So
         1  2  3  4  5                    1  2     1  2  3  4  5  6  7
   6  7  8  9 10 11 12     3  4  5  6  7  8  9     8  9 10 11 12 13 14
  13 14 15 16 17 18 19    10 11 12 13 14 15 16    15 16 17 18 19 20 21
  20 21 22 23 24 25 26    17 18 19 20 21 22 23    22 23 24 25 26 27 28
- 27 28 29 30 31          24 25 26 27 28 29 30    29 30 31  
+ 27 28 29 30 31          24 25 26 27 28 29 30    29 30 31
 ```
 
 
@@ -702,38 +702,38 @@ Output:
                              [Insert Snoopy here]
                                      1969
 
-        January                    February                    March        
+        January                    February                    March
   Su Mo Tu We Th Fr Sa       Su Mo Tu We Th Fr Sa       Su Mo Tu We Th Fr Sa
             1  2  3  4                          1                          1
    5  6  7  8  9 10 11        2  3  4  5  6  7  8        2  3  4  5  6  7  8
   12 13 14 15 16 17 18        9 10 11 12 13 14 15        9 10 11 12 13 14 15
   19 20 21 22 23 24 25       16 17 18 19 20 21 22       16 17 18 19 20 21 22
   26 27 28 29 30 31          23 24 25 26 27 28          23 24 25 26 27 28 29
-                                                        30 31               
-         April                       May                        June        
+                                                        30 31
+         April                       May                        June
   Su Mo Tu We Th Fr Sa       Su Mo Tu We Th Fr Sa       Su Mo Tu We Th Fr Sa
          1  2  3  4  5                    1  2  3        1  2  3  4  5  6  7
    6  7  8  9 10 11 12        4  5  6  7  8  9 10        8  9 10 11 12 13 14
   13 14 15 16 17 18 19       11 12 13 14 15 16 17       15 16 17 18 19 20 21
   20 21 22 23 24 25 26       18 19 20 21 22 23 24       22 23 24 25 26 27 28
-  27 28 29 30                25 26 27 28 29 30 31       29 30               
-                                                                            
-          July                      August                   September      
+  27 28 29 30                25 26 27 28 29 30 31       29 30
+
+          July                      August                   September
   Su Mo Tu We Th Fr Sa       Su Mo Tu We Th Fr Sa       Su Mo Tu We Th Fr Sa
          1  2  3  4  5                       1  2           1  2  3  4  5  6
    6  7  8  9 10 11 12        3  4  5  6  7  8  9        7  8  9 10 11 12 13
   13 14 15 16 17 18 19       10 11 12 13 14 15 16       14 15 16 17 18 19 20
   20 21 22 23 24 25 26       17 18 19 20 21 22 23       21 22 23 24 25 26 27
-  27 28 29 30 31             24 25 26 27 28 29 30       28 29 30            
-                             31                                             
-        October                    November                   December      
+  27 28 29 30 31             24 25 26 27 28 29 30       28 29 30
+                             31
+        October                    November                   December
   Su Mo Tu We Th Fr Sa       Su Mo Tu We Th Fr Sa       Su Mo Tu We Th Fr Sa
             1  2  3  4                          1           1  2  3  4  5  6
    5  6  7  8  9 10 11        2  3  4  5  6  7  8        7  8  9 10 11 12 13
   12 13 14 15 16 17 18        9 10 11 12 13 14 15       14 15 16 17 18 19 20
   19 20 21 22 23 24 25       16 17 18 19 20 21 22       21 22 23 24 25 26 27
-  26 27 28 29 30 31          23 24 25 26 27 28 29       28 29 30 31         
-                             30                                             
+  26 27 28 29 30 31          23 24 25 26 27 28 29       28 29 30 31
+                             30
 
 ```
 
@@ -778,31 +778,31 @@ BEGIN
         MONTHS(10) := MONTH(" November", 30, 0, 0 );
         MONTHS(11) := MONTH(" December", 31, 0, 0 )
     END;
- 
+
     BEGIN
- 
+
         PROCEDURE SPACE(INTEGER VALUE N);
         BEGIN
             WHILE N > 0 DO BEGIN
                 WRITEON(" "); N := N-1;
             END
         END SPACE;
- 
+
         PROCEDURE INIT_MONTHS;
         BEGIN
             INTEGER I;
- 
+
             IF YEAR REM 4 = 0 AND YEAR REM 100 NOT = 0 OR YEAR REM 400 = 0 THEN
                 DAYS(MONTHS(1)) := 29;
- 
+
             YEAR := YEAR-1;
             START_WDAY(MONTHS(0))
                 := (YEAR * 365 + YEAR DIV 4 - YEAR DIV 100 + YEAR DIV 400 + 1) REM 7;
- 
+
             FOR I := 1 STEP 1 UNTIL 12-1 DO
                 START_WDAY(MONTHS(I)) :=
                     (START_WDAY(MONTHS(I-1)) + DAYS(MONTHS(I-1))) REM 7;
- 
+
             COLS := (WIDTH + 2) DIV 22;
             WHILE 12 REM COLS NOT = 0 DO
                 COLS := COLS-1;
@@ -812,7 +812,7 @@ BEGIN
             LEAD := (WIDTH - (20 + GAP) * COLS + GAP + 1) DIV 2;
             YEAR := YEAR+1
         END INIT_MONTHS;
- 
+
         PROCEDURE PRINT_ROW(INTEGER VALUE ROW);
         BEGIN
             INTEGER C, I, FROM, UP_TO;
@@ -833,7 +833,7 @@ BEGIN
                 SPACE(20 - I - (20 - I) DIV 2 + (IF C = UP_TO - 1 THEN 0 ELSE GAP));
             END;
             WRITE();
- 
+
             SPACE(LEAD);
             FOR C := FROM STEP 1 UNTIL UP_TO-1 DO BEGIN
                 FOR I := 0 STEP 1 UNTIL 7-1 DO BEGIN
@@ -851,7 +851,7 @@ BEGIN
 
                 C NOT = UP_TO
             END DO BEGIN
- 
+
                 SPACE(LEAD);
                 C := FROM;
                 WHILE C < UP_TO DO BEGIN
@@ -876,7 +876,7 @@ BEGIN
             END;
             WRITE()
         END PRINT_ROW;
- 
+
         PROCEDURE PRINT_YEAR;
         BEGIN
             INTEGER ROW, STRLEN, Y;
@@ -903,42 +903,42 @@ END.
 ```txt
 
 
-                                      1969  
+                                      1969
 
-            January                 February                 March        
+            January                 February                 March
       Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa
                 1  2  3  4                       1                       1
        5  6  7  8  9 10 11     2  3  4  5  6  7  8     2  3  4  5  6  7  8
       12 13 14 15 16 17 18     9 10 11 12 13 14 15     9 10 11 12 13 14 15
       19 20 21 22 23 24 25    16 17 18 19 20 21 22    16 17 18 19 20 21 22
       26 27 28 29 30 31       23 24 25 26 27 28       23 24 25 26 27 28 29
-                                                      30 31 
+                                                      30 31
 
-             April                    May                     June        
+             April                    May                     June
       Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa
              1  2  3  4  5                 1  2  3     1  2  3  4  5  6  7
        6  7  8  9 10 11 12     4  5  6  7  8  9 10     8  9 10 11 12 13 14
       13 14 15 16 17 18 19    11 12 13 14 15 16 17    15 16 17 18 19 20 21
       20 21 22 23 24 25 26    18 19 20 21 22 23 24    22 23 24 25 26 27 28
-      27 28 29 30             25 26 27 28 29 30 31    29 30 
+      27 28 29 30             25 26 27 28 29 30 31    29 30
 
-              July                   August                September      
+              July                   August                September
       Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa
              1  2  3  4  5                    1  2        1  2  3  4  5  6
        6  7  8  9 10 11 12     3  4  5  6  7  8  9     7  8  9 10 11 12 13
       13 14 15 16 17 18 19    10 11 12 13 14 15 16    14 15 16 17 18 19 20
       20 21 22 23 24 25 26    17 18 19 20 21 22 23    21 22 23 24 25 26 27
-      27 28 29 30 31          24 25 26 27 28 29 30    28 29 30 
-                              31                      
+      27 28 29 30 31          24 25 26 27 28 29 30    28 29 30
+                              31
 
-            October                 November                December      
+            October                 November                December
       Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa
                 1  2  3  4                       1        1  2  3  4  5  6
        5  6  7  8  9 10 11     2  3  4  5  6  7  8     7  8  9 10 11 12 13
       12 13 14 15 16 17 18     9 10 11 12 13 14 15    14 15 16 17 18 19 20
       19 20 21 22 23 24 25    16 17 18 19 20 21 22    21 22 23 24 25 26 27
-      26 27 28 29 30 31       23 24 25 26 27 28 29    28 29 30 31 
-                              30                      
+      26 27 28 29 30 31       23 24 25 26 27 28 29    28 29 30 31
+                              30
 
 
 
@@ -978,7 +978,7 @@ Calendar(Yr){
 					continue
 				}
 				dd := ((Week>3) && dd <10) ? "__" : dd, Res .= dd " ", LastDay[Mon] := Day[Mon], Day[Mon] +=1, Days
-				Res .= ((wd=7) && A_Index < 21) ? "___" : ""	
+				Res .= ((wd=7) && A_Index < 21) ? "___" : ""
 				FormatTime, dd, % Day[Mon], dd
 			}
 		}
@@ -1013,41 +1013,41 @@ Outputs:
 ```txt
                                 1969
 
-       January                February                  March       
+       January                February                  March
 Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa
-          1  2  3  4                       1                       1 
- 5  6  7  8  9 10 11     2  3  4  5  6  7  8     2  3  4  5  6  7  8 
-12 13 14 15 16 17 18     9 10 11 12 13 14 15     9 10 11 12 13 14 15 
-19 20 21 22 23 24 25    16 17 18 19 20 21 22    16 17 18 19 20 21 22 
-26 27 28 29 30 31       23 24 25 26 27 28       23 24 25 26 27 28 29 
-                                                30 31                
+          1  2  3  4                       1                       1
+ 5  6  7  8  9 10 11     2  3  4  5  6  7  8     2  3  4  5  6  7  8
+12 13 14 15 16 17 18     9 10 11 12 13 14 15     9 10 11 12 13 14 15
+19 20 21 22 23 24 25    16 17 18 19 20 21 22    16 17 18 19 20 21 22
+26 27 28 29 30 31       23 24 25 26 27 28       23 24 25 26 27 28 29
+                                                30 31
 
-        April                    May                    June        
+        April                    May                    June
 Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa
-       1  2  3  4  5                 1  2  3     1  2  3  4  5  6  7 
- 6  7  8  9 10 11 12     4  5  6  7  8  9 10     8  9 10 11 12 13 14 
-13 14 15 16 17 18 19    11 12 13 14 15 16 17    15 16 17 18 19 20 21 
-20 21 22 23 24 25 26    18 19 20 21 22 23 24    22 23 24 25 26 27 28 
-27 28 29 30             25 26 27 28 29 30 31    29 30                
-                                                                     
+       1  2  3  4  5                 1  2  3     1  2  3  4  5  6  7
+ 6  7  8  9 10 11 12     4  5  6  7  8  9 10     8  9 10 11 12 13 14
+13 14 15 16 17 18 19    11 12 13 14 15 16 17    15 16 17 18 19 20 21
+20 21 22 23 24 25 26    18 19 20 21 22 23 24    22 23 24 25 26 27 28
+27 28 29 30             25 26 27 28 29 30 31    29 30
 
-        July                   August                 September     
-Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa
-       1  2  3  4  5                    1  2        1  2  3  4  5  6 
- 6  7  8  9 10 11 12     3  4  5  6  7  8  9     7  8  9 10 11 12 13 
-13 14 15 16 17 18 19    10 11 12 13 14 15 16    14 15 16 17 18 19 20 
-20 21 22 23 24 25 26    17 18 19 20 21 22 23    21 22 23 24 25 26 27 
-27 28 29 30 31          24 25 26 27 28 29 30    28 29 30             
-                        31                                           
 
-       October                November                December      
+        July                   August                 September
 Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa
-          1  2  3  4                       1        1  2  3  4  5  6 
- 5  6  7  8  9 10 11     2  3  4  5  6  7  8     7  8  9 10 11 12 13 
-12 13 14 15 16 17 18     9 10 11 12 13 14 15    14 15 16 17 18 19 20 
-19 20 21 22 23 24 25    16 17 18 19 20 21 22    21 22 23 24 25 26 27 
-26 27 28 29 30 31       23 24 25 26 27 28 29    28 29 30 31          
-                        30                                           
+       1  2  3  4  5                    1  2        1  2  3  4  5  6
+ 6  7  8  9 10 11 12     3  4  5  6  7  8  9     7  8  9 10 11 12 13
+13 14 15 16 17 18 19    10 11 12 13 14 15 16    14 15 16 17 18 19 20
+20 21 22 23 24 25 26    17 18 19 20 21 22 23    21 22 23 24 25 26 27
+27 28 29 30 31          24 25 26 27 28 29 30    28 29 30
+                        31
+
+       October                November                December
+Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa
+          1  2  3  4                       1        1  2  3  4  5  6
+ 5  6  7  8  9 10 11     2  3  4  5  6  7  8     7  8  9 10 11 12 13
+12 13 14 15 16 17 18     9 10 11 12 13 14 15    14 15 16 17 18 19 20
+19 20 21 22 23 24 25    16 17 18 19 20 21 22    21 22 23 24 25 26 27
+26 27 28 29 30 31       23 24 25 26 27 28 29    28 29 30 31
+                        30
 ```
 
 
@@ -1166,44 +1166,44 @@ Output
 
 ```txt
 
-                                                                
+
 
                                                          [ here is Snoopy ]
 
                                                               1 9 6 9
 
-                                       January                February                  March       
+                                       January                February                  March
                                 Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
                                        1  2  3  4  5                    1  2                    1  2
                                  6  7  8  9 10 11 12     3  4  5  6  7  8  9     3  4  5  6  7  8  9
                                 13 14 15 16 17 18 19    10 11 12 13 14 15 16    10 11 12 13 14 15 16
                                 20 21 22 23 24 25 26    17 18 19 20 21 22 23    17 18 19 20 21 22 23
                                 27 28 29 30 31          24 25 26 27 28          24 25 26 27 28 29 30
-                                                                                31                  
-                                        April                    May                    June        
+                                                                                31
+                                        April                    May                    June
                                 Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
                                     1  2  3  4  5  6              1  2  3  4                       1
                                  7  8  9 10 11 12 13     5  6  7  8  9 10 11     2  3  4  5  6  7  8
                                 14 15 16 17 18 19 20    12 13 14 15 16 17 18     9 10 11 12 13 14 15
                                 21 22 23 24 25 26 27    19 20 21 22 23 24 25    16 17 18 19 20 21 22
                                 28 29 30                26 27 28 29 30 31       23 24 25 26 27 28 29
-                                                                                30                  
-                                        July                   August                 September     
+                                                                                30
+                                        July                   August                 September
                                 Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
                                     1  2  3  4  5  6                 1  2  3     1  2  3  4  5  6  7
                                  7  8  9 10 11 12 13     4  5  6  7  8  9 10     8  9 10 11 12 13 14
                                 14 15 16 17 18 19 20    11 12 13 14 15 16 17    15 16 17 18 19 20 21
                                 21 22 23 24 25 26 27    18 19 20 21 22 23 24    22 23 24 25 26 27 28
-                                28 29 30 31             25 26 27 28 29 30 31    29 30               
-                                                                                                    
-                                       October                November                December      
+                                28 29 30 31             25 26 27 28 29 30 31    29 30
+
+                                       October                November                December
                                 Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
                                        1  2  3  4  5                    1  2     1  2  3  4  5  6  7
                                  6  7  8  9 10 11 12     3  4  5  6  7  8  9     8  9 10 11 12 13 14
                                 13 14 15 16 17 18 19    10 11 12 13 14 15 16    15 16 17 18 19 20 21
                                 20 21 22 23 24 25 26    17 18 19 20 21 22 23    22 23 24 25 26 27 28
-                                27 28 29 30 31          24 25 26 27 28 29 30    29 30 31            
-                                                                                                                                                 
+                                27 28 29 30 31          24 25 26 27 28 29 30    29 30 31
+
 
 ```
 
@@ -1225,7 +1225,7 @@ BEGIN{
   pagewide = 80
   blank=" "
   for (i=1; i<pagewide; i++) blank = blank " "
-  #  month name accessed as substr(month,num*10,10) 
+  #  month name accessed as substr(month,num*10,10)
   #      where num is number of month, 1-12
   month= "           January  February    March     April  "
   month=    month "   May      June       July     August  "
@@ -1240,7 +1240,7 @@ BEGIN{
   line6 = ""
   line7 = ""
   line8 = ""
-# print " year: " year " starts on: " dow(year) 
+# print " year: " year " starts on: " dow(year)
   }
 function center(text,   half) {
   half = (pagewide - length(text))/2
@@ -1299,7 +1299,7 @@ if (length(line3) + 22 > pagewide) {
 }
 /q/{
   exit }
-{ 
+{
   monsize=substr(days,2*1,2)
   newdow=dow($1)
   print center("[ picture of Snoopy goes here ]")
@@ -1313,7 +1313,7 @@ if (length(line3) + 22 > pagewide) {
   if (leap == 1 && monsize == 28) monsize = 29
   }
  }
-    
+
 
 
 ```
@@ -1322,40 +1322,40 @@ Output:
 
 ```txt
 
-                        [ picture of Snoopy goes here ]                        
-                                      1969                                      
-              January              February                March                
-       Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa         
-                 1  2  3  4                     1                     1         
-        5  6  7  8  9 10 11   2  3  4  5  6  7  8   2  3  4  5  6  7  8         
-       12 13 14 15 16 17 18   9 10 11 12 13 14 15   9 10 11 12 13 14 15         
-       19 20 21 22 23 24 25  16 17 18 19 20 21 22  16 17 18 19 20 21 22         
-       26 27 28 29 30 31     23 24 25 26 27 28     23 24 25 26 27 28 29         
-                                                   30 31                        
-               April                 May                  June                  
-       Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa         
-              1  2  3  4  5               1  2  3   1  2  3  4  5  6  7         
-        6  7  8  9 10 11 12   4  5  6  7  8  9 10   8  9 10 11 12 13 14         
-       13 14 15 16 17 18 19  11 12 13 14 15 16 17  15 16 17 18 19 20 21         
-       20 21 22 23 24 25 26  18 19 20 21 22 23 24  22 23 24 25 26 27 28         
-       27 28 29 30           25 26 27 28 29 30 31  29 30                        
-                                                                                
-               July                 August               September              
-       Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa         
-              1  2  3  4  5                  1  2      1  2  3  4  5  6         
-        6  7  8  9 10 11 12   3  4  5  6  7  8  9   7  8  9 10 11 12 13         
-       13 14 15 16 17 18 19  10 11 12 13 14 15 16  14 15 16 17 18 19 20         
-       20 21 22 23 24 25 26  17 18 19 20 21 22 23  21 22 23 24 25 26 27         
-       27 28 29 30 31        24 25 26 27 28 29 30  28 29 30                     
-                             31                                                 
-             October               November              December               
-       Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa         
-                 1  2  3  4                     1      1  2  3  4  5  6         
-        5  6  7  8  9 10 11   2  3  4  5  6  7  8   7  8  9 10 11 12 13         
-       12 13 14 15 16 17 18   9 10 11 12 13 14 15  14 15 16 17 18 19 20         
-       19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27         
-       26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31                  
-                             30                                                 
+                        [ picture of Snoopy goes here ]
+                                      1969
+              January              February                March
+       Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+                 1  2  3  4                     1                     1
+        5  6  7  8  9 10 11   2  3  4  5  6  7  8   2  3  4  5  6  7  8
+       12 13 14 15 16 17 18   9 10 11 12 13 14 15   9 10 11 12 13 14 15
+       19 20 21 22 23 24 25  16 17 18 19 20 21 22  16 17 18 19 20 21 22
+       26 27 28 29 30 31     23 24 25 26 27 28     23 24 25 26 27 28 29
+                                                   30 31
+               April                 May                  June
+       Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+              1  2  3  4  5               1  2  3   1  2  3  4  5  6  7
+        6  7  8  9 10 11 12   4  5  6  7  8  9 10   8  9 10 11 12 13 14
+       13 14 15 16 17 18 19  11 12 13 14 15 16 17  15 16 17 18 19 20 21
+       20 21 22 23 24 25 26  18 19 20 21 22 23 24  22 23 24 25 26 27 28
+       27 28 29 30           25 26 27 28 29 30 31  29 30
+
+               July                 August               September
+       Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+              1  2  3  4  5                  1  2      1  2  3  4  5  6
+        6  7  8  9 10 11 12   3  4  5  6  7  8  9   7  8  9 10 11 12 13
+       13 14 15 16 17 18 19  10 11 12 13 14 15 16  14 15 16 17 18 19 20
+       20 21 22 23 24 25 26  17 18 19 20 21 22 23  21 22 23 24 25 26 27
+       27 28 29 30 31        24 25 26 27 28 29 30  28 29 30
+                             31
+             October               November              December
+       Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+                 1  2  3  4                     1      1  2  3  4  5  6
+        5  6  7  8  9 10 11   2  3  4  5  6  7  8   7  8  9 10 11 12 13
+       12 13 14 15 16 17 18   9 10 11 12 13 14 15  14 15 16 17 18 19 20
+       19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27
+       26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31
+                             30
 
 
 ```
@@ -1406,10 +1406,10 @@ NEXT
 {{out}}
 
 ```txt
-                                                           [SNOOPY HERE]                                                            
-                                                                1969                                                                
-       January              February                March                 April                  May                  June         
-Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su 
+                                                           [SNOOPY HERE]
+                                                                1969
+       January              February                March                 April                  May                  June
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
       1  2  3  4  5                  1  2                  1  2      1  2  3  4  5  6            1  2  3  4                     1
 6  7  8  9  10 11 12  3  4  5  6  7  8  9   3  4  5  6  7  8  9   7  8  9  10 11 12 13  5  6  7  8  9  10 11  2  3  4  5  6  7  8
 13 14 15 16 17 18 19  10 11 12 13 14 15 16  10 11 12 13 14 15 16  14 15 16 17 18 19 20  12 13 14 15 16 17 18  9  10 11 12 13 14 15
@@ -1417,8 +1417,8 @@ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr
 27 28 29 30 31        24 25 26 27 28        24 25 26 27 28 29 30  28 29 30              26 27 28 29 30 31     23 24 25 26 27 28 29
                                             31                                                                30
 
-        July                 August               September              October              November              December       
-Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su 
+        July                 August               September              October              November              December
+Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
    1  2  3  4  5  6               1  2  3   1  2  3  4  5  6  7         1  2  3  4  5                  1  2   1  2  3  4  5  6  7
 7  8  9  10 11 12 13  4  5  6  7  8  9  10  8  9  10 11 12 13 14  6  7  8  9  10 11 12  3  4  5  6  7  8  9   8  9  10 11 12 13 14
 14 15 16 17 18 19 20  11 12 13 14 15 16 17  15 16 17 18 19 20 21  13 14 15 16 17 18 19  10 11 12 13 14 15 16  15 16 17 18 19 20 21
@@ -1485,11 +1485,11 @@ for %%a in (jan feb mar apr may jun jul aug sep oct nov dec) do (
 cls
 echo.
 echo.                              [SNOOPY]
-echo. 
+echo.
 echo. YEAR = %y%
 echo.
 echo.       January                February                March
-echo. Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa 
+echo. Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
 echo. %jan:~0,20%   %feb:~0,20%   %mar:~0,20%
 echo. %jan:~21,20%   %feb:~21,20%   %mar:~21,20%
 echo. %jan:~42,20%   %feb:~42,20%   %mar:~42,20%
@@ -1498,7 +1498,7 @@ echo. %jan:~84,20%   %feb:~84,20%   %mar:~84,20%
 echo. %jan:~105%   %feb:~105%   %mar:~105%
 echo.
 echo.        April                   May                    June
-echo. Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa 
+echo. Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
 echo. %apr:~0,20%   %may:~0,20%   %jun:~0,20%
 echo. %apr:~21,20%   %may:~21,20%   %jun:~21,20%
 echo. %apr:~42,20%   %may:~42,20%   %jun:~42,20%
@@ -1507,7 +1507,7 @@ echo. %apr:~84,20%   %may:~84,20%   %jun:~84,20%
 echo. %apr:~105%   %may:~105%   %jun:~105%
 echo.
 echo.         July                  August                September
-echo. Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa 
+echo. Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
 echo. %jul:~0,20%   %aug:~0,20%   %sep:~0,20%
 echo. %jul:~21,20%   %aug:~21,20%   %sep:~21,20%
 echo. %jul:~42,20%   %aug:~42,20%   %sep:~42,20%
@@ -1516,7 +1516,7 @@ echo. %jul:~84,20%   %aug:~84,20%   %sep:~84,20%
 echo. %jul:~105%   %aug:~105%   %sep:~105%
 echo.
 echo.       October                November               December
-echo. Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa 
+echo. Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
 echo. %oct:~0,20%   %nov:~0,20%   %dec:~0,20%
 echo. %oct:~21,20%   %nov:~21,20%   %dec:~21,20%
 echo. %oct:~42,20%   %nov:~42,20%   %dec:~42,20%
@@ -1581,20 +1581,20 @@ Press any key to continue . . .
 ## BBC BASIC
 
 {{works with|BBC BASIC for Windows}}
-The day and month names are in the language for which the PC is configured. 
+The day and month names are in the language for which the PC is configured.
 
 ```bbcbasic
       INSTALL @lib$+"DATELIB"
       VDU 23,22,640;570;8,15,16,128
-      
+
       year% = 1969
       PRINT TAB(38); year%
       DIM dom%(2), mjd%(2), dim%(2)
-      
+
       FOR day% = 1 TO 7
         days$ += LEFT$(FN_date$(FN_mjd(day%, 1, 1905), "ddd"), 2) + " "
       NEXT
-      
+
       FOR month% = 1 TO 10 STEP 3
         PRINT
         FOR col% = 0 TO 2
@@ -1692,8 +1692,8 @@ September October  November December>p:45*+10g*\--2/00g4-2/>:#,1#*-#8\#4_$v
 
 With arbitrary display width (>= 20 though) and auto spacing.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -1971,7 +1971,7 @@ int main( int argc, char* argv[] )
     while( true )
     {
 	system( "cls" );
-	cout << "Enter the year( yyyy ) --- ( 0 to quit ): "; 
+	cout << "Enter the year( yyyy ) --- ( 0 to quit ): ";
 	cin >> y;
 	if( !y ) return 0;
 
@@ -2043,20 +2043,20 @@ An attempt to abuse the DateTime class for all static information. In the event 
 
 
 using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace CalendarStuff
 {
- 
+
     class Program
     {
         static void Main(string[] args)
         {
             Console.WindowHeight = 46;
             Console.Write(buildMonths(new DateTime(1969, 1, 1)));
-            Console.Read(); 
+            Console.Read();
         }
         private static string buildMonths(DateTime date)
         {
@@ -2075,14 +2075,14 @@ namespace CalendarStuff
                 }
             }
             var jd = dts.Select(a => buildMonth(a).GetEnumerator()).ToArray();
-            
+
             int sCur=0;
             while (sCur<dts.Count)
             {
                 sb.AppendLine();
-                int curMonth=0; 
+                int curMonth=0;
                 var j = jd.Where(a => curMonth++ >= sCur && curMonth - 1 < sCur + 3).ToArray(); //grab the next 3
-                sCur += j.Length; 
+                sCur += j.Length;
                 bool breakOut = false;
                 while (!breakOut)
                 {
@@ -2129,7 +2129,7 @@ namespace CalendarStuff
         private static string center(string s, int len)
         {
             return (s.PadLeft((len - s.Length) / 2 + s.Length, ' ').PadRight((len), ' '));
-        } 
+        }
     }
 }
 
@@ -2140,7 +2140,7 @@ namespace CalendarStuff
 
 ## COBOL
 
-the program calls subroutine DATE2DOW to convert any YYYY-MM-DD to Day of Week (1=Sunday).  the group names WS-CFGN 
+the program calls subroutine DATE2DOW to convert any YYYY-MM-DD to Day of Week (1=Sunday).  the group names WS-CFGN
 and WS-CFGW may be moved to WS-CFG to use narrow or wide print line size respectively.
 
 ```COBOL
@@ -2150,7 +2150,7 @@ and WS-CFGW may be moved to WS-CFG to use narrow or wide print line size respect
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
        DATA DIVISION.
- 
+
        WORKING-STORAGE SECTION.
        01  WS-DAY-NAMES-DEF.
          03 FILLER PIC X(09) VALUE 'SUNDAY   '.
@@ -2162,7 +2162,7 @@ and WS-CFGW may be moved to WS-CFG to use narrow or wide print line size respect
          03 FILLER PIC X(09) VALUE 'SATURDAY '.
        01  FILLER REDEFINES WS-DAY-NAMES-DEF.
          03  WS-DAY-NAME       PIC X(09) OCCURS 07 TIMES.
- 
+
        01  WS-MTH-INFO-DEF.
          03 FILLER PIC X(11) VALUE 'JANUARY  31'.
          03 FILLER PIC X(11) VALUE 'FEBRUARY 28'.
@@ -2189,7 +2189,7 @@ and WS-CFGW may be moved to WS-CFG to use narrow or wide print line size respect
          03  WS-WK             PIC   9.
          03  WS-MM             PIC  99.
          03  WS-QQ             PIC  99.
- 
+
          03  WS-MTH-MONTH  OCCURS 12 TIMES.
            05  WS-MTH-WEEK OCCURS 6 TIMES.
              07  WS-DAY-FLD      OCCURS 7 TIMES.
@@ -2233,7 +2233,7 @@ and WS-CFGW may be moved to WS-CFG to use narrow or wide print line size respect
            ELSE
              MOVE 28         TO WS-MTH-INFO-DAYS (02)
            END-IF
- 
+
            PERFORM VARYING WS-MM FROM 1 BY +1
            UNTIL WS-MM > 12
            MOVE WS-MM TO INPD-MONTH
@@ -2254,17 +2254,17 @@ and WS-CFGW may be moved to WS-CFG to use narrow or wide print line size respect
              END-PERFORM
            END-PERFORM
            END-PERFORM
- 
+
            COMPUTE WS-MM = 0
            PERFORM VARYING WS-QQ FROM 1 BY +1
            UNTIL WS-QQ > 4
- 
+
              INITIALIZE WS-PRT
              COMPUTE WS-PP = 1
              PERFORM VARYING WS-COL FROM 1 BY +1
              UNTIL WS-COL > 3
              COMPUTE WS-MM = 3 * (WS-QQ - 1) + WS-COL
- 
+
                IF WS-COL = 1
                  COMPUTE WS-PP = WS-PP + WS-LMAR + 2 - WS-DNMW
                ELSE
@@ -2279,13 +2279,13 @@ and WS-CFGW may be moved to WS-CFG to use narrow or wide print line size respect
                COMPUTE WS-PP = WS-PP + 4
              END-PERFORM
              DISPLAY WS-PRT (1:WS-LS)
- 
+
              INITIALIZE WS-PRT
              COMPUTE WS-PP = 1
              PERFORM VARYING WS-COL FROM 1 BY +1
              UNTIL WS-COL > 3
              COMPUTE WS-MM = 3 * (WS-QQ - 1) + WS-COL
- 
+
                IF WS-COL = 1
                  COMPUTE WS-PP = WS-PP + WS-LMAR + 2 - WS-DNMW
                ELSE
@@ -2302,7 +2302,7 @@ and WS-CFGW may be moved to WS-CFG to use narrow or wide print line size respect
                END-PERFORM
              END-PERFORM
              DISPLAY WS-PRT (1:WS-LS)
- 
+
              PERFORM VARYING WS-WK FROM 1 BY +1
              UNTIL WS-WK > 6
                INITIALIZE WS-PRT
@@ -2310,7 +2310,7 @@ and WS-CFGW may be moved to WS-CFG to use narrow or wide print line size respect
                PERFORM VARYING WS-COL FROM 1 BY +1
                UNTIL WS-COL > 3
                COMPUTE WS-MM = 3 * (WS-QQ - 1) + WS-COL
- 
+
                  IF WS-COL = 1
                    COMPUTE WS-PP = WS-PP + WS-LMAR
                  ELSE
@@ -2360,7 +2360,7 @@ and WS-CFGW may be moved to WS-CFG to use narrow or wide print line size respect
                COMPUTE WMS-MONTH = INPD-MONTH
                COMPUTE WMS-YEAR  = INPD-YEAR
            END-IF
-           COMPUTE WMS-SUM  = 
+           COMPUTE WMS-SUM  =
                             ( INPD-DAY + 2 * WMS-MONTH + WMS-YEAR
                             + FUNCTION INTEGER (6 * (WMS-MONTH + 1) / 10)
                             + FUNCTION INTEGER ( WMS-YEAR / 4   )
@@ -2385,34 +2385,34 @@ Output (based on 80 character wide display)
      12 13 14 15 16 17 18      9 10 11 12 13 14 15      9 10 11 12 13 14 15
      19 20 21 22 23 24 25     16 17 18 19 20 21 22     16 17 18 19 20 21 22
      26 27 28 29 30 31        23 24 25 26 27 28        23 24 25 26 27 28 29
-                                                       30 31               
-                                                                           
+                                                       30 31
+
      APRIL           1969     MAY             1969     JUNE            1969
      SU MO TU WE TH FR SA     SU MO TU WE TH FR SA     SU MO TU WE TH FR SA
             1  2  3  4  5                  1  2  3      1  2  3  4  5  6  7
       6  7  8  9 10 11 12      4  5  6  7  8  9 10      8  9 10 11 12 13 14
      13 14 15 16 17 18 19     11 12 13 14 15 16 17     15 16 17 18 19 20 21
      20 21 22 23 24 25 26     18 19 20 21 22 23 24     22 23 24 25 26 27 28
-     27 28 29 30              25 26 27 28 29 30 31     29 30               
-                                                                           
-                                                                           
+     27 28 29 30              25 26 27 28 29 30 31     29 30
+
+
      JULY            1969     AUGUST          1969     SEPTEMBER       1969
      SU MO TU WE TH FR SA     SU MO TU WE TH FR SA     SU MO TU WE TH FR SA
             1  2  3  4  5                     1  2         1  2  3  4  5  6
       6  7  8  9 10 11 12      3  4  5  6  7  8  9      7  8  9 10 11 12 13
      13 14 15 16 17 18 19     10 11 12 13 14 15 16     14 15 16 17 18 19 20
      20 21 22 23 24 25 26     17 18 19 20 21 22 23     21 22 23 24 25 26 27
-     27 28 29 30 31           24 25 26 27 28 29 30     28 29 30            
-                              31                                           
-                                                                           
+     27 28 29 30 31           24 25 26 27 28 29 30     28 29 30
+                              31
+
      OCTOBER         1969     NOVEMBER        1969     DECEMBER        1969
      SU MO TU WE TH FR SA     SU MO TU WE TH FR SA     SU MO TU WE TH FR SA
                1  2  3  4                        1         1  2  3  4  5  6
       5  6  7  8  9 10 11      2  3  4  5  6  7  8      7  8  9 10 11 12 13
      12 13 14 15 16 17 18      9 10 11 12 13 14 15     14 15 16 17 18 19 20
      19 20 21 22 23 24 25     16 17 18 19 20 21 22     21 22 23 24 25 26 27
-     26 27 28 29 30 31        23 24 25 26 27 28 29     28 29 30 31         
-                              30                                           
+     26 27 28 29 30 31        23 24 25 26 27 28 29     28 29 30 31
+                              30
 
 ```
 
@@ -2504,41 +2504,41 @@ a width limit in CHARACTERS and MARGIN-SIZE between months."
 
 ```txt
 CL-USER> (print-calendar 1969)
-                             [Snoopy]                             
-                               1969                               
+                             [Snoopy]
+                               1969
 
-      January                February                March        
+      January                February                March
 Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
           1  2  3  4                      1                      1
  5  6  7  8  9 10 11    2  3  4  5  6  7  8    2  3  4  5  6  7  8
 12 13 14 15 16 17 18    9 10 11 12 13 14 15    9 10 11 12 13 14 15
 19 20 21 22 23 24 25   16 17 18 19 20 21 22   16 17 18 19 20 21 22
 26 27 28 29 30 31      23 24 25 26 27 28      23 24 25 26 27 28 29
-                                              30 31               
-       April                   May                    June        
+                                              30 31
+       April                   May                    June
 Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
-       1  2  3  4  5                1  2  3                       
+       1  2  3  4  5                1  2  3
  6  7  8  9 10 11 12    4  5  6  7  8  9 10    1  2  3  4  5  6  7
 13 14 15 16 17 18 19   11 12 13 14 15 16 17    8  9 10 11 12 13 14
 20 21 22 23 24 25 26   18 19 20 21 22 23 24   15 16 17 18 19 20 21
 27 28 29 30            25 26 27 28 29 30 31   22 23 24 25 26 27 28
-                                              29 30               
-        July                  August               September      
+                                              29 30
+        July                  August               September
 Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
        1  2  3  4  5                   1  2       1  2  3  4  5  6
  6  7  8  9 10 11 12    3  4  5  6  7  8  9    7  8  9 10 11 12 13
 13 14 15 16 17 18 19   10 11 12 13 14 15 16   14 15 16 17 18 19 20
 20 21 22 23 24 25 26   17 18 19 20 21 22 23   21 22 23 24 25 26 27
-27 28 29 30 31         24 25 26 27 28 29 30   28 29 30            
-                       31                                         
-      October                November               December      
+27 28 29 30 31         24 25 26 27 28 29 30   28 29 30
+                       31
+      October                November               December
 Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
           1  2  3  4                      1       1  2  3  4  5  6
  5  6  7  8  9 10 11    2  3  4  5  6  7  8    7  8  9 10 11 12 13
 12 13 14 15 16 17 18    9 10 11 12 13 14 15   14 15 16 17 18 19 20
 19 20 21 22 23 24 25   16 17 18 19 20 21 22   21 22 23 24 25 26 27
-26 27 28 29 30 31      23 24 25 26 27 28 29   28 29 30 31         
-                       30                                         
+26 27 28 29 30 31      23 24 25 26 27 28 29   28 29 30 31
+                       30
 NIL
 ```
 
@@ -3003,7 +3003,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th
 
 ' TRUE/FALSE are built-in constants since FreeBASIC 1.04
 ' For older versions they have to be defined.
-#Ifndef TRUE        
+#Ifndef TRUE
     #Define FALSE 0
     #Define TRUE Not FALSE
 #EndIf
@@ -3144,7 +3144,7 @@ End
   7  8  9 10 11 12 13   4  5  6  7  8  9 10   8  9 10 11 12 13 14   6  7  8  9 10 11 12   3  4  5  6  7  8  9   8  9 10 11 12 13 14
  14 15 16 17 18 19 20  11 12 13 14 15 16 17  15 16 17 18 19 20 21  13 14 15 16 17 18 19  10 11 12 13 14 15 16  15 16 17 18 19 20 21
  21 22 23 24 25 26 27  18 19 20 21 22 23 24  22 23 24 25 26 27 28  20 21 22 23 24 25 26  17 18 19 20 21 22 23  22 23 24 25 26 27 28
- 28 29 30 31           25 26 27 28 29 30 31  29 30                 27 28 29 30 31        24 25 26 27 28 29 30  29 30 31            
+ 28 29 30 31           25 26 27 28 29 30 31  29 30                 27 28 29 30 31        24 25 26 27 28 29 30  29 30 31
 ```
 
 
@@ -3174,11 +3174,11 @@ let getCalendar year =
         let dw = 7 - (day_of_week month year)
         [|[|1..dw|];
           [|dw + 1..dw + 7|];
-          [|dw + 8..dw + 14|]; 
-          [|dw + 15..dw + 21|]; 
-          [|dw + 22..min(ld, dw + 28)|]; 
+          [|dw + 8..dw + 14|];
+          [|dw + 15..dw + 21|];
+          [|dw + 22..min(ld, dw + 28)|];
           [|min(ld + 1, dw + 29)..ld|]|]
-    
+
     let sb_fold (f:System.Text.StringBuilder -> 'a -> System.Text.StringBuilder) (sb:System.Text.StringBuilder) (xs:'a array)  =
         for x in xs do (f sb  x) |> ignore
         sb
@@ -3197,29 +3197,29 @@ let getCalendar year =
     let left n (s:string)  = sprintf (mask_builder ("%-" + (n.ToString()) + "s")) s
     let right n (s:string) = sprintf (mask_builder ("%" + (n.ToString()) + "s")) s
 
-    let array2string xs = 
+    let array2string xs =
         let ys = xs |> Array.map (fun x -> sprintf "%2d " x)
         let sb = ys |> sb_fold (fun sb y -> sb.Append(y)) (new System.Text.StringBuilder())
         sb.ToString()
 
-    let xsss = 
+    let xsss =
         let m = get_month_calendar year
         [|1..12|] |> Array.map (fun i -> m i)
 
     let months = [|"January"; "February"; "March"; "April"; "May"; "June"; "July"; "August"; "September"; "October"; "November"; "December"|]
 
-    let sb = new System.Text.StringBuilder()    
-    sb |> sb_append "\n" |> sb_append (center 74 (year.ToString())) |> sb_appendln    
+    let sb = new System.Text.StringBuilder()
+    sb |> sb_append "\n" |> sb_append (center 74 (year.ToString())) |> sb_appendln
     for i in 0..3..9 do
       sb |> sb_appendln
-      sb |> sb_fold_in_range i (i + 2) (fun sb i -> sb |> sb_append (center 21 months.[i]) |> sb_append "      ")      
+      sb |> sb_fold_in_range i (i + 2) (fun sb i -> sb |> sb_append (center 21 months.[i]) |> sb_append "      ")
       sb |> sb_appendln
-      sb |> sb_fold_in_range i (i + 2) (fun sb i -> sb |> sb_append "Su Mo Tu We Th Fr Sa " |> sb_append "      ")      
+      sb |> sb_fold_in_range i (i + 2) (fun sb i -> sb |> sb_append "Su Mo Tu We Th Fr Sa " |> sb_append "      ")
       sb |> sb_appendln
-      sb |> sb_fold_in_range i (i + 2) (fun sb i -> sb |> sb_append (right 21 (array2string (xsss.[i].[0]))) |> sb_append "      ") 
+      sb |> sb_fold_in_range i (i + 2) (fun sb i -> sb |> sb_append (right 21 (array2string (xsss.[i].[0]))) |> sb_append "      ")
       sb |> sb_appendln
-      for j = 1 to 5 do       
-        sb |> sb_fold_in_range i (i + 2) (fun sb i -> sb |> sb_append (left 21 (array2string (xsss.[i].[j]))) |> sb_append "      ")        
+      for j = 1 to 5 do
+        sb |> sb_fold_in_range i (i + 2) (fun sb i -> sb |> sb_append (left 21 (array2string (xsss.[i].[j]))) |> sb_append "      ")
         sb |> sb_appendln
     sb.ToString()
 
@@ -3304,34 +3304,34 @@ Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa
 12 13 14 15 16 17 18      9 10 11 12 13 14 15      9 10 11 12 13 14 15
 19 20 21 22 23 24 25     16 17 18 19 20 21 22     16 17 18 19 20 21 22
 26 27 28 29 30 31        23 24 25 26 27 28        23 24 25 26 27 28 29
-                                                  30 31 
-                                                   
+                                                  30 31
+
 April 1969               May 1969                 June 1969
 Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa
        1  2  3  4  5                  1  2  3      1  2  3  4  5  6  7
  6  7  8  9 10 11 12      4  5  6  7  8  9 10      8  9 10 11 12 13 14
 13 14 15 16 17 18 19     11 12 13 14 15 16 17     15 16 17 18 19 20 21
 20 21 22 23 24 25 26     18 19 20 21 22 23 24     22 23 24 25 26 27 28
-27 28 29 30              25 26 27 28 29 30 31     29 30 
-                                                  
-                                                   
+27 28 29 30              25 26 27 28 29 30 31     29 30
+
+
 July 1969                August 1969              September 1969
 Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa
        1  2  3  4  5                     1  2         1  2  3  4  5  6
  6  7  8  9 10 11 12      3  4  5  6  7  8  9      7  8  9 10 11 12 13
 13 14 15 16 17 18 19     10 11 12 13 14 15 16     14 15 16 17 18 19 20
 20 21 22 23 24 25 26     17 18 19 20 21 22 23     21 22 23 24 25 26 27
-27 28 29 30 31           24 25 26 27 28 29 30     28 29 30 
-                         31                       
-                                                   
+27 28 29 30 31           24 25 26 27 28 29 30     28 29 30
+                         31
+
 October 1969             November 1969            December 1969
 Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa
           1  2  3  4                        1         1  2  3  4  5  6
  5  6  7  8  9 10 11      2  3  4  5  6  7  8      7  8  9 10 11 12 13
 12 13 14 15 16 17 18      9 10 11 12 13 14 15     14 15 16 17 18 19 20
 19 20 21 22 23 24 25     16 17 18 19 20 21 22     21 22 23 24 25 26 27
-26 27 28 29 30 31        23 24 25 26 27 28 29     28 29 30 31 
-                         30                       
+26 27 28 29 30 31        23 24 25 26 27 28 29     28 29 30 31
+                         30
 
 ```
 
@@ -3377,7 +3377,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 13 14 15 16 17 18 19  11 12 13 14 15 16 17  15 16 17 18 19 20 21
 20 21 22 23 24 25 26  18 19 20 21 22 23 24  22 23 24 25 26 27 28
 27 28 29 30           25 26 27 28 29 30 31  29 30
-                                            
+
         July                 August              September
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
        1  2  3  4  5                  1  2      1  2  3  4  5  6
@@ -3385,7 +3385,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 13 14 15 16 17 18 19  10 11 12 13 14 15 16  14 15 16 17 18 19 20
 20 21 22 23 24 25 26  17 18 19 20 21 22 23  21 22 23 24 25 26 27
 27 28 29 30 31        24 25 26 27 28 29 30  28 29 30
-                      31                    
+                      31
       October               November              December
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
           1  2  3  4                     1      1  2  3  4  5  6
@@ -3393,7 +3393,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 12 13 14 15 16 17 18   9 10 11 12 13 14 15  14 15 16 17 18 19 20
 19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27
 26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31
-                      30                                         
+                      30
 
 ```
 
@@ -3415,41 +3415,41 @@ Output:
 ```txt
 
                             1969
-      January               February               March          
-Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  
-          1  2  3  4                     1                     1  
- 5  6  7  8  9 10 11   2  3  4  5  6  7  8   2  3  4  5  6  7  8  
-12 13 14 15 16 17 18   9 10 11 12 13 14 15   9 10 11 12 13 14 15  
-19 20 21 22 23 24 25  16 17 18 19 20 21 22  16 17 18 19 20 21 22  
-26 27 28 29 30 31     23 24 25 26 27 28     23 24 25 26 27 28 29  
-                                            30 31                 
+      January               February               March
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+          1  2  3  4                     1                     1
+ 5  6  7  8  9 10 11   2  3  4  5  6  7  8   2  3  4  5  6  7  8
+12 13 14 15 16 17 18   9 10 11 12 13 14 15   9 10 11 12 13 14 15
+19 20 21 22 23 24 25  16 17 18 19 20 21 22  16 17 18 19 20 21 22
+26 27 28 29 30 31     23 24 25 26 27 28     23 24 25 26 27 28 29
+                                            30 31
 
-       April                  May                   June          
-Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  
-       1  2  3  4  5               1  2  3   1  2  3  4  5  6  7  
- 6  7  8  9 10 11 12   4  5  6  7  8  9 10   8  9 10 11 12 13 14  
-13 14 15 16 17 18 19  11 12 13 14 15 16 17  15 16 17 18 19 20 21  
-20 21 22 23 24 25 26  18 19 20 21 22 23 24  22 23 24 25 26 27 28  
-27 28 29 30           25 26 27 28 29 30 31  29 30                 
-                                                                  
+       April                  May                   June
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+       1  2  3  4  5               1  2  3   1  2  3  4  5  6  7
+ 6  7  8  9 10 11 12   4  5  6  7  8  9 10   8  9 10 11 12 13 14
+13 14 15 16 17 18 19  11 12 13 14 15 16 17  15 16 17 18 19 20 21
+20 21 22 23 24 25 26  18 19 20 21 22 23 24  22 23 24 25 26 27 28
+27 28 29 30           25 26 27 28 29 30 31  29 30
 
-        July                 August              September        
-Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  
-       1  2  3  4  5                  1  2      1  2  3  4  5  6  
- 6  7  8  9 10 11 12   3  4  5  6  7  8  9   7  8  9 10 11 12 13  
-13 14 15 16 17 18 19  10 11 12 13 14 15 16  14 15 16 17 18 19 20  
-20 21 22 23 24 25 26  17 18 19 20 21 22 23  21 22 23 24 25 26 27  
-27 28 29 30 31        24 25 26 27 28 29 30  28 29 30              
-                      31                                          
 
-      October               November              December        
-Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  
-          1  2  3  4                     1      1  2  3  4  5  6  
- 5  6  7  8  9 10 11   2  3  4  5  6  7  8   7  8  9 10 11 12 13  
-12 13 14 15 16 17 18   9 10 11 12 13 14 15  14 15 16 17 18 19 20  
-19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27  
-26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31           
-                      30                             
+        July                 August              September
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+       1  2  3  4  5                  1  2      1  2  3  4  5  6
+ 6  7  8  9 10 11 12   3  4  5  6  7  8  9   7  8  9 10 11 12 13
+13 14 15 16 17 18 19  10 11 12 13 14 15 16  14 15 16 17 18 19 20
+20 21 22 23 24 25 26  17 18 19 20 21 22 23  21 22 23 24 25 26 27
+27 28 29 30 31        24 25 26 27 28 29 30  28 29 30
+                      31
+
+      October               November              December
+Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+          1  2  3  4                     1      1  2  3  4  5  6
+ 5  6  7  8  9 10 11   2  3  4  5  6  7  8   7  8  9 10 11 12 13
+12 13 14 15 16 17 18   9 10 11 12 13 14 15  14 15 16 17 18 19 20
+19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27
+26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31
+                      30
 
 ```
 
@@ -3626,7 +3626,7 @@ listMonth year month = [monthHeader, weekHeader] ++ weeks'
 
       weekHeader = (T.intercalate space) $ map (T.pack . show) [(Su)..]
 
-      monthLength = toInteger $ 
+      monthLength = toInteger $
                     gregorianMonthLength year $
                     monthToInt month
 
@@ -3785,75 +3785,75 @@ main( argv_ ) {
 ```
 
 
-Output: 
+Output:
 ```txt
-                               1969                               
-       January               February               March         
- Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su 
-        1  2  3  4  5                  1  2                  1  2 
-  6  7  8  9 10 11 12   3  4  5  6  7  8  9   3  4  5  6  7  8  9 
- 13 14 15 16 17 18 19  10 11 12 13 14 15 16  10 11 12 13 14 15 16 
- 20 21 22 23 24 25 26  17 18 19 20 21 22 23  17 18 19 20 21 22 23 
- 27 28 29 30 31        24 25 26 27 28        24 25 26 27 28 29 30 
-                                             31                   
-                                                                  
-        April                  May                   June         
- Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su 
-     1  2  3  4  5  6            1  2  3  4                     1 
-  7  8  9 10 11 12 13   5  6  7  8  9 10 11   2  3  4  5  6  7  8 
- 14 15 16 17 18 19 20  12 13 14 15 16 17 18   9 10 11 12 13 14 15 
- 21 22 23 24 25 26 27  19 20 21 22 23 24 25  16 17 18 19 20 21 22 
- 28 29 30              26 27 28 29 30 31     23 24 25 26 27 28 29 
-                                             30                   
-                                                                  
-         July                 August              September       
- Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su 
-     1  2  3  4  5  6               1  2  3   1  2  3  4  5  6  7 
-  7  8  9 10 11 12 13   4  5  6  7  8  9 10   8  9 10 11 12 13 14 
- 14 15 16 17 18 19 20  11 12 13 14 15 16 17  15 16 17 18 19 20 21 
- 21 22 23 24 25 26 27  18 19 20 21 22 23 24  22 23 24 25 26 27 28 
- 28 29 30 31           25 26 27 28 29 30 31  29 30                
-                                                                  
-       October               November              December       
- Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su 
-        1  2  3  4  5                  1  2   1  2  3  4  5  6  7 
-  6  7  8  9 10 11 12   3  4  5  6  7  8  9   8  9 10 11 12 13 14 
- 13 14 15 16 17 18 19  10 11 12 13 14 15 16  15 16 17 18 19 20 21 
- 20 21 22 23 24 25 26  17 18 19 20 21 22 23  22 23 24 25 26 27 28 
+                               1969
+       January               February               March
+ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+        1  2  3  4  5                  1  2                  1  2
+  6  7  8  9 10 11 12   3  4  5  6  7  8  9   3  4  5  6  7  8  9
+ 13 14 15 16 17 18 19  10 11 12 13 14 15 16  10 11 12 13 14 15 16
+ 20 21 22 23 24 25 26  17 18 19 20 21 22 23  17 18 19 20 21 22 23
+ 27 28 29 30 31        24 25 26 27 28        24 25 26 27 28 29 30
+                                             31
+
+        April                  May                   June
+ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+     1  2  3  4  5  6            1  2  3  4                     1
+  7  8  9 10 11 12 13   5  6  7  8  9 10 11   2  3  4  5  6  7  8
+ 14 15 16 17 18 19 20  12 13 14 15 16 17 18   9 10 11 12 13 14 15
+ 21 22 23 24 25 26 27  19 20 21 22 23 24 25  16 17 18 19 20 21 22
+ 28 29 30              26 27 28 29 30 31     23 24 25 26 27 28 29
+                                             30
+
+         July                 August              September
+ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+     1  2  3  4  5  6               1  2  3   1  2  3  4  5  6  7
+  7  8  9 10 11 12 13   4  5  6  7  8  9 10   8  9 10 11 12 13 14
+ 14 15 16 17 18 19 20  11 12 13 14 15 16 17  15 16 17 18 19 20 21
+ 21 22 23 24 25 26 27  18 19 20 21 22 23 24  22 23 24 25 26 27 28
+ 28 29 30 31           25 26 27 28 29 30 31  29 30
+
+       October               November              December
+ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+        1  2  3  4  5                  1  2   1  2  3  4  5  6  7
+  6  7  8  9 10 11 12   3  4  5  6  7  8  9   8  9 10 11 12 13 14
+ 13 14 15 16 17 18 19  10 11 12 13 14 15 16  15 16 17 18 19 20 21
+ 20 21 22 23 24 25 26  17 18 19 20 21 22 23  22 23 24 25 26 27 28
  27 28 29 30 31        24 25 26 27 28 29 30  29 30 31
 ```
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-The procedures ''printCalendar'' handles formatting of large components and uses co-expressions to keep the formatting of week elements in each column synchronized. The procedure ''CalendarFormatWeek'' is a generator that returns heading elements, alignment spacing, and individual days.  
+The procedures ''printCalendar'' handles formatting of large components and uses co-expressions to keep the formatting of week elements in each column synchronized. The procedure ''CalendarFormatWeek'' is a generator that returns heading elements, alignment spacing, and individual days.
 
 ```Icon
 procedure main(A)
-   printCalendar(\A[1]|1969)	
+   printCalendar(\A[1]|1969)
 end
 
 procedure printCalendar(year)          #: Print a 3 column x 80 char calendar
-   cols := 3                                        # fixed width 
+   cols := 3                                        # fixed width
    mons := []                                       # table of months
-   "January February March April May June " || 
+   "January February March April May June " ||
    "July August September October November December " ?
-          while put(mons, tab(find(" "))) do move(1)    
+          while put(mons, tab(find(" "))) do move(1)
 
    write(center("[Snoopy Picture]",cols * 24 + 4))  # mandatory ..
    write(center(year,cols * 24 + 4), "\n")          # ... headers
-   
-   M := list(cols)                                  # coexpr container               
+
+   M := list(cols)                                  # coexpr container
    every  mon := 0 to 9 by cols do {                # go through months by cols
       writes("    ")
       every i := 1 to cols do {
          writes(center(mons[mon+i],24))             # header months
-         M[i] := create CalendarFormatWeek(year,mon + i)  # formatting coexpr 
+         M[i] := create CalendarFormatWeek(year,mon + i)  # formatting coexpr
          }
       write()
-      every 1 to 7 do {                             # 1 to max rows                   
+      every 1 to 7 do {                             # 1 to max rows
          every c := 1 to cols do {                  # for each column
             writes("    ")
-            every 1 to 7 do writes(right(@M[c],3))  # each row day element 
+            every 1 to 7 do writes(right(@M[c],3))  # each row day element
             }
          write()
          }
@@ -3861,11 +3861,11 @@ procedure printCalendar(year)          #: Print a 3 column x 80 char calendar
    return
 end
 
-link datetime  
+link datetime
 
 procedure CalendarFormatWeek(year,m)                #: Format Week for Calendar
    static D
-   initial D := [31,28,31,30,31,30,31,31,30,31,30,31]  
+   initial D := [31,28,31,30,31,30,31,31,30,31,30,31]
 
    every suspend "Su"|"Mo"|"Tu"|"We"|"Th"|"Fr"|"Sa"          # header
    every 1 to (d := (julian(m,1,year)+1)%7) do suspend ""    # lead day alignment
@@ -3876,8 +3876,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn datetime.icn provides julian and IsLeapYear] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn datetime.icn provides julian and IsLeapYear]
 
 Output:
 ```txt
@@ -3936,44 +3936,44 @@ formatCalendar=: calTitle , calBody
 
 ```j
    80 formatCalendar 1969
-                      [Insert Snoopy here]                       
-                              1969                               
-                                                                 
-         Jan         │         Feb         │         Mar         
+                      [Insert Snoopy here]
+                              1969
+
+         Jan         │         Feb         │         Mar
  Su Mo Tu We Th Fr Sa│ Su Mo Tu We Th Fr Sa│ Su Mo Tu We Th Fr Sa
            1  2  3  4│                    1│                    1
   5  6  7  8  9 10 11│  2  3  4  5  6  7  8│  2  3  4  5  6  7  8
  12 13 14 15 16 17 18│  9 10 11 12 13 14 15│  9 10 11 12 13 14 15
  19 20 21 22 23 24 25│ 16 17 18 19 20 21 22│ 16 17 18 19 20 21 22
  26 27 28 29 30 31   │ 23 24 25 26 27 28   │ 23 24 25 26 27 28 29
-                     │                     │ 30 31               
+                     │                     │ 30 31
 ─────────────────────┼─────────────────────┼─────────────────────
-         Apr         │         May         │         Jun         
+         Apr         │         May         │         Jun
  Su Mo Tu We Th Fr Sa│ Su Mo Tu We Th Fr Sa│ Su Mo Tu We Th Fr Sa
         1  2  3  4  5│              1  2  3│  1  2  3  4  5  6  7
   6  7  8  9 10 11 12│  4  5  6  7  8  9 10│  8  9 10 11 12 13 14
  13 14 15 16 17 18 19│ 11 12 13 14 15 16 17│ 15 16 17 18 19 20 21
  20 21 22 23 24 25 26│ 18 19 20 21 22 23 24│ 22 23 24 25 26 27 28
- 27 28 29 30         │ 25 26 27 28 29 30 31│ 29 30               
-                     │                     │                     
+ 27 28 29 30         │ 25 26 27 28 29 30 31│ 29 30
+                     │                     │
 ─────────────────────┼─────────────────────┼─────────────────────
-         Jul         │         Aug         │         Sep         
+         Jul         │         Aug         │         Sep
  Su Mo Tu We Th Fr Sa│ Su Mo Tu We Th Fr Sa│ Su Mo Tu We Th Fr Sa
         1  2  3  4  5│                 1  2│     1  2  3  4  5  6
   6  7  8  9 10 11 12│  3  4  5  6  7  8  9│  7  8  9 10 11 12 13
  13 14 15 16 17 18 19│ 10 11 12 13 14 15 16│ 14 15 16 17 18 19 20
  20 21 22 23 24 25 26│ 17 18 19 20 21 22 23│ 21 22 23 24 25 26 27
- 27 28 29 30 31      │ 24 25 26 27 28 29 30│ 28 29 30            
-                     │ 31                  │                     
+ 27 28 29 30 31      │ 24 25 26 27 28 29 30│ 28 29 30
+                     │ 31                  │
 ─────────────────────┼─────────────────────┼─────────────────────
-         Oct         │         Nov         │         Dec         
+         Oct         │         Nov         │         Dec
  Su Mo Tu We Th Fr Sa│ Su Mo Tu We Th Fr Sa│ Su Mo Tu We Th Fr Sa
            1  2  3  4│                    1│     1  2  3  4  5  6
   5  6  7  8  9 10 11│  2  3  4  5  6  7  8│  7  8  9 10 11 12 13
  12 13 14 15 16 17 18│  9 10 11 12 13 14 15│ 14 15 16 17 18 19 20
  19 20 21 22 23 24 25│ 16 17 18 19 20 21 22│ 21 22 23 24 25 26 27
- 26 27 28 29 30 31   │ 23 24 25 26 27 28 29│ 28 29 30 31         
-                     │ 30                  │                     
+ 26 27 28 29 30 31   │ 23 24 25 26 27 28 29│ 28 29 30 31
+                     │ 30                  │
 ```
 
 
@@ -4050,41 +4050,41 @@ public class CalendarTask {
                               [Snoopy Picture]
                                     1969
 
-          January                 February                 March        
+          January                 February                 March
     Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa
               1  2  3  4                       1                       1
      5  6  7  8  9 10 11     2  3  4  5  6  7  8     2  3  4  5  6  7  8
     12 13 14 15 16 17 18     9 10 11 12 13 14 15     9 10 11 12 13 14 15
     19 20 21 22 23 24 25    16 17 18 19 20 21 22    16 17 18 19 20 21 22
     26 27 28 29 30 31       23 24 25 26 27 28       23 24 25 26 27 28 29
-                                                    30 31               
+                                                    30 31
 
-           April                    May                     June        
+           April                    May                     June
     Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa
            1  2  3  4  5                 1  2  3     1  2  3  4  5  6  7
      6  7  8  9 10 11 12     4  5  6  7  8  9 10     8  9 10 11 12 13 14
     13 14 15 16 17 18 19    11 12 13 14 15 16 17    15 16 17 18 19 20 21
     20 21 22 23 24 25 26    18 19 20 21 22 23 24    22 23 24 25 26 27 28
-    27 28 29 30             25 26 27 28 29 30 31    29 30               
-                                                                        
+    27 28 29 30             25 26 27 28 29 30 31    29 30
 
-            July                   August                September      
+
+            July                   August                September
     Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa
            1  2  3  4  5                    1  2        1  2  3  4  5  6
      6  7  8  9 10 11 12     3  4  5  6  7  8  9     7  8  9 10 11 12 13
     13 14 15 16 17 18 19    10 11 12 13 14 15 16    14 15 16 17 18 19 20
     20 21 22 23 24 25 26    17 18 19 20 21 22 23    21 22 23 24 25 26 27
-    27 28 29 30 31          24 25 26 27 28 29 30    28 29 30            
-                            31                                          
+    27 28 29 30 31          24 25 26 27 28 29 30    28 29 30
+                            31
 
-          October                 November                December      
+          October                 November                December
     Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa
               1  2  3  4                       1        1  2  3  4  5  6
      5  6  7  8  9 10 11     2  3  4  5  6  7  8     7  8  9 10 11 12 13
     12 13 14 15 16 17 18     9 10 11 12 13 14 15    14 15 16 17 18 19 20
     19 20 21 22 23 24 25    16 17 18 19 20 21 22    21 22 23 24 25 26 27
-    26 27 28 29 30 31       23 24 25 26 27 28 29    28 29 30 31         
-                            30                                          
+    26 27 28 29 30 31       23 24 25 26 27 28 29    28 29 30 31
+                            30
 ```
 
 
@@ -4094,18 +4094,18 @@ public class CalendarTask {
 ```julia
 
 using Dates
- 
+
 const pagesizes = Dict( "lpr" => [132, 66], "tn3270" => [80, 43])
- 
+
 pagefit(prn) = haskey(pagesizes, prn) ?
     [div(pagesizes[prn][1], 22), div(pagesizes[prn][2], 12)] : [1, 1]
 pagecols(prn) = haskey(pagesizes, prn) ? pagesizes[prn][1] : 20
- 
+
 function centerobject(x, cols)
     content = string(x)
     rpad(lpad(content, div(cols + length(content), 2)), cols)
 end
- 
+
 function ljustlines(x, cols)
     arr = Vector{String}()
     for s in split(x, "\n")
@@ -4113,7 +4113,7 @@ function ljustlines(x, cols)
     end
     join(arr, "\n")
 end
- 
+
 function formatmonth(yr, mo)
     dt = Date("$yr-$mo-01")
     dayofweekfirst = dayofweek(dt)
@@ -4131,12 +4131,12 @@ function formatmonth(yr, mo)
     str *= numweeklines < 6 ? "\n\n\n" : "\n\n"
     ljustlines(str, 20)
 end
- 
+
 function formatyear(displayyear, printertype)
     calmonths = [formatmonth(displayyear, mo) for mo in 1:12]
     columns = pagecols(printertype)
     monthsperline = pagefit(printertype)[1]
-    joinspaces = max( (monthsperline > 1) ? 
+    joinspaces = max( (monthsperline > 1) ?
         div(columns - monthsperline * 20, monthsperline - 1) : 1, 1)
     str = "\n" * centerobject(displayyear, columns) * "\n"
     monthcal = [split(formatmonth(displayyear, i), "\n") for i in 1:12]
@@ -4149,13 +4149,13 @@ function formatyear(displayyear, printertype)
     end
     str
 end
- 
+
 function lineprintcalendar(years)
     for year in years, printer in keys(pagesizes)
         println(formatyear(year, printer))
     end
 end
- 
+
 lineprintcalendar(1969)
 
 ```
@@ -4305,36 +4305,36 @@ put calStr
 
 ```txt
 
-                               1969                                
-                                                                    
-      January                 February                 March     
+                               1969
+
+      January                 February                 March
 Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
        1  2  3  4  5                    1  2                    1  2
  6  7  8  9 10 11 12     3  4  5  6  7  8  9     3  4  5  6  7  8  9
 13 14 15 16 17 18 19    10 11 12 13 14 15 16    10 11 12 13 14 15 16
 20 21 22 23 24 25 26    17 18 19 20 21 22 23    17 18 19 20 21 22 23
 27 28 29 30 31          24 25 26 27 28          24 25 26 27 28 29 30
-                                                31                 
-                                                                    
-       April                    May                     June     
+                                                31
+
+       April                    May                     June
 Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
     1  2  3  4  5  6              1  2  3  4                       1
  7  8  9 10 11 12 13     5  6  7  8  9 10 11     2  3  4  5  6  7  8
 14 15 16 17 18 19 20    12 13 14 15 16 17 18     9 10 11 12 13 14 15
 21 22 23 24 25 26 27    19 20 21 22 23 24 25    16 17 18 19 20 21 22
 28 29 30                26 27 28 29 30 31       23 24 25 26 27 28 29
-                                                30                 
-                                                                    
-        July                   August                September   
+                                                30
+
+        July                   August                September
 Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
     1  2  3  4  5  6                 1  2  3     1  2  3  4  5  6  7
  7  8  9 10 11 12 13     4  5  6  7  8  9 10     8  9 10 11 12 13 14
 14 15 16 17 18 19 20    11 12 13 14 15 16 17    15 16 17 18 19 20 21
 21 22 23 24 25 26 27    18 19 20 21 22 23 24    22 23 24 25 26 27 28
-28 29 30 31             25 26 27 28 29 30 31    29 30  
-                                                                    
-                                                                    
-      October                 November                December   
+28 29 30 31             25 26 27 28 29 30 31    29 30
+
+
+      October                 November                December
 Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
        1  2  3  4  5                    1  2     1  2  3  4  5  6  7
  6  7  8  9 10 11 12     3  4  5  6  7  8  9     8  9 10 11 12 13 14
@@ -4419,44 +4419,44 @@ print_cal(1969)
 
 ```txt
 
-                               [SNOOPY]                               
+                               [SNOOPY]
 
-                             --- 1969 ---                             
+                             --- 1969 ---
 
-      JANUARY                  FEBRUARY                  MARCH        
+      JANUARY                  FEBRUARY                  MARCH
 MO TU WE TH FR SA SU     MO TU WE TH FR SA SU     MO TU WE TH FR SA SU
        1  2  3  4  5                     1  2                     1  2
  6  7  8  9 10 11 12      3  4  5  6  7  8  9      3  4  5  6  7  8  9
 13 14 15 16 17 18 19     10 11 12 13 14 15 16     10 11 12 13 14 15 16
 20 21 22 23 24 25 26     17 18 19 20 21 22 23     17 18 19 20 21 22 23
 27 28 29 30 31           24 25 26 27 28           24 25 26 27 28 29 30
-                                                  31                  
-                                                                      
-       APRIL                     MAY                      JUNE        
+                                                  31
+
+       APRIL                     MAY                      JUNE
 MO TU WE TH FR SA SU     MO TU WE TH FR SA SU     MO TU WE TH FR SA SU
     1  2  3  4  5  6               1  2  3  4                        1
  7  8  9 10 11 12 13      5  6  7  8  9 10 11      2  3  4  5  6  7  8
 14 15 16 17 18 19 20     12 13 14 15 16 17 18      9 10 11 12 13 14 15
 21 22 23 24 25 26 27     19 20 21 22 23 24 25     16 17 18 19 20 21 22
 28 29 30                 26 27 28 29 30 31        23 24 25 26 27 28 29
-                                                  30                  
-                                                                      
-        JULY                    AUGUST                 SEPTEMBER      
+                                                  30
+
+        JULY                    AUGUST                 SEPTEMBER
 MO TU WE TH FR SA SU     MO TU WE TH FR SA SU     MO TU WE TH FR SA SU
     1  2  3  4  5  6                  1  2  3      1  2  3  4  5  6  7
  7  8  9 10 11 12 13      4  5  6  7  8  9 10      8  9 10 11 12 13 14
 14 15 16 17 18 19 20     11 12 13 14 15 16 17     15 16 17 18 19 20 21
 21 22 23 24 25 26 27     18 19 20 21 22 23 24     22 23 24 25 26 27 28
-28 29 30 31              25 26 27 28 29 30 31     29 30               
-                                                                      
-                                                                      
-      OCTOBER                  NOVEMBER                 DECEMBER      
+28 29 30 31              25 26 27 28 29 30 31     29 30
+
+
+      OCTOBER                  NOVEMBER                 DECEMBER
 MO TU WE TH FR SA SU     MO TU WE TH FR SA SU     MO TU WE TH FR SA SU
        1  2  3  4  5                     1  2      1  2  3  4  5  6  7
  6  7  8  9 10 11 12      3  4  5  6  7  8  9      8  9 10 11 12 13 14
 13 14 15 16 17 18 19     10 11 12 13 14 15 16     15 16 17 18 19 20 21
 20 21 22 23 24 25 26     17 18 19 20 21 22 23     22 23 24 25 26 27 28
-27 28 29 30 31           24 25 26 27 28 29 30     29 30 31            
+27 28 29 30 31           24 25 26 27 28 29 30     29 30 31
 
 ```
 
@@ -4479,9 +4479,9 @@ Module Calendar (Year, LocaleId) {
             max=32
             do {
                   max--
-                  m=val(str$(cdate(a,0,0,max), "m"))  
+                  m=val(str$(cdate(a,0,0,max), "m"))
             } until m=Month
-             =max+1    
+             =max+1
       }
       Function SkipMo(Year, Month) {
             a=date(str$(Year)+"-"+str$(Month)+"-1")
@@ -4497,7 +4497,7 @@ Module Calendar (Year, LocaleId) {
       For j=0 to 3 {
             Print
             For i=1 to 3 {
-                  Month=i+j*3      
+                  Month=i+j*3
                   Print  Part @((i-1)*29), $(2,22), Title$(Ucase$(locale$(55+Month)))
             }
             Print
@@ -4505,7 +4505,7 @@ Module Calendar (Year, LocaleId) {
             For i=1 to 3 {
                   Month=i+j*3
                   if i>1 Then Print String$(" ",8);
-                  For k=42 to 48 :Print Title$(Ucase$(Left$(locale$(k),2)));" ";:Next k 
+                  For k=42 to 48 :Print Title$(Ucase$(Left$(locale$(k),2)));" ";:Next k
                   Skip(i)=SkipMo(Year, Month)
                   Count(i)=GetMax(Year, Month)
             }
@@ -4532,9 +4532,9 @@ Module Calendar (Year, LocaleId) {
                               d(i)++
                         }
                   }
-            Print 
+            Print
             }
-      }     
+      }
 }
 Form 80,43
 Calendar 1969, 1033 ' English
@@ -4565,10 +4565,10 @@ It knows about leap years.
 
 ```Mathematica
 
-monthlyCalendar[y_, m_] := 
+monthlyCalendar[y_, m_] :=
     Module[{
-           days = {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}, 
-           months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}, 
+           days = {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday},
+           months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"},
            d1, shortDays, offset, daysInMonth},
 
      d1 = DayOfWeek[{y, m, 1}];
@@ -4583,9 +4583,9 @@ monthlyCalendar[y_, m_] :=
              Prepend[
                      Prepend[
                              Partition[
-                                   PadRight[PadLeft[Range[daysInMonth[y, m]], daysInMonth[y, m] + offset, ""], 
-                                                  36, ""  ], 
-                                           7], 
+                                   PadRight[PadLeft[Range[daysInMonth[y, m]], daysInMonth[y, m] + offset, ""],
+                                                  36, ""  ],
+                                           7],
                                    shortDays],
                                     {months[[m]], SpanFromLeft}]]]
 
@@ -4798,11 +4798,11 @@ let () =
   | [] ->
       let year = current_year () in
       print_calendar ~year
-  
+
   | ["--year"; _year] ->
       let year = int_of_string _year in
       print_calendar ~year
-  
+
   | _ ->
       usage ()
 ```
@@ -4814,40 +4814,40 @@ let () =
 
 $ ocaml calendar.ml --year 1969
 
-                     ( Snoopy's best pic )                     
-                              1969                             
-       January                 May                September       
- Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su 
+                     ( Snoopy's best pic )
+                              1969
+       January                 May                September
+ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
         1  2  3  4  5            1  2  3  4   1  2  3  4  5  6  7
   6  7  8  9 10 11 12   5  6  7  8  9 10 11   8  9 10 11 12 13 14
  13 14 15 16 17 18 19  12 13 14 15 16 17 18  15 16 17 18 19 20 21
  20 21 22 23 24 25 26  19 20 21 22 23 24 25  22 23 24 25 26 27 28
- 27 28 29 30 31        26 27 28 29 30 31     29 30               
-                                                                 
-       February                June                October        
- Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su 
+ 27 28 29 30 31        26 27 28 29 30 31     29 30
+
+       February                June                October
+ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
                  1  2                     1         1  2  3  4  5
   3  4  5  6  7  8  9   2  3  4  5  6  7  8   6  7  8  9 10 11 12
  10 11 12 13 14 15 16   9 10 11 12 13 14 15  13 14 15 16 17 18 19
  17 18 19 20 21 22 23  16 17 18 19 20 21 22  20 21 22 23 24 25 26
- 24 25 26 27 28        23 24 25 26 27 28 29  27 28 29 30 31      
-                       30                                        
-        March                  July                November       
- Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su 
+ 24 25 26 27 28        23 24 25 26 27 28 29  27 28 29 30 31
+                       30
+        March                  July                November
+ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
                  1  2      1  2  3  4  5  6                  1  2
   3  4  5  6  7  8  9   7  8  9 10 11 12 13   3  4  5  6  7  8  9
  10 11 12 13 14 15 16  14 15 16 17 18 19 20  10 11 12 13 14 15 16
  17 18 19 20 21 22 23  21 22 23 24 25 26 27  17 18 19 20 21 22 23
  24 25 26 27 28 29 30  28 29 30 31           24 25 26 27 28 29 30
- 31                                                              
-        April                 August               December       
- Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su 
+ 31
+        April                 August               December
+ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
      1  2  3  4  5  6               1  2  3   1  2  3  4  5  6  7
   7  8  9 10 11 12 13   4  5  6  7  8  9 10   8  9 10 11 12 13 14
  14 15 16 17 18 19 20  11 12 13 14 15 16 17  15 16 17 18 19 20 21
  21 22 23 24 25 26 27  18 19 20 21 22 23 24  22 23 24 25 26 27 28
- 28 29 30              25 26 27 28 29 30 31  29 30 31            
-                                                                 
+ 28 29 30              25 26 27 28 29 30 31  29 30 31
+
 
 ```
 
@@ -4884,7 +4884,7 @@ Begin {
 }
 Process {
     Write-Output (CenterStr $Year ($COL_WIDTH * $COLS + 4))
-    $(0..($MONTH_COUNT / $COLS - 1)) | %{ 
+    $(0..($MONTH_COUNT / $COLS - 1)) | %{
         $fm = $_ * $COLS
         $monthNums = $fm..($fm + $COLS - 1) | %{ $_ + 1 }
         $months = $monthNums | %{ MonthLines $_ }
@@ -4923,15 +4923,15 @@ sub calendar {
     my @mon_days = qw/31 28 31 30 31 30 31 31 30 31 30 31/;
     ++$mon_days[1] if $year % 4 == 0 && ($year % 400 == 0 || $year % 1
 +00 != 0);
-    
+
     my $cal = " Sun Mon Tue Wed Thu Fri Sat\n";
 
     # Months are indexed beginning at 0
     my $time = timegm(0,0,0,1,$month,$year);
     my $wday = (gmtime $time)[6];
-    
+
     $cal .= "    " x $wday;
-    
+
     my $mday = 1;
 
     while ($mday <= $mon_days[$month]) {
@@ -5012,7 +5012,7 @@ sub fmt-month ($year, $month) {
 
 ## Phix
 
-Gregorian calender only. 
+Gregorian calender only.
 
 ```Phix
 include builtins\timedate.e
@@ -5172,28 +5172,28 @@ Output:
 
 ### === 1969 ===
 
-Jan  1 Wed        
-     2 Thu        
-     3 Fri        
-     4 Sat        
-     5 Sun        
+Jan  1 Wed
+     2 Thu
+     3 Fri
+     4 Sat
+     5 Sun
      6 Mon  Week 2
-     7 Tue        
+     7 Tue
 ....
-    28 Sat        
-    29 Sun        
+    28 Sat
+    29 Sun
     30 Mon Week 27
-Jul  1 Tue        
-     2 Wed        
-     3 Thu        
-     4 Fri        
+Jul  1 Tue
+     2 Wed
+     3 Thu
+     4 Fri
 ....
-    25 Thu        
-    26 Fri        
-    27 Sat        
-    28 Sun        
+    25 Thu
+    26 Fri
+    27 Sat
+    28 Sun
     29 Mon Week 53
-    30 Tue        
+    30 Tue
     31 Wed
 ```
 
@@ -5202,7 +5202,7 @@ Jul  1 Tue
 ## Pike
 
 
-the Calendar in Pike does not handle the transitions from the Julian to the Gregorian calendar, but it handles those separately. 
+the Calendar in Pike does not handle the transitions from the Julian to the Gregorian calendar, but it handles those separately.
 the default calendar is ISO, other options are Gregorian, Julian, Bahai, Coptic, Islamic and Discordian.
 
 this script also highlights holidays by region. regions may be chosen by 2-letter country name, as well as some special 'regions':                 christianity, orthodox, bahai, islamic, among others.
@@ -5253,7 +5253,7 @@ array make_month(object month, int field_width, void|string region)
 
     out += ({ ({ month->month_name(), month->month_no(), month->year_name() }) });
     out += ({ weekday_names });
-    out += showday(month->weeks()->days()[*][*], month, today, holidays, field_width);  
+    out += showday(month->weeks()->days()[*][*], month, today, holidays, field_width);
 
     out += ({ ({ " "*field_width })*sizeof(weekday_names) });
 
@@ -5267,7 +5267,7 @@ string print_month(object _month, void|int field_width, void|string region)
     array month = make_month(_month, field_width, region);
     string out = "";
 
-    out += sprintf("%|*s\n", (field_width+1)*sizeof(month[1])-1, sprintf("%s", month[0][0])); 
+    out += sprintf("%|*s\n", (field_width+1)*sizeof(month[1])-1, sprintf("%s", month[0][0]));
     out += sprintf((month[1..][*]*" ")*"\n");
     return out;
 }
@@ -5288,10 +5288,10 @@ string print_year(object year, void|string region)
         float max_width = (float)((columns+2)/(month_width+2));
         float max_height = ceil(year->number_of_months()/max_width);
         float w = max_width;
-        
+
         while(ceil(year->number_of_months()/(w-1)) == max_height)
             w--;
-        
+
         foreach(print_month(year->months()[*], day_width, region)/w;; array row)
         {
             array rows = row[*]/"\n";
@@ -5335,34 +5335,34 @@ Output: (holidays lost in copy-paste)
 
 ```txt
 
-                               1969                              
-       January               February               March        
+                               1969
+       January               February               March
  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
         1  2  3  4  5                  1  2                  1  2
   6  7  8  9 10 11 12   3  4  5  6  7  8  9   3  4  5  6  7  8  9
  13 14 15 16 17 18 19  10 11 12 13 14 15 16  10 11 12 13 14 15 16
  20 21 22 23 24 25 26  17 18 19 20 21 22 23  17 18 19 20 21 22 23
  27 28 29 30 31        24 25 26 27 28        24 25 26 27 28 29 30
-                                             31                  
-                                                                 
-        April                  May                   June        
+                                             31
+
+        April                  May                   June
  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
      1  2  3  4  5  6            1  2  3  4                     1
   7  8  9 10 11 12 13   5  6  7  8  9 10 11   2  3  4  5  6  7  8
  14 15 16 17 18 19 20  12 13 14 15 16 17 18   9 10 11 12 13 14 15
  21 22 23 24 25 26 27  19 20 21 22 23 24 25  16 17 18 19 20 21 22
  28 29 30              26 27 28 29 30 31     23 24 25 26 27 28 29
-                                             30                  
-                                                                 
-         July                 August              September      
+                                             30
+
+         July                 August              September
  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
      1  2  3  4  5  6               1  2  3   1  2  3  4  5  6  7
   7  8  9 10 11 12 13   4  5  6  7  8  9 10   8  9 10 11 12 13 14
  14 15 16 17 18 19 20  11 12 13 14 15 16 17  15 16 17 18 19 20 21
  21 22 23 24 25 26 27  18 19 20 21 22 23 24  22 23 24 25 26 27 28
- 28 29 30 31           25 26 27 28 29 30 31  29 30               
-                                                                 
-       October               November              December      
+ 28 29 30 31           25 26 27 28 29 30 31  29 30
+
+       October               November              December
  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
         1  2  3  4  5                  1  2   1  2  3  4  5  6  7
   6  7  8  9 10 11 12   3  4  5  6  7  8  9   8  9 10 11 12 13 14
@@ -5384,7 +5384,7 @@ calendar: procedure (year) options (main);
    declare (a, b, c) (0:5,0:6) character (3);
    declare name_month(12) static character (9) varying initial (
       'JANUARY', 'FEBRUARY', 'MARCH',     'APRIL',   'MAY',      'JUNE',
-      'JULY',    'AUGUST',   'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'); 
+      'JULY',    'AUGUST',   'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER');
    declare i fixed;
    declare (mm, mmp1, mmp2) pic '99';
 
@@ -5437,40 +5437,40 @@ Output:
 
 ```txt
 
-                         CALENDAR FOR 1969                         
+                         CALENDAR FOR 1969
 
 
-        JANUARY               FEBRUARY                 MARCH         
-  M  T  W  T  F  S  S    M  T  W  T  F  S  S    M  T  W  T  F  S  S  
+        JANUARY               FEBRUARY                 MARCH
+  M  T  W  T  F  S  S    M  T  W  T  F  S  S    M  T  W  T  F  S  S
         1  2  3  4  5                   1  2                   1  2
   6  7  8  9 10 11 12    3  4  5  6  7  8  9    3  4  5  6  7  8  9
  13 14 15 16 17 18 19   10 11 12 13 14 15 16   10 11 12 13 14 15 16
  20 21 22 23 24 25 26   17 18 19 20 21 22 23   17 18 19 20 21 22 23
  27 28 29 30 31         24 25 26 27 28         24 25 26 27 28 29 30
-                                               31                  
-         APRIL                   MAY                   JUNE          
-  M  T  W  T  F  S  S    M  T  W  T  F  S  S    M  T  W  T  F  S  S  
+                                               31
+         APRIL                   MAY                   JUNE
+  M  T  W  T  F  S  S    M  T  W  T  F  S  S    M  T  W  T  F  S  S
      1  2  3  4  5  6             1  2  3  4                      1
   7  8  9 10 11 12 13    5  6  7  8  9 10 11    2  3  4  5  6  7  8
  14 15 16 17 18 19 20   12 13 14 15 16 17 18    9 10 11 12 13 14 15
  21 22 23 24 25 26 27   19 20 21 22 23 24 25   16 17 18 19 20 21 22
  28 29 30               26 27 28 29 30 31      23 24 25 26 27 28 29
-                                               30                  
-         JULY                  AUGUST                SEPTEMBER       
-  M  T  W  T  F  S  S    M  T  W  T  F  S  S    M  T  W  T  F  S  S  
+                                               30
+         JULY                  AUGUST                SEPTEMBER
+  M  T  W  T  F  S  S    M  T  W  T  F  S  S    M  T  W  T  F  S  S
      1  2  3  4  5  6                1  2  3    1  2  3  4  5  6  7
   7  8  9 10 11 12 13    4  5  6  7  8  9 10    8  9 10 11 12 13 14
  14 15 16 17 18 19 20   11 12 13 14 15 16 17   15 16 17 18 19 20 21
  21 22 23 24 25 26 27   18 19 20 21 22 23 24   22 23 24 25 26 27 28
- 28 29 30 31            25 26 27 28 29 30 31   29 30               
-                                                                   
-        OCTOBER               NOVEMBER               DECEMBER        
-  M  T  W  T  F  S  S    M  T  W  T  F  S  S    M  T  W  T  F  S  S  
+ 28 29 30 31            25 26 27 28 29 30 31   29 30
+
+        OCTOBER               NOVEMBER               DECEMBER
+  M  T  W  T  F  S  S    M  T  W  T  F  S  S    M  T  W  T  F  S  S
         1  2  3  4  5                   1  2    1  2  3  4  5  6  7
   6  7  8  9 10 11 12    3  4  5  6  7  8  9    8  9 10 11 12 13 14
  13 14 15 16 17 18 19   10 11 12 13 14 15 16   15 16 17 18 19 20 21
  20 21 22 23 24 25 26   17 18 19 20 21 22 23   22 23 24 25 26 27 28
- 27 28 29 30 31         24 25 26 27 28 29 30   29 30 31            
+ 27 28 29 30 31         24 25 26 27 28 29 30   29 30 31
 
 
 ```
@@ -5479,11 +5479,11 @@ Extract for 2013:
 
 ```txt
 
-                         CALENDAR FOR 2013                         
+                         CALENDAR FOR 2013
 
 
-        JANUARY               FEBRUARY                 MARCH         
-  M  T  W  T  F  S  S    M  T  W  T  F  S  S    M  T  W  T  F  S  S  
+        JANUARY               FEBRUARY                 MARCH
+  M  T  W  T  F  S  S    M  T  W  T  F  S  S    M  T  W  T  F  S  S
      1  2  3  4  5  6                1  2  3                1  2  3
   7  8  9 10 11 12 13    4  5  6  7  8  9 10    4  5  6  7  8  9 10
  14 15 16 17 18 19 20   11 12 13 14 15 16 17   11 12 13 14 15 16 17
@@ -5496,19 +5496,19 @@ Extract for 2013:
 
 ## Prolog
 
-Call the write_calendar(Year) predicate to print a calendar for a year. 
-Works with swi-prolog and requires the day_of_the_week library call. 
+Call the write_calendar(Year) predicate to print a calendar for a year.
+Works with swi-prolog and requires the day_of_the_week library call.
 
 
 ```prolog
-% Write out the calender, because format can actually span multiple lines, it is easier 
+% Write out the calender, because format can actually span multiple lines, it is easier
 % to write out the static parts in place and insert the generated parts into that format.
 write_calendar(Year) :-
 	month_x3_format(Year, 1, 2, 3, F1_3),
 	month_x3_format(Year, 4, 5, 6, F4_6),
 	month_x3_format(Year, 7, 8, 9, F7_9),
 	month_x3_format(Year, 10, 11, 12, F10_12),
-	
+
 	format('
 
                                       ~w
@@ -5527,17 +5527,17 @@ write_calendar(Year) :-
 
             October                  November                 December
       Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa
-~w	
+~w
 ', [Year, F1_3, F4_6, F7_9, F10_12]), !.
 
 % Generate the data for a row of months and then create an atom one row at a time
-% for all of the months. 
+% for all of the months.
 month_x3_format(Year, M1, M2, M3, F) :-
 	calc_month_rows(Year, M1, M1r),
 	calc_month_rows(Year, M2, M2r),
 	calc_month_rows(Year, M3, M3r),
 	month_x3_format(M1r, M2r, M3r, F).
-	
+
 month_x3_format(M1, M2, M3, '') :- maplist(=('   '), M1), maplist(=('   '), M2), maplist(=('   '), M3).
 month_x3_format(M1, M2, M3, F) :-
 		month_format('      ', M1, M1r, F1),
@@ -5546,8 +5546,8 @@ month_x3_format(M1, M2, M3, F) :-
 		atom_concat(F3, '\n', F4),
 		month_x3_format(M1r, M2r, M3r, Fr),
 		atom_concat(F4, Fr, F).
-	
-month_format(Orig, [Su,Mo,Tu,We,Th,Fr,Sa|R], R, F) :- 
+
+month_format(Orig, [Su,Mo,Tu,We,Th,Fr,Sa|R], R, F) :-
 	maplist(day_format, [Su,Mo,Tu,We,Th,Fr,Sa], Formatted),
 	format(atom(F2), '~w~w~w~w~w~w~w    ', Formatted),
 	atom_concat(Orig, F2, F).
@@ -5557,7 +5557,7 @@ day_format(D, F) :- D < 10, format(atom(F), '~w  ', D).
 day_format(D, F) :- D >= 10, format(atom(F), '~w ', D).
 
 % Calculate the days of a month, this is done by getting the first day of the month,
-% then offsetting that with spaces from the start and then adding 1-NumDaysinMonth and 
+% then offsetting that with spaces from the start and then adding 1-NumDaysinMonth and
 % finally spaces until the end. The maximum possible size is used and then truncated later.
 calc_month_rows(Year, Month, Result) :-
 	length(Result, 42), % max 6 rows of 7 days
@@ -5566,8 +5566,8 @@ calc_month_rows(Year, Month, Result) :-
 	day_offset(FirstWeekDay, Offset),
 	day_print_map(DaysInMonth, Offset, Result).
 
-day_print_map(DaysInMonth, 0, [1|R]) :-	
-	day_print_map2(DaysInMonth, 2, R).	
+day_print_map(DaysInMonth, 0, [1|R]) :-
+	day_print_map2(DaysInMonth, 2, R).
 day_print_map(DaysInMonth, Offset, ['   '|R]) :-
 	dif(Offset, 0),
 	succ(NewOffset, Offset),
@@ -5580,20 +5580,20 @@ day_print_map([]).
 day_print_map(['   '|R]) :- day_print_map(R).
 
 % Figure out the number of days in a month based on whether it is a leap year or not.
-month_days(2, Year, Days) :- 
+month_days(2, Year, Days) :-
 	is_leap_year(Year) -> Days = 29
-	; Days = 28. 
+	; Days = 28.
 month_days(Month, _, Days) :-
 	dif(Month, 2),
 	nth1(Month, [31, _, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], Days).
 
-% Figure out the space offset based on the day the month starts on. 
+% Figure out the space offset based on the day the month starts on.
 day_offset(D, D) :- dif(D, 7).
 day_offset(7, 0).
 
 % Test for leap years
-is_leap_year(Year) :- 
-	0 is Year mod 100 -> 0 is Year mod 400 
+is_leap_year(Year) :-
+	0 is Year mod 100 -> 0 is Year mod 400
 	; 0 is Year mod 4.
 ```
 
@@ -5761,7 +5761,7 @@ foreach m system/locale/months [
   repeat i 31 [
     if attempt [c: to-date rejoin [i"-"m"-"y]][
       prin join either 1 = length? form i ["  "][" "] i
-      if c/weekday = 7 [print ""] 
+      if c/weekday = 7 [print ""]
     ]
   ]
 ] ask "^/^/Press [ENTER] to Continue..."]
@@ -5778,7 +5778,7 @@ option) any calendar for any month, and by extension, any number of months (so t
 
 year could be displayed/written).   To make the program much smaller, a LOT of code was removed
 
-(but it's still a sledgehammer doing the work of a small hammer). 
+(but it's still a sledgehammer doing the work of a small hammer).
 
 
 Some of the code removed:
@@ -5823,9 +5823,9 @@ month(s), and any size screen/device to show (display) it.   Accommodations were
 
 to allow the choice of what type of cells would be generated: small/smaller/smallest for height, and
 
-narrow/narrower/narrowest for the width.   The size (width/depth) of the output device/terminal can be 
+narrow/narrower/narrowest for the width.   The size (width/depth) of the output device/terminal can be
 
-specified.   The choice could've been performed programmatically, but I never believe that a program 
+specified.   The choice could've been performed programmatically, but I never believe that a program
 
 could best choose over what the user wants, as it depends on esthetics and looks (fashion).
 
@@ -5983,7 +5983,7 @@ ungrid:return translate(arg(1),,"│║─═┤┐└┴┬├┼┘┌╔╗�
 
 ```txt
 
-                          «Snoopy "picture" here» 
+                          «Snoopy "picture" here»
 
      January   1969          February   1969            March   1969
   Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa
@@ -6067,8 +6067,8 @@ A width of 156 was used to illustrate showing a grid, otherwise it would fit in 
                                                                 ##XXXxxxxxxx
                                                                        /  ---'~;
                                                                       /    /~|-
-                                                               _____=(   ~~  |______ 
-                                                              /_____________________\ 
+                                                               _____=(   ~~  |______
+                                                              /_____________________\
                                                              /_______________________\
                                                             /_________________________\
                                                            /___________________________\
@@ -6091,7 +6091,7 @@ A width of 156 was used to illustrate showing a grid, otherwise it would fit in 
 load "guilib.ring"
 load "stdlib.ring"
 
-new qapp 
+new qapp
        {
         win1 = new qwidget() {
 
@@ -6165,7 +6165,7 @@ func showmonths(m)
                                         {
                                         if n%3 = 1
                                            col = 120
-                                           rownr = floor(n/3)          
+                                           rownr = floor(n/3)
                                            if rownr = 0
                                               rownr = n/3
                                            ok
@@ -6201,7 +6201,7 @@ func showweeks(n)
                                   if colnr = 0
                                      colnr = 3
                                   ok
-                                  rownr = floor(n/3) 
+                                  rownr = floor(n/3)
                                   if n%3 = 0
                                      rownr = floor(n/3)-1
                                   ok
@@ -6333,65 +6333,65 @@ Here is 1969 in 132 columns.
 
 
 ```txt
-$ ruby cal.rb 1969                                                             
-                                                             [Snoopy]                                                             
-                                                               1969                                                               
-      January               February               March                 April                  May                   June        
+$ ruby cal.rb 1969
+                                                             [Snoopy]
+                                                               1969
+      January               February               March                 April                  May                   June
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
           1  2  3  4                     1                     1         1  2  3  4  5               1  2  3   1  2  3  4  5  6  7
  5  6  7  8  9 10 11   2  3  4  5  6  7  8   2  3  4  5  6  7  8   6  7  8  9 10 11 12   4  5  6  7  8  9 10   8  9 10 11 12 13 14
 12 13 14 15 16 17 18   9 10 11 12 13 14 15   9 10 11 12 13 14 15  13 14 15 16 17 18 19  11 12 13 14 15 16 17  15 16 17 18 19 20 21
 19 20 21 22 23 24 25  16 17 18 19 20 21 22  16 17 18 19 20 21 22  20 21 22 23 24 25 26  18 19 20 21 22 23 24  22 23 24 25 26 27 28
-26 27 28 29 30 31     23 24 25 26 27 28     23 24 25 26 27 28 29  27 28 29 30           25 26 27 28 29 30 31  29 30               
-                                            30 31                                                                                 
-        July                 August              September              October               November              December      
+26 27 28 29 30 31     23 24 25 26 27 28     23 24 25 26 27 28 29  27 28 29 30           25 26 27 28 29 30 31  29 30
+                                            30 31
+        July                 August              September              October               November              December
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
        1  2  3  4  5                  1  2      1  2  3  4  5  6            1  2  3  4                     1      1  2  3  4  5  6
  6  7  8  9 10 11 12   3  4  5  6  7  8  9   7  8  9 10 11 12 13   5  6  7  8  9 10 11   2  3  4  5  6  7  8   7  8  9 10 11 12 13
 13 14 15 16 17 18 19  10 11 12 13 14 15 16  14 15 16 17 18 19 20  12 13 14 15 16 17 18   9 10 11 12 13 14 15  14 15 16 17 18 19 20
 20 21 22 23 24 25 26  17 18 19 20 21 22 23  21 22 23 24 25 26 27  19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27
-27 28 29 30 31        24 25 26 27 28 29 30  28 29 30              26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31         
-                      31                                                                30                                        
+27 28 29 30 31        24 25 26 27 28 29 30  28 29 30              26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31
+                      31                                                                30
 ```
 
 
 The output in 80 columns for the Gregorian reform year (note missing days in september):
 
 ```txt
-                            [Snoopy]                            
-                              1752                              
-      January               February               March        
+                            [Snoopy]
+                              1752
+      January               February               March
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
           1  2  3  4                     1   1  2  3  4  5  6  7
  5  6  7  8  9 10 11   2  3  4  5  6  7  8   8  9 10 11 12 13 14
 12 13 14 15 16 17 18   9 10 11 12 13 14 15  15 16 17 18 19 20 21
 19 20 21 22 23 24 25  16 17 18 19 20 21 22  22 23 24 25 26 27 28
-26 27 28 29 30 31     23 24 25 26 27 28 29  29 30 31            
-                                                                
-       April                  May                   June        
+26 27 28 29 30 31     23 24 25 26 27 28 29  29 30 31
+
+       April                  May                   June
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
           1  2  3  4                  1  2      1  2  3  4  5  6
  5  6  7  8  9 10 11   3  4  5  6  7  8  9   7  8  9 10 11 12 13
 12 13 14 15 16 17 18  10 11 12 13 14 15 16  14 15 16 17 18 19 20
 19 20 21 22 23 24 25  17 18 19 20 21 22 23  21 22 23 24 25 26 27
-26 27 28 29 30        24 25 26 27 28 29 30  28 29 30            
-                      31                                        
-        July                 August              September      
+26 27 28 29 30        24 25 26 27 28 29 30  28 29 30
+                      31
+        July                 August              September
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
           1  2  3  4                     1         1  2 14 15 16
  5  6  7  8  9 10 11   2  3  4  5  6  7  8  17 18 19 20 21 22 23
 12 13 14 15 16 17 18   9 10 11 12 13 14 15  24 25 26 27 28 29 30
-19 20 21 22 23 24 25  16 17 18 19 20 21 22                      
-26 27 28 29 30 31     23 24 25 26 27 28 29                      
-                      30 31                                     
-      October               November              December      
+19 20 21 22 23 24 25  16 17 18 19 20 21 22
+26 27 28 29 30 31     23 24 25 26 27 28 29
+                      30 31
+      October               November              December
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
  1  2  3  4  5  6  7            1  2  3  4                  1  2
  8  9 10 11 12 13 14   5  6  7  8  9 10 11   3  4  5  6  7  8  9
 15 16 17 18 19 20 21  12 13 14 15 16 17 18  10 11 12 13 14 15 16
 22 23 24 25 26 27 28  19 20 21 22 23 24 25  17 18 19 20 21 22 23
 29 30 31              26 27 28 29 30        24 25 26 27 28 29 30
-                                            31   
+                                            31
 
 ```
 
@@ -6509,7 +6509,7 @@ fn main() {
 {{libheader|Scala}}
 
 
-###  Scala Version 1 
+###  Scala Version 1
 
 
 [[Category:Scala examples needing attention]]
@@ -6673,73 +6673,73 @@ object CalendarPrint extends App {
 
 {{out}}
 <pre style="height:31ex;overflow:scroll">                               [Snoopy Picture]
-                                
+
                                      1969
-                                      
-              January               February               March          
-        Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  
-               1  2  3  4  5                  1  2                  1  2  
-         6  7  8  9 10 11 12   3  4  5  6  7  8  9   3  4  5  6  7  8  9  
-        13 14 15 16 17 18 19  10 11 12 13 14 15 16  10 11 12 13 14 15 16  
-        20 21 22 23 24 25 26  17 18 19 20 21 22 23  17 18 19 20 21 22 23  
-        27 28 29 30 31        24 25 26 27 28        24 25 26 27 28 29 30  
-                                                    31                    
 
-               April                  May                   June          
-        Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  
-            1  2  3  4  5  6            1  2  3  4                     1  
-         7  8  9 10 11 12 13   5  6  7  8  9 10 11   2  3  4  5  6  7  8  
-        14 15 16 17 18 19 20  12 13 14 15 16 17 18   9 10 11 12 13 14 15  
-        21 22 23 24 25 26 27  19 20 21 22 23 24 25  16 17 18 19 20 21 22  
-        28 29 30              26 27 28 29 30 31     23 24 25 26 27 28 29  
-                                                    30                    
+              January               February               March
+        Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+               1  2  3  4  5                  1  2                  1  2
+         6  7  8  9 10 11 12   3  4  5  6  7  8  9   3  4  5  6  7  8  9
+        13 14 15 16 17 18 19  10 11 12 13 14 15 16  10 11 12 13 14 15 16
+        20 21 22 23 24 25 26  17 18 19 20 21 22 23  17 18 19 20 21 22 23
+        27 28 29 30 31        24 25 26 27 28        24 25 26 27 28 29 30
+                                                    31
 
-                July                 August              September        
-        Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  
-            1  2  3  4  5  6               1  2  3   1  2  3  4  5  6  7  
-         7  8  9 10 11 12 13   4  5  6  7  8  9 10   8  9 10 11 12 13 14  
-        14 15 16 17 18 19 20  11 12 13 14 15 16 17  15 16 17 18 19 20 21  
-        21 22 23 24 25 26 27  18 19 20 21 22 23 24  22 23 24 25 26 27 28  
-        28 29 30 31           25 26 27 28 29 30 31  29 30                 
-                                                                          
+               April                  May                   June
+        Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+            1  2  3  4  5  6            1  2  3  4                     1
+         7  8  9 10 11 12 13   5  6  7  8  9 10 11   2  3  4  5  6  7  8
+        14 15 16 17 18 19 20  12 13 14 15 16 17 18   9 10 11 12 13 14 15
+        21 22 23 24 25 26 27  19 20 21 22 23 24 25  16 17 18 19 20 21 22
+        28 29 30              26 27 28 29 30 31     23 24 25 26 27 28 29
+                                                    30
 
-              October               November              December        
-        Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  
-               1  2  3  4  5                  1  2   1  2  3  4  5  6  7  
-         6  7  8  9 10 11 12   3  4  5  6  7  8  9   8  9 10 11 12 13 14  
-        13 14 15 16 17 18 19  10 11 12 13 14 15 16  15 16 17 18 19 20 21  
-        20 21 22 23 24 25 26  17 18 19 20 21 22 23  22 23 24 25 26 27 28  
-        27 28 29 30 31        24 25 26 27 28 29 30  29 30 31              
-                                                                          
+                July                 August              September
+        Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+            1  2  3  4  5  6               1  2  3   1  2  3  4  5  6  7
+         7  8  9 10 11 12 13   4  5  6  7  8  9 10   8  9 10 11 12 13 14
+        14 15 16 17 18 19 20  11 12 13 14 15 16 17  15 16 17 18 19 20 21
+        21 22 23 24 25 26 27  18 19 20 21 22 23 24  22 23 24 25 26 27 28
+        28 29 30 31           25 26 27 28 29 30 31  29 30
+
+
+              October               November              December
+        Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+               1  2  3  4  5                  1  2   1  2  3  4  5  6  7
+         6  7  8  9 10 11 12   3  4  5  6  7  8  9   8  9 10 11 12 13 14
+        13 14 15 16 17 18 19  10 11 12 13 14 15 16  15 16 17 18 19 20 21
+        20 21 22 23 24 25 26  17 18 19 20 21 22 23  22 23 24 25 26 27 28
+        27 28 29 30 31        24 25 26 27 28 29 30  29 30 31
+
 
                                                          [Snoopy Picture]
-                                                          
-                                                               1582
-                                                                
-       January               February               March                 April                  May                   June          
- Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  
-  1  2  3  4  5  6  7            1  2  3  4            1  2  3  4                     1      1  2  3  4  5  6               1  2  3  
-  8  9 10 11 12 13 14   5  6  7  8  9 10 11   5  6  7  8  9 10 11   2  3  4  5  6  7  8   7  8  9 10 11 12 13   4  5  6  7  8  9 10  
- 15 16 17 18 19 20 21  12 13 14 15 16 17 18  12 13 14 15 16 17 18   9 10 11 12 13 14 15  14 15 16 17 18 19 20  11 12 13 14 15 16 17  
- 22 23 24 25 26 27 28  19 20 21 22 23 24 25  19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27  18 19 20 21 22 23 24  
- 29 30 31              26 27 28              26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31           25 26 27 28 29 30     
-                                                                   30                                                                
 
-         July                 August              September              October               November              December        
- Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  
-                    1         1  2  3  4  5                  1  2   1  2  3  4 15 16 17   1  2  3  4  5  6  7         1  2  3  4  5  
-  2  3  4  5  6  7  8   6  7  8  9 10 11 12   3  4  5  6  7  8  9  18 19 20 21 22 23 24   8  9 10 11 12 13 14   6  7  8  9 10 11 12  
-  9 10 11 12 13 14 15  13 14 15 16 17 18 19  10 11 12 13 14 15 16  25 26 27 28 29 30 31  15 16 17 18 19 20 21  13 14 15 16 17 18 19  
- 16 17 18 19 20 21 22  20 21 22 23 24 25 26  17 18 19 20 21 22 23                        22 23 24 25 26 27 28  20 21 22 23 24 25 26  
- 23 24 25 26 27 28 29  27 28 29 30 31        24 25 26 27 28 29 30                        29 30                 27 28 29 30 31        
- 30 31                                                                                                                               
+                                                               1582
+
+       January               February               March                 April                  May                   June
+ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+  1  2  3  4  5  6  7            1  2  3  4            1  2  3  4                     1      1  2  3  4  5  6               1  2  3
+  8  9 10 11 12 13 14   5  6  7  8  9 10 11   5  6  7  8  9 10 11   2  3  4  5  6  7  8   7  8  9 10 11 12 13   4  5  6  7  8  9 10
+ 15 16 17 18 19 20 21  12 13 14 15 16 17 18  12 13 14 15 16 17 18   9 10 11 12 13 14 15  14 15 16 17 18 19 20  11 12 13 14 15 16 17
+ 22 23 24 25 26 27 28  19 20 21 22 23 24 25  19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27  18 19 20 21 22 23 24
+ 29 30 31              26 27 28              26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31           25 26 27 28 29 30
+                                                                   30
+
+         July                 August              September              October               November              December
+ Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su  Mo Tu We Th Fr Sa Su
+                    1         1  2  3  4  5                  1  2   1  2  3  4 15 16 17   1  2  3  4  5  6  7         1  2  3  4  5
+  2  3  4  5  6  7  8   6  7  8  9 10 11 12   3  4  5  6  7  8  9  18 19 20 21 22 23 24   8  9 10 11 12 13 14   6  7  8  9 10 11 12
+  9 10 11 12 13 14 15  13 14 15 16 17 18 19  10 11 12 13 14 15 16  25 26 27 28 29 30 31  15 16 17 18 19 20 21  13 14 15 16 17 18 19
+ 16 17 18 19 20 21 22  20 21 22 23 24 25 26  17 18 19 20 21 22 23                        22 23 24 25 26 27 28  20 21 22 23 24 25 26
+ 23 24 25 26 27 28 29  27 28 29 30 31        24 25 26 27 28 29 30                        29 30                 27 28 29 30 31
+ 30 31
 
 
 ```
 
 
 
-###  Scala Version 2 
+###  Scala Version 2
 
 {{works with|Scala|2.10.1}}
 
@@ -6861,25 +6861,25 @@ Sample output for 1792:
 
 ```txt
 
-                                       [Snoopy]                                       
-                                         1752                                         
-       January              February                March                 April       
+                                       [Snoopy]
+                                         1752
+       January              February                March                 April
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
           1  2  3  4                     1   1  2  3  4  5  6  7            1  2  3  4
  5  6  7  8  9 10 11   2  3  4  5  6  7  8   8  9 10 11 12 13 14   5  6  7  8  9 10 11
 12 13 14 15 16 17 18   9 10 11 12 13 14 15  15 16 17 18 19 20 21  12 13 14 15 16 17 18
 19 20 21 22 23 24 25  16 17 18 19 20 21 22  22 23 24 25 26 27 28  19 20 21 22 23 24 25
-26 27 28 29 30 31     23 24 25 26 27 28 29  29 30 31              26 27 28 29 30      
-                                                                                      
-         May                  June                  July                 August       
+26 27 28 29 30 31     23 24 25 26 27 28 29  29 30 31              26 27 28 29 30
+
+         May                  June                  July                 August
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
                 1  2      1  2  3  4  5  6            1  2  3  4                     1
  3  4  5  6  7  8  9   7  8  9 10 11 12 13   5  6  7  8  9 10 11   2  3  4  5  6  7  8
 10 11 12 13 14 15 16  14 15 16 17 18 19 20  12 13 14 15 16 17 18   9 10 11 12 13 14 15
 17 18 19 20 21 22 23  21 22 23 24 25 26 27  19 20 21 22 23 24 25  16 17 18 19 20 21 22
 24 25 26 27 28 29 30  28 29 30              26 27 28 29 30 31     23 24 25 26 27 28 29
-31                                                                30 31               
-      September              October              November              December      
+31                                                                30 31
+      September              October              November              December
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
        1  2 14 15 16   1  2  3  4  5  6  7            1  2  3  4                  1  2
 17 18 19 20 21 22 23   8  9 10 11 12 13 14   5  6  7  8  9 10 11   3  4  5  6  7  8  9
@@ -6907,7 +6907,7 @@ const proc: printCalendar (in integer: year, in integer: cols) is func
     var time: date is time.value;
     var integer: dayOfWeek is 0;
     const array string: monthNames is [] ("January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"); 
+        "July", "August", "September", "October", "November", "December");
     var array array string: monthTable is 12 times 9 times "";
     var string: str is "";
     var integer: month is 0;
@@ -6958,45 +6958,45 @@ The output of this program is:
 
 ```txt
 
-                              [Snoopy Picture]                              
-                                    1969                                    
+                              [Snoopy Picture]
+                                    1969
 
-          January                 February                 March        
+          January                 February                 March
     Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
            1  2  3  4  5                    1  2                    1  2
      6  7  8  9 10 11 12     3  4  5  6  7  8  9     3  4  5  6  7  8  9
     13 14 15 16 17 18 19    10 11 12 13 14 15 16    10 11 12 13 14 15 16
     20 21 22 23 24 25 26    17 18 19 20 21 22 23    17 18 19 20 21 22 23
     27 28 29 30 31          24 25 26 27 28          24 25 26 27 28 29 30
-                                                    31                  
-                  
-           April                    May                     June        
+                                                    31
+
+           April                    May                     June
     Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
         1  2  3  4  5  6              1  2  3  4                       1
      7  8  9 10 11 12 13     5  6  7  8  9 10 11     2  3  4  5  6  7  8
     14 15 16 17 18 19 20    12 13 14 15 16 17 18     9 10 11 12 13 14 15
     21 22 23 24 25 26 27    19 20 21 22 23 24 25    16 17 18 19 20 21 22
     28 29 30                26 27 28 29 30 31       23 24 25 26 27 28 29
-                                                    30                  
-                  
-            July                   August                September      
+                                                    30
+
+            July                   August                September
     Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
         1  2  3  4  5  6                 1  2  3     1  2  3  4  5  6  7
      7  8  9 10 11 12 13     4  5  6  7  8  9 10     8  9 10 11 12 13 14
     14 15 16 17 18 19 20    11 12 13 14 15 16 17    15 16 17 18 19 20 21
     21 22 23 24 25 26 27    18 19 20 21 22 23 24    22 23 24 25 26 27 28
-    28 29 30 31             25 26 27 28 29 30 31    29 30               
-                                                                        
-                  
-          October                 November                December      
+    28 29 30 31             25 26 27 28 29 30 31    29 30
+
+
+          October                 November                December
     Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
            1  2  3  4  5                    1  2     1  2  3  4  5  6  7
      6  7  8  9 10 11 12     3  4  5  6  7  8  9     8  9 10 11 12 13 14
     13 14 15 16 17 18 19    10 11 12 13 14 15 16    15 16 17 18 19 20 21
     20 21 22 23 24 25 26    17 18 19 20 21 22 23    22 23 24 25 26 27 28
-    27 28 29 30 31          24 25 26 27 28 29 30    29 30 31            
-                                                                        
-                  
+    27 28 29 30 31          24 25 26 27 28 29 30    29 30 31
+
+
 
 ```
 
@@ -7065,37 +7065,37 @@ print fmt_year(ARGV ? Number(ARGV[0]) : 1969)
 ```txt
 
                               1969
-Jan                    Feb                    Mar                    
-Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su   
-       1  2  3  4  5                   1  2                   1  2   
- 6  7  8  9 10 11 12    3  4  5  6  7  8  9    3  4  5  6  7  8  9   
-13 14 15 16 17 18 19   10 11 12 13 14 15 16   10 11 12 13 14 15 16   
-20 21 22 23 24 25 26   17 18 19 20 21 22 23   17 18 19 20 21 22 23   
-27 28 29 30 31         24 25 26 27 28         24 25 26 27 28 29 30   
+Jan                    Feb                    Mar
+Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su
+       1  2  3  4  5                   1  2                   1  2
+ 6  7  8  9 10 11 12    3  4  5  6  7  8  9    3  4  5  6  7  8  9
+13 14 15 16 17 18 19   10 11 12 13 14 15 16   10 11 12 13 14 15 16
+20 21 22 23 24 25 26   17 18 19 20 21 22 23   17 18 19 20 21 22 23
+27 28 29 30 31         24 25 26 27 28         24 25 26 27 28 29 30
 
-Apr                    May                    Jun                    
-Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su   
-    1  2  3  4  5  6             1  2  3  4                      1   
- 7  8  9 10 11 12 13    5  6  7  8  9 10 11    2  3  4  5  6  7  8   
-14 15 16 17 18 19 20   12 13 14 15 16 17 18    9 10 11 12 13 14 15   
-21 22 23 24 25 26 27   19 20 21 22 23 24 25   16 17 18 19 20 21 22   
-28 29 30               26 27 28 29 30 31      23 24 25 26 27 28 29   
+Apr                    May                    Jun
+Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su
+    1  2  3  4  5  6             1  2  3  4                      1
+ 7  8  9 10 11 12 13    5  6  7  8  9 10 11    2  3  4  5  6  7  8
+14 15 16 17 18 19 20   12 13 14 15 16 17 18    9 10 11 12 13 14 15
+21 22 23 24 25 26 27   19 20 21 22 23 24 25   16 17 18 19 20 21 22
+28 29 30               26 27 28 29 30 31      23 24 25 26 27 28 29
 
-Jul                    Aug                    Sep                    
-Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su   
-    1  2  3  4  5  6                1  2  3    1  2  3  4  5  6  7   
- 7  8  9 10 11 12 13    4  5  6  7  8  9 10    8  9 10 11 12 13 14   
-14 15 16 17 18 19 20   11 12 13 14 15 16 17   15 16 17 18 19 20 21   
-21 22 23 24 25 26 27   18 19 20 21 22 23 24   22 23 24 25 26 27 28   
-28 29 30 31            25 26 27 28 29 30 31   29 30                  
+Jul                    Aug                    Sep
+Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su
+    1  2  3  4  5  6                1  2  3    1  2  3  4  5  6  7
+ 7  8  9 10 11 12 13    4  5  6  7  8  9 10    8  9 10 11 12 13 14
+14 15 16 17 18 19 20   11 12 13 14 15 16 17   15 16 17 18 19 20 21
+21 22 23 24 25 26 27   18 19 20 21 22 23 24   22 23 24 25 26 27 28
+28 29 30 31            25 26 27 28 29 30 31   29 30
 
-Oct                    Nov                    Dec                    
-Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su   
-       1  2  3  4  5                   1  2    1  2  3  4  5  6  7   
- 6  7  8  9 10 11 12    3  4  5  6  7  8  9    8  9 10 11 12 13 14   
-13 14 15 16 17 18 19   10 11 12 13 14 15 16   15 16 17 18 19 20 21   
-20 21 22 23 24 25 26   17 18 19 20 21 22 23   22 23 24 25 26 27 28   
-27 28 29 30 31         24 25 26 27 28 29 30   29 30 31             
+Oct                    Nov                    Dec
+Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su   Mo Tu We Th Fr Sa Su
+       1  2  3  4  5                   1  2    1  2  3  4  5  6  7
+ 6  7  8  9 10 11 12    3  4  5  6  7  8  9    8  9 10 11 12 13 14
+13 14 15 16 17 18 19   10 11 12 13 14 15 16   15 16 17 18 19 20 21
+20 21 22 23 24 25 26   17 18 19 20 21 22 23   22 23 24 25 26 27 28
+27 28 29 30 31         24 25 26 27 28 29 30   29 30 31
 
 ```
 
@@ -7302,7 +7302,7 @@ END;
 
 
 This implementation has been developed using '''Cuis Smalltalk''' [https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev] with '''Aconcagua''' loaded.
-To run it, evaluate: 
+To run it, evaluate:
 ```smalltalk>CalendarPrinter printOnTranscriptForYearNumber: 1969</lang
 
 
@@ -7313,8 +7313,8 @@ To run it, evaluate:
 - stream: The stream used to print the calendar
 - monthsOfYear: A collection of all the months of yearToPrint, for example January 1969, February 1969, and so on
 - currentMonths: Group of 3 months under print, for example from January to March or April to June, and so on
-- monthOfYearCurrentDate: A collection that associates a month with the date to print for that month. It is used to 
-  know which day number should be printed for each month when iterating over the day of weeks of each row" 
+- monthOfYearCurrentDate: A collection that associates a month with the date to print for that month. It is used to
+  know which day number should be printed for each month when iterating over the day of weeks of each row"
 Object subclass: #CalendarPrinter
 	instanceVariableNames: 'yearToPrint stream monthsOfYear currentMonths monthOfYearCurrentDate'
 	classVariableNames: ''
@@ -7323,19 +7323,19 @@ Object subclass: #CalendarPrinter
 
 CalendarPrinter class>>printOnTranscriptForYearNumber: aYearNumber
 	(self for: (GregorianYear number: aYearNumber) on: Transcript) value
-  
+
 CalendarPrinter class>>for: aYear on: aStream
   	^self new initializeFor: aYear on: aStream
-    
+
 initializeFor: aYear on: aStream
 	yearToPrint := aYear.
-	stream := aStream.	
+	stream := aStream.
 	monthsOfYear := yearToPrint months.
 	monthOfYearCurrentDate := monthsOfYear collect: [ :aMonthOfYear | aMonthOfYear firstDate ].
 
 value
 	"Prints the year number (header) and then its months"
-	self 
+	self
 		printHeader;
 		printMonths.
 
@@ -7345,17 +7345,17 @@ printHeader
 	stream newLine; newLine.
 
 printMonths
-	"Prints each group of 3 months, for example from January to March, then April to June and so on" 
-	(January to: December by: 3*month) do: [ :aMonth | self printMonthsStartingOn: aMonth ]. 
+	"Prints each group of 3 months, for example from January to March, then April to June and so on"
+	(January to: December by: 3*month) do: [ :aMonth | self printMonthsStartingOn: aMonth ].
 
-printMonthsStartingOn: aMonth 
-	"For each group of 3 months starting in aMonth, prints the name of the month (header), 
+printMonthsStartingOn: aMonth
+	"For each group of 3 months starting in aMonth, prints the name of the month (header),
 	the name of the days of the week (Mo Tu ...), and then the day numbers"
 	currentMonths := aMonth to: aMonth next next.
-	self 
+	self
 		printMonthsHeader;
 		printDaysOfWeekHeader;
-		printDayNumbers.	
+		printDayNumbers.
 
 printMonthsHeader
 	"Prints the current group of 3 months names, centered"
@@ -7373,9 +7373,9 @@ printDaysOfWeekHeader
 
 printOneMonthDaysOfWeekHeader
 	"Prints the name of the days of week"
-	(Sunday to: Saturday) 
+	(Sunday to: Saturday)
 		do: [ :aDayOfWeek | stream nextPutAll: (aDayOfWeek printString first: 2) ]
-		separatedBy: [ stream space ]  
+		separatedBy: [ stream space ]
 
 printDayNumbers
 	"While there are day numbers to print, prints them in a row"
@@ -7384,64 +7384,64 @@ printDayNumbers
 hasDayNumbersToPrint
 	"If any of the group of 3 months currently printing has day numbers to print returns true, otherwise false"
 	^currentMonths anySatisfy: [ :currentMonth | self isCurrentDateAtSameMonthOfYearAs: currentMonth ]
-     
+
 isCurrentDateAtSameMonthOfYearAs: currentMonth
 	"Returns true if the date to print for currentMonth is actually for the currentMonth"
-	^(self currentDateOf: currentMonth) month = currentMonth  
+	^(self currentDateOf: currentMonth) month = currentMonth
 
 printDayNumbersRow
 	"For each month of the group of 3, prints a row of day numbers"
 	currentMonths
 		do: [ :currentMonth | self printDayNumbersRowOf: currentMonth ]
 		separatedBy: [ stream space: 3 ].
-	stream newLine 
+	stream newLine
 
 printDayNumbersRowOf: currentMonth
 	"Prints the day numbers of the current week"
-	(Sunday to: Saturday) 
-		do: [ :aDayOfWeek | self printDayNumberOf: currentMonth for: aDayOfWeek ]		
+	(Sunday to: Saturday)
+		do: [ :aDayOfWeek | self printDayNumberOf: currentMonth for: aDayOfWeek ]
 		separatedBy: [ stream space ]
 
 printDayNumberOf: currentMonth for: aDayOfWeek
 	"If the current date of the current month corresponds to aDayOfWeeks, prints its day number,
 	if not, leaves a space
-	This is important to leave the spaces in the first row and last row for those day of week 
+	This is important to leave the spaces in the first row and last row for those day of week
 	that do not have a day number related"
-	| currentDate |	
+	| currentDate |
 	currentDate := self currentDateOf: currentMonth.
-	(self hasToPrint: currentDate of: currentMonth for: aDayOfWeek) 
-		ifTrue: [ 
+	(self hasToPrint: currentDate of: currentMonth for: aDayOfWeek)
+		ifTrue: [
 			currentDate dayNumber printOn: stream length: 2 zeroPadded: false.
 			self calculateNextCurrentDateOf: currentMonth ]
 		ifFalse: [ stream space: 2 ]! !
 
-hasToPrint: aDate of: aCurrentMonth for: aDayOfWeek		
+hasToPrint: aDate of: aCurrentMonth for: aDayOfWeek
 	"Returns whether aDate is part of aCurrentMonth and its day of week is aDayOfWeek.
 	It is used to decide whether to print the date day number or leave an space"
 	^(aDate month = aCurrentMonth) and: [aDate day = aDayOfWeek]
 
-currentDateOf: currentMonth		
+currentDateOf: currentMonth
 	"Returns the date to print for currentMonth"
 	^monthOfYearCurrentDate at: currentMonth number
 
-calculateNextCurrentDateOf: currentMonth 
+calculateNextCurrentDateOf: currentMonth
 	"Changes the date to print of the currentMonth to the next date"
 	monthOfYearCurrentDate at: currentMonth number put: (self currentDateOf: currentMonth) next
 
 center: stringToCenter in: aNumberOfCharacters
 	"Prints stringToCenter centered in a line of aNumberOfCharacters total"
-	| centerStart |	
+	| centerStart |
 	centerStart := aNumberOfCharacters - stringToCenter size // 2.
-	stream 
+	stream
 		space: centerStart;
 		nextPutAll: stringToCenter;
 		space: aNumberOfCharacters - centerStart - stringToCenter size
 
-numberOfCharactersPerLine	
+numberOfCharactersPerLine
 	"Returns the number of characters per line"
 	^66
 
-numberOfCharactersPerMonth	
+numberOfCharactersPerMonth
 	"Returns the number of character per month"
 	^20
 
@@ -7451,38 +7451,38 @@ numberOfCharactersPerMonth
 
 ```txt
 
-                               1969                               
-      January                February                March        
+                               1969
+      January                February                March
 Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
           1  2  3  4                      1                      1
  5  6  7  8  9 10 11    2  3  4  5  6  7  8    2  3  4  5  6  7  8
 12 13 14 15 16 17 18    9 10 11 12 13 14 15    9 10 11 12 13 14 15
 19 20 21 22 23 24 25   16 17 18 19 20 21 22   16 17 18 19 20 21 22
 26 27 28 29 30 31      23 24 25 26 27 28      23 24 25 26 27 28 29
-                                              30 31               
-       April                   May                    June        
+                                              30 31
+       April                   May                    June
 Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
        1  2  3  4  5                1  2  3    1  2  3  4  5  6  7
  6  7  8  9 10 11 12    4  5  6  7  8  9 10    8  9 10 11 12 13 14
 13 14 15 16 17 18 19   11 12 13 14 15 16 17   15 16 17 18 19 20 21
 20 21 22 23 24 25 26   18 19 20 21 22 23 24   22 23 24 25 26 27 28
-27 28 29 30            25 26 27 28 29 30 31   29 30               
-        July                  August               September      
+27 28 29 30            25 26 27 28 29 30 31   29 30
+        July                  August               September
 Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
        1  2  3  4  5                   1  2       1  2  3  4  5  6
  6  7  8  9 10 11 12    3  4  5  6  7  8  9    7  8  9 10 11 12 13
 13 14 15 16 17 18 19   10 11 12 13 14 15 16   14 15 16 17 18 19 20
 20 21 22 23 24 25 26   17 18 19 20 21 22 23   21 22 23 24 25 26 27
-27 28 29 30 31         24 25 26 27 28 29 30   28 29 30            
-                       31                                         
-      October                November               December      
+27 28 29 30 31         24 25 26 27 28 29 30   28 29 30
+                       31
+      October                November               December
 Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
           1  2  3  4                      1       1  2  3  4  5  6
  5  6  7  8  9 10 11    2  3  4  5  6  7  8    7  8  9 10 11 12 13
 12 13 14 15 16 17 18    9 10 11 12 13 14 15   14 15 16 17 18 19 20
 19 20 21 22 23 24 25   16 17 18 19 20 21 22   21 22 23 24 25 26 27
-26 27 28 29 30 31      23 24 25 26 27 28 29   28 29 30 31         
-                       30                                         
+26 27 28 29 30 31      23 24 25 26 27 28 29   28 29 30 31
+                       30
 
 ```
 
@@ -7535,39 +7535,39 @@ mcal(m,y)=
 
 ```txt
 
-                                1969                                
-      January                 February                 March        
+                                1969
+      January                 February                 March
 Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
        1  2  3  4  5                    1  2                    1  2
  6  7  8  9 10 11 12     3  4  5  6  7  8  9     3  4  5  6  7  8  9
 13 14 15 16 17 18 19    10 11 12 13 14 15 16    10 11 12 13 14 15 16
 20 21 22 23 24 25 26    17 18 19 20 21 22 23    17 18 19 20 21 22 23
 27 28 29 30 31          24 25 26 27 28          24 25 26 27 28 29 30
-                                                31                  
-       April                    May                     June        
+                                                31
+       April                    May                     June
 Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
     1  2  3  4  5  6              1  2  3  4                       1
  7  8  9 10 11 12 13     5  6  7  8  9 10 11     2  3  4  5  6  7  8
 14 15 16 17 18 19 20    12 13 14 15 16 17 18     9 10 11 12 13 14 15
 21 22 23 24 25 26 27    19 20 21 22 23 24 25    16 17 18 19 20 21 22
 28 29 30                26 27 28 29 30 31       23 24 25 26 27 28 29
-                                                30                  
-        July                   August                September      
+                                                30
+        July                   August                September
 Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
     1  2  3  4  5  6                 1  2  3     1  2  3  4  5  6  7
  7  8  9 10 11 12 13     4  5  6  7  8  9 10     8  9 10 11 12 13 14
 14 15 16 17 18 19 20    11 12 13 14 15 16 17    15 16 17 18 19 20 21
 21 22 23 24 25 26 27    18 19 20 21 22 23 24    22 23 24 25 26 27 28
-28 29 30 31             25 26 27 28 29 30 31    29 30               
-                                                                    
-      October                 November                December      
+28 29 30 31             25 26 27 28 29 30 31    29 30
+
+      October                 November                December
 Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su    Mo Tu We Th Fr Sa Su
        1  2  3  4  5                    1  2     1  2  3  4  5  6  7
  6  7  8  9 10 11 12     3  4  5  6  7  8  9     8  9 10 11 12 13 14
 13 14 15 16 17 18 19    10 11 12 13 14 15 16    15 16 17 18 19 20 21
 20 21 22 23 24 25 26    17 18 19 20 21 22 23    22 23 24 25 26 27 28
-27 28 29 30 31          24 25 26 27 28 29 30    29 30 31            
-                                                                    
+27 28 29 30 31          24 25 26 27 28 29 30    29 30 31
+
 
 ```
 
@@ -7663,36 +7663,36 @@ Which produces this output:
 
                               -- 2011 --
 
-      January                  February                  March             
+      January                  February                  March
                 1  2         1  2  3  4  5  6         1  2  3  4  5  6
  3  4  5  6  7  8  9      7  8  9 10 11 12 13      7  8  9 10 11 12 13
 10 11 12 13 14 15 16     14 15 16 17 18 19 20     14 15 16 17 18 19 20
 17 18 19 20 21 22 23     21 22 23 24 25 26 27     21 22 23 24 25 26 27
 24 25 26 27 28 29 30     28                       28 29 30 31
-31                                                
+31
 
-       April                     May                      June             
+       April                     May                      June
              1  2  3                        1            1  2  3  4  5
  4  5  6  7  8  9 10      2  3  4  5  6  7  8      6  7  8  9 10 11 12
 11 12 13 14 15 16 17      9 10 11 12 13 14 15     13 14 15 16 17 18 19
 18 19 20 21 22 23 24     16 17 18 19 20 21 22     20 21 22 23 24 25 26
 25 26 27 28 29 30        23 24 25 26 27 28 29     27 28 29 30
-                         30 31                    
+                         30 31
 
-        July                    August                 September           
+        July                    August                 September
              1  2  3      1  2  3  4  5  6  7               1  2  3  4
  4  5  6  7  8  9 10      8  9 10 11 12 13 14      5  6  7  8  9 10 11
 11 12 13 14 15 16 17     15 16 17 18 19 20 21     12 13 14 15 16 17 18
 18 19 20 21 22 23 24     22 23 24 25 26 27 28     19 20 21 22 23 24 25
 25 26 27 28 29 30 31     29 30 31                 26 27 28 29 30
 
-      October                  November                 December           
+      October                  November                 December
                 1  2         1  2  3  4  5  6               1  2  3  4
  3  4  5  6  7  8  9      7  8  9 10 11 12 13      5  6  7  8  9 10 11
 10 11 12 13 14 15 16     14 15 16 17 18 19 20     12 13 14 15 16 17 18
 17 18 19 20 21 22 23     21 22 23 24 25 26 27     19 20 21 22 23 24 25
 24 25 26 27 28 29 30     28 29 30                 26 27 28 29 30 31
-31                                                
+31
 
 ```
 
@@ -7710,7 +7710,7 @@ cal 1969
 
                               -- 1969 --
 
-      January                  February                  March             
+      January                  February                  March
        1  2  3  4  5                     1  2                     1  2
  6  7  8  9 10 11 12      3  4  5  6  7  8  9      3  4  5  6  7  8  9
 13 14 15 16 17 18 19     10 11 12 13 14 15 16     10 11 12 13 14 15 16
@@ -7718,7 +7718,7 @@ cal 1969
 27 28 29 30 31           24 25 26 27 28           24 25 26 27 28 29 30
                                                   31
 
-       April                     May                      June             
+       April                     May                      June
     1  2  3  4  5  6               1  2  3  4                        1
  7  8  9 10 11 12 13      5  6  7  8  9 10 11      2  3  4  5  6  7  8
 14 15 16 17 18 19 20     12 13 14 15 16 17 18      9 10 11 12 13 14 15
@@ -7726,14 +7726,14 @@ cal 1969
 28 29 30                 26 27 28 29 30 31        23 24 25 26 27 28 29
                                                   30
 
-        July                    August                 September           
+        July                    August                 September
     1  2  3  4  5  6                  1  2  3      1  2  3  4  5  6  7
  7  8  9 10 11 12 13      4  5  6  7  8  9 10      8  9 10 11 12 13 14
 14 15 16 17 18 19 20     11 12 13 14 15 16 17     15 16 17 18 19 20 21
 21 22 23 24 25 26 27     18 19 20 21 22 23 24     22 23 24 25 26 27 28
 28 29 30 31              25 26 27 28 29 30 31     29 30
 
-      October                  November                 December           
+      October                  November                 December
        1  2  3  4  5                     1  2      1  2  3  4  5  6  7
  6  7  8  9 10 11 12      3  4  5  6  7  8  9      8  9 10 11 12 13 14
 13 14 15 16 17 18 19     10 11 12 13 14 15 16     15 16 17 18 19 20 21
@@ -7756,30 +7756,30 @@ cal 1582 :Europe/Madrid es_ES
 
                               -- 1582 --
 
-       enero                   febrero                   marzo             
+       enero                   febrero                   marzo
  1  2  3  4  5  6  7               1  2  3  4               1  2  3  4
  8  9 10 11 12 13 14      5  6  7  8  9 10 11      5  6  7  8  9 10 11
 15 16 17 18 19 20 21     12 13 14 15 16 17 18     12 13 14 15 16 17 18
 22 23 24 25 26 27 28     19 20 21 22 23 24 25     19 20 21 22 23 24 25
 29 30 31                 26 27 28                 26 27 28 29 30 31
 
-       abril                     mayo                    junio             
+       abril                     mayo                    junio
                    1         1  2  3  4  5  6                  1  2  3
  2  3  4  5  6  7  8      7  8  9 10 11 12 13      4  5  6  7  8  9 10
  9 10 11 12 13 14 15     14 15 16 17 18 19 20     11 12 13 14 15 16 17
 16 17 18 19 20 21 22     21 22 23 24 25 26 27     18 19 20 21 22 23 24
 23 24 25 26 27 28 29     28 29 30 31              25 26 27 28 29 30
-30                                                
+30
 
-       julio                    agosto                 septiembre          
+       julio                    agosto                 septiembre
                    1            1  2  3  4  5                     1  2
  2  3  4  5  6  7  8      6  7  8  9 10 11 12      3  4  5  6  7  8  9
  9 10 11 12 13 14 15     13 14 15 16 17 18 19     10 11 12 13 14 15 16
 16 17 18 19 20 21 22     20 21 22 23 24 25 26     17 18 19 20 21 22 23
 23 24 25 26 27 28 29     27 28 29 30 31           24 25 26 27 28 29 30
-30 31                                             
+30 31
 
-      octubre                 noviembre                diciembre           
+      octubre                 noviembre                diciembre
  1  2  3  4 15 16 17      1  2  3  4  5  6  7            1  2  3  4  5
 18 19 20 21 22 23 24      8  9 10 11 12 13 14      6  7  8  9 10 11 12
 25 26 27 28 29 30 31     15 16 17 18 19 20 21     13 14 15 16 17 18 19
@@ -7833,13 +7833,13 @@ Print "                          *  **  X*  XXX   X         X"
 Print "                         *  **    XX   XXXX       XXX"
 Print "                        *  * *      XXXX      X     X"
 Print "                       *   * *          X     X     X"
-Print "         
+Print "
 ### =
 *******   * *           X     X      XXXXXXXX\\"
 Print "                *         * *      /XXXXX      XXXXXXXX\\      )"
 Print "           =====**********  *     X                     )  \\  )"
 Print "             ====*         *     X               \\  \\   )XXXXX"
-Print "        
+Print "
 ### ===
 **********       XXXXXXXXXXXXXXXXXXXXXX"
 ```
@@ -8039,7 +8039,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 13 14 15 16 17 18 19  11 12 13 14 15 16 17  15 16 17 18 19 20 21
 20 21 22 23 24 25 26  18 19 20 21 22 23 24  22 23 24 25 26 27 28
 27 28 29 30           25 26 27 28 29 30 31  29 30
-                                            
+
         July                 August              September
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
        1  2  3  4  5                  1  2      1  2  3  4  5  6
@@ -8047,7 +8047,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 13 14 15 16 17 18 19  10 11 12 13 14 15 16  14 15 16 17 18 19 20
 20 21 22 23 24 25 26  17 18 19 20 21 22 23  21 22 23 24 25 26 27
 27 28 29 30 31        24 25 26 27 28 29 30  28 29 30
-                      31                    
+                      31
       October               November              December
 Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
           1  2  3  4                     1      1  2  3  4  5  6
@@ -8055,7 +8055,7 @@ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
 12 13 14 15 16 17 18   9 10 11 12 13 14 15  14 15 16 17 18 19 20
 19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27
 26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31
-                      30                    
+                      30
 
 ```
 
@@ -8090,7 +8090,7 @@ Repeat(12/#3) {
     }
     EOF
     Ins_Newline(2)
-} 
+}
 ```
 
 
@@ -8525,45 +8525,45 @@ Syntax: <name>:<value>, space-separated and optionally enclosed in quotes.
 {{out|note=80x43 [default with no args]}}
 
 ```txt
-                                    [Snoopy]                                    
-                                      1969                                      
+                                    [Snoopy]
+                                      1969
 
-         January                   February                   March           
-   Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa   
-             1  2  3  4                         1                         1   
-    5  6  7  8  9 10 11       2  3  4  5  6  7  8       2  3  4  5  6  7  8   
-   12 13 14 15 16 17 18       9 10 11 12 13 14 15       9 10 11 12 13 14 15   
-   19 20 21 22 23 24 25      16 17 18 19 20 21 22      16 17 18 19 20 21 22   
-   26 27 28 29 30 31         23 24 25 26 27 28         23 24 25 26 27 28 29   
-                                                       30 31                  
-                                                                              
-          April                      May                       June           
-   Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa   
-          1  2  3  4  5                   1  2  3       1  2  3  4  5  6  7   
-    6  7  8  9 10 11 12       4  5  6  7  8  9 10       8  9 10 11 12 13 14   
-   13 14 15 16 17 18 19      11 12 13 14 15 16 17      15 16 17 18 19 20 21   
-   20 21 22 23 24 25 26      18 19 20 21 22 23 24      22 23 24 25 26 27 28   
-   27 28 29 30               25 26 27 28 29 30 31      29 30                  
-                                                                              
-                                                                              
-           July                     August                  September         
-   Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa   
-          1  2  3  4  5                      1  2          1  2  3  4  5  6   
-    6  7  8  9 10 11 12       3  4  5  6  7  8  9       7  8  9 10 11 12 13   
-   13 14 15 16 17 18 19      10 11 12 13 14 15 16      14 15 16 17 18 19 20   
-   20 21 22 23 24 25 26      17 18 19 20 21 22 23      21 22 23 24 25 26 27   
-   27 28 29 30 31            24 25 26 27 28 29 30      28 29 30               
-                             31                                               
-                                                                              
-         October                   November                  December         
-   Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa   
-             1  2  3  4                         1          1  2  3  4  5  6   
-    5  6  7  8  9 10 11       2  3  4  5  6  7  8       7  8  9 10 11 12 13   
-   12 13 14 15 16 17 18       9 10 11 12 13 14 15      14 15 16 17 18 19 20   
-   19 20 21 22 23 24 25      16 17 18 19 20 21 22      21 22 23 24 25 26 27   
-   26 27 28 29 30 31         23 24 25 26 27 28 29      28 29 30 31            
-                             30                                               
-                                                                              
+         January                   February                   March
+   Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa
+             1  2  3  4                         1                         1
+    5  6  7  8  9 10 11       2  3  4  5  6  7  8       2  3  4  5  6  7  8
+   12 13 14 15 16 17 18       9 10 11 12 13 14 15       9 10 11 12 13 14 15
+   19 20 21 22 23 24 25      16 17 18 19 20 21 22      16 17 18 19 20 21 22
+   26 27 28 29 30 31         23 24 25 26 27 28         23 24 25 26 27 28 29
+                                                       30 31
+
+          April                      May                       June
+   Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa
+          1  2  3  4  5                   1  2  3       1  2  3  4  5  6  7
+    6  7  8  9 10 11 12       4  5  6  7  8  9 10       8  9 10 11 12 13 14
+   13 14 15 16 17 18 19      11 12 13 14 15 16 17      15 16 17 18 19 20 21
+   20 21 22 23 24 25 26      18 19 20 21 22 23 24      22 23 24 25 26 27 28
+   27 28 29 30               25 26 27 28 29 30 31      29 30
+
+
+           July                     August                  September
+   Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa
+          1  2  3  4  5                      1  2          1  2  3  4  5  6
+    6  7  8  9 10 11 12       3  4  5  6  7  8  9       7  8  9 10 11 12 13
+   13 14 15 16 17 18 19      10 11 12 13 14 15 16      14 15 16 17 18 19 20
+   20 21 22 23 24 25 26      17 18 19 20 21 22 23      21 22 23 24 25 26 27
+   27 28 29 30 31            24 25 26 27 28 29 30      28 29 30
+                             31
+
+         October                   November                  December
+   Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa
+             1  2  3  4                         1          1  2  3  4  5  6
+    5  6  7  8  9 10 11       2  3  4  5  6  7  8       7  8  9 10 11 12 13
+   12 13 14 15 16 17 18       9 10 11 12 13 14 15      14 15 16 17 18 19 20
+   19 20 21 22 23 24 25      16 17 18 19 20 21 22      21 22 23 24 25 26 27
+   26 27 28 29 30 31         23 24 25 26 27 28 29      28 29 30 31
+                             30
+
 
 ```
 
@@ -8571,63 +8571,63 @@ Syntax: <name>:<value>, space-separated and optionally enclosed in quotes.
 {{out|input=cols:132 rows:60 ms/row:4|note=132-column demonstrating stretching}}
 
 ```txt
-                                                              [Snoopy]                                                              
-                                                                1969                                                                
+                                                              [Snoopy]
+                                                                1969
 
-            January                          February                          March                            April               
-                                                                                                                                    
-   Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa    
-                                                                                                                                    
-                1   2   3   4                                1                                1                1   2   3   4   5    
-                                                                                                                                    
-    5   6   7   8   9  10  11        2   3   4   5   6   7   8        2   3   4   5   6   7   8        6   7   8   9  10  11  12    
-                                                                                                                                    
-   12  13  14  15  16  17  18        9  10  11  12  13  14  15        9  10  11  12  13  14  15       13  14  15  16  17  18  19    
-                                                                                                                                    
-   19  20  21  22  23  24  25       16  17  18  19  20  21  22       16  17  18  19  20  21  22       20  21  22  23  24  25  26    
-                                                                                                                                    
-   26  27  28  29  30  31           23  24  25  26  27  28           23  24  25  26  27  28  29       27  28  29  30                
-                                                                                                                                    
-                                                                     30  31                                                         
-                                                                                                                                    
-                                                                                                                                    
-                                                                                                                                    
-              May                              June                             July                            August              
-                                                                                                                                    
-   Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa    
-                                                                                                                                    
-                    1   2   3        1   2   3   4   5   6   7                1   2   3   4   5                            1   2    
-                                                                                                                                    
-    4   5   6   7   8   9  10        8   9  10  11  12  13  14        6   7   8   9  10  11  12        3   4   5   6   7   8   9    
-                                                                                                                                    
-   11  12  13  14  15  16  17       15  16  17  18  19  20  21       13  14  15  16  17  18  19       10  11  12  13  14  15  16    
-                                                                                                                                    
-   18  19  20  21  22  23  24       22  23  24  25  26  27  28       20  21  22  23  24  25  26       17  18  19  20  21  22  23    
-                                                                                                                                    
-   25  26  27  28  29  30  31       29  30                           27  28  29  30  31               24  25  26  27  28  29  30    
-                                                                                                                                    
-                                                                                                      31                            
-                                                                                                                                    
-                                                                                                                                    
-                                                                                                                                    
-           September                         October                          November                         December             
-                                                                                                                                    
-   Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa    
-                                                                                                                                    
-        1   2   3   4   5   6                    1   2   3   4                                1            1   2   3   4   5   6    
-                                                                                                                                    
-    7   8   9  10  11  12  13        5   6   7   8   9  10  11        2   3   4   5   6   7   8        7   8   9  10  11  12  13    
-                                                                                                                                    
-   14  15  16  17  18  19  20       12  13  14  15  16  17  18        9  10  11  12  13  14  15       14  15  16  17  18  19  20    
-                                                                                                                                    
-   21  22  23  24  25  26  27       19  20  21  22  23  24  25       16  17  18  19  20  21  22       21  22  23  24  25  26  27    
-                                                                                                                                    
-   28  29  30                       26  27  28  29  30  31           23  24  25  26  27  28  29       28  29  30  31                
-                                                                                                                                    
-                                                                     30                                                             
-                                                                                                                                    
-                                                                                                                                    
-                                                                                                                                    
+            January                          February                          March                            April
+
+   Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa
+
+                1   2   3   4                                1                                1                1   2   3   4   5
+
+    5   6   7   8   9  10  11        2   3   4   5   6   7   8        2   3   4   5   6   7   8        6   7   8   9  10  11  12
+
+   12  13  14  15  16  17  18        9  10  11  12  13  14  15        9  10  11  12  13  14  15       13  14  15  16  17  18  19
+
+   19  20  21  22  23  24  25       16  17  18  19  20  21  22       16  17  18  19  20  21  22       20  21  22  23  24  25  26
+
+   26  27  28  29  30  31           23  24  25  26  27  28           23  24  25  26  27  28  29       27  28  29  30
+
+                                                                     30  31
+
+
+
+              May                              June                             July                            August
+
+   Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa
+
+                    1   2   3        1   2   3   4   5   6   7                1   2   3   4   5                            1   2
+
+    4   5   6   7   8   9  10        8   9  10  11  12  13  14        6   7   8   9  10  11  12        3   4   5   6   7   8   9
+
+   11  12  13  14  15  16  17       15  16  17  18  19  20  21       13  14  15  16  17  18  19       10  11  12  13  14  15  16
+
+   18  19  20  21  22  23  24       22  23  24  25  26  27  28       20  21  22  23  24  25  26       17  18  19  20  21  22  23
+
+   25  26  27  28  29  30  31       29  30                           27  28  29  30  31               24  25  26  27  28  29  30
+
+                                                                                                      31
+
+
+
+           September                         October                          November                         December
+
+   Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa       Su  Mo  Tu  We  Th  Fr  Sa
+
+        1   2   3   4   5   6                    1   2   3   4                                1            1   2   3   4   5   6
+
+    7   8   9  10  11  12  13        5   6   7   8   9  10  11        2   3   4   5   6   7   8        7   8   9  10  11  12  13
+
+   14  15  16  17  18  19  20       12  13  14  15  16  17  18        9  10  11  12  13  14  15       14  15  16  17  18  19  20
+
+   21  22  23  24  25  26  27       19  20  21  22  23  24  25       16  17  18  19  20  21  22       21  22  23  24  25  26  27
+
+   28  29  30                       26  27  28  29  30  31           23  24  25  26  27  28  29       28  29  30  31
+
+                                                                     30
+
+
+
 
 ```
 
@@ -8635,29 +8635,29 @@ Syntax: <name>:<value>, space-separated and optionally enclosed in quotes.
 {{out|input=cols:132 rows:30 ms/row:6|note=132-column unstretched}}
 
 ```txt
-                                                              [Snoopy]                                                              
-                                                                1969                                                                
+                                                              [Snoopy]
+                                                                1969
 
-       January               February               March                 April                  May                   June         
- Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa 
-           1  2  3  4                     1                     1         1  2  3  4  5               1  2  3   1  2  3  4  5  6  7 
-  5  6  7  8  9 10 11   2  3  4  5  6  7  8   2  3  4  5  6  7  8   6  7  8  9 10 11 12   4  5  6  7  8  9 10   8  9 10 11 12 13 14 
- 12 13 14 15 16 17 18   9 10 11 12 13 14 15   9 10 11 12 13 14 15  13 14 15 16 17 18 19  11 12 13 14 15 16 17  15 16 17 18 19 20 21 
- 19 20 21 22 23 24 25  16 17 18 19 20 21 22  16 17 18 19 20 21 22  20 21 22 23 24 25 26  18 19 20 21 22 23 24  22 23 24 25 26 27 28 
- 26 27 28 29 30 31     23 24 25 26 27 28     23 24 25 26 27 28 29  27 28 29 30           25 26 27 28 29 30 31  29 30                
-                                             30 31                                                                                  
-                                                                                                                                    
-                                                                                                                                    
-         July                 August              September              October               November              December       
- Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa 
-        1  2  3  4  5                  1  2      1  2  3  4  5  6            1  2  3  4                     1      1  2  3  4  5  6 
-  6  7  8  9 10 11 12   3  4  5  6  7  8  9   7  8  9 10 11 12 13   5  6  7  8  9 10 11   2  3  4  5  6  7  8   7  8  9 10 11 12 13 
- 13 14 15 16 17 18 19  10 11 12 13 14 15 16  14 15 16 17 18 19 20  12 13 14 15 16 17 18   9 10 11 12 13 14 15  14 15 16 17 18 19 20 
- 20 21 22 23 24 25 26  17 18 19 20 21 22 23  21 22 23 24 25 26 27  19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27 
- 27 28 29 30 31        24 25 26 27 28 29 30  28 29 30              26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31          
-                       31                                                                30                                         
-                                                                                                                                    
-                                                                                                                                    
+       January               February               March                 April                  May                   June
+ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+           1  2  3  4                     1                     1         1  2  3  4  5               1  2  3   1  2  3  4  5  6  7
+  5  6  7  8  9 10 11   2  3  4  5  6  7  8   2  3  4  5  6  7  8   6  7  8  9 10 11 12   4  5  6  7  8  9 10   8  9 10 11 12 13 14
+ 12 13 14 15 16 17 18   9 10 11 12 13 14 15   9 10 11 12 13 14 15  13 14 15 16 17 18 19  11 12 13 14 15 16 17  15 16 17 18 19 20 21
+ 19 20 21 22 23 24 25  16 17 18 19 20 21 22  16 17 18 19 20 21 22  20 21 22 23 24 25 26  18 19 20 21 22 23 24  22 23 24 25 26 27 28
+ 26 27 28 29 30 31     23 24 25 26 27 28     23 24 25 26 27 28 29  27 28 29 30           25 26 27 28 29 30 31  29 30
+                                             30 31
+
+
+         July                 August              September              October               November              December
+ Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa
+        1  2  3  4  5                  1  2      1  2  3  4  5  6            1  2  3  4                     1      1  2  3  4  5  6
+  6  7  8  9 10 11 12   3  4  5  6  7  8  9   7  8  9 10 11 12 13   5  6  7  8  9 10 11   2  3  4  5  6  7  8   7  8  9 10 11 12 13
+ 13 14 15 16 17 18 19  10 11 12 13 14 15 16  14 15 16 17 18 19 20  12 13 14 15 16 17 18   9 10 11 12 13 14 15  14 15 16 17 18 19 20
+ 20 21 22 23 24 25 26  17 18 19 20 21 22 23  21 22 23 24 25 26 27  19 20 21 22 23 24 25  16 17 18 19 20 21 22  21 22 23 24 25 26 27
+ 27 28 29 30 31        24 25 26 27 28 29 30  28 29 30              26 27 28 29 30 31     23 24 25 26 27 28 29  28 29 30 31
+                       31                                                                30
+
+
 
 ```
 
@@ -8666,105 +8666,105 @@ Syntax: <name>:<value>, space-separated and optionally enclosed in quotes.
 
 
 ```txt
-      [Snoopy]      
-        1969        
+      [Snoopy]
+        1969
 
-      January       
+      January
 Su Mo Tu We Th Fr Sa
           1  2  3  4
  5  6  7  8  9 10 11
 12 13 14 15 16 17 18
 19 20 21 22 23 24 25
-26 27 28 29 30 31   
-                    
-      February      
+26 27 28 29 30 31
+
+      February
 Su Mo Tu We Th Fr Sa
                    1
  2  3  4  5  6  7  8
  9 10 11 12 13 14 15
 16 17 18 19 20 21 22
-23 24 25 26 27 28   
-                    
-       March        
+23 24 25 26 27 28
+
+       March
 Su Mo Tu We Th Fr Sa
                    1
  2  3  4  5  6  7  8
  9 10 11 12 13 14 15
 16 17 18 19 20 21 22
 23 24 25 26 27 28 29
-30 31               
-       April        
+30 31
+       April
 Su Mo Tu We Th Fr Sa
        1  2  3  4  5
  6  7  8  9 10 11 12
 13 14 15 16 17 18 19
 20 21 22 23 24 25 26
-27 28 29 30         
-                    
-        May         
+27 28 29 30
+
+        May
 Su Mo Tu We Th Fr Sa
              1  2  3
  4  5  6  7  8  9 10
 11 12 13 14 15 16 17
 18 19 20 21 22 23 24
 25 26 27 28 29 30 31
-                    
-        June        
+
+        June
 Su Mo Tu We Th Fr Sa
  1  2  3  4  5  6  7
  8  9 10 11 12 13 14
 15 16 17 18 19 20 21
 22 23 24 25 26 27 28
-29 30               
-                    
-        July        
+29 30
+
+        July
 Su Mo Tu We Th Fr Sa
        1  2  3  4  5
  6  7  8  9 10 11 12
 13 14 15 16 17 18 19
 20 21 22 23 24 25 26
-27 28 29 30 31      
-                    
-       August       
+27 28 29 30 31
+
+       August
 Su Mo Tu We Th Fr Sa
                 1  2
  3  4  5  6  7  8  9
 10 11 12 13 14 15 16
 17 18 19 20 21 22 23
 24 25 26 27 28 29 30
-31                  
-     September      
+31
+     September
 Su Mo Tu We Th Fr Sa
     1  2  3  4  5  6
  7  8  9 10 11 12 13
 14 15 16 17 18 19 20
 21 22 23 24 25 26 27
-28 29 30            
-                    
-      October       
+28 29 30
+
+      October
 Su Mo Tu We Th Fr Sa
           1  2  3  4
  5  6  7  8  9 10 11
 12 13 14 15 16 17 18
 19 20 21 22 23 24 25
-26 27 28 29 30 31   
-                    
-      November      
+26 27 28 29 30 31
+
+      November
 Su Mo Tu We Th Fr Sa
                    1
  2  3  4  5  6  7  8
  9 10 11 12 13 14 15
 16 17 18 19 20 21 22
 23 24 25 26 27 28 29
-30                  
-      December      
+30
+      December
 Su Mo Tu We Th Fr Sa
     1  2  3  4  5  6
  7  8  9 10 11 12 13
 14 15 16 17 18 19 20
 21 22 23 24 25 26 27
-28 29 30 31         
-                    
+28 29 30 31
+
 
 ```
 
@@ -8844,114 +8844,114 @@ Targets the 132-column imaginary line printer. The day of the week on 1 January 
 
                                                             JANUARY
       Sunday            Monday            Tuesday           Wednesday         Thursday          Friday            Saturday
-                                                               1                 2                 3                 4        
-               5                 6                 7                 8                 9                10                11        
-              12                13                14                15                16                17                18        
-              19                20                21                22                23                24                25        
-              26                27                28                29                30                31        
+                                                               1                 2                 3                 4
+               5                 6                 7                 8                 9                10                11
+              12                13                14                15                16                17                18
+              19                20                21                22                23                24                25
+              26                27                28                29                30                31
 
 
                                                             FEBRUARY
       Sunday            Monday            Tuesday           Wednesday         Thursday          Friday            Saturday
-                                                                                                                     1        
-               2                 3                 4                 5                 6                 7                 8        
-               9                10                11                12                13                14                15        
-              16                17                18                19                20                21                22        
-              23                24                25                26                27                28        
+                                                                                                                     1
+               2                 3                 4                 5                 6                 7                 8
+               9                10                11                12                13                14                15
+              16                17                18                19                20                21                22
+              23                24                25                26                27                28
 
 
                                                             MARCH
       Sunday            Monday            Tuesday           Wednesday         Thursday          Friday            Saturday
-                                                                                                                     1        
-               2                 3                 4                 5                 6                 7                 8        
-               9                10                11                12                13                14                15        
-              16                17                18                19                20                21                22        
-              23                24                25                26                27                28                29        
-              30                31        
+                                                                                                                     1
+               2                 3                 4                 5                 6                 7                 8
+               9                10                11                12                13                14                15
+              16                17                18                19                20                21                22
+              23                24                25                26                27                28                29
+              30                31
 
 
                                                             APRIL
       Sunday            Monday            Tuesday           Wednesday         Thursday          Friday            Saturday
-                                             1                 2                 3                 4                 5        
-               6                 7                 8                 9                10                11                12        
-              13                14                15                16                17                18                19        
-              20                21                22                23                24                25                26        
-              27                28                29                30        
+                                             1                 2                 3                 4                 5
+               6                 7                 8                 9                10                11                12
+              13                14                15                16                17                18                19
+              20                21                22                23                24                25                26
+              27                28                29                30
 
 
                                                             MAY
       Sunday            Monday            Tuesday           Wednesday         Thursday          Friday            Saturday
-                                                                                 1                 2                 3        
-               4                 5                 6                 7                 8                 9                10        
-              11                12                13                14                15                16                17        
-              18                19                20                21                22                23                24        
-              25                26                27                28                29                30                31        
+                                                                                 1                 2                 3
+               4                 5                 6                 7                 8                 9                10
+              11                12                13                14                15                16                17
+              18                19                20                21                22                23                24
+              25                26                27                28                29                30                31
 
 
                                                             JUNE
       Sunday            Monday            Tuesday           Wednesday         Thursday          Friday            Saturday
-                                                                                                                              
-               1                 2                 3                 4                 5                 6                 7        
-               8                 9                10                11                12                13                14        
-              15                16                17                18                19                20                21        
-              22                23                24                25                26                27                28        
-              29                30        
+
+               1                 2                 3                 4                 5                 6                 7
+               8                 9                10                11                12                13                14
+              15                16                17                18                19                20                21
+              22                23                24                25                26                27                28
+              29                30
 
 
                                                             JULY
       Sunday            Monday            Tuesday           Wednesday         Thursday          Friday            Saturday
-                                             1                 2                 3                 4                 5        
-               6                 7                 8                 9                10                11                12        
-              13                14                15                16                17                18                19        
-              20                21                22                23                24                25                26        
-              27                28                29                30                31        
+                                             1                 2                 3                 4                 5
+               6                 7                 8                 9                10                11                12
+              13                14                15                16                17                18                19
+              20                21                22                23                24                25                26
+              27                28                29                30                31
 
 
                                                             AUGUST
       Sunday            Monday            Tuesday           Wednesday         Thursday          Friday            Saturday
-                                                                                                   1                 2        
-               3                 4                 5                 6                 7                 8                 9        
-              10                11                12                13                14                15                16        
-              17                18                19                20                21                22                23        
-              24                25                26                27                28                29                30        
-              31        
+                                                                                                   1                 2
+               3                 4                 5                 6                 7                 8                 9
+              10                11                12                13                14                15                16
+              17                18                19                20                21                22                23
+              24                25                26                27                28                29                30
+              31
 
 
                                                             SEPTEMBER
       Sunday            Monday            Tuesday           Wednesday         Thursday          Friday            Saturday
-                           1                 2                 3                 4                 5                 6        
-               7                 8                 9                10                11                12                13        
-              14                15                16                17                18                19                20        
-              21                22                23                24                25                26                27        
-              28                29                30        
+                           1                 2                 3                 4                 5                 6
+               7                 8                 9                10                11                12                13
+              14                15                16                17                18                19                20
+              21                22                23                24                25                26                27
+              28                29                30
 
 
                                                             OCTOBER
       Sunday            Monday            Tuesday           Wednesday         Thursday          Friday            Saturday
-                                                               1                 2                 3                 4        
-               5                 6                 7                 8                 9                10                11        
-              12                13                14                15                16                17                18        
-              19                20                21                22                23                24                25        
-              26                27                28                29                30                31        
+                                                               1                 2                 3                 4
+               5                 6                 7                 8                 9                10                11
+              12                13                14                15                16                17                18
+              19                20                21                22                23                24                25
+              26                27                28                29                30                31
 
 
                                                             NOVEMBER
       Sunday            Monday            Tuesday           Wednesday         Thursday          Friday            Saturday
-                                                                                                                     1        
-               2                 3                 4                 5                 6                 7                 8        
-               9                10                11                12                13                14                15        
-              16                17                18                19                20                21                22        
-              23                24                25                26                27                28                29        
-              30        
+                                                                                                                     1
+               2                 3                 4                 5                 6                 7                 8
+               9                10                11                12                13                14                15
+              16                17                18                19                20                21                22
+              23                24                25                26                27                28                29
+              30
 
 
                                                             DECEMBER
       Sunday            Monday            Tuesday           Wednesday         Thursday          Friday            Saturday
-                           1                 2                 3                 4                 5                 6        
-               7                 8                 9                10                11                12                13        
-              14                15                16                17                18                19                20        
-              21                22                23                24                25                26                27        
-              28                29                30                31        
+                           1                 2                 3                 4                 5                 6
+               7                 8                 9                10                11                12                13
+              14                15                16                17                18                19                20
+              21                22                23                24                25                26                27
+              28                29                30                31
 ```
 
 
@@ -9029,41 +9029,41 @@ Calendar(1969)
                                    [Snoopy]
                                      1969
 
-      January                      February                      March         
+      January                      February                      March
 Su Mo Tu We Th Fr Sa         Su Mo Tu We Th Fr Sa         Su Mo Tu We Th Fr Sa
-         1  2  3  4                            1                            1  
-5  6  7  8  9  10 11         2  3  4  5  6  7  8          2  3  4  5  6  7  8  
-12 13 14 15 16 17 18         9  10 11 12 13 14 15         9  10 11 12 13 14 15 
-19 20 21 22 23 24 25         16 17 18 19 20 21 22         16 17 18 19 20 21 22 
-26 27 28 29 30 31            23 24 25 26 27 28            23 24 25 26 27 28 29 
-                                                          30 31                
+         1  2  3  4                            1                            1
+5  6  7  8  9  10 11         2  3  4  5  6  7  8          2  3  4  5  6  7  8
+12 13 14 15 16 17 18         9  10 11 12 13 14 15         9  10 11 12 13 14 15
+19 20 21 22 23 24 25         16 17 18 19 20 21 22         16 17 18 19 20 21 22
+26 27 28 29 30 31            23 24 25 26 27 28            23 24 25 26 27 28 29
+                                                          30 31
 
-       April                         May                          June         
+       April                         May                          June
 Su Mo Tu We Th Fr Sa         Su Mo Tu We Th Fr Sa         Su Mo Tu We Th Fr Sa
-      1  2  3  4  5                      1  2  3          1  2  3  4  5  6  7  
-6  7  8  9  10 11 12         4  5  6  7  8  9  10         8  9  10 11 12 13 14 
-13 14 15 16 17 18 19         11 12 13 14 15 16 17         15 16 17 18 19 20 21 
-20 21 22 23 24 25 26         18 19 20 21 22 23 24         22 23 24 25 26 27 28 
-27 28 29 30                  25 26 27 28 29 30 31         29 30                
-                                                                               
+      1  2  3  4  5                      1  2  3          1  2  3  4  5  6  7
+6  7  8  9  10 11 12         4  5  6  7  8  9  10         8  9  10 11 12 13 14
+13 14 15 16 17 18 19         11 12 13 14 15 16 17         15 16 17 18 19 20 21
+20 21 22 23 24 25 26         18 19 20 21 22 23 24         22 23 24 25 26 27 28
+27 28 29 30                  25 26 27 28 29 30 31         29 30
 
-        July                        August                     September       
-Su Mo Tu We Th Fr Sa         Su Mo Tu We Th Fr Sa         Su Mo Tu We Th Fr Sa
-      1  2  3  4  5                         1  2             1  2  3  4  5  6  
-6  7  8  9  10 11 12         3  4  5  6  7  8  9          7  8  9  10 11 12 13 
-13 14 15 16 17 18 19         10 11 12 13 14 15 16         14 15 16 17 18 19 20 
-20 21 22 23 24 25 26         17 18 19 20 21 22 23         21 22 23 24 25 26 27 
-27 28 29 30 31               24 25 26 27 28 29 30         28 29 30             
-                             31                                                
 
-       October                     November                     December       
+        July                        August                     September
 Su Mo Tu We Th Fr Sa         Su Mo Tu We Th Fr Sa         Su Mo Tu We Th Fr Sa
-         1  2  3  4                            1             1  2  3  4  5  6  
-5  6  7  8  9  10 11         2  3  4  5  6  7  8          7  8  9  10 11 12 13 
-12 13 14 15 16 17 18         9  10 11 12 13 14 15         14 15 16 17 18 19 20 
-19 20 21 22 23 24 25         16 17 18 19 20 21 22         21 22 23 24 25 26 27 
-26 27 28 29 30 31            23 24 25 26 27 28 29         28 29 30 31          
-                             30                                                
+      1  2  3  4  5                         1  2             1  2  3  4  5  6
+6  7  8  9  10 11 12         3  4  5  6  7  8  9          7  8  9  10 11 12 13
+13 14 15 16 17 18 19         10 11 12 13 14 15 16         14 15 16 17 18 19 20
+20 21 22 23 24 25 26         17 18 19 20 21 22 23         21 22 23 24 25 26 27
+27 28 29 30 31               24 25 26 27 28 29 30         28 29 30
+                             31
+
+       October                     November                     December
+Su Mo Tu We Th Fr Sa         Su Mo Tu We Th Fr Sa         Su Mo Tu We Th Fr Sa
+         1  2  3  4                            1             1  2  3  4  5  6
+5  6  7  8  9  10 11         2  3  4  5  6  7  8          7  8  9  10 11 12 13
+12 13 14 15 16 17 18         9  10 11 12 13 14 15         14 15 16 17 18 19 20
+19 20 21 22 23 24 25         16 17 18 19 20 21 22         21 22 23 24 25 26 27
+26 27 28 29 30 31            23 24 25 26 27 28 29         28 29 30 31
+                             30
 
 ```
 
@@ -9079,12 +9079,12 @@ clear screen
 
 sub snoopy()
 	local n, a$
-	
+
 	n = open("snoopy.txt", "r")
 
 	while(not eof(#n))
 		line input #n a$
-		print "  "; : print color("black", "white") a$ 
+		print "  "; : print color("black", "white") a$
 	wend
 
 	close #n
@@ -9096,28 +9096,28 @@ end sub
 
 sub string.rep$(s$, n)
 	local i, r$
-	
+
 	for i = 1 to n
 		r$ = r$ + s$
 	next i
-	
+
 	return r$
 end sub
 
 sub center$(s$, width)
 	local fill1
-	
+
 	fill1 = floor(width - len(s$)) / 2
-	
+
 	return string.rep$(" ",fill1) + s$ + string.rep$(" ",fill1)
 end sub
 
 sub makeMonth(name, skip, days, cal$(), j)
 	local cal, curday, line$, i
-	
+
 	curday = 1 - skip
 	cal = 3
-	
+
 	cal$(j, 2) = " " + daysTitle$ + " "
 	//cal$(j, 1) = center$(months$(name),len(cal$(j, 2)))
 	cal$(j, 1) = left$(months$(name) + string.rep$(" ", 80), len(cal$(j, 2)))
@@ -9145,15 +9145,15 @@ for n = 1 to 12
 	read daysPerMonth(n)
 next
 data 31,28,31,30,31,30,31,31,30,31,30,31
-  
+
 sub print_cal(year)
 	local i, q, l, m, startday, sep, monthwidth, calwidth, dpm, calendar$(12, 9), line$(3)
-	
+
 	startday=mod(((year-1)*365+floor((year-1)/4)-floor((year-1)/100)+floor((year-1)/400)),7)
  	if not mod(year,4) and mod(year,100) or not mod(year,400) then
     	    daysPerMonth(2)=29
   	end if
-  	
+
   	sep = 5
   	monthwidth = len(daysTitle$)
 	calwidth = 3 * monthwidth + 2 * sep
@@ -9226,41 +9226,41 @@ oneMonth produces a list of strings that make up a one month calender. Each day 
                       3 Days of Peace & Music
                                  1969
 
-      January                  February                  March             
-Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     
-          1  2  3  4                        1                        1     
- 5  6  7  8  9 10 11      2  3  4  5  6  7  8      2  3  4  5  6  7  8     
-12 13 14 15 16 17 18      9 10 11 12 13 14 15      9 10 11 12 13 14 15     
-19 20 21 22 23 24 25     16 17 18 19 20 21 22     16 17 18 19 20 21 22     
-26 27 28 29 30 31        23 24 25 26 27 28        23 24 25 26 27 28 29     
-                                                  30 31                    
+      January                  February                  March
+Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa
+          1  2  3  4                        1                        1
+ 5  6  7  8  9 10 11      2  3  4  5  6  7  8      2  3  4  5  6  7  8
+12 13 14 15 16 17 18      9 10 11 12 13 14 15      9 10 11 12 13 14 15
+19 20 21 22 23 24 25     16 17 18 19 20 21 22     16 17 18 19 20 21 22
+26 27 28 29 30 31        23 24 25 26 27 28        23 24 25 26 27 28 29
+                                                  30 31
 
-       April                     May                      June             
-Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     
-       1  2  3  4  5                  1  2  3      1  2  3  4  5  6  7     
- 6  7  8  9 10 11 12      4  5  6  7  8  9 10      8  9 10 11 12 13 14     
-13 14 15 16 17 18 19     11 12 13 14 15 16 17     15 16 17 18 19 20 21     
-20 21 22 23 24 25 26     18 19 20 21 22 23 24     22 23 24 25 26 27 28     
-27 28 29 30              25 26 27 28 29 30 31     29 30                    
-                                                                           
+       April                     May                      June
+Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa
+       1  2  3  4  5                  1  2  3      1  2  3  4  5  6  7
+ 6  7  8  9 10 11 12      4  5  6  7  8  9 10      8  9 10 11 12 13 14
+13 14 15 16 17 18 19     11 12 13 14 15 16 17     15 16 17 18 19 20 21
+20 21 22 23 24 25 26     18 19 20 21 22 23 24     22 23 24 25 26 27 28
+27 28 29 30              25 26 27 28 29 30 31     29 30
 
-        July                    August                 September           
-Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     
-       1  2  3  4  5                     1  2         1  2  3  4  5  6     
- 6  7  8  9 10 11 12      3  4  5  6  7  8  9      7  8  9 10 11 12 13     
-13 14 15 16 17 18 19     10 11 12 13 14 15 16     14 15 16 17 18 19 20     
-20 21 22 23 24 25 26     17 18 19 20 21 22 23     21 22 23 24 25 26 27     
-27 28 29 30 31           24 25 26 27 28 29 30     28 29 30                 
-                         31                                                
 
-      October                  November                 December           
-Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     
-          1  2  3  4                        1         1  2  3  4  5  6     
- 5  6  7  8  9 10 11      2  3  4  5  6  7  8      7  8  9 10 11 12 13     
-12 13 14 15 16 17 18      9 10 11 12 13 14 15     14 15 16 17 18 19 20     
-19 20 21 22 23 24 25     16 17 18 19 20 21 22     21 22 23 24 25 26 27     
-26 27 28 29 30 31        23 24 25 26 27 28 29     28 29 30 31              
-                         30                                                
+        July                    August                 September
+Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa
+       1  2  3  4  5                     1  2         1  2  3  4  5  6
+ 6  7  8  9 10 11 12      3  4  5  6  7  8  9      7  8  9 10 11 12 13
+13 14 15 16 17 18 19     10 11 12 13 14 15 16     14 15 16 17 18 19 20
+20 21 22 23 24 25 26     17 18 19 20 21 22 23     21 22 23 24 25 26 27
+27 28 29 30 31           24 25 26 27 28 29 30     28 29 30
+                         31
+
+      October                  November                 December
+Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa     Su Mo Tu We Th Fr Sa
+          1  2  3  4                        1         1  2  3  4  5  6
+ 5  6  7  8  9 10 11      2  3  4  5  6  7  8      7  8  9 10 11 12 13
+12 13 14 15 16 17 18      9 10 11 12 13 14 15     14 15 16 17 18 19 20
+19 20 21 22 23 24 25     16 17 18 19 20 21 22     21 22 23 24 25 26 27
+26 27 28 29 30 31        23 24 25 26 27 28 29     28 29 30 31
+                         30
 
 ```
 

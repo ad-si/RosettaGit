@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Raster graphics operations}}[[Category:Graphics algorithms]]
-Implement a [[wp:flood fill|flood fill]]. 
+Implement a [[wp:flood fill|flood fill]].
 
 A flood fill is a way of filling an area using ''color banks'' to define the contained area or a ''target color'' which "determines" the area (the ''valley'' that can be flooded; Wikipedia uses the term ''target color''). It works almost like a water flooding from a point towards the banks (or: inside the valley): if there's a hole in the banks, the flood is not contained and all the image (or all the "connected valleys") get filled.
 
@@ -169,7 +169,7 @@ end;
 * <code>key</code> is a key to press to exit if the fill takes too long.
 
 
-###  Recursive 
+###  Recursive
 
 This is limited to %StackSize% pixels.
 
@@ -219,7 +219,7 @@ FloodFill(x, y, target, replacement, mode=1, key="")
 
 
 
-###  Iterative 
+###  Iterative
 
 
 ```AutoHotkey
@@ -244,7 +244,7 @@ FloodFill( 0x, 0y, target, replacement, mode=1, key="" )
 	VarSetCapacity(Rect, 16, 0)
 	hDC := DllCall("GetDC", UInt, 0)
 	hBrush := DllCall("CreateSolidBrush", UInt, replacement)
-	
+
 	l := 0
 	while l >= 0
 	{
@@ -271,10 +271,10 @@ FloodFill( 0x, 0y, target, replacement, mode=1, key="" )
 			ol := l++
 			, %l%x := %ol%x + (p = 1 ? 1 : p = 2 ? -1 : 0)
 			, %l%y := %ol%y + (p = 3 ? 1 : p = 4 ? -1 : 0)
-		else 
+		else
 			%l%x := %l%y := %l%p := "", l--
 	}
-	
+
 	DllCall("ReleaseDC", UInt, 0, UInt, hDC)
 	DllCall("DeleteObject", UInt, hBrush)
 }
@@ -297,7 +297,7 @@ BBC BASIC has a built-in flood fill statement, but to satisfy the terms of the t
       GCOL 4
       PROCflood(600, 700, 0)
       END
-      
+
       DEF PROCflood(X%, Y%, C%)
       LOCAL L%, R%
       IF POINT(X%,Y%) <> C% ENDPROC
@@ -323,11 +323,11 @@ BBC BASIC has a built-in flood fill statement, but to satisfy the terms of the t
 
 ```C
 /*
- * RosettaCode: Bitmap/Flood fill, language C, dialects C89, C99, C11. 
+ * RosettaCode: Bitmap/Flood fill, language C, dialects C89, C99, C11.
  *
  * This is an implementation of the recursive algorithm. For the sake of
  * simplicity, instead of reading files as JPEG, PNG, etc., the program
- * read and write Portable Bit Map (PBM) files in plain text format. 
+ * read and write Portable Bit Map (PBM) files in plain text format.
  * Portable Bit Map files can also be read and written with GNU GIMP.
  *
  * The program is just an example, so the image size is limited to 2048x2048,
@@ -339,7 +339,7 @@ BBC BASIC has a built-in flood fill statement, but to satisfy the terms of the t
  * In order for this program to work properly it is necessary to allocate
  * enough memory for the program stack. For example, in Microsoft Visual Studio,
  * the option /stack:134217728 declares a 128MB stack instead of the default
- * size of 1MB. 
+ * size of 1MB.
  */
 #define _CRT_SECURE_NO_WARNINGS /* Unlock printf etc. in MSVC */
 #include <stdio.h>
@@ -354,9 +354,9 @@ static BYTE oldColor;
 static BYTE newColor;
 
 void floodFill(int i, int j)
-{   
-    if ( 0 <= i && i < height 
-    &&   0 <= j && j < width 
+{
+    if ( 0 <= i && i < height
+    &&   0 <= j && j < width
     &&   bitmap[i][j] == oldColor )
     {
         bitmap[i][j] = newColor;
@@ -382,7 +382,7 @@ void skipCommentLines(FILE* file)
     int c;
     int comment = '#';
 
-    while ((c = fgetc(file)) == comment) 
+    while ((c = fgetc(file)) == comment)
         skipLine(file);
     ungetc(c,file);
 }
@@ -433,7 +433,7 @@ int main(void)
 
 
 
-### Second example 
+### Second example
 
 
 ```c
@@ -441,110 +441,110 @@ int main(void)
 // http://commons.wikimedia.org/wiki/File:Julia_immediate_basin_1_3.png
 
 unsigned int f(unsigned int _iX, unsigned int _iY)
-/* 
-   gives position of point (iX,iY) in 1D array  ; uses also global variables 
-   it does not check if index is good  so memory error is possible 
+/*
+   gives position of point (iX,iY) in 1D array  ; uses also global variables
+   it does not check if index is good  so memory error is possible
 */
 {return (_iX + (iYmax-_iY-1)*iXmax );}
 
 
 int FillContour(int iXseed, int iYseed,  unsigned char color, unsigned char _data[])
-{ 
-  /* 
-     fills contour with black border ( color = iJulia)  using seed point inside contour 
-     and horizontal lines 
+{
+  /*
+     fills contour with black border ( color = iJulia)  using seed point inside contour
+     and horizontal lines
      it starts from seed point, saves max right( iXmaxLocal) and max left ( iXminLocal) interior points of horizontal line,
      in new line ( iY+1 or iY-1) it computes new interior point  : iXmidLocal=iXminLocal + (iXmaxLocal-iXminLocal)/2;
      result is stored in _data array : 1D array of 1-bit colors ( shades of gray)
-     it does not check if index of _data array is good  so memory error is possible 
+     it does not check if index of _data array is good  so memory error is possible
   */
- 
-  
+
+
   int iX, /* seed integer coordinate */
     iY=iYseed,
     /* most interior point of line iY */
-    iXmidLocal=iXseed, 
+    iXmidLocal=iXseed,
     /* min and max of interior points of horizontal line iY */
-    iXminLocal, 
-    iXmaxLocal; 
+    iXminLocal,
+    iXmaxLocal;
   int i ; /* index of _data array */;
- 
- 
-  /* ---------  move up --------------- */ 
+
+
+  /* ---------  move up --------------- */
   do{
     iX=iXmidLocal;
     i =f(iX,iY); /* index of _data array */;
- 
+
     /* move to right */
-    while (_data[i]==iInterior) 
+    while (_data[i]==iInterior)
       { _data[i]=color;
-        iX+=1; 
-        i=f(iX,iY);  
+        iX+=1;
+        i=f(iX,iY);
       }
     iXmaxLocal=iX-1;
- 
+
     /* move to left */
-    iX=iXmidLocal-1; 
+    iX=iXmidLocal-1;
     i=f(iX,iY);
-    while (_data[i]==iInterior) 
+    while (_data[i]==iInterior)
       { _data[i]=color;
-        iX-=1; 
-        i=f(iX,iY); 
+        iX-=1;
+        i=f(iX,iY);
       }
-    iXminLocal=iX+1; 
- 
- 
+    iXminLocal=iX+1;
+
+
     iY+=1; /* move up */
     iXmidLocal=iXminLocal + (iXmaxLocal-iXminLocal)/2; /* new iX inside contour */
     i=f(iXmidLocal,iY); /* index of _data array */;
     if ( _data[i]==iJulia)  break; /*  it should not cross the border */
- 
-  } while  (iY<iYmax); 
- 
- 
+
+  } while  (iY<iYmax);
+
+
   /* ------  move down ----------------- */
   iXmidLocal=iXseed;
   iY=iYseed-1;
- 
- 
+
+
   do{
     iX=iXmidLocal;
     i =f(iX,iY); /* index of _data array */;
- 
+
     /* move to right */
     while (_data[i]==iInterior) /*  */
       { _data[i]=color;
         iX+=1;
-        i=f(iX,iY);  
+        i=f(iX,iY);
       }
     iXmaxLocal=iX-1;
- 
+
     /* move to left */
-    iX=iXmidLocal-1; 
+    iX=iXmidLocal-1;
     i=f(iX,iY);
     while (_data[i]==iInterior) /*  */
       { _data[i]=color;
         iX-=1; /* move to right */
-        i=f(iX,iY);  
+        i=f(iX,iY);
       }
-    iXminLocal=iX+1; 
- 
+    iXminLocal=iX+1;
+
     iY-=1; /* move down */
     iXmidLocal=iXminLocal + (iXmaxLocal-iXminLocal)/2; /* new iX inside contour */
     i=f(iXmidLocal,iY); /* index of _data array */;
     if ( _data[i]==iJulia)  break; /*  it should not cross the border */
-  } while  (0<iY); 
- 
+  } while  (0<iY);
+
   /* mark seed point by big pixel */
   const int iSide =iXmax/500; /* half of width or height of big pixel */
-  for(iY=iYseed-iSide;iY<=iYseed+iSide;++iY){ 
-    for(iX=iXseed-iSide;iX<=iXseed+iSide;++iX){ 
+  for(iY=iYseed-iSide;iY<=iYseed+iSide;++iY){
+    for(iX=iXseed-iSide;iX<=iXseed+iSide;++iX){
       i= f(iX,iY); /* index of _data array */
       _data[i]=10;}}
- 
+
   return 0;
 }
- 
+
 
 ```
 
@@ -677,8 +677,8 @@ The '''pixelcount''' could be used to know the area of the filled region. The ''
 (Comments show changes to fill the white area instead of the black circle)
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include "imglib.h"
 
@@ -916,23 +916,23 @@ def floodFill(image, x, y, newColor) {
   def matchColor := image[x, y]
   def w := image.width()
   def h := image.height()
-  
-  /** For any given pixel x,y, this algorithm first fills a contiguous 
+
+  /** For any given pixel x,y, this algorithm first fills a contiguous
       horizontal line segment of pixels containing that pixel, then
-      recursively scans the two adjacent rows over the same horizontal 
-      interval. Let this be invocation 0, and the immediate recursive 
+      recursively scans the two adjacent rows over the same horizontal
+      interval. Let this be invocation 0, and the immediate recursive
       invocations be 1, 2, 3, ..., # be pixels of the wrong color, and
       * be where each scan starts; the fill ordering is as follows:
-      
+
       --------------##########-------
       -...1111111111*11####*33333...-
       ###########000*000000000000...-
       -...2222222222*22222##*4444...-
       --------------------##---------
-      
+
       Each invocation returns the x coordinate of the rightmost pixel it filled,
       or x0 if none were.
-      
+
       Since it is recursive, this algorithm is unsuitable for large images
       with small stacks.
     */
@@ -940,26 +940,26 @@ def floodFill(image, x, y, newColor) {
     if (y >= 0 && y < h && x0 >= 0 && x0 < w) {
       image[x0, y] := newColor
       var x1 := x0
-      
+
       # Fill rightward
       while (x1 < w - 1 && image.test(x1 + 1, y, matchColor)) {
         x1 += 1
         image[x1, y] := newColor # This could be replaced with a horizontal-line drawing operation
       }
-      
+
       # Fill leftward
       while (x0 > 0 && image.test(x0 - 1, y, matchColor)) {
         x0 -= 1
         image[x0, y] := newColor
       }
-      
+
       if (x0 > x1) { return x0 } # Filled at most center
 
       # x0..x1 is now a run of newly-filled pixels.
-      
+
       # println(`Filled $y $x0..$x1`)
       # println(image)
-            
+
       # Scan the lines above and below
       for ynext in [y - 1, y + 1] {
         if (ynext >= 0 && ynext < h) {
@@ -972,7 +972,7 @@ def floodFill(image, x, y, newColor) {
           }
         }
       }
-      
+
       return x1
     } else {
       return x0
@@ -1124,7 +1124,7 @@ $    if fill(A,i+1,j,n,m,d,dist,V,S,sn,color) then i=i+1; continue;
 $    elseif fill(A,i,j+1,n,m,d,dist,V,S,sn,color) then j=j+1; continue;
 $    elseif fill(A,i-1,j,n,m,d,dist,V,S,sn,color) then i=i-1; continue;
 $    elseif fill(A,i,j-1,n,m,d,dist,V,S,sn,color) then j=j-1; continue;
-$    endif;   
+$    endif;
 $    sn=sn-1; if sn==0 then break; endif;
 $    i=S[sn,1]; j=S[sn,2];
 $  end;
@@ -1237,7 +1237,7 @@ This simple recursive algorithm uses routines from [[Basic bitmap storage]].
 
 {{works with|Fortran|90 and later}}
 
-Here the ''target color'' paradigm is used. Again the <code>matchdistance</code> parameter can be tuned to ignore small differences that could come because of antialiasing. 
+Here the ''target color'' paradigm is used. Again the <code>matchdistance</code> parameter can be tuned to ignore small differences that could come because of antialiasing.
 
 
 ```fortran
@@ -1279,16 +1279,16 @@ contains
        else
           exit
        end if
-       spy = spy + 1       
+       spy = spy + 1
     end do
     spy = spy - 1
     call draw_line(img, point(p0%x, spy), point(p0%x, npy), fcolor)
-    
+
     do y = min(spy, npy), max(spy, npy)
        if ( y == p0%y ) cycle
        call eastwest(img, point(p0%x, y), tcolor, fcolor)
     end do
-    
+
   end subroutine northsouth
 
 
@@ -1319,23 +1319,23 @@ contains
        else
           exit
        end if
-       spx = spx + 1       
+       spx = spx + 1
     end do
     spx = spx - 1
     call draw_line(img, point(spx, p0%y), point(npx, p0%y), fcolor)
-    
+
     do x = min(spx, npx), max(spx, npx)
        if ( x == p0%x ) cycle
        call northsouth(img, point(x, p0%y), tcolor, fcolor)
     end do
-    
+
   end subroutine eastwest
 
   subroutine floodfill(img, p0, tcolor, fcolor)
     type(rgbimage), intent(inout) :: img
     type(point), intent(in) :: p0
     type(rgb), intent(in) :: tcolor, fcolor
-    
+
     type(rgb) :: pcolor
 
     if ( .not. inside_image(img, p0%x, p0%y) ) return
@@ -1828,7 +1828,7 @@ fun floodFill(image: BufferedImage, node: Point, targetColor: Color, replColor: 
     val replacement = replColor.getRGB()
     if (target == replacement) return
     val width = image.width
-    val height = image.height    
+    val height = image.height
     val queue = LinkedList<Point>()
     var nnode: Point? = node
 
@@ -1857,7 +1857,7 @@ fun floodFill(image: BufferedImage, node: Point, targetColor: Color, replColor: 
             else if (spanDown && y < height - 1 && image.getRGB(x, y + 1) != target) {
                 spanDown = false
             }
-            x++            
+            x++
         }
         nnode = queue.pollFirst()
     }
@@ -1867,7 +1867,7 @@ fun floodFill(image: BufferedImage, node: Point, targetColor: Color, replColor: 
 fun main(args: Array<String>) {
    val image = ImageIO.read(File("Unfilledcirc.png"))
    floodFill(image, Point(50, 50), Color.white, Color.yellow)
-   val title = "Floodfilledcirc.png" 
+   val title = "Floodfilledcirc.png"
    ImageIO.write(image, "png", File(title))
    JOptionPane.showMessageDialog(null, JLabel(ImageIcon(image)), title, JOptionPane.PLAIN_MESSAGE)
 }
@@ -1984,12 +1984,12 @@ img.floodFill(x, y, rgb(r,g,b))
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-createMask[img_, pos_, tol_] := 
+createMask[img_, pos_, tol_] :=
             RegionBinarize[img, Image[SparseArray[pos -> 1, ImageDimensions[img]]], tol];
-floodFill[img_Image, pos_List, tol_Real, color_List] := 
-            ImageCompose[     
-                 SetAlphaChannel[ImageSubtract[img, createMask[img, pos, tol]], 1], 
-                 SetAlphaChannel[Image[ConstantArray[color, ImageDimensions[img]]], 
+floodFill[img_Image, pos_List, tol_Real, color_List] :=
+            ImageCompose[
+                 SetAlphaChannel[ImageSubtract[img, createMask[img, pos, tol]], 1],
+                 SetAlphaChannel[Image[ConstantArray[color, ImageDimensions[img]]],
                                  Dilation[createMask[img, pos, tol],1]
                                 ]
                         ]
@@ -2088,7 +2088,7 @@ This fills better than the Image::Imlib2 <tt>fill</tt> function the inner circle
 ## Phix
 
 {{Trans|Go}}
-Requires read_ppm() from [[Bitmap/Read_a_PPM_file#Phix|Read_a_PPM_file]], write_ppm() from [[Bitmap/Write_a_PPM_file#Phix|Write_a_PPM_file]]. 
+Requires read_ppm() from [[Bitmap/Read_a_PPM_file#Phix|Read_a_PPM_file]], write_ppm() from [[Bitmap/Write_a_PPM_file#Phix|Write_a_PPM_file]].
 Uses the output of Bitmap_Circle.exw (Circle.ppm)
 Working program is demo\rosetta\Bitmap_FloodFill.exw, results may be verified with demo\rosetta\viewppm.exw
 
@@ -2206,35 +2206,35 @@ FillArea(0,0,-1,$ff)
 
 
 
-###  Iterative 
+###  Iterative
 
 
 ```PureBasic
   Procedure Floodfill(x,y,new_color)
     old_color = Point(x,y)
     NewList stack.POINT()
-    AddElement(stack()):stack()\x = x : stack()\y = y 
-    While(LastElement(stack())) 
-      x = stack()\x  : y = stack()\y  
-      DeleteElement(stack()) 
-      If Point(x,y) = old_color      
-         Plot(x, y, new_color)  
+    AddElement(stack()):stack()\x = x : stack()\y = y
+    While(LastElement(stack()))
+      x = stack()\x  : y = stack()\y
+      DeleteElement(stack())
+      If Point(x,y) = old_color
+         Plot(x, y, new_color)
          AddElement(stack()):stack()\x = x    : stack()\y = y +1
          AddElement(stack()):stack()\x = x    : stack()\y = y -1
-         AddElement(stack()):stack()\x = x +1 : stack()\y = y 
-         AddElement(stack()):stack()\x = x -1 : stack()\y = y   
-      EndIf  
-    Wend    
+         AddElement(stack()):stack()\x = x +1 : stack()\y = y
+         AddElement(stack()):stack()\x = x -1 : stack()\y = y
+      EndIf
+    Wend
   EndProcedure
-  
+
   If OpenWindow(0, 0, 0, 200, 200, "Floodfill Beispiel", #PB_Window_SystemMenu | #PB_Window_ScreenCentered)
     StartDrawing(WindowOutput(0))
       Box(0, 0, 200, 200, RGB(255, 255, 255))
       DrawingMode(#PB_2DDrawing_Outlined )
       Circle(100, 100, 90, RGB(255 ,0,0)): Circle(120, 80, 30, RGB(255 ,0,0)): Circle(200,200, 70, RGB(255 ,0,0))
-      
+
       Floodfill(40,40,RGB(0 ,255,0))
-    
+
     StopDrawing()
     Repeat
       Event = WaitWindowEvent()
@@ -2424,28 +2424,28 @@ image(M, col = c(1, 0, 2, 3))
   ;; With auxillary definitions below:
   (define width (send bm get-width))
   (define height (send bm get-height))
-  
+
   (define buffer (make-bytes (* width height 4)))
   (send bm get-argb-pixels 0 0 width height buffer)
-  
-  (define-values (target-red target-green target-blue) 
+
+  (define-values (target-red target-green target-blue)
     (values (send target-color red)
             (send target-color green)
             (send target-color blue)))
 
-  (define-values (replacement-red replacement-green replacement-blue) 
+  (define-values (replacement-red replacement-green replacement-blue)
     (values (send replacement-color red)
             (send replacement-color green)
             (send replacement-color blue)))
-    
+
   (define (offset-at x y) (* 4 (+ (* y width) x)))
-  
+
   (define (target-color-at? x y)
     (define offset (offset-at x y))
     (and (= (bytes-ref buffer (+ offset 1)) target-red)
          (= (bytes-ref buffer (+ offset 2)) target-green)
          (= (bytes-ref buffer (+ offset 3)) target-blue)))
-  
+
   (define (replace-color-at! x y)
     (define offset (offset-at x y))
     (bytes-set! buffer (+ offset 1) replacement-red)
@@ -2454,7 +2454,7 @@ image(M, col = c(1, 0, 2, 3))
 
   (define (in-bounds? x y)
     (and (<= 0 x) (< x width) (<= 0 y) (< y height)))
-  
+
   ;; Finally, let's do the fill, and then store the
   ;; result back into the bitmap:
   (iter start-x start-y)
@@ -2476,9 +2476,9 @@ image(M, col = c(1, 0, 2, 3))
 ;; before the flood fill:
 bm
 
-(flood-fill bm 50 50 
+(flood-fill bm 50 50
             (send the-color-database find-color "white")
-            (send the-color-database find-color "DarkSeaGreen"))            
+            (send the-color-database find-color "DarkSeaGreen"))
 ;; ... and after:
 bm
 

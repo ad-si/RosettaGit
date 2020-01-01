@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 
-Egyptian division is a method of dividing integers using addition and 
+Egyptian division is a method of dividing integers using addition and
 doubling that is similar to the algorithm of [[Ethiopian multiplication]]
 
 '''Algorithm:'''
@@ -347,10 +347,10 @@ procedure Egyptian_Division is
 
   procedure Divide  (a : Natural; b : Positive; q, r : out Natural) is
     doublings : array (0..31) of Natural;  -- The natural type holds values < 2^32 so no need going beyond
-    m, sum, last_index_touched : Natural := 0;    
+    m, sum, last_index_touched : Natural := 0;
   begin
     for i in doublings'Range loop
-      m := b * 2**i; 
+      m := b * 2**i;
       exit when m > a ;
       doublings (i) := m;
       last_index_touched := i;
@@ -358,14 +358,14 @@ procedure Egyptian_Division is
     q := 0;
     for i in reverse doublings'First .. last_index_touched loop
         m := sum + doublings (i);
-        if m <= a then 
-          sum := m; 
+        if m <= a then
+          sum := m;
           q := q + 2**i;
         end if;
     end loop;
     r := a -sum;
   end Divide;
-  
+
   q, r : Natural;
 begin
   Divide (580,34, q, r);
@@ -411,7 +411,7 @@ BEGIN
                 IF ( accumulator + doublings[ table pos ] ) <= dividend
                 THEN
                     accumulator +:= doublings  [ table pos ];
-                    answer      +:= powers of 2[ table pos ] 
+                    answer      +:= powers of 2[ table pos ]
                 FI;
                 table pos -:= 1
             OD;
@@ -456,7 +456,7 @@ on egyptianQuotRem(m, n)
             end if
         end |λ|
     end script
-    
+
     script collapse
         on |λ|(ix, qr)
             set {i, x} to ix
@@ -468,7 +468,7 @@ on egyptianQuotRem(m, n)
             end if
         end |λ|
     end script
-    
+
     return foldr(collapse, {0, m}, ¬
         unfoldr(expansion, {1, n}))
 end egyptianQuotRem
@@ -503,7 +503,7 @@ on foldr(f, startValue, xs)
     end tell
 end foldr
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -516,7 +516,7 @@ on mReturn(f)
 end mReturn
 
 -- > unfoldr (\b -> if b == 0 then Nothing else Just (b, b-1)) 10
--- > [10,9,8,7,6,5,4,3,2,1] 
+-- > [10,9,8,7,6,5,4,3,2,1]
 -- unfoldr :: (b -> Maybe (a, b)) -> b -> [a]
 on unfoldr(f, v)
     set xr to {v, v} -- (value, remainder)
@@ -563,7 +563,7 @@ while (div < divident)
 
 while obj.MaxIndex()						; iterate rows "in the reverse order"
 {
-	if (accumulator + obj[obj.MaxIndex()] <= divident)	; If (accumulator + current doubling) <= dividend 
+	if (accumulator + obj[obj.MaxIndex()] <= divident)	; If (accumulator + current doubling) <= dividend
 	{
 		accumulator += obj[obj.MaxIndex()]		; add current doubling to the accumulator
 		answer += obj.MaxIndex()			; add the powers_of_2 value to the answer.
@@ -587,23 +587,23 @@ Outputs:
 ```c
 
 
-'---Ported from the c code example to BaCon by bigbass 
+'---Ported from the c code example to BaCon by bigbass
 
 '
 ### ============================================================================
 
-FUNCTION EGYPTIAN_DIVISION(long dividend, long divisor, long remainder) TYPE long 
+FUNCTION EGYPTIAN_DIVISION(long dividend, long divisor, long remainder) TYPE long
 '
 ### ============================================================================
 
 '--- remainder is the third  parameter, pass 0 if you do not need the remainder
- 
-DECLARE powers[64] TYPE long 
-DECLARE doublings[64] TYPE long 
+
+DECLARE powers[64] TYPE long
+DECLARE doublings[64] TYPE long
 
 	LOCAL i TYPE long
- 
-	FOR i = 0 TO  63 STEP 1  
+
+	FOR i = 0 TO  63 STEP 1
 		powers[i] = 1 << i
 		doublings[i] = divisor << i
 		IF (doublings[i] > dividend) THEN
@@ -615,7 +615,7 @@ DECLARE doublings[64] TYPE long
 	LOCAL accumulator TYPE long
 	answer = 0
 	accumulator = 0
- 
+
 	WHILE i >= 0
 		'--- If the current value of the accumulator added to the
 		'--- doublings cell would be less than or equal to the
@@ -626,7 +626,7 @@ DECLARE doublings[64] TYPE long
 		ENDIF
 		DECR i
 	WEND
- 
+
 	IF remainder THEN
 		remainder = dividend - accumulator
 		PRINT dividend ," / ", divisor, " = " , answer ," remainder " , remainder
@@ -635,19 +635,19 @@ DECLARE doublings[64] TYPE long
         PRINT  (remainder + 0.0 )/ (divisor + 0.0) + answer
         PRINT
 
-	ELSE 
-		PRINT dividend ," / ", divisor , " = " , answer 
+	ELSE
+		PRINT dividend ," / ", divisor , " = " , answer
 	ENDIF
-	
+
 	RETURN answer
 
 ENDFUNCTION
 
- 
-	'--- the large number divided by the smaller number 
+
+	'--- the large number divided by the smaller number
 	'--- the third argument is 1 if you want to have a remainder
-	'--- and 0 if you dont want to have a remainder 
-	
+	'--- and 0 if you dont want to have a remainder
+
 	EGYPTIAN_DIVISION(580,34,1)
 	EGYPTIAN_DIVISION(580,34,0)
 
@@ -673,19 +673,19 @@ EGYPTIAN_DIVISION(580,34,1)
 
 uint64_t egyptian_division(uint64_t dividend, uint64_t divisor, uint64_t *remainder) {
 	// remainder is an out parameter, pass NULL if you do not need the remainder
-	
+
 	static uint64_t powers[64];
 	static uint64_t doublings[64];
 
 	int i;
-	
+
 	for(i = 0; i < 64; i++) {
 		powers[i] = 1 << i;
 		doublings[i] = divisor << i;
 		if(doublings[i] > dividend)
 			break;
 	}
-	
+
 	uint64_t answer = 0;
 	uint64_t accumulator = 0;
 
@@ -698,7 +698,7 @@ uint64_t egyptian_division(uint64_t dividend, uint64_t divisor, uint64_t *remain
 			answer += powers[i];
 		}
 	}
-	
+
 	if(remainder)
 		*remainder = dividend - accumulator;
 	return answer;
@@ -723,8 +723,8 @@ int main(void) {
 
 {{trans|C}}
 
-```cpp>#include <cassert
-
+```cpp
+#include <cassert>
 #include <iostream>
 
 typedef unsigned long ulong;
@@ -812,20 +812,20 @@ namespace Egyptian_division
 			Console.WriteLine();
 			Console.Write(" Enter value of dividend : ");
 			int dividend = int.Parse(Console.ReadLine());
-			     
+
 			Console.Write(" Enter value of divisor : ");
 			int divisor = int.Parse(Console.ReadLine());
-			                         
+
 			Divide(dividend, divisor);
-			
+
 			Console.WriteLine();
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);
-			
-			
-			
+
+
+
 		}
-		
+
 		static void Divide(int dividend, int divisor)
 		{
 			//
@@ -833,30 +833,30 @@ namespace Egyptian_division
 			//
 			int result   = 0;
 			int reminder = 0;
-			
+
 			int powers_of_two = 0;
 			int doublings 	  = 0;
-			
+
 			int answer 	= 0;
 			int accumulator = 0;
-			
+
 			int two = 2;
 			int pow = 0;
 			int row = 0;
-			
+
 			//
 			// Tables declaration
 			//
 			ArrayList table_powers_of_two = new ArrayList();
 			ArrayList table_doublings     = new ArrayList();
-			
+
 			//
 			// Fill and Show table values
 			//
 			Console.WriteLine("                           ");
 			Console.WriteLine(" powers_of_2     doublings ");
 			Console.WriteLine("                           ");
-			
+
 			// Set initial values
 			powers_of_two = 1;
 			doublings = divisor;
@@ -865,18 +865,18 @@ namespace Egyptian_division
 				// Set table value
 				table_powers_of_two.Add( powers_of_two );
 				table_doublings.Add( doublings );
-				
+
 				// Show new table row
 				Console.WriteLine("{0,8}{1,16}",powers_of_two, doublings);
-				
-				
+
+
 				pow++;
-				
+
 				powers_of_two = (int)Math.Pow( two, pow );
 				doublings = powers_of_two * divisor;
 			}
 			Console.WriteLine("                           ");
-			
+
 			//
 			// Calculate division and Show table values
 			//
@@ -885,20 +885,20 @@ namespace Egyptian_division
 			Console.WriteLine(" powers_of_2     doublings   answer   accumulator");
 			Console.WriteLine("                                                 ");
 			Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop + row);
-			
+
 			pow--;
 			while( pow >= 0 && accumulator < dividend )
 			{
 				// Get values from tables
 				doublings = int.Parse(table_doublings[pow].ToString());
 				powers_of_two = int.Parse(table_powers_of_two[pow].ToString());
-				
+
 				if(accumulator + int.Parse(table_doublings[pow].ToString()) <= dividend )
 				{
 					// Set new values
 					accumulator += doublings;
 					answer += powers_of_two;
-					
+
 					// Show accumulated row values in different collor
 					Console.ForegroundColor = ConsoleColor.Green;
 					Console.Write("{0,8}{1,16}",powers_of_two, doublings);
@@ -915,21 +915,21 @@ namespace Egyptian_division
 					Console.WriteLine("{0,10}{1,12}", answer, accumulator);
 					Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 2);
 				}
-				
-				
+
+
 				pow--;
 			}
-			
+
 			Console.WriteLine();
 			Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop + row + 2);
 			Console.ResetColor();
-			
+
 			// Set result and reminder
 			result = answer;
 			if( accumulator < dividend )
 			{
 				reminder = dividend - accumulator;
-				
+
 				Console.WriteLine(" So " + dividend +
 				                  " divided by " + divisor +
 				                  " using the Egyptian method is \n " + result +
@@ -940,7 +940,7 @@ namespace Egyptian_division
 			else
 			{
 				reminder = 0;
-				
+
 				Console.WriteLine(" So " + dividend +
 				                  " divided by " + divisor +
 				                  " using the Egyptian method is \n " + result +
@@ -1071,7 +1071,7 @@ ediv(A, B) ->
     {Twos, Ds} = genpowers(A, [1], [B]),
     {Quot, C} = accumulate(A, Twos, Ds),
     {Quot, abs(C - A)}.
-    
+
 genpowers(A, [_|Ts], [D|Ds]) when D > A -> {Ts, Ds};
 genpowers(A, [T|_] = Twos, [D|_] = Ds) -> genpowers(A, [2*T|Twos], [D*2|Ds]).
 
@@ -1141,7 +1141,7 @@ IN: rosetta-code.egyptian-division
         [ table ]
         [ 2drop { 0 0 } ]
         [ drop [ accum ] curry reduce first2 swap ]
-        [ drop - abs ] 
+        [ drop - abs ]
     } 2cleave ;
 
 580 34 ediv "580 divided by 34 is %d remainder %d\n" printf
@@ -1829,7 +1829,7 @@ sub egyptian-divmod (Real $dividend is copy where * >= 0, Real $divisor where * 
       .reverse.map: { $dividend -= .[1], $accumulator += .[0] if $dividend >= .[1] }
     $accumulator, $dividend;
 }
- 
+
 #TESTING
 for 580,34, 578,34, 7532795332300578,235117 -> $n, $d {
     printf "%s divmod %s = %s remainder %s\n",
@@ -1847,7 +1847,7 @@ for 580,34, 578,34, 7532795332300578,235117 -> $n, $d {
 
 
 ===More "Egyptian" version===
-As a preceding version was determined to be "let's just say ... not Egyptian" we submit an alternate which is hopefully more "Egyptian". Now only handles positive Integers up to 10 million, mostly due to limitations on Egyptian notation for numbers. 
+As a preceding version was determined to be "let's just say ... not Egyptian" we submit an alternate which is hopefully more "Egyptian". Now only handles positive Integers up to 10 million, mostly due to limitations on Egyptian notation for numbers.
 
 Note: if the below is just a mass of "unknown glyph" boxes, try [https://www.google.com/get/noto/help/install/ installing] Googles free [https://www.google.com/get/noto/#sans-egyp Noto Sans Egyptian Hieroglyphs font].
 
@@ -2015,7 +2015,7 @@ if __name__ == "__main__":
 
 Expressing the summing catamorphism in terms of '''functools.reduce''', and the preliminary expansion (by repeated addition to self) in terms of an '''unfoldl''' function, which is dual to reduce, and constructs a list from a seed value.
 
-Multiplication and division operators are both avoided, in the spirit of the Rhind Papyrus derivations of both (*) and (/) from plain addition and subtraction. 
+Multiplication and division operators are both avoided, in the spirit of the Rhind Papyrus derivations of both (*) and (/) from plain addition and subtraction.
 
 Also in deference to the character of the Rhind methods, the ('''unfoldl''') unfolding of the seed values to a list of progressively doubling rows is recursively defined, and mutation operations are avoided. The efficiency of the Egyptian method's exponential expansion means that there is no need here, even with larger numbers, to compress space by using an imperative translation of the higher-order unfold function.
 
@@ -2131,7 +2131,7 @@ if __name__ == '__main__':
   (when trace?
     (displayln "Table\npow_2\tdoubling")
     (for ((row table)) (printf "~a\t~a~%" (first row) (second row))))
-  
+
   (define-values (answer accumulator)
     (for*/fold ((answer 0) (accumulator 0))
                ((row (reverse table))
@@ -2244,28 +2244,28 @@ load "stdlib.ring"
 table = newlist(32, 2)
 dividend = 580
 divisor = 34
- 
+
 i = 1
 table[i][1] = 1
 table[i][2] = divisor
- 
+
 while table[i] [2] < dividend
       i = i + 1
       table[i][1] = table[i -1] [1] * 2
       table[i][2] = table[i -1] [2] * 2
-end 
+end
 i = i - 1
 answer = table[i][1]
 accumulator = table[i][2]
- 
+
 while i > 1
       i = i - 1
-      if table[i][2]+ accumulator <= dividend 
+      if table[i][2]+ accumulator <= dividend
          answer = answer + table[i][1]
          accumulator = accumulator + table[i][2]
       ok
 end
- 
+
 see string(dividend)  + " divided by " + string(divisor) + " using egytian division" + nl
 see " returns " + string(answer) + " mod(ulus) " + string(dividend-accumulator)
 
@@ -2296,7 +2296,7 @@ def egyptian_divmod(dividend, divisor)
       answer += pow
     end
   end
-  [answer, dividend - accumulator] 
+  [answer, dividend - accumulator]
 end
 
 puts "Quotient = %s Remainder = %s" % egyptian_divmod(580, 34)
@@ -2319,10 +2319,10 @@ Quotient = 17 Remainder = 2
 fn egyptian_divide(dividend: u32, divisor: u32) -> (u32, u32) {
     let dividend = dividend as u64;
     let divisor = divisor as u64;
-    
+
     let pows = (0..32).map(|p| 1 << p);
     let doublings = (0..32).map(|p| divisor << p);
-    
+
     let (answer, sum) = doublings
         .zip(pows)
         .rev()
@@ -2334,7 +2334,7 @@ fn egyptian_divide(dividend: u32, divisor: u32) -> (u32, u32) {
                 (answer, sum)
             }
         });
-    
+
     (answer as u32, (dividend - sum) as u32)
 }
 
@@ -2562,7 +2562,7 @@ fcn egyptianDivmod(dividend,divisor){
    table:=[0..].pump(List, 'wrap(n){	// (2^n,divisor*2^n)
       r:=T( p:=(2).pow(n), s:=divisor*p); (s<=dividend) and r or Void.Stop });
    accumulator:=0;
-   foreach p2,d in (table.reverse()){ 
+   foreach p2,d in (table.reverse()){
       if(dividend>=d){ accumulator+=p2; dividend-=d; }
    }
    return(accumulator,dividend);

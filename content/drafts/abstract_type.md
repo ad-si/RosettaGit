@@ -30,7 +30,7 @@ In some languages, like for example in Objective Caml which is strongly statical
 ## ABAP
 
 
-###  Abstract Class 
+###  Abstract Class
 
 
 ```ABAP
@@ -51,7 +51,7 @@ endclass.
 
 
 
-###  Interfaces 
+###  Interfaces
 
 Interfaces in ABAP are classes with the following restrictions:
 1. All methods must be abstract instance methods (Static methods aren't allowed).
@@ -92,22 +92,22 @@ package {
     import flash.utils.getQualifiedClassName;
 
     public class AbstractClass {
-        
+
         private static const FULLY_QUALIFIED_NAME:String = "AbstractClass";
-        
+
         // For classes in a package, the fully qualified name should be in the form "package.name::class_name"
         // Note that a double colon and not a dot is used before the class name. This is the format returned
         // by the getQualifiedClassName() function.
-        
+
         public function AbstractClass() {
             if ( getQualifiedClassName(this) == FULLY_QUALIFIED_NAME )
                 throw new Error("Class " + FULLY_QUALIFIED_NAME + " is abstract.");
         }
-        
+
         public function abstractMethod(a:int, b:int):void {
             throw new Error("abstractMethod is not implemented.");
         }
-        
+
     }
 }
 
@@ -125,7 +125,7 @@ package {
         override public function abstractMethod(a:int, b:int):void {
             trace(a + b);
         }
-        
+
     }
 }
 
@@ -164,7 +164,7 @@ with Ada.Finalization;
 type Node is abstract new Ada.Finalization.Limited_Controlled and Queue with record
    Previous : not null access Node'Class := Node'Unchecked_Access;
    Next     : not null access Node'Class := Node'Unchecked_Access;
-end record;   
+end record;
 overriding procedure Finalize (X : in out Node); -- Removes the node from its list if any
 overriding procedure Dequeue (Lounge : in out Node; Item : in out Element);
 overriding procedure Enqueue (Lounge : in out Node; Item : in out Element);
@@ -228,11 +228,11 @@ instance-for-dog : VoiceInterface Dog
 instance-for-dog = voice-interface $ const "woof!"
 
 -- * and then:
--- 
+--
 -- say dog => "woof!"
 -- say (cat crazy!) => "meeeoooowwwww!!!"
 -- say (cat plain-cat) => "meow!"
--- 
+--
 ```
 
 
@@ -257,7 +257,7 @@ Interfaces in Aikido define a set of functions, operators, classes, interfaces, 
 ```aikido
 interface Inter {
     function isFatal : integer
-    function operate (para : integer = 0) 
+    function operate (para : integer = 0)
     operator -> (stream, isout)
 }
 ```
@@ -387,23 +387,23 @@ foobar (new Abs)	(: prints  0 :)
 {{works with | AutoHotkey_L}}
 
 ```AutoHotkey
-color(r, g, b){ 
+color(r, g, b){
    static color
-   If !color 
-      color := Object("base", Object("R", r, "G", g, "B", b 
+   If !color
+      color := Object("base", Object("R", r, "G", g, "B", b
                                     ,"GetRGB", "Color_GetRGB"))
-   return  Object("base", Color) 
-} 
+   return  Object("base", Color)
+}
 Color_GetRGB(clr) {
     return "not implemented"
 }
 
-waterColor(r, g, b){ 
+waterColor(r, g, b){
    static waterColor
-   If !waterColor 
+   If !waterColor
       waterColor := Object("base", color(r, g, b),"GetRGB", "WaterColor_GetRGB")
-   return  Object("base", WaterColor) 
-} 
+   return  Object("base", WaterColor)
+}
 
 WaterColor_GetRGB(clr){
 return clr.R << 16 | clr.G << 8 | clr.B
@@ -422,26 +422,26 @@ return
 ## BBC BASIC
 
 {{works with|BBC BASIC for Windows}}
-BBC BASIC is a procedural language with no built-in OO features.  The CLASSLIB library implements simple Object Classes with multiple inheritance; an abstract class may be created without any instantiation, the sole purpose of which is for other classes to inherit from it.  At least one member or method must be declared, but no error will be generated if there is no implementation: 
+BBC BASIC is a procedural language with no built-in OO features.  The CLASSLIB library implements simple Object Classes with multiple inheritance; an abstract class may be created without any instantiation, the sole purpose of which is for other classes to inherit from it.  At least one member or method must be declared, but no error will be generated if there is no implementation:
 
 ```bbcbasic
       INSTALL @lib$+"CLASSLIB"
-      
+
       REM Declare a class with no implementation:
       DIM abstract{method}
       PROC_class(abstract{})
-      
+
       REM Inherit from the abstract class:
       DIM derived{member%}
       PROC_inherit(derived{}, abstract{})
       PROC_class(derived{})
-      
+
       REM Provide an implementation for the derived class:
       DEF derived.method : PRINT "Hello world!" : ENDPROC
-      
+
       REM Instantiate the derived class:
       PROC_new(instance{}, derived{})
-      
+
       REM Test by calling the method:
       PROC(instance.method)
 ```
@@ -486,7 +486,7 @@ struct sAbstractCls {
 #define Abs_Method3( c, d) (c)->klass->method3(c, d)
 #define Abs_Free(c) \
   do { if (c) { free((c)->instData); free(c); } } while(0);
- 
+
 #endif
 ```
 
@@ -502,7 +502,7 @@ here. We don't want it visible.
 
 typedef struct sillyStruct *Silly;
 extern Silly NewSilly( double, const char *);
-extern AbsCls Silly_Instance(void *); 
+extern AbsCls Silly_Instance(void *);
 
 #endif
 ```
@@ -557,12 +557,12 @@ ABSTRACT_METHODS( Silly, MyMethod1, MyMethod2, MyMethod3)
 That last macro, ABSTRACT_METHODS may need a little explanation. First note that macros do a string substitution of the parameter values into the arguments of the defined macro, with a little hitch. In the macro definition the ' ## ' expression is special. Here cName ## _Iface gets converted to Silly_Iface, as 'Silly' replaces cName. So the macro call declares an instance of the class record, and defines a constructor named Silly_Instance, which takes a Silly structure as an arguments
 and uses the class record it previously set up as well.
 
-The methods MyMethod1, MyMethod2, and MyMethod3 are called through the abstract class interface and do not need to be visible outside this file. Hence, they are declared static. 
+The methods MyMethod1, MyMethod2, and MyMethod3 are called through the abstract class interface and do not need to be visible outside this file. Hence, they are declared static.
 
-Now all's left is some example code that uses all this stuff. 
+Now all's left is some example code that uses all this stuff.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include "silly.h"
 
 int main()
@@ -697,41 +697,41 @@ Using defprotocol, we can define what is essentially an interface.
 
 ```cobol
        INTERFACE-ID. Shape.
-       
+
        PROCEDURE DIVISION.
-       
+
        METHOD-ID. perimeter.
        DATA DIVISION.
        LINKAGE SECTION.
        01  ret USAGE FLOAT-LONG.
        PROCEDURE DIVISION RETURNING ret.
        END METHOD perimeter.
-       
+
        METHOD-ID. shape-area.
        DATA DIVISION.
        LINKAGE SECTION.
        01  ret USAGE FLOAT-LONG.
        PROCEDURE DIVISION RETURNING ret.
        END METHOD shape-area.
-       
-       END INTERFACE Shape.
-       
 
-       CLASS-ID. Rectangle. 
-       
+       END INTERFACE Shape.
+
+
+       CLASS-ID. Rectangle.
+
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
        REPOSITORY.
            INTERFACE Shape.
-       
+
        OBJECT IMPLEMENTS Shape.
            DATA DIVISION.
            WORKING-STORAGE SECTION.
            01  width  USAGE FLOAT-LONG PROPERTY.
            01  height USAGE FLOAT-LONG PROPERTY.
-           
+
            PROCEDURE DIVISION.
-           
+
            METHOD-ID. perimeter.
            DATA DIVISION.
            LINKAGE SECTION.
@@ -741,7 +741,7 @@ Using defprotocol, we can define what is essentially an interface.
                GOBACK
                .
            END METHOD perimeter.
-       
+
            METHOD-ID. shape-area.
            DATA DIVISION.
            LINKAGE SECTION.
@@ -752,14 +752,14 @@ Using defprotocol, we can define what is essentially an interface.
                .
            END METHOD shape-area.
        END OBJECT.
-       
+
        END CLASS Rectangle.
 ```
 
 
 
 ## Common Lisp
- 
+
 
 In Common Lisp, classes do not implement methods, but methods specialized for particular kinds of arguments may be defined for generic functions.  Since we can programmatically determine whether methods are defined for a list of arguments, we can simulate a kind of abstract type.  We define an abstract type <code>kons</code> to which an object belongs if methods for <code>kar</code> and <code>kdr</code> are defined for it.  We define a type predicate <code>konsp</code> and a type <code>kons</code> in terms of the type predicate.
 
@@ -824,7 +824,7 @@ For integers, we'll define the <code>kar</code> of <var>n</var> to be <var>1</va
 
 (* Abstract type *)
 Object = POINTER TO ABSTRACT RECORD END;
-	
+
 (* Integer inherits Object *)
 Integer = POINTER TO RECORD (Object)
 	i: INTEGER
@@ -842,13 +842,13 @@ END;
 
 (* Abstract method of Object *)
 PROCEDURE (dn: Object) Show*, NEW, ABSTRACT;
-	
+
 (* Implementation of the abstract method Show() in class Integer *)
 PROCEDURE (i: Integer) Show*;
 BEGIN
 	StdLog.String("Integer(");StdLog.Int(i.i);StdLog.String(");");StdLog.Ln
 END Show;
-	
+
 (* Implementation of the abstract method Show() in class Point *)
 PROCEDURE (p: Point) Show*;
 BEGIN
@@ -1026,7 +1026,7 @@ def x implements FooStamp {
 
 ```Eiffel
 
-deferred class 
+deferred class
     AN_ABSTRACT_CLASS
 
 feature
@@ -1060,7 +1060,7 @@ note
 		The class and each feature may also have specification rules expressed as preconditions,
 		post-conditions, and class invariants. Other assertion contracts may be applied to fully
 		implemented features as well.
-		
+
 		In the example below, while `age' is deferred (i.e. "abstract"), we have coded a rule which
 		states that any caller of `age' must only do so after a `birth_date' has been defined and
 		attached to that feature. Failing to do so will cause a contract violation. Moreover, the
@@ -1068,7 +1068,7 @@ note
 		of {PERSON}: The `birth_date' (if attached--that is--not Void or null) must be in the past
 		and never in the future. Also, if "Years" are used to represent the age, the calculation of
 		`age' must always agree with "current year - birth year = age".
-		
+
 		This form of Abstract Data Type specification has very clear advantages in that not only
 		must client code or descendents conform statically, implementing what is deferred, but they
 		must also obey the rules of the assertions dynamically in a polymorphic run-time situation.
@@ -1143,7 +1143,7 @@ class Y : X
 
 class Main
 {
-  public static Void main () 
+  public static Void main ()
   {
     y := Y()
     y.method1
@@ -1205,10 +1205,10 @@ The FMS object extension uses duck typing and so has no need for abstract types.
 
 ## Fortran
 
-Simple abstract derived type (i.e. abstract class)  in Fortran 2008 
+Simple abstract derived type (i.e. abstract class)  in Fortran 2008
 
 ```fortran
- 
+
    ! abstract derived type
    type, abstract :: TFigure
       real(rdp) :: area
@@ -1235,7 +1235,7 @@ Simple abstract derived type (i.e. abstract class)  in Fortran 2008
 FreeBASIC does not currently support either abstract types or interfaces as such.
 
 However, you can effectively create an abstract type by declaring all its methods to be abstract, so that they do not require a body in the declaring type itself. Such methods can then be overridden and implemented by its derived types. For example :-
- 
+
 
 ```freebasic
 ' FB 1.05.0 Win64
@@ -1247,7 +1247,7 @@ End Type
 Type Bear Extends Animal
   name As String
   Declare Constructor(name As String)
-  Declare Sub MakeNoise() 
+  Declare Sub MakeNoise()
 End Type
 
 Constructor Bear(name As String)
@@ -1261,7 +1261,7 @@ End Sub
 Type Dog Extends Animal
   name As String
   Declare Constructor(name As String)
-  Declare Sub MakeNoise() 
+  Declare Sub MakeNoise()
 End Type
 
 Constructor Dog(name As String)
@@ -1334,7 +1334,7 @@ type Ostrich() =
 
 ## Genyris
 
-In Genyris by default there are no constructors. In effect all classes are Abstract until they are used to tag (describe) an object. This in keeping with the language's roots in Description Logic. To prevent the class ever being associated with an instance it suffices to force the validator to fail. 
+In Genyris by default there are no constructors. In effect all classes are Abstract until they are used to tag (describe) an object. This in keeping with the language's roots in Description Logic. To prevent the class ever being associated with an instance it suffices to force the validator to fail.
 
 ```genyris
 class AbstractStack()
@@ -1618,7 +1618,7 @@ See more [http://docs.julialang.org/en/latest/manual/types/#abstract-types]
 
 ## Kotlin
 
-Kotlin supports abstract classes and interfaces, both of which can contain non-abstract members. The basic difference between them is that interfaces cannot store state. 
+Kotlin supports abstract classes and interfaces, both of which can contain non-abstract members. The basic difference between them is that interfaces cannot store state.
 
 Here's a very simple (and silly) example of both:
 
@@ -1704,7 +1704,7 @@ Instead of abstract classes or interfaces, Lasso uses a [http://lassoguide.com/l
 ```lasso
 define abstract_trait => trait {
     require get(index::integer)
-    
+
     provide first()  => .get(1)
     provide second() => .get(2)
     provide third()  => .get(3)
@@ -1743,14 +1743,14 @@ d
 As weakly typed script language, Lingo does not support any sort of inheritance control at compile time. But you can implement something similar to abstract classes and interfaces as user-defined code, by preventing (and optionally showing error messages) any class instantiations that don't fit to the intended scheme.
 
 
-###  Abstract Classes 
+###  Abstract Classes
 
 
 In some movie script:
 
 ```lingo
 on extendAbstractClass (instance, abstractClass)
-  -- 'raw' instance of abstract class is made parent ("ancestor") of the 
+  -- 'raw' instance of abstract class is made parent ("ancestor") of the
   -- passed instance, i.e. the passed instance extends the abstract class
   instance.setProp(#ancestor, abstractClass.rawNew())
 end
@@ -1809,7 +1809,7 @@ put test
 
 
 
-###  Interfaces 
+###  Interfaces
 
 
 In some movie script:
@@ -1844,7 +1844,7 @@ Parent script "MyClass":
 
 ```lingo
 on new (me)
-  -- if this class doesn't implement all functions of the 
+  -- if this class doesn't implement all functions of the
   -- interface class, instantiation fails
   if not implementsInterface(me, script("InterfaceClass")) then
     return VOID
@@ -1981,7 +1981,7 @@ Public:
       }
       Function GetString$ {
             .Err
-      } 
+      }
 Class:
       Module AbstractOne {
                   If Not Match("G") Then Exit
@@ -2090,7 +2090,7 @@ Note that, in this implementation, the line between interface and abstract type 
 ; Abstract Class
 
 ```MATLAB
-classdef (Abstract) AbsClass 
+classdef (Abstract) AbsClass
    ...
 end
 ```
@@ -2186,30 +2186,30 @@ namespace RosettaCode
     {
         abstract public Eat() : void;
         abstract public Peel() : void;
-        
+
         virtual public Cut() : void      // an abstract class con contain a mixture of abstract and implemented methods
         {                                // the virtual keyword allows the method to be overridden by derivative classes
             WriteLine("Being cut.");
         }
     }
-    
+
     interface IJuiceable
     {
         Juice() : void;           // interfaces contain only the signatures of methods
     }
-    
+
     class Orange : Fruit, IJuiceable
     {
         public override Eat() : void     // implementations of abstract methods need to be marked override
         {
             WriteLine("Being eaten.");
         }
-        
+
         public override Peel() : void
         {
             WriteLine("Being peeled.");
         }
-        
+
         public Juice() : void
         {
             WriteLine("Being juiced.");
@@ -2332,12 +2332,12 @@ method callOverridden2() public returns String
 (define (Shape:Shape   ; Shape constructor.
          (pen "X"))    ; Default value.
   (list (context)      ; Assemble data packet.
-        (list 'pen pen) 
+        (list 'pen pen)
         (list 'size (args))))
 
 (define (Shape:line x) ; Print out row with 'pen' character.
-  (dotimes (i x) 
-    (print (lookup 'pen (self)))) 
+  (dotimes (i x)
+    (print (lookup 'pen (self))))
   (println))
 
 (define (Shape:draw))  ; Placeholder, does nothing.
@@ -2358,7 +2358,7 @@ method callOverridden2() public returns String
 
 ; Demonstration
 
-(:draw (Shape))        ; Nothing happens. 
+(:draw (Shape))        ; Nothing happens.
 
 (println "A box:")
 (:draw (Box "O" 5))    ; Create Box object and call draw method.
@@ -2399,13 +2399,13 @@ In Nim type classes can be seen as an abstract type. Type classes specify interf
 type
   Comparable = concept x, y
     (x < y) is bool
-  
+
   Stack[T] = concept s, var v
     s.pop() is T
     v.push(T)
-    
+
     s.len is Ordinal
-    
+
     for value in s:
       value is T
 ```
@@ -2464,7 +2464,7 @@ TYPE
 
 class ClassA {
    method : virtual : public : MethodA() ~ Int;
- 
+
    method : public : MethodA() ~ Int {
       return 0;
    }
@@ -2544,16 +2544,16 @@ Spherical method: perimeter  @r 2 * PI * ;
 Spherical method: surface   @r sq PI * 4 * ;
 
 Object Class new: Ballon(color)
-Ballon is: Spherical 
+Ballon is: Spherical
 Ballon method: initialize(color, r)  color := color self setRadius(r) ;
 
 Object Class new: Planete(name)
-Planete is: Spherical 
+Planete is: Spherical
 Planete method: initialize(n, r)  n := name self setRadius(r) ;
 ```
 
 
-Usage : 
+Usage :
 
 ```Oforth
 : testProperty
@@ -2566,7 +2566,7 @@ Usage :
    Planete new("Earth", 6371000.0) ->p
    System.Out "Earth radius    is : " << p radius << cr
    System.Out "Earth perimeter is : " << p perimeter << cr
-   System.Out "Earth surface   is : " << p surface << cr 
+   System.Out "Earth surface   is : " << p surface << cr
 ;
 ```
 
@@ -2679,13 +2679,13 @@ Error 93.965:  Method NAME is ABSTRACT and cannot be directly invoked.
 
 
 ```ooRexx
-  -- Example showing an abstract type in ooRexx                         
-  -- shape is the abstract class that defines the abstract method area   
+  -- Example showing an abstract type in ooRexx
+  -- shape is the abstract class that defines the abstract method area
   -- which is then implemented by its two subclasses, rectangle and circle
-  -- name is the method inherited by the subclasses.                    
+  -- name is the method inherited by the subclasses.
   -- author:         Rony G. Flatscher, 2012-05-26
-  -- changed/edited: Walter Pachl, 2012-05-28 28 
-  -- highlighting:   to come 
+  -- changed/edited: Walter Pachl, 2012-05-28 28
+  -- highlighting:   to come
 
   r=.rectangle~new(5,2)
   say r
@@ -2827,7 +2827,7 @@ declare
   class BaseQueue
      attr
         contents:nil
-      
+
      meth init
         raise notImplemented(self init) end
      end
@@ -2885,12 +2885,12 @@ Since Perl 5.12, the Yadda Yadda operator (...) dies with an Unimplemented error
 ```perl
 
 package AbstractFoo;
- 
+
 use strict;
- 
+
 sub frob { ... }
 sub baz { ... }
- 
+
 sub frob_the_baz {
     my $self = shift;
     $self->frob($self->baz());
@@ -3012,10 +3012,10 @@ interface Inter {
 # lower-case character after the '+' (the naming convention for classes).
 # This tells the programmer that this class has not enough methods
 # defined to survive on its own.
-   
+
 (class +abstractClass)
-   
-(dm someMethod> () 
+
+(dm someMethod> ()
    (foo)
    (bar) )
 ```
@@ -3028,7 +3028,7 @@ interface Inter {
 
 ```PowerShell
 
-#Requires -Version 5.0 
+#Requires -Version 5.0
 
 Class Player
 {
@@ -3207,7 +3207,7 @@ Demarco Murray Tennessee Titans RB           29
 
 ```python
 class BaseQueue(object):
-    """Abstract/Virtual Class 
+    """Abstract/Virtual Class
     """
     def __init__(self):
         self.contents = list()
@@ -3238,7 +3238,7 @@ Starting from Python 2.6, abstract classes can be created using the standard abc
 from abc import ABCMeta, abstractmethod
 
 class BaseQueue():
-    """Abstract Class 
+    """Abstract Class
     """
     __metaclass__ = ABCMeta
 
@@ -3393,9 +3393,9 @@ r: make rectangle [size: 32x5]  r/draw
 
 (This entry modeled after the '''J''' entry.)
 
-(Classic) REXX does not support abstract types   (as defined here on this task page). 
+(Classic) REXX does not support abstract types   (as defined here on this task page).
 
-REXX supports a character ''type'', and as such, nothing needs to be declared. 
+REXX supports a character ''type'', and as such, nothing needs to be declared.
 
 
 
@@ -3691,12 +3691,12 @@ The implementing class states "Implements <name of interface class". The names o
 ## Visual Basic
 
 
-###  Abstract Classes 
+###  Abstract Classes
 
 Visual Basic doesn't support abstract classes or implementation inheritance.
 
 
-###  Interfaces 
+###  Interfaces
 
 In Visual Basic, every class is also an interface that other classes can implement. It has this feature because it is based on COM.
 
@@ -3704,7 +3704,7 @@ In Visual Basic, every class is also an interface that other classes can impleme
 ## Visual Basic .NET
 
 
-###  Abstract Classes 
+###  Abstract Classes
 
 * Overridable means subclasses may change the method's implementation. By default, methods in VB cannot be overridden.
 * MustOverride means the subclasses must provide an implementation
@@ -3733,7 +3733,7 @@ End Class
 
 
 
-###  Interfaces 
+###  Interfaces
 
 
 Interfaces may contain Functions, Subroutines, Properties, and Events.

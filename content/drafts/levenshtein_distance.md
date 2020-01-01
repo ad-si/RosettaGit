@@ -14,7 +14,7 @@ tags = []
 
 
 
-In information theory and computer science, the '''Levenshtein distance''' is a [[wp:string metric|metric]] for measuring the amount of difference between two sequences (i.e. an [[wp:edit distance|edit distance]]). The Levenshtein distance between two strings is defined as the minimum number of edits needed to transform one string into the other, with the allowable edit operations being insertion, deletion, or substitution of a single character. 
+In information theory and computer science, the '''Levenshtein distance''' is a [[wp:string metric|metric]] for measuring the amount of difference between two sequences (i.e. an [[wp:edit distance|edit distance]]). The Levenshtein distance between two strings is defined as the minimum number of edits needed to transform one string into the other, with the allowable edit operations being insertion, deletion, or substitution of a single character.
 
 
 ;Example:
@@ -31,7 +31,7 @@ The Levenshtein distance between "'''kitten'''" and "'''sitting'''" is 3, since 
 
 
 ;Task;
-Implements a Levenshtein distance function, or uses a library function, to show the Levenshtein distance between   "kitten"   and   "sitting". 
+Implements a Levenshtein distance function, or uses a library function, to show the Levenshtein distance between   "kitten"   and   "sitting".
 
 
 ;Related task:
@@ -170,18 +170,18 @@ to findLevenshteinDistance for s1 against s2
     set lm to length of s2
     if ll = 0 then return lm
     if lm = 0 then return ll
-    
+
     set v0 to {}
-    
+
     repeat with i from 1 to (lm + 1)
         set end of v0 to (i - 1)
     end repeat
     set item -1 of v0 to 0
     copy v0 to v1
-    
+
     repeat with i from 1 to ll
         -- calculate v1 (current row distances) from the previous row v0
-        
+
         -- first element of v1 is A[i+1][0]
         --   edit distance is delete (i+1) chars from s to match empty t
         set item 1 of v1 to i
@@ -227,7 +227,7 @@ end min3
 -- levenshtein :: String -> String -> Int
 on levenshtein(sa, sb)
     set {s1, s2} to {characters of sa, characters of sb}
-    
+
     script
         on |λ|(ns, c)
             script minPath
@@ -236,12 +236,12 @@ on levenshtein(sa, sb)
                     minimum({y + 1, z + 1, x + fromEnum(c1 is not c)})
                 end |λ|
             end script
-            
+
             set {n, ns1} to uncons(ns)
             scanl(minPath, n + 1, zip3(s1, ns, ns1))
         end |λ|
     end script
-    
+
     |last|(foldl(result, enumFromTo(0, length of s1), s2))
 end levenshtein
 
@@ -252,10 +252,10 @@ on run
             levenshtein(item 1 of xs, item 2 of xs)
         end |λ|
     end script
-    
+
     map(test, [["kitten", "sitting"], ["sitting", "kitten"], ¬
         ["rosettacode", "raisethysword"], ["raisethysword", "rosettacode"]])
-    
+
     --> {3, 3, 8, 8}
 end run
 
@@ -265,7 +265,7 @@ end run
 -- enumFromTo :: Enum a => a -> a -> [a]
 on enumFromTo(m, n)
     set {intM, intN} to {fromEnum(m), fromEnum(n)}
-    
+
     if intM > intN then
         set d to -1
     else
@@ -337,7 +337,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -349,7 +349,7 @@ on mReturn(f)
     end if
 end mReturn
 
--- minimum :: [a] -> a 
+-- minimum :: [a] -> a
 on minimum(xs)
     script min
         on |λ|(a, x)
@@ -360,7 +360,7 @@ on minimum(xs)
             end if
         end |λ|
     end script
-    
+
     foldl(min, missing value, xs)
 end minimum
 
@@ -394,7 +394,7 @@ on zip3(xs, ys, zs)
             [x, item i of ys, item i of zs]
         end |λ|
     end script
-    
+
     map(result, items 1 thru ¬
         minimum({length of xs, length of ys, length of zs}) of xs)
 end zip3
@@ -492,14 +492,14 @@ function levenshteinDistance(s1, s2,
     if (length(s1) == 0) return length(s2);
     if (length(s2) == 0) return length(s1);
 
-    # Rest of process uses first characters 
+    # Rest of process uses first characters
     # and remainder of each string.
     s1First = substr(s1, 1, 1);
     s2First = substr(s2, 1, 1);
     s1Rest = substr(s1, 2, length(s1));
     s2Rest = substr(s2, 2, length(s2));
 
-    # If leading characters are the same, 
+    # If leading characters are the same,
     # then distance is that between the rest of the strings.
     if (s1First == s2First) {
         return levenshteinDistance(s1Rest, s2Rest);
@@ -510,7 +510,7 @@ function levenshteinDistance(s1, s2,
     distB = levenshteinDistance(s1, s2Rest);
     distC = levenshteinDistance(s1Rest, s2Rest);
 
-    # Return the minimum distance between substrings.    
+    # Return the minimum distance between substrings.
     minDist = distA;
     if (distB < minDist) minDist = distB;
     if (distC < minDist) minDist = distC;
@@ -577,7 +577,7 @@ function levdist(str1, str2,	l1, l2, tog, arr, i, j, a, b, c) {
       PRINT "'rosettacode' -> 'raisethysword' has distance " ;
       PRINT ; FNlevenshtein("rosettacode", "raisethysword")
       END
-      
+
       DEF FNlevenshtein(s$, t$)
       LOCAL i%, j%, m%, d%()
       DIM d%(LENs$, LENt$)
@@ -661,8 +661,8 @@ Recursive method, but with memoization.
 
 Recursive method. Deliberately left in an inefficient state to show the recursive nature of the algorithm; notice how it would have become the Wikipedia algorithm if we memoized the function against parameters <code>ls</code> and <code>lt</code>.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 /* s, t: two strings; ls, lt: their respective length */
@@ -670,7 +670,7 @@ int levenshtein(const char *s, int ls, const char *t, int lt)
 {
         int a, b, c;
 
-        /* if either string is empty, difference is inserting all chars 
+        /* if either string is empty, difference is inserting all chars
          * from the other
          */
         if (!ls) return lt;
@@ -711,8 +711,8 @@ int main()
 
 Take the above and add caching, we get (in [[C99]]):
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 int levenshtein(const char *s, const char *t)
@@ -753,7 +753,7 @@ int main(void)
 	const char *s2 = "raisethysword";
 	printf("distance between `%s' and `%s': %d\n", s1, s2,
 		levenshtein(s1, s2));
- 
+
         return 0;
 }
 ```
@@ -763,8 +763,8 @@ int main(void)
 ## C++
 
 
-```c>#include <string
-
+```c
+#include <string>
 #include <iostream>
 using namespace std;
 
@@ -802,7 +802,7 @@ size_t uiLevenshteinDistance(const std::string &s1, const std::string &s2)
 		size_t t(upper<corner?upper:corner);
         costs[j+1] = (costs[j]<t?costs[j]:t)+1;
 	  }
-      
+
       corner = upper;
     }
   }
@@ -817,7 +817,7 @@ int main()
 {
 	string s0 = "rosettacode";
         string s1 = "raisethysword";
-	cout << "distance between " << s0 << " and " << s1 << " : " 
+	cout << "distance between " << s0 << " and " << s1 << " : "
 	     << uiLevenshteinDistance(s0,s1) << std::endl;
 
         return 0;
@@ -829,7 +829,7 @@ int main()
 
 ```txt
 
-$ ./a.out 
+$ ./a.out
 distance between rosettacode and raisethysword : 8
 
 ```
@@ -850,12 +850,12 @@ namespace LevenshteinDistance
             int n = s.Length;
             int m = t.Length;
             int[,] d = new int[n + 1, m + 1];
-		
+
 	    if (n == 0)
 	    {
 		return m;
 	    }
-	
+
 	    if (m == 0)
 	    {
 		return n;
@@ -865,7 +865,7 @@ namespace LevenshteinDistance
                 d[i, 0] = i;
             for (int j = 0; j <= m; j++)
                 d[0, j] = j;
-			
+
             for (int j = 1; j <= m; j++)
                 for (int i = 1; i <= n; i++)
                     if (s[i - 1] == t[j - 1])
@@ -911,12 +911,12 @@ GnuCobol 2.2
 
        identification division.
        program-id. Levenshtein.
- 
+
        environment division.
        configuration section.
        repository.
            function all intrinsic.
- 
+
        data division.
        working-storage section.
        77  string-a               pic x(255).
@@ -947,7 +947,7 @@ GnuCobol 2.2
            move length(trim(string-b)) to length-b
 
            initialize tab
-           
+
            perform varying i from 0 by 1 until i > length-a
               move i to costs(i + 1, 1)
            end-perform
@@ -955,7 +955,7 @@ GnuCobol 2.2
            perform varying j from 0 by 1 until j > length-b
               move j to costs(1, j + 1)
            end-perform
-           
+
            perform with test after varying i from 2 by 1 until i > length-a
               perform with test after varying j from 2 by 1 until j > length-b
                  if string-a(i - 1:1) = string-b(j - 1:1)
@@ -1000,8 +1000,8 @@ levenshtein = (str1, str2) ->
   return m  unless n
 
   d[i] = [i] for i in [0..m]
-  d[0][j] = j for j in [1..n]  
-    
+  d[0][j] = j for j in [1..n]
+
   for i in [1..m]
     for j in [1..n]
       if str1[i-1] is str2[j-1]
@@ -1138,7 +1138,7 @@ puts Levenshtein.distance("rosettacode", "raisethysword")
 
 ```ruby
 module Levenshtein
- 
+
   def self.distance(a, b)
     a, b = a.downcase, b.downcase
     costs = (0..b.size).to_a
@@ -1150,15 +1150,15 @@ module Levenshtein
     end
     costs[b.size]
   end
- 
+
   def self.test
     %w{kitten sitting saturday sunday rosettacode raisethysword}.each_slice(2) do |(a, b)| #or do |pair| a, b = pair
       puts "distance(#{a}, #{b}) = #{distance(a, b)}"
     end
   end
- 
+
 end
- 
+
 Levenshtein.test
 
 ```
@@ -1180,16 +1180,16 @@ distance(rosettacode, raisethysword) = 8
 def levenshtein_distance(str1, str2)
   n, m = str1.size, str2.size
   max = n / 2
-  
+
   return 0 if n == 0 || m == 0
   return n if (n - m).abs > max
- 
+
   d = (0..m).to_a
   x = 0
- 
+
   str1.each_char_with_index do |char1, i|
     e = i + 1
- 
+
     str2.each_char_with_index do |char2, j|
       cost = (char1 == char2) ? 0 : 1
       x = [ d[j+1] + 1, # insertion
@@ -1199,7 +1199,7 @@ def levenshtein_distance(str1, str2)
       d[j] = e
       e = x
     end
- 
+
     d[m] = x
   end
   x
@@ -1325,7 +1325,7 @@ begin
       d[i, 0] := i;
    for j:=0 to Length(t) do
       d[0, j] := j;
-   
+
    for j:=1 to Length(t) do
       for i:=1 to Length(s) do
          if s[i]=t[j] then
@@ -1364,11 +1364,11 @@ func levenshtein(s, t) {
     if n == 0 {
         return m
     }
- 
+
     if (m == 0) {
         return n
     }
- 
+
     for i in 0..n {
         d[i][0] = i
     }
@@ -1376,7 +1376,7 @@ func levenshtein(s, t) {
     for j in 0..m {
         d[0][j] = j
     }
- 
+
     for j in 1..m {
         for i in 1..n {
             if s[i - 1] == t[j - 1] {
@@ -1425,7 +1425,7 @@ rosettacode -> raisethysword = 8
 (if (get 'mem key) ;; memoized ?
     (get 'mem key)
 ;; else memoize
-(putprop 'mem 
+(putprop 'mem
   (let [(len1 (string-length str1))
         (len2 (string-length str2))]
     (cond ((zero? len1) len2)
@@ -1458,7 +1458,7 @@ This code is translated from Haskell version.
 ```ela
 open list
 
-levenshtein s1 s2 = last <| foldl transform [0 .. length s1] s2  
+levenshtein s1 s2 = last <| foldl transform [0 .. length s1] s2
             where transform (n::ns')@ns c = scanl calc (n+1) <| zip3 s1 ns ns'
                         where calc z (c', x, y) = minimum [y+1, z+1, x + toInt (c' <> c)]
 ```
@@ -1736,8 +1736,8 @@ let levDist (strOne : string) (strTwo : string) =
             if strOne.[i - 1] = strTwo.[j - 1] then distArray.[i, j] <- distArray.[i - 1, j - 1]
             else
                 distArray.[i, j] <- List.min (
-                    [distArray.[i-1, j] + 1; 
-                    distArray.[i, j-1] + 1; 
+                    [distArray.[i-1, j] + 1;
+                    distArray.[i, j-1] + 1;
                     distArray.[i-1, j-1] + 1]
                 )
     distArray.[strOne.Length, strTwo.Length]
@@ -1788,7 +1788,7 @@ USING: lcs prettyprint ;
         2dup 1- 2r@ 1- recurse -rot    \   changing first letter of s to t;
         2dup    2r@ 1- recurse -rot    \   remove first letter of s;
         1- 2r> recurse min min 1+      \   remove first letter of t,
-      then                             \ any of which is 1 edit plus 
+      then                             \ any of which is 1 edit plus
     else                               \ editing the rest of the strings
       2drop 2r> nip
     then
@@ -1809,13 +1809,13 @@ s" rosettacode" s" raisethysword" levenshtein . cr
 ```freebasic
 ' FB 1.05.0 Win64
 
-' Uses the "iterative with two matrix rows" algorithm 
+' Uses the "iterative with two matrix rows" algorithm
 ' referred to in the Wikipedia article.
 
 Function min(x As Integer, y As Integer) As Integer
    Return IIf(x < y, x, y)
 End Function
- 
+
 Function levenshtein(s As String, t As String) As Integer
     ' degenerate cases
     If s = t Then Return 0
@@ -1835,7 +1835,7 @@ Function levenshtein(s As String, t As String) As Integer
     For i As Integer = 0 To Len(s) - 1
       ' calculate v1 from v0
       v1(0) = i + 1
-      
+
       For j As Integer = 0 To Len(t) - 1
         cost = IIf(s[i] = t[j], 0, 1)
         v1(j + 1) = min(v1(j) + 1, min(v0(j + 1) + 1, v0(j) + cost))
@@ -1845,13 +1845,13 @@ Function levenshtein(s As String, t As String) As Integer
       For j As Integer = 0 To Len(t)
         v0(j) = v1(j)
       Next  j
-    Next i 
+    Next i
 
     Return v1(Len(t))
 End Function
 
 Print "'kitten' to 'sitting'            => "; levenshtein("kitten", "sitting")
-Print "'rosettacode' to 'raisethysword' => "; levenshtein("rosettacode", "raisethysword") 
+Print "'rosettacode' to 'raisethysword' => "; levenshtein("rosettacode", "raisethysword")
 Print "'sleep' to 'fleeting'            => "; levenshtein("sleep", "fleeting")
 Print
 Print "Press any key to quit"
@@ -1893,9 +1893,9 @@ local fn LevenshteinDistance( aStr as Str255, bStr as Str255 ) as long
 dim as long m, n, i, j, min, k, l
 dim as long distance( 255, 255 )
 
-m = len(aStr) 
+m = len(aStr)
 n = len(bStr)
- 
+
 for i = 0 to m
    distance( i, 0 ) = i
 next
@@ -1903,7 +1903,7 @@ next
 for j = 0 to n
    distance( 0, j ) = j
 next
- 
+
 for j = 1 to n
    for i = 1 to m
       if mid$( aStr, i, 1 ) == mid$( bStr, j, 1 )
@@ -2125,16 +2125,16 @@ main = print (levenshtein "kitten" "sitting")
 procedure main()
     every process(!&input)
 end
- 
+
 procedure process(s)
     s ? (s1 := tab(upto(' \t')), s2 := (tab(many(' \t')), tab(0))) | fail
     write("'",s1,"' -> '",s2,"' = ", levenshtein(s1,s2))
 end
- 
+
 procedure levenshtein(s, t)
     if (n := *s+1) = 1 then return *t
     if (m := *t+1) = 1 then return *s
- 
+
     every !(d := list(n,0)) := list(m, 0)
     every i := 1 to max(n,m) do d[i,1] := d[1,i] := i
     every d[1(i := 2 to n, s_i := s[iM1 := i-1]), j := 2 to m] :=
@@ -2166,7 +2166,7 @@ Io> Range ; "kitten" levenshtein("sitting")
 ==> 3
 Io> "rosettacode" levenshtein("raisethysword")
 ==> 8
-Io> 
+Io>
 ```
 
 
@@ -2275,7 +2275,7 @@ distance(rosettacode, raisethysword) = 8
 ```java
 public class Levenshtein{
     public static int levenshtein(String s, String t){
-        /* if either string is empty, difference is inserting all chars 
+        /* if either string is empty, difference is inserting all chars
          * from the other
          */
         if(s.length() == 0) return t.length();
@@ -2340,13 +2340,13 @@ import static java.lang.Math.max;
 
 public class Levenshtein {
 
-	public static int ld(String a, String b) { 
+	public static int ld(String a, String b) {
 		return distance(a, b, -1);
 	}
 	public static boolean ld(String a, String b, int max) {
 		return distance(a, b, max) <= max;
 	}
-	
+
 	private static int distance(String a, String b, int max) {
 		if (a == b) return 0;
 		int la = a.length();
@@ -2358,7 +2358,7 @@ public class Levenshtein {
 			int tl = la; la = lb; lb = tl;
 			String ts = a;  a = b; b = ts;
 		}
-		
+
 		int[] cost = new int[lb+1];
 		for (int i=1; i<=la; i+=1) {
 			cost[0] = i;
@@ -2372,15 +2372,15 @@ public class Levenshtein {
 			if (max >= 0 && min > max) return max+1;
 		}
 		if (max >= 0 && cost[lb] > max) return max+1;
-		return cost[lb];	
+		return cost[lb];
 	}
-	
+
 	private static int min(int ... a) {
 		int min = Integer.MAX_VALUE;
 		for (int i: a) if (i<min) min = i;
 		return min;
 	}
-	
+
 	public static void main(String[] args) {
 		System.out.println(
 			ld("kitten","kitten") + " " + // 0
@@ -2388,7 +2388,7 @@ public class Levenshtein {
 			ld("kitten","sittes") + " " + // 2
 			ld("kitten","sityteng") + " " + // 3
 			ld("kitten","sittYing") + " " + // 4
-			ld("rosettacode","raisethysword") + " " + // 8 
+			ld("rosettacode","raisethysword") + " " + // 8
 			ld("kitten","kittenaaaaaaaaaaaaaaaaa") + " " + // 17
 			ld("kittenaaaaaaaaaaaaaaaaa","kitten") // 17
 		);
@@ -2398,7 +2398,7 @@ public class Levenshtein {
 			ld("kitten","sittes", 3) + " " + // true
 			ld("kitten","sityteng", 3) + " " + // true
 			ld("kitten","sittYing", 3) + " " + // false
-			ld("rosettacode","raisethysword", 3) + " " + // false 
+			ld("rosettacode","raisethysword", 3) + " " + // false
 			ld("kitten","kittenaaaaaaaaaaaaaaaaa", 3) + " " + // false
 			ld("kittenaaaaaaaaaaaaaaaaa","kitten", 3) // false
 		);
@@ -2572,7 +2572,7 @@ def lookup(s;t):
   if (s == t) then 0
   elif (s|length) == 0 then (t|length)
   elif (t|length) == 0 then (s|length)
-  elif (s|length) > (t|length) then 
+  elif (s|length) > (t|length) then
        .[t] as $t | if $t then $t[s] else null end
   else .[s] as $s | if $s then $s[t] else null end
   end ;
@@ -2624,7 +2624,7 @@ def levenshteinDistance(s;t):
 ```jq
 def demo:
  "levenshteinDistance between \(.[0]) and \(.[1]) is \( levenshteinDistance(.[0]; .[1]) )";
- 
+
 (["kitten", "sitting"] | demo),
 (["rosettacode","raisethysword"] | demo),
 (["edocattesor", "drowsyhtesiar"] | demo),
@@ -2814,7 +2814,7 @@ fun levenshtein(s: String, t: String): Int {
         v1[0] = i + 1
         for (j in 0 until t.length) {
             cost = if (s[i] == t[j]) 0 else 1
-            v1[j + 1] = Math.min(v1[j] + 1, Math.min(v0[j + 1] + 1, v0[j] + cost))  
+            v1[j + 1] = Math.min(v1[j] + 1, Math.min(v0[j + 1] + 1, v0[j] + cost))
         }
         // copy v1 to v0 for next iteration
         for (j in 0 .. t.length) v0[j] = v1[j]
@@ -2824,7 +2824,7 @@ fun levenshtein(s: String, t: String): Int {
 
 fun main(args: Array<String>) {
     println("'kitten' to 'sitting'            => ${levenshtein("kitten", "sitting")}")
-    println("'rosettacode' to 'raisethysword' => ${levenshtein("rosettacode", "raisethysword")}") 
+    println("'rosettacode' to 'raisethysword' => ${levenshtein("rosettacode", "raisethysword")}")
     println("'sleep' to 'fleeting'            => ${levenshtein("sleep", "fleeting")}")
 }
 ```
@@ -2885,7 +2885,7 @@ fun levenshtein(s: String, t: String,
 
 
 
-###  Simple Implementation 
+###  Simple Implementation
 
 
 Suitable for short strings:
@@ -2930,7 +2930,7 @@ You can copy and paste that function into an LFE REPL and run it like so:
 It is not recommended to test strings longer than the last example using this implementation, as performance quickly degrades.
 
 
-###  Cached Implementation 
+###  Cached Implementation
 
 
 
@@ -3035,7 +3035,7 @@ Function LevenshteinDistance(string1$, string2$)
         Next ii
     Next i
     LevenshteinDistance = d(n, m)
-End Function 
+End Function
 ```
 
 
@@ -3111,27 +3111,27 @@ distance(s, t: string): int
 ```LiveCode
 
 //Code By Neurox66
-function Levenshtein pString1 pString2 
+function Levenshtein pString1 pString2
    put 0 into tPosChar1
-   repeat for each char tChar1 in pString1 
+   repeat for each char tChar1 in pString1
       add 1 to tPosChar1
-      put tPosChar1 into tDistance[tPosChar1][0]  
+      put tPosChar1 into tDistance[tPosChar1][0]
       put 0 into tPosChar2
-      repeat for each char tChar2 in pString2 
+      repeat for each char tChar2 in pString2
          add 1 to tPosChar2
-         put tPosChar2 into tDistance[0][tPosChar2]  
+         put tPosChar2 into tDistance[0][tPosChar2]
          put 1 into tCost
-         if tChar1 = tChar2 then 
-            put 0 into tCost 
+         if tChar1 = tChar2 then
+            put 0 into tCost
          end if
-         put min((tDistance[tPosChar1-1][tPosChar2] + 1),(tDistance[tPosChar1][tPosChar2-1] + 1),(tDistance[tPosChar1-1][tPosChar2-1] + tCost)) into tDistance[tPosChar1][tPosChar2] 
-      end repeat  
-   end repeat  
-   return tDistance[tPosChar1][tPosChar2]  
+         put min((tDistance[tPosChar1-1][tPosChar2] + 1),(tDistance[tPosChar1][tPosChar2-1] + 1),(tDistance[tPosChar1-1][tPosChar2-1] + tCost)) into tDistance[tPosChar1][tPosChar2]
+      end repeat
+   end repeat
+   return tDistance[tPosChar1][tPosChar2]
 end Levenshtein
 
 
-put Levenshtein("kitten","sitting") 
+put Levenshtein("kitten","sitting")
 put Levenshtein("rosettacode","raisethysword")
 
 ```
@@ -3186,7 +3186,7 @@ print(leven("rosettacode", "raisethysword"))
 
 Module Checkit {
 	\\ Iterative with two matrix rows
-	function LevenshteinDistance(s$,t$) { 
+	function LevenshteinDistance(s$,t$) {
 		if len(s$)<len(t$) then swap s$, t$
 		n=len(t$)
 		m=len(s$)
@@ -3206,12 +3206,12 @@ Rem		dim sw()  ' we can use stack of values to make the swap.
 				v1(j+1)=min.data(deletionCost, insertionCost, substitutionCost)
 			next
 Rem			sw()=v0():v0()=v1():v1()=sw()
-			\\ when we push arrays, we only push a pointer to 
+			\\ when we push arrays, we only push a pointer to
 			\\ when we read array (identifier with parenthesis) then we get a copy
 			\\ between Push and Read any change on arrays included in copies
 			Push v0(),v1(): Read v0(),v1()
 		next
-		=v0(n)	
+		=v0(n)
 	}
 	Print LevenshteinDistance("kitten","sitting")=3  ' true
 	Print LevenshteinDistance("Sunday","Saturday")=3  ' true
@@ -3221,7 +3221,7 @@ Checkit
 
 Module Checkit2 {
 	\\ Iterative with two matrix rows, using pointers to arrays
-	function LevenshteinDistance(s$,t$) { 
+	function LevenshteinDistance(s$,t$) {
 		if len(s$)<len(t$) then swap s$, t$
 		n=len(t$)
 		m=len(s$)
@@ -3243,7 +3243,7 @@ Module Checkit2 {
 			next
 			swap v0, v1  ' just swap pointers
 		next
-		=Array(v0,n)	
+		=Array(v0,n)
 	}
 	Print LevenshteinDistance("kitten","sitting")=3
 	Print LevenshteinDistance("Sunday","Saturday")=3
@@ -3388,8 +3388,8 @@ method levenshteinDistance(s, t) private static
 
 ```txt
 
-kitten -> sitting: 3 
-rosettacode -> raisethysword: 8 
+kitten -> sitting: 3
+rosettacode -> raisethysword: 8
 
 ```
 
@@ -3457,17 +3457,17 @@ class Levenshtein {
       "{$s} -> {$t} = {$d}"->PrintLine();
     };
   }
-  
+
   function : native : Distance(s : String,t : String) ~ Int {
     d := Int->New[s->Size() + 1, t->Size() + 1];
     for(i := 0; i <= s->Size(); i += 1;) {
       d[i,0] := i;
     };
-    
+
     for(j := 0; j <= t->Size(); j += 1;) {
       d[0,j] := j;
     };
-    
+
     for(j := 1; j <= t->Size(); j += 1;) {
       for(i := 1; i <= s->Size(); i += 1;) {
         if(s->Get(i - 1) = t->Get(j - 1)) {
@@ -3480,7 +3480,7 @@ class Levenshtein {
         };
       };
     };
-    
+
     return d[s->Size(), t->Size()];
   }
 }
@@ -3500,7 +3500,7 @@ Translation of the C# code into a NSString category
     NSUInteger sl = [self length];
     NSUInteger tl = [string length];
     NSUInteger *d = calloc(sizeof(*d), (sl+1) * (tl+1));
-    
+
 #define d(i, j) d[((j) * sl) + (i)]
     for (NSUInteger i = 0; i <= sl; i++) {
         d(i, 0) = i;
@@ -3517,12 +3517,12 @@ Translation of the C# code into a NSString category
             }
         }
     }
-    
+
     NSUInteger r = d(sl, tl);
 #undef d
-    
+
     free(d);
-    
+
     return r;
 }
 @end
@@ -3579,7 +3579,7 @@ let () =
 ```
 
 
-###  A recursive functional version 
+###  A recursive functional version
 
 This could be made faster with memoization
 
@@ -3698,12 +3698,12 @@ for(i=2,n11, u=u0; u[1]=i-1;
     u[j]=c;
   );\\fend j
   t=u;
-);\\fend i 
+);\\fend i
 print(" *** Levenshtein distance = ",t[n21]," for strings: ",s1,", ",s2);
 return(t[n21]);
 }
 { \\ Testing:
-levensDist("kitten","sitting"); 
+levensDist("kitten","sitting");
 levensDist("rosettacode","raisethysword");
 levensDist("Saturday","Sunday");
 levensDist("oX","X");
@@ -3711,8 +3711,8 @@ levensDist("X","oX");
 }
 
 ```
- 
-   
+
+
 {{Output}}
 
 
@@ -3746,20 +3746,20 @@ function LevenshteinDistance(s, t: string): longint;
     n := length(t);
     m := length(s);
     setlength(d, m+1, n+1);
-    
+
     for i := 0 to m do
       d[i,0] := i;
     for j := 0 to n do
       d[0,j] := j;
     for j := 1 to n do
       for i := 1 to m do
-        if s[i] = t[j] then  
+        if s[i] = t[j] then
           d[i,j] := d[i-1,j-1]
         else
           d[i,j] := min(d[i-1,j] + 1, min(d[i,j-1] + 1, d[i-1,j-1] + 1));
     LevenshteinDistance := d[m,n];
   end;
-  
+
 var
   s1, s2: string;
 
@@ -4185,13 +4185,13 @@ function Get-LevenshteinDistance
     (
         [Parameter(Mandatory=$true, Position=0)]
         [ValidateNotNullOrEmpty()]
-        [Alias("s")] 
+        [Alias("s")]
         [string]
         $ReferenceObject,
 
         [Parameter(Mandatory=$true, Position=1)]
         [ValidateNotNullOrEmpty()]
-        [Alias("t")] 
+        [Alias("t")]
         [string]
         $DifferenceObject
     )
@@ -4208,19 +4208,19 @@ function Get-LevenshteinDistance
     }
 
     for ($i = 0; $i -le $n; $i++)
-    { 
+    {
         $d[$i, 0] = $i
     }
 
     for ($i = 0; $i -le $m; $i++)
-    { 
+    {
         $d[0, $i] = $i
     }
 
     for ($i = 1; $i -le $m; $i++)
-    { 
+    {
         for ($j = 1; $j -le $n; $j++)
-        { 
+        {
             if ($ReferenceObject[$j - 1] -eq $DifferenceObject[$i - 1])
             {
                 $d[$j, $i] = $d[($j - 1), ($i - 1)]
@@ -4384,10 +4384,10 @@ Procedure LevenshteinDistance(A_string$, B_String$)
   m = Len(A_string$)
   n = Len(B_String$)
   Dim D(m, n)
-  
+
   For i=0 To m: D(i,0)=i: Next
   For j=0 To n: D(0,j)=j: Next
-  
+
   For j=1 To n
     For i=1 To m
       If Mid(A_string$,i,1) = Mid(B_String$,j,1)
@@ -4435,7 +4435,7 @@ def minimumEditDistance(s1,s2):
                                              newDistances[-1])))
         distances = newDistances
     return distances[-1]
- 
+
 print(minimumEditDistance("kitten","sitting"))
 print(minimumEditDistance("rosettacode","raisethysword"))
 
@@ -4456,24 +4456,24 @@ def levenshteinDistance(str1, str2):
     m = len(str1)
     n = len(str2)
     lensum = float(m + n)
-    d = []           
+    d = []
     for i in range(m+1):
-        d.append([i])        
-    del d[0][0]    
+        d.append([i])
+    del d[0][0]
     for j in range(n+1):
-        d[0].append(j)       
+        d[0].append(j)
     for j in range(1,n+1):
         for i in range(1,m+1):
             if str1[i-1] == str2[j-1]:
-                d[i].insert(j,d[i-1][j-1])           
+                d[i].insert(j,d[i-1][j-1])
             else:
-                minimum = min(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1]+2)         
+                minimum = min(d[i-1][j]+1, d[i][j-1]+1, d[i-1][j-1]+2)
                 d[i].insert(j, minimum)
     ldist = d[-1][-1]
     ratio = (lensum - ldist)/lensum
     return {'distance':ldist, 'ratio':ratio}
 
-print(levenshteinDistance("kitten","sitting"))   
+print(levenshteinDistance("kitten","sitting"))
 print(levenshteinDistance("rosettacode","raisethysword"))
 
 
@@ -4492,16 +4492,16 @@ print(levenshteinDistance("rosettacode","raisethysword"))
 
 ```python
 
-def ld(a, b, mx=-1):	
+def ld(a, b, mx=-1):
     def result(d): return d if mx < 0 else False if d > mx else True
-    
+
     if a == b: return result(0)
     la, lb = len(a), len(b)
     if mx >= 0 and abs(la - lb) > mx: return result(mx+1)
     if la == 0: return result(lb)
     if lb == 0: return result(la)
     if lb > la: a, b, la, lb = b, a, lb, la
-    
+
     cost = array('i', range(lb + 1))
     for i in range(1, la + 1):
         cost[0] = i; ls = i-1; mn = ls
@@ -4519,7 +4519,7 @@ print(
     ld('kitten','sittes'), # 2
     ld('kitten','sityteng'), # 3
     ld('kitten','sittYing'), # 4
-    ld('rosettacode','raisethysword'), # 8 
+    ld('rosettacode','raisethysword'), # 8
     ld('kitten','kittenaaaaaaaaaaaaaaaaa'), # 17
     ld('kittenaaaaaaaaaaaaaaaaa','kitten') # 17
 )
@@ -4750,7 +4750,7 @@ A memoized recursive implementation.
 (define (levenshtein a b)
   (define (ls0 a-index b-index)
     (cond [(or (= a-index -1) (= b-index -1)) (abs (- a-index b-index))]
-          [else 
+          [else
            (define a-char (string-ref a a-index))
            (define b-char (string-ref b b-index))
            (if (equal? a-char b-char)
@@ -4937,7 +4937,7 @@ LevenshteinDistance: Procedure Expose ld.
     Otherwise Do
       /* test if last characters of the strings match */
       cost=substr(s,sl,1)<>substr(t,tl,1)
-      /* return minimum of delete char from s, delete char from t, 
+      /* return minimum of delete char from s, delete char from t,
          and delete char from both */
       ld.sl.tl=min(LevenshteinDistance(s,sl-1,t,tl  )+1,,
                    LevenshteinDistance(s,sl  ,t,tl-1)+1,,
@@ -4964,11 +4964,11 @@ see "" + "distance(rosettacode, raisethysword) = " + levenshteindistance("rosett
 func levenshteindistance(s1, s2)
         n = len(s1)
         m = len(s2)
-        if n = 0 
+        if n = 0
             levenshteindistance = m
             return
         ok
-        if m = 0 
+        if m = 0
             levenshteindistance = n
             return
         ok
@@ -4984,12 +4984,12 @@ func levenshteindistance(s1, s2)
              for j = 2 to m
                   tj = substr(s2, j, 1)
                   if si = tj
-                     cost = 0 
+                     cost = 0
                   else
                      cost = 1
                   ok
                   d[i][ j] = min((d[i - 1][ j]), min((d[i][j - 1] + 1), (d[i - 1][j - 1] + cost)))
-             next 
+             next
         next
         levenshteindistance = d[n][m]
         return levenshteindistance
@@ -5010,14 +5010,14 @@ distance(rosettacode, raisethysword) = 8
 
 ## Ruby
 
-Implementation of the wikipedia algorithm. Invariant is that for current loop indices <code>i</code> 
-and <code>j</code>, <code>costs[k]</code> for <code>k < j</code> contains ''lev(i, k)'' 
+Implementation of the wikipedia algorithm. Invariant is that for current loop indices <code>i</code>
+and <code>j</code>, <code>costs[k]</code> for <code>k < j</code> contains ''lev(i, k)''
 and for <code>k >= j</code> contains ''lev(i-1, k)''.  The inner loop body restores the invariant for the
 new value of <code>j</code>.
 
 ```ruby
 module Levenshtein
-  
+
   def self.distance(a, b)
     a, b = a.downcase, b.downcase
     costs = Array(0..b.length) # i == 0
@@ -5029,13 +5029,13 @@ module Levenshtein
     end
     costs[b.length]
   end
-  
+
   def self.test
     %w{kitten sitting saturday sunday rosettacode raisethysword}.each_slice(2) do |a, b|
       puts "distance(#{a}, #{b}) = #{distance(a, b)}"
     end
   end
-  
+
 end
 
 Levenshtein.test
@@ -5059,17 +5059,17 @@ def levenshtein_distance(str1, str2)
   n = str1.length
   m = str2.length
   max = n/2
-  
+
   return m if 0 == n
   return n if 0 == m
   return n if (n - m).abs > max
-  
+
   d = (0..m).to_a
   x = nil
-  
+
   str1.each_char.with_index do |char1,i|
     e = i+1
-    
+
     str2.each_char.with_index do |char2,j|
       cost = (char1 == char2) ? 0 : 1
       x = [ d[j+1] + 1, # insertion
@@ -5079,10 +5079,10 @@ def levenshtein_distance(str1, str2)
       d[j] = e
       e = x
     end
-    
+
     d[m] = x
   end
-  
+
   x
 end
 
@@ -5289,7 +5289,7 @@ Recursive version from wikipedia article.
                  (+ (%levenshtein (cdr s) (- sl 1) (cdr t) (- tl 1))
 		    (if (char=? (car s) (car t)) 0 1))))))
   (%levenshtein (string->list s)
-		(string-length s)		
+		(string-length s)
 		(string->list t)
 		(string-length t)))
 
@@ -5518,12 +5518,12 @@ Version using entire matrix:
 
 ```swift
 func levDis(w1: String, w2: String) -> Int {
-  
+
   let (t, s) = (w1.characters, w2.characters)
-  
+
   let empty = Repeat(count: s.count, repeatedValue: 0)
   var mat = [[Int](0...s.count)] + (1...t.count).map{[$0] + empty}
-  
+
   for (i, tLett) in t.enumerate() {
     for (j, sLett) in s.enumerate() {
       mat[i + 1][j + 1] = tLett == sLett ?
@@ -5540,12 +5540,12 @@ Version using only two rows at a time:
 
 ```swift
 func levDis(w1: String, w2: String) -> Int {
-  
+
   let (t, s) = (w1.characters, w2.characters)
-  
+
   let empty = Repeat(count: s.count, repeatedValue: 0)
   var last = [Int](0...s.count)
-  
+
   for (i, tLett) in t.enumerate() {
     var cur = [i + 1] + empty
     for (j, sLett) in s.enumerate() {
@@ -5710,7 +5710,7 @@ Function levenshtein(s1 As String, s2 As String) As Integer
     Dim m As Integer: m = Len(s2) + 1
     Dim d() As Integer, i As Integer, j As Integer
     ReDim d(n, m)
- 
+
     If n = 1 Then
         levenshtein = m - 1
         Exit Function
@@ -5720,15 +5720,15 @@ Function levenshtein(s1 As String, s2 As String) As Integer
             Exit Function
         End If
     End If
- 
+
     For i = 1 To n
         d(i, 1) = i - 1
     Next i
- 
+
     For j = 1 To m
         d(1, j) = j - 1
     Next j
- 
+
     For i = 2 To n
         For j = 2 To m
             d(i, j) = WorksheetFunction.Min( _
@@ -5738,7 +5738,7 @@ Function levenshtein(s1 As String, s2 As String) As Integer
                            )
         Next j
     Next i
- 
+
     levenshtein = d(n, m)
 End Function
 Public Sub main()
@@ -5749,8 +5749,8 @@ End Sub
 {{out}}
 
 ```txt
- 3 
- 8 
+ 3
+ 8
 ```
 
 
@@ -5772,7 +5772,7 @@ Function min(x As Integer, y As Integer) As Integer
         min = y
     End If
 End Function
- 
+
 Function levenshtein(s As String, t As String) As Integer
 Dim ls As Integer, lt As Integer
 Dim i As Integer, j As Integer, cost As Integer
@@ -5790,31 +5790,31 @@ Dim i As Integer, j As Integer, cost As Integer
         levenshtein = ls
         Exit Function
     End If
- 
+
     ' create two integer arrays of distances
     ReDim v0(0 To lt) As Integer  '' previous
     ReDim v1(0 To lt) As Integer  '' current
- 
+
     ' initialize v0
     For i = 0 To lt
         v0(i) = i
     Next i
- 
+
     For i = 0 To ls - 1
        ' calculate v1 from v0
        v1(0) = i + 1
-  
+
        For j = 0 To lt - 1
            cost = Abs(CInt(Mid$(s, i + 1, 1) <> Mid$(t, j + 1, 1)))
            v1(j + 1) = min(v1(j) + 1, min(v0(j + 1) + 1, v0(j) + cost))
        Next j
-  
+
        ' copy v1 to v0 for next iteration
        For j = 0 To lt
            v0(j) = v1(j)
        Next j
     Next i
- 
+
     levenshtein = v1(lt)
 End Function
 

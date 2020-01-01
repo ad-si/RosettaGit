@@ -12,8 +12,9 @@ tags = []
 
 Can someone update this to show the works with template? I don't have permissions on it. --[[User:Mwn3d|Mwn3d]] 13:25, 8 March 2008 (MST)
 
-Can someone please change <nowiki><c>...</c> to 
-```c>...
+Can someone please change <nowiki><c>...</c> to
+```c
+...
 ```
 </nowiki
  in the last example? --[[User:Ce|Ce]] 08:45, 2 February 2009 (UTC)

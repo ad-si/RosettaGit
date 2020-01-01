@@ -24,7 +24,7 @@ SUMPROD  CSECT
          SR     R3,R3              su=0
          LA     R5,1               pr=1
          LA     R6,1               i=1
-       DO WHILE=(CH,R6,LE,=AL2((PG-A)/4))  do i=1 to hbound(a)         
+       DO WHILE=(CH,R6,LE,=AL2((PG-A)/4))  do i=1 to hbound(a)
          LR     R1,R6                i
          SLA    R1,2                 *4
          A      R3,A-4(R1)           su=su+a(i)
@@ -109,13 +109,13 @@ package {
 			var arr:Array = [1, 2, 3, 4, 5];
 			var sum:int = 0;
 			var prod:int = 1;
-			
+
 			for (var i:int = 0; i < arr.length; i++)
 			{
 				sum += arr[i];
 				prod *= arr[i];
 			}
-			
+
 			trace("Sum: " + sum); // 15
 			trace("Product: " + prod); // 120
 		}
@@ -200,13 +200,13 @@ main(void)
 main:(
   INT default upb := 3;
   MODE INTARRAY = [default upb]INT;
- 
+
   INTARRAY array = (1,2,3,4,5,6,7,8,9,10);
   INT sum := 0;
   FOR i FROM LWB array TO UPB array DO
      sum +:= array[i]
   OD;
- 
+
   # Define the product function #
   PROC int product = (INTARRAY item)INT:
   (
@@ -275,7 +275,7 @@ end.
 
 ```txt
 
-            55         3628800  
+            55         3628800
 
 ```
 
@@ -288,12 +288,12 @@ end.
 ```apl
       sum  ←  +/
       prod ←  ×/
-      
-      list ←  1 2 3 4 5 
-      
+
+      list ←  1 2 3 4 5
+
       sum  list
 15
-      
+
       prod list
 120
 ```
@@ -327,15 +327,15 @@ end product
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     set xs to enumFromTo(1, 10)
-    
+
     {xs, ¬
         {sum:foldl(summed, 0, xs)}, ¬
         {product:foldl(product, 1, xs)}}
-    
+
     --> {{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, {sum:55}, {product:3628800}}
-    
+
 end run
 
 -- GENERIC FUNCTIONS ----------------------------------------------------------
@@ -366,7 +366,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -444,8 +444,8 @@ main: { [2 3 5 7 11 13] sp }
 sum!    : { <- 0 -> { + } eachar }
 product!: { <- 1 -> { * } eachar }
 
-sp!: 
-    { dup 
+sp!:
+    { dup
     sum %d cr <<
     product %d cr << }
 
@@ -459,30 +459,30 @@ Perhaps better Babel:
 
 
 ```babel
-main: 
-    { [2 3 5 7 11 13] 
+main:
+    { [2 3 5 7 11 13]
     ar2ls dup cp
     <- sum_stack ->
     prod_stack
-    %d cr << 
+    %d cr <<
     %d cr << }
 
-sum_stack: 
-    { { give  
+sum_stack:
+    { { give
         { + }
         { depth 1 > }
     do_while } nest }
 
-prod_stack: 
-    { { give  
+prod_stack:
+    { { give
         { * }
         { depth 1 > }
     do_while } nest }
 ```
 
 
-The nest operator creates a kind of argument-passing context - 
-it saves whatever is on Top-of-Stack (TOS), saves the old stack, 
+The nest operator creates a kind of argument-passing context -
+it saves whatever is on Top-of-Stack (TOS), saves the old stack,
 clears the stack and places the saved TOS on the new, cleared stack.
 This permits a section to monopolize the stack. At the end of the nest
 context, whatever is on TOS will be "passed back" to the original stack
@@ -531,9 +531,9 @@ next
 ```bbcbasic
       DIM array%(5)
       array%() = 1, 2, 3, 4, 5, 6
-      
+
       PRINT "Sum of array elements = " ; SUM(array%())
-      
+
       product% = 1
       FOR I% = 0 TO DIM(array%(),1)
         product% *= array%(I%)
@@ -543,18 +543,18 @@ next
 
 
 ==={{header|IS-BASIC}}===
-<lang IS-BASIC>100 RANDOMIZE 
+<lang IS-BASIC>100 RANDOMIZE
 110 LET N=5
 120 NUMERIC A(1 TO N)
 130 LET SUM=0:LET PROD=1
 140 FOR I=1 TO N
 150   LET A(I)=RND(9)+1
 160   PRINT A(I);
-170 NEXT 
-180 PRINT 
+170 NEXT
+180 PRINT
 190 FOR I=1 TO N
 200   LET SUM=SUM+A(I):LET PROD=PROD*A(I)
-210 NEXT 
+210 NEXT
 220 PRINT "Sum =";SUM,"Product =";PROD
 ```
 
@@ -671,8 +671,8 @@ int prod = arg.Aggregate((runningProduct, nextFactor) => runningProduct * nextFa
 
 {{libheader|STL}}
 
-```cpp>#include <numeric
-
+```cpp
+#include <numeric>
 #include <functional>
 
 int arg[] = { 1, 2, 3, 4, 5 };
@@ -1080,11 +1080,11 @@ ELENA 4.1:
 ```elena
 import system'routines;
 import extensions;
- 
+
 public program()
 {
     var list := new int[]::(1, 2, 3, 4, 5 );
- 
+
     var sum := list.summarize(new Integer());
     var product := list.accumulate(new Integer(1), (var,val => var * val));
 }
@@ -1304,7 +1304,7 @@ class Main
   public static Void main ()
   {
     Int[] array := (1..20).toList
-    
+
     // you can use a loop
     Int sum := 0
     array.each |Int n| { sum += n }
@@ -1315,18 +1315,18 @@ class Main
     echo ("Product of array is : $product")
 
     // or use 'reduce'
-    // 'reduce' takes a function, 
+    // 'reduce' takes a function,
     //       the first argument is the accumulated value
     //       and the second is the next item in the list
-    sum = array.reduce(0) |Obj r, Int v -> Obj| 
-    { 
-      return (Int)r + v 
+    sum = array.reduce(0) |Obj r, Int v -> Obj|
+    {
+      return (Int)r + v
     }
     echo ("Sum of array : $sum")
 
-    product = array.reduce(1) |Obj r, Int v -> Obj| 
-    { 
-      return (Int)r * v 
+    product = array.reduce(1) |Obj r, Int v -> Obj|
+    {
+      return (Int)r * v
     }
     echo ("Product of array : $product")
   }
@@ -1604,7 +1604,7 @@ println ([1,2,3,4,5].inject([sum: 0, product: 1]) { result, value ->
 
 ## Haskell
 
-For lists, ''sum'' and ''product'' are already defined in the Prelude: 
+For lists, ''sum'' and ''product'' are already defined in the Prelude:
 
 ```haskell
 values = [1..10]
@@ -2070,12 +2070,12 @@ answer sum(nums)
 // product
 local prodNums
 repeat for each element n in nums
-    if prodNums is empty then 
+    if prodNums is empty then
         put n into prodNums
     else
         multiply prodnums by n
     end if
-end repeat 
+end repeat
 answer prodnums
 ```
 
@@ -2109,7 +2109,7 @@ print(prodt{1, 2, 3, 4, 5})
 
 ```lua
 
-function table.sum(arr, length) 
+function table.sum(arr, length)
       --same as if <> then <> else <>
       return length == 1 and arr[1] or arr[length] + table.sum(arr, length -1)
 end
@@ -2338,7 +2338,7 @@ Product of array: 120
 SUMPROD(A)
  ;Compute the sum and product of the numbers in the array A
  NEW SUM,PROD,POS
- ;SUM is the running sum, 
+ ;SUM is the running sum,
  ;PROD is the running product,
  ;POS is the position within the array A
  SET SUM=0,PROD=1,POS=""
@@ -2349,13 +2349,13 @@ SUMPROD(A)
  QUIT
 ```
 
-Example: 
+Example:
 ```txt
 
 USER>SET C(-1)=2,C("A")=3,C(42)=1,C(0)=7
- 
+
 USER>D SUMPROD^ROSETTA(.C)
- 
+
 The sum of the array is 13
 The product of the array is 42
 
@@ -2366,9 +2366,9 @@ Note - the string "A" converts to 0 when doing mathematical operations.
 ```txt
 
 USER>SET C(-1)=2,C("A")="3H",C(42)=.1,C(0)=7.0,C("B")="A"
- 
+
 USER>D SUMPROD^ROSETTA(.C)
- 
+
 The sum of the array is 12.1
 The product of the array is 0
 
@@ -2393,21 +2393,21 @@ module SumProd
     {
         nums.FoldLeft(0, _+_)
     }
-    
+
     Product[T] (nums : T) : int
       where T : IEnumerable[int]
     {
         nums.FoldLeft(1, _*_)
     }
-    
+
     Main() : void
     {
         def arr = array[1, 2, 3, 4, 5];
         def lis = [1, 2, 3, 4, 5];
-        
+
         def suml = Sum(lis);
         def proda = Product(arr);
-        
+
         WriteLine("Sum is: {0}\tProduct is: {1}", suml, proda);
     }
 }
@@ -2433,7 +2433,7 @@ loop n_ = int 0 to harry.length - 1
   nxt = harry[n_]
   entries = entries nxt
   sum = sum + nxt
-  product = product * nxt 
+  product = product * nxt
   end n_
 
 entries = entries.strip
@@ -2563,16 +2563,16 @@ Sum:
 
 ```objc
 - (float) sum:(NSMutableArray *)array
-{ 
+{
 	int i, sum, value;
 	sum = 0;
 	value = 0;
-	
+
 	for (i = 0; i < [array count]; i++) {
 		value = [[array objectAtIndex: i] intValue];
 		sum += value;
 	}
-	
+
 	return suml;
 }
 ```
@@ -2581,16 +2581,16 @@ Product:
 
 ```objc
 - (float) prod:(NSMutableArray *)array
-{ 
+{
 	int i, prod, value;
 	prod = 0;
 	value = 0;
-	
+
 	for (i = 0; i < [array count]; i++) {
 		value = [[array objectAtIndex: i] intValue];
 		prod *= value;
 	}
-	
+
 	return suml;
 }
 ```
@@ -3332,7 +3332,7 @@ for i = 0 To 19
     sum     = (sum + array(i))
     product = (product * array(i))
 next i
- 
+
 Print "    Sum is ";sum
 Print "Product is ";product
 ```
@@ -3918,12 +3918,12 @@ sum=120
 
 public static void main(){
 	int sum = 0, product = 1;
-	
+
 	int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	
+
 	foreach (int number in array){
 		sum += number;
-		product *= number; 
+		product *= number;
 	}
 }
 
@@ -4075,7 +4075,7 @@ XSLT (or XPath rather) has a few built-in functions for reducing from a collecti
 ```xml
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:output method="text" />
-  
+
   <xsl:template name="sum-prod">
     <xsl:param name="values" />
     <xsl:param name="sum"  select="0" />
@@ -4098,12 +4098,12 @@ Product: </xsl:text>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  
+
   <xsl:template match="/">
      <xsl:text>
 Sum (built-in): </xsl:text>
     <xsl:value-of select="sum(//price)" />
-    
+
     <xsl:call-template name="sum-prod">
       <xsl:with-param name="values" select="//price" />
     </xsl:call-template>

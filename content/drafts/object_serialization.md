@@ -25,7 +25,7 @@ package Messages is
    type Message is tagged record
       Timestamp : Time;
    end record;
-  
+
    procedure Print(Item : Message);
    procedure Display(Item : Message'Class);
 
@@ -33,16 +33,16 @@ package Messages is
       Sensor_Id : Integer;
       Reading : Float;
    end record;
-   
+
    procedure Print(Item : Sensor_Message);
-   
+
    type Control_Message is new Message with record
       Actuator_Id : Integer;
       Command     : Float;
    end record;
-  
+
    procedure Print(Item : Control_Message);
-  
+
 end Messages;
 ```
 
@@ -68,7 +68,7 @@ package body Messages is
    begin
       Split(Date => Item.Timestamp, Year => The_Year,
          Month => The_Month, Day => The_Day, Seconds => Seconds);
-         
+
       Put("Time Stamp:");
       Put(Item => The_Year, Width => 4);
       Put("-");
@@ -76,7 +76,7 @@ package body Messages is
       Put("-");
       Put(Item => The_Day, Width => 1);
       New_Line;
-   end Print; 
+   end Print;
 
    -----------
    -- Print --
@@ -106,17 +106,17 @@ package body Messages is
       Put("Command: ");
       Put(Item => Item.Command, Fore => 1, Aft => 4, Exp => 0);
       New_Line;
-   end Print; 
+   end Print;
 
    -------------
    ---Display --
    -------------
-  
+
    procedure Display(Item : Message'Class) is
    begin
       Print(Item);
    end Display;
-   
+
 end Messages;
 ```
 
@@ -175,8 +175,8 @@ Output results:
  Time Stamp:2007-3-9
  Actuator Id: 15
  Command: 0.3340
-  
- 
+
+
  Time Stamp:2007-3-9
  Sensor Id: 1234
  Reading: 0.0250
@@ -191,23 +191,23 @@ Output results:
 {{trans|python}}
 
 Serialization in ''ALGOL 68'' is achieved through a technique called
-''straightening''. 
+''straightening''.
 
 ```algol68
 MODE ENTITY = STRUCT([6]CHAR name, INT creation);
 FORMAT entity repr = $"Name: "g", Created:"g$;
 MODE PERSON = STRUCT(ENTITY entity, STRING email);
 FORMAT person repr = $f(entity repr)", Email: "g$;
- 
+
 PERSON instance1 := PERSON(ENTITY("Cletus", 20080808), "test+1@localhost.localdomain");
 print((name OF entity OF instance1, new line));
- 
+
 ENTITY instance2 := ENTITY("Entity",20111111);
 print((name OF instance2, new line));
- 
+
 FILE target;
 INT errno := open(target, "rows.dat", stand back channel); # open file #
- 
+
 #  Serialise #
 put(target,(instance1, new line, instance2, new line));
 printf(($"Serialised..."l$));
@@ -220,7 +220,7 @@ PERSON i1;
 ENTITY i2;
 get(target,(i1, new line, i2, new line));
 printf(($"Unserialised..."l$));
- 
+
 printf((person repr, i1, $l$));
 printf((entity repr, i2, $l$))
 ```
@@ -229,7 +229,7 @@ printf((entity repr, i2, $l$))
 types are problematic as the lengths of the arrays, and the ''tag'' of the
 union is not stored in the '''file'''.  Sometimes a '''format''' can be manually created to handle
 these lengths and tags.  Also note that ''ALGOL 68'' is strongly typed and
-the type ('''mode''') of the objects not stored, but compiled into the 
+the type ('''mode''') of the objects not stored, but compiled into the
 code itself.
 
 Output:
@@ -252,8 +252,8 @@ Name: Entity, Created:  +20111111
 compiled with g++ -lboost_serialization serializationtest3.cpp -o serializationtest3
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <fstream>
 #include <boost/serialization/string.hpp>
 #include <boost/archive/text_oarchive.hpp>
@@ -262,10 +262,10 @@ compiled with g++ -lboost_serialization serializationtest3.cpp -o serializationt
 #include <iostream>
 
 class Employee {
-public :   
+public :
    Employee( ) { }
 
-   Employee ( const std::string &dep , const std::string &namen ) 
+   Employee ( const std::string &dep , const std::string &namen )
       : department( dep ) , name( namen ) {
 	 my_id = count++ ;
       }
@@ -292,7 +292,7 @@ public :
       std::cout << "Department: " << department << '\n' ;
    }
 
-   virtual ~Employee( ) { } 
+   virtual ~Employee( ) { }
    static int count ;
 private :
    std::string name ;
@@ -321,10 +321,10 @@ public :
    }
 
    void setSalary( double pay ) {
-      if ( pay > 0 ) 
+      if ( pay > 0 )
 	 salary = pay ;
    }
-   
+
    virtual void print( ) {
       Employee::print( ) ;
       std::cout << "wage per hour: " << salary << '\n' ;
@@ -338,7 +338,7 @@ private :
 	 ar & salary ;
       }
 } ;
-  
+
 int Employee::count = 0 ;
 
 int main( ) {
@@ -350,7 +350,7 @@ int main( ) {
    const Worker worker1( "maintenance" , "Laurent Le Chef" , 20 ) ;//creating objects of derived class
    const Worker worker2 ( "IT" , "Srinivan Taraman" , 55.35 ) ;
    boost::archive::text_oarchive oar ( storefile ) ;//starting serialization into designated file
-   oar << emp1 ; 
+   oar << emp1 ;
    oar << emp2 ;
    oar << emp3 ;
    oar << emp4 ;
@@ -362,7 +362,7 @@ int main( ) {
    Worker w1, w2 ; // same for objects of derived class
    std::ifstream sourcefile( "/home/ulrich/objects.dat"  ) ;
    boost::archive::text_iarchive iar( sourcefile ) ;//starting deserialization
-   iar >> e1 >> e2 >> e3 >> e4 ; 
+   iar >> e1 >> e2 >> e3 >> e4 ;
    iar >> w1 >> w2 ;
    sourcefile.close( ) ;
    std::cout << "And here are the data after deserialization!( abridged):\n" ;
@@ -430,7 +430,7 @@ namespace Object_serialization
   {
     private static void Main()
     {
-      string path = 
+      string path =
         Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"\\objects.dat";
 
       var n = new List<Animal>
@@ -557,11 +557,11 @@ ClassMethod Save(pFilename As %String)
 	Set emp2 = ##class(Employee).%New(.id, "Maintenance", "John Berry")
 	Set emp3 = ##class(Employee).%New(.id, "Repair", "Pawel Lichatschow")
 	Set emp4 = ##class(Employee).%New(.id, "IT", "Marian Niculescu")
-	
+
 	// creating objects of derived class
 	Set worker1 = ##class(Worker).%New(.id, "Maintenance", "Laurent Le Chef", 20)
 	Set worker2 = ##class(Worker).%New(.id, "IT", "Srinivan Taraman", 55.35)
-	
+
 	// put objects into collections
 	Set example = ..%New()
 	Set sc = example.Employees.Insert(emp1)
@@ -570,7 +570,7 @@ ClassMethod Save(pFilename As %String)
 	Set sc = example.Employees.Insert(emp4)
 	Set sc = example.Workers.Insert(worker1)
 	Set sc = example.Workers.Insert(worker2)
-	
+
 	// serialize the data and save to a file
 	Set sc=example.%GetSwizzleObject(,.oid)
 	Set fs=##class(%Stream.FileBinary).%New()
@@ -586,7 +586,7 @@ ClassMethod Load(pFilename As %String)
 	Set fs=##class(%Stream.FileBinary).%New()
 	Set fs.Filename=pFilename
 	Set oid=fs.Read(.len, .sc)
-	
+
 	// open the example object
 	Set example = ..%Open(oid,, .sc)
 	Do example.Employees.GetAt(1).Print()
@@ -770,13 +770,13 @@ def makeEvent(time :int) {
 
 def makeArrival(time :int, what :any, position :int) {
     return def arrival extends makeEvent(time) {
-        to __printOn(out) { 
+        to __printOn(out) {
             out.print(`$what to $position $super`)
         }
-        to __optUncall() { 
+        to __optUncall() {
             return [makeArrival, "run", [time, what, position]]
         }
-      
+
         to getWhat() { return what }
         to getPosition() { return position }
     }
@@ -795,7 +795,7 @@ surgeon.addExit(makeArrival, "makeArrival")
 
 
 The 'exits' of the surgeon (so called because it cuts and joins object subgraphs) specify the points at which serialization should stop, instead replacing references to the objects with the specified names. On unserialization, the names are looked up and replaced with the corresponding objects. (The surgeon provides default exits for such things as <tt>false</tt>, <tt>true</tt>, <tt>null</tt>, and the list constructor.)
- 
+
 
 ```e
 def objs := [makeEvent(timer.now()),
@@ -815,13 +815,13 @@ Our classes will be 'struct' objects, with custom #:tostring procedures, as requ
 ```lisp
 
 (define (person->string self) (format "%a : person." (person-name self)))
-(define (writer->string self) (format "%a:  writer of %a." 
+(define (writer->string self) (format "%a:  writer of %a."
 			(person-name self)
 			(writer-books self)))
-(define  (father->string self) (format "%a: father of %a." 
+(define  (father->string self) (format "%a: father of %a."
 			(person-name self)
 			(map person-name (father-children self))))
-			
+
 ; 'classes' definition, with inheritance.
 ; a writer is a person, too.
 (struct person (name)  #:tostring person->string)
@@ -909,7 +909,7 @@ task() ->
 	io:fwrite( "Deserialized\n" ),
 	print( New_person ),
 	print( New_entity ).
-	
+
 
 
 print( #entity{name=Name, date=Date} ) ->
@@ -1004,11 +1004,11 @@ T{ armor
     { fire-resistance 30 }
 }
 
-Serializing objects to objects.dat . . . 
+Serializing objects to objects.dat . . .
 objects.dat exists? t
 Size on disk: 206 bytes
 
-Deserializing objects from objects.dat . . . 
+Deserializing objects from objects.dat . . .
 
 T{ item { name "Fish scales" } { value 0.05 } }
 T{ item { name "Gold piece" } { value 1 } }
@@ -1131,7 +1131,7 @@ type Cat struct {
     Animal
     LitterBoxTrained bool
 }
-    
+
 func (c *Cat) print() {
     switch {
     case !c.Alive:
@@ -1144,9 +1144,9 @@ func (c *Cat) print() {
 }
 
 type Lab struct {
-    Dog 
+    Dog
     Color string
-}   
+}
 
 func (l *Lab) print() {
     var r string
@@ -1163,12 +1163,12 @@ func (l *Lab) print() {
     default:
         fmt.Printf("   %s, not trained\n", r)
     }
-}   
+}
 
 type Collie struct {
-    Dog 
+    Dog
     CatchesFrisbee bool
-}   
+}
 
 func (c *Collie) print() {
     switch {
@@ -1214,7 +1214,7 @@ class Entity implements Serializable {
     String name = 'Thingamabob'
     public String toString() { return name }
 }
- 
+
 class Person extends Entity implements Serializable {
     static final serialVersionUID = -9170445713373959735L
     Person() { name = 'Clement' }
@@ -1377,10 +1377,10 @@ room size small
 kitchen size medium
    print__S''
 kitchen with sink size large
-   
-   
+
+
    (;<@serializeObject"0 R,K,S) 1!:2 <'objects.dat'
-   
+
    'r1 k1 s1'=: <"0 deserializeObject 1!:1<'objects.dat'
    print__r1''
 room size small
@@ -1554,7 +1554,7 @@ fun main(args: Array<String>) {
         System.exit(1)
     }
 
-    // deserialize 
+    // deserialize
     try {
         val inp = ObjectInputStream(FileInputStream("objects.dat"))
         val readObject1 = inp.readObject()
@@ -1562,7 +1562,7 @@ fun main(args: Array<String>) {
         inp.close()
         println("Deserialized...")
         println(readObject1)
-        println(readObject2)        
+        println(readObject2)
     }
     catch (e: IOException) {
         println("Error occurred whilst deserializing")
@@ -1696,7 +1696,7 @@ There exists also a way of serializing without the GNUstep/Cocoa framework, usin
 {
   NSLog(@"%@ has %d legs", animalName, numberOfLegs);
 }
-// 
+//
 ### ==
 
 - (void) encodeWithCoder: (NSCoder*)coder
@@ -1753,7 +1753,7 @@ There exists also a way of serializing without the GNUstep/Cocoa framework, usin
     NSLog(@"it has eaten a %@", element);
   NSLog(@"end of eaten things list");
 }
-// 
+//
 ### ===
  de/archiving
 - (void) encodeWithCoder: (NSCoder*)coder
@@ -1776,7 +1776,7 @@ There exists also a way of serializing without the GNUstep/Cocoa framework, usin
 int main()
 {
   @autoreleasepool {
-  
+
     // let us create a fantasy animal
     Animal *anAnimal = [[Animal alloc]
 	         initWithName: @"Eptohippos"
@@ -1998,7 +1998,7 @@ For a general solution, see [[Object Serialization/Oz]].
 {
     package Greeting;
     sub new {
-        my $v = "Hello world!\n"; 
+        my $v = "Hello world!\n";
         bless \$v, shift;
     };
     sub stringify {
@@ -2009,7 +2009,7 @@ For a general solution, see [[Object Serialization/Oz]].
     package Son::of::Greeting;
     use base qw(Greeting); # inherit methods
     sub new { # overwrite method of super class
-        my $v = "Hello world from Junior!\n"; 
+        my $v = "Hello world from Junior!\n";
         bless \$v, shift;
     };
 };
@@ -2134,7 +2134,7 @@ The serialize() and deserialize() functions handle any kind of data. Whether the
 or whatever you choose to treat as such, is up to you.
 
 ```Phix
-include builtins\serialize.e 
+include builtins\serialize.e
 
 function randobj()
 -- test function (generate some random garbage)
@@ -2281,7 +2281,7 @@ class Entity:
 
 class Person(Entity): #OldMan inherits from Entity
 	def __init__(self): #override constructor
-		self.name = "Cletus" 
+		self.name = "Cletus"
 
 instance1 = Person()
 instance1.printName()
@@ -2513,7 +2513,7 @@ puts "END LOADED DIVERSE COLLECTION"
 
 Rust does not have inheritance, but this can be done with either enums or traits.
 
-###  Enum 
+###  Enum
 
 Dependencies:
 
@@ -2594,7 +2594,7 @@ Serialized into 57 bytes
 ```
 
 
-###  Trait 
+###  Trait
 
 Dependencies:
 
@@ -2797,7 +2797,7 @@ ARootClass.B(456).println(); // create an instance
    Class(A) constructor
    x is 456
 
-f:=File("object.dat","wb"); 
+f:=File("object.dat","wb");
 Compiler.Asm.writeRootClass(ARootClass,f); // serialize to file
 f.close();
 

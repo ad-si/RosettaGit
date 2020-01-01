@@ -110,7 +110,7 @@ A received X
 
 
 ```AutoHotkey
-SetTimer, internal, 1000  
+SetTimer, internal, 1000
 Return
 
 internal:  ; fire on a timer
@@ -136,18 +136,18 @@ This uses a Windows event object:
 ```bbcbasic
       INSTALL @lib$+"TIMERLIB"
       WAIT_TIMEOUT = 258
-      
+
       SYS "CreateEvent", 0, 1, 0, 0 TO hEvent%
-      
+
       timerID% = FN_ontimer(1000, PROCelapsed, 0)
-      
+
       PRINT "Waiting for event..."
       REPEAT
         SYS "WaitForSingleObject", hEvent%, 1 TO res%
       UNTIL res% <> WAIT_TIMEOUT
       PRINT "Event signalled"
       END
-      
+
       DEF PROCelapsed
       SYS "SetEvent", hEvent%
       ENDPROC
@@ -160,18 +160,18 @@ This uses a simple variable as a semaphore:
 
 ```bbcbasic
       INSTALL @lib$+"TIMERLIB"
-      
+
       Event% = FALSE
-      
+
       timerID% = FN_ontimer(1000, PROCelapsed, 0)
-      
+
       PRINT "Waiting for event..."
       REPEAT
         WAIT 0
       UNTIL Event%
       PRINT "Event signalled"
       END
-      
+
       DEF PROCelapsed
       Event% = TRUE
       ENDPROC
@@ -183,8 +183,8 @@ This uses a simple variable as a semaphore:
 
 Using pipe to communicate to <code>fork</code>ed child.  Since child will be blocking trying to read the other end of the pipe, this can be used for synchronization.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <unistd.h>
 
 int main()
@@ -375,7 +375,7 @@ Sample output:
 ```e
 def makeEvent() {
     def [var fired, var firer] := Ref.promise()
-    
+
     def event {
         to signal() {
             firer.resolveRace(null) # all current and future wait()s will resolve
@@ -394,7 +394,7 @@ def makeEvent() {
             return fired
         }
     }
-    
+
     return event
 }
 ```
@@ -432,7 +432,7 @@ defmodule Events do
     time = Time.utc_now |> to_string |> String.slice(0..7)
     IO.puts "#{time} => #{msg}"
   end
-  
+
   def task do
     log("Task start")
     receive do
@@ -440,7 +440,7 @@ defmodule Events do
     end
     log("Task resumed")
   end
-  
+
   def main do
     log("Program start")
     {pid,ref} = spawn_monitor(__MODULE__,:task,[])
@@ -525,7 +525,7 @@ ok
 open System
 open System.Timers
 
-let onElapsed (sender : obj) (eventArgs : ElapsedEventArgs) = 
+let onElapsed (sender : obj) (eventArgs : ElapsedEventArgs) =
     printfn "%A" eventArgs.SignalTime
     (sender :?> Timer).Stop()
 
@@ -695,7 +695,7 @@ Task one received event.
 ## Julia
 
 Julia provides a variety of high and low level functions and macros for multitasking and events.
-The code below uses a Condition() event semaphore created in the base thread for communication 
+The code below uses a Condition() event semaphore created in the base thread for communication
 between two child threads.
 
 
@@ -703,7 +703,7 @@ between two child threads.
 
 function dolongcomputation(cond)
     det(rand(4000, 4000))
-    Base.notify(cond)    
+    Base.notify(cond)
 end
 
 function printnotice(cond)
@@ -831,7 +831,7 @@ lParam = 65536*y + x
 mx.send_msg (hwnd, WM_LBUTTONDOWN, MK_LBUTTON, lParam)
 
 -- listen for WM_COPYDATA and WM_MOUSEWHEEL messages sent to current application
--- window, notify Lingo callback function 'msgReceived' when such messages occur. 
+-- window, notify Lingo callback function 'msgReceived' when such messages occur.
 -- This callback function will receive hwnd, message, wParam and lParam as arguments
 -- (and for WM_COPYDATA messages also the data that was sent as ByteArray).
 WM_COPYDATA = 74
@@ -921,7 +921,7 @@ An event is often implemented with a control channel. A task is waiting for an o
 | ch |
    Channel new ->ch
    #[ ch receive "Ok, event is signaled !" println ] &
-   System sleep(1000) 
+   System sleep(1000)
    ch send($myEvent) ;
 ```
 
@@ -935,9 +935,9 @@ import: emitter
 | e i |
    Emitter new(null) ->e
    e onEvent($myEvent, #[ "Event is signaled !" println ])
-   10 loop: i [ 
+   10 loop: i [
       1000 System sleep
-      $myEvent e emit 
+      $myEvent e emit
       ]
    e close ;
 ```
@@ -985,7 +985,7 @@ However, this code is quite unidiomatic. If we need to wait for an event just on
 
 ```oz
 declare
-  E 
+  E
 in
   thread
      {System.showInfo "[2] Waiting for event..."}
@@ -1003,7 +1003,7 @@ If we want to synchronize two threads repeatedly and exchange data, it is natura
 
 ```oz
 declare
-  MyPort 
+  MyPort
 in
   thread
      MyStream
@@ -1125,8 +1125,8 @@ See also [[Handle_a_signal#Perl_6]] for an example of using Supplies to do react
 
 ## Phix
 
-The primary synchronisation primitive in phix is the critical section, in the following the leave_cs() 
-in main() acts as signalling an event, and the one in echo() from whichever goes first acts to signal 
+The primary synchronisation primitive in phix is the critical section, in the following the leave_cs()
+in main() acts as signalling an event, and the one in echo() from whichever goes first acts to signal
 that the other can/should resume.
 
 ```Phix
@@ -1142,7 +1142,7 @@ procedure echo(string s)
     enter_cs(lock)
     puts(1,s)
     sleep(1)
-    showtime()  
+    showtime()
     leave_cs(lock)
 end procedure
 
@@ -1267,12 +1267,12 @@ ButtonGadget (1, 10, 10, 35, 20, "Quit")
 
 Repeat
 
-   Event = WaitWindowEvent()  
-   
+   Event = WaitWindowEvent()
+
    If  Event = #PB_Event_Gadget And EventGadget() = 1
-      End         
+      End
    EndIf
-   
+
 ForEver
 ```
 
@@ -1339,7 +1339,7 @@ the task (since it's a useless value):
 
 Although REXX can be event driven, most events would probably have to be actively checked to see if the event occurs.
 
-Here is a   ''time-driven''   example of events happening, based on specific timer ticks. 
+Here is a   ''time-driven''   example of events happening, based on specific timer ticks.
 
 ```rexx
 /*REXX program demonstrates a  method  of  handling events  (this is a time─driven pgm).*/

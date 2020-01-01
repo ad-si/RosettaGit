@@ -40,7 +40,7 @@ STRMERGE CSECT
          ST     R13,4(R15)         " <-
          ST     R15,8(R13)         " ->
          LR     R13,R15            " addressability
-         OPEN   (OUTDCB,OUTPUT)    open the output file 
+         OPEN   (OUTDCB,OUTPUT)    open the output file
          LA     R6,1               n=1
          LA     R9,FILE            file(n)
 LOOPN    C      R6,=A(NN)          do n=1 to nn
@@ -87,7 +87,7 @@ ELOOPK   LTR    R8,R8              if lowest=0
          BAL    R14,WRITE          call write
          LR     R1,R8              lowest
          BAL    R14,READ           call read(lowest)
-         B      LOOP               
+         B      LOOP
 EXIT     LA     R7,1               k=1
          LA     R9,FILE            file(n)
 LOOPKC   CR     R7,R6              do k=1 to n
@@ -98,7 +98,7 @@ LOOPKC   CR     R7,R6              do k=1 to n
          LA     R9,4(R9)           file(n++)
          B      LOOPKC             end do k
 ELOOPKC  CLOSE  (OUTDCB)           close output
-         L      R13,4(0,R13)       epilog 
+         L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    " restore
          XR     R15,R15            " rc=0
          BR     R14                exit
@@ -106,8 +106,8 @@ ELOOPKC  CLOSE  (OUTDCB)           close output
 READ     LR     R4,R1              z
          LA     R2,RECDEF-1(R1)    @recdef(z)
          MVI    0(R2),X'00'        recdef(z)=false
-         LA     R2,EOF-1(R1)       @eof(z) 
-         CLI    0(R2),X'00'        if not eof(z) 
+         LA     R2,EOF-1(R1)       @eof(z)
+         CLI    0(R2),X'00'        if not eof(z)
          BNE    EOFZ
          LR     R1,R4              z
          SLA    R1,6
@@ -153,21 +153,21 @@ PG       DS     CL64
 {{in}}
 <pre style="height:20ex">
 --File 1:
-Line 001                                                     
-Line 008                                                     
-Line 017                                                     
+Line 001
+Line 008
+Line 017
 --File 2:
-Line 019                                                     
-Line 033                                                     
-Line 044                                                     
-Line 055                                                     
+Line 019
+Line 033
+Line 044
+Line 055
 --File 3:
-Line 019                                                     
-Line 029                                                     
-Line 039                                                     
+Line 019
+Line 029
+Line 039
 --File 4:
-Line 023                                                     
-Line 030                                                     
+Line 023
+Line 030
 
 ```
 
@@ -587,7 +587,7 @@ function error(message) {
 ```C
 /*
  * Rosetta Code - stream merge in C.
- * 
+ *
  * Two streams (text files) with integer numbers, C89, Visual Studio 2010.
  *
  */
@@ -637,8 +637,8 @@ int main(int argc, char* argv[])
 
 {{trans|C#}}
 
-```cpp>//#include <functional
-
+```cpp
+#include <functional>
 #include <iostream>
 #include <vector>
 
@@ -949,13 +949,13 @@ if (isInputRange!IN && isOutputRange!(OUT, ElementType!IN)) {
 ```elixir
 defmodule StreamMerge do
   def merge2(file1, file2), do: mergeN([file1, file2])
-  
+
   def mergeN(files) do
     Enum.map(files, fn fname -> File.open!(fname) end)
     |> Enum.map(fn fd -> {fd, IO.read(fd, :line)} end)
     |> merge_loop
   end
-  
+
   defp merge_loop([]), do: :ok
   defp merge_loop(fdata) do
     {fd, min} = Enum.min_by(fdata, fn {_,head} -> head end)
@@ -1220,8 +1220,8 @@ func mergeN(m io.Writer, s ...io.Reader) {
 
 ```txt
 
-merge2: 2 3 14 15 17 18 
-mergeN: 2 2 3 3 5 7 14 15 17 18 
+merge2: 2 3 14 15 17 18
+mergeN: 2 2 3 3 5 7 14 15 17 18
 
 ```
 
@@ -1294,7 +1294,7 @@ func mergeN(m io.Writer, s ...io.Reader) {
 
 ```txt
 
-2 2 3 3 5 7 14 15 17 18 
+2 2 3 3 5 7 14 15 17 18
 
 ```
 
@@ -1304,7 +1304,7 @@ func mergeN(m io.Writer, s ...io.Reader) {
 There is no built-in iterator or stream type for file operations in Haskell. But several such libraries exist.
 
 
-###  conduit 
+###  conduit
 
 
 
@@ -1334,7 +1334,7 @@ main = do
 See implementation in https://github.com/cblp/conduit-merge/blob/master/src/Data/Conduit/Merge.hs
 
 
-###  pipes 
+###  pipes
 
 
 
@@ -1594,7 +1594,7 @@ fun main(args:Array<String>) {
     merge2(files[0], files[1], "merged2.txt")
     mergeN(files, "mergedN.txt")
     // check it worked
-    println(File("merged2.txt").readText()) 
+    println(File("merged2.txt").readText())
     println(File("mergedN.txt").readText())
 }
 ```
@@ -1969,7 +1969,7 @@ for item in heapq.merge(open(source) for source in sources):
          (for/fold ((F #f) (I 0)) ((s (in-list ss)) (i (in-naturals)))
            (if (tl-empty? s) (values F I)
                (let ((f (tl-first s)))
-                 (if (or (not F) (< f (unbox F))) (values (box f) i) (values F I))))))       
+                 (if (or (not F) (< f (unbox F))) (values (box f) i) (values F I))))))
        (set-merged-stream-v! S best-f)
        (define ss′ (for/list ((s ss) (i (in-naturals)) #:unless (tl-empty? s))
                      (if (= i best-i) (tl-rest s) s)))
@@ -1996,7 +1996,7 @@ for item in heapq.merge(open(source) for source in sources):
             (in-lines (open-input-string "aardvark
 dog
 fox"))
-            (in-list (string-split "cat donkey elephant"))                            
+            (in-list (string-split "cat donkey elephant"))
             (in-port read (open-input-string #<<<
 "boy"
 "emu"
@@ -2009,7 +2009,7 @@ fox"))
 (module+ test
   (require rackunit)
   (define merge-sequences/< (merge-sequences <))
-  
+
   (check-equal?
    (for/list ((i (in-stream (merge-sequences/< (in-list '(1 3 5)))))) i)
    '(1 3 5))
@@ -2115,13 +2115,13 @@ o: Say arg(1)
 
 ### version 2
 
-This REXX version reads   (in numerical order)   ''any''   number of input files in the form of:     <big> nnn.TXT </big>     
+This REXX version reads   (in numerical order)   ''any''   number of input files in the form of:     <big> nnn.TXT </big>
 
 and stops reading subsequent   ''new''   input files when it encounters an input file that doesn't exist   (or is empty).
 
 The input files would/should be named:     '''1.TXT     2.TXT     3.TXT     4.TXT     ···'''
 
-No   ''heap''   is needed to keep track of which record was written, nor needs replenishing from its input file. 
+No   ''heap''   is needed to keep track of which record was written, nor needs replenishing from its input file.
 
 ```rexx
 /*REXX pgm reads sorted files (1.TXT, 2.TXT, ···),  and writes sorted data ───► ALL.TXT */
@@ -2141,7 +2141,7 @@ n=n-1                                            /*adj. N; read from a non─exi
 rdr: parse arg z;  @.z=@.;   f=z'.TXT';     if lines(f)\==0  then @.z=linein(f);    return
 ```
 
-{{out|output|text=  is the same as the 1<sup>st</sup> REXX version when using identical input files.}} 
+{{out|output|text=  is the same as the 1<sup>st</sup> REXX version when using identical input files.}}
 
 
 
@@ -2182,9 +2182,9 @@ stream_merge(*files)
 
 ```txt
 
-temp1.dat:  1  3  9 14 15 17 28 
-temp2.dat:  7  8 14 14 23 26 28 29 30 
-temp3.dat:  9 23 25 29 
+temp1.dat:  1  3  9 14 15 17 28
+temp2.dat:  7  8 14 14 23 26 28 29 30
+temp3.dat:  9 23 25 29
  1
  3
  7
@@ -2227,7 +2227,7 @@ def merge2Buffered[A](i1: BufferedIterator[A], i2: BufferedIterator[A])(implicit
     i1
   } else {
     val nextHead = if (ord.lt(i1.head, i2.head)) {
-      Iterator.single(i1.next) 
+      Iterator.single(i1.next)
     } else {
       Iterator.single(i2.next)
     }
@@ -2344,17 +2344,17 @@ proc merge {args} {
         if {[gets $chan peek] > 0} {
             dict set peeks $chan $peek
         }
-    }   
+    }
     set peeks [lsort -stride 2 -index 1 $peeks]
     while {[dict size $peeks]} {
         set peeks [lassign $peeks chan peek]
         puts $peek
         if {[gets $chan peek] > 0} {
-            dict set peeks $chan $peek 
+            dict set peeks $chan $peek
             set peeks [lsort -stride 2 -index 1 $peeks]
         }
-    }       
-}           
+    }
+}
 
 merge {*}[lmap f $::argv {open $f r}]
 
@@ -2435,7 +2435,7 @@ mergeStreams(File("unixdict.txt"),File("2hkprimes.txt"),File("/dev/null"))
 
 ```txt
 
-$ ls -l unixdict.txt 2hkprimes.txt foo.txt 
+$ ls -l unixdict.txt 2hkprimes.txt foo.txt
 -rw-r--r-- 1 craigd craigd 1510484 Oct 29  2013 2hkprimes.txt
 -rw-r--r-- 1 craigd craigd 1716887 Jun 16 23:34 foo.txt
 -rw-r--r-- 1 craigd craigd  206403 Jun 11  2014 unixdict.txt

@@ -16,9 +16,9 @@ tags = []
 ;Task:
 Implement a binary tree where each node carries an integer,   and implement:
 :::*   pre-order,
-:::*   in-order, 
-:::*   post-order,     and 
-:::*   level-order   [[wp:Tree traversal|traversal]]. 
+:::*   in-order,
+:::*   post-order,     and
+:::*   level-order   [[wp:Tree traversal|traversal]].
 
 
 Use those traversals to output the following tree:
@@ -92,7 +92,7 @@ The correct output should look like this:
        (append (flatten-level-r2 levels
                                  (1- max-level))
                (reverse (cdr (assoc max-level levels))))))
-               
+
 
 (defun flatten-level (tree)
    (let ((levels (flatten-level-r1 tree 0 nil)))
@@ -123,7 +123,7 @@ procedure Tree_Traversal is
       if N.Left /= null then
          Destroy_Tree(N.Left);
       end if;
-      if N.Right /= null then 
+      if N.Right /= null then
          Destroy_Tree(N.Right);
       end if;
       Free(N);
@@ -187,7 +187,7 @@ procedure Tree_Traversal is
    end Levelorder;
    N : Node_Access;
 begin
-   N := Tree(1, 
+   N := Tree(1,
       Tree(2,
          Tree(4,
             Tree(7, null, null),
@@ -198,7 +198,7 @@ begin
             Tree(8, null, null),
             Tree(9, null, null)),
          null));
-         
+
    Put("preorder:    ");
    Preorder(N);
    New_Line;
@@ -235,45 +235,45 @@ PROC value repr = (VALUE value)STRING: whole(value, 0);
 
 MODE NODES = STRUCT ( VALUE value, REF NODES left, right);
 MODE NODE = REF NODES;
- 
+
 PROC tree = (VALUE value, NODE left, right)NODE:
   HEAP NODES := (value, left, right);
- 
+
 PROC preorder = (NODE node, PROC (VALUE)VOID action)VOID:
   IF node ISNT NODE(NIL) THEN
     action(value OF node);
     preorder(left OF node, action);
     preorder(right OF node, action)
   FI;
- 
+
 PROC inorder = (NODE node, PROC (VALUE)VOID action)VOID:
   IF node ISNT NODE(NIL) THEN
     inorder(left OF node, action);
     action(value OF node);
     inorder(right OF node, action)
   FI;
- 
+
 PROC postorder = (NODE node, PROC (VALUE)VOID action)VOID:
   IF node ISNT NODE(NIL) THEN
     postorder(left OF node, action);
     postorder(right OF node, action);
     action(value OF node)
   FI;
- 
-PROC destroy tree = (NODE node)VOID: 
-  postorder(node, (VALUE skip)VOID: 
+
+PROC destroy tree = (NODE node)VOID:
+  postorder(node, (VALUE skip)VOID:
   # free(node) - PR garbage collect hint PR #
     node := (SKIP, NIL, NIL)
   );
- 
+
 # helper queue for level order #
 MODE QNODES = STRUCT (REF QNODES next, NODE value);
 MODE QNODE = REF QNODES;
- 
+
 
 MODE QUEUES = STRUCT (QNODE begin, end);
 MODE QUEUE = REF QUEUES;
- 
+
 PROC enqueue = (QUEUE queue, NODE node)VOID:
 (
   HEAP QNODES qnode := (NIL, node);
@@ -283,10 +283,10 @@ PROC enqueue = (QUEUE queue, NODE node)VOID:
     begin OF queue
   FI := end OF queue := qnode
 );
- 
+
 PROC queue empty = (QUEUE queue)BOOL:
   begin OF queue IS QNODE(NIL);
- 
+
 PROC dequeue = (QUEUE queue)NODE:
 (
   NODE out := value OF begin OF queue;
@@ -299,7 +299,7 @@ PROC dequeue = (QUEUE queue)NODE:
   FI;
   out
 );
- 
+
 PROC level order = (NODE node, PROC (VALUE)VOID action)VOID:
 (
   HEAP QUEUES queue := (QNODE(NIL), QNODE(NIL));
@@ -314,10 +314,10 @@ PROC level order = (NODE node, PROC (VALUE)VOID action)VOID:
     FI
   OD
 );
- 
+
 PROC print node = (VALUE value)VOID:
   print((" ",value repr(value)));
- 
+
 main: (
   NODE node := tree(1,
                 tree(2,
@@ -332,7 +332,7 @@ main: (
                      NIL));
 
   MODE TEST = STRUCT(
-    STRING name, 
+    STRING name,
     PROC(NODE,PROC(VALUE)VOID)VOID order
   );
 
@@ -342,7 +342,7 @@ main: (
     (order OF test)(node, print node);
     print(new line)
   );
- 
+
   []TEST test list = (
     ("preorder",preorder),
     ("inorder",inorder),
@@ -360,10 +360,10 @@ Output:
 
 ```txt
 
-preorder :     1 2 4 7 5 3 6 8 9 
-inorder :      7 4 2 5 1 8 6 9 3 
-postorder :    7 4 5 2 8 9 6 3 1 
-level-order :  1 2 3 4 5 6 7 8 9 
+preorder :     1 2 4 7 5 3 6 8 9
+inorder :      7 4 2 5 1 8 6 9 3
+postorder :    7 4 5 2 8 9 6 3 1
+level-order :  1 2 3 4 5 6 7 8 9
 
 ```
 
@@ -408,7 +408,7 @@ Time for an example to clarify all this.
 I chose to represent the description's tree using nested arrays (rectangular arrays whose elements can also be rectangular arrays). Each node is of the form
 
 ```txt
- value childL childR 
+ value childL childR
 ```
 
 and empty childL or childR mean and absence of the corresponding child node.
@@ -450,7 +450,7 @@ You should go check it out, as in the lesson it is explained how to implement a 
 ```AppleScript
 on run
     set tree to {1, {2, {4, {7}, {}}, {5}}, {3, {6, {8}, {9}}, {}}}
-    
+
     -- asciiTree :: String
     set asciiTree to ¬
         unlines({¬
@@ -463,18 +463,18 @@ on run
             "   4   5   6", ¬
             "  /       / \\", ¬
             " 7       8   9"})
-    
+
     script tabulate
         on |λ|(s, xs)
             justifyLeft(14, space, s & ":") & unwords(xs)
         end |λ|
     end script
-    
+
     set strResult to asciiTree & linefeed & linefeed & ¬
         unlines(zipWith(tabulate, ¬
             ["preorder", "inorder", "postorder", "level-order"], ¬
             ap([preorder, inorder, postorder, levelOrder], [tree])))
-    
+
     set the clipboard to strResult
     return strResult
 end run
@@ -489,7 +489,7 @@ on preorder(tree)
     else
         set lstLeft to preorder(l)
     end if
-    
+
     if r is {} then
         set lstRight to []
     else
@@ -506,13 +506,13 @@ on inorder(tree)
     else
         set lstLeft to inorder(l)
     end if
-    
+
     if r is {} then
         set lstRight to []
     else
         set lstRight to inorder(r)
     end if
-    
+
     lstLeft & v & lstRight
 end inorder
 
@@ -524,7 +524,7 @@ on postorder(tree)
     else
         set lstLeft to postorder(l)
     end if
-    
+
     if r is {} then
         set lstRight to []
     else
@@ -537,11 +537,11 @@ end postorder
 on levelOrder(tree)
     if length of tree > 0 then
         set {head, tail} to uncons(tree)
-        
+
         -- Take any value found in the head node
         -- deferring any child nodes to the end of the tail
         -- before recursing
-        
+
         if head is not {} then
             set {v, l, r} to nodeParts(head)
             v & levelOrder(tail & {l, r})
@@ -607,7 +607,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -624,7 +624,7 @@ on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -710,32 +710,32 @@ level-order:  1 2 3 4 5 6 7 8 9
 /* structure tree     */
     .struct  0
 tree_root:                             @ root pointer
-    .struct  tree_root + 4 
+    .struct  tree_root + 4
 tree_size:                             @ number of element of tree
-    .struct  tree_size + 4 
+    .struct  tree_size + 4
 tree_fin:
 /* structure node tree */
     .struct  0
 node_left:                             @ left pointer
-    .struct  node_left + 4 
+    .struct  node_left + 4
 node_right:                            @ right pointer
-    .struct  node_right + 4 
+    .struct  node_right + 4
 node_value:                            @ element value
-    .struct  node_value + 4 
+    .struct  node_value + 4
 node_fin:
 /* structure queue*/
     .struct  0
 queue_begin:                           @ next pointer
-    .struct  queue_begin + 4 
+    .struct  queue_begin + 4
 queue_end:                             @ element value
-    .struct  queue_end + 4 
+    .struct  queue_end + 4
 queue_fin:
 /* structure node queue    */
     .struct  0
 queue_node_next:                       @ next pointer
-    .struct  queue_node_next + 4 
+    .struct  queue_node_next + 4
 queue_node_value:                      @ element value
-    .struct  queue_node_value + 4 
+    .struct  queue_node_value + 4
 queue_node_fin:
 /* Initialized data */
 .data
@@ -752,13 +752,13 @@ sValue:               .space 12,' '
                       .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 stTree:               .skip tree_fin    @ place to structure tree
 stQueue:              .skip queue_fin   @ place to structure queue
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
     mov r1,#1                           @ node tree value
 1:
     ldr r0,iAdrstTree                   @ structure tree address
@@ -813,13 +813,13 @@ iAdrstTree:                .int stTree
 iAdrstQueue:               .int stQueue
 iAdrdisplayElement:        .int displayElement
 /******************************************************************/
-/*     insert element in the tree                                 */ 
+/*     insert element in the tree                                 */
 /******************************************************************/
 /* r0 contains the address of the tree structure */
 /* r1 contains the value of element              */
 /* r0 returns address of element or - 1 if error */
 insertElement:
-    push {r1-r7,lr}                   @ save  registers 
+    push {r1-r7,lr}                   @ save  registers
     mov r4,r0
     mov r0,#node_fin                  @ reservation place one element
     bl allocHeap
@@ -840,7 +840,7 @@ insertElement:
     add r6,r2,#1                      @ increment tree size
     clz r7,r6                         @ compute zeroes left bits
     add r7,#1                         @ for sustract the first left bit
-    lsl r6,r7                         @ shift number in left 
+    lsl r6,r7                         @ shift number in left
 2:
     lsls r6,#1                        @ read left bit
     bcs 3f                            @ is 1 ?
@@ -850,7 +850,7 @@ insertElement:
     beq 4f
     mov r3,r1                         @ else loop with next node
     b 2b
-3:                                    @ yes 
+3:                                    @ yes
     ldr r1,[r3,#node_right]           @ store node address in right pointer
     cmp r1,#0                         @ if equal zero
     streq r5,[r3,#node_right]
@@ -864,12 +864,12 @@ insertElement:
     pop {r1-r7,lr}                    @ restaur registers
     bx lr                             @ return
 /******************************************************************/
-/*     preOrder                                  */ 
+/*     preOrder                                  */
 /******************************************************************/
 /* r0 contains the address of the node */
 /* r1 function address                 */
 preOrder:
-    push {r1-r2,lr}                       @ save  registers 
+    push {r1-r2,lr}                       @ save  registers
     cmp r0,#0
     beq 100f
     mov r2,r0
@@ -881,14 +881,14 @@ preOrder:
     bl preOrder
 100:
     pop {r1-r2,lr}                        @ restaur registers
-    bx lr       
+    bx lr
 /******************************************************************/
-/*     inOrder                                  */ 
+/*     inOrder                                  */
 /******************************************************************/
 /* r0 contains the address of the node */
 /* r1 function address                 */
 inOrder:
-    push {r1-r3,lr}                    @ save  registers 
+    push {r1-r3,lr}                    @ save  registers
     cmp r0,#0
     beq 100f
     mov r3,r0
@@ -905,12 +905,12 @@ inOrder:
     pop {r1-r3,lr}                     @ restaur registers
     bx lr                              @ return
 /******************************************************************/
-/*     postOrder                                  */ 
+/*     postOrder                                  */
 /******************************************************************/
 /* r0 contains the address of the node */
 /* r1 function address                 */
 postOrder:
-    push {r1-r3,lr}                    @ save  registers 
+    push {r1-r3,lr}                    @ save  registers
     cmp r0,#0
     beq 100f
     mov r3,r0
@@ -927,12 +927,12 @@ postOrder:
     pop {r1-r3,lr}                    @ restaur registers
     bx lr                             @ return
 /******************************************************************/
-/*     levelOrder                                  */ 
+/*     levelOrder                                  */
 /******************************************************************/
 /* r0 contains the address of the node */
 /* r1 function address                 */
 levelOrder:
-    push {r1-r4,lr}                       @ save  registers 
+    push {r1-r4,lr}                       @ save  registers
     cmp r0,#0
     beq 100f
     mov r2,r1
@@ -968,11 +968,11 @@ levelOrder:
     pop {r1-r4,lr}                        @ restaur registers
     bx lr                                 @ return
 /******************************************************************/
-/*     display node                                               */ 
+/*     display node                                               */
 /******************************************************************/
 /* r0 contains node  address          */
 displayElement:
-    push {r1,lr}                       @ save  registers 
+    push {r1,lr}                       @ save  registers
     ldr r0,[r0,#node_value]
     ldr r1,iAdrsValue
     bl conversion10S
@@ -984,20 +984,20 @@ displayElement:
 iAdrszMessResult:          .int szMessResult
 iAdrsValue:                .int sValue
 /******************************************************************/
-/*     enqueue node                                  */ 
+/*     enqueue node                                  */
 /******************************************************************/
 /* r0 contains the address of the queue */
 /* r1 contains the value of element  */
 /* r0 returns address of element or - 1 if error */
 enqueueNode:
-    push {r1-r5,lr}                       @ save  registers 
+    push {r1-r5,lr}                       @ save  registers
     mov r4,r0
     mov r0,#queue_node_fin                @ allocation place heap
     bl allocHeap
     cmp r0,#-1                            @ allocation error
     beq 100f
     mov r5,r0                             @ save heap address
-    str r1,[r5,#queue_node_value]         @ store node value 
+    str r1,[r5,#queue_node_value]         @ store node value
     mov r1,#0
     str r1,[r5,#queue_node_next]          @ init pointer next
     ldr r0,[r4,#queue_end]
@@ -1009,12 +1009,12 @@ enqueueNode:
     pop {r1-r5,lr}
     bx lr                             @ return
 /******************************************************************/
-/*     dequeue node                                  */ 
+/*     dequeue node                                  */
 /******************************************************************/
 /* r0 contains the address of the queue */
 /* r0 returns address of element or - 1 if error */
 dequeueNode:
-    push {r1-r5,lr}                       @ save  registers 
+    push {r1-r5,lr}                       @ save  registers
     ldr r4,[r0,#queue_begin]
     ldr r5,[r4,#queue_node_value]
     ldr r6,[r4,#queue_node_next]
@@ -1026,7 +1026,7 @@ dequeueNode:
     pop {r1-r5,lr}
     bx lr                             @ return
 /******************************************************************/
-/*     dequeue node                                  */ 
+/*     dequeue node                                  */
 /******************************************************************/
 /* r0 contains the address of the queue */
 /* r0 returns 0 if empty else 1  */
@@ -1036,13 +1036,13 @@ isEmptyQueue:
     movne r0,#1
     bx lr                             @ return
 /******************************************************************/
-/*     memory allocation on the heap                                  */ 
+/*     memory allocation on the heap                                  */
 /******************************************************************/
 /* r0 contains the size to allocate */
 /* r0 returns address of memory heap or - 1 if error */
 /* CAUTION : The size of the allowance must be a multiple of 4  */
 allocHeap:
-    push {r5-r7,lr}                   @ save  registers 
+    push {r5-r7,lr}                   @ save  registers
     @ allocation
     mov r6,r0                         @ save size
     mov r0,#0                         @ read address start heap
@@ -1057,21 +1057,21 @@ allocHeap:
     pop {r5-r7,lr}                    @ restaur registers
     bx lr                             @ return
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -1083,7 +1083,7 @@ conversion10S:
     push {r0-r4,lr}       @ save registers
     mov r2,r1             @ debut zone stockage
     mov r3,#'+'           @ par defaut le signe est +
-    cmp r0,#0             @ negative number ? 
+    cmp r0,#0             @ negative number ?
     movlt r3,#'-'         @ yes
     mvnlt r0,r0           @ number inversion
     addlt r0,#1
@@ -1094,9 +1094,9 @@ conversion10S:
     strb r1,[r2,r4]       @ store digit on area
     sub r4,r4,#1          @ previous position
     cmp r0,#0             @ stop if quotient = 0
-    bne 1b	
+    bne 1b
 
-    strb r3,[r2,r4]       @ store signe 
+    strb r3,[r2,r4]       @ store signe
     subs r4,r4,#1         @ previous position
     blt  100f             @ if r4 < 0 -> end
 
@@ -1105,9 +1105,9 @@ conversion10S:
     strb r1,[r2,r4]       @store byte space
     subs r4,r4,#1         @ previous position
     bge 2b                @ loop if r4 > 0
-100: 
+100:
     pop {r0-r4,lr}        @ restaur registers
-    bx lr  
+    bx lr
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
@@ -1120,12 +1120,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 
@@ -1288,9 +1288,9 @@ end (* end of [main0] *)
 {{out}}
 
 ```txt
-preorder:	1 2 4 7 5 3 6 8 9 
-inorder:	7 4 2 5 1 8 6 9 3 
-postorder:	7 4 5 2 8 9 6 3 1 
+preorder:	1 2 4 7 5 3 6 8 9
+inorder:	7 4 2 5 1 8 6 9 3
+postorder:	7 4 5 2 8 9 6 3 1
 level-order:	1 2 3 4 5 6 7 8 9
 ```
 
@@ -1370,8 +1370,8 @@ function preorder(tree, node, res,  child) {
     split(tree[node], child, ",")
     preorder(tree,child[1],res)
     preorder(tree,child[2],res)
-}       
-    
+}
+
 function inorder(tree, node, res,   child) {
     if (node == "")
         return
@@ -1379,8 +1379,8 @@ function inorder(tree, node, res,   child) {
     inorder(tree,child[1],res)
     res[res["count"]++] = node
     inorder(tree,child[2],res)
-}       
-    
+}
+
 function postorder(tree, node, res,     child) {
     if (node == "")
         return
@@ -1388,7 +1388,7 @@ function postorder(tree, node, res,     child) {
     postorder(tree,child[1], res)
     postorder(tree,child[2], res)
     res[res["count"]++] = node
-}   
+}
 
 function levelorder(tree, node, res,    nextnode, queue, child) {
     if (node == "")
@@ -1422,21 +1422,21 @@ BEGIN {
     tree["6"] = "8,9"
     tree["7"] = ","
     tree["8"] = ","
-    tree["9"] = "," 
-        
+    tree["9"] = ","
+
     preorder(tree,"1",result)
     printf "preorder:\t"
     for (n = 0; n < result["count"]; n += 1)
         printf result[n]" "
     printf "\n"
-    delete result 
-        
+    delete result
+
     inorder(tree,"1",result)
     printf "inorder:\t"
     for (n = 0; n < result["count"]; n += 1)
         printf result[n]" "
     printf "\n"
-    delete result 
+    delete result
 
     postorder(tree,"1",result)
     printf "postorder:\t"
@@ -1500,7 +1500,7 @@ BEGIN {
           )
   )
 & out$("level-order:" levelorder$(!tree.))
-& 
+&
 )
 ```
 
@@ -1509,8 +1509,8 @@ BEGIN {
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 
 typedef struct node_s
@@ -1862,7 +1862,7 @@ shared void run() {
 		shared Node? right;
 		string => label.string;
 	}
-	
+
 	void preorder(Node node) {
 		process.write(node.string + " ");
 		if(exists left = node.left) {
@@ -1872,7 +1872,7 @@ shared void run() {
 			preorder(right);
 		}
 	}
-	
+
 	void inorder(Node node) {
 		if(exists left = node.left) {
 			inorder(left);
@@ -1882,7 +1882,7 @@ shared void run() {
 			inorder(right);
 		}
 	}
-	
+
 	void postorder(Node node) {
 		if(exists left = node.left) {
 			postorder(left);
@@ -1892,7 +1892,7 @@ shared void run() {
 		}
 		process.write(node.string + " ");
 	}
-	
+
 	void levelOrder(Node node) {
 		value nodes = ArrayList<Node> {node};
 		while(exists current = nodes.accept()) {
@@ -1933,7 +1933,7 @@ shared void run() {
 			};
 		};
 	};
-	
+
 	process.write("preorder:   ");
 	preorder(tree);
 	print("");
@@ -2032,7 +2032,7 @@ binary_tree =
     binary_tree.postorder left, visit
     binary_tree.postorder right, visit
     visit node
-        
+
   levelorder: (tree, visit) ->
     q = []
     q.push tree
@@ -2059,7 +2059,7 @@ do ->
 
 output
 <lang>
-> coffee tree_traversal.coffee 
+> coffee tree_traversal.coffee
 preorder 1 2 4 7 5 3 6 8 9
 inorder 7 4 2 5 1 8 6 9 3
 postorder 7 4 5 2 8 9 6 3 1
@@ -2273,7 +2273,7 @@ puts
 
 ```
 
-Output: 
+Output:
 
 ```txt
 
@@ -2373,10 +2373,10 @@ void main() {
 {{out}}
 
 ```txt
-  preOrder: 1 2 4 7 5 3 6 8 9 
-   inorder: 7 4 2 5 1 8 6 9 3 
- postOrder: 7 4 5 2 8 9 6 3 1 
-levelorder: 1 2 3 4 5 6 7 8 9 
+  preOrder: 1 2 4 7 5 3 6 8 9
+   inorder: 7 4 2 5 1 8 6 9 3
+ postOrder: 7 4 5 2 8 9 6 3 1
+levelorder: 1 2 3 4 5 6 7 8 9
 ```
 
 
@@ -2588,7 +2588,7 @@ println()
 
 Void-Safety has been disabled for simplicity of the code.
 
-```eiffel 
+```eiffel
 note
 	description : "Application for tree traversal demonstration"
         output      : "[
@@ -2632,7 +2632,7 @@ feature {NONE} -- Initialization
 			Io.put_string ("postorder:  ")
 			tree.print_postorder
 			Io.put_new_line
-			
+
 			Io.put_string ("level-order:")
 			tree.print_levelorder
 			Io.put_new_line
@@ -2643,7 +2643,7 @@ end -- class APPLICATION
 ```
 
 
-```eiffel 
+```eiffel
 note
 	description    : "A simple node for a binary tree"
         libraries      : "Relies on LINKED_LIST from EiffelBase"
@@ -2782,45 +2782,45 @@ ELENA 4.1 :
 import extensions;
 import extensions'routines;
 import system'collections;
- 
+
 singleton DummyNode
 {
     get generic()
         = EmptyEnumerable;
-} 
- 
+}
+
 class Node
 {
     rprop int  Value;
     rprop Node Left;
     rprop Node Right;
- 
+
     constructor new(int value)
     {
         Value := value
     }
- 
+
     constructor new(int value, Node left)
     {
         Value := value;
         Left := left;
-    }    
- 
+    }
+
     constructor new(int value, Node left, Node right)
     {
         Value := value;
         Left := left;
         Right := right
     }
- 
+
     Preorder = new Enumerable::
     {
         Enumerator enumerator() = CompoundEnumerator.new(
-                                        SingleEnumerable.new(Value), 
-                                        (Left ?? DummyNode).Preorder, 
+                                        SingleEnumerable.new(Value),
+                                        (Left ?? DummyNode).Preorder,
                                         (Right ?? DummyNode).Preorder);
     };
- 
+
     Inorder = new Enumerable::
     {
         Enumerator enumerator()
@@ -2835,7 +2835,7 @@ class Node
             }
         }
     };
- 
+
     Postorder = new Enumerable::
     {
         Enumerator enumerator()
@@ -2854,21 +2854,21 @@ class Node
             }
         }
     };
- 
+
     LevelOrder = new Enumerable::
     {
         Queue<Node> queue := class Queue<Node>.allocate(4).push:self;
- 
+
         Enumerator enumerator() = new Enumerator::
         {
             bool next() = queue.isNotEmpty();
- 
+
             get()
             {
                 Node item := queue.pop();
                 Node left := item.Left;
                 Node right := item.Right;
- 
+
                 if (nil != left)
                 {
                     queue.push(left)
@@ -2877,24 +2877,24 @@ class Node
                 {
                     queue.push(right)
                 };
- 
+
                 ^ item.Value
             }
- 
+
             reset()
             {
                 NotSupportedException.raise()
             }
- 
+
             enumerable() = queue;
         };
     };
 }
- 
+
 public program()
 {
    var tree := Node.new(1, Node.new(2, Node.new(4, Node.new(7)), Node.new(5)), Node.new(3, Node.new(6, Node.new(8), Node.new(9))));
- 
+
    console.printLine("Preorder  :", tree.Preorder);
    console.printLine("Inorder   :", tree.Inorder);
    console.printLine("Postorder :", tree.Postorder);
@@ -2946,13 +2946,13 @@ begin
      Inorder (T) = ( Inorder (T.Lefttree), T, Inorder (T.Righttree));
 
      Postorder (=null(Tree)) = no(Tree);
-     Postorder (T) = ( Postorder (T.Lefttree), Postorder (T.Righttree), T);	
+     Postorder (T) = ( Postorder (T.Lefttree), Postorder (T.Righttree), T);
 
      Level_order(T) = [ Queue = {T};
 			 node = Tree:items(Queue);
 			   [ result(node);
-			     add(Queue, node.Lefttree) when valid(node.Lefttree); 	
- 			     add(Queue, node.Righttree) when valid(node.Righttree); 	
+			     add(Queue, node.Lefttree) when valid(node.Lefttree);
+ 			     add(Queue, node.Righttree) when valid(node.Righttree);
 			   ];
 			 no(Tree);
 		       ];
@@ -2964,12 +2964,12 @@ Tests
 
 ```Elisa
 
-use BinaryTreeTraversals (Tree, integer); 
+use BinaryTreeTraversals (Tree, integer);
 
-BT = Tree( 
+BT = Tree(
 	Tree(
-          Tree(Leaf(7), 4, null(Tree)), 2 , Leaf(5)), 1, 
-            Tree( 
+          Tree(Leaf(7), 4, null(Tree)), 2 , Leaf(5)), 1,
+            Tree(
               Tree(Leaf(8), 6, Leaf(9)), 3 ,null(Tree)));
 
 {Item(Preorder(BT))}?
@@ -2997,28 +2997,28 @@ defmodule Tree_Traversal do
   defp tnode, do: {}
   defp tnode(v), do: {:node, v, {}, {}}
   defp tnode(v,l,r), do: {:node, v, l, r}
-  
+
   defp preorder(_,{}), do: :ok
   defp preorder(f,{:node,v,l,r}) do
     f.(v)
     preorder(f,l)
     preorder(f,r)
   end
-  
+
   defp inorder(_,{}), do: :ok
   defp inorder(f,{:node,v,l,r}) do
     inorder(f,l)
     f.(v)
     inorder(f,r)
   end
-  
+
   defp postorder(_,{}), do: :ok
   defp postorder(f,{:node,v,l,r}) do
     postorder(f,l)
     postorder(f,r)
     f.(v)
   end
-  
+
   defp levelorder(_, []), do: []
   defp levelorder(f, [{}|t]), do: levelorder(f, t)
   defp levelorder(f, [{:node,v,l,r}|t]) do
@@ -3026,7 +3026,7 @@ defmodule Tree_Traversal do
     levelorder(f, t++[l,r])
   end
   defp levelorder(f, x), do: levelorder(f, [x])
-  
+
   def main do
     tree = tnode(1,
                  tnode(2,
@@ -3081,13 +3081,13 @@ tnode(V) -> {node, V, {}, {}}.
 tnode(V,L,R) -> {node, V, L, R}.
 
 preorder(_,{}) -> ok;
-preorder(F,{node,V,L,R}) -> 
+preorder(F,{node,V,L,R}) ->
     F(V), preorder(F,L), preorder(F,R).
 
 inorder(_,{}) -> ok;
 inorder(F,{node,V,L,R}) ->
     inorder(F,L), F(V), inorder(F,R).
-    
+
 postorder(_,{}) -> ok;
 postorder(F,{node,V,L,R}) ->
     postorder(F,L), postorder(F,R), F(V).
@@ -3117,10 +3117,10 @@ main() ->
 Output:
 
 ```txt
-1 2 4 7 5 3 6 8 9 
-7 4 2 5 1 8 6 9 3 
-7 4 5 2 8 9 6 3 1 
-1 2 3 4 5 6 7 8 9 
+1 2 4 7 5 3 6 8 9
+7 4 2 5 1 8 6 9 3
+7 4 5 2 8 9 6 3 1
+1 2 3 4 5 6 7 8 9
 
 ```
 
@@ -3224,7 +3224,7 @@ let rec inorder tree =
                yield x
                yield! inorder right
           | Empty -> ()
-    }   
+    }
 
 let rec preorder tree =
     seq {
@@ -3234,7 +3234,7 @@ let rec preorder tree =
                yield! preorder left
                yield! preorder right
           | Empty -> ()
-    }   
+    }
 
 let rec postorder tree =
     seq {
@@ -3244,7 +3244,7 @@ let rec postorder tree =
                yield! postorder right
                yield x
           | Empty -> ()
-    }   
+    }
 
 let levelorder tree =
     let rec loop queue =
@@ -3252,7 +3252,7 @@ let levelorder tree =
             match queue with
             | [] -> ()
             | (Empty::tail) -> yield! loop tail
-            | (Tree(x, l, r)::tail) -> 
+            | (Tree(x, l, r)::tail) ->
                 yield x
                 yield! loop (tail @ [l; r])
         }
@@ -3340,7 +3340,7 @@ CONSTANT: example-tree
             [ [ data>> ] dip call drop ]
             [ drop left>> [ swap push-back ] [ drop ] if* ]
             [ drop right>> [ swap push-back ] [ drop ] if* ]
-            [ nip (levelorder) ] 
+            [ nip (levelorder) ]
         } 3cleave
     ] if ; inline recursive
 
@@ -3391,14 +3391,14 @@ class Tree
     func(label)
     left?.preorder(func) // ?. will not call method if 'left' is null
     right?.preorder(func)
-  }  
-  
+  }
+
   Void postorder(|Int->Void| func)
   {
     left?.postorder(func)
     right?.postorder(func)
     func(label)
-  }  
+  }
 
   Void inorder(|Int->Void| func)
   {
@@ -3406,7 +3406,7 @@ class Tree
     func(label)
     right?.inorder(func)
   }
- 
+
   Void levelorder(|Int->Void| func)
   {
     Tree[] nodes := [this]
@@ -3534,7 +3534,7 @@ In other words, there has never been any problem with recursive invocations in F
 
 Otherwise, one can always write detailed code that gives effect to recursive usage, typically involving a variable called SP and an array called STACK. Oddly, such proceedings for the QuickSort algorithm are often declared to be "iterative", presumably because the absence of formally-declared recursive phrases blocks recognition of recursive action.
 
-In the example source, the mainline, GORILLA, does its recursion via array twiddling and in that spirit, uses multiple lists for the "level" style traversal so that one tree clamber only need be made, whereas the recursive equivalent cheats by commanding one clamber for each level. The recursive routines store their state in part via the position within their code - that is, before, between, or after the recursive invocations, and are much easier to compare. Rather than litter the source with separate routines and their declarations for each of the four styles required, routine TARZAN has the four versions together for easy comparison, distinguished by a CASE statement. Actually, the code could be even more compact as in 
+In the example source, the mainline, GORILLA, does its recursion via array twiddling and in that spirit, uses multiple lists for the "level" style traversal so that one tree clamber only need be made, whereas the recursive equivalent cheats by commanding one clamber for each level. The recursive routines store their state in part via the position within their code - that is, before, between, or after the recursive invocations, and are much easier to compare. Rather than litter the source with separate routines and their declarations for each of the four styles required, routine TARZAN has the four versions together for easy comparison, distinguished by a CASE statement. Actually, the code could be even more compact as in
 ```Fortran
 
       IF (STYLE.EQ."PRE")  CALL OUT(HAS)
@@ -3548,9 +3548,9 @@ But that would cloud the simplicity of each separate version, and would be extra
 
 The tree is represented via arrays NODE, LINKL and LINKR, initialised to the set example via some DATA statements rather than being built via a sequence of calls to something like ADDNODE. Old-style Fortran would require separate arrays, though one could mess about with two-dimensional arrays if the type of NODE was compatible. F90 and later enable the definition of compound data types, so that one might speak of NODE(i).CONTENT, NODE(i).LINKLEFT, and NODE(i).LINKRIGHT, or similar. While this offers clear benefits in organisation and documentation there can be surprises, as when a binary search routine was invoked on something like NODE(1:n).KEY and the programme ran a ''lot'' slower than the multi-array version! This was because rather than present the routine with an array having a "stride" other than one, the KEY values were copied from the data aggregate to a work area so that they ''were'' contiguous for the binary search routine, thereby vitiating its speed advantage over a linear search.
 
-Except for the usage of array MIST having an element zero and the use of an array assignment MIST(:,0) = 0, the GORILLA code is old-style Fortran. One could play tricks with EQUIVALENCE statements to arrange that an array's first element was at index zero, but that would rely on the absence of array bound checking and is more difficult with multi-dimensional arrays. Instead, one would make do either by having a separate list length variable, or else remembering the offsets... The MODULE usage requires F90 or later and provides a convenient protocol for global data, otherwise one must mess about with COMMON or parameter hordes. If that were done, the B6700 compiler would have handled it. But for the benefit of trembling modern compilers it also contains the fearsome new attribute, RECURSIVE, to flog the compilers into what was formalised for Algol in 1960 and was available ''for free'' via Burroughs in the 1970s. 
+Except for the usage of array MIST having an element zero and the use of an array assignment MIST(:,0) = 0, the GORILLA code is old-style Fortran. One could play tricks with EQUIVALENCE statements to arrange that an array's first element was at index zero, but that would rely on the absence of array bound checking and is more difficult with multi-dimensional arrays. Instead, one would make do either by having a separate list length variable, or else remembering the offsets... The MODULE usage requires F90 or later and provides a convenient protocol for global data, otherwise one must mess about with COMMON or parameter hordes. If that were done, the B6700 compiler would have handled it. But for the benefit of trembling modern compilers it also contains the fearsome new attribute, RECURSIVE, to flog the compilers into what was formalised for Algol in 1960 and was available ''for free'' via Burroughs in the 1970s.
 
-On the other hand, the early-style Fortran DO-loop would always execute once, because the test was made only at the end of an iteration, and here, routine JANE does not know the value of MAXLEVEL until ''after'' the first iteration. Code such as 
+On the other hand, the early-style Fortran DO-loop would always execute once, because the test was made only at the end of an iteration, and here, routine JANE does not know the value of MAXLEVEL until ''after'' the first iteration. Code such as
 ```Fortran
 
       DO GASP = 1,MAXLEVEL
@@ -3989,7 +3989,7 @@ This is like many examples on this page.
 package main
 
 import "fmt"
-    
+
 type node struct {
     value       int
     left, right *node
@@ -4058,12 +4058,12 @@ func main() {
     fmt.Print("preorder:    ")
     tree.iterPreorder(visitor)
     fmt.Println()
-    fmt.Print("inorder:     ") 
+    fmt.Print("inorder:     ")
     tree.iterInorder(visitor)
     fmt.Println()
     fmt.Print("postorder:   ")
     tree.iterPostorder(visitor)
-    fmt.Println() 
+    fmt.Println()
     fmt.Print("level-order: ")
     tree.iterLevelorder(visitor)
     fmt.Println()
@@ -4277,11 +4277,11 @@ Run tests:
 def test = { tree ->
     println "preorder:    ${preorder(tree).collect{it.name()}}"
     println "preorder:    ${tree.depthFirst().collect{it.name()}}"
-    
+
     println "postorder:   ${postorder(tree).collect{it.name()}}"
-    
+
     println "inorder:     ${inorder(tree).collect{it.name()}}"
-    
+
     println "level-order: ${levelorder(tree).collect{it.name()}}"
     println "level-order: ${tree.breadthFirst().collect{it.name()}}"
 
@@ -4540,7 +4540,7 @@ post-order is not that much different from pre-order, except that the children m
 ```
 
 
-Implementing in-order is more complex because we must sometimes test whether we have any leaves, instead of relying on J's implicit looping over lists 
+Implementing in-order is more complex because we must sometimes test whether we have any leaves, instead of relying on J's implicit looping over lists
 
 
 ```J
@@ -4570,7 +4570,7 @@ For J novices, here's the tree instance with a few redundant parenthesis:
 Syntactically, N2 is a binary node expressed as <code>m N2 n y</code>.  N1 is a node with a single child, expressed as <code>m N2 y</code>.  L is a leaf node, expressed as <code>m L</code>.  In all three cases, the parent value (<code>m</code>) for the node appears on the left, and the child tree(s) appear on the right.  (And <code>n</code> must be parenthesized if it is not a single word.)
 
 
-###  J: Alternate implementation 
+###  J: Alternate implementation
 
 
 Of course, there are other ways of representing tree structures in J. One fairly natural approach pairs a list of data with a matching list of parent indices. For example:
@@ -4603,7 +4603,7 @@ childinds=: [: <:@(2&{.@-.&> #\) (</. #\)`(]~.)`(a:"0)}~
 ```
 
 
-Here, <code>data</code>  extracts the list of data items from the tree and <code>parent</code> extracts the structure from the tree. 
+Here, <code>data</code>  extracts the list of data items from the tree and <code>parent</code> extracts the structure from the tree.
 
 <code>depth</code> examines the parent structure and returns the distance of each node from the root.
 
@@ -4721,7 +4721,7 @@ public class TreeTraversal {
 	static enum ORDER {
 		PREORDER, INORDER, POSTORDER, LEVEL
 	}
-        
+
         static <T> void traverse(Node<T> node, ORDER order) {
 		if (node == null) {
 			return;
@@ -4754,7 +4754,7 @@ public class TreeTraversal {
 					queue.add(next.right);
 			}
 		}
-	}	
+	}
 
 	public static void main(String[] args) {
 
@@ -4767,7 +4767,7 @@ public class TreeTraversal {
 		Node<Integer> seven = new Node<Integer>(7);
 		Node<Integer> eight = new Node<Integer>(8);
 		Node<Integer> nine = new Node<Integer>(9);
-		
+
 		one.left = two;
 		one.right = three;
 		two.left = four;
@@ -4778,13 +4778,13 @@ public class TreeTraversal {
 		six.right = nine;
 
 		traverse(one, ORDER.PREORDER);
-		System.out.println(); 
+		System.out.println();
 		traverse(one, ORDER.INORDER);
 		System.out.println();
 		traverse(one, ORDER.POSTORDER);
 		System.out.println();
 		traverse(one, ORDER.LEVEL);
-		
+
 	}
 }
 ```
@@ -4792,10 +4792,10 @@ public class TreeTraversal {
 Output:
 
 ```txt
-1 2 4 7 5 3 6 8 9 
-7 4 2 5 1 8 6 9 3 
-7 4 5 2 8 9 6 3 1 
-1 2 3 4 5 6 7 8 9 
+1 2 4 7 5 3 6 8 9
+7 4 2 5 1 8 6 9 3
+7 4 5 2 8 9 6 3 1
+1 2 3 4 5 6 7 8 9
 ```
 
 
@@ -4820,7 +4820,7 @@ BinaryTree.prototype.preorder  = function(f) {this.walk(f,['this','left','right'
 BinaryTree.prototype.inorder   = function(f) {this.walk(f,['left','this','right'])}
 BinaryTree.prototype.postorder = function(f) {this.walk(f,['left','right','this'])}
 BinaryTree.prototype.walk = function(func, order) {
-    for (var i in order) 
+    for (var i in order)
         switch (order[i]) {
             case "this": func(this.value); break;
             case "left": if (this.left) this.left.walk(func, order); break;
@@ -4847,8 +4847,8 @@ function createBinaryTreeFromArray(ary) {
 
 var tree = createBinaryTreeFromArray([1, [2, [4, [7]], [5]], [3, [6, [8],[9]]]]);
 
-print("*** preorder ***");   tree.preorder(print); 
-print("*** inorder ***");    tree.inorder(print); 
+print("*** preorder ***");   tree.preorder(print);
+print("*** inorder ***");    tree.inorder(print);
 print("*** postorder ***");  tree.postorder(print);
 print("*** levelorder ***"); tree.levelorder(print);
 ```
@@ -4956,7 +4956,7 @@ print("*** levelorder ***"); tree.levelorder(print);
 
 Output:
 
-{| class="wikitable" 
+{| class="wikitable"
 |-
 ! Traversal !! Nodes visited
 |-
@@ -5113,9 +5113,9 @@ or, again functionally, but:
 {{Out}}
 
 ```JavaScript
-{"preorder":[1, 2, 4, 7, 5, 3, 6, 8, 9], 
-"inorder":[7, 4, 2, 5, 1, 8, 6, 9, 3], 
-"postorder":[7, 4, 5, 2, 8, 9, 6, 3, 1], 
+{"preorder":[1, 2, 4, 7, 5, 3, 6, 8, 9],
+"inorder":[7, 4, 2, 5, 1, 8, 6, 9, 3],
+"postorder":[7, 4, 5, 2, 8, 9, 6, 3, 1],
 "level-order":[1, 2, 3, 4, 5, 6, 7, 8, 9]}
 ```
 
@@ -5259,12 +5259,12 @@ def preorder:
   if length == 0 then empty
   else .[0], (.[1]|preorder), (.[2]|preorder)
   end;
- 
+
 def inorder:
   if length == 0 then empty
   else (.[1]|inorder), .[0] , (.[2]|inorder)
   end;
- 
+
 def postorder:
   if length == 0 then empty
   else (.[1] | postorder), (.[2]|postorder), .[0]
@@ -5292,7 +5292,7 @@ def task:
   def atree: [1, [2, [4, [7,[],[]],
                          []],
                      [5, [],[]]],
-    
+
                  [3, [6, [8,[],[]],
                          [9,[],[]]],
                      []]] ;
@@ -5337,7 +5337,7 @@ inorder(t, f) = if !isempty(t)
                     inorder(t[2], f); f(t[1]); inorder(t[3], f)
                 end
 
-postorder(t, f) = if !isempty(t) 
+postorder(t, f) = if !isempty(t)
                       postorder(t[2], f); postorder(t[3], f); f(t[1])
                   end
 
@@ -5355,9 +5355,9 @@ levelorder(t, f) = while !isempty(t)
 julia> for f in [preorder, inorder, postorder, levelorder]
            print((lpad("$f: ", 12))); f(tree, x -> print(x, " ")); println()
        end
-  preorder: 1 2 4 7 5 3 6 8 9 
-   inorder: 7 4 2 5 1 8 6 9 3 
- postorder: 7 4 5 2 8 9 6 3 1 
+  preorder: 1 2 4 7 5 3 6 8 9
+   inorder: 7 4 2 5 1 8 6 9 3
+ postorder: 7 4 5 2 8 9 6 3 1
 levelorder: 1 2 3 4 5 6 7 8 9
 
 ```
@@ -5445,10 +5445,10 @@ fun main(args: Array<String>) {
 
 ```txt
 
-   preOrder: 1 2 4 7 5 3 6 8 9 
-    inorder: 7 4 2 5 1 8 6 9 3 
-  postOrder: 7 4 5 2 8 9 6 3 1 
-level-order: 1 2 3 4 5 6 7 8 9 
+   preOrder: 1 2 4 7 5 3 6 8 9
+    inorder: 7 4 2 5 1 8 6 9 3
+  postOrder: 7 4 5 2 8 9 6 3 1
+level-order: 1 2 3 4 5 6 7 8 9
 
 ```
 
@@ -5734,25 +5734,25 @@ level.order :tree [(type ? "| |)]  (print)
             )
         )
     ).
- 
+
     pre_order(t).
     pre_order(t(Value, Left, Right)) :-
         write(Value), write(' '),
         pre_order(Left),
         pre_order(Right).
- 
+
     in_order(t).
     in_order(t(Value, Left, Right)) :-
         in_order(Left),
         write(Value), write(' '),
         in_order(Right).
- 
+
     post_order(t).
     post_order(t(Value, Left, Right)) :-
         post_order(Left),
         post_order(Right),
         write(Value), write(' ').
- 
+
     level_order(t).
     level_order(t(Value, Left, Right)) :-
         % write tree root value
@@ -5772,7 +5772,7 @@ level.order :tree [(type ? "| |)]  (print)
             write(Value), write(' '),
             % collect the subtrees to print the next level
             append(Rest0, [Left, Right| Tail]-Tail, Rest1),
-            % continue printing the current level 
+            % continue printing the current level
             level_order(Trees, Rest1)
         ;   % continue printing the current level
             level_order(Trees, Rest0)
@@ -5790,10 +5790,10 @@ Sample output:
 ```text
 
 | ?- ?- tree_traversal::orders.
-Pre-order:   1 2 4 7 5 3 6 8 9 
-In-order:    7 4 2 5 1 8 6 9 3 
-Post-order:  7 4 5 2 8 9 6 3 1 
-Level-order: 1 2 3 4 5 6 7 8 9 
+Pre-order:   1 2 4 7 5 3 6 8 9
+In-order:    7 4 2 5 1 8 6 9 3
+Post-order:  7 4 5 2 8 9 6 3 1
+Level-order: 1 2 3 4 5 6 7 8 9
 yes
 
 ```
@@ -5865,19 +5865,19 @@ A tuple is an "auto array" in M2000 Interpreter. (,) is the zero length array.
 Module CheckIt {
       Null=(,)
       Tree=((((Null,7,Null),4,Null),2,(Null,5,Null)),1,(((Null,8,Null),6,(Null,9,Null)),3,Null))
-      
+
       Module preorder (T) {
             Print "preorder:    ";
             printtree(T)
             Print
             sub printtree(T)
-                  Print T#val(1);" ";      
+                  Print T#val(1);" ";
                   If len(T#val(0))>0 then printtree(T#val(0))
                   If len(T#val(2))>0 then printtree(T#val(2))
             end sub
       }
       preorder Tree
-      
+
       Module inorder (T) {
             Print "inorder:     ";
             printtree(T)
@@ -5889,7 +5889,7 @@ Module CheckIt {
             end sub
       }
       inorder Tree
-      
+
       Module postorder (T) {
             Print "postorder:   ";
             printtree(T)
@@ -5901,7 +5901,7 @@ Module CheckIt {
             end sub
       }
       postorder Tree
-      
+
       Module level_order (T) {
             Print "level-order: ";
             Stack New {
@@ -5958,9 +5958,9 @@ Module OOP {
             \\ ![] pass currrent stack to Node()
             ->Node(![])
       }
-      
+
       Tree=NodeTree(1, NodeTree(2,NodeTree(4, NodeTree(7)), NodeTree(5)), NodeTree(3, NodeTree(6, NodeTree(8), NodeTree(9))))
-      
+
       Module preorder (T) {
             Print "preorder:    ";
             printtree(T)
@@ -5992,7 +5992,7 @@ Module OOP {
             sub printtree(T as pointer)
                   If T is Null then Exit sub
                   printtree(T=>LeftNode)
-                  printtree(T=>RightNode)            
+                  printtree(T=>RightNode)
                   Print T=>x;" ";
             end sub
       }
@@ -6061,7 +6061,7 @@ Module OOP {
                   sub printtree(T as pointer)
                         If T is Null then Exit sub
                         printtree(T=>LeftNode)
-                        printtree(T=>RightNode)            
+                        printtree(T=>RightNode)
                         call visitor(T=>x)
                   end sub
             }
@@ -6096,9 +6096,9 @@ Module OOP {
             \\ ![] pass currrent stack to Node()
             ->Node(![])
       }
- 
+
       Tree=NodeTree(1, NodeTree(2,NodeTree(4, NodeTree(7)), NodeTree(5)), NodeTree(3, NodeTree(6, NodeTree(8), NodeTree(9))))
- 
+
       printnum=lambda (title$) -> {
             Print
             Print title$;
@@ -6156,7 +6156,7 @@ Module OOP {
                   sub printtree(T as pointer)
                         If T is Null then Exit sub
                         printtree(T=>LeftNode)
-                        printtree(T=>RightNode)            
+                        printtree(T=>RightNode)
                         call event visitor, T=>x
                   end sub
             }
@@ -6191,13 +6191,13 @@ Module OOP {
             \\ ![] pass currrent stack to Node()
             ->Node(![])
       }
- 
+
       Tree=NodeTree(1, NodeTree(2,NodeTree(4, NodeTree(7)), NodeTree(5)), NodeTree(3, NodeTree(6, NodeTree(8), NodeTree(9))))
       Event PrintAnum {
             read x
       }
       Function PrintThis(x) {
-                Print x;" ";      
+                Print x;" ";
       }
       Event PrintAnum New PrintThis()
       printnum=lambda PrintAnum (title$) -> {
@@ -6230,14 +6230,14 @@ level-order: 1 2 3 4 5 6 7 8 9
 
 
 ```mathematica
-preorder[a_Integer] := a; 
-preorder[a_[b__]] := Flatten@{a, preorder /@ {b}}; 
-inorder[a_Integer] := a; 
-inorder[a_[b_, c_]] := Flatten@{inorder@b, a, inorder@c}; 
-inorder[a_[b_]] := Flatten@{inorder@b, a}; postorder[a_Integer] := a; 
-postorder[a_[b__]] := Flatten@{postorder /@ {b}, a}; 
-levelorder[a_] := 
- Flatten[Table[Level[a, {n}], {n, 0, Depth@a}]] /. {b_Integer[__] :> 
+preorder[a_Integer] := a;
+preorder[a_[b__]] := Flatten@{a, preorder /@ {b}};
+inorder[a_Integer] := a;
+inorder[a_[b_, c_]] := Flatten@{inorder@b, a, inorder@c};
+inorder[a_[b_]] := Flatten@{inorder@b, a}; postorder[a_Integer] := a;
+postorder[a_[b__]] := Flatten@{postorder /@ {b}, a};
+levelorder[a_] :=
+ Flatten[Table[Level[a, {n}], {n, 0, Depth@a}]] /. {b_Integer[__] :>
     b};
 ```
 
@@ -6368,10 +6368,10 @@ print_value(V, !IO) :-
 Output:
 
 ```txt
-preorder:   1 2 4 7 5 3 6 8 9 
-inorder:    7 4 2 5 1 8 6 9 3 
-postorder:  7 4 5 2 8 9 6 3 1 
-levelorder: 1 2 3 4 5 6 7 8 9 
+preorder:   1 2 4 7 5 3 6 8 9
+inorder:    7 4 2 5 1 8 6 9 3
+postorder:  7 4 5 2 8 9 6 3 1
+levelorder: 1 2 3 4 5 6 7 8 9
 ```
 
 
@@ -6463,8 +6463,8 @@ class Test {
     two->SetLeft(four); two->SetRight(five);
     three->SetLeft(six); four->SetLeft(seven);
     six->SetLeft(eight); six->SetRight(nine);
-    
-    "Preorder: "->Print(); Preorder(one); 
+
+    "Preorder: "->Print(); Preorder(one);
     "\nInorder: "->Print(); Inorder(one);
     "\nPostorder: "->Print(); Postorder(one);
     "\nLevelorder: "->Print(); Levelorder(one);
@@ -6474,47 +6474,47 @@ class Test {
   function : Preorder(node : Node) ~ Nil {
     if(node <> Nil) {
       System.IO.Console->Print(node->GetData())->Print(", ");
-      Preorder(node->GetLeft());    
-      Preorder(node->GetRight());    
-    };
-  }  
-  
-  function : Inorder(node : Node) ~ Nil {
-    if(node <> Nil) {
-      Inorder(node->GetLeft());  
-      System.IO.Console->Print(node->GetData())->Print(", ");
-      Inorder(node->GetRight());    
+      Preorder(node->GetLeft());
+      Preorder(node->GetRight());
     };
   }
-  
+
+  function : Inorder(node : Node) ~ Nil {
+    if(node <> Nil) {
+      Inorder(node->GetLeft());
+      System.IO.Console->Print(node->GetData())->Print(", ");
+      Inorder(node->GetRight());
+    };
+  }
+
   function : Postorder(node : Node) ~ Nil {
     if(node <> Nil) {
-      Postorder(node->GetLeft());    
+      Postorder(node->GetLeft());
       Postorder(node->GetRight());
       System.IO.Console->Print(node->GetData())->Print(", ");
     };
   }
-  
+
   function : Levelorder(node : Node) ~ Nil {
     nodequeue := Collection.Queue->New();
     if(node <> Nil) {
       nodequeue->Add(node);
     };
-    
+
     while(nodequeue->IsEmpty() = false) {
       next := nodequeue->Remove()->As(Node);
       System.IO.Console->Print(next->GetData())->Print(", ");
       if(next->GetLeft() <> Nil) {
         nodequeue->Add(next->GetLeft());
       };
-      
+
       if(next->GetRight() <> Nil) {
         nodequeue->Add(next->GetRight());
       };
     };
   }
 }
-  
+
 class Node from BasicCompare {
   @left : Node;
   @right : Node;
@@ -6523,7 +6523,7 @@ class Node from BasicCompare {
   New(data : Int) {
     Parent();
     @data := data;
-  }  
+  }
 
   method : public : GetData() ~ Int {
     return @data;
@@ -6553,7 +6553,7 @@ class Node from BasicCompare {
     else if(@data < right->GetData()) {
       return -1;
     };
-      
+
     return 1;
   }
 }
@@ -6565,10 +6565,10 @@ Output:
 
 ```txt
 
-Preorder: 1, 2, 4, 7, 5, 3, 6, 8, 9, 
-Inorder: 7, 4, 2, 5, 1, 8, 6, 9, 3, 
-Postorder: 7, 4, 5, 2, 8, 9, 6, 3, 1, 
-Levelorder: 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+Preorder: 1, 2, 4, 7, 5, 3, 6, 8, 9,
+Inorder: 7, 4, 2, 5, 1, 8, 6, 9, 3,
+Postorder: 7, 4, 5, 2, 8, 9, 6, 3, 1,
+Levelorder: 1, 2, 3, 4, 5, 6, 7, 8, 9,
 
 ```
 
@@ -6633,10 +6633,10 @@ let () =
 Output:
 
 ```txt
-1 2 4 7 5 3 6 8 9 
-7 4 2 5 1 8 6 9 3 
-2 4 7 5 3 6 8 9 1 
-1 2 3 4 5 6 7 8 9 
+1 2 4 7 5 3 6 8 9
+7 4 2 5 1 8 6 9 3
+2 4 7 5 3 6 8 9 1
+1 2 3 4 5 6 7 8 9
 ```
 
 
@@ -6653,7 +6653,7 @@ Tree method: v   @v ;
 Tree method: l   @l ;
 Tree method: r   @r ;
 
-Tree method: preOrder(f) 
+Tree method: preOrder(f)
    @v f perform
    @l ifNotNull: [ @l preOrder(f) ]
    @r ifNotNull: [ @r preOrder(f) ] ;
@@ -6663,7 +6663,7 @@ Tree method: inOrder(f)
    @v f perform
    @r ifNotNull: [ @r inOrder(f) ] ;
 
-Tree method: postOrder(f) 
+Tree method: postOrder(f)
    @l ifNotNull: [ @l postOrder(f) ]
    @r ifNotNull: [ @r postOrder(f) ]
    @v f perform ;
@@ -6979,8 +6979,8 @@ my TreeNode $root .= new( value => 1,
                             left => TreeNode.new( value => 4, left => TreeNode.new(value => 7)),
                             right => TreeNode.new( value => 5)
                     ),
-                    right => TreeNode.new( value => 3, 
-                             left => TreeNode.new( value => 6, 
+                    right => TreeNode.new( value => 3,
+                             left => TreeNode.new( value => 6,
                                      left => TreeNode.new(value => 8),
                                      right => TreeNode.new(value => 9)
                                      )
@@ -7014,10 +7014,10 @@ constant VALUE = 1, LEFT = 2, RIGHT = 3
 
 constant tree = {1, {2, {4, {7, 0, 0}, 0},
                         {5, 0, 0}},
-                    {3, {6, {8, 0, 0}, 
+                    {3, {6, {8, 0, 0},
                             {9, 0, 0}},
                         0}}
- 
+
 procedure preorder(object tree)
     if sequence(tree) then
         printf(1,"%d ",{tree[VALUE]})
@@ -7025,7 +7025,7 @@ procedure preorder(object tree)
         preorder(tree[RIGHT])
     end if
 end procedure
- 
+
 procedure inorder(object tree)
     if sequence(tree) then
         inorder(tree[LEFT])
@@ -7033,7 +7033,7 @@ procedure inorder(object tree)
         inorder(tree[RIGHT])
     end if
 end procedure
- 
+
 procedure postorder(object tree)
     if sequence(tree) then
         postorder(tree[LEFT])
@@ -7041,7 +7041,7 @@ procedure postorder(object tree)
         printf(1,"%d ",{tree[VALUE]})
     end if
 end procedure
- 
+
 procedure level_order(object tree, sequence more = {})
     if sequence(tree) then
         more &= {tree[LEFT],tree[RIGHT]}
@@ -7051,7 +7051,7 @@ procedure level_order(object tree, sequence more = {})
         level_order(more[1],more[2..$])
     end if
 end procedure
- 
+
 puts(1,"\n preorder:    ")  preorder(tree)
 puts(1,"\n inorder:     ")  inorder(tree)
 puts(1,"\n postorder:   ")  postorder(tree)
@@ -7182,10 +7182,10 @@ $tree->levelOrder($arr[1]);
 Output:
 
 ```txt
-preorder:    1 2 4 7 5 3 6 8 9 
-inorder:     7 4 2 5 1 8 6 9 3 
-postorder:   7 4 5 2 8 9 6 3 1 
-level-order: 1 2 3 4 5 6 7 8 9 
+preorder:    1 2 4 7 5 3 6 8 9
+inorder:     7 4 2 5 1 8 6 9 3
+postorder:   7 4 5 2 8 9 6 3 1
+level-order: 1 2 3 4 5 6 7 8 9
 ```
 
 
@@ -7233,10 +7233,10 @@ level-order: 1 2 3 4 5 6 7 8 9
 Output:
 
 ```txt
-preorder:    1 2 4 7 5 3 6 8 9 
-inorder:     7 4 2 5 1 8 6 9 3 
-postorder:   7 4 5 2 8 9 6 3 1 
-level-order: 1 2 3 4 5 6 7 8 9 
+preorder:    1 2 4 7 5 3 6 8 9
+inorder:     7 4 2 5 1 8 6 9 3
+postorder:   7 4 5 2 8 9 6 3 1
+level-order: 1 2 3 4 5 6 7 8 9
 ```
 
 
@@ -7251,14 +7251,14 @@ tree :-
 	        [2,
 		   [4,
 		     [7, nil, nil],
-		     nil], 
+		     nil],
 		   [5, nil, nil]],
 	        [3,
 		 [6,
-		   [8, nil, nil], 
-		   [9,nil, nil]], 
+		   [8, nil, nil],
+		   [9,nil, nil]],
 		 nil]],
-	
+
 	write('preorder    : '), preorder(Tree), nl,
 	write('inorder     : '), inorder(Tree), nl,
 	write('postorder   : '), postorder(Tree), nl,
@@ -7309,10 +7309,10 @@ Output :
 
 ```txt
 ?- tree.
-preorder    : 1 2 4 7 5 3 6 8 9 
-inorder     : 7 4 2 5 1 8 6 9 3 
-postorder   : 7 4 5 2 8 9 6 3 1 
-level-order : 1 2 3 4 5 6 7 8 9 
+preorder    : 1 2 4 7 5 3 6 8 9
+inorder     : 7 4 2 5 1 8 6 9 3
+postorder   : 7 4 5 2 8 9 6 3 1
+level-order : 1 2 3 4 5 6 7 8 9
 true .
 
 ```
@@ -7342,7 +7342,7 @@ EndDataSection
 ;Convenient routine to interpret string data to construct a tree of integers.
 Procedure createTree(*n.node, *tPtr.Character)
   Protected num.s, *l.node, *ntPtr.Character
-  
+
   Repeat
     Select *tPtr\c
       Case '0' To '9'
@@ -7350,7 +7350,7 @@ Procedure createTree(*n.node, *tPtr.Character)
       Case '('
         *n\value = Val(num): num = ""
         *ntPtr = *tPtr + 1
-        If *ntPtr\c = ',' 
+        If *ntPtr\c = ','
           ProcedureReturn *tPtr
         Else
           *l = AllocateMemory(SizeOf(node))
@@ -7360,11 +7360,11 @@ Procedure createTree(*n.node, *tPtr.Character)
         If num: *n\value = Val(num): EndIf
         ProcedureReturn *tPtr
     EndSelect
-    
+
     If *tPtr\c = ','
-      *l = AllocateMemory(SizeOf(node)): 
+      *l = AllocateMemory(SizeOf(node)):
       *n\right = *l: *tPtr = createTree(*l, *tPtr + 1)
-    EndIf 
+    EndIf
     *tPtr + 1
   ForEver
 EndProcedure
@@ -7380,7 +7380,7 @@ Procedure dequeue(List q.i())
   If FirstElement(q())
     element = q()
     DeleteElement(q())
-  EndIf 
+  EndIf
   ProcedureReturn element
 EndProcedure
 
@@ -7392,36 +7392,36 @@ Procedure preorder(*n.node) ;recursive
   onVisit(*n)
   If *n\left
     preorder(*n\left)
-  EndIf 
+  EndIf
   If *n\right
     preorder(*n\right)
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure inorder(*n.node) ;recursive
   If *n\left
     inorder(*n\left)
-  EndIf 
+  EndIf
   onVisit(*n)
   If *n\right
     inorder(*n\right)
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure postorder(*n.node) ;recursive
   If *n\left
     postorder(*n\left)
-  EndIf 
+  EndIf
   If *n\right
     postorder(*n\right)
-  EndIf 
+  EndIf
   onVisit(*n)
 EndProcedure
 
 Procedure levelorder(*n.node)
   Dim q.queue(1)
   Protected readQueue = 1, writeQueue, *currNode.node
-  
+
   enqueue(q(writeQueue)\q(),*n) ;start queue off with root
   Repeat
     readQueue ! 1: writeQueue ! 1
@@ -7429,10 +7429,10 @@ Procedure levelorder(*n.node)
       *currNode = dequeue(q(readQueue)\q())
       If *currNode\left
         enqueue(q(writeQueue)\q(),*currNode\left)
-      EndIf 
+      EndIf
       If *currNode\right
         enqueue(q(writeQueue)\q(),*currNode\right)
-      EndIf 
+      EndIf
       onVisit(*currNode)
     Wend
   Until ListSize(q(writeQueue)\q()) = 0
@@ -7441,7 +7441,7 @@ EndProcedure
 If OpenConsole()
   Define root.node
   createTree(root,?tree)
-  
+
   Print("preorder: ")
   preorder(root)
   PrintN("")
@@ -7454,7 +7454,7 @@ If OpenConsole()
   Print("levelorder: ")
   levelorder(root)
   PrintN("")
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -7482,7 +7482,7 @@ levelorder: 1 2 3 4 5 6 7 8 9
 
 ```python
 from collections import namedtuple
- 
+
 Node = namedtuple('Node', 'data, left, right')
 tree = Node(1,
             Node(2,
@@ -7495,7 +7495,7 @@ tree = Node(1,
                       Node(8, None, None),
                       Node(9, None, None)),
                  None))
- 
+
 def printwithspace(i):
     print(i, end=' ')
 
@@ -7508,16 +7508,16 @@ def dfs(order, node, visitor):
                 dfs(order, node.left, visitor)
             elif action == 'R':
                 dfs(order, node.right, visitor)
-                
+
 def preorder(node, visitor = printwithspace):
     dfs('NLR', node, visitor)
- 
+
 def inorder(node, visitor = printwithspace):
     dfs('LNR', node, visitor)
- 
+
 def postorder(node, visitor = printwithspace):
     dfs('LRN', node, visitor)
- 
+
 def ls(node, more, visitor, order='TB'):
     "Level-based Top-to-Bottom or Bottom-to-Top tree search"
     if node:
@@ -7531,19 +7531,19 @@ def ls(node, more, visitor, order='TB'):
             visitor(node.data)
 
 def levelorder(node, more=None, visitor = printwithspace):
-    ls(node, more, visitor, 'TB') 
- 
+    ls(node, more, visitor, 'TB')
+
 # Because we can
 def reverse_preorder(node, visitor = printwithspace):
     dfs('RLN', node, visitor)
-    
+
 def bottom_up_order(node, more=None, visitor = printwithspace, order='BT'):
     ls(node, more, visitor, 'BT')
 
 
 if __name__ == '__main__':
     w = 10
-    for traversal in [preorder, inorder, postorder, levelorder, 
+    for traversal in [preorder, inorder, postorder, levelorder,
                       reverse_preorder, bottom_up_order]:
         if traversal == reverse_preorder:
             w = 20
@@ -7559,15 +7559,15 @@ if __name__ == '__main__':
 '''Sample output:'''
 
 ```txt
-  preorder: 1 2 4 7 5 3 6 8 9 
-   inorder: 7 4 2 5 1 8 6 9 3 
- postorder: 7 4 5 2 8 9 6 3 1 
-levelorder: 1 2 3 4 5 6 7 8 9 
+  preorder: 1 2 4 7 5 3 6 8 9
+   inorder: 7 4 2 5 1 8 6 9 3
+ postorder: 7 4 5 2 8 9 6 3 1
+levelorder: 1 2 3 4 5 6 7 8 9
 
 The generalisation of function dfs allows:
-    reverse_preorder: 9 8 6 3 5 7 4 2 1 
+    reverse_preorder: 9 8 6 3 5 7 4 2 1
 The generalisation of function ls allows:
-     bottom_up_order: 9 8 7 6 5 4 3 2 1 
+     bottom_up_order: 9 8 7 6 5 4 3 2 1
 ```
 
 
@@ -7580,7 +7580,7 @@ Subclasses a namedtuple adding traversal methods that apply a visitor function t
 ```python
 from collections import namedtuple
 from sys import stdout
- 
+
 class Node(namedtuple('Node', 'data, left, right')):
     __slots__ = ()
 
@@ -7589,32 +7589,32 @@ class Node(namedtuple('Node', 'data, left, right')):
             visitor(self.data)
             Node.preorder(self.left, visitor)
             Node.preorder(self.right, visitor)
-     
+
     def inorder(self, visitor):
         if self is not None:
             Node.inorder(self.left, visitor)
             visitor(self.data)
             Node.inorder(self.right, visitor)
-     
+
     def postorder(self, visitor):
         if self is not None:
             Node.postorder(self.left, visitor)
             Node.postorder(self.right, visitor)
             visitor(self.data)
-     
+
     def levelorder(self, visitor, more=None):
         if self is not None:
             if more is None:
                 more = []
             more += [self.left, self.right]
             visitor(self.data)
-        if more:    
+        if more:
             Node.levelorder(more[0], visitor, more[1:])
 
 
 def printwithspace(i):
     stdout.write("%i " % i)
- 
+
 
 tree = Node(1,
             Node(2,
@@ -7945,7 +7945,7 @@ treeProduct -> 362880
   []      -> []
   [V]     -> [V]
   [V L]   -> (append [V]
-                     (preorder L)) 
+                     (preorder L))
   [V L R] -> (append [V]
                      (preorder L)
                      (preorder R)))
@@ -8376,11 +8376,11 @@ inorder:     7 4 2 5 1 8 6 9 3
 BinaryTreeNode = Struct.new(:value, :left, :right) do
   def self.from_array(nested_list)
     value, left, right = nested_list
-    if value 
+    if value
       self.new(value, self.from_array(left), self.from_array(right))
     end
   end
- 
+
   def walk_nodes(order, &block)
     order.each do |node|
       case node
@@ -8390,11 +8390,11 @@ BinaryTreeNode = Struct.new(:value, :left, :right) do
       end
     end
   end
- 
+
   def each_preorder(&b)  walk_nodes([:self, :left, :right], &b) end
   def each_inorder(&b)   walk_nodes([:left, :self, :right], &b) end
   def each_postorder(&b) walk_nodes([:left, :right, :self], &b) end
- 
+
   def each_levelorder
     queue = [self]
     until queue.empty?
@@ -8406,7 +8406,7 @@ BinaryTreeNode = Struct.new(:value, :left, :right) do
   end
 end
 
-root = BinaryTreeNode.from_array [1, [2, [4, 7], [5]], [3, [6, [8], [9]]]] 
+root = BinaryTreeNode.from_array [1, [2, [4, 7], [5]], [3, [6, [8], [9]]]]
 
 BinaryTreeNode.instance_methods.select{|m| m=~/.+order/}.each do |mthd|
   printf "%-11s ", mthd[5..-1] + ':'
@@ -8681,10 +8681,10 @@ object TreeTraversal extends App {
 Output:
 ```txt
 
-  preorder: 1 2 4 7 5 3 6 8 9 
-   inorder: 7 4 2 5 1 8 6 9 3 
- postorder: 7 4 5 2 8 9 6 3 1 
-levelorder: 1 2 3 4 5 6 7 8 9 
+  preorder: 1 2 4 7 5 3 6 8 9
+   inorder: 7 4 2 5 1 8 6 9 3
+ postorder: 7 4 5 2 8 9 6 3 1
+levelorder: 1 2 3 4 5 6 7 8 9
 
 ```
 
@@ -8992,9 +8992,9 @@ levelorder 1
 The output:
 
 ```bash
-preorder:    1 2 4 7 5 3 6 8 9 
-inorder:     7 4 2 5 1 8 6 9 3 
-postorder:   7 4 5 2 8 9 6 3 1 
+preorder:    1 2 4 7 5 3 6 8 9
+inorder:     7 4 2 5 1 8 6 9 3
+postorder:   7 4 5 2 8 9 6 3 1
 level-order: 1 2 3 4 5 6 7 8 9
 ```
 
@@ -9010,10 +9010,10 @@ to the tree and makes a list of their results, each of which is a list of
 natural numbers. The compiler directive #cast %nLL induces the compile-time
 side effect of displaying
 the result on standard output as a
-list of lists of naturals. 
+list of lists of naturals.
 
 ```Ursala
-tree = 
+tree =
 
 1^:<
    2^: <4^: <7^: <>, 0>, 5^: <>>,
@@ -9136,10 +9136,10 @@ End Sub
 
 ```txt
 
-preorder:      1  2  4  7  5  3  6  8  9 
-inorder:       7  4  2  5  1  8  6  9  3 
-postorder:     7  4  5  2  8  9  6  3  1 
-level-order:   1  2  3  4  5  6  7  8  9 
+preorder:      1  2  4  7  5  3  6  8  9
+inorder:       7  4  2  5  1  8  6  9  3
+postorder:     7  4  5  2  8  9  6  3  1
+level-order:   1  2  3  4  5  6  7  8  9
 
 ```
 
@@ -9191,7 +9191,7 @@ t:=BTree(Node(1,
 	      Node(5)),
 	   Node(3,
 	      Node(6, Node(8),Node(9)))));
-   
+
 t.preOrder()  .apply("v").println("  preorder");
 t.inOrder()   .apply("v").println("  inorder");
 t.postOrder() .apply("v").println("  postorder");

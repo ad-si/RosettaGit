@@ -13,7 +13,7 @@ tags = []
 I think the precise statement of the problem is a little too restricted.  In some cases it's possible to walk the directory tree, printing all the matching filenames with somewhat less code than it is to walk the tree in order to collect a list of the matches or to perform other operations on them.  Also there are many criteria on which one might wish to select files beyond just file names. [[User:JimD|JimD]] 19:13, 15 October 2007 (MDT)
 :This is true.  The instructions could be changed to call a function, but I've been hesitant to use that abstraction for the sake of simplicity.  Really, I'd just like to leave a comment along the lines of /* do something here */ in the appropriate place, but I'm not sure how to word that. --[[User:Short Circuit|Short Circuit]] 20:00, 15 October 2007 (MDT)
 :: The current text of the task:
-  Walk a given directory tree and print files matching a given pattern. 
+  Walk a given directory tree and print files matching a given pattern.
 :: My suggestion:
   '''Walk a given directory tree, calling a function for every filename which matches
   a given wildcard, UNIX [[glob]], or [[regex]] pattern (whichever is easiest for the given language).'''
@@ -47,17 +47,17 @@ fi
 
 ::::will say it is a directory, and you can do globbing on it just like normal dirs.  You'd have to specifically remember to check if it's a symlink.  --[[User:Ledrug|Ledrug]] 20:53, 13 June 2011 (UTC)
 :::::Ok, yes, bash is very inconsistent about how it handles symlinks.  I remember talking with the bash maintainer about this, a number of years ago, and felt unsatisfied afterwards.  In particular, <code>cd ../example</code> can fail, while <code>cd -P .; cd ../example</code> can succeed, because bash implements its own rules for about what directories are in the context of symbolic links, which conflicts with that of the underlying operating system.  But that's a bash issue -- I do not know of any other language which suffers from that design.  (And bash can rely on <code>find</code> or <code>ls</code> which implement sane treatment of symbolic links.)  --[[User:Rdm|Rdm]] 23:37, 13 June 2011 (UTC)
-::::::Eh, not really a bash specific problem.  E.g. 
+::::::Eh, not really a bash specific problem.  E.g.
 ```txt
 perl -e 'print "is a dir\n" if -d "/some/symlink/dir"
 ```
- or zsh 
+ or zsh
 ```txt
 if [[ -d /some/symlink/dir ]]; then echo "is a dir"; fi
 ```
- basically 
-```C>#include <stdio.h
-
+ basically
+```c
+#include <stdio.h>
 #include <sys/types.h>
 #include <dirent.h>
 
@@ -97,7 +97,7 @@ says: <lang>/tmp/dir1
 
 Which doesn't seem to do anything unexpected. --[[User:Ledrug|Ledrug]] 17:20, 14 June 2011 (UTC)
 
-::::::: I was thinking more like this:  
+::::::: I was thinking more like this:
 ```bash
 #!/usr/bin/bash
 mkdir dir1 dir2

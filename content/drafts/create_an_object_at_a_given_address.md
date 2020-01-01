@@ -20,10 +20,10 @@ In systems programing it is sometimes required to place language objects at spec
 ;Task:
 Show how language objects can be allocated at a specific machine addresses.
 
-Since most [[OS]]es prohibit access to the physical memory if it is not mapped by the application, as an example, rather than a physical address, take the address of some existing object (using suitable [[Address Operations|address operations]] if necessary). 
+Since most [[OS]]es prohibit access to the physical memory if it is not mapped by the application, as an example, rather than a physical address, take the address of some existing object (using suitable [[Address Operations|address operations]] if necessary).
 
 
-For example: 
+For example:
 ::*   create an integer object
 ::*   print the machine address of the object
 ::*   take the address of the object and create another integer object at this address
@@ -156,7 +156,7 @@ MsgBox Machine address: %pAddress%
 
 ; pAddress contains the memory address.
 ; Write a number and read it back.
-NumPut(123456, pAddress+0, 0, "UInt")                               
+NumPut(123456, pAddress+0, 0, "UInt")
 MsgBox % "Contents of *pAddress: " . NumGet(pAddress+0, 0, "UInt")
 ```
 
@@ -169,19 +169,19 @@ MsgBox % "Contents of *pAddress: " . NumGet(pAddress+0, 0, "UInt")
       REM Create an integer object:
       anInteger% = 12345678
       PRINT "Original value =", anInteger%
-      
+
       REM Print the machine address of the object:
       address% = ^anInteger%
       PRINT "Hexadecimal address =   ";~address%
-      
+
       REM Take the address of the object and create
       REM another integer object at this address:
       !address% = 87654321
-      
+
       REM Print the value of this object to verify
       REM that it is same as one of the origin:
       PRINT "New value =", anInteger%
-      
+
       REM Change the value and verify it again:
       anInteger% = 55555555
       PRINT "Final value =", !address%
@@ -202,8 +202,8 @@ Final value =         55555555
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -234,8 +234,8 @@ int main()
 
 A more typical embedded way of doing this is below.  Note that the OS will probably not allow this due to memory protections.  Embedded systems often do not have memory managers.
 
-```c>#include <stdint.h
-
+```c
+#include <stdint.h>
 #include <stddef.h>
 
 // This is a port variable located at address 0x100
@@ -260,8 +260,8 @@ int main()
 
 C++ supports this natively through placement new. This allows construction of complex object types in arbitrary memory locations.
 
-```Cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 
 int main()
@@ -295,7 +295,7 @@ ABCD 0x00204040
 123456 0x00204040
 ```
 
-	
+
 {{omit from|Clojure}}
 
 
@@ -555,8 +555,8 @@ After:
 
 ## Julia
 
-Julia has pointer access functions for interface with C code. Because the 
-address of a Julia integer variable within the VM may change when it is 
+Julia has pointer access functions for interface with C code. Because the
+address of a Julia integer variable within the VM may change when it is
 re-assigned a new value, an array of a single integer is used below.
 
 ```julia
@@ -642,9 +642,9 @@ Module CheckIt {
       Buffer Code ExecMem as byte*1024
       Offset=0
       EmbLong(0xb8, 5000) ' mov eax,5100
-      EmbByteLong(0x3,0x5, Beta(0)) ' add eax, [Beta(0)] 
+      EmbByteLong(0x3,0x5, Beta(0)) ' add eax, [Beta(0)]
       EmbLong(0xa3, Beta(1)) ' mov [Beta(1)], eax
-      EmbByte(0x31, 0xC0) ' xor eax, eax       
+      EmbByte(0x31, 0xC0) ' xor eax, eax
       Ret() ' Return
       Execute Code ExecMem, 0
       Print eval(Beta, 1!val)=4999
@@ -735,7 +735,7 @@ end.
 ```txt
 255
 4711
-  0  1  2  3  4  5  6  7 
+  0  1  2  3  4  5  6  7
 506097522914230528
 ```
 
@@ -822,7 +822,7 @@ ok 4 - byte updated at origin
 
 ## Phix
 
-Phix does not support creation of a "language object" at a specific address, but you can peek and poke bytes, words, dwords and qwords 
+Phix does not support creation of a "language object" at a specific address, but you can peek and poke bytes, words, dwords and qwords
 to any address, as long as doing so does not trigger a hardware exception. You could also use inline assembly, if that helps any.
 
 ```Phix
@@ -1016,7 +1016,7 @@ incremented 'foo' so 'bar' is 1
 {{omit from|Icon}}{{omit from|Unicon}}
 {{omit from|Java}}
 {{omit from|JavaScript}}
-{{omit from|Joy}} 
+{{omit from|Joy}}
 {{Omit From|LabVIEW}}
 {{omit from|Logtalk}}
 {{omit from|M4}}

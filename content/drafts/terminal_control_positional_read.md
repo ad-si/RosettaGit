@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Terminal control}}[[Terminal Control::task| ]]
-Determine the character displayed on the screen at column 3, row 6 and store that character in a variable. Note that it is permissible to utilize system or language provided methods or system provided facilities, system maintained records or available buffers or system maintained display records to achieve this task, rather than query the terminal directly, if those methods are more usual for the system type or language.  
+Determine the character displayed on the screen at column 3, row 6 and store that character in a variable. Note that it is permissible to utilize system or language provided methods or system provided facilities, system maintained records or available buffers or system maintained display records to achieve this task, rather than query the terminal directly, if those methods are more usual for the system type or language.
 
 
 ## AutoHotkey
@@ -33,9 +33,9 @@ Loop 10
 }
 
 MsgBox % ReadConsoleOutputCharacter(hConsole, 1, 3, 6)
- 
-; 
-###  The below simply wraps part of the WinAPI 
+
+;
+###  The below simply wraps part of the WinAPI
 
 
 WriteConsole(hConsole, text){
@@ -54,7 +54,7 @@ ReadConsoleOutputCharacter(hConsole, length, x, y){
 		, UInt, length
 		, UInt, x | (y << 16)
 		, UPtrP, n )
-			
+
 		&& VarSetCapacity(out, -1)
 				return out
 	return 0
@@ -127,8 +127,8 @@ With the Windows console, call <code>GetConsoleScreenBufferInfo()</code> to find
 
 {{libheader|Win32}}
 
-```c>#include <windows.h
-
+```c
+#include <windows.h>
 #include <wchar.h>
 
 int
@@ -196,7 +196,7 @@ func main() {
         fmt.Println("Something went wrong!")
         return
     }
-    fmt.Printf("The character at column 3, row 6 is '%c'\n", c) 
+    fmt.Printf("The character at column 3, row 6 is '%c'\n", c)
 }
 ```
 
@@ -229,7 +229,7 @@ end
 row = rand(1:20)
 col = rand(1:50)
 ch = LibNCurses.winch(row, col)
-LibNCurses.mvwaddstr(col, 52, "The character at ($row, $col) is $ch.") ) 
+LibNCurses.mvwaddstr(col, 52, "The character at ($row, $col) is $ch.") )
 
 ```
 
@@ -250,7 +250,7 @@ fun main(args: Array<String>) {
     println()
     memScoped {
         val conOut = GetStdHandle(-11)
-        val info = alloc<CONSOLE_SCREEN_BUFFER_INFO>()       
+        val info = alloc<CONSOLE_SCREEN_BUFFER_INFO>()
         val pos = alloc<COORD>()
         GetConsoleScreenBufferInfo(conOut, info.ptr)
         pos.X = (info.srWindow.Left + 3).toShort()  // column number 3 of display window
@@ -263,7 +263,7 @@ fun main(args: Array<String>) {
             println("The character at column 3, row 6 is '$ch'")
         }
         else println("Something went wrong!")
-    }   
+    }
 }
 ```
 
@@ -364,12 +364,12 @@ M;?2U<8+FI
 ```Phix
 --
 -- demo\rosetta\Positional_read.exw
--- 
+--
 ### ==========================
 
 --
 position(6,1) -- line 6 column 1 (1-based)
-puts(1,"abcdef") 
+puts(1,"abcdef")
 integer {ch,attr} = get_screen_char(6,3)
 printf(1,"\n\n=>%c",ch)
 {} = wait_key()

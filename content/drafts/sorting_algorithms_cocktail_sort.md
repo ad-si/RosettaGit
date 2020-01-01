@@ -15,15 +15,15 @@ tags = []
 {{Wikipedia|Cocktail sort}}
 
 
-The cocktail shaker sort is an improvement on the [[Bubble Sort]]. 
+The cocktail shaker sort is an improvement on the [[Bubble Sort]].
 
 The improvement is basically that values "bubble" both directions through the array, because on each iteration the cocktail shaker sort bubble sorts once forwards and once backwards. Pseudocode for the algorithm (from [[wp:Cocktail sort|wikipedia]]):
  '''function''' ''cocktailSort''( A : list of sortable items )
   '''do'''
     swapped := false
     '''for each''' i '''in''' 0 '''to''' length( A ) - 2 '''do'''
-      '''if''' A[ i ] > A[ i+1 ] '''then''' ''// test whether the two'' 
-                                ''// elements are in the wrong'' 
+      '''if''' A[ i ] > A[ i+1 ] '''then''' ''// test whether the two''
+                                ''// elements are in the wrong''
                                 ''// order''
         swap( A[ i ], A[ i+1 ] ) ''// let the two elements''
                                  ''// change places''
@@ -36,14 +36,14 @@ The improvement is basically that values "bubble" both directions through the ar
       '''if''' A[ i ] > A[ i+1 ] '''then'''
         swap( A[ i ], A[ i+1 ] )
         swapped := true;
-  '''while''' swapped; ''// if no elements have been swapped,'' 
+  '''while''' swapped; ''// if no elements have been swapped,''
                  ''// then the list is sorted''
 
 
 ## 360 Assembly
 
 {{trans|PL/I}}
-The program uses ASM structured macros and two ASSIST macros to keep the code as short as possible. 
+The program uses ASM structured macros and two ASSIST macros to keep the code as short as possible.
 
 ```360asm
 *        Cocktail sort             25/06/2016
@@ -53,7 +53,7 @@ COCKTSRT CSECT
          DC     17F'0'             savearea
          STM    R14,R12,12(R13)    prolog
          ST     R13,4(R15)         "
-         ST     R15,8(R13)         " 
+         ST     R15,8(R13)         "
          LR     R13,R15            "
          L      R2,N               n
          BCTR   R2,0               n-1
@@ -90,7 +90,7 @@ COCKTSRT CSECT
 		 ENDIF  ,                      end if
          BCTR   RI,0                   i=i-1
          ENDDO  ,                    end do
-    ENDDO       ,                  until stable 
+    ENDDO       ,                  until stable
          LA     R3,PG              pgi=0
          LA     RI,1               i=1
          DO     WHILE=(C,RI,LE,N)  do i=1 to n
@@ -103,7 +103,7 @@ COCKTSRT CSECT
          LA     RI,1(RI)             i=i+1
          ENDDO  ,                  end do
          XPRNT  PG,L'PG            print buffer
-         L      R13,4(0,R13)       epilog 
+         L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
@@ -252,7 +252,7 @@ print(data)
      abcdefghiijklmnopqrstuvwxyz
 ```
 
-Alternatively - when the data records are large - the data can be manipulated 
+Alternatively - when the data records are large - the data can be manipulated
 indirectly, thus removing the need to actually swap large chunks of memory
 as only addresses are swapped.
 
@@ -384,8 +384,8 @@ end.
 
 ```txt
 
- 16   2  -6   9  90  14   0  23   8   9 
- -6   0   2   8   9   9  14  16  23  90 
+ 16   2  -6   9  90  14   0  23   8   9
+ -6   0   2   8   9   9  14  16  23  90
 
 ```
 
@@ -429,7 +429,7 @@ CocktailSort(var) {                      ; SORT COMMA SEPARATED LIST
    Return SubStr(sorted,2)               ; drop leading comma
 }
 ```
- 
+
 
 
 ## AWK
@@ -502,8 +502,8 @@ ENDPROC
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 // can be any swap function. This swap is optimized for numbers.
 void swap(int *x, int *y) {
@@ -579,10 +579,10 @@ public:
 		    notSorted = true;
 		}
 	    }
- 
+
 	    if( !notSorted ) break;
 	    notSorted = false;
- 
+
 	    for( int a = len - 1; a > 0; a-- )
 	    {
 		if( arr[a - 1] > arr[a] )
@@ -593,7 +593,7 @@ public:
 	    }
 	}
     }
- 
+
 private:
     void sSwap( int& a, int& b )
     {
@@ -607,10 +607,10 @@ int main( int argc, char* argv[] )
     srand( GetTickCount() );
     cocktailSort cs;
     int arr[EL_COUNT];
- 
+
     for( int x = 0; x < EL_COUNT; x++ )
         arr[x] = rand() % EL_COUNT + 1;
- 
+
     std::cout << "Original: " << std::endl << "
 ### ====
 " << std::endl;
@@ -618,14 +618,14 @@ int main( int argc, char* argv[] )
     {
 	for( int s = x; s < x + LLEN; s++ )
 	    std::cout << arr[s] << ", ";
- 
+
 	std::cout << std::endl;
     }
- 
-    //DWORD now = GetTickCount(); 
+
+    //DWORD now = GetTickCount();
     cs.sort( arr, EL_COUNT );
     //now = GetTickCount() - now;
- 
+
     std::cout << std::endl << std::endl << "Sorted: " << std::endl << "
 ### ==
 " << std::endl;
@@ -633,12 +633,12 @@ int main( int argc, char* argv[] )
     {
 	for( int s = x; s < x + LLEN; s++ )
 	    std::cout << arr[s] << ", ";
- 
+
 	std::cout << std::endl;
     }
- 
+
     std::cout << std::endl << std::endl << std::endl << std::endl;
-    //std::cout << now << std::endl << std::endl; 
+    //std::cout << now << std::endl << std::endl;
     return 0;
 }
 
@@ -646,13 +646,13 @@ int main( int argc, char* argv[] )
 
 
 
-###  Alternate version 
+###  Alternate version
 
 Uses C++11. Compile with
  g++ -std=c++11 cocktail.cpp
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 
@@ -824,7 +824,7 @@ This version works on lists and vectors alike.  The vector implementation is cod
 module rosettaCode.sortingAlgorithms.cocktailSort;
 
 import std.range;
- 
+
 Range cocktailSort(Range)(Range data)
 if (isRandomAccessRange!Range && hasLvalueElements!Range) {
     import std.algorithm : swap;
@@ -833,8 +833,8 @@ if (isRandomAccessRange!Range && hasLvalueElements!Range) {
         if (lhs > rhs) {
             swap(lhs, rhs);
             swapped = true;
-        }   
-    }   
+        }
+    }
 
     if (data.length > 0) do {
         swapped = false;
@@ -1152,18 +1152,18 @@ ELENA 4.1 :
 import extensions;
 import system'math;
 import system'routines;
- 
+
 extension op
 {
     cocktailSort()
     {
         var list := self.clone();
- 
+
         bool swapped  := true;
         while(swapped)
         {
             swapped := false;
- 
+
             for(int i := 0, i <= list.Length - 2, i += 1)
             {
                 if (list[i]>list[i+1])
@@ -1177,25 +1177,25 @@ extension op
                 ^ list
             };
             swapped := false;
- 
+
             for(int i := list.Length - 2, i >= 0, i -= 1)
             {
                 if (list[i]>list[i+1])
                 {
                     list.exchange(i,i+1);
                     swapped := true
-                }                
+                }
             }
         };
- 
-        ^ list        
+
+        ^ list
     }
 }
- 
+
 public program()
 {
     var list := new int[]::(3, 5, 1, 9, 7, 6, 8, 2, 4 );
- 
+
     console.printLine("before:", list.asEnumerable());
     console.printLine("after :", list.cocktailSort().asEnumerable())
 }
@@ -1218,7 +1218,7 @@ after :1,2,3,4,5,6,7,8,9
 ```elixir
 defmodule Sort do
   def cocktail_sort(list) when is_list(list), do: cocktail_sort(list, [], [])
-  
+
   defp cocktail_sort([], minlist, maxlist), do: Enum.reverse(minlist, maxlist)
   defp cocktail_sort([x], minlist, maxlist), do: Enum.reverse(minlist, [x | maxlist])
   defp cocktail_sort(list, minlist, maxlist) do
@@ -1226,11 +1226,11 @@ defmodule Sort do
     {min, rest} = cocktail_min(rev, [])
     cocktail_sort(rest, [min | minlist], [max | maxlist])
   end
-  
+
   defp cocktail_max([max], list), do: {max, list}
   defp cocktail_max([x,y | t], list) when x<y, do: cocktail_max([y | t], [x | list])
   defp cocktail_max([x,y | t], list)         , do: cocktail_max([x | t], [y | list])
-    
+
   defp cocktail_min([min], list), do: {min, list}
   defp cocktail_min([x,y | t], list) when x>y, do: cocktail_min([y | t], [x | list])
   defp cocktail_min([x,y | t], list)         , do: cocktail_min([x | t], [y | list])
@@ -1408,14 +1408,14 @@ PROGRAM COCKTAIL
   WRITE(*,"(A,10I5)") "Unsorted array:", intArray
   CALL Cocktail_sort(intArray)
   WRITE(*,"(A,10I5)") "Sorted array  :", intArray
-  
+
 CONTAINS
 
   SUBROUTINE Cocktail_sort(a)
     INTEGER, INTENT(IN OUT) :: a(:)
-    INTEGER :: i, bottom, top, temp 
+    INTEGER :: i, bottom, top, temp
     LOGICAL :: swapped
- 
+
     bottom = 1
     top = SIZE(a) - 1
     DO WHILE (bottom < top )
@@ -1529,13 +1529,13 @@ unsorted   -2  -4   7  -5  -7   4   2  -1   5  -6   6   1   0  -3   3
 Public Sub Main()
 Dim siCount, siRev, siProcess As Short
 Dim bSorting As Boolean
-Dim byToSort As Byte[] = [249, 28, 111, 36, 171, 98, 29, 448, 44, 154, 147, 102, 46, 183, 24, 
+Dim byToSort As Byte[] = [249, 28, 111, 36, 171, 98, 29, 448, 44, 154, 147, 102, 46, 183, 24,
                           120, 19, 123, 2, 17, 226, 11, 211, 25, 191, 205, 77]
 
 Print "To sort: -"
 ShowWorking(byToSort)
 Print
- 
+
 Repeat
   bSorting = False
   siRev = byToSort.Max - 1
@@ -1564,14 +1564,14 @@ End
 '-----------------------------------------
 Public Sub ShowWorking(byToSort As Byte[])
 Dim siCount As Byte
- 
+
 For siCount = 0 To byToSort.Max
   Print Str(byToSort[siCount]);
   If siCount <> byToSort.Max Then Print ",";
 Next
- 
+
 Print
- 
+
 End
 ```
 
@@ -1688,7 +1688,7 @@ Solution:
 
 ```groovy
 def makeSwap = { a, i, j = i+1 -> print "."; a[[j,i]] = a[[i,j]] }
- 
+
 def checkSwap = { a, i, j = i+1 -> [(a[i] > a[j])].find{ it }.each { makeSwap(a, i, j) } }
 
 def cocktailSort = { list ->
@@ -1696,7 +1696,7 @@ def cocktailSort = { list ->
     def n = list.size()
     def swap = checkSwap.curry(list)
     while (true) {
-        def swapped = (0..(n-2)).any(swap) && ((-2)..(-n)).any(swap) 
+        def swapped = (0..(n-2)).any(swap) && ((-2)..(-n)).any(swap)
         if ( ! swapped ) break
     }
     list
@@ -1789,27 +1789,27 @@ l cocktailSortInPlace println # ==> list(1, 2, 3, 4, 5)
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main()                     #: demonstrate various ways to sort a list and string 
+procedure main()                     #: demonstrate various ways to sort a list and string
    demosort(cocktailsort,[3, 14, 1, 5, 9, 2, 6, 3],"qwerty")
 end
 
-procedure cocktailsort(X,op)          #: return sorted list 
+procedure cocktailsort(X,op)          #: return sorted list
 local i,swapped
 
    op := sortop(op,X)                 # select how and what we sort
 
    swapped := 1
    repeat                             # translation of pseudo code.  Contractions used to eliminate second loop.
-      every (if /swapped then break break else swapped := &null & next) | ( i := 1 to *X-1) | 
-            (if /swapped then break break else swapped := &null & next) | ( i := *X-1 to 1 by -1) do 
-         if op(X[i+1],X[i]) then 
-            X[i+1] :=: X[swapped := i]        
-   return X        
+      every (if /swapped then break break else swapped := &null & next) | ( i := 1 to *X-1) |
+            (if /swapped then break break else swapped := &null & next) | ( i := *X-1 to 1 by -1) do
+         if op(X[i+1],X[i]) then
+            X[i+1] :=: X[swapped := i]
+   return X
 end
 ```
 
 
-Note: This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'sortop', and 'demosort' in Bubble Sort]]. 
+Note: This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'sortop', and 'demosort' in Bubble Sort]].
 The full demosort exercises the named sort of a list with op = "numeric", "string", ">>" (lexically gt, descending),">" (numerically gt, descending), a custom comparator, and also a string.
 {{out|Abbreviated example output}}
 
@@ -1825,7 +1825,7 @@ Sorting Demo using procedure cocktailsort
 
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 PROGRAM "CocktSrt.bas"
-110 RANDOMIZE 
+110 RANDOMIZE
 120 NUMERIC ARRAY(5 TO 24)
 130 CALL INIT(ARRAY)
 140 CALL WRITE(ARRAY)
@@ -1841,7 +1841,7 @@ Sorting Demo using procedure cocktailsort
 240     PRINT A(I);
 250   NEXT
 260   PRINT
-270 END DEF 
+270 END DEF
 280 DEF COCKTAILSORT(REF A)
 290   LET ST=LBOUND(A)+1:LET EN=UBOUND(A):LET D,CH=1
 300   DO
@@ -1879,7 +1879,7 @@ As is usual with J, <code>/:~</code> is the preferred method of sorting in pract
 
 ## Java
 
-This algorithm sorts in place. 
+This algorithm sorts in place.
 Call it with a copy of the array to preserve the unsorted order.
 
 ```java
@@ -1939,7 +1939,7 @@ while (isSorted){
 
     if (!isSorted)
         break;
-    
+
     isSorted = false;
 
     for (let j = arr.length - 1; j > 0; j--){
@@ -2091,7 +2091,7 @@ fun cocktailSort(a: IntArray) {
         val temp = a[i]
         a[i] = a[j]
         a[j] = temp
-    }   
+    }
     do {
         var swapped = false
         for (i in 0 until a.size - 1)
@@ -2101,7 +2101,7 @@ fun cocktailSort(a: IntArray) {
             }
         if (!swapped) break
         swapped = false
-        for (i in a.size - 2 downTo 0) 
+        for (i in a.size - 2 downTo 0)
             if (a[i] > a[i + 1]) {
                 swap(i, i + 1)
                 swapped = true
@@ -2224,7 +2224,7 @@ arr;
 cocktailSort[A_List] := Module[ { swapped = True },
 While[ swapped == True,
  swapped=False;
- For[ i = 1, i< Length[A]-1,i++, 
+ For[ i = 1, i< Length[A]-1,i++,
    If[ A[[i]] > A[[i+1]], A[[i;;i+1]] = A[[i+1;;i;;-1]]; swapped=True;]
  ];
 If[swapped == False, Break[]];
@@ -2246,25 +2246,25 @@ cocktailSort[{2,1,5,3,6}]
 
 ```MATLAB
 function list = cocktailSort(list)
- 
+
     %We have to do this because the do...while loop doesn't exist in MATLAB
     swapped = true;
- 
+
     while swapped
- 
+
         %Bubble sort down the list
         swapped = false;
-        for i = (1:numel(list)-1)   
+        for i = (1:numel(list)-1)
             if( list(i) > list(i+1) )
                 list([i i+1]) = list([i+1 i]); %swap
                 swapped = true;
-            end    
+            end
         end
- 
+
         if ~swapped
             break
         end
- 
+
         %Bubble sort up the list
         swapped = false;
         for i = (numel(list)-1:-1:1)
@@ -2307,7 +2307,7 @@ fn cocktailSort arr =
                 swapped = true
             )
         )
-        if not swapped then exit			
+        if not swapped then exit
         for i in (arr.count-1) to 1 by -1 do
         (
             if arr[i] > arr[i+1] then
@@ -2456,7 +2456,7 @@ bundle Default {
         values[i]->PrintLine();
       };
     }
-      
+
     function : CocktailSort(a : Int[]) ~ Nil {
       swapped : Bool;
       do {
@@ -2470,11 +2470,11 @@ bundle Default {
             swapped := true;
           };
         };
-                
+
         if(swapped <> true) {
           continue := false;
         };
-        
+
         swapped := false;
         for(i := a->Size() - 2; i >= 0; i -= 1;){
           if(a[i] > a[i + 1]) {
@@ -2484,7 +2484,7 @@ bundle Default {
             swapped := true;
           };
         };
-      } 
+      }
       while(swapped);
     }
   }
@@ -2572,7 +2572,7 @@ function sl = cocktailsort(l)
 	l(i) = l(i+1);
 	l(i+1) = t;
 	swapped = true;
-      endif      
+      endif
     endfor
   endwhile
   sl = l;
@@ -2737,7 +2737,7 @@ cocktailSort(v)={
 };
 ```
 
-      
+
 
 ## Pascal
 
@@ -2763,18 +2763,18 @@ sub cocktailSort {   #( A : list of sortable items ) defined as:
     $swapped = 0;
     for (my $i=0; $i<($#A-1); $i+=1) {
 
-      if ($A[$i] gt $A[$i+1]) { # test whether the two 
-                            # elements are in the wrong 
+      if ($A[$i] gt $A[$i+1]) { # test whether the two
+                            # elements are in the wrong
                             # order
 
          ($A[$i+1], $A[$i])=($A[$i], $A[$i+1]); # let the two elements
                                                 # change places
         $swapped = 1;
-      } 
+      }
     }
     if ($swapped == 0) {
       # we can exit the outer loop here if no swaps occurred.
-      print "no more swaps"; 
+      print "no more swaps";
     }
     else {
     $swapped = 0;
@@ -2787,7 +2787,7 @@ sub cocktailSort {   #( A : list of sortable items ) defined as:
       }
     }
     }
-#  if no elements have been swapped, 
+#  if no elements have been swapped,
 #  then the list is sorted
   }
 return (@A);
@@ -2809,7 +2809,7 @@ sub cocktail_sort ( @a ) {
             if @a[$i] > @a[$i+1] {
                 @a[ $i, $i+1 ] .= reverse;
                 $swapped_forward = 1;
-            } 
+            }
         }
         last if not $swapped_forward;
 
@@ -2852,7 +2852,7 @@ integer swapped = 1, f = 1, t = length(s)-1, d = 1
     end while
     return s
 end function
- 
+
 constant s = sq_rand(repeat(1000,10))
 ? s
 ? cocktail_sort(s)
@@ -2884,11 +2884,11 @@ function cocktailSort($arr){
 					list($arr[$i], $arr[$i+1]) = array($arr[$i+1], $arr[$i]);
 					$swapped = true;
 				}
-			}			
+			}
 		}
-		
+
 		if ($swapped == false) break;
-		
+
 		$swapped = false;
 		for($i=count($arr)-1;$i>=0;$i--){
 			if(isset($arr[$i-1])){
@@ -3079,24 +3079,24 @@ The following approach improves on the method in the pseudo-code by not examinin
 ;sorts an array of integers
 Procedure cocktailSort(Array a(1))
   Protected index, hasChanged, low, high
-  
+
   low = 0
   high = ArraySize(a()) - 1
   Repeat
     hasChanged = #False
     For index = low To high
       If a(index) > a(index + 1)
-        Swap a(index), a(index + 1) 
+        Swap a(index), a(index + 1)
         hasChanged = #True
-      EndIf 
-    Next 
+      EndIf
+    Next
     high - 1
-    
+
     If hasChanged = #False
       Break ;we can exit the outer loop here if no changes were made
-    EndIf 
-    
-    
+    EndIf
+
+
     hasChanged = #False
     For index = high To low Step -1
       If a(index) > a(index + 1)
@@ -3122,7 +3122,7 @@ def cocktailSort(A):
         for indices in (up, reversed(up)):
             swapped = False
             for i in indices:
-                if A[i] > A[i+1]:  
+                if A[i] > A[i+1]:
                     A[i], A[i+1] =  A[i+1], A[i]
                     swapped = True
             if not swapped:
@@ -3185,10 +3185,10 @@ cocktailsort <- function(x)
             x[i] <- x[i+1]
             x[i+1] <- temp
             swapped <- TRUE
-         }     
+         }
       }
       if(!swapped) break
-      
+
       swapped <- FALSE
       for(i in (lenx-1):1)
       {
@@ -3198,11 +3198,11 @@ cocktailsort <- function(x)
             x[i] <- x[i+1]
             x[i+1] <- temp
             swapped <- TRUE
-         }     
+         }
       }
       if(!swapped) break
-   }  
-   x 
+   }
+   x
 }
 
 print(cocktailsort(c(5, -1, 101, -4, 0, 1, 8,    6,  2, 3)))
@@ -3226,7 +3226,7 @@ print(cocktailsort(c(5, -1, 101, -4, 0, 1, 8,    6,  2, 3)))
     (for/fold ([swaps 0]) ([i (in-range from to delta)])
       (cond [(> (ref i) (ref (+ i 1)))
              (swap i (+ i 1)) (+ swaps 1)]
-            [swaps])))  
+            [swaps])))
   (let loop ()
     (cond [(zero? (bubble 0 (- len 2)  1)) xs]
           [(zero? (bubble (- len 2) 0  -1)) xs]
@@ -3312,7 +3312,7 @@ show@: w= length(#);              do j=1  for #      /*#:  is the number of item
 
 <pre style="font-size:75%">
 element  1 before sort: ---the 22 card tarot deck (larger deck has 56 additional cards in 4 suits)---
-element  2 before sort: 
+element  2 before sort:
 ### =======symbol====================pip===================================
 
 element  3 before sort: the juggler                  ◄───     I
@@ -3333,7 +3333,7 @@ element 17 before sort: the devil                    ◄───    XV
 element 18 before sort: the stars                    ◄───  XVII
 █████████████████████████████████████████████████████████████████████████████████████████████████████
 element  1  after sort: ---the 22 card tarot deck (larger deck has 56 additional cards in 4 suits)---
-element  2  after sort: 
+element  2  after sort:
 ### =======symbol====================pip===================================
 
 element  3  after sort: death  [often unlabeled]     ◄───  XIII
@@ -3392,7 +3392,7 @@ func cocktailSort A
        n = len(A)
        while flag =  0
              flag = 1
-             for i = 1 to n-1 
+             for i = 1 to n-1
                  if A[i] > A[i+1]
                     temp = A[i]
                     A[i] = A[i+1]
@@ -3421,7 +3421,7 @@ class Array
         end
       end
       break unless swapped
-      
+
       swapped = false
       (length - 2).downto(0) do |i|
         if self[i] > self[i + 1]
@@ -3492,7 +3492,7 @@ beg	= 2
 siz	= 100
 whatWay	= 1
 changed = 1
-while changed 
+while changed
 changed = 0
   FOR i = beg TO siz STEP whatWay
     IF a(i-1) > a(i) THEN
@@ -3671,7 +3671,7 @@ say cocktailsort(strs)
 ```slate
 s@(Sequence traits) cocktailSort
 [ |swapped|
-  swapped: False. 
+  swapped: False.
   s size <= 1 ifTrue: [^ s].
   [{0 to: s size - 2. s size - 2 downTo: 0}
     do: [|:range| range do: [|:index| (s at: index) > (s at: index + 1) ifTrue: [s swap: index with: index + 1. swapped: True]].
@@ -3748,15 +3748,15 @@ extension Collection where Element: Comparable {
     guard count > 1 else {
       return ret
     }
-    
+
     repeat {
       for i in 0...ret.count-2 where ret[i] > ret[i + 1] {
         (ret[i], ret[i + 1]) = (ret[i + 1], ret[i])
         swapped = true
       }
 
-      guard swapped else { 
-        break 
+      guard swapped else {
+        break
       }
 
       swapped = false
@@ -3840,7 +3840,7 @@ puts [cocktailsort {8 6 4 2 1 3 5 7 9}] ;# => 1 2 3 4 5 6 7 8 9
   PROC _Cocktailsort (n)
   PROC _ShowArray (n)
 PRINT
- 
+
 END
 
 
@@ -3860,30 +3860,30 @@ _Cocktailsort PARAM (1)                ' Cocktail sort
     NEXT
   LOOP
 RETURN
- 
- 
+
+
 _Swap PARAM(2)                         ' Swap two array elements
   PUSH @(a@)
   @(a@) = @(b@)
   @(b@) = POP()
 RETURN
- 
- 
+
+
 _InitArray                             ' Init example array
   PUSH 4, 65, 2, -31, 0, 99, 2, 83, 782, 1
- 
+
   FOR i = 0 TO 9
     @(i) = POP()
   NEXT
- 
+
 RETURN (i)
- 
- 
+
+
 _ShowArray PARAM (1)                   ' Show array subroutine
   FOR i = 0 TO a@-1
     PRINT @(i),
   NEXT
- 
+
   PRINT
 RETURN
 ```
@@ -3948,7 +3948,7 @@ Function cocktail_sort(ByVal s As Variant) As Variant
     Loop
     cocktail_sort = s
 End Function
- 
+
 Public Sub main()
     Dim s(9) As Variant
     For i = 0 To 9
@@ -4067,7 +4067,7 @@ for I:= 0 to 10-1 do [IntOut(0, A(I));  ChOut(0, ^ )];
 
 ```txt
 
--5 1 1 2 3 4 4 5 6 9 
+-5 1 1 2 3 4 4 5 6 9
 
 ```
 
@@ -4121,7 +4121,7 @@ L("brown","dog","fox","jumped","lazy","over","the","the"
 its a "cocktail" bubble sort, but the writer called it 'zigzag' since the name was unknown
 
 ```zxbasic
-5000 CLS 
+5000 CLS
 5002 LET a$="": FOR f=1 TO 64: LET a$=a$+CHR$ (32+INT (RND*96)): NEXT f
 5004 PRINT a$; AT 10,0;"ZigZag BubbleSORT"
 5010 LET la=LEN a$
@@ -4176,13 +4176,13 @@ By C. Born (freeware)
 5264 IF d AND i<a THEN  GO TO 5020
 
 5272 PRINT AT 12,0;a$
-5399 STOP 
+5399 STOP
 
-5400 LET d=1: LET t$=a$(w): LET a$(w)=a$(l): LET a$(l)=t$: RETURN 
+5400 LET d=1: LET t$=a$(w): LET a$(w)=a$(l): LET a$(l)=t$: RETURN
 
 5500 IF a+1<=LEN a$ THEN  IF a$(a)=a$(a+1) THEN  LET a=a-1: GO TO 5500
 5510 IF i-1>=1 THEN  IF a$(i)=a$(i-1) THEN  LET i=i+1: GO TO 5500
-5520 RETURN 
+5520 RETURN
 9999 CLEAR : SAVE "JZZB" LINE 0
 ```
 

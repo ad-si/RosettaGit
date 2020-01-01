@@ -20,7 +20,7 @@ That is how it goes for me; sometimes I need the numbers to understand the text.
 :1. Create a function returning a generator of the m'th powers of the positive integers starting from zero
 :2. Use it to create a generator of:
 ::2.1. Squares.
-::2.2. Cubes. 
+::2.2. Cubes.
 :3. Create a new generator that filters all cubes from the generator of squares.
 :4. Drop the first 20 values from this last generator of filtered results then show the next 10 values
 :Note that this tasks ''requires'' the use of generators in the calculation of the result.
@@ -46,7 +46,7 @@ That is how it goes for me; sometimes I need the numbers to understand the text.
 
 ::::: Perhaps "sequential generator"?  But, yes, "generator" does have [http://www.sz-wholesale.com/uploadFiles/LPG-B%20Generator_802.jpg other meanings] --[[User:Rdm|Rdm]] 16:57, 8 June 2011 (UTC)
 
-:::::: Yeah that sounds good, apart from the generator is this task is exponential, but I do like the sound of that for a sequential output version (such as the type used for generating ticket numbers or invoice numbers), if such a task was written. We could probably go with "Exponential generator", or "Sequence Generator/Exponential". --[[User:Markhobley|Markhobley]] 20:25, 8 June 2011 (UTC) 
+:::::: Yeah that sounds good, apart from the generator is this task is exponential, but I do like the sound of that for a sequential output version (such as the type used for generating ticket numbers or invoice numbers), if such a task was written. We could probably go with "Exponential generator", or "Sequence Generator/Exponential". --[[User:Markhobley|Markhobley]] 20:25, 8 June 2011 (UTC)
 
 :::: Ok, tooting my own horn here a bit, but I put together a nice little Python module for [https://code.google.com/p/dastoobnet/source/browse/multi_m1/filterstack.py using stacked generators] as a filter chain. The docs might be illuminating in this discussion. [http://codepad.org/S7lYcnpO Here's its demo output], on Codepad.--[[User:Short Circuit|Michael Mol]] 15:16, 8 June 2011 (UTC)
 
@@ -57,11 +57,11 @@ That is how it goes for me; sometimes I need the numbers to understand the text.
 == C++ code ==
 
 The C++ code should probably be an implementation of forward_iterator. I'd do it myself, but I don't know how (working on that is what led me back to this page) --[[User:Short Circuit|Michael Mol]] 14:08, 1 July 2011 (UTC)
-:What, like this? 
-```Cpp>#include <iostream
-
+:What, like this?
+```cpp
+#include <iostream>
 #include <iterator>
- 
+
 template<int p>
 class PowerSeq : public std::iterator<std::forward_iterator_tag, int> {
 public:

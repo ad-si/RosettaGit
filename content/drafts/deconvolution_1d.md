@@ -17,7 +17,7 @@ satisfying
 
 :<math> G(n) = \sum_{m=-\infty}^{\infty} F(m) H(n-m) </math>
 
-for all integers <math>\mathit{n}</math>. Assume <math>F(n)</math> can be non-zero only for <math>0</math> &le; <math>\mathit{n}</math> &le; <math>|\mathit{F}|</math>, where <math>|\mathit{F}|</math> is the "length" of <math>\mathit{F}</math>, and similarly for <math>\mathit{G}</math> and <math>\mathit{H}</math>, so that the functions can be modeled as finite sequences by identifying <math>f_0, f_1, f_2, \dots</math> with <math>F(0), F(1), F(2), \dots</math>, etc. 
+for all integers <math>\mathit{n}</math>. Assume <math>F(n)</math> can be non-zero only for <math>0</math> &le; <math>\mathit{n}</math> &le; <math>|\mathit{F}|</math>, where <math>|\mathit{F}|</math> is the "length" of <math>\mathit{F}</math>, and similarly for <math>\mathit{G}</math> and <math>\mathit{H}</math>, so that the functions can be modeled as finite sequences by identifying <math>f_0, f_1, f_2, \dots</math> with <math>F(0), F(1), F(2), \dots</math>, etc.
 Then for example, values of <math>|\mathit{F}| = 6</math> and <math>|\mathit{H}| = 5</math> would determine the following value of <math>\mathit{g}</math> by definition.
 
 :<math>
@@ -38,7 +38,7 @@ g_9 &= &       &  &       &  &       &  &       &  &f_5h_4
 We can write this in matrix form as:
 
 :<math>
-\left( 
+\left(
 \begin{array}{l}
 g_0 \\
 g_1 \\
@@ -139,16 +139,16 @@ As several others, this is a translation of the '''D''' solution.
       h() = -8,-9,-3,-1,-6,7
       f() = -3,-6,-1,8,-6,3,-1,-9,-9,3,-2,5,2,-2,-7,-1
       g() = 24,75,71,-34,3,22,-45,23,245,25,52,25,-67,-96,96,31,55,36,29,-43,-7
-      
+
       PROCdeconv(g(), f(), x())
       PRINT "deconv(g,f) = " FNprintarray(x())
       x() -= h() : IF SUM(x()) <> 0 PRINT "Error!"
-      
+
       PROCdeconv(g(), h(), y())
       PRINT "deconv(g,h) = " FNprintarray(y())
       y() -= f() : IF SUM(y()) <> 0 PRINT "Error!"
       END
-      
+
       DEF PROCdeconv(g(), f(), RETURN h())
       LOCAL f%, g%, i%, l%, n%
       f% = DIM(f(),1) + 1
@@ -165,7 +165,7 @@ As several others, this is a translation of the '''D''' solution.
         h(n%) /= f(0)
       NEXT n%
       ENDPROC
-      
+
       DEF FNprintarray(a())
       LOCAL i%, a$
       FOR i% = 0 TO DIM(a(),1)
@@ -189,21 +189,21 @@ deconv(g,h) = -3, -6, -1, 8, -6, 3, -1, -9, -9, 3, -2, 5, 2, -2, -7, -1
 
 Using [[FFT]]:
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <complex.h>
- 
+
 double PI;
 typedef double complex cplx;
- 
+
 void _fft(cplx buf[], cplx out[], int n, int step)
 {
 	if (step < n) {
 		_fft(out, buf, n, step * 2);
 		_fft(out + step, buf + step, n, step * 2);
- 
+
 		for (int i = 0; i < n; i += 2 * step) {
 			cplx t = cexp(-I * PI * i / n) * out[i + step];
 			buf[i / 2]     = out[i] + t;
@@ -211,7 +211,7 @@ void _fft(cplx buf[], cplx out[], int n, int step)
 		}
 	}
 }
- 
+
 void fft(cplx buf[], int n)
 {
 	cplx out[n];
@@ -470,7 +470,7 @@ contains
     do i=1,N
        A(i:i+size(p)-1,i) = p
     end do
-    
+
     ! Invoke the LAPACK routine to do the work
     r = q
     call gelsd(A, r)
@@ -867,10 +867,10 @@ println("The deconvolution deconv(g, h) is $fanswer, which is the same as f = $f
 {{output}}
 
 ```txt
-The deconvolution deconv(g, f) is [-8.0, -9.0, -3.0, -1.0, -6.0, 7.0], 
+The deconvolution deconv(g, f) is [-8.0, -9.0, -3.0, -1.0, -6.0, 7.0],
 which is the same as h = [-8, -9, -3, -1, -6, 7]
 
-The deconvolution deconv(g, h) is [-3.0, -6.0, -1.0, 8.0, -6.0, 3.0, -1.0, -9.0, -9.0, 3.0, -2.0, 5.0, 2.0, -2.0, -7.0, -1.0], 
+The deconvolution deconv(g, h) is [-3.0, -6.0, -1.0, 8.0, -6.0, 3.0, -1.0, -9.0, -9.0, 3.0, -2.0, 5.0, 2.0, -2.0, -7.0, -1.0],
 which is the same as f = [-3, -6, -1, 8, -6, 3, -1, -9, -9, 3, -2, 5, 2, -2, -7, -1]
 ```
 
@@ -884,22 +884,22 @@ which is the same as f = [-3, -6, -1, 8, -6, 3, -1, -9, -9, 3, -2, 5, 2, -2, -7,
 // version 1.1.3
 
 fun deconv(g: DoubleArray, f: DoubleArray): DoubleArray {
-    val fs = f.size   
+    val fs = f.size
     val h = DoubleArray(g.size - fs + 1)
     for (n in h.indices) {
         h[n] = g[n]
         val lower = if (n >= fs) n - fs + 1 else 0
         for (i in lower until n) h[n] -= h[i] * f[n -i]
-        h[n] /= f[0] 
+        h[n] /= f[0]
     }
     return h
 }
 
 fun main(args: Array<String>) {
     val h = doubleArrayOf(-8.0, -9.0, -3.0, -1.0, -6.0, 7.0)
-    val f = doubleArrayOf(-3.0, -6.0, -1.0,  8.0, -6.0,  3.0, -1.0, -9.0, 
+    val f = doubleArrayOf(-3.0, -6.0, -1.0,  8.0, -6.0,  3.0, -1.0, -9.0,
                           -9.0,  3.0, -2.0,  5.0,  2.0, -2.0, -7.0, -1.0)
-    val g = doubleArrayOf(24.0,  75.0, 71.0, -34.0,  3.0,  22.0, -45.0, 
+    val g = doubleArrayOf(24.0,  75.0, 71.0, -34.0,  3.0,  22.0, -45.0,
                           23.0, 245.0, 25.0,  52.0, 25.0, -67.0, -96.0,
                           96.0,  31.0, 55.0,  36.0, 29.0, -43.0,  -7.0)
     println("${h.map { it.toInt() }}")
@@ -965,10 +965,10 @@ This function creates a sparse array for the A matrix and then solves it with a 
 
 ```Mathematica
 
-deconv[f_List, g_List] := 
- Module[{A = 
+deconv[f_List, g_List] :=
+ Module[{A =
     SparseArray[
-     Table[Band[{n, 1}] -> f[[n]], {n, 1, Length[f]}], {Length[g], Length[f] - 1}]}, 
+     Table[Band[{n, 1}] -> f[[n]], {n, 1, Length[f]}], {Length[g], Length[f] - 1}]},
   Take[LinearSolve[A, g], Length[g] - Length[f] + 1]]
 
 ```
@@ -993,7 +993,7 @@ deconv[f,g]
 
 ## MATLAB
 
-The deconvolution function is built-in to MATLAB as the "deconv(a,b)" function, where "a" and "b" are vectors storing the convolved function values and the values of one of the deconvoluted vectors of "a". 
+The deconvolution function is built-in to MATLAB as the "deconv(a,b)" function, where "a" and "b" are vectors storing the convolved function values and the values of one of the deconvoluted vectors of "a".
 To test that this operates according to the task spec we can test the criteria above:
 
 ```MATLAB>>
@@ -1035,7 +1035,7 @@ proc deconv(g, f: openArray[float]): seq[float] =
 
 let h = [-8'f64, -9, -3, -1, -6, 7]
 let f = [-3'f64, -6, -1, 8, -6, 3, -1, -9, -9, 3, -2, 5, 2, -2, -7, -1]
-let g = [24'f64, 75, 71, -34, 3, 22, -45, 23, 245, 25, 52, 25, -67, -96, 
+let g = [24'f64, 75, 71, -34, 3, 22, -45, 23, 245, 25, 52, 25, -67, -96,
          96, 31, 55, 36, 29, -43, -7]
 echo $h
 echo $deconv(g, f)
@@ -1156,13 +1156,13 @@ sub deconvolve (@g, @f) {
     for ^$h -> $j { for @f.kv -> $k, $v { @m[$j + $k][$j] = $v } }
     return rref( @m )[^$h;$h];
 }
- 
+
 sub convolve (@f, @h) {
     my @g = 0 xx + @f + @h - 1;
     @g[^@f X+ ^@h] >>+=<< (@f X* @h);
     return @g;
 }
- 
+
 # Reduced Row Echelon Form simultaneous equation solver.
 # Can handle over-specified systems of equations.
 # (n unknowns in n + m equations)
@@ -1194,7 +1194,7 @@ sub rref ($m is copy) {
         ++$lead;
     }
     return $m;
- 
+
     # Reduce a system of equations to n equations with n unknowns.
     # Looks for an equation with a true value for each position.
     # If it can't find one, assumes that it has already taken one
@@ -1213,17 +1213,17 @@ sub rref ($m is copy) {
         return @t;
     }
 }
- 
- 
+
+
 my @h = (-8,-9,-3,-1,-6,7);
 my @f = (-3,-6,-1,8,-6,3,-1,-9,-9,3,-2,5,2,-2,-7,-1);
 my @g = (24,75,71,-34,3,22,-45,23,245,25,52,25,-67,-96,96,31,55,36,29,-43,-7);
- 
- 
+
+
 .say for ~@g, ~convolve(@f, @h),'';
- 
+
 .say for ~@h, ~deconvolve(@g, @f),'';
- 
+
 .say for ~@f, ~deconvolve(@g, @h),'';
 ```
 
@@ -1262,7 +1262,7 @@ sequence h = repeat(0,length(g)-lf+1)
     end for
     return h
 end function
- 
+
 constant h = {-8,-9,-3,-1,-6,7}
 constant f = {-3,-6,-1,8,-6,3,-1,-9,-9,3,-2,5,2,-2,-7,-1}
 constant g = {24,75,71,-34,3,22,-45,23,245,25,52,25,-67,
@@ -1345,10 +1345,10 @@ def ToReducedRowEchelonForm( M ):
                 M[i] = [ iv - lv*rv for rv,iv in zip(M[r],M[i])]
         lead += 1
     return M
- 
+
 def pmtx(mtx):
     print ('\n'.join(''.join(' %4s' % col for col in row) for row in mtx))
- 
+
 def convolve(f, h):
     g = [0] * (len(f) + len(h) - 1)
     for hindex, hval in enumerate(h):
@@ -1363,7 +1363,7 @@ def deconvolve(g, f):
         for findex, fval in enumerate(f):
             gindex = hindex + findex
             mtx[gindex][hindex] = fval
-    for gindex, gval in enumerate(g):        
+    for gindex, gval in enumerate(g):
         mtx[gindex][lenh] = gval
     ToReducedRowEchelonForm( mtx )
     return [mtx[i][lenh] for i in range(lenh)]  # h
@@ -1409,9 +1409,9 @@ def deconv(a, b):
     r = shift_bit_length(max(p, q))
     y = numpy.fft.ifft(numpy.fft.fft(a,r) / numpy.fft.fft(b,r), r)
     return numpy.trim_zeros(numpy.around(numpy.real(y),decimals=6))
-    
+
 # should return g
-   
+
 print(conv(h,f))
 
 # should return h
@@ -1514,7 +1514,7 @@ conv(a, b) == convolve(a, rev(b), type="open")
   (for*/matrix m n ([i (in-range 0 m)] [j (in-range 0 n)])
       (cond [(or  (< i j) (>= i (+ j l)))  0]
             [(matrix-ref f (- i j) 0)])))
- 
+
 (define (least-square X y)
   (matrix-solve (matrix* (T X) X) (matrix* (T X) y)))
 
@@ -1680,7 +1680,7 @@ namespace eval 1D {
 	    for {set j 0} {$j < $cols} {incr j} {
 		lset m $r $j [/ [double [lindex $m $r $j]] $val]
 	    }
- 
+
 	    for {set i 0} {$i < $rows} {incr i} {
 		if {$i != $r} {
 		    # subtract m(i,lead) multiplied by row r from row i

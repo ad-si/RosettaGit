@@ -10,20 +10,20 @@ categories = []
 tags = []
 +++
 
-{{task|Keyboard input}} 
-[[Category:Hardware]] 
-[[Category:Terminal control]] 
-[[Category:Simple]] 
-[[user input::task| ]] 
+{{task|Keyboard input}}
+[[Category:Hardware]]
+[[Category:Terminal control]]
+[[Category:Simple]]
+[[user input::task| ]]
 {{omit from|ACL2}}
 {{omit from|GUISS}}
 {{omit from|PARI/GP}}
 
 Flush the   [[input device::keyboard]]   buffer.
- 
-This reads characters from the keyboard input and 
-discards them until there are no more currently buffered,    
-and then allows the program to continue. 
+
+This reads characters from the keyboard input and
+discards them until there are no more currently buffered,
+and then allows the program to continue.
 
 ''The program must not wait for users to type anything.''
 
@@ -125,8 +125,8 @@ Strictly speaking *FX 15,1 is an Operating System command, but it is emulated in
 {{libheader|POSIX}}
 Code lifted from [[Keyboard input/Obtain a Y or N response]]:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdio.h>
 #include <termios.h>
 #include <unistd.h>
@@ -302,7 +302,7 @@ func main() {
 ' FB 1.05.0 Win64
 
 ' Get characters from the keyboard buffer until there are none left
-While Inkey <> "" : Wend 
+While Inkey <> "" : Wend
 Print "Keyboard buffer flushed"
 Sleep
 ```
@@ -441,10 +441,10 @@ Statement After make a thread for one time only. When in Input interpreter wait 
 
 Module checkit {
       Print "You have 3 seconds to write your name (press enter)"
-      After 3000 { 
+      After 3000 {
             Input End
       }
-      Input "Your name:", A$ 
+      Input "Your name:", A$
       If A$="" Then Print "Not Ready" : Exit
       Print "Ok:";A$
 }
@@ -509,7 +509,7 @@ ReadMode 'restore';
 ## Perl 6
 
 {{works with|Rakudo|2018.12}}
-Using termios to set some input attributes, flush the buffer & do unbuffered reads. Longer than strictly necessary to demonstrate concepts and make it easy to verify that it actually works as advertised.   
+Using termios to set some input attributes, flush the buffer & do unbuffered reads. Longer than strictly necessary to demonstrate concepts and make it easy to verify that it actually works as advertised.
 
 ```perl6
 use Term::termios;
@@ -579,7 +579,7 @@ while ($Host.UI.RawUI.KeyAvailable) {
 ```
 
 
-To flush the keyboard buffer use: 
+To flush the keyboard buffer use:
 
 ```powershell
 

@@ -16,11 +16,11 @@ tags = []
 
 
 ;Task:
-Show how to compute the '''reduced row echelon form''' 
-(a.k.a. '''row canonical form''') of a matrix. 
+Show how to compute the '''reduced row echelon form'''
+(a.k.a. '''row canonical form''') of a matrix.
 
-The matrix can be stored in any datatype that is convenient 
-(for most languages, this will probably be a two-dimensional array). 
+The matrix can be stored in any datatype that is convenient
+(for most languages, this will probably be a two-dimensional array).
 
 Built-in functions or this pseudocode (from Wikipedia) may be used:
  '''function''' ToReducedRowEchelonForm(Matrix M) '''is'''
@@ -103,7 +103,7 @@ WHILE    LR     R1,R8              do while m(i,lead)=0
          SLA    R1,2
          L      R6,M(R1)           m(i,lead)
          LTR    R6,R6
-         BNZ    EWHILE             m(i,lead)<>0           
+         BNZ    EWHILE             m(i,lead)<>0
          LA     R8,1(R8)           i=i+1
          CH     R8,NROWS           if i=nrows
          BNE    EIF
@@ -257,8 +257,8 @@ PG       DC     CL48' '
 
 ## ActionScript
 
-_m being of type Vector.<Vector.<Number>> the following function 
-is a method of Matrix class. 
+_m being of type Vector.<Vector.<Number>> the following function
+is a method of Matrix class.
 Therefore return this statements are returning the Matrix object itself.
 
 
@@ -578,16 +578,16 @@ PROC to reduced row echelon form = (REF MAT m)VOID: (
     OD;
     return: EMPTY
 );
- 
+
 [3,4]FIELD mat := (
    ( 1, 2, -1, -4),
    ( 2, 3, -1, -11),
    (-2, 0, -3, 22)
 );
- 
+
 to reduced row echelon form( mat );
 
-FORMAT 
+FORMAT
   real repr = $g(-7,4)$,
   vec repr = $"("n(2 UPB mat-1)(f(real repr)", ")f(real repr)")"$,
   mat repr = $"("n(1 UPB mat-1)(f(vec repr)", "lx)f(vec repr)")"$;
@@ -599,8 +599,8 @@ printf((mat repr, mat, $l$))
 
 ```txt
 
-(( 1.0000,  0.0000,  0.0000, -8.0000), 
- ( 0.0000,  1.0000,  0.0000,  1.0000), 
+(( 1.0000,  0.0000,  0.0000, -8.0000),
+ ( 0.0000,  1.0000,  0.0000,  1.0000),
  ( 0.0000,  0.0000,  1.0000, -2.0000))
 
 ```
@@ -694,7 +694,7 @@ EndFunc   ;==>ToReducedRowEchelonForm
         PRINT
       NEXT row%
       END
-      
+
       DEF PROCrref(m())
       LOCAL lead%, nrows%, ncols%, i%, j%, r%, n
       nrows% = DIM(m(),1)+1
@@ -741,8 +741,8 @@ EndFunc   ;==>ToReducedRowEchelonForm
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #define TALLOC(n,typ) malloc(n*sizeof(typ))
 
 #define EL_Type int
@@ -788,7 +788,7 @@ Matrix InitMatrix( int x_dim, int y_dim, EL_Type **v)
     Matrix m;
     int iy;
     m = NewMatrix(x_dim, y_dim);
-    for (iy=0; iy<y_dim; iy++) 
+    for (iy=0; iy<y_dim; iy++)
         MtxSetRow(m, iy, v[iy]);
     return m;
 }
@@ -815,7 +815,7 @@ void MtxMulAndAddRows(Matrix m, int ixrdest, int ixrsrc, EL_Type mplr)
     EL_Type *drow, *srow;
     drow = m->mtx[ixrdest];
     srow = m->mtx[ixrsrc];
-    for (ix=0; ix<m->dim_x; ix++) 
+    for (ix=0; ix<m->dim_x; ix++)
         drow[ix] += mplr * srow[ix];
 //	printf("Mul row %d by %d and add to row %d\n", ixrsrc, mplr, ixrdest);
 //	MtxDisplay(m);
@@ -910,8 +910,8 @@ The test code uses a built-in array for the matrix.
 
 {{works with|g++|4.1.2 20061115 (prerelease) (Debian 4.1.1-21)}}
 
-```cpp>#include <algorithm
- // for std::swap
+```cpp
+#include <algorithm> // for std::swap
 #include <cstddef>
 #include <cassert>
 
@@ -1126,11 +1126,11 @@ namespace rref
                 {  2, 3, -1, -11 },
                 { -2, 0, -3,  22 }
             };
-            matrix = rref(matrix);   
+            matrix = rref(matrix);
         }
 
         private static int[,] rref(int[,] matrix)
-        {            
+        {
             int lead = 0, rowCount = matrix.GetLength(0), columnCount = matrix.GetLength(1);
             for (int r = 0; r < rowCount; r++)
             {
@@ -1158,7 +1158,7 @@ namespace rref
                 }
                 int div = matrix[r, lead];
                 if(div != 0)
-                    for (int j = 0; j < columnCount; j++) matrix[r, j] /= div;                
+                    for (int j = 0; j < columnCount; j++) matrix[r, j] /= div;
                 for (int j = 0; j < rowCount; j++)
                 {
                     if (j != r)
@@ -1189,8 +1189,8 @@ Direct implementation of the pseudo-code given.
 	 (lead 0))
     (labels ((find-pivot (start lead)
 	       (let ((i start))
-		 (loop 
-		    :while (zerop (aref matrix i lead)) 
+		 (loop
+		    :while (zerop (aref matrix i lead))
 		    :do (progn
 			  (incf i)
 			  (when (= i row-count)
@@ -1200,23 +1200,23 @@ Direct implementation of the pseudo-code given.
 			      (return-from convert-to-row-echelon-form matrix))))
 		    :finally (return (values i lead)))))
 	     (swap-rows (r1 r2)
-	       (loop 
+	       (loop
 		  :for c :upfrom 0 :below column-count
 		  :do (rotatef (aref matrix r1 c) (aref matrix r2 c))))
-	     (divide-row (r value) 
+	     (divide-row (r value)
 	       (loop
 		  :for c :upfrom 0 :below column-count
 		  :do (setf (aref matrix r c)
 			    (/ (aref matrix r c) value)))))
       (loop
 	 :for r :upfrom 0 :below row-count
-	 :when (<= column-count lead) 
+	 :when (<= column-count lead)
 	 :do (return matrix)
 	 :do (multiple-value-bind (i nlead) (find-pivot r lead)
 	       (setf lead nlead)
 	       (swap-rows i r)
 	       (divide-row r (aref matrix r lead))
-	       (loop 
+	       (loop
 		  :for i :upfrom 0 :below row-count
 		  :when (/= i r)
 		  :do (let ((scale (aref matrix i lead)))
@@ -1328,8 +1328,8 @@ function ToReducedRowEchelonForm(sequence M)
 end function
 
 ? ToReducedRowEchelonForm(
-    { { 1, 2, -1, -4 }, 
-      { 2, 3, -1, -11 }, 
+    { { 1, 2, -1, -4 },
+      { 2, 3, -1, -11 },
       { -2, 0, -3, 22 } })
 ```
 
@@ -1383,7 +1383,7 @@ contains
     nocolumn = size(matrix, 2)
 
     allocate(trow(nocolumn))
-    
+
     do r = 1, norow
        if ( nocolumn <= pivot ) exit
        i = r
@@ -1400,7 +1400,7 @@ contains
        matrix(r, :) = trow
        matrix(r, :) = matrix(r, :) / matrix(r, pivot)
        do i = 1, norow
-          if ( i /= r ) matrix(i, :) = matrix(i, :) - matrix(r, :) * matrix(i, pivot) 
+          if ( i /= r ) matrix(i, :) = matrix(i, :) - matrix(r, :) * matrix(i, pivot)
        end do
        pivot = pivot + 1
     end do
@@ -1618,14 +1618,14 @@ func main() {
 ```txt
 
 Input:
-[  1.00   2.00  -1.00  -4.00] 
-[  2.00   3.00  -1.00 -11.00] 
-[ -2.00   0.00  -3.00  22.00] 
+[  1.00   2.00  -1.00  -4.00]
+[  2.00   3.00  -1.00 -11.00]
+[ -2.00   0.00  -3.00  22.00]
 
 Reduced:
-[  1.00   0.00   0.00  -8.00] 
-[ -0.00   1.00   0.00   1.00] 
-[ -0.00  -0.00   1.00  -2.00] 
+[  1.00   0.00   0.00  -8.00]
+[ -0.00   1.00   0.00   1.00]
+[ -0.00  -0.00   1.00  -2.00]
 
 ```
 
@@ -1633,9 +1633,9 @@ Reduced:
 
 ## Groovy
 
-This solution implements the transformation to reduced row echelon form 
-with optional pivoting. 
-Options are provided for both ''partial pivoting'' and ''scaled partial pivoting''. 
+This solution implements the transformation to reduced row echelon form
+with optional pivoting.
+Options are provided for both ''partial pivoting'' and ''scaled partial pivoting''.
 The default option is no pivoting at all.
 
 ```groovy
@@ -1643,9 +1643,9 @@ enum Pivoting {
     NONE({ i, it -> 1 }),
     PARTIAL({ i, it -> - (it[i].abs()) }),
     SCALED({ i, it -> - it[i].abs()/(it.inject(0) { sum, elt -> sum + elt.abs() } ) });
-    
+
     public final Closure comparer
-    
+
     private Pivoting(Closure c) {
         comparer = c
     }
@@ -1667,7 +1667,7 @@ def reducedRowEchelonForm = { matrix, Pivoting pivoting = Pivoting.NONE ->
             (i..<n).reverse().each { j ->
                 matrix[k][j] -= matrix[i][j]*matrix[k][i]
             }
-        } 
+        }
     }
     matrix
 }
@@ -1857,9 +1857,9 @@ end
 ```txt
 
 ->rref
-  1.0   0.0   0.0  -8.0 
-  0.0   1.0   0.0   1.0 
-  0.0   0.0   1.0  -2.0 
+  1.0   0.0   0.0  -8.0
+  0.0   1.0   0.0   1.0
+  0.0   0.0   1.0  -2.0
 ->
 
 ```
@@ -2017,8 +2017,8 @@ import org.apache.commons.math.fraction.FractionConversionException;
 class Matrix {
 	LinkedList<LinkedList<Fraction>> matrix;
 	int numRows;
-	int numCols;	
-	
+	int numCols;
+
 	static class Coordinate {
 		int row;
 		int col;
@@ -2034,7 +2034,7 @@ class Matrix {
 	}
 
 	Matrix(double [][] m) {
-		numRows = m.length;	
+		numRows = m.length;
 		numCols = m[0].length;
 
 		matrix = new LinkedList<LinkedList<Fraction>>();
@@ -2053,13 +2053,13 @@ class Matrix {
 
 	public void Interchange(Coordinate a, Coordinate b) {
 		LinkedList<Fraction> temp = matrix.get(a.row);
-		matrix.set(a.row, matrix.get(b.row));		
+		matrix.set(a.row, matrix.get(b.row));
 		matrix.set(b.row, temp);
 
 		int t = a.row;
 		a.row = b.row;
 		b.row = t;
-	} 
+	}
 
 	public void Scale(Coordinate x, Fraction d) {
 		LinkedList<Fraction> row = matrix.get(x.row);
@@ -2087,15 +2087,15 @@ class Matrix {
 				//Begin with the leftmost nonzero column. This is a pivot column. The pivot position is at the top.
 				for (int i = x; i < numCols; i++) {
 					if (isColumnZeroes(pivot) == false) {
-						break;	
+						break;
 					} else {
 						pivot.col = i;
 					}
 				}
 			//Step 2
-				//Select a nonzero entry in the pivot column with the highest absolute value as a pivot. 
+				//Select a nonzero entry in the pivot column with the highest absolute value as a pivot.
 				pivot = findPivot(pivot);
-			
+
 				if (getCoordinate(pivot).doubleValue() == 0.0) {
 					pivot.row++;
 					continue;
@@ -2106,7 +2106,7 @@ class Matrix {
 				if (pivot.row != submatrix) {
 					Interchange(new Coordinate(submatrix, pivot.col), pivot);
 				}
-		
+
 				//Force pivot to be 1
 				if (getCoordinate(pivot).doubleValue() != 1) {
 					/*
@@ -2135,14 +2135,14 @@ class Matrix {
 				for (int i = pivot.row; i >= 0; i--) {
 					if (i == pivot.row) {
 						if (getCoordinate(pivot).doubleValue() != 1.0) {
-							Scale(pivot, getCoordinate(pivot).reciprocal());	
+							Scale(pivot, getCoordinate(pivot).reciprocal());
 						}
 						continue;
 					}
 					if (i == pivot.row) {
 						continue;
 					}
-				
+
 					Coordinate abovePivot = new Coordinate(i, pivot.col);
 					Fraction complement = (getCoordinate(abovePivot).negate().divide(getCoordinate(pivot)));
 					MultiplyAndAdd(abovePivot, pivot, complement);
@@ -2158,7 +2158,7 @@ class Matrix {
 				pivot.row++;
 		}
 	}
-	
+
 	public boolean isColumnZeroes(Coordinate a) {
 		for (int i = 0; i < numRows; i++) {
 			if (matrix.get(i).get(a.col).doubleValue() != 0.0) {
@@ -2182,7 +2182,7 @@ class Matrix {
 	public Coordinate findPivot(Coordinate a) {
 		int first_row = a.row;
 		Coordinate pivot = new Coordinate(a.row, a.col);
-		Coordinate current = new Coordinate(a.row, a.col);	
+		Coordinate current = new Coordinate(a.row, a.col);
 
 		for (int i = a.row; i < (numRows - first_row); i++) {
 			current.row = i;
@@ -2199,10 +2199,10 @@ class Matrix {
 				break;
 			}
 		}
-	
-		
-		return pivot;	
-	}	
+
+
+		return pivot;
+	}
 
 	public Fraction getCoordinate(Coordinate a) {
 		return matrix.get(a.row).get(a.col);
@@ -2231,7 +2231,7 @@ class Matrix {
 			{0, 1, 0, 0, -2},
 			{0, 1, -1, 0, 0}
 		};
-	
+
 		Matrix y = new Matrix(matrix_2);
 		System.out.println("before\n" + y.toString() + "\n");
 		y.RREF();
@@ -2260,7 +2260,7 @@ class Matrix {
 		System.out.println("before\n" + a.toString() + "\n");
 		a.RREF();
 		System.out.println("after\n" + a.toString() + "\n");
-	}	
+	}
 }
 ```
 
@@ -2458,28 +2458,28 @@ fun main(args: Array<String>) {
 ```txt
 
 Original matrix:
-  1.00    2.00   -1.00   -4.00  
-  2.00    3.00   -1.00  -11.00  
- -2.00    0.00   -3.00   22.00  
+  1.00    2.00   -1.00   -4.00
+  2.00    3.00   -1.00  -11.00
+ -2.00    0.00   -3.00   22.00
 
 Reduced row echelon form:
-  1.00    0.00    0.00   -8.00  
-  0.00    1.00    0.00    1.00  
-  0.00    0.00    1.00   -2.00  
+  1.00    0.00    0.00   -8.00
+  0.00    1.00    0.00    1.00
+  0.00    0.00    1.00   -2.00
 
 Original matrix:
-  1.00    2.00    3.00    4.00    3.00    1.00  
-  2.00    4.00    6.00    2.00    6.00    2.00  
-  3.00    6.00   18.00    9.00    9.00   -6.00  
-  4.00    8.00   12.00   10.00   12.00    4.00  
-  5.00   10.00   24.00   11.00   15.00   -4.00  
+  1.00    2.00    3.00    4.00    3.00    1.00
+  2.00    4.00    6.00    2.00    6.00    2.00
+  3.00    6.00   18.00    9.00    9.00   -6.00
+  4.00    8.00   12.00   10.00   12.00    4.00
+  5.00   10.00   24.00   11.00   15.00   -4.00
 
 Reduced row echelon form:
-  1.00    2.00    0.00    0.00    3.00    4.00  
-  0.00    0.00    1.00    0.00    0.00   -1.00  
-  0.00    0.00    0.00    1.00    0.00    0.00  
-  0.00    0.00    0.00    0.00    0.00    0.00  
-  0.00    0.00    0.00    0.00    0.00    0.00  
+  1.00    2.00    0.00    0.00    3.00    4.00
+  0.00    0.00    1.00    0.00    0.00   -1.00
+  0.00    0.00    0.00    1.00    0.00    0.00
+  0.00    0.00    0.00    0.00    0.00    0.00
+  0.00    0.00    0.00    0.00    0.00    0.00
 
 ```
 
@@ -2495,16 +2495,16 @@ function ToReducedRowEchelonForm ( M )
 
     for r = 1, n_rows do
         if n_cols <= lead then break end
-        
+
         local i = r
         while M[i][lead] == 0 do
             i = i + 1
             if n_rows == i then
                 i = r
                 lead = lead + 1
-                if n_cols == lead then break end                
+                if n_cols == lead then break end
             end
-        end 
+        end
         M[i], M[r] = M[r], M[i]
 
         local m = M[r][lead]
@@ -2518,15 +2518,15 @@ function ToReducedRowEchelonForm ( M )
                     M[i][k] = M[i][k] - m * M[r][k]
                 end
             end
-        end  
-        lead = lead + 1     
+        end
+        lead = lead + 1
     end
 end
 
-M = { { 1, 2, -1, -4 }, 
-      { 2, 3, -1, -11 }, 
+M = { { 1, 2, -1, -4 },
+      { 2, 3, -1, -11 },
       { -2, 0, -3, 22 } }
-      
+
 res = ToReducedRowEchelonForm( M )
 
 for i = 1, #M do
@@ -2540,9 +2540,9 @@ end
 {{out}}
 
 ```txt
-1  0  0  -8  
-0  1  0  1  
-0  0  1  -2 
+1  0  0  -8
+0  1  0  1
+0  0  1  -2
 ```
 
 
@@ -2574,7 +2574,7 @@ Module Base1 {
                   div1=A(r,lead)
                   For c =1 to columncount {
                       A( r, c)/=div1
-                  } 
+                  }
             }
             for i=1 to rowcount {
                   if i<>r then {
@@ -2583,7 +2583,7 @@ Module Base1 {
                                  A(i,j)-=A(r,j)*mult
                         }
                   }
-            } 
+            }
             lead=lead+1
       }
       disp()
@@ -2628,7 +2628,7 @@ Module base0 {
                   div1=A(r,lead)
                   For c =0 to columncount-1 {
                       A( r, c)/=div1
-                  } 
+                  }
             }
             for i=0 to rowcount-1 {
                   if i<>r then {
@@ -2637,7 +2637,7 @@ Module base0 {
                                  A(i,j)-=A(r,j)*mult
                         }
                   }
-            } 
+            }
             lead=lead+1
       }
       disp()
@@ -2743,9 +2743,9 @@ class RowEchelon {
       [2, 3, -1, -11 ]
       [-2, 0, -3,  22]
     ];
-  
+
     matrix := Rref(matrix);
-    
+
     sizes := matrix->Size();
     for(i := 0; i < sizes[0]; i += 1;) {
       for(j := 0; j < sizes[1]; j += 1;) {
@@ -2777,8 +2777,8 @@ class RowEchelon {
             break;
            };
         };
-      };  
-      
+      };
+
       for (j := 0; j < columnCount; j+=1;) {
         temp := matrix[r, j];
         matrix[r, j] := matrix[i, j];
@@ -2798,9 +2798,9 @@ class RowEchelon {
           };
          };
       };
-      lead+=1;    
+      lead+=1;
     };
-    
+
     return matrix;
   }
 }
@@ -2978,7 +2978,7 @@ sub rref
 
 sub display { join("\n" => map join(" " => map(sprintf("%4d", $_), @$_)), @{+shift})."\n" }
 
-@m = 
+@m =
 (
    [  1,  2,  -1,  -4 ],
    [  2,  3,  -1, -11 ],
@@ -3087,9 +3087,9 @@ for @M -> @matrix {
 ```
 
 
-Perl 6 handles rational numbers internally as a ratio of two integers 
-to maintain precision. 
-For some situations it is useful to return the ratio 
+Perl 6 handles rational numbers internally as a ratio of two integers
+to maintain precision.
+For some situations it is useful to return the ratio
 rather than the floating point result.
 
 {{out}}
@@ -3177,7 +3177,7 @@ Reduced Row Echelon Form Matrix
 ```
 
 
-Re-implemented without the pseudocode, expressed as elementary matrix row operations. See 
+Re-implemented without the pseudocode, expressed as elementary matrix row operations. See
 http://unapologetic.wordpress.com/2009/08/27/elementary-row-and-column-operations/
 and
 http://unapologetic.wordpress.com/2009/09/03/reduced-row-echelon-form/
@@ -3269,11 +3269,11 @@ say @($_)».fmt(' %4g') for @($M);
 ```
 
 
-Note that both versions can be simplified using Z+=, Z-=, X*=, 
-and X/= to scale and shear. 
+Note that both versions can be simplified using Z+=, Z-=, X*=,
+and X/= to scale and shear.
 Currently, Rakudo has a bug related to Xop= and Zop=.
 
-Note that the negative zeros in the output are innocuous, 
+Note that the negative zeros in the output are innocuous,
 and also occur in the Perl 5 version.
 
 
@@ -3309,10 +3309,10 @@ integer lead = 1,
     end for
     return M
 end function
- 
+
 ? ToReducedRowEchelonForm(
-    { { 1, 2, -1, -4 }, 
-      { 2, 3, -1, -11 }, 
+    { { 1, 2, -1, -4 },
+      { 2, 3, -1, -11 },
       { -2, 0, -3, 22 } })
 ```
 
@@ -3516,10 +3516,10 @@ print(rref(m))
 #lang racket
 (require math)
 (define (reduced-echelon M)
-  (matrix-row-echelon M #t #t))  
+  (matrix-row-echelon M #t #t))
 
 (reduced-echelon
- (matrix [[1 2 -1 -4] 
+ (matrix [[1 2 -1 -4]
           [2 3 -1 -11]
           [-2 0 -3 22]]))
 
@@ -3529,9 +3529,9 @@ print(rref(m))
 
 ```txt
 
-(mutable-array 
-    #[#[1 0 0 -8] 
-      #[0 1 0 1] 
+(mutable-array
+    #[#[1 0 0 -8]
+      #[0 1 0 1]
       #[0 0 1 -2]])
 
 ```
@@ -3584,7 +3584,7 @@ showMat: parse arg title;          say;    say center(title, 3 + (cols+1) * w, '
                do      r=1  for rows;   _=
                     do c=1  for cols
                     if @.r.c==''  then do; say "***error*** matrix element isn't defined:"
-                                           say 'row'    r",  column"    c'.';     exit 13 
+                                           say 'row'    r",  column"    c'.';     exit 13
                                        end
                     _=_ right(@.r.c, w)
                     end   /*c*/
@@ -3626,14 +3626,14 @@ ref(matrix)
 for row = 1 to 3
      for col = 1 to 4
            if matrix[row][col] = -0
-              see "0 " 
+              see "0 "
            else
               see "" + matrix[row][col] + " "
            ok
      next
      see nl
 next
- 
+
 func ref(m)
 nrows = 3
 ncols = 4
@@ -3656,16 +3656,16 @@ for r = 1 to nrows
       for j = 1 to ncols
            temp = m[i][j]
            m[i][j] = m[r][j]
-           m[r][j] = temp 
+           m[r][j] = temp
       next
       n = m[r][lead]
       if n != 0
          for j = 1 to ncols
-              m[r][j] = m[r][j] / n 
+              m[r][j] = m[r][j] / n
          next
       ok
       for i = 1 to nrows
-           if i != r 
+           if i != r
               n = m[i][lead]
               for j = 1 to ncols
                    m[i][j] = m[i][j] - m[r][j] * n
@@ -3681,8 +3681,8 @@ Output:
 
 ```txt
 
-1 0 0 -8 
-0 1 0  1 
+1 0 0 -8
+0 1 0  1
 0 0 1 -2
 
 ```
@@ -3712,7 +3712,7 @@ def reduced_row_echelon_form(ary)
           throw :done  if cols == lead
         end
       end
-      # swap rows i and r 
+      # swap rows i and r
       rary[i], rary[r] = rary[r], rary[i]
       # normalize row r
       v = rary[r][lead]
@@ -3772,16 +3772,16 @@ print_matrix convert_to(reduced, :to_f)
 
 ```txt
 
-1 0 0 -8 
-0 1 0  1 
-0 0 1 -2 
+1 0 0 -8
+0 1 0  1
+0 0 1 -2
 
-1 0 0 2/3 
-0 1 0 5/3 
-0 0 1   1 
-1.0 0.0 0.0 0.6666666666666666 
-0.0 1.0 0.0 1.6666666666666667 
-0.0 0.0 1.0                1.0 
+1 0 0 2/3
+0 1 0 5/3
+0 0 1   1
+1.0 0.0 0.0 0.6666666666666666
+0.0 1.0 0.0 1.6666666666666667
+0.0 0.0 1.0                1.0
 
 ```
 
@@ -3792,11 +3792,11 @@ print_matrix convert_to(reduced, :to_f)
 {{works with|Sage|4.6.2}}
 
 ```sage
-sage: m = matrix(ZZ, [[1,2,-1,-4],[2,3,-1,-11],[-2,0,-3,22]])                                                                                                                   
-sage: m.rref()                                                                                                                                                                     
-[ 1  0  0 -8]                                                                                                                                                                      
-[ 0  1  0  1]                                                                                                                                                                      
-[ 0  0  1 -2] 
+sage: m = matrix(ZZ, [[1,2,-1,-4],[2,3,-1,-11],[-2,0,-3,22]])
+sage: m.rref()
+[ 1  0  0 -8]
+[ 0  1  0  1]
+[ 0  0  1 -2]
 ```
 
 
@@ -3943,27 +3943,27 @@ Original source: [http://seed7.sourceforge.net/algorith/math.htm#toReducedRowEch
 ```ruby
 func rref (M) {
     var (j, rows, cols) = (0, M.len, M[0].len)
- 
+
     for r in (^rows) {
         j < cols || return M
- 
+
         var i = r
         while (!M[i][j]) {
             ++i == rows || next
             i = r
             ++j == cols && return M
         }
- 
+
         M[i, r] = M[r, i] if (r != i)
         M[r] = (M[r] »/» M[r][j])
- 
+
         for n in (^rows) {
             next if (n == r)
             M[n] = (M[n] »-« (M[r] »*» M[n][j]))
         }
         ++j
     }
- 
+
     return M
 }
 
@@ -4127,7 +4127,7 @@ proc toRREF {m} {
         for {set j 0} {$j < $cols} {incr j} {
             lset m $r $j [/ [double [lindex $m $r $j]] $val]
         }
-        
+
         for {set i 0} {$i < $rows} {incr i} {
             if {$i != $r} {
                 # subtract m(i,lead) multiplied by row r from row i
@@ -4153,9 +4153,9 @@ print_matrix [toRREF $m]
  1 2 -1  -4
  2 3 -1 -11
 -2 0 -3  22
- 1.0  0.0 0.0 -8.0 
--0.0  1.0 0.0  1.0 
--0.0 -0.0 1.0 -2.0 
+ 1.0  0.0 0.0 -8.0
+-0.0  1.0 0.0  1.0
+-0.0 -0.0 1.0 -2.0
 ```
 
 
@@ -4187,7 +4187,7 @@ rref([1,2,–1,–4; 2,3,–1,–11; –2,0,–3,22])
 
 Output (in prettyprint mode): <math>\begin{bmatrix} 1&0&0&-8 \\ 0&1&0&1 \\ 0&0&1&-2 \end{bmatrix}</math>
 
-Matrices can also be stored in variables, and entered interactively 
+Matrices can also be stored in variables, and entered interactively
 using the Data/Matrix Editor.
 
 
@@ -4195,15 +4195,15 @@ using the Data/Matrix Editor.
 
 The most convenient representation for a matrix in Ursala is as a list of lists.
 Several auxiliary functions are defined to make this task more manageable.
-The pivot function reorders the rows to position the first column entry 
+The pivot function reorders the rows to position the first column entry
 with maximum magnitude in the first row.
 The descending function is a second order function abstracting the pattern
-of recursion down the major diagonal of a matrix. 
-The reflect function allows the code for the first phase in the reduction 
-to be reused during the upward traversal by appropriately permuting 
-the rows and columns. 
-The row_reduce function adds a multiple of the top row to each 
-subsequent row so as to cancel the first column. 
+of recursion down the major diagonal of a matrix.
+The reflect function allows the code for the first phase in the reduction
+to be reused during the upward traversal by appropriately permuting
+the rows and columns.
+The row_reduce function adds a multiple of the top row to each
+subsequent row so as to cancel the first column.
 These are all combined in the main rref function.
 
 
@@ -4219,7 +4219,7 @@ rref       = reflect+ (descending row_reduce)+ reflect+ descending row_reduce+ p
 
 #show+
 
-test = 
+test =
 
 printf/*=*'%8.4f' rref <
    <1.,2.,-1.,-4.>,
@@ -4236,10 +4236,10 @@ printf/*=*'%8.4f' rref <
   0.0000  0.0000  1.0000 -2.0000
 ```
 
-An alternative and more efficient solution is 
-to use the msolve library function as shown, 
-which interfaces with the lapack library if available. 
-This solution is applicable only if the input 
+An alternative and more efficient solution is
+to use the msolve library function as shown,
+which interfaces with the lapack library if available.
+This solution is applicable only if the input
 is a non-singular augmented square matrix.
 
 ```Ursala
@@ -4296,7 +4296,7 @@ Private Function ToReducedRowEchelonForm(M As Variant) As Variant
     Next r
     ToReducedRowEchelonForm = M
 End Function
- 
+
 Public Sub main()
     r = ToReducedRowEchelonForm(Array( _
         Array(1, 2, -1, -4), _
@@ -4340,7 +4340,7 @@ SELECT * FROM curs1 INTO ARRAY matrix
 IF RREF(@matrix, lnRows, lnCols)
 	SELECT results
 	APPEND FROM ARRAY matrix
-	BROWSE NORMAL IN SCREEN 
+	BROWSE NORMAL IN SCREEN
 ENDIF
 SET SAFETY &lcSafety
 
@@ -4356,11 +4356,11 @@ FOR r = 1 TO tnRows
 	ENDIF
 	i = r
 	DO WHILE mat[i,lnPivot] = 0
-		i = i + 1 	
+		i = i + 1
 		IF i = tnRows
 			i = r
-			lnPivot = lnPivot + 1 
-			IF lnPivot > tnCols 
+			lnPivot = lnPivot + 1
+			IF lnPivot > tnCols
 				llExit = .T.
 				EXIT
 			ENDIF
@@ -4368,9 +4368,9 @@ FOR r = 1 TO tnRows
 	ENDDO
 	IF llExit
 		EXIT
-	ENDIF	
+	ENDIF
 	ASwapRows(@mat, i, r)
-	p = mat[r,lnPivot] 
+	p = mat[r,lnPivot]
 	IF p # 0
 		FOR j = 1 TO tnCols
 			mat[r,j] = mat[r,j]/p
@@ -4379,7 +4379,7 @@ FOR r = 1 TO tnRows
 		? "Divison by zero."
 		llResult = .F.
 		EXIT
-	ENDIF	
+	ENDIF
 	FOR i = 1 TO tnRows
 		IF i # r
 			p = mat[i,lnPivot]
@@ -4388,7 +4388,7 @@ FOR r = 1 TO tnRows
 			ENDFOR
 		ENDIF
 	ENDFOR
-	lnPivot = lnPivot + 1 										
+	lnPivot = lnPivot + 1
 ENDFOR
 RETURN llResult
 ENDFUNC
@@ -4474,7 +4474,7 @@ toReducedRowEchelonForm(A).format(5,1).println();
 
 ```
 
-Or, using lists of lists and direct implementation of the pseudo-code given, 
+Or, using lists of lists and direct implementation of the pseudo-code given,
 lots of generating new rows rather than modifying the rows themselves.
 
 ```zkl
@@ -4519,13 +4519,13 @@ fcn rowFmt(row){ ("%4d "*row.len()).fmt(row.xplode()) }
 
 ```txt
 
-   1    2   -1   -4 
-   2    3   -1  -11 
-  -2    0   -3   22 
+   1    2   -1   -4
+   2    3   -1  -11
+  -2    0   -3   22
 -->
-   1    0    0   -8 
-   0    1    0    1 
-   0    0    1   -2 
+   1    0    0   -8
+   0    1    0    1
+   0    0    1   -2
 
 ```
 

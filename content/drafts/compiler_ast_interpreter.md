@@ -128,7 +128,7 @@ while (n < limit) {
         count = count + 1;
     }
 }
-print("Total primes found: ", count, "\n"); 
+print("Total primes found: ", count, "\n");
 ```
 
 
@@ -489,8 +489,8 @@ Total primes found: 26
 
 Tested with gcc 4.81 and later, compiles warning free with -Wall -Wextra
 
-```C>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
@@ -590,7 +590,7 @@ int interp(Tree *x) {           /* interpret the parse tree */
         case nd_Eql:      return interp(x->left) == interp(x->right);
         case nd_Neq:      return interp(x->left) != interp(x->right);
         case nd_And:      return interp(x->left) && interp(x->right);
-        case nd_Or:       return interp(x->left) || interp(x->right);  
+        case nd_Or:       return interp(x->left) || interp(x->right);
         case nd_Negate:   return -interp(x->left);
         case nd_Not:      return !interp(x->left);
 
@@ -901,7 +901,7 @@ print-ast.
         if leaf-type(t1) = 'Identifier' or 'Integer' or 'String'
             display t1 space trim(leaf-type(t1)) space trim(leaf-value(t1)) upon syserr
         else
-            display t1 space node-left(t1) space node-right(t1) space trim(node-type(t1)) 
+            display t1 space node-left(t1) space node-right(t1) space trim(node-type(t1))
                 upon syserr
         end-if
     end-perform
@@ -1081,7 +1081,7 @@ start-runast.
                 add count1 to string1
                 subtract count1 from length1
             end-evaluate
-        end-perform 
+        end-perform
         perform pop-stack
     when 'Sequence'
         call 'runast' using node-left(n)
@@ -1191,7 +1191,7 @@ linkage section.
 01  parm-l-right pic 999.
 procedure division using parm-type parm-l-left parm-l-right.
 start-makenode.
-    if t >= t-lim 
+    if t >= t-lim
         string 'in astinterpreter makenode t exceeds ' t-lim into error-record
         call 'reporterror'
     end-if
@@ -1211,7 +1211,7 @@ linkage section.
 procedure division using parm-type parm-value.
 start-makeleaf.
     add 1 to t
-    if t >= t-lim 
+    if t >= t-lim
         string 'in astinterpreter makeleaf t exceeds ' t-lim into error-record
         call 'reporterror'
     end-if
@@ -1301,7 +1301,7 @@ end program astinterpreter.
 {{out|case=Primes}}
 
 ```txt
-prompt$ ./lexer <testcases/Primes | ./parser | ./astinterpreter 
+prompt$ ./lexer <testcases/Primes | ./parser | ./astinterpreter
 3 is prime
 5 is prime
 7 is prime
@@ -1719,7 +1719,7 @@ func loadAst() *Tree {
             reportError(fmt.Sprintf("Unknown node type: %s\n", s))
         }
         return makeLeaf(nodeType, n)
-    }    
+    }
     left := loadAst()
     right := loadAst()
     return makeNode(nodeType, left, right)
@@ -1737,7 +1737,7 @@ func main() {
 
 
 {{out}}
-Prime Numbers example: 
+Prime Numbers example:
 
 ```txt
 
@@ -1793,7 +1793,7 @@ class Interpreter {
 		public NodeType nt;
 		public Node left, right;
 		public String value;
-		
+
 		Node() {
 			this.nt = null;
 			this.left = null;
@@ -1824,11 +1824,11 @@ class Interpreter {
 		nd_Mod("Mod"), nd_Add("Add"),
 		nd_Sub("Subtract"), nd_Lss("Less"), nd_Leq("LessEqual"),
 		nd_Gtr("Greater"), nd_Geq("GreaterEqual"), nd_Eql("Equal"), nd_Neq("NotEqual"), nd_And("And"), nd_Or("Or");
-		
+
 		private final String name;
-		
+
 		NodeType(String name) {	this.name = name; }
-		
+
 		@Override
 		public String toString() { return this.name; }
 	}
@@ -1844,7 +1844,7 @@ class Interpreter {
 				} else if (s.charAt(i) == '\\') {
 					result += '\\';
 					i += 2;
-				} 
+				}
 			} else {
 				result += s.charAt(i);
 				i++;
@@ -1866,7 +1866,7 @@ class Interpreter {
 			globals.put(name, 0);
 			result = 0;
 		}
-		return result;		
+		return result;
 	}
 	static Integer interpret(Node n) throws Exception {
 		if (n == null) {
@@ -1949,7 +1949,7 @@ class Interpreter {
 		String command, value;
 		String line;
 		Node left, right;
-		
+
 		while (s.hasNext()) {
 			line = s.nextLine();
 			value = null;
@@ -2002,7 +2002,7 @@ class Interpreter {
 		str_to_nodes.put("NotEqual", NodeType.nd_Neq);
 		str_to_nodes.put("And", NodeType.nd_And);
 		str_to_nodes.put("Or", NodeType.nd_Or);
-		
+
 		if (args.length > 0) {
 			try {
 				s = new Scanner(new File(args[0]));
@@ -2033,8 +2033,8 @@ end
 make_leaf(t, v) = Anode(t, nothing, nothing, v)
 make_node(t, l, r) = Anode(t, l, r, nothing)
 
-const OP2 = Dict("Multiply" => "*", "Divide" => "/", "Mod" => "%", "Add" => "+", "Subtract" => "-", 
-                 "Less" => "<", "Greater" => ">", "LessEqual" => "<=", "GreaterEqual" => ">=", 
+const OP2 = Dict("Multiply" => "*", "Divide" => "/", "Mod" => "%", "Add" => "+", "Subtract" => "-",
+                 "Less" => "<", "Greater" => ">", "LessEqual" => "<=", "GreaterEqual" => ">=",
                  "Equal" => "==", "NotEqual" => "!=", "And" => "&&", "Or" => "||")
 const OP1 = Dict("Not" => "!", "Minus" => "-")
 
@@ -2289,7 +2289,7 @@ Reusing parse.e from the [[Compiler/syntax_analyzer#Phix|Syntax Analyzer task]]
 ```Phix
 --
 -- demo\rosetta\Compiler\interp.exw
--- 
+--
 ### ==========================
 
 
@@ -2313,7 +2313,7 @@ end function
 function interp(object t)
     if t!=NULL then
         integer ntype = t[1]
-        object t2 = t[2], 
+        object t2 = t[2],
                t3 = iff(length(t)=3?t[3]:0)
         switch ntype do
             case tk_Sequence:       {} = interp(t2) {} = interp(t3)
@@ -2621,10 +2621,10 @@ Total primes found: 26
 ;; We define operations appropriate to virtual machine:
 ;; e.g. division must return an int, not a rational
 ;; boolean values are treated as numbers: 0 is false, other is true
-(define *unary-ops* 
+(define *unary-ops*
   (list (cons 'Negate (lambda (a) (- a)))
         (cons 'Not (lambda (a) (if (zero? a) 1 0)))))
-(define *binary-ops* 
+(define *binary-ops*
   (let ((number-comp (lambda (op) (lambda (a b) (if (op a b) 1 0)))))
     (list (cons 'Add +)
           (cons 'Subtract -)
@@ -2664,10 +2664,10 @@ Total primes found: 26
 (define run-program
   (let ((env '())) ; env is an association list for variable names
     (lambda (expr)
-      (define (tidy-string str)   
+      (define (tidy-string str)
         (string-delete ; remove any quote marks
           #\" ; " (to appease Rosetta code's syntax highlighter)
-          (list->string 
+          (list->string
             (let loop ((chars (string->list str))) ; replace newlines, obeying \\n
               (cond ((< (length chars) 2) ; finished list
                      chars)
@@ -2704,15 +2704,15 @@ Total primes found: 26
            (set! env (cons (cons (string->symbol (left (left expr)))
                                  (run-program (right expr)))
                            env)))
-          ((Add Subtract Multiply Divide Mod 
+          ((Add Subtract Multiply Divide Mod
                 Less Greater LessEqual GreaterEqual Equal NotEqual
                 And Or)
            (let ((binop (assq (car expr) *binary-ops*)))
              (if binop
-               ((cdr binop) (run-program (left expr)) 
+               ((cdr binop) (run-program (left expr))
                             (run-program (right expr)))
                (error "Could not find binary operator"))))
-          ((Negate Not) 
+          ((Negate Not)
            (let ((unaryop (assq (car expr) *unary-ops*)))
              (if unaryop
                ((cdr unaryop) (run-program (left expr)))
@@ -2795,12 +2795,12 @@ Total primes found: 26
 
 ```zkl
 const{ var _n=-1; var[proxy]N=fcn{ _n+=1 }; }  // enumerator
-const FETCH=N, STORE=N, PUSH=N, ADD=N,  SUB=N,  MUL=N, DIV=N, MOD=N, 
-      LT=N,    GT=N,    LE=N,   GE=N,   EQ=N,   NE=N, 
+const FETCH=N, STORE=N, PUSH=N, ADD=N,  SUB=N,  MUL=N, DIV=N, MOD=N,
+      LT=N,    GT=N,    LE=N,   GE=N,   EQ=N,   NE=N,
       AND=N,   OR=N,    NEG=N,  NOT=N,
       JMP=N,   JZ=N,    PRTC=N, PRTS=N, PRTI=N, HALT=N;
 const nd_String=N, nd_Sequence=N, nd_If=N, nd_While=N;
-var [const] 
+var [const]
    all_syms=Dictionary(
       "Identifier"  ,FETCH,       "String"      ,nd_String,
       "Integer"     ,PUSH,        "Sequence"    ,nd_Sequence,
@@ -2815,9 +2815,9 @@ var [const]
       "GreaterEqual",GE,          "Equal"       ,EQ,
       "NotEqual"    ,NE,          "And"         ,AND,
       "Or"          ,OR,	  "halt"	,HALT),
-   bops=Dictionary(ADD,'+, SUB,'-, MUL,'*, DIV,'/, MOD,'%, 
+   bops=Dictionary(ADD,'+, SUB,'-, MUL,'*, DIV,'/, MOD,'%,
 		   LT,'<, GT,'>, LE,'<=, GE,'>=, NE,'!=, EQ,'==, NE,'!=);
- 
+
 class Node{
    fcn init(_node_type, _value, _left=Void, _right=Void){
       var type=_node_type, left=_left, right=_right, value=_value;
@@ -2849,7 +2849,7 @@ fcn runNode(node){
 	    return(op(runNode(node.left),runNode(node.right)));
 	 else throw(Exception.AssertionError(
 	    "Unknown node type: %d".fmt(node.type)))
-      } 
+      }
    }
    Void
 }
@@ -2866,7 +2866,7 @@ fcn load_ast(file){
       try{ value=value.toInt() }catch{}
       if(type==nd_String) value=value[1,-1].replace("\\n","\n");
       return(Node(type,value));
-   } 
+   }
    left,right := load_ast(file),load_ast(file);
    Node(type,Void,left,right)
 }
@@ -2882,7 +2882,7 @@ runNode(ast);
 
 ```txt
 
-$ zkl runAST.zkl primeAST.txt 
+$ zkl runAST.zkl primeAST.txt
 3 is prime
 5 is prime
 7 is prime

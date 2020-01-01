@@ -684,8 +684,8 @@ Every string, every number, every block is a quine.
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 static char sym[] = "\n\t\\\"";
 
@@ -703,8 +703,8 @@ int main(void) {
 ### Shorter version
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 int main(){char*c="#include <stdio.h>%cint main(){char*c=%c%s%c;printf(c,10,34,c,34,10);return 0;}%c";printf(c,10,34,c,34,10);return 0;}
 
 ```
@@ -723,7 +723,8 @@ class Program { static void Main() { var s = "class Program {{ static void Main(
 ## C++
 
 
-```cpp>#include<cstdio
+```cpp
+#include <cstdio>
 
 int main(){char n[]=R"(#include<cstdio>
 int main(){char n[]=R"(%s%c";printf(n,n,41);})";printf(n,n,41);}
@@ -735,8 +736,9 @@ int main(){char n[]=R"(%s%c";printf(n,n,41);})";printf(n,n,41);}
 
 The C1R compiler usually copies C solutions from tasks at Rosetta Code. The Quine task is an exception; it gets special treatment in the C1R compiler.
 
-```c>Quine</lang
-
+```c
+Quine
+```
 
 
 ## Ceylon

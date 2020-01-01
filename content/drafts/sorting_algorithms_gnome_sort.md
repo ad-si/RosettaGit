@@ -25,7 +25,7 @@ The pseudocode for the algorithm is:
          '''if''' a[i-1] <= a[i] '''then'''
              ''// for descending sort, use >= for comparison''
              i := j
-             j := j + 1 
+             j := j + 1
          '''else'''
              '''swap''' a[i-1] '''and''' a[i]
              i := i - 1
@@ -92,7 +92,7 @@ procedure Gnome_Sort(Item : in out Collection) is
       Left := Right;
       Right := Temp;
    end Swap;
-   
+
    I : Integer := Index'Pos(Index'Succ(Index'First));
    J : Integer := I + 1;
 begin
@@ -263,7 +263,7 @@ function showD(p,   i) {
 
 
 Example output:
- Before: 3 4 1 -8.4 7.2 4 1 1.2 
+ Before: 3 4 1 -8.4 7.2 4 1 1.2
  Sorted: -8.4 1 1 1.2 3 4 4 7.2
 
 
@@ -280,11 +280,11 @@ sort:
 i = 1
 j = 2
 
-while(i < ubound(a) - lbound(a)) 
+while(i < ubound(a) - lbound(a))
   if a(i-1) <= a(i) then
     i = j
     j = j + 1
-  else 
+  else
     swap a(i-1), a(i)
     i = i - 1
     if i = 0 then
@@ -401,7 +401,7 @@ This algorithm sorts in place modifying the passed ''array'' (of <code>n</code> 
 void gnome_sort(int *a, int n)
 {
   int i=1, j=2, t;
-# define swap(i, j) { t = a[i]; a[i] = a[j]; a[j] = t; } 
+# define swap(i, j) { t = a[i]; a[i] = a[j]; a[j] = t; }
   while(i < n) {
     if (a[i - 1] > a[i]) {
       swap(i - 1, i);
@@ -443,7 +443,7 @@ void gnome_sort(int *a, int n)
                         second = 2;
                     }
                 }
-                
+
             }
         }
 
@@ -456,8 +456,8 @@ void gnome_sort(int *a, int n)
 Uses C++11. Compile with
  g++ -std=c++11 gnome.cpp
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iterator>
 #include <iostream>
 
@@ -465,7 +465,7 @@ template<typename RandomAccessIterator>
 void gnome_sort(RandomAccessIterator begin, RandomAccessIterator end) {
   auto i = begin + 1;
   auto j = begin + 2;
- 
+
   while (i < end) {
     if (!(*i < *(i - 1))) {
       i = j;
@@ -734,7 +734,7 @@ PrintLn('}');
 
 ```
 
-Ouput : 
+Ouput :
 
 ```txt
 
@@ -903,9 +903,9 @@ end
 
 ```txt
 
-Unsorted: 
+Unsorted:
 7    99    -7    1    0    25    -10
-Sorted: 
+Sorted:
 -7    -10    0    1    7    25    99
 
 ```
@@ -926,7 +926,7 @@ extension op
         var list := self.clone();
         int i := 1;
         int j := 2;
- 
+
         while (i < list.Length)
         {
             if (list[i-1]<=list[i])
@@ -945,15 +945,15 @@ extension op
                 }
             }
         };
- 
+
         ^ list
     }
 }
- 
+
 public program()
 {
     var list := new int[]::(3, 9, 4, 6, 8, 1, 7, 2, 5);
- 
+
     console.printLine("before:", list.asEnumerable());
     console.printLine("after :", list.gnomeSort().asEnumerable())
 }
@@ -978,7 +978,7 @@ after :1,2,3,4,5,6,7,8,9
 defmodule Sort do
   def gnome_sort([]), do: []
   def gnome_sort([h|t]), do: gnome_sort([h], t)
-  
+
   defp gnome_sort(list, []), do: list
   defp gnome_sort([prev|p], [next|n]) when next > prev, do: gnome_sort(p, [next,prev|n])
   defp gnome_sort(p, [next|n]), do: gnome_sort([next|p], n)
@@ -1021,7 +1021,7 @@ Eshell V5.7.3  (abort with ^G)
 {ok,gnome_sort}
 2> gnome_sort:gnome([8,3,9,1,3,2,6]).
 [1,2,3,3,6,8,9]
-3> 
+3>
 ```
 
 
@@ -1075,29 +1075,29 @@ let inline gnomeSort (a: _ []) =
 
  USING: kernel math sequences ;
  IN: rosetta-code.gnome-sort
- 
+
  : inc-pos ( pos seq -- pos' seq )
      [ 1 + ] dip ; inline
- 
+
  : dec-pos ( pos seq -- pos' seq )
      [ 1 - ] dip ; inline
- 
+
  : take-two ( pos seq -- elt-at-pos-1 elt-at-pos )
      [ dec-pos nth ] [ nth ] 2bi ; inline
- 
+
  : need-swap? ( pos seq -- pos seq ? )
      over 1 < [ f ] [ 2dup take-two > ] if ;
- 
+
  : swap-back ( pos seq -- pos seq' )
      [ take-two ] 2keep
      [ dec-pos set-nth ] 2keep
      [ set-nth ] 2keep ;
- 
+
  : gnome-sort ( seq -- sorted-seq )
      1 swap [ 2dup length < ] [
          2dup [ need-swap? ] [ swap-back dec-pos ] while
          2drop inc-pos
-     ] while nip ; 
+     ] while nip ;
 Example:
  IN: scratchpad '''USE: rosetta-code.gnome-sort'''
  Loading resource:extra/rosetta-code/gnome-sort/gnome-sort.factor
@@ -1213,9 +1213,9 @@ A slightly optimized version is presented below, where Gnome sort keeps track of
 
 ```fortran
 program example
- 
+
   implicit none
- 
+
   integer :: array(8) = (/ 2, 8, 6, 1, 3, 5, 4, 7 /)
 
   call Gnomesort(array)
@@ -1247,7 +1247,7 @@ subroutine Gnomesort(a)
   end do
 
 end subroutine Gnomesort
-  
+
 end program example
 ```
 
@@ -1490,7 +1490,7 @@ gnomeSort (x:xs) = gs [x] xs
 		| otherwise = gs vs (w:v:ws)
 	gs [] (y:ys) = gs [y] ys
 	gs xs [] = reverse xs
--- keeping the first argument of gs in reverse order avoids the deterioration into cubic behaviour 
+-- keeping the first argument of gs in reverse order avoids the deterioration into cubic behaviour
 ```
 
 
@@ -1547,11 +1547,11 @@ lst gnomeSortInPlace println # ==> list(-4, -1, 2, 5, 9)
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main()                     #: demonstrate various ways to sort a list and string 
+procedure main()                     #: demonstrate various ways to sort a list and string
    demosort(gnomesort,[3, 14, 1, 5, 9, 2, 6, 3],"qwerty")
 end
 
-procedure gnomesort(X,op)            #: return sorted list 
+procedure gnomesort(X,op)            #: return sorted list
 local i,j
 
    op := sortop(op,X)                # select how and what we sort
@@ -1564,7 +1564,7 @@ local i,j
       }
       j := (i := j) + 1
    }
-   return X        
+   return X
 end
 ```
 
@@ -1638,7 +1638,7 @@ swap=: position (] {~ _1 0 + [)`(0 _1 + [)`]}^:(*@[) ]
 
 Note 2: this implementation only works for domains where > is defined (in J, "greater than" only works on numbers).  To work around this issue, you could define:
 ```J
-gt=:  -.@(-: /:~)@,&< 
+gt=:  -.@(-: /:~)@,&<
 gnome=: swap~ 2 gt/\ ]
 ```
 
@@ -1665,7 +1665,7 @@ public static void gnomeSort(int[] a)
 {
   int i=1;
   int j=2;
- 
+
   while(i < a.length) {
     if ( a[i-1] <= a[i] ) {
       i = j; j++;
@@ -1705,7 +1705,7 @@ function gnomeSort(a) {
 ## jq
 
 {{works with | jq|1.4}}
-This implementation adheres to the specification. 
+This implementation adheres to the specification.
 The array to be sorted, however, can be any JSON array.
 
 ```jq
@@ -1720,7 +1720,7 @@ def gnomeSort:
 
   length as $length
   # state: [i, j, ary]
-  | [1, 2, .] 
+  | [1, 2, .]
   | do_until( .[0] >= $length;
               .[0] as $i | .[1] as $j
               | .[2]
@@ -1811,7 +1811,7 @@ println("# unordered: $v\n -> ordered: ", bogosort!(v))
 fun <T: Comparable<T>> gnomeSort(a: Array<T>, ascending: Boolean = true) {
     var i = 1
     var j = 2
-    while (i < a.size) 
+    while (i < a.size)
         if (ascending && (a[i - 1] <= a[i]) ||
            !ascending && (a[i - 1] >= a[i]))
             i = j++
@@ -1821,7 +1821,7 @@ fun <T: Comparable<T>> gnomeSort(a: Array<T>, ascending: Boolean = true) {
             a[i--] = temp
             if (i == 0) i = j++
         }
-} 
+}
 
 fun main(args: Array<String>) {
     val array = arrayOf(100, 2, 56, 200, -52, 3, 99, 33, 177, -199)
@@ -1931,9 +1931,9 @@ function list = gnomeSort(list)
 
     i = 2;
     j = 3;
-    
+
     while i <= numel(list)
-       
+
         if list(i-1) <= list(i)
             i = j;
             j = j+1;
@@ -1945,7 +1945,7 @@ function list = gnomeSort(list)
                 j = j+1;
             end
         end %if
-        
+
     end %while
 end %gnomeSort
 ```
@@ -2151,9 +2151,9 @@ function : GnomeSort(a : Int[]) {
  
   while(i < a->Size()) {
     if (a[i-1] <= a[i]) {
-      i := j; 
+      i := j;
       j += 1;
-    } 
+    }
     else {
       tmp := a[i-1];
       a[i-1] := a[i];
@@ -2177,7 +2177,7 @@ from the toplevel:
 
 ```ocaml
 # let gnome_sort a =
-    let i = ref 1 
+    let i = ref 1
     and j = ref 2 in
     while !i < Array.length a do
       if a.(!i-1) <= a.(!i) then
@@ -2599,7 +2599,7 @@ integer i = 1, j = 2
     end while
     return s
 end function
- 
+
 ?gnomeSort(shuffle(tagset(10)))
 ```
 
@@ -2755,7 +2755,7 @@ Sample output:
 
 ```PowerShell
 
-function gnomesort($a) {   
+function gnomesort($a) {
     $size, $i, $j = $a.Count, 1, 2
     while($i -lt $size) {
         if ($a[$i-1] -le $a[$i]) {
@@ -2795,12 +2795,12 @@ $array = @(60, 21, 19, 36, 63, 8, 100, 80, 3, 87, 11)
 Procedure GnomeSort(Array a(1))
   Protected Size = ArraySize(a()) + 1
   Protected i = 1, j = 2
-   
+
   While i < Size
     If a(i - 1) <= a(i)
       ;for descending SORT, use >= for comparison
       i = j
-      j + 1 
+      j + 1
     Else
       Swap a(i - 1), a(i)
       i - 1
@@ -2836,10 +2836,10 @@ EndProcedure
 >>>
 ```
 
- 
+
 
 ## R
-           
+
 
 ```r
 gnomesort <- function(x)
@@ -2862,7 +2862,7 @@ gnomesort <- function(x)
          {
             i <- j
             j <- j+1
-         } 
+         }
       }
    }
    x
@@ -2991,7 +2991,7 @@ show:  do j=1  for #;  say '       element'  right(j, w)  arg(1)":"  @.j;   end;
 ```txt
 
        element 1 before sort: ---the seven virtues---
-       element 2 before sort: 
+       element 2 before sort:
 ### =================
 
        element 3 before sort: Faith
@@ -3003,7 +3003,7 @@ show:  do j=1  for #;  say '       element'  right(j, w)  arg(1)":"  @.j;   end;
        element 9 before sort: Temperance
 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
        element 1  after sort: ---the seven virtues---
-       element 2  after sort: 
+       element 2  after sort:
 ### =================
 
        element 3  after sort: Charity  [Love]
@@ -3078,7 +3078,7 @@ show:  Procedure Expose x.
 ```txt
 before sort
 element  1 ---the seven virtues---
-element  2 
+element  2
 ### =================
 
 element  3 Faith
@@ -3090,7 +3090,7 @@ element  8 Prudence
 element  9 Temperance
  after sort
 element  1 ---the seven virtues---
-element  2 
+element  2
 ### =================
 
 element  3 Charity  [Love]
@@ -3120,7 +3120,7 @@ func gnomeSort a
      j = 3
      while i < len(a)
            if a[i-1] <= a[i]
-              i = j 
+              i = j
               j = j + 1
            else
               temp = a[i-1]
@@ -3315,7 +3315,7 @@ gnomesort value: o.
 package require Tcl 8.5
 package require struct::list
 
-proc gnomesort {a} {    
+proc gnomesort {a} {
     set i 1
     set j 2
     set size [llength $a]
@@ -3378,7 +3378,7 @@ Store input into L<sub>1</sub>, run prgmSORTGNOM, output will be in L<sub>2</sub
   PROC _Gnomesort (n)
   PROC _ShowArray (n)
 PRINT
- 
+
 END
 
 
@@ -3398,31 +3398,31 @@ _Gnomesort PARAM (1)                   ' Gnome sort
     b@ = c@
     c@ = c@ + 1
   LOOP
-RETURN 
- 
+RETURN
+
 
 _Swap PARAM(2)                         ' Swap two array elements
   PUSH @(a@)
   @(a@) = @(b@)
   @(b@) = POP()
 RETURN
- 
- 
+
+
 _InitArray                             ' Init example array
   PUSH 4, 65, 2, -31, 0, 99, 2, 83, 782, 1
- 
+
   FOR i = 0 TO 9
     @(i) = POP()
   NEXT
- 
+
 RETURN (i)
- 
- 
+
+
 _ShowArray PARAM (1)                   ' Show array subroutine
   FOR i = 0 TO a@-1
     PRINT @(i),
   NEXT
- 
+
   PRINT
 RETURN
 ```
@@ -3487,7 +3487,7 @@ Private Function gnomeSort(s As Variant) As Variant
     Loop
     gnomeSort = s
 End Function
- 
+
 Public Sub main()
     Debug.Print Join(gnomeSort([{5, 3, 1, 7, 4, 1, 1, 20}]), ", ")
 End Sub
@@ -3595,7 +3595,7 @@ while I < Size do
     if A(I-1) <= A(I) then
         [\ for descending sort, use >= for comparison
         I:= J;
-        J:= J+1; 
+        J:= J+1;
         ]
     else
         [T:= A(I-1);  A(I-1):= A(I);  A(I):= T; \swap
@@ -3619,7 +3619,7 @@ for I:= 0 to 10-1 do [IntOut(0, A(I));  ChOut(0, ^ )];
 
 ```txt
 
--5 1 1 2 3 4 4 5 6 9 
+-5 1 1 2 3 4 4 5 6 9
 
 ```
 

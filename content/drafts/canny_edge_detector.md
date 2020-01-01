@@ -28,8 +28,8 @@ where <math>p</math> is the current pixel, <math>p_a</math> and <math>p_b</math>
 
 The following program reads an 8 bits per pixel grayscale [[wp:BMP file format|BMP]] file and saves the result to `out.bmp'. Compile with `-lm'.
 
-```c>#include <stdint.h
-
+```c
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <float.h>
@@ -878,10 +878,10 @@ form_inc_button =: 3 : 0
    case. 2 do.
       wd 'set txt text "... iterating over edges with >75 points ...";'
       img =: edges=ix{ids
-      whilst. (num<75) *. (ix<nids) do. 
+      whilst. (num<75) *. (ix<nids) do.
          img =: edges=ix{ids
          num =: +/,img
-         ix=:>:ix 
+         ix=:>:ix
          if. ix=#ids do. case=:_1 end.
       end.
       img =: 1-img
@@ -944,15 +944,15 @@ In Python, Canny edge detection would normally be done using [http://scikit-imag
 import numpy as np
 from scipy.ndimage.filters import convolve, gaussian_filter
 from scipy.misc import imread, imshow
-	
+
 def CannyEdgeDetector(im, blur = 1, highThreshold = 91, lowThreshold = 31):
 	im = np.array(im, dtype=float) #Convert to float to prevent clipping values
- 
+
 	#Gaussian blur to reduce noise
 	im2 = gaussian_filter(im, blur)
 
 	#Use sobel filters to get horizontal and vertical gradients
-	im3h = convolve(im2,[[-1,0,1],[-2,0,2],[-1,0,1]]) 
+	im3h = convolve(im2,[[-1,0,1],[-2,0,2],[-1,0,1]])
 	im3v = convolve(im2,[[1,2,1],[0,0,0],[-1,-2,-1]])
 
 	#Get gradient and direction
@@ -989,16 +989,16 @@ def CannyEdgeDetector(im, blur = 1, highThreshold = 91, lowThreshold = 31):
 	#Strong has value 2, weak has value 1
 	thresholdedEdges = np.array(strongEdges, dtype=np.uint8) + (gradSup > lowThreshold)
 
-	#Tracing edges with hysteresis	
+	#Tracing edges with hysteresis
 	#Find weak edge pixels near strong edge pixels
 	finalEdges = strongEdges.copy()
 	currentPixels = []
 	for r in range(1, im.shape[0]-1):
-		for c in range(1, im.shape[1]-1):	
+		for c in range(1, im.shape[1]-1):
 			if thresholdedEdges[r, c] != 1:
 				continue #Not a weak pixel
-			
-			#Get 3x3 patch	
+
+			#Get 3x3 patch
 			localPatch = thresholdedEdges[r-1:r+2,c-1:c+2]
 			patchMax = localPatch.max()
 			if patchMax == 2:

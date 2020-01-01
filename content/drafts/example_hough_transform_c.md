@@ -15,8 +15,8 @@ tags = []
 
 (Tested only with the pentagon image given)
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
@@ -42,7 +42,7 @@ uint8_t *houghtransform(uint8_t *d, int *w, int *h, int *s, int bpp)
   int tw = 360;
   uint8_t *ht = malloc(th*tw*4);
   memset(ht, 0, 4*th*tw); // black bg
-  
+
   for(rho = 0; rho < th; rho++)
   {
     for(theta = 0; theta < tw/*720*/; theta++)
@@ -73,7 +73,7 @@ uint8_t *houghtransform(uint8_t *d, int *w, int *h, int *s, int bpp)
 	  totalpix++;
 	  totalred += GR(x, y);
 	  totalgreen += GG(x, y);
-	  totalblue += GB(x, y);	  
+	  totalblue += GB(x, y);
 	}
       }
       if ( totalpix > 0 ) {
@@ -95,17 +95,17 @@ int main(int argc, char **argv)
 {
   cairo_surface_t *inputimg = NULL;
   cairo_surface_t *houghimg = NULL;
-  
+
   uint8_t *houghdata = NULL, *inputdata = NULL;
   int w, h, s, bpp;
 
   if ( argc < 3 ) return EXIT_FAILURE;
-  
+
   inputimg = cairo_image_surface_create_from_png(argv[1]);
-  
+
   w = cairo_image_surface_get_width(inputimg);
   h = cairo_image_surface_get_height(inputimg);
-  s = cairo_image_surface_get_stride(inputimg);  
+  s = cairo_image_surface_get_stride(inputimg);
   bpp = cairo_image_surface_get_format(inputimg);
   switch(bpp)
   {
@@ -119,13 +119,13 @@ int main(int argc, char **argv)
 
   inputdata = cairo_image_surface_get_data(inputimg);
   houghdata = houghtransform(inputdata, &w, &h, &s, bpp);
-  
+
   printf("w=%d, h=%d\n", w, h);
   houghimg = cairo_image_surface_create_for_data(houghdata,
 						 CAIRO_FORMAT_RGB24,
 						 w, h, s);
   cairo_surface_write_to_png(houghimg, argv[2]);
-  
+
 destroy:
   if (inputimg != NULL) cairo_surface_destroy(inputimg);
   if (houghimg != NULL) cairo_surface_destroy(houghimg);
@@ -141,14 +141,14 @@ Output image (but with white background):
 <br style="clear:both" />
 
 
-###  Alternative version 
+###  Alternative version
 
 
 [[file:penta-hugh.png|thumb]][[file:hugh-lines-in.png|thumb]][[file:hugh-lines-out.png|thumb]]
 This code is a little to long to my liking, because I had to put some ad hoc stuff that should be better served by libraries.  But you don't want to see libpng code here, trust me.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>

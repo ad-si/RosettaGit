@@ -112,14 +112,14 @@ for /f "delims=" %%i in (input.txt) do (
 	for %%j in (%%i) do (
 		if not !skip%%j!==true (
 			echo line !line! ^| word !word:~-5! - "%%~j"
-			
+
 			type input.txt | find /i /c "%%~j" > count.tmp
 			set /p tmpvar=<count.tmp
-			
+
 			set tmpvar=000000000!tmpvar!
 			set tmpvar=!tmpvar:~-10!
 			set count[!word!]=!tmpvar! %%~j
-			
+
 			set "skip%%j=true"
 			set /a word+=1
 		)
@@ -139,7 +139,7 @@ cls
 for %%i in (%*) do echo !word[%%i]!
 endlocal
 goto:eof
-	
+
 
 ```
 
@@ -171,8 +171,8 @@ goto:eof
 
 {{trans|C#}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <fstream>
 #include <map>
@@ -751,7 +751,7 @@ Hence the remainder of the j sentence must clean after loading the file.
 <nowiki>((e.&(a.-.Alpha_j_,' '))`(,:&' '))}  substitutes space character for the unwanted characters.</nowiki>
 <nowiki>1!:1 reads the file named in the box <</nowiki>
 
-         
+
 
 ```txt
 
@@ -777,7 +777,7 @@ Hence the remainder of the j sentence must clean after loading the file.
 ├─────┼────┤
 │6661 │it  │
 └─────┴────┘
-   
+
 
 ```
 
@@ -894,7 +894,7 @@ Dim1   │
 
 The author of the Perl 6 entry has given a good account of the difficulties with this task and, in the absence of any clarification on the various issues, I've followed a similar 'literal' approach.
 
-So, after first converting the text to lower case, I've assumed that a word is any sequence of one or more lower-case Unicode letters and obtained the same results as the Perl 6 version. 
+So, after first converting the text to lower case, I've assumed that a word is any sequence of one or more lower-case Unicode letters and obtained the same results as the Perl 6 version.
 
 There is no change in the results if the numerals 0-9 are also regarded as letters.
 
@@ -917,8 +917,8 @@ fun main(args: Array<String>) {
 ### =  ====  ======
 ")
     var rank = 1
-    for ((word, freq) in wordGroups) 
-        System.out.printf("%2d    %-4s    %5d\n", rank++, word, freq)   
+    for ((word, freq) in wordGroups)
+        System.out.printf("%2d    %-4s    %5d\n", rank++, word, freq)
 }
 ```
 
@@ -991,11 +991,11 @@ class Rosetta {
     if(args->Size() <> 1) {
       return;
     };
-    
+
     input := FileReader->ReadFile(args[0]);
     filter := RegEx->New("\\w+");
     words := filter->Find(input);
-    
+
     word_counts := StringMap->New();
     each(i : words) {
       word := words->Get(i)->As(String);
@@ -1009,8 +1009,8 @@ class Rosetta {
           word_counts->Insert(word, IntHolder->New(1));
         };
       };
-    };  
-    
+    };
+
     count_words := IntMap->New();
     words := word_counts->GetKeys();
     each(i : words) {
@@ -1018,10 +1018,10 @@ class Rosetta {
       count := word_counts->Find(word)->As(IntHolder);
       count_words->Insert(count->Get(), word);
     };
-    
+
     counts := count_words->GetKeys();
     counts->Sort();
-    
+
     index := 1;
     "Rank\tWord\tFrequency"->PrintLine();
     "
@@ -1103,7 +1103,7 @@ let () =
 
 ```txt
 
-$ ocaml str.cma word_freq.ml 
+$ ocaml str.cma word_freq.ml
 41092  the
 19954  of
 14943  and
@@ -1615,11 +1615,11 @@ This REXX version doesn't need to sort the list of words.
 
 Currently, this version recognizes all the accented (non-Latin) accented letters that are present in the text (file) that is specified to be used   (and some other non-Latin letters as well).   This means that the word     <big><big> Alèthe </big></big>     is treated as one word, not as two words     <big><big> Al  the </big></big>     (and not thereby adding two words).
 
-This version also supports words that contain embedded apostrophes (<b><big>''' ' '''</big></b>)     [that is, within a word, but not those words that start or end with an apostrophe; for those words, the apostrophe is elided].  
+This version also supports words that contain embedded apostrophes (<b><big>''' ' '''</big></b>)     [that is, within a word, but not those words that start or end with an apostrophe; for those words, the apostrophe is elided].
 
 Thus,   ''' it's '''   is counted separately from   '''it'''   or   ''' its'''.
 
-Since REXX doesn't support UTF-8 encodings, code was added to this REXX version to support the accented letters in the mandated input file. 
+Since REXX doesn't support UTF-8 encodings, code was added to this REXX version to support the accented letters in the mandated input file.
 
 ```rexx
 /*REXX pgm displays top 10 words in a file (includes foreign letters),  case is ignored.*/
@@ -1697,7 +1697,7 @@ commas: procedure;  parse arg _;      n=_'.9';      #=123456789;       b=verify(
 
 ```
 
-To see a list of the top 1,000 words that show (among other things) words like   '''it's'''   and other accented words, see the discussion page. 
+To see a list of the top 1,000 words that show (among other things) words like   '''it's'''   and other accented words, see the discussion page.
 
 
 
@@ -1789,7 +1789,7 @@ We found 22820 different words
 
 fp = fopen("Miserables.txt","r")
 str = fread(fp, getFileSize(fp))
-fclose(fp) 
+fclose(fp)
 
 mis =substr(str, " ", nl)
 mis = lower(mis)
@@ -1806,7 +1806,7 @@ for n = 1 to len(mis)
                     ok
               next
               if flag = 0
-                 count[n] = count[n] + 1                 
+                 count[n] = count[n] + 1
               ok
            ok
      next
@@ -2317,7 +2317,7 @@ BEGIN
 
     WORD :- BLANKS(1000);
     MAP :- NEW HASHMAP;
-  
+
     COMMENT MAP WORDS TO COUNTERS ;
 
     INF :- NEW INFILE("135-0.txt");
@@ -2457,7 +2457,7 @@ cat ${1} | tr -cs A-Za-z '\n' | tr A-Z a-z | sort | uniq -c | sort -rn | sed ${2
 
 ```txt
 
-$ ./wordcount.sh 135-0.txt 10 
+$ ./wordcount.sh 135-0.txt 10
 41089 the
 19949 of
 14942 and
@@ -2620,7 +2620,7 @@ Rank Word    Frequency
 9    THAT     7 807
 10   IT       6 517
 
-Optionally : 
+Optionally :
 Frequency of the word MISERABLE : 35
 Frequency of the word DISASTER : 12
 Frequency of the word ROSETTA_CODE : 0

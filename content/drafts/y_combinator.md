@@ -14,7 +14,7 @@ tags = []
 {{requires|First class functions}}
 [[Category:Recursion]]
 
-In strict [[wp:Functional programming|functional programming]] and the [[wp:lambda calculus|lambda calculus]], functions (lambda expressions) don't have state and are only allowed to refer to arguments of enclosing functions. 
+In strict [[wp:Functional programming|functional programming]] and the [[wp:lambda calculus|lambda calculus]], functions (lambda expressions) don't have state and are only allowed to refer to arguments of enclosing functions.
 This rules out the usual definition of a recursive function wherein a function is associated with the state of a variable and this variable's state is used in the body of the function.
 
 The [http://mvanier.livejournal.com/2897.html Y combinator] is itself a stateless function that, when applied to another stateless function, returns a recursive version of the function. The Y combinator is the simplest of the class of such functions, called [[wp:Fixed-point combinator|fixed-point combinators]].
@@ -89,18 +89,18 @@ on |Y|(f)
                     y's |λ|(y)'s |λ|(x)
                 end |λ|
             end script
-            
+
             f's |λ|(result)
         end |λ|
     end script
-    
+
     result's |λ|(result)
 end |Y|
 
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     -- Factorial
     script fact
         on |λ|(f)
@@ -112,8 +112,8 @@ on run
             end script
         end |λ|
     end script
-    
-    
+
+
     -- Fibonacci
     script fib
         on |λ|(f)
@@ -126,14 +126,14 @@ on run
             end script
         end |λ|
     end script
-    
+
     {facts:map(|Y|(fact), enumFromTo(0, 11)), fibs:map(|Y|(fib), enumFromTo(0, 20))}
-    
-    --> {facts:{1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800}, 
-    
-    --> fibs:{0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 
-    --           1597, 2584, 4181, 6765}} 
-    
+
+    --> {facts:{1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800},
+
+    --> fibs:{0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987,
+    --           1597, 2584, 4181, 6765}}
+
 end run
 
 
@@ -165,7 +165,7 @@ on enumFromTo(m, n)
     return lst
 end enumFromTo
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -181,7 +181,7 @@ end mReturn
 {{Out}}
 
 ```AppleScript
-{facts:{1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800}, 
+{facts:{1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800},
 fibs:{0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765}}
 ```
 
@@ -197,9 +197,9 @@ fibs:{0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 25
 /* ARM assembly Raspberry PI  */
 /*  program Ycombi.s   */
 
-/* REMARK 1 : this program use routines in a include file 
-   see task Include a file language arm assembly 
-   for the routine affichageMess conversion10 
+/* REMARK 1 : this program use routines in a include file
+   see task Include a file language arm assembly
+   for the routine affichageMess conversion10
    see at end of this program the instruction include */
 
 /* Constantes    */
@@ -214,11 +214,11 @@ fibs:{0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 25
 /* structure function*/
     .struct  0
 func_fn:                    @ next element
-    .struct  func_fn + 4 
+    .struct  func_fn + 4
 func_f_:                    @ next element
-    .struct  func_f_ + 4 
+    .struct  func_f_ + 4
 func_num:
-    .struct  func_num + 4 
+    .struct  func_num + 4
 func_fin:
 
 /* Initialized data */
@@ -237,11 +237,11 @@ sValue:                  .space 12,' '
                          .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                                           @ program start
     ldr r0,iAdrszMessStartPgm                   @ display start message
     bl affichageMess
@@ -258,7 +258,7 @@ main:                                           @ program start
     beq 99f
     mov r1,r0                                   @ structure number address
     mov r0,r5                                   @ Ycombinator address
-    bl callFunc                                 @ call 
+    bl callFunc                                 @ call
     ldr r0,[r0,#func_num]                       @ load result
     ldr r1,iAdrsValue                           @ and convert ascii string
     bl conversion10
@@ -281,7 +281,7 @@ main:                                           @ program start
     beq 99f
     mov r1,r0                                   @ structure number address
     mov r0,r5                                   @ Ycombinator address
-    bl callFunc                                 @ call 
+    bl callFunc                                 @ call
     ldr r0,[r0,#func_num]                       @ load result
     ldr r1,iAdrsValue                           @ and convert ascii string
     bl conversion10
@@ -293,7 +293,7 @@ main:                                           @ program start
     ldr r0,iAdrszMessEndPgm                     @ display end message
     bl affichageMess
     b 100f
-99:                                             @ display error message 
+99:                                             @ display error message
     ldr r0,iAdrszMessError
     bl affichageMess
 100:                                            @ standard end of the program
@@ -309,12 +309,12 @@ iAdrszCarriageReturn:      .int szCarriageReturn
 iAdrszMessResult:          .int szMessResult
 iAdrsValue:                .int sValue
 /******************************************************************/
-/*     factorielle function                         */ 
+/*     factorielle function                         */
 /******************************************************************/
 /* r0 contains the Y combinator address  */
 /* r1 contains the number structure  */
 facFunc:
-    push {r1-r3,lr}             @ save  registers 
+    push {r1-r3,lr}             @ save  registers
     mov r2,r0                   @ save Y combinator address
     ldr r0,[r1,#func_num]       @ load number
     cmp r0,#1                   @ > 1 ?
@@ -339,12 +339,12 @@ facFunc:
     pop {r1-r3,lr}              @ restaur registers
     bx lr                       @ return
 /******************************************************************/
-/*     fibonacci function                         */ 
+/*     fibonacci function                         */
 /******************************************************************/
 /* r0 contains the Y combinator address  */
 /* r1 contains the number structure  */
 fibFunc:
-    push {r1-r4,lr}             @ save  registers 
+    push {r1-r4,lr}             @ save  registers
     mov r2,r0                   @ save Y combinator address
     ldr r0,[r1,#func_num]       @ load number
     cmp r0,#1                   @ > 1 ?
@@ -377,22 +377,22 @@ fibFunc:
     pop {r1-r4,lr}              @ restaur registers
     bx lr                       @ return
 /******************************************************************/
-/*     call function                         */ 
+/*     call function                         */
 /******************************************************************/
 /* r0 contains the address of the function  */
 /* r1 contains the address of the function 1 */
 callFunc:
-    push {r2,lr}                                @ save  registers 
+    push {r2,lr}                                @ save  registers
     ldr r2,[r0,#func_fn]                        @ load function address to execute
     blx r2                                      @ and call it
     pop {r2,lr}                                 @ restaur registers
     bx lr                                       @ return
 /******************************************************************/
-/*     create Y combinator function                         */ 
+/*     create Y combinator function                         */
 /******************************************************************/
 /* r0 contains the address of the function  */
 YFunc:
-    push {r1,lr}                                @ save  registers 
+    push {r1,lr}                                @ save  registers
     mov r1,#0
     bl newFunc
     cmp r0,#-1                                  @ allocation error ?
@@ -400,11 +400,11 @@ YFunc:
     pop {r1,lr}                                 @ restaur registers
     bx lr                                       @ return
 /******************************************************************/
-/*     create structure number function                         */ 
+/*     create structure number function                         */
 /******************************************************************/
 /* r0 contains the number  */
 numFunc:
-    push {r1,r2,lr}                             @ save  registers 
+    push {r1,r2,lr}                             @ save  registers
     mov r2,r0                                   @ save number
     mov r0,#0                                   @ function null
     mov r1,#0                                   @ function null
@@ -414,12 +414,12 @@ numFunc:
     pop {r1,r2,lr}                              @ restaur registers
     bx lr                                       @ return
 /******************************************************************/
-/*     new function                                               */ 
+/*     new function                                               */
 /******************************************************************/
 /* r0 contains the function address   */
 /* r1 contains the function address 1   */
 newFunc:
-    push {r2-r7,lr}                             @ save  registers 
+    push {r2-r7,lr}                             @ save  registers
     mov r4,r0                                   @ save address
     mov r5,r1                                   @ save adresse 1
     @ allocation place on the heap
@@ -802,8 +802,8 @@ fib(10)=55
 ## C
 
 C doesn't have first class functions, so we demote everything to second class to match.
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 /* func: our one and only data type; it holds either a pointer to
@@ -1719,8 +1719,8 @@ Recursive:
 Known to work with GCC 4.7.2. Compile with
  g++ --std=c++11 ycomb.cc
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <functional>
 
 template <typename F>
@@ -1780,8 +1780,8 @@ fac(10) = 3628800
 A shorter version, taking advantage of generic lambdas.  Known to work with GCC 5.2.0, but likely some earlier versions as well. Compile with
  g++ --std=c++14 ycomb.cc
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <functional>
 int main () {
   auto y = ([] (auto f) { return
@@ -1793,13 +1793,13 @@ int main () {
   auto almost_fib = [] (auto f) { return
                        [=] (auto n) { return
                          n < 2? n: f (n - 1) + f (n - 2) ;};};
-  auto almost_fac = [] (auto f) { return 
-                       [=] (auto n) { return 
+  auto almost_fac = [] (auto f) { return
+                       [=] (auto n) { return
                          n <= 1? n: n * f (n - 1); };};
 
   auto fib = y (almost_fib);
   auto fac = y (almost_fac);
-  std:: cout << fib (10) << '\n' 
+  std:: cout << fib (10) << '\n'
              << fac (10) << '\n';
 }
 ```
@@ -2209,7 +2209,7 @@ def fib := fn f { fn n { if (n == 0) {0} else if (n == 1) {1} else { f(n-1) + f(
          (X (lambda (arg) ((procedure procedure) arg)))))))
 
 ; Fib
-(define Fib* (lambda (func-arg) 
+(define Fib* (lambda (func-arg)
     (lambda (n) (if (< n 2) n (+ (func-arg (- n 1)) (func-arg (- n 2)))))))
 (define fib (Y Fib*))
 (fib 6)
@@ -2296,18 +2296,18 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 singleton YCombinator
 {
     fix(func)
         = (f){(x){ x(x) }((g){ f((x){ (g(g))(x) })})}(func);
 }
- 
+
 public program()
 {
     var fib := YCombinator.fix:(f => (i => (i <= 1) ? i : (f(i-1) + f(i-2)) ));
     var fact := YCombinator.fix:(f => (i => (i == 0) ? 1 : (f(i-1) * i) ));
- 
+
     console.printLine("fib(10)=",fib(10));
     console.printLine("fact(10)=",fact(10));
 }
@@ -2402,10 +2402,10 @@ Fib = fun(F) ->
 
 ```fsharp
 type 'a mu = Roll of ('a mu -> 'a)  // ' fixes ease syntax colouring confusion with
- 
+
 let unroll (Roll x) = x
 // val unroll : 'a mu -> ('a mu -> 'a)
- 
+
 // As with most of the strict (non-deferred or non-lazy) languages,
 // this is the Z-combinator with the additional 'a' parameter...
 let fix f = let g = fun x a -> f (unroll x x) a in g (Roll g)
@@ -2430,7 +2430,7 @@ let fac = fix (fun f n i -> if i < 2 then n else f () (bigint i * n) (i - 1)) <|
 // much better progressive calculation in tail call position...
 let fib = fix (fun fnc f s i -> if i < 2 then f else fnc s (f + s) (i - 1)) 1I 1I
 // val fib : (int -> BigInteger) = <fun>
- 
+
 [<EntryPoint>]
 let main argv =
   fac 10 |> printfn "%A" // prints 3628800
@@ -2454,11 +2454,11 @@ Also note that the above isn't the true fix point Y-combinator which would race 
 ```fsharp
 // same as previous...
 type 'a mu = Roll of ('a mu -> 'a)  // ' fixes ease syntax colouring confusion with
- 
+
 // same as previous...
 let unroll (Roll x) = x
 // val unroll : 'a mu -> ('a mu -> 'a)
- 
+
 // break race condition with some deferred execution - laziness...
 let fix f = let g = fun x -> f <| fun() -> (unroll x x) in g (Roll g)
 // val fix : ((unit -> 'a) -> 'a -> 'a) = <fun>
@@ -2500,7 +2500,7 @@ let main argv =
 ```txt
 3628800
 55
-1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765
 ```
 
 
@@ -2793,12 +2793,12 @@ The obvious definition of the Y combinator <code>(\f-> (\x -> f (x x)) (\x-> f (
 ```haskell
 newtype Mu a = Roll
   { unroll :: Mu a -> a }
- 
+
 fix :: (a -> a) -> a
 fix = g <*> (Roll . g)
   where
     g = (. (>>= id) unroll)
- 
+
 - this version is not in tail call position...
 -- fac :: Integer -> Integer
 -- fac =
@@ -2808,7 +2808,7 @@ fix = g <*> (Roll . g)
 fac :: Integer -> Integer
 fac =
   (fix $ \f n i -> if i <= 0 then n else f (i * n) (i - 1)) 1
- 
+
 -- make fibs a function, else memory leak as
 -- head of the list can never be released as per:
 --   https://wiki.haskell.org/Memory_leak, type 1.1
@@ -2829,7 +2829,7 @@ fibs() = 0 : 1 : fix fibs_ 0 1
   where
     fibs_ fnc f s =
       case f + s of n -> n `seq` n : fnc s n
- 
+
 main :: IO ()
 main =
   mapM_
@@ -2856,7 +2856,7 @@ fac =
     \f n i ->
       if i <= 0 then n
       else f (i * n) (i - 1)) 1
- 
+
 fib :: Integer -> Integer
 fib =
   (fix $
@@ -2888,8 +2888,8 @@ main :: IO ()
 main =
   mapM_
     print
-    [ map fac [1 .. 20] 
-    , map fib [1 .. 20] 
+    [ map fac [1 .. 20]
+    , map fib [1 .. 20]
     , take 20 fibs()
     ]
 ```
@@ -2919,7 +2919,7 @@ The factorial and Fibonacci examples follow:
 
 ```j
    'if. * y do. y * u <: y else. 1 end.' Y 10 NB. Factorial
-3628800   
+3628800
           '(u@:<:@:<: + u@:<:)^:(1 < ])' Y 10 NB. Fibonacci
 55
 ```
@@ -2929,12 +2929,12 @@ The names u, x, and y are J's standard names for arguments; the name y represent
 A structured derivation of a Y with states follows (the stateless version can be produced by replacing all the names by its referents):
 
 ```j
-   arb=. ':'<@;(1;~":0)<@;<@((":0)&;)                     NB. AR of an explicit adverb from its body 
-   
+   arb=. ':'<@;(1;~":0)<@;<@((":0)&;)                     NB. AR of an explicit adverb from its body
+
    ara=. 1 :'arb u'                                       NB. The verb arb as an adverb
    srt=. 1 :'arb ''u u`:6('' , (5!:5<''u'') , '')`:6 y''' NB. AR of the self-replication and transformation adverb
    gab=. 1 :'u u`:6'                                      NB. The AR of the adverb and the adverb itself as a train
-   
+
    Y=. ara srt gab                                        NB. Train of adverbs
 ```
 
@@ -2959,7 +2959,7 @@ The following are examples of anonymous dyadic and ambivalent recursions,
 6  9 18 39 84 177 366
 7 10 19 40 85 178 367
 8 11 20 41 86 179 368
-   NB. OEIS A097813 - main diagonal   
+   NB. OEIS A097813 - main diagonal
    NB. OEIS A050488 = A097813 - 1 - adyacent upper off-diagonal
 ```
 
@@ -2986,11 +2986,11 @@ The factorial and Fibonacci examples:
    u=. [ NB. Function (left)
    n=. ] NB. Argument (right)
    sr=. [ apply f. ,&< NB. Self referring
-    
+
    fac=. (1:`(n * u sr n - 1:)) @. (0 < n)
    fac f. Y 10
 3628800
-       
+
    Fib=. ((u sr n - 2:) + u sr n - 1:) ^: (1 < n)
    Fib f. Y 10
 55
@@ -3005,7 +3005,7 @@ The stateless functions are shown next (the f. adverb replaces all embedded name
    fac f.   NB. Factorial step...
 1:`(] * [ ([ 128!:2 ,&<) ] - 1:)@.(0 < ])
 
-   
+
    Fib f. Y NB. Fibonacci...
 '(([ ([ 128!:2 ,&<) ] - 2:) + [ ([ 128!:2 ,&<) ] - 1:)^:(1 < ])&>/'&([ 128!:2 ,&<)
 
@@ -3628,7 +3628,7 @@ define fib (Int32, (Int32 -> Int32) -> Int32):
 
 typealias Func<T, R> = (T) -> R
 
-class RecursiveFunc<T, R>(val p: (RecursiveFunc<T, R>) -> Func<T, R>) 
+class RecursiveFunc<T, R>(val p: (RecursiveFunc<T, R>) -> Func<T, R>)
 
 fun <T, R> y(f: (Func<T, R>) -> Func<T, R>): Func<T, R> {
     val rec = RecursiveFunc<T, R> { r -> f { r.p(r)(it) } }
@@ -3641,8 +3641,8 @@ fun fib(f: Func<Int, Int>) = { x: Int -> if (x <= 2) 1 else f(x - 1) + f(x - 2) 
 
 fun main(args: Array<String>) {
     print("Factorial(1..10)   : ")
-    for (i in 1..10) print("${y(::fac)(i)}  ") 
-    print("\nFibonacci(1..10)   : ")   
+    for (i in 1..10) print("${y(::fac)(i)}  ")
+    print("\nFibonacci(1..10)   : ")
     for (i in 1..10) print("${y(::fib)(i)}  ")
     println()
 }
@@ -3653,8 +3653,8 @@ fun main(args: Array<String>) {
 
 ```txt
 
-Factorial(1..10)   : 1  2  6  24  120  720  5040  40320  362880  3628800  
-Fibonacci(1..10)   : 1  1  2  3  5  8  13  21  34  55  
+Factorial(1..10)   : 1  2  6  24  120  720  5040  40320  362880  3628800
+Fibonacci(1..10)   : 1  1  2  3  5  8  13  21  34  55
 
 ```
 
@@ -3673,8 +3673,8 @@ Tested in http://epsilonwiki.free.fr/lambdaway/?view=Ycombinator
   {:f :f :n}}}
 
 2) defining non recursive functions
-2.1) factorial 
-{def almost-fac 
+2.1) factorial
+{def almost-fac
  {lambda {:f :n}
   {if {= :n 1}
    then 1
@@ -3688,26 +3688,26 @@ Tested in http://epsilonwiki.free.fr/lambdaway/?view=Ycombinator
    else {+ {:f :f {- :n 1}} {:f :f {- :n 2}}}}}}
 
 3) testing
-{Y almost-fac 6}  
+{Y almost-fac 6}
 -> 720
-{Y almost-fibo 8} 
+{Y almost-fibo 8}
 -> 34
 
 We could also forget the Ycombinator and names:
 
 1) fac:
-{{lambda {:f :n} {:f :f :n}} 
+{{lambda {:f :n} {:f :f :n}}
  {lambda {:f :n}
-  {if {= :n 1} 
-   then 1 
-   else {* :n {:f :f {- :n 1}}}}} 6}  
+  {if {= :n 1}
+   then 1
+   else {* :n {:f :f {- :n 1}}}}} 6}
 -> 720
 
 2) fibo:
-{{lambda {:f :n} {:f :f :n}} 
+{{lambda {:f :n} {:f :f :n}}
  {{lambda {:f :n}
   {if {<   :n 2} then 1
-   else {+ {:f :f {- :n 1}} {:f :f {- :n 2}}}}}} 8} 
+   else {+ {:f :f {- :n 1}} {:f :f {- :n 2}}}}}} 8}
 -> 34
 
 
@@ -3752,7 +3752,7 @@ Module Ycombinator {
       y=lambda (g, x)->g(g, x)
       Print y(lambda (g, n)->if(n=0->1, n*g(g, n-1)), 10)
       Print y(lambda (g, n)->if(n<=1->n,g(g, n-1)+g(g, n-2)), 10)
-      
+
       \\ Using closure in y, y() return function
       y=lambda (g)->lambda g (x) -> g(g, x)
       fact=y((lambda (g, n)-> if(n=0->1, n*g(g, n-1))))
@@ -3782,7 +3782,7 @@ Module Checkit {
                   =1
             } else {
                   =n*m(m, n-1)
-            } 
+            }
       }
       fac=Y(fac_step)
       fib_step=lambda (m, n)-> {
@@ -3793,7 +3793,7 @@ Module Checkit {
             }
       }
       fib=Y(fib_step)
-      For i=1 to 10 
+      For i=1 to 10
             Print fib(i), fac(i)
       Next i
 }
@@ -3804,16 +3804,16 @@ Module CheckRecursion {
                   =1
             } else {
                   =n*Lambda(n-1)
-            }            
+            }
       }
       fib=lambda (n) -> {
             if n<=1 then {
                   =n
             } else {
                   =lambda(n-1)+lambda(n-2)
-            }            
+            }
       }
-      For i=1 to 10 
+      For i=1 to 10
             Print fib(i), fac(i)
       Next i
 }
@@ -4044,14 +4044,14 @@ let rec fix f x = f (fix f) x;;
 
 These combinators work for any number of parameters (see Ackermann usage)
 
-With recursion into Y definition (so non stateless Y) : 
+With recursion into Y definition (so non stateless Y) :
 
 ```Oforth
 : Y(f)   #[ f Y f perform ] ;
 ```
 
 
-Without recursion into Y definition (stateless Y). 
+Without recursion into Y definition (stateless Y).
 
 ```Oforth
 : X(me, f)   #[ me f me perform f perform ] ;
@@ -4059,7 +4059,7 @@ Without recursion into Y definition (stateless Y).
 ```
 
 
-Usage : 
+Usage :
 
 ```Oforth
 : almost-fact(n, f)   n ifZero: [ 1 ] else: [ n n 1 - f perform * ] ;
@@ -4072,7 +4072,7 @@ Usage :
    m 0 == ifTrue: [ n 1 + return ]
    n 0 == ifTrue: [ 1 m 1 - f perform return ]
    n 1 - m f perform m 1 - f perform ;
-#almost-Ackermann Y => Ackermann 
+#almost-Ackermann Y => Ackermann
 ```
 
 
@@ -4080,8 +4080,8 @@ Usage :
 ## Order
 
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8y                                             \
 ORDER_PP_FN(8fn(8F,                                                 \
@@ -4184,7 +4184,7 @@ for my $f ($fac, $fib) {
 ```
 
 
-The usual version using recursion, disallowed by the task: 
+The usual version using recursion, disallowed by the task:
 
 ```perl
 sub Y { my $f = shift;
@@ -4240,15 +4240,15 @@ and/or [[Function_composition#Phix|Function_composition]]
 function call_fn(integer f, n)
     return call_func(f,{f,n})
 end function
- 
+
 function Y(integer f)
     return f
 end function
- 
+
 function fac(integer self, integer n)
     return iff(n>1?n*call_fn(self,n-1):1)
 end function
- 
+
 function fib(integer self, integer n)
     return iff(n>1?call_fn(self,n-1)+call_fn(self,n-2):n)
 end function
@@ -4305,7 +4305,7 @@ echo $factorial(10), "\n";
 ?>
 ```
 
-The usual version using recursion, disallowed by the task: 
+The usual version using recursion, disallowed by the task:
 
 ```php
 function Y($f) {
@@ -4574,13 +4574,13 @@ $Y = {
 
     {
         param ($x)
-        
+
         $f.InvokeReturnAsIs({
             param ($y)
 
             $x.InvokeReturnAsIs($x).InvokeReturnAsIs($y)
         }.GetNewClosure())
-        
+
     }.InvokeReturnAsIs({
         param ($x)
 
@@ -4598,7 +4598,7 @@ $fact = {
 
     {
         param ($n)
-        
+
         if ($n -eq 0) { 1 } else { $n * $f.InvokeReturnAsIs($n - 1) }
 
     }.GetNewClosure()
@@ -4625,7 +4625,7 @@ $Y.invoke($fib).invoke(5)
 
 Works with SWI-Prolog and module lambda, written by <b>Ulrich Neumerkel</b> found there http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl.
 
-The code is inspired from this page : http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/ISO-Hiord#Hiord (p 106). 
+The code is inspired from this page : http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/ISO-Hiord#Hiord (p 106).
 
 Original code is from <b>Hermenegildo</b> and al : <b>Hiord: A Type-Free Higher-Order Logic Programming Language with Predicate Abstraction</b>, pdf accessible here http://www.stups.uni-duesseldorf.de/asap/?id=129.
 
@@ -4897,7 +4897,7 @@ Same as the above, using the new short lambda syntax:
 
 ```ruby
 y = ->(f) {->(g) {g.(g)}.(->(g) { f.(->(*args) {g.(g).(*args)})})}
-             
+
 fac = ->(f) { ->(n) { n < 2 ? 1 : n * f.(n-1) } }
 
 p 10.times.map {|i| y.(fac).(i)}
@@ -4948,10 +4948,10 @@ end
 //! A simple implementation of the Y Combinator
 // λf.(λx.xx)(λx.f(xx))
 // <=> λf.(λx.f(xx))(λx.f(xx))
- 
+
 // CREDITS: A better version of the previous code that was posted here, with detailed explanation.
 // See <y> and also <y_apply>.
- 
+
 // A function type that takes its own type as an input is an infinite recursive type.
 // We introduce a trait that will allow us to have an input with the same type as self, and break the recursion.
 // The input is going to be a trait object that implements the desired function in the interface.
@@ -4985,7 +4985,7 @@ impl<T, R, F> Apply<T, R> for F where F:
     t: T
   ) -> R {
     self(f, t)
- 
+
     // NOTE: Each letter is an individual symbol.
     // (λx.(λy.xxy))(λx.(λy.f(λz.xxz)y))t
     // => (λx.xx)(λx.f(xx))t
@@ -4997,7 +4997,7 @@ impl<T, R, F> Apply<T, R> for F where F:
 // impl<T, R, F> Apply<T, R> for F where F: FnOnce( &Apply<T, R>, T ) -> R + Clone {
 //     fn apply( &self, f: &Apply<T, R>, t: T ) -> R {
 //         (self.clone())( f, t )
- 
+
 //         // If we were to pass in self as f, we get -
 //         // NOTE: Each letter is an individual symbol.
 //         // λf.λt.sft
@@ -5024,7 +5024,7 @@ fn y<T,R>(f:impl Fn(&Fn(T) -> R, T) -> R) -> impl Fn(T) -> R {
 // fn y<T,R>(f:impl FnOnce(&Fn(T) -> R, T) -> R + Clone) -> impl FnOnce(T) -> R {
 //    |t| (|x: &Apply<T,R>,y| x.apply(x,y))
 //        (&move |x:&Apply<T,R>,y| f(&|z| x.apply(x,z), y), t)
- 
+
 //     // NOTE: Each letter is an individual symbol.
 //     // (λx.(λy.xxy))(λx.(λy.f(λz.xxz)y))t
 //     // => (λx.xx)(λx.f(xx))t
@@ -5057,12 +5057,12 @@ fn fib( n: usize ) -> usize {
 }
 
 fn optimal_fib( n: usize ) -> usize {
-  let almost_fib = |f: &Fn((usize,usize,usize)) -> usize, (i0,i1,x)| 
+  let almost_fib = |f: &Fn((usize,usize,usize)) -> usize, (i0,i1,x)|
     match x {
       0 => i0,
       1 => i1,
       x => f((i1,i0+i1, x-1))
-    }        
+    }
   ;
   let fib = |x| y(almost_fib)((1,1,x));
   fib(n)
@@ -5118,11 +5118,11 @@ fib(6)  //> res1: Int = 8
 (define Y                 ; (Y f) = (g g) where
   (lambda (f)             ;         (g g) = (f  (lambda a (apply (g g) a)))
     ((lambda (g) (g g))   ; (Y f) ==        (f  (lambda a (apply (Y f) a)))
-     (lambda (g)       
-       (f  (lambda a (apply (g g) a))))))) 
+     (lambda (g)
+       (f  (lambda a (apply (g g) a)))))))
 
 ;; head-recursive factorial
-(define fac                ; fac = (Y f) = (f      (lambda a (apply (Y f) a))) 
+(define fac                ; fac = (Y f) = (f      (lambda a (apply (Y f) a)))
   (Y (lambda (r)           ;     = (lambda (x) ... (r     (- x 1)) ... )
        (lambda (x)         ;        where   r    = (lambda a (apply (Y f) a))
          (if (< x 2)       ;               (r ... ) == ((Y f) ... )
@@ -5131,8 +5131,8 @@ fib(6)  //> res1: Int = 8
 
 ;; tail-recursive factorial
 (define fac2
-  (lambda (x)            
-    ((Y (lambda (r)        ;       (Y f) == (f     (lambda a (apply (Y f) a))) 
+  (lambda (x)
+    ((Y (lambda (r)        ;       (Y f) == (f     (lambda a (apply (Y f) a)))
           (lambda (x acc)  ;          r         == (lambda a (apply (Y f) a))
             (if (< x 2)    ;         (r ... )   == ((Y f) ... )
                 acc
@@ -5448,14 +5448,14 @@ func Y<In, Out>( f: (In->Out) -> (In->Out) ) -> (In->Out) {
 ```tailspin
 
 // YCombinator is not needed since tailspin supports recursion readily, but this demonstrates passing functions as parameters
- 
+
 templates combinator@{stepper:}
   templates makeStep@{rec:}
     $ -> stepper@{next: rec@{rec: rec}} !
   end makeStep
   $ -> makeStep@{rec: makeStep} !
 end combinator
- 
+
 templates factorial
   templates seed@{next:}
     <0> 1 !
@@ -5464,10 +5464,10 @@ templates factorial
   end seed
   $ -> combinator@{stepper: seed} !
 end factorial
- 
+
 5 -> factorial -> 'factorial 5: $;
 ' -> !OUT::write
- 
+
 templates fibonacci
   templates seed@{next:}
     <..1> $ !
@@ -5476,7 +5476,7 @@ templates fibonacci
   end seed
   $ -> combinator@{stepper: seed} !
 end fibonacci
- 
+
 5 -> fibonacci -> 'fibonacci 5: $;
 ' -> !OUT::write
 
@@ -5505,14 +5505,14 @@ This prints out 24, the factorial of 4:
 
 ```txrlisp
 ;; The Y combinator:
-(defun y (f) 
+(defun y (f)
   [(op @1 @1)
    (op f (op [@@1 @@1]))])
 
 ;; The Y-combinator-based factorial:
-(defun fac (f) 
-  (do if (zerop @1) 
-         1 
+(defun fac (f)
+  (do if (zerop @1)
+         1
          (* @1 [f (- @1 1)])))
 
 ;; Test:
@@ -5522,7 +5522,7 @@ This prints out 24, the factorial of 4:
 
 Both the <code>op</code> and <code>do</code> operators are a syntactic sugar for currying, in two different flavors. The forms within <code>do</code> that are symbols are evaluated in the normal Lisp-2 style and the first symbol can be an operator. Under <code>op</code>, any forms that are symbols are evaluated in the Lisp-2 style, and the first form is expected to evaluate to a function. The name <code>do</code> stems from the fact that the operator is used for currying over special forms like <code>if</code> in the above example, where there is evaluation control. Operators can have side effects: they can "do" something. Consider <code>(do set a @1)</code> which yields a function of one argument which assigns that argument to <code>a</code>.
 
-The compounded <code>@@...</code> notation allows for inner functions to refer to outer parameters, when the notation is nested. Consider 
+The compounded <code>@@...</code> notation allows for inner functions to refer to outer parameters, when the notation is nested. Consider
 ```txrlisp
 (op foo @1 (op bar @2 @@2))
 ```
@@ -5599,14 +5599,14 @@ examples = (fact* <1,2,3,4,5,6,7,8>,fib* <1,2,3,4,5,6,7,8>)
    <1,2,3,5,8,13,21,34>)
 ```
 
-The fixed point combinator defined above is theoretically correct 
-but inefficient and limited to first order functions, 
-whereas the standard distribution includes a library (<code>sol</code>) 
-providing a hierarchy of fixed point combinators 
-suitable for production use and with higher order functions. 
-A more efficient alternative implementation of <code>my_fix</code> 
-would be <code>general_function_fixer 0</code> 
-(with 0 signifying the lowest order of fixed point combinators), 
+The fixed point combinator defined above is theoretically correct
+but inefficient and limited to first order functions,
+whereas the standard distribution includes a library (<code>sol</code>)
+providing a hierarchy of fixed point combinators
+suitable for production use and with higher order functions.
+A more efficient alternative implementation of <code>my_fix</code>
+would be <code>general_function_fixer 0</code>
+(with 0 signifying the lowest order of fixed point combinators),
 or if that's too easy, then by this definition.
 
 ```Ursala
@@ -5629,11 +5629,11 @@ The IIf as translation of Iff can not be used as IIf executes both true and fals
 Private Function call_fn(f As String, n As Long) As Long
     call_fn = Application.Run(f, f, n)
 End Function
- 
+
 Private Function Y(f As String) As String
     Y = f
 End Function
- 
+
 Private Function fac(self As String, n As Long) As Long
     If n > 1 Then
         fac = n * call_fn(self, n - 1)
@@ -5641,7 +5641,7 @@ Private Function fac(self As String, n As Long) As Long
         fac = 1
     End If
 End Function
- 
+
 Private Function fib(self As String, n As Long) As Long
     If n > 1 Then
         fib = call_fn(self, n - 1) + call_fn(self, n - 2)
@@ -5649,7 +5649,7 @@ Private Function fib(self As String, n As Long) As Long
         fib = n
     End If
 End Function
- 
+
 Private Sub test(name As String)
     Dim f As String: f = Y(name)
     Dim i As Long
@@ -5669,9 +5669,9 @@ End Sub
 
 ```txt
 fac
- 1  2  6  24  120  720  5040  40320  362880  3628800 
+ 1  2  6  24  120  720  5040  40320  362880  3628800
 fib
- 1  1  2  3  5  8  13  21  34  55 
+ 1  1  2  3  5  8  13  21  34  55
 ```
 
 
@@ -5699,10 +5699,10 @@ fact_gen @FN [f]
 
 fib_gen @FN [f]
 { n -> { (n<=0) ? { 0                                    }
-                  { (n<=2) ? {1} { (@f n-1) + (@f n-2) } } 
+                  { (n<=2) ? {1} { (@f n-1) + (@f n-2) } }
        }
 };
-                
+
 
 /////// loops to test the above functions ///////
 
@@ -5807,7 +5807,7 @@ Version 3.0 of the [http://www.w3.org/TR/xpath-30/ XPath] and [http://www.w3.org
 
 
 ```XQuery
-let $Y := function($f) {  
+let $Y := function($f) {
     (function($x) { ($x)($x) })( function($g) { $f( (function($a) { $g($g) ($a)})  ) } )
   }
 let $fac := $Y(function($f) { function($n) { if($n <  2) then 1  else $n * $f($n - 1) } })
@@ -5836,7 +5836,7 @@ sub fac(self$, n)
         return 1
     end if
 end sub
- 
+
 sub fib(self$, n)
     if n > 1 then
         return execute(self$, self$, n - 1) + execute(self$, self$, n - 2)
@@ -5844,10 +5844,10 @@ sub fib(self$, n)
         return n
     end if
 end sub
- 
+
 sub test(name$)
     local i
-    
+
     print name$, ": ";
     for i = 1 to 10
         print execute(name$, name$, i);

@@ -187,7 +187,7 @@ Using the Aldor compiler in Axiom/Fricas:
 Z ==> Integer;
 fib(x:Z):Z == {
 	x <= 0 => error "argument outside of range";
-	f(n:Z,v1:Z,v2:Z):Z == if n<2 then v2 else f(n-1,v2,v1+v2); 
+	f(n:Z,v1:Z,v2:Z):Z == if n<2 then v2 else f(n-1,v2,v1+v2);
 	f(x,1,1);
 }
 ```
@@ -216,7 +216,7 @@ This works by finding a pointer to the 'anonymous' function and calling it indir
 ```bbcbasic
       PRINT FNfib(10)
       END
-      
+
       DEF FNfib(n%) IF n%<0 THEN ERROR 100, "Must not be negative"
       LOCAL P% : P% = !384 + LEN$!384 + 4 : REM Function pointer
       (n%) IF n%<2 THEN = n% ELSE = FN(^P%)(n%-1) + FN(^P%)(n%-2)
@@ -306,8 +306,8 @@ Answer:
 
 Using scoped function fib_i inside fib, with GCC (required version 3.2 or higher):
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 long fib(long x)
 {
@@ -388,15 +388,15 @@ double fib(double n)
 
 {{works with|C++11}}
 
-```cpp>#include <functional
-
+```cpp
+#include <functional>
 using namespace std;
 
 double fib(double n)
 {
   if(n < 0)
     throw "Invalid argument";
-  
+
   function<double(double)> actual_fib = [&](double n)
   {
     if(n < 2) return n;
@@ -449,7 +449,7 @@ The inner recursive function (delegate/lambda) has to be named.
 static int Fib(int n)
 {
     if (n < 0) throw new ArgumentException("Must be non negativ", "n");
- 
+
     Func<int, int> fib = null; // Must be known, before we can assign recursively to it.
     fib = p => p > 1 ? fib(p - 2) + fib(p - 1) : p;
     return fib(n);
@@ -480,7 +480,7 @@ The JVM as of now has no Tail call optimization so the default way of looping in
 (defn fib [n]
   (when (neg? n)
     (throw (new IllegalArgumentException "n should be > 0")))
-  (loop [n n, v1 1, v2 1] 
+  (loop [n n, v1 1, v2 1]
     (if (< n 2)
       v2
       (recur (dec n) v2 (+ v1 v2)))))
@@ -538,7 +538,7 @@ The Fibonacci function can then be defined as
 ```lisp
 (defun fib (n)
   (assert (>= n 0) nil "'~a' is a negative number" n)
-  (funcall 
+  (funcall
    (alambda (n)
      (if (>= 1 n)
 	 n
@@ -660,7 +660,7 @@ Exercises for reader:
 
 (x-defun factorial (n)
   (if (zerop n)
-      1 
+      1
       (* n (factorial (1- n)))))
 
 (x-defun fib (n)
@@ -846,13 +846,13 @@ With Y-Combinator:
 
 fib = fn f -> (
       fn x -> if x == 0, do: 0, else: (if x == 1, do: 1, else: f.(x - 1) + f.(x - 2))	end
-	) 
+	)
 end
 
 y = fn x -> (
-    fn f -> f.(f) 
+    fn f -> f.(f)
   end).(
-    fn g -> x.(fn z ->(g.(g)).(z) end) 
+    fn g -> x.(fn z ->(g.(g)).(z) end)
   end)
 end
 
@@ -876,23 +876,23 @@ fib(n)
 {
     if (n < 0)
         { InvalidArgumentException.raise() };
-        
+
     ^ (n)
         {
             if (n > 1)
-            { 
+            {
                 ^ this self(n - 2) + (this self(n - 1))
             }
             else
-            { 
-                ^ n 
+            {
+                ^ n
             }
         }(n)
 }
 
 public program()
 {
-    for (int i := -1, i <= 10, i += 1) 
+    for (int i := -1, i <= 10, i += 1)
     {
         console.print("fib(",i,")=");
         try
@@ -904,7 +904,7 @@ public program()
             console.printLine:"invalid"
         }
     };
-    
+
     console.readChar()
 }
 ```
@@ -1023,7 +1023,7 @@ PAUSE
  Nuts!
  1.5
  484.082
- 
+
  Press any key to continue...
 
 
@@ -1073,12 +1073,12 @@ function fib(x)
          else
             return fself(y-1) + fself(y-2)
          end
-      end)(x)  
+      end)(x)
    end
 end
- 
-   
-try 
+
+
+try
 >fib(2)
 >fib(3)
 >fib(4)
@@ -1141,8 +1141,8 @@ variable pocket  pocket !
 Currently, most Forths have started to support embedded definitions (shown here for iForth):
 
 ```forth
-: fib ( +n -- )  
-	dup 0< abort" Negative numbers don't exist"  
+: fib ( +n -- )
+	dup 0< abort" Negative numbers don't exist"
 	[: dup 2 < ?exit  1- dup MYSELF swap 1- MYSELF + ;] execute . ;
 ```
 
@@ -1179,7 +1179,7 @@ end function fib
 
 FreeBASIC does not support nested functions, lambda expressions, functions inside nested types or even (in the default dialect) gosub.
 
-However, for compatibility with old QB code, gosub can be used if one specifies the 'fblite', 'qb' or 'deprecated dialects:  
+However, for compatibility with old QB code, gosub can be used if one specifies the 'fblite', 'qb' or 'deprecated dialects:
 
 ```freebasic
 ' FB 1.05.0 Win64
@@ -1199,7 +1199,7 @@ Function fib(n As UInteger) As UInteger
 End Function
 
 ' This function simulates (rather messily) gosub by using 2 gotos and would therefore work
-' even in the default dialect 
+' even in the default dialect
 Function fib2(n As UInteger) As UInteger
   Goto nestedFib
 
@@ -1373,13 +1373,13 @@ This uses the 'fix' function to find the fixed point of the anonymous function.
 import Data.Function (fix)
 
 fib :: Integer -> Maybe Integer
-fib n 
+fib n
   | n < 0 = Nothing
   | otherwise = Just $ fix (\f -> (\n -> if n > 1 then f (n-1) + f (n-2) else 1)) n
 ```
 
 {{out}}
-Both functions provide the same output when run in GHCI. 
+Both functions provide the same output when run in GHCI.
 
 ```haskell>ghci
  map fib [-4..10]
@@ -1426,15 +1426,15 @@ main =
 =={{header|Icon}} and {{header|Unicon}}==
 The following solution works in both languages.  A cache is used to improve performance.
 
-This example is more a case of can it even be done, and just because we CAN do something - doesn't mean we should do it.  The use of co-expressions for this purpose was probably never intended by the language designers and is more than a little bit intensive and definitely NOT recommended. 
+This example is more a case of can it even be done, and just because we CAN do something - doesn't mean we should do it.  The use of co-expressions for this purpose was probably never intended by the language designers and is more than a little bit intensive and definitely NOT recommended.
 
-This example does accomplish the goals of hiding the procedure inside ''fib'' so that the type and value checking is outside the recursion.  It also does not require an identifier to reference the inner procedure; but, it requires a local variable to remember our return point.  Also, each recursion will result in the current co-expression being refreshed, essentially copied, placing a heavy demand on co-expression resources.  
+This example does accomplish the goals of hiding the procedure inside ''fib'' so that the type and value checking is outside the recursion.  It also does not require an identifier to reference the inner procedure; but, it requires a local variable to remember our return point.  Also, each recursion will result in the current co-expression being refreshed, essentially copied, placing a heavy demand on co-expression resources.
 
 ```Icon
 procedure main(A)
    every write("fib(",a := numeric(!A),")=",fib(a))
 end
- 
+
 procedure fib(n)
    local  source, i
    static cache
@@ -1500,11 +1500,11 @@ fib := method(x,
 <lang IS-BASIC>100 PROGRAM "Fibonacc.bas"
 110 FOR I=0 TO 10
 120   PRINT FIB(I);
-130 NEXT 
+130 NEXT
 140 DEF FIB(K)
 150   SELECT CASE K
 160   CASE IS<0
-170     PRINT "Negative parameter to Fibonacci.":STOP 
+170     PRINT "Negative parameter to Fibonacci.":STOP
 180   CASE 0
 190     LET FIB=0
 200   CASE 1
@@ -1548,7 +1548,7 @@ Note also http://www.jsoftware.com/pipermail/general/2003-August/015571.html whi
 ```j
 basis ` ($: @: g) @. test
 ```
- which is an anonymous form matches the "tail recursion" pattern is not automatically transformed to satisfy the classic "tail recursion optimization". That optimization would be implemented as transforming this particular example of recursion to the non-recursive 
+ which is an anonymous form matches the "tail recursion" pattern is not automatically transformed to satisfy the classic "tail recursion optimization". That optimization would be implemented as transforming this particular example of recursion to the non-recursive
 ```j
 basis @: (g^:test^:_)
 ```
@@ -1742,10 +1742,10 @@ fun main(args: Array<String>) {
 
 1) defining a tail-recursive function:
 {def fibo {lambda {:n}
- {{lambda {:f :n :a :b} {:f :f :n :a :b}} 
+ {{lambda {:f :n :a :b} {:f :f :n :a :b}}
   {lambda {:f :n :a :b}
    {if {< :n 0}
-    then the number must be positive! 
+    then the number must be positive!
     else {if {<  :n 1}
     then :a
     else {:f :f {- :n 1} {+ :a :b} :a}}}} :n 1 0}}}
@@ -1758,13 +1758,13 @@ fun main(args: Array<String>) {
 {map fibo {serie 1 20}}
 -> 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 10946
 
-We could also avoid any name and write an IIFE 
+We could also avoid any name and write an IIFE
 
 {{lambda {:n}
- {{lambda {:f :n :a :b} {:f :f :n :a :b}} 
+ {{lambda {:f :n :a :b} {:f :f :n :a :b}}
   {lambda {:f :n :a :b}
    {if {< :n 0}
-    then the number must be positive! 
+    then the number must be positive!
     else {if {<  :n 1}
     then :a
     else {:f :f {- :n 1} {+ :a :b} :a}}}} :n 1 0}}
@@ -1948,11 +1948,11 @@ A Group may have a name like k (which hold a unique group), or can be unnamed li
 ```M2000 Interpreter
 
 Class Something {
-\\ this class is a global function 
+\\ this class is a global function
 \\ return a group with a value with one parameter
 private:
       \\ we can use lambda(), but here we use .fib1() as This.fib1()
-       fib1=lambda (x)->If(x>1->.fib1(x-1)+.fib1(x-2), x)      
+       fib1=lambda (x)->If(x>1->.fib1(x-1)+.fib1(x-2), x)
 public:
       Value (x) {
             If x<0 then Error "argument outside of range"
@@ -2061,14 +2061,14 @@ module Fib
             |1 => 1
             |_ => fib(m - 1) + fib(m - 2)
         }
-        
+
         match(n)
         {
             |n when (n < 0) => throw ArgumentException("Fib() not defined on negative numbers")
             |_ => fib(n)
         }
     }
-    
+
     Main() : void
     {
         foreach (i in [-2 .. 10])
@@ -2140,7 +2140,7 @@ This shows how a method (not regular function) can recursively call itself witho
 
 int main (int argc, const char *argv[]) {
   @autoreleasepool {
-  
+
     AnonymousRecursion *dummy = [[AnonymousRecursion alloc] init];
     NSLog(@"%@", [dummy fibonacci:@8]);
 
@@ -2174,7 +2174,7 @@ int fib(int n) {
 
 int main (int argc, const char *argv[]) {
   @autoreleasepool {
-  
+
     NSLog(@"%d", fib(8));
 
   }
@@ -2205,7 +2205,7 @@ int fib(int n) {
 
 int main (int argc, const char *argv[]) {
   @autoreleasepool {
-  
+
     NSLog(@"%d", fib(8));
 
   }
@@ -2299,11 +2299,11 @@ function fiboRatio() as double
         if j > 2e12 then return j / i
         return fibo j, i + j
     end function
-    return fibo 1, 1 
+    return fibo 1, 1
 end function
 
 print fiboRatio
-    
+
 
 ```
 
@@ -2537,7 +2537,7 @@ Postscript can make use of the higher order combinators to provide recursion.
 /lfact {
    {dup 0 eq}
    {pop 1}
-   {dup pred} 
+   {dup pred}
    {*}
    linrec}.
 
@@ -2709,7 +2709,7 @@ In Racket, local helper function definitions inside of a function are only visib
 ```racket
 
 #lang racket
- 
+
 ;; Natural -> Natural
 ;; Calculate factorial
 (define (fact n)
@@ -2720,7 +2720,7 @@ In Racket, local helper function definitions inside of a function are only visib
   (unless (exact-nonnegative-integer? n)
     (raise-argument-error 'fact "natural" n))
   (fact-helper n 1))
- 
+
 ;; Unit tests, works in v5.3 and newer
 (module+ test
   (require rackunit)
@@ -2749,7 +2749,7 @@ This calculates the slightly more complex Fibonacci funciton:
 ;; Unit tests, works in v5.3 and newer
 (module+ test
   (require rackunit)
-  (check-exn exn:fail? (lambda () (fibb -2)))  
+  (check-exn exn:fail? (lambda () (fibb -2)))
   (check-equal?
    (for/list ([i (in-range 21)]) (fibb i))
    '(0 1 1 2 3 5 8 13 21 34 55 89 144 233
@@ -2858,7 +2858,7 @@ fibonacci(12) = 144
 
 ### memoization
 
-Since the above REXX version is   ''very''   slow for larger numbers, the following version was added that incorporates memoization.   
+Since the above REXX version is   ''very''   slow for larger numbers, the following version was added that incorporates memoization.
 
 It's many orders of magnitude faster for larger values.
 
@@ -2879,7 +2879,7 @@ fib: procedure expose @.; arg z;  if z>=0  then return .(z)
 .: procedure expose @.; arg #; if @.#\==.  then return @.#;  @.#=.(#-1)+.(#-2); return @.#
 ```
 
-'''output'''   is the same as the 1<sup>st</sup> REXX version. 
+'''output'''   is the same as the 1<sup>st</sup> REXX version.
 
 
 
@@ -2899,13 +2899,13 @@ for x = -2 to 12
         see t + nl
      ok
 next
- 
+
 func recursion()
         nold1=1
         nold2=0
-        if n < 0 
+        if n < 0
            see "positive argument required!" + nl
-           return 
+           return
         ok
         if n=0
            t=nold2
@@ -3152,13 +3152,13 @@ Using a Y-combinator:
 
 ```scala
 def Y[A, B](f: (A ⇒ B) ⇒ (A ⇒ B)): A ⇒ B = f(Y(f))(_)
-  
+
 def fib(n: Int): Option[Int] =
   if (n < 0) None
   else Some(Y[Int, Int](f ⇒ i ⇒
     if (i < 2) 1
     else f(i - 1) + f(i - 2))(n))
-      
+
 -2 to 5 map (n ⇒ (n, fib(n))) foreach println
 ```
 
@@ -3478,7 +3478,7 @@ proc fib n {
 ## TXR
 
 
-For the Y combinator approach in TXR, see the Y combinator task. 
+For the Y combinator approach in TXR, see the Y combinator task.
 
 The following easy transliteration of one of the Common Lisp solutions shows the conceptual and cultural compatibility between TXR Lisp macros and CL macros:
 
@@ -3493,7 +3493,7 @@ The following easy transliteration of one of the Common Lisp solutions shows the
          (,hidden-name ,*[mapcar second parm-init-pairs])))))
 
 (defun fib (number)
-  (if (< number 0) 
+  (if (< number 0)
     (error "Error. The number entered: ~a is negative" number)
     (recursive ((n number) (a 0) (b 1))
       (if (= n 0)
@@ -3509,7 +3509,7 @@ The following easy transliteration of one of the Common Lisp solutions shows the
 
 
 ```txt
-$ txr anonymous-recursion.txr 
+$ txr anonymous-recursion.txr
 fib(10) = 55
 txr: unhandled exception of type error:
 txr: possibly triggered by anonymous-recursion.txr:9
@@ -3711,7 +3711,7 @@ class Fibonacci {
 ## XPL0
 
 In XPL0 you can nest functions/procedures inside other
-functions/procedures up to eight levels deep. 
+functions/procedures up to eight levels deep.
 This makes those nested functions invisible to the outside, thus preventing namespace pollution.
 
 
@@ -3755,17 +3755,17 @@ Error 0
 print Fibonacci(-10)
 print Fibonacci(10)
 
- 
+
 sub Fibonacci(number)
- 
+
     If number < 0 print "Invalid argument: "; : return number
- 
+
     If number < 2 Then
         Return number
     Else
         Return Fibonacci(number - 1) + Fibonacci(number - 2)
     EndIf
- 
+
 end sub
 ```
 
@@ -3807,14 +3807,14 @@ ValueError thrown
 20 LET t=0
 30 GO SUB 60
 40 PRINT t
-50 STOP 
+50 STOP
 60 LET nold1=1: LET nold2=0
-70 IF n<0 THEN PRINT "Positive argument required!": RETURN 
-80 IF n=0 THEN LET t=nold2: RETURN 
-90 IF n=1 THEN LET t=nold1: RETURN 
+70 IF n<0 THEN PRINT "Positive argument required!": RETURN
+80 IF n=0 THEN LET t=nold2: RETURN
+90 IF n=1 THEN LET t=nold1: RETURN
 100 LET t=nold2+nold1
 110 IF n>2 THEN LET n=n-1: LET nold2=nold1: LET nold1=t: GO SUB 100
-120 RETURN 
+120 RETURN
 
 ```
 

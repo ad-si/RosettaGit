@@ -57,11 +57,11 @@ SolveHidato(Grid, Locked, Max, row, col, num:=1, R:="", C:=""){
 		Grid[R, C] := ">" num 					; place num in current neighbor and mark it visited ">"
 		row:=R, col:=C						; move to current neighbor
 	}
-		
+
 	num++								; increment num
 	if (num=max)							; if reached end
 		return map(Grid)					; return solution
-	
+
 	if locked[num]							; if current num is a locked value
 	{
 		row := StrSplit((StrSplit(locked[num], ",").1) , ":").1	; find row of num
@@ -75,7 +75,7 @@ SolveHidato(Grid, Locked, Max, row, col, num:=1, R:="", C:=""){
 		{
 			R := StrSplit(value, ":").1
 			C := StrSplit(value, ":").2
-			
+
 			if (Grid[R,C] = "")				; a hole or out of bounds
 			|| InStr(Grid[R, C], ">")			; visited
 			|| Locked[num+1] && !(Locked[num+1]~= "\b" R ":" C "\b") ; not neighbor of locked[num+1]
@@ -83,7 +83,7 @@ SolveHidato(Grid, Locked, Max, row, col, num:=1, R:="", C:=""){
 			|| Locked[num]					; locked value
 			|| Locked[Grid[R, C]]				; locked cell
 				continue
-			
+
 			if SolveHidato(Grid, Locked, Max, row, col, num, R, C)	; solve for current location, neighbor and value
 				return map(Grid)			; if solved, return solution
 		}
@@ -112,7 +112,7 @@ map(Grid){
 	for i, row in Grid
 	{
 		for j, element in row
-			line .= (A_Index > 1 ? "`t" : "") . element 
+			line .= (A_Index > 1 ? "`t" : "") . element
 		map .= (map<>""?"`n":"") line
 		line := ""
 	}
@@ -130,9 +130,9 @@ Grid := [[ "Y"	, 33	, 35	, "Y"	, "Y"]
 	,[ 27	, "Y"	, "Y"	, "Y"	, 9	, "Y"	, 1  ]
 	,[ ""	, ""	, "Y"	, "Y"	, 18	, "Y"	, "Y"]
 	,[ ""	, ""	, ""	, ""	, "Y"	, 7	, "Y"	, "Y"]
-	,[ ""	, ""	, ""	, ""	, ""	, ""	, 5	, "Y"]] 
+	,[ ""	, ""	, ""	, ""	, ""	, ""	, 5	, "Y"]]
 ;--------------------------------
-; find locked cells, find row and col of first value "1" and max value 
+; find locked cells, find row and col of first value "1" and max value
 Locked := []
 for i, line in Grid
 	for j, element in line
@@ -185,7 +185,7 @@ Outputs:
                     | @(!token:? #?token (|" " ?))
                     )
                   & (!token.!row.!column) !Board:?Board
-                | 
+                |
                 )
               & 1+!column:?column
               )
@@ -208,7 +208,7 @@ Outputs:
           .   !arg:(?ToDo.?cellN.?row.?column)
             & range$!row:(=?row)
             & range$!column:(=?column)
-            &     
+            &
                 ' (     ?head ($cellN.?rowCand.?colCand) ?tail
                       & (!rowCand.!colCand):($row.$column)
                       & !recurse
@@ -256,7 +256,7 @@ Outputs:
           & (   !row:>!curRow:?curRow
               & !output \n:?output
               & 0:?curCol
-            | 
+            |
             )
           &   whl
             ' ( !curCol+1:~>!column:?curCol
@@ -269,12 +269,12 @@ Outputs:
       & str$!output
   )
 &   "
- __ 33 35 __ __         
- __ __ 24 22 __         
- __ __ __ 21 __ __      
- __ 26 __ 13 40 11      
- 27 __ __ __  9 __  1   
-       __ __ 18 __ __   
+ __ 33 35 __ __
+ __ __ 24 22 __
+ __ __ __ 21 __ __
+ __ 26 __ 13 40 11
+ 27 __ __ __  9 __  1
+       __ __ 18 __ __
              __  7 __ __
                     5 __"
   : ?board
@@ -312,8 +312,8 @@ found!
 
 Depth-first graph, with simple connectivity check to reject some impossible situations early.  The checks slow down simpler puzzles significantly, but can make some deep recursions backtrack much earilier.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -486,22 +486,22 @@ int main()
 
 ```txt
  Before:
- __ 33 35 __ __         
- __ __ 24 22 __         
- __ __ __ 21 __ __      
- __ 26 __ 13 40 11      
- 27 __ __ __  9 __  1   
-       __ __ 18 __ __   
+ __ 33 35 __ __
+ __ __ 24 22 __
+ __ __ __ 21 __ __
+ __ 26 __ 13 40 11
+ 27 __ __ __  9 __  1
+       __ __ 18 __ __
              __  7 __ __
                     5 __
- 
+
  After:
- 32 33 35 36 37         
- 31 34 24 22 38         
- 30 25 23 21 12 39      
- 29 26 20 13 40 11      
- 27 28 14 19  9 10  1   
-       15 16 18  8  2   
+ 32 33 35 36 37
+ 31 34 24 22 38
+ 30 25 23 21 12 39
+ 29 26 20 13 40 11
+ 27 28 14 19  9 10  1
+       15 16 18  8  2
              17  7  6  3
                     5  4
 ```
@@ -544,7 +544,7 @@ public:
 	int len = wid * hei, c = 0; max = 0;
 	arr = new node[len]; memset( arr, 0, len * sizeof( node ) );
 	weHave = new bool[len + 1]; memset( weHave, 0, len + 1 );
-		
+
 	for( vector<string>::iterator i = puzz.begin(); i != puzz.end(); i++ )
 	{
 	    if( ( *i ) == "*" ) {    arr[c++].val = -1; continue; }
@@ -717,7 +717,7 @@ public class Solver
         hidatoMoves = {(1,0),(1,1),(0,1),(-1,1),(-1,0),(-1,-1),(0,-1),(1,-1)};
 
     private (int dx, int dy)[] moves;
-        
+
     public static void Main()
     {
         Print(new Solver(hidatoMoves).Solve(false, new [,] {
@@ -1016,28 +1016,28 @@ void main() {
 {{out}}
 
 ```txt
- .  .  .  .  .  .  .  .  .  . 
- . __ 33 35 __ __  .  .  .  . 
- . __ __ 24 22 __  .  .  .  . 
- . __ __ __ 21 __ __  .  .  . 
- . __ 26 __ 13 40 11  .  .  . 
- . 27 __ __ __  9 __  1  .  . 
- .  .  . __ __ 18 __ __  .  . 
- .  .  .  .  . __  7 __ __  . 
- .  .  .  .  .  .  .  5 __  . 
- .  .  .  .  .  .  .  .  .  . 
+ .  .  .  .  .  .  .  .  .  .
+ . __ 33 35 __ __  .  .  .  .
+ . __ __ 24 22 __  .  .  .  .
+ . __ __ __ 21 __ __  .  .  .
+ . __ 26 __ 13 40 11  .  .  .
+ . 27 __ __ __  9 __  1  .  .
+ .  .  . __ __ 18 __ __  .  .
+ .  .  .  .  . __  7 __ __  .
+ .  .  .  .  .  .  .  5 __  .
+ .  .  .  .  .  .  .  .  .  .
 
 Found:
- .  .  .  .  .  .  .  .  .  . 
- . 32 33 35 36 37  .  .  .  . 
- . 31 34 24 22 38  .  .  .  . 
- . 30 25 23 21 12 39  .  .  . 
- . 29 26 20 13 40 11  .  .  . 
- . 27 28 14 19  9 10  1  .  . 
- .  .  . 15 16 18  8  2  .  . 
- .  .  .  .  . 17  7  6  3  . 
- .  .  .  .  .  .  .  5  4  . 
- .  .  .  .  .  .  .  .  .  . 
+ .  .  .  .  .  .  .  .  .  .
+ . 32 33 35 36 37  .  .  .  .
+ . 31 34 24 22 38  .  .  .  .
+ . 30 25 23 21 12 39  .  .  .
+ . 29 26 20 13 40 11  .  .  .
+ . 27 28 14 19  9 10  1  .  .
+ .  .  . 15 16 18  8  2  .  .
+ .  .  .  .  . 17  7  6  3  .
+ .  .  .  .  .  .  .  5  4  .
+ .  .  .  .  .  .  .  .  .  .
 ```
 
 
@@ -1045,7 +1045,7 @@ Found:
 ### Stronger Version
 
 {{trans|C}}
-This version uses a little stronger typing, performs tests a run-time with contracts, it doesn't use global variables, it enforces immutability and purity where possible, and produces a correct text output for both larger ad small boards. This style is more fit for larger programs, or when you want the code to be less bug-prone or a little more efficient. 
+This version uses a little stronger typing, performs tests a run-time with contracts, it doesn't use global variables, it enforces immutability and purity where possible, and produces a correct text output for both larger ad small boards. This style is more fit for larger programs, or when you want the code to be less bug-prone or a little more efficient.
 
 With this coding style the changes in the code become less bug-prone, but also more laborious. This version is also faster, its total runtime is about 0.02 seconds or less.
 
@@ -1324,7 +1324,7 @@ defmodule HLPsolver do
   defmodule Cell do
     defstruct value: -1, used: false, adj: []
   end
-  
+
   def solve(str, adjacent, print_out\\true) do
     board = setup(str)
     if print_out, do: print(board, "Problem:")
@@ -1339,7 +1339,7 @@ defmodule HLPsolver do
                                    else: result
     end
   end
-  
+
   defp solve(board, position, seq_num, zbl, goal) do
     value = board[position].value
     cond do
@@ -1354,7 +1354,7 @@ defmodule HLPsolver do
         end)
     end
   end
-  
+
   defp setup(str) do
     lines = String.strip(str) |> String.split(~r/(\n|\r\n|\r)/) |> Enum.with_index
     for {line,i} <- lines, {char,j} <- Enum.with_index(String.split(line)),
@@ -1363,7 +1363,7 @@ defmodule HLPsolver do
           {{i,j}, %Cell{value: n}}
         end
   end
-  
+
   defp set_adj(board, adjacent) do
     Enum.reduce(Map.keys(board), board, fn {x,y},map ->
       adj = Enum.map(adjacent, fn {i,j} -> {x+i, y+j} end)
@@ -1371,14 +1371,14 @@ defmodule HLPsolver do
       Map.update!(map, {x,y}, fn cell -> %Cell{cell | adj: adj} end)
     end)
   end
-  
+
   defp wdof(board, adj) do              # Warnsdorf's rule
     Enum.reject(adj, fn pos -> board[pos].used end)
     |> Enum.sort_by(fn pos ->
          Enum.count(board[pos].adj, fn p -> not board[p].used end)
        end)
   end
-  
+
   def print(board, title) do
     IO.puts "\n#{title}"
     {xmin, xmax} = Map.keys(board) |> Enum.map(fn {x,_} -> x end) |> Enum.min_max
@@ -1437,32 +1437,32 @@ adjacent = [{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}
 ```txt
 
 Problem:
-  4  
+  4
 0 7 0
 1 0 0
 
 Solution:
-  4  
+  4
 3 7 5
 1 2 6
 
 Problem:
- 0 33 35  0  0         
- 0  0 24 22  0         
- 0  0  0 21  0  0      
- 0 26  0 13 40 11      
-27  0  0  0  9  0  1   
-       0  0 18  0  0   
+ 0 33 35  0  0
+ 0  0 24 22  0
+ 0  0  0 21  0  0
+ 0 26  0 13 40 11
+27  0  0  0  9  0  1
+       0  0 18  0  0
              0  7  0  0
                    5  0
 
 Solution:
-32 33 35 36 37         
-31 34 24 22 38         
-30 25 23 21 12 39      
-29 26 20 13 40 11      
-27 28 14 19  9 10  1   
-      15 16 18  8  2   
+32 33 35 36 37
+31 34 24 22 38
+30 25 23 21 12 39
+29 26 20 13 40 11
+27 28 14 19  9 10  1
+      15 16 18  8  2
             17  7  6  3
                    5  4
 
@@ -1599,23 +1599,23 @@ store( {Key, Value}, Dict ) -> dict:store( Key, Value, Dict ).
 
 2> solve_hidato_puzzle:task().
 Start grid
-  . 33 35  .  .         
-  .  . 24 22  .         
-  .  .  . 21  .  .      
-  . 26  . 13 40 11      
- 27  .  .  .  9  .  1   
-        .  . 18  .  .   
+  . 33 35  .  .
+  .  . 24 22  .
+  .  .  . 21  .  .
+  . 26  . 13 40 11
+ 27  .  .  .  9  .  1
+        .  . 18  .  .
               .  7  .  .
                     5  .
 Start square {{7,5},1}, Stop square {{5,4},40}.
 Path [{7,5}, {7,6}, {8,7}, {8,8}, {7,8}, {7,7}, {6,7}, {6,6}, {5,5}, {6,5}, {6,4}, {5,3}, {4,4}, {3,5}, {3,6}, {4,6}, {5,7}, {5,6}, {4,5}, {3,4},
       {4,3}, {4,2}, {3,3}, {3,2}, {2,3}, {2,4}, {1,5},{2,5}, {1,4}, {1,3}, {1,2}, {1,1}, {2,1}, {2,2}, {3,1}, {4,1}, {5,1}, {5,2}, {6,3}, {5,4}]
- 32 33 35 36 37         
- 31 34 24 22 38         
- 30 25 23 21 12 39      
- 29 26 20 13 40 11      
- 27 28 14 19  9 10  1   
-       15 16 18  8  2   
+ 32 33 35 36 37
+ 31 34 24 22 38
+ 30 25 23 21 12 39
+ 29 26 20 13 40 11
+ 27 28 14 19  9 10  1
+       15 16 18  8  2
              17  7  6  3
                     5  4
 
@@ -1753,28 +1753,28 @@ func main() {
 
 ```txt
 
- .  .  .  .  .  .  .  .  .  . 
- . __ 33 35 __ __  .  .  .  . 
- . __ __ 24 22 __  .  .  .  . 
- . __ __ __ 21 __ __  .  .  . 
- . __ 26 __ 13 40 11  .  .  . 
- . 27 __ __ __  9 __  1  .  . 
- .  .  . __ __ 18 __ __  .  . 
- .  .  .  .  . __  7 __ __  . 
- .  .  .  .  .  .  .  5 __  . 
- .  .  .  .  .  .  .  .  .  . 
+ .  .  .  .  .  .  .  .  .  .
+ . __ 33 35 __ __  .  .  .  .
+ . __ __ 24 22 __  .  .  .  .
+ . __ __ __ 21 __ __  .  .  .
+ . __ 26 __ 13 40 11  .  .  .
+ . 27 __ __ __  9 __  1  .  .
+ .  .  . __ __ 18 __ __  .  .
+ .  .  .  .  . __  7 __ __  .
+ .  .  .  .  .  .  .  5 __  .
+ .  .  .  .  .  .  .  .  .  .
 
 Found:
- .  .  .  .  .  .  .  .  .  . 
- . 32 33 35 36 37  .  .  .  . 
- . 31 34 24 22 38  .  .  .  . 
- . 30 25 23 21 12 39  .  .  . 
- . 29 26 20 13 40 11  .  .  . 
- . 27 28 14 19  9 10  1  .  . 
- .  .  . 15 16 18  8  2  .  . 
- .  .  .  .  . 17  7  6  3  . 
- .  .  .  .  .  .  .  5  4  . 
- .  .  .  .  .  .  .  .  .  . 
+ .  .  .  .  .  .  .  .  .  .
+ . 32 33 35 36 37  .  .  .  .
+ . 31 34 24 22 38  .  .  .  .
+ . 30 25 23 21 12 39  .  .  .
+ . 29 26 20 13 40 11  .  .  .
+ . 27 28 14 19  9 10  1  .  .
+ .  .  . 15 16 18  8  2  .  .
+ .  .  .  .  . 17  7  6  3  .
+ .  .  .  .  .  .  .  5  4  .
+ .  .  .  .  .  .  .  .  .  .
 
 ```
 
@@ -1865,7 +1865,7 @@ printCellMap cellmap = putStrLn $ concat strings
       map
         f
         [ (x, y)
-        | y <- [snd minPos .. snd maxPos] 
+        | y <- [snd minPos .. snd maxPos]
         , x <- [fst minPos .. fst maxPos] ]
     f (x, y) =
       let z =
@@ -1900,21 +1900,21 @@ sample =
 {{Out}}
 
 ```txt
- 0 33 35  0  0         
- 0  0 24 22  0         
- 0  0  0 21  0  0      
- 0 26  0 13 40 11      
-27  0  0  0  9  0  1   
-       0  0 18  0  0   
+ 0 33 35  0  0
+ 0  0 24 22  0
+ 0  0  0 21  0  0
+ 0 26  0 13 40 11
+27  0  0  0  9  0  1
+       0  0 18  0  0
              0  7  0  0
                    5  0
 
-32 33 35 36 37         
-31 34 24 22 38         
-30 25 23 21 12 39      
-29 26 20 13 40 11      
-27 28 14 19  9 10  1   
-      15 16 18  8  2   
+32 33 35 36 37
+31 34 24 22 38
+30 25 23 21 12 39
+29 26 20 13 40 11
+27 28 14 19  9 10  1
+      15 16 18  8  2
             17  7  6  3
                    5  4
 
@@ -2039,29 +2039,29 @@ Sample run:
 
 ```txt
 
-->hd <hd.in 
+->hd <hd.in
 Input with 40 cells:
-                              
-     _ 33 35  _  _            
-     _  _ 24 22  _            
-     _  _  _ 21  _  _         
-     _ 26  _ 13 40 11         
-    27  _  _  _  9  _  1      
-           _  _ 18  _  _      
-                 _  7  _  _   
-                       5  _   
-                              
+
+     _ 33 35  _  _
+     _  _ 24 22  _
+     _  _  _ 21  _  _
+     _ 26  _ 13 40 11
+    27  _  _  _  9  _  1
+           _  _ 18  _  _
+                 _  7  _  _
+                       5  _
+
 Output with 40 cells:
-                              
-    32 33 35 36 37            
-    31 34 24 22 38            
-    30 25 23 21 12 39         
-    29 26 20 13 40 11         
-    27 28 14 19  9 10  1      
-          15 16 18  8  2      
-                17  7  6  3   
-                       5  4   
-                              
+
+    32 33 35 36 37
+    31 34 24 22 38
+    30 25 23 21 12 39
+    29 26 20 13 40 11
+    27 28 14 19  9 10  1
+          15 16 18  8  2
+                17  7  6  3
+                       5  4
+
 ->
 
 ```
@@ -2186,27 +2186,27 @@ Output:
 
 
 ```txt
- .  .  .  .  .  .  .  .  .  . 
- . __ 33 35 __ __  .  .  .  . 
- . __ __ 24 22 __  .  .  .  . 
- . __ __ __ 21 __ __  .  .  . 
- . __ 26 __ 13 40 11  .  .  . 
- . 27 __ __ __  9 __  1  .  . 
- .  .  . __ __ 18 __ __  .  . 
- .  .  .  .  . __  7 __ __  . 
- .  .  .  .  .  .  .  5 __  . 
- .  .  .  .  .  .  .  .  .  . 
+ .  .  .  .  .  .  .  .  .  .
+ . __ 33 35 __ __  .  .  .  .
+ . __ __ 24 22 __  .  .  .  .
+ . __ __ __ 21 __ __  .  .  .
+ . __ 26 __ 13 40 11  .  .  .
+ . 27 __ __ __  9 __  1  .  .
+ .  .  . __ __ 18 __ __  .  .
+ .  .  .  .  . __  7 __ __  .
+ .  .  .  .  .  .  .  5 __  .
+ .  .  .  .  .  .  .  .  .  .
 
 Found:
- .  .  .  .  .  .  .  .  .  . 
- . 32 33 35 36 37  .  .  .  . 
- . 31 34 24 22 38  .  .  .  . 
- . 30 25 23 21 12 39  .  .  . 
- . 29 26 20 13 40 11  .  .  . 
- . 27 28 14 19  9 10  1  .  . 
- .  .  . 15 16 18  8  2  .  . 
- .  .  .  .  . 17  7  6  3  . 
- .  .  .  .  .  .  .  5  4  . 
+ .  .  .  .  .  .  .  .  .  .
+ . 32 33 35 36 37  .  .  .  .
+ . 31 34 24 22 38  .  .  .  .
+ . 30 25 23 21 12 39  .  .  .
+ . 29 26 20 13 40 11  .  .  .
+ . 27 28 14 19  9 10  1  .  .
+ .  .  . 15 16 18  8  2  .  .
+ .  .  .  .  . 17  7  6  3  .
+ .  .  .  .  .  .  .  5  4  .
  .  .  .  .  .  .  .  .  .  .
 ```
 
@@ -2308,7 +2308,7 @@ printboard(board)
        __ __ 18 __ __
              __  7 __ __
                     5 __
- 
+
  32 33 35 36 37
  31 34 24 22 38
  30 25 23 21 12 39
@@ -2409,28 +2409,28 @@ fun main(args: Array<String>) {
 
 ```txt
 
- .  .  .  .  .  .  .  .  .  . 
- . __ 33 35 __ __  .  .  .  . 
- . __ __ 24 22 __  .  .  .  . 
- . __ __ __ 21 __ __  .  .  . 
- . __ 26 __ 13 40 11  .  .  . 
- . 27 __ __ __  9 __  1  .  . 
- .  .  . __ __ 18 __ __  .  . 
- .  .  .  .  . __  7 __ __  . 
- .  .  .  .  .  .  .  5 __  . 
- .  .  .  .  .  .  .  .  .  . 
+ .  .  .  .  .  .  .  .  .  .
+ . __ 33 35 __ __  .  .  .  .
+ . __ __ 24 22 __  .  .  .  .
+ . __ __ __ 21 __ __  .  .  .
+ . __ 26 __ 13 40 11  .  .  .
+ . 27 __ __ __  9 __  1  .  .
+ .  .  . __ __ 18 __ __  .  .
+ .  .  .  .  . __  7 __ __  .
+ .  .  .  .  .  .  .  5 __  .
+ .  .  .  .  .  .  .  .  .  .
 
 Found:
- .  .  .  .  .  .  .  .  .  . 
- . 32 33 35 36 37  .  .  .  . 
- . 31 34 24 22 38  .  .  .  . 
- . 30 25 23 21 12 39  .  .  . 
- . 29 26 20 13 40 11  .  .  . 
- . 27 28 14 19  9 10  1  .  . 
- .  .  . 15 16 18  8  2  .  . 
- .  .  .  .  . 17  7  6  3  . 
- .  .  .  .  .  .  .  5  4  . 
- .  .  .  .  .  .  .  .  .  . 
+ .  .  .  .  .  .  .  .  .  .
+ . 32 33 35 36 37  .  .  .  .
+ . 31 34 24 22 38  .  .  .  .
+ . 30 25 23 21 12 39  .  .  .
+ . 29 26 20 13 40 11  .  .  .
+ . 27 28 14 19  9 10  1  .  .
+ .  .  . 15 16 18  8  2  .  .
+ .  .  .  .  . 17  7  6  3  .
+ .  .  .  .  .  .  .  5  4  .
+ .  .  .  .  .  .  .  .  .  .
 
 ```
 
@@ -2497,12 +2497,12 @@ Iz: 1   2   3   4   5   6   7   8 :=
  2  .   .  24  22   .  -1  -1  -1
  3  .   .   .  21   .   .  -1  -1
  4  .  26   .  13  40  11  -1  -1
- 5 27   .   .   .   9   .   1  -1 
- 6 -1  -1   .   .  18   .   .  -1 
+ 5 27   .   .   .   9   .   1  -1
+ 6 -1  -1   .   .  18   .   .  -1
  7 -1  -1  -1  -1   .   7   .   .
- 8 -1  -1  -1  -1  -1  -1   5   . 
+ 8 -1  -1  -1  -1  -1  -1   5   .
  ;
- 
+
  end;
 ```
 
@@ -2740,8 +2740,8 @@ param ZBLS := 82;
 param
 Iz:  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 :=
  1   1  0 -1 -1 -1  0  0 -1 -1 -1  0  0 -1 -1 -1  0  0 -1 -1 -1  0  0 -1 -1 -1  0  0 -1 -1 -1  0  0 -1 -1 -1  0  0 -1 -1 -1  0  0 -1 -1 -1 82
- 2  -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 
- 3  -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1 
+ 2  -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1
+ 3  -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1  0 -1  0 -1 -1
  4   0  0  0 -1 -1  0  0  0 -1 -1  0  0  0 -1 -1  0  0  0 -1 -1  0  0  0 -1 -1  0  0  0 -1 -1  0  0  0 -1 -1  0  0  0 -1 -1  0  0  0 -1 -1 -1
  ;
 end;
@@ -2819,7 +2819,7 @@ import strutils, algorithm
 var board: array[0..19, array[0..19, int]]
 var given, start: seq[int] = @[]
 var rows, cols: int = 0
- 
+
 proc setup(s: string) =
     var lines = s.splitLines()
     cols = lines[0].split().len()
@@ -2828,11 +2828,11 @@ proc setup(s: string) =
     for i in 0 .. rows + 1:
         for j in 0 .. cols + 1:
            board[i][j] = -1
- 
+
     for r, row in pairs(lines):
         for c, cell in pairs(row.split()):
             case cell
-            of "__" : 
+            of "__" :
                 board[r + 1][c + 1] = 0
                 continue
             of "." : continue
@@ -2840,11 +2840,11 @@ proc setup(s: string) =
                var val = parseInt(cell)
                board[r + 1][c + 1] = val
                given.add(val)
-               if (val == 1): 
+               if (val == 1):
                    start.add(r + 1)
                    start.add(c + 1)
     given.sort(cmp[int], Ascending)
- 
+
 proc solve(r, c, n: int, next: int = 0): bool =
     if n > given[high(given)]:
        return true
@@ -2866,7 +2866,7 @@ proc solve(r, c, n: int, next: int = 0): bool =
     board[r][c] = back
     result = false
 
- 
+
 proc printBoard() =
     for r in  0 .. rows + 1:
         for cellid,c in pairs(board[r]):
@@ -2878,7 +2878,7 @@ proc printBoard() =
             else:
                 write(stdout, "$# " % align($c,2))
         writeLine(stdout, "")
- 
+
 var hi: string = """__ 33 35 __ __  .  .  .
 __ __ 24 22 __  .  .  .
 __ __ __ 21 __ __  .  .
@@ -2887,7 +2887,7 @@ __ 26 __ 13 40 11  .  .
 .  . __ __ 18 __ __  .
 .  .  .  . __  7 __ __
 .  .  .  .  .  .  5 __"""
- 
+
 setup(hi)
 printBoard()
 echo("")
@@ -2899,28 +2899,28 @@ printBoard()
 {{out}}
 
 ```txt
- .  .  .  .  .  .  .  .  .  . 
- . __ 33 35 __ __  .  .  .  . 
- . __ __ 24 22 __  .  .  .  . 
- . __ __ __ 21 __ __  .  .  . 
- . __ 26 __ 13 40 11  .  .  . 
- . 27 __ __ __  9 __  1  .  . 
- .  .  . __ __ 18 __ __  .  . 
- .  .  .  .  . __  7 __ __  . 
- .  .  .  .  .  .  .  5 __  . 
- .  .  .  .  .  .  .  .  .  . 
+ .  .  .  .  .  .  .  .  .  .
+ . __ 33 35 __ __  .  .  .  .
+ . __ __ 24 22 __  .  .  .  .
+ . __ __ __ 21 __ __  .  .  .
+ . __ 26 __ 13 40 11  .  .  .
+ . 27 __ __ __  9 __  1  .  .
+ .  .  . __ __ 18 __ __  .  .
+ .  .  .  .  . __  7 __ __  .
+ .  .  .  .  .  .  .  5 __  .
+ .  .  .  .  .  .  .  .  .  .
 
 Found:
- .  .  .  .  .  .  .  .  .  . 
- . 32 33 35 36 37  .  .  .  . 
- . 31 34 24 22 38  .  .  .  . 
- . 30 25 23 21 12 39  .  .  . 
- . 29 26 20 13 40 11  .  .  . 
- . 27 28 14 19  9 10  1  .  . 
- .  .  . 15 16 18  8  2  .  . 
- .  .  .  .  . 17  7  6  3  . 
- .  .  .  .  .  .  .  5  4  . 
- .  .  .  .  .  .  .  .  .  . 
+ .  .  .  .  .  .  .  .  .  .
+ . 32 33 35 36 37  .  .  .  .
+ . 31 34 24 22 38  .  .  .  .
+ . 30 25 23 21 12 39  .  .  .
+ . 29 26 20 13 40 11  .  .  .
+ . 27 28 14 19  9 10  1  .  .
+ .  .  . 15 16 18  8  2  .  .
+ .  .  .  .  . 17  7  6  3  .
+ .  .  .  .  .  .  .  5  4  .
+ .  .  .  .  .  .  .  .  .  .
 ```
 
 
@@ -2992,7 +2992,7 @@ sub try_fill {
 	return
 }
 
-parse_board 
+parse_board
 #	". 4 .
 #	 _ 7 _
 #	 1 _ _";
@@ -3015,13 +3015,13 @@ print "\033[2J";
 try_fill(1, $known[1]);
 ```
 {{out}}
- 32 33 35 36 37            
- 31 34 24 22 38            
- 30 25 23 21 12 39         
- 29 26 20 13 40 11         
- 27 28 14 19  9 10  1      
-       15 16 18  8  2      
-             17  7  6  3   
+ 32 33 35 36 37
+ 31 34 24 22 38
+ 30 25 23 21 12 39
+ 29 26 20 13 40 11
+ 27 28 14 19  9 10  1
+       15 16 18  8  2
+             17  7  6  3
                     5  4
 
 
@@ -3051,7 +3051,7 @@ solveboard q:to/END/;
         .. .. .. .. __  7 __ __
         .. .. .. .. .. ..  5 __
         END
- 
+
 sub solveboard($board) {
     my $max = +$board.comb(/\w+/);
     my $width = $max.chars;
@@ -3060,11 +3060,11 @@ sub solveboard($board) {
     my @known;
     my @neigh;
     my @degree;
- 
+
     @grid = $board.lines.map: -> $line {
         [ $line.words.map: { /^_/ ?? 0 !! /^\./ ?? Rat !! $_ } ]
     }
- 
+
     sub neighbors($y,$x --> List) {
         eager gather for @adjacent {
             my $y1 = $y + .[0];
@@ -3132,7 +3132,7 @@ sub solveboard($board) {
         @grid[$y][$x] = $old;             # undo grid value conjecture
         return False;
     }
-     
+
     say "$tries tries";
 }
 ```
@@ -3501,7 +3501,7 @@ init1(Li) :-
 	all_distinct(LV).
 
 % give the constraints
-% Stop before the last line 
+% Stop before the last line
 init2(_N, Col, Max_Col, _L) :-
 	Col is Max_Col - 1.
 
@@ -3572,15 +3572,15 @@ my_write_1(X) :-
 
 ```txt
 ?- hidato.
- 32 33 35 36 37         
- 31 34 24 22 38         
- 30 25 23 21 12 39      
- 29 26 20 13 40 11      
- 27 28 14 19  9 10  1   
-       15 16 18  8  2   
+ 32 33 35 36 37
+ 31 34 24 22 38
+ 30 25 23 21 12 39
+ 29 26 20 13 40 11
+ 27 28 14 19  9 10  1
+       15 16 18  8  2
              17  7  6  3
                     5  4
-true 
+true
 ```
 
 
@@ -3663,21 +3663,21 @@ print_board()
 {{out}}
 
 ```txt
- __ 33 35 __ __         
- __ __ 24 22 __         
- __ __ __ 21 __ __      
- __ 26 __ 13 40 11      
- 27 __ __ __  9 __  1   
-       __ __ 18 __ __   
+ __ 33 35 __ __
+ __ __ 24 22 __
+ __ __ __ 21 __ __
+ __ 26 __ 13 40 11
+ 27 __ __ __  9 __  1
+       __ __ 18 __ __
              __  7 __ __
                     5 __
 
- 32 33 35 36 37         
- 31 34 24 22 38         
- 30 25 23 21 12 39      
- 29 26 20 13 40 11      
- 27 28 14 19  9 10  1   
-       15 16 18  8  2   
+ 32 33 35 36 37
+ 31 34 24 22 38
+ 30 25 23 21 12 39
+ 29 26 20 13 40 11
+ 27 28 14 19  9 10  1
+       15 16 18  8  2
              17  7  6  3
                     5  4
 ```
@@ -3946,7 +3946,7 @@ The following class provides functionality for solving a hidato problem:
 class Hidato
   Cell = Struct.new(:value, :used, :adj)
   ADJUST = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]]
-  
+
   def initialize(board, pout=true)
     @board = []
     board.each_line do |line|
@@ -3966,13 +3966,13 @@ class Hidato
     @end  = @board.flatten.compact.size
     puts to_s('Problem:')  if pout
   end
-  
+
   def solve
     @zbl = Array.new(@end+1, false)
     @board.flatten.compact.each{|cell| @zbl[cell.value] = true}
     puts (try(@board[@sx][@sy], 1) ? to_s('Solution:') : "No solution")
   end
-  
+
   def try(cell, seq_num)
     return true  if seq_num > @end
     return false if cell.used
@@ -3988,7 +3988,7 @@ class Hidato
     end
     cell.used = false
   end
-  
+
   def to_s(msg=nil)
     str = (0...@xmax).map do |x|
       (0...@ymax).map{|y| "%3s" % ((c=@board[x][y]) ? c.value : c)}.join
@@ -4040,44 +4040,44 @@ puts " #{Time.now - t0} sec"
 ```txt
 
 Problem:
-     4   
+     4
   0  7  0
   1  0  0
 
 Solution:
-     4   
+     4
   3  7  5
   1  2  6
 
 Problem:
-  0 33 35  0  0         
-  0  0 24 22  0         
-  0  0  0 21  0  0      
-  0 26  0 13 40 11      
- 27  0  0  0  9  0  1   
-        0  0 18  0  0   
+  0 33 35  0  0
+  0  0 24 22  0
+  0  0  0 21  0  0
+  0 26  0 13 40 11
+ 27  0  0  0  9  0  1
+        0  0 18  0  0
               0  7  0  0
                     5  0
 
 Solution:
- 32 33 35 36 37         
- 31 34 24 22 38         
- 30 25 23 21 12 39      
- 29 26 20 13 40 11      
- 27 28 14 19  9 10  1   
-       15 16 18  8  2   
+ 32 33 35 36 37
+ 31 34 24 22 38
+ 30 25 23 21 12 39
+ 29 26 20 13 40 11
+ 27 28 14 19  9 10  1
+       15 16 18  8  2
              17  7  6  3
                     5  4
 
 Problem:
   1  0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0       74
-        0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0   
-           0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0   
+        0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+           0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0
 
 Solution:
   1  2  3        8  9       14 15       20 21       26 27       32 33       38 39       44 45       50 51       56 57       62 63       68 69       74
-        4     7    10    13    16    19    22    25    28    31    34    37    40    43    46    49    52    55    58    61    64    67    70    73   
-           5  6       11 12       17 18       23 24       29 30       35 36       41 42       47 48       53 54       59 60       65 66       71 72   
+        4     7    10    13    16    19    22    25    28    31    34    37    40    43    46    49    52    55    58    61    64    67    70    73
+           5  6       11 12       17 18       23 24       29 30       35 36       41 42       47 48       53 54       59 60       65 66       71 72
 
  40.198299 sec
 
@@ -4095,7 +4095,7 @@ I modify method as follows to implement [[wp:Knight's_tour#Warnsdorff|Warnsdorff
 class HLPsolver
   attr_reader :board
   Cell = Struct.new(:value, :used, :adj)
-  
+
   def initialize(board, pout=true)
     @board = []
     frame = ADJACENT.flatten.map(&:abs).max
@@ -4117,13 +4117,13 @@ class HLPsolver
     @format = " %#{@end.to_s.size}s"
     puts to_s('Problem:')  if pout
   end
-  
+
   def solve
     @zbl = Array.new(@end+1, false)
     @board.flatten.compact.each{|cell| @zbl[cell.value] = true}
     puts (try(@board[@sx][@sy], 1) ? to_s('Solution:') : "No solution")
   end
-  
+
   def try(cell, seq_num)
     value = cell.value
     return false if value > 0 and value != seq_num
@@ -4146,11 +4146,11 @@ class HLPsolver
     end
     cell.used = false
   end
-  
+
   def wdof(adj)
     adj.count {|x,y| not @board[x][y].used}
   end
-  
+
   def to_s(msg=nil)
     str = (0...@xmax).map do |x|
       (0...@ymax).map{|y| @format % ((c=@board[x][y]) ? c.value : c)}.join
@@ -4199,7 +4199,7 @@ board2 = <<EOS
   .  .  .  .  .  .  5  0
 EOS
 HLPsolver.new(board2).solve
- 
+
 #solve The Snake in the Grass:
 board3 = <<EOS
   1  0  0  .  .  0  0  .  .  0  0  .  .  0  0  .  .  0  0  .  .  0  0  .  .  0  0  .  .  0  0  .  .  0  0  .  .  0  0  .  .  0  0  .  .  0  0  .  . 74
@@ -4217,12 +4217,12 @@ Which produces:
 ```txt
 
 Problem:
-   4  
+   4
  0 7 0
  1 0 0
 
 Solution:
-   4  
+   4
  3 7 5
  1 2 6
 
@@ -4247,34 +4247,34 @@ Solution:
   9 10 12 14 15 21 22 23
 
 Problem:
-  0 33 35  0  0         
-  0  0 24 22  0         
-  0  0  0 21  0  0      
-  0 26  0 13 40 11      
- 27  0  0  0  9  0  1   
-        0  0 18  0  0   
+  0 33 35  0  0
+  0  0 24 22  0
+  0  0  0 21  0  0
+  0 26  0 13 40 11
+ 27  0  0  0  9  0  1
+        0  0 18  0  0
               0  7  0  0
                     5  0
 
 Solution:
- 32 33 35 36 37         
- 31 34 24 22 38         
- 30 25 23 21 12 39      
- 29 26 20 13 40 11      
- 27 28 14 19  9 10  1   
-       15 16 18  8  2   
+ 32 33 35 36 37
+ 31 34 24 22 38
+ 30 25 23 21 12 39
+ 29 26 20 13 40 11
+ 27 28 14 19  9 10  1
+       15 16 18  8  2
              17  7  6  3
                     5  4
 
 Problem:
   1  0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0       74
-        0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0   
-           0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0   
+        0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0     0
+           0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0        0  0
 
 Solution:
   1  2  3        8  9       14 15       20 21       26 27       32 33       38 39       44 45       50 51       56 57       62 63       68 69       74
-        4     7    10    13    16    19    22    25    28    31    34    37    40    43    46    49    52    55    58    61    64    67    70    73   
-           5  6       11 12       17 18       23 24       29 30       35 36       41 42       47 48       53 54       59 60       65 66       71 72   
+        4     7    10    13    16    19    22    25    28    31    34    37    40    43    46    49    52    55    58    61    64    67    70    73
+           5  6       11 12       17 18       23 24       29 30       35 36       41 42       47 48       53 54       59 60       65 66       71 72
 
  0.003001 sec
 
@@ -4294,7 +4294,7 @@ var set of integer: given is {};
 var array array integer: board is 0 times 0 times 0;
 var integer: startRow is 0;
 var integer: startColumn is 0;
- 
+
 const proc: setup (in array string: input) is func
   local
     var integer: r is 0;
@@ -4395,28 +4395,28 @@ const proc: main is func
 
 ```txt
 
- .  .  .  .  .  .  .  .  .  . 
- . __ 33 35 __ __  .  .  .  . 
- . __ __ 24 22 __  .  .  .  . 
- . __ __ __ 21 __ __  .  .  . 
- . __ 26 __ 13 40 11  .  .  . 
- . 27 __ __ __  9 __  1  .  . 
- .  .  . __ __ 18 __ __  .  . 
- .  .  .  .  . __  7 __ __  . 
- .  .  .  .  .  .  .  5 __  . 
- .  .  .  .  .  .  .  .  .  . 
+ .  .  .  .  .  .  .  .  .  .
+ . __ 33 35 __ __  .  .  .  .
+ . __ __ 24 22 __  .  .  .  .
+ . __ __ __ 21 __ __  .  .  .
+ . __ 26 __ 13 40 11  .  .  .
+ . 27 __ __ __  9 __  1  .  .
+ .  .  . __ __ 18 __ __  .  .
+ .  .  .  .  . __  7 __ __  .
+ .  .  .  .  .  .  .  5 __  .
+ .  .  .  .  .  .  .  .  .  .
 
 Found:
- .  .  .  .  .  .  .  .  .  . 
- . 32 33 35 36 37  .  .  .  . 
- . 31 34 24 22 38  .  .  .  . 
- . 30 25 23 21 12 39  .  .  . 
- . 29 26 20 13 40 11  .  .  . 
- . 27 28 14 19  9 10  1  .  . 
- .  .  . 15 16 18  8  2  .  . 
- .  .  .  .  . 17  7  6  3  . 
- .  .  .  .  .  .  .  5  4  . 
- .  .  .  .  .  .  .  .  .  . 
+ .  .  .  .  .  .  .  .  .  .
+ . 32 33 35 36 37  .  .  .  .
+ . 31 34 24 22 38  .  .  .  .
+ . 30 25 23 21 12 39  .  .  .
+ . 29 26 20 13 40 11  .  .  .
+ . 27 28 14 19  9 10  1  .  .
+ .  .  . 15 16 18  8  2  .  .
+ .  .  .  .  . 17  7  6  3  .
+ .  .  .  .  .  .  .  5  4  .
+ .  .  .  .  .  .  .  .  .  .
 
 ```
 
@@ -4619,8 +4619,8 @@ solveHidato "
      0  26   0  13  40  11   .   .
     27   0   0   0   9   0   1   .
      .   .   0   0  18   0   0   .
-     .   .   .   .   0   7   0   0 
-     .   .   .   .   .   .   5   0 
+     .   .   .   .   0   7   0   0
+     .   .   .   .   .   .   5   0
 "
 ```
 
@@ -4707,10 +4707,10 @@ fcn solve(board,given, r,c,n, next=0){
    if(n>given[-1])                       return(True);
    if(board[r][c] and board[r][c]!=n)    return(False);
    if(board[r][c]==0 and given[next]==n) return(False);
- 
+
    back:=0;
    if(board[r][c]==n){ next+=1; back=n; }
- 
+
    board[r][c]=n;
    foreach i,j in ([-1..1],[-1..1]){
       if(solve(board,given, r+i,c+j,n+1, next)) return(True);
@@ -4724,23 +4724,23 @@ fcn solve(board,given, r,c,n, next=0){
 
 ```txt
 
-__ 33 35 __ __          
-__ __ 24 22 __          
-__ __ __ 21 __ __       
-__ 26 __ 13 40 11       
-27 __ __ __  9 __  1    
-      __ __ 18 __ __    
-            __  7 __ __ 
-                   5 __ 
+__ 33 35 __ __
+__ __ 24 22 __
+__ __ __ 21 __ __
+__ 26 __ 13 40 11
+27 __ __ __  9 __  1
+      __ __ 18 __ __
+            __  7 __ __
+                   5 __
 
-32 33 35 36 37          
-31 34 24 22 38          
-30 25 23 21 12 39       
-29 26 20 13 40 11       
-27 28 14 19  9 10  1    
-      15 16 18  8  2    
-            17  7  6  3 
-                   5  4 
+32 33 35 36 37
+31 34 24 22 38
+30 25 23 21 12 39
+29 26 20 13 40 11
+27 28 14 19  9 10  1
+      15 16 18  8  2
+            17  7  6  3
+                   5  4
 
 ```
 

@@ -15,7 +15,7 @@ tags = []
 ;Task
 Given two [[set]]s ''A'' and ''B'', compute <math>(A \setminus B) \cup (B \setminus A).</math>
 
-That is, enumerate the items that are in ''A'' or ''B'' but not both. This set is called the [[wp:Symmetric difference|symmetric difference]] of ''A'' and ''B''. 
+That is, enumerate the items that are in ''A'' or ''B'' but not both. This set is called the [[wp:Symmetric difference|symmetric difference]] of ''A'' and ''B''.
 
 In other words: <math>(A \cup B) \setminus (A \cap B)</math> (the set of items that are in at least one of ''A'' or ''B'' minus the set of items that are in both ''A'' and ''B'').
 
@@ -60,7 +60,7 @@ procedure Test_XOR is
    end Put;
 
    A : Group := (John | Bob | Mary | Serena => True, others => False);
-   B : Group := (Jim | Mary | John | Bob    => True, others => False);   
+   B : Group := (Jim | Mary | John | Bob    => True, others => False);
 begin
    Put ("A xor B = "); Put (A xor B);     New_Line;
    Put ("A - B   = "); Put (A and not B); New_Line;
@@ -191,9 +191,9 @@ end symmetricDifference
 on run
     set a to ["John", "Serena", "Bob", "Mary", "Serena"]
     set b to ["Jim", "Mary", "John", "Jim", "Bob"]
-    
+
     symmetricDifference(a, b)
-    
+
     -->  {"Serena", "Jim"}
 end run
 
@@ -204,7 +204,7 @@ end run
 on |delete|(x, xs)
     set mbIndex to elemIndex(x, xs)
     set lng to length of xs
-    
+
     if mbIndex is not missing value then
         if lng > 1 then
             if mbIndex = 1 then
@@ -234,7 +234,7 @@ on difference(xs, ys)
             end if
         end |λ|
     end script
-    
+
     foldl(result, xs, ys)
 end difference
 
@@ -259,7 +259,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -288,7 +288,7 @@ on union(xs, ys)
             my |delete|(x, xs)
         end |λ|
     end script
-    
+
     set sx to nub(xs)
     sx & foldl(flipDelete, nub(ys), sx)
 end union
@@ -410,21 +410,21 @@ Here sets are represented as integers, hence there are a maximum of 32 elements 
 ```bbcbasic
       DIM list$(4)
       list$() = "Bob", "Jim", "John", "Mary", "Serena"
-      
+
       setA% = %11101
       PRINT "Set A: " FNlistset(list$(), setA%)
       setB% = %01111
       PRINT "Set B: " FNlistset(list$(), setB%)
-      
+
       REM Compute symmetric difference:
       setC% = setA% EOR setB%
       PRINT '"Symmetric difference: " FNlistset(list$(), setC%)
-      
+
       REM Optional:
       PRINT "Set A \ Set B: " FNlistset(list$(), setA% AND NOT setB%)
       PRINT "Set B \ Set A: " FNlistset(list$(), setB% AND NOT setA%)
       END
-      
+
       DEF FNlistset(list$(), set%)
       LOCAL i%, o$
       FOR i% = 0 TO 31
@@ -451,7 +451,7 @@ Set B \ Set A: Jim
 ## Bracmat
 
 Walk through the concatenation of the two lists, using backtracking (forced by the ~ operator).
-If an element is in both lists, or if the element already is in the accumulated result <code>symdiff</code>, continue. Otherwise add the element to <code>symdiff</code>. When all elements are done and backtracking therefore finally fails, return the contents of <code>symdiff</code>. The flag <code>%</code> in the pattern <code>%@?x</code> ensures that only nontrivial elements (i.e. non-empty strings in this case) are matched. The <code>@</code> flag ensures that at most one string is matched. Together these flags ensure that exactly one element is matched. 
+If an element is in both lists, or if the element already is in the accumulated result <code>symdiff</code>, continue. Otherwise add the element to <code>symdiff</code>. When all elements are done and backtracking therefore finally fails, return the contents of <code>symdiff</code>. The flag <code>%</code> in the pattern <code>%@?x</code> ensures that only nontrivial elements (i.e. non-empty strings in this case) are matched. The <code>@</code> flag ensures that at most one string is matched. Together these flags ensure that exactly one element is matched.
 
 ```bracmat
 (SymmetricDifference=
@@ -488,8 +488,8 @@ Output:
 
 Simple method:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 const char *A[] = { "John", "Serena", "Bob", "Mary", "Serena" };
@@ -560,8 +560,8 @@ A ^ B:
 
 If you prefer something elaborate:
 
-```c>#include <assert.h
-
+```c
+#include <assert.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -600,7 +600,7 @@ const char ** symmdiff( int *sym_size, EsdFunction f, const char *setA[], int se
     union_set = TALLOC(max_union_size, const char *);
     union_xor = TALLOC(max_union_size, int);
 
-    /* I'm assuming here that setA has no duplicates, 
+    /* I'm assuming here that setA has no duplicates,
      * i.e. is a set in mathematical sense */
     for (ix=0; ix<setAsize; ix++) {
         union_set[ix] = setA[ix];
@@ -756,19 +756,19 @@ Jim
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <set>
 #include <algorithm>
 #include <iterator>
 #include <string>
 
 using namespace std;
- 
+
 int main( ) {
    string setA[] = { "John", "Bob" , "Mary", "Serena" };
    string setB[] = { "Jim" , "Mary", "John", "Bob"  };
-   set<string> 
+   set<string>
        firstSet( setA , setA + 4 ),
        secondSet( setB , setB + 4 ),
        symdiff;
@@ -1036,16 +1036,16 @@ GForth 0.7.0 tested.
 
 ```Forth
 : elm	( n -- ; one cell per set )
-	[ cell 8 * 1- ] literal umin CREATE 1 swap lshift , 
+	[ cell 8 * 1- ] literal umin CREATE 1 swap lshift ,
 DOES> 	( -- 2^n ) @ ;
 
 : universe	( u "name" -- )
 	dup 0 DO I elm latest swap LOOP
 	CREATE dup , 0 DO , LOOP
 	DOES>  ( n a -- )  dup @ tuck cells +
-		swap 0 
+		swap 0
 		DO	( n a' )
-			over I rshift 1 AND 
+			over I rshift 1 AND
 			IF dup @ name>string space type THEN
 			1 cells -
 		LOOP	2drop ;
@@ -1065,11 +1065,11 @@ Output:
 
 ```txt
 
-$ gforth wrk.fs 
+$ gforth wrk.fs
  serena jim
  serena
  jim
-$ 
+$
 
 ```
 
@@ -1093,14 +1093,14 @@ outer1: do i = 1, size(a)
           end do
           if(.not. any(b == a(i))) write(*,*) a(i)
         end do outer1
-  
+
 outer2: do i = 1, size(b)
           do j = 1, i-1
             if(b(i) == b(j)) cycle outer2   ! Do not check duplicate items
           end do
           if(.not. any(a == b(i))) write(*,*) b(i)
         end do outer2
-      
+
 end program
 ```
 
@@ -1212,11 +1212,11 @@ assert bb.empty
 assert ab == ba
 assert ab == (['Jim', 'Serena'] as Set)
 assert ab == (['Serena', 'Jim'] as Set)
- 
+
 println """
 a: ${a}
 b: ${b}
- 
+
 Symmetric Differences
 
 ### ===============
@@ -1233,40 +1233,40 @@ Set apostles = ['Matthew', 'Mark', 'Luke', 'John', 'Peter', 'Paul', 'Silas']
 Set beatles = ['John', 'Paul', 'George', 'Ringo', 'Peter', 'Stuart']
 Set csny = ['Crosby', 'Stills', 'Nash', 'Young']
 Set ppm = ['Peter', 'Paul', 'Mary']
- 
+
 def AA = symDiff(apostles, apostles)
 def AB = symDiff(apostles, beatles)
 def AC = symDiff(apostles, csny)
 def AP = symDiff(apostles, ppm)
- 
+
 def BA = symDiff(beatles, apostles)
 def BB = symDiff(beatles, beatles)
 def BC = symDiff(beatles, csny)
 def BP = symDiff(beatles, ppm)
- 
+
 def CA = symDiff(csny, apostles)
 def CB = symDiff(csny, beatles)
 def CC = symDiff(csny, csny)
 def CP = symDiff(csny, ppm)
- 
+
 def PA = symDiff(ppm, apostles)
 def PB = symDiff(ppm, beatles)
 def PC = symDiff(ppm, csny)
 def PP = symDiff(ppm, ppm)
- 
+
 assert AB == BA
 assert AC == CA
 assert AP == PA
 assert BC == CB
 assert BP == PB
 assert CP == PC
- 
+
 println """
 apostles: ${apostles}
  beatles: ${beatles}
     csny: ${csny}
      ppm: ${ppm}
- 
+
 Symmetric Differences
 
 ### ===============
@@ -1275,17 +1275,17 @@ apostles <> apostles: ${AA}
 apostles <> beatles:  ${AB}
 apostles <> csny:     ${AC}
 apostles <> ppm:      ${AP}
- 
+
 beatles <> apostles:  ${BA}
 beatles <> beatles:   ${BB}
 beatles <> csny:      ${BC}
 beatles <> ppm:       ${BP}
- 
+
 csny <> apostles:     ${CA}
 csny <> beatles:      ${CB}
 csny <> csny:         ${CC}
 csny <> ppm:          ${CP}
- 
+
 ppm <> apostles:      ${PA}
 ppm <> beatles:       ${PB}
 ppm <> csny:          ${PC}
@@ -1297,7 +1297,7 @@ ppm <> ppm:           ${PP}
 Output:
 <pre style="height:30ex;overflow:scroll;">a: [Mary, Bob, Serena, John]
 b: [Mary, Bob, Jim, John]
- 
+
 Symmetric Differences
 
 ### ===============
@@ -1314,7 +1314,7 @@ apostles: [Paul, Mark, Silas, Peter, Luke, John, Matthew]
  beatles: [Paul, Stuart, Ringo, Peter, John, George]
     csny: [Crosby, Young, Nash, Stills]
      ppm: [Paul, Mary, Peter]
- 
+
 Symmetric Differences
 
 ### ===============
@@ -1323,17 +1323,17 @@ apostles <> apostles: []
 apostles <> beatles:  [Mark, Silas, Stuart, Ringo, Luke, Matthew, George]
 apostles <> csny:     [Paul, Crosby, Mark, Silas, Young, Peter, Luke, John, Matthew, Nash, Stills]
 apostles <> ppm:      [Mark, Mary, Silas, Luke, John, Matthew]
- 
+
 beatles <> apostles:  [Mark, Stuart, Ringo, Silas, Luke, Matthew, George]
 beatles <> beatles:   []
 beatles <> csny:      [Paul, Crosby, Stuart, Ringo, Young, Peter, John, Nash, Stills, George]
 beatles <> ppm:       [Mary, Stuart, Ringo, John, George]
- 
+
 csny <> apostles:     [Paul, Crosby, Mark, Silas, Young, Peter, Luke, John, Nash, Stills, Matthew]
 csny <> beatles:      [Paul, Crosby, Stuart, Ringo, Young, Peter, John, Nash, Stills, George]
 csny <> csny:         []
 csny <> ppm:          [Paul, Crosby, Mary, Young, Peter, Nash, Stills]
- 
+
 ppm <> apostles:      [Mark, Mary, Silas, Luke, John, Matthew]
 ppm <> beatles:       [Mary, Stuart, Ringo, John, George]
 ppm <> csny:          [Paul, Crosby, Mary, Young, Peter, Nash, Stills]
@@ -1415,7 +1415,7 @@ showset("b",b)
 showset("(a\\b) \xef (b\\a)",(a -- b) ++ (b -- a))
 showset("(a\\b)",a -- b)
 showset("(b\\a)",b -- a)
-end  
+end
 
 
 procedure showset(n,x)
@@ -1507,24 +1507,24 @@ public class SymmetricDifference {
         notInSetA.removeAll(setA);
         Set<String> notInSetB = new HashSet<String>(setA);
         notInSetB.removeAll(setB);
- 
+
         // The symmetric difference is the concatenation of the two individual differences
         Set<String> symmetricDifference = new HashSet<String>(notInSetA);
         symmetricDifference.addAll(notInSetB);
-        
+
         // Option 2: union minus intersection
         // Combine both sets
         Set<String> union = new HashSet<String>(setA);
         union.addAll(setB);
-        
+
         // Get the intersection
         Set<String> intersection = new HashSet<String>(setA);
         intersection.retainAll(setB);
-        
+
         // The symmetric difference is the union of the 2 sets minus the intersection
         Set<String> symmetricDifference2 = new HashSet<String>(union);
         symmetricDifference2.removeAll(intersection);
- 
+
         // Present our results
         System.out.println("Not in set A: " + notInSetA);
         System.out.println("Not in set B: " + notInSetB);
@@ -1574,7 +1574,7 @@ function symmetric_difference(A,B) {
     return relative_complement(A,B).concat(relative_complement(B,A));
 }
 
-var a = ["John", "Serena", "Bob", "Mary", "Serena"].unique(); 
+var a = ["John", "Serena", "Bob", "Mary", "Serena"].unique();
 var b = ["Jim", "Mary", "John", "Jim", "Bob"].unique();
 
 print(a);
@@ -1608,7 +1608,7 @@ function Difference(A,B)
 }
 
 function SymmetricDifference(A,B)
-{  
+{
     var D1 = Difference(A,B), D2 = Difference(B,A),
         a = D1.length, b = D2.length;
     for (var i = 0; i < b; i++) D1[a++] = D2[i];
@@ -1619,7 +1619,7 @@ function SymmetricDifference(A,B)
 /* Example
    A = ['John', 'Serena', 'Bob', 'Mary', 'Serena'];
    B = ['Jim', 'Mary', 'John', 'Jim', 'Bob'];
-   
+
    Difference(A,B);           // 'Serena'
    Difference(B,A);           // 'Jim'
    SymmetricDifference(A,B);  // 'Serena','Jim'
@@ -1750,13 +1750,13 @@ no-null requirement would be tedious but straightforward.
 ```jq
 # The following implementation of intersection (but not symmetric_difference) assumes that the
 # elements of a (and of b) are unique and do not include null:
-def intersection(a; b): 
+def intersection(a; b):
   reduce ((a + b) | sort)[] as $i
     ([null, []]; if .[0] == $i then [null, .[1] + [$i]] else [$i, .[1]] end)
   | .[1] ;
 
 def symmetric_difference(a;b):
-  (a|unique) as $a | (b|unique) as $b 
+  (a|unique) as $a | (b|unique) as $b
   | (($a + $b) | unique) - (intersection($a;$b));
 
 ```
@@ -1992,7 +1992,7 @@ print("Difference       B\\A        : " .. B:difference(A))
 
     Set A: {Serena, Mary, John, Bob}
     Set B: {Mary, Jim, John, Bob}
-    
+
     Symm. difference (A\B)∪(B\A): {Serena, Jim}
     Union            A∪B        : {John, Serena, Jim, Mary, Bob}
     Intersection     A∩B        : {Mary, John, Bob}
@@ -2038,7 +2038,7 @@ Also, due to Mathematica's symbolic nature, these functions are automatically ap
 
 ## MATLAB
 
-If you are using a vector of numbers as the sets of which you like to find the symmetric difference, then there are already utilities that operate on these types of sets built into MATLAB. This code will take the symmetric difference of two vectors: 
+If you are using a vector of numbers as the sets of which you like to find the symmetric difference, then there are already utilities that operate on these types of sets built into MATLAB. This code will take the symmetric difference of two vectors:
 
 ```MATLAB>>
  [setdiff([1 2 3],[2 3 4]) setdiff([2 3 4],[1 2 3])]
@@ -2055,10 +2055,10 @@ This code will return the symmetric difference of two sets and will take both ce
 
 ```MATLAB
 function resultantSet = symmetricDifference(set1,set2)
- 
+
     assert( ~xor(iscell(set1),iscell(set2)), 'Both sets must be of the same type, either cells or matricies, but not a combination of the two' );
 %% Helper function definitions
- 
+
     %Define what set equality means for cell arrays
     function trueFalse = equality(set1,set2)
         if xor(iscell(set1),iscell(set2)) %set1 or set2 is a set and the other isn't
@@ -2078,15 +2078,15 @@ function resultantSet = symmetricDifference(set1,set2)
             end
             return
         else %set1 and set2 are both sets
- 
+
             for x = (1:numel(set1))
                 trueFalse = false;
                 for y = (1:numel(set2))
- 
+
                     %Compair the current element of set1 with every element
                     %in set2
                     trueFalse = equality(set1{x},set2{y});
- 
+
                     %If the element of set1 is equal to the current element
                     %of set2 remove that element from set2 and break out of
                     %this inner loop
@@ -2095,7 +2095,7 @@ function resultantSet = symmetricDifference(set1,set2)
                         break
                     end
                 end
- 
+
                 %If the loop completes without breaking then the current
                 %element of set1 is not contained in set2 therefore the two
                 %sets are not equal and we can return an equality of false
@@ -2103,7 +2103,7 @@ function resultantSet = symmetricDifference(set1,set2)
                     return
                 end
             end
- 
+
             %If, after checking every element in both sets, there are still
             %elements in set2 then the two sets are not equivalent
             if ~isempty(set2)
@@ -2114,16 +2114,16 @@ function resultantSet = symmetricDifference(set1,set2)
             %true.
         end
     end %equality
- 
+
     %Define the relative complement for cell arrays
     function set1 = relativeComplement(set1,set2)
- 
+
         for k = (1:numel(set2))
- 
+
             if numel(set1) == 0
                 return
             end
- 
+
             j = 1;
             while j <= numel(set1)
                 if equality(set1{j},set2{k})
@@ -2134,16 +2134,16 @@ function resultantSet = symmetricDifference(set1,set2)
             end
         end
     end %relativeComplement
- 
-%% The Symmetric Difference Algorithm    
+
+%% The Symmetric Difference Algorithm
     if iscell(set1) && iscell(set2)
         resultantSet = [relativeComplement(set1,set2) relativeComplement(set2,set1)];
     else
         resultantSet = [setdiff(set1,set2) setdiff(set2,set1)];
     end
- 
+
     resultantSet = unique(resultantSet); %Make sure there are not duplicates
-    
+
 end %symmetricDifference
 ```
 
@@ -2152,19 +2152,19 @@ Solution Test:
 ```MATLAB>>
  A = {'John','Bob','Mary','Serena'}
 
-A = 
+A =
 
     'John'    'Bob'    'Mary'    'Serena'
 
 >> B = {'Jim','Mary','John','Bob'}
 
-B = 
+B =
 
     'Jim'    'Mary'    'John'    'Bob'
 
 >> symmetricDifference(A,B)
 
-ans = 
+ans =
 
     'Serena'    'Jim' %Correct
 
@@ -2329,7 +2329,7 @@ Output:
 ```txt
 
 Serena
-Jim      
+Jim
 
 ```
 
@@ -2353,7 +2353,7 @@ declare
   fun {Diff set(A) set(B)}
      set({FoldL B List.subtract A})
   end
- 
+
   fun {Union set(A) set(B)}
      set({Append A B})
   end
@@ -2528,7 +2528,7 @@ end function
 function Symmetric_Difference(sequence a, sequence b)
     return Union(Difference(a, b), Difference(b, a))
 end function
- 
+
 sequence a = {"John", "Serena", "Bob", "Mary", "Serena"},
          b = {"Jim", "Mary", "John", "Jim", "Bob"}
 ?Symmetric_Difference(a,a)
@@ -2565,7 +2565,7 @@ $b = array_unique($b);
 // Get the individual differences, using array_diff()
 $a_minus_b = array_diff($a, $b);
 $b_minus_a = array_diff($b, $a);
- 
+
 // Simply merge them together to get the symmetric difference
 $symmetric_difference = array_merge($a_minus_b, $b_minus_a);
 
@@ -2612,17 +2612,17 @@ Output:
 The set type in Pike is 'multiset', that is, a value may appear multiple times and the difference operator only removes equal amounts of duplicates.
 
 ```Pike>
- multiset(string) A = (< "John", "Serena", "Bob", "Mary", "Bob", "Serena" >); 
+ multiset(string) A = (< "John", "Serena", "Bob", "Mary", "Bob", "Serena" >);
 > multiset(string) B = (< "Jim", "Mary", "Mary", "John", "Bob", "Jim" >);
 
-> A^B;                                                               
+> A^B;
 Result: (< "Bob", "Serena", "Serena", "Mary", "Jim", "Jim" >)
 ```
 
 The <code>^</code> operator treats arrays like multisets.
 
 ```Pike>
- array(string) A = ({ "John", "Serena", "Bob", "Mary", "Serena", "Bob" }); 
+ array(string) A = ({ "John", "Serena", "Bob", "Mary", "Serena", "Bob" });
 > array(string) B = ({ "Jim", "Mary", "John", "Jim", "Bob", "Mary" });
 > A^B;
 Result: ({ "Serena", "Serena", "Bob", "Jim", "Jim", "Mary"})
@@ -2634,7 +2634,7 @@ Result: ({ "Serena", "Jim" })
 Set operations are also possible with mappings. Here the difference operator works as expected:
 
 ```Pike>
- mapping(string:int) A = ([ "John":1, "Serena":1, "Bob":1, "Mary":1 ]);                     
+ mapping(string:int) A = ([ "John":1, "Serena":1, "Bob":1, "Mary":1 ]);
 > mapping(string:int) B = ([ "Jim":1, "Mary":1, "John":1, "Bob":1 ]);
 
 > A^B;
@@ -2644,8 +2644,8 @@ Result: ([ "Jim": 1, "Serena": 1 ])
 Lastly, there is a Set class.
 
 ```Pike>
- ADT.Set A = ADT.Set((< "John", "Serena", "Bob", "Mary", "Serena", "Bob" >));        
-> ADT.Set B = ADT.Set((< "Jim", "Mary", "John", "Jim", "Bob", "Mary" >));      
+ ADT.Set A = ADT.Set((< "John", "Serena", "Bob", "Mary", "Serena", "Bob" >));
+> ADT.Set B = ADT.Set((< "Jim", "Mary", "John", "Jim", "Bob", "Mary" >));
 > (A-B)+(B-A);
 Result: ADT.Set({ "Serena", "Jim" })
 ```
@@ -2684,7 +2684,7 @@ Output:
 ```txt
 
 Serena
-Jim     
+Jim
 
 ```
 
@@ -2698,21 +2698,21 @@ $A = @( "John"
         "Bob"
         "Mary"
         "Serena" )
- 
+
 $B = @( "Jim"
         "Mary"
         "John"
         "Bob" )
- 
+
 #  Full commandlet name and full parameter names
 Compare-Object -ReferenceObject $A -DifferenceObject $B
- 
+
 #  Same commandlet using an alias and positional parameters
 Compare $A $B
- 
+
 #  A - B
 Compare $A $B | Where SideIndicator -eq "<=" | Select -ExpandProperty InputObject
- 
+
 #  B - A
 Compare $A $B | Where SideIndicator -eq "=>" | Select -ExpandProperty InputObject
 ```
@@ -2722,13 +2722,13 @@ Compare $A $B | Where SideIndicator -eq "=>" | Select -ExpandProperty InputObjec
 ```txt
 InputObject SideIndicator
 ----------- -------------
-Jim         =>           
-Serena      <=           
+Jim         =>
+Serena      <=
 
 InputObject SideIndicator
 ----------- -------------
-Jim         =>           
-Serena      <=           
+Jim         =>
+Serena      <=
 
 Serena
 
@@ -2790,7 +2790,7 @@ B(0)="Jim":  B(1)="Mary":B(2)="John": B(3)="Bob"
 For a=0 To ArraySize(A())    ; A-B
   For b=0 To ArraySize(B())
     If A(a)=B(b)
-      Break 
+      Break
     ElseIf b=ArraySize(B())
       Debug A(a)
     EndIf
@@ -2800,7 +2800,7 @@ Next a
 For b=0 To ArraySize(B())     ; B-A
   For a=0 To ArraySize(A())
     If A(a)=B(b)
-      Break 
+      Break
     ElseIf a=ArraySize(A())
       Debug B(b)
     EndIf
@@ -2829,7 +2829,7 @@ EndDataSection
 Procedure addElementsToSet(List x.s())
   ;requires the read pointer to be set prior to calling by using 'Restore'
   Protected i, count
-  
+
   Read.i count
   For i = 1 To count
     AddElement(x())
@@ -2843,18 +2843,18 @@ Procedure displaySet(List x.s())
   For i = 1 To count
     Print(x())
     NextElement(x())
-    If i <> count: Print(", "): EndIf 
+    If i <> count: Print(", "): EndIf
   Next
   PrintN("")
 EndProcedure
 
 Procedure symmetricDifference(List a.s(), List b.s(), List result.s())
   Protected ACount = ListSize(a()), BCount = ListSize(b()), prev.s
-  
+
   ;this may leave set a and b in a different order
   SortList(a(),#PB_Sort_Ascending)
   SortList(b(),#PB_Sort_Ascending)
-  
+
   FirstElement(a())
   FirstElement(b())
   LastElement(result()) ;add to end of result()
@@ -2868,20 +2868,20 @@ Procedure symmetricDifference(List a.s(), List b.s(), List result.s())
     ElseIf ACount = 0 Or (BCount <> 0 And a() > b())
       AddElement(result()): result() = b()
       prev = b(): Repeat: BCount - 1: NextElement(b()): Until BCount = 0 Or (b() <> prev)
-    EndIf 
-  Wend 
-EndProcedure 
+    EndIf
+  Wend
+EndProcedure
 
 If OpenConsole()
   NewList a.s(): Restore SetA: addElementsToSet(a())
   NewList b.s(): Restore SetB: addElementsToSet(b())
   Print("Set A: "): displaySet(a())
   Print("Set B: "): displaySet(b())
-  
+
   NewList sd.s()
   symmetricDifference(a(), b(), sd())
   Print("Symmetric Difference: "): displaySet(sd())
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -2965,7 +2965,7 @@ c(setdiff(b, a), setdiff(a, b))
 
 a <- c("John", "Serena", "Bob", "Mary", "Serena")
 b <- c("Jim", "Mary", "John", "Jim", "Bob")
-c(setdiff(b, a), setdiff(a, b)) 
+c(setdiff(b, a), setdiff(a, b))
 ```
 
 In both cases answer is:
@@ -3115,7 +3115,7 @@ symmetric difference = ["Stands with a Fist", "", "Hungry Wolf", "Draag Ng [Jr.]
 /* REXX ---------------------------------------------------------------
 * 14.12.2013 Walter Pachl  a short solution
 * 16.12.2013 fix duplicate element problem in input
-* 16.12.2013 added duplicate to t. 
+* 16.12.2013 added duplicate to t.
 * Handles only sets the elements of which do not contain blanks
 *--------------------------------------------------------------------*/
 s='John Bob Mary Serena'
@@ -3126,11 +3126,11 @@ difference:
 Parse Arg a,b
 res=''
 Do i=1 To words(a)
-  If wordpos(word(a,i),b)=0 Then 
+  If wordpos(word(a,i),b)=0 Then
     Call out word(a,i)
   End
 Do i=1 To words(b)
-  If wordpos(word(b,i),a)=0 Then 
+  If wordpos(word(b,i),a)=0 Then
     Call out word(b,i)
   End
 Return strip(res)
@@ -3158,8 +3158,8 @@ alist = ["john", "bob", "mary", "serena"]
 blist = ["jim", "mary", "john", "bob"]
 
 alist2 = []
-for i = 1 to len(alist) 
-    flag = 0    
+for i = 1 to len(alist)
+    flag = 0
     for j = 1 to len(blist)
         if alist[i] = blist[j]  flag = 1 ok
     next
@@ -3167,8 +3167,8 @@ for i = 1 to len(alist)
 next
 
 blist2 = []
-for j = 1 to len(alist) 
-    flag = 0    
+for j = 1 to len(alist)
+    flag = 0
     for i = 1 to len(blist)
         if alist[i] = blist[j]  flag = 1 ok
     next
@@ -3177,8 +3177,8 @@ next
 see "a xor b :" see nl
 see alist2
 see blist2 see nl
-see "a-b :" see nl 
-see alist2 see nl 
+see "a-b :" see nl
+see alist2 see nl
 see "b-a :" see nl
 see blist2 see nl
 
@@ -3266,7 +3266,7 @@ res46: scala.collection.immutable.Set[java.lang.String] = Set(Serena, Jim)
 
 
 
-###  Pure R7RS 
+###  Pure R7RS
 
 
 In pure Scheme, to illustrate implementation of the algorithms:
@@ -3279,7 +3279,7 @@ In pure Scheme, to illustrate implementation of the algorithms:
 
 ;; -- given two sets represented as lists, return (A \ B)
 (define (a-without-b a b)
-  (cond ((null? a) 
+  (cond ((null? a)
          '())
         ((member (car a) (cdr a)) ; drop head of a if it's a duplicate
          (a-without-b (cdr a) b))
@@ -3301,7 +3301,7 @@ In pure Scheme, to illustrate implementation of the algorithms:
 (display "B\\A: ") (display (a-without-b B A)) (newline)
 (display "Symmetric difference: ") (display (symmetric-difference A B)) (newline)
 ;; -- extra test as we are using lists
-(display "Symmetric difference 2: ") 
+(display "Symmetric difference 2: ")
 (display (symmetric-difference '(John Serena Bob Mary Serena)
                                '(Jim Mary John Jim Bob))) (newline)
 
@@ -3321,7 +3321,7 @@ Symmetric difference 2: (Serena Jim)
 
 
 
-###  Using a standard library 
+###  Using a standard library
 
 
 {{libheader|Scheme/SRFIs}}
@@ -3336,12 +3336,12 @@ SRFI 1 is one of the most popular SRFIs.  It deals with lists, but also has func
         (srfi 1))
 
 (define (a-without-b a b)
-  (lset-difference equal? 
+  (lset-difference equal?
                    (delete-duplicates a)
                    (delete-duplicates b)))
 
 (define (symmetric-difference a b)
-  (lset-xor equal? 
+  (lset-xor equal?
             (delete-duplicates a)
             (delete-duplicates b)))
 
@@ -3353,7 +3353,7 @@ SRFI 1 is one of the most popular SRFIs.  It deals with lists, but also has func
 (display "B\\A: ") (display (a-without-b B A)) (newline)
 (display "Symmetric difference: ") (display (symmetric-difference A B)) (newline)
 ;; -- extra test as we are using lists
-(display "Symmetric difference 2: ") 
+(display "Symmetric difference 2: ")
 (display (symmetric-difference '(John Serena Bob Mary Serena)
                                '(Jim Mary John Jim Bob))) (newline)
 
@@ -3462,7 +3462,7 @@ Output:
 
 ```txt
 
-          arrxor           
+          arrxor
 ------------------------
  also,is,of,part,this
 
@@ -3566,7 +3566,7 @@ John in: a b
 Bob in: a b
 Mary in: a b
 Serena in: a
-Jim in: b 
+Jim in: b
 
 ```
 
@@ -3697,7 +3697,7 @@ end sub
 
 sub quitarep$(l1$, l2$)
 	local pos, n, x, listar$, nombre$, largo
-	
+
 	largo = len(l1$)
 	pos = 1
 	while(true)

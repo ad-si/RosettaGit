@@ -171,7 +171,7 @@ on cantor(xs)
         on |λ|(s)
             set m to (length of s) div 3
             set blocks to text 1 thru m of s
-            
+
             if "█" = text 1 of s then
                 {blocks, replicate(m, space), blocks}
             else
@@ -238,7 +238,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -272,7 +272,7 @@ on replicate(n, s)
     set out to ""
     if n < 1 then return out
     set dbl to s
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -442,10 +442,10 @@ Igual que la entrada de FreeBASIC.
 
 ## C
 
-{{trans|Kotlin}}
+Translated from Kotlin.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define WIDTH 81
 #define HEIGHT 5
@@ -502,10 +502,10 @@ int main() {
 
 ## C++
 
-{{trans|D}}
+Translated from D.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 const int WIDTH = 81;
 const int HEIGHT = 5;
@@ -554,8 +554,9 @@ int main() {
 ```
 
 
-=={{header|C#|C sharp}}==
-{{trans|Java}}
+## C#
+
+Translated from Java.
 
 ```csharp
 using System;
@@ -684,11 +685,11 @@ CONSTANT: depth 5
 !
 : gaps ( seq -- seq )
     [ width * ] map [ - abs ] 2clump-map ;
-    
+
 : print-cantor ( n -- )
     cantor gaps [ even? "#" " " ? swap repeat ] map-index
     concat print ;
-    
+
 depth <iota> [ print-cantor ] each
 ```
 
@@ -1090,7 +1091,7 @@ cantor_dust =: monad define
 │# # # # # # # # # # # # # # # # # # # # # # # # # # #│
 │  #   # # #   #     #   # # #   #     #   # # #   #  │
 └─────────────────────────────────────────────────────┘
-   
+
 
 ```
 
@@ -2351,7 +2352,7 @@ if __name__ == '__main__':
 (0, 1)
 (0, 1/3) (2/3, 1)
 (0, 1/9) (2/9, 1/3) (2/3, 7/9) (8/9, 1)
-(0, 1/27) (2/27, 1/9) (2/9, 7/27) (8/27, 1/3) (2/3, 19/27) (20/27, 7/9) (8/9, 25/27) (26/27, 1) 
+(0, 1/27) (2/27, 1/9) (2/9, 7/27) (8/27, 1/3) (2/3, 19/27) (20/27, 7/9) (8/9, 25/27) (26/27, 1)
 
 ███████████████████████████
 █████████         █████████
@@ -2429,7 +2430,7 @@ $= copies('■', #)                                /*populate the display line w
                    end   /*j*/                   /*stick a fork in it,  we're all done. */
 ```
 
-This REXX program makes use of   '''linesize'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console). 
+This REXX program makes use of   '''linesize'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console).
 
 Some REXXes don't have this BIF, so the   '''linesize.rex'''   REXX program is included here   ──►   [[LINESIZE.REX]].
 
@@ -2470,7 +2471,7 @@ Some REXXes don't have this BIF, so the   '''linesize.rex'''   REXX program is i
 load "guilib.ring"
 paint = null
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("")
@@ -2820,7 +2821,7 @@ End Module
 ```zkl
 const WIDTH=81, HEIGHT=5;
 var lines=HEIGHT.pump(List,List.createLong(WIDTH,"\U2588;").copy);  // full block
- 
+
 fcn cantor(start,len,index){
    (seg:=len/3) or return();
    foreach i,j in ([index..HEIGHT-1], [start + seg .. start + seg*2 - 1]){

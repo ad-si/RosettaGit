@@ -15,7 +15,7 @@ tags = []
 [[File:Fifo.gif|frame|right|Illustration of FIFO behavior]]
 
 ;Task:
-Implement a FIFO queue. 
+Implement a FIFO queue.
 
 Elements are added at one side and popped from the other in the order of insertion.
 
@@ -96,7 +96,7 @@ The FIFO implementation is described in the package body:
 ```ada
 with Ada.Unchecked_Deallocation;
 
-package body Fifo is 
+package body Fifo is
 
    ----------
    -- Push --
@@ -140,7 +140,7 @@ package body Fifo is
    function Is_Empty (List : Fifo_Type) return Boolean is
    begin
       return List.Head = null;
-   end Is_Empty; 
+   end Is_Empty;
 
 end Fifo;
 ```
@@ -172,7 +172,7 @@ The following implementation produces equivalent functionality by deriving from 
 This example needs fewer lines of code on the part of the application programmer, but the implementation is less efficient than the previous example. Each element has all the data members needed for a doubly linked list. It also links in all the functionality of a doubly linked list. Most of that functionality is unneeded in a FIFO.
 
 ```ada
- 
+
  with Ada.Containers.Doubly_Linked_Lists;
  generic
     type Element_Type is private;
@@ -193,20 +193,20 @@ This example needs fewer lines of code on the part of the application programmer
 ```ada
 
  package body Generic_Fifo is
- 
+
     ----------
     -- Push --
-    ---------- 
- 
+    ----------
+
     procedure Push (The_Fifo : in out Fifo_Type; Item : in Element_Type) is
     begin
        The_Fifo.Prepend(Item);
     end Push;
- 
+
     ---------
     -- Pop --
     ---------
- 
+
     procedure Pop (The_Fifo : in out Fifo_Type; Item : out Element_Type) is
     begin
        if Is_Empty(The_Fifo) then
@@ -215,7 +215,7 @@ This example needs fewer lines of code on the part of the application programmer
        Item := The_Fifo.Last_Element;
        The_Fifo.Delete_Last;
     end Pop;
- 
+
  end Generic_Fifo;
 ```
 
@@ -268,7 +268,7 @@ package body Synchronous_Fifo is
    -- Fifo --
    ----------
 
-   protected body Fifo is 
+   protected body Fifo is
 
       ---------
       -- Push --
@@ -278,7 +278,7 @@ package body Synchronous_Fifo is
       begin
          Value := Item;
          Is_New := True;
-      end Push; 
+      end Push;
 
       ---------
       -- Pop --
@@ -288,7 +288,7 @@ package body Synchronous_Fifo is
       begin
          Item := Value;
          Is_New := False;
-      end Pop; 
+      end Pop;
 
    end Fifo;
 
@@ -304,11 +304,11 @@ with Ada.Text_Io; use Ada.Text_Io;
     package Int_Fifo is new Synchronous_Fifo(Integer);
     use Int_Fifo;
     Buffer : Fifo;
-    
+
     task Writer is
        entry Stop;
     end Writer;
-    
+
     task body Writer is
        Val : Positive := 1;
     begin
@@ -326,11 +326,11 @@ with Ada.Text_Io; use Ada.Text_Io;
           end select;
        end loop;
     end Writer;
-    
+
     task Reader is
        entry Stop;
     end Reader;
-    
+
     task body Reader is
        Val : Positive;
     begin
@@ -375,7 +375,7 @@ package Asynchronous_Fifo is
 end Asynchronous_Fifo;
 ```
 
-You may notice that the protected type specification is remarkably similar to the synchronous example above. The only important difference is that Push is declared to be an Entry in the synchronous example while it is a procedure in the asynchronous example. Entries only execute when their boundary condition evaluates to TRUE. Procedures execute unconditionally. 
+You may notice that the protected type specification is remarkably similar to the synchronous example above. The only important difference is that Push is declared to be an Entry in the synchronous example while it is a procedure in the asynchronous example. Entries only execute when their boundary condition evaluates to TRUE. Procedures execute unconditionally.
 
 ```ada
 package body Asynchronous_Fifo is
@@ -384,7 +384,7 @@ package body Asynchronous_Fifo is
    -- Fifo --
    ----------
 
-   protected body Fifo is 
+   protected body Fifo is
 
       ----------
       -- Push --
@@ -405,7 +405,7 @@ package body Asynchronous_Fifo is
          Item := Value;
       end Pop;
 
-   end Fifo; 
+   end Fifo;
 
 end Asynchronous_Fifo;
 ```
@@ -413,17 +413,17 @@ end Asynchronous_Fifo;
 
 ```ada
 with Asynchronous_Fifo;
-with Ada.Text_Io; use Ada.Text_Io; 
+with Ada.Text_Io; use Ada.Text_Io;
 
  procedure Asynchronous_Fifo_Test is
     package Int_Fifo is new Asynchronous_Fifo(Integer);
     use Int_Fifo;
     Buffer : Fifo;
-    
+
     task Writer is
        entry Stop;
     end Writer;
-    
+
     task body Writer is
        Val : Positive := 1;
     begin
@@ -437,16 +437,16 @@ with Ada.Text_Io; use Ada.Text_Io;
           end select;
        end loop;
     end Writer;
-    
+
     task Reader is
        entry Stop;
     end Reader;
-    
+
     task body Reader is
        Val : Positive;
     begin
        loop
-          select 
+          select
              accept Stop;
              exit;
           else
@@ -482,7 +482,7 @@ CO REQUIRES:
 END CO
 
 # actually a pointer to the last LINK, there ITEMs are ADDED/get #
-MODE OBJQUEUE = REF OBJLINK; 
+MODE OBJQUEUE = REF OBJLINK;
 
 OBJQUEUE obj queue empty = NIL;
 
@@ -514,7 +514,7 @@ OP (REF OBJQUEUE, OBJVALUE)OBJQUEUE +:= = obj queue plusab;
 #
 
 # see if the program/coder wants the OBJ problem mended... #
-PROC (REF OBJQUEUE #self#)BOOL obj queue index error mended 
+PROC (REF OBJQUEUE #self#)BOOL obj queue index error mended
   := (REF OBJQUEUE self)BOOL: (abend("obj queue index error"); stop);
 
 PROC on obj queue index error = (REF OBJQUEUE self, PROC(REF OBJQUEUE #self#)BOOL mended)VOID:
@@ -638,18 +638,18 @@ barney
 /* example structure  for value of item  */
     .struct  0
 value_ident:                     @ ident
-    .struct  value_ident + 4 
-value_value1:                    @ value 1 
-    .struct  value_value1 + 4 
+    .struct  value_ident + 4
+value_value1:                    @ value 1
+    .struct  value_value1 + 4
 value_value2:                    @ value 2
-    .struct  value_value2 + 4 
+    .struct  value_value2 + 4
 value_fin:
 /* example structure  for queue  */
     .struct  0
 queue_ptdeb:                     @ begin pointer of item
-    .struct  queue_ptdeb + 4 
+    .struct  queue_ptdeb + 4
 queue_ptfin:                     @ end pointer of item
-    .struct  queue_ptfin + 4 
+    .struct  queue_ptfin + 4
 queue_stvalue:                   @ structure of value item
     .struct  queue_stvalue + (value_fin * NBMAXIELEMENTS)
 queue_fin:
@@ -674,16 +674,16 @@ szCarriageReturn:  .asciz "\n"
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 .align 4
-Queue1:                .skip queue_fin      @ queue memory place 
+Queue1:                .skip queue_fin      @ queue memory place
 stItem:                .skip value_fin      @ value item memory place
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                       @ entry of program 
+.global main
+main:                                       @ entry of program
     ldr r0,iAdrQueue1                       @ queue structure address
     bl isEmpty
     cmp r0,#0
@@ -739,7 +739,7 @@ main:                                       @ entry of program
     bl popQueue                             @ return address item
     cmp r0,#-1                              @ error ?
     beq 99f
-    mov r2,r0                               @ save item pointer 
+    mov r2,r0                               @ save item pointer
     ldr r0,[r2,#value_ident]
     ldr r1,iAdrsMessIdent                   @ display ident
     bl conversion10                         @ decimal conversion
@@ -756,8 +756,8 @@ main:                                       @ entry of program
 99:
     @ error
     ldr r0,iAdrszMessError
-    bl affichageMess       
-100:                                        @ standard end of the program 
+    bl affichageMess
+100:                                        @ standard end of the program
     mov r0, #0                              @ return code
     mov r7, #EXIT                           @ request to exit program
     svc #0                                  @ perform the system call
@@ -773,20 +773,20 @@ iAdrsMessIdent:           .int sMessIdent
 iAdrsMessValue1:          .int sMessValue1
 iAdrsMessValue2:          .int sMessValue2
 /******************************************************************/
-/*     test if queue empty                                        */ 
+/*     test if queue empty                                        */
 /******************************************************************/
 /* r0 contains the address of queue structure */
 isEmpty:
     push {r1,r2,lr}                         @ save  registres
-    ldr r1,[r0,#queue_ptdeb]                @ begin pointer 
-    ldr r2,[r0,#queue_ptfin]                @ begin pointer 
+    ldr r1,[r0,#queue_ptdeb]                @ begin pointer
+    ldr r2,[r0,#queue_ptfin]                @ begin pointer
     cmp r1,r2
     moveq r0,#1                             @ empty queue
     movne r0,#0                             @ not empty
-    pop {r1,r2,lr}                          @ restaur registers 
-    bx lr                                   @ return  
+    pop {r1,r2,lr}                          @ restaur registers
+    bx lr                                   @ return
 /******************************************************************/
-/*     add item  in queue                                         */ 
+/*     add item  in queue                                         */
 /******************************************************************/
 /* r0 contains the address of queue structure */
 /* r1 contains the address of item            */
@@ -807,10 +807,10 @@ pushQueue:
     beq 100f
     str r3,[r0,#queue_ptfin]                @ store new end pointer
 100:
-    pop {r1-r4,lr}                          @ restaur registers 
-    bx lr                                   @ return 
+    pop {r1-r4,lr}                          @ restaur registers
+    bx lr                                   @ return
 /******************************************************************/
-/*     pop queue                                                  */ 
+/*     pop queue                                                  */
 /******************************************************************/
 /* r0 contains the address of queue structure */
 popQueue:
@@ -821,54 +821,54 @@ popQueue:
     moveq r0,#-1
     beq 100f
     mov r0,r1
-    ldr r1,[r0,#queue_ptdeb]                @ begin pointer 
+    ldr r1,[r0,#queue_ptdeb]                @ begin pointer
     add r2,r0,#queue_stvalue                @ address of begin values item
     add r2,r1                               @ address of item
     add r1,#value_fin
     str r1,[r0,#queue_ptdeb]                @ store nex begin pointer
     mov r0,r2                               @ return pointer item
 100:
-    pop {r1,r2,lr}                          @ restaur registers 
-    bx lr                                   @ return  
+    pop {r1,r2,lr}                          @ restaur registers
+    bx lr                                   @ return
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                   @ save  registres
-    mov r2,#0                               @ counter length 
-1:                                          @ loop length calculation 
-    ldrb r1,[r0,r2]                         @ read octet start position + index 
-    cmp r1,#0                               @ if 0 its over 
-    addne r2,r2,#1                          @ else add 1 in the length 
-    bne 1b                                  @ and loop 
-                                            @ so here r2 contains the length of the message 
-    mov r1,r0                               @ address message in r1 
-    mov r0,#STDOUT                          @ code to write to the standard output Linux 
-    mov r7, #WRITE                          @ code call system "write" 
-    svc #0                                  @ call systeme 
-    pop {r0,r1,r2,r7,lr}                    @ restaur registers */ 
-    bx lr                                   @ return  
+    mov r2,#0                               @ counter length
+1:                                          @ loop length calculation
+    ldrb r1,[r0,r2]                         @ read octet start position + index
+    cmp r1,#0                               @ if 0 its over
+    addne r2,r2,#1                          @ else add 1 in the length
+    bne 1b                                  @ and loop
+                                            @ so here r2 contains the length of the message
+    mov r1,r0                               @ address message in r1
+    mov r0,#STDOUT                          @ code to write to the standard output Linux
+    mov r7, #WRITE                          @ code call system "write"
+    svc #0                                  @ call systeme
+    pop {r0,r1,r2,r7,lr}                    @ restaur registers */
+    bx lr                                   @ return
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                         @ save registers 
+    push {r1-r4,lr}                         @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 1:                                          @ start loop
     bl divisionpar10                        @ r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                              @ digit
     strb r1,[r3,r2]                         @ store digit on area
-    cmp r0,#0                               @ stop if quotient = 0 
-    subne r2,#1                               @ previous position    
+    cmp r0,#0                               @ stop if quotient = 0
+    subne r2,#1                               @ previous position
     bne 1b                                  @ else loop
                                             @ end replaces digit in front of area
     mov r4,#0
 2:
-    ldrb r1,[r3,r2] 
+    ldrb r1,[r3,r2]
     strb r1,[r3,r4]                         @ store in area begin
     add r4,#1
     add r2,#1                               @ previous position
@@ -881,27 +881,27 @@ conversion10:
     cmp r4,#LGZONECAL                       @ end
     ble 3b
 100:
-    pop {r1-r4,lr}                          @ restaur registres 
+    pop {r1-r4,lr}                          @ restaur registres
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
     push {r2-r4}                           @ save registers  */
-    mov r4,r0  
+    mov r4,r0
     mov r3,#0x6667                         @ r3 <- magic_number  lower
     movt r3,#0x6666                        @ r3 <- magic_number  upper
-    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) 
+    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0)
     mov r2, r2, ASR #2                     @ r2 <- r2 >> 2
     mov r1, r0, LSR #31                    @ r1 <- r0 >> 31
-    add r0, r2, r1                         @ r0 <- r2 + r1 
-    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5 
+    add r0, r2, r1                         @ r0 <- r2 + r1
+    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                   @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2-r4}
     bx lr                                  @ return
@@ -1053,8 +1053,8 @@ function emptyP() {
 ## Batch File
 
 
-This solution uses an environment variable naming convention to implement a queue as a pseudo object containing a pseudo dynamic array and head and tail attributes, as well as an empty "method" that is a sort of macro. 
-The implementation depends on delayed expansion being enabled at the time of each call to a queue function. 
+This solution uses an environment variable naming convention to implement a queue as a pseudo object containing a pseudo dynamic array and head and tail attributes, as well as an empty "method" that is a sort of macro.
+The implementation depends on delayed expansion being enabled at the time of each call to a queue function.
 More complex variations can be written that remove this limitation.
 
 
@@ -1140,7 +1140,7 @@ exit /b 0
 
 ```bbcbasic
       FIFOSIZE = 1000
-      
+
       FOR n = 3 TO 5
         PRINT "Push ";n : PROCenqueue(n)
       NEXT
@@ -1151,7 +1151,7 @@ exit /b 0
       UNTIL FNisempty
       PRINT "Pop " ; FNdequeue
       END
-      
+
       DEF PROCenqueue(n) : LOCAL f%
       DEF FNdequeue : LOCAL f% : f% = 1
       DEF FNisempty : LOCAL f% : f% = 2
@@ -1196,7 +1196,7 @@ Error: queue empty
 
 Below, <code>queue</code> is the name of a class with a data member <code>list</code> and three methods <code>enqueue</code>, <code>dequeue</code> and <code>empty</code>.
 
-No special provision is implemented to "throw and exception" in case you try to dequeue from and empty queue, because, in Bracmat, evaluation of an expression, besides resulting in an evaluated expression, always also either "succeeds" or "fails". (There is, in fact, a third possibility, "ignore", telling Bracmat to close an eye even though an evaluation didn't succeed.) So in the example below, the last dequeue operation fails and the program continues on the right hand side of the bar (<code>|</code>) operator 
+No special provision is implemented to "throw and exception" in case you try to dequeue from and empty queue, because, in Bracmat, evaluation of an expression, besides resulting in an evaluated expression, always also either "succeeds" or "fails". (There is, in fact, a third possibility, "ignore", telling Bracmat to close an eye even though an evaluation didn't succeed.) So in the example below, the last dequeue operation fails and the program continues on the right hand side of the bar (<code>|</code>) operator
 
 ```bracmat
   ( queue
@@ -1225,8 +1225,8 @@ Appending an element to a long list and removing an element from the end of a lo
 
 Dynamic array working as a circular buffer.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -1253,7 +1253,7 @@ void enqueue(queue q, DATA n)
 {
     if (q->tail >= q->alloc) q->tail = 0;
     q->buf[q->tail++] = n;
-   
+
     // Fixed bug where it failed to resizes
     if (q->tail == q->alloc) {  /* needs more room */
         q->buf = realloc(q->buf, sizeof(DATA) * q->alloc * 2);
@@ -1285,8 +1285,8 @@ int dequeue(queue q, DATA *n)
 ### Doubly linked list
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct node_t node_t, *node, *queue;
@@ -1370,8 +1370,8 @@ Of the above two programs, for int types the array method is about twice as fast
 Using the <tt>sys/queue.h</tt>, which is not POSIX.1-2001 (but it is BSD). The example allows to push/pop int values, but instead of <tt>int</tt> one can use <tt>void *</tt> and push/pop any kind of "object" (of course changes to the commodity functions <tt>m_queue</tt> and <tt>m_dequeue</tt> are needed)
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
@@ -1530,7 +1530,7 @@ Compatible with C# 3.0 specification, requires System library for exceptions (fr
   public T pop()
   {
     if (first == null)
-      throw new System.Exception("No elements"); 
+      throw new System.Exception("No elements");
     if (last == first)
       last = null;
     T temp = first.Item;
@@ -1558,7 +1558,7 @@ The "pop" function implies mutating the input, but since Clojure data structures
 (defn enqueue [q x]
   (swap! q conj x))
 
-(defn dequeue [q] 
+(defn dequeue [q]
   (if-let [[f & r] (seq @q)]
     (do (reset! q r) f)
     (throw (IllegalStateException. "Can't pop an empty queue."))))
@@ -1621,7 +1621,7 @@ do ->
 
 ```txt
 
-> time coffee fifo.coffee 
+> time coffee fifo.coffee
 { number: 1 }
 { number: 5000000 }
 
@@ -1636,7 +1636,7 @@ sys 0m0.265s
 ## Common Lisp
 
 
-This defines a queue structure that stores its items in a list, and maintains a tail pointer (i.e., a pointer to the last cons in the list).  Note that dequeuing the last item in the queue does not clear the tail pointer—enqueuing into the resulting empty queue will correctly reset the tail pointer. 
+This defines a queue structure that stores its items in a list, and maintains a tail pointer (i.e., a pointer to the last cons in the list).  Note that dequeuing the last item in the queue does not clear the tail pointer—enqueuing into the resulting empty queue will correctly reset the tail pointer.
 
 
 ```lisp
@@ -1677,7 +1677,7 @@ BlackBox Component Builder
 ```oberon2
 
 MODULE Queue;
-IMPORT 
+IMPORT
 	Boxes;
 TYPE
 	Instance* = POINTER TO LIMITED RECORD
@@ -1685,7 +1685,7 @@ TYPE
 		first,last: LONGINT;
 		_queue: POINTER TO ARRAY OF Boxes.Box;
 	END;
-	
+
 	PROCEDURE (self: Instance) Initialize(capacity: LONGINT),NEW;
 	BEGIN
 		self.size := 0;
@@ -1693,34 +1693,34 @@ TYPE
 		self.last := 0;
 		NEW(self._queue,capacity)
 	END Initialize;
-	
+
 	PROCEDURE New*(capacity: LONGINT): Instance;
 	VAR
 		aQueue: Instance;
 	BEGIN
 		NEW(aQueue);aQueue.Initialize(capacity);RETURN aQueue
 	END New;
-	
+
 	PROCEDURE (self: Instance) IsEmpty*(): BOOLEAN, NEW;
 	BEGIN
 		RETURN self.size = 0;
 	END IsEmpty;
-	
+
 	PROCEDURE (self: Instance) Capacity*(): LONGINT, NEW;
 	BEGIN
 		RETURN LEN(self._queue)
 	END Capacity;
-	
+
 	PROCEDURE (self: Instance) Size*(): LONGINT, NEW;
 	BEGIN
 		RETURN self.size
 	END Size;
-	
+
 	PROCEDURE (self: Instance) IsFull*(): BOOLEAN, NEW;
 	BEGIN
 		RETURN self.size = self.Capacity()
 	END IsFull;
-	
+
 	PROCEDURE (self: Instance) Push*(b: Boxes.Box), NEW;
 	VAR
 		i, j, newCapacity, oldSize: LONGINT;
@@ -1743,7 +1743,7 @@ TYPE
 			self._queue := queue;self.first := 0;self.last := j
 		END
 	END Push;
-	
+
 	PROCEDURE (self: Instance) Pop*(): Boxes.Box, NEW;
 	VAR
 		b: Boxes.Box;
@@ -1755,7 +1755,7 @@ TYPE
 		self.first := (self.first + 1) MOD self.Capacity();
 		RETURN b
 	END Pop;
-	
+
 END Queue.
 
 ```
@@ -1769,7 +1769,7 @@ DEFINITION Queue;
 	IMPORT Boxes;
 
 	TYPE
-		Instance = POINTER TO LIMITED RECORD 
+		Instance = POINTER TO LIMITED RECORD
 			(self: Instance) Capacity (): LONGINT, NEW;
 			(self: Instance) IsEmpty (): BOOLEAN, NEW;
 			(self: Instance) IsFull (): BOOLEAN, NEW;
@@ -1848,7 +1848,7 @@ def makeQueue() {
       }
     }
   }
-  
+
   return [reader, writer]
 }
 ```
@@ -1862,7 +1862,7 @@ There is no native queue type in EchoLisp. make-Q implements queues in message p
 ```lisp
 
 ;; put info string in permanent storage for later use
-(info 'make-Q 
+(info 'make-Q
 "usage: (define q (make-Q)) ;  (q '[top | empty? | pop | push value | to-list | from-list list])")
 
 ;; make-Q
@@ -1877,8 +1877,8 @@ There is no native queue type in EchoLisp. make-Q implements queues in message p
         ((to-list) (vector->list q))
         ((from-list) (set! q (list->vector (car args))) q )
         (else (info 'make-Q) (error  "Q:bad message:" message )))))) ; display info if unknown message
-        
-;; 
+
+;;
 (define q (make-Q))
 (q 'empty?) → #t
 (q 'push 'first) → first
@@ -1906,48 +1906,48 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 template queue<T>
 {
     T[]  theArray;
     int  theTop;
     int  theTale;
- 
+
     constructor()
     {
         theArray := new T[](8);
         theTop := 0;
         theTale := 0;
     }
- 
+
     bool empty()
         = theTop == theTale;
- 
+
     push(T object)
     {
         if (theTale > theArray.Length)
         {
             theArray := theArray.reallocate(theTale)
         };
- 
+
         theArray[theTale] := object;
- 
+
         theTale += 1
     }
- 
+
     T pop()
     {
         if (theTale == theTop)
             { InvalidOperationException.new:"Queue is empty".raise() };
- 
+
         T item := theArray[theTop];
- 
+
         theTop += 1;
- 
+
         ^ item
     }
 }
- 
+
 public program()
 {
     queue<int> q := new queue<int>();
@@ -1987,7 +1987,7 @@ Trying to pop:Queue is empty
 ## Elisa
 
 
-This is a generic Queue component based on bi-directional lists. See how in Elisa these [http://jklunder.home.xs4all.nl/elisa/part01/doc080.html lists] are defined. 
+This is a generic Queue component based on bi-directional lists. See how in Elisa these [http://jklunder.home.xs4all.nl/elisa/part01/doc080.html lists] are defined.
 
 
 ```Elisa
@@ -2006,19 +2006,19 @@ begin
       Empty ( queue ) = (queue.length <= 0);
       Full ( queue ) = (queue.length >= queue.MaxLength);
 
-      Push ( queue, element ) = 
+      Push ( queue, element ) =
                    [ exception (Full(queue), "Queue Overflow");
                      queue.length:= queue.length + 1;
                      add (queue.list, element)];
-      Pull ( queue ) = 
+      Pull ( queue ) =
                    [ exception (Empty(queue), "Queue Underflow");
                      queue.length:= queue.length - 1;
-                     remove(first(queue.list))]; 
+                     remove(first(queue.list))];
 end component GenericQueue;
 
 ```
 
-In the following tests we will also show how the internal structure of the queue can be made visible to support debugging. 
+In the following tests we will also show how the internal structure of the queue can be made visible to support debugging.
 
 ```Elisa
 
@@ -2032,8 +2032,8 @@ Push (Q, "Edward");
 Q?
 QueueofPersons:[MaxLength = 25;
                 length = 3;
-                list = { "Peter", 
-                         "Alice", 
+                list = { "Peter",
+                         "Alice",
                          "Edward"}]
 Pull (Q)?
 "Peter"
@@ -2063,13 +2063,13 @@ Pull (Q)?
 ```elixir
 defmodule Queue do
   def new, do: {Queue, [], []}
-  
+
   def push({Queue, input, output}, x), do: {Queue, [x|input], output}
-  
+
   def pop({Queue, [], []}), do: (raise RuntimeError, message: "empty Queue")
   def pop({Queue, input, []}), do: pop({Queue, [], Enum.reverse(input)})
   def pop({Queue, input, [h|t]}), do: {h, {Queue, input, t}}
-  
+
   def empty?({Queue, [], []}), do: true
   def empty?({Queue, _, _}), do: false
 end
@@ -2106,7 +2106,7 @@ iex(9)> Queue.pop(Queue.new)
 
 ## Erlang
 
-The standard way to manage fifo in functional programming is to use a pair of list for the fifo queue, one is the input, the other is the output. 
+The standard way to manage fifo in functional programming is to use a pair of list for the fifo queue, one is the input, the other is the output.
 When the output is empty just take the input list and reverse it.
 
 ```Erlang
@@ -2246,7 +2246,7 @@ class Queue
       throw (Err("queue is empty"))
     else
     {
-      return queue.removeAt(0) // removes left-most item 
+      return queue.removeAt(0) // removes left-most item
     }
   }
 
@@ -2292,7 +2292,7 @@ variable used       0 used !
 
 
 
-###  Linked list version 
+###  Linked list version
 
 
 Using Forth-2012 structure words and ALLOCATE/FREE.  In spirit quite similar to the Java variant below, with one difference: Here we use addresses of fields (not possible in Java), which often makes things simpler than in Java (fewer special cases at boundaries), but in this case it does not.  Where the Java version has a special case on enqueue, this version has a special case on dequeue:
@@ -2446,19 +2446,19 @@ Type Queue(T)
     Declare Constructor()
     Declare Destructor()
     Declare Property capacity As Integer
-    Declare Property count As Integer 
+    Declare Property count As Integer
     Declare Property empty As Boolean
-    Declare Property front As T 
-    Declare Function pop() As T   
+    Declare Property front As T
+    Declare Function pop() As T
     Declare Sub push(item As T)
   Private:
-    a(any) As T 
-    count_ As Integer = 0  
-    Declare Function resize(size As Integer) As Integer    
+    a(any) As T
+    count_ As Integer = 0
+    Declare Function resize(size As Integer) As Integer
 End Type
 
 Constructor Queue(T)()
-  Redim a(0 To 0) '' create a default T instance for various purposes 
+  Redim a(0 To 0) '' create a default T instance for various purposes
 End Constructor
 
 Destructor Queue(T)()
@@ -2468,7 +2468,7 @@ End Destructor
 Property Queue(T).capacity As Integer
   Return UBound(a)
 End Property
- 
+
 Property Queue(T).count As Integer
   Return count_
 End Property
@@ -2482,17 +2482,17 @@ Property Queue(T).front As T
     Return a(1)
   End If
   Print "Error: Attempted to access 'front' element of an empty queue"
-  Return a(0)  '' return default element 
+  Return a(0)  '' return default element
 End Property
 
 Function Queue(T).pop() As T
   If count_ > 0 Then
     Dim value As T = a(1)
-    If count_ > 1 Then  '' move remaining elements to fill space vacated 
+    If count_ > 1 Then  '' move remaining elements to fill space vacated
       For i As Integer = 2 To count_
         a(i - 1) = a(i)
-      Next 
-    End If  
+      Next
+    End If
     a(count_) = a(0)  '' zero last element
     count_ -= 1
     Return value
@@ -2508,7 +2508,7 @@ Sub Queue(T).push(item As T)
     size = resize(size)
     Redim Preserve a(0 to size)
   End If
-  a(count_) = item   
+  a(count_) = item
 End Sub
 
 Function Queue(T).resize(size As Integer) As Integer
@@ -2608,10 +2608,10 @@ Error: Attempted to remove 'front' element of an empty queue
 
 ```pascal
 program queue;
- {$IFDEF FPC}{$MODE DELPHI}{$IFDEF WINDOWS}{$APPTYPE CONSOLE}{$ENDIF}{$ENDIF} 
- {$ASSERTIONS ON} 
+ {$IFDEF FPC}{$MODE DELPHI}{$IFDEF WINDOWS}{$APPTYPE CONSOLE}{$ENDIF}{$ENDIF}
+ {$ASSERTIONS ON}
 uses Generics.Collections;
- 
+
 var
   lQueue: TQueue<Integer>;
 begin
@@ -2619,7 +2619,7 @@ begin
   try
     lQueue.EnQueue(1);
     lQueue.EnQueue(2);
-    lQueue.EnQueue(3); 
+    lQueue.EnQueue(3);
     Write(lQueue.DeQueue:2);   // 1
     Write(lQueue.DeQueue:2);   // 2
     Writeln(lQueue.DeQueue:2); // 3
@@ -2646,7 +2646,7 @@ Output:
 Enqueue := function(v, x)
     Add(v[1], x);
 end;
- 
+
 Dequeue := function(v)
     if IsEmpty(v[2]) then
         if IsEmpty(v[1]) then
@@ -2669,7 +2669,7 @@ Enqueue(v, 5);
 Dequeue(v);
 # 3
 Enqueue(v, 6);
-Dequeue(v);   
+Dequeue(v);
 # 4
 Dequeue(v);
 # 5
@@ -2763,15 +2763,15 @@ class Queue {
 
     def push (def item) { buffer << item }
     final enqueue = this.&push
-    
+
     def pop() {
         if (this.empty) throw new NoSuchElementException('Empty Queue')
         buffer.remove(0)
     }
     final dequeue = this.&pop
-    
+
     def getEmpty() { buffer.empty }
-    
+
     String toString() { "Queue:${buffer}" }
 }
 ```
@@ -2829,7 +2829,7 @@ java.util.NoSuchElementException: Empty Queue
 ## Haskell
 
 
-The standard way to manage fifo in functional programming is to use a pair of list for the fifo queue, one is the input, the other is the output. 
+The standard way to manage fifo in functional programming is to use a pair of list for the fifo queue, one is the input, the other is the output.
 When the output is empty just take the input list and reverse it.
 
 
@@ -2890,9 +2890,9 @@ procedure main ()
   queue := make_queue()
 
   # add the numbers 1 to 5
-  every (item := 1 to 5) do 
+  every (item := 1 to 5) do
     queue_push (queue, item)
-  
+
   # pop them in the added order, and show a message when queue is empty
   every (1 to 6) do {
     write ("Popped value: " || queue_pop (queue))
@@ -2948,9 +2948,9 @@ end
 procedure main ()
   queue := Queue ()
 
-  every (item := 1 to 5) do 
+  every (item := 1 to 5) do
     queue.push (item)
-  
+
   every (1 to 6) do {
     write ("Popped value: " || queue.take ())
     if queue.is_empty () then write ("empty queue")
@@ -3048,7 +3048,7 @@ This task could be done using a LinkedList from java.util, but here is a user-de
         E retVal= head.value;
         head= head.next;
         return retVal;
-    } 
+    }
 
     public boolean empty(){
         return head == null;
@@ -3074,7 +3074,7 @@ alert(x); // 42
 
 
 
-###  Custom constructor function 
+###  Custom constructor function
 
 
 ```javascript
@@ -3096,7 +3096,7 @@ function FIFO() {
 Note that since jq is a purely functional language, the entity
 representing a queue must be presented as an input to any function
 that is to operate on it.
- 
+
 The definition of pop as given below is idiomatic in jq but implies
 that popping an empty queue yields [null, []] rather than an error.  An
 alternative definition, pop_or_error, is also given to illustrate
@@ -3298,7 +3298,7 @@ Definition:
 ```lasso>define myqueue =
  type {
     data store = list
-    
+
     public onCreate(...) => {
         if(void != #rest) => {
             with item in #rest do .`store`->insert(#item)
@@ -3351,7 +3351,7 @@ Queue = {}
 function Queue.new()
     return { first = 0, last = -1 }
 end
-    
+
 function Queue.push( queue, value )
     queue.last = queue.last + 1
     queue[queue.last] = value
@@ -3361,7 +3361,7 @@ function Queue.pop( queue )
     if queue.first > queue.last then
         return nil
     end
-    
+
     local val = queue[queue.first]
     queue[queue.first] = nil
     queue.first = queue.first + 1
@@ -3411,105 +3411,105 @@ SetAttributes[Pop, HoldAllComplete]; Pop[a_] := If[EmptyQ[a], False, b = First[a
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
-Here is a simple implementation of a queue, that works in Matlab and Octave. 
+Here is a simple implementation of a queue, that works in Matlab and Octave.
 
 ```matlab
 myfifo = {};
-   
-% push 
-myfifo{end+1} = x; 
+
+% push
+myfifo{end+1} = x;
 
 % pop
 x = myfifo{1};  myfifo{1} = [];
 
-% empty 
+% empty
 isempty(myfifo)
 ```
 
 
-Below is another solution, that encapsulates the fifo within the object-orientated "class" elements supported by Matlab. For this to work it must be saved in a file named "FIFOQueue.m" in a folder named "@FIFOQueue" in your current Matlab directory. 
+Below is another solution, that encapsulates the fifo within the object-orientated "class" elements supported by Matlab. For this to work it must be saved in a file named "FIFOQueue.m" in a folder named "@FIFOQueue" in your current Matlab directory.
 
 ```MATLAB
 %This class impliments a standard FIFO queue.
 classdef FIFOQueue
-    
-    properties  
+
+    properties
         queue
     end
-    
+
     methods
-         
+
         %Class constructor
         function theQueue = FIFOQueue(varargin)
-            
+
             if isempty(varargin) %No input arguments
-                
+
                 %Initialize the queue state as empty
                 theQueue.queue = {};
             elseif (numel(varargin) > 1) %More than 1 input arg
-                
+
                 %Make the queue the list of input args
                 theQueue.queue = varargin;
             elseif iscell(varargin{:}) %If the only input is a cell array
-                
-                %Make the contents of the cell array the elements in the queue 
+
+                %Make the contents of the cell array the elements in the queue
                 theQueue.queue = varargin{:};
             else %There is one input argument that is not a cell
-                
+
                 %Make that one arg the only element in the queue
                 theQueue.queue = varargin;
             end
-            
-        end        
-        
+
+        end
+
         %push() - pushes a new element to the end of the queue
         function push(theQueue,varargin)
-            
+
             if isempty(varargin)
                 theQueue.queue(end+1) = {[]};
             elseif (numel(varargin) > 1) %More than 1 input arg
-                
+
                 %Make the queue the list of input args
                 theQueue.queue( end+1:end+numel(varargin) ) = varargin;
             elseif iscell(varargin{:}) %If the only input is a cell array
-                
-                %Make the contents of the cell array the elements in the queue 
+
+                %Make the contents of the cell array the elements in the queue
                 theQueue.queue( end+1:end+numel(varargin{:}) ) = varargin{:};
             else %There is one input argument that is not a cell
-                
+
                 %Make that one arg the only element in the queue
-                theQueue.queue{end+1} = varargin{:};                
+                theQueue.queue{end+1} = varargin{:};
             end
-            
+
             %Makes changes to the queue permanent
-            assignin('caller',inputname(1),theQueue);  
-            
+            assignin('caller',inputname(1),theQueue);
+
         end
-        
+
         %pop() - pops the first element off the queue
         function element = pop(theQueue)
-           
+
             if empty(theQueue)
                 error 'The queue is empty'
             else
                 %Returns the first element in the queue
                 element = theQueue.queue{1};
-                
+
                 %Removes the first element from the queue
                 theQueue.queue(1) = [];
-                
+
                 %Makes changes to the queue permanent
                 assignin('caller',inputname(1),theQueue);
             end
         end
-        
+
         %empty() - Returns true if the queue is empty
         function trueFalse = empty(theQueue)
-           
+
             trueFalse = isempty(theQueue.queue);
-            
+
         end
-        
+
     end %methods
 end
 ```
@@ -3519,9 +3519,9 @@ Sample usage:
 
 ```MATLAB>>
  myQueue = FIFOQueue({'hello'})
- 
+
 myQueue =
- 
+
     FIFOQueue
 
 >> push(myQueue,'jello')
@@ -3620,9 +3620,9 @@ Queue is empty
 There are 2 elements in the queue
 There are 4 elements in the queue
   1: Fred 2
-  2: 
+  2:
   3: Toft 2
-  4: 
+  4:
 Queue is empty
 
 ```
@@ -3667,7 +3667,7 @@ Popping: 2
 ## OCaml
 
 
-The standard way to manage fifo in functional programming is to use a pair of list for the fifo queue, one is the input, the other is the output. 
+The standard way to manage fifo in functional programming is to use a pair of list for the fifo queue, one is the input, the other is the output.
 When the output is empty just take the input list and reverse it.
 
 
@@ -3903,7 +3903,7 @@ type
 
  tFifo = record
           first, last: pNode;
-         end;           
+         end;
 
 procedure initFifo(var fifo: tFifo);
  begin
@@ -4214,16 +4214,16 @@ end empty;
 PowerShell can natively use the .Net Queue class.
 
 ```PowerShell
- 
+
 $Q = New-Object System.Collections.Queue
- 
+
 $Q.Enqueue( 1 )
 $Q.Enqueue( 2 )
 $Q.Enqueue( 3 )
- 
+
 $Q.Dequeue()
 $Q.Dequeue()
- 
+
 $Q.Count -eq 0
 $Q.Dequeue()
 $Q.Count -eq 0
@@ -4412,7 +4412,7 @@ class FIFO:  ## NOT a new-style class, must not derive from "object"
 ```
 
 
-As noted in the contents this must NOT be a new-style class, it must NOT but sub-classed from ''object'' nor any of its descendents.  (A new-style implementation using __getattribute__ would be possible) 
+As noted in the contents this must NOT be a new-style class, it must NOT but sub-classed from ''object'' nor any of its descendents.  (A new-style implementation using __getattribute__ would be possible)
 
 {{works with|Python|2.4+}}
 
@@ -4439,20 +4439,20 @@ This simple implementation provides three functions that act on a variable in th
 
 ```R
 empty <- function() length(l) == 0
-push <- function(x) 
+push <- function(x)
 {
    l <<- c(l, list(x))
    print(l)
    invisible()
 }
-pop <- function() 
+pop <- function()
 {
    if(empty()) stop("can't pop from an empty list")
    l[[1]] <<- NULL
    print(l)
    invisible()
 }
-l <- list() 
+l <- list()
 empty()
 # [1] TRUE
 push(3)
@@ -4552,13 +4552,13 @@ library(proto)
 fifo <- proto(expr = {
    l <- list()
    empty <- function(.) length(.$l) == 0
-   push <- function(., x) 
+   push <- function(., x)
    {
       .$l <- c(.$l, list(x))
       print(.$l)
       invisible()
    }
-   pop <- function(.) 
+   pop <- function(.)
    {
       if(.$empty()) stop("can't pop from an empty list")
       .$l[[1]] <- NULL
@@ -4714,14 +4714,14 @@ Trying to pop an empty queue yields: none
 
 ## REXX
 
-Support for '''LIFO''' &amp; '''FIFO''' queues is built into the [[REXX|Rexx]] language.  
+Support for '''LIFO''' &amp; '''FIFO''' queues is built into the [[REXX|Rexx]] language.
 
 The following are supported in REXX:
 *   '''PUSH'''      (lifo)
 *   '''QUEUE'''          (fifo)
 *   '''PULL'''    --- which is a short version of:
-*   '''PARSE UPPER PULL''' 
-*   '''PARSE LOWER PULL'''   --- supported by some newer REXXes 
+*   '''PARSE UPPER PULL'''
+*   '''PARSE LOWER PULL'''   --- supported by some newer REXXes
 *   '''PARSE PULL'''
 *   '''QUEUED()'''   [a BIF which returns the number of queued entries.]
 
@@ -4777,17 +4777,17 @@ Queue is empty
 # Project : Queue/Definition
 
 load "stdlib.ring"
-oQueue = new Queue 
+oQueue = new Queue
 for n = 5 to 7
      see "Push: " + n + nl
-     oQueue.add(n) 
+     oQueue.add(n)
 next
 see "Pop: " + oQueue.remove() + nl
 see "Push: 8" + nl
 oQueue.add(8)
 see "Pop: " + oQueue.remove() + nl
 see "Pop: " + oQueue.remove() + nl
-see "Pop: " + oQueue.remove() + nl 
+see "Pop: " + oQueue.remove() + nl
 if len(oQueue) != 0
    oQueue.print()
 else
@@ -5071,15 +5071,15 @@ class Queue[T] {
   }
   private[this] var head:Option[Node[T]]=None
   private[this] var tail:Option[Node[T]]=None
-  
+
   def isEmpty=head.isEmpty
-  
+
   def enqueue(item:T)={
     val n=new Node(item)
     if(isEmpty) head=Some(n) else tail.get.append(n)
     tail=Some(n)
   }
-     
+
   def dequeue:T=head match {
     case Some(item) => head=item.next; item.value
     case None => throw new java.util.NoSuchElementException()
@@ -5089,13 +5089,13 @@ class Queue[T] {
     case Some(item) => item.value
     case None => throw new java.util.NoSuchElementException()
   }
-  
+
   def iterator: Iterator[T]=new Iterator[T]{
     private[this] var it=head;
     override def hasNext=it.isDefined
     override def next:T={val n=it.get; it=n.next; n.value}
   }
-  
+
   override def toString()=iterator.mkString("Queue(", ", ", ")")
 }
 ```
@@ -5158,7 +5158,7 @@ in the vector to hold tail pointer to avoid the append call.
 
 
 
-###  Message passing 
+###  Message passing
 
 
 ```scheme
@@ -5270,11 +5270,11 @@ Here is the signature for a basic queue:
 signature QUEUE =
 sig
   type 'a queue
-  
+
   val empty_queue: 'a queue
-  
+
   exception Empty
-  
+
   val enq: 'a queue -> 'a -> 'a queue
   val deq: 'a queue -> ('a * 'a queue)
   val empty: 'a queue -> bool
@@ -5289,16 +5289,16 @@ A very basic implementation of this signature backed by a list is as follows:
 structure Queue:> QUEUE =
 struct
   type 'a queue = 'a list
-  
+
   val empty_queue = nil
-  
+
   exception Empty
-  
+
   fun enq q x = q @ [x]
-  
+
   fun deq nil = raise Empty
   |   deq (x::q) = (x, q)
-  
+
   fun empty nil = true
   |   empty _ = false
 end;
@@ -5397,14 +5397,14 @@ them
 {{works with|ksh93}}
 
 ```bash
-queue_push() { 
+queue_push() {
     typeset -n q=$1
     shift
     q+=("$@")
 }
 
-queue_pop() { 
-    if queue_empty $1; then 
+queue_pop() {
+    if queue_empty $1; then
         print -u2 "queue $1 is empty"
         return 1
     fi
@@ -5413,12 +5413,12 @@ queue_pop() {
     q=( "${q[@]:1}" )   # and remove the first element from the queue
 }
 
-queue_empty() { 
+queue_empty() {
     typeset -n q=$1
     (( ${#q[@]} == 0 ))
 }
 
-queue_peek() { 
+queue_peek() {
     typeset -n q=$1
     print "${q[0]}"
 }
@@ -5453,7 +5453,7 @@ foo is not empty
 peek: bar
 peek: baz
 peek: element with spaces
-peek: 
+peek:
 queue foo is empty
 ```
 
@@ -5540,7 +5540,7 @@ Next 'i
 Sub push(q, what)
     q.Add what
 End Sub 'push
- 
+
 Function pull(q)
 	Dim what
     If q.Count > 0 Then
@@ -5551,7 +5551,7 @@ Function pull(q)
     End If
     pull = what
 End Function 'pull
- 
+
 Function empty_(q)
     empty_ = q.Count = 0
 End Function 'empty_
@@ -5613,19 +5613,19 @@ A queue is similar to a stack, except that values are pushed onto and popped fro
 ```lisp
 (define-class queue
     (instance-variables vals))
- 
+
 (define-method (queue 'initialize)
     (setq vals '())
     self)
- 
+
 (define-method (queue 'push x)
     (setq vals (nconc vals (cons x nil))))
- 
+
 (define-method (queue 'pop)
     (define val (car vals))
     (setq vals (cdr vals))
     val)
- 
+
 (define-method (queue 'emptyp)
     (null vals))
 ```

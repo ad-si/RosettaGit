@@ -108,7 +108,7 @@ procedure Test_Allocator is
    Pool : Arena_Pools.Arena (1024);
    type Integer_Ptr is access Integer;
    for Integer_Ptr'Storage_Pool use Pool;
-   
+
    X : Integer_Ptr := new Integer'(1);
    Y : Integer_Ptr := new Integer'(2);
    Z : Integer_Ptr;
@@ -127,7 +127,9 @@ array is unknown in advance. 'Objects' in C are pretty much structures, with the
 
 To use dynamic memory, the header for the standard library must be included in the module.
 
-```c>#include <stdlib.h></lang
+```c
+#include <stdlib.h>
+```
 
 Uninitialized memory is allocated using the malloc function. To obtain the amount of memory that needs to be allocated, sizeof is used. Sizeof is not a normal C function, it is evaluated by the compiler to obtain the amount of memory needed.
 
@@ -138,7 +140,7 @@ Typename *var = malloc(sizeof var[0]);
 ```
 
 Since pointers to structures are needed so frequently, often a
-typedef will define a type as being a pointer to the associated structure. 
+typedef will define a type as being a pointer to the associated structure.
 Once one gets used to the notation, programs are actually easier to read, as the
 variable declarations don't include all the '*'s.
 
@@ -175,14 +177,14 @@ Typename *var = alloca(sizeof(Typename));
 
 An object oriented approach will define a function for creating a new object of a class.
 In these systems, the size of the memory that needs to be allocated for an instance of the
-class will often be included in the 'class' record. 
+class will often be included in the 'class' record.
 See http://rosettacode.org/wiki/Polymorphic%20copy#C
 
 Without using the standard malloc, things get a bit more complicated. For example, here is some code that implements something like it using the mmap system call (for Linux):
 
 
-```c>#include <sys/mman.h
-
+```c
+#include <sys/mman.h>
 #include <unistd.h>
 #include <stdio.h>
 
@@ -204,9 +206,9 @@ __ALLOCC_ENTRY__ * __ALLOCC_TAIL__ = NULL;
 // Add new metadata to the table
 void _add_mem_entry(void * location, size_t size)
 {
-    
+
     __ALLOCC_ENTRY__ * newEntry = (__ALLOCC_ENTRY__ *) mmap(NULL, sizeof(__ALLOCC_ENTRY__), PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-    
+
     if (__ALLOCC_TAIL__ != NULL)
     {
         __ALLOCC_TAIL__ -> next = newEntry;
@@ -218,7 +220,7 @@ void _add_mem_entry(void * location, size_t size)
         __ALLOCC_ROOT__ = newEntry;
         __ALLOCC_TAIL__ = newEntry;
     }
-    
+
     __ALLOCC_ENTRY__ * tail = __ALLOCC_TAIL__;
     tail -> allocatedAddr = location;
     tail -> size = size;
@@ -230,51 +232,51 @@ void _add_mem_entry(void * location, size_t size)
 size_t _remove_mem_entry(void * location)
 {
     __ALLOCC_ENTRY__ * curNode = __ALLOCC_ROOT__;
-    
+
     // Nothing to do
     if (curNode == NULL)
     {
         return 0;
     }
-    
+
     // First entry matches
     if (curNode -> allocatedAddr == location)
     {
         __ALLOCC_ROOT__ = curNode -> next;
         size_t chunkSize = curNode -> size;
-        
+
         // No nodes left
         if (__ALLOCC_ROOT__ == NULL)
         {
             __ALLOCC_TAIL__ = NULL;
         }
         munmap(curNode, sizeof(__ALLOCC_ENTRY__));
-        
+
         return chunkSize;
     }
-    
+
     // If next node is null, remove it
     while (curNode -> next != NULL)
     {
         __ALLOCC_ENTRY__ * nextNode = curNode -> next;
-        
+
         if (nextNode -> allocatedAddr == location)
         {
             size_t chunkSize = nextNode -> size;
-            
+
             if(curNode -> next == __ALLOCC_TAIL__)
             {
                 __ALLOCC_TAIL__ = curNode;
             }
             curNode -> next = nextNode -> next;
             munmap(nextNode, sizeof(__ALLOCC_ENTRY__));
-            
+
             return chunkSize;
         }
-        
+
         curNode = nextNode;
     }
-    
+
     // Nothing was found
     return 0;
 }
@@ -288,12 +290,12 @@ void * customMalloc(size_t size)
     {
         return NULL;
     }
-    
+
     void * mapped = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-    
+
     // Store metadata
     _add_mem_entry(mapped, size);
-    
+
     return mapped;
 }
 
@@ -301,7 +303,7 @@ void * customMalloc(size_t size)
 void customFree(void * addr)
 {
     size_t size = _remove_mem_entry(addr);
-    
+
     munmap(addr, size);
 }
 
@@ -310,18 +312,18 @@ int main(int argc, char const *argv[])
     int *p1 = customMalloc(4*sizeof(int));  // allocates enough for an array of 4 int
     int *p2 = customMalloc(sizeof(int[4])); // same, naming the type directly
     int *p3 = customMalloc(4*sizeof *p3);   // same, without repeating the type name
- 
+
     if(p1) {
         for(int n=0; n<4; ++n) // populate the array
             p1[n] = n*n;
         for(int n=0; n<4; ++n) // print it back out
             printf("p1[%d] == %d\n", n, p1[n]);
     }
- 
+
     customFree(p1);
     customFree(p2);
     customFree(p3);
-    
+
     return 0;
 }
 ```
@@ -346,8 +348,8 @@ T* foo = new(arena) T;
 The following code uses class-specific allocation and deallocation functions:
 
 
-```cpp>#include <cstdlib
-
+```cpp
+#include <cstdlib>
 #include <cassert>
 #include <new>
 
@@ -489,7 +491,7 @@ loop( List ) ->
 	{get, Key, Pid} ->
 	      Pid ! {value, proplists:get_value(Key, List), erlang:self()},
 	      loop( List )
-	end.    
+	end.
 
 set( Pid, Key, Value ) -> Pid ! {set, Key, Value}.
 
@@ -499,13 +501,13 @@ set( Pid, Key, Value ) -> Pid ! {set, Key, Value}.
 
 ## Fortran
 
-Run-time memory allocation is a latter-day feature in Fortran. In the beginning, a programme would either fit in the available memory or it would not. Any local variables declared in subroutines, especially arrays, would have some storage requirement that had been fixed at compile time, and space would be reserved for all of them whether any subroutine would be invoked or not in a particular run. Fixed array sizes were particularly troublesome in subroutines, as pre-specifying some largeish size for all such arrays would soon exhaust the available memory and this was especially annoying when it was never going to be the case that all the arrays had to be available simultaneously because not all the subroutines would be invoked or be active together in a particular run. Thus, developers of complicated calculations, say involving a lot of matrix manipulation, would be forced towards devising some storage allocation scheme involving scratchpad arrays that would be passed as additional parameters for subroutines to use as working storage, and soon enough one escalated to having a "pool" array, with portions being reserved and passed about the various routines as needed for a given run. Possibly escalating to further schemes involving disc storage and a lot of effort, repaid in suddenly having larger problems solvable. 
+Run-time memory allocation is a latter-day feature in Fortran. In the beginning, a programme would either fit in the available memory or it would not. Any local variables declared in subroutines, especially arrays, would have some storage requirement that had been fixed at compile time, and space would be reserved for all of them whether any subroutine would be invoked or not in a particular run. Fixed array sizes were particularly troublesome in subroutines, as pre-specifying some largeish size for all such arrays would soon exhaust the available memory and this was especially annoying when it was never going to be the case that all the arrays had to be available simultaneously because not all the subroutines would be invoked or be active together in a particular run. Thus, developers of complicated calculations, say involving a lot of matrix manipulation, would be forced towards devising some storage allocation scheme involving scratchpad arrays that would be passed as additional parameters for subroutines to use as working storage, and soon enough one escalated to having a "pool" array, with portions being reserved and passed about the various routines as needed for a given run. Possibly escalating to further schemes involving disc storage and a lot of effort, repaid in suddenly having larger problems solvable.
 
 Fortran 90 standardised two ameliorations. A subroutine can now declare arrays whose size is specified at run time, with storage typically organised via a stack, since on exit from the subroutine such storage is abandoned, which is to say, returned to the system pool. Secondly, within a routine, and not requiring entry into a subroutine (nor a <code>begin ... end;</code> block as in Algol), storage can be explicitly allocated with a specified size for arrays as needed, this time from a "heap" storage pool, and later de-allocated. Again, on exiting the subroutine, storage for such arrays (if declared within the subroutine) is abandoned.
 
 Thus, in a sense, a group of items for which storage has been allocated can have their storage released en-mass by exiting the routine. However, it is not the case that items A, B, C can be allocated in one storage "area" (say called "Able") and another group D, E in a second named area (say "Baker"), and that by discarding "Able" all its components would be de-allocated without the need to name them in tedious detail.
 
-So, for example: 
+So, for example:
 ```Fortran
       SUBROUTINE CHECK(A,N)	!Inspect matrix A.
        REAL A(:,:)	!The matrix, whatever size it is.
@@ -617,23 +619,23 @@ create=: monad define
   Next=: -SZI_jmf_
   Pool=: mema Lim
 )
- 
+
 destroy=: monad define
   memf Pool
   codestroy''
 )
- 
+
 alloc=: monad define
   assert.Lim >: Next=: Next+SZI_jmf_
   r=.Pool,Next,1,JINT
   r set y
   r
 )
- 
+
 get=: adverb define
   memr m
 )
- 
+
 set=: adverb define
   y memw m
 )
@@ -669,10 +671,10 @@ That said, using J's built-in support for integers (and for using them) usually 
 
 ## Julia
 
-All program elements in Julia are dynamically allocated objects which are garbage collected 
+All program elements in Julia are dynamically allocated objects which are garbage collected
 as required after they are out of scope. If a specific storage pool is needed in advance, perhaps for
-memory efficiency reasons, that pool can be optionally preallocated as an array or other large structure. 
-For example, a large 1000 X 1000 X 1000 matrix that will need to be changed repeatedly might be 
+memory efficiency reasons, that pool can be optionally preallocated as an array or other large structure.
+For example, a large 1000 X 1000 X 1000 matrix that will need to be changed repeatedly might be
 allocated and initialized to zero with:
 
 ```julia
@@ -709,7 +711,7 @@ fun main(args: Array<String>) {
         val intVar2 = alloc<IntVar>()
         intVar2.value = 2
         println("${intVar1.value} + ${intVar2.value} = ${intVar1.value + intVar2.value}")
-    } 
+    }
     // native memory used by intVar1 & intVar2 is automatically freed when memScoped block ends
 }
 ```
@@ -757,9 +759,9 @@ MyClass new
 In ooRexx:
 * Everything is an object.
 * Objects are dynamically allocated.
-* Unused objects are garbage collected. 
+* Unused objects are garbage collected.
 
-Where objects appear from, or disappear to, is treated as an implementation detail. 
+Where objects appear from, or disappear to, is treated as an implementation detail.
 
 Statements, such as assignments, class, method, and routine definitions, and ::requires directives can create objects and assign references to them to variables. Objects can also be referred to from other objects e.g. in collections such as lists. When objects are no longer referenced, the objects become candidates for garbage collection. It is not possible to explicitly destroy an object.
 
@@ -878,9 +880,9 @@ Instead of implicit specification of the amount of memory using a type, the expl
 
 ## Perl 6
 
-Perl 6 is a high level language where, to a first approximation, everything is an object. Perl 6 dynamically allocates memory as objects are created and does automatic garbage collection and freeing of memory as objects go out of scope. There is almost no high level control over how memory is managed, it is considered to be an implementation detail of the virtual machine on which it is running. 
+Perl 6 is a high level language where, to a first approximation, everything is an object. Perl 6 dynamically allocates memory as objects are created and does automatic garbage collection and freeing of memory as objects go out of scope. There is almost no high level control over how memory is managed, it is considered to be an implementation detail of the virtual machine on which it is running.
 
-If you absolutely must take manual control over memory management you would need to use the foreign function interface to call into a language that provides the capability, but even that would only affect items in the scope of that function, not anything in the mainline process. 
+If you absolutely must take manual control over memory management you would need to use the foreign function interface to call into a language that provides the capability, but even that would only affect items in the scope of that function, not anything in the mainline process.
 
 There is some ability to specify data types for various objects which allows for (but does not guarantee) more efficient memory layout, but again, it is considered to be an implementation detail, the use that the virtual machine makes of that information varies by implementation maturity and capabilities.
 
@@ -899,7 +901,7 @@ atom mem = allocate(size,true)
 If the optional cleanup flag is non-zero (or true, as above), the memory is automatically released once it is no longer required
 (ie when the variable mem drops out of scope or gets overwritten, assuming you have not made a copy of it elsewhere, which would
 all be handled quite properly and seamlessly, with the deallocation not happening until all copies were also overwritten
-or discarded), otherwise (ie cleanup is zero or omitted) the application should invoke free() manually. 
+or discarded), otherwise (ie cleanup is zero or omitted) the application should invoke free() manually.
 
 For completeness, here is a very simplistic arena manager, with just a single pool, not that it would be tricky to implement multiple pools:
 
@@ -933,7 +935,7 @@ freed with '[http://software-lab.de/doc/refZ.html#zap zap]'.
 
 ## PL/I
 
-Allocation of storage other than via routine or block entry is via the ALLOCATE statement applied to variables declared with the CONTROLLED attribute. Such storage is obtained from and returned to a single "heap" storage area during the course of execution and not necessarily corresponding to the entry and exit of routines or blocks. However, variables can further be declared as being BASED on some other variable which might be considered to be a storage area that can be manipulated separately. This can be escalated to being based IN the storage area of a named variable, say POOL. In this situation, storage for items declared IN the POOL are allocated and de-allocated within the storage space of POOL (and there may be insufficient space in the POOL, whereupon the AREA error condition is raised) so this POOL, although obtained from the system heap, is treated as if it were a heap as well. 
+Allocation of storage other than via routine or block entry is via the ALLOCATE statement applied to variables declared with the CONTROLLED attribute. Such storage is obtained from and returned to a single "heap" storage area during the course of execution and not necessarily corresponding to the entry and exit of routines or blocks. However, variables can further be declared as being BASED on some other variable which might be considered to be a storage area that can be manipulated separately. This can be escalated to being based IN the storage area of a named variable, say POOL. In this situation, storage for items declared IN the POOL are allocated and de-allocated within the storage space of POOL (and there may be insufficient space in the POOL, whereupon the AREA error condition is raised) so this POOL, although obtained from the system heap, is treated as if it were a heap as well.
 
 One reason for doing this is that the addressing of entities within the POOL is relative to the address of the POOL so that pointer variables linking items with the POOL do not employ the momentary machine address of the POOL storage. The point of this is that the contents of a POOL may be saved and read back from a suitable disc file (say at the start of a new execution) and although the memory address of the new POOL may well be different from that during the previous usage, addressing within the new POOL remains the same. In other words, a complex data structure can be developed within the POOL then saved and restored simply by writing the POOL and later reading it back, rather than having to unravel the assemblage in some convention that can be reversed to read it back piece-by-piece. Similarly, if the POOL is a CONTROLLED variable, new POOL areas can be allocated and de-allocated at any time, and by de-allocating a POOL, all of its complex content vanishes in one poof.
 
@@ -1223,7 +1225,7 @@ Produces this output (red text to <tt>stderr</tt>, black text to <tt>stdout</tt>
  Initializing ::oo::Obj4::Obj14 with 9</span>
  trapped: exceeded capacity: 10
  number of objects: 10
-         0 1 2 3 4 5 6 7 8 9 
+         0 1 2 3 4 5 6 7 8 9
  <span style="color:red">Finalizing ::oo::Obj4::Obj5 which held 0
  Finalizing ::oo::Obj4::Obj6 which held 1
  Finalizing ::oo::Obj4::Obj7 which held 2
@@ -1231,7 +1233,7 @@ Produces this output (red text to <tt>stderr</tt>, black text to <tt>stdout</tt>
  Initializing ::oo::Obj4::Obj7 with 11</span>
  trapped: exceeded capacity: 9
  number of objects: 9
-         3 4 5 6 7 8 9 10 11 
+         3 4 5 6 7 8 9 10 11
  <span style="color:red">Finalizing ::oo::Obj4::Obj8 which held 3
  Finalizing ::oo::Obj4::Obj9 which held 4
  Finalizing ::oo::Obj4::Obj10 which held 5

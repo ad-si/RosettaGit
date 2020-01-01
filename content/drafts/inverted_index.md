@@ -16,11 +16,11 @@ An [[wp:Inverted_index|Inverted Index]] is a data structure used to create full 
 
 
 ;Task:
-Given a set of text files, implement a program to create an inverted index.  
+Given a set of text files, implement a program to create an inverted index.
 
-Also create a user interface to do a search using that inverted index which returns a list of files that contain the query term / terms.  
+Also create a user interface to do a search using that inverted index which returns a list of files that contain the query term / terms.
 
-The search index  can be in memory.  
+The search index  can be in memory.
 
 
 
@@ -161,7 +161,7 @@ Enter Filenames:
 0.txt 1.txt 2.txt
 
 Enter one or more words to search for; <return> to finish:
-it 
+it
 Found in the following files: 0.txt, 1.txt, 2.txt
 
 Enter one or more words to search for; <return> to finish:
@@ -598,10 +598,10 @@ word2docs := object() ; autohotkey_L is needed.
 stime := A_tickcount
 Loop, %files%, 0,1
 {
-   tooltip,%A_index%  / 500  
-   
+   tooltip,%A_index%  / 500
+
    wordList := WordsIn(A_LoopFileFullPath)
-   InvertedIndex(wordList, A_loopFileFullpath)   
+   InvertedIndex(wordList, A_loopFileFullpath)
 }
 
 tooltip
@@ -619,7 +619,7 @@ Loop
 return
 
 WordsIn(docpath)
-{  
+{
    FileRead, content, %docpath%
   spos = 1
    Loop
@@ -629,17 +629,17 @@ WordsIn(docpath)
      spos += strlen(match)
      this_wordList .= match "`n"
    }
-  
-  Sort, this_wordList, U  
-  return this_wordList   
+
+  Sort, this_wordList, U
+  return this_wordList
 }
 
 InvertedIndex(byref words, docpath)
 {
    global word2docs
 
-  loop, parse, words, `n,`r 
-  {                          
+  loop, parse, words, `n,`r
+  {
     if A_loopField =
       continue
     word2docs[A_loopField] := word2docs[A_loopField] docpath "`n"
@@ -668,21 +668,21 @@ This uses a hashed index and linked lists to hold the file numbers.
       DIM FileList$(4)
       FileList$() = "BBCKEY0.TXT", "BBCKEY1.TXT", "BBCKEY2.TXT", \
       \             "BBCKEY3.TXT", "BBCKEY4.TXT"
-      
+
       DictSize% = 30000
       DIM Index{(DictSize%-1) word$, link%}
-      
+
       REM Build inverted index:
       FOR file% = DIM(FileList$(),1) TO 0 STEP -1
         filename$ = FileList$(file%)
         F% = OPENIN(filename$)
         IF F% = 0 ERROR 100, "Failed to open file"
-        
+
         WHILE NOT EOF#F%
           REPEAT C%=BGET#F% : UNTIL C%>64 OR EOF#F% : word$ = CHR$(C%)
           REPEAT C%=BGET#F% : word$ += CHR$(C%) : UNTIL C%<65
           word$ = FNlower(LEFT$(word$))
-          
+
           hash% = FNhash(word$)
           WHILE Index{(hash%)}.word$<>"" AND Index{(hash%)}.word$<>word$
             hash% = (hash% + 1) MOD DictSize% : REM Collision
@@ -695,17 +695,17 @@ This uses a hashed index and linked lists to hold the file numbers.
             Index{(hash%)}.link% = heap% : REM Linked list
           ENDIF
         ENDWHILE
-        
+
         CLOSE #F%
       NEXT file%
-      
+
       REM Now query the index:
       PRINT FNquery("random")
       PRINT FNquery("envelope")
       PRINT FNquery("zebra")
       PRINT FNquery("the")
       END
-      
+
       DEF FNquery(A$)
       LOCAL hash%, link%, temp%
       A$ = FNlower(A$)
@@ -722,14 +722,14 @@ This uses a hashed index and linked lists to hold the file numbers.
         link% = !link%
       ENDWHILE
       = LEFT$(LEFT$(A$))
-      
+
       DEF FNhash(A$)
       LOCAL hash%
       IF LEN(A$) < 4 A$ += STRING$(4-LEN(A$),CHR$0)
       hash% = !!^A$
       IF LEN(A$) > 4 hash% EOR= !(!^A$ + LEN(A$) - 4)
       = hash% MOD DictSize%
-      
+
       DEF FNlower(A$)
       LOCAL A%,C%
       FOR A% = 1 TO LEN(A$)
@@ -756,23 +756,23 @@ This uses a hashed index and linked lists to hold the file numbers.
 
 The code is stupidly long, having to implement a Trie to store strings and all -- the program doesn't do anything shiny, but Tries may be interesting to look at.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 char chr_legal[] = "abcdefghijklmnopqrstuvwxyz0123456789_-./";
 int  chr_idx[256] = {0};
 char idx_chr[256] = {0};
- 
+
 #define FNAME 0
 typedef struct trie_t *trie, trie_t;
 struct trie_t {
 	trie next[sizeof(chr_legal)]; /* next letter; slot 0 is for file name */
 	int eow;
 };
- 
+
 trie trie_new() { return calloc(sizeof(trie_t), 1); }
- 
+
 #define find_word(r, w) trie_trav(r, w, 1)
 /* tree traversal: returns node if end of word and matches string, optionally
  * create node if doesn't exist
@@ -789,7 +789,7 @@ trie trie_trav(trie root, const char * str, int no_create)
 			str++;
 			continue;
 		}
- 
+
 		if (!root->next[c]) {
 			if (no_create) return 0;
 			root->next[c] = trie_new();
@@ -799,7 +799,7 @@ trie trie_trav(trie root, const char * str, int no_create)
 	}
 	return root;
 }
- 
+
 /*  complete traversal of whole tree, calling callback at each end of word node.
  *  similar method can be used to free nodes, had we wanted to do that.
  */
@@ -807,10 +807,10 @@ int trie_all(trie root, char path[], int depth, int (*callback)(char *))
 {
 	int i;
 	if (root->eow && !callback(path)) return 0;
- 
+
 	for (i = 1; i < sizeof(chr_legal); i++) {
 		if (!root->next[i]) continue;
- 
+
 		path[depth] = idx_chr[i];
 		path[depth + 1] = '\0';
 		if (!trie_all(root->next[i], path, depth + 1, callback))
@@ -818,31 +818,31 @@ int trie_all(trie root, char path[], int depth, int (*callback)(char *))
 	}
 	return 1;
 }
- 
+
 void add_index(trie root, const char *word, const char *fname)
 {
 	trie x = trie_trav(root, word, 0);
 	x->eow = 1;
- 
+
 	if (!x->next[FNAME])
 		x->next[FNAME] = trie_new();
 	x = trie_trav(x->next[FNAME], fname, 0);
 	x->eow = 1;
 }
- 
+
 int print_path(char *path)
 {
 	printf(" %s", path);
 	return 1;
 }
- 
+
 /*  pretend we parsed text files and got lower cased words: dealing     *
  *  with text file is a whole other animal and would make code too long */
 const char *files[] = { "f1.txt", "source/f2.txt", "other_file" };
 const char *text[][5] ={{ "it", "is", "what", "it", "is" },
 		        { "what", "is", "it", 0 },
 		        { "it", "is", "a", "banana", 0 }};
- 
+
 trie init_tables()
 {
 	int i, j;
@@ -854,7 +854,7 @@ trie init_tables()
 
 /* Enable USE_ADVANCED_FILE_HANDLING to use advanced file handling.
  * You need to have files named like above files[], with words in them
- * like in text[][].  Case doesn't matter (told you it's advanced). 
+ * like in text[][].  Case doesn't matter (told you it's advanced).
  */
 #define USE_ADVANCED_FILE_HANDLING 0
 #if USE_ADVANCED_FILE_HANDLING
@@ -884,24 +884,24 @@ trie init_tables()
 
 	return root;
 }
- 
+
 void search_index(trie root, const char *word)
 {
 	char path[1024];
 	printf("Search for \"%s\": ", word);
 	trie found = find_word(root, word);
- 
+
 	if (!found) printf("not found\n");
 	else {
 		trie_all(found->next[FNAME], path, 0, print_path);
 		printf("\n");
 	}
 }
- 
+
 int main()
 {
 	trie root = init_tables();
- 
+
 	search_index(root, "what");
 	search_index(root, "is");
 	search_index(root, "banana");
@@ -934,7 +934,7 @@ const size_t MAX_NODES = 41;
 class node
 {
 public:
-    node() { clear(); } 
+    node() { clear(); }
     node( char z ) { clear(); }
     ~node() { for( int x = 0; x < MAX_NODES; x++ ) if( next[x] ) delete next[x]; }
     void clear() { for( int x = 0; x < MAX_NODES; x++ ) next[x] = 0; isWord = false; }
@@ -978,15 +978,15 @@ private:
     }
     const std::vector<std::string>& find( std::string s ) {
         size_t idx;
-        std::transform( s.begin(), s.end(), s.begin(), tolower ); 
+        std::transform( s.begin(), s.end(), s.begin(), tolower );
         node* rt = &root;
         for( std::string::iterator i = s.begin(); i != s.end(); i++ ) {
             idx = _CHARS.find( *i );
             if( idx < MAX_NODES ) {
-                if( !rt->next[idx] ) return std::vector<std::string>(); 
-                rt = rt->next[idx]; 
+                if( !rt->next[idx] ) return std::vector<std::string>();
+                rt = rt->next[idx];
             }
-        } 
+        }
         if( rt->isWord ) return rt->files;
         return std::vector<std::string>();
     }
@@ -996,14 +996,14 @@ private:
         for( std::string::iterator i = s.begin(); i != s.end(); i++ ) {
             idx = _CHARS.find( *i );
             if( idx < MAX_NODES ) {
-                n = rt->next[idx]; 
-                if( n ){ 
-                    rt = n; 
-                    continue; 
-                } 
-                n = new node( *i ); 
-                rt->next[idx] = n; 
-                rt = n; 
+                n = rt->next[idx];
+                if( n ){
+                    rt = n;
+                    continue;
+                }
+                n = new node( *i );
+                rt->next[idx] = n;
+                rt = n;
             }
         }
         rt->isWord = true;
@@ -1028,7 +1028,7 @@ int main( int argc, char* argv[] ) {
             f.close();
         }
     }
-    
+
     while( true ) {
         std::cout << "Enter one word to search for, return to exit: ";
         std::getline( std::cin, s );
@@ -1115,7 +1115,7 @@ what found in: file1 file2
 
 (defn term-seq [text] (map normalize (re-seq pattern text)))
 
-(defn set-assoc 
+(defn set-assoc
   "Produces map with v added to the set associated with key k in map m"
   [m k v] (assoc m k (conj (get m k #{}) v)))
 
@@ -1162,7 +1162,7 @@ grep = (index, word) ->
     [fn, line_num] = location
     console.log "#{fn}:#{line_num}"
   console.log "\n"
-  
+
 get_words = (line) ->
   words = line.replace(/\W/g, ' ').split ' '
   (word for word in words when word != '')
@@ -1181,7 +1181,7 @@ do ->
 
 output
 <lang>
-> coffee inverted_index.coffee 
+> coffee inverted_index.coffee
 locations for 'make_index':
 inverted_index.coffee:3
 inverted_index.coffee:33
@@ -1341,18 +1341,18 @@ Index values are sets associated with each word (key). We use the local-put-valu
 (define INVERT "INVERTED-INDEX")
 
 ;; get text for each file, and call (action filename text)
-(define (map-files action files) 
-	(for ((file files)) 
+(define (map-files action files)
+	(for ((file files))
 	(file->string action file)))
-	
-;; create store 
+
+;; create store
 (local-make-store INVERT)
 
 ; invert-word : word -> set of files
 (define (invert-word word file store)
-	    (local-put-value word 
+	    (local-put-value word
 	    	(make-set  (cons file (local-get-value word store))) store))
-	    
+
 ; parse file text and invert each word
 (define (invert-text file text)
 		(writeln 'Inverting file text)
@@ -1363,21 +1363,21 @@ Index values are sets associated with each word (key). We use the local-put-valu
 
 
 
-###  Query 
+###  Query
 
 Intersect sets values of each word.
 
 ```lisp
 
-;; usage : (inverted-search w1 w2 ..) 
-(define-syntax-rule (inverted-search w ...) 
+;; usage : (inverted-search w1 w2 ..)
+(define-syntax-rule (inverted-search w ...)
 			(and-get-invert (quote w )))
 
 ;; intersects all sets referenced by words
 ;; returns the intersection
 (define (and-get-invert words)
-		(foldl 
-			(lambda(word res) 
+		(foldl
+			(lambda(word res)
 				 (set-intersect res (local-get-value word  INVERT)))
 			FILES words))
 
@@ -1493,28 +1493,28 @@ open System.IO
 
 // Map search terms to associated set of files
 type searchIndexMap = Map<string, Set<string>>
- 
+
 let inputSearchCriteria() =
     let readLine prompt =
         printf "%s: " prompt
         Console.ReadLine().Split()
- 
+
     readLine "Files", (readLine "Find") |> Array.map (fun s -> s.ToLower())
- 
+
 let updateIndex indexMap keyValuePair =
     let k, v = keyValuePair
- 
+
     match Map.tryFind k indexMap with
         | None     -> Map.add k (Set.singleton v) indexMap
         | Some set -> Map.add k (Set.add v set) indexMap
- 
+
 let buildIndex files =
     let fileData file =
         File.ReadAllText(file).Split() |> Seq.map (fun word -> word.ToLower(), file)
- 
+
     files |> Seq.collect fileData
           |> Seq.fold updateIndex Map.empty
-                    
+
 let searchFiles() =
     let files, terms = inputSearchCriteria()
     let indexes = buildIndex files
@@ -1650,8 +1650,8 @@ func indexFile(fn string) bool {
         }
     }
     return true
-}   
-    
+}
+
 func ui() {
     fmt.Println(len(index), "words indexed in", len(indexed), "files")
     fmt.Println("enter single words to search for")
@@ -1669,7 +1669,7 @@ func ui() {
         case 1:
             fmt.Println("one match:")
             fmt.Println("   ", indexed[dl[0]].file, indexed[dl[0]].title)
-        default: 
+        default:
             fmt.Println(len(dl), "matches:")
             for _, d := range dl {
                 fmt.Println("   ", indexed[d].file, indexed[d].title)
@@ -1767,10 +1767,10 @@ procedure main()
   texts["T2.txt"] := ["it", "is", "a", "banana"]
 
   every textname := key(texts) do  # build index for each 'text'
-     SII := InvertedIndex(SII,textname,texts[textname]) 
-   
+     SII := InvertedIndex(SII,textname,texts[textname])
+
   TermSearchUI(SII)  # search UI
-    
+
 end
 
 procedure InvertedIndex(ii,k,words)  #: accumulate a simple inverted index
@@ -1788,23 +1788,23 @@ procedure TermSearchUI(ii)    #: search UI, all words must match
 
 repeat {
    writes("Enter search terms (^z to quit) : ")
-   terms := map(trim(read() | break)) 
+   terms := map(trim(read() | break))
 
-   x := []   
+   x := []
    terms ? while not pos(0) do {
       tab(many(' \t'))
       put(x,tab(upto('\ \t')|0))
       }
-   
-   show("Searching for : ",x) 
-   show("Found in : ",s := TermSearch(ii,x)) | show("Not found : ",x)     
+
+   show("Searching for : ",x)
+   show("Found in : ",s := TermSearch(ii,x)) | show("Not found : ",x)
    }
 write("End of search")
 return
 end
 
 procedure TermSearch(ii,x)  #: return set of matches or fail
-every s := !x do 
+every s := !x do
    ( /u := ii[s] ) | (u **:= ii[s])
 if *u > 0 then return u
 end
@@ -1812,7 +1812,7 @@ end
 procedure show(s,x) # display helper
 every writes(s|!x) do writes(" ")
 write()
-return 
+return
 end
 ```
 
@@ -2027,7 +2027,7 @@ Example output:
 
 ```Java
 
-java -cp bin org.rosettacode.InvertedIndex "huntsman,merit,dog,the,gutenberg,lovecraft,olympian" pg30637.txt pg7025.txt pg82.txt pg9090.txt 
+java -cp bin org.rosettacode.InvertedIndex "huntsman,merit,dog,the,gutenberg,lovecraft,olympian" pg30637.txt pg7025.txt pg82.txt pg9090.txt
 indexed pg30637.txt 106473 words
 indexed pg7025.txt 205714 words
 indexed pg82.txt 205060 words
@@ -2068,12 +2068,12 @@ def inverted_index:
 def search(words):
   def overlap(that): . as $this
   | reduce that[] as $item ([]; if $this|index($item) then . + [$item] else . end);
-  
+
   . as $dict
   | if (words|length) == 0 then []
     else reduce words[1:][] as $word
       ( $dict[words[0]]; overlap( $dict[$word] ) )
-    end ; 
+    end ;
 ```
 
 
@@ -2088,7 +2088,7 @@ could create a temporary file to hold the parsed output.
 ```jq
 def prompt_search:
   "Enter a string or an array of strings to search for, quoting each string, or 0 to exit:",
-  ( (input | if type == "array" then . elif type == "string" then [.] 
+  ( (input | if type == "array" then . elif type == "string" then [.]
              else empty
              end) as $in
     | search($in), prompt_search ) ;
@@ -2246,7 +2246,7 @@ $ java -jar inverted_index.jar inv1.txt inv2.txt inv3.txt inv1.txt
 'inv1.txt' already indexed
 
 Enter word(s) to be searched for in these files or 'q' to quit
-  ? : cat 
+  ? : cat
 
 'cat' not found
 
@@ -2299,7 +2299,7 @@ We store the inverted index data in the file "data.inv" using the [http://www.oc
                 pa_type_conv.cmo pa_sexp_conv.cmo" \
    unix.cma bigarray.cma nums.cma -I +sexplib sexplib.cma str.cma \
    inv.ml
- 
+
  ocamlc -o inv.byte unix.cma bigarray.cma nums.cma -I +sexplib sexplib.cma str.cma inv.cmo
 
 
@@ -2428,7 +2428,7 @@ sub search_words_with_index
     my %idx = %{shift()};
     my @words = @_;
     my $res = set();
-    
+
     foreach my $w (map {lc} @words)
     {
 	$w =~ s/\W+//g;            # strip non-words chars
@@ -2456,7 +2456,7 @@ print "$_\n"
 
 ```perl6
 sub MAIN (*@files) {
-    my %norm; 
+    my %norm;
     do for @files -> $file {
         %norm.push: $file X=> slurp($file).lc.words;
     }
@@ -2476,7 +2476,7 @@ sub MAIN (*@files) {
 
 The following is included in the distro as demo\rosetta\Inverted_index.exw.
 
-Loads all text files in demo\rosetta\ and builds a list of filenames and 
+Loads all text files in demo\rosetta\ and builds a list of filenames and
 a dictionary of {word,file_indexes}, before a handful of quick tests.
 
 Might be better (and almost as easy) for the dictionary values to be say
@@ -2696,23 +2696,23 @@ function Index-File ( [string[]]$FileList )
     {
     #  Create index hashtable, as needed
     If ( -not $Script:WordIndex ) { $Script:WordIndex = @{} }
- 
+
     #  For each file to be indexed...
     ForEach ( $File in $FileList )
         {
         #  Find any previously existing entries for this file
         $ExistingEntries = $Script:WordIndex.Keys | Where { $Script:WordIndex[$_] -contains $File }
- 
+
         #  For any previously existing entries
         #    Delete them (prior to reindexing the file)
         ForEach ( $Key in $ExistingEntries )
             {
             $Script:WordIndex[$Key] = @( $Script:WordIndex[$Key] | Where { $_ -ne $File } )
             }
- 
+
         #  Get the contents of the file, split on non-alphanumeric characters, and remove duplicates
         $Words = ( Get-Content $File ) -split '[^a-zA-Z\d]' | Sort -Unique
- 
+
         #  For each word in the file...
         ForEach ( $Word in $Words )
             {
@@ -2730,7 +2730,7 @@ function Index-File ( [string[]]$FileList )
             }
         }
     }
- 
+
 function Find-Word ( [string]$Word )
     {
     return $WordIndex[$Word]
@@ -2744,12 +2744,12 @@ function Find-Word ( [string]$Word )
 Files full of
 various words.
 '@ | Out-File -FilePath C:\Test\File1.txt
- 
+
 @'
 Create an index
 of words.
 '@ | Out-File -FilePath C:\Test\File2.txt
- 
+
 @'
 Use the index
 to find the files.
@@ -2783,7 +2783,7 @@ C:\Test\File3.txt
 
 
 
-###  Simple inverted index 
+###  Simple inverted index
 
 
 First the simple inverted index from [[wp:Inverted index|here]] together with an implementation of a search for (multiple) terms from that index.
@@ -2858,7 +2858,7 @@ Term Search for: ['what', 'is', 'it']
 
 
 
-###  Full inverted index 
+###  Full inverted index
 
 There is a re-write of the <code>termsearch</code> function to work off this type of index, as well as a new <code>phrasesearch</code> function
 

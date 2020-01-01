@@ -19,7 +19,7 @@ For example, the   '''R'''   programming language implements Tukey's [[wp:Five-n
 Given an array of numbers, compute the five-number summary.
 
 
-;Note:  
+;Note:
 While these five numbers can be used to draw a [[wp:Box plot|boxplot]], statistical packages will typically need extra data. Moreover, while there is a consensus about the "box" of the boxplot, there are variations among statistical packages for the whiskers.
 
 
@@ -30,8 +30,8 @@ While these five numbers can be used to draw a [[wp:Box plot|boxplot]], statisti
 
 {{trans|Kotlin}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 double median(double *x, int start, int end_inclusive) {
@@ -46,7 +46,7 @@ double median(double *x, int start, int end_inclusive) {
 }
 
 int compare (const void *a, const void *b) {
-    double aa = *(double*)a; 
+    double aa = *(double*)a;
     double bb = *(double*)b;
     if (aa > bb) return 1;
     if (aa < bb) return -1;
@@ -60,7 +60,7 @@ int fivenum(double *x, double *result, int x_len) {
            printf("Unable to deal with arrays containing NaN\n\n");
            return 1;
         }
-    } 
+    }
     qsort(x, x_len, sizeof(double), compare);
     result[0] = x[0];
     result[2] = median(x, 0, x_len - 1);
@@ -77,7 +77,7 @@ int show(double *result, int places) {
     char f[7];
     sprintf(f, "%%.%dlf", places);
     printf("[");
-    for (i = 0; i < 5; i++) {     
+    for (i = 0; i < 5; i++) {
         printf(f, result[i]);
         if (i < 4) printf(", ");
     }
@@ -124,8 +124,8 @@ int main() {
 
 {{trans|D}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <ostream>
 #include <vector>
@@ -133,7 +133,7 @@ int main() {
 /////////////////////////////////////////////////////////////////////////////
 // The following is taken from https://cpplove.blogspot.com/2012/07/printing-tuples.html
 
-// Define a type which holds an unsigned integer value 
+// Define a type which holds an unsigned integer value
 template<std::size_t> struct int_ {};
 
 template <class Tuple, size_t Pos>
@@ -762,7 +762,7 @@ end
 
 ## Kotlin
 
-The following uses Tukey's method for calculating the lower and upper quartiles (or 'hinges') which is what the R function, fivenum, appears to use. 
+The following uses Tukey's method for calculating the lower and upper quartiles (or 'hinges') which is what the R function, fivenum, appears to use.
 
 As arrays containing NaNs and nulls cannot really be dealt with in a sensible fashion in Kotlin, they've been excluded altogether.
 
@@ -1114,16 +1114,16 @@ function fivenum(sequence tbl)
     tbl = sort(tbl)
     integer l = length(tbl),
             m = floor(l/2)+remainder(l,2)
- 
+
     atom r1 = tbl[1],
          r2 = median(tbl,1,m),
          r3 = median(tbl,1,l),
          r4 = median(tbl,m+1,l),
          r5 = tbl[l]
- 
+
     return {r1, r2, r3, r4, r5}
 end function
- 
+
 constant x1 = {15, 6, 42, 41, 7, 36, 49, 40, 39, 47, 43},
          x2 = {36, 40, 7, 39, 41, 15},
          x3 = {0.14082834, 0.09748790, 1.73131507, 0.87636009, -1.95059594,
@@ -1168,16 +1168,16 @@ def fivenum(array):
         print("you entered an empty array.")
         sys.exit()
     x = sorted(array)
-    
+
     n4 = math.floor((n+3.0)/2.0)/2.0
     d = [1, n4, (n+1)/2, n+1-n4, n]
     sum_array = []
-    
+
     for e in range(5):
         floor = int(math.floor(d[e] - 1))
         ceil = int(math.ceil(d[e] - 1))
         sum_array.append(0.5 * (x[floor] + x[ceil]))
-    
+
     return sum_array
 
 x = [0.14082834, 0.09748790, 1.73131507, 0.87636009, -1.95059594, 0.73438555, -0.03035726, 1.46675970,
@@ -1260,19 +1260,19 @@ def fiveNums(xs):
         return xs[m] if (
             0 != lng % 2
         ) else (xs[m - 1] + xs[m]) / 2
- 
+
     ys = sorted(xs)
     lng = len(ys)
     m = lng // 2
     return (
-        ys[0], 
+        ys[0],
         median(ys[0:(m + (lng % 2))]),
-        median(ys), 
-        median(ys[m:]), 
+        median(ys),
+        median(ys[m:]),
         ys[-1]
     ) if 0 < lng else None
- 
- 
+
+
 # TEST --------------------------------------------------------------------
 for xs in [[15, 6, 42, 41, 7, 36, 49, 40, 39, 47, 43],
            [36, 40, 7, 39, 41, 15],
@@ -1342,11 +1342,11 @@ Racket's =quantile= functions use a different method to Tukey; so a new implemen
                    (if (zero? l)
                        (raise-argument-error 'data-v "nonempty (Vectorof Real)" data-v)
                        l)))
-  
+
   (define (data-kth-value! n) (kth-value! data-v n <))
 
   (define subset-size (let-values (((n/2 parity) (quotient/remainder n-data 2))) (+ n/2 parity)))
-  
+
   (vector (data-kth-value! 0)
           (tukey-median 0 subset-size)
           (tukey-median 0 n-data)
@@ -1370,9 +1370,9 @@ Racket's =quantile= functions use a different method to Tukey; so a new implemen
   (check-equal? x1-seq x1-v "before fivenum! sequence and vector were not `equal?`")
   (check-equal? #(7 15 #e37.5 40 41) (fivenum! x1-v) "Test against Go results x1")
   (check-not-equal? x1-seq x1-v "fivenum! did not mutate mutable input vectors")
-  
+
   (check-equal? #(6 #e25.5 40 #e42.5 49) (fivenum #(15 6 42 41 7 36 49 40 39 47 43)) "Test against Go results x2")
-  
+
   (check-equal? #(-1.95059594 -0.676741205 0.23324706 0.746070945 1.73131507)
                 (fivenum (vector 0.14082834  0.09748790  1.73131507  0.87636009 -1.95059594  0.73438555
                                  -0.03035726  1.46675970 -0.74621349 -0.72588772  0.63905160  0.61501527
@@ -1703,7 +1703,7 @@ Private Function median(tbl As Variant, lo As Integer, hi As Integer)
         median = tbl(m)
     Else
         median = (tbl(m - 1) + tbl(m)) / 2
-    End if 
+    End if
 End Function
 Private Function fivenum(tbl As Variant) As Variant
     Sort tbl, UBound(tbl)

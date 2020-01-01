@@ -11,10 +11,10 @@ tags = []
 +++
 
 {{task}}
-Load a [[wp:JSON|JSON]] string into a data structure.  
+Load a [[wp:JSON|JSON]] string into a data structure.
 Also, create a new data structure and serialize it into JSON.
 
-Use objects and arrays (as appropriate for your language) 
+Use objects and arrays (as appropriate for your language)
 and make sure your JSON is valid (https://jsonformatter.org).
 
 
@@ -35,7 +35,7 @@ Converting a string to an object:
 
 ```txt
 
-"{ \"a\": 123 }"  json> 
+"{ \"a\": 123 }"  json>
 
 ```
 
@@ -52,50 +52,50 @@ That takes the object and converts to the JSON string given above.
 ## Ada
 
 
-###  Alternative using GNATCOLL 
+###  Alternative using GNATCOLL
 
 
 ```ada
 
 with Ada.Text_IO;
 with GNATCOLL.JSON;
- 
+
 procedure JSON_Test is
    use Ada.Text_IO;
    use GNATCOLL.JSON;
- 
+
    JSON_String : constant String := "{""name"":""Pingu"",""born"":1986}";
-   
+
    Penguin : JSON_Value := Create_Object;
    Parents : JSON_Array;
 begin
-   Penguin.Set_Field (Field_Name => "name", 
+   Penguin.Set_Field (Field_Name => "name",
                       Field      => "Linux");
-   
+
    Penguin.Set_Field (Field_Name => "born",
                       Field      => 1992);
-   
+
    Append (Parents, Create ("Linus Torvalds"));
    Append (Parents, Create ("Alan Cox"));
    Append (Parents, Create ("Greg Kroah-Hartman"));
- 
+
    Penguin.Set_Field (Field_Name => "parents",
                       Field      => Parents);
-   
+
    Put_Line (Penguin.Write);
 
    Penguin := Read (JSON_String, "json.errors");
-   
+
    Penguin.Set_Field (Field_Name => "born",
                       Field      => 1986);
-   
+
    Parents := Empty_Array;
    Append (Parents, Create ("Otmar Gutmann"));
-   Append (Parents, Create ("Silvio Mazzola"));  
-   
+   Append (Parents, Create ("Silvio Mazzola"));
+
    Penguin.Set_Field (Field_Name => "parents",
                       Field      => Parents);
-   
+
    Put_Line (Penguin.Write);
 end JSON_Test;
 
@@ -113,7 +113,7 @@ end JSON_Test;
 
 
 
-###  Alternative using Matreshka 
+###  Alternative using Matreshka
 
 
 
@@ -309,7 +309,7 @@ put$(jsn$(get$("input.json",JSN)),"output.JSN,NEW)
 
 Let us split this into separate steps.
 
-To read a JSON file "myfile.json", use 
+To read a JSON file "myfile.json", use
 
 
 ```bracmat
@@ -325,7 +325,7 @@ get$("[1,2,3]",JSN,MEM)
 ```
 
 
-To convert the corresponding Bracmat data structure <code>(,1 2 3)</code> back to a JSON string, use 
+To convert the corresponding Bracmat data structure <code>(,1 2 3)</code> back to a JSON string, use
 
 
 ```bracmat
@@ -333,7 +333,7 @@ jsn$(,1 2 3)
 ```
 
 
-To write a JSON string <code>"[1,2,3]"</code> to a file "array.json", use 
+To write a JSON string <code>"[1,2,3]"</code> to a file "array.json", use
 
 
 ```bracmat
@@ -341,10 +341,10 @@ put$("[1,2,3]","array.json",NEW)
 ```
 
 
-Bracmat and JSON/Javascript do far from represent data in similar ways. 
-Bracmat has arbitrary-precision arithmetic. Floating point numbers are not a native datatype in Bracmat. 
+Bracmat and JSON/Javascript do far from represent data in similar ways.
+Bracmat has arbitrary-precision arithmetic. Floating point numbers are not a native datatype in Bracmat.
 Bracmat has no Boolean values <code>true</code> and <code>false</code> and no <code>null</code> value.
-Bracmat has arrays and objects, but they are second class citizens. Most data is best represented as binary tree structures, with binary operators like the plus, comma, dot or white space sitting in the nodes and the atomic parts of the data sitting in the leaves. 
+Bracmat has arrays and objects, but they are second class citizens. Most data is best represented as binary tree structures, with binary operators like the plus, comma, dot or white space sitting in the nodes and the atomic parts of the data sitting in the leaves.
 The only data type that is somewhat the same in JSON/JavaScript and Bracmat is the string, but there is a slight difference in the representation of strings in code. Whereas strings in JSON always are enclosed in quotation marks, this is only necessary in Bracmat if a string contains operator characters or starts with flag characters.
 
 Here are the mapping rules:
@@ -387,8 +387,8 @@ Note (1) All floating point numbers can be represented as rational numbers. Ther
 
 Note (2) The objects <code>{"a":1,"b":2}</code> and <code>{"b":2,"a":1}</code> are equivalent in Bracmat, as they are both internally represented as <code>((a.1)+(b.2),)</code>
 
-Here is a full round trip of the following JSON data, which is assumed to be stored in a file "rosetta.json". 
-The employed code is: 
+Here is a full round trip of the following JSON data, which is assumed to be stored in a file "rosetta.json".
+The employed code is:
 
 ```bracmat
 
@@ -402,7 +402,7 @@ The employed code is:
 rosetta.json:
 
 ```txt
-[   
+[
     {
         "ape": "\"King Kong\"",
         "C:\\projects": "23",
@@ -432,7 +432,7 @@ rosetta.json:
         false,
         null
     ],
-    { 
+    {
         "fixed point": [
             3.4,
             0.00987654321,
@@ -447,7 +447,7 @@ rosetta.json:
             0.0000006e-007,
             17E123,
             -17.87E123,
-            0.87E123,            
+            0.87E123,
             286e400
         ]
     },
@@ -468,13 +468,13 @@ Content of json.bra:
 
 ```txt
 json=
-  
+
 ,   (   ("C:\\projects"..23)
       + (Cyrillic.,(."Ya Я") (."ya я"))
       + (OS/2.("White\b\f
 \r	space".0,),)
       + (ape.."\"King Kong\"")
-    , 
+    ,
     )
     (.TAB\t)
     (,(.elem1) (.elem2))
@@ -483,10 +483,10 @@ json=
     (,(.x) (.y) (.z))
     (,(.true) true false null)
     ( ("fixed point".,34/10 987654321/100000000000 -1001/100 5678/100 56780/1000)
-    , 
+    ,
     )
     ( ( "floating point"
-      .   
+      .
         ,   0
             6/100000000000000
             17000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -494,21 +494,21 @@ json=
             870000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
             2860000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 ...
       )
-    , 
+    ,
     )
     ( ( integer
-      .   
+      .
         ,   -0
             0
             -5
             1234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 ...
       )
-    , 
+    ,
     );
 ```
 
-    
-The file "rosetta-roundtrip.json" will contain a single line. There is no beautify option when constructing a JSON string using the <code>jsn</code> function. The http://jsonlint.com service can be used to view the JSON string, but notice that some of the numbers are to big to be handled by this service and are turned into null values. 
+
+The file "rosetta-roundtrip.json" will contain a single line. There is no beautify option when constructing a JSON string using the <code>jsn</code> function. The http://jsonlint.com service can be used to view the JSON string, but notice that some of the numbers are to big to be handled by this service and are turned into null values.
 
 Content of rosetta-roundtrip.json (1402 characters):
 
@@ -593,8 +593,8 @@ After manual reformatting, again shortened where lines run off the screen:
 Reads a snippet of JSON into [https://github.com/lloyd/yajl YAJL's] tree format, then walks the tree to print it back out again.  The tree contains numbers both in an unparsed, string form, and also converted to long long or double when possible.  The example below demonstrates both ways of dealing with numbers.
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <yajl/yajl_tree.h>
@@ -766,7 +766,7 @@ class Program
     {
         var people = new Dictionary<string, object> {{"1", "John"}, {"2", "Susan"}};
         var serializer = new JavaScriptSerializer();
-        
+
         var json = serializer.Serialize(people);
         Console.WriteLine(json);
 
@@ -810,8 +810,8 @@ CONSOLE_APP_MAIN
 
 C++11 {{libheader|nlohmann&#58;&#58;json}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iomanip> // std::setw
 #include <sstream>
 #include <cassert>
@@ -873,8 +873,8 @@ R"delim123({
 
     assert( jhandmade_string == expected );
     assert( jhandmade_stream.str() == expected );
-    
-    return 0;    
+
+    return 0;
 }
 
 ```
@@ -902,7 +902,7 @@ ClassMethod GetPerson(ByRef pParms, Output pObject As %RegisteredObject) As %Sta
 
 ```txt
 
-SAMPLES>Set pParms("oid")=5                                                                                       
+SAMPLES>Set pParms("oid")=5
 SAMPLES>Do ##class(%ZEN.Auxiliary.jsonProvider).%WriteJSONFromObject("", "Sample.JSON", "GetPerson", .pParms)
 
 {
@@ -979,7 +979,7 @@ Library: [https://github.com/clojure/data.json data.json]
 sample =
   blue: [1, 2]
   ocean: 'water'
-  
+
 json_string = JSON.stringify sample
 json_obj = JSON.parse json_string
 
@@ -1018,7 +1018,7 @@ To load "cl-json":
 ; Loading "cl-json"
 
 [{"foo":[1,2,3],"bar":true,"baz":"!"},"quux",0.23529412,4.25]
-((:FOO 1 2 3) (:BAR . T) (:BAZ . "!")) 
+((:FOO 1 2 3) (:BAR . T) (:BAZ . "!"))
 
 ```
 
@@ -1062,10 +1062,10 @@ end
 
 ```d
 import std.stdio, std.json;
-    
+
 void main() {
     auto j = parseJSON(`{ "foo": 1, "bar": [10, "apples"] }`);
-    writeln(toJSON(&j)); 
+    writeln(toJSON(&j));
 }
 ```
 
@@ -1095,11 +1095,11 @@ The '''json''' library allows to import/export basic JSON types (string ,numbers
 
 ;; Symbols
 (export-json 'Simon-Gallubert)  →   "{"_instanceof":"Symbol","name":"Simon-Gallubert"}"
-(json-import #<< {"_instanceof":"Symbol","name":"Antoinette-de-Gabolde"} >>#)  
+(json-import #<< {"_instanceof":"Symbol","name":"Antoinette-de-Gabolde"} >>#)
     →   Antoinette-de-Gabolde
-    
+
 ;; Lists
-(define my-list 
+(define my-list
     (export-json '( 43 4 5 ( 6 7 ( 8 9 )))))
     →    "{"_instanceof":"List" ,"array":[43,4,5,{"_instanceof":"List",
     "array":[6,7,{"_instanceof":"List",
@@ -1111,10 +1111,10 @@ The '''json''' library allows to import/export basic JSON types (string ,numbers
 (struct Person (name pict))  →   #struct:Person [name pict]
 (define antoinette (Person "antoinette" "👰"))   →   # (antoinette 👰)
 
-(export-json antoinette)  →   
+(export-json antoinette)  →
     "{"_instanceof":"Struct", "struct":"Person","id":17,"fields":["antoinette","👰"]}"
-(json-import 
-    #<< {"_instanceof":"Struct","struct":"Person","id":18,"fields":["simon","🎩"]} >>#)  
+(json-import
+    #<< {"_instanceof":"Struct","struct":"Person","id":18,"fields":["simon","🎩"]} >>#)
 	→   # (simon 🎩)
 
 
@@ -1151,14 +1151,14 @@ Construct JSON string:
 
 ```EGL
 people Person[]; // Array of people
-		
+
 people.appendElement(new Person { firstName = "Frederick", lastName = "Flintstone", age = 35} );
 people.appendElement(new Person { firstName = "Wilma", lastName = "Flintstone", age = 34} );
 people.appendElement(new Person { firstName = "Pebbles", lastName = "Flintstone", age = 2} );
 people.appendElement(new Person { firstName = "Bernard", lastName = "Rubble", age = 32} );
 people.appendElement(new Person { firstName = "Elizabeth", lastName = "Rubble", age = 29} );
 people.appendElement(new Person { firstName = "Bam Bam", lastName = "Rubble", age = 2} );
-	
+
 family Dictionary; // A dictionary of family members using a uid as key
 family["1"] = new FamilyMember{ person = people[1], relationships = [new Relationship{ relationshipType="spouse", id = 2 }, new Relationship{ relationshipType="child", id = 3}] };
 family["2"] = new FamilyMember{ person = people[2], relationships = [new Relationship{ relationshipType="spouse", id = 1 }, new Relationship{ relationshipType="child", id = 3}] };
@@ -1166,7 +1166,7 @@ family["3"] = new FamilyMember{ person = people[3], relationships = [new Relatio
 family["4"] = new FamilyMember{ person = people[4], relationships = [new Relationship{ relationshipType="spouse", id = 5 }, new Relationship{ relationshipType="child", id = 6}] };
 family["5"] = new FamilyMember{ person = people[5], relationships = [new Relationship{ relationshipType="spouse", id = 4 }, new Relationship{ relationshipType="child", id = 6}] };
 family["6"] = new FamilyMember{ person = people[6], relationships = [new Relationship{ relationshipType="mother", id = 5 }, new Relationship{ relationshipType="father", id = 4}] };
-	
+
 // Convert dictionary of family members to JSON string
 jsonString string = jsonLib.convertToJSON(family);
 
@@ -1220,21 +1220,21 @@ Parse JSON:
 ```EGL
 // Convert JSON string into dictionary of family members
 family Dictionary;
-jsonLib.convertFromJSON(jsonString, family);				
+jsonLib.convertFromJSON(jsonString, family);
 
 // List family members and their relationships
 familyMember FamilyMember;
 relation FamilyMember;
-				
+
 keys string[] = family.getKeys();
 for(i int from 1 to keys.getSize())
-			
+
 	SysLib.writeStdout("----------------------------------------------------");
 
 	familyMember = family[keys[i]];
-			
+
 	SysLib.writeStdout(familyMember.person.lastName + ", " + familyMember.person.firstName + " - " + familyMember.person.age);
-			
+
 	for(j int from 1 to familyMember.relationships.getSize())
 		id string = familyMember.relationships[j].id;
 		relation = family[id];
@@ -1275,7 +1275,7 @@ father: Rubble, Bernard
 ```
 
 
-The examples above illustrate that it is possible to perform manual conversions to and from a JSON format but in EGL it is much more common for the programming language to handle these conversion automatically as a natural part of service invocations. Below is an example of a function definition designed to consume the Google Maps Geocoding service. The results are returned in a JSON format and parsed by EGL into records that mirror the structure of the reply. 
+The examples above illustrate that it is possible to perform manual conversions to and from a JSON format but in EGL it is much more common for the programming language to handle these conversion automatically as a natural part of service invocations. Below is an example of a function definition designed to consume the Google Maps Geocoding service. The results are returned in a JSON format and parsed by EGL into records that mirror the structure of the reply.
 
 
 ```EGL
@@ -1306,13 +1306,13 @@ ELENA 4.x
 ```elena
 import extensions;
 import extensions'dynamic;
- 
+
 public program()
 {
     var json := "{ ""foo"": 1, ""bar"": [10, ""apples""] }";
- 
+
     var o := json.fromJson();
- 
+
     console.printLine("json.foo=",o.foo);
     console.printLine("json.bar=",o.bar)
 }
@@ -1339,7 +1339,7 @@ Use the JSON library for Erlang (mochijson) from [https://github.com/mochi/mochi
 -export([main/0]).
 
 main() ->
-	JSON = 
+	JSON =
 		"{
 		    \"firstName\": \"John\",
 		    \"lastName\": \"Smith\",
@@ -1361,7 +1361,7 @@ main() ->
 		        }
 		    ]
 		}",
-	Erlang = 
+	Erlang =
 		{struct,
 			[{"firstName","John"},
 	         {"lastName","Smith"},
@@ -1546,9 +1546,9 @@ end program json_fortran
 
 ## FunL
 
-Since FunL map syntax is conforms to JSON, the built-in function 
-<code>eval()</code> can be used to parse a JSON string.  
-Built-in <code>println()</code> also produces JSON conformant output.  
+Since FunL map syntax is conforms to JSON, the built-in function
+<code>eval()</code> can be used to parse a JSON string.
+Built-in <code>println()</code> also produces JSON conformant output.
 This method only uses built-in functions but is comparatively slow.
 
 ```funl
@@ -1596,7 +1596,7 @@ let json = JsonConvert.SerializeObject(xs)
 json |> printfn "%s"
 
 let xs1 = JsonConvert.DeserializeObject<Person list>(json)
-xs1 |> List.iter(fun x -> printfn "%i  %s" x.ID x.Name) 
+xs1 |> List.iter(fun x -> printfn "%i  %s" x.ID x.Name)
 
 ```
 
@@ -1656,7 +1656,7 @@ type People = JsonProvider<""" [{"ID":1,"Name":"First"},{"ID":2,"Name":"Second"}
 
 People.GetSamples()
 |> Array.map(fun x -> {ID = x.Id; Name = x.Name} )
-|> Array.iter(fun x -> printfn "%i  %s" x.ID x.Name) 
+|> Array.iter(fun x -> printfn "%i  %s" x.ID x.Name)
 ```
 
 Print:
@@ -1922,7 +1922,7 @@ print( person.Hobby[0].Name )
 ```
 
 All statically verified and fully code completion friendly!
- 
+
 Other features:
 
 ```javascript
@@ -2242,41 +2242,41 @@ public class JsonExample {
 	public static void main(String[] args) {
 		Gson gson = new Gson();
 		String json = "{ \"foo\": 1, \"bar\": [ \"10\", \"apples\"] }";
-		
+
 		MyJsonObject obj = gson.fromJson(json, MyJsonObject.class);
-		
+
 		System.out.println(obj.getFoo());
 
 		for(String bar : obj.getBar()) {
 			System.out.println(bar);
 		}
-		
+
 		obj = new MyJsonObject(2, new String[] { "20", "oranges" });
 		json = gson.toJson(obj);
-		
+
 		System.out.println(json);
 	}
-	
+
 }
 
 class MyJsonObject {
-	
+
 	private int foo;
 	private String[] bar;
-	
+
 	public MyJsonObject(int foo, String[] bar) {
 		this.foo = foo;
 		this.bar = bar;
 	}
-	
+
 	public int getFoo() {
 		return foo;
 	}
-	
+
 	public String[] getBar() {
 		return bar;
 	}
-	
+
 }
 ```
 
@@ -2304,7 +2304,7 @@ JSON is jq's native data format, so nothing need be done to parse JSON input. Fo
 ```jq> . </lang
 
 
-Here are the jq equivalents of the examples given in the section on Julia, assuming the file data.json holds the following JSON text: 
+Here are the jq equivalents of the examples given in the section on Julia, assuming the file data.json holds the following JSON text:
 
 { "blue": [1,2], "ocean": "water" }
 
@@ -2691,8 +2691,8 @@ print("JSON from new Lua data: " .. json.encode(data))
 ```
 
 
-Since in Lua <code>nil</code> signifies an ''undefined'' value, i.e. a variable or table entry with a <code>nil</code> value is undistinguishable from an undefined variable or non-existing table entry, a <code>null</code> value in JSON notation is decoded to a special function value, which ensures that it can be re-encoded properly to <code>null</code> again. 
-To manually insert a <code>null</code> value in the JSON output, 
+Since in Lua <code>nil</code> signifies an ''undefined'' value, i.e. a variable or table entry with a <code>nil</code> value is undistinguishable from an undefined variable or non-existing table entry, a <code>null</code> value in JSON notation is decoded to a special function value, which ensures that it can be re-encoded properly to <code>null</code> again.
+To manually insert a <code>null</code> value in the JSON output,
 use the <code>json.util.null</code> function.
 
 {{out}}
@@ -2879,7 +2879,7 @@ ExportString[data, "JSON"]
 
 ```matlab>>
  jsondecode('{ "foo": 1, "bar": [10, "apples"] }')
-ans = 
+ans =
   struct with fields:
 
     foo: 1
@@ -2910,7 +2910,7 @@ import org.json.JSONTokener
 import org.json.JSONException
 
 /**
- * Using library from json.org 
+ * Using library from json.org
  *
  * @see http://www.json.org/java/index.html
  */
@@ -2935,18 +2935,18 @@ class RJson01 public
 
       /**
        * A bean that looks like the following JSON
-       * 
+       *
 ```txt
 
        * {
        *   "F2012_2" : {
        *     "title"  : "Snow White & the Huntsman",
-       *     "year"   : 2012, 
+       *     "year"   : 2012,
        *     "medium" : "film",
        *     "dwarfs" : [ "Beith", "Quert", "Muir", "Coll", "Duir", "Gus", "Gort", "Nion" ]
        *   }
        * }
-       * 
+       *
 ```
 
        */
@@ -3005,7 +3005,7 @@ method bean2json(sb = DwarfBean) public static returns String
   end
   return jsonString
 
--- 
+--
 ### =======================================================================
 
 class RJson01.DwarfBean public binary
@@ -3118,16 +3118,16 @@ class RJson02 public
 
       /**
        * A bean that looks like the following JSON
-       * 
+       *
 ```txt
 
        * {
        *   "title"  : "Snow White & the Huntsman",
-       *   "year"   : 2012, 
+       *   "year"   : 2012,
        *   "medium" : "film",
        *   "dwarfs" : [ "Beith", "Quert", "Muir", "Coll", "Duir", "Gus", "Gort", "Nion" ]
        * }
-       * 
+       *
 ```
 
        */
@@ -3154,7 +3154,7 @@ class RJson02 public
 
     return
 
--- 
+--
 ### =======================================================================
 
 class RJson02.DwarfBean public binary
@@ -3268,7 +3268,7 @@ bundle Default {
 
 ```objc
 NSString *jsonString = @"{ \"foo\": 1, \"bar\": [10, \"apples\"] }";
-id obj = [NSJSONSerialization 
+id obj = [NSJSONSerialization
     JSONObjectWithData: [jsonString dataUsingEncoding: NSUTF8StringEncoding]
                options: 0
                  error: NULL];
@@ -3327,7 +3327,7 @@ compile with:
  ocamlfind opt -o j.opt j.ml -linkpkg -package json-static -syntax camlp4o
 
 
-###  Using yojson lib 
+###  Using yojson lib
 
 
 {{libheader|yojson}}
@@ -3422,8 +3422,8 @@ DEFINE TEMP-TABLE example
    FIELD blue  AS INTEGER EXTENT 2
    FIELD ocean AS CHARACTER
    .
-CREATE example. 
-ASSIGN 
+CREATE example.
+ASSIGN
    example.blue [1]  =  1
    example.blue [2]  =  2
    example.ocean     =  "water"
@@ -3469,7 +3469,7 @@ Message
   }
 ]}
 ---------------------------
-OK   
+OK
 ---------------------------
 
 ```
@@ -3483,10 +3483,10 @@ OK
 ---------------------------
 Message
 ---------------------------
-1 2 
+1 2
 water
 ---------------------------
-OK   
+OK
 ---------------------------
 
 ```
@@ -3556,7 +3556,7 @@ The distribution now contains a simple json module
 ```Phix
 --
 -- demo\rosetta\JSON.exw
--- 
+--
 ### ===============
 
 --
@@ -3714,13 +3714,13 @@ int main() {
 	// Decoding
 	string json = "{\"cake\":[\"desu\",1,2.3],\"foo\":1}";
 	write("%O\n", Standards.JSON.decode(json));
-	
+
 	// Encoding
 	mapping m = ([
 		"foo": ({ 1, 2, 3 }),
 		"bar": "hello"
 	]);
-	
+
 	write("%s\n", Standards.JSON.encode(m));
 }
 ```
@@ -3769,9 +3769,9 @@ Invoke-WebRequest -Uri "http://date.jsontest.com" | ConvertFrom-Json
             ]
 }
 
-time                                                                  milliseconds_since_epoch date                                          
-----                                                                  ------------------------ ----                                          
-12:25:25 PM                                                                      1414326325923 10-26-2014  
+time                                                                  milliseconds_since_epoch date
+----                                                                  ------------------------ ----
+12:25:25 PM                                                                      1414326325923 10-26-2014
 
 ```
 
@@ -3844,7 +3844,7 @@ If CreateJSON(1)
   PB_Team_Members=SetJSONObject(JSONValue(1))
   SetJSONString(AddJSONMember(PB_Team_Members,"PB_Team_Member_1"),"Frederic Laboureur")
   SetJSONString(AddJSONMember(PB_Team_Members,"PB_Team_Member_2"),"Andre Beer")
-  SetJSONString(AddJSONMember(PB_Team_Members,"PB_Team_Member_3"),"Timo Harter")  
+  SetJSONString(AddJSONMember(PB_Team_Members,"PB_Team_Member_3"),"Timo Harter")
 EndIf
 
 If CreateJSON(2)
@@ -3857,13 +3857,13 @@ EndIf
 PrintN("PureBasic - Team Members:")
 PrintN(ComposeJSON(1,#PB_JSON_PrettyPrint)+#CRLF$)
 PrintN("PureBasic - Former Team Members:")
-PrintN(ComposeJSON(2,#PB_JSON_PrettyPrint)+#CRLF$)  
+PrintN(ComposeJSON(2,#PB_JSON_PrettyPrint)+#CRLF$)
 
 #DL=Chr(34)
 PB_Special_thanks$="[ " +#DL+"Gary Willoughby"+#DL+", " +#DL+"Mark James"+#DL+", " +#DL+"Neil Hodgson"+#DL+" ]"
 NewList otherpersons.s()
 
-If ParseJSON(3,PB_Special_thanks$)  
+If ParseJSON(3,PB_Special_thanks$)
   ExtractJSONList(JSONValue(3),otherpersons())
   PrintN("Pure Basic - and others:")
   ForEach otherpersons() : PrintN(otherpersons()) : Next
@@ -4141,7 +4141,7 @@ res1: String = {"foo" : "bar"}
 ## Scheme
 
 {{works with|Chicken Scheme}}
-Using the [http://api.call-cc.org/doc/json json] egg: 
+Using the [http://api.call-cc.org/doc/json json] egg:
 ```scheme
 
 (use json)
@@ -4339,7 +4339,7 @@ Then, called as below:
 
 '{ "foo": 1, "bar": [10, "apples"] }' -> jsonParser -> '$.bar(2);
 ' -> !OUT::write
- 
+
 { blue: [1,2], ocean: 'water' } -> printJson -> '$;
 ' -> !OUT::write
 
@@ -4531,11 +4531,11 @@ A few tests. Note, the <code>badsyntax</code> variable is bound to any trailing 
 
 
 ```bash
-$ echo  -n '{ "a" : { "b" : 3, "c" : [1,2,3] }  }[' | ./txr -l json.txr - 
+$ echo  -n '{ "a" : { "b" : 3, "c" : [1,2,3] }  }[' | ./txr -l json.txr -
 (v "O" ((("S" "a") ("O" ((("S" "b") ("N" "3")) (("S" "c") ("A" (("N" "1") ("N" "2") ("N" "3")))))))))
 (badsyntax . "[\n")
 
-$ echo  -n '"\u1234"' | ./txr -l json.txr - 
+$ echo  -n '"\u1234"' | ./txr -l json.txr -
 (v "S" "\11064")
 (badsyntax . "")
 ```

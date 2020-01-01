@@ -14,7 +14,7 @@ tags = []
 Ethiopian multiplication is a method of multiplying integers using only addition, doubling, and halving.
 
 
-'''Method:''' 
+'''Method:'''
 
 # Take two numbers to be multiplied and write them down at the top of two columns.
 # In the left-hand column repeatedly halve the last number, discarding any remainders, and write the result below the last in the same column, until you write a value of 1.
@@ -35,20 +35,20 @@ Halving the first column:
 Doubling the second column:
         17    34
          8    68
-         4   136 
+         4   136
          2   272
          1   544
 Strike-out rows whose first cell is even:
         17    34
-         8    <strike>68</strike> 
-         4   <strike>136</strike> 
-         2   <strike>272</strike> 
+         8    <strike>68</strike>
+         4   <strike>136</strike>
+         2   <strike>272</strike>
          1   544
 Sum the remaining numbers in the right-hand column:
         17    34
-         8    -- 
-         4   --- 
-         2   --- 
+         8    --
+         4   ---
+         2   ---
          1   544
             ====
              578
@@ -197,11 +197,11 @@ procedure ethiopian is
   function double  (n : Natural) return Natural is (2*n);
   function halve   (n : Natural) return Natural is (n/2);
   function is_even (n : Natural) return Boolean is (n mod 2 = 0);
-  
-  function mul (l, r : Natural) return Natural is 
-  (if l = 0 then 0 elsif l = 1 then r elsif is_even (l) then mul (halve (l),double (r)) 
+
+  function mul (l, r : Natural) return Natural is
+  (if l = 0 then 0 elsif l = 1 then r elsif is_even (l) then mul (halve (l),double (r))
    else r + double (mul (halve (l), r)));
-   
+
 begin
   put_line (mul (17,34)'img);
 end ethiopian;
@@ -287,7 +287,7 @@ main(void)
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}} 
+{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 
 <!-- {{does not work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386 - missing printf and FORMAT}} -->
 
@@ -295,16 +295,16 @@ main(void)
 PROC halve = (REF INT x)VOID: x := ABS(BIN x SHR 1);
 PROC doublit = (REF INT x)VOID: x := ABS(BIN x SHL 1);
 PROC iseven = (#CONST# INT x)BOOL: NOT ODD x;
- 
+
 PROC ethiopian = (INT in plier,
               INT in plicand, #CONST# BOOL tutor)INT:
 (
   INT plier := in plier, plicand := in plicand;
   INT result:=0;
- 
+
   IF tutor THEN
     printf(($"ethiopian multiplication of "g(0)," by "g(0)l$, plier, plicand)) FI;
- 
+
   WHILE plier >= 1 DO
     IF iseven(plier) THEN
       IF tutor THEN printf(($" "4d,"  "6d" struck"l$, plier, plicand)) FI
@@ -316,7 +316,7 @@ PROC ethiopian = (INT in plier,
   OD;
   result
 );
- 
+
 main:
 (
   printf(($g(0)l$, ethiopian(17, 34, TRUE)))
@@ -406,7 +406,7 @@ See also: [[Repeat_a_string#AppleScript]]
 ```AppleScript
 on run
     {ethMult(17, 34), ethMult("Rhind", 9)}
-    
+
     --> {578, "RhindRhindRhindRhindRhindRhindRhindRhind"}
 end run
 
@@ -418,19 +418,19 @@ on ethMult(m, n)
     script fns
         property identity : missing value
         property plus : missing value
-        
+
         on half(n) -- 1. half an integer (div 2)
             n div 2
         end half
-        
+
         on double(n) -- 2. double (add to self)
             plus(n, n)
         end double
-        
+
         on isEven(n) -- 3. is n even ? (mod 2 > 0)
             (n mod 2) > 0
         end isEven
-        
+
         on chooseFns(c)
             if c is string then
                 set identity of fns to ""
@@ -440,24 +440,24 @@ on ethMult(m, n)
                 set plus of fns to plusInteger of fns
             end if
         end chooseFns
-        
+
         on plusInteger(a, b)
             a + b
         end plusInteger
-        
+
         on plusString(a, b)
             a & b
         end plusString
     end script
-    
+
     chooseFns(class of m) of fns
-    
-    
+
+
     -- MAIN PROCESS OF CALCULATION
-    
+
     set o to identity of fns
     if n < 1 then return o
-    
+
     repeat while (n > 1)
         if isEven(n) of fns then -- 3. is n even ? (mod 2 > 0)
             set o to plus(o, m) of fns
@@ -525,11 +525,11 @@ Ethiopian2( a, b, r = 0 ) { ;omit r param on initial call
 Func Halve($x)
 	Return Int($x/2)
 EndFunc
- 
+
 Func Double($x)
 	Return ($x*2)
 EndFunc
- 
+
 Func IsEven($x)
 	Return (Mod($x,2) == 0)
 EndFunc
@@ -667,7 +667,7 @@ END FUNCTION
 ```bbcbasic
       x% = 17
       y% = 34
-      
+
       REPEAT
         IF NOT FNeven(x%) THEN
           p% += y%
@@ -681,11 +681,11 @@ END FUNCTION
       PRINT " " , "       ==="
       PRINT " " , p%
       END
-      
+
       DEF FNdouble(A%) = A% * 2
-      
+
       DEF FNhalve(A%) = A% DIV 2
-      
+
       DEF FNeven(A%) = ((A% AND 1) = 0)
 ```
 {{out}}
@@ -705,30 +705,30 @@ END FUNCTION
 Function double_(y As String) As String
     Var answer="0"+y
     Var addcarry=0
-    For n_ As Integer=Len(y)-1 To 0 Step -1 
+    For n_ As Integer=Len(y)-1 To 0 Step -1
         Var addup=y[n_]+y[n_]-96
         answer[n_+1]=(addup+addcarry) Mod 10+48
         addcarry=(-(10<=(addup+addcarry)))
-    Next n_ 
+    Next n_
     answer[0]=addcarry+48
     Return Ltrim(answer,"0")
 End Function
- 
+
 Function Accumulate(NUM1 As String,NUM2 As String) As String
     Var three="0"+NUM1
     Var two=String(len(NUM1)-len(NUM2),"0")+NUM2
     Var addcarry=0
-    For n2 As Integer=len(NUM1)-1 To 0 Step -1 
+    For n2 As Integer=len(NUM1)-1 To 0 Step -1
         Var addup=two[n2]+NUM1[n2]-96
         three[n2+1]=(addup+addcarry) Mod 10+48
         addcarry=(-(10<=(addup+addcarry)))
-    Next n2 
+    Next n2
     three[0]=addcarry+48
     three=Ltrim(three,"0")
     If three="" Then Return "0"
-    Return three 
+    Return three
 End Function
- 
+
 Function Half(Byref x As String) As String
     Var carry=0
     For z As Integer=0 To Len(x)-1
@@ -740,12 +740,12 @@ Function Half(Byref x As String) As String
     x= Ltrim(x,"0")
     Return x
 End Function
- 
+
 Function IsEven(x As String) As Integer
     If x[Len(x)-1] And 1  Then Return 0
     return -1
 End Function
- 
+
 Function EthiopianMultiply(n1 As String,n2 As String) As String
     Dim As String x=n1,y=n2
     If Len(y)>Len(x) Then Swap y,x
@@ -764,7 +764,7 @@ Function EthiopianMultiply(n1 As String,n2 As String) As String
             ans=Accumulate(y,ans)
         End If
         Print x;odd;tab(30);y;temprint
-        x=Half(x) 
+        x=Half(x)
         y= Double_(y)
     Wend
     Return ans
@@ -777,19 +777,19 @@ Dim As String s1="17"
 Dim As String s2="34"
 Print "Half";tab(30);"Double     * marks those accumulated"
 print "Biggest";tab(30);"Smallest"
- 
- 
+
+
 Print
- 
+
 Var ans= EthiopianMultiply(s1,s2)
- 
+
 Print
 Print
 Print "Final answer"
 Print " ";ans
 print "Float check"
 Print Val(s1)*Val(s2)
- 
+
 Sleep
 
 ```
@@ -880,15 +880,15 @@ While x >= 1
   TextWindow.CursorLeft = 10
   If Math.Remainder(x + 1, 2) = 0 Then
     tot = tot + y
-    TextWindow.WriteLine(y) 
-  Else 
+    TextWindow.WriteLine(y)
+  Else
     TextWindow.WriteLine("")
-  EndIf  
+  EndIf
   x = Math.Floor(x / 2)
   y = 2 * y
 EndWhile
 TextWindow.Write("=")
-TextWindow.CursorLeft = 10 
+TextWindow.CursorLeft = 10
 TextWindow.WriteLine(tot)
 
 ```
@@ -922,12 +922,12 @@ Procedure EthiopianMultiply(x, y)
     y = doubleValue(y)
   Until x < 1
   PrintN(" equals " + Str(sum))
-  ProcedureReturn sum  
+  ProcedureReturn sum
 EndProcedure
 
 If OpenConsole()
   EthiopianMultiply(17,34)
- 
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -944,7 +944,7 @@ Procedure isEven(x)
 EndProcedure
 
 Procedure halveValue(x)
-  ProcedureReturn x / 2 
+  ProcedureReturn x / 2
 EndProcedure
 
 Procedure doubleValue(x)
@@ -953,7 +953,7 @@ EndProcedure
 
 Procedure EthiopianMultiply(x, y)
   Protected sum, sign = x
-  
+
   Print("Ethiopian multiplication of " + Str(x) + " and " + Str(y) + " ...")
   Repeat
     If Not isEven(x)
@@ -963,16 +963,16 @@ Procedure EthiopianMultiply(x, y)
     y = doubleValue(y)
   Until x = 0
   If sign < 0 : sum * -1: EndIf
-  
+
   PrintN(" equals " + Str(sum))
-  ProcedureReturn sum  
+  ProcedureReturn sum
 EndProcedure
 
 If OpenConsole()
   EthiopianMultiply(17,34)
   EthiopianMultiply(-17,34)
   EthiopianMultiply(-17,-34)
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -1053,7 +1053,7 @@ Requires at least 2k of RAM. The specification is emphatic about wanting named f
 =
 ## True BASIC
 =
-A translation of BBC BASIC. True BASIC does not have Boolean operations built-in. 
+A translation of BBC BASIC. True BASIC does not have Boolean operations built-in.
 
 ```basic
 
@@ -1063,10 +1063,10 @@ PROGRAM EthiopianMultiplication
 	DECLARE DEF FNdouble
 	DECLARE DEF FNhalve
 	DECLARE DEF FNeven
-	
+
 	LET x = 17
 	LET y = 34
-	
+
 	DO
 		IF FNeven(x) = 0 THEN
 			LET p = p + y
@@ -1074,14 +1074,14 @@ PROGRAM EthiopianMultiplication
 		ELSE
 			PRINT x," ---"
 		END IF
-		
+
 		LET x = FNhalve(x)
 		LET y = FNdouble(y)
 	LOOP UNTIL x = 0
 	PRINT " ", " ==="
 	PRINT " ", p
 	GET KEY done
-	
+
 	DEF FNdouble(A) = A * 2
 	DEF FNhalve(A) = INT(A / 2)
 	DEF FNeven(A) = MOD(A+1,2)
@@ -1219,7 +1219,7 @@ for /l %%i in (0,1,%lefttempcount%) do (
   )
   echo L: !l%%i! R: !r%%i! - !iseven%%i!
   :: To this, is for cosmetics and is optional--------
-  
+
 )
 echo %l0% * %r0% = %answer%
 exit /b
@@ -1301,8 +1301,8 @@ Output
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdbool.h>
 
 void halve(int *x) { *x >>= 1; }
@@ -1316,7 +1316,7 @@ int ethiopian(int plier,
 
   if (tutor)
     printf("ethiopian multiplication of %d by %d\n", plier, plicand);
-  
+
   while(plier >= 1) {
     if ( iseven(plier) ) {
       if (tutor) printf("%4d %6d struck\n", plier, plicand);
@@ -1420,22 +1420,23 @@ saved into regularly compiled code.
 Here is such an implementation without tutor, since there is no mechanism in C++ to output
 messages during program compilation.
 
-```cpp>template<int N
+```cpp
+template<int N>
 
-struct Half    
-{              
+struct Half
+{
         enum { Result = N >> 1 };
-};                               
+};
 
 template<int N>
-struct Double  
-{              
+struct Double
+{
         enum { Result = N << 1 };
-};                               
+};
 
 template<int N>
-struct IsEven  
-{              
+struct IsEven
+{
         static const bool Result = (N & 1) == 0;
 };
 
@@ -1488,17 +1489,17 @@ int main(int, char **)
 
 (defn twice [n]          ; 'double' is taken
   (bit-shift-left n 1))
-  
+
 (defn even [n]           ; 'even?' is the standard fn
   (zero? (bit-and n 1)))
 
 (defn emult [x y]
-  (reduce + 
-    (map second 
+  (reduce +
+    (map second
       (filter #(not (even (first %))) ; a.k.a. 'odd?'
-        (take-while #(pos? (first %)) 
-          (map vector 
-            (iterate halve x) 
+        (take-while #(pos? (first %))
+          (map vector
+            (iterate halve x)
             (iterate twice y)))))))
 
 (defn emult2 [x y]
@@ -1517,7 +1518,7 @@ int main(int, char **)
 {{trans|Common Lisp}}
 {{works with|COBOL|2002}}
 {{works with|OpenCOBOL|1.1}}
-In COBOL, ''double'' is a reserved word, so the doubling functions is named ''twice'', instead. 
+In COBOL, ''double'' is a reserved word, so the doubling functions is named ''twice'', instead.
 
 ```COBOL
        *>* Ethiopian multiplication
@@ -1633,7 +1634,7 @@ multiply = (a, b) ->
     a = halve a
     b = double b
   prod
-  
+
 # tests
 do ->
   for i in [0..100]
@@ -1672,7 +1673,7 @@ Version with as a function of functions:
     <cfargument name="Number_A" type="numeric" required="true">
     <cfargument name="Number_B" type="numeric" required="true">
     <cfset Result = 0>
-    
+
     <cfloop condition = "Number_A GTE 1">
         <cfif even(Number_A) EQ 1>
             <cfset Result = Result + Number_B>
@@ -1680,7 +1681,7 @@ Version with as a function of functions:
         <cfset Number_A = halve(Number_A)>
         <cfset Number_B = double(Number_B)>
     </cfloop>
-    <cfreturn Result>  
+    <cfreturn Result>
 </cffunction>
 
 
@@ -1735,12 +1736,12 @@ Ethiopian multiplication of #Number_A# and #Number_B#...
     <td align="right">#Number_B#</td>
     <td align="center">#Action#</td>
   </tr>
-  
+
   <cfset Number_A = halve(Number_A)>
   <cfset Number_B = double(Number_B)>
-  
-</cfloop>  
-  
+
+</cfloop>
+
 </table>
 
 ...equals #Result#
@@ -1757,7 +1758,7 @@ Ethiopian multiplication of 17 and 34...
 4 	136 	Strike
 2 	272 	Strike
 1 	544 	Keep
-...equals 578 
+...equals 578
 
 ```
 
@@ -1832,7 +1833,7 @@ void main() {
 
 [ The body of the main loop is in register L ]sx
 
-[ 
+[
   sb sa             [ First thing we do is cheat and store the parameters in
                       registers, which is safe because the only recursion is of
                       the tail variety.  This avoids tricky stack
@@ -1961,7 +1962,7 @@ Translation of Haskell:
 
 ```ela
 open list number
- 
+
 halve x = x `div` 2
 double = (2*)
 
@@ -1982,15 +1983,15 @@ ethiopicmult 17 34
 ```elixir
 defmodule Ethiopian do
   def halve(n), do: div(n, 2)
-  
+
   def double(n), do: n * 2
-  
+
   def even(n), do: rem(n, 2) == 0
-  
+
   def multiply(lhs, rhs) when is_integer(lhs) and lhs > 0 and is_integer(rhs) and rhs > 0 do
     multiply(lhs, rhs, 0)
   end
-  
+
   def multiply(1, rhs, acc), do: rhs + acc
   def multiply(lhs, rhs, acc) do
     if even(lhs), do:   multiply(halve(lhs), double(rhs), acc),
@@ -2133,7 +2134,7 @@ function emMultiply(integer a, integer b)
     a = emHalf(a)
     b = emDouble(b)
   end while
-  
+
   return sum
 end function
 
@@ -2439,7 +2440,7 @@ double:
 
 ### Using monoid mappend
 
-Alternatively, we can express Ethiopian multiplication in terms of mappend and mempty, in place of '''(+)''' and '''0'''. 
+Alternatively, we can express Ethiopian multiplication in terms of mappend and mempty, in place of '''(+)''' and '''0'''.
 
 This additional generality means that our '''ethMult''' function can now replicate a string n times as readily as it multiplies an integer n times, or raises an integer to the nth power.
 
@@ -2517,7 +2518,7 @@ FUNCTION double( x )
 
 FUNCTION isEven( x )
     isEven = MOD(x, 2) == 0
- END 
+ END
 ```
 
 
@@ -2530,10 +2531,10 @@ end
 
 procedure ethiopian(i,j)                                      # recursive Ethiopian multiplication
 return ( if not even(i) then j                                # this exploits that icon control expressions return values
-         else 0 ) + 
-       ( if i ~= 0 then ethiopian(halve(i),double(j)) 
+         else 0 ) +
+       ( if i ~= 0 then ethiopian(halve(i),double(j))
          else 0 )
-end   
+end
 
 procedure double(i)
 return i * 2
@@ -2647,7 +2648,7 @@ public class Mult{
           sum += second;
       }
     }while(first > 1);
- 
+
     System.out.println(sum);
   }
 
@@ -2724,25 +2725,25 @@ public static int ethiopianMultiplyWithImprovement(int a, int b) {
 
 ```javascript
 var eth = {
-	
+
 	halve : function ( n ){  return Math.floor(n/2);  },
 	double: function ( n ){  return 2*n;              },
 	isEven: function ( n ){  return n%2 === 0);       },
-	
+
 	mult: function ( a , b ){
 		var sum = 0, a = [a], b = [b];
-		
+
 		while ( a[0] !== 1 ){
 			a.unshift( eth.halve( a[0] ) );
 			b.unshift( eth.double( b[0] ) );
 		}
-		
+
 		for( var i = a.length - 1; i > 0 ; i -= 1 ){
-			
+
 			if( !eth.isEven( a[i] ) ){
 				sum += b[i];
 			}
-		}		
+		}
 		return sum + b[0];
 	}
 }
@@ -3148,7 +3149,7 @@ KTHXBYE
 ```
 
 
-Output: 
+Output:
 ```txt
 578
 ```
@@ -3196,7 +3197,7 @@ print(ethiopian(17, 34))
 IntegerHalving[x_]:=Floor[x/2]
 IntegerDoubling[x_]:=x*2;
 OddInteger           OddQ
-Ethiopian[x_, y_] := 
+Ethiopian[x_, y_] :=
 Total[Select[NestWhileList[{IntegerHalving[#[[1]]],IntegerDoubling[#[[2]]]}&, {x,y}, (#[[1]]>1&)], OddQ[#[[1]]]&]][[2]]
 
 Ethiopian[17, 34]
@@ -3213,15 +3214,15 @@ Output:
 
 ## MATLAB
 
-First we define the three subroutines needed for this task. These must be saved in their own individual ".m" files. The file names must be the same as the function name stored in that file. Also, they must be saved in the same directory as the script that performs the Ethiopian Multiplication. 
+First we define the three subroutines needed for this task. These must be saved in their own individual ".m" files. The file names must be the same as the function name stored in that file. Also, they must be saved in the same directory as the script that performs the Ethiopian Multiplication.
 
-In addition, with the exception of the "isEven" and "doubleInt" functions, the inputs of the functions have to be an integer data type. This means that the input to these functions must be coerced from the default IEEE754 double precision floating point data type that all numbers and variables are represented as, to integer data types. As of MATLAB 2007a, 64-bit integer arithmetic is not supported. So, at best, these will work for 32-bit integer data types.  
+In addition, with the exception of the "isEven" and "doubleInt" functions, the inputs of the functions have to be an integer data type. This means that the input to these functions must be coerced from the default IEEE754 double precision floating point data type that all numbers and variables are represented as, to integer data types. As of MATLAB 2007a, 64-bit integer arithmetic is not supported. So, at best, these will work for 32-bit integer data types.
 
 halveInt.m:
 
 ```MATLAB
 function result = halveInt(number)
-    
+
     result = idivide(number,2,'floor');
 
 end
@@ -3246,7 +3247,7 @@ isEven.m:
 function trueFalse = isEven(number)
 
     trueFalse = logical( mod(number,2)==0 );
-    
+
 end
 ```
 
@@ -3255,19 +3256,19 @@ ethiopianMultiplication.m:
 
 ```MATLAB
 function answer = ethiopianMultiplication(multiplicand,multiplier)
- 
+
     %Generate columns
     while multiplicand(end)>1
         multiplicand(end+1,1) = halveInt( multiplicand(end) );
         multiplier(end+1,1) = doubleInt( multiplier(end) );
     end
- 
+
     %Strike out appropriate rows
     multiplier( isEven(multiplicand) ) = [];
- 
+
     %Generate answer
     answer = sum(multiplier);
- 
+
 end
 ```
 
@@ -3335,7 +3336,7 @@ In order to assemble and run this program you'll have to install MMIXware from [
 A	IS	17
 B	IS	34
 
-pliar	IS 	$255		% designating main registers 
+pliar	IS 	$255		% designating main registers
 pliand	GREG
 acc	GREG
 str	IS	pliar		% reuse reg $255 for printing
@@ -3352,7 +3353,7 @@ BUF	OCTA	#3030303030303030 % reserve a buffer that is big enough to hold
 halve	SR	pliar,pliar,1
 	GO	$127,$127,0
 
-double	SL	pliand,pliand,1	
+double	SL	pliand,pliand,1
 	GO	$127,$127,0
 
 odd	DIV	$77,pliar,2
@@ -3365,14 +3366,14 @@ Main 	SET	pliar,A		% initialize registers for calculation
 	SET	acc,0
 1H	GO	$127,odd
 	BZ	$78,2F		% if pliar is even skip incr. acc with pliand
-	ADD	acc,acc,pliand	% 
+	ADD	acc,acc,pliand	%
 2H	GO	$127,halve	% halve pliar
 	GO	$127,double	% and double pliand
 	PBNZ	pliar,1B	% repeat from 1H while pliar > 0
 // result: acc = 17 x 34
 // next: print result --> stdout
 // $0 is a temp register
-	LDA	str,BUF+19	% points after the end of the string 
+	LDA	str,BUF+19	% points after the end of the string
 2H	SUB	str,str,1	% update buffer pointer
 	DIV	acc,acc,10	% do a divide and mod
 	GET	$0,rR		% get digit from special purpose reg. rR
@@ -3547,7 +3548,7 @@ E2(M,N)
      5  1792
      2  3584 Struck
      1  7168
-      
+
 ### =
 
        10073
@@ -3578,7 +3579,7 @@ module Ethiopian
         }
         multiply(x, y)
     }
-    
+
     Main() : void
     {
         WriteLine("By Ethiopian multiplication, 17 * 34 = {0}", Multiply(17, 34));
@@ -3605,7 +3606,7 @@ say 'a=' a
 say 'b=' b
 say 'product=' emult(a,b)
 return
- 
+
 method emult(x,y) private static
   parse x x 1 ox
   prod=0
@@ -3665,13 +3666,13 @@ class EthiopianMultiplication {
     "----"->PrintLine();
     Mul(first, second)->PrintLine();
   }
-  
+
   function : native : Mul(first : Int, second : Int) ~ Int {
     if(first < 0){
       first := -1 * first;
       second := -1 * second;
     };
-    
+
     sum := isEven(first)? 0 : second;
     do {
       first := halveInt(first);
@@ -3681,10 +3682,10 @@ class EthiopianMultiplication {
       };
     }
     while(first > 1);
-    
+
     return sum;
   }
-  
+
   function : halveInt(num : Int) ~ Bool {
     return num >> 1;
   }
@@ -3692,7 +3693,7 @@ class EthiopianMultiplication {
   function : doubleInt(num : Int) ~ Bool {
     return num << 1;
   }
-  
+
   function : isEven(num : Int) ~ Bool {
     return (num and 1) = 0;
   }
@@ -3868,7 +3869,7 @@ ethiopian;;
 
 (* Here zero is the starting value for the accumulator of the sums
    of values in the right column in the original algorithm. But the "add"
-   me do something else, see for example the RosettaCode page on 
+   me do something else, see for example the RosettaCode page on
    "Exponentiation operator". *)
 ```
 
@@ -3920,7 +3921,7 @@ disp(ethiopicmult(17, 34, true))
 ## Oforth
 
 
-Based on Forth version. 
+Based on Forth version.
 
 isEven is already defined for Integers.
 
@@ -3928,10 +3929,10 @@ isEven is already defined for Integers.
 ```Oforth
 : halve   2 / ;
 : double  2 * ;
- 
+
 : ethiopian
    dup ifZero: [ nip return ]
-   over double over halve ethiopian 
+   over double over halve ethiopian
    swap isEven ifTrue: [ nip ] else: [ + ] ;
 ```
 
@@ -4187,15 +4188,15 @@ say ethiopic-mult(17,34);
 function emHalf(integer n)
     return floor(n/2)
 end function
- 
+
 function emDouble(integer n)
     return n*2
 end function
- 
+
 function emIsEven(integer n)
     return (remainder(n,2)=0)
 end function
- 
+
 function emMultiply(integer a, integer b)
 integer sum = 0
     while a!=0 do
@@ -4205,7 +4206,7 @@ integer sum = 0
     end while
     return sum
 end function
- 
+
 printf(1,"emMultiply(%d,%d) = %d\n",{17,34,emMultiply(17,34)})
 ```
 
@@ -4256,7 +4257,7 @@ echo ethiopicmult(17, 34, true), "\n";
  4, 136 struck
  2, 272 struck
  1, 544 kept
- 578 
+ 578
 Object Oriented version:
 {{works with|PHP5}}
 ```php
@@ -4273,7 +4274,7 @@ class ethiopian_multiply {
          $y = $this->double_num($y);
       }
    }
-   
+
    protected function half_num($x){
       return floor($x/2);
    }
@@ -4281,26 +4282,26 @@ class ethiopian_multiply {
    protected function double_num($y){
       return $y*2;
    }
-   
+
    protected function not_even($n){
       return $n%2 != 0 ? true : false;
    }
-   
+
    protected function sum_result($x, $y){
       if($this->not_even($x)){
          $this->result += $y;
       }
    }
-   
+
    protected function get_result(){
       return $this->result;
    }
-   
+
    static public function init($x, $y){
       $init = new ethiopian_multiply($x, $y);
       return $init->get_result();
    }
-   
+
 }
 
 echo ethiopian_multiply::init(17, 34);
@@ -4351,7 +4352,7 @@ int ethopian_multiply(int l, int r)
         if (!evenp(l))
             product += r;
         l = halve(l);
-        r = double(r);          
+        r = double(r);
     }
     while(l);
     return product;
@@ -4529,7 +4530,7 @@ function multiplyValues {
 		[int]$plicand,
 		[int]$temp = 0
 	)
-	
+
 	while ($plier -ge 1)
 	{
 		if (!(isEven $plier)) {
@@ -4538,7 +4539,7 @@ function multiplyValues {
 		$plier = halveValue $plier
 		$plicand = doubleValue $plicand
 	}
-	
+
 return $temp
 }
 
@@ -4569,13 +4570,13 @@ function isEven( [int] $rhs )
 function Ethiopian( [int] $lhs , [int] $rhs )
 {
 	$scratch = @{}
-	1..[math]::floor( [math]::log( $lhs , 2 ) + 1 ) | 
-	ForEach-Object { 
+	1..[math]::floor( [math]::log( $lhs , 2 ) + 1 ) |
+	ForEach-Object {
 		$scratch[$lhs] = $rhs
 		$lhs
 		$lhs = halveInt( $lhs )
-		$rhs = doubleInt( $rhs ) } | 
-	Where-Object { -not ( isEven $_ ) } | 
+		$rhs = doubleInt( $rhs ) } |
+	Where-Object { -not ( isEven $_ ) } |
 	ForEach-Object { $sum = 0 } { $sum += $scratch[$_] } { $sum }
 }
 
@@ -4588,7 +4589,7 @@ Ethiopian 17 34
 
 
 
-###  Traditional 
+###  Traditional
 
 
 
@@ -4621,7 +4622,7 @@ ethiopian(First,Second,Product) :-
 
 
 
-###  Functional Style 
+###  Functional Style
 
 
 Using the same definitions as above for "halve/2", "double/2" and "is_even/2" along with an SWI-Prolog [http://www.swi-prolog.org/pack/list?p=func pack for function notation], one might write the following solution
@@ -4645,7 +4646,7 @@ ethiopian(First,Second,Sum0,Sum) :-
 
 
 
-###  Constraint Handling Rules 
+###  Constraint Handling Rules
 
 
 This is a CHR solution for this problem using Prolog as the host language.  Code will work in SWI-Prolog and YAP (and possibly in others with or without some minor tweaking).
@@ -4775,7 +4776,7 @@ Without the tutorial code, and taking advantage of Python's lambda:
 halve  = lambda x: x // 2
 double = lambda x: x*2
 even   = lambda x: not x % 2
- 
+
 def ethiopian(multiplier, multiplicand):
     result = 0
 
@@ -4828,12 +4829,12 @@ def ethiopian(multiplier, multiplicand):
     def column2(x): return iterate(double, x)
     def rows(x, y): return izip(column1(x), column2(y))
     table = rows(multiplier, multiplicand)
-    if tutor: 
+    if tutor:
         table = list(table)
         show_heading(multiplier, multiplicand)
         show_table(table)
     result = sum(q for p, q in table if not even(p))
-    if tutor: 
+    if tutor:
         show_result(result)
     return result
 ```
@@ -4996,7 +4997,7 @@ halve:   (0, 1)
      272
 34 + 544 -> 578
 
-Product:    578 
+Product:    578
 _______________
 
 halve:  (17, 0)
@@ -5114,14 +5115,14 @@ public int ethiopianMul(int n, int m) {
 		m = double(m);
 	}
 	return result;
-} 
+}
 ```
 
 
 
 ## REXX
 
-These two REXX versions properly handle negative integers. 
+These two REXX versions properly handle negative integers.
 
 ### sans error checking
 
@@ -5219,7 +5220,7 @@ x = 17
 y = 34
 p = 0
 while x != 0
-      if not even(x) 
+      if not even(x)
          p += y
          see "" + x + " " + " " + y + nl
       else
@@ -5227,10 +5228,10 @@ while x != 0
          x = halve(x)
          y = double(y)
 end
-see " " + "  ===" + nl 
+see " " + "  ===" + nl
 see "   " + p
-  
-func double n return (n * 2) 
+
+func double n return (n * 2)
 func halve n return floor(n / 2)
 func even n return ((n & 1) = 0)
 
@@ -5264,7 +5265,7 @@ def double(x)  x*2  end
 # iterative
 def ethiopian_multiply(a, b)
   product = 0
-  while a >= 1 
+  while a >= 1
     p [a, b, a.even? ? "STRIKE" : "KEEP"] if $DEBUG
     product += b unless a.even?
     a = halve(a)
@@ -5321,7 +5322,7 @@ end
 
 
 ```txt
-Run options: 
+Run options:
 
 # Running tests:
 
@@ -5539,7 +5540,7 @@ Number extend [
     |result multiplier multiplicand|
     multiplier := self.
     multiplicand := aNumber.
-    tutor ifTrue: [ ('ethiopian multiplication of %1 and %2' % 
+    tutor ifTrue: [ ('ethiopian multiplication of %1 and %2' %
                       { multiplier. multiplicand }) displayNl ].
     result := 0.
     [ multiplier >= 1 ]
@@ -5549,7 +5550,7 @@ Number extend [
                            tutor ifTrue: [
                               ('%1, %2 kept' % { multiplier. multiplicand })
                                 displayNl
-                           ]       
+                           ]
                         ]
                         ifTrue: [
                            tutor ifTrue: [
@@ -5712,18 +5713,18 @@ import Darwin
 
 func ethiopian(var #int1:Int, var #int2:Int) -> Int {
   var lhs = [int1], rhs = [int2]
-  
+
   func isEven(#n:Int) -> Bool {return n % 2 == 0}
   func double(#n:Int) -> Int {return n * 2}
   func halve(#n:Int) -> Int {return n / 2}
-  
+
   while int1 != 1 {
     lhs.append(halve(n: int1))
     rhs.append(double(n: int2))
     int1 = halve(n: int1)
     int2 = double(n: int2)
   }
-  
+
   var returnInt = 0
   for (a,b) in zip(lhs, rhs) {
     if (!isEven(n: a)) {
@@ -5852,7 +5853,7 @@ PRINT sum
      4   136 struck
      2   272 struck
      1   544  kept
- 
+
 ### ==============
 
          578
@@ -6039,7 +6040,7 @@ Dim Left_Hand_Column As New Collection, Right_Hand_Column As New Collection, i A
         Second = lngDouble(Second)
         Right_Hand_Column.Add Second, CStr(Second)
     Next
-    
+
 'Examine the table produced and discard any row where the value in the left column is even.
     For i = Left_Hand_Column.Count To 1 Step -1
         If IsEven(Left_Hand_Column(i)) Then Right_Hand_Column.Remove CStr(Right_Hand_Column(i))
@@ -6062,7 +6063,7 @@ Private Function Ethiopian_Multiplication(First As Long, Second As Long) As Long
         First = lngHalve(First)
         Second = lngDouble(Second)
     Loop While First >= 1
-    Ethiopian_Multiplication = Mult_Eth 
+    Ethiopian_Multiplication = Mult_Eth
 End Function
 ```
 
@@ -6087,7 +6088,7 @@ Nowhere near as optimal a solution as the Ada. Yes, it could have made as optima
 Demonstrates a List class. The .recall and .replace methods have bounds checking but the code does not test for the exception that would be raised. List class extends the storage allocated for the list when the occupation of the list goes beyond the original allocation.
 
 <code>option explicit</code> makes sure that all variables are declared.
- 
+
 '''Implementation'''
 ```vb
 option explicit
@@ -6096,13 +6097,13 @@ class List
 	private theList
 	private nOccupiable
 	private nTop
-	
+
 	sub class_initialize
 		nTop = 0
 		nOccupiable = 100
 		redim theList( nOccupiable )
 	end sub
-	
+
 	public sub store( x )
 		if nTop >= nOccupiable then
 			nOccupiable = nOccupiable + 100
@@ -6111,7 +6112,7 @@ class List
 		theList( nTop ) = x
 		nTop = nTop + 1
 	end sub
-	
+
 	public function recall( n )
 		if n >= 0 and n <= nOccupiable then
 			recall = theList( n )
@@ -6119,7 +6120,7 @@ class List
 			err.raise vbObjectError + 1000,,"Recall bounds error"
 		end if
 	end function
-	
+
 	public sub replace( n, x )
 		if n >= 0 and n <= nOccupiable then
 			theList( n )  = x
@@ -6127,11 +6128,11 @@ class List
 			err.raise vbObjectError + 1001,,"Replace bounds error"
 		end if
 	end sub
-	
+
 	public property get listCount
 		listCount = nTop
 	end property
-		
+
 end class
 
 function halve( n )
@@ -6156,14 +6157,14 @@ function multiply( n1, n2 )
 
 	LL.store n1
 	RR.store n2
-	
+
 	do while n1 <> 1
 		n1 = halve( n1 )
 		LL.store n1
 		n2 = twice( n2 )
 		RR.store n2
 	loop
-	
+
 	dim i
 	for i = 0 to LL.listCount
 		if iseven( LL.recall( i ) ) then
@@ -6176,7 +6177,7 @@ function multiply( n1, n2 )
 	for i = 0 to RR.listCount
 		total = total + RR.recall( i )
 	next
-	
+
 	multiply = total
 end function
 
@@ -6232,7 +6233,7 @@ main
 %define plier 8
 %define plicand 12
 %define tutor 16
-	
+
 ethiopicmult
 	enter	0, 0
 	cmp	dword [ebp + tutor], 0
@@ -6267,7 +6268,7 @@ ethiopicmult
 	mov	ebx, edx	; plicand <<= 1
 	call	double
 	mov	edx, ebx
-	
+
 	jmp	.whileloop
 .multend
 	leave
@@ -6312,9 +6313,9 @@ kepttxt
 
 Using old style 16 bit registers created in debug
 
-The functions to halve double and even are coded inline. 
-To half a value 
-   shr,1 
+The functions to halve double and even are coded inline.
+To half a value
+   shr,1
 
 to double a value
    shl,1
@@ -6358,7 +6359,7 @@ Even:
  1BDC:0126 75F2           JNZ    011A      ; cx not 0, go back and do it again
  1BDC:0128 C3             RET              ; return with the result in AX
 
-;pretty small, just 24 bytes 
+;pretty small, just 24 bytes
 ```
 
 

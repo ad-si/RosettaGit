@@ -18,7 +18,7 @@ This task is to determine if there is only one instance of an application runnin
 ## Ada
 
 
-The following solution tries to open a file for reading. If the file does ''not'' exist, a 'Name_Error' is raised. The exception handler creates that file, allows the program to perform its task, and, eventually, makes sure the file is deleted. If no exception is raised, the file exists, so another instance is running, and the program stops. It also stops if the wrong exception is raised, i.e., any exception other than 'Name_Error'. 
+The following solution tries to open a file for reading. If the file does ''not'' exist, a 'Name_Error' is raised. The exception handler creates that file, allows the program to perform its task, and, eventually, makes sure the file is deleted. If no exception is raised, the file exists, so another instance is running, and the program stops. It also stops if the wrong exception is raised, i.e., any exception other than 'Name_Error'.
 
 
 ```Ada
@@ -74,7 +74,7 @@ Change 'UniqueLockName' to something more likely to be unique, such as a GUID.
         SYS "MessageBox", @hwnd%, "I am already running", 0, 0
         QUIT
       ENDIF
-      
+
       SYS "ReleaseMutex", Mutex%
       SYS "CloseHandle", Mutex%
       END
@@ -85,7 +85,7 @@ Change 'UniqueLockName' to something more likely to be unique, such as a GUID.
 ## C
 
 
-###  POSIX with file lock 
+###  POSIX with file lock
 
 This solution opens <tt>~/rosetta-code-lock</tt> and uses ''fcntl()'' to set a write lock on the file. Only one instance can set this lock. If ''fcntl()'' fails, this program assumes that another instance is running. This program always clears its lock when it terminates.
 
@@ -95,8 +95,8 @@ Note that the underlying file system needs to support file locking; for example 
 
 {{libheader|POSIX}}
 
-```c>#include <fcntl.h
-	/* fcntl, open */
+```c
+#include <fcntl.h> /* fcntl, open */
 #include <stdlib.h>	/* atexit, getenv, malloc */
 #include <stdio.h>	/* fputs, printf, puts, snprintf */
 #include <string.h>	/* memcpy */
@@ -194,7 +194,7 @@ main()
 
 
 
-###  POSIX with file creation 
+###  POSIX with file creation
 
 This solution opens a file with <tt>O_CREAT|O_EXCL</tt>. If the file already exists, this program assumes that another instance is running. This solution is not as good as file locking, because the program might terminate without deleting the file.
 
@@ -204,8 +204,8 @@ This program uses a regular file, with ''open()'' and ''unlink()''. There is [ht
 
 {{libheader|POSIX}}
 
-```c>#include <fcntl.h
-
+```c
+#include <fcntl.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -224,7 +224,7 @@ int main()
 {
    struct sigaction act;
    int myfd;
-   
+
    myfd = open("/tmp/MyUniqueName", O_CREAT|O_EXCL);
    if ( myfd < 0 )
    {
@@ -253,16 +253,18 @@ int main()
 {{works with|Windows|2000 or later}}
 This line needs to be near the top of the file (or in stdafx.h, if you use one.)
 
-```cpp>#include <afx.h></lang
+```cpp
+#include <afx.h>
+```
 
 
 You need a variable of type HANDLE with the same lifetime as your program.  Perhaps as a member of your CWinApp object.
 
-```cpp>HANDLE mutex;</lang
-
+```cpp
+HANDLE mutex;
+```
 
 At the earliest possible point in your program, you need to initialize it and perform your check. "MyApp" should be a string unique to your application.  See [http://msdn2.microsoft.com/en-us/library/ms682411.aspx here] for full details.
-
 
 ```cpp
 mutex = CreateMutex( NULL, TRUE, "MyApp" );
@@ -291,13 +293,13 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 
-class Program {        
-    static void Main(string[] args) {        
+class Program {
+    static void Main(string[] args) {
         try {
             TcpListener server = new TcpListener(IPAddress.Any, 12345);
             server.Start();
-        } 
-       
+        }
+
         catch (SocketException e) {
             if (e.SocketErrorCode == SocketError.AddressAlreadyInUse) {
                 Console.Error.WriteLine("Already running.");
@@ -405,7 +407,7 @@ class Program
 
 (def *port* 12345) ; random large port number
 (try (new ServerSocket *port* 10 (. InetAddress getLocalHost))
-     (catch IOException e (System/exit 0))) ; port taken, so app is already running 
+     (catch IOException e (System/exit 0))) ; port taken, so app is already running
 ```
 
 
@@ -480,7 +482,7 @@ From the Erlang shell, or in a program, register the application process. If thi
 
 ```txt
 
-7> erlang:register( aname, erlang:self() ).          
+7> erlang:register( aname, erlang:self() ).
 true
 8> erlang:register( aname, erlang:self() ).
 ** exception error: bad argument
@@ -697,7 +699,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.UnknownHostException;
- 
+
 public class SingletonApp
 {
     private static final int PORT = 65000;  // random large port number
@@ -810,15 +812,15 @@ import java.io.IOException
 import java.net.*
 
 object SingleInstance {
-    private var ss: ServerSocket? = null  
+    private var ss: ServerSocket? = null
 
     fun alreadyRunning(): Boolean {
         try {
-            ss = ServerSocket(65000, 10, InetAddress.getLocalHost()) // using private port 65000        
+            ss = ServerSocket(65000, 10, InetAddress.getLocalHost()) // using private port 65000
         }
         catch (e: IOException) {
             // port already in use so an instance is already running
-            return true   
+            return true
         }
         return false
     }
@@ -834,10 +836,10 @@ fun main(args: Array<String>) {
         println("Application is already running, so terminating this instance")
         System.exit(0)
     }
-    else { 
+    else {
         println("OK, only this instance is running but will terminate in 10 seconds")
         Thread.sleep(10000)
-        SingleInstance.close()  
+        SingleInstance.close()
     }
 }
 ```
@@ -896,7 +898,7 @@ stdoutnl('Execution done')
 Output Window 1:
 
 ```txt
-$./rosetta 
+$./rosetta
 Starting execution
 Execution done
 
@@ -906,7 +908,7 @@ Execution done
 Output Window 2:
 
 ```txt
-$./rosetta 
+$./rosetta
 Error: App is running as of 2013-11-27 08:42:45
 
 ```
@@ -962,7 +964,7 @@ $Epilog is the action performed upon session exit.
 Running the following code before any other code will prevent 2 instances from concurrent execution.
 
 ```Mathematica
-$Epilog := Print["Another instance is running "]; 
+$Epilog := Print["Another instance is running "];
 If[Attributes[Global`Mutex] == {Protected},
  Exit[],
  Global`Mutex[x_] := Locked; Protect[Global`Mutex];
@@ -1311,8 +1313,8 @@ IF Show('PORTS','ROSETTA') THEN DO           /* Port is already open; exit */
    EXIT 5                                    /* Exit with a mild warning   */
    END
                  /* Open rexxsupport.library so that ports can be opened   */
-IF ~Show('LIBRARIES','rexxsupport.library') 
-   THEN CALL AddLib('rexxsupport.library',0,-30,0) 
+IF ~Show('LIBRARIES','rexxsupport.library')
+   THEN CALL AddLib('rexxsupport.library',0,-30,0)
 
 IF ~OpenPort('ROSETTA')    THEN EXIT 10       /* Open port, end if it fails */
 
@@ -1508,9 +1510,9 @@ globalCenter.addObserverForName("OnlyOne", object: nil, queue: NSOperationQueue.
 
 func send() {
     globalCenter.postNotificationName("OnlyOne", object: nil, userInfo: ["time": time])
-    
+
     let waitTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * NSEC_PER_SEC))
-    
+
     dispatch_after(waitTime, dispatch_get_main_queue()) {
         send()
     }
@@ -1555,7 +1557,7 @@ try {
 (typedef HANDLE cptr)
 (typedef LPSECURITY_ATTRIBUTES cptr)
 (typedef WINERR (enum WINERR ERROR_SUCCESS
-                             (ERROR_ALREADY_EXISTS 183))) 
+                             (ERROR_ALREADY_EXISTS 183)))
 (typedef BOOL (enum BOOL FALSE TRUE))
 (typedef LPCWSTR wstr)
 
@@ -1574,7 +1576,7 @@ try {
 (unless (eq (GetLastError) 'ERROR_ALREADY_EXISTS)
   ;; mutual exclusion here
   )
- 
+
 (CloseHandle m)
 ```
 

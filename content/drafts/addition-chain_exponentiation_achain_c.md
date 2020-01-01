@@ -11,8 +11,8 @@ tags = []
 +++
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 /*  adapted from

@@ -122,7 +122,7 @@ END
 ## App Inventor
 
 
-###  No Blocks solution 
+###  No Blocks solution
 
 This solution requires no code blocks as the text is entered directly into the Title properties TextBox of the Designer.
 
@@ -155,29 +155,29 @@ display dialog "Goodbye, World!" buttons {"Bye"}
   1 LET T$ = "GOODBYE, WORLD!"
   2 LET R = 5:GX = 3:GY = 2:O = 3:XC = R + GX:YC = R * 2 + GY
   3 TEXT : HOME : TEXT : HGR : HCOLOR= 7: HPLOT 0,0: CALL 62454: HCOLOR= 6
-  4 LET L =  LEN (T$): FOR I = 1 TO L:K =  ASC ( MID$ (T$,I,1)):XO = XC:YO = YC: GOSUB 5:XC = XO + 1:YC = YO: GOSUB 7: NEXT : END 
-  5 IF K > 64 THEN K = K + LC: GOSUB 20:LC = 32: RETURN 
-  6 LET LC = 0: ON K >  = 32 GOTO 20: RETURN 
+  4 LET L =  LEN (T$): FOR I = 1 TO L:K =  ASC ( MID$ (T$,I,1)):XO = XC:YO = YC: GOSUB 5:XC = XO + 1:YC = YO: GOSUB 7: NEXT : END
+  5 IF K > 64 THEN K = K + LC: GOSUB 20:LC = 32: RETURN
+  6 LET LC = 0: ON K >  = 32 GOTO 20: RETURN
   7 GOSUB 20:XC = XC + R * 2 + GX: IF XC > 279 - R THEN XC = R + GX:YC = YC + GY + R * 5
-  8 RETURN 
-  9 LET XC = XC - R * 2: RETURN 
+  8 RETURN
+  9 LET XC = XC - R * 2: RETURN
  10 LET Y = R:D = 1 - R:X = 0
  11 IF D >  = 0 THEN Y = Y - 1:D = D - Y * 2
  12 LET D = D + X * 2 + 3
  13 IF O = 1 OR O = 3 THEN  GOSUB 17
  14 IF O = 2 OR O = 3 THEN  GOSUB 19
  15 LET X = X + 1: IF X < Y THEN 11
- 16 LET O = 3:E = 0: RETURN 
+ 16 LET O = 3:E = 0: RETURN
  17 HPLOT XC - X,YC + Y: HPLOT XC + X,YC + Y: HPLOT XC - Y,YC + X: IF  NOT E THEN  HPLOT XC + Y,YC + X
- 18 RETURN 
- 19 HPLOT XC - X,YC - Y: HPLOT XC + X,YC - Y: HPLOT XC - Y,YC - X: HPLOT XC + Y,YC - X: RETURN 
+ 18 RETURN
+ 19 HPLOT XC - X,YC - Y: HPLOT XC + X,YC - Y: HPLOT XC - Y,YC - X: HPLOT XC + Y,YC - X: RETURN
  20 LET M = K - 31
  21 ON M GOTO 32,33,34,35,36,37,38,39,40,41,42,43,44
  22 LET M = M - 32
  23 ON M GOTO 64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87
  24 LET M = M - 32
  25 ON M GOTO 96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,10,112,113,114,115,116,117,118,119,120,121
- 32 RETURN 
+ 32 RETURN
  33 HPLOT XC - R,YC - R * 2 TO XC - R,YC + R - GY: HPLOT XC - R,YC + R: GOTO 9: REM !
  44 HPLOT XC - R,YC + R + R / 2 TO XC - R,YC + R: GOTO 9: REM ,
  71 LET O = 2:YC = YC - R: GOSUB 10:YC = YC + R: HPLOT XC - R,YC TO XC - R,YC - R: HPLOT XC + R / 2,YC TO XC + R,YC TO XC + R,YC + R:O = 1: GOTO 10: REM G
@@ -422,9 +422,9 @@ ToolTip("Goodbye, World!")
 
 Awk has no GUI, but can execute system-commands.
 
-E.g. the Windows-commandline provides a command for a messagebox, 
+E.g. the Windows-commandline provides a command for a messagebox,
 
-see below 
+see below
 at  [[Hello_world/Graphical#Batch_File|Batch_File]]
 and [[Hello_world/Graphical#UNIX_Shell|UNIX_Shell]].
 
@@ -542,7 +542,7 @@ GridOff
 LabelOff
 ```
 
-ViewWindow parameters depend on the calculator resolution (These are the most common). 
+ViewWindow parameters depend on the calculator resolution (These are the most common).
 
 To print text on the "Graphical screen" of the calculator:
 
@@ -594,8 +594,8 @@ msgbox Goodbye, World!
 
 {{libheader|GTK}}
 
-```c>#include <gtk/gtk.h
-
+```c
+#include <gtk/gtk.h>
 
 int main (int argc, char **argv) {
   GtkWidget *window;
@@ -615,7 +615,9 @@ int main (int argc, char **argv) {
 {{libheader|Win32}}
 Where hWnd is a valid window handle corresponding to a control in the application
 
-```c>#include <windows.h
+```c
+#include <windows.h>
+```
 
 void SayGoodbyeWorld(HWND hWnd)
 {
@@ -627,7 +629,8 @@ void SayGoodbyeWorld(HWND hWnd)
 {{libheader|Win32}}
 Or simplest way:
 
-```c>#include <windows.h
+```c
+#include <windows.h>
 
 MessageBox(NULL, _T("Goodbye, World!"), _T("Rosettacode"), MB_OK | MB_ICONINFORMATION);
 /* different buttons and icons can be used. please read MS documentation for details. */
@@ -635,7 +638,7 @@ MessageBox(NULL, _T("Goodbye, World!"), _T("Rosettacode"), MB_OK | MB_ICONINFORM
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 {{libheader|Windows Forms}}
 
@@ -679,7 +682,8 @@ public class GoodbyeWorld {
 
 {{libheader|GTK}}<!-- c++ bindings -->
 
-```cpp>#include <gtkmm.h
+```cpp
+#include <gtkmm.h>
 
 int main(int argc, char *argv[])
 {
@@ -756,7 +760,7 @@ import StdEnv, StdIO
 Start :: *World -> *World
 Start world = startIO NDI Void (snd o openDialog undef hello) [] world
 where
-    hello = Dialog "" (TextControl "Goodbye, World!" []) 
+    hello = Dialog "" (TextControl "Goodbye, World!" [])
                                      [WindowClose (noLS closeProcess)]
 ```
 
@@ -852,12 +856,12 @@ gui.xaml:
        environment division.
        configuration section.
        repository.
-           function new-window 
+           function new-window
            function new-box
            function new-label
            function gtk-go
            function all intrinsic.
-      
+
        data division.
        working-storage section.
 
@@ -928,8 +932,8 @@ The program gets the lines and columns of the screen and positions the text in t
     divide colz by 2 giving colz.
     subtract 7 from colz giving colz.
     display msg
-      at line number lynz 
-      column number colz 
+      at line number lynz
+      column number colz
     end-display
     accept var end-accept
     stop run.
@@ -954,7 +958,7 @@ class MainProgram
     Application.init
     dialog = MessageDialog(nil,
       DialogFlags.DestroyWithParent,
-      MessageType.Info, 
+      MessageType.Info,
       ButtonsType.Ok,
       "Goodbye, World!")
     dialog.run
@@ -986,7 +990,7 @@ This can be done using the extension package ''ltk'' that provides an interface 
   (with-ltk ()
       (let* ((label (make-instance 'label :text text))
              (button (make-instance 'button :text "Done"
-                                    :command (lambda () 
+                                    :command (lambda ()
                                                (ltk::break-mainloop)
                                                (ltk::update)))))
               (pack label :side :top :expand t :fill :both)
@@ -1056,10 +1060,10 @@ WAITUNTIL Close=1
 CLOSEWINDOW Win
 
 END
-  
+
 SUB MainHandler
 
-    IF @CLASS=@IDCLOSEWINDOW THEN Close=1   
+    IF @CLASS=@IDCLOSEWINDOW THEN Close=1
 
 RETURN
 
@@ -1216,21 +1220,21 @@ ELENA 4.x :
 
 ```elena
 import forms;
- 
+
 public class MainWindow : SDIDialog
 {
     Label goodByeWorldLabel;
     Button closeButton;
- 
+
     constructor new()
        <= new()
     {
         goodByeWorldLabel := new Label();
         closeButton       := new Button();
- 
+
         self
             .appendControl(goodByeWorldLabel)
-            .appendControl(closeButton);        
+            .appendControl(closeButton);
 
         self.setRegion(250, 200, 200, 110);
 
@@ -1274,12 +1278,12 @@ import dojo.widgets.*;
 handler HelloWorld type RUIhandler{initialUI =[ui]}
 
     ui Box {columns=1, children=[nameField, helloLabel, goButton]};
-  
+
     nameField DojoTextField {placeHolder = "What's your name?", text = "World"};
     helloLabel TextLabel {};
     goButton DojoButton {text = "Say Goodbye", onClick ::= onClick_goButton};
-  
-    function onClick_goButton(e Event in) 
+
+    function onClick_goButton(e Event in)
         helloLabel.text = "Goodbye, " + nameField.text + "!";
     end
 
@@ -1354,7 +1358,7 @@ Alternative:
 
 
 
-###  MS Windows 
+###  MS Windows
 
 Here are solutions for '''Microsoft Windows''', using the [https://msdn.microsoft.com/en-us/library/windows/desktop/ms645505.aspx MessageBox] API function. Both programs use modules provided by the compiler vendor.
 
@@ -1385,7 +1389,7 @@ end program
 Compile with <code>ifort hello.f90</code>.
 
 
-###  Linux 
+###  Linux
 
 Using [https://github.com/jerryd/gtk-fortran gtk-fortran]  library
 {{works with|GNU Fortran}}
@@ -1398,7 +1402,7 @@ module handlers_m
   implicit none
 
  contains
- 
+
    subroutine destroy (widget, gdata) bind(c)
     type(c_ptr), value :: widget, gdata
     call gtk_main_quit ()
@@ -1425,12 +1429,12 @@ program test
   call gtk_container_add (window, box)
   button = gtk_button_new_with_label ("Goodbye, World!"//c_null_char)
   call gtk_box_pack_start (box, button, FALSE, FALSE, 0_c_int)
-  call g_signal_connect (button, "clicked"//c_null_char, c_funloc(destroy))  
+  call g_signal_connect (button, "clicked"//c_null_char, c_funloc(destroy))
   call gtk_widget_show (button)
   call gtk_widget_show (box)
   call gtk_widget_show (window)
   call gtk_main ()
-  
+
 end program test
 
 ```
@@ -1484,7 +1488,7 @@ main _ = do
 
 ## Frink
 
-This brings up an infinitely-rescalable graphic window containing "Goodbye, World" drawn graphically.  
+This brings up an infinitely-rescalable graphic window containing "Goodbye, World" drawn graphically.
 
 All Frink graphics can be written to arbitrary coordinates;  Frink will automatically scale and center any drawn graphics to be visible in the window (greatly simplifying programming,) so the exact coordinates used below are rather arbitrary.  (This means that if you wrote "Hello World" instead of "Goodbye, World", you could just change that string and everything would still center perfectly.)
 
@@ -1664,12 +1668,12 @@ import Control.Monad
 messDialog = do
   initGUI
   dialog <- messageDialogNew Nothing [] MessageInfo ButtonsOk "Goodbye, World!"
-  
+
   rs <- dialogRun dialog
   when (rs == ResponseOk || rs == ResponseDeleteEvent) $ widgetDestroy dialog
 
   dialog `onDestroy` mainQuit
- 
+
   mainGUI
 ```
 
@@ -1735,14 +1739,14 @@ PopUpOk("Goodbye, World!");
 
 ```Icon
 link graphics
-procedure main() 
+procedure main()
    WOpen("size=100,20") | stop("No window")
    WWrites("Goodbye, World!")
    WDone()
 end
 ```
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn graphics is required ]
 
 =
@@ -1965,7 +1969,7 @@ import java.awt.*;
 
 public class HelloWorld {
     public static void main(String[] args) {
-        
+
         SwingUtilities.invokeLater(() -> {
             JOptionPane.showMessageDialog(null, "Goodbye, world!");
             JFrame frame = new JFrame("Goodbye, world!");
@@ -2014,7 +2018,7 @@ def to_s:
   reduce to_entries[] as $pair (""; . + "\($pair.key): \($pair.value); ");
 
 # Defaults: 100%, 100%
-def svg(width; height): 
+def svg(width; height):
   "<svg width='\(width // "100%")' height='\(height // "100%")'
            xmlns='http://www.w3.org/2000/svg'>";
 
@@ -2163,7 +2167,7 @@ prompt$ agar-config --cflags --libs
 ```
 
 
-A JSI ready module is created, the C build rules managed by CData along with the ''.jsc'' JSI to C to JSI code generation. 
+A JSI ready module is created, the C build rules managed by CData along with the ''.jsc'' JSI to C to JSI code generation.
 
 As listed at the top, this GUI can be called up while in the interactive console.
 
@@ -2371,13 +2375,13 @@ end
 ==={{libheader|LÖVE}}===
 
 To actually run this LÖVE-program, the following code
-needs to be in a file '''main.lua''', in its own folder. 
+needs to be in a file '''main.lua''', in its own folder.
 
 This folder usually also contains other resources for a game,
 such as pictures, sound, music, other source-files, etc.
 
-To run the program, on windows, 
-drag that folder onto either love.exe 
+To run the program, on windows,
+drag that folder onto either love.exe
 or a shortcut to love.exe.
 
 
@@ -2476,7 +2480,7 @@ msgbox('Goodbye, World!')
 Add text to a graphical plot.
 
 ```Matlab
- text(0.2,0.2,'Hello World!') 
+ text(0.2,0.2,'Hello World!')
 ```
 
 
@@ -2656,7 +2660,7 @@ value agar_box(value parent, value type, value flags) {
 #endif
   b = AG_BoxNew(val_widget(parent), val_int(type), val_int(flags));
   return alloc_abstract(k_agar_widget, b);
-} 
+}
 DEFINE_PRIM(agar_box, 3);
 
 /* New label */
@@ -2668,7 +2672,7 @@ value agar_label(value parent, value flags, value text) {
 #endif
   lw = AG_LabelNewS(val_widget(parent), val_int(flags), val_string(text));
   return alloc_abstract(k_agar_widget, lw);
-} 
+}
 DEFINE_PRIM(agar_label, 3);
 
 
@@ -2698,7 +2702,7 @@ The Neko program follows:
    gcc -shared -fPIC -o nekoagar.ndll rosetta-nekoagar.c `agar-config --cflags --libs`
    nekoc hello-graphical.neko
    neko hello-graphical
- 
+
 ```
 </doc>
 */
@@ -2839,7 +2843,7 @@ method RCHelloWorld_GraphicalAWT_01(frame = Frame, msg = String, canaction = boo
   createFrame()
   pack()
   setVisible(isTrue)
-  
+
   return
 
 method RCHelloWorld_GraphicalAWT_01(frame = Frame, msg = String) public
@@ -2948,7 +2952,7 @@ NewLISP uses a lightweight Java GUI server that it communicates with over a pipe
  ; Nehal-Singhal 2018-06-05
 
 > (! "dialog --msgbox GoodbyeWorld! 5 20")
-; A dialog message box appears on terminal similar to yes/no box. 
+; A dialog message box appears on terminal similar to yes/no box.
 ```
 
 
@@ -3245,14 +3249,14 @@ type
   public
     class method Main;
   end;
-  
+
 implementation
 
 class method App.Main;
 begin
   System.Windows.MessageBox.Show("Farewell cruel world");
 end;
-  
+
 end.
 
 ```
@@ -3317,16 +3321,16 @@ var
 
 begin
   gtk_init(@argc, @argv);
- 
+
   window := gtk_window_new (GTK_WINDOW_TOPLEVEL);
 
   gtk_window_set_title (GTK_WINDOW (window), 'Goodbye, World');
-  g_signal_connect (G_OBJECT (window), 
+  g_signal_connect (G_OBJECT (window),
                     'delete-event',
         G_CALLBACK (@gtk_main_quit),
         NULL);
   gtk_widget_show_all (window);
- 
+
   gtk_main();
 end.
 ```
@@ -3442,7 +3446,7 @@ IupClose()
 {{libheader|PHP-GTK}}
 
 ```php
-if (!class_exists('gtk')) 
+if (!class_exists('gtk'))
 {
     die("Please load the php-gtk2 module in your php.ini\r\n");
 }
@@ -3450,10 +3454,10 @@ if (!class_exists('gtk'))
 $wnd = new GtkWindow();
 $wnd->set_title('Goodbye world');
 $wnd->connect_simple('destroy', array('gtk', 'main_quit'));
- 
+
 $lblHello = new GtkLabel("Goodbye, World!");
 $wnd->add($lblHello);
- 
+
 $wnd->show_all();
 Gtk::main();
 ```
@@ -3546,7 +3550,7 @@ Uses default Processing methods and variables.
 
 ## Prolog
 
-Works with SWI-Prolog and XPCE. 
+Works with SWI-Prolog and XPCE.
 
 
 A simple message box :
@@ -3714,7 +3718,7 @@ def change():
         T2.visible=False
 
 scene.bind( 'click', change )
-        
+
 while True:
   rate(100)
   S.rotate( angle=rot, axis=(0,1,0) )
@@ -3838,18 +3842,18 @@ w$add(l)
 
 ; Make a frame by instantiating the frame% class
 (define frame (new frame% [label "Goodbye, World!"]))
- 
+
 ; Make a static text message in the frame
 (define msg (new message% [parent frame]
                           [label "No events so far..."]))
- 
+
 ; Make a button in the frame
 (new button% [parent frame]
              [label "Click Me"]
              ; Callback procedure for a button click:
              (callback (lambda (button event)
                          (send msg set-label "Button click"))))
- 
+
 ; Show the frame by calling its show method
 (send frame show #t)
 ```
@@ -3864,7 +3868,7 @@ w$add(l)
 import vis::Figure;
 import vis::Render;
 
-public void GoodbyeWorld() = 
+public void GoodbyeWorld() =
   render(box(text("Goodbye World")));
 
 ```
@@ -3927,7 +3931,7 @@ call w_put     window#, 2, 2, center("Goodbye, World!", 80-2)
                                        /*stick a fork in it, all we're done. */
 ```
 
-'''output''' 
+'''output'''
 
 ```txt
 
@@ -3988,7 +3992,7 @@ call      cursor row, col
 
 
 ```ring
- 
+
 Load "guilib.ring"
 New qApp {
         new qWidget() {
@@ -4060,7 +4064,7 @@ class Window < Gosu::Window
   def draw
     @font.draw("Hello world", 0, 10, 1, 1, 1)
   end
-  
+
 end
 
 Window.new.show
@@ -4157,9 +4161,9 @@ import swing._
 object GoodbyeWorld extends SimpleSwingApplication {
 
   def top = new MainFrame {
-    title = "Goodbye, World!"                     
+    title = "Goodbye, World!"
     contents = new FlowPanel {
-      contents += new Button  ("Goodbye, World!") 
+      contents += new Button  ("Goodbye, World!")
       contents += new TextArea("Goodbye, World!")
     }
   }
@@ -4172,7 +4176,7 @@ object GoodbyeWorld extends SimpleSwingApplication {
 
 ```Scala
 import swing._
- 
+
 object HelloDotNetWorld {
   def main(args: Array[String]) {
     System.Windows.Forms.MessageBox.Show
@@ -4204,7 +4208,7 @@ messagebox("Goodbye, World!")
 
 ;; PS-TK example: display frame + label
 
-(import (rnrs) 
+(import (rnrs)
         (lib pstk main) ; change this to refer to your PS/Tk installation
         )
 
@@ -4420,7 +4424,7 @@ Output as text on a button that exits the current application:
 pack [button .b -text "Goodbye, World" -command exit]
 ```
 
-''Note:'' If you name this program "button.tcl", you might get strange errors. 
+''Note:'' If you name this program "button.tcl", you might get strange errors.
 
 Don't use the name of any internal tcl/tk-command as a filename for a tcl-script.
 
@@ -4617,7 +4621,7 @@ End Module
 ```vfp
 * Version 1:
 MESSAGEBOX("Goodbye, World!")
- 
+
 * Version 2:
 ? "Goodbye, World!"
 ```
@@ -4656,7 +4660,7 @@ when the callee returns.
 
         MessageBox equ _MessageBoxA@16
         ExitProcess equ _ExitProcess@4
-        
+
         section .text
 _main:
         push 0                  ; MB_OK
@@ -4664,7 +4668,7 @@ _main:
         push message            ;
         push 0                  ;
         call MessageBox         ; eax = MessageBox(0,message,title,MB_OK);
-        push eax                ; 
+        push eax                ;
         call ExitProcess        ; ExitProcess(eax);
 message:
         db 'Goodbye, World',0

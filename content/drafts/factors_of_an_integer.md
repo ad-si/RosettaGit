@@ -10,18 +10,18 @@ categories = []
 tags = []
 +++
 
-{{Task|Basic language learning}} 
+{{Task|Basic language learning}}
 {{basic data operation}}
 [[Category:Arithmetic operations]]
 [[Category:Mathematical_operations]]
 [[Category:Prime Numbers]]
 
 ;Task:
-Compute the   [[wp:Divisor|factors]]   of a positive integer. 
+Compute the   [[wp:Divisor|factors]]   of a positive integer.
 
-These factors are the positive integers by which the number being factored can be divided to yield a positive integer result. 
+These factors are the positive integers by which the number being factored can be divided to yield a positive integer result.
 
-(Though the concepts function correctly for zero and negative integers, the set of factors of zero has countably infinite members, and the factors of negative integers can be obtained from the factors of related positive numbers without difficulty;   this task does not require handling of either of these cases). 
+(Though the concepts function correctly for zero and negative integers, the set of factors of zero has countably infinite members, and the factors of negative integers can be obtained from the factors of related positive numbers without difficulty;   this task does not require handling of either of these cases).
 
 Note that every prime number has two factors:   '''1'''   and itself.
 
@@ -214,7 +214,7 @@ MODE YIELDINT = PROC(INT)VOID;
 PROC gen factors = (INT n, YIELDINT yield)VOID: (
   FOR i FROM 1 TO ENTIER sqrt(n) DO
     IF n MOD i = 0 THEN
-      yield(i); 
+      yield(i);
       INT other = n OVER i;
       IF i NE other THEN yield(n OVER i) FI
     FI
@@ -229,7 +229,7 @@ FOR i TO UPB nums2factor DO
   print(num);
 # FOR INT j IN # gen factors(num, # ) DO ( #
 ##   (INT j)VOID:(
-       print((sep,whole(j,0))); 
+       print((sep,whole(j,0)));
        sep:=", "
 # OD # ));
   print(new line)
@@ -259,7 +259,7 @@ COMMENT ALGOL-M PROGRAM TO DISPLAY THE FACTORS OF AN INTEGER
 INTEGER I, N, LIMIT, FOUND, START, DELTA;
 STRING(1) ANOTHER;
 
-COMMENT COMPUTE P MOD Q; 
+COMMENT COMPUTE P MOD Q;
 INTEGER FUNCTION MOD (P, Q);
 INTEGER P, Q;
 BEGIN
@@ -419,24 +419,24 @@ on integerFactors(n)
         set realRoot to n ^ (1 / 2)
         set intRoot to realRoot as integer
         set blnPerfectSquare to intRoot = realRoot
-        
-        -- isFactor :: Int -> Bool 
+
+        -- isFactor :: Int -> Bool
         script isFactor
             on |λ|(x)
                 (n mod x) = 0
             end |λ|
         end script
-        
+
         -- Factors up to square root of n,
         set lows to filter(isFactor, enumFromTo(1, intRoot))
-        
+
         -- integerQuotient :: Int -> Int
         script integerQuotient
             on |λ|(x)
                 (n / x) as integer
             end |λ|
         end script
-        
+
         -- and quotients of these factors beyond the square root.
         lows & map(integerQuotient, ¬
             items (1 + (blnPerfectSquare as integer)) thru -1 of reverse of lows)
@@ -445,9 +445,9 @@ end integerFactors
 
 -- TEST ------------------------------------------------------------------------
 on run
-    
+
     integerFactors(120)
-    
+
     --> {1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 24, 30, 40, 60, 120}
 end run
 
@@ -493,7 +493,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -540,9 +540,9 @@ end mReturn
 ```Arc
 
 '(
-(1 3 5 9 15 45) 
-(1 53) 
-(1 2 3 4 5 6 10 12 15 20 30 60) 
+(1 3 5 9 15 45)
+(1 53)
+(1 2 3 4 5 6 10 12 15 20 30 60)
 (1 2 4 8 16 32 64)
 )
 
@@ -574,14 +574,14 @@ sMessFactor:   .fill 12, 1, ' '
 szCarriageReturn:  .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* saves 2 registers */
- 
+
     mov r0,#100
     bl factors
     mov r0,#97
@@ -589,7 +589,7 @@ main:                /* entry of program  */
     ldr r0,iNumber
     bl factors
 
-    
+
 100:   /* standard end of the program */
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
@@ -599,11 +599,11 @@ main:                /* entry of program  */
 iNumber: .int 32767
 iAdrszCarriageReturn:  .int  szCarriageReturn
 /******************************************************************/
-/*     calcul factors of number                                  */ 
+/*     calcul factors of number                                  */
 /******************************************************************/
 /* r0 contains the number */
 factors:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r1-r6}    		/* save others registers */
     mov r5,r0    @ limit calcul
     ldr r1,iAdrsMessValeur   @ conversion register in decimal string
@@ -611,7 +611,7 @@ factors:
     ldr r0,iAdrszMessDeb     @ display message
     bl affichageMess
     mov r6,#1    @ counter loop
-1:   @ loop 
+1:   @ loop
     mov r0,r5    @ dividende
     mov r1,r6    @ divisor
     bl division
@@ -629,17 +629,17 @@ factors:
     ble 1b        @ yes loop
 100:
     pop {r1-r6}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 iAdrsMessValeur: .int sMessValeur
 iAdrszMessDeb: .int szMessDeb
 iAdrsMessFactor: .int sMessFactor
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -653,7 +653,7 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 /*
 ### =======================================
@@ -675,16 +675,16 @@ division:
 1:
     movs r0, r0, LSL #1    /* r0 ? r0 << 1 updating cpsr (sets C if 31st bit of r0 was 1) */
     adc r3, r3, r3         /* r3 ? r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C */
- 
+
     cmp r3, r1             /* compute r3 - r1 and update cpsr */
     subhs r3, r3, r1       /* if r3 >= r1 (C=1) then r3 ? r3 - r1 */
     adc r2, r2, r2         /* r2 ? r2 + r2 + C. This is equivalent to r2 ? (r2 << 1) + C */
 2:
     subs r4, r4, #1        /* r4 ? r4 - 1 */
     bpl 1b            /* if r4 >= 0 (N=0) then branch to .Lloop1 */
- 
+
     pop {r4, lr}
-    bx lr	
+    bx lr
 
 /***************************************************/
 /*   conversion register in string décimal signed  */
@@ -703,16 +703,16 @@ conversion10S:
     mov r4,#10   /* area length */
 1: /* conversion loop */
     bl divisionpar10 /* division  */
-    add r1,#48        /* add 48 at remainder for conversion ascii */	
+    add r1,#48        /* add 48 at remainder for conversion ascii */
     strb r1,[r2,r4]  /* store byte area r5 + position r4 */
     sub r4,r4,#1      /* previous position */
-    cmp r0,#0     
+    cmp r0,#0
     bne 1b	       /* loop if quotient not equal zéro */
     strb r5,[r2,r4]  /* store sign at current position  */
     subs r4,r4,#1   /* previous position */
     blt  100f         /* if r4 < 0  end  */
     /* else complete area with space */
-    mov r3,#' '   /* character space */	
+    mov r3,#' '   /* character space */
 2:
     strb r3,[r2,r4]  /* store  byte  */
     subs r4,r4,#1   /* previous position */
@@ -720,20 +720,20 @@ conversion10S:
 100:  /*  standard end of function  */
     pop {r0-r5}   /*restaur others registers */
     pop {fp,lr}   /* restaur des  2 registers frame et return  */
-    bx lr   
+    bx lr
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
-/* r0 retourne le quotient */	
+/* r0 retourne le quotient */
 /* r1 retourne le reste  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
    push {r2-r4}   /* save autres registres  */
-   mov r4,r0 
+   mov r4,r0
    ldr r3, .Ls_magic_number_10 /* r1 <- magic_number */
    smull r1, r2, r3, r0   /* r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) */
    mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
@@ -951,7 +951,7 @@ END SUB
 110 INPUT PROMPT "Number: ":N
 120 FOR I=1 TO INT(N/2)
 130   IF MOD(N,I)=0 THEN PRINT I;
-140 NEXT 
+140 NEXT
 150 PRINT N
 ```
 
@@ -1055,11 +1055,11 @@ Factors of 102: 1 2 3 6 17 34 51 102
 ```bbcbasic
       INSTALL @lib$+"SORTLIB"
       sort% = FN_sortinit(0, 0)
-      
+
       PRINT "The factors of 45 are " FNfactorlist(45)
       PRINT "The factors of 12345 are " FNfactorlist(12345)
       END
-      
+
       DEF FNfactorlist(N%)
       LOCAL C%, I%, L%(), L$
       DIM L%(32)
@@ -1104,7 +1104,7 @@ define f(n) {
      * i: Loop variable.
      * d: Complementary (higher) factor to i.
      * h: Will always point to the last element of h[].
-     * h[]: Array to hold the greater factor of the pair (x, y), where 
+     * h[]: Array to hold the greater factor of the pair (x, y), where
      *      x * y == n. The factors are stored in descending order.
      * l: Will always point to the next free spot in f[].
      * o: For saving the value of scale.
@@ -1167,16 +1167,16 @@ blsq ) 32767 fc
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct {
     int *list;
-    short count; 
+    short count;
 } Factors;
 
-void xferFactors( Factors *fctrs, int *flist, int flix ) 
+void xferFactors( Factors *fctrs, int *flist, int flix )
 {
     int ix, ij;
     int newSize = fctrs->count + flix;
@@ -1209,14 +1209,14 @@ Factors *factor( int num, Factors *fctrs)
         flist[flix++] = dvsr;
         flist[flix++] = num/dvsr;
     }
-    if (dvsr*dvsr == num) 
+    if (dvsr*dvsr == num)
         flist[flix++] = dvsr;
     if (flix > 0)
         xferFactors( fctrs, flist, flix );
 
     return fctrs;
 }
-        
+
 int main(int argc, char*argv[])
 {
     int nums2factor[] = { 2059, 223092870, 3135, 45 };
@@ -1242,8 +1242,8 @@ int main(int argc, char*argv[])
 ### Prime factoring
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -1348,8 +1348,8 @@ int main()
 ## C++
 
 
-```Cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <iterator>
@@ -1408,7 +1408,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine(String.Join(", ", 45.Factors()));        
+        Console.WriteLine(String.Join(", ", 45.Factors()));
     }
 }
 ```
@@ -1432,7 +1432,7 @@ static void Main(string[] args)
 			}
 			catch (Exception)
 			{ }
-			
+
 		} while (true);
 
 		Console.WriteLine("For 1 through " + ((int)Math.Sqrt(p)).ToString() + "");
@@ -1468,7 +1468,7 @@ Done.
 shared void run() {
 	{Integer*} getFactors(Integer n) =>
 		(1..n).filter((Integer element) => element.divides(n));
-	
+
 	for(Integer i in 1..100) {
 		print("the factors of ``i`` are ``getFactors(i)``");
 	}
@@ -1498,7 +1498,7 @@ iter factors(n) {
 
 
 ```lisp
-(defn factors [n] 
+(defn factors [n]
 	(filter #(zero? (rem n %)) (range 1 (inc n))))
 
 (print (factors 45))
@@ -1587,7 +1587,7 @@ Same idea, using for comprehensions.
 # algorithm.
 slow_factors = (n) ->
   (i for i in [1..n] when n % i == 0)
-  
+
 # The rest of this code does two optimizations:
 #   1) When you find a prime factor, divide it out of n (smallest_prime_factor).
 #   2) Find the prime factorization first, then compute composite factors from those.
@@ -1626,16 +1626,16 @@ fast_factors = (n) ->
         break
       else
         obj.exp = 0
-  
+
   return result.sort (a, b) -> a - b
-    
+
 verify_factors = (factors, n) ->
   expected_result = slow_factors n
   throw Error("wrong length") if factors.length != expected_result.length
   for factor, i in expected_result
-    console.log Error("wrong value") if factors[i] != factor     
-    
-  
+    console.log Error("wrong value") if factors[i] != factor
+
+
 for n in [1, 3, 4, 8, 24, 37, 1001, 11111111111, 99999999999]
   factors = fast_factors n
   console.log n, factors
@@ -1647,7 +1647,7 @@ for n in [1, 3, 4, 8, 24, 37, 1001, 11111111111, 99999999999]
 {{out}}
 
 ```txt
-> coffee factors.coffee 
+> coffee factors.coffee
 1 [ 1 ]
 3 [ 1, 3 ]
 4 [ 1, 2, 4 ]
@@ -1872,7 +1872,7 @@ print factors[]
 
 (define (factors n)
    (list-sort <
-   (if (<= n 1) '(1) 
+   (if (<= n 1) '(1)
         (for/fold (divs'(1)) ((g (map  ppows (group (prime-factors n)))))
 		    (for*/list ((a divs) (b g)) (* a b))))))
 
@@ -1928,10 +1928,10 @@ defmodule RC do
   def factor(n) do
     (for i <- 1..div(n,2), rem(n,i)==0, do: i) ++ [n]
   end
-  
+
   # Recursive (faster version);
   def divisor(n), do: divisor(n, 1, []) |> Enum.sort
-  
+
   defp divisor(n, i, factors) when n < i*i    , do: factors
   defp divisor(n, i, factors) when n == i*i   , do: [i | factors]
   defp divisor(n, i, factors) when rem(n,i)==0, do: divisor(n, i+1, [i, div(n,i) | factors])
@@ -1997,13 +1997,13 @@ divs(0) -> [];
 divs(1) -> [];
 divs(N) -> lists:sort(divisors(1,N))++[N].
 
-divisors(1,N) -> 
+divisors(1,N) ->
      [1] ++ divisors(2,N,math:sqrt(N)).
 
 divisors(K,_N,Q) when K > Q -> [];
-divisors(K,N,_Q) when N rem K =/= 0 -> 
+divisors(K,N,_Q) when N rem K =/= 0 ->
     [] ++ divisors(K+1,N,math:sqrt(N));
-divisors(K,N,_Q) when K * K  == N -> 
+divisors(K,N,_Q) when K * K  == N ->
     [K] ++ divisors(K+1,N,math:sqrt(N));
 divisors(K,N,_Q) ->
     [K, N div K] ++ divisors(K+1,N,math:sqrt(N)).
@@ -2018,7 +2018,7 @@ divisors(K,N,_Q) ->
 {2237,
  [1,2,4,5,8,10,16,20,25,32,40,50,80,100,125,160,200,250,400,
   500,625,800,1000,1250,2000,2500,4000|...]}
-59> timer:tc(divs, divs, [20000]).   
+59> timer:tc(divs, divs, [20000]).
 {106,
  [1,2,4,5,8,10,16,20,25,32,40,50,80,100,125,160,200,250,400,
   500,625,800,1000,1250,2000,2500,4000|...]}
@@ -2122,10 +2122,10 @@ let factors number = seq {
 ```txt
 
 OUTPUT :
-6 : 1  2  3  6                                                                                                                                                                  
-120 : 1  2  3  4  5  6  8  10  12  15  20  24  30  40  60  120                                                                                                                  
-2048 : 1  2  4  8  16  32  64  128  256  512  1024  2048                                                                                                                        
-402642 : 1  2  3  6  9  18  22369  44738  67107  134214  201321  402642                                                                                                         
+6 : 1  2  3  6
+120 : 1  2  3  4  5  6  8  10  12  15  20  24  30  40  60  120
+2048 : 1  2  4  8  16  32  64  128  256  512  1024  2048
+402642 : 1  2  3  6  9  18  22369  44738  67107  134214  201321  402642
 120643200 : 1  2  3  4  6  8  9  12  16  18  24  32  36  48  59  71  72  96  118  142  144  177  213  236  284  288  354  426  472  531  568  639  708  852  944  1062  1136  12
 78  1416  1704  1888  2124  2272  2556  2832  3408  4189  4248  5112  5664  6816  8378  8496  10224  12567  16756  16992  20448  25134  33512  37701  50268  67024  75402  10053
 6  134048  150804  201072  301608  402144  603216  1206432
@@ -2156,12 +2156,12 @@ OUTPUT :
 0v
  >i:0(?v'0'%+a*
        >~a,:1:>r{%        ?vr:nr','ov
-              ^:&:;?(&:+1r:<        < 
+              ^:&:;?(&:+1r:<        <
 
 ```
 
 Must be called with pre-polulated value (Positive Integer) in the input stack. Try at Fish Playground[https://fishlanguage.com/playground/onD7KN6YK3XMzLFdr].
-For Input Number : 
+For Input Number :
 ```txt
  120
 ```
@@ -2178,7 +2178,7 @@ This is a slightly optimized algorithm, since it realizes there are no factors b
 
 ```Forth
 : factors dup 2/ 1+ 1 do dup i mod 0= if i swap then loop ;
-: .factors factors begin dup dup . 1 <> while drop repeat drop cr ; 
+: .factors factors begin dup dup . 1 <> while drop repeat drop cr ;
 
 45 .factors
 53 .factors
@@ -2194,22 +2194,22 @@ This is a slightly optimized algorithm, since it realizes there are no factors b
 program Factors
   implicit none
   integer :: i, number
-  
+
   write(*,*) "Enter a number between 1 and 2147483647"
   read*, number
 
   do i = 1, int(sqrt(real(number))) - 1
     if (mod(number, i) == 0) write (*,*) i, number/i
   end do
-  
+
   ! Check to see if number is a square
-  i = int(sqrt(real(number))) 
+  i = int(sqrt(real(number)))
   if (i*i == number) then
      write (*,*) i
   else if (mod(number, i) == 0) then
      write (*,*) i, number/i
   end if
-    
+
 end program
 ```
 
@@ -2228,7 +2228,7 @@ Sub printFactors(n As Integer)
     If n Mod i = 0 Then Print i; " ";
   Next i
   Print n
-End Sub 
+End Sub
 
 printFactors(11)
 printFactors(21)
@@ -2288,7 +2288,7 @@ for x <- [103, 316, 519, 639, 760]
   println( 'The set of factors of ' + x + ' is ' + factors(x) )
 ```
 
-  
+
 {{out}}
 
 
@@ -2394,7 +2394,7 @@ div(Factorial(5));
 # [ 1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 24, 30, 40, 60, 120 ]
 
 # Another implementation, usable for large n (if n can be factored quickly)
-div2 := function(n)                                              
+div2 := function(n)
   local f, p;
   f := Collected(FactorsInt(n));
   p := List(f, v -> List([0 .. v[2]], k -> v[1]^k));
@@ -2535,7 +2535,7 @@ function printFactors(n: int) {
 A straight brute force approach up to the square root of ''N'':
 
 ```groovy
-def factorize = { long target -> 
+def factorize = { long target ->
 
     if (target == 1) return [1L]
 
@@ -2545,7 +2545,7 @@ def factorize = { long target ->
     def lowfactors = (2L..targetSqrt).grep { (target % it) == 0 }
     if (lowfactors == []) return [1L, target]
     def nhalf = lowfactors.size() - ((lowfactors[-1] == targetSqrt) ? 1 : 0)
-    
+
     [1] + lowfactors + (0..<nhalf).collect { target.intdiv(lowfactors[it]) }.reverse() + [target]
 }
 ```
@@ -2658,14 +2658,14 @@ main = print $ integerFactors 600
 
 
 
-###  List comprehension 
+###  List comprehension
 
 Naive, functional, no import, in increasing order:
 
 ```Haskell
 factorsNaive n =
   [ i
-  | i <- [1 .. n] 
+  | i <- [1 .. n]
   , mod n i == 0 ]
 ```
 
@@ -2684,8 +2684,8 @@ import Data.List (sort)
 factorsCo n =
   sort
     [ i
-    | i <- [1 .. floor (sqrt (fromIntegral n))] 
-    , (d, 0) <- [divMod n i] 
+    | i <- [1 .. floor (sqrt (fromIntegral n))]
+    , (d, 0) <- [divMod n i]
     , i <-
        i :
        [ d
@@ -2699,7 +2699,7 @@ A version of the above without the need for sorting, making it to be ''online'' 
 factorsO n =
   ds ++
   [ r
-  | (d, 0) <- [divMod n r] 
+  | (d, 0) <- [divMod n r]
   , r <-
      r :
      [ d
@@ -2709,7 +2709,7 @@ factorsO n =
     r = floor (sqrt (fromIntegral n))
     ds =
       [ i
-      | i <- [1 .. r - 1] 
+      | i <- [1 .. r - 1]
       , mod n i == 0 ]
 ```
 
@@ -2943,8 +2943,8 @@ function factors(num)
  return n_factors;
 }
 
-factors(45);  // [1,3,5,9,15,45] 
-factors(53);  // [1,53] 
+factors(45);  // [1,3,5,9,15,45]
+factors(53);  // [1,53]
 factors(64);  // [1,2,4,8,16,32,64]
 ```
 
@@ -2981,14 +2981,14 @@ function factors_naive(n) {
 
 factors_naive(6)
 ```
- 
+
 
 Output:
 
 ```JavaScript
 [1, 2, 3, 6]
 ```
- 
+
 
 Translating the Haskell (lows and highs) example
 
@@ -3096,7 +3096,7 @@ integerFactors(n)
                 lows = range(1, intRoot)
                 .filter(x => (n % x) === 0);
 
-            // for perfect squares, we can drop 
+            // for perfect squares, we can drop
             // the head of the 'highs' list
             return lows.concat(lows
                 .map(x => n / x)
@@ -3193,10 +3193,10 @@ def factors:
        if ($num % $i) == 0 then
          ($num / $i) as $r
          | if $i == $r then . + [$i] else . + [$i, $r] end
-       else . 
+       else .
        end )
   | sort;
- 
+
 def task:
   (45, 53, 64) | "\(.): \(factors)" ;
 
@@ -3244,20 +3244,20 @@ The factors of 53 are: [1, 53]
   0.000102 seconds (35 allocations: 1.516 KiB)
 The factors of 64 are: [1, 2, 4, 8, 16, 32, 64]
   0.000093 seconds (56 allocations: 3.172 KiB)
-The factors of 6435789435768 are: [1, 2, 3, 4, 6, 7, 8, 11, 12, 14, 21, 22, 24, 28, 
-33, 42, 44, 56, 66, 77, 84, 88, 132, 154, 168, 191, 231, 264, 308, 382, 462, 573, 
-616, 764, 924, 1146, 1337, 1528, 1848, 2101, 2292, 2674, 4011, 4202, 4584, 5348, 
-6303, 8022, 8404, 10696, 12606, 14707, 16044, 16808, 25212, 29414, 32088, 44121, 
-50424, 58828, 88242, 117656, 176484, 352968, 18233351, 36466702, 54700053, 72933404, 
-109400106, 127633457, 145866808, 200566861, 218800212, 255266914, 382900371, 
-401133722, 437600424, 510533828, 601700583, 765800742, 802267444, 1021067656, 
-1203401166, 1403968027, 1531601484, 1604534888, 2406802332, 2807936054, 3063202968, 
-3482570041, 4211904081, 4813604664, 5615872108, 6965140082, 8423808162, 10447710123, 
-11231744216, 13930280164, 16847616324, 20895420246, 24377990287, 27860560328, 
-33695232648, 38308270451, 41790840492, 48755980574, 73133970861, 76616540902, 
-83581680984, 97511961148, 114924811353, 146267941722, 153233081804, 195023922296, 
-229849622706, 268157893157, 292535883444, 306466163608, 459699245412, 536315786314, 
-585071766888, 804473679471, 919398490824, 1072631572628, 1608947358942, 2145263145256, 
+The factors of 6435789435768 are: [1, 2, 3, 4, 6, 7, 8, 11, 12, 14, 21, 22, 24, 28,
+33, 42, 44, 56, 66, 77, 84, 88, 132, 154, 168, 191, 231, 264, 308, 382, 462, 573,
+616, 764, 924, 1146, 1337, 1528, 1848, 2101, 2292, 2674, 4011, 4202, 4584, 5348,
+6303, 8022, 8404, 10696, 12606, 14707, 16044, 16808, 25212, 29414, 32088, 44121,
+50424, 58828, 88242, 117656, 176484, 352968, 18233351, 36466702, 54700053, 72933404,
+109400106, 127633457, 145866808, 200566861, 218800212, 255266914, 382900371,
+401133722, 437600424, 510533828, 601700583, 765800742, 802267444, 1021067656,
+1203401166, 1403968027, 1531601484, 1604534888, 2406802332, 2807936054, 3063202968,
+3482570041, 4211904081, 4813604664, 5615872108, 6965140082, 8423808162, 10447710123,
+11231744216, 13930280164, 16847616324, 20895420246, 24377990287, 27860560328,
+33695232648, 38308270451, 41790840492, 48755980574, 73133970861, 76616540902,
+83581680984, 97511961148, 114924811353, 146267941722, 153233081804, 195023922296,
+229849622706, 268157893157, 292535883444, 306466163608, 459699245412, 536315786314,
+585071766888, 804473679471, 919398490824, 1072631572628, 1608947358942, 2145263145256,
 3217894717884, 6435789435768]
   0.000249 seconds (451 allocations: 24.813 KiB)
 
@@ -3334,7 +3334,7 @@ fun main(args: Array<String>) {
 ### Using List Comprehensions
 
 
-This following function is elegant looking and concise. However, it will not handle large numbers well: it will consume a great deal of memory (on one large number, the function consumed 4.3GB of memory on my desktop machine): 
+This following function is elegant looking and concise. However, it will not handle large numbers well: it will consume a great deal of memory (on one large number, the function consumed 4.3GB of memory on my desktop machine):
 
 ```lisp
 
@@ -3597,7 +3597,7 @@ Program complete.
 
 
 ```lingo
-on factors(n) 
+on factors(n)
   res = [1]
   repeat with i = 2 to n/2
     if n mod i = 0 then res.add(i)
@@ -3636,16 +3636,16 @@ show factors 28       ; [1 2 4 7 14 28]
 
 
 ```lua
-function Factors( n ) 
+function Factors( n )
     local f = {}
-    
+
     for i = 1, n/2 do
-        if n % i == 0 then 
+        if n % i == 0 then
             f[#f+1] = i
         end
     end
     f[#f+1] = n
-    
+
     return f
 end
 ```
@@ -3660,7 +3660,7 @@ end
 \\ For act as BASIC's FOR (if N<1 no loop start)
 FORM 60,40
 SET SWITCHES "+FOR"
-MODULE LikeBasic {     
+MODULE LikeBasic {
       10 INPUT N%
       20 FOR I%=1 TO N%
       30 IF N%/I%=INT(N%/I%) THEN PRINT I%,
@@ -3696,28 +3696,28 @@ numtheory:-divisors(n);
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
 Factorize[n_Integer] := Divisors[n]
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 ```Matlab
   function fact(n);
     f = factor(n);	% prime decomposition
     K = dec2bin(0:2^length(f)-1)-'0';   % generate all possible permutations
-    F = ones(1,2^length(f));	
+    F = ones(1,2^length(f));
     for k = 1:size(K)
-      F(k) = prod(f(~K(k,:)));		% and compute products 
-    end; 
+      F(k) = prod(f(~K(k,:)));		% and compute products
+    end;
     F = unique(F);	% eliminate duplicates
     printf('There are %i factors for %i.\n',length(F),n);
     disp(F);
   end;
- 
+
 ```
 
 
@@ -3839,13 +3839,13 @@ factor(N, Factors) :-
     Limit = float.truncate_to_int(math.sqrt(float(N))),
 	factor(N, 2, Limit, [], Unsorted),
     list.sort_and_remove_dups([1, N | Unsorted], Factors).
- 
+
 :- pred factor(int, int, int, list(int), list(int)).
 :- mode factor(in,  in,  in,  in,        out) is det.
 factor(N, X, Limit, !Accumulator) :-
-    ( if X  > Limit 
+    ( if X  > Limit
           then true
-          else ( if 0 = N mod X 
+          else ( if 0 = N mod X
                      then !:Accumulator = [X, N / X | !.Accumulator]
                      else true ),
                factor(N, X + 1, Limit, !Accumulator) ).
@@ -3992,7 +3992,7 @@ echo factors(45)
 
 
 ```Niue
-[ 'n ; [ negative-or-zero [ , ] if 
+[ 'n ; [ negative-or-zero [ , ] if
        [ n not-factor [ , ] when ] else ] n times n ] 'factors ;
 
 [ dup 0 <= ] 'negative-or-zero ;
@@ -4002,7 +4002,7 @@ echo factors(45)
 100 factors .s .clr ( => 1 2 4 5 10 20 25 50 100 ) newline
 53 factors .s .clr ( => 1 53 ) newline
 64 factors .s .clr ( => 1 2 4 8 16 32 64 ) newline
-12 factors .s .clr ( => 1 2 3 4 6 12 )  
+12 factors .s .clr ( => 1 2 3 4 6 12 )
 ```
 
 
@@ -4013,7 +4013,7 @@ Oxford Oberon-2
 
 MODULE Factors;
 IMPORT Out,SYSTEM;
-TYPE	
+TYPE
 	LIPool = POINTER TO ARRAY OF LONGINT;
 	LIVector= POINTER TO LIVectorDesc;
 	LIVectorDesc = RECORD
@@ -4021,7 +4021,7 @@ TYPE
 		len: INTEGER;
 		LIPool: LIPool;
 	END;
-	
+
 	PROCEDURE New(cap: INTEGER): LIVector;
 	VAR
 		v: LIVector;
@@ -4032,9 +4032,9 @@ TYPE
 		NEW(v.LIPool,cap);
 		RETURN v
 	END New;
-	
+
 	PROCEDURE (v: LIVector) Add(x: LONGINT);
-	VAR 
+	VAR
 		newLIPool: LIPool;
 	BEGIN
 		IF v.len = LEN(v.LIPool^) THEN
@@ -4047,22 +4047,22 @@ TYPE
 		v.LIPool[v.len] := x;
 		INC(v.len)
 	END Add;
-	
+
 	PROCEDURE (v: LIVector) At(idx: INTEGER): LONGINT;
 	BEGIN
 		RETURN v.LIPool[idx];
 	END At;
-	
-	
+
+
 PROCEDURE Factors(n:LONGINT): LIVector;
-VAR 
+VAR
 	j: LONGINT;
 	v: LIVector;
 BEGIN
 	v := New(16);
 	FOR j := 1 TO n DO
 		IF (n MOD j) = 0 THEN v.Add(j) END;
-	END; 
+	END;
 	RETURN v
 END Factors;
 
@@ -4082,7 +4082,7 @@ END Factors.
 {{out}}
 
 ```txt
-   
+
    1
    3
   41
@@ -4116,15 +4116,15 @@ bundle Default {
       };
       factors->Sort();
 
-        
+
       return factors;
     }
-     
+
     function : Main(args : String[]) ~ Nil {
       numbers := [3135, 45, 60, 81];
       for(i := 0; i < numbers->Size(); i += 1;) {
         factors := GenerateFactors(numbers[i]);
-        
+
         Console->GetInstance()->Print("Factors of ")->Print(numbers[i])->PrintLine(" are:");
         each(i : factors) {
           Console->GetInstance()->Print(factors->Get(i))->Print(", ");
@@ -4178,7 +4178,7 @@ Integer method: factors  self seq filter(#[ self isMultiple ]) ;
 declare
   fun {Factors N}
      Sqr = {Float.toInt {Sqrt {Int.toFloat N}}}
- 
+
      Fs = for X in 1..Sqr append:App do
              if N mod X == 0 then
                 CoFactor = N div X
@@ -4219,7 +4219,7 @@ fun factor(n) type integer->integer
 45.factor
 ```
 
-  
+
 
 ## Pascal
 
@@ -4230,14 +4230,14 @@ fun factor(n) type integer->integer
 program Factors;
 var
   i, number: integer;
-begin 
+begin
   write('Enter a number between 1 and 2147483647: ');
   readln(number);
- 
+
   for i := 1 to round(sqrt(number)) - 1 do
     if number mod i = 0 then
       write (i, ' ',  number div i, ' ');
- 
+
   // Check to see if number is a square
   i := round(sqrt(number));
   if i*i = number then
@@ -4256,7 +4256,7 @@ Enter a number between 1 and 2147483647: 49
 1 49 7
 
 Enter a number between 1 and 2147483647: 353435
-1 25755 3 8585 5 5151 15 1717 17 1515 51 505 85 303 101 255 
+1 25755 3 8585 5 5151 15 1717 17 1515 51 505 85 303 101 255
 
 
 ```
@@ -4310,7 +4310,7 @@ end.
 {{out}}
 
 ```txt
-Enter a number between 1 and 4294967295: 
+Enter a number between 1 and 4294967295:
 3491888400 is a nice choice 120
 120 has 16 factors
 1 ,2 ,3 ,4 ,5 ,6 ,8 ,10 ,12 ,15 ,20 ,24 ,30 ,40 ,60 ,120
@@ -4355,7 +4355,7 @@ One could also use a module, e.g.:
 ```perl
 use ntheory qw/divisors/;
 print join " ", divisors(12345678), "\n";
-# Alternately something like:  fordivisors { say } 12345678; 
+# Alternately something like:  fordivisors { say } 12345678;
 ```
 
 
@@ -4483,7 +4483,7 @@ Uses the math module:
 ```ProDOS
 editvar /newvar /value=a /userinput=1 /title=Enter an integer:
 do /delimspaces %% -a- >b
-printline Factors of -a-: -b- 
+printline Factors of -a-: -b-
 ```
 
 
@@ -4497,7 +4497,7 @@ printline Factors of -a-: -b-
 
 brute_force_factors( N , Fs ) :-
   integer(N) ,
-  N > 0 ,  
+  N > 0 ,
   setof( F , ( between(1,N,F) , N mod F =:= 0 ) , Fs )
   .
 
@@ -4544,7 +4544,7 @@ between1(X,Y,Z) :-
   X < Y ,
   X1 is X+1 ,
   between1(X1,Y,Z)
-  .  
+  .
 
 ```
 
@@ -4696,7 +4696,7 @@ def factors(n):
 ```R
 factors <- function(n)
 {
-   if(length(n) > 1) 
+   if(length(n) > 1)
    {
       lapply(as.list(n), factors)
    } else
@@ -4796,7 +4796,7 @@ End Function
 
 This REXX version has no effective limits on the number of decimal digits in the number to be factored   [by adjusting the number of digits (precision)].
 
-This REXX version also supports negative integers and zero. 
+This REXX version also supports negative integers and zero.
 
 It also indicates   '''primes'''   in the output listing as well as the number of factors.
 
@@ -4831,7 +4831,7 @@ if j*j==x  then  return  a j b                   /*Was  X  a square?   Then inse
                  return  a   b                   /*return the divisors of both lists.   */
 ```
 
-'''output'''   when the input used is:   <tt> -6   200 </tt> 
+'''output'''   when the input used is:   <tt> -6   200 </tt>
 <pre style="height:65ex">
   n    #divisors                           divisors
 ══════ ═════════ ════════════════════════════════════════════════════════════
@@ -5127,7 +5127,7 @@ As we only have to loop up to <math>\sqrt{n}</math>, we can write
 ```ruby
 class Integer
   def factors
-    1.upto(Math.sqrt(self)).select {|i| (self % i).zero?}.inject([]) do |f, i| 
+    1.upto(Math.sqrt(self)).select {|i| (self % i).zero?}.inject([]) do |f, i|
       f << self/i unless i == self/i
       f << i
     end.sort
@@ -5187,7 +5187,7 @@ Output:
 PRINT "Factors of 45 are ";factorlist$(45)
 PRINT "Factors of 12345 are "; factorlist$(12345)
 END
- 
+
 function factorlist$(f)
 DIM L(100)
 FOR i = 1 TO SQR(f)
@@ -5222,8 +5222,8 @@ end function
 {{out}}
 
 ```txt
-Factors of 45 are 1, 3, 5, 9, 15, 45, 
-Factors of 12345 are 1, 3, 5, 15, 823, 2469, 4115, 12345, 
+Factors of 45 are 1, 3, 5, 9, 15, 45,
+Factors of 12345 are 1, 3, 5, 15, 823, 2469, 4115, 12345,
 ```
 
 
@@ -5242,7 +5242,7 @@ fn main() {
 fn factor(num: i32) -> Vec<i32> {
     let mut factors: Vec<i32> = Vec::new(); // creates a new vector for the factors of the number
 
-    for i in 1..((num as f32).sqrt() as i32 + 1) { 
+    for i in 1..((num as f32).sqrt() as i32 + 1) {
         if num % i == 0 {
             factors.push(i); // pushes smallest factor to factors
             factors.push(num/i); // pushes largest factor to factors
@@ -5277,7 +5277,7 @@ class MAIN is
   factors(n :INT):ARRAY{INT} is
     f:ARRAY{INT};
     f := #;
-    f := f.append(|1|); 
+    f := f.append(|1|);
     f := f.append(|n|);
     loop i ::= 2.upto!( n.flt.sqrt.int );
       if n%i = 0 then
@@ -5424,8 +5424,8 @@ Factors(num(0)) :=
 	let
 		factorPairs[i] :=
 				[i] when i = sqrt(num)
-			else 
-				[i, num/i] when num mod i = 0 
+			else
+				[i, num/i] when num mod i = 0
 			foreach i within 1 ... floor(sqrt(num));
 	in
 		join(factorPairs);
@@ -5506,7 +5506,7 @@ Copied from the Python example, but code added to the Integer built in class:
 factors
 	| a |
 	a := OrderedCollection new.
-	1 to: (self / 2) do: [ :i | 
+	1 to: (self / 2) do: [ :i |
 		((self \\ i) = 0) ifTrue: [ a add: i ] ].
 	a add: self.
 	^a
@@ -5528,7 +5528,7 @@ Then use as follows:
 ## Standard ML
 
 Need to print the list because Standard ML truncates the display of
-longer returned lists.  
+longer returned lists.
 
 ```Standard ML
 fun printIntList ls =
@@ -5575,7 +5575,7 @@ Simple implementation:
 
 ```Swift
 func factors(n: Int) -> [Int] {
-    
+
     return filter(1...n) { n % $0 == 0 }
 }
 ```
@@ -5588,18 +5588,18 @@ import func Darwin.sqrt
 func sqrt(x:Int) -> Int { return Int(sqrt(Double(x))) }
 
 func factors(n: Int) -> [Int] {
-    
+
     var result = [Int]()
-    
+
     for factor in filter (1...sqrt(n), { n % $0 == 0 }) {
-        
+
         result.append(factor)
 
         if n/factor != factor { result.append(n/factor) }
     }
-    
+
     return sorted(result)
-    
+
 }
 ```
 
@@ -5663,10 +5663,10 @@ This should work in all Bourne-compatible shells, assuming the system has both <
 
 <lang>factor() {
   r=`echo "sqrt($1)" | bc` # or `echo $1 v p | dc`
-  i=1 
+  i=1
   while [ $i -lt $r ]; do
     if [ `expr $1 % $i` -eq 0 ]; then
-      echo $i  
+      echo $i
       expr $1 / $i
     fi
     i=`expr $i + 1`
@@ -5773,14 +5773,14 @@ resultant value is "1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 15, 20, 21, 24, 28, 30, 
   factors1      &n !-\%%n @to n
   factors_tacit @(\\%% !- @to)
   [[
-    !factors1 10 
-    !factors_tacit 100 
-    !factors1 720 
+    !factors1 10
+    !factors_tacit 100
+    !factors1 720
   ]]
 }
 ```
 
-Returns: 
+Returns:
 ```txt
 [
   [1 2 5 10]
@@ -5885,7 +5885,7 @@ L(L(1,45),L(3,15),L(5,9))
 
 ```zxbasic
 10 INPUT "Enter a number or 0 to exit: ";n
-20 IF n=0 THEN STOP 
+20 IF n=0 THEN STOP
 30 PRINT "Factors of ";n;": ";
 40 FOR i=1 TO n
 50 IF FN m(n,i)=0 THEN PRINT i;" ";

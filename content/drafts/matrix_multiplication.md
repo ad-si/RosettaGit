@@ -13,7 +13,7 @@ tags = []
 {{task|Matrices}}
 
 ;Task:
-Multiply two matrices together. 
+Multiply two matrices together.
 
 They can be of any dimensions, so long as the number of columns of the first matrix is equal to the number of rows of the second matrix.
 
@@ -123,13 +123,13 @@ ELOOPI2  L      R13,4(0,R13)
 A        DC     F'1',F'2',F'3',F'4',F'5',F'6',F'7',F'8'  a(4,2)
 B        DC     F'1',F'2',F'3',F'4',F'5',F'6'            b(2,3)
 C        DS     12F                                      c(4,3)
-N        DC     H'2'               dim(a,2)=dim(b,1) 
-M        DC     H'4'               dim(a,1) 
+N        DC     H'2'               dim(a,2)=dim(b,1)
+M        DC     H'4'               dim(a,1)
 P        DC     H'3'               dim(b,2)
 Z        DS     CL80
 IZ       DC     H'0'
 W        DS     CL16
-         YREGS  
+         YREGS
          END    MATRIXRC
 ```
 
@@ -146,7 +146,7 @@ W        DS     CL16
 
 ## Ada
 
-Ada has matrix multiplication predefined for any floating-point or complex type. 
+Ada has matrix multiplication predefined for any floating-point or complex type.
 The implementation is provided by the standard library packages Ada.Numerics.Generic_Real_Arrays and Ada.Numerics.Generic_Complex_Arrays correspondingly. The following example illustrates use of real matrix multiplication for the type Float:
 
 ```ada
@@ -165,7 +165,7 @@ procedure Matrix_Product is
          New_Line;
       end loop;
    end Put;
-   
+
    A : constant Real_Matrix :=
          (  ( 1.0,  1.0,  1.0,   1.0),
             ( 2.0,  4.0,  8.0,  16.0),
@@ -212,7 +212,7 @@ package body Matrix_Ops is
       if Left'Length(2) /= Right'Length(1) then
          raise Constraint_Error;
       end if;
-     
+
       for I in Left'range(1) loop
          for J in Right'range(2) loop
             for K in Left'range(2) loop
@@ -240,10 +240,10 @@ MODE FIELD = LONG REAL; # field type is LONG REAL #
 INT default upb:=3;
 MODE VECTOR = [default upb]FIELD;
 MODE MATRIX = [default upb,default upb]FIELD;
- 
+
 # crude exception handling #
 PROC VOID raise index error := VOID: GOTO exception index error;
- 
+
 # define the vector/matrix operators #
 OP * = (VECTOR a,b)FIELD: ( # basically the dot product #
     FIELD result:=0;
@@ -251,7 +251,7 @@ OP * = (VECTOR a,b)FIELD: ( # basically the dot product #
     FOR i FROM LWB a TO UPB a DO result+:= a[i]*b[i] OD;
     result
   );
- 
+
  OP * = (VECTOR a, MATRIX b)VECTOR: ( # overload vector times matrix #
     [2 LWB b:2 UPB b]FIELD result;
     IF LWB a/=LWB b OR UPB a/=UPB b THEN raise index error FI;
@@ -272,14 +272,14 @@ test:(
             (2,  4,  8,  16),
             (3,  9, 27,  81),
             (4, 16, 64, 256));
- 
+
   MATRIX b=((  4  , -3  ,  4/3,  -1/4 ), # matrix B #
             (-13/3, 19/4, -7/3,  11/24),
             (  3/2, -2  ,  7/6,  -1/4 ),
             ( -1/6,  1/4, -1/6,   1/24));
- 
+
   MATRIX prod = a * b; # actual multiplication example of A x B #
- 
+
   FORMAT real fmt = $g(-6,2)$; # width of 6, with no '+' sign, 2 decimals #
   PROC real matrix printf= (FORMAT real fmt, MATRIX m)VOID:(
     FORMAT vector fmt = $"("n(2 UPB m-1)(f(real fmt)",")f(real fmt)")"$;
@@ -287,13 +287,13 @@ test:(
     # finally print the result #
     printf((matrix fmt,m))
   );
-   
+
   # finally print the result #
   print(("Product of a and b: ",new line));
   real matrix printf(real fmt, prod)
-  EXIT 
- 
-  exception index error: 
+  EXIT
+
+  exception index error:
     putf(stand error, $x"Exception: index error."l$)
 )
 ```
@@ -302,7 +302,7 @@ test:(
 
 ```txt
 
- Product of a and b: 
+ Product of a and b:
  ((  1.00, -0.00, -0.00, -0.00),
   ( -0.00,  1.00, -0.00, -0.00),
   ( -0.00, -0.00,  1.00, -0.00),
@@ -319,21 +319,21 @@ Alternatively - for multicore CPUs - use the following parallel code... The next
  '''mode''' '''field''' = '''long''' '''real''';
  '''mode''' '''vector''' = [default upb]'''field''';
  '''mode''' '''matrix''' = [default upb, default upb]'''field''';
- 
+
  &cent; crude exception handling &cent;
  '''proc''' '''void''' raise index error := '''void''': '''goto''' exception index error;
- 
+
  '''sema''' idle cpus = '''level''' ( 8 - 1 ); &cent; 8 = number of CPU cores minus parent CPU &cent;
- 
+
  &cent; define an operator to slice array into quarters &cent;
  '''op''' '''top''' = ('''matrix''' m)'''int''': ( &lfloor;m + &lceil;m ) %2,
     '''bot''' = ('''matrix''' m)'''int''': '''top''' m + 1,
     '''left''' = ('''matrix''' m)'''int''': ( 2 &lfloor;m + 2 &lceil;m ) %2,
     '''right''' = ('''matrix''' m)'''int''': '''left''' m + 1,
     '''left''' = ('''vector''' v)'''int''': ( &lfloor;v + &lceil;v ) %2,
-    '''right''' = ('''vector''' v)'''int''': '''left''' v + 1; 
+    '''right''' = ('''vector''' v)'''int''': '''left''' v + 1;
  '''prio''' '''top''' = 8, '''bot''' = 8, '''left''' = 8, '''right''' = 8; &cent; Operator priority - same as LWB & UPB &cent;
- 
+
  '''op''' &times; = ('''vector''' a, b)'''field''': ( &cent; dot product &cent;
    '''if''' (&lfloor;a, &lceil;a) &ne; (&lfloor;b, &lceil;b) '''then''' raise index error '''fi''';
    '''if''' &lfloor;a = &lceil;a '''then'''
@@ -341,21 +341,21 @@ Alternatively - for multicore CPUs - use the following parallel code... The next
    '''else'''
      '''field''' begin, end;
      []'''proc''' '''void''' schedule=(
-       '''void''': begin:=a[:'''left''' a] &times; b[:'''left''' b], 
+       '''void''': begin:=a[:'''left''' a] &times; b[:'''left''' b],
        '''void''': end  :=a['''right''' a:] &times; b['''right''' b:]
      );
      '''if''' '''level''' idle cpus = 0 '''then''' &cent; use current CPU &cent;
        '''for''' thread '''to''' &lceil;schedule '''do''' schedule[thread] '''od'''
-     '''else''' 
+     '''else'''
        '''par''' ( &cent; run vector in parallel &cent;
          schedule[1], &cent; assume parent CPU &cent;
          ( &darr;idle cpus; schedule[2]; &uarr;idle cpus)
-       ) 
+       )
      '''fi''';
      begin+end
    '''fi'''
  );
- 
+
  '''op''' &times; = ('''matrix''' a, b)'''matrix''': &cent; matrix multiply &cent;
    '''if''' (&lfloor;a, 2 &lfloor;b) = (&lceil;a, 2 &lceil;b) '''then'''
      a[&lfloor;a, ] &times; b[, 2 &lceil;b] &cent; dot product &cent;
@@ -364,17 +364,17 @@ Alternatively - for multicore CPUs - use the following parallel code... The next
      '''if''' (2 &lfloor;a, 2 &lceil;a) &ne; (&lfloor;b, &lceil;b) '''then''' raise index error '''fi''';
      []'''struct'''('''bool''' required, '''proc''' '''void''' thread) schedule = (
        ( '''true''', &cent; calculate top left corner &cent;
-         '''void''': out[:'''top''' a, :'''left''' b] := a[:'''top''' a, ] &times; b[, :'''left''' b]), 
+         '''void''': out[:'''top''' a, :'''left''' b] := a[:'''top''' a, ] &times; b[, :'''left''' b]),
        ( &lfloor;a &ne; &lceil;a, &cent; calculate bottom left corner &cent;
-         '''void''': out['''bot''' a:, :'''left''' b] := a['''bot''' a:, ] &times; b[, :'''left''' b]), 
+         '''void''': out['''bot''' a:, :'''left''' b] := a['''bot''' a:, ] &times; b[, :'''left''' b]),
        ( 2 &lfloor;b &ne; 2 &lceil;b, &cent; calculate top right corner &cent;
-         '''void''': out[:'''top''' a, '''right''' b:] := a[:'''top''' a, ] &times; b[, '''right''' b:]), 
+         '''void''': out[:'''top''' a, '''right''' b:] := a[:'''top''' a, ] &times; b[, '''right''' b:]),
        ( (&lfloor;a, 2 &lfloor;b) &ne; (&lceil;a, 2 &lceil;b) , &cent; calculate bottom right corner &cent;
          '''void''': out['''bot''' a:, '''right''' b:] := a['''bot''' a:, ] &times; b[, '''right''' b:])
      );
      '''if''' '''level''' idle cpus = 0 '''then''' &cent; use current CPU &cent;
        '''for''' thread '''to''' &lceil;schedule '''do''' (required &rarr;schedule[thread] | thread &rarr;schedule[thread] ) '''od'''
-     '''else''' 
+     '''else'''
        '''par''' ( &cent; run vector in parallel &cent;
          thread &rarr;schedule[1], &cent; thread is always required, and assume parent CPU &cent;
          ( required &rarr;schedule[4] | &darr;idle cpus; thread &rarr;schedule[4]; &uarr;idle cpus),
@@ -385,7 +385,7 @@ Alternatively - for multicore CPUs - use the following parallel code... The next
      '''fi''';
      out
    '''fi''';
- 
+
  '''format''' real fmt = $g(-6,2)$; &cent; width of 6, with no '+' sign, 2 decimals &cent;
  '''proc''' real matrix printf= ('''format''' real fmt, '''matrix''' m)'''void''':(
    '''format''' vector fmt = $"("n(2 &lceil;m-1)(f(real fmt)",")f(real fmt)")"$;
@@ -393,24 +393,24 @@ Alternatively - for multicore CPUs - use the following parallel code... The next
    &cent; finally print the result &cent;
    printf((matrix fmt,m))
  );
- 
+
  &cent; Some sample matrices to test &cent;
  '''matrix''' a=((1,  1,  1,   1), &cent; matrix A &cent;
            (2,  4,  8,  16),
            (3,  9, 27,  81),
            (4, 16, 64, 256));
- 
+
  '''matrix''' b=((  4  , -3  ,  4/3,  -1/4 ), &cent; matrix B &cent;
            (-13/3, 19/4, -7/3,  11/24),
            (  3/2, -2  ,  7/6,  -1/4 ),
            ( -1/6,  1/4, -1/6,   1/24));
- 
+
  '''matrix''' c = a &times; b; &cent; actual multiplication example of A x B &cent;
- 
+
  print((" A x B =",new line));
  real matrix printf(real fmt, c).
- 
- exception index error: 
+
+ exception index error:
    putf(stand error, $x"Exception: index error."l$)
 
 
@@ -423,18 +423,18 @@ Alternatively - for multicore CPUs - use the following parallel code... The next
 to matrixMultiply(a, b)
     script rows
         property xs : transpose(b)
-        
+
         on |λ|(row)
             script columns
                 on |λ|(col)
                     my dotProduct(row, col)
                 end |λ|
             end script
-            
+
             map(columns, xs)
         end |λ|
     end script
-    
+
     map(rows, a)
 end matrixMultiply
 
@@ -450,8 +450,8 @@ on run
         {-1, 1, 4, 8}, ¬
         {6, 9, 10, 2}, ¬
         {11, -4, 5, -3}})
-    
-    --> {{51, -8, 26, -18}, {-8, -38, -6, 34}, 
+
+    --> {{51, -8, 26, -18}, {-8, -38, -6, 34},
     --     {33, 42, 38, -14}, {17, 74, 72, 44}}
 end run
 
@@ -465,7 +465,7 @@ on dotProduct(xs, ys)
             a * b
         end |λ|
     end script
-    
+
     if length of xs is not length of ys then
         missing value
     else
@@ -506,7 +506,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -525,7 +525,7 @@ on product(xs)
             a * b
         end |λ|
     end script
-    
+
     foldr(mult, 1, xs)
 end product
 
@@ -536,7 +536,7 @@ on sum(xs)
             a + b
         end |λ|
     end script
-    
+
     foldr(add, 0, xs)
 end sum
 
@@ -549,11 +549,11 @@ on transpose(xss)
                     item iCol of xs
                 end |λ|
             end script
-            
+
             map(row, xss)
         end |λ|
     end script
-    
+
     map(column, item 1 of xss)
 end transpose
 
@@ -585,10 +585,10 @@ Matrix multiply in APL is just <tt>+.×</tt>.  For example:
 
 ```apl
     x  ←  +.×
-    
-    A  ←  ↑A*¨⊂A←⍳4   ⍝  Same  A  as in other examples (1 1 1 1⍪ 2 4 8 16⍪ 3 9 27 81,[0.5] 4 16 64 256) 
+
+    A  ←  ↑A*¨⊂A←⍳4   ⍝  Same  A  as in other examples (1 1 1 1⍪ 2 4 8 16⍪ 3 9 27 81,[0.5] 4 16 64 256)
     B  ←  ⌹A          ⍝  Matrix inverse of A
-    
+
     'F6.2' ⎕FMT A x B
 1.00  0.00  0.00  0.00
 0.00  1.00  0.00  0.00
@@ -658,7 +658,7 @@ MatrixMul(_a,_b,_c) {
    }
 }
 ```
- 
+
 
 ### Using Objects
 
@@ -811,15 +811,15 @@ Assume the matrices to be multiplied are a and b
         n = LEN(a,2)
         m = LEN(a)
         p = LEN(b,2)
- 
+
         DIM ans(0 TO m - 1, 0 TO p - 1)
- 
+
         FOR i = 0 TO m - 1
                 FOR j = 0 TO p - 1
                         FOR k = 0 TO n - 1
                                 ans(i, j) = ans(i, j) + (a(i, k) * b(k, j))
                         NEXT k, j, i
- 
+
         'print answer
         FOR i = 0 TO m - 1
                 FOR j = 0 TO p - 1
@@ -859,10 +859,10 @@ MAT PRINT product
 {{out}}
 
 ```txt
- 9             12            15           
- 19            26            33           
- 29            40            51           
- 39            54            69           
+ 9             12            15
+ 19            26            33
+ 29            40            51
+ 39            54            69
 ```
 
 
@@ -875,15 +875,15 @@ BBC BASIC has built-in matrix multiplication
 
 ```bbcbasic
       DIM matrix1(3,1), matrix2(1,2), product(3,2)
-      
+
       matrix1() = 1, 2, \
       \           3, 4, \
       \           5, 6, \
       \           7, 8
-      
+
       matrix2() = 1, 2, 3, \
       \           4, 5, 6
-      
+
       product() = matrix1() . matrix2()
 
       FOR row% = 0 TO DIM(product(),1)
@@ -927,8 +927,8 @@ blsq ) {{1 2}{3 4}{5 6}{7 8}}{{1 2 3}{4 5 6}}mmsp
 
 For performance critical work involving matrices, especially large or sparse ones, always consider using an established library such as BLAS first.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 /* Make the data structure self-contained.  Element at row i and col j
@@ -1062,8 +1062,8 @@ public class Matrix
 
 {{libheader|Blitz++}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <blitz/tinymat.h>
 
 int main()
@@ -1328,8 +1328,8 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T>& other) {
 
 ```txt
 
-22  28  
-49  64  
+22  28
+49  64
 
 ```
 
@@ -1351,34 +1351,34 @@ void printMatrix(Matrix m) {
 }
 
 Matrix? multiplyMatrices(Matrix a, Matrix b) {
-	
+
 	function rectangular(Matrix m) =>
 			if (exists firstRow = m.first)
 			then m.every((row) => row.size == firstRow.size)
 			else false;
-	
+
 	function rowCount(Matrix m) => m.size;
 	function columnCount(Matrix m) => m[0]?.size else 0;
-	
+
 	if (!rectangular(a) || !rectangular(b) || columnCount(a) != rowCount(b)) {
 		return null;
 	}
-	
+
 	function getNumber(Matrix m, Integer x, Integer y) {
 		assert (exists number = m[y]?.get(x));
 		return number;
 	}
-	
+
 	function getRow(Matrix m, Integer rowIndex) {
 		assert (exists row = m[rowIndex]);
 		return row;
 	}
-	
+
 	function getColumn(Matrix m, Integer columnIndex) => {
 		for (y in 0:rowCount(m))
 		getNumber(m, columnIndex, y)
 	};
-	
+
 	return [
 		for (y in 0:rowCount(a)) [
 			for (x in 0:columnCount(b))
@@ -1437,7 +1437,7 @@ equals:
 (defn nested-for
   [f x y]
   (map (fn [a]
-         (map (fn [b] 
+         (map (fn [b]
                 (f a b)) y))
        x))
 
@@ -1646,16 +1646,16 @@ void main() {
 {{out}}
 
 ```txt
-A = 
+A =
 [[1, 2],
  [3, 4],
  [3, 6]]
 
-B = 
+B =
 [[-3, -8, 3],
  [-2, 1, 4]]
 
-A * B = 
+A * B =
 [[-7, -6, 11],
  [-17, -20, 25],
  [-21, -18, 33]]
@@ -1716,7 +1716,7 @@ The output is the same.
 
 ### Stronger Statically Typed Version
 
-All array sizes are verified at compile-time (and no matrix is copied). 
+All array sizes are verified at compile-time (and no matrix is copied).
 Same output.
 
 ```d
@@ -1782,7 +1782,7 @@ Code for matrix multiplication hardware design verification:
 ```ella
 MAC ZIP = ([INT n]TYPE t: vector1 vector2) -> [n][2]t:
   [INT k = 1..n](vector1[k], vector2[k]).
-     
+
 MAC TRANSPOSE = ([INT n][INT m]TYPE t: matrix) -> [m][n]t:
   [INT i = 1..m] [INT j = 1..n] matrix[j][i].
 
@@ -1811,18 +1811,18 @@ FN MULT = (element: integer1 integer2) -> product:
   ARITH integer1 * integer2.
 
 FN MULT_234 = ([2][3]element:matrix1, [3][4]element:matrix2) ->
-             [2][4]product:  
+             [2][4]product:
   MATRIX_MULT{MULT,PLUS}(matrix1, matrix2).
 
 FN TEST = () -> [2][4]product:
 ( LET m1 = ((elt/2, elt/1, elt/1),
-            (elt/3, elt/6, elt/9)), 
-      m2 = ((elt/6, elt/1, elt/3, elt/4), 
+            (elt/3, elt/6, elt/9)),
+      m2 = ((elt/6, elt/1, elt/3, elt/4),
             (elt/9, elt/2, elt/8, elt/3),
             (elt/6, elt/4, elt/1, elt/2)).
   OUTPUT
     MULT_234 (m1, m2)
-). 
+).
 
 COM test: just displaysignal MOC
 ```
@@ -1859,13 +1859,13 @@ end function
 ```EGL
 
 program Matrix_multiplication type BasicProgram {}
-	
+
 	function main()
 		a float[][] = [[1,2,3],[4,5,6]];
 		b float[][] = [[1,2],[3,4],[5,6]];
 		c float[][] = mult(a, b);
 	end
-	
+
 	function mult(a float[][], b float[][]) returns(float[][])
 		if(a.getSize() == 0)
 			return (new float[0][0]);
@@ -1873,14 +1873,14 @@ program Matrix_multiplication type BasicProgram {}
 		if(a[1].getSize() != b.getSize())
 			return (null); //invalid dims
 		end
-	 
+
 	   	n int = a[1].getSize();
 	   	m int = a.getSize();
 	   	p int = b[1].getSize();
-		
+
 		ans float[0][0];
 		ans.resizeAll([m, p]);
-		
+
 		// Calculate dot product.
 		for(i int from 1 to m)
 			for(j int from 1 to p)
@@ -1903,16 +1903,16 @@ end
 ```elixir
 
   def mult(m1, m2) do
-    Enum.map m1, fn (x) -> Enum.map t(m2), fn (y) -> Enum.zip(x, y) 
+    Enum.map m1, fn (x) -> Enum.map t(m2), fn (y) -> Enum.zip(x, y)
         |> Enum.map(fn {x, y} -> x * y end)
-        |> Enum.sum 
+        |> Enum.sum
       end
     end
   end
 
   def t(m) do # transpose
     List.zip(m) |> Enum.map(&Tuple.to_list(&1))
-  end  
+  end
 
 
 
@@ -2101,7 +2101,7 @@ class Main
   {
     Int[][] result := [,]
     m1.each |Int[] row1|
-    { 
+    {
       Int[] row := [,]
       m2[0].size.times |Int colNumber|
       {
@@ -2109,7 +2109,7 @@ class Main
         m2.each |Int[] row2, Int index|
         {
           value += row1[index] * row2[colNumber]
-        } 
+        }
         row.add (value)
       }
      result.add (row)
@@ -2151,13 +2151,13 @@ S" fsl/dynmem.seq" REQUIRED
 : F+! ( addr -- ) ( F: r -- )  DUP F@ F+ F! ;
 : FSQR ( F: r1 -- r2 ) FDUP F* ;
 S" fsl/gaussj.seq" REQUIRED
- 
+
 3 3 float matrix A{{
 1e 2e 3e  4e 5e 6e  7e 8e 9e  3 3 A{{ }}fput
 3 3 float matrix B{{
 3e 3e 3e  2e 2e 2e  1e 1e 1e  3 3 B{{ }}fput
 float dmatrix C{{    \ result
- 
+
 A{{ 3 3 B{{ 3 3 & C{{ mat*
 3 3 C{{ }}fprint
 ```
@@ -2532,7 +2532,7 @@ Output is similar to 2D version.
 ## Groovy
 
 
-###  Without Indexed Loops 
+###  Without Indexed Loops
 
 Uses transposition to avoid indirect element access via ranges of indexes. "assertConformable()" asserts that a & b are both rectangular lists of lists, and that row-length (number of columns) of a is equal to the column-length (number of rows) of b.
 
@@ -2546,7 +2546,7 @@ def assertConformable = { a, b ->
 
 def matmulWOIL = { a, b ->
     assertConformable(a, b)
-    
+
     def bt = b.transpose()
     a.collect { ai ->
         bt.collect { btj ->
@@ -2558,14 +2558,14 @@ def matmulWOIL = { a, b ->
 
 
 
-###  Without Transposition 
+###  Without Transposition
 
 Uses ranges of indexes, the way that matrix multiplication is typically defined. Not as elegant, but it avoids expensive transpositions. Reuses "assertConformable()" from above.
 
 ```groovy
 def matmulWOT = { a, b ->
     assertConformable(a, b)
-    
+
     (0..<a.size()).collect { i ->
         (0..<b[0].size()).collect { j ->
             (0..<b.size()).collect { k -> a[i][k] * b[k][j] }.sum()
@@ -2619,9 +2619,9 @@ A somewhat inefficient version with lists (''transpose'' is expensive):
 ```Haskell
 import Data.List
 
- mmult :: Num a => [[a]] -> [[a]] -> [[a]] 
+ mmult :: Num a => [[a]] -> [[a]] -> [[a]]
  mmult a b = [ [ sum $ zipWith (*) ar bc | bc <- (transpose b) ] | ar <- a ]
- 
+
  -- Example use:
  test = [[1, 2],
          [3, 4]] `mmult` [[-3, -8, 3],
@@ -2636,9 +2636,9 @@ A more efficient version, based on arrays:
 
 ```Haskell
 import Data.Array
- 
- mmult :: (Ix i, Num a) => Array (i,i) a -> Array (i,i) a -> Array (i,i) a 
- mmult x y 
+
+ mmult :: (Ix i, Num a) => Array (i,i) a -> Array (i,i) a -> Array (i,i) a
+ mmult x y
    | x1 /= y0 || x1' /= y0'  = error "range mismatch"
    | otherwise               = array ((x0,y1),(x0',y1')) l
    where
@@ -2753,10 +2753,10 @@ DLG(DefWidth=4, Text=a, Text=b,Y=0, Text=res,Y=0)
 
 ```hicest
 a         b              res
-1    2    1    2    3    9    12   15   
-3    4    4    5    6    19   26   33   
-5    6                   29   40   51   
-7    8                   39   54   69   
+1    2    1    2    3    9    12   15
+3    4    4    5    6    19   26   33
+5    6                   29   40   51
+7    8                   39   54   69
 ```
 
 
@@ -2795,10 +2795,10 @@ procedure multiply_matrix (m1, m2)
     row := []
     every colIndex := 1 to *m1 do { # and each column index of the result
       value := 0
-      every rowIndex := 1 to *m2 do { 
+      every rowIndex := 1 to *m2 do {
         value +:= row1[rowIndex] * m2[rowIndex][colIndex]
       }
-      put (row, value) 
+      put (row, value)
     }
     put (result, row) # add each row as it is complete
   }
@@ -2813,14 +2813,14 @@ end
 ```txt
 
 Multiply:
-1 2 3 
-4 5 6 
+1 2 3
+4 5 6
 by:
-1 2 
-3 4 
-5 6 
-Result: 
-22 28 
+1 2
+3 4
+5 6
+Result:
+22 28
 49 64
 
 ```
@@ -2846,7 +2846,7 @@ Matrix m n t = Vect m (Vect n t)
 
 multiply : Num t => Matrix m1 n t -> Matrix n m2 t -> Matrix m1 m2 t
 multiply a b = multiply' a (transpose b)
-  where 
+  where
         dot : Num t => Vect n t -> Vect n t -> t
         dot v1 v2 = sum $ map (\(s1, s2) => (s1 * s2)) (zip v1 v2)
 
@@ -2863,17 +2863,17 @@ Matrix multiply in J is <code>+/ .*</code>.  For example:
 
 ```j
    mp  =:  +/ .*      NB.  Matrix product
-   
+
    A  =:  ^/~>:i. 4   NB.  Same  A  as in other examples (1 1 1 1, 2 4 8 16, 3 9 27 81,:4 16 64 256)
    B  =:  %.A         NB.  Matrix inverse of A
-     
+
    '6.2' 8!:2 A mp B
 1.00  0.00  0.00  0.00
 0.00  1.00  0.00  0.00
 0.00  0.00  1.00  0.00
 0.00  0.00  0.00  1.00
 ```
-   
+
 The notation is for a generalized inner product so that
 
 ```j
@@ -2882,7 +2882,7 @@ x *./ .=  y   NB. which rows of x are the same as vector y?
 x + / .=  y   NB. number of places where a value in row x equals the corresponding value in y
 ```
 
-[[Floyd-Warshall_algorithm#J|etc.]]  
+[[Floyd-Warshall_algorithm#J|etc.]]
 
 The general inner product extends to multidimensional arrays, requiring only that <tt> x </tt>and<tt> y </tt> be conformable (trailing dimension of array <tt>x</tt> equals the leading dimension of array <tt>y</tt>).  For example, the matrix multiplication of two dimensional arrays requires <tt>x</tt> to have the same numbers of rows as <tt>y</tt> has columns, as you would expect.
 
@@ -2948,7 +2948,7 @@ Matrix.prototype.mult = function(other) {
             result[i][j] = sum;
         }
     }
-    return new Matrix(result); 
+    return new Matrix(result);
 }
 
 var a = new Matrix([[1,2],[3,4]])
@@ -2972,7 +2972,7 @@ print(a.mult(b));
 (function () {
     'use strict';
 
-    // matrixMultiply:: [[n]] -> [[n]] -> [[n]] 
+    // matrixMultiply:: [[n]] -> [[n]] -> [[n]]
     function matrixMultiply(a, b) {
         var bCols = transpose(b);
 
@@ -2982,7 +2982,7 @@ print(a.mult(b));
             });
         });
     }
-    
+
     // [[n]] -> [[n]] -> [[n]]
     function dotProduct(xs, ys) {
         return sum(zipWith(product, xs, ys));
@@ -2999,7 +2999,7 @@ print(a.mult(b));
          [11, -4,  5, -3]]
     );
 
-    // --> [[51, -8, 26, -18], [-8, -38, -6, 34], 
+    // --> [[51, -8, 26, -18], [-8, -38, -6, 34],
     //        [33, 42, 38, -14], [17, 74, 72, 44]]
 
 
@@ -3041,7 +3041,7 @@ print(a.mult(b));
 {{Out}}
 
 ```Javascript
-[[51, -8, 26, -18], [-8, -38, -6, 34], 
+[[51, -8, 26, -18], [-8, -38, -6, 34],
       [33, 42, 38, -14], [17, 74, 72, 44]]
 ```
 
@@ -3108,7 +3108,7 @@ print(a.mult(b));
 {{Out}}
 
 ```JavaScript
-[[51, -8, 26, -18], [-8, -38, -6, 34], 
+[[51, -8, 26, -18], [-8, -38, -6, 34],
 [33, 42, 38, -14], [17, 74, 72, 44]]
 ```
 
@@ -3137,7 +3137,7 @@ def multiply(A; B):
   | ($B[0]|length) as $p
   | ($B|transpose) as $BT
   | reduce range(0; $A|length) as $i
-       ([]; reduce range(0; $p) as $j 
+       ([]; reduce range(0; $p) as $j
          (.; .[$i][$j] = dot_product( $A[$i]; $BT[$j] ) )) ;
 ```
 
@@ -3268,7 +3268,7 @@ fun main(args: Array<String>) {
         doubleArrayOf(-1.0,  1.0,  4.0,  8.0),
         doubleArrayOf( 6.0,  9.0, 10.0,  2.0),
         doubleArrayOf(11.0, -4.0,  5.0, -3.0)
-    )  
+    )
     printMatrix(m1 * m2)
 }
 ```
@@ -3399,7 +3399,7 @@ TO LISTVMD :A :F :C :NV
 ;C = COLS
 ;NV = NAME OF MATRIX / VECTOR NEW
 ;this procedure transform a list in matrix / vector square or rect
- 
+
 (LOCAL "CF "CC "NV "T "W)
 MAKE "CF 1
 MAKE "CC 1
@@ -3413,45 +3413,45 @@ OUTPUT :NV
 END
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
- 
- 
+
+
 TO XX
 ; MAIN PROGRAM
 ;LRCVS 10.04.12
 ; THIS PROGRAM multiplies two "square" matrices / vector ONLY!!!
 ; THE RECTANGULAR NOT WORK!!!
- 
+
 CT CS HT
- 
+
 ; FIRST DATA MATRIX / VECTOR
 MAKE "A [1 3 5 7 9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49]
 MAKE "FA 5 ;"ROWS
 MAKE "CA 5 ;"COLS
- 
+
 ; SECOND DATA MATRIX / VECTOR
 MAKE "B [2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50]
 MAKE "FB 5 ;"ROWS
 MAKE "CB 5 ;"COLS
- 
- 
+
+
 IF (OR :FA <> :CA :FB <>:CB) [PRINT "Las_matrices/vector_no_son_cuadradas THROW
 "TOPLEVEL ]
 IFELSE (OR :CA <> :FB :FA <> :CB) [PRINT
 "Las_matrices/vector_no_son_compatibles THROW "TOPLEVEL ][MAKE "MA LISTVMD :A
 :FA :CA "MA MAKE "MB LISTVMD :B :FB :CB "MB] ;APPLICATION <<< "LISTVMD"
- 
+
 PRINT (LIST "THIS_IS: "ROWS "X "COLS)
 PRINT []
 PRINT (LIST :MA "=_M1 :FA "ROWS "X :CA "COLS)
 PRINT []
 PRINT (LIST :MB "=_M2 :FA "ROWS "X :CA "COLS)
 PRINT []
- 
- 
+
+
 MAKE "T :FA * :CB
 MAKE "RE (ARRAY :T 1)
- 
- 
+
+
 MAKE "CO 0
 FOR [AF 1 :CA][
 FOR [AC 1 :CA][
@@ -3460,45 +3460,45 @@ FOR [I 1 :CA ][
 MAKE "TEMP :TEMP + (MDITEM (LIST :I :AF) :MA) * (MDITEM (LIST :AC :I) :MB)]
 MAKE "CO :CO + 1
 SETITEM :CO :RE :TEMP]]
- 
- 
+
+
 PRINT []
 PRINT (LIST "THIS_IS: :FA "ROWS "X :CB "COLS)
 SHOW LISTVMD :RE :FA :CB "TO ;APPLICATION <<< "LISTVMD"
 END
- 
- 
+
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\
- 
- 
+
+
                M1 * M2 RESULT / SOLUTION
- 
+
  1  3  5  7  9    2  4  6  8 10    830 1880 2930 3980 5030
 11 13 15 17 19   12 14 16 18 20    890 2040 3190 4340 5490
 21 23 25 27 29 X 22 24 26 28 30 =  950 2200 3450 4700 5950
 31 33 35 37 39   32 34 36 38 40   1010 2360 3710 5060 6410
 41 43 45 47 49   42 44 46 48 50   1070 2520 3970 5420 6870
- 
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::\
- 
- 
+
+
 NOW IN LOGO!!!!
- 
- 
+
+
 THIS_IS: ROWS X COLS
- 
+
 {{1 3 5 7 9} {11 13 15 17 19} {21 23 25 27 29} {31 33 35 37 39} {41 43 45 47
 49}} =_M1 5 ROWS X 5 COLS
- 
+
 {{2 4 6 8 10} {12 14 16 18 20} {22 24 26 28 30} {32 34 36 38 40} {42 44 46 48
 50}} =_M2 5 ROWS X 5 COLS
- 
- 
+
+
 THIS_IS: 5 ROWS X 5 COLS
 {{830 1880 2930 3980 5030} {890 2040 3190 4340 5490} {950 2200 3450 4700 5950}
 {1010 2360 3710 5060 6410} {1070 2520 3970 5420 6870}}
 ```
- 
+
 
 
 ## Lua
@@ -3507,11 +3507,11 @@ THIS_IS: 5 ROWS X 5 COLS
 ```lua
 function MatMul( m1, m2 )
     if #m1[1] ~= #m2 then       -- inner matrix-dimensions must agree
-        return nil      
-    end 
+        return nil
+    end
 
     local res = {}
-    
+
     for i = 1, #m1 do
         res[i] = {}
         for j = 1, #m2[1] do
@@ -3521,7 +3521,7 @@ function MatMul( m1, m2 )
             end
         end
     end
-    
+
     return res
 end
 
@@ -3535,7 +3535,7 @@ for i = 1, #erg do
         io.write("  ")
     end
     io.write("\n")
-end 
+end
 ```
 
 
@@ -3686,16 +3686,16 @@ A . B;
 ```mathcortex
 
 >> A = [2,3; -2,1]
- 2           3         
--2           1         
+ 2           3
+-2           1
 
 >> B = [1,2;4,2]
- 1           2         
- 4           2         
+ 1           2
+ 4           2
 
 >> A * B
- 14          10        
- 2          -2  
+ 14          10
+ 2          -2
 
 ```
 
@@ -4102,7 +4102,7 @@ When using matrices in Video graphics, speed is important. Here is a matrix mult
   end function
 
   'TEST
-  '====       
+  '====
 
   % n 4
   MatrixType A[n*n],B[n*n],C[n*n]
@@ -4118,7 +4118,7 @@ When using matrices in Video graphics, speed is important. Here is a matrix mult
   MatrixMul A,B,C,n
 
   Print ShowMatrix C,n
-  
+
 ```
 
 
@@ -4167,7 +4167,7 @@ sub display { join("\n" => map join(" " => map(sprintf("%4d", $_), @$_)), @{+shi
    [3, 4]
 );
 
-@b = 
+@b =
 (
    [-3, -8, 3],
    [-2,  1, 4]
@@ -4195,7 +4195,7 @@ display($c)
 
 There are three ways in which this example differs significantly from the original Perl 5 code.  These are not esoteric differences; all three of these features typically find heavy use in Perl 6.
 
-First, we can use a real signature that can bind two arrays as arguments, because the default in Perl 6 is not to flatten arguments unless the signature specifically requests it.  
+First, we can use a real signature that can bind two arrays as arguments, because the default in Perl 6 is not to flatten arguments unless the signature specifically requests it.
 We don't need to pass the arrays with backslashes because the binding choice is made lazily
 by the signature itself at run time; in Perl 5 this choice must be made at compile time.
 Also, we can bind the arrays to formal parameters that are really lexical variable names; in Perl 5 they can only be bound to global array objects (via a typeglob assignment).
@@ -4387,8 +4387,8 @@ function multarrays($a, $b) {
     $n,$m,$p = ($a.Count - 1), ($b.Count - 1), ($b[0].Count - 1)
     if ($a[0].Count -ne $b.Count) {throw "Multiplication impossible"}
     $c = @(0)*($a[0].Count)
-    foreach ($i in 0..$n) {    
-        $c[$i] = foreach ($j in 0..$p) { 
+    foreach ($i in 0..$n) {
+        $c[$i] = foreach ($j in 0..$p) {
             $sum = 0
             foreach ($k in 0..$m){$sum += $a[$i][$k]*$b[$k][$j]}
             $sum
@@ -4438,7 +4438,7 @@ $c =
 $a * $b =
 19 22
 43 50
- 
+
 $a * $c =
 17
 39
@@ -4477,23 +4477,23 @@ Procedure multiplyMatrix(Array a(2), Array b(2), Array prd(2))
   Protected ac = ArraySize(a(), 2) ;#cols for matrix a
   Protected br = ArraySize(b())    ;#rows for matrix b
   Protected bc = ArraySize(b(), 2) ;#cols for matrix b
-  
+
   If ac = br
     Dim prd(ar, bc)
-    
+
     Protected i, j, k
     For i = 0 To ar
-      For j = 0 To bc 
+      For j = 0 To bc
         For k = 0 To br ;ac
           prd(i, j) = prd(i, j) + (a(i, k) * b(k, j))
         Next
       Next
     Next
-    
+
     ProcedureReturn #True  ;multiplication performed, product in prd()
   Else
-    ProcedureReturn #False ;multiplication not performed, dimensions invalid 
-  EndIf 
+    ProcedureReturn #False ;multiplication not performed, dimensions invalid
+  EndIf
 EndProcedure
 ```
 
@@ -4503,15 +4503,15 @@ Additional code to demonstrate use.
 DataSection
   Data.i 2,3           ;matrix a (#rows, #cols)
   Data.i 1,2,3, 4,5,6  ;elements by row
-  
+
   Data.i 3,1           ;matrix b (#rows, #cols)
   Data.i 1, 5, 9       ;elements by row
 EndDataSection
 
 Procedure displayMatrix(Array a(2), text.s)
-  Protected i, j 
+  Protected i, j
   Protected columns = ArraySize(a(), 2), rows = ArraySize(a(), 1)
-  
+
   PrintN(text + ": (" + Str(rows + 1) + ", " + Str(columns + 1) + ")")
   For i = 0 To rows
     For j = 0 To columns
@@ -4526,9 +4526,9 @@ Procedure loadMatrix(Array a(2))
   Protected rows, columns, i, j
   Read.i rows
   Read.i columns
-  
+
   Dim a(rows - 1, columns - 1)
-  
+
   For i = 0 To rows - 1
     For j = 0 To columns - 1
       Read.i a(i, j)
@@ -4543,13 +4543,13 @@ Dim c(0,0)
 If OpenConsole()
   loadMatrix(a()): displayMatrix(a(), "matrix a")
   loadMatrix(b()): displayMatrix(b(), "matrix b")
-  
+
   If multiplyMatrix(a(), b(), c())
     displayMatrix(c(), "product of a * b")
   Else
     PrintN("product of a * b is undefined")
-  EndIf 
-  
+  EndIf
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -4601,9 +4601,9 @@ v = MatrixMul( a, b )
 
 print 'v = ('
 for r in v:
-    print '[', 
+    print '[',
     for val in r:
-        print '%8.2f '%val, 
+        print '%8.2f '%val,
     print ']'
 print ')'
 
@@ -4612,9 +4612,9 @@ u = MatrixMul(b,a)
 
 print 'u = '
 for r in u:
-    print '[', 
+    print '[',
     for val in r:
-        print '%8.2f '%val, 
+        print '%8.2f '%val,
     print ']'
 print ')'
 ```
@@ -4717,8 +4717,8 @@ public rel[real, real, real] matrixMultiplication(rel[real x, real y, real v] ma
 
 //a matrix, given by a relation of the x-coordinate, y-coordinate and value.
 public rel[real x, real y, real v] matrixA = {
-<0.0,0.0,12.0>, <0.0,1.0, 6.0>, <0.0,2.0,-4.0>, 
-<1.0,0.0,-51.0>, <1.0,1.0,167.0>, <1.0,2.0,24.0>, 
+<0.0,0.0,12.0>, <0.0,1.0, 6.0>, <0.0,2.0,-4.0>,
+<1.0,0.0,-51.0>, <1.0,1.0,167.0>, <1.0,2.0,24.0>,
 <2.0,0.0,4.0>, <2.0,1.0,-68.0>, <2.0,2.0,-41.0>
 };
 ```
@@ -4913,11 +4913,11 @@ fn main()
               [0., 1., 0.],
               [0., 0., 1.]]
     };
-	
 
-    
+
+
         let c = Matrix::mult_m(a, b);
-    
+
 
     c.print();
 }
@@ -5054,17 +5054,17 @@ The SequenceL definition mirrors that definition more or less exactly:
 
 
 ```sequencel
-matmul(A(2), B(2)) [i,j] := 
-        let k := 1...size(B); 
+matmul(A(2), B(2)) [i,j] :=
+        let k := 1...size(B);
         in  sum( A[i,k] * B[k,j] );
-        
+
 //Example Use
 a := [[1, 2],
       [3, 4]];
-      
-b := [[-3, -8, 3], 
+
+b := [[-3, -8, 3],
       [-2,  1, 4]];
-      
+
 test := matmul(a, b);
 ```
 
@@ -5224,7 +5224,7 @@ val it = [[~7,~6,11],[~17,~20,25]] : int list list
 ## Stata
 
 
-###  Stata matrices 
+###  Stata matrices
 
 
 ```stata
@@ -5240,7 +5240,7 @@ r2   9   4   6  11
 ```
 
 
-###  Mata 
+###  Mata
 
 
 ```stata
@@ -5328,8 +5328,8 @@ printMatrix(m3)
 
 
 ```txt
-299.0 268.0 178.5 311.0 
-407.0 364.0 114.5 211.0 
+299.0 268.0 178.5 311.0
+407.0 364.0 114.5 211.0
 ```
 
 
@@ -5428,8 +5428,8 @@ Using the <code>print_matrix</code> procedure defined in [[Matrix Transpose#Tcl]
 
 ```txt
 % print_matrix [matrix_multiply {{1 2} {3 4}} {{-3 -8 3} {-2 1 4}}]
- -7  -6 11 
--17 -20 25 
+ -7  -6 11
+-17 -20 25
 ```
 
 
@@ -5613,7 +5613,7 @@ read -p "Hit enter to continue"
 maxlengthc=0
 time for ((row=1; row<=crows; row++)); do
     for ((col=1; col<=ccols; col++)); do
-	
+
 	# calculate component C[$row, $col]
 
 	runningtotal=0
@@ -5624,14 +5624,14 @@ time for ((row=1; row<=crows; row++)); do
 	    rowb="$j"
 	    colb="$col"
 	    indexb=$(((rowb-1)*bcols+colb))
-	    
+
 	    entry_from_A=${matrixa[$indexa]}
 	    entry_from_B=${matrixb[$indexb]}
 
 	    subtotal=$((entry_from_A * entry_from_B))
 	    ((runningtotal+=subtotal))
 	done
-	
+
 	number="$runningtotal"
 
 	# store component in the result array
@@ -5753,7 +5753,7 @@ Call multiply_matrix(matrix1,matrix2)
 Sub multiply_matrix(arr1,arr2)
 	For i = 0 To UBound(arr1)
 		For j = 0 To 2
-			WScript.StdOut.Write (arr1(i,j) * arr2(i,j)) & vbTab 
+			WScript.StdOut.Write (arr1(i,j) * arr2(i,j)) & vbTab
 		Next
 		WScript.StdOut.WriteLine
 	Next
@@ -5766,8 +5766,8 @@ End Sub
 
 ```txt
 
-27	14	4	
--35	-6	-90	
+27	14	4
+-35	-6	-90
 32	-30	30
 
 ```
@@ -5784,8 +5784,8 @@ CLOSE DATABASES ALL
 *!* The arrays could be created directly but I prefer to do this:
 CREATE CURSOR mat1 (c1 I, c2 I)
 CREATE CURSOR mat2 (c1 I, c2 I, c3 I)
-*!* Since matrix multiplication of integer arrays 
-*!* involves only multiplication and addition, 
+*!* Since matrix multiplication of integer arrays
+*!* involves only multiplication and addition,
 *!* the result will contain integers
 CREATE CURSOR result (c1 I, c2 I, c3 I)
 INSERT INTO mat1 VALUES (1, 2)
@@ -5801,22 +5801,22 @@ STORE 0 TO c
 MatMult(@a,@b,@c)
 SELECT result
 APPEND FROM ARRAY c
-BROWSE 
+BROWSE
 
 
 PROCEDURE MatMult(aa, bb, cc)
 LOCAL n As Integer, m As Integer, p As Integer, i As Integer, j As Integer, k As Integer
-IF ALEN(aa,2) = ALEN(bb,1) 
+IF ALEN(aa,2) = ALEN(bb,1)
 	n = ALEN(aa,2)
 	m = ALEN(aa,1)
 	p = ALEN(bb,2)
 	FOR i = 1 TO m
-		FOR j = 1 TO p 
+		FOR j = 1 TO p
 			FOR k = 1 TO n
 				cc[i,j] = cc[i,j] + aa[i,k]*bb[k,j]
 			ENDFOR
 		ENDFOR
-	ENDFOR		
+	ENDFOR
 ELSE
 	? "Invalid dimensions"
 ENDIF
@@ -5891,7 +5891,7 @@ With input document ...
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 >
   <xsl:output method="html"/>
- 
+
   <xsl:template match="/mult">
     <table>
       <tr><td>╭</td><td colspan="{count(*[2]/*[1]/*)}"/><td>╮</td></tr>
@@ -5902,7 +5902,7 @@ With input document ...
       <tr><td>╰</td><td colspan="{count(*[2]/*[1]/*)}"/><td>╯</td></tr>
     </table>
   </xsl:template>
-  
+
   <xsl:template name="prodMM">
     <xsl:param name="A"/>
     <xsl:param name="B"/>
@@ -5921,7 +5921,7 @@ With input document ...
         <xsl:with-param name="A" select="$A[position()>1]"/>
         <xsl:with-param name="B" select="$B"/>
       </xsl:call-template>
-    </xsl:if>       
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="prodVM">
@@ -5942,7 +5942,7 @@ With input document ...
         <xsl:with-param name="B"   select="$B"/>
         <xsl:with-param name="col" select="$col+1"/>
       </xsl:call-template>
-    </xsl:if>       
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="prod">
@@ -5960,13 +5960,13 @@ With input document ...
       </xsl:variable>
 
       <xsl:value-of select="$a[1] * $b[1] + $res"/>
-    </xsl:if>       
+    </xsl:if>
   </xsl:template>
 
 </xsl:stylesheet>
 ```
 
-         
+
 {{out}} (in a browser):
 
 ```txt
@@ -6034,10 +6034,10 @@ fcn rowFmt(row){ ("%4d "*row.len()).fmt(row.xplode()) }
 
 ```txt
 
-   9   12   15 
-  19   26   33 
-  29   40   51 
-  39   54   69 
+   9   12   15
+  19   26   33
+  29   40   51
+  39   54   69
 
 ```
 
@@ -6062,7 +6062,7 @@ type
 				write(x[i,j]);
 			end;
 			writeln;
-		end	
+		end
 	end WriteMatrix;
 
 	procedure Multiplication;
@@ -6092,7 +6092,7 @@ program matmultSUMMA;
 prototype GetSingleDim(infile:file):integer;
 prototype GetInnerDim(infile1:file; infile2:file):integer;
 
-config var 
+config var
           Afilename: string = "";
           Bfilename: string = "";
 
@@ -6110,7 +6110,7 @@ config var
           verbose: boolean = true;
           dotiming: boolean = false;
 
-region    
+region
        RA = [1..m,1..n];
        RB = [1..n,1..p];
        RC = [1..m,1..p];
@@ -6123,7 +6123,7 @@ var
     C : [RC] double;
     Aflood : [FCol] double;
     Bflood : [FRow] double;
- 
+
 
 procedure ReadA();
 var step:double;
@@ -6166,9 +6166,9 @@ var
        ResetTimer();
 
        for it := 1 to iters do
-       
+
          C := 0.0;                       -- zero C
-  
+
          for i := 1 to n do
            [FCol] Aflood := >>[,i] A;       -- flood A col
            [FRow] Bflood := >>[i,] B;       -- flood B row

@@ -49,7 +49,7 @@ BEGIN {
 
 
 ```bash
-while : ; do 
+while : ; do
   for rod in \| / - \\ ; do printf '  %s\r' $rod; sleep 0.25; done
 done
 ```
@@ -61,12 +61,12 @@ done
 
 {{trans|Go}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <time.h>
 
 int main() {
-    int i, j, ms = 250;    
+    int i, j, ms = 250;
     const char *a = "|/-\\";
     time_t start, now;
     struct timespec delay;
@@ -114,7 +114,7 @@ end
   for i = 1:1:10 {
     for j = 1:1:4 {
       set x = $case(j,1:"|",2:"/",3:"-",:"\")
-            
+
       ; $char(8) backspaces on the terminal
       write $char(8)_x
       hang 0.25
@@ -320,7 +320,7 @@ public class SpinningRod
 
 ## Javascript
 
-Node JS: 
+Node JS:
 
 ```javascript
 
@@ -419,7 +419,7 @@ Module Checkit {
       Every 250 {
             Print Over mid$(a$, n, 1)
             n++
-            if n>4 then n=1      
+            if n>4 then n=1
       }
 }
 CheckIt
@@ -500,7 +500,7 @@ while () {
 {{works with|Rakudo|2018.05}}
 Traditionally these are know as [[wp:throbber|throbbers]] or progress indicators.
 
-This implementation will accept an array of elements to use as its throbber frames, or as a scrolling marquee and optionally a delay before it returns the next element. 
+This implementation will accept an array of elements to use as its throbber frames, or as a scrolling marquee and optionally a delay before it returns the next element.
 
 
 ```perl6
@@ -635,7 +635,7 @@ halt: say bs ' '                                 /*stick a fork in it,  we're al
 ```ring
 load "stdlib.ring"
 rod = ["|", "/", "-", "\"]
-for n = 1 to len(rod)  
+for n = 1 to len(rod)
      see rod[n] + nl
      sleep(0.25)
      system("cls")
@@ -761,7 +761,7 @@ foreach n,rod in ((1).MAX, T("|", "/", "-", "\\")){
 A loop foreach a,b in (c,d) translates to
 foreach a in (c) foreach b in (d). n.MAX is a 64 bit int (9223372036854775807).
 
-A more useful example would be a worker thread showing a "I'm working" display 
+A more useful example would be a worker thread showing a "I'm working" display
 (in another thread) and turning it off when that work is done.
 
 ```zkl

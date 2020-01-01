@@ -16,7 +16,7 @@ Programming languages often have built-in routines to convert a non-negative int
 
 
 ;Task:
-Print a small range of integers in some different bases, as supported by standard routines of your programming language. 
+Print a small range of integers in some different bases, as supported by standard routines of your programming language.
 
 
 ;Note:
@@ -213,7 +213,7 @@ BC(NumStr,InputBase=8,OutputBase=10) {
   Return S
 }
 ```
- 
+
 
 
 ## AWK
@@ -240,7 +240,7 @@ $ awk '{printf("%d 0%o 0x%x\n",$1,$1,$1)}'
       PRINT STR$(0)
       PRINT STR$(123456789)
       PRINT STR$(-987654321)
-      
+
       REM STR$~ converts to a hexadecimal string:
       PRINT STR$~(43981)
       PRINT STR$~(-1)
@@ -282,8 +282,8 @@ for(i=1;i<10;i++) {
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -385,8 +385,8 @@ Binary conversion is not standard.
 
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iomanip>
 
 int main()
@@ -709,7 +709,7 @@ end do
 ## FreeBASIC
 
 FreeBASIC has built in functions called Hex, Str, Oct and Bin which convert decimal numbers into hexadecimal, decimal,
-octal and binary strings respectively. Here's an example: 
+octal and binary strings respectively. Here's an example:
 
 ```freebasic
 ' FB 1.05.0 Win64
@@ -951,8 +951,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf, fprintf, and sprintf] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf, fprintf, and sprintf]
 {{libheader|Unicon Code Library}}
 
 Output:
@@ -1235,7 +1235,7 @@ end
 
 
 ```Mathematica
-Scan[Print[IntegerString[#, 2], ",", IntegerString[#, 8], 
+Scan[Print[IntegerString[#, 2], ",", IntegerString[#, 8],
 ",",#, ",",IntegerString[#, 16],",", IntegerString[#, 36]]&, Range[38]]
 ```
 
@@ -1309,38 +1309,38 @@ END Conv.
 
 Output:
 <pre style="height:30ex;overflow:scroll">
-1 1 1 
-2 2 2 
-3 3 3 
-4 4 4 
-5 5 5 
-6 6 6 
-7 7 7 
-8 8 10 
-9 9 11 
-10 a 12 
-11 b 13 
-12 c 14 
-13 d 15 
-14 e 16 
-15 f 17 
-16 10 20 
-17 11 21 
-18 12 22 
-19 13 23 
-20 14 24 
-21 15 25 
-22 16 26 
-23 17 27 
-24 18 30 
-25 19 31 
-26 1a 32 
-27 1b 33 
-28 1c 34 
-29 1d 35 
-30 1e 36 
-31 1f 37 
-32 20 40 
+1 1 1
+2 2 2
+3 3 3
+4 4 4
+5 5 5
+6 6 6
+7 7 7
+8 8 10
+9 9 11
+10 a 12
+11 b 13
+12 c 14
+13 d 15
+14 e 16
+15 f 17
+16 10 20
+17 11 21
+18 12 22
+19 13 23
+20 14 24
+21 15 25
+22 16 26
+23 17 27
+24 18 30
+25 19 31
+26 1a 32
+27 1b 33
+28 1c 34
+29 1d 35
+30 1e 36
+31 1f 37
+32 20 40
 33 21 41
 
 ```
@@ -1670,11 +1670,11 @@ Binary (b), Octal (o), Decimal (d), and Hexadecimal (X and x) are supported by t
 ```python>>>
  for n in range(34):
 	print " {0:6b} {1:3o} {2:2d} {3:2X}".format(n, n, n, n)
-	#The following would give the same output, and, 
+	#The following would give the same output, and,
 	#due to the outer brackets, works with Python 3.0 too
 	#print ( " {n:6b} {n:3o} {n:2d} {n:2X}".format(n=n) )
 
-	
+
       0   0  0  0
       1   1  1  1
      10   2  2  2
@@ -1783,7 +1783,7 @@ as.numeric(x)
 ===dec ◄──► bin, hex===
 Note that some REXX interpreters have the '''D2B''' (decimal-->binary) built-in function.
 
-So, the '''D2B''' function was coded here for those REXX interpreters that don't have that function. 
+So, the '''D2B''' function was coded here for those REXX interpreters that don't have that function.
 
 
 The reason for the apparent complexity of the '''D2B''' function is to handle the special case of
@@ -1855,7 +1855,7 @@ d2b: return word(strip(x2b(d2x(arg(1))),'L',0) 0,1)  /*convert dec──►bin*/
  47  in decimal is       101111  in binary           2F  in hexadecimal.
  48  in decimal is       110000  in binary           30  in hexadecimal.
  49  in decimal is       110001  in binary           31  in hexadecimal.
- 50  in decimal is       110010  in binary           32  in hexadecimal. 
+ 50  in decimal is       110010  in binary           32  in hexadecimal.
 
 ```
 
@@ -1864,7 +1864,7 @@ d2b: return word(strip(x2b(d2x(arg(1))),'L',0) 0,1)  /*convert dec──►bin*/
 Rexx also has the ability to use base 256 and uses the D2C and C2D function for this purpose.
 
 
-Of course, using base 256 is hampered in ASCII machines in that some lower values are 
+Of course, using base 256 is hampered in ASCII machines in that some lower values are
 
 interpreted by the operating system as control characters and therefore aren't displayed as their (true) glyph.
 
@@ -1953,7 +1953,7 @@ d2b: return word(strip(x2b(d2x(arg(1))),'L',0) 0,1)  /*convert dec──►bin*/
 see string(0) + nl
 see string(123456789) + nl
 see string(-987654321) + nl
- 
+
 see upper(hex(43981)) + nl
 see upper(hex(-1)) + nl
 
@@ -2020,7 +2020,7 @@ puts
   11111  37 31 1F
  100000  40 32 20
  100001  41 33 21
- 
+
  100.to_s(2) => 1100100
  100.to_s(8) => 144
  100.to_s(10) => 100

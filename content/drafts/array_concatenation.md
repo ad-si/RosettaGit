@@ -10,11 +10,11 @@ categories = []
 tags = []
 +++
 
-{{task|Data Structures}} 
+{{task|Data Structures}}
 [[Category:Simple]]
- 
+
 ;Task:
-Show how to concatenate two arrays in your language. 
+Show how to concatenate two arrays in your language.
 
 
 If this is as simple as <code><var>array1</var> + <var>array2</var></code>, so be it.
@@ -167,7 +167,7 @@ main(void)
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}} 
+{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 
 <!-- {{not tested with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8.8d.fc9.i386]}} -->
 Includes operators for ''appending'' and ''prefixing'' an array to an existing flexible array:
@@ -178,7 +178,7 @@ MODE ARGLIST = FLEX[0]ARGTYPE;
 
 OP + = (ARGLIST a, b)ARGLIST: (
   [LWB a:UPB a - LWB a + 1 + UPB b - LWB b + 1 ]ARGTYPE out;
-  ( 
+  (
     out[LWB a:UPB a]:=a,
     out[UPB a+1:]:=b
   );
@@ -376,7 +376,7 @@ end concat
 .equ STDOUT, 1     @ Linux output console
 .equ EXIT,   1     @ Linux syscall
 .equ WRITE,  4     @ Linux syscall
-.equ NBMAXITEMS,  20   @ 
+.equ NBMAXITEMS,  20   @
 /* Initialized data */
 .data
 szMessLenArea: .ascii "The length of area 3  is : "
@@ -404,12 +404,12 @@ pt2_3:   	.int szString5
 ptVoid_2:		.int 0
 
 /* UnInitialized data */
-.bss 
+.bss
 tablesPoi3:    .skip   4 * NBMAXITEMS
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* saves 2 registers */
 
@@ -434,16 +434,16 @@ main:                /* entry of program  */
     addne r0,#1             @ increment counter
     addne r4,#1             @ increment counter
     bne 2b                  @ and loop
-	
-	@ count items number in area 3 
-    ldr r1,iAdrtablesPoi3  @ begin pointer table 
+
+	@ count items number in area 3
+    ldr r1,iAdrtablesPoi3  @ begin pointer table
     mov r0,#0    @ counter
 3:              @ begin loop
     ldr r2,[r1,r0,lsl #2]    @ read string pointer address item r0 (4 bytes by pointer)
     cmp r2,#0                @ is null ?
     addne r0,#1             @ no increment counter
     bne 3b                  @ and loop
- 
+
     ldr r1,iAdrsZoneconv   @ conversion decimal
     bl conversion10S
     ldr r0,iAdrszMessLenArea
@@ -461,11 +461,11 @@ iAdrszMessLenArea:  .int szMessLenArea
 iAdrsZoneconv:		.int  sZoneconv
 iAdrszCarriageReturn:  .int  szCarriageReturn
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -479,7 +479,7 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 
 /***************************************************/
@@ -498,36 +498,36 @@ conversion10S:
     mov r4,#10   /* longueur de la zone */
 1: /* debut de boucle de conversion */
     bl divisionpar10 /* division  */
-    add r1,#48        /* ajout de 48 au reste pour conversion ascii */	
+    add r1,#48        /* ajout de 48 au reste pour conversion ascii */
     strb r1,[r2,r4]  /* stockage du byte en début de zone r5 + la position r4 */
     sub r4,r4,#1      /* position précedente */
-    cmp r0,#0     
+    cmp r0,#0
     bne 1b	       /* boucle si quotient different de zéro */
     strb r5,[r2,r4]  /* stockage du signe à la position courante */
     subs r4,r4,#1   /* position précedente */
     blt  100f         /* si r4 < 0  fin  */
     /* sinon il faut completer le debut de la zone avec des blancs */
-    mov r3,#' '   /* caractere espace */	
+    mov r3,#' '   /* caractere espace */
 2:
     strb r3,[r2,r4]  /* stockage du byte  */
     subs r4,r4,#1   /* position précedente */
     bge 2b        /* boucle si r4 plus grand ou egal a zero */
 100:  /* fin standard de la fonction  */
     pop {r0-r5,lr}   /*restaur desregistres */
-    bx lr   
+    bx lr
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
-/* r0 retourne le quotient */	
+/* r0 retourne le quotient */
 /* r1 retourne le reste  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
    push {r2-r4}   /* save registers  */
-   mov r4,r0 
+   mov r4,r0
    ldr r3, .Ls_magic_number_10 /* r1 <- magic_number */
    smull r1, r2, r3, r0   /* r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) */
    mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
@@ -569,7 +569,7 @@ print arr1 + arr2
 ## AutoHotkey
 
 
-###  True Arrays 
+###  True Arrays
 
 {{works with|AutoHotkey_L}}
 
@@ -595,7 +595,7 @@ Arr_disp(arr) {
 ```
 
 
-###  Legacy versions 
+###  Legacy versions
 
 [[AutoHotkey_Basic]] does not have real Arrays, but the user can implement them quite easily. For example:
 
@@ -652,7 +652,7 @@ Message box shows:
 
 _ArrayConcatenate is a standard function in Autoit, there´s no need to write it on your own
 
- 
+
 
 
 ```AutoIt
@@ -697,10 +697,10 @@ BEGIN {
 
 function concat_array(a,b,c) {
     for (i in a) {
-        c[++nc]=a[i]	
+        c[++nc]=a[i]
     }
     for (i in b) {
-       c[++nc]=b[i]	
+       c[++nc]=b[i]
     }
 }
 ```
@@ -778,12 +778,12 @@ NEXT
       a() = 1, 2, 3, 4
       b() = 5, 6, 7, 8, 9
       PROCconcat(a(), b(), c())
-      
+
       FOR i% = 0 TO DIM(c(),1)
         PRINT c(i%)
       NEXT
       END
-      
+
       DEF PROCconcat(a(), b(), RETURN c())
       LOCAL s%, na%, nb%
       s% = ^a(1) - ^a(0) : REM Size of each array element
@@ -870,8 +870,8 @@ blsq ) {1 2 3}{4 5 6}_+
 
 A way to concatenate two C arrays when you know their size (and usually so it is)
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <string.h>
 
@@ -910,8 +910,8 @@ int main(void)
 ## C++
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <iostream>
 
 int main()
@@ -929,11 +929,11 @@ int main()
 
 
 {{works with|C++11}}
-Similar to above but using initialization schematics. 
+Similar to above but using initialization schematics.
 
 
-```cpp>#include <vector
-                                                                                                       
+```cpp
+#include <vector>
 #include <iostream>
 
 int main() {
@@ -952,8 +952,8 @@ int main() {
 This is another solution with function level templates and pointers.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 using namespace std;
 
@@ -985,10 +985,10 @@ int* concatArrays( T1& array_1, T2& array_2) {
 }
 
 int main() {
-  
+
   int ary[4] = {1, 2, 3, 123};
   int anotherAry[3] = {4, 5, 6};
-  
+
   int *r = concatArrays(ary, anotherAry);
 
   cout << *(r + 0) << endl;
@@ -1260,7 +1260,7 @@ BEGIN
 	END;
 	StdLog.Char(']');StdLog.Ln;
 END ShowArray;
-	
+
 PROCEDURE Do*;
 VAR
 	x: ARRAY 10 OF INTEGER;
@@ -1272,10 +1272,10 @@ BEGIN
 	FOR i := 0 TO LEN(x) - 1 DO x[i] := i END;
 	FOR i := 0 TO LEN(y) - 1 DO y[i] := i END;
 	Concat(x,y,z);StdLog.String("1> ");ShowArray(z);
-	
+
 	NEW(w,LEN(x) + LEN(y));
 	Concat(x,y,z);StdLog.String("2:> ");ShowArray(z);
-	
+
 	StdLog.String("3:> ");ShowArray(Concat2(x,y));
 END Do;
 
@@ -1302,11 +1302,11 @@ Execute: ^Q ArrayConcat.Do <br/>
 
 ```d
 import std.stdio: writeln;
- 
+
 void main() {
     int[] a = [1, 2];
     int[] b = [4, 5, 6];
- 
+
     writeln(a, " ~ ", b, " = ", a ~ b);
 }
 ```
@@ -1483,7 +1483,7 @@ program ArrayConcatenation
 	c int[];
 	c.appendAll(a);
 	c.appendAll(b);
-		
+
 	for (i int from 1 to c.getSize())
 	    SysLib.writeStdout("Element " :: i :: " = " :: c[i]);
 	end
@@ -1551,17 +1551,17 @@ iex(3)> Enum.concat([1..3, [4,5,6], 7..9])
 import Element exposing (show, toHtml)  -- elm-package install evancz/elm-graphics
 import Html.App exposing (beginnerProgram)
 import Array exposing (Array, append, initialize)
- 
- 
+
+
 xs : Array Int
 xs =
   initialize 3 identity  -- [0, 1, 2]
- 
+
 ys : Array Int
 ys =
   initialize 3 <| (+) 3  -- [3, 4, 5]
- 
-main = beginnerProgram { model = () 
+
+main = beginnerProgram { model = ()
                        , view = \_ -> toHtml (show (append xs ys))
                        , update = \_ _ -> ()
                        }
@@ -1596,7 +1596,7 @@ On the shell,
 [1,2,3,4,5,6]
 2> lists:append([1, 2, 3], [4, 5, 6]).
 [1,2,3,4,5,6]
-3> 
+3>
 
 ```
 
@@ -1741,7 +1741,7 @@ Note 'addAll' is destructive.  Write 'a.dup.addAll(b)' to create a fresh list.
 
 
 ```Forth
-: $!+   ( a u a' -- a'+u )  
+: $!+   ( a u a' -- a'+u )
   2dup + >r swap move r> ;
 : cat   ( a2 u2 a1 u1 -- a3 u1+u2 )
   align here dup >r $!+ $!+ r> tuck - dup allot ;
@@ -1771,7 +1771,7 @@ program Concat_Arrays
   integer, dimension(3) :: a = [1, 2, 3] ! (/1, 2, 3/)
   integer, dimension(3) :: b = [4, 5, 6] ! (/4, 5, 6/)
   integer, dimension(:), allocatable :: c, d
-  
+
   allocate(c(size(a)+size(b)))
   c(1 : size(a)) = a
   c(size(a)+1 : size(a)+size(b)) = b
@@ -1803,9 +1803,9 @@ Sub ConcatArrays(a() As String, b() As String, c() As String)
    Next
    For i = 0 To bSize - 1
      c(UBound(a) + i + 1) = b(LBound(b) + i)
-   Next 
+   Next
 End Sub
- 
+
 Dim a(3) As String = {"The", "quick", "brown", "fox"}
 Dim b(4) As String = {"jumped", "over", "the", "lazy", "dog"}
 Dim c() As String
@@ -2153,7 +2153,7 @@ A list is in Haskell one of the most common composite data types (constructed fr
 
 Append two lists, i.e.:
 ```txt
- 
+
 [x1, ..., xm] ++ [y1, ..., yn] == [x1, ..., xm, y1, ..., yn]
 [x1, ..., xm] ++ [y1, ...] == [x1, ..., xm, y1, ...]
 ```
@@ -2205,7 +2205,7 @@ ENDDO
 main
 	a $= [1, 2, 3]
 	b $= [4, 5, 6]
- 
+
 	print(a + b)
 }
 ```
@@ -2287,10 +2287,10 @@ Note that this requires that the arrays have the same size at the side at which 
        6
  > print,[a,b]
  Unable to concatenate variables because the dimensions do not agree: B.
- Execution halted at: $MAIN$          
+ Execution halted at: $MAIN$
  > print,[[a],[b]]
  Unable to concatenate variables because the dimensions do not agree: B.
- Execution halted at: $MAIN$    
+ Execution halted at: $MAIN$
 
 ```
 
@@ -2308,7 +2308,7 @@ Idris> :module Data.Vect
 *Data/Vect> (the (Vect 2 Nat) [1, 2]) ++ (the (Vect 3 Nat) [3, 4, 5])
 [1, 2, 3, 4, 5] : Vect 5 Nat
 ```
- 
+
 
 
 ## Inform 7
@@ -2408,7 +2408,7 @@ public static Object[] concat(Object[] arr1, Object[] arr2) {
 
 ## JavaScript
 
-The <code>Array.concat()</code> method returns a new array comprised of this array joined with other array(s) and/or value(s). 
+The <code>Array.concat()</code> method returns a new array comprised of this array joined with other array(s) and/or value(s).
 
 ```javascript
 var a = [1,2,3],
@@ -2435,8 +2435,8 @@ See, for a function with an analogous type signature, '''concat''' in the Haskel
 
 
    return concat(
-      [["alpha", "beta", "gamma"], 
-      ["delta", "epsilon", "zeta"], 
+      [["alpha", "beta", "gamma"],
+      ["delta", "epsilon", "zeta"],
       ["eta", "theta", "iota"]]
   );
 
@@ -2456,15 +2456,15 @@ See, for a function with an analogous type signature, '''concat''' in the Haskel
 ## jq
 
 If a and b are two arrays, then a+b is their concatenation.
-Similarly for a+b+c.  
+Similarly for a+b+c.
 
 To concatenate the component arrays of an array, A, the <tt>add</tt> filter can be used: <tt>A|add</tt>
 
-jq also supports streams, which are somewhat array-like, so it may be worth mentioning that the concatenation of two or more streams can be accomplished using "," instead of "+". 
+jq also supports streams, which are somewhat array-like, so it may be worth mentioning that the concatenation of two or more streams can be accomplished using "," instead of "+".
 ```jq
 [1,2] + [3] + [null] # => [1,2,3,null]
 
-[range(1;3), 3, null] # => [1,2,3,null] 
+[range(1;3), 3, null] # => [1,2,3,null]
 
 ```
 
@@ -2514,7 +2514,7 @@ Concatenations on larger dimensions also use ",", often combined with other oper
  "345"
  "678")
 
-   ab,dd   
+   ab,dd
 ("abc"
  "def"
  "ghi"
@@ -2767,7 +2767,7 @@ COMBINE is used to combine lists or words. SENTENCE is used to combine lists and
 
 ```logo
 
-to combine-arrays :a1 :a2        
+to combine-arrays :a1 :a2
   output listtoarray sentence arraytolist :a1 arraytolist :a2
 end
 show combine-arrays {1 2 3} {4 5 6}   ; {1 2 3 4 5 6}
@@ -2891,7 +2891,7 @@ A()=Cons(A(), B(), A(), B())
 Dim A(Dimension(A(),1)/2, 2)
 For I=0 to Dimension(A(),1)-1 {
       For j=0 to Dimension(A(),2)-1 {
-            Print A(i, j),      
+            Print A(i, j),
       }
       Print
 }
@@ -2956,7 +2956,7 @@ For multi-dimensional arrays, there is also the function cat():
  c = randn([3,4,5]);
 >> d = randn([3,4,7]);
 >> e = cat(3,c,d);
->> size(e) 
+>> size(e)
    ans =
 
     3    4   12
@@ -3087,7 +3087,7 @@ module ArrayCat
 
 ## NetRexx
 
-NetRexx arrays are identical to [[Java|Java's]] so all the techniques described in the [[#Java|Java]] section apply to NetRexx too.  This example uses the <tt>Collection</tt> classes to merge two arrays. 
+NetRexx arrays are identical to [[Java|Java's]] so all the techniques described in the [[#Java|Java]] section apply to NetRexx too.  This example uses the <tt>Collection</tt> classes to merge two arrays.
 
 ```netrexx
 /* NetRexx */
@@ -3124,17 +3124,17 @@ loop m_ = 0 to merged.length - 1
 
 ```txt
 
----------------------------------------- 
-0 Ogof Ffynnon Ddu 
-1 Ogof Draenen 
----------------------------------------- 
-0 Malham Tarn Pot 
-1 Greygill Hole 
----------------------------------------- 
-0 Ogof Ffynnon Ddu 
-1 Ogof Draenen 
-2 Malham Tarn Pot 
-3 Greygill Hole 
+----------------------------------------
+0 Ogof Ffynnon Ddu
+1 Ogof Draenen
+----------------------------------------
+0 Malham Tarn Pot
+1 Greygill Hole
+----------------------------------------
+0 Ogof Ffynnon Ddu
+1 Ogof Draenen
+2 Malham Tarn Pot
+3 Greygill Hole
 
 ```
 
@@ -3150,13 +3150,13 @@ loop m_ = 0 to merged.length - 1
 
 (println "Append lists:  " (append '(3 a 5 3) (sequence 1 9)))
 
-(println "Multi append:  " 
+(println "Multi append:  "
          (append '(this is)
                  '(a test)
                  '(of the emergency)
                  (sequence 3 1)))
 
-(println "Append arrays: " 
+(println "Append arrays: "
          (append '((x 56) (b 99)) '((z 34) (c 23) (r 88))))
 
 (exit)
@@ -3278,7 +3278,7 @@ TYPE
   IntArray = POINTER TO ARRAY OF INTEGER;
 VAR
   x, y, z: IntArray;
-  
+
   PROCEDURE InitArray(VAR x: IntArray;from: INTEGER);
   VAR
     i: LONGINT;
@@ -3288,7 +3288,7 @@ VAR
       INC(from)
     END
   END InitArray;
-  
+
   PROCEDURE Concat(x,y: IntArray; VAR z: IntArray);
   VAR
     i: LONGINT;
@@ -3310,16 +3310,16 @@ VAR
     END;
     Out.Char(']');Out.Ln
   END Show;
-  
+
 BEGIN
   (* Standard types *)
   NEW(x,5);InitArray(x,1);
   NEW(y,10);InitArray(y,6);
   NEW(z,LEN(x^) + LEN(y^));
-  
+
   Concat(x,y,z);
   Show(z)
-  
+
 END ArrayConcat.
 
 ```
@@ -3344,28 +3344,28 @@ bundle Default {
      function : Main(args : String[]) ~ Nil {
        array1 := [3, 5, 7];
        array2 := [2, 4, 6];
-      
+
        array3 := Copy(array1, array2);
        each(i : array3) {
          array3[i]->PrintLine();
        };
   }
-  
+
   function : native : Copy(array1 : Int[], array2 : Int[]) ~ Int[] {
      max := array1->Size() + array2->Size();
      array3 := Int->New[max];
-      
+
      i := 0;
      for(i := i; i < array1->Size(); i += 1;) {
        array3[i] := array1[i];
      };
-      
+
      j := 0;
      for(i := i; i < max; i += 1;) {
        array3[i] := array2[j];
        j += 1;
      };
-      
+
       return array3;
     }
   }
@@ -3429,7 +3429,7 @@ val array1and2 : int array = [|1; 2; 3; 4; 5; 6|]
 ```Oforth
 import: mapping
 
-[1, 2, 3 ] [ 4, 5, 6, 7 ] + 
+[1, 2, 3 ] [ 4, 5, 6, 7 ] +
 ```
 
 
@@ -3482,8 +3482,8 @@ Array a now has  6 items
 
 Order supports two main aggregate types: tuples and sequences (similar to lists in other languages). Most "interesting" operations are limited to sequences, but both support an append operation, and each can be converted to the other.
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 ORDER_PP( 8tuple_append(8tuple(1, 2, 3), 8tuple(4, 5, 6), 8pair(7, 8)) )
 // -> (1,2,3,4,5,6,7,8)
@@ -3555,7 +3555,7 @@ concat(u,v)
 
 ## Perl
 
-In Perl, arrays placed into list context are flattened: 
+In Perl, arrays placed into list context are flattened:
 
 ```perl
 my @arr1 = (1, 2, 3);
@@ -3662,7 +3662,7 @@ and non-destructive concatenations:
 -> (a b c)
 : (append A B)                      # Append lists in 'A' and 'B'
 -> (1 2 3 a b c)
-: A           
+: A
 -> (1 2 3)
 : B
 -> (a b c)                          # Arguments are not modified
@@ -3718,13 +3718,13 @@ Matrix B is extended by placing matrix C on its diagonal:
 
 {{out}}
 <lang>
-Please type elements for a 3 x 4 matrix: 
+Please type elements for a 3 x 4 matrix:
 
-Please type elements for a 2 x 2 matrix: 
+Please type elements for a 2 x 2 matrix:
 
    13   14
    15   16
-Composite matrix: 
+Composite matrix:
 
     1    2    3    4    0    0
     5    6    7    8    0    0
@@ -3809,8 +3809,8 @@ Procedure displayArray(Array a(1), msg.s)
     Print(Str(a(i)))
     If i <> ArraySize(a())
       Print(", ")
-    EndIf 
-  Next 
+    EndIf
+  Next
   PrintN("]")
 EndProcedure
 
@@ -3818,7 +3818,7 @@ Procedure randomElements(Array a(1), lo, hi)
   Protected i
   For i = 0 To ArraySize(a())
     a(i) = random(hi - lo) + lo
-  Next 
+  Next
 EndProcedure
 
 Procedure arrayConcat(Array a(1), Array b(1), Array c(1))
@@ -3837,14 +3837,14 @@ If OpenConsole()
   Dim a(random(3) + 1)
   Dim b(random(3) + 1)
   Dim c(0) ;array will be resized by arrayConcat()
-  
+
   randomElements(a(), -5, 5)
   randomElements(b(), -5, 5)
   displayArray(a(), "a:")
   displayArray(b(), "b:")
   arrayConcat(a(), b(), c())
   displayArray(c(), "concat of a[] + b[]:")
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -3863,7 +3863,7 @@ concat of a[] + b[]: [5, 2, -4, -1, -2, 0, -4, -1]
 
 ## Python
 
-The <code>[http://docs.python.org/library/stdtypes.html#sequence-types-str-unicode-list-tuple-buffer-xrange +]</code> operator concatenates two lists and returns a new list.  
+The <code>[http://docs.python.org/library/stdtypes.html#sequence-types-str-unicode-list-tuple-buffer-xrange +]</code> operator concatenates two lists and returns a new list.
 The <code>[http://docs.python.org/library/stdtypes.html#mutable-sequence-types list.extend]</code> method appends elements of another list to the receiver.
 
 ```python
@@ -3998,15 +3998,15 @@ needs array'
 
 ## REXX
 
-REXX doesn't have arrays as such, but it has something that looks, feels, and tastes like arrays: 
+REXX doesn't have arrays as such, but it has something that looks, feels, and tastes like arrays:
 ::::* stemmed variables
 
 Simply, a stemmed array is a variable with an appended dot ('''.''') followed by a symbol (it's normally an integer or an alphanumeric name).
-  
-There is no way to preallocate a stemmed variable, REXX just assigns them as they are created (assigned a value). 
+
+There is no way to preallocate a stemmed variable, REXX just assigns them as they are created (assigned a value).
 
 
-As such, there isn't an easy way to keep track of the number of "elements" in a REXX "array"   (unless the programmer maintains a list). 
+As such, there isn't an easy way to keep track of the number of "elements" in a REXX "array"   (unless the programmer maintains a list).
 
 
 Consider:
@@ -4022,7 +4022,7 @@ where now we have three "elements", and they are disjointed (another word for ''
 There are ways to handle this in REXX however.
 
 
-When assigning stemmed arrays, it is common to assign "element" zero to the number of values, 
+When assigning stemmed arrays, it is common to assign "element" zero to the number of values,
 
 assuming that the stemmed variables are sequential.
 
@@ -4062,8 +4062,8 @@ n=j-1
              end   /*k*/
 say 'elements=' n
 say
-             do m=1  for n              
-             say 'c.'m"="c.m           /*show a "merged"  C  array nums.*/   
+             do m=1  for n
+             say 'c.'m"="c.m           /*show a "merged"  C  array nums.*/
              end   /*m*/
                                        /*stick a fork in it, we're done.*/
 ```
@@ -4113,7 +4113,7 @@ arr3 = [7, 8, 9]
 arr4 = arr1 + arr2
 see arr4
 see nl
-arr5 = arr4 + arr3  
+arr5 = arr4 + arr3
 see arr5
 
 ```
@@ -4391,22 +4391,22 @@ BEGIN  ! Concatenate arrays - of REAL, here;
         REAL ARRAY DATA(1:N);
 
         ! Return a new REAL_ARRAY containing
-        ! the values from this REAL_ARRAY 
+        ! the values from this REAL_ARRAY
         ! followed by the values from other;
         REF(REAL_ARRAY) PROCEDURE CONCAT(other);
             REF(REAL_ARRAY) other;
         BEGIN
             REF(REAL_ARRAY) C;
             INTEGER I;
-     
+
             C :- NEW REAL_ARRAY(N + other.N);
-     
+
             FOR I := 1 STEP 1 UNTIL N DO
                 C.DATA(I) := DATA(I);
-     
+
             FOR I := 1 STEP 1 UNTIL other.N DO
                 C.DATA(N + I) := other.DATA(I);
-     
+
             CONCAT :- C;
         END;
 
@@ -4417,7 +4417,7 @@ BEGIN  ! Concatenate arrays - of REAL, here;
             linearFillFrom(DATA, 1, N, start, stride);
             linearFill :- this REAL_ARRAY
         END;
-        
+
         PROCEDURE out(sink); REF(printfile) sink;
         BEGIN
             INTEGER i;
@@ -4447,7 +4447,7 @@ BEGIN  ! Concatenate arrays - of REAL, here;
         !  reduce one index expression to a variable
         FOR i := 1 STEP 1 UNTIL M DO
             c.DATA(N + i) := b(b_+i);
-            
+
         concatenate :- c;
     END concatenate REAL ARRAYs;
 
@@ -4622,7 +4622,7 @@ r3   0   0   1
 ```
 
 
-###  Mata 
+###  Mata
 
 
 ```stata
@@ -4694,7 +4694,7 @@ That last example as displayed in pretty-printing mode:
 <math>\operatorname{augment} \left(\begin{bmatrix}1 \\ 2\end{bmatrix}, \begin{bmatrix}3 \\ 4\end{bmatrix}\right)</math>
 
 :<math>\begin{bmatrix}
-1 & 3 \\ 
+1 & 3 \\
 2 & 4
 \end{bmatrix}</math>
 
@@ -4781,7 +4781,7 @@ out a endl console
 
 
 ```vala
-int[] array_concat(int[]a,int[]b){	
+int[] array_concat(int[]a,int[]b){
 	int[] c = new int[a.length + b.length];
 	Memory.copy(c, a, a.length * sizeof(int));
 	Memory.copy(&c[a.length], b, b.length * sizeof(int));
@@ -4938,18 +4938,18 @@ System.print(arr1)
 ```Yabasic
 sub arrayConcatenation(a(), b())
 	local ta, tb, nt, i
-	
+
 	ta = arraysize(a(), 1)
 	tb = arraysize(b(), 1)
-	
+
 	nt = ta + tb
-	
+
 	redim a(nt)
-	
+
 	for i = ta + 1 to nt
 		a(i) = b(i - ta)
 	next i
-	
+
 	return nt
 end sub
 
@@ -5015,11 +5015,11 @@ T(1,2).extend(4,5,6)    //-->L(1,2,4,5,6)
 
 <lang>
 module Main;
-import 
+import
 	System.Collections.ArrayList as Array,
 	System.Console as Console;
 
-type 
+type
 	Vector =  array {math} * of integer;
 
 procedure Concat(x,y: Vector): Vector;
@@ -5074,7 +5074,7 @@ begin
 end WriteAry;
 
 var
-	a,b: Vector;	
+	a,b: Vector;
 	x,y: Array;
 begin
 	a := [1,2,3,4];
@@ -5085,7 +5085,7 @@ begin
 	y := new Array(4);
 	x.Add(2);x.Add(4);x.Add(6);x.Add(8);
 	y.Add(3);y.Add(5);y.Add(9);y.Add(11);
-	
+
 	WriteAry(Concat2(x,y));
 end Main.
 

@@ -13,7 +13,7 @@ tags = []
 {{task|Higher-order functions}}
 
 ;Task:
-Create a function, <span style="font-family:serif">compose</span>,   whose two arguments   <span style="font-family:serif">''f''</span>   and   <span style="font-family:serif">''g''</span>,   are both functions with one argument. 
+Create a function, <span style="font-family:serif">compose</span>,   whose two arguments   <span style="font-family:serif">''f''</span>   and   <span style="font-family:serif">''g''</span>,   are both functions with one argument.
 
 
 The result of <span style="font-family:serif">compose</span> is to be a function of one argument, (lets call the argument   <span style="font-family:serif">''x''</span>),   which works like applying function   <span style="font-family:serif"> ''f'' </span>   to the result of applying function   <span style="font-family:serif"> ''g'' </span>   to   <span style="font-family:serif"> ''x''</span>.
@@ -52,7 +52,7 @@ The interface of a generic functions package. The package can be instantiated wi
 
 ```ada
 generic
-   type Argument is private;      
+   type Argument is private;
 package Functions is
    type Primitive_Operation is not null
       access function (Value : Argument) return Argument;
@@ -88,7 +88,7 @@ package body Functions is
    begin
       return Left & (1 => Right);
    end "*";
-   
+
    function "*" (Left, Right : Primitive_Operation) return Func is
    begin
       return (Left, Right);
@@ -201,7 +201,7 @@ main(void)
 
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}}
 Note: Returning <code>PROC (REAL x)REAL: f1(f2(x))</code> from a function apparently
-violates standard '''ALGOL 68''''s scoping rules.  [[ALGOL 68G]] warns about this during 
+violates standard '''ALGOL 68''''s scoping rules.  [[ALGOL 68G]] warns about this during
 parsing, and then rejects during runtime.
 
 ```algol68
@@ -311,9 +311,9 @@ end half
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     compose([half, succ, root])'s |λ|(5)
-    
+
     --> 1.61803398875
 end run
 
@@ -328,7 +328,7 @@ on compose(fs)
                     mReturn(f)'s |λ|(a)
                 end |λ|
             end script
-            
+
             foldr(result, x, fs)
         end |λ|
     end script
@@ -346,7 +346,7 @@ on foldr(f, startValue, xs)
     end tell
 end foldr
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -458,7 +458,7 @@ compose(f,g,x) { ; function composition
    Return %f%(%g%(x))
 }
 ```
- 
+
 
 
 ## BBC BASIC
@@ -469,14 +469,14 @@ compose(f,g,x) { ; function composition
       REM Create some functions for testing:
       DEF FNsqr(a) = SQR(a)
       DEF FNabs(a) = ABS(a)
-      
+
       REM Create the function composition:
       SqrAbs = FNcompose(FNsqr(), FNabs())
-      
+
       REM Test calling the composition:
       x = -2 : PRINT ; x, FN(SqrAbs)(x)
       END
-      
+
       DEF FNcompose(RETURN f%, RETURN g%)
       LOCAL f$, p% : DIM p% 7 : p%!0 = f% : p%!4 = g%
       f$ = "(x)=" + CHR$&A4 + "(&" + STR$~p% + ")(" + \
@@ -521,7 +521,7 @@ void button1_onClick (Widget widget)
 
 ```brat
 compose = { f, g | { x | f g x } }
-  
+
 #Test
 add1 = { x | x + 1 }
 double = { x | x * 2 }
@@ -535,8 +535,8 @@ p b 1 #should print 4
 
 Only works for functions taking a double and returning a double:
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 
 /* generic interface for functors from double to double */
 typedef struct double_to_double {
@@ -571,7 +571,7 @@ double_to_double *compose(double_to_double *f,
 
 #include <math.h>
 
-/* we can make functors for sin and asin by using 
+/* we can make functors for sin and asin by using
    the following as "fn" in a functor */
 double sin_call(double_to_double *this, double x) {
   return sin(x);
@@ -607,8 +607,8 @@ int main() {
 ## C++
 
 
-```cpp>#include <functional
-
+```cpp
+#include <functional>
 #include <cmath>
 #include <iostream>
 
@@ -648,8 +648,8 @@ int main() {
 
 {{works with|C++11}} composing <code>std::function</code>
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <functional>
 #include <cmath>
 
@@ -676,13 +676,13 @@ This much simpler version uses <code>decltype(auto)</code>.
 
 #include <iostream>
 #include <math.h>
- 
+
 template <class F, class G>
 decltype(auto) compose(F&& f, G&& g)
 {
     return [=](auto x) { return f(g(x)); };
 }
- 
+
 int main() {
   std::cout << compose(sin, asin)(0.5) << "\n";
   return 0;
@@ -693,8 +693,8 @@ int main() {
 
 {{works with|GCC}} GCC's C++ library has a built-in compose function
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cmath>
 #include <ext/functional>
 
@@ -844,7 +844,7 @@ This alternate solution, more ugly and more difficult, never closes on any lexic
 
 ----
 
-In this last example, a macro is used to compose any number of single parameter functions.  
+In this last example, a macro is used to compose any number of single parameter functions.
 
 ```lisp
 CL-USER> (defmacro compose (fn-name &rest args)
@@ -868,7 +868,7 @@ CL-USER> (values (f pi) (g pi) (h pi))
 1
 2.0L0
 1
-CL-USER> 
+CL-USER>
 ```
 
 
@@ -1016,7 +1016,7 @@ def compose(f, g) {
 ;; 3) compiled composition
 
 (define (sincos x) (sin (cos x)))
-sincos → (λ (_x) (⭕️ #sin (#cos _x))) 
+sincos → (λ (_x) (⭕️ #sin (#cos _x)))
 
 ```
 
@@ -1048,17 +1048,17 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 extension op : Func1
 {
     compose(Func1 f)
         = (x => self(f(x)));
 }
- 
+
 public program()
 {
     var fg := (x => x + 1).compose:(x => x * x);
- 
+
     console.printLine(fg(3))
 }
 ```
@@ -1080,7 +1080,7 @@ public program()
 ```elixir
 defmodule RC do
   def compose(f, g), do: fn(x) -> f.(g.(x)) end
-  
+
   def multicompose(fs), do: List.foldl(fs, fn(x) -> x end, &compose/2)
 end
 
@@ -1162,7 +1162,7 @@ Another possibility is the <code>cl.el</code> <code>lexical-let</code> to hold <
 
 compose(F,G) -> fun(X) -> F(G(X)) end.
 
-multicompose(Fs) -> 
+multicompose(Fs) ->
     lists:foldl(fun compose/2, fun(X) -> X end, Fs).
 ```
 
@@ -1172,7 +1172,7 @@ Using them:
 ```erlang>1
  (fn:compose(fun math:sin/1, fun math:asin/1))(0.5).
 0.5
-2> Sin_asin_plus1 = fn:multicompose([fun math:sin/1, fun math:asin/1, fun(X) -> X + 1 end]). 
+2> Sin_asin_plus1 = fn:multicompose([fun math:sin/1, fun math:asin/1, fun(X) -> X + 1 end]).
 #Fun<tests.0.59446746>
 82> Sin_asin_plus1(0.5).
 1.5
@@ -1184,7 +1184,7 @@ Using them:
 =={{header|F Sharp|F#}}==
 The most-used composition operator in F# is <code>>></code>. It implements ''forward'' composition, i.e. <code>f >> g</code> is a function which calls f first and then calls g on the result.
 
-The ''reverse'' composition operator <code><<</code>, on the other hand, exactly fulfills the requirements of the compose function described in this task. 
+The ''reverse'' composition operator <code><<</code>, on the other hand, exactly fulfills the requirements of the compose function described in this task.
 
 We can implement composition manually like this (F# Interactive session):
 
@@ -1598,13 +1598,13 @@ invocable all                                            # permit string invocat
 procedure compose(fL[])   #: compose(f1,f2,...) returns the functional composition of f1,f2,... as a co-expression
     local x,f,saveSource
 
-    every case type(x := !fL) of { 
+    every case type(x := !fL) of {
        "procedure"|"co-expression": &null                # procedures and co-expressions are fine
        "string" : if not proc(x,1) then runnerr(123,fL)  # as are invocable strings (unary operators, and procedures)
        default: runerr(123,fL)
        }
 
-    fL := reverse(fL)                                    # reverse and isolate from mutable side-effects 
+    fL := reverse(fL)                                    # reverse and isolate from mutable side-effects
     cf := create {  saveSource := &source                # don't forget where we came from
                     repeat {
                         x := (x@saveSource)[1]           # return result and resume here
@@ -1653,7 +1653,7 @@ Of course, given that <code>@</code> is only one character long and is a built-i
 Tentative new example:
 
 
-```j>f=: 
+```j>f=:
 .@(1&o.)@%:
 g=: 1&+@|@(2&o.)
 h=: f@g
@@ -1871,7 +1871,7 @@ Recursion apart, multiple composition can be written in at least two general way
         half = x => x / 2;
 
     return compose(half, succ, sqrt)(5);
-    
+
     // --> 1.618033988749895
 })();
 ```
@@ -1894,7 +1894,7 @@ Composition is the default operation in Joy. The composition of two functions is
 
 ## jq
 
-The equivalent in jq of a function with one argument is a 0-arity filter. For example, in jq, exp is the exponential function and can be evaluated like so: <tt>0.5 | exp</tt>. 
+The equivalent in jq of a function with one argument is a 0-arity filter. For example, in jq, exp is the exponential function and can be evaluated like so: <tt>0.5 | exp</tt>.
 
 We therefore illustrate here how a function that composes two 0-arity filters can be written:
 
@@ -2316,7 +2316,7 @@ module Composition
     {
         f(g(x))
     }
-    
+
     Main() : void
     {
         def SinAsin = Compose(Sin, Asin, _);
@@ -2362,8 +2362,8 @@ echo plusminustwo(10)
 We restrict ourselves to functions that take and return one object.
 
 
-```objc>#include <Foundation/Foundation.h
-
+```objc
+#include <Foundation/Foundation.h>
 
 typedef id (^Function)(id);
 
@@ -2395,9 +2395,9 @@ int main()
 
     Function f = encapsulate(my_f);
     Function g = encapsulate(my_g);
-  
+
     Function composed = compose(f, g);
-  
+
     printf("g(2.0) = %lf\n", [g(@2.0) doubleValue]);
     printf("f(2.0) = %lf\n", [f(@2.0) doubleValue]);
     printf("f(g(2.0)) = %lf\n", [composed(@2.0) doubleValue]);
@@ -2418,12 +2418,12 @@ bundle Default {
   class Test {
     @f : static : (Int) ~ Int;
     @g : static : (Int) ~ Int;
-    
+
     function : Main(args : String[]) ~ Nil {
       compose := Composer(F(Int) ~ Int, G(Int) ~ Int);
       compose(13)->PrintLine();
     }
-    
+
     function : F(a : Int) ~ Int {
       return a + 14;
     }
@@ -2431,11 +2431,11 @@ bundle Default {
     function : G(a : Int) ~ Int {
       return a + 15;
     }
-    
+
     function : Compose(x : Int) ~ Int {
       return @f(@g(x));
     }
-    
+
     function : Composer(f : (Int) ~ Int, g : (Int) ~ Int) ~ (Int) ~ Int {
       @f := f;
       @g := g;
@@ -2487,17 +2487,17 @@ r(pi/3)
 ## Oforth
 
 
-Oforth uses RPN notation. Function composition of f and g is just calling : 
+Oforth uses RPN notation. Function composition of f and g is just calling :
 
 ```Oforth>g f</lang
 
-If a block is needed, a compose function can be implemented : 
+If a block is needed, a compose function can be implemented :
 
 ```Oforth
 : compose(f, g)  #[ g perform f perform ] ;
 ```
 
-Usage : 
+Usage :
 
 ```Oforth
 1.2 compose(#asin, #sin) perform
@@ -2511,8 +2511,8 @@ The last line returns : [1.4142135623731, 2]
 
 Order supplies the built-in function <code>8compose</code> for this purpose. However, a manual implementation might be:
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8comp ORDER_PP_FN( \
 8fn(8F, 8G, 8fn(8X, 8ap(8F, 8ap(8G, 8X)))) )
@@ -2607,7 +2607,7 @@ sequence ctable = {}
 
 function compose(integer f, integer g)
     ctable = append(ctable,{f,g})
-    return length(ctable)   
+    return length(ctable)
 end function
 
 function call_composite(integer f, atom x)
@@ -2750,7 +2750,7 @@ function g ($x) {
 }
 function f ($x) {
     $x*$x*$x
-}  
+}
 f (g 1)
 
 ```
@@ -2772,7 +2772,7 @@ fg f g 1
 In both cases the answer is:
 
 ```txt
- 8 
+ 8
 ```
 
 
@@ -2782,7 +2782,7 @@ In both cases the answer is:
 
 ```PureBasic
 ;Declare how our function looks like
-Prototype.i Func(Arg.i)  
+Prototype.i Func(Arg.i)
 
 ; Make a procedure that composes any functions of type "Func"
 Procedure Compose(*a.Func,*b.Func, x)
@@ -3014,7 +3014,7 @@ REBOL [
 	URL: http://rosettacode.org/wiki/Functional_Composition
 ]
 
-; "compose" means something else in REBOL, therefore I use a 'compose-functions name. 
+; "compose" means something else in REBOL, therefore I use a 'compose-functions name.
 
 compose-functions: func [
     {compose the given functions F and G}
@@ -3158,7 +3158,7 @@ val add2 = compose(add1, add1)
 ```
 
 
-We can achieve a more natural style by creating a container class for composable functions, which provides 
+We can achieve a more natural style by creating a container class for composable functions, which provides
 the compose method 'o':
 
 
@@ -3345,7 +3345,7 @@ set sin_asin [compose sin asin]
 function compose<T, U, V> (fn1: (input: T) => U, fn2: (input: U) => V){
     return function(value: T) {
         return fn2(fn1(value))
-    } 
+    }
 }
 
 function size (s: string): number { return s.length; }
@@ -3363,8 +3363,8 @@ console.log(evenSize("ABC")) // false
 
 ## UNIX Shell
 
-Each function takes its argument from standard input, 
-and puts its result to standard output. 
+Each function takes its argument from standard input,
+and puts its result to standard output.
 Then the composition of ''f'' and ''g'' is a shell pipeline, <code>c() { g | f; }</code>.
 
 {{works with|Bourne Shell}}
@@ -3387,23 +3387,23 @@ This solution uses no external tools, just Bash itself.
 
 
 ```bash
-  
+
 #compose a new function consisting of the application of 2 unary functions
 
-             compose () { f="$1"; g="$2"; x="$3"; "$f" "$("$g" "$x")";} 
+             compose () { f="$1"; g="$2"; x="$3"; "$f" "$("$g" "$x")";}
 
 
-chartolowervowel() 
+chartolowervowel()
 # Usage:  chartolowervowel "A" --> "a"
 
 #Based on a to_upper script in Chris F. A. Johnson's book Pro Bash Programming Ch7. String Manipulation
 #(with minor tweaks to use local variables and return the value of the converted character
 #http://cfajohnson.com/books/cfajohnson/pbp/
 #highly recommended I have a copy and have bought another for a friend
-{  
- 
+{
+
    local LWR="";
-     
+
 	   case $1  in
                           A*) _LWR=a ;;
 #                         B*) _LWR=b ;;
@@ -3431,12 +3431,12 @@ chartolowervowel()
 #			  X*) _LWR=x ;;
 #			  Y*) _LWR=y ;;
 #			  Z*) _LWR=z ;;
-			   *) _LWR=${1%${1#?}} ;;      
+			   *) _LWR=${1%${1#?}} ;;
 		  esac;
 		echo "$_LWR";
-                               }   
+                               }
 
-strdownvowel() 
+strdownvowel()
 # Usage:  strdownvowel "STRING" --> "STRiNG"
 
 #Based on an upword script in Chris F. A. Johnson's book Pro Bash Programming Ch7. String Manipulation
@@ -3452,24 +3452,24 @@ strdownvowel()
      chartolowervowel "$word" >> /dev/null
      _DWNWORD=$_DWNWORD$_LWR
      word=${word#?}  ## remove the first character from $word
-	  
+
   done
   Echo "$_DWNWORD"
 }
- 
 
 
 
-chartoupper() 
+
+chartoupper()
 # Usage:  chartoupper "s" --> "S"
 
 #From Chris F. A. Johnson's book Pro Bash Programming Ch7. String Manipulation
 #(with minor tweaks to use local variables and return the value of the converted character
 #http://cfajohnson.com/books/cfajohnson/pbp/
 #highly recommended I have a copy and have bought another for a friend
- { 
+ {
      local UPR="";
-	 
+
        case $1  in
                           a*) _UPR=A ;;
                           b*) _UPR=B ;;
@@ -3497,12 +3497,12 @@ chartoupper()
 			  x*) _UPR=X ;;
 			  y*) _UPR=Y ;;
 			  z*) _UPR=Z ;;
-			   *) _UPR=${1%${1#?}} ;;      
+			   *) _UPR=${1%${1#?}} ;;
 		  esac;
 		echo "$_UPR";
-		              } 
+		              }
 
-strupcase() 
+strupcase()
 # Usage:  strupcase "string" --> "STRING"
 
 #Based on an upword script in Chris F. A. Johnson's book Pro Bash Programming Ch7. String Manipulation
@@ -3518,12 +3518,12 @@ strupcase()
      chartoupper "$word" >> /dev/null
      _UPWORD=$_UPWORD$_UPR
      word=${word#?}  ## remove the first character from $word
-	  
+
   done
   Echo "$_UPWORD"
 }
 
-compose  strdownvowel strupcase "Cozy lummox gives smart squid who asks for job pen." 
+compose  strdownvowel strupcase "Cozy lummox gives smart squid who asks for job pen."
 # --> CoZY LuMMoX GiVeS SMaRT SQuiD WHo aSKS FoR JoB PeN.
 ```
 
@@ -3618,20 +3618,20 @@ option explicit
 class closure
 
 	private composition
-	
+
 	sub compose( f1, f2 )
 		composition = f2 & "(" & f1 & "(p1))"
 	end sub
-	
+
 	public default function apply( p1 )
 		apply = eval( composition )
 	end function
-	
+
 	public property get formula
 		formula = composition
 	end property
-	
-end class 
+
+end class
 
 ```
 

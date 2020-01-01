@@ -11,16 +11,16 @@ tags = []
 +++
 
 {{task|Arbitrary precision}}
-[[Category:Arbitrary precision]] 
+[[Category:Arbitrary precision]]
 [[Category:Arithmetic operations]]
 
 ;Task:
-Explicitly implement   [[wp:long multiplication|long multiplication]].  
+Explicitly implement   [[wp:long multiplication|long multiplication]].
 
 This is one possible approach to arbitrary-precision integer algebra.
 
 
-For output, display the result of   <big><big> 2<sup>64</sup> * 2<sup>64</sup>.</big></big>  
+For output, display the result of   <big><big> 2<sup>64</sup> * 2<sup>64</sup>.</big></big>
 
 
 The decimal representation of   <big><big> 2<sup>64</sup> </big></big>   is:
@@ -69,12 +69,12 @@ RETURN   L      R13,4(0,R13)       epilog
          XR     R15,R15            set return code
          BR     R14                return to caller
 RLOOPII  DS     F
-*        
+*
 LONGMULT EQU    *                  function longmult z=(x,y)
          MVC    LENSHIFT,=H'0'     shift=''
          MVC    LENZ,=H'0'         z=''
-         LH     R6,LENX     
-         LA     R6,1(R6)           from lenx     
+         LH     R6,LENX
+         LA     R6,1(R6)           from lenx
          XR     R8,R8
          BCTR   R8,0               by -1
          LA     R9,0               to 1
@@ -90,11 +90,11 @@ LOOPI    BXLE   R6,R8,ELOOPI       do i=lenx to 1 by -1
          SR     R0,R0
          STH    R0,CARRY           carry=0
          LH     R7,LENY
-         LA     R7,1(R7)           from lenx     
+         LA     R7,1(R7)           from lenx
          XR     R10,R10
          BCTR   R10,0              by -1
          LA     R11,0              to 1
-LOOPJ1   BXLE   R7,R10,ELOOPJ1     do j=leny to 1 by -1 
+LOOPJ1   BXLE   R7,R10,ELOOPJ1     do j=leny to 1 by -1
          LA     R2,Y
          AR     R2,R7              +j
          BCTR   R2,0
@@ -148,7 +148,7 @@ IF1      LH     R4,LENZ
          LA     R2,1(R2)
          STH    R2,L               l=lenz+1
          B      EIF1
-ELSE1    LH     R2,LENT            else 
+ELSE1    LH     R2,LENT            else
          LA     R2,1(R2)
          STH    R2,L               l=lent+1
 EIF1     EQU    *
@@ -309,7 +309,7 @@ SHIFT    DS     CL94
 LENTEMP  DS     H
 TEMP     DS     CL94
 LL       EQU    94
-         YREGS  
+         YREGS
          END    LONGINT
 ```
 
@@ -632,7 +632,7 @@ procedure Long_Multiplication is
          Put (Element (Result, Index));
       end loop;
    end Put;
-   
+
    X : Long_Number := (0 => 0, 1 => 0, 2 => 1) * (0 => 0, 1 => 0, 2 => 1);
 begin
    Put (X);
@@ -706,7 +706,7 @@ cancel and end up as being zero.  This is useful for testing.
 ### Built in or standard distribution routines
 
 {{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
-[[ALGOL 68G]] allows any precision for '''long long int''' to be defined 
+[[ALGOL 68G]] allows any precision for '''long long int''' to be defined
 when the program is run, e.g. 200 digits.
 
 ```algol68
@@ -765,13 +765,13 @@ INT digit base digit width = ( digit base <=  UPB hex digit repr + 1 | 1 | 1 + E
 
 INT next digit = -1; # reverse order so digits appear in "normal" order when printed #
 
-PROC raise value error = ([]STRING args)VOID: 
+PROC raise value error = ([]STRING args)VOID:
   ( print(("Value Error: ", args, new line)); stop );
 
-PROC raise not implemented error = ([]STRING args)VOID: 
+PROC raise not implemented error = ([]STRING args)VOID:
   ( print(("Not implemented Error: ", args, new line)); stop );
 
-PROC raise integer not implemented error = (STRING message)INTEGER: 
+PROC raise integer not implemented error = (STRING message)INTEGER:
   ( raise not implemented error(("INTEGER ", message)); SKIP );
 
 INT half max int = max int OVER 2;
@@ -801,7 +801,7 @@ OP INTEGERINIT = (INT number)INTEGER: INTEGERINIT LENG LENG number;
 # remove leading zero "digits" #
 OP NORMALISE = ([]DIGIT number)INTEGER: (
   INT leading zeros := LWB number - 1;
-  FOR digit number FROM LWB number TO UPB number 
+  FOR digit number FROM LWB number TO UPB number
     WHILE number[digit number] = 0 DO leading zeros := digit number OD;
   IF leading zeros = UPB number THEN 0 ELSE number[leading zeros+1:] FI
 );
@@ -828,7 +828,7 @@ OP REPR = (INTEGER number)STRING:(
   STRING sep = ( digit base digit width > 1 | "," | "" );
   INT width := digit base digit width + UPB sep;
   [width * UPB number - UPB sep]CHAR out;
-  INT leading zeros := LWB out - 1; 
+  INT leading zeros := LWB out - 1;
   FOR digit TO UPB number DO
     INT start := digit * width - width + 1;
     out[start:start+digit base digit width-1] := REPR number[digit];
@@ -838,8 +838,8 @@ OP REPR = (INTEGER number)STRING:(
   OD;
 
 # eliminate leading zeros #
-  FOR digit out FROM LWB out TO UPB out 
-    WHILE out[digit out] = "0" OR out[digit out] = sep 
+  FOR digit out FROM LWB out TO UPB out
+    WHILE out[digit out] = "0" OR out[digit out] = sep
   DO leading zeros := digit out OD;
 
   CHAR sign = ( number[1]<0 | "-" | "+" );
@@ -857,7 +857,7 @@ OP REPR = (INTEGER number)STRING:(
 OP * = (INTEGER a, b)INTEGER:(
 
 # initialise out to all zeros #
-  [UPB a + UPB b]INT ab; FOR place ab TO UPB ab DO ab[place ab]:=0 OD; 
+  [UPB a + UPB b]INT ab; FOR place ab TO UPB ab DO ab[place ab]:=0 OD;
 
   FOR place a FROM UPB a BY next digit TO LWB a DO
     DIGIT carry := 0;
@@ -1583,7 +1583,7 @@ Library method:
       INSTALL @lib$+"BB4WMAPMLIB"
       MAPM_DllPath$ = @lib$+"BB4WMAPM.DLL"
       PROCMAPM_Init
-      
+
       twoto64$ = "18446744073709551616"
       PRINT "2^64 * 2^64 = " ; FNMAPM_Multiply(twoto64$, twoto64$)
 ```
@@ -1594,7 +1594,7 @@ Explicit method:
       twoto64$ = "18446744073709551616"
       PRINT "2^64 * 2^64 = " ; FNlongmult(twoto64$, twoto64$)
       END
-      
+
       DEF FNlongmult(num1$, num2$)
       LOCAL C%, I%, J%, S%, num1&(), num2&(), num3&()
       S% = LEN(num1$)+LEN(num2$)
@@ -1625,8 +1625,8 @@ Explicit method:
 =={{Header|C}}==
 Doing it as if by hand.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 /* c = a * b.  Caller is responsible for memory.
@@ -1774,7 +1774,7 @@ int main( int argc, char* argv[] )
     cout << "Product: = " << a * b << endl << endl;
     return system( "pause" );
 }
-//-------------------------------------------------------------------------------------------------- 
+//--------------------------------------------------------------------------------------------------
 
 ```
 
@@ -1832,7 +1832,7 @@ struct ZPlus_	// unsigned int, represented as digits base 10
 ZPlus_ operator*(const ZPlus_& lhs, const ZPlus_& rhs)
 {
 	ZPlus_ retval(0);
-	// hold enough space 
+	// hold enough space
 	retval.digits_.resize(lhs.digits_.size() + rhs.digits_.size(), 0ul);
 	// accumulate one-digit multiples
 	for (size_t ir = 0; ir < rhs.digits_.size(); ++ir)
@@ -2098,7 +2098,7 @@ BcdInteger =
     for c in s
       arr.unshift parseInt(c)
     arr
-    
+
   from_integer: (n) ->
     result = []
     while n > 0
@@ -2111,10 +2111,10 @@ BcdInteger =
     for elem in arr
       s = elem.toString() + s
     s
-    
+
   sum: (arr1, arr2) ->
     if arr1.length < arr2.length
-      return BcdInteger.sum(arr2, arr1) 
+      return BcdInteger.sum(arr2, arr1)
     carry = 0
     result= []
     for d1, pos in arr1
@@ -2124,11 +2124,11 @@ BcdInteger =
     if carry
       result.push 1
     result
-    
+
   multiply_by_power_of_ten: (arr, power_of_ten) ->
     result = (0 for i in [0...power_of_ten])
     result.concat arr
-    
+
   product_by_integer: (arr, n) ->
     result = []
     for digit, i in arr
@@ -2136,7 +2136,7 @@ BcdInteger =
       prod = BcdInteger.multiply_by_power_of_ten prod, i
       result = BcdInteger.sum result, prod
     result
-    
+
   product: (arr1, arr2) ->
     result = []
     for digit, i in arr1
@@ -2144,7 +2144,7 @@ BcdInteger =
       prod = BcdInteger.multiply_by_power_of_ten prod, i
       result = BcdInteger.sum result, prod
     result
-    
+
 x = BcdInteger.from_integer 1
 for i in [1..64]
   x = BcdInteger.product_by_integer x, 2
@@ -2286,11 +2286,11 @@ We implement long multiplication by multiplying polynomials, knowing that the nu
 (lib 'math) ;; for poly multiplication
 
 ;; convert string of decimal digits to polynomial
-;; "1234" → x^3 +2x^2 +3x +4 
+;; "1234" → x^3 +2x^2 +3x +4
 ;; least-significant digit first
 (define (string->long N)
 	(reverse (map string->number (string->list N))))
-	
+
 ;; convert polynomial to string
 (define (long->string N)
 (if (pair? N)
@@ -2299,10 +2299,10 @@ We implement long multiplication by multiplying polynomials, knowing that the nu
 ;; convert poly coefficients to base 10
 (define (poly->10 P (carry 0))
 (append
-	(for/list ((coeff P)) 
-		(set! coeff (+ carry coeff )) 
+	(for/list ((coeff P))
+		(set! coeff (+ carry coeff ))
 		(set! carry (quotient coeff 10)) ;; new carry
-		(modulo coeff 10)) 
+		(modulo coeff 10))
 	(if(zero? carry) null (list carry)))) ;; remove leading 0 if any
 
 ;; long multiplication
@@ -2462,11 +2462,11 @@ module LongMoltiplication
   end interface
 
 contains
-  
+
   subroutine longmolt_s2l(istring, num)
     character(len=*), intent(in) :: istring
     type(longnum), intent(out) :: num
-    
+
     integer :: i, l
 
     l = len(istring)
@@ -2481,7 +2481,7 @@ contains
   function longmolt_ll(a, b) result(c)
     type(longnum) :: c
     type(longnum), intent(in) :: a, b
-    
+
     integer, dimension(:,:), allocatable :: t
     integer :: ntlen, i, j
 
@@ -2490,11 +2490,11 @@ contains
     c%num = 0
 
     allocate(t(size(b%num), ntlen))
-    
+
     t = 0
     forall(i=1:size(b%num), j=1:size(a%num)) t(i, j+i-1) = b%num(i) * a%num(j)
 
-    do j=2, ntlen    
+    do j=2, ntlen
        forall(i=1:size(b%num)) t(i, j) = t(i, j) + t(i, j-1)/10
     end do
 
@@ -2505,7 +2505,7 @@ contains
     end do
 
     c%num = mod(c%num, 10)
-    
+
     deallocate(t)
   end function longmolt_ll
 
@@ -2514,7 +2514,7 @@ contains
     type(longnum), intent(in) :: num
 
     integer :: i, j
-    
+
     do j=size(num%num), 2, -1
        if ( num%num(j) /= 0 ) exit
     end do
@@ -2558,16 +2558,16 @@ Const As UInteger base_ = 1000000000 ' base 1,000,000,000
 Function multiply(a1 As String, b1 As String) As String
 
     Dim As String a = a1, b = b1
-    
-    Trim(a) : Trim(b) ' remove spaces 
+
+    Trim(a) : Trim(b) ' remove spaces
     If Len(a) = 0 Or Len(b) = 0 Then Return "0"
 
-    If Len(a) + Len(b) > 10000 Then 
+    If Len(a) + Len(b) > 10000 Then
         Print "number(s) are to big"
         Sleep 5000,1
         Return ""
     End If
-    
+
     If Len(a) < Len(b) Then
         Swap a, b
     End If
@@ -3072,7 +3072,7 @@ public class LongMultBinary {
 
 		public MyLongNum(String value) {
 			// each of our 32-bit digits can store at least 9 decimal digit's worth
-			this.digits = new int[value.length() / 9 + 1]; 
+			this.digits = new int[value.length() / 9 + 1];
 			this.digitsUsed = 0;
 			// To lower the number of bignum operations, handle nine digits at a time.
 			for (int i = 0; i < value.length(); i+=9) {
@@ -3189,12 +3189,12 @@ function mult(strNum1,strNum2){
     var a1 = strNum1.split("").reverse();
     var a2 = strNum2.toString().split("").reverse();
     var aResult = new Array;
- 
+
     for ( var iterNum1 = 0; iterNum1 < a1.length; iterNum1++ ) {
         for ( var iterNum2 = 0; iterNum2 < a2.length; iterNum2++ ) {
             var idxIter = iterNum1 + iterNum2;    // Get the current array position.
             aResult[idxIter] = a1[iterNum1] * a2[iterNum2] + ( idxIter >= aResult.length ? 0 : aResult[idxIter] );
- 
+
             if ( aResult[idxIter] > 9 ) {    // Carrying
                 aResult[idxIter + 1] = Math.floor( aResult[idxIter] / 10 ) + ( idxIter + 1 >= aResult.length ? 0 : aResult[idxIter + 1] );
                 aResult[idxIter] %= 10;
@@ -3218,7 +3218,7 @@ mult('18446744073709551616', '18446744073709551616')
 
 ===Functional (ES 5)===
 
-The function below accepts integer string or native integer arguments, but as JavaScript (unlike Haskell and Python, for example), lacks an arbitrary precision integer type, larger inputs to this function (beyond  the scale of c. 2^54) need to take the form of integer strings, to avoid rounding. 
+The function below accepts integer string or native integer arguments, but as JavaScript (unlike Haskell and Python, for example), lacks an arbitrary precision integer type, larger inputs to this function (beyond  the scale of c. 2^54) need to take the form of integer strings, to avoid rounding.
 
 For the same reason, the output always takes the form of an arbitrary precision integer string, rather than a native integer data type. (See the '''largeIntegerString()''' helper function below)
 
@@ -3319,7 +3319,7 @@ For the same reason, the output always takes the form of an arbitrary precision 
 {{Out}}
 
 ```txt
-{"fromIntegerStrings":"340282366920938463463374607431768211456", 
+{"fromIntegerStrings":"340282366920938463463374607431768211456",
 "fromBoundedIntegers":"340282366920938477630474056040704000000"}
 ```
 
@@ -3336,8 +3336,8 @@ def long_multiply(num1; num2):
 
    def stripsign:
      .[0:1] as $a
-     | if $a == "-" then [ -1, .[1:]] 
-     elif $a == "+" then [  1, .[1:]] 
+     | if $a == "-" then [ -1, .[1:]]
+     elif $a == "+" then [  1, .[1:]]
      else [1, .]
      end;
 
@@ -3367,7 +3367,7 @@ def long_multiply(num1; num2):
                 .[$ix] = $r
               end
          )
-       ) 
+       )
     | reverse | map(.+48) | implode;
 
      (num1|stripsign) as $a1
@@ -3536,7 +3536,7 @@ fun main(args: Array<out String>) {
 
 ```scheme
 
-Natural positive numbers are defined as strings, for instance 123 -> "123". 
+Natural positive numbers are defined as strings, for instance 123 -> "123".
 {lambda talk} has a small set of primitives working on strings, [equal?, empty?, chars, charAt, substring]
 
 1) helper functions
@@ -3544,21 +3544,21 @@ Natural positive numbers are defined as strings, for instance 123 -> "123".
 {def lastchar
  {lambda {:w}
   {charAt {- {chars :w} 1} :w}
-}}     
+}}
 {def butlast
  {lambda {:w}
   {substring 0 {- {chars :w} 1} :w}
-}} 
+}}
 {def zeros
  {lambda {:n}
   {if {< :n 1}
-   then 
+   then
    else 0{zeros {- :n 1}}
 }}}
 
 2) add function
 
-{def add 
+{def add
  {def add.r
  {lambda {:a :b :c :d}
   {if {equal? :a #}
@@ -3573,7 +3573,7 @@ Natural positive numbers are defined as strings, for instance 123 -> "123".
     {add.r #{zeros {- :n {chars :a}}}:a
            #{zeros {- :n {chars :b}}}:b  # 0}
   } :a :b {max {chars :a} {chars :b}}}
-}}  
+}}
 
 3) mul function
 
@@ -3593,7 +3593,7 @@ Natural positive numbers are defined as strings, for instance 123 -> "123".
  }}}
  {lambda {:a :b}
   {mul.r :a #:b 0 0}
-}} 
+}}
 
 4) applying to the task
 
@@ -3601,7 +3601,7 @@ Due to JS numbers limits, we compute first 2^32 using the JS pow function, then 
 
 2^32 = '{def p32 {pow 2 32}}          -> '{p32}  = 4294967296
 2^64 = '{def p64 {mul {p32} {p32}}}   -> '{p64}  = 18446744073709551616
-2^128 = '{def p128 {mul {p64} {p64}}} -> '{p128} = 340282366920938463463374607431768211456 
+2^128 = '{def p128 {mul {p64} {p64}}} -> '{p128} = 340282366920938463463374607431768211456
 
 This can be tested in http://lambdaway.free.fr/lambdaspeech/?view=numbers8
 
@@ -3652,7 +3652,7 @@ function longMult$(a$, b$)
         t$ = multByD$(b$, d)
         c$ = addLong$(c$, t$+shift$)
         shift$ = shift$ +"0"
-    'print d, t$, c$ 
+    'print d, t$, c$
     next
     if signA*signB<0 then c$ = "-" + c$
     'print c$
@@ -3669,7 +3669,7 @@ for i = len(a$) to 1 step -1
         carry = int(c/10)
         c = c mod 10
         'print a, c
-        c$ = str$(c)+c$ 
+        c$ = str$(c)+c$
 next
     if carry>0 then c$ = str$(carry)+c$
     'print c$
@@ -3703,7 +3703,7 @@ function pad$(a$,n)  'pad from right with 0 to length n
         pad$ = "0"+pad$
      wend
 end function
- 
+
 
 
 ```
@@ -3784,7 +3784,7 @@ So our custom function takes about 73 second, the built-in function a couple of 
 
 ## NetRexx
 
-{{trans|REXX}} 
+{{trans|REXX}}
 A reworking of the example at Rexx Version 2.
 
 ```NetRexx
@@ -3963,8 +3963,8 @@ Output:
 ## Oforth
 
 
-Oforth handles arbitrary precision integers, so there is no need to 
-implement long multiplication : 
+Oforth handles arbitrary precision integers, so there is no need to
+implement long multiplication :
 
 {{out}}
 
@@ -3977,7 +3977,7 @@ implement long multiplication :
 
 
 But, if long multiplication was to be implemented :
-  
+
 A natural is implemented as a list of integers with base 1000000000
 (in order to print them easier)
 
@@ -3986,18 +3986,18 @@ Just multiplication is implemented here.
 
 ```Oforth
 Number Class new: Natural(v)
- 
+
 Natural method: initialize  := v ;
 Natural method: _v  @v ;
- 
+
 Natural classMethod: newValues super new ;
 Natural classMethod: newFrom   asList self newValues ;
- 
+
 Natural method: *(n)
 | v i j l x k |
    n _v ->v
    ListBuffer initValue(@v size v size + 1+, 0) ->l
- 
+
    v size loop: i [
       i v at dup ->x 0 ifEq: [ continue ]
       0 @v size loop: j [
@@ -4008,7 +4008,7 @@ Natural method: *(n)
       ]
    while(l last 0 == l size 0 <> and) [ l removeLast drop ]
    l dup freeze Natural newValues ;
- 
+
 Natural method: <<
 | i |
    @v last <<
@@ -4344,7 +4344,7 @@ They are held lsb-style mainly so that trimming a trailing 0 does not alter thei
 
 ```Phix
 constant base = 1_000_000_000
- 
+
 function bcd9_mult(sequence a, sequence b)
 sequence c
 integer j
@@ -4354,7 +4354,7 @@ atom ci
         j = i+length(b)-1
         c[i..j] = sq_add(c[i..j],sq_mul(a[i],b))
     end for
- 
+
     for i=1 to length(c) do
         ci = c[i]
         if ci>base then
@@ -4362,13 +4362,13 @@ atom ci
             c[i] = remainder(ci,base)
         end if
     end for
- 
+
     if c[$]=0 then
         c = c[1..$-1]
     end if
     return c
 end function
- 
+
 function atom_to_bcd9(atom a)
 sequence s = {}
     while a>0 do
@@ -4386,15 +4386,15 @@ string s = sprintf("%d",a[$])
     -- (might want to trim leading 0s here)
     return s
 end function
- 
+
 sequence a, b, c
- 
+
 a = atom_to_bcd9(power(2,32))
 printf(1,"a is %s\n",{bcd9_to_str(a)})
- 
+
 b = bcd9_mult(a,a)
 printf(1,"a*a is %s\n",{bcd9_to_str(b)})
- 
+
 c = bcd9_mult(b,b)
 printf(1,"a*a*a*a is %s\n",{bcd9_to_str(c)})
 ```
@@ -4491,7 +4491,7 @@ if(lm('18446744073709551616','18446744073709551616') == '34028236692093846346337
 (de multi (A B)
    (setq A (format A) B (reverse (chop B)))
    (let Result 0
-      (for (I . X) B 
+      (for (I . X) B
          (setq Result (+ Result (* (format X) A (** 10 (dec I)))))) ) )
 
 ```
@@ -4683,7 +4683,7 @@ LongMultiplication "18446744073709551616" "18446744073709551616"
 <b>Output:</b>
 
 ```txt
- 
+
 340282366920938463463374607431768211456
 
 ```
@@ -4692,7 +4692,7 @@ LongMultiplication "18446744073709551616" "18446744073709551616"
 
 ## Prolog
 
-Arbitrary precision arithmetic is native in most Prolog implementations. 
+Arbitrary precision arithmetic is native in most Prolog implementations.
 
 ```Prolog
  ?- X is 2**64 * 2**64.
@@ -4741,18 +4741,18 @@ Procedure stringToDecDigitFmt(numString.s, *x.decDigitFmt)
       Case '0' To '9'
         *x\sign = 1
     EndSelect
-    
+
     numString = LTrim(PeekS(*c), "0") ;remove leading zeroes
     If numString = "" ;is true if equal to zero or if only a signus is present
       CopyStructure(@zero_decDigitFmt, *x, decDigitFmt)
       ProcedureReturn
     EndIf
     *c = @numString
-    
+
     digitCount = Len(PeekS(*c)) - 1
     Dim *x\Digit(digitCount)
     *x\digitCount = digitCount
-    
+
     digitIdx = 0
     While *c\c
       If *c\c >= '0' And *c\c <= '9'
@@ -4762,9 +4762,9 @@ Procedure stringToDecDigitFmt(numString.s, *x.decDigitFmt)
       Else
         Break
       EndIf
-    Wend 
-    
-  EndIf 
+    Wend
+
+  EndIf
 EndProcedure
 
 ;converts digit format representation of integer into string representation
@@ -4774,50 +4774,50 @@ Procedure.s decDigitFmtToString(*x.decDigitFmt)
     If *x\sign = 0
       number = "0"
     Else
-        
+
       For i = *x\digitCount To 0 Step -1
         number + Str(*x\Digit(i))
       Next
       number = LTrim(number, "0")
       If *x\sign = -1
         number = "-" + number
-      EndIf 
-    EndIf 
+      EndIf
+    EndIf
   EndIf
-  
+
   ProcedureReturn number
 EndProcedure
 
 ;handles only positive numbers and zero, negative numbers left as an exercise for the reader ;)
 Procedure add_decDigitFmt(*a.decDigitFmt, *b.decDigitFmt, *sum.decDigitFmt, digitPos = 0) ;*sum contains the result of (*a ) * 10^digitPos + (*b)
   Protected carry, i, newDigitCount, workingSum, a_dup.decDigitFmt
-  
+
   If *a And *b And *sum
-    
+
     If *a = *sum: CopyStructure(*a, @a_dup, decDigitFmt): *a = @a_dup: EndIf ;handle special case of  *sum + *b = *sum
     If *b <> *sum: CopyStructure(*b, *sum, decDigitFmt): EndIf ;handle general case of *a + *b = *sum and special case of *a + *sum = *sum
-    
+
     ;calculate number of digits needed for sum and resize array of digits if necessary
     newDigitCount = *a\digitCount + digitPos
     If newDigitCount >= *sum\digitCount
       If *sum\digitCount = newDigitCount And *sum\Digit(*sum\digitCount) <> 0
         newDigitCount + 1
-      EndIf 
-      
+      EndIf
+
       If *sum\digitCount <> newDigitCount
         *sum\digitCount = newDigitCount
         Redim *sum\Digit(*sum\digitCount)
       EndIf
     EndIf
-    
-    i = 0 
+
+    i = 0
     Repeat
       If i <= *a\digitCount
         workingSum = *a\Digit(i) + *sum\Digit(digitPos) + carry
       Else
         workingSum = *sum\Digit(digitPos) + carry
-      EndIf 
-      
+      EndIf
+
       If workingSum > 9
         carry = 1
         workingSum - 10
@@ -4828,10 +4828,10 @@ Procedure add_decDigitFmt(*a.decDigitFmt, *b.decDigitFmt, *sum.decDigitFmt, digi
       digitPos + 1
       i + 1
     Until i > *a\digitCount And carry = 0
-    
+
     If *a\sign <> 0 Or *sum\sign <> 0
       *sum\sign = 1 ;only handle positive numbers and zero for now
-    EndIf 
+    EndIf
   EndIf
 EndProcedure
 
@@ -4839,34 +4839,34 @@ Procedure multiply_decDigitFmt(*a.decDigitFmt, *b.decDigitFmt, *product.decDigit
   Protected i, digitPos, productSignus
   Protected Dim multTable.decDigitFmt(9)
   Protected NewList digitProduct.decDigitFmt()
-  
+
   If *a And *b And *product
     If *a\sign = 0 Or *b\sign = 0
       CopyStructure(zero_decDigitFmt, *product, decDigitFmt)
       ProcedureReturn
-    EndIf 
-    
-    If *b\digitCount > *a\digitCount: Swap *a, *b: EndIf 
-    
+    EndIf
+
+    If *b\digitCount > *a\digitCount: Swap *a, *b: EndIf
+
     ;build multiplication table
     CopyStructure(*a, @multTable(1), decDigitFmt): multTable(1)\sign = 1 ;always positive
     For i = 2 To 9
       add_decDigitFmt(*a, multTable(i - 1), multTable(i))
-    Next 
-    
+    Next
+
     ;collect individual digit products for later summation; these could also be added as we go along
     For i = 0 To *b\digitCount
       AddElement(digitProduct())
       digitProduct() = multTable(*b\Digit(i))
     Next
-    
+
     ;determine sign of product
     If *a\sign <> *b\sign
       productSignus = -1
     Else
       productSignus = 1
-    EndIf 
-    
+    EndIf
+
     digitPos = 0
     CopyStructure(zero_decDigitFmt, *product, decDigitFmt)
     ForEach digitProduct()
@@ -4889,7 +4889,7 @@ EndProcedure
 
 If OpenConsole()
   Define a.decDigitFmt, product.decDigitFmt
-  
+
   stringToDecDigitFmt("2", a)
   exponent_decDigitFmt(a, 64, a) ;2^64
   multiply_decDigitFmt(a, a, product)
@@ -4907,9 +4907,9 @@ The result of 2^64 * 2^64 is 340282366920938463463374607431768211456
 
 
 
-###  Library Method 
+###  Library Method
 
-{{works with|PureBasic|4.41}} 
+{{works with|PureBasic|4.41}}
 
 Using [http://www.purebasic.fr/english/viewtopic.php?p=309763#p309763 Decimal.pbi] by Stargåte allows for calculation with long numbers, this is useful since version 4.41 of PureBasic mostly only supporter data types native to x86/x64/PPC etc processors.
 
@@ -5077,42 +5077,42 @@ longmult <- function(xstr, ystr)
 {
    #get the number described in each string
    getnumeric <- function(xstr) as.numeric(unlist(strsplit(xstr, "")))
-   
+
    x <- getnumeric(xstr)
    y <- getnumeric(ystr)
-   
+
    #multiply each pair of digits together
    mat <- apply(x %o% y, 1, as.character)
-   
+
    #loop over columns, then rows, adding zeroes to end of each number in the matrix to get the correct positioning
    ncols <- ncol(mat)
    cols <- seq_len(ncols)
    for(j in cols)
    {
-      zeroes <- paste(rep("0", ncols-j), collapse="") 
-      mat[,j] <- paste(mat[,j], zeroes, sep="")  
+      zeroes <- paste(rep("0", ncols-j), collapse="")
+      mat[,j] <- paste(mat[,j], zeroes, sep="")
    }
-   
+
    nrows <- nrow(mat)
    rows <- seq_len(nrows)
    for(i in rows)
    {
-      zeroes <- paste(rep("0", nrows-i), collapse="") 
-      mat[i,] <- paste(mat[i,], zeroes, sep="")  
+      zeroes <- paste(rep("0", nrows-i), collapse="")
+      mat[i,] <- paste(mat[i,], zeroes, sep="")
    }
-   
+
    #add zeroes to the start of the each number, so they are all the same length
    len <- max(nchar(mat))
    strcolumns <- formatC(cbind(as.vector(mat)), width=len)
    strcolumns <- gsub(" ", "0", strcolumns)
-   
+
    #line up all the numbers below each other
    strmat <- matrix(unlist(strsplit(strcolumns, "")), byrow=TRUE, ncol=len)
-   
+
    #convert to numeric and add them
    mat2 <- apply(strmat, 2, as.numeric)
    sum1 <- colSums(mat2)
-   
+
    #repeat the process on each of the totals, until each total is a single digit
    repeat
    {
@@ -5131,7 +5131,7 @@ longmult <- function(xstr, ystr)
       sum1 <- colSums(mat3)
       if(all(sum1 < 10)) break
    }
-   
+
    #Concatenate the digits together
    ans <- paste(sum1, collapse="")
    ans
@@ -5203,7 +5203,7 @@ longmult(a, a)
 
 This REXX version supports:
 ::*   leading signs
-::*   decimal points 
+::*   decimal points
 ::*   automatically adjusting the number of decimal digits needed
 
 Programming note:   <big>&&</big>   is REXX's   '''exclusive or'''   operand.
@@ -5270,7 +5270,7 @@ long mult: -123.678 * +456789000 ──► -56494749942.000
 
 ```rexx
 /* REXX **************************************************************
-* While REXX can multiply arbitrary large integers 
+* While REXX can multiply arbitrary large integers
 * here is the algorithm asked for by the task description
 * 13.05.2013 Walter Pachl
 *********************************************************************/
@@ -5290,7 +5290,7 @@ test:
   haben=multiply(a b)
   Say 'soll =' soll
   Say 'haben=' haben
-  If haben<>soll Then 
+  If haben<>soll Then
     cnt.0nok=cnt.0nok+1
   Else
     cnt.0ok=cnt.0ok+1
@@ -5393,7 +5393,7 @@ def longmult(x,y)
   # calculate the answer from the result array of digits
   result.reverse.inject(0) {|sum, n| 10*sum + n}
 end
- 
+
 n=2**64
 printf "         %d * %d = %d\n", n, n, n*n
 printf "longmult(%d, %d) = %d\n", n, n, longmult(n,n)
@@ -5469,8 +5469,8 @@ def addNums(x: String, y: String) = {
   val padSize = (x.length max y.length) + 1 // We want to keep a zero to the left, to catch the carry
   val paddedX = "0" * (padSize - x.length) + x
   val paddedY = "0" * (padSize - y.length) + y
-  adjustResult((paddedX zip paddedY).scanRight(0) { 
-    case ((dx, dy), last) => dx.asDigit + dy.asDigit + last / 10 
+  adjustResult((paddedX zip paddedY).scanRight(0) {
+    case ((dx, dy), last) => dx.asDigit + dy.asDigit + last / 10
   })
 }
 
@@ -5559,11 +5559,11 @@ const func string: (in string: a) * (in string: b) is func
       end if;
     elsif startsWith(b, "-") then
       product := "-" & a * b[2 ..];
-    else 
+    else
       product := "0" mult length(a) + length(b);
       for i range length(a) downto 1 do
         k := i + length(b);
-        carry := 0; 
+        carry := 0;
         for j range length(b) downto 1 do
           carry +:= (ord(a[i]) - ord('0')) * (ord(b[j]) - ord('0')) + (ord(product[k]) - ord('0'));
           product @:= [k] chr(carry rem 10 + ord('0'));
@@ -5661,7 +5661,7 @@ say longhand_multiplication('18446744073709551616', '18446744073709551616')
 
 ## Smalltalk
 
-(Note that arbitrary precision arithmetic is native in Smalltalk). 
+(Note that arbitrary precision arithmetic is native in Smalltalk).
 
 ```smalltalk
 (2 raisedTo: 64) * (2 raisedTo: 64).
@@ -5733,7 +5733,7 @@ But you can also do it with bash's built-in arithmetic:
 add() { # arbitrary-precision addition
   local a="$1" b="$2" sum= carry=0
   if (( ${#a} < ${#b} )); then
-    local t="$a" 
+    local t="$a"
     a="$b" b="$t"
   fi
 
@@ -5749,7 +5749,7 @@ add() { # arbitrary-precision addition
 multiply() { # arbitrary-precision multiplication
   local a="$1" b="$2" product=0
   if (( ${#a} < ${#b} )); then
-    local t="$a" 
+    local t="$a"
     a="$b" b="$t"
   fi
 
@@ -5757,9 +5757,9 @@ multiply() { # arbitrary-precision multiplication
   while (( ${#b} )); do
     local m1="$a"
     local m2="${b##${b%?}}"
-    local partial=$zeroes 
+    local partial=$zeroes
     local -i carry=0
-    while (( ${#m1} )); do 
+    while (( ${#m1} )); do
       local -i d="${m1##${m1%?}}"
       m1="${m1%?}"
       local -i p=d*m2+carry
@@ -5845,10 +5845,10 @@ for (#2 = 0; #2 < #21; #2++) {
 	    #7 += Cur_Char - '0'
 	    Ins_Char(#7%10 + '0', OVERWRITE)
 	    #3++
-	    #7 = #7/10 
+	    #7 = #7/10
         }
     }
-} 
+}
 ```
 
 Sample input and output:

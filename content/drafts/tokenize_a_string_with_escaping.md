@@ -106,14 +106,14 @@ Demonstrate that your function satisfies the following test-case:
 
 -- tokenize :: String -> Character -> Character -> [String]
 on tokenize(str, chrDelim, chrEsc)
-    
+
     script charParse
         -- Record: {esc:Bool, token:String, tokens:[String]}
         -- charParse :: Record -> Character -> Record
         on |λ|(a, x)
             set blnEsc to esc of a
             set blnEscChar to ((not blnEsc) and (x = chrEsc))
-            
+
             if ((not blnEsc) and (x = chrDelim)) then
                 set strToken to ""
                 set lstTokens to (tokens of a) & token of a
@@ -121,14 +121,14 @@ on tokenize(str, chrDelim, chrEsc)
                 set strToken to (token of a) & cond(blnEscChar, "", x)
                 set lstTokens to tokens of (a)
             end if
-            
+
             {esc:blnEscChar, token:strToken, tokens:lstTokens}
         end |λ|
     end script
-    
+
     set recParse to foldl(charParse, ¬
         {esc:false, token:"", tokens:[]}, splitOn("", str))
-    
+
     tokens of recParse & token of recParse
 end tokenize
 
@@ -141,7 +141,7 @@ on run
             {lineNum:iLine + 1, report:report of a & iLine & ":" & tab & s & linefeed}
         end |λ|
     end script
-    
+
     report of foldl(numberedLine, {lineNum:1, report:""}, ¬
         tokenize("one^|uno||three^^^^|four^^^|^cuatro|", "|", "^"))
 end run
@@ -161,7 +161,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -195,10 +195,10 @@ end cond
 
 ```txt
 1:    one|uno
-2:    
+2:
 3:    three^^
 4:    four^|cuatro
-5:    
+5:
 
 ```
 
@@ -213,7 +213,7 @@ end cond
 tokenize [s,sep,esc]{
 	escaping 0
 	loop $(range 0 $(size s)-1) [i]{
-		chr $(get $(characters s) i) 
+		chr $(get $(characters s) i)
 
 		if escaping=1 {
 			print chr true
@@ -234,7 +234,7 @@ tokenize [s,sep,esc]{
 	print ""
 }
 
-str "one^|uno||three^^^^|four^^^|^cuatro|" 
+str "one^|uno||three^^^^|four^^^|^cuatro|"
 print $(tokenize str "|" "^")
 ```
 
@@ -305,7 +305,7 @@ function tokenize(str,sep,esc,  chr,escaping,field,i) {
 ## BBC BASIC
 
 
-```bbcbasic>REM 
+```bbcbasic>REM
 tokenizer
 PROC_tokenize("one^|uno||three^^^^|four^^^|^cuatro|", "|", "^")
 END
@@ -341,10 +341,10 @@ ENDPROC
 
 ```txt
          1 one|uno
-         2 
+         2
          3 three^^
          4 four^|cuatro
-         5 
+         5
 ```
 
 
@@ -354,8 +354,8 @@ ENDPROC
 {{works with|C}}
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 
 #define STR_DEMO "one^|uno||three^^^^|four^^^|^cuatro|"
@@ -364,7 +364,7 @@ ENDPROC
 
 typedef char* Str; /* just for an easier reading */
 
-/* 
+/*
 ### > FUNCTION PROTOTYPES <=============================================
  */
 unsigned int ElQ( const char *s, char sep, char esc );
@@ -494,8 +494,8 @@ Str *Tokenize( char *s, char sep, char esc, unsigned int *q ) {
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -590,7 +590,7 @@ public static class Extensions
         }
         if (buffer.Length > 0 || input[input.Length-1] == separator) yield return buffer.Flush();
     }
-    
+
     public static string Flush(this StringBuilder stringBuilder) {
         string result = stringBuilder.ToString();
         stringBuilder.Clear();
@@ -604,10 +604,10 @@ public static class Extensions
 ```txt
 
 : one|uno
-: 
+:
 : three^^
 : four^|cuatro
-: 
+:
 ```
 
 
@@ -655,10 +655,10 @@ start-tokenize-with-escaping.
 
     move 'token' to input-string
     perform tokenize
-   
+
     move '^^^^^^^^' to input-string
     perform tokenize
-   
+
     move '||||||||' to input-string
     perform tokenize
 
@@ -750,7 +750,7 @@ move-c.
         move 'N' to error-found
     end-if
     .
-end program 'tokenizewithescaping'. 
+end program 'tokenizewithescaping'.
 
 ```
 
@@ -759,29 +759,29 @@ end program 'tokenizewithescaping'.
 
 ```txt
 
-$ cobc -xj tokenizewithescaping.cbl 
- 
+$ cobc -xj tokenizewithescaping.cbl
+
 string:
-one^|uno||three^^^^|four^^^|^cuatro|                            
+one^|uno||three^^^^|four^^^|^cuatro|
 tokens:
-01: 07 one|uno         
+01: 07 one|uno
 02: 00
-03: 07 three^^         
-04: 12 four^|cuatro    
+03: 07 three^^
+04: 12 four^|cuatro
 05: 00
- 
+
 string:
-token                                                           
+token
 tokens:
-01: 05 token           
- 
+01: 05 token
+
 string:
-^^^^^^^^                                                        
+^^^^^^^^
 tokens:
-01: 04 ^^^^            
- 
+01: 04 ^^^^
+
 string:
-||||||||                                                        
+||||||||
 tokens:
 01: 00
 02: 00
@@ -792,17 +792,17 @@ tokens:
 07: 00
 08: 00
 09: 00
- 
+
 string:
 tokentokentokentokentokentokentokentokentokentokentokentokentoke
 error: at 17 token length exceeds 16
- 
+
 string:
 t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|t|
 error: at 64 number of tokens exceeds 32
- 
+
 string:
-                                                                
+
 no tokens
 
 ```
@@ -928,7 +928,7 @@ func String.tokenize(separator, escape) {
         yield buffer.flush()
     }
 }
- 
+
 func Array.flush() {
     var str = String.concat(values: this)
     this.clear()
@@ -966,14 +966,14 @@ import extensions'routines;
 import system'collections;
 import system'routines;
 import system'text;
- 
+
 extension op : String
 {
     tokenize(separator,escape)
     {
         auto buffer := new TextBuilder();
         auto list := new ArrayList();
- 
+
         bool escaping := false;
         self.forEach:(ch)
         {
@@ -996,13 +996,13 @@ extension op : String
                 buffer.write:ch
             }
         };
- 
+
         ^ list
     }
 }
- 
+
 const string testcase = "one^|uno||three^^^^|four^^^|^cuatro|";
- 
+
 public program()
 {
     testcase.tokenize("|", "^").forEach:printingLn
@@ -1203,7 +1203,7 @@ Tokens: ["one|uno" "" "three^^" "four^|cuatro" ""]
 
 
 
-###  Deterministic Finite Automaton 
+###  Deterministic Finite Automaton
 
 
 
@@ -1254,9 +1254,9 @@ Constant in space (~ O(k), where k -- is token length), as fast as DFA-based sol
 import Conduit
 
 splitEscC :: (Monad m, Eq t) => t -> t -> Conduit t m [t]
-splitEscC sep esc = mapOutput reverse $ go True [] 
+splitEscC sep esc = mapOutput reverse $ go True []
   where
-    go notEsc b = await >>= \case 
+    go notEsc b = await >>= \case
       Nothing -> yield b
       Just ch | notEsc && ch == esc -> go False b
               | notEsc && ch == sep -> yield b >> go True []
@@ -1368,7 +1368,7 @@ tokenize 'one^|uno||three^^^^|four^^^|^cuatro|'
 ┌───────┬┬───────┬────────────┬┐
 │one|uno││three^^│four^|cuatro││
 └───────┴┴───────┴────────────┴┘
-   
+
 
 ```
 
@@ -1428,7 +1428,7 @@ Relative efficiencies:
 
 ```J
    txt=: 1e5$'one^|uno||three^^^^|four^^^|^cuatro|'
-   
+
    (%"1 <./) timespacex every 'tokenize1 txt';'tokenize2 txt';'tokenize3 txt'
 132.856       1
       1 7.73534
@@ -1514,7 +1514,7 @@ function tokenize(s, esc, sep) {
 		var c = s.charAt(i)
 		if (c == esc) t+=s.charAt(++i)
 		else if (c != sep) t+=c
-		else a.push(t), t=''		
+		else a.push(t), t=''
 	}
 	a.push(t)
 	return a
@@ -1522,7 +1522,7 @@ function tokenize(s, esc, sep) {
 
 var s = 'one^|uno||three^^^^|four^^^|^cuatro|'
 document.write(s, '
-')	
+')
 for (var a=tokenize(s,'^','|'), i=0; i<a.length; i+=1) document.write(i, ': ', a[i], '
 ')
 ```
@@ -1532,10 +1532,10 @@ for (var a=tokenize(s,'^','|'), i=0; i<a.length; i+=1) document.write(i, ': ', a
 ```txt
 one^|uno||three^^^^|four^^^|^cuatro|
 0: one|uno
-1: 
+1:
 2: three^^
 3: four^|cuatro
-4: 
+4:
 
 ```
 
@@ -1668,11 +1668,11 @@ def tokenize(separator; escape):
   def mapper(f): reduce .[] as $e
     ( [];
       if ($e|type) == "array" then . + [$e] else . + ($e | f) end ) ;
-  
+
   # interpolate x
   def interpolate(x):
     reduce .[] as $i ([]; . +  [$i, x]) | .[0:-1];
-  
+
   def splitstring(s; twixt):
     if type == "string" then split(s) | interpolate(twixt)
     else .
@@ -1687,7 +1687,7 @@ def tokenize(separator; escape):
       else .[0:-1] +  [ .[-1] + $x ]
       end)
     | if .[-1] == null then .[-1] = "" else . end;
-  
+
   splitstring(escape + escape; [escape])
   | mapper( splitstring( escape + separator; [separator]) )
   | mapper( splitstring( separator; null ) )
@@ -1763,7 +1763,7 @@ fun tokenize(str: String, sep: Char, esc: Char): List<String> {
     var s = str.replace("$esc$esc", SPE).replace("$esc$sep", SPF)
     s = if (s.last() == esc) // i.e. 'esc' not escaping anything
         s.dropLast(1).replace("$esc", "") + esc
-    else 
+    else
         s.replace("$esc", "")
     return s.split(sep).map { it.replace(SPE, "$esc").replace(SPF, "$sep") }
 }
@@ -1772,7 +1772,7 @@ fun main(args: Array<String>) {
     var str = "one^|uno||three^^^^|four^^^|^cuatro|"
     val sep = '|'
     val esc = '^'
-    val items = tokenize(str, sep, esc) 
+    val items = tokenize(str, sep, esc)
     for (item in items) println(if (item.isEmpty()) "(empty)" else item)
 }
 ```
@@ -1950,7 +1950,7 @@ The built-in <code>split</code> function can be used with a regex that matches t
 ```perl
 sub tokenize {
     my ($string, $sep, $esc) = (shift, quotemeta shift, quotemeta shift);
-    
+
     my @fields = split /$esc . (*SKIP)(*FAIL) | $sep/sx, $string, -1;
     return map { s/$esc(.)/$1/gsr } @fields;
 }
@@ -2114,7 +2114,7 @@ function Split-String ([string]$String, [char]$Separator, [char]$Escape)
     [string]$output = ""
 
     for ($i = 0; $i -lt $String.Length; $i++)
-    { 
+    {
         [char]$character = $String.Substring($i,1)
 
         if ($escaping)
@@ -2152,10 +2152,10 @@ Split-String "one^|uno||three^^^^|four^^^|^cuatro|" -Separator "|" -Escape "^" |
 ```txt
 
 1: one|uno
-2: 
+2:
 3: three^^
 4: four^|cuatro
-5: 
+5:
 
 ```
 
@@ -2353,11 +2353,11 @@ escaping = false
 see "" + field + " "
 for i = 1 to len(src)
     char = substr(src, i, 1)
-    if escaping 
+    if escaping
        see char
        escaping = false
     else
-       switch char 
+       switch char
               on sep
                  see nl
                  field = field + 1
@@ -2365,7 +2365,7 @@ for i = 1 to len(src)
               on esc
                  escaping = true
               other
-                 see char 
+                 see char
        off
     ok
 next
@@ -2378,10 +2378,10 @@ Output:
 ```txt
 
 1 one|uno
-2 
+2
 3 three^^
 4 four^|cuatro
-5 
+5
 
 ```
 
@@ -2623,7 +2623,7 @@ Private Function tokenize(s As String, sep As String, esc As String) As Collecti
     Dim ret As New Collection
     Dim this As String
     Dim skip As Boolean
-     
+
     If Len(s) <> 0 Then
         For i = 1 To Len(s)
             si = Mid(s, i, 1)
@@ -2662,7 +2662,7 @@ End Sub
 {{out}}
 
 ```txt
-one|uno, , three^^, four^|cuatro, 
+one|uno, , three^^, four^|cuatro,
 ```
 
 

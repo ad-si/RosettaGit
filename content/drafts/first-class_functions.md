@@ -26,9 +26,9 @@ A language has [[wp:First-class function|first-class functions]] if it can do ea
 Write a program to create an ordered collection ''A'' of functions of a real number. At least one function should be built-in and at least one should be user-defined; try using the sine, cosine, and cubing functions. Fill another collection ''B'' with the inverse of each function in ''A''. Implement function composition as in [[Functional Composition]]. Finally, demonstrate that the result of applying the composition of each function in ''A'' and its inverse in ''B'' to a value, is the original value. <small>(Within the limits of computational accuracy)</small>.
 
 (A solution need not actually call the collections "A" and "B". These names are only used in the preceding paragraph for clarity.)
- 
 
-;Related task: 
+
+;Related task:
 [[First-class Numbers]]
 
 
@@ -48,16 +48,16 @@ var cube:Function = function(x) {
 var cuberoot:Function = function(x) {
   return Math.pow(x, 1/3);
 };
-  
+
 function compose(f:Function, g:Function):Function {
 	return function(x:Number) {return f(g(x));};
 }
 var functions:Array = [Math.cos, Math.tan, cube];
 var inverse:Array = [Math.acos, Math.atan, cuberoot];
- 
+
 function test() {
 	for (var i:uint = 0; i < functions.length; i++) {
-        // Applying the composition to 0.5  
+        // Applying the composition to 0.5
 	trace(compose(functions[i], inverse[i])(0.5));
 	}
 }
@@ -183,7 +183,7 @@ for (var i=0; i<3; i++) {
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386 using non-standard compose}}
 
 Note: Returning <code>PROC (REAL x)REAL: f1(f2(x))</code> from a function apparently
-violates standard '''ALGOL 68''''s scoping rules.  [[ALGOL 68G]] warns about this during 
+violates standard '''ALGOL 68''''s scoping rules.  [[ALGOL 68G]] warns about this during
 parsing, and then - if run out of scope - rejects during runtime.
 
 ```algol68
@@ -300,22 +300,22 @@ Once we have a function like mReturn, however, we can readily write higher order
 
 ```AppleScript
 on run
-    
+
     set fs to {sin_, cos_, cube_}
     set afs to {asin_, acos_, croot_}
-    
-    -- Form a list of three composed function objects, 
+
+    -- Form a list of three composed function objects,
     -- and map testWithHalf() across the list to produce the results of
     -- application of each composed function (base function composed with inverse) to 0.5
-    
+
     script testWithHalf
         on |λ|(f)
             mReturn(f)'s |λ|(0.5)
         end |λ|
     end script
-    
+
     map(testWithHalf, zipWith(mCompose, fs, afs))
-    
+
     --> {0.5, 0.5, 0.5}
 end run
 
@@ -341,7 +341,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -478,7 +478,7 @@ TestPackage(T:SetCategory) : with
     _*: (List((T->T)),List((T->T))) -> (T -> List T)
   == add
     import MappingPackage3(T,T,T)
-    fs * gs == 
+    fs * gs ==
       ((x:T):(List T) +-> [(f*g) x for f in fs for g in gs])
 ```
 
@@ -509,26 +509,26 @@ Strictly speaking you cannot return a ''function'', but you can return a ''funct
       DEF FNacs(a) = ACS(a)
       DEF FNcube(a) = a^3
       DEF FNroot(a) = a^(1/3)
-      
+
       dummy = FNsin(1)
-      
+
       REM Create the collections (here structures are used):
       DIM cA{Sin%, Cos%, Cube%}
       DIM cB{Asn%, Acs%, Root%}
       cA.Sin% = ^FNsin() : cA.Cos% = ^FNcos() : cA.Cube% = ^FNcube()
       cB.Asn% = ^FNasn() : cB.Acs% = ^FNacs() : cB.Root% = ^FNroot()
-      
+
       REM Create some function compositions:
       AsnSin% = FNcompose(cB.Asn%, cA.Sin%)
       AcsCos% = FNcompose(cB.Acs%, cA.Cos%)
       RootCube% = FNcompose(cB.Root%, cA.Cube%)
-      
+
       REM Test applying the compositions:
       x = 1.234567 : PRINT x, FN(AsnSin%)(x)
       x = 2.345678 : PRINT x, FN(AcsCos%)(x)
       x = 3.456789 : PRINT x, FN(RootCube%)(x)
       END
-      
+
       DEF FNcompose(f%,g%)
       LOCAL f$, p%
       f$ = "(x)=" + CHR$&A4 + "(&" + STR$~f% + ")(" + \
@@ -572,11 +572,11 @@ void button1_onClick (Widget widget)
 {
 	Array arr1 = [ sin, cos, cube ];
 	Array arr2 = [ asin, acos, croot ];
-	
+
 	str s;
 	for (int i = 1; i <= 3; i++)
 	{
-		s << compose(arr1.get(i), arr2.get(i), 0.5) << str.newline;	
+		s << compose(arr1.get(i), arr2.get(i), 0.5) << str.newline;
 	}
 	label1.setText(s);
 }
@@ -599,7 +599,7 @@ Bracmat has no built-in functions of real values. To say the truth, Bracmat has 
 The lists <code>A</code> and <code>B</code> contain a mix of function names and function definitions, which illustrates that they always can take each other's role, except when a function definition is assigned to a function name, as for example in the first and second lines.
 
 The <code>compose</code> function uses macro substitution.
-   
+
 
 ```bracmat
 ( (sqrt=.!arg^1/2)
@@ -639,14 +639,14 @@ Since one can't create new functions dynamically within a C program, C doesn't h
 Here goes.
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <math.h>
- 
+
 /* declare a typedef for a function pointer */
 typedef double (*Class2Func)(double);
- 
+
 /*A couple of functions with the above prototype */
 double functionA( double v)
 {
@@ -656,34 +656,34 @@ double functionB(double v)
 {
    return exp(log(v)/3);
 }
- 
+
 /* A function taking a function as an argument */
 double Function1( Class2Func f2, double val )
 {
     return f2(val);
 }
- 
+
 /*A function returning a function */
 Class2Func WhichFunc( int idx)
 {
    return (idx < 4) ? &functionA : &functionB;
 }
- 
+
 /* A list of functions */
 Class2Func funcListA[] = {&functionA, &sin, &cos, &tan };
 Class2Func funcListB[] = {&functionB, &asin, &acos, &atan };
- 
+
 /* Composing Functions */
 double InvokeComposed( Class2Func f1, Class2Func f2, double val )
 {
    return f1(f2(val));
 }
- 
+
 typedef struct sComposition {
    Class2Func f1;
    Class2Func f2;
 } *Composition;
- 
+
 Composition Compose( Class2Func f1, Class2Func f2)
 {
    Composition comp = malloc(sizeof(struct sComposition));
@@ -691,25 +691,25 @@ Composition Compose( Class2Func f1, Class2Func f2)
    comp->f2 = f2;
    return comp;
 }
- 
+
 double CallComposed( Composition comp, double val )
 {
     return comp->f1( comp->f2(val) );
 }
 /** * * * * * * * * * * * * * * * * * * * * * * * * * * */
- 
+
 int main(int argc, char *argv[])
 {
    int ix;
    Composition c;
- 
+
    printf("Function1(functionA, 3.0) = %f\n", Function1(WhichFunc(0), 3.0));
- 
+
    for (ix=0; ix<4; ix++) {
        c = Compose(funcListA[ix], funcListB[ix]);
        printf("Compostion %d(0.9) = %f\n", ix, CallComposed(c, 0.9));
    }
- 
+
    return 0;
 }
 ```
@@ -717,8 +717,8 @@ int main(int argc, char *argv[])
 ===Non-portable function body duplication===
 Following code generates true functions at run time.  Extremely unportable, and [http://en.wikipedia.org/wiki/Considered_harmful should be considered harmful] in general, but it's one (again, harmful) way for the truly desperate (or perhaps for people supporting only one platform -- and note that some other languages only work on one platform).
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -846,7 +846,7 @@ Output:
 #include <iostream>
 #include <vector>
 #include <cmath>
- 
+
 using std::cout;
 using std::endl;
 using std::vector;
@@ -904,13 +904,13 @@ import ceylon.numeric.float {
 }
 
 shared void run() {
-	
+
 	function cube(Float x) => x ^ 3;
 	function cubeRoot(Float x) => x ^ (1.0 / 3.0);
-	
+
 	value functions = {sin, exp, cube};
 	value inverses = {asin, log, cubeRoot};
-	
+
 	for([func, inv] in zipPairs(functions, inverses)) {
 		print(compose(func, inv)(0.5));
 	}
@@ -931,7 +931,7 @@ shared void run() {
 
 ```
 
-Output: 
+Output:
 
 ```txt
 (0.5 0.4999999999999999 0.5000000000000001)
@@ -984,7 +984,7 @@ Output:
       do (format t "~&(~A ∘ ~A)(~A) = ~A~%"
                  inverse
                  func
-                 value 
+                 value
                  (funcall composed value)))
 ```
 
@@ -1244,10 +1244,10 @@ Note: <code>def g := reverse[i]</code> is needed here because E as yet has no de
 
 (for ([f funlist] [i ifunlist])
   (writeln ((compose i f) 0.5)))
-→ 
-    0.5    
-    0.4999999999999999    
-    0.5   
+→
+    0.5
+    0.4999999999999999
+    0.5
 
 ```
 
@@ -1298,18 +1298,18 @@ import system'routines;
 import system'math;
 import extensions'routines;
 import extensions'math;
- 
+
 extension op
 {
     compose(f,g)
         = f(g(self));
 }
- 
+
 public program()
 {
    var fs := new::( mssgconst sin<mathOp>[0], mssgconst cos<mathOp>[0], (x => power(x, 3.0r)) );
    var gs := new::( mssgconst arcsin<mathOp>[0], mssgconst arccos<mathOp>[0], (x => power(x, 1.0r / 3)) );
- 
+
    fs.zipBy(gs, (f,g => 0.5r.compose(f,g)))
      .forEach:printingLn
 }
@@ -1338,7 +1338,7 @@ defmodule First_class_functions do
     Enum.zip(as, bs)
     |> Enum.each(fn {a,b} -> IO.puts compose([a,b], val) end)
   end
-  
+
   defp compose(funs, x) do
     Enum.reduce(funs, x, fn f,acc -> f.(acc) end)
   end
@@ -1402,7 +1402,7 @@ Value: 1.5 Result: 1.5
 open System
 
 let cube x = x ** 3.0
-let croot x = x ** (1.0/3.0) 
+let croot x = x ** (1.0/3.0)
 
 let funclist = [Math.Sin; Math.Cos; cube]
 let funclisti = [Math.Asin; Math.Acos; croot]
@@ -1433,7 +1433,7 @@ USING: assocs combinators kernel math.functions prettyprint sequences ;
 IN: rosettacode.first-class-functions
 
 CONSTANT: A { [ sin ] [ cos ] [ 3 ^ ] }
-CONSTANT: B { [ asin ] [ acos ] [ 1/3 ^ ] } 
+CONSTANT: B { [ asin ] [ acos ] [ 1/3 ^ ] }
 
 : compose-all ( seq1 seq2 -- seq ) [ compose ] 2map ;
 
@@ -1465,7 +1465,7 @@ class FirstClassFns
     return |Obj x -> Obj| { fn2 (fn1 (x)) }
   }
 
-  public static Void main () 
+  public static Void main ()
   {
     cube := |Float a -> Float| { a * a * a }
     cbrt := |Float a -> Float| { a.pow(1/3f) }
@@ -1534,8 +1534,8 @@ Like C, FreeBASIC doesn't have first class functions so I've contented myself by
 
 ' Declare function pointer type
 ' This implicitly assumes default StdCall calling convention on Windows
-Type Class2Func As Function(As Double) As Double  
- 
+Type Class2Func As Function(As Double) As Double
+
 ' A couple of functions with the above prototype
 Function functionA(v As Double) As Double
   Return v*v*v  '' cube of v
@@ -1544,13 +1544,13 @@ End Function
 Function functionB(v As Double) As Double
   Return Exp(Log(v)/3)  '' same as cube root of v which would normally be v ^ (1.0/3.0) in FB
 End Function
- 
-' A function taking a function as an argument 
+
+' A function taking a function as an argument
 Function function1(f2 As Class2Func, val_ As Double) As Double
   Return f2(val_)
 End Function
- 
-' A function returning a function 
+
+' A function returning a function
 Function whichFunc(idx As Long) As Class2Func
    Return IIf(idx < 4, @functionA, @functionB)
 End Function
@@ -1559,9 +1559,9 @@ End Function
 ' Get compiler warning otherwise
 Function cl2(f As Function CDecl(As Double) As Double) As Class2Func
   Return CPtr(Class2Func, f)
-End Function 
+End Function
 
-' A list of functions 
+' A list of functions
 ' Using C Runtime library versions of trig functions as it doesn't appear
 ' to be possible to apply address operator (@) to FB's built-in versions
 Dim funcListA(0 To 3) As Class2Func = {@functionA, cl2(@sin_),  cl2(@cos_), cl2(@tan_)}
@@ -1572,7 +1572,7 @@ Function invokeComposed(f1 As Class2Func, f2 As Class2Func, val_ As double) As D
    Return f1(f2(val_))
 End Function
 
-Type Composition 
+Type Composition
   As Class2Func f1, f2
 End Type
 
@@ -1582,21 +1582,21 @@ Function compose(f1 As Class2Func, f2 As Class2Func) As Composition Ptr
   comp->f2 = f2
   Return comp
 End Function
- 
+
 Function callComposed(comp As Composition Ptr, val_ As Double ) As Double
   Return comp->f1(comp->f2(val_))
 End Function
 
 Dim ix As Integer
 Dim c As Composition Ptr
- 
+
 Print "function1(functionA, 3.0) = "; CSng(function1(whichFunc(0), 3.0))
 Print
 For ix = 0 To 3
   c = compose(funcListA(ix), funcListB(ix))
   Print "Composition"; ix; "(0.9) = "; CSng(callComposed(c, 0.9))
 Next
- 
+
 Deallocate(c)
 Print
 Print "Press any key to quit"
@@ -1761,7 +1761,7 @@ invlist :: Floating a => [a -> a]
 invlist  = [asin, acos, croot]
 
 main :: IO ()
-main = print $ zipWith (\f i -> f . i $ 0.5) funclist invlist 
+main = print $ zipWith (\f i -> f . i $ 0.5) funclist invlist
 ```
 
 {{output}}
@@ -1775,13 +1775,13 @@ main = print $ zipWith (\f i -> f . i $ 0.5) funclist invlist
 The Unicon solution can be modified to work in Icon. See [[Function_composition#Icon_and_Unicon]].
 
 ```Unicon
-link compose 
+link compose
 procedure main(arglist)
 
     fun := [sin,cos,cube]
     inv := [asin,acos,cuberoot]
     x := 0.5
-    every i := 1 to *inv do 
+    every i := 1 to *inv do
        write("f(",x,") := ", compose(inv[i],fun[i])(x))
 end
 
@@ -1849,8 +1849,8 @@ In J only adverbs and conjunctions (functionals) can produce verbs (functions)..
    an     =. <@:((,'0') ; ])       NB. Producing the atomic representation of a noun
    of     =. train@:([ ; an)       NB. Evaluating a function for an argument
    box    =. < @: train"0          NB. Producing a boxed list of the trains of the components
-   
-   ]A =. box (1&o.)`(2&o.)`(^&3)   NB. Producing a boxed list containing the Sin, Cos and Cubic functions 
+
+   ]A =. box (1&o.)`(2&o.)`(^&3)   NB. Producing a boxed list containing the Sin, Cos and Cubic functions
 ┌────┬────┬───┐
 │1&o.│2&o.│^&3│
 └────┴────┴───┘
@@ -1871,18 +1871,18 @@ In J only adverbs and conjunctions (functionals) can produce verbs (functions)..
 
 ## Java
 
-Java doesn't technically have first-class functions. Java can simulate first-class functions to a certain extent, with anonymous classes and generic function interface. 
+Java doesn't technically have first-class functions. Java can simulate first-class functions to a certain extent, with anonymous classes and generic function interface.
 {{works with|Java|1.5+}}
 
 ```java5
 import java.util.ArrayList;
 
 public class FirstClass{
-	
+
 	public interface Function<A,B>{
 		B apply(A x);
 	}
-	
+
 	public static <A,B,C> Function<A, C> compose(
 			final Function<B, C> f, final Function<A, B> g) {
 		return new Function<A, C>() {
@@ -1891,11 +1891,11 @@ public class FirstClass{
 			}
 		};
 	}
-	 
+
 	public static void main(String[] args){
 		ArrayList<Function<Double, Double>> functions =
 			new ArrayList<Function<Double,Double>>();
-		
+
 		functions.add(
 				new Function<Double, Double>(){
 					@Override public Double apply(Double x){
@@ -1914,9 +1914,9 @@ public class FirstClass{
 						return x * x;
 					}
 				});
-		
+
 		ArrayList<Function<Double, Double>> inverse = new ArrayList<Function<Double,Double>>();
-		
+
 		inverse.add(
 				new Function<Double, Double>(){
 					@Override public Double apply(Double x){
@@ -1968,16 +1968,16 @@ import java.util.ArrayList;
 import java.util.function.Function;
 
 public class FirstClass{
-	
+
 	public static void main(String... arguments){
 		ArrayList<Function<Double, Double>> functions = new ArrayList<>();
-		
+
 		functions.add(Math::cos);
 		functions.add(Math::tan);
 		functions.add(x -> x * x);
-		
+
 		ArrayList<Function<Double, Double>> inverse = new ArrayList<>();
-		
+
 		inverse.add(Math::acos);
 		inverse.add(Math::atan);
 		inverse.add(Math::sqrt);
@@ -2054,7 +2054,7 @@ for (var i = 0; i < 3; i++) {
 
 
 
-Result is always: 
+Result is always:
 
 ```txt
 0.5
@@ -2082,7 +2082,7 @@ end
 ```
 
 
-Output: 
+Output:
 
 ```txt
 0.5
@@ -2136,14 +2136,14 @@ Tested in [http://epsilonwiki.free.fr/ELS_YAW/?view=p227]
 {def compose {lambda {:f :g :x} {:f {:g :x}}}}
 {def fun sin cos cube}
 {def inv asin acos cuberoot}
-{def display {lambda {:i} 
-  {br}{compose {nth :i {fun}} 
+{def display {lambda {:i}
+  {br}{compose {nth :i {fun}}
                {nth :i {inv}} 0.5}}}
 {map display {serie 0 2}}
 
 Output:
-0.5 
-0.49999999999999994 
+0.5
+0.49999999999999994
 0.5000000000000001
 
 ```
@@ -2403,7 +2403,7 @@ main(!IO) :-
     Forward = [sin,  cos,  (func(X) = ln(X))],
     Reverse = [asin, acos, (func(X) = exp(X))],
     Results = map_corresponding(
-        (func(F, R) = compose(R, F, 0.5)), 
+        (func(F, R) = compose(R, F, 0.5)),
         Forward, Reverse),
     write_list(Results, ", ", write_float, !IO),
     write_string("\n", !IO).
@@ -2416,7 +2416,7 @@ main(!IO) :-
 
 
 ```txt
-<nowiki> $ mmc -E firstclass.m && ./firstclass 
+<nowiki> $ mmc -E firstclass.m && ./firstclass
 0.5, 0.4999999999999999, 0.5</nowiki>
 ```
 
@@ -2482,7 +2482,7 @@ module FirstClassFunc
 ### Use and Output
 
  C:\Rosetta>ncc -o:FirstClassFunc FirstClassFunc.n
- 
+
  C:Rosetta>FirstClassFunc
  [0.5, 0.5, 0.5]
 
@@ -2566,10 +2566,10 @@ class FirstClass {
   function : Main(args : String[]) ~ Nil {
     vector := Vector->New()<Func2Holder <FloatHolder, FloatHolder> >;
     # store functions in collections
-    vector->AddBack(Func2Holder->New(\Func->Double : (v) 
+    vector->AddBack(Func2Holder->New(\Func->Double : (v)
       =>  v * v)<FloatHolder, FloatHolder>);
     # new function from preexisting function at run-time
-    vector->AddBack(Func2Holder->New(\Func->Double : (v) 
+    vector->AddBack(Func2Holder->New(\Func->Double : (v)
       => Float->SquareRoot(v->Get()))<FloatHolder, FloatHolder>);
     # process collection
     each(i : vector) {
@@ -2577,7 +2577,7 @@ class FirstClass {
       Show(vector->Get(i)<Func2Holder>->Get()<FloatHolder, FloatHolder>);
     };
   }
-  
+
   function : Show(func : (FloatHolder) ~ FloatHolder) ~ Nil {
     func(13.5)->Get()->PrintLine();
   }
@@ -2775,7 +2775,7 @@ use Math::Complex ':trig';
 
 sub compose {
     my ($f, $g) = @_;
-    
+
     sub {
         $f -> ($g -> (@_));
     };
@@ -2788,7 +2788,7 @@ my @flist1 = ( \&Math::Complex::sin, \&Math::Complex::cos, $cube  );
 my @flist2 = ( \&asin,               \&acos,               $croot );
 
 print join "\n", map {
-    compose($flist1[$_], $flist2[$_]) -> (0.5)   
+    compose($flist1[$_], $flist2[$_]) -> (0.5)
 } 0..2;
 ```
 
@@ -2855,7 +2855,7 @@ sequence ctable = {}
 
 function compose(integer f, integer g)
     ctable = append(ctable,{f,g})
-    return length(ctable)   
+    return length(ctable)
 end function
 
 function call_composite(integer f, atom x)
@@ -3180,7 +3180,7 @@ sapply(mapply(compose,f1,f2),do.call,list(.5))
 (define (cube-root x) (expt x (/ 1 3)))
 (define funlist (list sin cos cube))
 (define ifunlist (list asin acos cube-root))
- 
+
 (for ([f funlist] [i ifunlist])
   (displayln ((compose i f) 0.5)))
 ```
@@ -3217,7 +3217,7 @@ bar: func [x][reform ["bar:" x]]
 cube:  func [x][x * x * x]
 croot: func [x][power  x  1 / 3]
 
-; "compose" means something else in REBOL, so I "fashion" an alternative. 
+; "compose" means something else in REBOL, so I "fashion" an alternative.
 
 fashion: func [f1 f2][
 	do compose/deep [func [x][(:f1) (:f2) x]]]
@@ -3240,7 +3240,7 @@ while [not tail? A][
 
 The REXX language doesn't have any trigonometric functions built-in, nor the square root function, so several higher-math functions are included herein as RYO functions.
 
-The only REXX functions that have an inverse are: 
+The only REXX functions that have an inverse are:
 ::::*   d2x   ◄──►   x2d
 ::::*   d2c   ◄──►   c2d
 ::::*   c2x   ◄──►   x2c
@@ -3310,7 +3310,7 @@ test:    procedure expose A B w;  parse arg fu,xList;     d=digits() /*xList:  n
          return
 ```
 
-'''output''' 
+'''output'''
 
 ```txt
 
@@ -3350,11 +3350,11 @@ The reason why   '''Asin[sin(n)]'''   may not equal   '''n''':
 
 Each of the trigonometric functions is periodic in the real part of its argument, running through all its values twice in each interval of   <big>2<big><math>\pi</math></big></big>.
 
-'''Sine''' and '''cosecant'''   begin their period at   <big>2<big><math>\pi</math></big>k − <big><math>\pi</math></big>/2</big>   (where   <big>k</big>   is an integer),   finish it at   <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big>/2</big>,   and then reverse themselves over   <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big>/2</big>   ───►   <big>2<big><math>\pi</math></big>k + 3<big><math>\pi</math></big>/2</big>. 
+'''Sine''' and '''cosecant'''   begin their period at   <big>2<big><math>\pi</math></big>k − <big><math>\pi</math></big>/2</big>   (where   <big>k</big>   is an integer),   finish it at   <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big>/2</big>,   and then reverse themselves over   <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big>/2</big>   ───►   <big>2<big><math>\pi</math></big>k + 3<big><math>\pi</math></big>/2</big>.
 
-'''Cosine'''   and   '''secant'''   begin their period at   <big>2<big><math>\pi</math></big>k</big>,   finish it at   <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big></big>,   and then reverse themselves over   <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big></big>   ───►   <big>2<big><math>\pi</math></big>k + 2<big><math>\pi</math></big></big>. 
+'''Cosine'''   and   '''secant'''   begin their period at   <big>2<big><math>\pi</math></big>k</big>,   finish it at   <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big></big>,   and then reverse themselves over   <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big></big>   ───►   <big>2<big><math>\pi</math></big>k + 2<big><math>\pi</math></big></big>.
 
-'''Tangent'''   begins its period at   <big>2<big><math>\pi</math></big>k − <big><math>\pi</math></big>/2</big>,     finishes it at   <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big>/2</big>,   and then repeats it (forward) over <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big>/2</big>   ───►   <big>2<big><math>\pi</math></big>k + 3<big><math>\pi</math></big>/2</big>. 
+'''Tangent'''   begins its period at   <big>2<big><math>\pi</math></big>k − <big><math>\pi</math></big>/2</big>,     finishes it at   <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big>/2</big>,   and then repeats it (forward) over <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big>/2</big>   ───►   <big>2<big><math>\pi</math></big>k + 3<big><math>\pi</math></big>/2</big>.
 
 '''Cotangent'''   begins its period at   <big>2<big><math>\pi</math></big>k</big>,   finishes it at   <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big></big>,   and then repeats it (forward) over <big>2<big><math>\pi</math></big>k + <big><math>\pi</math></big></big>   ───►   <big>2<big><math>\pi</math></big>k + 2<big><math>\pi</math></big></big>.
 
@@ -3393,7 +3393,7 @@ puts funclist.zip(invlist).map {|f, invf| compose[invf, f][0.5]}
 
 ## Rust
 
-This solution uses a feature of Nightly Rust that allows us to return a closure from a function without using the extra indirection of a pointer. Stable Rust can also accomplish this challenge --  the only difference being that compose would return a <code>Box<Fn(T) -> V></code> which would result in an extra heap allocation. 
+This solution uses a feature of Nightly Rust that allows us to return a closure from a function without using the extra indirection of a pointer. Stable Rust can also accomplish this challenge --  the only difference being that compose would return a <code>Box<Fn(T) -> V></code> which would result in an extra heap allocation.
 
 
 ```rust
@@ -3466,7 +3466,7 @@ class SweetFunction[B,C](f: B => C) {
 implicit def sugarOnTop[A,B](f: A => B) = new SweetFunction(f)
 
 // now functions can be composed thus
-println((cube o cube o cuberoot)(0.5)) 
+println((cube o cube o cuberoot)(0.5))
 ```
 -->
 

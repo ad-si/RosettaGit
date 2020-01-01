@@ -14,7 +14,7 @@ tags = []
 {{Wikipedia|VList}}
 In computer science, the '''VList''' is a persistent data structure that combines the fast indexing of arrays with the easy extension of cons-based (or singly-linked) linked lists.
 
-Like arrays, VLists have constant-time lookup on average and are highly compact, requiring only O(log ''n'') storage for pointers, allowing them to take advantage of locality of reference.  
+Like arrays, VLists have constant-time lookup on average and are highly compact, requiring only O(log ''n'') storage for pointers, allowing them to take advantage of locality of reference.
 Like singly-linked or cons-based lists, they are persistent, and elements can be added to or removed from the front in constant time. Length can also be found in O(log ''n'') time.
 
 The primary operations of a VList are:
@@ -30,8 +30,8 @@ The task is to demonstrate creation of a VList and how to perform the primary op
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct sublist{
@@ -201,7 +201,7 @@ public:
         --offset;
         (* datas.front())[offset] = a;
     }
-    
+
     // lisp like cdr to keep previous version
     VList* cdr() {
         if (datas.empty()) {
@@ -244,7 +244,7 @@ public:
         }
         return isValid;
     }
-    
+
     void printList() {
         if (datas.empty()) {
             std::cout << "[]" << std::endl;
@@ -265,7 +265,7 @@ public:
         }
         std::cout << " ]" << std::endl;
     }
-    
+
     // One more method for demonstration purposes
     void printStructure() {
         std::cout << "offset:" << this->offset << std::endl;
@@ -296,7 +296,7 @@ public:
 int main(int argc, const char * argv[]) {
 
     std::unique_ptr<VList<char>> vlist = std::unique_ptr<VList<char>>(new VList<char>());
-    
+
     std::cout << "zero value for type.  empty vList:";
     vlist->printList();
     vlist->printStructure();
@@ -311,20 +311,20 @@ int main(int argc, const char * argv[]) {
     std::cout << "demonstrate cdr. 1 element removed:";
     vlist = std::unique_ptr<VList<char>>(vlist->cdr());
     vlist->printList();
-    vlist->printStructure();    
-    
+    vlist->printStructure();
+
     std::cout << "demonstrate length. length =" << vlist->length() << std::endl;
-    
+
     char out;
     bool isValid = vlist->index(3, out);
     if(isValid)
         std::cout << "demonstrate element access. v[3] =" << out << std::endl;
-    
-    std::cout << "show cdr releasing segment. 2 elements removed:";    
+
+    std::cout << "show cdr releasing segment. 2 elements removed:";
     vlist = std::unique_ptr<VList<char>>(vlist->cdr()->cdr());
     vlist->printList();
     vlist->printStructure();
-    
+
     return 0;
 }
 
@@ -538,7 +538,7 @@ popHead: 0
 ```go
 package main
 
-import "fmt" 
+import "fmt"
 
 type vList struct {
     base   *vSeg
@@ -552,10 +552,10 @@ type vSeg struct {
 
 // element type could be anything. i pick string to demonstrate the task.
 type vEle string
-    
+
 // primary operation 1: locate the kth element.
 func (v vList) index(i int) (r vEle) {
-    if i >= 0 { 
+    if i >= 0 {
         i += v.offset
         for sg := v.base; sg != nil; sg = sg.next {
             if i < len(sg.ele) {
@@ -574,7 +574,7 @@ func (v vList) cons(a vEle) vList {
         return vList{base: &vSeg{ele: []vEle{a}}}
     }
     if v.offset == 0 {
-        l2 := len(v.base.ele) * 2 
+        l2 := len(v.base.ele) * 2
         ele := make([]vEle, l2)
         ele[l2-1] = a
         return vList{&vSeg{v.base, ele}, l2 - 1}
@@ -582,7 +582,7 @@ func (v vList) cons(a vEle) vList {
     v.offset--
     v.base.ele[v.offset] = a
     return v
-}   
+}
 
 // primary operation 3: obtain a new array beginning at the second element
 // of an old array
@@ -645,7 +645,7 @@ func main() {
     }
     fmt.Println("demonstrate cons. 6 elements added:", v)
     v.printStructure()
-    
+
     v = v.cdr()
     fmt.Println("demonstrate cdr. 1 element removed:", v)
     v.printStructure()
@@ -729,10 +729,10 @@ class VList<T : Any?> {
             }
         }
         throw IllegalArgumentException("Index out of range")
-    }  
-     
+    }
+
     /* add an element to the front of VList */
-    fun cons(a: T): VList<T> {        
+    fun cons(a: T): VList<T> {
         if (this.base == null) {
             val v = VList<T>()
             val s = VSeg()
@@ -749,7 +749,7 @@ class VList<T : Any?> {
             s.next = this.base
             s.ele = ele
             v.base = s
-            v.offset = l2 - 1 
+            v.offset = l2 - 1
             return v
         }
         this.offset--
@@ -810,11 +810,11 @@ fun main(args: Array<String>) {
 
     v = v.cdr()
     println("Demonstrating cdr method, 1 element removed: $v")
-    v.printStructure() 
+    v.printStructure()
 
     println("Demonstrating size property, size = ${v.size}\n")
     println("Demonstrating element access, v[3] = ${v[3]}\n")
- 
+
     v = v.cdr().cdr()
     println("Demonstrating cdr method again, 2 more elements removed: $v")
     v.printStructure()
@@ -856,7 +856,7 @@ Offset: 0
 
 ## ooRexx
 
-The ooRexx queue class is a vlist implementation.  
+The ooRexx queue class is a vlist implementation.
 Here are some examples of usage:
 
 ```ooRexx
@@ -906,7 +906,7 @@ enum OFFSET,     -- (first spare slot [0=none])
 
 function new_vlist()
     return {0,{}} -- offset of 0, no segments
-end function 
+end function
 
 function get_vlist(sequence v, integer k)
 -- locate kth element
@@ -922,7 +922,7 @@ function get_vlist(sequence v, integer k)
     end if
     throw("index out of range")
 end function
- 
+
 function cons(sequence v, object a)
 -- add an element to the front of v
     if length(v[SEGMENTS])=0 then
@@ -937,7 +937,7 @@ function cons(sequence v, object a)
     v[OFFSET] = offset-1
     return v
 end function
- 
+
 function cdr(sequence v)
 -- remove first element of v
     if length(v[SEGMENTS])=0 then
@@ -952,14 +952,14 @@ function cdr(sequence v)
     end if
     return v
 end function
- 
+
 function vlist_size(sequence v)
 -- compute the size of v
     if length(v[SEGMENTS])=0 then return 0 end if
-    return length(v[SEGMENTS][1])*2 -v[OFFSET] -1 
+    return length(v[SEGMENTS][1])*2 -v[OFFSET] -1
 end function
 
-function sprint_vlist(sequence v) 
+function sprint_vlist(sequence v)
     return sprint(flatten(v[SEGMENTS])[v[OFFSET]+1..$])
 end function
 
@@ -967,24 +967,24 @@ procedure print_vlist_structure(sequence v)
     printf(1,"Offset: %d\n",v[OFFSET])
     pp(v[SEGMENTS],{pp_Nest,1})
 end procedure
- 
+
 procedure main()
     sequence v = new_vlist()
     printf(1,"Before adding any elements, empty VList: %s\n",{sprint_vlist(v)})
     print_vlist_structure(v)
- 
+
     for a=6 to 1 by -1 do v = cons(v,a) end for
     printf(1,"Demonstrating cons method, 6 elements added: %s\n",{sprint_vlist(v)})
     print_vlist_structure(v)
- 
+
     v = cdr(v)
     printf(1,"Demonstrating cdr method, 1 element removed: %s\n",{sprint_vlist(v)})
     print_vlist_structure(v)
- 
+
     printf(1,"Demonstrating size property, size = %d\n",vlist_size(v))
     -- (note this is 1-based indexing)
     printf(1,"Demonstrating element access, v[3] = %d\n",get_vlist(v,3))
- 
+
     v = cdr(cdr(cdr(v)))
     printf(1,"Demonstrating cdr method again, 3 more elements removed: %s, size = %d\n",
             {sprint_vlist(v),vlist_size(v)})
@@ -1148,8 +1148,8 @@ number of items in Vlist: 5
 ## Scala
 
 {{libheader|Scala}}
-<blockquote cite="http://stackoverflow.com/questions/3107151/persistent-data-structures-in-scala">Two of Scala's 2.8 immutable data structures are vectors and hash tries, represented as 32-ary trees. 
-These were originally designed by '''Phil Bagwell''', who was working with my team at EPFL, then adopted for Clojure, and now finally adopted for Scala 2.8. 
+<blockquote cite="http://stackoverflow.com/questions/3107151/persistent-data-structures-in-scala">Two of Scala's 2.8 immutable data structures are vectors and hash tries, represented as 32-ary trees.
+These were originally designed by '''Phil Bagwell''', who was working with my team at EPFL, then adopted for Clojure, and now finally adopted for Scala 2.8.
 The Scala implementation shares a common root with the Clojure implementation, but is certainly not a port of it.</blockquote>
 A quote of Martin Odersky, his co-worker Phil Bagwell† invented the VList.
 

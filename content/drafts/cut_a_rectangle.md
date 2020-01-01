@@ -24,8 +24,8 @@ Possibly related task: [[Maze generation]] for depth-first search.
 
 Exhaustive search on the cutting path.  Symmetric configurations are only calculated once, which helps with larger sized grids.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -151,8 +151,8 @@ output<lang>2 x 1: 1
 
 More awkward solution: after compiling, run <code>./a.out -v [width] [height]</code> for display of cuts.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef unsigned char byte;
@@ -906,7 +906,7 @@ defmodule Rectangle do
                else: count + walk(h, w, div(h, 2) - 1, div(w, 2), grid)
     end
   end
-  
+
   defp walk(h, w, y, x, grid, count\\0)
   defp walk(h, w, y, x,_grid, count) when y in [0,h] or x in [0,w], do: count+1
   defp walk(h, w, y, x, grid, count) do
@@ -917,7 +917,7 @@ defmodule Rectangle do
       if Enum.at(grid, t+nt), do: cnt, else: cnt + walk(h, w, y+dy, x+dx, grid)
     end)
   end
-  
+
   defp next(w), do: [{w+1, 1, 0}, {-w-1, -1, 0}, {-1, 0, -1}, {1, 0, 1}]  # {next,dy,dx}
 end
 
@@ -984,15 +984,15 @@ defmodule Rectangle do
     Agent.stop(__MODULE__)
     MapSet.to_list(result)
   end
-  
+
   defp start_link do
     Agent.start_link(fn -> MapSet.new end, name: __MODULE__)
   end
-  
+
   defp make_grid(h, w) do
     for i <- 0..h-1, j <- 0..w-1, into: %{}, do: {{i,j}, true}
   end
-  
+
   defp walk(h, w, grid, x, y, limit, cut, select) do
     grid2 = grid |> Map.put({x,y}, false) |> Map.put({h-x-1,w-y-1}, false)
     select2 = [{x,y} | select] |> Enum.sort
@@ -1006,14 +1006,14 @@ defmodule Rectangle do
       end
     end
   end
-  
+
   defp dirs(x, y), do: [{x+1, y}, {x-1, y}, {x, y-1}, {x, y+1}]
-  
+
   defp search_next(grid, select) do
     (for {x,y} <- select, {i,j} <- dirs(x,y), grid[{i,j}], do: {i,j})
     |> Enum.uniq
   end
-  
+
   defp display(h, w) do
     Agent.get(__MODULE__, &(&1))
     |> Enum.each(fn select ->
@@ -1023,7 +1023,7 @@ defmodule Rectangle do
          IO.puts to_string(h, w, grid)
        end)
   end
-  
+
   defp to_string(h, w, grid) do
     text = for x <- 0..h*2, into: %{}, do: {x, String.duplicate(" ", w*4+1)}
     text = Enum.reduce(0..h, text, fn i,acc ->
@@ -1033,16 +1033,16 @@ defmodule Rectangle do
            end)
     Enum.map_join(0..h*2, "\n", fn i -> text[i] end)
   end
-  
+
   defp to_s(text, i, j, grid) do
     text = if grid[{i,j}] != grid[{i-1,j}], do: replace(text, i*2, j*4+1, "---"), else: text
     text = if grid[{i,j}] != grid[{i,j-1}], do: replace(text, i*2+1, j*4, "|"), else: text
     replace(text, i*2, j*4, "+")
   end
-  
+
   defp replace(text, x, y, replacement) do
     len = String.length(replacement)
-    Map.update!(text, x, fn str -> 
+    Map.update!(text, x, fn str ->
       String.slice(str, 0, y) <> replacement <> String.slice(str, y+len..-1)
     end)
   end
@@ -1357,7 +1357,7 @@ cut (x, y) = runST $ do
 
 main :: IO ()
 main = do
-    mapM_ (\(x, y) -> when (even (x * y)) (putStrLn $ 
+    mapM_ (\(x, y) -> when (even (x * y)) (putStrLn $
         show x ++ " x " ++ show y ++ ": " ++ show (cut (x, y))))
         [ (x, y) | x <- [1..10], y <- [1..x] ]
 
@@ -1615,7 +1615,7 @@ end
 runtest()
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 2 x 1: 1
@@ -1805,10 +1805,10 @@ Output is identical to C's.
 use strict;
 use warnings;
 my @grid = 0;
- 
+
 my ($w, $h, $len);
 my $cnt = 0;
- 
+
 my @next;
 my @dir = ([0, -1], [-1, 0], [0, 1], [1, 0]);
 
@@ -1822,38 +1822,38 @@ sub walk {
 
     my $t = $y * ($w + 1) + $x;
     $grid[$_]++ for $t, $len - $t;
- 
+
     for my $i (0 .. 3) {
 	if (!$grid[$t + $next[$i]]) {
 	    walk($y + $dir[$i]->[0], $x + $dir[$i]->[1]);
 	}
     }
- 
+
     $grid[$_]-- for $t, $len - $t;
 }
- 
+
 sub solve {
     my ($hh, $ww, $recur) = @_;
     my ($t, $cx, $cy, $x);
     ($h, $w) = ($hh, $ww);
- 
+
     if ($h & 1) { ($t, $w, $h) = ($w, $h, $w); }
     if ($h & 1) { return 0; }
     if ($w == 1) { return 1; }
     if ($w == 2) { return $h; }
     if ($h == 2) { return $w; }
- 
+
     {
 	use integer;
 	($cy, $cx) = ($h / 2, $w / 2);
     }
- 
+
     $len = ($h + 1) * ($w + 1);
     @grid = ();
     $grid[$len--] = 0;
- 
+
     @next = (-1, -$w - 1, 1, $w + 1);
- 
+
     if ($recur) { $cnt = 0; }
     for ($x = $cx + 1; $x < $w; $x++) {
 	$t = $cy * ($w + 1) + $x;
@@ -1861,16 +1861,16 @@ sub solve {
 	walk($cy - 1, $x);
     }
     $cnt++;
- 
+
     if ($h == $w) {
 	$cnt *= 2;
     } elsif (!($w & 1) && $recur) {
 	solve($w, $h);
     }
- 
+
     return $cnt;
 }
- 
+
 sub MAIN {
     print "ok\n";
     my ($y, $x);
@@ -1912,7 +1912,7 @@ sub walk(Int $y, Int $x) {
     }
     $t = $y * ($w + 1) + $x;
     @grid[$t]++, @grid[$len - $t]++;
-     
+
     loop ($i = 0; $i < 4; $i++) {
         if !@grid[$t + @next[$i]] {
             walk($y + @dir[$i][0], $x + @dir[$i][1]);
@@ -2059,12 +2059,12 @@ function search(integer y, x, d, level)
                         count += search(yy,xx,d,level+1)
                     end for
                 end if
-            end if 
+            end if
             mirror(ny,nx,' ')
             if c='-' then
                 mirror(ny,nx+dx,' ')
             end if
-        end if 
+        end if
         if level!=0 then
             -- ((level=0)==leave outer edges 'x' for next iteration)
             mirror(y,x,'+')
@@ -2662,12 +2662,12 @@ walk:  procedure expose # dir. @. h len next. w wp;       parse arg y,x
 
 This version replaced the (first) multiple clause   '''if'''   instructions in the   '''walk'''   subroutine with a
 
-''short circuit'' version.   Other optimizations were also made.   This made the program about 20% faster. 
+''short circuit'' version.   Other optimizations were also made.   This made the program about 20% faster.
 
 
 A test run was executed to determine the order of the   '''if'''   statements   (by counting which
 
-comparison would yield the most benefit by placing it first). 
+comparison would yield the most benefit by placing it first).
 
 ```rexx
 /*REXX program cuts rectangles into two symmetric pieces,  the rectangles are cut along */
@@ -2726,7 +2726,7 @@ walk:  procedure expose # dir. @. h len next. w wp;       parse arg y,x
        _= len - t;       @._= @._ - 1;     return
 ```
 
-{{out|output|text=  is the same as the idiomatic version   (above).}} 
+{{out|output|text=  is the same as the idiomatic version   (above).}}
 
 
 
@@ -2742,11 +2742,11 @@ def cut_it(h, w)
     h, w = w, h
   end
   return 1  if w == 1
-  
+
   nxt = [[w+1, 1, 0], [-w-1, -1, 0], [-1, 0, -1], [1, 0, 1]]  # [next,dy,dx]
   blen = (h + 1) * (w + 1) - 1
   grid = [false] * (blen + 1)
-  
+
   walk = lambda do |y, x, count=0|
     return count+1  if y==0 or y==h or x==0 or x==w
     t = y * (w + 1) + x
@@ -2757,7 +2757,7 @@ def cut_it(h, w)
     grid[t] = grid[blen - t] = false
     count
   end
-  
+
   t = h / 2 * (w + 1) + w / 2
   if w.odd?
     grid[t] = grid[t + 1] = true
@@ -2829,7 +2829,7 @@ class Rectangle
     @h, @w = h, w
     @limit = h * w / 2
   end
-  
+
   def cut(disp=true)
     @cut = {}
     @select = []
@@ -2839,11 +2839,11 @@ class Rectangle
     display  if disp
     @result
   end
-  
+
   def make_grid
     Array.new(@h+1) {|i| Array.new(@w+1) {|j| true if i<@h and j<@w }}
   end
-  
+
   def walk(y, x)
     @grid[y][x] = @grid[@h-y-1][@w-x-1] = false
     @select.push([y,x])
@@ -2859,7 +2859,7 @@ class Rectangle
     @select.pop
     @grid[y][x] = @grid[@h-y-1][@w-x-1] = true
   end
-  
+
   def search_next
     nxt = {}
     @select.each do |y,x|
@@ -2869,7 +2869,7 @@ class Rectangle
     end
     nxt.keys
   end
-  
+
   def display
     @result.each do |select|
       @grid = make_grid
@@ -2877,7 +2877,7 @@ class Rectangle
       puts to_s
     end
   end
-  
+
   def to_s
     text = Array.new(@h*2+1) {" " * (@w*4+1)}
     for i in 0..@h
@@ -2992,7 +2992,7 @@ fn cwalk(mut vis: &mut Vec<Vec<bool>>, count: &mut isize, w: usize, h: usize, y:
         *count += 1;
         return;
     }
- 
+
     vis[y][x] = true;
     vis[h - y][w - x] = true;
 
@@ -3017,17 +3017,17 @@ fn count_only(x: usize, y: usize) -> isize {
     let mut count = 0;
     let mut w = x;
     let mut h = y;
- 
+
     if (h * w) & 1 != 0 {
         return count;
     }
     if h & 1 != 0 {
         std::mem::swap(&mut w, &mut h);
     }
- 
+
     let mut vis = vec![vec![false; w + 1]; h + 1];
     vis[h / 2][w / 2] = true;
- 
+
     if w & 1 != 0 {
         vis[h / 2][w / 2 + 1] = true;
     }
@@ -3038,13 +3038,13 @@ fn count_only(x: usize, y: usize) -> isize {
         count = 0;
         if w != h {
             cwalk(&mut vis, &mut count, w, h, h / 2 + 1, w / 2, if w & 1 != 0 { 3 } else { 2 });
-        } 
+        }
         res += 2 * count - if w & 1 == 0 { 1 } else { 0 };
     }
     else {
         res = 1;
     }
- 
+
     if w == h {
         res = 2 * res + 2;
     }
@@ -3168,11 +3168,11 @@ fcn cut_it(h,w){
       t,h,w=h,w,t;  // swap w,h: a,b=c,d --> a=c; b=d; so need a tmp
    }
    if(w==1) return(1);
- 
+
    nxt :=T(T(w+1, 1,0), T(-w-1, -1,0), T(-1, 0,-1), T(1, 0,1)); #[next, dy,dx]
    blen:=(h + 1)*(w + 1) - 1;
    grid:=(blen + 1).pump(List(),False); //-->L(False,False...)
- 
+
    walk:='wrap(y,x){ // lambda closure
       if(y==0 or y==h or x==0 or x==w) return(1);
       count,t:=0,y*(w + 1) + x;

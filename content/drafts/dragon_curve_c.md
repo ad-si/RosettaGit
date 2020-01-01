@@ -13,8 +13,8 @@ tags = []
 It uses an [[wp:L-system|L-system]] in order to generate the curve, the code from [[Raster graphics operations]] ("<tt>imglib.h</tt>") to produce the output in PPM format, and the code from [[Basic string manipulation functions]] (<tt>estrings.h</tt>) to manipulate strings keeping the ''evolution'' of the system.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include "imglib.h"
 #include "estrings.h"
@@ -87,7 +87,7 @@ void interpret_dragon(image im, String s)
   int x = 140, y = (HEIGHT >> 1) - 80;
   int nx, ny;
   int dr = 0;
-  
+
   for(i=0; i < s->length; i++) {
     switch( s->bstring[i] ) {
     case '+':
@@ -103,7 +103,7 @@ void interpret_dragon(image im, String s)
 	   (nx <= WIDTH) && (ny <= HEIGHT) &&
 	   (x >= 0) && ( y >= 0 ) &&
 	   (x <= WIDTH) && (y <= HEIGHT)) {
-	draw_line(im, x, y, 
+	draw_line(im, x, y,
 		  nx, ny,
 		  colors[dr].r, colors[dr].g, colors[dr].b);
 	dr++; dr %= NUM_COLS;

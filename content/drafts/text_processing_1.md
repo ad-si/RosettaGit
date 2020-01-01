@@ -23,7 +23,7 @@ followed by 24 value/flag pairs, representing measurements at 01:00,
 
 <date> <val1> <flag1> <val2> <flag2> ...  <val24> <flag24>
 
-Some test data is available at: 
+Some test data is available at:
 ... (nolonger available at original location)
 
 I have to sum up the values (per day and only valid data, i.e. with
@@ -376,7 +376,7 @@ Loop, Read, %data%, %result%
 					{
 					Sum := Sum + value
 					Valid++
-					
+
 					if (wrong > maxwrong)
 						{
 						maxwrong := wrong
@@ -391,23 +391,23 @@ Loop, Read, %data%, %result%
 					{
 					wrong++
 					currwrongdate := date
-					curroccurrence := (A_index-1) / 2	
+					curroccurrence := (A_index-1) / 2
 					if (wrong = 1)
 						{
 						firstwrongdate := date
 						firstoccurrence := curroccurrence
 						}
-					}				
+					}
 				Counter := 0
 				}
-			}			
+			}
 		}
 	avg := sum / valid
 	TotValid := Totvalid+valid
 	TotSum := Totsum+sum
-	FileAppend, Day: %date% sum: %sum% avg: %avg% Readings: %valid%/%couples%`n	
+	FileAppend, Day: %date% sum: %sum% avg: %avg% Readings: %valid%/%couples%`n
 	}
-	
+
 Totavg := TotSum / TotValid
 FileAppend, `n`nDays %Lines%`nMaximal wrong readings: %maxwrong% from %startwrongdate% at %startoccurrence% to %lastwrongdate% at %lastoccurrence%`n`n, %result%
 FileAppend, Valid readings: %TotValid%`nTotal Value: %TotSUm%`nAverage: %TotAvg%, %result%
@@ -444,7 +444,7 @@ BEGIN{
   nodata_max=-1;          # Max consecutive flags<0 in lines of file
   nodata_maxline="!";     # ... and line number(s) where it occurs
 }
-FNR==1 { 
+FNR==1 {
   # Accumulate input file names
   if(infiles){
     infiles = infiles "," infiles
@@ -458,8 +458,8 @@ FNR==1 {
 
   # extract field info, skipping initial date field
   for(field=2; field<=NF; field+=2){
-    datum=$field; 
-    flag=$(field+1); 
+    datum=$field;
+    flag=$(field+1);
     if(flag<1){
       nodata++
     }else{
@@ -472,7 +472,7 @@ FNR==1 {
         nodata_maxline=$1
       }
       # re-initialise run of nodata counter
-      nodata=0; 
+      nodata=0;
       # gather values for averaging
       tot_line+=datum
       num_line++;
@@ -490,7 +490,7 @@ FNR==1 {
   #printf "%s  %15.3g  %4i\n", $0, tot_line, num_line
   #printf "%s\n  %15.3f  %4i  %4i  %4i  %s\n", $0, tot_line, num_line,  nodata, nodata_max, nodata_maxline
 
-  
+
 }
 
 END{
@@ -518,7 +518,7 @@ Readings = 129403
 Average  =     10.497
 
 Maximum run(s) of 589 consecutive false readings ends at line starting with date(s): 1993-03-05
-bash$ 
+bash$
 ```
 
 
@@ -528,7 +528,7 @@ bash$
 
 ```dos
 @echo off
-setlocal ENABLEDELAYEDEXPANSION 
+setlocal ENABLEDELAYEDEXPANSION
 set maxrun=    0
 set maxstart=
 set maxend=
@@ -627,7 +627,7 @@ max false:   589  from 1993-02-09 2 until 1993-03-05 14
 ```bbcbasic
       file% = OPENIN("readings.txt")
       IF file% = 0 THEN PRINT "Could not open test data file" : END
-      
+
       Total = 0
       Count% = 0
       BadMax% = 0
@@ -699,8 +699,8 @@ Longest run of bad readings = 589 ending 1993-03-05
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -810,8 +810,8 @@ Ends on date 1993-03-05
 ## C++
 
 
-```Cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -954,7 +954,7 @@ Ends on date 1993-03-05
        *> Terminate the program if an error occurs on input-file.
        input-file-error SECTION.
            USE AFTER STANDARD ERROR ON input-file.
-           
+
            DISPLAY
                "An error occurred while reading input.txt. "
                "File error: " file-status
@@ -963,7 +963,7 @@ Ends on date 1993-03-05
 
            GOBACK
            .
-            
+
        END DECLARATIVES.
 
        main-line.
@@ -989,21 +989,21 @@ Ends on date 1993-03-05
                    *> record.
                    UNSTRING input-data-pairs DELIMITED BY X"09"
                        INTO val COUNT val-length, flag COUNT flag-length
-                   
+
                    COMPUTE offset = val-length + flag-length + 3
                    MOVE input-data-pairs (offset:) TO input-data-pairs
 
                    *> Process according to flag.
                    IF NOT invalid-flag
                        ADD val TO day-total, grand-total
-                       
+
                        ADD 1 TO day-accepted, total-accepted
-                       
+
                        IF max-data-gap < current-data-gap
                            MOVE current-data-gap TO max-data-gap
                            MOVE date-stamp TO max-data-gap-end
                        END-IF
-                       
+
                        MOVE ZERO TO current-data-gap
                    ELSE
                        ADD 1 TO current-data-gap, day-rejected,
@@ -1014,7 +1014,7 @@ Ends on date 1993-03-05
                *> Display day stats.
                DIVIDE day-total BY day-accepted GIVING mean-val
                DISPLAY
-                   date-stamp 
+                   date-stamp
                    " Reject: " day-rejected
                    " Accept: " day-accepted
                    " Average: " mean-val
@@ -1057,12 +1057,12 @@ Ends on date 1993-03-05
 2004-12-29 Reject: 00001 Accept: 00023 Average: 00000002.447
 2004-12-30 Reject: 00001 Accept: 00023 Average: 00000002.839
 2004-12-31 Reject: 00001 Accept: 00023 Average: 00000002.056
- 
+
 File:         readings.txt
 Total:        01358393.400
 Readings:     00129403
 Average:      00000010.497
- 
+
 Bad readings: 00001901
 Maximum number of consecutive bad readings is 00000589
 Ends on date 1993-03-05
@@ -1395,7 +1395,7 @@ The function file_contents/1 is used by [[Text_processing/2]]. Please update the
 file_contents( Name ) ->
 	{ok, Binary} = file:read_file( Name ),
 	[line_contents(X) || X <- binary:split(Binary, <<"\r\n">>, [global]), X =/= <<>>].
-	
+
 main( Files ) ->
       Acc = lists:foldl( fun file/2, #acc{}, Files ),
       {Failed_date, Failed, _Continuation} = Acc#acc.failed,
@@ -1517,7 +1517,7 @@ variable worst-n
 : add-sample ( value -- )
   day-sum f@ f+ day-sum f!
   1 day-n +! ;
-  
+
 : add-day
   day-sum f@ total-sum f@ f+ total-sum f!
   day-n @ total-n +! ;
@@ -1866,7 +1866,7 @@ main = do
         maxFmt   =  "Maximum of %d consecutive false readings, starting on line /%s/ and ending on line /%s/\n"
 -- output statistics
     putStrLn "\nSome lines:\n"
-    mapM_ (\(d,((v,n),_)) -> printf lineFmt d n v (v/fromIntegral n)) $ take 4 $ drop 2200 dat 
+    mapM_ (\(d,((v,n),_)) -> printf lineFmt d n v (v/fromIntegral n)) $ take 4 $ drop 2200 dat
     (\(t,n) -> printf totalFmt  n t (t/fromIntegral n)) $ fst summ
     mapM_ ((\(l, d1,d2) -> printf maxFmt l d1 d2)
               . (\(a,b)-> (a,(fst.(dat!!).(`div`24))b,(fst.(dat!!).(`div`24))(a+b)))) $ snd summ
@@ -1930,7 +1930,7 @@ while line := read(fin) do {
          else {                                    # bad (flagged) data
             if rejcur.count = 0 then rejcur.fromdate := ldate
             rejcur.todate := ldate
-            rejcur.count +:= 1 
+            rejcur.count +:= 1
             rej +:= 1
             }
          }
@@ -1938,13 +1938,13 @@ while line := read(fin) do {
    F_tot +:= tot
    F_acc +:= acc := fields - rej
    F_rej +:= rej
-   write(fout,"Line: ",ldate," Reject: ", rej," Accept: ", acc," Line_tot: ",tot," Line_avg: ", if acc > 0 then tot / acc else 0) 
+   write(fout,"Line: ",ldate," Reject: ", rej," Accept: ", acc," Line_tot: ",tot," Line_avg: ", if acc > 0 then tot / acc else 0)
    }
 
-write(fout,"\nTotal    = ",F_tot,"\nReadings = ",F_acc,"\nRejects  = ",F_rej,"\nAverage  = ",F_tot / F_acc) 
-if rejmax.count > 0 then 
+write(fout,"\nTotal    = ",F_tot,"\nReadings = ",F_acc,"\nRejects  = ",F_rej,"\nAverage  = ",F_tot / F_acc)
+if rejmax.count > 0 then
    write(fout,"Maximum run of bad data was ",rejmax.count," readings from ",rejmax.fromdate," to ",rejmax.todate)
-else 
+else
    write(fout,"No bad runs of data")
 end
 ```
@@ -2010,16 +2010,16 @@ formatFileSumry=: dyad define
 
 ```j
    (_4{.Dates) formatDailySumry _4{. DailySummary
-Line:     Accept:   Line_tot: Line_avg: 
-2004-12-28     23    77.800     3.383   
-2004-12-29     23    56.300     2.448   
-2004-12-30     23    65.300     2.839   
-2004-12-31     23    47.300     2.057   
+Line:     Accept:   Line_tot: Line_avg:
+2004-12-28     23    77.800     3.383
+2004-12-29     23    56.300     2.448
+2004-12-30     23    65.300     2.839
+2004-12-31     23    47.300     2.057
 
    (MaxRun;StartDates) formatFileSumry DailySummary
-Total:     1358393.400                                                                             
-Readings:       129403                                                                             
-Average:        10.497                                                                             
+Total:     1358393.400
+Readings:       129403
+Average:        10.497
 
 Maximum run(s) of 589 consecutive false readings ends at line(s) starting with date(s): 1993-03-05
 ```
@@ -2133,7 +2133,7 @@ total    = 1358393.400
 readings = 129403
 average  = 000010.497
 
-maximum run(s) of 589 invalid measurements: 
+maximum run(s) of 589 invalid measurements:
 begins at 1993-02-09 and ends at 1993-03-05
 ```
 
@@ -2141,7 +2141,7 @@ begins at 1993-02-09 and ends at 1993-03-05
 
 ## JavaScript
 
-{{works with|JScript}} 
+{{works with|JScript}}
 
 ```javascript
 var filename = 'readings.txt';
@@ -2166,7 +2166,7 @@ WScript.echo(
     "Total    = " + dec3(file_stats.total) + "\n" +
     "Readings = " + file_stats.num_readings + "\n" +
     "Average  = " + dec3(file_stats.total / file_stats.num_readings) + "\n\n" +
-    "Maximum run of " + file_stats.reject_run_max + 
+    "Maximum run of " + file_stats.reject_run_max +
     " consecutive false readings ends at " + file_stats.reject_run_date
 );
 
@@ -2536,7 +2536,7 @@ Line:  2004-12-31  Reject:  1  Accept: 23  Line_tot:  47.300  Line_avg:   2.057
 File     = readings.txt
 Total    = 1358393.400
 Readings = 129403
-Average  = 10.497 
+Average  = 10.497
 
 Maximum run of 589 consecutive false readings
 ends at line starting with date: 1993-03-05
@@ -2559,18 +2559,18 @@ max_rejected_date, rejected_date = "", ""
 while true do
     data = io.read("*line")
     if data == nil then break end
-    
+
     date = string.match( data, "%d+%-%d+%-%d+" )
     if date == nil then break end
-	
+
     val = {}
     for w in string.gmatch( data, "%s%-*%d+[%.%d]*" ) do
         val[#val+1] = tonumber(w)
     end
-    
+
     sum, cnt = 0, 0
     for i = 1, #val, 2 do
-    	if val[i+1] > 0 then 
+    	if val[i+1] > 0 then
     	    sum = sum + val[i]
     	    cnt = cnt + 1
     	    n_rejected = 0
@@ -2585,13 +2585,13 @@ while true do
     	    end
     	end
     end
-    
+
     file_sum = file_sum + sum
     file_cnt_data = file_cnt_data + cnt
     file_lines = file_lines + 1
-    
+
     print( string.format( "%s:\tRejected: %d\tAccepted: %d\tLine_total: %f\tLine_average: %f", date, #val/2-cnt, cnt, sum, sum/cnt ) )
-end    
+end
 
 print( string.format( "\nFile:\t  %s", filename ) )
 print( string.format( "Total:\t  %f", file_sum ) )
@@ -2622,9 +2622,9 @@ Scan[(a=Position[#[[3;;All;;2]],1];
 Print["Line:",#[[1]] ,"\tReject:", 24 - Length[a], "\t Accept:", Length[a], "\tLine_tot:",
 Total@Part[#, Flatten[2*a]] , "\tLine_avg:", Total@Part[#, Flatten[2*a]]/Length[a]])&, data]
 
-GlobalSum = Nb = Running = MaxRunRecorded =  0; MaxRunTime = {}; 
+GlobalSum = Nb = Running = MaxRunRecorded =  0; MaxRunTime = {};
 Scan[ For[i = 3, i < 50, i = i + 2,
-   If[#[[i]] == 1, 
+   If[#[[i]] == 1,
     Running=0; GlobalSum += #[[i-1]]; Nb++;,
     Running ++;  If[MaxRunRecorded < Running, MaxRunRecorded = Running;MaxRunTime={ #[[1]]}; ];
    ]] &, data ]
@@ -2829,7 +2829,7 @@ while (<>) {
   my $tot_line = 0;             # sum of line data
   my $num_line = 0;             # number of line data items with flag>0
   my $rejects  = 0;
- 
+
   # extract field info, skipping initial date field
   my ($date, @fields) = split;
   while (@fields and my ($datum, $flag) = splice @fields, 0, 2) {
@@ -2848,28 +2848,28 @@ while (<>) {
       $nodata_maxline = $date;
     }
     # re-initialise run of nodata counter
-    $nodata = 0; 
+    $nodata = 0;
     # gather values for averaging
     $tot_line += $datum;
     $num_line++;
   }
- 
+
   # totals for the file so far
   $tot_file += $tot_line;
   $num_file += $num_line;
- 
+
   printf "Line: %11s  Reject: %2i  Accept: %2i  Line_tot: %10.3f  Line_avg: %10.3f\n",
          $date, $rejects, $num_line, $tot_line, ($num_line>0)? $tot_line/$num_line: 0;
- 
+
 }
- 
+
 printf "\n";
 printf "File(s)  = %s\n", $infiles;
 printf "Total    = %10.3f\n", $tot_file;
 printf "Readings = %6i\n", $num_file;
 printf "Average  = %10.3f\n", $tot_file / $num_file;
- 
-printf "\nMaximum run(s) of %i consecutive false readings ends at line starting with date(s): %s\n", 
+
+printf "\nMaximum run(s) of %i consecutive false readings ends at line starting with date(s): %s\n",
        $nodata_max, $nodata_maxline;
 ```
 
@@ -3038,18 +3038,18 @@ $
 my @gaps;
 my $previous = 'valid';
 
-for $*IN.lines -> $line { 
+for $*IN.lines -> $line {
     my ($date, @readings) = split /\s+/, $line;
     my @valid;
     my $hour = 0;
     for @readings -> $reading, $flag {
-        if $flag > 0 {    
+        if $flag > 0 {
             @valid.push($reading);
             if $previous eq 'invalid' {
                 @gaps[*-1]{'end'} = "$date $hour:00";
                 $previous = 'valid';
             }
-        } 
+        }
         else
         {
             if $previous eq 'valid' {
@@ -3061,7 +3061,7 @@ for $*IN.lines -> $line {
         $hour++;
     }
     say "$date: { ( +@valid ?? ( ( [+] @valid ) / +@valid ).fmt("%.3f") !! 0 ).fmt("%8s") }",
-        " mean from { (+@valid).fmt("%2s") } valid."; 
+        " mean from { (+@valid).fmt("%2s") } valid.";
 };
 
 my $longest = @gaps.sort({-$^a<count>})[0];
@@ -3109,7 +3109,7 @@ atom readtot = 0
 timedate run_start, max_start
 
 procedure end_bad_run()
-    if count then 
+    if count then
         if count>max_count then
             max_count = count
             max_start = run_start
@@ -3314,7 +3314,7 @@ loop:
    end;
 
 finish_up:
-   
+
 end text1;
 ```
 
@@ -3430,7 +3430,7 @@ for line in fileinput.input():
         nodata_max=nodata
         nodata_maxline=[date]
       # re-initialise run of nodata counter
-      nodata=0; 
+      nodata=0;
       # gather values for averaging
       tot_line += datum
       num_line += 1
@@ -3440,9 +3440,9 @@ for line in fileinput.input():
   num_file += num_line
 
   print "Line: %11s  Reject: %2i  Accept: %2i  Line_tot: %10.3f  Line_avg: %10.3f" % (
-        date, 
-        len(data) -num_line, 
-        num_line, tot_line, 
+        date,
+        len(data) -num_line,
+        num_line, tot_line,
         tot_line/num_line if (num_line>0) else 0)
 
 print ""
@@ -3537,7 +3537,7 @@ hours.between.good.measurements <- diff(times[t(flags)])/3600
                        (handle-and-tag-max consecutive-false tag max-consecutive-false max-false-tags))]))]
         (x (fprintf (current-error-port) "mismatch ~s~%" x)
            (values N sum consecutive-false max-consecutive-false max-false-tags)))))
-  
+
   (for/fold ((N 0) (sum 0) (consecutive-false 0) (max-consecutive-false 0) (max-false-tags null))
     ((f files-to-read))
     (with-input-from-file f
@@ -3767,16 +3767,16 @@ A fully functional solution, minus the fact that it uses iterators:
 ```scala
 object DataMunging {
   import scala.io.Source
-  
+
   def spans[A](list: List[A]) = list.tail.foldLeft(List((list.head, 1))) {
     case ((a, n) :: tail, b) if a == b => (a, n + 1) :: tail
     case (l, b) => (b, 1) :: l
   }
-  
+
   type Flag = ((Boolean, Int), String)
   type Flags = List[Flag]
   type LineIterator = Iterator[Option[(Double, Int, Flags)]]
-  
+
   val pattern = """^(\d+-\d+-\d+)""" + """\s+(\d+\.\d+)\s+(-?\d+)""" * 24 + "$" r;
 
   def linesIterator(file: java.io.File) = Source.fromFile(file).getLines().map(
@@ -3794,7 +3794,7 @@ object DataMunging {
       }
     )
   )
-  
+
   def totalizeLines(fileIterator: LineIterator) =
     fileIterator.foldLeft(0.0, 0, List[Flag]()) {
       case ((totalSum, totalSize, ((flag, size), date) :: tail), Some((validSum, validSize, flags))) =>
@@ -3807,7 +3807,7 @@ object DataMunging {
       case ((_, _, Nil), Some(partials)) => partials
       case (totals, None) => totals
     }
-  
+
   def main(args: Array[String]) {
     val files = args map (new java.io.File(_)) filter (file => file.isFile && file.canRead)
     val lines =  files.iterator flatMap linesIterator
@@ -3837,7 +3837,7 @@ object AltDataMunging {
     var invalidDate = ""
     var invalidCount = 0
     val files = args map (new java.io.File(_)) filter (file => file.isFile && file.canRead)
-    
+
     files.iterator flatMap (file => Source fromFile file getLines ()) map (_.trim split "\\s+") foreach {
       case Array(date, rawData @ _*) =>
         val dataset = (rawData map (_ toDouble) iterator) grouped 2 toList;
@@ -3859,7 +3859,7 @@ object AltDataMunging {
             invalidCount += 1
         }
     }
-    
+
     val report = """|
                     |File(s)  = %s
                     |Total    = %10.3f
@@ -4012,7 +4012,7 @@ cumulative statistics.
 
 parsed_data = ^|A(~&,* ^|/%ep@iNC ~&h==`1)*htK27K28pPCS (sep 9%cOi&)*FyS readings_dot_txt
 
-daily_stats = 
+daily_stats =
 
 * ^|A(~&,@rFlS ^/length ^/plus:-0. ||0.! ~&i&& mean); mat` + <.
    ~&n,
@@ -4091,7 +4091,7 @@ Do Until objFile.AtEndOfStream
 					tmp_start_date = ""
 					tmp_data_gap = 0
 				End If
-			End If	
+			End If
 		End If
 		n = n + 2
 	Loop
@@ -4104,7 +4104,7 @@ Do Until objFile.AtEndOfStream
 	WScript.StdOut.WriteLine
 Loop
 WScript.StdOut.WriteLine
-WScript.StdOut.Write "Maximum run of " & data_gap &_ 
+WScript.StdOut.Write "Maximum run of " & data_gap &_
 	" consecutive bad readings from " & start_date & " to " &_
 	end_date & "."
 WScript.StdOut.WriteLine
@@ -4150,7 +4150,7 @@ While(!At_EOF) {
     #21 = 0		// number of line data items with flag>0
     #22 = 0		// number of line data items with flag<0
     Reg_Copy_Block(14, Cur_Pos, Cur_Pos+10)	// date field
-    
+
     // extract field info, skipping initial date field
     Repeat(ALL) {
 	Search("|{|T,|N}", ADVANCE+ERRBREAK)	// next Tab or Newline
@@ -4184,7 +4184,7 @@ While(!At_EOF) {
     // totals for the file so far
     #10 += #20
     #11 += #21
-    
+
     Buf_Switch(#51)	// buffer for output data
     IT("Line: ") Reg_Ins(14)
     IT("  Reject:") Num_Ins(#22, COUNT, 3)

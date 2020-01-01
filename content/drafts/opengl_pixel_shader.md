@@ -25,8 +25,8 @@ See also: [http://www.opengl.org/documentation/glsl/ opengl.org's gl shader lang
 {{libheader|GLUT}}
 Getting a true (pseudo) random number is surprisingly tricky. The following code makes something noisy, but not at all random:[[image:pixel_shader_C.png|right]]
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <GL/glew.h>
 #include <GL/glut.h>
@@ -270,7 +270,7 @@ func main() {
         // some gobbledegook
         vec3 foo = vec3(pow(gl_FragCoord.xy, vec2(1.0 + sin(dot(vec4(1.0, 100.0, 0.0, 0.0), gl_FragCoord)))), 0.0);
         foo *= mat3(1.2, 3.9, 1.4, 4.1, 0.2, 1.4, 2.5, 1.6, 7.2);
- 
+
         gl_FragColor = vec4(mod(foo + vec3(u_time), 1.0), 1.0);
       }
     </script>
@@ -302,13 +302,13 @@ func main() {
     <canvas id="glcanvas" style="border: none; margin: auto; display: block;" width="640" height="480"></canvas>
     <script type="text/javascript">
       var canvas = document.getElementById("glcanvas");
- 
+
       // Get WebGL context.
       var gl = canvas.getContext("webgl")
             || canvas.getContext("experimental-webgl");
       if (!gl)
         throw new Error("WebGL context not found");
- 
+
       // Create shader program from vertex and fragment shader code.
       var shaderProgram = gl.createProgram();
       gl.attachShader(shaderProgram, getShader(gl, "shader-vs"));
@@ -316,17 +316,17 @@ func main() {
       gl.linkProgram(shaderProgram);
       if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS))
         throw new Error(gl.getProgramInfoLog(shaderProgram));
- 
+
       // Specify to render using that program.
       gl.useProgram(shaderProgram);
- 
+
       // Get the indexes to communicate vertex attributes to the program.
       var positionAttr = gl.getAttribLocation(shaderProgram, "a_position");
       // And specify that we will be actually delivering data to those attributes.
       gl.enableVertexAttribArray(positionAttr);
- 
+
       var timeUniform = gl.getUniformLocation(shaderProgram, "u_time");
- 
+
       // Store vertex positions and colors in array buffer objects.
       var vertices;
       var positionBuffer = gl.createBuffer();
@@ -337,28 +337,28 @@ func main() {
         -0.5, +0.5, 0
       ]), gl.STATIC_DRAW);
       var numVertices = vertices.length / 3; // 3 coordinates per vertex
- 
+
       // Set GL state
       gl.clearColor(0.3, 0.3, 0.3, 1.0);
       gl.enable(gl.DEPTH_TEST);
       gl.viewport(0, 0, gl.drawingBufferWidth || canvas.width,
                         gl.drawingBufferHeight || canvas.height);
- 
-      //Specify the array data to render. 
+
+      //Specify the array data to render.
       gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
       gl.vertexAttribPointer(positionAttr, 3, gl.FLOAT, false, 0, 0);
- 
+
       var t0 = Date.now();
       function frame() {
         gl.uniform1f(timeUniform, (Date.now() - t0) / 1000);
- 
+
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
         gl.drawArrays(gl.TRIANGLES, 0, numVertices);
- 
+
         var e;
         while (e = gl.getError())
           console.log("GL error", e);
- 
+
       }
       setInterval(frame, 1000/20);
     </script>
@@ -398,7 +398,7 @@ var angle = 0f
 
 fun render() {
     glClear(GL_COLOR_BUFFER_BIT)
-    __glewUniform1f!!(rMod, rand() / RAND_MAX.toFloat()) 
+    __glewUniform1f!!(rMod, rand() / RAND_MAX.toFloat())
     glLoadIdentity()
     glRotatef(angle, angle * 0.1f, 1f, 0f)
     glBegin(GL_TRIANGLES)
@@ -411,7 +411,7 @@ fun render() {
 }
 
 fun setShader() {
-    val f = 
+    val f =
         "varying float x, y, z;" +
         "uniform float r_mod;" +
         "float rand(float s, float r) { return mod(mod(s, r + r_mod) * 112341, 1); }" +
@@ -420,38 +420,38 @@ fun setShader() {
         "rand(gl_FragCoord.y, y), rand(gl_FragCoord.z, z), 1);" +
         "}"
 
-    val v = 
+    val v =
         "varying float x, y, z;" +
         "void main() {" +
         "   gl_Position = ftransform();" +
         "   x = gl_Position.x; y = gl_Position.y; z = gl_Position.z;" +
         "   x += y; y -= x; z += x - y;" +
         "}"
-    
-    val vs = __glewCreateShader!!(GL_VERTEX_SHADER) 
-    val ps = __glewCreateShader!!(GL_FRAGMENT_SHADER)
-    
 
-    memScoped { 
+    val vs = __glewCreateShader!!(GL_VERTEX_SHADER)
+    val ps = __glewCreateShader!!(GL_FRAGMENT_SHADER)
+
+
+    memScoped {
         val fp = allocPointerTo<ByteVar>()
-        fp.value = f.cstr.getPointer(memScope) 
+        fp.value = f.cstr.getPointer(memScope)
         __glewShaderSource!!(ps, 1, fp.ptr, null)
         val vp = allocPointerTo<ByteVar>()
-        vp.value = v.cstr.getPointer(memScope) 
+        vp.value = v.cstr.getPointer(memScope)
         __glewShaderSource!!(vs, 1, vp.ptr, null)
-    
+
         __glewCompileShader!!(vs)
         __glewCompileShader!!(ps)
- 
+
         val prog = __glewCreateProgram!!()
         __glewAttachShader!!(prog, ps)
         __glewAttachShader!!(prog, vs)
- 
+
         __glewLinkProgram!!(prog)
         __glewUseProgram!!(prog)
-    
+
         val sp = allocPointerTo<ByteVar>()
-        sp.value = "r_mod".cstr.getPointer(memScope) 
+        sp.value = "r_mod".cstr.getPointer(memScope)
         rMod = __glewGetUniformLocation!!(prog, sp.value)
     }
 }
@@ -459,7 +459,7 @@ fun setShader() {
 fun main(args: Array<String>) {
     memScoped {
         val argc = alloc<IntVar>().apply { value = 0 }
-        glutInit(argc.ptr, null) 
+        glutInit(argc.ptr, null)
     }
     glutInitDisplayMode(GLUT_DOUBLE or GLUT_RGB)
     glutInitWindowSize(200, 200)
@@ -501,7 +501,7 @@ fun main(args: Array<String>) {
 	varying float x, y, z;
 	uniform float r_mod;
 	float rand(float s, float r) { return mod(mod(s, r + r_mod) * 112341, 1); }
-	
+
 	void main() {
 		gl_FragColor = vec4(rand(gl_FragCoord.x, x), rand(gl_FragCoord.y, y), rand(gl_FragCoord.z, z), 1);
 	}"))
@@ -530,7 +530,7 @@ fun main(args: Array<String>) {
 ```racket
 #lang racket/gui
 (require typed/opengl)
- 
+
 (define (resize w h)
   (glViewport 0 0 w h))
 
@@ -578,8 +578,8 @@ void main() {
   (glVertex3d 0.75 0.25 0.0)
   (glVertex3d 0.75 0.75 0.0)
   (glEnd))
- 
- 
+
+
 (define my-canvas%
   (class* canvas% ()
     (inherit with-gl-context swap-gl-buffers)
@@ -599,11 +599,11 @@ void main() {
     (define/override (on-size width height)
       (with-gl-context (λ() (resize width height))))
     (super-instantiate () (style '(gl)))))
- 
+
 (define win (new frame% [label "Racket Rosetta Code OpenGL example"]
                         [min-width 200] [min-height 200]))
 (define gl  (new my-canvas% [parent win]))
- 
+
 (send win show #t)
 ```
 

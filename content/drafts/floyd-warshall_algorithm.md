@@ -20,7 +20,7 @@ Find the lengths of the shortest paths between all pairs of vertices of the give
 
 [[File:Floyd_warshall_graph.gif|||center]]
 
-Print the pair, the distance and (optionally) the path. 
+Print the pair, the distance and (optionally) the path.
 
 
 
@@ -177,35 +177,35 @@ typedef struct{
 
 graph loadGraph(char* fileName){
 	FILE* fp = fopen(fileName,"r");
-	
+
 	graph G;
 	int i;
-	
+
 	fscanf(fp,"%d%d",&G.vertices,&G.edges);
-	
+
 	G.edgeMatrix = (edge*)malloc(G.edges*sizeof(edge));
-	
+
 	for(i=0;i<G.edges;i++)
 		fscanf(fp,"%d%d%d",&G.edgeMatrix[i].sourceVertex,&G.edgeMatrix[i].destVertex,&G.edgeMatrix[i].edgeWeight);
-	
+
 	fclose(fp);
-	
+
 	return G;
 }
 
 void floydWarshall(graph g){
 	int processWeights[g.vertices][g.vertices], processedVertices[g.vertices][g.vertices];
 	int i,j,k;
-	
+
 	for(i=0;i<g.vertices;i++)
 		for(j=0;j<g.vertices;j++){
 			processWeights[i][j] = SHRT_MAX;
 			processedVertices[i][j] = (i!=j)?j+1:0;
 		}
-		
+
 	for(i=0;i<g.edges;i++)
 		processWeights[g.edgeMatrix[i].sourceVertex-1][g.edgeMatrix[i].destVertex-1] = g.edgeMatrix[i].edgeWeight;
-		
+
 	for(i=0;i<g.vertices;i++)
 		for(j=0;j<g.vertices;j++)
 			for(k=0;k<g.vertices;k++){
@@ -214,7 +214,7 @@ void floydWarshall(graph g){
 					processedVertices[j][k] = processedVertices[j][i];
 				}
 			}
-		
+
 	printf("pair    dist   path");
 	for(i=0;i<g.vertices;i++)
 		for(j=0;j<g.vertices;j++){
@@ -278,8 +278,8 @@ pair    dist   path
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 #include <sstream>
 
@@ -581,14 +581,14 @@ Transcription of the Floyd-Warshall algorithm, with best path computation.
 
 ;; show path from u to v
 (define (path u v)
-	(cond 
+	(cond
 	 ((= u v) (list u))
-	 ((null? (array-ref next u v)) null)		
+	 ((null? (array-ref next u v)) null)
  	 (else (cons u (path (array-ref next u v) v)))))
 
 (define( mdist u v) ;; show computed distance
 	  (array-ref dist u v))
-	
+
 (define (task)
 	 (init-edges n dist next)
 	 (array-print dist) ;; show init distances
@@ -605,26 +605,26 @@ Transcription of the Floyd-Warshall algorithm, with best path computation.
 (define dist (make-array n n))
 (task)
 
-  0    Infinity   Infinity   13         98         Infinity   35         47       
-  8    0          Infinity   Infinity   83         77         16         3        
-  73   3          0          3          76         84         91         Infinity 
-  30   49         Infinity   0          41         Infinity   4          4        
-  22   83         92         Infinity   0          30         27         98       
-  6    Infinity   Infinity   24         59         0          Infinity   Infinity 
-  60   Infinity   45         Infinity   67         100        0          Infinity 
-  72   15         95         21         Infinity   Infinity   27         0        
+  0    Infinity   Infinity   13         98         Infinity   35         47
+  8    0          Infinity   Infinity   83         77         16         3
+  73   3          0          3          76         84         91         Infinity
+  30   49         Infinity   0          41         Infinity   4          4
+  22   83         92         Infinity   0          30         27         98
+  6    Infinity   Infinity   24         59         0          Infinity   Infinity
+  60   Infinity   45         Infinity   67         100        0          Infinity
+  72   15         95         21         Infinity   Infinity   27         0
 
 
 (array-print dist) ;; computed distances
 
-  0    32   62   13   54   84   17   17 
-  8    0    61   21   62   77   16   3  
-  11   3    0    3    44   74   7    6  
-  27   19   49   0    41   71   4    4  
-  22   54   72   35   0    30   27   39 
-  6    38   68   19   59   0    23   23 
-  56   48   45   48   67   97   0    51 
-  23   15   70   21   62   92   25   0  
+  0    32   62   13   54   84   17   17
+  8    0    61   21   62   77   16   3
+  11   3    0    3    44   74   7    6
+  27   19   49   0    41   71   4    4
+  22   54   72   35   0    30   27   39
+  6    38   68   19   59   0    23   23
+  56   48   45   48   67   97   0    51
+  23   15   70   21   62   92   25   0
 
 (path 1 3)  → (1 0 3)
 (mdist 1 0) → 8
@@ -648,7 +648,7 @@ defmodule Floyd_Warshall do
     {dist, next} = shortest_path(n, dist, next)
     print(n, dist, next)
   end
-  
+
   defp setup(n, edge) do
     big = 1.0e300
     dist = for i <- 1..n, j <- 1..n, into: %{}, do: {{i,j},(if i==j, do: 0, else: big)}
@@ -657,7 +657,7 @@ defmodule Floyd_Warshall do
       { Map.put(dst, {u,v}, w), Map.put(nxt, {u,v}, v) }
     end)
   end
-  
+
   defp shortest_path(n, dist, next) do
     (for k <- 1..n, i <- 1..n, j <- 1..n, do: {k,i,j})
     |> Enum.reduce({dist,next}, fn {k,i,j},{dst,nxt} ->
@@ -668,15 +668,15 @@ defmodule Floyd_Warshall do
          end
        end)
   end
-  
+
   defp print(n, dist, next) do
     IO.puts "pair     dist    path"
     for i <- 1..n, j <- 1..n, i != j,
         do: :io.format "~w -> ~w  ~4w     ~s~n", [i, j, dist[{i,j}], path(next, i, j)]
   end
-  
+
   defp path(next, i, j), do: path(next, i, j, [i]) |> Enum.join(" -> ")
-  
+
   defp path(_next, i, i, list), do: Enum.reverse(list)
   defp path(next, i, j, list) do
     u = next[{i,j}]
@@ -756,7 +756,7 @@ Sub floydWarshall(weights(Any, Any) As Integer, numVertices As Integer)
     For j As Integer = 0 To numVertices - 1
       If i <> j Then nxt(i, j) = j + 1
     Next j
-  Next i 
+  Next i
 
   For k As Integer = 0 To numVertices - 1
     For i As Integer = 0 To numVertices - 1
@@ -864,12 +864,12 @@ List.allPairs [1..4] [1..4]|>List.filter(fun (n,g)->n<>g)|>List.iter(fun (n,g)->
 
 ```go
 package main
- 
+
 import (
   "fmt"
   "strconv"
 )
- 
+
 // A Graph is the interface implemented by graphs that
 // this algorithm can run on.
 type Graph interface {
@@ -877,16 +877,16 @@ type Graph interface {
   Neighbors(v Vertex) []Vertex
   Weight(u, v Vertex) int
 }
- 
+
 // Nonnegative integer ID of vertex
 type Vertex int
- 
+
 // ig is a graph of integers that satisfies the Graph interface.
 type ig struct {
   vert  []Vertex
   edges map[Vertex]map[Vertex]int
 }
- 
+
 func (g ig) edge(u, v Vertex, w int) {
   if _, ok := g.edges[u]; !ok {
     g.edges[u] = make(map[Vertex]int)
@@ -911,9 +911,9 @@ func (g ig) path(vv []Vertex) (s string) {
   }
   return s
 }
- 
+
 const Infinity = int(^uint(0) >> 1)
- 
+
 func FloydWarshall(g Graph) (dist map[Vertex]map[Vertex]int, next map[Vertex]map[Vertex]*Vertex) {
   vert := g.Vertices()
   dist = make(map[Vertex]map[Vertex]int)
@@ -945,7 +945,7 @@ func FloydWarshall(g Graph) (dist map[Vertex]map[Vertex]int, next map[Vertex]map
   }
   return dist, next
 }
- 
+
 func Path(u, v Vertex, next map[Vertex]map[Vertex]*Vertex) (path []Vertex) {
   if next[u][v] == nil {
     return
@@ -957,7 +957,7 @@ func Path(u, v Vertex, next map[Vertex]map[Vertex]*Vertex) (path []Vertex) {
   }
   return path
 }
- 
+
 func main() {
   g := ig{[]Vertex{1, 2, 3, 4}, make(map[Vertex]map[Vertex]int)}
   g.edge(1, 3, -2)
@@ -965,7 +965,7 @@ func main() {
   g.edge(4, 2, -1)
   g.edge(2, 1, 4)
   g.edge(2, 3, 3)
- 
+
   dist, next := FloydWarshall(g)
   fmt.Println("pair\tdist\tpath")
   for u, m := range dist {
@@ -1036,7 +1036,7 @@ instance (Ord a, Eq b) => Semigroup (Shortest b a) where
 ```
 
 
-It finds minimal path by <code>distance</code>, and in case of equal distances joins both paths. We will lift this semigroup to monoid using <code>Maybe</code> wrapper. 
+It finds minimal path by <code>distance</code>, and in case of equal distances joins both paths. We will lift this semigroup to monoid using <code>Maybe</code> wrapper.
 
 Graph is represented as a <code>Map</code>, containing pairs of vertices and corresponding weigts. The distance table is a <code>Map</code>, containing pairs of joint vertices and corresponding shortest paths.
 
@@ -1816,7 +1816,7 @@ sub FloydWarshall{
 			next unless defined $dist[$i][$k];
 			for my $j(@vertices){
 				next unless defined $dist[$k][$j];
-				if($i != $j && (!defined($dist[$i][$j]) 
+				if($i != $j && (!defined($dist[$i][$j])
 						|| $dist[$i][$j] > $dist[$i][$k] + $dist[$k][$j])){
 					$dist[$i][$j] = $dist[$i][$k] + $dist[$k][$j];
 					$seq[$i][$j] = $seq[$i][$k];
@@ -1834,7 +1834,7 @@ sub FloydWarshall{
 				push @path, $seq[$path[-1] - 1][$j] + 1;
 			}
 			push @path, $j + 1;
-			printf "%d -> %d  %4d     %s\n", 
+			printf "%d -> %d  %4d     %s\n",
 				$path[0], $path[-1], $dist[$i][$j], join(' -> ', @path);
 		}
 	}
@@ -1968,7 +1968,7 @@ procedure FloydWarshall(integer V, sequence weights)
         end if
       end for
     end for
-end procedure   
+end procedure
 
 constant V = 4
 constant weights = {{1, 3, -2}, {2, 1, 4}, {2, 3, 3}, {3, 4, 2}, {4, 2, -1}}
@@ -2081,7 +2081,7 @@ Pair      Dist  Path
 4 -> 3    1     4 -> 2 -> 1 -> 3
 true.
 
-?- 
+?-
 ```
 
 
@@ -2114,8 +2114,8 @@ def floyd_warshall(n, edge):
             path = [i]
             while path[-1] != j:
                 path.append(nxt[path[-1]][j])
-            print("%d → %d  %4d       %s" 
-                  % (i + 1, j + 1, dist[i][j], 
+            print("%d → %d  %4d       %s"
+                  % (i + 1, j + 1, dist[i][j],
                      ' → '.join(str(p + 1) for p in path)))
 
 if __name__ == '__main__':
@@ -2150,7 +2150,7 @@ pair     dist    path
 ```racket
 #lang typed/racket
 (require math/array)
- 
+
 ;; in : initialized dist and next matrices
 ;; out : dist and next matrices
 ;; O(n^3)
@@ -2177,13 +2177,13 @@ pair     dist    path
       (array-set! dist i.j d)
       (array-set! next i.j (array-ref next i.k))))
   (values dist next))
- 
+
 ;; utilities
- 
+
 ;; init random edges costs, matrix 66% filled
 (define (init-edges n)
   (define dist : Settable-Dists (array->mutable-array (make-array (vector n n) 0)))
-  (define next : Settable-Nexts (array->mutable-array (make-array (vector n n) #f)))  
+  (define next : Settable-Nexts (array->mutable-array (make-array (vector n n) #f)))
   (for* ((i n) (j n) #:unless (= i j))
     (define i.j (vector i j))
     (array-set! dist i.j +Inf.0)
@@ -2191,7 +2191,7 @@ pair     dist    path
       (array-set! dist i.j (add1 (random 100)))
       (array-set! next i.j j)))
   (values dist next))
- 
+
 ;; show path from u to v
 (: path (-> Nexts Index Index (Listof Index)))
 (define (path next u v)
@@ -2336,7 +2336,7 @@ def floyd_warshall(n, edge)
     dist[u-1][v-1] = w
     nxt[u-1][v-1] = v-1
   end
-  
+
   n.times do |k|
     n.times do |i|
       n.times do |j|
@@ -2347,7 +2347,7 @@ def floyd_warshall(n, edge)
       end
     end
   end
-  
+
   puts "pair     dist    path"
   n.times do |i|
     n.times do |j|
@@ -2417,7 +2417,7 @@ getWeightTo(vertex, arcs(1)) :=
         0 when index = 0
     else
         arcs[index].Weight;
-        
+
 throughK(k, dist(2)) :=
     let
         newDist[i, j] := min(dist[i][k] + dist[k][j], dist[i][j]);
@@ -2431,15 +2431,15 @@ floydWarshall(graph(1)) :=
         initialResult[i,j] := 1.79769e308 when i /= j else 0
                               foreach i within 1 ... size(graph),
                                       j within 1 ... size(graph);
-                                        
+
         singleResult[i,j] := getWeightTo(j, getArcsFrom(i, graph))
                              foreach i within 1 ... size(graph),
                                      j within 1 ... size(graph);
-        
-        start[i,j] := 
+
+        start[i,j] :=
                 initialResult[i,j] when singleResult[i,j] = 0
             else
-                singleResult[i,j];    
+                singleResult[i,j];
     in
         throughK(1, start);
 
@@ -2684,7 +2684,7 @@ fcn FloydWarshallWithPathReconstruction(dist){ // dist is munged
       }
    }
    return(dist,next)
-} 
+}
 fcn path(next,u,v){
    if(Void==next[u][v]) return(T);
    path:=List(u);
@@ -2709,7 +2709,7 @@ foreach i in (V){ dist[i][i] = 0 }	   // zero vertexes
 3| X  X  0  2
 4| X -1  X  0
 */
-dist[0][2]=-2; dist[1][0]=4; dist[1][2]=3; dist[2][3]=2; dist[3][1]=-1; 
+dist[0][2]=-2; dist[1][0]=4; dist[1][2]=3; dist[2][3]=2; dist[3][1]=-1;
 
 dist,next:=FloydWarshallWithPathReconstruction(dist);
 println("Shortest distance array:"); printM(dist);
@@ -2725,16 +2725,16 @@ foreach u,v in (V,V){
 ```txt
 
 Shortest distance array:
-    0    -1    -2     0 
-    4     0     2     4 
-    5     1     0     2 
-    3    -1     1     0 
+    0    -1    -2     0
+    4     0     2     4
+    5     1     0     2
+    3    -1     1     0
 
 Path array:
- Void     2     2     2 
-    0  Void     0     0 
-    3     3  Void     3 
-    1     1     1  Void 
+ Void     2     2     2
+    0  Void     0     0
+    3     3  Void     3
+    1     1     1  Void
 
 All paths:
 L(0,2,3,1)

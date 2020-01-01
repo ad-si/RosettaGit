@@ -191,7 +191,7 @@ MsgBox % "biased probability of a 1 occurring: " Errorlevel/1000
         PRINT "N = ";N% " : biased = "; biased%/100 "%, unbiased = "; unbiased%/100 "%"
       NEXT
       END
-      
+
       DEF FNunbiased(N%)
       LOCAL A%,B%
       REPEAT
@@ -199,7 +199,7 @@ MsgBox % "biased probability of a 1 occurring: " Errorlevel/1000
         B% = FNrandN(N%)
       UNTIL A%<>B%
       = A%
-      
+
       DEF FNrandN(N%) = -(RND(N%) = 1)
 ```
 
@@ -219,10 +219,10 @@ N = 6 : biased = 16.25%, unbiased = 50.13%
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
- 
+
 int biased(int bias)
 {
 	/* balance out the bins, being pedantic */
@@ -388,11 +388,11 @@ biased_rand_function = (n) ->
   # 1 appearing only 1/Nth of the time
   cap = 1/n
   ->
-    if Math.random() < cap 
+    if Math.random() < cap
       1
     else
       0
-    
+
 unbiased_function = (f) ->
   ->
     while true
@@ -405,7 +405,7 @@ stats = (label, f) ->
   for i in [1...sample_size]
     cnt += 1 if f() == 1
   console.log "ratio of 1s: #{cnt / sample_size} [#{label}]"
-  
+
 for n in [3..6]
   console.log "\n---------- n = #{n}"
   f_biased = biased_rand_function(n)
@@ -419,7 +419,7 @@ output
 
 ```txt
 
-> coffee unbiased.coffee 
+> coffee unbiased.coffee
 
 ---------- n = 3
 ratio of 1s: 0.3333343 [biased]
@@ -509,27 +509,27 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 extension op : IntNumber
 {
     bool randN()
         = randomGenerator.nextInt(self) == 0;
- 
+
     get bool Unbiased()
     {
         bool flip1 := self.randN();
         bool flip2 := self.randN();
- 
+
         while (flip1 == flip2)
         {
             flip1 := self.randN();
             flip2 := self.randN()
         };
- 
+
         ^ flip1
     }
 }
- 
+
 public program()
 {
     for(int n := 3, n <= 6, n += 1)
@@ -538,18 +538,18 @@ public program()
         int biasedOne := 0;
         int unbiasedZero := 0;
         int unbiasedOne := 0;
- 
+
         for(int i := 0, i < 100000, i += 1)
         {
             if(n.randN()) { biasedOne += 1 } else { biasedZero += 1 };
             if(n.Unbiased) { unbiasedOne += 1 } else { unbiasedZero += 1 }
         };
- 
+
         console
             .printLineFormatted("(N = {0}):".padRight(17) + "# of 0"$9"# of 1"$9"% of 0"$9"% of 1", n)
-            .printLineFormatted("Biased:".padRight(15) + "{0}"$9"{1}"$9"{2}"$9"{3}", 
+            .printLineFormatted("Biased:".padRight(15) + "{0}"$9"{1}"$9"{2}"$9"{3}",
                                     biasedZero, biasedOne, biasedZero / 1000, biasedOne / 1000)
-            .printLineFormatted("Unbiased:".padRight(15) + "{0}"$9"{1}"$9"{2}"$9"{3}", 
+            .printLineFormatted("Unbiased:".padRight(15) + "{0}"$9"{1}"$9"{2}"$9"{3}",
                                     unbiasedZero, unbiasedOne, unbiasedZero / 1000, unbiasedOne / 1000)
     }
 }
@@ -583,13 +583,13 @@ Unbiased:      49699	50301	49	50
 defmodule Random do
   def randN(n) do
     if :rand.uniform(n) == 1, do: 1, else: 0
-  end 
+  end
   def unbiased(n) do
     {x, y} = {randN(n), randN(n)}
     if x != y, do: x, else: unbiased(n)
-  end 
+  end
 end
- 
+
 IO.puts "N  biased  unbiased"
 m = 10000
 for n <- 3..6 do
@@ -793,7 +793,7 @@ program Bias_Unbias
   integer, parameter :: samples = 1000000
   integer :: i, j
   integer :: c1, c2, rand
- 
+
   do i = 3, 6
     c1 = 0
     c2 = 0
@@ -806,7 +806,7 @@ program Bias_Unbias
     write(*, "(i2,a,f8.3,a,f8.3,a)") i, ":", real(c1) * 100.0 / real(samples), &
                                      "%", real(c2) * 100.0 / real(samples), "%"
   end do
- 
+
 contains
 
 function bias(n)
@@ -832,7 +832,7 @@ function unbias(n)
     b = bias(n)
     if (a /= b) exit
   end do
-  unbias = a     
+  unbias = a
 end function
 
 end program
@@ -1011,7 +1011,7 @@ main = forM_ [3..6] showCounts
       r1 <- counts (randN b)
       r2 <- counts (unbiased (randN b))
       printf "n = %d  biased: %d%%  unbiased: %d%%\n" b r1 r2
-        
+
     counts g = (`div` 100) . length . filter (== 1) <$> replicateM 10000 g
 ```
 
@@ -1125,7 +1125,7 @@ Some example counts (these are counts of the number of 1s which appear in a test
    +/unbiased 100#6
 47
 ```
- 
+
 
 Note that these results are random.  For example, a re-run of <code>+/randN 100#5</code> gave 25 as its result, and a re-run of <code>+/unbiased 100#5</code> gave 52 as its result.
 
@@ -1187,7 +1187,7 @@ fun unbiased(n: Int): Boolean {
     var a: Boolean
     var b: Boolean
     do {
-        a = biased(n)  
+        a = biased(n)
         b = biased(n)
     }
     while (a == b)
@@ -1199,7 +1199,7 @@ fun main(args: Array<String>) {
     val f = "%d: %2.2f%%  %2.2f%%"
     for (n in 3..6) {
         var c1 = 0
-        var c2 = 0 
+        var c2 = 0
         for (i in 0 until m) {
             if (biased(n)) c1++
             if (unbiased(n)) c2++
@@ -1281,7 +1281,7 @@ fun unbiased(n: Int): Boolean {
     var a: Boolean
     var b: Boolean
     do {
-        a = biased(n)  
+        a = biased(n)
         b = biased(n)
     }
     while (a == b)
@@ -1293,7 +1293,7 @@ fun main(args: Array<String>) {
     val f = "%d: %2.2f%%  %2.2f%%"
     for (n in 3..6) {
         var c1 = 0
-        var c2 = 0 
+        var c2 = 0
         for (i in 0 until m) {
             if (biased(n)) c1++
             if (unbiased(n)) c2++
@@ -1395,7 +1395,7 @@ unbias	49820	50180	49.82	50.18
 ```Mathematica
 rand[bias_, n_] := 1 - Unitize@RandomInteger[bias - 1, n]
 
-unbiased[bias_, n_] := 
+unbiased[bias_, n_] :=
  DeleteCases[rand[bias, {n, 2}], {a_, a_}][[All, 1]]
 ```
 
@@ -1404,8 +1404,8 @@ unbiased[bias_, n_] :=
 ```txt
 count = 1000000;
 TableForm[
- Table[{n, Total[rand[n, count]]/count // N, 
-   Total[#]/Length[#] &@unbiased[n, count] // N}, {n, 3, 6}], 
+ Table[{n, Total[rand[n, count]]/count // N,
+   Total[#]/Length[#] &@unbiased[n, count] // N}, {n, 3, 6}],
  TableHeadings -> {None, {n, "biased", "unbiased"}}]
 
 n	biased	unbiased
@@ -1610,7 +1610,7 @@ sub randn {
         my $n = shift;
         return int(rand($n) / ($n - 1));
 }
- 
+
 for my $n (3 .. 6) {
         print "Bias $n: ";
         my (@raw, @fixed);
@@ -1686,7 +1686,7 @@ Copy of [[Unbias_a_random_generator#Euphoria|Euphoria]]
 function randN(integer N)
     return rand(N) = 1
 end function
- 
+
 function unbiased(integer N)
 integer a
     while 1 do
@@ -1696,7 +1696,7 @@ integer a
         end if
     end while
 end function
- 
+
 constant n = 10000
 integer cb, cu
 for b=3 to 6 do
@@ -1807,7 +1807,7 @@ Results:
 
 ```txt
 
-N     Biased  Unbiased (tally of 100 random numbers) 
+N     Biased  Unbiased (tally of 100 random numbers)
 3        24        42
 4        18        47
 5        16        41
@@ -1827,7 +1827,7 @@ function randN ( [int]$N )
     {
     [int]( ( Get-Random -Maximum $N ) -eq 0 )
     }
- 
+
 function unbiased ( [int]$N )
     {
     do  {
@@ -1835,7 +1835,7 @@ function unbiased ( [int]$N )
         $Y = randN $N
         }
     While ( $X -eq $Y )
- 
+
     return $X
     }
 
@@ -1850,7 +1850,7 @@ ForEach ( $N in 3..6 )
     {
     $Biased   = 0
     $Unbiased = 0
- 
+
     ForEach ( $Test in 1..$Tests )
         {
         $Biased   += randN $N
@@ -1885,7 +1885,7 @@ N Biased Ones out of 1000 Unbiased Ones out of 1000
 Procedure biased(n)
   If Random(n) <> 1
     ProcedureReturn 0
-  EndIf 
+  EndIf
   ProcedureReturn 1
 EndProcedure
 
@@ -2155,17 +2155,17 @@ for n = 3 to 6
     unb = 0
     for i = 1 to 10000
         biased += randN(n)
-        unb += unbiased(n) 
+        unb += unbiased(n)
     next
     see "N = " + n + " : biased = " + biased/100  + "%, unbiased = " + unb/100 + "%" + nl
 next
 
 func unbiased nr
-     while 1 
+     while 1
            a = randN(nr)
            if a != randN(nr) return a ok
      end
- 
+
 func randN m
      m = (random(m) = 1)
      return m
@@ -2294,13 +2294,13 @@ def biased( n:Int ) = scala.util.Random.nextFloat < 1.0 / n
 
 def unbiased( n:Int ) = { def loop : Boolean = { val a = biased(n); if( a != biased(n) ) a else loop }; loop }
 
-for( i <- (3 until 7) ) println { 
+for( i <- (3 until 7) ) println {
 
   val m = 50000
   var c1,c2 = 0
-  
+
   (0 until m) foreach { j => if( biased(i) ) c1 += 1; if( unbiased(i) ) c2 += 1 }
-  
+
   "%d: %2.2f%%  %2.2f%%".format(i, 100.0*c1/m, 100.0*c2/m)
 }
 ```

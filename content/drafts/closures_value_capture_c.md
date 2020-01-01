@@ -13,8 +13,8 @@ tags = []
 Very quickly hacked up dynamically typed environment, with no garbage collection, and <code>abort</code> for error handling.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
 #include <assert.h>

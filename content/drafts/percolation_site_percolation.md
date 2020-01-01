@@ -11,13 +11,13 @@ tags = []
 +++
 
 {{task|Percolation Simulations}}{{Percolation Simulation}}
-Given an <math>M \times N</math> rectangular array of cells numbered <math>\mathrm{cell}[0..M-1, 0..N-1]</math>assume <math>M</math> is horizontal and <math>N</math> is downwards. 
+Given an <math>M \times N</math> rectangular array of cells numbered <math>\mathrm{cell}[0..M-1, 0..N-1]</math>assume <math>M</math> is horizontal and <math>N</math> is downwards.
 
 Assume that the probability of any cell being filled is a constant <math>p</math> where
 : <math>0.0 \le p \le 1.0</math>
 
 ;The task:
-Simulate creating the array of cells with probability <math>p</math> and then 
+Simulate creating the array of cells with probability <math>p</math> and then
 testing if there is a route through adjacent filled cells from any on row <math>0</math> to any on row <math>N</math>, i.e. testing for site percolation.
 
 Given <math>p</math> repeat the percolation <math>t</math> times to estimate the proportion of times that the fluid can percolate to the bottom for any given <math>p</math>.
@@ -34,8 +34,8 @@ Show all output on this page.
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -140,28 +140,28 @@ p=1.0:  1.0000
 
 {{trans|D}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
 #include <stdbool.h>
- 
+
 #define N_COLS 15
 #define N_ROWS 15
- 
+
 // Probability granularity 0.0, 0.1, ... 1.0
 #define N_STEPS 11
- 
+
 // Simulation tries
 #define N_TRIES 100
- 
+
 typedef unsigned char Cell;
 enum { EMPTY_CELL   = ' ',
        FILLED_CELL  = '#',
        VISITED_CELL = '.' };
 typedef Cell Grid[N_ROWS][N_COLS];
- 
+
 void initialize(Grid grid, const double probability) {
     for (size_t r = 0; r < N_ROWS; r++)
         for (size_t c = 0; c < N_COLS; c++) {
@@ -169,14 +169,14 @@ void initialize(Grid grid, const double probability) {
             grid[r][c] = (rnd < probability) ? EMPTY_CELL : FILLED_CELL;
         }
 }
- 
+
 void show(Grid grid) {
     char line[N_COLS + 3];
     memset(&line[0], '-', N_COLS + 2);
     line[0] = '+';
     line[N_COLS + 1] = '+';
     line[N_COLS + 2] = '\0';
- 
+
     printf("%s\n", line);
     for (size_t r = 0; r < N_ROWS; r++) {
         putchar('|');
@@ -186,32 +186,32 @@ void show(Grid grid) {
     }
     printf("%s\n", line);
 }
- 
+
 bool walk(Grid grid, const size_t r, const size_t c) {
     const size_t bottom = N_ROWS - 1;
     grid[r][c] = VISITED_CELL;
- 
+
     if (r < bottom && grid[r + 1][c] == EMPTY_CELL) { // Down.
         if (walk(grid, r + 1, c))
             return true;
     } else if (r == bottom)
         return true;
- 
+
     if (c && grid[r][c - 1] == EMPTY_CELL) // Left.
         if (walk(grid, r, c - 1))
             return true;
- 
+
     if (c < N_COLS - 1 && grid[r][c + 1] == EMPTY_CELL) // Right.
         if (walk(grid, r, c + 1))
             return true;
- 
+
     if (r && grid[r - 1][c] == EMPTY_CELL) // Up.
         if (walk(grid, r - 1, c))
             return true;
- 
+
     return false;
 }
- 
+
 bool percolate(Grid grid) {
     const size_t startR = 0;
     for (size_t c = 0; c < N_COLS; c++)
@@ -220,22 +220,22 @@ bool percolate(Grid grid) {
                 return true;
     return false;
 }
- 
+
 typedef struct {
     double prob;
     size_t count;
 } Counter;
- 
+
 int main() {
     const double probability_step = 1.0 / (N_STEPS - 1);
     Counter counters[N_STEPS];
     for (size_t i = 0; i < N_STEPS; i++)
         counters[i] = (Counter){ i * probability_step, 0 };
- 
+
     bool sample_shown = false;
     static Grid grid;
     srand(time(NULL));
- 
+
     for (size_t i = 0; i < N_STEPS; i++) {
         for (size_t t = 0; t < N_TRIES; t++) {
             initialize(grid, counters[i].prob);
@@ -251,12 +251,12 @@ int main() {
             }
         }
     }
- 
+
     printf("\nFraction of %d tries that percolate through:\n", N_TRIES);
     for (size_t i = 0; i < N_STEPS; i++)
         printf("%1.1f %1.3f\n", counters[i].prob,
                counters[i].count / (double)N_TRIES);
- 
+
     return 0;
 }
 
@@ -561,13 +561,13 @@ Please see sample compilation and program execution in comments at top of progra
 !
 !    b b b   b   h   j     m m m
 !  b b   b b b   h h   m m m m m
-!    b b b       h h h     m    
-!    b     h h h   h h h h      
-!  b b   h h   h h h h   h h h  
+!    b b b       h h h     m
+!    b     h h h   h h h h
+!  b b   h h   h h h h   h h h
 !  b b b   h h h   h h h h h h h
-!  b b   @   h   h   h h h h h  
+!  b b   @   h   h   h h h h h
 !      @ @       h h h h h h h h
-!    @ @ @ @       h h   h   h  
+!    @ @ @ @       h h   h   h
 !      @ @ @ @       h h h h h h
 !      @ @ @   h h h h     h h h
 !  @ @ @     h h   h   h     h h
@@ -838,51 +838,51 @@ import Control.Monad.Random
 import Data.Array.Unboxed
 import Data.List
 import Formatting
- 
+
 type Field = UArray (Int, Int) Char
- 
+
 -- Start percolating some seepage through a field.
 -- Recurse to continue percolation with new seepage.
 percolateR :: [(Int, Int)] -> Field -> (Field, [(Int,Int)])
 percolateR [] f = (f, [])
-percolateR seep f = 
+percolateR seep f =
     let ((xLo,yLo),(xHi,yHi)) = bounds f
-        validSeep = filter (\p@(x,y) ->    x >= xLo 
-                                        && x <= xHi 
-                                        && y >= yLo 
-                                        && y <= yHi 
+        validSeep = filter (\p@(x,y) ->    x >= xLo
+                                        && x <= xHi
+                                        && y >= yLo
+                                        && y <= yHi
                                         && f!p == ' ') $ nub $ sort seep
-          
-        neighbors (x,y) = [(x,y-1), (x,y+1), (x-1,y), (x+1,y)] 
 
-    in  percolateR 
+        neighbors (x,y) = [(x,y-1), (x,y+1), (x-1,y), (x+1,y)]
+
+    in  percolateR
             (concatMap neighbors validSeep)
             (f // map (\p -> (p,'.')) validSeep)
- 
+
 -- Percolate a field.  Return the percolated field.
 percolate :: Field -> Field
-percolate start = 
+percolate start =
     let ((_,_),(xHi,_)) = bounds start
         (final, _) = percolateR [(x,0) | x <- [0..xHi]] start
     in final
- 
+
 -- Generate a random field.
 initField :: Int -> Int -> Double -> Rand StdGen Field
 initField w h threshold = do
     frnd <- fmap (\rv -> if rv<threshold then ' ' else  '#') <$> getRandoms
-    return $ listArray ((0,0), (w-1, h-1)) frnd 
- 
+    return $ listArray ((0,0), (w-1, h-1)) frnd
+
 -- Get a list of "leaks" from the bottom of a field.
 leaks :: Field -> [Bool]
-leaks f = 
+leaks f =
     let ((xLo,_),(xHi,yHi)) = bounds f
     in [f!(x,yHi)=='.'| x <- [xLo..xHi]]
 
 -- Run test once; Return bool indicating success or failure.
 oneTest :: Int -> Int -> Double -> Rand StdGen Bool
-oneTest w h threshold = 
+oneTest w h threshold =
     or.leaks.percolate <$> initField w h threshold
- 
+
 -- Run test multple times; Return the number of tests that pass.
 multiTest :: Int -> Int -> Int -> Double -> Rand StdGen Double
 multiTest testCount w h threshold = do
@@ -907,7 +907,7 @@ main = do
   putStrLn ("Unpercolated field with " ++ show threshold ++ " threshold.")
   putStrLn ""
   showField startField
- 
+
   putStrLn ""
   putStrLn "Same field after percolation."
   putStrLn ""
@@ -915,14 +915,14 @@ main = do
 
   let testCount = 10000
       densityCount = 10
-      
+
   putStrLn ""
-  putStrLn (   "Results of running percolation test " ++ show testCount 
-            ++ " times with thresholds ranging from 0/" ++ show densityCount 
+  putStrLn (   "Results of running percolation test " ++ show testCount
+            ++ " times with thresholds ranging from 0/" ++ show densityCount
             ++ " to " ++ show densityCount ++ "/" ++ show densityCount ++ " .")
 
   let densities = [0..densityCount]
-      tests = sequence [multiTest testCount w h v 
+      tests = sequence [multiTest testCount w h v
                            | density <- densities,
                              let v = fromIntegral density / fromIntegral densityCount ]
       results = zip densities (evalRand tests g2)
@@ -1027,21 +1027,21 @@ Worked sample:
 
 ```J
    1j1 #"1 ' .#'{~ percolate 0.6>:?15 15$0
-# #   # # #       #   #     # 
-#   # # #   # # #   # # # # # 
-# # #   # #   #     #       # 
-    #   # #   # # #     # # # 
-#     .       #   # # # # #   
-#       # # # # # # # #     # 
-# #   # # # # # #   # # # # # 
-  # # # # #     #   #   # # # 
-.                   #   #     
-  .   .           # #   #   # 
-. . .   .   # # # # # # # # # 
-. . . .   # #       # # # # # 
-. . .     #     .   # #   #   
-. . . .     . . .     # #   . 
-  .   . . .   . . . .   # #   
+# #   # # #       #   #     #
+#   # # #   # # #   # # # # #
+# # #   # #   #     #       #
+    #   # #   # # #     # # #
+#     .       #   # # # # #
+#       # # # # # # # #     #
+# #   # # # # # #   # # # # #
+  # # # # #     #   #   # # #
+.                   #   #
+  .   .           # #   #   #
+. . .   .   # # # # # # # # #
+. . . .   # #       # # # # #
+. . .     #     .   # #   #
+. . . .     . . .     # #   .
+  .   . . .   . . . .   # #
 ```
 
 
@@ -1059,7 +1059,7 @@ quickCheck =: [: all [: (any"1) 2 *./\ ] NB. a complete path requires connection
 
 percolate =: 15 15&$: : (dyad define) NB. returns 0 iff blocked   Use: (N, M) percolate P
  NB. make a binary grid
- GRID =: y (> ?@($&0)) x  
+ GRID =: y (> ?@($&0)) x
 
  NB. compute the return value
  if. -. quickCheck GRID do. 0 return. end.
@@ -1117,7 +1117,7 @@ simulate =: 100&$: : ([ %~ [: +/ [: percolate"0 #) NB. return fraction of connec
 |9r10      1|
 |   1      1|
 +-----------+
-   
+
 
 
    NB. example
@@ -1142,26 +1142,26 @@ simulate =: 100&$: : ([ %~ [: +/ [: percolate"0 #) NB. return fraction of connec
 1 1 1 1 0 1 1 1 1 1 0 1 0 0 0
 1 0 1 1 1 1 1 0 0 1 1 1 1 1 1
 
-   
+
    (0 ,. 0 6 10 14) check GRID  NB. show possible starting points all fail
 0 0 0 0
-   
+
    1j1#"1 GRID { '#',~u: 32 16bb7 NB. sample paths with unicode pepper.
-# # # #   # # # #   # #     #             
-#     #     #   #   #     ·              
-#   ·   # #   # #   # #   ·             
-# #       # #   #   #       ·            
-  # # # # # #   #   #     · ·           
-  #   #               · ·   ·          
-        ·     · · ·   · ·   ·      
-· · · · · · ·       · ·   · ·  
-    · · ·   · ·     · · ·   ·    
-  ·   · · · · ·     · · · · ·  
-· · · ·   · ·   · ·     · · ·  
-  · · ·   · ·       · · · · ·   
-        ·   · · · · ·     ·        
-· · · ·   · · · · ·   ·         
-·   · · · · ·     · · · · · · 
+# # # #   # # # #   # #     #
+#     #     #   #   #     ·
+#   ·   # #   # #   # #   ·
+# #       # #   #   #       ·
+  # # # # # #   #   #     · ·
+  #   #               · ·   ·
+        ·     · · ·   · ·   ·
+· · · · · · ·       · ·   · ·
+    · · ·   · ·     · · ·   ·
+  ·   · · · · ·     · · · · ·
+· · · ·   · ·   · ·     · · ·
+  · · ·   · ·       · · · · ·
+        ·   · · · · ·     ·
+· · · ·   · · · · ·   ·
+·   · · · · ·     · · · · · ·
 
 ```
 
@@ -1257,22 +1257,22 @@ end
 ```txt
 Sample percolation, 15×15 grid, p = 0.40
 
-1) A A   B # #   #   #   #      
-2) A A   B     #       #   # #  
+1) A A   B # #   #   #   #
+2) A A   B     #       #   # #
 3) A     B B B         #       #
 4)   #   B   B     #     #     #
 5) # #       B B B #   #       #
-6) #   # #   B   B       # #    
+6) #   # #   B   B       # #
 7)               B     #   #   #
 8)   #           B       #     #
-9)           # B B              
-0) # #         B   # #     # #  
-1) # #         B                
+9)           # B B
+0) # #         B   # #     # #
+1) # #         B
 2) #   #     # B     # #       #
-3)   # # # #   B     #          
-4) # #   #   B B #   # #        
-5) #     #   B   #   #       #  
-!)           B                  
+3)   # # # #   B     #
+4) # #   #   B B #   # #
+5) #     #   B   #   #       #
+!)           B
 
 Frequencies for 1000 tries that percolate through
 
@@ -1330,7 +1330,7 @@ fun makeGrid(p: Double) {
         end++
     }
     grid[end - 1] = NUL
-    end -= ++m  // end is the index of the first cell of bottom row  
+    end -= ++m  // end is the index of the first cell of bottom row
 }
 
 fun ff(p: Int): Boolean { // flood fill
@@ -1597,23 +1597,23 @@ sub percolate ( $prob  = .6 ) {
 
 ```txt
 Sample percolation at .6
-++++           
+++++
 ▒▒▒+ ▒ ▒ ▒ ▒ ▒▒
- ▒▒++ ▒▒   ▒▒  
+ ▒▒++ ▒▒   ▒▒
    ▒+   ▒▒ ▒ ▒▒
-▒▒ ▒++++▒ ▒▒   
- ▒ ▒+▒▒+▒   ▒  
-  ▒++▒++ ▒▒▒ ▒ 
-  ▒▒▒ +▒       
+▒▒ ▒++++▒ ▒▒
+ ▒ ▒+▒▒+▒   ▒
+  ▒++▒++ ▒▒▒ ▒
+  ▒▒▒ +▒
 ▒▒ ▒ ▒++ ▒   ▒▒
-▒▒▒▒▒▒▒+▒▒▒    
-▒   ▒  +   ▒   
+▒▒▒▒▒▒▒+▒▒▒
+▒   ▒  +   ▒
  ▒▒   ▒+ ▒  ▒ ▒
-▒  ▒ ▒▒+    ▒  
-▒▒ ▒ ▒++▒   ▒  
+▒  ▒ ▒▒+    ▒
+▒▒ ▒ ▒++▒   ▒
    ▒  +▒ ▒▒  ▒▒
 ▒  ▒▒▒+    ▒▒ ▒
-      +        
+      +
 
 
 Doing 1000 trials at each porosity:
@@ -1641,7 +1641,7 @@ string grid
 integer m, n, last, lastrow
 
 enum SOLID = '#', EMPTY=' ', WET = 'v'
- 
+
 procedure make_grid(integer x, y, atom p)
     m = x
     n = y
@@ -1660,14 +1660,14 @@ function ff(integer i) -- flood_fill
     grid[i] = WET
     return i>=lastrow or ff(i+m+1) or ff(i+1) or ff(i-1) or ff(i-m-1)
 end function
- 
+
 function percolate()
     for i=2 to m+1 do
         if ff(i) then return true end if
     end for
     return false
 end function
- 
+
 procedure main()
     make_grid(15,15,0.55)
     {} = percolate()
@@ -1744,12 +1744,12 @@ def newgrid(p):
 
 def pgrid(cell, percolated=None):
     for n in range(N):
-        print( '%i)  ' % (n % 10) 
+        print( '%i)  ' % (n % 10)
                + ' '.join(cell2char[cell[n][m]] for m in range(M)))
-    if percolated: 
+    if percolated:
         where = percolated.args[0][0]
         print('!)  ' + '  ' * where + cell2char[cell[n][where]])
-    
+
 def check_from_top(cell):
     n, walk_index = 0, 1
     try:
@@ -1760,10 +1760,10 @@ def check_from_top(cell):
     except PercolatedException as ex:
         return ex
     return None
-        
+
 
 def walk_maze(m, n, cell, indx):
-    # fill cell 
+    # fill cell
     cell[n][m] = indx
     # down
     if n < N - 1 and cell[n+1][m] == NOT_VISITED:
@@ -1797,7 +1797,7 @@ if __name__ == '__main__':
                     pgrid(cell, percolated)
                     sample_printed = True
     print('\n p: Fraction of %i tries that percolate through\n' % t )
-    
+
     pp({p:c/float(t) for p, c in pcount.items()})
 ```
 
@@ -1810,20 +1810,20 @@ The '!)' row shows where the percolation finished and you can follow the letter 
 ```txt
 Sample percolating 15 x 15, p =  0.40 grid
 
-0)    a a a       b   c #        
+0)    a a a       b   c #
 1)    a a   #         c c   #   #
-2)        # #   # #     c # # #  
-3)  #   #       # # #   c        
+2)        # #   # #     c # # #
+3)  #   #       # # #   c
 4)    #     #         c c c c c c
 5)  # # # # # #         c   c   c
 6)        # # #         c   c   c
 7)  #   #     # #     #   #   # c
 8)  #   # #     #   #       c c c
-9)    #       #         #   c    
+9)    #       #         #   c
 0)  #       #   # # # #   c c # #
-1)      #     #   #     # c      
-2)  #     # # # # #   c c c   c  
-3)  #   # # #         c   c c c  
+1)      #     #   #     # c
+2)  #     # # # # #   c c c   c
+3)  #   # # #         c   c c c
 4)      #           # c         #
 !)                    c
 
@@ -1891,14 +1891,14 @@ Note the abrupt change in percolation at around p = 0.6. These abrupt changes ar
   (define N-1 (fx- N 1))
   (define max-idx (fx* N M+2))
   (define (inner-percolate g idx)
-    (define row (fxquotient idx M+2))    
+    (define row (fxquotient idx M+2))
     (cond
       ((fx< idx 0) #f)
       ((fx>= idx max-idx) #f)
       ((fx= N-1 row) (fxvector-set! g idx cell-exit) #t)
       ((fx= cell-filled (fxvector-ref g idx))
        (fxvector-set! g idx cell-visited)
-       (or 
+       (or
         ; gravity first (thanks Mr Newton)
         (inner-percolate g (fx+ idx M+2))
         ; stick-to-the-left
@@ -2046,23 +2046,23 @@ for p in (0.1..1 `by` 0.1) {
 ```txt
 
 Sample percolation at 0.6
-+              
-+    ▒▒▒  ▒ ▒▒ 
-+  ▒  ▒   ▒ ▒  
++
++    ▒▒▒  ▒ ▒▒
++  ▒  ▒   ▒ ▒
 ++++  ▒  ▒    ▒
 ▒+▒+++++    ▒ ▒
- ▒ ▒▒▒▒+       
+ ▒ ▒▒▒▒+
 ▒▒ ▒ ▒ +      ▒
 ▒     ▒+++ ▒  ▒
-  ▒ ▒ ▒+▒+  ▒  
+  ▒ ▒ ▒+▒+  ▒
 ▒ ▒    ▒ + ▒  ▒
  ▒   ▒ +++   ▒▒
 ▒▒▒ ▒▒▒+▒+▒ ▒ ▒
 ▒   ▒▒ + ▒    ▒
  ▒▒  ▒▒+++  ▒ ▒
-     ▒ ▒▒+     
-▒   ▒ ▒  +     
-         +     
+     ▒ ▒▒+
+▒   ▒ ▒  +
+         +
 
 Doing 100 trials at each porosity:
 p = 0.1: 0.000
@@ -2221,14 +2221,14 @@ fcn makeGrid(m,n,p){
 fcn ff(grid,x,m){ // walk across row looking for a porous cell
    if(grid[x]!=43) return(0); // '+' == 43 ASCII == porous
    grid[x]="#";
-   return(x+m>=grid.len() or 
+   return(x+m>=grid.len() or
 	  ff(grid,x+m,m) or ff(grid,x+1,m) or ff(grid,x-1,m) or ff(grid,x-m,m));
 }
 fcn percolate(grid,m){
    x:=m+1; i:=0; while(i<m and not ff(grid,x,m)){ x+=1; i+=1; }
    return(i<m);  // percolated through the grid?
 }
- 
+
 grid:=makeGrid(15,15,0.60);
 println("Did liquid percolate: ",percolate(grid,15));
 println("15x15 grid:\n",grid.text);

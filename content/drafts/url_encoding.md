@@ -17,8 +17,8 @@ tags = []
 ;Task:
 Provide a function or mechanism to convert a provided string into URL encoding representation.
 
-In URL encoding, special characters, control characters and extended characters 
-are converted into a percent symbol followed by a two digit hexadecimal code, 
+In URL encoding, special characters, control characters and extended characters
+are converted into a percent symbol followed by a two digit hexadecimal code,
 So a space character encodes into %20 within the string.
 
 For the purposes of this task, every character except 0-9, A-Z and a-z requires conversion, so the following characters all require conversion by default:
@@ -42,12 +42,12 @@ The string "<code><nowiki>http://foo bar/</nowiki></code>" would be encoded as "
 
 
 ;Options:
-It is permissible to use an exception string (containing a set of symbols 
-that do not need to be converted). 
+It is permissible to use an exception string (containing a set of symbols
+that do not need to be converted).
 However, this is an optional feature and is not a requirement of this task.
 
 
-;Related tasks: 
+;Related tasks:
 *   [[URL decoding]]
 *   [[URL parser]]
 
@@ -196,7 +196,7 @@ To follow the rules for HTML 5, uncomment the two lines that convert " " to "+",
 ```bbcbasic
       PRINT FNurlencode("http://foo bar/")
       END
-      
+
       DEF FNurlencode(url$)
       LOCAL c%, i%
       WHILE i% < LEN(url$)
@@ -294,10 +294,10 @@ http%3A%2F%2Ffoo.bar.com%2F~user-name%2F_subdir%2F%2A~.html
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <ctype.h>
- 
+
 char rfc3986[256] = {0};
 char html5[256] = {0};
 
@@ -310,12 +310,12 @@ void encode(const char *s, char *enc, char *tb)
 		while (*++enc);
 	}
 }
- 
+
 int main()
 {
 	const char url[] = "http://foo bar/";
 	char enc[(strlen(url) * 3) + 1];
- 
+
 	int i;
 	for (i = 0; i < 256; i++) {
 		rfc3986[i] = isalnum(i)||i == '~'||i == '-'||i == '.'||i == '_'
@@ -323,10 +323,10 @@ int main()
 		html5[i] = isalnum(i)||i == '*'||i == '-'||i == '.'||i == '_'
 			? i : (i == ' ') ? '+' : 0;
 	}
- 
+
 	encode(url, enc, rfc3986);
 	puts(enc);
- 
+
 	return 0;
 }
 ```
@@ -337,8 +337,8 @@ int main()
 
 using Qt 4.6 as a library
 
-```cpp>#include <QByteArray
-
+```cpp
+#include <QByteArray>
 #include <iostream>
 
 int main( ) {
@@ -479,7 +479,7 @@ Built in, <code>http_uri:encode/1</code> accepts lists and binary:
 
 
 
-###  Unicode 
+###  Unicode
 
 If you are URL encoding unicode data though <code>http_uri:encode/1</code> will produce incorrect results:
 
@@ -495,7 +495,7 @@ You should use the built-in (non-documented) <code>edoc_lib:escape_uri/1</code> 
 
 ```txt
 
-1> edoc_lib:escape_uri("étanchéité d une terrasse").                    
+1> edoc_lib:escape_uri("étanchéité d une terrasse").
 "%c3%a9tanch%c3%a9it%c3%a9%20d%20une%20terrasse"
 
 ```
@@ -660,7 +660,7 @@ write("encoded = ",image(ue := encodeURL(u)))
 end
 
 procedure encodeURL(s)           #: encode data for inclusion in a URL/URI
-static en                           
+static en
 initial {                           # build lookup table for everything
    en := table()
    every en[c := !string(~(&digits++&letters))] := "%"||hexstring(ord(c),2)
@@ -668,13 +668,13 @@ initial {                           # build lookup table for everything
    }
 
 every (c := "") ||:= en[!s]         # re-encode everything
-return c   
+return c
 end
 
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/hexcvt.icn hexcvt provides hexstring]
 
 {{out}}
@@ -761,7 +761,7 @@ To address the task requirement, therefore, we can first use @uri and then conve
 (For versions of jq with regex support, this could be done using gsub, but here we perform
 the translation directly.)
 
-Note that @uri also converts multibyte characters to multi-triplets, e.g. 
+Note that @uri also converts multibyte characters to multi-triplets, e.g.
 
 ```jq
 "á" | @uri
@@ -816,7 +816,7 @@ produces: "-.0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~"
 
 
 ```Julia
- 
+
 //version 1.0.1
 import HTTP.URIs: escapeuri
 
@@ -895,7 +895,7 @@ function url$( i$)
     for j =1 to len( i$)
         c$ =mid$( i$, j, 1)
         if instr( "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", c$) then
-            url$ =url$ +c$ 
+            url$ =url$ +c$
         else
             url$ =url$ +lookUp$( asc( c$))
         end if
@@ -976,12 +976,12 @@ Module Checkit {
             }
             Group Parse$ {
                  all$, c=1
-                 tc$=""           
+                 tc$=""
                  Enum UrlType {None=0, RFC3986, HTML5}
                  variation
                  TypeData=("","-._~","-._*")
-                 Function Next {                 
-                            .tc$<=mid$(.all$,.c,1) 
+                 Function Next {
+                            .tc$<=mid$(.all$,.c,1)
                              .c++
                              =.tc$<>""
                   }
@@ -1028,7 +1028,7 @@ Module Checkit {
                  Parse.variation=eval(m)
                  Print Quote$(Parse.Decode$())
                  Print decodeUrl$(Parse.Decode$())
-            }            
+            }
 }
 CheckIt
 
@@ -1065,12 +1065,12 @@ URL:-Escape("http://foo bar/");
 
 
 ```mathematica
-URLEncoding[url_] := 
- StringReplace[url, 
+URLEncoding[url_] :=
+ StringReplace[url,
   x : Except[
-     Join[CharacterRange["0", "9"], CharacterRange["a", "z"], 
-      CharacterRange["A", "Z"]]] :> 
-   StringJoin[("%" ~~ #) & /@ 
+     Join[CharacterRange["0", "9"], CharacterRange["a", "z"],
+      CharacterRange["A", "Z"]]] :>
+   StringJoin[("%" ~~ #) & /@
      IntegerString[ToCharacterCode[x, "UTF8"], 16]]]
 ```
 
@@ -1100,12 +1100,12 @@ function u = urlencoding(s)
 			u(end+1) = s(k);
 		else
 			u=[u,'%',dec2hex(s(k)+0)];
-		end; 	
+		end;
 	end
 end
 ```
 
-Usage: 
+Usage:
 
 ```txt
 octave:3> urlencoding('http://foo bar/')
@@ -1136,7 +1136,7 @@ options replace format comments java crossref symbols nobinary
 /* -------------------------------------------------------------------------- */
 method encode(url, varn) public static
 
-  variation = varn.upper 
+  variation = varn.upper
   opts = ''
   opts['RFC3986'] = '-._~'
   opts['HTML5']   = '-._*'
@@ -1191,33 +1191,33 @@ method testcase(variation = '') public static
 
 ```txt
 
-http://foo bar/ 
-http%3A%2F%2Ffoo%20bar%2F 
-mailto:"Ivan Aim" <ivan.aim@email.com> 
-mailto%3A%22Ivan%20Aim%22%20%3Civan%2Eaim%40email%2Ecom%3E 
-mailto:"Irma User" <irma.user@mail.com> 
-mailto%3A%22Irma%20User%22%20%3Cirma%2Euser%40mail%2Ecom%3E 
-http://foo.bar.com/~user-name/_subdir/*~.html 
-http%3A%2F%2Ffoo%2Ebar%2Ecom%2F%7Euser%2Dname%2F%5Fsubdir%2F%2A%7E%2Ehtml 
- 
-RFC3986 
-http://foo bar/ 
-http%3A%2F%2Ffoo%20bar%2F 
-mailto:"Ivan Aim" <ivan.aim@email.com> 
-mailto%3A%22Ivan%20Aim%22%20%3Civan.aim%40email.com%3E 
-mailto:"Irma User" <irma.user@mail.com> 
-mailto%3A%22Irma%20User%22%20%3Cirma.user%40mail.com%3E 
-http://foo.bar.com/~user-name/_subdir/*~.html 
-http%3A%2F%2Ffoo.bar.com%2F~user-name%2F_subdir%2F%2A~.html 
- 
-HTML5 
-http://foo bar/ 
-http%3A%2F%2Ffoo+bar%2F 
-mailto:"Ivan Aim" <ivan.aim@email.com> 
-mailto%3A%22Ivan+Aim%22+%3Civan.aim%40email.com%3E 
-mailto:"Irma User" <irma.user@mail.com> 
-mailto%3A%22Irma+User%22+%3Cirma.user%40mail.com%3E 
-http://foo.bar.com/~user-name/_subdir/*~.html 
+http://foo bar/
+http%3A%2F%2Ffoo%20bar%2F
+mailto:"Ivan Aim" <ivan.aim@email.com>
+mailto%3A%22Ivan%20Aim%22%20%3Civan%2Eaim%40email%2Ecom%3E
+mailto:"Irma User" <irma.user@mail.com>
+mailto%3A%22Irma%20User%22%20%3Cirma%2Euser%40mail%2Ecom%3E
+http://foo.bar.com/~user-name/_subdir/*~.html
+http%3A%2F%2Ffoo%2Ebar%2Ecom%2F%7Euser%2Dname%2F%5Fsubdir%2F%2A%7E%2Ehtml
+
+RFC3986
+http://foo bar/
+http%3A%2F%2Ffoo%20bar%2F
+mailto:"Ivan Aim" <ivan.aim@email.com>
+mailto%3A%22Ivan%20Aim%22%20%3Civan.aim%40email.com%3E
+mailto:"Irma User" <irma.user@mail.com>
+mailto%3A%22Irma%20User%22%20%3Cirma.user%40mail.com%3E
+http://foo.bar.com/~user-name/_subdir/*~.html
+http%3A%2F%2Ffoo.bar.com%2F~user-name%2F_subdir%2F%2A~.html
+
+HTML5
+http://foo bar/
+http%3A%2F%2Ffoo+bar%2F
+mailto:"Ivan Aim" <ivan.aim@email.com>
+mailto%3A%22Ivan+Aim%22+%3Civan.aim%40email.com%3E
+mailto:"Irma User" <irma.user@mail.com>
+mailto%3A%22Irma+User%22+%3Cirma.user%40mail.com%3E
+http://foo.bar.com/~user-name/_subdir/*~.html
 http%3A%2F%2Ffoo.bar.com%2F%7Euser-name%2F_subdir%2F*%7E.html
 
 ```
@@ -1230,7 +1230,7 @@ http%3A%2F%2Ffoo.bar.com%2F%7Euser-name%2F_subdir%2F*%7E.html
 ```NewLISP
 ;; simple encoder
 ;; (source http://www.newlisp.org/index.cgi?page=Code_Snippets)
-(define (url-encode str) 
+(define (url-encode str)
   (replace {([^a-zA-Z0-9])} str (format "%%%2X" (char $1)) 0))
 
 (url-encode "http://foo bar/")
@@ -1257,7 +1257,7 @@ echo encodeUrl("http://foo/bar/")
 MODULE URLEncoding;
 IMPORT
   Out := NPCT:Console,
-  ADT:StringBuffer, 
+  ADT:StringBuffer,
   URI := URI:String;
 VAR
   encodedUrl: StringBuffer.StringBuffer;
@@ -1419,7 +1419,7 @@ http%3A%2F%2Ffoo%20bar%2F
 ```Phix
 --
 -- demo\rosetta\encode_url.exw
--- 
+--
 ### =====================
 
 --
@@ -1637,7 +1637,7 @@ encode:
 procedure
 do
   parse arg url, varn .
-  parse upper var varn variation 
+  parse upper var varn variation
   drop RFC3986 HTML5
   opts. = ''
   opts.RFC3986 = '-._~'
@@ -1839,7 +1839,7 @@ http://foo bar/ -> http%3A%2F%2Ffoo%20bar%2F
 ```Rust
 const INPUT: &str = "http://foo bar/";
 const MAX_CHAR_VAL: u32 = std::char::MAX as u32;
- 
+
 fn main() {
     let mut buff = [0; 4];
     println!("{}", INPUT.chars()
@@ -2130,7 +2130,7 @@ http%3A%2F%2Ffoo%20bar%2F
 ```Yabasic
 sub encode_url$(s$, exclusions$, spaceplus)
     local res$, i, ch$
-	
+
     for i=1 to len(s$)
         ch$ = mid$(s$, i, 1)
         if ch$ = " " and spaceplus then

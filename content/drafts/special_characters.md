@@ -737,7 +737,10 @@ Also note that some compilers add the non-standard escape sequence <tt>\e</tt> f
 The <tt>#</tt> character in C++ is special as it is interpreted only in the preprocessing phase, and shouldn't occur (outside of character/string constants) after preprocessing.
 *If <tt>#</tt> appears as first non-whitespace character in the line, it introduces a preprocessor directive. For example
 
-```cpp>#include <iostream></lang
+
+```cpp
+#include <iostream>
+```
 
 *Inside macro definitions, a single <tt>#</tt> is the stringification operator, which turns its argument into a string. For example:
 

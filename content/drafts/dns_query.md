@@ -21,7 +21,7 @@ Use DNS to resolve <code>www.kame.net</code> to both IPv4 and IPv6 addresses. Pr
 
 ## Ada
 
-{{works with|GNAT GPL|Any - package Gnat.Sockets supports only IPv4 as of Jun 2011}} 
+{{works with|GNAT GPL|Any - package Gnat.Sockets supports only IPv4 as of Jun 2011}}
 
 ```Ada
 with Ada.Text_IO;  use Ada.Text_IO;
@@ -87,7 +87,7 @@ stArg1:                 .int szCommand           @ address command
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 .align 4
 iStatusThread:      .skip 4
 pipefd:               .skip 8
@@ -97,8 +97,8 @@ stRusage:             .skip TAILLEBUFFER
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                           @ entry of program 
+.global main
+main:                                           @ entry of program
     /* création pipe  */
     ldr r0,iAdrpipefd                          @ FDs address
     mov r7, #PIPE                               @ create pipe
@@ -109,7 +109,7 @@ main:                                           @ entry of program
     /* create child thread */
     mov r0,#0
     mov r7, #FORK                                @ call system
-    svc #0 
+    svc #0
     cmp r0,#0                                     @ error ?
     blt 99f
     bne parent                                  @ if <> zero r0 contains father pid
@@ -117,10 +117,10 @@ main:                                           @ entry of program
 /****************************************/
 /*  Child thread                       */
 /****************************************/
-    /* redirection sysout -> pipe */ 
+    /* redirection sysout -> pipe */
     ldr r0,iAdrpipefd
     ldr r0,[r0,#4]
-    mov r7, #DUP2                                @ call system linux 
+    mov r7, #DUP2                                @ call system linux
     mov r1, #STDOUT                             @
     svc #0
     cmp r0,#0                                    @ error ?
@@ -136,35 +136,35 @@ main:                                           @ entry of program
 /****************************************/
 /*  Father thread                       */
 /****************************************/
-parent:	
+parent:
     mov r4,r0                                     @ save child pid
 1:                                                @ loop child signal
     mov r0,r4
     ldr r1,iAdriStatusThread                  @ return status thread
-    mov r2,#WUNTRACED                           @ flags 
+    mov r2,#WUNTRACED                           @ flags
     ldr r3,iAdrstRusage                        @ return structure thread
-    mov r7, #WAIT4                               @ Call System 
-    svc #0 
+    mov r7, #WAIT4                               @ Call System
+    svc #0
     cmp r0,#0                                    @ error ?
     blt 99f
-    @ recup status 
+    @ recup status
     ldr r0,iAdriStatusThread                 @ analyse status
     ldrb r0,[r0]                                @ firest byte
     cmp r0,#0                                    @ normal end thread ?
     bne 1b                                      @ loop
 
-    /* close entry pipe */ 
+    /* close entry pipe */
     ldr r0,iAdrpipefd
     mov r7,#CLOSE                               @ call system
-    svc #0 
+    svc #0
 
-    /* read datas pipe */ 
+    /* read datas pipe */
     ldr r0,iAdrpipefd
     ldr r0,[r0]
     ldr r1,iAdrsBuffer                        @ buffer address
     mov r2,#TAILLEBUFFER                      @ buffer size
     mov r7, #READ                               @ call system
-    svc #0 
+    svc #0
     ldr r0,iAdrsBuffer                        @ display buffer
     bl affichageMess
 
@@ -177,7 +177,7 @@ parent:
     bl affichageMess
     mov r0, #1                                   @ return code
     b 100f
-100:                                            @ standard end of the program 
+100:                                            @ standard end of the program
     mov r7, #EXIT                               @ request to exit program
     svc #0                                      @ perform the system call
 
@@ -193,24 +193,24 @@ iAdrstRusage:                .int stRusage
 
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                               @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                @ else add 1 in the length 
-    bne 1b                                        @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                @ code to write to the standard output Linux 
-    mov r7, #WRITE                                @ code call system "write" 
-    svc #0                                        @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                               @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                @ else add 1 in the length
+    bne 1b                                        @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                @ code to write to the standard output Linux
+    mov r7, #WRITE                                @ code call system "write"
+    svc #0                                        @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 
 ```
 
@@ -293,45 +293,45 @@ Press any key to continue . . .
 
 ```bbcbasic
       name$ = "www.kame.net"
-      
+
       AF_INET = 2
       AF_INET6 = 23
       WSASYS_STATUS_LEN = 128
       WSADESCRIPTION_LEN = 256
-      
+
       SYS "LoadLibrary", "WS2_32.DLL" TO ws2%
       SYS "GetProcAddress", ws2%, "WSAStartup"  TO `WSAStartup`
       SYS "GetProcAddress", ws2%, "WSACleanup"  TO `WSACleanup`
       SYS "GetProcAddress", ws2%, "getaddrinfo" TO `getaddrinfo`
-      
+
       DIM WSAdata{wVersion{l&,h&}, wHighVersion{l&,h&}, \
       \ szDescription&(WSADESCRIPTION_LEN), szSystemStatus&(WSASYS_STATUS_LEN), \
       \ iMaxSockets{l&,h&}, iMaxUdpDg{l&,h&}, lpVendorInfo%}
-      
+
       DIM addrinfo{ai_flags%, ai_family%, ai_socktype%, ai_protocol%, \
       \      ai_addrlen%, lp_ai_canonname%, lp_ai_addr%, lp_ai_next%}
       DIM ipv4info{} = addrinfo{}, ipv6info{} = addrinfo{}
-      
+
       DIM sockaddr_in{sin_family{l&,h&}, sin_port{l&,h&}, sin_addr&(3), sin_zero&(7)}
       DIM sockaddr_in6{sin6_family{l&,h&}, sin6_port{l&,h&}, sin6_flowinfo%, \
       \                sin6_addr&(15), sin6_scope_id%}
-      
+
       SYS `WSAStartup`, &202, WSAdata{} TO res%
       IF res% ERROR 102, "WSAStartup failed"
-      
+
       addrinfo.ai_family% = AF_INET
       SYS `getaddrinfo`, name$, 0, addrinfo{}, ^ipv4info{}+4 TO res%
       IF res% ERROR 103, "getaddrinfo failed"
-      
+
       !(^sockaddr_in{}+4) = ipv4info.lp_ai_addr%
       PRINT "IPv4 address = " ;
       PRINT ;sockaddr_in.sin_addr&(0) "." sockaddr_in.sin_addr&(1) "." ;
       PRINT ;sockaddr_in.sin_addr&(2) "." sockaddr_in.sin_addr&(3)
-      
+
       addrinfo.ai_family% = AF_INET6
       SYS `getaddrinfo`, name$, 0, addrinfo{}, ^ipv6info{}+4 TO res%
       IF res% ERROR 104, "getaddrinfo failed"
-      
+
       !(^sockaddr_in6{}+4) = ipv6info.lp_ai_addr%
       PRINT "IPv6 address = " ;
       PRINT ;~sockaddr_in6.sin6_addr&(0) * 256 + sockaddr_in6.sin6_addr&(1) ":" ;
@@ -342,7 +342,7 @@ Press any key to continue . . .
       PRINT ;~sockaddr_in6.sin6_addr&(10) * 256 + sockaddr_in6.sin6_addr&(11) ":" ;
       PRINT ;~sockaddr_in6.sin6_addr&(12) * 256 + sockaddr_in6.sin6_addr&(13) ":" ;
       PRINT ;~sockaddr_in6.sin6_addr&(14) * 256 + sockaddr_in6.sin6_addr&(15)
-      
+
       SYS `WSACleanup`
 
 ```
@@ -359,8 +359,8 @@ IPv6 address = 2001:200:DFF:FFF1:216:3EFF:FEB1:44D7
 This solution uses <code>getaddrinfo()</code>, a standard function from RFC 3493. This code resembles an example from [http://www.openbsd.org/cgi-bin/man.cgi?query=getaddrinfo&apropos=0&sektion=3&manpath=OpenBSD+Current&arch=i386&format=html getaddrinfo(3)], the [[BSD]] manual page. Whereas the man page code connects to <code>www.kame.net</code>, this code only prints the numeric addresses.
 
 
-```c>#include <sys/types.h
-
+```c
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>		/* getaddrinfo, getnameinfo */
 #include <stdio.h>		/* fprintf, printf */
@@ -455,7 +455,7 @@ int main() {
 
 ## C sharp
 
-Implementation takes a host name string as a parameter, and returns the IP addresses in a comma-delimited string.  Note that a failed lookup throws a SocketException. 
+Implementation takes a host name string as a parameter, and returns the IP addresses in a comma-delimited string.  Note that a failed lookup throws a SocketException.
 
 ```csharp
 
@@ -493,7 +493,7 @@ ClassMethod QueryDNS(pHost As %String, Output ip As %List) As %Status
 {
 	// some initialisation
 	K ip S ip=""
- 
+
 	// check host operating system and input parameters
 	S OS=$SYSTEM.Version.GetOS()
 	I '$LF($LB("Windows","UNIX"), OS) Q $$$ERROR($$$GeneralError, "Not implemented.")
@@ -502,10 +502,10 @@ ClassMethod QueryDNS(pHost As %String, Output ip As %List) As %Status
 	I $MATCH(pHost, "^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$")=0 {
 		Q $$$ERROR($$$GeneralError, "Invalid host name.")
 	}
-	
+
 	// invoke command
 	S list=##class(Utils.OS).Call(cmd, 0)
-	
+
 	// iterate through list
 	S ptr=0, skip=1
     WHILE $LISTNEXT(list,ptr,value) {
@@ -514,7 +514,7 @@ ClassMethod QueryDNS(pHost As %String, Output ip As %List) As %Status
 	    S ipv4=..GetIPAddr("ipv4", value) I $L(ipv4) S $LI(ip, 4)=ipv4
 	    S ipv6=..GetIPAddr("ipv6", value) I $L(ipv6) S $LI(ip, 6)=ipv6
     }
-	
+
 	// finished
 	I $LD(ip, 4)=0, $LD(ip, 6)=0 Q $$$ERROR($$$GeneralError, "Lookup failed.")
 	QUIT $$$OK
@@ -549,27 +549,27 @@ ClassMethod Call(cmd, echo = 1) As %List
 	// instatiate pipe object
 	S list=""
 	S pipe=##class(%File).%New(cmd)
-		
+
 	TRY {
-		// 
+		//
 		S sc=pipe.Open("QR")
 		I $$$ISERR(sc) Q
-		
+
 		// read queue/pipe and output to screen
 		DO {
 			K len S line=pipe.ReadLine(.len) I len=-1 Q
 			S $LI(list,$I(pos))=line
 			I echo W line,!
 		} WHILE $G(pos)<1000
-		
+
 	} CATCH {
 		S ZE=$ZE
 		BREAK
 	}
-	
+
 	// close pipe
 	D pipe.Close()
-	
+
 	// return list value
 	Q list
 }
@@ -588,7 +588,7 @@ IPv4 address = 203.178.141.194
 USER>Write "IPv6 address = ", $ListGet(ip, 6, "Not found")
 IPv6 address = 2001:200:dff:fff1:216:3eff:feb1:44d7
 
-USER>Do ##class(Utils.Net).QueryDNS("ipv6.google.com", .ip) 
+USER>Do ##class(Utils.Net).QueryDNS("ipv6.google.com", .ip)
 USER>Write "IPv4 address = ", $ListGet(ip, 4, "Not found")
 IPv4 address = Not found
 USER>Write "IPv6 address = ", $ListGet(ip, 6, "Not found")
@@ -604,7 +604,7 @@ IPv6 address = 2a00:1450:400c:c05::93
 ```clojure
 (import java.net.InetAddress java.net.Inet4Address java.net.Inet6Address)
 
-(doseq [addr (InetAddress/getAllByName "www.kame.net")] 
+(doseq [addr (InetAddress/getAllByName "www.kame.net")]
   (cond
     (instance? Inet4Address addr) (println "IPv4:" (.getHostAddress addr))
     (instance? Inet6Address addr) (println "IPv6:" (.getHostAddress addr))))
@@ -630,7 +630,7 @@ dns = require 'dns'
 dns.resolve4 'www.kame.net', (err, addresses) ->
   console.log 'IP4'
   console.log addresses
-  
+
 dns.resolve6 'www.kame.net', (err, addresses) ->
   console.log 'IP6'
   console.log addresses
@@ -645,7 +645,7 @@ common lisp does not have a standard network api. the following examples are usi
 {{works with|SBCL}}
 
 ```lisp
-(sb-bsd-sockets:host-ent-addresses 
+(sb-bsd-sockets:host-ent-addresses
       (sb-bsd-sockets:get-host-by-name "www.rosettacode.org"))
 (#(71 19 147 227))
 ```
@@ -807,19 +807,19 @@ IPv6: 2001:200:DFF:FFF1:216:3EFF:FEB1:44D7
 
 ```Erlang
 
-33> {ok, {hostent, Host, Aliases, AddrType, Bytes, AddrList}} = inet:gethostbyname("www.kame.net", inet). 
+33> {ok, {hostent, Host, Aliases, AddrType, Bytes, AddrList}} = inet:gethostbyname("www.kame.net", inet).
 {ok,{hostent,"orange.kame.net",
              ["www.kame.net"],
              inet,4,
              [{203,178,141,194}]}}
-34> [inet_parse:ntoa(Addr) || Addr <- AddrList].                                                         
+34> [inet_parse:ntoa(Addr) || Addr <- AddrList].
 ["203.178.141.194"]
-35> f().                                                                                                 
+35> f().
 ok
 36> {ok, {hostent, Host, Aliases, AddrType, Bytes, AddrList}} = inet:gethostbyname("www.kame.net", inet6).
 {ok,{hostent,"orange.kame.net",[],inet6,16,
              [{8193,512,3583,65521,534,16127,65201,17623}]}}
-37> [inet_parse:ntoa(Addr) || Addr <- AddrList].                                                          
+37> [inet_parse:ntoa(Addr) || Addr <- AddrList].
 ["2001:200:DFF:FFF1:216:3EFF:FEB1:44D7"]
 
 ```
@@ -911,7 +911,7 @@ showIPs host = do
   putStrLn $ "IP addresses for " ++ host ++ ":"
   addresses <- getWebAddresses host
   mapM_ (putStrLn . ("  "++) . show) addresses
-  
+
 main = showIPs "www.kame.net"
 
 ```
@@ -1090,7 +1090,7 @@ fun showIPAddresses(host: String) {
     }
     catch (ex: Exception) {
         println(ex.message)
-    } 
+    }
 }
 
 fun main(args: Array<String>) {
@@ -1521,7 +1521,7 @@ function get_name_info(string fqdn)
         xgetnameinfo = define_cffi_func(lib,tGNI)
         xfreeaddrinfo = define_cffi_proc(lib,tFAI)
     end if
-    atom hints = allocate_struct(idAI,cleanup:=true), 
+    atom hints = allocate_struct(idAI,cleanup:=true),
          res = allocate(machine_word(),cleanup:=true),
          host = allocate(NI_MAXHOST,cleanup:=true)
     set_struct_field(idAI,hints,"ai_family",AF_UNSPEC)
@@ -1543,7 +1543,7 @@ function get_name_info(string fqdn)
     c_proc(xfreeaddrinfo,{res})
     return results
 end function
- 
+
 procedure WSACleanup()
     if platform()=WINDOWS then
         error = c_func(xwsacleanup,{})
@@ -1556,7 +1556,7 @@ WSACleanup()
 ```
 
 {{out}}
-Note that windows nslookup shows an IPv6 that this does not, whereas 
+Note that windows nslookup shows an IPv6 that this does not, whereas
 the exact reverse is true for linux on a VirtualBox (same machine)...
 
 ```txt
@@ -1722,7 +1722,7 @@ It can be used to perform the task in R:
 library(Rcpp)
 sourceCpp("dns.cpp")
 getNameInfo("www.kame.net")
-## [1] "203.178.141.194"                     
+## [1] "203.178.141.194"
 ## [2] "2001:200:dff:fff1:216:3eff:feb1:44d7"
 
 ```
@@ -1750,7 +1750,7 @@ The following finds an IPv4 address. Currently, the API does not support returni
 
 This REXX version uses the Windows (DOS)   '''PING'''   command to resolve the domain name.
 
-Execution note:   if the information for     '''PING   -6   ···'''     is blank, you may need to install   (on some 
+Execution note:   if the information for     '''PING   -6   ···'''     is blank, you may need to install   (on some
 Microsoft Windows systems)   the IPV6 interface using the command:     ''' IPV6   install '''
 
 ```rexx

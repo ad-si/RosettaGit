@@ -11,9 +11,9 @@ tags = []
 +++
 
 {{task}}
-The task requires poking machine code directly into memory and executing it. 
+The task requires poking machine code directly into memory and executing it.
 
-This is strictly for x86 (32 bit) architectures. 
+This is strictly for x86 (32 bit) architectures.
 
 The machine code is the opcodes of the following simple program:
 
@@ -25,7 +25,7 @@ ret
 ```
 
 
-which translates into the following opcodes:	
+which translates into the following opcodes:
 (139 68 36 4 3 68 36 8 195)
 and in Hex this would correspond to the following:
 ("8B" "44" "24" "4" "3" "44" "24" "8" "C3")
@@ -97,8 +97,8 @@ MCode(ByRef code, hex) { ; allocate memory and write Machine Code there
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <sys/mman.h>
 #include <string.h>
 
@@ -239,14 +239,14 @@ SOURCE FORMAT IS FIXED
 
 
 ```lisp
-;;Note that by using the 'CFFI' library, one can apply this procedure portably in any lisp implementation; 
+;;Note that by using the 'CFFI' library, one can apply this procedure portably in any lisp implementation;
 ;; in this code however I chose to demonstrate only the implementation-dependent programs.
 
 ;;CCL
 ;; Allocate a memory pointer and poke the opcode into it
 (defparameter ptr (ccl::malloc 9))
 
-(loop for i in '(139 68 36 4 3 68 36 8 195) 
+(loop for i in '(139 68 36 4 3 68 36 8 195)
    for j from 0 do
    (setf (ccl::%get-unsigned-byte ptr j) i))
 
@@ -414,7 +414,7 @@ cxx"""
 #include <stdio.h>
 #include <sys/mman.h>
 #include <string.h>
- 
+
 int test (int a, int b)
 {
   /*
@@ -428,7 +428,7 @@ int test (int a, int b)
   /* copy code to executable buffer */
   buf = mmap (0,sizeof(code),PROT_READ|PROT_WRITE|PROT_EXEC,
              MAP_PRIVATE|MAP_ANON,-1,0);
- 
+
   memcpy (buf, code, sizeof(code));
   /* run code */
   c = ((int (*) (int, int))buf)(a, b);
@@ -436,7 +436,7 @@ int test (int a, int b)
   munmap (buf, sizeof(code));
   return c;
 }
- 
+
 int main ()
 {
   printf("%d\n", test(7,12));
@@ -468,7 +468,7 @@ This task presents a number of issues for Kotlin Native which at the time of wri
 // mcode.def
 ---
 
-static inline unsigned char runMachineCode(void *code, unsigned char a, unsigned char b) {      
+static inline unsigned char runMachineCode(void *code, unsigned char a, unsigned char b) {
     return ((unsigned char (*) (unsigned char, unsigned char))code)(a, b);
 }
 ```
@@ -484,12 +484,12 @@ import mman.*
 import mcode.*
 
 fun main(args: Array<String>) {
-    memScoped {        
+    memScoped {
         val bytes = byteArrayOf(
             144 - 256,                            // Align
             144 - 256,
             106, 12,                              // Prepare stack
-            184 - 256, 7, 0, 0, 0, 
+            184 - 256, 7, 0, 0, 0,
             72, 193 - 256, 224 - 256, 32,
             80,
             139 - 256, 68, 36, 4, 3, 68, 36, 8,   // Rosetta task code
@@ -497,19 +497,19 @@ fun main(args: Array<String>) {
             137 - 256, 195 - 256,
             72, 193 - 256, 227 - 256, 4,
             128 - 256, 203 - 256, 2,
-            72, 131 - 256, 196 - 256, 16,         // Clean up stack 
+            72, 131 - 256, 196 - 256, 16,         // Clean up stack
             195 - 256                             // Return
         )
-        val len = bytes.size    
+        val len = bytes.size
         val code = allocArray<ByteVar>(len)
         for (i in 0 until len) code[i] = bytes[i]
         val buf = mmap(null, len.toLong(), PROT_READ or PROT_WRITE or PROT_EXEC,
-                       MAP_PRIVATE or MAP_ANON, -1, 0) 
+                       MAP_PRIVATE or MAP_ANON, -1, 0)
         memcpy(buf, code, len.toLong())
         val a: Byte = 7
         val b: Byte = 12
         val c = runMachineCode(buf, a, b)
-        munmap(buf, len.toLong()) 
+        munmap(buf, len.toLong())
         println("$a + $b = ${if(c >= 0) c.toInt() else c + 256}")
     }
 }
@@ -546,12 +546,12 @@ Module Checkit {
       Address=0
       EmbLong(0xb8, 5100) ' mov eax,5100
       EmbByteByte(0x83, 0xC0, 5) ' add  eax,0x5
-      EmbByteLong(0x3,0x5, DataMem(1)) ' add eax, [DataMem(1)] 
+      EmbByteLong(0x3,0x5, DataMem(1)) ' add eax, [DataMem(1)]
       EmbLong(0xa3, DataMem(0)) ' mov [DataMem(0)], eax
       \\ split rem to execute xor eax eax (eax=0)
-      Rem : EmbByte(0x31, 0xC0) ' xor eax, eax 
+      Rem : EmbByte(0x31, 0xC0) ' xor eax, eax
       Ret() ' Return
-      \\  
+      \\
       Try ok {
             Execute Code ExecMem, 0
       }
@@ -562,7 +562,7 @@ Module Checkit {
       Hex m
       Print m=5605
       Print Error=0, ok=False
-      
+
       Print Eval(DataMem, 0)=5605,  Eval(DataMem, 0)
       \\ sub used as Exit here
       Sub Ret()
@@ -585,7 +585,7 @@ Module Checkit {
             Return ExecMem, Address:=Number, Address+1:=Number, Address+2:=Number as Long
             Address+=6
       End Sub
-      
+
 }
 CheckIt
 
@@ -596,17 +596,17 @@ Using a lambda function with closures two buffers (buffers are objects in M2000 
 
 
 ```M2000 Interpreter
- 
+
 Function MyAdd {
       Buffer DataMem as Long*2
       Buffer Code ExecMem as byte*32
       Address=0
       EmbByte(0x31, 0xC0)
-      EmbByteLong(0x3,0x5, DataMem(0)) ' add eax, [DataMem(0)] 
-      EmbByteLong(0x3,0x5, DataMem(1)) ' add eax, [DataMem(1)] 
+      EmbByteLong(0x3,0x5, DataMem(0)) ' add eax, [DataMem(0)]
+      EmbByteLong(0x3,0x5, DataMem(1)) ' add eax, [DataMem(1)]
       EmbLong(0xa3, DataMem(0)) ' mov [DataMem(0)], eax
       Rem :
-      EmbByte(0x31, 0xC0) ' xor eax, eax 
+      EmbByte(0x31, 0xC0) ' xor eax, eax
       Ret() ' Return
       =lambda ExecMem, DataMem (a as double, b as double)-> {
             Return DataMem, 0:=a, 1:=b
@@ -614,7 +614,7 @@ Function MyAdd {
                   Execute Code ExecMem, 0
             }
             If not ok then {
-                  =Uint(Error)   
+                  =Uint(Error)
             }  Else {
                   =Eval(DataMem, 0)
             }
@@ -634,7 +634,7 @@ Function MyAdd {
       Sub EmbByteLong()
             Return ExecMem, Address:=Number, Address+1:=Number, Address+2:=Number as Long
             Address+=6
-      End Sub     
+      End Sub
 }
 \\ Produce a lambda function with machine code inside
 UnsingedAdd=MyAdd()
@@ -653,7 +653,7 @@ import posix
 
 when defined(macosx) or defined(bsd):
   const MAP_ANONYMOUS = 0x1000
-elif defined(solaris): 
+elif defined(solaris):
   const MAP_ANONYMOUS = 0x100
 else:
   var
@@ -687,12 +687,12 @@ echo test(7, 12)
 GP can't peek and poke into memory, but PARI can add in those capabilities via [[#C|C]].
 {{trans|C}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <sys/mman.h>
 #include <string.h>
 #include <pari/pari.h>
- 
+
 int
 test(int a, int b)
 {
@@ -702,7 +702,7 @@ test(int a, int b)
   /* copy code to executable buffer */
   buf = mmap (0,sizeof(code),PROT_READ|PROT_WRITE|PROT_EXEC,
              MAP_PRIVATE|MAP_ANON,-1,0);
- 
+
   memcpy (buf, code, sizeof(code));
   /* run code */
   c = ((int (*) (int, int))buf)(a, b);
@@ -710,7 +710,7 @@ test(int a, int b)
   munmap (buf, sizeof(code));
   return c;
 }
- 
+
 void
 init_auto(void)
 {
@@ -734,8 +734,8 @@ Uses
 
 const
   code : array[0..9] of byte = ($8B, $44, $24, $4, $3, $44, $24, $8, $C3, $00);
-  a :longInt= 12; 
-  b :longInt=  7;  
+  a :longInt= 12;
+  b :longInt=  7;
 type
   tDummyFunc = function(a,b:LongInt):LongInt;cdecl;
 Var
@@ -751,7 +751,7 @@ begin
              -1, // for MAP_ANONYMOUS
              0);
   If P =  Pointer(-1) then
-    Halt(4);                  
+    Halt(4);
 
   for k := 0 to len-1 do
     pChar(p)[k] := char(code[k]);
@@ -812,7 +812,7 @@ integer res
     [64]
         mov rax,[rsp+8]
         add rax,[rsp+16]
-    []  
+    []
         ret
       @@:
         push 12
@@ -862,7 +862,7 @@ interface to the task's 32-bit code.
       # Clean up stack
       72 131 196 16        # add $16, %rsp
 
-      # Return 
+      # Return
       195 )                # ret
    foo (>> 4 P) )
 
@@ -955,12 +955,12 @@ Procedure MachineCodeVirtualAlloc(a,b)
         ProcedureReturn eax_result
     EndIf
 EndProcedure
- 
+
 rv=MachineCodeVirtualAlloc( 7, 12)
 MessageRequester("MachineCodeVirtualAlloc",Str(rv)+Space(50),#PB_MessageRequester_Ok)
- 
-#HEAP_CREATE_ENABLE_EXECUTE=$00040000 
- 
+
+#HEAP_CREATE_ENABLE_EXECUTE=$00040000
+
 Procedure MachineCodeHeapCreate(a,b)
 hHeap=HeapCreate_(#HEAP_CREATE_ENABLE_EXECUTE,?ecode-?scode,?ecode-?scode)
     If(hHeap)
@@ -970,15 +970,15 @@ hHeap=HeapCreate_(#HEAP_CREATE_ENABLE_EXECUTE,?ecode-?scode,?ecode-?scode)
         ProcedureReturn eax_result
     EndIf
 EndProcedure
- 
+
 rv=MachineCodeHeapCreate(7,12)
 MessageRequester("MachineCodeHeapCreate",Str(rv)+Space(50),#PB_MessageRequester_Ok)
 End
- 
+
 ; 8B442404               mov     eax,[esp+4]
 ; 03442408               add     eax,[esp+8]
 ; C20800                 ret     8
- 
+
 DataSection
 scode:
 Data.a $8B,$44,$24,$04,$03,$44,$24,$08,$C2,$08,$00
@@ -1153,7 +1153,7 @@ critcl::cproc runMachineCode {Tcl_Obj* codeObj int a int b} int {
 
     /* copy code to executable buffer */
     buf = mmap(0, (size_t) size, PROT_READ|PROT_WRITE|PROT_EXEC,
-            MAP_PRIVATE|MAP_ANON, -1, 0); 
+            MAP_PRIVATE|MAP_ANON, -1, 0);
     memcpy(buf, code, (size_t) size);
     /* run code */
     result = ((int (*) (int, int)) buf)(a, b);

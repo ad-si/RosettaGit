@@ -11,14 +11,14 @@ tags = []
 +++
 
 {{task|Games}} [[Category:Cellular automata]]
-Assume an array of cells with an initial distribution of live and dead cells, 
+Assume an array of cells with an initial distribution of live and dead cells,
 and imaginary cells off the end of the array having fixed values.
 
 Cells in the next generation of the array are calculated based on the value of the cell and its left and right nearest neighbours in the current generation.
 
 If, in the following table, a live cell is represented by 1 and a dead cell by 0 then to generate the value of the cell at a particular index in the array of cellular values you use the following table:
 
- 0'''0'''0 -> 0  # 
+ 0'''0'''0 -> 0  #
  0'''0'''1 -> 0  #
  0'''1'''0 -> 0  # Dies without enough neighbours
  0'''1'''1 -> 1  # Needs one neighbour to survive
@@ -133,7 +133,7 @@ procedure Cellular_Automata is
       end loop;
       Culture (Culture'Last) := Culture (Culture'Last) and not Left;
    end Step;
-   
+
    procedure Put (Culture : Petri_Dish) is
    begin
       for Index in Culture'Range loop
@@ -160,9 +160,9 @@ end Cellular_Automata;
 ```
 
 
-The implementation defines Petri dish type with Boolean items 
-identifying whether a place is occupied by a living cell. 
-State transition is determined by a simple Boolean expression of three arguments. 
+The implementation defines Petri dish type with Boolean items
+identifying whether a place is occupied by a living cell.
+State transition is determined by a simple Boolean expression of three arguments.
 {{out}}
 
 ```txt
@@ -195,12 +195,12 @@ Generation 9 __##________________
 INT stop generation = 9;
 INT universe width = 20;
 FORMAT alive or dead = $b("#","_")$;
- 
+
 BITS universe := 2r01110110101010100100;
    # universe := BIN ( ENTIER ( random * max int ) ); #
 INT upb universe = bits width;
 INT lwb universe = bits width - universe width + 1;
- 
+
 PROC couple = (BITS parent, INT lwb, upb)BOOL: (
   SHORT INT sum := 0;
   FOR bit FROM lwb TO upb DO
@@ -214,23 +214,23 @@ FOR generation FROM 0 WHILE
          $f(alive or dead)$, []BOOL(universe)[lwb universe:upb universe],
          $l$));
 # WHILE # generation < stop generation DO
-  BITS next universe := 2r0;  
-  
+  BITS next universe := 2r0;
+
   # process the first event horizon manually #
-  IF couple(universe,lwb universe,lwb universe + 1) THEN 
+  IF couple(universe,lwb universe,lwb universe + 1) THEN
     next universe := 2r10
   FI;
-  
+
   # process the middle kingdom in a loop #
-  FOR bit FROM lwb universe + 1 TO upb universe - 1 DO 
+  FOR bit FROM lwb universe + 1 TO upb universe - 1 DO
     IF couple(universe,bit-1,bit+1) THEN
       next universe := next universe OR 2r1
     FI;
     next universe := next universe SHL 1
-  OD; 
+  OD;
 
   # process the last event horizon manually #
-  IF couple(universe, upb universe - 1, upb universe) THEN 
+  IF couple(universe, upb universe - 1, upb universe) THEN
     next universe := next universe OR 2r1
   FI;
   universe := next universe
@@ -267,11 +267,11 @@ Generation 9: __##________________
 INT stop generation = 9;
 INT upb universe = 20;
 FORMAT alive or dead = $b("#","_")$;
- 
+
 BITS bits universe := 2r01110110101010100100;
    # bits universe := BIN ( ENTIER ( random * max int ) ); #
 [upb universe] BOOL universe := []BOOL(bits universe)[bits width - upb universe + 1:];
- 
+
 PROC couple = (REF[]BOOL parent)BOOL: (
   SHORT INT sum := 0;
   FOR bit FROM LWB parent TO UPB parent DO
@@ -286,14 +286,14 @@ FOR generation FROM 0 WHILE
          $l$));
 # WHILE # generation < stop generation DO
   [UPB universe]BOOL next universe;
-  
+
   # process the first event horizon manually #
   next universe[1] := couple(universe[:2]);
-  
+
   # process the middle kingdom in a loop #
-  FOR bit FROM LWB universe + 1 TO UPB universe - 1 DO 
+  FOR bit FROM LWB universe + 1 TO UPB universe - 1 DO
     next universe[bit] := couple(universe[bit-1:bit+1])
-  OD; 
+  OD;
 
   # process the last event horizon manually #
   next universe[UPB universe] := couple(universe[UPB universe - 1: ]);
@@ -413,7 +413,7 @@ BEGIN {
     width = length(initialState)
     delete rules
     delete state
-    
+
     initRules(ruleNum)
     initState(initialState, mark)
     for (g = 0; g < maxGen; g++) {
@@ -604,7 +604,7 @@ FUNCTION life$ (lastGen$)
 			ELSE 'middle
 				neighbors = getNeighbors(MID$(lastGen$, i - 1, 3))
 			END IF
- 
+
 			IF (neighbors = 0) THEN 'dies or stays dead with no neighbors
 				newGen$ = newGen$ + "_"
 			END IF
@@ -769,9 +769,9 @@ goto :nextgen
 ```bbcbasic
       DIM rule$(7)
       rule$() = "0", "0", "0", "1", "0", "1", "1", "0"
-      
+
       now$ = "01110110101010100100"
-      
+
       FOR generation% = 0 TO 9
         PRINT "Generation " ; generation% ":", now$
         next$ = ""
@@ -803,7 +803,7 @@ Generation 9:       00110000000000000000
 
 
 ```befunge
-v                                                                                                         
+v
  " !!! !! ! ! ! !  !  "                                                          ,*25                    <v
  "                    "                                                           ,*25,,,,,,,,,,,,,,,,,,,,<v
  "                    "                                                            ,*25,,,,,,,,,,,,,,,,,,,,<v
@@ -814,10 +814,10 @@ v
  "                    "                                                                 ,*25,,,,,,,,,,,,,,,,,,,,<v
  "                    "                                                                  ,*25,,,,,,,,,,,,,,,,,,,,<v
                                                                       v$<                @,*25,,,,,,,,,,,,,,,,,,,,<
->110p3>:1-10gg" "-4* \:10gg" "-2* \:1+10gg" "-\:54*1+`#v_20p++ :2`#v_ >:4`#v_> >$" "v                     
-                                                                   >:3`#^_v>:6`|                          
-      ^                                                >$$$$320p10g1+:9`v >    >$"!"> 20g10g1+p 20g1+:20p 
-      ^                                                                v_10p10g                           
+>110p3>:1-10gg" "-4* \:10gg" "-2* \:1+10gg" "-\:54*1+`#v_20p++ :2`#v_ >:4`#v_> >$" "v
+                                                                   >:3`#^_v>:6`|
+      ^                                                >$$$$320p10g1+:9`v >    >$"!"> 20g10g1+p 20g1+:20p
+      ^                                                                v_10p10g
                                                                        >                                 ^
 ```
 
@@ -877,8 +877,8 @@ v
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 char trans[] = "___#_##_";
@@ -925,11 +925,11 @@ _##________________
 
 Similar to above, but without a backup string:
 
-```c>#include <stdio.h
+```c
+#include <stdio.h>
 
- 
 char trans[] = "___#_##_";
- 
+
 int evolve(char c[], int len)
 {
 	int i, diff = 0;
@@ -945,11 +945,11 @@ int evolve(char c[], int len)
 #	undef v
 	return diff;
 }
- 
+
 int main()
 {
 	char c[] = "_###_##_#_#_#_#__#__\n";
- 
+
 	do { printf(c + 1); } while (evolve(c + 1, sizeof(c) - 3));
 	return 0;
 }
@@ -961,8 +961,8 @@ int main()
 
 Uses std::bitset for efficient packing of bit values.
 
-```Cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <bitset>
 #include <string>
 
@@ -1021,16 +1021,16 @@ using System.Collections.Generic;
 namespace prog
 {
 	class MainClass
-	{	
+	{
 		const int n_iter = 10;
 		static int[] f = { 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0 };
-		
+
 		public static void Main (string[] args)
 		{
 			for( int i=0; i<f.Length; i++ )
 				Console.Write( f[i]==0 ? "-" : "#" );
-			Console.WriteLine("");			
-			
+			Console.WriteLine("");
+
 			int[] g = new int[f.Length];
 			for( int n=n_iter; n!=0; n-- )
 			{
@@ -1042,15 +1042,15 @@ namespace prog
 				}
 				g[0] = ( (f[0] & f[1]) == 1 ) ? 1 : 0;
 				g[g.Length-1] = ( (f[f.Length-1] & f[f.Length-2]) == 1 ) ? 1 : 0;
-				
+
 				int[] tmp = f;
 				f = g;
 				g = tmp;
-				
+
 				for( int i=0; i<f.Length; i++ )
 					Console.Write( f[i]==0 ? "-" : "#" );
 				Console.WriteLine("");
-			}			
+			}
 		}
 	}
 }
@@ -1078,20 +1078,20 @@ shared object dead extends Cell('_') {
 shared Map<Character, Cell> cellsByCharacter = map { for (cell in `Cell`.caseValues) cell.character->cell };
 
 shared class Automata1D({Cell*} initialCells) {
-	
-	
+
+
 	value permanentFirstCell = initialCells.first else dead;
 	value permanentLastCell = initialCells.last else dead;
-	
+
 	value cells = Array { *initialCells.rest.exceptLast };
-	
+
 	shared Boolean evolve() {
-		
+
 		value newCells = Array {
 			for (index->cell in cells.indexed)
-			let (left = cells[index - 1] else permanentFirstCell, 
+			let (left = cells[index - 1] else permanentFirstCell,
 				right = cells[index + 1] else permanentLastCell,
-				neighbours = [left, right], 
+				neighbours = [left, right],
 				bothAlive = neighbours.every(alive.equals),
 				bothDead = neighbours.every(dead.equals))
 			if (bothAlive)
@@ -1100,28 +1100,28 @@ shared class Automata1D({Cell*} initialCells) {
 			then dead
 			else cell
 		};
-		
+
 		if (newCells == cells) {
 			return false;
 		}
-		
+
 		newCells.copyTo(cells);
 		return true;
 	}
-	
+
 	string => permanentFirstCell.string + "".join(cells) + permanentLastCell.string;
 }
 
-shared Automata1D? automata1d(String string) => 
+shared Automata1D? automata1d(String string) =>
 		let (cells = string.map((Character element) => cellsByCharacter[element]))
-		if (cells.every((Cell? element) => element exists)) 
-		then Automata1D(cells.coalesced) 
+		if (cells.every((Cell? element) => element exists))
+		then Automata1D(cells.coalesced)
 		else null;
 
 shared void run() {
 
 	assert (exists automata = automata1d("__###__##_#_##_###__######_###_#####_#__##_____#_#_#######__"));
-	
+
 	variable value generation = 0;
 	print("generation ``generation`` ``automata``");
 	while (automata.evolve() && generation<10) {
@@ -1222,7 +1222,7 @@ Yet another way, easier to understand
   })
 
 (defn nextgen [gen]
-  (concat [0] 
+  (concat [0]
           (->> gen
                (partition 3 1)
                (map vec)
@@ -1243,114 +1243,114 @@ Yet another way, easier to understand
 
 ```cobol
 
- Identification division.                                        
- Program-id. rc-1d-cell.                                         
- 
- Data division.                                                  
- Working-storage section.                                        
- 
-*> "Constants."                                                  
- 01 max-gens            pic  999  value   9.                     
- 01 state-width         pic   99  value  20.                     
- 01 state-table-init    pic x(20) value ".@@@.@@.@.@.@.@..@..".  
- 01 alive               pic    x  value "@".                     
- 01 dead                pic    x  value ".".                     
- 
-*> The current state.                                            
- 01 state-gen           pic  999  value   0.                     
- 01 state-row.                                                  
-    05 state-row-gen   pic zz9.                                
-    05 filler          pic  xx   value ": ".                   
-    05 state-table.                                            
-        10 state-cells pic   x   occurs 20 times.              
- 
-*> The new state.                                               
- 01 new-state-table.                                            
-    05 new-state-cells pic   x   occurs 20 times.              
- 
-*> Pointer into cell table during generational production.      
- 01 cell-index          pic   99.                               
-    88 at-beginning    value  1.                               
-    88 is-inside       values 2 thru 19.                       
-    88 at-end          value 20.                               
- 
-*> The cell's neighborhood.                         
- 01 neighbor-count-def.                          
+ Identification division.
+ Program-id. rc-1d-cell.
+
+ Data division.
+ Working-storage section.
+
+*> "Constants."
+ 01 max-gens            pic  999  value   9.
+ 01 state-width         pic   99  value  20.
+ 01 state-table-init    pic x(20) value ".@@@.@@.@.@.@.@..@..".
+ 01 alive               pic    x  value "@".
+ 01 dead                pic    x  value ".".
+
+*> The current state.
+ 01 state-gen           pic  999  value   0.
+ 01 state-row.
+    05 state-row-gen   pic zz9.
+    05 filler          pic  xx   value ": ".
+    05 state-table.
+        10 state-cells pic   x   occurs 20 times.
+
+*> The new state.
+ 01 new-state-table.
+    05 new-state-cells pic   x   occurs 20 times.
+
+*> Pointer into cell table during generational production.
+ 01 cell-index          pic   99.
+    88 at-beginning    value  1.
+    88 is-inside       values 2 thru 19.
+    88 at-end          value 20.
+
+*> The cell's neighborhood.
+ 01 neighbor-count-def.
    03 neighbor-count      pic   9.
-     88 is-comfy        value 1.                    
-     88 is-ripe         value 2.                    
- 
- Procedure division.                                
-     Perform Init-state-table.                      
-     Perform max-gens times                         
-         perform Display-row                        
-         perform Next-state                         
-     end-perform.                                   
-     Perform Display-row.                           
-     Stop run.                                      
- 
- Display-row.                                       
-     Move state-gen to state-row-gen.     
-     Display state-row.                   
- 
-*> Determine who lives and who dies.      
- Next-state.                              
-     Add 1 to state-gen.                  
-     Move state-table to new-state-table. 
- 
-     Perform with test after              
-         varying cell-index from 1 by 1   
-         until at-end                     
-         perform Count-neighbors          
-         perform Die-off                             
-         perform New-births                          
-     end-perform                                     
- 
-     move new-state-table to state-table.            
- 
-*> Living cell with wrong number of neighbors...     
- Die-off.                                            
-     if state-cells(cell-index) =                    
-     alive and not is-comfy    
-         then move dead to new-state-cells(cell-index)           
-     end-if                                                      
-     .                                                           
- 
-*> Empty cell with exactly two neighbors are...                  
- New-births.                                                     
+     88 is-comfy        value 1.
+     88 is-ripe         value 2.
+
+ Procedure division.
+     Perform Init-state-table.
+     Perform max-gens times
+         perform Display-row
+         perform Next-state
+     end-perform.
+     Perform Display-row.
+     Stop run.
+
+ Display-row.
+     Move state-gen to state-row-gen.
+     Display state-row.
+
+*> Determine who lives and who dies.
+ Next-state.
+     Add 1 to state-gen.
+     Move state-table to new-state-table.
+
+     Perform with test after
+         varying cell-index from 1 by 1
+         until at-end
+         perform Count-neighbors
+         perform Die-off
+         perform New-births
+     end-perform
+
+     move new-state-table to state-table.
+
+*> Living cell with wrong number of neighbors...
+ Die-off.
+     if state-cells(cell-index) =
+     alive and not is-comfy
+         then move dead to new-state-cells(cell-index)
+     end-if
+     .
+
+*> Empty cell with exactly two neighbors are...
+ New-births.
      if state-cells(cell-index) = dead and is-ripe
-         then move alive to new-state-cells(cell-index)          
-     end-if                                                      
-    .                                                           
-*> How many living neighbors does a cell have?                   
- Count-neighbors.                                                
-     Move 0 to neighbor-count                        
-     if at-beginning or at-end then                              
-         add 1 to neighbor-count                      
-     else                                                        
-       if is-inside and state-cells(cell-index - 1) = alive        
-       then                                                        
-           add 1 to neighbor-count                     
-       end-if                                                      
-       if is-inside and state-cells(cell-index + 1) = alive        
-       then                                                        
-           add 1 to neighbor-count                     
-       end-if                                                       
-     end-if                                                        
-     .                                                             
- 
-*> String is easier to enter, but table is easier to work with,    
-*> so move each character of the initialization string to the      
-*> state table.                                                    
- 
- Init-state-table.                                                 
-     Perform with test after                    
-         varying cell-index from 1 by 1         
-         until at-end                           
-         move state-table-init(cell-index:1)    
-           to state-cells(cell-index)           
+         then move alive to new-state-cells(cell-index)
+     end-if
+    .
+*> How many living neighbors does a cell have?
+ Count-neighbors.
+     Move 0 to neighbor-count
+     if at-beginning or at-end then
+         add 1 to neighbor-count
+     else
+       if is-inside and state-cells(cell-index - 1) = alive
+       then
+           add 1 to neighbor-count
+       end-if
+       if is-inside and state-cells(cell-index + 1) = alive
+       then
+           add 1 to neighbor-count
+       end-if
+     end-if
+     .
+
+*> String is easier to enter, but table is easier to work with,
+*> so move each character of the initialization string to the
+*> state table.
+
+ Init-state-table.
+     Perform with test after
+         varying cell-index from 1 by 1
+         until at-end
+         move state-table-init(cell-index:1)
+           to state-cells(cell-index)
       end-perform
-      .                                                                             
+      .
 
 ```
 
@@ -1398,15 +1398,15 @@ b2c = (b) -> if b then '#' else '.'
 cell_next_gen = (left_alive, me_alive, right_alive) ->
   fingerprint = b2c(left_alive) + b2c(me_alive) + b2c(right_alive)
   fingerprint in survival_scenarios
-  
+
 cells_for_next_gen = (cells) ->
   # This function assumes a finite array, i.e. cells can't be born outside
   # the original array.
   (cell_next_gen(cells[i-1], cells[i], cells[i+1]) for i in [0...cells.length])
-  
+
 display = (cells) ->
   (b2c(is_alive) for is_alive in cells).join ''
-    
+
 simulate = (cells) ->
   while true
     console.log display cells
@@ -1414,7 +1414,7 @@ simulate = (cells) ->
     break if display(cells) == display(new_cells)
     cells = new_cells
   console.log "equilibrium achieved"
-    
+
 simulate (c == '#' for c in ".###.##.#.#.#.#..#..")
 
 ```
@@ -1423,7 +1423,7 @@ simulate (c == '#' for c in ".###.##.#.#.#.#..#..")
 
 ```txt
 
-> coffee cellular_automata.coffee 
+> coffee cellular_automata.coffee
 .###.##.#.#.#.#..#..
 .#.#####.#.#.#......
 ..##...##.#.#.......
@@ -1749,16 +1749,16 @@ def rosettaRule := [
 ].get
 
 ? play("  ### ## # # # #  #   ", rosettaRule, 9, stdout)
-0 |   ### ## # # # #  #   
-1 |   # ##### # # #       
-2 |    ##   ## # #        
-3 |    ##   ### #         
-4 |    ##   # ##          
-5 |    ##    ###          
-6 |    ##    # #          
-7 |    ##     #           
-8 |    ##                 
-9 |    ##                 
+0 |   ### ## # # # #  #
+1 |   # ##### # # #
+2 |    ##   ## # #
+3 |    ##   ### #
+4 |    ##   # ##
+5 |    ##    ###
+6 |    ##    # #
+7 |    ##     #
+8 |    ##
+9 |    ##
 # value: "   ##                 "
 ```
 
@@ -1874,14 +1874,14 @@ defmodule RC do
     next = evolve(list)
     if next == list, do: print(next, gen+1), else: run(next, gen+1)
   end
-  
+
   defp evolve(list), do: evolve(Enum.concat([[0], list, [0]]), [])
-  
+
   defp evolve([a,b,c],      next), do: Enum.reverse([life(a,b,c) | next])
   defp evolve([a,b,c|rest], next), do: evolve([b,c|rest], [life(a,b,c) | next])
-  
+
   defp life(a,b,c), do: (if a+b+c == 2, do: 1, else: 0)
-  
+
   defp print(list, gen) do
     str = "Generation #{gen}: "
     IO.puts Enum.reduce(list, str, fn x,s -> s <> if x==0, do: ".", else: "#" end)
@@ -1931,26 +1931,26 @@ type alias Model = { history : List (List Bool)
                    }
 
 view : Model -> Html Msg
-view model = 
-  let 
-    circleInBox (row,col) value = 
-      if value 
+view model =
+  let
+    circleInBox (row,col) value =
+      if value
       then [ Svg.circle [ r "0.3"
                         , fill ("purple")
                         , cx (toString (toFloat col + 0.5))
                         , cy (toString (toFloat row + 0.5))
-                        ]            
-                        []  
+                        ]
+                        []
            ]
       else []
 
-    showHistory model = 
-      model.history 
+    showHistory model =
+      model.history
         |> reverse
         |> fromList
-        |> mapWithLocation circleInBox 
-        |> flatten 
-        |> concat 
+        |> mapWithLocation circleInBox
+        |> flatten
+        |> concat
   in
     div []
         [ h1 [] [text "One Dimensional Cellular Automata"]
@@ -1964,20 +1964,20 @@ view model =
                            , model.rows |> toString
                            ]
                         )
-              ] 
+              ]
               (showHistory model)
         ]
 
 update : Msg -> Model -> (Model, Cmd Msg)
-update msg model = 
+update msg model =
   if length model.history == model.rows
   then (model, Cmd.none)
   else
     let s1 = model.history |> head |> withDefault []
         s0 = False :: s1
         s2 = append (tail s1 |> withDefault []) [False]
-    
-        gen d0 d1 d2 = 
+
+        gen d0 d1 d2 =
           case (d0,d1,d2) of
             (False,  True,  True) -> True
             ( True, False,  True) -> True
@@ -1987,18 +1987,18 @@ update msg model =
         updatedHistory = map3 gen s0 s1 s2 :: model.history
         updatedModel = {model | history = updatedHistory}
     in (updatedModel, Cmd.none)
-    
+
 
 init : Int -> (Model, Cmd Msg)
-init n = 
+init n =
   let gen1 = fst (step (list n bool) (initialSeed 34))
   in ({ history = [gen1], rows = n, cols= n }, Cmd.none)
 
-type Msg = Tick Time 
+type Msg = Tick Time
 
 subscriptions model = every (0.2 * second) Tick
 
-main = program 
+main = program
          {  init = init 40
          ,  view = view
          ,  update = update
@@ -2048,9 +2048,9 @@ next([_|_]=G) ->
 
 next([],Acc) ->
     lists:reverse(Acc);
-next([0,_],Acc) ->   
+next([0,_],Acc) ->
     next([],[0|Acc]);
-next([1,X],Acc) ->   
+next([1,X],Acc) ->
     next([],[X|Acc]);
 next([0,X,0|T],Acc) ->
     next([X,0|T],[0|Acc]);
@@ -2277,18 +2277,18 @@ class Automaton
   {
     return array.map |Int x, Int i -> Int|
     {
-      if (i == 0) 
+      if (i == 0)
         return ( (x + array[1] == 2) ? 1 : 0)
       else if (i == array.size-1)
         return ( (x + array[-2] == 2) ? 1 : 0)
       else if (x + array[i-1] + array[i+1] == 2)
         return 1
       else
-        return 0      
+        return 0
     }
   }
 
-  public static Void main () 
+  public static Void main ()
   {
     Int[] array := [0,1,1,1,0,1,1,0,1,0,1,0,1,0,1,0,0,1,0,0]
     echo (array.join(""))
@@ -2340,15 +2340,15 @@ ctable rules $68 8 init
 
 ouput
 <lang>
- ### ## # # # #  #  
- # ##### # # #      
-  ##   ## # #       
-  ##   ### #        
-  ##   # ##         
-  ##    ###         
-  ##    # #         
-  ##     #          
-  ##                
+ ### ## # # # #  #
+ # ##### # # #
+  ##   ## # #
+  ##   ### #
+  ##   # ##
+  ##    ###
+  ##    # #
+  ##     #
+  ##
   ##                 ok
 
 ```
@@ -2361,13 +2361,13 @@ ouput
 
 ```fortran
 PROGRAM LIFE_1D
-   
+
   IMPLICIT NONE
 
   LOGICAL :: cells(20) = (/ .FALSE., .TRUE., .TRUE., .TRUE., .FALSE., .TRUE., .TRUE., .FALSE., .TRUE., .FALSE., &
                             .TRUE., .FALSE., .TRUE., .FALSE., .TRUE., .FALSE., .FALSE., .TRUE., .FALSE., .FALSE. /)
   INTEGER :: i
-  
+
   DO i = 0, 9
      WRITE(*, "(A,I0,A)", ADVANCE = "NO") "Generation ", i, ": "
      CALL Drawgen(cells)
@@ -2380,7 +2380,7 @@ CONTAINS
     LOGICAL, INTENT (IN OUT) :: cells(:)
     LOGICAL :: left, centre, right
     INTEGER :: i
-   
+
     left = .FALSE.
     DO i = 1, SIZE(cells)-1
        centre = cells(i)
@@ -2398,7 +2398,7 @@ CONTAINS
   SUBROUTINE Drawgen(cells)
     LOGICAL, INTENT (IN OUT) :: cells(:)
     INTEGER :: i
-   
+
     DO i = 1, SIZE(cells)
        IF (cells(i)) THEN
           WRITE(*, "(A)", ADVANCE = "NO") "#"
@@ -2408,7 +2408,7 @@ CONTAINS
     END DO
     WRITE(*,*)
   END SUBROUTINE Drawgen
-  
+
 END PROGRAM LIFE_1D
 ```
 
@@ -2416,15 +2416,15 @@ END PROGRAM LIFE_1D
 
 ```txt
 
- Generation 0: _###_##_#_#_#_#__#__ 
- Generation 1: _#_#####_#_#_#______ 
- Generation 2: __##___##_#_#_______ 
- Generation 3: __##___###_#________ 
- Generation 4: __##___#_##_________ 
- Generation 5: __##____###_________ 
- Generation 6: __##____#_#_________ 
- Generation 7: __##_____#__________ 
- Generation 8: __##________________ 
+ Generation 0: _###_##_#_#_#_#__#__
+ Generation 1: _#_#####_#_#_#______
+ Generation 2: __##___##_#_#_______
+ Generation 3: __##___###_#________
+ Generation 4: __##___#_##_________
+ Generation 5: __##____###_________
+ Generation 6: __##____#_#_________
+ Generation 7: __##_____#__________
+ Generation 8: __##________________
  Generation 9: __##________________
 ```
 
@@ -2621,8 +2621,8 @@ __##________________
 
 ### Concurrent
 
-Computations run on each cell concurrently.  
-Separate read and write phases.  
+Computations run on each cell concurrently.
+Separate read and write phases.
 Single array of cells.
 
 ```go
@@ -2778,7 +2778,7 @@ main = do
 "__##____#_#_________"
 "__##_____#__________"
 "__##________________"
- 
+
 *Life1D> main
 "__##_##__#____###__#__#_______#_#_##"
 "__#####_______#_#______________#_###"
@@ -2835,12 +2835,12 @@ end
 ```
 
 
-An alternative approach is to represent the automaton as a string.  
-The following solution takes advantage of the implicit type coercions 
-between string and numeric values in Icon and Unicon.  
-It also surrounds the automaton with a border of 'dead' (always 0) cells 
-to eliminate the need to special case the first and last cells 
-in the automaton.  
+An alternative approach is to represent the automaton as a string.
+The following solution takes advantage of the implicit type coercions
+between string and numeric values in Icon and Unicon.
+It also surrounds the automaton with a border of 'dead' (always 0) cells
+to eliminate the need to special case the first and last cells
+in the automaton.
 Although the main procedure displays up to the first 10 generations,
 the evolve procedure fails if a new generation is unchanged from the previous, stopping the generation cycle early.
 
@@ -2851,12 +2851,12 @@ procedure main(A)
   CA := show("0"||A[1]||"0")        # add always dead border cells
   every CA := show(|evolve(CA)\10)  # limit to max of 10 generations
 end
- 
+
 procedure show(ca)
   write(ca[2:-1])                   # omit border cells
   return ca
 end
- 
+
 procedure evolve(CA)
   newCA := repl("0",*CA)
   every newCA[i := 2 to (*CA-1)] := (CA[i-1]+CA[i]+CA[i+1] = 2, "1")
@@ -2942,7 +2942,7 @@ __##________________
 
 ## Java
 
-This example requires a starting generation of at least length two 
+This example requires a starting generation of at least length two
 (which is what you need for anything interesting anyway).
 
 ```java
@@ -2994,7 +2994,7 @@ public class Life{
 
 ```txt
 Generation 0: _###_##_#_#_#_#__#__
-Generation 1: _#_#####_#_#_#______ 
+Generation 1: _#_#####_#_#_#______
 Generation 2: __##___##_#_#_______
 Generation 3: __##___###_#________
 Generation 4: __##___#_##_________
@@ -3006,8 +3006,8 @@ Generation 9: __##________________
 ```
 
 {{trans|C}}
-In this version, <code>b</code> is replaced by a <code>backup</code> 
-which is local to the <code>evolve</code> method, 
+In this version, <code>b</code> is replaced by a <code>backup</code>
+which is local to the <code>evolve</code> method,
 and the <code>evolve</code> method returns a boolean.
 
 ```java
@@ -3062,18 +3062,18 @@ _##________________
 
 ## JavaScript
 
-The example below expects an array of 1s or 0s, as in the example. 
-It also adds dead cells to both ends, 
+The example below expects an array of 1s or 0s, as in the example.
+It also adds dead cells to both ends,
 which aren't included in the returned next generation.
 
-state[i-1] refers to the new cell in question, 
+state[i-1] refers to the new cell in question,
 (old[i] == 1) checks if the old cell was alive.
 
 ```javascript
 function caStep(old) {
   var old = [0].concat(old, [0]); // Surround with dead cells.
   var state = []; // The new state.
-  
+
   for (var i=1; i<old.length-1; i++) {
     switch (old[i-1] + old[i+1]) {
       case 0: state[i-1] = 0; break;
@@ -3129,14 +3129,14 @@ def go: recurse(. as $prev | next | if . == $prev then empty else . end) | pp;
 
 ```sh
 $ jq -c -r -n -f One-dimensional_cellular_automata.jq
- *** ** * * * *  *  
- * ***** * * *      
-  **   ** * *       
-  **   *** *        
-  **   * **         
-  **    ***         
-  **    * *         
-  **     *          
+ *** ** * * * *  *
+ * ***** * * *
+  **   ** * *
+  **   *** *
+  **   * **
+  **    ***
+  **    * *
+  **     *
   **
 ```
 
@@ -3315,7 +3315,7 @@ for j =1 to 20
                                         '  .... & use it to index into rule$ to find appropriate new value
         state$ =state$ +mid$( rule$, vNHood +1, 1)
     next k
-    state$ =state$ +"0" 
+    state$ =state$ +"0"
 
 next j
 
@@ -3431,20 +3431,20 @@ Output( f, 0 )
 for l = 1, num_iterations do
     local g = {}
     for i = 2, #f-1 do
-        if f[i-1] + f[i+1] == 1 then 
+        if f[i-1] + f[i+1] == 1 then
             g[i] = f[i]
         elseif f[i] == 0 and f[i-1] + f[i+1] == 2 then
             g[i] = 1
         else
-            g[i] = 0 
+            g[i] = 0
         end
     end
     if f[1]  == 1 and f[2]    == 1 then g[1]  = 1 else g[1]  = 0 end
-    if f[#f] == 1 and f[#f-1] == 1 then g[#f] = 1 else g[#f] = 0 end        
+    if f[#f] == 1 and f[#f-1] == 1 then g[#f] = 1 else g[#f] = 0 end
     f, g = g, f
 
     Output( f, l )
-end 
+end
 ```
 
 {{out}}
@@ -3526,7 +3526,7 @@ for(`j',1,10,
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 Built-in function:
 
 ```Mathematica
@@ -3569,7 +3569,7 @@ function one_dim_cell_automata(v,n)
 	n = n-1;
 	v = filter([1,1,1],1,[0,v,0]);
 	v = v(3:end)==2;
-   end; 
+   end;
 end
 ```
 
@@ -3596,8 +3596,8 @@ __##________________
 =={{header|Modula-3}}==
 {{trans|Ada}}
 
-Modula-3 provides a module <code>Word</code> for doing bitwise operations, 
-but it segfaults when trying to use <code>BOOLEAN</code> types, 
+Modula-3 provides a module <code>Word</code> for doing bitwise operations,
+but it segfaults when trying to use <code>BOOLEAN</code> types,
 so we use <code>INTEGER</code> instead.
 
 ```modula3
@@ -3605,10 +3605,10 @@ MODULE Cell EXPORTS Main;
 
 IMPORT IO, Fmt, Word;
 
-VAR culture := ARRAY [0..19] OF INTEGER {0, 1, 1, 1, 
-                                         0, 1, 1, 0, 
-                                         1, 0, 1, 0, 
-                                         1, 0, 1, 0, 
+VAR culture := ARRAY [0..19] OF INTEGER {0, 1, 1, 1,
+                                         0, 1, 1, 0,
+                                         1, 0, 1, 0,
+                                         1, 0, 1, 0,
                                          0, 1, 0, 0};
 
 PROCEDURE Step(VAR culture: ARRAY OF INTEGER) =
@@ -3618,7 +3618,7 @@ PROCEDURE Step(VAR culture: ARRAY OF INTEGER) =
     FOR i := FIRST(culture) TO LAST(culture) - 1 DO
       right := culture[i + 1];
       this := culture[i];
-      culture[i] := 
+      culture[i] :=
           Word.Or(Word.And(this, Word.Xor(left, right)), Word.And(Word.Not(this), Word.And(left, right)));
       left := this;
     END;
@@ -3671,26 +3671,26 @@ Generation 9 __##________________
 ```MontiLang
 30 VAR length .
 35 VAR height .
-FOR length 0 ENDFOR 1 0 ARR VAR list . 
-length 1 - VAR topLen . 
-FOR topLen 0 ENDFOR 1 ARR VAR topLst .  
+FOR length 0 ENDFOR 1 0 ARR VAR list .
+length 1 - VAR topLen .
+FOR topLen 0 ENDFOR 1 ARR VAR topLst .
 
 DEF getNeighbors
-    1 - VAR tempIndex . 
-    GET tempIndex SWAP 
+    1 - VAR tempIndex .
+    GET tempIndex SWAP
     tempIndex 1 + VAR tempIndex .
-    GET tempIndex SWAP 
+    GET tempIndex SWAP
     tempIndex 1 + VAR tempIndex .
     GET tempIndex SWAP .
     FOR 3 TOSTR ROT ENDFOR
-    FOR 2 SWAP + ENDFOR  
+    FOR 2 SWAP + ENDFOR
 ENDDEF
 
 DEF printArr
     LEN 1 - VAR stLen .
     0 VAR j .
     FOR stLen
-        GET j 
+        GET j
         TOSTR OUT .
         j 1 + VAR j .
     ENDFOR
@@ -3701,9 +3701,9 @@ FOR height
     FOR length 0 ENDFOR ARR VAR next .
     1 VAR i .
     FOR length
-        list i getNeighbors VAR last . 
+        list i getNeighbors VAR last .
         i 1 - VAR ind .
-        last |111| == 
+        last |111| ==
         IF : .
             next 0 INSERT ind
         ENDIF
@@ -3744,7 +3744,7 @@ FOR height
         ENDIF
         clear
         i 1 + VAR i .
-    ENDFOR 
+    ENDFOR
     next printArr .
     next 0 ADD APPEND . VAR list .
 ENDFOR
@@ -3799,7 +3799,7 @@ proc neighbours(map: BoolArray, i: int): int =
 proc print(map: BoolArray, symbols: Symbols) =
   for i in map: write(stdout, symbols[i])
   write(stdout, "\l")
- 
+
 proc randomMap: BoolArray =
   randomize()
   for i in mitems(result): i = rand([true, false])
@@ -3812,7 +3812,7 @@ const
   T = true
   F = false
 
-var map = 
+var map =
   [F, T, T, T, F, T, T, F, T, F, T, F, T, F, T,
     F, F, T, F, F, F, F, F, F, F, F, F, F, F, F]
 
@@ -3856,7 +3856,7 @@ __##__________________________
 const
   s_init: string = "_###_##_#_#_#_#__#__"
   arrLen: int = 20
-  
+
 var q0: string = s_init & repeatChar(arrLen-20,'_')
 var q1: string = q0
 
@@ -3865,7 +3865,7 @@ proc life(s:string): char =
    if len(normalize(str)) == 2:      # normalize eliminates underscores
       return '#'
    return '_'
-   
+
 proc evolve(q: string): string =
    result = repeatChar(arrLen,'_')
    #result[0] = '_'
@@ -3904,7 +3904,7 @@ __##________________
 proc cell_automata =
     proc evolve_into(X, T : var string) =
         for i in X.low..X.high:
-            let 
+            let
                 alive = X[i] == 'o'
                 left  = if i == X.low:  false else: X[i - 1] == 'o'
                 right = if i == X.high: false else: X[i + 1] == 'o'
@@ -3962,7 +3962,7 @@ let print_g g =
 ```
 
 
-put the code above in a file named "life.ml", 
+put the code above in a file named "life.ml",
 and then use it in the ocaml toplevel like this:
 
 <pre style="height:48ex;overflow:scroll">
@@ -4005,14 +4005,14 @@ Generation 9: __##________________
 : nextGen( l )
 | i s |
    l byteSize dup ->s String newSize
-   s loop: i [ 
+   s loop: i [
       i 1 if=: [ 0 ] else: [ i 1- l byteAt '#' = ]
-      i l byteAt '#' = + 
-      i s if=: [ 0 ] else: [ i 1+ l byteAt '#' = ] + 
+      i l byteAt '#' = +
+      i s if=: [ 0 ] else: [ i 1+ l byteAt '#' = ] +
       2 if=: [ '#' ] else: [ '_' ] over add
       ]
 ;
- 
+
 : gen( l n -- )
     l dup .cr #[ nextGen dup .cr ] times( n ) drop ;
 ```
@@ -4103,9 +4103,9 @@ Gen. 9: __##________________
 
 ## PARI/GP
 
-This version defines the fixed cells to the left and right as dead; 
-of course other versions are possible.  
-This function generates one generation from a previous one, 
+This version defines the fixed cells to the left and right as dead;
+of course other versions are possible.
+This function generates one generation from a previous one,
 passed as a 0-1 vector.
 
 ```parigp
@@ -4122,7 +4122,7 @@ cur = [0,1,1,1,0,1,1,0,1,0,1,0,1,0,1,0,0,1,0,0]; for(n=0, 9, print(cur); cur = s
 
 
 
-###  Output 
+###  Output
 
 <lang>
 [0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0]
@@ -4175,7 +4175,7 @@ Begin
 end;
 
 procedure NextRow(row:pByteArray;MaxIdx:NativeInt);
-//compute next row in place by the using a small storage for the 
+//compute next row in place by the using a small storage for the
 //2 values, that would otherwise be overridden
 var
   leftValue,Value: NativeInt;
@@ -4289,11 +4289,11 @@ __##________________
 ## Perl 6
 
 {{works with|rakudo|2014-02-27}}
-We'll make a general algorithm capable of computing any cellular automata 
-as defined by [[wp:Stephen Wolfram|Stephen Wolfram]]'s 
-famous book ''[[wp:A new kind of Science|A new kind of Science]]''.  
-We will take the liberty of wrapping the array of cells 
-as it does not affect the result much 
+We'll make a general algorithm capable of computing any cellular automata
+as defined by [[wp:Stephen Wolfram|Stephen Wolfram]]'s
+famous book ''[[wp:A new kind of Science|A new kind of Science]]''.
+We will take the liberty of wrapping the array of cells
+as it does not affect the result much
 and it makes the implementation a lot easier.
 
 
@@ -4302,11 +4302,11 @@ class Automaton {
     has $.rule;
     has @.cells;
     has @.code = $!rule.fmt('%08b').flip.comb».Int;
- 
+
     method gist { "|{ @!cells.map({+$_ ?? '#' !! ' '}).join }|" }
- 
+
     method succ {
-        self.new: :$!rule, :@!code, :cells( 
+        self.new: :$!rule, :@!code, :cells(
             @!code[
                     4 «*« @!cells.rotate(-1)
                 »+« 2 «*« @!cells
@@ -4326,13 +4326,13 @@ my Automaton $a .= new:
 say $a++ for ^10;
 
 
-# Rule 104 is not particularly interesting so here is [[wp:Rule 90|Rule 90]], 
+# Rule 104 is not particularly interesting so here is [[wp:Rule 90|Rule 90]],
 # which shows a [[wp:Sierpinski Triangle|Sierpinski Triangle]].
 
 say '';
 @padding = 0 xx 25;
 $a = Automaton.new: :rule(90), :cells(flat @padding, 1, @padding);
- 
+
 say $a++ for ^20;
 ```
 
@@ -4389,7 +4389,7 @@ while 1 do
     ?s
     for i=2 to length(s)-1 do
         curr = s[i]
-        if prev=s[i+1] 
+        if prev=s[i+1]
         and (curr='#' or prev='#') then
             s[i] = 130-curr
             toggled = 1
@@ -4608,17 +4608,17 @@ true .
 
 ```PureBasic
 EnableExplicit
-Dim cG.i(21) 
+Dim cG.i(21)
 Dim nG.i(21)
 Define.i n, Gen
- 
+
 DataSection
   Data.i 0,1,1,1,0,1,1,0,1,0,1,0,1,0,1,0,0,1,0,0
 EndDataSection
 For n=1 To 20
   Read.i cG(n)
 Next
- 
+
 OpenConsole()
 Repeat
   Print("Generation "+Str(Gen)+": ")
@@ -4631,12 +4631,12 @@ Repeat
     If (cG(n) And (cG(n-1) XOr cg(n+1))) Or (Not cG(n) And (cG(n-1) And cg(n+1)))
      nG(n)=1
    Else
-     nG(n)=0   
-   EndIf    
-  Next 
+     nG(n)=0
+   EndIf
+  Next
   CopyArray(nG(), cG())
 Until Gen > 9
- 
+
 PrintN("Press any key to exit"): Repeat: Until Inkey() <> ""
 ```
 
@@ -4747,7 +4747,7 @@ This example makes use of the observation that a cell is alive in the next gener
 	gen = [0] + gen + [0]
 	gen = [sum(gen[m:m+3]) == 2 for m in range(len(gen)-2)]
 
-	
+
 _###_##_#_#_#_#__#__
 _#_#####_#_#_#______
 __##___##_#_#_______
@@ -4758,7 +4758,7 @@ __##____#_#_________
 __##_____#__________
 __##________________
 __##________________
->>> 
+>>>
 ```
 
 
@@ -4960,56 +4960,56 @@ if __name__ == '__main__':
 
 ```txt
 Rule 104:
-    █  █  ████  ██    █   █      █ █ █ ██    █████ ██  ██  █ ██ 
-          █  █  ██                █ █ ███    █   ████  ██   ███ 
-                ██                 █ ██ █        █  █  ██   █ █ 
-                ██                  ████               ██    █  
-                ██                  █  █               ██       
-                ██                                     ██       
-                ██                                     ██       
-                ██                                     ██       
-                ██                                     ██       
-                ██                                     ██       
-                ██                                     ██       
-                ██                                     ██       
-                ██                                     ██       
-                ██                                     ██       
-                ██                                     ██       
-                ██                                     ██       
+    █  █  ████  ██    █   █      █ █ █ ██    █████ ██  ██  █ ██
+          █  █  ██                █ █ ███    █   ████  ██   ███
+                ██                 █ ██ █        █  █  ██   █ █
+                ██                  ████               ██    █
+                ██                  █  █               ██
+                ██                                     ██
+                ██                                     ██
+                ██                                     ██
+                ██                                     ██
+                ██                                     ██
+                ██                                     ██
+                ██                                     ██
+                ██                                     ██
+                ██                                     ██
+                ██                                     ██
+                ██                                     ██
 Rule 30:
-                               █                                
-                              ███                               
-                             ██  █                              
-                            ██ ████                             
-                           ██  █   █                            
-                          ██ ████ ███                           
-                         ██  █    █  █                          
-                        ██ ████  ██████                         
-                       ██  █   ███     █                        
-                      ██ ████ ██  █   ███                       
-                     ██  █    █ ████ ██  █                      
-                    ██ ████  ██ █    █ ████                     
-                   ██  █   ███  ██  ██ █   █                    
-                  ██ ████ ██  ███ ███  ██ ███                   
-                 ██  █    █ ███   █  ███  █  █                  
-                ██ ████  ██ █  █ █████  ███████                 
+                               █
+                              ███
+                             ██  █
+                            ██ ████
+                           ██  █   █
+                          ██ ████ ███
+                         ██  █    █  █
+                        ██ ████  ██████
+                       ██  █   ███     █
+                      ██ ████ ██  █   ███
+                     ██  █    █ ████ ██  █
+                    ██ ████  ██ █    █ ████
+                   ██  █   ███  ██  ██ █   █
+                  ██ ████ ██  ███ ███  ██ ███
+                 ██  █    █ ███   █  ███  █  █
+                ██ ████  ██ █  █ █████  ███████
 Rule 110:
-█  █  ██ ██  ██  █ █  ██  ███ █ █ ███     ██ ██    █    █   █   
-  ██ ██████ ███ ████ ███ ██ ███████ █    ██████   ██   ██  ██   
- █████    ███ ███  ███ ██████     ███   ██    █  ███  ███ ███   
- █   █   ██ ███ █ ██ ███    █    ██ █  ███   ██ ██ █ ██ ███ █   
- █  ██  █████ ████████ █   ██   █████ ██ █  █████████████ ███   
- █ ███ ██   ███      ███  ███  ██   ██████ ██           ███ █   
- ███ ████  ██ █     ██ █ ██ █ ███  ██    ████          ██ ███   
- █ ███  █ █████    ████████████ █ ███   ██  █         █████ █   
- ███ █ ████   █   ██          █████ █  ███ ██        ██   ███   
- █ █████  █  ██  ███         ██   ███ ██ ████       ███  ██ █   
- ███   █ ██ ███ ██ █        ███  ██ ██████  █      ██ █ █████   
- █ █  ███████ ██████       ██ █ █████    █ ██     ███████   █   
- ███ ██     ███    █      ███████   █   █████    ██     █  ██   
- █ ████    ██ █   ██     ██     █  ██  ██   █   ███    ██ ███   
- ███  █   █████  ███    ███    ██ ███ ███  ██  ██ █   █████ █   
- █ █ ██  ██   █ ██ █   ██ █   █████ ███ █ ███ █████  ██   ███   
+█  █  ██ ██  ██  █ █  ██  ███ █ █ ███     ██ ██    █    █   █
+  ██ ██████ ███ ████ ███ ██ ███████ █    ██████   ██   ██  ██
+ █████    ███ ███  ███ ██████     ███   ██    █  ███  ███ ███
+ █   █   ██ ███ █ ██ ███    █    ██ █  ███   ██ ██ █ ██ ███ █
+ █  ██  █████ ████████ █   ██   █████ ██ █  █████████████ ███
+ █ ███ ██   ███      ███  ███  ██   ██████ ██           ███ █
+ ███ ████  ██ █     ██ █ ██ █ ███  ██    ████          ██ ███
+ █ ███  █ █████    ████████████ █ ███   ██  █         █████ █
+ ███ █ ████   █   ██          █████ █  ███ ██        ██   ███
+ █ █████  █  ██  ███         ██   ███ ██ ████       ███  ██ █
+ ███   █ ██ ███ ██ █        ███  ██ ██████  █      ██ █ █████
+ █ █  ███████ ██████       ██ █ █████    █ ██     ███████   █
+ ███ ██     ███    █      ███████   █   █████    ██     █  ██
+ █ ████    ██ █   ██     ██     █  ██  ██   █   ███    ██ ███
+ ███  █   █████  ███    ███    ██ ███ ███  ██  ██ █   █████ █
+ █ █ ██  ██   █ ██ █   ██ █   █████ ███ █ ███ █████  ██   ███
 ```
 
 
@@ -5059,16 +5059,16 @@ for (i in 1:maxgenerations) {
 
 ```txt
 
-  1 _##_____####_#___#_#__ 
-  2 _##_____#__##_____#___ 
-  3 _##________##_________ 
-  4 _##________##_________ 
-  5 _##________##_________ 
-  6 _##________##_________ 
-  7 _##________##_________ 
-  8 _##________##_________ 
-  9 _##________##_________ 
- 10 _##________##_________ 
+  1 _##_____####_#___#_#__
+  2 _##_____#__##_____#___
+  3 _##________##_________
+  4 _##________##_________
+  5 _##________##_________
+  6 _##________##_________
+  7 _##________##_________
+  8 _##________##_________
+  9 _##________##_________
+ 10 _##________##_________
 
 ```
 
@@ -5108,7 +5108,7 @@ for (i in 1:maxgenerations) {
 ```
 
 
-Below is an alternative implementation using graphical output in the Racket REPL. 
+Below is an alternative implementation using graphical output in the Racket REPL.
 It works with DrRacket and Emacs + Geiser.
 
 ```racket
@@ -5116,7 +5116,7 @@ It works with DrRacket and Emacs + Geiser.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Simulation of cellular automata, as described by Stephen Wolfram in his 1983 paper.
-;; Uses Racket's inline image display capability for visual presentation	 
+;; Uses Racket's inline image display capability for visual presentation
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require racket/draw)
@@ -5138,7 +5138,7 @@ It works with DrRacket and Emacs + Geiser.
   (take (drop (append '(0) prev-row '(0)) nth) 3))
 
 (define (automaton-to-bits n)
-  (reverse (map (λ (y) (if (zero? (bitwise-and y n)) 0 1)) 
+  (reverse (map (λ (y) (if (zero? (bitwise-and y n)) 0 1))
 		(map (λ (x) (expt 2 x)) (range 0 8)))))
 
 (define (get-rules bits)
@@ -5223,7 +5223,7 @@ If, in the following table, a live cell is represented by 1 and a
 dead cell by 0 then to generate the value of the cell at a particular
 index in the array of cellular values you use the following table:
 
-000 -> 0  # 
+000 -> 0  #
 001 -> 0  #
 010 -> 0  # Dies without enough neighbours
 011 -> 1  # Needs one neighbour to survive
@@ -5240,52 +5240,52 @@ The first word, `string,` inlines a string to `here`. I'll use
 this to setup the initial input.
 
 ~~~
-:string, (s-) [ , ] s:for-each #0 , ; 
+:string, (s-) [ , ] s:for-each #0 , ;
 ~~~
 
 The next two lines setup an initial generation and a buffer for
-the evolved generation. In this case, `This` is the current 
+the evolved generation. In this case, `This` is the current
 generation and `Next` reflects the next step in the evolution.
 
 ~~~
-'This d:create 
-  '.###.##.#.#.#.#..#.. string, 
- 
-'Next d:create 
-  '.................... string, 
+'This d:create
+  '.###.##.#.#.#.#..#.. string,
+
+'Next d:create
+  '.................... string,
 ~~~
 
 I use `display` to show the current generation.
 
 ~~~
-:display (-) 
-  &This s:put nl ; 
+:display (-)
+  &This s:put nl ;
 ~~~
 
 As might be expected, `update` copies the `Next` generation to
 the `This` generation, setting things up for the next cycle.
 
 ~~~
-:update (-) 
-  &Next &This dup s:length copy ; 
+:update (-)
+  &Next &This dup s:length copy ;
 ~~~
 
 The word `group` extracts a group of three cells. This data will
 be passed to `evolve` for processing.
 
 ~~~
-:group (a-nnn) 
-  [ fetch ] 
-  [ n:inc fetch ] 
-  [ n:inc n:inc fetch ] tri ; 
+:group (a-nnn)
+  [ fetch ]
+  [ n:inc fetch ]
+  [ n:inc n:inc fetch ] tri ;
 ~~~
 
 I use `evolve` to decide how a cell should change, based on its
 initial state with relation to its neighbors.
 
-In the prior implementation this part was much more complex as I 
-tallied things up and had separate conditions for each combination. 
-This time I take advantage of the fact that only cells with two 
+In the prior implementation this part was much more complex as I
+tallied things up and had separate conditions for each combination.
+This time I take advantage of the fact that only cells with two
 neighbors will be alive in the next generation. So the process is:
 
 - take the data from `group`
@@ -5295,25 +5295,25 @@ neighbors will be alive in the next generation. So the process is:
 - otherwise it'll be dead
 
 ~~~
-:evolve (nnn-c) 
-  [ $# eq? ] tri@ + + 
-  #-2 eq? [ $# ] [ $. ] choose ; 
+:evolve (nnn-c)
+  [ $# eq? ] tri@ + +
+  #-2 eq? [ $# ] [ $. ] choose ;
 ~~~
 
 For readability I separated out the next few things. `at` takes an
 index and returns the address in `This` starting with the index.
 
 ~~~
-:at (n-na) 
-  &This over + ; 
+:at (n-na)
+  &This over + ;
 ~~~
 
 The `record` word adds the evolved value to a buffer. In this case
 my `generation` code will set the buffer to `Next`.
 
 ~~~
-:record (c-) 
-  buffer:add n:inc ; 
+:record (c-)
+  buffer:add n:inc ;
 ~~~
 
 And now to tie it all together. Meet `generation`, the longest bit
@@ -5333,20 +5333,20 @@ of code in this sample. It has several bits:
 - copy `Next` to `This` using `update`.
 
 ~~~
-:generation (-) 
-  [ &Next buffer:set 
-    #-1 &This s:length 
-    [ at group evolve record ] times drop 
-    update 
-  ] buffer:preserve ; 
+:generation (-)
+  [ &Next buffer:set
+    #-1 &This s:length
+    [ at group evolve record ] times drop
+    update
+  ] buffer:preserve ;
 ~~~
 
 The last bit is a helper. It takes a number of generations and displays
 the state, then runs a `generation`.
 
 ~~~
-:generations (n-) 
-  [ display generation ] times ; 
+:generations (n-)
+  [ display generation ] times ;
 ~~~
 
 And a text. The output should be:
@@ -5363,7 +5363,7 @@ And a text. The output should be:
     ..##................
 
 ~~~
-#10 generations 
+#10 generations
 ~~~
 ```
 
@@ -5378,19 +5378,19 @@ And a text. The output should be:
 
 rule = ["0", "0", "0", "1", "0", "1", "1", "0"]
 now = "01110110101010100100"
- 
+
 for generation = 0 to 9
     see "generation " + generation + ": " + now + nl
     nxt = ""
     for cell = 1 to len(now)
         str = "bintodec(" + '"' +substr("0"+now+"0", cell, 3) + '"' + ")"
-        eval("p=" + str) 
+        eval("p=" + str)
         nxt = nxt + rule[p+1]
-    next 
+    next
     temp = nxt
     nxt = now
     now = temp
-next 
+next
 
 func bintodec(bin)
      binsum = 0
@@ -5508,13 +5508,13 @@ fn main() {
 ```scala
 def cellularAutomata(s: String) = {
   def it = Iterator.iterate(s) ( generation =>
-    ("_%s_" format generation).iterator 
-    sliding 3 
-    map (_ count (_ == '#')) 
-    map Map(2 -> "#").withDefaultValue("_") 
+    ("_%s_" format generation).iterator
+    sliding 3
+    map (_ count (_ == '#'))
+    map Map(2 -> "#").withDefaultValue("_")
     mkString
   )
-  
+
   (it drop 1) zip it takeWhile Function.tupled(_ != _) map (_._2) foreach println
 }
 ```
@@ -5593,7 +5593,7 @@ A graphical cellular automaton can be found [http://seed7.sourceforge.net/algori
 $ include "seed7_05.s7i";
 
 const string: start is "_###_##_#_#_#_#__#__";
- 
+
 const proc: main is func
   local
     var string: g0 is start;
@@ -5646,14 +5646,14 @@ __##________________
 ;
 
 main(args(2)) :=
-    run(args[1], stringToInt(args[2])) when size(args) = 2 
+    run(args[1], stringToInt(args[2])) when size(args) = 2
 else
     "Usage error: exec <initialCells> <generations>";
 
 stringToCells(string(1))[i] := 0 when string[i] = '_' else 1;
-cellsToString(cells(1))[i] := '#' when cells[i] = 1 else '_'; 
+cellsToString(cells(1))[i] := '#' when cells[i] = 1 else '_';
 
-run(cellsString(1), generations) := 
+run(cellsString(1), generations) :=
         runHelper(stringToCells(cellsString), generations, cellsString);
 
 runHelper(cells(1), generations, result(1)) :=
@@ -5662,10 +5662,10 @@ runHelper(cells(1), generations, result(1)) :=
     in
         result when generations = 0
     else
-        runHelper(nextCells, generations - 1, 
+        runHelper(nextCells, generations - 1,
                   result ++ "\n" ++ cellsToString(nextCells));
 
-step(cells(1))[i] := 
+step(cells(1))[i] :=
     let
         left := cells[i-1] when i > 1 else 0;
         right := cells[i + 1] when i < size(cells) else 0;
@@ -5810,7 +5810,7 @@ proc sum {a i} {
     set start [expr {$i - 1 < 0 ? 0 : $i - 1}]
     set end [expr {$i + 1 >= [llength $a] ? $i : $i + 1}]
     for {set j $start} {$j <= $end} {incr j} {
-        incr sum [lindex $a $j]        
+        incr sum [lindex $a $j]
     }
     return $sum
 }
@@ -5880,7 +5880,7 @@ output:
 ## Vedit macro language
 
 
-This implementation writes the calculated patterns into an edit buffer, where the results can viewed and saved into a file if required. The edit buffer also acts as storage during calculations. 
+This implementation writes the calculated patterns into an edit buffer, where the results can viewed and saved into a file if required. The edit buffer also acts as storage during calculations.
 
 ```vedit
 IT("Gen 0: ..###.##.#.#.#.#..#.....")     // initial pattern

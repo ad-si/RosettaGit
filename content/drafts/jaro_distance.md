@@ -10,11 +10,11 @@ categories = []
 tags = []
 +++
 
-{{task}} 
+{{task}}
 
-The Jaro distance is a measure of similarity between two strings. 
+The Jaro distance is a measure of similarity between two strings.
 
-The higher the Jaro distance for two strings is, the more similar the strings are. 
+The higher the Jaro distance for two strings is, the more similar the strings are.
 
 The score is normalized such that   '''0'''   equates to no similarity and   '''1'''   is an exact match.
 
@@ -38,7 +38,7 @@ Where:
 Two characters from   <math>s_1</math>   and   <math>s_2</math>   respectively, are considered ''matching'' only if they are the same and not farther than   <math>\left\lfloor\frac{\max(|s_1|,|s_2|)}{2}\right\rfloor-1</math>.
 
 Each character of   <math>s_1</math>   is compared with all its matching
-characters in   <math>s_2</math>. 
+characters in   <math>s_2</math>.
 
 The number of matching (but different sequence order) characters
 divided by 2 defines the number of ''transpositions''.
@@ -111,24 +111,24 @@ szString3A:           .asciz  "DICKSONX"
 szString4:           .asciz   "JELLYFISH"
 szString4A:           .asciz  "SMELLYFISH"
 /* UnInitialized data */
-.bss 
+.bss
 iTabString1:        .skip 4 * SIZESTRING
 iTabString2:        .skip 4 * SIZESTRING
 sBuffer:    .skip    BUFFERSIZE
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                                               @ entry of program
 
     ldr r0,iAdrszString1                            @ address string 1
     ldr r1,iAdrszString1A                           @ address string 2
     bl preparation                                  @ compute jaro distance
-    
+
     ldr r0,iAdrszString2                            @ address string 1
     ldr r1,iAdrszString2A                           @ address string 2
     bl preparation                                  @ compute jaro distance
-    
+
     ldr r0,iAdrszString3                            @ address string 1
     ldr r1,iAdrszString3A                           @ address string 2
     bl preparation                                  @ compute jaro distance
@@ -157,14 +157,14 @@ iAdrszString3A:           .int szString3A
 iAdrszString4:           .int szString4
 iAdrszString4A:           .int szString4A
 /******************************************************************/
-/*     preparation compute                                       */ 
+/*     preparation compute                                       */
 /******************************************************************/
 /* r0 contains the address of the first string */
 /* r1 contains the address of the second string */
 preparation:
     push {r2,lr}                                   @ save  registers
     mov r2,r0                                      @ save first address
-    ldr r0,iAdrszMessDeb                           @ display the two strings 
+    ldr r0,iAdrszMessDeb                           @ display the two strings
     bl affichageMess
     mov r0,r2
     bl affichageMess
@@ -175,17 +175,17 @@ preparation:
     mov r0,r2                                       @ address string 1
                                                     @ and r1 contains address string 2
     bl jaroDistance                                 @ compute jaro distance
-    
+
     @ conversion register to string
-    ldr r1,iAdrsMessValeur                
+    ldr r1,iAdrsMessValeur
     bl conversion10                                  @ conversion register to string
     ldr r0,iAdrszMessResult
     bl affichageMess                                 @ display message
 100:
-    pop {r2,lr}                                      @ restaur registers  
+    pop {r2,lr}                                      @ restaur registers
     bx lr                                            @ return
 /******************************************************************/
-/*     Compute Jaro distance                                      */ 
+/*     Compute Jaro distance                                      */
 /******************************************************************/
 /* r0 contains the address of the first string */
 /* r1 contains the address of the second string */
@@ -222,7 +222,7 @@ jaroDistance:
     mov r11,#0                                      @ match counter
     mov r2,#0                                       @ index loop
 
-2:                                                  @ loop match 
+2:                                                  @ loop match
     subs r7,r2,r3
     movlt r7,#0                                     @ compute start
     add r8,r2,r3
@@ -239,12 +239,12 @@ jaroDistance:
     cmp r9,r10
     bne 4f                                           @ not equal
 
-    ldr r10,iadriTabString2                           @ match  
-    mov r9,#1                                         @ store 1 in two tables 
+    ldr r10,iadriTabString2                           @ match
+    mov r9,#1                                         @ store 1 in two tables
     str r9,[r10,r7,lsl #2]
     ldr r10,iadriTabString1
     str r9,[r10,r2,lsl #2]
-    add r11,#1                                        @ increment counter match 
+    add r11,#1                                        @ increment counter match
     b 5f                                             @ end loop 2
 4:
     add r7,#1                                         @ following character string 2
@@ -277,7 +277,7 @@ jaroDistance:
     ldrb r9,[r6,r2]                                    @ compare characters
     ldrb r10,[r1,r3]
     cmp r9,r10
-    addne r7,#1                                        @ not equals add 1 to counter 
+    addne r7,#1                                        @ not equals add 1 to counter
 
     add r3,#1                                          @ following characters string 2
 8:
@@ -293,7 +293,7 @@ jaroDistance:
     add r1,r4,#1                                       @ size string 1
     bl division
     mov r8,r2
-    mov r0,r9                                          @ match 
+    mov r0,r9                                          @ match
     add r1,r5,#1                                       @ size string 2
     bl division
     add r8,r2
@@ -306,38 +306,38 @@ jaroDistance:
     bl division
     mov r0,r2                                          @ return value
 100:
-    pop {r1-r11,lr}                                    @ restaur registers  
+    pop {r1-r11,lr}                                    @ restaur registers
     bx lr                                              @ return
 iadriTabString1:      .int iTabString1
 iadriTabString2:      .int iTabString2
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                           @ save  registres
-    mov r2,#0                                       @ counter length 
-1:                                                  @ loop length calculation 
-    ldrb r1,[r0,r2]                                 @ read octet start position + index 
-    cmp r1,#0                                       @ if 0 its over 
-    addne r2,r2,#1                                  @ else add 1 in the length 
-    bne 1b                                          @ and loop 
-                                                    @ so here r2 contains the length of the message 
-    mov r1,r0                                       @ address message in r1 
-    mov r0,#STDOUT                                  @ code to write to the standard output Linux 
-    mov r7, #WRITE                                  @ code call system "write" 
-    svc #0                                          @ call systeme 
-    pop {r0,r1,r2,r7,lr}                            @ restaur des  2 registres */ 
-    bx lr                                           @ return  
+    mov r2,#0                                       @ counter length
+1:                                                  @ loop length calculation
+    ldrb r1,[r0,r2]                                 @ read octet start position + index
+    cmp r1,#0                                       @ if 0 its over
+    addne r2,r2,#1                                  @ else add 1 in the length
+    bne 1b                                          @ and loop
+                                                    @ so here r2 contains the length of the message
+    mov r1,r0                                       @ address message in r1
+    mov r0,#STDOUT                                  @ code to write to the standard output Linux
+    mov r7, #WRITE                                  @ code call system "write"
+    svc #0                                          @ call systeme
+    pop {r0,r1,r2,r7,lr}                            @ restaur des  2 registres */
+    bx lr                                           @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                      @ save registers 
+    push {r1-r4,lr}                                      @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 
@@ -345,7 +345,7 @@ conversion10:
     bl divisionpar10U                                    @unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                           @ digit
     strb r1,[r3,r2]                                      @ store digit on area
-    cmp r0,#0                                            @ stop if quotient = 0 
+    cmp r0,#0                                            @ stop if quotient = 0
     subne r2,#1                                          @ else previous position
     bne 1b	                                         @ and loop
                                                          @ and move digit from left of area
@@ -358,7 +358,7 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                        @ and move spaces in end on area
-    mov r0,r4                                          @ result length 
+    mov r0,r4                                          @ result length
     mov r1,#' '                                        @ space
 3:
     strb r1,[r3,r4]                                    @ store space in area
@@ -367,14 +367,14 @@ conversion10:
     ble 3b                                             @ loop if r4 <= area size
 
 100:
-    pop {r1-r4,lr}                                     @ restaur registres 
+    pop {r1-r4,lr}                                     @ restaur registres
     bx lr                                              @return
 
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -382,12 +382,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 /***************************************************/
 /*   calcul size string                            */
@@ -420,14 +420,14 @@ division:
     mov r3, #0                                         @ init remainder
     mov r4, #32                                        @ init counter bits
     b 2f
-1:                                                     @ loop 
+1:                                                     @ loop
     movs r0, r0, LSL #1                                @ r0 <- r0 << 1 updating cpsr (sets C if 31st bit of r0 was 1)
-    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C 
-    cmp r3, r1                                         @ compute r3 - r1 and update cpsr 
-    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1 
-    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C 
+    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C
+    cmp r3, r1                                         @ compute r3 - r1 and update cpsr
+    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1
+    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C
 2:
-    subs r4, r4, #1                                    @ r4 <- r4 - 1 
+    subs r4, r4, #1                                    @ r4 <- r4 - 1
     bpl 1b                                             @ if r4 >= 0 (N=0) then loop
     pop {r4, lr}
     bx lr
@@ -512,8 +512,8 @@ function min(x,y) { return((x < y) ? x : y) }
 ## C
 
 
-```C>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <string.h>
 #include <ctype.h>
 #include <stdio.h>
@@ -621,8 +621,8 @@ int main() {
 
 {{trans|C}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <string>
 
@@ -784,7 +784,7 @@ int main() {
 
        identification division.
        program-id. JaroDistance.
- 
+
        environment division.
        configuration section.
        repository.
@@ -793,7 +793,7 @@ int main() {
            function max intrinsic
            function min intrinsic
            .
- 
+
        data division.
        working-storage section.
        77  s                      pic x(255).
@@ -809,7 +809,7 @@ int main() {
        77  matches                pic 9(3).
        77  transpositions         pic 9(3).
        77  distance               pic 9v9(8).
-       
+
        01  jaro-table.
            05 filler              occurs 255.
               10 filler           pic 9(1).
@@ -833,7 +833,7 @@ int main() {
        jaro-calc-and-show.
            perform jaro-distance
            display trim(s) " -> " trim(t) ", distance=" distance
-           .           
+           .
        jaro-distance.
            move length(trim(s)) to s-length
            move length(trim(t)) to t-length
@@ -850,7 +850,7 @@ int main() {
               move max(1, i - match-distance) to start-pos
               move min(i + match-distance, t-length) to end-pos
               perform varying j from start-pos by 1 until j > end-pos
-                 if t-matches(j) or s(i:1) <> t(j:1) 
+                 if t-matches(j) or s(i:1) <> t(j:1)
                     exit perform cycle
                  end-if,
                  set s-matches(i), t-matches(j) to true
@@ -949,7 +949,7 @@ console.log jaro "JELLYFISH", "SMELLYFISH"
 ```ruby
 def jaro(s, t)
     return 1.0 if s == t
- 
+
     s_len = s.size
     t_len = t.size
     match_distance = ({s_len, t_len}.max / 2) - 1
@@ -964,7 +964,7 @@ def jaro(s, t)
 
         (j_start..j_end).each do |j|
             t_matches[j] && next                # -> next if t_matches[j]
-            s[i] == t[j] || next                # -> next unless s[i] == t[j]      
+            s[i] == t[j] || next                # -> next unless s[i] == t[j]
             s_matches[i] = true
             t_matches[j] = true
             matches += 1.0
@@ -973,16 +973,16 @@ def jaro(s, t)
     end
 
     return 0.0 if matches == 0.0
- 
+
     k = 0
     transpositions = 0.0
     s_len.times do |i|
         s_matches[i] || next                    # -> next unless s_matches[i]
         while ! t_matches[k]; k += 1 end        # -> k += 1 until t_matches[k]
-        s[i] == t[k] || (transpositions += 1.0) # -> (transpositions += 1.0) unless s[i] == t[k]      
+        s[i] == t[k] || (transpositions += 1.0) # -> (transpositions += 1.0) unless s[i] == t[k]
         k += 1
     end
- 
+
     ((matches / s_len) + (matches / t_len) +
     ((matches - transpositions / 2.0) / matches)) / 3.0
 end
@@ -1085,7 +1085,7 @@ defmodule Jaro do
        ((matches - transpositions/2) / matches)) / 3
     end
   end
-  
+
   defp matching(s, t, s_len, t_len) do
     match_distance = div(max(s_len, t_len), 2) - 1
     ac0 = {List.duplicate(false, s_len), List.duplicate(false, t_len), 0}
@@ -1103,7 +1103,7 @@ defmodule Jaro do
       end)
     end)
   end
-  
+
   defp transposition(s, t, s_matches, t_matches) do
     Enum.reduce(0..length(s)-1, {0,0}, fn i,{k,transpositions} ->
       if Enum.at(s_matches, i) do
@@ -1221,7 +1221,7 @@ Function jaro(word1 As String, word2 As String) As Double
   Dim As Long s2 = Len(word2)
   Dim As Long max_dist = s2 \ 2 -1  ' integer division
 
-  For i = 0 To s1 -1 
+  For i = 0 To s1 -1
     If word1[i] = word2[j] Then
       m = m +1
       word2[j] = 32
@@ -1237,7 +1237,7 @@ Function jaro(word1 As String, word2 As String) As Double
     End If
     j = j + 1
   Next
- 
+
   If m = 0 Then Return 0
 
   t = t \ 2
@@ -1430,8 +1430,8 @@ class Jaro {
         var s1_len = s1.length;
         var s2_len = s2.length;
         if (s1_len == 0 && s2_len == 0) return 1;
- 
-        var match_distance = Std.int(Math.max(s1_len, s2_len)) / 2 - 1; 
+
+        var match_distance = Std.int(Math.max(s1_len, s2_len)) / 2 - 1;
         var matches = { s1: [for(n in 0...s1_len) false], s2: [for(n in 0...s2_len) false] };
         var m = 0;
         for (i in 0...s1_len) {
@@ -1446,7 +1446,7 @@ class Jaro {
                 }
         }
         if (m == 0) return 0;
- 
+
         var k = 0;
         var t = 0.;
         for (i in 0...s1_len)
@@ -1454,10 +1454,10 @@ class Jaro {
             	while (!matches.s2[k]) k++;
             	if (s1.charAt(i) != s2.charAt(k++)) t += 0.5;
             }
- 
+
         return (m / s1_len + m / s2_len + (m - t) / m) / 3.0;
     }
- 
+
     public static function main() {
         Sys.println(jaro(   "MARTHA",      "MARHTA"));
         Sys.println(jaro(    "DIXON",    "DICKSONX"));
@@ -1580,11 +1580,11 @@ public class JaroDistance {
 
 ## jq
 
-    
+
     def jaro(s1; s2):
-    
+
       def when(p; q): if p then q else . end;
-    
+
       (s1|length) as $len1
       | (s2|length) as $len2
       | (( [$len1, $len2] | max ) / 2 - 1) as $match_standard
@@ -1595,14 +1595,14 @@ public class JaroDistance {
               (.; s2[$l2:$l2+1] as $t2
                   | when( $t1 == $t2;
                           when( ($l2-$l1) <= $match_standard and ($l1-$l2) <= $match_standard;
-    		                .m+=1) 
+    		                .m+=1)
                           | when($l2 == $l1; .p += 1) ) ) )
       | ((.m-.p)/2) as $t
       | ( (.m/$len1) + (.m/$len2) + ((.m-$t)/.m) ) / 3
     ;
-    
+
     jaro("MARTHA";"MARHTA")
-    , jaro("DIXON"; "DICKSONX") 
+    , jaro("DIXON"; "DICKSONX")
     , jaro("JELLYFISH";"SMELLYFISH")
 
 Output:
@@ -1715,25 +1715,25 @@ class JaroDistance  {
     Jaro("DIXON", "DICKSONX")->PrintLine();
     Jaro("JELLYFISH", "SMELLYFISH")->PrintLine();
   }
-  
+
   function : Jaro(s : String, t : String) ~ Float {
     s_len := s->Size();
     t_len := t->Size();
- 
+
     if (s_len = 0 & t_len = 0) { return 1; };
- 
+
     match_distance := Int->Max(s_len, t_len) / 2 - 1;
- 
+
     s_matches := Bool->New[s_len];
     t_matches := Bool->New[t_len];
- 
+
     matches := 0;
     transpositions := 0;
- 
+
     for (i := 0; i < s_len; i++;) {
       start := Int->Max(0, i-match_distance);
       end := Int->Min(i+match_distance+1, t_len);
- 
+
       for (j := start; j < end; j++;) {
         if (t_matches[j]) { continue; };
         if (s->Get( i) <> t->Get( j)) { continue; };
@@ -1743,9 +1743,9 @@ class JaroDistance  {
         break;
       };
     };
- 
+
     if (matches = 0) { return 0; };
- 
+
     k := 0;
     for (i := 0; i < s_len; i++;) {
       if (<>s_matches[i]) { continue; };
@@ -1753,7 +1753,7 @@ class JaroDistance  {
       if (s->Get( i) <> t->Get( k)) { transpositions++; };
       k++;
     };
-     
+
     return ((matches->As(Float) / s_len) +
         (matches->As(Float) / t_len) +
         ((matches->As(Float) - transpositions/2.0) / matches)) / 3.0;
@@ -1813,14 +1813,14 @@ return(d);
 }
 
 { \\ Testing:
-jaroDist("MARTHA","MARHTA"); 
+jaroDist("MARTHA","MARHTA");
 jaroDist("DIXON","DICKSONX");
 jaroDist("JELLYFISH","SMELLYFISH");
 jaroDist("DWAYNE","DUANE");
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -1878,7 +1878,7 @@ begin
     if s1[i]<>s2[k] then inc(trans);
     inc(k);
   end;
-  trans:=trans div 2; 
+  trans:=trans div 2;
   result:=((matches/l1)+(matches/l2)+((matches-trans)/matches))/3;
 end;
 //test
@@ -2070,9 +2070,9 @@ function jaro(string str1, str2)
             end if
         end for
     end for
- 
+
     if match_count==0 then return 0 end if
- 
+
     -- count the number of half-transpositions
     integer k = 1
     for i=1 to len1 do
@@ -2090,8 +2090,8 @@ function jaro(string str1, str2)
     --   percentage/fraction of the second string matched, and
     --   percentage/fraction of matches that were not transposed.
     --
-    return (match_count/len1 + 
-            match_count/len2 + 
+    return (match_count/len1 +
+            match_count/len2 +
             not_transposed/match_count)/3
 end function
 
@@ -2442,7 +2442,7 @@ Returns an exact value for the Jaro distance.
   (cond
     [(and (zero? str1-len) (zero? str2-len)) 0]
     [(or  (zero? str1-len) (zero? str2-len)) 1]
-    [else     
+    [else
      ;; vectors of bools that signify if that char in the matching string has a match
      (define str1-matches (make-bit-vector str1-len))
      (define str2-matches (make-bit-vector str2-len))
@@ -2453,7 +2453,7 @@ Returns an exact value for the Jaro distance.
                    ((i (in-range 0 str1-len))
                     (c1 (in-string str1)))
            (define start (max 0 (- i match-distance)))
-           (define end (min (+ i match-distance 1) str2-len))        
+           (define end (min (+ i match-distance 1) str2-len))
            (for/fold ((matches matches))
                      ((k (in-range start end))
                       (c2 (in-string str2 start))
@@ -2466,7 +2466,7 @@ Returns an exact value for the Jaro distance.
              (add1 matches)))))
      (cond
        [(zero? matches) 0]
-       [else                                
+       [else
         (define-values (transpositions*2 k+)
           (for/fold ((transpositions 0) (k 0))
                     ((i (in-range 0 str1-len))
@@ -2477,16 +2477,16 @@ Returns an exact value for the Jaro distance.
             (define k+ (for/first ((k+ (in-range k str2-len))
                                    (b2 (in-bit-vector str2-matches k))
                                    #:when b2)
-                         k+))        
+                         k+))
             (values
              (+ transpositions (if (char=? c1 (string-ref str2 k+)) 0 1)) ; increment transpositions
-             (add1 k+)))) ;; while there is no match in str2 increment k             
-        
+             (add1 k+)))) ;; while there is no match in str2 increment k
+
         ;; divide the number of transpositions by two as per the algorithm specs
         ;; this division is valid because the counted transpositions include both
         ;; instances of the transposed characters.
         (define transpositions (quotient transpositions*2 2))
-        
+
         ;; return the Jaro distance
         (/ (+ (/ matches str1-len)
               (/ matches str2-len)
@@ -2494,7 +2494,7 @@ Returns an exact value for the Jaro distance.
            3)])]))
 
 (module+ test
-  (jaro-distance "MARTHA"    "MARHTA"); 0.944444 
+  (jaro-distance "MARTHA"    "MARHTA"); 0.944444
   (exact->inexact (jaro-distance "MARTHA"    "MARHTA")); 0.944444
   (jaro-distance "DIXON"     "DICKSONX"); 0.766667
   (exact->inexact (jaro-distance "DIXON"     "DICKSONX")); 0.766667
@@ -2579,7 +2579,7 @@ see " jaro (MARTHA, MARHTA)  = " +  jaro("MARTHA", "MARHTA") + nl
 see " jaro (DIXON, DICKSONX) = " + jaro("DIXON", "DICKSONX") + nl
 see " jaro (JELLYFISH, SMELLYFISH) = " + jaro("JELLYFISH", "SMELLYFISH") + nl
 
-func jaro(word1, word2) 
+func jaro(word1, word2)
         if len(word1) > len(word2)
             swap(word1, word2)
         ok
@@ -2588,14 +2588,14 @@ func jaro(word1, word2)
         m = 0
         s1 = len(word1)
         s2 = len(word2)
-        maxdist = (s2 / 2) -1  
-        for i = 1 to s1 
-             if word1[i] = word2[j] and j < max(len(word2), len(word2)) + 1 
+        maxdist = (s2 / 2) -1
+        for i = 1 to s1
+             if word1[i] = word2[j] and j < max(len(word2), len(word2)) + 1
                 m = m +1
                 word2[j] = char(32)
              else
                 for j1 = max(1, i - maxdist) to min(s2 -1, i + maxdist)
-                     if word1[i] = word2[j1] 
+                     if word1[i] = word2[j1]
                         t = t +1
                         m = m +1
                         word2[j1] = char(32)
@@ -2608,13 +2608,13 @@ func jaro(word1, word2)
              if j < max(len(word2), len(word2))
                 j = j + 1
              ok
-        next 
+        next
         if m = 0
            return 0
-        ok 
+        ok
         t = floor(t / 2)
         return (m / s1 + m / s2 + ((m - t) / m)) / 3
- 
+
 func swap(a, b)
         temp = a
         a = b
@@ -2641,19 +2641,19 @@ jaro (JELLYFISH, SMELLYFISH) = 0.896296296296
 ```ruby
 def jaro(s, t)
     return 1.0 if s == t
-    
+
     s_len = s.size
     t_len = t.size
     match_distance = ([s_len, t_len].max / 2) - 1
-    
+
     s_matches = []
     t_matches = []
     matches = 0.0
-    
+
     s_len.times do |i|
         j_start = [0, i-match_distance].max
         j_end = [i+match_distance, t_len-1].min
-        
+
         (j_start..j_end).each do |j|
             t_matches[j] && next
             s[i] == t[j] || next
@@ -2663,9 +2663,9 @@ def jaro(s, t)
             break
         end
     end
-    
+
     return 0.0 if matches == 0.0
-    
+
     k = 0
     transpositions = 0.0
     s_len.times do |i|
@@ -2674,7 +2674,7 @@ def jaro(s, t)
         s[i] == t[k] || (transpositions += 1.0)
         k += 1
     end
-    
+
     ((matches / s_len) +
      (matches / t_len) +
      ((matches - transpositions/2.0) / matches)) / 3.0
@@ -2923,47 +2923,47 @@ list a b jaro
  func jaroWinklerMatch(_ s: String, _ t: String) -> Double {
     let s_len: Int = s.count
     let t_len: Int = t.count
-    
+
     if s_len == 0 && t_len == 0 {
         return 1.0
     }
-    
+
     if s_len == 0 || t_len == 0 {
         return 0.0
     }
-    
+
     var match_distance: Int = 0
-    
+
     if s_len == 1 && t_len == 1 {
         match_distance = 1
     } else {
         match_distance = ([s_len, t_len].max()!/2) - 1
     }
-    
-    
+
+
     var s_matches = [Bool]()
     var t_matches = [Bool]()
-    
+
     for _ in 1...s_len {
         s_matches.append(false)
     }
-    
+
     for _ in 1...t_len {
         t_matches.append(false)
     }
-    
+
     var matches: Double = 0.0
     var transpositions: Double = 0.0
-    
+
     for i in 0...s_len-1 {
-        
+
         let start = [0, (i-match_distance)].max()!
         let end = [(i + match_distance), t_len-1].min()!
-        
+
         if start > end {
             break
         }
-        
+
         for j in start...end {
 
             if t_matches[j] {
@@ -2980,11 +2980,11 @@ list a b jaro
             break
         }
     }
-    
+
     if matches == 0 {
         return 0.0
     }
-    
+
     var k = 0
     for i in 0...s_len-1 {
         if !s_matches[i] {
@@ -2994,13 +2994,13 @@ list a b jaro
             k += 1
         }
         if s[String.Index.init(encodedOffset: i)] != t[String.Index.init(encodedOffset: k)] {
-            
+
             transpositions += 1
         }
-        
+
         k += 1
     }
-    
+
     let top = (matches / Double(s_len)) + (matches / Double(t_len)) + (matches - (transpositions / 2)) / matches
     return top/3
 }
@@ -3153,12 +3153,12 @@ fcn _jaro(str1,str2, matchDistance){
 
 fcn jaro(str1,str2){
    s1Len,s2Len,matchDistance := str1.len(), str2.len(), s1Len.max(s2Len)/2 - 1;
-   cs12,cs21 := _jaro(str1,str2, matchDistance), _jaro(str2,str1, matchDistance); 
+   cs12,cs21 := _jaro(str1,str2, matchDistance), _jaro(str2,str1, matchDistance);
 
    matches:=cs12.len().toFloat();
    if(not matches) return(0.0);
    transpositions:=cs12.walker().zipWith('!=,cs21).filter().sum(0)/2;
-   
+
    ( matches/s1Len + matches/s2Len +
       ((matches - transpositions)/matches) ) / 3.0
 }
@@ -3166,7 +3166,7 @@ fcn jaro(str1,str2){
 
 
 ```zkl
-foreach s,t in (T( 
+foreach s,t in (T(
      T("MARTHA","MARHTA"), T("DIXON","DICKSONX"), T("JELLYFISH","SMELLYFISH"))){
    println(0'|jaro("%s","%s") = %.10f|.fmt(s,t,jaro(s,t)));
 }
@@ -3192,7 +3192,7 @@ jaro("JELLYFISH","SMELLYFISH") = 0.8962962963
 10 LET a$="MARTHA": LET b$="MARHTA": PRINT a$;", ";b$;": ";: GO SUB 1000: PRINT jaro
 20 LET a$="DIXON": LET b$="DICKSONX": PRINT a$;", ";b$;": ";: GO SUB 1000: PRINT jaro
 30 LET a$="JELLYFISH": LET b$="SMELLYFISH": PRINT a$;", ";b$;": ";: GO SUB 1000: PRINT jaro
-900 STOP 
+900 STOP
 1000 REM Jaro subroutine
 1010 LET s1=LEN a$: LET s2=LEN b$: LET j=1: LET m=0: LET t=0
 1030 IF s1>s2 THEN LET z$=a$: LET a$=b$: LET b$=z$: LET z=s1: LET s1=s2: LET s2=z
@@ -3204,10 +3204,10 @@ jaro("JELLYFISH","SMELLYFISH") = 0.8962962963
 1100 NEXT k
 2000 IF j<s2 THEN LET j=j+1:
 2010 NEXT i
-2020 IF m=0 THEN LET jaro=0: RETURN 
+2020 IF m=0 THEN LET jaro=0: RETURN
 2030 LET t=INT (t/2)
 2040 LET jaro=(m/s1+m/s2+((m-t)/m))/3
-2050 RETURN 
+2050 RETURN
 5000 REM Functions
 5010 DEF FN x(a,b)=(a AND a>b)+(b AND a<b)+(a AND a=b): REM max function
 5020 DEF FN n(a,b)=(a AND a<b)+(b AND a>b)+(a AND a=b): REM min function

@@ -10,11 +10,11 @@ categories = []
 tags = []
 +++
 
-{{task|Basic language learning}} 
+{{task|Basic language learning}}
 [[Category:Simple]]
 
-'''Null''' (or '''nil''') is the computer science concept of an undefined or unbound object. 
-Some languages have an explicit way to access the null object, and some don't. 
+'''Null''' (or '''nil''') is the computer science concept of an undefined or unbound object.
+Some languages have an explicit way to access the null object, and some don't.
 Some languages distinguish the null object from [[undefined values]], and some don't.
 
 
@@ -65,7 +65,7 @@ end if;
 
 ## ALGOL 68
 
-In ALGOL 68 the NIL yields a name that does not refer to any value. NIL can never be 
+In ALGOL 68 the NIL yields a name that does not refer to any value. NIL can never be
 naturally coerced and can only appear where the context is [[ALGOL 68#strong|strong]].
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
@@ -75,13 +75,13 @@ naturally coerced and can only appear where the context is [[ALGOL 68#strong|str
 ```algol68
 REF STRING no result = NIL;
 STRING result := "";
- 
+
 IF no result :=: NIL THEN print(("no result :=: NIL", new line)) FI;
 IF result :/=: NIL THEN print(("result :/=: NIL", new line)) FI;
- 
+
 IF no result IS NIL THEN print(("no result IS NIL", new line)) FI;
 IF result ISNT NIL THEN print(("result ISNT NIL", new line)) FI;
- 
+
 COMMENT using the UNESCO/IFIP/WG2.1 ALGOL 68 character set
   result := °;
   IF REF STRING(result) :≠: ° THEN print(("result ≠ °", new line)) FI;
@@ -107,7 +107,7 @@ The address of var IS REF STRING(NIL)
 
 ```
 
-NIL basically is an untyped '''ref''' (pointer) that does not refer anywhere.  
+NIL basically is an untyped '''ref''' (pointer) that does not refer anywhere.
 
 ALGOL 68 also has '''empty'''. This is a "constant" of size 0 and type '''void'''.
 c.f. [[Roots_of_a_function#ALGOL_68|Roots of a function]] for two different
@@ -117,8 +117,8 @@ examples of usage.
 '''empty''' is typically used to refer to am empty leaf in a tree structure.
 
 Basically:
-* ALGOL 68's '''empty''' is python's <code>None</code>, 
-* ALGOL 68's '''void''' is python's <code>NoneType</code>, and 
+* ALGOL 68's '''empty''' is python's <code>None</code>,
+* ALGOL 68's '''void''' is python's <code>NoneType</code>, and
 * ALGOL 68's '''nil''' is python's <code>hash(None)</code>
 
 
@@ -194,11 +194,11 @@ szMessResult:           .asciz "Value is null.\n"     @ message result
 iPtrObjet:		.int 0                        @ objet pointer
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                                                @ entry of program
 
     ldr r0,iAdriPtrObjet                             @ load pointer address
@@ -218,24 +218,24 @@ iAdrszMessResult:        .int szMessResult
 iAdrszCarriageReturn:    .int szCarriageReturn
 iAdriPtrObjet:           .int iPtrObjet
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                           @ save  registres
-    mov r2,#0                                       @ counter length 
-1:                                                  @ loop length calculation 
-    ldrb r1,[r0,r2]                                 @ read octet start position + index 
-    cmp r1,#0                                       @ if 0 its over 
-    addne r2,r2,#1                                  @ else add 1 in the length 
-    bne 1b                                          @ and loop 
-                                                    @ so here r2 contains the length of the message 
-    mov r1,r0                                       @ address message in r1 
-    mov r0,#STDOUT                                  @ code to write to the standard output Linux 
-    mov r7, #WRITE                                  @ code call system "write" 
-    svc #0                                          @ call systeme 
-    pop {r0,r1,r2,r7,lr}                            @ restaur des  2 registres */ 
-    bx lr                                           @ return  
+    mov r2,#0                                       @ counter length
+1:                                                  @ loop length calculation
+    ldrb r1,[r0,r2]                                 @ read octet start position + index
+    cmp r1,#0                                       @ if 0 its over
+    addne r2,r2,#1                                  @ else add 1 in the length
+    bne 1b                                          @ and loop
+                                                    @ so here r2 contains the length of the message
+    mov r1,r0                                       @ address message in r1
+    mov r0,#STDOUT                                  @ code to write to the standard output Linux
+    mov r7, #WRITE                                  @ code call system "write"
+    svc #0                                          @ call systeme
+    pop {r0,r1,r2,r7,lr}                            @ restaur des  2 registres */
+    bx lr                                           @ return
 
 
 ```
@@ -264,15 +264,15 @@ If $object = Null Then MsgBox(0, "NULL", "Object is null")
 
 ## AWK
 
-Undefined elements correspond to an empty string; when converted to a numerical value, it evaluates to 0. In order to distinguish a undefined value from a value of 0, length(var) need to be used. 
+Undefined elements correspond to an empty string; when converted to a numerical value, it evaluates to 0. In order to distinguish a undefined value from a value of 0, length(var) need to be used.
 
 ```AWK
 #!/usr/bin/awk -f
-BEGIN { 
-  b=0; 
-  print "<"b,length(b)">" 
-  print "<"u,length(u)">" 
-  print "<"u+0,length(u+0)">"; 
+BEGIN {
+  b=0;
+  print "<"b,length(b)">"
+  print "<"u,length(u)">"
+  print "<"u+0,length(u+0)">";
 }
 ```
 
@@ -341,12 +341,12 @@ A null object has a pointer with a value of zero or one.
 ```bbcbasic
       PROCtestobjects
       END
-      
+
       DEF PROCtestobjects
       PRIVATE a(), b(), s{}, t{}
       DIM a(123)
       DIM s{a%, b#, c$}
-      
+
       IF !^a() <= 1 PRINT "a() is null" ELSE PRINT "a() is not null"
       IF !^b() <= 1 PRINT "b() is null" ELSE PRINT "b() is not null"
       IF !^s{} <= 1 PRINT "s{} is null" ELSE PRINT "s{} is not null"
@@ -393,8 +393,8 @@ There is a very common macro, <code>NULL</code>, which evaluates to <code>(void*
 The standard library defines NULL in locale.h, stddef.h, stdio.h, stdlib.h, string.h, time.h and wchar.h. [[POSIX]] systems also define NULL in dirent.h and unistd.h. Many C files include at least one of these headers, so NULL is almost always available.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -413,8 +413,8 @@ int main()
 
 In C++ non-pointer types do not support null. (C++ provides value semantics rather than reference semantics). When using pointers C++ permits checking for null by comparing the pointer to a literal of 0, or (as in C) by way of a macro (NULL) which simply expands to 0.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cstdlib>
 if (object == 0) {
    std::cout << "object is null";
@@ -614,7 +614,7 @@ no thing-two was passed
 
 Common Lisp has an object denoted by the symbol <code>nil</code>. When the symbol <code>nil</code> is evaluated as an expression, it evaluates to itself.
 
-<code>nil</code> uniquely represents boolean false, and so code like 
+<code>nil</code> uniquely represents boolean false, and so code like
 ```lisp
 (if (condition) (do-this))
 ```
@@ -670,15 +670,15 @@ The classes <code>t</code> and <code>null</code> are widely exploited in Lisp OO
 
 MODULE ObjectNil;
 IMPORT StdLog;
-TYPE 
+TYPE
 	Object = POINTER TO ObjectDesc;
 	ObjectDesc = RECORD
 	END;
-VAR	
+VAR
 	x: Object; (* default initialization to NIL *)
-	
+
 PROCEDURE DoIt*;
-BEGIN 
+BEGIN
 	IF x = NIL THEN
 		StdLog.String("x is NIL");StdLog.Ln
 	END
@@ -725,8 +725,8 @@ Now k is not null
   // the following are equivalent
   if lObject = nil then
   ...
-  
-  if not Assigned(lObject) then 
+
+  if not Assigned(lObject) then
   ...
 ```
 
@@ -789,8 +789,8 @@ null → null
 (if null 'OUI 'NON) → OUI
 
 ;; usual usage : recursion on lists until (null? list)
-(define (f list) 
-    (when (!null? list) 
+(define (f list)
+    (when (!null? list)
     (write (first list)) (f (rest list))))
 
 (f '( a b c))  →  a b c
@@ -866,18 +866,18 @@ Erlang does not have an null object.
 As an alternative, many applications tend to pick a convention for returning an empty condition and use that.
 
 Example alternatives:
-# Something like 
+# Something like
 ```txt
 {ok, 3} % normal case
 ```
- or 
+ or
 ```txt
 {err, no_more} % error case
 ```
  on error.
 # Don't ever allow an undefined return value, and throw an exception instead.
 # Return an atom:
-## '''undefined'''*  
+## '''undefined'''*
 ## '''undef'''
 ## '''null'''
 ## '''nil'''
@@ -966,8 +966,8 @@ Dim d As Dog Ptr = New Dog
 d->Name = "Rover"
 d->Age = 5
 Print d->Name, d->Age
-Delete d 
-d = NULL '' guard against 'd' being used accidentally in future 
+Delete d
+d = NULL '' guard against 'd' being used accidentally in future
 
 ' in practice many FB developers would simply have written: d = 0 above
 Sleep
@@ -1064,7 +1064,7 @@ Then
 ```haskell
 *Main> add_two_maybe_numbers (Just 2) (Just 3)
 Just 5
-*Main> add_two_maybe_numbers (Just 2) Nothing 
+*Main> add_two_maybe_numbers (Just 2) Nothing
 Nothing
 ```
 
@@ -1187,7 +1187,7 @@ typeof null === "object"; // This stands since the beginning of JavaScript
 
 ## jq
 
-jq has <tt>null</tt> as a value, but while on the subject of nothing, it may be worth mentioning that jq also has a filter, <tt>empty</tt>, for producing an empty sequence, a.k.a. nothing.  
+jq has <tt>null</tt> as a value, but while on the subject of nothing, it may be worth mentioning that jq also has a filter, <tt>empty</tt>, for producing an empty sequence, a.k.a. nothing.
 
 <tt>null</tt> is distinct from <tt>false</tt>.
 Here are some examples:
@@ -1259,9 +1259,9 @@ and and missing value ''nil'' :
   (1;;2) ~ (1 ; _n ; 2)    /  ~  is ''identical to'' or ''match'' .
 1
   _n ~' ( 1 ; ; 2 )        /  ''match each''
-0 1 0 
+0 1 0
 
-additional properties :  _n@i and _n?i are i; _n`v is _n 
+additional properties :  _n@i and _n?i are i; _n`v is _n
 
 ```
 
@@ -1284,8 +1284,8 @@ fun main(args: Array<String>) {
     val i: Int  = 3           // non-nullable Int type - can't be assigned null
     println(i)
     val j: Int? = null        // nullable Int type - can be assigned null
-    println(j) 
-    println(null is Nothing?) // test that null is indeed of type Nothing? 
+    println(j)
+    println(null is Nothing?) // test that null is indeed of type Nothing?
 }
 ```
 
@@ -1307,10 +1307,10 @@ true
 
 ```Lasso
 local(x = string, y = null)
-#x->isA(::null) 
+#x->isA(::null)
 // 0 (false)
 
-#y->isA(::null) 
+#y->isA(::null)
 // 1 (true)
 
 #x == null
@@ -1452,8 +1452,8 @@ Module CheckWord {
       Print Type$(Alfa)="Nothing"
       Try ok {
             Declare Alfa "WORD.APPLICATION"
-            \\ we can't declare again Alfa      
-       
+            \\ we can't declare again Alfa
+
       }
       If Not Ok Then Print Error$  ' return Bad Object declaration
 }
@@ -1485,7 +1485,7 @@ Module CheckContainers {
       \\ we can erase A() and B()
       Dim A(0), B(0)
       Print Len(A())=0, Len(B())=0
-      Print Len(B)=0 
+      Print Len(B)=0
       B=(123,)
       \\ B() is a value type so get a copy
       B()=B
@@ -1494,21 +1494,21 @@ Module CheckContainers {
       Clear B
       Print Type$(B)="mArray"
       Print Len(B)=1, B(0)=123
-      
-      
+
+
       \\ Inventrories. Keys must be unique (for normal inventories)
       Inventory M=1,2,3,4:=400,5
       Print M
       Clear M
       Inventory M=1,2,3,4,5
       Print M
-      
+
       \\ Inventory Queue can have same keys.
       Inventory Queue N=1,1,2:="old",2:="ok",3
       If Exist(N,2) Then Print Eval$(N)="ok", Eval(N!)=3 ' 4th item
       Clear N
       Print Len(N)=0, Type$(N)="Inventory"
-      
+
       \\ Stack Object
        Z=Stack:=1,2,3
        Stack Z {
@@ -1601,7 +1601,7 @@ In Maple, NULL and () represent the null object.
 
 ```maple
 a := NULL;
-                                                         a := 
+                                                         a :=
 is (NULL = ());
                                                          true
 if a = NULL then
@@ -1672,15 +1672,15 @@ True
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-The closest think to a NULL element in Matlab/Octave is an empty field or empty string; empty fields in a conditional expression evaluate to false. 
+The closest think to a NULL element in Matlab/Octave is an empty field or empty string; empty fields in a conditional expression evaluate to false.
 
 ```MATLAB
 a = []; b='';
 isempty(a)
 isempty(b)
-if (a) 
-  1, 
-else, 
+if (a)
+  1,
+else,
   0
 end;
 ```
@@ -1742,18 +1742,18 @@ The $DATA (or $D) function will return a number:
   <tr>
   <th>$DATA returns:</th>
   <th colspan="3">Variable is defined</th>
-  <tr align="center"> 
+  <tr align="center">
     <th rowspan=3>Variable has children</th>
     <td> </td>
     <td><strong>No</strong></td>
     <td><strong>Yes</strong></td>
   </tr>
-  <tr> 
+  <tr>
     <td><strong>No</strong></td>
     <td>0</td>
     <td>1</td>
   </tr>
-  <tr> 
+  <tr>
     <td><strong>Yes</strong></td>
     <td>10</td>
     <td>11</td>
@@ -1825,7 +1825,7 @@ if robject = null then say 'Really, it''s "null"!'
 
 ```txt
 
-null 
+null
 Really, it's "null"!
 
 ```
@@ -1970,10 +1970,10 @@ null isNull
 
 ## ooRexx
 
-ooRexx has a special singleton object called .nil that is used to indicate the absence of values in some situations (such as the default values returned from collection objects). 
+ooRexx has a special singleton object called .nil that is used to indicate the absence of values in some situations (such as the default values returned from collection objects).
 
 ```ooRexx
- 
+
    if a[i] == .nil then say "Item" i "is missing"
 
 ```
@@ -2150,7 +2150,7 @@ in which case they're thrown for real.
 
 ## Phix
 
-There is a builtin NULL, however it is equivalent to the integer 0 and will trigger a type check if assigned to a variable declared as string or sequence. In most programs the zero-length string/sequence (""/{}) suffices, 
+There is a builtin NULL, however it is equivalent to the integer 0 and will trigger a type check if assigned to a variable declared as string or sequence. In most programs the zero-length string/sequence (""/{}) suffices,
 but if you want a variable that can be a string/sequence or NULL, but not other arbitrary integer/float values, use something like the following user-defined types:
 
 ```Phix
@@ -2452,7 +2452,7 @@ see isnull(5) + nl +        # print 0
 isnull("hello") + nl +      # print 0
 isnull([1,3,5]) + nl +      # print 0
 isnull("") + nl +           # print 1
-isnull("NULL")              # print 1 
+isnull("NULL")              # print 1
 
 ```
 
@@ -2594,7 +2594,7 @@ However, ''nil'' is not an object, so we can't call methods on it. Alternatively
 
 
 ```ruby
-var null_obj = null;        # initialize with a null value  
+var null_obj = null;        # initialize with a null value
 say null_obj.is_a(null);    # true
 say defined(null_obj);      # true
 ```
@@ -2603,7 +2603,7 @@ say defined(null_obj);      # true
 
 ## Slate
 
- 
+
 
 ```slate>Nil isNil = True.</lang
 
@@ -2727,14 +2727,14 @@ end if
 ```vb
 Public Sub Main()
     Dim c As VBA.Collection
-     
+
     ' initial state: Nothing
     Debug.Print c Is Nothing
-     
+
     ' create an instance
     Set c = New VBA.Collection
     Debug.Print Not c Is Nothing
-     
+
     ' release the instance
     Set c = Nothing
     Debug.Print c Is Nothing

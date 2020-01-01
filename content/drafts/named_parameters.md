@@ -90,8 +90,8 @@ Output:
 
 ```txt
 
-Details: a Irish Setter Dog named Mike owned by Harry S. Truman 
-Details: a Tyrannosaurus Dinosaur named Rex owned by George W. Bush 
+Details: a Irish Setter Dog named Mike owned by Harry S. Truman
+Details: a Tyrannosaurus Dinosaur named Rex owned by George W. Bush
 
 ```
 
@@ -114,7 +114,7 @@ end getName
 
 Examples:
 
-```AppleScript 
+```AppleScript
 getName({firstName:"John", lastName:"Doe"})
 --> Returns: "John, Doe"
 getName({lastName:"Doe"})
@@ -161,10 +161,10 @@ MyFunc( "Val=0, w=1024, Text=The Quick Brown Fox, newVar=I'm New" )
 MyFunc( _overrides="" ) {
  Static x=5, y=5, w=100, h=100, Count
  Name:="AutoHotkey", Type:="Scripting", Text:="qwerty", Val:=True
- 
+
  Loop, Parse, _overrides,`,=, %A_Space%  ; Override routine for Local/Static variables
    A_Index & 1  ? (_:=A_LoopField) : (%_%:=A_LoopField)
-   
+
 Listvars
  WinWaitClose, %A_ScriptFullPath%
 }
@@ -222,8 +222,8 @@ C has no direct support for named parameters to functions, but it does permit na
 {{works with|C99}}
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 // 1. Named parameters
 
@@ -260,15 +260,15 @@ int main(int argc, char **argv)
 	FTest((FTest_args){ .y = 10 });
 	FTest((FTest_args){ .y = 10, .z = 42 });
 	FT( .z = 47, .y = 10, .x = 42 );
-	
+
 	// Default parameters
 	DFT();
 	DFT( .z = 99 );
-	
+
 	// Default parameters with wrapper
 	DF2();
 	DF2( .z = 99 );
-	
+
 	return 0;
 }
 ```
@@ -309,7 +309,7 @@ public:
 private:
         int 	required_param_;
 	int 	optional_x_;
-	int 	optional_y_; 
+	int 	optional_y_;
 	float 	optional_z_;
 };
 ```
@@ -334,10 +334,10 @@ foo(foo_params(42).x(7).z(23.54));
 
 {{libheader|Boost}}
 
-If you want real named parameters you can use The Boost Parameter Library. 
+If you want real named parameters you can use The Boost Parameter Library.
 
-```cpp>#include <boost/parameter/name.hpp
-
+```cpp
+#include <boost/parameter/name.hpp>
 #include <boost/parameter/preprocessor.hpp>
 #include <string>
 
@@ -351,13 +351,13 @@ BOOST_PARAMETER_FUNCTION(
     function_with_named_parameters, // the name of the function.
     tag,  // part of the deep magic. If you use BOOST_PARAMETER_NAME you need to put "tag" here.
     (required // names and types of all required parameters, parentheses are required.
-        (foo, (int)) 
+        (foo, (int))
         (bar, (float))
     )
     (optional // names, types, and default values of all optional parameters.
         (baz, (bool) , false)
         (bonk, (std::string), "default value")
-    ) 
+    )
 )
 {
     if (baz && (bar > 1.0)) return foo;
@@ -641,7 +641,7 @@ Two regrettably unnatural examples:
 256 buffer: last-name
 : is ( a "name" -- )  parse-name rot place ;
 
-: greet ( -- ) 
+: greet ( -- )
   cr ." Hello, " first-name count type space  last-name count type ." !" ;
 
 first-name is Bob  last-name is Hall  greet
@@ -649,12 +649,12 @@ first-name is Bob  last-name is Hall  greet
 
 require mini-oof2.fs
 require string.fs
-object class 
+object class
   field: given-name
   field: surname
 end-class Person
 
-: hiya ( -- ) 
+: hiya ( -- )
   cr ." Hiya, " given-name $. space surname $. ." !" ;
 
 Person new >o s" Bob" given-name $!  s" Hall" surname $!  hiya o>
@@ -818,7 +818,7 @@ procedure testproc(A[])   #: demo to test named parameters
          stop("No parameter ",a)) &             #  . . no
             ((variable(a[1:-2]) := get(A))  |   #  assign
                runerr(205,a)))                  #  . . problem
-   
+
    write("   x:=",x)
    write("   y:=",y)
    write("   z:=",z)
@@ -856,28 +856,28 @@ J is similar to Perl in that all arguments to functions come in as separate elem
 ```j
 NB.  Strand notation
 myFunc['c:\file.txt'  906  'blue' fs]
-  
+
 NB.  Commas, like other langs
 myFunc['c:\file.txt', 906, 'blue' fs]
-  
+
 NB.  Unspecified args are defaulted ("optional")
 myFunc['c:\file.txt' fs]
-   
+
 NB.  Can use named arguments, like eg VB
 myFunc[color='blue'  fs]
-   
+
 NB.  Often values needn't be quoted
 myFunc[color= blue   fs]
-   
+
 NB.  Combination of comma syntax and name=value
 myFunc[max=906, color=blue fs]
-   
+
 NB.  Spelling of names is flexible
 myFunc[MAX=906, COLOR=blue fs]
 
 NB.  Order of names is flexible
 myFunc[COLOR=blue, MAX=906  fs]
-   
+
 NB.  Even the delimiters are flexible...
 myFunc<MAX=906, COLOR=blue fs>
 ```
@@ -946,7 +946,7 @@ For example, here is the jq analog of "print-name" defined in the Common Lisp se
 def formatName(obj):
   ({ "name": "?"} + obj) as $obj  # the default default value is null
   | ($obj|.name) as $name
-  | ($obj|.first) as $first 
+  | ($obj|.first) as $first
   | if ($first == null) then $name
     else $name + ", " + $first
     end;
@@ -957,7 +957,7 @@ def formatName(obj):
 Here are examples of how the function can be invoked:
 
 ```jq
- 
+
 formatName({"first": "George", "name": "Eliot"})
 
 formatName({"name": "Eliot", "first": "George"})
@@ -970,7 +970,7 @@ formatName({})
 
 ```
 
-  
+
 
 ## Julia
 
@@ -979,13 +979,13 @@ Julia supports arbitrary named keyword arguments, which are listed (with their d
 ```Julia
 function surround(string ; border = :default, padding = 0)
 
- ve, ho, ul, ur, dl, dr = 
+ ve, ho, ul, ur, dl, dr =
    border == :round ? ("\u2502","\u2500","\u256d","\u256e","\u2570","\u256f") :
    border == :bold  ? ("\u2503","\u2501","\u250F","\u2513","\u2517","\u251b") :
    border == :double? ("\u2551","\u2550","\u2554","\u2557","\u255a","\u255d") :
    border == :dotted? ("\u254e","\u254c","\u250c","\u2510","\u2514","\u2518") :
    border == :cross ? ("\u2502","\u2500","\u253c","\u253c","\u253c","\u253c") :
-                      ("\u2502","\u2500","\u250c","\u2510","\u2514","\u2518") 
+                      ("\u2502","\u2500","\u250c","\u2510","\u2514","\u2518")
 
  println(ul, ho^(length(string) + 2padding),  ur, "\n",
          ve, " "^padding, string," "^padding, ve, "\n",
@@ -1022,7 +1022,7 @@ fun someFunction(first: String, second: Int = 2, third: Double) {
 
 fun main(args: Array<String>) {
     // using positional parameters
-    someFunction("positional", 1, 2.0)    
+    someFunction("positional", 1, 2.0)
 
     // using named parameters
     someFunction(first = "named", second = 1, third = 2.0)
@@ -1031,7 +1031,7 @@ fun main(args: Array<String>) {
     someFunction(first = "omitted", third = 2.0)
 
     // using first and third parameters in reverse
-    someFunction(third = 2.0, first = "reversed")   
+    someFunction(third = 2.0, first = "reversed")
 }
 ```
 
@@ -1200,31 +1200,31 @@ Named parameters are not natively supported. However, the following code can be 
 
 
 ```Matlab
-   function foo(varargin) 
+   function foo(varargin)
       for k= 1:2:length(varargin);
          switch (varargin{k})
          case {'param1'}
             param1 = varargin{k+1};
          case {'param2'}
             param2 = varargin{k+1};
-	 end; 
-      end; 
-      printf('param1: %s\n',param1);	 
-      printf('param2: %s\n',param2);	 
-   end;  
-   
-   foo('param1','a1','param2','b2'); 
-   foo('param2','b2','param1','a1');  
+	 end;
+      end;
+      printf('param1: %s\n',param1);
+      printf('param2: %s\n',param2);
+   end;
+
+   foo('param1','a1','param2','b2');
+   foo('param2','b2','param1','a1');
 ```
 
 
-Output: 
+Output:
 
 ```txt
->>    foo('param1','a1','param2','b2'); 
+>>    foo('param1','a1','param2','b2');
 param1: a1
 param2: b2
->>    foo('param2','b2','param1','a1'); 
+>>    foo('param2','b2','param1','a1');
 param1: a1
 param2: b2
 ```
@@ -1431,13 +1431,13 @@ sub event
     my %params = %$params_ref;
     my @known_params = qw(attendees event food time);
 
-    printf "%s called event() with the following named parameters:\n", 
+    printf "%s called event() with the following named parameters:\n",
         $name // 'Anonymous';
 
-    say sort map { 
-        sprintf "%s: %s\n", 
+    say sort map {
+        sprintf "%s: %s\n",
             ucfirst $_,
-            ref $params{$_} eq ref [] 
+            ref $params{$_} eq ref []
             ? join ', ', @{ $params{$_} }
             : $params{$_};
     } grep exists $params{$_}, @known_params;
@@ -1451,7 +1451,7 @@ sub event
 }
 
 event(
-    {   # Curly braces with no label (e.g. 'sub' before it) 
+    {   # Curly braces with no label (e.g. 'sub' before it)
         # create a reference to an anonymous hash
         attendees => ['Bob', 'Betty', 'George', 'Bertha'],
         event     => 'birthday',
@@ -1737,7 +1737,7 @@ Parameters can be made optional by providing a default argument, as described in
 ### =Function Definition Parameters=
 
 Function definitions in Python allow for the following ''parameter'' types:
-* Optional ''default parameter'' types which are explicitly specified by name, and may have an optional default value. 
+* Optional ''default parameter'' types which are explicitly specified by name, and may have an optional default value.
 * An optional ''positional parameter'' which is an identifier preceded by <code>"*"</code>.
 * And an optional ''keyword parameter'' which is an identifier preceded by <code>"**"</code>.
 If any of the parameter types are given then they must appear in the order specified above.
@@ -1764,10 +1764,10 @@ The call of a function in python can use the following ''argument'' types:
 * ''Sequence arguments'' that are the character <code>"*"</code> followed by an expression evaluating to a sequence (such as a list or tuple). The values from the sequence are unpacked and mapped like individual positional arguments to <code>defparameter</code>s of the function definition. Sequence arguments are “evaluated before any keyword argument, irrespecctive of their relative positions in an argument list”.
 * All positional arguments must appear before any keyword argument.
 * ''Keyword arguments'' of the form <code>parameter_name "=" value</code> will map the value to the <code>defparameter</code> in the definition of the same name.
-* ''Mapping arguments'' that are the characters <code>"**"</code> followed by an expression evaluating to a mapping (such as a dict/hash). The key, value pairs from the mapping are unpacked and mapped like individual keyword arguments to <code>defparameter</code>s of the function definition. 
+* ''Mapping arguments'' that are the characters <code>"**"</code> followed by an expression evaluating to a mapping (such as a dict/hash). The key, value pairs from the mapping are unpacked and mapped like individual keyword arguments to <code>defparameter</code>s of the function definition.
 * If the function ''definition'' includes a ''positional parameter'', then if the assignment of ''positional arguments'' and ''sequence arguments'' in the ''call'' gives more values than the <code>defparameters</code> of the definition, then these extra arguments are assembled, in order, into a tuple that is assigned to the <code>posparameter</code> of the definition.
 * If the function ''definition'' includes a ''keyword parameter'', then if the parameter name of any ''keyword arguments'' and ''mapping arguments'' in the ''call'' is unknown in the <code>defparameters</code> of the function definition, then these extra keyword/value pairs are assembled into a dict that is assigned to the <code>keyparameter</code> of the definition.
-* Any ''default parameter'' of the function ''definition'' that is not assigned a value at this point, but which has a default value, will be aassigned this default value, without re-evaluating the default value. 
+* Any ''default parameter'' of the function ''definition'' that is not assigned a value at this point, but which has a default value, will be aassigned this default value, without re-evaluating the default value.
 * Any  ''default parameter'' of the function ''definition'' that is still un-assigned will cause a <code>TypeError</code> exception to be raised.
 * In addition, multiple mappings to any parameter will raise a <code>TypeError</code> exception. (This includes multiple mappings into a <code>keyparameter</code> or keyword arguments clashing with positional/sequence arguments).
 
@@ -1794,7 +1794,7 @@ The more formal definition of a function call's syntax is
 
 ```python>>>
  from __future__ import print_function
->>> 
+>>>
 >>> def show_args(defparam1, defparam2 = 'default value', *posparam, **keyparam):
   "Straight-forward function to show its arguments"
   print ("  Default Parameters:")
@@ -1817,7 +1817,7 @@ The more formal definition of a function call's syntax is
   else:
     print ("    <None>")
 
-    
+
 >>> show_args('POSITIONAL', 'ARGUMENTS')
   Default Parameters:
     defparam1 value is: POSITIONAL
@@ -1858,7 +1858,7 @@ The more formal definition of a function call's syntax is
     <None>
   Keyword Arguments (by sorted key name):
     <None>
->>> show_args('POSITIONAL', 'ARGUMENTS', 
+>>> show_args('POSITIONAL', 'ARGUMENTS',
               'EXTRA', 'POSITIONAL', 'ARGUMENTS')
   Default Parameters:
     defparam1 value is: POSITIONAL
@@ -1869,7 +1869,7 @@ The more formal definition of a function call's syntax is
     positional argument: 2 is: ARGUMENTS
   Keyword Arguments (by sorted key name):
     <None>
->>> show_args('POSITIONAL', 'ARGUMENTS', 
+>>> show_args('POSITIONAL', 'ARGUMENTS',
               kwa1='EXTRA', kwa2='KEYWORD', kwa3='ARGUMENTS')
   Default Parameters:
     defparam1 value is: POSITIONAL
@@ -1880,8 +1880,8 @@ The more formal definition of a function call's syntax is
     keyword argument: kwa1 is: EXTRA
     keyword argument: kwa2 is: KEYWORD
     keyword argument: kwa3 is: ARGUMENTS
->>> show_args('POSITIONAL', 
-              'ARGUMENTS', 'EXTRA', 'POSITIONAL', 'ARGUMENTS', 
+>>> show_args('POSITIONAL',
+              'ARGUMENTS', 'EXTRA', 'POSITIONAL', 'ARGUMENTS',
               kwa1='EXTRA', kwa2='KEYWORD', kwa3='ARGUMENTS')
   Default Parameters:
     defparam1 value is: POSITIONAL
@@ -1895,8 +1895,8 @@ The more formal definition of a function call's syntax is
     keyword argument: kwa2 is: KEYWORD
     keyword argument: kwa3 is: ARGUMENTS
 >>> # But note:
->>> show_args('POSITIONAL', 'ARGUMENTS', 
-              kwa1='EXTRA', kwa2='KEYWORD', kwa3='ARGUMENTS', 
+>>> show_args('POSITIONAL', 'ARGUMENTS',
+              kwa1='EXTRA', kwa2='KEYWORD', kwa3='ARGUMENTS',
               'EXTRA', 'POSITIONAL', 'ARGUMENTS')
 SyntaxError: non-keyword arg after keyword arg
 >>>
@@ -1960,7 +1960,7 @@ Racket has built-in keyword and optional arguments:
 
 (define (pizza sauce
                ;; mandatory keyword argument
-               #:topping topping 
+               #:topping topping
                ;; optional keyword argument with default
                #:type [type "deep dish"])
   (printf "~a pizza with ~a sauce topped with ~a~n"
@@ -2259,7 +2259,7 @@ As for [[Named Arguments#Objective-C|Objective-C]] the ''methods signature'' is 
 Object subclass: AnotherClass [
    "..."
    initWithArray: anArray [ "single argument" ]
-   initWithArray: anArray andString: aString [ 
+   initWithArray: anArray andString: aString [
         "two args; these two methods in usage resemble
          a named argument, with optional andString argument"
    ]
@@ -2318,7 +2318,7 @@ Suneido can handle named and unnamed parameters.  When using a combination, unna
 
 test = function (one, two, three = '', four = '', five = '')
     {
-    Print('one: ' $ one $ ', two: ' $ two $ ', three: ' $ three $ 
+    Print('one: ' $ one $ ', two: ' $ two $ ', three: ' $ three $
         ', four: ' $ four $ ', five: ' $ five)
     }
 test('1', '2', five: '5', three: '3')

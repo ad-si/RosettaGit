@@ -30,7 +30,7 @@ Use your routine to show here the output for ''at least'' the following (inclusi
 with Ada.Text_IO;
 
 procedure Nth is
-   
+
    function Suffix(N: Natural) return String is
    begin
       if    N mod 10 = 1 and then N mod 100 /= 11 then return "st";
@@ -39,7 +39,7 @@ procedure Nth is
       else return "th";
       end if;
    end Suffix;
-      
+
    procedure Print_Images(From, To: Natural) is
    begin
       for I in From .. To loop
@@ -47,7 +47,7 @@ procedure Nth is
       end loop;
       Ada.Text_IO.New_Line;
    end Print_Images;
-   
+
 begin
    Print_Images(   0,   25);
    Print_Images( 250,  265);
@@ -169,14 +169,14 @@ end ordinalSuffix
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     -- showOrdinals :: [Int] -> [String]
     script showOrdinals
         on |λ|(lstInt)
             map(ordinalString, lstInt)
         end |λ|
     end script
-    
+
     map(showOrdinals, ¬
         map(uncurry(enumFromTo), ¬
             [[0, 25], [250, 265], [1000, 1025]]))
@@ -210,7 +210,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -237,13 +237,13 @@ end uncurry
 
 ```txt
 {{"0th", "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th",
-"10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", 
-"19th", "20th", "21st", "22nd", "23rd", "24th", "25th"}, 
-{"250th", "251st", "252nd", "253rd", "254th", "255th", "256th", "257th", 
-"258th", "259th", "260th", "261st", "262nd", "263rd", "264th", "265th"}, 
-{"1000th", "1001st", "1002nd", "1003rd", "1004th", "1005th", "1006th", 
-"1007th", "1008th", "1009th", "1010th", "1011th", "1012th", "1013th", 
-"1014th", "1015th", "1016th", "1017th", "1018th", "1019th", "1020th", 
+"10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th",
+"19th", "20th", "21st", "22nd", "23rd", "24th", "25th"},
+{"250th", "251st", "252nd", "253rd", "254th", "255th", "256th", "257th",
+"258th", "259th", "260th", "261st", "262nd", "263rd", "264th", "265th"},
+{"1000th", "1001st", "1002nd", "1003rd", "1004th", "1005th", "1006th",
+"1007th", "1008th", "1009th", "1010th", "1011th", "1012th", "1013th",
+"1014th", "1015th", "1016th", "1017th", "1018th", "1019th", "1020th",
 "1021st", "1022nd", "1023rd", "1024th", "1025th"}}
 ```
 
@@ -308,9 +308,9 @@ Ordinal(n) {
 {{Out}}
 
 ```txt
-0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th 
-250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th 
-1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th 
+0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th
+250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th
+1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th
 ```
 
 
@@ -374,18 +374,18 @@ function nth(yearday,  nthday) {
 ```babel
 ((irregular ("st" "nd" "rd"))
 
-(main 
+(main
     {(0 250 1000)
     { test ! "\n" << }
     each})
 
-(test { 
-    <- 
-    {iter 1 - -> dup <- + ordinalify ! << 
-        {iter 10 %} {"  "} {"\n"} ifte << } 
+(test {
+    <-
+    {iter 1 - -> dup <- + ordinalify ! <<
+        {iter 10 %} {"  "} {"\n"} ifte << }
     26 times})
 
-(ordinalify { 
+(ordinalify {
     <-
     {{ -> dup <- 100 % 10 cugt } !
      { -> dup <- 100 % 14 cult } !
@@ -394,7 +394,7 @@ function nth(yearday,  nthday) {
      { -> dup <- 10  % 4  cult } !
      and
      and}
-        { -> dup 
+        { -> dup
             <- %d "'"
             irregular -> 10 % 1 - ith
             . . }
@@ -576,9 +576,9 @@ v"d"\*!`3:%+55<9
 ## C
 
 
-```c>#include <stdio.h
+```c
+#include <stdio.h>
 
- 
 char* addSuffix(int num, char* buf, size_t len)
 {
     char *suffixes[4] = { "th", "st", "nd", "rd" };
@@ -594,7 +594,7 @@ char* addSuffix(int num, char* buf, size_t len)
                  break;
         default: i = 0;
     };
- 
+
     snprintf(buf, len, "%d%s", num, suffixes[i]);
     return buf;
 }
@@ -609,7 +609,7 @@ int main(void)
         char s[5];
         printf("%s ", addSuffix(i, s, 5));
     }
-    putchar('\n'); 
+    putchar('\n');
 
     printf("Set [250,265]:\n");
     for (i = 250; i < 266; i++)
@@ -617,7 +617,7 @@ int main(void)
         char s[6];
         printf("%s ", addSuffix(i, s, 6));
     }
-    putchar('\n'); 
+    putchar('\n');
 
     printf("Set [1000,1025]:\n");
     for (i = 1000; i < 1026; i++)
@@ -635,9 +635,9 @@ int main(void)
 
 ```txt
 Set [0,25] :
-0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th 
+0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th
 Set [250,265] :
-250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th 
+250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th
 Set [1000,1025] :
 1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th
 ```
@@ -647,8 +647,8 @@ Set [1000,1025] :
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 
 using namespace std;
@@ -672,19 +672,19 @@ int main()
     cout << "Set [0,25]:" << endl;
     for (int i = 0; i < 26; i++)
         cout << i << Suffix(i) << " ";
-    
+
     cout << endl;
 
     cout << "Set [250,265]:" << endl;
     for (int i = 250; i < 266; i++)
         cout << i << Suffix(i) << " ";
-   
+
     cout << endl;
 
     cout << "Set [1000,1025]:" << endl;
     for (int i = 1000; i < 1026; i++)
         cout << i << Suffix(i) << " ";
-   
+
     cout << endl;
 
     return 0;
@@ -695,9 +695,9 @@ int main()
 
 ```txt
 Set [0,25] :
-0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th 
+0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th
 Set [250,265] :
-250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th 
+250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th
 Set [1000,1025] :
 1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th
 ```
@@ -890,8 +890,8 @@ Display the results:
 {{Out}}
 
 ```txt
-0 to 25: 0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th 
-250 to 265: 250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th 
+0 to 25: 0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th
+250 to 265: 250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th
 1000 to 1025: 1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th
 ```
 
@@ -918,7 +918,7 @@ struct Int
     "#{self}#{ordinal}"
   end
 end
- 
+
 [(0..25),(250..265),(1000..1025)].each{|r| puts r.map{ |n| n.ordinalize }.join(", "); puts}
 
 ```
@@ -972,7 +972,7 @@ ELENA 4.1 :
 import extensions;
 import system'math;
 import system'routines;
- 
+
 extension op
 {
     ordinalize()
@@ -982,16 +982,16 @@ extension op
         {
             ^ i.Printable + "th"
         };
- 
+
         (i.mod:10) =>
             1 { ^ i.Printable + "st" }
             2 { ^ i.Printable + "nd" }
             3 { ^ i.Printable + "rd" };
- 
+
         ^ i.Printable + "th"
     }
 }
- 
+
 public program()
 {
     console.printLine(new Range(0,26).selectBy(mssgconst ordinalize<op>[0]));
@@ -1061,7 +1061,7 @@ PROGRAM NTH_SOLVE
 !
 ! for rosettacode.org
 !
- 
+
 PROCEDURE NTH(S%,E%)
       LOCAL I%,SUFF$
       FOR I%=S% TO E% DO
@@ -1105,7 +1105,7 @@ let ordinalsuffix n =
     let suffixstrings = [|"th"; "st"; "nd"; "rd"|]
     let (d, r) = Math.DivRem(n, 10)
     n.ToString() + suffixstrings.[ if r < 4 && (d &&& 1) = 0 then r else 0 ]
-    
+
 
 [<EntryPoint>]
 let main argv =
@@ -1205,7 +1205,7 @@ tests
 
 
 THE INSTRUCTIONS!
-Write a function/method/subroutine/... that when given an integer greater than or equal to zero returns a string of the number followed by an apostrophe then the ordinal suffix. 
+Write a function/method/subroutine/... that when given an integer greater than or equal to zero returns a string of the number followed by an apostrophe then the ordinal suffix.
 Example returns would include 1'st 2'nd 3'rd 11'th 111'th 1001'st 1012'th
 
 
@@ -1233,15 +1233,15 @@ Please find the compilation instructions and examples in comments at the start o
 !                258'th                259'th                260'th
 !                261'st                262'nd                263'rd
 !                264'th                265'th
-!                                     1000th                1001st 
-!               1002nd                1003rd                1004th 
-!               1005th                1006th                1007th 
-!               1008th                1009th                1010th 
-!               1011th                1012th                1013th 
-!               1014th                1015th                1016th 
-!               1017th                1018th                1019th 
-!               1020th                1021st                1022nd 
-!               1023rd                1024th                1025th 
+!                                     1000th                1001st
+!               1002nd                1003rd                1004th
+!               1005th                1006th                1007th
+!               1008th                1009th                1010th
+!               1011th                1012th                1013th
+!               1014th                1015th                1016th
+!               1017th                1018th                1019th
+!               1020th                1021st                1022nd
+!               1023rd                1024th                1025th
 !
 !Compilation finished at Fri Jun  6 15:40:18
 
@@ -1322,16 +1322,16 @@ Function ordinal(n As UInteger) As String
     Case "0", "4" To "9"
       Return ns + "th"
     Case "1"
-      If Right(ns, 2) = "11" Then Return ns + "th" 
+      If Right(ns, 2) = "11" Then Return ns + "th"
       Return ns + "st"
     Case "2"
-      If Right(ns, 2) = "12" Then Return ns + "th" 
+      If Right(ns, 2) = "12" Then Return ns + "th"
       Return ns + "nd"
     Case "3"
-      If Right(ns, 2) = "13" Then Return ns + "th" 
+      If Right(ns, 2) = "13" Then Return ns + "th"
       Return ns + "rd"
   End Select
-End Function    
+End Function
 
 Dim i As Integer
 For i = 0 To 25
@@ -1360,7 +1360,7 @@ Sleep
 
 250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th
 
-1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 
+1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th
 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th
 ```
 
@@ -1386,16 +1386,16 @@ For siNumbers = 0 To 4 Step 2
   Print gb.NewLine
 Next
 
-End 
+End
 ```
 
 Output:
 
 ```txt
 
-0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th 
+0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th
 
-250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th 
+250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th
 
 1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th
 
@@ -1451,9 +1451,9 @@ func main() {
 
 ```txt
 
-0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th 
-250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th 
-1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th 
+0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th
+250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th
+1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th
 
 ```
 
@@ -1474,9 +1474,9 @@ func main() {
 80  LET LOLIM% = 1000
 90  LET HILIM% = 1025
 100 GOSUB 1000
-110 END 
- 
-995  ' Print images 
+110 END
+
+995  ' Print images
 1000 FOR I% = LOLIM% TO HILIM%
 1010  LET NR% = I%
 1020  GOSUB 1500
@@ -1484,12 +1484,12 @@ func main() {
 1040  PRINT RIGHT$(SI$, LEN(SI$) - 1); SUF$; " ";
 1050 NEXT I%
 1060 PRINT
-1070 RETURN 
+1070 RETURN
 
 1495 ' Get suffix
 1500 IF (NR% MOD 10 = 1) AND (NR% MOD 100 <> 11) THEN LET SUF$ = "st": GOTO 2000
 1600 IF (NR% MOD 10 = 2) AND (NR% MOD 100 <> 12) THEN LET SUF$ = "nd": GOTO 2000
-1700 IF (NR% MOD 10 = 3) AND (NR% MOD 100 <> 13) THEN LET SUF$ = "rd": GOTO 2000 
+1700 IF (NR% MOD 10 = 3) AND (NR% MOD 100 <> 13) THEN LET SUF$ = "rd": GOTO 2000
 1800 LET SUF$ = "th"
 2000 RETURN
 
@@ -1499,9 +1499,9 @@ func main() {
 
 ```txt
 
-0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th                                         
-250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th                                                               
-1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th   
+0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th
+250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th
+1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th
 
 ```
 
@@ -1567,9 +1567,9 @@ end
 ```txt
 
 ->nth
- 0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13h 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th 
- 250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th 
- 1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013h 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th 
+ 0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13h 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th
+ 250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th
+ 1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013h 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th
 ->
 
 ```
@@ -1618,7 +1618,7 @@ public class Nth {
 		}
 		return ans;
 	}
-	
+
 	public static void main(String[] args){
 		for(int i = 0; i <= 25;i++){
 			System.out.print(i + ordinalAbbrev(i) + " ");
@@ -1675,7 +1675,7 @@ public interface Nth {
       end
     };
   }
- 
+
   public static void main(String... arguments){
     Stream.of(
       startAndEnd(0, 25),
@@ -1691,9 +1691,9 @@ public interface Nth {
 {{out}}
 
 ```txt
-0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th 
-250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th 
-1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th 
+0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th
+250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th
+1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th
 ```
 
 
@@ -1730,7 +1730,7 @@ console.log(function () {
   return [[0, 25], [250, 265], [1000, 1025]].map(function (tpl) {
     return range.apply(null, tpl).map(fnOrdinalForm).join(' ');
   }).join('\n\n');
-  
+
 }());
 ```
 
@@ -1766,13 +1766,13 @@ console.log(function () {
                 11 <= n % 100 && 13 >= n % 100 ?
                 "th" : lstSuffix[n % 10]
             ),
-    
+
         // range :: Int -> Int -> [Int]
         range = (m, n) =>
             Array.from({
                 length: (n - m) + 1
             }, (_, i) => m + i);
-            
+
 
     return lstTestRanges
         .map(tpl => range
@@ -1788,14 +1788,14 @@ console.log(function () {
 {{Out}}
 
 ```txt
-[["0th", "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", 
-"9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th", 
-"17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th"], 
-["250th", "251st", "252nd", "253rd", "254th", "255th", "256th", "257th", 
-"258th", "259th", "260th", "261st", "262nd", "263rd", "264th", "265th"], 
-["1000th", "1001st", "1002nd", "1003rd", "1004th", "1005th", "1006th", 
-"1007th", "1008th", "1009th", "1010th", "1011th", "1012th", "1013th", 
-"1014th", "1015th", "1016th", "1017th", "1018th", "1019th", "1020th", 
+[["0th", "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th",
+"9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th",
+"17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th"],
+["250th", "251st", "252nd", "253rd", "254th", "255th", "256th", "257th",
+"258th", "259th", "260th", "261st", "262nd", "263rd", "264th", "265th"],
+["1000th", "1001st", "1002nd", "1003rd", "1004th", "1005th", "1006th",
+"1007th", "1008th", "1009th", "1010th", "1011th", "1012th", "1013th",
+"1014th", "1015th", "1016th", "1017th", "1018th", "1019th", "1020th",
 "1021st", "1022nd", "1023rd", "1024th", "1025th"]]
 ```
 
@@ -1813,7 +1813,7 @@ def ordinalize:
  | (if 11 <= $small and $small <= 13 then "th"
     else
     ( $num % 10)
-      | (if   . == 1 then "st" 
+      | (if   . == 1 then "st"
          elif . == 2 then "nd"
          elif . == 3 then "rd"
          else             "th"
@@ -1985,9 +1985,9 @@ function getSuffix (n)
     if lastOne == 3 then return "rd" end
     return "th"
 end
- 
+
 function Nth (n) return n .. "'" .. getSuffix(n) end
- 
+
 for i = 0, 25 do print(Nth(i), Nth(i + 250), Nth(i + 1000)) end
 ```
 
@@ -2062,9 +2062,9 @@ end do;
 
 ```txt
 
-0th   1st   2nd   3rd   4th   5th   6th   7th   8th   9th   10th   11th   12th   13th   14th   15th   16th   17th   18th   19th   20th   21st   22nd   23rd   24th   25th   
+0th   1st   2nd   3rd   4th   5th   6th   7th   8th   9th   10th   11th   12th   13th   14th   15th   16th   17th   18th   19th   20th   21st   22nd   23rd   24th   25th
 
-250th   251st   252nd   253rd   254th   255th   256th   257th   258th   259th   260th   261st   262nd   263rd   264th   265th   
+250th   251st   252nd   253rd   254th   255th   256th   257th   258th   259th   260th   261st   262nd   263rd   264th   265th
 
 1000th   1001st   1002nd   1003rd   1004th   1005th   1006th   1007th   1008th   1009th   1010th   1011th   1012th   1013th   1014th   1015th   1016th   1017th   1018th   1019th   1020th   1021st   1022nd   1023rd   1024th   1025th
 
@@ -2152,7 +2152,7 @@ PrintImages()
 loLim = 1000
 hiLim = 1025
 PrintImages()
- 
+
 Sub PrintImages
   For i = loLim To hiLim
     nr = i
@@ -2160,10 +2160,10 @@ Sub PrintImages
     TextWindow.Write(i + suffix + " ")
   EndFor
   TextWindow.WriteLine("")
-EndSub  
- 
+EndSub
+
 Sub GetSuffix
-  rem10  = Math.Remainder(nr, 10)  
+  rem10  = Math.Remainder(nr, 10)
   rem100 = Math.Remainder(nr, 100)
   If rem10 = 1 And rem100 <> 11 Then
     suffix = "st"
@@ -2173,7 +2173,7 @@ Sub GetSuffix
     suffix = "rd"
   Else
     suffix = "th"
-  EndIf      
+  EndIf
 EndSub
 
 ```
@@ -2288,10 +2288,10 @@ for j in countup(0, 1000, 250):
 {{out}}
 
 ```txt
-0'th 1'st 2'nd 3'rd 4'th 5'th 6'th 7'th 8'th 9'th 10'th 11'th 12'th 13'th 14'th 15'th 16'th 17'th 18'th 19'th 20'th 21'st 22'nd 23'rd 24'th 
-250'th 251'st 252'nd 253'rd 254'th 255'th 256'th 257'th 258'th 259'th 260'th 261'st 262'nd 263'rd 264'th 265'th 266'th 267'th 268'th 269'th 270'th 271'st 272'nd 273'rd 274'th 
-500'th 501'st 502'nd 503'rd 504'th 505'th 506'th 507'th 508'th 509'th 510'th 511'th 512'th 513'th 514'th 515'th 516'th 517'th 518'th 519'th 520'th 521'st 522'nd 523'rd 524'th 
-750'th 751'st 752'nd 753'rd 754'th 755'th 756'th 757'th 758'th 759'th 760'th 761'st 762'nd 763'rd 764'th 765'th 766'th 767'th 768'th 769'th 770'th 771'st 772'nd 773'rd 774'th 
+0'th 1'st 2'nd 3'rd 4'th 5'th 6'th 7'th 8'th 9'th 10'th 11'th 12'th 13'th 14'th 15'th 16'th 17'th 18'th 19'th 20'th 21'st 22'nd 23'rd 24'th
+250'th 251'st 252'nd 253'rd 254'th 255'th 256'th 257'th 258'th 259'th 260'th 261'st 262'nd 263'rd 264'th 265'th 266'th 267'th 268'th 269'th 270'th 271'st 272'nd 273'rd 274'th
+500'th 501'st 502'nd 503'rd 504'th 505'th 506'th 507'th 508'th 509'th 510'th 511'th 512'th 513'th 514'th 515'th 516'th 517'th 518'th 519'th 520'th 521'st 522'nd 523'rd 524'th
+750'th 751'st 752'nd 753'rd 754'th 755'th 756'th 757'th 758'th 759'th 760'th 761'st 762'nd 763'rd 764'th 765'th 766'th 767'th 768'th 769'th 770'th 771'st 772'nd 773'rd 774'th
 1000'th 1001'st 1002'nd 1003'rd 1004'th 1005'th 1006'th 1007'th 1008'th 1009'th 1010'th 1011'th 1012'th 1013'th 1014'th 1015'th 1016'th 1017'th 1018'th 1019'th 1020'th 1021'st 1022'nd 1023'rd 1024'th
 ```
 
@@ -2326,9 +2326,9 @@ let () =
 
 ```txt
 
-0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th 
-250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th 
-1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th 
+0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th
+250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th
+1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th
 
 ```
 
@@ -2344,7 +2344,7 @@ let () =
    n "th" over 10 mod ->r
    r 1 == ifTrue: [ n 100 mod 11 == ifFalse: [ drop "st" ] ]
    r 2 == ifTrue: [ n 100 mod 12 == ifFalse: [ drop "nd" ] ]
-   r 3 == ifTrue: [ n 100 mod 13 == ifFalse: [ drop "rd" ] ]  
+   r 3 == ifTrue: [ n 100 mod 13 == ifFalse: [ drop "rd" ] ]
    + ;
 ```
 
@@ -2571,7 +2571,7 @@ function nth($num) {
         $os = "rd";
         break;
     }
-  } 
+  }
   return $num . $os;
 }
 
@@ -2588,8 +2588,8 @@ foreach ([[0,25], [250,265], [1000,1025]] as $i) {
 
 ```txt
 
-0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th 
-250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th 
+0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th
+250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th
 1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th
 
 ```
@@ -2610,7 +2610,7 @@ foreach ([[0,25], [250,265], [1000,1025]] as $i) {
                   (3 'rd)
                   (T 'th) ) ) ) )
          (range A B) ) )
-         
+
 (prinl (glue " " (rangeth 0 25)))
 (prinl (glue " " (rangeth 250 265)))
 (prinl (glue " " (rangeth 1000 1025)))
@@ -2752,7 +2752,7 @@ function Get-Nth ([int]$Number)
 1006th                     1007th                     1008th                     1009th                     1010th
 1011st                     1012nd                     1013rd                     1014th                     1015th
 1016th                     1017th                     1018th                     1019th                     1020th
-1021st                     1022nd                     1023rd                     1024th                     1025th                   
+1021st                     1022nd                     1023rd                     1024th                     1025th
 
 ```
 
@@ -2791,11 +2791,11 @@ test :-
 ```txt
 
 ?- test.
-0th, 1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th, 9th, 10th, 11th, 12th, 13th, 14th, 15th, 16th, 17th, 18th, 19th, 20th, 21st, 22nd, 23rd, 24th, 25th, 
+0th, 1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th, 9th, 10th, 11th, 12th, 13th, 14th, 15th, 16th, 17th, 18th, 19th, 20th, 21st, 22nd, 23rd, 24th, 25th,
 
-250th, 251st, 252nd, 253rd, 254th, 255th, 256th, 257th, 258th, 259th, 260th, 261st, 262nd, 263rd, 264th, 265th, 
+250th, 251st, 252nd, 253rd, 254th, 255th, 256th, 257th, 258th, 259th, 260th, 261st, 262nd, 263rd, 264th, 265th,
 
-1000th, 1001st, 1002nd, 1003rd, 1004th, 1005th, 1006th, 1007th, 1008th, 1009th, 1010th, 1011th, 1012th, 1013th, 1014th, 1015th, 1016th, 1017th, 1018th, 1019th, 1020th, 1021st, 1022nd, 1023rd, 1024th, 1025th, 
+1000th, 1001st, 1002nd, 1003rd, 1004th, 1005th, 1006th, 1007th, 1008th, 1009th, 1010th, 1011th, 1012th, 1013th, 1014th, 1015th, 1016th, 1017th, 1018th, 1019th, 1020th, 1021st, 1022nd, 1023rd, 1024th, 1025th,
 true.
 
 ```
@@ -2850,10 +2850,10 @@ if __name__ == '__main__':
 
 0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th
 18th 19th 20th 21st 22nd 23rd 24th 25th
-250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 
+250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd
 263rd 264th 265th
-1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 
-1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 
+1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th
+1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st
 1022nd 1023rd 1024th 1025th
 
 ```
@@ -2867,15 +2867,15 @@ Note that R vectors are 1-indexed.
 nth <- function(n)
 {
   if (length(n) > 1) return(sapply(n, nth))
-  
+
   mod <- function(m, n) ifelse(!(m%%n), n, m%%n)
   suffices <- c("th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th")
-  
-  if (n %% 100 <= 10 || n %% 100 > 20) 
+
+  if (n %% 100 <= 10 || n %% 100 > 20)
     suffix <- suffices[mod(n+1, 10)]
-  else 
+  else
     suffix <- 'th'
-  
+
   paste(n, "'", suffix, sep="")
 }
 
@@ -2887,7 +2887,7 @@ sapply(range, nth)
 {{out}}
 
 ```txt
-      [,1]    [,2]     [,3]     [,4]     [,5]     
+      [,1]    [,2]     [,3]     [,4]     [,5]
  [1,] "0'th"  "250'th" "500'th" "750'th" "1000'th"
  [2,] "1'st"  "251'st" "501'st" "751'st" "1001'st"
  [3,] "2'nd"  "252'nd" "502'nd" "752'nd" "1002'nd"
@@ -2992,7 +2992,7 @@ numbers from   1000  to  1025  (inclusive):
 
 ```ring
 
-for nr = 0 to 25 
+for nr = 0 to 25
     see Nth(nr) + Nth(nr + 250) + Nth(nr + 1000) + nl
 next
 
@@ -3004,7 +3004,7 @@ func getSuffix n
      if lastOne = 2 return "nd" ok
      if lastOne = 3 return "rd" ok
      return "th"
- 
+
 func Nth n
      return  "" + n + "'" +  getSuffix(n) + " "
 
@@ -3085,9 +3085,9 @@ fn main() {
 
 ```txt
 [0, 26) :
-0th, 1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th, 9th, 10th, 11th, 12th, 13th, 14th, 15th, 16th, 17th, 18th, 19th, 20th, 21st, 22nd, 23rd, 24th, 25th, 
+0th, 1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th, 9th, 10th, 11th, 12th, 13th, 14th, 15th, 16th, 17th, 18th, 19th, 20th, 21st, 22nd, 23rd, 24th, 25th,
 [250, 266) :
-250th, 251st, 252nd, 253rd, 254th, 255th, 256th, 257th, 258th, 259th, 260th, 261st, 262nd, 263rd, 264th, 265th, 
+250th, 251st, 252nd, 253rd, 254th, 255th, 256th, 257th, 258th, 259th, 260th, 261st, 262nd, 263rd, 264th, 265th,
 [1000, 1026) :
 1000th, 1001st, 1002nd, 1003rd, 1004th, 1005th, 1006th, 1007th, 1008th, 1009th, 1010th, 1011th, 1012th, 1013th, 1014th, 1015th, 1016th, 1017th, 1018th, 1019th, 1020th, 1021st, 1022nd, 1023rd, 1024th, 1025th,
 ```
@@ -3162,9 +3162,9 @@ const proc: main is func
 
 ```txt
 
-0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th 
-250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th 
-1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th 
+0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th
+250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th
+1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th
 
 ```
 
@@ -3398,7 +3398,7 @@ func addSuffix(n:Int) -> String {
     if n % 100 / 10 == 1 {
         return "th"
     }
-    
+
     switch n % 10 {
     case 1:
         return "st"
@@ -3429,9 +3429,9 @@ println()
 
 ```txt
 
-0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th 
-250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th 
-1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th 
+0th 1st 2nd 3rd 4th 5th 6th 7th 8th 9th 10th 11th 12th 13th 14th 15th 16th 17th 18th 19th 20th 21st 22nd 23rd 24th 25th
+250th 251st 252nd 253rd 254th 255th 256th 257th 258th 259th 260th 261st 262nd 263rd 264th 265th
+1000th 1001st 1002nd 1003rd 1004th 1005th 1006th 1007th 1008th 1009th 1010th 1011th 1012th 1013th 1014th 1015th 1016th 1017th 1018th 1019th 1020th 1021st 1022nd 1023rd 1024th 1025th
 
 ```
 

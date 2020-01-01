@@ -18,24 +18,24 @@ We have a configuration file as follows:
  #
  # Lines begininning with a hash or a semicolon are ignored by the application
  # program. Blank lines are also ignored by the application program.
- 
+
  # The first word on each non comment line is the configuration option.
  # Remaining words or numbers on the line are configuration parameter
  # data fields.
- 
+
  # Note that configuration option names are not case sensitive. However,
  # configuration parameter data is case sensitive and the lettercase must
  # be preserved.
- 
+
  # This is a favourite fruit
  FAVOURITEFRUIT banana
- 
+
  # This is a boolean that should be set
  NEEDSPEELING
- 
+
  # This boolean is commented out
  ; SEEDSREMOVED
- 
+
  # How many bananas we have
  NUMBEROFBANANAS 48
 
@@ -58,7 +58,7 @@ If a configuration option does not exist within the file (in either enabled or d
 
 For the purpose of this task, the revised file should contain appropriate entries, whether enabled or not for needspeeling,seedsremoved,numberofbananas and numberofstrawberries.)
 
-The update should rewrite configuration option names in capital letters. However lines beginning with hashes and any parameter data must not be altered (eg the banana for favourite fruit must not become capitalized). The update process should also replace double semicolon prefixes with just a single semicolon (unless it is uncommenting the option, in which case it should remove all leading semicolons). 
+The update should rewrite configuration option names in capital letters. However lines beginning with hashes and any parameter data must not be altered (eg the banana for favourite fruit must not become capitalized). The update process should also replace double semicolon prefixes with just a single semicolon (unless it is uncommenting the option, in which case it should remove all leading semicolons).
 
 Any lines beginning with a semicolon or groups of semicolons, but no following option should be removed, as should any leading or trailing whitespace on the lines. Whitespace between the option and parameters should consist only of a single
 space, and any non-ASCII extended characters, tabs characters, or control codes
@@ -118,15 +118,15 @@ Loop, Read, %data%, %outdata%
 			parameter := RegExReplace(A_LoopReadLine, "^[ \s]+|[ \s]+$", "")
 			if instr(parameter, A_Space)
 				parameter := substr(parameter, 1, instr(parameter, A_Space)-1)
-			
+
 			if instr(parameters, parameter) > 0
 				{
 				parametervalue = %parameter%
 				value := %parametervalue%
-				
+
 				if (value = chr(34) . "0" . chr(34))
 					Line := "; " . Parameter
-				else	
+				else
 					{
 					if (value = chr(34) . "1" . chr(34))
 						Line := Parameter
@@ -137,11 +137,11 @@ Loop, Read, %data%, %outdata%
 			else
 				Line := A_LoopReadLine
 			}
-			
+
 		}
 	StringReplace, parameters, parameters, %parametervalue%,,
 	StringReplace, parameters, parameters,||,|
-	
+
 	FileAppend, %Line%`n
 	}
 
@@ -152,18 +152,18 @@ Loop, parse, parameters,|
 		StringUpper, parameter, A_LoopField
 		parametervalue = %parameter%
 		value := %parametervalue%
-				
+
 		if (value = chr(34) . "0" . chr(34))
 			Line := "; " . parameter
-		else	
+		else
 			{
 			if (value = chr(34) . "1" . chr(34))
 				Line := parameter
 			else
 				Line = %parametervalue% %value%
 			}
-				
-		FileAppend, %Line%`n, %outdata%		
+
+		FileAppend, %Line%`n, %outdata%
 		}
 	}
 
@@ -297,7 +297,7 @@ DO
            iSave = iCommentStat
          END IF
        END IF
-         
+
        ' Now, update or add the variable to the conf file
        IF i > 0 THEN
          IF sVal = "" THEN
@@ -325,7 +325,7 @@ DO
            doModifyValueFromConfFile ConfFileName, sVar, sVal, " ", iCommentStat
          END IF
        END IF
-       
+
     END IF
   ELSE
     PRINT ErrorMessage$(iErr)
@@ -676,7 +676,7 @@ FUNCTION NewValueForTheVariable$ (WhichVariable AS STRING, WhichIndex AS INTEGER
     i = iFirstItem
     DO
       sVar2 = UCASE$(RTRIM$(rVarValue(i).VarName))
-      
+
       IF sVar = sVar2 THEN  ' Does it found an element of the array?
         iCount = iCount + 1
         IF LEN(sLine) > 0 THEN ' Add a comma
@@ -902,15 +902,15 @@ Do you want to add or modify another variable? (Y/N)
 C with POSIX <code>strcasecmp</code> function for case-insensitive comparing. Substitute your toolchain's version.
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #define strcomp(X, Y) strcasecmp(X, Y)
 
 struct option
-{ const char *name, *value; 
+{ const char *name, *value;
   int flag; };
 
 /* TODO: dynamically obtain these */
@@ -926,10 +926,10 @@ int output_opt(FILE *to, struct option *opt)
     return fprintf(to, "; %s\n", opt->name);
   else if (opt->value[0] == 0)
     return fprintf(to, "%s\n", opt->name);
-  else 
+  else
     return fprintf(to, "%s %s\n", opt->name, opt->value); }
 
-int update(FILE *from, FILE *to, struct option *updlist) 
+int update(FILE *from, FILE *to, struct option *updlist)
 { char line_buf[256], opt_name[128];
   int i;
   for (;;)
@@ -955,7 +955,7 @@ int update(FILE *from, FILE *to, struct option *updlist)
       if (flag == 0)
         goto line_out; }
     else
-  line_out: 
+  line_out:
       if (fprintf(to, "%s", line_buf) < 0)
         return -1;
     continue; }
@@ -1142,7 +1142,7 @@ Input file:
 # Note that configuration option names are not case sensitive. However,
 # configuration parameter data is case sensitive and the lettercase must
     # be preserved.
- 
+
 # This is a favourite fruit
 FAVOURITEFRUIT    ßßßßß		banana    µµµµ
 
@@ -1177,10 +1177,10 @@ Output file:
 FAVOURITEFRUIT banana
 
 # This is a boolean that should be set
-; NEEDSPEELING 
+; NEEDSPEELING
 
 # This boolean is commented out
-SEEDSREMOVED 
+SEEDSREMOVED
 
 # How many bananas we have
 NUMBEROFBANANAS 1024
@@ -1302,24 +1302,24 @@ Wrote this line: # This is a configuration file in standard configuration file f
 Wrote this line: #
 Wrote this line: # Lines begininning with a hash or a semicolon are ignored by the application
 Wrote this line: # program. Blank lines are also ignored by the application program.
-Wrote this line: 
+Wrote this line:
 Wrote this line: # The first word on each non comment line is the configuration option.
 Wrote this line: # Remaining words or numbers on the line are configuration parameter
 Wrote this line: # data fields.
-Wrote this line: 
+Wrote this line:
 Wrote this line: # Note that configuration option names are not case sensitive. However,
 Wrote this line: # configuration parameter data is case sensitive and the lettercase must
 Wrote this line: # be preserved.
-Wrote this line: 
+Wrote this line:
 Wrote this line: # This is a favourite fruit
 Wrote this line: FAVOURITEFRUIT banana
-Wrote this line: 
+Wrote this line:
 Wrote this line: # This is a boolean that should be set
 Wrote this line: ; NEEDSPEELING
-Wrote this line: 
+Wrote this line:
 Wrote this line: # This boolean is commented out
 Wrote this line: SEEDSREMOVED
-Wrote this line: 
+Wrote this line:
 Wrote this line: # How many bananas we have
 Wrote this line: NUMBEROFBANANAS 1024
 
@@ -1329,7 +1329,7 @@ Wrote this line: NUMBEROFBANANAS 1024
 
 ## Fortran
 
-Fortran has long had a built-in method for writing and reading a configuration file with ease, via the NAMELIST facility. The designers of the modern "configuration" files have paid not the slightest attention to the protocol, which is as follows: 
+Fortran has long had a built-in method for writing and reading a configuration file with ease, via the NAMELIST facility. The designers of the modern "configuration" files have paid not the slightest attention to the protocol, which is as follows:
 ```Fortran
       PROGRAM TEST	!Define some data aggregates, then write and read them.
       CHARACTER*28 FAVOURITEFRUIT
@@ -1358,11 +1358,11 @@ Can now read from the file.
       END
 ```
 
-Most of which is support stuff. The requirement is to declare a NAMELIST naming the variables of interest, then READ or WRITE using just the name of the NAMELIST. Only three statements, four if the file OPEN is counted. 
+Most of which is support stuff. The requirement is to declare a NAMELIST naming the variables of interest, then READ or WRITE using just the name of the NAMELIST. Only three statements, four if the file OPEN is counted.
 
 ''One statement to write them''
 
-''One statement to read them'' 
+''One statement to read them''
 
 ''One statement to find them all, and in the NAMELIST bind them.''
 
@@ -1387,9 +1387,9 @@ Input allows for a comma-separated list of assignments and the names may appear 
 
 To remove the SeedsRemoved entry is straightforward, depending on context. If its name is removed from the NAMELIST then it will no longer be written. The parameter file could of course be edited before being read back in, perhaps by a human, or by the installation process of the new version, or by the new version first finding the unwanted line, backspacing the file one record and writing the right number of spaces to wipe it without changing the length of a record - though this ploy may not be available if the filesystem provides limited support. If however a new version of the programme is expected to read the old version's parameter file, then there will be trouble because an unknown name (or an array index out of bounds, but not a CHARACTER variable being shorter than the supplied text) will provoke an I/O error and the run will crash. This can be avoided via the ERR = ''label'' option in the READ statement, however entries after the erroneous one will not be processed.
 
-In a more general situation, it is helpful to have a routine that reads the NAMELIST style input and isolates the assignments so that each can individually be written to a scratch file in the NAMELIST style (i.e. providing the block head and tail lines, though some Fortrans allow NAMELIST input from a text variable and without this requirement) whereupon if ERR is provoked during the READ, the troublesome entry can be displayed for user appreciation before continuing with any remaining assignments. 
+In a more general situation, it is helpful to have a routine that reads the NAMELIST style input and isolates the assignments so that each can individually be written to a scratch file in the NAMELIST style (i.e. providing the block head and tail lines, though some Fortrans allow NAMELIST input from a text variable and without this requirement) whereupon if ERR is provoked during the READ, the troublesome entry can be displayed for user appreciation before continuing with any remaining assignments.
 
-Otherwise, the old NAMELIST could be used for input, with the undesired value simply ignored within the new version of the programme. For output, a new NAMELIST would be devised omitting the unwanted name - the same variables can be named in more than one NAMELIST. However, every NAMELIST's name must be unique within a routine and this would be the new block header name. So, read the parameter file in one routine which declares the old NAMELIST, complete with the name of the now unwanted variable, but write it via another routine which declares the new NAMELIST using the same name but omitting the names of undesired variables. The wanted variables would be in COMMON, or with F90 onwards be common names in a MODULE, or one could mess with parameter lists. 
+Otherwise, the old NAMELIST could be used for input, with the undesired value simply ignored within the new version of the programme. For output, a new NAMELIST would be devised omitting the unwanted name - the same variables can be named in more than one NAMELIST. However, every NAMELIST's name must be unique within a routine and this would be the new block header name. So, read the parameter file in one routine which declares the old NAMELIST, complete with the name of the now unwanted variable, but write it via another routine which declares the new NAMELIST using the same name but omitting the names of undesired variables. The wanted variables would be in COMMON, or with F90 onwards be common names in a MODULE, or one could mess with parameter lists.
 ```Fortran
       MODULE MONKEYFODDER
        INTEGER FIELD	!An I/O unit number.
@@ -1437,7 +1437,7 @@ Whereupon the file now has
  /
 
 ```
- 
+
 
 Naturally, a parameter file could contain data in whatever format was desired, and it might even employ a semicolon (of all things!) as a comment starter: such a file could be read and its components extracted via suitable code then written in the NAMELIST style to a scratch file and read back for the actual internalisation of values. The point of this is that a text name of a variable is associated with the actual computer variable via the NAMELIST facility, the programmer need not slog through some endless CASE statement on the names of the variables nor recognise the different data formats such as for complex numbers. This process would be reversed for output.
 
@@ -1469,11 +1469,11 @@ Sub updateConfigData(fileName As String, cData As ConfigData)
   Dim tempFileName As String = "temp_" + fileName
   Dim fileNum2 As Integer = FreeFile
   Open tempFileName For Output As #fileNum2
-  Dim As Boolean hadFruit, hadPeeling, hadSeeds, hadBananas, hadStrawberries '' all false by default  
+  Dim As Boolean hadFruit, hadPeeling, hadSeeds, hadBananas, hadStrawberries '' all false by default
   Dim As String ln
   While Not Eof(fileNum)
     Line Input #fileNum, ln
-    If ln = "" OrElse Left(ln, 1) = "#" Then 
+    If ln = "" OrElse Left(ln, 1) = "#" Then
       Print #fileNum2, ln
       Continue While
     End If
@@ -1482,7 +1482,7 @@ Sub updateConfigData(fileName As String, cData As ConfigData)
     If UCase(Left(ln, 14)) = "FAVOURITEFRUIT" Then
       If hadFruit Then Continue While
       hadFruit = True
-      Print #fileNum2, "FAVOURITEFRUIT " + cData.favouriteFruit          
+      Print #fileNum2, "FAVOURITEFRUIT " + cData.favouriteFruit
     ElseIf UCase(Left(ln, 12)) = "NEEDSPEELING" Then
       If hadPeeling Then Continue While
       hadPeeling = True
@@ -1501,7 +1501,7 @@ Sub updateConfigData(fileName As String, cData As ConfigData)
       End If
     ElseIf UCase(Left(ln, 15)) = "NUMBEROFBANANAS" Then
       If hadBananas Then Continue While
-      hadBananas = True 
+      hadBananas = True
       Print #fileNum2, "NUMBEROFBANANAS " + Str(cData.numberOfBananas)
     ElseIf UCase(Left(ln, 20)) = "NUMBEROFSTRAWBERRIES" Then
       If hadStrawberries Then Continue While
@@ -1511,8 +1511,8 @@ Sub updateConfigData(fileName As String, cData As ConfigData)
   Wend
 
   If Not hadFruit Then
-     Print #fileNum2, "FAVOURITEFRUIT " + cData.favouriteFruit 
-  End If         
+     Print #fileNum2, "FAVOURITEFRUIT " + cData.favouriteFruit
+  End If
   If Not hadPeeling Then
     If cData.needsPeeling Then
       Print #fileNum2, "NEEDSPEELING"
@@ -1537,7 +1537,7 @@ Sub updateConfigData(fileName As String, cData As ConfigData)
   Close #fileNum : Close #fileNum2
   Kill(fileName)
   Name (tempFileName fileName)
-End Sub   
+End Sub
 
 Dim fileName As String = "config2.txt"
 Dim cData As ConfigData
@@ -2185,10 +2185,10 @@ Output:
 FAVOURITEFRUIT banana
 
 # This is a boolean that should be set
-; NEEDSPEELING 
+; NEEDSPEELING
 
 # This boolean is commented out
-SEEDSREMOVED 
+SEEDSREMOVED
 
 # How many bananas we have
 NUMBEROFBANANAS 1024
@@ -2200,7 +2200,7 @@ NUMBEROFSTRAWBERRIES 62000
 
 ## Julia
 
-Designed similarly to the way multiple small functions in a Julia module for general editing of this file type might be written. 
+Designed similarly to the way multiple small functions in a Julia module for general editing of this file type might be written.
 
 ```julia
 function cleansyntax(line)
@@ -2309,7 +2309,7 @@ for li in cfglines
 end
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
  Contents of the revised file:
@@ -2317,24 +2317,24 @@ end
  #
  # Lines begininning with a hash or a semicolon are ignored by the application
  # program. Blank lines are also ignored by the application program.
- 
+
  # The first word on each non comment line is the configuration option.
  # Remaining words or numbers on the line are configuration parameter
  # data fields.
- 
+
  # Note that configuration option names are not case sensitive. However,
  # configuration parameter data is case sensitive and the lettercase must
  # be preserved.
- 
+
  # This is a favourite fruit
  FAVOURITEFRUIT banana
- 
+
  # This is a boolean that should be set
  ;NEEDSPEELING
- 
+
  # This boolean is commented out
  ; SEEDSREMOVED
- 
+
  # How many bananas we have
  NUMBEROFBANANAS 1024
  NUMBEROFSTRAWBERRIES 62000
@@ -2637,18 +2637,18 @@ FAVOURITEFRUIT   banana
  NEEDSPEELING
 
 # This boolean is commented out
- ;  SEEDSREMOVED  
+ ;  SEEDSREMOVED
 
 # This boolean is commented out
  ;  HEEDSREMOVED
 
-# Another option 
+# Another option
 ;; OOPS Remove 	the double ;
 ;
-;; 
-  
+;;
+
 # How many bananas we have
-NUMBEROFBANANAS 48  
+NUMBEROFBANANAS 48
 
 ```
 
@@ -3080,7 +3080,7 @@ function Update-ConfigurationFile
         $line = $line -replace "^\s*",""  ## Strip leading whitespace
 
         if ($line -match "[;].*\s*") {continue}  ## Strip semicolons
- 
+
         switch -Regex ($line)
         {
             "(^$)|(^#\s.*)"                                              ## Blank line or comment
@@ -3256,7 +3256,7 @@ class Option(object):
             value = enabled and self.value
         return value
 
-    
+
 #----------------------------------------------------------------------------
 # CLASS Config
 #----------------------------------------------------------------------------
@@ -3321,7 +3321,7 @@ class Config(object):
            attribute 'disabled_prefix' which are not followed by any option
            name.
         """
-        s = ''.join(c for c in line.strip() if c in string.printable) 
+        s = ''.join(c for c in line.strip() if c in string.printable)
         moOPTION = self.creOPTION.match(s)
         if moOPTION:
             name = moOPTION.group('name').upper()
@@ -3486,11 +3486,11 @@ Use the shared <tt>[[Racket/Options|options.rkt]]</tt> code.
 
 This REXX program was written to be executed under the Microsoft version of DOS   (with or without Windows).
 
-Method note: 
+Method note:
 :* records are written (if appropriate) to a temporary file   (in the     \TEMP     folder)
 :* if any changes (or deletions) were made, the original file is replaced with the temporary file
-:* if no changes were made, the original file is left intact 
-:* the temporary file is always deleted on completion of the REXX program's execution 
+:* if no changes were made, the original file is left intact
+:* the temporary file is always deleted on completion of the REXX program's execution
 
 Programming note:   not all REXXes support the closing of files using the   '''lineout'''   BIF with a single argument.
 
@@ -3647,14 +3647,14 @@ Do while options<>''
     Call o option 62000
   End
 Exit
-o: 
-If option<>'' & done.option Then 
+o:
+If option<>'' & done.option Then
   Say 'Duplicate' option 'ignored'
 Else Do
   Call lineout oid,arg(1)
   done.option=1
   End
-Return 
+Return
 ```
 
 {{out}}
@@ -3706,22 +3706,22 @@ class ConfigFile
 
       if line.match(/^#/)
         # Lines beginning with hash symbols should not be manipulated and left
-        # unchanged in the revised file.  
+        # unchanged in the revised file.
         line
       else
-        # replace double semicolon prefixes with just a single semicolon  
+        # replace double semicolon prefixes with just a single semicolon
         line.sub!(/^;+\s+/, "; ")
-      
-        if line.match(/^; \s*$/) 
+
+        if line.match(/^; \s*$/)
           # Any lines beginning with a semicolon or groups of semicolons, but no
-          # following option should be removed 
+          # following option should be removed
           line = ""
         else
-          # remove ... any trailing whitespace on the lines 
+          # remove ... any trailing whitespace on the lines
           line = line.rstrip + "\n"
 
           # Whitespace between the option and paramters should consist only of a
-          # single space 
+          # single space
           if m = line.match(/^(; )?([[:upper:]]+)\s+(.*)/)
             line = (m[1].nil? ? "" : m[1]) + format_line(m[2], m[3])
           end
@@ -3755,13 +3755,13 @@ class ConfigFile
     end
   end
 
-  # add an option, or change the value of an existing option. 
+  # add an option, or change the value of an existing option.
   # use nil for the value to set a boolean option
   def set_value(option, value)
     if idx = find_option(option)
       @lines[idx] = format_line(option, value)
     else
-      @lines << format_line(option, value) 
+      @lines << format_line(option, value)
     end
   end
 
@@ -3801,7 +3801,7 @@ FAVOURITEFRUIT 		banana
 
 # This boolean is commented out
 ;;; SEEDSREMOVED
-;;; 
+;;;
 
 # How many bananas we have
 NUMBEROFBANANAS 48
@@ -4112,13 +4112,13 @@ With objParamLookup
 	.Add "SEEDSREMOVED", ""
 	.Add "NUMBEROFBANANAS", "1024"
 	.Add "NUMBEROFSTRAWBERRIES", "62000"
-End With 
+End With
 
 'Open the config file for reading.
 Set objInFile = objFSO.OpenTextFile(objFSO.GetParentFolderName(WScript.ScriptFullName) &_
 	"\IN_config.txt",1)
 'Initialize output.
-Output = ""	
+Output = ""
 Isnumberofstrawberries = False
 With objInFile
 	Do Until .AtEndOfStream
@@ -4148,7 +4148,7 @@ With objInFile
 	End If
 	.Close
 End With
-	
+
 'Create a new config file.
 Set objOutFile = objFSO.OpenTextFile(objFSO.GetParentFolderName(WScript.ScriptFullName) &_
 	"\OUT_config.txt",2,True)

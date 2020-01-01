@@ -29,9 +29,9 @@ Given non-negative integers   <big> '''m''' </big>   and   <big> '''n'''</big>, 
  1 3 4
  2 3 4
 
-If it is more "natural" in your language to start counting from   <big> '''1'''</big>   (unity) instead of   <big> '''0'''</big>   (zero), 
+If it is more "natural" in your language to start counting from   <big> '''1'''</big>   (unity) instead of   <big> '''0'''</big>   (zero),
 
-the combinations can be of the integers from   <big> '''1'''</big>   to   <big> '''n'''. </big> 
+the combinations can be of the integers from   <big> '''1'''</big>   to   <big> '''n'''. </big>
 
 
 ;See also:
@@ -74,10 +74,10 @@ print(comb([0, 1, 2, 3, 4], 3))
 ## 360 Assembly
 
 {{trans|C}}
-Nice algorithm without recursion borrowed from C. 
+Nice algorithm without recursion borrowed from C.
 Recursion is elegant but iteration is efficient.
-For maximum compatibility, this program uses only the basic instruction set (S/360) 
-and two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible. 
+For maximum compatibility, this program uses only the basic instruction set (S/360)
+and two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Combinations              26/05/2016
@@ -111,7 +111,7 @@ LOOPI2   IC     R3,0(R7)           do i=n to 1 by -1; r2=c(i)
          LA     R6,1               i=1
 LOOPI3   LR     R1,R6              do i=1 by 1; r1=i
          IC     R3,0(R7)             c(i)
-         CR     R3,R8                while c(i)>=m-i+1 
+         CR     R3,R8                while c(i)>=m-i+1
          BL     ELOOPI3              leave i
          CH     R6,N                 if i>=n
          BNL    ELOOPBIG             exit loop
@@ -134,14 +134,14 @@ LOOPI4   CH     R6,=H'2'           do i=i to 2 by -1
          BCTR   R6,0                 i=i-1
          B      LOOPI4             next i
 ELOOPI4  B      LOOPBIG            big loop }------------------
-ELOOPBIG L      R13,4(0,R13)       epilog 
+ELOOPBIG L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
-M        DC     H'5'               <=input 
-N        DC     H'3'               <=input 
+M        DC     H'5'               <=input
+N        DC     H'3'               <=input
 C        DS     64X                array of 8 bit integers
-PG       DC     CL92' '            buffer        
+PG       DC     CL92' '            buffer
          YREGS
          END    COMBINE
 ```
@@ -177,10 +177,10 @@ procedure Test_Combinations is
    package Combinations is
       type Combination is array (Positive range <>) of Integers;
       procedure First (X : in out Combination);
-      procedure Next (X : in out Combination); 
+      procedure Next (X : in out Combination);
       procedure Put (X : Combination);
    end Combinations;
-   
+
    package body Combinations is
       procedure First (X : in out Combination) is
       begin
@@ -209,7 +209,7 @@ procedure Test_Combinations is
          end loop;
       end Put;
    end Combinations;
-   
+
    type Five is range 0..4;
    package Fives is new Combinations (Five);
    use Fives;
@@ -227,14 +227,14 @@ exception
 end Test_Combinations;
 ```
 
-The solution is generic the formal parameter is the integer type to make combinations of. The type range determines ''n''. 
+The solution is generic the formal parameter is the integer type to make combinations of. The type range determines ''n''.
 In the example it is
 
 ```ada>type Five is range 0..4;</lang
 
-The parameter ''m'' is the object's constraint. 
-When ''n'' < ''m'' the procedure First (selects the first combination) will propagate Constraint_Error. 
-The procedure Next selects the next combination. Constraint_Error is propagated when it is the last one. 
+The parameter ''m'' is the object's constraint.
+When ''n'' < ''m'' the procedure First (selects the first combination) will propagate Constraint_Error.
+The procedure Next selects the next combination. Constraint_Error is propagated when it is the last one.
 
 {{out}}
 
@@ -369,7 +369,7 @@ on next_comb(c, k, n)
         set i to i - 1
         set c's item i to (c's item i) + 1
     end repeat
-    if (c's item 1 > n - k + 1) then return false    
+    if (c's item 1 > n - k + 1) then return false
     repeat with i from i + 1 to k
         set c's item i to (c's item (i - 1)) + 1
     end repeat
@@ -399,7 +399,7 @@ on comb(n, lst)
     else
         if not isNull(lst) then
             set {h, xs} to uncons(lst)
-            
+
             map(curry(my cons)'s |λ|(h), comb(n - 1, xs)) & comb(n, xs)
         else
             {}
@@ -409,10 +409,10 @@ end comb
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     intercalate(linefeed, ¬
         map(unwords, comb(3, enumFromTo(0, 4))))
-    
+
 end run
 
 -- GENERIC FUNCTIONS ----------------------------------------------------------
@@ -478,7 +478,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -642,20 +642,20 @@ awk -v r=3 -v n=5 -f combn.awk
 ```bbcbasic
       INSTALL @lib$+"SORTLIB"
       sort% = FN_sortinit(0,0)
-      
+
       M% = 3
       N% = 5
-      
+
       C% = FNfact(N%)/(FNfact(M%)*FNfact(N%-M%))
       DIM s$(C%)
       PROCcomb(M%, N%, s$())
-      
+
       CALL sort%, s$(0)
       FOR I% = 0 TO C%-1
         PRINT s$(I%)
       NEXT
       END
-      
+
       DEF PROCcomb(C%, N%, s$())
       LOCAL I%, U%
       FOR U% = 0 TO 2^N%-1
@@ -665,7 +665,7 @@ awk -v r=3 -v n=5 -f combn.awk
         ENDIF
       NEXT
       ENDPROC
-      
+
       DEF FNbits(U%)
       LOCAL N%
       WHILE U%
@@ -673,7 +673,7 @@ awk -v r=3 -v n=5 -f combn.awk
         U% = U% AND (U%-1)
       ENDWHILE
       = N%
-      
+
       DEF FNlist(U%)
       LOCAL N%, s$
       WHILE U%
@@ -682,7 +682,7 @@ awk -v r=3 -v n=5 -f combn.awk
         U% = U% >> 1
       ENDWHILE
       = s$
-      
+
       DEF FNfact(N%)
       IF N%<=1 THEN = 1 ELSE = N%*FNfact(N%-1)
 
@@ -725,8 +725,8 @@ When all combinations are found, the pattern fails and we are in the rhs of the 
   | !combinations);
 ```
 
-    
- comb$(3.5)  
+
+ comb$(3.5)
 
  (.0 1 2)
  (.0 1 3)
@@ -743,8 +743,8 @@ When all combinations are found, the pattern fails and we are in the rhs of the 
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 /* Type marker stick: using bits to indicate what's chosen.  The stick can't
  * handle more than 32 items, but the idea is there; at worst, use array instead */
@@ -782,8 +782,8 @@ int main()
 Without recursions, generate all combinations in sequence.  Basic logic: put n items in the first n of m slots; each step, if right most slot can be moved one slot further right, do so; otherwise
 find right most item that can be moved, move it one step and put all items already to its right next to it.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void comb(int m, int n, unsigned char *c)
 {
@@ -832,12 +832,12 @@ public class Program
                 int index = stack.Count - 1;
                 int value = stack.Pop();
 
-                while (value < n) 
+                while (value < n)
                {
                     result[index++] = ++value;
                     stack.Push(value);
 
-                    if (index == m) 
+                    if (index == m)
                     {
                         yield return result;
                         break;
@@ -937,8 +937,8 @@ class Combinations
 ## C++
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <string>
 
@@ -1048,7 +1048,7 @@ combinations = (n, p) ->
     else
       break if combo.length == 0
       i = combo.pop() + 1
-      
+
     if combo.length == p
       combos.push clone combo
       i = combo.pop() + 1
@@ -1061,7 +1061,7 @@ for i in [0..N]
   console.log "------ #{N} #{i}"
   for combo in combinations N, i
     console.log combo
-    
+
 
 ```
 
@@ -1069,7 +1069,7 @@ for i in [0..N]
 {{out}}
 
 ```txt
-> coffee combo.coffee 
+> coffee combo.coffee
 ------ 5 0
 []
 ------ 5 1
@@ -1144,22 +1144,22 @@ for i in [0..N]
 ```txt
 > (map-combinations 3 5 'print)
 
-(0 1 2) 
-(0 1 3) 
-(0 1 4) 
-(0 2 3) 
-(0 2 4) 
-(0 3 4) 
-(1 2 3) 
-(1 2 4) 
-(1 3 4) 
-(2 3 4) 
+(0 1 2)
+(0 1 3)
+(0 1 4)
+(0 2 3)
+(0 2 4)
+(0 3 4)
+(1 2 3)
+(1 2 4)
+(1 3 4)
+(2 3 4)
 (2 3 4)
 ```
 
 
 
-###  Recursive method 
+###  Recursive method
 
 
 ```lisp
@@ -1194,7 +1194,7 @@ for i in [0..N]
         (let ((a (make-array k)))
             (loop for i below k do (setf (aref a i) i))
             (loop collect (coerce a 'list) while (next-combination n a)))))
-            
+
 (defun map-combinations (n k fun)
     (if (and (>= k 0) (>= n k))
         (let ((a (make-array k)))
@@ -1550,7 +1550,7 @@ def combinations(m, range) {
 <lang>n = 5
 m = 3
 len result[] m
-# 
+#
 func combinations pos val . .
   if pos < m
     for i = val to n - m
@@ -1645,7 +1645,7 @@ call combinations 0 0
 
 ## Eiffel
 
-The core of the program is the recursive feature solve, which returns all possible strings of length n with k "ones" and n-k "zeros". The strings are then evaluated, each resulting in k corresponding integers for the digits where ones are found. 
+The core of the program is the recursive feature solve, which returns all possible strings of length n with k "ones" and n-k "zeros". The strings are then evaluated, each resulting in k corresponding integers for the digits where ones are found.
 
 ```Eiffel
 
@@ -1767,7 +1767,7 @@ end
 
 ```
 
-Test: 
+Test:
 
 ```Eiffel
 
@@ -1816,7 +1816,7 @@ import extensions;
 import extensions'routines;
 
 const int M = 3;
-const int N = 5; 
+const int N = 5;
 
 Numbers(n)
 {
@@ -1825,12 +1825,12 @@ Numbers(n)
 
 public program()
 {
-    var numbers := Numbers(N);    
+    var numbers := Numbers(N);
     Combinator.new(M, numbers).forEach:(row)
     {
         console.printLine(row.toString())
     };
-    
+
     console.readChar()
 }
 ```
@@ -2015,16 +2015,16 @@ END PROGRAM
 
 ```txt
 
-1 2 3 
-1 2 4 
-1 2 5 
-1 3 4 
-1 3 5 
-1 4 5 
-2 3 4 
-2 3 5 
-2 4 5 
-3 4 5 
+1 2 3
+1 2 4
+1 2 5
+1 3 4
+1 3 5
+1 4 5
+2 3 4
+2 3 5
+2 4 5
+3 4 5
 
 ```
 
@@ -2045,12 +2045,12 @@ let choose m n =
         else
             for (i, s) in loopFor from do
                 for x in s do
-                    yield prefix@[i]@x        
+                    yield prefix@[i]@x
     }
     fC [] m [0..(n-1)]
 
 [<EntryPoint>]
-let main argv = 
+let main argv =
     choose 3 5
     |> Seq.iter (printfn "%A")
     0
@@ -2178,7 +2178,7 @@ contains
 
     integer :: i, j, s, ix, kx, hm, t
     integer :: err
-   
+
     hm = choose(n, k, err)
     if ( err /= 0 ) then
        nullify(co)
@@ -2269,7 +2269,7 @@ end program combinations
 # Built-in
 Combinations([1 .. n], m);
 
-Combinations([1 .. 5], 3);                                     
+Combinations([1 .. 5], 3);
 # [ [ 1, 2, 3 ], [ 1, 2, 4 ], [ 1, 2, 5 ], [ 1, 3, 4 ], [ 1, 3, 5 ],
 #   [ 1, 4, 5 ], [ 2, 3, 4 ], [ 2, 3, 5 ], [ 2, 4, 5 ], [ 3, 4, 5 ] ]
 ```
@@ -2375,7 +2375,7 @@ comb = { m, list ->
     m == 0 ?
         [[]] :
         (0..(n-m)).inject([]) { newlist, k ->
-            def sublist = (k+1 == n) ? [] : list[(k+1)..<n] 
+            def sublist = (k+1 == n) ? [] : list[(k+1)..<n]
             newlist += comb(m-1, sublist).collect { [list[k]] + it }
         }
 }
@@ -2531,7 +2531,7 @@ Choose 3:
 ## Haskell
 
 
-It's more natural to extend the task to all (ordered) sublists of size ''m'' of a list.  
+It's more natural to extend the task to all (ordered) sublists of size ''m'' of a list.
 
 Straightforward, unoptimized implementation with divide-and-conquer:
 
@@ -2611,7 +2611,7 @@ procedure main()
 return combinations(3,5,0)
 end
 
-procedure combinations(m,n,z)                      # demonstrate combinations 
+procedure combinations(m,n,z)                      # demonstrate combinations
 /z := 1
 
 write(m," combinations of ",n," integers starting from ",z)
@@ -2853,10 +2853,10 @@ function combinations(arr, k){
     }
     return ret;
 }
-combinations([0,1,2,3,4], 3); 
+combinations([0,1,2,3,4], 3);
 // produces: [[0, 1, 2], [0, 1, 3], [0, 1, 4], [0, 2, 3], [0, 2, 4], [0, 3, 4], [1, 2, 3], [1, 2, 4], [1, 3, 4], [2, 3, 4]]
 
-combinations(["Crosby", "Stills", "Nash", "Young"], 3); 
+combinations(["Crosby", "Stills", "Nash", "Young"], 3);
 // produces: [["Crosby", "Stills", "Nash"], ["Crosby", "Stills", "Young"], ["Crosby", "Nash", "Young"], ["Stills", "Nash", "Young"]]
 
 ```
@@ -2887,7 +2887,7 @@ Simple recursion:
       return [x].concat(t);
     }).concat(comb(n, xs));
   }
-  
+
 
   // [m..n]
   function range(m, n) {
@@ -2897,7 +2897,7 @@ Simple recursion:
   }
 
   return comb(3, range(0, 4))
-  
+
     .map(function (x) {
       return x.join(' ');
     }).join('\n');
@@ -3054,7 +3054,7 @@ Memoizing:
 {{Out}}
 
 ```txt
-[[0, 1, 2], [0, 1, 3], [0, 1, 4], [0, 2, 3], [0, 2, 4], 
+[[0, 1, 2], [0, 1, 3], [0, 1, 4], [0, 2, 3], [0, 2, 4],
 [0, 3, 4], [1, 2, 3], [1, 2, 4], [1, 3, 4], [2, 3, 4]]
 ```
 
@@ -3158,7 +3158,7 @@ def combinations(n;r): [range(0;n)] | combination(r);
 ```
 
 '''Example 1'''
- combinations(5;3) 
+ combinations(5;3)
 {{Out}}
  [0,1,2]
  [0,1,3]
@@ -3220,7 +3220,7 @@ If, on the other hand we wanted to show how it could be done in Julia, this recu
 m = 5
 n = 3
 
-# Prepare the boundary of the calculation. Only m - n numbers are changing in each position.    
+# Prepare the boundary of the calculation. Only m - n numbers are changing in each position.
 max_n = m - n
 
 #Prepare an array for result
@@ -3232,7 +3232,7 @@ function combinations(pos, val)            # n, max_n and result are visible in 
         if pos < n                         # if combination isn't complete,
            combinations(pos+1, i)         # go to the next position
         else
-            println(result)                # combination is complete, print it    
+            println(result)                # combination is complete, print it
         end
    end
 end
@@ -3262,13 +3262,13 @@ end
 
 ## K
 
-Recursive implementation: 
+Recursive implementation:
 
 
 ```k
-comb:{[n;k] 
+comb:{[n;k]
     f:{:[k=#x; :,x; :,/_f' x,'(1+*|x) _ !n]}
-    :,/f' !n 
+    :,/f' !n
 }
 ```
 
@@ -3383,7 +3383,7 @@ Module Checkit {
                         While len(s) {
                               call Level n-1, cdr(s),  cons(h, car(s))
                               s=cdr(s)
-                        }  
+                        }
                   }
                   Sub ToClipBoard()
                         local m=each(h)
@@ -3396,7 +3396,7 @@ Module Checkit {
                         a$<=b$   ' assign to global need <=
                   End Sub
             }
-            If m<1 or n<1 then Error 
+            If m<1 or n<1 then Error
             s=(,)
             for i=0 to n-1 {
                   s=cons(s, (i,))
@@ -3451,9 +3451,9 @@ Module StepByStep {
                         =cons(car(m),c2(&f, &z))
                         if f then z=(,) : m=cdr(m) : f=len(m)+len(z)<n
                    }
-                  c=c1  
+                  c=c1
                   p++
-                  m--    
+                  m--
             }
             =lambda c, a (&f) -> {
                   =c(&f, &a)
@@ -3462,22 +3462,22 @@ Module StepByStep {
       k=false
       StepA=CombinationsStep((1, 2, 3, 4,5), 3)
       while not k {
-                 Print StepA(&k) 
+                 Print StepA(&k)
       }
       k=false
       StepA=CombinationsStep((0, 1, 2, 3, 4), 3)
       while not k {
-                 Print StepA(&k) 
+                 Print StepA(&k)
       }
       k=false
       StepA=CombinationsStep(("A", "B", "C", "D","E"), 3)
       while not k {
-                 Print StepA(&k) 
+                 Print StepA(&k)
       }
       k=false
       StepA=CombinationsStep(("CAT", "DOG", "BAT"), 2)
       while not k {
-                 Print StepA(&k) 
+                 Print StepA(&k)
       }
 }
 StepByStep
@@ -3588,15 +3588,15 @@ combinations(n, p) := block(
 )$
 
 combinations(5, 3);
-/* [[1, 2, 3], 
-    [1, 2, 4], 
-    [1, 2, 5], 
-    [1, 3, 4], 
-    [1, 3, 5], 
-    [1, 4, 5], 
-    [2, 3, 4], 
-    [2, 3, 5], 
-    [2, 4, 5], 
+/* [[1, 2, 3],
+    [1, 2, 4],
+    [1, 2, 5],
+    [1, 3, 4],
+    [1, 3, 5],
+    [1, 4, 5],
+    [2, 3, 4],
+    [2, 3, 5],
+    [2, 4, 5],
     [3, 4, 5]] */
 ```
 
@@ -3750,7 +3750,7 @@ let combinations m n =
 let () =
   let rec print_list = function
     | [] -> print_newline ()
-    | hd :: tl -> print_int hd ; print_string " "; print_list tl      
+    | hd :: tl -> print_int hd ; print_string " "; print_list tl
   in List.iter print_list (combinations 3 5)
 
 ```
@@ -3817,7 +3817,7 @@ c(5,3,vector(5,i,i-1),0)
 
 ```pascal
 Program Combinations;
- 
+
 const
  m_max = 3;
  n_max = 5;
@@ -3841,7 +3841,7 @@ var
        combination[m] := n;
        generate(m + 1);
       end;
-   end; 
+   end;
 
 begin
  generate(1);
@@ -3853,16 +3853,16 @@ end.
 
 ```txt
 
-1 2 3 
-1 2 4 
-1 2 5 
-1 3 4 
-1 3 5 
-1 4 5 
-2 3 4 
-2 3 5 
-2 4 5 
-3 4 5 
+1 2 3
+1 2 4
+1 2 5
+1 3 4
+1 3 5
+1 4 5
+2 3 4
+2 3 5
+2 4 5
+3 4 5
 
 ```
 
@@ -3920,7 +3920,7 @@ while (my $c = $iter->next) {
 
 
 ## Perl5i
- 
+
 
 Use a recursive solution, derived from the Perl6 (Haskell) solution
 <ul>
@@ -4045,7 +4045,7 @@ procedure comb(integer pool, needed, done=0, sequence chosen={})
     comb(pool,needed-1,done,append(chosen,done))
     comb(pool,needed,done,chosen)
 end procedure
- 
+
 comb(5,3)
 ```
 
@@ -4089,23 +4089,23 @@ $j=$k-1;
 print_r($b);
 
         while (1) {
-	   
+
        		$m=array_search($b[$j]+1,$c);
        	     if ($m!==false) {
-	     	$c[$m]-=1; 
+	     	$c[$m]-=1;
         	$b[$j]=$b[$j]+1;
-               	print_r($b);	       
+               	print_r($b);
         }
        	if ($b[$k-1]==$n) {
-	 $i=$k-1; 
+	 $i=$k-1;
 	 while ($i >= 0) {
 
 	 		if ($i == 0 && $b[$i] == $n-$k+1) break 2;
-	
+
        		  $m=array_search($b[$i]+1,$c);
-		  if ($m!==false) { 
-		  	  $c[$m]=$c[$m]-1; 
-			  $b[$i]=$b[$i]+1; 
+		  if ($m!==false) {
+		  	  $c[$m]=$c[$m]-1;
+			  $b[$i]=$b[$i]+1;
 
 			$g=$i;
 		while ($g != $k-1) {
@@ -4115,15 +4115,15 @@ print_r($b);
 			}
 			$c=array_diff($c,$b);
 			print_r($b);
-		 	     break;  
+		 	     break;
        			 }
 	 	$i--;
-	
+
 		}
-	
+
 	}
-	
-             
+
+
 }
 
 ?>
@@ -4302,11 +4302,11 @@ $source = @'
                 int[] result = new int[m];
                 Stack<int> stack = new Stack<int>();
                 stack.Push(0);
- 
+
                 while (stack.Count > 0) {
                     int index = stack.Count - 1;
                     int value = stack.Pop();
- 
+
                     while (value < n) {
                         result[index++] = value++;
                         stack.Push(value);
@@ -4331,16 +4331,16 @@ Add-Type -TypeDefinition $source -Language CSharp
 
 ```txt
 
-0                              1                             2                            
-0                              1                             3                            
-0                              1                             4                            
-0                              2                             3                            
-0                              2                             4                            
-0                              3                             4                            
-1                              2                             3                            
-1                              2                             4                            
-1                              3                             4                            
-2                              3                             4                            
+0                              1                             2
+0                              1                             3
+0                              1                             4
+0                              2                             3
+0                              2                             4
+0                              3                             4
+1                              2                             3
+1                              2                             4
+1                              3                             4
+2                              3                             4
 
 ```
 
@@ -4611,7 +4611,7 @@ where:
 end
 
 fun int-combos(n :: Number, m :: Number) -> List<List<Number>>:
-  doc: "return all lists of size m containing distinct, ordered nonnegative ints < n" 
+  doc: "return all lists of size m containing distinct, ordered nonnegative ints < n"
   lst = range(0, n)
   combos(lst, m)
 where:
@@ -4692,7 +4692,7 @@ print comb(3, range(5))
 print(combn(0:4, 3))
 ```
 
-Combinations are organized per column, 
+Combinations are organized per column,
 so to provide an output similar to the one in the task text, we need the following:
 
 ```R
@@ -4713,7 +4713,7 @@ for(i in 1:choose(5,3)) print(r[,i])
   (match-lambda**
    [(0 _)           '(())]
    [(_ '())         '()]
-   [(m (cons x xs)) (append (map (curry cons x) (sublists (- m 1) xs)) 
+   [(m (cons x xs)) (append (map (curry cons x) (sublists (- m 1) xs))
                             (sublists m xs))]))
 
 (define (combinations n m)
@@ -4746,7 +4746,7 @@ for(i in 1:choose(5,3)) print(r[,i])
 
 This REXX program supports up to   61   symbols   (one symbol for each "thing").
 
-It supports any number of "things" beyond the 61 symbols by using the actual number instead of a symbol. 
+It supports any number of "things" beyond the 61 symbols by using the actual number instead of a symbol.
 
 ```rexx
 /*REXX program displays   combination sets   for   X   things taken   Y   at a time.    */
@@ -4824,20 +4824,20 @@ k = 3
 temp = []
 comb = []
 num = com(n, k)
-while true 
+while true
          temp = []
          for n = 1 to 3
                tm = random(4) + 1
                add(temp, tm)
          next
-         bool1 = (temp[1] = temp[2]) and (temp[1] = temp[3]) and (temp[2] = temp[3]) 
+         bool1 = (temp[1] = temp[2]) and (temp[1] = temp[3]) and (temp[2] = temp[3])
          bool2 = (temp[1] < temp[2]) and (temp[2] < temp[3])
          if not bool1 and bool2
             add(comb, temp)
          ok
          for p = 1  to len(comb) - 1
-               for q = p + 1 to len(comb) 
-                     if (comb[p][1] = comb[q][1]) and (comb[p][2] = comb[q][2]) and (comb[p][3] = comb[q][3]) 
+               for q = p + 1 to len(comb)
+                     if (comb[p][1] = comb[q][1]) and (comb[p][2] = comb[q][2]) and (comb[p][3] = comb[q][3])
                         del(comb, p)
                      ok
                 next
@@ -4865,27 +4865,27 @@ func showarray(vect)
         svect = ""
         for nrs = 1 to len(vect)
               svect = "[" + vect[nrs][1] + " " + vect[nrs][2] + " " + vect[nrs][3] + "]" + nl
-              see svect 
+              see svect
         next
 
 Func sortfirst(alist, ind)
         aList = sort(aList,ind)
         for n = 1 to len(alist)-1
-             for m= n + 1 to len(aList)  
+             for m= n + 1 to len(aList)
                   if alist[n][1] = alist[m][1] and alist[m][2] < alist[n][2]
                      temp = alist[n]
                      alist[n] = alist[m]
                      alist[m] = temp
-                   ok 
+                   ok
              next
         next
         for n = 1 to len(alist)-1
-             for m= n + 1 to len(aList)  
+             for m= n + 1 to len(aList)
                   if alist[n][1] = alist[m][1] and alist[n][2] = alist[m][2] and alist[m][3] < alist[n][3]
                      temp = alist[n]
                      alist[n] = alist[m]
                      alist[m] = temp
-                   ok 
+                   ok
              next
        next
        return aList
@@ -5327,7 +5327,7 @@ forcomb({|c| say c }, 5, 3)
 
 ```SPAD
 
-   
+
 [reverse subSet(5,3,i)$SGCF for i in 0..binomial(5,3)-1]
 
    [[0,1,2], [0,1,3], [0,2,3], [1,2,3], [0,1,4], [0,2,4], [1,2,4], [0,3,4],
@@ -5426,7 +5426,7 @@ end
 ```
 
 
-###  Mata 
+###  Mata
 
 
 ```stata
@@ -5552,7 +5552,7 @@ Combinations and permutations are produced in lexicographic order (except in the
 
 
 ```txt
-$ txr combinations.tl 
+$ txr combinations.tl
 3 comb 5 = ((0 1 2) (0 1 3) (0 1 4) (0 2 3) (0 2 4) (0 3 4) (1 2 4) (1 3 4) (2 3 4))
 ```
 
@@ -5663,11 +5663,11 @@ Option Base 0
 'Option Base 1
 
 Private ArrResult
- 
+
 Sub test()
     'compute
     Main_Combine 5, 3
-    
+
     'return
     Dim j As Long, i As Long, temp As String
     For i = LBound(ArrResult, 1) To UBound(ArrResult, 1)
@@ -5679,7 +5679,7 @@ Sub test()
     Next
     Erase ArrResult
 End Sub
- 
+
 Private Sub Main_Combine(M As Long, N As Long)
 Dim MyArr, i As Long
     ReDim MyArr(M - 1)
@@ -5884,16 +5884,16 @@ Combos(0, 0)
 
 ```txt
 
-0 1 2 
-0 1 3 
-0 1 4 
-0 2 3 
-0 2 4 
-0 3 4 
-1 2 3 
-1 2 4 
-1 3 4 
-2 3 4 
+0 1 2
+0 1 3
+0 1 4
+0 2 3
+0 2 4
+0 3 4
+1 2 3
+1 2 4
+1 3 4
+2 3 4
 
 ```
 

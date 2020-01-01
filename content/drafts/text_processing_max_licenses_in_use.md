@@ -14,7 +14,7 @@ tags = []
 
 A company currently pays a fixed sum for the use of a particular licensed software package.   In determining if it has a good deal it decides to calculate its maximum use of the software from its license management log file.
 
-Assume the software's licensing daemon faithfully records a checkout event when a copy of the software starts and a checkin event when the software finishes to its log file. 
+Assume the software's licensing daemon faithfully records a checkout event when a copy of the software starts and a checkin event when the software finishes to its log file.
 
 An example of  checkout and  checkin events are:
   License OUT @ 2008/10/03_23:51:05 for job 4974
@@ -112,7 +112,7 @@ Output:
 ```txt
 
 The max. number of licenses out is    99
- at these times 
+ at these times
 2008/10/03_08:39:34
 2008/10/03_08:40:40
 [2010-06-06 01:06:07] process terminated successfully (elapsed time: 00.25s)
@@ -281,15 +281,15 @@ Maximum use is 99 at:
 to be called with ''awk -f licenses.awk ./mlijobs.txt''
 
 ```awk
-$2=="OUT" { 
-    count = count + 1 
-    time = $4 
+$2=="OUT" {
+    count = count + 1
+    time = $4
     if ( count > maxcount ) {
-        maxcount = count 
+        maxcount = count
         maxtimes = time
-    } else { 
+    } else {
         if ( count == maxcount ) {
-            maxtimes = maxtimes " and " time 
+            maxtimes = maxtimes " and " time
         }
     }
 }
@@ -318,7 +318,7 @@ On a 2.53MHz machine, these timings were obtained using GNU Awk 4.0.2:
       max% = 0
       nlicence% = 0
       file% = OPENIN("mlijobs.txt")
-      
+
       WHILE NOT EOF#file%
         a$ = GET$#file%
         stamp$ = MID$(a$, 15, 19)
@@ -338,7 +338,7 @@ On a 2.53MHz machine, these timings were obtained using GNU Awk 4.0.2:
         previous$ = stamp$
       ENDWHILE
       CLOSE #file%
-      
+
       PRINT "Maximum licences checked out = " ; max%
       PRINT "From " start$ " to " finish$
       END
@@ -394,8 +394,8 @@ Output:
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
@@ -459,8 +459,8 @@ int main(int argc, char **argv)
 
 
 Using mmap, no extra storage (think this as a search and replace):
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/types.h>
@@ -510,8 +510,8 @@ output<lang>2008/10/03_08:39:34    99
 ## C++
 
 
-```cpp>#include <fstream
-
+```cpp
+#include <fstream>
 #include <iostream>
 #include <iterator>
 #include <string>
@@ -587,14 +587,14 @@ namespace TextProc3
     class Program
     {
         static void Main(string[] args)
-        {            
+        {
             string line;
             int count = 0, maxcount = 0;
             List<string> times = new List<string>();
             System.IO.StreamReader file = new StreamReader("mlijobs.txt");
             while ((line = file.ReadLine()) != null)
             {
-                string[] lineelements = line.Split(' ');                
+                string[] lineelements = line.Split(' ');
                 switch (lineelements[1])
                 {
                     case "IN":
@@ -611,7 +611,7 @@ namespace TextProc3
                             times.Add(lineelements[3]);
                         }
                         break;
-                }                
+                }
             }
             file.Close();
             Console.WriteLine(maxcount);
@@ -707,7 +707,7 @@ Maximum simultaneous license use is 99 at the following times:
            03  max-timestamps           PIC X(19) OCCURS 1 TO 50 TIMES
                DEPENDING ON num-max-times.
        01  current-licenses-out         PIC 9(6).
-       
+
        01  i                            PIC 99.
 
        PROCEDURE DIVISION.
@@ -728,7 +728,7 @@ Maximum simultaneous license use is 99 at the following times:
                    "."
                GOBACK
            END-IF
-           
+
            PERFORM FOREVER
                READ license-file
                    AT END
@@ -801,7 +801,7 @@ Maximum simultaneous license use is 99 at the following times:
 
 ```txt
 > (max-licenses)
-Maximum simultaneous license use is 99 at the following times: 
+Maximum simultaneous license use is 99 at the following times:
   2008/10/03_08:39:34
   2008/10/03_08:40:40.
 NIL
@@ -977,7 +977,7 @@ out_dates( Line, {N, Date, Dict} ) ->
 	{New_n, New_date, New_dict}.
 
 out_dates_dict( N, New_n, Date, Dict ) when N > New_n -> dict:append( N, Date, Dict );
-out_dates_dict( _N, _New_n, _Date, Dict ) -> Dict. 
+out_dates_dict( _N, _New_n, _Date, Dict ) -> Dict.
 
 out_dates_n( N, <<"OUT">> ) -> N + 1;
 out_dates_n( N, <<"IN">> ) -> N - 1.
@@ -1108,7 +1108,7 @@ TUPLE: maxlicense max-count current-count times ;
     [ current-max-equal? ] dip
     swap
     [ [ suffix ] curry change-times ] [ drop ] if ;
-    
+
 : split-line ( line -- ? time ) [ out? ] [ line-time ] bi ;
 
 : process ( max line -- max ) split-line inc-current-count update-time ;
@@ -1131,7 +1131,7 @@ PRIVATE>
 
 ```factor
 ( scratchpad ) [ find-max-licenses print-max-licenses ] time
-Maximum simultaneous license use is 99 at the following times: 
+Maximum simultaneous license use is 99 at the following times:
 2008/10/03_08:39:34
 2008/10/03_08:40:40
 Running time: 0.16164423 seconds
@@ -1189,18 +1189,18 @@ main bye
 
  PROGRAM MAX_LICENSES
    IMPLICIT NONE
- 
+
    INTEGER :: out=0, maxout=0, maxcount=0, err
    CHARACTER(50) :: line
    CHARACTER(19) :: maxtime(100)
- 
+
    OPEN (UNIT=5, FILE="Licenses.txt", STATUS="OLD", IOSTAT=err)
    IF (err > 0) THEN
      WRITE(*,*) "Error opening file Licenses.txt"
      STOP
    END IF
- 
-   DO 
+
+   DO
      READ(5, "(A)", IOSTAT=err) line
      IF (err == -1) EXIT          ! EOF detected
      IF (line(9:9) == "O") THEN
@@ -1217,12 +1217,12 @@ main bye
        maxtime(maxcount) = line(15:33)
      END IF
    END DO
-  
+
    CLOSE(5)
-  
+
    WRITE(*,"(A,I4,A)") "Maximum simultaneous license use is", maxout, " at the following times:"
    WRITE(*,"(A)") maxtime(1:maxcount)
-  
+
  END PROGRAM MAX_LICENSES
 
 ```
@@ -1232,7 +1232,7 @@ Output
 ```txt
 
  Maximum simultaneous license use is  99 at the following times:
- 2008/10/03_08:39:34                                           
+ 2008/10/03_08:39:34
  2008/10/03_08:40:40
 
 ```
@@ -1403,7 +1403,7 @@ import Data.List
 main = do
   f <- readFile "./../Puzzels/Rosetta/inout.txt"
   let (ioo,dt) = unzip. map ((\(_:io:_:t:_)-> (io,t)). words) . lines $ f
-      cio = drop 1 . scanl (\c io -> if io == "IN" then pred c else succ c) 0 $ ioo 
+      cio = drop 1 . scanl (\c io -> if io == "IN" then pred c else succ c) 0 $ ioo
       mo = maximum cio
   putStrLn $ "Maximum simultaneous license use is " ++ show mo ++ " at:"
   mapM_ (putStrLn . (dt!!)) . elemIndices mo $ cio
@@ -1415,7 +1415,7 @@ main = do
 ## HicEst
 
 {{incorrect|HicEst}}
-We open Licenses.txt in [http://www.HicEst.com/MatrixExplorer.htm MatrixExplorer mode] with 3 columns: IN/OUT, date_time, ID_nr. 
+We open Licenses.txt in [http://www.HicEst.com/MatrixExplorer.htm MatrixExplorer mode] with 3 columns: IN/OUT, date_time, ID_nr.
 This allows to adress single file elements by Licenses(row, column).
 
 ```HicEst
@@ -1504,7 +1504,7 @@ There were 99 licenses out at:
 ```txt
 
  Maximum simultaneous license use is 99 at the following times:
- 2008/10/03_08:39:34                                           
+ 2008/10/03_08:39:34
  2008/10/03_08:40:40
 
 ```
@@ -1576,7 +1576,7 @@ while ( ! fh.atEndOfStream) {
         else if (in_use == max_in_use)
             max_in_use_at.push( line.split(' ')[3] );
     }
-    else if (line.substr(8,2) == "IN") 
+    else if (line.substr(8,2) == "IN")
         in_use--;
 }
 
@@ -1586,7 +1586,7 @@ WScript.echo("Max licenses out: " + max_in_use + "\n  " + max_in_use_at.join('\n
 ```
 
 
-output: 
+output:
 
 ```txt
 Max licenses out: 99
@@ -1606,7 +1606,7 @@ def max_licenses_in_use:
   reduce .[] as $line
     ([0,  -1, [] ];
      ($line|split(" ")) as $line
-     | if $line[1] == "OUT" then 
+     | if $line[1] == "OUT" then
          .[0] += 1                          # in_use++;
          | if   .[0] > .[1]                 # (in_use > max_in_use)
            then .[1] = .[0]                 # max_in_use = in_use
@@ -1629,7 +1629,7 @@ split("\n") | max_licenses_in_use
  Max licenses out: 99 at:
   2008/10/03_08:39:34
   2008/10/03_08:40:40
- 
+
  real	0m0.163s
  user	0m0.154s
  sys	0m0.005s
@@ -1708,14 +1708,14 @@ fun main(args: Array<String>) {
     var licenses = 0
     var maxLicenses = 0
     val dates = mutableListOf<String>()
-    val f = File(filePath) 
+    val f = File(filePath)
 
     f.forEachLine { line ->
         if (line.startsWith("License OUT")) {
             licenses++
             if (licenses > maxLicenses) {
                 maxLicenses = licenses
-                dates.clear() 
+                dates.clear()
                 dates.add(line.substring(14, 33))
             }
             else if(licenses == maxLicenses) {
@@ -1727,7 +1727,7 @@ fun main(args: Array<String>) {
         }
     }
     println("Maximum simultaneous license use is $maxLicenses at the following time(s):")
-    println(dates.map { "  $it" }.joinToString("\n"))               
+    println(dates.map { "  $it" }.joinToString("\n"))
 }
 ```
 
@@ -1819,7 +1819,7 @@ Module Checkit {
       const dl$=" ", nl$={
       }
       Def long m, out, max_out=-1
-      m=Paragraph(a$, 0) 
+      m=Paragraph(a$, 0)
       If Forward(a$,m) then {
             While m {
                   job$=Paragraph$(a$,(m))
@@ -1883,8 +1883,8 @@ Output:
 
 ```Mathematica
 LC = 0; LCMax = 0; Scan[
-   If[MemberQ[#, "OUT"], LC++; 
-      If[LCMax < LC, LCMax = LC; LCMaxtimes = {};]; 
+   If[MemberQ[#, "OUT"], LC++;
+      If[LCMax < LC, LCMax = LC; LCMaxtimes = {};];
       If[LCMax == LC, AppendTo[LCMaxtimes, #[[4]]]],
    LC--;] &, Import["mlijobs.txt", "Table"]]
 Print["The maximum number of licenses used was ", LCMax, ", at ", LCMaxtimes]
@@ -1909,7 +1909,7 @@ fn licencesInUse =
     local out = 0
     local maxOut = -1
     local maxTimes = #()
-	
+
     while not EOF logFile do
     (
         line = readLine logFile
@@ -1934,7 +1934,7 @@ fn licencesInUse =
             append maxTimes (filterString line " ")[4]
         )
     )
-    format "Maximum simultaneous license use is % at the following times:\n" maxOut 
+    format "Maximum simultaneous license use is % at the following times:\n" maxOut
 
     for time in maxTimes do
     (
@@ -2262,7 +2262,7 @@ while 1 do
     end if
 end while
 close(fn)
- 
+
 printf(1, "Maximum simultaneous license use is %d at the following times:\n", maxout)
 for i = 1 to length(maxtime) do
     printf(1, "%s\n", {maxtime[i]})
@@ -2306,7 +2306,7 @@ while (!feof($handle)) {
 				$times[] = $time[0];
 			}
 		break;
-	}	
+	}
 }
 fclose ($handle);
 
@@ -2377,9 +2377,9 @@ OUTPUT:
 
 ```txt
 
-The maximum number of licences taken out =       99 
-It occurred at  2008/10/03_08:40:40 for job 1837 
-It occurred at  2008/10/03_08:39:34 for job 1833 
+The maximum number of licences taken out =       99
+It occurred at  2008/10/03_08:40:40 for job 1837
+It occurred at  2008/10/03_08:39:34 for job 1833
 
 ```
 
@@ -2479,8 +2479,8 @@ foreach ($job in $jobs)
 
 ```txt
 
-LicensesOut StartTime            EndTime             
------------ ---------            -------             
+LicensesOut StartTime            EndTime
+----------- ---------            -------
          99 10/3/2008 8:39:34 AM 10/3/2008 8:40:40 AM
 
 ```
@@ -2493,7 +2493,7 @@ LicensesOut StartTime            EndTime
 ```PureBasic
 OpenConsole()
 
-If ReadFile(0, OpenFileRequester("Text processing/3","mlijobs.txt","All files",1))  
+If ReadFile(0, OpenFileRequester("Text processing/3","mlijobs.txt","All files",1))
   While Not Eof(0)
     currline$=ReadString(0)
     If StringField(currline$,2," ")="OUT"
@@ -2501,7 +2501,7 @@ If ReadFile(0, OpenFileRequester("Text processing/3","mlijobs.txt","All files",1
     Else
       counter-1
     EndIf
-    If counter>max  
+    If counter>max
       max=counter
       maxtime$=StringField(currline$,4," ")
     ElseIf counter=max
@@ -2509,7 +2509,7 @@ If ReadFile(0, OpenFileRequester("Text processing/3","mlijobs.txt","All files",1
     EndIf
   Wend
   PrintN(Str(max)+" license(s) used at ;"+#CRLF$+maxtime$)
-  CloseFile(0)            
+  CloseFile(0)
 Else
   PrintN("Failed to open the file.")
 EndIf
@@ -2542,7 +2542,7 @@ for job in open('mlijobs.txt'):
         max_out, max_times = out, []
     if out == max_out:
         max_times.append(job.split()[3])
-        
+
 print("Maximum simultaneous license use is %i at the following times:" % max_out)
 print('  ' + '\n  '.join(max_times))
 ```
@@ -2588,7 +2588,7 @@ plot(times, n.checked.out, type="s")
 ;;; returns max licences used and list of times this occurred
 (define (count-licences)
   (let inner ((ln (read-line)) (in-use 0) (max-in-use 0) (times-list null))
-    (if (eof-object? ln) 
+    (if (eof-object? ln)
         (values max-in-use (reverse times-list))
         (let ((mtch (regexp-match #px"License (IN |OUT) @ (.*) for job.*" ln)))
           (cond
@@ -2697,17 +2697,17 @@ The maximum number of licenses out is  99  at:
 
 ===Version 2 dual-coded for PC and TSO===
 It should be noted that almost every REXX interpreter returns a different string for   '''parse source'''   under Microsoft Windows:
-::*   '''MSDOS'''                          for   BREXX 
+::*   '''MSDOS'''                          for   BREXX
 ::*   '''PCDOS'''                          for   PC/REXX   and   Personal Rexx for DOS
-::*   '''WIN'''             for   Personal Rexx for Windows 
+::*   '''WIN'''             for   Personal Rexx for Windows
 ::*   '''WIN32'''                     for   Regina
-::*   '''Win32'''                     for   R4   and   ROO 
+::*   '''Win32'''                     for   R4   and   ROO
 
 
-It is unknown which classic REXX interpreter can be used (under Windows) below, it fails for the above mentioned seven REXX interpreters. 
+It is unknown which classic REXX interpreter can be used (under Windows) below, it fails for the above mentioned seven REXX interpreters.
 
 I am sure it has worked for Regina.
-Maybe this is now correct for all the WIN (and xxDOS) situations (pun intended) 
+Maybe this is now correct for all the WIN (and xxDOS) situations (pun intended)
 
 ```rexx
 /* REXX **************************************************************
@@ -2719,7 +2719,7 @@ call time 'R'
 Say source
 Parse Upper source system .
 If left(system,3)='WIN' |,  /* changed from 'Windows' (I see WIN64 in source) */
-   wordpos(system,'MSDOS PCDOS')>0 Then Do  
+   wordpos(system,'MSDOS PCDOS')>0 Then Do
   fid='mlijobs.txt'
   Do i=1 By 1 While lines(fid)>0
     l.i=linein(fid)
@@ -2843,7 +2843,7 @@ It occurred at  2008/10/03_08:40:40 for job 1837
 out = 0
 max_out = -1
 max_times = []
- 
+
 File.foreach('mlijobs.txt') do |line|
   out += line.include?("OUT") ? 1 : -1
   if out > max_out
@@ -2852,7 +2852,7 @@ File.foreach('mlijobs.txt') do |line|
   end
   max_times << line.split[3]  if out == max_out
 end
- 
+
 puts "Maximum simultaneous license use is #{max_out} at the following times:"
 max_times.each {|time| puts "  #{time}"}
 ```
@@ -2910,8 +2910,8 @@ object License0 extends App {
 
   while ( {line = in.readLine; line} != null) {
     if (line.startsWith("License OUT ")) count += 1
-    if (line.startsWith("License IN ")) count -= 1 // Redundant test when "OUT" 
-    if (count > max) { // Fruitless execution when "License IN " 
+    if (line.startsWith("License IN ")) count -= 1 // Redundant test when "OUT"
+    if (count > max) { // Fruitless execution when "License IN "
       max = count
       val date = line.split(" ")(3)
       dates.clear()
@@ -3148,22 +3148,22 @@ Maximum simultaneous license use is 99 at the following times:
  set out 0
  set max_out -1
  set max_times {}
- 
+
  foreach job [split [read [open "mlijobs.txt" "r"]] "\n"] {
      if {[lindex $job 1] == "OUT"} {
-         incr out 
-     } { 
+         incr out
+     } {
          incr out -1
-     }   
+     }
      if {$out > $max_out} {
          set max_out $out
          set max_times {}
-     }   
+     }
      if {$out == $max_out} {
          lappend max_times [lindex $job 3]
-     }   
+     }
  }
- 
+
  puts "Maximum simultaneous license use is $max_out at the following times:"
  foreach t $max_times {
      puts "  $t"

@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{Task|Basic language learning}}{{basic data operation}} 
+{{Task|Basic language learning}}{{basic data operation}}
 [[Category:String manipulation]] [[Category:Simple]]
 In this task display a substring:
 
@@ -22,10 +22,10 @@ In this task display a substring:
 
 
 
-If the program uses UTF-8 or UTF-16, it must work on any valid Unicode code point, 
-whether in the Basic Multilingual Plane or above it. 
+If the program uses UTF-8 or UTF-16, it must work on any valid Unicode code point,
+whether in the Basic Multilingual Plane or above it.
 
-The program must reference logical characters (code points), not 8-bit code units for UTF-8 or 16-bit code units for UTF-16. 
+The program must reference logical characters (code points), not 8-bit code units for UTF-8 or 16-bit code units for UTF-16.
 
 Programs for other encodings (such as 8-bit ASCII, or EUC-JP) are not required to handle all Unicode characters.
 
@@ -83,8 +83,8 @@ fgh
 
 ## Aikido
 
-Aikido uses square brackets for slices.  The syntax is <code>[start:end]</code>.  
-If you want to use length you have to add to the start.  
+Aikido uses square brackets for slices.  The syntax is <code>[start:end]</code>.
+If you want to use length you have to add to the start.
 Shifting strings left or right removes characters from the ends.
 
 
@@ -149,22 +149,22 @@ brown fox jumps
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}} 
+{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 
 <!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8.8d.fc9.i386]}} -->
 
 ```Algol68
 main: (
   STRING s = "abcdefgh";
-  INT n = 2, m = 3; 
-  CHAR char = "d"; 
+  INT n = 2, m = 3;
+  CHAR char = "d";
   STRING chars = "cd";
 
   printf(($gl$, s[n:n+m-1]));
   printf(($gl$, s[n:]));
   printf(($gl$, s[:UPB s-1]));
- 
-  INT pos; 
+
+  INT pos;
   char in string("d", pos, s);
   printf(($gl$, s[pos:pos+m-1]));
   string in string("de", pos, s);
@@ -201,7 +201,7 @@ System.debug('Test2: ' + x.substring(1,x.length()));
 System.debug('Test3: ' + x.substring(0));
 //Test4: 3
 System.debug('Test4: ' + x.substring(x.length()-1));
-//Test5: 
+//Test5:
 System.debug('Test5: ' + x.substring(1,1));
 //Test 6: testing123
 System.debug('Test6: ' + x.substring(x.indexOf('testing')));
@@ -215,9 +215,9 @@ System.debug('Test7: ' + x.substring(1,2));
 ## AppleScript
 
 
-Expressed in terms of some familiar functional primitives, so that we can focus more on the task, without too much distraction by the parochial quirks of a particular scripting language. 
+Expressed in terms of some familiar functional primitives, so that we can focus more on the task, without too much distraction by the parochial quirks of a particular scripting language.
 
-{{trans|JavaScript}} 
+{{trans|JavaScript}}
 (Functional primitives version)
 {{trans|Haskell}}
 
@@ -255,29 +255,29 @@ end init
 -- TEST -----------------------------------------------------------------------
 on run
     set str to "一二三四五六七八九十"
-    
+
     set legends to {¬
         "from n in, of n length", ¬
         "from n in, up to end", ¬
         "all but last", ¬
         "from matching char, of m length", ¬
         "from matching string, of m length"}
-    
+
     set parts to {¬
         take(3, drop(4, str)), ¬
         drop(3, str), ¬
         init(str), ¬
         take(3, item 2 of breakOn("五", str)), ¬
         take(4, item 2 of breakOn("六七", str))}
-    
+
     script tabulate
         property strPad : "                                        "
-        
+
         on |λ|(l, r)
             l & drop(length of l, strPad) & r
         end |λ|
     end script
-    
+
     linefeed & intercalate(linefeed, ¬
         zipWith(tabulate, ¬
             legends, parts)) & linefeed
@@ -302,7 +302,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -358,20 +358,20 @@ from matching string, of m length       六七八九
 
 /* Initialized data */
 .data
-szMessString:            .asciz "Result : " 
+szMessString:            .asciz "Result : "
 szString1:               .asciz "abcdefghijklmnopqrstuvwxyz"
 szStringStart:           .asciz "abcdefg"
 szCarriageReturn:        .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 szSubString:             .skip 500             @ buffer result
 
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
 
     ldr r0,iAdrszString1                        @ address input string
     ldr r1,iAdrszSubString                      @ address output string
@@ -445,7 +445,7 @@ iAdrszSubString:            .int szSubString
 iAdrszStringStart:            .int szStringStart
 iAdrszCarriageReturn:     .int szCarriageReturn
 /******************************************************************/
-/*     sub strings  index start  number of characters             */ 
+/*     sub strings  index start  number of characters             */
 /******************************************************************/
 /* r0 contains the address of the input string */
 /* r1 contains the address of the output string */
@@ -453,8 +453,8 @@ iAdrszCarriageReturn:     .int szCarriageReturn
 /* r3 contains numbers of characters to extract */
 /* r0 returns number of characters or -1 if error */
 subStringNbChar:
-    push {r1-r5,lr}                             @ save  registers 
-    mov r4,#0                                   @ counter byte output string 
+    push {r1-r5,lr}                             @ save  registers
+    mov r4,#0                                   @ counter byte output string
 1:
     ldrb r5,[r0,r2]                             @ load byte string input
     cmp r5,#0                                   @ zero final ?
@@ -472,15 +472,15 @@ subStringNbChar:
     pop {r1-r5,lr}                              @ restaur registers
     bx lr                                       @ return
 /******************************************************************/
-/*     sub strings  index start at end of string             */ 
+/*     sub strings  index start at end of string             */
 /******************************************************************/
 /* r0 contains the address of the input string */
 /* r1 contains the address of the output string */
 /* r2 contains the start index                  */
 /* r0 returns number of characters or -1 if error */
 subStringEnd:
-    push {r1-r5,lr}                             @ save registers 
-    mov r4,#0                                   @ counter byte output string 
+    push {r1-r5,lr}                             @ save registers
+    mov r4,#0                                   @ counter byte output string
 1:
     ldrb r5,[r0,r2]                             @ load byte string 1
     cmp r5,#0                                   @ zero final ?
@@ -495,19 +495,19 @@ subStringEnd:
     mov r0,r4
 100:
     pop {r1-r5,lr}                              @ restaur registers
-    bx lr   
+    bx lr
 /******************************************************************/
-/*      whole string minus last character                        */ 
+/*      whole string minus last character                        */
 /******************************************************************/
 /* r0 contains the address of the input string */
 /* r1 contains the address of the output string */
 /* r0 returns number of characters or -1 if error */
 subStringMinus:
-    push {r1-r5,lr}                             @ save  registers 
+    push {r1-r5,lr}                             @ save  registers
     mov r2,#0                                   @ counter byte input string
-    mov r4,#0                                   @ counter byte output string 
+    mov r4,#0                                   @ counter byte output string
 1:
-    ldrb r5,[r0,r2]                             @ load byte string 
+    ldrb r5,[r0,r2]                             @ load byte string
     cmp r5,#0                                   @ zero final ?
     beq 2f
     strb r5,[r1,r4]
@@ -521,9 +521,9 @@ subStringMinus:
     mov r0,r4
 100:
     pop {r1-r5,lr}                              @ restaur registers
-    bx lr   
+    bx lr
 /******************************************************************/
-/*   starting from a known character within the string and of m length  */ 
+/*   starting from a known character within the string and of m length  */
 /******************************************************************/
 /* r0 contains the address of the input string */
 /* r1 contains the address of the output string */
@@ -531,12 +531,12 @@ subStringMinus:
 /* r3 contains the length
 /* r0 returns number of characters or -1 if error */
 subStringStChar:
-    push {r1-r5,lr}                             @ save  registers 
+    push {r1-r5,lr}                             @ save  registers
     mov r6,#0                                   @ counter byte input string
-    mov r4,#0                                   @ counter byte output string 
+    mov r4,#0                                   @ counter byte output string
 
 1:
-    ldrb r5,[r0,r6]                             @ load byte string 
+    ldrb r5,[r0,r6]                             @ load byte string
     cmp r5,#0                                   @ zero final ?
     streqb r5,[r1,r4]
     moveq r0,#-1
@@ -551,7 +551,7 @@ subStringStChar:
     add r4,#1
     cmp r4,r3
     bge 3f
-    ldrb r5,[r0,r6]                             @ load byte string 
+    ldrb r5,[r0,r6]                             @ load byte string
     cmp r5,#0
     bne 2b
 3:
@@ -560,10 +560,10 @@ subStringStChar:
     mov r0,r4
 100:
     pop {r1-r5,lr}                              @ restaur registers
-    bx lr   
+    bx lr
 
 /******************************************************************/
-/*   starting from a known substring within the string and of m length  */ 
+/*   starting from a known substring within the string and of m length  */
 /******************************************************************/
 /* r0 contains the address of the input string */
 /* r1 contains the address of the output string */
@@ -571,9 +571,9 @@ subStringStChar:
 /* r3 contains the length
 /* r0 returns number of characters or -1 if error */
 subStringStString:
-    push {r1-r8,lr}                             @ save  registers 
+    push {r1-r8,lr}                             @ save  registers
     mov r7,r0                                   @ save address
-    mov r8,r1                                   @ counter byte string 
+    mov r8,r1                                   @ counter byte string
     mov r1,r2
     bl searchSubString
     cmp r0,#-1
@@ -581,7 +581,7 @@ subStringStString:
     mov r6,r0                                   @ counter byte input string
     mov r4,#0
 1:
-    ldrb r5,[r7,r6]                             @ load byte string 
+    ldrb r5,[r7,r6]                             @ load byte string
     strb r5,[r8,r4]
     cmp r5,#0                                   @ zero final ?
     moveq r0,r4
@@ -595,28 +595,28 @@ subStringStString:
     mov r0,r4
 100:
     pop {r1-r8,lr}                              @ restaur registers
-    bx lr   
+    bx lr
 
 /******************************************************************/
-/*   search a substring in the string                            */ 
+/*   search a substring in the string                            */
 /******************************************************************/
 /* r0 contains the address of the input string */
 /* r1 contains the address of substring */
 /* r0 returns index of substring in string or -1 if not found */
 searchSubString:
-    push {r1-r6,lr}                       @ save registers 
+    push {r1-r6,lr}                       @ save registers
     mov r2,#0                             @ counter byte input string
-    mov r3,#0                             @ counter byte string 
+    mov r3,#0                             @ counter byte string
     mov r6,#-1                            @ index found
     ldrb r4,[r1,r3]
 1:
-    ldrb r5,[r0,r2]                       @ load byte string 
+    ldrb r5,[r0,r2]                       @ load byte string
     cmp r5,#0                             @ zero final ?
     moveq r0,#-1                          @ yes returns error
     beq 100f
-    cmp r5,r4                             @ compare character 
+    cmp r5,r4                             @ compare character
     beq 2f
-    mov r6,#-1                            @ no equals - > raz index 
+    mov r6,#-1                            @ no equals - > raz index
     mov r3,#0                             @ and raz counter byte
     add r2,#1                             @ and increment counter byte
     b 1b                                  @ and loop
@@ -633,24 +633,24 @@ searchSubString:
     mov r0,r6
 100:
     pop {r1-r6,lr}                        @ restaur registers
-    bx lr   
+    bx lr
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -741,7 +741,7 @@ BEGIN {
 {{out}}
 
 ```txt
-$ awk -f substring.awk  
+$ awk -f substring.awk
 lmnop
 lmnopqrstuvwxyz
 abcdefghijklmnopqrstuvwxy
@@ -918,7 +918,7 @@ ZX Spectrum Basic has unfortunately no direct way to find a substring within a s
 90 FOR i=1 TO LEN (A$)-LEN (B$)+1
 100 IF A$(i TO i+LEN (B$)-1)=B$ THEN PRINT A$(i TO i+m-1): LET i=LEN (A$)-LEN (B$)+1:  GO TO 110
 110 NEXT i
-120 STOP 
+120 STOP
 ```
 
 
@@ -958,24 +958,24 @@ ijklmno
       basestring$ = "The five boxing wizards jump quickly"
       n% = 10
       m% = 5
-      
+
       REM starting from n characters in and of m length:
       substring$ = MID$(basestring$, n%, m%)
       PRINT substring$
-      
+
       REM starting from n characters in, up to the end of the string:
       substring$ = MID$(basestring$, n%)
       PRINT substring$
-      
+
       REM whole string minus last character:
       substring$ = LEFT$(basestring$)
       PRINT substring$
-      
+
       REM starting from a known character within the string and of m length:
       char$ = "w"
       substring$ = MID$(basestring$, INSTR(basestring$, char$), m%)
       PRINT substring$
-      
+
       REM starting from a known substring within the string and of m length:
       find$ = "iz"
       substring$ = MID$(basestring$, INSTR(basestring$, find$), m%)
@@ -1093,7 +1093,7 @@ blsq ) "RosettaCode"{0 1 3 5}di
  *
  * This example program DOES NOT make substrings. The program simply displays
  * certain parts of the input string.
- * 
+ *
  */
 #define _CRT_SECURE_NO_WARNINGS /* MSVS compilers need this */
 #include <stdio.h>
@@ -1118,7 +1118,7 @@ void putm(char* string, size_t m)
 int main(void)
 {
 
-    char string[] = 
+    char string[] =
         "Programs for other encodings (such as 8-bit ASCII, or EUC-JP)."
 
     int n = 3;
@@ -1153,7 +1153,7 @@ int main(void)
  *
  * This example program DOES NOT make substrings. The program simply displays
  * certain parts of the input string.
- * 
+ *
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -1182,7 +1182,7 @@ void putm(wchar_t* string, size_t m)
 
 int main(void)
 {
-    wchar_t string[] = 
+    wchar_t string[] =
         L"Programs for other encodings (such as 8-bit ASCII).";
 
     int n = 3;
@@ -1190,11 +1190,11 @@ int main(void)
     wchar_t knownCharacter = L'(';
     wchar_t knownSubstring[] = L"encodings";
 
-    putm(string+n-1,m);                        
-    put (string+n+1);                         
-    putm(string, wcslen(string)-1);           
-    putm(wcschr(string, knownCharacter), m ); 
-    putm(wcsstr(string, knownSubstring), m ); 
+    putm(string+n-1,m);
+    put (string+n+1);
+    putm(string, wcslen(string)-1);
+    putm(wcschr(string, knownCharacter), m );
+    putm(wcsstr(string, knownSubstring), m );
 
     return EXIT_SUCCESS;
 }
@@ -1205,8 +1205,8 @@ int main(void)
 ### C: another version
 
 
-```c>#include <stddef.h
-
+```c
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -1218,14 +1218,14 @@ char *substring(const char *s, size_t n, ptrdiff_t m)
   if (NULL == s)
     return NULL;
   /* negative m to mean 'up to the mth char from right' */
-  if (m < 0) 
+  if (m < 0)
     m = strlen(s) + m - n + 1;
 
   /* n < 0 or m < 0 is invalid */
   if (n < 0 || m < 0)
     return NULL;
 
-  /* make sure string does not end before n 
+  /* make sure string does not end before n
    * and advance the "s" pointer to beginning of substring */
   for ( ; n > 0; s++, n--)
     if (*s == '\0')
@@ -1287,8 +1287,8 @@ int main()
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 
 int main()
@@ -1450,7 +1450,7 @@ is a str
 ## ColdFusion
 
 
-###  Classic tag based CFML 
+###  Classic tag based CFML
 
 
 ```cfm
@@ -1494,7 +1494,7 @@ bcd
 
 
 
-###  Script Based CFML 
+###  Script Based CFML
 
 
 ```cfm><cfscript
@@ -1722,36 +1722,36 @@ print substr a$ 11 -1
 ```ECL
 
 /* In this task display a substring:
-   
+
 1.       starting from n characters in and of m length;
 2.       starting from n characters in, up to the end of the string;
 3.       whole string minus last character;
 4.       starting from a known character within the string and of m length;
-5.       starting from a known substring within the string and of m length. 
+5.       starting from a known substring within the string and of m length.
 */
 
-IMPORT STD; //imports a standard string library	
-	
+IMPORT STD; //imports a standard string library
+
 TheString := 'abcdefghij';
 CharIn    := 3; //n
 StrLength := 4; //m
 KnownChar := 'f';
-KnownSub  := 'def'; 	
+KnownSub  := 'def';
 FindKnownChar := STD.Str.Find(TheString, KnownChar,1);
 FindKnownSub  := STD.Str.Find(TheString, KnownSub,1);
-	
-OUTPUT(TheString[Charin..CharIn+StrLength-1]); //task1	
+
+OUTPUT(TheString[Charin..CharIn+StrLength-1]); //task1
 OUTPUT(TheString[Charin..]);                   //task2
 OUTPUT(TheString[1..LENGTH(TheString)-1]);     //task3
 OUTPUT(TheString[FindKnownChar..FindKnownChar+StrLength-1]);//task4
-OUTPUT(TheString[FindKnownSub..FindKnownSub+StrLength-1]);  //task5	
+OUTPUT(TheString[FindKnownSub..FindKnownSub+StrLength-1]);  //task5
 
 /* OUTPUTS:
    defg
-   cdefghij	
+   cdefghij
    abcdefghi
    fghi
-   defg	
+   defg
 */
 
 ```
@@ -1768,7 +1768,7 @@ int main()
   autoreleasepool
     str := 'abcdefgh'
     n := 2
-    m := 3 
+    m := 3
     Log( '%@', str[0 .. str.length-1] )                     // abcdefgh
     Log( '%@', str[n .. m]            )                     // cd
     Log( '%@', str[n .. str.length-1] )                     // cdefgh
@@ -1784,7 +1784,7 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     var s := "0123456789";
@@ -1792,7 +1792,7 @@ public program()
     var m := 2;
     var c := $51;
     var z := "345";
- 
+
     console.writeLine(s.Substring(n, m));
     console.writeLine(s.Substring(n, s.Length - n));
     console.writeLine(s.Substring(0, s.Length - 1));
@@ -1841,7 +1841,7 @@ Interactive session in Erlang shell showing built in functions doing the task.
 
 ```txt
 
-1> N = 3.            
+1> N = 3.
 2> M = 5.
 3> string:sub_string( "abcdefghijklm", N ).
 "cdefghijklm"
@@ -1966,7 +1966,7 @@ USING: fry sequences kernel ;
 ! starting from a known character within the string and of m length;
 : subseq-from-char ( char len seq -- seq ) [ index ] subseq-from-* ;
 
-! starting from a known substring within the string and of m length. 
+! starting from a known substring within the string and of m length.
 : subseq-from-seq ( subseq len seq -- seq ) [ start ] subseq-from-* ;
 ```
 
@@ -2002,7 +2002,7 @@ new_n = s.find("mu", 0)
 starting from n characters in and of m length: not j
 starting from n characters in, up to the end of the string: not just a multi-paradign language but also fun
 whole string minus last character: FalconPL is not just a multi-paradign language but also fu
-starting from a known character within the string and of m length: just 
+starting from a known character within the string and of m length: just
 starting from a known character within the string and of m length: multi
 [Finished in 2.3s]
 
@@ -2394,7 +2394,7 @@ main =
 ```hicest
 CHARACTER :: string = 'ABCDEFGHIJK', known = 'B',  substring = 'CDE'
 REAL, PARAMETER :: n = 5,  m = 8
- 
+
 WRITE(Messagebox) string(n : n + m - 1), "| substring starting from n, length m"
 WRITE(Messagebox) string(n :), "| substring starting from n, to  end of string"
 WRITE(Messagebox) string(1: LEN(string)-1), "| whole string minus last character"
@@ -2413,16 +2413,16 @@ WRITE(Messagebox) string(pos_substring : pos_substring+m-1), "| substring starti
 procedure main(arglist)
 write("Usage: substring  <string> <first position> <second position> <single character> <substring>")
 s := \arglist[1] | "aardvarks"
-n := \arglist[2] | 5 
+n := \arglist[2] | 5
 m := \arglist[3] | 4
 c := \arglist[4] | "d"
 ss := \arglist[5] | "ard"
 
-write( s[n+:m] )           
-write( s[n:0] )                          
-write( s[1:-1] )                    
-write( s[find(c,s)+:m] )        
-write( s[find(ss,s)+:m] )     
+write( s[n+:m] )
+write( s[n:0] )
+write( s[1:-1] )
+write( s[find(c,s)+:m] )
+write( s[find(ss,s)+:m] )
 end
 ```
 
@@ -2448,7 +2448,7 @@ shmal
 ```
 
 
-Note that there are other, sometimes better, ways of accomplishing this task.  
+Note that there are other, sometimes better, ways of accomplishing this task.
 
 
 ```J
@@ -2527,7 +2527,7 @@ str.substring(0, str.length - 1);  // => "abcdefg"
 //  * starting from a known character within the string and of m length;
 str.substr(str.indexOf('b'), m);  // => "bcd"
 
-//  * starting from a known substring within the string and of m length. 
+//  * starting from a known substring within the string and of m length.
 str.substr(str.indexOf('bc'), m);  // => "bcd"
 ```
 
@@ -2556,41 +2556,41 @@ Or, in terms of some familiar functional primitives, translating broadly from Ha
         var n = s.length;
         return (n > 0 ? s.substr(0, n - 1) : undefined);
     }
-    
+
     // breakOn :: Text -> Text -> (Text, Text)
     function breakOn(strPattern, s) {
         var i = s.indexOf(strPattern);
         return i === -1 ? [strPattern, ''] : [s.substr(0, i), s.substr(i)];
     }
-    
+
 
     var str = '一二三四五六七八九十';
 
 
     return JSON.stringify({
-    
+
         'from n in, of m length': (function (n, m) {
             return take(m, drop(n, str));
         })(4, 3),
-        
-        
+
+
         'from n in, up to end' :(function (n) {
             return drop(n, str);
         })(3),
-        
-        
+
+
         'all but last' : init(str),
-        
-        
+
+
         'from matching char, of m length' : (function (pattern, s, n) {
             return take(n, breakOn(pattern, s)[1]);
         })('五', str, 3),
-        
-        
+
+
         'from matching string, of m length':(function (pattern, s, n) {
             return take(n, breakOn(pattern, s)[1]);
         })('六七', str, 4)
-        
+
     }, null, 2);
 
 })();
@@ -2638,7 +2638,7 @@ Since jq arrays and strings have an index origin of 0, "n characters in" is inte
 ```jq
 # starting from n characters in and of m length:  .[n+1: n+m+1]
 "s[1:2] => \( s[1:2] )",
-  
+
 # starting from n characters in, up to the end of the string:  .[n+1:]
 "s[9:] => \( s[9:] )",
 
@@ -2679,7 +2679,7 @@ s | ix("五六") as $i | .[$i: $i + 2] => 五六
 #!/usr/local/bin/jsish -u %s
 
 var str = "abcdefgh";
- 
+
 var n = 2;
 var m = 3;
 
@@ -2690,71 +2690,71 @@ var m = 3;
 
 //  *  starting from n characters in and of m length;
 ;str.substr(n, m);
- 
+
 //  * starting from n characters in, up to the end of the string;
 ;str.substr(n);
 ;str.substring(n);
- 
+
 //  * whole string minus last character;
 ;str.substring(0, str.length - 1);
- 
+
 //  * starting from a known character within the string and of m length;
 ;str.substr(str.indexOf('b'), m);
- 
-//  * starting from a known substring within the string and of m length. 
+
+//  * starting from a known substring within the string and of m length.
 ;str.substr(str.indexOf('bc'), m);
 
 
 /* Functional */
 var res = (function () {
     'use strict';
- 
+
     //  take :: Int -> Text -> Text
     function take(n, s) {
         return s.substr(0, n);
     }
- 
+
     //  drop :: Int -> Text -> Text
     function drop(n, s) {
         return s.substr(n);
     }
- 
- 
+
+
     // init :: Text -> Text
     function init(s) {
         var n = s.length;
         return (n > 0 ? s.substr(0, n - 1) : undefined);
     }
- 
+
     // breakOn :: Text -> Text -> (Text, Text)
     function breakOn(strPattern, s) {
         var i = s.indexOf(strPattern);
         return i === -1 ? [strPattern, ''] : [s.substr(0, i), s.substr(i)];
     }
- 
- 
+
+
     var str = 'abcdefgh';
- 
- 
+
+
     return JSON.stringify({
- 
+
         'from 4 in, of 3 length': (function (n, m) {
             return take(m, drop(n, str));
         })(4, 3),
- 
- 
+
+
         'from 3 in, up to end' : (function (n) {
             return drop(n, str);
         })(3),
- 
- 
+
+
         'all but last' : init(str),
- 
- 
+
+
         'from matching b, of length 3' : (function (pattern, s, n) {
             return take(n, breakOn(pattern, s)[1]);
         })('b', str, 3),
- 
+
 
         'from matching bc, of length 4':(function (pattern, s, n) {
             return take(n, breakOn(pattern, s)[1]);
@@ -2797,7 +2797,7 @@ The initial --U is a run with echo mode.  The '''-u -update true''' puts jsish i
 #!/usr/local/bin/jsish -u %s
 
 var str = "abcdefgh";
- 
+
 var n = 2;
 var m = 3;
 
@@ -2808,72 +2808,72 @@ var m = 3;
 
 //  *  starting from n characters in and of m length;
 ;str.substr(n, m);
- 
+
 //  * starting from n characters in, up to the end of the string;
 ;str.substr(n);
 ;str.substring(n);
- 
+
 //  * whole string minus last character;
 ;str.substring(0, str.length - 1);
- 
+
 //  * starting from a known character within the string and of m length;
 ;str.substr(str.indexOf('b'), m);
- 
-//  * starting from a known substring within the string and of m length. 
+
+//  * starting from a known substring within the string and of m length.
 ;str.substr(str.indexOf('bc'), m);
 
 
 /* Functional */
 var res = (function () {
     'use strict';
- 
+
     //  take :: Int -> Text -> Text
     function take(n, s) {
         return s.substr(0, n);
     }
- 
+
     //  drop :: Int -> Text -> Text
     function drop(n, s) {
         return s.substr(n);
     }
- 
- 
+
+
     // init :: Text -> Text
     function init(s) {
         var n = s.length;
         return (n > 0 ? s.substr(0, n - 1) : undefined);
     }
- 
+
     // breakOn :: Text -> Text -> (Text, Text)
     function breakOn(strPattern, s) {
         var i = s.indexOf(strPattern);
         return i === -1 ? [strPattern, ''] : [s.substr(0, i), s.substr(i)];
     }
- 
- 
+
+
     var str = 'abcdefgh';
- 
- 
+
+
     return JSON.stringify({
- 
+
         'from 4 in, of length 3': (function (n, m) {
             return take(m, drop(n, str));
         })(4, 3),
- 
- 
+
+
         'from 3 in, up to end' : (function (n) {
             return drop(n, str);
         })(3),
- 
- 
+
+
         'all but last' : init(str),
- 
- 
+
+
         'from matching b, of length 3' : (function (pattern, s, n) {
             return take(n, breakOn(pattern, s)[1]);
         })('b', str, 3),
- 
- 
+
+
         'from matching bc, of length 4':(function (pattern, s, n) {
             return take(n, breakOn(pattern, s)[1]);
         })('bc', str, 4)
@@ -3162,7 +3162,7 @@ to items :n :thing
   output items :n butlast :thing
 end
 
-to butitems :n :thing 
+to butitems :n :thing
   if or :n <= 0 empty? :thing [output :thing]
   output butitems :n-1 butfirst :thing
 end
@@ -3260,7 +3260,7 @@ pos = string.find( str, "i" )
 if pos ~= nil then print( string.sub( str, pos, pos+m ) ) end -- ijklmnopqrstuvwx
 
 pos = string.find( str, "ijk" )
-if pos ~= nil then print( string.sub( str, pos, pos+m ) ) end-- ijklmnopqrstuvwx 
+if pos ~= nil then print( string.sub( str, pos, pos+m ) ) end-- ijklmnopqrstuvwx
 
 -- Alternative (more modern) notation
 
@@ -3269,10 +3269,10 @@ print ( str:sub(n) )           -- efghijklmnopqrstuvwxyz
 print ( str:sub(1,-2) )        -- abcdefghijklmnopqrstuvwxy
 
 pos = str:find "i"
-if pos then print (str:sub(pos,pos+m)) end -- ijklmnopqrstuvwx 
+if pos then print (str:sub(pos,pos+m)) end -- ijklmnopqrstuvwx
 
 pos = str:find "ijk"
-if pos then print (str:sub(pos,pos+m)) end d-- ijklmnopqrstuvwx 
+if pos then print (str:sub(pos,pos+m)) end d-- ijklmnopqrstuvwx
 
 
 ```
@@ -3304,7 +3304,7 @@ Module CheckAnsi {
       substringFromKnownCharacter$=Mid$(s$, Instr(s$, str$("B") as byte) , m as byte)
       substringFromKnownSubstring$=Mid$(s$, Instr(s$, str$("BC") as byte) , m as byte)
       Print Len(substring$)*2=m
-      
+
       \\ convert to UTF-16LE
       Print Chr$(substring$)="DEF"
       Print Chr$(substring2End$)="DEFG"
@@ -3326,7 +3326,7 @@ Module CheckUTF16LE {
       substringFromKnownCharacter$=Mid$(s$, Instr(s$, "B") , m)
       substringFromKnownSubstring$=Mid$(s$, Instr(s$, "BC") , m)
       Print Len(substring$)=m
-      
+
       \\ convert to UTF-16LE
       Print substring$="DEF"
       Print substring2End$="DEFG"
@@ -3387,7 +3387,7 @@ The <code>searchtext</code> command returns the position of a matching substring
                      ", The"
 
 > pos := searchtext( "Higher", s ):
-> s[ pos .. pos + m - 1 ];         
+> s[ pos .. pos + m - 1 ];
                      "Highe"
 
 ```
@@ -3421,7 +3421,7 @@ StringTake["Mathematica", {pos, pos+m-1}]
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
-Unicode, UTF-8, UTF-16 is only partially supported. In some cases, a conversion of unicode2native() or native2unicode() is necessary. 
+Unicode, UTF-8, UTF-16 is only partially supported. In some cases, a conversion of unicode2native() or native2unicode() is necessary.
 
 ```Matlab
 
@@ -3434,7 +3434,7 @@ Unicode, UTF-8, UTF-16 is only partially supported. In some cases, a conversion 
         s(1:end-1)
     % starting from a known character within the string and of m length;
         s(find(s==c,1)+[0:m-1])
-    % starting from a known substring within the string and of m length. 
+    % starting from a known substring within the string and of m length.
         s(strfind(s,pattern)+[0:m-1])
 
 ```
@@ -3493,7 +3493,7 @@ Usage:
 ```txt
 
 USER>D SUBSTR^ROSETTA("ABCD1234efgh",3,4,"D","23")
- 
+
 The base string is:
      'ABCD1234efgh'
 From position 3 for 4 characters:
@@ -3556,7 +3556,7 @@ say s
 say s.substr(n, m)
 say s.substr(n)
 say s.substr(1, s.length - 1)
-say s.substr(s.pos('def'), m) 
+say s.substr(s.pos('def'), m)
 say s.substr(s.pos('g'), m)
 
 return
@@ -3815,7 +3815,7 @@ print("8.|",ssubstr("",1,4),"|");
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -3874,11 +3874,11 @@ say $str.substr($str.index('de'), $m);
 
 
 ```Phix
---(1) starting from n characters in and of m length; 
---(2) starting from n characters in, up to the end of the string; 
---(3) whole string minus last character; 
---(4) starting from a known character within the string and of m length; 
---(5) starting from a known substring within the string and of m length. 
+--(1) starting from n characters in and of m length;
+--(2) starting from n characters in, up to the end of the string;
+--(3) whole string minus last character;
+--(4) starting from a known character within the string and of m length;
+--(5) starting from a known substring within the string and of m length.
 
 constant sentence = "the last thing the man said was the",
          n = 10, m = 5
@@ -4030,20 +4030,20 @@ $s.Substring($s.IndexOf($s2), $m)   # returns 'cde'
 If OpenConsole()
 
   Define baseString.s, m, n
- 
+
   baseString = "Thequickbrownfoxjumpsoverthelazydog."
   n = 12
   m = 5
- 
+
   ;Display the substring starting from n characters in and of m length.
   PrintN(Mid(baseString, n, m))
- 
+
   ;Display the substring starting from n characters in, up to the end of the string.
   PrintN(Mid(baseString, n)) ;or PrintN(Right(baseString, Len(baseString) - n))
- 
+
   ;Display the substring whole string minus last character
   PrintN(Left(baseString, Len(baseString) - 1))
- 
+
   ;Display the substring starting from a known character within the string and of m length.
   PrintN(Mid(baseString, FindString(baseString, "b", 1), m))
 
@@ -4108,7 +4108,7 @@ from n to end :cdefghijk
 string minus last char :abcdefghij
 form known char to m :defg
 from known substring to m :efgh
-true 
+true
 
 ```
 
@@ -4135,7 +4135,7 @@ Python uses zero-based indexing, so the n'th character is at index n-1.
 >>> indx = s.index(char)
 >>> s[indx:indx+m]
 'def'
->>> # starting from a known substring chars="cd" within the string and of m length. 
+>>> # starting from a known substring chars="cd" within the string and of m length.
 >>> indx = s.index(chars)
 >>> s[indx:indx+m]
 'cde'
@@ -4218,14 +4218,14 @@ $str 0 -1 extract println      # all chars but last one
 
 "3" as $matchChr               # starting chr for extraction
 4 as $subLen                   # Nr chars after found starting char
-$str $matchChr split as $l    
-"" $l 0 set     $l $matchChr join 
+$str $matchChr split as $l
+"" $l 0 set     $l $matchChr join
 0 $subLen extract println
 
 "345" as $matchChrs            # starting chrs for extraction
 6 as $subLen                   # Nr chars after found starting chars
-$str $matchChrs split as $l    
-"" $l 0 set     $l $matchChrs join 
+$str $matchChrs split as $l
+"" $l 0 set     $l $matchChrs join
 0 $subLen extract println
 ```
 
@@ -4258,30 +4258,30 @@ s: "abcdefgh"  n: 2  m: 3  char: #"d"  chars: "cd"
 ; Note that REBOL uses base-1 indexing. Strings are series values,
 ; just like blocks or lists so I can use the same words to manipulate
 ; them. All these examples use the 'copy' function against the 's'
-; string with a particular offset as needed.  
+; string with a particular offset as needed.
 
 ; For the fragment "copy/part  skip s n - 1  m", read from right to
 ; left.  First you have 'm', which we ignore for now. Then evaluate
 ; 'n - 1' (makes 1), to adjust the offset. Then 'skip' jumps from the
 ; start of the string by that offset. 'copy' starts copying from the
 ; new start position and the '/part' refinement limits the copy by 'm'
-; characters. 
+; characters.
 
-print ["Starting from n, length m:"  
+print ["Starting from n, length m:"
 	copy/part  skip s n - 1  m]
 
 ; It may be helpful to see the expression with optional parenthesis:
 
-print ["Starting from n, length m (parens):"  
+print ["Starting from n, length m (parens):"
 	(copy/part  (skip s (n - 1))  m)]
 
 ; This example is much simpler, so hopefully it's easier to see how
 ; the string start is position for the copy:
 
-print ["Starting from n to end of string:" 
+print ["Starting from n to end of string:"
 	copy skip s n - 1]
 
-print ["Whole string minus last character:" 
+print ["Whole string minus last character:"
 	copy/part s (length? s) - 1]
 
 print ["Starting from known character, length m:"
@@ -4308,7 +4308,7 @@ Starting from substring, length m: cde
 
 ## REXX
 
-Note:   in REXX,   the 1<sup>st</sup> character   ''index''   of a string is   '''1''',   not   '''0'''. 
+Note:   in REXX,   the 1<sup>st</sup> character   ''index''   of a string is   '''1''',   not   '''0'''.
 
 ```rexx
 /*REXX program demonstrates various ways to extract substrings from a  string  of characters.*/
@@ -4378,30 +4378,30 @@ Programming note:   generally, the REXX   '''parse'''   statement is faster than
 
 
 ```rpg
-      *                                         1...5....1....5....2....5..    
-     D myString        S             30    inz('Liebe bewegt das Universum!')  
-     D output          S             30    inz('')                             
-     D n               S              2  0 inz(1)                              
-     D m               S              2  0 inz(5)                              
-     D length          S              2  0 inz(0)                              
-     D find            S              2  0 inz(0)                              
-                                                                               
-      /free                                                                    
-       *inlr = *on;                                                           
-        dsply    %subst(myString:n:m);                   
-        dsply    %subst(myString:7:20);                  
-                                                         
-        length = %len(%trim(myString));                  
-        dsply    %subst(myString:1:length-1);            
-                                                         
-        find   = %scan('U':myString);                    
-        dsply    %subst(myString:find:9);                
-                                                         
-        find   = %scan('bewegt':myString);               
-        dsply    %subst(myString:find:%len('bewegt'));   
-                                                         
-        output = ' *** end *** ';                        
-        dsply ' ' ' ' output;                            
+      *                                         1...5....1....5....2....5..
+     D myString        S             30    inz('Liebe bewegt das Universum!')
+     D output          S             30    inz('')
+     D n               S              2  0 inz(1)
+     D m               S              2  0 inz(5)
+     D length          S              2  0 inz(0)
+     D find            S              2  0 inz(0)
+
+      /free
+       *inlr = *on;
+        dsply    %subst(myString:n:m);
+        dsply    %subst(myString:7:20);
+
+        length = %len(%trim(myString));
+        dsply    %subst(myString:1:length-1);
+
+        find   = %scan('U':myString);
+        dsply    %subst(myString:find:9);
+
+        find   = %scan('bewegt':myString);
+        dsply    %subst(myString:find:%len('bewegt'));
+
+        output = ' *** end *** ';
+        dsply ' ' ' ' output;
       /end-free
 ```
 
@@ -4409,11 +4409,11 @@ Programming note:   generally, the REXX   '''parse'''   statement is faster than
 
 ```txt
 
-DSPLY  Liebe                     
-DSPLY  bewegt das Universum      
+DSPLY  Liebe
+DSPLY  bewegt das Universum
 DSPLY  Liebe bewegt das Universum
-DSPLY  Universum                 
-DSPLY  bewegt                                   
+DSPLY  Universum
+DSPLY  bewegt
 
 ```
 
@@ -4549,16 +4549,16 @@ object Substring {
 
   // Starting from n characters in and of m length
   assert("inspired by love" == str.slice(n, n + m))
-  
+
   // Starting from n characters in, up to the end of the string
   assert("inspired by love and guided by knowledge." == str.drop(n))
-  
+
   // Whole string minus last character
   assert("The good life is one inspired by love and guided by knowledge" == str.init)
-  
+
   // Starting from a known character within the string and of m length
   assert("life is one insp" == str.dropWhile(_ != 'l').take(m) )
-  
+
   // Starting from a known substring within the string and of m length
   assert("good life is one" == { val i = str.indexOf("good"); str.slice(i, i + m) })
   // Alternatively
@@ -4696,12 +4696,12 @@ s := 'hello world shortest program'.
 
 (s copyFrom: 13 to: (13+4)) displayNl.
 "4 is the length (5) - 1, since we need the index of the
- last char we want, which is included" 
+ last char we want, which is included"
 
 (s copyFrom: 7) displayNl.
 (s allButLast) displayNl.
 
-(s copyFrom: ((s indexOfRegex: 'w') first) 
+(s copyFrom: ((s indexOfRegex: 'w') first)
    to: ( ((s indexOfRegex: 'w') first) + 4) ) displayNl.
 (s copyFrom: ((s indexOfRegex: 'ro') first)
    to: ( ((s indexOfRegex: 'ro') first) + 2) ) displayNl.
@@ -4745,14 +4745,14 @@ String extend [
 	known_char = "q"
 	known_str = "pq"
 *  starting from n characters in and of m length;
-	string len(n - 1) len(m) . output	
+	string len(n - 1) len(m) . output
 * starting from n characters in, up to the end of the string;
 	string len(n - 1) rem . output
 * whole string minus last character;
 	string rtab(1) . output
 * starting from a known character within the string and of m length;
 	string break(known_char) len(m) . output
-* starting from a known substring <= m within the string and of m length. 
+* starting from a known substring <= m within the string and of m length.
 	string (known_str len(m - size(known_str))) . output
 end
 ```
@@ -4799,46 +4799,46 @@ Output:
 ```txt
 
 db2 => select 'the quick brown fox jumps over the lazy dog' from sysibm.sysdummy1;
-1                                          
+1
 -------------------------------------------
 the quick brown fox jumps over the lazy dog
 
   1 record(s) selected.
 db2 => select substr('the quick brown fox jumps over the lazy dog', 5, 15) from sysibm.sysdummy1;
-1              
+1
 ---------------
 quick brown fox
 
   1 record(s) selected.
 
 db2 => select substr('the quick brown fox jumps over the lazy dog', 32) from sysibm.sysdummy1;
-1                                          
+1
 -------------------------------------------
-the lazy dog                               
+the lazy dog
 
   1 record(s) selected.
 
 db2 => select substr('the quick brown fox jumps over the lazy dog', 1, length ('the quick brown fox jumps over the lazy dog') - 1) from sysibm.sysdummy1;
-1                                          
+1
 -------------------------------------------
-the quick brown fox jumps over the lazy do 
+the quick brown fox jumps over the lazy do
 
   1 record(s) selected.
 
 
 db2 => select substr('the quick brown fox jumps over the lazy dog', locate('j', 'the quick brown fox jumps over the lazy dog')) from sysibm.sysdummy1;
 
-1                                          
+1
 -------------------------------------------
-jumps over the lazy dog                    
+jumps over the lazy dog
 
   1 record(s) selected.
 
 db2 => select substr('the quick brown fox jumps over the lazy dog', locate('fox', 'the quick brown fox jumps over the lazy dog')) from sysibm.sysdummy1;
 
-1                                          
+1
 -------------------------------------------
-fox jumps over the lazy dog                
+fox jumps over the lazy dog
 
   1 record(s) selected.
 
@@ -5133,7 +5133,7 @@ printf pq%s "${str#*pq}" | cut -c 1-$m
 {{out}}
 
 ```txt
-$ sh substring.sh                                                              
+$ sh substring.sh
 lmnop
 lmnopqrstuvwxyz
 abcdefghijklmnopqrstuvwxy
@@ -5185,10 +5185,10 @@ Public Sub substring()
 '(3) whole string minus last character;
 '(4) starting from a known character within the string and of m length;
 '(5) starting from a known substring within the string and of m length.
- 
+
     sentence = "the last thing the man said was the"
     n = 10: m = 5
-       
+
     '(1)
     Debug.Print Mid(sentence, n, 5)
     '(2)

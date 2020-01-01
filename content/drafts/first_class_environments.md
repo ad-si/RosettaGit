@@ -19,7 +19,7 @@ The environment is minimally, the set of variables accessable to a statement bei
 
 Often an environment is captured in a [[wp:Closure_(computer_science)|closure]], which encapsulates a function together with an environment. That environment, however, is '''not''' first-class, as it cannot be created, passed etc. independently from the function's code.
 
-Therefore, a first class environment is a set of variable bindings which can be constructed at run-time, passed as a parameter, returned from a subroutine, or assigned into a variable. It is like a closure without code. A statement must be able to be executed within a stored first class environment and act according to the environment variable values stored within. 
+Therefore, a first class environment is a set of variable bindings which can be constructed at run-time, passed as a parameter, returned from a subroutine, or assigned into a variable. It is like a closure without code. A statement must be able to be executed within a stored first class environment and act according to the environment variable values stored within.
 
 The task: Build a dozen environments, and a single piece of code to be run repeatedly in each of these envionments.
 
@@ -37,7 +37,7 @@ Here the 'environment' consists of all the dynamic variables; the static integer
 ```bbcbasic
       DIM @environ$(12)
       @% = 4 : REM Column width
-      
+
       REM Initialise:
       FOR E% = 1 TO 12
         PROCsetenvironment(@environ$(E%))
@@ -45,7 +45,7 @@ Here the 'environment' consists of all the dynamic variables; the static integer
         cnt% = 0
         @environ$(E%) = FNgetenvironment
       NEXT
-      
+
       REM Run hailstone sequences:
       REPEAT
         T% = 0
@@ -61,7 +61,7 @@ Here the 'environment' consists of all the dynamic variables; the static integer
         NEXT
         PRINT
       UNTIL T% = 0
-      
+
       REM Print counts:
       PRINT "Counts:"
       FOR E% = 1 TO 12
@@ -71,12 +71,12 @@ Here the 'environment' consists of all the dynamic variables; the static integer
       NEXT
       PRINT
       END
-      
+
       DEF FNgetenvironment
       LOCAL e$ : e$ = STRING$(216, CHR$0)
       SYS "RtlMoveMemory", !^e$, ^@%+108, 216
       = e$
-      
+
       DEF PROCsetenvironment(e$)
       IF LEN(e$) < 216 e$ = STRING$(216, CHR$0)
       SYS "RtlMoveMemory", ^@%+108, !^e$, 216
@@ -133,10 +133,10 @@ Counts:
     & !environments:?envs
     &   whl
       ' ( !envs:(=?env) ?envs
-        &   (   
+        &   (
               ' ( $env
-                  ( 
-                  =   
+                  (
+                  =
                     .     put$(!(its.seq) \t)
                         & !(its.seq):1
                       |   1+!(its.cnt):?(its.cnt)
@@ -144,9 +144,9 @@ Counts:
                       | 3*!(its.seq)+1:?(its.seq)
                   )
                 )
-            . 
+            .
             )
-          $ 
+          $
         )
     & out$
     )
@@ -210,8 +210,8 @@ Output:
 
 Well, this fits the semantics, not sure about the spirit…
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define JOBS 12
 #define jobs(a) for (switch_to(a = 0); a < JOBS || !printf("\n"); switch_to(++a))
@@ -354,13 +354,13 @@ Counts:
 	(when (> value 1)
 	(set! count (1+ count))
 	(set! value (if (even? value) (/ value 2) (1+ (* 3 value))))))
-	
-(define (env-show name envs ) 
+
+(define (env-show name envs )
 (write name)
 (for ((env envs)) (write (format "%4a" (eval name env))))
 (writeln))
 
-(define (task (envnum 12)) 
+(define (task (envnum 12))
 (define envs (for/list ((i envnum)) (environment-new `((value ,(1+ i)) (count 0)))))
 (env-show 'value envs)
 (while
@@ -396,7 +396,7 @@ value    1    1    1    1    1    1    1    1    8    1    1    1
 value    1    1    1    1    1    1    1    1    4    1    1    1
 value    1    1    1    1    1    1    1    1    2    1    1    1
 value    1    1    1    1    1    1    1    1    1    1    1    1
-count    0    1    7    2    5    8   16    3   19    6   14    9 
+count    0    1    7    2    5    8   16    3   19    6   14    9
 
 ```
 
@@ -408,9 +408,9 @@ The Erlang modifiable environment, aka process dictionary, has the following war
 
 ```txt
 
-Note that using the Process Dictionary: 
-Destroys referencial transparency 
-Makes debugging difficult 
+Note that using the Process Dictionary:
+Destroys referencial transparency
+Makes debugging difficult
 Survives Catch/Throw
 
 ```
@@ -439,7 +439,7 @@ counts( Pids ) ->
 	My_pid = erlang:self(),
 	[X ! {count, My_pid} || X <- Pids],
 	counts( Pids, [] ).
-	
+
 counts( [], Acc ) -> Acc;
 counts( Pids, Acc ) ->
 	receive
@@ -609,11 +609,11 @@ The simplest way to create an environment with variables isolated from code in I
 ```Icon
 link printf
 
-procedure main() 
-   every put(environment := [], hailenv(1 to 12,0))  # setup environments 
+procedure main()
+   every put(environment := [], hailenv(1 to 12,0))  # setup environments
    printf("Sequences:\n")
    while (e := !environment).sequence > 1 do {
-      every hailstep(!environment) 
+      every hailstep(!environment)
       printf("\n")
       }
    printf("\nCounts:\n")
@@ -627,40 +627,40 @@ procedure hailstep(env)
    printf("%4d ",env.sequence)
     if env.sequence ~= 1 then {
         env.count +:= 1
-        if env.sequence % 2 = 0 then env.sequence /:= 2 
+        if env.sequence % 2 = 0 then env.sequence /:= 2
         else env.sequence := 3 * env.sequence + 1
         }
 end
 ```
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 {{out}}
 
 ```txt
 Sequences:
-   1    2    3    4    5    6    7    8    9   10   11   12 
-   1    1   10    2   16    3   22    4   28    5   34    6 
-   1    1    5    1    8   10   11    2   14   16   17    3 
-   1    1   16    1    4    5   34    1    7    8   52   10 
-   1    1    8    1    2   16   17    1   22    4   26    5 
-   1    1    4    1    1    8   52    1   11    2   13   16 
-   1    1    2    1    1    4   26    1   34    1   40    8 
-   1    1    1    1    1    2   13    1   17    1   20    4 
-   1    1    1    1    1    1   40    1   52    1   10    2 
-   1    1    1    1    1    1   20    1   26    1    5    1 
-   1    1    1    1    1    1   10    1   13    1   16    1 
-   1    1    1    1    1    1    5    1   40    1    8    1 
-   1    1    1    1    1    1   16    1   20    1    4    1 
-   1    1    1    1    1    1    8    1   10    1    2    1 
-   1    1    1    1    1    1    4    1    5    1    1    1 
-   1    1    1    1    1    1    2    1   16    1    1    1 
-   1    1    1    1    1    1    1    1    8    1    1    1 
-   1    1    1    1    1    1    1    1    4    1    1    1 
-   1    1    1    1    1    1    1    1    2    1    1    1 
+   1    2    3    4    5    6    7    8    9   10   11   12
+   1    1   10    2   16    3   22    4   28    5   34    6
+   1    1    5    1    8   10   11    2   14   16   17    3
+   1    1   16    1    4    5   34    1    7    8   52   10
+   1    1    8    1    2   16   17    1   22    4   26    5
+   1    1    4    1    1    8   52    1   11    2   13   16
+   1    1    2    1    1    4   26    1   34    1   40    8
+   1    1    1    1    1    2   13    1   17    1   20    4
+   1    1    1    1    1    1   40    1   52    1   10    2
+   1    1    1    1    1    1   20    1   26    1    5    1
+   1    1    1    1    1    1   10    1   13    1   16    1
+   1    1    1    1    1    1    5    1   40    1    8    1
+   1    1    1    1    1    1   16    1   20    1    4    1
+   1    1    1    1    1    1    8    1   10    1    2    1
+   1    1    1    1    1    1    4    1    5    1    1    1
+   1    1    1    1    1    1    2    1   16    1    1    1
+   1    1    1    1    1    1    1    1    8    1    1    1
+   1    1    1    1    1    1    1    1    4    1    1    1
+   1    1    1    1    1    1    1    1    2    1    1    1
 
 Counts:
-   0    1    7    2    5    8   16    3   19    6   14    9 
+   0    1    7    2    5    8   16    3   19    6   14    9
 ```
 
 
@@ -691,7 +691,7 @@ In Haskell operations with first class environments could be implemented using s
 
 1. Using any data structure <code>S</code> which is passed by a chain of functions, having type <code>S -> S</code>.
 
-2. Using the <code>Reader</code> monad, which emulates access to imutable environment. 
+2. Using the <code>Reader</code> monad, which emulates access to imutable environment.
 
 3. Using the <code>State</code> monad, which emulates access to an environment, that coud be changed.
 
@@ -751,28 +751,28 @@ main = do
 {{Out}}
 
 ```txt
-1  2  3  4  5  6  7  8  9 10 11 12 
-1  1 10  2 16  3 22  4 28  5 34  6 
-1  1  5  1  8 10 11  2 14 16 17  3 
-1  1 16  1  4  5 34  1  7  8 52 10 
-1  1  8  1  2 16 17  1 22  4 26  5 
-1  1  4  1  1  8 52  1 11  2 13 16 
-1  1  2  1  1  4 26  1 34  1 40  8 
-1  1  1  1  1  2 13  1 17  1 20  4 
-1  1  1  1  1  1 40  1 52  1 10  2 
-1  1  1  1  1  1 20  1 26  1  5  1 
-1  1  1  1  1  1 10  1 13  1 16  1 
-1  1  1  1  1  1  5  1 40  1  8  1 
-1  1  1  1  1  1 16  1 20  1  4  1 
-1  1  1  1  1  1  8  1 10  1  2  1 
-1  1  1  1  1  1  4  1  5  1  1  1 
-1  1  1  1  1  1  2  1 16  1  1  1 
-1  1  1  1  1  1  1  1  8  1  1  1 
-1  1  1  1  1  1  1  1  4  1  1  1 
-1  1  1  1  1  1  1  1  2  1  1  1 
-1  1  1  1  1  1  1  1  1  1  1  1 
+1  2  3  4  5  6  7  8  9 10 11 12
+1  1 10  2 16  3 22  4 28  5 34  6
+1  1  5  1  8 10 11  2 14 16 17  3
+1  1 16  1  4  5 34  1  7  8 52 10
+1  1  8  1  2 16 17  1 22  4 26  5
+1  1  4  1  1  8 52  1 11  2 13 16
+1  1  2  1  1  4 26  1 34  1 40  8
+1  1  1  1  1  2 13  1 17  1 20  4
+1  1  1  1  1  1 40  1 52  1 10  2
+1  1  1  1  1  1 20  1 26  1  5  1
+1  1  1  1  1  1 10  1 13  1 16  1
+1  1  1  1  1  1  5  1 40  1  8  1
+1  1  1  1  1  1 16  1 20  1  4  1
+1  1  1  1  1  1  8  1 10  1  2  1
+1  1  1  1  1  1  4  1  5  1  1  1
+1  1  1  1  1  1  2  1 16  1  1  1
+1  1  1  1  1  1  1  1  8  1  1  1
+1  1  1  1  1  1  1  1  4  1  1  1
+1  1  1  1  1  1  1  1  2  1  1  1
+1  1  1  1  1  1  1  1  1  1  1  1
 -----------------------------------
-0  1  7  2  5  8 16  3 19  6 14  9 
+0  1  7  2  5  8 16  3 19  6 14  9
 ```
 
 
@@ -784,7 +784,7 @@ main = do
   let result = map (fixedPoint process) environments
   mapM_ (prettyPrint value) result
   putStrLn (replicate 36 '-')
-  putStrLn "Counts: " 
+  putStrLn "Counts: "
   prettyPrint (count . last) result
 ```
 
@@ -792,21 +792,21 @@ main = do
 {{Out}}
 
 ```txt
- 1 
- 2  1 
- 3 10  5 16  8  4  2  1 
- 4  2  1 
- 5 16  8  4  2  1 
- 6  3 10  5 16  8  4  2  1 
- 7 22 11 34 17 52 26 13 40 20 10  5 16  8  4  2  1 
- 8  4  2  1 
- 9 28 14  7 22 11 34 17 52 26 13 40 20 10  5 16  8  4  2  1 
-10  5 16  8  4  2  1 
-11 34 17 52 26 13 40 20 10  5 16  8  4  2  1 
-12  6  3 10  5 16  8  4  2  1 
+ 1
+ 2  1
+ 3 10  5 16  8  4  2  1
+ 4  2  1
+ 5 16  8  4  2  1
+ 6  3 10  5 16  8  4  2  1
+ 7 22 11 34 17 52 26 13 40 20 10  5 16  8  4  2  1
+ 8  4  2  1
+ 9 28 14  7 22 11 34 17 52 26 13 40 20 10  5 16  8  4  2  1
+10  5 16  8  4  2  1
+11 34 17 52 26 13 40 20 10  5 16  8  4  2  1
+12  6  3 10  5 16  8  4  2  1
 ------------------------------------
-Counts: 
- 0  1  7  2  5  8 16  3 19  6 14  9 
+Counts:
+ 0  1  7  2  5  8 16  3 19  6 14  9
 ```
 
 
@@ -859,7 +859,7 @@ run=:3 :0
 {{out|Example use}}
 
 ```j
-   environments=: conew&'hailstone'"0 (1+i.12) 
+   environments=: conew&'hailstone'"0 (1+i.12)
    run_hailstone_ environments
    1   1  10   2  16   3  22   4  28   5  34   6
    1   1   5   1   8  10  11   2  14  16  17   3
@@ -911,7 +911,7 @@ Let us therefore define a function named "code" accordingly:
 def code:
      # Given an integer as input, compute the corresponding hailstone value:
      def hail: if . % 2 == 0 then ./2|floor else 3*. + 1 end;
-     
+
      if .value > 1 then (.value |= hail) | .count += 1 else . end;
 
 ```
@@ -950,7 +950,7 @@ filter_and_last( generate;
 
 {{out}}
 
-The following invocation produces the result shown below, assuming the above code is in a file named "program.jq": 
+The following invocation produces the result shown below, assuming the above code is in a file named "program.jq":
 
     $ jq -nr -f program.jq
 
@@ -1090,7 +1090,7 @@ class Environment(var seq: Int, var count: Int)
 const val JOBS = 12
 val envs = List(JOBS) { Environment(it + 1, 0) }
 var seq = 0     // 'seq' for current environment
-var count = 0   // 'count' for current environment 
+var count = 0   // 'count' for current environment
 var currId = 0  // index of current environment
 
 fun switchTo(id: Int) {
@@ -1098,13 +1098,13 @@ fun switchTo(id: Int) {
         envs[currId].seq = seq
         envs[currId].count = count
         currId = id
-    } 
+    }
     seq = envs[id].seq
     count = envs[id].count
 }
 
 fun hailstone() {
-    print("%4d".format(seq)) 
+    print("%4d".format(seq))
     if (seq == 1) return
     count++
     seq = if (seq % 2 == 1) 3 * seq + 1 else seq / 2
@@ -1131,11 +1131,11 @@ fun code() {
     println("\nCOUNTS:")
     for (a in 0 until JOBS) {
         switchTo(a)
-        print("%4d".format(count)) 
+        print("%4d".format(count))
     }
     println()
-} 
-  
+}
+
 fun main(args: Array<String>) {
     code()
 }
@@ -1203,13 +1203,13 @@ while true do
     for _, env in ipairs(envs) do
         if env.n == 1 then finished = finished + 1 end
     end
-	
+
     if finished == #envs then break end
 
     for _, env in ipairs(envs) do
         -- 5.1; in 5.2, use load(code, nil, nil, env)() instead
-        setfenv(loadstring(code), env)() 
-    end 
+        setfenv(loadstring(code), env)()
+    end
     io.write "\n"
 end
 
@@ -1255,9 +1255,9 @@ counts:
 
 Order supports environments as a first-class type, but since all values are immutable, updating a value means using one environment to update the next in a chain (nothing unusual for languages with immutable data structures):
 
-```c>#include <order/interpreter.h
+```c
+#include <order/interpreter.h>
 
- 
 #define ORDER_PP_DEF_8hail ORDER_PP_FN(                \
 8fn(8N, 8cond((8equal(8N, 1), 1)                       \
           (8is_0(8remainder(8N, 2)), 8quotient(8N, 2)) \
@@ -1335,7 +1335,7 @@ sub hail_next {
     return $n * 3 + 1 if $n % 2;
     $n / 2;
 };
- 
+
 my @enviornments;
 for my $initial ( 1..12 ) {
    my $env = Safe->new;
@@ -1359,9 +1359,9 @@ while( grep { $$_ != 1 } @value_refs ) {
     print "\n";
     $_->() for @tasks;
 }
- 
+
 print "Counts\n";
- 
+
 printf "%4s", ${$_->varglob('count')} for @enviornments;
 print "\n";
 
@@ -1603,8 +1603,8 @@ main()
                                    4
                                    2
                                    1
- 
-###  === === === === === === === === === === 
+
+###  === === === === === === === === === ===
 
    0   1   7   2   5   8  16   3  19   6  14   9
 
@@ -1750,28 +1750,28 @@ eprint(envs, "count")
 {{out}}
 
 ```txt
-   1    2    3    4    5    6    7    8    9   10   11   12 
-   1    1   10    2   16    3   22    4   28    5   34    6 
-   1    1    5    1    8   10   11    2   14   16   17    3 
-   1    1   16    1    4    5   34    1    7    8   52   10 
-   1    1    8    1    2   16   17    1   22    4   26    5 
-   1    1    4    1    1    8   52    1   11    2   13   16 
-   1    1    2    1    1    4   26    1   34    1   40    8 
-   1    1    1    1    1    2   13    1   17    1   20    4 
-   1    1    1    1    1    1   40    1   52    1   10    2 
-   1    1    1    1    1    1   20    1   26    1    5    1 
-   1    1    1    1    1    1   10    1   13    1   16    1 
-   1    1    1    1    1    1    5    1   40    1    8    1 
-   1    1    1    1    1    1   16    1   20    1    4    1 
-   1    1    1    1    1    1    8    1   10    1    2    1 
-   1    1    1    1    1    1    4    1    5    1    1    1 
-   1    1    1    1    1    1    2    1   16    1    1    1 
-   1    1    1    1    1    1    1    1    8    1    1    1 
-   1    1    1    1    1    1    1    1    4    1    1    1 
-   1    1    1    1    1    1    1    1    2    1    1    1 
+   1    2    3    4    5    6    7    8    9   10   11   12
+   1    1   10    2   16    3   22    4   28    5   34    6
+   1    1    5    1    8   10   11    2   14   16   17    3
+   1    1   16    1    4    5   34    1    7    8   52   10
+   1    1    8    1    2   16   17    1   22    4   26    5
+   1    1    4    1    1    8   52    1   11    2   13   16
+   1    1    2    1    1    4   26    1   34    1   40    8
+   1    1    1    1    1    2   13    1   17    1   20    4
+   1    1    1    1    1    1   40    1   52    1   10    2
+   1    1    1    1    1    1   20    1   26    1    5    1
+   1    1    1    1    1    1   10    1   13    1   16    1
+   1    1    1    1    1    1    5    1   40    1    8    1
+   1    1    1    1    1    1   16    1   20    1    4    1
+   1    1    1    1    1    1    8    1   10    1    2    1
+   1    1    1    1    1    1    4    1    5    1    1    1
+   1    1    1    1    1    1    2    1   16    1    1    1
+   1    1    1    1    1    1    1    1    8    1    1    1
+   1    1    1    1    1    1    1    1    4    1    1    1
+   1    1    1    1    1    1    1    1    2    1    1    1
 
 Counts:
-   0    1    7    2    5    8   16    3   19    6   14    9 
+   0    1    7    2    5    8   16    3   19    6   14    9
 
 ```
 
@@ -1849,15 +1849,15 @@ Output:
 
 ## REXX
 
-The formatting is sensitive to a terminating Collatz sequence and is shown as blanks   (that is, 
+The formatting is sensitive to a terminating Collatz sequence and is shown as blanks   (that is,
 
 once a   '''1'''   (unity)   is found, no more numbers are displayed in that column).
 
 Column widths are automatically adjusted for their width (maximum decimal digits displayed in a column).
 
-The '''hailstone''' function (subroutine) could be coded in-line to further comply with the task's requirement that 
+The '''hailstone''' function (subroutine) could be coded in-line to further comply with the task's requirement that
 
-the solution have a   ''single piece of code to be run repeatedly in each of these environments''. 
+the solution have a   ''single piece of code to be run repeatedly in each of these environments''.
 
 ```rexx
 /*REXX program illustrates 1st─class environments (using the numbers from hailstone seq)*/

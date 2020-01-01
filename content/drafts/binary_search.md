@@ -300,7 +300,7 @@ XDEC     DS     CL12               temp
 
 (defun array-name (array)
    (first array))
-       
+
 (defun set-at (array i val)
    (cons (array-name array)
          (aset1 (array-name array)
@@ -361,7 +361,7 @@ with Ada.Text_IO;  use Ada.Text_IO;
 
 procedure Test_Recursive_Binary_Search is
    Not_Found : exception;
-   
+
    generic
       type Index is range <>;
       type Element is private;
@@ -391,7 +391,7 @@ procedure Test_Recursive_Binary_Search is
 
    type Integer_Array is array (Positive range <>) of Integer;
    function Find is new Search (Positive, Integer, Integer_Array);
-   
+
    procedure Test (X : Integer_Array; E : Integer) is
    begin
       New_Line;
@@ -420,7 +420,7 @@ with Ada.Text_IO;  use Ada.Text_IO;
 
 procedure Test_Binary_Search is
    Not_Found : exception;
-   
+
    generic
       type Index is range <>;
       type Element is private;
@@ -452,7 +452,7 @@ procedure Test_Binary_Search is
 
    type Integer_Array is array (Positive range <>) of Integer;
    function Find is new Search (Positive, Integer, Integer_Array);
-   
+
    procedure Test (X : Integer_Array; E : Integer) is
    begin
       New_Line;
@@ -590,16 +590,16 @@ TableNumber:	     .int   4,6,7,10,11,15,22,30,35
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                           @ entry of program 
+.global main
+main:                                           @ entry of program
     mov r0,#4                                   @ search first value
     ldr r1,iAdrTableNumber                      @ address number table
-    mov r2,#NBELEMENTS                          @ number of élements 
+    mov r2,#NBELEMENTS                          @ number of élements
     bl bSearch
     ldr r1,iAdrsMessValeur                      @ display value
     bl conversion10                             @ call function
@@ -622,7 +622,7 @@ main:                                           @ entry of program
     cmp r0,#-1
     bne 2f
     ldr r0,iAdrsMessNotFound
-    bl affichageMess 
+    bl affichageMess
     b 3f
 2:
     ldr r1,iAdrsMessValeur                      @ display value
@@ -653,7 +653,7 @@ main:                                           @ entry of program
     bl conversion10                             @ call function
     ldr r0,iAdrsMessResult
     bl affichageMess                            @ display message
-   
+
     mov r0,#11
     ldr r1,iAdrTableNumber
     mov r2,#0
@@ -663,7 +663,7 @@ main:                                           @ entry of program
     bl conversion10                             @ call function
     ldr r0,iAdrsMessResult
     bl affichageMess                            @ display message
-    
+
     mov r0,#12
     ldr r1,iAdrTableNumber
     mov r2,#0
@@ -672,7 +672,7 @@ main:                                           @ entry of program
     cmp r0,#-1
     bne 2f
     ldr r0,iAdrsMessNotFound
-    bl affichageMess 
+    bl affichageMess
     b 3f
 2:
     ldr r1,iAdrsMessValeur                      @ display value
@@ -690,7 +690,7 @@ main:                                           @ entry of program
     ldr r0,iAdrsMessResult
     bl affichageMess                            @ display message
 
-100:                                            @ standard end of the program 
+100:                                            @ standard end of the program
     mov r0, #0                                  @ return code
     mov r7, #EXIT                               @ request to exit program
     svc #0                                      @ perform the system call
@@ -703,7 +703,7 @@ iAdrsMessNotFound:        .int sMessNotFound
 iAdrTableNumber:          .int TableNumber
 
 /******************************************************************/
-/*     binary search   iterative                                  */ 
+/*     binary search   iterative                                  */
 /******************************************************************/
 /* r0 contains the value to search */
 /* r1 contains the adress of table */
@@ -728,9 +728,9 @@ bSearch:
     b 1b                                            @ and loop
 100:
     pop {r2-r5,lr}
-    bx lr                       @ return 
+    bx lr                       @ return
 /******************************************************************/
-/*     binary search   recursif                                  */ 
+/*     binary search   recursif                                  */
 /******************************************************************/
 /* r0 contains the value to search */
 /* r1 contains the adress of table */
@@ -748,7 +748,7 @@ bSearchR:
     ldr r5,[r1,r4,lsl #2]                            @ load value of table at index r4
     cmp r5,r0
     moveq r0,r4                                      @ find !!!
-    beq 100f 
+    beq 100f
 
     bgt 1f                                           @ bigger ?
     add r2,r4,#1                                     @ no new search with low = index + 1
@@ -759,35 +759,35 @@ bSearchR:
     bl bSearchR
 100:
     pop {r2-r5,lr}
-    bx lr                                            @ return 
+    bx lr                                            @ return
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
     pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres
-    bx lr                                          @ return  
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 
@@ -795,7 +795,7 @@ conversion10:
     bl divisionpar10U                               @unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b	                                    @ and loop
                                                     @ and move digit from left of area
@@ -808,7 +808,7 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                      @ and move spaces in end on area
-    mov r0,r4                                        @ result length 
+    mov r0,r4                                        @ result length
     mov r1,#' '                                      @ space
 3:
     strb r1,[r3,r4]                                  @ store space in area
@@ -817,14 +817,14 @@ conversion10:
     ble 3b                                           @ loop if r4 <= area size
 
 100:
-    pop {r1-r4,lr}                                   @ restaur registres 
+    pop {r1-r4,lr}                                   @ restaur registres
     bx lr                                            @return
 
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -832,12 +832,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                 @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                              @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                             @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                             @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                               @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                             @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                             @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                             @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                            @ leave function 
+    bx lr                                            @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 
@@ -874,7 +874,7 @@ BinarySearchI(A, lengthA, value) {
   high := lengthA - 1
   While (low <= high) {
     mid := Floor((low + high) / 2) ; round to lower integer
-    If (A%mid% > value)   
+    If (A%mid% > value)
       high := mid - 1
     Else If (A%mid% < value)
       low := mid + 1
@@ -958,7 +958,7 @@ Return
 ```freebasic
 FUNCTION binary_search ( array() AS Integer, value AS Integer, lo AS Integer, hi AS Integer) AS Integer
   DIM middle AS Integer
-  
+
   IF hi < lo THEN
     binary_search = 0
   ELSE
@@ -982,7 +982,7 @@ END FUNCTION
 ```freebasic
 FUNCTION binary_search ( array() AS Integer, value AS Integer, lo AS Integer, hi AS Integer) AS Integer
   DIM middle AS Integer
-  
+
   WHILE lo <= hi
     middle = (hi + lo) / 2
     SELECT CASE value
@@ -1041,7 +1041,7 @@ Output:
 ```bbcbasic
       DIM array%(9)
       array%() = 7, 14, 21, 28, 35, 42, 49, 56, 63, 70
-      
+
       secret% = 42
       index% = FNwhere(array%(), secret%, 0, DIM(array%(),1))
       IF index% >= 0 THEN
@@ -1050,7 +1050,7 @@ Output:
         PRINT "The value "; secret% " was not found"
       ENDIF
       END
-      
+
       REM Search ordered array A%() for the value S% from index B% to T%
       DEF FNwhere(A%(), S%, B%, T%)
       LOCAL H%
@@ -1164,7 +1164,7 @@ binary_search = { search_array, value, low, high |
     { null }
     {
       mid = ((low + high) / 2).to_i
-      
+
       true? search_array[mid] > value
         { binary_search search_array, value, low, mid - 1 }
 	{ true? search_array[mid] < value
@@ -1198,8 +1198,8 @@ null? index
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int bsearch (int *a, int n, int x) {
     int i = 0, j = n - 1;
@@ -1295,7 +1295,8 @@ int main()
 
 '''Iterative'''
 
-```cpp>template <class T
+```cpp
+template <class T>
 
 int binSearch(const T arr[], int len, T what) {
   int low = 0;
@@ -1309,14 +1310,17 @@ int binSearch(const T arr[], int len, T what) {
     else
       return mid;
   }
-  return -1; // indicate not found 
+  return -1; // indicate not found
 }
 ```
 
 '''Library'''
-C++'s Standard Template Library has four functions for binary search, depending on what information you want to get. They all need
-```cpp>#include <algorithm></lang
+C++'s Standard Template Library has four functions for binary search, depending on what information you want to get.
+They all need
 
+```cpp
+#include <algorithm>
+```
 
 The <code>lower_bound()</code> function returns an iterator to the first position where a value could be inserted without violating the order; i.e. the first element equal to the element you want, or the place where it would be inserted.
 
@@ -1737,16 +1741,16 @@ Output:
 (defun binary-search (value array)
   (let ((low 0)
         (high (1- (length array))))
-    
+
     (do () ((< high low) nil)
       (let ((middle (floor (+ low high) 2)))
-        
+
         (cond ((> (aref array middle) value)
                (setf high (1- middle)))
-              
+
               ((< (aref array middle) value)
                (setf low (1+ middle)))
-              
+
               (t (return middle)))))))
 ```
 
@@ -1757,13 +1761,13 @@ Output:
   (if (< high low)
       nil
       (let ((middle (floor (+ low high) 2)))
-        
+
         (cond ((> (aref array middle) value)
                (binary-search value array low (1- middle)))
-              
+
               ((< (aref array middle) value)
                (binary-search value array (1+ middle) high))
-              
+
               (t middle)))))
 ```
 
@@ -2090,7 +2094,7 @@ end
 ```elixir
 defmodule Binary do
   def search(list, value), do: search(List.to_tuple(list), value, 0, length(list)-1)
-  
+
   def search(_tuple, _value, low, high) when high < low, do: :not_found
   def search(tuple, value, low, high) do
     mid = div(low + high, 2)
@@ -2098,7 +2102,7 @@ defmodule Binary do
     cond do
       value <  midval -> search(tuple, value, low, mid-1)
       value >  midval -> search(tuple, value, mid+1, high)
-      value == midval -> mid 
+      value == midval -> mid
     end
   end
 end
@@ -2134,16 +2138,16 @@ found 24324 at index 24
  (defun binary-search (value array)
   (let ((low 0)
         (high (1- (length array))))
- 
+
     (do () ((< high low) nil)
       (let ((middle (floor (+ low high) 2)))
- 
+
         (cond ((> (aref array middle) value)
                (setf high (1- middle)))
- 
+
               ((< (aref array middle) value)
                (setf low (1+ middle)))
- 
+
               (t (return middle)))))))
 ```
 
@@ -2162,8 +2166,8 @@ found 24324 at index 24
 start() ->
     List = [1,2,3],
     binary_search(List, 5, 1, length(List)).
-    
-    
+
+
 binary_search(List, Value, Low, High) ->
     if Low > High ->
         io:format("Number ~p not found~n", [Value]),
@@ -2439,7 +2443,7 @@ In ISO Fortran 90 or later use a RECURSIVE function and ARRAY SECTION argument:
 recursive function binarySearch_R (a, value) result (bsresult)
     real, intent(in) :: a(:), value
     integer          :: bsresult, mid
-    
+
     mid = size(a)/2 + 1
     if (size(a) == 0) then
         bsresult = 0        ! not found
@@ -2468,7 +2472,7 @@ function binarySearch_I (a, value)
     real, intent(in)         :: value
     real, pointer            :: p(:)
     integer                  :: mid, offset
-    
+
     p => a
     binarySearch_I = 0
     offset = 0
@@ -2496,7 +2500,7 @@ Depending on the version of Fortran the compiler supports, the specification of 
 Later compilers offer features allowing the development of "generic" functions so that the same function name may be used yet the actual routine invoked will be selected according to how the parameters are integers or floating-point, and of different precisions. There would still need to be a version of the function for each type combination, each with its own name. Unfortunately, there is no three-way comparison test for character data.
 
 The use of "exclusive" bounds simplifies the adjustment of the bounds: the appropriate bound simply receives the value of P, there is ''no'' + 1 or - 1 adjustment ''at every step''; similarly, the determination of an empty span is easy, and avoiding the risk of integer overflow via (L + R)/2 is achieved at the same time. The "inclusive" bounds version by contrast requires ''two'' manipulations of L and R ''at every step'' - once to see if the span is empty, and a second time to locate the index to test.
- 
+
 
 ```Fortran
       INTEGER FUNCTION FINDI(X,A,N)	!Binary chopper. Find i such that X = A(i)
@@ -2518,7 +2522,7 @@ Careful: it is surprisingly difficult to make this neat, due to vexations when N
        RETURN			!Done.
 Curse it!
     5   FINDI = -L		!X is not found. Insert it at L + 1, i.e. at A(1 - FINDI).
-      END FUNCTION FINDI	!A's values need not be all different, merely in order. 
+      END FUNCTION FINDI	!A's values need not be all different, merely in order.
 ```
 
 
@@ -2557,10 +2561,10 @@ Careful: it is surprisingly difficult to make this neat, due to vexations when N
        RETURN			!Done.
 Curse it!
     5   FINDI = -L		!X is not found. Insert it at L + 1, i.e. at A(1 - FINDI).
-      END FUNCTION FINDI	!A's values need not be all different, merely in order. 
+      END FUNCTION FINDI	!A's values need not be all different, merely in order.
 ```
 
-The point of this is that the IF-test is going to initiate some jumps, so why not arrange that one of the bound adjustments needs no subsequent jump to the start of the next iteration - in the first version, both bound adjustments needed such a jump, the GO TO 1 statements. This was done by shifting the code for label 2 up to precede the code for label 1 - and removing its now pointless GO TO 1 (executed each time), but adding an initial GO TO 1, executed once only. This sort of change is routine when manipulating spaghetti code... 
+The point of this is that the IF-test is going to initiate some jumps, so why not arrange that one of the bound adjustments needs no subsequent jump to the start of the next iteration - in the first version, both bound adjustments needed such a jump, the GO TO 1 statements. This was done by shifting the code for label 2 up to precede the code for label 1 - and removing its now pointless GO TO 1 (executed each time), but adding an initial GO TO 1, executed once only. This sort of change is routine when manipulating spaghetti code...
 
 It is because the method involves such a small amount of effort per iteration that minor changes offer a significant benefit. A lot depends on the implementation of the three-way test: the hope is that after the comparison, the computer hardware has indicators set for various outcomes, so that the necessary conditional branches can be made through successive inspection of those indicators, rather than repeating the comparison. These branch tests may in turn be made in an order that notes which option (if any) involves "falling through" to the next statement, thus it may be better to swap the order of labels 3 and 4. Further, the compiler may itself choose to re-order the various code pieces. First Fortran (in 1958) had a FREQUENCY statement whereby the programmer could indicate which paths were the more likely - for the binary search, equality is the less likely discovery. An assembler version of this routine attended to all these details.
 
@@ -2912,7 +2916,7 @@ main =
 ### Iterative algorithm
 
 
-The iterative algorithm could be written in terms of the '''until''' function, which takes a predicate '''p''', a function '''f''', and a seed value '''x'''. 
+The iterative algorithm could be written in terms of the '''until''' function, which takes a predicate '''p''', a function '''f''', and a seed value '''x'''.
 
 It returns the result of applying '''f''' until '''p''' holds.
 
@@ -3063,31 +3067,31 @@ with some sample runs:
 ```txt
 
 ->bins 0
-Searching: 1 3 5 7 9 11 13 15 17 
+Searching: 1 3 5 7 9 11 13 15 17
 0 is not found
 ->bins 1
-Searching: 1 3 5 7 9 11 13 15 17 
+Searching: 1 3 5 7 9 11 13 15 17
 1 is at 1
 ->bins 2
-Searching: 1 3 5 7 9 11 13 15 17 
+Searching: 1 3 5 7 9 11 13 15 17
 2 is not found
 ->bins 3
-Searching: 1 3 5 7 9 11 13 15 17 
+Searching: 1 3 5 7 9 11 13 15 17
 3 is at 2
 ->bins 16
-Searching: 1 3 5 7 9 11 13 15 17 
+Searching: 1 3 5 7 9 11 13 15 17
 16 is not found
 ->bins 17
-Searching: 1 3 5 7 9 11 13 15 17 
+Searching: 1 3 5 7 9 11 13 15 17
 17 is at 9
 ->bins 7
-Searching: 1 3 5 7 9 11 13 15 17 
+Searching: 1 3 5 7 9 11 13 15 17
 7 is at 4
 ->bins 9
-Searching: 1 3 5 7 9 11 13 15 17 
+Searching: 1 3 5 7 9 11 13 15 17
 9 is at 5
 ->bins 10
-Searching: 1 3 5 7 9 11 13 15 17 
+Searching: 1 3 5 7 9 11 13 15 17
 10 is not found
 ->
 
@@ -3120,9 +3124,9 @@ Direct tacit iterative and recursive versions to compare to other implementation
 'X Y L H M'=. i.5                            NB. Setting mnemonics for boxes
 f=. &({::)                                   NB. Fetching the contents of a box
 o=. @:                                       NB. Composing verbs (functions)
-   
+
 boxes=. ; , a: $~ 3:                         NB. Appending 3 (empty) boxes to the inputs
-LowHigh=. (0 ; # o (X f)) (L,H)} ]           NB. Setting the low and high bounds   
+LowHigh=. (0 ; # o (X f)) (L,H)} ]           NB. Setting the low and high bounds
 midpoint=. < o (<. o (2 %~ L f + H f)) M} ]  NB. Updating the midpoint
 case=.     >: o * o (Y f - M f { X f)        NB. Less=0, equal=1, or greater=2
 
@@ -3138,7 +3142,7 @@ bs=. return o (squeeze o midpoint ^: (L f <: H f) ^:_) o LowHigh o boxes
 'X Y L H M'=. i.5                            NB. Setting mnemonics for boxes
 f=. &({::)                                   NB. Fetching the contents of a box
 o=. @:                                       NB. Composing verbs (functions)
-   
+
 boxes=. a: ,~ ;                              NB. Appending 1 (empty) box to the inputs
 midpoint=. < o (<. o (2 %~ L f + H f)) M} ]  NB. Updating the midpoint
 case=.     >: o * o (Y f - M f { X f)        NB. Less=0, equal=1, or greater=2
@@ -3665,7 +3669,7 @@ Recursive:
 
 ```K
 
-bs:{[a;t] 
+bs:{[a;t]
     if[0=#a; :_n];
     m:_(#a)%2;
     if[t>a@m
@@ -3745,10 +3749,10 @@ Can be tested in (http://lambdaway.free.fr)[http://lambdaway.free.fr/lambdaway/?
 
 ```scheme
 
-{def BS 
+{def BS
  {def BS.r {lambda {:a :v :i0 :i1}
   {let { {:a :a} {:v :v} {:i0 :i0} {:i1 :i1}
-         {:m {floor {* {+ :i0 :i1} 0.5}}} } 
+         {:m {floor {* {+ :i0 :i1} 0.5}}} }
   {if {<  :i1 :i0}
    then :v is not found
    else {if {> {array.item :a :m} :v}
@@ -3757,7 +3761,7 @@ Can be tested in (http://lambdaway.free.fr)[http://lambdaway.free.fr/lambdaway/?
    then {BS.r :a :v {+ :m 1} :i1 }
    else :v is at array[:m] }}}}} }
  {lambda {:a :v}
-  {BS.r :a :v 0 {- {array.length :a} 1}} }} 
+  {BS.r :a :v 0 {- {array.length :a} 1}} }}
 -> BS
 
 {def A {array 12 14 16 18 20 22 25 27 30}}
@@ -3768,7 +3772,7 @@ Can be tested in (http://lambdaway.free.fr)[http://lambdaway.free.fr/lambdaway/?
 {BS {A} 25}  -> 25 is at array[6]
 {BS {A} 123} -> 123 is not found
 
-{def B {array {serie 1 100000 2}}} 
+{def B {array {serie 1 100000 2}}}
 -> B = [1,3,5,... 99997,99999]
 
 {BS {B} 100}   -> 100 is not found
@@ -3830,10 +3834,10 @@ end
 
 HAI 1.2
   CAN HAS STDIO?
-  
+
   VISIBLE "HAI WORLD!!!1!"
   VISIBLE "IMA GONNA SHOW U BINA POUNCE NAO"
- 
+
   I HAS A list ITZ A BUKKIT
   list HAS A index0 ITZ 2
   list HAS A index1 ITZ 3
@@ -3843,14 +3847,14 @@ HAI 1.2
   list HAS A index5 ITZ 9
   list HAS A index6 ITZ 12
   list HAS A index7 ITZ 20
-  
+
   BTW Method to access list by index number aka: list[index4]
   HOW IZ list access YR indexNameNumber
 	FOUND YR list'Z SRS indexNameNumber
   IF U SAY SO
-  
+
   BTW Method to print the array on the same line
-  HOW IZ list printList 
+  HOW IZ list printList
   I HAS A allList ITZ ""
 	I HAS A indexNameNumber ITZ "index0"
 	I HAS A index ITZ 0
@@ -3860,15 +3864,15 @@ HAI 1.2
 	IM OUTTA YR walkingLoop
 	FOUND YR allList
   IF U SAY SO
-  
+
   VISIBLE "WE START WIF BUKKIT LIEK DIS: " list IZ printList MKAY
- 
+
   I HAS A target ITZ 12
   VISIBLE "AN TARGET LIEK DIS: " target
-  
+
   VISIBLE "AN NAO 4 MAGI"
-  
-  HOW IZ I binaPounce YR list AN YR listLength AN YR target 
+
+  HOW IZ I binaPounce YR list AN YR listLength AN YR target
 	I HAS A left ITZ 0
 	I HAS A right ITZ DIFF OF listLength AN 1
 	IM IN YR whileLoop
@@ -3876,26 +3880,26 @@ HAI 1.2
 		DIFFRINT left AN SMALLR OF left AN right
 		O RLY?
 			YA RLY
-				GTFO 
+				GTFO
 		OIC
-		
+
 		I HAS A mid ITZ QUOSHUNT OF SUM OF left AN right AN 2
 		I HAS A midIndexname ITZ SMOOSH "index" mid MKAY
-		
+
 		BTW if target == list[mid] return mid
 		BOTH SAEM target AN list IZ access YR midIndexname MKAY
 		O RLY?
 			YA RLY
 				FOUND YR mid
 		OIC
-		
+
 		BTW if target < list[mid] right = mid - 1
 		DIFFRINT target AN BIGGR OF target AN list IZ access YR midIndexname MKAY
 		O RLY?
 			YA RLY
 				right R DIFF OF mid AN 1
 		OIC
-		
+
 		BTW if target > list[mid] left = mid + 1
 		DIFFRINT target AN SMALLR OF target AN list IZ access YR midIndexname MKAY
 		O RLY?
@@ -3903,17 +3907,17 @@ HAI 1.2
 				left R SUM OF mid AN 1
 		OIC
 	IM OUTTA YR whileLoop
-	
+
 	FOUND YR -1
   IF U SAY SO
-  
+
   BTW call binary search on target here and print the index
   I HAS A targetIndex ITZ I IZ binaPounce YR list AN YR 8 AN YR target MKAY
   VISIBLE "TARGET " target " IZ IN BUKKIT " targetIndex
-  
+
   VISIBLE "WE HAS TEH TARGET!!1!!"
   VISIBLE "I CAN HAS UR CHEEZBURGER NAO?"
-  
+
 KTHXBYE
 end
 ```
@@ -4127,10 +4131,10 @@ We can use either lists or Arrays (or Vectors) for the first argument for these.
 '''Recursive'''
 
 ```Mathematica
-BinarySearchRecursive[x_List, val_, lo_, hi_] := 
+BinarySearchRecursive[x_List, val_, lo_, hi_] :=
  Module[{mid = lo + Round@((hi - lo)/2)},
   If[hi < lo, Return[-1]];
-  Return[ 
+  Return[
    Which[x[[mid]] > val, BinarySearchRecursive[x, val, lo, mid - 1],
     x[[mid]] < val, BinarySearchRecursive[x, val, mid + 1, hi],
     True, mid]
@@ -4166,9 +4170,9 @@ function mid = binarySearchRec(list,value,low,high)
         mid = [];
         return
     end
-    
+
     mid = floor((low + high)/2);
-    
+
     if( list(mid) > value )
         mid = binarySearchRec(list,value,low,mid-1);
         return
@@ -4178,7 +4182,7 @@ function mid = binarySearchRec(list,value,low,high)
     else
         return
     end
-        
+
 end
 ```
 
@@ -4199,10 +4203,10 @@ function mid = binarySearchIter(list,value)
 
     low = 1;
     high = numel(list) - 1;
-    
+
     while( low <= high )
         mid = floor((low + high)/2);
-    
+
         if( list(mid) > value )
             high = mid - 1;
         elseif( list(mid) < value )
@@ -4211,9 +4215,9 @@ function mid = binarySearchIter(list,value)
             return
         end
     end
-    
+
     mid = [];
-            
+
 end
 ```
 
@@ -4445,7 +4449,7 @@ proc binarySearch[T](a: openArray[T], key: T): int =
 1 2 3 4 5
 3 bsearch . ( => 2 )
 5 bsearch . ( => 0 )
-'sam 'tom 'kenny ( must be sorted before calling bsearch ) 
+'sam 'tom 'kenny ( must be sorted before calling bsearch )
 sort
 .s ( => kenny sam tom )
 'sam bsearch . ( => 1 )
@@ -4470,14 +4474,14 @@ bundle Default {
       DoBinarySearch(values, 13)->PrintLine();
       DoBinarySearch(values, 7)->PrintLine();
     }
-    
+
     function : native : DoBinarySearch(values : Int[], value : Int) ~ Int {
       low := 0;
       high := values->Size() - 1;
 
       while(low <= high) {
         mid := (low + high) / 2;
-        
+
         if(values[mid] > value) {
           high := mid - 1;
         }
@@ -4681,7 +4685,7 @@ function i = binsearch_r(array, val, low, high)
     mid = floor((low + high) / 2);
     if ( array(mid) > val )
       i = binsearch_r(array, val, low, mid-1);
-    elseif ( array(mid) < val ) 
+    elseif ( array(mid) < val )
       i = binsearch_r(array, val, mid+1, high);
     else
       i = mid;
@@ -4699,7 +4703,7 @@ function i = binsearch(array, value)
   i = 0;
   while ( low <= high )
     mid = floor((low + high)/2);
-    if (array(mid) > value) 
+    if (array(mid) > value)
       high = mid - 1;
     elseif (array(mid) < value)
       low = mid + 1;
@@ -4882,7 +4886,7 @@ binarysearch(v, x) = {
         guess = floor(maxm/2+minm/2)
     );
 
-    while(v[guess] != x,    
+    while(v[guess] != x,
         if(v[guess] < x, minm = guess + 1, maxm = guess - 1);
         if(minm > maxm,
             guess = 0;
@@ -5008,7 +5012,7 @@ sub binary_search (&p, Int $lo is copy, Int $hi is copy --> Int) {
     until $lo > $hi {
         my Int $mid = ($lo + $hi) div 2;
         given p $mid {
-            when -1 { $hi = $mid - 1; } 
+            when -1 { $hi = $mid - 1; }
             when  1 { $lo = $mid + 1; }
             default { return $mid;    }
         }
@@ -5026,7 +5030,7 @@ sub binary_search (&p, Int $lo, Int $hi --> Int) {
     $lo <= $hi or fail;
     my Int $mid = ($lo + $hi) div 2;
     given p $mid {
-        when -1 { binary_search &p, $lo,      $mid - 1 } 
+        when -1 { binary_search &p, $lo,      $mid - 1 }
         when  1 { binary_search &p, $mid + 1, $hi      }
         default { $mid                                 }
     }
@@ -5360,7 +5364,7 @@ Tested with Gnu-Prolog.
 ```Prolog
 bin_search(Elt,List,Result):-
   length(List,N), bin_search_inner(Elt,List,1,N,Result).
-  
+
 bin_search_inner(Elt,List,J,J,J):-
   nth(J,List,Elt).
 bin_search_inner(Elt,List,Begin,End,Mid):-
@@ -5410,8 +5414,8 @@ Procedure  R_BinarySearch(Array a(1), value, low, high)
   Protected mid
   If high < low
     ProcedureReturn #NotFound
-  EndIf 
-  
+  EndIf
+
   mid = (low + high) / 2
   If a(mid) > value
     ProcedureReturn R_BinarySearch(a(), value, low, mid - 1)
@@ -5419,7 +5423,7 @@ Procedure  R_BinarySearch(Array a(1), value, low, high)
     ProcedureReturn R_BinarySearch(a(), value, mid + 1, high)
   Else
     ProcedureReturn mid
-  EndIf 
+  EndIf
 EndProcedure
 
 ;Iterative
@@ -5427,7 +5431,7 @@ Procedure I_BinarySearch(Array a(1), value, low, high)
   Protected mid
   While low <= high
     mid = (low + high) / 2
-    If a(mid) > value            
+    If a(mid) > value
       high = mid - 1
     ElseIf a(mid) < value
       low = mid + 1
@@ -5441,14 +5445,14 @@ EndProcedure
 
 Procedure search (Array a(1), value, method)
   Protected idx
-  
+
   Select method
     Case #Iterative
       idx = I_BinarySearch(a(), value, 0, ArraySize(a()))
     Default
       idx = R_BinarySearch(a(), value, 0, ArraySize(a()))
   EndSelect
-  
+
   Print("  Value " + Str(Value))
   If idx < 0
     PrintN(" not found")
@@ -5466,7 +5470,7 @@ DataSection
 EndDataSection
 
 ;fill the test array
-For i = 0 To #NumElements		
+For i = 0 To #NumElements
   Read test(i)
 Next
 
@@ -5518,7 +5522,7 @@ Iterative search:
 def binary_search(l, value):
     low = 0
     high = len(l)-1
-    while low <= high: 
+    while low <= high:
         mid = (low+high)//2
         if l[mid] > value: high = mid-1
         elif l[mid] < value: low = mid+1
@@ -5763,7 +5767,7 @@ Complete binary search function with python's <code>bisect</code> module:
 from bisect import bisect_left
 
 def binary_search(a, x, lo=0, hi=None):   # can't use a to specify default for hi
-    hi = hi if hi is not None else len(a) # hi defaults to len(a)   
+    hi = hi if hi is not None else len(a) # hi defaults to len(a)
     pos = bisect_left(a,x,lo,hi)          # find insertion position
     return (pos if pos != hi and a[pos] == x else -1) # don't walk off the end
 ```
@@ -5855,7 +5859,7 @@ IterBinSearch(a, 101) # outputs NULL
     (cond [(>= l h) #f]
           [else (define m (quotient (+ l h) 2))
                 (define y (vector-ref v m))
-                (cond 
+                (cond
                   [(> y x) (loop l (- m 1))]
                   [(< y x) (loop (+ m 1) h)]
                   [else m])]))
@@ -5868,7 +5872,7 @@ Examples:
 ```txt
 
 (binary-search 6 #(1 3 4 5 6 7 8 9 10))  ; gives 4
-(binary-search 6 #(1 3 4 5 7 8 9 10))    ; gives #f 
+(binary-search 6 #(1 3 4 5 7 8 9 10))    ; gives #f
 
 ```
 
@@ -5998,10 +6002,10 @@ arithmetic mean of the  79  values is:  508
 
 decimals(0)
 array = [7, 14, 21, 28, 35, 42, 49, 56, 63, 70]
- 
+
 find= 42
 index = where(array, find, 0, len(array))
-if index >= 0 
+if index >= 0
    see "the value " + find+ " was found at index " + index
 else
    see "the value " + find + " was not found"
@@ -6106,7 +6110,7 @@ found 24324 at index 24: 24324
 ```
 
 '''Built in'''
-Since Ruby 2.0, arrays ship with a binary search method "bsearch": 
+Since Ruby 2.0, arrays ship with a binary search method "bsearch":
 
 ```ruby
 haystack = [0,1,4,5,6,7,8,9,12,26,45,67,78,90,98,123,211,234,456,769,865,2345,3215,14345,24324]
@@ -6309,7 +6313,7 @@ Example:
 
 ```
 
-The calls to helper are in tail position, so since Scheme implementations 
+The calls to helper are in tail position, so since Scheme implementations
 support proper tail-recursion the computation proces is iterative.
 
 
@@ -6389,17 +6393,17 @@ Iterative:
 
 ```ruby
 func binary_search(a, i) {
- 
+
     var l = 0
     var h = a.end
- 
+
     while (l <= h) {
         var mid = (h+l / 2 -> int)
         a[mid] > i && (h = mid-1; next)
         a[mid] < i && (l = mid+1; next)
         return mid
     }
- 
+
     return -1
 }
 ```
@@ -6610,7 +6614,7 @@ echo 'ERROR 404 : NOT FOUND'
 
 
 '''Recursive'''
-<lang> No code yet 
+<lang> No code yet
 ```
 
 
@@ -7284,17 +7288,17 @@ and sample output:
 ```txt
 
 stringtestBinarySearch "Master"
- 3 
+ 3
 testBinarySearch "Master"
--1 
+-1
 testBinarySearch 170
- 17 
+ 17
 stringtestBinarySearch 170
--1 
+-1
 stringtestBinarySearch "Moo"
--1 
+-1
 stringtestBinarySearch "ZZ"
- 7 
+ 7
 
 ```
 
@@ -7513,7 +7517,7 @@ end sub
 
 sub binarySearch(list(), value)
     local low, high, mid
-    
+
     low = 1 : high = arraysize(list(), 1)
 
     while(low <= high)
@@ -7606,7 +7610,7 @@ Iterative method:
 60 LET value=4: GO SUB 100
 70 LET value=8: GO SUB 100
 80 LET value=20: GO SUB 100
-90 STOP 
+90 STOP
 100 REM Binary search
 110 LET lo=1: LET hi=10
 120 IF lo>hi THEN LET idx=0: GO TO 170
@@ -7615,8 +7619,8 @@ Iterative method:
 150 IF value>t(middle) THEN LET lo=middle+1: GO TO 120
 160 LET idx=middle
 170 PRINT "Value ";value;
-180 IF idx=0 THEN PRINT " not found": RETURN 
-190 PRINT " found at index ";idx: RETURN  
+180 IF idx=0 THEN PRINT " not found": RETURN
+190 PRINT " found at index ";idx: RETURN
 
 ```
 
@@ -7626,22 +7630,22 @@ Iterative method:
 This optimized version for z/Arch, uses six general regs and avoid branch misspredictions for high/low cases.
 
 ```z/Archasm
-*        Binary search             
+*        Binary search
 BINSRCH  LA    R5,TABLE            Begin of table
-         SR    R2,R2               low  = 0                                 
+         SR    R2,R2               low  = 0
          LA    R3,ENTRIES-1        high = N-1
-LOOP     CR    R2,R3               while (low <= high)                 
-         JH    NOTFOUND            {                                   
-         ARK   R4,R2,R3               mid = low + high                 
+LOOP     CR    R2,R3               while (low <= high)
+         JH    NOTFOUND            {
+         ARK   R4,R2,R3               mid = low + high
          SRL   R4,1                   mid = mid / 2
          LA    R1,1(R4)               mid + 1
          AHIK  R0,R4,-1               mid - 1
-         MSFI  R4,ENTRYL              mid * length                     
-         AR    R4,R5                  Table[mid]                       
-         CLC   0(L'KEY,R4),SEARCH     Compare 
-         JE    FOUND                  Equal? => Found                
-         LOCRH R3,R0                  High?  => HIGH = MID-1           
-         LOCRL R2,R1                  Low?   => LOW  = MID+1           
+         MSFI  R4,ENTRYL              mid * length
+         AR    R4,R5                  Table[mid]
+         CLC   0(L'KEY,R4),SEARCH     Compare
+         JE    FOUND                  Equal? => Found
+         LOCRH R3,R0                  High?  => HIGH = MID-1
+         LOCRL R2,R1                  Low?   => LOW  = MID+1
          J     LOOP                }
 ```
 

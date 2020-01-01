@@ -21,7 +21,7 @@ Histogram is useful for many image processing operations. As an example, use it 
 * Compute the histogram
 * Find the median: defined as the luminance such that the image has an approximately equal number of pixels with lesser and greater luminance.
 * Replace each pixel of luminance lesser than the median to black, and others to white.
-Use [[read ppm file | read]]/[[write ppm file]], and [[grayscale image]] solutions. 
+Use [[read ppm file | read]]/[[write ppm file]], and [[grayscale image]] solutions.
 
 
 ## Ada
@@ -31,7 +31,7 @@ Histogram of an image:
 ```ada
 type Pixel_Count is mod 2**64;
 type Histogram is array (Luminance) of Pixel_Count;
-   
+
 function Get_Histogram (Picture : Grayscale_Image) return Histogram is
    Result : Histogram := (others => 0);
 begin
@@ -63,7 +63,7 @@ begin
          Left := Left + H (From);
       else
          To    := To    - 1;
-         Right := Right + H (To);         
+         Right := Right + H (To);
       end if;
    end loop;
    return From;
@@ -91,7 +91,7 @@ begin
                X (I, J) := White;
             end if;
          end loop;
-      end loop;      
+      end loop;
       Put_PPM (F2, X);
    end;
    Close (F2);
@@ -108,16 +108,16 @@ begin
 ```bbcbasic
       INSTALL @lib$+"SORTLIB"
       Sort% = FN_sortinit(0,0)
-      
+
       Width% = 200
       Height% = 200
-      
+
       VDU 23,22,Width%;Height%;8,16,16,128
       *display c:\lenagrey
-      
+
       DIM hist%(255), idx%(255)
       FOR i% = 0 TO 255 : idx%(i%) = i% : NEXT
-      
+
       REM Build histogram:
       FOR y% = 0 TO Height%-1
         FOR x% = 0 TO Width%-1
@@ -125,11 +125,11 @@ begin
           hist%(l%) += 1
         NEXT
       NEXT y%
-      
+
       REM Sort histogram:
       C% = 256
       CALL Sort%, hist%(0), idx%(0)
-      
+
       REM Find median:
       total% = SUM(hist%())
       half% = 0
@@ -140,7 +140,7 @@ begin
           EXIT FOR
         ENDIF
       NEXT
-      
+
       REM Display black & white version:
       FOR y% = 0 TO Height%-1
         FOR x% = 0 TO Width%-1
@@ -153,13 +153,13 @@ begin
         NEXT
       NEXT y%
       END
-      
+
       DEF PROCsetpixel(x%,y%,r%,g%,b%)
       COLOUR 1,r%,g%,b%
       GCOL 1
       LINE x%*2,y%*2,x%*2,y%*2
       ENDPROC
-      
+
       DEF FNgetpixel(x%,y%)
       LOCAL col%
       col% = TINT(x%*2,y%*2)
@@ -190,7 +190,7 @@ histogram get_histogram(grayimage im)
 {
    histogram t;
    unsigned int x, y;
-   
+
    if ( im == NULL ) return NULL;
    t = malloc( sizeof(histogram_t)*256 );
    memset(t, 0, sizeof(histogram_t)*256 );
@@ -219,10 +219,10 @@ luminance histogram_median(histogram h)
 {
     luminance From, To;
     unsigned int Left, Right;
-    
+
     From = 0; To = (1 << (8*sizeof(luminance)))-1;
     Left = h[From]; Right = h[To];
-    
+
     while( From != To )
     {
        if ( Left < Right )
@@ -240,8 +240,8 @@ luminance histogram_median(histogram h)
 An example of usage is the following code.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include "imglib.h"
 
@@ -257,7 +257,7 @@ int main(int argc, char **argv)
     histogram h;
     luminance T;
     unsigned int x, y;
-    
+
     if ( argc < 2 )
     {
        fprintf(stderr, "histogram FILE\n");
@@ -270,7 +270,7 @@ int main(int argc, char **argv)
     if ( h != NULL )
     {
           T = histogram_median(h);
-          
+
           for(x=0; x < g_img->width; x++)
           {
             for(y=0; y < g_img->height; y++)
@@ -287,7 +287,7 @@ int main(int argc, char **argv)
           /* print_jpg(color_img, 90); */
           free(h);
     }
-       
+
     free_img((image)g_img);
     free_img(color_img);
 }
@@ -456,7 +456,7 @@ END SUB
 
 SUB ToBlackAndWhite()
 	STATIC b = CHR(0), w = CHR(255) ' initialize once
-	
+
 	m = m / (tail - head) * 3 ' derive median
 	FOR ptr = head TO tail STEP 3
 		IF PEEK(ptr + 0, 1) < m THEN ' set pixel black
@@ -499,7 +499,7 @@ contains
   subroutine get_histogram(img, histogram)
     type(scimage), intent(in) :: img
     integer, dimension(0:255), intent(out) :: histogram
-    
+
     integer :: i
 
     histogram = 0
@@ -511,7 +511,7 @@ contains
   function histogram_median(histogram)
     integer, dimension(0:255), intent(in) :: histogram
     integer :: histogram_median
-    
+
     integer :: from, to, left, right
 
     from = 0
@@ -529,7 +529,7 @@ contains
     end do
     histogram_median = from
   end function histogram_median
-  
+
 end module RCImageProcess
 ```
 
@@ -946,25 +946,25 @@ This solution uses functions defined at:
 ```lua
 function Histogram( image )
     local size_x, size_y = #image, #image[1]
-    
+
     local histo = {}
     for i = 0, 255 do
         histo[i] = 0
     end
-    
+
     for i = 1, size_x do
         for j = 1, size_y do
-            histo[ image[i][j] ] = histo[ image[i][j] ] + 1 
+            histo[ image[i][j] ] = histo[ image[i][j] ] + 1
         end
     end
-    
+
     return histo
 end
 
 function FindMedian( histogram )
     local sum_l, sum_r = 0, 0
     local left, right = 0, 255
-    
+
     repeat
         if sum_l < sum_r then
             sum_l = sum_l + histogram[left]
@@ -974,7 +974,7 @@ function FindMedian( histogram )
             right = right - 1
         end
     until left == right
-    
+
     return left
 end
 
@@ -994,7 +994,7 @@ for i = 1, #gray_im do
     end
 end
 
-bitmap = ConvertToColorImage( gray_im ) 
+bitmap = ConvertToColorImage( gray_im )
 Write_PPM( "outputimage.ppm", bitmap )
 ```
 
@@ -1128,7 +1128,7 @@ function m = histog_med(histog)
   from = 0; to = 255;
   left = histog(from + 1); right = histog(to+1);
   while ( from != to )
-    if ( left < right ) 
+    if ( left < right )
       from++; left += histog(from+1);
     else
       to--; right += histog(to+1);
@@ -1213,7 +1213,7 @@ See [https://github.com/thundergnat/rc/blob/master/img/Lenna.png Lenna], and [ht
 
 ## Phix
 
-Requires read_ppm() from [[Bitmap/Read_a_PPM_file#Phix|Read_a_PPM_file]], write_ppm() from [[Bitmap/Write_a_PPM_file#Phix|Write_a_PPM_file]]. 
+Requires read_ppm() from [[Bitmap/Read_a_PPM_file#Phix|Read_a_PPM_file]], write_ppm() from [[Bitmap/Write_a_PPM_file#Phix|Write_a_PPM_file]].
 Uses lena.ppm, which you will have to find/download to demo/rosetta yourself.
 Included as demo\rosetta\Bitmap_Histogram.exw, results may be verified with demo\rosetta\viewppm.exw
 
@@ -1221,7 +1221,7 @@ Included as demo\rosetta\Bitmap_Histogram.exw, results may be verified with demo
 function to_bw(sequence image)
 sequence color
 integer lum
-sequence hist = repeat(0,256) 
+sequence hist = repeat(0,256)
 integer l = 1, r = 256
 integer ltot, rtot
     for i=1 to length(image) do
@@ -1231,8 +1231,8 @@ integer ltot, rtot
             lum = floor(0.2126*color[1] + 0.7152*color[2] + 0.0722*color[3])
             image[i][j] = lum
             hist[lum+1] += 1
-        end for 
-    end for 
+        end for
+    end for
     ltot = hist[l]
     rtot = hist[r]
     while l!=r do
@@ -1248,8 +1248,8 @@ integer ltot, rtot
     for i=1 to length(image) do
         for j=1 to length(image[i]) do
             image[i][j] = iff(image[i][j]<lum?black:white)
-        end for 
-    end for 
+        end for
+    end for
     return image
 end function
 
@@ -1272,8 +1272,8 @@ define('dest_name', 'output.jpg');	// destination image
 $img = imagecreatefromjpeg(src_name);	// read image
 
 if(empty($img)){
-	echo 'Image could not be loaded!'; 
-	exit; 
+	echo 'Image could not be loaded!';
+	exit;
 }
 
 $black = imagecolorallocate($img, 0, 0, 0);
@@ -1285,7 +1285,7 @@ $array_lum = array(); 	// for storage of luminosity of each pixel
 $sum_lum = 0;		// total sum of luminosity
 $average_lum = 0;	// average luminosity of whole image
 
-for($x = 0; $x < $width; $x++){	
+for($x = 0; $x < $width; $x++){
 	for($y = 0; $y < $height; $y++){
 		// read pixel value
 		$color = imagecolorat($img, $x, $y);
@@ -1302,7 +1302,7 @@ for($x = 0; $x < $width; $x++){
 // calculate average luminosity
 $average_lum = $sum_lum / ($width * $height);
 
-for($x = 0; $x < $width; $x++){	
+for($x = 0; $x < $width; $x++){
 	for($y = 0; $y < $height; $y++){
 		// pixel is brighter than average -> set white
 		// else -> set black
@@ -1323,7 +1323,7 @@ if(!file_exists(dest_name)){
 
 ```
 
-Example: 
+Example:
 
 <div>
 [[File:Input.jpg|200px|thumb|left]]
@@ -1367,10 +1367,10 @@ Procedure getHistogram(image, Array histogram(1))
   Protected w = ImageWidth(image) - 1
   Protected h = ImageHeight(image) - 1
   Dim histogram(255) ;output
-  
+
   StartDrawing(ImageOutput(image))
     For x = 0 To w
-      For y = 0 To h 
+      For y = 0 To h
         lum = Red(Point(x, y)) ;the Green or Blue color components could be used also
         histogram(lum) + 1
       Next
@@ -1380,14 +1380,14 @@ EndProcedure
 
 Procedure median(Array histogram(1))
   Protected low, high = 255, left, right
-  
+
   While low <> high
     If left < right
       low + 1
       left + histogram(low)
     Else
       high - 1
-      right + histogram(high)         
+      right + histogram(high)
     EndIf
   Wend
   ProcedureReturn low
@@ -1418,11 +1418,11 @@ sourceFile = OpenFileRequester("Select source image file", "*.ppm", "PPM image (
 If sourceFile And LCase(GetExtensionPart(sourceFile)) = "ppm"
   LoadImagePPM(image, sourceFile)
   ImageGrayout(image)
-  
+
   getHistogram(image,histogram())
   m = median(histogram())
   blackAndWhite(image, m)
-  
+
   outputFile = Left(sourceFile, Len(sourceFile) - Len(GetExtensionPart(sourceFile))) + "_bw." + GetExtensionPart(sourceFile)
   SaveImageAsPPM(image, outputFile, 1)
 EndIf
@@ -1571,7 +1571,7 @@ class Pixmap
         histogram[self[x,y].luminosity] += 1
       end
     end
-    histogram 
+    histogram
   end
 
   def to_blackandwhite
@@ -1646,7 +1646,7 @@ object BitmapOps {
       val c2=Color.WHITE
       for(x <- 0 until bm.width; y <- 0 until bm.height; l=luminosity(bm.getPixel(x,y)))
          image.setPixel(x, y, if(l>threshold) c2 else c1)
-      image		
+      image
    }
 }
 ```

@@ -23,7 +23,7 @@ Some things that ought to be cleaned up in the description of this task:
 
 :The images push down into the following code, which looks wrong.  I think that entry headers should get the {clear: both} style?  --[[User:Rdm|Rdm]] 16:52, 15 June 2010 (UTC)
 :: I can try that. It's going to slow the site down some to edit that particular template, though! Just beware... --[[User:Short Circuit|Michael Mol]] 17:33, 15 June 2010 (UTC)
-::: That did not seem to help, for me (I am using Chrome).  Perhaps because the style is on a <nowiki><span></nowiki>?  
+::: That did not seem to help, for me (I am using Chrome).  Perhaps because the style is on a <nowiki><span></nowiki>?
 
 ::: http://www.blooberry.com/indexdot/css/properties/classify/clear.htm says that css2 says that clear:both only works on block elements.  So I made myself a local copy of the page (setting the base href so it still worked), and the images stopped overlapping the text for the C entry when I changed the raw html so it looked like this:  <nowiki><div class="mw-headline"><div style="clear:both"><a href="/wiki/Category:C" title="Category:C">C</a></div></div></nowiki>
 
@@ -169,15 +169,15 @@ The four bit adder was a pilot test for more similar task (if this sort of tasks
 : It sounds like something on the scale of RCRPG/RCBF/RCSNUSP, and it has its own kinds of interest. I'd say go ahead and try it, but don't use [[Template:Task]] for it, at least not soon. I'd suggest you first try modeling the basic gates (including allowing XOR to be done natively), then extend to half adder, full adder, flip-flops, etc. I noticed you didn't account for the possibility of clocks and/or propagation. (I thought of doing a C++ example that had a Clock() method, for example.)
 : Find a corner of the wiki and see what you come up with; there are obviously already some HW-savvy folks around here, and maybe you'll come up with something that can be incorporated/adapted/fit with the wiki in general. Also, let me know if you come up with a gate-logic implementation of BF. My step-dad was interested in doing that a while back. ;) --[[User:Short Circuit|Michael Mol]] 18:57, 16 June 2010 (UTC)
 
-::While I can see this being an "interesting project", you may want to be careful with the specification of the individual tasks. 
+::While I can see this being an "interesting project", you may want to be careful with the specification of the individual tasks.
 
-::For example this task is specified asynchronously, i.e. without any concept <i>when</i> the output is supposed to be valid (every gate introduces a delay, after all). If you're really implementing hardware and your bits have real-world consequences (because they trigger further logic which in the end makes real decisions like firing jet engines and whatnot) then you can not just let your output bits flutter around randomly for a while while you're shuffling your carry bits around. 
+::For example this task is specified asynchronously, i.e. without any concept <i>when</i> the output is supposed to be valid (every gate introduces a delay, after all). If you're really implementing hardware and your bits have real-world consequences (because they trigger further logic which in the end makes real decisions like firing jet engines and whatnot) then you can not just let your output bits flutter around randomly for a while while you're shuffling your carry bits around.
 
 ::Which I guess is the heart of my comment: What is the usefulness of a task that "simulates hardware"? I can see how RC can have tasks about bit-operations. I can kinda see how HW simulation might be kinda appropriate (in the sense of Verilog programming for FPGAs or ASICs; that's real programming with real languages) but in that case I'm not sure how valuable it is to require rather un-idiomatic layouts in the task descriptions. For example the shown layout of the 4-bit adder is squential (=naive) and I don't think this is how anybody doing real hardware would implement it. Imagine doing math on 64-bit numbers for a moment: after the <i>last</i> input bit has settled, your output bits are undefined (i.e. can be flipping from 0 to 1 and back a random number of times) for 65 times the delay introduced by a single full adder while you're slowly moving your carry bit from stage to stage. In other words: sequential carries maximize the execution time of the overall block. If you have that much time to waste, the you're almost always better off just running something on a ready-built processor rather than implementing your own hardware. So it is vaguely unclear to me what anybody is supposed to learn from this. [[User:Sgeier|Sgeier]] 19:12, 1 September 2010 (UTC)
 :::I don't know quite how this is going to fit into RC in general yet, so I'm hoping that it can remain somewhat segregated away from the regular body of tasks by avoiding usage of, e.g. [[Template:Task]] and much of the regular infrastructure until things settle down and those interested in the hardware domain get a feel for how these tasks can/cannot tie in with the rest of the wiki. I haven't had time to monitor it, maintain separation and consider how things can tie back together later. My gut tells me that simulating hardware falls along similar lines to software implementations of programming languages and virtual machines, (See RCBF, RCSNUSP, RCH9Q+), and has analogous values and roles. (For whatever reasons, those tasks can expose complex practical consequence and behavior in their relevant languages.)
 :::As for task descriptions forcing unidiomatic layouts and behaviors, and making unnecessary or incorrect assumptions about the problems they're trying to describe, people with the experience to recognize these things should generally work with the people who wrote the tasks to help them expand their understanding and improve the tasks they write in order to intersect the core idea/goal of the task writer with a broad cross-section of possible solutions without unnecessarily forcing unidiomatic code. --[[User:Short Circuit|Michael Mol]] 22:58, 1 September 2010 (UTC)
 
-The idea as whole is enough large to be in the project category. Constructive blocks however are simple task of their own (task used in the general way, not as "RC task"); having a library of these blocks should then make it simpler (!) to realized the final project. 
+The idea as whole is enough large to be in the project category. Constructive blocks however are simple task of their own (task used in the general way, not as "RC task"); having a library of these blocks should then make it simpler (!) to realized the final project.
 
 Indeed, as the "4-bit adder" task was done, it proved to be badly planned. The general way I set up things do not allow for all the needed things to do all kinds of circuits needed for the final project. E.g. as I did both C and Sather impl can't describe a latch at all, even expanding to allow a clock; deeper thoughts made me believe Go too could have problem, putting the program in a never-ending wait for ready signal, but I didn' analyse it further.
 
@@ -189,20 +189,20 @@ I think the "processor" can have as instruction set BF, with the understanding t
 
 :: By "definition", it can be done that way. But note that C impl is sequential, so it is not possible to use as input an output produced later; on the other hand, about Go, it seems it would wait for the input to be available... the problem could be that one input will be not available until the output is generated, and it is not generated since both gates will be awaiting for a value to be set in the connection. What does it happen if a random value (0 or 1) is set preliminarly as output for the NOR gates? Does the simulated latch becomes "bistable" as it happens in reality, or rather it will expose a wrong (to be analysed) behaviour? It is of course implementation specific and can be fixed, but current implementation and in particular my sequential approach to the "description" of the circuit does not help. --[[User:ShinTakezou|ShinTakezou]] 18:23, 17 June 2010 (UTC)
 
-::: I was thinking of something like this: 
-```c>#include <stdio.h
+::: I was thinking of something like this:
+```c
+#include <stdio.h>
 
- 
 typedef char pin_t;
 #define IN const pin_t *
 #define OUT pin_t *
 #define STATE pin_t *
 #define PIN(X) pin_t _##X; pin_t *X = & _##X;
 #define V(X) (*(X))
- 
+
 /* a NOT that does not soil the rest of the host of the single bit */
 #define NOT(X) (~(X)&1)
- 
+
 #define NOR(X,Y) (NOT((X)|(Y)))
 
 void latch(IN a, STATE b, STATE c, IN d)
@@ -215,7 +215,7 @@ int main()
 {
   PIN(p0); PIN(p1); PIN(p2); PIN(p3);
   V(p0)= V(p1)= V(p2)= V(p3)= 0;
- 
+
   int j;
   for (j= 0; j < 16; j++) {
     int bit= 4&j ?1 :0;
@@ -250,12 +250,12 @@ int main()
 == On Digital Simulators ==
 Hi ShinTakezou, I've been using digital simulators for a number of decades now, and work for a company - Infineon Technologies, That has several microprocessor designs. You might want to look at transaction based modelling for a 'higher level' model of a processor. In the industry we might juggle several models of the same design, each with their own trade-offs.
 
-* At the lowest level you would have a model of the masks used to selectively expose the chip. 
-* Higher up, you might model the individual, interconnected transistors. 
+* At the lowest level you would have a model of the masks used to selectively expose the chip.
+* Higher up, you might model the individual, interconnected transistors.
 * Higher up you might model the individual gates of design (where the magic of how the gates work is only needed by the person who creates the gate libraries).
 * Higher up you have RTL; register transfer level modelling where a designer might create registers and clocks and model data transfer and modifications w.r.t. clocks - most digital design is done at this level using the Verilog and VHDL languages.
  Synthesis and then layout tools are used to translate RTL to gate and then to silicon masks.
-* Higher up than RTL lie so-called behavioural modelling simulators and languages/language libraries and methodologies. 
+* Higher up than RTL lie so-called behavioural modelling simulators and languages/language libraries and methodologies.
 
 You might want to look at [http://www.systemc.org/home/ SystemC]. It is a free library and methodology for simulating digital designs in C++. Although the library and its simulator exist in a free form, you will of course have to pay if you were wanting to, say, Synthesize your design down to gates; and commercial SystemC simulators make it so much more easy to debug and navigate your design. --[[User:Paddy3118|Paddy3118]] 18:56, 28 July 2010 (UTC)
 

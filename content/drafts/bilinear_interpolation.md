@@ -22,7 +22,8 @@ Open an image file, enlarge it by 60% using bilinear interpolation, then either 
 ## C
 
 
-```c>#include <stdint.h
+```c
+#include <stdint.h>
 
 typedef struct {
     uint32_t *pixels;
@@ -222,7 +223,7 @@ let scale (self:Bitmap) (scaleX:float) (scaleY:float) =
     newImage
 
 // Taken from https://stackoverflow.com/a/2362114
-let castAs<'T when 'T : null> (o:obj) = 
+let castAs<'T when 'T : null> (o:obj) =
     match o with
     | :? 'T as res -> res
     | _ -> Unchecked.defaultof<'T>
@@ -390,13 +391,13 @@ Note 'FEA'
     1 _1
    _1  1
     1  1
-   
+
       (=i.4)  NB. rows of the identity matrix are the values of each shape functions at each corner
    1 0 0 0
    0 1 0 0
    0 0 1 0
    0 0 0 1
-   
+
       (=i.4x) %. shape_function"1 x: CORNERS  NB. Compute the values of the constants as rational numbers.
     1r4  1r4  1r4 1r4
    _1r4  1r4 _1r4 1r4
@@ -528,7 +529,7 @@ Note 'simplification not yet apparent to me'
 )
 n38q =: }:@:n38r             NB. include mid-face nodes, all quadratic combinations but (xyz)^2
 n38r =: [: , [: *// ^/&(i.3) NB. now this is simple!  3*3*3 nodal grid.
-C388 =: x:inv@:(x:@:identity@:# %. n388"1)8{.N3    
+C388 =: x:inv@:(x:@:identity@:# %. n388"1)8{.N3
 NB.C38k =: x:inv@:(x:@:identity@:# %. n38k"1)36bk{.N3
 C38q =: x:inv@:(x:@:identity@:# %. x:@:n38q"1)36bq{.N3
 C38r =: x:inv@:(x:@:identity@:# %. x:@:n38r"1)36br{.N3
@@ -611,7 +612,7 @@ public class BilinearInterpolation {
 
 ```julia
 using Images, FileIO, Interpolations
- 
+
 function enlarge(A::Matrix, factor::AbstractFloat)
     lx, ly = size(A)
     nx, ny = round.(Int, factor .* (lx, ly))
@@ -619,7 +620,7 @@ function enlarge(A::Matrix, factor::AbstractFloat)
     itp = interpolate(A, BSpline(Linear()))
     return itp(vx, vy)
 end
- 
+
 A = load("data/lenna100.jpg") |> Matrix{RGB{Float64}};
 Alarge = enlarge(A, 1.6);
 save("data/lennaenlarged.jpg", Alarge)
@@ -641,7 +642,7 @@ import java.awt.image.BufferedImage
 import javax.imageio.ImageIO
 
 /* gets the 'n'th byte of a 4-byte integer */
-operator fun Int.get(n: Int) = (this shr (n * 8)) and 0xFF 
+operator fun Int.get(n: Int) = (this shr (n * 8)) and 0xFF
 
 fun lerp(s: Float, e: Float, t: Float) = s + (e - s) * t
 
@@ -780,7 +781,7 @@ end function
 function bilinear(integer c00, c10, c01, c11, atom fx, fy)
 --
 -- for some output pixel, we have calculated the exact point
--- on the original, and extracted the four pixels surrounding 
+-- on the original, and extracted the four pixels surrounding
 -- that, with fx,fy as the fractional x,y part of the 1x1 box.
 -- Like a capital H, we want some fraction on the left and the
 -- same on the right, then some fraction along the horizontal.
@@ -789,7 +790,7 @@ function bilinear(integer c00, c10, c01, c11, atom fx, fy)
 -- the following actually does, especially since we got the
 -- pixels from original[y,x] rather than original[x,y], and
 -- imImage and IupImage have {0,0} in different corners - but
--- the output looks pretty good, and I think you would easily 
+-- the output looks pretty good, and I think you would easily
 -- notice were this even slightly wrong, and in fact an early
 -- accidental typo of r10/r01 indeed proved very evident.
 --
@@ -835,7 +836,7 @@ sequence new_image = repeat(repeat(0,new_width),new_height)
         end for
     end for
     new_image = flatten(new_image) -- (as needed by IupImageRGB)
-    Ihandle new_img = IupImageRGB(new_width, new_height, new_image) 
+    Ihandle new_img = IupImageRGB(new_width, new_height, new_image)
     return new_img
 end function
 
@@ -921,7 +922,7 @@ def GetBilinearPixel(imArr, posX, posY):
 		br = imArr[modYi, modXiPlusOneLim, chan]
 		tl = imArr[modYiPlusOneLim, modXi, chan]
 		tr = imArr[modYiPlusOneLim, modXiPlusOneLim, chan]
-	
+
 		#Calculate interpolation
 		b = modXf * br + (1. - modXf) * bl
 		t = modXf * tr + (1. - modXf) * tl
@@ -931,7 +932,7 @@ def GetBilinearPixel(imArr, posX, posY):
 	return out
 
 if __name__=="__main__":
-	
+
 	im = imread("test.jpg", mode="RGB")
 	enlargedShape = list(map(int, [im.shape[0]*1.6, im.shape[1]*1.6, im.shape[2]]))
 	enlargedImg = np.empty(enlargedShape, dtype=np.uint8)
@@ -963,7 +964,7 @@ This mimics the Wikipedia example.
    (λ (dc)
      (define (pixel x y color)
        (send dc set-pen color 1 'solid)
-       (send dc draw-point (+ x .5) (+ y 0.5)))  
+       (send dc draw-point (+ x .5) (+ y 0.5)))
      (send dc set-alpha 1)
      (pixel 0 0 "blue")
      (pixel 0 1 "red")
@@ -975,7 +976,7 @@ This mimics the Wikipedia example.
  (build-flomap
   4 250 250
   (λ (k x y)
-    (flomap-bilinear-ref 
+    (flomap-bilinear-ref
      fm k (+ 1/2 (/ x 250)) (+ 1/2 (/ y 250))))))
 ```
 
@@ -1238,7 +1239,7 @@ fcn scale(src, scaleX,scaleY){
       gxi,gyi:=Int(gx), Int(gy);
 
       	// cxy=RGB, cxy.toBigEndian(3)-->(R,G,B)
-      c00,c10 := src[gxi,gyi].toBigEndian(3), src[gxi+1,gyi].toBigEndian(3); 
+      c00,c10 := src[gxi,gyi].toBigEndian(3), src[gxi+1,gyi].toBigEndian(3);
       c01     := src[gxi,gyi+1]  .toBigEndian(3);
       c11     := src[gxi+1,gyi+1].toBigEndian(3);
 

@@ -28,10 +28,10 @@ The detailed rules are at http://paulgraham.com/accgensub.html and are reproduce
 :# Returns a real function, meaning something that you can use wherever you could use a function you had defined in the ordinary way in the text of your program. <small>''(Follow your language's conventions here.)''</small>
 :# Doesn't store the accumulated value or the returned functions in a way that could cause them to be inadvertently modified by other code. <small>''(No global variables or other such things.)''</small>
 : E.g. if after the example, you added the following code (in a made-up language) <small>''where the factory function is called foo''</small>:
-:: 
+::
 ```pseudocode
-x = foo(1); 
-x(5); 
+x = foo(1);
+x(5);
 foo(3);
 print x(2.3);
 ```
@@ -40,7 +40,7 @@ print x(2.3);
 
 
 ;Task:
-Create a function that implements the described rules. 
+Create a function that implements the described rules.
 
 
 It need not handle any special error cases not described above. The simplest way to implement the task as described is typically to use a [[Closures|closure]], providing the language supports them.
@@ -69,8 +69,8 @@ Where it is not possible to hold exactly to the constraints above, describe the 
 \ action using 'p:.
 
 : make-accumulator
-  1 a:close 
-  ' accumulate 
+  1 a:close
+  ' accumulate
   p: curry: ;
 
 \ We 'curry' the initial value along with 'accumulate' to create
@@ -79,7 +79,7 @@ Where it is not possible to hold exactly to the constraints above, describe the 
 
 \ This loop will add 1, then 2, then 3, to the accumulator, which prints the
 \ results 11,13,16:
-( +10 . cr ) 1 3 loop 
+( +10 . cr ) 1 3 loop
 bye
 ```
 
@@ -101,7 +101,7 @@ ABAP, unfortunately, has no first order functions, nor does its OO paradigm impl
 
 Another possible solution would be to use the languages in-built JavaScript processing capabilities to dynamically construct a JS source at run-time, which implements the JS Accumulator factory.
 
-###  Object Oriented Solution 
+###  Object Oriented Solution
 
 
 ```ABAP
@@ -144,7 +144,7 @@ write : / lv_ret2 decimals 2 exponent 0 left-justified, / lv_ret1 left-justified
 ```
 
 
-###  JavaScript Solution 
+###  JavaScript Solution
 
 
 ```ABAP
@@ -411,9 +411,9 @@ main: (
       lhs := lhs + rhs;
 
   PROC accumulator  = (REF NUMBER sum)PROC(NUMBER)NUMBER:
-      (NUMBER n)NUMBER:  
+      (NUMBER n)NUMBER:
           sum +:= n;
-   
+
   PROC (NUMBER)NUMBER x = accumulator(LOC NUMBER := 1);
   x(5);
   print(("x:",x(2.3), new line));
@@ -470,15 +470,15 @@ Or, to match the task spec and output a little more closely:
 
 ```AppleScript
 on run
-    
+
     set x to foo(1)
-    
+
     x's |λ|(5)
-    
+
     foo(3)
-    
+
     x's |λ|(2.3)
-    
+
 end run
 
 -- foo :: Int -> Script
@@ -587,14 +587,14 @@ This code works by copying the function FNdummy() onto the heap and returning a 
       dummy = FNaccumulator(3)
       PRINT FN(x)(2.3)
       END
-      
+
       DEF FNaccumulator(sum)
       LOCAL I%, P%, Q%
       DIM P% 53 : Q% = !^FNdummy()
       FOR I% = 0 TO 49 : P%?I% = Q%?I% : NEXT
       P%!I% = P% : sum = FN(P%+I%)(sum)
       = P%+I%
-      
+
       DEF FNdummy(n)
       PRIVATE sum
       sum += n
@@ -605,7 +605,7 @@ This code works by copying the function FNdummy() onto the heap and returning a 
 
 ## Bracmat
 
-Notice that Bracmat has no floating point numbers, only rational numbers. 
+Notice that Bracmat has no floating point numbers, only rational numbers.
 
 ```bracmat
 ( ( accumulator
@@ -653,8 +653,8 @@ p x 2.3 #Prints 8.3 (1 + 5 + 2.3)
 Deviation: Not in standard C, but several compilers include the typeof operator as an extension which can be used like a typedef. Functions must be defined outside of the main program body and they retain the same type throughout their life. C11 is supposed to give us some Type-generic macro expressions.
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 //~ Take a number n and return a function that takes a number i
 #define ACCUMULATOR(name,n) __typeof__(n) name (__typeof__(n) i) { \
     static __typeof__(n) _n=n; LOGIC; }
@@ -681,8 +681,8 @@ int main (void) {
 First solution has a deviation: The return type is wrong when the accumulator is called with an integer argument after is has been called with a float argument.  Later it is explained how to correct this.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 class Acc
 {
@@ -746,8 +746,8 @@ The following is similar to the above, using lambda functions from C++11. Note t
 
 It suffers from the same deviation as the former, where the return type is wrong when the accumulator is called with a float argument after is has been called with an integer argument.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <functional>
 
 template <typename T>
@@ -780,7 +780,7 @@ template<class T_> struct Cumulant_ : CumulantBase_
 {
    T_ val_;
    Cumulant_(const T_& val) : val_(val) {}
-   std::ostream& Write(std::ostream& dst) const override 
+   std::ostream& Write(std::ostream& dst) const override
    {
       return dst << val_;
    }
@@ -794,9 +794,9 @@ struct Accumulator_
 
 ```
 
-(This is Coplien's "State" pattern.)  
+(This is Coplien's "State" pattern.)
 
-The second issue is that the built-in operator + is a multimethod, implementing a compile-time dispatch and promotion which we must manually reproduce.  
+The second issue is that the built-in operator + is a multimethod, implementing a compile-time dispatch and promotion which we must manually reproduce.
 
 ```cpp
 // still inside struct Accumulator_
@@ -999,7 +999,7 @@ Similarly, a ''ref'' could be used.
 ```coffeescript
 accumulator = (sum) ->
   (n) -> sum += n
-  
+
 f = accumulator(1)
 console.log f(5)
 console.log f(2.3)
@@ -1171,11 +1171,11 @@ accumulator(n)
 public program()
 {
     var x := accumulator(1);
-    
+
     x(5);
-    
+
     var y := accumulator(3);
-    
+
     console.write(x(2.3r))
 }
 ```
@@ -1198,8 +1198,8 @@ Elixir provides Agents to simplify creating a process to maintain state where mu
 defmodule AccumulatorFactory do
   def new(initial) do
     {:ok, pid} = Agent.start_link(fn() -> initial end)
-    fn (a) -> 
-      Agent.get_and_update(pid, fn(old) -> {a + old, a + old} end) 
+    fn (a) ->
+      Agent.get_and_update(pid, fn(old) -> {a + old, a + old} end)
     end
   end
 end
@@ -1248,7 +1248,7 @@ Erlang doesn't allow for mutable variables, but does have variable capture in cl
 -module(acc_factory).
 -export([loop/1,new/1]).
 
-loop(N)->  
+loop(N)->
     receive
         {P,I}->
             S =N+I, P!S, loop(S)
@@ -1258,7 +1258,7 @@ new(N)->
     P=spawn(acc_factory,loop,[N]),
     fun(I)->
             P!{self(),I},
-            receive  
+            receive
                 V-> V
             end
     end.
@@ -1324,7 +1324,7 @@ class AccumulatorFactory
 {
   static |Num -> Num| accumulator (Num sum)
   {
-    return |Num a -> Num| 
+    return |Num a -> Num|
     { // switch on type of sum
       if (sum is Int)
       { // and then type of a
@@ -1354,9 +1354,9 @@ class AccumulatorFactory
           return sum = sum->plus(a)
       }
     }
-  } 
+  }
 
-  public static Void main () 
+  public static Void main ()
   {
     x := accumulator (3.1)
     y := accumulator (3f)
@@ -1428,7 +1428,7 @@ let acc init =
     state := add !state (box y)
     !state
 
-do 
+do
   let x : obj -> obj = acc 1
   printfn "%A" (x 5) // prints "6"
   acc 3 |> ignore
@@ -1441,7 +1441,7 @@ Actually, it is possible to create a statically typed version by using an inline
 ```fsharp
 let inline makeAccumulator init =
     let acc = ref init
-    fun i -> 
+    fun i ->
         acc := !acc + i
         !acc
 
@@ -1468,7 +1468,7 @@ Fortran does not have functions as first class objects, and can not create funct
 at runtime.
 
 
-###  Fortran77 
+###  Fortran77
 
 Fortran77 does not support objects and overloading and thus the user must declare the
 type of the function to generate. The following are noted:
@@ -1516,7 +1516,7 @@ end
 
 
 
-###  Fortran2003 
+###  Fortran2003
 
 Fortran2003 and later supports objects and overloading. The overloaded functions are encapsulated in an object.
 
@@ -1608,7 +1608,7 @@ end program test
 
 ```txt
 
-   8.3000000000000007     
+   8.3000000000000007
           10
 
 ```
@@ -1619,9 +1619,9 @@ end program test
 
 It doesn't appear to be possible to program this task in FreeBASIC in the precise way it is posed.
 
-The problem is that FB doesn't support closures and, whilst we can manufacture an equivalent object, we'd then have the further problem that you can't pass pointers to object methods, only to static procedures. 
+The problem is that FB doesn't support closures and, whilst we can manufacture an equivalent object, we'd then have the further problem that you can't pass pointers to object methods, only to static procedures.
 
-To get around this restriction we'd normally wrap the object method in a static procedure and pass an object pointer to that followed by any other arguments required by the method. However, this won't work here because the task specifies that the method can take only a single number argument and the object pointer would be internal to 'foo' in any case. 
+To get around this restriction we'd normally wrap the object method in a static procedure and pass an object pointer to that followed by any other arguments required by the method. However, this won't work here because the task specifies that the method can take only a single number argument and the object pointer would be internal to 'foo' in any case.
 
 Probably the best we can do is for 'foo' to return the object and then to call the method 'g' directly on that:
 
@@ -1632,7 +1632,7 @@ Probably the best we can do is for 'foo' to return the object and then to call t
 Type Bar
   Public:
     Declare Constructor(As Long)
-    Declare Constructor(As Single)   
+    Declare Constructor(As Single)
     Declare Function g(As Long) As Long
     Declare Function g(As Single) As Single
   Private:
@@ -1654,18 +1654,18 @@ End Function
 
 Function Bar.g(s As Single) As Single
   sum_ += s
-  Return sum_  
+  Return sum_
 End Function
 
 Function foo Overload(i As Long) As Bar  '' returns a Bar object rather than a pointer to Bar.g
   Dim b As Bar = Bar(i)
   Return b
-End Function 
+End Function
 
 Function foo Overload(s As Single) As Bar  '' overload of foo to deal with Single argument
   Dim b As Bar = Bar(s)
   Return b
-End Function 
+End Function
 
 Dim x As Bar = foo(1)  '' assigns Bar object to x
 x.g(5)  '' calls the Long overload of g on the Bar object
@@ -1865,7 +1865,7 @@ Strictly speaking, <tt>genAcc(n)</tt> returns a <i>co-expression</i>, not a func
 procedure main()
     a := genAcc(3)
     b := genAcc(5)
-    
+
     write("        " ,center("a",5),  " ", center("b", 5))
     write("genAcc: ", right(a(4),5),  " ", right(b(4), 5))
     write("genAcc: ", right(a(2),5),  " ", right(b(3),5))
@@ -1885,7 +1885,7 @@ This example produces the output:
 
 ```txt
 
-          a     b  
+          a     b
 genAcc:     7     9
 genAcc:     9    12
 genAcc:  13.5  13.3
@@ -1922,7 +1922,7 @@ oleg=:1 :0
 )
 ```
 
-Example use: 
+Example use:
 
 ```j
    F=: 10 oleg
@@ -2179,7 +2179,7 @@ x(2.3) = 8.3
 
 ## Kotlin
 
-Overloads would be needed for all six primitive numeric types but, in the interests of brevity, only two overloads of 'foo' have been coded: 
+Overloads would be needed for all six primitive numeric types but, in the interests of brevity, only two overloads of 'foo' have been coded:
 
 ```scala
 // version 1.1
@@ -2224,7 +2224,7 @@ fun main(args: Array<String>) {
 LFE doesn't support mutable data (nor global variables); as such, this task requires a work-around. There are two ways to accomplish it: via closure on anonymous function, or closure on a process.
 
 
-###  Traditional closure 
+###  Traditional closure
 
 
 
@@ -2261,7 +2261,7 @@ Usage (in the REPL):
 Note that we want to re-set the variable <code>x</code> with each call in order to use its updated state (since LFE is a functional programming language which doesn't support mutable global variables.
 
 
-###  Process closure 
+###  Process closure
 
 
 We can creating a looping process which provides the same functionality as the self-calling function in the "traditional closure" approach:
@@ -2330,13 +2330,13 @@ do
     local accSum = 0;               -- accumulator factory 'upvalue'
     function acc(v)                 -- the accumulator factory
         accSum = accSum + (v or 0)  -- increment factory sum
-        
+
         local closuredSum = accSum;               -- new 'upvalue' at each factory call
         return function (w)                       -- the produced accumulator function
             closuredSum = closuredSum + (w or 0)  -- increment product 'upvalue'
             return closuredSum                    -- return 'upvalue'
         end, accSum                               -- end of product closure
-        
+
     end--acc
 end--end of factory closure
 ```
@@ -2362,14 +2362,14 @@ print (y())     --> 4      -- print the accumulated value inside the product y
 \\ accumulator factory
 foo=lambda acc=0 (n as double=0) -> {
       \\ interpreter place this: read n as double=0 as first line of lambda function
-      if n=0 then =acc : exit 
+      if n=0 then =acc : exit
       acc+=n
       \\ acc passed as a closuer to lambda (a copy of acc in the result lambda function)
       =lambda acc -> {
             ' if stack of values is empty then return a copy of acc
             if empty then =acc : exit
             read x
-            \\ x has no type here, can be any numeric type (also can be an object too)       
+            \\ x has no type here, can be any numeric type (also can be an object too)
             \\ accumulator is double, and is a closure (a copy of acc in foo)
             acc+=x
             \\ any variable in M2000 hold  first type
@@ -2431,7 +2431,7 @@ Running this, we get:
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-accFactory[initial_] := 
+accFactory[initial_] :=
   Module[{total = initial},
     Function[x, total += x]
   ]
@@ -2624,7 +2624,7 @@ Nemerle doesn't have a <tt>dynamic</tt> type, but we can use matching to bind ty
 ```Nemerle
 def Foo(n) {
     mutable value : object = n;
-    fun (i : object) { 
+    fun (i : object) {
         match(i) {
             |x is int    => match(value) {
                                 |y is int => value = x + y;
@@ -2635,7 +2635,7 @@ def Foo(n) {
                                 |y is double => value = x + y;
                             }
         }
-        value 
+        value
     }
 }
 
@@ -2804,16 +2804,16 @@ Uses objects instead of first class functions.
 bundle Default {
   class Accumulator {
     @sum : Float;
-      
+
     New(sum : Float) {
       @sum := sum;
     }
-      
+
     method : public : Call(n : Float) ~ Float {
       @sum += n;
       return @sum;
     }
-      
+
     function : Main(args : String[]) ~ Nil {
       x := Accumulator->New(1.0);
       x->Call(5.0  );
@@ -2847,7 +2847,7 @@ int main (int argc, const char * argv[]) {
         x(5);
         accumulator_factory(3);
         NSLog(@"%f", x(2.3));
-	
+
     }
     return 0;
 }
@@ -2902,7 +2902,7 @@ function fun = foo(init)
 endfunction
 
 x = foo(1);
-x(5); 
+x(5);
 foo(3);
 disp(x(2.3));
 ```
@@ -2926,7 +2926,7 @@ The block returned by foo (a closure), when performed, retrieves the current val
 Usage :
 
 ```Oforth
-: testfoo 
+: testfoo
 | x y z |
    1 foo ->x
    5 x perform .
@@ -2934,7 +2934,7 @@ Usage :
    2.3 x perform dup . ", x accumulator value is a" . class .cr
    10  y perform dup . ", y accumulator value is a" . class .cr
    "aaa" foo ->z
-   "bbb" z perform dup . ", z accumulator value is a" . class .cr 
+   "bbb" z perform dup . ", z accumulator value is a" . class .cr
 ;
 ```
 
@@ -2954,7 +2954,7 @@ ok
 
 ## ooRexx
 
-ooRexx does not have functions that can maintain state between calls.  The standard work around is to use an object instance and a defined method name. 
+ooRexx does not have functions that can maintain state between calls.  The standard work around is to use an object instance and a defined method name.
 
 ```ooRexx
 
@@ -3023,7 +3023,7 @@ Class AccumFactory
   method StringValue(sys dp=16) as string
   return str v,dp
   end method
- 
+
 
 end class
 
@@ -3181,24 +3181,24 @@ say b 3;   # Prints "8".
 
 Emulated. There is nothing clever about this - both the answer and the task requirements!
 
-Numeric polymorphism is inherently supported in phix. While technically this does not return 
+Numeric polymorphism is inherently supported in phix. While technically this does not return
 a function, the following demonstrates how the "standard_function" can be invoked in exactly
 the same manner as a result from the factory, without the caller knowing which is which, and
 I would guess that is one of the more important motivations for the original task. But it is
-worth stating there are much easier ways to do this, hence generally speaking this approach 
+worth stating there are much easier ways to do this, hence generally speaking this approach
 is not particularly recommended or advocated.
 
 A variation on [[Closures/Value_capture#Phix]], only in this case the inner function is kept
-in the returned variable and for simplicity there are no partial args - but it would be easy 
+in the returned variable and for simplicity there are no partial args - but it would be easy
 enough to add that sort of flexibility here if needed.
 
-Rule#5 is deliberately ignored: if rogue code can corrupt the accumulators variable, it can 
-just as easily corrupt the "closure" it would otherwise be held in, however well-hidden some 
+Rule#5 is deliberately ignored: if rogue code can corrupt the accumulators variable, it can
+just as easily corrupt the "closure" it would otherwise be held in, however well-hidden some
 other programming language would like to pretend that is, and of course the latter sort of
 corruption would be <i>significantly</i> harder to debug. Obviously, for safety, you would
 normally make the accumulators variable private(/non-global) in a separate source file,
 along with accumulate/accumulate_factory/call_function, and if you <i>really</i> don't like
-accumulators being visible (??) I suppose you could always just allocate a bit of memory in 
+accumulators being visible (??) I suppose you could always just allocate a bit of memory in
 accumulator_factory() and return a pointer to that instead of an id/length.
 
 ```Phix
@@ -3651,7 +3651,7 @@ exit                                             /*stick a fork in it,  we're al
 call:  procedure expose sum;  sum=sum+arg(1);    return sum          /*add arg1 ──► sum.*/
 ```
 
-'''output''' 
+'''output'''
 
 ```txt
 
@@ -3678,11 +3678,11 @@ Func main
    }
 
 Class Generator
-    aN = []  
+    aN = []
 
     func generator i
     aN + i
-        return eval(substr("return func d {                          
+        return eval(substr("return func d {
            oGenerator {
                aN[#id#] += d
                return aN[#id#]
@@ -4161,7 +4161,7 @@ Strictly speaking, <tt>genAcc(n)</tt> returns a <i>co-expression</i>, not a func
 procedure main()
     a := genAcc(3)
     b := genAcc(5)
-    
+
     write("        " ,center("a",5),  " ", center("b", 5))
     write("genAcc: ", right(a(4),5),  " ", right(b(4), 5))
     write("genAcc: ", right(a(2),5),  " ", right(b(3),5))
@@ -4182,7 +4182,7 @@ Note: The co-expression calling sequence used is Unicon specific.
 
 ```txt
 
-          a     b  
+          a     b
 genAcc:     7     9
 genAcc:     9    12
 genAcc:  13.5  13.3
@@ -4247,7 +4247,7 @@ $
 {{out}}
 
 ```txt
-$ echo "1 2 3 4.5" | txr accumulator-factory2.tl 
+$ echo "1 2 3 4.5" | txr accumulator-factory2.tl
 1 -> 1
 2 -> 3
 3 -> 6
@@ -4273,7 +4273,7 @@ Using the <code>obtain</code>/<code>yield</code> interface to delimited continua
 {{out}}
 
 ```txt
-$ echo "1 2 3 4.5" | txr accumulator-factory2.tl 
+$ echo "1 2 3 4.5" | txr accumulator-factory2.tl
 1 -> 1
 2 -> 3
 3 -> 6
@@ -4466,7 +4466,7 @@ b <- (accumulator 23)
 ```Yabasic
 sub foo$(n)
 	local f$
-	
+
 	f$ = "f" + str$(int(ran(1000000)))
 	compile("sub " + f$ + "(n): static acum : acum = acum + n : return acum : end sub")
 	execute(f$, n)
@@ -4517,7 +4517,7 @@ Example of use (interactive session):
 fcn foo(n){ fcn(n,acc){ acc.set(n+acc.value).value }.fp1(Ref(n)) }
 ```
 
-A strong reference (Ref) is used as the accumulator, a Ref acts like a one element list. The Ref is bound to the new functions second parameter with the .fp1 method. 
+A strong reference (Ref) is used as the accumulator, a Ref acts like a one element list. The Ref is bound to the new functions second parameter with the .fp1 method.
 
 ```txt
 

@@ -10,8 +10,8 @@ categories = []
 tags = []
 +++
 
-<!--  This Rosetta Code task previously was named   Anti-prime Plus    
-      before it was renamed and split into three different tasks.     !--> 
+<!--  This Rosetta Code task previously was named   Anti-prime Plus
+      before it was renamed and split into three different tasks.     !-->
 {{task}}
 
 Calculate the sequence where each term <strong>a<sub>n</sub></strong> is the '''smallest natural number''' greater than the previous term, that has exactly '''n''' divisors.
@@ -50,7 +50,7 @@ BEGIN
             OD;
             count
          END # count divisors # ;
- 
+
     INT max = 15;
 
     print( ( "The first ", whole( max, 0 ), " terms of the sequence are:", newline ) );
@@ -121,8 +121,8 @@ first 15 terms: 1 2 4 6 16 18 64 66 100 112 1024 1035 4096 4288 4624
 
 {{trans|Go}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define MAX 15
 
@@ -143,7 +143,7 @@ int main() {
     int i, next = 1;
     printf("The first %d terms of the sequence are:\n", MAX);
     for (i = 1; next <= MAX; ++i) {
-        if (next == count_divisors(i)) {           
+        if (next == count_divisors(i)) {
             printf("%d ", i);
             next++;
         }
@@ -159,7 +159,7 @@ int main() {
 ```txt
 
 The first 15 terms of the sequence are:
-1 2 4 6 16 18 64 66 100 112 1024 1035 4096 4288 4624 
+1 2 4 6 16 18 64 66 100 112 1024 1035 4096 4288 4624
 
 ```
 
@@ -169,8 +169,8 @@ The first 15 terms of the sequence are:
 
 {{trans|C}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 #define MAX 15
 
@@ -192,7 +192,7 @@ int count_divisors(int n) {
 int main() {
     cout << "The first " << MAX << " terms of the sequence are:" << endl;
     for (int i = 1, next = 1; next <= MAX; ++i) {
-        if (next == count_divisors(i)) {           
+        if (next == count_divisors(i)) {
             cout << i << " ";
             next++;
         }
@@ -208,7 +208,7 @@ int main() {
 ```txt
 
 The first 15 terms of the sequence are:
-1 2 4 6 16 18 64 66 100 112 1024 1035 4096 4288 4624 
+1 2 4 6 16 18 64 66 100 112 1024 1035 4096 4288 4624
 
 ```
 
@@ -236,7 +236,7 @@ func countDivisors(n) {
     }
     return count
 }
- 
+
 const max = 15
 print("The first \(max) terms of the sequence are:")
 var (i, next) = (1, 1)
@@ -329,7 +329,7 @@ func main() {
 ```txt
 
 The first 15 terms of the sequence are:
-1 2 4 6 16 18 64 66 100 112 1024 1035 4096 4288 4624 
+1 2 4 6 16 18 64 66 100 112 1024 1035 4096 4288 4624
 
 ```
 
@@ -359,7 +359,7 @@ public class AntiPrimesPlus {
         final int max = 15;
         System.out.printf("The first %d terms of the sequence are:\n", max);
         for (int i = 1, next = 1; next <= max; ++i) {
-            if (next == count_divisors(i)) {           
+            if (next == count_divisors(i)) {
                 System.out.printf("%d ", i);
                 next++;
             }
@@ -375,7 +375,7 @@ public class AntiPrimesPlus {
 ```txt
 
 The first 15 terms of the sequence are:
-1 2 4 6 16 18 64 66 100 112 1024 1035 4096 4288 4624 
+1 2 4 6 16 18 64 66 100 112 1024 1035 4096 4288 4624
 
 ```
 
@@ -384,8 +384,8 @@ The first 15 terms of the sequence are:
 
 
 
- 
- 
+
+
 
 ## Julia
 
@@ -474,7 +474,7 @@ fun main() {
 ```txt
 
 The first 15 terms of the sequence are:
-1 2 4 6 16 18 64 66 100 112 1024 1035 4096 4288 4624 
+1 2 4 6 16 18 64 66 100 112 1024 1035 4096 4288 4624
 
 ```
 
@@ -499,7 +499,7 @@ uses
   sysutils,math;
 const
   MAX =32;
- 
+
 function getDividersCnt(n:Uint32):Uint32;
 // getDividersCnt by dividing n into its prime factors
 // aka n = 2250 = 2^1*3^2*5^3 has (1+1)*(2+1)*(3+1)= 24 dividers
@@ -507,14 +507,14 @@ var
   divi,quot,deltaRes,rest : Uint32;
 begin
   result := 1;
- 
+
   //divi  := 2; //separat without division
   while Not(Odd(n)) do
   Begin
     n := n SHR 1;
     inc(result);
   end;
- 
+
   //from now on only odd numbers
   divi  := 3;
   while (sqr(divi)<=n) do
@@ -524,8 +524,8 @@ begin
     Begin
       deltaRes := 0;
       repeat
-        inc(deltaRes,result);      
-        n := quot;      
+        inc(deltaRes,result);
+        n := quot;
         DivMod(n,divi,quot,rest);
       until rest <> 0;
       inc(result,deltaRes);
@@ -536,7 +536,7 @@ begin
   IF n <> 1 then
     result := result*2;
 end;
- 
+
 var
   T0 : Int64;
   i,next,DivCnt: Uint32;
@@ -566,7 +566,7 @@ end.
 
 ```txt
 The first 32 anti-primes plus are:
-1 2 4 6 16 18 64 66 100 112 1024 1035 4096 4288 4624 4632 65536 65572 262144 262192 263169 269312 4194304 4194306 4477456 4493312 4498641 4498752 268435456 268437200 1073741824 1073741830 
+1 2 4 6 16 18 64 66 100 112 1024 1035 4096 4288 4624 4632 65536 65572 262144 262192 263169 269312 4194304 4194306 4477456 4493312 4498641 4498752 268435456 268437200 1073741824 1073741830
 525 ms
 ```
 
@@ -732,7 +732,7 @@ if __name__ == '__main__':
 
 ## REXX
 
-Programming note:   this Rosetta Code task (for 15 sequence numbers) doesn't require any optimization,   but the code was optimized for listing higher numbers. 
+Programming note:   this Rosetta Code task (for 15 sequence numbers) doesn't require any optimization,   but the code was optimized for listing higher numbers.
 
 The method used is to find the number of proper divisors   (up to the integer square root of '''X'''),   and add one.
 
@@ -866,9 +866,9 @@ done...
 
 ```ruby
 require 'prime'
- 
+
 def num_divisors(n)
-  n.prime_division.inject(1){|prod, (_p,n)| prod *= (n + 1) } 
+  n.prime_division.inject(1){|prod, (_p,n)| prod *= (n + 1) }
 end
 
 seq = Enumerator.new do |y|

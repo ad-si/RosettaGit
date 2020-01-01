@@ -19,7 +19,7 @@ This task is similar to:
 
 
 ;Task:
-Implement basic element-wise matrix-matrix and scalar-matrix operations, which can be referred to in other, higher-order tasks. 
+Implement basic element-wise matrix-matrix and scalar-matrix operations, which can be referred to in other, higher-order tasks.
 
 Implement:
 :::*   addition
@@ -80,10 +80,10 @@ end Scalar_Ops;
 {{out}}
 
 ```txt
-  Initial M=((1,2,3),(4,5,6),(7,8,9))                                                      
-        M+2=((3,4,5),(6,7,8),(9,10,11))                                                    
+  Initial M=((1,2,3),(4,5,6),(7,8,9))
+        M+2=((3,4,5),(6,7,8),(9,10,11))
         M-2=((-1,0,1),(2,3,4),(5,6,7))
-        M*2=((2,4,6),(8,10,12),(14,16,18))                                                 
+        M*2=((2,4,6),(8,10,12),(14,16,18))
         M/2=((0,1,1),(2,2,3),(3,4,4))
   square(M)=((1,4,9),(16,25,36),(49,64,81))
     M mod 2=((1,0,1),(0,1,0),(1,0,1))
@@ -278,14 +278,14 @@ All except exponentiation (^) are native operations in BBC BASIC.
 ```bbcbasic
       DIM a(1,2), b(1,2), c(1,2)
       a() = 7, 8, 7, 4, 0, 9 : b() = 4, 5, 1, 6, 2, 1
-      
+
       REM Matrix-Matrix:
       c() = a() + b() : PRINT FNshowmm(a(), "+", b(), c())
       c() = a() - b() : PRINT FNshowmm(a(), "-", b(), c())
       c() = a() * b() : PRINT FNshowmm(a(), "*", b(), c())
       c() = a() / b() : PRINT FNshowmm(a(), "/", b(), c())
       PROCpowmm(a(), b(), c()) : PRINT FNshowmm(a(), "^", b(), c()) '
-      
+
       REM Matrix-Scalar:
       c() = a() + 3 : PRINT FNshowms(a(), "+", 3, c())
       c() = a() - 3 : PRINT FNshowms(a(), "-", 3, c())
@@ -293,7 +293,7 @@ All except exponentiation (^) are native operations in BBC BASIC.
       c() = a() / 3 : PRINT FNshowms(a(), "/", 3, c())
       PROCpowms(a(), 3, c()) : PRINT FNshowms(a(), "^", 3, c())
       END
-      
+
       DEF PROCpowmm(a(), b(), c())
       LOCAL i%, j%
       FOR i% = 0 TO DIM(a(),1)
@@ -302,7 +302,7 @@ All except exponentiation (^) are native operations in BBC BASIC.
         NEXT
       NEXT
       ENDPROC
-      
+
       DEF PROCpowms(a(), b, c())
       LOCAL i%, j%
       FOR i% = 0 TO DIM(a(),1)
@@ -311,13 +311,13 @@ All except exponentiation (^) are native operations in BBC BASIC.
         NEXT
       NEXT
       ENDPROC
-      
+
       DEF FNshowmm(a(), op$, b(), c())
       = FNlist(a()) + " " + op$ + " " + FNlist(b()) + " = " + FNlist(c())
-      
+
       DEF FNshowms(a(), op$, b, c())
       = FNlist(a()) + " " + op$ + " " + STR$(b) + " = " + FNlist(c())
-      
+
       DEF FNlist(a())
       LOCAL i%, j%, a$
       a$ = "["
@@ -355,8 +355,8 @@ All except exponentiation (^) are native operations in BBC BASIC.
 
 Matrices are 2D double arrays.
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 
 #define for_i for(i = 0; i < h; i++)
 #define for_j for(j = 0; j < w; j++)
@@ -495,7 +495,7 @@ This function is for vector matrices; for list matrices, change the (vector?) fu
 (defn operation [f mtx1 mtx2]
   (if (vector? mtx1)
     (vec (map #(vec (map f %1 %2)) mtx1 mtx2)))
-    (recur f (initial-mtx (count mtx2) (count (first mtx2)) mtx1) mtx2) 
+    (recur f (initial-mtx (count mtx2) (count (first mtx2)) mtx1) mtx2)
   ))
 ```
 
@@ -512,9 +512,9 @@ Element-wise matrix-matrix operations. Matrices are represented as 2D-arrays.
          (m   (car (array-dimensions A)))
          (n   (cadr (array-dimensions A)))
          (C   (make-array `(,m ,n) :initial-element 0.0d0)))
-    
+
     (loop for i from 0 to (1- len) do
-         (setf (row-major-aref C i) 
+         (setf (row-major-aref C i)
                (funcall fn
                         (row-major-aref A i)
                         (row-major-aref B i))))
@@ -537,9 +537,9 @@ Elementwise scalar-matrix operations.
          (m   (car (array-dimensions A)))
          (n   (cadr (array-dimensions A)))
          (B   (make-array `(,m ,n) :initial-element 0.0d0)))
-    
+
     (loop for i from 0 to (1- len) do
-         (setf (row-major-aref B i) 
+         (setf (row-major-aref B i)
                (funcall fn
                         (row-major-aref A i)
                         c)))
@@ -682,7 +682,7 @@ math.matrices math.vectors prettyprint sequences ;
         3dup execute( x x -- x ) [ unparse ] dip
         "%u %u %s = %u\n" printf
     ] 2with each ; inline
-    
+
 : m^n ( m n -- m ) [ ^ ] curry matrix-map ;
 : m^  ( m m -- m ) [ v^ ] 2map ;
 
@@ -753,7 +753,7 @@ program element_operations
   print*,'element selection'
   b=0
   where(a>3) b=1
-  call print_arr(b)  
+  call print_arr(b)
 
   print*,'elemental functions can be applied to single values:'
   print*,square(3.0)
@@ -776,8 +776,8 @@ contains
        print*,arr(:,i)
     end do
   end subroutine print_arr
-  
-  
+
+
 end program element_operations
 
 ```
@@ -788,39 +788,39 @@ end program element_operations
 ```txt
 
  addition
-   2.00000000       4.00000000       6.00000000    
-   8.00000000       10.0000000       12.0000000    
-   14.0000000       16.0000000       18.0000000    
+   2.00000000       4.00000000       6.00000000
+   8.00000000       10.0000000       12.0000000
+   14.0000000       16.0000000       18.0000000
  multiplication
-   1.00000000       4.00000000       9.00000000    
-   16.0000000       25.0000000       36.0000000    
-   49.0000000       64.0000000       81.0000000    
+   1.00000000       4.00000000       9.00000000
+   16.0000000       25.0000000       36.0000000
+   49.0000000       64.0000000       81.0000000
  division
-   1.00000000      0.500000000      0.333333343    
-  0.250000000      0.200000003      0.166666672    
-  0.142857149      0.125000000      0.111111112    
+   1.00000000      0.500000000      0.333333343
+  0.250000000      0.200000003      0.166666672
+  0.142857149      0.125000000      0.111111112
  exponentiation
-   1.00000000       4.00000000       27.0000000    
-   256.000000       3125.00000       46656.0000    
-   823543.000       16777216.0       387420480.    
+   1.00000000       4.00000000       27.0000000
+   256.000000       3125.00000       46656.0000
+   823543.000       16777216.0       387420480.
  trignometric
-  0.540302277     -0.416146845     -0.989992499    
- -0.653643608      0.283662200      0.960170269    
-  0.753902256     -0.145500034     -0.911130250    
+  0.540302277     -0.416146845     -0.989992499
+ -0.653643608      0.283662200      0.960170269
+  0.753902256     -0.145500034     -0.911130250
  mod
-   1.00000000       2.00000000       0.00000000    
-   1.00000000       2.00000000       0.00000000    
-   1.00000000       2.00000000       0.00000000    
+   1.00000000       2.00000000       0.00000000
+   1.00000000       2.00000000       0.00000000
+   1.00000000       2.00000000       0.00000000
  element selection
-   0.00000000       0.00000000       0.00000000    
-   1.00000000       1.00000000       1.00000000    
-   1.00000000       1.00000000       1.00000000    
+   0.00000000       0.00000000       0.00000000
+   1.00000000       1.00000000       1.00000000
+   1.00000000       1.00000000       1.00000000
  elemental functions can be applied to single values:
-   9.00000000    
+   9.00000000
  or element wise to arrays:
-   1.00000000       4.00000000       9.00000000    
-   16.0000000       25.0000000       36.0000000    
-   49.0000000       64.0000000       81.0000000 
+   1.00000000       4.00000000       9.00000000
+   16.0000000       25.0000000       36.0000000
+   49.0000000       64.0000000       81.0000000
 
 
 ```
@@ -947,44 +947,44 @@ func main() {
 ```txt
 
 m1:
-[ 3.000  1.000  4.000] 
-[ 1.000  5.000  9.000] 
+[ 3.000  1.000  4.000]
+[ 1.000  5.000  9.000]
 m2:
-[ 2.000  7.000  1.000] 
-[ 8.000  2.000  8.000] 
+[ 2.000  7.000  1.000]
+[ 8.000  2.000  8.000]
 
 m1 + m2:
-[ 5.000  8.000  5.000] 
-[ 9.000  7.000 17.000] 
+[ 5.000  8.000  5.000]
+[ 9.000  7.000 17.000]
 m1 - m2:
-[ 1.000 -6.000  3.000] 
-[-7.000  3.000  1.000] 
+[ 1.000 -6.000  3.000]
+[-7.000  3.000  1.000]
 m1 * m2:
-[ 6.000  7.000  4.000] 
-[ 8.000 10.000 72.000] 
+[ 6.000  7.000  4.000]
+[ 8.000 10.000 72.000]
 m1 / m2:
-[ 1.500  0.143  4.000] 
-[ 0.125  2.500  1.125] 
+[ 1.500  0.143  4.000]
+[ 0.125  2.500  1.125]
 m1 ^ m2:
-[ 9.000  1.000  4.000] 
-[ 1.000 25.000 43046721.000] 
+[ 9.000  1.000  4.000]
+[ 1.000 25.000 43046721.000]
 
 s: 0.5
 m1 + s:
-[ 3.500  1.500  4.500] 
-[ 1.500  5.500  9.500] 
+[ 3.500  1.500  4.500]
+[ 1.500  5.500  9.500]
 m1 - s:
-[ 2.500  0.500  3.500] 
-[ 0.500  4.500  8.500] 
+[ 2.500  0.500  3.500]
+[ 0.500  4.500  8.500]
 m1 * s:
-[ 1.500  0.500  2.000] 
-[ 0.500  2.500  4.500] 
+[ 1.500  0.500  2.000]
+[ 0.500  2.500  4.500]
 m1 / s:
-[ 6.000  2.000  8.000] 
-[ 2.000 10.000 18.000] 
+[ 6.000  2.000  8.000]
+[ 2.000 10.000 18.000]
 m1 ^ s:
-[ 1.732  1.000  2.000] 
-[ 1.000  2.236  3.000] 
+[ 1.732  1.000  2.000]
+[ 1.000  2.236  3.000]
 
 ```
 
@@ -1076,7 +1076,7 @@ class NaiveMatrixCategory {
    static NaiveMatrix div (Number a, NaiveMatrix b) { a * b.recip() }
    static NaiveMatrix power (Number a, NaiveMatrix b) { b.binaryOp(a) { elt, scalar -> scalar ** elt } }
    static NaiveMatrix mod (Number a, NaiveMatrix b) { b.binaryOp(a) { elt, scalar -> scalar % elt } }
-   
+
    static <T> T asType (Number a, Class<T> type) {
        type == NaiveMatrix \
            ? [[a]] as NaiveMatrix
@@ -1339,7 +1339,7 @@ array ((0,0),(2,3)) [((0,0),1.0),((0,1),6.338253001141147e29),((0,2),1.717925069
 
 ==Icon and {{header|Unicon}}==
 
-This is a Unicon-specific solution solely because of the use of the <tt>[: ... :]</tt> operator.  
+This is a Unicon-specific solution solely because of the use of the <tt>[: ... :]</tt> operator.
 It would be easy to replace this with another construct to produce a version that works in both languages.
 The output flattens each displayed matrix onto a single line to save space here.
 
@@ -1409,7 +1409,7 @@ a^2:     1    4    9   16   25   36   49   64   81
 
 ## J
 
-'''Solution''': J's arithmetical primitives act elementwise by default (in J parlance, such operations are known as "scalar" or "rank zero", which means they generalize to high-order arrays transparently, operating elementwise).  Thus: 
+'''Solution''': J's arithmetical primitives act elementwise by default (in J parlance, such operations are known as "scalar" or "rank zero", which means they generalize to high-order arrays transparently, operating elementwise).  Thus:
 ```j
    scalar =: 10
    vector =: 2 3 5
@@ -1423,14 +1423,14 @@ a^2:     1    4    9   16   25   36   49   64   81
  70 110 130
 170 190 230
 290 310 370
-   
+
    vector * vector
 4 9 25
    vector * matrix
  14  22  26
  51  57  69
 145 155 185
-   
+
    matrix * matrix
  49 121  169
 289 361  529
@@ -1489,18 +1489,18 @@ public class ElementWiseOp {
 	}
 	public static void main(String[] args) {
 		printMatrix(scalarOp("mul", new Double[][] {
-				{ 1.0, 2.0, 3.0 }, 
-				{ 4.0, 5.0, 6.0 }, 
+				{ 1.0, 2.0, 3.0 },
+				{ 4.0, 5.0, 6.0 },
 				{ 7.0, 8.0, 9.0 }
 		}, 3.0));
 
 		printMatrix(matrOp("div", new Double[][] {
-				{ 1.0, 2.0, 3.0 }, 
-				{ 4.0, 5.0, 6.0 }, 
+				{ 1.0, 2.0, 3.0 },
+				{ 4.0, 5.0, 6.0 },
 				{ 7.0, 8.0, 9.0 }
 		}, new Double[][] {
-				{ 1.0, 2.0}, 
-				{ 3.0, 4.0} 
+				{ 1.0, 2.0},
+				{ 3.0, 4.0}
 		}));
 	}
 }
@@ -1671,14 +1671,14 @@ In Julia operations with `.` before are for convention Element-wise:
 (70 110 130
  170 190 230
  290 310 370)
-   
+
    vector * vector
 4 9 25
    vector * matrix
 (14 22 26
  51 57 69
  145 155 185)
-   
+
    matrix * matrix
 (49 121 169
  289 361 529
@@ -1705,7 +1705,7 @@ fun Matrix.elementwiseOp(other: Matrix, op: Op): Matrix {
     for (i in 0 until this.size) {
         for (j in 0 until this[0].size) result[i][j] = this[i][j].op(other[i][j])
     }
-    return result  
+    return result
 }
 
 fun Matrix.elementwiseOp(d: Double, op: Op): Matrix {
@@ -1713,12 +1713,12 @@ fun Matrix.elementwiseOp(d: Double, op: Op): Matrix {
     for (i in 0 until this.size) {
         for (j in 0 until this[0].size) result[i][j] = this[i][j].op(d)
     }
-    return result  
+    return result
 }
 
 fun Matrix.print(name: Char?, scalar: Boolean? = false) {
     println(when (scalar) {
-        true  -> "m $name s" 
+        true  -> "m $name s"
         false -> "m $name m"
         else  -> "m"
     } + ":")
@@ -1730,15 +1730,15 @@ fun main(args: Array<String>) {
     val ops = listOf(Double::plus, Double::minus, Double::times, Double::div, Double::dPow)
     val names = "+-*/^"
     val m = arrayOf(
-        doubleArrayOf(3.0, 5.0, 7.0), 
+        doubleArrayOf(3.0, 5.0, 7.0),
         doubleArrayOf(1.0, 2.0, 3.0),
         doubleArrayOf(2.0, 4.0, 6.0)
     )
-    m.print(null, null) 
+    m.print(null, null)
     for ((i, op) in ops.withIndex()) m.elementwiseOp(m, op).print(names[i])
     val s = 2.0
     println("s = $s:\n")
-    for ((i, op) in ops.withIndex()) m.elementwiseOp(s, op).print(names[i], true)   
+    for ((i, op) in ops.withIndex()) m.elementwiseOp(s, op).print(names[i], true)
 }
 ```
 
@@ -1866,18 +1866,18 @@ Gives:
 ->{{-3, 1, 3}, {7, 9, 13}, {19, 21, 27}}
 ->{{70, 110, 130}, {170, 190, 230}, {290, 310, 370}}
 ->{{7/10, 11/10, 13/10}, {17/10, 19/10, 23/10}, {29/10, 31/10, 37/10}}
-->{{282475249, 25937424601, 137858491849}, {2015993900449, 
-  6131066257801, 41426511213649}, {420707233300201, 819628286980801, 
+->{{282475249, 25937424601, 137858491849}, {2015993900449,
+  6131066257801, 41426511213649}, {420707233300201, 819628286980801,
   4808584372417849}}
 
 ->{{14, 22, 26}, {34, 38, 46}, {58, 62, 74}}
 ->{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
 ->{{49, 121, 169}, {289, 361, 529}, {841, 961, 1369}}
 ->{{1, 1, 1}, {1, 1, 1}, {1, 1, 1}}
-->{{823543, 285311670611, 302875106592253}, {827240261886336764177, 
-  1978419655660313589123979, 
-  20880467999847912034355032910567}, {2567686153161211134561828214731016126483469, 
-  17069174130723235958610643029059314756044734431, 
+->{{823543, 285311670611, 302875106592253}, {827240261886336764177,
+  1978419655660313589123979,
+  20880467999847912034355032910567}, {2567686153161211134561828214731016126483469,
+  17069174130723235958610643029059314756044734431,
   10555134955777783414078330085995832946127396083370199442517}}
 ```
 
@@ -2249,7 +2249,7 @@ v = vector * vector;
  import random
 >>> from operator import add, sub, mul, floordiv
 >>> from pprint import pprint as pp
->>> 
+>>>
 >>> def ewise(matrix1, matrix2, op):
 	return [[op(e1,e2) for e1,e2 in zip(row1, row2)] for row1,row2 in zip(matrix1, matrix2)]
 
@@ -2271,7 +2271,7 @@ v = vector * vector;
 [[2401, 32768, 7, 4096], [4096, 43046721, 64, 1], [4, 9, 46656, 64]]
 >>> pp(ewise(a0, a1, lambda x, y:2*x - y))
 [[10, 11, 13, 2], [2, 10, 5, -2], [2, 4, 6, 5]]
->>> 
+>>>
 >>> def s_ewise(scalar1, matrix1, op):
 	return [[op(scalar1, e1) for e1 in row1] for row1 in matrix1]
 
@@ -2281,14 +2281,14 @@ v = vector * vector;
 >>> for op in ( add, sub, mul, floordiv, pow, lambda x, y:2*x - y ):
 	print("%10s :" % op.__name__, s_ewise(scalar, a0, op))
 
-	
+
        add : [[17, 18, 17, 14], [14, 19, 14, 11], [12, 13, 16, 14]]
        sub : [[3, 2, 3, 6], [6, 1, 6, 9], [8, 7, 4, 6]]
        mul : [[70, 80, 70, 40], [40, 90, 40, 10], [20, 30, 60, 40]]
   floordiv : [[1, 1, 1, 2], [2, 1, 2, 10], [5, 3, 1, 2]]
        pow : [[10000000, 100000000, 10000000, 10000], [10000, 1000000000, 10000, 10], [100, 1000, 1000000, 10000]]
   <lambda> : [[13, 12, 13, 16], [16, 11, 16, 19], [18, 17, 14, 16]]
->>> 
+>>>
 ```
 
 
@@ -2473,7 +2473,7 @@ showMat:  parse arg @, hdr; L=0;  say
 ──M matrix, modulus 3──
  1 2 0
  1 2 0
- 1 2 0 
+ 1 2 0
 
 ```
 
@@ -2828,9 +2828,9 @@ local
 	tabulate RowMajor (nRows x, nCols x, fn (i,j) => f(sub(x,i,j),sub(y,i,j)))
 in
 infix splus sminus stimes
-val op splus = mapscalar Int.+ 
-val op sminus = mapscalar Int.- 
-val op stimes = mapscalar Int.* 
+val op splus = mapscalar Int.+
+val op sminus = mapscalar Int.-
+val op stimes = mapscalar Int.*
 val op + = map2 Int.+
 val op - = map2 Int.-
 val op * = map2 Int.*
@@ -2845,7 +2845,7 @@ let open Matrix
     infix splus sminus stimes
     val m1 = fromList [[1,2],[3,4]]
     val m2 = fromList [[4,3],[2,1]]
-    val s = 2			     
+    val s = 2
 in
     List.map toList [m1+m2, m1-m2, m1*m2,
 		     m1 splus s, m1 sminus s, m1 stimes s]
@@ -2958,7 +2958,7 @@ println("M square elements:\n%s\n".fmt(mSqrd.format()));
 
 ```txt
 
-M = 
+M =
       3.00,      5.00,      7.00
       1.00,      2.00,      3.00
       2.00,      4.00,      6.00

@@ -1454,8 +1454,8 @@ Although please note that ''sh'' actually does not print anything.
 
 Works with gcc|4.0.1
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 
 int main(void)
@@ -1467,8 +1467,8 @@ int main(void)
 
 Or:
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 
 int main(void)
@@ -1527,8 +1527,8 @@ namespace HelloWorld
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main () {
   std::cout << "Hello world!" << std::endl;

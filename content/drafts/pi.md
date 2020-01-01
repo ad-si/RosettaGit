@@ -13,9 +13,9 @@ tags = []
 {{task|Irrational numbers}}
 [[File:pi_symbol.jpg|500px||right]]
 
-Create a program to continually calculate and output the next decimal digit of   <big><big><math>\pi</math></big></big>   (pi). 
+Create a program to continually calculate and output the next decimal digit of   <big><big><math>\pi</math></big></big>   (pi).
 
-The program should continue forever (until it is aborted by the user) calculating and outputting each decimal digit in succession. 
+The program should continue forever (until it is aborted by the user) calculating and outputting each decimal digit in succession.
 
 The output should be a decimal sequence beginning   3.14159265 ...
 
@@ -32,7 +32,7 @@ Related Task [[Arithmetic-geometric mean/Calculate Pi]]
 ## 360 Assembly
 
 {{trans|FORTRAN}}
-The program uses one ASSIST macro (XPRNT) to keep the code as short as possible. 
+The program uses one ASSIST macro (XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Spigot algorithm do the digits of PI  02/07/2016
@@ -42,11 +42,11 @@ PISPIG   CSECT
          DC     17F'0'             savearea
          STM    R14,R12,12(R13)    prolog
          ST     R13,4(R15)         "
-         ST     R15,8(R13)         " 
+         ST     R15,8(R13)         "
          LR     R13,R15            "
          SR     R0,R0              0
          ST     R0,MORE            more=0
-         LA     R6,1               i=1 
+         LA     R6,1               i=1
 LOOPI1   C      R6,=A(NBUF)        do i=1 to hbound(buf)
          BH     ELOOPI1            "
          SR     R9,R9                karray=0
@@ -102,7 +102,7 @@ ELOOPI1  L      R1,BUF             buf(1)
          LA     R3,PG              pgi=0
          LA     R6,2               i=2
 LOOPI2   C      R6,=A(NBUF)        do i=2 to hbound(buf)
-         BH     ELOOPI2            "  
+         BH     ELOOPI2            "
          MVC    0(1,R3),=C' '        output ' '
          LA     R3,1(R3)             pgi=pgi+1
          LR     R1,R6                i
@@ -124,11 +124,11 @@ LOOPI2   C      R6,=A(NBUF)        do i=2 to hbound(buf)
          MVC    PG,=CL80' '            clear buffer
 NOSKIP   LA     R6,1(R6)             i=i+1
          B      LOOPI2             end do i
-ELOOPI2  L      R13,4(0,R13)       epilog 
+ELOOPI2  L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
-         LTORG  
+         LTORG
 MORE     DS     F                  more
 PACKED   DS     0D,PL8             packed decimal
 PG       DC     CL80' '            buffer
@@ -383,7 +383,7 @@ Loop
 {{works with|ALGOL 68|Revision 1 - no extensions to language used.}}
 {{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny].}}
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of '''format'''[ted] ''transput''.}}
-This codes uses 33 decimals places as a test case.  Performance is O(2) based on the number of decimal places required. 
+This codes uses 33 decimals places as a test case.  Performance is O(2) based on the number of decimal places required.
 
 ```algol68
 #!/usr/local/bin/a68g --script #
@@ -405,13 +405,13 @@ BEGIN
         digit := x OVER (2*i-1)
     OD;
     digits[LWB digits] := digit MOD base; digit OVERAB base;
-    nines := 
-      IF digit = nine THEN 
+    nines :=
+      IF digit = nine THEN
         nines + 1
       ELSE
         IF digit = base THEN
           yield(predigit+1); predigit := 0 ;
-          FOR repeats TO nines DO yield(0) OD # zeros # 
+          FOR repeats TO nines DO yield(0) OD # zeros #
         ELSE
           IF place NE 1 THEN yield(predigit) FI; predigit := digit;
           FOR repeats TO nines DO yield(nine) OD
@@ -427,7 +427,7 @@ main:(
 # the 33rd decimal place is a shorter tricky test case #
   INT test decimal places = UPB "3.1415926.......................502"-2;
 
-  INT width = ENTIER log(base*(1+small real*10)); 
+  INT width = ENTIER log(base*(1+small real*10));
 
 # iterate throught the digits as they are being found #
 # FOR INT digit IN # gen pi digits(test decimal places#) DO ( #,
@@ -694,7 +694,7 @@ The first 250,000 digits output have been verified.
       [OPT 2 :.pidig mov ebp,eax :.pi1 imul edx,ecx : mov eax,[ebx+ecx*4]
       imul eax,100 : add eax,edx : cdq : div ebp : mov [ebx+ecx*4],edx
       mov edx,eax : sub ebp,2 : loop pi1 : mov eax,edx : ret :]
-      
+
       WIDTH 80
       M% = (HIMEM-END-1000) / 4
       DIM B%(M%) : B% = ^B%(0)
@@ -823,7 +823,7 @@ Output:
             & (   !first:yes
                 & f$"."
                 & no:?first
-              | 
+              |
               )
             & "compute and update variables for next cycle"
             & 10*(!r+-1*!n*!t):?nr
@@ -919,8 +919,8 @@ There are many ways to do this, with quite different performance profiles.  A si
 
 Using Machin's formula.  The "continuous printing" part is silly: the algorithm really calls for a preset number of digits, so the program repeatedly calculates Pi digits with increasing length and chop off leading digits already displayed.  But it's still faster than the unbounded Spigot method by an order of magnitude, at least for the first 100k digits.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <gmp.h>
 
@@ -1297,7 +1297,7 @@ pi { |digit_or_dot| print digit_or_dot; STDOUT.flush }
 
 ## D
 
-This modified [[wp:Spigot_algorithm|Spigot algorithm]] does not continue infinitely, because its required memory grow as the number of digits need to print.    
+This modified [[wp:Spigot_algorithm|Spigot algorithm]] does not continue infinitely, because its required memory grow as the number of digits need to print.
 
 ```d
 import std.stdio, std.conv, std.string;
@@ -1425,7 +1425,7 @@ Output:
 ```elixir
 defmodule Pi do
   def calc, do: calc(1,0,1,1,3,3,0)
-  
+
   defp calc(q,r,t,k,n,l,c) when c==50 do
     IO.write "\n"
     calc(q,r,t,k,n,l,0)
@@ -1480,15 +1480,15 @@ main() ->
 	pi(1,0,1,1,3,3,0).
 
 pi(Q,R,T,K,N,L,C)   ->
-	
+
 	if C=:=50 ->
 		io:format("\n"),
 		pi(Q,R,T,K,N,L,0)  ;
 
 	true ->
 
-		if 
-			(4*Q + R-T) < (N*T) -> 
+		if
+			(4*Q + R-T) < (N*T) ->
 			io:format("~p",[N]),
 	 		P = 10*(R-N*T),
 	 		pi(Q*10 , P, T , K , ((10*(3*Q+R)) div T)-10*N , L,C+1);
@@ -1500,7 +1500,7 @@ pi(Q,R,T,K,N,L,C)   ->
 			J =K+ 1,
 			pi(Q*K, P , T*L ,J,M,H,C)
 	 	end
- 	end.	
+ 	end.
 
 ```
 
@@ -1603,7 +1603,7 @@ MAIN: calc-pi-digits
 
 ## Fortran
 
-This is a modernized version of the example Fortran programme written by S. Rabinowitz in 1991. It works in base 100000 and the key step is the initialisation of all elements of VECT to 2. The format code of I5.5 means I5 output but with all leading spaces made zero so that 66 comes out as "00066", not "   66". 
+This is a modernized version of the example Fortran programme written by S. Rabinowitz in 1991. It works in base 100000 and the key step is the initialisation of all elements of VECT to 2. The format code of I5.5 means I5 output but with all leading spaces made zero so that 66 comes out as "00066", not "   66".
 
 
 ```Fortran
@@ -1672,7 +1672,7 @@ Library, FMLIB (http://myweb.lmu.edu/dmsmith/fmlib.html), provided by Dr. David 
 !
 ### ==========================================
 
-          do 
+          do
             call print_next_pi_digit()
           end do
 
@@ -1750,8 +1750,8 @@ Do
     mpz_add(tmp1,tmp1,r)
     mpz_sub(tmp1,tmp1,t)
     mpz_mul(tmp2, n, t)
-    If mpz_cmp(tmp1, tmp2) < 0 Then 
-        Print mpz_get_ui(n); : ndigit += 1 : If ndigit Mod 50 = 0 Then Print " :";ndigit 
+    If mpz_cmp(tmp1, tmp2) < 0 Then
+        Print mpz_get_ui(n); : ndigit += 1 : If ndigit Mod 50 = 0 Then Print " :";ndigit
         If fp Then Print "."; : fp = Not fp : Print :ndigit = 0
         mpz_sub(tmp1, r, tmp2)
         mpz_mul_ui(tmp1, tmp1, 10)
@@ -1777,7 +1777,7 @@ Do
         mpz_add_ui(k, k, 1)
         mpz_add_ui(l, l, 2)
         mpz_set(n, tmp1)
-        mpz_set(r, tmp2)     
+        mpz_set(r, tmp2)
     End If
 Loop
 ```
@@ -1877,7 +1877,7 @@ if ( cnt < n )
       col1++
          long if ( col1 == 6 )
             col1 = 0
-            print 
+            print
             print fn FmtInt( 4, str$( m mod 10) );
          else
             print fn FmtInt( 3, str$ (m mod 10) );
@@ -1887,7 +1887,7 @@ if ( cnt < n )
     end if
     cnt++
 end if
-end fn 
+end fn
 
 
 local fn xprint( m as long)
@@ -1908,14 +1908,14 @@ else
           while ( wk1 >= 1 )
              wk += stor(wk1)
              stor(wk1) = wk mod 10
-             wk = wk/10 
+             wk = wk/10
              wk1--
           wend
     end if
 end if
 lloc++
 stor(lloc) = m
-end fn 
+end fn
 
 
 local mode
@@ -1923,13 +1923,13 @@ local fn shift( l1 as ^long, l2 as ^long, lp as long, lmod as long )
 dim as long k
 
 if ( l2.nil& > 0 )
-   k = ( l2.nil& ) / lmod 
+   k = ( l2.nil& ) / lmod
 else
    k =  -( -l2.nil&  / lmod ) - 1
 end if
 l2.nil& = l2.nil& - k*lmod
 l1.nil& = l1.nil& + k*lp
-end fn 
+end fn
 
 
 local fn Main( nDig as long )
@@ -1977,7 +1977,7 @@ while ( cnt < n )
     wend
 
    i = ( n - cnt + 1 )
-   i-- 
+   i--
    while ( i >= 2 )
       temp = 2 * i - 1
       fn shift( @mf(i - 1), @mf(i), temp - 2, temp * kf )
@@ -2002,7 +2002,7 @@ end fn
 dim as unsigned long   ticks
 ticks = fn TickCount()
 // Here we specify the number of decimal places
-fn Main( 4000 ) 
+fn Main( 4000 )
 ticks = fn TickCount() - ticks
 print "Elapsed time:" str$( ticks ) " ticks
 
@@ -2410,7 +2410,7 @@ Output :
 
 
 
-###  Spigot Algorithm using BigInteger 
+###  Spigot Algorithm using BigInteger
 
 
 This calculates one digit of pi at a time and writes it out
@@ -2447,7 +2447,7 @@ calcPi();
 
 
 
-###  Web Page version 
+###  Web Page version
 
 
 This shows how to load the previous code into a webpage that writes digits out without freezing the browser
@@ -2503,7 +2503,7 @@ calcPi();
 ```
 
 
-###  Simple Approximation 
+###  Simple Approximation
 
 Returns an approximation of Pi.
 
@@ -2550,7 +2550,7 @@ spigot grow very slightly more than linearly.
 
 
 ```jq
-# The Gibbons spigot, in the mold of the [[#Groovy]] and ython]] programs shown on this page.  
+# The Gibbons spigot, in the mold of the [[#Groovy]] and ython]] programs shown on this page.
 # The "bigint" functions
 needed are: long_minus long_add long_multiply long_div
 
@@ -2562,7 +2562,7 @@ def pi_spigot:
 
   def long_lt(x;y): if x == y then false else lessOrEqual(x;y) end;
 
-  def check: 
+  def check:
      long_lt(long_minus(long_add(long_multiply("4"; .[0]); .[1]) ; .[2]);
              long_multiply(.[4]; .[2]));
 
@@ -2584,7 +2584,7 @@ def pi_spigot:
               long_multiply( long_add(long_multiply("2";$q); $r); $l),
               long_multiply($t;$l),
               long_add($k; "1"),
-              long_div( long_add(long_multiply($q; long_add(long_multiply("7";$k); "2")) ; long_multiply($r;$l)); 
+              long_div( long_add(long_multiply($q; long_add(long_multiply("7";$k); "2")) ; long_multiply($r;$l));
                         long_multiply($t;$l) ),
               long_add($l; "2") ]]
       end;
@@ -2593,7 +2593,7 @@ def pi_spigot:
   # Output:  [count, space, digit] for successive digits produced by "nextstate"
   def decorate( nextstate ):
 
-     # For efficiency it is important that the recursive 
+     # For efficiency it is important that the recursive
      # function have arity 0 and be tail-recursive:
      def count:
        .[0] as $count
@@ -2602,8 +2602,8 @@ def pi_spigot:
        | ($state[1] | map(length) | add) as $space
        | (if $value then [$count, $space, $value] else empty end),
          ( [if $value then $count+1 else $count end, ($state | nextstate)] | count);
-  [0, .] | count;     
-     
+  [0, .] | count;
+
   #       q=1, r=0, t=1, k=1, n=3, l=3
   [null, ["1", "0", "1", "1", "3", "3"]] | decorate(next)
 ;
@@ -2962,7 +2962,7 @@ Output:
 import java.math.BigInteger
 
 val ZERO  = BigInteger.ZERO
-val ONE   = BigInteger.ONE 
+val ONE   = BigInteger.ONE
 val TWO   = BigInteger.valueOf(2L)
 val THREE = BigInteger.valueOf(3L)
 val FOUR  = BigInteger.valueOf(4L)
@@ -2977,7 +2977,7 @@ fun calcPi() {
     var t = ONE
     var k = ONE
     var n = THREE
-    var l = THREE     
+    var l = THREE
     var first = true
     while (true) {
         if (FOUR * q + r - t < n * t) {
@@ -3021,10 +3021,10 @@ Based off [http://crypto.stanford.edu/pbc/notes/pi/code.html Dik T. Winter's C i
 
 ```Lasso
 #!/usr/bin/lasso9
- 
+
 define generatePi => {
   yield currentCapture
- 
+
   local(r = array(), i, k, b, d, c = 0, x)
   with i in generateSeries(1, 2800)
   do #r->insert(2000)
@@ -3046,7 +3046,7 @@ define generatePi => {
     #c = #d % 10000
   }
 }
- 
+
 local(pi_digits) = generatePi
 loop(200) => {
     stdout(#pi_digits())
@@ -3175,7 +3175,7 @@ print( predigit )
 
 We can ask for 200 digits, but we can remove Digits-- in While Digits {} to print endless number of digits (without good precision). Algorithm developed after reading [http://www.pi314.net/eng/goutte.php] and [https://www.cut-the-knot.org/Curriculum/Algorithms/SpigotForPi.shtml]
 
-A Faster version handling console refresh time (and os shared time). M2000 run on an environment, which is loop event, and console is actual a form, a window. We can stop execution using Esc, Ctrl+C and Break keys, without stopping the interpreter (which is an application for Windows Os, written in Visual Basic 6,a s an ActiveX dll with a window manager on top of Vb forms). 
+A Faster version handling console refresh time (and os shared time). M2000 run on an environment, which is loop event, and console is actual a form, a window. We can stop execution using Esc, Ctrl+C and Break keys, without stopping the interpreter (which is an application for Windows Os, written in Visual Basic 6,a s an ActiveX dll with a window manager on top of Vb forms).
 
 
 
@@ -3183,7 +3183,7 @@ A Faster version handling console refresh time (and os shared time). M2000 run o
 ```M2000 Interpreter
 
 Module Checkpi {
-      Module FindPi(Digits){ 
+      Module FindPi(Digits){
             Digits++
             n=Int(3.32*Digits)
             PlusOne=Lambda N=0% -> {
@@ -3202,10 +3202,10 @@ Module Checkpi {
                   Print x;
                   Chars++
                   If fl then Print "." : Print " "; : fl=false : Chars=0 : exit
-                  If Chars=50 then { 
+                  If Chars=50 then {
                         Print
                         Print " ";
-                        Chars=0 
+                        Chars=0
                         Refresh
                   } else.if (Chars mod 5)=0 then {
                          Print " ";
@@ -3240,9 +3240,9 @@ Module Checkpi {
                                 Call f(Number)
                                 if D>0 then D--
                                 If D=0 then flush ' empty stack
-                              }      
+                              }
                               Push q
-                        }       
+                        }
                   } else.if q=9 Then {
                         Stack Predigits { Data q }
                   } else {
@@ -3251,26 +3251,26 @@ Module Checkpi {
                               Call f((Number+1) mod 10)
                               if D>0 then D--
                               If D=0 then flush ' empty stack
-                        }      
+                        }
                         Push 0
                         }
                   }
-            End Sub     
+            End Sub
       }
       \\ reduce time to share with OS
       \\ Need explicitly use of refresh output layer (M2000 console)
       \\ Slow for a screen refresh per statement and give more time to OS
-      Rem Set Slow 
+      Rem Set Slow
       \\ Fast is normal screen refresh, per Refresh time, and give standard time to OS
       Rem Set Fast
       \\ Fast ! use Refresh for screen refresh, and give less time o OS than standard
       \\ Esc key work when Refresh executed (and OS get little time)
-      Set Fast !  
+      Set Fast !
       FindPi 4
       FindPi 28
       Print Pi  ' pi in M2000 is Decimal type with 29 digits (1 plus 28 after dot, is same as FindPi 28)
       Refresh
-      FindPi 50     
+      FindPi 50
 }
 Flush ' empty stack of values
 CheckPi
@@ -3281,18 +3281,18 @@ Stack ' Stack of values  ' has to be empty, we didn't use current stack for valu
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 User can interrupt computation using "Alt+." or "Cmd+." on a Mac.
 
 ```Mathematica
 WriteString[$Output, "3."];
-For[i = -1, True, i--, 
+For[i = -1, True, i--,
   WriteString[$Output, RealDigits[Pi, 10, 1, i][[1, 1]]]; Pause[.05]];
 ```
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-Matlab and Octave use double precision numbers per default, and pi is a builtin constant value. Arbitrary precision is only implemented in some additional toolboxes (e.g. symbolic toolbox). 
+Matlab and Octave use double precision numbers per default, and pi is a builtin constant value. Arbitrary precision is only implemented in some additional toolboxes (e.g. symbolic toolbox).
 
 ```MATLAB>pi</lang
 
@@ -3543,7 +3543,7 @@ done
 
 
 ```Oforth
-: calcPiDigits 
+: calcPiDigits
 | q r t k n l |
    1 ->q 0 ->r 1 ->t 1 ->k 3 ->n 3 -> l
 
@@ -3555,7 +3555,7 @@ done
          q 10 * ->q
          ]
       else: [
-         2 q * r + l * 
+         2 q * r + l *
          7 k * q * 2 + r l * + t l * / ->n ->r
          k q * ->q
          t l * ->t
@@ -3787,7 +3787,7 @@ As mentioned earlier, replacing "use bigint" with "use Math::GMP qw/:constant/" 
 
 ```perl>use bigint try=
 "GMP";
-sub stream { 
+sub stream {
     my ($next, $safe, $prod, $cons, $z, $x) = @_;
     $x = $x->();
     sub {
@@ -3802,14 +3802,14 @@ sub stream {
         }
     }
 }
- 
+
 sub extr {
     use integer;
     my ($q, $r, $s, $t) = @{shift()};
     my $x = shift;
     ($q * $x + $r) / ($s * $x + $t);
 }
- 
+
 sub comp {
     my ($q, $r, $s, $t) = @{shift()};
     my ($u, $v, $w, $x) = @{shift()};
@@ -3818,7 +3818,7 @@ sub comp {
      $s * $u + $t * $w,
      $s * $v + $t * $x];
 }
- 
+
 my $pi_stream = stream
     sub { extr shift, 3 },
     sub { my ($z, $n) = @_; $n == extr $z, 4 },
@@ -3938,7 +3938,7 @@ sub stream(&next, &safe, &prod, &cons, $z is copy, @x) {
     gather loop {
         $z = safe($z, my $y = next($z)) ??
              prod($z, take $y)          !!
-             cons($z, @x[$++])  
+             cons($z, @x[$++])
     }
 }
 
@@ -3953,7 +3953,7 @@ sub comp([$q,$r,$s,$t], [$u,$v,$w,$x]) {
      $s * $v + $t * $x]
 }
 
-my $pi := 
+my $pi :=
     stream -> $z { extr($z, 3) },
            -> $z, $n { $n == extr($z, 4) },
            -> $z, $n { comp([10, -10*$n, 0, 1], $z) },
@@ -3974,45 +3974,45 @@ for ^Inf -> $i {
 I already had this golf entry to hand. Prints 2400 places, change the 8400 (derived from 2400*14/4) as needed, but I've not tested > that.
 
 ```Phix
-integer a=10000,b,c=8400,d,e=0,g sequence f=repeat(floor(a/5),c+1) while c>0 do g=2*c d=0 
-b=c while b>0 do d+=f[b]*a g-=1 f[b]=remainder(d, g) d=floor(d/g) g-=1 b-=1 if b!=0 then 
+integer a=10000,b,c=8400,d,e=0,g sequence f=repeat(floor(a/5),c+1) while c>0 do g=2*c d=0
+b=c while b>0 do d+=f[b]*a g-=1 f[b]=remainder(d, g) d=floor(d/g) g-=1 b-=1 if b!=0 then
 d*=b end if end while printf(1,"%04d",e+floor(d/a)) c-=14 e = remainder(d,a) end while
 ```
 
 Someone was benchmarking the above against Lua, so I translated the Lua entry, and upped it to 2400 places, for a fairer test.
 
 ```Phix
-integer n = 2400, 
-        len = floor(10*n/3) 
-sequence a = repeat(2,len) 
-integer nines = 0, 
-        predigit = 0 
-string res = "" 
-    for j=1 to n do 
-        integer q = 0 
-        for i=len to 1 by -1 do 
-            integer x = 10*a[i]+q*i, 
-                    d = 2*i-1 
-            a[i] = remainder(x,d) 
-            q = floor(x/d) 
-        end for 
-        a[1] = remainder(q,10) 
-        q = floor(q/10) 
-        if q==9 then 
-            nines = nines+1 
-        else 
-            integer nine = '9' 
-            if q==10 then 
-                predigit += 1 
-                q = 0 
-                nine = '0' 
-            end if 
+integer n = 2400,
+        len = floor(10*n/3)
+sequence a = repeat(2,len)
+integer nines = 0,
+        predigit = 0
+string res = ""
+    for j=1 to n do
+        integer q = 0
+        for i=len to 1 by -1 do
+            integer x = 10*a[i]+q*i,
+                    d = 2*i-1
+            a[i] = remainder(x,d)
+            q = floor(x/d)
+        end for
+        a[1] = remainder(q,10)
+        q = floor(q/10)
+        if q==9 then
+            nines = nines+1
+        else
+            integer nine = '9'
+            if q==10 then
+                predigit += 1
+                q = 0
+                nine = '0'
+            end if
             res &= predigit+'0'&repeat(nine,nines)
-            predigit = q 
-            nines = 0 
-        end if 
-    end for 
-    res &= predigit+'0' 
+            predigit = q
+            nines = 0
+        end if
+    end for
+    res &= predigit+'0'
     puts(1,res)
 ```
 
@@ -4134,10 +4134,10 @@ Prints 100 digits a time. Total possible output limited by available memory.
 Function Get-Pi ( $Digits )
     {
     $Big = [bigint[]](0..10)
- 
+
     $ndigits = 0
     $Output = ""
- 
+
     $q = $t = $k = $Big[1]
     $r =           $Big[0]
     $l = $n =      $Big[3]
@@ -4150,15 +4150,15 @@ Function Get-Pi ( $Digits )
     $k = $k + $Big[1]
     $n = $nn
     $r = $nr
- 
+
     $Output += [string]$n + '.'
     $ndigits++
- 
+
     $nr = $Big[10] * ( $r - $n * $t )
     $n = ( ( $Big[10] * ( 3 * $q + $r ) ) / $t ) - 10 * $n
     $q *= $Big[10]
     $r = $nr
- 
+
     While ( $ndigits -lt $Digits )
         {
         While ( $ndigits % 100 -ne 0 -or -not $Output )
@@ -4245,7 +4245,7 @@ Procedure Pi(Digits)
 EndProcedure
 
 If OpenConsole()
-  SetConsoleCtrlHandler_(?Ctrl,#True) 
+  SetConsoleCtrlHandler_(?Ctrl,#True)
   Pi(24*1024*1024)
 EndIf
 End
@@ -4582,7 +4582,7 @@ dot=1                                            /*DOT≡a flag when a dot in pi
 exit                                             /*stick a fork in it,  we're all done. */
 halt: say;     say  'PI_SPIT2 halted via use of Ctrl-Break.';           exit
 ```
- 
+
 
 
 
@@ -4596,7 +4596,7 @@ pi_digits = Enumerator.new do |y|
   q, r, t, k, n, l = 1, 0, 1, 1, 3, 3
   loop do
     if 4*q+r-t < n*t
-      y << n 
+      y << n
       nr = 10*(r-n*t)
       n = ((10*(3*q+r)) / t) - 10*n
       q *= 10
@@ -4676,7 +4676,7 @@ object Pi {
     var q, t, k:BigInt=1
     var n, l:BigInt=3
     var nr, nn:BigInt=0
-		
+
     def iterator: Iterator[BigInt]=new Iterator[BigInt]{
       def hasNext=true
       def next():BigInt={
@@ -4688,7 +4688,7 @@ object Pi {
           l = l + 2
           k = k + 1
           n  = nn
-          r  = nr			
+          r  = nr
         }
         val ret=n
         nr = 10*(r-n*t)
@@ -5363,7 +5363,7 @@ calcPi(process.stdout);
 2. Pi function receives any object that has a ''write'' function. Using node.js we can pass to it ''process.stdout''
 
 
-###  Async version 
+###  Async version
 
 
 
@@ -5496,7 +5496,7 @@ Don't forget to use the "'''Project'''" tab, "'''Add Reference...'''" for '''''S
 ```vbnet
 Imports System
 Imports System.Numerics
-				
+
 Public Module Module1
 	Public Sub Main()
         Dim two, three, four, seven, ten, k, q, t, l, n, r, nn, nr As BigInteger,
@@ -5568,7 +5568,7 @@ End Module
 
 {{out}}The First several thousand digits verified the same as the conventional spigot algorithm, haven't detected any differences yet.
 <pre style="height:30ex;overflow:scroll">Press a key to exit...
-3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273724587006606315588174881520920962829254091715364367892590360011330530548820466521384146951941511609433057270365759591953092186117381932611793105118548074462379962749567351885752724891227938183011949129833673362440656643086021394946395224737190702179860943702770539217176293176752384674818467669405132000568127145263560827785771342757789609173637178721468440901224953430146549585371050792279689258923542019956112129021960864034418159813629774771309960518707211349999998372978049951059731732816096318595024459455346908302642522308253344685035261931188171010003137838752886587533208381420617177669147303598253490428755468731159562863882353787593751957781857780532171226806613001927876611195909216420198938095257201065485863278865936153381827968230301952035301852968995773622599413891249721775283479131515574857242454150695950829533116861727855889075098381754637464939319255060400927701671139009848824012858361603563707660104710181942955596198946767837449448255379774726847104047534646208046684259069491293313677028989152104752162056966024058038150193511253382430035587640247496473263914199272604269922796782354781636009341721641219924586315030286182974555706749838505494588586926995690927210797509302955321165344987202755960236480665499119881834797753566369807426542527862551818417574672890977772793800081647060016145249192173217214772350141441973568548161361157352552133475741849468438523323907394143334547762416862518983569485562099219222184272550254256887671790494601653466804988627232791786085784383827967976681454100953883786360950680064225125205117392984896084128488626945604241965285022210661186306744278622039194945047123713786960956364371917287467764657573962413890865832645995813390478027590099465764078951269468398352595709825822620522489407726719478268482601476990902640136394437455305068203496252451749399651431429809190659250937221696461515709858387410597885959772975498930161753928468138268683868942774155991855925245953959431049972524680845987273644695848653836736222626099124608051243884390451244136549762780797715691435997700129616089441694868555848406353422072225828488648158456028506016842739452267467678895252138522549954666727823986456596116354886230577456498035593634568174324112515076069479451096596094025228879710893145669136867228748940560101503308617928680920874760917824938589009714909675985261365549781893129784821682998948722658804857564014270477555132379641451523746234364542858444795265867821051141354735739523113427166102135969536231442952484937187110145765403590279934403742007310578539062198387447808478489683321445713868751943506430218453191048481005370614680674919278191197939952061419663428754440643745123718192179998391015919561814675142691239748940907186494231961567945208095146550225231603881930142093762137855956638937787083039069792077346722182562599661501421503068038447734549202605414665925201497442850732518666002132434088190710486331734649651453905796268561005508106658796998163574736384052571459102897064140110971206280439039759515677157700420337869936007230558763176359421873125147120532928191826186125867321579198414848829164470609575270695722091756711672291098169091528017350671274858322287183520935396572512108357915136988209144421006751033467110314126711136990865851639831501970165151168517143765761835155650884909989859982387345528331635507647918535893226185489632132933089857064204675259070915481416549859461637180270981994309924488957571282890592323326097299712084433573265489382391193259746366730583604142813883032038249037589852437441702913276561809377344403070746921120191302033038019762110110044929321516084244485963766983895228684783123552658213144957685726243344189303968642624341077322697802807318915441101044682325271620105265227211166039666557309254711055785376346682065310989652691862056476931257058635662018558100729360659876486117910453348850346113657686753249441668039626579787718556084552965412665408530614344431858676975145661406800700237877659134401712749470420562230538994561314071127000407854733269939081454664645880797270826683063432858785698305235808933065757406795457163775254202114955761581400250126228594130216471550979259230990796547376125517656751357517829666454779174501129961489030463994713296210734043751895735961458901938971311179042978285647503203198691514028708085990480109412147221317947647772622414254854540332157185306142288137585043063321751829798662237172159160771669254748738986654949450114654062843366393790039769265672146385306736096571209180763832716641627488880078692560290228472104031721186082041900042296617119637792133757511495950156604963186294726547364252308177036751590673502350728354056704038674351362222477158915049530984448933309634087807693259939780541934144737744184263129860809988868741326047215695162396586457302163159819319516735 
+3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273724587006606315588174881520920962829254091715364367892590360011330530548820466521384146951941511609433057270365759591953092186117381932611793105118548074462379962749567351885752724891227938183011949129833673362440656643086021394946395224737190702179860943702770539217176293176752384674818467669405132000568127145263560827785771342757789609173637178721468440901224953430146549585371050792279689258923542019956112129021960864034418159813629774771309960518707211349999998372978049951059731732816096318595024459455346908302642522308253344685035261931188171010003137838752886587533208381420617177669147303598253490428755468731159562863882353787593751957781857780532171226806613001927876611195909216420198938095257201065485863278865936153381827968230301952035301852968995773622599413891249721775283479131515574857242454150695950829533116861727855889075098381754637464939319255060400927701671139009848824012858361603563707660104710181942955596198946767837449448255379774726847104047534646208046684259069491293313677028989152104752162056966024058038150193511253382430035587640247496473263914199272604269922796782354781636009341721641219924586315030286182974555706749838505494588586926995690927210797509302955321165344987202755960236480665499119881834797753566369807426542527862551818417574672890977772793800081647060016145249192173217214772350141441973568548161361157352552133475741849468438523323907394143334547762416862518983569485562099219222184272550254256887671790494601653466804988627232791786085784383827967976681454100953883786360950680064225125205117392984896084128488626945604241965285022210661186306744278622039194945047123713786960956364371917287467764657573962413890865832645995813390478027590099465764078951269468398352595709825822620522489407726719478268482601476990902640136394437455305068203496252451749399651431429809190659250937221696461515709858387410597885959772975498930161753928468138268683868942774155991855925245953959431049972524680845987273644695848653836736222626099124608051243884390451244136549762780797715691435997700129616089441694868555848406353422072225828488648158456028506016842739452267467678895252138522549954666727823986456596116354886230577456498035593634568174324112515076069479451096596094025228879710893145669136867228748940560101503308617928680920874760917824938589009714909675985261365549781893129784821682998948722658804857564014270477555132379641451523746234364542858444795265867821051141354735739523113427166102135969536231442952484937187110145765403590279934403742007310578539062198387447808478489683321445713868751943506430218453191048481005370614680674919278191197939952061419663428754440643745123718192179998391015919561814675142691239748940907186494231961567945208095146550225231603881930142093762137855956638937787083039069792077346722182562599661501421503068038447734549202605414665925201497442850732518666002132434088190710486331734649651453905796268561005508106658796998163574736384052571459102897064140110971206280439039759515677157700420337869936007230558763176359421873125147120532928191826186125867321579198414848829164470609575270695722091756711672291098169091528017350671274858322287183520935396572512108357915136988209144421006751033467110314126711136990865851639831501970165151168517143765761835155650884909989859982387345528331635507647918535893226185489632132933089857064204675259070915481416549859461637180270981994309924488957571282890592323326097299712084433573265489382391193259746366730583604142813883032038249037589852437441702913276561809377344403070746921120191302033038019762110110044929321516084244485963766983895228684783123552658213144957685726243344189303968642624341077322697802807318915441101044682325271620105265227211166039666557309254711055785376346682065310989652691862056476931257058635662018558100729360659876486117910453348850346113657686753249441668039626579787718556084552965412665408530614344431858676975145661406800700237877659134401712749470420562230538994561314071127000407854733269939081454664645880797270826683063432858785698305235808933065757406795457163775254202114955761581400250126228594130216471550979259230990796547376125517656751357517829666454779174501129961489030463994713296210734043751895735961458901938971311179042978285647503203198691514028708085990480109412147221317947647772622414254854540332157185306142288137585043063321751829798662237172159160771669254748738986654949450114654062843366393790039769265672146385306736096571209180763832716641627488880078692560290228472104031721186082041900042296617119637792133757511495950156604963186294726547364252308177036751590673502350728354056704038674351362222477158915049530984448933309634087807693259939780541934144737744184263129860809988868741326047215695162396586457302163159819319516735
 Produced 5038 digits in 0.3391 seconds.
 ```
 

@@ -14,19 +14,19 @@ tags = []
 {{wikipedia}}
 
 
-The   [[wp:International_Bank_Account_Number|International Bank Account Number (IBAN)]]   is an internationally agreed means of identifying bank accounts across national borders with a reduced risk of propagating [[wp:Transcription_error|transcription errors]]. 
+The   [[wp:International_Bank_Account_Number|International Bank Account Number (IBAN)]]   is an internationally agreed means of identifying bank accounts across national borders with a reduced risk of propagating [[wp:Transcription_error|transcription errors]].
 
-The IBAN consists of up to '''34''' alphanumeric characters: 
-::*   first the two-letter ISO 3166-1 alpha-2 country code, 
-::*   then two check digits, and 
-::*   finally a country-specific Basic Bank Account Number (BBAN). 
+The IBAN consists of up to '''34''' alphanumeric characters:
+::*   first the two-letter ISO 3166-1 alpha-2 country code,
+::*   then two check digits, and
+::*   finally a country-specific Basic Bank Account Number (BBAN).
 
 
 The check digits enable a sanity check of the bank account number to confirm its integrity even before submitting a transaction.
 
 
 ;Task:
-Validate the following fictitious IBAN:   <tt> GB82 WEST 1234 5698 7654 32 </tt>  
+Validate the following fictitious IBAN:   <tt> GB82 WEST 1234 5698 7654 32 </tt>
 
 
 Details of the algorithm can be found on the Wikipedia page.
@@ -50,22 +50,22 @@ with Ada.Containers.Hashed_Maps;
 with Ada.Strings.Hash;
 
 package body Iban_Code is
-   
+
    subtype Nation is String (1..2);
-   
+
    package String_Integer is new Ada.Containers.Hashed_Maps
      (Nation, Integer, Ada.Strings.Hash, Equivalent_Keys => "=");
-   
+
    Nations : String_Integer.Map;
-   
+
    function Is_Legal(Iban : String) return Boolean
    is
       Temp  : String(Iban'Range) := (others => ' ');
       Count : Integer;
       Ch    : Character;
-      Num   : Integer := 0;  
+      Num   : Integer := 0;
    begin
-      -- remove blank spaces and check characters 
+      -- remove blank spaces and check characters
       Count := Temp'First;
       for I in Iban'Range loop
 	 case Iban(I) is
@@ -80,7 +80,7 @@ package body Iban_Code is
 	 end case;
       end loop;
       -- check nation code and length
-      if not Nations.Contains (Temp(1..2)) or else 
+      if not Nations.Contains (Temp(1..2)) or else
 	Nations.Element (Temp(1..2))/= Count - 1 then
 	 return False;
       end if;
@@ -91,14 +91,14 @@ package body Iban_Code is
 	 Ch := Temp(I);
 	 if Ch in '0'..'9' then
 	    Num := Integer'Value(Integer'Image(Num) & Ch) mod 97;
-	 else 
-	    Num := (Num * 100 + 
+	 else
+	    Num := (Num * 100 +
 		      (Character'Pos(Ch) - Character'Pos('A') + 10)) mod 97;
 	 end if;
       end loop;
       return Num = 1;
    end Is_Legal;
-   
+
 begin
    Nations.insert("AL", 28);     Nations.insert("AD", 24);
    Nations.insert("AT", 20);     Nations.insert("AZ", 28);
@@ -141,8 +141,8 @@ with Ada.Text_Io;             use Ada.Text_Io;
 with Iban_Code;
 
 procedure Check_Iban is
-    
-   procedure Check(Iban : String) is   
+
+   procedure Check(Iban : String) is
    begin
       if Iban_Code.Is_Legal(Iban) then
 	 Put_Line(Iban & " is valid.");
@@ -150,7 +150,7 @@ procedure Check_Iban is
 	 Put_Line(Iban & " is not valid.");
       end if;
    end Check;
-   
+
 begin
    Check("GB82 WEST 1234 5698 7654 32");
    Check("GB82WEST12345698765432");
@@ -182,7 +182,7 @@ CountryIbanSizes #{
     MU 30, MC 27, MD 24, ME 22, NL 18, NO 15, PK 24
     PS 29, PL 28, PT 25, RO 24, SM 27, SA 24, RS 22
     SK 24, SI 19, ES 24, SE 24, CH 21, TN 24, TR 26
-    AE 23, GB 22, VG 24 
+    AE 23, GB 22, VG 24
 }
 
 Base36 $(map $(range 0 9) { toString & }) + $(map $(range 97 122) { uppercase|char & })
@@ -277,7 +277,7 @@ Mod97(a) {
 
 
 ## AWK
- 
+
 {{works with|gawk}}
 
 This requires a gawk with extensions and GNU MP+MPFR support - it's usually the case. Some country codes are missing, the output is itself parsable.
@@ -291,48 +291,48 @@ function invalid()  { print("INVALID " $0); next }
 function valid()    { print("VALID__ " $0) }
 
 BEGIN {
-    ccibanlen["AL"] = 28; ccibanlen["AD"] = 24; ccibanlen["AT"] = 20; 
-    ccibanlen["AZ"] = 28; ccibanlen["BH"] = 22; ccibanlen["BA"] = 20; 
-    ccibanlen["BR"] = 29; ccibanlen["BG"] = 22; ccibanlen["CR"] = 21; 
-    ccibanlen["HR"] = 21; ccibanlen["CY"] = 28; ccibanlen["CZ"] = 24; 
-    ccibanlen["DK"] = 18; ccibanlen["DO"] = 28; ccibanlen["EE"] = 20; 
-    ccibanlen["FO"] = 18; ccibanlen["FI"] = 18; ccibanlen["FR"] = 27; 
-    ccibanlen["GE"] = 22; ccibanlen["DE"] = 22; ccibanlen["GI"] = 23; 
-    ccibanlen["GR"] = 27; ccibanlen["GL"] = 18; ccibanlen["GT"] = 28; 
-    ccibanlen["HU"] = 28; ccibanlen["IS"] = 26; ccibanlen["IE"] = 22; 
-    ccibanlen["IT"] = 27; ccibanlen["KZ"] = 20; ccibanlen["KW"] = 30; 
-    ccibanlen["LV"] = 21; ccibanlen["LB"] = 28; ccibanlen["LI"] = 21; 
-    ccibanlen["LT"] = 20; ccibanlen["LU"] = 20; ccibanlen["MK"] = 19; 
-    ccibanlen["MT"] = 31; ccibanlen["MR"] = 27; ccibanlen["MU"] = 30; 
-    ccibanlen["MC"] = 27; ccibanlen["MD"] = 24; ccibanlen["ME"] = 22; 
-    ccibanlen["NL"] = 18; ccibanlen["NO"] = 15; ccibanlen["PK"] = 24; 
-    ccibanlen["PS"] = 29; ccibanlen["PL"] = 28; ccibanlen["PT"] = 25; 
-    ccibanlen["RO"] = 24; ccibanlen["SM"] = 27; ccibanlen["SA"] = 24; 
-    ccibanlen["RS"] = 22; ccibanlen["SK"] = 24; ccibanlen["SI"] = 19; 
-    ccibanlen["ES"] = 24; ccibanlen["SE"] = 24; ccibanlen["CH"] = 21; 
-    ccibanlen["TN"] = 24; ccibanlen["TR"] = 26; ccibanlen["AE"] = 23; 
-    ccibanlen["GB"] = 22; ccibanlen["VG"] = 24; ccibanlen["BE"] = 16;  
+    ccibanlen["AL"] = 28; ccibanlen["AD"] = 24; ccibanlen["AT"] = 20;
+    ccibanlen["AZ"] = 28; ccibanlen["BH"] = 22; ccibanlen["BA"] = 20;
+    ccibanlen["BR"] = 29; ccibanlen["BG"] = 22; ccibanlen["CR"] = 21;
+    ccibanlen["HR"] = 21; ccibanlen["CY"] = 28; ccibanlen["CZ"] = 24;
+    ccibanlen["DK"] = 18; ccibanlen["DO"] = 28; ccibanlen["EE"] = 20;
+    ccibanlen["FO"] = 18; ccibanlen["FI"] = 18; ccibanlen["FR"] = 27;
+    ccibanlen["GE"] = 22; ccibanlen["DE"] = 22; ccibanlen["GI"] = 23;
+    ccibanlen["GR"] = 27; ccibanlen["GL"] = 18; ccibanlen["GT"] = 28;
+    ccibanlen["HU"] = 28; ccibanlen["IS"] = 26; ccibanlen["IE"] = 22;
+    ccibanlen["IT"] = 27; ccibanlen["KZ"] = 20; ccibanlen["KW"] = 30;
+    ccibanlen["LV"] = 21; ccibanlen["LB"] = 28; ccibanlen["LI"] = 21;
+    ccibanlen["LT"] = 20; ccibanlen["LU"] = 20; ccibanlen["MK"] = 19;
+    ccibanlen["MT"] = 31; ccibanlen["MR"] = 27; ccibanlen["MU"] = 30;
+    ccibanlen["MC"] = 27; ccibanlen["MD"] = 24; ccibanlen["ME"] = 22;
+    ccibanlen["NL"] = 18; ccibanlen["NO"] = 15; ccibanlen["PK"] = 24;
+    ccibanlen["PS"] = 29; ccibanlen["PL"] = 28; ccibanlen["PT"] = 25;
+    ccibanlen["RO"] = 24; ccibanlen["SM"] = 27; ccibanlen["SA"] = 24;
+    ccibanlen["RS"] = 22; ccibanlen["SK"] = 24; ccibanlen["SI"] = 19;
+    ccibanlen["ES"] = 24; ccibanlen["SE"] = 24; ccibanlen["CH"] = 21;
+    ccibanlen["TN"] = 24; ccibanlen["TR"] = 26; ccibanlen["AE"] = 23;
+    ccibanlen["GB"] = 22; ccibanlen["VG"] = 24; ccibanlen["BE"] = 16;
 }
 
 {
     iban = toupper($0)
     gsub(/\s+/, "", iban)
     ccode = substr(iban, 1, 2)
-    
-    if (    ! match(iban, /^[A-Z0-9]+$/) ||     
-            ! (ccode in ccibanlen) ||           
-            length(iban) != ccibanlen[ccode])   
+
+    if (    ! match(iban, /^[A-Z0-9]+$/) ||
+            ! (ccode in ccibanlen) ||
+            length(iban) != ccibanlen[ccode])
         invalid()
-    
+
     ibanrev = gensub(/^(.{4})(.+)/, "\\2\\1", 1, iban)
     ibancsum = ""
     for (i = 1; i <= length(ibanrev); i++) {
         currchar = substr(ibanrev, i, 1)
-        if (match(currchar, /[A-Z]/)) 
+        if (match(currchar, /[A-Z]/))
             currchar = ord(currchar) - 55
         ibancsum = ibancsum currchar
     }
-    
+
     ibancsum % 97 == 1 ? valid() : invalid()
 }
 ```
@@ -342,7 +342,7 @@ Creating a test file and launching the script:
 cat > test.iban
 FR33 ^__^ 0BAD
 AA11 1234 6543 1212
-FR33 1234 5432 
+FR33 1234 5432
 CH93 0076 2011      6238 5295 7
 GB82 WEST 1234 5698 7654 32
 GB82 TEST 1234 5698 7654 32
@@ -352,12 +352,12 @@ gawk -Mf iban.gawk test.iban
 ```
 
 
-Output: 
+Output:
 
 <lang>
 INVALID FR33 ^__^ 0BAD
 INVALID AA11 1234 6543 1212
-INVALID FR33 1234 5432 
+INVALID FR33 1234 5432
 VALID__ CH93 0076 2011      6238 5295 7
 VALID__ GB82 WEST 1234 5698 7654 32
 INVALID GB82 TEST 1234 5698 7654 32
@@ -414,7 +414,7 @@ INVALID GB82 TEST 1234 5698 7654 32
         NEXT
         REM Compare length with expected length
         match%=explen%=LENdigiban$
-  
+
         REM Continue if length is correct
         IF match% THEN
           REM Create temporary string with country code appended
@@ -429,12 +429,12 @@ INVALID GB82 TEST 1234 5698 7654 32
           kk%=98-FNmod97(bignum$+"00")
           REM Compare with control number in IBAN
           match%=VALMID$(iban$,3,2)=kk%
-    
+
           REM Continue if control number matches
           IF match% THEN
             REM Append kk% to bignum$ and determine if MOD 97 results in 1
             match%=FNmod97(bignum$+RIGHT$("0"+STR$kk%,2))=1
-      
+
             REM Continue if MOD 97
             IF match% THEN
               REM Was last test
@@ -478,7 +478,7 @@ INVALID GB82 TEST 1234 5698 7654 32
  invalid IBAN: IL62-0108-0000-0009-9999-999        ***error!*** invalid code length, expected length: 23
  invalid IBAN: US12 3456 7890 0987 6543 210        ***error!*** invalid country code: US
  invalid IBAN: GR16 0110 1250 0000 0001 2300 695X  ***error!*** invalid code length, expected length: 27
- 
+
 
 ## Befunge
 
@@ -540,7 +540,7 @@ That number is invalid.
                        & asc$!c+-1*asc$A+10:?c
                        & 1+!len:?len
                      | !c:" "&:?c
-                     | 
+                     |
                      )
                    & !N !c:?N
                    & ~
@@ -691,8 +691,8 @@ int main(int _, char **argv)
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 #include <boost/algorithm/string.hpp>
 #include <map>
@@ -700,32 +700,32 @@ int main(int _, char **argv)
 #include <cctype>
 using namespace boost::algorithm ;
 
-bool isValid ( const std::string &ibanstring ) 
+bool isValid ( const std::string &ibanstring )
 {
-   static std::map<std::string, int> countrycodes 
+   static std::map<std::string, int> countrycodes
                            { {"AL" , 28} , {"AD" , 24} , {"AT" , 20} , {"AZ" , 28 } ,
 			   {"BE" , 16} , {"BH" , 22} , {"BA" , 20} , {"BR" , 29 } ,
 			   {"BG" , 22} , {"CR" , 21} , {"HR" , 21} , {"CY" , 28 } ,
 			   {"CZ" , 24} , {"DK" , 18} , {"DO" , 28} , {"EE" , 20 } ,
 			   {"FO" , 18} , {"FI" , 18} , {"FR" , 27} , {"GE" , 22 } ,
                            {"DE" , 22} , {"GI" , 23} , {"GR" , 27} , {"GL" , 18 } ,
-                           {"GT" , 28} , {"HU" , 28} , {"IS" , 26} , {"IE" , 22 } , 
+                           {"GT" , 28} , {"HU" , 28} , {"IS" , 26} , {"IE" , 22 } ,
 			   {"IL" , 23} , {"IT" , 27} , {"KZ" , 20} , {"KW" , 30 } ,
-			   {"LV" , 21} , {"LB" , 28} , {"LI" , 21} , {"LT" , 20 } , 
-			   {"LU" , 20} , {"MK" , 19} , {"MT" , 31} , {"MR" , 27 } , 
-			   {"MU" , 30} , {"MC" , 27} , {"MD" , 24} , {"ME" , 22 } , 
-			   {"NL" , 18} , {"NO" , 15} , {"PK" , 24} , {"PS" , 29 } , 
-			   {"PL" , 28} , {"PT" , 25} , {"RO" , 24} , {"SM" , 27 } , 
-			   {"SA" , 24} , {"RS" , 22} , {"SK" , 24} , {"SI" , 19 } , 
+			   {"LV" , 21} , {"LB" , 28} , {"LI" , 21} , {"LT" , 20 } ,
+			   {"LU" , 20} , {"MK" , 19} , {"MT" , 31} , {"MR" , 27 } ,
+			   {"MU" , 30} , {"MC" , 27} , {"MD" , 24} , {"ME" , 22 } ,
+			   {"NL" , 18} , {"NO" , 15} , {"PK" , 24} , {"PS" , 29 } ,
+			   {"PL" , 28} , {"PT" , 25} , {"RO" , 24} , {"SM" , 27 } ,
+			   {"SA" , 24} , {"RS" , 22} , {"SK" , 24} , {"SI" , 19 } ,
 			   {"ES" , 24} , {"SE" , 24} , {"CH" , 21} , {"TN" , 24 } ,
 			   {"TR" , 26} , {"AE" , 23} , {"GB" , 22} , {"VG" , 24 } } ;
    std::string teststring( ibanstring ) ;
    erase_all( teststring , " " ) ; //defined in boost/algorithm/string.hpp
-   if ( countrycodes.find( teststring.substr(0 , 2 )) == countrycodes.end( ) ) 
+   if ( countrycodes.find( teststring.substr(0 , 2 )) == countrycodes.end( ) )
       return false ;
-   if ( teststring.length( ) != countrycodes[ teststring.substr( 0 , 2 ) ] ) 
+   if ( teststring.length( ) != countrycodes[ teststring.substr( 0 , 2 ) ] )
       return false ;
-   if (!all(teststring, is_alnum())) 
+   if (!all(teststring, is_alnum()))
       return false ;
    to_upper( teststring ) ;
    std::rotate(teststring.begin(), teststring.begin() + 4, teststring.end());
@@ -733,9 +733,9 @@ bool isValid ( const std::string &ibanstring )
    std::string numberstring ;//will contain the letter substitutions
    for (const auto& c : teststring)
    {
-      if (std::isdigit(c)) 
+      if (std::isdigit(c))
 	 numberstring += c  ;
-      if (std::isupper(c)) 
+      if (std::isupper(c))
 	 numberstring += std::to_string(static_cast<int>(c) - 55);
    }
    //implements a stepwise check for mod 97 in chunks of 9 at the first time
@@ -749,7 +749,7 @@ bool isValid ( const std::string &ibanstring )
       number = std::stol( prepended + numberstring.substr( segstart , step ) ) ;
       int remainder = number % 97 ;
       prepended =  std::to_string( remainder ) ;
-      if ( remainder < 10 ) 
+      if ( remainder < 10 )
 	 prepended = "0" + prepended ;
       segstart = segstart + step ;
       step = 7 ;
@@ -763,7 +763,7 @@ void SayValidity(const std::string& iban)
     std::cout << iban << (isValid(iban) ? " is " : " is not ") << "valid\n";
 }
 
-int main( ) 
+int main( )
 {
    SayValidity("GB82 WEST 1234 5698 7654 32");
    SayValidity("GB82TEST12345698765432");
@@ -1019,10 +1019,10 @@ ClassMethod VerifyIBAN(pIBAN As %String = "") As %Boolean
 	Set cc=$Extract(iban, 1, 2)
 	Set cd=$Extract(iban, 3, 4)
 	Set bban=$Extract(iban, 5, *)
-	
+
 	// ensure IBAN is correct format
 	If $Match(iban, ..GetIBANPattern(cc))=0 Quit 0
-	
+
 	// compare result and return
 	Quit cd=..GetIBANCheckDigit(cc, bban)
 }
@@ -1048,61 +1048,61 @@ ClassMethod GetModulus(pNum As %Integer, pDiv As %Integer) As %Integer [ Interna
 
 ClassMethod GetIBANPattern(pCC As %String = "") As %String [ Internal, Private ]
 {
-	Quit $Case(pCC, 
-		"AL": "^AL\d{10}[0-9A-Z]{16}$", 
-		"AD": "^AD\d{10}[0-9A-Z]{12}$", 
-		"AT": "^AT\d{18}$", 
-		"BH": "^BH\d{2}[A-Z]{4}[0-9A-Z]{14}$", 
-		"BE": "^BE\d{14}$", 
-		"BA": "^BA\d{18}$", 
-		"BG": "^BG\d{2}[A-Z]{4}\d{6}[0-9A-Z]{8}$", 
-		"HR": "^HR\d{19}$", 
-		"CY": "^CY\d{10}[0-9A-Z]{16}$", 
-		"CZ": "^CZ\d{22}$", 
-		"DK": "^DK\d{16}$|^FO\d{16}$|^GL\d{16}$", 
-		"DO": "^DO\d{2}[0-9A-Z]{4}\d{20}$", 
-		"EE": "^EE\d{18}$", 
-		"FI": "^FI\d{16}$", 
-		"FR": "^FR\d{12}[0-9A-Z]{11}\d{2}$", 
-		"GE": "^GE\d{2}[A-Z]{2}\d{16}$", 
-		"DE": "^DE\d{20}$", 
-		"GI": "^GI\d{2}[A-Z]{4}[0-9A-Z]{15}$", 
-		"GR": "^GR\d{9}[0-9A-Z]{16}$", 
-		"HU": "^HU\d{26}$", 
-		"IS": "^IS\d{24}$", 
-		"IE": "^IE\d{2}[A-Z]{4}\d{14}$", 
-		"IL": "^IL\d{21}$", 
-		"IT": "^IT\d{2}[A-Z]\d{10}[0-9A-Z]{12}$", 
-		"KZ": "^[A-Z]{2}\d{5}[0-9A-Z]{13}$", 
-		"KW": "^KW\d{2}[A-Z]{4}22!$", 
-		"LV": "^LV\d{2}[A-Z]{4}[0-9A-Z]{13}$", 
-		"LB": "^LB\d{6}[0-9A-Z]{20}$", 
-		"LI": "^LI\d{7}[0-9A-Z]{12}$", 
-		"LT": "^LT\d{18}$", 
-		"LU": "^LU\d{5}[0-9A-Z]{13}$", 
-		"MK": "^MK\d{5}[0-9A-Z]{10}\d{2}$", 
-		"MT": "^MT\d{2}[A-Z]{4}\d{5}[0-9A-Z]{18}$", 
-		"MR": "^MR13\d{23}$", 
-		"MU": "^MU\d{2}[A-Z]{4}\d{19}[A-Z]{3}$", 
-		"MC": "^MC\d{12}[0-9A-Z]{11}\d{2}$", 
-		"ME": "^ME\d{20}$", 
-		"NL": "^NL\d{2}[A-Z]{4}\d{10}$", 
-		"NO": "^NO\d{13}$", 
-		"PL": "^PL\d{10}[0-9A-Z]{,16}n$", 
-		"PT": "^PT\d{23}$", 
-		"RO": "^RO\d{2}[A-Z]{4}[0-9A-Z]{16}$", 
-		"SM": "^SM\d{2}[A-Z]\d{10}[0-9A-Z]{12}$", 
-		"SA": "^SA\d{4}[0-9A-Z]{18}$", 
-		"RS": "^RS\d{20}$", 
-		"SK": "^SK\d{22}$", 
-		"SI": "^SI\d{17}$", 
-		"ES": "^ES\d{22}$", 
-		"SE": "^SE\d{22}$", 
-		"CH": "^CH\d{7}[0-9A-Z]{12}$", 
-		"TN": "^TN59\d{20}$", 
-		"TR": "^TR\d{7}[0-9A-Z]{17}$", 
-		"AE": "^AE\d{21}$", 
-		"GB": "^GB\d{2}[A-Z]{4}\d{14}$", 
+	Quit $Case(pCC,
+		"AL": "^AL\d{10}[0-9A-Z]{16}$",
+		"AD": "^AD\d{10}[0-9A-Z]{12}$",
+		"AT": "^AT\d{18}$",
+		"BH": "^BH\d{2}[A-Z]{4}[0-9A-Z]{14}$",
+		"BE": "^BE\d{14}$",
+		"BA": "^BA\d{18}$",
+		"BG": "^BG\d{2}[A-Z]{4}\d{6}[0-9A-Z]{8}$",
+		"HR": "^HR\d{19}$",
+		"CY": "^CY\d{10}[0-9A-Z]{16}$",
+		"CZ": "^CZ\d{22}$",
+		"DK": "^DK\d{16}$|^FO\d{16}$|^GL\d{16}$",
+		"DO": "^DO\d{2}[0-9A-Z]{4}\d{20}$",
+		"EE": "^EE\d{18}$",
+		"FI": "^FI\d{16}$",
+		"FR": "^FR\d{12}[0-9A-Z]{11}\d{2}$",
+		"GE": "^GE\d{2}[A-Z]{2}\d{16}$",
+		"DE": "^DE\d{20}$",
+		"GI": "^GI\d{2}[A-Z]{4}[0-9A-Z]{15}$",
+		"GR": "^GR\d{9}[0-9A-Z]{16}$",
+		"HU": "^HU\d{26}$",
+		"IS": "^IS\d{24}$",
+		"IE": "^IE\d{2}[A-Z]{4}\d{14}$",
+		"IL": "^IL\d{21}$",
+		"IT": "^IT\d{2}[A-Z]\d{10}[0-9A-Z]{12}$",
+		"KZ": "^[A-Z]{2}\d{5}[0-9A-Z]{13}$",
+		"KW": "^KW\d{2}[A-Z]{4}22!$",
+		"LV": "^LV\d{2}[A-Z]{4}[0-9A-Z]{13}$",
+		"LB": "^LB\d{6}[0-9A-Z]{20}$",
+		"LI": "^LI\d{7}[0-9A-Z]{12}$",
+		"LT": "^LT\d{18}$",
+		"LU": "^LU\d{5}[0-9A-Z]{13}$",
+		"MK": "^MK\d{5}[0-9A-Z]{10}\d{2}$",
+		"MT": "^MT\d{2}[A-Z]{4}\d{5}[0-9A-Z]{18}$",
+		"MR": "^MR13\d{23}$",
+		"MU": "^MU\d{2}[A-Z]{4}\d{19}[A-Z]{3}$",
+		"MC": "^MC\d{12}[0-9A-Z]{11}\d{2}$",
+		"ME": "^ME\d{20}$",
+		"NL": "^NL\d{2}[A-Z]{4}\d{10}$",
+		"NO": "^NO\d{13}$",
+		"PL": "^PL\d{10}[0-9A-Z]{,16}n$",
+		"PT": "^PT\d{23}$",
+		"RO": "^RO\d{2}[A-Z]{4}[0-9A-Z]{16}$",
+		"SM": "^SM\d{2}[A-Z]\d{10}[0-9A-Z]{12}$",
+		"SA": "^SA\d{4}[0-9A-Z]{18}$",
+		"RS": "^RS\d{20}$",
+		"SK": "^SK\d{22}$",
+		"SI": "^SI\d{17}$",
+		"ES": "^ES\d{22}$",
+		"SE": "^SE\d{22}$",
+		"CH": "^CH\d{7}[0-9A-Z]{12}$",
+		"TN": "^TN59\d{20}$",
+		"TR": "^TR\d{7}[0-9A-Z]{17}$",
+		"AE": "^AE\d{21}$",
+		"GB": "^GB\d{2}[A-Z]{4}\d{14}$",
 		: " ")
 }
 
@@ -1267,7 +1267,7 @@ USER>
                EVALUATE TRUE
                    WHEN str (i:1) = SPACE
                        ADD 1 TO offset
-               
+
                    WHEN offset NOT = ZERO
                        MOVE str (i:1) TO str (i - offset:1)
                END-EVALUATE
@@ -1285,7 +1285,7 @@ USER>
        01  first-four              PIC X(4).
 
        01  iban-num                PIC X(50).
-       01  digit-num               PIC 99 VALUE 1.       
+       01  digit-num               PIC 99 VALUE 1.
 
        01  i                       PIC 99.
 
@@ -1319,7 +1319,7 @@ USER>
 
            MOVE iban-num TO iban
            .
-           
+
        END PROGRAM create-iban-number.
 
        END PROGRAM validate-iban.
@@ -1343,8 +1343,8 @@ GB82 TEST 1234 5698 7654 32 is not valid.
 ;;
 ;; List of the IBAN code lengths per country.
 ;;
-(defvar *IBAN-code-length* '((15 . ("NO")) 
-                             (16 . ("BE")) 
+(defvar *IBAN-code-length* '((15 . ("NO"))
+                             (16 . ("BE"))
                              (18 . ("DK" "FO" "FI" "GL" "NL"))
                              (19 . ("MK" "SI"))
                              (20 . ("AT" "BA" "EE" "KZ" "LT" "LU"))
@@ -1389,7 +1389,7 @@ GB82 TEST 1234 5698 7654 32 is not valid.
 ;;
 (defun IBAN-to-integer (iban)
   (let ((character-base (- (char-code #\A) 10)))
-    (parse-integer 
+    (parse-integer
       (format nil "~{~a~}" (map 'list #'(lambda(X) (if (alpha-char-p X) (- (char-code X) character-base) X ))
                                       (concatenate 'string (subseq iban 4) (subseq iban 0 4)))))))
 ;;
@@ -1485,7 +1485,7 @@ defmodule IBAN do
           MU: 30, MC: 27, MD: 24, ME: 22, NL: 18, NO: 15, PK: 24, PS: 29,
           PL: 28, PT: 25, RO: 24, SM: 27, SA: 24, RS: 22, SK: 24, SI: 19,
           ES: 24, SE: 24, CH: 21, TN: 24, TR: 26, AE: 23, GB: 22, VG: 24 }
-  
+
   def valid?(iban) do
     iban = String.replace(iban, ~r/\s/, "")
     if Regex.match?(~r/^[\dA-Z]+$/, iban) do
@@ -1571,7 +1571,7 @@ let main argv =
             let replaceBase36LetterWithBase10String (s : string) (c :char) = s.Replace(c.ToString(), ((int)c - (int)'A' + 10).ToString())
             Some(List.fold replaceBase36LetterWithBase10String iban [ 'A' .. 'Z' ]))
     |~> (fun iban ->    // iban mod 97
-            // We could have used BigInteger, but with a loop by 7 char each 
+            // We could have used BigInteger, but with a loop by 7 char each
             // over the long digit string we get away with Int32 arithmetic
             // (as described in the Wikipedia article)
             let reduceOnce r n = Int32.Parse(r.ToString() + n) % 97
@@ -1588,7 +1588,7 @@ let main argv =
 {{out}}
  >Rosetta.exe "GB82 WEST 1234 5698 7654 32"
  GB82 WEST 1234 5698 7654 32 is a valid IBAN
- 
+
  >Rosetta.exe "GB82 TEST 1234 5698 7654 32"
  GB82 TEST 1234 5698 7654 32 is an invalid IBAN
 
@@ -1738,7 +1738,7 @@ program ibancheck
             "TN24","TR26","UA29","VG24","XK20" /)
 
     character(34), dimension(12) :: ibans = (/ "GB82 WEST 1234 5698 7654 32       ", &
-                                               "GB82WEST12345698765432            ", & 
+                                               "GB82WEST12345698765432            ", &
                                                "gb82 west 1234 5698 7654 32       ", &
                                                "GB82 TEST 1234 5698 7654 32       ", &
                                                "GR16 0110 1250 0000 0001 2300 695 ", &
@@ -1751,7 +1751,7 @@ program ibancheck
                                                "GR16 0110 1250 0000 0001 2300 695X" /)
 
     integer :: i
-    
+
     do i=1, size(ibans)
         if (checkIBAN(trim(ibans(i)))) then
             print *, "  valid IBAN: ", trim(ibans(i))
@@ -1761,14 +1761,14 @@ program ibancheck
     end do
 
     return
- 
+
 contains
 
     function checkIBAN(ibancode) result(valid)
         character(len=*), intent(in) :: ibancode
         character(len=len(ibancode)) :: iban
         logical :: valid
-        integer(int32) :: j, ascii, ibanSize 
+        integer(int32) :: j, ascii, ibanSize
         character(100) :: ibanRearrange, ibantoint
         character(2) :: temp
         valid = .false.
@@ -1785,14 +1785,14 @@ contains
                     ibantoint = trim(ibantoint) // temp
                 else
                     ibantoint = trim(ibantoint) // ibanRearrange(j:j)
-                end if 
+                end if
             end do
             if (mod97(ibantoint) == 1) then
                 valid = .true.
             end if
         end if
     end function checkIBAN
-    
+
     function mod97(strint) result(res)
         character(len=*), intent(in) :: strint
         integer :: i, num, res
@@ -1814,7 +1814,7 @@ contains
             end if
         end do
     end function checkCountryCode
- 
+
     Recursive Function Stripper(string,ch) Result(stripped)
         Implicit None
         character(len=*), intent(in) :: string
@@ -1822,7 +1822,7 @@ contains
         character(:), allocatable :: stripped
 
         IF (LEN(string)==1) THEN
-           IF (string==ch) THEN 
+           IF (string==ch) THEN
               stripped = ''
            ELSE
               stripped = string
@@ -1886,15 +1886,15 @@ countryCodes = _
     "SI19 SK24 SM27 ST25 SV28 TL23 TN24 TR26 UA29 VG24 XK20"
 
 Function checkCountryCode(cc As String) As Boolean
-  Return Instr(countryCodes, cc) 
+  Return Instr(countryCodes, cc)
 End Function
 
 ' To avoid having to use the GMP library, a piece-wise calculation is used
-Function mod97(s As String) As UInteger 
+Function mod97(s As String) As UInteger
   Dim r As UInteger = ValULng(Left(s, 9)) Mod 97
-  Dim start As UInteger = 10 
+  Dim start As UInteger = 10
   While start < Len(s)
-    r = ValULng(r & Mid(s, start, 7)) Mod 97 
+    r = ValULng(r & Mid(s, start, 7)) Mod 97
     start += 7
   Wend
   Return r
@@ -1907,7 +1907,7 @@ Function validateIban(iban As Const String) As Boolean
   For i As Integer = 0 To Len(s) - 1
     If s[i] = 32 Then
       For j As Integer = i + 1 To Len(s) - 1
-         s[j - 1] = s[j] 
+         s[j - 1] = s[j]
       Next
       count += 1
     End If
@@ -1923,16 +1923,16 @@ Function validateIban(iban As Const String) As Boolean
   Dim isValid As Boolean = checkCountryCode(Left(s, 2) + Str(Len(s)))
   If Not isValid Then Return False
 
-  ' move first 4 characters to end 
+  ' move first 4 characters to end
   s = Mid(s, 5) + Left(s, 4)
 
   ' replace A to Z with numbers 10 To 35
   For i As Integer = Len(s) To 1 Step -1
     If s[i - 1] >= 65 AndAlso s[i - 1] <= 90 Then
-      s = Left(s, i - 1) + Str(s[i - 1] - 55) + Mid(s, i + 1) 
+      s = Left(s, i - 1) + Str(s[i - 1] - 55) + Mid(s, i + 1)
     End If
   Next
-  
+
   ' do mod97 calculation
   Return mod97(s) = 1  '' remainder needs to be 1 for validity
 End Function
@@ -1975,7 +1975,7 @@ import (
 	"math/big"
 )
 
-var lCode = map[string]int { 
+var lCode = map[string]int {
 	"AL": 28, "AD": 24, "AT": 20, "AZ": 28, "BE": 16, "BH": 22, "BA": 20, "BR": 29,
   	"BG": 22, "CR": 21, "HR": 21, "CY": 28, "CZ": 24, "DK": 18, "DO": 28, "EE": 20,
   	"FO": 18, "FI": 18, "FR": 27, "GE": 22, "DE": 22, "GI": 23, "GR": 27, "GL": 18,
@@ -1995,21 +1995,21 @@ var sCode = map[string]int {
 }
 
 func main() {
-	
-	var iban string 
+
+	var iban string
 	var r, s, t, st []string
 	u := new(big.Int)
 	v := new(big.Int)
 	w := new(big.Int)
-	
+
 	iban = "GB82 TEST 1234 5698 7654 32"
 	r = strings.Split(iban, " ")
 	s = strings.Split(r[0], "")
 	t = strings.Split(r[1], "")
-	
-	st = []string{ strconv.Itoa(sCode[t[0]]), 
-					strconv.Itoa(sCode[t[1]]), 
-					strconv.Itoa(sCode[t[2]]), 
+
+	st = []string{ strconv.Itoa(sCode[t[0]]),
+					strconv.Itoa(sCode[t[1]]),
+					strconv.Itoa(sCode[t[2]]),
 					strconv.Itoa(sCode[t[3]]),
 					strings.Join(r[2:6], ""),
 					strconv.Itoa(sCode[s[0]]),
@@ -2020,7 +2020,7 @@ func main() {
 	u.SetString(strings.Join(st, ""), 10)
 	v.SetInt64(97)
 	w.Mod(u, v)
-	
+
 	if w.Uint64() == 1 && lCode[strings.Join(s[0:2], "")] == len(strings.Join(r, "")) {
 		fmt.Printf("IBAN %s looks good!\n", iban)
 	} else {
@@ -2091,7 +2091,7 @@ CH93 0076 2011 6238 5295 7 is valid
 
 ## Haskell
 
-This program uses the Maybe and Either monads to handle failures. Values of type 'Maybe a' can contain 'Nothing' (no value) or 'Just a' (a value of type 'a'). Values of type 'Either a b' contain 'Left b' (usually indicating failure) or 'Right c' (usually indicating success). 
+This program uses the Maybe and Either monads to handle failures. Values of type 'Maybe a' can contain 'Nothing' (no value) or 'Just a' (a value of type 'a'). Values of type 'Either a b' contain 'Left b' (usually indicating failure) or 'Right c' (usually indicating success).
 
 ```Haskell
 import Data.Char (toUpper)
@@ -2179,23 +2179,23 @@ Left "Invalid IBAN number GB82 _EST 1234 5698 7654 32: Number contains illegal d
 120 NUMERIC LG(1 TO 93)
 130 FOR I=1 TO 93
 140   READ CO$(I),LG(I)
-150 NEXT 
-160 DO 
+150 NEXT
+160 DO
 170   PRINT :PRINT "IBAN code: ":INPUT PROMPT ">":IB$
 180   IF IB$="" THEN EXIT DO
 190   IF IBAN(IB$) THEN
 200     PRINT "CRC ok."
-210   ELSE 
+210   ELSE
 220     SET #102:INK 3:PRINT "CRC error.":SET #102:INK 1
-230   END IF 
-240 LOOP 
+230   END IF
+240 LOOP
 250 DEF TRIM$(S$)
 260   LET T$=""
 270   FOR I=1 TO LEN(S$)
 280     IF S$(I)>CHR$(47) AND S$(I)<CHR$(91) THEN LET T$=T$&S$(I)
-290   NEXT 
+290   NEXT
 300   LET TRIM$=T$
-310 END DEF 
+310 END DEF
 320 DEF IBAN(IB$)
 330   LET IB$=TRIM$(UCASE$(IB$)):LET T$="":LET M,IBAN=0:LET N=FIND(IB$(1:2))
 340   IF N=0 THEN PRINT "Invalid country code.":EXIT DEF
@@ -2205,30 +2205,30 @@ Left "Invalid IBAN number GB82 _EST 1234 5698 7654 32: Number contains illegal d
 380   FOR I=1 TO LEN(IB$)
 390     LET T$=STR$(M)&IB$(I)
 400     LET M=MOD(VAL(T$),97)
-410   NEXT 
+410   NEXT
 420   IF M=1 THEN LET IBAN=-1
-430 END DEF 
+430 END DEF
 440 DEF FIND(S$)
 450   LET FIND=0
 460   LET BO=LBOUND(CO$):LET UP=UBOUND(CO$)
-470   DO 
+470   DO
 480     LET K=INT((BO+UP)/2)
 490     IF CO$(K)<S$ THEN LET BO=K+1
 500     IF CO$(K)>S$ THEN LET UP=K-1
 510   LOOP WHILE BO<=UP AND CO$(K)<>S$
 520   IF BO<=UP THEN LET FIND=K
-530 END DEF 
+530 END DEF
 540 DEF CONVERT(REF S$)
 550   LET T$=""
 560   FOR I=1 TO LEN(S$)
 570     IF S$(I)>CHR$(64) AND S$(I)<CHR$(91) THEN
 580       LET T$=T$&STR$(ORD(S$(I))-55)
-590     ELSE 
+590     ELSE
 600       LET T$=T$&S$(I)
-610     END IF 
-620   NEXT 
+610     END IF
+620   NEXT
 630   LET S$=T$
-640 END DEF 
+640 END DEF
 650 DATA AD,24,AE,23,AL,28,AO,25,AT,20,AZ,28,BA,20,BE,16,BF,28,BG,22,BH,22,BI,16,BJ,28,BR,29,BY,28,CG,27,CH,21,CI,28,CM,27,CR,22,CV,25,CY,28,CZ,24,DE,22,DK,18,DO,28,DZ,24,EE,20,EG,27,ES,24,FI,18,FO,18,FR,27,GA,27,GB,22,GE,22,GI,23,GL,18
 660 DATA GR,27,GT,28,HN,28,HR,21,HU,28,IE,22,IL,23,IR,26,IS,26,IT,27,JO,30,KM,27,KW,30,KZ,20,LB,28,LI,21,LT,20,LU,20,LV,21,MA,28,MC,27,MD,24,ME,22,MG,27,MK,19,ML,28,MR,27,MT,31,MU,30,MZ,25,NE,28,NI,32,NL,18,NO,15,PK,24,PL,28,PS,29,PT,25
 670 DATA QA,29,RO,24,RS,22,SA,24,SE,24,SI,19,SK,24,SM,27,SN,28,TD,27,TG,28,TL,23,TN,24,TR,26,UA,29,VG,24,XK,20
@@ -2371,7 +2371,7 @@ DE13 äöü_ 1234 1234 1234 12 is not valid.
 
 
 ```JavaScript
-var ibanLen = { 
+var ibanLen = {
 	NO:15, BE:16, DK:18, FI:18, FO:18, GL:18, NL:18, MK:19,
 	SI:19, AT:20, BA:20, EE:20, KZ:20, LT:20, LU:20, CR:21,
 	CH:21, HR:21, LI:21, LV:21, BG:22, BH:22, DE:22, GB:22,
@@ -2392,7 +2392,7 @@ function isValid(iban) {
 	for (var m=s.substr(0,15)%97, s=s.substr(15); s; s=s.substr(13)) m=(m+s.substr(0,13))%97
 	return m == 1
 }
-	
+
 document.write(isValid('GB82 WEST 1234 5698 7654 32'), '
 ') // true
 document.write(isValid('GB82 WEST 1.34 5698 7654 32'), '
@@ -2423,10 +2423,10 @@ The heart of the matter consists of just four lines of straightforward jq code:
 
 # strip the input string of spaces and tabs:
 gsub("[ \t]";"")
-# check the string is ALPHAnumeric                   
-| test("^[A-Z0-9]+$") 
-  # check its length is as determined by the country code:           
-  and length == $lengths[.[0:2]] 
+# check the string is ALPHAnumeric
+| test("^[A-Z0-9]+$")
+  # check its length is as determined by the country code:
+  and length == $lengths[.[0:2]]
   # check the mod 97 criterion:
   and ( (.[4:] + .[0:4]) | letters2digits | remainder) == 1
 
@@ -2446,7 +2446,7 @@ def letters2digits:
          end )
   | join("");
 
-# jq currently does not have unlimited-precision integer arithmetic 
+# jq currently does not have unlimited-precision integer arithmetic
 # and so we define a special-purpose "mod 97" filter:
 # input: a string representing a decimal
 # output: its remainder modulo 97 as a number
@@ -2455,7 +2455,7 @@ def remainder:
   else (.[0:14] | remainder | tostring) as $r1
        | ($r1 + .[14:]) | remainder
   end;
-  
+
 def is_valid_iban:
   {
     "AL": 28, "AD": 24, "AT": 20, "AZ": 28, "BE": 16, "BH": 22, "BA": 20, "BR": 29,
@@ -2589,7 +2589,7 @@ import java.math.BigInteger
 
 object Iban {
     /* List updated to release 73, January 2017, of IBAN Registry (75 countries) */
-    private val countryCodes = 
+    private val countryCodes =
         "AD24 AE23 AL28 AT20 AZ28 BA20 BE16 BG22 BH22 BR29 BY28 CH21 CR22 CY28 CZ24 DE22 " +
         "DK18 DO28 EE20 ES24 FI18 FO18 FR27 GB22 GE22 GI23 GL18 GR27 GT28 HR21 HU28 IE22 " +
         "IL23 IQ23 IS26 IT27 JO30 KW30 KZ20 LB28 LC32 LI21 LT20 LU20 LV21 MC27 MD24 ME22 " +
@@ -2604,16 +2604,16 @@ object Iban {
 
         // check country code
         if (!checkCountryCode(s.substring(0, 2) + s.length)) return false
- 
-        // move first 4 characters to end 
+
+        // move first 4 characters to end
         s = s.substring(4) + s.substring(0, 4)
- 
+
         // replace A to Z with numbers 10 To 35
         for (ch in 'A'..'Z') s = s.replace(ch.toString(), (ch - 55).toInt().toString())
-  
-        // check whether mod 97 calculation gives a remainder of 1 
-        return BigInteger(s) % BigInteger.valueOf(97L) == BigInteger.ONE      
-    }   
+
+        // check whether mod 97 calculation gives a remainder of 1
+        return BigInteger(s) % BigInteger.valueOf(97L) == BigInteger.ONE
+    }
 }
 
 fun main(args: Array<String>) {
@@ -2728,7 +2728,7 @@ GB82 TEST 1234 5698 7654 32 is not valid
 	country_code("DE").
 	country_code("GI").
 	country_code("GR").
-	country_code("GL").  
+	country_code("GL").
 	country_code("GT").
 	country_code("HU").
 	country_code("IS").
@@ -2834,22 +2834,22 @@ Function MakeIBANfun$ {
       Append  countrylength, "MU" := 30, "MC" := 27, "MD" := 24, "ME" := 22, "NL" := 18, "NO" := 15, "PK" := 24, "PS" := 29
       Append  countrylength, "PL" := 28, "PT" := 25, "RO" := 24, "SM" := 27, "SA" := 24, "RS" := 22, "SK" := 24, "SI" := 19
       Append  countrylength, "ES" := 24, "SE" := 24, "CH" := 21, "TN" := 24, "TR" := 26, "AE" := 23, "GB" := 22, "VG" := 24
-      
+
      =Lambda$ countrylength (Iban0$)->{
             Iban$=Filter$(Ucase$(Iban0$), " ")
             Iban$=Filter$(Iban$, Filter$(Iban$,"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"))
             Def Decimal ch, c
-            {            
+            {
                   If Not Exist(countrylength, Left$(Iban$,2)) Then Exit
                   length=Eval(countrylength)
                   If Not Len(Iban$)=length Then exit
                   Buffer ScanChar as Integer*length
                   Return ScanChar, 0:=Mid$(Iban$,5), length-4:=Mid$(Iban$,1,4)
-            
+
                   For i=0 to length-1 {
                         ch=Eval(ScanChar, i)
                         if ch>=48 and ch<=57 then {
-                              c = c*10+ch-48    
+                              c = c*10+ch-48
                         } else.if ch>=65 and ch<=90 then {
                               c = c*100+ch-55
                         } else c=-1: exit
@@ -2957,13 +2957,13 @@ end
 Usage:
 
 ```MATLAB
-tests = {'GB82 WEST 1234 5698 7654 32' ; 
-'GB82 TEST 1234 5698 7654 32' ; 
-'CH93 0076 2011 6238 5295 7' ; 
-'SA03 8000 0000 6080 1016 7519' ; 
+tests = {'GB82 WEST 1234 5698 7654 32' ;
+'GB82 TEST 1234 5698 7654 32' ;
+'CH93 0076 2011 6238 5295 7' ;
+'SA03 8000 0000 6080 1016 7519' ;
 'SA03 1234 5678 9101 1121 3141' ;
-'GB29 NWBK 6016 1331 9268 19' ; 
-'GB29' ; 
+'GB29 NWBK 6016 1331 9268 19' ;
+'GB29' ;
 'GR16 0110 1250 0000 0001 2300 695'};
 for k = 1:length(tests)
 fprintf('%s -> %svalid\n', tests{k}, char(~validateIBAN(tests{k}).*'in'))
@@ -2989,8 +2989,8 @@ GR16 0110 1250 0000 0001 2300 695 -> valid
 
 ```NewLISP
 
-(setq *iban-code-length* '((15  ("NO")) 
-                             (16  ("BE")) 
+(setq *iban-code-length* '((15  ("NO"))
+                             (16  ("BE"))
                              (18  ("DK" "FO" "FI" "GL" "NL"))
                              (19  ("MK" "SI"))
                              (20  ("AT" "BA" "EE" "KZ" "LT" "LU"))
@@ -3021,7 +3021,7 @@ GR16 0110 1250 0000 0001 2300 695 -> valid
 	(setq rx (string "[A-Z0-9]{" (length iban) "}" ))
 	(regex rx iban 1)
 )
- 
+
 ;- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 ;; Check that the length is correct for the country.
@@ -3136,7 +3136,7 @@ TYPE
   IBANLen = Boxed.LongInt;
 VAR
   nations: Dictionary.Dictionary(STRING,IBANLen);
-  
+
   PROCEDURE Check*(iban: ARRAY OF CHAR): BOOLEAN;
   VAR
     country,ibanStr: Object.String;
@@ -3154,12 +3154,12 @@ VAR
       RETURN FALSE;
     END;
     ibanLen := nations.Get(country);
-    
+
     IF SHORT(ibanLen.value) # Strings.Length(iban) THEN
       Err.Object("IBAN length incorrect for " + country +". ");
       RETURN FALSE
     END;
-    
+
     block[0] := 0X;
     Strings.Extract(iban,0,4,block);
     Strings.Delete(iban,0,4);Strings.Append(block,iban);
@@ -3176,18 +3176,18 @@ VAR
       Strings.Append(nLetter,numIban);
     END;
     Strings.Append(0X,numIban);
-    
+
     num := BigInt.New(Object.NewLatin1(numIban),10);
     den := BigInt.New("97",10);
     res := num.Mod(den);
-    IF res.Equals(BigInt.one) THEN 
+    IF res.Equals(BigInt.one) THEN
       RETURN TRUE
     ELSE
       Err.String("IBAN code check failed. ");
       RETURN FALSE
     END
   END Check;
-  
+
   PROCEDURE CodeLengthFor*(country: ARRAY OF CHAR): LONGINT;
   VAR
     countryStr: Object.String;
@@ -3200,7 +3200,7 @@ VAR
     END;
     RETURN ibanLen.value
   END CodeLengthFor;
-  
+
   PROCEDURE Test*;
     PROCEDURE DoCheck(iban: ARRAY OF CHAR);
     BEGIN
@@ -3213,7 +3213,7 @@ VAR
     DoCheck("SA0380000000608010167519");
     DoCheck("XX0380000000608010167519");
   END Test;
-  
+
 BEGIN
   nations := NEW(Dictionary.Dictionary(STRING,Boxed.LongInt));
   nations.Set("AL",NEW(IBANLen,28));
@@ -3239,7 +3239,7 @@ BEGIN
   nations.Set("DE",NEW(IBANLen,22));
   nations.Set("GI",NEW(IBANLen,23));
   nations.Set("GR",NEW(IBANLen,27));
-  nations.Set("GL",NEW(IBANLen,18));  
+  nations.Set("GL",NEW(IBANLen,18));
   nations.Set("GT",NEW(IBANLen,28));
   nations.Set("HU",NEW(IBANLen,28));
   nations.Set("IS",NEW(IBANLen,26));
@@ -3280,7 +3280,7 @@ BEGIN
   nations.Set("AE",NEW(IBANLen,23));
   nations.Set("GB",NEW(IBANLen,22));
   nations.Set("VG",NEW(IBANLen,24));
-  
+
   Test;
 END IBAN.
 
@@ -3352,7 +3352,7 @@ let check_length ib =
 
 
 (* Convert a string into a list of chars. *)
-let charlist_of_string s = 
+let charlist_of_string s =
   let l = String.length s in
   let rec doloop i =
     if i >= l then []
@@ -3410,7 +3410,7 @@ let () =
     Printf.printf "%s is %svalid. Expected %b [%s]\n"
                   ib (if res then "" else "not ")
                   exp (if res = exp then "PASS" else "FAIL")
-  in 
+  in
   List.iter (fun pair -> testit pair) ibans
 
 ```
@@ -3482,7 +3482,7 @@ if ( validate_iban( "GB82TEST12345698765432" ) ) {
 {{out}}
  GB82 WEST 1234 5698 7654 32 is a valid IBAN number!
  GB82TEST12345698765432 is invalid!
- 
+
 
 ## Perl 6
 
@@ -3498,12 +3498,12 @@ subset IBAN of Str where sub ($_ is copy) {
         MK 19 MR 27 MT 31 MU 30 NL 18 NO 15 PK 24 PL 28 PS 29 PT 25 RO 24
         RS 22 SA 24 SE 24 SI 19 SK 24 SM 27 TN 24 TR 26 VG 24
     >.hash{.substr(0,2).uc};
- 
+
     s/(.**4)(.+)/$1$0/;
     return .subst(:g, /\D/, { :36(~$_) }) % 97 == 1;
 }
 
-say "$_ is {$_ ~~ IBAN ?? 'valid' !! 'invalid' }" for 
+say "$_ is {$_ ~~ IBAN ?? 'valid' !! 'invalid' }" for
 'GB82 WEST 1234 5698 7654 32',
 'gb82 west 1234 5698 7654 32',
 'GB82 TEST 1234 5698 7654 32';
@@ -3520,7 +3520,7 @@ say "$_ is {$_ ~~ IBAN ?? 'valid' !! 'invalid' }" for
 ```Phix
 --
 -- demo\rosetta\IBAN.exw
--- 
+--
 ### ===============
 
 --
@@ -3528,7 +3528,7 @@ constant nations = {{"AD",24},  -- Andorra
                     -- (full list in distro)
                     {"CH",21},  -- Switzerland
                     {"GB",22},  -- United Kingdom
-                    {"SA",24},  -- Saudi Arabia 
+                    {"SA",24},  -- Saudi Arabia
                     {"XK",20}}  -- Kosovo
 
 constant {countries,lengths} = columnize(nations)
@@ -3600,20 +3600,20 @@ CH93 0076 2011 6238 5295 7         :ok
 
 ```php
 
-<?php 
+<?php
 
 function piece_wise($iban_all_digits) {
-    
+
     $remainder = NULL;
     $slice = 9;
-    
+
     for ($i=0; $i<strlen($iban_all_digits); $i=$i+$slice)
     {
         if ($i>0)
         {
             $slice = 7;
-        } 
-        
+        }
+
         $part = $remainder . substr($iban_all_digits, $i, $slice);
         //echo "REMAINDER: " . $remainder . "
 ";
@@ -3630,23 +3630,23 @@ return $remainder;
 $iban = "GB82 WEST 1234 5698 7654 32";
 
 //remove space
-$iban = str_replace(' ', '', $iban); 
+$iban = str_replace(' ', '', $iban);
 
 //echo $iban; echo '
 ';
 $iban_length = strlen($iban);
 $country_code = substr($iban, 0, 2);
 
-/*  
-    IBAN lengths are country specific 
+/*
+    IBAN lengths are country specific
     full list available at
     https://en.wikipedia.org/wiki/International_Bank_Account_Number#IBAN_formats_by_country
 */
 $lengths = ['GB' => 22];
 
 
-if ($lengths[$country_code] != $iban_length) 
-{ 
+if ($lengths[$country_code] != $iban_length)
+{
     exit ("IBAN length not valid for $country_code");
 }
 
@@ -3655,7 +3655,7 @@ if ($lengths[$country_code] != $iban_length)
 $iban = substr($iban, 4) . substr($iban, 0, 4);
 
 
-//3. Replace letters in IBAN with digits 
+//3. Replace letters in IBAN with digits
 //(A=10, B=11 ... Z=35)
 
 $iban_arr = str_split($iban, 1);
@@ -3665,7 +3665,7 @@ $iban_all_digits = '';
 
 foreach ($iban_arr as $key=>$value)
 {
-    if (ctype_alpha($value)) 
+    if (ctype_alpha($value))
     {
         $value = ord($value) - 55;
     }
@@ -3673,12 +3673,12 @@ foreach ($iban_arr as $key=>$value)
 }
 
 
-if (piece_wise($iban_all_digits) === 1) 
+if (piece_wise($iban_all_digits) === 1)
 {
     echo "VALID IBAN!";
 }
 
-else 
+else
 {
     echo "IBAN NOT VALID";
 }
@@ -3694,16 +3694,16 @@ else
 (setq *Sizes '((GB . 22) (CH . 21) (SA . 24)))
 
 (de iban (Str)
-   (let Lst 
+   (let Lst
       (filter
-         '((X) (not (sp? X))) 
+         '((X) (not (sp? X)))
          (chop (uppc Str)) )
       (when
-         (= 
+         (=
             (cdr (assoc (pack (head 2 Lst)) *Sizes))
             (length Lst) )
-         (% 
-            (format 
+         (%
+            (format
                (mapcar
                   '((X)
                      (if (upp? X)
@@ -3712,9 +3712,9 @@ else
                   (append (nth Lst 5) (head 4 Lst)) ) )
             97 ) ) ) )
 
-(for I '("sa03 8000 0000 6080 1016 7519" 
+(for I '("sa03 8000 0000 6080 1016 7519"
          "CH9300762011623852957"
-         "gb82west1234 56987654 32" 
+         "gb82west1234 56987654 32"
          "GB82WEST000")
    (if (= 1 (iban I))
       (println 'Valid)
@@ -3740,7 +3740,7 @@ $NumIBAN=""
 while ($comptIBAN -lt 27)
     {
     if ([byte]$ibanI[$comptIBAN] -ge 65 -and [byte]$ibanI[$comptIBAN] -le 90)
-        {        
+        {
         $NumIban+=([byte]$ibanI[$comptIBAN]-55)
         } #pour transformer les lettres en chiffres (A=10, B=11...)
         else
@@ -3832,55 +3832,55 @@ $ibans
 
 ```txt
 
-Country                Code Length Example                        
--------                ---- ------ -------                        
-Albania                AL       28 AL47212110090000000235698741   
-Andorra                AD       24 AD1200012030200359100100       
-Austria                AT       20 AT611904300235473201           
-Belgium                BE       16 BE68539007547034               
-Bosnia and Herzegovina BA       20 BA391290079401028494           
-Bulgaria               BG       22 BG80BNBG96611020345678         
-Croatia                HR       21 HR1210010051863000160          
-Cyprus                 CY       28 CY17002001280000001200527600   
-Czech Republic         CZ       24 CZ6508000000192000145399       
-Denmark                DK       18 DK5000400440116243             
-Estonia                EE       20 EE382200221020145685           
-Faroe Islands          FO       18 FO1464600009692713             
-Finland                FI       18 FI2112345600000785             
-France                 FR       27 FR1420041010050500013M02606    
-Georgia                GE       22 GE29NB0000000101904917         
-Germany                DE       22 DE89370400440532013000         
-Gibraltar              GI       23 GI75NWBK000000007099453        
-Greece                 GR       27 GR1601101250000000012300695    
-Greenland              GL       18 GL8964710001000206             
-Hungary                HU       28 HU42117730161111101800000000   
-Iceland                IS       26 IS140159260076545510730339     
-Ireland                IE       22 IE29AIBK93115212345678         
-Italy                  IT       27 IT60X0542811101000000123456    
-Kosovo                 XK       20 XK051212012345678906           
-Latvia                 LV       21 LV80BANK0000435195001          
-Liechtenstein          LI       21 LI21088100002324013AA          
-Lithuania              LT       20 LT121000011101001000           
-Luxembourg             LU       20 LU280019400644750000           
-Macedonia              MK       19 MK07300000000042425            
+Country                Code Length Example
+-------                ---- ------ -------
+Albania                AL       28 AL47212110090000000235698741
+Andorra                AD       24 AD1200012030200359100100
+Austria                AT       20 AT611904300235473201
+Belgium                BE       16 BE68539007547034
+Bosnia and Herzegovina BA       20 BA391290079401028494
+Bulgaria               BG       22 BG80BNBG96611020345678
+Croatia                HR       21 HR1210010051863000160
+Cyprus                 CY       28 CY17002001280000001200527600
+Czech Republic         CZ       24 CZ6508000000192000145399
+Denmark                DK       18 DK5000400440116243
+Estonia                EE       20 EE382200221020145685
+Faroe Islands          FO       18 FO1464600009692713
+Finland                FI       18 FI2112345600000785
+France                 FR       27 FR1420041010050500013M02606
+Georgia                GE       22 GE29NB0000000101904917
+Germany                DE       22 DE89370400440532013000
+Gibraltar              GI       23 GI75NWBK000000007099453
+Greece                 GR       27 GR1601101250000000012300695
+Greenland              GL       18 GL8964710001000206
+Hungary                HU       28 HU42117730161111101800000000
+Iceland                IS       26 IS140159260076545510730339
+Ireland                IE       22 IE29AIBK93115212345678
+Italy                  IT       27 IT60X0542811101000000123456
+Kosovo                 XK       20 XK051212012345678906
+Latvia                 LV       21 LV80BANK0000435195001
+Liechtenstein          LI       21 LI21088100002324013AA
+Lithuania              LT       20 LT121000011101001000
+Luxembourg             LU       20 LU280019400644750000
+Macedonia              MK       19 MK07300000000042425
 Malta                  MT       31 MT84MALT011000012345MTLCAST001S
-Moldova                MD       24 MD24AG000225100013104168       
-Monaco                 MC       27 MC5813488000010051108001292    
-Montenegro             ME       22 ME25505000012345678951         
-Netherlands            NL       18 NL91ABNA0417164300             
-Norway                 NO       15 NO9386011117947                
-Poland                 PL       28 PL27114020040000300201355387   
-Portugal               PT       25 PT50000201231234567890154      
-Romania                RO       24 RO49AAAA1B31007593840000       
-San Marino             SM       27 SM86U0322509800000000270100    
-Serbia                 RS       22 RS35260005601001611379         
-Slovakia               SK       24 SK3112000000198742637541       
-Slovenia               SI       19 SI56191000000123438            
-Spain                  ES       24 ES9121000418450200051332       
-Sweden                 SE       24 SE3550000000054910000003       
-Switzerland            CH       21 CH9300762011623852957          
-Ukraine                UA       29 UA573543470006762462054925026  
-United Kingdom         GB       22 GB29NWBK60161331926819         
+Moldova                MD       24 MD24AG000225100013104168
+Monaco                 MC       27 MC5813488000010051108001292
+Montenegro             ME       22 ME25505000012345678951
+Netherlands            NL       18 NL91ABNA0417164300
+Norway                 NO       15 NO9386011117947
+Poland                 PL       28 PL27114020040000300201355387
+Portugal               PT       25 PT50000201231234567890154
+Romania                RO       24 RO49AAAA1B31007593840000
+San Marino             SM       27 SM86U0322509800000000270100
+Serbia                 RS       22 RS35260005601001611379
+Slovakia               SK       24 SK3112000000198742637541
+Slovenia               SI       19 SI56191000000123438
+Spain                  ES       24 ES9121000418450200051332
+Sweden                 SE       24 SE3550000000054910000003
+Switzerland            CH       21 CH9300762011623852957
+Ukraine                UA       29 UA573543470006762462054925026
+United Kingdom         GB       22 GB29NWBK60161331926819
 
 ```
 
@@ -3966,7 +3966,7 @@ EnableExplicit
 Enumeration IBAN
   #IBAN_VAL
   #IBAN_SUM
-  #IBAN_NOSPACE 
+  #IBAN_NOSPACE
   #IBAN_VAL_FORM
   #IBAN_SUM_FORM
 EndEnumeration
@@ -3978,7 +3978,7 @@ EndMacro
 
 Procedure.s IBANForm(iban.s,form.i)
   Define fn.s, c.i
-  fn=RemoveString(UCase(iban),Chr(32))      
+  fn=RemoveString(UCase(iban),Chr(32))
   If form=#IBAN_NOSPACE   :   ProcedureReturn fn  :   EndIf
   fn=Mid(fn,5)+Mid(fn,1,4)
   For c=65 To 90
@@ -3994,16 +3994,16 @@ Procedure.s m97iban(iban.s,calculate.i)
   Select calculate
     Case #IBAN_VAL : iban=IBANForm(iban,#IBAN_VAL_FORM)
     Case #IBAN_SUM : iban=IBANForm(iban,#IBAN_SUM_FORM)
-  EndSelect  
+  EndSelect
   For i=1 To Len(iban)  ; Validierung der Prüfsumme
     part+Mid(iban,i,1)
     If Val(rest+part)<97 : Continue : EndIf
     rest=Str((Val(rest+part)) %97)  : part=""
-  Next  
+  Next
   Select calculate
     Case #IBAN_VAL : ProcedureReturn rest
     Case #IBAN_SUM : ProcedureReturn RSet(Str(98-Val(rest+part)),2,"0")
-  EndSelect  
+  EndSelect
 EndProcedure
 
 CCD("AL",28) : CCD("AD",24) : CCD("AT",20) : CCD("AZ",28) : CCD("BE",16) : CCD("BH",22) : CCD("BA",20)
@@ -4012,9 +4012,9 @@ CCD("DO",28) : CCD("EE",20) : CCD("FO",18) : CCD("FI",18) : CCD("FR",27) : CCD("
 CCD("GI",23) : CCD("GR",27) : CCD("GL",18) : CCD("GT",28) : CCD("HU",28) : CCD("IS",26) : CCD("IE",22)
 CCD("IL",23) : CCD("IT",27) : CCD("KZ",20) : CCD("KW",30) : CCD("LV",21) : CCD("LB",28) : CCD("LI",21)
 CCD("LT",20) : CCD("LU",20) : CCD("MK",19) : CCD("MT",31) : CCD("MR",27) : CCD("MU",30) : CCD("MC",27)
-CCD("MD",24) : CCD("ME",22) : CCD("NL",18) : CCD("NO",15) : CCD("PK",24) : CCD("PS",29) : CCD("PL",28)  
-CCD("PT",25) : CCD("RO",24) : CCD("SM",27) : CCD("SA",24) : CCD("RS",22) : CCD("SK",24) : CCD("SI",19) 
-CCD("ES",24) : CCD("SE",24) : CCD("CH",21) : CCD("TN",24) : CCD("TR",26) : CCD("AE",23) : CCD("GB",22)  
+CCD("MD",24) : CCD("ME",22) : CCD("NL",18) : CCD("NO",15) : CCD("PK",24) : CCD("PS",29) : CCD("PL",28)
+CCD("PT",25) : CCD("RO",24) : CCD("SM",27) : CCD("SA",24) : CCD("RS",22) : CCD("SK",24) : CCD("SI",19)
+CCD("ES",24) : CCD("SE",24) : CCD("CH",21) : CCD("TN",24) : CCD("TR",26) : CCD("AE",23) : CCD("GB",22)
 CCD("VG",24)
 
 DataSection
@@ -4041,7 +4041,7 @@ Repeat
   Read.s iban : If iban=Chr(0) : Break : EndIf
   Print("IBAN"+#TAB$+": "+LSet(iban,35,Chr(32))+#TAB$)
   cc=Left(IBANForm(iban,#IBAN_NOSPACE),2)
-  If CData(cc) 
+  If CData(cc)
     If Not CData()=Len(IBANForm(iban,#IBAN_NOSPACE)) : PrintN("[INCORRECT: LENGTH]") : Continue : EndIf
   Else
     PrintN("[INCORRECT: COUNTRY]") : Continue
@@ -4050,7 +4050,7 @@ Repeat
   If Not Right(IBANForm(iban,#IBAN_VAL_FORM),2)=m97iban(iban,#IBAN_SUM)
     PrintN("[INCORRECT: CHECKSUM]") : Continue
   EndIf
-  PrintN("[CORRECT]")  
+  PrintN("[CORRECT]")
 ForEver
 Input()
 End
@@ -4097,7 +4097,7 @@ _country2length = dict(
 def valid_iban(iban):
     # Ensure upper alphanumeric input.
     iban = iban.replace(' ','').replace('\t','')
-    if not re.match(r'^[\dA-Z]+$', iban): 
+    if not re.match(r'^[\dA-Z]+$', iban):
         return False
     # Validate country code against expected length.
     if len(iban) != _country2length[iban[:2]]:
@@ -4204,7 +4204,7 @@ if z//97==1  then return 0                       /*check if correct remainder (m
                   return e   'check digits.'
 ```
 
-{{out|output|text=  when using the default input:}} 
+{{out|output|text=  when using the default input:}}
 
 ```txt
 
@@ -4287,7 +4287,7 @@ if z//97==1  then return 0                       /*check if correct remainder (m
                   return e    'check digits.'
 ```
 
-{{out|output|text=  when using the default input,   (the run date of this program is   29-April-2013):}} 
+{{out|output|text=  when using the default input,   (the run date of this program is   29-April-2013):}}
 
 ```txt
 
@@ -4821,7 +4821,7 @@ invalid_end
       ibant  = ibantable()
       FREEZE(ibant)
 
-      INPUT(.INPUT, 28,,'iban.dat') 
+      INPUT(.INPUT, 28,,'iban.dat')
 read  line   = INPUT                                  :f(END)
       country = checkdigits = line2 =
 **    GB82 WEST 1234 5698 7654 32
@@ -5130,14 +5130,14 @@ Private Function iban(ByVal code As String) As Boolean
 1:
     iban = False
 End Function
- 
+
 Private Function iban_s(code As String) As Boolean
 '-- strips any embedded spaces and hyphens before validating.
     code = Replace(code, " ", "")
     code = Replace(code, "-", "")
     iban_s = iban(code)
 End Function
- 
+
 Private Sub test(code As String, expected As Boolean)
     Dim valid As Boolean
     valid = iban_s(code)
@@ -5269,15 +5269,15 @@ countryCodes$ = countryCodes$ + "DK18 DO28 EE20 ES24 FI18 FO18 FR27 GB22 GE22 GI
 countryCodes$ = countryCodes$ + "IL23 IQ23 IS26 IT27 JO30 KW30 KZ20 LB28 LC32 LI21 LT20 LU20 LV21 MC27 MD24 ME22 "
 countryCodes$ = countryCodes$ + "MK19 MR27 MT31 MU30 NL18 NO15 PK24 PL28 PS29 PT25 QA29 RO24 RS22 SA24 SC31 SE24 "
 countryCodes$ = countryCodes$ + "SI19 SK24 SM27 ST25 SV28 TL23 TN24 TR26 UA29 VG24 XK20"
- 
+
 sub iban(code$)
 // This routine does and should reject codes containing spaces etc.
 // Use iban_s() below for otherwise.
     local country, lcode, c, i, ch$
-	
+
     lcode = len(code$)
     country = instr(countryCodes$, upper$(left$(code$, 2)))
-	
+
     if country and lcode = val(mid$(countryCodes$, country + 2, 2)) then
         code$ = right$(code$, lcode - 4) + left$(code$, 4)
         for i = 1 to lcode
@@ -5299,21 +5299,21 @@ end sub
 sub iban_s(code$)
 // strips any embedded spaces and hyphens before validating.
 	local i, t$(1), n
-	
+
 	i = token(code$, t$(), " -")
 	code$ = ""
 	for n = 1 to i
 		code$ = code$ + t$(n)
 	next n
-	
+
     return iban(code$)
 end sub
- 
+
 sub test(code$, expected)
     local valid, state$
-	
+
     valid = iban_s(code$)
-   
+
     if valid = expected then
     	if valid then
     		state$ = "ok"
@@ -5330,7 +5330,7 @@ sub test(code$, expected)
     end if
     print code$, "\t ", state$
 end sub
- 
+
 test("GB82 WEST 1234 5698 7654 32", true)
 test("GB82 TEST 1234 5698 7654 32", false)
 test("GB81 WEST 1234 5698 7654 32", false)
@@ -5381,7 +5381,7 @@ var ibans=  // Dictionary("AD":24, ...)
    "RS22 SA24 SE24 SI19 SK24 SM27 SN28 TN24 TR26 UA29 VG24")
    .split(" ").pump(D(),fcn(w){return(w[0,2],w[2,*].toInt())});
 ```
-Testing 1 2 3 
+Testing 1 2 3
 
 ```zkl
     // all valid
@@ -5442,7 +5442,7 @@ L(True,True,True,True,True,True,True,True,True,True,True,True,
 120 LET i$="GB82 TEST 1234 5698 7654 32": GO SUB 1000
 130 LET i$="GR16 0110 1250 0000 0001 2300 695": GO SUB 1000
 140 LET i$="IL62-0108-0000-0009-9999-999": GO SUB 1000
-900 STOP 
+900 STOP
 1000 REM IBAN check routine
 1010 LET explen=0: LET lenc=LEN c$
 1020 FOR i=1 TO lenc STEP 5
@@ -5484,14 +5484,14 @@ L(True,True,True,True,True,True,True,True,True,True,True,True,
 3000 IF match THEN PRINT "  ": GO TO 3100
 3010 PRINT "in";: LET e$=" ***error!*** invalid "+e$
 3100 PRINT "valid IBAN: ";i$;e$: LET e$=""
-3110 RETURN 
+3110 RETURN
 4000 REM Modulo 97
 4010 LET mod97=0
 4020 FOR i=1 TO LEN k$
 4030 LET d$=STR$ (mod97)+k$(i)
 4040 LET mod97=FN m(VAL (d$),97)
 4050 NEXT i
-4060 RETURN 
+4060 RETURN
 5000 DEF FN m(a,b)=a-INT (a/b)*b: REM modulo
 ```
 

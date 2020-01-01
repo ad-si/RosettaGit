@@ -14,8 +14,8 @@ tags = []
 
 (The code lacks some checking, and I have not deeply tested it yet)
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 /* fits into a .h */
 #include <stdlib.h>

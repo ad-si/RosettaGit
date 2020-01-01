@@ -88,18 +88,18 @@ should produce;
 ```bbcbasic
       Width% = 200
       Height% = 200
-      
+
       REM Set window size:
       VDU 23,22,Width%;Height%;8,16,16,128
-      
+
       REM Draw quadratic Bézier curve:
       PROCbezierquad(10,100, 250,270, 150,20, 20, 0,0,0)
       END
-      
+
       DEF PROCbezierquad(x1,y1,x2,y2,x3,y3,n%,r%,g%,b%)
       LOCAL i%, t, t1, a, b, c, p{()}
       DIM p{(n%) x%,y%}
-      
+
       FOR i% = 0 TO n%
         t = i% / n%
         t1 = 1 - t
@@ -109,13 +109,13 @@ should produce;
         p{(i%)}.x% = INT(a * x1 + b * x2 + c * x3 + 0.5)
         p{(i%)}.y% = INT(a * y1 + b * y2 + c * y3 + 0.5)
       NEXT
-      
+
       FOR i% = 0 TO n%-1
         PROCbresenham(p{(i%)}.x%,p{(i%)}.y%,p{(i%+1)}.x%,p{(i%+1)}.y%, \
         \             r%,g%,b%)
       NEXT
       ENDPROC
-      
+
       DEF PROCbresenham(x1%,y1%,x2%,y2%,r%,g%,b%)
       LOCAL dx%, dy%, sx%, sy%, e
       dx% = ABS(x2% - x1%) : sx% = SGN(x2% - x1%)
@@ -131,7 +131,7 @@ should produce;
         ENDIF
       UNTIL FALSE
       ENDPROC
-      
+
       DEF PROCsetpixel(x%,y%,r%,g%,b%)
       COLOUR 1,r%,g%,b%
       GCOL 1
@@ -162,8 +162,8 @@ void quad_bezier(
 Implementation:
 
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 
 /* number of segments for the curve */
 #define N_SEG 20
@@ -193,7 +193,7 @@ void quad_bezier(
         pts[i][0] = x;
         pts[i][1] = y;
     }
- 
+
 #if 0
     /* draw only points */
     for (i=0; i <= N_SEG; ++i)
@@ -314,9 +314,9 @@ SUB BezierQuad(x1, y1, x2, y2, x3, y3, n)
 		x AS INTEGER
 		y AS INTEGER
 	END TYPE
-	
+
 	DIM t, t1, a, b, c, p[n] AS POINTAPI
-	
+
 	FOR DIM i = 0 TO n
 		t = i / n: t1 = 1 - t
 		a = t1 ^ 2
@@ -325,16 +325,16 @@ SUB BezierQuad(x1, y1, x2, y2, x3, y3, n)
 		p[i].x = a * x1 + b * x2 + c * x3 + 0.5
 		p[i].y = Height - (a * y1 + b * y2 + c * y3 + 0.5)
 	NEXT
-	
+
 	FOR i = 0 TO n - 1
 		Bresenham(p[i].x, p[i].y, p[i + 1].x, p[i + 1].y)
 	NEXT
-	
+
 	SUB Bresenham(x0, y0, x1, y1)
 		DIM dx = ABS(x0 - x1), sx = SGN(x0 - x1)
 		DIM dy = ABS(y0 - y1), sy = SGN(y0 - y1)
 		DIM tmp, er = IIF(dx > dy, dx, -dy) / 2
-		
+
 		WHILE NOT (x0 = x1 ANDALSO y0 = y1)
 			PSET(FBSL.GETDC, x0, y0, &HFF) ' Red: Windows stores colors in BGR order
 			tmp = er
@@ -360,7 +360,7 @@ IN: rosettacode.raster.line
 
 ! This gives a function
 :: (quadratic-bezier) ( P0 P1 P2 -- bezier )
-    [ :> x 
+    [ :> x
         1 x - sq P0 n*v
         2 1 x - x * * P1 n*v
         x sq P2 n*v
@@ -371,7 +371,7 @@ IN: rosettacode.raster.line
     [ iota ] keep 1 - [ / ] curry map ;
 : points-to-lines ( seq -- seq )
     dup rest [ 2array ] 2map ;
-: draw-lines ( {R,G,B} points image -- ) 
+: draw-lines ( {R,G,B} points image -- )
     [ [ first2 ] dip draw-line ] curry with each ;
 :: bezier-lines ( {R,G,B} P0 P1 P2 image -- )
     100 t-interval P0 P1 P2 (quadratic-bezier) map
@@ -403,8 +403,8 @@ subroutine quad_bezier(img, p1, p2, p3, color)
      a = (1.0 - t)**2.0
      b = 2.0 * t * (1.0 - t)
      c = t**2.0
-     x = a * p1%x + b * p2%x + c * p3%x 
-     y = a * p1%y + b * p2%y + c * p3%y 
+     x = a * p1%x + b * p2%x + c * p3%x
+     y = a * p1%y + b * p2%y + c * p3%y
      pts(i,0) = x
      pts(i,1) = y
   end do
@@ -744,9 +744,9 @@ function bezierQuad(obj,pixel_0,pixel_1,pixel_2,color,varargin)
     for i = (1:length(curve)-1)
         obj.bresenhamLine(curve(i,:),curve(i+1,:),color);
     end
-    
+
     assignin('caller',inputname(1),obj); %saves the changes to the object
-    
+
 end
 
 ```
@@ -930,7 +930,7 @@ See [https://github.com/thundergnat/rc/blob/master/img/Bezier-quadratic-perl6.pn
 ## Phix
 
 Output similar to [[Bitmap/Bézier_curves/Quadratic#Mathematica|Mathematica]]
-Requires new_image() from [[Bitmap#Phix|Bitmap]], bresLine() from [[Bitmap/Bresenham's_line_algorithm#Phix|Bresenham's_line_algorithm]], write_ppm() from [[Bitmap/Write_a_PPM_file#Phix|Write_a_PPM_file]]. 
+Requires new_image() from [[Bitmap#Phix|Bitmap]], bresLine() from [[Bitmap/Bresenham's_line_algorithm#Phix|Bresenham's_line_algorithm]], write_ppm() from [[Bitmap/Write_a_PPM_file#Phix|Write_a_PPM_file]].
 Included as demo\rosetta\Bitmap_BezierQuadratic.exw, results may be verified with demo\rosetta\viewppm.exw
 
 ```Phix
@@ -1007,7 +1007,7 @@ Procedure quad_bezier(img, p1x, p1y, p2x, p2y, p3x, p3y, Color, n_seg)
   Protected i
   Protected.f T, t1, a, b, c, d
   Dim pts.POINT(n_seg)
-  
+
   For i = 0 To n_seg
     T = i / n_seg
     t1 = 1.0 - T
@@ -1017,7 +1017,7 @@ Procedure quad_bezier(img, p1x, p1y, p2x, p2y, p3x, p3y, Color, n_seg)
     pts(i)\x = a * p1x + b * p2x + c * p3x
     pts(i)\y = a * p1y + b * p2y + c * p3y
   Next
-  
+
   StartDrawing(ImageOutput(img))
     FrontColor(Color)
     For i = 0 To n_seg - 1
@@ -1073,7 +1073,7 @@ See [[Cubic bezier curves#R]] for a generalized solution.
 (define (int t p q)
   (define ((int1 t) x0 x1) (+ (* (- 1 t) x0) (* t x1)))
   (map (int1 t) p q))
-  
+
 (define (bezier-points p0 p1 p2)
   (for/list ([t (in-range 0.0 1.0 (/ 1.0 20))])
     (int t (int t p0 p1) (int t p1 p2))))

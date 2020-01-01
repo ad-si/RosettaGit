@@ -13,13 +13,13 @@ tags = []
 {{task}}[[Category:File handling]]
 
 ;Task:
-Remove a specific line or a number of lines from a file. 
+Remove a specific line or a number of lines from a file.
 
-This should be implemented as a routine that takes three parameters (filename, starting line, and the number of lines to be removed). 
+This should be implemented as a routine that takes three parameters (filename, starting line, and the number of lines to be removed).
 
 For the purpose of this task, line numbers and the number of lines start at one, so to remove the first two lines from the file <tt>foobar.txt</tt>, the parameters should be: <tt>foobar.txt</tt>, <tt>1</tt>, <tt>2</tt>
 
-Empty lines are considered and should still be counted, and if the specified line is empty, it should still be removed. 
+Empty lines are considered and should still be counted, and if the specified line is empty, it should still be removed.
 
 An appropriate message should appear if an attempt is made to remove lines beyond the end of the file.
 
@@ -445,7 +445,7 @@ FUNCTION CountLines& (WhichFile AS STRING)
     DIM iFile AS INTEGER
     DIM l AS LONG, li AS LONG, j AS LONG, lFileSize AS LONG, lLines AS LONG
     DIM sLine AS STRING, strR AS STRING
-    
+
     ' This function will count how many lines has the file
     IF FileExists%(WhichFile) THEN
         strR = CHR$(13)
@@ -666,11 +666,11 @@ END FUNCTION
 260       LET LIN=LIN+1
 270       IF LIN<ST OR LIN>ST+N-1 THEN PRINT #2:S$
 280     LOOP
-290   END WHEN 
+290   END WHEN
 300   HANDLER OPENERROR
 310     PRINT EXSTRING$(EXTYPE)
 320     STOP
-330   END HANDLER 
+330   END HANDLER
 340   HANDLER IOERROR
 350     IF EXTYPE<>8001 THEN
 360       PRINT EXSTRING$(EXLINE)
@@ -679,7 +679,7 @@ END FUNCTION
 390       IF LIN>=ST+N-1 THEN PRINT N;"line(s) removed."
 400       IF LIN>=ST AND LIN<ST+N-1 THEN PRINT "Only";LIN-ST+1;"line(s) were removed as not enough lines to remove more."
 410       IF LIN<ST THEN PRINT "No lines were removed as starting line was beyond end of file."
-420     END IF 
+420     END IF
 430     CLOSE #2
 440     CLOSE #1
 450   END HANDLER
@@ -691,8 +691,8 @@ END FUNCTION
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h> /* for atoi() and malloc() */
 #include <string.h> /* for memmove() */
 
@@ -781,8 +781,8 @@ public class Rosetta
 ## C++
 
 
-```cpp>#include <fstream
-
+```cpp
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -966,7 +966,7 @@ RemoveLines(logicalfile, startline, numlines) := FUNCTIONMACRO
   EndLine := startline + numlines - 1;
   RecCnt  := COUNT(logicalfile);
   Res := logicalfile[1..startline-1] + logicalfile[endline+1..];
-  RETURN WHEN(IF(RecCnt < EndLine,logicalfile,Res), 
+  RETURN WHEN(IF(RecCnt < EndLine,logicalfile,Res),
               IF(RecCnt < EndLine,STD.System.Log.addWorkunitWarning('Attempted removal past end of file-removal ignored')));
 ENDMACRO;
 
@@ -993,7 +993,7 @@ defmodule RC do
       remove_lines(file, start, number, IO.read(file, :line))
     end)
   end
-  
+
   defp remove_lines(_file, 0, 0, :eof), do: :ok
   defp remove_lines(_file, _, _, :eof) do
     IO.puts(:stderr, "Warning: End of file encountered before all lines removed")
@@ -1053,7 +1053,7 @@ from_file( Name, Start, How_many ) ->
 	{Name, {ok, Binary}} = {Name, file:read_file( Name )},
 	Lines = compensate_for_last_newline( lists:reverse([X || X <- binary:split( Binary, <<"\n">>, [global] )]) ),
 	{Message, Keep_lines} = keep_lines( Start - 1, How_many, Lines, erlang:length(Lines) - 1 ),
-	ok = file:write_file( Name, [binary:list_to_bin([X, <<"\n">>]) || X <- Keep_lines] ), 
+	ok = file:write_file( Name, [binary:list_to_bin([X, <<"\n">>]) || X <- Keep_lines] ),
 	io:fwrite( "~s~n", [Message] ).
 
 task() ->
@@ -1212,7 +1212,7 @@ Completed.
 ```
 
 
-When run on file foobar.txt containing 
+When run on file foobar.txt containing
  Unwanted line.
  Nobody wants me either.
  I survive!
@@ -1220,13 +1220,13 @@ When run on file foobar.txt containing
 The result is file foobar.txt containing
  I survive!
 
-And if run afresh, the file is unharmed and there appears output to the screen: 
+And if run afresh, the file is unharmed and there appears output to the screen:
 
   Oh dear. Insufficient records!
  ++ungood.
 
 
-Formulating error messages is tedious, in the absence of a function such as IFMT(n) to be used in <code>CALL CROAK("First record must be positive, not "//IFMT(IST))</code> A more accomplished programme would worry about running out of disc space (signalled by the taking of the END=''label'' option in a WRITE statement) and I/O errors along the way using the ERR=''label'' option, but it is difficult to devise recovery schemes for unexpected errors. Similarly, the OPEN statements are at risk of confronting a file that is available for READ, but not for WRITE. It would help in organising all this if OPEN(...) was a function, but instead one can refer to the recondite IOSTAT error codes, possibly with assistance as with 
+Formulating error messages is tedious, in the absence of a function such as IFMT(n) to be used in <code>CALL CROAK("First record must be positive, not "//IFMT(IST))</code> A more accomplished programme would worry about running out of disc space (signalled by the taking of the END=''label'' option in a WRITE statement) and I/O errors along the way using the ERR=''label'' option, but it is difficult to devise recovery schemes for unexpected errors. Similarly, the OPEN statements are at risk of confronting a file that is available for READ, but not for WRITE. It would help in organising all this if OPEN(...) was a function, but instead one can refer to the recondite IOSTAT error codes, possibly with assistance as with
 
 ```Fortran
 
@@ -1298,14 +1298,14 @@ Finally, there is a chance the operating system can be asked to do this, by frag
 ' FB 1.05.0 Win64
 
 Sub removeLines(fileName As String, startLine As UInteger, numLines As UInteger)
-  If startLine = 0 Then 
+  If startLine = 0 Then
     Print "Starting line must be more than zero"
     Return
   End If
   If numLines = 0 Then
     Print "No lines to remove"
     Return
-  End If 
+  End If
   Dim fileNum As Integer = FreeFile
   Open fileName For Input As #fileNum
   If err > 0 Then
@@ -1317,7 +1317,7 @@ Sub removeLines(fileName As String, startLine As UInteger, numLines As UInteger)
   Open tempFileName For Output As #fileNum2
   Dim count As Integer = 0
   Dim ln As String
-  Dim endLine As UInteger = startLine + numLines - 1 
+  Dim endLine As UInteger = startLine + numLines - 1
   While Not Eof(fileNum)
     Input #fileNum, ln
     count += 1
@@ -1331,7 +1331,7 @@ Sub removeLines(fileName As String, startLine As UInteger, numLines As UInteger)
   ElseIf count < endLine Then
     Print "Only "; count - startLine + 1; " line(s) were removed as not enough lines to remove more"
     Print
-  Else 
+  Else
     Print Str(numLines); " line(s) were removed"
     Print
   End If
@@ -1427,7 +1427,7 @@ Dim sData As New String[]                                                       
 Dim siCount As Short                                                                'Counter
 Dim sTemp, sDel As String                                                           'String variables
 
-For Each sTemp In Split(File.Load(sFile), gb.NewLine)                               'Load the file, split the lines by NewLine 
+For Each sTemp In Split(File.Load(sFile), gb.NewLine)                               'Load the file, split the lines by NewLine
   sData.Add(sTemp)                                                                  'Add to sData
 Next
 
@@ -1440,7 +1440,7 @@ Endif
 
 Dec siStart                                                                         'For the purpose of this task, line numbers start at one (Program starts at 0)
 
-For siCount = siStart To (siStart + siNum) - 1                                      'Loop through the lines to be deleted 
+For siCount = siStart To (siStart + siNum) - 1                                      'Loop through the lines to be deleted
   sDel &= Str(siCount) & " "                                                        'Add then to sDel
 Next
 
@@ -1572,7 +1572,7 @@ func skip(b []byte, n int) ([]byte, bool) {
 ```haskell
 import System.Environment (getArgs)
 
-main = getArgs >>= (\[a, b, c] -> 
+main = getArgs >>= (\[a, b, c] ->
             do contents <- fmap lines $ readFile a
                let b1 = read b :: Int
                    c1 = read c :: Int
@@ -1596,7 +1596,7 @@ procedure removelines(fn,start,skip)
 
    if *F < start-1+skip then fail
    every F[start - 1 + (1 to skip)] := &null # mark delete
-   
+
    f := open(fn,"w") | fail                  # open to rewrite
    every write(\!F)                          # write non-nulls
    close(f)
@@ -1676,7 +1676,7 @@ public class RemoveLines
 		int startline=1;
 		//Enter number of lines here.
 		int numlines=2;
-		
+
 		RemoveLines now=new RemoveLines();
 		now.delete(filename,startline,numlines);
 	}
@@ -1685,14 +1685,14 @@ public class RemoveLines
 		try
 		{
 			BufferedReader br=new BufferedReader(new FileReader(filename));
-			
+
 			//String buffer to store contents of the file
 			StringBuffer sb=new StringBuffer("");
-			
+
 			//Keep track of the line number
 			int linenumber=1;
 			String line;
-			
+
 			while((line=br.readLine())!=null)
 			{
 				//Store each valid line in the string buffer
@@ -1703,7 +1703,7 @@ public class RemoveLines
 			if(startline+numlines>linenumber)
 				System.out.println("End of file reached.");
 			br.close();
-			
+
 			FileWriter fw=new FileWriter(new File(filename));
 			//Write entire string buffer into the file
 			fw.write(sb.toString());
@@ -1772,7 +1772,7 @@ jq -n -R -r --arg start 1 --arg number 2 -f Remove_lines_from_a_file.jq input.tx
 
 
 ```jq
-# Counting the first line in the file as line 1, attempt to remove "number" lines from line 
+# Counting the first line in the file as line 1, attempt to remove "number" lines from line
 # number "start" onwards:
 def remove_lines_streaming(start; number):
   (start+number - 1) as $max
@@ -1849,11 +1849,11 @@ test.txt before:
 
 ```txt
 1
-two 
+two
 3
- 
+
 5        <-- remove me
-six 
+six
 7        <-- remove me
 
 9
@@ -1867,10 +1867,10 @@ test.txt after:
 
 ```txt
 1
-two 
+two
 3
- 
-six 
+
+six
 
 9
 ten
@@ -2014,7 +2014,7 @@ Output:
 
 ## Liberty BASIC
 
-It's always a bit dangerous to experiment with code that alters files. Un-rem the 'kill' to remove the temp file and the next line so the file is renamed to the original! 
+It's always a bit dangerous to experiment with code that alters files. Un-rem the 'kill' to remove the temp file and the next line so the file is renamed to the original!
 
 ```lb
 
@@ -2103,7 +2103,7 @@ f[doc_String, start_Integer, n_Integer] := Module[{p, newdoc},
 
 (context 'ABC)
 
-(define (remove-lines-from-a-file filename start num)    
+(define (remove-lines-from-a-file filename start num)
     (setf new-content "")
     (setf row-counter 0)
     (setf start-delete-row start)
@@ -2124,7 +2124,7 @@ f[doc_String, start_Integer, n_Integer] := Module[{p, newdoc},
             (dolist (row (parse file-content "\n" 0))
                 (++ row-counter)
                 (if (or (< row-counter start-delete-row) (> row-counter end-delete-row))
-                    (setf new-content (append new-content row "\n")) 
+                    (setf new-content (append new-content row "\n"))
                     )
             )
             (write-file filename new-content)
@@ -2186,22 +2186,22 @@ let () =
 ```txt
 $ cal > cal.txt
 $ cat cal.txt
-    juillet 2011    
+    juillet 2011
 lu ma me je ve sa di
              1  2  3
  4  5  6  7  8  9 10
 11 12 13 14 15 16 17
 18 19 20 21 22 23 24
 25 26 27 28 29 30 31
- 
+
 $ ocaml deleteLines.ml cal.txt 5 2
 $ cat cal.txt
-    juillet 2011    
+    juillet 2011
 lu ma me je ve sa di
              1  2  3
  4  5  6  7  8  9 10
 25 26 27 28 29 30 31
- 
+
 
 ```
 
@@ -2421,10 +2421,10 @@ $ ./rmlines
    rmlines &lt;filename&gt; &lt;beg&gt; &lt;len&gt;
 $ ./rmlines foo 1 2
 $ cat foo
-  1  2  3  4  5  6  7  
-  8  9 10 11 12 13 14  
- 15 16 17 18 19 20 21  
- 22 23 24 25 26 27 28  
+  1  2  3  4  5  6  7
+  8  9 10 11 12 13 14
+ 15 16 17 18 19 20 21
+ 22 23 24 25 26 27 28
  29 30 31
 
 ```
@@ -2564,56 +2564,56 @@ del-line "foobar.txt" 1 2
 
 EnableExplicit
 
-#Output$ = "output.txt"; insert path to temporary output file 
+#Output$ = "output.txt"; insert path to temporary output file
 
 Procedure RemoveLines(Input$, StartLine, NbLines)
   Protected lineCount = 0
   Protected endline = StartLine + NbLines - 1
   Protected row$
-  
+
   If Not ReadFile(0, Input$)
     PrintN("Error opening input file")
     ProcedureReturn
   EndIf
-  
+
   If Not CreateFile(1, #Output$)
     PrintN("Error creating output file")
     CloseFile(0)
-    ProcedureReturn 
+    ProcedureReturn
   EndIf
-  
+
   While Not Eof(0)
     row$ = ReadString(0)
     lineCount + 1
-    If lineCount < StartLine Or lineCount > endLine    
+    If lineCount < StartLine Or lineCount > endLine
       WriteStringN(1, row$)
-    EndIf    
+    EndIf
   Wend
-  
+
   If endLine > lineCount
     PrintN("Attempted to remove lines beyond the end of the file")
     ; but still allow removal of lines (if any) up to the end of the file
   EndIf
-  
+
   CloseFile(0)
-  CloseFile(1) 
-  
+  CloseFile(1)
+
   If Not DeleteFile(Input$)
     PrintN("Unable to delete input file so output file can be renamed")
     ProcedureReturn
   EndIf
-  
+
   If Not RenameFile(#Output$, Input$)
     PrintN("Unable to rename output file")
   EndIf
-  
+
 EndProcedure
 
 Define fInput$
 
 If OpenConsole()
   ; delete lines 2,3 amnd 4 of 'input.txt'
-  fInput$ = "input.txt"; insert path to input file 
+  fInput$ = "input.txt"; insert path to input file
   RemoveLines(fInput$, 2, 3)
   PrintN("")
   PrintN("Press any key to close the console")
@@ -2685,7 +2685,7 @@ paddy@paddy-ThinkPad-T61:~$ cat testfile.txt.orig
 8
 9
 10
-paddy@paddy-ThinkPad-T61:~$ 
+paddy@paddy-ThinkPad-T61:~$
 ```
 
 
@@ -2709,13 +2709,13 @@ paddy@paddy-ThinkPad-T61:~$
 
 This example is operating system dependent as this program uses the (DOS)   '''ERASE'''   and   ''' RENAME'''   commands.
 
-This REXX version was tested under two versions Microsoft Windows (in a DOS window). 
+This REXX version was tested under two versions Microsoft Windows (in a DOS window).
 
 More error checking could've been added to validate:
 ::*   a legitimate record line number (and how many lines)
 ::*   the input file existence
 ::*   the output file non─existence
-::*   authority to read from (and write to) the file (folder) 
+::*   authority to read from (and write to) the file (folder)
 
 ```rexx
 /*REXX program reads and writes a specified file  and  delete(s)  specified record(s).  */
@@ -2796,7 +2796,7 @@ lineCount = 5
 num = -1
 for n = lineStart to lineStart+lineCount-1
     num += 1
-    del(aList,n-num) 
+    del(aList,n-num)
 next
 cStr = list2str(aList)
 see cStr + nl
@@ -3142,7 +3142,7 @@ line9
                Satzlänge: 5
 ****  Ausgabe: 7 Sätze auf Datei -*OUTPUTFILE
                Satzlänge: 5
-Ende  MAKRO   auf: XXXXXX   am: 02.12.11  um: 17:31:50 
+Ende  MAKRO   auf: XXXXXX   am: 02.12.11  um: 17:31:50
 
 ```
 
@@ -3338,11 +3338,11 @@ End Sub
 {{out}}
 
 ```txt
-First call : 
+First call :
     The file contains only 10 lines
-Second call : 
+Second call :
     You only can remove 2 lines
-Third call : 
+Third call :
 1
 2
 8
@@ -3439,7 +3439,7 @@ fcn deleteLinesM(fname, start,num){
     blob:=File(fname).read();     // file to memory
     n:=blob.seek(Void,start-1);   // seek to line and remember it
     blob.del(n,blob.seek(Void,num)-n);
- 
+
     File.stdout.write(blob);
 }
 deleteLinesM("nn.zkl", 2,5);

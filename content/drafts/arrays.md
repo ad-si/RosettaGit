@@ -1883,8 +1883,8 @@ Depending on how it is used, it may be dynamically allocated on the stack as nee
 <code>std::vector<T></code> is a resizable array of <code>T</code> objects.
 The memory for the array will be allocated from the heap (unless a custom allocator is used).
 
-```cpp>#include <array
-
+```cpp
+#include <array>
 #include <vector>
 
 // These headers are only needed for the demonstration

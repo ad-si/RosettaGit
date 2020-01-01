@@ -350,7 +350,7 @@ Uses fixed bit-width (16 bits) and initial dictionary size = 256.
       NEXT
       PRINT ' FNdecodeLZW(encodeLZW$)
       END
-      
+
       DEF FNencodeLZW(i$)
       LOCAL c%, d%, i%, l%, o$, w$, dict$()
       DIM dict$(4095)
@@ -372,7 +372,7 @@ Uses fixed bit-width (16 bits) and initial dictionary size = 256.
         o$ += CHR$(c% MOD 256) + CHR$(c% DIV 256)
       UNTIL i% >= LEN(i$)
       = o$
-      
+
       DEF FNdecodeLZW(i$)
       LOCAL c%, i%, l%, o$, t$, w$, dict$()
       DIM dict$(4095)
@@ -406,16 +406,16 @@ TOBEORNOTTOBEORTOBEORNOT
 
 ## C
 
-LZW encoder/decoder.  Using variable bit length from 9 to up to 15.  
-Encoder needs to know max allow bits, decoder doesn't.  
-Code 256 for clear table, 257 for end of data, 
+LZW encoder/decoder.  Using variable bit length from 9 to up to 15.
+Encoder needs to know max allow bits, decoder doesn't.
+Code 256 for clear table, 257 for end of data,
 everything else are either byte values (<256) or code values.
 
 '''WARNING: This code appears to have come from a GIF codec that has been modified to meet the requirements of this page, provided that the decoder works with the encoder to produce correct output. For writing GIF files the write_bits subroutine is wrong for Little Endian systems (it may be wrong for Big Endian as well.) The encoder also increases the number of bits in the variable length GIF-LZW after the N-2 code, whereas this must be done after N-1 to produce a working GIF file (just looking at the encoder, it's easy to see how this mistake could be made.)'''
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
@@ -687,13 +687,13 @@ This only does the encoding step for now.
 lzw = (s) ->
   dct = {} # map substrings to codes between 256 and 4096
   stream = [] # array of compression results
-  
+
   # initialize basic ASCII characters
   for code_num in [0..255]
     c = String.fromCharCode(code_num)
     dct[c] = code_num
   code_num = 256
-      
+
   i = 0
   while i < s.length
     # Find word and new_word
@@ -709,16 +709,16 @@ lzw = (s) ->
 
     # stream out the code for the substring
     stream.push dct[word]
-      
+
     # build up our encoding dictionary
     if code_num < 4096
       dct[new_word] = code_num
       code_num += 1
-    
+
     # advance thru the string
     i += word.length
   stream
-    
+
 console.log lzw "TOBEORNOTTOBEORTOBEORNOT"
 
 ```
@@ -727,7 +727,7 @@ console.log lzw "TOBEORNOTTOBEORTOBEORNOT"
 
 ```txt
 
-> coffee lzw.coffee 
+> coffee lzw.coffee
 [ 84,
   79,
   66,
@@ -756,8 +756,8 @@ console.log lzw "TOBEORNOTTOBEORTOBEORNOT"
 {{trans|Perl}}
 This version is based upon the Perl one. It doesn't contain mixed type data at the cost of being more consy. It includes vector operation routines, since using <code>VECTOR-PUSH-APPEND</code> reallocates the whole vector with each call.
 
-The Babel library is required to convert octet vectors to strings. 
-Lisp strings can contain characters out of the ASCII/latin1 character set, including the whole Unicode range in them. 
+The Babel library is required to convert octet vectors to strings.
+Lisp strings can contain characters out of the ASCII/latin1 character set, including the whole Unicode range in them.
 The exact encoding used is dependent upon the user's locale (<code>LC_CTYPE</code> on Unix).
 
 
@@ -766,7 +766,7 @@ The exact encoding used is dependent upon the user's locale (<code>LC_CTYPE</cod
                 vector-append))
 (defun vector-append (old new &optional (start2 0) end2)
   (declare (optimize (speed 3) (safety 0) (debug 0)))
-  (prog1 old                     
+  (prog1 old
     (let* ((old-fill (fill-pointer old))
            (new-fill (+ old-fill (length new))))
       (when (> new-fill (array-dimension old 0))
@@ -776,7 +776,7 @@ The exact encoding used is dependent upon the user's locale (<code>LC_CTYPE</cod
 
 (declaim (ftype (function (vector t) vector) vector-append1))
 (defun vector-append1 (old new)
-  (prog1 old                     
+  (prog1 old
     (let* ((old-fill (fill-pointer old))
            (new-fill (1+ old-fill)))
       (when (> new-fill (array-dimension old 0))
@@ -830,7 +830,7 @@ The exact encoding used is dependent upon the user's locale (<code>LC_CTYPE</cod
         else do
           (vector-append result (gethash w dictionary))
           (setf (gethash wc dictionary)
-                (make-vector-with-elt dictionary-size)) 
+                (make-vector-with-elt dictionary-size))
           (incf dictionary-size)
           (setq w (make-vector-with-elt c 'octet))
         finally (unless (zerop (length (the (vector octet) w)))
@@ -893,8 +893,8 @@ CL-USER> (lzw-decompress-to-string *)
 
 {{trans|D}}
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <map>
 
 // Compress a string to a list of output symbols.
@@ -907,7 +907,7 @@ Iterator compress(const std::string &uncompressed, Iterator result) {
   std::map<std::string,int> dictionary;
   for (int i = 0; i < 256; i++)
     dictionary[std::string(1, i)] = i;
-  
+
   std::string w;
   for (std::string::const_iterator it = uncompressed.begin();
        it != uncompressed.end(); ++it) {
@@ -922,7 +922,7 @@ Iterator compress(const std::string &uncompressed, Iterator result) {
       w = std::string(1, c);
     }
   }
-  
+
   // Output the code for w.
   if (!w.empty())
     *result++ = dictionary[w];
@@ -938,7 +938,7 @@ std::string decompress(Iterator begin, Iterator end) {
   std::map<int,std::string> dictionary;
   for (int i = 0; i < 256; i++)
     dictionary[i] = std::string(1, i);
-  
+
   std::string w(1, *begin++);
   std::string result = w;
   std::string entry;
@@ -950,12 +950,12 @@ std::string decompress(Iterator begin, Iterator end) {
       entry = w + w[0];
     else
       throw "Bad compressed k";
-    
+
     result += entry;
-    
+
     // Add w+entry[0] to the dictionary.
     dictionary[dictSize++] = w + entry[0];
-    
+
     w = entry;
   }
   return result;
@@ -972,7 +972,7 @@ int main() {
   std::cout << std::endl;
   std::string decompressed = decompress(compressed.begin(), compressed.end());
   std::cout << decompressed << std::endl;
-  
+
   return 0;
 }
 ```
@@ -1542,11 +1542,11 @@ end;
 define method compress(input :: <string>) => <vector>;
   let result = make(<vector>);
   let dict = make(<string-table>);
-  for (x from 0 to 255) 
+  for (x from 0 to 255)
     dict[byte->string(x)] := x;
   end;
 
-  let next-code = 256; 
+  let next-code = 256;
   let cur-seq = "";
   for (c in input)
     let wc = add(cur-seq, c);
@@ -1559,7 +1559,7 @@ define method compress(input :: <string>) => <vector>;
       cur-seq := add("", c);
     end
   end;
-  unless (empty?(cur-seq)) 
+  unless (empty?(cur-seq))
     result := add(result, dict[cur-seq]);
   end;
   result
@@ -1708,15 +1708,15 @@ TOBEORNOTTOBEORTOBEORNOT
 defmodule LZW do
   @encode_map  Enum.into(0..255, Map.new, &{[&1],&1})
   @decode_map  Enum.into(0..255, Map.new, &{&1,[&1]})
-  
+
   def encode(str), do: encode(to_char_list(str), @encode_map, 256, [])
-  
+
   defp encode([h], d, _, out), do: Enum.reverse([d[[h]] | out])
   defp encode([h|t], d, free, out) do
     val = d[[h]]
     find_match(t, [h], val, d, free, out)
   end
-  
+
   defp find_match([h|t], l, lastval, d, free, out) do
     case Map.fetch(d, [h|l]) do
       {:ok, val} -> find_match(t, [h|l], val, d, free, out)
@@ -1725,12 +1725,12 @@ defmodule LZW do
     end
   end
   defp find_match([], _, lastval, _, _, out), do: Enum.reverse([lastval | out])
-  
+
   def decode([h|t]) do
     val = @decode_map[h]
     decode(t, val, 256, @decode_map, val)
   end
-  
+
   defp decode([], _, _, _, l), do: Enum.reverse(l) |> to_string
   defp decode([h|t], old, free, d, l) do
     val = if h == free, do: old ++ [List.first(old)], else: d[h]
@@ -1787,7 +1787,7 @@ encode([H|T], D, Free, Out) ->
     Val = dict:fetch([H], D),
     find_match(T, [H], Val, D, Free, Out).
 
-find_match([H|T], L, LastVal, D, Free, Out) -> 
+find_match([H|T], L, LastVal, D, Free, Out) ->
     case dict:find([H|L], D) of
   {ok, Val} ->
       find_match(T, [H|L], Val, D, Free, Out);
@@ -2197,13 +2197,13 @@ def compress = { text ->
     if (w) { compressed << dictionary[w] }
     compressed
 }
- 
+
 def decompress = { compressed ->
     def dictionary = (0..<256).inject([:])  { map, ch -> map[ch] = "${(char)ch}"; map }
     int dictSize = 128;
     String w = "${(char)compressed[0]}"
     StringBuffer result = new StringBuffer(w)
-    
+
     compressed.drop(1).each { k ->
         String entry = dictionary[k]
         if (!entry) {
@@ -2338,7 +2338,7 @@ decodeLZW =: 4 : 0
  ds=. #d
  for_c. }.y do.
    select. * c-ds
-    case. _1 do. r=.r,e=.>c{d  
+    case. _1 do. r=.r,e=.>c{d
     case.  0 do. r=.r,e=.w,{.w
     case.    do. 'error' return.
    end.
@@ -2401,7 +2401,7 @@ public class LZW {
         Map<String,Integer> dictionary = new HashMap<String,Integer>();
         for (int i = 0; i < 256; i++)
             dictionary.put("" + (char)i, i);
-        
+
         String w = "";
         List<Integer> result = new ArrayList<Integer>();
         for (char c : uncompressed.toCharArray()) {
@@ -2415,13 +2415,13 @@ public class LZW {
                 w = "" + c;
             }
         }
- 
+
         // Output the code for w.
         if (!w.equals(""))
             result.add(dictionary.get(w));
         return result;
     }
-    
+
     /** Decompress a list of output ks to a string. */
     public static String decompress(List<Integer> compressed) {
         // Build the dictionary.
@@ -2429,7 +2429,7 @@ public class LZW {
         Map<Integer,String> dictionary = new HashMap<Integer,String>();
         for (int i = 0; i < 256; i++)
             dictionary.put(i, "" + (char)i);
-        
+
         String w = "" + (char)(int)compressed.remove(0);
         StringBuffer result = new StringBuffer(w);
         for (int k : compressed) {
@@ -2440,12 +2440,12 @@ public class LZW {
                 entry = w + w.charAt(0);
             else
                 throw new IllegalArgumentException("Bad compressed k: " + k);
-            
+
             result.append(entry);
-            
+
             // Add w+entry[0] to the dictionary.
             dictionary.put(dictSize++, w + entry.charAt(0));
-            
+
             w = entry;
         }
         return result.toString();
@@ -2493,7 +2493,7 @@ var LZW = {
         for (i = 0; i < uncompressed.length; i += 1) {
             c = uncompressed.charAt(i);
             wc = w + c;
-            //Do not use dictionary[wc] because javascript arrays 
+            //Do not use dictionary[wc] because javascript arrays
             //will return values for array['pop'], array['push'] etc
            // if (dictionary[wc]) {
             if (dictionary.hasOwnProperty(wc)) {
@@ -2561,7 +2561,7 @@ document.write(comp + '
 
 
 
-###  ES6 Version 
+###  ES6 Version
 
 
 This is the the same thing, but for ES6. The code has been refactored and cleaned up a bit to look neater.
@@ -2575,7 +2575,7 @@ This is the the same thing, but for ES6. The code has been refactored and cleane
         LZW.compress(uncompressed)
         LZW.decompress(compressed)
 */
-class LZW 
+class LZW
 {
     /**
         Perform the LZW compression
@@ -2589,19 +2589,19 @@ class LZW
         {
             dictionary[String.fromCharCode(i)] = i;
         }
-        
+
         let word = '';
         let result = [];
         let dictSize = 256;
-        
+
         for (let i = 0, len = uncompressed.length; i < len; i++)
         {
             let curChar = uncompressed[i];
             let joinedWord = word + curChar;
-            
-            // Do not use dictionary[joinedWord] because javascript objects 
+
+            // Do not use dictionary[joinedWord] because javascript objects
             // will return values for myObject['toString']
-            if (dictionary.hasOwnProperty(joinedWord)) 
+            if (dictionary.hasOwnProperty(joinedWord))
             {
                 word = joinedWord;
             }
@@ -2613,15 +2613,15 @@ class LZW
                 word = curChar;
             }
         }
-        
+
         if (word !== '')
         {
             result.push(dictionary[word]);
         }
-        
+
         return result;
     }
-    
+
     /**
         Decompress LZW array generated by LZW.compress()
         compressed - Array. The array that holds LZW compressed data.
@@ -2634,16 +2634,16 @@ class LZW
         {
             dictionary[i] = String.fromCharCode(i);
         }
-        
+
         let word = String.fromCharCode(compressed[0]);
         let result = word;
         let entry = '';
         let dictSize = 256;
-        
+
         for (let i = 1, len = compressed.length; i < len; i++)
         {
             let curNumber = compressed[i];
-            
+
             if (dictionary[curNumber] !== undefined)
             {
                 entry = dictionary[curNumber];
@@ -2660,15 +2660,15 @@ class LZW
                     return null;
                 }
             }
-            
+
             result += entry;
-            
+
             // Add word + entry[0] to dictionary
             dictionary[dictSize++] = word + entry[0];
-            
+
             word = entry;
         }
-        
+
         return result;
     }
 }
@@ -2716,7 +2716,7 @@ def lzw_compress:
             | .[0][$wc] = $dictSize              # Add wc to the dictionary
             | .[1] += 1                          # dictSize ++
           end
-      ) 
+      )
       # Output the code for w unless w == "":
       | if .[2] == "" then .[3]
         else .[3] + [.[0][.[2]]]
@@ -2779,7 +2779,7 @@ function compressLZW(decompressed::String)
     if !isempty(w) push!(result, dict[w]) end
     return result
 end
- 
+
 function decompressLZW(compressed::Vector{Int})
     dictsize = 256
     dict     = Dict{Int,String}(i => string('\0' + i) for i in 0:dictsize)
@@ -2801,11 +2801,11 @@ function decompressLZW(compressed::Vector{Int})
     end
     return String(take!(result))
 end
- 
+
 original     = ["0123456789", "TOBEORNOTTOBEORTOBEORNOT", "dudidudidudida"]
 compressed   = compressLZW.(original)
 decompressed = decompressLZW.(compressed)
- 
+
 for (word, comp, decomp) in zip(original, compressed, decompressed)
     comprate = (length(word) - length(comp)) / length(word) * 100
     println("Original: $word\n-> Compressed: $comp (compr.rate: $(round(comprate, digits=2))%)\n-> Decompressed: $decomp")
@@ -2912,8 +2912,8 @@ TOBEORNOTTOBEORTOBEORNOT
 
 ## Liberty BASIC
 
-The encoder features variable-bit output, a 12 to 21 bit rotating dictionary (that can also be set to "Static"), and an unbalanced binary search tree that assures a worst-case-scenario maximum of 256 searches to find any given index, regardless of the dictionary's size. 
-It uses both read and write buffers so is capable of handling files of any size, and it adds a settings-byte to the beginning of the encoded file to retain the maximum bit-width and rotating status of the dictionary. 
+The encoder features variable-bit output, a 12 to 21 bit rotating dictionary (that can also be set to "Static"), and an unbalanced binary search tree that assures a worst-case-scenario maximum of 256 searches to find any given index, regardless of the dictionary's size.
+It uses both read and write buffers so is capable of handling files of any size, and it adds a settings-byte to the beginning of the encoded file to retain the maximum bit-width and rotating status of the dictionary.
 It also has the option to write the encoding/decoding dictionaries to file so the encoder can be checked for accuracy.
 This code directly follows the methodology described in an excellent web article by Juha Nieminen entitled "An efficient LZW implementation".
 <lang> DIM LZW(1, 1)
@@ -3287,7 +3287,7 @@ Module BBCtrans {
                           d = 0
                           REPEAT {
                                   c = d
-                                  IF i > LEN(i$) THEN EXIT 
+                                  IF i > LEN(i$) THEN EXIT
                                   FOR d = 1 TO l-1
                                     IF w$ = dict$(d) THEN EXIT
                                   NEXT d
@@ -3347,10 +3347,10 @@ Module FastM2000 {
                   Repeat {
                         c = d
                         IF i > Len(i$) Then Exit
-                        if exist(dict, w$) Then { 
+                        if exist(dict, w$) Then {
                               d=eval(dict)
                         } Else  Append dict, w$:=l: Exit
-                        if d<l Then i += 1 : w$ += Mid$(i$, i, 1)  
+                        if d<l Then i += 1 : w$ += Mid$(i$, i, 1)
                   } Until d >= l
                   l += 1 : w$ = Right$(w$, 1)
                   o$ += Chr$(c Mod 256) + Chr$(c div 256)
@@ -3558,10 +3558,10 @@ class LZW {
         key->Append(i->As(Char));
         dictionary->Insert(key, IntHolder->New(i));
     };
-    
+
     w := "";
     result := IntVector->New();
-            
+
     each (i : uncompressed) {
       c := uncompressed->Get(i);
       wc := String->New(w);
@@ -3572,23 +3572,23 @@ class LZW {
         else {
           value := dictionary->Find(w)->As(IntHolder);
           result->AddBack(value->Get());
-          # Add wc to the dictionary.        
+          # Add wc to the dictionary.
           dictionary->Insert(wc, IntHolder->New(dictSize));
           dictSize+=1;
           w := "";
           w->Append(c);
         };
       };
-    
+
       # Output the code for w.
       if (w->Size() > 0) {
         value := dictionary->Find(w)->As(IntHolder);
         result->AddBack(value->Get());
       };
-    
-      return result;    
+
+      return result;
   }
-  
+
   function : Decompress(compressed : IntVector) ~ String {
     # Build the dictionary.
     dictSize := 256;
@@ -3598,17 +3598,17 @@ class LZW {
       value->Append(i->As(Char));
       dictionary->Insert(i, value);
     };
-    
+
     w := "";
     found := compressed->Remove(0);
     w->Append(found->As(Char));
-    
-    result := String->New(w);    
+
+    result := String->New(w);
     each (i : compressed) {
       k := compressed->Get(i);
 
       entry : String;
-      if (dictionary->Has(k)) {      
+      if (dictionary->Has(k)) {
         entry := dictionary->Find(k);
       }
       else if (k = dictSize) {
@@ -3617,7 +3617,7 @@ class LZW {
       }
       else {
         return "";
-      };    
+      };
       result->Append(entry);
 
       # Add w+entry[0] to the dictionary.
@@ -3625,17 +3625,17 @@ class LZW {
       value->Append(entry->Get(0));
       dictionary->Insert(dictSize, value);
       dictSize+=1;
- 
-      w := entry;      
+
+      w := entry;
     };
-    
+
     return result;
   }
-  
+
   function : Show(results : IntVector) ~ Nil {
     "["->Print();
     each(i : results) {
-      results->Get(i)->Print(); 
+      results->Get(i)->Print();
       if(i + 1 < results->Size()) {
         ", "->Print();
       };
@@ -3717,9 +3717,9 @@ The class for the LZW compression algorithm:
        NSData *s = [NSData dataWithBytes: &j length: 1];
        dict[s] = @(i);
     }
-    
+
     NSData *w = [NSData data];
-    
+
     for(NSUInteger i=0; i < [string length]; i++)
     {
        NSMutableData *wc = [NSMutableData dataWithData: w];
@@ -3759,7 +3759,7 @@ NSString *text = @"TOBEORNOTTOBEORTOBEORNOT";
 int main()
 {
   @autoreleasepool {
-  
+
     NSMutableArray *array = [[NSMutableArray alloc] init];
     LZWCompressor *lzw = [[LZWCompressor alloc]
                           initWithArray: array ];
@@ -3771,7 +3771,7 @@ int main()
           printf("%u\n", [obj unsignedIntValue]);
        }
     }
-  
+
   }
   return EXIT_SUCCESS;
 }
@@ -3807,7 +3807,7 @@ let compress ~uncompressed =
     let str = String.make 1 (char_of_int i) in
     Hashtbl.add dictionary str i
   done;
- 
+
   let f = (fun (w, dict_size, result) c ->
     let c = String.make 1 c in
     let wc = w ^ c in
@@ -3852,7 +3852,7 @@ let decompress ~compressed =
     | hd::tl -> (String.make 1 (char_of_int hd)), tl
     | [] -> failwith "empty input"
   in
- 
+
   let result = [w] in
 
   let result, _, _ =
@@ -3866,7 +3866,7 @@ let decompress ~compressed =
           raise(ValueError(Printf.sprintf "Bad compressed k: %d" k))
       in
       let result = entry :: result in
-   
+
       (* add (w ^ entry.[0]) to the dictionary *)
       Hashtbl.add dictionary dict_size (w ^ (String.make 1 entry.[0]));
       (result, entry, dict_size + 1)
@@ -3913,7 +3913,7 @@ let write_compressed ~filename ~compressed =
   IO.flush_bits ob;
   close_out oc;
 ;;
-    
+
 let read_compressed ~filename =
   let ic = open_in filename in
   let nbits = input_byte ic in
@@ -4095,10 +4095,10 @@ TOBEORNOTTOBEORTOBEORNOT
 {{trans|Perl}}
 
 ```perl6
-sub compress(Str $uncompressed --> Seq)  { 
+sub compress(Str $uncompressed --> Seq)  {
     my $dict-size = 256;
     my %dictionary = (.chr => .chr for ^$dict-size);
- 
+
     my $w = "";
     gather {
   for $uncompressed.comb -> $c {
@@ -4110,15 +4110,15 @@ sub compress(Str $uncompressed --> Seq)  {
     $w = $c;
       }
   }
-     
+
   take %dictionary{$w} if $w.chars;
     }
 }
- 
-sub decompress(@compressed --> Str) { 
+
+sub decompress(@compressed --> Str) {
     my $dict-size = 256;
     my %dictionary = (.chr => .chr for ^$dict-size);
- 
+
     my $w = shift @compressed;
     join '', gather {
   take $w;
@@ -4127,13 +4127,13 @@ sub decompress(@compressed --> Str) {
       if %dictionary{$k}:exists { take $entry = %dictionary{$k} }
       elsif $k == $dict-size    { take $entry = $w ~ $w.substr(0,1) }
       else                      { die "Bad compressed k: $k" }
-     
+
       %dictionary{$dict-size++} = $w ~ $entry.substr(0,1);
       $w = $entry;
   }
     }
 }
- 
+
 my @compressed = compress('TOBEORNOTTOBEORTOBEORNOT');
 say @compressed;
 my $decompressed = decompress(@compressed);
@@ -4532,21 +4532,21 @@ decompression ok
 
 ## PureBasic
 
-This version encodes character sequences as 16-bit values.  
-Because this version only encodes an input string it won't handle Null values. 
-This is because PureBasic uses these to terminate strings.  
+This version encodes character sequences as 16-bit values.
+Because this version only encodes an input string it won't handle Null values.
+This is because PureBasic uses these to terminate strings.
 Only slight modifications are necessary to handle Null values that would be present for a more generic routine that could be used with a buffer containing any data type.
 
 ```PureBasic
 Procedure compress(uncompressed.s, List result.u())
   ;Compress a string to a list of output symbols
-  
+
   ;Build the dictionary.
   Protected  dict_size = 255, i
   newmap dict.u()
   For i = 0 To 254
     dict(Chr(i + 1)) = i
-  Next 
+  Next
 
   Protected w.s, wc.s, *c.Character = @uncompressed
   w = ""
@@ -4562,34 +4562,34 @@ Procedure compress(uncompressed.s, List result.u())
       dict(wc) = dict_size
       dict_size + 1 ;no check is performed for overfilling the dictionary.
       w = Chr(*c\c)
-    EndIf 
+    EndIf
     *c + 1
   Wend
-  
+
   ;Output the code for w
   If w
     AddElement(result())
     result() = dict(w)
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure.s decompress(List compressed.u())
   ;Decompress a list of encoded values to a string
-  If ListSize(compressed()) = 0: ProcedureReturn "": EndIf 
-  
+  If ListSize(compressed()) = 0: ProcedureReturn "": EndIf
+
   ;Build the dictionary.
   Protected  dict_size = 255, i
-  
+
   Dim dict.s(255)
   For i = 1 To 255
     dict(i - 1) = Chr(i)
-  Next 
+  Next
 
   Protected w.s, entry.s, result.s
   FirstElement(compressed())
   w = dict(compressed())
   result = w
-  
+
   i = 0
   While NextElement(compressed())
     i + 1
@@ -4600,37 +4600,37 @@ Procedure.s decompress(List compressed.u())
     Else
       MessageRequester("Error","Bad compression at [" + Str(i) + "]")
       ProcedureReturn result;abort
-    EndIf 
+    EndIf
     result + entry
     ;Add w + Left(entry, 1) to the dictionary
     If ArraySize(dict()) <= dict_size
       Redim dict(dict_size + 256)
-    EndIf 
+    EndIf
     dict(dict_size) = w + Left(entry, 1)
     dict_size + 1 ;no check is performed for overfilling the dictionary.
 
     w = entry
-  Wend 
+  Wend
   ProcedureReturn result
 EndProcedure
 
 If OpenConsole()
   ;How to use:
-  
+
   Define initial.s, decompressed.s
-  
+
   Print("Type something: ")
   initial = Input()
   NewList compressed.u()
   compress(initial, compressed())
   ForEach compressed()
     Print(Str(compressed()) + " ")
-  Next 
+  Next
   PrintN("")
-  
+
   decompressed = decompress(compressed())
   PrintN(decompressed)
-   
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -4763,7 +4763,7 @@ TOBEORNOTTOBEORTOBEORNOT
                        (set! w (string c))]))
   (emit! (dict-ref d w))
   (reverse result))
-     
+
 ;; Decompress a LZW compressed string
 (define (decompress compressed)
   (def d (make-hash))
@@ -4809,11 +4809,11 @@ TOBEORNOTTOBEORTOBEORNOT
 
 
 ## REXX
- 
+
 
 ### version 1
-                             
-{{trans|Java}} 
+
+{{trans|Java}}
 
 ```rexx
 /* REXX ---------------------------------------------------------------
@@ -4906,7 +4906,7 @@ decompression ok
 str=To be or not to be that is the question!
 [84, 111, 32, 98, 101, 32, 111, 114, 32, 110, 111, 116, 32, 116, 257, 259, 268, 104, 97, 267, 105, 115, 272, 260, 113, 117, 101, 115, 116, 105, 111, 110, 33]
 dec=To be or not to be that is the question!
-decompression ok    
+decompression ok
 
 ```
 
@@ -4973,12 +4973,12 @@ for i = 1 to len(encode) step 2
 next
 showarray(result)
 see decodelzw(encode)
- 
+
 func encodelzw(text)
        o = ""
        dict = list(4096)
        for i = 1 to 255
-            dict[i] = char(i) 
+            dict[i] = char(i)
        next
        l = i
        i = 1
@@ -4987,26 +4987,26 @@ func encodelzw(text)
               d = 0
               while d < l
                       c = d
-                      if i > len(text) 
-                         exit 
+                      if i > len(text)
+                         exit
                       ok
                       for d = 1 to l
                            if w = dict[d]
-                             exit 
+                             exit
                            ok
                       next
                       if d < l
-                         i = i + 1 
+                         i = i + 1
                          w = w + substr(text,i,1)
                       ok
-              end 
-              dict[l] = w 
+              end
+              dict[l] = w
               l = l + 1
               w = right(w,1)
               o = o + char(c % 256) + char(floor(c / 256))
        end
-       return o 
- 
+       return o
+
 func decodelzw(text)
        o = ""
        dict = list(4096)
@@ -5140,10 +5140,10 @@ TOBEORNOTTOBEORTOBEORNOT
 def compress(tc:String) = {
     //initial dictionary
     val startDict = (1 to 255).map(a=>(""+a.toChar,a)).toMap
-    val (fullDict, result, remain) = tc.foldLeft ((startDict, List[Int](), "")) { 
+    val (fullDict, result, remain) = tc.foldLeft ((startDict, List[Int](), "")) {
       case ((dict,res,leftOver),nextChar) =>
         if (dict.contains(leftOver + nextChar)) // current substring already in dict
-          (dict, res, leftOver+nextChar) 
+          (dict, res, leftOver+nextChar)
         else if (dict.size < 4096) // add to dictionary
           (dict + ((leftOver+nextChar, dict.size+1)), dict(leftOver) :: res, ""+nextChar)
         else // dictionary is full
@@ -5216,7 +5216,7 @@ println(result)
                                    (list (string (integer->char c)))))
           (set! n (+ n 1))
           (dict-setup (+ c 1)))))
-        
+
   ;; Compress the string
   (let compress ((w "") (ci 0))
     (define c (string (list-ref uncompressed ci)))
@@ -5267,7 +5267,7 @@ println(result)
 
     ;; Build the resulting string
     (set! result (string-append result (list-ref dictionary k)))
-        
+
     (if (not (eqv? ci (- (length compressed) 1)))
         (decompress kn (+ ci 1))))
   result)
@@ -5291,7 +5291,7 @@ TOBEORNOTTOBEORTOBEORNOT
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const func string: lzwCompress (in string: uncompressed) is func
   result
     var string: compressed is "";
@@ -5318,7 +5318,7 @@ const func string: lzwCompress (in string: uncompressed) is func
       compressed &:= str(mydict[buffer]);
     end if;
   end func;
- 
+
 const func string: lzwDecompress (in string: compressed) is func
   result
     var string: uncompressed is "";
@@ -5354,7 +5354,7 @@ const func string: lzwDecompress (in string: compressed) is func
       end if;
     end for;
   end func;
- 
+
 const proc: main is func
   local
     var string: compressed is "";
@@ -5388,15 +5388,15 @@ Original source: [http://seed7.sourceforge.net/algorith/string.htm#lzwCompress] 
 ```ruby
 # Compress a string to a list of output symbols.
 func compress(String uncompressed) -> Array {
- 
+
     # Build the dictionary.
     var dict_size = 256
     var dictionary = Hash()
- 
+
     for i in range(dict_size) {
         dictionary{i.chr} = i.chr
     }
- 
+
     var w = ''
     var result = []
     uncompressed.each { |c|
@@ -5411,26 +5411,26 @@ func compress(String uncompressed) -> Array {
             w = c
         }
     }
- 
+
     # Output the code for w.
     if (w != '') {
         result << dictionary{w}
     }
- 
+
     return result
 }
- 
+
 # Decompress a list of output ks to a string.
 func decompress(Array compressed) -> String {
- 
+
     # Build the dictionary.
     var dict_size = 256
     var dictionary = Hash()
- 
+
     for i in range(dict_size) {
         dictionary{i.chr} = i.chr
     }
- 
+
     var w = compressed.shift
     var result = w
     compressed.each { |k|
@@ -5443,16 +5443,16 @@ func decompress(Array compressed) -> String {
             die "Bad compressed k: #{k}"
         }
         result += entry
- 
+
         # Add w+entry[0] to the dictionary.
         dictionary{dict_size} = w+entry.first
         dict_size++
- 
+
         w = entry
     }
     return result
 }
- 
+
 # How to use:
 var compressed = compress('TOBEORNOTTOBEORTOBEORNOT')
 say compressed.join(' ')
@@ -5619,8 +5619,8 @@ if {$s eq [LZW::decode [LZW::encode $s]]} then {puts success} else {puts fail} ;
 
 
 ## Xojo
-   
-{{trans|PHP}} 
+
+{{trans|PHP}}
 
 ```vb
 
@@ -5635,17 +5635,17 @@ if {$s eq [LZW::decode [LZW::encode $s]]} then {puts success} else {puts fail} ;
       Dim lookup as integer
       Dim startPos as integer = 0
       Dim combined as String
-      
+
       strLen = len(str)
-      
+
       dic = populateDictionary
-      
+
       for i = 1 to strLen
         c = str.mid(i, 1)
         wc = w + c
-        
+
         startPos = getStartPos(wc)
-        
+
         lookup = findArrayPos(dic, wc, startPos)
         if (lookup <> -1) then
           w = wc
@@ -5659,13 +5659,13 @@ if {$s eq [LZW::decode [LZW::encode $s]]} then {puts success} else {puts fail} ;
           w = c
         end if
       next i
-      
+
       if (w <> "") then
         startPos = getStartPos(w)
         lookup = findArrayPos(dic, w, startPos)
         result.Append(lookup.ToText)
       end if
-      
+
       return join(result, ",")
     End Function
 
@@ -5677,11 +5677,11 @@ if {$s eq [LZW::decode [LZW::encode $s]]} then {puts success} else {puts fail} ;
       dim entry as string
       dim dic() as string
       dim i as integer
-      
+
       comStr = str.Split(",")
       comStrLen = comStr.Ubound
       dic = populateDictionary
-      
+
       w = chr(val(comStr(0)))
       result = w
       for i = 1 to comStrLen
@@ -5690,7 +5690,7 @@ if {$s eq [LZW::decode [LZW::encode $s]]} then {puts success} else {puts fail} ;
         dic.append(w + entry.mid(1,1))
         w = entry
       next i
-      
+
       return result
     End Function
 
@@ -5698,16 +5698,16 @@ if {$s eq [LZW::decode [LZW::encode $s]]} then {puts success} else {puts fail} ;
       dim arraySize as Integer
       dim arrayPosition as Integer = -1
       dim i as Integer
-      
+
       arraySize = UBound(arr)
-      
+
       for i = start to arraySize
         if (strcomp(arr(i), search, 0) = 0) then
           arrayPosition = i
           exit
         end if
       next i
-      
+
       return arrayPosition
     End Function
 
@@ -5722,11 +5722,11 @@ if {$s eq [LZW::decode [LZW::encode $s]]} then {puts success} else {puts fail} ;
     Private Function populateDictionary() As string()
       dim dic() as string
       dim i as integer
-      
+
       for i = 0 to 255
         dic.append(Chr(i))
       next i
-      
+
       return dic
     End Function
 
@@ -5775,7 +5775,7 @@ fcn lzwCompress(uncompressed){ // text-->list of 12 bit ints
    }
    if(w) compressed.append(dictionary[w]);
    compressed
-} 
+}
 fcn lzwUncompress(compressed){ // compressed data-->text
    dictionary:=(256).pump(Dictionary(),fcn(n){ return(n,n.toChar()) });
    w,decommpressed:=dictionary[compressed[0]],Data(Void,w);

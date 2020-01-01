@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Networking and Web Interaction}}
-For this exercise a program is open a socket to localhost on port 256 and send the message "hello socket world" before closing the socket. 
+For this exercise a program is open a socket to localhost on port 256 and send the message "hello socket world" before closing the socket.
 
 Catching any exceptions or errors is not required.
 
@@ -55,7 +55,7 @@ i.text("hello socket world");
 
 ## AutoHotkey
 
-modified from 
+modified from
 [http://www.autohotkey.com/forum/topic13829.html script] by zed gecko.
 
 ```autohotkey
@@ -185,7 +185,7 @@ ExitSub:
 DllCall("Ws2_32\WSACleanup")
 ExitApp
 ```
- 
+
 
 
 ## AutoIt
@@ -211,14 +211,14 @@ EndFunc
 ```bbcbasic
       INSTALL @lib$+"SOCKLIB"
       PROC_initsockets
-      
+
       socket% = FN_tcpconnect("localhost", "256")
       IF socket% <=0 ERROR 100, "Failed to open socket"
-      
+
       REM Don't use FN_writesocket since an error is expected
       msg$ = "hello socket world"
       SYS `send`, socket%, !^msg$, LEN(msg$), 0 TO result%
-      
+
       PROC_closesocket(socket%)
       PROC_exitsockets
 ```
@@ -234,8 +234,8 @@ EndFunc
 With little changes it could work on MS Windows (without Cygwin) too. But I don't know exactly how. I have tested it using <code>nc -l -p 256</code>.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -247,11 +247,11 @@ int main()
 {
    int i, sock, len, slen;
 
-   struct addrinfo hints, *addrs;  
+   struct addrinfo hints, *addrs;
    memset(&hints, 0, sizeof(struct addrinfo));
    hints.ai_family = AF_UNSPEC;
    hints.ai_socktype = SOCK_STREAM;
-   
+
    if (0 == getaddrinfo("localhost", "256", &hints, &addrs))
    {
        sock = socket(addrs->ai_family, addrs->ai_socktype, addrs->ai_protocol);
@@ -282,7 +282,7 @@ I have tested it using <code>nc -vlp 4321</code>.
 
 
 ```cpp
-//compile with g++ main.cpp -lboost_system -pthread 
+//compile with g++ main.cpp -lboost_system -pthread
 
 #include <boost/asio.hpp>
 
@@ -383,7 +383,7 @@ libsocket.close(socket);
   (with-open [sock (Socket. host 256)
               printer (PrintWriter. (.getOutputStream sock))]
     (.println printer msg)))
- 
+
 (send-data "localhost" "hello socket world")
 ```
 
@@ -419,8 +419,8 @@ module socket ;
 import std.stdio ;
 import std.socket ;
 version(Win32) {
-  // For Win32 systems, need to link with ws2_32.lib. 
-  pragma(lib, "ws2_32.lib") ; 
+  // For Win32 systems, need to link with ws2_32.lib.
+  pragma(lib, "ws2_32.lib") ;
 }
 void main() {
   long res;
@@ -469,14 +469,14 @@ import system'net;
 import system'text;
 import extensions'text;
 import system'io;
- 
+
 public program()
 {
     var socket := new Socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
     socket.connect("127.0.0.1",256);
     var s := "hello socket world";
     socket.write(AnsiEncoder.toByteArray(0, s.Length, s));
-    socket.close()    
+    socket.close()
 }
 ```
 
@@ -590,12 +590,12 @@ close-socket
 
 ```go
 package main
- 
+
 import (
     "fmt"
     "net"
 )
- 
+
 func main() {
     conn, err := net.Dial("tcp", "localhost:256")
     if err != nil {
@@ -617,7 +617,7 @@ func main() {
 $ sudo nc -l 256 & go run sock.go
 [2] 19754
 hello socket world[2]+  Done                    sudo nc -l 256
-$ 
+$
 
 ```
 
@@ -664,7 +664,7 @@ Note:  Socket support in native Icon is limited and requires the external helper
 =
 ## Unicon
 =
-Unicon integrated TCP/IP networking and messaging.  
+Unicon integrated TCP/IP networking and messaging.
 
 ```unicon
 procedure main(arglist)       #: usage socket port hostname or socket port
@@ -677,7 +677,7 @@ procedure hello(host,port)
    host ||:= ":"
    host ||:= 0 < 65536 > port | runerr(103,port)
    if s := open(host,"n") then {
-      write(s, "hello socket world.")  
+      write(s, "hello socket world.")
       close(s)
       }
    else  stop("Unable to connect to ",host,":",port)
@@ -692,13 +692,13 @@ end
 
 
 ```idl
-socket, unit, 'localhost',256,/get_lun  
-printf,unit,"hello socket world" 
+socket, unit, 'localhost',256,/get_lun
+printf,unit,"hello socket world"
 close, unit
 ```
 
 
-"Well-known" port numbers (under 1024 -- such as 256) can also be specified by name (in this case 'RAP'). 
+"Well-known" port numbers (under 1024 -- such as 256) can also be specified by name (in this case 'RAP').
 
 If there is no listener on this port, this will hang for a while before timing out.
 
@@ -840,7 +840,7 @@ use std
 
 const main = {
 	match std.dial("tcp!localhost!256")
-	| `std.Ok fd:	
+	| `std.Ok fd:
 		std.write(fd, "hello socket world")
 		std.close(fd)
 	| `std.Err err:
@@ -1200,7 +1200,7 @@ CloseNetworkConnection(ConnectionID)
 import socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect(("localhost", 256))
-sock.sendall("hello socket world") 
+sock.sendall("hello socket world")
 sock.close()
 ```
 
@@ -1365,7 +1365,7 @@ object sendSocketData {
 
 The library [http://seed7.sourceforge.net/libraries/socket.htm socket.s7i]
 defines the function [http://seed7.sourceforge.net/libraries/socket.htm#openInetSocket%28in_integer%29 openInetSocket],
-which returns a connected internet socket file at a port at localhost. 
+which returns a connected internet socket file at a port at localhost.
 
 
 ```seed7
@@ -1509,10 +1509,10 @@ helloServer run.
 
 ```symsyn
 
- '127.0.0.1' $addr          
- connect $addr 256 sok      
- 'hello socket world' [sok] 
- close sok       
+ '127.0.0.1' $addr
+ connect $addr 256 sok
+ 'hello socket world' [sok]
+ close sok
 
 ```
 
@@ -1599,7 +1599,7 @@ Imports System
 Imports System.IO
 Imports System.Net.Sockets
 
-Public Class Program 
+Public Class Program
     Public Shared Sub Main(ByVal args As String[])
         Dim tcp As New TcpClient("localhost", 256)
         Dim writer As New StreamWriter(tcp.GetStream())
@@ -1640,7 +1640,7 @@ End Class
 
 section .text
   global _start
-  
+
 ;--------------------------------------------------
 ;Functions to make things easier. :]
 ;--------------------------------------------------
@@ -1687,18 +1687,18 @@ _exit:
   mov eax, 1
   push eax
   int 0x80
-  
+
 _print:
   mov ebx, 1
-  mov eax, 4  
-  int 0x80   
-  ret         
+  mov eax, 4
+  int 0x80
+  ret
 ;--------------------------------------------------
 ;Main code body
 ;--------------------------------------------------
- 
+
 _start:
-  mov esi, szIp    
+  mov esi, szIp
   mov edi, sockaddr_in
   xor eax,eax
   xor ecx,ecx
@@ -1719,23 +1719,23 @@ _start:
     cmp   ecx,byte 4
     jne   .cc
 
-  mov word [edi], AF_INET 
-  mov esi, szPort 
+  mov word [edi], AF_INET
+  mov esi, szPort
   xor eax,eax
   xor ebx,ebx
-  .nextstr1:   
-    lodsb      
+  .nextstr1:
+    lodsb
     test al,al
     jz .ret1
     sub   al,'0'
     imul ebx,10
-    add   ebx,eax   
+    add   ebx,eax
     jmp   .nextstr1
   .ret1:
-    xchg ebx,eax   
+    xchg ebx,eax
     mov [sport], eax
-  
-  mov si, [sport]  
+
+  mov si, [sport]
   call _connect
   cmp eax, 0
   jnz short _fail
@@ -1751,9 +1751,9 @@ _fail:
   call _exit
 
 
-_recverr: 
+_recverr:
   call _exit
-_dced: 
+_dced:
   call _exit
 
 section .data
@@ -1772,7 +1772,7 @@ cArray       resd 1
              resd 1
 	     resd 1
              resd 1
-	     
+
 ;send 'array'.
 sArray      resd 1
             resd 1
@@ -1801,7 +1801,7 @@ include /masm32/include/windows.inc
 include /masm32/include/user32.inc
 include /masm32/include/kernel32.inc
 include /masm32/include/ws2_32.inc
-   
+
 includelib /masm32/lib/user32.lib
 includelib /masm32/lib/kernel32.lib
 includelib /masm32/lib/ws2_32.lib
@@ -1815,15 +1815,15 @@ WinMain proto :DWORD,:DWORD,:DWORD,:DWORD
    	szSockStr	db "Hello socket world!",13,10,0
    	szIp		db "127.0.0.1",0
    	port		dd 256
-   	
+
    	wsa			WSADATA <>
    	sa			sockaddr_in <>
-   	
+
 .data?
    	hInstance 	dd ?
    	CommandLine dd ?
    	sock		dd ?
-   	
+
 .const
 WM_SOCK			equ WM_USER+100
 
@@ -1831,7 +1831,7 @@ WM_SOCK			equ WM_USER+100
 start:
 	invoke WSAStartup, 200h, addr wsa
 	.if eax!=NULL
-		invoke ExitProcess, eax 
+		invoke ExitProcess, eax
 	.else
 		invoke GetModuleHandle, NULL
 		mov    hInstance,eax
@@ -1845,7 +1845,7 @@ WinMain proc hInst:HINSTANCE,hPrevInst:HINSTANCE,CmdLine:LPSTR,CmdShow:DWORD
 	LOCAL wc:WNDCLASSEX
 	LOCAL msg:MSG
 	LOCAL hwnd:HWND
-	
+
 	mov   wc.cbSize,SIZEOF WNDCLASSEX
 	mov   wc.style, CS_HREDRAW or CS_VREDRAW
 	mov   wc.lpfnWndProc, OFFSET WndProc
@@ -1856,37 +1856,37 @@ WinMain proc hInst:HINSTANCE,hPrevInst:HINSTANCE,CmdLine:LPSTR,CmdShow:DWORD
 	mov   wc.hbrBackground,COLOR_BTNFACE+1
 	mov   wc.lpszMenuName,NULL
 	mov   wc.lpszClassName,OFFSET ClassName
-	
+
 	invoke LoadIcon,NULL,IDI_APPLICATION
 	mov   wc.hIcon,eax
 	mov   wc.hIconSm,eax
-	
+
 	invoke LoadCursor,NULL,IDC_ARROW
 	mov   wc.hCursor,eax
-	
+
 	invoke RegisterClassEx, addr wc
 	INVOKE CreateWindowEx,NULL,ADDR ClassName,ADDR AppName,\
            WS_OVERLAPPEDWINDOW,CW_USEDEFAULT,\
            CW_USEDEFAULT,CW_USEDEFAULT,CW_USEDEFAULT,NULL,NULL,\
            hInst,NULL
 	mov   hwnd,eax
-	
+
 	invoke ShowWindow, hwnd,SW_SHOWNORMAL
 	invoke UpdateWindow, hwnd
-	
+
 	.WHILE TRUE
 		invoke GetMessage, ADDR msg,NULL,0,0
 		.BREAK .IF (!eax)
 		invoke TranslateMessage, ADDR msg
 		invoke DispatchMessage, ADDR msg
 	.ENDW
-	
+
 	mov     eax,msg.wParam
 	ret
 WinMain endp
 
 WndProc proc hWnd:HWND, uMsg:UINT, wParam:WPARAM, lParam:LPARAM
-	
+
 	.IF uMsg==WM_DESTROY
 		invoke PostQuitMessage,NULL
 	.ELSEIF uMsg==WM_CREATE
@@ -1928,10 +1928,10 @@ WndProc proc hWnd:HWND, uMsg:UINT, wParam:WPARAM, lParam:LPARAM
 			.endif
 		.endif
 	.ELSE
-		invoke DefWindowProc,hWnd,uMsg,wParam,lParam		
+		invoke DefWindowProc,hWnd,uMsg,wParam,lParam
 		ret
 	.ENDIF
-	
+
 	xor eax,eax
 	ret
 WndProc endp
@@ -1956,7 +1956,7 @@ include /masm32/include/windows.inc
 include /masm32/include/user32.inc
 include /masm32/include/kernel32.inc
 include /masm32/include/ws2_32.inc
-   
+
 includelib /masm32/lib/user32.lib
 includelib /masm32/lib/kernel32.lib
 includelib /masm32/lib/ws2_32.lib
@@ -1970,10 +1970,10 @@ WinMain proto :DWORD,:DWORD,:DWORD,:DWORD
    	szSockStr	db "Hello socket world!",13,10,0
    	szIp		db "127.0.0.1",0
    	port		dd 256
-   	
+
    	wsa			WSADATA <>
    	sa			sockaddr_in <>
-   	
+
 .data?
    	hInstance 	dd ?
    	CommandLine dd ?
@@ -1983,7 +1983,7 @@ WinMain proto :DWORD,:DWORD,:DWORD,:DWORD
 start:
 	invoke WSAStartup, 200h, addr wsa
 	.if eax!=NULL
-		invoke ExitProcess, eax 
+		invoke ExitProcess, eax
 	.else
 		invoke GetModuleHandle, NULL
 		mov    hInstance,eax
@@ -1997,7 +1997,7 @@ WinMain proc hInst:HINSTANCE,hPrevInst:HINSTANCE,CmdLine:LPSTR,CmdShow:DWORD
 	LOCAL wc:WNDCLASSEX
 	LOCAL msg:MSG
 	LOCAL hwnd:HWND
-	
+
 	mov   wc.cbSize,SIZEOF WNDCLASSEX
 	mov   wc.style, CS_HREDRAW or CS_VREDRAW
 	mov   wc.lpfnWndProc, OFFSET WndProc
@@ -2008,37 +2008,37 @@ WinMain proc hInst:HINSTANCE,hPrevInst:HINSTANCE,CmdLine:LPSTR,CmdShow:DWORD
 	mov   wc.hbrBackground,COLOR_BTNFACE+1
 	mov   wc.lpszMenuName,NULL
 	mov   wc.lpszClassName,OFFSET ClassName
-	
+
 	invoke LoadIcon,NULL,IDI_APPLICATION
 	mov   wc.hIcon,eax
 	mov   wc.hIconSm,eax
-	
+
 	invoke LoadCursor,NULL,IDC_ARROW
 	mov   wc.hCursor,eax
-	
+
 	invoke RegisterClassEx, addr wc
 	INVOKE CreateWindowEx,NULL,ADDR ClassName,ADDR AppName,\
            WS_OVERLAPPEDWINDOW,CW_USEDEFAULT,\
            CW_USEDEFAULT,CW_USEDEFAULT,CW_USEDEFAULT,NULL,NULL,\
            hInst,NULL
 	mov   hwnd,eax
-	
+
 	invoke ShowWindow, hwnd,SW_SHOWNORMAL
 	invoke UpdateWindow, hwnd
-	
+
 	.WHILE TRUE
 		invoke GetMessage, ADDR msg,NULL,0,0
 		.BREAK .IF (!eax)
 		invoke TranslateMessage, ADDR msg
 		invoke DispatchMessage, ADDR msg
 	.ENDW
-	
+
 	mov     eax,msg.wParam
 	ret
 WinMain endp
 
 WndProc proc hWnd:HWND, uMsg:UINT, wParam:WPARAM, lParam:LPARAM
-	
+
 	.IF uMsg==WM_DESTROY
 		invoke PostQuitMessage,NULL
 	.ELSEIF uMsg==WM_CREATE
@@ -2056,10 +2056,10 @@ WndProc proc hWnd:HWND, uMsg:UINT, wParam:WPARAM, lParam:LPARAM
 		invoke lstrlen, addr szSockStr
 		invoke send, sock, addr szSockStr, eax, 0
 	.ELSE
-		invoke DefWindowProc,hWnd,uMsg,wParam,lParam		
+		invoke DefWindowProc,hWnd,uMsg,wParam,lParam
 		ret
 	.ENDIF
-	
+
 	xor eax,eax
 	ret
 WndProc endp

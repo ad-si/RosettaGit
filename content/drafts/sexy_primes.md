@@ -50,7 +50,7 @@ See sequences: [[OEIS:A023271]], [[OEIS:A046122]], [[OEIS:A046123]] and [[OEIS:A
 ::*Display at most the '''last''' '''5''', less than one million thirty-five, of each sexy prime group type.
 ::*Find and display the count of the unsexy primes less than one million thirty-five.
 ::*Find and display the '''last 10''' unsexy primes less than one million thirty-five.
-::*Note that 1000033 '''SHOULD NOT''' be counted in the pair count. It is sexy, but not in a pair within the limit. However, it also '''SHOULD NOT''' be listed in the unsexy primes since it is sexy. 
+::*Note that 1000033 '''SHOULD NOT''' be counted in the pair count. It is sexy, but not in a pair within the limit. However, it also '''SHOULD NOT''' be listed in the unsexy primes since it is sexy.
 
 
 
@@ -144,10 +144,10 @@ function save(key,nbr_to_keep,str) {
 
 ## C
 
-Similar approach to the Go entry but only stores the arrays that need to be printed out.  
+Similar approach to the Go entry but only stores the arrays that need to be printed out.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
@@ -433,7 +433,7 @@ CONSTANT: tuplet-names qw{ pair triplet quadruplet quintuplet }
 : show-unsexy ( -- )
     unsexy-primes dup length commas limit commas
     [I Number of unsexy primes < ${0}: ${1}I] nl
-    "Last 10: " write 10 short tail* [ pprint bl ] each nl ; 
+    "Last 10: " write 10 short tail* [ pprint bl ] each nl ;
 
 : main ( -- ) 2 5 [a,b] [ show-tuplets ] each show-unsexy ;
 
@@ -691,9 +691,9 @@ function primesbysexiness(x)
     println("The last 10 unsexy primes are: $lastunsexy")
 end
 
-primesbysexiness(1000035) 
+primesbysexiness(1000035)
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 There are:
@@ -832,7 +832,7 @@ The last 10 are:
 {{works with|Free Pascal}}
 Is the count of unsexy primes = primes-2* SexyPrimesPairs +SexyPrimesTriplets-SexyPrimesQuintuplet?
 
-48627 unsexy primes // = 78500-2*16386+2900-1 
+48627 unsexy primes // = 78500-2*16386+2900-1
 
 37907606 unsexy primes // = 50847538-2*6849047+758163-1
 It seems so, not a proove.
@@ -1275,7 +1275,7 @@ for i=limit to 3 by -2 do       -- (this loop skips 2)
         else
             sequence set = {i}
             for j=i-6 to 3 by -6 do
-                if j<=0 or sieve[j]=false then exit end if          
+                if j<=0 or sieve[j]=false then exit end if
                 set = prepend(set,j)
                 integer l = length(set)
                 if length(sets[l])<limits[l] then
@@ -1466,25 +1466,25 @@ for g in islice(unsexy,max(len(unsexy)-10,0),len(unsexy)): print(g)
 ```txt
 
 There are 16386 sexy prime pairs all components of which are less than 1,000,035. The last 5 are:
-(999371,999377) 
-(999431,999437) 
-(999721,999727) 
-(999763,999769) 
+(999371,999377)
+(999431,999437)
+(999721,999727)
+(999763,999769)
 (999953,999959)
 There are 2900 sexy prime triplets all components of which are less than 1,000,035. The last 5 are:
-(997427,997433,997439) 
-(997541,997547,997553) 
-(998071,998077,998083) 
-(998617,998623,998629) 
-(998737,998743,998749) 
+(997427,997433,997439)
+(997541,997547,997553)
+(998071,998077,998083)
+(998617,998623,998629)
+(998737,998743,998749)
 There are 325 sexy prime quadruplets all components of which are less than 1,000,035. The last 5 are:
-(977351,977357,977363,977369) 
-(983771,983777,983783,983789) 
-(986131,986137,986143,986149) 
-(990371,990377,990383,990389) 
-(997091,997097,997103,997109) 
+(977351,977357,977363,977369)
+(983771,983777,983783,983789)
+(986131,986137,986143,986149)
+(990371,990377,990383,990389)
+(997091,997097,997103,997109)
 There are 1 sexy prime quintuplets all components of which are less than 1,000,035. The last 5 are:
-(5,11,17,23,29) 
+(5,11,17,23,29)
 There are 48627 unsexy primes less than 1,000,035. The last 10 are:
 999853
 999863
@@ -1797,23 +1797,23 @@ fcn msg(N,s,ps,n,g){
 <pre style="font-size:80%">
 Number of sexy prime pairs less than 1,000,035 is 16,386
 The last 5 are:
-  (999371,999377) (999431,999437) (999721,999727) (999763,999769) (999953,999959) 
+  (999371,999377) (999431,999437) (999721,999727) (999763,999769) (999953,999959)
 
 Number of sexy triplet primes less than 1,000,035 is 2,900
 The last 5 are:
-  (997427,997433,997439) (997541,997547,997553) (998071,998077,998083) (998617,998623,998629) (998737,998743,998749) 
+  (997427,997433,997439) (997541,997547,997553) (998071,998077,998083) (998617,998623,998629) (998737,998743,998749)
 
 Number of sexy quadruplet primes less than 1,000,035 is 325
 The last 5 are:
-  (977351,977357,977363,977369) (983771,983777,983783,983789) (986131,986137,986143,986149) (990371,990377,990383,990389) (997091,997097,997103,997109) 
+  (977351,977357,977363,977369) (983771,983777,983783,983789) (986131,986137,986143,986149) (990371,990377,990383,990389) (997091,997097,997103,997109)
 
 Number of sexy quintuplet primes less than 1,000,035 is 1
 The last 1 is:
-  (5,11,17,23,29) 
+  (5,11,17,23,29)
 
 Number of unsexy primes less than 1,000,035 is 48,627
 The last 10 are:
-  (999853) (999863) (999883) (999907) (999917) (999931) (999961) (999979) (999983) (1000003) 
+  (999853) (999863) (999883) (999907) (999917) (999931) (999961) (999979) (999983) (1000003)
 
 ```
 

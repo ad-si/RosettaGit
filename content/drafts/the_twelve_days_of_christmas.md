@@ -13,13 +13,13 @@ tags = []
 {{task}}
 
 ;Task:
-Write a program that outputs the lyrics of the Christmas carol ''The Twelve Days of Christmas''. 
-The lyrics can be found [http://www.lyricsmode.com/lyrics/c/christmas_carols/the_twelve_days_of_christmas.html here].  
+Write a program that outputs the lyrics of the Christmas carol ''The Twelve Days of Christmas''.
+The lyrics can be found [http://www.lyricsmode.com/lyrics/c/christmas_carols/the_twelve_days_of_christmas.html here].
 
 (You must reproduce the words in the correct order, but case, format, and punctuation are left to your discretion.)
 
 
-;Related tasks: 
+;Related tasks:
 *   [[99 Bottles of Beer]]
 *   [[Old_lady_swallowed_a_fly]]
 *   [[Comma quibbling]]
@@ -30,7 +30,7 @@ The lyrics can be found [http://www.lyricsmode.com/lyrics/c/christmas_carols/the
 
 ## ActionScript
 
-This program outputs the lyrics to a TextField object. 
+This program outputs the lyrics to a TextField object.
 The text field can be scrolled using the mouse wheel (Windows only) or by using the up/down arrow keys on the keyboard.
 
 {{works with|Flash Player|Flash Player|10}}
@@ -38,7 +38,7 @@ The text field can be scrolled using the mouse wheel (Windows only) or by using 
 
 ```ActionScript
 package {
-    
+
     import flash.display.Sprite;
     import flash.events.Event;
     import flash.events.KeyboardEvent;
@@ -47,20 +47,20 @@ package {
     import flash.text.TextFieldAutoSize;
     import flash.text.TextFormat;
     import flash.ui.Keyboard;
-    
+
     public class TwelveDaysOfChristmas extends Sprite {
-        
+
         private var _textArea:TextField = new TextField();
-        
+
         public function TwelveDaysOfChristmas() {
             if ( stage ) _init();
             else addEventListener(Event.ADDED_TO_STAGE, _init);
         }
-        
+
         private function _init(e:Event = null):void {
-            
+
             removeEventListener(Event.ADDED_TO_STAGE, _init);
-            
+
             _textArea = new TextField();
             _textArea.x = 10;
             _textArea.y = 10;
@@ -69,17 +69,17 @@ package {
             _textArea.width = stage.stageWidth - 20;
             _textArea.height = stage.stageHeight - 10;
             _textArea.multiline = true;
-            
+
             var format:TextFormat = new TextFormat();
             format.size = 14;
             _textArea.defaultTextFormat = format;
-            
+
             var verses:Vector.<String> = new Vector.<String>(12, true);
             var lines:Vector.<String>;
-            
+
             var days:Vector.<String> = new Vector.<String>(12, true);
             var gifts:Vector.<String> = new Vector.<String>(12, true);
-            
+
             days[0] = 'first';
             days[1] = 'second';
             days[2] = 'third';
@@ -92,7 +92,7 @@ package {
             days[9] = 'tenth';
             days[10] = 'eleventh';
             days[11] = 'twelfth';
-            
+
             gifts[0] = 'A partridge in a pear tree';
             gifts[1] = 'Two turtle doves';
             gifts[2] = 'Three french hens';
@@ -105,48 +105,48 @@ package {
             gifts[9] = 'Ten lords a-leaping';
             gifts[10] = 'Eleven pipers piping';
             gifts[11] = 'Twelve drummers drumming';
-            
+
             var i:uint, j:uint, k:uint, line:String;
-            
+
             for ( i = 0; i < 12; i++ ) {
-                
+
                 lines = new Vector.<String>(i + 2, true);
                 lines[0] = "On the " + days[i] + " day of Christmas, my true love gave to me";
-                
+
                 j = i + 1;
                 k = 0;
                 while ( j-- > 0 )
                     lines[++k] = gifts[j];
-                
+
                 verses[i] = lines.join('\n');
-                
+
                 if ( i == 0 )
                     gifts[0] = 'And a partridge in a pear tree';
-                
+
             }
-            
+
             var song:String = verses.join('\n\n');
             _textArea.text = song;
             addChild(_textArea);
-            
+
             _textArea.addEventListener(MouseEvent.MOUSE_WHEEL, _onMouseWheel);
             stage.addEventListener(KeyboardEvent.KEY_DOWN, _onKeyDown);
-            
+
         }
-        
+
         private function _onKeyDown(e:KeyboardEvent):void {
             if ( e.keyCode == Keyboard.DOWN )
                 _textArea.y -= 40;
             else if ( e.keyCode == Keyboard.UP )
                 _textArea.y += 40;
         }
-        
+
         private function _onMouseWheel(e:MouseEvent):void {
             _textArea.y += 20 * e.delta;
         }
-        
+
     }
-    
+
 }
 ```
 
@@ -293,19 +293,19 @@ property pstrOrdinals : "first, second, third, fourth, fifth, " & ¬
 
 -- daysOfXmas :: () -> String
 on daysOfXmas()
-    
+
     -- csv :: String -> [String]
     script csv
         on |λ|(str)
             splitOn(", ", str)
         end |λ|
     end script
-    
+
     set {gifts, ordinals} to map(csv, [pstrGifts, pstrOrdinals])
-    
+
     -- verseOfTheDay :: Int -> String
     script verseOfTheDay
-        
+
         -- dayGift :: Int -> String
         script dayGift
             on |λ|(n, i)
@@ -324,25 +324,25 @@ on daysOfXmas()
                 end if
             end |λ|
         end script
-        
+
         on |λ|(intDay)
             "On the " & item intDay of ordinals & " day of Xmas, my true love gave to me ..." & ¬
                 linefeed & intercalate("," & linefeed, ¬
                 map(dayGift, enumFromTo(intDay, 1)))
-            
+
         end |λ|
     end script
-    
+
     intercalate(linefeed & linefeed, ¬
         map(verseOfTheDay, enumFromTo(1, length of ordinals)))
-    
+
 end daysOfXmas
 
 -- TEST ---------------------------------------------------------------------
 on run
-    
+
     daysOfXmas()
-    
+
 end run
 
 
@@ -382,7 +382,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -457,10 +457,10 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 procedure Twelve_Days_Of_Christmas is
    type Days is (First, Second, Third, Fourth, Fifth, Sixth,
 		 Seventh, Eighth, Ninth, Tenth, Eleventh, Twelfth);
-   
+
    package E_IO is new Ada.Text_IO.Enumeration_IO(Days);
    use E_IO;
-   
+
    Gifts : array (Days) of Unbounded_String :=
      (To_Unbounded_String(" A partridge in a pear-tree."),
       To_Unbounded_String(" Two turtle doves"),
@@ -716,12 +716,12 @@ ove gave to me:2|Two turtle doves'second3|Three french hens&third4|Four calling
 ```C
 
 #include<stdio.h>
- 
+
 int main()
 {
     int i,j;
- 
-    char days[12][10] = 
+
+    char days[12][10] =
     {
         "First",
         "Second",
@@ -748,21 +748,21 @@ int main()
         "Six geese a-laying",
         "Five golden rings",
         "Four calling birds",
-        "Three french hens", 
-        "Two turtle doves", 
+        "Three french hens",
+        "Two turtle doves",
         "And a partridge in a pear tree."
     };
- 
+
     for(i=0;i<12;i++)
     {
         printf("\n\nOn the %s day of Christmas\nMy true love gave to me:",days[i]);
- 
+
         for(j=i;j>=0;j--)
         {
             (i==0)?printf("\nA partridge in a pear tree."):printf("\n%s%c",gifts[11-j],(j!=0)?',':' ');
         }
     }
- 
+
     return 0;
 }
 ```
@@ -772,8 +772,8 @@ int main()
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <array>
 #include <string>
 using namespace std;
@@ -795,7 +795,7 @@ int main()
         "eleventh",
         "twelfth"
     };
-  
+
     const array<string, 12> gifts
     {
         "And a partridge in a pear tree",
@@ -892,9 +892,9 @@ public class TwelveDaysOfChristmas {
 ```clojure
 (let [numbers '(first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth)
 
-      gifts   ["And a partridge in a pear tree",   "Two turtle doves",     "Three French hens",      
-               "Four calling birds",               "Five gold rings",      "Six geese a-laying",  
-               "Seven swans a-swimming",           "Eight maids a-miling", "Nine ladies dancing",            
+      gifts   ["And a partridge in a pear tree",   "Two turtle doves",     "Three French hens",
+               "Four calling birds",               "Five gold rings",      "Six geese a-laying",
+               "Seven swans a-swimming",           "Eight maids a-miling", "Nine ladies dancing",
                "Ten lords a-leaping",              "Eleven pipers piping", "Twelve drummers drumming"]
 
        day     (fn [n] (printf "On the %s day of Christmas, my true love sent to me\n" (nth numbers n)))]
@@ -967,7 +967,7 @@ WORKING-STORAGE SECTION.
     03  ordinals                        PIC X(10) OCCURS 12 TIMES.
 
 01  day-num                             PIC 99 COMP.
-                                        
+
 PROCEDURE DIVISION.
     PERFORM VARYING day-num FROM 1 BY 1 UNTIL day-num > 12
         DISPLAY "On the " FUNCTION TRIM(ordinals (day-num)) " day of Christmas,"
@@ -981,7 +981,7 @@ PROCEDURE DIVISION.
             END-PERFORM
             DISPLAY "And a " gifts (1)
         END-IF
-        
+
         DISPLAY SPACE
     END-PERFORM
     .
@@ -995,7 +995,7 @@ END PROGRAM twelve-days-of-christmas.
 
 
 ```lisp
-(let 
+(let
    ((names '(first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth))
     (gifts '( "A partridge in a pear tree." "Two turtle doves and"    "Three French hens,"
               "Four calling birds,"         "Five gold rings,"        "Six geese a-laying,"
@@ -1108,70 +1108,70 @@ void main() @safe {
 
 
 ```dc
-0 
+0
 
-d [first]                       r :n 
-d [A partridge in a pear tree.] r :g 1 + 
+d [first]                       r :n
+d [A partridge in a pear tree.] r :g 1 +
 
-d [second]                      r :n 
+d [second]                      r :n
 d [Two turtle doves and]        r :g 1 +
 
-d [third]                       r :n 
+d [third]                       r :n
 d [Three French hens,]          r :g 1 +
 
-d [fourth]                      r :n 
+d [fourth]                      r :n
 d [Four calling birds,]         r :g 1 +
 
-d [fifth]                       r :n 
+d [fifth]                       r :n
 d [Five gold rings,]            r :g 1 +
 
-d [sixth]                       r :n 
+d [sixth]                       r :n
 d [Six geese a-laying,]         r :g 1 +
 
-d [seventh]                     r :n 
+d [seventh]                     r :n
 d [Seven swans a-swimming,]     r :g 1 +
 
-d [eighth]                      r :n 
+d [eighth]                      r :n
 d [Eight maids a-milking,]      r :g 1 +
 
-d [ninth]                       r :n 
+d [ninth]                       r :n
 d [Nine ladies dancing,]        r :g 1 +
 
-d [tenth]                       r :n 
+d [tenth]                       r :n
 d [Ten lords a-leaping,]        r :g 1 +
 
-d [eleventh]                    r :n 
+d [eleventh]                    r :n
 d [Eleven pipers piping,]       r :g 1 +
 
-d [twelfth]                     r :n 
-  [Twelve drummers drumming,]   r :g 
+d [twelfth]                     r :n
+  [Twelve drummers drumming,]   r :g
 
-[ 
-  d 
-  ;g n 
-  10 P 
+[
+  d
+  ;g n
+  10 P
 ] sp
 
-[ 
-  d 
-  0 r !<p 
-  1 - 
-  d 
-  0 r !<r 
+[
+  d
+  0 r !<p
+  1 -
+  d
+  0 r !<r
 ] sr
-  
-[ 
-  [On the ] n 
-  d ;n n 
-  [ day of Christmas, my true love sent to me:] n 
-  10 P 
-  d 
+
+[
+  [On the ] n
+  d ;n n
+  [ day of Christmas, my true love sent to me:] n
+  10 P
+  d
   lr x s_
   10 P
-  1 + 
-  d 
+  1 +
+  d
   12 r <l
-] sl 
+] sl
 
 0 ll x
 
@@ -1278,14 +1278,14 @@ ELENA 4.1 :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     var days := new string[]::(
             "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth",
             "tenth", "eleventh", "twelfth"
             );
- 
+
     var gifts := new string[]::(
             "And a partridge in a pear tree",
             "Two turtle doves",
@@ -1300,11 +1300,11 @@ public program()
             "Eleven pipers piping",
             "Twelve drummers drumming"
         );
- 
+
     for(int i := 0, i < 12, i += 1)
     {
         console.printLine("On the ", days[i], " day of Christmas, my true love gave to me");
- 
+
         if (i == 0)
         {
             console.printLine("A partridge in a pear tree")
@@ -1316,7 +1316,7 @@ public program()
                 console.printLine(gifts[j])
             }
         };
- 
+
         console.printLine()
     }
 }
@@ -1394,8 +1394,8 @@ A partridge in a pear tree
 -module(twelve_days).
 -export([gifts_for_day/1]).
 
-names(N) -> lists:nth(N, 
-              ["first",   "second", "third", "fourth", "fifth",    "sixth", 
+names(N) -> lists:nth(N,
+              ["first",   "second", "third", "fourth", "fifth",    "sixth",
                "seventh", "eighth", "ninth", "tenth",  "eleventh", "twelfth" ]).
 
 gifts() -> [ "A partridge in a pear tree.", "Two turtle doves and",
@@ -1405,7 +1405,7 @@ gifts() -> [ "A partridge in a pear tree.", "Two turtle doves and",
              "Nine ladies dancing,",        "Ten lords a-leaping,",
              "Eleven pipers piping,",       "Twelve drummers drumming," ].
 
-gifts_for_day(N) -> 
+gifts_for_day(N) ->
   "On the " ++ names(N) ++ " day of Christmas, my true love sent to me:\n" ++
   string:join(lists:reverse(lists:sublist(gifts(), N)), "\n").
 
@@ -1472,7 +1472,7 @@ let displayGifts day =
     else
         List.iter (fun i -> printfn "%s" gifts.[i]) [day..(-1)..0]
     printf "\n"
-    
+
 List.iter displayGifts [0..11]
 ```
 
@@ -1512,7 +1512,7 @@ CONSTANT: gifts {
 
 : verse ( n -- )
     1 - [ ordinals nth opener printf ] [ descend ] bi ;
-    
+
 : twelve-days-of-christmas ( -- ) 12 [1,b] [ verse ] each ;
 
 MAIN: twelve-days-of-christmas
@@ -1558,7 +1558,7 @@ create ordinals s" first" 2, s" second" 2, s" third"    2, s" fourth" 2,
                 s" fifth" 2, s" sixth"  2, s" seventh"  2, s" eighth" 2,
                 s" ninth" 2, s" tenth"  2, s" eleventh" 2, s" twelfth" 2,
 : ordinal ordinals swap 2 * cells + 2@ ;
- 
+
 create gifts s" A partridge in a pear tree." 2,
              s" Two turtle doves and" 2,
              s" Three French hens," 2,
@@ -1572,9 +1572,9 @@ create gifts s" A partridge in a pear tree." 2,
              s" Eleven pipers piping," 2,
              s" Twelve drummers drumming," 2,
 : gift gifts swap 2 * cells + 2@ ;
- 
-: day 
-  s" On the " type 
+
+: day
+  s" On the " type
   dup ordinal type
   s"  day of Christmas, my true love sent to me:" type
   cr
@@ -1583,11 +1583,11 @@ create gifts s" A partridge in a pear tree." 2,
   1 -loop
   cr
   ;
- 
-: main 
+
+: main
   12 0 do i day loop
 ;
- 
+
 main
 bye
 
@@ -1843,11 +1843,11 @@ days :: [String]
 days = [
     "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth",
     "ninth", "tenth", "eleventh", "twelfth" ]
- 
-verseOfTheDay :: Int -> IO () 
+
+verseOfTheDay :: Int -> IO ()
 verseOfTheDay day = do
-    putStrLn $ "On the " ++ days !! day ++ " day of Christmas my true love gave to me... " 
-    mapM_ putStrLn [dayGift day d | d <- [day, day-1..0]] 
+    putStrLn $ "On the " ++ days !! day ++ " day of Christmas my true love gave to me... "
+    mapM_ putStrLn [dayGift day d | d <- [day, day-1..0]]
     putStrLn ""
     where dayGift 0 _ = "A partridge in a pear tree!"
           dayGift _ gift = gifts !! gift
@@ -1858,32 +1858,32 @@ main = mapM_ verseOfTheDay [0..11]
 ```
 
 {{out}}
-<pre style="font-size:80%">On the first day of Christmas my true love gave to me... 
+<pre style="font-size:80%">On the first day of Christmas my true love gave to me...
 A partridge in a pear tree!
 
-On the second day of Christmas my true love gave to me... 
+On the second day of Christmas my true love gave to me...
 Two turtle doves,
 And a partridge in a pear tree!
 
-On the third day of Christmas my true love gave to me... 
+On the third day of Christmas my true love gave to me...
 Three french hens,
 Two turtle doves,
 And a partridge in a pear tree!
 
-On the fourth day of Christmas my true love gave to me... 
+On the fourth day of Christmas my true love gave to me...
 Four calling birds,
 Three french hens,
 Two turtle doves,
 And a partridge in a pear tree!
 
-On the fifth day of Christmas my true love gave to me... 
+On the fifth day of Christmas my true love gave to me...
 FIVE GOLDEN RINGS,
 Four calling birds,
 Three french hens,
 Two turtle doves,
 And a partridge in a pear tree!
 
-On the sixth day of Christmas my true love gave to me... 
+On the sixth day of Christmas my true love gave to me...
 Six geese a-laying,
 FIVE GOLDEN RINGS,
 Four calling birds,
@@ -1891,7 +1891,7 @@ Three french hens,
 Two turtle doves,
 And a partridge in a pear tree!
 
-On the seventh day of Christmas my true love gave to me... 
+On the seventh day of Christmas my true love gave to me...
 Seven swans a-swimming,
 Six geese a-laying,
 FIVE GOLDEN RINGS,
@@ -1900,7 +1900,7 @@ Three french hens,
 Two turtle doves,
 And a partridge in a pear tree!
 
-On the eighth day of Christmas my true love gave to me... 
+On the eighth day of Christmas my true love gave to me...
 Eight maids a-milking,
 Seven swans a-swimming,
 Six geese a-laying,
@@ -1910,7 +1910,7 @@ Three french hens,
 Two turtle doves,
 And a partridge in a pear tree!
 
-On the ninth day of Christmas my true love gave to me... 
+On the ninth day of Christmas my true love gave to me...
 Nine ladies dancing,
 Eight maids a-milking,
 Seven swans a-swimming,
@@ -1921,7 +1921,7 @@ Three french hens,
 Two turtle doves,
 And a partridge in a pear tree!
 
-On the tenth day of Christmas my true love gave to me... 
+On the tenth day of Christmas my true love gave to me...
 Ten lords a-leaping,
 Nine ladies dancing,
 Eight maids a-milking,
@@ -1933,7 +1933,7 @@ Three french hens,
 Two turtle doves,
 And a partridge in a pear tree!
 
-On the eleventh day of Christmas my true love gave to me... 
+On the eleventh day of Christmas my true love gave to me...
 Eleven pipers piping,
 Ten lords a-leaping,
 Nine ladies dancing,
@@ -1946,7 +1946,7 @@ Three french hens,
 Two turtle doves,
 And a partridge in a pear tree!
 
-On the twelfth day of Christmas my true love gave to me... 
+On the twelfth day of Christmas my true love gave to me...
 Twelve drummers drumming,
 Eleven pipers piping,
 Ten lords a-leaping,
@@ -2085,18 +2085,18 @@ for ( var i = 0; i < 12; i++ ) {
 
     lines = [];
     lines[0] = "On the " + days[i] + " day of Christmas, my true love gave to me";
-    
+
     var j = i + 1;
     var k = 0;
     while ( j-- > 0 )
         lines[++k] = gifts[j];
 
-    
+
     verses[i] = lines.join('\n');
-    
+
     if ( i == 0 )
         gifts[0] = "And a partridge in a pear tree";
-    
+
 }
 
 song = verses.join('\n\n');
@@ -2208,7 +2208,7 @@ JSON.stringify(function (h, k, l, f, m, n) {
     p = [f, m, n + ":"].join(" "),
     q = g[d - 2] + " and",
     r = e[0];
-    
+
   return c.reduce(function (b, f, a) {
     return b.concat([[[h, "the", c[a], l, "of", k].join(" "), p].concat((1 <
       a ? [e[a]] : []).concat(g.slice(d - a, d - 2)).concat([q, r].slice(a ?
@@ -2277,7 +2277,7 @@ range(12) | . as $i |
 ```
 
 
-Run with 
+Run with
 ```txt
 jq -rnf programfile.jq
 ```
@@ -2330,7 +2330,7 @@ var days = [
     'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth',
     'tenth', 'eleventh', 'twelfth'
 ];
- 
+
 var gifts = [
     "A partridge in a pear tree",
     "Two turtle doves",
@@ -2345,24 +2345,24 @@ var gifts = [
     "Eleven pipers piping",
     "Twelve drummers drumming"
 ];
- 
+
 var lines, verses = [], song;
- 
+
 for ( var i = 0; i < 12; i++ ) {
     lines = [];
     lines[0] = "On the " + days[i] + " day of Christmas, my true love gave to me";
- 
+
     var j = i + 1;
     var k = 0;
     while ( j-- > 0 )
         lines[++k] = gifts[j];
- 
+
     verses[i] = lines.join('\n');
- 
+
     if ( i == 0 )
         gifts[0] = "And a partridge in a pear tree";
 }
- 
+
 song = verses.join('\n\n');
 ;song;
 
@@ -2688,8 +2688,8 @@ IM IN YR Outer UPPIN YR i WILE DIFFRINT i AN 12
     I HAS A Count ITZ DIFFERENCE OF Day AN j
     VISIBLE Prezents'Z SRS Count
   IM OUTTA YR Inner
-  BOTH SAEM i AN 0 
-  O RLY? 
+  BOTH SAEM i AN 0
+  O RLY?
     YA RLY
       Prezents'Z SRS 1 R "And a partridge in a pear tree"
   OIC
@@ -2699,7 +2699,7 @@ IM IN YR Outer UPPIN YR i WILE DIFFRINT i AN 12
         VISIBLE ""
   OIC
 IM OUTTA YR Outer
-  
+
 KTHXBYE
 ```
 
@@ -2763,7 +2763,7 @@ local verses = {}
 for i = 1, 12 do
     local lines = {}
     lines[1] = "On the " .. days[i] .. " day of Christmas, my true love gave to me"
-    
+
     local j = i
     local k = 2
     repeat
@@ -2771,7 +2771,7 @@ for i = 1, 12 do
         k = k + 1
         j = j - 1
     until j == 0
-    
+
     verses[i] = table.concat(lines, '\n')
 end
 
@@ -2861,50 +2861,50 @@ A partridge in a pear tree
 
 ```Mathematica
 
-daysarray = {"first", "second", "third", "fourth", "fifth", "sixth", 
+daysarray = {"first", "second", "third", "fourth", "fifth", "sixth",
    "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth"};
-giftsarray = {"And a partridge in a pear tree.", "Two turtle doves", 
-   "Three french hens", "Four calling birds", "FIVE GOLDEN RINGS", 
-   "Six geese a-laying", "Seven swans a-swimming,", 
-   "Eight maids a-milking", "Nine ladies dancing", 
-   "Ten lords a-leaping", "Eleven pipers piping", 
+giftsarray = {"And a partridge in a pear tree.", "Two turtle doves",
+   "Three french hens", "Four calling birds", "FIVE GOLDEN RINGS",
+   "Six geese a-laying", "Seven swans a-swimming,",
+   "Eight maids a-milking", "Nine ladies dancing",
+   "Ten lords a-leaping", "Eleven pipers piping",
    "Twelve drummers drumming"};
 Do[Print[StringForm[
-   "On the `1` day of Christmas, my true love gave to me: `2`", 
-   daysarray[[i]], 
-   If[i == 1, "A partridge in a pear tree.", 
+   "On the `1` day of Christmas, my true love gave to me: `2`",
+   daysarray[[i]],
+   If[i == 1, "A partridge in a pear tree.",
     Row[Reverse[Take[giftsarray, i]], ","]]]], {i, 1, 12}]
 
 ```
 
 {{out}}
 <pre style="height:55ex;overflow:scroll">
-On the first day of Christmas, my true love gave to me: 
+On the first day of Christmas, my true love gave to me:
 A partridge in a pear tree.
 
-On the second day of Christmas, my true love gave to me: 
+On the second day of Christmas, my true love gave to me:
 Two turtle doves,
 And a partridge in a pear tree.
 
-On the third day of Christmas, my true love gave to me: 
+On the third day of Christmas, my true love gave to me:
 Three french hens,
 Two turtle doves,
 And a partridge in a pear tree.
 
-On the fourth day of Christmas, my true love gave to me: 
+On the fourth day of Christmas, my true love gave to me:
 Four calling birds,
 Three french hens,
 Two turtle doves,
 And a partridge in a pear tree.
 
-On the fifth day of Christmas, my true love gave to me: 
+On the fifth day of Christmas, my true love gave to me:
 FIVE GOLDEN RINGS,
 Four calling birds,
 Three french hens,
 Two turtle doves,
 And a partridge in a pear tree.
 
-On the sixth day of Christmas, my true love gave to me: 
+On the sixth day of Christmas, my true love gave to me:
 Six geese a-laying,
 FIVE GOLDEN RINGS,
 Four calling birds,
@@ -2912,7 +2912,7 @@ Three french hens,
 Two turtle doves,
 And a partridge in a pear tree.
 
-On the seventh day of Christmas, my true love gave to me: 
+On the seventh day of Christmas, my true love gave to me:
 Seven swans a-swimming,
 Six geese a-laying,
 FIVE GOLDEN RINGS,
@@ -2921,7 +2921,7 @@ Three french hens,
 Two turtle doves,
 And a partridge in a pear tree.
 
-On the eighth day of Christmas, my true love gave to me: 
+On the eighth day of Christmas, my true love gave to me:
 Eight maids a-milking,
 Seven swans a-swimming,
 Six geese a-laying,
@@ -2931,7 +2931,7 @@ Three french hens,
 Two turtle doves,
 And a partridge in a pear tree.
 
-On the ninth day of Christmas, my true love gave to me: 
+On the ninth day of Christmas, my true love gave to me:
 Nine ladies dancing,
 Eight maids a-milking,
 Seven swans a-swimming,
@@ -2942,7 +2942,7 @@ Three french hens,
 Two turtle doves,
 And a partridge in a pear tree.
 
-On the tenth day of Christmas, my true love gave to me: 
+On the tenth day of Christmas, my true love gave to me:
 Ten lords a-leaping,
 Nine ladies dancing,
 Eight maids a-milking,
@@ -2954,7 +2954,7 @@ Three french hens,
 Two turtle doves,
 And a partridge in a pear tree.
 
-On the eleventh day of Christmas, my true love gave to me: 
+On the eleventh day of Christmas, my true love gave to me:
 Eleven pipers piping,
 Ten lords a-leaping,
 Nine ladies dancing,
@@ -2967,7 +2967,7 @@ Three french hens,
 Two turtle doves,
 And a partridge in a pear tree.
 
-On the twelfth day of Christmas, my true love gave to me: 
+On the twelfth day of Christmas, my true love gave to me:
 Twelve drummers drumming,
 Eleven pipers piping,
 Ten lords a-leaping,
@@ -3083,7 +3083,7 @@ class TwelveDaysOfChristmas  {
   function : Main(args : String[]) ~ Nil {
     days := ["first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth",
             "tenth", "eleventh", "twelfth"];
- 
+
         gifts := ["A partridge in a pear tree",
             "Two turtle doves",
             "Three french hens",
@@ -3096,18 +3096,18 @@ class TwelveDaysOfChristmas  {
             "Ten lords a-leaping",
             "Eleven pipers piping",
             "Twelve drummers drumming"];
- 
+
         for(i := 0; i < days->Size(); i+=1;) {
           IO.Console->Print("On the ")->Print(days[i])->PrintLine(" day of Christmas, my true love gave to me");
-		  
+
           j := i + 1;
           while(j > 0 ) {
             j -= 1;
             gifts[j]->PrintLine();
           };
-      
+
            IO.Console->PrintLine();
- 
+
            if (i = 0) {
              gifts[0] := "And a partridge in a pear tree";
            };
@@ -3123,7 +3123,7 @@ class TwelveDaysOfChristmas  {
 
 
 ```parigp
-days=["first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth"]; 
+days=["first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth"];
 gifts=["And a partridge in a pear tree.", "Two turtle doves", "Three french hens", "Four calling birds", "Five golden rings", "Six geese a-laying", "Seven swans a-swimming", "Eight maids a-milking", "Nine ladies dancing", "Ten lords a-leaping", "Eleven pipers piping", "Twelve drummers drumming"];
 {
 for(i=1,#days,
@@ -3275,7 +3275,7 @@ On the first    day of Christmas, my true love gave to me:
 A partridge in a pear tree.
 
 On the second   day of Christmas, my true love gave to me:
-Two turtle doves and       
+Two turtle doves and
 A partridge in a pear tree.
 ```
 
@@ -3285,17 +3285,17 @@ A partridge in a pear tree.
 
 ```txt
 On the twelfth  day of Christmas, my true love gave to me:
-Twelve drummers drumming,  
-Eleven pipers piping,      
-Ten lords a-leaping,       
-Nine ladies dancing,       
-Eight maids a-milking,     
-Seven swans a-swimming,    
-Six geese a-laying,        
-Five gold rings,           
-Four calling birds,        
-Three French hens,         
-Two turtle doves and       
+Twelve drummers drumming,
+Eleven pipers piping,
+Ten lords a-leaping,
+Nine ladies dancing,
+Eight maids a-milking,
+Seven swans a-swimming,
+Six geese a-laying,
+Five gold rings,
+Four calling birds,
+Three French hens,
+Two turtle doves and
 A partridge in a pear tree.
 ```
 
@@ -3305,10 +3305,10 @@ A partridge in a pear tree.
 
 
 ```perl
-use v5.10; 
+use v5.10;
 
 my @days = qw{ first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth };
- 
+
 chomp ( my @gifts = grep { /\S/ } <DATA> );
 
 while ( my $day = shift @days ) {
@@ -3536,16 +3536,16 @@ $verses = [];
 for ( $i = 0; $i < 12; $i++ ) {
     $lines = [];
     $lines[0] = "On the {$days[$i]} day of Christmas, my true love gave to me";
-    
+
     $j = $i;
     $k = 0;
     while ( $j >= 0 ) {
         $lines[++$k] = $gifts[$j];
         $j--;
     }
-        
+
     $verses[$i] = implode(PHP_EOL, $lines);
-        
+
     if ( $i == 0 )
         $gifts[0] = "And a partridge in a pear tree";
 }
@@ -3742,7 +3742,7 @@ $gifts = @{
 
 1 .. 12 | % {
     "On the $($days[$_]) day of Christmas`nMy true love gave to me"
-    $_ .. 1 | % { 
+    $_ .. 1 | % {
         $gift = $gifts[$_]
         if ($_ -eq 2) { $gift += " and" }
         $gift
@@ -3876,10 +3876,10 @@ Define  I.i, J.i
 
 If OpenConsole("The twelve days of Christmas")
   For I = 1 To 12
-    PrintN(ReplaceString(#TXT$,"*",StringField(days$,I,~"\n")))    
-    For J = 13-I To 12      
+    PrintN(ReplaceString(#TXT$,"*",StringField(days$,I,~"\n")))
+    For J = 13-I To 12
       PrintN(" -> "+StringField(gifts$,J,~"\n"))
-    Next J    
+    Next J
   Next I
   Input()
 EndIf
@@ -4026,7 +4026,7 @@ This version:
   (printf "On the ~a day of Christmas,~%" (ordinal-text day))
   (printf "My True Love gave to me,~%"))
 
-(define (prezzy prezzy-line day)  
+(define (prezzy prezzy-line day)
   (match prezzy-line
     [1 (string-append (if (= day 1) "A " "And a")" partridge in a pear tree")]
     [2 "Two turtle doves"]
@@ -4041,7 +4041,7 @@ This version:
     [11 "Eleven pipers piping"]
     [12 "Twelve drummers drumming"]))
 
-(define (line-end prezzy-line day)  
+(define (line-end prezzy-line day)
   (match* (day prezzy-line) [(12 1) "."] [(x 1) ".\n"] [(_ _) ","]))
 
 (for ((day (sequence-map add1 (in-range 12)))
@@ -4123,7 +4123,7 @@ This version:
 ::*   doesn't capitalize the word   '''Twelfth'''
 ::*   capitalizes the   '''French'''   (in French hen)
 ::*   capitalized   '''True Love'''   as it (may) refer to a deity
-::*   added indentation to make verses resemble song lyrics 
+::*   added indentation to make verses resemble song lyrics
 
 ```rexx
 /*REXX program displays the verses of the song:    "The 12 days of Christmas".          */
@@ -4305,14 +4305,14 @@ A partridge in a pear tree
 On the second day of Christmas
 My true love gave to me:
 Two turtle doves
-and 
+and
 A partridge in a pear tree
 
 On the third day of Christmas
 My true love gave to me:
 Three french hens
 Two turtle doves
-and 
+and
 A partridge in a pear tree
 
 On the fourth day of Christmas
@@ -4320,7 +4320,7 @@ My true love gave to me:
 Four calling birds
 Three french hens
 Two turtle doves
-and 
+and
 A partridge in a pear tree
 
 On the fifth day of Christmas
@@ -4329,7 +4329,7 @@ Five golden rings
 Four calling birds
 Three french hens
 Two turtle doves
-and 
+and
 A partridge in a pear tree
 
 On the sixth day of Christmas
@@ -4339,7 +4339,7 @@ Five golden rings
 Four calling birds
 Three french hens
 Two turtle doves
-and 
+and
 A partridge in a pear tree
 
 On the seventh day of Christmas
@@ -4350,7 +4350,7 @@ Five golden rings
 Four calling birds
 Three french hens
 Two turtle doves
-and 
+and
 A partridge in a pear tree
 
 On the eighth day of Christmas
@@ -4362,7 +4362,7 @@ Five golden rings
 Four calling birds
 Three french hens
 Two turtle doves
-and 
+and
 A partridge in a pear tree
 
 On the ninth day of Christmas
@@ -4375,7 +4375,7 @@ Five golden rings
 Four calling birds
 Three french hens
 Two turtle doves
-and 
+and
 A partridge in a pear tree
 
 On the tenth day of Christmas
@@ -4389,7 +4389,7 @@ Five golden rings
 Four calling birds
 Three french hens
 Two turtle doves
-and 
+and
 A partridge in a pear tree
 
 On the eleventh day of Christmas
@@ -4404,7 +4404,7 @@ Five golden rings
 Four calling birds
 Three french hens
 Two turtle doves
-and 
+and
 A partridge in a pear tree
 
 On the twelfth day of Christmas
@@ -4420,7 +4420,7 @@ Five golden rings
 Four calling birds
 Three french hens
 Two turtle doves
-and 
+and
 A partridge in a pear tree
 
 ```
@@ -4447,7 +4447,7 @@ Twelve drummers drumming".split("\n")
 days = %w(first second third fourth fifth sixth
 seventh eighth ninth tenth eleventh twelfth)
 
-days.each_with_index do |day, i| 
+days.each_with_index do |day, i|
   puts "On the #{day} day of Christmas"
   puts "My true love gave to me:"
   puts gifts[0, i+1].reverse
@@ -4474,9 +4474,9 @@ Nine ladies dancing,
 Ten lords a-leaping,
 Eleven pipers piping,
 Twelve drummers drumming"
- 
+
 days$ = "first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth"
- 
+
 for i = 1 to 12
     print "On the ";word$(days$,i," ");" day of Christmas"
     print "My true love gave to me:"
@@ -4709,7 +4709,7 @@ gifts = (
 ) asSequence.
 
 days = (
-   'first' & 'second' & 'third'    & 'fourth'  & 
+   'first' & 'second' & 'third'    & 'fourth'  &
    'fifth' & 'sixth'  & 'seventh'  & 'eighth'  &
    'ninth' & 'tenth'  & 'eleventh' & 'twelfth'
 ) asSequence.
@@ -4842,7 +4842,7 @@ Begin
   gifts(12) :- "Twelve drummers drumming,";
 
   For day := 1 Step 1 Until 12 Do Begin
-    outtext("On the "); outtext(days(day)); 
+    outtext("On the "); outtext(days(day));
     outtext(" day of Christmas, my true love sent to me:"); outimage;
     For gift := day Step -1 Until 1 Do Begin
       outtext(gifts(gift)); outimage
@@ -5169,11 +5169,11 @@ And a partridge in a pear tree.
 {{works with|Swift|2.1}}
 
 ```swift
-let gifts = [ "partridge in a pear tree", "Two turtle doves", 
-              "Three French hens",        "Four calling birds",       
-              "Five gold rings",          "Six geese a-laying", 
+let gifts = [ "partridge in a pear tree", "Two turtle doves",
+              "Three French hens",        "Four calling birds",
+              "Five gold rings",          "Six geese a-laying",
               "Seven swans a-swimming",   "Eight maids a-milking",
-              "Nine ladies dancing",      "Ten lords a-leaping", 
+              "Nine ladies dancing",      "Ten lords a-leaping",
               "Eleven pipers piping",     "Twelve drummers drumming" ]
 
 let nth = [ "first",   "second", "third", "fourth", "fifth",    "sixth",
@@ -5183,7 +5183,7 @@ func giftsForDay(day: Int) -> String {
   var result = "On the \(nth[day-1]) day of Christmas, my true love sent to me:\n"
   if day > 1 {
     for again in 1...day-1 {
-      let n = day - again 
+      let n = day - again
       result += gifts[n]
       if n > 1 { result += "," }
       result += "\n"
@@ -5510,7 +5510,7 @@ gift() {
       "Five gold rings,"            "Six geese a-laying,"       \
       "Seven swans a-swimming,"     "Eight maids a-milking,"    \
       "Nine ladies dancing,"        "Ten lords a-leaping,"      \
-      "Eleven pipers piping,"       "Twelve drummers drumming," 
+      "Eleven pipers piping,"       "Twelve drummers drumming,"
   shift $n
   echo "$1"
 }
@@ -5611,7 +5611,7 @@ Six geese a-laying
 Five golden rings
 Four calling birds
 Three french hens
-Two turtle doves 
+Two turtle doves
 And a partridge in a pear tree.
 ```
 
@@ -5623,12 +5623,12 @@ And a partridge in a pear tree.
 ```vb
 days = Array("first","second","third","fourth","fifth","sixth",_
 		"seventh","eight","ninth","tenth","eleventh","twelfth")
-		
+
 gifts = Array("A partridge in a pear tree","Two turtle doves","Three french hens",_
 	"Four calling birds","Five golden rings","Six geese a-laying","Seven swans a-swimming",_
 	"Eight maids a-milking","Nine ladies dancing","Ten lords a-leaping","Eleven pipers piping",_
 	"Twelve drummers drumming")
-	
+
 For i = 0 To 11
 	WScript.StdOut.Write "On the " & days(i) & " day of Christmas"
 	WScript.StdOut.WriteLine
@@ -5638,7 +5638,7 @@ For i = 0 To 11
 		WScript.StdOut.Write gifts(i)
 	Else
 		For j = i To 0 Step - 1
-			If j = 0 Then 
+			If j = 0 Then
 				WScript.StdOut.Write "and " & gifts(0)
 			Else
 				WScript.StdOut.Write gifts(j)
@@ -5702,7 +5702,7 @@ End Module
 gifts:=
 #<<<
 "A beer, in a tree.; Two turtlenecks; Three french toast;
-Four pounds of backbacon; Five golden touques; Six packs of two-four; 
+Four pounds of backbacon; Five golden touques; Six packs of two-four;
 Seven packs of smokes; Eight comic books; Nine back up singers;
 Ten feet of snow; Eleven hosers hosing; Twelve dozen donuts"
 #<<<
@@ -5710,7 +5710,7 @@ Ten feet of snow; Eleven hosers hosing; Twelve dozen donuts"
 
 days:=("first second third fourth fifth sixth seventh eighth ninth tenth "
       "eleventh twelfth").split();
- 
+
 foreach n,day in (days.enumerate()){ n+=1;
    g:=gifts[0,n].reverse();
    println("On the %s day of Christmas\nMy true love gave to me:\n".fmt(day),

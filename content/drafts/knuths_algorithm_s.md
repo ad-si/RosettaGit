@@ -36,8 +36,8 @@ Note: A class taking n and generating a callable instance/function might also be
 * The Art of Computer Programming, Vol 2, 3.4.2 p.142
 
 
-;Related tasks: 
-* [[One of n lines in a file]] 
+;Related tasks:
+* [[One of n lines in a file]]
 * [[Accumulator factory]]
 
 
@@ -122,7 +122,7 @@ procedure Test_S_Of_N is
    Repetitions: constant Positive := 100_000;
    type D_10 is range 0 .. 9;
 
-   -- the instantiation of the generic package S_Of_N_Creator generates 
+   -- the instantiation of the generic package S_Of_N_Creator generates
    -- a package with the desired functionality
    package S_Of_3 is new S_Of_N_Creator(Sample_Size => 3, Item_Type => D_10);
 
@@ -156,7 +156,7 @@ A sample output:
 
 
 ```txt
- 0: 30008;    1: 30056;    2: 30080;    3: 29633;    4: 29910;    5: 30293;    6: 30105;    7: 29924;    8: 29871;    9: 30120; 
+ 0: 30008;    1: 30056;    2: 30080;    3: 29633;    4: 29910;    5: 30293;    6: 30105;    7: 29924;    8: 29871;    9: 30120;
 ```
 
 
@@ -168,14 +168,14 @@ At each of the 100000 repetitions not only is a new function created but also ne
 
 ```bbcbasic
       HIMEM = PAGE + 20000000
-      
+
       PRINT "Single run samples for n = 3:"
       SofN% = FNs_of_n_creator(3)
       FOR I% = 0 TO 9
         !^a%() = FN(SofN%)(I%)
         PRINT " For item " ; I% " sample(s) = " FNshowarray(a%(), I%+1)
       NEXT
-      
+
       DIM cnt%(9)
       PRINT '"Digit counts after 100000 runs:"
       FOR rep% = 1 TO 100000
@@ -190,7 +190,7 @@ At each of the 100000 repetitions not only is a new function created but also ne
         PRINT " " ; digit% " : " ; cnt%(digit%)
       NEXT
       END
-      
+
       REM Dynamically creates this function:
       REM DEF FNfunction(item%) : PRIVATE samples%(), index%
       REM DIM samples%(n%) : = FNs_of_n(item%, samples%(), index%)
@@ -201,7 +201,7 @@ At each of the 100000 repetitions not only is a new function created but also ne
       \    CHR$&A4 + "s_of_n(item%, samples%(), index%)"
       DIM p% LEN(f$) + 4 : $(p%+4) = f$ : !p% = p%+4
       = p%
-      
+
       DEF FNs_of_n(D%, s%(), RETURN I%)
       LOCAL N%
       N% = DIM(s%(),1)
@@ -212,7 +212,7 @@ At each of the 100000 repetitions not only is a new function created but also ne
         IF RND(I%) <= N% s%(RND(N%)) = D%
       ENDIF
       = !^s%()
-      
+
       DEF FNshowarray(a%(), n%)
       LOCAL i%, a$
       a$ = "["
@@ -259,8 +259,8 @@ Digit counts after 100000 runs:
 
 Instead of returning a closure we set the environment in a structure:
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
@@ -347,8 +347,8 @@ Sample output:
 
 {{works with|C++11}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <functional>
 #include <vector>
 #include <cstdlib>
@@ -406,8 +406,8 @@ int main() {
 
 Class-based version:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 #include <cstdlib>
 #include <ctime>
@@ -465,7 +465,7 @@ This function is then used in a ''reduce'' call with an initial state and a list
           (if (< r n)
             [(assoc sample r item) i]
             [sample i]))))))
-            
+
 (def s-of-3-fn (s-of-n-fn-creator 3))
 
 (->> #(reduce s-of-3-fn [[] 0] (range 10))
@@ -481,7 +481,7 @@ This function is then used in a ''reduce'' call with an initial state and a list
 Sample output:
 <lang>([0 29924] [1 30053] [2 30018] [3 29765] [4 29974] [5 30225] [6 30082] [7 29996] [8 30128] [9 29835])
 ```
- 
+
 
 If we really need a stateful (thread safe!) function for some reason, we can get it like this:
 
@@ -513,7 +513,7 @@ s_of_n_creator = (n) ->
         arr[pos] = elem
     arr.sort()
 
-sample_size = 3    
+sample_size = 3
 range = [0..9]
 num_trials = 100000
 
@@ -521,7 +521,7 @@ counts = {}
 
 for digit in range
   counts[digit] = 0
-  
+
 for i in [1..num_trials]
   s_of_n = s_of_n_creator(sample_size)
   for digit in range
@@ -536,7 +536,7 @@ for digit in range
 
 output
 <lang>
-> coffee knuth_sample.coffee 
+> coffee knuth_sample.coffee
 0 29899
 1 29841
 2 29930
@@ -682,14 +682,14 @@ import system'dynamic;
 import extensions;
 import system'routines;
 import system'collections;
- 
+
 extension algorithmOp
 {
     s_of_n()
     {
         var counter := new Integer();
         var n := self;
- 
+
         ^ new ArrayList().mixInto(new::
         {
             eval(i)
@@ -697,11 +697,11 @@ extension algorithmOp
                 counter.append:1;
 
                 if (__target.Length < n)
-                { 
-                    __target.append:i 
+                {
+                    __target.append:i
                 }
                 else
-                { 
+                {
                     if(randomGenerator.nextInt:counter < n)
                         { __target[randomGenerator.nextInt:n] := i }
                 };
@@ -711,23 +711,23 @@ extension algorithmOp
         })
     }
 }
- 
+
 public program()
 {
     var bin := Array.allocate(10).populate:(n => new Integer());
     for(int trial := 0, trial < 10000, trial += 1)
     {
         var s_of_n := 3.s_of_n();
- 
+
         for(int n := 0, n < 10, n += 1)
         {
             var sample := s_of_n.eval:n;
- 
+
             if (n == 9)
                 { sample.forEach:(i){ bin[i].append:1 } }
         }
-    };    
- 
+    };
+
     console.printLine:bin.readChar()
 }
 ```
@@ -962,7 +962,7 @@ end
 and a sample run:
 
 ```txt
-->kas    
+->kas
 0:  29941
 1:  29963
 2:  29941
@@ -981,7 +981,7 @@ and a sample run:
 ## J
 
 
-Note that this approach introduces heavy inefficiencies, to achieve information hiding.  
+Note that this approach introduces heavy inefficiencies, to achieve information hiding.
 
 
 ```j
@@ -1066,10 +1066,10 @@ A class-based solution:
 
 ```java
 import java.util.*;
- 
+
 class SOfN<T> {
     private static final Random rand = new Random();
- 
+
     private List<T> sample;
     private int i = 0;
     private int n;
@@ -1088,7 +1088,7 @@ class SOfN<T> {
         return sample;
     }
 }
- 
+
 public class AlgorithmS {
     public static void main(String[] args) {
         int[] bin = new int[10];
@@ -1115,11 +1115,11 @@ Alternative solution without using an explicitly named type; instead using an an
 
 ```java
 import java.util.*;
- 
+
 interface Function<S, T> {
     public T call(S x);
 }
- 
+
 public class AlgorithmS {
     private static final Random rand = new Random();
     public static <T> Function<T, List<T>> s_of_n_creator(final int n) {
@@ -1136,7 +1136,7 @@ public class AlgorithmS {
             }
         };
     }
- 
+
     public static void main(String[] args) {
         int[] bin = new int[10];
         for (int trial = 0; trial < 100000; trial++) {
@@ -1236,7 +1236,7 @@ class SOfN<T>(val n: Int) {
         return sample
     }
 }
- 
+
 fun main(args: Array<String>) {
     val bin = IntArray(10)
     (1..100_000).forEach {
@@ -1334,7 +1334,7 @@ int main(int argc, const char *argv[]) {
       [bin addObjectsFromArray:sample];
     }
     NSLog(@"%@", bin);
-  
+
   }
   return 0;
 }
@@ -1544,10 +1544,10 @@ end function
 
 function s_of_n_creator(int n)
     return {routine_id("s_of_n"),0,repeat(0,n)}
-end function 
+end function
 
 function invoke(sequence env, args)
-    env = call_func(env[RID],prepend(args,env)) 
+    env = call_func(env[RID],prepend(args,env))
     return env
 end function
 
@@ -1559,7 +1559,7 @@ function test(integer n, sequence items)
     end for
     return env[SAMPLE]
 end function
- 
+
 procedure main()
     sequence items_set = tagset(9,0)
     sequence frequencies = repeat(0,length(items_set))
@@ -1763,7 +1763,7 @@ class S_of_n_creator():
         self.n = n
         self.i = 0
         self.sample = []
-    
+
     def __call__(self, item):
         self.i += 1
         n, i, sample = self.n, self.i, self.sample
@@ -2056,14 +2056,14 @@ pub fn main() {
     let mut bin: [i32; MAX] = Default::default();
     for _ in 0..100000 {
         let mut s_of_n = SofN::new(weak_rng(), 3);
-        
+
         for i in 0..MAX { s_of_n.add(i); }
 
         for s in s_of_n.sample() {
             bin[*s] += 1;
         }
     }
-    
+
     for (i, x) in bin.iter().enumerate() {
         println!("frequency of {}: {}", i, x);
     }
@@ -2221,7 +2221,7 @@ L(L(0),L(0,1),L(0,1,2),L(0,1,2),L(0,4,2),L(5,4,2),L(5,6,2),L(5,6,2),L(5,6,2),L(9
 ```zkl
 dist:=L(0,0,0,0,0,0,0,0,0,0);
 do(0d100_000){
-   (0).pump(10,Void,s_of_n_creator(3)).apply2('wrap(n){dist[n]=dist[n]+1}) 
+   (0).pump(10,Void,s_of_n_creator(3)).apply2('wrap(n){dist[n]=dist[n]+1})
 }
 N:=dist.sum();
 dist.apply('wrap(n){"%.2f%%".fmt(n.toFloat()/N*100)}).println();

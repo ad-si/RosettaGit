@@ -1829,8 +1829,8 @@ Infinitely zoomable OpenGL program.  Adjustable colors, max iteration, black and
 
 {{libheader|GLUT}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <GL/glut.h>
@@ -2129,8 +2129,8 @@ There may be warnings on compiling but disregard them, the output will be produc
 
 This generic function assumes that the image can be accessed like a two-dimensional array of colors. It may be passed a true array (in which case the Mandelbrot set will simply be drawn into that array, which then might be saved as image file), or a class which maps the subscript operator to the pixel drawing routine of some graphics library. In the latter case, there must be functions get_first_dimension and get_second_dimension defined for that type, to be found by argument dependent lookup. The code provides those functions for built-in arrays.
 
-```cpp>#include <cstdlib
-
+```cpp
+#include <cstdlib>
 #include <complex>
 
 // get dimensions for arrays

@@ -15,7 +15,7 @@ Use the [[wp:Quickselect|quickselect algorithm]] on the vector
 : [9, 8, 7, 6, 5, 0, 1, 2, 3, 4]
 To show the first, second, third, ... up to the tenth largest member of the vector, in order, here on this page.
 
-* Note: Quick''sort'' has a separate [[Sorting algorithms/Quicksort|task]]. 
+* Note: Quick''sort'' has a separate [[Sorting algorithms/Quicksort|task]].
 
 
 
@@ -152,7 +152,7 @@ Swap(List, i1, i2) {
 '''Output:'''
 
 ```txt
-0, 1, 2, 3, 4, 5, 6, 7, 8, 9 
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 ```
 
 
@@ -160,8 +160,8 @@ Swap(List, i1, i2) {
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 int qselect(int *v, int len, int k)
@@ -224,8 +224,8 @@ int main(void)
 
 It is already provided in the standard library as <code>std::nth_element()</code>. Although the standard does not explicitly mention what algorithm it must use, the algorithm partitions the sequence into those less than the nth element to the left, and those greater than the nth element to the right, like quickselect; the standard also guarantees that the complexity is "linear on average", which fits quickselect.
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 
 int main() {
@@ -253,8 +253,8 @@ int main() {
 
 A more explicit implementation:
 
-```cpp>#include <iterator
-
+```cpp
+#include <iterator>
 #include <algorithm>
 #include <functional>
 #include <cstdlib>
@@ -302,15 +302,15 @@ int main() {
 
 
 =={{header|C sharp|C#}}==
-Two different implementations - one that returns only one element from the array (Nth smallest element) and 
+Two different implementations - one that returns only one element from the array (Nth smallest element) and
 second implementation that returns IEnumnerable that enumerates through element until Nth smallest element.
- 
+
 
 ```csharp
 // ----------------------------------------------------------------------------------------------
-//  
+//
 //  Program.cs - QuickSelect
-//  
+//
 // ----------------------------------------------------------------------------------------------
 
 using System;
@@ -340,7 +340,7 @@ namespace QuickSelect
             // Basically we are here just sorting array (taking 10 smallest from array which length is 10)
             Console.WriteLine( "Just sort 10 elements." );
             Console.WriteLine( string.Join( ", ", inputArray.TakeSmallest( 10 ).OrderBy( v => v ).Select( v => v.ToString() ).ToArray() ) );
-            // Here we are actually doing quick select once by taking only 4 smallest from array. 
+            // Here we are actually doing quick select once by taking only 4 smallest from array.
             Console.WriteLine( "Get 4 smallest and sort them." );
             Console.WriteLine( string.Join( ", ", inputArray.TakeSmallest( 4 ).OrderBy( v => v ).Select( v => v.ToString() ).ToArray() ) );
             Console.WriteLine( "< Press any key >" );
@@ -393,7 +393,7 @@ namespace QuickSelect
         }
 
         /// <summary>
-        ///  Partially sort array such way that elements before index position n are smaller or equal than elemnt at position n. And elements after n are larger or equal. 
+        ///  Partially sort array such way that elements before index position n are smaller or equal than elemnt at position n. And elements after n are larger or equal.
         /// </summary>
         /// <typeparam name="T">The type of the elements of array. Type must implement IComparable(T) interface.</typeparam>
         /// <param name="input">The array which elements are being partially sorted. This array is not modified.</param>
@@ -404,11 +404,11 @@ namespace QuickSelect
             // Let's not mess up with our input array
             // For very large arrays - we should optimize this somehow - or just mess up with our input
             var partiallySortedArray = (T[]) input.Clone();
-           
+
             // Initially we are going to execute quick select to entire array
             var startIndex = 0;
             var endIndex = input.Length - 1;
-            
+
             // Selecting initial pivot
             // Maybe we are lucky and array is sorted initially?
             var pivotIndex = n;
@@ -422,10 +422,10 @@ namespace QuickSelect
                     // We found our n:th smallest value - it is stored to pivot index
                     break;
                 if( pivotIndex > n )
-                    // Array before our pivot index have more elements that we are looking for                    
+                    // Array before our pivot index have more elements that we are looking for
                     endIndex = pivotIndex - 1;
-                else                    
-                    // Array before our pivot index has less elements that we are looking for                    
+                else
+                    // Array before our pivot index has less elements that we are looking for
                     startIndex = pivotIndex + 1;
 
                 // Omnipotent beings don't need to roll dices - but we do...
@@ -444,7 +444,7 @@ namespace QuickSelect
         /// <param name="startIndex">Start index of sub array.</param>
         /// <param name="endIndex">End index of sub array.</param>
         /// <param name="pivotIndex">Pivot index.</param>
-        /// <returns>New pivot index. Value that was initially stored to <paramref name="pivotIndex"/> is stored to this newly returned index. All elements before this index are 
+        /// <returns>New pivot index. Value that was initially stored to <paramref name="pivotIndex"/> is stored to this newly returned index. All elements before this index are
         /// either smaller or equal with pivot value. All elements after this index are larger than pivot value.</returns>
         /// <remarks>This method modifies paremater array.</remarks>
         private static int QuickSelectPartition<T>( this T[] array, int startIndex, int endIndex, int pivotIndex ) where T : IComparable<T>
@@ -459,7 +459,7 @@ namespace QuickSelect
 
                 // Value stored to i was smaller than or equal with pivot value - let's move it to start
                 array.Swap( i, startIndex );
-                // Move start one index forward 
+                // Move start one index forward
                 startIndex++;
             }
             // Start index is now pointing to index where we should store our pivot value from end of array
@@ -503,15 +503,15 @@ The following is in the Managed COBOL dialect:
 
 ```cobol
        CLASS-ID MainProgram.
-       
+
        METHOD-ID Partition STATIC USING T.
        CONSTRAINTS.
            CONSTRAIN T IMPLEMENTS type IComparable.
-           
+
        DATA DIVISION.
        LOCAL-STORAGE SECTION.
        01  pivot-val              T.
-       
+
        PROCEDURE DIVISION USING VALUE arr AS T OCCURS ANY,
                left-idx AS BINARY-LONG, right-idx AS BINARY-LONG,
                pivot-idx AS BINARY-LONG
@@ -527,14 +527,14 @@ The following is in the Managed COBOL dialect:
                END-IF
            END-PERFORM
            INVOKE self::Swap(arr, right-idx, store-idx)
-           
+
            MOVE store-idx TO ret
        END METHOD.
-       
+
        METHOD-ID Quickselect STATIC USING T.
        CONSTRAINTS.
            CONSTRAIN T IMPLEMENTS type IComparable.
-           
+
        PROCEDURE DIVISION USING VALUE arr AS T OCCURS ANY,
                left-idx AS BINARY-LONG, right-idx AS BINARY-LONG,
                n AS BINARY-LONG
@@ -543,35 +543,35 @@ The following is in the Managed COBOL dialect:
                MOVE arr (left-idx) TO ret
                GOBACK
            END-IF
-       
+
            DECLARE rand AS TYPE Random = NEW Random()
            DECLARE pivot-idx AS BINARY-LONG = rand::Next(left-idx, right-idx)
            DECLARE pivot-new-idx AS BINARY-LONG
                = self::Partition(arr, left-idx, right-idx, pivot-idx)
            DECLARE pivot-dist AS BINARY-LONG = pivot-new-idx - left-idx + 1
-           
+
            EVALUATE TRUE
                WHEN pivot-dist = n
-                   MOVE arr (pivot-new-idx) TO ret                   
-                      
+                   MOVE arr (pivot-new-idx) TO ret
+
                WHEN n < pivot-dist
                    INVOKE self::Quickselect(arr, left-idx, pivot-new-idx - 1, n)
                        RETURNING ret
-                     
+
                WHEN OTHER
                    INVOKE self::Quickselect(arr, pivot-new-idx + 1, right-idx,
                        n - pivot-dist) RETURNING ret
            END-EVALUATE
        END METHOD.
-       
+
        METHOD-ID Swap STATIC USING T.
        CONSTRAINTS.
            CONSTRAIN T IMPLEMENTS type IComparable.
-           
+
        DATA DIVISION.
        LOCAL-STORAGE SECTION.
        01  temp                   T.
-           
+
        PROCEDURE DIVISION USING arr AS T OCCURS ANY,
                VALUE idx-1 AS BINARY-LONG, idx-2 AS BINARY-LONG.
            IF idx-1 <> idx-2
@@ -580,7 +580,7 @@ The following is in the Managed COBOL dialect:
                MOVE temp TO arr (idx-2)
            END-IF
        END METHOD.
-       
+
        METHOD-ID Main STATIC.
        PROCEDURE DIVISION.
            DECLARE input-array AS BINARY-LONG OCCURS ANY
@@ -589,7 +589,7 @@ The following is in the Managed COBOL dialect:
            PERFORM VARYING i AS BINARY-LONG FROM 1 BY 1 UNTIL i > 10
                DISPLAY self::Quickselect(input-array, 1, input-array::Length, i)
                    NO ADVANCING
-               
+
                IF i < 10
                    DISPLAY ", " NO ADVANCING
                END-IF
@@ -653,7 +653,7 @@ def quickselect(a, k)
     end
   end
 end
- 
+
 v = [9, 8, 7, 6, 5, 0, 1, 2, 3, 4]
 p v.each_index.map { |i| quickselect(v, i) }.to_a
 
@@ -691,7 +691,7 @@ void main() {
 {{out}}
 
 ```txt
-0 1 2 3 4 5 6 7 8 9 
+0 1 2 3 4 5 6 7 8 9
 ```
 
 
@@ -774,7 +774,7 @@ defmodule Quick do
       true  -> x
     end
   end
-  
+
   def test do
     v = [9, 8, 7, 6, 5, 0, 1, 2, 3, 4]
     Enum.map(0..length(v)-1, fn i -> select(i,v) end)
@@ -811,22 +811,22 @@ Quick.test
 test() ->
     V = [9, 8, 7, 6, 5, 0, 1, 2, 3, 4],
     lists:map(
-        fun(I) -> quickselect(I,V) end, 
+        fun(I) -> quickselect(I,V) end,
         lists:seq(0, length(V) - 1)
     ).
 
 quickselect(K, [X | Xs]) ->
-    {Ys, Zs} = 
+    {Ys, Zs} =
         lists:partition(fun(E) -> E < X end, Xs),
     L = length(Ys),
-    if 
-        K < L -> 
+    if
+        K < L ->
             quickselect(K, Ys);
-        K > L -> 
+        K > L ->
             quickselect(K - L - 1, Zs);
-        true -> 
+        true ->
             X
-    end. 
+    end.
 
 ```
 
@@ -843,9 +843,9 @@ Output:
 
 ## Fortran
 
-Conveniently, a function was already to hand for floating-point numbers and changing the type was trivial - because the array and its associates were declared in the same statement to facilitate exactly that. The style is F77 (except for the usage of a PARAMETER statement in TEST to set up the specific test, and the A(1:N) usage in the DATA statement, and the END FUNCTION usage) and it did not seem worthwhile activating the MODULE protocol of F90 just to save the tedium of having to declare INTEGER FINDELEMENT in the calling routine - doing so would require four additional lines... On the other hand, a MODULE would enable the convenient development of a collection of near-clones, one for each type of array (INTEGER, REAL*4, REAL*8) which could then be collected via an INTERFACE statement into forming an apparently generic function so that one needn't have to remember FINDELEMENTI2, FINDELEMENTI4, FINDELEMENTF4, FINDELEMENTF8, and so on. With multiple parameters of various types, the combinations soon become tiresomely numerous. 
+Conveniently, a function was already to hand for floating-point numbers and changing the type was trivial - because the array and its associates were declared in the same statement to facilitate exactly that. The style is F77 (except for the usage of a PARAMETER statement in TEST to set up the specific test, and the A(1:N) usage in the DATA statement, and the END FUNCTION usage) and it did not seem worthwhile activating the MODULE protocol of F90 just to save the tedium of having to declare INTEGER FINDELEMENT in the calling routine - doing so would require four additional lines... On the other hand, a MODULE would enable the convenient development of a collection of near-clones, one for each type of array (INTEGER, REAL*4, REAL*8) which could then be collected via an INTERFACE statement into forming an apparently generic function so that one needn't have to remember FINDELEMENTI2, FINDELEMENTI4, FINDELEMENTF4, FINDELEMENTF8, and so on. With multiple parameters of various types, the combinations soon become tiresomely numerous.
 
-Those of a delicate disposition may wish to avert their eyes from the three-way IF-statement... 
+Those of a delicate disposition may wish to avert their eyes from the three-way IF-statement...
 ```Fortran
       INTEGER FUNCTION FINDELEMENT(K,A,N)	!I know I can.
 Chase an order statistic: FindElement(N/2,A,N) leads to the median, with some odd/even caution.
@@ -928,7 +928,7 @@ Given an intention to make many calls on FINDELEMENT for the same array, the arr
 
 ```fsharp
 
-let rec quickselect k list = 
+let rec quickselect k list =
     match list with
     | [] -> failwith "Cannot take largest element of empty list."
     | [a] -> a
@@ -941,7 +941,7 @@ let rec quickselect k list =
 //end quickselect
 
 [<EntryPoint>]
-let main args = 
+let main args =
     let v = [9; 8; 7; 6; 5; 0; 1; 2; 3; 4]
     printfn "%A" [for i in 0..(List.length v - 1) -> quickselect i v]
     0
@@ -975,7 +975,7 @@ IN: rosetta-code.quickselect
     } cond ;
 
 : quickselect-demo ( -- )
-    { 9 8 7 6 5 0 1 2 3 4 } dup length <iota> swap 
+    { 9 8 7 6 5 0 1 2 3 4 } dup length <iota> swap
     [ [ quickselect , ] curry each ] { } make . ;
 
 MAIN: quickselect-demo
@@ -1086,7 +1086,7 @@ func partition(a sort.Interface, first int, last int, pivotIndex int) int {
         }
     }
     a.Swap(first, right) // swap into right place
-    return right    
+    return right
 }
 
 func quickselect(a sort.Interface, n int) int {
@@ -1196,7 +1196,7 @@ Sample run:
 ```txt
 
 ->qs 9 8 7 6 5 0 1 2 3 4
- 0 1 2 3 4 5 6 7 8 9 
+ 0 1 2 3 4 5 6 7 8 9
 ->
 
 ```
@@ -1277,7 +1277,7 @@ public class QuickSelect {
 		swap(arr, right, storeIndex);
 		return storeIndex;
 	}
-	
+
 	private static <E extends Comparable<? super E>> E select(E[] arr, int n) {
 		int left = 0;
 		int right = arr.length - 1;
@@ -1294,7 +1294,7 @@ public class QuickSelect {
 		}
 		return null;
 	}
-	
+
 	private static void swap(Object[] arr, int i1, int i2) {
 		if (i1 != i2) {
 			Object temp = arr[i1];
@@ -1302,7 +1302,7 @@ public class QuickSelect {
 			arr[i2] = temp;
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		for (int i = 0; i < 10; i++) {
 			Integer[] input = {9, 8, 7, 6, 5, 0, 1, 2, 3, 4};
@@ -1409,7 +1409,7 @@ KthElement = {
 
 ```Javascript
 
-var array = [9, 8, 7, 6, 5, 0, 1, 2, 3, 4], 
+var array = [9, 8, 7, 6, 5, 0, 1, 2, 3, 4],
     ks = Array.apply(null, {length: 10}).map(Number.call, Number);
 ks.map(k => { KthElement.find(array, k) });
 ```
@@ -1516,7 +1516,7 @@ def quickselect(k):
      | .[1] as $a
     | $a[0] as $pivot
     | ($a[1:] | partition($pivot)) as $p
-    | $p[0] as $left 
+    | $p[0] as $left
     | ($left|length) as $ll
     | if   $kn == $ll then $pivot
       elif $kn <  $ll then [$kn, $left] | qs
@@ -1740,7 +1740,7 @@ print(quickselect(demo,14)):
 {{Out|Example}}
 
 ```txt
-5 4 2 1 3 6 8 11 11 11 8 11 9 11 16 20 20 18 17 16 
+5 4 2 1 3 6 8 11 11 11 8 11 9 11 16 20 20 18 17 16
 8
 11
 ```
@@ -1793,7 +1793,7 @@ method qselectInPlace(list, k_, ileft = -1, iright = -1) public static
       k_ = k_ - pivotDist
       ileft = pivotNewIndex + 1
       end
-    end    
+    end
     end inplace
   return returnVal
 
@@ -1849,7 +1849,7 @@ method buildIndexedString(samplelist) private static
     list[k_] = samplelist.word(k_)
     end k_
   return list
-  
+
 ```
 
 {{out}}
@@ -2021,7 +2021,7 @@ sub qselect
 ```perl6>my @v = <9 8 7 6 5 0 1 2 3 4
 ;
 say map { select(@v, $_) }, 1 .. 10;
- 
+
 sub partition(@vector, $left, $right, $pivot-index) {
     my $pivot-value = @vector[$pivot-index];
     @vector[$pivot-index, $right] = @vector[$right, $pivot-index];
@@ -2035,14 +2035,14 @@ sub partition(@vector, $left, $right, $pivot-index) {
     @vector[$right, $store-index] = @vector[$store-index, $right];
     return $store-index;
 }
- 
+
 sub select( @vector,
             \k where 1 .. @vector,
             \l where 0 .. @vector = 0,
             \r where l .. @vector = @vector.end ) {
- 
+
     my ($k, $left, $right) = k, l, r;
- 
+
     loop {
         my $pivot-index = ($left..$right).pick;
         my $pivot-new-index = partition(@vector, $left, $right, $pivot-index);
@@ -2081,7 +2081,7 @@ perhaps there may be a way to narrow down the divide in some future release of t
 global function quick_select(sequence s, integer k)
 integer left = 1, right = length(s), pos
 object pivotv, tmp
- 
+
     while left<right do
         pivotv = s[k];
 --      {s[k], s[right]} = {s[right], s[k]}
@@ -2265,7 +2265,7 @@ The 10-th element is         9
 
 ```PowerShell
 
- function partition($list, $left, $right, $pivotIndex) {   
+ function partition($list, $left, $right, $pivotIndex) {
      $pivotValue = $list[$pivotIndex]
      $list[$pivotIndex], $list[$right] = $list[$right], $list[$pivotIndex]
      $storeIndex = $left
@@ -2292,7 +2292,7 @@ function rank($list, $left, $right, $n) {
 
 function quickselect($list) {
     $right = $list.count-1
-    foreach($left in 0..$right) {rank $list $left $right $left}  
+    foreach($left in 0..$right) {rank $list $left $right $left}
 }
 $arr = @(9, 8, 7, 6, 5, 0, 1, 2, 3, 4)
 "$(quickselect $arr)"
@@ -2416,7 +2416,7 @@ if __name__ == '__main__':
     v = [9, 8, 7, 6, 5, 0, 1, 2, 3, 4]
     print([select(v, i) for i in range(10)])
 ```
- 
+
 
 {{out}}
 
@@ -2626,7 +2626,7 @@ qSel: procedure expose @.;  parse arg L,R,z;  if L==R  then return @.L  /*only o
 swap: parse arg _1,_2;  parse value @._1 @._2  with  @._2 @._1;  return  /*swap 2 items.*/
 ```
 
-'''output'''   is the identical to the 1<sup>st</sup> REXX version. 
+'''output'''   is the identical to the 1<sup>st</sup> REXX version.
 
 
 
@@ -2642,7 +2642,7 @@ see partition(aList, 9, 4, 2) + nl
 func partition list, left, right, pivotIndex
        pivotValue = list[pivotIndex]
        temp = list[pivotIndex]
-       list[pivotIndex] = list[right]  
+       list[pivotIndex] = list[right]
        list[right]  = temp
        storeIndex = left
        for i = left to right-1
@@ -2652,7 +2652,7 @@ func partition list, left, right, pivotIndex
                list[i] = temp
                storeIndex++ ok
             temp = list[right]
-            list[right] = list[storeIndex]  
+            list[right] = list[storeIndex]
             list[storeIndex] = temp
        next
        return storeIndex
@@ -2712,7 +2712,7 @@ object QuickSelect {
       quickSelect(left, n, rand)
     }
   }
-  
+
   def main(args: Array[String]): Unit = {
     val v = Array(9, 8, 7, 6, 5, 0, 1, 2, 3, 4)
     println((0 until v.length).map(quickSelect(v, _)).mkString(", "))
@@ -2781,7 +2781,7 @@ Usage:
 
 - val v = [9, 8, 7, 6, 5, 0, 1, 2, 3, 4];
 val v = [9,8,7,6,5,0,1,2,3,4] : int list
-- List.tabulate (10, fn i => quickselect (i, Int.compare, v));   
+- List.tabulate (10, fn i => quickselect (i, Int.compare, v));
 val it = [0,1,2,3,4,5,6,7,8,9] : int list
 
 ```

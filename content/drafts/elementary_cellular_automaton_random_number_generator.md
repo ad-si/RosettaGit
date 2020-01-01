@@ -28,8 +28,8 @@ For extra-credits, you will make this algorithm run as fast as possible in your 
 
 64-bits array size, cyclic borders.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <limits.h>
 
 typedef unsigned long long ull;
@@ -74,8 +74,8 @@ int main(void)
 
 We'll re-write the code of the parent task here.
 
-```cpp>#include <bitset
-
+```cpp
+#include <bitset>
 #include <stdio.h>
 
 #define SIZE	           80
@@ -100,7 +100,7 @@ unsigned char byte(std::bitset<SIZE> &s) {
     unsigned char b = 0;
     int i;
     for (i=8; i--; ) {
-	b |= s[0] << i; 
+	b |= s[0] << i;
 	evolve(s);
     }
     return b;
@@ -270,7 +270,7 @@ func main() {
 
 ```txt
 
-220 197 147 174 117 97 149 171 100 151 
+220 197 147 174 117 97 149 171 100 151
 
 ```
 
@@ -365,7 +365,7 @@ coclass'base'
 Having installed these into a j session we create and use the mathematica prng.
 
 ```txt
-                    
+
    m =: (30 ; 64 {. 1) conew 'rng'
    byte__m"0 i.10
 220 197 147 174 117 97 149 171 100 151
@@ -651,11 +651,11 @@ class Automaton {
     has $.rule;
     has @.cells;
     has @.code = $!rule.fmt('%08b').flip.comb».Int;
- 
+
     method gist { "|{ @!cells.map({+$_ ?? '#' !! ' '}).join }|" }
- 
+
     method succ {
-        self.new: :$!rule, :@!code, :cells( 
+        self.new: :$!rule, :@!code, :cells(
             @!code[
                     4 «*« @!cells.rotate(-1)
                 »+« 2 «*« @!cells
@@ -687,7 +687,7 @@ No attempt to optimise.
 ```Phix
 --string s = ".........#.........", --(original)
 string s = "...............................#"&
-           "................................", 
+           "................................",
 --string s = "#"&repeat('.',100),   -- [2]
        t=s, r = "........"
 integer rule = 30, k, l = length(s), w = 0
@@ -902,7 +902,7 @@ fn main() {
 
 ```txt
 
-157 209 228 58 87 195 212 106 147 244 
+157 209 228 58 87 195 212 106 147 244
 
 ```
 

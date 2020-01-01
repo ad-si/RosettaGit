@@ -38,7 +38,7 @@ Ada does not allow you to change the date of a file but you can definitely read 
 with Ada.Directories;          use Ada.Directories;
 with Ada.Text_IO;              use Ada.Text_IO;
 with Ada.Calendar.Formatting;  use Ada.Calendar.Formatting;
- 
+
 procedure File_Time_Test is
 begin
    Put_Line (Image (Modification_Time ("file_time_test.adb")));
@@ -93,7 +93,7 @@ MsgBox % OutputVar
 
 ```awk
 @load "filefuncs"
-BEGIN { 
+BEGIN {
 
     name = "input.txt"
 
@@ -134,7 +134,7 @@ BEGIN {   	          # file modification time on Unix, using stat
    cmd | getline x        # get output from cmd
   #print x
    close(cmd)
-   
+
    n=split(x,stat," ")
   #for (i in stat) { print i, stat[i] }
    print "file:", fn
@@ -144,7 +144,7 @@ BEGIN {   	          # file modification time on Unix, using stat
 
    cmd="touch -t 201409082359.59 " fn
    print "#", cmd; system(cmd)
-   
+
    cmd="stat " fn
    print "#", cmd; system(cmd)
 }
@@ -188,7 +188,7 @@ date: 2014-11-05 time: 20:18:39.000000000
 for %%f in (file.txt) do echo.%%~tf
 ```
 
-The date/time format is dependent on the user's locale, like the contents of the <code>%DATE%</code> and <code>%TIME%</code> built-ins. 
+The date/time format is dependent on the user's locale, like the contents of the <code>%DATE%</code> and <code>%TIME%</code> built-ins.
 There is no built-in way of setting a file's modification time.
 
 
@@ -201,10 +201,10 @@ There is no built-in way of setting a file's modification time.
       DIM st{wYear{l&,h&}, wMonth{l&,h&}, wDayOfWeek{l&,h&}, \
       \      wDay{l&,h&}, wHour{l&,h&}, wMinute{l&,h&}, \
       \      wSecond{l&,h&}, wMilliseconds{l&,h&} }
-      
+
       REM File is assumed to exist:
       file$ = @tmp$ + "rosetta.tmp"
-      
+
       REM Get and display the modification time:
       file% = OPENIN(file$)
       SYS "GetFileTime", @hfile%(file%), 0, 0, ft{}
@@ -217,7 +217,7 @@ There is no built-in way of setting a file's modification time.
       SYS "GetTimeFormat", 0, 0, st{}, 0, time$, LEN(time$) TO N%
       time$ = LEFT$(time$, N%-1)
       PRINT date$ " " time$
-      
+
       REM Set the modification time to the current time:
       SYS "GetSystemTime", st{}
       SYS "SystemTimeToFileTime", st{}, ft{}
@@ -233,13 +233,13 @@ There is no built-in way of setting a file's modification time.
 
 
 ===POSIX utime()===
-utime() has a precision of one second. 
+utime() has a precision of one second.
 This program would truncate the time to the last second, losing precision if the filesystem is more precise.
 
 {{libheader|POSIX}}
 
-```c>#include <sys/stat.h
-
+```c
+#include <sys/stat.h>
 #include <stdio.h>
 #include <time.h>
 #include <utime.h>
@@ -270,13 +270,13 @@ int main() {
 
 
 ===BSD utimes()===
-With [[BSD]], utime() is obsolete. 
+With [[BSD]], utime() is obsolete.
 utimes() has a precision of 1 microsecond (where 1 second = 1000000 microseconds).
 
 {{libheader|BSD libc}}
 
-```c>#include <sys/stat.h
-
+```c
+#include <sys/stat.h>
 #include <sys/time.h>
 #include <err.h>
 
@@ -304,55 +304,55 @@ int main() {
 
 
 === POSIX utimensat() ===
-[http://kernel.org/doc/man-pages/online/pages/man2/utimensat.2.html utimensat(2)] has a precision of 1 nanosecond (where 1 second = 10**9 nanoseconds).  
+[http://kernel.org/doc/man-pages/online/pages/man2/utimensat.2.html utimensat(2)] has a precision of 1 nanosecond (where 1 second = 10**9 nanoseconds).
 Program needs to be linked with <code>-lrt</code>.
 
 {{libheader|POSIX}}
 {{works with|POSIX|-1.2008}}
 
-```c>#include <sys/stat.h
-
+```c
+#include <sys/stat.h>
 #include <sys/time.h>
 #include <time.h>
 #include <fcntl.h>
 #include <stdio.h>
 
 const char *filename = "input.txt";
- 
+
 int main() {
   struct stat foo;
   struct timespec new_times[2];
- 
+
   if (stat(filename, &foo) < 0) {
     perror(filename);
     return 1;
   }
- 
+
   /* keep atime unchanged */
   new_times[0] = foo.st_atim;
- 
+
   /* set mtime to current time */
   clock_gettime(CLOCK_REALTIME, &new_times[1]);
- 
+
   if (utimensat(AT_FDCWD, filename, new_times, 0) < 0) {
     perror(filename);
     return 1;
   }
- 
+
   return 0;
 }
 ```
 
 
 
-###  Windows 
+###  Windows
 
 Declare <code>FILETIME modtime;</code> and then use <code>GetFileTime(fh, NULL, NULL, &modtime);</code> to get the file modification time, or <code>SetFileTime(fh, NULL, NULL, &modtime);</code> to set it.
 
 {{libheader|Win32}}
 
-```c>#include <windows.h
-
+```c
+#include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <wchar.h>
@@ -467,8 +467,8 @@ main()
 
 compiled with g++ -lboost_filesystem <sourcefile> -o <destination file>
 
-```cpp>#include <boost/filesystem/operations.hpp
-
+```cpp
+#include <boost/filesystem/operations.hpp>
 #include <ctime>
 #include <iostream>
 
@@ -480,11 +480,11 @@ int main( int argc , char *argv[ ] ) {
    boost::filesystem::path p( argv[ 1 ] ) ;
    if ( boost::filesystem::exists( p ) ) {
       std::time_t t = boost::filesystem::last_write_time( p ) ;
-      std::cout << "On " << std::ctime( &t ) << " the file " << argv[ 1 ] 
+      std::cout << "On " << std::ctime( &t ) << " the file " << argv[ 1 ]
 	 << " was modified the last time!\n" ;
       std::cout << "Setting the modification time to now:\n" ;
       std::time_t n = std::time( 0 ) ;
-      boost::filesystem::last_write_time( p , n ) ; 
+      boost::filesystem::last_write_time( p , n ) ;
       t = boost::filesystem::last_write_time( p ) ;
       std::cout << "Now the modification time is " << std::ctime( &t ) << std::endl ;
       return 0 ;
@@ -528,7 +528,7 @@ File.SetLastWriteTime("file.txt", DateTime.Now);
 ## Common Lisp
 
 
-Common Lisp doesn't provide a way to set the modification time.  
+Common Lisp doesn't provide a way to set the modification time.
 The write date can be accessed, however, using [http://www.lispworks.com/documentation/HyperSpec/Body/f_file_w.htm file-write-date]:
 
 
@@ -571,7 +571,7 @@ void main() {
 }
 ```
 
-For Windows systems there is also getTimesWin(), 
+For Windows systems there is also getTimesWin(),
 that gives the file creation time too.
 
 
@@ -604,7 +604,7 @@ end;
 
 {{works with|E-on-Java}}
 
-{{trans|Java}} 
+{{trans|Java}}
 
 E follows the Java File interface, except that it replaces boolean success/failure returns with an ejector parameter, so that the default behavior if the client does not handle the case is not to continue ignoring the failure.
 
@@ -642,7 +642,7 @@ test("directory", <file:docs>)
 ```
 
 
-<code>set-file-times</code> sets both the access time and modification time of the file.  Time values are in the usual Emacs list form.  
+<code>set-file-times</code> sets both the access time and modification time of the file.  Time values are in the usual Emacs list form.
 Emacs file name handler magic applies to both <code>file-attributes</code> and <code>set-file-times</code> so they can act on "remote" files too.
 
 File visiting buffers record the modification time of the file so as to guard against changes by another program.  <code>set-file-times</code> from within Emacs doesn't update those buffer times and so looks like an external change.
@@ -836,7 +836,7 @@ func main() {
 ## GUISS
 
 
-In Graphical User Interface Support Script, we can can only use facilities that the underlying user interface provides, so we can display file timestamps, but cannot alter them. 
+In Graphical User Interface Support Script, we can can only use facilities that the underlying user interface provides, so we can display file timestamps, but cannot alter them.
 In this example, we get the date and timestamp for the file Foobar.txt.
 
 
@@ -891,24 +891,24 @@ SYSTEM(FIle="File_modification_time.hic", FileTime=timestamp)
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-Icon doesn't support 'stat' or 'utime'; however, 
-information can be obtained by use of the system function to access command line. 
+Icon doesn't support 'stat' or 'utime'; however,
+information can be obtained by use of the system function to access command line.
 
 ```Unicon
 
 every dir := !["./","/"] do {
    if i := stat(f := dir || "input.txt") then {
-      write("info for ",f ," mtime= ",ctime(i.mtime),", atime=",ctime(i.ctime), ", atime=",ctime(i.atime)) 
+      write("info for ",f ," mtime= ",ctime(i.mtime),", atime=",ctime(i.ctime), ", atime=",ctime(i.atime))
       utime(f,i.atime,i.mtime-1024)
       i := stat(f)
-      write("update for ",f ," mtime= ",ctime(i.mtime),", atime=",ctime(i.ctime), ", atime=",ctime(i.atime)) 
-      }      
+      write("update for ",f ," mtime= ",ctime(i.mtime),", atime=",ctime(i.ctime), ", atime=",ctime(i.atime))
+      }
    else stop("failure to stat ",f)
    }
 ```
 
-Notes: 
-* Icon and Unicon accept both / and \ for directory separators. 
+Notes:
+* Icon and Unicon accept both / and \ for directory separators.
 * 'ctime' formats an integer representing an epoch time into human readable form
 * 'utime' updates the atime and mtime values
 
@@ -938,10 +938,10 @@ public class FileModificationTimeTest {
        System.out.println("The following " + type + " called " + file.getPath() +
             (t == 0 ? " does not exist." : " was modified at " + new Date(t).toString() )
        );
-       System.out.println("The following " + type + " called " + file.getPath() + 
+       System.out.println("The following " + type + " called " + file.getPath() +
             (!file.setLastModified(System.currentTimeMillis()) ? " does not exist." : " was modified to current time." )
        );
-       System.out.println("The following " + type + " called " + file.getPath() + 
+       System.out.println("The following " + type + " called " + file.getPath() +
             (!file.setLastModified(t) ? " does not exist." : " was modified to previous time." )
        );
    }
@@ -1036,7 +1036,7 @@ fun main(args: Array<String>) {
         // update to current time, say
         setLastModified(System.currentTimeMillis())
         println("%tc".format(lastModified()))
-    }    
+    }
 }
 ```
 
@@ -1044,7 +1044,7 @@ fun main(args: Array<String>) {
 
 ## Lasso
 
-Note this is retrieve only. 
+Note this is retrieve only.
 
 File modification date is updated on save of file.
 
@@ -1122,18 +1122,18 @@ where date is specified as {year,month,day,hour,minute,second}.
 
 ```Matlab
    f = dir('output.txt');  % struct f contains file information
-   f.date     % is string containing modification time 
-   f.datenum  % numerical format (number of days) 
-   datestr(f.datenum)   % is the same as f.date	
-   % see also: stat, lstat 
+   f.date     % is string containing modification time
+   f.datenum  % numerical format (number of days)
+   datestr(f.datenum)   % is the same as f.date
+   % see also: stat, lstat
 ```
 
 
-Modifying of file access time can be done through system calls: 
+Modifying of file access time can be done through system calls:
 
 
 ```Matlab
-  system('touch -t 201002032359.59 output.txt'); 
+  system('touch -t 201002032359.59 output.txt');
 ```
 
 
@@ -1157,13 +1157,13 @@ IMPORT IO, Fmt, File, FS, Date, OSError;
 
 TYPE dateArray = ARRAY [0..5] OF TEXT;
 
-VAR 
+VAR
   file: File.Status;
   date: Date.T;
 
 PROCEDURE DateArray(date: Date.T): dateArray =
   BEGIN
-    RETURN 
+    RETURN
       dateArray{Fmt.Int(date.year), Fmt.Int(ORD(date.month) + 1), Fmt.Int(date.day),
                 Fmt.Int(date.hour), Fmt.Int(date.minute), Fmt.Int(date.second)};
   END DateArray;
@@ -1172,7 +1172,7 @@ BEGIN
   TRY
     file := FS.Status("test.txt");
     date := Date.FromTime(file.modificationTime);
-    IO.Put(Fmt.FN("%s-%02s-%02s %02s:%02s:%02s", DateArray(date)));          
+    IO.Put(Fmt.FN("%s-%02s-%02s %02s:%02s:%02s", DateArray(date)));
     IO.Put("\n");
   EXCEPT
   | OSError.E => IO.Put("Error: Failed to get file status.\n");
@@ -1197,7 +1197,7 @@ IMPORT Date, FS;
 
 <*FATAL ANY*>
 
-VAR 
+VAR
   date: Date.T;
 
 BEGIN
@@ -1254,7 +1254,7 @@ method runSample(arg) public static
     say 'Resetting...'
     mfile.setLastModified(mtime)
     dtime = Date(mfile.lastModified()).toString()
-    say 'File' fileName 'reset to last modified at' dtime    
+    say 'File' fileName 'reset to last modified at' dtime
     end
   else do
     say 'Unable to modify time for file' fileName
@@ -1385,7 +1385,7 @@ The file modified time can only be read.
 
 ```progress
 FILE-INFO:FILE-NAME = 'c:/temp'.
-MESSAGE 
+MESSAGE
    STRING( FILE-INFO:FILE-MOD-TIME, 'HH:MM:SS' )
 VIEW-AS ALERT-BOX
 ```
@@ -1405,7 +1405,7 @@ in
 ```
 
 
-Setting the modification time is not possible, 
+Setting the modification time is not possible,
 unless implemented as an extension in C or C++.
 
 
@@ -1461,7 +1461,7 @@ sub MAIN (Str $file) {
 }
 ```
 
-Sets the last access time to now, 
+Sets the last access time to now,
 while restoring the modification time to what it was before.
 
 
@@ -1554,8 +1554,8 @@ Set-ItemProperty file.txt CreationTime(Get-Date)
 
 
 You can also use alternates to get UTC time:
-LastWriteTimeUtc 
-LastAccessTimeUtc 
+LastWriteTimeUtc
+LastAccessTimeUtc
 CreationTimeUtc
 
 
@@ -1633,8 +1633,8 @@ PRINT "File time: "; FileRec.Time
 
 ## REALbasic
 
-The ''Date'' object has properties which correspond to various date formats 
-such as SQLDateTime (YYYY-MM-DD HH:MM:SS), DayOfWeek, DayOfYear, and TotalSeconds since 12:00AM, January 1, 1904, among others. 
+The ''Date'' object has properties which correspond to various date formats
+such as SQLDateTime (YYYY-MM-DD HH:MM:SS), DayOfWeek, DayOfYear, and TotalSeconds since 12:00AM, January 1, 1904, among others.
 
 ```REALbasic
 
@@ -1729,17 +1729,17 @@ File.utime(nil, nil, 'path')
 
 ```runbasic
 files #f, DefaultDir$ + "\*.*"                  ' all files in the default directory
- 
+
 print "hasanswer: ";#f HASANSWER()              ' does it exist
 print "rowcount: ";#f ROWCOUNT()                ' number of files in the directory
-print                                           '  
+print                                           '
 #f DATEFORMAT("mm/dd/yy")                       ' set format of file date to template given
 #f TIMEFORMAT("hh:mm:ss")                       ' set format of file time to template given
 
 for i = 1 to #f rowcount()                      ' loop through the files
 if #f hasanswer() then                          '  or loop with while #f hasanswer()
  print "nextfile info: ";#f nextfile$("    ")   ' set the delimiter for nextfile info
- print "name: ";name$                           ' file name                        
+ print "name: ";name$                           ' file name
  print "size: ";#f SIZE()                       ' file size
  print "date: ";#f DATE$()                      ' file date
  print "time: ";#f TIME$()                      ' file time
@@ -1817,7 +1817,7 @@ object FileModificationTime extends App {
 
 ## Slate
 
-Modifying the timestamp value is not currently a built-in feature. 
+Modifying the timestamp value is not currently a built-in feature.
 This code gets a raw value:
 
 
@@ -1832,7 +1832,7 @@ slate[1]> (File newNamed: 'LICENSE') fileInfo modificationTimestamp.
 
 
 ```smalltalk
-|a| 
+|a|
 a := File name: 'input.txt'.
 (a lastModifyTime) printNl.
 ```
@@ -1869,7 +1869,7 @@ file mtime $filename [clock seconds]
 
 ## TUSCRIPT
 
-TUSCRIPT does not allow to modify/set the timestamp of a file, 
+TUSCRIPT does not allow to modify/set the timestamp of a file,
 but it is able to read it:
 
 ```tuscript
@@ -1895,8 +1895,8 @@ file rosetta.txt last modified: 2011-12-14 23:50:48
 ## UNIX Shell
 
 
-There are several ways to handle files' timestamps in most *nix systems. 
-For these examples, we'll assume you need to retrieve the timestamp to a variable. 
+There are several ways to handle files' timestamps in most *nix systems.
+For these examples, we'll assume you need to retrieve the timestamp to a variable.
 These examples use [[wp:stat (Unix)|stat]] and [[wp:touch (Unix)|touch]] from the [[wp:GNU Core Utilities|GNU Core Utilities]], under [[bash]], but they ''should'' work with any [[POSIX]]-compliant implementation under any sh-compatible shell.
 
 For all of these examples, <code>$F</code> is a variable holding the filename to examine, while <code>T</code> (and <code>$T</code>) is the timestamp.
@@ -1936,8 +1936,8 @@ touch -c -t $T $F
 ```
 
 
-If the year is left out, the current year is used. 
-If the seconds are left out, 0 (zero) is used. 
+If the year is left out, the current year is used.
+If the seconds are left out, 0 (zero) is used.
 Leaving out the optional parts of the above results in this:
 
 ```bash
@@ -2021,8 +2021,8 @@ file.CreationTime = createTime.AddHours(1)
 'Write Time
 Dim writeTime = file.LastWriteTime
 file.LastWriteTime = writeTime.AddHours(1)
- 
-'Access Time 
+
+'Access Time
 Dim accessTime = file.LastAccessTime
 file.LastAccessTime = accessTime.AddHours(1)
 ```

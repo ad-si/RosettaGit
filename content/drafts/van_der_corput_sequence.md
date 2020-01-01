@@ -25,7 +25,7 @@ So in the following table:
 
 the binary number "<code>10</code>" is <math>1 \times 2^1 + 0 \times 2^0</math>.
 
-You can also have binary digits to the right of the “point”, just as in the decimal number system. In that case, the digit in the place immediately to the right of the point has a weight of <math>2^{-1}</math>, or <math>1/2</math>. 
+You can also have binary digits to the right of the “point”, just as in the decimal number system. In that case, the digit in the place immediately to the right of the point has a weight of <math>2^{-1}</math>, or <math>1/2</math>.
 The weight for the second column to the right of the point is <math>2^{-2}</math> or <math>1/4</math>. And so on.
 
 If you take the integer binary count of the first table, and ''reflect'' the digits about the binary point, you end up with '''the van der Corput sequence of numbers in base 2'''.
@@ -43,7 +43,7 @@ If you take the integer binary count of the first table, and ''reflect'' the dig
 The third member of the sequence, binary <code>0.01</code>, is therefore <math>0 \times 2^{-1} + 1 \times 2^{-2}</math> or <math>1/4</math>.
 
 
- [[File:Van der corput distribution.png|400|thumb|right|Distribution of 2500 points each: Van der Corput (top) vs pseudorandom]] Members of the sequence lie within the interval <math>0 \leq x < 1</math>. Points within the sequence tend to be evenly distributed which is a useful trait to have for [[wp:Monte Carlo method|Monte Carlo simulations]]. 
+ [[File:Van der corput distribution.png|400|thumb|right|Distribution of 2500 points each: Van der Corput (top) vs pseudorandom]] Members of the sequence lie within the interval <math>0 \leq x < 1</math>. Points within the sequence tend to be evenly distributed which is a useful trait to have for [[wp:Monte Carlo method|Monte Carlo simulations]].
 This sequence is also a superset of the numbers representable by the "fraction" field of [[wp:IEEE 754-1985|an old IEEE floating point standard]]. In that standard, the "fraction" field represented the fractional part of a binary number beginning with "1." e.g. 1.101001101.
 
 '''Hint'''
@@ -87,7 +87,7 @@ Reflected this would become <code>.1101</code> or <math>1\times 2^{-1} + 1\times
 ## 360 Assembly
 
 {{trans|BBC BASIC}}
-The program uses two ASSIST macros (XDECO,XPRNT) to keep the code as short as possible. 
+The program uses two ASSIST macros (XDECO,XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Van der Corput sequence   31/01/2017
@@ -113,7 +113,7 @@ WHILE    CP     N,=P'0'            do while n<>0
          MP     S,B                s=s*b
          ZAP    PL16,N             n
          DP     PL16,B             n/b
-         ZAP    W,PL16+8(8)        w=n mod b 
+         ZAP    W,PL16+8(8)        w=n mod b
          MP     W,=P'100000'       *100000
          ZAP    PL16,W             w
          DP     PL16,S             w/s
@@ -132,7 +132,7 @@ EWHILE   XDECO  R6,XDEC            edit i
          XPRNT  PG,L'PG            print buffer
          LA     R6,1(R6)           i=i+1
          B      LOOPI
-ELOOPI   L      R13,4(0,R13)       epilog 
+ELOOPI   L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    " restore
          XR     R15,R15            " rc=0
          BR     R14                exit
@@ -141,7 +141,7 @@ M        DS     PL8
 V        DS     PL8
 S        DS     PL8
 N        DS     PL8
-W        DS     PL8                packed 
+W        DS     PL8                packed
 Z        DS     ZL16               zoned
 PL16     DS     PL16               packed max
 PG       DC     CL80' '            buffer
@@ -177,21 +177,21 @@ This implementation uses logarithms to computes the nth term of the sequence at 
 ```ActionScript3
 
 package {
-	
+
     import flash.display.Sprite;
     import flash.events.Event;
-    
+
     public class VanDerCorput extends Sprite {
-        
+
         public function VanDerCorput():void {
             if (stage) init();
             else addEventListener(Event.ADDED_TO_STAGE, init);
         }
-        
+
         private function init(e:Event = null):void {
-            
+
             removeEventListener(Event.ADDED_TO_STAGE, init);
-            
+
             var base2:Vector.<Number> = new Vector.<Number>(10, true);
             var base3:Vector.<Number> = new Vector.<Number>(10, true);
             var base4:Vector.<Number> = new Vector.<Number>(10, true);
@@ -199,9 +199,9 @@ package {
             var base6:Vector.<Number> = new Vector.<Number>(10, true);
             var base7:Vector.<Number> = new Vector.<Number>(10, true);
             var base8:Vector.<Number> = new Vector.<Number>(10, true);
-            
+
             var i:uint;
-            
+
             for ( i = 0; i < 10; i++ ) {
                 base2[i] = Math.round( _getTerm(i, 2) * 1000000 ) / 1000000;
                 base3[i] = Math.round( _getTerm(i, 3) * 1000000 ) / 1000000;
@@ -211,7 +211,7 @@ package {
                 base7[i] = Math.round( _getTerm(i, 7) * 1000000 ) / 1000000;
                 base8[i] = Math.round( _getTerm(i, 8) * 1000000 ) / 1000000;
             }
-            
+
             trace("Base 2: " + base2.join(', '));
             trace("Base 3: " + base3.join(', '));
             trace("Base 4: " + base4.join(', '));
@@ -219,26 +219,26 @@ package {
             trace("Base 6: " + base6.join(', '));
             trace("Base 7: " + base7.join(', '));
             trace("Base 8: " + base8.join(', '));
-            
+
         }
-        
+
         private function _getTerm(n:uint, base:uint = 2):Number {
-            
+
             var r:Number = 0, p:uint, digit:uint;
             var baseLog:Number = Math.log(base);
-            
+
             while ( n > 0 ) {
                 p = Math.pow( base, uint(Math.log(n) / baseLog) );
-                
+
                 digit = n / p;
                 n %= p;
                 r += digit / (p * base);
             }
-            
+
             return r;
-            
+
         }
-        
+
     }
 
 }
@@ -400,7 +400,7 @@ base       0       1       2       3       4       5       6       7       8    
         PRINT
       NEXT
       END
-      
+
       DEF FNvdc(n%, b%)
       LOCAL v, s%
       s% = 1
@@ -520,8 +520,8 @@ base 4
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void vc(int n, int base, int *num, int *denom)
 {
@@ -533,7 +533,7 @@ void vc(int n, int base, int *num, int *denom)
                 n /= base;
         }
 
-        *num = p;  
+        *num = p;
         *denom = q;
 
         while (p) { n = p; p = q % p; q = n; }
@@ -573,8 +573,8 @@ base 5:  0  1/5  2/5  3/5  4/5  1/25  6/25  11/25  16/25  21/25
 
 {{trans|Perl 6}}
 
-```cpp>#include <cmath
-
+```cpp
+#include <cmath>
 #include <iostream>
 
 double vdc(int n, double base = 2)
@@ -588,7 +588,7 @@ double vdc(int n, double base = 2)
     return vdc;
 }
 
-int main() 
+int main()
 {
     for (double base = 2; base < 6; ++base)
     {
@@ -607,16 +607,16 @@ int main()
 ```txt
 
 Base 2
-0 0.5 0.25 0.75 0.125 0.625 0.375 0.875 0.0625 0.5625 
+0 0.5 0.25 0.75 0.125 0.625 0.375 0.875 0.0625 0.5625
 
 Base 3
-0 0.333333 0.666667 0.111111 0.444444 0.777778 0.222222 0.555556 0.888889 0.037037 
+0 0.333333 0.666667 0.111111 0.444444 0.777778 0.222222 0.555556 0.888889 0.037037
 
 Base 4
-0 0.25 0.5 0.75 0.0625 0.3125 0.5625 0.8125 0.125 0.375 
+0 0.25 0.5 0.75 0.0625 0.3125 0.5625 0.8125 0.125 0.375
 
 Base 5
-0 0.2 0.4 0.6 0.8 0.04 0.24 0.44 0.64 0.84 
+0 0.2 0.4 0.6 0.8 0.04 0.24 0.44 0.64 0.84
 
 ```
 
@@ -626,9 +626,9 @@ Base 5
 
 
 This is based on the C version.<br/>
-It uses LINQ and enumeration over a collection 
+It uses LINQ and enumeration over a collection
 to package the sequence and make it easy to use.
-Note that the iterator returns a generic Tuple 
+Note that the iterator returns a generic Tuple
 whose items are the numerator and denominator for the item.
 
 
@@ -646,7 +646,7 @@ namespace VanDerCorput
     /// The numbers in the sequence vary from zero to one, including zero but excluding one.
     /// The sequence possesses low discrepancy.
     /// Here are the first ten terms for bases 2 to 5:
-    /// 
+    ///
     /// base 2:  0  1/2  1/4  3/4  1/8  5/8  3/8  7/8  1/16  9/16
     /// base 3:  0  1/3  2/3  1/9  4/9  7/9  2/9  5/9  8/9  1/27
     /// base 4:  0  1/4  1/2  3/4  1/16  5/16  9/16  13/16  1/8  3/8
@@ -695,11 +695,11 @@ namespace VanDerCorput
             }
             numerator = p;
             denominator = q;
-            while (p != 0) 
-            { 
-                n = p; 
-                p = q % p; 
-                q = n; 
+            while (p != 0)
+            {
+                n = p;
+                p = q % p;
+                q = n;
             }
             numerator /= q;
             denominator /= q;
@@ -754,7 +754,7 @@ namespace VanDerCorput
             foreach (var seq in Enumerable.Range(2, 5).Select(x => new VanDerCorputSequence(x, 10))) // Just the first 10 elements of the each sequence
             {
                 Console.Write("base " + seq.Base + ":");
-                foreach(var vc in seq) 
+                foreach(var vc in seq)
                     Console.Write(" " + vc.Item1 + "/" + vc.Item2);
                 Console.WriteLine();
             }
@@ -845,9 +845,9 @@ Type return to continue...
 {{out}}
 
 ```txt
-Base 2: 0     1/2   1/4   3/4   1/8   5/8   3/8   7/8   1/16  9/16  5/16  
-Base 3: 0     1/3   2/3   1/9   4/9   7/9   2/9   5/9   8/9   1/27  10/27 
-Base 4: 0     1/4   1/2   3/4   1/16  5/16  9/16  13/16 1/8   3/8   5/8   
+Base 2: 0     1/2   1/4   3/4   1/8   5/8   3/8   7/8   1/16  9/16  5/16
+Base 3: 0     1/3   2/3   1/9   4/9   7/9   2/9   5/9   8/9   1/27  10/27
+Base 4: 0     1/4   1/2   3/4   1/16  5/16  9/16  13/16 1/8   3/8   5/8
 Base 5: 0     1/5   2/5   3/5   4/5   1/25  6/25  11/25 16/25 21/25 2/25
 ```
 
@@ -894,12 +894,12 @@ Base 5: [0, 0.2, 0.4, 0.6, 0.8, 0.04, 0.24, 0.44, 0.64, 0.84]
 
 ```ela
 open random number list
- 
+
 vdc bs n = vdc' 0.0 1.0 n
-  where vdc' v d n 
+  where vdc' v d n
           | n > 0 = vdc' v' d' n'
           | else  = v
-          where 
+          where
             d' = d * bs
             rem = n % bs
             n' = truncate (n / bs)
@@ -932,23 +932,23 @@ defmodule Van_der_corput do
   def sequence( n, base \\ 2 ) do
     "0." <> (Integer.to_string(n, base) |> String.reverse )
   end
-  
+
   def float( n, base \\ 2 ) do
     Integer.digits(n, base) |> Enum.reduce(0, fn i,acc -> (i + acc) / base end)
   end
-  
+
   def fraction( n, base \\ 2 ) do
     str = Integer.to_string(n, base) |> String.reverse
     denominator = Enum.reduce(1..String.length(str), 1, fn _,acc -> acc*base end)
     reduction( String.to_integer(str, base), denominator )
   end
-  
+
   defp reduction( 0, _ ), do: "0"
   defp reduction( numerator, denominator ) do
     gcd = gcd( numerator, denominator )
     "#{ div(numerator, gcd) }/#{ div(denominator, gcd) }"
   end
-  
+
   defp gcd( a, 0 ), do: a
   defp gcd( a, b ), do: gcd( b, rem(a, b) )
 end
@@ -1144,7 +1144,7 @@ let vdc n b =
             loop m (denom * b) (acc + (float remainder) / (float (denom * b)))
         else acc
     loop n 1 0.0
-     
+
 
 [<EntryPoint>]
 let main argv =
@@ -1188,10 +1188,10 @@ MAIN: vdc-demo
 
 ```txt
 
-Base 2: 0     1/2   1/4   3/4   1/8   5/8   3/8   7/8   1/16  9/16  
-Base 3: 0     1/3   2/3   1/9   4/9   7/9   2/9   5/9   8/9   1/27  
-Base 4: 0     1/4   1/2   3/4   1/16  5/16  9/16  13/16 1/8   3/8   
-Base 5: 0     1/5   2/5   3/5   4/5   1/25  6/25  11/25 16/25 21/25 
+Base 2: 0     1/2   1/4   3/4   1/8   5/8   3/8   7/8   1/16  9/16
+Base 3: 0     1/3   2/3   1/9   4/9   7/9   2/9   5/9   8/9   1/27
+Base 4: 0     1/4   1/2   3/4   1/16  5/16  9/16  13/16 1/8   3/8
+Base 5: 0     1/5   2/5   3/5   4/5   1/25  6/25  11/25 16/25 21/25
 
 ```
 
@@ -1234,7 +1234,7 @@ test
 
 ## Fortran
 
-This is straightforward once one remembers that the obvious scheme for extracting digits from a number produces them from the low-order end to the high-order end. This reversal is normally annoying, but here a "reflection" ''is'' desired. The source is old-style, except for using F90's ability to have a function (or subroutine) name appear on its END statement with this checked by the compiler. Because the MODULE protocol introduced by F90 is not bothered with, the type of the function has to be declared in all routines invoking it if the default type based on the form of the name does not suffice. Single precision suffices, but the F90 compiler moans that the type of the function itself has not been explicitly declared. Ah well. 
+This is straightforward once one remembers that the obvious scheme for extracting digits from a number produces them from the low-order end to the high-order end. This reversal is normally annoying, but here a "reflection" ''is'' desired. The source is old-style, except for using F90's ability to have a function (or subroutine) name appear on its END statement with this checked by the compiler. Because the MODULE protocol introduced by F90 is not bothered with, the type of the function has to be declared in all routines invoking it if the default type based on the form of the name does not suffice. Single precision suffices, but the F90 compiler moans that the type of the function itself has not been explicitly declared. Ah well.
 ```Fortran
       FUNCTION VDC(N,BASE)	!Calculates a Van der Corput number...
 Converts 1234 in decimal to 4321 in V, and P = 10000.
@@ -1319,9 +1319,9 @@ Function num_base(number As ULongInt, _base_ As UInteger) As String
         ans = Str(n) + ans
         number = number \ _base_
     Wend
-    
+
     If ans = "" Then ans = "0"
-    
+
     Return "." + ans
 
 End Function
@@ -1348,13 +1348,13 @@ End
 
 ```txt
 Base = 2
-.0    .1    .10   .11   .100  .101  .110  .111  .1000 .1001 .1010 .1011 .1100 
+.0    .1    .10   .11   .100  .101  .110  .111  .1000 .1001 .1010 .1011 .1100
 
 Base = 3
-.0    .1    .2    .10   .11   .12   .20   .21   .22   .100  .101  .102  .110  
+.0    .1    .2    .10   .11   .12   .20   .21   .22   .100  .101  .102  .110
 
 Base = 4
-.0    .1    .2    .3    .10   .11   .12   .13   .20   .21   .22   .23   .30   
+.0    .1    .2    .3    .10   .11   .12   .13   .20   .21   .22   .23   .30
 
 Base = 5
 .0    .1    .2    .3    .4    .10   .11   .12   .13   .14   .20   .21   .22
@@ -1456,7 +1456,7 @@ instance Show Rat where
 
 -- Convert a list of base b digits to its corresponding number.  We assume the
 -- digits are valid base b numbers and that their order is from least to most
--- significant.  
+-- significant.
 digitsToNum :: Integer -> [Integer] -> Integer
 digitsToNum b = foldr1 (\d acc -> b * acc + d)
 
@@ -1477,10 +1477,10 @@ vdc b n | b < 2 = error "vdc: base must be ≥ 2"
 
 -- Print the base followed by a sequence of van der Corput numbers.
 printVdc :: (Integer,[Rat]) -> IO ()
-printVdc (b,ns) = putStrLn $ printf "Base %d:" b 
+printVdc (b,ns) = putStrLn $ printf "Base %d:" b
                   ++ concatMap (printf " %5s" . show) ns
 
--- To print the n'th van der Corput numbers for n in [2,3,4,5] call the program 
+-- To print the n'th van der Corput numbers for n in [2,3,4,5] call the program
 -- with no arguments.  Otherwise, passing the base b, first n, next n and
 -- maximum n will print the base b numbers for n in [firstN, nextN, ..., maxN].
 main :: IO ()
@@ -1496,7 +1496,7 @@ main = do
 
 ```txt
 
-$ ./vandercorput 
+$ ./vandercorput
 Base 2:   0/1   1/2   1/4   3/4   1/8   5/8   3/8   7/8  1/16  9/16
 Base 3:   0/1   1/3   2/3   1/9   4/9   7/9   2/9   5/9   8/9  1/27
 Base 4:   0/1   1/4   1/2   3/4  1/16  5/16  9/16 13/16   1/8   3/8
@@ -1543,13 +1543,13 @@ and a sample run is:
 
 ```txt
 ->vdc
-0.0 0.5 0.25 0.75 0.125 0.625 0.375 0.875 0.0625 0.5625 
+0.0 0.5 0.25 0.75 0.125 0.625 0.375 0.875 0.0625 0.5625
 ->vdc 3
-0.0 0.3333333333 0.6666666667 0.1111111111 0.4444444444 0.7777777778 0.2222222222 0.5555555556 0.8888888889 0.037037037 
+0.0 0.3333333333 0.6666666667 0.1111111111 0.4444444444 0.7777777778 0.2222222222 0.5555555556 0.8888888889 0.037037037
 ->vdc 5
-0.0 0.2 0.4 0.6 0.8 0.04 0.24 0.44 0.64 0.84 
+0.0 0.2 0.4 0.6 0.8 0.04 0.24 0.44 0.64 0.84
 ->vdc 123
-0.0 0.0081300813 0.0162601626 0.0243902439 0.0325203252 0.0406504065 0.0487804878 0.0569105691 0.0650406504 0.07317073170000001 
+0.0 0.0081300813 0.0162601626 0.0243902439 0.0325203252 0.0406504065 0.0487804878 0.0569105691 0.0650406504 0.07317073170000001
 ->
 ```
 
@@ -1598,9 +1598,9 @@ In other words: use the left argument as the "base" to structure the sequence nu
 ## Java
 
 {{trans|Perl 6}}
-Using <code>(denom *= 2)</code> as the denominator is not a recommended way of doing things since it is not clear when the multiplication and assignment happen. 
-Comparing this to the "++" operator, it looks like it should do the doubling and assignment second. Comparing it to the "++" operator used as a preincrement operator, it looks like it should do the doubling and assignment first. 
-Comparing it to the behavior of parentheses, it looks like it should do the doubling and assignment first. Luckily for us, it works the same in Java as in Perl 6 (doubling and assignment first). It was kept the Perl 6 way to help with the comparison. 
+Using <code>(denom *= 2)</code> as the denominator is not a recommended way of doing things since it is not clear when the multiplication and assignment happen.
+Comparing this to the "++" operator, it looks like it should do the doubling and assignment second. Comparing it to the "++" operator used as a preincrement operator, it looks like it should do the doubling and assignment first.
+Comparing it to the behavior of parentheses, it looks like it should do the doubling and assignment first. Luckily for us, it works the same in Java as in Perl 6 (doubling and assignment first). It was kept the Perl 6 way to help with the comparison.
 Normally, we would initialize denom to 2 (since that is the denominator of the leftmost digit), use it alone in the vdc sum, and then double it after.
 
 ```java
@@ -1614,7 +1614,7 @@ public class VanDerCorput{
 		}
 		return vdc;
 	}
-	
+
 	public static void main(String[] args){
 		for(int i = 0; i <= 10; i++){
 			System.out.println(vdc(i));
@@ -1642,7 +1642,7 @@ public class VanDerCorput{
 
 
 ## jq
- 
+
 {{ works with|jq|1.4}}
 
 The neat thing about the following implementation of vdc(base) is that it shows how the task can be accomplished in two separate steps without the need to construct an intermediate array.
@@ -1822,16 +1822,16 @@ VanDerCorput[10,5]
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 
 ```Matlab
     function x = corput (n)
     b = dec2bin(1:n)-'0';   % generate sequence of binary numbers from 1 to n
-    l = size(b,2);          % get number of binary digits 
+    l = size(b,2);          % get number of binary digits
     w = (1:l)-l-1;          % 2.^w are the weights
-    x = b * ( 2.^w');       % matrix times vector multiplication for 
-    end;  
+    x = b * ( 2.^w');       % matrix times vector multiplication for
+    end;
 ```
 
 
@@ -1856,7 +1856,7 @@ VanDerCorput[10,5]
 
 
 ## Maxima
- 
+
 
 Define two helper functions
 
@@ -1912,7 +1912,7 @@ vdc(10, 5);
                       5  5  5  5  25  25  25  25  25  25
 */
 ```
-           
+
 
 <tt>digits2dec</tt> can by used with symbols to produce the same example as in
 the task description
@@ -2019,7 +2019,7 @@ vector(10,n,VdC(n))
 
 ## Pascal
 
-Tested with Free Pascal 
+Tested with Free Pascal
 
 ```pascal
 Program VanDerCorput;
@@ -2066,7 +2066,7 @@ end;
 
 procedure VanDerCorput(base,count:NativeUint;f:tvdrCallback);
 //calculates count nominater and denominater of Van der Corput sequence
-// to base 
+// to base
 var
  Pot,
  denom,nom,
@@ -2116,9 +2116,9 @@ end.
 ;output:
 
 ```txt
- Base  2 :0/1  1/2  1/4  3/4  1/8  5/8  3/8  7/8  1/16  9/16  
- Base  3 :0/1  1/3  2/3  1/9  4/9  7/9  2/9  5/9  8/9  1/27  
- Base  4 :0/1  1/4  2/4  3/4  1/16  5/16  9/16  13/16  2/16  6/16  
+ Base  2 :0/1  1/2  1/4  3/4  1/8  5/8  3/8  7/8  1/16  9/16
+ Base  3 :0/1  1/3  2/3  1/9  4/9  7/9  2/9  5/9  8/9  1/27
+ Base  4 :0/1  1/4  2/4  3/4  1/16  5/16  9/16  13/16  2/16  6/16
  Base  5 :0/1  1/5  2/5  3/5  4/5  1/25  6/25  11/25  16/25  21/25
 ```
 
@@ -2238,10 +2238,10 @@ sub vdc($value, $base = 2) {
 }
 ```
 
-We first define two sequences, one finite, one infinite.  
-When we zip those sequences together, the finite sequence terminates the loop (which, since a Perl 6 loop returns all its values, is merely another way of writing a <tt>map</tt>).  
-We then sum with <tt>[+]</tt>, a reduction of the <tt>+</tt> operator.  
-(We could have in-lined the sequences or used a traditional <tt>map</tt> operator, but this way seems more readable than the typical FP solution.)  
+We first define two sequences, one finite, one infinite.
+When we zip those sequences together, the finite sequence terminates the loop (which, since a Perl 6 loop returns all its values, is merely another way of writing a <tt>map</tt>).
+We then sum with <tt>[+]</tt>, a reduction of the <tt>+</tt> operator.
+(We could have in-lined the sequences or used a traditional <tt>map</tt> operator, but this way seems more readable than the typical FP solution.)
 The <tt>do</tt> is necessary to introduce a statement where a term is expected, since Perl 6 distinguishes "sentences" from "noun phrases" as a natural language might.
 
 
@@ -2276,7 +2276,7 @@ atom num = 0, denom = 1, digit, g
     end if
     return {iff(length(res)=0?"0":"0."&res)}
 end function
- 
+
 procedure show_vdc(integer flag, string fmt)
 object v
     for i=2 to 5 do
@@ -2405,17 +2405,17 @@ end vdcb;
 
 ```txt
 
-0.0000000000000000000000000000000 
-0.1000000000000000000000000000000 
-0.0100000000000000000000000000000 
-0.1100000000000000000000000000000 
-0.0010000000000000000000000000000 
-0.1010000000000000000000000000000 
-0.0110000000000000000000000000000 
-0.1110000000000000000000000000000 
-0.0001000000000000000000000000000 
-0.1001000000000000000000000000000 
-0.0101000000000000000000000000000 
+0.0000000000000000000000000000000
+0.1000000000000000000000000000000
+0.0100000000000000000000000000000
+0.1100000000000000000000000000000
+0.0010000000000000000000000000000
+0.1010000000000000000000000000000
+0.0110000000000000000000000000000
+0.1110000000000000000000000000000
+0.0001000000000000000000000000000
+0.1001000000000000000000000000000
+0.0101000000000000000000000000000
 
 ```
 
@@ -2433,7 +2433,7 @@ vdc( N, Base, Out ) :-
     Nq is N // Base,
     vdc( Nq, Base, Tmp ),
     Out = [Nr|Tmp].
- 
+
 % Writes every element of a list to stdout; no newlines
 write_list( [] ).
 write_list( [H|T] ) :-
@@ -2447,7 +2447,7 @@ print_vdc( N, Base ) :-
     write_list( Lst ).
 print_vdc( N ) :-
     print_vdc( N, 2 ).
- 
+
 % Prints the first N+1 elements of the Van der Corput
 % sequence, each to its own line
 print_some( 0, _ ) :-
@@ -2497,20 +2497,20 @@ true .
 
 ```PureBasic
 Procedure.d nBase(n.i,b.i)
-  Define r.d,s.i=1  
+  Define r.d,s.i=1
   While n
     s*b
     r+(Mod(n,b)/s)
     n=Int(n/b)
-  Wend  
-  ProcedureReturn r    
+  Wend
+  ProcedureReturn r
 EndProcedure
 
 Define.i b,c
 OpenConsole("van der Corput - Sequence")
 For b=2 To 5
   Print("Base "+Str(b)+": ")
-  For c=0 To 9    
+  For c=0 To 9
     Print(StrD(nBase(c,b),5)+~"\t")
   Next
   PrintN("")
@@ -2533,7 +2533,7 @@ Base 5: 0.00000 0.20000 0.40000 0.60000 0.80000 0.04000 0.24000 0.44000 0.64000 
 
 (Python3.x)
 
-The multi-base sequence generator 
+The multi-base sequence generator
 
 ```python
 def vdc(n, base=2):
@@ -2555,14 +2555,14 @@ Base 2 and then 3:
 [0, 0.5, 0.25, 0.75, 0.125, 0.625, 0.375, 0.875, 0.0625, 0.5625]
 >>> [vdc(i, 3) for i in range(10)]
 [0, 0.3333333333333333, 0.6666666666666666, 0.1111111111111111, 0.4444444444444444, 0.7777777777777777, 0.2222222222222222, 0.5555555555555556, 0.8888888888888888, 0.037037037037037035]
->>> 
+>>>
 ```
 
 
 
 ### As fractions
 
-We can get the output as rational numbers if we use the fraction module 
+We can get the output as rational numbers if we use the fraction module
 (and change its string representation to look like a fraction):
 
 ```python>>>
@@ -2633,7 +2633,7 @@ Output.
 #| Base 2: 0 1/2 1/4 3/4 1/8 5/8 3/8 7/8 1/16 9/16
    Base 3: 0 1/3 2/3 1/9 4/9 7/9 2/9 5/9 8/9 1/27
    Base 4: 0 1/4 1/2 3/4 1/16 5/16 9/16 13/16 1/8 3/8
-   Base 5: 0 1/5 2/5 3/5 4/5 1/25 6/25 11/25 16/25 21/25 |# 
+   Base 5: 0 1/5 2/5 3/5 4/5 1/25 6/25 11/25 16/25 21/25 |#
 ```
 
 
@@ -2647,7 +2647,7 @@ This REXX version only handles binary (base 2).
 
 Virtually any integer (including negative) is allowed and is accurate (no rounding).
 
-A range of integers (for output) is also supported.  
+A range of integers (for output) is also supported.
 
 ```rexx
 /*REXX program converts an integer (or a range)  ──►  a Van der Corput number in base 2.*/
@@ -2689,7 +2689,7 @@ VdC: procedure;    y=x2b( d2x( arg(1) ) )  + 0   /*convert to  hexadecimal, then
 
 
 ### any radix up to 90
- 
+
 This version handles what the first version does,   plus any radix up to (and including) base '''90'''.
 
 It can also support a list (enabled when the base is negative).
@@ -2805,13 +2805,13 @@ for base = 2 to 5
     for number = 0 to 9
         see "" + corput(number, base) + " "
     next
-    see nl 
+    see nl
 next
 
 func corput n, b
      vdc = 0
      denom = 1
-     while n 
+     while n
            denom *= b
            rem = n % b
            n = floor(n/b)
@@ -2929,7 +2929,7 @@ base: 2
 ```seed7
 $ include "seed7_05.s7i";
   include "float.s7i";
- 
+
 const func float: vdc (in var integer: number, in integer: base) is func
   result
     var float: vdc is 0.0;
@@ -2944,7 +2944,7 @@ const func float: vdc (in var integer: number, in integer: base) is func
       vdc +:= flt(remainder) / flt(denom);
     end while;
   end func;
- 
+
 const proc: main is func
   local
     var integer: base is 0;
@@ -2968,16 +2968,16 @@ const proc: main is func
 
 
 Base 2
-0.000000 0.500000 0.250000 0.750000 0.125000 0.625000 0.375000 0.875000 0.062500 0.562500 
+0.000000 0.500000 0.250000 0.750000 0.125000 0.625000 0.375000 0.875000 0.062500 0.562500
 
 Base 3
-0.000000 0.333333 0.666667 0.111111 0.444444 0.777778 0.222222 0.555556 0.888889 0.037037 
+0.000000 0.333333 0.666667 0.111111 0.444444 0.777778 0.222222 0.555556 0.888889 0.037037
 
 Base 4
-0.000000 0.250000 0.500000 0.750000 0.062500 0.312500 0.562500 0.812500 0.125000 0.375000 
+0.000000 0.250000 0.500000 0.750000 0.062500 0.312500 0.562500 0.812500 0.125000 0.375000
 
 Base 5
-0.000000 0.200000 0.400000 0.600000 0.800000 0.040000 0.240000 0.440000 0.640000 0.840000 
+0.000000 0.200000 0.400000 0.600000 0.800000 0.040000 0.240000 0.440000 0.640000 0.840000
 
 ```
 
@@ -3063,9 +3063,9 @@ for base in 2...5 {
 {{out}}
 
 ```txt
-base 2: 0 1/2 1/4 3/4 1/8 5/8 3/8 7/8 1/16 9/16 
-base 3: 0 1/3 2/3 1/9 4/9 7/9 2/9 5/9 8/9 1/27 
-base 4: 0 1/4 1/2 3/4 1/16 5/16 9/16 13/16 1/8 3/8 
+base 2: 0 1/2 1/4 3/4 1/8 5/8 3/8 7/8 1/16 9/16
+base 3: 0 1/3 2/3 1/9 4/9 7/9 2/9 5/9 8/9 1/27
+base 4: 0 1/4 1/2 3/4 1/16 5/16 9/16 13/16 1/8 3/8
 base 5: 0 1/5 2/5 3/5 4/5 1/25 6/25 11/25 16/25 21/25
 ```
 
@@ -3214,7 +3214,7 @@ Private Function vdc(ByVal n As Integer, BASE As Variant) As Variant
     Loop
     vdc = IIf(Len(res) = 0, "0", "0." & res)
 End Function
- 
+
 Public Sub show_vdc()
     Dim v As Variant, j As Integer
     For i = 2 To 5
@@ -3230,10 +3230,10 @@ End Sub
 {{out}}
 
 ```txt
-Base  2 : 0 0.1 0.01 0.11 0.001 0.101 0.011 0.111 0.0001 0.1001 
-Base  3 : 0 0.1 0.2 0.01 0.11 0.21 0.02 0.12 0.22 0.001 
-Base  4 : 0 0.1 0.2 0.3 0.01 0.11 0.21 0.31 0.02 0.12 
-Base  5 : 0 0.1 0.2 0.3 0.4 0.01 0.11 0.21 0.31 0.41 
+Base  2 : 0 0.1 0.01 0.11 0.001 0.101 0.011 0.111 0.0001 0.1001
+Base  3 : 0 0.1 0.2 0.01 0.11 0.21 0.02 0.12 0.22 0.001
+Base  4 : 0 0.1 0.2 0.3 0.01 0.11 0.21 0.31 0.02 0.12
+Base  5 : 0 0.1 0.2 0.3 0.4 0.01 0.11 0.21 0.31 0.41
 ```
 
 

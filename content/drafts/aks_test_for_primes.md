@@ -12,7 +12,7 @@ tags = []
 
 {{task|Prime Numbers}}
 
-The [http://www.cse.iitk.ac.in/users/manindra/algebra/primality_v6.pdf AKS algorithm] for testing whether a number is prime is a polynomial-time algorithm based on an elementary theorem about Pascal triangles. 
+The [http://www.cse.iitk.ac.in/users/manindra/algebra/primality_v6.pdf AKS algorithm] for testing whether a number is prime is a polynomial-time algorithm based on an elementary theorem about Pascal triangles.
 
 The theorem on which the test is based can be stated as follows:
 
@@ -46,7 +46,7 @@ And all the coefficients are divisible by '''3''',   so '''3''' is prime.
 
 
 ;References:
-* [https://en.wikipedia.org/wiki/AKS_primality_test Agrawal-Kayal-Saxena (AKS) primality test] (Wikipedia) 
+* [https://en.wikipedia.org/wiki/AKS_primality_test Agrawal-Kayal-Saxena (AKS) primality test] (Wikipedia)
 * [http://www.youtube.com/watch?v=HvMSRWTE2mI Fool-Proof Test for Primes] - Numberphile (Video).  The accuracy of this video is disputed -- at best it is an oversimplification.
 
 
@@ -65,18 +65,18 @@ with: a
     [ ( drop [1] ),
       ( drop [1,1] ),
       ( ' n:+ y 1 slide 1 push ) ]
-    swap 2 min caseof ;         
+    swap 2 min caseof ;
 
 ;with
 
 with: n
 
-: .x   \ n -- 
+: .x   \ n --
     dup
     [ ( drop ),
       ( drop "x" . ),
       ( "x^" . . ) ]
-    swap 2 min caseof space ;         
+    swap 2 min caseof space ;
 
 : .term  \ coef exp -- ; omit coef for 1x^n when n > 0
     over 1 = over 0 > and if  nip .x  else  swap . .x  then ;
@@ -195,7 +195,7 @@ COMMENT
    DO
       [0:n] LLI a := coefficients (n);
       printf (($"(x-1)^", g(0), " = "$, n));
-      CASE n+1 IN 
+      CASE n+1 IN
          printf (($g(0)l$, a[0])),
          printf (($"x - ", g(0)l$, a[1]))
       OUT
@@ -242,8 +242,8 @@ END
 (x-1)^5 = x^5 - 5x^4 + 10x^3 - 10x^2 + 5x - 1
 (x-1)^6 = x^6 - 6x^5 + 15x^4 - 20x^3 + 15x^2 - 6x + 1
 (x-1)^7 = x^7 - 7x^6 + 21x^5 - 35x^4 + 35x^3 - 21x^2 + 7x - 1
-Primes < 50 are 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 
-And just to show off, the primes between 900 and 1000 are 907 911 919 929 937 941 947 953 967 971 977 983 991 997 
+Primes < 50 are 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
+And just to show off, the primes between 900 and 1000 are 907 911 919 929 937 941 947 953 967 971 977 983 991 997
 
 ```
 
@@ -254,7 +254,7 @@ And just to show off, the primes between 900 and 1000 are 907 911 919 929 937 94
 {{works with|AutoHotkey L}}
 
 ```autohotkey
-; 1. Create a function/subroutine/method that given p generates the coefficients of the expanded polynomial representation of (x-1)^p. 
+; 1. Create a function/subroutine/method that given p generates the coefficients of the expanded polynomial representation of (x-1)^p.
 ; Function modified from http://rosettacode.org/wiki/Pascal%27s_triangle#AutoHotkey
 pascalstriangle(n=8) ; n rows of Pascal's triangle
 {
@@ -262,14 +262,14 @@ pascalstriangle(n=8) ; n rows of Pascal's triangle
 	Loop, % n
 		Loop, % row := A_Index
 			col := A_Index
-			, p[row, col] := row = 1 and col = 1 
-				? 1 
+			, p[row, col] := row = 1 and col = 1
+				? 1
 				: (p[row-1, col-1] = "" ; math operations on blanks return blanks; I want to assume zero
-					? 0 
+					? 0
 					: p[row-1, col-1])
-				- (p[row-1, col] = "" 
-					? 0 
-					: p[row-1, col]) 
+				- (p[row-1, col] = ""
+					? 0
+					: p[row-1, col])
 	Return p
 }
 
@@ -294,7 +294,7 @@ aks(n)
 	Return !isnotprime
 }
 
-; 4. Use your AKS test to generate a list of all primes under 35. 
+; 4. Use your AKS test to generate a list of all primes under 35.
 i := 49
 p := pascalstriangle(i+1)
 Loop, % i
@@ -416,8 +416,8 @@ Primes between 980 and 1000, short version:
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 long long c[100];
@@ -530,7 +530,7 @@ bool isPrime(unsigned long n)
         cout << n << " is out of range" << endl;
         exit(1);
     }
-    
+
     pascalTriangle(n);
     bool res = true;
     int i = n / 2;
@@ -544,14 +544,14 @@ bool isPrime(unsigned long n)
 
 void expandPoly(unsigned long n)
 {
-    const char vz[] = {'+', '-'};    
-    
+    const char vz[] = {'+', '-'};
+
     if (n > pasTriMax)
     {
         cout << n << " is out of range" << endl;
         exit(1);
     }
-    
+
     switch (n)
     {
         case 0:
@@ -580,11 +580,11 @@ void expandPoly(unsigned long n)
 int main()
 {
     for (unsigned long n = 0; n <= 9; n++)
-        expandPoly(n);      
+        expandPoly(n);
     for (unsigned long n = 2; n <= pasTriMax; n++)
         if (isPrime(n))
             cout << setw(3) << n;
-    cout << endl;        
+    cout << endl;
 }
 
 ```
@@ -625,12 +625,12 @@ using System;
 		Console.Write("(x-1)^" + n + " = ");
 		show(n);
 		Console.WriteLine("");
-	}	 
+	}
 	   Console.Write("Primes:");
 	  for (int n = 1; n <= 63; n++)
 	     if (is_prime(n))
 	       Console.Write(n + " ");
-	 
+
 	    Console.WriteLine('\n');
             Console.ReadLine();
         }
@@ -676,16 +676,16 @@ using System;
 The *' function is an arbitrary precision multiplication.
 
 ```clojure
-(defn c 
+(defn c
   "kth coefficient of (x - 1)^n"
-  [n k] 
-  (/ (apply *' (range n (- n k) -1)) 
+  [n k]
+  (/ (apply *' (range n (- n k) -1))
      (apply *' (range k 0 -1))
      (if (and (even? k) (< k n)) -1 1)))
 
-(defn cs 
+(defn cs
   "coefficient series for (x - 1)^n, k=[0..n]"
-  [n] 
+  [n]
   (map #(c n %) (range (inc n))))
 
 (defn aks? [p] (->> (cs p) rest butlast (every? #(-> % (mod p) zero?))))
@@ -824,15 +824,15 @@ The primes upto 50 are: 2,3,5,7,11,13,17,19,23,29,31,37,41,43,47
 
 ```txt
 # p: (x-1)^p for small p:
-0: +1 
-1: -1 +1X^1 
-2: +1 -2X^1 +1X^2 
-3: -1 +3X^1 -3X^2 +1X^3 
-4: +1 -4X^1 +6X^2 -4X^3 +1X^4 
-5: -1 +5X^1 -10X^2 +10X^3 -5X^4 +1X^5 
-6: +1 -6X^1 +15X^2 -20X^3 +15X^4 -6X^5 +1X^6 
-7: -1 +7X^1 -21X^2 +35X^3 -35X^4 +21X^5 -7X^6 +1X^7 
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 
+0: +1
+1: -1 +1X^1
+2: +1 -2X^1 +1X^2
+3: -1 +3X^1 -3X^2 +1X^3
+4: +1 -4X^1 +6X^2 -4X^3 +1X^4
+5: -1 +5X^1 -10X^2 +10X^3 -5X^4 +1X^5
+6: +1 -6X^1 +15X^2 -20X^3 +15X^4 -6X^5 +1X^6
+7: -1 +7X^1 -21X^2 +35X^3 -35X^4 +21X^5 -7X^6 +1X^7
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
 ```
 
 
@@ -847,7 +847,7 @@ def x_minus_1_to_the(p)
     ([0_i64] + ex).zip(ex + [0]).map { |x,y| x - y }
   end
 end
- 
+
 def prime?(p)
   return false if p < 2
   coeff = x_minus_1_to_the(p)[1..p/2] # only need half of coeff terms
@@ -855,7 +855,7 @@ def prime?(p)
 end
 
 8.times do |n|
-  puts "(x-1)^#{n} = " + 
+  puts "(x-1)^#{n} = " +
   x_minus_1_to_the(n).map_with_index{ |c, p|
     p.zero? ? c.to_s : (c < 0 ? " - " : " + ") + (c.abs == 1 ? "x" : "#{c.abs}x") + (p == 1 ? "" : "^#{p}")
   }.join
@@ -926,18 +926,18 @@ void main() {
 
 ```txt
 # p: (x-1)^p for small p:
-  0: 1 
-  1: x - 1 
-  2: x^2 - 2x + 1 
-  3: x^3 - 3x^2 + 3x - 1 
-  4: x^4 - 4x^3 + 6x^2 - 4x + 1 
-  5: x^5 - 5x^4 + 10x^3 - 10x^2 + 5x - 1 
-  6: x^6 - 6x^5 + 15x^4 - 20x^3 + 15x^2 - 6x + 1 
-  7: x^7 - 7x^6 + 21x^5 - 35x^4 + 35x^3 - 21x^2 + 7x - 1 
-  8: x^8 - 8x^7 + 28x^6 - 56x^5 + 70x^4 - 56x^3 + 28x^2 - 8x + 1 
-  9: x^9 - 9x^8 + 36x^7 - 84x^6 + 126x^5 - 126x^4 + 84x^3 - 36x^2 + 9x - 1 
- 10: x^10 - 10x^9 + 45x^8 - 120x^7 + 210x^6 - 252x^5 + 210x^4 - 120x^3 + 45x^2 - 10x + 1 
- 11: x^11 - 11x^10 + 55x^9 - 165x^8 + 330x^7 - 462x^6 + 462x^5 - 330x^4 + 165x^3 - 55x^2 + 11x - 1 
+  0: 1
+  1: x - 1
+  2: x^2 - 2x + 1
+  3: x^3 - 3x^2 + 3x - 1
+  4: x^4 - 4x^3 + 6x^2 - 4x + 1
+  5: x^5 - 5x^4 + 10x^3 - 10x^2 + 5x - 1
+  6: x^6 - 6x^5 + 15x^4 - 20x^3 + 15x^2 - 6x + 1
+  7: x^7 - 7x^6 + 21x^5 - 35x^4 + 35x^3 - 21x^2 + 7x - 1
+  8: x^8 - 8x^7 + 28x^6 - 56x^5 + 70x^4 - 56x^3 + 28x^2 - 8x + 1
+  9: x^9 - 9x^8 + 36x^7 - 84x^6 + 126x^5 - 126x^4 + 84x^3 - 36x^2 + 9x - 1
+ 10: x^10 - 10x^9 + 45x^8 - 120x^7 + 210x^6 - 252x^5 + 210x^4 - 120x^3 + 45x^2 - 10x + 1
+ 11: x^11 - 11x^10 + 55x^9 - 165x^8 + 330x^7 - 462x^6 + 462x^5 - 330x^4 + 165x^3 - 55x^2 + 11x - 1
 
 Small primes using the AKS test:
 [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
@@ -958,12 +958,12 @@ We use the math.lib library and the poly functions to compute and display the re
 ;; compute (x-1)^p ,  p >= 1
 (define (aks-poly p)
 	(poly-pow (list -1 1) p))
-	
-;; 
+
+;;
 (define (show-them n)
-	(for ((p (in-range 1 n))) 
+	(for ((p (in-range 1 n)))
 		(writeln 'p p (poly->string 'x (aks-poly p)))))
-	
+
 ;; aks-test
 ;; P = (x-1)^p + 1 - x^p
 (define (aks-test p)
@@ -978,26 +978,26 @@ We use the math.lib library and the poly functions to compute and display the re
 ```lisp
 
 (show-them 13) →
-p     1     x -1     
-p     2     x^2 -2x +1     
-p     3     x^3 -3x^2 +3x -1     
-p     4     x^4 -4x^3 +6x^2 -4x +1     
-p     5     x^5 -5x^4 +10x^3 -10x^2 +5x -1     
-p     6     x^6 -6x^5 +15x^4 -20x^3 +15x^2 -6x +1     
-p     7     x^7 -7x^6 +21x^5 -35x^4 +35x^3 -21x^2 +7x -1     
-p     8     x^8 -8x^7 +28x^6 -56x^5 +70x^4 -56x^3 +28x^2 -8x +1     
-p     9     x^9 -9x^8 +36x^7 -84x^6 +126x^5 -126x^4 +84x^3 -36x^2 +9x -1     
-p     10     x^10 -10x^9 +45x^8 -120x^7 +210x^6 -252x^5 +210x^4 -120x^3 +45x^2 -10x +1     
-p     11     x^11 -11x^10 +55x^9 -165x^8 +330x^7 -462x^6 +462x^5 -330x^4 +165x^3 -55x^2 +11x -1     
-p     12     x^12 -12x^11 +66x^10 -220x^9 +495x^8 -792x^7 +924x^6 -792x^5 +495x^4 -220x^3 +66x^2 -12x +1     
+p     1     x -1
+p     2     x^2 -2x +1
+p     3     x^3 -3x^2 +3x -1
+p     4     x^4 -4x^3 +6x^2 -4x +1
+p     5     x^5 -5x^4 +10x^3 -10x^2 +5x -1
+p     6     x^6 -6x^5 +15x^4 -20x^3 +15x^2 -6x +1
+p     7     x^7 -7x^6 +21x^5 -35x^4 +35x^3 -21x^2 +7x -1
+p     8     x^8 -8x^7 +28x^6 -56x^5 +70x^4 -56x^3 +28x^2 -8x +1
+p     9     x^9 -9x^8 +36x^7 -84x^6 +126x^5 -126x^4 +84x^3 -36x^2 +9x -1
+p     10     x^10 -10x^9 +45x^8 -120x^7 +210x^6 -252x^5 +210x^4 -120x^3 +45x^2 -10x +1
+p     11     x^11 -11x^10 +55x^9 -165x^8 +330x^7 -462x^6 +462x^5 -330x^4 +165x^3 -55x^2 +11x -1
+p     12     x^12 -12x^11 +66x^10 -220x^9 +495x^8 -792x^7 +924x^6 -792x^5 +495x^4 -220x^3 +66x^2 -12x +1
 
 (lib 'bigint)
 Lib: bigint.lib loaded.
 
-(for ((p (in-range 2 100))) 
+(for ((p (in-range 2 100)))
     (when (aks-test p) (write p)))  →
 
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 
 ```
 
@@ -1009,18 +1009,18 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 singleton AksTest
 {
     static long[] c := new long[](100);
- 
+
     coef(int n)
     {
         int i := 0;
         int j := 0;
- 
+
         if ((n < 0) || (n > 63)) { AbortException.raise() }; // gracefully deal with range issue
- 
+
         c[i] := 1l;
         for (int i := 0, i < n, i += 1) {
             c[1 + i] := 1l;
@@ -1030,24 +1030,24 @@ singleton AksTest
             c[0] := c[0].Negative
         }
     }
- 
+
     bool is_prime(int n)
     {
         int i := n;
- 
+
         self.coef(n);
         c[0] := c[0] + 1;
         c[i] := c[i] - 1;
- 
+
         i -= 1;
         while (i + 1 != 0 && c[i+1].mod(n) == 0)
         {
             i -= 1
         };
- 
+
         ^ i < 0
     }
- 
+
     show(int n)
     {
         int i := n;
@@ -1059,17 +1059,17 @@ singleton AksTest
         }
     }
 }
- 
+
 public program()
 {
     for (int n := 0, n < 10, n += 1) {
         AksTest.coef(n);
- 
+
 		console.print("(x-1)^",n," = ");
 		AksTest.show(n);
         console.printLine()
     };
-    
+
     console.print("Primes:");
     for (int n := 1, n <= 63, n += 1) {
         if (AksTest.is_prime(n))
@@ -1077,7 +1077,7 @@ public program()
             console.print(n," ")
         }
     };
- 
+
     console.printLine().readChar()
 }
 ```
@@ -1096,7 +1096,7 @@ public program()
 (x-1)^7 = +1x^7+-7x^6+21x^5+-35x^4+35x^3+-21x^2+7x^1+-1x^0
 (x-1)^8 = +1x^8+-8x^7+28x^6+-56x^5+70x^4+-56x^3+28x^2+-8x^1+1x^0
 (x-1)^9 = +1x^9+-9x^8+36x^7+-84x^6+126x^5+-126x^4+84x^3+-36x^2+9x^1+-1x^0
-Primes:1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 
+Primes:1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61
 
 ```
 
@@ -1109,35 +1109,35 @@ Primes:1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61
 ```elixir
 defmodule AKS do
   def iterate(f, x), do: fn -> [x | iterate(f, f.(x))] end
-  
+
   def take(0, _lazy), do: []
   def take(n, lazy) do
     [value | next] = lazy.()
     [value | take(n-1, next)]
   end
-  
+
   def pascal, do: iterate(fn row -> [1 | sum_adj(row)] end, [1])
-  
+
   defp sum_adj([_] = l), do: l
   defp sum_adj([a, b | _] = row), do: [a+b | sum_adj(tl(row))]
-  
+
   def show_binomial(row) do
     degree = length(row) - 1
     ["(x - 1)^",  to_char_list(degree), " =", binomial_rhs(row, 1, degree)]
   end
-  
+
   defp show_x(0), do: ""
   defp show_x(1), do: "x"
   defp show_x(n), do: [?x, ?^ | to_char_list(n)]
-  
+
   defp binomial_rhs([], _, _), do: []
   defp binomial_rhs([coef | coefs], sgn, exp) do
     signchar = if sgn > 0, do: ?+, else: ?-
     [0x20, signchar, 0x20, to_char_list(coef), show_x(exp) | binomial_rhs(coefs, -sgn, exp-1)]
   end
-  
+
   def primerow(row, n), do: Enum.all?(row, fn coef -> (coef == 1) or (rem(coef, n) == 0) end)
-  
+
   def main do
     for row <- take(8, pascal), do: IO.puts show_binomial(row)
     IO.write "\nThe primes upto 50: "
@@ -1336,15 +1336,15 @@ V{ 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 }
 
 ```txt
 
-0 : +1 
-1 : -1 +1x^1 
-2 : +1 -2x^1 +1x^2 
-3 : -1 +3x^1 -3x^2 +1x^3 
-4 : +1 -4x^1 +6x^2 -4x^3 +1x^4 
-5 : -1 +5x^1 -10x^2 +10x^3 -5x^4 +1x^5 
-6 : +1 -6x^1 +15x^2 -20x^3 +15x^4 -6x^5 +1x^6 
-7 : -1 +7x^1 -21x^2 +35x^3 -35x^4 +21x^5 -7x^6 +1x^7 
-8 : +1 -8x^1 +28x^2 -56x^3 +70x^4 -56x^5 +28x^6 -8x^7 +1x^8 
+0 : +1
+1 : -1 +1x^1
+2 : +1 -2x^1 +1x^2
+3 : -1 +3x^1 -3x^2 +1x^3
+4 : +1 -4x^1 +6x^2 -4x^3 +1x^4
+5 : -1 +5x^1 -10x^2 +10x^3 -5x^4 +1x^5
+6 : +1 -6x^1 +15x^2 -20x^3 +15x^4 -6x^5 +1x^6
+7 : -1 +7x^1 -21x^2 +35x^3 -35x^4 +21x^5 -7x^6 +1x^7
+8 : +1 -8x^1 +28x^2 -56x^3 +70x^4 -56x^5 +28x^6 -8x^7 +1x^8
 9 : -1 +9x^1 -36x^2 +84x^3 -126x^4 +126x^5 -84x^6 +36x^7 -9x^8 +1x^9
 10 : +1 -10x^1 +45x^2 -120x^3 +210x^4 -252x^5 +210x^6 -120x^7 +45x^8 -10x^9 +1x^10
 
@@ -1437,7 +1437,7 @@ contains
 
       p = i - 1
       write(cbuf, '(I40)') abs(coeffs(i))
-      write(pbuf, '(I40)') p 
+      write(pbuf, '(I40)') p
 
       if (non_zero) then
         if (coeffs(i) .gt. 0) then
@@ -1471,7 +1471,7 @@ contains
       end if
       non_zero = .true.
     end do
-    
+
     write(*, *)
   end subroutine
 
@@ -1601,7 +1601,7 @@ func aks(p int) bool {
 5:  x⁵ - 5x⁴ + 10x³ - 10x² + 5x - 1
 6:  x⁶ - 6x⁵ + 15x⁴ - 20x³ + 15x² - 6x + 1
 7:  x⁷ - 7x⁶ + 21x⁵ - 35x⁴ + 35x³ - 21x² + 7x - 1
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
 
 ```
 
@@ -1674,7 +1674,7 @@ Function isprime(num As Integer) As Integer
 End Function
 '
 ### ==============================
- 
+
 'Formatted output
 For n As Integer=1 To 9
     Print pasc(n,1)
@@ -1766,40 +1766,40 @@ import Data.Vect
 -- Computes Binomial Coefficients
 binCoef : Nat -> Nat -> Nat
 binCoef _ Z = (S Z)
-binCoef (S n) (S k) = 
+binCoef (S n) (S k) =
     if n == k then (S Z) else ((S n) * (binCoef n k)) `div` (S k)
 
 -- Binomial Expansion Of (x - 1)^p
 expansion : (n : Nat) -> Vect (S n) Integer
 expansion n = expansion' n 1
-  where 
+  where
     expansion' : (n : Nat) -> Integer -> Vect (S n) Integer
-    expansion' (S m) s = s * (toIntegerNat $ binCoef n (n `minus` (S m))) :: 
+    expansion' (S m) s = s * (toIntegerNat $ binCoef n (n `minus` (S m))) ::
                             expansion' m (s * -1)
     expansion' Z s = [s]
 
 
 showExpansion : Vect n Integer -> String
 showExpansion [] = " "
-showExpansion (x::xs) {n = S k} = (if x < 0 then "-" else "") ++ 
+showExpansion (x::xs) {n = S k} = (if x < 0 then "-" else "") ++
         term x k ++ showExpansion' xs
-  where 
+  where
         term : Integer -> Nat -> String
         term x n = if n == 0 then (show (abs x)) else
-                      (if (abs x) == 1 then "" else 
-                          (show (abs x))) ++ "x" ++ 
+                      (if (abs x) == 1 then "" else
+                          (show (abs x))) ++ "x" ++
                             (if n == 1 then "" else "^" ++ show n)
-        
+
         sign : Integer -> String
         sign x = if x >= 0 then " + " else " - "
 
-        showExpansion' : Vect m Integer -> String 
+        showExpansion' : Vect m Integer -> String
         showExpansion' [] = ""
-        showExpansion' (y::ys) {m = S k} = sign y ++ term y k ++ 
+        showExpansion' (y::ys) {m = S k} = sign y ++ term y k ++
                                                 showExpansion' ys
 
 
-natToFin' : (m : Nat) -> Fin (S m) 
+natToFin' : (m : Nat) -> Fin (S m)
 natToFin' n with (natToFin n (S n))
     natToFin' n | Just y = y
 
@@ -1807,16 +1807,16 @@ natToFin' n with (natToFin n (S n))
 isPrime : Nat -> Bool
 isPrime Z = False
 isPrime (S Z ) = False
-isPrime n = foldl (\divs, term => divs && (term `mod` (toIntegerNat n)) == 0) 
-              True (fullExpansion $ expansion n)  
+isPrime n = foldl (\divs, term => divs && (term `mod` (toIntegerNat n)) == 0)
+              True (fullExpansion $ expansion n)
 
     -- (x - 1)^p - ((x^p) - 1)
     where fullExpansion : Vect (S m) Integer -> Vect (S m) Integer
-          fullExpansion (x::xs) {m} = updateAt (natToFin' m) (+1) $ (x-1)::xs 
+          fullExpansion (x::xs) {m} = updateAt (natToFin' m) (+1) $ (x-1)::xs
 
 
 printExpansions : Nat -> IO ()
-printExpansions n = do 
+printExpansions n = do
       putStrLn "-- p: (x-1)^p for small p"
       sequence_ $ map printExpansion [0..n]
   where printExpansion : Nat -> IO ()
@@ -1827,7 +1827,7 @@ printExpansions n = do
 
 
 main : IO()
-main = do 
+main = do
   printExpansions 10
   putStrLn "\n-- Primes Up To 100:"
   putStrLn $ show $ filter isPrime [0..100]
@@ -2094,32 +2094,32 @@ for (var coef=pascal(2), n=2; n<=50; n+=1) if (isPrime(coef())) document.write('
  (x-1)<sup>5</sup> = +1x<sup>5</sup> -5x<sup>4</sup> +10x<sup>3</sup> -10x<sup>2</sup> +5x -1
  (x-1)<sup>6</sup> = +1x<sup>6</sup> -6x<sup>5</sup> +15x<sup>4</sup> -20x<sup>3</sup> +15x<sup>2</sup> -6x +1
  (x-1)<sup>7</sup> = +1x<sup>7</sup> -7x<sup>6</sup> +21x<sup>5</sup> -35x<sup>4</sup> +35x<sup>3</sup> -21x<sup>2</sup> +7x -1
- 
+
  Primes: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47
 {{trans|C}}
 
 ```JavaScript
 function coef(n) {
  	for (var c=[1], i=0; i<n; c[0]=-c[0], i+=1) {
-		c[i+1]=1; for (var j=i; j; j-=1) c[j] = c[j-1]-c[j]		
+		c[i+1]=1; for (var j=i; j; j-=1) c[j] = c[j-1]-c[j]
 	}
 	return c
 }
- 
+
 function show(cs)	{
 	var s='', n=cs.length-1
 	do s += (cs[n]>0 ? ' +' : ' ') + cs[n] + (n==0 ? '' : n==1 ? 'x' :'x<sup>'+n+'</sup>'); while (n--)
 	return s
 }
- 
+
 function isPrime(n) {
 	var cs=coef(n), i=n-1; while (i-- && cs[i]%n == 0);
 	return i < 1
 }
- 
+
 for (var n=0; n<=7; n++) document.write('(x-1)<sup>',n,'</sup> = ', show(coef(n)), '
 ')
- 
+
 document.write('
 Primes: ');
 for (var n=2; n<=50; n++) if (isPrime(n)) document.write(' ', n)
@@ -2134,7 +2134,7 @@ for (var n=2; n<=50; n++) if (isPrime(n)) document.write(' ', n)
  (x-1)<sup>5</sup> = +1x<sup>5</sup> -5x<sup>4</sup> +10x<sup>3</sup> -10x<sup>2</sup> +5x -1
  (x-1)<sup>6</sup> = +1x<sup>6</sup> -6x<sup>5</sup> +15x<sup>4</sup> -20x<sup>3</sup> +15x<sup>2</sup> -6x +1
  (x-1)<sup>7</sup> = +1x<sup>7</sup> -7x<sup>6</sup> +21x<sup>5</sup> -35x<sup>4</sup> +35x<sup>3</sup> -21x<sup>2</sup> +7x -1
- 
+
  Primes: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47
 
 
@@ -2158,7 +2158,7 @@ https://github.com/joelpurra/jq-bigint
 ```jq
 # add_pairs is a helper function for optpascal/0
 # Input: an OptPascal array
-# Output: the next OptPascal array (obtained by adding adjacent items, 
+# Output: the next OptPascal array (obtained by adding adjacent items,
 # but if the last two items are unequal, then their sum is repeated)
 def add_pairs:
   if length <= 1 then .
@@ -2177,7 +2177,7 @@ def next_optpascal: [1] + add_pairs;
 def optpascals: [] | recurse(next_optpascal);
 
 # generate a stream of Pascal arrays
-def pascals: 
+def pascals:
   # pascalize takes as input an OptPascal array and produces
   # the corresponding Pascal array;
   # if the input ends in a pair, then peel it off before reversing it.
@@ -2203,7 +2203,7 @@ def coefficients:
   (.+1) | pascal | alternate_signs;
 ```
 
- 
+
 '''Task 2:''' "Show here the polynomial expansions of (x − 1)^p for p in the range 0 to at least 7, inclusive."
 
 ```jq
@@ -2243,7 +2243,7 @@ def is_prime:
 ```jq
 range(0;36) | select(is_prime)
 ```
- 
+
 {{out}}
 
 ```sh
@@ -2375,7 +2375,7 @@ println("</math>\n")
 L = 50
 print("AKS primes less than ", L, ":  ")
 sep = ""
-for i in 1:L  
+for i in 1:L
     if isaksprime(i)
         print(sep, i)
         sep = ", "
@@ -2672,7 +2672,7 @@ Algebraic manipulation is built into Mathematica, so there's no need to create a
 
 ```Mathematica
 Print["powers of (x-1)"]
-(x - 1)^( Range[0, 7]) // Expand // TableForm   
+(x - 1)^( Range[0, 7]) // Expand // TableForm
 Print["primes under 50"]
 poly[p_] := (x - 1)^p - (x^p - 1) // Expand;
 coefflist[p_Integer] := Coefficient[poly[p], x, #] & /@ Range[0, p - 1];
@@ -2706,17 +2706,17 @@ primes under 50
 ```objeck
 class AksTest {
   @c : static : Int[];
-  
+
   function : Main(args : String[]) ~ Nil {
     @c := Int->New[100];
-    
+
     for(n := 0; n < 10; n++;) {
       Coef(n);
       "(x-1)^ {$n} = "->Print();
       Show(n);
       '\n'->Print();
     };
- 
+
     "\nPrimes:"->PrintLine();
     for(n := 2; n <= 63; n++;) {
       if(IsPrime(n)) {
@@ -2728,11 +2728,11 @@ class AksTest {
 
   function : native : Coef(n : Int) ~ Nil {
     i := 0; j := 0;
-    
+
     if (n < 0 | n > 63) {
       Runtime->Exit(0);
     };
- 
+
     for(@c[0] := 1; i < n; i++;) {
       j := i;
       for(@c[1 + j] := 1; j > 0; j--;) {
@@ -2741,19 +2741,19 @@ class AksTest {
       @c[0] := @c[0] * -1;
     };
   }
-    
+
   function : native : IsPrime(n : Int) ~ Bool {
     Coef(n);
     @c[0] += 1; @c[n] -= 1;
- 
+
     i:=n;
     while (i <> 0 & (@c[i] % n) = 0) {
       i--;
     };
-    
+
     return i = 0;
   }
-  
+
   function : Show(n : Int) ~ Nil {
     do {
       value := @c[n];
@@ -2861,19 +2861,19 @@ primes < 50 per AKS: (2 3 5 7 11 13 17 19 23 29 31 37 41 43 47)
 ```Oforth
 import: mapping
 
-: nextCoef( prev -- [] ) 
+: nextCoef( prev -- [] )
 | i |
    Array new 0 over dup
    prev size 1- loop: i [ prev at(i) prev at(i 1+) - over add ]
    0 over add
 ;
- 
+
 : coefs( n -- [] )
     [ 0, 1, 0 ] #nextCoef times(n) extract(2, n 2 + ) ;
 
 : prime?( n -- b)
     coefs( n ) extract(2, n) conform?( #[n mod 0 == ] ) ;
- 
+
 : aks
 | i |
    0 10 for: i [ System.Out "(x-1)^" << i << " = " << coefs( i ) << cr ]
@@ -3196,7 +3196,7 @@ Primes up to 100:
 -- Translated from the C version, just about everything is (working) out-by-1, what fun.
 
 sequence c = repeat(0,100)
- 
+
 procedure coef(integer n)
 -- out-by-1, ie coef(1)==^0, coef(2)==^1, coef(3)==^2 etc.
     c[n] = 1
@@ -3214,7 +3214,7 @@ function is_prime(integer n)
     end for
     return 1
 end function
- 
+
 procedure show(integer n)
 -- (As per coef, this is (working) out-by-1)
 object ci
@@ -3224,9 +3224,9 @@ object ci
             if remainder(n-i,2)=0 then
                 if i=1 then
                     if n=1 then
-                        ci = "1" 
+                        ci = "1"
                     else
-                        ci = "+1" 
+                        ci = "+1"
                     end if
                 else
                     ci = ""
@@ -3250,7 +3250,7 @@ object ci
         end if
     end for
 end procedure
- 
+
 procedure AKS_test_for_primes()
     for n=1 to 10 do -- (0 to 9 really)
         coef(n);
@@ -3258,14 +3258,14 @@ procedure AKS_test_for_primes()
         show(n);
         puts(1,'\n');
     end for
- 
+
     puts(1,"\nprimes (<=53):");
 --  coef(2); -- (needed to reset c, if we want to avoid saying 1 is prime...)
     c[2] = 1 -- (this manages "", which is all that call did anyway...)
     for n = 2 to 53 do
         if is_prime(n) then
             printf(1," %d", n);
-        end if 
+        end if
     end for
     puts(1,'\n');
     if getc(0) then end if
@@ -3309,7 +3309,7 @@ primes (<=53): 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53
 
 (for (X 0 (> 10 X) (inc X))
    (println X '-> (pascal X) ) )
-   
+
 (println
    (filter
       '((X)
@@ -3317,7 +3317,7 @@ primes (<=53): 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53
             '((Y) (=0 (% Y X)))
             (cdr (head -1 (pascal X))) ) )
       (range 2 50) ) )
-      
+
 (bye)
 ```
 
@@ -3456,7 +3456,7 @@ print_polynomial: procedure (coeffs);
 
       non_zero = true;
     end;
-    
+
     put skip;
   end print_polynomial;
 
@@ -3575,7 +3575,7 @@ pascal(N, Row) :-
 pascalize( Opt, Row ) :-
   % if Opt ends in a pair, then peel off the pair:
   ( append(X, [R,R], Opt) -> true ; append(X, [R], Opt) ),
-  reverse(X, Rs), 
+  reverse(X, Rs),
   append( Opt, Rs, Row ).
 
 % optpascal(-X) generates optpascal lines:
@@ -3599,7 +3599,7 @@ optpascal(X, [1|Y]) :-
 % avoid a probable compiler limitation, we therefore use one cut.
 add_pairs([], []).
 add_pairs([X], [X]).
-add_pairs([X,Y], Ans) :- 
+add_pairs([X,Y], Ans) :-
   S is X + Y,
   (X = Y -> Ans=[S] ; Ans=[S,S]),
   !.  % To overcome potential limitation of compiler
@@ -3634,7 +3634,7 @@ alternate_signs( [A,B | X], [A, MB | Y] ) :-
 %%% Task 2. "Show here the polynomial expansions of (x − 1)p for p in the range 0 to at least 7, inclusive."
 
 coefficients(Coefficients) :-
-  optpascal( Opt), 
+  optpascal( Opt),
   pascalize( Opt, Row ),
   alternate_signs(Row, Coefficients).
 
@@ -3677,9 +3677,9 @@ The following would be more efficient because backtracking saves recomputation:
 %%% another function that when given p returns whether p is prime
 %%% using the AKS test.
 
-% Even for testing whether a given number, N, is prime, 
+% Even for testing whether a given number, N, is prime,
 % this approach is inefficient, but here is a Prolog implementation:
-   
+
    prime_test_per_requirements(N) :-
      coefficients(N, [1|Coefficients]),
      append(Cs, [_], Coefficients),
@@ -3708,13 +3708,13 @@ recomputation):
 
 :-   prime(N), (N < 35 -> write(N), write(' '), fail ; nl).
 
-% Output: 1 2 3 5 7 11 13 17 19 23 29 31 
+% Output: 1 2 3 5 7 11 13 17 19 23 29 31
 
 %%% Task 5. As a stretch goal, generate all primes under 50.
 
 :-  prime(N), (N < 50 -> write(N), write(' '), fail ; nl).
 
-% Output: 1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 
+% Output: 1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
 
 ```
 
@@ -3753,12 +3753,12 @@ OpenConsole()
 For n=0 To nMAX
   Print(RSet(Str(n),3,Chr(32))+": ")
   If vzr : Print("+") : Else : Print("-") : EndIf
-  For k=0 To n    
+  For k=0 To n
     If k>0 : If vzc : Print("+") : Else : Print("-") : EndIf : vzc = ~vzc : EndIf
-    Print(RSet(Str(pd(n,k)),3,Chr(32))+Space(3))    
+    Print(RSet(Str(pd(n,k)),3,Chr(32))+Space(3))
   Next
   PrintN("")
-  vzr = ~vzr : vzc = ~vzr  
+  vzr = ~vzr : vzc = ~vzr
 Next
 PrintN("")
 
@@ -3796,13 +3796,13 @@ Primes n<=50 : 2  3  5  7  11  13  17  19  23  29  31  37  41  43  47
 
 
 ```python
-def expand_x_1(n): 
+def expand_x_1(n):
 # This version uses a generator and thus less computations
     c =1
     for i in range(n//2+1):
         c = c*(n-i)//(i+1)
         yield c
-        
+
 def aks(p):
     if p==2:
         return True
@@ -3840,8 +3840,8 @@ def aks_test(p):
     ex = expand_x_1(p)
     ex[0] += 1
     return not any(mult % p for mult in ex[0:-1])
-    
-    
+
+
 print('# p: (x-1)^p for small p')
 for p in range(12):
     print('%3i: %s' % (p, ' '.join('%+i%s' % (e, ('x^%i' % n) if n else '')
@@ -3962,17 +3962,17 @@ print('|}')
 ## R
 
 
-Working on the coefficients of the following expression (x-1)^p - (x^p-1). Excluding the coefficient of X^(p-1). 
+Working on the coefficients of the following expression (x-1)^p - (x^p-1). Excluding the coefficient of X^(p-1).
 
-  
+
 
 ```R
-AKS<-function(p){ 
-  i<-2:p-1 
-  l<-unique(factorial(p) / (factorial(p-i) * factorial(i))) 
-  if(all(l%%p==0)){   
-    print(noquote("It is prime."))   
-  }else{   
+AKS<-function(p){
+  i<-2:p-1
+  l<-unique(factorial(p) / (factorial(p-i) * factorial(i)))
+  if(all(l%%p==0)){
+    print(noquote("It is prime."))
+  }else{
    print(noquote("It isn't prime."))
   }
 }
@@ -4128,7 +4128,7 @@ Say ' '
 Say 'Primes:' subword(pl,2,27)
 Say '       ' subword(pl,29)
 Say 'Largest coefficient:' mmm
-Say 'This has' length(mmm) 'digits' 
+Say 'This has' length(mmm) 'digits'
 ```
 
 {{out}}
@@ -4147,7 +4147,7 @@ Say 'This has' length(mmm) 'digits'
 Primes: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103
         107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199
 Largest coefficient: 45274257328051640582702088538742081937252294837706668420660
-This has 59 digits    
+This has 59 digits
 ```
 
 
@@ -4334,9 +4334,9 @@ def prime?(p)
   coeff = x_minus_1_to_the(p)[1..p/2] # only need half of coeff terms
   coeff.all?{ |n| n%p == 0 }
 end
- 
+
 8.times do |n|
-  puts "(x-1)^#{n} = " + 
+  puts "(x-1)^#{n} = " +
   x_minus_1_to_the(n).map.with_index { |c, p|
     p.zero? ? c.to_s :
       (c < 0 ? " - " : " + ") + (c.abs == 1 ? "x" : "#{c.abs}x") + (p == 1 ? "" : "^#{p}")
@@ -4415,7 +4415,7 @@ fn main() {
 5: [1, -5, 10, -10, 5, -1]
 6: [1, -6, 15, -20, 15, -6, 1]
 7: [1, -7, 21, -35, 35, -21, 7, -1]
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
 ```
 
 
@@ -4578,7 +4578,7 @@ g=50; //For test of primes up to g
 function X = pascal(g) //Pascal´s triangle
     X(1,1)=1; //Zeroth power
     X(2,1)=1; //First power
-    X(2,2)=1; 
+    X(2,2)=1;
     for q=3:1:g+1 //From second power use this loop
        X(q,1)=1;
        X(q,q)=1;
@@ -4628,7 +4628,7 @@ endfunction
 
 R="2"; //For nicer display
 for r=3:g
-    if prime(Z,r)=="true" then 
+    if prime(Z,r)=="true" then
         R=strcat([R, ", ",string(r)]);
     end
 end
@@ -4641,23 +4641,23 @@ disp(R)
 
 ```txt
 
-(x-1)^0 = 1   
- 
- (x-1)^1 = x^1-1   
- 
- (x-1)^2 = x^2-2x^1+1   
- 
- (x-1)^3 = x^3-3x^2+3x^1-1   
- 
- (x-1)^4 = x^4-4x^3+6x^2-4x^1+1   
- 
- (x-1)^5 = x^5-5x^4+10x^3-10x^2+5x^1-1   
- 
- (x-1)^6 = x^6-6x^5+15x^4-20x^3+15x^2-6x^1+1   
- 
- (x-1)^7 = x^7-7x^6+21x^5-35x^4+35x^3-21x^2+7x^1-1   
- 
- 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47 
+(x-1)^0 = 1
+
+ (x-1)^1 = x^1-1
+
+ (x-1)^2 = x^2-2x^1+1
+
+ (x-1)^3 = x^3-3x^2+3x^1-1
+
+ (x-1)^4 = x^4-4x^3+6x^2-4x^1+1
+
+ (x-1)^5 = x^5-5x^4+10x^3-10x^2+5x^1-1
+
+ (x-1)^6 = x^6-6x^5+15x^4-20x^3+15x^2-6x^1+1
+
+ (x-1)^7 = x^7-7x^6+21x^5-35x^4+35x^3-21x^2+7x^1-1
+
+ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47
 
 ```
 
@@ -4749,7 +4749,7 @@ const proc: main is func
  11:  -1 +11x^1 -55x^2 +165x^3 -330x^4 +462x^5 -462x^6 +330x^7 -165x^8 +55x^9 -11x^10 +1x^11
 
 # small primes using the aks test
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61
 
 ```
 
@@ -4873,7 +4873,7 @@ for (n=2; n<=50; n++) {
 	if (isprime(n)) printf("%f ",n)
 }
 
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
 end
 ```
 
@@ -4885,7 +4885,7 @@ end
 ```swift
 func polynomialCoeffs(n: Int) -> [Int] {
     var result = [Int](count : n+1, repeatedValue : 0)
-    
+
     result[0]=1
     for i in 1 ..< n/2+1 { //Progress up, until reaching the middle value
         result[i] = result[i-1] * (n-i+1)/i;
@@ -4897,30 +4897,30 @@ func polynomialCoeffs(n: Int) -> [Int] {
     for i in stride(from: 1, through: n, by: 2) {
         result[i] = -result[i]
     }
-    
+
     return result
 }
 
 func isPrime(n: Int) -> Bool {
-    
+
     var coeffs = polynomialCoeffs(n)
-    
+
     coeffs[0]--
     coeffs[n]++
-    
+
     for i in 1 ... n {
         if coeffs[i]%n != 0 {
             return false
         }
     }
-    
+
     return true
 }
 
 for i in 0...10 {
-    
+
     let coeffs = polynomialCoeffs(i)
-    
+
     print("(x-1)^\(i) = ")
     if i == 0 {
         print("1")
@@ -4983,7 +4983,7 @@ for i in 1...50 {
 (x-1)^9 = x^9-9x^8+36x^7-84x^6+126x^5-126x^4+84x^3-36x^2+9x-1
 (x-1)^10 = x^10-10x^9+45x^8-120x^7+210x^6-252x^5+210x^4-120x^3+45x^2-10x+1
 
-Primes under 50 : 1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 
+Primes under 50 : 1 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
 
 ```
 
@@ -5260,7 +5260,7 @@ End Sub
 (x-1)^8 = x^8-8x^7+28x^6-56x^5+70x^4-56x^3+28x^2-8x+1
 (x-1)^9 = x^9-9x^8+36x^7-84x^6+126x^5-126x^4+84x^3-36x^2+9x-1
 primes (<= 99 ):
- 2  3  5  7  11  13  17  19  23  29  31  37  41  43  47  53  59  61  67  71  73  79  83  89  97 
+ 2  3  5  7  11  13  17  19  23  29  31  37  41  43  47  53  59  61  67  71  73  79  83  89  97
 
 ```
 
@@ -5275,7 +5275,7 @@ primes (<= 99 ):
 // Translated from the C version, just about everything is (working) out-by-1, what fun.
 
 dim c(100)
- 
+
 sub coef(n)
 	local i
 // out-by-1, ie coef(1)==^0, coef(2)==^1, coef(3)==^2 etc.
@@ -5287,7 +5287,7 @@ end sub
 
 sub is_prime(n)
 	local i
-	
+
     coef(n+1) // (I said it was out-by-1)
     for i = 2 to n-1   // (technically "to n" is more correct)
         if int(c(i)/n) <> c(i)/n then
@@ -5296,20 +5296,20 @@ sub is_prime(n)
     next
     return 1
 end sub
- 
+
 sub show(n)
 // (As per coef, this is (working) out-by-1)
 	local ci, ci$, i
-	
+
     for i = n to 1 step -1
         ci = c(i)
         if ci = 1 then
             if mod(n-i, 2) = 0 then
                 if i = 1 then
                     if n = 1 then
-                        ci$ = "1" 
+                        ci$ = "1"
                     else
-                        ci$ = "+1" 
+                        ci$ = "+1"
                     end if
                 else
                     ci$ = ""
@@ -5333,17 +5333,17 @@ sub show(n)
         end if
     next
 end sub
- 
+
 sub AKS_test_for_primes()
 	local n
-	
+
     for n = 1 to 10 // (0 to 9 really)
         coef(n)
         print "(x-1)^", n-1, " = ";
         show(n)
         print
     next
- 
+
     print "\nprimes (<=53): ";
 
     c(2) = 1 // (this manages "", which is all that call did anyway...)
@@ -5382,7 +5382,7 @@ foreach p in (12){
     println("%3d: ".fmt(p),expand_x_1(p).enumerate()
        .pump(String,fcn([(n,e)]){"%+d%s ".fmt(e,n and "x^%d".fmt(n) or "")}));
 }
- 
+
 println("\n# small primes using the aks test");
 println([0..110].filter(aks_test).toString(*));
 ```
@@ -5392,18 +5392,18 @@ println([0..110].filter(aks_test).toString(*));
 ```txt
 
 # p: (x-1)^p for small p
-  0: +1 
-  1: -1 +1x^1 
-  2: +1 -2x^1 +1x^2 
-  3: -1 +3x^1 -3x^2 +1x^3 
-  4: +1 -4x^1 +6x^2 -4x^3 +1x^4 
-  5: -1 +5x^1 -10x^2 +10x^3 -5x^4 +1x^5 
-  6: +1 -6x^1 +15x^2 -20x^3 +15x^4 -6x^5 +1x^6 
-  7: -1 +7x^1 -21x^2 +35x^3 -35x^4 +21x^5 -7x^6 +1x^7 
-  8: +1 -8x^1 +28x^2 -56x^3 +70x^4 -56x^5 +28x^6 -8x^7 +1x^8 
-  9: -1 +9x^1 -36x^2 +84x^3 -126x^4 +126x^5 -84x^6 +36x^7 -9x^8 +1x^9 
- 10: +1 -10x^1 +45x^2 -120x^3 +210x^4 -252x^5 +210x^6 -120x^7 +45x^8 -10x^9 +1x^10 
- 11: -1 +11x^1 -55x^2 +165x^3 -330x^4 +462x^5 -462x^6 +330x^7 -165x^8 +55x^9 -11x^10 +1x^11 
+  0: +1
+  1: -1 +1x^1
+  2: +1 -2x^1 +1x^2
+  3: -1 +3x^1 -3x^2 +1x^3
+  4: +1 -4x^1 +6x^2 -4x^3 +1x^4
+  5: -1 +5x^1 -10x^2 +10x^3 -5x^4 +1x^5
+  6: +1 -6x^1 +15x^2 -20x^3 +15x^4 -6x^5 +1x^6
+  7: -1 +7x^1 -21x^2 +35x^3 -35x^4 +21x^5 -7x^6 +1x^7
+  8: +1 -8x^1 +28x^2 -56x^3 +70x^4 -56x^5 +28x^6 -8x^7 +1x^8
+  9: -1 +9x^1 -36x^2 +84x^3 -126x^4 +126x^5 -84x^6 +36x^7 -9x^8 +1x^9
+ 10: +1 -10x^1 +45x^2 -120x^3 +210x^4 -252x^5 +210x^6 -120x^7 +45x^8 -10x^9 +1x^10
+ 11: -1 +11x^1 -55x^2 +165x^3 -330x^4 +462x^5 -462x^6 +330x^7 -165x^8 +55x^9 -11x^10 +1x^11
 
 # small primes using the aks test
 L(2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109)

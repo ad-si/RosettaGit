@@ -13,12 +13,12 @@ tags = []
 {{draft task|Arithmetic operations}}
 
 ;Task:
-Create a program that computes an approximation of the principal   N<sup>th</sup>   root of   X   as the largest integer less than or equal to   R   for which   R<sup>N</sup>=X. 
+Create a program that computes an approximation of the principal   N<sup>th</sup>   root of   X   as the largest integer less than or equal to   R   for which   R<sup>N</sup>=X.
 
 ──where:
-        N  is a positive integer. 
-        X  is a non-negative integer. 
-        R  (the root)   is a non-negative real number. 
+        N  is a positive integer.
+        X  is a non-negative integer.
+        R  (the root)   is a non-negative real number.
 
 No arbitrary limits should be placed on the magnitudes of the numbers involved.
 
@@ -79,8 +79,8 @@ First 2001 digits of the square root of 2 = 141421356237309504880168872420969807
 
 {{trans|C++}}
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 typedef unsigned long long ulong;
@@ -132,8 +132,8 @@ int main() {
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <math.h>
 
 unsigned long long root(unsigned long long base, unsigned int n) {
@@ -293,13 +293,13 @@ defmodule Integer_roots do
     e = f.(d)
     until(c, d, e, f)
   end
-  
+
   defp until(c, d, e, _) when c in [d, e], do: min(d, e)
   defp until(_, d, e, f), do: until(d, e, f.(e), f)
-  
+
   defp power(_, 0), do: 1
   defp power(n, m), do: Enum.reduce(1..m, 1, fn _,acc -> acc*n end)
-  
+
   def task do
     IO.puts root(3,8)
     IO.puts root(3,9)
@@ -399,7 +399,7 @@ func root(N, X int) int {
         }
         x -= r
         // A small complication here is that Go performs truncated integer
-        // division but for negative values of x, Δr in the line below needs 
+        // division but for negative values of x, Δr in the line below needs
         // to be computed as the floor of x / N.  The following % test and
         // correction completes the floor division operation (for positive N.)
         Δr := x / N
@@ -652,14 +652,14 @@ fun BigInteger.iRoot(n: Int): BigInteger {
         e = (n3 * e + this / e.pow(n1)) / n2
     }
     return if (d < e) d else e
-}    
+}
 
 fun main(args: Array<String>) {
     var b: BigInteger
     b = BigInteger.valueOf(8L)
     println("3rd integer root of 8 = ${b.iRoot(3)}\n")
     b = BigInteger.valueOf(9L)
-    println("3rd integer root of 9 = ${b.iRoot(3)}\n")    
+    println("3rd integer root of 9 = ${b.iRoot(3)}\n")
     b = BigInteger.valueOf(100L).pow(2000) * bigTwo
     println("First 2001 digits of the square root of 2:")
     println(b.iRoot(2))
@@ -906,7 +906,7 @@ say integer_root( 2, 2 * 100 ** 2000 );
 
 ```Phix
 include mpfr.e
- 
+
 function integer_root(integer n, object A)
 -- yields the nth root of A, adapted from https://en.wikipedia.org/wiki/Nth_root_algorithm
     mpz res = mpz_init(1),
@@ -924,7 +924,7 @@ function integer_root(integer n, object A)
     end while
     return mpz_get_str(res)
 end function
- 
+
 printf(1,"3rd root of 8 = %s\n", {integer_root(3,8)})
 printf(1,"3rd root of 9 = %s\n", {integer_root(3,9)})
 string s = integer_root(2,"2"&repeat('0',4000))
@@ -987,10 +987,10 @@ See [[#Scheme]], there&rsquo;s very little can be done to improve it.
 
 No error checking is performed to ensure the root is a non-zero integer.
 
-This version incorporates some optimization when computing square roots    (because   '''M'''   is 
-unity,   there is no need to 
+This version incorporates some optimization when computing square roots    (because   '''M'''   is
+unity,   there is no need to
 
-multiply the guess ['''G'''] by unity,   and no need to compute the guess to the 1<sup>st</sup> power,   bypassing some trivial arithmetic).  
+multiply the guess ['''G'''] by unity,   and no need to compute the guess to the 1<sup>st</sup> power,   bypassing some trivial arithmetic).
 
 ### integer result only
 
@@ -1047,9 +1047,9 @@ result:
 
 
 ### true results
- 
 
-Negative and complex roots are supported.   The expressed root may have a decimal point. 
+
+Negative and complex roots are supported.   The expressed root may have a decimal point.
 
 ```rexx
 /*REXX program calculates the Nth root of a number to a specified number of decimal digs*/
@@ -1147,8 +1147,8 @@ result:
 
 # Project : Integer roots
 
-see root(3, 8) 
-see root(3, 9) 
+see root(3, 8)
+see root(3, 9)
 see root(4, 167)
 
 func root(n, x)
@@ -1257,8 +1257,8 @@ object IntegerRoots extends App {
            (d (// (+ (* a1 c) (// b (expt c a1))) a))
            (e (// (+ (* a1 d) (// b (expt d a1))) a)))
       (y a a1 b c d e))))
-      
-(display "First 2,001 digits of the cube root of two:\n")      
+
+(display "First 2,001 digits of the cube root of two:\n")
 (display (root 3 (* 2 (expt 1000 2000))))
 ```
 

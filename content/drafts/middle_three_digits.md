@@ -443,7 +443,7 @@ else let
   val-list0_cons(d2, ds) = ds
   val-list0_cons(d3, ds) = ds
 in
-  println! ("Middle-three-digits(", x0, "): ", d1, d2, d3) 
+  println! ("Middle-three-digits(", x0, "): ", d1, d2, d3)
 end // end of [else]
 )
 //
@@ -671,7 +671,7 @@ BEGIN {
 ## BBC BASIC
 =
 
-```bbcbasic>REM 
+```bbcbasic>REM
 midthree
 FOR i% = 1 TO 17
   READ test%
@@ -832,13 +832,13 @@ EndProcedure
 
 If OpenConsole()
   Define testValues$ = "123 12345 1234567 987654321 10001 -10001 -123 -100 100 -12345 1 2 -1 -10 2002 -2002 0"
-  
+
   Define i, value.q, numTests = CountString(testValues$, " ") + 1
   For i = 1 To numTests
     value = Val(StringField(testValues$, i, " "))
     PrintN(RSet(Str(value), 12, " ") + " : " + middleThreeDigits(value))
   Next
-  
+
   Print(#crlf$ + #crlf$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -878,7 +878,7 @@ while word$(x$,i+1,",") <> ""
  i	= i + 1
  a1$	= trim$(word$(x$,i,","))
  if left$(a1$,1) = "-" then a$ = mid$(a1$,2) else a$ = a1$
- if (len(a$) and 1) = 0 or len(a$) < 3 then 
+ if (len(a$) and 1) = 0 or len(a$) < 3 then
    print a1$;chr$(9);" length < 3 or is even"
   else
    print mid$(a$,((len(a$)-3)/2)+1,3);" ";a1$
@@ -1064,7 +1064,7 @@ Error.
       -12345 1 2 -1 -10 2002 -2002 0
   : ?L
 & whl'(!L:%?e ?L&out$(middle3$!e))
-& 
+&
 );
 
 ```
@@ -1180,7 +1180,7 @@ int main(void)
 
 
 ### Alternative Version
- 
+
 This code has been extensively rewritten. The original was purely interactive and had to be invoked each time from the console. It also did not produce the correct answer.
 
 ```c
@@ -1188,13 +1188,13 @@ This code has been extensively rewritten. The original was purely interactive an
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
- 
+
 void midThree(char arg[])
 {
     char output[4];
     int midPoint;
     arg[0]=='-'?midPoint = ((strlen(arg) + 1) / 2):midPoint = ((strlen(arg) + 1) / 2) - 1;
-    
+
     if(strlen(arg) < 3)
         {
             printf("Error, %d is too short.\n",atoi(arg));
@@ -1213,19 +1213,19 @@ void midThree(char arg[])
     output[3] = '\0';
     printf("The middle three digits of %s are %s.\n",arg,output);
 }}
- 
+
 int main(int argc, char * argv[])
 {
     char input[50];
     int x[] = {123, 12345, 1234567, 987654321, 10001, -10001,
 		-123, -100, 100, -12345, 1, 2, -1, -10, 2002, -2002, 0,
 		1234567890},i;
-		
+
     if(argc < 2)
     {
         printf("Usage: %s <integer>\n",argv[0]);
         printf("Examples with preloaded data shown below :\n");
-        
+
         for(i=0;i<18;i++)
         {
 	        midThree(itoa(x[i],argv[0],10));
@@ -1237,8 +1237,8 @@ int main(int argc, char * argv[])
         sprintf(input,"%d",atoi(argv[1]));
             midThree(argv[1]);
             return 0;
-        
- 
+
+
     }
 }
 ```
@@ -1319,8 +1319,8 @@ namespace RosettaCode
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 std::string middleThreeDigits(int n)
 {
@@ -1421,7 +1421,7 @@ program-id. middle3.
 environment division.
 data division.
 working-storage section.
-01  num                 pic 9(9). 
+01  num                 pic 9(9).
     88 num-too-small    values are -99 thru 99.
 01  num-disp            pic ---------9.
 
@@ -1455,7 +1455,7 @@ working-storage section.
     05  filler  pic s9(9) value 2002.
     05  filler  pic s9(9) value -2002.
     05  filler  pic s9(9) value 0.
-    
+
 01  value-array redefines value-items.
     05  items   pic s9(9)  occurs 17 times indexed by item.
 
@@ -1470,7 +1470,7 @@ procedure division.
         display num-disp " --> " result
     end-perform.
     stop run.
-    
+
 20-check.
     if num-too-small
         move "Number too small" to result
@@ -1483,13 +1483,13 @@ procedure division.
         move "Even number of digits" to result
         exit paragraph
     end-if.
-    
+
     *> if digit-counter is 5, mul by 10
     *> if digit-counter is 7, mul by 100
     *> if digit-counter is 9, mul by 1000
-        
+
     if digit-counter > 3
-        compute multiplier rounded = 10 ** (((digit-counter - 5) / 2) + 1) 
+        compute multiplier rounded = 10 ** (((digit-counter - 5) / 2) + 1)
         divide num by multiplier giving num
         divide num by 1000 giving div remainder mod
         move mod to mod-disp
@@ -1498,7 +1498,7 @@ procedure division.
     end-if.
     move mod-disp to result.
     exit paragraph.
-    
+
 30-count-digits.
     move zeroes to digit-counter.
     move num to digit-div.
@@ -1557,7 +1557,7 @@ working-storage section.
         05  filler  pic s9(9) value 2002.
         05  filler  pic s9(9) value -2002.
         05  filler  pic s9(9) value 0.
- 
+
 01 value-array redefines value-items.
         05  items   pic s9(9)  occurs 17 times indexed by item.
 
@@ -1598,7 +1598,7 @@ procedure division.
         move 1 to flag
         if function mod(power,2) = 1
             move "even number digits" to result
-        else 
+        else
             move num to num2
             compute num2 = num2 / ( 10 ** (( power / 2 ) - 1 ))
             move function mod(num2,1000) to three-digits
@@ -1924,7 +1924,7 @@ import'dart:math';
       }
   return 0;
   }
-   
+
 
 main()
 {
@@ -1936,7 +1936,7 @@ main()
   {print('error');}
     if(l==3)
   {print('$x');}
- 
+
   if(l.isOdd&& x>100)
   {
    y=middle(x,l);
@@ -2093,7 +2093,7 @@ ELENA 4.1 :
 ```elena
 import system'routines;
 import extensions;
- 
+
 middleThreeDigits(int n)
 {
     string s := n.Absolute.toString();
@@ -2106,12 +2106,12 @@ middleThreeDigits(int n)
     {
         InvalidArgumentException.new:"n must have an odd number of digits".raise()
     };
- 
+
     int mid := len / 2;
- 
+
     ^ s.Substring(mid-1,3)
 }
- 
+
 public program()
 {
     new int[]::(123, 12345, 1234567, 987654321, 10001, -10001, -123, -100, 100, -12345, 1, 2, -1, -10, 2002, -2002, 0)
@@ -2155,7 +2155,7 @@ middleThreeDigits(0):n must have 3 digits or more
 defmodule Middle do
   def three(num) do
     n = num |> abs |> to_string
-    
+
     case {n,String.length(n) > 2,even?(n)} do
       {n, true, false} ->
         cut(n)
@@ -2165,7 +2165,7 @@ defmodule Middle do
         raise "Number must have an odd number of digits"
     end
   end
-  
+
   defp even?(n), do: rem(String.length(n),2) == 0
   defp cut(n), do: String.slice(n,(div(String.length(n),2) - 1),3)
 end
@@ -2215,18 +2215,18 @@ end)
 
 
 ```erlang
-% 
+%
 -module(middle_three_digits).
 -export([main/0]).
 
 main() ->
-	digits(123),  
+	digits(123),
 	digits(12345),
 	digits(1234567),
-	digits(987654321),	
+	digits(987654321),
 	digits(10001),
 	digits(-10001),
-	digits(-123),	
+	digits(-123),
 	digits(-100),
 	digits(100),
 	digits(-12345),
@@ -2239,19 +2239,19 @@ main() ->
 	digits(0).
 
 digits(N) when N < 0 ->
-	digits(-N); 
+	digits(-N);
 digits(N) when (N div 100) =:= 0  ->
 	io:format("too small\n");
 digits(N) ->
 	K=length(integer_to_list(N)),
 	if (K rem 2) =:= 0 ->
 		io:format("even number of digits\n");
-	true ->	 
+	true ->
 		loop((K-3) div 2 , N)
 	end.
 
 loop(0, N) ->
-	io:format("~3..0B~n",[N rem 1000]);	
+	io:format("~3..0B~n",[N rem 1000]);
 loop(X,N)  when X>0 ->
 	loop(X-1, N div 10).
 
@@ -2374,10 +2374,10 @@ CONSTANT: test-values {
 
 : (middle-three) ( str -- str' )
     [ midpoint@ [ 1 - ] [ 2 + ] bi ] [ subseq ] bi ;
-    
+
 : too-short ( -- )
     "Number must have at least three digits." print ;
-    
+
 : number-even ( -- )
     "Number must have an odd number of digits." print ;
 
@@ -2387,7 +2387,7 @@ CONSTANT: test-values {
         { [ dup length even? ] [ drop number-even ] }
         [ (middle-three) print ]
     } cond ;
-    
+
 : main ( -- )
     test-values [ dup "%9d : " printf middle-three ] each ;
 
@@ -2443,23 +2443,23 @@ Please find compilation instructions along with the output for the examples in t
 !
 !a=./f && make $a && OMP_NUM_THREADS=2 $a < unixdict.txt # some of the compilation options and redirection from unixdict.txt are vestigial.
 !gfortran -std=f2008 -Wall -fopenmp -ffree-form -fall-intrinsics -fimplicit-none f.f08 -o f
-!                 123  123                 
-!               12345  234                 
-!             1234567  345                 
-!           987654321  654                 
-!               10001  000                 
-!              -10001  000                 
-!                -123  123                 
-!                -100  100                 
-!                 100  100                 
-!              -12345  234                 
-!                   1  Too short           
-!                   2  Too short           
-!                  -1  Too short           
-!                 -10  Too short           
+!                 123  123
+!               12345  234
+!             1234567  345
+!           987654321  654
+!               10001  000
+!              -10001  000
+!                -123  123
+!                -100  100
+!                 100  100
+!              -12345  234
+!                   1  Too short
+!                   2  Too short
+!                  -1  Too short
+!                 -10  Too short
 !                2002  Digit count too even
 !               -2002  Digit count too even
-!                   0  Too short           
+!                   0  Too short
 !
 !Compilation finished at Sat Jun  1 14:48:41
 
@@ -2526,10 +2526,10 @@ Function middleThreeDigits (n As Integer) As String
   If n < 0 Then n = -n
   If n < 100 Then Return ""  '' error code
   If n < 1000 Then Return Str(n)
-  If n < 10000 Then Return "" 
+  If n < 10000 Then Return ""
   Dim ns As String = Str(n)
   If Len(ns) Mod 2 = 0 Then Return ""  '' need to have an odd number of digits for there to be 3 middle
-  Return Mid(ns, Len(ns) \ 2, 3) 
+  Return Mid(ns, Len(ns) \ 2, 3)
 End Function
 
 Dim a(1 To 16) As Integer => _
@@ -2542,7 +2542,7 @@ Print "The 3 middle digits of the following numbers are : "
 Print
 For i = 1 To 16
   result = middleThreeDigits(a(i))
-  Print a(i), " => "; 
+  Print a(i), " => ";
   If result <> "" Then
     Print result
   Else
@@ -2606,7 +2606,7 @@ For siCount = 0 To iList.Max                                        'Loop throug
 Next
 
 For siCount = 0 To iList.Max                                        'Loop through the integers
-  Print Space$(10 - Len(Str(iList[siCount]))) & 
+  Print Space$(10 - Len(Str(iList[siCount]))) &
     iList[siCount] & " : " & sAnswer[siCount]                       'Print out results
 Next
 
@@ -3320,7 +3320,7 @@ Typescript:
 -10 => invalid length: 2
 2002 => invalid length: 4
 -2002 => invalid length: 4
-0 => invalid length: 1 
+0 => invalid length: 1
 ```
 
 
@@ -3571,7 +3571,7 @@ function middle_three(n)
 	if n < 0 then
 		n = -n
 	end
-		
+
 	n = tostring(n)
 	if #n % 2 == 0 then
 		return "Error: the number of digits is even."
@@ -3590,7 +3590,7 @@ do
 	2, -1, -10, 2002, -2002, 0}
 
 	for _,n in pairs(t) do
-		print(n, middle_three(n))	
+		print(n, middle_three(n))
 	end
 end
 ```
@@ -3678,8 +3678,8 @@ end do;
 middleThree[n_Integer] :=
  Block[{digits = IntegerDigits[n], len},
   len = Length[digits];
-  If[len < 3 || EvenQ[len], "number digits odd or less than 3", 
-   len = Ceiling[len/2]; 
+  If[len < 3 || EvenQ[len], "number digits odd or less than 3",
+   len = Ceiling[len/2];
    StringJoin @@ (ToString /@ digits[[len - 1 ;; len + 1]])]]
 
 testData = {123, 12345, 1234567, 987654321, 10001, -10001, -123, -100,
@@ -3723,7 +3723,7 @@ s=num2str(abs(a));
 if ~mod(length(s),2)
 	s='*** error: number of digits must be odd ***';
 	return;
-end; 
+end;
 if length(s)<3,
 	s='*** error: number of digits must not be smaller than 3 ***';
 	return;
@@ -3732,7 +3732,7 @@ end;
 s = s((length(s)+1)/2+[-1:1]);
 ```
 
-Test with 
+Test with
 
 ```MATLAB
  x=[123, 12345, 1234567, 987654321, 10001, -10001, -123, -100, 100, -12345, 1, 2, -1, -10, 2002, -2002, 0];
@@ -3827,14 +3827,14 @@ end for
 ```ocaml
 
 	val test_array = ["123","12345","1234567","987654321","10001","~10001","~123","~100","100","~12345","1","2","~1","~10","2002","~2002","0"];
- 
+
 	fun even (x rem 2 = 0) = true | _ = false;
- 
+
 	fun middleThreeDigits
-			(h :: t, s, 1 ) = s @ " --> too small" 
+			(h :: t, s, 1 ) = s @ " --> too small"
 		|	(h :: t, s, 2 ) = s @ " --> has even digits"
 		|	(h :: t, s, 3 ) where (len (h :: t) = 3) = s @ " --> " @ (implode (h :: t))
-		|	(h :: t, s, 3 ) = (middleThreeDigits ( sub (t, 0, (len t)-1), s, 3)) 
+		|	(h :: t, s, 3 ) = (middleThreeDigits ( sub (t, 0, (len t)-1), s, 3))
 		|	(h :: t, s, m) = if len (h :: t) < 3 then
 							middleThreeDigits (h :: t, s, 1)
 						  else
@@ -3842,14 +3842,14 @@ end for
 							  middleThreeDigits (h :: t, s, 2)
 							else
 							  middleThreeDigits (h :: t, s, 3)
- 
- 
+
+
 		|	s	= if sub (s, 0, 1) = "~" then
 				middleThreeDigits (sub (explode s, 1, len s), s, 0)
 			else
 				middleThreeDigits (explode s, s, 0)
 	;
- 
+
 	map (println o middleThreeDigits) test_array;
 ```
 
@@ -3883,15 +3883,15 @@ This sample shows the MUMPS code required to pass the specification.
 
 ```MUMPS
 /* MUMPS */
-MID3(N)  ;                                                                       
-        N LEN,N2                                                                
-        S N2=$S(N<0:-N,1:N)                                                     
-        I N2<100 Q "NUMBER TOO SMALL"                                           
-        S LEN=$L(N2)                                                            
-        I LEN#2=0 Q "EVEN NUMBER OF DIGITS"                                     
+MID3(N)  ;
+        N LEN,N2
+        S N2=$S(N<0:-N,1:N)
+        I N2<100 Q "NUMBER TOO SMALL"
+        S LEN=$L(N2)
+        I LEN#2=0 Q "EVEN NUMBER OF DIGITS"
         Q $E(N2,LEN\2,LEN\2+2)
 
-F I=123,12345,1234567,987654321,10001,-10001,-123,-100,100,-12345,1,2,-1,-10,2002,-2002,0 W !,$J(I,10),": ",$$MID3^MID3(I)                 
+F I=123,12345,1234567,987654321,10001,-10001,-123,-100,100,-12345,1,2,-1,-10,2002,-2002,0 W !,$J(I,10),": ",$$MID3^MID3(I)
 
 ```
 
@@ -3899,23 +3899,23 @@ F I=123,12345,1234567,987654321,10001,-10001,-123,-100,100,-12345,1,2,-1,-10,200
 
 ```txt
 
-       123: 123                                                                 
-     12345: 234                                                                 
-   1234567: 345                                                                 
- 987654321: 654                                                                 
-     10001: 000                                                                 
-    -10001: 000                                                                 
-      -123: 123                                                                 
-      -100: 100                                                                 
-       100: 100                                                                 
-    -12345: 234                                                                 
-         1: NUMBER TOO SMALL                                                    
-         2: NUMBER TOO SMALL                                                    
-        -1: NUMBER TOO SMALL                                                    
-       -10: NUMBER TOO SMALL                                                    
-      2002: EVEN NUMBER OF DIGITS                                               
-     -2002: EVEN NUMBER OF DIGITS                                               
-         0: NUMBER TOO SMALL      
+       123: 123
+     12345: 234
+   1234567: 345
+ 987654321: 654
+     10001: 000
+    -10001: 000
+      -123: 123
+      -100: 100
+       100: 100
+    -12345: 234
+         1: NUMBER TOO SMALL
+         2: NUMBER TOO SMALL
+        -1: NUMBER TOO SMALL
+       -10: NUMBER TOO SMALL
+      2002: EVEN NUMBER OF DIGITS
+     -2002: EVEN NUMBER OF DIGITS
+         0: NUMBER TOO SMALL
 
 ```
 
@@ -4525,12 +4525,12 @@ function middlethree($integer)
 			}
 			else
 			{
-				return 'The value must contain an odd amount of digits...';	
+				return 'The value must contain an odd amount of digits...';
 			}
 		}
 		else
 		{
-			return 'The value must contain at least three digits...';	
+			return 'The value must contain at least three digits...';
 		}
 	}
 	else
@@ -4656,21 +4656,21 @@ Output:
 
 ```txt
 
-               123      The middle three digits are: 123 
-             12345      The middle three digits are: 234 
-           1234567      The middle three digits are: 345 
-         987654321      The middle three digits are: 654 
-             10001      The middle three digits are: 000 
-            -10001      The middle three digits are: 000 
-              -123      The middle three digits are: 123 
-              -100      The middle three digits are: 100 
-               100      The middle three digits are: 100 
-           -123451      not possible 
-                 2      not possible 
-                -1      not possible 
-               -10      not possible 
-              2002      not possible 
-             -2002      not possible 
+               123      The middle three digits are: 123
+             12345      The middle three digits are: 234
+           1234567      The middle three digits are: 345
+         987654321      The middle three digits are: 654
+             10001      The middle three digits are: 000
+            -10001      The middle three digits are: 000
+              -123      The middle three digits are: 123
+              -100      The middle three digits are: 100
+               100      The middle three digits are: 100
+           -123451      not possible
+                 2      not possible
+                -1      not possible
+               -10      not possible
+              2002      not possible
+             -2002      not possible
                  0      not possible
 
 ```
@@ -4740,7 +4740,7 @@ foreach ($x in $sample){middle3 $x}
 ```prolog
 
 middle_3_digits(Number, [D1,D2,D3]) :-
-    verify_middle_3_able(Number, Digits),    
+    verify_middle_3_able(Number, Digits),
     append(FrontDigits, [D1,D2,D3| BackDigits], Digits),
     same_length(FrontDigits, BackDigits).
 
@@ -4841,7 +4841,7 @@ ERROR: Domain error: `at least 3 digits' expected, found `0'
 		answer = error
 	print("middle_three_digits(%s) returned: %r" % (x, answer))
 
-	
+
 middle_three_digits(123) returned: '123'
 middle_three_digits(12345) returned: '234'
 middle_three_digits(1234567) returned: '345'
@@ -4859,7 +4859,7 @@ middle_three_digits(-10) returned: AssertionError('Need odd and >= 3 digits',)
 middle_three_digits(2002) returned: AssertionError('Need odd and >= 3 digits',)
 middle_three_digits(-2002) returned: AssertionError('Need odd and >= 3 digits',)
 middle_three_digits(0) returned: AssertionError('Need odd and >= 3 digits',)
->>> 
+>>>
 ```
 
 
@@ -4992,11 +4992,11 @@ Middle three digits, where defined:
   (cond
     [(negative? x) (middle (- x))]
     [(< x 100)     "error: number too small"]
-    [else 
+    [else
      (define s (number->string x))
      (define l (string-length s))
      (cond [(even? l) "error: number has even length"]
-           [else (define i (quotient l 2)) 
+           [else (define i (quotient l 2))
                  (substring s (- i 1) (+ i 2))])]))
 
 (map middle (list 123 12345 1234567 987654321 10001 -10001 -123 -100 100 -12345))
@@ -5080,9 +5080,9 @@ abc          -> not a number
 
 ### version 2
 
-A premise:   '''12.3e2'''   is an integer   (regardless of how it's displayed). 
+A premise:   '''12.3e2'''   is an integer   (regardless of how it's displayed).
 
-So is the value of a   '''googol'''   and a  '''googolplex'''. 
+So is the value of a   '''googol'''   and a  '''googolplex'''.
 
 
 This REXX version is limited to numbers whose length is   <big>≤</big>   100,000   decimal digits.
@@ -5108,7 +5108,7 @@ middle3: procedure;  parse arg x;      numeric digits 1e6;           er='    ***
                                    return  substr(x, (L-3)%2+1, 3)
 ```
 
-'''output''' 
+'''output'''
 
 ```txt
 
@@ -5155,7 +5155,7 @@ func middle nr
      if lennr = 3 see "" + nr + nl
      but lennr < 3 see "Number must have at least three digits"
      but lennr%2=0 see "Number must have an odd number of digits"
-     else cnr = substr(string(nr),mnr,3) see cnr + nl ok 
+     else cnr = substr(string(nr),mnr,3) see cnr + nl ok
 
 ```
 
@@ -5170,14 +5170,14 @@ def middle_three_digits(num)
   # minus sign doesn't factor into digit count,
   # and calling #abs acts as a duck-type assertion
   num = num.abs
-  
+
   # convert to string and find length
   length = (str = num.to_s).length
-  
+
   # check validity
   raise ArgumentError, "Number must have at least three digits" if length < 3
   raise ArgumentError, "Number must have an odd number of digits" if length.even?
-  
+
   return str[length/2 - 1, 3].to_i
 end
 ```
@@ -5187,9 +5187,9 @@ Testing program:
 
 
 ```ruby
-samples = [ 
+samples = [
   123, 12345, 1234567, 987654321, 10001, -10001, -123, -100, 100, -12345,
-  1, 2, -1, -10, 2002, -2002, 0 
+  1, 2, -1, -10, 2002, -2002, 0
 ]
 
 left_column_width = samples.map { |n| n.to_s.length }.max
@@ -5299,7 +5299,7 @@ Educational Notes:
 2) The task doesn't require 64-bit integer support, but I added it, dependant
    on whether the S-Lang library compile supports them, which it generally
    does.  [Main exception would be the current downloadable/installable MS-Win
-   version of the Jed editor.]   
+   version of the Jed editor.]
 3) S-Lang functions peel arguments off right-to-left, opposite of many
    languages.  To align the order with other solutions, I enclosed the
    parameters in a list.  One alternative would have been for m3() to call
@@ -5312,11 +5312,11 @@ Educational Notes:
 define m3(i)
 {
     variable s = string(i), sabs = s, l;
-    
+
     if (sabs[0] == '-')
         sabs = sabs[[1:]];
     l = strlen(sabs);
- 
+
     if (l < 3)
         print(sprintf("%s doesn't have enough digits", s));
     else if (l & 1) {
@@ -5326,7 +5326,7 @@ define m3(i)
     else
         print(sprintf("%s has an even number of digits", s));
 }
- 
+
 define middle_3(lst)
 {
     foreach (lst)
@@ -5372,7 +5372,7 @@ middle_3( { 123, 12345, 1234567, 987654321, 10001, -10001, -123, -100, 100, -123
 
 
 ```scala
-/** 
+/**
  * Optionally return the middle three digits of an integer.
  *
  * @example List(123,12345,-789,1234,12) flatMap (middleThree(_)), returns: List(123, 234, 789)
@@ -5380,7 +5380,7 @@ middle_3( { 123, 12345, 1234567, 987654321, 10001, -10001, -123, -100, 100, -123
 def middleThree( s:Int ) : Option[Int] = s.abs.toString match {
   case v if v.length % 2 == 0   => None   // Middle three is undefined for even lengths
   case v if v.length < 3        => None
-  case v                        => 			
+  case v                        =>
     val i = (v.length / 2) - 1
     Some( v.substring(i,i+3).toInt )
 }
@@ -5389,9 +5389,9 @@ def middleThree( s:Int ) : Option[Int] = s.abs.toString match {
 // A little test...
 val intVals = List(123,12345,1234567,987654321,10001,-10001,-123,-100,100,-12345,1,2,-1,-10,2002,-2002,0)
 
-intVals map (middleThree(_)) map { 
-  case None => "No middle three" 
-  case Some(v) => "%03d".format(v)  // Format the value, force leading zeroes 
+intVals map (middleThree(_)) map {
+  case None => "No middle three"
+  case Some(v) => "%03d".format(v)  // Format the value, force leading zeroes
 } mkString("\n")
 
 ```
@@ -5531,18 +5531,18 @@ The three middle digits of -12345 are: 234
 
 
 ```sql
-;WITH DATA 
-     AS (SELECT CAST(ABS(NUMBER) AS NVARCHAR(MAX))      charNum, 
-                NUMBER, 
-                LEN(CAST(ABS(NUMBER) AS NVARCHAR(MAX))) LcharNum 
-         FROM   TABLE1) 
-SELECT CASE 
-         WHEN ( LCHARNUM >= 3 
-                AND LCHARNUM % 2 = 1 ) THEN SUBSTRING(CHARNUM, LCHARNUM / 2, 3) 
-         ELSE 'Error!' 
-       END    Output, 
-       NUMBER Input 
-FROM   DATA 
+;WITH DATA
+     AS (SELECT CAST(ABS(NUMBER) AS NVARCHAR(MAX))      charNum,
+                NUMBER,
+                LEN(CAST(ABS(NUMBER) AS NVARCHAR(MAX))) LcharNum
+         FROM   TABLE1)
+SELECT CASE
+         WHEN ( LCHARNUM >= 3
+                AND LCHARNUM % 2 = 1 ) THEN SUBSTRING(CHARNUM, LCHARNUM / 2, 3)
+         ELSE 'Error!'
+       END    Output,
+       NUMBER Input
+FROM   DATA
 ```
 
 
@@ -5577,7 +5577,7 @@ FROM   DATA
 | Error! |  2002 |
 | Error! | -2002 |
 | Error! |     0 |
-		
+
 
 ```
 
@@ -5701,8 +5701,8 @@ error for 0: no middle three digits: insufficient digits
 
 
 ```bash
-function middle3digits 
-{ 
+function middle3digits
+{
   typeset -i n="${1#-}"
   typeset -i l=${#n}
   if (( l < 3 )); then
@@ -5727,7 +5727,7 @@ done
 ```
 
 
-Output: 
+Output:
 ```txt
        123: 123
      12345: 234
@@ -5889,7 +5889,7 @@ if (#2 < 3) {
     }
 }
 Buf_Quit(OK)
-Return 
+Return
 ```
 
 
@@ -5912,7 +5912,7 @@ Input:         -1  Result: Too few digits!
 Input:        -10  Result: Too few digits!
 Input:       2002  Result: Not odd number of digits!
 Input:      -2002  Result: Not odd number of digits!
-Input:          0  Result: Too few digits! 
+Input:          0  Result: Too few digits!
 ```
 
 
@@ -6038,7 +6038,7 @@ Middle three digits of 0 returned: Must be 3, 5, 7 or 9 digits
 ```zkl
 fcn middle(ns){
    ns.apply("toString").apply('-("-"))
-   .apply(fcn(n){nl:=n.len(); 
+   .apply(fcn(n){nl:=n.len();
       if(nl<3 or nl.isEven) return(False);
       n[(nl-3)/2,3] : "%03d".fmt(_)
    })

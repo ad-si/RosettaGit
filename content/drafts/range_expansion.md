@@ -15,10 +15,10 @@ tags = []
 
 
 ;Task:
-Expand the range description: 
+Expand the range description:
   <big> -6,-3--1,3-5,7-11,14,15,17-20 </big>
 
-<small>Note that the second element above, 
+<small>Note that the second element above,
 is the '''range from minus 3 to ''minus'' 1'''. </small>
 
 
@@ -59,7 +59,7 @@ print(rangeexpand(‘-6,-3--1,3-5,7-11,14,15,17-20’))
   \ make sure they are in order:
   2dup n:> if swap then
   \ fill the array with the values:
-  [] ' a:push 
+  [] ' a:push
   2swap loop ;
 
 \ Take a string, either "X" or "X-Y", and correctly return either a number (if
@@ -71,7 +71,7 @@ print(rangeexpand(‘-6,-3--1,3-5,7-11,14,15,17-20’))
     drop
     \ not a valid number, might be a range
     \ We'll use a capturing regex to handle the different cases correctly:
-    /(-?[0-9]+)-(-?[0-9]+)/ tuck r:match 
+    /(-?[0-9]+)-(-?[0-9]+)/ tuck r:match
 
     \ If the regex matches three (the whole string, plus the two captured
     \ expressions) then it's a valid "X-Y":
@@ -86,7 +86,7 @@ print(rangeexpand(‘-6,-3--1,3-5,7-11,14,15,17-20’))
   else
     \ It was a "X", just drop the original string:
     nip
-  then 
+  then
   ;
 
 \ Take an array (possibly) containing other arrays, and flatten any contained
@@ -110,7 +110,7 @@ print(rangeexpand(‘-6,-3--1,3-5,7-11,14,15,17-20’))
   a:flatten ;
 
 \ Process a list:
-"-6,-3--1,3-5,7-11,14,15,17-20" 
+"-6,-3--1,3-5,7-11,14,15,17-20"
 n:range-expand
 \ print the expanded list:
 . cr bye
@@ -127,7 +127,7 @@ n:range-expand
 
 ## Ada
 
-The function Expand takes a string and returns a corresponding array of integers. 
+The function Expand takes a string and returns a corresponding array of integers.
 Upon syntax errors Constraint_Error is propagated:
 
 ```Ada
@@ -421,7 +421,7 @@ END; # TORANGE #
 # converts a []INT to a comma separated string of the elements #
 OP TOSTRING = ( []INT values )STRING:
 BEGIN
-    
+
     STRING result    := "";
     STRING separator := "";
 
@@ -463,16 +463,16 @@ test:(
 
 -- expansion :: String -> [Int]
 on expansion(strExpr)
-    -- The string (between commas) is split on hyphens, 
+    -- The string (between commas) is split on hyphens,
     -- and this segmentation is rewritten to ranges or minus signs
     -- and evaluated to lists of integer values
-    
+
     -- signedRange :: String -> [Int]
     script signedRange
         -- After the first character, numbers preceded by an
         -- empty string (resulting from splitting on hyphens)
         -- and interpreted as negative
-        
+
         -- signedIntegerAppended:: [Int] -> String -> Int -> [Int] -> [Int]
         on signedIntegerAppended(lstAccumulator, strNum, iPosn, lst)
             if strNum ≠ "" then
@@ -490,22 +490,22 @@ on expansion(strExpr)
                 lstAccumulator
             end if
         end signedIntegerAppended
-        
+
         on |λ|(strHyphenated)
             tupleRange(foldl(signedIntegerAppended, {}, ¬
                 splitOn("-", strHyphenated)))
         end |λ|
     end script
-    
+
     concatMap(signedRange, splitOn(",", strExpr))
 end expansion
 
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     expansion("-6,-3--1,3-5,7-11,14,15,17-20")
-    
+
     --> {-6, -3, -2, -1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20}
 end run
 
@@ -519,7 +519,7 @@ on concatMap(f, xs)
             a & b
         end |λ|
     end script
-    
+
     foldl(append, {}, map(f, xs))
 end concatMap
 
@@ -561,7 +561,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -634,25 +634,25 @@ BEGIN {	FS=","; }
 function expand(a) {
 	idx = match(a,/[0-9]-/);
 	if (idx==0) {
-		s = s","a; 	
+		s = s","a;
 		return;
 	}
-	
+
 	start= substr(a,1, idx)+0;
 	stop = substr(a,idx+2)+0;
 	for (m = start; m <= stop; m++) {
-		s = s","m; 	
+		s = s","m;
 	}
 	return;
-} 
+}
 ```
 
 
 
 ```txt
 
-Usage: 
-  echo -6,-3--1,3-5,7-11,14,15,17-20  | gawk -f ./range_expansion.awk 
+Usage:
+  echo -6,-3--1,3-5,7-11,14,15,17-20  | gawk -f ./range_expansion.awk
   -6,-3,-2,-1,3,4,5,7,8,9,10,11,14,15,17,18,19,20
 
 ```
@@ -665,7 +665,7 @@ Usage:
 ```bbcbasic
       PRINT FNrangeexpand("-6,-3--1,3-5,7-11,14,15,17-20")
       END
-      
+
       DEF FNrangeexpand(r$)
       LOCAL i%, j%, k%, t$
       REPEAT
@@ -732,8 +732,8 @@ Usage:
 
 Recursive descent parser.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 
@@ -816,9 +816,9 @@ int main()
 {{out}}
 
 ```txt
--6 -3 -2 -1 3 4 5 7 8 9 10 11 14 15 17 18 19 20 
+-6 -3 -2 -1 3 4 5 7 8 9 10 11 14 15 17 18 19 20
 Ok
--6 -5 -4 -3 -2 -1 0 1 2 3 
+-6 -5 -4 -3 -2 -1 0 1 2 3
 Syntax error at --1,3-5,7-11,14,15,17-20
 ```
 
@@ -860,7 +860,7 @@ class Program
 ```
 
 
-{{works with|C sharp|3.5+}} 
+{{works with|C sharp|3.5+}}
 
 ```csharp
 using System;
@@ -901,8 +901,8 @@ namespace RangeExpansion {
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <sstream>
 #include <iterator>
 #include <climits>
@@ -996,8 +996,8 @@ There is a split method in clojure.contrib, but I don't know if it is able to sk
 	 (if (empty? s) (reverse lst)
 	     (let [[hd trunc] (skipFirst s)
 	           [word news] (split-with #(not= % sep) trunc)
-		   cWord (cons hd word)]   
-		     (recur (cons (apply str cWord) lst) 
+		   cWord (cons hd word)]
+		     (recur (cons (apply str cWord) lst)
 		      	  (apply str (rest news)))))))
 
 (defn parseRange [[x & xs :as s]]
@@ -1050,7 +1050,7 @@ PROCEDURE DIVISION.
         PERFORM check-if-last
 
         PERFORM find-range-dash
-            
+
         IF dash-pos > Max-Part-Len
             PERFORM display-num
         ELSE
@@ -1059,7 +1059,7 @@ PROCEDURE DIVISION.
     END-PERFORM
 
     DISPLAY SPACES
-    
+
     GOBACK
     .
 check-if-last SECTION.
@@ -1119,8 +1119,8 @@ END PROGRAM display-edited-num.
 Setup:
 
 ```txt
- 
-$ ./expand-range 
+
+$ ./expand-range
 -6,-3--1,3-5,7-11,14,15,17-20
 
 ```
@@ -1302,18 +1302,18 @@ expanded: [-6, -3, -2, -1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]
 	(if (< a b) (range a (1+ b))
 	(if (> a b) (range a (1- b) -1)
 	(list a))))
-	
+
 ;; in : string : "number" or "number-number"
 ;; out : a range = list of integer(s)
-(define (do-range str) 
+(define (do-range str)
 (define from-to (regexp-exec R str)) ;; "1-3" --> ("1" "3")
-(if from-to 
+(if from-to
     (range+ (string->number (first from-to)) (string->number (second from-to)))
     (list (string->number str))))
-    
+
 (define (ranges str)
     (apply append (map do-range (string-split str ","))))
-	
+
 
 (define task "-6,-3--1,3-5,7-11,14,15,17-20")
 (ranges task)
@@ -1404,7 +1404,7 @@ let parseRange r =
   | Regexp @"^(-?\d+)-(-?\d+)$" [first; last] -> [int first..int last]
   | Regexp @"^(-?\d+)$"         [single]      -> [int single]
   | _ -> failwithf "illegal range format: %s" r
-  
+
 
 let expand (desc:string) =
   desc.Split(',')
@@ -1452,7 +1452,7 @@ sequences sequences.extras splitting ;
 ## Forth
 
 
-```forth>: 
+```forth>:
 snumber ( str len -- 'str 'len n )
   0. 2swap
   over c@ [char] - = if
@@ -1490,9 +1490,9 @@ The standard problem of "How long is a piece of string?" applies yet again. Arra
 
 The method is to grind through the input string expecting to find a ''number'' or a ''number - number'' pair (signed numbers allowed), followed by a comma if more is to follow. The state of the scan is represented by position within the scanning code rather than mess with state variables, so it is convenient to have service routines for the resulting repetition of basic actions. No checks are made for improper input, for instance a string ending with a comma. Those of a delicate disposition may be troubled by functions that don't just return a result but also mess with their parameter and change their environment. Here, the results from the functions assist with the flow of control through the scan, it is the side effects that manipulate the data.
 
-A frustrating problem with many modern computer languages is the absence of a "shortcut" evaluation praxis for logical expressions; in Fortran's case the modern standard is that there is no standard. So a test <code>I<=LEN(TEXT) & TEXT(I:I)''etc.''</code> can't be relied upon to dodge out-of-bounds errors, and a flabby two-statement sequence is required instead. Similarly, few Fortran compilers allow for a function being evaluated via a WRITE statement to itself succeed in using a WRITE statement internally, though some do if one usage is free-format and the other formatted. If necessary, subroutine SPLOT could be re-written to convert an integer to a digit string without a WRITE statement, even for negative integers. And some compilers have difficulty with the use of the function name as a variable within the function so that it is safest to develop the result in an ordinary variable and then remember to assign its value to the function name just before exit. 
+A frustrating problem with many modern computer languages is the absence of a "shortcut" evaluation praxis for logical expressions; in Fortran's case the modern standard is that there is no standard. So a test <code>I<=LEN(TEXT) & TEXT(I:I)''etc.''</code> can't be relied upon to dodge out-of-bounds errors, and a flabby two-statement sequence is required instead. Similarly, few Fortran compilers allow for a function being evaluated via a WRITE statement to itself succeed in using a WRITE statement internally, though some do if one usage is free-format and the other formatted. If necessary, subroutine SPLOT could be re-written to convert an integer to a digit string without a WRITE statement, even for negative integers. And some compilers have difficulty with the use of the function name as a variable within the function so that it is safest to develop the result in an ordinary variable and then remember to assign its value to the function name just before exit.
 
-A single number is made internally into a two-number range sequence, which values are used as the bounds for a DO-loop to generate the numbers for output. Despite the '''The range syntax is to be used only for, and for every range that expands to more than two values''', I see no reason for this restriction (say because otherwise some fancy method would be stymied, except I can think of no such fancier method) and I have no desire to interpose some sort of error message, a tedious business that requires a wider interface between a routine and its caller. Similarly, if a range of 40-30 were to appear, why not take it at face value? 
+A single number is made internally into a two-number range sequence, which values are used as the bounds for a DO-loop to generate the numbers for output. Despite the '''The range syntax is to be used only for, and for every range that expands to more than two values''', I see no reason for this restriction (say because otherwise some fancy method would be stymied, except I can think of no such fancier method) and I have no desire to interpose some sort of error message, a tedious business that requires a wider interface between a routine and its caller. Similarly, if a range of 40-30 were to appear, why not take it at face value?
 ```Fortran
       MODULE HOMEONTHERANGE
        CONTAINS	!The key function.
@@ -1597,7 +1597,7 @@ Chug through digits. Can develop -2147483648, thanks to the workings of two's co
 ```
 
 
-Output: 
+Output:
 ```txt
  -6,-3,-2,-1,3,4,5,7,8,9,10,11,14,15,17,18,19,20
 ```
@@ -1613,7 +1613,7 @@ A check by using -2147483648 showed that EATINT develops the correct value even 
 ' FB 1.05.0 Win64
 
 Sub split (s As Const String, sepList As Const String, result() As String)
-  If s = "" OrElse sepList = "" Then 
+  If s = "" OrElse sepList = "" Then
      Redim result(0)
      result(0) = s
      Return
@@ -1621,26 +1621,26 @@ Sub split (s As Const String, sepList As Const String, result() As String)
   Dim As Integer i, j, count = 0, empty = 0, length
   Dim As Integer position(Len(s) + 1)
   position(0) = 0
- 
+
   For i = 0 To len(s) - 1
     For j = 0 to Len(sepList) - 1
-      If s[i] = sepList[j] Then 
+      If s[i] = sepList[j] Then
         count += 1
-        position(count) = i + 1       
+        position(count) = i + 1
       End If
     Next j
   Next i
- 
+
   Redim result(count)
   If count  = 0 Then
     result(0) = s
     Return
   End If
- 
+
   position(count + 1) = len(s) + 1
- 
-  For i = 1 To count + 1  
-    length = position(i) - position(i - 1) - 1 
+
+  For i = 1 To count + 1
+    length = position(i) - position(i - 1) - 1
     result(i - 1) = Mid(s, position(i - 1) + 1, length)
   Next
 End Sub
@@ -1648,14 +1648,14 @@ End Sub
 Function expandRange(s As Const String) As String
   If s = "" Then Return ""
   Dim b() As String
-  Dim c() As String 
-  Dim result As String = "" 
+  Dim c() As String
+  Dim result As String = ""
   Dim As Integer start = 0, finish = 0, length
   split s, ",", b()
   For i As Integer = LBound(b) To UBound(b)
     split b(i), "-", c()
     length = UBound(c) - LBound(c) + 1
-    If length = 1 Then 
+    If length = 1 Then
       start  = ValLng(c(LBound(c)))
       finish = start
     ElseIf length = 2 Then
@@ -1668,8 +1668,8 @@ Function expandRange(s As Const String) As String
        End If
     ElseIf length = 3 Then
       start  = -ValLng(c(LBound(c) + 1))
-      finish = ValLng(c(UBound(c))) 
-    Else 
+      finish = ValLng(c(UBound(c)))
+    Else
       start  = -ValLng(c(LBound(c) + 1))
       finish = -ValLng(c(UBound(c)))
     End If
@@ -2025,13 +2025,13 @@ function main() {
 }
 
 function rangeExpand(rangeExpr) {
-    
+
     function getFactors(term) {
         var matches = term.match(/(-?[0-9]+)-(-?[0-9]+)/);
         if (!matches) return {first:Number(term)};
         return {first:Number(matches[1]), last:Number(matches[2])};
     }
-    
+
     function expandTerm(term) {
         var factors = getFactors(term);
         if (factors.length < 2) return [factors.first];
@@ -2041,13 +2041,13 @@ function rangeExpand(rangeExpr) {
         }
         return range;
     }
-    
+
     var result = [];
     var terms = rangeExpr.split(/,/);
     for (var t in terms) {
         result = result.concat(expandTerm(terms[t]));
     }
-    
+
     return result;
 }
 
@@ -2127,7 +2127,7 @@ main();
 
 ```JavaScript
 (strTest => {
-    
+
     // expansion :: String -> [Int]
     let expansion = strExpr =>
 
@@ -2182,7 +2182,7 @@ main();
 def expand_range:
   def number: "-?[0-9]+";
   def expand: [range(.[0]; .[1] + 1)];
-  
+
   split(",")
   | reduce .[] as $r
       ( []; . +
@@ -2210,15 +2210,15 @@ def expand_range:
 #!/usr/bin/env jsish
 "use strict";
 
-/* Range expansion, in Jsish */ 
+/* Range expansion, in Jsish */
 function rangeExpand(rangeExpr) {
- 
+
     function getFactors(term) {
         var matches = term.match(/(-?[0-9]+)-(-?[0-9]+)/);
         if (!matches) return {first:Number(term)};
         return {first:Number(matches[1]), last:Number(matches[2])};
     }
- 
+
     function expandTerm(term) {
         var factors = getFactors(term);
         if (factors.length < 2) return [factors.first];
@@ -2306,7 +2306,7 @@ rnge: {expd@conv grp x}
 // version 1.0.6
 
 fun expandRange(s: String): MutableList<Int> {
-    val list = mutableListOf<Int>()    
+    val list = mutableListOf<Int>()
     val items = s.split(',')
     var first: Int
     var last:  Int
@@ -2318,7 +2318,7 @@ fun expandRange(s: String): MutableList<Int> {
             val items2 = item.split('-')
             if (count == 1) {
                 first = items2[0].toInt()
-                last  = items2[1].toInt()            
+                last  = items2[1].toInt()
             }
             else if (count == 2) {
                 first = items2[1].toInt() * -1
@@ -2328,11 +2328,11 @@ fun expandRange(s: String): MutableList<Int> {
                 first = items2[1].toInt() * -1
                 last  = items2[3].toInt() * -1
             }
-            for (i in first..last) list.add(i) 
+            for (i in first..last) list.add(i)
         }
     }
     return list
-}  
+}
 
 fun main(args: Array<String>) {
     val s = "-6,-3--1,3-5,7-11,14,15,17-20"
@@ -2357,7 +2357,7 @@ fun main(args: Array<String>) {
 ```lasso
 define range_expand(expression::string) => {
     local(parts) = regexp(`^(-?\d+)-(-?\d+)$`)
-    
+
     return (
         with elm in #expression->split(`,`)
         let isRange = #parts->setInput(#elm)&matches
@@ -2463,19 +2463,19 @@ function range beginning ending stepping
     else
         put abs(stepping) into tstep
     end if
-    
+
     if ending is empty or isNumber(ending) is not true then
         put 0 into tEnd
     else
         put ending into tEnd
     end if
-    
+
     if beginning is empty or isNumber(beginning) is not true then
         put 0 into tBegin
     else
         put beginning into tBegin
     end if
-    
+
     repeat with r = tBegin to tEnd step tstep
         put space & r after tRange
     end repeat
@@ -2501,7 +2501,7 @@ Test
 
 ```LiveCode
 expandRange("-6,-3--1,3-5,7-11,14,15,17-20")
--6 -3 -2 -1 3 4 5 7 8 9 10 11 14 15 17 18 19 20 
+-6 -3 -2 -1 3 4 5 7 8 9 10 11 14 15 17 18 19 20
 ```
 
 
@@ -2643,7 +2643,7 @@ rangeexpand["-6,-3--1,3-5,7-11,14,15,17-20"]
 ```MATLAB
 function L=range_expansion(S)
 % Range expansion
-if nargin < 1; 
+if nargin < 1;
 	S='[]';
 end
 
@@ -2743,7 +2743,7 @@ if old = '' then
 ```txt
 
 old=-6,-3--1,3-5,7-11,14,15,17-20
-new=-6,-3,-2,-1,3,4,5,7,8,9,10,11,14,15,17,18,19,20   
+new=-6,-3,-2,-1,3,4,5,7,8,9,10,11,14,15,17,18,19,20
 
 ```
 
@@ -2802,16 +2802,16 @@ TYPE
 		len-: INTEGER;
 		LIPool: LIPool;
 	END;
-	
+
 	PROCEDURE (v: LIVector) Init*(cap: INTEGER);
 	BEGIN
 		v.cap := cap;
 		v.len := 0;
 		NEW(v.LIPool,cap);
 	END Init;
-	
+
 	PROCEDURE (v: LIVector) Add*(x: LONGINT);
-	VAR 
+	VAR
 		newLIPool: LIPool;
 	BEGIN
 		IF v.len = LEN(v.LIPool^) THEN
@@ -2824,7 +2824,7 @@ TYPE
 		v.LIPool[v.len] := x;
 		INC(v.len)
 	END Add;
-	
+
 	PROCEDURE (v: LIVector) At*(idx: INTEGER): LONGINT;
 	BEGIN
 		RETURN v.LIPool[idx];
@@ -2839,50 +2839,50 @@ TYPE
 	RangeDesc = RECORD
 		l,r: POINTER TO ARRAY 1 OF LONGINT;
 	END;
-	
+
 	PROCEDURE (r: Range) Init*();
 	BEGIN
 		r.l := NIL;
 		r.r := NIL;
 	END Init;
-	
+
 	PROCEDURE (r: Range) IsEmpty*(): BOOLEAN;
 	BEGIN
 		RETURN (r.l = NIL) & (r.l = NIL);
 	END IsEmpty;
-	
+
 	PROCEDURE (r: Range) SetLeft*(v: LONGINT);
 	BEGIN
 		IF r.l = NIL THEN NEW(r.l) END;
 		r.l[0] := v;
 	END SetLeft;
-	
+
 	PROCEDURE (r: Range) SetRight*(v : LONGINT);
 	BEGIN
 		IF r.r = NIL THEN NEW(r.r) END;
 		r.r[0] := v;
 	END SetRight;
-	
+
 	PROCEDURE (r: Range) LeftPart*(): BOOLEAN;
 	BEGIN
 		RETURN r.l # NIL;
 	END LeftPart;
-	
+
 	PROCEDURE (r: Range) GetLeft(): LONGINT;
 	BEGIN
 		RETURN r.l[0];
 	END	GetLeft;
-	
+
 	PROCEDURE (r: Range) RightPart*(): BOOLEAN;
 	BEGIN
 		RETURN r.l # NIL;
 	END RightPart;
-	
+
 	PROCEDURE (r: Range) GetRight*(): LONGINT;
 	BEGIN
 		RETURN r.r[0];
 	END	GetRight;
-	
+
 	PROCEDURE (r: Range) Show*();
 	BEGIN
 		Out.Char('(');
@@ -2891,9 +2891,9 @@ TYPE
 		IF r.r # NIL THEN Out.LongInt(r.r[0],10); END;
 		Out.Char(')');Out.Ln
 	END Show;
-	
+
 	PROCEDURE (r: Range) Expand*(VAR liv: LIV.LIVector);
-	VAR 
+	VAR
 		from, to : LONGINT;
 	BEGIN
 		IF r.l # NIL THEN from := r.l[0] ELSE from := 0 END;
@@ -2912,21 +2912,21 @@ TYPE
 		c: CHAR;
 		s: POINTER TO ARRAY OF CHAR;
 	END;
-	
+
 	PROCEDURE (s: Splitter) Init*;
 	BEGIN
 		s.c := ',';
 		s.from := 0;
 		s.s := NIL;
 	END Init;
-	
+
 	PROCEDURE (s: Splitter) On*(str: ARRAY OF CHAR);
 	BEGIN
 		s.from := 0;
 		NEW(s.s,LEN(str));
 		COPY(str,s.s^)
 	END On;
-	
+
 	PROCEDURE (s: Splitter) OnWithChar*(str: ARRAY OF CHAR;c: CHAR);
 	BEGIN
 		s.from := 0;
@@ -2934,13 +2934,13 @@ TYPE
 		NEW(s.s,LEN(str));
 		COPY(str,s.s^)
 	END OnWithChar;
-	
+
 	PROCEDURE (s: Splitter) Next*(VAR str: ARRAY OF CHAR);
-	VAR 
-		k : INTEGER;	
+	VAR
+		k : INTEGER;
 	BEGIN
 		k := 0;
-		IF (s.from < LEN(s.s^) - 1) & (s.s[s.from] = 0X) THEN str[0] := 0X END; 
+		IF (s.from < LEN(s.s^) - 1) & (s.s[s.from] = 0X) THEN str[0] := 0X END;
 		WHILE (k < LEN(str) - 1) & (s.from < LEN(s.s^) - 1) & (s.s[s.from] # s.c) DO
 			str[k] := s.s[s.from];
 			INC(k);INC(s.from)
@@ -2986,17 +2986,17 @@ BEGIN
 	(* Left value *)
 	done := FALSE;
 	num := GetNumberFrom(s,i,done);
-	IF ~done THEN RETURN r END; 
+	IF ~done THEN RETURN r END;
 	r.SetLeft(num);
 
 	WHILE (i < LEN(s) - 1) & (s[i] = 20X) DO INC(i) END;
 	CASE s[i] OF
 		 '-' : INC(i);
-		| 0X : RETURN r; 
+		| 0X : RETURN r;
 		ELSE
 	END;
 	WHILE (i < LEN(s) - 1) & (s[i] = 20X) DO INC(i) END;
-	
+
 	(* Right Value *)
 	done := FALSE;
 	num := GetNumberFrom(s,i,done);
@@ -3008,7 +3008,7 @@ END GetRange;
 VAR
 	i: INTEGER;
 	r: LIR.Range;
-	sp: S.Splitter; 
+	sp: S.Splitter;
 	p : ARRAY 128 OF CHAR;
 	liv: LIV.LIVector;
 BEGIN
@@ -3192,7 +3192,7 @@ sub rangex {
     map { /^(.*\d)-(.+)$/ ? $1..$2 : $_ } split /,/, shift
 }
 
-# Test and display 
+# Test and display
 print join(',', rangex('-6,-3--1,3-5,7-11,14,15,17-20')), "\n";
 ```
 
@@ -3223,13 +3223,13 @@ sub rangex {
 sub range-expand (Str $range-description) {
     my token number { '-'? \d+ }
     my token range  { (<&number>) '-' (<&number>) }
-    
+
     $range-description
         .split(',')
         .map({ .match(&range) ?? $0..$1 !! +$_ })
         .flat
 }
- 
+
 say range-expand('-6,-3--1,3-5,7-11,14,15,17-20').join(', ');
 ```
 
@@ -3422,7 +3422,7 @@ end range_expansion;
 ```PowerShell
 
 function range-expansion($array) {
-    function expansion($arr) { 
+    function expansion($arr) {
         if($arr) {
             $arr = $arr.Split(',')
              $arr | foreach{
@@ -3466,7 +3466,7 @@ function Expand-Range
     [OutputType([int])]
     Param
     (
-        [Parameter(Mandatory=$true, 
+        [Parameter(Mandatory=$true,
                    Position=0)]
         [ValidateNotNullOrEmpty()]
         [ValidatePattern('^[0-9,-]*$')]
@@ -3483,7 +3483,7 @@ function Expand-Range
 
         [int[]]$output = $Range -split ',' | ForEach-Object {
 
-            [int[]]$array = $_ -split '(?<=\d)-'  
+            [int[]]$array = $_ -split '(?<=\d)-'
 
             if ($array.Count -gt 1)   # $array contains one or two elements
             {
@@ -3541,9 +3541,9 @@ range_expand :-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % extract_Range(?In, ?Out)
-% In  : '-6,-3--1,3-5,7-11,14,15,17-20'  
+% In  : '-6,-3--1,3-5,7-11,14,15,17-20'
 % Out : [-6], [-3--1], [3-5],[7-11], [14],[15], [17-20]
-% 
+%
 extract_Range([], []).
 
 extract_Range(X , [Range | Y1]) :-
@@ -3565,10 +3565,10 @@ append_dl(X-Y, Y-Z, X-Z).
 % study Range(?In, ?Out)
 % In  : [-6]
 % Out : [-6,-6]
-% 
+%
 % In  : [-3--1]
 % Out : [-3, -1]
-% 
+%
 study_Range(Range1, [Deb, Deb]) :-
        catch(number_chars(Deb, Range1), Deb, false).
 
@@ -3579,14 +3579,14 @@ study_Range(Range1, [Deb, Fin]) :-
        number_chars(Fin, B).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 
+%
 :- use_module(library(clpfd)).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Pack Range(?In, ?Out)
 % In  : -6,
 % Out : [-6]
-% 
+%
 % In  : -3, -2,-1
 % Out : [-3,-1]
 %
@@ -3631,7 +3631,7 @@ true
 Procedure rangeexpand(txt.s, List outputList())
   Protected rangesCount = CountString(txt, ",") + 1
   Protected subTxt.s, r, rangeMarker, rangeStart, rangeFinish, rangeIncrement, i
-  
+
   LastElement(outputList())
   For r = 1 To rangesCount
     subTxt = StringField(txt, r, ",")
@@ -3639,28 +3639,28 @@ Procedure rangeexpand(txt.s, List outputList())
     If rangeMarker
       rangeStart = Val(Mid(subTxt, 1, rangeMarker - 1))
       rangeFinish = Val(Mid(subTxt, rangeMarker + 1))
-      
+
       If rangeStart > rangeFinish
         rangeIncrement = -1
       Else
         rangeIncrement = 1
-      EndIf 
-      
+      EndIf
+
       i = rangeStart - rangeIncrement
-      Repeat 
+      Repeat
         i + rangeIncrement
         AddElement(outputList()): outputList() = i
       Until i = rangeFinish
     Else
       AddElement(outputList()): outputList() = Val(subTxt)
-    EndIf 
+    EndIf
   Next
-EndProcedure 
+EndProcedure
 
 Procedure outputListValues(List values())
   Print("[ ")
   ForEach values()
-    Print(Str(values()) + " ") 
+    Print(Str(values()) + " ")
   Next
   PrintN("]")
 EndProcedure
@@ -3669,7 +3669,7 @@ If OpenConsole()
   NewList values()
   rangeexpand("-6,-3--1,3-5,7-11,14,15,17-20", values())
   outputListValues(values())
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -3828,7 +3828,7 @@ if __name__ == '__main__':
 ```txt
 Range expansion:
 
-'-6,-3--1,3-5,7-11,14,15,17-20' -> 
+'-6,-3--1,3-5,7-11,14,15,17-20' ->
 
     [-6,-3,-2,-1,3,4,5,7,8,9,10,11,14,15,17,18,19,20]
 ```
@@ -3862,11 +3862,11 @@ rangeExpand("-6,-3--1,3-5,7-11,14,15,17-20")
 (define (range-expand s)
   (append*
    (for/list ([r (regexp-split "," s)])
-     (match (regexp-match* "(-?[0-9]+)-(-?[0-9]+)" r 
+     (match (regexp-match* "(-?[0-9]+)-(-?[0-9]+)" r
                            #:match-select cdr)
-       [(list (list f t)) 
+       [(list (list f t))
         (range (string->number f) (+ (string->number t) 1))]
-       [(list)     
+       [(list)
         (list (string->number r))]))))
 
 (range-expand "-6,-3--1,3-5,7-11,14,15,17-20")
@@ -3882,10 +3882,10 @@ rangeExpand("-6,-3--1,3-5,7-11,14,15,17-20")
 ```
 
 
-Here is an alternative version without regular expressions. 
+Here is an alternative version without regular expressions.
 It uses the builtin function read to read the numbers.
-Since 3--4 is normally parsed as a symbol 
-rather than 3 followed by - followed by -4, 
+Since 3--4 is normally parsed as a symbol
+rather than 3 followed by - followed by -4,
 a readtable is installed that makes - a delimiter.
 
 ```racket
@@ -3914,7 +3914,7 @@ a readtable is installed that makes - a delimiter.
               (define t (read s))
               (read-char s)
               (range f (+ t 1))])))))
-     
+
 (range-expand (open-input-string "-6,-3--1,3-5,7-11,14,15,17-20"))
 
 ```
@@ -4050,7 +4050,7 @@ new list:  -6,-3,-2,-1,3,4,5,7,8,9,10,11,14,15,17,18,19,20
 ```txt
 
 old=-6,-3--1,3-5,7-11,14,15,17-20
-new=-6,-3,-2,-1,3,4,5,7,8,9,10,11,14,15,17,18,19,20   
+new=-6,-3,-2,-1,3,4,5,7,8,9,10,11,14,15,17,18,19,20
 
 ```
 
@@ -4076,12 +4076,12 @@ for n=1 to len(int)
      else
         if len(int[n]) <= 2
            add(newint, [int[n], ""])
-        else 
+        else
            if nrint > 0 and nrint2 = 0
               temp1 = left(int[n], nrint - 1)
               temp2 = right(int[n], len(int[n]) - nrint)
-              add(newint, [temp1,temp2]) 
-           ok  
+              add(newint, [temp1,temp2])
+           ok
         ok
      ok
 next
@@ -4233,7 +4233,7 @@ foreach s (strchop(r_expres, ',', 0))
   %   grouping is done with \\( and \\), not ( and )
   % [PCRE and Oniguruma RE's are available via standard libraries]
   if (string_match(s, "-?[0-9]+\\(-\\)-?[0-9]+", 1)) {
-    
+
     (dpos, ) = string_match_nth(1);
 
     % Create/loop-over a "range array": from num before - to num after it:
@@ -4371,7 +4371,7 @@ const proc: main is func
 
 ```txt
 
--6 -3 -2 -1 3 4 5 7 8 9 10 11 14 15 17 18 19 20 
+-6 -3 -2 -1 3 4 5 7 8 9 10 11 14 15 17 18 19 20
 
 ```
 
@@ -4407,19 +4407,19 @@ say rangex('-6,-3--1,3-5,7-11,14,15,17-20').join(',')
 
 
 ```SNOBOL4
-*       # Return range n1 .. n2        
+*       # Return range n1 .. n2
         define('range(n1,n2)') :(range_end)
 range   range = range n1 ','; n1 = lt(n1,n2) n1 + 1 :s(range)
         range rtab(1) . range :(return)
-range_end        
+range_end
 
-        define('rangex(range)d1,d2') 
+        define('rangex(range)d1,d2')
         num = ('-' | '') span('0123456789') :(rangex_end)
 rangex  range num . d1 '-' num . d2 = range(d1,d2) :s(rangex)
         rangex = range :(return)
 rangex_end
 
-*       # Test and display        
+*       # Test and display
         output = rangex('-6,-3--1,3-5,7-11,14,15,17-20')
 end
 ```
@@ -4517,7 +4517,7 @@ PRINT expandnrs
 
 ```txt
 
--6,-3,-2,-1,3,4,5,7,8,9,10,11,14,15,17,18,19,20 
+-6,-3,-2,-1,3,4,5,7,8,9,10,11,14,15,17,18,19,20
 
 ```
 
@@ -4526,7 +4526,7 @@ PRINT expandnrs
 ## TXR
 
 
-A solution with three main parts: 
+A solution with three main parts:
 * a parse-expression-grammar driven parser to decimate the input to a Lisp data structure;
 * some Lisp code to expand the list, sort it, and remove duplicates (recursion, hashing, sorting).
 * driver code which matches the input with the grammar, and produces output with the help of the Lisp code.
@@ -4614,9 +4614,9 @@ your junk:  cg@foo
 ```
 
 
-Note how the junk in the last example does not contain the trailing comma. 
-This is because the rangelist grammar production allows for an empty range, 
-so syntax like "5," is valid: it's an entry followed by a comma and a rangelist, 
+Note how the junk in the last example does not contain the trailing comma.
+This is because the rangelist grammar production allows for an empty range,
+so syntax like "5," is valid: it's an entry followed by a comma and a rangelist,
 where the rangelist is empty.
 
 
@@ -4734,7 +4734,7 @@ End Sub
 
 RangeExpandTest
 Result:
--6 -3 -2 -1  3  4  5  7  8  9  10  11  14  15  17  18  19  20 
+-6 -3 -2 -1  3  4  5  7  8  9  10  11  14  15  17  18  19  20
 
 ```
 
@@ -4807,9 +4807,9 @@ print RangeExpand$("-6,-3--1,3-5,7-11,14,15,17-20")
 
 sub RangeExpand$(s$)
     local w$(1), n, i, r$, p, a, b
-    
+
     n = token(s$, w$(), ",")
-    
+
     for i = 1 to n
         p = instr(w$(i), "-", 2)
         if p then

@@ -124,7 +124,7 @@ OP   COMMONPREFIX = ( STRING a, b )STRING:
 
 # get the length of a string #
 OP  LEN = ( STRING a )INT: ( UPB a + 1 ) - LWB a;
-            
+
 # find the longest common prefix of an array of STRINGs #
 OP  LONGESTPREFIX = ( []STRING list )STRING:
     IF  UPB list < LWB list
@@ -158,7 +158,7 @@ PROC test prefix = ( []STRING list, STRING expected result )VOID:
         print( ( "longest common prefix of (" ) );
         FOR pos FROM LWB list TO UPB list DO print( ( " """, list[ pos ], """" ) ) OD;
         print( ( " ) is: """, prefix, """ "
-               , IF prefix = expected result THEN "as expected" ELSE "NOT AS EXPECTED" FI 
+               , IF prefix = expected result THEN "as expected" ELSE "NOT AS EXPECTED" FI
                , newline
                )
              )
@@ -207,7 +207,7 @@ longest common prefix of ( "foo" "foobar" ) is: "foo" as expected
 lcp [list]{
     ret ""
     idx 0
- 
+
     loop true {
         thisLetter ""
         loop list [word]{
@@ -356,25 +356,25 @@ char* lcp(int num,...){
 	int i,j,len,min;
 	char* dest;
 	char** strings = (char**)malloc(num*sizeof(char*));
-	
+
 	va_start(vaList,num);
 	va_start(vaList2,num);
-	
+
 	for(i=0;i<num;i++){
 		len = strlen(va_arg(vaList,char*));
 		strings[i] = (char*)malloc((len + 1)*sizeof(char));
-		
+
 		strcpy(strings[i],va_arg(vaList2,char*));
-		
+
 		if(i==0)
 			min = len;
 		else if(len<min)
 			min = len;
 	}
-	
+
 	if(min==0)
 		return "";
-	
+
 	for(i=0;i<min;i++){
 		for(j=1;j<num;j++){
 			if(strings[j][i]!=strings[0][i]){
@@ -388,7 +388,7 @@ char* lcp(int num,...){
 			}
 		}
 	}
-	
+
 	dest = (char*)malloc((min+1)*sizeof(char));
 	strncpy(dest,strings[0],min);
 	return dest;
@@ -431,8 +431,8 @@ Longest common prefix : foo
 ## C++
 
 
-```Cpp>#include <set
-
+```cpp
+#include <set>
 #include <algorithm>
 #include <string>
 #include <iostream>
@@ -471,18 +471,18 @@ std::set<std::string> findCommonPrefixes( const std::vector<std::string> & theSt
 }
 
 std::string lcp( const std::vector<std::string> & allStrings ) {
-   if ( allStrings.size( ) == 0 ) 
+   if ( allStrings.size( ) == 0 )
       return "" ;
    if ( allStrings.size( ) == 1 ) {
       return allStrings[ 0 ] ;
    }
    if ( allStrings.size( ) > 1 ) {
       std::set<std::string> prefixes( findCommonPrefixes ( allStrings ) ) ;
-      if ( prefixes.empty( ) ) 
+      if ( prefixes.empty( ) )
 	 return "" ;
       else {
 	 std::vector<std::string> common ( prefixes.begin( ) , prefixes.end( ) ) ;
-	 std::sort( common.begin( ) , common.end( ) , [] ( const std::string & a, 
+	 std::sort( common.begin( ) , common.end( ) , [] ( const std::string & a,
 		  const std::string & b ) { return a.length( ) > b.length( ) ; } ) ;
 	 return *(common.begin( ) ) ;
       }
@@ -522,7 +522,7 @@ Another more concise version (C++14 for comparing dissimilar containers):
 #include <string>
 #include <iostream>
 #include <vector>
- 
+
 std::string lcp( const std::vector<std::string> & allStrings ) {
 	if (allStrings.empty()) return std::string();
 	const std::string &s0 = allStrings.front();
@@ -533,7 +533,7 @@ std::string lcp( const std::vector<std::string> & allStrings ) {
 	}
 	return std::string(s0.cbegin(), end);
 }
- 
+
 int main( ) {
    std::vector<std::string> input { "interspecies" , "interstellar" , "interstate" } ;
    std::cout << "lcp(\"interspecies\",\"interstellar\",\"interstate\") = " << lcp ( input ) << std::endl ;
@@ -565,8 +565,8 @@ int main( ) {
 lcp("interspecies","interstellar","interstate") = inters
 lcp( "throne" , "throne") = throne
 lcp( "cheese" ) = cheese
-lcp("") = 
-lcp( "prefix" , "suffix" ) = 
+lcp("") =
+lcp( "prefix" , "suffix" ) =
 lcp( "foo" , "foobar" ) = foo
 
 ```
@@ -704,7 +704,7 @@ foo
 func lcp(sa...) {
     if sa.len() == 0 || !sa[0] {
         return ""
-    } 
+    }
 
     var ret = ""
     var idx = 0
@@ -768,7 +768,7 @@ foo
 (prefix "foo" "foobar") → "foo"
 
 ;; fold over a list of strings
-(define (lcp strings) 
+(define (lcp strings)
 	(if
 	(null? strings) ""
 	(foldl prefix (first strings) (rest strings))))
@@ -778,19 +778,19 @@ foo
  ("throne" "throne")
  ("throne" "dungeon")
  ("cheese")
- ("") 
- () 
+ ("")
+ ()
  ("prefix" "suffix")))
 
 ;;
 (for ((t lcp-test)) (writeln t '→ (lcp t)))
-    ("interspecies" "interstellar" "interstate")    →     "inters"    
-    ("throne" "throne")     →    "throne"    
-    ("throne" "dungeon")     →     ""    
-    ("cheese")     →     "cheese"    
-    ("")     →     ""    
-    null     →     ""    
-    ("prefix" "suffix")     →     ""    
+    ("interspecies" "interstellar" "interstate")    →     "inters"
+    ("throne" "throne")     →    "throne"
+    ("throne" "dungeon")     →     ""
+    ("cheese")     →     "cheese"
+    ("")     →     ""
+    null     →     ""
+    ("prefix" "suffix")     →     ""
 
 
 ```
@@ -823,7 +823,7 @@ data = [
   ["prefix","suffix"],
   ["foo","foobar"]
 ]
- 
+
 Enum.each(data, fn strs ->
   IO.puts "lcp(#{inspect strs}) = #{inspect RC.lcp(strs)}"
 end)
@@ -860,18 +860,18 @@ A bow to the perversion of the Scala implementation. Not canonical erlang, this.
 ```erlang
 
 
--module(lcp). 
--export([ main/1 ]). 
- 
+-module(lcp).
+-export([ main/1 ]).
+
 shortest(List,Size) when length(List) =:= 0 ->
     Size;
 
 shortest(List,Size) ->
     [H|T] = List,
-    if 
-      length(H) < Size -> 
+    if
+      length(H) < Size ->
          shortest(T, length(H) );
-       true -> 
+       true ->
          shortest(T, Size )
 end.
 
@@ -881,18 +881,18 @@ uniq(List, Size ) ->
     Ttuples = lists:zip(First, Last),
     % this is the bit that is like the scala version
     TheList = lists:takewhile(
-        fun(E) ->  
-          case element(1,E) =:= element(2,E) of true -> true; 
-          _ -> false 
-          end 
+        fun(E) ->
+          case element(1,E) =:= element(2,E) of true -> true;
+          _ -> false
+          end
         end, Ttuples),
     Prefix = length(TheList),
     io:format("Prefix: ~p~n", [string:substr(First,1,Prefix)]).
- 
+
 main(List) ->
       Sorted = lists:sort(List),
-      if 
-        length(List) < 2 -> 
+      if
+        length(List) < 2 ->
           io:format("Prefix empty:$~p~n",[List]);
         true ->
           Size = length(hd(List)),
@@ -1003,12 +1003,12 @@ Function lcp(s() As String) As String
   For i As Integer = lb + 1 To ub
     If Len(s(i)) < minLength Then minLength = Len(s(i))
     If minLength = 0 Then Return ""  '' at least one string is empty
-  Next  
+  Next
   Dim prefix As String
-  Dim isCommon As Boolean 
+  Dim isCommon As Boolean
   Do
      prefix = Left(s(lb), minLength)
-     isCommon = True 
+     isCommon = True
      For i As Integer = lb + 1 To ub
        If Left(s(i), minLength) <> prefix Then
          isCommon = False
@@ -1022,7 +1022,7 @@ Function lcp(s() As String) As String
 End Function
 
 
-Dim s1(1 To 3) As String = {"interspecies","interstellar","interstate"} 
+Dim s1(1 To 3) As String = {"interspecies","interstellar","interstate"}
 Print "lcp(""interspecies"",""interstellar"",""interstate"") = """; lcp(s1()); """"
 
 Dim s2(1 To 2) As String = {"throne", "throne"}
@@ -1039,7 +1039,7 @@ Print "lcp(""cheese"") = """; lcp(s5()); """"
 
 Dim s6(1 To 1) As String
 Print "lcp("""") = """; lcp(s6()); """"
- 
+
 Dim s7() As String
 Print "lcp() = """; lcp(s7()); """"
 
@@ -1275,7 +1275,7 @@ public class LCP {
             idx++;
         }
     }
-    
+
     public static void main(String[] args){
         System.out.println(lcp("interspecies","interstellar","interstate"));
         System.out.println(lcp("throne","throne"));
@@ -1586,7 +1586,7 @@ def until(cond; next):
 def longest_common_prefix:
  if length == 0 then ""        # by convention
  elif length == 1 then .[0]    # for speed
- else sort 
+ else sort
  | if .[0] == "" then ""       # for speed
    else .[0] as $first
    |    .[length-1] as $last
@@ -1681,15 +1681,15 @@ fun lcp(vararg sa: String): String {
     if (sa.isEmpty()) return ""
     if (sa.size == 1) return sa[0]
     val minLength = sa.map { it.length }.min()!!
-    var oldPrefix = "" 
+    var oldPrefix = ""
     var newPrefix: String
-    for (i in 1 .. minLength) { 
+    for (i in 1 .. minLength) {
         newPrefix = sa[0].substring(0, i)
-        for (j in 1 until sa.size) 
+        for (j in 1 until sa.size)
             if (!sa[j].startsWith(newPrefix)) return oldPrefix
         oldPrefix = newPrefix
     }
-    return oldPrefix         
+    return oldPrefix
 }
 
 fun main(args: Array<String>) {
@@ -2094,14 +2094,14 @@ is lcp("foo","foobar"), 'foo';
 
 ```txt
 1..8
-ok 1 - 
-ok 2 - 
-ok 3 - 
-ok 4 - 
-ok 5 - 
-ok 6 - 
-ok 7 - 
-ok 8 - 
+ok 1 -
+ok 2 -
+ok 3 -
+ok 4 -
+ok 5 -
+ok 6 -
+ok 7 -
+ok 8 -
 ```
 
 
@@ -2243,7 +2243,7 @@ ok lcp=" "
 ok lcp=""
 
 "a b c aaa"
-ok lcp="" 
+ok lcp=""
 ```
 
 
@@ -2255,7 +2255,7 @@ ok lcp=""
 
 function lcp ($arr) {
     if($arr){
-        $arr = $arr | sort {$_.length} | select -unique 
+        $arr = $arr | sort {$_.length} | select -unique
         if(1 -lt $arr.count) {
             $lim, $i, $test = $arr[0].length, 0, $true
             while (($i -lt $lim) -and $test) {
@@ -2276,7 +2276,7 @@ show @("throne","throne")
 show @("throne","dungeon")
 show @("throne", "","throne")
 show @("cheese")
-show @("") 
+show @("")
 show @()
 show @("prefix","suffix")
 show @("foo","foobar")
@@ -2289,12 +2289,12 @@ show @("foo","foobar")
 
 lcp @("interspecies", "interstellar", "interstate") = inters
 lcp @("throne", "throne") = throne
-lcp @("throne", "dungeon") = 
-lcp @("throne", "", "throne") = 
+lcp @("throne", "dungeon") =
+lcp @("throne", "", "throne") =
 lcp @("cheese") = cheese
-lcp @("") = 
-lcp @() = 
-lcp @("prefix", "suffix") = 
+lcp @("") =
+lcp @() =
+lcp @("prefix", "suffix") =
 lcp @("foo", "foobar") = foo
 
 ```
@@ -2420,10 +2420,10 @@ if __name__ == '__main__':
 ```txt
 [interspecies, interstellar, interstate] -> inters
 [throne, throne] -> throne
-[throne, dungeon] -> 
+[throne, dungeon] ->
 [cheese] -> cheese
-[] -> 
-[prefix, suffix] -> 
+[] ->
+[prefix, suffix] ->
 [foo, foobar] -> foo
 ```
 
@@ -2437,7 +2437,7 @@ Note that there are three cases to the match, because <code>zip</code> needs at 
 <lang>#lang racket
 (require srfi/1)
 
-(define ε "")  
+(define ε "")
 (define lcp
   (match-lambda*
     [(list) ε]
@@ -2732,7 +2732,7 @@ flag = 1
 comp=""
 for n=1 to len(aList1[1])
     aList2 = list(len(aList1))
-    flag=1 
+    flag=1
     for m=1 to len(aList1)
         aList2[m] = left(aList1[m], n )
         compare =  left(aList1[1], n )
@@ -2751,8 +2751,8 @@ for n=1 to len(aList1[1])
 next
 if comp=""
    see "none"
-else   
-   see comp + nl 
+else
+   see comp + nl
 ok
 
 ```
@@ -3024,7 +3024,7 @@ Function lcp(s)
 					Else
 						idx = idx + 1
 					End If
-				End If	
+				End If
 			End If
 		Next
 		If idx = 0 Then
@@ -3042,7 +3042,7 @@ End Function
 'Calling the function for test cases.
 test = Array("interspecies,interstellar,interstate","throne,throne","throne,dungeon","cheese",_
 		"","prefix,suffix")
-		
+
 For n = 0 To UBound(test)
 	WScript.StdOut.Write "Test case " & n & " " & test(n) & " = " & lcp(test(n))
 	WScript.StdOut.WriteLine

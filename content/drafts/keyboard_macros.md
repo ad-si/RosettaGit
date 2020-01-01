@@ -11,9 +11,9 @@ tags = []
 +++
 
 {{task|GUI}}
-Show how to link user defined methods to user defined keys. 
- 
-An example of this is the facility provided by emacs for [http://www.gnu.org/software/emacs/manual/html_node/emacs/Key-Bindings.html key bindings]. 
+Show how to link user defined methods to user defined keys.
+
+An example of this is the facility provided by emacs for [http://www.gnu.org/software/emacs/manual/html_node/emacs/Key-Bindings.html key bindings].
 
 These key bindings may be application-specific or system-wide; state which you have done.
 
@@ -25,7 +25,7 @@ These key bindings may be application-specific or system-wide; state which you h
 
 
 ```AutoHotkey
-Loop, 200  ; loop 200 times while not paused 
+Loop, 200  ; loop 200 times while not paused
 {
   TrayTip, counting, %A_Index% press alt-p to pause
   Sleep, 1000
@@ -72,11 +72,11 @@ See [http://www.autohotkey.com/forum/topic44290.html&highlight=vim ahk-viper-mod
         ENDCASE
       UNTIL FALSE
       END
-      
+
       DEF PROCmethod1
       PRINT "You pressed F1"
       ENDPROC
-      
+
       DEF PROCmethod2
       PRINT "You pressed F2"
       ENDPROC
@@ -91,7 +91,7 @@ See [http://www.autohotkey.com/forum/topic44290.html&highlight=vim ahk-viper-mod
       FVIRTKEY = 1
       VK_F1 = &70
       VK_F2 = &71
-      
+
       nsc% = 2
       DIM accel{(nsc%-1) fVirt&, pad&, key{l&,h&}, cmd{l&,h&}}
       accel{(0)}.fVirt& = FVIRTKEY : accel{(1)}.fVirt& = FVIRTKEY
@@ -100,24 +100,24 @@ See [http://www.autohotkey.com/forum/topic44290.html&highlight=vim ahk-viper-mod
       SYS "CreateAcceleratorTable", accel{(0)}, nsc% TO haccel%
       @haccel% = haccel%
       @hwacc% = @hwnd%
-      
+
       ON SYS PROCsys(@wparam%) : RETURN
       REPEAT
         WAIT 1
       UNTIL FALSE
       END
-      
+
       DEF PROCsys(W%)
       CASE W% AND &FFFF OF
         WHEN &81: PROCmethod1
         WHEN &82: PROCmethod2
       ENDCASE
       ENDPROC
-      
+
       DEF PROCmethod1
       PRINT "You pressed F1"
       ENDPROC
-      
+
       DEF PROCmethod2
       PRINT "You pressed F2"
       ENDPROC
@@ -131,8 +131,8 @@ See [http://www.autohotkey.com/forum/topic44290.html&highlight=vim ahk-viper-mod
 
 The following example grabs Alt+F6 and Alt+F7 system-wide on a X server.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
@@ -141,15 +141,15 @@ int main()
 {
   Display *d;
   XEvent event;
-  
+
   d = XOpenDisplay(NULL);
   if ( d != NULL ) {
                 /* or simply XK_F7 should work too */
-    XGrabKey(d, XKeysymToKeycode(d, XStringToKeysym("F7")), 
-	     Mod1Mask, /* normally it's Alt */ 
+    XGrabKey(d, XKeysymToKeycode(d, XStringToKeysym("F7")),
+	     Mod1Mask, /* normally it's Alt */
 	     DefaultRootWindow(d), True, GrabModeAsync, GrabModeAsync);
-    XGrabKey(d, XKeysymToKeycode(d, XStringToKeysym("F6")), 
-	     Mod1Mask, 
+    XGrabKey(d, XKeysymToKeycode(d, XStringToKeysym("F6")),
+	     Mod1Mask,
 	     DefaultRootWindow(d), True, GrabModeAsync, GrabModeAsync);
 
     for(;;)
@@ -204,10 +204,10 @@ The '''(meta-key "key-value" "bound-string")''' function binds a modifier+key ke
 ```lisp
 
 ;; see initial bindings : GREEK DICTIONARY
-(meta-keys) → (("0" "❌") ("1" "❗️") ("2" "❓") ("3" "✔️") ("4" "⛔️") ("5" "✅") ("6" "🚩") ("7" "⌚️") 
-("8" "🏁") ("9" "😜") ("a" "α") ("b" "β") ("g" "γ") ("d" "δ") ("e" "ε") ("z" "ζ") ("h" "η") ("t" "τ") 
-("i" "ι") ("k" "κ") ("l" "λ") ("m" "μ") ("n" "ν") ("x" "ξ") ("q" "ο") ("p" "π") ("r" "ρ") ("w" "ς") 
-("s" "σ") ("u" "υ") ("f" "φ") ("c" "χ") ("y" "ψ") ("o" "ω") ("A" "Α") ("B" "Β") ("G" "Γ") ("D" "Δ") 
+(meta-keys) → (("0" "❌") ("1" "❗️") ("2" "❓") ("3" "✔️") ("4" "⛔️") ("5" "✅") ("6" "🚩") ("7" "⌚️")
+("8" "🏁") ("9" "😜") ("a" "α") ("b" "β") ("g" "γ") ("d" "δ") ("e" "ε") ("z" "ζ") ("h" "η") ("t" "τ")
+("i" "ι") ("k" "κ") ("l" "λ") ("m" "μ") ("n" "ν") ("x" "ξ") ("q" "ο") ("p" "π") ("r" "ρ") ("w" "ς")
+("s" "σ") ("u" "υ") ("f" "φ") ("c" "χ") ("y" "ψ") ("o" "ω") ("A" "Α") ("B" "Β") ("G" "Γ") ("D" "Δ")
 ("E" "Ε") ("Z" "Ζ") ("H" "Η") ("T" "Τ") ("I" "Ι") ("K" "Κ") ("L" "Λ") ("M" "Μ") ("N" "Ν") ("X" "Ξ") ("Q" "Ο") ("P" "Π") ("R" "Ρ") ("S" "Σ") ("U" "Υ") ("F" "Φ") ("C" "Χ") ("Y" "Ψ") ("O" "Ω"))
 
 ;; define modifier to use : Control key
@@ -230,7 +230,7 @@ The '''(meta-key "key-value" "bound-string")''' function binds a modifier+key ke
 {{trans|C}}
 
 
-Note that 'cgo' does not support C unions as such - it expresses them as byte arrays. Consequently, the easiest way to access a field of a union (such as XEvent) is to write a C assessor function for it and then invoke that function from the Go side. 
+Note that 'cgo' does not support C unions as such - it expresses them as byte arrays. Consequently, the easiest way to access a field of a union (such as XEvent) is to write a C assessor function for it and then invoke that function from the Go side.
 
 Note also that if you pass 'nil' to the XOpenDisplay function, it defaults to the value of the DISPLAY environment variable which has to be in a certain format to enable a connection to the X server to be established - check [https://www.x.org/releases/X11R7.7/doc/libX11/libX11/libX11.html the documentation] for details.
 
@@ -383,14 +383,14 @@ import java.awt.event.KeyEvent;
 class KeyboardMacroDemo {
     public static void main( String [] args ) {
         final JFrame frame = new JFrame();
-        
+
         String directions = "<html><b>Ctrl-S</b> to show frame title
 "
                                  +"<b>Ctrl-H</b> to hide it</html>";
-                                 
+
         frame.add( new JLabel(directions));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         frame.addKeyListener( new KeyAdapter(){
             public void keyReleased( KeyEvent e ) {
                 if( e.isControlDown() && e.getKeyCode() == KeyEvent.VK_S){
@@ -512,7 +512,7 @@ Module CheckIt {
                   if a$<>"" then a$<=show$(hide$(a$, "code1", 10), "master", 3)
       }
       Module Global myHelp {
-            Print "Press F1 for help, F3 to enter password, F5 exit"      
+            Print "Press F1 for help, F3 to enter password, F5 exit"
       }
       Fkey 1, "myHelp"
       Fkey 3, "GetIt"
@@ -527,7 +527,7 @@ Module CheckIt {
             a$<=""
       } Always
       Print "Enter ok"
-      
+
       1000 Print "Exit ", tries : End
 }
 Checkit
@@ -716,21 +716,21 @@ IupClose()
 ### system
 
 A low-level (windows 32-bit only) demo for system-wide keyboard macros,
-that has been used to simplify some repetitive tasks in InstallShield, 
+that has been used to simplify some repetitive tasks in InstallShield,
 and could equally be used on any third-party application. As it stands,
-the key selection is a bit overkill, it always sends {delete,down}, 
-perhaps not precisely what the task asked for, but fits my interpretation 
-of "keyboard macros" - though of course you could easily replace that 
+the key selection is a bit overkill, it always sends {delete,down},
+perhaps not precisely what the task asked for, but fits my interpretation
+of "keyboard macros" - though of course you could easily replace that
 SendInput call with any routine of your choosing.
 
 ```Phix
 --
 -- demo\arwendemo\hotkey.exw
--- 
+--
 ### ===================
 
 --
---  Author: Pete Lomax, credit to Aku Saya for HotKey 
+--  Author: Pete Lomax, credit to Aku Saya for HotKey
 --                            and Thomas Parslow for sendkeys
 --
 --  http://phix.x10.mx
@@ -811,7 +811,7 @@ integer nRes
             else
                 Modifier = isChecked(AltKey) * MOD_ALT +
                            isChecked(ShiftKey) * MOD_SHIFT +
-                           isChecked(CtrlKey) * MOD_CONTROL +                           
+                           isChecked(CtrlKey) * MOD_CONTROL +
                            isChecked(WinKey) * MOD_WIN
                 vKeyCode = KeyCodes[getIndex(KeyList)]
                 text = sprintf("setHotKey(Main, #%02x, #%02x) [%s]",{Modifier,vKeyCode,getText(KeyList)})
@@ -1052,23 +1052,23 @@ REBOL [
 ]
 
 ; Application specific keyboard bindings using REBOL VID
-; dialect. Implementation of the "Averageman" calculator -- 
+; dialect. Implementation of the "Averageman" calculator --
 ; See http://www.atariarchives.org/bcc2/showpage.php?page=63 for details.
 
 view layout [
 	style btn button coal 46
-	across 
+	across
 
 	display: h1 100 red maroon right ""  return
 
 ; Key shortcuts are specified as character arguments to widget
-; descriptions in the layout. 
+; descriptions in the layout.
 
 	btn "1" #"1" [set-face display "1"]
 	btn "+" #"+" [set-face display ""]
 	return
 
-	pad 54  
+	pad 54
 	btn "=" #"=" [set-face display "3"]
 
 	pad 1x100 return
@@ -1094,7 +1094,7 @@ If under a native DOS, the change is system wide.
 Almost every keyboard key (including the '''F''' (function) keys, numeric keypad, can be re-defined.
 
 
-REXX programs not included are '''$T''' which is only used when specific options are used (used when TOPS is specified), 
+REXX programs not included are '''$T''' which is only used when specific options are used (used when TOPS is specified),
 
 the '''$ERR''' program which issues errors, and '''$H''' which shows '''help''' and other documentation.
 
@@ -1725,8 +1725,8 @@ app = new qApp {
             exec()
       }
 
-func keypress 
-     nKey = myfilter.getkeycode() 
+func keypress
+     nKey = myfilter.getkeycode()
      switch nKey
             on 16777264 see "You pressed F1 " + nl
             on 16777265 see "You pressed F2 " + nl
@@ -1739,7 +1739,7 @@ Output:
 ```txt
 
 You pressed F1
-You pressed F2 
+You pressed F2
 
 ```
 
@@ -1780,8 +1780,8 @@ Shoes.app do
       @ctrl_x = true
     when "\x13"  # control-s
       if @ctrl_x
-        save_text 
-        @ctrl_x = false  
+        save_text
+        @ctrl_x = false
       end
     when "\x11"  # control-q
       exit if @ctrl_x

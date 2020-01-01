@@ -15,7 +15,7 @@ tags = []
 ;Task:
 Compute the least common multiple of two integers.
 
-Given   ''m''   and   ''n'',   the least common multiple is the smallest positive integer that has both   ''m''   and   ''n''   as factors. 
+Given   ''m''   and   ''n'',   the least common multiple is the smallest positive integer that has both   ''m''   and   ''n''   as factors.
 
 
 ;Example:
@@ -43,7 +43,7 @@ One can also find   ''lcm''   by merging the [[prime decomposition]]s of both   
 ## 360 Assembly
 
 {{trans|PASCAL}}
-For maximum compatibility, this program uses only the basic instruction set (S/360) 
+For maximum compatibility, this program uses only the basic instruction set (S/360)
 with 2 ASSIST macros (XDECO,XPRNT).
 
 ```360asm
@@ -55,12 +55,12 @@ LCM      CSECT
 LOOPW    LR     R4,R8                c
          SRDA   R4,32                shift to next reg
          DR     R4,R7                c/b
-         LTR    R4,R4              while c mod b<>0 
+         LTR    R4,R4              while c mod b<>0
          BZ     ELOOPW               leave while
          AR     R8,R6                c+=a
          B      LOOPW              end while
 ELOOPW   LPR    R9,R6              c=abs(u)
-         L      R1,A               a    
+         L      R1,A               a
          XDECO  R1,XDEC            edit a
          MVC    PG+4(5),XDEC+7     move a to buffer
          L      R1,B               b
@@ -73,7 +73,7 @@ ELOOPW   LPR    R9,R6              c=abs(u)
          BR     R14                return to caller
 A        DC     F'1764'            a
 B        DC     F'3920'            b
-PG       DC     CL80'lcm(00000,00000)=0000000000'  buffer 
+PG       DC     CL80'lcm(00000,00000)=0000000000'  buffer
 XDEC     DS     CL12               temp for edit
          YREGS
          END    LCM
@@ -99,20 +99,20 @@ lcm( 1764, 3920)=     35280
 	dup 0 n:= if drop ;; then
 	tuck \ b a b
 	n:mod \ b a-mod-b
-	recurse ; 	
+	recurse ;
 
-: lcm \ m n 
+: lcm \ m n
 	2dup \ m n m n
 	n:* \ m n m*n
 	n:abs \ m n abs(m*n)
-	-rot \ abs(m*n) m n 
+	-rot \ abs(m*n) m n
 	gcd \ abs(m*n) gcd(m.n)
-	n:/mod \ abs / gcd 
+	n:/mod \ abs / gcd
 	nip \ abs div gcd
 ;
 
-: demo \ n m -- 
-	2dup "LCM of " . . " and " . . " = " . lcm . ;	
+: demo \ n m --
+	2dup "LCM of " . . " and " . . " = " . lcm . ;
 
 12 18 demo cr
 -6 14 demo cr
@@ -270,9 +270,9 @@ end lcm
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     lcm(12, 18)
-    
+
     --> 36
 end run
 
@@ -298,7 +298,7 @@ on gcd(x, y)
             end if
         end |λ|
     end script
-    
+
     result's |λ|(abs(x), abs(y))
 end gcd
 ```
@@ -318,7 +318,7 @@ For GCD function check out [http://rosettacode.org/wiki/Greatest_common_divisor#
 ```txt
 &lt; a , b &gt;
 
-( return , 
+( return ,
 
         abs ( @a * @b ) /
         !gcd( @a , @b )
@@ -425,7 +425,7 @@ loop:
     jmp loop
 
 gcd_found:
-    pop rbp     
+    pop rbp
     ret
 
 
@@ -526,7 +526,7 @@ function lcm(m, n,    r) {
 ```
 
 
-Example input and output: 
+Example input and output:
 ```txt
 $ awk -f lcd.awk
 12 18
@@ -583,7 +583,7 @@ ported from BBC BASIC
 
       DEF FN_LCM(M%,N%)
       IF M%=0 OR N%=0 THEN =0 ELSE =ABS(M%*N%)/FN_GCD_Iterative_Euclid(M%, N%)
-      
+
       DEF FN_GCD_Iterative_Euclid(A%, B%)
       LOCAL C%
       WHILE B%
@@ -601,9 +601,9 @@ ported from BBC BASIC
 110 DEF GCD(A,B)
 120   DO WHILE B>0
 130     LET T=B:LET B=MOD(A,B):LET A=T
-140   LOOP 
+140   LOOP
 150   LET GCD=A
-160 END DEF 
+160 END DEF
 170 PRINT LCM(12,18)
 ```
 
@@ -732,11 +732,11 @@ Output:
 
 gcd = { a, b |
   true? { a == 0 }
-    { b } 
+    { b }
     { gcd(b % a, a) }
 }
 
-lcm = { a, b | 
+lcm = { a, b |
   a * b / gcd(a, b)
 }
 
@@ -750,13 +750,13 @@ p lcm(14, 21) # 42
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int gcd(int m, int n)
 {
         int tmp;
-        while(m) { tmp = m; m = n % m; n = tmp; }       
+        while(m) { tmp = m; m = n % m; n = tmp; }
         return n;
 }
 
@@ -783,7 +783,7 @@ int main()
 #include <iostream>
 
 int main( ) {
-   std::cout << "The least common multiple of 12 and 18 is " << 
+   std::cout << "The least common multiple of 12 and 18 is " <<
       boost::math::lcm( 12 , 18 ) << " ,\n"
       << "and the greatest common divisor " << boost::math::gcd( 12 , 18 ) << " !" << std::endl ;
    return 0 ;
@@ -801,7 +801,7 @@ and the greatest common divisor 6 !
 
 
 
-###  Alternate solution 
+###  Alternate solution
 
 {{works with|C++11}}
 
@@ -810,7 +810,7 @@ and the greatest common divisor 6 !
 #include <cstdlib>
 #include <iostream>
 #include <tuple>
- 
+
 int gcd(int a, int b) {
     a = abs(a);
     b = abs(b);
@@ -819,15 +819,15 @@ int gcd(int a, int b) {
     }
     return a;
 }
- 
+
 int lcm(int a, int b) {
     int c = gcd(a, b);
     return c == 0 ? 0 : a / c * b;
 }
- 
+
 int main() {
     std::cout << "The least common multiple of 12 and 18 is " << lcm(12, 18) << ",\n"
-        << "and their greatest common divisor is " << gcd(12, 18) << "!" 
+        << "and their greatest common divisor is " << gcd(12, 18) << "!"
         << std::endl;
     return 0;
 }
@@ -869,13 +869,13 @@ lcm(12,18)=36
 
 
 ```Clojure
-(defn gcd 
+(defn gcd
       [a b]
       (if (zero? b)
       a
       (recur b, (mod a b))))
 
-(defn lcm 
+(defn lcm
       [a b]
       (/ (* a b) (gcd a b)))
 ;; to calculate the lcm for a variable number of arguments
@@ -905,7 +905,7 @@ lcm(12,18)=36
 
        IDENTIFICATION DIVISION.
        FUNCTION-ID. lcm.
-       
+
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
        REPOSITORY.
@@ -922,7 +922,7 @@ lcm(12,18)=36
            GOBACK
            .
        END FUNCTION lcm.
-           
+
        IDENTIFICATION DIVISION.
        FUNCTION-ID. gcd.
 
@@ -1060,7 +1060,7 @@ int gcd(int a,int b)
   if(b!=0)
     return gcd(b,a%b);
 }
-  
+
 
 ```
 
@@ -1089,11 +1089,11 @@ ELENA 4.x :
 ```elena
 import extensions;
 import system'math;
- 
+
 gcd = (m,n => (n == 0) ? (m.Absolute) : (gcd(n,n.mod:m)));
- 
+
 lcm = (m,n => (m * n).Absolute / gcd(m,n));
- 
+
 public program()
 {
     console.printLine("lcm(12,18)=",lcm(12,18))
@@ -1117,7 +1117,7 @@ lcm(12,18)=36
 defmodule RC do
   def gcd(a,0), do: abs(a)
   def gcd(a,b), do: gcd(b, rem(a,b))
-  
+
   def lcm(a,b), do: div(abs(a*b), gcd(a,b))
 end
 
@@ -1145,11 +1145,11 @@ IO.puts RC.lcm(-12,15)
 
 main() ->
 	lcm(-3,4).
-	
-gcd(A, 0) -> 
+
+gcd(A, 0) ->
 	A;
 
-gcd(A, B) -> 
+gcd(A, B) ->
 	gcd(B, A rem B).
 
 lcm(A,B) ->
@@ -1183,10 +1183,10 @@ PROCEDURE GCD(A,B->GCD)
 END PROCEDURE
 
 PROCEDURE LCM(M,N->LCM)
-    IF M=0 OR N=0 THEN 
+    IF M=0 OR N=0 THEN
         LCM=0
         EXIT PROCEDURE
-      ELSE 
+      ELSE
         GCD(M,N->GCD)
         LCM=ABS(M*N)/GCD
     END IF
@@ -1272,7 +1272,7 @@ This will get the LCM on the first 10 cells in the first row. Thus :
 		பெரியது = எண்1
 
 	இல்லை
-	
+
 		சிறியது = எண்1
 		பெரியது = எண்2
 
@@ -1281,7 +1281,7 @@ This will get the LCM on the first 10 cells in the first row. Thus :
 	மீதம் = பெரியது % சிறியது
 
 	@(மீதம் == 0) ஆனால்
-  
+
   ## பெரிய எண்ணில் சிறிய எண் மீதமின்றி வகுபடுவதால், பெரிய எண்தான் மீபொம
 
 		பின்கொடு பெரியது
@@ -1304,7 +1304,7 @@ This will get the LCM on the first 10 cells in the first row. Thus :
 
 		முடி
 
-	முடி	
+	முடி
 
 முடி
 
@@ -1376,7 +1376,7 @@ IN: script
 
 ## Fortran
 
-This solution is written as a combination of 2 functions, but a subroutine implementation would work great as well. 
+This solution is written as a combination of 2 functions, but a subroutine implementation would work great as well.
 
 ```Fortran
 
@@ -1542,15 +1542,15 @@ LCD of 35, 0 is 0
 30 LET NLCM = 21
 40 GOSUB 200: ' Calculate LCM
 50 PRINT LCM
-60 END  
+60 END
 
 195 ' Calculate LCM
 200 LET MGCD = MLCM
-210 LET NGCD = NLCM 
-220 GOSUB 400: ' Calculate GCD 
+210 LET NGCD = NLCM
+220 GOSUB 400: ' Calculate GCD
 230 LET LCM = MLCM / GCD * NLCM
-240 RETURN 
- 
+240 RETURN
+
 395 ' Calculate GCD
 400 WHILE MGCD <> 0
 410  LET TMP = MGCD
@@ -1579,11 +1579,11 @@ lcm x y =  abs ((x `quot` (gcd x y)) * y)
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-The lcm routine from the Icon Programming Library uses gcd.  The routine is 
+The lcm routine from the Icon Programming Library uses gcd.  The routine is
 
 
 ```Icon
-link numbers 
+link numbers
 procedure main()
 write("lcm of 18, 36 = ",lcm(18,36))
 write("lcm of 0, 9 36 = ",lcm(0,9))
@@ -1591,12 +1591,12 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers provides lcm and gcd] and looks like this:
 
 ```Icon
 procedure lcm(i, j)		#: least common multiple
-   if (i =  0) | (j = 0) then return 0	
+   if (i =  0) | (j = 0) then return 0
    return abs(i * j) / gcd(i, j)
 end
 ```
@@ -1635,15 +1635,15 @@ import java.util.Scanner;
 public class LCM{
    public static void main(String[] args){
       Scanner aScanner = new Scanner(System.in);
-   
+
       //prompts user for values to find the LCM for, then saves them to m and n
       System.out.print("Enter the value of m:");
       int m = aScanner.nextInt();
       System.out.print("Enter the value of n:");
       int n = aScanner.nextInt();
       int lcm = (n == m || n == 1) ? m :(m == 1 ? n : 0);
-      /* this section increases the value of mm until it is greater  
-      / than or equal to nn, then does it again when the lesser 
+      /* this section increases the value of mm until it is greater
+      / than or equal to nn, then does it again when the lesser
       / becomes the greater--if they aren't equal. If either value is 1,
       / no need to calculate*/
       if (lcm == 0) {
@@ -1651,7 +1651,7 @@ public class LCM{
          while (mm != nn) {
              while (mm < nn) { mm += m; }
              while (nn < mm) { nn += n; }
-         }  
+         }
          lcm = mm;
       }
       System.out.println("lcm(" + m + ", " + n + ") = " + lcm);
@@ -1676,11 +1676,11 @@ Computing the least common multiple of an integer array, using the associative l
 
 ```javascript
 function LCM(A)  // A is an integer array (e.g. [-50,25,-45,-18,90,447])
-{   
+{
     var n = A.length, a = Math.abs(A[0]);
     for (var i = 1; i < n; i++)
      { var b = Math.abs(A[i]), c = a;
-       while (a && b){ a > b ? a %= b : b %= a; } 
+       while (a && b){ a > b ? a %= b : b %= a; }
        a = Math.abs(c*A[i])/(a+b);
      }
     return a;
@@ -1738,7 +1738,7 @@ def lcm(m; n):
   def _lcm:
     # state is [m, n, i]
     if (.[2] % .[1]) == 0 then .[2] else (.[0:2] + [.[2] + m]) | _lcm end;
-  [m, n, m] | _lcm; 
+  [m, n, m] | _lcm;
 ```
 
 
@@ -1845,7 +1845,7 @@ function GCD(a, b)
     wend
     GCD = abs(a)
 end function
- 
+
 ```
 
 
@@ -1930,7 +1930,7 @@ LCM[18,12]
 =={{header|MATLAB}} / {{header|Octave}}==
 
 ```Matlab
- lcm(a,b) 
+ lcm(a,b)
 ```
 
 
@@ -1963,10 +1963,10 @@ TextWindow.WriteLine(lcm)
 
 Sub CalculateLCM
   mgcd = mlcm
-  ngcd = nlcm 
-  CalculateGCD() 
+  ngcd = nlcm
+  CalculateGCD()
   lcm = mlcm / gcd * nlcm
-EndSub 
+EndSub
 
 Sub CalculateGCD
   While mgcd <> 0
@@ -2145,7 +2145,7 @@ lcm of      -5, 18, 12 is   180 (verified)
 lcm of      12, -5, 18 is   180 (verified)
 lcm of  18, 12, -5, 97 is 17460 (verified)
 lcm of          30, 42 is   210 (verified)
-lcm of          30, 42 is   210 
+lcm of          30, 42 is   210
 lcm of          18, 12 is    36
 
 ```
@@ -2185,11 +2185,11 @@ class LCM {
   function : Main(args : String[]) ~ Nil {
     IO.Console->Print("lcm(35, 21) = ")->PrintLine(lcm(21,35));
   }
-  
+
   function : lcm(m : Int, n : Int) ~ Int {
     return m / gcd(m, n) * n;
   }
-  
+
   function : gcd(m : Int, n : Int) ~ Int {
     tmp : Int;
     while(m <> 0) { tmp := m; m := n % m; n := tmp; };
@@ -2225,7 +2225,7 @@ let () =
 ## Oforth
 
 
-lcm is already defined into Integer class : 
+lcm is already defined into Integer class :
 
 ```Oforth>12 18 lcm</lang
 
@@ -2263,8 +2263,8 @@ say lcm(18, 12)
 
 {{trans|bc}}
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8gcd ORDER_PP_FN( \
 8fn(8U, 8V,                            \
@@ -2473,7 +2473,7 @@ The LCM of              14  and              35  is             70
 
 function gcd ($a, $b)  {
     function pgcd ($n, $m)  {
-        if($n -le $m) { 
+        if($n -le $m) {
             if($n -eq 0) {$m}
             else{pgcd $n ($m-$n)}
         }
@@ -2501,7 +2501,7 @@ version2 is faster than version1
 
 function gcd ($a, $b)  {
     function pgcd ($n, $m)  {
-        if($n -le $m) { 
+        if($n -le $m) {
             if($n -eq 0) {$m}
             else{pgcd $n ($m%$n)}
         }
@@ -2592,7 +2592,7 @@ Using the fractions libraries [http://docs.python.org/library/fractions.html?hig
 >>> lcm(-6, 14)
 42
 >>> assert lcm(0, 2) == lcm(2, 0) == 0
->>> 
+>>>
 ```
 
 
@@ -2735,7 +2735,7 @@ try:
     reduce
 except NameError:
     from functools import reduce
-    
+
 def lcm(a, b):
     mul = int.__mul__
     if a and b:
@@ -2747,7 +2747,7 @@ def lcm(a, b):
         merge += db
         return reduce(mul, merge, 1)
     return 0
- 
+
 if __name__ == '__main__':
     print( lcm(12, 18) )    # 36
     print( lcm(-6, 14) )    # 42
@@ -2778,7 +2778,7 @@ if __name__ == '__main__':
 36
 >>> lcm(12, 18, 22)
 396
->>> 
+>>>
 ```
 
 
@@ -2798,14 +2798,14 @@ if __name__ == '__main__':
 		q %= p
 		if not q: return m // p
 
-		
+
 >>> lcm(-6, 14)
 42
 >>> lcm(12, 18)
 36
 >>> lcm(2, 0)
 0
->>> 
+>>>
 ```
 
 
@@ -2870,11 +2870,11 @@ This is from the math extensions library included with Retro.
 
 ### version 1
 
-The   '''lcm'''   subroutine can handle any number of integers and/or arguments. 
+The   '''lcm'''   subroutine can handle any number of integers and/or arguments.
 
-The integers (negative/zero/positive) can be (as per the   '''numeric digits''')   up to ten thousand digits. 
+The integers (negative/zero/positive) can be (as per the   '''numeric digits''')   up to ten thousand digits.
 
-Usage note:   the integers can be expressed as a list and/or specified as individual arguments   (or as mixed). 
+Usage note:   the integers can be expressed as a list and/or specified as individual arguments   (or as mixed).
 
 ```rexx
 /*REXX program finds the  LCM  (Least Common Multiple)  of any number of integers.      */
@@ -2954,7 +2954,7 @@ return x
 
 <lang>
 see lcm(24,36)
- 
+
 func lcm m,n
      lcm = m*n / gcd(m,n)
      return lcm
@@ -3427,11 +3427,11 @@ out (lcm 12 18) endl console
 
 int lcm(int a, int b){
     /*Return least common multiple of two ints*/
-    // check for 0's                                                            
+    // check for 0's
     if (a == 0 || b == 0)
 	return 0;
 
-    // Math.abs(x) only works for doubles, Math.absf(x) for floats              
+    // Math.abs(x) only works for doubles, Math.absf(x) for floats
     if (a < 0)
         a *= -1;
     if (b < 0)
@@ -3625,7 +3625,7 @@ IntOut(0, LCM(IntIn(8), IntIn(8)))
 ```Yabasic
 sub gcd(u, v)
     local t
-	
+
     u = int(abs(u))
     v = int(abs(v))
     while(v)

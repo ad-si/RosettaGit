@@ -13,11 +13,11 @@ tags = []
 {{task|String manipulation}}
 
 ;Task:
-Create a function that strips a set of characters from a string. 
+Create a function that strips a set of characters from a string.
 
 
-The function should take two arguments: 
-:::#   a string to be stripped 
+The function should take two arguments:
+:::#   a string to be stripped
 :::#   a string containing the set of characters to be stripped
 
 
@@ -37,7 +37,7 @@ Sh ws  soul strppr. Sh took my hrt!
 ## 360 Assembly
 
 {{trans|PL/I}}
-The program uses two ASSIST macro (XDECO,XPRNT) to keep the code as short as possible. 
+The program uses two ASSIST macro (XDECO,XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Strip a set of characters from a string  07/07/2016
@@ -57,7 +57,7 @@ STRIPCH  CSECT
          LR     R5,R3              length(c3)
          MVCL   R2,R4              pg=c3
          XPRNT  PG,80              print buffer
-         L      R13,4(0,R13)       epilog 
+         L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    " restore
          XR     R15,R15            " rc=0
          BR     R14                exit
@@ -162,7 +162,7 @@ end Strip_Characters_From_String;
 {{out}}
 
 ```txt
-> ./strip_characters_from_string 
+> ./strip_characters_from_string
 Sh ws  soul strppr. Sh took my hrt!
 ```
 
@@ -349,16 +349,16 @@ on stripChars(strNeedles, strHaystack)
             notElem(x, strNeedles)
         end |λ|
     end script
-    
+
     intercalate("", filter(notNeedles, strHaystack))
 end stripChars
 
 
 -- TEST ---------------------------------------------------------------------------
 on run
-    
+
     stripChars("aei", "She was a soul stripper. She took my heart!")
-    
+
     --> "Sh ws  soul strppr. Sh took my hrt!"
 end run
 
@@ -391,7 +391,7 @@ on intercalate(strText, lstText)
     return strJoined
 end intercalate
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -423,17 +423,17 @@ use framework "Foundation"
 
 -- stripChars :: String -> String -> String
 on stripChars(strNeedles, strHaystack)
-    
+
     intercalate("", splitRegex("[" & strNeedles & "]", strHaystack))
-    
+
 end stripChars
 
 
 -- TEST ------------------------------------------------------------------------
 on run
-    
+
     stripChars("aei", "She was a soul stripper. She took my heart!")
-    
+
     --> "Sh ws  soul strppr. Sh took my hrt!"
 end run
 
@@ -448,7 +448,7 @@ on splitRegex(strRegex, str)
             on |λ|(a, x)
                 set iFrom to start of a
                 set iLocn to (location of x)
-                
+
                 if iLocn > iFrom then
                     set strPart to text (iFrom + 1) thru iLocn of str
                 else
@@ -457,9 +457,9 @@ on splitRegex(strRegex, str)
                 {parts:parts of a & strPart, start:iLocn + (length of x) - 1}
             end |λ|
         end script
-        
+
         set recLast to foldl(preceding, {parts:[], start:0}, lstMatches)
-        
+
         set iFinal to start of recLast
         if iFinal < length of str then
             parts of recLast & text (iFinal + 1) thru -1 of str
@@ -478,7 +478,7 @@ on regexMatches(strRegex, str)
         options:((ca's NSRegularExpressionAnchorsMatchLines as integer)) |error|:(missing value)
     set oString to ca's NSString's stringWithString:str
     set oMatches to oRgx's matchesInString:oString options:0 range:{location:0, |length|:oString's |length|()}
-    
+
     set lstMatches to {}
     set lng to count of oMatches
     repeat with i from 1 to lng
@@ -507,7 +507,7 @@ on intercalate(strText, lstText)
     return strJoined
 end intercalate
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -536,13 +536,13 @@ end mReturn
 110  LET RM$ = "AEI"
 120  GOSUB 200STRIPCHARS
 130  PRINT SC$
-190  END 
-200  REM 
+190  END
+200  REM
 210  REM STRIPCHARS
-220  REM 
+220  REM
 230  LET SC$ = ""
 240  LET SL =  LEN (S$)
-250  IF SL = 0 THEN  RETURN 
+250  IF SL = 0 THEN  RETURN
 260  FOR SI = 1 TO SL
 270  LET SM$ =  MID$ (S$,SI,1)
 280  FOR SJ = 1 TO  LEN (RM$)
@@ -588,7 +588,7 @@ Sh ws  soul strppr. Sh took my hrt!
 
 
 ```AWK
-#!/usr/bin/awk -f 
+#!/usr/bin/awk -f
 BEGIN {
    x = "She was a soul stripper. She took my heart!";
    print x;
@@ -692,7 +692,7 @@ See also: [[#Liberty BASIC|Liberty BASIC]], [[#PureBasic|PureBasic]]
 ```bbcbasic
       PRINT FNstripchars("She was a soul stripper. She took my heart!", "aei")
       END
-      
+
       DEF FNstripchars(A$, S$)
       LOCAL I%, C%, C$
       FOR I% = 1 TO LEN(S$)
@@ -724,7 +724,7 @@ This solution handles Unicode (utf-8) characters. Optimizations are: (1) the <co
   =   string chars s pat
     .     !arg:(?string.?chars)
         & :?s
-        &     
+        &
             ' ( ?
                 ( %
                 : [%( utf$!sjt
@@ -769,8 +769,8 @@ blsq ) "She was a soul stripper. She took my heart!"{"aei"\/~[n!}f[
 ## C
 
 
-```c>#include <string.h
-
+```c
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -812,8 +812,8 @@ Sh ws  soul strppr. Sh took my hrt!
 ### With table lookup
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -859,8 +859,8 @@ Output same as above.
 
 {{works with|C++11}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <string>
 
@@ -1009,7 +1009,7 @@ This function takes the two arguments as specified in the task. However, the res
                        MOVE Str (Str-Pos:1) TO Str (New-Pos:1)
                    END-IF
                END-PERFORM
-               
+
 *              *> Move spaces to characters at the end that have been
 *              *> shifted over.
                COMPUTE Str-End = Str-Size - Offset
@@ -1049,8 +1049,8 @@ This function takes the two arguments as specified in the task. However, the res
 ;; => "Sh ws  soul strppr. Sh took my hrt!"
 
 ;; strip whitespace:
-(string-trim 
-      '(#\Space #\Newline #\Backspace #\Tab 
+(string-trim
+      '(#\Space #\Newline #\Backspace #\Tab
         #\Linefeed #\Page #\Return #\Rubout)
       "  A string   ")
 ;; => "A string"
@@ -1127,12 +1127,12 @@ ELENA 4.x :
 import extensions;
 import extensions'text;
 import system'routines;
- 
+
 public program()
 {
     var testString := "She was a soul stripper. She took my heart!";
     var removeChars := "aei";
- 
+
     console.printLine(testString.filterBy:(ch => removeChars.indexOf(0, ch) == -1).summarize(new StringWriter()))
 }
 ```
@@ -1163,7 +1163,7 @@ To get the desired interface, we just have to dynamically construct the Regex:
 ```elixir
 defmodule RC do
   def stripchars(str, chars) do
-    String.replace(str, ~r/[#{chars}]/, "") 
+    String.replace(str, ~r/[#{chars}]/, "")
   end
 end
 
@@ -1352,16 +1352,16 @@ Function stripChars(s As Const String, chars As Const String) As String
   Dim strip(0 To Len(s) - 1) As Boolean
   For i As Integer = 0 To Len(s) - 1
     For j As Integer = 0 To Len(chars) - 1
-      If s[i] = chars[j] Then 
+      If s[i] = chars[j] Then
         count += 1
         strip(i) = True
-        Exit For 
+        Exit For
       End If
     Next j
   Next i
 
   Dim buffer As String = Space(Len(s) - count)
-  count  = 0  
+  count  = 0
   For i As Integer = 0 To Len(s) - 1
     If Not Strip(i) Then
       buffer[count] = s[i]
@@ -1656,7 +1656,7 @@ Alternatively, we could also do this without a regex:
 
     const noAEI = curry(stripChars)('aeiAEI');
 
-    
+
     // TEST
     return noAEI('She was a soul stripper. She took my heart!');
 
@@ -1674,7 +1674,7 @@ Alternatively, we could also do this without a regex:
 
 
 ## jq
- 
+
 
 ```jq
 def stripchars(string; banish):
@@ -1787,7 +1787,7 @@ function stripchars(str, chrs)
   local s = str:gsub("["..chrs:gsub("%W","%%%1").."]", '')
   return s
 end
- 
+
 print( stripchars( "She was a soul stripper. She took my heart!", "aei" ) )
 --> Sh ws  soul strppr. Sh took my hrt!
 print( stripchars( "She was a soul stripper. She took my heart!", "a-z" ) )
@@ -2255,12 +2255,12 @@ Procedure.s stripChars(source.s,  charsToStrip.s)
     EndIf
     *ptrChar + SizeOf(Character)
   Next
-  ProcedureReturn result 
+  ProcedureReturn result
 EndProcedure
 
 If OpenConsole()
   PrintN(stripChars("She was a soul stripper. She took my heart!", "aei"))
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2284,7 +2284,7 @@ Sh ws  soul strppr. Sh took my hrt!
 ```python>>>
  def stripchars(s, chars):
 ...     return s.translate(None, chars)
-... 
+...
 >>> stripchars("She was a soul stripper. She took my heart!", "aei")
 'Sh ws  soul strppr. Sh took my hrt!'
 ```
@@ -2295,7 +2295,7 @@ Sh ws  soul strppr. Sh took my hrt!
  import string
 >>> def stripchars(s, chars):
 ...     return s.translate(string.maketrans("", ""), chars)
-... 
+...
 >>> stripchars("She was a soul stripper. She took my heart!", "aei")
 'Sh ws  soul strppr. Sh took my hrt!'
 ```
@@ -2305,7 +2305,7 @@ Implemented manually:
 ```python>>>
  def stripchars(s, chars):
 ...     return "".join(c for c in s if c not in chars)
-... 
+...
 >>> stripchars("She was a soul stripper. She took my heart!", "aei")
 'Sh ws  soul strppr. Sh took my hrt!'
 ```
@@ -2321,7 +2321,7 @@ Implemented manually:
 
 >>> stripchars("She was a soul stripper. She took my heart!", "aei")
 'Sh ws  soul strppr. Sh took my hrt!'
->>> 
+>>>
 ```
 
 
@@ -2421,20 +2421,20 @@ This works on all Rexxes.
 
 ```rexx
 
-/* REXX *************************************************************** 
-* If source and stripchars don't contain a hex 00 character, this works   
-* 06.07.2012 Walter Pachl     
+/* REXX ***************************************************************
+* If source and stripchars don't contain a hex 00 character, this works
+* 06.07.2012 Walter Pachl
 * 19.06.2013 -"- space(result,0) -> space(result,0,' ')
 *                space(result,0) removes WHITESPACE not only blanks
-**********************************************************************/ 
-Say 'Sh ws  soul strppr. Sh took my hrt! -- expected'                   
-Say stripchars("She was a soul stripper. She took my heart!","aei")     
-Exit                                                                    
-stripchars: Parse Arg string,stripchars                                 
-result=translate(string,'00'x,' ')      /* turn blanks into '00'x   */  
-result=translate(result,' ',stripchars) /* turn stripchars into ' ' */  
-result=space(result,0,' ')              /* remove all blanks        */  
-Return translate(result,' ','00'x)      /* '00'x back to blanks     */  
+**********************************************************************/
+Say 'Sh ws  soul strppr. Sh took my hrt! -- expected'
+Say stripchars("She was a soul stripper. She took my heart!","aei")
+Exit
+stripchars: Parse Arg string,stripchars
+result=translate(string,'00'x,' ')      /* turn blanks into '00'x   */
+result=translate(result,' ',stripchars) /* turn stripchars into ' ' */
+result=space(result,0,' ')              /* remove all blanks        */
+Return translate(result,' ','00'x)      /* '00'x back to blanks     */
 
 ```
 
@@ -2455,7 +2455,7 @@ stripchars: Procedure
     If pos(c,s)=0 Then          /* it's not to be removed            */
       o=o||c                    /* append it to the result           */
     End
-  Return o                      /* return the result                 */  
+  Return o                      /* return the result                 */
 
 ```
 
@@ -2474,8 +2474,8 @@ see stripChars(aList,bList)
 func stripChars cList, dList
      for n = 1 to len(dList)
          cList = substr(cList,dList[n],"") + nl
-     next 
-     return cList      
+     next
+     return cList
 
 ```
 
@@ -2757,9 +2757,9 @@ val it = "Sh ws  soul strppr. Sh took my hrt!" : string
 
 ```smalltalk
 | stripChars |
-stripChars := [ :string :chars | 
+stripChars := [ :string :chars |
 	string reject: [ :c | chars includes: c ] ].
-stripChars 
+stripChars
 	value: 'She was a soul stripper. She took my heart!'
 	value: 'aei'.
 
@@ -2881,7 +2881,7 @@ The string is broken into a list, which is used to construct a regex abstract sy
 On the practical side, some basic structural pattern matching is used to process command line argument list.
 
 Since the partial argument list (the arguments belonging to the TXR script) is a suffix of the full argument list (the complete arguments which include the invoking command and the script name), the classic Lisp function <code>ldiff</code> comes in handy in obtaining just the prefix, for printing the usage:
- 
+
 
 ```txrlisp
 (defun strip-chars (str set)
@@ -2942,7 +2942,7 @@ function strip_chars {
 }
 ```
 
-Test code: 
+Test code:
 
 ```bash
  strip_chars "She was a soul stripper.  She took my heart!" aei

@@ -13,7 +13,7 @@ tags = []
 {{task|Probability and statistics}}
 Given a mapping between items and their required probability of occurrence, generate a million items ''randomly'' subject to the given probabilities and compare the target probability of occurrence versus the generated values.
 
-The total of all the probabilities should equal one. (Because floating point arithmetic is involved, this is subject to rounding errors). 
+The total of all the probabilities should equal one. (Because floating point arithmetic is involved, this is subject to rounding errors).
 
 Use the following mapping to test your programs:
 ```txt
@@ -182,9 +182,9 @@ Sample output:
 ```txt
 
 Trials: 1000000
-Items:          aleph    beth     gimel    daleth   he       waw      zayin    heth     
-Target prob.:   0.200000 0.166667 0.142857 0.125000 0.111111 0.100000 0.090909 0.063456 
-Attained prob.: 0.199987 0.166917 0.142531 0.124203 0.111338 0.099702 0.091660 0.063662 
+Items:          aleph    beth     gimel    daleth   he       waw      zayin    heth
+Target prob.:   0.200000 0.166667 0.142857 0.125000 0.111111 0.100000 0.090909 0.063456
+Attained prob.: 0.199987 0.166917 0.142531 0.124203 0.111338 0.099702 0.091660 0.063662
 
 ```
 
@@ -222,7 +222,7 @@ Loop %n%
 Msgbox %t%
 
 /*
-output: 
+output:
 ---------------------------
 aleph  0.200000   0.199960
 beth   0.166667   0.166146
@@ -293,7 +293,7 @@ function showDistributions(    s, sym, prb, actSum, expSum, totItr) {
 
 function initData(    sym) {
     srand()
-    
+
     probMap["aleph"]  = 1.0 / 5.0
     probMap["beth"]   = 1.0 / 6.0
     probMap["gimel"]  = 1.0 / 7.0
@@ -302,7 +302,7 @@ function initData(    sym) {
     probMap["waw"]    = 1.0 / 10.0
     probMap["zyin"]   = 1.0 / 11.0
     probMap["heth"]   = 1759.0 / 27720.0
-    
+
     symbMap[1] = "aleph"
     symbMap[2] = "beth"
     symbMap[3] = "gimel"
@@ -311,7 +311,7 @@ function initData(    sym) {
     symbMap[6] = "waw"
     symbMap[7] = "zyin"
     symbMap[8] = "heth"
-    
+
     for (sym in probMap)
         counts[sym] = 0;
 }
@@ -345,7 +345,7 @@ Rounding off makes the results look perfect.
       item$() = "aleph","beth","gimel","daleth","he","waw","zayin","heth"
       prob()  = 1/5.0, 1/6.0, 1/7.0, 1/8.0, 1/9.0, 1/10.0, 1/11.0, 1759/27720
       IF ABS(SUM(prob())-1) > 1E-6 ERROR 100, "Probabilities don't sum to 1"
-      
+
       FOR trial% = 1 TO 1E6
         r = RND(1)
         p = 0
@@ -354,7 +354,7 @@ Rounding off makes the results look perfect.
           IF r < p cnt%(i%) += 1 : EXIT FOR
         NEXT
       NEXT
-      
+
       @% = &2060A
       PRINT "Item        actual    theoretical"
       FOR i% = 0 TO DIM(item$(),1)
@@ -383,8 +383,8 @@ heth        0.063069  0.063456
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 /* pick a random index from 0 to n-1, according to probablities listed
@@ -435,8 +435,8 @@ daleth 125257 12.5257% 12.5000%
 ## C++
 
 
-```cpp>#include <cstdlib
-
+```cpp
+#include <cstdlib>
 #include <iostream>
 #include <vector>
 #include <utility>
@@ -448,7 +448,7 @@ int main( ) {
    typedef std::vector<std::pair<std::string, double> >::const_iterator SPI ;
    typedef std::vector<std::pair<std::string , double> > ProbType ;
    ProbType probabilities ;
-   probabilities.push_back( std::make_pair( "aleph" , 1/5.0 ) ) ; 
+   probabilities.push_back( std::make_pair( "aleph" , 1/5.0 ) ) ;
    probabilities.push_back( std::make_pair( "beth" , 1/6.0 ) ) ;
    probabilities.push_back( std::make_pair( "gimel" , 1/7.0 ) ) ;
    probabilities.push_back( std::make_pair( "daleth" , 1/8.0 ) ) ;
@@ -457,7 +457,7 @@ int main( ) {
    probabilities.push_back( std::make_pair( "zayin" , 1/11.0 ) ) ;
    probabilities.push_back( std::make_pair( "heth" , 1759/27720.0 ) ) ;
    std::vector<std::string> generated ; //for the strings that are generatod
-   std::vector<int> decider ; //holds the numbers that determine the choice of letters 
+   std::vector<int> decider ; //holds the numbers that determine the choice of letters
    for ( int i = 0 ; i < probabilities.size( ) ; i++ ) {
       if ( i == 0 ) {
 	 decider.push_back( 27720 * (probabilities[ i ].second) ) ;
@@ -474,8 +474,8 @@ int main( ) {
    srand( time( 0 ) ) ;
    for ( int i = 0 ; i < 1000000 ; i++ ) {
       int randnumber = rand( ) % 27721 ;
-      int j = 0 ; 
-      while ( randnumber > decider[ j ] ) 
+      int j = 0 ;
+      while ( randnumber > decider[ j ] )
 	 j++ ;
       generated.push_back( ( probabilities[ j ]).first ) ;
    }
@@ -492,14 +492,14 @@ int main( ) {
 
 Output:
 <PRE>letter  frequency attained   frequency expected
-aleph   0.200089             0.2              
-beth    0.16695              0.166667         
-gimel   0.142693             0.142857         
-daleth  0.124859             0.125            
-he      0.111258             0.111111         
-waw     0.099665             0.1              
-zayin   0.090654             0.0909091        
-heth    0.063832             0.063456  
+aleph   0.200089             0.2
+beth    0.16695              0.166667
+gimel   0.142693             0.142857
+daleth  0.124859             0.125
+he      0.111258             0.111111
+waw     0.099665             0.1
+zayin   0.090654             0.0909091
+heth    0.063832             0.063456
 </PRE>
 
 =={{header|C sharp|C#}}==
@@ -649,7 +649,7 @@ Expected number of heth was 63455.98845598846 and actually got 63759
 This is a straightforward, if a little verbose implementation based upon the Perl one.
 
 ```lisp
-(defvar *probabilities* '((aleph  1/5)                        
+(defvar *probabilities* '((aleph  1/5)
                           (beth   1/6)
                           (gimel  1/7)
                           (daleth 1/8)
@@ -677,7 +677,7 @@ This is a straightforward, if a little verbose implementation based upon the Per
                    finally (return hash)))
            (make-table-data (hash)
              (loop for (datum probability) in choices
-                   collect (list datum 
+                   collect (list datum
                                  (float (/ (gethash datum hash)
                                            repetitions))
                                  (float probability)))))
@@ -786,8 +786,8 @@ First, the algorithm:
 
 ```e
 /** Makes leaves of the binary tree */
-def leaf(value) { 
-    return def leaf { 
+def leaf(value) {
+    return def leaf {
         to run(_) { return value }
         to __printOn(out) { out.print("=> ", value) }
     }
@@ -888,7 +888,7 @@ defmodule Probabilistic do
           waw:    1/10,
           zayin:  1/11,
           heth:   1759/27720]
-  
+
   def test do
     trials = for _ <- 1..@tries, do: get_choice(@probs, :rand.uniform)
     IO.puts "Item      Expected   Actual"
@@ -898,7 +898,7 @@ defmodule Probabilistic do
       :io.format fmt, [glyph, expected, actual]
     end)
   end
-  
+
   defp get_choice([{glyph,_}], _), do: glyph
   defp get_choice([{glyph,prob}|_], ran) when ran < prob, do: glyph
   defp get_choice([{_,prob}|t], ran), do: get_choice(t, ran - prob)
@@ -921,7 +921,7 @@ Item      Expected   Actual
  waw      0.100000  0.100439
  zayin    0.090909  0.090894
  heth     0.063456  0.063125
- 
+
 ```
 
 
@@ -941,7 +941,7 @@ The optimized version of Java.
 -define(TRIES, 1000000).
 
 test() ->
-	Probs = 
+	Probs =
 		[{aleph,1/5},
 		{beth,1/6},
 		{gimel,1/7},
@@ -950,26 +950,26 @@ test() ->
 		{waw,1/10},
 		{zayin,1/11},
 		{heth,1759/27720}],
-    random:seed(now()), 
-    Trials = 
+    random:seed(now()),
+    Trials =
     	[get_choice(Probs,random:uniform()) || _ <- lists:seq(1,?TRIES)],
-    [{Glyph,Expected,(length([Glyph || Glyph_ <- Trials, Glyph_ == Glyph])/?TRIES)} 
+    [{Glyph,Expected,(length([Glyph || Glyph_ <- Trials, Glyph_ == Glyph])/?TRIES)}
     	 || {Glyph,Expected} <- Probs].
 
 get_choice([{Glyph,_}],_) ->
 	Glyph;
 get_choice([{Glyph,Prob}|T],Ran) ->
-	case (Ran < Prob) of 
+	case (Ran < Prob) of
 		true ->
 			Glyph;
-		false -> 
+		false ->
 			get_choice(T,Ran - Prob)
 	end.
 
 ```
 
 
-Output: 
+Output:
 
 
 ```txt
@@ -1029,7 +1029,7 @@ END PROGRAM
 ```
 
 
-Output: 
+Output:
 
 
 ```txt
@@ -1131,7 +1131,7 @@ MACRO: case-probas ( data -- case-probas )
     [ first2 [ swap 1quotation 2array ] [ 1quotation ] if* ] map 1quotation ;
 
 : expected ( name data -- float )
-    2dup at [ 2nip ] [ nip values sift sum 1 swap - ] if* ; 
+    2dup at [ 2nip ] [ nip values sift sum 1 swap - ] if* ;
 : generate ( # case-probas -- seq )
     H{ } clone
     [ [ [ casep ] [ inc-at ] bi* ] 2curry times ] keep ; inline
@@ -1146,7 +1146,7 @@ MACRO: case-probas ( data -- case-probas )
 : generate-normalized ( # proba -- seq )
     [ generate ] [ drop normalize ] 2bi ; inline
 : example ( # data -- )
-    [ case-probas generate-normalized ] 
+    [ case-probas generate-normalized ]
     [ summarize ] bi ; inline
 ```
 
@@ -1219,7 +1219,7 @@ here ," daleth" here ," gimel" here ," beth" here ," aleph"
 
 : .results   .header 8 0 do i .result loop ;
 ```
-  
+
 
 
 ```txt
@@ -1228,13 +1228,13 @@ bins 8 cells erase
 3 set-precision
 1000000 trials .results
 Name    Prob    Actual  Error
-aleph   0.2     0.2     9.90E-5 
-beth    0.167   0.167   4.51E-4 
-gimel   0.143   0.142   4.99E-4 
-daleth  0.125   0.125   1.82E-4 
-he      0.111   0.111   2.10E-4 
-waw     0.1     0.1     3.30E-5 
-zayin   0.0909  0.0912  2.77E-4 
+aleph   0.2     0.2     9.90E-5
+beth    0.167   0.167   4.51E-4
+gimel   0.143   0.142   4.99E-4
+daleth  0.125   0.125   1.82E-4
+he      0.111   0.111   2.10E-4
+waw     0.1     0.1     3.30E-5
+zayin   0.0909  0.0912  2.77E-4
 heth    0.0635  0.0636  9.70E-5  ok
 
 ```
@@ -1247,9 +1247,9 @@ heth    0.0635  0.0636  9.70E-5  ok
 
 ```fortran
 PROGRAM PROBS
- 
+
   IMPLICIT NONE
-   
+
   INTEGER, PARAMETER :: trials = 1000000
   INTEGER :: i, j, probcount(8) = 0
   REAL :: expected(8), mapping(8), rnum
@@ -1277,7 +1277,7 @@ PROGRAM PROBS
   WRITE(*, "(A,8A10)") "Items:             ", items
   WRITE(*, "(A,8F10.6)") "Target Probability:  ", expected
   WRITE(*, "(A,8F10.6)") "Attained Probability:", REAL(probcount) / REAL(trials)
-  
+
 ENDPROGRAM PROBS
 ```
 
@@ -1342,15 +1342,15 @@ Dim sumActual As Double = 0
 
 Print "Letter", " Actual", "Expected"
 Print "------", "--------", "--------"
-For i As Integer = 0 To 7   
-  Print letters(i), 
-  Print Using "#.######"; actual(i)/n; 
+For i As Integer = 0 To 7
+  Print letters(i),
+  Print Using "#.######"; actual(i)/n;
   sumActual += actual(i)/n
   Print , Using "#.######"; probs(i)
 Next
 
 Print , "--------", "--------"
-Print , Using "#.######"; sumActual; 
+Print , Using "#.######"; sumActual;
 Print , Using "#.######"; 1.000000
 
 Print
@@ -1473,13 +1473,13 @@ Totals  1.000000  1.000000
 
 ```haskell
 import System.Random (newStdGen, randomRs)
- 
+
 dataBinCounts :: [Float] -> [Float] -> [Int]
 dataBinCounts thresholds range =
   let sampleSize = length range
       xs = ((-) sampleSize . length . flip filter range . (<)) <$> thresholds
   in zipWith (-) (xs ++ [sampleSize]) (0 : xs)
- 
+
 main :: IO ()
 main = do
   g <- newStdGen
@@ -1488,9 +1488,9 @@ main = do
       actual =
         ((/ 1000000.0) . fromIntegral) <$>
         dataBinCounts (scanl1 (+) expected) (take 1000000 (randomRs (0, 1) g))
- 
+
       piv n = take n . (++ repeat ' ')
- 
+
   putStrLn "       expected     actual"
   mapM_ putStrLn $
     zipWith3
@@ -1505,14 +1505,14 @@ Sample
 
 ```txt
        expected     actual
-aleph  0.2          0.200597    
-beth   0.16666667   0.167192    
-gimel  0.14285715   0.142781    
-daleth 0.125        0.124556    
-he     0.11111111   0.111128    
-waw    0.1          9.9671e-2   
-zayin  9.090909e-2  9.0294e-2   
-heth   6.345594e-2  6.3781e-2   
+aleph  0.2          0.200597
+beth   0.16666667   0.167192
+gimel  0.14285715   0.142781
+daleth 0.125        0.124556
+he     0.11111111   0.111128
+waw    0.1          9.9671e-2
+zayin  9.090909e-2  9.0294e-2
+heth   6.345594e-2  6.3781e-2
 ```
 
 
@@ -1537,20 +1537,20 @@ DO i = 1, trials
 ENDDO
 outcome = outcome / trials
 
-DLG(Text=expected, Text=outcome, Y=0) 
+DLG(Text=expected, Text=outcome, Y=0)
 ```
 
 Exported from the spreadsheet-like DLG function:
 
 ```txt
-0.2        0.199908   
-0.1666667  0.166169   
-0.1428571  0.142722   
-0.125      0.124929   
-0.1111111  0.111706   
-0.1        0.099863   
-0.0909091  0.090965   
-0.063456   0.063738   
+0.2        0.199908
+0.1666667  0.166169
+0.1428571  0.142722
+0.125      0.124929
+0.1111111  0.111706
+0.1        0.099863
+0.0909091  0.090965
+0.063456   0.063738
 ```
 
 
@@ -1577,7 +1577,7 @@ end
 # assuming the items are strings
 procedure count (l, i)
   result := 0.0
-  every x := !l do 
+  every x := !l do
     if x == i then result +:= 1
   return result
 end
@@ -1604,9 +1604,9 @@ procedure main ()
   every (1 to 1000000) do push (sample, find_item(items, rand_float ()))
 
   # return comparison of expected vs actual probability
-  every item := !items do 
-    write (right(item.value, 7) || " " || 
-           left(item.probability, 15) || " " || 
+  every item := !items do
+    write (right(item.value, 7) || " " ||
+           left(item.probability, 15) || " " ||
            left(count(sample, item.value)/*sample, 6))
 end
 
@@ -1643,7 +1643,7 @@ main=: verb define
   pa=.   y%~ +/ da =/ i.8
   hdr, lbls,. 9j6 ": |: pt,:pa
 )
- 
+
 Note 'named abbreviations'
      hdr  (header)
      lbls (labels)
@@ -1658,7 +1658,7 @@ Example use:
 
 ```j
 main 1e6
-       target   actual  
+       target   actual
 aleph  0.200000 0.200344
 beth   0.166667 0.166733
 gimel  0.142857 0.142611
@@ -1759,9 +1759,9 @@ Output:
 
 ```txt
 Trials: 1000000
-Items:          aleph    beth     gimel    daleth   he       waw      zayin    heth     
-Target prob.:   0.200000 0.166667 0.142857 0.125000 0.111111 0.100000 0.090909 0.063456 
-Attained prob.: 0.199615 0.167517 0.142612 0.125211 0.110970 0.099614 0.091002 0.063459 
+Items:          aleph    beth     gimel    daleth   he       waw      zayin    heth
+Target prob.:   0.200000 0.166667 0.142857 0.125000 0.111111 0.100000 0.090909 0.063456
+Attained prob.: 0.199615 0.167517 0.142612 0.125211 0.110970 0.099614 0.091002 0.063459
 ```
 
 {{works with|Java|1.5+}}
@@ -1774,7 +1774,7 @@ public class Prob {
 	public enum Glyph{
 		ALEPH, BETH, GIMEL, DALETH, HE, WAW, ZAYIN, HETH;
 	}
-	
+
 	public static EnumMap<Glyph, Double> probs = new EnumMap<Glyph, Double>(Glyph.class){{
 		put(Glyph.ALEPH,   1/5.0);
 		put(Glyph.BETH,    1/6.0);
@@ -1785,14 +1785,14 @@ public class Prob {
 		put(Glyph.ZAYIN,   1/11.0);
 		put(Glyph.HETH,    1759./27720);
 	}};
-	
+
 	public static EnumMap<Glyph, Double> counts = new EnumMap<Glyph, Double>(Glyph.class){{
 		put(Glyph.ALEPH, 0.);put(Glyph.BETH,   0.);
 		put(Glyph.GIMEL, 0.);put(Glyph.DALETH, 0.);
 		put(Glyph.HE,    0.);put(Glyph.WAW,    0.);
 		put(Glyph.ZAYIN, 0.);put(Glyph.HETH,   0.);
 	}};
-	
+
 	public static void main(String[] args){
 		System.out.println("Target probabliities:\t" + probs);
 		for(long i = 0; i < TRIALS; i++){
@@ -1804,10 +1804,10 @@ public class Prob {
 		for(Glyph glyph:counts.keySet()){
 			counts.put(glyph, counts.get(glyph) / TRIALS);
 		}
-		
+
 		System.out.println("Actual probabliities:\t" + counts);
 	}
-	
+
 	private static Glyph getChoice() {
 		double rand = Math.random();
 		for(Glyph item:Glyph.values()){
@@ -1867,7 +1867,7 @@ for (var i = 0; i < iterations; i++) {
         }
     }
 }
-for (var name in probabilities) 
+for (var name in probabilities)
     // using WSH
     WScript.Echo(name + "\t" + probabilities[name] + "\t" + randomly[name]/iterations);
 ```
@@ -2005,15 +2005,15 @@ By functional composition:
 Sample:
 
 ```txt
-        Expected     Observed    
-Aleph   0.2000000    0.2002440   
-Beit    0.1666667    0.1665330   
-Gimel   0.1428571    0.1433880   
-Dalet   0.1250000    0.1244630   
-He      0.1111111    0.1112830   
-Vav     0.1000000    0.0998390   
-Zayin   0.0909091    0.0909630   
-Chet    0.0634560    0.0632870   
+        Expected     Observed
+Aleph   0.2000000    0.2002440
+Beit    0.1666667    0.1665330
+Gimel   0.1428571    0.1433880
+Dalet   0.1250000    0.1244630
+He      0.1111111    0.1112830
+Vav     0.1000000    0.0998390
+Zayin   0.0909091    0.0909630
+Chet    0.0634560    0.0632870
 ```
 
 
@@ -2110,7 +2110,7 @@ fun main(args: Array<String>) {
     val actual   = IntArray(8)
     val probs    = doubleArrayOf(1/5.0, 1/6.0, 1/7.0, 1/8.0, 1/9.0, 1/10.0, 1/11.0, 0.0)
     val cumProbs = DoubleArray(8)
-    
+
     cumProbs[0] = probs[0]
     for (i in 1..6) cumProbs[i] = cumProbs[i - 1] + probs[i]
     cumProbs[7] = 1.0
@@ -2130,16 +2130,16 @@ fun main(args: Array<String>) {
         }
     }
 
-    var sumActual = 0.0 
+    var sumActual = 0.0
     println("Letter\t Actual    Expected")
     println("------\t--------   --------")
-    for (i in 0..7) { 
-        val generated = actual[i].toDouble() / n  
+    for (i in 0..7) {
+        val generated = actual[i].toDouble() / n
         println("${letters[i]}\t${String.format("%8.6f   %8.6f", generated, probs[i])}")
         sumActual += generated
-    }  
+    }
     println("\t--------   --------")
-    println("\t${"%8.6f".format(sumActual)}   1.000000") 
+    println("\t${"%8.6f".format(sumActual)}   1.000000")
 }
 ```
 
@@ -2223,17 +2223,17 @@ end
 math.randomseed( os.time() )
 for i = 1, num_trials do
     z = math.random()
-	 
+
     for item, _ in pairs( items ) do
 	if z < items[item] then
 	    samples[item] = samples[item] + 1
 	    break;
 	else
- 	    z = z - items[item]	
+ 	    z = z - items[item]
 	end
     end
 end
-	
+
 for item, _ in pairs( items ) do
     print( item, samples[item]/num_trials, items[item] )
 end
@@ -2256,7 +2256,7 @@ waw	0.100062	0.1
 
 ## Mathematica
 
-Built-in function can already do a weighted random choosing. Example for making a million random choices would be: 
+Built-in function can already do a weighted random choosing. Example for making a million random choices would be:
 
 ```Mathematica
 choices={{"aleph", 1/5},{"beth", 1/6},{"gimel", 1/7},{"daleth", 1/8},{"he", 1/9},{"waw", 1/10},{"zayin", 1/11},{"heth", 1759/27720}};
@@ -2375,7 +2375,7 @@ probs.add("he",     1/9.0)
 probs.add("waw",    1/10.0)
 probs.add("zayin",  1/11.0)
 probs.add("heth",   1759/27720)
-  
+
 var samples = initTable[string,int](16)
 for i, j in pairs(probs):
     samples.add(i,0)
@@ -2383,13 +2383,13 @@ for i, j in pairs(probs):
 randomize()
 for i in 1 .. num_trials:
     var z = random(1.0)
- 
+
     for j,k in pairs(probs):
         if z < probs[j]:
             samples[j] = samples[j] + 1
             break
         else:
-             z = z - probs[j]    
+             z = z - probs[j]
 
 var s1, s2: float
 
@@ -2402,9 +2402,9 @@ echo("====  ","\t","======  ","\t","
 for i, j in pairs(probs):
     s1 += samples[i]/num_trials*100.0
     s2 += probs[i]*100.0
-    echo( i, 
+    echo( i,
              "\t", formatFloat(probs[i],ffDecimal,precsn),
-             "\t", formatFloat(samples[i]/num_trials,ffDecimal,precsn), 
+             "\t", formatFloat(samples[i]/num_trials,ffDecimal,precsn),
              "\t", formatFloat(100.0*(1.0-(samples[i]/num_trials)/probs[i]),ffDecimal,precsn),"%")
 echo("======","\t","
 ### =
@@ -2419,9 +2419,9 @@ echo("\n",formatFloat(cpuTime()-start,ffDecimal,2)," secs")
 
 ```txt
 Item  	Target  	Results  	Difference
-====  	======  	
+====  	======
 ### =
-  	
+
 ### ====
 
 he	0.111111	0.110760	0.316000%
@@ -2432,11 +2432,11 @@ zayin	0.090909	0.090923	-0.015300%
 waw	0.100000	0.100513	-0.513000%
 gimel	0.142857	0.142691	0.116300%
 daleth	0.125000	0.124911	0.071200%
-======	
+======
 ### =
- 	
+
 ### ==
- 
+
 Total:	100.00  	100.00
 
 7.06 secs
@@ -2463,7 +2463,7 @@ let p = [
 let rec take k = function
   | (v, p)::tl -> if k < p then v else take (k -. p) tl
   | _ -> invalid_arg "take"
- 
+
 let () =
   let n = 1_000_000 in
   Random.self_init();
@@ -2587,12 +2587,12 @@ heth    0.063731  0.063456  0.000275
 
 ```perl6
 constant TRIALS = 1e6;
- 
+
 constant @event = <aleph beth gimel daleth he waw zayin heth>;
- 
+
 constant @P = flat (1 X/ 5 .. 11), 1759/27720;
 constant @cP = [\+] @P;
- 
+
 my atomicint @results[+@event];
 (^TRIALS).race.map: { @results[ @cP.first: { $_ > once rand }, :k ]⚛++; }
 
@@ -2790,7 +2790,7 @@ daleth  12498182   0.12498182 0.12500000
 he      11108704   0.11108704 0.11111111
 waw     10002442   0.10002442 0.10000000
 zayin    9087412   0.09087412 0.09090909
-heth     6346138   0.06346138 0.06345599 
+heth     6346138   0.06346138 0.06345599
 ```
 
 
@@ -2826,7 +2826,7 @@ foreach ($name in $character.PSObject.Properties.Name)
 }
 
 for ($i = 0; $i -lt $iterations; $i++)
-{ 
+{
     $random = Get-Random -Minimum 0.0 -Maximum 1.0
 
     foreach ($name in $cumulative.Keys)
@@ -2857,14 +2857,14 @@ foreach ($name in $character.PSObject.Properties.Name)
 
 Name             Expected   Actual Character
 ----             --------   ------ ---------
-aleph                 0.2 0.199823 א        
-beth    0.166666666666667 0.166744 ב        
-gimel   0.142857142857143 0.143312 ג        
-daleth              0.125 0.125153 ד        
-he      0.111111111111111 0.110984 ה        
-waw                   0.1 0.099667 ו        
-zayin  0.0909090909090909 0.091135 ז        
-heth   0.0634559884559885 0.063182 ח        
+aleph                 0.2 0.199823 א
+beth    0.166666666666667 0.166744 ב
+gimel   0.142857142857143 0.143312 ג
+daleth              0.125 0.125153 ד
+he      0.111111111111111 0.110984 ה
+waw                   0.1 0.099667 ו
+zayin  0.0909090909090909 0.091135 ז
+heth   0.0634559884559885 0.063182 ח
 
 ```
 
@@ -2881,20 +2881,20 @@ Structure Item
   prob.d
   Amount.i
 EndStructure
-  
+
 If OpenConsole()
   Define i, j, d.d, e.d, txt.s
   Dim Mapps.Item(7)
   Mapps(0)\name="aleph": Mapps(0)\prob=1/5.0
-  Mapps(1)\name="beth":  Mapps(1)\prob=1/6.0 
-  Mapps(2)\name="gimel": Mapps(2)\prob=1/7.0 
-  Mapps(3)\name="daleth":Mapps(3)\prob=1/8.0 
+  Mapps(1)\name="beth":  Mapps(1)\prob=1/6.0
+  Mapps(2)\name="gimel": Mapps(2)\prob=1/7.0
+  Mapps(3)\name="daleth":Mapps(3)\prob=1/8.0
   Mapps(4)\name="he":    Mapps(4)\prob=1/9.0
   Mapps(5)\name="waw":   Mapps(5)\prob=1/10.0
   Mapps(6)\name="zayin": Mapps(6)\prob=1/11.0
   Mapps(7)\name="heth":  Mapps(7)\prob=1759/27720.0
-  
-  For i=1 To #times 
+
+  For i=1 To #times
     d=Random(#MAXLONG)/#MAXLONG  ; Get a random number
     e=0.0
     For j=0 To ArraySize(Mapps())
@@ -2912,7 +2912,7 @@ If OpenConsole()
       txt=LSet(Mapps(j)\name,7)+" should be "+StrD(Mapps(j)\prob)+" is "+StrD(d)
       PrintN(txt+" | Deviatation "+RSet(StrD(100.0-100.0*Mapps(j)\prob/d,3),6)+"%")
   Next
-  
+
   Print(#CRLF$+"Press ENTER to exit"):Input()
   CloseConsole()
 EndIf
@@ -2921,7 +2921,7 @@ EndIf
 
 Output may look like
  Sample times: 1000000
- 
+
  aleph   should be 0.2000000000 is 0.1995520000 | Deviatation -0.225%
  beth    should be 0.1666666667 is 0.1673270000 | Deviatation  0.395%
  gimel   should be 0.1428571429 is 0.1432040000 | Deviatation  0.242%
@@ -2930,7 +2930,7 @@ Output may look like
  waw     should be 0.1000000000 is 0.0999220000 | Deviatation -0.078%
  zayin   should be 0.0909090909 is 0.0902240000 | Deviatation -0.759%
  heth    should be 0.0634559885 is 0.0636310000 | Deviatation  0.275%
- 
+
  Press ENTER to exit
 
 
@@ -2946,13 +2946,13 @@ def probchoice(items, probs):
   Splits the interval 0.0-1.0 in proportion to probs
   then finds where each random.random() choice lies
   '''
-  
+
   prob_accumulator = 0
   accumulator = []
   for p in probs:
     prob_accumulator += p
     accumulator.append(prob_accumulator)
-    
+
   while True:
     r = random.random()
     yield items[bisect.bisect(accumulator, r)]
@@ -2961,18 +2961,18 @@ def probchoice2(items, probs, bincount=10000):
   '''\
   Puts items in bins in proportion to probs
   then uses random.choice() to select items.
-  
+
   Larger bincount for more memory use but
   higher accuracy (on avarage).
   '''
-  
+
   bins = []
   for item,prob in zip(items, probs):
     bins += [item]*int(bincount*prob)
   while True:
     yield random.choice(bins)
-      
-      
+
+
 def tester(func=probchoice, items='good bad ugly'.split(),
                     probs=[0.5, 0.3, 0.2],
                     trials = 100000
@@ -2983,14 +2983,14 @@ def tester(func=probchoice, items='good bad ugly'.split(),
     Also rounds FP values
     '''
     return ",".join('%8.6f' % (p,) for p in probs)
-  
+
   from collections import defaultdict
-   
+
   counter = defaultdict(int)
   it = func(items, probs)
   for dummy in xrange(trials):
     counter[it.next()] += 1
-  print "\n##\n## %s\n##" % func.func_name.upper()  
+  print "\n##\n## %s\n##" % func.func_name.upper()
   print "Trials:              ", trials
   print "Items:               ", ' '.join(items)
   print "Target probability:  ", problist2string(probs)
@@ -3110,7 +3110,7 @@ as a module. Either run the program in DrRacket or run `raco test prob-choice.rk
 ;;; for p-c/i-w below
 (define (probabalistic-choice/exact
          choices
-         #:gcd (GCD (/ (apply gcd (hash-values choices)))))  
+         #:gcd (GCD (/ (apply gcd (hash-values choices)))))
   (probabalistic-choice/integer-weights
    (for/hash (((k v) choices))
      (values k (* v GCD)))
@@ -3132,13 +3132,13 @@ as a module. Either run the program in DrRacket or run `raco test prob-choice.rk
 
 (module+ test
   (define test-samples (make-parameter 1000000))
-  
+
   (define (test-p-c-function f w)
-    (define test-selection (make-hash))    
+    (define test-selection (make-hash))
     (for* ((i (in-range 0 (test-samples)))
            (c (in-value (f w))))
       (when (zero? (modulo i 100000)) (eprintf "~a," (quotient i 100000)))
-      (hash-update! test-selection c add1 0))    
+      (hash-update! test-selection c add1 0))
     (printf "~a~%choice\tcount\texpected\tratio\terror~%" f)
     (for* (((k v) (in-hash test-selection))
            (e (in-value (* (test-samples) (hash-ref w k)))))
@@ -3147,7 +3147,7 @@ as a module. Either run the program in DrRacket or run `raco test prob-choice.rk
               (/ v (test-samples))
               (real->decimal-string
                (exact->inexact (* 100 (/ (- v e) e)))))))
-  
+
   (define test-weightings/rosetta
     (hash
      'aleph 1/5
@@ -3159,13 +3159,13 @@ as a module. Either run the program in DrRacket or run `raco test prob-choice.rk
      'zayin 1/11
      'heth 1759/27720; adjusted so that probabilities add to 1
      ))
-  
+
   (define test-weightings/50:50 (hash 'woo 1/2 'yay 1/2))
   (define test-weightings/1:2:3 (hash 'woo 1 'yay 2 'foo 3))
-  
+
   (test-p-c-function probabalistic-choice test-weightings/50:50)
   (test-p-c-function probabalistic-choice/exact test-weightings/50:50)
-  (test-p-c-function probabalistic-choice test-weightings/rosetta)  
+  (test-p-c-function probabalistic-choice test-weightings/rosetta)
   (test-p-c-function probabalistic-choice/exact test-weightings/rosetta))
 ```
 
@@ -3275,19 +3275,19 @@ say center('name',15,_)  center('count',d,_) center('target %',w,_) center('actu
 cnt = list(8)
 item = ["aleph","beth","gimel","daleth","he","waw","zayin","heth"]
 prob  = [1/5.0, 1/6.0, 1/7.0, 1/8.0, 1/9.0, 1/10.0, 1/11.0, 1759/27720]
- 
+
 for trial = 1 to 1000000
     r = random(10)/10
     p = 0
     for i = 1 to len(prob)
         p = p + prob[i]
-        if r < p 
+        if r < p
            cnt[i] = cnt[i] + 1
            loop
         ok
     next
 next
- 
+
 see "item     actual    theoretical" + nl
 for i = 1 to len(item)
     see "" + item[i] + "    " + cnt[i]/1000000 + "    " + prob[i] + nl
@@ -3512,7 +3512,7 @@ fn main() {
 
 ```txt
     ~~~ U32 METHOD ~~~
-Item   | Expected | Actual   
+Item   | Expected | Actual
 -------+----------+----------
 aleph  | 0.200000 | 0.200195
 beth   | 0.166667 | 0.166182
@@ -3524,7 +3524,7 @@ zayin  | 0.090909 | 0.090927
 heth   | 0.063456 | 0.063705
 
    ~~~ FLOAT METHOD ~~~
-Item   | Expected | Actual   
+Item   | Expected | Actual
 -------+----------+----------
 aleph  | 0.200000 | 0.199984
 beth   | 0.166667 | 0.166634
@@ -3933,7 +3933,7 @@ implemented by the run time system.
 outcomes = <'aleph ','beth  ','gimel ','daleth','he    ','waw   ','zayin ','heth  '>
 probabilities = ^lrNCT(~&,minus/1.+ plus:-0) div/*1. float* skip/5 iota12
 
-simulation = 
+simulation =
 
 ^(~&rn,div+ float~~rmPlX)^*D/~& iota; ^A(~&h,length)*K2+ * stochasm@p/probabilities !* outcomes
 

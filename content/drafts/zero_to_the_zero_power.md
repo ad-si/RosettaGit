@@ -13,7 +13,7 @@ tags = []
 {{task}}
 [[Category:Simple]]
 
-Some computer programming languages are not exactly consistent   (with other computer programming languages)   
+Some computer programming languages are not exactly consistent   (with other computer programming languages)
 
 when   ''raising zero to the zeroth power'':     <b><big>0<sup>0</sup></big></b>
 
@@ -31,11 +31,11 @@ If your computer language objects to     <big> '''0**0''' </big>     or     <big
 
 '''Show the result here.'''
 
-And of course use any symbols or notation that is supported in your computer programming language for exponentiation. 
+And of course use any symbols or notation that is supported in your computer programming language for exponentiation.
 
 
 ;See also:
-* The Wiki entry: [[wp:Exponentiation#Zero_to_the_power_of_zero|Zero to the power of zero]]. 
+* The Wiki entry: [[wp:Exponentiation#Zero_to_the_power_of_zero|Zero to the power of zero]].
 * The Wiki entry: [[wp:Exponentiation#History_of_differing_points_of_view|History of differing points of view]].
 * The MathWorld™ entry: [http://mathworld.wolfram.com/ExponentLaws.html exponent laws].
 ** Also, in the above MathWorld™ entry, see formula ('''9'''): <math>x^0=1</math>.
@@ -99,17 +99,17 @@ procedure Test5 is
    Zero : Natural           := 0;
 
 begin
-   Put ("Integer           0^0 = "); 
+   Put ("Integer           0^0 = ");
    Put (I ** Zero, 2);   New_Line;
    Put ("Long Integer      0^0 = ");
    Put (LI ** Zero, 2);  New_Line;
    Put ("Long Long Integer 0^0 = ");
    Put (LLI ** Zero, 2); New_Line;
-   Put ("Float           0.0^0 = ");           
+   Put ("Float           0.0^0 = ");
    Put (F ** Zero);   New_Line;
-   Put ("Long Float      0.0^0 = ");      
+   Put ("Long Float      0.0^0 = ");
    Put (LF ** Zero);  New_Line;
-   Put ("Long Long Float 0.0^0 = "); 
+   Put ("Long Long Float 0.0^0 = ");
    Put (LLF ** Zero); New_Line;
 end Test5;
 
@@ -291,11 +291,11 @@ blsq ) 0 0?^
 ## C
 
 {{works with|C99}}
-This example uses the standard <code>pow</code> function in the math library. 
+This example uses the standard <code>pow</code> function in the math library.
 0^0 is given as 1.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 #include <complex.h>
 
@@ -323,8 +323,8 @@ int main()
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cmath>
 #include <complex>
 
@@ -360,7 +360,7 @@ namespace ZeroToTheZeroeth
         static void Main(string[] args)
         {
             double k = Math.Pow(0, 0);
-            Console.Write("0^0 is {0}", k);           
+            Console.Write("0^0 is {0}", k);
         }
     }
 }
@@ -381,11 +381,11 @@ namespace ZeroToTheZeroeth
   // default behavior is incorrect:
   set (x,y) = 0
   w !,"0 to the 0th power (wrong): "_(x**y)  ; will output 0
-  
+
   // if one or both of the values is a double, this works
   set (x,y) = $DOUBLE(0)
   w !,"0 to the 0th power (right): "_(x**y)
-  
+
   quit
 ```
 
@@ -395,7 +395,7 @@ namespace ZeroToTheZeroeth
 SAMPLES>do ^ZEROPOW
 
 0 to the 0th power (wrong): 0
-0 to the 0th power (right): 1   
+0 to the 0th power (right): 1
 ```
 
 
@@ -443,7 +443,7 @@ procedure division.
 ## ColdFusion
 
 
-###  Classic tag based CFML 
+###  Classic tag based CFML
 
 
 ```cfm
@@ -463,7 +463,7 @@ procedure division.
 
 
 
-###  Script Based CFML 
+###  Script Based CFML
 
 
 ```cfm><cfscript
@@ -555,7 +555,7 @@ Complex: 1+0i
 (lib 'bigint)
 (define zeroes '(integer: 0 inexact=float: 0.000 complex: 0+0i bignum: #0))
 (for* ((z1 zeroes) (z2 zeroes)) (write (expt z1 z2)))
-    →  1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+    →  1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 
 ```
 
@@ -581,7 +581,7 @@ ELENA 4.x
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     console.printLine("0^0 is ",0.power:0)
@@ -749,7 +749,7 @@ end program
 ```txt
 
  When integers are used, we have 0^0 =            1
- When double precision numbers are used, we have 0.0^0.0 =    1.0000000000000000     
+ When double precision numbers are used, we have 0.0^0.0 =    1.0000000000000000
  When complex numbers are used, we have (0.0+0.0i)^(0.0+0.0i) =  (             NaN,             NaN)
 
 ```
@@ -801,7 +801,7 @@ Output:
 
 ## Go
 
-Go does not have an exponentiation operator but has functions in the standard library for three types, float64, complex128, and big.Int.  
+Go does not have an exponentiation operator but has functions in the standard library for three types, float64, complex128, and big.Int.
 As of Go 1.3, all are documented to return 1.
 
 ```go
@@ -1125,7 +1125,7 @@ print(0^0)
 
 ## M2000 Interpreter
 
-M2000 use ** and ^ for power. 
+M2000 use ** and ^ for power.
 
 ```M2000 Interpreter
 
@@ -1326,8 +1326,8 @@ Say '0**0='||x**x
 ```txt
 0**0=1
 ```
- 
-  
+
+
 
 ## NewLISP
 
@@ -1392,7 +1392,7 @@ In the interpreter:
 - : Complex.t = {Complex.re = nan; Complex.im = nan}
 # #load "nums.cma";;
 # open Num;;
-# Int 0 **/ Int 0;;                 
+# Int 0 **/ Int 0;;
 - : Num.num = Int 1
 
 ```
@@ -1454,7 +1454,7 @@ Say '0**0              ->' 0**0
 ```txt
 
 rxCalcpower(0,0)  -> 1
-0**0              -> 1 
+0**0              -> 1
 
 ```
 
@@ -1599,7 +1599,7 @@ echo 0 ** 0; // PHP 5.6+ only
 
 
 ```PicoLisp
- 
+
 (** 0 0)
 
 ```
@@ -1628,11 +1628,11 @@ echo 0 ** 0; // PHP 5.6+ only
 0**1=                    0.000000000E+0000
 0**0=
 IBM0682I  ONCODE=1553  X in EXPONENT(X) was invalid.
-   At offset +0000025B in procedure with entry ZHZ   
+   At offset +0000025B in procedure with entry ZHZ
 
 ```
 
- 
+
 
 ## PowerShell
 
@@ -1920,7 +1920,7 @@ using ooRexx
 ```
 
 
-using R4 
+using R4
 {{out}}
 
 ```txt
@@ -1934,7 +1934,7 @@ Statement context: C:\ZERO_TO0.REX, procedure: ZERO_TO0
 ```
 
 
-using ROO 
+using ROO
 {{out}}
 
 ```txt
@@ -2128,8 +2128,8 @@ PRINT 0**0
 
 ```smalltalk
 
-0 raisedTo: 0 
-0.0 raisedTo: 0.0 
+0 raisedTo: 0
+0.0 raisedTo: 0.0
 
 ```
 
@@ -2337,7 +2337,7 @@ XLISP 3.3, September 6, 2002 Copyright (c) 1984-2002, by David Betz
 [1] (expt 0 0)
 
 1
-[2] 
+[2]
 ```
 
 

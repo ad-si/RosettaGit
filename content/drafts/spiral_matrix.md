@@ -13,7 +13,7 @@ tags = []
 {{task|Matrices}}
 
 ;Task:
-Produce a spiral array. 
+Produce a spiral array.
 
 
 A   ''spiral array''   is a square arrangement of the first   <big> N<sup>2</sup></big>   natural numbers,   where the
@@ -36,7 +36,7 @@ For example, given   '''5''',   produce this array:
 
 
 ;Related tasks:
-*   [[Zig-zag matrix]] 
+*   [[Zig-zag matrix]]
 *   [[Identity_matrix]]
 *   [[Ulam_spiral_(for_primes)]]
 
@@ -151,7 +151,7 @@ LOOPJ    CR     R5,R12
          LA     R5,1(R5)
          B      LOOPJ
 ENDLOOPJ EQU    *
-         WTO    MF=(E,WTOMSG)		  
+         WTO    MF=(E,WTOMSG)
          LA     R4,1(R4)
          B      LOOPI
 ENDLOOPI EQU    *
@@ -162,13 +162,13 @@ ENDLOOPI EQU    *
          BR     R14
 *        ----   DATA
 N        DC     H'5'            max=20 (20*4=80)
-         LTORG  
+         LTORG
 P8       DS     PL8
 WTOMSG   DS     0F
          DC     H'80',XL2'0000'
 BUF      DC     CL80' '
 MATRIX   DS     H               Matrix(n,n)
-         YREGS  
+         YREGS
          END    SPIRALM
 ```
 
@@ -195,7 +195,7 @@ with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 
 procedure Spiral_Square is
    type Array_Type is array(Positive range <>, Positive range <>) of Natural;
-   
+
    function Spiral (N : Positive) return Array_Type is
       Result  : Array_Type(1..N, 1..N);
       Row     : Natural := 1;
@@ -239,7 +239,7 @@ procedure Spiral_Square is
       end loop;
       return Result;
    end Spiral;
-   
+
    procedure Print(Item : Array_Type) is
       Num_Digits : constant Float := Log(X => Float(Item'Length(1)**2), Base => 10.0);
       Spacing    : constant Positive := Integer(Num_Digits) + 2;
@@ -251,7 +251,7 @@ procedure Spiral_Square is
          New_Line;
       end loop;
    end Print;
-         
+
 begin
    Print(Spiral(5));
 end Spiral_Square;
@@ -328,7 +328,7 @@ PROC spiral = (INT n)[,]INT: (
     OD;
     my array
 );
- 
+
 PROC print spiral = ([,]INT my array)VOID:(
     FOR y FROM LWB my array TO UPB my array DO
         FOR x FROM LWB my array TO UPB my array DO
@@ -337,7 +337,7 @@ PROC print spiral = ([,]INT my array)VOID:(
         print(new line)
     OD
 );
- 
+
 print spiral(spiral(5))
 ```
 
@@ -375,13 +375,13 @@ on spiral(n)
             end if
         end |λ|
     end script
-    
+
     go's |λ|(n, n, 0)
 end spiral
 
 -- TEST ------------------------------------------------------------------
 on run
-    
+
     wikiTable(spiral(5), ¬
         false, ¬
         "text-align:center;width:12em;height:12em;table-layout:fixed;")
@@ -399,7 +399,7 @@ on wikiTable(lstRows, blnHdr, strStyle)
                 intercalateS(space & strDbl & space, lstRow)
         end |λ|
     end script
-    
+
     linefeed & "{| class=\"wikitable\" " & ¬
         if_(strStyle ≠ "", "style=\"" & strStyle & "\"", "") & ¬
         intercalateS("", ¬
@@ -511,11 +511,11 @@ on maximumBy(f, xs)
             end if
         end |λ|
     end script
-    
+
     foldl(max, missing value, xs)
 end maximumBy
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -545,14 +545,14 @@ on pred(x)
 end pred
 
 -- Egyptian multiplication - progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for binary 
+-- stages of doubling to an accumulator where needed for binary
 -- assembly of a target length
 -- replicate :: Int -> a -> [a]
 on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -571,7 +571,7 @@ on |reverse|(xs)
     end if
 end |reverse|
 
--- If some of the rows are shorter than the following rows, 
+-- If some of the rows are shorter than the following rows,
 -- their elements are skipped:
 -- transpose({{10,11},{20},{},{30,31,32}}) -> {{10, 20, 30}, {11, 31}, {32}}
 -- transpose :: [[a]] -> [[a]]
@@ -589,7 +589,7 @@ on transpose(xxs)
         end |λ|
     end script
     set rows to map(padded, xxs)
-    
+
     script cols
         on |λ|(_, iCol)
             script cell
@@ -658,11 +658,11 @@ Loop %n% {                      ; generate printout
 MsgBox %s%                      ; show output
 /*
 ---------------------------
-1   2   3   4   5 
-16  17  18  19  6 
-15  24  25  20  7 
-14  23  22  21  8 
-13  12  11  10  9 
+1   2   3   4   5
+16  17  18  19  6
+15  24  25  20  7
+14  23  22  21  8
+13  12  11  10  9
 ---------------------------
 */
 ```
@@ -739,7 +739,7 @@ BEGIN {
       BotCol%=0 : TopCol%=N%-1
       BotRow%=0 : TopRow%=N%-1
       DIM Matrix%(TopCol%,TopRow%)
-      
+
       Dir%=0 : Col%=0 : Row%=0
       FOR I%=0 TO N%*N%-1
         Matrix%(Col%,Row%)=I%
@@ -760,30 +760,30 @@ BEGIN {
 
 Note: program produces a matrix starting from 1 instead of 0, because task says "natural numbers".
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
- 
+
 #define valid(i, j) 0 <= i && i < m && 0 <= j && j < n && !s[i][j]
 int main(int c, char **v)
 {
 	int i, j, m = 0, n = 0;
- 
+
 	/* default size: 5 */
 	if (c >= 2) m = atoi(v[1]);
 	if (c >= 3) n = atoi(v[2]);
 	if (m <= 0) m = 5;
 	if (n <= 0) n = m;
- 
+
 	int **s = calloc(1, sizeof(int *) * m + sizeof(int) * m * n);
 	s[0] = (int*)(s + m);
 	for (i = 1; i < m; i++) s[i] = s[i - 1] + n;
- 
+
 	int dx = 1, dy = 0, val = 0, t;
 	for (i = j = 0; valid(i, j); i += dy, j += dx ) {
 		for (; valid(i, j); j += dx, i += dy)
 			s[i][j] = ++val;
- 
+
 		j -= dx; i -= dy;
 		t = dy; dy = dx; dx = -t;
 	}
@@ -801,8 +801,8 @@ int main(int c, char **v)
 
 Recursive method, width and height given on command line:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int spiral(int w, int h, int x, int y)
@@ -827,8 +827,8 @@ int main(int argc, char **argv)
 ## C++
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <memory>	// for auto_ptr
 #include <cmath>	// for the ceil and log10 and floor functions
 #include <iostream>
@@ -900,8 +900,8 @@ int main()
 
 C++ solution done properly:
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <iostream>
 using namespace std;
 int main() {
@@ -909,7 +909,7 @@ int main() {
 	const int dx[] = {0, 1, 0, -1}, dy[] = {1, 0, -1, 0};
 	int x = 0, y = -1, c = 0;
 	vector<vector<int>> m(n, vector<int>(n));
-	for (int i = 0, im = 0; i < n + n - 1; ++i, im = i % 4) 
+	for (int i = 0, im = 0; i < n + n - 1; ++i, im = i % 4)
 		for (int j = 0, jlen = (n + n - i) / 2; j < jlen; ++j)
 			m[x += dx[im]][y += dy[im]] = ++c;
 	for (auto & r : m) {
@@ -975,7 +975,7 @@ int[,] CreateMatrix(int n){
     int[] dx = {0, 1, 0, -1}, dy = {1, 0, -1, 0};
     int x = 0, y = -1, c = 0;
     int[,] m = new int[n,n];
-    for (int i = 0, im = 0; i < n + n - 1; ++i, im = i % 4) 
+    for (int i = 0, im = 0; i < n + n - 1; ++i, im = i % 4)
         for (int j = 0, jlen = (n + n - i) / 2; j < jlen; ++j)
             m[x += dx[im],y += dy[im]] = ++c;
     return n;
@@ -1018,7 +1018,7 @@ namespace spiralmat
         {
             lev = lev_lim = count = bk = cd = low = l = m = 0;
         }
-        
+
         void level(int n1, int r, int c)
         {
             lev_lim = n1 % 2 == 0 ? n1 / 2 : (n1 + 1) / 2;
@@ -1058,8 +1058,8 @@ namespace spiralmat
                     Console.Write("{0,3:D} ",
 		                  ob.func(n, i, j)
 				  + Convert.ToInt32(
-				    ((j >= i) && (i == lev)) 
-				      ? ((j - i) + 1) 
+				    ((j >= i) && (i == lev))
+				      ? ((j - i) + 1)
 				      : ((j == ((n + 1) - lev) && (i > lev) && (i <= j)))
 				        ? (n - 2 * (lev - 1) + (i - 1) - (n - j))
 					: ((i == ((n + 1) - lev) && (j < i)))
@@ -1184,24 +1184,24 @@ spiral_value = (x, y, n) ->
     E: n - 1 - x
     S: n - 1 - y
     W: x
-    
+
   min_edge_offset = n
   for dir of edge_offset
     if edge_offset[dir] < min_edge_offset
       min_edge_offset = edge_offset[dir]
       border = dir
-      
+
   inner_square_edge = n - 2 * min_edge_offset
   corner_offset = n * n - inner_square_edge * inner_square_edge
   corner_offset += prior_legs[border] * (inner_square_edge - 1)
   corner_offset + edge_run(edge_offset)[border]()
-  
+
 spiral_matrix = (n) ->
   # return a nested array expression
   for y in [0...n]
     for x in [0...n]
       spiral_value x, y, n
-  
+
 do ->
   for n in [6, 7]
     console.log "\n----Spiral n=#{n}"
@@ -1211,7 +1211,7 @@ do ->
 
 {{out}}
 <lang>
-> coffee spiral.coffee 
+> coffee spiral.coffee
 
 ----Spiral n=6
 [ [ 0, 1, 2, 3, 4, 5 ],
@@ -1466,15 +1466,15 @@ $ return
 {{out}}
 
 ```txt
-$ @spiral_matrix 3 
-0 1 2 
-7 8 3 
-6 5 4 
+$ @spiral_matrix 3
+0 1 2
+7 8 3
+6 5 4
 $ @spiral_matrix 5
- 0  1  2  3  4 
-15 16 17 18  5 
-14 23 24 19  6 
-13 22 21 20  7 
+ 0  1  2  3  4
+15 16 17 18  5
+14 23 24 19  6
+13 22 21 20  7
 12 11 10  9  8
 
 ...
@@ -1494,24 +1494,24 @@ def spiral(size) {
   var i := -1                   # Counter of numbers to fill
   var p := makeVector2(0, 0)    # "Position"
   var dp := makeVector2(1, 0)   # "Velocity"
-  
+
   # If the cell we were to fill next (even after turning) is full, we're done.
   while (array[p.y(), p.x()] == null) {
-  
+
     array[p.y(), p.x()] := (i += 1) # Fill cell
     def next := p + dp              # Look forward
-    
+
     # If the cell we were to fill next is already full, then turn clockwise.
     # Gimmick: If we hit the edges of the array, by the modulo we wrap around
     # and see the already-filled cell on the opposite edge.
     if (array[next.y() %% size, next.x() %% size] != null) {
       dp := dp.clockwise()
     }
-    
+
     # Move forward
     p += dp
   }
-  
+
   return array
 }
 ```
@@ -1544,7 +1544,7 @@ defmodule RC do
     |> Enum.with_index |> Enum.sort |>  Enum.chunk(n)
     |> Enum.each(fn row -> :io.format fmt, (for {_,i} <- row, do: i) end)
   end
-  
+
   defp running([{run,{dx,dy}}|rest], x, y, track) do
     new_track = Enum.reduce(1..run, track, fn i,acc -> [{x+i*dx, y+i*dy} | acc] end)
     running(rest, x+run*dx, y+run*dy, new_track)
@@ -1568,20 +1568,20 @@ defmodule RC do
         :io.format fmt, (for {_,i} <- row, do: i)
       end)
   end
-  
+
   def right(n, side, i, coordinates) do
     down(n, side, i, Enum.reduce(0..side, coordinates, fn j,acc -> [{i, i+j} | acc] end))
   end
-  
+
   def down(_, 0, _, coordinates), do: coordinates
   def down(n, side, i, coordinates) do
     left(n, side-1, i, Enum.reduce(1..side, coordinates, fn j,acc -> [{i+j, n-1-i} | acc] end))
   end
-  
+
   def left(n, side, i, coordinates) do
     up(n, side, i, Enum.reduce(side..0, coordinates, fn j,acc -> [{n-1-i, i+j} | acc] end))
   end
-  
+
   def up(_, 0, _, coordinates), do: coordinates
   def up(n, side, i, coordinates) do
     right(n, side-1, i+1, Enum.reduce(side..1, coordinates, fn j,acc -> [{i+j, i} | acc] end))
@@ -1655,11 +1655,11 @@ function spiral(integer dimension)
         curr = curr2 + 1
         side -= 2
     end for
-    
+
     if remainder(dimension,2) then
         s[floor(dimension/2)+1][floor(dimension/2)+1] = curr
     end if
-    
+
     return s
 end function
 
@@ -1735,13 +1735,13 @@ MAIN: spiral-demo
 PROGRAM SPIRAL
 
   IMPLICIT NONE
- 
+
   INTEGER, PARAMETER :: size = 5
   INTEGER :: i, x = 0, y = 1, count = size, n = 0
   INTEGER :: array(size,size)
 
   DO i = 1, count
-    x = x + 1 
+    x = x + 1
       array(x,y) = n
     n = n + 1
   END DO
@@ -1769,10 +1769,10 @@ PROGRAM SPIRAL
         x = x + 1
         array(x,y) = n
         n = n + 1
-      END DO	
+      END DO
       IF (n > size*size-1) EXIT
   END DO
-   
+
   DO y = 1, size
     DO x = 1, size
       WRITE (*, "(I4)", ADVANCE="NO") array (x, y)
@@ -1792,17 +1792,17 @@ END PROGRAM SPIRAL
 ' FB 1.05.0 Win64
 
 Enum Direction
-  across 
+  across
   down
   back
   up
 End Enum
- 
+
 Dim As Integer n
 
 Do
   Input "Enter size of matrix "; n
-Loop Until n > 0 
+Loop Until n > 0
 
 Dim spiral(1 To n, 1 To n) As Integer '' all zero by default
 
@@ -1834,7 +1834,7 @@ For i As Integer = 0 To (n * n - 1)
         col = lowCol
         row -= 1
         d = up
-        lowRow += 1        
+        lowRow += 1
       End If
     Case up
       row -= 1
@@ -1847,18 +1847,18 @@ For i As Integer = 0 To (n * n - 1)
         highCol -= 1
       End If
   End Select
-Next 
+Next
 
-' print spiral matrix if n < 20 
+' print spiral matrix if n < 20
 Print
 If n < 20 Then
   For i As Integer = 1 To n
     For j As Integer = 1 To n
-      Print Using "####"; spiral(i, j); 
+      Print Using "####"; spiral(i, j);
     Next j
     Print
   Next i
-Else 
+Else
   Print "Matrix is too big to display on 80 column console"
 End If
 
@@ -1950,7 +1950,7 @@ SpiralMatrix := function(n)
   return a;
 end;
 
-PrintArray(SpiralMatrix(5)); 
+PrintArray(SpiralMatrix(5));
 # [ [   1,   2,   3,   4,   5 ],
 #   [  16,  17,  18,  19,   6 ],
 #   [  15,  24,  25,  20,   7 ],
@@ -2036,11 +2036,11 @@ enum Direction {
     private static _n
     private final stepDelta
     private bound
-    
+
     private Direction(delta) {
         stepDelta = delta
     }
-    
+
     public static setN(int n) {
         Direction._n = n
         North.bound = 0
@@ -2048,7 +2048,7 @@ enum Direction {
         West.bound = 0
         East.bound = n-1
     }
-    
+
     public List move(i, j) {
         def dir = this
         def newIJDir = [[i,j],stepDelta].transpose().collect { it.sum() } + dir
@@ -2059,7 +2059,7 @@ enum Direction {
             (++dir).move(i, j)
         }
     }
-    
+
     public Object next() {
         switch (this) {
             case North: West.bound++; return East;
@@ -2218,7 +2218,7 @@ main = mapM_ (\row->mapM_ ((printf "%4d").toInteger) row >> putStrLn "") (spiral
 
 
 
-Or less ambitiously, 
+Or less ambitiously,
 {{Trans|AppleScript}}
 
 ```Haskell
@@ -2279,16 +2279,16 @@ end
 procedure SpiralMatrix(N)            #: create spiral matrix
 every (!(M := list(N))):= list(N)    # build empty matrix NxN
                                      # setup before starting first turn
-corner := 0                          # . corner we're at       
-i := -1                              # . cell contents  
-r:= 1 ; c :=0                        # . row & col 
+corner := 0                          # . corner we're at
+i := -1                              # . cell contents
+r:= 1 ; c :=0                        # . row & col
 cincr := integer(sin(0))             # . column incr
-                 
+
 until i > N^2 do {
-   rincr := cincr                              # row incr follows col                                  
+   rincr := cincr                              # row incr follows col
    cincr := integer(sin(&pi/2*(corner+:=1)))   # col incr at each corner
-   if (run := N-corner/2)  = 0 then break      # shorten run to 0 at U/R & L/L 
-   every run to 1 by -1 do                     
+   if (run := N-corner/2)  = 0 then break      # shorten run to 0 at U/R & L/L
+   every run to 1 by -1 do
       M[r +:= rincr,c +:= cincr] := i +:= 1    # move, count, and fill
    }
 return M
@@ -2336,7 +2336,7 @@ end
 350         LET ROW=ROW-1
 360       ELSE
 370         LET DIR=3:LET COL=COL-1:LET TCOL=TCOL-1
-380       END IF 
+380       END IF
 390     CASE 3
 400       IF COL>BCOL THEN
 410         LET COL=COL-1
@@ -2360,7 +2360,7 @@ end
 
 ## J
 
-This function is the result of 
+This function is the result of
 some [http://www.jsoftware.com/papers/play132.htm beautiful insights]:
 
 ```j
@@ -2373,7 +2373,7 @@ spiral =: ,~ $ [: /: }.@(2 # >:@i.@-) +/\@# <:@+: $ (, -)@(1&,)
 13 22 21 20 7
 12 11 10  9 8
 ```
-   
+
 Would you like [[Talk:Spiral#J|some hints]] that will allow you to reimplement it in another language?
 
 These inward spiralling arrays are known as "involutes"; we can also generate outward-spiraling "evolutes", and we can start or end the spiral at any corner, and go in either direction (clockwise or counterclockwise).  See the first link (to JSoftware.com).
@@ -2544,7 +2544,7 @@ Translating one of the Haskell versions:
   }
 
   // TESTING
-  
+
   var lstSpiral = spiral(n, n, 0);
 
 
@@ -2569,7 +2569,7 @@ Translating one of the Haskell versions:
       false,
       'text-align:center;width:12em;height:12em;table-layout:fixed;'
     ),
-    
+
     JSON.stringify(lstSpiral)
   ].join('\n\n');
 
@@ -2743,7 +2743,7 @@ Output:
 
 ## jq
 
-The strategy employed here is to start at [0,0] and move to the right ([0,1] == same row, next column) 
+The strategy employed here is to start at [0,0] and move to the right ([0,1] == same row, next column)
 until we reach a boundary or a populated cell; then turn right, and proceed as before.
 
 Initially fill the matrix with "false" so we can easily distinguish between unvisited cells (false) and non-existent cells (null).
@@ -2830,7 +2830,7 @@ function Spiral(m::Int, n::Int)
                           [0,-1,0,0], [0,0,1,0]]
     Spiral(m, n, cmax, dir, bdelta)
 end
-    
+
 function spiral(m::Int, n::Int)
     0<m&&0<n || error("The matrix dimensions must be positive.")
     Spiral(m, n)
@@ -3009,22 +3009,22 @@ fun main(args: Array<String>) {
 
 ```txt
 
- 0  1  2  3  4 
-15 16 17 18  5 
-14 23 24 19  6 
-13 22 21 20  7 
-12 11 10  9  8 
+ 0  1  2  3  4
+15 16 17 18  5
+14 23 24 19  6
+13 22 21 20  7
+12 11 10  9  8
 
- 0  1  2  3  4  5  6  7  8  9 
-35 36 37 38 39 40 41 42 43 10 
-34 63 64 65 66 67 68 69 44 11 
-33 62 83 84 85 86 87 70 45 12 
-32 61 82 95 96 97 88 71 46 13 
-31 60 81 94 99 98 89 72 47 14 
-30 59 80 93 92 91 90 73 48 15 
-29 58 79 78 77 76 75 74 49 16 
-28 57 56 55 54 53 52 51 50 17 
-27 26 25 24 23 22 21 20 19 18 
+ 0  1  2  3  4  5  6  7  8  9
+35 36 37 38 39 40 41 42 43 10
+34 63 64 65 66 67 68 69 44 11
+33 62 83 84 85 86 87 70 45 12
+32 61 82 95 96 97 88 71 46 13
+31 60 81 94 99 98 89 72 47 14
+30 59 80 93 92 91 90 73 48 15
+29 58 79 78 77 76 75 74 49 16
+28 57 56 55 54 53 52 51 50 17
+27 26 25 24 23 22 21 20 19 18
 
 ```
 
@@ -3141,7 +3141,7 @@ for i,v in ipairs(spiralt(8)) do for j, u in ipairs(v) do io.write(u .. "   ") e
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 We split the task up in 2 functions, one that adds a 'ring' around a present matrix. And a function that adds rings to a 'core':
 
 ```Mathematica
@@ -3205,15 +3205,15 @@ Then depending on if n is odd or even we use either an up/down or left/right mir
 
 ```MATLAB
 function matrix = reverseSpiral(n)
-    
+
     matrix = (-spiral(n))+n^2;
-    
+
     if mod(n,2)==0
         matrix = flipud(matrix);
     else
         matrix = fliplr(matrix);
     end
-    
+
 end %reverseSpiral
 ```
 
@@ -3311,7 +3311,7 @@ method generateArray(dimension = int) private static returns int[,]
 
   -- the output array
   array = int[dimension, dimension]
- 
+
   -- get the number of squares, including the center one if
   -- the dimension is odd
 
@@ -3457,10 +3457,10 @@ echo spiral(5)
 {{out}}
 
 ```txt
- 0  1  2  3  4 
-15 16 17 18  5 
-14 23 24 19  6 
-13 22 21 20  7 
+ 0  1  2  3  4
+15 16 17 18  5
+14 23 24 19  6
+13 22 21 20  7
 12 11 10  9  8
 ```
 
@@ -4008,7 +4008,7 @@ for i=1 to 2*n do                               -- 2n runs..
         m[x][y] = sprintf(fmt,c)
         c += 1
     end for
-    len -= and_bits(i,1)                        -- ..-1 every other 
+    len -= and_bits(i,1)                        -- ..-1 every other
     {dx,dy} = {dy,-dx}                          -- in new direction
 end for
 
@@ -4145,32 +4145,32 @@ function Spiral-Matrix ( [int]$N )
     $Y = -1
     $i = 0
     $Sign = 1
- 
+
     #  Intialize array
     $A = New-Object 'int[,]' $N, $N
- 
+
     #  Set top row
     1..$N | ForEach { $Y += $Sign; $A[$X,$Y] = ++$i }
- 
+
     #  For each remaining half spiral...
     ForEach ( $M in ($N-1)..1 )
         {
         #  Set the vertical quarter spiral
         1..$M | ForEach { $X += $Sign; $A[$X,$Y] = ++$i }
- 
+
         #  Curve the spiral
         $Sign = -$Sign
- 
+
         #  Set the horizontal quarter spiral
         1..$M | ForEach { $Y += $Sign; $A[$X,$Y] = ++$i }
         }
- 
+
     #  Convert the array to text output
     $Spiral = ForEach ( $X in 1..$N ) { ( 1..$N | ForEach { $A[($X-1),($_-1)] } ) -join "`t" }
- 
+
     return $Spiral
     }
- 
+
 Spiral-Matrix 5
 ""
 Spiral-Matrix 7
@@ -4201,15 +4201,15 @@ Spiral-Matrix 7
 
 ```Prolog
 
-%  Prolog implementation: SWI-Prolog 7.2.3 
+%  Prolog implementation: SWI-Prolog 7.2.3
 
 replace([_|T], 0, E, [E|T]) :- !.
 replace([H|T], N, E, Xs)    :-
-  succ(N1, N), replace(T, N1, E, Xs1), Xs = [H|Xs1]. 
+  succ(N1, N), replace(T, N1, E, Xs1), Xs = [H|Xs1].
 
 % True if Xs is the Original grid with the element at (X, Y) replaces by E.
 replace_in([H|T], (0, Y), E, Xs) :- replace(H, Y, E, NH), Xs = [NH|T], !.
-replace_in([H|T], (X, Y), E, Xs) :- 
+replace_in([H|T], (X, Y), E, Xs) :-
   succ(X1, X), replace_in(T, (X1, Y), E, Xs1), Xs = [H|Xs1].
 
 % True, if E is the value at (X, Y) in Xs
@@ -4222,23 +4222,23 @@ create(N, Mx) :-             % NxN grid full of nils
 
 % Depending of the direction, returns two possible coordinates and directions
 % (C,D) that will be used in case of a turn, and (A,B) otherwise.
-ops(right, (X,Y), (A,B), (C,D), D1, D2) :- 
+ops(right, (X,Y), (A,B), (C,D), D1, D2) :-
   A is X, B is Y+1, D1 = right, C is X+1, D is Y, D2 = down.
 
-ops(left, (X,Y), (A,B), (C,D), D1, D2) :- 
-  A is X, B is Y-1, D1 = left, C is X-1, D is Y, D2 = up.  
+ops(left, (X,Y), (A,B), (C,D), D1, D2) :-
+  A is X, B is Y-1, D1 = left, C is X-1, D is Y, D2 = up.
 
 ops(up, (X,Y), (A,B), (C,D), D1, D2) :-
   A is X-1, B is Y, D1 = up, C is X, D is Y+1, D2 = right.
 
-ops(down, (X,Y), (A,B), (C,D), D1, D2) :- 
-  A is X+1, B is Y, D1 = down, C is X, D is Y-1, D2 = left. 
+ops(down, (X,Y), (A,B), (C,D), D1, D2) :-
+  A is X+1, B is Y, D1 = down, C is X, D is Y-1, D2 = left.
 
 % True if NCoor is the right coor in spiral shape. Returns a new direction also.
 next(Dir, Mx, Coor, NCoor, NDir) :-
-  ops(Dir, Coor, C1, C2, D1, D2), 
+  ops(Dir, Coor, C1, C2, D1, D2),
   (get_in(Mx, C1, nil) -> NCoor = C1, NDir = D1
-                        ; NCoor = C2, NDir = D2).  
+                        ; NCoor = C2, NDir = D2).
 
 % Returns an spiral with [H|Vs] elements called R, only work if the length of
 % [H|Vs], is the square of the size of the grid.
@@ -4246,12 +4246,12 @@ spiralH(Dir, Mx, Coor, [H|Vs], R)  :-
  replace_in(Mx, Coor, H, NMx),
  (Vs = [] -> R = NMx
            ; next(Dir, Mx, Coor, NCoor, NDir),
-             spiralH(NDir, NMx, NCoor, Vs, R)).  
+             spiralH(NDir, NMx, NCoor, Vs, R)).
 
 % True if Mx is the grid in spiral shape of the numbers from 0 to N*N-1.
-spiral(N, Mx) :- 
-  Sq is N*N-1, numlist(0, Sq, Ns), 
-  create(N, EMx), spiralH(right, EMx, (0,0), Ns, Mx). 
+spiral(N, Mx) :-
+  Sq is N*N-1, numlist(0, Sq, Ns),
+  create(N, EMx), spiralH(right, EMx, (0,0), Ns, Mx).
 
 ```
 
@@ -4279,13 +4279,13 @@ spiral(N, Mx) :-
 Procedure spiralMatrix(size = 1)
   Protected i, x = -1, y, count = size, n
   Dim a(size - 1,size - 1)
-  
+
   For i = 1 To count
     x + 1
     a(x,y) = n
     n + 1
   Next
-  
+
   Repeat
     count - 1
     For i = 1 To count
@@ -4311,7 +4311,7 @@ Procedure spiralMatrix(size = 1)
       n + 1
     Next
   Until count < 1
-      
+
   PrintN("Spiral: " + Str(Size) + #CRLF$)
   Protected colWidth = Len(Str(size * size - 1)) + 1
   For y = 0 To size - 1
@@ -4327,8 +4327,8 @@ If OpenConsole()
   spiralMatrix(2)
   PrintN("")
   spiralMatrix(5)
-  
-  
+
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -4566,7 +4566,7 @@ if __name__ == '__main__':
 |}
 
 
-###  Simple solution 
+###  Simple solution
 
 
 ```python
@@ -4679,7 +4679,7 @@ spiral_matrix <- function(n) {
              (not (vector-ref spiral (index ny nx))))
         (set! x nx)
         (set! y ny))
-       (else 
+       (else
         (set!-values (dx dy) (values (- dy) dx))
         (set! x (+ x dx))
         (set! y (+ y dy)))))))
@@ -4891,7 +4891,7 @@ row=1;       col=0                               /*start spiral at    row 1,  co
 
 load "guilib.ring"
 load "stdlib.ring"
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                    setwindowtitle("Spiral matrix")
@@ -4899,7 +4899,7 @@ new qapp
                    n = 5
                    result = newlist(n,n)
                    spiral = newlist(n,n)
-                   k = 1 
+                   k = 1
                    top = 1
                    bottom = n
                    left = 1
@@ -4908,18 +4908,18 @@ new qapp
                            for  i= left to right
                                 result[top][i] = k
                                 k = k + 1
-                           next    
-                           top = top + 1 
+                           next
+                           top = top + 1
                            for i = top to bottom
                                 result[i][right] = k
                                 k = k + 1
                            next
-                           right = right - 1 
+                           right = right - 1
                            for i = right to left step -1
                                 result[bottom][i] = k
                                 k = k + 1
                            next
-                           bottom = bottom - 1 
+                           bottom = bottom - 1
                            for i = bottom to top step -1
                                 result[i][left] = k
                                 k = k + 1
@@ -4977,10 +4977,10 @@ print_matrix spiral(5)
 
 ```txt
 
- 0  1  2  3 4 
-15 16 17 18 5 
-14 23 24 19 6 
-13 22 21 20 7 
+ 0  1  2  3 4
+15 16 17 18 5
+14 23 24 19 6
+13 22 21 20 7
 12 11 10  9 8
 
 ```
@@ -5041,10 +5041,10 @@ class Folder(){
     dir = (-dy, dx) //turn
   }
 }
-def spiral(n:Int) = { 
+def spiral(n:Int) = {
   def dup(n:Int) = (1 to n).flatMap(i=>List(i,i)).toList
   val folds = n :: dup(n-1).reverse  //define fold part lengths
-	  
+
   var array = new Array[Array[Int]](n,n)
   val fold = new Folder()
 
@@ -5086,11 +5086,11 @@ endfunction
 
 -->spiral(5)
  ans  =
- 
-    0.     1.     2.     3.     4.  
-    15.    16.    17.    18.    5.  
-    14.    23.    24.    19.    6.  
-    13.    22.    21.    20.    7.  
+
+    0.     1.     2.     3.     4.
+    15.    16.    17.    18.    5.
+    14.    23.    24.    19.    6.
+    13.    22.    21.    20.    7.
     12.    11.    10.    9.     8.
 ```
 
@@ -5281,10 +5281,10 @@ print_matrix [spiral 5]
 
 
 ```txt
- 0  1  2  3 4 
-15 16 17 18 5 
-14 23 24 19 6 
-13 22 21 20 7 
+ 0  1  2  3 4
+15 16 17 18 5
+14 23 24 19 6
+13 22 21 20 7
 12 11 10  9 8
 ```
 
@@ -5298,18 +5298,18 @@ DelVar [F]
 {N,N}→dim([F])
 1→A: N→B
 1→C: N→D
-0→E: E→G 
-1→I: 1→J 
+0→E: E→G
+1→I: 1→J
 For(K,1,N*N)
 K-1→[F](I,J)
-If E=0: Then 
+If E=0: Then
 If J<D: Then
 J+1→J
 Else: 1→G
 I+1→I: A+1→A
 End
 End
-If E=1: Then 
+If E=1: Then
 If I<B: Then
 I+1→I
 Else: 2→G
@@ -5323,7 +5323,7 @@ Else: 3→G
 I-1→I: B-1→B
 End
 End
-If E=3: Then 
+If E=3: Then
 If I>A: Then
 I-1→I
 Else: 0→G
@@ -5588,7 +5588,7 @@ Function build_spiral(n)
 				If row < toprow Then
 					row = row + 1
 				Else
-					dir = 2 : col = col - 1 : topcol = topcol - 1	
+					dir = 2 : col = col - 1 : topcol = topcol - 1
 				End If
 			Case 2
 				If col > botcol Then
@@ -5786,38 +5786,38 @@ Sub spiral(n As Integer)
   Dim A() As Integer
   Dim rowdelta(3) As Integer
   Dim coldelta(3) As Integer
-  
+
   'initialize A to a matrix with an extra "border" of occupied cells
   'this avoids having to test if we've reached the edge of the matrix
-  
+
   ReDim A(0 To n + 1, 0 To n + 1)
-  
+
   'Since A is initialized with zeros, setting A(1 to n,1 to n) to "FREE"
   'leaves a "border" around it occupied with zeroes
-  
+
   For i = 1 To n: For j = 1 To n: A(i, j) = FREE: Next: Next
-  
+
   'set amount to move in directions "right", "down", "left", "up"
-  
+
   rowdelta(0) = 0: coldelta(0) = 1
   rowdelta(1) = 1: coldelta(1) = 0
   rowdelta(2) = 0: coldelta(2) = -1
   rowdelta(3) = -1: coldelta(3) = 0
-  
+
   curnum = 0
-  
+
   'set current cell position
   col = 1
   row = 1
-  
+
   'set current direction
   theDir = 0  'theDir = 1 will fill the matrix counterclockwise
-  
+
   'ok will be true as long as there is a free cell left
   ok = True
-  
+
   Do While ok
- 
+
      'occupy current FREE cell and increase curnum
       A(row, col) = curnum
       curnum = curnum + 1
@@ -5839,7 +5839,7 @@ Sub spiral(n As Integer)
         End If
       Next i
   Loop
-  
+
   'print result
   For i = 1 To n
     For j = 1 To n
@@ -5847,7 +5847,7 @@ Sub spiral(n As Integer)
     Next
     Debug.Print
   Next
-  
+
 End Sub
 ```
 
@@ -5856,19 +5856,19 @@ End Sub
 ```txt
 
 spiral 5
- 0             1             2             3             4            
- 15            16            17            18            5            
- 14            23            24            19            6            
- 13            22            21            20            7            
- 12            11            10            9             8            
+ 0             1             2             3             4
+ 15            16            17            18            5
+ 14            23            24            19            6
+ 13            22            21            20            7
+ 12            11            10            9             8
 
 spiral 6
- 0             1             2             3             4             5            
- 19            20            21            22            23            6            
- 18            31            32            33            24            7            
- 17            30            35            34            25            8            
- 16            29            28            27            26            9            
- 15            14            13            12            11            10           
+ 0             1             2             3             4             5
+ 19            20            21            22            23            6
+ 18            31            32            33            24            7
+ 17            30            35            34            25            8
+ 16            29            28            27            26            9
+ 15            14            13            12            11            10
 
 ```
 

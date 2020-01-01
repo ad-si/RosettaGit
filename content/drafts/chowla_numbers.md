@@ -43,7 +43,7 @@ Chowla numbers can also be expressed as:
     chowla(<big>'''n'''</big>) = sum of divisors of  <big>'''n'''</big>  excluding unity and  <big>'''n'''</big>
     chowla(<big>'''n'''</big>) = sum(       divisors(<big>'''n'''</big>))   <big>'''-1  -  n''' </big>
     chowla(<big>'''n'''</big>) = sum( properDivisors(<big>'''n'''</big>))   <big>'''-1'''       </big>
-    chowla(<big>'''n'''</big>) = sum(aliquotDivisors(<big>'''n'''</big>))   <big>'''-1'''       </big> 
+    chowla(<big>'''n'''</big>) = sum(aliquotDivisors(<big>'''n'''</big>))   <big>'''-1'''       </big>
     chowla(<big>'''n'''</big>) = aliquot(<big>'''n'''</big>)                <big>'''-1'''       </big>
     chowla(<big>'''n'''</big>) = sigma(<big>'''n'''</big>)                  <big>'''-1  -  n''' </big>
     chowla(<big>'''n'''</big>) = sigmaProperDivisiors(<big>'''n'''</big>)   <big>'''-1'''       </big>
@@ -231,8 +231,8 @@ There are 5 perfect numbers <= 35,000,000
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 unsigned chowla(const unsigned n) {
   unsigned sum = 0;
@@ -448,8 +448,8 @@ There are 5 perfect numbers <= 35,000,000
 
 {{trans|Go}}
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <iostream>
 
 using namespace std;
@@ -1147,7 +1147,7 @@ sieve(limite, c())
 For a = 3 To limite - 1 Step 2
     If Not c(a) Then count += 1
     If a = topenumprimo - 1 Then
-        Print Using "########## hay"; topenumprimo; 
+        Print Using "########## hay"; topenumprimo;
         Print count
         topenumprimo *= 10
     End If
@@ -1519,7 +1519,7 @@ There are 5 perfect numbers <= 35,000,000
 
 '''Solution:'''
 
-```j>chowla=: 
+```j>chowla=:
 : -~ >:@#.~/.~&.q:     NB. sum of factors - (n + 1)
 
 intsbelow=: (2 }. i.)"0
@@ -1904,11 +1904,11 @@ There are 5 perfect numbers <= 35,000,000
 ## Maple
 
 
-{{incorrect|Maple| 
+{{incorrect|Maple|
 
- The output for Chowla(1) is incorrect. 
+ The output for Chowla(1) is incorrect.
 
- }} 
+ }}
 
 
 ```Maple
@@ -1916,21 +1916,21 @@ ChowlaFunction := n -> NumberTheory:-SumOfDivisors(n) - n - 1;
 
 PrintChowla := proc(n::posint) local i;
 printf("Integer : Chowla Number\n");
-for i to n do 
-  printf("%d  :  %d\n", i, ChowlaFunction(i)); 
-end do; 
+for i to n do
+  printf("%d  :  %d\n", i, ChowlaFunction(i));
+end do;
 end proc:
 
 countPrimes := n -> nops([ListTools[SearchAll](0, map(ChowlaFunction, [seq(1 .. n)]))]);
 
-findPerfect := proc(n::posint) local to_check, found, k; 
-to_check := map(ChowlaFunction, [seq(1 .. n)]); 
-found := []; 
-for k to n do 
-  if to_check(k) = k - 1 then 
-    found := [found, k]; 
+findPerfect := proc(n::posint) local to_check, found, k;
+to_check := map(ChowlaFunction, [seq(1 .. n)]);
+found := [];
+for k to n do
+  if to_check(k) = k - 1 then
+    found := [found, k];
   end if;
-end do; 
+end do;
 end proc:
 
 PrintChowla(37);
@@ -2372,7 +2372,7 @@ for i=3 to limit by 2 do
         pow10 *= 10
     end if
 end for
- 
+
 count = 0
 limit = iff(machine_bits()=32?1.4e11:2.4e18)
 --limit = power(2,iff(machine_bits()=32?53:64)) -- (see note below)
@@ -2547,9 +2547,9 @@ Count of primes up to 10000000 = 664579
 ## PowerBASIC
 
 
-{{incorrect|PowerBASIC| 
+{{incorrect|PowerBASIC|
 
- The 8<sup>th</sup> perfect number is off by '''2'''   (it is too high), 
+ The 8<sup>th</sup> perfect number is off by '''2'''   (it is too high),
  it should end in   ... 952,128}}
 
 {{trans|Visual Basic .NET}}
@@ -2741,7 +2741,7 @@ def perfect_between(n, m):
             print(f"  {i:_}")
             c += 1
     print(f"Found {c} Perfect numbers between [{n:_}, {m:_})")
-    
+
 
 if __name__ == '__main__':
     for i in range(1, 38):
@@ -2820,7 +2820,7 @@ Found 1 Perfect numbers between [1_000_000, 35_000_000)
 
 ### Python: Numba
 
-(Elementary) use of the [http://numba.pydata.org/ numba] library needs 
+(Elementary) use of the [http://numba.pydata.org/ numba] library needs
 * library install and import
 *use of `@jit` decorator on some functions
 * Rewrite to remove use of `sum()`
@@ -3034,10 +3034,10 @@ object ChowlaNumbers {
     println("\nPerfect Numbers...")
     print(perfectsPar(35000000).toVector.sorted.zipWithIndex.map{case (n, i) => f"${i + 1}%,d: $n%,d"}.mkString("\n"))
   }
-  
+
   def primesPar(num: Int): ParVector[Int] = ParVector.range(2, num + 1).filter(n => chowlaNum(n) == 0)
   def perfectsPar(num: Int): ParVector[Int] = ParVector.range(6, num + 1).filter(n => chowlaNum(n) + 1 == n)
-  
+
   def chowlaNum(num: Int): Int = Iterator.range(2, math.sqrt(num).toInt + 1).filter(n => num%n == 0).foldLeft(0){case (s, n) => if(n*n == num) s + n else s + n + (num/n)}
 }
 ```
@@ -3129,7 +3129,7 @@ Dim j As Long, i As Long
     i = i + 1
   Loop
 End Function
- 
+
 Function sieve(ByVal limit As Long) As Boolean()
 Dim c() As Boolean
 Dim i As Long
@@ -3155,7 +3155,7 @@ Sub Display(ByVal s As String)
   Debug.Print s
   mStdOut.Write s & vbNewLine
 End Sub
- 
+
 Sub Main()
 Dim i As Long
 Dim count As Long
@@ -3168,21 +3168,21 @@ Dim kk As Long
 Dim s As String * 30
 Dim mFSO As Scripting.FileSystemObject
 Dim mStdIn As Scripting.TextStream
-    
+
   AllocConsole
   Set mFSO = New Scripting.FileSystemObject
   Set mStdIn = mFSO.GetStandardStream(StdIn)
   Set mStdOut = mFSO.GetStandardStream(StdOut)
-  
+
   For i = 1 To 37
     Display "chowla(" & i & ")=" & chowla(i)
   Next i
-  
+
   count = 1
   limit = 10000000
   power = 100
   c = sieve(limit)
-  
+
   For i = 3 To limit - 1 Step 2
     If Not c(i) Then
       count = count + 1
@@ -3211,7 +3211,7 @@ Dim mStdIn As Scripting.TextStream
     k = kk + 1
     kk = kk + k
   Loop
-        
+
   Display "There are " & CStr(count) & " perfect numbers <= 35.000.000"
 
   mStdOut.Write "press enter to quit program."
@@ -3528,7 +3528,7 @@ fcn chowla(n){
    foreach i in ([2..n.toFloat().sqrt()]){
       if(n%i == 0){
 	 j:=n/i;
-	 if(i==j) sum+=i; 
+	 if(i==j) sum+=i;
 	 else     sum+=i+j;
       }
    }

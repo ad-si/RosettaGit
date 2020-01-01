@@ -88,9 +88,9 @@ is
    type Point is record
       x, y : Float;
    end record;
-   
+
    type Polygon is array (Positive range <>) of Point;
-   
+
    function Shoelace(input : in Polygon) return Float
    is
       sum_1 : Float := 0.0;
@@ -103,7 +103,7 @@ is
       end loop;
       return abs(sum_1 - sum_2) / 2.0;
    end Shoelace;
-   
+
    my_polygon : constant Polygon :=
      ((3.0, 4.0),
       (5.0, 11.0),
@@ -137,12 +137,12 @@ Optimized version:
      '''begin'''
          inreal(0,x[i]);
          inreal(0,y[i])
-     '''end''';   
+     '''end''';
      x[i]:=x[1];
      y[i]:=y[1];
      a:=0;
      '''for''' i:=1 '''step''' 1 '''until''' n '''do'''
-         a:=a+x[i]*y[i+1]-x[i+1]*y[i];   
+         a:=a+x[i]*y[i+1]-x[i+1]*y[i];
      a:=abs(a/2.);
      outreal(1,a)
  '''end'''
@@ -157,20 +157,20 @@ Optimized version:
 Non-optimized version:
  '''begin'''
      '''comment''' Shoelace formula for polygonal area - Algol 60;
-     '''real''' '''array''' x[1:32],y[1:32]; 
+     '''real''' '''array''' x[1:32],y[1:32];
      '''integer''' i,j,n;
      '''real''' a;
      ininteger(0,n);
      '''for''' i:=1 '''step''' 1 '''until''' n '''do'''
      '''begin'''
          inreal(0,x[i]); inreal(0,y[i])
-     '''end''';   
+     '''end''';
      a:=0;
      '''for''' i:=1 '''step''' 1 '''until''' n '''do'''
      '''begin'''
          j:='''if''' i=n '''then''' 1 '''else''' i+1;
          a:=a+x[i]*y[j]-x[j]*y[i]
-     '''end''';   
+     '''end''';
      a:=abs(a/2.);
      outreal(1,a)
  '''end'''
@@ -232,7 +232,7 @@ END
 
 ## C
 
-Reads the points from a file whose name is supplied via the command line, prints out usage if invoked incorrectly. 
+Reads the points from a file whose name is supplied via the command line, prints out usage if invoked incorrectly.
 
 ```C
 
@@ -247,29 +247,29 @@ typedef struct{
 double shoelace(char* inputFile){
 	int i,numPoints;
 	double leftSum = 0,rightSum = 0;
-	
+
 	point* pointSet;
 	FILE* fp = fopen(inputFile,"r");
-	
+
 	fscanf(fp,"%d",&numPoints);
-	
+
 	pointSet = (point*)malloc((numPoints + 1)*sizeof(point));
-	
+
 	for(i=0;i<numPoints;i++){
 		fscanf(fp,"%lf %lf",&pointSet[i].x,&pointSet[i].y);
 	}
-	
+
 	fclose(fp);
-	
+
 	pointSet[numPoints] = pointSet[0];
-	
+
 	for(i=0;i<numPoints;i++){
 		leftSum += pointSet[i].x*pointSet[i+1].y;
 		rightSum += pointSet[i+1].x*pointSet[i].y;
 	}
-	
+
 	free(pointSet);
-	
+
 	return 0.5*fabs(leftSum - rightSum);
 }
 
@@ -277,10 +277,10 @@ int main(int argC,char* argV[])
 {
 	if(argC==1)
 		printf("\nUsage : %s <full path of polygon vertices file>",argV[0]);
-	
+
 	else
 		printf("The polygon area is %lf square units.",shoelace(argV[1]));
-	
+
 	return 0;
 }
 
@@ -314,8 +314,8 @@ The polygon area is 30.000000 square units.
 
 {{trans|D}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <tuple>
 #include <vector>
 
@@ -511,7 +511,7 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 
 Except for the use of "END FUNCTION ''name'' instead of just END, and the convenient function SUM with array span expressions (so SUM(P) rather than a DO-loop to sum the elements of array P), both standardised with F90, this would be acceptable to F66, which introduced complex number arithmetic. Otherwise, separate X and Y arrays would be needed, but complex numbers seemed convenient seeing as (x,y) pairs are involved. But because the MODULE facility of F90 has not been used, routines invoking functions must declare the type of the function names, especially if the default types are unsuitable, as here. In function AREA, the x and y parts are dealt with together, but in AREASL they might be better as separate arrays, thus avoiding the DIMAG and DBLE functions to extract the x and y parts. Incidentally, the x and y parts can be interchanged and the calculation still works. Comparing the two resulting areas might give some indication of their accuracy.
 
-If the MODULE protocol were used, the size of an array parameter is passed as a secret additional parameter accessible via the special function UBOUND, but otherwise it must be passed as an explicit parameter. A quirk of the compiler requires that N be declared before it appears in <code>DOUBLE COMPLEX P(N)</code> so as it is my practice to declare parameters in the order specified, here N comes before P. However, it is not clear whether specifying P(N) does much good (as in array index checking) as an alternative is to specify P(*) meaning merely that the array has one dimension, or even P(12345) to the same effect, with no attention to the actual numerical value. See for example [[Array_length#Fortran]] 
+If the MODULE protocol were used, the size of an array parameter is passed as a secret additional parameter accessible via the special function UBOUND, but otherwise it must be passed as an explicit parameter. A quirk of the compiler requires that N be declared before it appears in <code>DOUBLE COMPLEX P(N)</code> so as it is my practice to declare parameters in the order specified, here N comes before P. However, it is not clear whether specifying P(N) does much good (as in array index checking) as an alternative is to specify P(*) meaning merely that the array has one dimension, or even P(12345) to the same effect, with no attention to the actual numerical value. See for example [[Array_length#Fortran]]
 ```Fortran
       DOUBLE PRECISION FUNCTION AREA(N,P)	!Calculates the area enclosed by the polygon P.
 C   Uses the mid-point rule for integration. Consider the line joining (x1,y1) to (x2,y2)
@@ -583,7 +583,7 @@ The "shoelace" method came as a surprise to me, as I've always used what I had t
 
 ### Fortran I
 
-In orginal FORTRAN 1957: 
+In orginal FORTRAN 1957:
 
 ```fortran
 
@@ -591,7 +591,7 @@ C SHOELACE FORMULA FOR POLYGONAL AREA
       DIMENSION X(33),Y(33)
       READ 101,N
       DO 1 I=1,N
-   1    READ 102,X(I),Y(I)   
+   1    READ 102,X(I),Y(I)
       X(I)=X(1)
       Y(I)=Y(1)
       A=0
@@ -612,7 +612,7 @@ C SHOELACE FORMULA FOR POLYGONAL AREA
 ```txt
 
  5
-  3.00  4.00 
+  3.00  4.00
   5.00 11.00
  12.00  8.00
   9.00  5.00
@@ -908,21 +908,21 @@ shoelacearea(x, y) = 30.0
 class Point(val x: Int, val y: Int) {
     override fun toString() = "($x, $y)"
 }
- 
+
 fun shoelaceArea(v: List<Point>): Double {
     val n = v.size
     var a = 0.0
-    for (i in 0 until n - 1) { 
+    for (i in 0 until n - 1) {
         a += v[i].x * v[i + 1].y - v[i + 1].x * v[i].y
     }
-    return Math.abs(a + v[n - 1].x * v[0].y - v[0].x * v[n -1].y) / 2.0  
+    return Math.abs(a + v[n - 1].x * v[0].y - v[0].x * v[n -1].y) / 2.0
 }
 
 fun main(args: Array<String>) {
     val v = listOf(
         Point(3, 4), Point(5, 11), Point(12, 8), Point(9, 5), Point(5, 6)
     )
-    val area = shoelaceArea(v) 
+    val area = shoelaceArea(v)
     println("Given a polygon with vertices at $v,")
     println("its area is $area")
 }
@@ -969,7 +969,7 @@ function shoeArea(ps)
 end
 
 local p = {{3,4}, {5,11}, {12,8}, {9,5}, {5,6}}
-print(shoeArea(p))-- 30 
+print(shoeArea(p))-- 30
 ```
 
 both version handle special cases of less than 3 point as 0 area result.
@@ -1036,17 +1036,17 @@ Area[Polygon[{{3, 4}, {5, 11}, {12, 8}, {9, 5}, {5, 6}}]]
 shoelace = function(vertices)
     sum = 0
     points = vertices.len
-    
+
     for i in range(0,points-2)
         sum = sum + vertices[i][0]*vertices[i+1][1]
     end for
     sum = sum + vertices[points-1][0]*vertices[0][1]
-    
+
     for i in range(points-1,1)
         sum = sum - vertices[i][0]*vertices[i-1][1]
     end for
     sum = sum - vertices[0][0]*vertices[points-1][1]
-    
+
     return abs(sum)/2
 end function
 
@@ -1296,7 +1296,7 @@ END FUNCTION
 >>> x, y = zip(*points)
 >>> area_by_shoelace(x, y)
 30.0
->>> 
+>>>
 ```
 
 
@@ -1448,7 +1448,7 @@ e= #+1;                parse value y.1 y.# with y.e y.0 /*define  Y.n+1  &  Y.0 
 say $polygon  #  " points: " pts '  is ───► '  abs(A/2) /*stick a fork in it, we're done*/
 ```
 
-{{out|output|text=  is the same as the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is the same as the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -1518,17 +1518,17 @@ polygon area of 5 points: (3,4),(5,11),(12,8),(9,5),(5,6) is ---> 30
 
 # Project : Shoelace formula for polygonal area
 
-p = [[3,4], [5,11], [12,8], [9,5], [5,6]] 
+p = [[3,4], [5,11], [12,8], [9,5], [5,6]]
 see "The area of the polygon = " + shoelace(p)
 
 func shoelace(p)
-        sum = 0 
+        sum = 0
         for i = 1 to len(p) -1
              sum = sum + p[i][1] * p[i +1][2]
              sum = sum - p[i +1][1] * p[i][2]
         next
         sum = sum + p[i][1] * p[1][2]
-        sum = sum - p[1][1] * p[i][2] 
+        sum = sum - p[1][1] * p[i][2]
         return fabs(sum) / 2
 
 ```
@@ -1559,7 +1559,7 @@ end
 class Polygon
 
   def initialize(*coords)
-    @points = coords.map{|c| Point.new(*c) } 
+    @points = coords.map{|c| Point.new(*c) }
   end
 
   def area
@@ -1585,15 +1585,15 @@ case class Polygon( pp:List[Point] ) {
   require( pp.size > 2, "A Polygon must consist of more than two points" )
 
   override def toString = "Polygon(" + pp.mkString(" ", ", ", " ") + ")"
-  
+
   def area = {
-  
+
     // Calculate using the Shoelace Formula
     val xx = pp.map( p => p.x )
     val yy = pp.map( p => p.y )
     val overlace = xx zip yy.drop(1)++yy.take(1)
     val underlace = yy zip xx.drop(1)++xx.take(1)
-    
+
     (overlace.map( t => t._1 * t._2 ).sum - underlace.map( t => t._1 * t._2 ).sum).abs / 2.0
   }
 }
@@ -1751,7 +1751,7 @@ Private Function shoelace(s As Collection) As Double
     End If
     shoelace = Abs(t) / 2
 End Function
- 
+
 Public Sub polygonal_area()
     Dim task() As Variant
     task = [{3,4;5,11;12,8;9,5;5,6}]
@@ -1791,7 +1791,7 @@ End Sub
         area = area + x(i)*y(i+1) - x(i+1)*y(i)
     Next 'i
     area = Abs(area)/2
-    msgbox area,,"Shoelace formula" 
+    msgbox area,,"Shoelace formula"
 ```
 
 {{out}}
@@ -1818,7 +1818,7 @@ Option Explicit
 Public Function ShoelaceArea(x() As Double, y() As Double) As Double
 Dim i As Long, j As Long
 Dim Area As Double
- 
+
   j = UBound(x())
   For i = LBound(x()) To UBound(x())
     Area = Area + (y(j) + y(i)) * (x(j) - x(i))
@@ -1903,7 +1903,7 @@ By the "book":
 ```zkl
 fcn areaByShoelace(points){	// ( (x,y),(x,y)...)
    xs,ys:=Utils.Helpers.listUnzip(points); // (x,x,...), (y,y,,,)
-   ( xs.zipWith('*,ys[1,*]).sum(0) + xs[-1]*ys[0] - 
+   ( xs.zipWith('*,ys[1,*]).sum(0) + xs[-1]*ys[0] -
      xs[1,*].zipWith('*,ys).sum(0) - xs[0]*ys[-1] )
    .abs().toFloat()/2;
 }

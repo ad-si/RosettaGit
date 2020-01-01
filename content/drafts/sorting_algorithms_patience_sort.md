@@ -34,9 +34,9 @@ Takes integers as input, prints out usage on incorrect invocation
 
 int* patienceSort(int* arr,int size){
 	int decks[size][size],i,j,min,pickedRow;
-	
+
 	int *count = (int*)calloc(sizeof(int),size),*sortedArr = (int*)malloc(size*sizeof(int));
-	
+
 	for(i=0;i<size;i++){
 		for(j=0;j<size;j++){
 			if(count[j]==0 || (count[j]>0 && decks[j][count[j]-1]>=arr[i])){
@@ -46,10 +46,10 @@ int* patienceSort(int* arr,int size){
 			}
 		}
 	}
-	
+
 	min = decks[0][count[0]-1];
 	pickedRow = 0;
-	
+
 	for(i=0;i<size;i++){
 		for(j=0;j<size;j++){
 			if(count[j]>0 && decks[j][count[j]-1]<min){
@@ -59,7 +59,7 @@ int* patienceSort(int* arr,int size){
 		}
 		sortedArr[i] = min;
 		count[pickedRow]--;
-		
+
 		for(j=0;j<size;j++)
 			if(count[j]>0){
 				min = decks[j][count[j]-1];
@@ -67,31 +67,31 @@ int* patienceSort(int* arr,int size){
 				break;
 			}
 	}
-	
+
 	free(count);
 	free(decks);
-	
+
 	return sortedArr;
 }
 
 int main(int argC,char* argV[])
 {
 	int *arr, *sortedArr, i;
-	
+
 	if(argC==0)
 		printf("Usage : %s <integers to be sorted separated by space>");
 	else{
 		arr = (int*)malloc((argC-1)*sizeof(int));
-		
+
 		for(i=1;i<=argC;i++)
 			arr[i-1] = atoi(argV[i]);
-		
+
 		sortedArr = patienceSort(arr,argC-1);
-		
+
 		for(i=0;i<argC-1;i++)
 			printf("%d ",sortedArr[i]);
 	}
-	
+
 	return 0;
 }
 
@@ -111,8 +111,8 @@ C:\rosettaCode>patienceSort.exe 4 65 2 -31 0 99 83 781 1
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 #include <stack>
 #include <iterator>
@@ -181,7 +181,7 @@ int main() {
 {{out}}
 
 ```txt
--31, 0, 1, 2, 4, 65, 83, 99, 782, 
+-31, 0, 1, 2, 4, 65, 83, 99, 782,
 ```
 
 
@@ -198,16 +198,16 @@ int main() {
   [comparison sequence value]
   (lazy-seq
    (if (empty? sequence) `((~value)) ;; If there are no places to put the "card", make a new stack
-       (let [stack (first sequence)  
+       (let [stack (first sequence)
              top       (peek stack)]
          (if (comparison value top)
            (cons (conj stack value)  ;; Either put the card in a stack or recurse to the next stack
-                 (rest sequence))   
-           (cons stack               
+                 (rest sequence))
+           (cons stack
                  (patience-insert comparison
                                   (rest sequence)
                                   value)))))))
- 
+
 (defn patience-remove
   "Removes the value from the top of the first stack it shows up in.
    Leaves the stacks otherwise intact."
@@ -217,28 +217,28 @@ int main() {
        (let [stack (first sequence)
              top       (peek stack)]
          (if (= top value)                ;; Are we there yet?
-           (let [left-overs (pop stack)]  
+           (let [left-overs (pop stack)]
              (if (empty? left-overs)      ;; Handle the case that the stack is empty and needs to be removed
-               (rest sequence)            
-               (cons left-overs           
-                     (rest sequence))))   
-           (cons stack                    
+               (rest sequence)
+               (cons left-overs
+                     (rest sequence))))
+           (cons stack
                  (patience-remove (rest sequence)
                                   value)))))))
- 
+
 (defn patience-recover
   "Builds a sorted sequence from a list of patience stacks.
    The given comparison takes the place of 'less than'"
   [comparison sequence]
   (loop [sequence sequence
          sorted         []]
-    (if (empty? sequence) sorted 
+    (if (empty? sequence) sorted
         (let [smallest  (reduce #(if (comparison %1 %2) %1 %2)  ;; Gets the smallest element in the list
-                                (map peek sequence))            
-              remaining    (patience-remove sequence smallest)] 
-          (recur remaining                    
+                                (map peek sequence))
+              remaining    (patience-remove sequence smallest)]
+          (recur remaining
                  (conj sorted smallest)))))) ;; Recurse over the remaining values and add the new smallest to the end of the sorted list
- 
+
 (defn patience-sort
   "Sorts the sequence by comparison.
    First builds the list of valid patience stacks.
@@ -247,13 +247,13 @@ int main() {
   ([comparison sequence]
      (->> (reduce (comp doall ;; This is prevent a stack overflow by making sure all work is done when it needs to be
                         (partial patience-insert comparison)) ;; Insert all the values into the list of stacks
-                  nil                                         
+                  nil
                   sequence)
           (patience-recover comparison)))              ;; After we have the stacks, send it off to recover the sorted list
   ([sequence]
      ;; In the case we don't have an operator, defer to ourselves with less than
      (patience-sort < sequence)))
- 
+
 ;; Sort the test sequence and print it
 (println (patience-sort [4 65 2 -31 0 99 83 782 1]))
 
@@ -320,7 +320,7 @@ defmodule Sort do
     piles = deal_pile(list, [])
     merge_pile(piles, [])
   end
-  
+
   defp deal_pile([], piles), do: piles
   defp deal_pile([h|t], piles) do
     index = Enum.find_index(piles, fn pile -> hd(pile) <= h end)
@@ -328,22 +328,22 @@ defmodule Sort do
                           else: piles ++ [[h]]
     deal_pile(t, new_piles)
   end
-  
+
   defp add_element([h|t], 0,     elm, work), do: Enum.reverse(work, [[elm | h] | t])
   defp add_element([h|t], index, elm, work), do: add_element(t, index-1, elm, [h | work])
-  
+
   defp merge_pile([], list), do: list
   defp merge_pile(piles, list) do
     {max, index} = max_index(piles)
     merge_pile(delete_element(piles, index, []), [max | list])
   end
-  
+
   defp max_index([h|t]), do: max_index(t, hd(h), 1, 0)
-  
+
   defp max_index([], max, _, max_i), do: {max, max_i}
   defp max_index([h|t], max, index, _) when hd(h)>max, do: max_index(t, hd(h), index+1, index)
   defp max_index([_|t], max, index, max_i)           , do: max_index(t, max, index+1, max_i)
-  
+
   defp delete_element([h|t], 0, work) when length(h)==1, do: Enum.reverse(work, t)
   defp delete_element([h|t], 0, work)                  , do: Enum.reverse(work, [tl(h) | t])
   defp delete_element([h|t], index, work), do: delete_element(t, index-1, [h | work])
@@ -544,7 +544,7 @@ Library: 8.02.12
 Platform: Linux 64
 Installer: unknown
 InstallPath: /usr/share/j/8.0.2
-   
+
    patience_sort_demo Show ?.@$~10
 4 6 8 6 5 8 6 6 6 9
 ┌─────┬─┐
@@ -643,7 +643,7 @@ InstallPath: /usr/share/j/8.0.2
 │└─────────────────┴─┘│   │
 └─────────────────────┴───┘
 4 5 6 6 6 6 6 8 8 9
-   
+
 ```
 
 
@@ -668,7 +668,7 @@ public class PatienceSort {
             else
                 piles.add(newPile);
         }
- 
+
         // priority queue allows us to retrieve least pile efficiently
         PriorityQueue<Pile<E>> heap = new PriorityQueue<Pile<E>>(piles);
         for (int c = 0; c < n.length; c++) {
@@ -679,7 +679,7 @@ public class PatienceSort {
         }
         assert(heap.isEmpty());
     }
- 
+
     private static class Pile<E extends Comparable<? super E>> extends Stack<E> implements Comparable<Pile<E>> {
         public int compareTo(Pile<E> y) { return peek().compareTo(y.peek()); }
     }
@@ -707,7 +707,7 @@ public class PatienceSort {
 function patiencesort(list::Vector{T}) where T
     piles = Vector{Vector{T}}()
     for n in list
-        if isempty(piles) || 
+        if isempty(piles) ||
             (i = findfirst(pile -> n <= pile[end], piles)) ==  nothing
             push!(piles, [n])
         else
@@ -730,7 +730,7 @@ function mergesorted(vecvec)
     end
     sorted
 end
-                
+
 println(patiencesort(rand(collect(1:1000), 12)))
 
 ```
@@ -762,7 +762,7 @@ fun <T : Comparable<T>> patienceSort(arr: Array<T>) {
         }
         piles.add(mutableListOf(el))
     }
- 
+
     for (i in 0 until arr.size) {
         var min = piles[0].last()
         var minPileIndex = 0
@@ -771,12 +771,12 @@ fun <T : Comparable<T>> patienceSort(arr: Array<T>) {
                 min = piles[j].last()
                 minPileIndex = j
             }
-        } 
+        }
         arr[i] = min
         val minPile = piles[minPileIndex]
         minPile.removeAt(minPile.lastIndex)
         if (minPile.size == 0) piles.removeAt(minPileIndex)
-    }    
+    }
 }
 
 fun main(args: Array<String>) {
@@ -869,7 +869,7 @@ Usage:
   (struct
      type t = int
      let compare = compare
-   end);;        
+   end);;
 module IntPatienceSort : sig val patience_sort : int list -> int list end
 # IntPatienceSort.patience_sort [4; 65; 2; -31; 0; 99; 83; 782; 1];;
 - : int list = [-31; 0; 1; 2; 4; 65; 83; 99; 782]
@@ -1101,10 +1101,10 @@ Array
                      (setq M (cons I S)) ) ) )
             (T (=T (cdr M)))
             (link (pop (nth L (car M)))) ) ) ) )
-         
+
 (println
    (patience (4 65 2 -31 0 99 83 782 1)) )
-   
+
 (bye)
 ```
 
@@ -1201,9 +1201,9 @@ if __name__ == "__main__":
 
 ## REXX
 
-The items to be sorted can be any form of REXX number, not just integers;   the items may also be character strings.  
+The items to be sorted can be any form of REXX number, not just integers;   the items may also be character strings.
 
-Duplicates are also sorted correctly. 
+Duplicates are also sorted correctly.
 
 ```rexx
 /*REXX program sorts a list of things (or items) using the  patience sort  algorithm.   */
@@ -1413,7 +1413,7 @@ fun sort_into_piles n =
       end
     fun f x =
       let
-        val i = bsearch_piles x 
+        val i = bsearch_piles x
       in
         DynamicArray.update (piles, i, x :: DynamicArray.sub (piles, i))
       end
@@ -1530,7 +1530,7 @@ fcn patienceSort(ns){
 
 ```zkl
 T(T(3,2,6,4,3,5,1),
-  T(4,65,2,-31,0,99,83,782,1), 
+  T(4,65,2,-31,0,99,83,782,1),
   T(0,8,4,12,2,10,6,14,1,9,5,13,3,11,7,15),
   "foobar")
 .pump(Console.println,patienceSort);

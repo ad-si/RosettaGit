@@ -15,9 +15,9 @@ tags = []
 
 
 ;Task:
-Clear the screen, output something on the display, and then restore the screen to the preserved state that it was in before the task was carried out. 
+Clear the screen, output something on the display, and then restore the screen to the preserved state that it was in before the task was carried out.
 
-There is no requirement to change the font or kerning in this task, however character decorations and attributes are expected to be preserved.   If the implementer decides to change the font or kerning during the display of the temporary screen, then these settings need to be restored prior to exit. 
+There is no requirement to change the font or kerning in this task, however character decorations and attributes are expected to be preserved.   If the implementer decides to change the font or kerning during the display of the temporary screen, then these settings need to be restored prior to exit.
 
 
 
@@ -114,8 +114,8 @@ Assuming a terminal with support for Xterm's [http://invisible-island.net/xterm/
 ## C
 
 For Xterm.  "Allow alternate screen buffer" must be enabled by the popup menu.
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <unistd.h>
 
 int main()
@@ -295,7 +295,7 @@ fun main(args: Array<String>) {
 
 ## M2000 Interpreter
 
-M2000 Console can used for graphics also. Here is a small example how we can preserve attributes. We use Hold to save temporary console bitmap, and Release to restore old console bitmap. These statements used for animation too. 
+M2000 Console can used for graphics also. Here is a small example how we can preserve attributes. We use Hold to save temporary console bitmap, and Release to restore old console bitmap. These statements used for animation too.
 We can set the refresh rate using refresh statement, so we can make drawings before next refresh.
 
 If we change Mode (size of font), or Window size (console witdh/height), or use a Form statement to set character resolution (number characters in a row by row number) which automatic calculate size and line spacing, then saved consoled bitmap erased. To preserve screen from this situation we have to preserve last form's arguments, or window's arguments or mode's argument.
@@ -321,7 +321,7 @@ Module PreserveScreen {
       Gosub RestoreState
       Print "End"
       End
-      
+
       GetState:
             prevfont$=fontname$
             prevbold=bold
@@ -363,7 +363,7 @@ PreserveScreen
 Run["tput smcup"]    (* Save the display *)
 Run["echo Hello"]
 Pause[5]       (* Wait five seconds *)
-Run["tput rmcup"]  
+Run["tput rmcup"]
 ```
 
 
@@ -430,7 +430,7 @@ sequence s = save_text_image({1,1}, {25,80})
 clear_screen()
 puts(1,"\n\n *** hello ***\n")
 sleep(5)
-display_text_image({1,1}, s) 
+display_text_image({1,1}, s)
 sleep(3)
 ```
 
@@ -439,7 +439,7 @@ The following also works fine on linux (but not windows)
 ```Phix
 puts(1,"\e[?1049h\e[H")
 puts(1,"Alternate buffer!\n")
- 
+
 for i=5 to 0 by -1 do
     printf(1,"Going back in:%d\r", i)
     sleep(1)
@@ -512,7 +512,7 @@ print "\033[?1049l"
 
 This version <u>only</u> works with PC/REXX and Personal REXX.
 
-The   '''CLS'''   (DOS) command is used to clear the terminal screen.  
+The   '''CLS'''   (DOS) command is used to clear the terminal screen.
 
 ```rexx
 /*REXX program saves the screen contents and also the cursor location,  then clears the */
@@ -536,9 +536,9 @@ parse value cursor(1,1)  with  curRow  curCol .  /*also, find the location of th
 call cursor  curRow, curCol                      /*restore the original cursor position.*/
 ```
 
-This REXX program makes use of   '''scrsize'''   BIF which is used to determine the screen size of the terminal (console). 
+This REXX program makes use of   '''scrsize'''   BIF which is used to determine the screen size of the terminal (console).
 
-For those REXXes that don't have the   '''scrsize'''   BIF, the   '''SCRSIZE.REX'''   REXX program is included here   ──►   [[SCRSIZE.REX]]. 
+For those REXXes that don't have the   '''scrsize'''   BIF, the   '''SCRSIZE.REX'''   REXX program is included here   ──►   [[SCRSIZE.REX]].
 
 
 

@@ -19,11 +19,11 @@ Fix Rosetta Code deprecated code tags, with these rules:
 ```txt
 
 Change <%s> to <lang %s>
-Change </%s> to 
+Change </%s> to
 ```
 
 Change <code %s> to <lang %s>
-Change </code> to 
+Change </code> to
 ```
 
 
@@ -47,7 +47,7 @@ Change </code> to
 ## AutoHotkey
 
 
-```AutoHotkey>; usage: 
+```AutoHotkey>; usage:
  fixtags.ahk input.txt ouput.txt
 FileRead, text, %1%
 langs = ada,awk,autohotkey,etc
@@ -118,12 +118,12 @@ void main() {
 {{out}}
 
 ```txt
-lorem ipsum 
+lorem ipsum
 ```c>some c code</lang
-dolor sit amet, 
+dolor sit amet,
 ```csharp>some csharp code</lang
- consectetur adipisicing elit, 
-```r> some r code 
+ consectetur adipisicing elit,
+```r> some r code
 ```
 sed do eiusmod tempor incididunt</pre
 
@@ -188,17 +188,17 @@ altera electram. Tota adhuc altera te sea, <code bar>soluta appetere ut mel</bar
 Quo quis graecis vivendo te, <baz>posse nullam lobortis ex usu</code>. Eam volumus perpetua
 constituto id, mea an omittam fierent vituperatoribus.
 % fix_code_tags.escript < fix_code_tags
-Lorem ipsum 
+Lorem ipsum
 ```foo>saepe audire</lang
  elaboraret ne quo, id equidem
-atomorum inciderint usu. 
+atomorum inciderint usu.
 ```foo>In sit inermis deleniti percipit</lang
 ,
 ius ex tale civibus omittam. <barf>Vix ut doctus cetero invenire</barf>, his eu
-altera electram. Tota adhuc altera te sea, 
+altera electram. Tota adhuc altera te sea,
 ```bar>soluta appetere ut mel</lang
 .
-Quo quis graecis vivendo te, 
+Quo quis graecis vivendo te,
 ```baz>posse nullam lobortis ex usu</lang
 . Eam volumus perpetua
 constituto id, mea an omittam fierent vituperatoribus.
@@ -224,7 +224,7 @@ let main argv =
                 (                   # Group for alternation of 2 cases with a language name
                     (?<CloseMarker>/)   # Might be a closing tag,
                     |                   # Or
-                    code\s              # an old <code ...> tag 
+                    code\s              # an old <code ...> tag
                 )?                  # End of alternation; optional
                 \b(?<Lang>{0})\b    # Followed by the captured Language alternation
             |                   # Or
@@ -401,17 +401,17 @@ constituto id, mea an omittam fierent vituperatoribus.
 )
 
    fixCodeTags SampleText
-Lorem ipsum 
+Lorem ipsum
 ```foo>saepe audire</lang
  elaboraret ne quo, id equidem
-atomorum inciderint usu. 
+atomorum inciderint usu.
 ```foo>In sit inermis deleniti percipit</lang
 ,
 ius ex tale civibus omittam. <barf>Vix ut doctus cetero invenire</barf>, his eu
-altera electram. Tota adhuc altera te sea, 
+altera electram. Tota adhuc altera te sea,
 ```bar>soluta appetere ut mel</lang
 .
-Quo quis graecis vivendo te, 
+Quo quis graecis vivendo te,
 ```baz>posse nullam lobortis ex usu</lang
 . Eam volumus perpetua
 constituto id, mea an omittam fierent vituperatoribus.
@@ -434,7 +434,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-public class FixCodeTags 
+public class FixCodeTags
 {
 	public static void main(String[] args)
 	{
@@ -484,7 +484,7 @@ public class FixCodeTags
 				sb.append(line);
 			}
 			br.close();
-			
+
 			FileWriter fw=new FileWriter(new File(convertedfile));
 			//Write entire string buffer into the file
 			fw.write(sb.toString());
@@ -514,14 +514,14 @@ constituto id, mea an omittam fierent vituperatoribus.
 
 user@ubuntu:~$ java FixCodeTags fix.in fix.out
 user@ubuntu:~$ cat fix.out
-Lorem ipsum 
+Lorem ipsum
 ```foo>saepe audire</lang
  elaboraret ne quo, id equidem
-atomorum inciderint usu. 
+atomorum inciderint usu.
 ```foo>In sit inermis deleniti percipit</foo
 ,
 ius ex tale civibus omittam. <barf>Vix ut doctus cetero invenire</barf>, his eu
-altera electram. Tota adhuc altera te sea, 
+altera electram. Tota adhuc altera te sea,
 ```bar>soluta appetere ut mel</bar
 .
 Quo quis graecis vivendo te, <baz>posse nullam lobortis ex usu
@@ -644,7 +644,7 @@ end
 ```Maple>#Used <#/lang
  to desensitize wiki
 txt := FileTools[Text][ReadFile]("C:/Users/username/Desktop/text.txt"):
-#langs should be a real list of programming languages 
+#langs should be a real list of programming languages
 langs := ['foo', 'bar', 'baz', 'barf'];
 for lan in langs do
 	txt := StringTools:-SubstituteAll(txt, cat("<", lan, ">"), cat ("<lang ", lan, ">")):
@@ -659,19 +659,19 @@ print(txt);
 
 ```txt
 
-"Lorem ipsum 
+"Lorem ipsum
 ```foo>saepe audire</lang
  elaboraret ne quo, id equidem
-atomorum inciderint usu. 
+atomorum inciderint usu.
 ```foo>In sit inermis deleniti percipit</lang
 ,
-ius ex tale civibus omittam. 
+ius ex tale civibus omittam.
 ```barf>Vix ut doctus cetero invenire</lang
 , his eu
-altera electram. Tota adhuc altera te sea, 
+altera electram. Tota adhuc altera te sea,
 ```bar>soluta appetere ut mel</lang
 .
-Quo quis graecis vivendo te, 
+Quo quis graecis vivendo te,
 ```baz>posse nullam lobortis ex usu</lang
 . Eam volumus perpetua
 constituto id, mea an omittam fierent vituperatoribus. "
@@ -691,20 +691,20 @@ StringReplace[Import["wikisource.txt"],
 ("<code "|"<")~~Shortest[x__]~~">"->"<lang "~~ x~~">"}
 ]>>"converted.txt"
 
-->conversion of sample text 
+->conversion of sample text
 Lorem ipsum
 ```foo>saepe audire</lang
 elaboraret ne quo,id equidem
-atomorum inciderint usu. 
+atomorum inciderint usu.
 ```foo>In sit inermis deleniti percipit</lang
 ,
-ius ex tale civibus omittam. 
+ius ex tale civibus omittam.
 ```barf>Vix ut doctus cetero invenire</lang
 ,
-his eualtera electram.Tota adhuc altera te sea, 
+his eualtera electram.Tota adhuc altera te sea,
 ```bar>soluta appetere ut mel</lang
 .
-Quo quis graecis vivendo te, 
+Quo quis graecis vivendo te,
 ```baz>posse nullam lobortis ex usu</lang
 .
 Eam volumus perpetua constituto id,mea an omittam fierent vituperatoribus
@@ -719,7 +719,7 @@ Eam volumus perpetua constituto id,mea an omittam fierent vituperatoribus
 ```ocaml
 #load "str.cma"
 
-let langs = 
+let langs =
   Str.split (Str.regexp " ")
     "actionscript ada algol68 amigae applescript autohotkey awk bash basic \
      befunge bf c cfm cobol cpp csharp d delphi e eiffel factor false forth \
@@ -922,8 +922,8 @@ function fix_tags(string text)
 end function
 
 constant test = """
-lorem ipsum <c>some c code</c>dolor sit amet, <csharp>some 
-csharp code</csharp> consectetur adipisicing elit, <code r> 
+lorem ipsum <c>some c code</c>dolor sit amet, <csharp>some
+csharp code</csharp> consectetur adipisicing elit, <code r>
 some r code </code>sed do eiusmod tempor incididunt
 """
 puts(1,fix_tags(test))
@@ -933,17 +933,17 @@ puts(1,fix_tags(test))
 
 ```txt
 
-lorem ipsum 
+lorem ipsum
 ```c>some c code</lang
-dolor sit amet, 
+dolor sit amet,
 ```csharp
 some
 csharp code
 ```
- consectetur adipisicing elit, 
+ consectetur adipisicing elit,
 ```r
 
-some r code 
+some r code
 ```
 sed do eiusmod tempor incididunt
 
@@ -979,10 +979,10 @@ sed do eiusmod tempor incididunt
 
 ```PureBasic
 If Not OpenConsole()
-  End 
+  End
 ElseIf CountProgramParameters() <> 2
   PrintN("Usage: "+GetFilePart(ProgramFilename())+" InFile OutFile")
-  End 
+  End
 EndIf
 
 Define Infile$ =ProgramParameter(), Outfile$=ProgramParameter()
@@ -1005,7 +1005,7 @@ If ReadFile(0,Infile$)
         EndIf
         line$=ReplaceString(line$,"<"+part$+">",new$)
       Else
-        Break   
+        Break
       EndIf
     ForEver
     AddElement(Out$()): Out$()=line$
@@ -1083,7 +1083,7 @@ fixtags <- function(page)
    page <- gsub(paste("<(", langs, ")>", sep=""), "
 ```\\1
 ", page)
-   page <- gsub(paste("</(", langs, ")>", sep=""), "</#####lang>", page) 
+   page <- gsub(paste("</(", langs, ")>", sep=""), "</#####lang>", page)
    page <- gsub(paste("<code(", langs, ")>", sep=""), "
 ```\\1
 ", page)
@@ -1184,26 +1184,26 @@ atomorum inciderint usu. <foo>In sit inermis deleniti percipit</foo>,
 ius ex tale civibus omittam. <barf>Vix ut doctus cetero invenire</barf>, his eu
 altera electram. Tota adhuc altera te sea, <code bar>soluta appetere ut mel</bar>.
 Quo quis graecis vivendo te, <baz>posse nullam lobortis ex usu</code>. Eam volumus perpetua
-constituto id, mea an omittam fierent vituperatoribus. 
+constituto id, mea an omittam fierent vituperatoribus.
 ```
 
 
 
 ```txt
-Lorem ipsum 
+Lorem ipsum
 ```foo>saepe audire</lang
  elaboraret ne quo, id equidem
-atomorum inciderint usu. 
+atomorum inciderint usu.
 ```foo>In sit inermis deleniti percipit</lang
 ,
 ius ex tale civibus omittam. <barf>Vix ut doctus cetero invenire</barf>, his eu
-altera electram. Tota adhuc altera te sea, 
+altera electram. Tota adhuc altera te sea,
 ```bar>soluta appetere ut mel</lang
 .
-Quo quis graecis vivendo te, 
+Quo quis graecis vivendo te,
 ```baz>posse nullam lobortis ex usu</lang
 . Eam volumus perpetua
-constituto id, mea an omittam fierent vituperatoribus. 
+constituto id, mea an omittam fierent vituperatoribus.
 ```
 
 
@@ -1359,23 +1359,26 @@ Note: the "</" "lang>" to keep /lang the wiki from getting confused (it is strin
 
 ```txt
 
-$ cat wikisource.txt 
-lorem ipsum <c>some c code</c>dolor sit amet, <csharp>some 
+$ cat wikisource.txt
+lorem ipsum <c>some c code</c>dolor sit amet, <csharp>some
 csharp code</csharp> consectetur adipisicing elit, <code r>
    some r code </code>sed do eiusmod tempor incididunt
 
-$ zkl bbb < wikisource.txt  
-lorem ipsum 
-```c>some c code</lang
-dolor sit amet, 
+$ zkl bbb < wikisource.txt
+lorem ipsum
+
+```c
+some c code
+```
+dolor sit amet,
 ```csharp
-some 
+some
 csharp code
 ```
- consectetur adipisicing elit, 
+ consectetur adipisicing elit,
 ```r
 
-   some r code 
+   some r code
 ```
 sed do eiusmod tempor incididunt
 

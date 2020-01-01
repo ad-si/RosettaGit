@@ -69,7 +69,7 @@ He can only take whole units of any item, but there is much more of any item tha
 Show how many of each item does he take to maximize the value of items he is carrying away with him.
 
 
-;Note: 
+;Note:
 *   There are four solutions that maximize the value taken.   Only one ''need'' be given.
 
 
@@ -96,7 +96,7 @@ Show how many of each item does he take to maximize the value of items he is car
 ## 360 Assembly
 
 {{trans|Visual Basic}}
-The program uses two ASSIST macros (XDECO,XPRNT) to keep the code as short as possible. 
+The program uses two ASSIST macros (XDECO,XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Knapsack problem/Unbounded   04/02/2017
@@ -271,7 +271,7 @@ LOOPJP   CR     R6,R11             do j=1 to ns
          XPRNT  PG,L'PG            print buffer
          LA     R6,1(R6)           j=j+1
          B      LOOPJP
-ELOOPJP  L      R13,4(0,R13)       epilog 
+ELOOPJP  L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    " restore
          XR     R15,R15            " rc=0
          BR     R14                exit
@@ -538,7 +538,7 @@ While (Wp+=W1) <= W && (Vp+=V1) <= V {
              t := ($=Val ? t "`n    " : "    ")
            . p "`t   " i "`t   " g "`t  " Wg*sW "`t   " Vg*sV
            , $ := Val
-   }      
+   }
 }
 MsgBox Value = %$%`n`nPanacea`tIchor`tGold`tWeight`tVolume`n%t%
 ```
@@ -598,7 +598,7 @@ MsgBox Value = %$%`n`nPanacea`tIchor`tGold`tWeight`tVolume`n%t%
                             ".\n"
                         )
                     : ?sack
-                | 
+                |
                 )
             |   add
               $ ( !ncumwght
@@ -615,7 +615,7 @@ MsgBox Value = %$%`n`nPanacea`tIchor`tGold`tWeight`tVolume`n%t%
   )
 & add$(0.0.0..!things)
 & out$(str$(!sack "The value in the knapsack is " !maxvalue "."))
-& 
+&
 );
 
 !knapsack;
@@ -638,8 +638,8 @@ The value in the knapsack is 54500.
 figures out the best (highest value) set by brute forcing every possible subset.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct {
@@ -715,9 +715,9 @@ best value: 54500
 
 ```csharp
 /*Knapsack
- 
+
   This model finds the integer optimal packing of a knapsack
- 
+
   Nigel_Galloway
   January 29th., 2012
 */
@@ -855,7 +855,7 @@ class Program
         return new uint[] { a0, b0, c0 };
     }
 
-    static uint[] items1()  // 0,22 µs 
+    static uint[] items1()  // 0,22 µs
     {
         uint v, v0 = 0, a, b, c, a0 = 0, b0 = 0, c0 = 0, c1 = 0;
         for (a = 0; a <= 10; a++)
@@ -898,8 +898,8 @@ We have an <tt>item</tt> struct to contain the data for both contents and the kn
         max-w 25.0
         max-v 0.25
         iters #(range (inc (max-count % max-w max-v)))]
-    (filter (complement nil?)  
-      (pmap 
+    (filter (complement nil?)
+      (pmap
         #(let [[p i g] %
                 w (total :weight types %)
                 v (total :volume types %)]
@@ -916,7 +916,7 @@ The <tt>knapsacks</tt> function returns a lazy sequence of all valid knapsacks, 
 ```lisp
 (defn best-by-value [ks]
   (reduce #(if (> (:value %1) (:value %2)) %1 %2) ks))
-            
+
 (defn print-knapsack[k]
   (let [ {val :value w :weight  v :volume} k
         {p :p i :i g :g} ^k]
@@ -1164,7 +1164,7 @@ pragma.enable("accumulator")
 /** A data type representing a bunch of stuff (or empty space). */
 def makeQuantity(value, weight, volume, counts) {
   def quantity {
-    to __printOn(out) { 
+    to __printOn(out) {
       for name => n in counts { out.print(`$n $name  `) }
       out.print(`(val=$value wt=$weight vol=$volume)`)
     }
@@ -1199,10 +1199,10 @@ def fill(spaceAvailable, treasures) {
   if (treasures.size().isZero()) { # nothing to pick
     return [spaceAvailable]
   }
-  
+
   # Pick one treasure type
   def [unit] + otherTreasures := treasures
-  
+
   var results := []
   for count in (0..spaceAvailable.fit(unit)).descending() {
     results += fill(spaceAvailable - unit * count, otherTreasures)
@@ -1235,7 +1235,7 @@ def printBest(emptyKnapsack, treasures) {
 def panacea := makeQuantity(3000, 0.3, 0.025, ["panacea" => 1])
 def ichor   := makeQuantity(1800, 0.2, 0.015, ["ichor"   => 1])
 def gold    := makeQuantity(2500, 2.0, 0.002, ["gold"    => 1])
-def emptyKnapsack \         
+def emptyKnapsack \
             := makeQuantity(   0,  25, 0.250, [].asMap())
 
 printBest(emptyKnapsack, [panacea, ichor, gold])
@@ -1276,45 +1276,45 @@ Use a cache, and multiply by 10^n to get an integer problem.
 ;; retrieve best core for item i
 ;; returns ( score . quantity)
 
-(define (t-get i p v)  
-   (if ( < i 0) (cons 0 0)  
+(define (t-get i p v)
+   (if ( < i 0) (cons 0 0)
       (hash-ref H (t-key i p v )))) ;; may be #f
 
 ;; compute best quantity.score (i), assuming best (i-1 p v) is known
 (define (score-qty i p v (q) (score)(smax)(qmax))
-	 (or 
+	 (or
 	 (t-get i p v) ;; already known
 	 (begin
  		(set! q (min (quotient p (poids i)) (quotient v (volume i)))) ;; max possible q
  		(set! smax -Infinity)
-		    ( for ((k (1+ q))) ;; try all legal quantities 
-		      (set! score (+ 
+		    ( for ((k (1+ q))) ;; try all legal quantities
+		      (set! score (+
 		         (first (score-qty (1- i) (- p (* k (poids i))) (- v (* k (volume i)))))
 		         (* k (valeur i))))
 		     #:continue (< score smax)
 		      (set! smax score)
 		      (set! qmax k))
 		 (hash-set H (t-key i p v) (cons smax qmax)))))
-		
-		
+
+
 ;; compute best scores, starting from last item
 (define (task P V)
         (define N (1- (table-count T)))
-        (define qty 0) 
+        (define qty 0)
         (set! H (make-hash))
 	(writeln 'total-value (first (score-qty N P V)))
-		
+
 	(for/list  ((i (in-range N -1 -1)))
 			(set! qty (rest (t-get i P V)))
 			#:continue (= qty 0)
-			(begin0 
+			(begin0
 			(cons (name i) (t-get i P V))
 			(set! P (- P (* (poids i) qty)))
 			(set! V (- V (* (volume i) qty))))))
 
 ;; output
 (task 25000 250)
-total-value     54500    
+total-value     54500
     → (("⭐️-gold" 54500 . 11) ("🌵-ichor" 27000 . 15))
 
 (length (hash-keys H)) ;; # entries in cache
@@ -1454,11 +1454,11 @@ defmodule Knapsack do
     |> Enum.max
     |> print
   end
-  
+
   defp product([x]), do: x
   defp product([a,b]), do: for x <- a, y <- b, do: [x,y]
   defp product([h|t]), do: for x <- h, y <- product(t), do: [x | y]
-  
+
   defp total(lists, items) do
     Enum.map(lists, fn kwlist ->
       total = Enum.reduce(kwlist, {0,0,0}, fn {name,n},{volume,weight,value} ->
@@ -1469,7 +1469,7 @@ defmodule Knapsack do
       {kwlist, total}
     end)
   end
-  
+
   defp print({max_value, data}) do
     IO.puts "Maximum value achievable is #{max_value}\tvolume  weight  value"
     Enum.each(data, fn {kw,{volume,weight,value}} ->
@@ -1478,7 +1478,7 @@ defmodule Knapsack do
   end
 end
 
-items = %{panacea: Item.new(0.025, 0.3, 3000), 
+items = %{panacea: Item.new(0.025, 0.3, 3000),
           ichor:   Item.new(0.015, 0.2, 1800),
           gold:    Item.new(0.002, 2.0, 2500) }
 maximum = Item.new(0.25, 25, 0)
@@ -1556,12 +1556,12 @@ M:: bounty <=> ( a b -- <=> )
 ```forth
 \ : value ; immediate
 : weight cell+ ;
-: volume 2 cells + ; 
+: volume 2 cells + ;
 : number 3 cells + ;
 
 \      item value weight volume number
-create panacea 30 ,   3 ,  25 , 0 , 
-create ichor   18 ,   2 ,  15 , 0 , 
+create panacea 30 ,   3 ,  25 , 0 ,
+create ichor   18 ,   2 ,  15 , 0 ,
 create gold    25 ,  20 ,   2 , 0 ,
 create sack     0 , 250 , 250 ,
 
@@ -1604,7 +1604,7 @@ variable max-au
 : solve-gold
   gold fits? if gold add  recurse  gold take
   else check then ;
-  
+
 : solve-ichor
   ichor fits? if ichor add  recurse  ichor take then
   solve-gold ;
@@ -1619,32 +1619,32 @@ solve-panacea .solution
 Or like this...
 
 ```forth
-0 VALUE vials  
-0 VALUE ampules  
-0 VALUE bars  
-0 VALUE bag	 
+0 VALUE vials
+0 VALUE ampules
+0 VALUE bars
+0 VALUE bag
 
-#250   3 /  #250 #25 /   MIN 1+ CONSTANT maxvials	
-#250    2/  #250 #15 /   MIN 1+ CONSTANT maxampules   
-#250 #20 /  #250    2/   MIN 1+ CONSTANT maxbars	
+#250   3 /  #250 #25 /   MIN 1+ CONSTANT maxvials
+#250    2/  #250 #15 /   MIN 1+ CONSTANT maxampules
+#250 #20 /  #250    2/   MIN 1+ CONSTANT maxbars
 
 : RESULTS ( v a b -- k )
 	3DUP #20 *  SWAP 2*      +  SWAP     3 * +  #250 > IF  3DROP -1 EXIT  ENDIF
-	3DUP    2*  SWAP #15   * +  SWAP   #25 * +  #250 > IF  3DROP -1 EXIT  ENDIF 
-	#2500    *  SWAP #1800 * +  SWAP #3000 * + ; 
+	3DUP    2*  SWAP #15   * +  SWAP   #25 * +  #250 > IF  3DROP -1 EXIT  ENDIF
+	#2500    *  SWAP #1800 * +  SWAP #3000 * + ;
 
-: .SOLUTION ( -- ) 
-	CR ." The traveller's knapsack contains " 
+: .SOLUTION ( -- )
+	CR ." The traveller's knapsack contains "
 	   vials   DEC. ." vials of panacea, "
-	   ampules DEC. ." ampules of ichor, " 
+	   ampules DEC. ." ampules of ichor, "
 	CR bars    DEC. ." bars of gold, a total value of "
-	   vials ampules bars RESULTS 0DEC.R ." ." ; 
+	   vials ampules bars RESULTS 0DEC.R ." ." ;
 
 : KNAPSACK ( -- )
-	-1 TO bag 
+	-1 TO bag
 	maxvials 0 ?DO
 	maxampules 0 ?DO
-	     maxbars 0 ?DO  
+	     maxbars 0 ?DO
                               K J I RESULTS DUP
 			    bag  > IF  TO bag  K TO vials J TO ampules I TO bars
 				ELSE  DROP
@@ -1658,7 +1658,7 @@ Or like this...
 With the result...
 
  FORTH> knapsack
- The traveller's knapsack contains 0 vials of panacea, 15 ampules of ichor, 
+ The traveller's knapsack contains 0 vials of panacea, 15 ampules of ichor,
  11 bars of gold, a total value of 54500. ok
 
 
@@ -1671,11 +1671,11 @@ A straight forward 'brute force' approach
 PROGRAM KNAPSACK
 
   IMPLICIT NONE
- 
+
   REAL :: totalWeight, totalVolume
   INTEGER :: maxPanacea, maxIchor, maxGold, maxValue = 0
   INTEGER :: i, j, k
-  INTEGER :: n(3)  
+  INTEGER :: n(3)
 
   TYPE Bounty
     INTEGER :: value
@@ -1693,13 +1693,13 @@ PROGRAM KNAPSACK
   maxPanacea = MIN(sack%weight / panacea%weight, sack%volume / panacea%volume)
   maxIchor = MIN(sack%weight / ichor%weight, sack%volume / ichor%volume)
   maxGold = MIN(sack%weight / gold%weight, sack%volume / gold%volume)
-  
+
   DO i = 0, maxPanacea
      DO j = 0, maxIchor
         Do k = 0, maxGold
            current%value = k * gold%value + j * ichor%value + i * panacea%value
            current%weight = k * gold%weight + j * ichor%weight + i * panacea%weight
-           current%volume = k * gold%volume + j * ichor%volume + i * panacea%volume       
+           current%volume = k * gold%volume + j * ichor%volume + i * panacea%volume
            IF (current%weight > sack%weight .OR. current%volume > sack%volume) CYCLE
            IF (current%value > maxValue) THEN
               maxValue = current%value
@@ -1707,14 +1707,14 @@ PROGRAM KNAPSACK
               totalVolume = current%volume
               n(1) = i ; n(2) = j ; n(3) = k
            END IF
-        END DO  
+        END DO
      END DO
   END DO
 
   WRITE(*, "(A,I0)") "Maximum value achievable is ", maxValue
   WRITE(*, "(3(A,I0),A)") "This is achieved by carrying ", n(1), " panacea, ", n(2), " ichor and ", n(3), " gold items"
   WRITE(*, "(A,F4.1,A,F5.3)") "The weight to carry is ", totalWeight, " and the volume used is ", totalVolume
- 
+
 END PROGRAM KNAPSACK
 ```
 
@@ -1851,10 +1851,10 @@ items.eachPermutation { itemList ->
     def start = System.currentTimeMillis()
     def packingList = knapsackUnbounded(itemList, 25.0, 0.250)
     def elapsed = System.currentTimeMillis() - start
-    
+
     println "\n  Item Order: ${itemList.collect{ it.name.split()[0] }}"
     println "Elapsed Time: ${elapsed/1000.0} s"
-    
+
     solutions << (packingList as Set)
 }
 
@@ -2021,10 +2021,10 @@ ENDDO
 
 
 ```hicest
-value=54500; Panaceas=0; Ichors=15; Golds=11; weight=25; volume=0.247; 
-value=54500; Panaceas=3; Ichors=10; Golds=11; weight=24.9; volume=0.247; 
-value=54500; Panaceas=6; Ichors=5; Golds=11; weight=24.8; volume=0.247; 
-value=54500; Panaceas=9; Ichors=0; Golds=11; weight=24.7; volume=0.247; 
+value=54500; Panaceas=0; Ichors=15; Golds=11; weight=25; volume=0.247;
+value=54500; Panaceas=3; Ichors=10; Golds=11; weight=24.9; volume=0.247;
+value=54500; Panaceas=6; Ichors=5; Golds=11; weight=24.8; volume=0.247;
+value=54500; Panaceas=9; Ichors=0; Golds=11; weight=24.7; volume=0.247;
 ```
 
 
@@ -2220,7 +2220,7 @@ output:
 
 ```txt
 Maximum value achievable is: 54500
-This is achieved by carrying (one solution): 0 panacea, 15 ichor, 11 gold, 
+This is achieved by carrying (one solution): 0 panacea, 15 ichor, 11 gold,
 The weight to carry is: 25   and the volume used is: 0,247
 ```
 
@@ -2234,13 +2234,13 @@ Brute force.
 var gold = { 'value': 2500, 'weight': 2.0, 'volume': 0.002 },
     panacea = { 'value': 3000, 'weight': 0.3, 'volume': 0.025 },
     ichor = { 'value': 1800, 'weight': 0.2, 'volume': 0.015 },
-    
+
     items = [gold, panacea, ichor],
     knapsack = {'weight': 25, 'volume': 0.25},
     max_val = 0,
     solutions = [],
     g, p, i, item, val;
-    
+
 for (i = 0; i < items.length; i += 1) {
     item = items[i];
     item.max = Math.min(
@@ -2248,7 +2248,7 @@ for (i = 0; i < items.length; i += 1) {
         Math.floor(knapsack.volume / item.volume)
     );
 }
- 
+
 for (g = 0; g <= gold.max; g += 1) {
     for (p = 0; p <= panacea.max; p += 1) {
         for (i = 0; i <= ichor.max; i += 1) {
@@ -2269,7 +2269,7 @@ for (g = 0; g <= gold.max; g += 1) {
         }
     }
 }
- 
+
 document.write("maximum value: " + max_val + '
 ');
 for (i = 0; i < solutions.length; i += 1) {
@@ -2511,7 +2511,7 @@ for i = 1, max_num_items["panaea"] do
                         ["weight"] = i*items["panaea"]["weight"] + j*items["ichor"]["weight"] + k*items["gold"]["weight"],
                         ["volume"] = i*items["panaea"]["volume"] + j*items["ichor"]["volume"] + k*items["gold"]["volume"]
                       }
-                      
+
             if current.value > best.value and current.weight <= max_weight and current.volume <= max_volume then
                 best = { ["value"] = current.value, ["weight"] = current.weight, ["volume"] = current.volume }
                 best_amounts = { ["panaea"] = i, ["ichor"] = j, ["gold"] = k }
@@ -2568,9 +2568,9 @@ The volume for all of those is the same, the 'best' solution would be the one th
 
 ```mathprog
 /*Knapsack
- 
+
   This model finds the integer optimal packing of a knapsack
- 
+
   Nigel_Galloway
   January 9th., 2012
 */
@@ -2751,24 +2751,24 @@ let () = List.iter print best_results
 outputs:
 
 ```txt
-Maximum value: 54500 
- Total weight:  24.7 
- Total volume:  0.247 
+Maximum value: 54500
+ Total weight:  24.7
+ Total volume:  0.247
  Containing:    9 panacea, 0 ichor, 11 gold
 
-Maximum value: 54500 
- Total weight:  24.8 
- Total volume:  0.247 
+Maximum value: 54500
+ Total weight:  24.8
+ Total volume:  0.247
  Containing:    6 panacea, 5 ichor, 11 gold
 
-Maximum value: 54500 
- Total weight:  24.9 
- Total volume:  0.247 
+Maximum value: 54500
+ Total weight:  24.9
+ Total volume:  0.247
  Containing:    3 panacea, 10 ichor, 11 gold
 
-Maximum value: 54500 
- Total weight:  25 
- Total volume:  0.247 
+Maximum value: 54500
+ Total weight:  25
+ Total volume:  0.247
  Containing:    0 panacea, 15 ichor, 11 gold
 ```
 
@@ -2886,7 +2886,7 @@ total value: 54500
 
 ## Pascal
 
-With ideas from C, Fortran and Modula-3. 
+With ideas from C, Fortran and Modula-3.
 
 ```pascal
 Program Knapsack(output);
@@ -2918,7 +2918,7 @@ begin
   maxpanacea := round(min(sack.weight / panacea.weight, sack.volume / panacea.volume));
   maxichor   := round(min(sack.weight / ichor.weight,   sack.volume / ichor.volume));
   maxgold    := round(min(sack.weight / gold.weight,    sack.volume / gold.volume));
- 
+
   for i := 0 to maxpanacea do
     for j := 0 to maxichor do
       for k := 0 to maxgold do
@@ -3126,7 +3126,7 @@ Increase profit and decrease weight/volume to pick largest profit for least weig
 ```Phix
 --
 -- demo\rosetta\knapsack.exw
--- 
+--
 ### ===================
 
 --
@@ -3156,7 +3156,7 @@ function knapsack(sequence res, goodies, atom profit, weight, volume, at=1, sequ
     end if
     return res
 end function
- 
+
 constant goodies = {
 -- item           profit weight volume
 {"panacea",      {3000,   0.3, 0.025}},
@@ -3241,51 +3241,51 @@ $Item = @(
     [pscustomobject]@{ Name = 'ichor'  ; Unit = 'ampules'; value = 1800; Weight = 0.2; Volume = 0.015 }
     [pscustomobject]@{ Name = 'gold'   ; Unit = 'bars'   ; value = 2500; Weight = 2.0; Volume = 0.002 }
     )
- 
+
 #  Define our maximums
 $MaxWeight = 25
 $MaxVolume = 0.25
- 
+
 #  Set our default value to beat
 $OptimalValue = 0
- 
+
 #  Iterate through the possible quantities of item 0, without going over the weight or volume limit
 ForEach ( $Qty0 in 0..( [math]::Min( [math]::Truncate( $MaxWeight / $Item[0].Weight ), [math]::Truncate( $MaxVolume / $Item[0].Volume ) ) ) )
     {
     #  Calculate the remaining space
     $RemainingWeight = $MaxWeight - $Qty0 * $Item[0].Weight
     $RemainingVolume = $MaxVolume - $Qty0 * $Item[0].Volume
- 
+
     #  Iterate through the possible quantities of item 1, without going over the weight or volume limit
     ForEach ( $Qty1 in 0..( [math]::Min( [math]::Truncate( $RemainingWeight / $Item[1].Weight ), [math]::Truncate( $RemainingVolume / $Item[1].Volume ) ) ) )
         {
         #  Calculate the remaining space
         $RemainingWeight2 = $RemainingWeight - $Qty1 * $Item[1].Weight
         $RemainingVolume2 = $RemainingVolume - $Qty1 * $Item[1].Volume
- 
+
         #  Calculate the maximum quantity of item 2 for the remaining space, without going over the weight or volume limit
         $Qty2 = [math]::Min( [math]::Truncate( $RemainingWeight2 / $Item[2].Weight ), [math]::Truncate( $RemainingVolume2 / $Item[2].Volume ) )
- 
+
         #  Calculate the total value of the items packed
         $TrialValue =   $Qty0 * $Item[0].Value +
                         $Qty1 * $Item[1].Value +
                         $Qty2 * $Item[2].Value
- 
+
         #  Describe the trial solution
         $Solution  = "$Qty0 $($Item[0].Unit) of $($Item[0].Name), "
         $Solution += "$Qty1 $($Item[1].Unit) of $($Item[1].Name), and "
         $Solution += "$Qty2 $($Item[2].Unit) of $($Item[2].Name) worth a total of $TrialValue."
- 
+
         #  If the trial value is higher than previous most valuable trial...
         If ( $TrialValue -gt $OptimalValue )
             {
             #  Set the new number to beat
             $OptimalValue = $TrialValue
- 
+
             #  Overwrite the previous optimal solution(s) with the trial solution
             $Solutions  = @( $Solution )
             }
- 
+
         #  Else if the trial value matches the previous most valuable trial...
        ElseIf ( $TrialValue -eq $OptimalValue )
             {
@@ -3294,7 +3294,7 @@ ForEach ( $Qty0 in 0..( [math]::Min( [math]::Truncate( $MaxWeight / $Item[0].Wei
             }
         }
     }
- 
+
 #  Show the results
 $Solutions
 ```
@@ -3412,7 +3412,7 @@ Nb Items       Value    Weigth    Volume
 15 ichor       27000      3.00     0.225
 11 gold        27500     22.00     0.022
                54500     25.00     0.247
-true 
+true
 ```
 
 
@@ -3427,7 +3427,7 @@ Define.i maxPanacea, maxIchor, maxGold, maxValue
 Define.i i, j ,k
 Dim n.i(2)
 
-Enumeration 
+Enumeration
   #Panacea
   #Ichor
   #Gold
@@ -3459,7 +3459,7 @@ maxPanacea=min(Item(#Sack)\weight/Item(#Panacea)\weight,Item(#Sack)\volyme/Item(
 maxIchor  =min(Item(#Sack)\weight/Item(#Ichor)\weight,  Item(#Sack)\volyme/Item(#Ichor)\volyme)
 maxGold   =min(Item(#Sack)\weight/Item(#Gold)\weight,   Item(#Sack)\volyme/Item(#Gold)\volyme)
 
-For i=0 To maxPanacea 
+For i=0 To maxPanacea
   For j=0 To maxIchor
     For k=0 To maxGold
       Item(#Current)\value=k*Item(#Gold)\value  +j*item(#Ichor)\value +i*item(#Panacea)\value
@@ -3486,7 +3486,7 @@ If OpenConsole()
   txt$+"The weight to carry is "+StrF(totalWeight,2)
   txt$+" and the volume used is "+StrF(TotalVolyme,2)
   PrintN(txt$)
-  
+
   Print(#CRLF$+"Press Enter to quit"): Input()
 EndIf
 
@@ -3512,7 +3512,7 @@ Outputs
  Maximum value achievable is 54500
  This is achieved by carrying 0 panacea, 15 ichor and 11 gold items
  The weight to carry is 25.00 and the volume used is 0.25
- 
+
  Press Enter to quit</tt>
 
 
@@ -3562,11 +3562,11 @@ Using Dynamic Programming
 
 ```r
 
-Data_<-structure(list(item = c("Panacea", "Ichor", "Gold"), value = c(3000, 
-1800, 2500), weight = c(3, 2, 20), volume = c(25, 15, 2)), .Names = c("item", 
+Data_<-structure(list(item = c("Panacea", "Ichor", "Gold"), value = c(3000,
+1800, 2500), weight = c(3, 2, 20), volume = c(25, 15, 2)), .Names = c("item",
 "value", "weight", "volume"), row.names = c(NA, 3L), class = "data.frame")
 
-knapsack_volume<-function(Data, W, Volume, full_K) 
+knapsack_volume<-function(Data, W, Volume, full_K)
 {
 
 	# Data must have the colums with names: item, value, weight and volume.
@@ -3595,7 +3595,7 @@ knapsack_volume<-function(Data, W, Volume, full_K)
 					temp_value<-temp_wi
 					temp_w<-temp_wi
 					temp_item <- item
-				}	
+				}
 			}
 		}
 	K[[w+1]]<-temp_value
@@ -3631,9 +3631,9 @@ retrieve_info<-function(knapsack, Data)
 		selected_item<-knapsack$Item[W,col]
 		if(selected_item!='')
 		{
-			selected_item_value<-Data[Data$item == selected_item,]			
+			selected_item_value<-Data[Data$item == selected_item,]
 			W <- W - selected_item_value$weight
-			itens<-c(itens,selected_item)			
+			itens<-c(itens,selected_item)
 			col <- col - selected_item_value$volume
 		}
 	}
@@ -3657,8 +3657,8 @@ main_knapsack(Data_, 250, 250)
 ```r
 
 Output:
-The Total profit is:  54500 
-You must carry: Gold (x 11 ) 
+The Total profit is:  54500
+You must carry: Gold (x 11 )
 You must carry: Panacea (x 9 )
 
 ```
@@ -3797,7 +3797,7 @@ say 'carrying a total of:'   right(cTot, L)
 carrying a total of:  26
                                          total  value:  54500
                                          total weight:  25
-                                         total volume:  0.247 
+                                         total volume:  0.247
 
 ```
 
@@ -3937,7 +3937,7 @@ solutions.each do |i, p, g|
   printf "  ichor=%2d, panacea=%2d, gold=%2d -- weight:%.1f, volume=%.3f\n",
     i, p, g,
     i*ichor.weight + p*panacea.weight + g*gold.weight,
-    i*ichor.volume + p*panacea.volume + g*gold.volume 
+    i*ichor.volume + p*panacea.volume + g*gold.volume
 end
 ```
 
@@ -3969,7 +3969,7 @@ data one;
    maxpanacea = floor(min(maxwt/wtpanacea, maxvol/volpanacea));
    maxichor = floor(min(maxwt/wtichor, maxvol/volichor));
    maxgold = floor(min(maxwt/wtgold, maxvol/volgold));
-   do i1 = 0 to maxpanacea; 
+   do i1 = 0 to maxpanacea;
       do i2 = 0 to maxichor;
          do i3 = 0 to maxgold;
             panacea = i1; ichor=i2; gold=i3; output;
@@ -4054,13 +4054,13 @@ quit;
 MILP solver output:
 
 ```txt
-TotalValue 
-54500 
+TotalValue
+54500
 
-[1] NumSelected 
-gold (bars) 11 
-ichor (ampules of) 0 
-panacea (vials of) 9 
+[1] NumSelected
+gold (bars) 11
+ichor (ampules of) 0
+panacea (vials of) 9
 
 ```
 
@@ -4069,28 +4069,28 @@ CLP solver output:
 
 ```txt
 
-TotalValue 
-54500 
+TotalValue
+54500
 
-[1]   
-gold (bars) 11 
-ichor (ampules of) 15 
-panacea (vials of) 0 
+[1]
+gold (bars) 11
+ichor (ampules of) 15
+panacea (vials of) 0
 
-[1]   
-gold (bars) 11 
-ichor (ampules of) 10 
-panacea (vials of) 3 
+[1]
+gold (bars) 11
+ichor (ampules of) 10
+panacea (vials of) 3
 
-[1]   
-gold (bars) 11 
-ichor (ampules of) 5 
-panacea (vials of) 6 
+[1]
+gold (bars) 11
+ichor (ampules of) 5
+panacea (vials of) 6
 
-[1]   
-gold (bars) 11 
-ichor (ampules of) 0 
-panacea (vials of) 9 
+[1]
+gold (bars) 11
+ichor (ampules of) 0
+panacea (vials of) 9
 ```
 
 
@@ -4100,41 +4100,41 @@ panacea (vials of) 9
 
 ```scala
 import scala.annotation.tailrec
- 
+
 object UnboundedKnapsack extends App {
   private val (maxWeight, maxVolume) = (BigDecimal(25.0), BigDecimal(0.25))
   private val items = Seq(Item("panacea", 3000, 0.3, 0.025), Item("ichor", 1800, 0.2, 0.015), Item("gold", 2500, 2.0, 0.002))
- 
+
   @tailrec
   private def packer(notPacked: Seq[Knapsack], packed: Seq[Knapsack]): Seq[Knapsack] = {
     def fill(knapsack: Knapsack): Seq[Knapsack] = items.map(i => Knapsack(i +: knapsack.bagged))
- 
+
     def stuffer(Seq: Seq[Knapsack]): Seq[Knapsack] = // Cause brute force
       Seq.map(k => Knapsack(k.bagged.sortBy(_.name))).distinct
- 
+
     if (notPacked.isEmpty) packed.sortBy(-_.totValue).take(4)
     else packer(stuffer(notPacked.flatMap(fill)).filter(_.isNotFull), notPacked ++ packed)
   }
- 
+
   private case class Item(name: String, value: Int, weight: BigDecimal, volume: BigDecimal)
- 
+
   private case class Knapsack(bagged: Seq[Item]) {
     def isNotFull: Boolean = totWeight <= maxWeight && totVolume <= maxVolume
- 
+
     override def toString = s"[${show(bagged)} | value: $totValue, weight: $totWeight, volume: $totVolume]"
- 
+
     def totValue: Int = bagged.map(_.value).sum
- 
+
     private def totVolume = bagged.map(_.volume).sum
- 
+
     private def totWeight = bagged.map(_.weight).sum
- 
+
     private def show(is: Seq[Item]) =
       (items.map(_.name) zip items.map(i => is.count(_ == i)))
         .map { case (i, c) => f"$i:$c%3d" }
         .mkString(", ")
   }
- 
+
   packer(items.map(i => Knapsack(Seq(i))), Nil).foreach(println)
 }
 ```
@@ -4330,9 +4330,9 @@ proc main argv {
     for {set i 0} {$i < $max(ichor)} {incr i} {
         for {set p 0} {$p < $max(panacea)} {incr p} {
             for {set g 0} {$g < $max(gold)} {incr g} {
-                if {$i*$weight(ichor) + $p*$weight(panacea) + $g*$weight(gold) 
+                if {$i*$weight(ichor) + $p*$weight(panacea) + $g*$weight(gold)
                     > $weight(max)} continue
-                if {$i*$volume(ichor) + $p*$volume(panacea) + $g*$volume(gold) 
+                if {$i*$volume(ichor) + $p*$volume(panacea) + $g*$volume(gold)
                     > $volume(max)} continue
                 set val [expr {$i*$value(ichor)+$p*$value(panacea)+$g*$value(gold)}]
                 if {$val == $maxval} {
@@ -4402,7 +4402,7 @@ output:
 See: [[Knapsack Problem/Visual Basic]]
 
 The above Link contains a longer version (which perhaps runs a bit faster),
-whilst the one below is focussing more on expressing/solving the problem 
+whilst the one below is focussing more on expressing/solving the problem
 in less lines of code.
 
 ```vb
@@ -4425,7 +4425,7 @@ Dim Gold:       Gold = Array(2500, 2, 0.002)
         If Cur(Value) >= S(1)(Value) And Cur(Weight) <= SackW And Cur(Volume) <= SackV Then _
           S.Add Array(Cur(Value), Cur(Weight), Cur(Volume), P, I, G), , 1
   Next G, I, P
-  
+
   Debug.Print "Value", "Weight", "Volume", "PanaceaCount", "IchorCount", "GoldCount"
   For Each M In S '<- enumerate the Attributes of the Maxima
     If M(Value) = S(1)(Value) Then Debug.Print M(Value), M(Weight), M(Volume), M(PC), M(IC), M(GC)
@@ -4436,10 +4436,10 @@ End Sub
 Output:
 ```txt
  Value        Weight        Volume        PanaceaCount  IchorCount    GoldCount
- 54500         24.7          0.247         9             0             11 
- 54500         24.8          0.247         6             5             11 
- 54500         24.9          0.247         3             10            11 
- 54500         25            0.247         0             15            11 
+ 54500         24.7          0.247         9             0             11
+ 54500         24.8          0.247         6             5             11
+ 54500         24.9          0.247         3             10            11
+ 54500         25            0.247         0             15            11
 
 ```
 
@@ -4461,7 +4461,7 @@ best:=Utils.Helpers.cprod3(maxes.xplode())
     .apply('wrap(t){
        T(T(panacea[VAL]*t[0] + ichor[VAL]*t[1] + gold[VAL]*t[2],
            panacea[W]  *t[0] + ichor[W]  *t[1] + gold[W]  *t[2],
-           panacea[VOL]*t[0] + ichor[VOL]*t[1] + gold[VOL]*t[2]), t) 
+           panacea[VOL]*t[0] + ichor[VOL]*t[1] + gold[VOL]*t[2]), t)
     })
     .filter('wrap(t){ t[0][W]<=sack[W] and t[0][VOL]<=sack[VOL] })
     .reduce(fcn(a,b){ a[0][VAL] > b[0][VAL] and a or b });

@@ -2387,8 +2387,8 @@ long long int fibb(int n) {
 ### Analytic
 
 
-```c>#include <tgmath.h
-
+```c
+#include <tgmath.h>
 #define PHI ((1 + sqrt(5))/2)
 
 long long unsigned fib(unsigned n) {
@@ -2403,8 +2403,8 @@ long long unsigned fib(unsigned n) {
 {{trans|Python}}
 {{works with|gcc|version 4.1.2 20080704 (Red Hat 4.1.2-44)}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 typedef enum{false=0, true=!0} bool;
 typedef void iterator;
 
@@ -2456,8 +2456,8 @@ fibonacci: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, ...
 ### Fast method for a single large value
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <gmp.h>
 
@@ -2555,8 +2555,8 @@ int main(int argc, char **argv)
 
 Using unsigned int, this version only works up to 48 before fib overflows.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main()
 {
@@ -2580,8 +2580,8 @@ int main()
 This version does not have an upper bound.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <gmpxx.h>
 
 int main()
@@ -2607,8 +2607,8 @@ int main()
 
 Version using transform:
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <vector>
 #include <functional>
 #include <iostream>
@@ -2626,8 +2626,8 @@ unsigned int fibonacci(unsigned int n) {
 
 Far-fetched version using adjacent_difference:
 
-```cpp>#include <numeric
-
+```cpp
+#include <numeric>
 #include <vector>
 #include <functional>
 #include <iostream>
@@ -2645,8 +2645,8 @@ unsigned int fibonacci(unsigned int n) {
 
 Version which computes at compile time with metaprogramming:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 template <int n> struct fibo
 {
@@ -2675,8 +2675,8 @@ int main(int argc, char const *argv[])
 
 The following version is based on fast exponentiation:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 inline void fibmul(int* f, int* g)
 {
@@ -9917,8 +9917,8 @@ UNTIL GET=1
 ### Recursive
 
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8fib_rec                     \
 ORDER_PP_FN(8fn(8N,                               \
@@ -9933,7 +9933,8 @@ ORDER_PP(8fib_rec(10))
 
 Tail recursive version (example supplied with language):
 
-```c>#include <order/interpreter.h
+```c
+#include <order/interpreter.h>
 
 
 #define ORDER_PP_DEF_8fib                                         \
@@ -9954,8 +9955,8 @@ ORDER_PP(8to_lit(8fib(8nat(5,0,0))))
 ### Memoization
 
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8fib_memo                                    \
 ORDER_PP_FN(8fn(8N,                                               \

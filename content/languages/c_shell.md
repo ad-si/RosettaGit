@@ -42,8 +42,8 @@ This example prints a [[Hailstone sequence]] from 13.
 ! C Shell
 |-
 ||
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int
 main()

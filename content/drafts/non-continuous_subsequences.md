@@ -17,12 +17,12 @@ A ''subsequence'' contains some subset of the elements of this sequence, in the 
 
 A ''continuous'' subsequence is one in which no elements are missing between the first and last elements of the subsequence.
 
-Note: Subsequences are defined ''structurally'', not by their contents. 
+Note: Subsequences are defined ''structurally'', not by their contents.
 So a sequence ''a,b,c,d'' will always have the same subsequences and continuous subsequences, no matter which values are substituted; it may even be the same value.
 
-'''Task''': Find all non-continuous subsequences for a given sequence. 
+'''Task''': Find all non-continuous subsequences for a given sequence.
 
-Example: For the sequence   ''1,2,3,4'',   there are five non-continuous subsequences, namely: 
+Example: For the sequence   ''1,2,3,4'',   there are five non-continuous subsequences, namely:
 ::::*   ''1,3''
 ::::*   ''1,4''
 ::::*   ''2,4''
@@ -55,7 +55,7 @@ procedure Test_Non_Continuous is
          end loop;
          New_Line;
       end if;
-      if Tail'Length /= 0 then 
+      if Tail'Length /= 0 then
          declare
             New_Head : Sequence (Head'First..Head'Last + 1);
          begin
@@ -113,7 +113,7 @@ end Test_Non_Continuous;
 
 ### Recursive
 
-{{trans|Ada}} - note: This specimen retains the original [[Non-continuous subsequences#Ada|Ada]] coding style. 
+{{trans|Ada}} - note: This specimen retains the original [[Non-continuous subsequences#Ada|Ada]] coding style.
 {{wont work with|ALGOL 68|Revision 1 - ANDIF, OREL extensions to language used - used to mimic Ada}}
 {{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 
@@ -135,7 +135,7 @@ PROC test non continuous = VOID: BEGIN
       IF NOT contiguous ANDTH UPB head > 1 THEN
          yield (head)
       FI;
-      IF UPB tail /= 0 THEN 
+      IF UPB tail /= 0 THEN
             [UPB head+1]SEQMODE new head;
             new head [:UPB head] := head;
             FOR i TO UPB tail DO
@@ -183,7 +183,7 @@ iu
 
 ### Iterative
 
-{{trans|C}} - note: This specimen retains the original [[Non-continuous subsequences#C|C]] coding style. 
+{{trans|C}} - note: This specimen retains the original [[Non-continuous subsequences#C|C]] coding style.
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 
@@ -211,16 +211,16 @@ BEGIN
 
   FOR j TO ABS lim-1 DO
     INT state := 1;
-    BITS k1 := upb k; 
+    BITS k1 := upb k;
     WHILE k1 NE empty DO
       BITS b := BIN j AND k1;
       CASE state IN
         # state 1 # IF b NE empty THEN state +:= 1 FI,
         # state 2 # IF b EQ empty THEN state +:= 1 FI,
-        # state 3 # 
+        # state 3 #
           BEGIN
             IF b EQ empty THEN GO TO continue k1 FI;
-            upb out := 0; 
+            upb out := 0;
             BITS k2 := upb k; FOR i WHILE k2 NE empty DO
               IF (BIN j AND k2) NE empty THEN out[upb out +:= 1] := seq[i] FI;
               k2 := k2 SHR 1
@@ -313,7 +313,7 @@ ToBin(n,W=16) {  ; LS W-bits of Binary representation of n
       PRINT "For [1, 2, 3, 4, 5] non-continuous subsequences are:"
       PROCnon_continuous_subsequences(list2$())
       END
-      
+
       DEF PROCnon_continuous_subsequences(l$())
       LOCAL i%, j%, g%, n%, r%, s%, w%, a$, b$
       n% = DIM(l$(),1)
@@ -390,7 +390,7 @@ For [1, 2, 3, 4, 5] non-continuous subsequences are:
                     )
           )
         & sub$(dummy !arg.)
-      | 
+      |
   )
 & noncontinuous$(e r n i t)
 );
@@ -422,7 +422,7 @@ n t
 
 ## C
 
-Note: This specimen can only handle lists of length less than the number of bits in an '''int'''. 
+Note: This specimen can only handle lists of length less than the number of bits in an '''int'''.
 
 ```C>#include <assert.h
 
@@ -452,11 +452,11 @@ Example use:
 ```txt
 
 $ ./noncont 1 2 3 4
-1 2 4 
-1 3 4 
-1 3 
-2 4 
-1 4 
+1 2 4
+1 3 4
+1 3
+2 4
+1 4
 $ ./noncont 1 2 3 4 5 6 7 8 9 0 | wc -l
 968
 
@@ -465,8 +465,8 @@ $ ./noncont 1 2 3 4 5 6 7 8 9 0 | wc -l
 
 Using "consecutive + gap + any subsequence" to produce disjointed sequences:
 
-```c>#include <assert.h
-
+```c
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -498,8 +498,8 @@ int main(int c, char **v)
 
 Using recursion and a state transition table.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef unsigned char sint;
 enum states { s_blnk = 0, s_tran, s_cont, s_disj };
@@ -555,10 +555,10 @@ running it:
 
 ```txt
 % ./a.out 1 2 3 4
-1 3 
-1 4 
-2 4 
-1 2 4 
+1 3
+1 4
+2 4
+1 2 4
 1 3 4
 % ./a.out 1 2 3 4 5 6 7 8 9 0 | wc -l
 968
@@ -649,7 +649,7 @@ class Program
             Console.WriteLine(string.Join(" ", subset.Select(i => sequence[i])));
         }
     }
-    
+
     static IEnumerable<List<int>> Subsets(int length) {
         int[] values = Enumerable.Range(0, length).ToArray();
         var stack = new Stack<int>(length);
@@ -735,7 +735,7 @@ is_contigous_binary = (n) ->
   # first remove 0s from end
   while n % 2 == 0
     n = n / 2
-  
+
   # next, take advantage of the fact that a continuous
   # run of 1s would be of the form 2^n - 1
   is_power_of_two(n + 1)
@@ -763,7 +763,7 @@ seq_from_bitmap = (arr, n) ->
 non_contig_subsequences = (arr) ->
   # Return all subsqeuences from an array that have a "hole" in
   # them.  The order of the subsequences is not specified here.
-    
+
   # This algorithm uses binary counting, so it is limited to
   # small lists, but large lists would be unwieldy regardless.
   bitmasks = [0...Math.pow(2, arr.length)]
@@ -783,7 +783,7 @@ for n in [1..10]
 
 ```txt
 
-> coffee non_contig_subseq.coffee 
+> coffee non_contig_subseq.coffee
 [ [ 1, 3 ],
   [ 1, 4 ],
   [ 2, 4 ],
@@ -1020,11 +1020,11 @@ defmodule RC do
     Enum.map(3..maxmask, &Integer.to_string(&1, 2))
     |> Enum.filter_map(&contains_noncont(&1), &String.rjust(&1, n, ?0)) # padding
   end
- 
+
   defp contains_noncont(n) do
     Regex.match?(~r/10+1/, n)
   end
- 
+
   defp apply_mask_to_list(mask, list) do
     Enum.zip(to_char_list(mask), list)
     |> Enum.filter_map(fn {include, _} -> include > ?0 end, fn {_, value} -> value end)
@@ -1068,7 +1068,7 @@ masks(N) ->
                 lists:seq(3, MaxMask)),
     Filtered = lists:filter(fun(X) -> contains_noncont(X) end, Total),
     lists:map(fun(X) -> string:right(X, N, $0) end, Filtered). % padding
-   
+
 contains_noncont(N) ->
     case re:run(N, "10+1") of
         {match, _} -> true;
@@ -1128,11 +1128,11 @@ Ng 4
 
 ```txt
 
- 5 -> 1 3 
- 9 -> 1 4 
-10 -> 2 4 
-11 -> 1 2 4 
-13 -> 1 3 4 
+ 5 -> 1 3
+ 9 -> 1 4
+10 -> 2 4
+11 -> 1 2 4
+13 -> 1 3 4
 
 ```
 
@@ -1140,7 +1140,7 @@ Counting the number of non-continuous subsequences is interesting:
 
 ```txt
 
-> Seq.length (N 20);;                                                                 
+> Seq.length (N 20);;
 Real: 00:00:00.169, CPU: 00:00:00.169, GC gen0: 0, gen1: 0
 val it : int = 1048365
 > Seq.length (N 23);;
@@ -1273,7 +1273,7 @@ action p x = if p x then succ x else x
 
 fenceM p q s []     = guard (q s) >> return []
 fenceM p q s (x:xs) = do
-  (f,g) <- p 
+  (f,g) <- p
   ys <- fenceM p q (g s) xs
   return $ f x ys
 
@@ -1348,7 +1348,7 @@ ncsubs (x:xs) = tail $ nc [x] xs
 ```
 
 
-A disjointed subsequence is a consecutive subsequence followed by a gap, 
+A disjointed subsequence is a consecutive subsequence followed by a gap,
 then by any nonempty subsequence to its right:
 
 ```haskell
@@ -1363,7 +1363,7 @@ main = print $ length $ disjoint [1..20]
 ```
 
 
-Build a lexicographic list of consecutive subsequences, 
+Build a lexicographic list of consecutive subsequences,
 and a list of all subsequences, then subtract one from the other:
 
 ```haskell
@@ -1453,7 +1453,7 @@ public class NonContinuousSubsequences {
 ```txt
 12 4
 1 34
-1 3 
+1 3
 1  4
  2 4
 ```
@@ -1518,7 +1518,7 @@ defining subsets/0 as a generator.
 def subsets:
   if length == 0 then []
   else .[0] as $first
-    | (.[1:] | subsets) 
+    | (.[1:] | subsets)
     | ., ([$first] + .)
   end ;
 
@@ -1532,7 +1532,7 @@ def non_continuous_subsequences:
   | [.[ $ix[] ]] ;
 ```
 
-'''Example''': 
+'''Example''':
 To show that the above approach can be used for relatively large n, let us count the number of non-continuous subsequences of [0, 1, ..., 19].
 
 ```jq
@@ -1676,15 +1676,15 @@ The first and last 10 NC sub-sequences of "Rosetta"
 ```scala
 // version 1.1.2
 
-fun <T> ncs(a: Array<T>) { 
+fun <T> ncs(a: Array<T>) {
     fun generate(m: Int, k: Int, c: IntArray) {
         if (k == m) {
             if (c[m - 1] != c[0] + m - 1) {
-                for (i in 0 until m)  print("${a[c[i]]} ")                
+                for (i in 0 until m)  print("${a[c[i]]} ")
                 println()
             }
         }
-        else { 
+        else {
             for (j in 0 until a.size) {
                 if (k == 0 || j > c[k - 1]) {
                     c[k] = j
@@ -1695,10 +1695,10 @@ fun <T> ncs(a: Array<T>) {
     }
 
     for (m in 2 until a.size) {
-        val c = IntArray(m) 
+        val c = IntArray(m)
         generate(m, 0, c)
-    }    
-}  
+    }
+}
 
 fun main(args: Array<String>) {
     val a = arrayOf(1, 2, 3, 4)
@@ -1714,28 +1714,28 @@ fun main(args: Array<String>) {
 
 ```txt
 
-1 3 
-1 4 
-2 4 
-1 2 4 
-1 3 4 
+1 3
+1 4
+2 4
+1 2 4
+1 3 4
 
-a c 
-a d 
-a e 
-b d 
-b e 
-c e 
-a b d 
-a b e 
-a c d 
-a c e 
-a d e 
-b c e 
-b d e 
-a b c e 
-a b d e 
-a c d e 
+a c
+a d
+a e
+b d
+b e
+c e
+a b d
+a b e
+a c d
+a c e
+a d e
+b c e
+b d e
+a b c e
+a b d e
+a c d e
 
 ```
 
@@ -1756,7 +1756,7 @@ Module Non_continuous_subsequences (item$(), display){
 		m=true
 		flush
 		for i=1 to 2^n {
-			for j=0 to n-1 :p(j)= k(j)(&m) :next 
+			for j=0 to n-1 :p(j)= k(j)(&m) :next
 			m1=p(0)
 			m2=0
 			for j=1 to n-1
@@ -1786,7 +1786,7 @@ Module Non_continuous_subsequences (item$(), display){
 	line$="Non continuous subsequences:"+str$(len(a))
 	Print line$
 	doc$<=line$+{
-	}	
+	}
 }
 global doc$
 document doc$   ' change string to document object
@@ -2028,7 +2028,7 @@ let ncsubseq = fence 0
 # ncsubseq [1;2;3;4;5];;
 - : int list list =
 [[1; 2; 3; 5]; [1; 2; 4; 5]; [1; 2; 4]; [1; 2; 5]; [1; 3; 4; 5]; [1; 3; 4];
- [1; 3; 5]; [1; 3]; [1; 4; 5]; [1; 4]; [1; 5]; [2; 3; 5]; [2; 4; 5]; 
+ [1; 3; 5]; [1; 3]; [1; 4; 5]; [1; 4]; [1; 5]; [2; 3; 5]; [2; 4; 5];
  [2; 4]; [2; 5]; [3; 5]]
 ```
 
@@ -2055,7 +2055,7 @@ declare
            Gap >: {FS.int.min Result}
            Gap <: {FS.int.max Result}
         end
-      
+
         %% enumerate all such sets
         {FS.distribute naive [Result]}
      end
@@ -2331,8 +2331,8 @@ Function SubSequence ( [Array] $S, [Boolean] $all=$false )
          }
       }
       #[String]::Join( ',', $S)
-   } else { 
-      $S | ForEach-Object { [String] $_ } 
+   } else {
+      $S | ForEach-Object { [String] $_ }
    }
 }
 
@@ -2363,7 +2363,7 @@ Function NonContinuous-SubSequence ( [Array] $S )
             $S[$_]
          } )" -replace ' ', ','
       }
-   } else { 
+   } else {
       $null
    }
 }
@@ -2499,7 +2499,7 @@ print len( ncsub(range(1, n)) )
 
 
 ## R
-           
+
 The idea behind this is to loop over the possible lengths of subsequence, finding all subsequences then discarding those which are continuous.
 
 
@@ -2514,7 +2514,7 @@ ncsub <- function(x)
       seqs <- combn(a, i)                                                          # Get all subseqs
       ok <- apply(seqs, 2, function(x) any(diff(x)!=1))                            # Find noncts ones
       newseqs <- unlist(apply(seqs[,ok], 2, function(x) list(x)), recursive=FALSE) # Convert matrix to list of its columns
-      seqlist <- c(seqlist, newseqs)                                               # Append to existing list 
+      seqlist <- c(seqlist, newseqs)                                               # Append to existing list
    }
    lapply(seqlist, function(index) x[index])
 }
@@ -2751,21 +2751,21 @@ func showarray(items,ind)
              for m = 1 to ind - 1
                   if items[n][m] = 0 or items[n][m+1] = 0
                      exit
-                 ok   
+                 ok
                  if (items[n][m] + 1) != items[n][m+1]
                      flag = 1
                      exit
                  ok
             next
             if flag = 1
-               see "[" 
+               see "["
                str = ""
                for x = 1 to len(items[n])
-                    if items[n][x] != 0  
+                    if items[n][x] != 0
                        str = str + items[n][x] + " "
                     ok
-               next  
-               str = left(str, len(str) - 1)  
+               next
+               str = left(str, len(str) - 1)
                see str + "]" + nl
             ok
         next
@@ -2777,7 +2777,7 @@ func powerset(list,ind)
         for i = 2 to (2 << len(list)) - 1 step 2
              num2 = 0
              num = num + 1
-             for j = 1 to len(list) 
+             for j = 1 to len(list)
                   if i & (1 << j)
                       num2 = num2 + 1
                       if list[j] != 0
@@ -2825,7 +2825,7 @@ For [1, 2, 3, 4, 5] non-continuous subsequences are:
 
 ## Ruby
 
-{{trans|Tcl}}  
+{{trans|Tcl}}
 
 Uses code from [[Power Set]].
 
@@ -2838,11 +2838,11 @@ class Array
       ps.map { |e| e + [item] } # it again, with the item appended to each element
     }
   end
-  
+
   def non_continuous_subsequences
     func_power_set.reject {|seq| continuous?(seq)}
   end
-  
+
   def continuous?(seq)
     seq.each_cons(2) {|a, b| return false if a.succ != b}
     true
@@ -2861,7 +2861,7 @@ p ("a".."d").to_a.non_continuous_subsequences
 ```txt
 [[1, 3]]
 [[1, 3], [1, 4], [2, 4], [1, 2, 4], [1, 3, 4]]
-[[1, 3], [1, 4], [2, 4], [1, 2, 4], [1, 3, 4], [1, 5], [2, 5], [1, 2, 5], [3, 5], [1, 3, 5], 
+[[1, 3], [1, 4], [2, 4], [1, 2, 4], [1, 3, 4], [1, 5], [2, 5], [1, 2, 5], [3, 5], [1, 3, 5],
  [2, 3, 5], [1, 2, 3, 5], [1, 4, 5], [2, 4, 5], [1, 2, 4, 5], [1, 3, 4, 5]]
 [["a", "c"], ["a", "d"], ["b", "d"], ["a", "b", "d"], ["a", "c", "d"]]
 

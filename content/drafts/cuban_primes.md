@@ -34,7 +34,7 @@ Cuban primes were named in 1923 by Allan Joseph Champneys Cunningham.
 ::*   show all output here.
 
 
-Note that   '''cuban prime'''   isn't capitalized   (as it doesn't refer to the nation of Cuba). 
+Note that   '''cuban prime'''   isn't capitalized   (as it doesn't refer to the nation of Cuba).
 
 
 ;Also see:
@@ -131,7 +131,7 @@ END
 
 ```txt
 
-First 200 cuban primes: 
+First 200 cuban primes:
           7         19         37         61        127        271        331        397        547        631
         919      1,657      1,801      1,951      2,269      2,437      2,791      3,169      3,571      4,219
       4,447      5,167      5,419      6,211      7,057      7,351      8,269      9,241     10,267     11,719
@@ -312,9 +312,9 @@ The 100000th cuban prime is 1792617147127
 
 {{trans|C#}}
 
-```Cpp>#include <iostream
- 
-#include <vector> 
+```cpp
+#include <iostream>
+#include <vector>
 #include <chrono>
 #include <climits>
 #include <cmath>
@@ -775,7 +775,7 @@ func main() {
     }
     fmt.Println("The first 200 cuban primes are:-")
     for i := 0; i < 20; i++ {
-        j := i * 10 
+        j := i * 10
         fmt.Printf("%9s\n", cubans[j : j+10]) // 10 per line say
     }
     fmt.Println("\nThe 100,000th cuban prime is", commatize(cube100k))
@@ -875,15 +875,15 @@ assert (comatose 1000 1238 12  989832) -: [;._2 ] 0 :0
 ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
 │1,125,469│1,155,061│1,177,507│1,181,269│1,215,397│1,253,887│1,281,187│1,285,111│1,324,681│1,328,671│1,372,957│1,409,731│1,422,097│1,426,231│1,442,827│1,451,161│1,480,519│1,484,737│1,527,247│1,570,357│
 └─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
-   
+
    NB. the one hundred thousandth cuban prime
    comatose (<: 100000) { CP
 1,792,617,147,127
-   
+
 
    cubanPrime f.              NB. cubanPrime with fixed adverbs
 [: (#~ 1&p:) (-&(^&3)~ >:)
-   
+
 
 ```
 
@@ -1066,25 +1066,25 @@ The 100000th cuban prime is     1792617147127
 
 {{incorrect|Maple|
 
- The output is still incorrect. 
+ The output is still incorrect.
 
- It appears that the Maple solution isn't using a correct formula for computing cuban primes. 
+ It appears that the Maple solution isn't using a correct formula for computing cuban primes.
 
- See output from other entries for the first 200 cuban primes. 
+ See output from other entries for the first 200 cuban primes.
 
- The first three cuban primes are:       7     19     37     ···  
+ The first three cuban primes are:       7     19     37     ···
 
 
- It also appears that most of the program is missing. 
+ It also appears that most of the program is missing.
 
 }}
 
 
 ```maple
-CubanPrimes := proc(n) local i, cp; 
-               cp := Array([]); 
-               for i by 2 while numelems(cp) < n do 
-                   if isprime(3/4*i^2 + 1/4) then 
+CubanPrimes := proc(n) local i, cp;
+               cp := Array([]);
+               for i by 2 while numelems(cp) < n do
+                   if isprime(3/4*i^2 + 1/4) then
                       ArrayTools:-Append(cp, 3/4*i^2 + 1/4);
                    end if;
                end do;
@@ -1412,7 +1412,7 @@ for my $n (1 .. 6) {
 {{works with|Rakudo|2018.12}}
 
 ===The task (k == 1)===
-Not the most efficient, but concise, and good enough for this task. Use the ntheory library for prime testing; gets it down to around 20 seconds. 
+Not the most efficient, but concise, and good enough for this task. Use the ntheory library for prime testing; gets it down to around 20 seconds.
 
 ```perl6
 use Lingua::EN::Numbers;
@@ -1543,9 +1543,9 @@ First 10 cuban primes where k = 340282366920938463463374607431768211456:
 include mpfr.e
 integer np = 0,
         i = 2
-mpz p3 = mpz_init(1*1*1), 
-    i3 = mpz_init(), 
-    p = mpz_init(), 
+mpz p3 = mpz_init(1*1*1),
+    i3 = mpz_init(),
+    p = mpz_init(),
     pn = mpz_init()
 atom randstate = gmp_randinit_mt()
 
@@ -1639,21 +1639,21 @@ for i in range(1, int(math.pow(2,20))):
 	u += 6
 	v += u
 	mx = int(math.sqrt(v))
-	
+
 	for item in primes:
 		if (item > mx):
 			break
 		if (v % item == 0):
 			found = True
 			break
-	
+
 	if (found == 0):
 		c += 1
 		if (showEach):
 			z = primes[-1]
 			while (z <= v - 2):
 				z += 2
-				
+
 				fnd = False
 				for item in primes:
 					if (item > mx):
@@ -1661,13 +1661,13 @@ for i in range(1, int(math.pow(2,20))):
 					if (z % item == 0):
 						fnd = True
 						break
-				
+
 				if (not fnd):
 					primes.append(z)
-			
+
 			primes.append(v)
 			print("{:>11,}".format(v), end='')
-			
+
 			if (c % 10 == 0):
 				print("");
 			if (c == cutOff):
@@ -1720,7 +1720,7 @@ Computation time was 856 seconds
 
 Cuban primes can't end in an even (decimal) digit,   or the digit   '''5'''.
 
-Also, by their construction, cuban primes can't have a 
+Also, by their construction, cuban primes can't have a
 factor of   '''6*k + 1''',   where   '''k'''   is any positive integer.
 
 ```rexx
@@ -1754,7 +1754,7 @@ commas: parse arg _;  do jc=length(_)-3  to 1  by -3; _=insert(',', _, jc); end;
 ```
 
 This REXX program makes use of   '''LINESIZE'''   REXX program   (or
-BIF)   which is used to determine the screen width   
+BIF)   which is used to determine the screen width
 
 (or linesize)   of the terminal (console).   Some REXXes don't have this BIF.
 
@@ -1803,24 +1803,24 @@ here   ───►   [[LINESIZE.REX]].
 
 ```ruby
 require "openssl"
- 
-RE = /(\d)(?=(\d\d\d)+(?!\d))/ # Activesupport uses this for commatizing 
+
+RE = /(\d)(?=(\d\d\d)+(?!\d))/ # Activesupport uses this for commatizing
 cuban_primes = Enumerator.new do |y|
   (1..).each do |n|
     cand = 3*n*(n+1) + 1
     y << cand if OpenSSL::BN.new(cand).prime?
   end
 end
- 
+
 def commatize(num)
   num.to_s.gsub(RE, "\\1,")
 end
- 
+
 cbs = cuban_primes.take(200)
 formatted = cbs.map{|cb| commatize(cb).rjust(10) }
 puts formatted.each_slice(10).map(&:join)
- 
-t0 = Time.now 
+
+t0 = Time.now
 puts "
 100_000th cuban prime is #{commatize( cuban_primes.take(100_000).last)}
 which took #{(Time.now-t0).round} seconds to calculate."
@@ -1957,11 +1957,11 @@ object CubanPrimes {
     println(formatTable(cubanPrimes.take(200).toVector, 10))
     println(f"The 100,000th cuban prime is: ${getNthCubanPrime(100000).toBigInt}%,d")
   }
-  
+
   def cubanPrimes: LazyList[SafeLong] = cubans.filter(isPrime)
   def cubans: LazyList[SafeLong] = LazyList.iterate(SafeLong(0))(_ + 1).map(n => (n + 1).pow(3) - n.pow(3))
   def isPrime(num: SafeLong): Boolean = (num > 1) && !(SafeLong(2) #:: LazyList.iterate(SafeLong(3)){n => n + 2}).takeWhile(n => n*n <= num).exists(num%_ == 0)
-  
+
   def getNthCubanPrime(num: Int): SafeLong = {
     @tailrec
     def nHelper(rem: Int, src: LazyList[SafeLong]): SafeLong = {
@@ -1969,20 +1969,20 @@ object CubanPrimes {
       if(cprimes.size < rem) nHelper(rem - cprimes.size, src.drop(100000))
       else cprimes.toVector.sortWith(_<_)(rem - 1)
     }
-    
+
     nHelper(num, cubans)
   }
-  
+
   def formatTable(lst: Vector[SafeLong], rlen: Int): String = {
     @tailrec
     def fHelper(ac: Vector[String], src: Vector[String]): String = {
       if(src.nonEmpty) fHelper(ac :+ src.take(rlen).mkString, src.drop(rlen))
       else ac.mkString("\n")
     }
-    
+
     val maxLen = lst.map(n => f"${n.toBigInt}%,d".length).max
     val formatted = lst.map(n => s"%,${maxLen + 2}d".format(n.toInt))
-    
+
     fHelper(Vector[String](), formatted)
   }
 }
@@ -2240,7 +2240,7 @@ cubans:=(1).walker(*).tweak('wrap(n){ // lazy iterator
 println("First 200 cuban primes:");
 do(20){ (10).pump(String, cubans.next, "%10,d".fmt).println() }
 
-cubans.drop(100_000 - cubans.n).value : 
+cubans.drop(100_000 - cubans.n).value :
    println("\nThe 100,000th cuban prime is: %,d".fmt(_));
 ```
 

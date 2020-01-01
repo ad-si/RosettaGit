@@ -17,13 +17,13 @@ tags = []
 Sort an array of elements using the bubble sort algorithm.   The elements must have a total order and the index of the array can be of any discrete type.   For languages where this is not possible, sort an array of integers.
 
 The bubble sort is generally considered to be the simplest sorting algorithm.
- 
-Because of its simplicity and ease of visualization, it is often taught in introductory computer science courses. 
+
+Because of its simplicity and ease of visualization, it is often taught in introductory computer science courses.
 
 Because of its abysmal O(n<sup>2</sup>) performance, it is not used often for large (or even medium-sized) datasets.
 
-The bubble sort works by passing sequentially over a list, comparing each value to the one immediately after it.   If the first value is greater than the second, their positions are switched.   Over a number of passes, at most equal to the number of elements in the list, all of the values drift into their correct positions (large values "bubble" rapidly toward the end, pushing others down around them).    
-Because each pass finds the maximum item and puts it at the end, the portion of the list to be sorted can be reduced at each pass.   
+The bubble sort works by passing sequentially over a list, comparing each value to the one immediately after it.   If the first value is greater than the second, their positions are switched.   Over a number of passes, at most equal to the number of elements in the list, all of the values drift into their correct positions (large values "bubble" rapidly toward the end, pushing others down around them).
+Because each pass finds the maximum item and puts it at the end, the portion of the list to be sorted can be reduced at each pass.
 A boolean variable is used to track whether any changes have been made in the current pass; when a pass completes without changing anything, the algorithm exits.
 
 This can be expressed in pseudo-code as follows (assuming 1-based indexing):
@@ -58,11 +58,11 @@ BUBBLE   CSECT
 SAVEAREA B      STM-SAVEAREA(R15)  skip savearea
          DC     17F'0'             my savearea
 STM      STM    R14,R12,12(R13)    save calling context
-         ST     R13,4(R15)         link mySA->prevSA 
+         ST     R13,4(R15)         link mySA->prevSA
          ST     R15,8(R13)         link prevSA->mySA
          LR     R13,R15            set mySA & set 4K addessability
          LA     R12,2048(R13)      .
-         LA     R12,2048(R12)      set 8K addessability 
+         LA     R12,2048(R12)      set 8K addessability
          L      RN,N               n
          BCTR   RN,0               n-1
          DO UNTIL=(LTR,RM,Z,RM)    repeat  ------------------------+
@@ -71,7 +71,7 @@ STM      STM    R14,R12,12(R13)    save calling context
          LA     R2,4(R1)             @a(i+1)                       |
          LA     RI,1                 i=1                           |
          DO WHILE=(CR,RI,LE,RN)      for i=1 to n-1  ------------+ |
-         L      R3,0(R1)               a(i)                      | |   
+         L      R3,0(R1)               a(i)                      | |
          IF     C,R3,GT,0(R2)          if a(i)>a(i+1) then  ---+ | |
          L      R9,0(R1)                 r9=a(i)               | | |
          L      R3,0(R2)                 r3=a(i+1)             | | |
@@ -105,8 +105,8 @@ A     DC F'4',F'65',F'2',F'-31',F'0',F'99',F'2',F'83',F'782',F'1'
 N        DC     A((N-A)/L'A)       number of items of a *
 PG       DC     CL80' '
 XDEC     DS     CL12
-         LTORG  
-         YREGS  
+         LTORG
+         YREGS
 RI       EQU    6                  i
 RN       EQU    7                  n-1
 RM       EQU    8                  more
@@ -164,11 +164,11 @@ RM       EQU    8                  more
 public function bubbleSort(toSort:Array):Array
 {
 	var changed:Boolean = false;
-	
+
 	while (!changed)
 	{
 		changed = true;
-		
+
 		for (var i:int = 0; i < toSort.length - 1; i++)
 		{
 			if (toSort[i] > toSort[i + 1])
@@ -176,12 +176,12 @@ public function bubbleSort(toSort:Array):Array
 				var tmp:int = toSort[i];
 				toSort[i] = toSort[i + 1];
 				toSort[i + 1] = tmp;
-				
+
 				changed = false;
 			}
 		}
 	}
-	
+
 	return toSort;
 }
 ```
@@ -246,7 +246,7 @@ end Main;
 
 
 ```algol68
-MODE DATA = INT; 
+MODE DATA = INT;
 PROC swap = (REF[]DATA slice)VOID:
 (
   DATA tmp = slice[1];
@@ -272,7 +272,7 @@ PROC sort = (REF[]DATA array)VOID:
 );
 
 main:(
-  [10]INT random := (1,6,3,5,2,9,8,4,7,0); 
+  [10]INT random := (1,6,3,5,2,9,8,4,7,0);
 
   printf(($"Before: "10(g(3))l$,random));
   sort(random);
@@ -353,7 +353,7 @@ begin
         writeData;
         bubbleSortIntegers( data, 1, 10 );
         writeData;
-    end test 
+    end test
 end.
 ```
 
@@ -361,8 +361,8 @@ end.
 
 ```txt
 
- 16   2  -6   9  90  14   0  23   8   9 
- -6   0   2   8   9   9  14  16  23  90 
+ 16   2  -6   9  90  14   0  23   8   9
+ -6   0   2   8   9   9  14  16  23  90
 
 ```
 
@@ -443,7 +443,7 @@ print $(bubbleSort #(3 1 2 8 5 7 9 4 6))
 
 
 ```AutoHotkey
-var = 
+var =
 (
 dog
 cat
@@ -453,7 +453,7 @@ abc
 MsgBox % bubblesort(var)
 
 bubblesort(var) ; each line of var is an element of the array
-{ 
+{
   StringSplit, array, var, `n
   hasChanged = 1
   size := array0
@@ -471,7 +471,7 @@ bubblesort(var) ; each line of var is an element of the array
         array%A_Index% := array%aj%
         array%aj% := temp
         hasChanged = 1
-      } 
+      }
     }
   }
   Loop, % size
@@ -510,7 +510,7 @@ END { # sort it with bubble sort
 ```
 
 
-GNU awk contains built in functions for sorting, but POSIX 
+GNU awk contains built in functions for sorting, but POSIX
 Awk doesn't. Here is a generic bubble sort() implementation that you
 can copy/paste to your
 Awk programs. Adapted from the above example. Note that it
@@ -619,7 +619,7 @@ $ echo ${#b[@]}
 20
 $ echo ${b[@]}
 -31 0 1 2 2 4 45 58 65 69 74 82 82 83 88 89 99 104 112 782
-$ 
+$
 
 ```
 
@@ -701,7 +701,7 @@ Works with the 1k RAM model. For simplicity, and to make it easy to animate the 
 {{works with|BASIC256 }}
 
 ```basic256
-    
+
 Dim a(11): ordered=false
 print "Original set"
 For n = 0 to 9
@@ -734,9 +734,9 @@ next n
 ```txt
 
 Original set
-2, 10, 17, 13, 20, 14, 3, 17, 16, 16, 
+2, 10, 17, 13, 20, 14, 3, 17, 16, 16,
 Ordered set
-2, 3, 10, 13, 14, 16, 16, 17, 17, 20, 
+2, 3, 10, 13, 14, 16, 16, 17, 17, 20,
 
 ```
 
@@ -755,7 +755,7 @@ The Bubble sort is very inefficient for 99% of cases. This routine uses a couple
       NEXT
       PRINT
       END
-      
+
       DEF PROCbubblesort(a(), n%)
       LOCAL i%, l%
       REPEAT
@@ -782,7 +782,7 @@ The Bubble sort is very inefficient for 99% of cases. This routine uses a couple
 
 ==={{header|IS-BASIC}}===
 <lang IS-BASIC>100 PROGRAM "BubblSrt.bas"
-110 RANDOMIZE 
+110 RANDOMIZE
 120 NUMERIC ARRAY(-5 TO 9)
 130 CALL INIT(ARRAY)
 140 CALL WRITE(ARRAY)
@@ -814,8 +814,8 @@ The Bubble sort is very inefficient for 99% of cases. This routine uses a couple
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void bubble_sort (int *a, int n) {
     int i, t, j = n, s = 1;
@@ -863,8 +863,8 @@ int main () {
 Uses C++11. Compile with
  g++ -std=c++11 bubble.cpp
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 
@@ -954,12 +954,12 @@ namespace RosettaCode.BubbleSort
 ## Clojure
 
 Bubble sorts a Java ArrayList in place. Uses 'doseq' iteration construct with a short-circuit when a pass didn't produce any change, and within the pass, an atomic 'changed' variable that gets reset whenever a change occurs.
- 
+
 
 ```clojure
 (ns bubblesort
   (:import java.util.ArrayList))
- 
+
 (defn bubble-sort
   "Sort in-place.
   arr must implement the Java List interface and should support
@@ -1010,12 +1010,12 @@ Purely functional version working on Clojure sequences:
   Returns the sorted sequence.
   Very inefficient (O(n²))"
   ([xs] (bubble-sort <= xs))
-  ([less? xs] 
+  ([less? xs]
      (let [[result is-sorted] (bubble-step less? xs false)]
        (if is-sorted
 	 result
 	 (recur less? result)))))
-  
+
 (println (bubble-sort [10 9 8 7 6 5 4 3 2 1]))
 ```
 
@@ -1082,48 +1082,48 @@ This is a complete program that demonstrates the bubble sort algorithm in COBOL.
        AUTHOR.                          DAVE STRATFORD.
        DATE-WRITTEN.                    MARCH 2010.
        INSTALLATION.                    HEXAGON SYSTEMS LIMITED.
- 
+
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
        SOURCE-COMPUTER.                 ICL VME.
        OBJECT-COMPUTER.                 ICL VME.
- 
+
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            SELECT FA-INPUT-FILE  ASSIGN FL01.
            SELECT FB-OUTPUT-FILE ASSIGN FL02.
- 
+
        DATA DIVISION.
        FILE SECTION.
- 
+
        FD  FA-INPUT-FILE.
        01  FA-INPUT-REC.
          03  FA-DATA                    PIC S9(6).
- 
+
        FD  FB-OUTPUT-FILE.
        01  FB-OUTPUT-REC                PIC S9(6).
- 
+
        WORKING-STORAGE SECTION.
        01  WA-IDENTITY.
          03  WA-PROGNAME                PIC X(10) VALUE "BUBBLESORT".
          03  WA-VERSION                 PIC X(6) VALUE "000001".
- 
+
        01  WB-TABLE.
          03  WB-ENTRY                   PIC 9(8) COMP SYNC OCCURS 100000
                                                   INDEXED BY WB-IX-1.
- 
+
        01  WC-VARS.
          03  WC-SIZE                    PIC S9(8) COMP SYNC.
          03  WC-TEMP                    PIC S9(8) COMP SYNC.
          03  WC-END                     PIC S9(8) COMP SYNC.
          03  WC-LAST-CHANGE             PIC S9(8) COMP SYNC.
- 
+
        01  WF-CONDITION-FLAGS.
          03  WF-EOF-FLAG                PIC X.
            88  END-OF-FILE              VALUE "Y".
          03  WF-EMPTY-FILE-FLAG         PIC X.
            88  EMPTY-FILE               VALUE "Y".
- 
+
        PROCEDURE DIVISION.
        A-MAIN SECTION.
        A-000.
@@ -1131,87 +1131,87 @@ This is a complete program that demonstrates the bubble sort algorithm in COBOL.
            IF NOT EMPTY-FILE
               PERFORM C-SORT.
            PERFORM D-FINISH.
- 
+
        A-999.
            STOP RUN.
- 
+
        B-INITIALISE SECTION.
        B-000.
            DISPLAY "*** " WA-PROGNAME " VERSION "
                           WA-VERSION " STARTING ***".
- 
+
            MOVE ALL "N" TO WF-CONDITION-FLAGS.
            OPEN INPUT FA-INPUT-FILE.
            SET WB-IX-1 TO 0.
- 
+
            READ FA-INPUT-FILE AT END MOVE "Y" TO WF-EOF-FLAG
                                                  WF-EMPTY-FILE-FLAG.
- 
+
            PERFORM BA-READ-INPUT UNTIL END-OF-FILE.
- 
+
            CLOSE FA-INPUT-FILE.
- 
+
            SET WC-SIZE TO WB-IX-1.
- 
+
        B-999.
            EXIT.
- 
+
        BA-READ-INPUT SECTION.
        BA-000.
            SET WB-IX-1 UP BY 1.
            MOVE FA-DATA TO WB-ENTRY(WB-IX-1).
- 
+
            READ FA-INPUT-FILE AT END MOVE "Y" TO WF-EOF-FLAG.
- 
+
        BA-999.
            EXIT.
- 
+
        C-SORT SECTION.
        C-000.
            DISPLAY "SORT STARTING".
- 
+
            MOVE WC-SIZE TO WC-END.
            PERFORM E-BUBBLE UNTIL WC-END = 1.
- 
+
            DISPLAY "SORT FINISHED".
- 
+
        C-999.
            EXIT.
- 
+
        D-FINISH SECTION.
        D-000.
            OPEN OUTPUT FB-OUTPUT-FILE.
            SET WB-IX-1 TO 1.
- 
+
            PERFORM DA-WRITE-OUTPUT UNTIL WB-IX-1 > WC-SIZE.
- 
+
            CLOSE FB-OUTPUT-FILE.
- 
+
            DISPLAY "*** " WA-PROGNAME " FINISHED ***".
- 
+
        D-999.
            EXIT.
- 
+
        DA-WRITE-OUTPUT SECTION.
        DA-000.
            WRITE FB-OUTPUT-REC FROM WB-ENTRY(WB-IX-1).
            SET WB-IX-1 UP BY 1.
- 
+
        DA-999.
            EXIT.
- 
+
        E-BUBBLE SECTION.
        E-000.
            MOVE 1 TO WC-LAST-CHANGE.
- 
+
            PERFORM F-PASS VARYING WB-IX-1 FROM 1 BY 1
                           UNTIL WB-IX-1 = WC-END.
- 
+
            MOVE WC-LAST-CHANGE TO WC-END.
- 
+
        E-999.
            EXIT.
- 
+
        F-PASS SECTION.
        F-000.
            IF WB-ENTRY(WB-IX-1) > WB-ENTRY(WB-IX-1 + 1)
@@ -1219,7 +1219,7 @@ This is a complete program that demonstrates the bubble sort algorithm in COBOL.
               MOVE WB-ENTRY(WB-IX-1)     TO WC-TEMP
               MOVE WB-ENTRY(WB-IX-1 + 1) TO WB-ENTRY(WB-IX-1)
               MOVE WC-TEMP               TO WB-ENTRY(WB-IX-1 + 1).
- 
+
        F-999.
            EXIT.
 
@@ -1239,50 +1239,50 @@ A more modern version of COBOL.
           88 hasNOTChanged      value 'N'.
        01 itemCount         pic 99.
        01 tempItem          pic 99.
-       01 itemArray.   
+       01 itemArray.
           03 itemArrayCount pic 99.
           03 item           pic 99 occurs 99 times
                                    indexed by itemIndex.
-      *          
+      *
        procedure division.
        main.
       * place the values to sort into itemArray
-           move 10 to itemArrayCount 
+           move 10 to itemArrayCount
            move 28 to item (1)
            move 44 to item (2)
-           move 46 to item (3)           
+           move 46 to item (3)
            move 24 to item (4)
            move 19 to item (5)
            move  2 to item (6)
            move 17 to item (7)
            move 11 to item (8)
-           move 24 to item (9)           
+           move 24 to item (9)
            move  4 to item (10)
-      * store the starting count in itemCount and perform the sort    
+      * store the starting count in itemCount and perform the sort
            move itemArrayCount to itemCount
            perform bubble-sort
-      * output the results     
-           perform varying itemIndex from 1 by 1 
+      * output the results
+           perform varying itemIndex from 1 by 1
               until itemIndex > itemArrayCount
               display item (itemIndex) ';' with no advancing
-           end-perform   
-      * thats it!       
+           end-perform
+      * thats it!
            stop run.
-      *     
+      *
        bubble-sort.
            perform with test after until hasNOTchanged
               set hasNOTChanged to true
               subtract 1 from itemCount
-              perform varying itemIndex from 1 by 1 
+              perform varying itemIndex from 1 by 1
                  until itemIndex > itemCount
                  if item (itemIndex) > item (itemIndex + 1)
                     move item (itemIndex) to tempItem
                     move item (itemIndex + 1) to item (itemIndex)
                     move tempItem to item (itemIndex + 1)
                     set hasChanged to true
-                 end-if   
-              end-perform   
-           end-perform   
+                 end-if
+              end-perform
+           end-perform
            .
 
 ```
@@ -1291,7 +1291,7 @@ A more modern version of COBOL.
 {{out}}
 
 ```txt
- Output: 02;04;11;17;19;24;24;28;44;46; 
+ Output: 02;04;11;17;19;24;24;28;44;46;
 ```
 
 
@@ -1406,7 +1406,7 @@ List<num> bubbleSort(List<num> list) {
       }
     }
   } while(swapped);
-  
+
   return retList;
 }
 
@@ -1623,9 +1623,9 @@ To clarify the EDSAC program, an equivalent Pascal program is added as a comment
    Since the assembler used (EdsacPC by Martin Campbell-Kelly)
    doesn't allow square brackets inside comments, they are
    replaced here by curly brackets.]
-  [   
+  [
     swapped := true;
-    j := n; // number of items 
+    j := n; // number of items
     while (swapped and (j >= 2)) do begin
       swapped := false;
       for i := 1 to j - 1 do begin
@@ -1721,7 +1721,7 @@ To clarify the EDSAC program, an equivalent Pascal program is added as a comment
         A  65 @ [load 'A' order for item]
         A   4 @ [inc address by 2]
         T  65 @ [store back]
-   [65] A    #L [load next item in list] 
+   [65] A    #L [load next item in list]
         T     D [to 0D for printing]
    [67] A  67 @ [for subroutine return]
         G  56 F [print integer, clears acc]
@@ -1797,7 +1797,7 @@ end
 ```
 
 
-The second class is <code lang="eiffel">MY_SORTED_SET</code>. 
+The second class is <code lang="eiffel">MY_SORTED_SET</code>.
 
 
 ```eiffel
@@ -1840,7 +1840,7 @@ end
 ```
 
 
-This class inherits from the Eiffel library class <code lang="eiffel">TWO_WAY_SORTED_SET</code>, which implements sets whose elements are comparable. Therefore, the set can be ordered and in fact is kept so under normal circumstances. 
+This class inherits from the Eiffel library class <code lang="eiffel">TWO_WAY_SORTED_SET</code>, which implements sets whose elements are comparable. Therefore, the set can be ordered and in fact is kept so under normal circumstances.
 
 <code lang="eiffel">MY_SORTED_SET</code> redefines only the routine <code lang="eiffel">sort</code> which contains the implementation of the sort algorithm. The implementation in the redefined version of <code lang="eiffel">sort</code> in <code lang="eiffel">MY_SORTED_SET</code> uses a bubble sort.
 
@@ -1854,10 +1854,10 @@ After : 1 2 3 4 5 6 7 8 9 10
 ```
 
 
-<code lang="eiffel">TWO_WAY_SORTED_SET</code> is implemented internally as a list. 
-For this example, we use the feature <code lang="eiffel">put_front</code> which explicitly adds each new element to the beginning of the list, allowing us to show that the elements are unordered until we sort them. 
-It also causes, in the "Before" output, the elements to be printed in the reverse of the order in which they were added. 
-Under normal circumstances, we would use the feature <code lang="eiffel">extend</code> (rather than <code lang="eiffel">put_front</code>) to add elements to the list. 
+<code lang="eiffel">TWO_WAY_SORTED_SET</code> is implemented internally as a list.
+For this example, we use the feature <code lang="eiffel">put_front</code> which explicitly adds each new element to the beginning of the list, allowing us to show that the elements are unordered until we sort them.
+It also causes, in the "Before" output, the elements to be printed in the reverse of the order in which they were added.
+Under normal circumstances, we would use the feature <code lang="eiffel">extend</code> (rather than <code lang="eiffel">put_front</code>) to add elements to the list.
 This would assure that the order was maintained even as elements were added.
 
 
@@ -1869,16 +1869,16 @@ ELENA 4.1 :
 ```elena
 import system'routines;
 import extensions;
- 
+
 extension op
 {
     bubbleSort()
     {
         var list := self.clone();
- 
+
         bool madeChanges := true;
         int itemCount := list.Length;
-        while (madeChanges) 
+        while (madeChanges)
         {
             madeChanges := false;
             itemCount -= 1;
@@ -1891,11 +1891,11 @@ extension op
                 }
             }
         };
- 
+
         ^ list
     }
 }
- 
+
 public program()
 {
     var list := new int[]::(3, 7, 3, 2, 1, -4, 10, 12, 4);
@@ -2161,7 +2161,7 @@ After: {
 =={{header|F Sharp|F#}}==
 
 ```fsharp
-let BubbleSort (lst : list<int>) = 
+let BubbleSort (lst : list<int>) =
     let rec sort accum rev lst =
         match lst, rev with
         | [], true -> accum |> List.rev
@@ -2289,7 +2289,7 @@ Test any version with this:
  create test
  8 , 1 , 4 , 2 , 10 , 3 , 7 , 9 , 6 , 5 ,
  here test - cell / constant tcnt
- 
+
  test tcnt cells dump
  ' > is bubble-test
  test tcnt bubble
@@ -2308,7 +2308,7 @@ SUBROUTINE Bubble_Sort(a)
   REAL :: temp
   INTEGER :: i, j
   LOGICAL :: swapped
- 
+
   DO j = SIZE(a)-1, 1, -1
     swapped = .FALSE.
     DO i = 1, j
@@ -2394,7 +2394,7 @@ unsort   -7   3  -4  -6   4  -1  -2   2   7   0   5   1  -3  -5   6
 
 ```gambas
 Public Sub Main()
-Dim byToSort As Byte[] = [249, 28, 111, 36, 171, 98, 29, 448, 44, 147, 154, 46, 102, 183, 24, 
+Dim byToSort As Byte[] = [249, 28, 111, 36, 171, 98, 29, 448, 44, 147, 154, 46, 102, 183, 24,
                           120, 19, 123, 2, 17, 226, 11, 211, 25, 191, 205, 77]
 Dim byCount As Byte
 Dim bSorting As Boolean
@@ -2462,10 +2462,10 @@ To sort: -
 <lang g-fu>
 (fun bubbles (vs)
   (let done? F n (len vs))
-  
+
   (while (not done?)
     (set done? T n (- n 1))
-    
+
     (for (n i)
       (let x (# vs i) j (+ i 1) y (# vs j))
       (if (> x y) (set done? F (# vs i) y (# vs j) x))))
@@ -2646,7 +2646,7 @@ bsort =  bubbleSortBy (<)
 ```fortran
 SUBROUTINE Bubble_Sort(a)
   REAL :: a(1)
- 
+
   DO j = LEN(a)-1, 1, -1
     swapped = 0
     DO i = 1, j
@@ -2671,16 +2671,16 @@ procedure main()                     #: demonstrate various ways to sort a list 
    demosort(bubblesort,[3, 14, 1, 5, 9, 2, 6, 3],"qwerty")
 end
 
-procedure bubblesort(X,op)           #: return sorted list 
+procedure bubblesort(X,op)           #: return sorted list
 local i,swapped
- 
+
    op := sortop(op,X)                # select how and what we sort
- 
-   swapped := 1 
+
+   swapped := 1
    while \swapped := &null do         # the sort
-      every  i := 2 to *X do  
-         if op(X[i],X[i-1]) then  
-            X[i-1] :=: X[swapped := i] 
+      every  i := 2 to *X do
+         if op(X[i],X[i-1]) then
+            X[i-1] :=: X[swapped := i]
    return X
 end
 ```
@@ -2714,7 +2714,7 @@ invocable all                # for op
 
 procedure sortop(op,X)                  #: select how to sort
 
-    op := case op of {               
+    op := case op of {
              "string":  "<<"
              "numeric": "<"
              &null:     if type(!X) == "string" then "<<" else "<"
@@ -2728,7 +2728,7 @@ procedure cmp(a,b)                    #: example custom comparison procedure
 end
 
 procedure demosort(sortproc,L,s)      # demonstrate sort on L and s
- 
+
     write("Sorting Demo using ",image(sortproc))
     writes("  on list : ")
     writex(L)
@@ -2739,14 +2739,14 @@ procedure demosort(sortproc,L,s)      # demonstrate sort on L and s
     displaysort(sortproc,L,">")       # descending numeric sort
     displaysort(sortproc,L,cmp)       # ascending custom comparison
     displaysort(sortproc,L,"cmp")     # ascending custom comparison
- 
+
     writes("  on string : ")
     writex(s)
     displaysort(sortproc,s)           # sort characters in a string
     write()
     return
 end
- 
+
 procedure displaysort(sortproc,X,op)  #: helper to show sort behavior
 local t,SX
     writes("    with op = ",left(image(op)||":",15))
@@ -2754,11 +2754,11 @@ local t,SX
     t := &time
     SX := sortproc(X,op)
     writex(SX,"   (",&time - t," ms)")
-    return 
+    return
 end
- 
+
 procedure writex(X,suf[])             #: helper for displaysort
-    if type(X) == "string" then 
+    if type(X) == "string" then
         writes(image(X))
     else {
         writes("[")
@@ -2767,7 +2767,7 @@ procedure writex(X,suf[])             #: helper for displaysort
         }
     every writes(!suf)
     write()
-return 
+return
 end
 ```
 
@@ -3175,7 +3175,7 @@ bsort(a) = if iseod(first a) then a else
 
 Module Bubble {
       function bubblesort {
-                  dim a()    
+                  dim a()
                   \\ []  is a stack object,  interpreter pass current stack pointer, and set a new stack for current stack
                   \\ array( stackobject ) get a stack object and return an array
                   a()=array([])
@@ -3187,17 +3187,17 @@ Module Bubble {
                                   if a(index)>a(index+1) then swap a(index), a(index+1) : haschange=true
                               }
                         }
-                       itemcount-- 
+                       itemcount--
                    } until not haschange
                    =a()
       }
       \\ function can take parameters
       Print bubblesort(5,3,2,7,6,1)
       A=(2, 10, 17, 13, 20, 14, 3, 17, 16, 16)
-      
+
       \\ !A copy values from array A to function stack
       B=bubblesort(!A)
-      Print Len(A)=10 
+      Print Len(A)=10
       Print B
       \\ Print array  in descending order
       k=each(b, -1, 1)
@@ -3337,19 +3337,19 @@ function list = bubbleSort(list)
 
     hasChanged = true;
     itemCount = numel(list);
-    
+
     while(hasChanged)
-        
+
         hasChanged = false;
         itemCount = itemCount - 1;
-        
+
         for index = (1:itemCount)
-  
+
             if(list(index) > list(index+1))
                 list([index index+1]) = list([index+1 index]); %swap
                 hasChanged = true;
             end %if
-            
+
         end %for
     end %while
 end %bubbleSort
@@ -3449,14 +3449,14 @@ BubbleSort  SETL  sorted,1          % sorted = true
             JMP   3B                % next (for loop)
 1H          PBZ   sorted,BubbleSort % while sorted is false, loop
             GO    Ja,Ja,0
-            
+
 % Help function (Print an octabyte)
 % Input:    $0 (the octabyte)
 BufSize     IS    64
             GREG  @
-PrintInt8   ADDU  t,DataSeg,Buffer  % get buffer address 
+PrintInt8   ADDU  t,DataSeg,Buffer  % get buffer address
             ADDU  t,t,BufSize       % end of buffer
-            SETL  t1,0              % final 0 for Fputs            
+            SETL  t1,0              % final 0 for Fputs
             STB   t1,t,0
 1H          SUB   t,t,1             % t--
             DIV   $0,$0,10          % ($0,rR) = divmod($0,10)
@@ -3465,7 +3465,7 @@ PrintInt8   ADDU  t,DataSeg,Buffer  % get buffer address
             STB   t1,t,0            % store it
             PBNZ  $0,1B             % if $0 /= 0, loop
             OR    $255,t,0          % $255 = t
-            TRAP  0,Fputs,StdOut 
+            TRAP  0,Fputs,StdOut
             GO    Ja,Ja,0           % print and return
 
 
@@ -3658,26 +3658,26 @@ module Bubblesort
             |[_] => true
             |y1::y2::ys => (y1.CompareTo(y2) < 0) && isSorted(y2::ys)
         }
-        
+
         def sort(y)
         {
             |[y]        => [y]
             |y1::y2::ys => if (y1.CompareTo(y2) < 0) y1::sort(y2::ys)
                            else y2::sort(y1::ys)
         }
-        
+
         def loop(y)
         {
-            if (isSorted(y)) y else {def z = sort(y); loop(z)}            
+            if (isSorted(y)) y else {def z = sort(y); loop(z)}
         }
-        
+
         match(x)
         {
             |[]  => []
             |_   => loop(x)
         }
     }
-    
+
     Main() : void
     {
         def empty = [];
@@ -3707,7 +3707,7 @@ module Bubblesort
     {
         mutable changed = false;
         def ln = x.Length;
-        
+
         do
         {
             changed = false;
@@ -3721,7 +3721,7 @@ module Bubblesort
             }
         } while (changed);
     }
-    
+
     Main() : void
     {
         def several = array[2, 6, 1, 7, 3, 9, 4];
@@ -3896,7 +3896,7 @@ function : Swap(p : Int[]) ~ Nil {
   p[0] := p[1];
   p[1] := t;
 }
- 
+
 function : Sort(a : Int[]) ~ Nil {
   do {
     sorted := true;
@@ -3907,7 +3907,7 @@ function : Sort(a : Int[]) ~ Nil {
         sorted := 0;
       };
     };
-  } 
+  }
   while (sorted = false);
 }
 
@@ -3919,7 +3919,7 @@ function : Sort(a : Int[]) ~ Nil {
 ```objc
 - (NSArray *) bubbleSort:(NSMutableArray *)unsorted {
     BOOL done = false;
-    
+
     while (!done) {
         done = true;
         for (int i = 1; i < unsorted.count; i++) {
@@ -3929,7 +3929,7 @@ function : Sort(a : Int[]) ~ Nil {
             }
         }
     }
-    
+
     return unsorted;
 }
 
@@ -4061,7 +4061,7 @@ Do
   loop e_ over al
     say e_
     end e_
-  
+
   return
 End
 Exit
@@ -4158,7 +4158,7 @@ Do
   loop e_ over al
     say e_
     end e_
-  
+
   return
 End
 Exit
@@ -4433,9 +4433,9 @@ integer changed
     end for
     return s
 end function
- 
+
 constant s = {4, 15, "delta", 2, -31, 0, "alfa", 19, "gamma", 2, 13, "beta", 782, 1}
- 
+
 puts(1,"Before: ")
 ?s
 puts(1,"After: ")
@@ -4688,7 +4688,7 @@ main :- test(T), bubble_sort(T,_), halt.
 ```PureBasic
 Procedure bubbleSort(Array a(1))
   Protected i, itemCount, hasChanged
-  
+
   itemCount = ArraySize(a())
   Repeat
     hasChanged = #False
@@ -4697,8 +4697,8 @@ Procedure bubbleSort(Array a(1))
       If a(i) > a(i + 1)
         Swap a(i), a(i + 1)
         hasChanged = #True
-      EndIf 
-    Next  
+      EndIf
+    Next
   Until hasChanged = #False
 EndProcedure
 ```
@@ -4713,7 +4713,7 @@ def bubble_sort(seq):
     """Inefficiently sort the mutable sequence (list) in place.
        seq MUST BE A MUTABLE SEQUENCE.
 
-       As with list.sort() and random.shuffle this does NOT return 
+       As with list.sort() and random.shuffle this does NOT return
     """
     changed = True
     while changed:
@@ -4792,30 +4792,30 @@ print(bubblesort(v))
 
 class BubbleSort
 	**Sort a list with the Bubble Sort algorithm**
-	
+
 	on start
-		
+
 		args := program arguments
 		.sort(args)
 		print args
-	
+
 	define sort(list) is shared
 		**Sort the list**
-		
+
 		test
 			list := [4, 2, 7, 3]
 			.sort(list)
 			assert list = [2, 3, 4, 7]
-		
+
 		body
 			last := list.count - 1
-			
+
 			post while changed
-				
+
 				changed := false
-				
+
 				for i in last
-					
+
 					if list[i] > list[i + 1]
 						temp := list[i]
 						list[i] := list[i + 1]
@@ -4839,7 +4839,7 @@ This bubble sort sorts the elelement in the vector v with regard to <?.
 (define (bubble-sort <? v)
   (define len (vector-length v))
   (define ref vector-ref)
-  (let loop ([max len] 
+  (let loop ([max len]
              [again? #f])
     (for ([i (in-range 0 (- max 1))]
           [j (in-range 1 max)])
@@ -4888,7 +4888,7 @@ Sorts an array of Integers
       End If
       index = index + 1
     Wend
-    
+
   Loop Until Not swapped
 'sortable is now sorted
 
@@ -4942,7 +4942,7 @@ show:   do j=1  for #; say '     element' right(j,length(#)) arg(1)":"  @.j; end
 (Shown at   '''<sup>5</sup>/<sub>6</sub>'''   size.)
 <pre style="font-size:84%">
      element  1 before sort: ---letters of the Hebrew alphabet---
-     element  2 before sort: 
+     element  2 before sort:
 ### ==============================
 
      element  3 before sort: aleph   [alef]
@@ -4969,7 +4969,7 @@ show:   do j=1  for #; say '     element' right(j,length(#)) arg(1)":"  @.j; end
      element 24 before sort: taw     [tav]
 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
      element  1  after sort: ---letters of the Hebrew alphabet---
-     element  2  after sort: 
+     element  2  after sort:
 ### ==============================
 
      element  3  after sort: aleph   [alef]
@@ -5073,16 +5073,16 @@ nachher: 0 3 5 7 9 16 16 17 19 20
 ===version 3, random integers, horizontal list, with interim plots===
 This REXX program is a modified version of the first REXX program, with produces a snapshot of the plot in progress.
 
-The random number generation uses the numbers from     '''1''' ───► '''N'''     (in sequential 
-order),   and then those numbers 
+The random number generation uses the numbers from     '''1''' ───► '''N'''     (in sequential
+order),   and then those numbers
 
 are randomized.   This is done to make the displaying of the plot symmetric   (a straight upward diagonal slope).
 
 Note that the command to clear the terminal screen is hard-coded as:   '''CLS'''
 
-Also note that only four snapshots of the sort-in-progress is shown here,   the REXX program will show a snapshot of ''every'' 
+Also note that only four snapshots of the sort-in-progress is shown here,   the REXX program will show a snapshot of ''every''
 
-sorting pass;   the       ''at   (about)   nnn% sorted''       was added after-the-fact.  
+sorting pass;   the       ''at   (about)   nnn% sorted''       was added after-the-fact.
 
 ```rexx
 /*REXX program sorts an array (of any kind of numbers)  using the bubble─sort algorithm.*/
@@ -5125,7 +5125,7 @@ disp:  'CLS';    $.=                             /*"CLS" is the command to clear
 
 │                 ☼
 │                    ☼
-│        ☼                                             
+│        ☼
 │         ☼
 │ ☼
 │                ☼
@@ -5134,7 +5134,7 @@ disp:  'CLS';    $.=                             /*"CLS" is the command to clear
 │☼
 │     ☼
 │            ☼
-│                       ☼                                 at 0% sorted  
+│                       ☼                                 at 0% sorted
 │                  ☼
 │       ☼
 │    ☼
@@ -5259,7 +5259,7 @@ disp:  'CLS';    $.=                             /*"CLS" is the command to clear
 │ ☼
 │☼
 └──────────────────────────────
- 
+
 
 before sort: 11  3 15  4 12 14  7 20 22  5  8 19 24 13  6  1 16 23 17  2 10  9 21 18
  after sort:  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
@@ -5281,7 +5281,7 @@ func bubbleSort A
      n = len(A)
      while flag = 0
            flag = 1
-           for i = 1 to n-1 
+           for i = 1 to n-1
                if A[i] > A[i+1]
                   temp = A[i]
                   A[i] = A[i+1]
@@ -5522,7 +5522,7 @@ Here is the same function, using a different syntax:
            l)
           ((gt? (car l) (cadr l))
            (cons (cadr l) (dosort (cons (car l) (cddr l)))))
-          (else 
+          (else
            (cons (car l) (dosort (cdr l))))))
   (let ((try (dosort l)))
     (if (equal? l try)
@@ -5563,10 +5563,10 @@ endfunction BubbleSort
 {{out}}
 <pre style="height:20ex">-->y=[5 4 3 2 1]
  y  =
-     5.    4.    3.    2.    1.  
--->x=BubbleSort(a) 
+     5.    4.    3.    2.    1.
+-->x=BubbleSort(a)
  x  =
-     1.    2.    3.    4.    5.  
+     1.    2.    3.    4.    5.
 ```
 
 
@@ -5771,8 +5771,8 @@ A straight translation from the pseudocode above. Swap is done with a [[wp:Small
 ```smalltalk
 |item swap itemCount hasChanged|
 item := #(1 4 5 6 10 8 7 61 0 -3) copy.
-swap := 
-	[:indexOne :indexTwo| 
+swap :=
+	[:indexOne :indexTwo|
 	|temp|
 	temp := item at: indexOne.
 	item at: indexOne put: (item at: indexTwo).
@@ -5782,7 +5782,7 @@ itemCount := item size.
 [hasChanged := false.
 itemCount := itemCount - 1.
 1 to: itemCount do:
-	[:index | 
+	[:index |
 	(item at: index) > (item at: index + 1) ifTrue:
 		[swap value: index value: index + 1.
 		hasChanged := true]].
@@ -5885,7 +5885,7 @@ The next version has a postcondition to guarantee that the returned array is sor
 ```Ada
 package Bubble
 is
-   
+
    type Arr is array(Integer range <>) of Integer;
 
    --  Sorted is a proof function with the definition:
@@ -5896,11 +5896,11 @@ is
    --
    --# function Sorted (A            : Arr;
    --#                  From_I, To_I : Integer) return Boolean;
-   
+
    procedure Sort (A : in out Arr);
    --# derives A from *;
    --# post Sorted(A, A'First, A'Last);
-   
+
 end Bubble;
 
 
@@ -5930,7 +5930,7 @@ is
          end loop;
       end if;
    end Sort;
-   
+
 end Bubble;
 
 ```
@@ -6103,24 +6103,24 @@ File '''bubble.ads''':
 package Bubble with SPARK_Mode is
 
    type Arr is array (Integer range <>) of Integer;
-   
-   function Sorted (A : Arr) return Boolean is 
+
+   function Sorted (A : Arr) return Boolean is
      (for all I in A'First .. A'Last - 1 => A(I) <= A(I + 1))
-       with 
+       with
          Ghost,
          Pre => A'Last > Integer'First;
-      
-   function Bubbled (A : Arr) return Boolean is 
+
+   function Bubbled (A : Arr) return Boolean is
      (for all I in A'First .. A'Last - 1 => A(I) <= A(A'Last))
-       with 
+       with
          Ghost,
          Pre => A'Last > Integer'First;
-	 
-   procedure Sort (A : in out Arr) 
-     with 
+
+   procedure Sort (A : in out Arr)
+     with
        Pre => A'Last > Integer'First and A'Last < Integer'Last,
      Post => Sorted (A);
-	 
+
 end Bubble;
 
 ```
@@ -6130,18 +6130,18 @@ File '''bubble.adb''':
 
 ```ada
 package body Bubble with SPARK_Mode is
-        
-   procedure Sort (A : in out Arr) 
+
+   procedure Sort (A : in out Arr)
    is
       Prev : Arr (A'Range) with Ghost;
-      Done : Boolean;   
+      Done : Boolean;
    begin
       for I in reverse A'First .. A'Last - 1 loop
          Prev := A;
          Done := True;
          for J in A'First .. I loop
             if A(J) > A(J + 1) then
-               declare 
+               declare
                   TMP : Integer := A(J);
                begin
                   A(J) := A(J + 1);
@@ -6152,7 +6152,7 @@ package body Bubble with SPARK_Mode is
             pragma Loop_Invariant (if Done then Sorted (A(A'First .. J + 1)));
             pragma Loop_Invariant (Bubbled (A(A'First .. J + 1)));
             pragma Loop_Invariant (A(J + 2 .. A'Last) = Prev(J + 2 .. A'Last));
-            pragma Loop_Invariant (for some K in A'First .. J + 1 => 
+            pragma Loop_Invariant (for some K in A'First .. J + 1 =>
                                      A(J + 1) = Prev(K));
          end loop;
          exit when Done;
@@ -6161,7 +6161,7 @@ package body Bubble with SPARK_Mode is
          pragma Loop_Invariant (Sorted (A(I + 1 .. A'Last)));
       end loop;
    end Sort;
-   
+
 end Bubble;
 
 ```
@@ -6245,7 +6245,7 @@ fun bubble_select [] = []
   | bubble_select [a] = [a]
   | bubble_select (a::b::xs) =
     if b < a then b::(bubble_select(a::xs)) else a::(bubble_select(b::xs))
- 
+
 fun bubblesort [] = []
   | bubblesort (x::xs) =bubble_select (x::(bubblesort xs))
 
@@ -6411,15 +6411,15 @@ templates bubblesort
       @bubblesort($@): $@bubblesort($@+1);
       @bubblesort($@+1): $temp;
   end bubble
- 
+
   @: $;
   $::length -> #
   $@ !
- 
+
   <2..>
     $ -> bubble -> #
 end bubblesort
- 
+
 [4,5,3,8,1,2,6,7,9,8,5] -> bubblesort -> !OUT::write
 
 ```
@@ -6479,8 +6479,8 @@ value| array count changed |
 ] is bsort
 
 #! Code to display an array
-[ ( array count -- ) 
-  0 swap [ dup i swap array.get . ] countedLoop drop cr 
+[ ( array count -- )
+  0 swap [ dup i swap array.get . ] countedLoop drop cr
 ] is .array
 
 #! Create a 10-cell array
@@ -6541,9 +6541,9 @@ function bubbleSort(%list)
   PROC _Bubblesort (n)
   PROC _ShowArray (n)
 PRINT
- 
+
 END
- 
+
 _Bubblesort PARAM(1)                   ' Bubble sort
   LOCAL (2)
 
@@ -6557,30 +6557,30 @@ _Bubblesort PARAM(1)                   ' Bubble sort
   LOOP
 
 RETURN
- 
- 
+
+
 _Swap PARAM(2)                         ' Swap two array elements
   PUSH @(a@)
   @(a@) = @(b@)
   @(b@) = POP()
 RETURN
- 
- 
+
+
 _InitArray                             ' Init example array
   PUSH 4, 65, 2, -31, 0, 99, 2, 83, 782, 1
- 
+
   FOR i = 0 TO 9
     @(i) = POP()
   NEXT
- 
+
 RETURN (i)
- 
- 
+
+
 _ShowArray PARAM (1)                   ' Show array subroutine
   FOR i = 0 TO a@-1
     PRINT @(i),
   NEXT
- 
+
   PRINT
 RETURN
 ```
@@ -6595,7 +6595,7 @@ See [[#Icon|Icon]].
 
 
 ```bash
-rm -f _sortpass 
+rm -f _sortpass
 
 reset() {
    test -f _tosort || mv _sortpass _tosort
@@ -6667,7 +6667,7 @@ Private Function bubble_sort(s As Variant) As Variant
     Next j
     bubble_sort = s
 End Function
- 
+
 Public Sub main()
     s = [{4, 15, "delta", 2, -31, 0, "alfa", 19, "gamma", 2, 13, "beta", 782, 1}]
     Debug.Print "Before: "
@@ -6679,9 +6679,9 @@ End Sub
 {{out}}
 
 ```txt
-Before: 
+Before:
 4, 15, delta, 2, -31, 0, alfa, 19, gamma, 2, 13, beta, 782, 1
-After: 
+After:
 -31, 0, 1, 2, 2, 4, 13, 15, 19, 782, alfa, beta, delta, gamma
 ```
 
@@ -6716,7 +6716,7 @@ end sub
 function bubbleSort( a )
 	dim changed
 	dim itemCount
-	itemCount = ubound(a) 
+	itemCount = ubound(a)
 	do
 		changed = false
 		decr itemCount
@@ -6919,7 +6919,7 @@ for j=1 to n-1
         l=n+j-i+1
         if p(j) > p(l) then
             print color("yellow","red") at(0,j) p$(j)
-            if l<>m then 
+            if l<>m then
                 for x=m to l step sig(l-m): print at(18,x) t$ : print at (18,x+sig(m-l)) "   " : pause .02 : next x
             end if
             for x=17 TO y step -1 : print at(x,l) t$+" " : pause .02 : next x
@@ -7013,7 +7013,7 @@ L(" "," "," ","T","a","e","h","i","i","s","s","s","t","t")
 
 
 ```zxbasic
-5000 CLS 
+5000 CLS
 5002 LET a$="": FOR f=1 TO 64: LET a$=a$+CHR$ (32+INT (RND*96)): NEXT f
 5004 PRINT a$; AT 10,0;"ZigZag BubbleSORT"
 5010 LET la=LEN a$
@@ -7033,7 +7033,7 @@ L(" "," "," ","T","a","e","h","i","i","s","s","s","t","t")
 5063 LET u=NOT u
 5064 IF d AND i<la THEN  GO TO 5020
 5072 PRINT AT 12,0;a$
-9000 STOP 
+9000 STOP
 ```
 
 

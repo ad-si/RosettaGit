@@ -10,8 +10,8 @@ categories = []
 tags = []
 +++
 
-{{draft task}} 
-[[Category:Terminal control]] 
+{{draft task}}
+[[Category:Terminal control]]
 [[Category:Hardware]]
 [[Category:Initialization]]
 {{omit from|Clojure}}
@@ -57,7 +57,7 @@ end Test_tty;
 
 ```txt
 
-$ ./test_tty 
+$ ./test_tty
 stdin is a tty.
 $ ./test_tty < /dev/null
 stdin is not a tty.
@@ -70,8 +70,9 @@ stdin is not a tty.
 
 Use <code>isatty()</code> on file descriptor to determine if it's a TTY.  To get the file descriptor from a <code>FILE*</code> pointer, use <code>fileno</code>:
 
-```c>#include <unistd.h
-	//for isatty()
+```c
+#include <unistd.h>
+// for isatty()
 #include <stdio.h>	//for fileno()
 
 int main(void)
@@ -104,7 +105,7 @@ stdin is not tty
 
 ```lisp
 (with-open-stream (s *standard-input*)
-  (format T "stdin is~:[ not~;~] a terminal~%" 
+  (format T "stdin is~:[ not~;~] a terminal~%"
           (interactive-stream-p s)))
 ```
 
@@ -203,10 +204,10 @@ Example uses [https://hackage.haskell.org/package/unix <tt>unix</tt>] package:
 
 ```haskell
 module Main (main) where
- 
+
 import           System.Posix.IO (stdInput)
 import           System.Posix.Terminal (queryTerminal)
- 
+
 main :: IO ()
 main = do
     isTTY <- queryTerminal stdInput
@@ -283,7 +284,7 @@ fun main(args: Array<String>) {
     if (isatty(STDIN_FILENO) != 0)
         println("stdin is a terminal")
     else
-        println("stdin is not a terminal") 
+        println("stdin is not a terminal")
 }
 
 ```
@@ -446,7 +447,7 @@ if queued()  then say 'input comes from the terminal.'
 ```ring
 
 # Project  : Check input device is a terminal
- 
+
 load "stdlib.ring"
 
 if isWindows()
@@ -551,7 +552,7 @@ Demonstrating:
 
 ```txt
 
-$ tclsh8.5 istty.tcl 
+$ tclsh8.5 istty.tcl
 Input comes from tty.
 $ tclsh8.5 istty.tcl </dev/null
 Input doesn't come from tty.

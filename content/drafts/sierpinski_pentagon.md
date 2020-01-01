@@ -39,56 +39,56 @@ The Sierpinski fractals can be generated via the [http://mathworld.wolfram.com/C
 #define pi M_PI
 
 int main(){
-	
+
 	time_t t;
 	double side, **vertices,seedX,seedY,windowSide = 500,sumX=0,sumY=0;
 	int i,iter,choice,numSides;
-	
+
 	printf("Enter number of sides : ");
 	scanf("%d",&numSides);
-	
+
 	printf("Enter polygon side length : ");
 	scanf("%lf",&side);
-	
+
 	printf("Enter number of iterations : ");
 	scanf("%d",&iter);
 
 	initwindow(windowSide,windowSide,"Polygon Chaos");
-	
+
 	vertices = (double**)malloc(numSides*sizeof(double*));
-	
+
 	for(i=0;i<numSides;i++){
 		vertices[i] = (double*)malloc(2 * sizeof(double));
-		
+
 		vertices[i][0] = windowSide/2 + side*cos(i*2*pi/numSides);
 		vertices[i][1] = windowSide/2 + side*sin(i*2*pi/numSides);
 		sumX+= vertices[i][0];
 		sumY+= vertices[i][1];
 		putpixel(vertices[i][0],vertices[i][1],15);
 	}
-	
+
 	srand((unsigned)time(&t));
-	
+
 	seedX = sumX/numSides;
 	seedY = sumY/numSides;
-	
+
 	putpixel(seedX,seedY,15);
-	
+
 	for(i=0;i<iter;i++){
 		choice = rand()%numSides;
-		
+
 		seedX = (seedX + (numSides-2)*vertices[choice][0])/(numSides-1);
 		seedY = (seedY + (numSides-2)*vertices[choice][1])/(numSides-1);
-		
+
 		putpixel(seedX,seedY,15);
 	}
-	
+
 	free(vertices);
-	
+
 	getch();
-	
+
 	closegraph();
-	
+
 	return 0;
 }
 
@@ -100,8 +100,8 @@ int main(){
 
 {{trans|D}}
 
-```cpp>#include <iomanip
-
+```cpp
+#include <iomanip>
 #include <iostream>
 
 #define _USE_MATH_DEFINES
@@ -518,7 +518,7 @@ For universal solution see [[Fractal tree#Haskell]]
 
 
 ```haskell
-import Graphics.Gloss 
+import Graphics.Gloss
 
 pentaflake :: Int -> Picture
 pentaflake order = iterate transformation pentagon !! order
@@ -537,7 +537,7 @@ main = display dc white (Color blue $ Scale 300 300 $ pentaflake 5)
 '''Explanation''': Since <tt>Picture</tt> forms a monoid with image overlaying as multiplication, so do functions having type <tt>Picture -> Picture</tt>:
 
  f,g :: Picture -> Picture
- f <> g = \p -> f p <> g p 
+ f <> g = \p -> f p <> g p
 
 Function <code>copy</code> for an angle returns transformation, which shifts and rotates given picture, therefore <code>foldMap copy</code> for a list of angles returns a transformation, which shifts and rotates initial image five times. After that the resulting image is scaled to fit the inital size, so that it is ready for next iteration.
 
@@ -763,8 +763,8 @@ function resetf(rord) {
 </script>
 </head>
  <body onload="p5f()" style="font-family: arial, helvatica, sans-serif;">
- 	<b>Click Pentaflake to iterate.</b>  Order: <label id='p1id'>0</label>  
- 	<input type="submit" value="RESET" onclick="resetf(0);">  
+ 	<b>Click Pentaflake to iterate.</b>  Order: <label id='p1id'>0</label>
+ 	<input type="submit" value="RESET" onclick="resetf(0);">
  	(Reset anytime: to start new Pentaflake and change color.)
  	<br /><br />
     <canvas id="cvsid" width=640 height=640></canvas>
@@ -772,7 +772,7 @@ function resetf(rord) {
 </html>
 
 ```
- 
+
 
 {{Output}}
 
@@ -804,7 +804,7 @@ const vertices = map(x -> cis(x * τ  / sides), 0:sides-1)
 fh = open("sierpinski_pentagon.svg", "w")
 print(fh, """<svg height=\"$(dim*2)\" width=\"$(dim*2)\" style=\"fill:blue\" """ *
     """version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n""")
- 
+
 for i in 1:sides^order
     varr = [vertices[parse(Int, ch) + 1] for ch in split(string(i, base=sides, pad=order), "")]
     vector = sum(map(x -> varr[x] * orders[x], 1:length(orders)))
@@ -938,9 +938,9 @@ fun main(args: Array<String>) {
 
 ```mathematica
 pentaFlake[0] = RegularPolygon[5];
-pentaFlake[n_] := 
- GeometricTransformation[pentaFlake[n - 1], 
-  TranslationTransform /@ 
+pentaFlake[n_] :=
+ GeometricTransformation[pentaFlake[n - 1],
+  TranslationTransform /@
    CirclePoints[{GoldenRatio^(2 n - 1), Pi/10}, 5]]
 
 Graphics@pentaFlake[4]
@@ -1077,16 +1077,16 @@ def pentagon(t, s):
 def sierpinski(i, t, s):
   t.setheading(0)
   new_size = s * side_ratio
-  
+
   if i > 1:
     i -= 1
-    
+
     # create four more turtles
     for j in range(4):
       t.right(36)
       short = s * side_ratio / part_ratio
       dist = [short, s, s, short][j]
-      
+
       # spawn a turtle
       spawn = Turtle()
       if hide_turtles:spawn.hideturtle()
@@ -1094,13 +1094,13 @@ def sierpinski(i, t, s):
       spawn.setposition(t.position())
       spawn.setheading(t.heading())
       spawn.forward(dist)
-      
+
       # recurse for spawned turtles
       sierpinski(i, spawn, new_size)
-    
+
     # recurse for parent turtle
     sierpinski(i, t, new_size)
-    
+
   else:
     # draw a pentagon
     pentagon(t, s)
@@ -1114,13 +1114,13 @@ def main():
   screen = t.getscreen()
   y = screen.window_height()
   t.goto(0, y/2-20)
-  
+
   i = 5       # depth. i >= 1
   size = 300  # side length
-  
+
   # so the spawned turtles move only the distance to an inner pentagon
   size *= part_ratio
-  
+
   # begin recursion
   sierpinski(i, t, size)
 
@@ -1144,11 +1144,11 @@ See [https://trinket.io/python/5137ae2b92 online implementation]. See [http://i.
 (define 72-degrees (degrees->radians 72))
 ;; After scaling we'll have 2 sides plus a gap occupying the length
 ;; of a side before scaling. The gap is the base of an isosceles triangle
-;; with a base angle of 72 degrees. 
+;; with a base angle of 72 degrees.
 (define scale-factor (/ (+ 2 (* (cos 72-degrees) 2))))
 ;; Starting at the top of the highest pentagon, calculate
 ;; the top vertices of the other pentagons by taking the
-;; length of the scaled side plus the length of the gap.       
+;; length of the scaled side plus the length of the gap.
 (define dist-factor (+ 1 (* (cos 72-degrees) 2)))
 
 ;; don't use scale, since it scales brushes too (making lines all tiny)
@@ -1449,7 +1449,7 @@ Displays fine in FireFox, in Chrome, it doesn't appear to be transformed so you 
 ```txt
 
 zkl bbb > sierpinskiPentagon.zkl.svg
-$ wc sierpinskiPentagon.zkl.svg 
+$ wc sierpinskiPentagon.zkl.svg
   3131  37519 314183 sierpinskiPentagon.zkl.svg
 
 ```

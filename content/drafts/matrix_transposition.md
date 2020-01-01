@@ -21,14 +21,14 @@ tags = []
 
 
 ```360asm
-...          
+...
 KN       EQU    3
 KM       EQU    5
 N        DC     AL2(KN)
 M        DC     AL2(KM)
 A        DS     (KN*KM)F           matrix a(n,m)
 B        DS     (KM*KN)F           matrix b(m,n)
-... 
+...
 *        b(j,i)=a(i,j)
 *        transposition using Horner's formula
          LA     R4,0               i,from 1
@@ -98,7 +98,7 @@ function transpose( m:Array):Array
 {
 	//Assume each element in m is an array. (If this were production code, use typeof to be sure)
 
-	//Each element in m is a row, so this gets the length of a row in m, 
+	//Each element in m is a row, so this gets the length of a row in m,
 	//which is the same as the number of rows in m transpose.
 	var mTranspose = new Array(m[0].length);
 	for(var i:uint = 0; i < mTranspose.length; i++)
@@ -129,8 +129,8 @@ This example illustrates use of Transpose for the matrices built upon the standa
 
 ```ada
 with Ada.Numerics.Real_Arrays;  use Ada.Numerics.Real_Arrays;
-with Ada.Text_IO;               use Ada.Text_IO; 
- 
+with Ada.Text_IO;               use Ada.Text_IO;
+
 procedure Matrix_Transpose is
    procedure Put (X : Real_Matrix) is
       type Fixed is delta 0.01 range -500.0..500.0;
@@ -142,7 +142,7 @@ procedure Matrix_Transpose is
          New_Line;
       end loop;
    end Put;
-    
+
    Matrix : constant Real_Matrix :=
             (  (0.0, 0.1, 0.2, 0.3),
                (0.4, 0.5, 0.6, 0.7),
@@ -225,7 +225,7 @@ main:(
   OP ZIP = ([,]REAL in)[,]REAL:(
     [2 LWB in:2 UPB in,1 LWB in:1UPB in]REAL out;
     FOR i FROM LWB in TO UPB in DO
-       out[,i]:=in[i,] 
+       out[,i]:=in[i,]
     OD;
     out
   );
@@ -291,17 +291,17 @@ end run
 
 on transpose(xss)
     set lstTrans to {}
-    
+
     repeat with iCol from 1 to length of item 1 of xss
         set lstCol to {}
-        
+
         repeat with iRow from 1 to length of xss
             set end of lstCol to item iCol of item iRow of xss
         end repeat
-        
+
         set end of lstTrans to lstCol
     end repeat
-    
+
     return lstTrans
 end transpose
 ```
@@ -325,11 +325,11 @@ on transpose(xss)
                     item iCol of xs
                 end |λ|
             end script
-            
+
             map(row, xss)
         end |λ|
     end script
-    
+
     map(column, item 1 of xss)
 end transpose
 
@@ -337,7 +337,7 @@ end transpose
 -- TEST ----------------------------------------------------------------------
 on run
     transpose([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]])
-    
+
     --> {{1, 4, 7, 10}, {2, 5, 8, 11}, {3, 6, 9, 12}}
 end run
 
@@ -355,7 +355,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -395,26 +395,26 @@ Loop, 10
 }
 before := matrix_print("a", m, n)
 transpose("a", m, n)
-after := matrix_print("a", m, n)  
+after := matrix_print("a", m, n)
 MsgBox % before . "`ntransposed:`n" . after
 Return
 
 transpose(a, m, n)
 {
   Local i, j, row, matrix
-  Loop, % m 
+  Loop, % m
   {
     i := A_Index - 1
-    Loop, % n 
+    Loop, % n
     {
       j := A_Index - 1
       temp%i%%j% := %a%%j%%i%
     }
   }
-  Loop, % m 
+  Loop, % m
   {
     i := A_Index - 1
-    Loop, % n 
+    Loop, % n
     {
       j := A_Index - 1
       %a%%i%%j% := temp%i%%j%
@@ -425,11 +425,11 @@ transpose(a, m, n)
 matrix_print(a, m, n)
 {
   Local i, j, row, matrix
-  Loop, % m 
+  Loop, % m
   {
     i := A_Index - 1
     row := ""
-    Loop, % n 
+    Loop, % n
     {
       j := A_Index - 1
       row .= %a%%i%%j% . ","
@@ -460,7 +460,7 @@ Examples:
 ```AutoHotkey
 Matrix := [[1,2,3],[4,5,6],[7,8,9],[10,11,12]]
 MsgBox % 	""
-		. "Original Matrix :`n" 		Print(Matrix) 
+		. "Original Matrix :`n" 		Print(Matrix)
 		. "`nTransposed Matrix :`n" 	Print(Transpose(Matrix))
 
 Print(M){
@@ -592,24 +592,24 @@ function max(m, n) {
 {{works with|QuickBasic|4.5}}
  CLS
  DIM m(1 TO 5, 1 TO 4) 'any dimensions you want
- 
+
  'set up the values in the array
  FOR rows = LBOUND(m, 1) TO UBOUND(m, 1) 'LBOUND and UBOUND can take a dimension as their second argument
         FOR cols = LBOUND(m, 2) TO UBOUND(m, 2)
         m(rows, cols) = rows ^ cols 'any formula you want
         NEXT cols
  NEXT rows
- 
+
  'declare the new matrix
  DIM trans(LBOUND(m, 2) TO UBOUND(m, 2), LBOUND(m, 1) TO UBOUND(m, 1))
- 
+
  'copy the values
  FOR rows = LBOUND(m, 1) TO UBOUND(m, 1)
         FOR cols = LBOUND(m, 2) TO UBOUND(m, 2)
         trans(cols, rows) = m(rows, cols)
         NEXT cols
  NEXT rows
- 
+
  'print the new matrix
  FOR rows = LBOUND(trans, 1) TO UBOUND(trans, 1)
         FOR cols = LBOUND(trans, 2) TO UBOUND(trans, 2)
@@ -625,21 +625,21 @@ function max(m, n) {
 
 ```bbcbasic
       INSTALL @lib$+"ARRAYLIB"
-      
+
       DIM matrix(3,4), transpose(4,3)
       matrix() = 78,19,30,12,36,49,10,65,42,50,30,93,24,78,10,39,68,27,64,29
-      
+
       PROC_transpose(matrix(), transpose())
-      
+
       FOR row% = 0 TO DIM(matrix(),1)
         FOR col% = 0 TO DIM(matrix(),2)
           PRINT ;matrix(row%,col%) " ";
         NEXT
         PRINT
       NEXT row%
-      
+
       PRINT
-      
+
       FOR row% = 0 TO DIM(transpose(),1)
         FOR col% = 0 TO DIM(transpose(),2)
           PRINT ;transpose(row%,col%) " ";
@@ -688,8 +688,8 @@ blsq ) {{78 19 30 12 36}{49 10 65 42 50}{30 93 24 78 10}{39 68 27 64 29}}tpsp
 
 Transpose a 2D double array.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void transpose(void *dest, void *src, int src_h, int src_w)
 {
@@ -719,8 +719,8 @@ int main()
 
 Transpose a matrix of size w x h in place with only O(1) space and without moving any element more than once. See the [[wp:In-place_matrix_transposition|Wikipedia article]] for more information.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void transpose(double *m, int w, int h)
 {
@@ -777,16 +777,16 @@ int main(void)
 ```txt
 
 before transpose:
- 1  2  3 
- 4  5  6 
- 7  8  9 
-10 11 12 
-13 14 15 
+ 1  2  3
+ 4  5  6
+ 7  8  9
+10 11 12
+13 14 15
 
 after transpose:
- 1  4  7 10 13 
- 2  5  8 11 14 
- 3  6  9 12 15 
+ 1  4  7 10 13
+ 2  5  8 11 14
+ 3  6  9 12 15
 ```
 
 
@@ -797,7 +797,8 @@ C++ does not have a built-in or standard-library Matrix class, so many users hav
 
 {{libheader|Boost.uBLAS}}
 
-```cpp>#include <boost/numeric/ublas/matrix.hpp
+```cpp
+#include <boost/numeric/ublas/matrix.hpp>
 
 #include <boost/numeric/ublas/io.hpp>
 
@@ -830,8 +831,8 @@ int main()
 
 ;main.cpp
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include "matrix.h"
 
 #if !defined(ARRAY_SIZE)
@@ -1078,13 +1079,13 @@ void Matrix<T>::transpose() {
 ```txt
 Before transposition:
 rows = 2   columns = 3
-1  2  3  
-4  5  6  
+1  2  3
+4  5  6
 
 After transposition:
 rows = 3   columns = 2
-1  4  
-2  5  
+1  4
+2  5
 3  6
 ```
 
@@ -1093,15 +1094,15 @@ rows = 3   columns = 2
 ### Easy Mode
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main(){
     const int l = 5;
     const int w = 3;
     int m1[l][w] = {{1,2,3}, {4,5,6}, {7,8,9}, {10,11,12}, {13,14,15}};
     int m2[w][l];
-    
+
     for(int i=0; i<w; i++){
         for(int x=0; x<l; x++){
             m2[i][x]=m1[x][i];
@@ -1109,7 +1110,7 @@ int main(){
     }
 
     // This is just output...
-   
+
     std::cout << "Before:";
     for(int i=0; i<l; i++){
         std::cout << std::endl;
@@ -1117,7 +1118,7 @@ int main(){
             std::cout << m1[i][x] << " ";
         }
     }
-    
+
     std::cout << "\n\nAfter:";
     for(int i=0; i<w; i++){
         std::cout << std::endl;
@@ -1125,9 +1126,9 @@ int main(){
             std::cout << m2[i][x] << " ";
         }
     }
-    
+
     std::cout << std::endl;
-    
+
     return 0;
 }
 ```
@@ -1137,15 +1138,15 @@ int main(){
 ```txt
 
 Before:
-1 2 3 
-4 5 6 
-7 8 9 
-10 11 12 
-13 14 15 
+1 2 3
+4 5 6
+7 8 9
+10 11 12
+13 14 15
 
 After:
-1 4 7 10 13 
-2 5 8 11 14 
+1 4 7 10 13
+2 5 8 11 14
 3 6 9 12 15
 
 ```
@@ -1160,28 +1161,28 @@ using System.Text;
 namespace prog
 {
 	class MainClass
-	{						
+	{
 		public static void Main (string[] args)
 		{
 			double[,] m = { {1,2,3},{4,5,6},{7,8,9} };
-			
-			double[,] t = Transpose( m );	
-			
+
+			double[,] t = Transpose( m );
+
 			for( int i=0; i<t.GetLength(0); i++ )
 			{
-				for( int j=0; j<t.GetLength(1); j++ )		
+				for( int j=0; j<t.GetLength(1); j++ )
 					Console.Write( t[i,j] + "  " );
 				Console.WriteLine("");
 			}
 		}
-		
+
 		public static double[,] Transpose( double[,] m )
 		{
 			double[,] t = new double[m.GetLength(1),m.GetLength(0)];
 			for( int i=0; i<m.GetLength(0); i++ )
 				for( int j=0; j<m.GetLength(1); j++ )
-					t[j,i] = m[i,j];			
-			
+					t[j,i] = m[i,j];
+
 			return t;
 		}
 	}
@@ -1347,12 +1348,12 @@ Same output.
 
 (define M (list->array (iota 6) 3 2))
 (array-print M)
-  0   1 
-  2   3 
-  4   5 
+  0   1
+  2   3
+  4   5
 (array-print (matrix-transpose M))
-  0   2   4 
-  1   3   5 
+  0   2   4
+  1   3   5
 
 ```
 
@@ -1432,11 +1433,11 @@ trans(M) ->
 
 transL( [ [Elem | Rest] | List] ) ->
     [ [Elem | [H || [H | _] <- List] ] |
-      transL( [Rest | 
+      transL( [Rest |
                       [ T || [_ | T] <- List ] ]
        ) ];
 transL([ [] | List] ) -> transL(List);
-transL([]) -> [].                                                              
+transL([]) -> [].
 
 ```
 
@@ -1444,7 +1445,7 @@ transL([]) -> [].
 {{out}}
 
 ```txt
- 
+
 
 2> transmatrix:transL( [ [1,2,3],[4,5,6],[7,8,9] ] ).
 [[1,4,7],[2,5,8],[3,6,9]]
@@ -1588,7 +1589,7 @@ In ANSI FORTRAN 66 or later, use nested labeled DO loops:
 ```fortran
    REAL A(3,5), B(5,3)
    DATA ((A(I,J),I=1,3),J=1,5) /1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15/
-   
+
    DO 10 I = 1, 3
       DO 20 J = 1, 5
          B(J,I) = A(I,J)
@@ -1597,7 +1598,7 @@ In ANSI FORTRAN 66 or later, use nested labeled DO loops:
 ```
 
 
-Explicit transposition via DO-loops was available from the start. Less obvious is that Fortran uses what is called "column major" order rather than "row major", which is to say that consecutive elements of the array are stored in memory with indices counting down the columns first, not along the rows. The above examples acknowledge this in the DATA statement with the <code>((A(row,col),row=1,3),col=1,5)</code> which could therefore be replaced with just <code>A</code>, however one could use <code>((A(row,col),col=1,5),row=1,3)</code> instead and the DATA values could be arranged so as to appear in the same layout as one expects for a matrix. Consider 
+Explicit transposition via DO-loops was available from the start. Less obvious is that Fortran uses what is called "column major" order rather than "row major", which is to say that consecutive elements of the array are stored in memory with indices counting down the columns first, not along the rows. The above examples acknowledge this in the DATA statement with the <code>((A(row,col),row=1,3),col=1,5)</code> which could therefore be replaced with just <code>A</code>, however one could use <code>((A(row,col),col=1,5),row=1,3)</code> instead and the DATA values could be arranged so as to appear in the same layout as one expects for a matrix. Consider
 ```Fortran
       DIMENSION A(3,5),B(5,3),C(5,3)
       EQUIVALENCE (A,C)	!Occupy the same storage.
@@ -2020,7 +2021,7 @@ import Data.Array
 swap (x,y) = (y,x)
 
 transpArray :: (Ix a, Ix b) => Array (a,b) e -> Array (b,a) e
-transpArray a = ixmap (swap l, swap u) swap a where 
+transpArray a = ixmap (swap l, swap u) swap a where
   (l,u) = bounds a
 ```
 
@@ -2093,13 +2094,13 @@ WRITE() mtx
 {{out}}
 
 ```txt
-1.1 2.2 3.3 4.4 
-5.5 6.6 7.7 8.8 
+1.1 2.2 3.3 4.4
+5.5 6.6 7.7 8.8
 
-1.1 5.5 
-2.2 6.6 
-3.3 7.7 
-4.4 8.8 
+1.1 5.5
+2.2 6.6
+3.3 7.7
+4.4 8.8
 ```
 
 
@@ -2112,7 +2113,7 @@ procedure transpose_matrix (matrix)
   every (i := 1 to *matrix[1]) do {
     col := []
     # extract the number in each row for that column
-    every (row := !matrix) do put (col, row[i]) 
+    every (row := !matrix) do put (col, row[i])
     # and push that column as a row in the result matrix
     put (result, col)
   }
@@ -2141,11 +2142,11 @@ end
 ```txt
 
 Start:
-1 2 3 
-4 5 6 
+1 2 3
+4 5 6
 Transposed:
-1 4 
-2 5 
+1 4
+2 5
 3 6
 
 ```
@@ -2242,7 +2243,7 @@ function Matrix(ary) {
 
 Matrix.prototype.toString = function() {
     var s = []
-    for (var i = 0; i < this.mtx.length; i++) 
+    for (var i = 0; i < this.mtx.length; i++)
         s.push( this.mtx[i].join(",") );
     return s.join("\n");
 }
@@ -2297,7 +2298,7 @@ Or, as a functional expression (rather than an imperative procedure):
             })
         });
     }
-    
+
     return transpose(
         [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]
     );
@@ -2400,13 +2401,13 @@ function Matrix(ary) {
     this.height = ary.length;
     this.width = ary[0].length;
 }
- 
+
 Matrix.prototype.toString = function() {
     var s = [];
     for (var i = 0; i < this.mtx.length; i++) s.push(this.mtx[i].join(","));
     return s.join("\n");
 };
- 
+
 // returns a transposed matrix
 Matrix.prototype.transpose = function() {
     var transposed = [];
@@ -2420,7 +2421,7 @@ Matrix.prototype.transpose = function() {
 // returns a matrix as the product of two others
 Matrix.prototype.mult = function(other) {
     if (this.width != other.height) throw "error: incompatible sizes";
- 
+
     var result = [];
     for (var i = 0; i < this.height; i++) {
         result[i] = [];
@@ -2677,7 +2678,7 @@ print "         ="
 MatrixT$ =MatrixTranspose$( MatrixC$)
 call DisplayMatrix MatrixT$
 ```
- 
+
 
 {{out}}
 
@@ -2702,14 +2703,14 @@ Transpose of matrix
 ```lua
 function Transpose( m )
     local res = {}
-    
+
     for i = 1, #m[1] do
         res[i] = {}
         for j = 1, #m do
             res[i][j] = m[j][i]
         end
     end
-    
+
     return res
 end
 
@@ -2847,7 +2848,7 @@ B=size(A);   %In this code, we assume that a previous matrix "A" has already bee
 for j=1:B(1)
     for i=1:B(2)
         C(i,j)=A(j,i);
-    end      %The transposed A-matrix should be C 
+    end      %The transposed A-matrix should be C
 end
 
 
@@ -2933,10 +2934,10 @@ for r in c:
 {{out}}
 
 ```txt
-0 5 1 
-1 6 0 
-2 7 0 
-3 8 0 
+0 5 1
+1 6 0
+2 7 0
+3 8 0
 4 9 42
 ```
 
@@ -3008,9 +3009,9 @@ bundle Default {
 
 ```txt
 
-1	2	3	4	5	
-1	4	9	16	25	
-1	8	27	64	125	
+1	2	3	4	5
+1	4	9	16	25
+1	8	27	64	125
 1	16	81	256	625
 
 ```
@@ -3182,7 +3183,7 @@ though <code>shallowtrans</code> is also available when deep copying is not desi
 Program Transpose;
 
 const
-  A: array[1..3,1..5] of integer = (( 1,  2,  3,  4,  5), 
+  A: array[1..3,1..5] of integer = (( 1,  2,  3,  4,  5),
                                     ( 6,  7,  8,  9, 10),
 				    (11, 12, 13, 14, 15)
 				   );
@@ -3255,9 +3256,9 @@ $m->transpose->print;
 
 ```txt
 
- 1.00000    2.00000    3.00000    4.00000    5.00000 
- 1.00000    4.00000    9.00000   16.00000   25.00000 
- 1.00000    8.00000   27.00000   64.00000  125.00000 
+ 1.00000    2.00000    3.00000    4.00000    5.00000
+ 1.00000    4.00000    9.00000   16.00000   25.00000
+ 1.00000    8.00000   27.00000   64.00000  125.00000
  1.00000   16.00000   81.00000  256.00000  625.00000
 
 ```
@@ -3368,8 +3369,8 @@ function transpose($m) {
 ```php
 
 
-function transpose($m) { 
-    return count($m) == 0 ? $m : (count($m) == 1 ? array_chunk($m[0], 1) : array_map(null, ...$m)); 
+function transpose($m) {
+    return count($m) == 0 ? $m : (count($m) == 1 ? array_chunk($m[0], 1) : array_map(null, ...$m));
 }
 
 ```
@@ -3560,28 +3561,28 @@ transposed matrix:
 
 function transpose($a) {
     $arr = @()
-    if($a) { 
-        $n = $a.count - 1 
-        if(0 -lt $n) { 
+    if($a) {
+        $n = $a.count - 1
+        if(0 -lt $n) {
             $m = ($a | foreach {$_.count} | measure-object -Minimum).Minimum - 1
             if( 0 -le $m) {
                 if (0 -lt $m) {
                     $arr =@(0)*($m+1)
                     foreach($i in 0..$m) {
-                        $arr[$i] = foreach($j in 0..$n) {@($a[$j][$i])}    
+                        $arr[$i] = foreach($j in 0..$n) {@($a[$j][$i])}
                     }
                 } else {$arr = foreach($row in $a) {$row[0]}}
             }
         } else {$arr = $a}
     }
     $arr
-} 
+}
 function show($a) {
-    if($a) { 
+    if($a) {
         0..($a.Count - 1) | foreach{ if($a[$_]){"$($a[$_])"}else{""} }
     }
 }
- 
+
 $a = @(@(2, 0, 7, 8),@(3, 5, 9, 1),@(4, 1, 6, 3))
 "`$a ="
 show $a
@@ -3675,20 +3676,20 @@ transpose $a =
 ```PowerShell
 
 function transpose($a) {
-    if($a) { 
-        $n = $a.Count - 1 
-        foreach($i in 0..$n) { 
+    if($a) {
+        $n = $a.Count - 1
+        foreach($i in 0..$n) {
             $j = 0
             while($j -lt $i) {
                 $a[$i][$j], $a[$j][$i] = $a[$j][$i], $a[$i][$j]
                 $j++
-            }    
+            }
         }
     }
     $a
 }
 function show($a) {
-    if($a) { 
+    if($a) {
         0..($a.Count - 1) | foreach{ if($a[$_]){"$($a[$_])"}else{""} }
     }
 }
@@ -3702,7 +3703,7 @@ show (transpose $a)
 <b>Output:</b>
 
 ```txt
- 
+
 2 4 7
 3 5 9
 4 1 6
@@ -3760,25 +3761,25 @@ Matrices represented by integer arrays using rows as the first dimension and col
 ```PureBasic
 Procedure transposeMatrix(Array a(2), Array trans(2))
   Protected rows, cols
-  
+
   Protected ar = ArraySize(a(), 1) ;rows in original matrix
   Protected ac = ArraySize(a(), 2) ;cols in original matrix
-  
+
   ;size the matrix receiving the transposition
   Dim trans(ac, ar)
-  
+
   ;copy the values
   For rows = 0 To ar
     For cols = 0 To ac
       trans(cols, rows) = a(rows, cols)
     Next
-  Next  
+  Next
 EndProcedure
 
 Procedure displayMatrix(Array a(2), text.s = "")
-  Protected i, j 
+  Protected i, j
   Protected cols = ArraySize(a(), 2), rows = ArraySize(a(), 1)
-  
+
   PrintN(text + ": (" + Str(rows + 1) + ", " + Str(cols + 1) + ")")
   For i = 0 To rows
     For j = 0 To cols
@@ -3796,7 +3797,7 @@ Define rows, cols
 ;fill matrix with 'random' data
 For rows = 0 To ArraySize(m(),1)      ;ArraySize() can take a dimension as its second argument
   For cols = 0 To ArraySize(m(), 2)
-    m(rows, cols) = random(10) - 10 
+    m(rows, cols) = random(10) - 10
   Next
 Next
 
@@ -3805,7 +3806,7 @@ If OpenConsole()
   displayMatrix(m(), "matrix before transposition")
   transposeMatrix(m(), t())
   displayMatrix(t(), "matrix after transposition")
-   
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -3855,11 +3856,11 @@ print(zip(*m))
 ```
 
 
-Note, however, that '''zip''', while very useful, doesn't give us a simple type-safe transposition – it is actually a ''''transpose + coerce'''' function rather than a pure '''transpose''' function; polymorphic in its inputs, but not in its outputs. 
+Note, however, that '''zip''', while very useful, doesn't give us a simple type-safe transposition – it is actually a ''''transpose + coerce'''' function rather than a pure '''transpose''' function; polymorphic in its inputs, but not in its outputs.
 
 zip accepts matrices in any of the 4 permutations of (outer lists or tuples) * (inner lists or tuples), but it always and only returns a '''zip''' of '''tuples''', losing any information about what the input type was.
 
-For type-specific transpositions '''without''' coercion (and for a richer set of matrix types, and higher level of efficiency – transpositions are an inherently expensive operation) we can turn to '''numpy'''. 
+For type-specific transpositions '''without''' coercion (and for a richer set of matrix types, and higher level of efficiency – transpositions are an inherently expensive operation) we can turn to '''numpy'''.
 
 Meanwhile, for the four basic types of Python matrices (the cartesian product of (inner type, container type) * (tuple, list), the simplest (though not necessarily most efficient) approach (in the absence of numpy) may be to write a type-sensitive wrapper, which retains and restores the type information that zip discards.
 
@@ -3941,7 +3942,7 @@ print (
 ```
 
 
-At this point, short of turning to '''numpy''', we might need to write a custom function. 
+At this point, short of turning to '''numpy''', we might need to write a custom function.
 An obvious approach is to return the full number of potential columns, each containing such data as the rows do have.
 For example:
 
@@ -4142,8 +4143,8 @@ public rel[real, real, real] matrixTranspose(rel[real x, real y, real v] matrix)
 
 //a matrix
 public rel[real x, real y, real v] matrixA = {
-<0.0,0.0,12.0>, <0.0,1.0, 6.0>, <0.0,2.0,-4.0>, 
-<1.0,0.0,-51.0>, <1.0,1.0,167.0>, <1.0,2.0,24.0>, 
+<0.0,0.0,12.0>, <0.0,1.0, 6.0>, <0.0,2.0,-4.0>,
+<1.0,0.0,-51.0>, <1.0,1.0,167.0>, <1.0,2.0,24.0>,
 <2.0,0.0,4.0>, <2.0,1.0,-68.0>, <2.0,2.0,-41.0>
 };
 ```
@@ -4317,7 +4318,7 @@ p transpose([[1,2,3],[4,5,6]])
 
 ```runbasic
 mtrx$ ="4, 3,   0, 0.10, 0.20, 0.30,   0.40, 0.50, 0.60, 0.70,  0.80, 0.90, 1.00, 1.10"
- 
+
 print "Transpose of matrix"
 call DisplayMatrix mtrx$
 print "         ="
@@ -4337,7 +4338,7 @@ function MatrixTranspose$(in$)
   next i
 MatrixTranspose$ =left$(t$, len(t$) -1)
 end function
-    
+
 sub DisplayMatrix in$   '   Display looking like a matrix!
 html "<table border=2>"
   w	= val(word$(in$, 1, ","))
@@ -4371,9 +4372,9 @@ Transpose of matrix
 struct Matrix {
     dat: [[i32; 3]; 3]
 }
- 
 
- 
+
+
 impl Matrix {
     pub fn transpose_m(a: Matrix) -> Matrix
     {
@@ -4383,17 +4384,17 @@ impl Matrix {
                   [0, 0, 0]
                   ]
         };
-        
+
         for i in 0..3{
             for j in 0..3{
-                
+
                     out.dat[i][j] = a.dat[j][i];
             }
         }
- 
+
         out
     }
- 
+
     pub fn print(self)
     {
         for i in 0..3 {
@@ -4404,7 +4405,7 @@ impl Matrix {
         }
     }
 }
- 
+
 fn main()
 {
     let  a = Matrix {
@@ -4670,7 +4671,7 @@ function transpose(A) {
 Stata matrices are always real, so there is no ambiguity about the transpose operator. Mata matrices, however, may be real or complex. The transpose operator is actually a conjugate transpose, but there is also a '''[https://www.stata.com/help.cgi?mf_transposeonly transposeonly()]''' function.
 
 
-###  Stata matrices 
+###  Stata matrices
 
 
 ```stata
@@ -4694,7 +4695,7 @@ c3   3   6
 
 
 
-###  Mata 
+###  Mata
 
 
 ```stata
@@ -4786,11 +4787,11 @@ printMatrix(m2)
 
 ```txt
 Input:
-1 2 3 
-4 5 6 
+1 2 3
+4 5 6
 Output:
-1 4 
-2 5 
+1 4
+2 5
 3 6
 ```
 
@@ -4863,7 +4864,7 @@ proc size {m} {
     return [list $rows $cols]
 }
 proc transpose {m} {
-    lassign [size $m] rows cols 
+    lassign [size $m] rows cols
     set new [lrepeat $cols [lrepeat $rows ""]]
     for {set i 0} {$i < $rows} {incr i} {
         for {set j 0} {$j < $cols} {incr j} {
@@ -4874,7 +4875,7 @@ proc transpose {m} {
 }
 proc print_matrix {m {fmt "%.17g"}} {
     set max [widest $m $fmt]
-    lassign [size $m] rows cols 
+    lassign [size $m] rows cols
     for {set i 0} {$i < $rows} {incr i} {
         for {set j 0} {$j < $cols} {incr j} {
 	    set s [format $fmt [lindex $m $i $j]]
@@ -4884,7 +4885,7 @@ proc print_matrix {m {fmt "%.17g"}} {
     }
 }
 proc widest {m {fmt "%.17g"}} {
-    lassign [size $m] rows cols 
+    lassign [size $m] rows cols
     set max [lrepeat $cols 0]
     for {set i 0} {$i < $rows} {incr i} {
         for {set j 0} {$j < $cols} {incr j} {
@@ -4903,14 +4904,14 @@ print_matrix [transpose $m] "%d"
 {{out}}
 
 ```txt
-1  1   1   1 
-2  4   8  16 
-3  9  27  81 
-4 16  64 256 
-5 25 125 625 
-1  2  3   4   5 
-1  4  9  16  25 
-1  8 27  64 125 
+1  1   1   1
+2  4   8  16
+3  9  27  81
+4 16  64 256
+5 25 125 625
+1  2  3   4   5
+1  4  9  16  25
+1  8 27  64 125
 1 16 81 256 625
 ```
 
@@ -4928,20 +4929,20 @@ M format 2string
 {{out}}
 
 ```txt
-1 1  1   1  
-2 4  8   16 
-3 9  27  81 
+1 1  1   1
+2 4  8   16
+3 9  27  81
 4 16 64  256
 5 25 125 625
 1 2 3 4 5
 1 4 9 16 25
-         
+
 1 8 27 64 125
-         
-         
+
+
 1 16 81 256 625
-         
-         
+
+
 ```
 
 
@@ -4962,7 +4963,7 @@ Matrices are stored as lists of lists, and transposing them is a built in operat
 ```Ursala
 #cast %eLL
 
-example = 
+example =
 
 ~&K7 <
    <1.,2.,3.,4.>,
@@ -4971,7 +4972,7 @@ example =
 ```
 
 For a more verbose version, replace the ~&K7 operator with the standard library function
-named transpose. 
+named transpose.
 {{out}}
 
 ```txt
@@ -5248,7 +5249,7 @@ type
 				write(x[i,j]);
 			end;
 			writeln;
-		end	
+		end
 	end WriteMatrix;
 
 	procedure Transposition;

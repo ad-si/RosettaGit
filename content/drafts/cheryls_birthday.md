@@ -58,7 +58,7 @@ on run
     -- among the DAYs with unique months,
     -- EXCLUDING months with unique days,
     -- in Cheryl's list:
-    
+
     showList(uniquePairing(M, ¬
         uniquePairing(D, ¬
             monthsWithUniqueDays(false, ¬
@@ -66,7 +66,7 @@ on run
                     splitOn(", ", ¬
                         "May 15, May 16, May 19, June 17, June 18, " & ¬
                         "July 14, July 16, Aug 14, Aug 15, Aug 17"))))))
-    
+
     --> "[('july', '16')]"
 end run
 
@@ -95,7 +95,7 @@ on uniquePairing(dp, xs)
     script go
         property f : my mReturn(item dp of {my fst, my snd})
         on |λ|(md)
-            
+
             set dct to f's |λ|(md)
             script unique
                 on |λ|(k)
@@ -108,7 +108,7 @@ on uniquePairing(dp, xs)
                 end |λ|
             end script
             set uniques to filter(unique, keys(dct))
-            
+
             script found
                 on |λ|(tpl)
                     elem(f's |λ|(tpl), uniques)
@@ -121,7 +121,7 @@ on uniquePairing(dp, xs)
 end uniquePairing
 
 
--- bindPairs :: [(M, D)] -> ((Dict Text [Text], Dict Text [Text]) 
+-- bindPairs :: [(M, D)] -> ((Dict Text [Text], Dict Text [Text])
 --                                -> [(M, D)]) -> [(M, D)]
 on bindPairs(xs, f)
     tell mReturn(f)
@@ -173,7 +173,7 @@ on composeList(fs)
                     mReturn(f)'s |λ|(a)
                 end |λ|
             end script
-            
+
             foldr(result, x, fs)
         end |λ|
     end script
@@ -309,7 +309,7 @@ end fst
 -- groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
 on groupBy(f, xs)
     set mf to mReturn(f)
-    
+
     script enGroup
         on |λ|(a, x)
             if length of (active of a) > 0 then
@@ -317,7 +317,7 @@ on groupBy(f, xs)
             else
                 set h to missing value
             end if
-            
+
             if h is not missing value and mf's |λ|(h, x) then
                 {active:(active of a) & {x}, sofar:sofar of a}
             else
@@ -325,7 +325,7 @@ on groupBy(f, xs)
             end if
         end |λ|
     end script
-    
+
     if length of xs > 0 then
         set dct to foldl(enGroup, {active:{item 1 of xs}, sofar:{}}, rest of xs)
         if length of (active of dct) > 0 then
@@ -376,7 +376,7 @@ on lookupDict(k, dct)
     end if
 end lookupDict
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -682,8 +682,8 @@ end |words|
 
 {{trans|Go}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -836,7 +836,7 @@ public static class CherylsBirthday
         dates.IntersectWith(dates.GroupBy(d => d.month).Where(g => g.Count() == 1).Select(g => g.First()));
         Console.WriteLine(dates.Single());
     }
-    
+
 }
 ```
 
@@ -867,7 +867,7 @@ public static class CherylsBirthday
     (14 . august) (15 . august) (17 . august)))
 
 (defun unique-date-parts (possible-dates &key (alist-look-at #'car) (alist-r-assoc #'assoc))
-  (let* ((date-parts (mapcar alist-look-at possible-dates))	 
+  (let* ((date-parts (mapcar alist-look-at possible-dates))
 	 (unique-date-parts (remove-if #'(lambda (part) (> (count part date-parts) 1)) date-parts)))
     (mapcar #'(lambda (part) (funcall alist-r-assoc part possible-dates))
     	    unique-date-parts)))
@@ -879,8 +879,8 @@ public static class CherylsBirthday
     ('bernard (unique-date-parts possible-dates :alist-look-at #'car :alist-r-assoc #'assoc))))
 
 (defun cheryls-birthday (possible-dates)
-  (person 'albert			
-	  (person 'bernard		
+  (person 'albert
+	  (person 'bernard
 		  (set-difference
 		   possible-dates
 		   (person 'bernard possible-dates)
@@ -1156,19 +1156,19 @@ main =
   -- (A's month contains only one remaining day)
   -- (3 :: A "Then I also know")
   uniquePairing Month $
-  
+
   -- among the days with unique months,
   --
   -- (B's day is paired with only one remaining month)
   -- (2 :: B "I know now")
   uniquePairing Day $
-  
+
   -- excluding months with unique days,
   --
   -- (A's month is not among those with unique days)
   -- (1 :: A "I know that Bernard does not know")
   monthsWithUniqueDays False $
-  
+
   -- from the given month-day pairs:
   --
   -- (0 :: Cheryl's list)
@@ -1539,7 +1539,7 @@ class Birthday(val month: Int, val day: Int) {
     public override fun toString() = "${months[month - 1]} $day"
 
     public fun monthUniqueIn(bds: List<Birthday>): Boolean {
-        return bds.count { this.month == it.month } == 1 
+        return bds.count { this.month == it.month } == 1
     }
 
     public fun dayUniqueIn(bds: List<Birthday>): Boolean {
@@ -1553,7 +1553,7 @@ class Birthday(val month: Int, val day: Int) {
 
 fun main(args: Array<String>) {
     val choices = listOf(
-        Birthday(5, 15), Birthday(5, 16), Birthday(5, 19), Birthday(6, 17), 
+        Birthday(5, 15), Birthday(5, 16), Birthday(5, 19), Birthday(6, 17),
         Birthday(6, 18), Birthday(7, 14), Birthday(7, 16), Birthday(8, 14),
         Birthday(8, 15), Birthday(8, 17)
     )
@@ -1881,7 +1881,7 @@ if __name__ == '__main__':
 
 (solve '((May 15) (May 16) (May 19) (June 17) (June 18)
          (July 14) (July 16) (August 14) (August 15) (August 17))
-       
+
        ;; Albert knows the month but doesn't know the day.
        ;; So the month can't be unique within the choices.
        [filter-not (unique albert)]
@@ -2197,7 +2197,7 @@ End Module
 
 ```zkl
 dates:=T(T("May",   15), T("May",   16), T("May",   19),
-         T("June",  17), T("June",  18), 
+         T("June",  17), T("June",  18),
 	 T("July",  14), T("July",  16),
 	 T("August",14), T("August",15), T("August",17) );
 mDs:=dates.pump(Dictionary().appendKV); // "June":(15,16,19), ...

@@ -98,8 +98,8 @@ v+1$$<_v#!`**::+1g42$$_v#<!`**::+1g43\g43::<<v,,.g42,<
 
 Using a priority queue to emit sum of two cubs in order. It's reasonably fast and doesn't use excessive amount of memory (the heap is only at 245 length upon the 2006th taxi).
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef unsigned long long xint;
@@ -163,7 +163,7 @@ uint next_taxi(sum_t *hist)
 	uint len = 1;
 	hist[0] = pq[0];
 	do {
-		hist[len++] = pq[1]; 
+		hist[len++] = pq[1];
 		next_sum();
 	} while (pq[0].value == pq[1].value);
 
@@ -886,7 +886,7 @@ looking for taxis
 				(heap-pop H)
 				(clean-taxi H  a (heap-top H))))
 (compile 'clean-taxi "-f")
-				
+
 ;; loop on a and b, b <=a , until n taxicabs found
 (define (taxicab (n 2100))
 	(for ((a (in-naturals)))
@@ -894,7 +894,7 @@ looking for taxis
 		#:break (> (stack-length S) n)
 		(for ((b a))
 			(heap-push H (scube a b)))))
-				
+
 #|------------------
 printing taxis
 ---------------------|#
@@ -904,7 +904,7 @@ printing taxis
 	(for/string ((a (cbrt n)))
 		#:when (taxi? n a)
 		(format " = %4d^3 + %4d^3" a (taxi? n a)))))
-		
+
 (define (taxi-print taxis (nfrom 0) (nto 26))
 		(for ((i (in-naturals nfrom)) (taxi (sublist taxis nfrom nto)))
 		(writeln (taxi->string i (first taxi)))))
@@ -923,42 +923,42 @@ printing taxis
 (define taxis (group (stack->list S)))
 (taxi-print taxis )
 
-1. 1729 =   10^3 +    9^3 =   12^3 +    1^3    
-2. 4104 =   15^3 +    9^3 =   16^3 +    2^3    
-3. 13832 =   20^3 +   18^3 =   24^3 +    2^3    
-4. 20683 =   24^3 +   19^3 =   27^3 +   10^3    
-#| ... |#  
-24. 373464 =   60^3 +   54^3 =   72^3 +    6^3    
-25. 402597 =   61^3 +   56^3 =   69^3 +   42^3    
-26. 439101 =   69^3 +   48^3 =   76^3 +    5^3    
+1. 1729 =   10^3 +    9^3 =   12^3 +    1^3
+2. 4104 =   15^3 +    9^3 =   16^3 +    2^3
+3. 13832 =   20^3 +   18^3 =   24^3 +    2^3
+4. 20683 =   24^3 +   19^3 =   27^3 +   10^3
+#| ... |#
+24. 373464 =   60^3 +   54^3 =   72^3 +    6^3
+25. 402597 =   61^3 +   56^3 =   69^3 +   42^3
+26. 439101 =   69^3 +   48^3 =   76^3 +    5^3
 
 (taxi-print taxis 1999 2006)
-2000. 1671816384 = 944^3 + 940^3 = 1168^3 + 428^3    
-2001. 1672470592 = 1124^3 + 632^3 = 1187^3 +   29^3    
-2002. 1673170856 = 1034^3 + 828^3 = 1164^3 + 458^3    
-2003. 1675045225 = 1081^3 + 744^3 = 1153^3 + 522^3    
-2004. 1675958167 = 1096^3 + 711^3 = 1159^3 + 492^3    
-2005. 1676926719 = 1095^3 + 714^3 = 1188^3 +   63^3    
-2006. 1677646971 = 990^3 + 891^3 = 1188^3 +   99^3    
+2000. 1671816384 = 944^3 + 940^3 = 1168^3 + 428^3
+2001. 1672470592 = 1124^3 + 632^3 = 1187^3 +   29^3
+2002. 1673170856 = 1034^3 + 828^3 = 1164^3 + 458^3
+2003. 1675045225 = 1081^3 + 744^3 = 1153^3 + 522^3
+2004. 1675958167 = 1096^3 + 711^3 = 1159^3 + 492^3
+2005. 1676926719 = 1095^3 + 714^3 = 1188^3 +   63^3
+2006. 1677646971 = 990^3 + 891^3 = 1188^3 +   99^3
 
 ;; extra bonus : print all taxis which are triplets
 (define (taxi-tuples taxis (nfrom 0) (nto 2000))
 		(for ((i (in-naturals nfrom)) (taxi (sublist taxis nfrom nto)))
 		#:when (> (length taxi) 1) ;; filter for tuples is here
 		(writeln (taxi->string i (first taxi)))))
-		
+
 (taxi-tuples taxis)
 
-455. 87539319 = 414^3 + 255^3 = 423^3 + 228^3 = 436^3 + 167^3    
-535. 119824488 = 428^3 + 346^3 = 492^3 +   90^3 = 493^3 +   11^3    
-588. 143604279 = 423^3 + 408^3 = 460^3 + 359^3 = 522^3 + 111^3    
-655. 175959000 = 525^3 + 315^3 = 552^3 + 198^3 = 560^3 +   70^3    
-888. 327763000 = 580^3 + 510^3 = 661^3 + 339^3 = 670^3 + 300^3    
-1299. 700314552 = 828^3 + 510^3 = 846^3 + 456^3 = 872^3 + 334^3    
-1398. 804360375 = 920^3 + 295^3 = 927^3 + 198^3 = 930^3 +   15^3    
-1515. 958595904 = 856^3 + 692^3 = 984^3 + 180^3 = 986^3 +   22^3    
-1660. 1148834232 = 846^3 + 816^3 = 920^3 + 718^3 = 1044^3 + 222^3    
-1837. 1407672000 = 1050^3 + 630^3 = 1104^3 + 396^3 = 1120^3 + 140^3    
+455. 87539319 = 414^3 + 255^3 = 423^3 + 228^3 = 436^3 + 167^3
+535. 119824488 = 428^3 + 346^3 = 492^3 +   90^3 = 493^3 +   11^3
+588. 143604279 = 423^3 + 408^3 = 460^3 + 359^3 = 522^3 + 111^3
+655. 175959000 = 525^3 + 315^3 = 552^3 + 198^3 = 560^3 +   70^3
+888. 327763000 = 580^3 + 510^3 = 661^3 + 339^3 = 670^3 + 300^3
+1299. 700314552 = 828^3 + 510^3 = 846^3 + 456^3 = 872^3 + 334^3
+1398. 804360375 = 920^3 + 295^3 = 927^3 + 198^3 = 930^3 +   15^3
+1515. 958595904 = 856^3 + 692^3 = 984^3 + 180^3 = 986^3 +   22^3
+1660. 1148834232 = 846^3 + 816^3 = 920^3 + 718^3 = 1044^3 + 222^3
+1837. 1407672000 = 1050^3 + 630^3 = 1104^3 + 396^3 = 1120^3 + 140^3
 
 ```
 
@@ -1105,7 +1105,7 @@ For x = 0 To count -1
       y = y +1
     Loop Until Left(result(x), 11) <> Left(result(y), 11)
     x = y -1 ' let x point to last match result
-    c = c +1 
+    c = c +1
   End If
 Next
 
@@ -1360,7 +1360,7 @@ taxis nCubes =
   sortBy
     (comparing fst)
     [ (fst x + fst y, (x, y))
-    | (x:t) <- tails $ ((^ 3) >>= (,)) <$> [1 .. nCubes] 
+    | (x:t) <- tails $ ((^ 3) >>= (,)) <$> [1 .. nCubes]
     , y <- t ]
 
 -- Taxicab numbers composed from first 1200 cubes
@@ -1599,7 +1599,7 @@ class TaxiIterator implements Iterator<List<CubeSum>> {
 		return train;
 	}
 }
-	
+
 public class Taxi {
 	public static final void main(String[] args) {
 		Iterator<List<CubeSum>> taxi = new TaxiIterator();
@@ -1981,18 +1981,18 @@ class CubeSum(val x: Long, val y: Long) : Comparable<CubeSum> {
     val value: Long = x * x * x + y * y * y
 
     override fun toString() = String.format("%4d^3 + %3d^3", x, y)
- 
+
     override fun compareTo(other: CubeSum) = value.compareTo(other.value)
 }
 
 class SumIterator : Iterator<CubeSum> {
     private val pq = PriorityQueue<CubeSum>()
     private var n = 0L
- 
+
     override fun hasNext() = true
 
     override fun next(): CubeSum {
-        while (pq.size == 0 || pq.peek().value >= n * n * n) 
+        while (pq.size == 0 || pq.peek().value >= n * n * n)
             pq.add(CubeSum(++n, 1))
         val s: CubeSum = pq.remove()
         if (s.x > s.y + 1) pq.add(CubeSum(s.x, s.y + 1))
@@ -2002,7 +2002,7 @@ class SumIterator : Iterator<CubeSum> {
 
 class TaxiIterator : Iterator<MutableList<CubeSum>> {
     private val sumIterator = SumIterator()
-    private var last: CubeSum = sumIterator.next()  
+    private var last: CubeSum = sumIterator.next()
 
     override fun hasNext() = true
 
@@ -2029,7 +2029,7 @@ fun main(args: Array<String>) {
     for (i in 1..2006) {
         val t = taxi.next()
         if (i in 26 until 2000) continue
-        print(String.format("%4d: %10d", i, t[0].value))  
+        print(String.format("%4d: %10d", i, t[0].value))
         for (s in t) print("  = $s")
         println()
     }
@@ -2095,11 +2095,11 @@ Map[Reduce[x^3 + y^3 == # && x >= y && x > 0 && y > 0, {x, y}, Integers] &, foun
 
 {1671816384, 1672470592, 1673170856, 1675045225, 1675958167, 1676926719}
 
-{(x == 944 && y == 940) || (x == 1168 && y == 428), 
-(x == 1124 && y == 632) || (x == 1187 && y == 29), 
+{(x == 944 && y == 940) || (x == 1168 && y == 428),
+(x == 1124 && y == 632) || (x == 1187 && y == 29),
 (x == 1034 && y == 828) || (x == 1164 && y == 458),
-(x == 1081 && y == 744) || (x == 1153 && y == 522), 
-(x == 1096 && y == 711) || (x == 1159 && y == 492), 
+(x == 1081 && y == 744) || (x == 1153 && y == 522),
+(x == 1096 && y == 711) || (x == 1159 && y == 492),
 (x == 1095 &&  y == 714) || (x == 1188 && y == 63)}
 ```
 
@@ -2175,14 +2175,14 @@ apply(cubes, %);
 
 ## Pascal
 
-{{works with |Free Pascal}} 
+{{works with |Free Pascal}}
 Brute force: Create all combinations x³+ y³ | y < x one by on and test if there is a combination v < x and v> w > y with the same cube-sum.
 Combinations to check = n*(n-1)/2.The mean distance of one Combination m is m/2 from m³+1³ to m³+(m-1)³.
 searchSameSum checks one half of this distance == m/4.So O(n) ~ n³ /8  checks are needed.
 searchSameSum takes most of the time (>95% ), sorting is neglectable.
 [[http://rosettacode.org/wiki/Taxicab_numbers#C]]C-Version is ~6 times faster aka 43 vs 247 ms for max = 1290^3.
 Here limit set to 1190 to just reach the goal of element 2006 ;-) so 200ms are possible.
-Its impressive, that over all one check takes ~3.5 cpu-cycles on i4330 3.5Ghz 
+Its impressive, that over all one check takes ~3.5 cpu-cycles on i4330 3.5Ghz
 
 
 ```pascal
@@ -2267,7 +2267,7 @@ Begin
     //Move hi down
     dec(hi);
     SumLo := Sum-Pot3[hi];
-    //Move lo up an check until new combination found or implicite lo> hi 
+    //Move lo up an check until new combination found or implicite lo> hi
     repeat
       inc(lo)
     until (SumLo<=Pot3[lo]);
@@ -2477,7 +2477,7 @@ sub MAIN ($start = 1, $end = 25) {
                 $max max= $this;
             }
     	    $terminate = ceiling $max ** (1/3) if $taxis == $end and !$terminate;
-        }   
+        }
     }
 
     display( %taxi, $start, $end );
@@ -2632,13 +2632,13 @@ Copes with 40000..6, same results as Go, though that increases the runtime from 
 
 ```Phix
 sequence cubes = {}
- 
+
 procedure add_cube()
     integer n = length(cubes)+1
     cubes = append(cubes,n*n*n)
     pq_add({{n,1},cubes[n]+1})
 end procedure
- 
+
 constant VALUE = PRIORITY
 
 function next_sum()
@@ -2651,7 +2651,7 @@ function next_sum()
     end if
     return res
 end function
- 
+
 function next_taxi()
     sequence top
     while 1 do
@@ -2664,10 +2664,10 @@ function next_taxi()
         top = next_sum()
         res = append(res,top[DATA])
         if pq[1][VALUE]!=v then exit end if
-    end while 
+    end while
     return res
 end function
- 
+
 for i=1 to 2006 do
     sequence x = next_taxi()
     if i<=25 or i>=2000 then
@@ -2801,13 +2801,13 @@ cube2n = {x**3:x for x in range(1, 1201)}
 sum2cubes = defaultdict(set)
 for c1, c2 in product(cube2n, cube2n):
 	if c1 >= c2: sum2cubes[c1 + c2].add((cube2n[c1], cube2n[c2]))
-	
+
 taxied = sorted((k, v) for k,v in sum2cubes.items() if len(v) >= 2)
 
 #pp(len(taxied))  # 2068
 for t in enumerate(taxied[:25], 1):
     pp(t)
-print('...')    
+print('...')
 for t in enumerate(taxied[2000-1:2000+6], 2000):
     pp(t)
 ```
@@ -2974,7 +2974,7 @@ for x in taxis():
 
 ## Racket
 
-This is the straighforward implementation, so it finds 
+This is the straighforward implementation, so it finds
 only the first 25 values in a sensible amount of time.
 
 ```Racket
@@ -3041,7 +3041,7 @@ only the first 25 values in a sensible amount of time.
 
 ## REXX
 
-Programming note:   to ensure that the taxicab numbers are in order, an extra 10% are generated. 
+Programming note:   to ensure that the taxicab numbers are in order, an extra 10% are generated.
 
 ```rexx
 /*REXX program displays the specified first (lowest) taxicab numbers (for three ranges).*/
@@ -3097,7 +3097,7 @@ Esort: procedure expose A.; parse arg N;         h= N    /*Esort when items have
 {{out|output|text=  when using the default inputs:}}
 
 ```txt
- 
+
         1:         1729 ───►     10^3   +     9^3   ──and──      12^3   +     1^3
         2:         4104 ───►     15^3   +     9^3   ──and──      16^3   +     2^3
         3:        13832 ───►     20^3   +    18^3   ──and──      24^3   +     2^3
@@ -3287,16 +3287,16 @@ fn main() {
 	for x in it {
 		let sum = x[0] + x[1];
 		m.entry(sum).or_insert(Vec::new()).push(x)
-	} 
-	
+	}
+
 	let mut result = Vec::new();
-	
+
 	for (k,v) in m.iter() {
 		if v.len() > 1 {
 			result.push((k,v));
 		}
 	}
-	
+
 	result.sort();
 	for f in result {
 		println!("{:?}", f);
@@ -3441,18 +3441,18 @@ def output() : Unit = {
   (do ((j (+ 1 i) (+ j 1)))
     ((= j *max-n*) )
     (let ((n (+ (* i i i) (* j j j))))
-      (hash-table-set! *numbers* n 
+      (hash-table-set! *numbers* n
                        (cons (list i j) (retrieve n))))))
 
 (define (display-number i key)
-  (display (+ 1 i)) (display ": ") 
+  (display (+ 1 i)) (display ": ")
   (display key) (display " -> ")
   (display (retrieve key)) (newline))
-  
-(let ((sorted-keys (list-sort < 
+
+(let ((sorted-keys (list-sort <
                               (filter (lambda (key) (> (length (retrieve key)) 1))
                                       (hash-table-keys *numbers*)))))
-  ;; first 25 
+  ;; first 25
   (for-each (lambda (i) (display-number i (list-ref sorted-keys i)))
             (iota 25))
   ;; 2000-2006
@@ -3721,7 +3721,7 @@ Sub taxicab_numbers()
     For i = 1 To MAX
         p(i) = CDec(i * i * i) 'convert Variant to Decimal
     Next i                     'wich hold numbers upto 10^28
-    
+
     k = 1
     For i = 1 To MAX
         For j = i To MAX
@@ -3797,20 +3797,20 @@ Sub Quicksort(vArray() As tuple, arrLbound As Long, arrUbound As Long)
     Dim vSwap    As tuple
     Dim tmpLow   As Long
     Dim tmpHi    As Long
-     
+
     tmpLow = arrLbound
     tmpHi = arrUbound
     pivotVal = vArray((arrLbound + arrUbound) \ 2).sum
-     
+
     While (tmpLow <= tmpHi) 'divide
         While (vArray(tmpLow).sum < pivotVal And tmpLow < arrUbound)
             tmpLow = tmpLow + 1
         Wend
-        
+
         While (pivotVal < vArray(tmpHi).sum And tmpHi > arrLbound)
             tmpHi = tmpHi - 1
         Wend
-     
+
         If (tmpLow <= tmpHi) Then
              vSwap.i = vArray(tmpLow).i
              vSwap.j = vArray(tmpLow).j
@@ -3825,7 +3825,7 @@ Sub Quicksort(vArray() As tuple, arrLbound As Long, arrUbound As Long)
              tmpHi = tmpHi - 1
         End If
     Wend
- 
+
     If (arrLbound < tmpHi) Then Quicksort vArray, arrLbound, tmpHi 'conquer
     If (tmpLow < arrUbound) Then Quicksort vArray, tmpLow, arrUbound 'conquer
 End Sub
@@ -3909,7 +3909,7 @@ fcn taxiCabNumbers{
    taxiNums:=List();
    foreach i,i3 in ([1..].zip(iCubes)){
       foreach j,j3 in ([i+1..].zip(iCubes[i,*])){
-         ij3:=i3+j3; 
+         ij3:=i3+j3;
 	 if(z:=sum2cubes[ij3]){
 	    taxiNums.append(T(ij3,
 		z,(ij3-z.pow(3)).toFloat().pow(1.0/3).round().toInt(),
@@ -3925,7 +3925,7 @@ fcn taxiCabNumbers{
 
 ```zkl
 fcn print(n,taxiNums){
-   [n..].zip(taxiNums).pump(Console.println,fcn([(n,t)]){ 
+   [n..].zip(taxiNums).pump(Console.println,fcn([(n,t)]){
       "%4d: %10,d = %2d\u00b3 + %2d\u00b3 =  %2d\u00b3 + %2d\u00b3".fmt(n,t.xplode())
    })
 }
@@ -3992,7 +3992,7 @@ fcn taxis{
 	 out.clear(s)
       }
    }
-} 
+}
 n:=0;
 foreach x in (Utils.Generator(taxis)){
    n += 1;
@@ -4129,7 +4129,7 @@ D BREAK into program, 100:1
 ```
 
 
-This program produces the first 25 Taxicab numbers. It is written with speed in mind. 
+This program produces the first 25 Taxicab numbers. It is written with speed in mind.
 The runtime is about 45 minutes on a ZX Spectrum (3.5 Mhz).
 
 ```zxbasic

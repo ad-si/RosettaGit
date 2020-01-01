@@ -14,12 +14,12 @@ tags = []
 {{Sorting Algorithm}}
 
 ;Task:
-Sort an array of positive integers using the [[wp:Bead_sort|Bead Sort Algorithm]]. 
+Sort an array of positive integers using the [[wp:Bead_sort|Bead Sort Algorithm]].
 
 A   ''bead sort''   is also known as a   ''gravity sort''.
 
 
-Algorithm has   O(S),   where   S   is the sum of the integers in the input set:   Each bead is moved individually. 
+Algorithm has   O(S),   where   S   is the sum of the integers in the input set:   Each bead is moved individually.
 
 This is the case when bead sort is implemented without a mechanism to assist in finding empty spaces below the beads, such as in software implementations.
 
@@ -30,19 +30,19 @@ This is the case when bead sort is implemented without a mechanism to assist in 
 ## 360 Assembly
 
 {{trans|ooRexx}}
-For maximum compatibility, this program uses only the basic instruction set (S/360) 
-and two ASSIST macros (XDECO,XPRNT) to keep it as short as possible. 
+For maximum compatibility, this program uses only the basic instruction set (S/360)
+and two ASSIST macros (XDECO,XPRNT) to keep it as short as possible.
 
 ```360asm
 *        Bead Sort                 11/05/2016
 BEADSORT CSECT
          USING  BEADSORT,R13       base register
 SAVEAR   B      STM-SAVEAR(R15)    skip savearea
-         DC     17F'0'             savearea 
+         DC     17F'0'             savearea
 STM      STM    R14,R12,12(R13)    prolog
-         ST     R13,4(R15)         " 
-         ST     R15,8(R13)         " 
-         LR     R13,R15            " 
+         ST     R13,4(R15)         "
+         ST     R15,8(R13)         "
+         LR     R13,R15            "
          LA     R6,1               i=1
 LOOPI1   CH     R6,=AL2(N)         do i=1 to hbound(z)
          BH     ELOOPI1            leave i
@@ -53,7 +53,7 @@ LOOPI1   CH     R6,=AL2(N)         do i=1 to hbound(z)
          BNL    EIHO                 then
          STH    R2,LO                  lo=z(i)
 EIHLO    CH     R2,HI                if z(i)>hi
-         BNH    EIHHI                then  
+         BNH    EIHHI                then
          STH    R2,HI                  hi=z(i)
 EIHHI    LA     R6,1(R6)           iterate i
          B      LOOPI1             next i
@@ -193,12 +193,12 @@ MsgBox % res
 
 ## C
 
-A rather straightforward implementation; since we do not use dynamic matrix, we have to know the maximum value in the array in advance.  
+A rather straightforward implementation; since we do not use dynamic matrix, we have to know the maximum value in the array in advance.
 Requires (max * length) bytes for beads; if memory is of concern, bytes can be replaced by bits.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 void bead_sort(int *a, int len)
@@ -254,7 +254,7 @@ int main()
 
 ```cpp
 //this algorithm only works with positive, whole numbers.
-//O(2n) time complexity where n is the summation of the whole list to be sorted. 
+//O(2n) time complexity where n is the summation of the whole list to be sorted.
 //O(3n) space complexity.
 
 #include <iostream>
@@ -312,7 +312,7 @@ int main() {
 
 ```Clojure
 (defn transpose [xs]
-  (loop [ret [], remain xs]    
+  (loop [ret [], remain xs]
     (if (empty? remain)
       ret
       (recur (conj ret (map first remain))
@@ -324,7 +324,7 @@ int main() {
        transpose
        transpose
        (map #(reduce + %))))
- 
+
 ;; This algorithm does not work if collection has zero
 (-> [5 2 4 1 3 3 9] bead-sort println)
 
@@ -584,7 +584,7 @@ end.
 
 ## D
 
-A functional-style solution. 
+A functional-style solution.
 
 ```d
 import std.stdio, std.algorithm, std.range, std.array, std.functional;
@@ -715,12 +715,12 @@ Test:
 
 class
 	APPLICATION
- 
+
 create
 	make
- 
+
 feature
- 
+
 	make
 		do
 			test := <<1, 5, 99, 2, 95, 7, 7>>
@@ -739,11 +739,11 @@ feature
 				io.put_string (ar.item.out + "%T")
 			end
 		end
- 
+
 	beadsort: BEAD_SORT
- 
+
 	test: ARRAY [INTEGER]
- 
+
 end
 
 
@@ -769,9 +769,9 @@ sorted:
 ```elixir
 defmodule Sort do
   def bead_sort(list) when is_list(list), do: dist(dist(list))
-  
+
   defp dist(list), do: List.foldl(list, [], fn(n, acc) when n>0 -> dist(acc, n, []) end)
-  
+
   defp dist([],    0, acc), do: Enum.reverse(acc)
   defp dist([h|t], 0, acc), do: dist(t,    0, [h  |acc])
   defp dist([],    n, acc), do: dist([], n-1, [1  |acc])
@@ -893,7 +893,7 @@ very same code would run fine even with large integers.
 
 ```fortran
 program BeadSortTest
-  use iso_fortran_env 
+  use iso_fortran_env
   ! for ERROR_UNIT; to make this a F95 code,
   ! remove prev. line and declare ERROR_UNIT as an
   ! integer parameter matching the unit associated with
@@ -914,7 +914,7 @@ contains
     integer :: i, m
 
     m = maxval(a)
-    
+
     if ( any(a < 0) ) then
        write(ERROR_UNIT,*) "can't sort"
        return
@@ -927,9 +927,9 @@ contains
        t(:, i) = 0            ! count how many should be at bottom,
        t(1:s(i), i) = 1       ! and then "reset" and set only those
     end forall
-    
+
     forall(i=1:size(a)) a(i) = sum(t(i,:))
-    
+
   end subroutine beadsort
 
 end program BeadSortTest
@@ -1046,7 +1046,7 @@ Annotated Solution (same solution really):
 def beadSortVerbose = { list ->
     final nPoles = list.max()
     // each row is a number tally-arrayed across the abacus
-    def beadTallies = list.collect { number -> 
+    def beadTallies = list.collect { number ->
         print "."
         // true == bead, false == no bead
         ([true] * number) + ([false] * (nPoles - number))
@@ -1068,7 +1068,7 @@ def beadSortVerbose = { list ->
 Test:
 
 ```groovy
-println beadSort([23,76,99,58,97,57,35,89,51,38,95,92,24,46,31,24,14,12,57,78,4]) 
+println beadSort([23,76,99,58,97,57,35,89,51,38,95,92,24,46,31,24,14,12,57,78,4])
 println beadSort([88,18,31,44,4,0,8,81,14,78,20,76,84,33,73,75,82,5,62,70,12,7,1])
 ```
 
@@ -1109,30 +1109,30 @@ The program below handles integers and not just whole numbers.  As are so many o
 
 
 ```Icon
-procedure main()                     #: demonstrate various ways to sort a list and string 
+procedure main()                     #: demonstrate various ways to sort a list and string
    write("Sorting Demo using ",image(beadsort))
       writes("  on list : ")
       writex(UL := [3, 14, 1, 5, 9, 2, 6, 3])
-      displaysort(beadsort,copy(UL))    
+      displaysort(beadsort,copy(UL))
 end
 
 procedure beadsort(X)                           #: return sorted list ascending(or descending)
 local base,i,j,x                                # handles negatives and zeros, may also reduce storage
-    
+
    poles := list(max!X-(base := min!X -1),0)    # set up poles, we will track sums not individual beads
    every x := !X do {                           # each item in the list
       if integer(x) ~= x then runerr(101,x)     # ... must be an integer
-      every poles[1 to x - base] +:= 1          # ... beads "fall" into the sum for that pole 
+      every poles[1 to x - base] +:= 1          # ... beads "fall" into the sum for that pole
       }
 
 
    every (X[j := *X to 1 by -1] := base) &
         (i := 1 to *poles) do                   # read from the bottom of the poles
-     if poles[i] > 0 then {                     # if there's a bead on the pole ... 
-        poles[i] -:= 1                          # ... remove it 
-	    X[j] +:= 1                          # ... and add it in place 
+     if poles[i] > 0 then {                     # if there's a bead on the pole ...
+        poles[i] -:= 1                          # ... remove it
+	    X[j] +:= 1                          # ... and add it in place
      }
-   return X 
+   return X
 end
 ```
 
@@ -1193,7 +1193,7 @@ Example use:
 ```Java
 
 
-public class BeadSort 
+public class BeadSort
 {
 	public static void main(String[] args)
 	{
@@ -1203,7 +1203,7 @@ public class BeadSort
 			arr[i]=(int)(Math.random()*10);
 		System.out.print("Unsorted: ");
 		now.display1D(arr);
-		
+
 		int[] sort=now.beadSort(arr);
 		System.out.print("Sorted: ");
 		now.display1D(sort);
@@ -1214,7 +1214,7 @@ public class BeadSort
 		for(int i=1;i<arr.length;i++)
 			if(arr[i]>max)
 				max=arr[i];
-		
+
 		//Set up abacus
 		char[][] grid=new char[arr.length][max];
 		int[] levelcount=new int[max];
@@ -1229,7 +1229,7 @@ public class BeadSort
 		display1D(levelcount);
 		display2D(grid);
 		*/
-		
+
 		//Drop the beads
 		for(int i=0;i<arr.length;i++)
 		{
@@ -1251,7 +1251,7 @@ public class BeadSort
 				putt++;
 			sorted[i]=putt;
 		}
-		
+
 		return sorted;
 	}
 	void display1D(int[] arr)
@@ -1280,25 +1280,25 @@ public class BeadSort
 
 ```txt
 
-Unsorted: 9 4 7 0 4 3 0 5 3 8 7 9 8 7 0 
+Unsorted: 9 4 7 0 4 3 0 5 3 8 7 9 8 7 0
 
-* * * * * * * * * 
-* * * * * * * * * 
-* * * * * * * * _ 
-* * * * * * * * _ 
-* * * * * * * _ _ 
-* * * * * * * _ _ 
-* * * * * * * _ _ 
-* * * * * _ _ _ _ 
-* * * * _ _ _ _ _ 
-* * * * _ _ _ _ _ 
-* * * _ _ _ _ _ _ 
-* * * _ _ _ _ _ _ 
-_ _ _ _ _ _ _ _ _ 
-_ _ _ _ _ _ _ _ _ 
-_ _ _ _ _ _ _ _ _ 
+* * * * * * * * *
+* * * * * * * * *
+* * * * * * * * _
+* * * * * * * * _
+* * * * * * * _ _
+* * * * * * * _ _
+* * * * * * * _ _
+* * * * * _ _ _ _
+* * * * _ _ _ _ _
+* * * * _ _ _ _ _
+* * * _ _ _ _ _ _
+* * * _ _ _ _ _ _
+_ _ _ _ _ _ _ _ _
+_ _ _ _ _ _ _ _ _
+_ _ _ _ _ _ _ _ _
 
-Sorted: 0 0 0 3 3 4 4 5 7 7 7 8 8 9 9 
+Sorted: 0 0 0 3 3 4 4 5 7 7 7 8 8 9 9
 
 ```
 
@@ -1515,11 +1515,11 @@ After sort:     9 9 8 5 4 3 3 2 1 1
 ```Mathematica
 beadsort[ a ] := Module[ { m, sorted, s ,t },
 
-sorted = a; m = Max[a]; t=ConstantArray[0, {m,m} ]; 
-If[ Min[a] < 0, Print["can't sort"]]; 
+sorted = a; m = Max[a]; t=ConstantArray[0, {m,m} ];
+If[ Min[a] < 0, Print["can't sort"]];
 For[ i = 1, i < Length[a], i++,  t[[i,1;;a[[i]]]]=1 ]
 
-For[ i = 1 ,i <= m, i++, s = Total[t[[;;,i]]]; 
+For[ i = 1 ,i <= m, i++, s = Total[t[[;;,i]]];
 t[[ ;; , i]] = 0; t[[1 ;; s , i]] = 1; ]
 
 For[ i=1,i<=Length[a],i++, sorted[[i]] = Total[t[[i,;;]]]; ]
@@ -1756,7 +1756,7 @@ show: Procedure Expose n
    ol=ol format(a.i,3)
    End
  Say ol
- Return  
+ Return
 ```
 
 {{out}}
@@ -1779,43 +1779,43 @@ Sorted: -12   0   1   2   2   4   4   8  10 999
              /*get some grassHopper numbers.                            */
 grasshopper=,
 1 4 10 12 22 26 30 46 54 62 66 78 94 110 126 134 138 158 162 186 190 222 254 270
- 
- 
- 
+
+
+
              /*GreeenGrocer numbers are also called hexagonal pyramidal */
              /*             numbers.                                    */
 greengrocer=,
 0 4 16 40 80 140 224 336 480 660 880 1144 1456 1820 2240 2720 3264 3876 4560
- 
- 
+
+
              /*get some Bernoulli numerator numbers.                    */
 bernN='1 -1 1 0 -1 0 1 0 -1 0 5 0 -691 0 7 0 -3617 0 43867 0 -174611 0 854513'
- 
- 
+
+
              /*Psi is also called the Reduced Totient function,  and    */
              /*    is also called Carmichale lambda, or LAMBDA function.*/
 psi=,
 1 1 2 2 4 2 6 2 6 4 10 2 12 6 4 4 16 6 18 4 6 10 22 2 20 12 18 6 28 4 30 8 10 16
- 
- 
- 
+
+
+
 list=grasshopper greengrocer bernN psi /*combine the four lists into one*/
- 
- 
+
+
 call showL 'before sort',list          /*show list before sorting. */
 !=beadSort(list)                       /*invoke the bead sort.     */
 call showL ' after sort',!             /*show  after array elements*/
 exit
- 
- 
+
+
 /*─────────────────────────────────beadSort@ subroutine────────────*/
 beadSort: procedure expose _.
   parse arg z
   !=''                                 /*this'll be the sorted list*/
   low=999999999; high=-low             /*define the low and high #s*/
   _.=0                                 /*define all beads to zero. */
- 
- 
+
+
   do j=1 until z==''                   /*pick the meat off the bone*/
     parse var z x z
     if \datatype(x,'Whole') then
@@ -1827,14 +1827,14 @@ beadSort: procedure expose _.
         say
         exit 13
         end
- 
+
     x=x/1                              /*normalize number, it could*/
                                        /*be:  +4  007  5.  2e3 etc.*/
     _.x=_.x+1                          /*indicate this bead has a #*/
     low=min(low,x)                     /*keep track of the lowest #*/
     high=max(high,x)                   /* "     "    "  "  highest#*/
     end j
- 
+
                                        /*now, collect the beads and*/
   do m=low to high                     /*let them fall (to zero).  */
     if _.m==0 then iterate             /*No bead here? Keep looking*/
@@ -1842,10 +1842,10 @@ beadSort: procedure expose _.
       !=! m                            /*add it to the sorted list.*/
       end n
     end m
- 
+
   return !
- 
- 
+
+
 /*─────────────────────────────────────SHOW@ subroutine────────────*/
 showL:
   widthH=length(words(arg(2)))         /*maximum width of the index*/
@@ -2115,7 +2115,7 @@ FUNCTION beadSort RETURNS CHAR (
    DO ii = 1 TO inumbers:
       cresult = cresult + "," + STRING( LENGTH( REPLACE( cbeads[ ii ], " ", "" ) ) ).
    END.
-   
+
    RETURN SUBSTRING( cresult, 2 ).
 
 END FUNCTION. /* beadSort */
@@ -2133,8 +2133,8 @@ VIEW-AS ALERT-BOX.
 ---------------------------
 Message
 ---------------------------
-5,2,4,1,3,3,9  ->  9,5,4,3,3,2,1 
-5,3,1,7,4,1,1  ->  7,5,4,3,1,1,1 
+5,2,4,1,3,3,9  ->  9,5,4,3,3,2,1
+5,3,1,7,4,1,1  ->  7,5,4,3,1,1,1
 
 88,84,82,81,78,76,75,73,70,62,44,33,31,20,18,14,12,8,7,5,4,1,0
 ---------------------------
@@ -2275,7 +2275,7 @@ function beadsort(sequence a)
     end for
     return a
 end function
- 
+
 ?beadsort({5, 3, 1, 7, 4, 1, 1, 20})
 ```
 
@@ -2544,7 +2544,7 @@ Function BeadSort ( [Int64[]] $indata )
 				}
 			}
 		} #Output the results in pipeline fashion
-		1..( $poles[ $max - $min ] ) | ForEach-Object { 
+		1..( $poles[ $max - $min ] ) | ForEach-Object {
 			Write-Output $max  #No special case needed for max, since there will always be at least 1 = max
 		}
 	} else {
@@ -2763,7 +2763,7 @@ END SUB
   (map length (columns (columns (map (λ (n) (make-list n 1)) lst)))))
 
 ;; unit test
-(check-equal? 
+(check-equal?
  (bead-sort '(5 3 1 7 4 1 1))
  '(7 5 4 3 1 1 1))
 
@@ -2773,7 +2773,7 @@ END SUB
 
 ## REXX
 
-The REXX language has the advantage of supporting sparse arrays, so implementing a bead sort is trivial, the 
+The REXX language has the advantage of supporting sparse arrays, so implementing a bead sort is trivial, the
 
 major drawback is   ''if''   the spread   (difference between the lowest and highest values)   is quite large   (if it's
 
@@ -3031,7 +3031,7 @@ class Array
   def beadsort
     map {|e| [1] * e}.columns.columns.map(&:length)
   end
-  
+
   def columns
     y = length
     x = map(&:length).max
@@ -3111,7 +3111,7 @@ const proc: main is func
 
 ```txt
 
-1 1 1 3 4 5 7 20 
+1 1 1 3 4 5 7 20
 
 ```
 
@@ -3248,7 +3248,7 @@ Private Function beadsort(ByVal a As Variant) As Variant
     Next i
     beadsort = a
 End Function
- 
+
 Public Sub main()
     Debug.Print Join(beadsort([{5, 3, 1, 7, 4, 1, 1, 20}]), ", ")
 End Sub
@@ -3298,7 +3298,7 @@ for I:= 0 to 10-1 do [IntOut(0, A(I));  ChOut(0, ^ )];
 
 ```txt
 
-0 1 1 2 3 4 5 6 9 25 
+0 1 1 2 3 4 5 6 9 25
 
 ```
 
@@ -3316,7 +3316,7 @@ fcn columns(m){ // m is list of lists of zeros/beads, # beads is n, eg (0,0,0)==
    .walker()       // [0..max]
    .apply('wrap(i){ m.filter('wrap(s){ s.len() > i }).len().pump(List,0) });
 }
- 
+
 fcn beadSort(data){
    data.apply("pump",List,0):columns(_):columns(_).apply("len");
 }

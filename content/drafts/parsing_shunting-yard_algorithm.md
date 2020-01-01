@@ -19,19 +19,19 @@ as each individual token is processed.
 * Assume an input of a correct, space separated, string of tokens representing an infix expression
 * Generate a space separated output string representing the RPN
 * Test with the input string:
-:::: <big><big><code> 3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3 </code></big></big> 
+:::: <big><big><code> 3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3 </code></big></big>
 * print and display the output here.
 * Operator precedence is given in this table:
 :{| class="wikitable"
 
 ! operator !! [[wp:Order_of_operations|precedence]] !! [[wp:Operator_associativity|associativity]] !! operation
 |- || align="center"
-|                    <big><big> ^ </big></big>  ||  4  ||  right  ||  exponentiation 
-|- || align="center" 
+|                    <big><big> ^ </big></big>  ||  4  ||  right  ||  exponentiation
+|- || align="center"
 |                    <big><big> * </big></big>  ||  3  ||  left   ||  multiplication
-|- || align="center" 
+|- || align="center"
 |                    <big><big> / </big></big>  ||  3  ||  left   ||  division
-|- || align="center" 
+|- || align="center"
 |                    <big><big> + </big></big>  ||  2  ||  left   ||  addition
 |- || align="center"
 |                    <big><big> - </big></big>  ||  2  ||  left   ||  subtraction
@@ -66,10 +66,10 @@ The handling of functions and arguments is not required.
 \ precedence of infix tokens.  negative means 'right-associative', otherwise left:
 with: n
 {
-  "+" : 2, 
-  "-" : 2, 
-  "/" : 3, 
-  "*" : 3, 
+  "+" : 2,
+  "-" : 2,
+  "/" : 3,
+  "*" : 3,
   "^" : -4,
   "(" : 1,
   ")" : -1
@@ -106,9 +106,9 @@ var out
   \ in precedence), then pop the item from the ops stack and push onto the out:
   3 pick \ p2 p
   < not if
-    \ op p ops[] op2 
+    \ op p ops[] op2
     >out a:pop drop recurse ;;
-  then 
+  then
   drop ;
 
 
@@ -116,12 +116,12 @@ var out
   "RIGHTPAREN" . cr
   2drop
   \ move non-left-paren from ops and move to out:
-  ops @ 
+  ops @
   repeat
-    a:len not if 
-      break 
+    a:len not if
+      break
     else
-      a:pop a:open 
+      a:pop a:open
       1 = if
         2drop ;;
       else
@@ -132,7 +132,7 @@ var out
 
 : .state \ n --
 drop \  "Token: %s\n" s:strfmt .
-  "Out:   " . 
+  "Out:   " .
     out @  ( . space drop ) a:each drop cr
   "ops:   " .  ops @ ( 0 a:@ . space 2drop ) a:each drop cr cr ;
 
@@ -151,7 +151,7 @@ drop \  "Token: %s\n" s:strfmt .
     dup sgn 1 = if
       \ it is, so check the ops array for items with greater or equal precedence,
       \ and move them to the out queue:
-      ops @ pop-ops drop 
+      ops @ pop-ops drop
     then
     \ push the operator
     >ops ;
@@ -163,32 +163,32 @@ drop \  "Token: %s\n" s:strfmt .
   else
     dup 1 = if        left-paren
     else dup -1 = if  right-paren
-    else              handle-op 
+    else              handle-op
     then then
   then ;
 
 : infix>postfix \ s -- s
   /\s+/ s:/           \ split to indiviual whitespace-delimited tokens
-  
+
   \ Initialize our data structures
   a:new ops !   a:new out !
 
   (
-    nip dup >r 
-    handle-token 
+    nip dup >r
+    handle-token
     r> .state
-  ) a:each drop 
+  ) a:each drop
   \ remove all remaining ops and put on output:
-  out @ 
+  out @
   ops @ a:rev
   ( nip a:open drop a:push ) a:each drop
   \ final string:
   " " a:join ;
-  
+
 "3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3" infix>postfix . cr
 
 "Expected: \n" . "3 4 2 * 1 5 - 2 3 ^ ^ / +" .  cr
-bye 
+bye
 
 ```
 
@@ -196,67 +196,67 @@ bye
 
 ```txt
 NUMBER 3
-Out:   3 
-ops:   
+Out:   3
+ops:
 
 OPERATOR +
-Out:   3 
-ops:   + 
+Out:   3
+ops:   +
 
 NUMBER 4
-Out:   3 4 
-ops:   + 
+Out:   3 4
+ops:   +
 
 OPERATOR *
-Out:   3 4 
-ops:   + * 
+Out:   3 4
+ops:   + *
 
 NUMBER 2
-Out:   3 4 2 
-ops:   + * 
+Out:   3 4 2
+ops:   + *
 
 OPERATOR /
-Out:   3 4 2 * 
-ops:   + / 
+Out:   3 4 2 *
+ops:   + /
 
 LEFTPAREN
-Out:   3 4 2 * 
-ops:   + / ( 
+Out:   3 4 2 *
+ops:   + / (
 
 NUMBER 1
-Out:   3 4 2 * 1 
-ops:   + / ( 
+Out:   3 4 2 * 1
+ops:   + / (
 
 OPERATOR -
-Out:   3 4 2 * 1 
-ops:   + / ( - 
+Out:   3 4 2 * 1
+ops:   + / ( -
 
 NUMBER 5
-Out:   3 4 2 * 1 5 
-ops:   + / ( - 
+Out:   3 4 2 * 1 5
+ops:   + / ( -
 
 RIGHTPAREN
-Out:   3 4 2 * 1 5 - 
-ops:   + / 
+Out:   3 4 2 * 1 5 -
+ops:   + /
 
 OPERATOR ^
-Out:   3 4 2 * 1 5 - 
-ops:   + / ^ 
+Out:   3 4 2 * 1 5 -
+ops:   + / ^
 
 NUMBER 2
-Out:   3 4 2 * 1 5 - 2 
-ops:   + / ^ 
+Out:   3 4 2 * 1 5 - 2
+ops:   + / ^
 
 OPERATOR ^
-Out:   3 4 2 * 1 5 - 2 
-ops:   + / ^ ^ 
+Out:   3 4 2 * 1 5 - 2
+ops:   + / ^ ^
 
 NUMBER 3
-Out:   3 4 2 * 1 5 - 2 3 
-ops:   + / ^ ^ 
+Out:   3 4 2 * 1 5 - 2 3
+ops:   + / ^ ^
 
 3 4 2 * 1 5 - 2 3 ^ ^ / +
-Expected: 
+Expected:
 3 4 2 * 1 5 - 2 3 ^ ^ / +
 
 ```
@@ -327,7 +327,7 @@ BEGIN
                           op char /= "("
                     DO
                         output element( op char )
-                    OD                     
+                    OD
                 ELIF right( c ) THEN
                     # right associative operator #
                     WHILE lower priority( c )          DO output element( unstack ) OD;
@@ -384,7 +384,7 @@ SetBatchLines -1
 
 expr := "3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3"
 
-output := "Testing string '" expr "'`r`n`r`nToken`tOutput Queue" 
+output := "Testing string '" expr "'`r`n`r`nToken`tOutput Queue"
            . Space(StrLen(expr)-StrLen("Output Queue")+2) "OP Stack"
 
 ; define a stack with semantic .push() and .pop() funcs
@@ -413,14 +413,14 @@ Loop Parse, expr, %A_Space%
                        throw Exception("Unmatched parenthesis. "
                           . "Character number " A_Index)
        }
-       output .= "`r`n" token Space(7) Q Space(StrLen(expr)+2-StrLen(Q)) 
+       output .= "`r`n" token Space(7) Q Space(StrLen(expr)+2-StrLen(Q))
                . Disp(stack)
 }
 output .= "`r`n(empty stack to output)"
 While (t := stack.pop()) != ""
        if InStr("()", t)
                throw Exception("Unmatched parenthesis.")
-       else    Q .= t A_Space, output .= "`r`n" Space(8) Q 
+       else    Q .= t A_Space, output .= "`r`n" Space(8) Q
                        . Space(StrLen(expr)+2-StrLen(Q)) Disp(stack)
 output .= "`r`n`r`nFinal string: '" Q "'"
 clipboard := output
@@ -455,7 +455,7 @@ Space(n){
 <pre style="height:30ex;overflow:scroll;">Testing string '3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3'
 
 Token	Output Queue                   OP Stack
-3       3                              
+3       3
 +       3                              +
 4       3 4                            +
 *       3 4                            *+
@@ -474,7 +474,7 @@ Token	Output Queue                   OP Stack
         3 4 2 * 1 5 - 2 3 ^            ^/+
         3 4 2 * 1 5 - 2 3 ^ ^          /+
         3 4 2 * 1 5 - 2 3 ^ ^ /        +
-        3 4 2 * 1 5 - 2 3 ^ ^ / +      
+        3 4 2 * 1 5 - 2 3 ^ ^ / +
 
 Final string: '3 4 2 * 1 5 - 2 3 ^ ^ / + '
 ```
@@ -485,8 +485,8 @@ Final string: '3 4 2 * 1 5 - 2 3 ^ ^ / + '
 
 Requires a functioning ANSI terminal and Enter key.
 
-```c>#include <sys/types.h
-
+```c
+#include <sys/types.h>
 #include <regex.h>
 #include <stdio.h>
 
@@ -649,7 +649,7 @@ re_op:		p = match(s, pat_ops, &tok, &s);
 int main()
 {
 	int i;
-	const char *tests[] = { 
+	const char *tests[] = {
 		"3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3",	/* RC mandated: OK */
 		"123",					/* OK */
 		"3+4 * 2 / ( 1 - 5 ) ^ 2 ^ 3.14",	/* OK */
@@ -681,128 +681,128 @@ Note: This cannot give a flavour of the true interactive output where tokens are
 Testing string `3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3'   <enter>
 
 Text | 3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3
-Stack| 
-Queue| 
+Stack|
+Queue|
 
 <press enter>
 
 Text |  + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3
-Stack| 
-Queue| 3 
+Stack|
+Queue| 3
 
 <press enter>
 
 Text |  4 * 2 / ( 1 - 5 ) ^ 2 ^ 3
-Stack| + 
-Queue| 3 
+Stack| +
+Queue| 3
 
 <press enter>
 
 Text |  * 2 / ( 1 - 5 ) ^ 2 ^ 3
-Stack| + 
-Queue| 3 4 
+Stack| +
+Queue| 3 4
 
 <press enter>
 
 Text |  2 / ( 1 - 5 ) ^ 2 ^ 3
-Stack| + * 
-Queue| 3 4 
+Stack| + *
+Queue| 3 4
 
 <press enter>
 
 Text |  / ( 1 - 5 ) ^ 2 ^ 3
-Stack| + * 
-Queue| 3 4 2 
+Stack| + *
+Queue| 3 4 2
 
 <press enter>
 
 Text |  ( 1 - 5 ) ^ 2 ^ 3
-Stack| + 
-Queue| 3 4 2 * 
+Stack| +
+Queue| 3 4 2 *
 
 <press enter>
 
 Text |  ( 1 - 5 ) ^ 2 ^ 3
-Stack| + / 
-Queue| 3 4 2 * 
+Stack| + /
+Queue| 3 4 2 *
 
 <press enter>
 
 Text |  - 5 ) ^ 2 ^ 3
-Stack| + / 
-Queue| 3 4 2 * 1 
+Stack| + /
+Queue| 3 4 2 * 1
 
 <press enter>
 
 Text |  5 ) ^ 2 ^ 3
-Stack| + / - 
-Queue| 3 4 2 * 1 
+Stack| + / -
+Queue| 3 4 2 * 1
 
 <press enter>
 
 Text |  ) ^ 2 ^ 3
-Stack| + / - 
-Queue| 3 4 2 * 1 5 
+Stack| + / -
+Queue| 3 4 2 * 1 5
 
 <press enter>
 
 Text |  ^ 2 ^ 3
-Stack| + / 
-Queue| 3 4 2 * 1 5 - 
+Stack| + /
+Queue| 3 4 2 * 1 5 -
 
 <press enter>
 
 Text |  2 ^ 3
-Stack| + / ^ 
-Queue| 3 4 2 * 1 5 - 
+Stack| + / ^
+Queue| 3 4 2 * 1 5 -
 
 <press enter>
 
 Text |  ^ 3
-Stack| + / ^ 
-Queue| 3 4 2 * 1 5 - 2 
+Stack| + / ^
+Queue| 3 4 2 * 1 5 - 2
 
 <press enter>
 
 Text |  3
-Stack| + / ^ ^ 
-Queue| 3 4 2 * 1 5 - 2 
+Stack| + / ^ ^
+Queue| 3 4 2 * 1 5 - 2
 
 <press enter>
 
-Text | 
-Stack| + / ^ ^ 
-Queue| 3 4 2 * 1 5 - 2 3 
+Text |
+Stack| + / ^ ^
+Queue| 3 4 2 * 1 5 - 2 3
 
 <press enter>
 
-Text | 
-Stack| + / ^ 
-Queue| 3 4 2 * 1 5 - 2 3 ^ 
+Text |
+Stack| + / ^
+Queue| 3 4 2 * 1 5 - 2 3 ^
 
 <press enter>
 
-Text | 
-Stack| + / 
-Queue| 3 4 2 * 1 5 - 2 3 ^ ^ 
+Text |
+Stack| + /
+Queue| 3 4 2 * 1 5 - 2 3 ^ ^
 
 <press enter>
 
-Text | 
-Stack| + 
-Queue| 3 4 2 * 1 5 - 2 3 ^ ^ / 
+Text |
+Stack| +
+Queue| 3 4 2 * 1 5 - 2 3 ^ ^ /
 
 <press enter>
 
-Text | 
-Stack| 
-Queue| 3 4 2 * 1 5 - 2 3 ^ ^ / + 
+Text |
+Stack|
+Queue| 3 4 2 * 1 5 - 2 3 ^ ^ / +
 
 <press enter>
 
-Text | 
-Stack| 
-Queue| 3 4 2 * 1 5 - 2 3 ^ ^ / + 
+Text |
+Stack|
+Queue| 3 4 2 * 1 5 - 2 3 ^ ^ / +
 
 <press enter>
 
@@ -818,8 +818,8 @@ Testing string `123'   <enter>
 
 {{trans|Java}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <sstream>
 #include <stack>
 
@@ -955,7 +955,7 @@ public static class ShuntingYard
         }
         Print("pop");
         return string.Join(" ", output);
-        
+
         //Yikes!
         void Print(string action) => Console.WriteLine($"{action + ":",-4} {$"stack[ {string.Join(" ", stack.Reverse())} ]",-18} {$"out[ {string.Join(" ", output)} ]"}");
         //A little more readable?
@@ -1006,7 +1006,7 @@ class Operator  extends Token {
 
 	shared Integer precedence;
 	shared Boolean rightAssoc;
-	
+
 	shared new plus extends Token("+") {
 		precedence = 2;
 		rightAssoc = false;
@@ -1028,7 +1028,7 @@ class Operator  extends Token {
 		rightAssoc = true;
 	}
 
-	shared Boolean below(Operator other) => 
+	shared Boolean below(Operator other) =>
 			!rightAssoc && precedence <= other.precedence || rightAssoc && precedence < other.precedence;
 }
 object leftParen extends Token("(") {}
@@ -1036,11 +1036,11 @@ object rightParen extends Token(")") {}
 
 
 shared void run() {
-	
+
 	function shunt(String input) {
-		
+
 		function tokenize(String input) =>
-				input.split().map((String element) => 
+				input.split().map((String element) =>
 					switch(element.trimmed)
 					case("(") leftParen
 					case(")") rightParen
@@ -1050,18 +1050,18 @@ shared void run() {
 					case("/") Operator.divides
 					case("^") Operator.power
 					else IntegerLiteral(parseInteger(element) else 0)); // no error handling
-		
+
 		value outputQueue = ArrayList<Token>();
 		value operatorStack = ArrayList<Token>();
-		
+
 		void report(String action) {
 			print("``action.padTrailing(22)`` | ``" ".join(outputQueue).padTrailing(25)`` | ``" ".join(operatorStack).padTrailing(10)``");
 		}
-		
+
 		print("input is ``input``\n");
 		print("Action                 | Output Queue              | Operators' Stack
 		       -----------------------|---------------------------|-----------------");
-		
+
 		for(token in tokenize(input)) {
 			switch(token)
 			case(is IntegerLiteral) {
@@ -1094,8 +1094,8 @@ shared void run() {
 		}
 		return " ".join(outputQueue);
 	}
-	
-	value rpn = shunt("3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3"); 
+
+	value rpn = shunt("3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3");
 	assert(rpn == "3 4 2 * 1 5 - 2 3 ^ ^ / +");
 	print("\nthe result is ``rpn``");
 }
@@ -1108,26 +1108,26 @@ input is 3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3
 
 Action                 | Output Queue              | Operators' Stack
 -----------------------|---------------------------|-----------------
-3 from input to queue  | 3                         |           
-+ from input to stack  | 3                         | +         
-4 from input to queue  | 3 4                       | +         
-* from input to stack  | 3 4                       | + *       
-2 from input to queue  | 3 4 2                     | + *       
-* from stack to queue  | 3 4 2 *                   | +         
-/ from input to stack  | 3 4 2 *                   | + /       
-( from input to stack  | 3 4 2 *                   | + / (     
-1 from input to queue  | 3 4 2 * 1                 | + / (     
-- from input to stack  | 3 4 2 * 1                 | + / ( -   
-5 from input to queue  | 3 4 2 * 1 5               | + / ( -   
-- from stack to queue  | 3 4 2 * 1 5 -             | + / (     
-^ from input to stack  | 3 4 2 * 1 5 -             | + / ^     
-2 from input to queue  | 3 4 2 * 1 5 - 2           | + / ^     
-^ from input to stack  | 3 4 2 * 1 5 - 2           | + / ^ ^   
-3 from input to queue  | 3 4 2 * 1 5 - 2 3         | + / ^ ^   
-^ from stack to queue  | 3 4 2 * 1 5 - 2 3 ^       | + / ^     
-^ from stack to queue  | 3 4 2 * 1 5 - 2 3 ^ ^     | + /       
-/ from stack to queue  | 3 4 2 * 1 5 - 2 3 ^ ^ /   | +         
-+ from stack to queue  | 3 4 2 * 1 5 - 2 3 ^ ^ / + |           
+3 from input to queue  | 3                         |
++ from input to stack  | 3                         | +
+4 from input to queue  | 3 4                       | +
+* from input to stack  | 3 4                       | + *
+2 from input to queue  | 3 4 2                     | + *
+* from stack to queue  | 3 4 2 *                   | +
+/ from input to stack  | 3 4 2 *                   | + /
+( from input to stack  | 3 4 2 *                   | + / (
+1 from input to queue  | 3 4 2 * 1                 | + / (
+- from input to stack  | 3 4 2 * 1                 | + / ( -
+5 from input to queue  | 3 4 2 * 1 5               | + / ( -
+- from stack to queue  | 3 4 2 * 1 5 -             | + / (
+^ from input to stack  | 3 4 2 * 1 5 -             | + / ^
+2 from input to queue  | 3 4 2 * 1 5 - 2           | + / ^
+^ from input to stack  | 3 4 2 * 1 5 - 2           | + / ^ ^
+3 from input to queue  | 3 4 2 * 1 5 - 2 3         | + / ^ ^
+^ from stack to queue  | 3 4 2 * 1 5 - 2 3 ^       | + / ^
+^ from stack to queue  | 3 4 2 * 1 5 - 2 3 ^ ^     | + /
+/ from stack to queue  | 3 4 2 * 1 5 - 2 3 ^ ^ /   | +
++ from stack to queue  | 3 4 2 * 1 5 - 2 3 ^ ^ / + |
 
 the result is 3 4 2 * 1 5 - 2 3 ^ ^ / +
 ```
@@ -1170,8 +1170,8 @@ Implemented as a state machine. The current state is the top of both the input q
 
 ;;; transitions when op2 is dont care
 (defconstant trans1D '((LIT GO) (LPR ENTER)))
-;;; transitions when we check op2 also   
-(defconstant trans2D  
+;;; transitions when we check op2 also
+(defconstant trans2D
   '((OPR ((NOL ENTER)
           (LPR ENTER)
           (OPR (lambda (op1 op2) (if (has-priority op2 op1) 'LEAVE 'ENTER)))))
@@ -1184,16 +1184,16 @@ Implemented as a state machine. The current state is the top of both the input q
 
 (defun do-signal (op1 op2)
   "(nil|string,nil|string)->symbol|string|nil: Emit a signal based on state of inputq and opstack.
-   A nil return is a successful lookup (on nil,nil) because all input combinations are specified."  
+   A nil return is a successful lookup (on nil,nil) because all input combinations are specified."
   (let ((sig (or (cadr (assoc (classify op1) trans1D))
                  (cadr (assoc (classify op2) (cadr (assoc (classify op1) trans2D)))))))
     (if (or (null sig) (symbolp sig) (stringp sig)) sig
-        (funcall (coerce sig 'function) op1 op2))))    
-   
+        (funcall (coerce sig 'function) op1 op2))))
+
 (defun rpn (expr)
   "string->string: Parse infix expression into rpn."
   (format t "TOKEN  TOS    SIGNAL     OPSTACK       OUTPUTQ~%")
-        
+
   ;; iterate until both stacks empty
   (do* ((input (string-split expr)) (opstack nil) (outputq "")
         (sig (do-signal (first input) (first opstack)) (do-signal (first input) (first opstack))))
@@ -1201,11 +1201,11 @@ Implemented as a state machine. The current state is the top of both the input q
         ;; print last closing frame
         (format t "~A~7,T~A~14,T~A~25,T~A~38,T~A~%" nil nil nil opstack outputq)
         (subseq outputq 1)) ; return final infix expression
-      
+
     ;; print opening frame
     (format t "~A~7,T~A~14,T" (first input) (first opstack))
     (format t (if (stringp sig) "\"~A\"" "~A") sig)
-      
+
     ;; switch state
     (let ((output (case sig
                     (GO     (pop input))
@@ -1215,7 +1215,7 @@ Implemented as a state machine. The current state is the top of both the input q
                     (otherwise (pop input) (pop opstack)
                                (if (stringp sig) sig "unknown signal")))))
       (when output (setf outputq (concatenate 'string outputq " " output))))
-    
+
     ;; print closing frame
     (format t "~25,T~A~38,T~A~%" opstack outputq))) ; end-do
 
@@ -1396,33 +1396,33 @@ postfix: 3 4 2 * 1 5 - 2 3 ^ ^ / +
 (define (is-left? op)  (second (hash-ref OPS op)))
 (define (is-right? op) (not (is-left? op)))
 (define (op-prec op)   (first (hash-ref OPS op)))
-    
+
 ;; Wikipedia algorithm, translated as it is
 
 (define (shunt tokens S Q)
     (for ((token tokens))
      (writeln "S: " (stack->list S) "Q: " (queue->list Q) "token: "token)
     (cond
-    [(is-left-par? token) (push S token) ] 
+    [(is-left-par? token) (push S token) ]
     [(is-right-par? token)
-        (while (and (stack-top S) (not (is-left-par? (stack-top S)))) 
+        (while (and (stack-top S) (not (is-left-par? (stack-top S))))
                (q-push Q ( pop S)))
         (when (stack-empty? S) (error 'misplaced-parenthesis "()" ))
         (pop S)] ; // left par
-    
+
     [(is-op? token)
-            (while (and 
+            (while (and
                 (is-op? (stack-top S))
                 (or
                   (and (is-left? token) (<= (op-prec token) (op-prec (stack-top S))))
                   (and (is-right? token) (< (op-prec token) (op-prec (stack-top S))))))
                 (q-push Q (pop S)))
-        (push S token)] 
-        
+        (push S token)]
+
     [(is-num? token) (q-push Q token)]
     [else (error 'bad-token token)])) ; for
     (while (stack-top S) (q-push Q (pop S))))
-    
+
 (string-delimiter "")
 (define (task infix)
     (define S (stack 'S))
@@ -1439,24 +1439,24 @@ postfix: 3 4 2 * 1 5 - 2 3 ^ ^ / +
 
 (task  "3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3")
 
-S:      null     Q:      null     token:      3    
-S:      null     Q:      (3)     token:      +    
-S:      (+)     Q:      (3)     token:      4    
-S:      (+)     Q:      (3 4)     token:      *    
-S:      (+ *)     Q:      (3 4)     token:      2    
-S:      (+ *)     Q:      (3 4 2)     token:      /    
-S:      (+ /)     Q:      (3 4 2 *)     token:      (    
-S:      (+ / ()     Q:      (3 4 2 *)     token:      1    
-S:      (+ / ()     Q:      (3 4 2 * 1)     token:      -    
-S:      (+ / (-)     Q:      (3 4 2 * 1)     token:      5    
-S:      (+ / (-)     Q:      (3 4 2 * 1 5)     token:      )    
-S:      (+ /)       Q:      (3 4 2 * 1 5 -)     token:      ^    
-S:      (+ / ^)     Q:      (3 4 2 * 1 5 -)     token:      2    
-S:      (+ / ^)     Q:      (3 4 2 * 1 5 - 2)     token:      ^    
-S:      (+ / ^ ^)     Q:      (3 4 2 * 1 5 - 2)     token:      3   
- 
-infix     3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3    
-RPN     (3 4 2 * 1 5 - 2 3 ^ ^ / +)    
+S:      null     Q:      null     token:      3
+S:      null     Q:      (3)     token:      +
+S:      (+)     Q:      (3)     token:      4
+S:      (+)     Q:      (3 4)     token:      *
+S:      (+ *)     Q:      (3 4)     token:      2
+S:      (+ *)     Q:      (3 4 2)     token:      /
+S:      (+ /)     Q:      (3 4 2 *)     token:      (
+S:      (+ / ()     Q:      (3 4 2 *)     token:      1
+S:      (+ / ()     Q:      (3 4 2 * 1)     token:      -
+S:      (+ / (-)     Q:      (3 4 2 * 1)     token:      5
+S:      (+ / (-)     Q:      (3 4 2 * 1 5)     token:      )
+S:      (+ /)       Q:      (3 4 2 * 1 5 -)     token:      ^
+S:      (+ / ^)     Q:      (3 4 2 * 1 5 -)     token:      2
+S:      (+ / ^)     Q:      (3 4 2 * 1 5 - 2)     token:      ^
+S:      (+ / ^ ^)     Q:      (3 4 2 * 1 5 - 2)     token:      3
+
+infix     3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3
+RPN     (3 4 2 * 1 5 - 2 3 ^ ^ / +)
 
 ```
 
@@ -1472,7 +1472,7 @@ type State (input : string list, stack : string list, output : string list) =
     member x.Input with get() = input
     member x.Stack with get() = stack
     member x.Output with get() = output
-    
+
     member x.report act =
         let markTop = function | [] -> [] | x::xs -> ("["+x+"]")::xs
         let (s, text) =
@@ -1482,7 +1482,7 @@ type State (input : string list, stack : string list, output : string list) =
                 | Shift -> State((markTop x.Input), x.Stack, x.Output), "shift"
                 | ReduceStack -> State(x.Input, (markTop x.Stack), x.Output), "reduce"
                 | ReduceInput -> State((markTop x.Input), x.Stack, x.Output), "reduce"
-        
+
         let lstr (x :string list) = String.Join(" ", (List.toArray x))
         printfn "%25s    %-9s %6s %s" (lstr (List.rev s.Output)) (lstr (List.rev s.Stack)) text (lstr s.Input)
 
@@ -2098,7 +2098,7 @@ simSYA xs = final ++ [lastStep]
 main = do
     a <- getLine
     printf "%30s%20s%7s" "Output" "Stack" "Token"
-    mapM_ (\(x,y,z) -> printf "%30s%20s%7s\n" 
+    mapM_ (\(x,y,z) -> printf "%30s%20s%7s\n"
             (unwords $ reverse x) (unwords y) z) $ simSYA $ words a
 ```
 
@@ -2108,7 +2108,7 @@ Output:
 ```txt
 >main
 3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3
-                        Output               Stack  Token                                                         
+                        Output               Stack  Token
                              3                          3
                              3                   +      +
                            3 4                   +      4
@@ -2124,7 +2124,7 @@ Output:
                3 4 2 * 1 5 - 2               ^ / +      2
                3 4 2 * 1 5 - 2             ^ ^ / +      ^
              3 4 2 * 1 5 - 2 3             ^ ^ / +      3
-     3 4 2 * 1 5 - 2 3 ^ ^ / +                           
+     3 4 2 * 1 5 - 2 3 ^ ^ / +
 
 ```
 
@@ -2148,7 +2148,7 @@ data Op = Pow | Mul | Div | Add | Sub deriving (Show)
 data Assoc = L | R deriving (Eq)
 
 type Env = ([OutToken], [StackElem])
-type RPNComp = StateT Env (Either String) 
+type RPNComp = StateT Env (Either String)
 
 instance Show OutToken where
     show (OutOp x) = snd $ opInfo x
@@ -2174,7 +2174,7 @@ processToken = \case
     RParen    -> pushTillParen
 
 pushTillParen :: RPNComp ()
-pushTillParen = use _2 >>= \case 
+pushTillParen = use _2 >>= \case
     []     -> throwError "Unmatched right parenthesis"
     (s:st) -> case s of
          StOp o -> _1 %= (OutOp o:) >> _2 %= tail >> pushTillParen
@@ -2183,11 +2183,11 @@ pushTillParen = use _2 >>= \case
 pushOp :: Op -> RPNComp ()
 pushOp o = use _2 >>= \case
     [] -> _2 .= [StOp o]
-    (s:st) -> case s of 
-        (StOp o2) -> if leftAssoc o && prec o == prec o2 
-                     || prec o < prec o2 
+    (s:st) -> case s of
+        (StOp o2) -> if leftAssoc o && prec o == prec o2
+                     || prec o < prec o2
                      then _1 %= (OutOp o2:) >> _2 %= tail >> pushOp o
-                     else _2 %= (StOp o:) 
+                     else _2 %= (StOp o:)
         Paren     -> _2 %= (StOp o:)
 
 pushVal :: Int -> RPNComp ()
@@ -2252,7 +2252,7 @@ Enter expression: 3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main()        
+procedure main()
    infix := "3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3"
    printf("Infix = %i\n",infix)
    printf("RPN   = %i\n",Infix2RPN(infix))
@@ -2265,15 +2265,15 @@ record op_info(pr,as)            # p=precedence, a=associativity (left=null)
 procedure Infix2RPN(expr)        #: Infix to RPN parser - shunting yard
 static oi
 initial {
-   oi := table()                                # precedence & associativity  
+   oi := table()                                # precedence & associativity
    every oi[!"+-"]   := op_info(2)                    # 2L
    every oi[!"*/"]   := op_info(3)                    # 3L
    oi["^"]           := op_info(4,1)                  # 4R
    }
-   
+
    ostack := []                                       # operator stack
-   rpn    := ""                                       # rpn 
-   
+   rpn    := ""                                       # rpn
+
    pat := sprintf("%%5s  :  %%-%ds  :  %%s\n",*expr)  # fmt
    printf(pat,"Token","Output","Op Stack")            # header
 
@@ -2282,21 +2282,21 @@ initial {
       token := tab(upto(' ')|0)                       # get token
       printf(pat,token,rpn,list2string(ostack))       # report
       if token := numeric(token) then           # ... numeric
-         rpn ||:= token || " "   
-      else                                         
+         rpn ||:= token || " "
+      else
          if member(oi,token) then {             # ... operator
-            while member(oi,op2 := ostack[1]) & 
-                  ( /oi[token].as & oi[token].pr <= oi[op2].pr ) | 
-                  ( \oi[token].as & oi[token].pr <  oi[op2].pr ) do 
+            while member(oi,op2 := ostack[1]) &
+                  ( /oi[token].as & oi[token].pr <= oi[op2].pr ) |
+                  ( \oi[token].as & oi[token].pr <  oi[op2].pr ) do
                rpn ||:= pop(ostack) || " "
             push(ostack,token)
             }
          else                                   # ... parenthesis
-            if token == "(" then                
+            if token == "(" then
                push(ostack,token)
             else if token == ")" then {
-               until ostack[1] == "(" do 
-                  rpn ||:= pop(ostack) || " " | 
+               until ostack[1] == "(" do
+                  rpn ||:= pop(ostack) || " " |
                      stop("Unbalanced parenthesis")
                pop(ostack)                            # discard "("
                }
@@ -2306,9 +2306,9 @@ initial {
       if token == ("("|")") then stop("Unbalanced parenthesis")
       else {
          rpn ||:= token || " "
-         printf(pat,"",rpn,list2string(ostack))      
+         printf(pat,"",rpn,list2string(ostack))
          }
- 
+
    return rpn
 end
 
@@ -2319,8 +2319,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 
 Output:
 ```txt
@@ -2512,10 +2512,10 @@ Demonstration
 
    shunt_yard_parse'3*)2+4)'
 Check your parens!
-   
+
    shunt_yard_parse'3*(2+4'
 Check your other parens!
-   
+
    algebra_to_rpn'1+x*(3+x)'
 discarding invalid token x
 discarding invalid token x
@@ -2584,7 +2584,7 @@ public class ShuntingYard {
 
     static String infixToPostfix(String infix) {
         /* To find out the precedence, we take the index of the
-           token in the ops string and divide by 2 (rounding down). 
+           token in the ops string and divide by 2 (rounding down).
            This will give us: 0, 0, 1, 1, 2 */
         final String ops = "-+/*^";
 
@@ -2601,7 +2601,7 @@ public class ShuntingYard {
             if (idx != -1) {
                 if (s.isEmpty())
                     s.push(idx);
-          
+
                 else {
                     while (!s.isEmpty()) {
                         int prec2 = s.peek() / 2;
@@ -2612,10 +2612,10 @@ public class ShuntingYard {
                     }
                     s.push(idx);
                 }
-            } 
+            }
             else if (c == '(') {
                 s.push(-2); // -2 stands for '('
-            } 
+            }
             else if (c == ')') {
                 // until '(' on stack, pop operators.
                 while (s.peek() != -2)
@@ -2639,7 +2639,7 @@ Output:
 
 ```txt
 infix:   3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3
-postfix: 3 4 2 * 1 5 - 2 3 ^ ^ / + 
+postfix: 3 4 2 * 1 5 - 2 3 ^ ^ / +
 ```
 
 
@@ -2656,23 +2656,23 @@ function Stack() {
   this.peek = peek;
   this.length = length;
 }
-  
+
 function push(element) {
   this.dataStore[this.top++] = element;
 }
-  
+
 function pop() {
   return this.dataStore[--this.top];
 }
-  
+
 function peek() {
   return this.dataStore[this.top-1];
 }
-  
+
 function length() {
   return this.top;
 }
-  
+
 var infix = "3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3";
 infix = infix.replace(/\s+/g, ''); // remove spaces, so infix[i]!=" "
 
@@ -2694,10 +2694,10 @@ for (var i = 0; i < infix.length; i++) {
     o2 = s.peek();
     while (ops.indexOf(o2)!=-1 && ( // while operator token, o2, on top of the stack
       // and o1 is left-associative and its precedence is less than or equal to that of o2
-      (associativity[o1] == "Left" && (precedence[o1] <= precedence[o2]) ) || 
+      (associativity[o1] == "Left" && (precedence[o1] <= precedence[o2]) ) ||
       // the algorithm on wikipedia says: or o1 precedence < o2 precedence, but I think it should be
       // or o1 is right-associative and its precedence is less than that of o2
-      (associativity[o1] == "Right" && (precedence[o1] < precedence[o2])) 
+      (associativity[o1] == "Right" && (precedence[o1] < precedence[o2]))
       )){
         postfix += o2 + " "; // add o2 to output queue
         s.pop(); // pop o2 of the stack
@@ -2708,7 +2708,7 @@ for (var i = 0; i < infix.length; i++) {
   else if (token == "(") { // if token is left parenthesis
     s.push(token); // then push it onto the stack
   }
-  else if (token == ")") { // if token is right parenthesis 
+  else if (token == ")") { // if token is right parenthesis
     while (s.peek() != "("){ // until token at top is (
       postfix += s.pop() + " ";
     }
@@ -2725,7 +2725,7 @@ Output:
 
 ```txt
 infix:   3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3
-postfix: 3 4 2 * 1 5 - 2 3 ^ ^ / + 
+postfix: 3 4 2 * 1 5 - 2 3 ^ ^ / +
 ```
 
 
@@ -2880,10 +2880,10 @@ fun main(args: Array<String>) {
 ```txt
 
 Infix : 3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3
-Postfix : 3 4 2 * 1 5 - 2 3 ^ ^ / + 
+Postfix : 3 4 2 * 1 5 - 2 3 ^ ^ / +
 
 Infix : ( ( 1 + 2 ) ^ ( 3 + 4 ) ) ^ ( 5 + 6 )
-Postfix : 1 2 + 3 4 + ^ 5 6 + ^ 
+Postfix : 1 2 + 3 4 + ^ 5 6 + ^
 
 ```
 
@@ -2894,7 +2894,7 @@ Postfix : 1 2 + 3 4 + ^ 5 6 + ^
 
 ```lb
 
-global stack$,queue$ 
+global stack$,queue$
 stack$=""
 queue$=""
 
@@ -2976,7 +2976,7 @@ end function
 
 '------------------------------------------
 sub stack.push s$
-    stack$=s$+"|"+stack$ 
+    stack$=s$+"|"+stack$
 end sub
 
 sub queue.push s$
@@ -3046,36 +3046,36 @@ Output:
 
 
 ```Mathematica
-rpn[str_] := 
+rpn[str_] :=
   StringRiffle[
-   ToString /@ 
-    Module[{in = StringSplit[str], stack = {}, out = {}, next}, 
-     While[in != {}, next = in[[1]]; in = in[[2 ;;]]; 
-      Which[DigitQ[next], AppendTo[out, next], LetterQ[next], 
-       AppendTo[stack, next], next == ",", 
-       While[stack[[-1]] != "(", AppendTo[out, stack[[-1]]]; 
-        stack = stack[[;; -2]]], next == "^", AppendTo[stack, "^"], 
-       next == "*", 
-       While[stack != {} && MatchQ[stack[[-1]], "^" | "*" | "/"], 
-        AppendTo[out, stack[[-1]]]; stack = stack[[;; -2]]]; 
-       AppendTo[stack, "*"], next == "/", 
-       While[stack != {} && MatchQ[stack[[-1]], "^" | "*" | "/"], 
-        AppendTo[out, stack[[-1]]]; stack = stack[[;; -2]]]; 
-       AppendTo[stack, "/"], next == "+", 
-       While[stack != {} && 
-         MatchQ[stack[[-1]], "^" | "*" | "/" | "+" | "-"], 
-        AppendTo[out, stack[[-1]]]; stack = stack[[;; -2]]]; 
-       AppendTo[stack, "+"], next == "-", 
-       While[stack != {} && 
-         MatchQ[stack[[-1]], "^" | "*" | "/" | "+" | "-"], 
-        AppendTo[out, stack[[-1]]]; stack = stack[[;; -2]]]; 
-       AppendTo[stack, "-"], next == "(", AppendTo[stack, "("], 
-       next == ")", 
-       While[stack[[-1]] =!= "(", AppendTo[out, stack[[-1]]]; 
-        stack = stack[[;; -2]]]; stack = stack[[;; -2]]; 
-       If[StringQ[stack[[-1]]], AppendTo[out, stack[[-1]]]; 
-        stack = stack[[;; -2]]]]]; 
-     While[stack != {}, AppendTo[out, stack[[-1]]]; 
+   ToString /@
+    Module[{in = StringSplit[str], stack = {}, out = {}, next},
+     While[in != {}, next = in[[1]]; in = in[[2 ;;]];
+      Which[DigitQ[next], AppendTo[out, next], LetterQ[next],
+       AppendTo[stack, next], next == ",",
+       While[stack[[-1]] != "(", AppendTo[out, stack[[-1]]];
+        stack = stack[[;; -2]]], next == "^", AppendTo[stack, "^"],
+       next == "*",
+       While[stack != {} && MatchQ[stack[[-1]], "^" | "*" | "/"],
+        AppendTo[out, stack[[-1]]]; stack = stack[[;; -2]]];
+       AppendTo[stack, "*"], next == "/",
+       While[stack != {} && MatchQ[stack[[-1]], "^" | "*" | "/"],
+        AppendTo[out, stack[[-1]]]; stack = stack[[;; -2]]];
+       AppendTo[stack, "/"], next == "+",
+       While[stack != {} &&
+         MatchQ[stack[[-1]], "^" | "*" | "/" | "+" | "-"],
+        AppendTo[out, stack[[-1]]]; stack = stack[[;; -2]]];
+       AppendTo[stack, "+"], next == "-",
+       While[stack != {} &&
+         MatchQ[stack[[-1]], "^" | "*" | "/" | "+" | "-"],
+        AppendTo[out, stack[[-1]]]; stack = stack[[;; -2]]];
+       AppendTo[stack, "-"], next == "(", AppendTo[stack, "("],
+       next == ")",
+       While[stack[[-1]] =!= "(", AppendTo[out, stack[[-1]]];
+        stack = stack[[;; -2]]]; stack = stack[[;; -2]];
+       If[StringQ[stack[[-1]]], AppendTo[out, stack[[-1]]];
+        stack = stack[[;; -2]]]]];
+     While[stack != {}, AppendTo[out, stack[[-1]]];
       stack = stack[[;; -2]]]; out]];
 Print[rpn["3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3"]];
 ```
@@ -3146,25 +3146,25 @@ echo "postfix: ", shuntRPN(input.strip.split)
 for infix expression: '3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3'
 
 TOKEN   OP STACK           RPN OUTPUT
-3                          3                         
-+       +                  3                         
-4       +                  3 4                       
-*       + *                3 4                       
-2       + *                3 4 2                     
-/       + /                3 4 2 *                   
-(       + / (              3 4 2 *                   
-1       + / (              3 4 2 * 1                 
--       + / ( -            3 4 2 * 1                 
-5       + / ( -            3 4 2 * 1 5               
-)       + /                3 4 2 * 1 5 -             
-^       + / ^              3 4 2 * 1 5 -             
-2       + / ^              3 4 2 * 1 5 - 2           
-^       + / ^ ^            3 4 2 * 1 5 - 2           
-3       + / ^ ^            3 4 2 * 1 5 - 2 3         
-        + / ^              3 4 2 * 1 5 - 2 3 ^       
-        + /                3 4 2 * 1 5 - 2 3 ^ ^     
-        +                  3 4 2 * 1 5 - 2 3 ^ ^ /   
-                           3 4 2 * 1 5 - 2 3 ^ ^ / +  
+3                          3
++       +                  3
+4       +                  3 4
+*       + *                3 4
+2       + *                3 4 2
+/       + /                3 4 2 *
+(       + / (              3 4 2 *
+1       + / (              3 4 2 * 1
+-       + / ( -            3 4 2 * 1
+5       + / ( -            3 4 2 * 1 5
+)       + /                3 4 2 * 1 5 -
+^       + / ^              3 4 2 * 1 5 -
+2       + / ^              3 4 2 * 1 5 - 2
+^       + / ^ ^            3 4 2 * 1 5 - 2
+3       + / ^ ^            3 4 2 * 1 5 - 2 3
+        + / ^              3 4 2 * 1 5 - 2 3 ^
+        + /                3 4 2 * 1 5 - 2 3 ^ ^
+        +                  3 4 2 * 1 5 - 2 3 ^ ^ /
+                           3 4 2 * 1 5 - 2 3 ^ ^ / +
 postfix: 3 4 2 * 1 5 - 2 3 ^ ^ / +
 ```
 
@@ -3210,7 +3210,7 @@ let rec intercalate sep xs =
   | x::xs' -> x ^ sep ^ intercalate sep xs';;
 
 
-let shunting_yard = 
+let shunting_yard =
   let rec pusher stack queue tkns =
     match tkns with
     | [] -> List.rev queue @ stack
@@ -3220,7 +3220,7 @@ let shunting_yard =
         pusher stack' (mv @ queue) tkns'
     | t::tkns' when prec t < 0 -> pusher stack (t::queue) tkns'
     | op::tkns' ->
-        let mv_to_queue op2 = 
+        let mv_to_queue op2 =
           (match assoc op with
             | Left -> prec op <= prec op2
             | Right -> prec op < prec op2)
@@ -3230,7 +3230,7 @@ let shunting_yard =
   in pusher [] [];;
 
 
-let () = 
+let () =
   let inp = read_line () in
   let tkns = String.split_on_char ' ' inp in
   let postfix = shunting_yard tkns in
@@ -3395,11 +3395,11 @@ say shunting-yard '3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3';
             3 4 2 * 1 5 -    + /        shift ^ 2 ^ 3
             3 4 2 * 1 5 -    + / ^     reduce 2 ^ 3
           3 4 2 * 1 5 - 2    + / ^      shift ^ 3
-          3 4 2 * 1 5 - 2    + / ^ ^   reduce 3 
-        3 4 2 * 1 5 - 2 3    + / ^     reduce ^ 
-      3 4 2 * 1 5 - 2 3 ^    + /       reduce ^ 
-    3 4 2 * 1 5 - 2 3 ^ ^    +         reduce / 
-  3 4 2 * 1 5 - 2 3 ^ ^ /              reduce + 
+          3 4 2 * 1 5 - 2    + / ^ ^   reduce 3
+        3 4 2 * 1 5 - 2 3    + / ^     reduce ^
+      3 4 2 * 1 5 - 2 3 ^    + /       reduce ^
+    3 4 2 * 1 5 - 2 3 ^ ^    +         reduce /
+  3 4 2 * 1 5 - 2 3 ^ ^ /              reduce +
 3 4 2 * 1 5 - 2 3 ^ ^ / +
 ```
 
@@ -3416,7 +3416,7 @@ constant operators  = {"^","*","/","+","-"},
          precedence = { 4,  3,  3,  2,  2 }
 
 procedure shunting_yard(string infix, string rpn)
-string res = "", sep = "", top 
+string res = "", sep = "", top
 sequence stack = {}
 sequence ops = split(substitute_all(infix,{"(",")"},{" ( "," ) "}),' ',no_empty:=1,limit:=0)
     printf(1,"Infix input: %-30s%s", {infix,iff(show_workings?'\n':'\t')})
@@ -3439,7 +3439,7 @@ sequence ops = split(substitute_all(infix,{"(",")"},{" ( "," ) "}),' ',no_empty:
                 while length(stack) do
                     top = stack[$]
                     k = find(top,operators)
-                    if k=0 or prec>precedence[k] 
+                    if k=0 or prec>precedence[k]
                     or (top="^" and prec=precedence[k]) then
                         exit
                     end if
@@ -3543,9 +3543,9 @@ Infix input: 4 * 2 / (1 - 5) ^ 2                result: 4 2 * 1 5 - 2 ^ /      [
 
 Note:
 
-Some of the "made up" RPN used in [[Parsing/RPN_to_infix_conversion#Phix|parseRPN]] generates an infix 
-expression that does not re-create that (slightly dodgy) RPN when passed to this routine. 
-However, I have verified that the output of this routine does correctly re-generate the infix expression 
+Some of the "made up" RPN used in [[Parsing/RPN_to_infix_conversion#Phix|parseRPN]] generates an infix
+expression that does not re-create that (slightly dodgy) RPN when passed to this routine.
+However, I have verified that the output of this routine does correctly re-generate the infix expression
 when passed back through parseRPN(), and replaced several tests accordingly.
 For example, both parseRPN("1 2 + 3 +") and parseRPN("1 2 3 + +") generate "1 + 2 + 3"; a round-trip needs the first.
 There is a (feeble) argument that parseRPN("1 2 3 + +") should perhaps generate "1 + (2 + 3)", but it don't.
@@ -3650,7 +3650,7 @@ cvt: procedure options (main);               /* 15 January 2012. */
       select (ch);
          when (' ') ;
 
-         when ('+', '-', '*', '/', '^') 
+         when ('+', '-', '*', '/', '^')
             do;
                /* Copy any equal or higher-priority operators from the stack */
                /* to the output string */
@@ -3721,7 +3721,7 @@ end cvt;
 Output:
 <lang>
 INPUT                               STACK     OUTPUT
-3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3 )     (         
+3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3 )     (
 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3 )       (          3
  4 * 2 / ( 1 - 5 ) ^ 2 ^ 3 )        +(         3
 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3 )         +(         3
@@ -3784,7 +3784,7 @@ NUM, LPAREN, RPAREN = 'NUMBER ( )'.split()
 
 def get_input(inp = None):
     'Inputs an expression and returns list of (TOKENTYPE, tokenvalue)'
-    
+
     if inp is None:
         inp = input('expression: ')
     tokens = inp.strip().split()
@@ -3794,7 +3794,7 @@ def get_input(inp = None):
             tokenvals.append((token, ops[token]))
         #elif token in (LPAREN, RPAREN):
         #    tokenvals.append((token, token))
-        else:    
+        else:
             tokenvals.append((NUM, token))
     return tokenvals
 
@@ -3810,7 +3810,7 @@ def shunting(tokenvals):
         elif token in ops:
             t1, (p1, a1) = token, val
             v = t1
-            note = 'Pop ops from stack to output' 
+            note = 'Pop ops from stack to output'
             while stack:
                 t2, (p2, a2) = stack[-1]
                 if (a1 == L and p1 <= p2) or (a1 == R and p1 < p2):
@@ -3819,14 +3819,14 @@ def shunting(tokenvals):
                             stack.pop()
                             action = '(Pop op)'
                             outq.append(t2)
-                        else:    
+                        else:
                             break
-                    else:        
+                    else:
                         if t2 != LPAREN:
                             stack.pop()
                             action = '(Pop op)'
                             outq.append(t2)
-                        else:    
+                        else:
                             stack.pop()
                             action = '(Pop & discard "(")'
                             table.append( (v, action, ' '.join(outq), ' '.join(s[0] for s in stack), note) )
@@ -3836,8 +3836,8 @@ def shunting(tokenvals):
                 else:
                     note = ''
                     break
-                note = '' 
-            note = '' 
+                note = ''
+            note = ''
             if t1 != RPAREN:
                 stack.append((token, val))
                 action = 'Push op token to stack'
@@ -3874,29 +3874,29 @@ if __name__ == '__main__':
 ```txt
 For infix expression: '3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3'
 
-TOKEN         ACTION                RPN OUTPUT         OP STACK            NOTES            
-3     Add number to output   3                                                              
-+     Push op token to stack 3                         +                                    
-4     Add number to output   3 4                       +                                    
-*     Push op token to stack 3 4                       + *                                  
-2     Add number to output   3 4 2                     + *                                  
+TOKEN         ACTION                RPN OUTPUT         OP STACK            NOTES
+3     Add number to output   3
++     Push op token to stack 3                         +
+4     Add number to output   3 4                       +
+*     Push op token to stack 3 4                       + *
+2     Add number to output   3 4 2                     + *
 /     (Pop op)               3 4 2 *                   +        Pop ops from stack to output
-      Push op token to stack 3 4 2 *                   + /                                  
-(     Push op token to stack 3 4 2 *                   + / (                                
-1     Add number to output   3 4 2 * 1                 + / (                                
--     Push op token to stack 3 4 2 * 1                 + / ( -                              
-5     Add number to output   3 4 2 * 1 5               + / ( -                              
+      Push op token to stack 3 4 2 *                   + /
+(     Push op token to stack 3 4 2 *                   + / (
+1     Add number to output   3 4 2 * 1                 + / (
+-     Push op token to stack 3 4 2 * 1                 + / ( -
+5     Add number to output   3 4 2 * 1 5               + / ( -
 )     (Pop op)               3 4 2 * 1 5 -             + / (    Pop ops from stack to output
-      (Pop & discard "(")    3 4 2 * 1 5 -             + /                                  
-      Discard ")"            3 4 2 * 1 5 -             + /                                  
-^     Push op token to stack 3 4 2 * 1 5 -             + / ^                                
-2     Add number to output   3 4 2 * 1 5 - 2           + / ^                                
-^     Push op token to stack 3 4 2 * 1 5 - 2           + / ^ ^                              
-3     Add number to output   3 4 2 * 1 5 - 2 3         + / ^ ^                              
-      (Pop op)               3 4 2 * 1 5 - 2 3 ^       + / ^    Drain stack to output       
-      (Pop op)               3 4 2 * 1 5 - 2 3 ^ ^     + /                                  
-      (Pop op)               3 4 2 * 1 5 - 2 3 ^ ^ /   +                                    
-      (Pop op)               3 4 2 * 1 5 - 2 3 ^ ^ / +                                      
+      (Pop & discard "(")    3 4 2 * 1 5 -             + /
+      Discard ")"            3 4 2 * 1 5 -             + /
+^     Push op token to stack 3 4 2 * 1 5 -             + / ^
+2     Add number to output   3 4 2 * 1 5 - 2           + / ^
+^     Push op token to stack 3 4 2 * 1 5 - 2           + / ^ ^
+3     Add number to output   3 4 2 * 1 5 - 2 3         + / ^ ^
+      (Pop op)               3 4 2 * 1 5 - 2 3 ^       + / ^    Drain stack to output
+      (Pop op)               3 4 2 * 1 5 - 2 3 ^ ^     + /
+      (Pop op)               3 4 2 * 1 5 - 2 3 ^ ^ /   +
+      (Pop op)               3 4 2 * 1 5 - 2 3 ^ ^ / +
 
  The final output RPN is: '3 4 2 * 1 5 - 2 3 ^ ^ / +'
 ```
@@ -3960,22 +3960,22 @@ TOKEN         ACTION                RPN OUTPUT         OP STACK            NOTES
 ```txt
 
 > (shunt input)
-TOKEN   OUT                          STACK                        ACTION              
-3                                                                                     
-+       3                                                         out 3               
-4       3                            +                            out (), push +      
-*       3 4                          +                            out 4               
-2       3 4                          *+                           out (), push *      
-/       3 4 2                        *+                           out 2               
-(       3 4 2 *                      /+                           out (*), push /     
-1       3 4 2 *                      (/+                          push (              
--       3 4 2 * 1                    (/+                          out 1               
-5       3 4 2 * 1                    -(/+                         out (), push -      
-)       3 4 2 * 1 5                  -(/+                         out 5               
-^       3 4 2 * 1 5 -                /+                           clear til )         
-2       3 4 2 * 1 5 -                ^/+                          out (), push ^      
-^       3 4 2 * 1 5 - 2              ^/+                          out 2               
-3       3 4 2 * 1 5 - 2              ^^/+                         out (), push ^      
+TOKEN   OUT                          STACK                        ACTION
+3
++       3                                                         out 3
+4       3                            +                            out (), push +
+*       3 4                          +                            out 4
+2       3 4                          *+                           out (), push *
+/       3 4 2                        *+                           out 2
+(       3 4 2 *                      /+                           out (*), push /
+1       3 4 2 *                      (/+                          push (
+-       3 4 2 * 1                    (/+                          out 1
+5       3 4 2 * 1                    -(/+                         out (), push -
+)       3 4 2 * 1 5                  -(/+                         out 5
+^       3 4 2 * 1 5 -                /+                           clear til )
+2       3 4 2 * 1 5 -                ^/+                          out (), push ^
+^       3 4 2 * 1 5 - 2              ^/+                          out 2
+3       3 4 2 * 1 5 - 2              ^^/+                         out (), push ^
 '("3" "4" "2" "*" "1" "5" "-" "2" "3" "^" "^" "/" "+")
 
 ```
@@ -4082,13 +4082,13 @@ RPN──► 3 4 2 * 1 5 - 2 3 ^ ^ / +
 ===checks expression for balanced ()===
 Since these REXX versions of infix to RPN conversion affixes a leading   ''' ( '''   and trailing   ''' ) '''   to the expression, an
 
-invalid expression such as   ''' )  (   ''' would be made legal by the aforemention affixing:     ''' )   (   ''' 
+invalid expression such as   ''' )  (   ''' would be made legal by the aforemention affixing:     ''' )   (   '''
 
 gets transformed into     ''' (   )   (   )   '''
 
 Therefore, code was added to check for this condition, and also checks for mismatched parenthesis.
 
-The   '''select'''   group could've been modified to check for mismatched parenthesis, but it would be harder to peruse the source. 
+The   '''select'''   group could've been modified to check for mismatched parenthesis, but it would be harder to peruse the source.
 
 ```rexx
 /*REXX pgm converts infix arith. expressions to Reverse Polish notation (shunting─yard).*/
@@ -4448,11 +4448,11 @@ say shunting_yard('3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3').join(' ')
             3 4 2 * 1 5 -    + /        shift ^ 2 ^ 3
             3 4 2 * 1 5 -    + / ^     reduce 2 ^ 3
           3 4 2 * 1 5 - 2    + / ^      shift ^ 3
-          3 4 2 * 1 5 - 2    + / ^ ^   reduce 3 
-        3 4 2 * 1 5 - 2 3    + / ^     reduce ^ 
-      3 4 2 * 1 5 - 2 3 ^    + /       reduce ^ 
-    3 4 2 * 1 5 - 2 3 ^ ^    +         reduce / 
-  3 4 2 * 1 5 - 2 3 ^ ^ /              reduce + 
+          3 4 2 * 1 5 - 2    + / ^ ^   reduce 3
+        3 4 2 * 1 5 - 2 3    + / ^     reduce ^
+      3 4 2 * 1 5 - 2 3 ^    + /       reduce ^
+    3 4 2 * 1 5 - 2 3 ^ ^    +         reduce /
+  3 4 2 * 1 5 - 2 3 ^ ^ /              reduce +
 3 4 2 * 1 5 - 2 3 ^ ^ / +
 
 ```
@@ -4840,7 +4840,7 @@ Output:
 
 add to output: 3
 		Output:	3
-		Stack:	
+		Stack:
 adding operator: +
 		Output:	3
 		Stack:	+
@@ -4927,7 +4927,7 @@ showstacks() {
 
 infix() {
     local out="" ops=""
-    
+
     while [ "$#" -gt 0 ]; do
         grep -qE '^[0-9]+$' <<< "$1"
         if [ "$?" -eq 0 ]; then
@@ -5008,52 +5008,52 @@ infix 3 + 4 \* 2 / \( 1 - 5 \) ^ 2 ^ 3
 ### Output
 
 <lang>Token: 3
-	Output: 3 
-	Operators:  
+	Output: 3
+	Operators:
 Token: +
-	Output: 3 
-	Operators: + 
+	Output: 3
+	Operators: +
 Token: 4
-	Output: 3 4 
-	Operators: + 
+	Output: 3 4
+	Operators: +
 Token: *
-	Output: 3 4 
-	Operators: + * 
+	Output: 3 4
+	Operators: + *
 Token: 2
-	Output: 3 4 2 
-	Operators: + * 
+	Output: 3 4 2
+	Operators: + *
 Token: /
-	Output: 3 4 2 
-	Operators: + * / 
+	Output: 3 4 2
+	Operators: + * /
 Token: (
-	Output: 3 4 2 
-	Operators: + * / ( 
+	Output: 3 4 2
+	Operators: + * / (
 Token: 1
-	Output: 3 4 2 1 
-	Operators: + * / ( 
+	Output: 3 4 2 1
+	Operators: + * / (
 Token: -
-	Output: 3 4 2 1 
-	Operators: + * / ( - 
+	Output: 3 4 2 1
+	Operators: + * / ( -
 Token: 5
-	Output: 3 4 2 1 5 
-	Operators: + * / ( - 
+	Output: 3 4 2 1 5
+	Operators: + * / ( -
 Token: )
-	Output: 3 4 2 1 5 - 
-	Operators: + * / 
+	Output: 3 4 2 1 5 -
+	Operators: + * /
 Token: ^
-	Output: 3 4 2 1 5 - 
-	Operators: + * / ^ 
+	Output: 3 4 2 1 5 -
+	Operators: + * / ^
 Token: 2
-	Output: 3 4 2 1 5 - 2 
-	Operators: + * / ^ 
+	Output: 3 4 2 1 5 - 2
+	Operators: + * / ^
 Token: ^
-	Output: 3 4 2 1 5 - 2 
-	Operators: + * / ^ ^ 
+	Output: 3 4 2 1 5 - 2
+	Operators: + * / ^ ^
 Token: 3
-	Output: 3 4 2 1 5 - 2 3 
-	Operators: + * / ^ ^ 
+	Output: 3 4 2 1 5 - 2 3
+	Operators: + * / ^ ^
 End parsing
-	Output: 3 4 2 1 5 - 2 3 ^ ^ / * + 
+	Output: 3 4 2 1 5 - 2 3 ^ ^ / * +
 	Operators:
 ```
 
@@ -5124,23 +5124,23 @@ Do While 1
         queue = push(CStr(token), queue)
     End If
 Loop
- 
+
 While stack(1) <> ""
     If Peek(stack) = "(" Then Debug.Print "no matching ')'": End
     queue = push(pop(stack), queue)
 Wend
- 
+
 ' Print final output
 ShuntingYard = Join(queue, " ")
 Debug.Print "Output:"
 Debug.Print ShuntingYard
 End Function
- 
+
 '------------------------------------------
 Function isOperator(op As String) As Boolean
     isOperator = InStr("+-*/^", op) <> 0 And Len(op$) = 1
 End Function
- 
+
 Function precedence(op As String) As Integer
     If isOperator(op$) Then
         precedence = 1 _
@@ -5149,7 +5149,7 @@ Function precedence(op As String) As Integer
             - (InStr("^", op$) <> 0)
     End If
 End Function
- 
+
 '------------------------------------------
 Function push(str, stack) As Variant
 Dim out() As Variant, i As Long
@@ -5184,7 +5184,7 @@ End Function
 ```txt
 ?ShuntingYard("3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3")
 3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3
- 1            3                           
+ 1            3
  2            +                           3
  3            4             +             3
  4            *             +             3,4
@@ -5325,11 +5325,11 @@ pop: stack[  ]          out[ 3 4 2 * 1 5 - 2 3 ^ ^ / + ]
 
 ```zkl
 var input="3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3";
- 
+
 var opa=Dictionary("^",T(4,True),  "*",T(3,False),    // op:(prec,rAssoc)
 	    "/",T(3,False), "+",T(2,False), "-",T(2,False),
 );
- 
+
 "infix:  ".println(input);
 "postfix:".println(parseInfix(input));
 
@@ -5463,32 +5463,32 @@ Function ShuntingYard(strInfix As String) As String
   Dim stack(), queue() As Variant
   Dim discard As String
   Dim op1, op2 As String
-  
+
   Dim Left_Brackets, Right_Brackets As Integer
-  
+
   Dim output As String
   Dim dbl_output As Double
-  
-  
+
+
   Left_Brackets = CountFields(strInfix, "(")
   Right_Brackets = CountFields(strInfix, ")")
-  
+
   If Left_Brackets = Right_Brackets Then
-    
-    
-    
+
+
+
     'Get tokens
     tokenArray = Split(strInfix," ")
-    
-    
-    
+
+
+
     'Initialize array (removed later)
     ReDim stack(1)
     ReDim queue(1)
-    
+
     'Loop over tokens
     For i = 0 to tokenArray.Ubound
-      
+
 
     'i = i + 1
       If i  > UBound(tokenArray) Then
@@ -5503,48 +5503,48 @@ Function ShuntingYard(strInfix As String) As String
 
 
 
-      
-      
+
+
       Dim stackString As String
       Dim queuString As String
-      
+
       for m as Integer = 0 to stack.Ubound
         stackString = stackString +  " " +  stack(m)
       Next
-      
+
       for m as Integer = 0 to queue.Ubound
         queuString = queuString + " " +  queue(m)
       Next
-      
+
       MsgBox(Str(i) + "      " + token + "      " + stackString + "      " + queuString)
-      
+
       'Window1.txtQueu.Text = Window1.txtQueu.Text + Str(i) + "      " + token + "      " + stackString + "      " + queuString + EndOfLIne
-      
-      
-  
-      
+
+
+
+
       ' If-loop over tokens (either brackets, operators, or numbers)
       If token = "(" Then
         stack.Append(token)
-        
+
       ElseIf token = ")" Then
         While stack(stack.Ubound) <> "("
           queue.Append(stack.pop)
         Wend
-        
+
         discard = stack.Pop 'discard "("
       ElseIf isOperator(token) Then
         op1 = token
-        
-        
+
+
         //Do While (isOperator(Peek(stack)))
-        While isOperator(    stack(stack.Ubound)  ) = True 
+        While isOperator(    stack(stack.Ubound)  ) = True
           op2 = stack(stack.Ubound)
           If op2 <> "^" And precedence(op1) = precedence(op2) Then
             '"^" is the only right-associative operator
-            
+
             queue.Append(stack.pop)
-            
+
           ElseIf precedence(op1) < precedence(op2) Then
             queue.Append(stack.Pop)
           Else
@@ -5552,46 +5552,46 @@ Function ShuntingYard(strInfix As String) As String
           End If
         Wend
         //Loop
-        
-        
+
+
         stack.Append(op1)
       Else   'number
         'actually, wrong operator could end up here, like say %
         'If the token is a number, then add it to the output queue.
         queue.Append(CStr(token))
       End If
-      
-      
-      
-      
+
+
+
+
     Next
-    
-    
-    
+
+
+
     for i = 0 to queue.Ubound
       output = output  +queue(i) + " "
     next
-    
+
     for i = stack.Ubound DownTo 0
       output = output + stack(i)+" "
     next
-    
-    
-    
-    While InStr(output, "  ") <> 0 
+
+
+
+    While InStr(output, "  ") <> 0
       output = ReplaceAll(output,"  "," ")
     Wend
-    
-    
+
+
     output = Trim(output)
-    
-    
+
+
     Return output
-    
+
   Else
-    
+
     MsgBox("Syntax Error!" + EndOfLine + "Count left brackets: " + Str(Left_Brackets) + EndOfLine +"Count right brackets: " + Str(Right_Brackets))
-    
+
   End If
 
 End Function
@@ -5609,20 +5609,20 @@ End Function
 Function precedence(op As String) As Integer
 
   If isOperator(op) = True Then
-    
-    
-    
-    If op = "+" or op = "-"  Then  
+
+
+
+    If op = "+" or op = "-"  Then
       Return 2
     ElseIf op = "/" or op = "*" Then
       Return 3
     ElseIf op = "^" Then
       Return 4
     End If
-    
-    
+
+
   End If
-  
+
 
 End Function
 ```
@@ -5634,8 +5634,8 @@ End Function
 ```txt
 ?ShuntingYard("3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3")
 3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3
-                                             
-0      3                
+
+0      3
 1      +                 3
 2      4         +         3
 3      *         +         3 4

@@ -13,7 +13,7 @@ tags = []
 {{draft task|Basic language learning}}
 Some programming languages have [[wp:Type conversion#Implicit type conversion|implicit type conversion]].  Type conversion is  also known as ''coercion''.
 
-For example: 
+For example:
 ```algol68>COMPL z := 1;</lang
 Here the assignment "''':='''" implicitly converts the '''integer''' 1, to the '''complex''' number <math>1+0i</math> in the programming language [[ALGOL 68]].
 
@@ -27,7 +27,7 @@ In strong typed languages ''some'' types are actually mutually incompatible. In 
 
 Languages that don't support ''any'' ''implicit type conversion'' are detailed in the [[:Category:Maintenance/OmitCategoriesCreated|/Omit]] categories at the bottom of this page.
 
-Indicate if the language supports ''user defined'' type conversion definitions.  
+Indicate if the language supports ''user defined'' type conversion definitions.
 
 And give an example of such a definition.   (E.g. define an ''implicit type conversion'' from '''real''' to '''complex''' numbers, or from '''char''' to an array of '''char''' of length 1.)
 
@@ -185,8 +185,8 @@ BEGIN {
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 main(){
 /* a representative sample of builtin types */
     unsigned char uc; char c;
@@ -375,71 +375,71 @@ void main() {
 ```txt
 On a 32 bit system:
 
-A IntEnum can be assigned with: IntEnum 
-A IntFloatUnion can be assigned with: IntFloatUnion 
-A IntStruct can be assigned with: IntStruct 
-A bool can be assigned with: bool 
-A char can be assigned with: bool char ubyte byte 
-A wchar can be assigned with: bool char wchar ubyte ushort byte short 
-A dchar can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint byte short int size_t hash_t ptrdiff_t 
-A ubyte can be assigned with: bool char ubyte byte 
-A ushort can be assigned with: bool char wchar ubyte ushort byte short 
-A uint can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint byte short int size_t hash_t ptrdiff_t 
-A ulong can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint ulong byte short int long size_t hash_t ptrdiff_t 
-A byte can be assigned with: bool char ubyte byte 
-A short can be assigned with: bool char wchar ubyte ushort byte short 
-A int can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint byte short int size_t hash_t ptrdiff_t 
-A long can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint ulong byte short int long size_t hash_t ptrdiff_t 
-A size_t can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint byte short int size_t hash_t ptrdiff_t 
-A hash_t can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint byte short int size_t hash_t ptrdiff_t 
-A ptrdiff_t can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint byte short int size_t hash_t ptrdiff_t 
-A float can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint ulong byte short int long size_t hash_t ptrdiff_t float double real 
-A double can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint ulong byte short int long size_t hash_t ptrdiff_t float double real 
-A real can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint ulong byte short int long size_t hash_t ptrdiff_t float double real 
-A int[2] can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint byte short int size_t hash_t ptrdiff_t int[2] int[] 
-A int[] can be assigned with: int[2] int[] 
-A int[int] can be assigned with: int[int] 
-A int* can be assigned with: int* 
-A void* can be assigned with: int* void* void function() 
-A ClassRef can be assigned with: ClassRef DerivedClassRef 
-A DerivedClassRef can be assigned with: DerivedClassRef 
-A void function() can be assigned with: void function() 
-A void delegate() can be assigned with: void delegate() 
-A IntDouble can be assigned with: int ptrdiff_t double IntDouble 
-A ComplexDouble can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint ulong byte short int long size_t hash_t ptrdiff_t float double real ComplexDouble 
+A IntEnum can be assigned with: IntEnum
+A IntFloatUnion can be assigned with: IntFloatUnion
+A IntStruct can be assigned with: IntStruct
+A bool can be assigned with: bool
+A char can be assigned with: bool char ubyte byte
+A wchar can be assigned with: bool char wchar ubyte ushort byte short
+A dchar can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint byte short int size_t hash_t ptrdiff_t
+A ubyte can be assigned with: bool char ubyte byte
+A ushort can be assigned with: bool char wchar ubyte ushort byte short
+A uint can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint byte short int size_t hash_t ptrdiff_t
+A ulong can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint ulong byte short int long size_t hash_t ptrdiff_t
+A byte can be assigned with: bool char ubyte byte
+A short can be assigned with: bool char wchar ubyte ushort byte short
+A int can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint byte short int size_t hash_t ptrdiff_t
+A long can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint ulong byte short int long size_t hash_t ptrdiff_t
+A size_t can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint byte short int size_t hash_t ptrdiff_t
+A hash_t can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint byte short int size_t hash_t ptrdiff_t
+A ptrdiff_t can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint byte short int size_t hash_t ptrdiff_t
+A float can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint ulong byte short int long size_t hash_t ptrdiff_t float double real
+A double can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint ulong byte short int long size_t hash_t ptrdiff_t float double real
+A real can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint ulong byte short int long size_t hash_t ptrdiff_t float double real
+A int[2] can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint byte short int size_t hash_t ptrdiff_t int[2] int[]
+A int[] can be assigned with: int[2] int[]
+A int[int] can be assigned with: int[int]
+A int* can be assigned with: int*
+A void* can be assigned with: int* void* void function()
+A ClassRef can be assigned with: ClassRef DerivedClassRef
+A DerivedClassRef can be assigned with: DerivedClassRef
+A void function() can be assigned with: void function()
+A void delegate() can be assigned with: void delegate()
+A IntDouble can be assigned with: int ptrdiff_t double IntDouble
+A ComplexDouble can be assigned with: IntEnum bool char wchar dchar ubyte ushort uint ulong byte short int long size_t hash_t ptrdiff_t float double real ComplexDouble
 
-A IntEnum can be assigned with value literal(s): 
-A IntFloatUnion can be assigned with value literal(s): 
-A IntStruct can be assigned with value literal(s): 
-A bool can be assigned with value literal(s): true 0 1L 
-A char can be assigned with value literal(s): true 'x' 0 255 1L 
-A wchar can be assigned with value literal(s): true 'x' 0 255 1L 
-A dchar can be assigned with value literal(s): true 'x' 0 255 1L 
-A ubyte can be assigned with value literal(s): true 'x' 0 255 1L 
-A ushort can be assigned with value literal(s): true 'x' 0 255 1L 
-A uint can be assigned with value literal(s): true 'x' 0 255 1L 
-A ulong can be assigned with value literal(s): true 'x' 0 255 1L 10_000_000_000L 
-A byte can be assigned with value literal(s): true 'x' 0 1L 
-A short can be assigned with value literal(s): true 'x' 0 255 1L 
-A int can be assigned with value literal(s): true 'x' 0 255 1L 
-A long can be assigned with value literal(s): true 'x' 0 255 1L 10_000_000_000L 
-A size_t can be assigned with value literal(s): true 'x' 0 255 1L 
-A hash_t can be assigned with value literal(s): true 'x' 0 255 1L 
-A ptrdiff_t can be assigned with value literal(s): true 'x' 0 255 1L 
-A float can be assigned with value literal(s): true 'x' 0 255 1L 2.0f 3.0 4.0L 10_000_000_000L 
-A double can be assigned with value literal(s): true 'x' 0 255 1L 2.0f 3.0 4.0L 10_000_000_000L 
-A real can be assigned with value literal(s): true 'x' 0 255 1L 2.0f 3.0 4.0L 10_000_000_000L 
-A int[2] can be assigned with value literal(s): true 'x' 0 255 1L [1, 2] null 
-A int[] can be assigned with value literal(s): [1, 2] null 
-A int[int] can be assigned with value literal(s): [3: 4] null 
-A int* can be assigned with value literal(s): null 
-A void* can be assigned with value literal(s): null 
-A ClassRef can be assigned with value literal(s): null 
-A DerivedClassRef can be assigned with value literal(s): null 
-A void function() can be assigned with value literal(s): null 
-A void delegate() can be assigned with value literal(s): null 
-A IntDouble can be assigned with value literal(s): 0 255 3.0 
-A ComplexDouble can be assigned with value literal(s): true 'x' 0 255 1L 2.0f 3.0 4.0L 10_000_000_000L 
+A IntEnum can be assigned with value literal(s):
+A IntFloatUnion can be assigned with value literal(s):
+A IntStruct can be assigned with value literal(s):
+A bool can be assigned with value literal(s): true 0 1L
+A char can be assigned with value literal(s): true 'x' 0 255 1L
+A wchar can be assigned with value literal(s): true 'x' 0 255 1L
+A dchar can be assigned with value literal(s): true 'x' 0 255 1L
+A ubyte can be assigned with value literal(s): true 'x' 0 255 1L
+A ushort can be assigned with value literal(s): true 'x' 0 255 1L
+A uint can be assigned with value literal(s): true 'x' 0 255 1L
+A ulong can be assigned with value literal(s): true 'x' 0 255 1L 10_000_000_000L
+A byte can be assigned with value literal(s): true 'x' 0 1L
+A short can be assigned with value literal(s): true 'x' 0 255 1L
+A int can be assigned with value literal(s): true 'x' 0 255 1L
+A long can be assigned with value literal(s): true 'x' 0 255 1L 10_000_000_000L
+A size_t can be assigned with value literal(s): true 'x' 0 255 1L
+A hash_t can be assigned with value literal(s): true 'x' 0 255 1L
+A ptrdiff_t can be assigned with value literal(s): true 'x' 0 255 1L
+A float can be assigned with value literal(s): true 'x' 0 255 1L 2.0f 3.0 4.0L 10_000_000_000L
+A double can be assigned with value literal(s): true 'x' 0 255 1L 2.0f 3.0 4.0L 10_000_000_000L
+A real can be assigned with value literal(s): true 'x' 0 255 1L 2.0f 3.0 4.0L 10_000_000_000L
+A int[2] can be assigned with value literal(s): true 'x' 0 255 1L [1, 2] null
+A int[] can be assigned with value literal(s): [1, 2] null
+A int[int] can be assigned with value literal(s): [3: 4] null
+A int* can be assigned with value literal(s): null
+A void* can be assigned with value literal(s): null
+A ClassRef can be assigned with value literal(s): null
+A DerivedClassRef can be assigned with value literal(s): null
+A void function() can be assigned with value literal(s): null
+A void delegate() can be assigned with value literal(s): null
+A IntDouble can be assigned with value literal(s): 0 255 3.0
+A ComplexDouble can be assigned with value literal(s): true 'x' 0 255 1L 2.0f 3.0 4.0L 10_000_000_000L
 ```
 
 
@@ -460,7 +460,7 @@ The only implicit conversion currently permitted is boolean to number:
 
 ## Go
 
-Go is a very strongly typed language and, strictly speaking, doesn't permit any implicit conversions at all - even 'widening' numeric conversions or conversions between types with the same underlying type. Nor does it support user-defined conversions. 
+Go is a very strongly typed language and, strictly speaking, doesn't permit any implicit conversions at all - even 'widening' numeric conversions or conversions between types with the same underlying type. Nor does it support user-defined conversions.
 
 Consequently, you always need to use type conversions when dealing with expressions, assignments etc. involving mixed types otherwise the code won't compile.
 
@@ -472,7 +472,7 @@ true, 'a', 1, 1.0, 1 + 1i, "a"
 
 In a context in which a typed value is needed and in the absence of any other type information, these would assume their default types which in the same order are:
 
-bool, rune, int, float64, complex128, string 
+bool, rune, int, float64, complex128, string
 
 Otherwise, they would adopt whatever type is needed to enable a representable variable declaration, assignment or expression to compile.
 
@@ -563,21 +563,21 @@ two = one + True
 
 Overview: Types are viewed as a necessary evil - where possible mathematical identities are given precedence over the arbitrariness of machine representation.
 
-J has 4 "static types" (noun, verb, adverb, conjunction). 
-There are almost no implicit conversions between these types 
+J has 4 "static types" (noun, verb, adverb, conjunction).
+There are almost no implicit conversions between these types
 (but a noun can be promoted to a constant verb in certain static contexts or a noun representation of a verb can be placed in a context which uses that definition to perform the corresponding operation).
 
 Translating from "traditional english" to "contemporary computer science" nomenclature: Nouns are "data", verbs are "functions", adverbs and conjunctions are "metafunctions".
 
-Nouns break down into four disjoint collections of subtypes: boxed, literal, numeric and symbolic (which is rarely used). 
-Most of J's implicit conversions happen within the first three subtypes. (And J supports some "extra conversions" between these types in some cases where no values are involved. 
+Nouns break down into four disjoint collections of subtypes: boxed, literal, numeric and symbolic (which is rarely used).
+Most of J's implicit conversions happen within the first three subtypes. (And J supports some "extra conversions" between these types in some cases where no values are involved.
 For example a list which contains no characters (literals) may be used as a list which contains no numbers (numerics)).
 
-There is one type of box, two types of literals (8 bit wide and 16 bit wide), and a variety of types of numerics. 
+There is one type of box, two types of literals (8 bit wide and 16 bit wide), and a variety of types of numerics.
 Sparse arrays are also (partially) supported and treated internally as distinct datatypes, implemented under the covers as a sequence of arrays (one to indicate which indices have values, and another to hold the corresponding values, and also a default value to fill in the rest).
 
-The primary implicit type conversion in J applies to numeric values. 
-In particular, J tries to present numeric values as "[http://www.jsoftware.com/pipermail/beta/2006-April/000749.html analytic]"; that is, numeric values which are "the same" should presented to the user (J programmer) as "the same" in as many different contexts as is feasible, irrespective of their representation in the the computer's model or layout in memory.  So, for example, on a 32-bit machine, `(2^31)-1` is the largest value a signed integer, which is stored in 4 bytes, can represent; in J, incrementing this value (adding 1) causes the underlying representation to switch to IEEE double-precision floating point number. 
+The primary implicit type conversion in J applies to numeric values.
+In particular, J tries to present numeric values as "[http://www.jsoftware.com/pipermail/beta/2006-April/000749.html analytic]"; that is, numeric values which are "the same" should presented to the user (J programmer) as "the same" in as many different contexts as is feasible, irrespective of their representation in the the computer's model or layout in memory.  So, for example, on a 32-bit machine, `(2^31)-1` is the largest value a signed integer, which is stored in 4 bytes, can represent; in J, incrementing this value (adding 1) causes the underlying representation to switch to IEEE double-precision floating point number.
 In other words `1+(2^31)-1` doesn't overflow: it represents `2^31` exactly (using double the memory: 8 bytes). Similar comments apply to the two varieties of character values (ASCII and Unicode), though the implications are more straightforward and less interesting.
 
 Having said that all that, because of the potential performance penalties involved, J does not stretch this abstraction too far. For example, numbers will never be automatically promoted to the (available, but expensive) arbitrary precision format, nor will values be automatically "demoted" (automatic demotion, paired with automatic promotion, has the potential to cause cycles of expansion and contraction during calculation of intermediate values; this, combined with J's homogeneous array-oriented nature, which requires an entire array to be promoted/demoted along with any one of its values, means including automatic demotion would probably hurt programs' performance more often than it benefited them.)
@@ -596,7 +596,7 @@ t=. t,'/sparse boolean/sparse literal/sparse integer/sparse floating'
 t=. t,'/sparse complex/sparse boxed/symbol/unicode'
 (n i. 3!:0 y) pick <;._1 t
 )
-   
+
 
    NB. examples of the data types
    [A =: 0 1 ; 0 1 2 ; (!24x) ; 1r2 ; 1.2 ; 1j2 ; (<'boxed') ; (s:'`symbol')  ; 'literal' ; (u: 16b263a)
@@ -605,34 +605,34 @@ t=. t,'/sparse complex/sparse boxed/symbol/unicode'
 │   │     │                        │   │   │   ││boxed││       │       │   │
 │   │     │                        │   │   │   │└─────┘│       │       │   │
 └───┴─────┴────────────────────────┴───┴───┴───┴───────┴───────┴───────┴───┘
-   
+
 
    datatype&.>A
 ┌───────┬───────┬────────┬────────┬────────┬───────┬─────┬──────┬───────┬───────┐
 │boolean│integer│extended│rational│floating│complex│boxed│symbol│literal│unicode│
 └───────┴───────┴────────┴────────┴────────┴───────┴─────┴──────┴───────┴───────┘
-   
+
 
    [I =: =i.4  NB. Boolean matrix
 1 0 0 0
 0 1 0 0
 0 0 1 0
 0 0 0 1
-   
+
    datatype I
 boolean
-   
+
 
    $. I  NB. sparse matrix
 0 0 │ 1
 1 1 │ 1
 2 2 │ 1
 3 3 │ 1
-   
+
 
    datatype $. I
 sparse boolean
-   
+
    (+ $.)I  NB. hook adds data to sparse version of data resulting in sparse
 0 0 │ 2
 1 1 │ 2
@@ -642,13 +642,13 @@ sparse boolean
 ```
 
 
-J has verbs causing explicit conversion.  Some appear in the above examples.  
-J's lexical notation provides for us to directly specify the datatype as demonstrated in the other samples.  The Extended and Rational Arithmetic section of the J dictionary (DOJ) explains the fundamental implicit conversions.  
+J has verbs causing explicit conversion.  Some appear in the above examples.
+J's lexical notation provides for us to directly specify the datatype as demonstrated in the other samples.  The Extended and Rational Arithmetic section of the J dictionary (DOJ) explains the fundamental implicit conversions.
 Before quoting this the section here, please note that arrays have the homogeneous data type of the highest atomic data type as shown in the 0 1 2 integer vector---implicit conversion without using the primitive verbs.
 
-''Various primitive verbs produce (exact) rational results if the argument(s) are rational; non-rational verbs produce (inexact) floating point or complex results when applied to rationals, if the verb only has a limited number of rational arguments that produce rational results. 
-(For example, %:y is rational if the atoms of y are perfect squares; ^0r1 is floating point.) 
-The quotient of two extended integers is an extended integer (if evenly divisible) or rational (if not). Comparisons involving two rationals are exact. 
+''Various primitive verbs produce (exact) rational results if the argument(s) are rational; non-rational verbs produce (inexact) floating point or complex results when applied to rationals, if the verb only has a limited number of rational arguments that produce rational results.
+(For example, %:y is rational if the atoms of y are perfect squares; ^0r1 is floating point.)
+The quotient of two extended integers is an extended integer (if evenly divisible) or rational (if not). Comparisons involving two rationals are exact.
 Dyadic verbs (e.g. + - * % , = <) that require argument type conversions do so according to the following table:''
 
 ```txt
@@ -806,25 +806,25 @@ If follows from this that there are no implicit conversions (even 'widening' con
 ```scala
 // version 1.1.2
 
-open class C(val x: Int) 
+open class C(val x: Int)
 
 class D(x: Int) : C(x)
- 
+
 fun main(args: Array<String>) {
     val c: C = D(42)        // OK because D is a sub-class of C
     println(c.x)
     val b: Byte = 100       // OK because 100 is within the range of the Byte type
     println(b)
     val s: Short = 32000    // OK because 32000 is within the range of the Short Type
-    println(s) 
+    println(s)
     val l: Long = 1_000_000 // OK because any Int literal is within the range of the Long type
-    println(l) 
+    println(l)
     val n : Int? = c.x      // OK because Int is a sub-class of its nullable type Int? (c.x is boxed on heap)
     println(n)
 }
 ```
 
- 
+
 {{out}}
 
 ```txt
@@ -841,12 +841,12 @@ fun main(args: Array<String>) {
 
 ## Lua
 
-For the most part, Lua is strongly typed, but there are a few cases where it will coerce if the result would be of a predictable type. 
+For the most part, Lua is strongly typed, but there are a few cases where it will coerce if the result would be of a predictable type.
 Coercions are never performed during comparisons or while indexing an object.
 
 ```lua
 -- During concatenation, numbers are always converted to strings. arithmetic operations will attempt to coerce strings to numbers, or throw an error if they can't
-type(123 .. "123") --> string 
+type(123 .. "123") --> string
 type(123 + "123") --> number
 type(123 + "foo") --> error thrown
 
@@ -862,7 +862,7 @@ print(not not nil, not not false, not not 1, not not "foo", not not { }) --> fal
 ```
 
 
-The only two explicit conversion functions offered by Lua are <code>tonumber</code> and <code>tostring</code>. 
+The only two explicit conversion functions offered by Lua are <code>tonumber</code> and <code>tostring</code>.
 Only the latter has a corresponding metamethod, so the former is usually only ever useful for converting strings, although in LuaJIT <code>tonumber</code> is used for converting numerical cdata into Lua numbers.
 
 ## M2000 Interpreter
@@ -896,7 +896,7 @@ Module Checkit {
             z=100
       }
       Print Error$  ' Missing Object
-      
+
       Function AnyType$(x) {
             =type$(x)
       }
@@ -937,8 +937,8 @@ Checkit
 
 Oforth allows implicit conversions only on : ==, <=, +, -, * /, rem, pow
 
-Classes have a priority. Most classes have 0 as priority. 
-Into basic classes : 
+Classes have a priority. Most classes have 0 as priority.
+Into basic classes :
    Integer priority is 2
    Float   priority is 40
    String  priority is 1024
@@ -948,23 +948,23 @@ A new class is created with 0 priority unless explicitly provided.
 
 When, for instance, + is called, it checks priorities and convert the object with the smaller priority.
 
-Conversion uses a convertor : a method with name "asClass" where Class is the name of the object wwith the higher priority. 
+Conversion uses a convertor : a method with name "asClass" where Class is the name of the object wwith the higher priority.
 Conversion is not the right word here, as all theses objects are immutables : new objects are created.
 
 For instance, adding an Integer and a Float will convert the integer into a float using asFloat method.
 
-Let's create a Complex class with 80 as priority (please note asComplex methods that will be used for conversions) : 
+Let's create a Complex class with 80 as priority (please note asComplex methods that will be used for conversions) :
 
 
 ```Oforth
 100 Number Class newPriority: Complex(re, im)
- 
+
 Complex method: re  @re ;
 Complex method: im  @im ;
- 
+
 Complex method: initialize  := im := re ;
 Complex method: <<   '(' <<c @re << ',' <<c @im << ')' <<c ;
- 
+
 Integer method: asComplex  Complex new(self, 0) ;
 Float   method: asComplex  Complex new(self, 0) ;
 
@@ -975,10 +975,10 @@ Complex method: norm   @re sq @im sq + sqrt ;
 Complex method: conj   Complex new(@re, @im neg) ;
 Complex method: +(c)   Complex new(c re @re +, c im @im +) ;
 Complex method: -(c)   Complex new(c re @re -, c im @im -) ;
- 
+
 Complex method: *(c)  Complex new(c re @re * c im @im * -, c re @im * @re c im * + ) ;
 
-Complex method: inv  
+Complex method: inv
 | n |
    @re sq @im sq + asFloat ->n
    Complex new(@re n /, @im neg n / ) ;
@@ -987,7 +987,7 @@ Complex method: /(c)   c self inv * ;
 ```
 
 
-Usage : 
+Usage :
 
 
 ```Oforth
@@ -1014,8 +1014,8 @@ Complex new(2, 3) 1.2 * println
 ## PARI/GP
 
 
-PARI has access to all the implicit type conversions of [[#C|C]]. 
-In addition, certain objects are automatically simplified when stored in history objects (in addition to explicit conversions of various types). 
+PARI has access to all the implicit type conversions of [[#C|C]].
+In addition, certain objects are automatically simplified when stored in history objects (in addition to explicit conversions of various types).
 So a complex number with imaginary part an exact 0 is simplified to a t_REAL, t_INT, etc.
 
 There are no user-defined types and hence no implicit conversion on them.
@@ -1039,7 +1039,7 @@ say hex int( (2 . 0 x '2') ** substr 98.5, '2', '2' ) . 'beef'; # 1359599
 ```
 
 
-On the other hand, since Perl gives you a lot of rope, you have to be careful what you do with it.  The expression 
+On the other hand, since Perl gives you a lot of rope, you have to be careful what you do with it.  The expression
 <code>'x' +  1</code> will return the answer '1', silently glossing over the meaningless use of an alphabetic character in addition.
 This is the reason that <code>use warnings</code> should be present in most all your Perl code.  Enabling warnings will alert you that <tt>Argument "x" isn't numeric in addition</tt>.
 
@@ -1048,12 +1048,12 @@ This is the reason that <code>use warnings</code> should be present in most all 
 
 Perl 6 was designed with a specific goal of maximizing the principle of DWIM (Do What I Mean) while simultaneously minimizing the principle of DDWIDM (Don't Do What I Don't Mean). Implicit type conversion is a natural and basic feature.
 
-Variable names in Perl 6 are prepended with a sigil. 
-The most basic variable container type is a scalar, with the sigil dollar sign: $x. 
-A single scalar variable in list context will be converted to a list of one element regardless of the variables structure. 
-(A scalar variable may be bound to any object, including a collective object. 
-A scalar variable is always treated as a singular item, regardless of whether the object is essentially composite or unitary.  
-There is no implicit conversion from singular to plural; a plural object within a singular container must be explicitly decontainerized somehow. 
+Variable names in Perl 6 are prepended with a sigil.
+The most basic variable container type is a scalar, with the sigil dollar sign: $x.
+A single scalar variable in list context will be converted to a list of one element regardless of the variables structure.
+(A scalar variable may be bound to any object, including a collective object.
+A scalar variable is always treated as a singular item, regardless of whether the object is essentially composite or unitary.
+There is no implicit conversion from singular to plural; a plural object within a singular container must be explicitly decontainerized somehow.
 Use of a subscript is considered sufficiently explicit though.)
 
 The type of object contained in a scalar depends on how you assign it and how you use it.
@@ -1104,8 +1104,8 @@ $x = :16(([+] 1234.ords).sqrt.floor ~ "beef"); say $x, ' ', $x.WHAT; # 1359599 (
 
 
 
-Some types are not implicitly converted. 
-For instance, you must explicitly request and cast to Complex numbers and FatRat numbers.  
+Some types are not implicitly converted.
+For instance, you must explicitly request and cast to Complex numbers and FatRat numbers.
 (A normal Rat number has a denominator that is limited to 64 bits, with underflow to floating point to prevent performance degradation; a FatRat, in contrast, has an unlimited denominator size, and can chew up all your memory if you're not careful.)
 
 
@@ -1125,8 +1125,8 @@ $x /= 10**10;             say $x, ' ', $x.WHAT; # 0.0000000000000000000629 (FatR
 ```
 
 
-User defined types will support implicit casting if the object has Bridge method that tells it how to do so, or if the operators in question supply multiple dispatch variants that allow for coercions.  
-Note that Perl 6 does not support implicit assignment coercion to typed variables.  
+User defined types will support implicit casting if the object has Bridge method that tells it how to do so, or if the operators in question supply multiple dispatch variants that allow for coercions.
+Note that Perl 6 does not support implicit assignment coercion to typed variables.
 However, different-sized storage types (int16, int32, int64, for example) are not considered different types, and such assignment merely enforces a constraint that will throw an exception if the size is exceeded.  (The calculations on the right side of the assignment are done in an arbitrarily large type such as Int.)
 
 Types may be explicitly cast by using a bridge method (.Int, .Rat, .Str, whatever) or by using a coercion operator:
@@ -1151,7 +1151,7 @@ If a numerical operation on floating points results in an exact integer, that is
 
 Likewise a numerical operation on integers can need to be stored in a float, eg 1/3 or #123456*#123456.
 
-If a string character (or slice) is replaced with any value that will not fit in a byte, it is automatically 
+If a string character (or slice) is replaced with any value that will not fit in a byte, it is automatically
 converted to a dword_sequence, eg
 
 ```Phix
@@ -1185,15 +1185,15 @@ casting_functions = [int, float, complex,   # Numbers
                      dict,                  # hash mapping dictionary
                     ]
 
-examples_of_types = [0, 42, 
-                     0.0 -0.0, 12.34, 56.0, 
+examples_of_types = [0, 42,
+                     0.0 -0.0, 12.34, 56.0,
                      (0+0j), (1+2j), (1+0j), (78.9+0j), (0+1.2j),
-                     Fraction(0, 1), Fraction(22, 7), Fraction(4, 2), 
+                     Fraction(0, 1), Fraction(22, 7), Fraction(4, 2),
                      Decimal('0'),
                      Decimal('3.14159265358979323846264338327950288419716939937510'),
                      Decimal('1'), Decimal('1.5'),
                      True, False,
-                     iter(()), iter([1, 2, 3]), iter({'A', 'B', 'C'}), 
+                     iter(()), iter([1, 2, 3]), iter({'A', 'B', 'C'}),
                      iter([[1, 2], [3, 4]]), iter((('a', 1), (2, 'b'))),
                      [], [1, 2], [[1, 2], [3, 4]],
                      (), (1, 'two', (3+0j)), (('a', 1), (2, 'b')),
@@ -1203,7 +1203,7 @@ examples_of_types = [0, 42,
                      bytearray(b""), bytearray(b"A"), bytearray(b"ABBA"),
                      set(), {1, 'two', (3+0j), (4, 5, 6)},
                      frozenset(), frozenset({1, 'two', (3+0j), (4, 5, 6)}),
-                     {}, {1: 'one', 'two': (2+3j), ('RC', 3): None} 
+                     {}, {1: 'one', 'two': (2+3j), ('RC', 3): None}
                     ]
 if __name__ == '__main__':
     print('Common Python types/type casting functions:')
@@ -1354,8 +1354,8 @@ The only automatic conversions are in the numeric tower. The common case is in s
 ```Racket
 #lang racket
 
-(+ 1 .1) ; ==> 1.1 
-(+ 1 0+1i) ; ==> 1+1i 
+(+ 1 .1) ; ==> 1.1
+(+ 1 0+1i) ; ==> 1+1i
 (+ 1 1/2) ; ==> 3/2
 (+ 1 (expt 10 30)) ; ==> 1000000000000000000000000000001
 
@@ -1460,8 +1460,8 @@ Since version 3.00, all the number types (int, rat, float and complex) are unifi
 
 ## Tcl
 
-Virtually all type conversions in Tcl are implicit. 
-A value is an integer (or a string, or a list, or …) because that is how you are using it. 
+Virtually all type conversions in Tcl are implicit.
+A value is an integer (or a string, or a list, or …) because that is how you are using it.
 The only true explicit type conversion operations are some of the functions in the expression sub-language (<code>int()</code>, <code>double()</code>, etc.).
 
 ;Integer conversion:

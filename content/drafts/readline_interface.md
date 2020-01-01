@@ -14,7 +14,7 @@ tags = []
 
 A readline interface is a line editing facility that provides auto completion facilities and the ability to recall previously typed lines. Build a simple application that accepts at least two commands and uses a readline style interface.
 
-The interface should provide 
+The interface should provide
 
 * the ability to recall previously typed commands
 * commandline editing
@@ -33,8 +33,8 @@ __TOC__
 
 A program that does absolutely nothing. Type 'help' for help.
 
-```c>#include <readline/readline.h
-
+```c
+#include <readline/readline.h>
 #include <readline/history.h>
 #include <string.h>
 
@@ -67,8 +67,8 @@ int main()
 
 {{trans|D}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -361,7 +361,7 @@ Sample session:
 ```txt
 
 Enter a command, type help for a listing.
->hit 
+>hit
 Unknown command, try again
 >hist
 No history
@@ -492,14 +492,14 @@ fun greeting() {
     ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor()  // clears console in windows 10
     println("**     Welcome to the Ranger readline interface     **")
     println("** which performs operations on a range of integers **\n")
-    println("Commands available:") 
+    println("Commands available:")
     println(" range [i] [j], help, show, square, cube, add [n], sub [n]")
     println(" mul [n], prev, hist, quit")
     println()
 }
 
 fun setRange(start: Int, end: Int) {
-    range = IntArray(end - start + 1) { it + start } 
+    range = IntArray(end - start + 1) { it + start }
     show()
 }
 
@@ -513,7 +513,7 @@ fun help() {
     println(" add [i]       - adds [i] to the current range and shows them")
     println(" sub [i]       - subtracts [i] from the current range and shows them")
     println(" mul [i]       - multiplies the current range by [i] and shows them")
-    println(" prev          - displays previous command entered") 
+    println(" prev          - displays previous command entered")
     println(" hist          - displays a maximum of last 10 commands entered, newest first")
     println(" quit          - quits Ranger")
     println()
@@ -538,7 +538,7 @@ fun cube() {
     show()
 }
 
-fun add(n: Int) { 
+fun add(n: Int) {
     for (i in 0 until range.size) range[i] += n
     show()
 }
@@ -563,7 +563,7 @@ fun showHistory() {
     val max = if (size > 10) 10 else size
     val more = size - max
     for (i in size - 1 downTo size - max) println("- ${history[i]}")
-    if (more > 0) println("- plus $more more") 
+    if (more > 0) println("- plus $more more")
 }
 
 fun main(args: Array<String>) {
@@ -579,7 +579,7 @@ fun main(args: Array<String>) {
 
         if (command.startsWith("range")) {
             if (command == "range") { println("- Parameters required, try again\n"); continue}
-            val splits = command.split(r)     
+            val splits = command.split(r)
             if (splits.size == 3) {
                try {
                    i = splits[1].toInt()
@@ -601,7 +601,7 @@ fun main(args: Array<String>) {
                    i = splits2[1].toInt()
                    command = command.take(3)
                    history.add("$command $i")
-                   addToHistory = false                
+                   addToHistory = false
                }
                catch(ex: NumberFormatException) {
                }
@@ -613,7 +613,7 @@ fun main(args: Array<String>) {
             if (addToHistory) history.add(command)
             continue
         }
-       
+
         when (command) {
             "range"  -> setRange(i, j)
             "help"   -> help()
@@ -723,8 +723,8 @@ quit
 gp uses readline, but it can also be used directly in PARI:
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <pari/pari.h>
 #include <readline/readline.h>
 #include <setjmp.h>
@@ -735,7 +735,7 @@ void gp_err_recover(long numerr) { longjmp(env, numerr); }
 /* History handling (%1, %2, etc.)*/
 pari_stack s_history;
 GEN *history;
-GEN parihist(long p) 
+GEN parihist(long p)
 {
   if (p > 0 && p<=s_history.n)
     return history[p-1];
@@ -855,13 +855,13 @@ If you are not inclined to install Readline ''or'' Linenoise, the REPL also work
 ## Phix
 
 The phix interpreter has a readline interface, however the code involved is far too much to replicate here
-(see p.exw, processCommandLine() which opens p.ini and populates default_commandlines, then invokes gets0() 
+(see p.exw, processCommandLine() which opens p.ini and populates default_commandlines, then invokes gets0()
 from pgets0.ew with keyHandler() as a callback. Currently only tested/working on Windows, not linux.)
 There are no "application specific commands", however you could init default_commandlines with some.
 
 While the lack of code may disappoint, I think this is a closer match to the task intention than most.
 
-A snapshot of running the interpreter: first I pressed ?, then F7, then "ed": keying "e" did little, 
+A snapshot of running the interpreter: first I pressed ?, then F7, then "ed": keying "e" did little,
 but "ed" auto-completed the "ix" part as that was then the only match.
 
 ```txt
@@ -997,7 +997,7 @@ Sample session:
    Rosetta Code                            2 Simple Database                (27.10.2011.)
  > hello
  unknown command
- The following commands are available: 
+ The following commands are available:
  add, help, list, load, quit, save
  > save
  > quit
@@ -1014,7 +1014,7 @@ This REXX programs supports a '''REDO''' (re-do) with very limited editing to ke
 
 It has a history (which can be interrogated) and some of the simple (MS) DOS commands.
 
-The HELP (or '''?'''), REDO, error checking, and abbreviations took up most of the program. 
+The HELP (or '''?'''), REDO, error checking, and abbreviations took up most of the program.
 
 "User" commands (subroutines) are identified with a leading period ('''.''') to make it easier to understand what's what.
 
@@ -1150,7 +1150,7 @@ unabbrev: procedure;  arg ccc
 
 ```
 
-This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console). 
+This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console).
 
 The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZE.REX]].
 

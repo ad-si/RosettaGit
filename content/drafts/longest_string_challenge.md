@@ -22,7 +22,7 @@ If there are ties for the longest line, the program writes out all the lines tha
 If there is no input, the program should produce no output.
 
 
-;Task  
+;Task
 Implement a solution to the basic problem that adheres to the spirit of the restrictions (see below).
 
 Describe how you circumvented or got around these 'restrictions' and met the 'spirit' of the challenge. Your supporting description may need to describe any challenges to interpreting the restrictions and how you made this interpretation. You should state any assumptions, warnings, or other relevant points. The central idea here is to make the task a bit more interesting by thinking outside of the box and perhaps by showing off the capabilities of your language in a creative way. Because there is potential for considerable variation between solutions, the description is key to helping others see what you've done.
@@ -91,7 +91,7 @@ At the end of the day for the implementer this should be a bit of fun. As an imp
 
 
 
-    
+
 
 ## Ada
 
@@ -106,7 +106,7 @@ with Ada.Text_IO;
 
 procedure Longest_Strings is
    use Ada.Text_IO;
-   
+
    -- first, in order to strictly use integer, I use integer in
    -- place of an enumeration type: -1 => not-equal
    --                                0 => shorter - ignore, no print current string
@@ -117,7 +117,7 @@ procedure Longest_Strings is
    -- Anything else that is tested or used that is not a string or integer
    -- is not used explicitly by me, but is a standard part of the language
    -- as provided in the standard libraries (like boolean "End_Of_File").
-   
+
    function Measure_And_Print_N (O : String := ""; -- original/old string
                                  N : String := ""  -- next/new string
                                 ) return Integer is
@@ -153,9 +153,9 @@ procedure Longest_Strings is
    begin
          case Test_Length (T1, T2) is
          when 0 =>
-            
+
             -- N < O, so return "shorter"  do not print N
-            
+
             if End_Of_File
             then
                return 0;
@@ -172,10 +172,10 @@ procedure Longest_Strings is
                end case;
             end if;
          when 1 =>
-            
+
             -- O = N, so return "equal"  print N if all subsequent values are
             -- less than or equal to N
-            
+
             if End_Of_File
             then
                Put_Line (N);
@@ -196,11 +196,11 @@ procedure Longest_Strings is
                end case;
             end if;
          when 2 =>
-            
+
             -- N > O, so return "longer" to cancel printing all previous values
             -- and print N if it is also equal to or greater than descendant
             -- values.
-            
+
             if End_Of_File
             then
                Put_Line (N);
@@ -221,9 +221,9 @@ procedure Longest_Strings is
                end case;
             end if;
          when others =>
-            
+
             -- This should never happen - raise exception
-            
+
             raise Numeric_Error;
          end case;
    end;
@@ -268,15 +268,15 @@ Next follows previous attempts:
 
 How to bypass the restrictions:
 
-* All lines of potential output are stored in an (unbounded) string, named Buffer. On special character (Latin_1.Nul) is used to separate between different lines. 
+* All lines of potential output are stored in an (unbounded) string, named Buffer. On special character (Latin_1.Nul) is used to separate between different lines.
 
-* We can't directly compare the lengths of two strings. So instead, we assign the difference of the lengths to a variable of type Natural (*). If the result is outside of Natural, this raises an exception. If there is no exception, we assign the result to a variable of type Positive (*), which raises an exception if the result is outside of Positive. 
+* We can't directly compare the lengths of two strings. So instead, we assign the difference of the lengths to a variable of type Natural (*). If the result is outside of Natural, this raises an exception. If there is no exception, we assign the result to a variable of type Positive (*), which raises an exception if the result is outside of Positive.
 
 --------
-(*) Technically, Natural and Positive are not types but subtypes of Integer: Natural ranges from 0 to Integer'Last, Positive from 1 to Integer'Last. 
+(*) Technically, Natural and Positive are not types but subtypes of Integer: Natural ranges from 0 to Integer'Last, Positive from 1 to Integer'Last.
 
 
-So this is the first solution. 
+So this is the first solution.
 
 
 ```Ada
@@ -290,17 +290,17 @@ procedure Longest_String_Challenge is
    procedure Funny_Stuff(B, L: in out Unbounded_String; N: Unbounded_String) is
       -- B holds a list of all longest strings, separated by Separator
       -- L holds longest string so far
-      -- N is the next string to be considered 
+      -- N is the next string to be considered
       Nat: Natural;
    begin
-      Nat := Length(N) - Length(L); 
-        -- (1) this raises exception if L longer then N 
+      Nat := Length(N) - Length(L);
+        -- (1) this raises exception if L longer then N
       declare
          Pos: Positive;
       begin
          Pos := Nat; -- (2) this raises exception if L at least as long as N
                      -- at this point, we know N is longer then L
-         B   := N; 
+         B   := N;
          L   := N;
       exception
          when Constraint_Error -- come from (2)
@@ -309,7 +309,7 @@ procedure Longest_String_Challenge is
       end;
    exception
       when Constraint_Error => null; -- come from (1)
-        -- at this point, we know L is longer then N 
+        -- at this point, we know L is longer then N
    end Funny_Stuff;
 
    Buffer: Unbounded_String := +"";
@@ -343,18 +343,18 @@ Output, when run with its own source code as the input:
 ```
 
 
-Here is the second solution. It also makes heavy use of exceptions, but it does not require to compute the difference (which is an arithmetic operation, i.e., a bit of a cheat). Instead, the procedure Funny_Stuff carries some auxiliary strings S, T. If they are unequal and neither is empty, it recursively calls itself with the same strings shortened by 1. At some point of time, either S is empty, or T is empty, or both are empty.  
+Here is the second solution. It also makes heavy use of exceptions, but it does not require to compute the difference (which is an arithmetic operation, i.e., a bit of a cheat). Instead, the procedure Funny_Stuff carries some auxiliary strings S, T. If they are unequal and neither is empty, it recursively calls itself with the same strings shortened by 1. At some point of time, either S is empty, or T is empty, or both are empty.
 
 
 ```Ada
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Ada.Text_IO, Ada.Characters.Latin_1;
- 
+
 procedure Longest_String_Challenge is
    function "+"(S: String) return Unbounded_String renames To_Unbounded_String;
    function "-"(U: Unbounded_String) return String renames To_String;
    Separator: constant Character := Ada.Characters.Latin_1.NUL;
- 
+
    procedure Funny_Stuff(B, L: in out Unbounded_String;
                          N: Unbounded_String;
                          S, T: String) is
@@ -364,7 +364,7 @@ procedure Longest_String_Challenge is
       begin
 	 C := S(S'First); -- (2) raises Constraint_Error if S is empty
 	   -- at this point, we know that neither S nor T are empty
-         Funny_Stuff(B,L,N,S(S'First+1 .. S'Last), T(T'First+1..T'Last)); 
+         Funny_Stuff(B,L,N,S(S'First+1 .. S'Last), T(T'First+1..T'Last));
       exception
          when Constraint_Error => -- come from (2), S is empty, T is not empty!
 	    B   := N;
@@ -376,16 +376,16 @@ procedure Longest_String_Challenge is
 	    C := S(S'First); -- (3) raises Constraint_Error if S is empty
 	    -- at this point, we know that T is empty and S isn't
 	    null;
-	exception 
+	exception
 	    when Constraint_Error => -- come from (3); both S and T are empty
 	    B := B & Separator & N;
 	end;
    end Funny_Stuff;
- 
+
    Buffer: Unbounded_String := +"";
    Longest: Unbounded_String := +"";
    Next: Unbounded_String;
- 
+
 begin
    while True loop
       Next := + Ada.Text_IO.Get_Line;
@@ -620,9 +620,9 @@ MsgBox % buffer
 
 
 ```awk
-#!/usr/bin/awk -f 
+#!/usr/bin/awk -f
 BEGIN {
-    maxlen = 0; 
+    maxlen = 0;
     lenList = 0;
 }
 
@@ -631,9 +631,9 @@ BEGIN {
 	lenList = 1;
 	List[lenList] = $0;
 	maxlen = length($0);
-   } else if (length($0)==maxlen) 
+   } else if (length($0)==maxlen)
 	List[++lenList]=$0;
-}	
+}
 
 END {
    for (k=1; k <= lenList; k++) print List[k];
@@ -641,7 +641,7 @@ END {
 ```
 
 
-Output: 
+Output:
 
 
 ```txt
@@ -660,9 +660,9 @@ Key to this solution are the functions '''FNcmp''', which compares the lengths o
       DIM buffer% 65535
       bufptr% = buffer%
       longest$ = " "
-      
+
       ON ERROR PRINT $$buffer%; : END
-      
+
       REPEAT
         READ A$
         IF FNcmp(A$, longest$) THEN
@@ -677,13 +677,13 @@ Key to this solution are the functions '''FNcmp''', which compares the lengths o
         ENDIF
       UNTIL FALSE : REM Loops until 'Out of data' error
       END
-      
+
       DATA a, bb, ccc, ddd, ee, f, ggg
-      
+
       DEF FNcmp(a$, b$) : REM Returns LEN(a$)>=LEN(b$) [if b$<>""]
       LEFT$(a$, 65535) = b$
       = INSTR(a$, b$)
-      
+
       DEF FNinc(i%) : REM Returns i%+1
       FOR i% = i% TO i% : NEXT
       = i%
@@ -704,23 +704,23 @@ ggg
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
- 
+
 int cmp(const char *p, const char *q)
 {
 	while (*p && *q) p = &p[1], q = &q[1];
 	return *p;
 }
- 
+
 int main()
 {
 	char line[65536];
 	char buf[1000000] = {0};
 	char *last = buf;
 	char *next = buf;
- 
+
 	while (gets(line)) {
 		strcat(line, "\n");
 		if (cmp(last, line)) continue;
@@ -729,7 +729,7 @@ int main()
 		strcpy(next, line);
 		while (*next) next = &next[1];
 	}
- 
+
 	printf("%s", buf);
 	return 0;
 }
@@ -741,12 +741,12 @@ ggg
 ```
 
 Note that the above code never checked for memory bounds and long input can overrun the buffers.  It's intentionally made this way to keep it simple, please don't complicate it by adding safety features: if you are really concerned with that, below is a second method that can handle arbitrary length input.
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
- 
+
 int inc(int x) { return (int)&((char *)x)[1]; }
 int dec(int x) { return (int)&((char *)x)[-1]; }
 int gt(int x, int y)
@@ -831,8 +831,8 @@ int main()
 Here is a more concise variation which exits (with a non-zero return code) if it encounters a buffer overflow:
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -1075,7 +1075,7 @@ def longer = { a, b ->
     aa ? a : b
 }
 
-def longestStrings 
+def longestStrings
 longestStrings = { BufferedReader source, String longest = '' ->
     String current = source.readLine()
     def finalLongest = current == null \
@@ -1157,22 +1157,22 @@ main = do
 
 =={{header|Icon}} and {{header|Unicon}}==
 
-###  String Scanning / Pattern Matching Solution 
+###  String Scanning / Pattern Matching Solution
 
 
 ```Icon
 procedure main(arglist)
     local b  # the current buffer (string)
-    local l  # the last string 
+    local l  # the last string
     local L  # a \n delimited accumulation of all the longest strings
-    
+
     while b := read() do {
         /l := b      # primes l on first pass
-        b ? ( move(*l), if move(1) then L := (l := b) || "\n" else if move(0) then L := (\L|"") || b || "\n") 
+        b ? ( move(*l), if move(1) then L := (l := b) || "\n" else if move(0) then L := (\L|"") || b || "\n")
             #       move(*l) - fails if b is not l characters long
             #       move(1)  - succeeds/fails if the string is longer and triggers a reset of L
         }
-    
+
     write(\L)
 end
 ```
@@ -1187,7 +1187,7 @@ ggg
 ```
 
 
-###  Recursive Solution 
+###  Recursive Solution
 
 Here is a recursive solution using only single character substring-ing (no string scanning/pattern matching).
 
@@ -1200,7 +1200,7 @@ procedure longest(Longest)
     Line := read() | return Longest        # read until we can return the longest strings
     if Line[*Longest] then Longest := Line # prime/reset Longest
     Longest := longest(Longest)            # use stack to hold multiples
-    if Line[*Longest] then write(Line)     # write only longest strings, 
+    if Line[*Longest] then write(Line)     # write only longest strings,
                                            # Line must be at least as long as Longest
     return Longest                         # feed back longest for length
 end
@@ -1340,11 +1340,11 @@ ggg
 import java.io.File
 import java.util.*
 
-fun longer(a: String, b: String): Boolean = 
+fun longer(a: String, b: String): Boolean =
     try {
         a.substring(b.length)
         false
-    } 
+    }
     catch (e: StringIndexOutOfBoundsException) {
         true
     }
@@ -1352,7 +1352,7 @@ fun longer(a: String, b: String): Boolean =
 fun main(args: Array<String>) {
     var lines = ""
     var longest = ""
-    val sc = Scanner(File("lines.txt"))    
+    val sc = Scanner(File("lines.txt"))
     while(sc.hasNext()) {
         val line = sc.nextLine()
         if (longer(longest, line)) {
@@ -1447,11 +1447,11 @@ end
 
 ```mathematica
 FixedPoint[
- StringReplace[#, 
-   x : "\n" | StartOfString ~~ a : Except["\n"] ... ~~ "\n" ~~ 
-     b : Except["\n"] ... ~~ y : "\n" | EndOfString :> 
-    x <> Switch[((#1 + #2) + Abs[#1 - #2])/2 &[StringLength@a, 
-       StringLength@b], Except[StringLength@a], b, 
+ StringReplace[#,
+   x : "\n" | StartOfString ~~ a : Except["\n"] ... ~~ "\n" ~~
+     b : Except["\n"] ... ~~ y : "\n" | EndOfString :>
+    x <> Switch[((#1 + #2) + Abs[#1 - #2])/2 &[StringLength@a,
+       StringLength@b], Except[StringLength@a], b,
       Except[StringLength@b], a, _, a <> "\n" <> b] <> y] &, "a
  bb
  ccc
@@ -1478,29 +1478,29 @@ function longestString(file);
   fid = fopen(file);
   maxlen = 0; L = {};
   while ~feof(fid)
-    line = fgetl(fid); 
-    if (length(line)>maxlen) 
-      maxlen = length(line); 
+    line = fgetl(fid);
+    if (length(line)>maxlen)
+      maxlen = length(line);
       L = {line};
-    elseif (length(line)==maxlen) 
-      L{end+1} = line; 
-    end; 
-  end; 
+    elseif (length(line)==maxlen)
+      L{end+1} = line;
+    end;
+  end;
   fclose(fid);
   disp(L);
-end; 
+end;
 
 ```
 
 
-Output: 
+Output:
 
 ```txt
  L = {
   [1,1] = ccc
   [1,2] = ddd
   [1,3] = ggg
-} 
+}
 ```
 
 
@@ -1615,13 +1615,13 @@ program LongestStringChallenge_2(input, output);
 
 uses
   SysUtils;
- 
+
 var
   Line: ANSIstring;
   Lines: array of ANSIstring;
   position: integer;
   tester: char;
- 
+
 begin
   if not eoln(input) then
   begin
@@ -1644,7 +1644,7 @@ begin
       except
         position := 0;
         setlength(lines, 1);
-        lines[0] := line;      
+        lines[0] := line;
       end;
     end;
     for position := low(lines) to high(lines) do
@@ -1809,25 +1809,25 @@ before we add the new call to write, we remove all older calls to write since we
 <code>return -1;</code> starts the backend, which allows pike to execute the remaining call_outs and exit.
 
 ```Pike
-int main(int argc, array argv) 
-{ 
-    string longest = ""; 
-    foreach(Stdio.stdin.line_iterator();; string line) 
-    { 
-        if( sizeof(indices(line) - indices(longest))) 
-        { 
-            while(!zero_type(remove_call_out(write))); 
+int main(int argc, array argv)
+{
+    string longest = "";
+    foreach(Stdio.stdin.line_iterator();; string line)
+    {
+        if( sizeof(indices(line) - indices(longest)))
+        {
+            while(!zero_type(remove_call_out(write)));
 
-            longest = line; 
-            call_out(write, 0, line+"\n"); 
-        } 
-        else if( !sizeof(indices(longest) - indices(line))) 
-        { 
-            call_out(write, 0, line+"\n"); 
-        } 
-    } 
-    call_out(exit, 0.01, 0); 
-    return -1; 
+            longest = line;
+            call_out(write, 0, line+"\n");
+        }
+        else if( !sizeof(indices(longest) - indices(line)))
+        {
+            call_out(write, 0, line+"\n");
+        }
+    }
+    call_out(exit, 0.01, 0);
+    return -1;
 }
 ```
 
@@ -1884,9 +1884,9 @@ output (the above file plus the following 3 lines):
 
 ```txt
 
-       74 is the length of the longest line(s) 
-   put skip list (max_length || ' is the length of the longest line(s)' ); 
-/* Read lines of a file, and print the longest. (If there is more than  */ 
+       74 is the length of the longest line(s)
+   put skip list (max_length || ' is the length of the longest line(s)' );
+/* Read lines of a file, and print the longest. (If there is more than  */
 
 ```
 
@@ -1901,15 +1901,15 @@ output (the above file plus the following 3 lines):
 #  Get-Content strips out any type of line break and creates an array of strings
 #  We'll join them back together and put a specific type of line break back in
 $File = ( Get-Content C:\Test\File.txt ) -join "`n"
- 
+
 $LongestString = $LongestStrings = ''
- 
+
 #  While the file string still still exists
 While ( $File )
     {
     #  Set the String to the first string and File to any remaining strings
     $String, $File = $File.Split( "`n", 2 )
- 
+
     #  Strip off characters until one or both strings are zero length
     $A = $LongestString
     $B = $String
@@ -1918,7 +1918,7 @@ While ( $File )
         $A = $A.Substring( 1 )
         $B = $B.Substring( 1 )
         }
- 
+
     #  If A is zero length...
     If ( -not $A )
         {
@@ -1935,7 +1935,7 @@ While ( $File )
             }
         }
     }
- 
+
 #  Output longest strings
 $LongestStrings.Split( "`n" )
 
@@ -1945,7 +1945,7 @@ $LongestStrings.Split( "`n" )
 
 ### PowerShell Alternate Version
 
-The list restrictions should not apply here because this is essentially one line of code using only the input and no variables. 
+The list restrictions should not apply here because this is essentially one line of code using only the input and no variables.
 
 ```PowerShell
 
@@ -1968,8 +1968,8 @@ ggg
 
 ```txt
 
-Count Length Group          
------ ------ -----          
+Count Length Group
+----- ------ -----
     3      3 {ccc, ddd, ggg}
 
 ```
@@ -2060,10 +2060,10 @@ StdOut(a$)
 ```python
 import fileinput
 
-# This returns True if the second string has a value on the 
+# This returns True if the second string has a value on the
 # same index as the last index of the first string. It runs
 # faster than trimming the strings because it runs len once
-# and is a single index lookup versus slicing both strings 
+# and is a single index lookup versus slicing both strings
 # one character at a time.
 def longer(a, b):
     try:
@@ -2088,7 +2088,7 @@ print(lines, end='')
 ```txt
 
 
-paddy@paddy-VirtualBox:~$ cat <<! | python3.2 longlines.py 
+paddy@paddy-VirtualBox:~$ cat <<! | python3.2 longlines.py
 a
 bb
 ccc
@@ -2101,8 +2101,8 @@ ccc
 ddd
 ggg
 paddy@paddy-VirtualBox:~$ touch nothing.txt
-paddy@paddy-VirtualBox:~$ cat nothing.txt  | python3.2 longlines.py 
-paddy@paddy-VirtualBox:~$ 
+paddy@paddy-VirtualBox:~$ cat nothing.txt  | python3.2 longlines.py
+paddy@paddy-VirtualBox:~$
 
 
 ```
@@ -2144,10 +2144,10 @@ This REXX version adheres to spirit (and letter) of all the restrictions for thi
 ::*   no comparators are used,   including those within:
 ::::*       '''if'''            (statements)
 ::::*                 '''when'''                    (statements)
-::::*                 '''until'''              (clauses)      and 
-::::*                 '''while'''              (clauses)  
+::::*                 '''until'''              (clauses)      and
+::::*                 '''while'''              (clauses)
 ::*   no output is produced when the file is empty   (or contains all null strings),
-::*   no arrays or lists are used, 
+::*   no arrays or lists are used,
 ::*   no additions or subtractions are used,   and
 ::*   no variables are used to hold the length of (any) record.
 
@@ -2244,7 +2244,7 @@ If mem.0>0 Then Do
     End
   End
 Else
-  Say 'No lines in input file or file does not exist' 
+  Say 'No lines in input file or file does not exist'
 ```
 
 
@@ -2253,7 +2253,7 @@ Else
 Maximum line length=5
  Line Contents
     1 99999
-    3 +++++        
+    3 +++++
 
 ```
 
@@ -2269,7 +2269,7 @@ Maximum line length=5
 load "stdlib.ring"
 
 test = ["a", "bb", "ccc", "ddd", "ee", "f", "ggg"]
-test1 = [] 
+test1 = []
 test2 = []
 
 for n = 1 to len(test)
@@ -2388,7 +2388,7 @@ h$ = ""
   next i
 wend
 
-for i = 1 to numWords                               
+for i = 1 to numWords
 print len(string$(i));" ";string$(i)                 ' print out the words in length descending sequence
 next i
 ```
@@ -2457,7 +2457,7 @@ fn longest<I: IntoIterator<Item = String>>(input: I) -> String {
 fn main() {
     let stdin = std::io::stdin();
     let lines = stdin.lock().lines().map(|l| l.expect("Failed to read."));
-    
+
     println!("{}", longest(lines))
 }
 ```
@@ -2533,7 +2533,7 @@ ccc
 ddd
 ggg
 $ ./longest.tcl </dev/null
-$ 
+$
 ```
 
 
@@ -2599,7 +2599,7 @@ Port of XSLT solution, this time using a string sequence.
 ```xquery
 
 let $seq as xs:string+ := ("a","bb","ccc","ddd","ee","f","ggg")
-for $l in max( 
+for $l in max(
                for $s in $seq
                return string-length($s)
              )
@@ -2622,7 +2622,7 @@ Result:
 
 This XSLT 2.0 style-sheet...
 <lang><xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output indent="yes" encoding="UTF-8" omit-xml-declaration="yes" />     
+<xsl:output indent="yes" encoding="UTF-8" omit-xml-declaration="yes" />
 <xsl:template match="/*">
   <t><xsl:copy-of select="for $l in max( for $s in s return string-length($s))
 	  return s[string-length(.) eq $l]" /></t>
@@ -2668,7 +2668,7 @@ fcn longer(a,b){ //-->0,1,2 (same, a longer, b longer)
    2			// b is longer
 }
 
-text:=a:=ask("text: ").strip(); 
+text:=a:=ask("text: ").strip();
 while(b:=ask("text: ").strip()){
    switch(longer(a,b)){
       case(0){ text=String(text,"\n",b) }  // a.len()==b.len()
@@ -2690,7 +2690,7 @@ text: ddd
 text: ee
 text: f
 text: ggg
-text: 
+text:
 The longest line(s) are:
 ccc
 ddd
@@ -2702,8 +2702,8 @@ ggg
 
 ```txt
 
-text: 
-text: 
+text:
+text:
 The longest line(s) are:
 
 ```

@@ -14,7 +14,7 @@ tags = []
 
 ;Task:
 Take the string     '''alphaBETA'''     and demonstrate how to convert it to:
-:::*   upper-case     and 
+:::*   upper-case     and
 :::*   lower-case
 
 
@@ -32,7 +32,7 @@ Show any additional case conversion functions   (e.g. swapping case, capitalizin
 
 ## 360 Assembly
 
-The first version uses a nice thing of EBCDIC coding, 
+The first version uses a nice thing of EBCDIC coding,
 uppercase can be performed with a simple 'OR' with blank character (X'40'), in the same way
 lowercase can be performed with a 'AND' with character 191 (X'BF').
 
@@ -41,7 +41,7 @@ UCASE    CSECT
          USING  UCASE,R15
          MVC    UC,PG
          MVC    LC,PG
-         OC     UC,=16C' '         or  X'40' uppercase 
+         OC     UC,=16C' '         or  X'40' uppercase
          NC     LC,=16X'BF'        and X'BF' lowercase
          XPRNT  PG,L'PG            print original
          XPRNT  UC,L'UC            print uc
@@ -50,7 +50,7 @@ UCASE    CSECT
 PG       DC     CL9'alphaBETA'
 UC       DS     CL(L'PG)
 LC       DS     CL(L'PG)
-         YREGS 
+         YREGS
          END    UCASE
 ```
 
@@ -64,16 +64,16 @@ alphabeta
 
 ```
 
-The second version uses the translate operation (TR opcode), 
-but now EBCDIC coding with alphabetic in 3 sequences, makes things a bit longer to create 
-translation tables.  
+The second version uses the translate operation (TR opcode),
+but now EBCDIC coding with alphabetic in 3 sequences, makes things a bit longer to create
+translation tables.
 
 ```360asm
 UCASE    CSECT
          USING  UCASE,R15
          MVC    UC,PG
          MVC    LC,PG
-         TR     UC,TABLEU          TR uppercase 
+         TR     UC,TABLEU          TR uppercase
          TR     LC,TABLEL          TR lowercase
          XPRNT  PG,L'PG            print original
          XPRNT  UC,L'UC            print uc
@@ -98,7 +98,7 @@ TABLEL   DC     256AL1(*-TABLEL)
          ORG    TABLEL+C'S'
          DC     C'stuvwxyz'
          ORG
-         YREGS 
+         YREGS
          END    UCASE
 ```
 
@@ -128,8 +128,8 @@ $lowercase:=Lowercase($string)
 ## 6502 Assembly
 
 
-<lang>	.lf  case6502.lst	
-	.cr  6502	
+<lang>	.lf  case6502.lst
+	.cr  6502
 	.tf  case6502.obj,ap1
 ;------------------------------------------------------
 ; String Case for the 6502 by barrym95838 2013.04.07
@@ -143,8 +143,8 @@ $lowercase:=Lowercase($string)
 ;   properly deal with longer strings.
 ; Tested and verified on AppleWin 1.20.0.0
 ;------------------------------------------------------
-; Constant Section	
-;			
+; Constant Section
+;
 StrPtr	 =   $6		;0-page temp pointer (2 bytes)
 Low	 =   $8		;0-page temp low bound
 High	 =   $9		;0-page temp high bound
@@ -156,12 +156,12 @@ LittleZ	 =   "z"	;'z'  "    "      "
 ;
 ### ================================================
 
-	.or  $0f00	
+	.or  $0f00
 ;------------------------------------------------------
-; The main program	
-;			
-main	ldx  #sTest	;Point to the test string	
-	lda  /sTest	
+; The main program
+;
+main	ldx  #sTest	;Point to the test string
+	lda  /sTest
 	jsr  puts	;print it to stdout
 	jsr  toUpper	;convert to UPPER-case
 	jsr  puts	;print it
@@ -170,35 +170,35 @@ main	ldx  #sTest	;Point to the test string
 ;------------------------------------------------------
 toUpper	ldy  #LittleA
 	sty  Low	;set up the flip range
-	ldy  #LittleZ	
+	ldy  #LittleZ
 	bne  toLow2	;return via toLower's tail
 ;------------------------------------------------------
 toLower	ldy  #BigA
 	sty  Low	;set up the flip range
-	ldy  #BigZ	
-toLow2	sty  High	
+	ldy  #BigZ
+toLow2	sty  High
 	;		;return via fall-thru to flip
 ;------------------------------------------------------
 ; Given a NUL-terminated string at A:X, flip the case
 ;   of any chars in the range [Low..High], inclusive;
-;   only works on the first 256 bytes of a long string 
+;   only works on the first 256 bytes of a long string
 ; Uses:  StrPtr, Low, High
-; Preserves:  A, X	
-; Trashes:  Y		
-;                       
+; Preserves:  A, X
+; Trashes:  Y
+;
 flip	stx  StrPtr	;init string pointer
-	sta  StrPtr+1	
-	ldy  #0		
+	sta  StrPtr+1
+	ldy  #0
 	pha  		;save A
 flip2	lda  (StrPtr),y	;get string char
 	beq  flip5	;done if NUL
-	cmp  Low	
+	cmp  Low
 	bcc  flip4	;if Low <= char <= High
-	cmp  High	
-	beq  flip3	
-	bcs  flip4	
+	cmp  High
+	beq  flip3
+	bcs  flip4
 flip3	eor  #$20	;  then flip the case
-	sta  (StrPtr),y	
+	sta  (StrPtr),y
 flip4	iny  		;point to next char
 	bne  flip2	;loop up to 255 times
 flip5	pla  		;restore A
@@ -207,12 +207,12 @@ flip5	pla  		;restore A
 ; Output NUL-terminated string @ A:X; strings longer
 ;   than 256 bytes are truncated there
 ; Uses:  StrPtr
-; Preserves:  A, X	
-; Trashes:  Y		
-;			
+; Preserves:  A, X
+; Trashes:  Y
+;
 puts	stx  StrPtr	;init string pointer
-	sta  StrPtr+1	
-	ldy  #0		
+	sta  StrPtr+1
+	ldy  #0
 	pha  		;save A
 puts2	lda  (StrPtr),y	;get string char
 	beq  puts3	;done if NUL
@@ -223,11 +223,11 @@ puts3	pla  		;restore A
 	rts  		;return
 ;------------------------------------------------------
 ; Test String (in '+128' ascii, Apple II style)
-;			
+;
 sTest	.as	-"Alpha, BETA, gamma, {[(<123@_>)]}."
-	.az	-#13	
+	.az	-#13
 ;------------------------------------------------------
-	.en  		
+	.en
 ```
 
 Output:
@@ -374,8 +374,8 @@ end.
 
 ```txt
 
-ALPHABETA                               
-alphabeta                               
+ALPHABETA
+alphabeta
 
 ```
 
@@ -386,16 +386,16 @@ alphabeta
 {{works with|APL2}}
        a←'abcdefghijklmnopqrstuvwxyz'
        A←'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-       
+
        X←'alphaBETA'
-       
+
        (a,⎕AV)[(A,⎕AV)⍳'alphaBETA']
  alphabeta
        (A,⎕AV)[(a,⎕AV)⍳'alphaBETA']
  ALPHABETA
 
 {{works with|APL}}
-In the following example, puntuation is not covered. It is substituted by '*'. 
+In the following example, puntuation is not covered. It is substituted by '*'.
 
 ```apl
 
@@ -437,11 +437,11 @@ use framework "Foundation"
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     ap({toLower, toTitle, toUpper}, {"alphaBETA αβγδΕΖΗΘ"})
-    
+
     --> {"alphabeta αβγδεζηθ", "Alphabeta Αβγδεζηθ", "ALPHABETA ΑΒΓΔΕΖΗΘ"}
-    
+
 end run
 
 
@@ -483,7 +483,7 @@ on ap(fs, xs)
     return lst
 end ap
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -589,7 +589,7 @@ Capitalize:
 
 ```awk
 BEGIN {
-  a = "alphaBETA"; 
+  a = "alphaBETA";
   print toupper(substr(a, 1, 1)) tolower(substr(a, 2))
 }
 ```
@@ -627,7 +627,7 @@ LO$ = "" : FOR I = 1 TO LEN(S$) : C = ASC(MID$(S$, I, 1)) : LO$ = LO$ + CHR$(C +
 
 ```bbcbasic
       INSTALL @lib$+"STRINGLIB"
-      
+
       original$ = "alphaBETA"
       PRINT "Original:   " original$
       PRINT "Lower case: " FN_lower(original$)
@@ -684,7 +684,7 @@ lower$ = LCase(s$)  ;lowercase
 
 ```runbasic
 a$ ="alphaBETA"
- 
+
 print a$           '=> alphaBETA
 print upper$(a$)   '=> ALPHABETA
 print lower$(a$)   '=> alphabeta
@@ -786,7 +786,7 @@ blsq ) "alphaBETA"^^zz\/ZZ
 The <tt>tolower</tt> and <tt>toupper</tt> functions are locale-aware.
 
 ```c
-/* Demonstrate toupper and tolower for 
+/* Demonstrate toupper and tolower for
    standard C strings.
    This does not work for multibyte character sets. */
 #include <ctype.h>
@@ -835,16 +835,16 @@ int main(int argc, char *argv[])
 This method does the transform in-place. Alternate methods might return a new copy or use a stream manipulator.
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <string>
 #include <cctype>
 
 /// \brief in-place convert string to upper case
 /// \return ref to transformed string
 void str_toupper(std::string &str) {
-  std::transform(str.begin(), 
-                 str.end(), 
+  std::transform(str.begin(),
+                 str.end(),
                  str.begin(),
                  (int(*)(int)) std::toupper);
 }
@@ -852,8 +852,8 @@ void str_toupper(std::string &str) {
 /// \brief in-place convert string to lower case
 /// \return ref to transformed string
 void str_tolower(std::string &str) {
-  std::transform(str.begin(), 
-                 str.end(), 
+  std::transform(str.begin(),
+                 str.end(),
                  str.begin(),
                  (int(*)(int)) std::tolower);
 }
@@ -863,8 +863,8 @@ void str_tolower(std::string &str) {
 Here is sample usage code:
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 
 using namespace std;
@@ -1059,7 +1059,7 @@ CL-USER> (string-upcase "alphaBETA")
 ```
 
 
-and you can do lower casing by using ''string-downcase'': 
+and you can do lower casing by using ''string-downcase'':
 
 
 ```lisp
@@ -1213,15 +1213,15 @@ ELENA 4.x:
 
 ```elena
 import system'culture;
- 
+
 public program()
 {
     string s1 := "alphaBETA";
- 
+
     // Alternative 1
     console.writeLine(s1.lowerCase());
     console.writeLine(s1.upperCase());
- 
+
     // Alternative 2
     console.writeLine(s1.toLower(currentLocale));
     console.writeLine(s1.toUpper(currentLocale));
@@ -1268,7 +1268,7 @@ String.capitalize("αΒ")
 import String exposing (toLower, toUpper)
 
 s = "alphaBETA"
- 
+
 lower = toLower s
 upper = toUpper s
 ```
@@ -1357,12 +1357,12 @@ printl("alphaBETA".upper())
 
 ```fantom
 
-fansh> a := "alphaBETA"   
+fansh> a := "alphaBETA"
 alphaBETA
 fansh> a.upper // convert whole string to upper case
 ALPHABETA
 fansh> a.lower // convert whole string to lower case
-alphabeta  
+alphabeta
 fansh> a.capitalize  // make sure first letter is capital
 AlphaBETA
 fansh> "BETAalpha".decapitalize  // make sure first letter is not capital
@@ -1404,40 +1404,40 @@ Output:
 
 ```fortran
  program example
-  
+
    implicit none
-   
+
    character(9) :: teststring = "alphaBETA"
-  
+
    call To_upper(teststring)
    write(*,*) teststring
    call To_lower(teststring)
    write(*,*) teststring
-  
+
  contains
- 
+
    subroutine To_upper(str)
      character(*), intent(in out) :: str
      integer :: i
-  
+
      do i = 1, len(str)
        select case(str(i:i))
          case("a":"z")
            str(i:i) = achar(iachar(str(i:i))-32)
        end select
-     end do 
+     end do
    end subroutine To_upper
- 
+
    subroutine To_lower(str)
      character(*), intent(in out) :: str
      integer :: i
-  
+
      do i = 1, len(str)
        select case(str(i:i))
          case("A":"Z")
            str(i:i) = achar(iachar(str(i:i))+32)
        end select
-     end do  
+     end do
    end subroutine To_Lower
 
  end program example
@@ -1448,7 +1448,7 @@ Functions could be used instead, especially with later compilers that enable len
 
 F90 introduced the intrinsic function  i = I'''A'''CHAR(c), which returns the integer value of the position of character c ''in the'' '''ASCII''' character set, even if the processor's default character set is different, such as perhaps '''EBCDIC'''. Function ACHAR is the inverse. If the bit pattern of the character was not being interpreted as in the ASCII set, this will cause odd results, say on a system using EBCDIC or (on an ASCII-using cpu) for a file originating from an EBCDIC-using system. Some systems offer additional options to the file OPEN statement that enable character conversion between ASCII and EBCDIC, and there may also be options concerning big- and little-endian usage. But much will depend on the format of the data in the file. If the data are a mixture of text, integers, floating-point, ''etc.'' all in binary, there will be no hope for such simple translations.
 
-For converting lower-case text to upper, the following will work both on an ASCII system and an EBCDIC system (or any other encodement), once it is compiled for that system: 
+For converting lower-case text to upper, the following will work both on an ASCII system and an EBCDIC system (or any other encodement), once it is compiled for that system:
 ```Fortran
       SUBROUTINE UPCASE(TEXT)
        CHARACTER*(*) TEXT
@@ -1460,7 +1460,7 @@ For converting lower-case text to upper, the following will work both on an ASCI
       END
 ```
 
-The INDEX function of course returning zero if the character is not found. Converting from upper to lower case is the obvious inverse and it might be worthwhile defining a MODULE with suitable named character constants to avoid repetition - one might hope the compiler will share duplicated constants rather than producing a fresh version every time, but it might not too. The repeated text scanning done by the INDEX function for each character of TEXT will of course be a lot slower. A still-more advanced compiler might be able to take advantage of special translation op-codes, on systems that offer them. If storage space is not at a premium a swifter method would be to create something like <code>CHARACTER*1 XLATUC(0:255)</code> with most entries being equal to their index, except for those corresponding to the lower case letters for which the value is the corresponding upper case letter. Then 
+The INDEX function of course returning zero if the character is not found. Converting from upper to lower case is the obvious inverse and it might be worthwhile defining a MODULE with suitable named character constants to avoid repetition - one might hope the compiler will share duplicated constants rather than producing a fresh version every time, but it might not too. The repeated text scanning done by the INDEX function for each character of TEXT will of course be a lot slower. A still-more advanced compiler might be able to take advantage of special translation op-codes, on systems that offer them. If storage space is not at a premium a swifter method would be to create something like <code>CHARACTER*1 XLATUC(0:255)</code> with most entries being equal to their index, except for those corresponding to the lower case letters for which the value is the corresponding upper case letter. Then
 ```Fortran
       DO I = 1,LEN(TEXT)
         TEXT(I:I) = XLATUC(ICHAR(TEXT(I:I)))
@@ -1562,7 +1562,7 @@ end program doit
 ```freebasic
 ' FB 1.05.0 Win64
 
-Dim s As String = "alphaBETA" 
+Dim s As String = "alphaBETA"
 Print UCase(s)
 Print LCase(s)
 Sleep
@@ -1631,7 +1631,7 @@ include "ConsoleWindow"
 dim as Str255 a
 
 a = "alphaBETA"
- 
+
 print a
 print ucase$(a)
 fn lcase(a)
@@ -1670,7 +1670,7 @@ Output:
 
 ```txt
 
-ALPHABETA 
+ALPHABETA
 alphabeta
 
 ```
@@ -1817,7 +1817,7 @@ upper = map toUpper s
 CHARACTER str = "alphaBETA"
 EDIT(Text=str, UpperCase=LEN(str))
 EDIT(Text=str, LowerCase=LEN(str))
-EDIT(Text=str, UpperCase=1) 
+EDIT(Text=str, UpperCase=1)
 ```
 
 
@@ -1836,7 +1836,7 @@ end
 
  str = "alphaBETA"
  print, str
- print, strupcase(str) 
+ print, strupcase(str)
  print, strlowcase(str)
 
 
@@ -2004,9 +2004,9 @@ julia> lowercase("alphaBETA")
 fun main(args: Array<String>) {
     val s = "alphaBETA"
     println(s.toUpperCase())
-    println(s.toLowerCase()) 
+    println(s.toLowerCase())
     println(s.capitalize())
-    println(s.decapitalize())    
+    println(s.decapitalize())
 }
 ```
 
@@ -2397,7 +2397,7 @@ Output:
 ```txt
 
 USER>DO STRCASE^ROSETTA("alphaBETA")
- 
+
 Given: alphaBETA
 Upper: ALPHABETA
 Lower: alphabeta
@@ -2420,7 +2420,7 @@ module StringCase
         def alpha = "alphaBETA";
         WriteLine(alpha.ToUpper());
         WriteLine(alpha.ToLower());
-        
+
         WriteLine(CultureInfo.CurrentCulture.TextInfo.ToTitleCase("exAmpLe sTrinG"));
 
     }
@@ -2561,7 +2561,7 @@ disp(suc);
 
 ## OpenEdge/Progress
 
-<lang Progress (OpenEdge ABL)>caps("alphaBETA") 
+<lang Progress (OpenEdge ABL)>caps("alphaBETA")
 lc("alphaBETA")
 
 ```
@@ -2609,7 +2609,7 @@ FUNCTION uch(ch: CHAR): CHAR;
 		IF ch IN ['a'..'z'] THEN
 			uch := chr(ord(ch) AND $5F);
 	END;
-	
+
 // convert a character to lowercase
 FUNCTION lch(ch: CHAR): CHAR;
 	BEGIN
@@ -2617,7 +2617,7 @@ FUNCTION lch(ch: CHAR): CHAR;
 		IF ch IN ['A'..'Z'] THEN
 			lch := chr(ord(ch) OR $20);
 	END;
-	
+
 // toggle uper/lower case character
 FUNCTION ulch(ch: CHAR): CHAR;
 	BEGIN
@@ -2625,7 +2625,7 @@ FUNCTION ulch(ch: CHAR): CHAR;
 		IF ch IN ['a'..'z'] THEN ulch := uch(ch);
 		IF ch IN ['A'..'Z'] THEN ulch := lch(ch);
 	END;
-	
+
 // convert a string to uppercase
 FUNCTION ucase(str: STRING): STRING;
 	var i: Integer;
@@ -2634,7 +2634,7 @@ FUNCTION ucase(str: STRING): STRING;
 		FOR i := 1 TO Length(str) DO
 			ucase := ucase + uch(str[i]);
 	END;
-	
+
 // convert a string to lowercase
 FUNCTION lcase(str: STRING): STRING;
 	var i: Integer;
@@ -2655,7 +2655,7 @@ FUNCTION ulcase(str: STRING): STRING;
 
 VAR
 	ab : STRING = 'alphaBETA';
-	
+
 BEGIN
 	// demonstration
 	Writeln('Original string : ',ab);
@@ -2736,7 +2736,7 @@ ALPHABETA
 my $string = "alphaBETA";
 print uc($string), "\n"; # => "ALPHABETA"
 print lc($string), "\n"; # => "alphabeta"
-$string =~ tr/[a-z][A-Z]/[A-Z][a-z]/; print "$string\n"; # => ALPHAbeta 
+$string =~ tr/[a-z][A-Z]/[A-Z][a-z]/; print "$string\n"; # => ALPHAbeta
 
 print ucfirst($string), "\n"; # => "AlphaBETA"
 print lcfirst("FOObar"), "\n"; # => "fOObar"
@@ -2853,7 +2853,7 @@ begin
     ivc := INITCAP(vc); -- 'Alphabeta'
     lvc := LOWER(vc);   -- 'alphabeta'
     uvc := UPPER(vc);   -- 'ALPHABETA'
-end; 
+end;
 ```
 
 
@@ -3086,7 +3086,7 @@ z = translate(x, abc, abcU)                      /*translate uppercase──►l
 ```
 
 
-===with PARSE UPPER &amp; PARSE LOWER statements=== 
+===with PARSE UPPER &amp; PARSE LOWER statements===
 The following code will execute correctly in   '''ASCII'''   and   '''EBCDIC.
 
 ```rexx
@@ -3150,7 +3150,7 @@ capitalize: procedure;  parse arg z;   $=' 'z    /*prefix    $    string with a 
             return substr($, 2)                  /*return the capitalized words.        */
 ```
 
-Some older REXXes don't have a   '''changestr'''   BIF, so one is included here   ───►   [[CHANGESTR.REX]]. 
+Some older REXXes don't have a   '''changestr'''   BIF, so one is included here   ───►   [[CHANGESTR.REX]].
 
 
 {{out|output|:}}
@@ -3210,12 +3210,12 @@ abc ='abcdefghijklmnopqrstuvwxyz'
 abcu=translate(abc);              Say 'three ways to lowercase'
 l1=translate(x,abc,abcu);         Say '  l1='l1
 l2=lower(x);                      Say '  l2='l2
-parse lower var x l3;             Say '  l3='l3 
+parse lower var x l3;             Say '  l3='l3
 
 ```
 
 :Note: Parse options upper and lower not available in every Rexx
-:Builtin functions upper and lower not available in every Rexx  
+:Builtin functions upper and lower not available in every Rexx
 :Upper instruction not available in ooRexx
 
 For German input (considering umlaute) these will uppercase them:
@@ -3223,13 +3223,13 @@ For German input (considering umlaute) these will uppercase them:
 ```rexx
 
 uppercase: /*courtesy Gerard Schildberger */
- return translate(changestr("ß",translate(arg(1),'ÄÖÜ',"äöü"),'SS'))  
-    
+ return translate(changestr("ß",translate(arg(1),'ÄÖÜ',"äöü"),'SS'))
+
 uppercase2: Procedure
 Parse Arg a
   a=translate(arg(1),'ÄÖÜ',"äöü")     /* translate lowercase umlaute */
   a=changestr("ß",a,'SS')             /* replace ß with SS           */
-  return translate(a)                 /* translate lowercase letters */  
+  return translate(a)                 /* translate lowercase letters */
 
 ```
 
@@ -3395,7 +3395,7 @@ OutText(", soup: "); OutText(soup); Outimage;
 
 ## Slate
 
- 
+
 ```slate
 'alphaBETA' toLowercase.
 'alphaBETA' toUppercase.
@@ -3431,7 +3431,7 @@ Unicode (notice, that this cannot be done simply with a straight forward "ch := 
 
 
 There are no standard Snobol libraries or case conversion built-ins. But case functions are easy to roll using the character class keywords. Native charset only.
-        
+
 
 ```SNOBOL4
         define('uc(str)') :(uc_end)
@@ -3443,12 +3443,12 @@ lc      lc = replace(str,&ucase,&lcase) :(return)
 lc_end
 
         define('ucfirst(str)ch') :(ucfirst_end)
-ucfirst str len(1) . ch = uc(ch) 
+ucfirst str len(1) . ch = uc(ch)
         ucfirst = str :(return)
 ucfirst_end
 
         define('swapc(str)') :(swapc_end)
-swapc   str = replace(str,&ucase &lcase, &lcase &ucase) 
+swapc   str = replace(str,&ucase &lcase, &lcase &ucase)
         swapc = str :(return)
 swapc_end
 
@@ -3535,7 +3535,7 @@ Output:
 db2 -t
 db2 => values upper('alphaBETA');
 
-1        
+1
 ---------
 ALPHABETA
 
@@ -3543,7 +3543,7 @@ ALPHABETA
 
 db2 => values lower('alphaBETA');
 
-1        
+1
 ---------
 alphabeta
 
@@ -3551,14 +3551,14 @@ alphabeta
 
 db2 => values initcap('alphaBETA');
 
-1        
+1
 ---------
 Alphabeta
 
   1 record(s) selected.
 db2 => select upper('alphaBETA') from sysibm.sysdummy1;
 
-1        
+1
 ---------
 ALPHABETA
 
@@ -3679,11 +3679,11 @@ swapcase_en Père  ;# ==> pèRE
 ## Toka
 
   needs ctype
-  
+
   [ i 1 - ] is i
   [ string.getLength 0 [ dup i + c@ toupper over i + c! ] countedLoop ] is string.toUpper
   [ string.getLength 0 [ dup i + c@ tolower over i + c! ] countedLoop ] is string.toLower
-  
+
   " alphaBETA" string.toUpper type cr
   " alphaBETA" string.toLower type cr
 

@@ -198,7 +198,7 @@ Passed
 
 ## ALGOL 68
 
-{{trans|C}} - note: This specimen retains the original [[Seven-sided dice from five-sided dice#C|C]] coding style. 
+{{trans|C}} - note: This specimen retains the original [[Seven-sided dice from five-sided dice#C|C]] coding style.
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 {{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d]}}
@@ -210,7 +210,7 @@ PROC dice5 = INT:
 
 PROC mulby5 = (INT n)INT:
    ABS (BIN n SHL 2) + n;
- 
+
 PROC dice7 = INT: (
   INT d55 := 0;
   INT m := 1;
@@ -227,7 +227,7 @@ PROC dice7 = INT: (
   OD;
   m
 );
- 
+
 PROC distcheck = (PROC INT dice, INT count, upb)VOID: (
   [upb]INT sum; FOR i TO UPB sum DO sum[i] := 0 OD;
   FOR i TO count DO sum[dice]+:=1 OD;
@@ -305,13 +305,13 @@ Bucket 7 contains 1444 elements.
         ENDIF
       NEXT
       END
-      
+
       DEF FNdice7
       LOCAL x% : x% = FNdice5 + 5*FNdice5
       IF x%>26 THEN = FNdice7 ELSE = (x%+1) MOD 7 + 1
-      
+
       DEF FNdice5 = RND(5)
-      
+
       DEF FNdistcheck(RETURN func%, repet%, delta)
       LOCAL i%, m%, r%, s%, bins%()
       DIM bins%(MAXRND)
@@ -350,7 +350,7 @@ int rand5()
 	while ((r = rand()) >= rand_max);
 	return r / (rand_max / 5) + 1;
 }
- 
+
 int rand5_7()
 {
 	int r;
@@ -381,8 +381,10 @@ flat
 
 This solution tries to minimize calls to the underlying d5 by reusing information from earlier calls.
 
-```cpp>template<typename F
- class fivetoseven
+```cpp
+template<typename F>
+
+class fivetoseven
 {
 public:
   fivetoseven(F f): d5(f), rem(0), max(1) {}
@@ -446,14 +448,14 @@ using System;
 public class SevenSidedDice
 {
     Random random = new Random();
-		
+
         static void Main(string[] args)
 		{
 			SevenSidedDice sevenDice = new SevenSidedDice();
 			Console.WriteLine("Random number from 1 to 7: "+ sevenDice.seven());
             Console.Read();
 		}
-		
+
 		int seven()
 		{
 			int v=21;
@@ -461,7 +463,7 @@ public class SevenSidedDice
 				v=five()+five()*5-6;
 			return 1+v%7;
 		}
-		
+
 		int five()
 		{
         return 1 + random.Next(5);
@@ -669,11 +671,11 @@ println(bins.snapshot())
 ```elixir
 defmodule Dice do
   def dice5, do: :rand.uniform( 5 )
-  
+
   def dice7 do
     dice7_from_dice5
   end
-  
+
   defp dice7_from_dice5 do
     d55 = 5*dice5 + dice5 - 6           # 0..24
     if d55 < 21, do: rem( d55, 7 ) + 1,
@@ -839,7 +841,7 @@ require random.fs
 
 ```txt
 cr ' d7 1000000 7 1 check-distribution .
-lower bound = 141429  upper bound = 144285 
+lower bound = 141429  upper bound = 144285
 1 : 143241 ok
 2 : 142397 ok
 3 : 143522 ok
@@ -869,10 +871,10 @@ function rand5()
   call random_number(r)
   rand5 = 5*r + 1
 end function
-  
+
 function rand7()
   integer :: rand7
-  
+
   do
     rand7 = 5*rand5() + rand5() - 6
     if (rand7 < 21) then
@@ -886,9 +888,9 @@ end module
 program Randtest
   use rand_mod
   implicit none
-  
+
   integer, parameter :: samples = 1000000
- 
+
   call distcheck(rand7, samples, 0.005)
   write(*,*)
   call distcheck(rand7, samples, 0.001)
@@ -1018,7 +1020,7 @@ def test = {
         }
         BigDecimal stdDev = (counts.collect { it - target}.collect { it * it }.sum() / popSize) ** 0.5g
         def countMap = (0..<counts.size()).inject([:]) { map, index -> map + [(index+1):counts[index]] }
-        
+
         println """\
          counts: ${countMap}
 population size: ${popSize}
@@ -1182,18 +1184,18 @@ Test:
 
 ```haskell
 *Main> mapM_ print .sort =<< distribCheck sevenFrom5Dice 1000000 3
-(1,(142759,True))                                                 
-(2,(143078,True))                                                 
-(3,(142706,True))                                                 
-(4,(142403,True))                                                 
-(5,(142896,True))                                                 
-(6,(143028,True))                                                 
+(1,(142759,True))
+(2,(143078,True))
+(3,(142706,True))
+(4,(142403,True))
+(5,(142896,True))
+(6,(143028,True))
 (7,(143130,True))
 ```
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-{{trans|Ruby}} 
+{{trans|Ruby}}
 Uses <code>verify_uniform</code> from [[Simple_Random_Distribution_Checker#Icon_and_Unicon|here]].
 
 ```Icon
@@ -1238,7 +1240,7 @@ uniform
 
 The first step is to create 7-sided dice rolls from 5-sided dice rolls (<code>rollD5</code>):
 
-```j>rollD5=: [: 
+```j>rollD5=: [:
 : ] ?@$ 5:      NB. makes a y shape array of 5s, "rolls" the array and increments.
 roll2xD5=: [: rollD5 2 ,~ */ NB. rolls D5 twice for each desired D7 roll (y rows, 2 cols)
 toBase10=: 5 #. <:           NB. decrements and converts rows from base 5 to 10
@@ -1272,7 +1274,7 @@ rollD7x=: monad define
 
 Here's a tacit definition that does the same thing:
 
-```j>getNumRolls=: [: 
+```j>getNumRolls=: [:
 . 0.75 * */@[       NB. calc approx 3/4 of the required rolls
 accumD7Rolls=: ] , getD7@getNumRolls  NB. accumulates getD7 rolls
 isNotEnough=: */@[ > #@]              NB. checks if enough D7 rolls accumulated
@@ -1300,9 +1302,9 @@ Example usage:
 1 1 1 6 5
 
 NB. check results from rollD7x and rollD7t have same shape
-   ($@rollD7x -: $@rollD7t) 10     
+   ($@rollD7x -: $@rollD7t) 10
 1
-   ($@rollD7x -: $@rollD7t) 2 3 5   
+   ($@rollD7x -: $@rollD7t) 2 3 5
 1
 ```
 
@@ -1314,7 +1316,7 @@ NB. check results from rollD7x and rollD7t have same shape
 
 ```Java
 import java.util.Random;
-public class SevenSidedDice 
+public class SevenSidedDice
 {
 	private static final Random rnd = new Random();
 	public static void main(String[] args)
@@ -1378,7 +1380,7 @@ distcheck(dice7, 1000000);
 4       142990
 5       142894
 6       142648
-7       142619 
+7       142619
 ```
 
 
@@ -1441,14 +1443,14 @@ fun checkDist(gen: () -> Int, nRepeats: Int, tolerance: Double = 0.5) {
     println("Repetitions = $nRepeats, Expected = $expected")
     println("Tolerance = $tolerance%, Max Error = $maxError\n")
     println("Integer   Occurrences   Error  Acceptable")
-    val f = "  %d        %5d      %5d     %s" 
+    val f = "  %d        %5d      %5d     %s"
     var allAcceptable = true
     for ((k,v) in occurs.toSortedMap()) {
         val error = Math.abs(v - expected)
         val acceptable = if (error <= maxError) "Yes" else "No"
         if (acceptable == "No") allAcceptable = false
         println(f.format(k, v, error, acceptable))
-    }  
+    }
     println("\nAcceptable overall: ${if (allAcceptable) "Yes" else "No"}")
 }
 
@@ -1550,14 +1552,14 @@ end
 
 We make a stack object (is reference type) and pass it as a closure to dice7 lambda function. For each dice7 we pop the top value of stack, and we add a fresh dice5 (random(1,5)) as last value of stack, so stack used as FIFO. Each time z has the sum of 7 random values.
 
-We check for uniform numbers using +-5% from expected value. 
+We check for uniform numbers using +-5% from expected value.
 
 ```M2000 Interpreter
 
 Module CheckIt {
       Def long i, calls, max, min
       s=stack:=random(1,5),random(1,5), random(1,5), random(1,5), random(1,5), random(1,5), random(1,5)
-      z=0: for i=1 to 7 { z+=stackitem(s, i)} 
+      z=0: for i=1 to 7 { z+=stackitem(s, i)}
       dice7=lambda z, s -> {
             =((z-1) mod 7)+1 : stack s {z-=Number : data random(1,5): z+=Stackitem(7)}
       }
@@ -1568,7 +1570,7 @@ Module CheckIt {
             if len(a)=0 then =false : exit
             =false
             m=each(a)
-            while m 
+            while m
                   if array(m)<min or array(m)>max then break
             end while
             =true
@@ -1622,7 +1624,7 @@ Verify Uniform:uniform
 
 
 ```Mathematica
-sevenFrom5Dice := (tmp$ = 5*RandomInteger[{1, 5}] + RandomInteger[{1, 5}] - 6; 
+sevenFrom5Dice := (tmp$ = 5*RandomInteger[{1, 5}] + RandomInteger[{1, 5}] - 6;
   If [tmp$ < 21, 1 + Mod[tmp$ , 7], sevenFrom5Dice])
 ```
 
@@ -1814,15 +1816,15 @@ end function
 Procedure dice5()
   ProcedureReturn Random(4) + 1
 EndProcedure
- 
+
 Procedure dice7()
   Protected x
-  
+
   x = dice5() * 5 + dice5() - 6
-  If x > 20 
+  If x > 20
     ProcedureReturn dice7()
-  EndIf 
-  
+  EndIf
+
   ProcedureReturn x % 7 + 1
 EndProcedure
 ```
@@ -1900,15 +1902,15 @@ dice5 <- function(n=1) sample(5, n, replace=TRUE)
 Simple but slow 7-sided die, using a while loop.
 
 ```r
-dice7.while <- function(n=1) 
+dice7.while <- function(n=1)
 {
    score <- numeric()
    while(length(score) < n)
    {
       total <- sum(c(5,1) * dice5(2)) - 3
       if(total < 24) score <- c(score, total %/% 3)
-   } 
-   score 
+   }
+   score
 }
 system.time(dice7.while(1e6)) # longer than 4 minutes
 ```
@@ -1916,7 +1918,7 @@ system.time(dice7.while(1e6)) # longer than 4 minutes
 More complex, but much faster vectorised version.
 
 ```r
-dice7.vec <- function(n=1, checkLength=TRUE) 
+dice7.vec <- function(n=1, checkLength=TRUE)
 {
    morethan2n <- 3 * n + 10 + (n %% 2)       #need more than 2*n samples, because some are discarded
    twoDfive <- matrix(dice5(morethan2n), nrow=2)
@@ -1924,14 +1926,14 @@ dice7.vec <- function(n=1, checkLength=TRUE)
    score <- ifelse(total < 24, total %/% 3, NA)
    score <- score[!is.na(score)]
    #If length is less than n (very unlikely), add some more samples
-   if(checkLength) 
+   if(checkLength)
    {
       while(length(score) < n)
       {
-         score <- c(score, dice7(n, FALSE)) 
+         score <- c(score, dice7(n, FALSE))
       }
       score[1:n]
-   } else score  
+   } else score
 }
 system.time(dice7.vec(1e6))   # ~1 sec
 ```
@@ -2090,7 +2092,7 @@ see nl
 
 func dice7()
          x = dice5() * 5 + dice5() - 6
-         if x > 20 
+         if x > 20
             return dice7()
          ok
          dc = x % 7 + 1
@@ -2292,7 +2294,7 @@ End Sub
 
 {{out}}
 ```txt
-[1] "Data set:"  142418   142898   142940   142573   143030   143139   143002  
+[1] "Data set:"  142418   142898   142940   142573   143030   143139   143002
 Chi-squared test for given frequencies
 X-squared =2.8870, df = 6 , p-value = 0.8229
 [1] "Uniform? True"
@@ -2353,7 +2355,7 @@ module seven_sided_dice_tb;
     repeat(10) @(posedge clk);
     repeat(7000000) begin
       @(posedge clk);
-      while(~valid_roll) begin 
+      while(~valid_roll) begin
         @(posedge clk);
       end
       freq[dice_face] <= freq[dice_face] + 32'b1;
@@ -2467,11 +2469,11 @@ Running the test
 
 > vvp seven-sided-dice
 ********************************************
-*** Seven sided dice distribution:          
-    Theoretical distribution is an uniform  
-    distribution with (1/7)-probability     
-    for each possible outcome,              
-  The experimental distribution is:          
+*** Seven sided dice distribution:
+    Theoretical distribution is an uniform
+    distribution with (1/7)-probability
+    for each possible outcome,
+  The experimental distribution is:
           0 with probability 1/7 + (        67 ppm)
           1 with probability 1/7 - (        47 ppm)
           2 with probability 1/7 + (        92 ppm)

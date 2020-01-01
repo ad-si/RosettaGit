@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Mathematical operations|Matrices}}
-Find an approximating polynomial of known degree for a given data. 
+Find an approximating polynomial of known degree for a given data.
 
 Example:
 For input data:
@@ -217,23 +217,23 @@ END # fitting #
 ## BBC BASIC
 
 {{works with|BBC BASIC for Windows}}
-The code listed below is good for up to 10000 data points 
-and fits an order-5 polynomial, so the test data for this task 
+The code listed below is good for up to 10000 data points
+and fits an order-5 polynomial, so the test data for this task
 is hardly challenging!
 
 ```bbcbasic
       INSTALL @lib$+"ARRAYLIB"
-      
+
       Max% = 10000
       DIM vector(5), matrix(5,5)
       DIM x(Max%), x2(Max%), x3(Max%), x4(Max%), x5(Max%)
       DIM x6(Max%), x7(Max%), x8(Max%), x9(Max%), x10(Max%)
       DIM y(Max%), xy(Max%), x2y(Max%), x3y(Max%), x4y(Max%), x5y(Max%)
-      
+
       npts% = 11
       x() = 0,  1,  2,  3,  4,  5,  6,   7,   8,   9,   10
       y() = 1,  6,  17, 34, 57, 86, 121, 162, 209, 262, 321
-      
+
       sum_x = SUM(x())
       x2()  = x() * x()   : sum_x2  = SUM(x2())
       x3()  = x() * x2()  : sum_x3  = SUM(x3())
@@ -244,14 +244,14 @@ is hardly challenging!
       x8()  = x4() * x4() : sum_x8  = SUM(x8())
       x9()  = x4() * x5() : sum_x9  = SUM(x9())
       x10() = x5() * x5() : sum_x10 = SUM(x10())
-      
+
       sum_y = SUM(y())
       xy()  = x() * y()   : sum_xy  = SUM(xy())
       x2y() = x2() * y()  : sum_x2y = SUM(x2y())
       x3y() = x3() * y()  : sum_x3y = SUM(x3y())
       x4y() = x4() * y()  : sum_x4y = SUM(x4y())
       x5y() = x5() * y()  : sum_x5y = SUM(x5y())
-      
+
       matrix() = \
       \ npts%,  sum_x,   sum_x2,  sum_x3,  sum_x4,  sum_x5, \
       \ sum_x,  sum_x2,  sum_x3,  sum_x4,  sum_x5,  sum_x6, \
@@ -259,13 +259,13 @@ is hardly challenging!
       \ sum_x3, sum_x4,  sum_x5,  sum_x6,  sum_x7,  sum_x8, \
       \ sum_x4, sum_x5,  sum_x6,  sum_x7,  sum_x8,  sum_x9, \
       \ sum_x5, sum_x6,  sum_x7,  sum_x8,  sum_x9,  sum_x10
-      
+
       vector() = \
       \ sum_y,  sum_xy,  sum_x2y, sum_x3y, sum_x4y, sum_x5y
-      
+
       PROC_invert(matrix())
       vector() = matrix().vector()
-      
+
       @% = &2040A
       PRINT "Polynomial coefficients = "
       FOR term% = 5 TO 0 STEP -1
@@ -301,7 +301,7 @@ Polynomial coefficients =
 #include <gsl/gsl_multifit.h>
 #include <stdbool.h>
 #include <math.h>
-bool polynomialfit(int obs, int degree, 
+bool polynomialfit(int obs, int degree,
 		   double *dx, double *dy, double *store); /* n, p */
 #endif
 ```
@@ -311,7 +311,7 @@ bool polynomialfit(int obs, int degree,
 ```c
 #include "polifitgsl.h"
 
-bool polynomialfit(int obs, int degree, 
+bool polynomialfit(int obs, int degree,
 		   double *dx, double *dy, double *store) /* n, p */
 {
   gsl_multifit_linear_workspace *ws;
@@ -354,8 +354,8 @@ bool polynomialfit(int obs, int degree,
 
 '''Testing''':
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #include "polifitgsl.h"
 
@@ -392,8 +392,8 @@ int main()
 
 {{trans|Java}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <numeric>
 #include <vector>
@@ -661,38 +661,38 @@ contains
     integer, parameter                    :: dp = selected_real_kind(15, 307)
     real(dp), dimension(d+1)              :: polyfit
     real(dp), dimension(:), intent(in)    :: vx, vy
-   
+
     real(dp), dimension(:,:), allocatable :: X
     real(dp), dimension(:,:), allocatable :: XT
     real(dp), dimension(:,:), allocatable :: XTX
-   
+
     integer :: i, j
-   
+
     integer     :: n, lda, lwork
     integer :: info
     integer, dimension(:), allocatable :: ipiv
     real(dp), dimension(:), allocatable :: work
-   
+
     n = d+1
     lda = n
     lwork = n
-   
+
     allocate(ipiv(n))
     allocate(work(lwork))
     allocate(XT(n, size(vx)))
     allocate(X(size(vx), n))
     allocate(XTX(n, n))
-   
+
     ! prepare the matrix
     do i = 0, d
        do j = 1, size(vx)
           X(j, i+1) = vx(j)**i
        end do
     end do
-   
+
     XT  = transpose(X)
     XTX = matmul(XT, X)
-   
+
     ! calls to LAPACK subs DGETRF and DGETRI
     call DGETRF(n, n, XTX, lda, ipiv, info)
     if ( info /= 0 ) then
@@ -704,17 +704,17 @@ contains
        print *, "problem"
        return
     end if
-    
+
     polyfit = matmul( matmul(XTX, XT), vy)
-    
+
     deallocate(ipiv)
     deallocate(work)
     deallocate(X)
     deallocate(XT)
     deallocate(XTX)
-  
+
   end function
- 
+
 end module
 ```
 
@@ -727,7 +727,7 @@ end module
 program PolynomalFitting
   use fitting
   implicit none
- 
+
   ! let us test it
   integer, parameter      :: degree = 2
   integer, parameter      :: dp = selected_real_kind(15, 307)
@@ -737,9 +737,9 @@ program PolynomalFitting
                                    57,  86, 121, 162, &
                                    209, 262, 321 /)
   real(dp), dimension(degree+1) :: a
- 
+
   a = polyfit(x, y, degree)
- 
+
   write (*, '(F9.4)') a
 
 end program
@@ -774,7 +774,7 @@ Sub GaussJordan(matrix() As Double,rhs() As Double,ans() As Double)
     Next c
     #macro pivot(num)
     For p1 As Integer  = num To n - 1
-        For p2 As Integer  = p1 + 1 To n  
+        For p2 As Integer  = p1 + 1 To n
             If Abs(b(p1,num))<Abs(b(p2,num)) Then
                 Swap r(p1),r(p2)
                 For g As Integer=1 To n
@@ -785,7 +785,7 @@ Sub GaussJordan(matrix() As Double,rhs() As Double,ans() As Double)
     Next p1
     #endmacro
     For k As Integer=1 To n-1
-        pivot(k)              'full pivoting 
+        pivot(k)              'full pivoting
         For row As Integer =k To n-1
             If b(row+1,k)=0 Then Exit For
             Var f=b(k,k)/b(row+1,k)
@@ -795,7 +795,7 @@ Sub GaussJordan(matrix() As Double,rhs() As Double,ans() As Double)
             Next g
         Next row
     Next k
-    'back substitute 
+    'back substitute
     For z As Integer=n To 1 Step -1
         ans(z)=r(z)/b(z,z)
         For j As Integer = n To z+1 Step -1
@@ -803,7 +803,7 @@ Sub GaussJordan(matrix() As Double,rhs() As Double,ans() As Double)
         Next j
         Next    z
     End Sub
- 
+
     'Interpolate through points.
     Sub Interpolate(x_values() As Double,y_values() As Double,p() As Double)
         Var n=Ubound(x_values)
@@ -818,18 +818,18 @@ Sub GaussJordan(matrix() As Double,rhs() As Double,ans() As Double)
         'Solve the linear equations
         GaussJordan(matrix(),rhs(),p())
     End Sub
- 
+
  '
 ### ===================== SET UP THE POINTS ============
-  
- 
+
+
     Dim As Double x(1 To ...)={0,1,2,3,4,5,6,7,8,9,10}
     Dim As Double y(1 To ...)={1,6,17,34,57,86,121,162,209,262,321}
- 
+
     Redim As Double Poly(0)
     'Get the polynomial Poly()
     Interpolate(x(),y(),Poly())
- 
+
     'print coefficients to console
     print "Polynomial Coefficients:"
     print
@@ -840,7 +840,7 @@ Sub GaussJordan(matrix() As Double,rhs() As Double,ans() As Double)
             Print tab(8); "x^";z-1;" =  ";tab(20);Poly(z)
         End If
     Next z
- 
+
     sleep
 ```
 
@@ -1087,7 +1087,7 @@ FUNCTION Theory()
 {{out}}
 
 ```txt
-SOLVE performs a (nonlinear) least-square fit (Levenberg-Marquardt): 
+SOLVE performs a (nonlinear) least-square fit (Levenberg-Marquardt):
 p(1)=2.997135145; p(2)=2.011348347; p(3)=0.9906627242; iterations=19;
 ```
 
@@ -1118,14 +1118,14 @@ p(1)=2.997135145; p(2)=2.011348347; p(3)=0.9906627242; iterations=19;
 ```
 
 
-Note that this implementation does not use floating point numbers, 
-so we do not introduce floating point errors.  
-Using exact arithmetic has a speed penalty, 
+Note that this implementation does not use floating point numbers,
+so we do not introduce floating point errors.
+Using exact arithmetic has a speed penalty,
 but for small problems like this it is inconsequential.
 
-The above solution fits a polynomial of order 11. 
-If the order of the polynomial is known to be 3 
-(as is implied in the task description) 
+The above solution fits a polynomial of order 11.
+If the order of the polynomial is known to be 3
+(as is implied in the task description)
 then the following solution is probably preferable:
 
 ```j
@@ -1218,8 +1218,8 @@ y = 1.0 + 2.0x + 3.0x^2
 ## Julia
 
 {{works with|Julia|0.6}}
-The least-squares fit problem for a degree <i>n</i> 
-can be solved with the built-in backslash operator (coefficients in increasing order of degree): 
+The least-squares fit problem for a degree <i>n</i>
+can be solved with the built-in backslash operator (coefficients in increasing order of degree):
 
 ```julia
 polyfit(x::Vector, y::Vector, deg::Int) = collect(v ^ p for v in x, p in 0:deg) \ y
@@ -1249,7 +1249,7 @@ fun polyRegression(x: IntArray, y: IntArray) {
     val n = x.size
     val r = 0 until n
     val xm = x.average()
-    val ym = y.average()    
+    val ym = y.average()
     val x2m = r.map { it * it }.average()
     val x3m = r.map { it * it * it }.average()
     val x4m = r.map { it * it * it * it }.average()
@@ -1356,7 +1356,7 @@ function regression(xa,ya)
     local a = ym - b * xm - c * x2m
 
     print("y = "..a.." + "..b.."x + "..c.."x^2")
-    
+
     for i=1,n do
         print(string.format("%2d %3d  %3d", xa[i], ya[i], eval(a, b, c, xa[i])))
     end
@@ -1430,8 +1430,8 @@ Result:
 
 ## MATLAB
 
-Matlab has a built-in function "polyfit(x,y,n)" which performs this task. 
-The arguments x and y are vectors which are parametrized by the index suck that <math>point_{i} = (x_{i},y_{i})</math> and the argument n is the order of the polynomial you want to fit. 
+Matlab has a built-in function "polyfit(x,y,n)" which performs this task.
+The arguments x and y are vectors which are parametrized by the index suck that <math>point_{i} = (x_{i},y_{i})</math> and the argument n is the order of the polynomial you want to fit.
 The output of this function is the coefficients of the polynomial which best fit these x,y value pairs.
 
 
@@ -1659,8 +1659,8 @@ my $pairs = scalar(@x);
 =pod
 
 Step 2: Devise the base equation of our polynomial using the following idea
-There is some polynomial of degree n (n == number of pairs - 1) such that 
-f(x)=ax^n + bx^(n-1) + ... yx + z 
+There is some polynomial of degree n (n == number of pairs - 1) such that
+f(x)=ax^n + bx^(n-1) + ... yx + z
 =cut
 
 #Create an array of coefficients and their degrees with the format ("coefficent degree")
@@ -1918,13 +1918,13 @@ IupClose()
 function qr([double[][]]$A) {
     $m,$n = $A.count, $A[0].count
     $pm,$pn = ($m-1), ($n-1)
-    [double[][]]$Q = 0..($m-1) | foreach{$row = @(0) * $m; $row[$_] = 1; ,$row} 
+    [double[][]]$Q = 0..($m-1) | foreach{$row = @(0) * $m; $row[$_] = 1; ,$row}
     [double[][]]$R = $A | foreach{$row = $_; ,@(0..$pn | foreach{$row[$_]})}
-    foreach ($h in 0..$pn) { 
-        [double[]]$u = $R[$h..$pm] | foreach{$_[$h]} 
-        [double]$nu = $u | foreach {[double]$sq = 0} {$sq += $_*$_} {[Math]::Sqrt($sq)} 
+    foreach ($h in 0..$pn) {
+        [double[]]$u = $R[$h..$pm] | foreach{$_[$h]}
+        [double]$nu = $u | foreach {[double]$sq = 0} {$sq += $_*$_} {[Math]::Sqrt($sq)}
         $u[0] -= if ($u[0] -lt 1) {$nu} else {-$nu}
-        [double]$nu = $u | foreach {$sq = 0} {$sq += $_*$_} {[Math]::Sqrt($sq)} 
+        [double]$nu = $u | foreach {$sq = 0} {$sq += $_*$_} {[Math]::Sqrt($sq)}
         [double[]]$u = $u | foreach { $_/$nu}
         [double[][]]$v = 0..($u.Count - 1) | foreach{$i = $_; ,($u | foreach{2*$u[$i]*$_})}
         [double[][]]$CR = $R | foreach{$row = $_; ,@(0..$pn | foreach{$row[$_]})}
@@ -1963,7 +1963,7 @@ function leastsquares([Double[][]]$A,[Double[]]$y) {
     [Double[][]]$Q = $QR.Q
     [Double[][]]$R = $QR.R
     $m,$n = $A.count, $A[0].count
-    [Double[]]$z = foreach ($j in  0..($m-1)) { 
+    [Double[]]$z = foreach ($j in  0..($m-1)) {
             0..($m-1) | foreach {$sum = 0} {$sum += $Q[$_][$j]*$y[$_]} {$sum}
     }
     [Double[]]$x = @(0)*$n
@@ -1977,8 +1977,8 @@ function leastsquares([Double[][]]$A,[Double[]]$y) {
 }
 
 function polyfit([Double[]]$x,[Double[]]$y,$n) {
-    $m = $x.Count 
-    [Double[][]]$A = 0..($m-1) | foreach{$row = @(1) * ($n+1); ,$row} 
+    $m = $x.Count
+    [Double[][]]$A = 0..($m-1) | foreach{$row = @(1) * ($n+1); ,$row}
     for ($i = 0; $i -lt $m; $i++) {
         for ($j = $n-1; 0 -le $j; $j--) {
             $A[$i][$j] = $A[$i][$j+1]*$x[$i]
@@ -2002,7 +2002,7 @@ $y = @(1, 6, 17, 34, 57, 86, 121, 162, 209, 262, 321)
 
 ```txt
 
-polyfit 
+polyfit
 X^2 X constant
 3 1.99999999999998 1.00000000000005
 
@@ -2059,17 +2059,17 @@ For input arrays `x' and `y':
 1.085 N + 10.36 N - 0.6164
 ```
 
-Thus we confirm once more that for already sorted sequences 
-the considered quick sort implementation has 
-quadratic dependence on sequence length 
-(see [[Query Performance|'''Example''' section for Python language 
+Thus we confirm once more that for already sorted sequences
+the considered quick sort implementation has
+quadratic dependence on sequence length
+(see [[Query Performance|'''Example''' section for Python language
 on ''Query Performance'' page]]).
 
 
 ## R
 
-The easiest (and most robust) approach to solve this in R 
-is to use the base package's ''lm'' function 
+The easiest (and most robust) approach to solve this in R
+is to use the base package's ''lm'' function
 which will find the least squares solution via a QR decomposition:
 
 
@@ -2085,8 +2085,8 @@ coef(lm(y ~ x + I(x^2)))
 
 ```txt
 
-(Intercept)           x      I(x^2) 
-          1           2           3 
+(Intercept)           x      I(x^2)
+          1           2           3
 
 ```
 
@@ -2100,7 +2100,7 @@ coef(lm(y ~ poly(x, 2, raw=T)))
 {{out}}
 
 ```txt
-         (Intercept) poly(x, 2, raw = T)1 poly(x, 2, raw = T)2 
+         (Intercept) poly(x, 2, raw = T)1 poly(x, 2, raw = T)2
                    1                    2                    3
 ```
 
@@ -2122,7 +2122,7 @@ coef(lm(y ~ poly(x, 2, raw=T)))
   (define V (vandermonde-matrix x (+ n 1)))
   (define VT (matrix-transpose V))
   (matrix->vector (matrix-solve (matrix* VT V) (matrix* VT Y))))
-  
+
 (define ((poly v) x)
   (for/sum ([c v] [i (in-naturals)])
     (* c (expt x i))))
@@ -2190,7 +2190,7 @@ Do i=1 To 11
 Exit
 fun:
   Parse Arg x
-  Return a+b*x+c*x**2 
+  Return a+b*x+c*x**2
 ```
 
 {{out}}
@@ -2371,7 +2371,7 @@ end
 ## Tcl
 
 {{tcllib|math::linearalgebra}}
-<!-- This implementation from Emiliano Gavilan; 
+<!-- This implementation from Emiliano Gavilan;
 posted here with his explicit permission -->
 
 ```tcl
@@ -2382,7 +2382,7 @@ proc build.matrix {xvec degree} {
     for {set i 1} {$i <= 2*$degree} {incr i} {
         set sum 0
         foreach x $xvec {
-            set sum [expr {$sum + pow($x,$i)}] 
+            set sum [expr {$sum + pow($x,$i)}]
         }
         lappend sums $sum
     }
@@ -2400,7 +2400,7 @@ proc build.vector {xvec yvec degree} {
     for {set i 0} {$i <= $degree} {incr i} {
         set sum 0
         foreach x $xvec y $yvec {
-            set sum [expr {$sum + $y * pow($x,$i)}] 
+            set sum [expr {$sum + $y * pow($x,$i)}]
         }
         lappend sums $sum
     }
@@ -2441,8 +2441,8 @@ Disp regeq(x)
 ```
 
 
-<code>seq(''expr'',''var'',''low'',''high'')</code> evaluates ''expr'' with ''var'' bound to integers from ''low'' to ''high'' and returns a list of the results. <code> →</code> is the assignment operator. 
-<code>QuadReg</code>, "quadratic regression", does the fit and stores the details in a number of standard variables, including <var>regeq</var>, which receives the fitted quadratic (polynomial) function itself. 
+<code>seq(''expr'',''var'',''low'',''high'')</code> evaluates ''expr'' with ''var'' bound to integers from ''low'' to ''high'' and returns a list of the results. <code> →</code> is the assignment operator.
+<code>QuadReg</code>, "quadratic regression", does the fit and stores the details in a number of standard variables, including <var>regeq</var>, which receives the fitted quadratic (polynomial) function itself.
 We then apply that function to the (undefined as ensured by <code>DelVar</code>) variable x to obtain the expression in terms of x, and display it.
 
 {{out}}
@@ -2452,12 +2452,12 @@ We then apply that function to the (undefined as ensured by <code>DelVar</code>)
 ## Ursala
 
 {{libheader|LAPACK}}
-The fit function defined below returns the coefficients 
-of an nth-degree polynomial in order of descending degree 
+The fit function defined below returns the coefficients
+of an nth-degree polynomial in order of descending degree
 fitting the lists of inputs x and outputs y.
 The real work is done by the dgelsd function from the lapack library.
-Ursala provides a simplified interface to this library 
-whereby the data can be passed as lists rather than arrays, 
+Ursala provides a simplified interface to this library
+whereby the data can be passed as lists rather than arrays,
 and all memory management is handled automatically.
 
 ```Ursala
@@ -2526,13 +2526,13 @@ End Sub
 {{out}}
 
 ```txt
-coefficients   : 1,         2,            3,            
-standard errors: 0,         0,            0,            
+coefficients   : 1,         2,            3,
+standard errors: 0,         0,            0,
 
-R^2 = 1 
-F   = 7,70461300500498E+31 
-Degrees of freedom: 8 
-Standard error of y estimate: 2,79482284961344E-14 
+R^2 = 1
+F   = 7,70461300500498E+31
+Degrees of freedom: 8
+Standard error of y estimate: 2,79482284961344E-14
 ```
 
 
@@ -2555,7 +2555,7 @@ GSL.Helpers.polyEval(v,xs).format().println();
 ```txt
 
 1.00,2.00,3.00
- 1 + 2x + 3x^2 
+ 1 + 2x + 3x^2
 1.00,6.00,17.00,34.00,57.00,86.00,121.00,162.00,209.00,262.00,321.00
 
 ```
@@ -2567,7 +2567,7 @@ Uses the code from [[Multiple regression#zkl]].
 Example:
 
 ```zkl
-polyfit(T(T(0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0)), 
+polyfit(T(T(0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0)),
         T(T(1.0,6.0,17.0,34.0,57.0,86.0,121.0,162.0,209.0,262.0,321.0)), 2)
 .flatten().println();
 ```

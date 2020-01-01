@@ -13,7 +13,7 @@ tags = []
 {{task|Networking and Web Interaction}}
 
 ;Task:
-Write a server for a minimal text based chat. 
+Write a server for a minimal text based chat.
 
 People should be able to connect via ‘telnet’, sign on with a nickname, and type messages which will then be seen by all other connected users. Arrivals and departures of chat members should generate appropriate notification messages.
 
@@ -118,15 +118,15 @@ end Chat_Server;
 
 ## C
 
-C has no built-in networking functions, but the POSIX library does provide some low-level networking functions.  The functions of interest relating to sockets include ''bind'', ''listen'', ''select'', ''accept'', ''read'', ''write'' and ''close''.  
+C has no built-in networking functions, but the POSIX library does provide some low-level networking functions.  The functions of interest relating to sockets include ''bind'', ''listen'', ''select'', ''accept'', ''read'', ''write'' and ''close''.
 
-The example below was compiled on Cygwin, and accepts PuTTY connections under the RAW protocol. 
+The example below was compiled on Cygwin, and accepts PuTTY connections under the RAW protocol.
 
-A glitch occurs if a connection is made using the Telnet protocol - user names are preceded by garbled text. 
+A glitch occurs if a connection is made using the Telnet protocol - user names are preceded by garbled text.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <sys/socket.h>
 #include <sys/select.h>
@@ -159,7 +159,7 @@ void CloseConnection(int handle)
     int j;
 
     FD_CLR(handle, &status);
-    
+
     if (connections[handle]->name[0])
     {
         sprintf(buf, "* Disconnected: %s\r\n", connections[handle]->name);
@@ -188,7 +188,7 @@ void CloseConnection(int handle)
 void strip(char *buf)
 {
     char *x;
-    
+
     x = strchr(buf, '\n');
     if (x) { *x='\0'; }
     x = strchr(buf, '\r');
@@ -211,7 +211,7 @@ int RelayText(int handle)
     } else {
         begin[connections[handle]->pos] = '\0';
     }
-    
+
     end = strchr(begin, '\n');
     while (end != NULL)
     {
@@ -221,17 +221,17 @@ int RelayText(int handle)
         {
             strncpy(connections[handle]->name, begin, 31);
             connections[handle]->name[31] = '\0';
-            
+
             strip(connections[handle]->name);
             sprintf(output, "* Connected: %s\r\n", connections[handle]->name);
             ret = 1;
-        } else 
+        } else
         {
-            sprintf(output, "%s: %.*s\r\n", connections[handle]->name, 
+            sprintf(output, "%s: %.*s\r\n", connections[handle]->name,
                     end-begin, begin);
             ret = 1;
         }
-        
+
         if (output[0])
         {
             int j;
@@ -249,7 +249,7 @@ int RelayText(int handle)
         begin = end+1;
         end = strchr(begin, '\n');
     }
-    
+
     strcpy(connections[handle]->buffer, begin);
     connections[handle]->pos -= begin - connections[handle]->buffer;
     return ret;
@@ -260,12 +260,12 @@ void ClientText(int handle, char *buf, int buf_len)
     int i, j;
     if (!connections[handle])
         return;
-    j = connections[handle]->pos; 
-    
+    j = connections[handle]->pos;
+
     for (i = 0; i < buf_len; ++i, ++j)
     {
         connections[handle]->buffer[j] = buf[i];
-        
+
         if (j == 4000)
         {
             while (RelayText(handle));
@@ -273,7 +273,7 @@ void ClientText(int handle, char *buf, int buf_len)
         }
     }
     connections[handle]->pos = j;
-    
+
     while (RelayText(handle));
 }
 
@@ -317,7 +317,7 @@ int ChatLoop()
                         if (write(handle, "Enter name: ", 12) >= 0)
                         {
                             printf("-- New connection %d from %s:%hu\n",
-                                handle, 
+                                handle,
                                 inet_ntoa (cliinfo.sin_addr),
                                 ntohs(cliinfo.sin_port));
                             FD_SET(handle, &status);
@@ -1266,7 +1266,7 @@ import Data.Map (Map)
 import Control.Monad.Reader
 import Control.Monad.Error
 import Control.Exception
-import Data.Monoid 
+import Data.Monoid
 import Control.Applicative
 
 type ServerApp = ReaderT ThreadData IO
@@ -1288,7 +1288,7 @@ viewUsers = userTableMV <$> ask
 
 userChat :: ServerApp ()
 userChat = do
-    name <- addUser 
+    name <- addUser
     echoLocal name
     h <- viewHandle
     (flip catchError) (\_ -> removeUser name) $
@@ -1305,18 +1305,18 @@ addUser :: ServerApp Text
 addUser = do
     h <- viewHandle
     usersMV <- viewUsers
-    echoRemote "Enter username" 
+    echoRemote "Enter username"
     name <- T.filter (/='\r') <$> getRemoteLine
     userTable <- takeMVarT usersMV
     if name `M.member` userTable
-      then do echoRemote "Username already exists!" 
+      then do echoRemote "Username already exists!"
               putMVarT usersMV userTable
               addUser
       else do putMVarT usersMV (M.insert name h userTable)
               broadcast Server $ name <> " has joined the server"
               echoRemote "Welcome to the server!\n>> Other users:"
               readMVarT usersMV >>=
-                  mapM_ (echoRemote . ("*" <>) . fst) 
+                  mapM_ (echoRemote . ("*" <>) . fst)
                 . filter ((/=name). fst) . M.toList
               return name
 
@@ -1395,10 +1395,10 @@ public class ChatServer implements Runnable
 {
   private int port = 0;
   private List<Client> clients = new ArrayList<Client>();
-  
+
   public ChatServer(int port)
   {  this.port = port;  }
-  
+
   public void run()
   {
     try
@@ -1431,7 +1431,7 @@ public class ChatServer implements Runnable
     if (wasRegistered)
       broadcast(client, "--- " + client.clientName + " left ---");
   }
-  
+
   private synchronized String getOnlineListCSV()
   {
     StringBuilder sb = new StringBuilder();
@@ -1440,7 +1440,7 @@ public class ChatServer implements Runnable
       sb.append((i > 0) ? ", " : "").append(clients.get(i).clientName);
     return sb.toString();
   }
-  
+
   private void broadcast(Client fromClient, String msg)
   {
     // Copy client list (don't want to hold lock while doing IO)
@@ -1463,12 +1463,12 @@ public class ChatServer implements Runnable
     private Socket socket = null;
     private Writer output = null;
     private String clientName = null;
-    
+
     public Client(Socket socket)
     {
       this.socket = socket;
     }
-    
+
     public void run()
     {
       try
@@ -1518,19 +1518,19 @@ public class ChatServer implements Runnable
         socket = null;
       }
     }
-    
+
     public void write(String msg) throws IOException
     {
       output.write(msg);
       output.flush();
     }
-    
+
     public boolean equals(Client client)
     {
       return (client != null) && (client instanceof Client) && (clientName != null) && (client.clientName != null) && clientName.equals(client.clientName);
     }
   }
-  
+
   public static void main(String[] args)
   {
     int port = 4004;
@@ -1713,7 +1713,7 @@ server = new ChatServer();
 
 ## Julia
 
-Modified to fit the Rosetta Code task from example code for the WebSockets module written by Leah Hanson. 
+Modified to fit the Rosetta Code task from example code for the WebSockets module written by Leah Hanson.
 To test, start the code and use a browser to connect to localhost:8000.
 
 ```julia
@@ -2030,7 +2030,7 @@ bundle Default {
   class ChatServer {
     @clients : StringMap;
     @clients_mutex : ThreadMutex;
-    
+
     New() {
       @clients := StringMap->New();
       @clients_mutex := ThreadMutex->New("clients_mutex");
@@ -2040,7 +2040,7 @@ bundle Default {
       if(clients->Has(login_name)) {
         return false;
       };
-      
+
       return true;
     }
 
@@ -2048,7 +2048,7 @@ bundle Default {
       chat_server := ChatServer->New();
       chat_server->Run();
     }
-    
+
     method : public : Broadcast(message : String, sender : Client) ~ Nil {
       client_array : Vector;
       critical(@clients_mutex) {
@@ -2059,7 +2059,7 @@ bundle Default {
         if(client <> sender) {
           client->Send(message);
         };
-      };      
+      };
     }
 
     method : public : Disconnect(sender : Client) ~ Nil {
@@ -2098,17 +2098,17 @@ bundle Default {
   class Client from Thread {
     @client_sock : TCPSocket;
     @server : ChatServer;
-    
+
     New(login_name : String, client_sock : TCPSocket, server : ChatServer) {
       Parent(login_name);
       @client_sock := client_sock;
       @server := server;
     }
-    
+
     method : public : Close() ~ Nil {
       @client_sock->Close();
     }
-    
+
     method : public : Send(message : String) ~ Nil {
       if(@client_sock->IsOpen() & message->Size() > 0) {
         @client_sock->WriteString("{$message}\r\n");
@@ -2121,10 +2121,10 @@ bundle Default {
     method : public : Run(param : Base) ~ Nil {
       client_name := GetName();
       @server->Broadcast("+++ {$client_name} has arrived +++", @self);
-      
+
       message := @client_sock->ReadString();
       while(message->Size() > 0 & message->Equals("/quit") = false) {
-        @server->Broadcast("{$client_name}> {$message}", @self);      
+        @server->Broadcast("{$client_name}> {$message}", @self);
         message := @client_sock->ReadString();
       };
       @server->Disconnect(@self);
@@ -2264,12 +2264,12 @@ while (1) {
 
 react {
     my %connections;
-    
+
     whenever IO::Socket::Async.listen('localhost', 4004) -> $conn {
         my $name;
-        
+
         $conn.print: "Please enter your name: ";
-        
+
         whenever $conn.Supply.lines -> $message {
             if !$name {
                 if %connections{$message} {
@@ -2296,7 +2296,7 @@ react {
             }
         }
     }
-    
+
     sub broadcast ($format, $from, *@message) {
         my $text = sprintf $format, $from, |@message;
         say $text;
@@ -2492,9 +2492,9 @@ PORT = 4004
 
 def accept(conn):
     """
-    Call the inner func in a thread so as not to block. Wait for a 
-    name to be entered from the given connection. Once a name is 
-    entered, set the connection to non-blocking and add the user to 
+    Call the inner func in a thread so as not to block. Wait for a
+    name to be entered from the given connection. Once a name is
+    entered, set the connection to non-blocking and add the user to
     the users dict.
     """
     def threaded():
@@ -2611,7 +2611,7 @@ class ChatServer < GServer
     @chatters = []
 
     #We'll need this for thread safety
-    @mutex = Mutex.new 
+    @mutex = Mutex.new
   end
 
   #Send message out to everyone but sender
@@ -2894,7 +2894,7 @@ On my Linux box, telnet seems to only want to connect to port 23.
 
 ```zkl
 const PORT=23;
- 
+
 var users=Dictionary(); // ( handle:socket, ...)
 pipe:=Thread.Pipe(); // how server tells thread to connect to user
 
@@ -2916,7 +2916,7 @@ fcn accept(pipe){ // a thread waiting for the server to send a socket
       }//while
    }//while
 }.launch(pipe); // thread
- 
+
 fcn chat(name,socket){		// a thread, one per user
    try{
       socket.write("^D to disconnect\n");
@@ -2926,7 +2926,7 @@ fcn chat(name,socket){		// a thread, one per user
 	 broadcast(name, "%s> %s".fmt(name,message));
       }
    }catch{}  // eg socket pukes
-   users.del(name); socket.close(); 
+   users.del(name); socket.close();
    broadcast(name, "--- %s leaves ---".fmt(name));
 }
 
@@ -2941,7 +2941,7 @@ fcn broadcast(name, message){ // called from user thread
    // Set up the server socket.
 server:=Network.TCPServerSocket.open(PORT);
 println("Listening on %s:%s".fmt(server.hostname,server.port));
-server.listen(pipe);  // Main event loop 
+server.listen(pipe);  // Main event loop
 ```
 
 {{out}}

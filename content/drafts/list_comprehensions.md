@@ -20,11 +20,11 @@ A [[wp:List_comprehension|list comprehension]] is a special syntax in some progr
 Some attributes of a list comprehension are:
 # They should be distinct from (nested) for loops and the use of map and filter functions within the syntax of the language.
 # They should return either a list or an iterator (something that returns successive members of a collection, in order).
-# The syntax has parts corresponding to that of [[wp:Set-builder_notation|set-builder notation]].  
+# The syntax has parts corresponding to that of [[wp:Set-builder_notation|set-builder notation]].
 
 
 ;Task:
-Write a list comprehension that builds the list of all [[Pythagorean triples]] with elements between   '''1'''   and   '''n'''. 
+Write a list comprehension that builds the list of all [[Pythagorean triples]] with elements between   '''1'''   and   '''n'''.
 
 If the language has multiple ways for expressing such a construct (for example, direct list comprehensions and generators), write one example for each.
 
@@ -88,18 +88,18 @@ START-OF-SELECTION.
 
 ```
 
- 
+
 {{out}}
 
 ```txt
 
-X Y Z 
-3 4 5 
-5 12 13 
-6 8 10 
-8 15 17 
-9 12 15 
-12 16 20 
+X Y Z
+3 4 5
+5 12 13
+6 8 10
+8 15 17
+9 12 15
+12 16 20
 
 ```
 
@@ -108,7 +108,7 @@ X Y Z
 ## Ada
 
 {{works with|Ada 2005|Standard - no additional library}}
-There is no equivalent construct in Ada. In Ada05, the predefined library Ada.Containers 
+There is no equivalent construct in Ada. In Ada05, the predefined library Ada.Containers
 implements 3 types of Doubly_Linked_Lists : Basic; Indefinite; Restricted.
 
 ```Ada
@@ -237,15 +237,15 @@ on pythagoreanTriples(n)
                             end if
                         end |λ|
                     end script
-                    
+
                     |>>=|(enumFromTo(1 + y, n), z)
                 end |λ|
             end script
-            
+
             |>>=|(enumFromTo(1 + x, n), y)
         end |λ|
     end script
-    
+
     |>>=|(enumFromTo(1, n), x)
 end pythagoreanTriples
 
@@ -253,10 +253,10 @@ end pythagoreanTriples
 on run
     --   Pythagorean triples drawn from integers in the range [1..n]
     --  {(x, y, z) | x <- [1..n], y <- [x+1..n], z <- [y+1..n], (x^2 + y^2 = z^2)}
-    
+
     pythagoreanTriples(25)
-    
-    --> {{3, 4, 5}, {5, 12, 13}, {6, 8, 10}, {7, 24, 25}, {8, 15, 17}, 
+
+    --> {{3, 4, 5}, {5, 12, 13}, {6, 8, 10}, {7, 24, 25}, {8, 15, 17},
     --   {9, 12, 15}, {12, 16, 20}, {15, 20, 25}}
 end run
 
@@ -301,7 +301,7 @@ on enumFromTo(m, n)
     return lst
 end enumFromTo
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -325,7 +325,7 @@ end mReturn
 ## AutoHotkey
 
 {{works with|AutoHotkey_L}}
-List Comprehension is not built in. 
+List Comprehension is not built in.
 ```AutoHotkey
 
 comprehend("show", range(1, 20), "triples")
@@ -357,40 +357,40 @@ range(begin, end)
    set.end := end
    return set
  }
- 
+
 !r::reload
 !q::exitapp
 
 triples(begin, end)
 {
-  
+
   set := object()
   index := 1
   range := end - begin
-  
+
   loop, % range
   {
-    x := begin + A_Index 
+    x := begin + A_Index
     loop, % range
     {
-      y := A_Index + x 
+      y := A_Index + x
       if y > 20
 	break
 loop, % range
 {
-  z := A_Index + y 
+  z := A_Index + y
   if z > 20
     break
   isTriple := ((x ** 2 + y ** 2) == z ** 2)
   if isTriple
   {
-    set[index, 1] := x 
+    set[index, 1] := x
     set[index, 2] := y
     set[index, 3] := z
     index += 1
   ; msgbox % "triple: "  x . y . z
   }
-  
+
 }
 }
 }
@@ -403,7 +403,7 @@ return set
 
 ## Bracmat
 
-Bracmat does not have built-in list comprehension, but nevertheless there is a solution for fixed n that does not employ explicit loop syntax. By their positions in the pattern and the monotonically increasing values in the subject, it is guaranteed that <code>x</code> always is smaller than <code>y</code> and that <code>y</code> always is smaller than <code>z</code>. The combination of flags <code>%@</code> ensures that <code>x</code>, <code>y</code> and <code>z</code> pick minimally one (<code>%</code>) and at most one (<code>@</code>) element from the subject list.  
+Bracmat does not have built-in list comprehension, but nevertheless there is a solution for fixed n that does not employ explicit loop syntax. By their positions in the pattern and the monotonically increasing values in the subject, it is guaranteed that <code>x</code> always is smaller than <code>y</code> and that <code>y</code> always is smaller than <code>z</code>. The combination of flags <code>%@</code> ensures that <code>x</code>, <code>y</code> and <code>z</code> pick minimally one (<code>%</code>) and at most one (<code>@</code>) element from the subject list.
 
 ```bracmat
 
@@ -420,7 +420,7 @@ Bracmat does not have built-in list comprehension, but nevertheless there is a s
         & (!x,!y,!z) !py:?py
         & ~                    { This 'failure' expression forces backtracking }
         )                      { Here ends the pattern }
-  | out$!py                    { You get here when backtracking has 
+  | out$!py                    { You get here when backtracking has
                                  exhausted all combinations of x, y and z }
   );
 ```
@@ -526,7 +526,7 @@ List * intRangeList(int f, int t) {
 
 int main(void) {
     volatile int x, y, z; const int n = 20;
-    
+
     List * pTriples = SEQ(
                           T(x, y, z),
                           (
@@ -536,10 +536,10 @@ int main(void) {
                           ),
                           (x*x + y*y == z*z)
                          );
-    
+
     volatile Triple t;
     FOR_EACH(t, Triple, pTriples,  printf("%d, %d, %d\n", t._1, t._2, t._3)  );
-    
+
     return 0;
 }
 
@@ -593,8 +593,8 @@ static class Program
 There is no equivalent construct in C++. The code below uses two nested loops and an ''if'' statement:
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <cmath>
 #include <iostream>
 #include <algorithm>
@@ -618,7 +618,7 @@ void list_comprehension( std::vector<int> & numbers , int upper_border ) {
 	 if ( ( c * c ) < pow( upper_border , 2 ) + 1 ) {
 	    if ( c == floor( c ) ) {
 	       numbers.push_back( a ) ;
-	       numbers.push_back( b ) ;	      
+	       numbers.push_back( b ) ;
 	       numbers.push_back( static_cast<int>( c ) ) ;
 	    }
 	 }
@@ -639,8 +639,8 @@ This produces the following output:
 {{works with|C++11}}
 
 
-```cpp>#include <functional
-
+```cpp
+#include <functional>
 #include <iostream>
 
 void PythagoreanTriples(int limit, std::function<void(int,int,int)> yield)
@@ -865,7 +865,7 @@ pythag = fn (N) {
          if A + B + C <= N and A * A + B * B == C * C]
 }
 
-@public 
+@public
 run = fn () {
     io.format("~p~n", [pythag(20)])
 }
@@ -963,7 +963,7 @@ Complex numbers simplify the task.  However, the reshape intrinsic function alon
 !  12  16  20
 !
 !Compilation finished at Fri Jun  7 23:39:20
- 
+
 program list_comprehension
   integer, parameter :: n = 20
   integer, parameter :: m = n*(n+1)/2
@@ -1014,12 +1014,12 @@ println( triples(20) )
 # We keep only primitive pythagorean triples
 pyth := n ->
   Filtered(Cartesian([1 .. n], [1 .. n], [1 .. n]),
-  u -> u[3]^2 = u[1]^2 + u[2]^2 and u[1] < u[2] 
+  u -> u[3]^2 = u[1]^2 + u[2]^2 and u[1] < u[2]
   and GcdInt(u[1], u[2]) = 1);
 
 pyth(100);
-# [ [ 3, 4, 5 ], [ 5, 12, 13 ], [ 7, 24, 25 ], [ 8, 15, 17 ], [ 9, 40, 41 ], [ 11, 60, 61 ], [ 12, 35, 37 ], 
-#   [ 13, 84, 85 ], [ 16, 63, 65 ], [ 20, 21, 29 ], [ 28, 45, 53 ], [ 33, 56, 65 ], [ 36, 77, 85 ], [ 39, 80, 89 ], 
+# [ [ 3, 4, 5 ], [ 5, 12, 13 ], [ 7, 24, 25 ], [ 8, 15, 17 ], [ 9, 40, 41 ], [ 11, 60, 61 ], [ 12, 35, 37 ],
+#   [ 13, 84, 85 ], [ 16, 63, 65 ], [ 20, 21, 29 ], [ 28, 45, 53 ], [ 33, 56, 65 ], [ 36, 77, 85 ], [ 39, 80, 89 ],
 #   [ 48, 55, 73 ], [ 65, 72, 97 ] ]
 ```
 
@@ -1112,9 +1112,9 @@ func main() {
 pyth :: Int -> [(Int, Int, Int)]
 pyth n =
   [ (x, y, z)
-  | x <- [1 .. n] 
-  , y <- [x .. n] 
-  , z <- [y .. n] 
+  | x <- [1 .. n]
+  , y <- [x .. n]
+  , z <- [y .. n]
   , x ^ 2 + y ^ 2 == z ^ 2 ]
 ```
 
@@ -1153,7 +1153,7 @@ pyth n =
 ```
 
 
-which can be further specialised (given the particular context of the list monad, 
+which can be further specialised (given the particular context of the list monad,
 
 in which (>>=) is flip concatMap, pure is flip (:) [], and empty is []) to:
 
@@ -1283,8 +1283,8 @@ Sample output:
 
 ```ioke
 for(
-  x <- 1..20, 
-  y <- x..20, 
+  x <- 1..20,
+  y <- x..20,
   z <- y..20,
   x * x + y * y == z * z,
   [x, y, z]
@@ -1390,7 +1390,7 @@ public interface PythagComp{
 ### ES5
 
 
-ES5 does not provide built-in notation for list comprehensions. The list monad pattern which underlies list comprehension notation can, however, be used in any language which supports the use of higher order functions. The following shows how we can achieve the same result by directly using a list monad in ES5, without the abbreviating convenience of any specific syntactic sugar. 
+ES5 does not provide built-in notation for list comprehensions. The list monad pattern which underlies list comprehension notation can, however, be used in any language which supports the use of higher order functions. The following shows how we can achieve the same result by directly using a list monad in ES5, without the abbreviating convenience of any specific syntactic sugar.
 
 
 ```javascript
@@ -1401,19 +1401,19 @@ ES5 does not provide built-in notation for list comprehensions. The list monad p
     return mb(r(1,     n), function (x) {  // x <- [1..n]
     return mb(r(1 + x, n), function (y) {  // y <- [1+x..n]
     return mb(r(1 + y, n), function (z) {  // z <- [1+y..n]
-       
+
        return x * x + y * y === z * z ? [[x, y, z]] : [];
-       
+
     })})});
 
 
     // LIBRARY FUNCTIONS
-    
+
     // Monadic bind for lists
     function mb(xs, f) {
         return [].concat.apply([], xs.map(f));
     }
-    
+
     // Monadic return for lists is simply lambda x -> [x]
     // as in [[x, y, z]] : [] above
 
@@ -1481,7 +1481,7 @@ outputs:
 
 
 
-List comprehension notation was not, in the end, included in the final ES6 standard, and the code above will not run in fully ES6-compliant browsers or interpreters, but we can still go straight to the underlying monadic logic of list comprehensions and obtain: 
+List comprehension notation was not, in the end, included in the final ES6 standard, and the code above will not run in fully ES6-compliant browsers or interpreters, but we can still go straight to the underlying monadic logic of list comprehensions and obtain:
 
 <code>[ (x, y, z)
 | x <- [1 .. n], y <- [x .. n], z <- [y .. n], x ^ 2 + y ^ 2 == z ^ 2 ]</code>
@@ -1594,13 +1594,13 @@ def triples(n):
 '''Using listof(stream; criterion)'''
 
 ```jq
-# listof( stream; criterion) constructs an array of those 
+# listof( stream; criterion) constructs an array of those
 # elements in the stream that satisfy the criterion
 def listof( stream; criterion): [ stream|select(criterion) ];
 
 def listof_triples(n):
-  listof( range(1;n+1) as $x | range($x;n+1) as $y | range($y;n+1) as $z 
-          | [$x, $y, $z]; 
+  listof( range(1;n+1) as $x | range($x;n+1) as $y | range($y;n+1) as $z
+          | [$x, $y, $z];
           .[0] * .[0] +  .[1] * .[1] ==  .[2] * .[2] ) ;
 
 listof_triples(20)
@@ -1698,12 +1698,12 @@ julia> [i + j for i in 1:5, j in 1:5, k in 1:2]
 ```scala
 // version 1.0.6
 
-fun pythagoreanTriples(n: Int) = 
-    (1..n).flatMap { 
-        x -> (x..n).flatMap { 
+fun pythagoreanTriples(n: Int) =
+    (1..n).flatMap {
+        x -> (x..n).flatMap {
             y -> (y..n).filter {
-                z ->  x * x + y * y == z * z 
-            }.map { Triple(x, y, it) } 
+                z ->  x * x + y * y == z * z
+            }.map { Triple(x, y, it) }
         }
     }
 
@@ -1731,7 +1731,7 @@ Lasso uses query expressions for list manipulation.
 #!/usr/bin/lasso9
 
 local(n = 20)
-local(triples = 
+local(triples =
   with x in generateSeries(1, #n),
        y in generateSeries(#x, #n),
        z in generateSeries(#y, #n)
@@ -1845,7 +1845,7 @@ In Matlab/Octave, one does not think much about lists rather than vectors and ma
 ```Matlab
 N = 20
 [a,b] = meshgrid(1:N, 1:N);
-c = sqrt(a.^2 + b.^2); 
+c = sqrt(a.^2 + b.^2);
 [x,y] = find(c == fix(c));
 disp([x, y, sqrt(x.^2 + y.^2)])
 ```
@@ -2032,7 +2032,7 @@ Output:
 Comprehension are of the form
 <code>[? expression | x <- enumeration ; condition; condition ; ...]</code>
 
-For instance, 
+For instance,
 
 ```ocaml
 #   [? 2 * x | x <- 0 -- max_int ; x * x > 3];;
@@ -2177,9 +2177,9 @@ Note that <tt>gather</tt>/<tt>take</tt> is the primitive in Perl 6 corresponding
 
 Phix does not have builtin support for list comprehensions.
 
-However, consider the fact that the compiler essentially converts an expression such as s[i] into calls 
-to the low-level back end (machine code) routines :%opRepe and :%opSubse depending on context (although 
-somtimes it will inline things and sometimes for better performance it will use opRepe1/opRepe1ip/opRepe1is and 
+However, consider the fact that the compiler essentially converts an expression such as s[i] into calls
+to the low-level back end (machine code) routines :%opRepe and :%opSubse depending on context (although
+somtimes it will inline things and sometimes for better performance it will use opRepe1/opRepe1ip/opRepe1is and
 opSubse1/opSubse1i/opSubse1is/opSubse1ip variants, but that's just detail). It also maps ? to hll print().
 
 Thinking laterally, Phix also does not have any special syntax for dictionaries, instead they are supported
@@ -2198,9 +2198,9 @@ global procedure traverse_dict(integer rid, object user_data=0, integer tid=1)
 global function dict_size(integer tid=1)
 ```
 
-Clearly it would be relatively trivial for the compiler, just like it does with s[i], to map some other new 
-dictionary syntax to calls to these routines (not that it would ever use the default tid of 1, and admittedly 
-traverse_dict might prove a bit trickier than the rest). Since Phix is open source, needs no other tools, and 
+Clearly it would be relatively trivial for the compiler, just like it does with s[i], to map some other new
+dictionary syntax to calls to these routines (not that it would ever use the default tid of 1, and admittedly
+traverse_dict might prove a bit trickier than the rest). Since Phix is open source, needs no other tools, and
 compiles itself in 10s, that is not as unreasonable for you (yes, you) to attempt as it might first sound.
 
 With all that in mind, the following (which works just fine as it is) might be a first step to formal list comprehension support:
@@ -2208,7 +2208,7 @@ With all that in mind, the following (which works just fine as it is) might be a
 ```Phix
 --
 -- demo\rosetta\List_comprehensions.exw
--- 
+--
 ### ==============================
 
 --
@@ -2223,7 +2223,7 @@ sequence res = {}
             res &= call_func(rid,args)
         end if
     end for
-    return res 
+    return res
 end function
 
 function triangle(integer a, b, c)
@@ -2325,7 +2325,7 @@ Output in all three cases:
    (for @X @N)
    (for @Y @X @N)
    (for @Z @Y @N)
-   (^ @ 
+   (^ @
       (let (X (-> @X)  Y (-> @Y)  Z (-> @Z))
          (= (+ (* X X) (* Y Y)) (* Z Z)) ) ) )
 ```
@@ -2449,7 +2449,7 @@ A Python generator expression (note the outer round brackets), returns an iterat
 ```
 
 
-A slower but more readable version: 
+A slower but more readable version:
 
 
 ```python
@@ -2572,7 +2572,7 @@ main()
 
 ## R
 
-R has inherent list comprehension: 
+R has inherent list comprehension:
 
 ```R
 
@@ -2618,7 +2618,7 @@ subset(expand.grid(x=1:n, y=1:n, z=1:n), x^2 + y^2 == z^2)
 
 
 ```Rascal
- 
+
 public list[tuple[int, int, int]]  PythTriples(int n) = [<a, b, c> | a <- [1..n], b <- [1..n], c <- [1 .. n], a*a + b*b == c*c];
 
 ```
@@ -2759,12 +2759,12 @@ Pythagorean triples  (a² + b² = c²,   c ≤ 35):
 
 ```ring
 
-for  x = 1 to 20 
-     for  y = x to 20 
+for  x = 1 to 20
+     for  y = x to 20
           for  z = y to 20
                if pow(x,2) + pow(y,2) = pow(z,2)
                   see "[" + x + "," + y + "," + z + "]" + nl ok
-          next 
+          next
      next
 next
 
@@ -2785,14 +2785,14 @@ Enumerable#select comprises a list from one variable, like Perl grep() or Python
 Ruby's object-oriented style enforces writing 1..100 before x. Think not of x in 1..100. Think of 1..100 giving x.
 
 
-###  Ruby 1.9.2 
+###  Ruby 1.9.2
 
 {{works with|Ruby|1.9.2}}
 
 
 ```ruby
 n = 20
- 
+
 # select Pythagorean triplets
 r = ((1..n).flat_map { |x|
        (x..n).flat_map { |y|
@@ -2828,8 +2828,8 @@ p (1..n).to_a.combination(3).select{|a,b,c| a*a + b*b == c*c}
 
 
 ```runbasic
-for  x = 1 to 20 
- for  y = x to 20 
+for  x = 1 to 20
+ for  y = x to 20
   for  z = y to 20
    if x^2 + y^2 = z^2 then  print "[";x;",";y;",";z;"]"
   next z
@@ -2866,9 +2866,9 @@ which is a syntactic sugar for:
 
 
 ```scala
- def pythagoranTriangles(n: Int) = (1 to n) flatMap (x => 
-  (x to n) flatMap (y => 
-    (y to n) filter (z => x * x + y * y == z * z) map (z => 
+ def pythagoranTriangles(n: Int) = (1 to n) flatMap (x =>
+  (x to n) flatMap (y =>
+    (y to n) filter (z => x * x + y * y == z * z) map (z =>
       (x, y, z))))
 ```
 
@@ -2965,9 +2965,9 @@ say gather {
 
 test := [ :a :b :c | a*a+(b*b)=(c*c) ].
 
-(1 to: 20) 
-    combinations: 3 atATimeDo: [ :x | 
-        (test valueWithArguments: x) 
+(1 to: 20)
+    combinations: 3 atATimeDo: [ :x |
+        (test valueWithArguments: x)
             ifTrue: [ ':-)' logCr: x ] ].
 
 "output on Transcript:
@@ -3055,7 +3055,7 @@ Tcl does not have list comprehensions built-in to the language, but they can be 
 ```tcl
 package require Tcl 8.5
 
-# from http://wiki.tcl.tk/12574 
+# from http://wiki.tcl.tk/12574
 proc lcomp {expression args} {
     # Check the number of arguments.
     if {[llength $args] < 2} {
@@ -3140,7 +3140,7 @@ Module ListComp
                  From c In Enumerable.Range(b, 21 - b) _
                  Where a * a + b * b = c * c _
                  Select New With { a, b, c }
-        
+
         For Each t In ts
             System.Console.WriteLine("{0}, {1}, {2}", t.a, t.b, t.c)
         Next
@@ -3193,7 +3193,7 @@ clauses
         Triples = [ X || X = pythTrips(20) ],
         console::write(Triples),
         Junk = console::readLine(),
-        succeed(). 
+        succeed().
 end implement main
 
 goal

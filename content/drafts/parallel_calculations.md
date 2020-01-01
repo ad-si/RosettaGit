@@ -12,25 +12,25 @@ tags = []
 
 {{task|Control Structures}}
 
-Many programming languages allow you to specify computations to be run in parallel. 
-While [[Concurrent computing]] is focused on concurrency, 
-the purpose of this task is to distribute time-consuming calculations 
+Many programming languages allow you to specify computations to be run in parallel.
+While [[Concurrent computing]] is focused on concurrency,
+the purpose of this task is to distribute time-consuming calculations
 on as many CPUs as possible.
 
-Assume we have a collection of numbers, and want to find the one 
-with the largest minimal prime factor 
-(that is, the one that contains relatively large factors). 
-To speed up the search, the factorization should be done 
-in parallel using separate threads or processes, 
+Assume we have a collection of numbers, and want to find the one
+with the largest minimal prime factor
+(that is, the one that contains relatively large factors).
+To speed up the search, the factorization should be done
+in parallel using separate threads or processes,
 to take advantage of multi-core CPUs.
 
-Show how this can be formulated in your language. 
-Parallelize the factorization of those numbers, 
-then search the returned list of numbers and factors 
-for the largest minimal factor, 
+Show how this can be formulated in your language.
+Parallelize the factorization of those numbers,
+then search the returned list of numbers and factors
+for the largest minimal factor,
 and return that number and its prime factors.
 
-For the prime number decomposition 
+For the prime number decomposition
 you may use the solution of the [[Prime decomposition]] task.
 
 {{omit from|J}}
@@ -198,17 +198,17 @@ Number 12878611 has largest minimal factor:
 
 ## C
 
-C code using OpenMP.  Compiled with <code>gcc -Wall -std=c99 -fopenmp</code>, 
-where GCC 4.2 or later is required.  
-Note that the code finds the largest first prime factor, 
-but does not return the factor list: 
-it's just a matter of repeating the prime factor test, 
-which adds clutter but does not make the code any more interesting.  
-For that matter, the code uses the dumbest prime factoring method, 
+C code using OpenMP.  Compiled with <code>gcc -Wall -std=c99 -fopenmp</code>,
+where GCC 4.2 or later is required.
+Note that the code finds the largest first prime factor,
+but does not return the factor list:
+it's just a matter of repeating the prime factor test,
+which adds clutter but does not make the code any more interesting.
+For that matter, the code uses the dumbest prime factoring method,
 and doesn't even test if the numbers can be divided by 2.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <omp.h>
 
 int main()
@@ -265,8 +265,8 @@ Largest factor: 47 of 12878893
 This uses C++11 features including lambda functions.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iterator>
 #include <vector>
 #include <ppl.h> // MSVC++
@@ -784,7 +784,7 @@ let largestMinPrimeFactor (numbers: int64 list) =
     let decompDetails = Async.Parallel [ for n in numbers -> async { return n, decomp n } ] // Compute the number and its prime decomposition list
                         |> Async.RunSynchronously                                           // Start and wait for all parallel computations to complete.
                         |> Array.sortBy (snd >> List.min >> (~-))                           // Sort in descending order, based on the min prime decomp number.
-     
+
     decompDetails.[0]
 
 let showLargestMinPrimeFactor numbers =
@@ -1032,8 +1032,8 @@ lowestFactor s n
   where
     y =
       [ x
-      | x <- [s .. ceiling . sqrt $ fromIntegral n] ++ [n] 
-      , n `rem` x == 0 
+      | x <- [s .. ceiling . sqrt $ fromIntegral n] ++ [n]
+      , n `rem` x == 0
       , odd x ]
 
 primeFactors
@@ -1085,7 +1085,7 @@ procedure primedecomp(n)         #: return a list of factors
     every put(F := [], genfactors(n))
     return F
 end
- 
+
 link factors
 
 ```
@@ -1096,7 +1096,7 @@ Sample run:
 ```txt
 
 ->pc 57646075230343 112272537195 115284584525
-57646075230343: 8731 6602459653 
+57646075230343: 8731 6602459653
 ->
 
 ```
@@ -1124,10 +1124,10 @@ The code at [http://code.jsoftware.com/wiki/User:Marshall_Lochbaum/Parallelize] 
 {{works with|Java|8}}
 
 ```java
-import static java.lang.System.out; 
+import static java.lang.System.out;
 import static java.util.Arrays.stream;
 import static java.util.Comparator.comparing;
- 
+
 public interface ParallelCalculations {
     public static final long[] NUMBERS = {
       12757923,
@@ -1138,7 +1138,7 @@ public interface ParallelCalculations {
       15780709,
       197622519
     };
- 
+
     public static void main(String... arguments) {
       stream(NUMBERS)
         .unordered()
@@ -1151,7 +1151,7 @@ public interface ParallelCalculations {
           res[0]
         ));
     }
- 
+
     public static long[] minimalPrimeFactor(long n) {
       for (long i = 2; n >= i * i; i++) {
         if (n % i == 0) {
@@ -1179,7 +1179,7 @@ This first portion should be placed in a file called "parallel_worker.js". This 
 
 ```javascript
 
-var onmessage = function(event) {   
+var onmessage = function(event) {
     postMessage({"n" : event.data.n,
                  "factors" : factor(event.data.n),
                  "id" : event.data.id});
@@ -1381,7 +1381,7 @@ Numbers of workers to use can be adjusted using --W command line option.
 ```Oforth
 import: parallel
 
-: largeMinFactor  dup mapParallel(#factors) zip maxFor(#[ second first ]) ; 
+: largeMinFactor  dup mapParallel(#factors) zip maxFor(#[ second first ]) ;
 ```
 
 
@@ -1415,7 +1415,7 @@ reply "Start primes"which':' time()
 Select
   When which=1 Then Call pd1 bot top
   When which=2 Then Call pd2 bot top
-  End 
+  End
 ```
 
 {{out}}
@@ -1757,7 +1757,7 @@ next
 
 'STOP TIMER
 
-QueryPerformanceCounter t2 
+QueryPerformanceCounter t2
 
 print str((t2-t1)/freq,3) " secs    " numbers(n) "    " f 'number with highest prime factor
 
@@ -2018,7 +2018,7 @@ largest is 2^64+1 with smallest factor of 274177 (5 threads, 4.5s)
 IE: Checking the first 1 million primes as factors of 2^(1..100)+1 takes 1 core 9.5s and less when spread over multiple cores.
 
 Note however that I added quite a bit of locking to mpz_prime_factors(), specifically around get_prime() and mpz_probable_prime(),
-[happy to leave it in since the effect on the single-thread case was neglible] so it is really only the mpz_divisible_ui_p() calls 
+[happy to leave it in since the effect on the single-thread case was neglible] so it is really only the mpz_divisible_ui_p() calls
 and some control-flow scaffolding that is getting parallelised. I only got 4 cores so the 5th thread was not expected to help.
 
 
@@ -2114,10 +2114,10 @@ Example (Numbers Same as in Ada Example):
 % parallel compiled 0.00 sec, 4,672 bytes
 true.
 format_it([12757923,
-       12878611, 
-       12757923, 
-       15808973, 
-       15780709, 
+       12878611,
+       12757923,
+       15808973,
+       15780709,
       197622519]).
 Number with largest minimal factor is 12878611
 Factors are [2713, 101, 47]
@@ -2233,7 +2233,7 @@ Python 3.2 has a new [http://www.python.org/dev/peps/pep-3148/ concurrent.future
 ```python
 from concurrent import futures
 from math import floor, sqrt
- 
+
 NUMBERS = [
     112272537195293,
     112582718962171,
@@ -2242,7 +2242,7 @@ NUMBERS = [
     115797840077099,
     1099726829285419]
 # NUMBERS = [33, 44, 55, 275]
- 
+
 def lowest_factor(n, _start=3):
     if n % 2 == 0:
         return 2
@@ -2266,14 +2266,14 @@ def prime_factors_of_number_with_lowest_prime_factor(NUMBERS):
         all_factors = prime_factors(number, low_factor)
         return number, all_factors
 
- 
+
 def main():
     print('For these numbers:')
     print('\n  '.join(str(p) for p in NUMBERS))
     number, all_factors = prime_factors_of_number_with_lowest_prime_factor(NUMBERS)
     print('    The one with the largest minimum prime factor is {}:'.format(number))
     print('      All its prime factors in order are: {}'.format(all_factors))
- 
+
 if __name__ == '__main__':
     main()
 ```
@@ -2303,11 +2303,11 @@ For these numbers:
 ```python
 import multiprocessing
 
-# 
+#
 ### ====
  #Python3 - concurrent
 from math import floor, sqrt
- 
+
 numbers = [
     112272537195293,
     112582718962171,
@@ -2316,7 +2316,7 @@ numbers = [
     115797840077099,
     1099726829285419]
 # numbers = [33, 44, 55, 275]
- 
+
 def lowest_factor(n, _start=3):
     if n % 2 == 0:
         return 2
@@ -2325,7 +2325,7 @@ def lowest_factor(n, _start=3):
         if n % i == 0:
             return i
     return n
- 
+
 def prime_factors(n, lowest):
     pf = []
     while n > 1:
@@ -2333,18 +2333,18 @@ def prime_factors(n, lowest):
         n //= lowest
         lowest = lowest_factor(n, max(lowest, 3))
     return pf
-# 
+#
 ### ====
  #Python3 - concurrent
 
 def prime_factors_of_number_with_lowest_prime_factor(numbers):
     pool = multiprocessing.Pool(processes=5)
     factors = pool.map(lowest_factor,numbers)
-    
+
     low_factor,number = max((l,f) for l,f in zip(factors,numbers))
     all_factors = prime_factors(number,low_factor)
     return number,all_factors
- 
+
 if __name__ == '__main__':
     print('For these numbers:')
     print('\n  '.join(str(p) for p in numbers))
@@ -2364,21 +2364,21 @@ if __name__ == '__main__':
 #lang racket
 (require math)
 (provide main)
- 
+
 (define (smallest-factor n)
   (list (first (first (factorize n))) n))
 
-(define numbers 
+(define numbers
   '(112272537195293 112582718962171 112272537095293
     115280098190773 115797840077099 1099726829285419))
 
 (define (main)
   ; create as many instances of Racket as
   ; there are numbers:
-  (define ps 
+  (define ps
     (for/list ([_ numbers])
       (place ch
-             (place-channel-put 
+             (place-channel-put
               ch
               (smallest-factor
                (place-channel-get ch))))))
@@ -2410,13 +2410,13 @@ SequenceL compiles to parallel C++ without any input from the user regarding exp
 ;
 import <Utilities/Math.sl>;
 import <Utilities/Sequence.sl>;
-		
-main(args(2)) := 
+
+main(args(2)) :=
 	let
 		inputs := stringToInt(args);
-		factored := primeFactorization(inputs); 
+		factored := primeFactorization(inputs);
 		minFactors := vectorMin(factored);
-		
+
 		indexOfMax := firstIndexOf(minFactors, vectorMax(minFactors));
 	in
 		"Number " ++ intToString(inputs[indexOfMax]) ++ " has largest minimal factor:\n"  ++ delimit(intToString(factored[indexOfMax]), ' ');
@@ -2431,7 +2431,7 @@ The primary source of parallelization in the above code is from the line:
 factored := primeFactorization(inputs);
 ```
 
-Since primeFactorization is defined on scalar integers and inputs is a sequence of integers, this call results in a Normalize Transpose. The value of factored  will be the sequence of results of applying primeFactorization to each element of inputs. 
+Since primeFactorization is defined on scalar integers and inputs is a sequence of integers, this call results in a Normalize Transpose. The value of factored  will be the sequence of results of applying primeFactorization to each element of inputs.
 
 Normalize Transpose is one of the semantics which allows SequenceL to automatically generate parallel code.
 

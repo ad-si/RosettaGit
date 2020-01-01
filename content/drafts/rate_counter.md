@@ -217,7 +217,7 @@ LABEL timeit
         INCR iter
         IF TIMER >= starter + i THEN BREAK
     WEND
-    PRINT iter, " iterations in ", i, " millisecond", IIF$(i > 1, "s", "") 
+    PRINT iter, " iterations in ", i, " millisecond", IIF$(i > 1, "s", "")
     RETURN
 ```
 
@@ -246,7 +246,7 @@ prompt$ ./rate-counter
         finish% = TIME
         PRINT "Rate = "; 100 / (finish%-start%) " per second"
       NEXT trial%
-      
+
       PRINT '"Method 2: Count completed tasks in one second:"
       FOR trial% = 1 TO 3
         runs% = 0
@@ -258,7 +258,7 @@ prompt$ ./rate-counter
         PRINT "Rate = "; runs% " per second"
       NEXT trial%
       END
-      
+
       REM This is an example, replace with the task you want to measure
       DEF PROCtasktomeasure
       LOCAL i%
@@ -290,8 +290,8 @@ Rate = 9 per second
 This code stores all of the data of the rate counter and its configuration in an instance of a struct named '''rate_state_s''', and a function named '''tic_rate''' is called on that struct instance every time we complete a job.  If a configured time has elapsed, '''tic_rate''' calculates and reports the tic rate, and resets the counter.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <time.h>
 
 // We only get one-second precision on most systems, as
@@ -374,8 +374,8 @@ int main()
 This code defines the counter as a class, '''CRateState'''. The counter's period is configured as an argument to its constructor, and the rest of the counter state is kept as class members. A member function '''Tick()''' manages updating the counter state, and reports the tic rate if the configured period has elapsed.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <ctime>
 
 // We only get one-second precision on most systems, as
@@ -505,7 +505,7 @@ void f0() {}
 void f1() { auto b = a; }
 void f2() { auto b = to!string(a); }
 
-	
+
 void main()
 {
   auto r = benchmark!(f0, f1, f2)(10_000);
@@ -514,7 +514,7 @@ void main()
   writeln("f0: ", r[0]);
   writeln("f1: ", r[1]);
   writeln("f2: ", r[2]);
-	
+
 }
 
 
@@ -548,11 +548,11 @@ The rate counter:
 /** Returns a function to call to report the event being counted, and an
     EverReporter slot containing the current rate, as a float64 in units of
     events per millisecond. */
-def makeRateCounter(timer, reportPeriod) {  
+def makeRateCounter(timer, reportPeriod) {
     var count := 0
     var start := timer.now()
     def &rate := makeLamportSlot(nullOk[float64], null)
-  
+
     def signal() {
         def time := timer.now()
         count += 1
@@ -562,7 +562,7 @@ def makeRateCounter(timer, reportPeriod) {
             count := 0
         }
     }
-  
+
     return [signal, &rate]
 }
 ```
@@ -732,9 +732,9 @@ Rate = 15 per second
 
 Standard Fortran does not offer facilities for starting another task, nor for monitoring such a task's consumption of cpu time against clock time. However, a program can monitor its ''own'' usage by invoking a suitable routine at appropriate points in its computation, say on each new iteration of its outermost DO-loop, and thus generate progress reports that could also include an estimated time of finishing. This requires access to system timers, usually achieved via invocations of special routines that are often specific to an installation. But F90 introduced the intrinsic <code>CALL CPU_TIME(T)</code> that returns a "processor-dependent approximation of the processor time in seconds" in <code>T</code> a floating-point variable.
 
-Similarly, an installation may offer local routines to report the date and time, and F90 has introduced an intrinsic that can be invoked as <code>CALL DATE_AND_TIME(VALUES = MARK)</code> where MARK is an eight-element integer array, rather exhaustingly returning year, month, day, minutes from GMT (or UT, ''etc''), hour, minute, second, milliseconds. 
+Similarly, an installation may offer local routines to report the date and time, and F90 has introduced an intrinsic that can be invoked as <code>CALL DATE_AND_TIME(VALUES = MARK)</code> where MARK is an eight-element integer array, rather exhaustingly returning year, month, day, minutes from GMT (or UT, ''etc''), hour, minute, second, milliseconds.
 
-So, in 
+So, in
 ```Fortran
       DO I = FIRST,LAST
         IF (PROGRESSNOTE((I - FIRST)/(LAST - FIRST + 1.0))) WRITE (6,*) "Reached ",I,", towards ",LAST
@@ -969,7 +969,7 @@ public class RateCounter {
 
 
 
-###  Stream based solution 
+###  Stream based solution
 
 {{trans|JavaScript}}
 {{works with|Java|8}}
@@ -1153,7 +1153,7 @@ fun <T> benchmark(n: Int, func: Func<T>, arg: T): LongArray {
          times[i] = System.nanoTime() - m
     }
     return times
-} 
+}
 
 fun main(args: Array<String>) {
     println("\nTimings (nanoseconds) : ")
@@ -1242,7 +1242,7 @@ function testFunc()
         s=s+sin(i)/30000
     next
     testFunc = s
-end function 
+end function
 
 ```
 
@@ -1299,7 +1299,7 @@ Class Jobrecord
 '
 ### ========
 
-  
+
   has SYSTEMTIME stt
   has SYSTEMTIME fin
   quad countA
@@ -1325,7 +1325,7 @@ Class Jobrecord
   '
   String month=pad(str t.wMonth)
   String day=pad(str t.wDay)
-  if f=0 then 
+  if f=0 then
     return "" t.wYear "-" month "-" day "    "+
     pad(t.wHour) ":" pad(t.wMinute) ":" pad(t.wSecond) ":" t.wMilliSeconds
   elseif f=1
@@ -1490,7 +1490,7 @@ On windows, time() advances in ~0.015s increments, whereas on linux it is ~0.000
 procedure task_to_measure()
     sleep(0.1)
 end procedure
- 
+
 printf(1,"method 1: calculate reciprocal of elapsed time:\n")
 for trial=1 to 3 do
     atom t=time()
@@ -1499,7 +1499,7 @@ for trial=1 to 3 do
     string r = iff(t?sprintf("%g",1/t):"inf")
     printf(1,"rate = %s per second\n",{r})
 end for
- 
+
 printf(1,"method 2: count completed tasks in one second:\n")
 for trial=1 to 3 do
     integer runs=0
@@ -1551,8 +1551,8 @@ strokes
 Output:
 
 ```txt
-Hit a key ... 
-Hit another key ... 
+Hit a key ...
+Hit another key ...
 This took 3.132058 seconds
 ```
 
@@ -1581,7 +1581,7 @@ also be used. Here we measure the time until a key is pressed
 [int]$count = 3
 
 [timespan[]]$times = for ($i = 0; $i -lt $count; $i++)
-{ 
+{
     Measure-Command {0..999999 | Out-Null}
 }
 
@@ -1643,7 +1643,7 @@ If OpenWindow(0,#PB_Ignore,#PB_Ignore,220,110,"",#PB_Window_SystemMenu)
   TimesPSec(1)
   Repeat
     Event=WaitWindowEvent()
-    If Event=#PB_Event_Gadget 
+    If Event=#PB_Event_Gadget
       GadgetNumber =EventGadget()
       If GadgetNumber=0
         r=TimesPSec()
@@ -1727,13 +1727,13 @@ import sys
 
 def main( ):
 
-    # for accurate timing of code segments 
+    # for accurate timing of code segments
     s = """j = [4*n for n in range(50)]"""
     timer = timeit.Timer(s)
     rzlts = timer.repeat(5, 5000)
     for t in rzlts:
         print "Time for 5000 executions of statement = ",t
-    
+
     # subprocess execution timing
     print "#times:",sys.argv[1]
     print "Command:",sys.argv[2:]
@@ -2039,7 +2039,7 @@ for trial = 1 to 3
     tasktomeasure()
     finish = clock()
     see "rate = " + 100 / (finish-start) + " per second" + nl
-next 
+next
 
 see "method 2: count completed tasks in one second:" + nl
 for trial = 1 to 3
@@ -2053,7 +2053,7 @@ for trial = 1 to 3
     end
     see "rate = " + runs + " per second" + nl
 next
- 
+
 func tasktomeasure
      for i = 1 to 100000
      next
@@ -2160,7 +2160,7 @@ function bogusProg()
         tani = tani + tan(i)
         cpsi = cosi + cos(i)
     next
-end function 
+end function
 ```
 
 Output:
@@ -2168,7 +2168,7 @@ Output:
 <table bgcolor=wheat border=1><tr><td align=center colspan=2>Rate Counter</td></tr>
 <tr><td>Run Job Times</td><td bgcolor=white>10</td></tr>
 <tr><td align=center colspan=2>
-<button value="Run"/>        
+<button value="Run"/>
 <button value="Average"/></td></tr></table>
 .-------- Run Number 1 ----------------<br />
 Run jobs 2 times, reporting each<br />
@@ -2362,7 +2362,7 @@ int N, I, T0, Time;
         repeat until port($3DA) & $08;  \wait for vertical retrace signal
         ];
     Time:= GetTime - T0;
-    IntOut(0, Time);  Text(0, " microseconds for 100 samples = ");  
+    IntOut(0, Time);  Text(0, " microseconds for 100 samples = ");
     RlOut(0, 100.0e6/float(Time));  Text(0, "Hz");  CrLf(0);
     ];
 ]
@@ -2424,7 +2424,7 @@ One second resolution and we let the computation run to completion. We could run
 
 ```zkl
 fcn rateCounter(f,timeNRuns,secsToRun=Void){
-   now:=Time.Clock.time; 
+   now:=Time.Clock.time;
    if(secsToRun){
       then:=now + secsToRun;
       N:=0; do{ f(); N+=1; }while(Time.Clock.time<then);

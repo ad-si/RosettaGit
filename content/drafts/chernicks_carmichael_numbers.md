@@ -71,8 +71,8 @@ For '''n ≥ 3''', let '''a(n)''' be the smallest Chernick's Carmichael number w
 
 {{libheader|GMP}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <gmp.h>
 
@@ -147,8 +147,8 @@ a(10) has m = 3208386195840
 
 {{libheader|GMP}}
 
-```cpp>#include <gmp.h
-
+```cpp
+#include <gmp.h>
 #include <iostream>
 
 using namespace std;
@@ -270,12 +270,12 @@ let cherCar k=let m=Seq.head(fX k) in printfn "m=%d primes -> %A " m ([6*m+1;12*
 
 ```txt
 
-cherCar(4): m=1 primes -> [7; 13; 19; 37] 
-cherCar(5): m=380 primes -> [2281; 4561; 6841; 13681; 27361] 
-cherCar(6): m=380 primes -> [2281; 4561; 6841; 13681; 27361; 54721] 
-cherCar(7): m=780320 primes -> [4681921; 9363841; 14045761; 28091521; 56183041; 112366081; 224732161] 
-cherCar(8): m=950560 primes -> [5703361; 11406721; 17110081; 34220161; 68440321; 136880641; 273761281; 547522561] 
-cherCar(9): m=950560 primes -> [5703361; 11406721; 17110081; 34220161; 68440321; 136880641; 273761281; 547522561; 1095045121] 
+cherCar(4): m=1 primes -> [7; 13; 19; 37]
+cherCar(5): m=380 primes -> [2281; 4561; 6841; 13681; 27361]
+cherCar(6): m=380 primes -> [2281; 4561; 6841; 13681; 27361; 54721]
+cherCar(7): m=780320 primes -> [4681921; 9363841; 14045761; 28091521; 56183041; 112366081; 224732161]
+cherCar(8): m=950560 primes -> [5703361; 11406721; 17110081; 34220161; 68440321; 136880641; 273761281; 547522561]
+cherCar(9): m=950560 primes -> [5703361; 11406721; 17110081; 34220161; 68440321; 136880641; 273761281; 547522561; 1095045121]
 
 ```
 
@@ -374,7 +374,7 @@ The following version takes account of the optimizations referred to in the Talk
 
 It also uses a wrapper for the C library, GMP, which despite the overhead of cgo is still much faster than Go's native big.Int library.
 
-The resulting executable is several hundred times faster than before and, even on my modest Celeron @1.6GHZ, reaches a(9) in under 10ms and a(10) in about 22 minutes. 
+The resulting executable is several hundred times faster than before and, even on my modest Celeron @1.6GHZ, reaches a(9) in under 10ms and a(10) in about 22 minutes.
 
 ```go
 package main
@@ -481,35 +481,35 @@ func main() {
 
 a(3) = 1729
 m(3) = 1
-Factors: [7 13 19] 
+Factors: [7 13 19]
 
 a(4) = 63973
 m(4) = 1
-Factors: [7 13 19 37] 
+Factors: [7 13 19 37]
 
 a(5) = 26641259752490421121
 m(5) = 380
-Factors: [2281 4561 6841 13681 27361] 
+Factors: [2281 4561 6841 13681 27361]
 
 a(6) = 1457836374916028334162241
 m(6) = 380
-Factors: [2281 4561 6841 13681 27361 54721] 
+Factors: [2281 4561 6841 13681 27361 54721]
 
 a(7) = 24541683183872873851606952966798288052977151461406721
 m(7) = 780320
-Factors: [4681921 9363841 14045761 28091521 56183041 112366081 224732161] 
+Factors: [4681921 9363841 14045761 28091521 56183041 112366081 224732161]
 
 a(8) = 53487697914261966820654105730041031613370337776541835775672321
 m(8) = 950560
-Factors: [5703361 11406721 17110081 34220161 68440321 136880641 273761281 547522561] 
+Factors: [5703361 11406721 17110081 34220161 68440321 136880641 273761281 547522561]
 
 a(9) = 58571442634534443082821160508299574798027946748324125518533225605795841
 m(9) = 950560
-Factors: [5703361 11406721 17110081 34220161 68440321 136880641 273761281 547522561 1095045121] 
+Factors: [5703361 11406721 17110081 34220161 68440321 136880641 273761281 547522561 1095045121]
 
 a(10) = 24616075028246330441656912428380582403261346369700917629170235674289719437963233744091978433592331048416482649086961226304033068172880278517841921
 m(10) = 3208386195840
-Factors: [19250317175041 38500634350081 57750951525121 115501903050241 231003806100481 462007612200961 924015224401921 1848030448803841 3696060897607681 7392121795215361] 
+Factors: [19250317175041 38500634350081 57750951525121 115501903050241 231003806100481 462007612200961 924015224401921 1848030448803841 3696060897607681 7392121795215361]
 
 ```
 
@@ -801,16 +801,16 @@ end function
 
 function is_chernick_carmichael(integer n, m)
     return iff(n==2 ? m_prime(6*m + 1) and m_prime(12*m + 1)
-                    : m_prime(power(2,n-2) * 9*m + 1) and 
+                    : m_prime(power(2,n-2) * 9*m + 1) and
                       is_chernick_carmichael(n-1, m))
 end function
- 
+
 function chernick_carmichael_number(integer n)
     integer multiplier = iff(n>4 ? power(2,n-4) : 1), m = 1
     while not is_chernick_carmichael(n, m * multiplier) do m += 1 end while
     return chernick_carmichael_factors(n, m * multiplier)
 end function
- 
+
 for n=3 to 9 do
     sequence f = chernick_carmichael_number(n)
     for i=1 to length(f) do f[i] = sprintf("%d",f[i]) end for
@@ -881,7 +881,7 @@ a(9) = 5703361 * 11406721 * 17110081 * 34220161 * 68440321 * 136880641 * 2737612
 
 {{trans|Go}}
 {{libheader|GMP}} GNU Multiple Precision Arithmetic Library
-Using GMP (probabilistic primes), 
+Using GMP (probabilistic primes),
 because it is easy and fast to check primeness.
 
 ```zkl

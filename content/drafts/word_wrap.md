@@ -13,11 +13,11 @@ tags = []
 {{task}}
 [[Category:Text processing]]
 
-Even today, with proportional fonts and complex layouts, there are still [[Template:Lines_too_long|cases]] where you need to wrap text at a specified column.  
+Even today, with proportional fonts and complex layouts, there are still [[Template:Lines_too_long|cases]] where you need to wrap text at a specified column.
 
 
 ;Basic task:
-The basic task is to wrap a paragraph of text in a simple way in your language.  
+The basic task is to wrap a paragraph of text in a simple way in your language.
 
 If there is a way to do this that is built-in, trivial, or provided in a standard library, show that.  Otherwise implement the [http://en.wikipedia.org/wiki/Word_wrap#Minimum_length minimum length greedy algorithm from Wikipedia.]
 
@@ -25,12 +25,12 @@ Show your routine working on a sample of text at two different wrap columns.
 
 
 ;Extra credit:
-Wrap text using a more sophisticated algorithm such as the Knuth and Plass TeX algorithm.  
-If your language provides this, you get easy extra credit, 
-but you ''must reference documentation'' indicating that the algorithm 
+Wrap text using a more sophisticated algorithm such as the Knuth and Plass TeX algorithm.
+If your language provides this, you get easy extra credit,
+but you ''must reference documentation'' indicating that the algorithm
 is something better than a simple minimimum length algorithm.
 
-If you have both basic and extra credit solutions, show an example where 
+If you have both basic and extra credit solutions, show an example where
 the two algorithms give different results.
 
 
@@ -39,7 +39,7 @@ the two algorithms give different results.
 
 ## 360 Assembly
 
-The program uses one ASSIST macro (XPRNT) to keep the code as short as possible. 
+The program uses one ASSIST macro (XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Word wrap                 29/01/2017
@@ -50,7 +50,7 @@ WORDWRAP CSECT
          STM    R14,R12,12(R13)    prolog
          ST     R13,4(R15)         " <-
          ST     R15,8(R13)         " ->
-         LR     R13,R15            " addressability         
+         LR     R13,R15            " addressability
          MVC    S2,=CL96' '        s2=''
          SR     R0,R0
          STH    R0,LENS2           lens2=0
@@ -163,7 +163,7 @@ IFLENSLW CLI    CAS,X'00'          if ^cas
 ELJLENS2 SR     R0,R0                  else
          STH    R0,LENS2                 lens2=0
 EFJLENS2 B      IFNOTCAS
-NOKJ     CLI    OKK,X'01'            else if okk 
+NOKJ     CLI    OKK,X'01'            else if okk
          BNE    NOTOKK
          STH    R10,LENS1              lens1=k
          LH     R2,LENS
@@ -184,7 +184,7 @@ NOKJ     CLI    OKK,X'01'            else if okk
          LR     R5,R7
          MVCL   R6,R4                    s2=substr(s,k+1,lens2)
          B      EFKLENS2               else
-ELKLENS2 SR     R0,R0 
+ELKLENS2 SR     R0,R0
          STH    R0,LENS2                 lens2=0
 EFKLENS2 B      IFNOTCAS             else
 NOTOKK   LH     R0,LENS
@@ -206,7 +206,7 @@ ELCAS    LA     R6,PG
          LA     R7,L'PG
          LA     R4,S1
          LH     R5,LENS1
-         ICM    R5,B'1000',=C' '     padding		 
+         ICM    R5,B'1000',=C' '     padding
          MVCL   R6,R4                pg=substr(s1,1,lens1)
          XPRNT  PG,L'PG              put skip list(pg)
 EFCAS    MVI    OKS2,X'00'         oks2=false
@@ -227,13 +227,13 @@ ELOOPI   LH     R4,LENS2
          LA     R7,L'PG
          LA     R4,S2
          LH     R5,LENS2
-         ICM    R5,B'1000',=C' '     padding		 
+         ICM    R5,B'1000',=C' '     padding
          MVCL   R6,R4                pg=substr(s2,1,lens2)
          XPRNT  PG,L'PG              put skip list(pg)
-EFLENS2N L      R13,4(0,R13)       epilog 
+EFLENS2N L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    " restore
          XR     R15,R15            " rc=0
-         BR     R14                exit         
+         BR     R14                exit
 TS       DC     CL48'In olden times when wishing still helped one,'
          DC     CL48'there lived a king whose daughters were all,'
          DC     CL48'beautiful, but the youngest was so beautiful'
@@ -457,7 +457,7 @@ the two algorithms give different results.
 
 
 Note that this solution properly deals with multi-paragraph inputs.
-For more sophisticated algorithms (the extra credit), one could derive 
+For more sophisticated algorithms (the extra credit), one could derive
 a class '''Word_Wrap.<something>''' from '''Word_Wrap.Basic'''.
 
 
@@ -514,7 +514,7 @@ Basic word wrap.
 function wordwrap_paragraph(p)
 {
   if ( length(p) < 1 ) return
-  
+
   split(p, words)
   spaceLeft = lineWidth
   line = words[1]
@@ -554,7 +554,7 @@ END {
 ```
 
 
-To test it, 
+To test it,
 
 
 ```txt
@@ -589,21 +589,21 @@ BaCon has the ALIGN$ function which can align text left-side, right-side, center
 
 ```txt
 
-In olden times when wishing still helped one, there lived a king whose  
-daughters were all beautiful, but the youngest was so beautiful that    
-the sun itself, which has seen so much, was astonished whenever it      
-shone in her face. Close by the king's castle lay a great dark forest,  
-and under an old lime tree in the forest was a well, and when the day   
-was very warm, the king's child went out into the forest and sat down   
-by the side of the cool fountain, and when she was bored she took a     
-golden ball, and threw it up on high and caught it, and this ball was   
+In olden times when wishing still helped one, there lived a king whose
+daughters were all beautiful, but the youngest was so beautiful that
+the sun itself, which has seen so much, was astonished whenever it
+shone in her face. Close by the king's castle lay a great dark forest,
+and under an old lime tree in the forest was a well, and when the day
+was very warm, the king's child went out into the forest and sat down
+by the side of the cool fountain, and when she was bored she took a
+golden ball, and threw it up on high and caught it, and this ball was
 her favorite plaything.
-In olden times when wishing still helped one, there lived a king whose daughters were all 
-beautiful, but the youngest was so beautiful that the sun itself, which has seen so much, 
-was astonished whenever it shone in her face. Close by the king's castle lay a great dark 
-forest, and under an old lime tree in the forest was a well, and when the day was very    
-warm, the king's child went out into the forest and sat down by the side of the cool      
-fountain, and when she was bored she took a golden ball, and threw it up on high and      
+In olden times when wishing still helped one, there lived a king whose daughters were all
+beautiful, but the youngest was so beautiful that the sun itself, which has seen so much,
+was astonished whenever it shone in her face. Close by the king's castle lay a great dark
+forest, and under an old lime tree in the forest was a well, and when the day was very
+warm, the king's child went out into the forest and sat down by the side of the cool
+fountain, and when she was bored she took a golden ball, and threw it up on high and
 caught it, and this ball was her favorite plaything.
 
 ```
@@ -744,8 +744,8 @@ this ball was her favorite plaything.
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -933,8 +933,8 @@ int main(void)
 Basic task.
 {{trans|Go}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <sstream>
 #include <string>
 
@@ -1211,7 +1211,7 @@ plaything.
  face. Close by the king's castle lay a great dark forest, and under an old lime tree in the forest was a well, and
  when the day was very warm, the king's child went out into the forest and sat down by the side of the cool fountain,
  and when she was bored she took a golden ball, and threw it up on high and caught it, and this ball was her favorite
- plaything.") 
+ plaything.")
 
 (greedy-wrap str 72)
 
@@ -1224,7 +1224,7 @@ plaything.
  "of the cool fountain, and when she was bored she took a golden ball, and"
  "threw it up on high and caught it, and this ball was her favorite"
  "plaything.")
- 
+
 (greedy-wrap str 80)
 
 ("In olden times when wishing still helped one, there lived a king whose daughters"
@@ -1370,46 +1370,46 @@ ELENA 4.x :
 import extensions;
 import system'routines;
 import extensions'text;
- 
+
 string text =
-    "In olden times when wishing still helped one, there lived a king 
-whose daughters were all beautiful, but the youngest was so beautiful 
-that the sun itself, which has seen so much, was astonished whenever 
-it shone in her face.  Close by the king's castle lay a great dark 
-forest, and under an old lime tree in the forest was a well, and when 
-the day was very warm, the king's child went out into the forest and 
-sat down by the side of the cool fountain, and when she was bored she 
-took a golden ball, and threw it up on high and caught it, and this 
+    "In olden times when wishing still helped one, there lived a king
+whose daughters were all beautiful, but the youngest was so beautiful
+that the sun itself, which has seen so much, was astonished whenever
+it shone in her face.  Close by the king's castle lay a great dark
+forest, and under an old lime tree in the forest was a well, and when
+the day was very warm, the king's child went out into the forest and
+sat down by the side of the cool fountain, and when she was bored she
+took a golden ball, and threw it up on high and caught it, and this
 ball was her favorite plaything.";
- 
+
 extension wrapOp
 {
     wrap(int lineWidth)
     {
         int currentWidth := 0;
- 
-        ^ TokenEnumerator 
-            .new(self) 
+
+        ^ TokenEnumerator
+            .new(self)
             .selectBy:(word)
             {
                 currentWidth += word.Length;
                 if (currentWidth > lineWidth)
                 {
                     currentWidth := word.Length + 1;
- 
+
                     ^ newLine + word + " "
                 }
                 else
                 {
                     currentWidth += 1;
- 
+
                     ^  word + " "
                 }
             }
             .summarize(new StringWriter())
     }
 }
- 
+
 public program()
 {
     console.printLine(new StringWriter("-", 72));
@@ -1424,24 +1424,24 @@ public program()
 ```txt
 
 ------------------------------------------------------------------------
-In olden times when wishing still helped one, there lived a king whose 
-daughters were all beautiful, but the youngest was so beautiful that the 
-sun itself, which has seen so much, was astonished whenever it shone in 
-her face. Close by the king's castle lay a great dark forest, and under 
-an old lime tree in the forest was a well, and when the day was very 
-warm, the king's child went out into the forest and sat down by the side 
-of the cool fountain, and when she was bored she took a golden ball, and 
-threw it up on high and caught it, and this ball was her favorite 
-plaything. 
+In olden times when wishing still helped one, there lived a king whose
+daughters were all beautiful, but the youngest was so beautiful that the
+sun itself, which has seen so much, was astonished whenever it shone in
+her face. Close by the king's castle lay a great dark forest, and under
+an old lime tree in the forest was a well, and when the day was very
+warm, the king's child went out into the forest and sat down by the side
+of the cool fountain, and when she was bored she took a golden ball, and
+threw it up on high and caught it, and this ball was her favorite
+plaything.
 --------------------------------------------------------------------------------
-In olden times when wishing still helped one, there lived a king whose daughters 
-were all beautiful, but the youngest was so beautiful that the sun itself, which 
-has seen so much, was astonished whenever it shone in her face. Close by the 
-king's castle lay a great dark forest, and under an old lime tree in the forest 
-was a well, and when the day was very warm, the king's child went out into the 
-forest and sat down by the side of the cool fountain, and when she was bored she 
-took a golden ball, and threw it up on high and caught it, and this ball was her 
-favorite plaything. 
+In olden times when wishing still helped one, there lived a king whose daughters
+were all beautiful, but the youngest was so beautiful that the sun itself, which
+has seen so much, was astonished whenever it shone in her face. Close by the
+king's castle lay a great dark forest, and under an old lime tree in the forest
+was a well, and when the day was very warm, the king's child went out into the
+forest and sat down by the side of the cool fountain, and when she was bored she
+took a golden ball, and threw it up on high and caught it, and this ball was her
+favorite plaything.
 
 ```
 
@@ -1458,7 +1458,7 @@ defmodule Word_wrap do
     lines_assemble( rest, max_line_length, String.length(word), word, [] )
       |> Enum.join( "\n" )
   end
-  
+
   defp lines_assemble( [], _, _, line, acc ), do: [line | acc] |> Enum.reverse
   defp lines_assemble( [word | rest], max, line_length, line, acc ) do
     if line_length + 1 + String.length(word) > max do
@@ -1470,9 +1470,9 @@ defmodule Word_wrap do
 end
 
 text = """
-Even today, with proportional fonts and complex layouts, there are still cases where you need to 
+Even today, with proportional fonts and complex layouts, there are still cases where you need to
 wrap text at a specified column. The basic task is to wrap a paragraph of text in a simple way in
-your language. If there is a way to do this that is built-in, trivial, or provided in a standard 
+your language. If there is a way to do this that is built-in, trivial, or provided in a standard
 library, show that. Otherwise implement the minimum length greedy algorithm from Wikipedia.
 """
 Enum.each([72, 80], fn len ->
@@ -1576,7 +1576,7 @@ nibh."
 let Wrap words lineWidth =
     let rec loop words currentWidth = seq {
         match (words : string list) with
-        | word :: rest -> 
+        | word :: rest ->
             let (stuff, pos) =
                 if currentWidth > 0 then
                     if currentWidth + word.Length < lineWidth then
@@ -1695,7 +1695,7 @@ words.
 
 
 ```forth
-\ wrap text 
+\ wrap text
 \ usage: gforth wrap.f in.txt 72
 
 0. argc @ 1- arg >number 2drop drop constant maxLine
@@ -1729,7 +1729,7 @@ bye
 
 Early Fortran provided no facility for manipulating text until the A format code was introduced by Fortran 4 that allowed characters to be read into variables, which could then be manipulated and written out. F77 introduced the CHARACTER data type which however did not have a notion of a variable-length string, other than via the programmer keeping track with auxiliary variables. F90 enabled the introduction via user-written functions and data types of a string-like facility, whereby a CHARACTER type variable would be resized on assignment. F95 formalised this facility as a part of the language.
 
-There are no facilities for "flowing" text on output according to a specified width, though various direct methods are possible. For instance, given a variable containing thousands of characters, 
+There are no facilities for "flowing" text on output according to a specified width, though various direct methods are possible. For instance, given a variable containing thousands of characters,
 ```Fortran
       CHARACTER*12345 TEXT
        ...
@@ -2048,11 +2048,11 @@ bored she took a golden ball, and threw it up on high and caught it, and this ba
 
 '''Solution 2: Using Inject - Functional Style'''
 
-A solution using the groovy list.inject method which corresponds to foldLeft in other languages. 
+A solution using the groovy list.inject method which corresponds to foldLeft in other languages.
 
 
 ```groovy
- 
+
 String wordWrap(str, width=80) {
   str.tokenize(' ').inject([[]]) { rows, word ->
     if (rows.last().join(' ').length() + word.length() <= width) rows.last() << word else rows << [word]
@@ -2063,22 +2063,22 @@ String wordWrap(str, width=80) {
 ```
 
 
-this solution shows off the more functional aspects of groovy. 
+this solution shows off the more functional aspects of groovy.
 
 '''Solution 3: Ninja Style - @TailRecursive and performant'''
 
-For very large strings (say Shakespeare's complete works which comes in around 7MB in text), the two above solutions are not very performant as they copy large portions of the input string multiple times. 
+For very large strings (say Shakespeare's complete works which comes in around 7MB in text), the two above solutions are not very performant as they copy large portions of the input string multiple times.
 
-Throwing away all readability, using a number of groovy tricks (abusing default parameter values etc) and just going for performance and terseness of code we get the following: 
+Throwing away all readability, using a number of groovy tricks (abusing default parameter values etc) and just going for performance and terseness of code we get the following:
 
 
 ```groovy
- 
+
 import groovy.transform.TailRecursive
 import static java.lang.Math.min
 
 @TailRecursive
-String wordWrap(str, w, i=w, b=''<<'', len=str.length()-1, x=0) { 
+String wordWrap(str, w, i=w, b=''<<'', len=str.length()-1, x=0) {
   b.setCharAt(x = (b << str[b.length()..i]).lastIndexOf(' '), '\n' as char)
   b.length()+w >= len ? b << str[i..-1] : wordWrap(str, w, min(x+w+1, len), b, len, 0)
 }
@@ -2086,26 +2086,26 @@ String wordWrap(str, w, i=w, b=''<<'', len=str.length()-1, x=0) {
 ```
 
 
-Should be noted that this is not idiomatic groovy or a recommended way of programming, but it is interesting as an exercise. 
+Should be noted that this is not idiomatic groovy or a recommended way of programming, but it is interesting as an exercise.
 
-Assuming width of 80, we essentially jump 80 characters forward in the text, look backwards for the first space we find, replace that space with a newline, jump forwards 80 characters from the newly inserted newline, look backwards for a space etc. 
+Assuming width of 80, we essentially jump 80 characters forward in the text, look backwards for the first space we find, replace that space with a newline, jump forwards 80 characters from the newly inserted newline, look backwards for a space etc.
 
-This means we never look at every character in the input text and we just replace spaces with newlines as we go. 
+This means we never look at every character in the input text and we just replace spaces with newlines as we go.
 
-Note that this solution uses recursion and the @TailRecursive annotation which expands the recursive calls into a non-recursive loop at runtime, thus avoiding stack overflow exceptions for large data sets. Note also that the following expressions are equivalent: 
+Note that this solution uses recursion and the @TailRecursive annotation which expands the recursive calls into a non-recursive loop at runtime, thus avoiding stack overflow exceptions for large data sets. Note also that the following expressions are equivalent:
 
 
 ```groovy
- 
+
 def a = new StringBuilder()
 def a = '' << ''
 
 ```
- 
+
 
 Should also be noted that this solution ignores and breaks for the case where words are longer than a line. I have a version which takes this case into account but I figured this was unreadable enough.
 
-Testing can be done as above with the exception that the second wrap width parameter is required. 
+Testing can be done as above with the exception that the second wrap width parameter is required.
 
 As an anecdotal baseline for a performance comparison, running 7MB of English text (Shakespeare) through the first algorithm 10 times takes around 3100ms on my current workstation (with a number of warm-up iterations excluded) and running the last algorithm through the same exercise takes around 230ms.
 
@@ -2144,7 +2144,7 @@ main = mapM_ putStr [wordwrap 72 ss, "\n", wordwrap 32 ss]
 
 
 
-Alternative greedy wrapping: 
+Alternative greedy wrapping:
 ```haskell
 import Data.List (inits, tails, tail)
 
@@ -2248,16 +2248,16 @@ The word warp, any kind of text alignment, specifying tab positions are basic se
 120 PRINT :CALL WRITE(10,70,1)
 130 DEF WRITE(LEFTMARGIN,RIGHTMARGIN,JUSTIFIED)
 140   STRING S$*254
-150   RESTORE 
+150   RESTORE
 160   PRINT TAB(LEFTMARGIN);CHR$(243);
 170   PRINT TAB(RIGHTMARGIN-1);CHR$(251)
-180   DO 
+180   DO
 190     READ IF MISSING EXIT DO:S$
 200     PRINT S$;
-210   LOOP 
+210   LOOP
 220   IF JUSTIFIED THEN PRINT CHR$(248) ! <- Extra credit :-)
-230   PRINT 
-240 END DEF 
+230   PRINT
+240 END DEF
 250 DATA "In olden times when wishing still helped one, there lived a king whose daughters were all beautiful, but the youngest was so beautiful that the sun itself, which has seen so much, was astonished whenever it shone in her face. "
 260 DATA "Close by the king's castle lay a great dark forest, and under an old lime-tree in the forest was a well, and when the day was very warm, the king's child went out into the forest and sat down by the side of the cool fountain, "
 270 DATA "and when she was bored she took a golden ball, and threw it up on high and caught it, and this ball was her favorite plaything."
@@ -2268,27 +2268,27 @@ The word warp, any kind of text alignment, specifying tab positions are basic se
 {{out}}
 
 ```txt
-           In olden times when wishing still helped one, there                  
-           lived a king whose daughters were all beautiful, but the             
-           youngest was so beautiful that the sun itself, which has             
-           seen so much, was astonished whenever it shone in her                
-           face. Close by the king's castle lay a great dark                    
-           forest, and under an old lime-tree in the forest was a               
-           well, and when the day was very warm, the king's child               
-           went out into the forest and sat down by the side of the             
-           cool fountain, and when she was bored she took a golden              
-           ball, and threw it up on high and caught it, and this                
+           In olden times when wishing still helped one, there
+           lived a king whose daughters were all beautiful, but the
+           youngest was so beautiful that the sun itself, which has
+           seen so much, was astonished whenever it shone in her
+           face. Close by the king's castle lay a great dark
+           forest, and under an old lime-tree in the forest was a
+           well, and when the day was very warm, the king's child
+           went out into the forest and sat down by the side of the
+           cool fountain, and when she was bored she took a golden
+           ball, and threw it up on high and caught it, and this
            ball was her favorite plaything.
 
-         In  olden times when wishing still helped one, there lived a          
-         king  whose  daughters  were all beautiful, but the youngest          
-         was  so  beautiful  that  the sun  itself, which has seen so          
-         much, was astonished whenever it shone in her face. Close by          
-         the  king's castle lay a great dark forest, and under an old          
-         lime-tree  in  the  forest  was a well, and when the day was          
-         very warm, the king's child went out into the forest and sat          
-         down  by  the  side  of  the cool fountain, and when she was          
-         bored  she  took  a golden ball, and threw it up on high and          
+         In  olden times when wishing still helped one, there lived a
+         king  whose  daughters  were all beautiful, but the youngest
+         was  so  beautiful  that  the sun  itself, which has seen so
+         much, was astonished whenever it shone in her face. Close by
+         the  king's castle lay a great dark forest, and under an old
+         lime-tree  in  the  forest  was a well, and when the day was
+         very warm, the king's child went out into the forest and sat
+         down  by  the  side  of  the cool fountain, and when she was
+         bored  she  took  a golden ball, and threw it up on high and
          caught it, and this ball was her favorite plaything.
 ```
 
@@ -2335,7 +2335,7 @@ package rosettacode;
 
 import java.util.StringTokenizer;
 
-public class WordWrap 
+public class WordWrap
 {
 	int defaultLineWidth=80;
 	int defaultSpaceWidth=1;
@@ -2407,7 +2407,7 @@ function wrap (text, limit) {
 
 '''Example''':
 ```javascript
-   
+
 console.log(wrap(text, 80));
 
 ```
@@ -2427,7 +2427,7 @@ than a simple minimimum length algorithm.
 
 '''Example''':
 ```javascript
-   
+
 console.log(wrap(text, 42));
 
 ```
@@ -2485,18 +2485,18 @@ ed in a standard library, show that. Otherwise\
 {{Out}}
 
 ```txt
-Even today, with proportional fonts and complex layouts, 
-there are still cases where you need to wrap text at a 
-specified column. The basic task is to wrap a paragraph of 
-text in a simple way in your language. If there is a way to 
-do this that is built-in, trivial, or provided in a standard 
-library, show that. Otherwise implement the minimum length 
+Even today, with proportional fonts and complex layouts,
+there are still cases where you need to wrap text at a
+specified column. The basic task is to wrap a paragraph of
+text in a simple way in your language. If there is a way to
+do this that is built-in, trivial, or provided in a standard
+library, show that. Otherwise implement the minimum length
 greedy algorithm from Wikipedia.
 ```
 
 
 
-###  EcmaScript 6 
+###  EcmaScript 6
 
 
 ```javascript
@@ -2511,7 +2511,7 @@ greedy algorithm from Wikipedia.
  */
 function wordwrap(text, width = 80, br = '\n', cut = false) {
   // Приводим к uint
-  // 0..2^32-1 либо 0..2^64-1 
+  // 0..2^32-1 либо 0..2^64-1
   width >>>= 0;
   // Длина текста меньше или равна максимальной
   if (0 === width || text.length <= width) {
@@ -2584,7 +2584,7 @@ dog.
 {{works with|jq|>1.4}}
 The following implementation requires a version of jq with splits/1, for splitting on whitespace.
 
-In jq, all strings are Unicode strings, for which the length is calculated as the number of codepoints.  
+In jq, all strings are Unicode strings, for which the length is calculated as the number of codepoints.
 
 ```jq
 # Simple greedy algorithm.
@@ -2701,7 +2701,7 @@ available keyword args to customize wrapping behaviour.
 ```scala
 // version 1.1.3
 
-val text = 
+val text =
     "In olden times when wishing still helped one, there lived a king " +
     "whose daughters were all beautiful, but the youngest was so beautiful " +
     "that the sun itself, which has seen so much, was astonished whenever " +
@@ -2713,13 +2713,13 @@ val text =
     "ball was her favorite plaything."
 
 fun greedyWordwrap(text: String, lineWidth: Int): String {
-    val words = text.split(' ') 
-    val sb = StringBuilder(words[0]) 
+    val words = text.split(' ')
+    val sb = StringBuilder(words[0])
     var spaceLeft = lineWidth - words[0].length
     for (word in words.drop(1)) {
         val len = word.length
         if (len + 1 > spaceLeft) {
-            sb.append("\n").append(word)            
+            sb.append("\n").append(word)
             spaceLeft = lineWidth - len
         }
         else {
@@ -2818,7 +2818,7 @@ vulputate nulla, in porta sem sem sit amet lacus.
 
 
 
-###  Naive Implementation 
+###  Naive Implementation
 
 
 {{trans|Erlang}}
@@ -2856,7 +2856,7 @@ vulputate nulla, in porta sem sem sit amet lacus.
 
 
 
-###  Regex Implementation 
+###  Regex Implementation
 
 
 
@@ -2957,7 +2957,7 @@ on hardWrapText (str, pixelWidth, style)
   s.loc = point(0,0)
   s.visible = false
   _movie.updateStage()
-  
+
   -- get the wrapped lines
   charPos = 0
   repeat with y = 0 to s.height-1
@@ -2967,7 +2967,7 @@ on hardWrapText (str, pixelWidth, style)
       charPos = n
     end if
   end repeat
-  
+
   channel(1).removeScriptedSprite()
   return lines
 end
@@ -3141,34 +3141,34 @@ Module Checkit {
       Italic 1
       Report centered, trim$(A$), Width-10-10
       Italic m
-      
+
       Print  @(0,79),"Press any key";
       wait$=key$
       Refresh 5000
       charwidth=scale.x div width
       For i=2000 to scale.x-charwidth step 150
             \\ clear screen with 14pt fonts
-           
+
             Mode 12.75
             \\ by default use justify, word wrap
             Report a$, i
             \\  we can calculate only using a negative parameter
             Report a$, i, -10000
-            k=ReportLines 
+            k=ReportLines
             \\ print any line in differnet color
             Dim a(2)
             a(0)=11, 15   ' 0 to 15 are vb6 colors, we can use html colors #aabbcc, #ff2211
             For j=1 to k {
                 Pen a(j mod 2) {
                         Report a$, i, 1 line j
-                  }  
+                  }
             }
             Refresh 5000
             wait$=key$
       Next i
-      
+
       Report a$, scale.x/2, -1000
-      k=ReportLines 
+      k=ReportLines
       Document  Doc$
       Report a$, scale.x/2, k as Doc$
       \\ Print document without expanding spaces
@@ -3183,9 +3183,9 @@ Module Checkit {
       \\ scale.x unit in twips
       Report a$, scale.x/2
       \\ width unit in characters
-      Report a$, width/2  
+      Report a$, width/2
       Print @(width div 2),
-      Report flushright, a$, width/2  
+      Report flushright, a$, width/2
       Cursor 0, Row
       I=Italic
       Double
@@ -3348,7 +3348,7 @@ method wordWrap(text, lineWidth = 80) public static
   else do
     wrapped = text
     end
-  
+
   return wrapped.strip() -- clean w/s from front & back
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3360,12 +3360,12 @@ method runSample(arg) public static
   say 'Wrapping text at' lineLen 'characters'
   say ('....+....|'.copies((lineLen + 9) % 10)).left(lineLen)
   say wrappedLines
-  
+
   return
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 method getText() public static
-  
+
   -- ....+....|....+....|....+....|....+....|....+....|....+....|
   speech01 = -
     'She should have died hereafter;' -
@@ -4054,7 +4054,7 @@ function Out-WordWrap
             }
 
             return "$output`n"
-        } 
+        }
     }
     Process
     {
@@ -4090,49 +4090,49 @@ $paragraphs | Out-WordWrap -Width 100
 
 ```txt
 
-Rebum everti delicata an vel, quo ut temporibus interpretaris, mea debet mnesarchum disputando ad. 
-Id has dolorum contentiones, mel ea noster adipisci. Id persius appareat eos, aeque dolorum 
-fastidii eam in. Partem assentior contentiones ut mea. Cu augue facilis fabellas cum, vix eu 
-sanctus denique imperdiet, appareat percipit qui ex. 
+Rebum everti delicata an vel, quo ut temporibus interpretaris, mea debet mnesarchum disputando ad.
+Id has dolorum contentiones, mel ea noster adipisci. Id persius appareat eos, aeque dolorum
+fastidii eam in. Partem assentior contentiones ut mea. Cu augue facilis fabellas cum, vix eu
+sanctus denique imperdiet, appareat percipit qui ex.
 
-Nihil discere phaedrum at duo, no eum adhuc autem error. Quo aliquam delicata contentiones et, in 
-sed ferri legimus sententiae, nihil solet docendi id eum. Ius ut meliore vulputate adipiscing, sea 
-cu virtute praesent. Euripidis instructior est eu. Veri cotidieque ex vel, aliquam eruditi nusquam 
-sea ne, eu wisi ubique ullamcorper est. Qui doctus epicuri ei. Cum esse detracto concludaturque ea, 
-veri erant per ad, vide ancillae principes ius id. 
+Nihil discere phaedrum at duo, no eum adhuc autem error. Quo aliquam delicata contentiones et, in
+sed ferri legimus sententiae, nihil solet docendi id eum. Ius ut meliore vulputate adipiscing, sea
+cu virtute praesent. Euripidis instructior est eu. Veri cotidieque ex vel, aliquam eruditi nusquam
+sea ne, eu wisi ubique ullamcorper est. Qui doctus epicuri ei. Cum esse detracto concludaturque ea,
+veri erant per ad, vide ancillae principes ius id.
 
-Id disputando signiferumque nam, mei illud aeterno ut. Facilisis evertitur mei at. Qui in wisi 
-fugit, eirmod comprehensam duo ei. Ea mel omnium nusquam, causae consequat appellantur per te. 
+Id disputando signiferumque nam, mei illud aeterno ut. Facilisis evertitur mei at. Qui in wisi
+fugit, eirmod comprehensam duo ei. Ea mel omnium nusquam, causae consequat appellantur per te.
 
-Denique deseruisse ea his. Mundi scripta adolescens te ius, cum error persius cotidieque cu. Nobis 
-apeirian ad his. Ius omnes gloriatur at, has eu tamquam inciderint, ubique commodo pro ad. Ex veri 
-ceteros quo, duo an labores adolescens. Sed id quod verterem prodesset, magna eloquentiam ea eum. 
+Denique deseruisse ea his. Mundi scripta adolescens te ius, cum error persius cotidieque cu. Nobis
+apeirian ad his. Ius omnes gloriatur at, has eu tamquam inciderint, ubique commodo pro ad. Ex veri
+ceteros quo, duo an labores adolescens. Sed id quod verterem prodesset, magna eloquentiam ea eum.
 
-Qui sanctus oportere quaerendum ex, usu vivendo accusamus posidonium an. Quo cu graece reprimique. 
-Ea cum purto quando referrentur, tritani perfecto ne sit. Ne sit iusto ludus, ea ius eruditi 
-dissentiunt, fabellas disputando eu vix. Te vim eripuit debitis tincidunt, in vim nonumes 
-consetetur. 
+Qui sanctus oportere quaerendum ex, usu vivendo accusamus posidonium an. Quo cu graece reprimique.
+Ea cum purto quando referrentur, tritani perfecto ne sit. Ne sit iusto ludus, ea ius eruditi
+dissentiunt, fabellas disputando eu vix. Te vim eripuit debitis tincidunt, in vim nonumes
+consetetur.
 
-Affert exerci aperiri pri ea. Ut dicant essent corrumpit sit. Sea saepe nullam referrentur ut, vis 
-dolores perfecto cu. At nam inimicus evertitur vulputate. 
+Affert exerci aperiri pri ea. Ut dicant essent corrumpit sit. Sea saepe nullam referrentur ut, vis
+dolores perfecto cu. At nam inimicus evertitur vulputate.
 
-Dolor volutpat praesent vix ne, at soluta oblique admodum eum. Duis adipisci mea in, nam ut tota 
-choro theophrastus. Ex scripta definitiones mei, augue doctus ne sed, munere posidonium eum id. Ad 
-graeco audire per. 
+Dolor volutpat praesent vix ne, at soluta oblique admodum eum. Duis adipisci mea in, nam ut tota
+choro theophrastus. Ex scripta definitiones mei, augue doctus ne sed, munere posidonium eum id. Ad
+graeco audire per.
 
-Sale salutatus et mei, mea elit illud adipiscing ei, cum ea sumo melius forensibus. Eu inani iusto 
-oporteat eum, ei vix iisque saperet detraxit. Fabulas perpetua similique eam ne, noster corpora 
-dissentiet qui ex, et qui integre graecis. Eripuit nonumes deterruisset an pro, ei ferri similique 
-cum. Odio dolores inciderint ei vim, an est dolorum delicata temporibus, eu mea quis accumsan. Vel 
-stet affert option at. 
+Sale salutatus et mei, mea elit illud adipiscing ei, cum ea sumo melius forensibus. Eu inani iusto
+oporteat eum, ei vix iisque saperet detraxit. Fabulas perpetua similique eam ne, noster corpora
+dissentiet qui ex, et qui integre graecis. Eripuit nonumes deterruisset an pro, ei ferri similique
+cum. Odio dolores inciderint ei vim, an est dolorum delicata temporibus, eu mea quis accumsan. Vel
+stet affert option at.
 
-In gubergren voluptaria reprimique pro, option fuisset id est. Rebum delicata ad sea, ex vidit 
-errem vis, mei at duis dicam sensibus. Nibh debet iudicabit has no, vim te dicit libris possim. 
-Debet viderer consequuntur ea pro. Ex dicat iriure scripta pro. 
+In gubergren voluptaria reprimique pro, option fuisset id est. Rebum delicata ad sea, ex vidit
+errem vis, mei at duis dicam sensibus. Nibh debet iudicabit has no, vim te dicit libris possim.
+Debet viderer consequuntur ea pro. Ex dicat iriure scripta pro.
 
-An dicat diceret eligendi duo. Est cu equidem deterruisset, usu ad regione equidem, vim amet vero 
-possim ex. Theophrastus conclusionemque ad quo, inimicus deseruisse voluptatibus eum et. Duis 
-delectus mandamus an mei, usu timeam nostrum suscipiantur id. 
+An dicat diceret eligendi duo. Est cu equidem deterruisset, usu ad regione equidem, vim amet vero
+possim ex. Theophrastus conclusionemque ad quo, inimicus deseruisse voluptatibus eum et. Duis
+delectus mandamus an mei, usu timeam nostrum suscipiantur id.
 
 ```
 
@@ -4143,7 +4143,7 @@ delectus mandamus an mei, usu timeam nostrum suscipiantur id.
 
 ```purebasic
 
-DataSection  
+DataSection
   Data.s "In olden times when wishing still helped one, there lived a king "+
 	"whose daughters were all beautiful, but the youngest was so beautiful "+
 	"that the sun itself, which has seen so much, was astonished whenever "+
@@ -4160,12 +4160,12 @@ Procedure.i ww_pos(txt$,l.i)
   If l>0 : ProcedureReturn l : Else : ProcedureReturn Len(Trim(txt$)) : EndIf
 EndProcedure
 
-Procedure WriteLine(txt$,ls.i) 
+Procedure WriteLine(txt$,ls.i)
   Shared d$,lw
   Select LCase(d$)
-    Case "l" : PrintN(Mid(txt$,1,ls))    
+    Case "l" : PrintN(Mid(txt$,1,ls))
     Case "r" : PrintN(RSet(Trim(Mid(txt$,1,ls)),lw,Chr(32)))
-  EndSelect  
+  EndSelect
 EndProcedure
 
 Procedure main(txt$,lw.i)
@@ -4177,11 +4177,11 @@ EndProcedure
 Procedure.i MaxWordLen(txt$)
   For i=1 To CountString(txt$,Chr(32))+1
     wrd$=LTrim(StringField(txt$,i,Chr(32)))
-    wrdl=Len(wrd$)+1 : If wrdl>l : l=wrdl : EndIf    
+    wrdl=Len(wrd$)+1 : If wrdl>l : l=wrdl : EndIf
   Next
   ProcedureReturn l
 EndProcedure
-  
+
 OpenConsole()
 Read.s t$
 Print("Input line width: ") : lw=Val(Input()) : minL=MaxWordLen(t$)
@@ -4255,7 +4255,7 @@ Help on function fill in module textwrap:
 
 fill(text, width=70, **kwargs)
     Fill a single paragraph of text, returning a new string.
-    
+
     Reformat the single paragraph in 'text' to fit in lines of no more
     than 'width' columns, and return a new string containing the entire
     wrapped paragraph.  As with wrap(), tabs are expanded and other
@@ -4288,7 +4288,7 @@ Reformat the single paragraph in 'text' to fit in lines of no more than 'width'
 columns, and return a new string containing the entire wrapped paragraph.  As with
 wrap(), tabs are expanded and other whitespace characters converted to space.  See
 TextWrapper class for available keyword args to customize wrapping behaviour.
->>> 
+>>>
 ```
 
 
@@ -4297,7 +4297,7 @@ TextWrapper class for available keyword args to customize wrapping behaviour.
 
 
 
-###  Using the base library 
+###  Using the base library
 
 
 Use <code>strwrap()</code>:
@@ -4321,7 +4321,7 @@ congue enim, ut porta lorem lacinia consectetur.
 
 
 
-###  Using the stringr tidyverse library 
+###  Using the stringr tidyverse library
 
 
 Another option, using <code>stringr::str_wrap</code>
@@ -4373,7 +4373,7 @@ Explicit (and simple) implementation:
 
 (define (wrap words width)
   (define (maybe-cons xs xss)
-    (if (empty? xs) xss (cons xs xss)))  
+    (if (empty? xs) xss (cons xs xss)))
   (match/values
     (for/fold ([lines '()] [line '()] [left width]) ([w words])
       (define n (string-length w))
@@ -4401,7 +4401,7 @@ Explicit (and simple) implementation:
 
 ### version 0
 
-This version was the original (of version 1) and has no error checking and only does left-margin justification. 
+This version was the original (of version 1) and has no error checking and only does left-margin justification.
 
 ```rexx
 /*REXX program  reads  a file  and  displays  it to the screen  (with word wrap).       */
@@ -4435,13 +4435,13 @@ The default width of the output is the current terminal width   (normally, this 
 
 If the terminal width (or window's width) is indeterminable, then   80   is used.
 
-The width can be expressed as a percentage (i.e.:   50%)   which signifies to use ½ of the terminal's width). 
+The width can be expressed as a percentage (i.e.:   50%)   which signifies to use ½ of the terminal's width).
 
 No hyphenation (or de-hyphenation) is attempted.
 
 Words longer than the width of the output are acceptable and are shown (with no truncation), a simple change could be made to issue a notification.
 
-Some rudimentary error checking is performed. 
+Some rudimentary error checking is performed.
 
 
 Types of word wrapping (justification) are   (only the first character is significant):
@@ -4459,9 +4459,9 @@ Types of word wrapping (justification) are   (only the first character is signif
 
 This version was modified (for speed at the expense of simplicity) to accommodate faster processing of large files.
 
-Instead of appending lines of a file to a character string, the words are picked off and stored in a stemmed array. 
+Instead of appending lines of a file to a character string, the words are picked off and stored in a stemmed array.
 
-This decreases the amount of work that REXX has to do to retrieve (get) the next word in the (possibly) ginormous string.  
+This decreases the amount of work that REXX has to do to retrieve (get) the next word in the (possibly) ginormous string.
 
 ```rexx
 /*REXX program  reads  a  file  and  displays  it to the screen  (with word wrap).      */
@@ -4508,7 +4508,7 @@ tell: if $==''  then return                      /* [↓]  the first word may be
       return                                     /*go back and keep truckin'.           */
 ```
 
-This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console). 
+This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console).
 
 The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZE.REX]].
 
@@ -4603,7 +4603,7 @@ The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZ
     ∙ Everything is a part of a larger system.
     ∙ The universe is infinitely systematized, both upward [larger systems] and downward [smaller systems].
     ∙ All systems are infinitely complex.  (The illusion of simplicity comes from focusing attention on one or a few variables.)
-    ∙ Parameters are variables traveling under an assumed name. 
+    ∙ Parameters are variables traveling under an assumed name.
 
 ```
 
@@ -4802,7 +4802,7 @@ Parameters    are    variables    traveling     under    an    assumed    name.
 ```rexx
 /* REXX ***************************************************************
 * 20.08.2013 Walter Pachl  "my way"
-* 23.08.2013 Walter Pachl changed to use lastpos bif 
+* 23.08.2013 Walter Pachl changed to use lastpos bif
 **********************************************************************/
 Parse Arg w
 oid=w'.xxx'; 'erase' oid
@@ -4934,7 +4934,7 @@ class String
     txt = gsub("\n", " ")
     para = []
     i = 0
-    while i < length 
+    while i < length
       j = i + width
       j -= 1 while j != txt.length && j > i + 1 && !(txt[j] =~ /\s/)
       para << txt[i ... j]
@@ -5014,19 +5014,19 @@ output will adjust as you stretch the browser and maintain a 60 to 40 ratio of t
 ```txt
 
 ---------- at 60%-----------------------                         | -------- at 40%----------------------
-In olden times when wishing still helped one, there lived a king | In olden times when wishing still helped 
-whose daughters were all beautiful, but the youngest was so      | one, there lived a king whose daughters 
-beautiful that the sun itself, which has seen so much, was       | were all beautiful, but the youngest was 
-astonished whenever it shone in her face.	                 | so beautiful that the sun itself, which 
+In olden times when wishing still helped one, there lived a king | In olden times when wishing still helped
+whose daughters were all beautiful, but the youngest was so      | one, there lived a king whose daughters
+beautiful that the sun itself, which has seen so much, was       | were all beautiful, but the youngest was
+astonished whenever it shone in her face.	                 | so beautiful that the sun itself, which
 								 | has seen so much, was astonished whenever
 								 | it shone in her face.
 
 ```
 
-Without Browser 
+Without Browser
 
 ```runbasic
-doc$ = "In olden times when wishing still helped one, there lived a king 
+doc$ = "In olden times when wishing still helped one, there lived a king
 whose daughters were all beautiful, but the youngest was so beautiful
 that the sun itself, which has seen so much, was astonished whenever
 it shone in her face.  Close by the king's castle lay a great dark
@@ -5109,41 +5109,41 @@ object WordWrap extends App {
 ```txt
 Wrapped at: 80
 ................................................................................
-Vijftig jaar geleden publiceerde Edsger Dijkstra zijn kortstepadalgoritme. 
-Daarom een kleine ode aan de in 2002 overleden Dijkstra, iemand waar we als 
-Nederlanders best wat trotser op mogen zijn. Dijkstra was een van de eerste 
-programmeurs van Nederland. Toen hij in 1957 trouwde, werd het beroep 
-computerprogrammeur door de burgerlijke stand nog niet erkend en uiteindelijk 
-gaf hij maar `theoretische natuurkundige’ op. Zijn beroemdste resultaat is het 
-kortstepadalgoritme, dat de kortste verbinding vindt tussen twee knopen in een 
-graaf (een verzameling punten waarvan sommigen verbonden zijn). Denk 
-bijvoorbeeld aan het vinden van de kortste route tussen twee steden. Het slimme 
-van Dijkstra’s algoritme is dat het niet alle mogelijke routes met elkaar 
-vergelijkt, maar dat het stap voor stap de kortst mogelijke afstanden tot elk 
-punt opbouwt. In de eerste stap kijk je naar alle punten die vanaf het beginpunt 
-te bereiken zijn en markeer je al die punten met de afstand tot het beginpunt. 
-Daarna kijk je steeds vanaf het punt dat op dat moment de kortste afstand heeft 
-tot het beginpunt naar alle punten die je vanaf daar kunt bereiken. Als je een 
-buurpunt via een nieuwe verbinding op een snellere manier kunt bereiken, schrijf 
-je de nieuwe, kortere afstand tot het beginpunt bij zo’n punt. Zo ga je steeds 
-een stukje verder tot je alle punten hebt gehad en je de kortste route tot het 
-eindpunt hebt gevonden. 
+Vijftig jaar geleden publiceerde Edsger Dijkstra zijn kortstepadalgoritme.
+Daarom een kleine ode aan de in 2002 overleden Dijkstra, iemand waar we als
+Nederlanders best wat trotser op mogen zijn. Dijkstra was een van de eerste
+programmeurs van Nederland. Toen hij in 1957 trouwde, werd het beroep
+computerprogrammeur door de burgerlijke stand nog niet erkend en uiteindelijk
+gaf hij maar `theoretische natuurkundige’ op. Zijn beroemdste resultaat is het
+kortstepadalgoritme, dat de kortste verbinding vindt tussen twee knopen in een
+graaf (een verzameling punten waarvan sommigen verbonden zijn). Denk
+bijvoorbeeld aan het vinden van de kortste route tussen twee steden. Het slimme
+van Dijkstra’s algoritme is dat het niet alle mogelijke routes met elkaar
+vergelijkt, maar dat het stap voor stap de kortst mogelijke afstanden tot elk
+punt opbouwt. In de eerste stap kijk je naar alle punten die vanaf het beginpunt
+te bereiken zijn en markeer je al die punten met de afstand tot het beginpunt.
+Daarna kijk je steeds vanaf het punt dat op dat moment de kortste afstand heeft
+tot het beginpunt naar alle punten die je vanaf daar kunt bereiken. Als je een
+buurpunt via een nieuwe verbinding op een snellere manier kunt bereiken, schrijf
+je de nieuwe, kortere afstand tot het beginpunt bij zo’n punt. Zo ga je steeds
+een stukje verder tot je alle punten hebt gehad en je de kortste route tot het
+eindpunt hebt gevonden.
 
 Wrapped at: 120
 ........................................................................................................................
-Vijftig jaar geleden publiceerde Edsger Dijkstra zijn kortstepadalgoritme. Daarom een kleine ode aan de in 2002 
-overleden Dijkstra, iemand waar we als Nederlanders best wat trotser op mogen zijn. Dijkstra was een van de eerste 
-programmeurs van Nederland. Toen hij in 1957 trouwde, werd het beroep computerprogrammeur door de burgerlijke stand nog 
-niet erkend en uiteindelijk gaf hij maar `theoretische natuurkundige’ op. Zijn beroemdste resultaat is het 
-kortstepadalgoritme, dat de kortste verbinding vindt tussen twee knopen in een graaf (een verzameling punten waarvan 
-sommigen verbonden zijn). Denk bijvoorbeeld aan het vinden van de kortste route tussen twee steden. Het slimme van 
-Dijkstra’s algoritme is dat het niet alle mogelijke routes met elkaar vergelijkt, maar dat het stap voor stap de kortst 
-mogelijke afstanden tot elk punt opbouwt. In de eerste stap kijk je naar alle punten die vanaf het beginpunt te bereiken 
-zijn en markeer je al die punten met de afstand tot het beginpunt. Daarna kijk je steeds vanaf het punt dat op dat 
-moment de kortste afstand heeft tot het beginpunt naar alle punten die je vanaf daar kunt bereiken. Als je een buurpunt 
-via een nieuwe verbinding op een snellere manier kunt bereiken, schrijf je de nieuwe, kortere afstand tot het beginpunt 
-bij zo’n punt. Zo ga je steeds een stukje verder tot je alle punten hebt gehad en je de kortste route tot het eindpunt 
-hebt gevonden. 
+Vijftig jaar geleden publiceerde Edsger Dijkstra zijn kortstepadalgoritme. Daarom een kleine ode aan de in 2002
+overleden Dijkstra, iemand waar we als Nederlanders best wat trotser op mogen zijn. Dijkstra was een van de eerste
+programmeurs van Nederland. Toen hij in 1957 trouwde, werd het beroep computerprogrammeur door de burgerlijke stand nog
+niet erkend en uiteindelijk gaf hij maar `theoretische natuurkundige’ op. Zijn beroemdste resultaat is het
+kortstepadalgoritme, dat de kortste verbinding vindt tussen twee knopen in een graaf (een verzameling punten waarvan
+sommigen verbonden zijn). Denk bijvoorbeeld aan het vinden van de kortste route tussen twee steden. Het slimme van
+Dijkstra’s algoritme is dat het niet alle mogelijke routes met elkaar vergelijkt, maar dat het stap voor stap de kortst
+mogelijke afstanden tot elk punt opbouwt. In de eerste stap kijk je naar alle punten die vanaf het beginpunt te bereiken
+zijn en markeer je al die punten met de afstand tot het beginpunt. Daarna kijk je steeds vanaf het punt dat op dat
+moment de kortste afstand heeft tot het beginpunt naar alle punten die je vanaf daar kunt bereiken. Als je een buurpunt
+via een nieuwe verbinding op een snellere manier kunt bereiken, schrijf je de nieuwe, kortere afstand tot het beginpunt
+bij zo’n punt. Zo ga je steeds een stukje verder tot je alle punten hebt gehad en je de kortste route tot het eindpunt
+hebt gevonden.
 Process finished with exit code 0
 ```
 
@@ -5171,7 +5171,7 @@ The simple, greedy algorithm:
            (reverse (cons (reverse line) lines)))
           ((> (+ line-length (string-length (car words)))
               width)
-           (if (null? line) 
+           (if (null? line)
              (loop (cdr words) ; case where word exceeds line length
                    0
                    '()
@@ -5274,7 +5274,7 @@ const proc: main is func
         \the cool fountain, and when she was bored she took a golden ball, and threw \
         \it up on high and caught it, and this ball was her favorite plaything.";
     var integer: width is 0;
-  begin 
+  begin
     for width range [] (72, 80) do
       writeln("Wrapped at " <& width <& ":");
       writeln(wrap(frog, width));
@@ -5571,7 +5571,7 @@ dark forest, and under an old lime-tree in the forest was a well, and
 when the day was very warm, the king's child went out into the forest
 and sat down by the side of the cool fountain, and when she was bored
 she took a golden ball, and threw it up on high and caught it, and this
-ball was her favorite plaything.          
+ball was her favorite plaything.
 
 ```
 
@@ -5624,7 +5624,7 @@ Wrapped at 60.
 In olden times when wishing still helped one, there lived a
 king whose daughters were all beautiful, but the youngest
 was so beautiful that the sun itself, which has seen so
-much, was astonished whenever it shone-in-her-face. 
+much, was astonished whenever it shone-in-her-face.
 Close-by-the-king's castle lay a great dark forest, and
 under an old lime-tree in the forest was a well, and when
 the day was very warm, the king's child went out into the
@@ -5648,7 +5648,7 @@ t$ = t$ + "it shone in her face.\n\n"
 t$ = t$ + t$
 
 t$ = trim$(t$)
- 
+
 input "Width: " width // user specifies width
 
 dim p$(1)
@@ -5668,15 +5668,15 @@ print docOut$
 
 sub words(w$, p$(), d$)
 	local n, i, p
-	
+
 	n = split(w$, p$(), d$)
 	p = 1
-	
+
 	for i = 1 to n
 		p$(i) = p$(i) + mid$(w$, p + len(p$(i)), 1)
 		p = p + len(p$(i))
 	next i
-	return n	
+	return n
 end sub
 ```
 
@@ -5688,11 +5688,11 @@ t$ = "In olden times when wishing still helped one, there lived a king "
 t$ = t$ + "whose daughters were all beautiful, but the youngest was so beautiful "
 t$ = t$ + "that the sun itself, which has seen so much, was astonished whenever "
 t$ = t$ + "it shone in her face."
- 
+
 wrap$ = " style='white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word'"
 
 f = open("WordWrap.html", "w")
- 
+
 print #f "<table border=1 cellpadding=2 cellspacing=0><tr" + wrap$ +" valign=top>"
 print #f "<td width=60%>" + t$ + "</td><td width=40%>" + t$ + "</td></tr></table>"
 
@@ -5766,7 +5766,7 @@ Putting a bit of spit shine on the above and editing the source text to look lik
 
 ```txt
 
-    In olden 
+    In olden
 times ...
 
 ```

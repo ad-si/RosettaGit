@@ -13,16 +13,16 @@ tags = []
 {{task|Basic language learning}}
 [[Category:String manipulation]]
 [[Category: String manipulation]]
-{{basic data operation}} 
+{{basic data operation}}
 [[Category:Simple]]
 
 Most languages provide a way to concatenate two string values, but some languages also provide a convenient way to append in-place to an existing string variable without referring to the variable twice.
 
 
 ;Task:
-Create a string variable equal to any text value. 
+Create a string variable equal to any text value.
 
-Append the string variable with another string literal in the most idiomatic way, without double reference if your language supports it. 
+Append the string variable with another string literal in the most idiomatic way, without double reference if your language supports it.
 
 Show the contents of the variable after the append operation.
 
@@ -108,12 +108,12 @@ szString2:              .asciz "abcdefghijklmnopqrstuvwxyz"
 szCarriageReturn:       .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
 
     ldr r0,iAdrszMessString                     @ display message
     bl affichageMess
@@ -127,7 +127,7 @@ main:
     ldr r0,iAdrszMessString
     bl affichageMess
     ldr r0,iAdrszString1                        @ display string
-    bl affichageMess 
+    bl affichageMess
     ldr r0,iAdrszCarriageReturn
     bl affichageMess
 
@@ -140,12 +140,12 @@ iAdrszString1:            .int szString1
 iAdrszString2:            .int szString2
 iAdrszCarriageReturn:     .int szCarriageReturn
 /******************************************************************/
-/*     append two strings                         */ 
+/*     append two strings                         */
 /******************************************************************/
 /* r0 contains the address of the string1 */
 /* r1 contains the address of the string2 */
 append:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter byte string 1
 1:
     ldrb r3,[r0,r2]                             @ load byte string 1
@@ -165,21 +165,21 @@ append:
     bx lr                                       @ return
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -301,9 +301,9 @@ Hello World!
 ## C
 
 
-```c>#include<stdio.h
-
-#include<string.h>
+```c
+#include <stdio.h>
+#include <string.h>
 
 int main()
 {
@@ -340,8 +340,8 @@ Good Morning to all !!!
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 
 int main( ) {
@@ -410,8 +410,8 @@ This example uses OCCURS DEPENDING ON, and ''reference modification'' to simulat
 {{works with|GnuCOBOL}}
 
 ```COBOL
-      identification division.                                         
-       program-id. string-append.                                       
+      identification division.
+       program-id. string-append.
 
        data division.
        working-storage section.
@@ -474,7 +474,7 @@ Hello, World!
 Similar to the [[String append#Racket| Racket]] solution, a macro is necessary to append in-place:
 
 ```lisp
-(defmacro concatenatef (s &rest strs) 
+(defmacro concatenatef (s &rest strs)
   "Append additional strings to the first string in-place."
   `(setf ,s (concatenate 'string ,s ,@strs)))
 (defvar *str* "foo")
@@ -502,7 +502,7 @@ import std.stdio;
 
 void main() {
     string s = "Hello";
-    s ~= " world!"; 
+    s ~= " world!";
     writeln(s);
 }
 ```
@@ -542,7 +542,7 @@ print a$
 ```lisp
 
 ;; Solution from Common Lisp and Racket
-(define-syntax-rule (set-append! str tail) 
+(define-syntax-rule (set-append! str tail)
    (set! str (string-append str tail)))
 
 (define name "Albert") → name
@@ -567,7 +567,7 @@ public program()
 {
     var s := StringWriter.load("Hello");
     s.append:" World";
-     
+
     console.printLine:s.readChar()
 }
 ```
@@ -783,7 +783,7 @@ end program main
 
 Var s = "String"
 s += " append"
-Print s 
+Print s
 Sleep
 ```
 
@@ -866,7 +866,7 @@ s += "bar"
 
 
 
-###  String Builder 
+###  String Builder
 
 The first solution redefines the string variable every time. It might be short in code but it uses much CPU cycles. A better way is to use `string.Builder` but it is not a string. It is more like a buffer which can produce a string. And it really appends the string to the existing variable.
 
@@ -1168,7 +1168,7 @@ Hello, World!
 
 
 ```lingo
-str = "Hello" 
+str = "Hello"
 put " world!" after str
 put str
 -- "Hello world!"
@@ -1210,8 +1210,8 @@ x:show()
 {{out}}
 
 ```txt
-Hi 
-Hi 
+Hi
+Hi
 ```
 
 You can of course concatentate them and store the result in the original variable name but that requires a double reference:
@@ -1244,7 +1244,7 @@ Print a$
 Document b$
 b$="ok"
 b$="(one)"
-Print b$ 
+Print b$
 
 ```
 
@@ -1317,7 +1317,7 @@ world hello + print
 ## Neko
 
 The plus operator +, concats strings.
- 
+
 
 ```ActionScript
 /**
@@ -1723,7 +1723,7 @@ s="He"
 s=s || 'llo, World!'       /*same as:   s=s||'llo, World!'    */
 say s
 ```
- 
+
 '''output'''
 
 ```txt
@@ -1797,7 +1797,7 @@ fn main(){
 Hello world!!!!
 
 
-###  Real append 
+###  Real append
 
 The first solution doesn't append to the string variable. This solution really appends to the existing variable.
 

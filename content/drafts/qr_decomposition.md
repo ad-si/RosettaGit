@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Matrices}}[[Category:Mathematics]]
-Any rectangular <math>m \times n</math> matrix <math>\mathit A</math> can be decomposed to a product of an orthogonal matrix <math>\mathit Q</math> and an upper (right) triangular matrix <math>\mathit R</math>, as described in [[wp:QR decomposition|QR decomposition]]. 
+Any rectangular <math>m \times n</math> matrix <math>\mathit A</math> can be decomposed to a product of an orthogonal matrix <math>\mathit Q</math> and an upper (right) triangular matrix <math>\mathit R</math>, as described in [[wp:QR decomposition|QR decomposition]].
 
 '''Task'''
 
@@ -34,7 +34,7 @@ reflects <math>\mathit a</math> about a plane given by its normal vector <math>\
 
 ::<math>u = a - \|a\|_2 \; e_1</math>
 
-then the transformation reflects <math>\mathit a</math> onto the first standard basis vector 
+then the transformation reflects <math>\mathit a</math> onto the first standard basis vector
 
 ::<math>e_1 = [1 \; 0 \; 0 \; ...]^T</math>
 
@@ -77,7 +77,7 @@ To get <math>H_2</math>, we then embed the new <math>\mathit H</math> into an <m
 0 & H & \\
 0 &   & \end{pmatrix}</math>
 
-This is how we can, column by column, remove all subdiagonal elements of <math>\mathit A</math> and thus transform it into <math>\mathit R</math>. 
+This is how we can, column by column, remove all subdiagonal elements of <math>\mathit A</math> and thus transform it into <math>\mathit R</math>.
 
 ::<math>H_n \; ... \; H_3 H_2 H_1 A = R</math>
 
@@ -262,8 +262,8 @@ TestPackage(R:Join(Field,RadicalCategory)): with
       if sqrt(r*r) = r then 1 else -1
     householder(a) ==
       m := #a
-      u := a + length(a)*signValue(a(1))*unitVector(m) 
-      v := u/u(1) 
+      u := a + length(a)*signValue(a(1))*unitVector(m)
+      v := u/u(1)
       beta := (1+1)/dot(v,v)
       scalarMatrix(m,1) - beta*transpose(outerProduct(v,v))
     qr(a) ==
@@ -335,13 +335,13 @@ Makes heavy use of BBC BASIC's matrix arithmetic.
       *FLOAT 64
       @% = &2040A
       INSTALL @lib$+"ARRAYLIB"
-      
+
       REM Test matrix for QR decomposition:
       DIM A(2,2)
       A() = 12, -51,   4, \
       \      6, 167, -68, \
       \     -4,  24, -41
-      
+
       REM Do the QR decomposition:
       DIM Q(2,2), R(2,2)
       PROCqrdecompose(A(), Q(), R())
@@ -353,11 +353,11 @@ Makes heavy use of BBC BASIC's matrix arithmetic.
       PRINT R(0,0), R(0,1), R(0,2)
       PRINT R(1,0), R(1,1), R(1,2)
       PRINT R(2,0), R(2,1), R(2,2)
-      
+
       REM Test data for least-squares solution:
       DIM x(10) : x() = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
       DIM y(10) : y() = 1, 6, 17, 34, 57, 86, 121, 162, 209, 262, 321
-      
+
       REM Do the least-squares solution:
       DIM a(10,2), q(10,10), r(10,2), t(10,10), b(10), z(2)
       FOR i% = 0 TO 10
@@ -380,7 +380,7 @@ Makes heavy use of BBC BASIC's matrix arithmetic.
       PRINT '"Least-squares solution:"
       PRINT z(0), z(1), z(2)
       END
-      
+
       DEF PROCqrdecompose(A(), Q(), R())
       LOCAL i%, k%, m%, n%, H()
       m% = DIM(A(),1) : n% = DIM(A(),2)
@@ -396,7 +396,7 @@ Makes heavy use of BBC BASIC's matrix arithmetic.
       ENDWHILE
       R() = A()
       ENDPROC
-      
+
       DEF PROCqrstep(n%, k%, A(), H())
       LOCAL a(), h(), i%, j%
       DIM a(n%,0), h(n%,n%)
@@ -409,7 +409,7 @@ Makes heavy use of BBC BASIC's matrix arithmetic.
         NEXT
       NEXT
       ENDPROC
-      
+
       REM Create the Householder matrix for the supplied column vector:
       DEF PROChouseholder(H(), a())
       LOCAL e(), u(), v(), vt(), vvt(), I(), d()
@@ -454,8 +454,8 @@ Least-squares solution:
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -701,7 +701,7 @@ class Matrix {
 public:
   // default constructor (don't allocate)
   Matrix() : m(0), n(0), data(nullptr) {}
-  
+
   // constructor with memory allocation, initialized to zero
   Matrix(int m_, int n_) : Matrix() {
     m = m_;
@@ -716,7 +716,7 @@ public:
       for (int j = 0; j < n; j++)
 	(*this)(i,j) = mat(i,j);
   }
-  
+
   // constructor from array
   template<int rows, int cols>
   Matrix(double (&a)[rows][cols]) : Matrix(rows,cols) {
@@ -740,9 +740,9 @@ public:
 
   // operator assignment
   Matrix& operator=(const Matrix& source) {
-    
+
     // self-assignment check
-    if (this != &source) { 
+    if (this != &source) {
       if ( (m*n) != (source.m * source.n) ) { // storage cannot be reused
 	allocate(source.m,source.n);          // re-allocate storage
       }
@@ -751,18 +751,18 @@ public:
     }
     return *this;
   }
-  
+
   // compute minor
   void compute_minor(const Matrix& mat, int d) {
 
     allocate(mat.m, mat.n);
-    
+
     for (int i = 0; i < d; i++)
       (*this)(i,i) = 1.0;
     for (int i = d; i < mat.m; i++)
       for (int j = d; j < mat.n; j++)
 	(*this)(i,j) = mat(i,j);
-    
+
   }
 
   // Matrix multiplication
@@ -780,12 +780,12 @@ public:
       allocate(a.m, b.n);
 
     memset(data,0,m*n*sizeof(double));
-    
+
     for (int i = 0; i < a.m; i++)
       for (int j = 0; j < b.n; j++)
 	for (int k = 0; k < a.n; k++)
 	  (*this)(i,j) += a(i,k) * b(k,j);
-    
+
   }
 
   void transpose() {
@@ -799,18 +799,18 @@ public:
   }
 
   // take c-th column of m, put in v
-  void extract_column(Vector& v, int c);  
+  void extract_column(Vector& v, int c);
 
   // memory allocation
   void allocate(int m_, int n_) {
 
     // if already allocated, memory is freed
     deallocate();
-    
+
     // new sizes
     m = m_;
     n = n_;
-    
+
     data = new double[m_*n_];
     memset(data,0,m_*n_*sizeof(double));
 
@@ -824,13 +824,13 @@ public:
 
     data = nullptr;
 
-  }    
-  
+  }
+
   int m, n;
-  
+
 private:
   double* data;
-  
+
 }; // struct Matrix
 
 // column vector
@@ -839,7 +839,7 @@ class Vector {
 public:
   // default constructor (don't allocate)
   Vector() : size(0), data(nullptr) {}
-  
+
   // constructor with memory allocation, initialized to zero
   Vector(int size_) : Vector() {
     size = size_;
@@ -859,9 +859,9 @@ public:
 
   // operator assignment
   Vector& operator=(const Vector& source) {
-    
+
     // self-assignment check
-    if (this != &source) { 
+    if (this != &source) {
       if ( size != (source.size) ) {   // storage cannot be reused
 	allocate(source.size);         // re-allocate storage
       }
@@ -875,10 +875,10 @@ public:
   void allocate(int size_) {
 
     deallocate();
-    
+
     // new sizes
     size = size_;
-    
+
     data = new double[size_];
     memset(data,0,size_*sizeof(double));
 
@@ -892,7 +892,7 @@ public:
 
     data = nullptr;
 
-  }    
+  }
 
   //   ||x||
   double norm() {
@@ -910,9 +910,9 @@ public:
     double factor = norm();
     rescale(factor);
   }
-  
+
   int size;
-  
+
 private:
   double* data;
 
@@ -925,7 +925,7 @@ void vmadd(const Vector& a, const Vector& b, double s, Vector& c)
     std::cerr << "[vmadd]: vector sizes don't match\n";
     return;
   }
-  
+
   for (int i = 0; i < c.size; i++)
     c(i) = a(i) + s * b(i);
 }
@@ -941,7 +941,7 @@ void compute_householder_factor(Matrix& mat, const Vector& v)
     for (int j = 0; j < n; j++)
       mat(i,j) = -2 *  v(i) * v(j);
   for (int i = 0; i < n; i++)
-    mat(i,i) += 1;  
+    mat(i,i) += 1;
 }
 
 // take c-th column of a matrix, put results in Vector v
@@ -950,7 +950,7 @@ void Matrix::extract_column(Vector& v, int c) {
     std::cerr << "[Matrix::extract_column]: Matrix and Vector sizes don't match\n";
     return;
   }
-  
+
   for (int i = 0; i < m; i++)
     v(i) = (*this)(i,c);
 }
@@ -998,21 +998,21 @@ void householder(Matrix& mat,
   // temp array
   Matrix z(mat);
   Matrix z1;
-  
+
   for (int k = 0; k < n && k < m - 1; k++) {
 
     Vector e(m), x(m);
     double a;
-    
+
     // compute minor
     z1.compute_minor(z, k);
-    
+
     // extract k-th column into x
     z1.extract_column(x, k);
-    
+
     a = x.norm();
     if (mat(k,k) > 0) a = -a;
-    
+
     for (int i = 0; i < e.size; i++)
       e(i) = (i == k) ? 1 : 0;
 
@@ -1021,7 +1021,7 @@ void householder(Matrix& mat,
 
     // e = e / ||e||
     e.rescale_unit();
-    
+
     // qv[k] = I - 2 *e*e^T
     compute_householder_factor(qv[k], e);
 
@@ -1029,7 +1029,7 @@ void householder(Matrix& mat,
     z.mult(qv[k], z1);
 
   }
-  
+
   Q = qv[0];
 
   // after this loop, we will obtain Q (up to a transpose operation)
@@ -1037,13 +1037,13 @@ void householder(Matrix& mat,
 
     z1.mult(qv[i], Q);
     Q = z1;
-    
+
   }
-  
+
   R.mult(Q, mat);
   Q.transpose();
 }
- 
+
 double in[][3] = {
   { 12, -51,   4},
   {  6, 167, -68},
@@ -1051,20 +1051,20 @@ double in[][3] = {
   { -1,   1,   0},
   {  2,   0,   3},
 };
- 
+
 int main()
 {
-  Matrix A(in); 
+  Matrix A(in);
   Matrix Q, R;
 
-  matrix_show(A,"A");  
+  matrix_show(A,"A");
 
   // compute QR decompostion
   householder(A, R, Q);
-  
+
   matrix_show(Q,"Q");
   matrix_show(R,"R");
- 
+
   // compare Q*R to the original matrix A
   Matrix A_check;
   A_check.mult(Q, R);
@@ -1074,7 +1074,7 @@ int main()
 
   // display Q*R
   matrix_show(A_check, l2 < 1e-12 ? "A == Q * R ? yes" : "A == Q * R ? no");
- 
+
   return EXIT_SUCCESS;
 }
 
@@ -1217,7 +1217,7 @@ Helper functions:
               (setf (aref B i j)
                     (aref A (+ ma i) (+ na j)))))
     B))
- 
+
 (defun rows (A) (car  (array-dimensions A)))
 (defun cols (A) (cadr (array-dimensions A)))
 (defun mcol (A n) (array-range A 0 (1- (rows A)) n n))
@@ -1255,7 +1255,7 @@ Main routines:
          (u    (m+ a (.* (* (norm a) s) e)))
          (v    (./ u (aref u 0 0)))
          (beta (/ 2 (aref (mmul (mtp v) v) 0 0))))
-    
+
     (m- (eye m)
         (.* beta (mmul v (mtp v))))))
 
@@ -1618,7 +1618,7 @@ entry main = qr [[12.0, -51.0, 4.0],[6.0, 167.0, -68.0],[-4.0, 24.0, -41.0]]
 
 ```txt
 
-$ ./qr 
+$ ./qr
 [[-0.857143f64, 0.394286f64, -0.331429f64], [-0.428571f64, -0.902857f64, 0.034286f64], [0.285714f64, -0.171429f64, -0.942857f64]]
 [[-14.000000f64, -21.000000f64, 14.000000f64], [0.000000f64, -175.000000f64, 70.000000f64], [-0.000000f64, 0.000000f64, 35.000000f64]]
 
@@ -1844,7 +1844,7 @@ import Text.Printf (printf)
 eps = 1e-6 :: Double
 
 -- a matrix is represented as a list of columns
-mmult :: Num a => [[a]] -> [[a]] -> [[a]] 
+mmult :: Num a => [[a]] -> [[a]] -> [[a]]
 nth :: Num a => [[a]] -> Int -> Int -> a
 mmult_num :: Num a => [[a]] -> a -> [[a]]
 madd :: Num a => [[a]] -> [[a]] -> [[a]]
@@ -1925,17 +1925,17 @@ main = let (mQ, mR) = householder mY in
 
 ```txt
 
-Q: 
+Q:
    -0.8571     0.3943    -0.3314
    -0.4286    -0.9029     0.0343
     0.2857    -0.1714    -0.9429
-R: 
+R:
   -14.0000   -21.0000    14.0000
     0.0000  -175.0000    70.0000
     0.0000     0.0000    35.0000
-q: 
+q:
 [21.0,245.0,35.0]
-x: 
+x:
 [1.0000000000000004,-0.9999999999999999,1.0]
 
 ```
@@ -1950,7 +1950,7 @@ x:
    QR =: 128!:0
 ```
 
-'''Solution''' (custom implementation): 
+'''Solution''' (custom implementation):
 ```j
    mp=: +/ . *  NB. matrix product
    h =: +@|:    NB. conjugate transpose
@@ -1971,7 +1971,7 @@ x:
 ```
 
 
-'''Example''': 
+'''Example''':
 ```j
    QR 12 _51 4,6 167 _68,:_4 24 _41
 +-----------------------------+----------+
@@ -2061,7 +2061,7 @@ Q, R = qr([12 -51 4; 6 167 -68; -4 24 -41])
 
 (
 3x3 Array{Float64,2}:
- -0.857143   0.394286   0.331429 
+ -0.857143   0.394286   0.331429
  -0.428571  -0.902857  -0.0342857
   0.285714  -0.171429   0.942857 ,
 
@@ -2130,10 +2130,10 @@ r//MatrixForm
 =={{header|MATLAB}} / {{header|Octave}}==
 
 ```Matlab
- A = [12 -51   4 
+ A = [12 -51   4
        6 167 -68
       -4  24 -41];
- [Q,R]=qr(A) 
+ [Q,R]=qr(A)
 ```
 
 Output:
@@ -2325,8 +2325,8 @@ print $q, $r, $q x $r;
 use v6;
 
 sub identity(Int:D $m --> Array of Array) {
-   my Array @M; 
-   
+   my Array @M;
+
    for 0 ..^ $m -> $i {
       @M.push: [0 xx $m];
       @M[$i; $i] = 1;
@@ -2386,12 +2386,12 @@ sub householder(Array:D @A --> Array) {
       }
 
       my Real $sqr_sum = $sign * sqrt($sum);
-      my Real $tmp = sqrt(2 * ($sum + $A0 * $sqr_sum));     
+      my Real $tmp = sqrt(2 * ($sum + $A0 * $sqr_sum));
       @v[$k] = ($sqr_sum  + $A0) / $tmp;
 
       for ($k + 1) ..^ $m -> $i {
          @v[$i] = @A[$i; $k] / $tmp;
-      }              
+      }
 
       for 0 ..^ $n -> $j {
          $sum = 0;
@@ -2403,7 +2403,7 @@ sub householder(Array:D @A --> Array) {
          for $k ..^ $m -> $i {
             @A[$i; $j] -= 2 * @v[$i] * $sum;
          }
-      }       
+      }
 
       for 0 ..^ $m -> $j {
          $sum = 0;
@@ -2420,7 +2420,7 @@ sub householder(Array:D @A --> Array) {
 
    @Q
 }
- 
+
 sub dotp(@a where Array:D, @b where Array:D --> Real) {
    [+] @a >>*<< @b;
 }
@@ -2433,7 +2433,7 @@ sub upper-solve(Array:D @U, @b where Array:D, Int:D $n --> Array) {
    for reverse ^($n - 1) -> $i {
       @y[$i] = (@b[$i] - (dotp(@U[$i], @y))) / @U[$i; $i];
    }
-   
+
    @y;
 }
 
@@ -2494,8 +2494,8 @@ sub MAIN() {
 
    my @coef = polyfit(@x, @y, 2);
 
-   say 
-      "\npolyfit:\n", 
+   say
+      "\npolyfit:\n",
       <constant X X^2>.fmt("%12s"),
       "\n",
       @coef.fmt("%12.6f");
@@ -2508,32 +2508,32 @@ output:
 ```txt
 
 A:
-   12.000000   -51.000000     4.000000 
-    6.000000   167.000000   -68.000000 
-   -4.000000    24.000000   -41.000000 
-   -1.000000     1.000000     0.000000 
-    2.000000     0.000000     3.000000 
+   12.000000   -51.000000     4.000000
+    6.000000   167.000000   -68.000000
+   -4.000000    24.000000   -41.000000
+   -1.000000     1.000000     0.000000
+    2.000000     0.000000     3.000000
 
 Q:
-   -0.846415     0.391291    -0.343124     0.066137    -0.091462 
-   -0.423207    -0.904087     0.029270     0.017379    -0.048610 
-    0.282138    -0.170421    -0.932856    -0.021942     0.143712 
-    0.070535    -0.014041     0.001099     0.997401     0.004295 
-   -0.141069     0.016656     0.105772     0.005856     0.984175 
+   -0.846415     0.391291    -0.343124     0.066137    -0.091462
+   -0.423207    -0.904087     0.029270     0.017379    -0.048610
+    0.282138    -0.170421    -0.932856    -0.021942     0.143712
+    0.070535    -0.014041     0.001099     0.997401     0.004295
+   -0.141069     0.016656     0.105772     0.005856     0.984175
 
 R:
-  -14.177447   -20.666627    13.401567 
-   -0.000000  -175.042539    70.080307 
-    0.000000     0.000000    35.201543 
-   -0.000000     0.000000     0.000000 
-    0.000000    -0.000000     0.000000 
+  -14.177447   -20.666627    13.401567
+   -0.000000  -175.042539    70.080307
+    0.000000     0.000000    35.201543
+   -0.000000     0.000000     0.000000
+    0.000000    -0.000000     0.000000
 
 check Q x R = A:
-   12.000000   -51.000000     4.000000 
-    6.000000   167.000000   -68.000000 
-   -4.000000    24.000000   -41.000000 
-   -1.000000     1.000000    -0.000000 
-    2.000000    -0.000000     3.000000 
+   12.000000   -51.000000     4.000000
+    6.000000   167.000000   -68.000000
+   -4.000000    24.000000   -41.000000
+   -1.000000     1.000000    -0.000000
+    2.000000    -0.000000     3.000000
 
 polyfit:
     constant            X          X^2
@@ -2552,7 +2552,7 @@ using matrix_mul from [[Matrix_multiplication#Phix]]
 ```Phix
 -- demo/rosettacode/QRdecomposition.exw
 function vtranspose(sequence v)
--- transpose a vector of length m into an mx1 matrix, 
+-- transpose a vector of length m into an mx1 matrix,
 --                       eg {1,2,3} -> {{1},{2},{3}}
     for i=1 to length(v) do v[i] = {v[i]} end for
     return v
@@ -2592,8 +2592,8 @@ sequence q, I = mat_ident(m), Q = I, u, v
 
 --
 -- Programming note: The code of this main loop was not as easily
--- written as the first glance might suggest. Explicitly setting 
--- to 0 any a[i,j] [etc] that should be 0 but have inadvertently 
+-- written as the first glance might suggest. Explicitly setting
+-- to 0 any a[i,j] [etc] that should be 0 but have inadvertently
 -- gotten set to +/-1e-15 or thereabouts may be advisable. The
 -- commented-out code was retrieved from a backup and should be
 -- treated as an example and not be trusted (iirc, it made no
@@ -2619,7 +2619,7 @@ sequence q, I = mat_ident(m), Q = I, u, v
             R[i,j] = a[i,j]
         end for
     end for
-        
+
     return {Q,R}
 end function
 
@@ -2705,13 +2705,13 @@ least_squares()
 function qr([double[][]]$A) {
     $m,$n = $A.count, $A[0].count
     $pm,$pn = ($m-1), ($n-1)
-    [double[][]]$Q = 0..($m-1) | foreach{$row = @(0) * $m; $row[$_] = 1; ,$row} 
+    [double[][]]$Q = 0..($m-1) | foreach{$row = @(0) * $m; $row[$_] = 1; ,$row}
     [double[][]]$R = $A | foreach{$row = $_; ,@(0..$pn | foreach{$row[$_]})}
-    foreach ($h in 0..$pn) { 
-        [double[]]$u = $R[$h..$pm] | foreach{$_[$h]} 
-        [double]$nu = $u | foreach {[double]$sq = 0} {$sq += $_*$_} {[Math]::Sqrt($sq)} 
+    foreach ($h in 0..$pn) {
+        [double[]]$u = $R[$h..$pm] | foreach{$_[$h]}
+        [double]$nu = $u | foreach {[double]$sq = 0} {$sq += $_*$_} {[Math]::Sqrt($sq)}
         $u[0] -= if ($u[0] -lt 1) {$nu} else {-$nu}
-        [double]$nu = $u | foreach {$sq = 0} {$sq += $_*$_} {[Math]::Sqrt($sq)} 
+        [double]$nu = $u | foreach {$sq = 0} {$sq += $_*$_} {[Math]::Sqrt($sq)}
         [double[]]$u = $u | foreach { $_/$nu}
         [double[][]]$v = 0..($u.Count - 1) | foreach{$i = $_; ,($u | foreach{2*$u[$i]*$_})}
         [double[][]]$CR = $R | foreach{$row = $_; ,@(0..$pn | foreach{$row[$_]})}
@@ -2750,7 +2750,7 @@ function leastsquares([Double[][]]$A,[Double[]]$y) {
     [Double[][]]$Q = $QR.Q
     [Double[][]]$R = $QR.R
     $m,$n = $A.count, $A[0].count
-    [Double[]]$z = foreach ($j in  0..($m-1)) { 
+    [Double[]]$z = foreach ($j in  0..($m-1)) {
             0..($m-1) | foreach {$sum = 0} {$sum += $Q[$_][$j]*$y[$_]} {$sum}
     }
     [Double[]]$x = @(0)*$n
@@ -2764,8 +2764,8 @@ function leastsquares([Double[][]]$A,[Double[]]$y) {
 }
 
 function polyfit([Double[]]$x,[Double[]]$y,$n) {
-    $m = $x.Count 
-    [Double[][]]$A = 0..($m-1) | foreach{$row = @(1) * ($n+1); ,$row} 
+    $m = $x.Count
+    [Double[][]]$A = 0..($m-1) | foreach{$row = @(1) * ($n+1); ,$row}
     for ($i = 0; $i -lt $m; $i++) {
         for ($j = $n-1; 0 -le $j; $j--) {
             $A[$i][$j] = $A[$i][$j+1]*$x[$i]
@@ -2795,15 +2795,15 @@ show $QR.R
 
 ```txt
 
-Q = 
+Q =
 -0.857142857142857 0.394285714285714 -0.331428571428571
 -0.428571428571429 -0.902857142857143 0.0342857142857143
 0.285714285714286 -0.171428571428571 -0.942857142857143
-R = 
+R =
 -14 -21 14
 8.88178419700125E-16 -175 70
 -4.44089209850063E-16 0 35
-polyfit 
+polyfit
 X^2 X constant
 3 1.99999999999998 1.00000000000005
 
@@ -2961,7 +2961,7 @@ Here is an implementation of the Householder method:
   (define n (size A))
   (for/fold ([Q (I n)] [R A]) ([i (- n 1)])
     (define Hi (H (normal (submatrix R (:: i n) (:: i (+ i 1))))))
-    (define Hi* (if (= i 0) Hi (block-diagonal-matrix (list (I i) Hi)))) 
+    (define Hi* (if (= i 0) Hi (block-diagonal-matrix (list (I i) Hi))))
     (values (matrix* Q Hi*) (matrix* Hi* R))))
 
 (QR (matrix [[12 -51   4]
@@ -2974,11 +2974,11 @@ Output:
 
 ```racket
 
-(array #[#[6/7 69/175 -58/175] 
-             #[3/7 -158/175 6/175] 
+(array #[#[6/7 69/175 -58/175]
+             #[3/7 -158/175 6/175]
              #[-2/7 -6/35 -33/35]])
-(array #[#[14 21 -14] 
-             #[0 -175 70] 
+(array #[#[14 21 -14]
+             #[0 -175 70]
              #[0 0 35]])
 
 ```
@@ -2988,7 +2988,7 @@ Output:
 ## Rascal
 
 [[File:Qrresult.jpeg||200px|thumb|right]]
-This function applies the Gram Schmidt algorithm. Q is printed in the console, R can be printed or visualized. 
+This function applies the Gram Schmidt algorithm. Q is printed in the console, R can be printed or visualized.
 
 
 ```Rascal
@@ -3003,26 +3003,26 @@ public rel[real,real,real] QRdecomposition(rel[real x, real y, real v] matrix){
 	for (x <- sort(toList(domain(matrix)-{0.0}))){
 		c = domainR(matrix, {x});
 		o = domainR(oc, {x-1});
-		
+
 		for (n <- [1.0 .. x]){
 			o = domainR(oc, {n-1});
 			c = matrixSubtract(c, matrixMultiplybyN(o, matrixDotproduct(o, c)/matrixDotproduct(o, o)));
 			}
-			
+
 		oc += c;
 	}
-	
+
 	Q = {};
 	//from orthogonal to orthonormal columns
 	for (el <- oc){
 		c = domainR(oc, {el[0]});
 		Q += matrixNormalize({el}, c);
 	}
-	
+
 	//from Q to R
 	R= matrixMultiplication(matrixTranspose(Q), matrix);
 	R= {<x,y,toReal(round(v))> | <x,y,v> <- R};
-	
+
 	println("Q:");
 	iprintlnExp(Q);
 	println();
@@ -3071,7 +3071,7 @@ public rel[real, real, real] matrixMultiplication(rel[real x, real y, real v] ma
 		return result;
 	}
 	else throw "Matrix sizes do not match.";
-} 	
+}
 
 // a function to visualize the result
 public void displayMatrix(rel[real x, real y, real v] matrix){
@@ -3081,8 +3081,8 @@ public void displayMatrix(rel[real x, real y, real v] matrix){
 
 //a matrix, given by a relation of <x-coordinate, y-coordinate, value>.
 public rel[real x, real y, real v] matrixA = {
-<0.0,0.0,12.0>, <0.0,1.0, 6.0>, <0.0,2.0,-4.0>, 
-<1.0,0.0,-51.0>, <1.0,1.0,167.0>, <1.0,2.0,24.0>, 
+<0.0,0.0,12.0>, <0.0,1.0, 6.0>, <0.0,2.0,-4.0>,
+<1.0,0.0,-51.0>, <1.0,1.0,167.0>, <1.0,2.0,24.0>,
 <2.0,0.0,4.0>, <2.0,1.0,-68.0>, <2.0,2.0,-41.0>
 };
 ```
@@ -3193,15 +3193,15 @@ main :=
         qrTest := [[12.0, -51.0,   4.0],
                    [ 6.0, 167.0, -68.0],
                    [-4.0,  24.0, -41.0]];
-        
+
         qrResult := qr(qrTest);
-        
+
         x := 1.0*(0 ... 10);
         y := 1.0*[1, 6, 17, 34, 57, 86, 121, 162, 209, 262, 321];
-        
+
         regResult := polyfit(x, y, 2);
     in
-        "q:\n" ++ delimit(delimit(floatToString(qrResult[1], 6), ','), '\n') ++ "\n\n" ++ 
+        "q:\n" ++ delimit(delimit(floatToString(qrResult[1], 6), ','), '\n') ++ "\n\n" ++
         "r:\n" ++ delimit(delimit(floatToString(qrResult[2], 1), ','), '\n') ++ "\n\n" ++
         "polyfit:\n" ++ "[" ++ delimit(floatToString(regResult, 1), ',') ++ "]";
 
@@ -3210,21 +3210,21 @@ main :=
 polyfit(x(1), y(1), n) :=
     let
         a[j] := x ^ j foreach j within 0 ... n;
-    in  
+    in
         lsqr(transpose(a), transpose([y]));
-    
+
 lsqr(a(2), b(2)) :=
     let
         qrDecomp := qr(a);
         prod := mm(transpose(qrDecomp[1]), b);
     in
         solveUT(qrDecomp[2], prod);
-        
-solveUT(r(2), b(2)) := 
-    let 
+
+solveUT(r(2), b(2)) :=
+    let
         n := size(r[1]);
     in
-        solveUTHelper(r, b, n, duplicate(0.0, n)); 
+        solveUTHelper(r, b, n, duplicate(0.0, n));
 
 solveUTHelper(r(2), b(2), k, x(1)) :=
     let
@@ -3243,11 +3243,11 @@ qrHelper(A(2), Q(2), i) :=
     let
         m := size(A);
         n := size(A[1]);
-        
+
         householder := makeHouseholder(A[i ... m, i]);
-        
-        H[j,k] := 
-                householder[j - i + 1][k - i + 1] when j >= i and k >= i 
+
+        H[j,k] :=
+                householder[j - i + 1][k - i + 1] when j >= i and k >= i
             else
                 1.0 when j = k else 0.0
             foreach j within 1 ... m,
@@ -3256,12 +3256,12 @@ qrHelper(A(2), Q(2), i) :=
         [Q,A] when i > (n - 1 when m = n else n)
     else
         qrHelper(mm(H, A), mm(Q, H), i + 1);
-    
 
-makeHouseholder(a(1)) := 
+
+makeHouseholder(a(1)) :=
     let
         v := [1.0] ++ tail(a / (a[1] + sqrt(sum(a ^ 2)) * sign(a[1])));
-        
+
         H := id(size(a)) - (2.0 / mm([v], transpose([v])))[1,1] * mm(transpose([v]), [v]);
     in
         H;
@@ -3271,7 +3271,7 @@ makeHouseholder(a(1)) :=
 id(n)[i,j] := 1.0 when i = j else 0.0
               foreach i within 1 ... n,
                       j within 1 ... n;
-                        
+
 mm(A(2), B(2))[i,j] := sum( A[i] * transpose(B)[j] );
 ```
 
@@ -3305,7 +3305,7 @@ See [[QR_decomposition#Axiom]] in Axiom.
 ## Standard ML
 
 {{trans|Axiom}}
-We first define a signature for a radical category joined with a field. We then define a functor with (a) structures to define operators and functions for Array and Array2, and (b) functions for the QR decomposition: 
+We first define a signature for a radical category joined with a field. We then define a functor with (a) structures to define operators and functions for Array and Array2, and (b) functions for the QR decomposition:
 
 ```sml
 signature RADCATFIELD = sig
@@ -3319,7 +3319,7 @@ val / : real * real -> real
 val sign : real -> real
 val sqrt : real -> real
 end
-		      
+
 functor QR(F: RADCATFIELD) = struct
 structure A = struct
 local
@@ -3388,7 +3388,7 @@ fun qr mat =
     let open Array2
 	val (m,n) = dimensions mat
 	val upperIndex = if m=n then Int.-(n,1) else n
-	fun loop(i,qm,rm) = if i=upperIndex then {q=qm,r=rm} else 
+	fun loop(i,qm,rm) = if i=upperIndex then {q=qm,r=rm} else
 			    let val x = A.slice(A.fromVector(column(rm,i)),i,NONE)
 				val h = M.scalarMatrix(m,F.one)
 				val _ = M.updateSubMatrix(h,i,i,householder x)
@@ -3423,7 +3423,7 @@ fun lsqr(a,b) =
 			     M.multa(M.transpose(q), b))
     end
 fun pow(x,1) = x
-  | pow(x,n) = F.*(x,pow(x,Int.-(n,1)))  
+  | pow(x,n) = F.*(x,pow(x,Int.-(n,1)))
 fun polyfit(x,y,n) =
     let open Array2
 	val a = tabulate RowMajor (Array.length x,
@@ -3592,13 +3592,13 @@ Output:
 ```txt
 
 ==Q==
--0.857143  0.394286  0.331429 
--0.428571 -0.902857 -0.034286 
- 0.285714 -0.171429  0.942857 
+-0.857143  0.394286  0.331429
+-0.428571 -0.902857 -0.034286
+ 0.285714 -0.171429  0.942857
 ==R==
--14.0  -21.0  14.0 
-  0.0 -175.0  70.0 
-  0.0    0.0 -35.0 
+-14.0  -21.0  14.0
+  0.0 -175.0  70.0
+  0.0    0.0 -35.0
 
 ```
 
@@ -3614,7 +3614,7 @@ Private Function vtranspose(v As Variant) As Variant
 '--                       eg {1,2,3} -> {1;2;3}
     vtranspose = WorksheetFunction.Transpose(v)
 End Function
- 
+
 Private Function mat_col(a As Variant, col As Integer) As Variant
     Dim res() As Double
     ReDim res(UBound(a))
@@ -3623,11 +3623,11 @@ Private Function mat_col(a As Variant, col As Integer) As Variant
     Next i
     mat_col = res
 End Function
- 
+
 Private Function mat_norm(a As Variant) As Double
     mat_norm = Sqr(WorksheetFunction.SumProduct(a, a))
 End Function
- 
+
 Private Function mat_ident(n As Integer) As Variant
     mat_ident = WorksheetFunction.Munit(n)
 End Function
@@ -3684,7 +3684,7 @@ Private Function QRHouseholder(ByVal a As Variant) As Variant
         a = matrix_mul(q, a)
         Q_ = matrix_mul(Q_, q)
     Next j
- 
+
     '-- Get the upper triangular matrix R.
     Dim R() As Variant
     ReDim R(m, n)
@@ -3726,29 +3726,29 @@ End Sub
 
 ```txt
 A
-12,           -51,          4,            
-6,            167,          -68,          
--4,           24,           -41,          
--1,           1,            0,            
-2,            0,            3,            
+12,           -51,          4,
+6,            167,          -68,
+-4,           24,           -41,
+-1,           1,            0,
+2,            0,            3,
 Q
-0,84641       -0,39129      -0,34312      0,06641       -0,09126      
-0,42321       0,90409       0,02927       0,01752       -0,04856      
--0,28214      0,17042       -0,93286      -0,02237      0,14365       
--0,07053      0,01404       0,0011        0,99738       0,00728       
-0,14107       -0,01666      0,10577       0,00291       0,98419       
+0,84641       -0,39129      -0,34312      0,06641       -0,09126
+0,42321       0,90409       0,02927       0,01752       -0,04856
+-0,28214      0,17042       -0,93286      -0,02237      0,14365
+-0,07053      0,01404       0,0011        0,99738       0,00728
+0,14107       -0,01666      0,10577       0,00291       0,98419
 R
-14,17745      20,66663      -13,40157     
-0,            175,04254     -70,08031     
-0,            0,            35,20154      
-0,            0,            0,            
-0,            0,            0,            
+14,17745      20,66663      -13,40157
+0,            175,04254     -70,08031
+0,            0,            35,20154
+0,            0,            0,
+0,            0,            0,
 Q * R
-12,           -51,          4,            
-6,            167,          -68,          
--4,           24,           -41,          
--1,           1,            0,            
-2,            0,            3, 
+12,           -51,          4,
+6,            167,          -68,
+-4,           24,           -41,
+-1,           1,            0,
+2,            0,            3,
 ```
 
 Least squares
@@ -3788,7 +3788,7 @@ End Sub
 {{out}}
 
 ```txt
-Least-squares solution:     1,            2,            3,  
+Least-squares solution:     1,            2,            3,
 ```
 
 

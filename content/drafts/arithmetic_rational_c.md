@@ -14,8 +14,8 @@ tags = []
 
 C doesn't support classes, so a series of functions is provided that implements the arithmetic of a rational class.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>    // for fabs in converting float to rational
@@ -77,7 +77,7 @@ Rational Ratl_Add( Rational l, Rational r, Rational rzlt)
 {
     int  denom;
     denom= lcm(l->denominator, r->denominator);
-    rzlt->numerator = denom/l->denominator *l->numerator 
+    rzlt->numerator = denom/l->denominator *l->numerator
                    + denom/r->denominator *r->numerator ;
     rzlt->denominator = denom;
     if (rzlt->numerator == 0) {
@@ -140,7 +140,7 @@ int ipow(int base, int power )
 
     if (power < 0) return 0; // shouldn't happen
     while (power > 0) {
-        if (power & 1) 
+        if (power & 1)
             v2 *=v;
         v = v*v;
         power >>= 1;
@@ -192,7 +192,7 @@ int Ratl_Cpr( Rational l, CompOp compOp, Rational r)
     return v;
 }
 
-double Ratl_2Real(Rational l) 
+double Ratl_2Real(Rational l)
 {
     return l->numerator *1.0/l->denominator;
 }
@@ -237,7 +237,7 @@ Rational Real_2Ratl(double r, double eps, Rational rtnl)
     int isNeg = (r<0);
     if ( isNeg) r = -r;
 
-    denom=0; 
+    denom=0;
     do {
         denom++;
         v1 = (r+eps)*denom;

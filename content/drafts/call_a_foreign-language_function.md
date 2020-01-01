@@ -202,7 +202,7 @@ native function free(p)    // also need to free the result
 var s = strdup ("hello world\n")
 var p = s     // this is an integer type
 for (;;) {
-    var ch = peek (p, 1)   // read a single character 
+    var ch = peek (p, 1)   // read a single character
     if (ch == 0) {
         break
     }
@@ -232,11 +232,11 @@ free (s)   // done with the memory now
 szString: .asciz "Hello word\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                            @ entry of program
     push {fp,lr}                 @ saves registers
 
@@ -254,31 +254,31 @@ main:                            @ entry of program
 iAdrszString:      .int szString
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 
 ```
 
 
 ## AutoHotkey
 
-from the documentation for dllcall: 
+from the documentation for dllcall:
 ```AutoHotkey
 ; Example: Calls the Windows API function "MessageBox" and report which button the user presses.
 
@@ -295,7 +295,7 @@ MsgBox You pressed button #%WhichButton%.
       SYS "LoadLibrary", "MSVCRT.DLL" TO msvcrt%
       SYS "GetProcAddress", msvcrt%, "_strdup" TO `strdup`
       SYS "GetProcAddress", msvcrt%, "free" TO `free`
-      
+
       SYS `strdup`, "Hello World!" TO address%
       PRINT $$address%
       SYS `free`, address%
@@ -317,8 +317,8 @@ DOUBLE PRECISION MULTIPLY, X, Y
 
 Note that the calling convention of FORTRAN depends on the system and the used FORTRAN compiler, and sometimes even on the command line options used for the compiler; here, GNU Fortran with no options is assumed.
 
-```cpp>#include <cstdlib
-  // for C memory management
+```cpp
+#include <cstdlib>  // for C memory management
 #include <string>   // for C++ strings
 #include <iostream> // for output
 
@@ -441,8 +441,8 @@ add_library(cmDIV MODULE div-command.c)
 
 '''div/div-command.c'''
 
-```c>#include <cmCPluginAPI.h
-
+```c
+#include <cmCPluginAPI.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -574,14 +574,14 @@ Crystal allows to easily interface with C functions, both from object files and 
 ```ruby
 @[Link("c")] # name of library that is passed to linker. Not needed as libc is linked by stdlib.
 lib LibC
-  fun free(ptr : Void*) : Void 
+  fun free(ptr : Void*) : Void
   fun strdup(ptr : Char*) : Char*
 end
 
 s1 = "Hello World!"
 p = LibC.strdup(s1) # returns Char* allocated by LibC
 s2 = String.new(p)
-LibC.free p # pointer can be freed as String.new(Char*) makes a copy of data 
+LibC.free p # pointer can be freed as String.new(Char*) makes a copy of data
 
 puts s2
 ```
@@ -826,14 +826,14 @@ module c_api
             type(c_ptr) :: strdup
         end function
     end interface
-    
+
     interface
         subroutine free(ptr) bind(C)
             import c_ptr
             type(c_ptr), value :: ptr
         end subroutine
     end interface
-    
+
     interface
         function puts(ptr) bind(C)
             import c_ptr, c_int
@@ -850,12 +850,12 @@ program c_example
     character(20), target :: str = "Hello, World!" // c_null_char
     type(c_ptr) :: ptr
     integer(c_int) :: res
-    
+
     ptr = strdup(c_loc(str))
-    
+
     res = puts(c_loc(str))
     res = puts(ptr)
-    
+
     print *, transfer(c_loc(str), 0_c_intptr_t), &
              transfer(ptr, 0_c_intptr_t)
     call free(ptr)
@@ -886,11 +886,11 @@ localfree = DyLibSymbol(library2, "LocalFree")
 
 Dim As ZString * 10 z = "duplicate"  '' 10 characters including final zero byte
 Dim As Zstring Ptr pcz = strdup(@z)  '' pointer to the duplicate string
-Print *pcz                           '' print duplicate string by dereferencing pointer 
-localfree(pcz)                       '' free the memory which StrDup allocated internally 
-pcz = 0                              '' set pointer to null                    
+Print *pcz                           '' print duplicate string by dereferencing pointer
+localfree(pcz)                       '' free the memory which StrDup allocated internally
+pcz = 0                              '' set pointer to null
 DyLibFree(library)                   '' unload first dll
-DyLibFree(library2)                  '' unload second fll 
+DyLibFree(library2)                  '' unload second fll
 End
 ```
 
@@ -988,7 +988,7 @@ The first step is to create a shared library, to wrap the target C functions and
 int strdup_wrapper (int argc, descriptor *argv)
 {
   ArgString (1); // check that the first argument is a string
-  
+
   RetString (strdup (StringVal(argv[1]))); // call strdup, convert and return result
 }
 
@@ -1088,12 +1088,12 @@ public class JNIDemo
 {
   static
   {  System.loadLibrary("JNIDemo");  }
-  
+
   public static void main(String[] args)
   {
     System.out.println(callStrdup("Hello World!"));
   }
-  
+
   private static native String callStrdup(String s);
 }
 ```
@@ -1160,28 +1160,28 @@ JNIEXPORT jstring JNICALL Java_JNIDemo_callStrdup(JNIEnv *env, jclass cls, jstri
   const jbyte* utf8String;
   char* dupe;
   jstring dupeString;
-  
+
   if (s == NULL)
   {
     throwByName(env, "java/lang/NullPointerException", "String is null");
     return NULL;
   }
-  
+
   // Convert from UTF-16 to UTF-8 (C-style)
   utf8String = (*env)->GetStringUTFChars(env, s, NULL);
-  
+
   // Duplicate
   dupe = strdup(utf8String);
-  
+
   // Free the UTF-8 string back to the JVM
   (*env)->ReleaseStringUTFChars(env, s, utf8String);
-  
+
   // Convert the duplicate string from strdup to a Java String
   dupeString = (*env)->NewStringUTF(env, dupe);
-  
+
   // Free the duplicate c-string back to the C runtime heap
   free(dupe);
-  
+
   return dupeString;
 }
 
@@ -1240,7 +1240,7 @@ using PyCall
 import kotlinx.cinterop.*
 import string.*
 
-fun main(args: Array<String>) {  
+fun main(args: Array<String>) {
     val hw = strdup ("Hello World!")!!.toKString()
     println(hw)
 }
@@ -1358,13 +1358,13 @@ Module CheckCCall {
       Buffer Clear Mem as Byte*Len(a$)
       \\ copy to Mem the converted a$ (from Utf-16Le to ANSI)
       Return Mem, 0:=str$(a$)
- 
-      Declare  MyStrDup Lib C "msvcrt._strdup" { Long Ptr} 
+
+      Declare  MyStrDup Lib C "msvcrt._strdup" { Long Ptr}
       Declare  MyFree Lib C "msvcrt.free" { Long Ptr}
       \\ see & means by reference
-      \\ ... means any number of arguments 
-      Declare  MyPrintStr Lib C "msvcrt.swprintf" { &sBuf$,  sFmt$, long Z } 
- 
+      \\ ... means any number of arguments
+      Declare  MyPrintStr Lib C "msvcrt.swprintf" { &sBuf$,  sFmt$, long Z }
+
       \\ Now we use address Mem(0) as pointer (passing by value)
       Long Z=MyStrDup(Mem(0))
       a=MyPrintStr(&myBuf$, "%s", Z)
@@ -1510,7 +1510,7 @@ Remove "user32"
 
 
 ===Make, use and remove a C Dll at runtime===
-H C dll to produce an array of primes. We can 
+H C dll to produce an array of primes. We can
 
 ```M2000 Interpreter
 
@@ -1527,7 +1527,7 @@ Module checkit {
       \\ We use a function as string container, because c code can easy color decorated in M2000.
       Function ccode {
             long primes(long a[], long b)
-            {          
+            {
                   long k=2;
                   long k2,d=2, l, i;
                   k2=k*k;
@@ -1562,7 +1562,7 @@ Module checkit {
                                        else {
                                              d=1; a[0]=2;
                                        }
-                                    }    
+                                    }
                   }
                   a[b+1]=d;
                   return 0;
@@ -1580,9 +1580,9 @@ Module checkit {
             Report code$ \\ report stop after 3/4 of screen lines use. Press spacebar or mouse button to continue
             DisplayOnce++
       }
-      
+
       \\ dos "del c:\MyName.*", 200;
-      
+
       If not exist("c:\MyName.dll") then {
             Report 2, "Now we have to make a dll"
             Rem : Load Make \\ we can use a Make.gsb in current folder - this is the user folder for now
@@ -1628,7 +1628,7 @@ Module checkit {
       If Yes then {
             Form 80,50
             Refresh
-            For i=2 to total+1 
+            For i=2 to total+1
                   Print Eval(A,i),
             next i
             Print
@@ -1761,8 +1761,8 @@ Of note is that '''no separate C source file needs to be provided'''.  The compi
 =={{header|Modula-2}}==
 The first file (Vga.c) creates the function prototypes.
 
-```c>#include <vga.h
-
+```c
+#include <vga.h>
 
 int   Initialize (void)
 {
@@ -1987,7 +1987,7 @@ prompt$ never -f callffi.nev
 
 ## NewLISP
 
-newLISP has two FFI APIs. The simple API needs no type specifiers but is limited to integers and pointers. 
+newLISP has two FFI APIs. The simple API needs no type specifiers but is limited to integers and pointers.
 The extended API can specify types for return values and parameters and can also be used for floats and structs.
 
 ```NewLISP
@@ -2053,8 +2053,8 @@ external myfunc_c: int array -> string = "caml_myfunc_c"
 
 ====file "wrap_mylib.c":====
 
-```c>#include <caml/mlvalues.h
-
+```c
+#include <caml/mlvalues.h>
 #include <caml/alloc.h>
 #include <mylib.h>
 
@@ -2389,8 +2389,8 @@ This declares a module "plffi" that exports the '''predicate''' (''not'' functio
 Then we need to write a C file that gives us the interface to the underlying C function (strdup in this case), mapping the ''predicate''' call to a C '''function''' call:
 
 
-```c>#include <string.h
-
+```c
+#include <string.h>
 #include <stdio.h>
 #include <SWI-Prolog.h>
 
@@ -2460,13 +2460,13 @@ the resulting executable. [http://www.purebasic.com/ PureBasic] supports {Window
 ; Call_a_foreign_language_function.fasm -> Call_a_foreign_language_function.obj
 ; the assembler code...
 
-; format COFF or 
+; format COFF or
 ; format COFF64 classic (DJGPP) variants of COFF file
 
-; format MS COFF or 
+; format MS COFF or
 ; format MS COFF64 Microsoft's variants of COFF file
 
-format  MS COFF 
+format  MS COFF
 
 include "Win32A.Inc"
 
@@ -2569,12 +2569,12 @@ libc.strcmp("hello", "hello") #  0
     (lambda (x) x)))
 
 ; Make a Scheme string from the C string, and free immediately.
-(define _string/free 
+(define _string/free
   (make-ctype _pointer
     ;; We don't use this as an input type, so we don't care.
     (lambda (x) x)
     (lambda (x)
-      (cond 
+      (cond
        [x
         (define s (bytes->string/utf-8 (make-byte-string x)))
         (free x)
@@ -2607,11 +2607,11 @@ libc.strcmp("hello", "hello") #  0
         overlapped As Ptr) As Boolean
   Declare Function GetLastError Lib "Kernel32" () As Integer
   Declare Function CloseHandle Lib "kernel32" (hObject As Integer) As Boolean
-  
+
   Const FILE_SHARE_READ = &h00000001
   Const FILE_SHARE_WRITE = &h00000002
   Const OPEN_EXISTING = 3
-  
+
   Dim fHandle As Integer = CreateFileW("C:\foo.txt", 0,  FILE_SHARE_READ Or FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0)
   If fHandle > 0 Then
     Dim mb As MemoryBlock = "Hello, World!"
@@ -2663,7 +2663,7 @@ Status for device CON:
 There are three or four different approaches one can take.
 
 
-###  C extension 
+###  C extension
 
 
 The most common approach is to write a C extension. It is compiled on installation. It has to be recompiled when the underlying library changes, and sometimes when the Ruby version changes. C extensions are for [[MRI]], and might not work with other Ruby interpreters.
@@ -2727,7 +2727,7 @@ puts RosettaCode.strdup('This string gets duplicated.')
 
 
 
-###  FFI 
+###  FFI
 
 
 A recent effort to make it easier to write libraries, portable across platforms and interpreters, led to the creation of a [http://sourceware.org/libffi/ libffi] binding simply called [http://wiki.github.com/ffi/ffi/ ffi] for completely dynamic calls.
@@ -2756,7 +2756,7 @@ LibC.free(duplicate)
 
 
 
-###  Fiddle 
+###  Fiddle
 
 Fiddle is part of Ruby's standard library, and is another wrapper for libffi (different from the above FFI module). Fiddle replaces DL in the standard library. DL passed all C values as pointer-size integers, so it didn't work on some platforms. Fiddle uses libffi to pass C values as correct types. Ruby 1.9.2 added Fiddle to the standard library, but scripts needed to mix DL and Fiddle. Ruby 2.0 made Fiddle independent of DL. Ruby 2.2 removed DL, so old scripts don't work now.
 
@@ -2769,7 +2769,7 @@ require 'fiddle'
 strdup = Fiddle::Function
            .new(Fiddle::Handle['strdup'],
                 [Fiddle::TYPE_VOIDP], Fiddle::TYPE_VOIDP)
- 
+
 # Call strdup().
 #   - It converts our Ruby string to a C string.
 #   - It returns a Fiddle::Pointer.
@@ -2800,7 +2800,7 @@ Fiddle.free duplicate
 
 
 
-###  RubyInline 
+###  RubyInline
 
 
 Using {{libheader|RubyGems}} package [http://www.zenspider.com/ZSS/Products/RubyInline/ RubyInline], which compiles the inlined code on demand during runtime.
@@ -2826,7 +2826,7 @@ class InlineTester
       }
     END_C
   end
-  
+
   inline do |builder|
     builder.include %q("math.h")
     builder.c <<-'END_C'
@@ -2896,20 +2896,20 @@ object JNIDemo {
 Here are examples showing how to build and call from Stata a plugin written in C or Java. See also the entries 29 to 32 in the ''[https://blog.stata.com/2016/01/15/programming-an-estimation-command-in-stata-a-map-to-posted-entries/ Programming an estimation command in Stata]'' series by David M. Drukker, on [https://blog.stata.com/ Stata Blog].
 
 
-###  Calling C 
+###  Calling C
 
 It's possible to call a C program from Stata using a '''[https://www.stata.com/plugins/ plugin]'''. A plugin is a C program that is compiled to a DLL, then used as any other command in Stata after being loaded.
 
 As an example let's build a '''[https://en.wikipedia.org/wiki/Hilbert_matrix Hilbert matrix]''' in C.
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include "stplugin.h"
 
 STDLL stata_call(int argc, char *argv[]) {
     int i, j, n = strtol(argv[1], NULL, 0);
-    
+
     for (i = 1; i <= n; i++) {
         for (j = 1; j <= n; j++) {
             // Don't forget array indices are 1-based in Stata.
@@ -2956,7 +2956,7 @@ r4        .25         .2  .16666667  .14285714
 Notice the program as is has minimal protection against invalid arguments. Production code should be more careful.
 
 
-###  Calling Java 
+###  Calling Java
 
 It's possible to call a Java program from Stata using the '''[https://www.stata.com/help.cgi?javacall javacall]''' command. Using the '''[https://www.stata.com/java/api15/ Stata Java API]''', one can access the current dataset, matrices, macros...
 
@@ -3111,7 +3111,7 @@ static int one;
 DllExport void *construct(void *vm)
 {
    if (!vm) return (void *)ZKLX_PROTOCOL;	// handshake
-   	// If this is reloaded, nothing happens except 
+   	// If this is reloaded, nothing happens except
 	// construct() is called again so don't reinitialize
    if (!one)	// static items are zero
    {

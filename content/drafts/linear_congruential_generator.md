@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Randomness}}
-The [[wp:linear congruential generator|linear congruential generator]] is a very simple example of a [[random number generator]]. 
+The [[wp:linear congruential generator|linear congruential generator]] is a very simple example of a [[random number generator]].
 
 All linear congruential generators use this formula:
 * <math>r_{n + 1} = a \times r_n + c \pmod m</math>
@@ -44,7 +44,7 @@ In these formulas, the seed becomes <math>state_0</math>. The random sequence is
 * <math>rand_n</math> is in range 0 to 32767.
 
 
-The BSD formula was so awful that FreeBSD switched to a different formula. 
+The BSD formula was so awful that FreeBSD switched to a different formula.
 
 More info is at [[Random number generator (included)#C]].
 
@@ -69,8 +69,8 @@ LOOP     M      R4,=F'1103515245'  bsdseed*=1103515245
          LR     R3,R5              bsdrand=bsdseed
          LTR    R5,R5              if bsdseed<0
          BP     CONT               then
-         L      R3,COMP2             -2**31 
-         SR     R3,R5                -bsdseed 
+         L      R3,COMP2             -2**31
+         SR     R3,R5                -bsdseed
          LPR    R3,R3                bsdrand=abs(-2**31-bsdseed)
 CONT     M      R6,=F'214013'      msseed*=214013
          A      R7,=F'2531011'     msseed+=2531011
@@ -89,10 +89,10 @@ RETURN   XR     R15,R15            set return code
          BR     R14                return to caller
          DS     0F                 alignment
 TWO16    DC     XL4'00010000'      2**16
-COMP2    DC     XL4'80000000'      -2**31 
+COMP2    DC     XL4'80000000'      -2**31
 PG       DC     CL80' '
-XDEC     DS     CL12 
-         YREGS  
+XDEC     DS     CL12
+         YREGS
          END    LINCONG
 ```
 
@@ -186,7 +186,7 @@ end Run_LCGs;
 ```
 
 
-Finally, we run the program, which generates the following output (note that the first ten lines are from the BSD generator, the next ten from the MS generator): 
+Finally, we run the program, which generates the following output (note that the first ten lines are from the BSD generator, the next ten from the MS generator):
 
 
 ```txt
@@ -346,7 +346,7 @@ MsgBox, % "BSD:`n" BSD "`nMS:`n" MS
 BSD(Seed) {
 	return, Mod(1103515245 * Seed + 12345, 2147483648)
 }
-   
+
 MS(Seed) {
 	Seed := Mod(214013 * Seed + 2531011, 2147483648)
 	return, [Seed, Seed // 65536]
@@ -412,7 +412,7 @@ set p1= %1
 set p2=        %2
 echo %p1:~-2%  %p2:~-10%
 goto:eof
-	
+
 
 ```
 
@@ -464,7 +464,7 @@ Microsoft Rand
         PRINT FNrandBSD(-1)
       NEXT
       END
-      
+
       DEF FNrandMS(seed%)
       PRIVATE state%
       IF seed% >= 0 THEN
@@ -473,7 +473,7 @@ Microsoft Rand
         state% = FNmuladd(state%, 214013, 2531011)
       ENDIF
       = state% >> 16
-      
+
       DEF FNrandBSD(seed%)
       PRIVATE state%
       IF seed% >= 0 THEN
@@ -482,7 +482,7 @@ Microsoft Rand
         state% = FNmuladd(state%, 1103515245, 12345)
       ENDIF
       = state%
-      
+
       DEF FNmuladd(A%,B%,C%) : PRIVATE M% : LOCAL P% : IF M% = 0 DIM P% 8
       IF P% THEN [OPT 0 : .M% mul ebx : add eax,ecx : btr eax,31 : ret :]
       = USR M%
@@ -651,8 +651,8 @@ Microsoft
 
 In a pretended lib style, this code produces a rand() function depends on compiler macro: <code>gcc -DMS_RAND</code> uses MS style, otherwise it's BSD rand by default.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 /* always assuming int is at least 32 bits */
 int rand();
@@ -700,8 +700,8 @@ int main()
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 //--------------------------------------------------------------------------------------------------
 using namespace std;
@@ -798,8 +798,8 @@ BSD RAND:
 ; C++11
 {{works with|C++11}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <random>
 
 int main() {
@@ -820,7 +820,7 @@ int main() {
   for (int i = 0; i < 10; i++) {
     std::cout << (ms_rand() >> 16) << std::endl;
   }
-  
+
   return 0;
 }
 ```
@@ -962,7 +962,7 @@ namespace LinearCongruentialGenerator
 
         static int Next(int seed, int a, int b) => (a * seed + b) & int.MaxValue;
 
-        static int BsdRand() => _bsdCurrent = Next(_bsdCurrent, 1103515245, 12345); 
+        static int BsdRand() => _bsdCurrent = Next(_bsdCurrent, 1103515245, 12345);
 
         static int MscvrtRand() => _msvcrtCurrent = Next (_msvcrtCurrent << 16,214013,2531011) >> 16;
 
@@ -1184,7 +1184,7 @@ Output:
 
 ''dc'' has no bitwise operations, so this program uses the modulus operator (<code>2147483648 %</code>) and division (<code>65536 /</code>). Fortunately, ''dc'' numbers cannot overflow to negative, so the modulus calculation involves only non-negative integers.
 
-For BSD rand(): 
+For BSD rand():
 ```dc
 [*
  * lrx -- (random number from 0 to 2147483647)
@@ -1208,7 +1208,7 @@ lrx psz lrx psz lrx psz
 ```
 
 
-For Microsoft rand(): 
+For Microsoft rand():
 ```dc
 [*
  * lrx -- (random number from 0 to 32767)
@@ -1243,19 +1243,19 @@ defmodule LCG do
     ms_rand
     Process.put(:ms_seed, seed)
   end
-  
+
   def ms_rand do
     state = Process.get(:ms_state)
     state2 = rem(214013 * state + 2531011, 2147483648)
     Process.put(:ms_state, state2)
     div(state, 65536)
   end
-  
+
   def bsd_seed(seed) do
     Process.put(:bsd_state, seed)
     Process.put(:bsd_seed, seed)
   end
-  
+
   def bsd_rand do
     state = Process.get(:bsd_state)
     state2 = rem(1103515245 * state + 12345, 2147483648)
@@ -1320,19 +1320,19 @@ Random seed: 1
 bsd_seed(Seed) -> put(bsd_state, Seed).
 ms_seed(Seed)  -> put(ms_state, Seed).
 
-bsd_rand() -> 
+bsd_rand() ->
   State = (get(bsd_state) * 1103515245 + 12345) rem 2147483648,
   put(bsd_state,State),
   State.
 
-ms_rand() -> 
+ms_rand() ->
   State = (get(ms_state) * 214013 + 2531011) rem 2147483648,
   put(ms_state,State),
   State div 65536.
 
-main(_) -> 
-  bsd_seed(0), 
-  ms_seed(0), 
+main(_) ->
+  bsd_seed(0),
+  ms_seed(0),
   io:fwrite("~10s~c~5s~n", ["BSD", 9, "MS"]),
   lists:map(fun(_) -> io:fwrite("~10w~c~5w~n", [bsd_rand(),9,ms_rand()]) end, lists:seq(1,10)).
 ```
@@ -1437,7 +1437,7 @@ module lcg =
         (fun (_:unit) ->
             state := (1103515245 * !state + 12345) &&& System.Int32.MaxValue
             !state)
- 
+
     let ms seed =
         let state = ref seed
         (fun (_:unit) ->
@@ -1448,10 +1448,10 @@ module lcg =
 
 
 ```txt
-let rndBSD = lcg.bsd 0;; 
+let rndBSD = lcg.bsd 0;;
 let BSD=[for n in [0 .. 9] -> rndBSD()];;
 
-let rndMS = lcg.ms 0;; 
+let rndMS = lcg.ms 0;;
 let MS=[for n in [0 .. 9] -> rndMS()];;
 
 val BSD : int list =
@@ -1521,13 +1521,13 @@ module lcgs
   integer, parameter :: div = 65536
   integer(i64), parameter :: m = 2147483648_i64  ! need to go to 64 bits because
                                                  ! of the use of signed integers
-contains 
+contains
 
 function bsdrand(seed)
   integer :: bsdrand
   integer, optional, intent(in) :: seed
   integer(i64) :: x = 0
-  
+
   if(present(seed)) x = seed
   x = mod(a1 * x + c1, m)
   bsdrand = x
@@ -1537,8 +1537,8 @@ function msrand(seed)
   integer :: msrand
   integer, optional, intent(in) :: seed
   integer(i64) :: x = 0
- 
-  if(present(seed)) x = seed 
+
+  if(present(seed)) x = seed
   x = mod(a2 * x + c2, m)
   msrand = x / div
 end function
@@ -1548,7 +1548,7 @@ program lcgtest
   use lcgs
   implicit none
   integer :: i
-  
+
   write(*, "(a)") "      BSD            MS"
   do i = 1, 10
     write(*, "(2i12)") bsdrand(), msrand()
@@ -1745,38 +1745,38 @@ main = do
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-The following LCRNG's behave in the same way maintaining the state (seed) from round to round.  There is an srand procedure for each lcrng that maintains the seed state and allows the user to assign a new state.    
+The following LCRNG's behave in the same way maintaining the state (seed) from round to round.  There is an srand procedure for each lcrng that maintains the seed state and allows the user to assign a new state.
 
 ```Icon
 link printf
 
 procedure main()
    printf("       BSD        MS\n")
-   every 1 to 10 do 
+   every 1 to 10 do
       printf("%10s %10s\n",rand_BSD(),rand_MS())
 end
 
-procedure srand_BSD(x)             #: seed random 
+procedure srand_BSD(x)             #: seed random
 static seed
    return seed := \x | \seed | 0   # parm or seed or zero if none
 end
 
-procedure rand_BSD()               #: lcrng 
+procedure rand_BSD()               #: lcrng
    return srand_BSD((1103515245 * srand_BSD() + 12345) % 2147483648)
 end
 
-procedure srand_MS(x)              #: seed random 
+procedure srand_MS(x)              #: seed random
 static seed
-   return seed := \x | \seed | 0   # parm or seed or zero if none 
+   return seed := \x | \seed | 0   # parm or seed or zero if none
 end
 
-procedure rand_MS()                #: lcrng 
+procedure rand_MS()                #: lcrng
    return ishift(srand_MS((214013 * srand_MS() + 2531011) % 2147483648),-16)
 end
 ```
 
 
-{{libheader|Icon Programming Library}} 
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
 
 
@@ -1789,7 +1789,7 @@ lcg=: adverb define
  0 m lcg y                     NB. default seed of 0
 :
  'a c mod'=. x: m
- }. (mod | c + a * ])^:(<y+1) x 
+ }. (mod | c + a * ])^:(<y+1) x
 )
 
 rand_bsd=: (1103515245 12345 , <.2^31) lcg
@@ -1873,13 +1873,13 @@ MS:
 
 ## jq
 
-Currently, jq arithmetic is based on IEEE 754 64-bit numbers. As a result, it is trivial to implement the Microsoft linear congruential generator (LCG), but the BSD generator requires some kind of "big integer" support.  In this section, therefore, we first present functions to support the Microsoft LCG, and then present functions to support the LCG on the assumption that a suitable jq "BigInt" library is available.  
+Currently, jq arithmetic is based on IEEE 754 64-bit numbers. As a result, it is trivial to implement the Microsoft linear congruential generator (LCG), but the BSD generator requires some kind of "big integer" support.  In this section, therefore, we first present functions to support the Microsoft LCG, and then present functions to support the LCG on the assumption that a suitable jq "BigInt" library is available.
 
 ### =Microsoft LCG=
 
 
 ```jq
-# 15-bit integers generated using the same formula as rand() 
+# 15-bit integers generated using the same formula as rand()
 # from the Microsoft C Runtime.
 # Input: [ count, state, rand ]
 def next_rand_Microsoft:
@@ -2028,7 +2028,7 @@ The first 10 results for a M$ rand seeded with 0:
 
 class Lcg(val a: Long, val c: Long, val m: Long, val d: Long, val s: Long) {
     private var state = s
-    
+
     fun nextInt(): Long {
         state = (a * state + c) % m
         return state / d
@@ -2178,7 +2178,7 @@ Output:
 ```
 
 
-UCBLogo output for the BSD section: 
+UCBLogo output for the BSD section:
 ```txt
 12345
 1406932606
@@ -2203,10 +2203,10 @@ This requires Lua 5.3 or later because previous versions didn't have support for
 
 ```lua
 local RNG = {
-  new = function(class, a, c, m, rand) 
+  new = function(class, a, c, m, rand)
     local self = setmetatable({}, class)
     local state = 0
-    self.rnd = function() 
+    self.rnd = function()
       state = (a * state + c) % m
       return rand and rand(state) or state
     end
@@ -2285,15 +2285,15 @@ seed: 0$
 ms_rand() := quotient(seed: mod(214013 * seed + 2531011, 2147483648), 65536)$
 makelist(ms_rand(), 20); /* see http://oeis.org/A096558 */
 
-[38, 7719, 21238, 2437, 8855, 11797, 8365, 32285, 10450, 30612, 5853, 28100, 1142, 281, 
+[38, 7719, 21238, 2437, 8855, 11797, 8365, 32285, 10450, 30612, 5853, 28100, 1142, 281,
 20537, 15921, 8945, 26285, 2997, 14680]
 
 seed: 0$
 bsd_rand() := seed: mod(1103515245 * seed + 12345, 2147483648)$
 makelist(bsd_rand(), 20); /* see http://www.randomwalk.de/scimath/prngseqs.txt */
 
-[12345, 1406932606, 654583775, 1449466924, 229283573, 1109335178, 1051550459, 
-1293799192, 794471793, 551188310, 803550167, 1772930244, 370913197, 639546082, 1381971571, 
+[12345, 1406932606, 654583775, 1449466924, 229283573, 1109335178, 1051550459,
+1293799192, 794471793, 551188310, 803550167, 1772930244, 370913197, 639546082, 1381971571,
 1695770928, 2121308585, 1719212846, 996984527, 1157490780]
 ```
 
@@ -2384,10 +2384,10 @@ MSFT()=MSFTseed=214013*MSFTseed+2531011;lift(MSFTseed)%(1<<31);
 
 ```pascal
 Program LinearCongruentialGenerator(output);
-{$mode iso} 
+{$mode iso}
 var
   x1, x2: int64;
- 
+
 function bsdrand: cardinal;
   const
     a = 1103515245;
@@ -2397,7 +2397,7 @@ function bsdrand: cardinal;
     x1 := (a * x1 + c) mod m;
     bsdrand := x1;
   end;
- 
+
 function msrand: cardinal;
   const
     a = 214013;
@@ -2407,7 +2407,7 @@ function msrand: cardinal;
     x2 := (a * x2 + c) mod m;
     msrand := x2 div 65536;
   end;
- 
+
 var
   i: cardinal;
 begin
@@ -2526,10 +2526,10 @@ sub ms   {
 	$^seed, ( 214013 * * + 2531011 ) % modulus ... *
     )
 }
- 
+
 say 'BSD LCG first 10 values (first one is the seed):';
 .say for bsd(0)[^10];
- 
+
 say "\nMS LCG first 10 values (first one is the seed):";
 .say for ms(0)[^10];
 ```
@@ -2571,17 +2571,17 @@ As per the comments, I had to resort to gmp to get BSDrnd() to work on 32-bit.
 
 ```Phix
 atom seed
- 
+
 include builtins/mpfr.e
- 
+
 function BSDrnd()
-    -- oh dear, native only works on 64-bit, 
+    -- oh dear, native only works on 64-bit,
     -- as per ERRE and UCBLogo above on 32-bit...
 --  seed = remainder(1103515245 * seed + 12345, #8000_0000)
     -- so, resort to gmp, with the added twist than both
     -- 1103515245 and #8000_0000 are greater than 1GB and
     -- therefore a smidge too big & need some extra help...
-    mpz z = mpz_init(seed), 
+    mpz z = mpz_init(seed),
         h8 = mpz_init("2147483648") -- (ie #8000_0000)
     mpz_mul_si(z,z,5)
     mpz_mul_si(z,z,1103515245/5)    -- (do in two <1GB factors)
@@ -2590,12 +2590,12 @@ function BSDrnd()
     seed = mpz_get_atom(z)
     return seed
 end function
- 
+
 function MSrnd()
     seed = and_bits(seed*214013+2531011,#7FFFFFFF)
     return floor(seed/power(2,16))
 end function
- 
+
 seed = 0
 ?"BSDrnd"
 for i=1 to 10 do printf(1,"%d\n",BSDrnd()) end for
@@ -2735,27 +2735,27 @@ OUTPUT:
 
 ```txt
 
-BSD                     MS 
-     231794730              13259 
-    1126946331              26974 
-    1757975480              13551 
-     850994577              30354 
-    1634557174              18709 
-     707246327              15861 
-    1397699428              16906 
-    1035569613              21981 
-    1904890498               8603 
-    1335160211              12911 
-    1434329552              18110 
-    1273099721               3228 
-    1250890958              27918 
-    1016516591              17989 
-    1097566972              22768 
-     436938117              23599 
-    1175171034               7712 
-    1059748875              15601 
-     308566760               7038 
-     534615297              21512 
+BSD                     MS
+     231794730              13259
+    1126946331              26974
+    1757975480              13551
+     850994577              30354
+    1634557174              18709
+     707246327              15861
+    1397699428              16906
+    1035569613              21981
+    1904890498               8603
+    1335160211              12911
+    1434329552              18110
+    1273099721               3228
+    1250890958              27918
+    1016516591              17989
+    1097566972              22768
+     436938117              23599
+    1175171034               7712
+    1059748875              15601
+     308566760               7038
+     534615297              21512
 
 ```
 
@@ -2769,14 +2769,14 @@ BSD                     MS
 Function msstate{
     Param($current_seed)
     Return (214013*$current_seed+2531011)%2147483648}
-    
+
 Function randMS{
     Param($MSState)
     Return [int]($MSState/65536)}
-    
+
 Function randBSD{
     Param($BSDState)
-    Return (1103515245*$BSDState+12345)%2147483648}    
+    Return (1103515245*$BSDState+12345)%2147483648}
 
 Write-Host "MS: seed=0"
 $seed=0 #initialize seed
@@ -2824,19 +2824,19 @@ Procedure ms_LCG(seed.q = -1)
   If seed >= 0
     state = seed
   Else
-    state = (state * 214013 + 2531011) % (1 << 31) 
+    state = (state * 214013 + 2531011) % (1 << 31)
     ProcedureReturn state >> 16
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure.q bsd_LCG(seed.q = -1)
   Static state.q
   If seed >= 0
     state = seed
-  Else 
-    state = (state * 1103515245 + 12345) % (1 << 31) 
+  Else
+    state = (state * 1103515245 + 12345) % (1 << 31)
     ProcedureReturn state
-  EndIf 
+  EndIf
 EndProcedure
 
 If OpenConsole()
@@ -2846,13 +2846,13 @@ If OpenConsole()
   For i = 1 To 5
     PrintN(Str(bsd_LCG()))
   Next
-  
+
   PrintN(#CRLF$ + "MS (seed = 1)")
   ms_LCG(1)
   For i = 1 To 5
     PrintN(Str(ms_LCG()))
   Next
-   
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -3082,16 +3082,16 @@ p (1..5).map {lcg.rand}
 ```runbasic
 global bsd
 global ms
-print "Num  ___Bsd___";chr$(9);"__Ms_" 
+print "Num  ___Bsd___";chr$(9);"__Ms_"
 for i = 1 to 10
     print using("##",i);using("############",bsdRnd());chr$(9);using("#####",msRnd())
 next i
- 
+
 function bsdRnd()
     bsdRnd = (1103515245 * bsd + 12345) mod (2 ^ 31)
     bsd = bsdRnd
 end function
- 
+
 function msRnd()
     ms = (214013 * ms + 2531011) mod (2 ^ 31)
     msRnd = int(ms / 2 ^ 16)
@@ -3212,14 +3212,14 @@ object LinearCongruentialGenerator {
     override def hasNext:Boolean=true
     override def next:Int={seed=(seed * 214013 + 2531011) & Int.MaxValue; seed >> 16}
   }
-		
+
   def toString(it:Iterator[Int], n:Int=20)=it take n mkString ", "
-		
+
   def main(args:Array[String]){
     println("-- seed 0 --")
     println("BSD: "+ toString(bsdRandom(0)))
     println("MS : "+ toString(msRandom(0)))
-						
+
     println("-- seed 1 --")
     println("BSD: "+ toString(bsdRandom(1)))
     println("MS : "+ toString( msRandom(1)))
@@ -3232,7 +3232,7 @@ object LinearCongruentialGenerator {
 ```txt
 -- seed 0 --
 BSD: 12345, 1406932606, 654583775, 1449466924, 229283573, 1109335178, 1051550459, 1293799192,
-794471793, 551188310, 803550167, 1772930244, 370913197, 639546082, 1381971571, 1695770928, 
+794471793, 551188310, 803550167, 1772930244, 370913197, 639546082, 1381971571, 1695770928,
 2121308585, 1719212846, 996984527, 1157490780
 
 MS : 38, 7719, 21238, 2437, 8855, 11797, 8365, 32285, 10450, 30612, 5853, 28100, 1142, 281, 20537,
@@ -3347,7 +3347,7 @@ main(args(2)) :=
 	let
 		bsdRandomGenerator := newRandomGenerator(0, 0, 2147483647, bsdNext);
 		msRandomGenerator := newRandomGenerator(0, 0, 32767, msNext);
-		
+
 		// Create a random sequence with each one of the generators
 		numbers := getRandomSequence([bsdRandomGenerator, msRandomGenerator], 10).Value;
 	in
@@ -3562,10 +3562,10 @@ rand_seq(&rand_ms(),0,10)
 import Cocoa
 
 class LinearCongruntialGenerator {
-    
+
     var state = 0 //seed of 0 by default
     let a, c, m, shift: Int
-    
+
     //we will use microsoft random by default
     init() {
         self.a = 214013
@@ -3573,18 +3573,18 @@ class LinearCongruntialGenerator {
         self.m = Int(pow(2.0, 31.0)) //2^31 or 2147483648
         self.shift = 16
     }
-    
+
     init(a: Int, c: Int, m: Int, shift: Int) {
         self.a = a
         self.c = c
         self.m = m //2^31 or 2147483648
         self.shift = shift
     }
-    
+
     func seed(seed: Int) -> Void {
         state = seed;
     }
-    
+
     func random() -> Int {
         state = (a * state + c) % m
         return state >> shift
@@ -3891,7 +3891,7 @@ First example using integer instructions.
 ;x86-64 assembly code for Microsoft Windows
 ;Tested in windows 7 Enterprise Service Pack 1 64 bit
 ;With the AMD FX(tm)-6300 processor
-;Assembled with NASM version 2.11.06 
+;Assembled with NASM version 2.11.06
 ;Linked to C library with gcc version 4.9.2 (x86_64-win32-seh-rev1, Built by MinGW-W64 project)
 
 ;Assembled and linked with the following commands:
@@ -4086,7 +4086,7 @@ Second example using AVX instructions.
 ;x86-64 assembly code for Microsoft Windows
 ;Tested in windows 7 Enterprise Service Pack 1 64 bit
 ;With the AMD FX(tm)-6300 processor
-;Assembled with NASM version 2.11.06 
+;Assembled with NASM version 2.11.06
 ;Linked to C library with gcc version 4.9.2 (x86_64-win32-seh-rev1, Built by MinGW-W64 project)
 
 ;Assembled and linked with the following commands:
@@ -4118,7 +4118,7 @@ multiplier: dd 214013,17405,214013,69069
 align 16
 addend: dd 2531011, 10395331, 13737667, 1
 align 16
-mask: dd  0xffffffff,0,0xffffffff,0 
+mask: dd  0xffffffff,0,0xffffffff,0
 align 16
 masklo: dd 0x7fff,0x7fff,0x7fff,0x7fff
 

@@ -13,7 +13,7 @@ tags = []
 {{task|Database operations}}
 
 ;Task:
-Create a table to store addresses. 
+Create a table to store addresses.
 
 You may assume that all the addresses to be stored will be located in the USA.   As such, you will need (in addition to a field holding a unique identifier) a field holding the street address, a field holding the city, a field holding the state code, and a field holding the zipcode.   Choose appropriate types for each field.
 
@@ -49,9 +49,9 @@ OP NEXTVAL = ([]CHAR table name)INT: (
   INT out;
   # INT table page = 0; # # only one sequence implemented #
   # DOWN sequence sema; # # NO interprocess concurrency protection #
-    on open error(sequence, 
+    on open error(sequence,
       (REF FILE f)BOOL: (
-        reset(sequence); #set(table page,1,1);# 
+        reset(sequence); #set(table page,1,1);#
         put(sequence, 0);
         try again;
         FALSE
@@ -59,7 +59,7 @@ OP NEXTVAL = ([]CHAR table name)INT: (
     );
     try again:
     reset(sequence); #set(table page,1,1);# get(sequence,out);
-    out +:=1; 
+    out +:=1;
     reset(sequence); #set(table page,1,1);# put(sequence,out);
   # UP sequence sema; #
   out
@@ -127,11 +127,11 @@ CONNECTION0* - 	jdbc:derby:postal_addresses
 ij> describe address;
 COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
 ------------------------------------------------------------------------------
-ADDRID              |INTEGER  |0   |10  |10    |GENERATED&|NULL      |NO      
-ADDRSTREET          |VARCHAR  |NULL|NULL|50    |NULL      |100       |NO      
-ADDRCITY            |VARCHAR  |NULL|NULL|50    |NULL      |100       |NO      
-ADDRSTATE           |CHAR     |NULL|NULL|2     |NULL      |4         |NO      
-ADDRZIP             |CHAR     |NULL|NULL|10    |NULL      |20        |NO      
+ADDRID              |INTEGER  |0   |10  |10    |GENERATED&|NULL      |NO
+ADDRSTREET          |VARCHAR  |NULL|NULL|50    |NULL      |100       |NO
+ADDRCITY            |VARCHAR  |NULL|NULL|50    |NULL      |100       |NO
+ADDRSTATE           |CHAR     |NULL|NULL|2     |NULL      |4         |NO
+ADDRZIP             |CHAR     |NULL|NULL|10    |NULL      |20        |NO
 
 5 rows selected
 ij> exit;
@@ -163,10 +163,10 @@ ALTER TABLE "APP"."ADDRESS" ADD CONSTRAINT "SQL120717142048690" PRIMARY KEY ("AD
 
 
 
-###  SQLite3 
+###  SQLite3
 
 
-This version uses the AWK pipe, 'getline' function, and the sqlite3 command line program. 
+This version uses the AWK pipe, 'getline' function, and the sqlite3 command line program.
 
 
 ```awk
@@ -211,12 +211,12 @@ function dbErrorCheck(res) {
 
 {{libheader|SQLite}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <sqlite3.h>
 
-const char *code = 
+const char *code =
 "CREATE TABLE address (\n"
 "       addrID		INTEGER PRIMARY KEY AUTOINCREMENT,\n"
 "	addrStreet	TEXT NOT NULL,\n"
@@ -228,7 +228,7 @@ int main()
 {
   sqlite3 *db = NULL;
   char *errmsg;
-  
+
   if ( sqlite3_open("address.db", &db) == SQLITE_OK ) {
     if ( sqlite3_exec(db, code, NULL, NULL,  &errmsg) != SQLITE_OK ) {
       fprintf(stderr, errmsg);
@@ -257,7 +257,7 @@ int main()
 (def db {:classname "org.h2.Driver"
          :subprotocol "h2:file"
          :subname "db/my-dbname"})
-         
+
 (sql/db-do-commands db
   (sql/create-table-ddl :address
     [:id "bigint primary key auto_increment"]
@@ -282,15 +282,15 @@ int main()
     (struct postal (auto: id name street city state zip))))
 
 Postal
-    → #table:#struct:postal [id name street city state zip]:[0] 
+    → #table:#struct:postal [id name street city state zip]:[0]
 
 (table-insert Postal '(0 Gallubert "29 rue de l'Ermitage" Paris Seine 75020))
 (table-insert Postal '(0 Brougnard "666 rue des Cascades " Paris Seine 75042))
 (table-make-index Postal 'postal.id)
 (table-print Postal)
 
-[0]   15  Gallubert  29 rue de l'Ermitage   Paris  Seine  75020 
-[1]   16  Brougnard  666 rue des Cascades   Paris  Seine  75042 
+[0]   15  Gallubert  29 rue de l'Ermitage   Paris  Seine  75020
+[1]   16  Brougnard  666 rue des Cascades   Paris  Seine  75042
 
 ```
 
@@ -363,7 +363,7 @@ statement.execute( '''
     ('Ince Leite', '7876 Stony Fawn Boulevard', 'Easton', 'ID', '83651-9235', 'US', '(208) 951-3024'),
     ('Britney Odell', '3386 Lazy Shadow Thicket', 'Kimberly', 'OK', '73539-6632', 'US', '(539) 848-4448'),
     ('Suprabha Penton', '9311 Dusty Leaf Alley', 'Niumalu', 'GA', '39927-8332', 'US', '(404) 589-0183')''' )
-		
+
 result = statement.executeQuery( '''SELECT * FROM user_data WHERE region = 'ID' ORDER BY code''' )
 print( TextTable.apply(result) )
 
@@ -468,7 +468,7 @@ import Database.SQLite.Simple
 
 main = do
      db <- open "postal.db"
-     execute_ db "\ 
+     execute_ db "\
      \CREATE TABLE address (\
         \addrID     INTEGER PRIMARY KEY AUTOINCREMENT, \
         \addrStreet TEXT NOT NULL, \
@@ -683,9 +683,9 @@ local conn = sql.open("address.sqlite")
 conn:exec[[
 CREATE TABLE IF NOT EXISTS address(
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  street TEXT NOT NULL, 
-  city TEXT NOT NULL, 
-  state TEXT NOT NULL, 
+  street TEXT NOT NULL,
+  city TEXT NOT NULL,
+  state TEXT NOT NULL,
   zip TEXT NOT NULL)
 ]]
 
@@ -699,7 +699,7 @@ conn:close()
 
 
 ```Mathematica
-TableCreation="CREATE TABLE address (	
+TableCreation="CREATE TABLE address (
 addrID		INTEGER PRIMARY KEY AUTOINCREMENT,
 addrStreet	TEXT NOT NULL,	addrCity	TEXT NOT NULL,
 addrState	TEXT NOT NULL,	addrZIP		TEXT NOT NULL    )";
@@ -760,7 +760,7 @@ class RTableCreate01 public
     dbName = String 'db/rosetta_code'
 
   method createTable() public static
-    connectionURL = String 
+    connectionURL = String
     conn = java.sql.Connection
     sqlStatement = java.sql.Statement
     do
@@ -847,8 +847,8 @@ Do i=1 To alist~items
   a=alist[i]
   If a~isinstanceof(.addr) Then
     a~show
-  End 
-   
+  End
+
 ::class addr
   ::attribute city
   ::attribute state
@@ -999,7 +999,7 @@ CREATE TABLE address (
  addrCity   TEXT NOT NULL,
  addrState  TEXT NOT NULL,
  addrZIP    TEXT NOT NULL)"""
- 
+
 sqlite3 db = sqlite3_open("address.sqlite")
 integer res = sqlite3_exec(db,sqlcode)
 if res=SQLITE_OK then
@@ -1183,8 +1183,8 @@ Invoke-SqliteQuery -DataSource $DataSource -Query "SELECT * FROM SSADDRESS" | Fo
 
 ```txt
 
-Id LastName FirstName Address       City     State Zip  
--- -------- --------- -------       ----     ----- ---  
+Id LastName FirstName Address       City     State Zip
+-- -------- --------- -------       ----     ----- ---
  1 Monster  Cookie    666 Sesame St Holywood CA    90013
 
 ```
@@ -1204,7 +1204,7 @@ Id LastName FirstName Address       City     State Zip
 	addrZIP		TEXT NOT NULL
     )''')
 <sqlite3.Cursor object at 0x013265C0>
->>> 
+>>>
 ```
 
 
@@ -1304,7 +1304,7 @@ The fields are for the most part, USA specific, but could be expanded for other 
 
 In addition to "state", fields such as province, municipality, ward, parish, country, etc) could be added without exclusion.
 
-Also, a history logging facility is included which tracks who (by userID) did what update (or change), along with a timestamp. 
+Also, a history logging facility is included which tracks who (by userID) did what update (or change), along with a timestamp.
 
 ```txt
 
@@ -1577,14 +1577,14 @@ CREATE TABLE address (
 
 
 PROC SQL;
-CREATE TABLE ADDRESS 
+CREATE TABLE ADDRESS
 (
 ADDRID CHAR(8)
-,STREET CHAR(50) 
+,STREET CHAR(50)
 ,CITY CHAR(25)
 ,STATE CHAR(2)
 ,ZIP  CHAR(20)
-) 
+)
 ;QUIT;
 
 ```
@@ -1682,11 +1682,11 @@ db2 => DESCRIBE TABLE Address;
                                 Data type                     Column
 Column name                     schema    Data type name      Length     Scale Nulls
 ------------------------------- --------- ------------------- ---------- ----- ------
-ADDRID                          SYSIBM    INTEGER                      4     0 No    
-ADDRSTREET                      SYSIBM    VARCHAR                     50     0 No    
-ADDRCITY                        SYSIBM    VARCHAR                     25     0 No    
-ADDRSTATE                       SYSIBM    CHARACTER                    2     0 No    
-ADDRZIP                         SYSIBM    CHARACTER                   10     0 No    
+ADDRID                          SYSIBM    INTEGER                      4     0 No
+ADDRSTREET                      SYSIBM    VARCHAR                     50     0 No
+ADDRCITY                        SYSIBM    VARCHAR                     25     0 No
+ADDRSTATE                       SYSIBM    CHARACTER                    2     0 No
+ADDRZIP                         SYSIBM    CHARACTER                   10     0 No
 
   5 record(s) selected.
 
@@ -1755,9 +1755,9 @@ db eval {
 ```sql
 CREATE TABLE #Address (
     addrID       int        NOT NULL   Identity(1,1) PRIMARY KEY,
-    addrStreet   varchar(50) NOT NULL ,  
-    addrCity     varchar(25) NOT NULL , 
-    addrState    char(2)     NOT NULL , 
+    addrStreet   varchar(50) NOT NULL ,
+    addrCity     varchar(25) NOT NULL ,
+    addrState    char(2)     NOT NULL ,
     addrZIP      char(10)    NOT NULL
 )
 drop table #Address
@@ -1772,7 +1772,7 @@ drop table #Address
 
 Option Explicit
 
-Dim objFSO, DBSource 
+Dim objFSO, DBSource
 
 Set objFSO = CreateObject("Scripting.FileSystemObject")
 
@@ -1801,8 +1801,8 @@ CREATE TABLE address.dbf ;
 (id I AUTOINC NEXTVALUE 1 STEP 1 PRIMARY KEY COLLATE "Machine", ;
  street V(50), city V(25), state C(2), zipcode C(10))
 CLOSE DATABASES ALL
-*!* To use 
-CLOSE DATABASES ALL 
+*!* To use
+CLOSE DATABASES ALL
 OPEN DATABASE usdata.dbc
 USE address.dbf SHARED
 
@@ -1834,7 +1834,7 @@ fcn dbMakeQuery(db,qry){
 }
 fcn dbEscapeQuery(qry){ qry.replace(0'|"|, 0'|\"|) }
 fcn dbErrorCheck(listOfStrings){
-   if(listOfStrings and listOfStrings[-1].holds("SQL error")) 
+   if(listOfStrings and listOfStrings[-1].holds("SQL error"))
       throw(Exception.IOError(listOfStrings.concat().strip()));
    True
 }

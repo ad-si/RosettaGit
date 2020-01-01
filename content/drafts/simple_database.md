@@ -208,8 +208,8 @@ A simple database in C with some error checking, even. A quick test with Valgrin
  "Treasure Beach","Argus","Jemky","09-22-1999","Lancast"
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h> /* malloc */
 #include <string.h> /* strlen */
 #define _XOPEN_SOURCE /* requred for time functions */

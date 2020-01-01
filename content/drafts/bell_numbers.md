@@ -33,7 +33,7 @@ A simple way to find the Bell numbers is construct a '''[[wp:Bell_triangle|Bell 
 
 ;Task:
 
-Write a routine (function, generator, whatever) to generate the Bell number sequence and call the routine to show here, on this page at least the '''first 15''' and (if your language supports big Integers) '''50th''' elements of the sequence. 
+Write a routine (function, generator, whatever) to generate the Bell number sequence and call the routine to show here, on this page at least the '''first 15''' and (if your language supports big Integers) '''50th''' elements of the sequence.
 
 If you ''do'' use the Bell triangle method to generate the numbers, also show the '''first ten rows''' of the Bell triangle.
 
@@ -50,8 +50,8 @@ If you ''do'' use the Bell triangle method to generate the numbers, also show th
 
 {{trans|D}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 // row starts with 1; col < row
@@ -367,7 +367,7 @@ bell|>Seq.take 15|>Seq.iter(fun n->printf "%A " (List.head n));printfn ""
 
 ```txt
 
-1 1 2 5 15 52 203 877 4140 21147 115975 678570 4213597 27644437 190899322 
+1 1 2 5 15 52 203 877 4140 21147 115975 678570 4213597 27644437 190899322
 
 ```
 
@@ -521,7 +521,7 @@ func main() {
     fmt.Println("\nThe first ten rows of Bell's triangle:")
     for i := 1; i <= 10; i++ {
         fmt.Println(bt[i])
-    }    
+    }
 }
 ```
 
@@ -912,7 +912,7 @@ my @bell = @Stirling_numbers_of_the_second_kind.map: *.sum;
 
 ```txt
 (1 1 2 5 15 52 203 877 4140 21147 115975 678570 4213597 27644437 190899322)
-10726137154573358400342215518590002633917247281 
+10726137154573358400342215518590002633917247281
 ```
 
 
@@ -925,7 +925,7 @@ Started out as a translation of Go, but the main routine has now been completely
 ```Phix
 function bellTriangle(integer n)
 -- nb: returns strings to simplify output
-    mpz z = mpz_init(1) 
+    mpz z = mpz_init(1)
     string sz = "1"
     sequence tri = {}, line = {}
     for i=1 to n do
@@ -942,7 +942,7 @@ function bellTriangle(integer n)
     z = mpz_free(z)
     return tri
 end function
- 
+
 sequence bt = bellTriangle(50)
 printf(1,"First fifteen and fiftieth Bell numbers:\n%s\n50:%s\n\n",
          {join(vslice(bt[1..15],1)),bt[50][1]})
@@ -1049,7 +1049,7 @@ into   '''n'''   indistinguishable boxes.   Bell(0)   is defined as   '''1'''.
 
 This REXX version uses an   ''index''   of the Bell number   (which starts a zero).
 
-A little optimization was added in calculating the factorial of a number by using memoization. 
+A little optimization was added in calculating the factorial of a number by using memoization.
 
 Also, see this task's   ''discussion''   to view how the sizes of Bell numbers increase in relation to its index.
 

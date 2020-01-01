@@ -19,7 +19,7 @@ Note that the requirement for having the repeat occur two or more times means th
 
 
 ;Task:
-* Write a function/subroutine/method/... that takes a string and returns an indication of if it is a rep-string and the repeated string.   (Either the string that is repeated, or the number of repeated characters would suffice).  
+* Write a function/subroutine/method/... that takes a string and returns an indication of if it is a rep-string and the repeated string.   (Either the string that is repeated, or the number of repeated characters would suffice).
 * There may be multiple sub-strings that make a string a rep-string - in that case an indication of all, or the longest, or the shortest would suffice.
 * Use the function to indicate the repeating substring if any, in the following:
 <dl><dd>
@@ -55,7 +55,7 @@ Note that the requirement for having the repeat occur two or more times means th
 with Ada.Command_Line, Ada.Text_IO, Ada.Strings.Fixed;
 
 procedure Rep_String is
-   
+
    function Find_Largest_Rep_String(S:String) return String is
       L: Natural := S'Length;
    begin
@@ -72,10 +72,10 @@ procedure Rep_String is
       end loop;
       return ""; -- no rep string;
    end Find_Largest_Rep_String;
-   
+
    X: String := Ada.Command_Line.Argument(1);
    Y: String := Find_Largest_Rep_String(X);
-   
+
 begin
    if Y="" then
       Ada.Text_IO.Put_Line("No rep-string for """ & X & """");
@@ -128,7 +128,7 @@ BEGIN
 
     STRING result           := "";
 
-    # ensure the string we are working on has a lower-bound of 1           # 
+    # ensure the string we are working on has a lower-bound of 1           #
     STRING str               = input[ AT 1 ];
 
     # work backwards from half the input string looking for a rep-string   #
@@ -153,7 +153,7 @@ BEGIN
     DO
         SKIP
     OD;
-        
+
     result
 END; # longest rep string #
 
@@ -218,20 +218,20 @@ main:
 -- repCycles :: String -> [String]
 on repCycles(xs)
     set n to length of xs
-    
+
     script isCycle
         on |λ|(cs)
             xs = takeCycle(n, cs)
         end |λ|
     end script
-    
+
     filter(isCycle, tail(inits(take(quot(n, 2), xs))))
 end repCycles
 
 -- cycleReport :: String -> [String]
 on cycleReport(xs)
     set reps to repCycles(xs)
-    
+
     if isNull(reps) then
         {xs, "(n/a)"}
     else
@@ -245,11 +245,11 @@ on run
     set samples to {"1001110011", "1110111011", "0010010010", ¬
         "1010101010", "1111111111", "0100101101", "0100100", ¬
         "101", "11", "00", "1"}
-    
+
     unlines(cons("Longest cycle:" & linefeed, ¬
         map(curry(intercalate)'s |λ|(" -> "), ¬
             map(cycleReport, samples))))
-    
+
 end run
 
 
@@ -319,13 +319,13 @@ on inits(xs)
             items 1 thru i of xs
         end |λ|
     end script
-    
+
     script charInit
         on |λ|(_, i, xs)
             text 1 thru i of xs
         end |λ|
     end script
-    
+
     if class of xs is string then
         {""} & map(charInit, xs)
     else
@@ -398,7 +398,7 @@ on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -441,7 +441,7 @@ on takeCycle(n, xs)
     else
         set cycle to concat(replicate((n div lng) + 1, xs))
     end if
-    
+
     if class of xs is string then
         items 1 thru n of cycle as string
     else
@@ -483,7 +483,7 @@ Longest cycle:
 In := ["1001110011", "1110111011", "0010010010", "1010101010"
      , "1111111111", "0100101101", "0100100", "101", "11", "00", "1"]
 for k, v in In
-	Out .= RepString(v) "`t" v "`n" 
+	Out .= RepString(v) "`t" v "`n"
 MsgBox, % Out
 
 RepString(s) {
@@ -567,7 +567,7 @@ Not a repeating string: 1
 
 ```bracmat
 ( ( rep-string
-  =   reps L x y 
+  =   reps L x y
     .   ( reps
         =   x y z
           .   !arg:(?x.?y)
@@ -625,7 +625,7 @@ Not a repeating string: 1
 ## C
 
 
-### Longest substring 
+### Longest substring
 
 
 
@@ -691,22 +691,22 @@ int main(void)
 
 ```c
 
-// strstr : Returns a pointer to the first occurrence of str2 in str1, or a null pointer if str2 is not part of str1. 
+// strstr : Returns a pointer to the first occurrence of str2 in str1, or a null pointer if str2 is not part of str1.
 // size_t is an unsigned integer typ
 // lokks for the shortest substring
 int repstr(char *str)
 {
     if (!str) return 0; // if empty input
- 
-    size_t sl = 1; 
-    size_t sl_max = strlen(str) ; 
-    
+
+    size_t sl = 1;
+    size_t sl_max = strlen(str) ;
+
     while (sl < sl_max) {
         if (strstr(str, str + sl) == str) // How it works ???? It checks the whole string str
-        	return sl; 
+        	return sl;
         ++sl;
     }
- 
+
     return 0;
 }
 
@@ -717,8 +717,8 @@ int repstr(char *str)
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <vector>
 #include <boost/regex.hpp>
 
@@ -760,23 +760,23 @@ int main( ) {
 
 ```txt
 1001110011 is a rep string! Here is a repeating string:
-10011 
+10011
 1110111011 is a rep string! Here is a repeating string:
-1110 
+1110
 0010010010 is a rep string! Here is a repeating string:
-001 
+001
 1010101010 is a rep string! Here is a repeating string:
-1010 
+1010
 1111111111 is a rep string! Here is a repeating string:
-11111 
+11111
 0100101101 is no rep string!
 0100100 is a rep string! Here is a repeating string:
-010 
+010
 101 is no rep string!
 11 is a rep string! Here is a repeating string:
-1 
+1
 00 is a rep string! Here is a repeating string:
-0 
+0
 1 is no rep string!
 ```
 
@@ -929,7 +929,7 @@ func rep(s) {
     }
     return 0
 }
- 
+
 const m = [
     "1001110011",
     "1110111011",
@@ -943,7 +943,7 @@ const m = [
     "00",
     "1"
 ]
- 
+
 for s in m {
     if (rep(s) is n) && n > 0 {
         print("\(s)  \(n) rep-string \(s.sub(n))")
@@ -995,7 +995,7 @@ for s in m {
          #:break (equal? trunc  (list-rotate trunc lam)) => (list->string (take cyclic lam))
          'no-rep )
    'too-short-no-rep))
-   
+
 
 ```
 
@@ -1005,24 +1005,24 @@ for s in m {
 
 (define strings '["1001110011" "1110111011" "0010010010" "1010101010"
       "1111111111" "0100101101" "0100100" "101" "11" "00" "1"])
-      
+
 (define (task strings)
-	(for-each (lambda (s) 
+	(for-each (lambda (s)
 	(writeln s (cyclic? (string->list s)))) strings))
 
 (task strings)
 
-"1001110011"     "10011"    
-"1110111011"     "1110"    
-"0010010010"     "001"    
-"1010101010"     "1010"    
-"1111111111"     "11111"    
-"0100101101"     no-rep    
-"0100100"     "010"    
-"101"     no-rep    
-"11"     "1"    
-"00"     "0"    
-"1"     too-short-no-rep    
+"1001110011"     "10011"
+"1110111011"     "1110"
+"0010010010"     "001"
+"1010101010"     "1010"
+"1111111111"     "11111"
+"0100101101"     no-rep
+"0100100"     "010"
+"101"     no-rep
+"11"     "1"
+"00"     "0"
+"1"     too-short-no-rep
 
 ```
 
@@ -1111,7 +1111,7 @@ let isPrefix p (s : string) = s.StartsWith(p)
 let getPrefix n (s : string) = s.Substring(0,n)
 
 let repPrefixOf str =
-    let rec isRepeatedPrefix p s = 
+    let rec isRepeatedPrefix p s =
         if isPrefix p s then isRepeatedPrefix p (s.Substring (p.Length))
         else isPrefix s p
 
@@ -1124,7 +1124,7 @@ let repPrefixOf str =
 
 [<EntryPoint>]
 let main argv =
-    printfn "Testing for rep-string (and showing the longest repeated prefix in case):" 
+    printfn "Testing for rep-string (and showing the longest repeated prefix in case):"
     [
     "1001110011"
     "1110111011"
@@ -1169,12 +1169,12 @@ Testing for rep-string (and showing the longest repeated prefix in case):
 ```factor
 USING: formatting grouping kernel math math.ranges qw sequences ;
 IN: rosetta-code.rep-string
-    
+
 : (find-rep-string) ( str -- str )
     dup dup length 2/ [1,b]
     [ <groups> [ head? ] monotonic? ] with find nip dup
     [ head ] [ 2drop "N/A" ] if ;
-    
+
 : find-rep-string ( str -- str )
     dup length 1 <= [ drop "N/A" ] [ (find-rep-string) ] if ;
 
@@ -1238,7 +1238,7 @@ Shortest cycle:
 {{out}}
 
 ```forth
-cr tests 
+cr tests
 1001110011 has 10011 as repeating substring
 1110111011 has 1110 as repeating substring
 0010010010 has 001 as repeating substring
@@ -1498,7 +1498,7 @@ end
 Here's a test:
 
 
-```j>replengths=: 
+```j>replengths=:
 :@i.@<.@-:@#
 rep=: $@] $ $
 
@@ -1543,15 +1543,15 @@ With the above examples:
 
 ```j
    ":@nRepStr;._2 Tests
-5        
-4        
-3        
-2 4      
+5
+4
+3
+2 4
 1 2 3 4 5
-         
-3        
-         
-1        
+
+3
+
+1
 1
 ```
 
@@ -1685,7 +1685,7 @@ public class RepString {
     // filter :: (a -> Bool) -> [a] -> [a]
     const filter = (f, xs) => xs.filter(f);
 
-    // fTable :: String -> (a -> String) -> 
+    // fTable :: String -> (a -> String) ->
     //                     (b -> String) -> (a -> b) -> [a] -> String
     const fTable = (s, xShow, fxShow, f, xs) => {
         // Heading -> x display function ->
@@ -1811,7 +1811,7 @@ def is_rep_string:
 
   [range (1; length/2 + 1) as $i
      | .[0:$i] as $prefix
-     | _check($prefix; 1; $prefix) 
+     | _check($prefix; 1; $prefix)
      | select( .[0] > 1 ) ]
   ;
 
@@ -1927,7 +1927,7 @@ fun repString(s: String): MutableList<String> {
         if (u == s) reps.add(t)
     }
     return reps
-} 
+}
 
 fun main(args: Array<String>) {
     val strings = listOf(
@@ -2019,7 +2019,7 @@ Displaying the results:
 ```
 
 
-Running the code: 
+Running the code:
 
 
 ```txt
@@ -2082,12 +2082,12 @@ For the given set of test strings, we can generate the following output.
    0010010010    true   001
    1010101010    true   10
    1111111111    true   1
-   0100101101   false   
+   0100101101   false
       0100100    true   010
-          101   false   
+          101   false
            11    true   1
            00    true   0
-            1   false   
+            1   false
 
 
 ```
@@ -2123,7 +2123,7 @@ Trying it out for the test-strings:
 1		{}
 ```
 
-It outputs all the possibilities for a rep-string, 
+It outputs all the possibilities for a rep-string,
 if there is no rep-string it will show an empty list {}.
 
 
@@ -2343,10 +2343,10 @@ class RepString {
           return "";
         };
       };
-            
+
       offset--;
     };
-    
+
     return "";
   }
 
@@ -2356,7 +2356,7 @@ class RepString {
 
     for(i := 1; i < parts; i+=1;) {
       offset := i * left->Size();
-      right := string->SubString(offset, left->Size());  
+      right := string->SubString(offset, left->Size());
       if(<>left->Equals(right)) {
         return false;
       };
@@ -2371,7 +2371,7 @@ class RepString {
         };
       };
     };
-    
+
     return true;
   }
 }
@@ -2406,9 +2406,9 @@ Returns null if no rep string.
 ```oforth
 : repString(s)
 | sz i |
-   s size dup ->sz 2 / 1 -1 step: i [ 
+   s size dup ->sz 2 / 1 -1 step: i [
       s left(sz i - ) s right(sz i -) == ifTrue: [ s left(i) return ]
-      ] 
+      ]
    null ;
 ```
 
@@ -2536,10 +2536,10 @@ foreach (qw(1001110011 1110111011 0010010010 1010101010 1111111111 0100101101 01
 1 (no repeat)
 ```
 
-Here's a technique that relies on the fact that XORing the shifted binary number 
-should set all the lower bits to 0 if there are repeats.  
-(The cool thing is that shift will automatically 
-throw away the bits on the right that you want thrown away.)  
+Here's a technique that relies on the fact that XORing the shifted binary number
+should set all the lower bits to 0 if there are repeats.
+(The cool thing is that shift will automatically
+throw away the bits on the right that you want thrown away.)
 This produces the same output as above.
 
 ```perl6
@@ -2581,7 +2581,7 @@ integer n = length(r)
     end for
     return replist
 end function
- 
+
 constant tests = {"1001110011",
                   "1110111011",
                   "0010010010",
@@ -2593,7 +2593,7 @@ constant tests = {"1001110011",
                   "11",
                   "00",
                   "1"}
- 
+
 for i=1 to length(tests) do
     printf(1,"%s\n",{tests[i]})
     sequence replist = list_reps(tests[i])
@@ -2785,17 +2785,17 @@ Output
 
 ```txt
 ?-  report_repstrings.
-1001110011 -- repstrings: 10011, 
-1110111011 -- repstrings: 1110, 
-0010010010 -- repstrings: 001, 
-1010101010 -- repstrings: 10, 1010, 
-1111111111 -- repstrings: 1, 11, 111, 1111, 11111, 
-0100101101 -- no repstring: 
-0100100 -- repstrings: 010, 
-101 -- no repstring: 
-11 -- repstrings: 1, 
-00 -- repstrings: 0, 
-1 -- no repstring: 
+1001110011 -- repstrings: 10011,
+1110111011 -- repstrings: 1110,
+0010010010 -- repstrings: 001,
+1010101010 -- repstrings: 10, 1010,
+1111111111 -- repstrings: 1, 11, 111, 1111, 11111,
+0100101101 -- no repstring:
+0100100 -- repstrings: 010,
+101 -- no repstring:
+11 -- repstrings: 1,
+00 -- repstrings: 0,
+1 -- no repstring:
 true.
 ```
 
@@ -2818,8 +2818,8 @@ Procedure isRepStr(s1$,s2$)
 EndProcedure
 
 For k=1 To CountString(a$,#CRLF$)
-  s1$=StringField(a$,k,#CRLF$) : s2$=Left(s1$,Len(s1$)/2)  
-  While Len(s2$) 
+  s1$=StringField(a$,k,#CRLF$) : s2$=Left(s1$,Len(s1$)/2)
+  While Len(s2$)
     r=isRepStr(s1$,s2$)
     If Not r : s2$=Left(s2$,Len(s2$)-1) : Else : Break : EndIf
   Wend
@@ -2876,7 +2876,7 @@ matchstr = """\
 """
 for line in matchstr.split():
     ln = is_repeated(line)
-    print('%r has a repetition length of %i i.e. %s' 
+    print('%r has a repetition length of %i i.e. %s'
            % (line, ln, repr(line[:ln]) if ln else '*not* a rep-string'))
 ```
 
@@ -2901,7 +2901,7 @@ for line in matchstr.split():
 
 ### Python: Functional
 
-This returns all the possible repeated substrings 
+This returns all the possible repeated substrings
 
 ```python>>>
  def reps(text):
@@ -2933,7 +2933,7 @@ This returns all the possible repeated substrings
 '11' has reps ['1']
 '00' has reps ['0']
 '1' has reps []
->>> 
+>>>
 ```
 
 
@@ -3123,7 +3123,7 @@ See [https://stackoverflow.com/questions/29481088/how-can-i-tell-if-a-string-rep
 
 ```Racket
 #lang racket
- 
+
 (define (rep-string str)
   (define len (string-length str))
   (for/or ([n (in-range 1 len)])
@@ -3135,7 +3135,7 @@ See [https://stackoverflow.com/questions/29481088/how-can-i-tell-if-a-string-rep
                       (loop (+ n from))))))
          (<= n (quotient len 2))
          (substring str 0 n))))
- 
+
 (for ([str '("1001110011"
              "1110111011"
              "0010010010"
@@ -3255,7 +3255,7 @@ show_norep:
 
 ### version 2
 
-A check was added to validate if the strings are binary strings.   The binary strings can be of any length. 
+A check was added to validate if the strings are binary strings.   The binary strings can be of any length.
 
 ```rexx
 /*REXX pgm determines  if  a string is a repString, it returns minimum length repString.*/
@@ -3376,7 +3376,7 @@ ar.each do |str|
   puts str, rep_pos ? " "*rep_pos + str[0, rep_pos] : "(no repetition)", ""
 end
 ```
- 
+
 {{Out|Output (as Perl)}}
 
 ```txt
@@ -3806,10 +3806,10 @@ data "1001110011", "1110111011", "0010010010", "1010101010", "1111111111", "0100
 
 sub rep$(c$, n)
     local r$, i
-    
+
     for i = 1 to n
         r$ = r$ + c$
-    next    
+    next
     return r$
 end sub
 
@@ -3839,9 +3839,9 @@ loop
 
 ```zkl
 fcn repString(s){
-   foreach n in ([s.len()/2+1..1,-1]){ 
-      Walker.cycle(s[0,n]).pump(s.len(),String) : 
-      if(_==s and n*2<=s.len()) return(n); 
+   foreach n in ([s.len()/2+1..1,-1]){
+      Walker.cycle(s[0,n]).pump(s.len(),String) :
+      if(_==s and n*2<=s.len()) return(n);
    }
    return(False)
 }
@@ -3851,8 +3851,8 @@ fcn repString(s){
 
 ```zkl
 fcn repString(s){
-   foreach n in ([s.len()/2..0,-1]){ 
-      if(s.matches(s[n,*] + "*") and n*2<=s.len()) return(n); 
+   foreach n in ([s.len()/2..0,-1]){
+      if(s.matches(s[n,*] + "*") and n*2<=s.len()) return(n);
    }
    return(False)
 }

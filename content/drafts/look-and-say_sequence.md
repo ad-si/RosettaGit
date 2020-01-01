@@ -22,7 +22,7 @@ The   [[wp:Look and say sequence|Look and say sequence]]   is a recursively defi
 : This becomes the next number of the sequence.
 
 
-'''An example:''' 
+'''An example:'''
 * Starting with the number 1,   you have ''one'' 1 which produces 11
 * Starting with 11,   you have ''two'' 1's.   I.E.:   21
 * Starting with 21,   you have ''one'' 2, then ''one'' 1.   I.E.:   (12)(11) which becomes 1211
@@ -125,7 +125,7 @@ BEGIN
    return out: out
 END  # + #;
 
-OP + = (CHAR s)STRING: 
+OP + = (CHAR s)STRING:
   + STRING(s);
 
 print ((+"1", new line));
@@ -186,8 +186,8 @@ Return
 
 ;---------------------------------------------------------------------------
 LookAndSay(Input) {
-;--------------------------------------------------------------------------- 
-    ; credit for this function goes to AutoHotkey forum member Laslo 
+;---------------------------------------------------------------------------
+    ; credit for this function goes to AutoHotkey forum member Laslo
     ; http://www.autohotkey.com/forum/topic44657-161.html
     ;-----------------------------------------------------------------------
     Loop, Parse, Input          ; look at every digit
@@ -298,7 +298,7 @@ next n
         PRINT number$
       NEXT
       END
-      
+
       DEF FNlooksay(n$)
       LOCAL i%, j%, c$, o$
       i% = 1
@@ -384,8 +384,8 @@ In this example we use a non-linear pattern and a negation of a pattern: the end
 
 This program will not stop until killed or running out of memory.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int main()
@@ -414,8 +414,8 @@ int main()
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <sstream>
 #include <string>
 
@@ -464,7 +464,7 @@ class Program
         char repeat = number[0];
         number = number.Substring(1, number.Length-1)+" ";
         int times = 1;
-      
+
         foreach (char actual in number)
         {
             if (actual != repeat)
@@ -483,11 +483,11 @@ class Program
 
     static void Main(string[] args)
     {
-        string num = "1"; 
+        string num = "1";
 
         foreach (int i in Enumerable.Range(1, 10)) {
              Console.WriteLine(num);
-             num = lookandsay(num);             
+             num = lookandsay(num);
         }
     }
 }
@@ -583,12 +583,12 @@ namespace RosettaCode_Cs_LookAndSay
 
 ```ceylon
 shared void run() {
-	
+
     function lookAndSay(Integer|String input) {
-        
+
         variable value digits = if (is Integer input) then input.string else input;
         value builder = StringBuilder();
-        
+
         while (exists currentChar = digits.first) {
             if (exists index = digits.firstIndexWhere((char) => char != currentChar)) {
                 digits = digits[index...];
@@ -599,10 +599,10 @@ shared void run() {
                 break;
             }
         }
-        
+
         return builder.string;
     }
-    
+
     variable String|Integer result = 1;
     print(result);
     for (i in 1..14) {
@@ -905,9 +905,9 @@ void main(in string[] args) {
 
 The output is the same as the second version.
 
-If you modify the first program to print only the lengths of the strings 
-(with a <code>.map!(s => s.length)</code>), 
-compiling with LDC2 the run-times of the three versions 
+If you modify the first program to print only the lengths of the strings
+(with a <code>.map!(s => s.length)</code>),
+compiling with LDC2 the run-times of the three versions
 with n=55 are about 31.1, 0.10 and 0.23 seconds.
 
 
@@ -1109,7 +1109,7 @@ for _ in 1..20 {
 (define (next L)
 	(for/fold (acc null) ((g (group L)))
 		(append acc (list (length g) (first g)))))
-		
+
 
 (define (task n starter)
 (for/fold (L (number->list starter)) ((i n))
@@ -1124,16 +1124,16 @@ for _ in 1..20 {
 ```scheme
 
 (task 10 1)
-1    
-11    
-21    
-1211    
-111221    
-312211    
-13112221    
-1113213211    
-31131211131221    
-13211311123113112211    
+1
+11
+21
+1211
+111221
+312211
+13112221
+1113213211
+31131211131221
+13211311123113112211
 
 ```
 
@@ -1150,16 +1150,16 @@ defmodule LookAndSay do
     |> Enum.concat
     |> List.to_integer
   end
-  
+
   def sequence_from(n) do
     Stream.iterate n, &(next/1)
   end
-  
+
   def main([start_str|_]) do
     {start_val,_} = Integer.parse(start_str)
     IO.inspect sequence_from(start_val) |> Enum.take 9
   end
-  
+
   def main([]) do
     main(["1"])
   end
@@ -1436,7 +1436,7 @@ end module LookAndSay
 program LookAndSayTest
   use LookAndSay
   implicit none
- 
+
   integer :: i
   character(len=200) :: t, r
   t = "1"
@@ -1448,7 +1448,7 @@ program LookAndSayTest
      r = t
      print *, trim(r)
   end do
- 
+
 end program LookAndSayTest
 ```
 
@@ -1532,14 +1532,14 @@ Print "Sequence: " & txt$ & " = ";
         curr$ = Mid(txt$, j, 1)
         cnt = 0
           Repeat
-            Inc cnt 
-            Inc j 
+            Inc cnt
+            Inc j
           Until Mid(txt$, j, 1) <> curr$
         result$ &= Str(cnt) & curr$
       Until j > Len(txt$)
     Print result$
     txt$ = result$
-    Dec i 
+    Dec i
   Until i <= 0
 End
 ```
@@ -1735,10 +1735,10 @@ main = mapM_ print (iterate lookAndSay 1)           -- display sequence until in
 ```haxe
 using Std;
 
-class Main 
+class Main
 {
-	
-	static function main() 
+
+	static function main()
 	{
 		var test = "1";
 		for (i in 0...11) {
@@ -1750,7 +1750,7 @@ class Main
 	static function lookAndSay(s:String)
 	{
 		if (s == null || s == "") return "";
-		
+
 		var results = "";
 		var repeat = s.charAt(0);
 		var amount = 1;
@@ -1768,7 +1768,7 @@ class Main
 		}
 		results += amount.string();
 		results += repeat;
-		
+
 		return results;
 	}
 }
@@ -1779,7 +1779,7 @@ class Main
 
 ```Icon
 procedure main()
-every 1 to 10 do 
+every 1 to 10 do
    write(n := nextlooknsayseq(\n | 1))
 end
 
@@ -1787,10 +1787,10 @@ procedure nextlooknsayseq(n)  #: return next element in look and say sequence
 n2 := ""
 n ? until pos(0) do {
    i := tab(any(&digits)) | fail  # or fail if not digits
-   move(-1) 
+   move(-1)
    n2 ||:= *tab(many(i)) || i     # accumulate count+digit
    }
-return n2                                      
+return n2
 end
 ```
 
@@ -1863,11 +1863,11 @@ Testing:
 
 ```java5
 public static void main(String[] args){
-	String num = "1"; 
-	 
+	String num = "1";
+
 	for (int i=1;i<=10;i++) {
 		System.out.println(num);
-		num = lookandsay(num);             
+		num = lookandsay(num);
 	}
 }
 ```
@@ -1915,7 +1915,7 @@ function lookSay(digits) {
         chars = (digits + ' ').split(''),
         lastChar = chars[0],
         times = 0;
-    
+
     chars.forEach(function(nextChar) {
         if (nextChar === lastChar) {
             times++;
@@ -1926,7 +1926,7 @@ function lookSay(digits) {
             times = 1;
         }
     });
-    
+
     return result;
 }
 
@@ -2105,7 +2105,7 @@ define rle(str::string)::string => {
 				#newc->insert(#orig->first)
 			}
 			#orig->remove(1)
-		} 
+		}
 	}
 	loop(#newi->size) => {
 		#compiled->append(#newi->get(loop_count)+#newc->get(loop_count))
@@ -2322,7 +2322,7 @@ gives back:
 31131122211311123113322117
 132113213221133112132123222117
 11131221131211132221232112111312111213322117
-31131122211311123113321112131221123113111231121123222117 
+31131122211311123113321112131221123113111231121123222117
 ```
 
 
@@ -2437,7 +2437,7 @@ repeats = function(digit, string)
 	end for
 	return str(count)
 end function
- 
+
 numbers = "1"
 print numbers
 for i in range(1,10) // warning, loop size > 15 gets long numbers very quickly
@@ -2494,7 +2494,7 @@ proc LookAndSay (n = 10) =
   for i in countup(1, n):
     next = NextInLookAndSaySequence(next)
     echo next
-  
+
 LookAndSay()
 
 ```
@@ -2511,11 +2511,11 @@ LookAndSay()
         return nil;
     }
     NSMutableString *result = [NSMutableString new];
-    
+
     char repeat = [word characterAtIndex:0];
     int times = 1;
     word = [NSString stringWithFormat:@"%@ ",[word substringFromIndex:1] ];
-    
+
     for (NSInteger index = 0; index < word.length; index++) {
         char actual = [word characterAtIndex:index];
         if (actual != repeat) {
@@ -2547,7 +2547,7 @@ LookAndSay()
 ## OCaml
 
 
-###  Functional 
+###  Functional
 
 This function computes a see-and-say sequence from the previous one:
 
@@ -2580,7 +2580,7 @@ val gen : int -> int list array = <fun>
 
 
 
-###  With regular expressions in the Str library 
+###  With regular expressions in the Str library
 
 
 ```ocaml
@@ -2602,7 +2602,7 @@ let () =
 
 
 
-###  With regular expressions in the Pcre library 
+###  With regular expressions in the Pcre library
 
 
 ```ocaml
@@ -2629,7 +2629,7 @@ let () =
 run this example with 'ocaml -I +pcre pcre.cma script.ml'
 
 
-###  Imperative 
+###  Imperative
 
 
 ```ocaml
@@ -2687,12 +2687,12 @@ List.map (String.length) (las 59);;
 ```Oforth
 import: mapping
 
-: lookAndSay ( n -- )  
+: lookAndSay ( n -- )
    [ 1 ] #[ dup .cr group map( [#size, #first] ) expand ] times( n ) ;
 ```
 
 
-{{out}} for n = 10 : 
+{{out}} for n = 10 :
 
 ```txt
 
@@ -2822,7 +2822,7 @@ end.
 {{out}}
 
 ```txt
-% ./LookAndSay 
+% ./LookAndSay
 Press RETURN to continue and ^C to stop.
 
 1
@@ -2844,7 +2844,7 @@ Press RETURN to continue and ^C to stop.
 
 
 Even faster imperative Version
-Improvement: 
+Improvement:
 setlength of result,no inttoStr and using pChar
 But the Code Alignment is very important.
 {{works with|Free_Pascal}}
@@ -2996,7 +2996,7 @@ Using string as a cyclic buffer:
 ```perl
 for (local $_ = "1\n"; s/((.)\2*)//s;) {
 	print $1;
-	$_ .= ($1 ne "\n" and length($1)).$2 
+	$_ .= ($1 ne "\n" and length($1)).$2
 }
 ```
 
@@ -3092,7 +3092,7 @@ end for
 function lookAndSay($str) {
 
 	return preg_replace_callback('#(.)\1*#', function($matches) {
-	
+
 		return strlen($matches[0]).$matches[1];
 	}, $str);
 }
@@ -3254,7 +3254,7 @@ look_and_say(L) :-
 	encode(L, L1),
 	look_and_say(L1).
 
-% This code is almost identical to the code of "run-length-encoding" 
+% This code is almost identical to the code of "run-length-encoding"
 encode(In, Out) :-
 	packList(In, R1),
 	append(R1,Out).
@@ -3360,7 +3360,7 @@ If OpenConsole()
         j+1
       Until Mid(txt$,j,1)<>curr$
       result$+Str(cnt)+curr$
-    Until j>Len(txt$)    
+    Until j>Len(txt$)
     PrintN(result$)
     txt$=result$
     i-1
@@ -3378,7 +3378,7 @@ EndIf
 
  Enter start sequence: 1
  How many repetitions: 7
- 
+
  Sequence:
  1
  11
@@ -3459,14 +3459,14 @@ Functional
 
 ```python>>>
  from itertools import groupby, islice
->>> 
+>>>
 >>> def lookandsay(number='1'):
 	while True:
 		yield number
 		number = ''.join( str(len(list(g))) + k
 		                  for k,g in groupby(number) )
 
-		
+
 >>> print('\n'.join(islice(lookandsay(), 10)))
 1
 11
@@ -3527,7 +3527,7 @@ las 8
 
 ## R
 
-Returning the value as an integer limits how long the sequence can get, 
+Returning the value as an integer limits how long the sequence can get,
 so the option for integer or character return values are provided.
 
 ```R
@@ -3535,7 +3535,7 @@ look.and.say <- function(x, return.an.int=FALSE)
 {
    #convert number to character vector
    xstr <- unlist(strsplit(as.character(x), ""))
-   #get run length encoding   
+   #get run length encoding
    rlex <- rle(xstr)
    #form new string
    odds <- as.character(rlex$lengths)
@@ -3602,12 +3602,12 @@ for(i in 1:10)
 
 ## REXX
 
-Programming note:   this version works with any string   (a '''null''' is assumed, which causes   '''1'''   to be used). 
+Programming note:   this version works with any string   (a '''null''' is assumed, which causes   '''1'''   to be used).
 
 
-If a negative number is specified (the number of iterations 
+If a negative number is specified (the number of iterations
 to be used for the calculations), only the length of
- 
+
 the number (or character string) is shown.
 
 
@@ -3759,7 +3759,7 @@ length[60]: 12680852
 
 ### faster version
 
-This version appends the generated parts of the sequence, and after it gets to a certain size (chunkSize), 
+This version appends the generated parts of the sequence, and after it gets to a certain size (chunkSize),
 
 it appends the sequence generated (so far) to the primary sequence, and starts with a null sequence.
 
@@ -3811,7 +3811,7 @@ for nr = 1 to 10
     number = lookSay(number)
     see number + nl
 next
- 
+
 func lookSay n
      i = 0 j = 0 c="" o=""
      i = 1
@@ -3824,7 +3824,7 @@ func lookSay n
            o += string(j-i) + c
            i = j
       end
-      return o 
+      return o
 
 ```
 
@@ -4228,8 +4228,8 @@ r := '1'.
 {{works with|Macro Spitbol}}
 {{works with|Snobol4+}}
 {{works with|CSnobol}}
-The look-and-say sequence is an iterative run-length string encoding. 
-So looksay( ) is just a wrapper around the Run-length Encoding task. 
+The look-and-say sequence is an iterative run-length string encoding.
+So looksay( ) is just a wrapper around the Run-length Encoding task.
 This is by far the easiest solution.
 
 
@@ -4241,13 +4241,13 @@ rle     str len(1) . c :f(return)
         rle = rle n c :(rle)
 rle_end
 
-*       # First m members of sequence with seed n 
+*       # First m members of sequence with seed n
         define('looksay(n,m)') :(looksay_end)
 looksay output = n; m = gt(m,1) m - 1 :f(return)
         n = rle(n) :(looksay)
-looksay_end        
+looksay_end
 
-*       Test and display        
+*       Test and display
         looksay(1,10)
 end
 ```
@@ -4328,7 +4328,7 @@ Usage:
 [[Category:SQLite]]
 
 ```txt
-% sqlite3 
+% sqlite3
 SQLite version 3.4.0
 Enter ".help" for instructions
 sqlite> CREATE TABLE sequence(v int, c int);
@@ -4602,7 +4602,7 @@ num=1,say=""
 3113112221232112111312211312113211
 1321132132111213122112311311222113111221131221
 11131221131211131231121113112221121321132132211331222113112211
-311311222113111231131112132112311321322112111312211312111322212311322113212221  
+311311222113111231131112132112311321322112111312211312111322212311322113212221
 
 ```
 
@@ -4652,7 +4652,7 @@ done
 
 ## Ursala
 
-The look_and_say function returns the first n results 
+The look_and_say function returns the first n results
 by iterating the function that maps a given sequence to its successor.
 
 ```Ursala
@@ -4762,9 +4762,9 @@ LookAndSay 7
 
 ## Vedit macro language
 
-This implementation generates look-and-say sequence 
+This implementation generates look-and-say sequence
 starting from the sequence on cursor line in edit buffer.
-Each new sequence is inserted as a new line. 
+Each new sequence is inserted as a new line.
 10 sequences are created in this example.
 
 
@@ -4817,7 +4817,7 @@ function looksay( n )
 			accum = accum + 1
 			n = mid(n,2)
 		loop
-		if accum > 0 then 
+		if accum > 0 then
 			res = res & accum & c
 		end if
 	loop
@@ -4831,7 +4831,7 @@ end function
 
 
 ```vb
-dim m 
+dim m
 m = 1
 for i = 0 to 13
 	m = looksay(m)

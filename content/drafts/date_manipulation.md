@@ -10,13 +10,13 @@ categories = []
 tags = []
 +++
 
-{{task|Text processing}} 
+{{task|Text processing}}
 [[Category:Date and time]]
 {{omit from|ML/I}}
 {{omit from|PARI/GP|No real capacity for string manipulation}}
 
 ;Task:
-Given the date string "March 7 2009 7:30pm EST", 
+Given the date string "March 7 2009 7:30pm EST",
 
 output the time 12 hours later in any human-readable format.
 
@@ -52,7 +52,7 @@ with Ada.Integer_Text_IO;
 with Ada.Text_IO;
 
 procedure Date_Manipulation is
-   
+
    type Month_Name_T is
      (January, February, March, April, May, June,
       July, August, September, October, November, December);
@@ -67,7 +67,7 @@ procedure Date_Manipulation is
    Time_Zone_Offset : array (Time_Zone_Name_T) of TZ.Time_Offset :=
      (EST => -5 * 60,
       Lisbon => 0);
- 
+
    Period_Offset : array (Period_T) of Natural :=
      (AM => 0,
       PM => 12);
@@ -125,7 +125,7 @@ procedure Date_Manipulation is
          Second => 0,
          Time_Zone => Time_Zone_Offset (Time_Zone));
    end;
-   
+
    function Img
      (Date : Std.Time; Zone : Time_Zone_Name_T) return String is
    begin
@@ -138,7 +138,7 @@ procedure Date_Manipulation is
    use Ada.Text_IO;
 begin
    T1 := To_Time ("March 7 2009 7:30pm EST");
-   T2 := T1 + 12.0 * 60.0 * 60.0; 
+   T2 := T1 + 12.0 * 60.0 * 60.0;
    Put_Line ("T1 => " & Img (T1, EST) & " = " & Img (T1, Lisbon));
    Put_Line ("T2 => " & Img (T2, EST) & " = " & Img (T2, Lisbon));
 end;
@@ -299,7 +299,7 @@ time:    Sat 2009-03-07 19:30:00 Eastern Standard Time
 
 ```dos
 
-@echo off 
+@echo off
 
 call:Date_Manipulation "March 7 2009 7:30pm EST"
 call:Date_Manipulation "February 28 2009 2:28pm EST"
@@ -314,7 +314,7 @@ setlocal enabledelayedexpansion
 set daysinmonth=31 28 31 30 31 30 31 31 30 31 30 31
 set namesofmonths=January February March April May June July August September October November December
 
-:: Separate the date given ("%1") into respective variables. Note: For now the "am/pm" is attached to %minutes% 
+:: Separate the date given ("%1") into respective variables. Note: For now the "am/pm" is attached to %minutes%
 for /f "tokens=1,2,3,4,5,6 delims=: " %%i in ("%~1") do (
   set monthname=%%i
   set day=%%j
@@ -417,34 +417,34 @@ Manipulated - March 1 2000 9:52am EST
 
 ```bbcbasic
       INSTALL @lib$+"DATELIB"
-      
+
       date$ = "March 7 2009 7:30pm EST"
-      
+
       mjd% = FN_readdate(date$, "mdy", 0)
       colon% = INSTR(date$, ":")
       hours% = VAL(MID$(date$, colon%-2))
       IF INSTR(date$, "am") IF hours%=12  hours% -= 12
       IF INSTR(date$, "pm") IF hours%<>12 hours% += 12
       mins% = VAL(MID$(date$, colon%+1))
-      
+
       now% = mjd% * 1440 + hours% * 60 + mins%
       new% = now% + 12 * 60 : REM 12 hours later
-      
+
       PRINT FNformat(new%, "EST")
       PRINT FNformat(new% + 5 * 60, "GMT")
       PRINT FNformat(new% - 3 * 60, "PST")
       END
-      
+
       DEF FNformat(datetime%, zone$)
       LOCAL mjd%, hours%, mins%, ampm$
       mjd% = datetime% DIV 1440
       hours% = (datetime% DIV 60) MOD 24
       mins% = datetime% MOD 60
-      
+
       IF hours% < 12 THEN ampm$ = "am" ELSE ampm$ = "pm"
       IF hours% = 0 hours% += 12
       IF hours% > 12 hours% -= 12
-      
+
       = FN_date$(mjd%, "MMMM d yyyy") + " " + STR$(hours%) + \
       \ ":" + RIGHT$("0"+STR$(mins%), 2) + ampm$ + " " + zone$
       ENDPROC
@@ -465,8 +465,8 @@ March 8 2009 4:30am PST
 
 {{works with|POSIX}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -475,7 +475,7 @@ int main()
   struct tm ts;
   time_t t;
   const char *d = "March 7 2009 7:30pm EST";
-  
+
   strptime(d, "%B %d %Y %I:%M%p %Z", &ts);
   /* ts.tm_hour += 12; instead of t += 12*60*60
      works too. */
@@ -517,8 +517,8 @@ class Program
 
 compiled with g++ -lboost_date_time
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 #include <boost/date_time/local_time/local_time.hpp>
 #include <sstream>
@@ -551,12 +551,12 @@ int main( ) {
    long hour = std::atol( (elements.begin( ))->c_str( ) ) ;// hours in the string
    if ( twelve_hour == "p" ) //it's post meridian, we're converting to 24-hour-clock
       hour += 12 ;
-   long minute = std::atol( ( elements.begin( ) + 1)->c_str( ) ) ; 
+   long minute = std::atol( ( elements.begin( ) + 1)->c_str( ) ) ;
    boost::local_time::tz_database tz_db ;
    tz_db.load_from_file( "/home/ulrich/internetpages/date_time_zonespec.csv" ) ;
    //according to the time zone database, this corresponds to one possible EST time zone
    boost::local_time::time_zone_ptr dyc = tz_db.time_zone_from_region( "America/New_York" ) ;
-   //this is the string input format to initialize the date field 
+   //this is the string input format to initialize the date field
    boost::gregorian::date_input_facet *f =
       new boost::gregorian::date_input_facet( "%B %d %Y"  ) ;
    std::stringstream ss ;
@@ -669,9 +669,9 @@ Two parts to this example. Following the task spec using POSIX routines, and a m
        01 iso-date             constant as "2009-03-07T19:30:00-05:00".
        01 date-integer         pic 9(9).
        01 time-integer         pic 9(9).
-       
+
        procedure division.
-      
+
        call "strptime" using
            by reference given-date
            by reference date-spec
@@ -784,7 +784,7 @@ enum months = ["January", "February", "March", "April", "May", "June", "July", "
 
 void main()
 {
-  // input	
+  // input
   string date = "March 7 2009 7:30pm EST";
 
   // parsing date string to integer values
@@ -793,7 +793,7 @@ void main()
   date.formattedRead("%s %d %d %d:%d%s %s", &month, &day, &year, &hour, &minute, &md, &tz);
   int mon = cast (int) months.countUntil(month) + 1;
 
-  // convert to 24-hour 
+  // convert to 24-hour
   if (md == "pm")
     hour += 12;
 
@@ -803,7 +803,7 @@ void main()
   // output
   writeln(dt);
   writeln(dt + 12.hours);
-	
+
 }
 
 
@@ -1031,9 +1031,9 @@ open System
 let main() =
   let est = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time")
   let date = DateTime.Parse("March 7 2009 7:30pm -5" )
-  let date_est = TimeZoneInfo.ConvertTime( date, est) 
+  let date_est = TimeZoneInfo.ConvertTime( date, est)
   let date2 = date.AddHours(12.0)
-  let date2_est = TimeZoneInfo.ConvertTime( date2, est) 
+  let date2_est = TimeZoneInfo.ConvertTime( date2, est)
   Console.WriteLine( "Original date in local time : {0}", date )
   Console.WriteLine( "Original date in EST        : {0}", date_est )
   Console.WriteLine( "12 hours later in local time: {0}", date2 )
@@ -1130,7 +1130,7 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 #include "vbcompat.bi"
 
 Sub split (s As String, sepList As String, result() As String, removeEmpty As Boolean = False)
-  If s = "" OrElse sepList = "" Then 
+  If s = "" OrElse sepList = "" Then
      Redim result(0)
      result(0) = s
      Return
@@ -1138,12 +1138,12 @@ Sub split (s As String, sepList As String, result() As String, removeEmpty As Bo
   Dim As Integer i, j, count = 0, empty = 0, length
   Dim As Integer position(Len(s) + 1)
   position(0) = 0
- 
+
   For i = 0 To len(s) - 1
     For j = 0 to Len(sepList) - 1
-      If s[i] = sepList[j] Then 
+      If s[i] = sepList[j] Then
         count += 1
-        position(count) = i + 1       
+        position(count) = i + 1
       End If
     Next j
   Next i
@@ -1155,9 +1155,9 @@ Sub split (s As String, sepList As String, result() As String, removeEmpty As Bo
   End If
 
   position(count + 1) = len(s) + 1
- 
-  For i = 1 To count + 1  
-    length = position(i) - position(i - 1) - 1 
+
+  For i = 1 To count + 1
+    length = position(i) - position(i - 1) - 1
     result(i - 1 - empty) = Mid(s, position(i - 1) + 1, length)
     If removeEmpty Andalso CBool(length = 0) Then empty += 1
   Next
@@ -1170,7 +1170,7 @@ Function parseDate(dt As String, zone As String) As Double
   split dt, " ", result(), True
   Dim As Long m, d, y, h, mn
   Dim am As Boolean
-  Dim index As Integer 
+  Dim index As Integer
   Select Case Lcase(result(0))
     Case "january"    : m = 1
     Case "february"   : m = 2
@@ -1191,10 +1191,10 @@ Function parseDate(dt As String, zone As String) As Double
   am = (Right(result(3), 2) = "am")
   index = Instr(result(3), ":")
   h = ValInt(Left(result(3), index - 1))
-  If Not am Then 
+  If Not am Then
     h = h + 12
     If h = 24 Then h = 12
-  End If 
+  End If
   mn = ValInt(Mid(result(3), index + 1, 2))
   zone = result(4)
   Return DateSerial(y, m, d) + TimeSerial(h, mn, 0)
@@ -1202,11 +1202,11 @@ End Function
 
 Dim zone As String
 Dim ds As Double = parseDate("March 7 2009 7:30pm EST", zone)
-Print "Original Date/Time  : "; Format(ds, "mmmm d yyyy h:nnam/pm ") + "  " + zone 
+Print "Original Date/Time  : "; Format(ds, "mmmm d yyyy h:nnam/pm ") + "  " + zone
 ds = DateAdd("h", 12, ds)
 Print "12 hours later      : "; Format(ds, "mmmm d yyyy h:nnam/pm ") + "  " + zone
 ' add 5 hours to convert EST to UTC
-ds = DateAdd("h", 5, ds) 
+ds = DateAdd("h", 5, ds)
 Print "Equiv to Date/Time  : "; Format(ds, "mmmm d yyyy h:nnam/pm ") + " UTC"
 Print
 Print "Press any key to quit"
@@ -1228,8 +1228,8 @@ Equiv to Date/Time  : March 8 2009 12:30pm  UTC
 
 ## Frink
 
-Frink parses a large number of date/time formats, has robust date/time math, 
-and automatically converts between timezones.  
+Frink parses a large number of date/time formats, has robust date/time math,
+and automatically converts between timezones.
 By default, output times are in the user's defined timezone.
 
 ```frink
@@ -1418,9 +1418,9 @@ link datetime
 
 procedure main()
 write("input      = ",s := "March 7 2009 7:30pm EST" )
-write("+12 hours  = ",SecToTZDateLine(s := TZDateLineToSec(s) + 12*3600,"EST")) 
+write("+12 hours  = ",SecToTZDateLine(s := TZDateLineToSec(s) + 12*3600,"EST"))
 write("           = ",SecToTZDateLine(s,"UTC"))
-write("           = ",SecToTZDateLine(s,"NST"))    
+write("           = ",SecToTZDateLine(s,"NST"))
 end
 
 procedure SecToTZDateLine(s,tz)   #: returns dateline + time zone given seconds
@@ -1428,7 +1428,7 @@ return NormalizedDate(SecToDateLine(s+\(_TZdata("table")[\tz|"UTC"]))||" "|| tz)
 end
 
 procedure TZDateLineToSec(s)  #: returns seconds given dateline (and time zone)
-   return ( 
+   return (
       NormalizedDate(s) ? (
          d  := tab(find("am"|"pm")+2),tab(many('\t ,')),
          tz := \_TZdata("table")[tab(0)]
@@ -1442,48 +1442,48 @@ initial {
    D := ["Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"]
    M := ["January","February","March","April","May","June",
          "July","August","September","October","November","December"]
-   } 
-   
+   }
+
 map(s) ? {                               # parse and build consistent dateline
-   ds := 1(x := !D, =map(x)) | ""                                    # Weekday 
+   ds := 1(x := !D, =map(x)) | ""                                    # Weekday
    ds ||:= 1(", ", tab(many('\t ,')|&pos))
    ds ||:= 1(x := !M, =map(x))                 | fail                # Month
    ds ||:= 1(" ", tab(many('\t ,')|&pos))
    ds ||:= tab(many(&digits))                  | fail                # day
    ds ||:= 1(", ", tab(many('\t ,')))          | fail
-   ds ||:= tab(many(&digits))                  | fail                # year  
+   ds ||:= tab(many(&digits))                  | fail                # year
    ds ||:= 1(" ", tab(many('\t ,')))           | fail
-   ds ||:= tab(many(&digits))||(=":"||tab(many(&digits))|&null) | fail # time   
+   ds ||:= tab(many(&digits))||(=":"||tab(many(&digits))|&null) | fail # time
    ds ||:= 1(" ", tab(many('\t ,')|&pos))
-   ds ||:= =("am"|"pm")                        | fail                # halfday   
+   ds ||:= =("am"|"pm")                        | fail                # halfday
    ds ||:= 1(" ", tab(many('\t ,')|&pos))
    tz := map(=!_TZdata("list"),&lcase,&ucase)
    }
 
-if ds[1] == "," then 
+if ds[1] == "," then
    ds := SecToDateLine(DateLineToSec("Sunday"||ds))   # get IPL to fix weekday
 
-return ds ||:=  " " || \tz|"UTC"   
+return ds ||:=  " " || \tz|"UTC"
 end
 
 procedure _TZdata(x)    #: internal return TZ data (demo version incomplete)
 static TZ,AZ
 initial {
-   TZ := table()  
+   TZ := table()
    AZ := []
    "UTC/0;ACDT/+10.5;CET/1;EST/-5;NPT/+5.75;NST/-3.5;PST/-8;" ?
       while (  a := tab(find("/")), move(1), o := tab(find(";")), move(1) ) do {
          TZ[map(a)] := TZ[a] := integer(3600*o)
          put(AZ,a,map(a))
          }
-      every TZ[&null|""] := TZ["UTC"]     
+      every TZ[&null|""] := TZ["UTC"]
    }
 return case x of { "list"  : AZ ; "table" : TZ }
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn datetime provides SecToDateLine, and DateLineToSec] these convert between Icon's &dateline format and seconds from a configurable base date (which defaults to the normal 1970 epoch).
 
 {{out}}
@@ -1567,9 +1567,9 @@ public class DateManip{
 	String dateStr = "March 7 2009 7:30pm EST";
 
 	SimpleDateFormat sdf = new SimpleDateFormat("MMMM d yyyy h:mma zzz");
-	
+
 	Date date = sdf.parse(dateStr);
-	
+
 	date.setTime(date.getTime() + 43200000l);
 
 	System.out.println(sdf.format(date));
@@ -1597,12 +1597,12 @@ Sun Mar 08 08:30:00 EDT 2009
 
 Input: March 7 2009 7:30pm EST
 
-The input string is ambiguous since EST might represent 
-any one of 3 different world time zones. 
+The input string is ambiguous since EST might represent
+any one of 3 different world time zones.
 Will assume US Eastern Standard Time of UTC -5 hours.
 
-Javascript date objects are always in the local time zone. 
-If a date and time is provided in a different time zone, it must be dealt with manually as the date object's time zone offset is read only. 
+Javascript date objects are always in the local time zone.
+If a date and time is provided in a different time zone, it must be dealt with manually as the date object's time zone offset is read only.
 Consequently, there may be issues if daylight saving is observed in one location but not the other.
 
 While ECMA-262 Ed 5 specifies a <code>Date.parse</code> method, it is not widely supported (2011) and parsing of strings other than the format specified are implementation dependent. Since the test string doesn't conform to the standard, it must be manually parsed.
@@ -1610,7 +1610,7 @@ While ECMA-262 Ed 5 specifies a <code>Date.parse</code> method, it is not widely
 
 ```JavaScript
 function add12hours(dateString) {
-  
+
   // Get the parts of the date string
   var parts = dateString.split(/\s+/),
       date  = parts[1],
@@ -1662,7 +1662,7 @@ console.log(
 "March 7 2009 7:30pm EST"
 | strptime("%B %d %Y %I:%M%p %Z")
 | .[3] += 12
-| mktime | strftime("%B %d %Y %I:%M%p %Z") 
+| mktime | strftime("%B %d %Y %I:%M%p %Z")
 ```
 
 
@@ -1805,7 +1805,7 @@ on dateToDateTimeString (dateObj)
   s = string(dateObj.day)
   if s.length<2 then put "0" before s
   put s after str
-  sec = dateObj.seconds  
+  sec = dateObj.seconds
   s = string(sec / 3600)
   sec = sec mod 3600
   if s.length<2 then put "0" before s
@@ -1869,7 +1869,7 @@ The following solution is quite ugly, but unfortunately there is not anything li
 str = string.lower( "March 7 2009 7:30pm EST" )
 
 month = string.match( str, "%a+" )
-if     month == "january"   then month = 1 
+if     month == "january"   then month = 1
 elseif month == "february"  then month = 2
 elseif month == "march"     then month = 3
 elseif month == "april"     then month = 4
@@ -1880,7 +1880,7 @@ elseif month == "august"    then month = 8
 elseif month == "september" then month = 9
 elseif month == "october"   then month = 10
 elseif month == "november"  then month = 11
-elseif month == "december"  then month = 12 
+elseif month == "december"  then month = 12
 end
 
 strproc = string.gmatch( str, "%d+" )
@@ -2249,7 +2249,7 @@ Do
       Leave z_
       End
     End z_
-  
+
   Return offset;
 End
 Exit
@@ -2322,7 +2322,7 @@ Do
         !reading = isTrue()
         End
       Iterate l_
-      End    
+      End
     End l_
 
   Return timezones.0
@@ -2430,12 +2430,12 @@ We use Mountain Daylight Time for output.
 use DateTime;
 use DateTime::Format::Strptime 'strptime';
 use feature 'say';
- 
+
 my $input =  'March 7 2009 7:30pm EST';
 $input    =~ s{EST}{America/New_York};
 
 say strptime('%b %d %Y %I:%M%p %O', $input)
-        ->add(hours => 12) 
+        ->add(hours => 12)
         ->set_time_zone('America/Edmonton')
         ->format_cldr('MMMM d yyyy h:mma zzz');
 ```
@@ -2453,11 +2453,11 @@ March 8 2009 6:30AM MDT
 
 ## Perl 6
 
-Perl 6 comes with a build-in DateTime type 
-to support most aspects of standard civic time calculation 
-that are not dependent on cultural idiosyncracies. 
+Perl 6 comes with a build-in DateTime type
+to support most aspects of standard civic time calculation
+that are not dependent on cultural idiosyncracies.
 
-Unfortunately, Perl 6 does not yet have a date parsing module 
+Unfortunately, Perl 6 does not yet have a date parsing module
 (mostly due to a reticence to inflict Western cultural imperialism on other cultures...
 or maybe just due to laziness), but that just gives us another opportunity to demonstrate the built-in grammar support.
 
@@ -2649,14 +2649,14 @@ domingo, 08 de marzo de 2009 23:30:00
 EnableExplicit
 
 Procedure.i ToPBDate(Date$, *zone.String)
-  Protected year, month, day, hour, minute 
+  Protected year, month, day, hour, minute
   Protected month$, temp$, time$, pm$, zone$
   month$ = StringField(date$, 1, " ")
   day = Val(StringField(date$, 2, " "))
   year = Val(StringField(date$, 3, " "))
   time$ = StringField(date$, 4, " ")
   zone$ = StringField(date$, 5, " ")
-  
+
   Select month$
     Case "January"   : month = 1
     Case "February"  : month = 2
@@ -2671,18 +2671,18 @@ Procedure.i ToPBDate(Date$, *zone.String)
     Case "November"  : month = 11
     Case "December"  : month = 12
   EndSelect
-  
+
   hour = Val(StringField(time$, 1, ":"))
   temp$ = StringField(time$, 2, ":")
   minute = Val(Left(temp$, 2))
   pm$ = Right(temp$, 2)
-  
-  If pm$ = "am" 
+
+  If pm$ = "am"
     If hour = 12 : hour = 0 : EndIf
   Else
     If hour <> 12 : hour + 12 : EndIf
   EndIf
-  
+
   *zone\s = zone$
   ProcedureReturn Date(year, month, day, hour, minute, 0)
 EndProcedure
@@ -2693,38 +2693,38 @@ Procedure.s FromPBDate(Date, zone$)
   Protected day$ = Str(Day(Date))
   Protected hour = Hour(Date)
   Protected minute = Minute(Date)
-  Protected month$, time$, pm$, result$ 
-  
+  Protected month$, time$, pm$, result$
+
   Select month
-    Case 1  :  month$ = "January" 
-    Case 2  :  month$ = "February" 
-    Case 3  :  month$ = "March"  
-    Case 4  :  month$ = "April" 
+    Case 1  :  month$ = "January"
+    Case 2  :  month$ = "February"
+    Case 3  :  month$ = "March"
+    Case 4  :  month$ = "April"
     Case 5  :  month$ = "May"
     Case 6  :  month$ = "June"
     Case 7  :  month$ = "July"
     Case 8  :  month$ = "August"
     Case 9  :  month$ = "September"
-    Case 10 :  month$ = "October" 
+    Case 10 :  month$ = "October"
     Case 11 :  month$ = "November"
     Case 12 :  month$ = "December"
   EndSelect
-  
+
   If hour > 12
     hour - 12
     pm$ = "pm"
   ElseIf hour = 12
     pm$ = "pm"
-  Else    
+  Else
     If hour = 0 : hour = 12 : EndIf
     pm$ = "am"
   EndIf
-  
-  time$ = Str(hour) + ":" + RSet(Str(minute), 2, "0") + pm$ 
-  result$ = month$ + " " + day$ + " " + year$ + " " + time$ + " " + zone$  
+
+  time$ = Str(hour) + ":" + RSet(Str(minute), 2, "0") + pm$
+  result$ = month$ + " " + day$ + " " + year$ + " " + time$ + " " + zone$
   ProcedureReturn result$
 EndProcedure
-  
+
 Define date
 Define date1$, date2$
 Define zone.String
@@ -2787,7 +2787,7 @@ mt()
 
 ```R
 time <- strptime("March 7 2009 7:30pm EST", "%B %d %Y %I:%M%p %Z") # "2009-03-07 19:30:00"
-isotime <- ISOdatetime(1900 + time$year, time$mon, time$mday, 
+isotime <- ISOdatetime(1900 + time$year, time$mon, time$mday,
    time$hour, time$min, time$sec, "EST")                           # "2009-02-07 19:30:00 EST"
 twelvehourslater <- isotime + 12 * 60 * 60                         # "2009-02-08 07:30:00 EST"
 timeincentraleurope <- format(isotime, tz="CET", usetz=TRUE)       #"2009-02-08 01:30:00 CET"
@@ -2853,7 +2853,7 @@ read-time: func [
 ][
 	parse load text [
 		set m word! (m: index? find system/locale/months to-string m)
-		set d integer!  set y integer!  
+		set d integer!  set y integer!
 		set t time!  set tz word!]
 	to-date reduce [y m d t  zones/:tz]
 ]
@@ -2927,15 +2927,15 @@ March 7 2009 7:30pm EST  +  12 hours  ───►  8 Mar 2009 7:30am EST
 # Project : Date manipulation
 
 load "stdlib.ring"
-dateorigin = "March 7 2009 7:30pm EST" 
+dateorigin = "March 7 2009 7:30pm EST"
 monthname = "January February March April May June July August September October November December"
 for i = 1 to 12
      if dateorigin[1] = monthname[i]
         monthnum = i
-     ok	
-next 
+     ok
+next
 thedate = str2list(substr(dateorigin, " ", nl))
-t = thedate[4]	
+t = thedate[4]
 t1 = substr(t,"pm", "")
 t2 = substr(t1,":",".")
 t3 = number(t2)
@@ -2944,7 +2944,7 @@ if right(t,2) = "pm"
 ok
 ap = "pm"
 d = "07/03/2009"
-if t3 + 12 > 24  
+if t3 + 12 > 24
   d = adddays("07/03/2009",1)
   ap = "am"
 ok
@@ -3022,7 +3022,7 @@ new = t.advance(:hours => 12)
 ```Ruby
 require "date"
 
-puts d1 = DateTime.parse("March 7 2009 7:30pm EST")  
+puts d1 = DateTime.parse("March 7 2009 7:30pm EST")
 # d1 + 1 would add a day, so add half a day:
 puts d2 = d1 + 1/2r # 1/2r is a rational; 0.5 would also work
 puts d3 = d2.new_offset('+09:00')
@@ -3057,7 +3057,7 @@ t2$	= word$(t1$,1,":") + "." + word$(t1$,2,":")	' replace : with .
 t	= val(t2$)
 if right$(t$,2) = "pm" then t = t + 12
 ap$	= "pm"
-if t + 12 > 24 then 
+if t + 12 > 24 then
   d	= d + 1			' if over 24 hours add 1 to days since 1/1/1901
   ap$	= "am"
 end if
@@ -3083,10 +3083,10 @@ object DateManipulation {
     val df=new SimpleDateFormat("MMMM d yyyy h:mma z", Locale.ENGLISH)
     val c=Calendar.getInstance()
     c.setTime(df.parse(input))
-	 
+
     c.add(Calendar.HOUR_OF_DAY, 12)
     println(df.format(c.getTime))
-	 
+
     df.setTimeZone(TimeZone.getTimeZone("GMT"))
     println(df.format(c.getTime))
   }
@@ -3274,7 +3274,7 @@ s := 'March 7 2009 7:30pm EST'.
 "Build a abbreviation -> offset for timezones (example)"
 abbrDict := Dictionary new.
 
-abbrDict at: 'EST' 
+abbrDict at: 'EST'
          put: { (Duration days: 0 hours: -5 minutes: 0 seconds: 0).
                 (DateTime year: 2009 month: 3 day: 8 hour: 2 minute: 0 second: 0).
 		(Duration days: 0 hours: 1 minutes: 0 seconds: 0) }.
@@ -3316,7 +3316,7 @@ March 8 2009 8:30AM EST
 
 -- March 7 2009 7:30pm EST
 
-select 
+select
 TO_TIMESTAMP_TZ(
 'March 7 2009 7:30pm EST',
 'MONTH DD YYYY HH:MIAM TZR'
@@ -3326,7 +3326,7 @@ from dual;
 
 -- 12 hours later DST change
 
-select 
+select
 (TO_TIMESTAMP_TZ(
 'March 7 2009 7:30pm EST',
 'MONTH DD YYYY HH:MIAM TZR'
@@ -3338,7 +3338,7 @@ from dual;
 -- 12 hours later no DST change
 -- Arizona time, always MST
 
-select 
+select
 (TO_TIMESTAMP_TZ(
 'March 7 2009 7:30pm EST',
 'MONTH DD YYYY HH:MIAM TZR'

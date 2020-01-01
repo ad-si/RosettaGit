@@ -10,18 +10,18 @@ categories = []
 tags = []
 +++
 
-{{task|Classic CS problems and programs}} 
-[[Category:Memoization]] 
+{{task|Classic CS problems and programs}}
+[[Category:Memoization]]
 [[Category:Puzzles]]
 {{omit from|GUISS}}
 
-A tourist wants to make a good trip at the weekend with his friends. 
+A tourist wants to make a good trip at the weekend with his friends.
 
-They will go to the mountains to see the wonders of nature, so he needs to pack well for the trip. 
+They will go to the mountains to see the wonders of nature, so he needs to pack well for the trip.
 
-He has a good knapsack for carrying things, but knows that he can carry a maximum of only 4kg in it,    and it will have to last the whole day. 
+He has a good knapsack for carrying things, but knows that he can carry a maximum of only 4kg in it,    and it will have to last the whole day.
 
-He creates a list of what he wants to bring for the trip but the total weight of all items is too much. 
+He creates a list of what he wants to bring for the trip but the total weight of all items is too much.
 
 He then decides to add columns to his initial list detailing their weights and a numerical value representing how important the item is for the trip.
 
@@ -81,14 +81,14 @@ Here is the list:
 
 
 
-The tourist can choose to take any combination of items from the list, 
-but only one of each item is available. 
+The tourist can choose to take any combination of items from the list,
+but only one of each item is available.
 
 He may not cut or diminish the items, so he can only take whole units of any item.
 
 
 ;Task:
-Show which items the tourist can carry in his knapsack so that their total weight does not 
+Show which items the tourist can carry in his knapsack so that their total weight does not
 exceed 400 dag [4 kg],   and their total value is maximized.
 
 [dag = decagram = 10 grams]
@@ -191,18 +191,18 @@ POWER  MH     R1,=H'2'           *2
 TSTBIT EQU    *                  R1 value to test the R2 bit
        LA     R3,32              32
        SR     R3,R2              (32-i)
-       STC    R3,XSLL+3         
+       STC    R3,XSLL+3
        LR     R0,R1              n
        EX     0,XSLL             SLL R0,(32-i)
-       SRL    R0,31             
+       SRL    R0,31
        BR     R14                return R0
-XSLL   SLL    R0,0               shift left logical     
+XSLL   SLL    R0,0               shift left logical
 *
 MAXW   DC     F'400'             maximum weight
 N      DC     A((DATAE-DATA)/32)
 IMAX   DS     F                  number of combinations
 XB     DS     F                  max vector
-XM     DS     F                  max items 
+XM     DS     F                  max items
 XW     DS     F                  max weight
 XV     DS     F                  max value
 PG     DC     CL80' '
@@ -405,14 +405,14 @@ Items:
 [1]   total←400
 [2]   list←("map" 9 150)("compass" 13 35)("water" 153 200)("sandwich" 50 160)("glucose" 15 60) ("tin" 68 45)("banana" 27 60)("apple" 39 40)("cheese" 23 30)("beer" 52 10) ("suntan cream" 11 70)("camera" 32 30)("t-shirt" 24 15)("trousers" 48 10) ("umbrella" 73 40)("waterproof trousers" 42 70)("waterproof overclothes" 43 75) ("note-case" 22 80) ("sunglasses" 7 20) ("towel" 18 12) ("socks" 4 50) ("book" 30 10)
 [3]   list←list[⍒3⊃¨list]
-[4]   
+[4]
 [5]   ret←⍬
 [6]   :while 0≠⍴list
 [7]       ret←ret,(b←total>sum←+\2⊃¨list)/list
 [8]       list←1↓(~b)/list
 [9]       total←total-sum←¯1↑(total>sum)/sum
-[10]  :end 
-[11]  ret←⊃ret,⊂'TOTALS:' (+/2⊃¨ret)(+/3⊃¨ret)   
+[10]  :end
+[11]  ret←⊃ret,⊂'TOTALS:' (+/2⊃¨ret)(+/3⊃¨ret)
     ∇
 ```
 
@@ -543,7 +543,7 @@ for %%i in (%importance%) do (
   set /a tempnum+=1
   set i!tempnum!=%%i
 )
-:: Define the array "r[]" as the ratio between the importance ("i[]") and the weight ("w[]"). 
+:: Define the array "r[]" as the ratio between the importance ("i[]") and the weight ("w[]").
 for /l %%i in (1,1,22) do set /a r%%i=!i%%i!*100/!w%%i! & rem batch doesn't support decimals, so the numerator is multiplied by 100 to get past this
 
 set totalimportance=0
@@ -607,20 +607,20 @@ Total Value: 1030  Total Weight: 396
       HIMEM = PAGE + 8000000
       nItems% = 22
       maxWeight% = 400
-      
+
       DIM Tag{ivalue%, list%(nItems%-1), lp%}
       DIM items{(nItems%-1)name$, weight%, ivalue%}
       FOR item% = 0 TO nItems%-1
         READ items{(item%)}.name$, items{(item%)}.weight%, items{(item%)}.ivalue%
       NEXT
-      
+
       DATA "map", 9, 150, "compass", 13, 35, "water", 153, 200, "sandwich", 50, 160
       DATA "glucose", 15, 60, "tin", 68, 45, "banana", 27, 60, "apple", 39, 40
       DATA "cheese", 23, 30, "beer", 52, 10, "suntan cream", 11, 70, "camera", 32, 30
       DATA "t-shirt", 24, 15, "trousers", 48, 10, "umbrella", 73, 40, "book", 30, 10
       DATA "waterproof trousers", 42, 70, "waterproof overclothes", 43, 75
       DATA "note-case", 22, 80, "sunglasses", 7, 20, "towel", 18, 12, "socks", 4, 50
-      
+
       carry% = FN_Knapsack(items{()}, nItems% - 1, maxWeight%, cache{()})
       FOR i% = 0 TO cache{(carry%)}.lp%-1
         n% = cache{(carry%)}.list%(i%)
@@ -631,14 +631,14 @@ Total Value: 1030  Total Weight: 396
       PRINT '"Total weight = " ; TotalWeight%
       PRINT "Total value  = " ; TotalValue%
       END
-      
+
       DEF FN_Knapsack(i{()}, i%, w%, RETURN m{()})
       LOCAL included{}, excluded{}, tmp%, index%
       DIM m{(16384)} = Tag{}, included{} = Tag{}, excluded{} = Tag{}
-      
+
       index% = i% << 9 OR w%
       IF m{(index%)}.ivalue% THEN = index%
-      
+
       IF i% = 0 THEN
         IF i{(0)}.weight% > w% THEN
           m{(index%)}.ivalue% = 0 : REM Item doesn't fit
@@ -649,7 +649,7 @@ Total Value: 1030  Total Weight: 396
         ENDIF
         = index%
       ENDIF
-      
+
       tmp% = FN_Knapsack(i{()}, i% - 1, w%, m{()})
       excluded{} = m{(tmp%)}
       IF i{(i%)}.weight% > w% THEN
@@ -662,7 +662,7 @@ Total Value: 1030  Total Weight: 396
         included.list%(included.lp%) = i%
         included.lp% += 1
       ENDIF
-      
+
       IF included.ivalue% > excluded.ivalue% THEN
         m{(index%)} = included{}
       ELSE
@@ -763,7 +763,7 @@ Total value  = 1030
   )
 & add$(0.0..!things)
 & out$(!maxvalue.!sack));
- 
+
 !knapsack;
 ```
 
@@ -791,8 +791,8 @@ Total value  = 1030
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct {
@@ -898,14 +898,14 @@ totals:                  396  1030
 ## C++
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <string>
 #include <iostream>
 #include <boost/tuple/tuple.hpp>
 #include <set>
 
-int findBestPack( const std::vector<boost::tuple<std::string , int , int> > & , 
+int findBestPack( const std::vector<boost::tuple<std::string , int , int> > & ,
       std::set<int> & , const int  ) ;
 
 int main( ) {
@@ -943,18 +943,18 @@ int main( ) {
       bestValue << " !\n" ;
    int totalweight = 0 ;
    std::cout << "The following items should be packed in the knapsack:\n" ;
-   for ( std::set<int>::const_iterator si = bestItems.begin( ) ; 
-	 si != bestItems.end( ) ; si++ ) { 
+   for ( std::set<int>::const_iterator si = bestItems.begin( ) ;
+	 si != bestItems.end( ) ; si++ ) {
       std::cout << (items.begin( ) + *si)->get<0>( ) << "\n" ;
       totalweight += (items.begin( ) + *si)->get<1>( ) ;
    }
    std::cout << "The total weight of all items is " << totalweight << " !\n" ;
    return 0 ;
 }
-   
+
 int findBestPack( const std::vector<boost::tuple<std::string , int , int> > & items ,std::set<int> & bestItems , const int weightlimit ) {
    //dynamic programming approach sacrificing storage space for execution
-   //time , creating a table of optimal values for every weight and a 
+   //time , creating a table of optimal values for every weight and a
    //second table of sets with the items collected so far in the knapsack
    //the best value is in the bottom right corner of the values table,
    //the set of items in the bottom right corner of the sets' table.
@@ -973,18 +973,18 @@ int findBestPack( const std::vector<boost::tuple<std::string , int , int> > & it
 	  if ( i == 0 )
 	     bestValues[ i ][ weight ] = 0 ;
 	  else  {
-	     int itemweight = (items.begin( ) + i)->get<1>( ) ; 
+	     int itemweight = (items.begin( ) + i)->get<1>( ) ;
 	     if ( weight < itemweight ) {
 		bestValues[ i ][ weight ] = bestValues[ i - 1 ][ weight ] ;
 		solutionSets[ i ][ weight ] = solutionSets[ i - 1 ][ weight ] ;
 	     } else { // weight >= itemweight
-		if ( bestValues[ i - 1 ][ weight - itemweight ] + 
+		if ( bestValues[ i - 1 ][ weight - itemweight ] +
 		   (items.begin( ) + i)->get<2>( ) >
 		        bestValues[ i - 1 ][ weight ] ) {
-		   bestValues[ i ][ weight ] = 
-		       bestValues[ i - 1 ][ weight - itemweight ] + 
+		   bestValues[ i ][ weight ] =
+		       bestValues[ i - 1 ][ weight - itemweight ] +
 	        	(items.begin( ) + i)->get<2>( ) ;
-		  solutionSets[ i ][ weight ] = 
+		  solutionSets[ i ][ weight ] =
 		      solutionSets[ i - 1 ][ weight - itemweight ] ;
 		  solutionSets[ i ][ weight ].insert( i ) ;
 	     }
@@ -1397,18 +1397,18 @@ Knapsack packRecursive(Item[] sortedItems, Knapsack knapsack)
 Total value: 1030.0
 Total weight: 396
 Items:
-	
-item(map, 9, 150.0)	
-item(socks, 4, 50.0)	
-item(cream, 11, 70.0)	
-item(glucose, 15, 60.0)	
-item(notecase, 22, 80.0)	
-item(sandwich, 50, 160.0)	
-item(sunglasses, 7, 20.0)	
-item(compass, 13, 35.0)	
-item(banana, 27, 60.0)	
-item(overclothes, 43, 75.0)	
-item(trousers, 42, 70.0)	
+
+item(map, 9, 150.0)
+item(socks, 4, 50.0)
+item(cream, 11, 70.0)
+item(glucose, 15, 60.0)
+item(notecase, 22, 80.0)
+item(sandwich, 50, 160.0)
+item(sunglasses, 7, 20.0)
+item(compass, 13, 35.0)
+item(banana, 27, 60.0)
+item(overclothes, 43, 75.0)
+item(trousers, 42, 70.0)
 item(water, 153, 200.0)
 
 ```
@@ -1487,7 +1487,7 @@ Call ''m'' and print the result:
 {{out}}
 
 ```txt
-items to pack: map, compass, water, sandwich, glucose, banana, suntan cream, waterproof trousers, 
+items to pack: map, compass, water, sandwich, glucose, banana, suntan cream, waterproof trousers,
 waterproof overclothes, note-case, sunglasses, socks
 total value: 1030
 total weight: 396
@@ -1853,19 +1853,19 @@ Tuple!(int, "tot", string[], "names")(1030, ["banana", "compass", "glucose", "ma
 ```dart
 List solveKnapsack(items, maxWeight) {
   int MIN_VALUE=-100;
-  int N = items.length; // number of items 
+  int N = items.length; // number of items
   int W = maxWeight; // maximum weight of knapsack
-  
+
   List profit = new List(N+1);
   List weight = new List(N+1);
-  
+
   // generate random instance, items 1..N
   for(int n = 1; n<=N; n++) {
     profit[n] = items[n-1][2];
     weight[n] = items[n-1][1];
-    
+
   }
-  
+
   // opt[n][w] = max profit of packing items 1..n with weight limit w
   // sol[n][w] = does opt solution to pack items 1..n with weight limit w include item n?
   List<List<int>> opt = new List<List<int>>(N+1);
@@ -1875,7 +1875,7 @@ List solveKnapsack(items, maxWeight) {
       opt[i][j] = MIN_VALUE;
     }
   }
-  
+
   List<List<bool>> sol = new List<List<bool>>(N+1);
   for (int i=0; i<N+1; i++) {
     sol[i] = new List<bool>(W+1);
@@ -1883,24 +1883,24 @@ List solveKnapsack(items, maxWeight) {
       sol[i][j] = false;
     }
   }
-  
+
   for(int n=1; n<=N; n++) {
     for (int w=1; w <= W; w++) {
-      // don't take item n      
+      // don't take item n
       int option1 = opt[n-1][w];
-      
+
       // take item n
       int option2 = MIN_VALUE;
       if (weight[n] <= w) {
         option2 = profit[n] + opt[n-1][w - weight[n]];
       }
-            
+
       // select better of two options
       opt[n][w] = Math.max(option1, option2);
       sol[n][w] = (option2 > option1);
     }
   }
-  
+
   // determine which items to take
   List<List> packItems = new List<List>();
   List<bool> take = new List(N+1);
@@ -1908,14 +1908,14 @@ List solveKnapsack(items, maxWeight) {
     if (sol[n][w]) {
       take[n] = true;
       w = w - weight[n];
-      packItems.add(items[n-1]); 
+      packItems.add(items[n-1]);
     } else {
-      take[n] = false; 
+      take[n] = false;
     }
   }
-    
+
   return packItems;
-  
+
 }
 
 main() {
@@ -1953,7 +1953,7 @@ main() {
   print("Total Value = ${totalValue}");
   print("Total Weight = ${totalWeight}");
   print("Elapsed Time = ${sw.elapsedInMs()}ms");
-  
+
 }
 ```
 
@@ -1986,7 +1986,7 @@ Elapsed Time = 6ms
 weight[] = [ 9 13 153 50 15 68 27 39 23 52 11 32 24 48 73 42 43 22 7 18 4 30 ]
 value[] = [ 150 35 200 160 60 45 60 40 30 10 70 30 15 10 40 70 75 80 20 12 50 10 ]
 max_w = 400
-# 
+#
 func solve i w . items[] wres vres .
   if i < 0
     wres = 0
@@ -2041,9 +2041,9 @@ for i range len items[]
 (define (score i restant)
 	(if (< i 0) 0
 	(hash-ref! H (t-idx i restant)
-		(if ( >= restant (poids i)) 
-			(max 
-				(score (1- i) restant) 
+		(if ( >= restant (poids i))
+			(max
+				(score (1- i) restant)
 			    (+ (score (1- i) (- restant (poids i))) (valeur i)))
 		    (score (1- i) restant)))))
 
@@ -2076,8 +2076,8 @@ for i range len items[]
 
 
 (task 400)
-total-value     1030    
-    → (socks 🌞-sun-glasses note-case ☔️-overclothes ☔️-trousers 🌞-suntan-cream banana 
+total-value     1030
+    → (socks 🌞-sun-glasses note-case ☔️-overclothes ☔️-trousers 🌞-suntan-cream banana
     glucose sandwich water compass map)
 
 
@@ -2417,26 +2417,26 @@ Time elapsed in milliseconds: 733.0
 (defun ks (max-w items)
   (let ((cache (make-vector (1+ (length items)) nil)))
     (dotimes (n (1+ (length items)))
-      (setf (aref cache n) (make-hash-table :test 'eql)))  
+      (setf (aref cache n) (make-hash-table :test 'eql)))
     (defun ks-emb (spc items)
       (let ((slot (gethash spc (aref cache (length items)))))
-        (cond 
+        (cond
          ((null items) (list 0 0 '()))
          (slot slot)
-         (t (puthash spc 
+         (t (puthash spc
                   (let*
                       ((i (car items))
                        (w (nth 1 i))
                        (v (nth 2 i))
                        (x (ks-emb spc (cdr items))))
-                    (cond 
+                    (cond
                      ((> w spc) x)
                      (t
                       (let* ((y (ks-emb (- spc w) (cdr items)))
                              (v (+ v (car y))))
-                        (cond 
+                        (cond
                          ((< v (car x)) x)
-                         (t 
+                         (t
                           (list v (+ w (nth 1 y)) (cons i (nth 2 y)))))))))
                   (aref cache (length items)))))))
     (ks-emb max-w items)))
@@ -2456,8 +2456,8 @@ Time elapsed in milliseconds: 733.0
 
 ```txt
 
-(1030 396 ((map 9 150) (compass 13 35) (water 153 200) (sandwich 50 160) (glucose 15 60) 
-(banana 27 60) (cream 11 70) (waterproof-trousers 42 70) (overclothes 43 75) (notecase 22 80) 
+(1030 396 ((map 9 150) (compass 13 35) (water 153 200) (sandwich 50 160) (glucose 15 60)
+(banana 27 60) (cream 11 70) (waterproof-trousers 42 70) (overclothes 43 75) (notecase 22 80)
 (glasses 7 20) (socks 4 50)))
 
 ```
@@ -2482,14 +2482,14 @@ but add the next element is impossible'"
 (let ((l (sort l 'best-rate)))
   (cond
    ((null l) l)
-   ((<= (nth 1 (car l)) max) 
+   ((<= (nth 1 (car l)) max)
     (cons (car l) (ks1 (cdr l) (- max (nth 1 (car l))))))
    (t (ks1 (cdr l) max)))))
 
 (defun totval (lol)
-  "totalize values of a list - lol is not for laughing 
+  "totalize values of a list - lol is not for laughing
 but for list of list"
-  (cond 
+  (cond
    ((null lol) 0)
    (t
     (+
@@ -2628,7 +2628,7 @@ solve([{ItemName, ItemWeight, ItemValue} | T],
 ```txt
 
 1> knapsack_0_1:go().
-Items: 
+Items:
 "socks"
 "sunglasses"
 "note-case"
@@ -2749,11 +2749,11 @@ let itemsf = [
 ```txt
 
 > let x=knapStar itemsf 400.0;;
-> x|>Seq.map (fun n->Seq.item n itemsf)|>Seq.sumBy(fun (_,_,n)->(+n));;                                                                 
+> x|>Seq.map (fun n->Seq.item n itemsf)|>Seq.sumBy(fun (_,_,n)->(+n));;
 val it : float = 1030.0
 > x|>Seq.map (fun n->Seq.item n itemsf)|>Seq.sumBy(fun (_,n,_)->(+n));;
 val it : float = 396.0
-> x|>Seq.iter(fun n->printfn "%A" (List.item n itemsf));; 
+> x|>Seq.iter(fun n->printfn "%A" (List.item n itemsf));;
 ("map", 9.0, 150.0)
 ("socks", 4.0, 50.0)
 ("suntan cream", 11.0, 70.0)
@@ -2860,7 +2860,7 @@ CONSTANT: limit 400
 
  ( scratchpad ) main
  Total value: 1030
- Items packed: 
+ Items packed:
     banana
     compass
     glucose
@@ -2960,19 +2960,19 @@ DROP
 
 ```txt
 
-map            
-compass        
-water          
-sandwich       
-glucose        
-banana         
-suntan cream   
-wp trousers    
-wp overclothes 
-note-case      
-sunglasses     
-socks          
-Weight: 396  Value: 1030 
+map
+compass
+water
+sandwich
+glucose
+banana
+suntan cream
+wp trousers
+wp overclothes
+note-case
+sunglasses
+socks
+Weight: 396  Value: 1030
 
 ```
 
@@ -3081,7 +3081,7 @@ next
 
 cur_w = W
 while cur_w > -1
-             
+
    maxi = -1
 
    BeginCCode
@@ -3101,7 +3101,7 @@ while cur_w > -1
       finalValue = finalValue + v(maxi)
 
    else
-      print 
+      print
       print "Add"; int( ( (double)cur_w/c(maxi) * 100 ) +100 ); "% more of "; s(maxi); " into the knapsack to fill remaining space."
 
       tot_v -= v(maxi)
@@ -3112,7 +3112,7 @@ wend
 print
 print "Filled the bag with objects whose total value is"; finalValue; "."
 print "Total weight of packed objects is"; finalWeight; " ounces."
- 
+
 end fn
 
 dim as short i, totalValue, totalWeight
@@ -3308,7 +3308,7 @@ Solution #1: brute force
 ```groovy
 def totalWeight = { list -> list*.weight.sum() }
 def totalValue = { list -> list*.value.sum() }
- 
+
 def knapsack01bf = { possibleItems ->
     possibleItems.subsequences().findAll{ ss ->
         def w = totalWeight(ss)
@@ -3336,7 +3336,7 @@ def knapsack01dp = { possibleItems ->
 Test:
 
 ```groovy
-def items = [ 
+def items = [
         [name:"map", weight:9, value:150],
         [name:"compass", weight:13, value:35],
         [name:"water", weight:153, value:200],
@@ -3365,7 +3365,7 @@ def items = [
     def start = System.currentTimeMillis()
     def packingList = knapsack01(items)
     def elapsed = System.currentTimeMillis() - start
-    
+
     println "\n\n\nElapsed Time: ${elapsed/1000.0} s"
     println "Total Weight: ${totalWeight(packingList)}"
     println " Total Value: ${totalValue(packingList)}"
@@ -3429,7 +3429,7 @@ inv = [("map",9,150), ("compass",13,35), ("water",153,200), ("sandwich",50,160),
 
 -- get all combos of items under total weight sum; returns value sum and list
 combs [] _ = [ (0, []) ]
-combs ((name,w,v):rest) cap = combs rest cap ++ 
+combs ((name,w,v):rest) cap = combs rest cap ++
 		      if w > cap then [] else map (prepend (name,w,v)) (combs rest (cap - w))
 		      	where prepend (name,w,v) (v2, lst) = (v2 + v, (name,w,v):lst)
 
@@ -3527,7 +3527,7 @@ end
 
 record packing(items,weight,value)
 
-procedure Memo_m(i,w)           #: Hook procedure to memoize the knapsack 
+procedure Memo_m(i,w)           #: Hook procedure to memoize the knapsack
 static memoT
 initial memoT := table()
    return \memoT[k := i||","||w] | ( memoT[k] := Memo_m(i,w) )
@@ -3535,17 +3535,17 @@ end
 
 procedure m(i,w)                #: Solve the Knapsack 0-1 as per Wikipedia
 static nil
-initial nil := packing([],0,0) 
-   if 0 = (i | w) then 
-      return nil          
+initial nil := packing([],0,0)
+   if 0 = (i | w) then
+      return nil
    else if wants[i].weight > w then
            return m(i-1, w)
         else {
             x0 := m(i-1,w)
-            x1 := m(i-1,w-wants[i].weight)  
-            if ( x1.value + wants[i].value) > x0.value then 
-               return packing(x1.items ||| wants[i].items,    
-                              x1.weight + wants[i].weight, 
+            x1 := m(i-1,w-wants[i].weight)
+            if ( x1.value + wants[i].value) > x0.value then
+               return packing(x1.items ||| wants[i].items,
+                              x1.weight + wants[i].weight,
                               x1.value + wants[i].value)
             else
                return x0
@@ -3555,12 +3555,12 @@ end
 procedure showwanted(wants)     #: show the list of wanted items
    every (tw := 0) +:= (!wants).weight
    printf("Packing list has total weight=%d and includes %d items [",tw,*wants)
-   every printf(" %s",!(!wants).items|"]\n")   
+   every printf(" %s",!(!wants).items|"]\n")
 end
 
 procedure showcontents(bag)     #: show the list of the packed bag
    printf("The bag weighs=%d holding %d items [",bag.weight,*bag.items)
-   every printf(" %s",!bag.items|"]\n")   
+   every printf(" %s",!bag.items|"]\n")
 end
 
 procedure get_wants()           #: setup list of wanted items
@@ -3589,8 +3589,8 @@ procedure get_wants()           #: setup list of wanted items
 end
 ```
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
 {{out}}
 
 ```txt
@@ -3646,18 +3646,18 @@ Illustration of answer:
    +/best#values  NB. total weight and value
 396 1030
    best#names
-map                   
-compass               
-water                 
-sandwich              
-glucose               
-banana                
-suntan cream          
-waterproof trousers   
+map
+compass
+water
+sandwich
+glucose
+banana
+suntan cream
+waterproof trousers
 waterproof overclothes
-notecase              
-sunglasses            
-socks   
+notecase
+sunglasses
+socks
 ```
 
 
@@ -3685,7 +3685,7 @@ Illustration:
 40 4
    best#names
 sunscreen
-GPS   
+GPS
 ```
 
 
@@ -4023,18 +4023,18 @@ Total weight of solution = 3,96 kg
 Total value              = 1030
 
 You can carry te following materials in the knapsack:
-map                     9   dag   (value = 150)   
-compass                 13  dag   (value = 35)    
-water                   153 dag   (value = 200)   
-sandwich                50  dag   (value = 160)   
-glucose                 15  dag   (value = 60)    
-banana                  27  dag   (value = 60)    
-suntan cream            11  dag   (value = 70)    
-waterproof trousers     42  dag   (value = 70)    
-waterproof overclothes  43  dag   (value = 75)    
-note-case               22  dag   (value = 80)    
-sunglasses              7   dag   (value = 20)    
-socks                   4   dag   (value = 50)    
+map                     9   dag   (value = 150)
+compass                 13  dag   (value = 35)
+water                   153 dag   (value = 200)
+sandwich                50  dag   (value = 160)
+glucose                 15  dag   (value = 60)
+banana                  27  dag   (value = 60)
+suntan cream            11  dag   (value = 70)
+waterproof trousers     42  dag   (value = 70)
+waterproof overclothes  43  dag   (value = 75)
+note-case               22  dag   (value = 80)
+sunglasses              7   dag   (value = 20)
+socks                   4   dag   (value = 50)
 
 ```
 
@@ -4064,7 +4064,7 @@ portviz.knapsack = {};
     var _epsilon = 0.01;
     var _p = _.max(_.map(items,valuefn));
     var _k = _epsilon * _p / items.length;
- 
+
     var _memo = (function(){
       var _mem = {};
       var _key = function(i, w) {
@@ -4080,23 +4080,23 @@ portviz.knapsack = {};
         }
       };
     })();
- 
+
     var _m = function(i, w) {
- 
+
       i = Math.round(i);
       w = Math.round(w);
- 
- 
+
+
       if (i < 0 || w === 0) {
         // empty base case
         return {items: [], totalWeight: 0, totalValue: 0};
       }
- 
+
       var mm = _memo.get(i,w);
       if (!_.isUndefined(mm)) {
         return mm;
       }
- 
+
       var item = items[i];
       if (weightfn(item) > w) {
         //item does not fit, try the next item
@@ -4173,7 +4173,7 @@ var allwants = [
   {name:"socks", weight:4, value: 50},
   {name:"book", weight:30, value: 10}
 ];
- 
+
 var near = function(actual, expected, tolerance) {
   if (expected === 0 && actual === 0) return true;
   if (expected === 0) {
@@ -4181,7 +4181,7 @@ var near = function(actual, expected, tolerance) {
   }
   return Math.abs(expected - actual) / expected < tolerance;
 };
- 
+
 test("one knapsack", function() {
   var combiner =
     portviz.knapsack.combiner(allwants,
@@ -4192,7 +4192,7 @@ test("one knapsack", function() {
   ok(near(oneport.totalValue, 1030, 0.01), "correct total value");
   equal(oneport.totalWeight, 396, "correct total weight");
 });
- 
+
 test("frontier", function() {
   var combiner =
     portviz.knapsack.combiner(allwants,
@@ -4274,7 +4274,7 @@ def dynamic_knapsack(W):
       (null;                           # see above remark about initialization of m
        $objects[$i-1] as $o
        | reduce range(0; W+1) as $j
-           ( .; 
+           ( .;
              if $o.weight <= $j then
                .[$i-1][$j][0] as $v1                               # option 1: do not add this object
                | (.[$i-1][$j - $o.weight][0] + $o.value) as $v2    # option 2: add it
@@ -4332,7 +4332,7 @@ $jq -M -c -n -f knapsack.jq
 
 ## Julia
 
-This solution uses the [https://github.com/JuliaOpt/MathProgBase.jl MathProgBase] package (with the [https://github.com/JuliaOpt/Cbc.jl Cbc] solver package installed).  It is the <code>mixintprog</code> function from this package that does the heavy lifting of this solution.  
+This solution uses the [https://github.com/JuliaOpt/MathProgBase.jl MathProgBase] package (with the [https://github.com/JuliaOpt/Cbc.jl Cbc] solver package installed).  It is the <code>mixintprog</code> function from this package that does the heavy lifting of this solution.
 
 <code>KPDSupply</code> has one more field than is needed, <code>quant</code>.  This field is may be useful in a solution to the bounded version of this task.
 
@@ -4357,7 +4357,7 @@ function solve(gear::Vector{<:KPDSupply}, capacity::Integer)
     gear[sol.sol .≈ 1]
 end
 ```
- 
+
 
 '''Main''':
 
@@ -4395,7 +4395,7 @@ println("Packed value: ", mapreduce(x -> x.value, +, pack), " €")
 {{out}}
 
 ```txt
-The hicker should pack: 
+The hicker should pack:
  - 1 map (9 kg, 150 €)
  - 1 compass (13 kg, 35 €)
  - 1 water (153 kg, 200 €)
@@ -4666,7 +4666,7 @@ Total Weight is 396
 
 ## Mathematica
 
-Used the 
+Used the
 
 ```mathematica
 #[[Flatten@
@@ -4709,9 +4709,9 @@ Used the
 
 ```mathprog
 /*Knapsack
- 
+
   This model finds the integer optimal packing of a knapsack
- 
+
   Nigel_Galloway
   January 9th., 2012
 */
@@ -4729,28 +4729,28 @@ maximize knap_value: sum{t in Items} take[t] * value[t];
 data;
 
 param : Items          : weight   value :=
-         map		  9	   150 
-         compass          13	   35	
-         water		  153	   200 
-         sandwich	  50	   160	
-         glucose	  15	   60	
-         tin		  68	   45	
-         banana		  27	   60	
-         apple		  39	   40	
-         cheese		  23	   30	
-         beer		  52	   10	
-         suntancream	  11	   70	
-         camera		  32	   30	
-         T-shirt	  24	   15	
-         trousers	  48	   10	
-         umbrella	  73	   40	
-         w-trousers	  42	   70	
-         w-overclothes	  43	   75	
-         note-case	  22	   80	
-         sunglasses	  7        20	
-         towel		  18	   12	
-         socks		  4        50	
-         book		  30	   10	
+         map		  9	   150
+         compass          13	   35
+         water		  153	   200
+         sandwich	  50	   160
+         glucose	  15	   60
+         tin		  68	   45
+         banana		  27	   60
+         apple		  39	   40
+         cheese		  23	   30
+         beer		  52	   10
+         suntancream	  11	   70
+         camera		  32	   30
+         T-shirt	  24	   15
+         trousers	  48	   10
+         umbrella	  73	   40
+         w-trousers	  42	   70
+         w-overclothes	  43	   75
+         note-case	  22	   80
+         sunglasses	  7        20
+         towel		  18	   12
+         socks		  4        50
+         book		  30	   10
 ;
 
 end;
@@ -4769,7 +4769,7 @@ global globalItems = #()
 global usedMass = 0
 global neededItems = #()
 global totalValue = 0
-struct kn_item 
+struct kn_item
 (
 	item, weight, value
 )
@@ -4803,7 +4803,7 @@ fn chooseBestItem maximumWeight: items: =
 	qsort possibleItems sortByValue
 	if possibleItems.count > 0 then return possibleItems[1] else return 0
 )
-				
+
 for i = 1 to itemStrings.count do
 (
 	local split = filterstring itemStrings[i] "#"
@@ -4822,7 +4822,7 @@ while usedMass < 400 do
 		usedMass += item[1].weight
 	) else exit
 )
-for i in neededitems do 
+for i in neededitems do
 (
 	format "Item name: %, weight: %, value:%\n" i.item i.weight i.value
 	totalValue += i.value
@@ -4885,7 +4885,7 @@ let items = [
   "book",                   30,   10;
 ]
 
-let comb = 
+let comb =
   List.fold_left (fun acc x -> let acc2 = List.rev_map (fun li -> x::li) acc in
                                  List.rev_append acc acc2) [[]]
 
@@ -4917,22 +4917,22 @@ declare
                      'water':153#200
                      'sandwich':50#160
                      'glucose':15#60
-                     'tin':68#45 
-                     'banana':27#60 
-                     'apple':39#40 
-                     'cheese':23#30 
-                     'beer':52#10 
-                     'suntan cream':11#70 
-                     'camera':32#30 
-                     't-shirt':24#15 
-                     'trousers':48#10 
-                     'umbrella':73#40 
-                     'waterproof trousers':42#70 
-                     'waterproof overclothes':43#75 
-                     'note-case':22#80 
-                     'sunglasses':7#20 
-                     'towel':18#12 
-                     'socks':4#50 
+                     'tin':68#45
+                     'banana':27#60
+                     'apple':39#40
+                     'cheese':23#30
+                     'beer':52#10
+                     'suntan cream':11#70
+                     'camera':32#30
+                     't-shirt':24#15
+                     'trousers':48#10
+                     'umbrella':73#40
+                     'waterproof trousers':42#70
+                     'waterproof overclothes':43#75
+                     'note-case':22#80
+                     'sunglasses':7#20
+                     'towel':18#12
+                     'socks':4#50
                      'book':30#10
                     )
 
@@ -4946,21 +4946,21 @@ declare
      %% with the domain {0,1}
      Solution = {Record.map Problem fun {$ _} {FD.int 0#1} end}
      %% no more than 400 hectograms
-     {FD.sumC Weights Solution '=<:' 400} 
+     {FD.sumC Weights Solution '=<:' 400}
      %% search through valid solutions
      {FD.distribute naive Solution}
   end
- 
+
   proc {PropagateLargerValue Old New}
      %% propagate that new solutions must yield a higher value
      %% than previously found solutions (essential for performance)
-     {FD.sumC Values New '>:' {Value Old}} 
+     {FD.sumC Values New '>:' {Value Old}}
   end
 
   fun {Value Candidate}
      {Record.foldL {Record.zip Candidate Values Number.'*'} Number.'+' 0}
   end
-  
+
   fun {Weight Candidate}
      {Record.foldL {Record.zip Candidate Weights Number.'*'} Number.'+' 0}
   end
@@ -4980,7 +4980,7 @@ in
 
 ```txt
 
-Items: 
+Items:
 banana
 compass
 glucose
@@ -5092,7 +5092,7 @@ begin
    writeln('-------------------------');
    writeln('done');
    readln;
-end.   
+end.
 
 ```
 
@@ -5482,24 +5482,24 @@ function knapSolveFast2($w, $v, $i, $aW, &$m) {
 				$m['picked'][$i][$aW] = array(); // and a blank array entry...
 				return array(0,array()); // Return nothing
 			}
-		}	
-	
+		}
+
 		// Not at end of decision branch..
 		// Get the result of the next branch (without this one)
 		list ($without_i, $without_PI) = knapSolveFast2($w, $v, $i-1, $aW, $m);
 
 		if ($w[$i] > $aW) { // Does it return too many?
-			
+
 			$m[$i][$aW] = $without_i; // Memo without including this one
 			$m['picked'][$i][$aW] = $without_PI; // and a blank array entry...
 			return array($without_i, $without_PI); // and return it
 
 		} else {
-		
+
 			// Get the result of the next branch (WITH this one picked, so available weight is reduced)
 			list ($with_i,$with_PI) = knapSolveFast2($w, $v, ($i-1), ($aW - $w[$i]), $m);
 			$with_i += $v[$i];  // ..and add the value of this one..
-			
+
 			// Get the greater of WITH or WITHOUT
 			if ($with_i > $without_i) {
 				$res = $with_i;
@@ -5509,11 +5509,11 @@ function knapSolveFast2($w, $v, $i, $aW, &$m) {
 				$res = $without_i;
 				$picked = $without_PI;
 			}
-						
+
 			$m[$i][$aW] = $res; // Store it in the memo
 			$m['picked'][$i][$aW] = $picked; // and store the picked item
 			return array ($res,$picked); // and then return it
-		}	
+		}
 	}
 }
 
@@ -5529,7 +5529,7 @@ $numcalls = 0; $m = array(); $pickedItems = array();
 ## Solve
 list ($m4,$pickedItems) = knapSolveFast2($w4, $v4, sizeof($v4) -1, 400, $m);
 
-# Display Result 
+# Display Result
 echo "<b>Items:</b>
 ".join(", ",$items4)."
 ";
@@ -5591,15 +5591,15 @@ function knapSolve($w,$v,$i,$aW) {
 		} else {
 			return 0;
 		}
-	}	
-	
+	}
+
 	$without_i = knapSolve($w, $v, $i-1, $aW);
-	if ($w[$i] > $aW) { 
+	if ($w[$i] > $aW) {
 		return $without_i;
 	} else {
 		$with_i = $v[$i] + knapSolve($w, $v, ($i-1), ($aW - $w[$i]));
 		return max($with_i, $without_i);
-	}	
+	}
 
 }
 
@@ -5614,7 +5614,7 @@ function knapSolve($w,$v,$i,$aW) {
 # PHP Translation by Brian Berneker
 #########################################################
 
-function knapSolveFast($w,$v,$i,$aW,&$m) { // Note: We use &$m because the function writes to the $m array 
+function knapSolveFast($w,$v,$i,$aW,&$m) { // Note: We use &$m because the function writes to the $m array
 
 	global $numcalls;
 	$numcalls ++;
@@ -5634,18 +5634,18 @@ function knapSolveFast($w,$v,$i,$aW,&$m) { // Note: We use &$m because the funct
 				$m[$i][$aW] = 0; // save memo
 				return 0;
 			}
-		}	
-	
+		}
+
 		$without_i = knapSolveFast($w, $v, $i-1, $aW,$m);
 		if ($w[$i] > $aW) {
 			$m[$i][$aW] = $without_i; // save memo
 			return $without_i;
 		} else {
 			$with_i = $v[$i] + knapSolveFast($w, $v, ($i-1), ($aW - $w[$i]),$m);
-			$res = max($with_i, $without_i); 
+			$res = max($with_i, $without_i);
 			$m[$i][$aW] = $res; // save memo
 			return $res;
-		}	
+		}
 	}
 }
 
@@ -5677,10 +5677,10 @@ echo "<b>Max: $m3</b> ($numcalls calls)
 
 ```txt
 
-Array ( [0] => 1 [1] => 1 [2] => 1 [3] => 2 [4] => 2 [5] => 2 [6] => 4 [7] => 4 [8] => 4 [9] => 44 [10] => 96 [11] => 96 [12] => 96 ) 
+Array ( [0] => 1 [1] => 1 [2] => 1 [3] => 2 [4] => 2 [5] => 2 [6] => 4 [7] => 4 [8] => 4 [9] => 44 [10] => 96 [11] => 96 [12] => 96 )
 FAST: Max: 54 (191 calls)
 
-Array ( [0] => 1 [1] => 1 [2] => 1 [3] => 2 [4] => 2 [5] => 2 [6] => 4 [7] => 4 [8] => 4 [9] => 44 [10] => 96 [11] => 96 [12] => 96 ) 
+Array ( [0] => 1 [1] => 1 [2] => 1 [3] => 2 [4] => 2 [5] => 2 [6] => 4 [7] => 4 [8] => 4 [9] => 44 [10] => 96 [11] => 96 [12] => 96 )
 Max: 54 (828 calls)
 
 ```
@@ -6001,14 +6001,14 @@ Procedure knapsackSolveFast(Array item.item(1), i, aw, Map m.memo())
         m()\picked() = 0 ;memo item's index also
       Else
         ;item doesn't fit, memo a zero Value
-        m(memoIndex)\Value = 0 
+        m(memoIndex)\Value = 0
       EndIf
       ProcedureReturn @m()
     EndIf
-    
+
     ;test if a greater value results with or without item included
     *tmp = knapsackSolveFast(item(), i - 1, aw, m()) ;find value without this item
-    CopyStructure(*tmp, @without_i, memo) 
+    CopyStructure(*tmp, @without_i, memo)
     If item(i)\weight > aw
       ;item weighs too much, memo without including this item
       m(memoIndex) = without_i
@@ -6016,21 +6016,21 @@ Procedure knapsackSolveFast(Array item.item(1), i, aw, Map m.memo())
     Else
       *tmp = knapsackSolveFast(item(), i - 1, aw - item(i)\weight, m()) ;find value when item is included
       CopyStructure(*tmp, @with_i, memo)
-      with_i\Value + item(i)\Value 
+      with_i\Value + item(i)\Value
       AddElement(with_i\picked())
       with_i\picked() = i ;add item to with's picked list
     EndIf
-    
+
     ;set the result to the larger value
     If with_i\Value > without_i\Value
       result = with_i
-    Else 
+    Else
       result = without_i
     EndIf
-    
+
     m(memoIndex) = result ;memo the result
     ProcedureReturn @m()
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure.s knapsackSolve(Array item.item(1), i, aw)
@@ -6050,10 +6050,10 @@ If OpenConsole()
   #maxWeight = 400
   Define *result.memo
   PrintN(knapsackSolve(items(), itemCount - 1, #maxWeight))
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
-EndIf 
+EndIf
 ```
 
 {{out}}
@@ -6141,7 +6141,7 @@ for a total value of 1030 and a total weight of 396
 ```
 
 
-###  Dynamic programming solution 
+###  Dynamic programming solution
 
 
 ```python
@@ -6170,7 +6170,7 @@ items = (
 
 def knapsack01_dp(items, limit):
     table = [[0 for w in range(limit + 1)] for j in xrange(len(items) + 1)]
- 
+
     for j in xrange(1, len(items) + 1):
         item, wt, val = items[j-1]
         for w in xrange(1, limit + 1):
@@ -6179,7 +6179,7 @@ def knapsack01_dp(items, limit):
             else:
                 table[j][w] = max(table[j-1][w],
                                   table[j-1][w-wt] + val)
- 
+
     result = []
     w = limit
     for j in range(len(items), 0, -1):
@@ -6189,7 +6189,7 @@ def knapsack01_dp(items, limit):
             item, wt, val = items[j-1]
             result.append(items[j-1])
             w -= wt
- 
+
     return result
 
 
@@ -6207,7 +6207,7 @@ print("for a total value of %i and a total weight of %i" % (val, -wt))
 ```python
 def total_value(items, max_weight):
     return  sum([x[2] for x in items]) if sum([x[1] for x in items]) < max_weight else 0
- 
+
 cache = {}
 def solve(items, max_weight):
     if not items:
@@ -6223,7 +6223,7 @@ def solve(items, max_weight):
             answer = dont_include
         cache[(items,max_weight)] = answer
     return cache[(items,max_weight)]
- 
+
 items = (
     ("map", 9, 150), ("compass", 13, 35), ("water", 153, 200), ("sandwich", 50, 160),
     ("glucose", 15, 60), ("tin", 68, 45), ("banana", 27, 60), ("apple", 39, 40),
@@ -6262,21 +6262,21 @@ print "weight:", sum([x[1] for x in solution])
   (match-define (list v w is) s)
   (list (+ v iv) (+ w iw) (cons in is)))
 
-(define (knapsack max-weight items) 
+(define (knapsack max-weight items)
   ; return a solution to the knapsack01 problem
   (define ht (make-hash)) ; (weight number-of-items) -> items
   (define (get w no-items) (hash-ref ht (list w no-items) #f))
   (define (update w is x)  (hash-set! ht (list w (length is)) is) x)
-  (define (knapsack1 left items) 
-    ; return a solution to the (left, items) problem 
-    (cond 
+  (define (knapsack1 left items)
+    ; return a solution to the (left, items) problem
+    (cond
       ; if there are no items, then bag no items:
       [(empty? items) (list 0 0 '())]
       ; look up the best solution:
       [(or (get left (length items))
-           ; the solution haven't been cached, so we 
+           ; the solution haven't been cached, so we
            ; must compute it and update the cache:
-           (update 
+           (update
             left items
             (match items
               ; let us name the first item
@@ -6364,7 +6364,7 @@ Brute Force
 (define (show-brute)
 
   (define empty-accumulator '())
-   
+
   (define (knapsack-brute included items)
     (cond
       ((null? items) included)
@@ -6374,7 +6374,7 @@ Brute Force
         (knapsack-brute included (cdr items))
         max-weight
         ))))
-  
+
   (display-solution (reverse (knapsack-brute empty-accumulator items))))
 
 (show-brute); takes around five seconds on my machine
@@ -6393,7 +6393,7 @@ Recursive Alternate
         (when (not (hash-has-key? result-ht args))
           (hash-set! result-ht args (apply func args)))
         (hash-ref result-ht args))))
-  
+
   (define knapsack
     (memoize
      (lambda (max-weight items)
@@ -6405,7 +6405,7 @@ Recursive Alternate
              (cons item (knapsack (- max-weight (item-weight item)) items))
              (knapsack max-weight items)
              max-weight)))))))
-  
+
   (display-solution (knapsack max-weight items)))
 
 (show-memoized)
@@ -6428,13 +6428,13 @@ Recursive Alternate
 
 ```r
 
-Full_Data<-structure(list(item = c("map", "compass", "water", "sandwich", 
-"glucose", "tin", "banana", "apple", "cheese", "beer", "suntan_cream", 
-"camera", "T-shirt", "trousers", "umbrella", "waterproof_trousers", 
-"waterproof_overclothes", "note-case", "sunglasses", "towel", 
-"socks", "book"), weigth = c(9, 13, 153, 50, 15, 68, 27, 39, 
-23, 52, 11, 32, 24, 48, 73, 42, 43, 22, 7, 18, 4, 30), value = c(150, 
-35, 200, 160, 60, 45, 60, 40, 30, 10, 70, 30, 15, 10, 40, 70, 
+Full_Data<-structure(list(item = c("map", "compass", "water", "sandwich",
+"glucose", "tin", "banana", "apple", "cheese", "beer", "suntan_cream",
+"camera", "T-shirt", "trousers", "umbrella", "waterproof_trousers",
+"waterproof_overclothes", "note-case", "sunglasses", "towel",
+"socks", "book"), weigth = c(9, 13, 153, 50, 15, 68, 27, 39,
+23, 52, 11, 32, 24, 48, 73, 42, 43, 22, 7, 18, 4, 30), value = c(150,
+35, 200, 160, 60, 45, 60, 40, 30, 10, 70, 30, 15, 10, 40, 70,
 75, 80, 20, 12, 50, 10)), .Names = c("item", "weigth", "value"
 ), row.names = c(NA, 22L), class = "data.frame")
 
@@ -6461,7 +6461,7 @@ Bounded_knapsack<-function(Data,W)
 				if( K[w+1,j] >= K[w+1-wj,j]+value )
 				{
 					K[w+1,j+1]<-K[w+1,j]
-					matrix_item[w+1,j+1]<-matrix_item[w+1,j]					
+					matrix_item[w+1,j+1]<-matrix_item[w+1,j]
 				}
 				else
 				{
@@ -6513,18 +6513,18 @@ print_output(Full_Data, 400)
 
 {{out}}
 <lang>
- [1] "You must carry: socks"                 
- [2] "You must carry: sunglasses"            
- [3] "You must carry: note-case"             
+ [1] "You must carry: socks"
+ [2] "You must carry: sunglasses"
+ [3] "You must carry: note-case"
  [4] "You must carry: waterproof_overclothes"
- [5] "You must carry: waterproof_trousers"   
- [6] "You must carry: suntan_cream"          
- [7] "You must carry: banana"                
- [8] "You must carry: glucose"               
- [9] "You must carry: sandwich"              
-[10] "You must carry: water"                 
-[11] "You must carry: compass"               
-[12] "You must carry: map" 
+ [5] "You must carry: waterproof_trousers"
+ [6] "You must carry: suntan_cream"
+ [7] "You must carry: banana"
+ [8] "You must carry: glucose"
+ [9] "You must carry: sandwich"
+[10] "You must carry: water"
+[11] "You must carry: compass"
+[12] "You must carry: map"
 
 ```
 
@@ -6734,12 +6734,12 @@ knap = [["map",9,150],
 knapsack = createDimList([pow(2, len(knap)),len(knap)+2])
 lenknap = list(pow(2, len(knap)))
 
-sacksize = 400 
-powerset(knap) 
+sacksize = 400
+powerset(knap)
 
 for n = 1 to pow(2, len(knap))-2
       for m = n + 1 to pow(2, len(knap))-1
-      if knapsack[m][lenknap[m]-1] <= sacksize and 
+      if knapsack[m][lenknap[m]-1] <= sacksize and
          knapsack[m][lenknap[m]] > knapsack[n][lenknap[n]]
          temp = knapsack[n]
          lentemp = lenknap[n]
@@ -6749,14 +6749,14 @@ for n = 1 to pow(2, len(knap))-2
          lenknap[n+1] = lentemp
       ok
       next
-next   
+next
 
 for n = 1 to lenknap[1] - 2
       see knapsack[1][n] + nl
 next
 
-see "Total weight = " + knapsack[1][lenknap[1]-1] + nl 
-see "Total value  = " + knapsack[1][lenknap[1]] + nl 
+see "Total weight = " + knapsack[1][lenknap[1]-1] + nl
+see "Total value  = " + knapsack[1][lenknap[1]] + nl
 
 func powerset(list)
         n1 = 0
@@ -6765,11 +6765,11 @@ func powerset(list)
              n1 = n1 + 1
              weight = 0
              value = 0
-             for j = 1 to len(list) 
+             for j = 1 to len(list)
                   if i & (1 << j)
                      n2 = n2 + 1
                      knapsack[n1][n2] = list[j][1]
-                     weight = weight + list[j][2] 
+                     weight = weight + list[j][2]
                      value = value + list[j][3]
                      knapsack[n1][n2+1] = weight
                      knapsack[n1][n2+2] = value
@@ -6782,15 +6782,15 @@ func createDimList(dimArray)
         sizeList = len(dimArray)
         newParms = []
         for i = 2 to sizeList
-            Add(newParms, dimArray[i]) 
-        next      
+            Add(newParms, dimArray[i])
+        next
         alist = list(dimArray[1])
         if sizeList = 1
            return aList
         ok
         for t in alist
               t = createDimList(newParms)
-        next       
+        next
         return alist
 
 ```
@@ -6822,7 +6822,7 @@ Total value  = 1030
 ## Ruby
 
 
-###  Brute force 
+###  Brute force
 
 
 ```ruby
@@ -6882,7 +6882,7 @@ items: map,compass,water,sandwich,glucose,banana,suntan cream,waterproof trouser
 
 
 
-###  Dynamic Programming 
+###  Dynamic Programming
 
 Translated from http://sites.google.com/site/mikescoderama/Home/0-1-knapsack-problem-in-p
 
@@ -6892,7 +6892,7 @@ KnapsackItem = Struct.new(:name, :weight, :value)
 def dynamic_programming_knapsack(items, max_weight)
   num_items = items.size
   cost_matrix = Array.new(num_items){Array.new(max_weight+1, 0)}
-  
+
   num_items.times do |i|
     (max_weight + 1).times do |j|
       if(items[i].weight > j)
@@ -6912,7 +6912,7 @@ def get_used_items(items, cost_matrix)
   i = cost_matrix.size - 1
   currentCost = cost_matrix[0].size - 1
   marked = cost_matrix.map{0}
-  
+
   while(i >= 0 && currentCost >= 0)
     if(i == 0 && cost_matrix[i][currentCost] > 0 ) || (cost_matrix[i][currentCost] != cost_matrix[i-1][currentCost])
       marked[i] = 1
@@ -6941,7 +6941,7 @@ if $0 == __FILE__
     KnapsackItem['sunglasses'            ,   7,  20], KnapsackItem['towel'              , 18,  12],
     KnapsackItem['socks'                 ,   4,  50], KnapsackItem['book'               , 30,  10]
   ]
-  
+
   names, weight, value = dynamic_programming_knapsack(items, 400)
   puts
   puts 'Dynamic Programming:'
@@ -7127,22 +7127,22 @@ Output:
 
 ```txt
 
-TotalValue 
-1030 
+TotalValue
+1030
 
-[1] NumSelected 
-banana 1 
-compass 1 
-glucose 1 
-map 1 
-note-case 1 
-sandwich 1 
-socks 1 
-sunglasses 1 
-suntan cream 1 
-water 1 
-waterproof overclothes 1 
-waterproof trousers 1 
+[1] NumSelected
+banana 1
+compass 1
+glucose 1
+map 1
+note-case 1
+sandwich 1
+socks 1
+sunglasses 1
+suntan cream 1
+water 1
+waterproof overclothes 1
+waterproof trousers 1
 
 ```
 
@@ -7159,7 +7159,7 @@ object Knapsack extends App {
 
   val elapsed: (=> Unit) => Long = f => {val s = System.currentTimeMillis; f; (System.currentTimeMillis - s)/1000}
 
-  //===== brute force (caution: increase the heap!) 
+  //===== brute force (caution: increase the heap!)
 ### ==============================
 
   val ks01b: List[Item] => Unit = loi => {
@@ -7180,14 +7180,14 @@ fn test_dp_results() {
       .last
     println{val h = "packing list of items (brute force):"; h+"\n"+"="*h.size}
     res._1._1.foreach{p=>print("  "+p.name+": weight="+p.weight+" value="+p.value+"\n")}
-    println("\n"+"  resulting items: "+res._1._1.size+" of "+loi.size) 
+    println("\n"+"  resulting items: "+res._1._1.size+" of "+loi.size)
     println("  total weight: "+res._1._2+", total value: "+res._2)
   }
 
   //
 ### == dynamic programming =======================================================
 
-  val ks01d: List[Item] => Unit = loi => { 
+  val ks01d: List[Item] => Unit = loi => {
     val W = 400
     val N = loi.size
 
@@ -7206,7 +7206,7 @@ fn test_dp_results() {
         if (w<wn) {
           m(n)(w) = m(n-1)(w)
           plm(n)(w) = plm(n-1)(w)
-        } 
+        }
         else {
           if (m(n-1)(w)>=m(n-1)(w-wn)+vn) {
             m(n)(w) = m(n-1)(w)
@@ -7222,13 +7222,13 @@ fn test_dp_results() {
 
     println{val h = "packing list of items (dynamic programming):"; h+"\n"+"="*h.size}
     plm(N)(W).foreach{p=>print("  "+p.name+": weight="+p.weight+" value="+p.value+"\n")}
-    println("\n"+"  resulting items: "+plm(N)(W).size+" of "+loi.size) 
+    println("\n"+"  resulting items: "+plm(N)(W).size+" of "+loi.size)
     println("  total weight: "+(0/:plm(N)(W).map{item=>item.weight})(_+_)+", total value: "+m(N)(W))
   }
 
   val items = List(
      Item("map", 9, 150)
-    ,Item("compass", 13, 35) 
+    ,Item("compass", 13, 35)
     ,Item("water", 153, 200)
     ,Item("sandwich", 50, 160)
     ,Item("glucose", 15, 60)
@@ -7249,7 +7249,7 @@ fn test_dp_results() {
     ,Item("towel", 18, 12)
     ,Item("socks", 4, 50)
     ,Item("book", 30, 10)
-  ) 
+  )
 
   List(ks01b, ks01d).foreach{f=>
     val t = elapsed{f(items)}
@@ -7403,28 +7403,28 @@ Displays the top 5 solutions and runs in about 39 seconds.
 
 WITH KnapsackItems (item, [weight], value) AS
 (
-    SELECT 'map',9,  150  
-    UNION ALL SELECT 'compass',13,  35  
-    UNION ALL SELECT 'water',153,  200  
-    UNION ALL SELECT 'sandwich',50,  160  
-    UNION ALL SELECT 'glucose',15,  60  
-    UNION ALL SELECT 'tin',68,  45  
-    UNION ALL SELECT 'banana',27,  60  
-    UNION ALL SELECT 'apple',39,  40  
-    UNION ALL SELECT 'cheese',23,  30  
-    UNION ALL SELECT 'beer',52,  10  
-    UNION ALL SELECT 'suntan cream',11,  70  
-    UNION ALL SELECT 'camera',32,  30  
-    UNION ALL SELECT 'T-shirt',24,  15  
-    UNION ALL SELECT 'trousers',48,  10  
-    UNION ALL SELECT 'umbrella',73,  40  
-    UNION ALL SELECT 'waterproof trousers',42,  70  
-    UNION ALL SELECT 'waterproof overclothes',43,  75  
-    UNION ALL SELECT 'note-case',22,  80  
-    UNION ALL SELECT 'sunglasses',7,  20  
-    UNION ALL SELECT 'towel',18,  12  
-    UNION ALL SELECT 'socks',4,  50  
-    UNION ALL SELECT 'book',30,  10  
+    SELECT 'map',9,  150
+    UNION ALL SELECT 'compass',13,  35
+    UNION ALL SELECT 'water',153,  200
+    UNION ALL SELECT 'sandwich',50,  160
+    UNION ALL SELECT 'glucose',15,  60
+    UNION ALL SELECT 'tin',68,  45
+    UNION ALL SELECT 'banana',27,  60
+    UNION ALL SELECT 'apple',39,  40
+    UNION ALL SELECT 'cheese',23,  30
+    UNION ALL SELECT 'beer',52,  10
+    UNION ALL SELECT 'suntan cream',11,  70
+    UNION ALL SELECT 'camera',32,  30
+    UNION ALL SELECT 'T-shirt',24,  15
+    UNION ALL SELECT 'trousers',48,  10
+    UNION ALL SELECT 'umbrella',73,  40
+    UNION ALL SELECT 'waterproof trousers',42,  70
+    UNION ALL SELECT 'waterproof overclothes',43,  75
+    UNION ALL SELECT 'note-case',22,  80
+    UNION ALL SELECT 'sunglasses',7,  20
+    UNION ALL SELECT 'towel',18,  12
+    UNION ALL SELECT 'socks',4,  50
+    UNION ALL SELECT 'book',30,  10
 )
 SELECT *
 INTO #KnapsackItems
@@ -7435,10 +7435,10 @@ WITH UNIQUEnTuples (n, Tuples, ID, [weight], value) AS (
     FROM #KnapsackItems
     UNION ALL
     SELECT 1 + n.n, t.item + ',' + n.Tuples, item, n.[weight] + t.[weight], n.value + t.value
-    FROM UNIQUEnTuples n 
+    FROM UNIQUEnTuples n
     CROSS APPLY (
-        SELECT item, [weight], value 
-        FROM #KnapsackItems t 
+        SELECT item, [weight], value
+        FROM #KnapsackItems t
         WHERE t.item < n.ID AND n.[weight] + t.[weight] < 400) t
     )
 SELECT TOP 5 *
@@ -7471,7 +7471,7 @@ weight  value  Solution
 {{trans|Python}}
 
 
-###  Dynamic Programming 
+###  Dynamic Programming
 
 
 
@@ -7484,10 +7484,10 @@ struct KnapsackItem {
 
 func knapsack(items: [KnapsackItem], limit: Int) -> [KnapsackItem] {
   var table = Array(repeating: Array(repeating: 0, count: limit + 1), count: items.count + 1)
-  
+
   for j in 1..<items.count+1 {
     let item = items[j-1]
-    
+
     for w in 1..<limit+1 {
       if item.weight > w {
         table[j][w] = table[j-1][w]
@@ -7496,18 +7496,18 @@ func knapsack(items: [KnapsackItem], limit: Int) -> [KnapsackItem] {
       }
     }
   }
-  
+
   var result = [KnapsackItem]()
   var w = limit
-  
+
   for j in stride(from: items.count, to: 0, by: -1) where table[j][w] != table[j-1][w] {
     let item = items[j-1]
-    
+
     result.append(item)
-    
+
     w -= item.weight
   }
-  
+
   return result
 }
 
@@ -7543,7 +7543,7 @@ print("For a total value of \(tValue) and a total weight of \(tWeight)")
 
 
 ```txt
-Kept: 
+Kept:
   socks
   sunglasses
   note-case

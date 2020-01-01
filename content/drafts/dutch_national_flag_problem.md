@@ -16,7 +16,7 @@ tags = []
 The Dutch national flag is composed of three coloured bands in the order:
 ::*   red     (top)
 ::*   then white,   and
-::*   lastly blue   (at the bottom). 
+::*   lastly blue   (at the bottom).
 
 
 The problem posed by [[wp:Edsger Dijkstra|Edsger Dijkstra]] is:
@@ -415,33 +415,33 @@ BEGIN {
     srand()
     # Generating a random pool of balls. This python-like loop is actually
     # a prettyfied one-liner
-    do 
-        for (i = 1; i <= ballnr; i++)  
-            do  
+    do
+        for (i = 1; i <= ballnr; i++)
+            do
                 balls[i] = int(3 * rand() + 1)
-            # These conditions ensure the 3 first balls contains 
+            # These conditions ensure the 3 first balls contains
             # a white, blue and red ball. Removing 'i < 4' would
             # hit performance a lot.
-            while ( (i < 4 && i > 1 && balls[i] == balls[i - 1]) || 
-                    (i < 4 && i > 2 && balls[i] == balls[i - 2]) ) 
+            while ( (i < 4 && i > 1 && balls[i] == balls[i - 1]) ||
+                    (i < 4 && i > 2 && balls[i] == balls[i - 2]) )
     while (is_dnf(balls, ballnr))
-    
+
     printf("BEFORE: ")
     print_balls(balls, ballnr, weight)
-    
+
     # Using gawk default quicksort. Using variants of PROCINFO["sorted_in"]
     # wasn't faster than a simple call to asort().
     asort(balls)
 
     printf("\n\nAFTER : ")
     print_balls(balls, ballnr, weight)
-    
+
     sorting = is_dnf(balls, ballnr) ? "valid" : "invalid"
     print("\n\nSorting is " sorting ".")
 }
 
 function print_balls(balls, ballnr, weight      ,i) {
-    for (i = 1; i <= ballnr; i++) 
+    for (i = 1; i <= ballnr; i++)
         printf("%-7s", weight[balls[i]])
 }
 
@@ -457,12 +457,12 @@ function is_dnf(balls, ballnr) {
 ```
 
 
-Output: 
+Output:
 
 <lang>
-BEFORE: blue   red    white  red    white  blue   red    white  blue   white  
+BEFORE: blue   red    white  red    white  blue   red    white  blue   white
 
-AFTER : red    red    red    white  white  white  white  blue   blue   blue   
+AFTER : red    red    red    white  white  white  white  blue   blue   blue
 
 Sorting is valid.
 
@@ -503,11 +503,11 @@ Unsorted: red white blue blue red white white white blue white blue red blue red
 ```bbcbasic
       INSTALL @lib$+"SORTLIB"
       Sort% = FN_sortinit(0,0)
-      
+
       nBalls% = 12
       DIM Balls$(nBalls%-1), Weight%(nBalls%-1), DutchFlag$(2)
       DutchFlag$() = "Red ", "White ", "Blue "
-      
+
       REM. Generate random list of balls, ensuring not sorted:
       REPEAT
         prev% = 0 : sorted% = TRUE
@@ -519,18 +519,18 @@ Unsorted: red white blue blue red white white white blue white blue red blue red
         NEXT
       UNTIL NOT sorted%
       PRINT "Random list: " SUM(Balls$())
-      
+
       REM. Assign Dutch Flag weightings to ball colours:
       DutchFlag$ = SUM(DutchFlag$())
       FOR ball% = 0 TO nBalls%-1
         Weight%(ball%) = INSTR(DutchFlag$, Balls$(ball%))
       NEXT
-      
+
       REM. Sort into Dutch Flag colour sequence:
       C% = nBalls%
       CALL Sort%, Weight%(0), Balls$(0)
       PRINT "Sorted list: " SUM(Balls$())
-      
+
       REM Final check:
       prev% = 0 : sorted% = TRUE
       FOR ball% = 0 TO nBalls%-1
@@ -555,8 +555,8 @@ Sorted list: Red Red Red Red Red Red White White White Blue Blue Blue
 ## C
 
 
-```c>#include <stdio.h
- //printf()
+```c
+#include <stdio.h> //printf()
 #include <stdlib.h> //srand(), rand(), RAND_MAX, qsort()
 #include <stdbool.h> //true, false
 #include <time.h> //time()
@@ -706,8 +706,8 @@ namespace RosettaCode
 ## C++
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 
 // Dutch national flag problem
@@ -787,12 +787,12 @@ object blue extends Colour("blue", 2) {}
 Colour[] allColours = `Colour`.caseValues;
 
 shared void run() {
-	
-	function ordered({Colour*} colours) => 
+
+	function ordered({Colour*} colours) =>
 			colours.paired.every(([c1, c2]) => c1 <= c2);
-	
+
 	value random = DefaultRandom();
-	
+
 	function randomBalls(Integer length = 15) {
 		while (true) {
 			value balls = random.elements(allColours).take(length);
@@ -801,7 +801,7 @@ shared void run() {
 			}
 		}
 	}
-	
+
 	function dutchSort({Colour*} balls, Colour mid = white) {
 		value array = Array { *balls };
 		if (array.empty) {
@@ -827,26 +827,26 @@ shared void run() {
 		}
 		return array;
 	}
-	
+
 	function idiomaticSort({Colour*} balls) =>
 			balls.sort(increasing);
-	
+
     value initialBalls = randomBalls();
-	
+
     "the initial balls are not randomized"
     assert (!ordered(initialBalls));
 
     print(initialBalls);
-    
+
     value sortedBalls1 = idiomaticSort(initialBalls);
     value sortedBalls2 = dutchSort(initialBalls);
-    
+
     "the idiomatic sort didn't work"
     assert (ordered(sortedBalls1));
-    
+
     "the dutch sort didn't work"
     assert (ordered(sortedBalls2));
-    
+
     print(sortedBalls1);
     print(sortedBalls2);
 }
@@ -1097,23 +1097,23 @@ defmodule Dutch_national_flag do
   defp ball(:red),   do: 1
   defp ball(:white), do: 2
   defp ball(:blue),  do: 3
-  
+
   defp random_ball, do: Enum.random([:red, :white, :blue])
-  
+
   defp random_ball(n), do: (for _ <- 1..n, do: random_ball())
-  
+
   defp is_dutch([]), do: true
   defp is_dutch([_]), do: true
   defp is_dutch([b,h|l]), do: ball(b) < ball(h) and is_dutch([h|l])
   defp is_dutch(_), do: false
-  
+
   def  dutch(list), do: dutch([], [], [], list)
-  
+
   defp dutch(r, w, b, []),              do: r ++ w ++ b
   defp dutch(r, w, b, [:red   | list]), do: dutch([:red | r],  w,  b, list)
   defp dutch(r, w, b, [:white | list]), do: dutch(r, [:white | w], b, list)
   defp dutch(r, w, b, [:blue  | list]), do: dutch(r, w,  [:blue | b], list)
-  
+
   def problem(n \\ 10) do
     list = random_ball(n)
     if is_dutch(list) do
@@ -1250,7 +1250,7 @@ The sequence [Red; Red; White; White; White; White; White; Blue; Blue; Blue] is 
 This demo is by no means exemplary however there was no other Forth entry.  This code runs on the infamous TI-99, one of the slowest computers ever.  This demo uses Dijkstra's three colour algorithm to sort four different inputs. The flag is sorted on the screen so you can see it happen. The input data patterns are: random, checker-board, Russian flag and French (imperfect) flag.
 Using three variables for the screen position pointers (vs stack juggling) makes the Dijkstra algorithm translate nicely into Forth.
 
-A video of the results can be seen here: 
+A video of the results can be seen here:
 
 https://github.com/bfox9900/CAMEL99-V2/blob/master/Video/DIJKSTRAFLAG%20.mp4
 
@@ -1292,14 +1292,14 @@ SQUARE WHTSQR CHARDEF
 : RNDI    ( -- n ) SIZE 1+ RND ; \ return a random VDP screen address
 
 : NOTRED    (  -- n ) \ return rnd index that is not RED
-           BEGIN  
-              RNDI DUP VC@ REDSQR = 
-           WHILE DROP  
+           BEGIN
+              RNDI DUP VC@ REDSQR =
+           WHILE DROP
            REPEAT ;
 
 : NOTREDWHT    ( -- n ) \ return rnd index that is not RED or WHITE
            BEGIN  RNDI DUP
-              VC@  DUP REDSQR =  
+              VC@  DUP REDSQR =
               SWAP WHTSQR = OR
            WHILE
               DROP
@@ -1311,7 +1311,7 @@ SQUARE WHTSQR CHARDEF
 : RNDWHT (  -- ) \ place white where there is no red or white
           #256 0 DO   WHTSQR NOTREDWHT VC!   LOOP ;
 
-: BLUSCREEN ( -- )  
+: BLUSCREEN ( -- )
            0 768 BLUSQR VFILL ;
 
 \ load the screen with random red,white&blue squares
@@ -1336,13 +1336,13 @@ SQUARE WHTSQR CHARDEF
           10 16 WHTSQR 256 VCHAR
           21  8 REDSQR 256 VCHAR ;
 
-\ 
+\
 ### =================================================
 
 \ Algorithm Dijkstra(A)  \ A is an array of three colors
 \ begin
-\   r <- 1; 
-\   b <- n; 
+\   r <- 1;
+\   b <- n;
 \   w <- n;
 \ while (w>=r)
 \       check the color of A[w]
@@ -1357,7 +1357,7 @@ SQUARE WHTSQR CHARDEF
 \               b<-b-1;
 \ end
 
-\ 
+\
 ### ================================================
 
 \ Dijkstra three color Algorithm in Forth
@@ -1392,7 +1392,7 @@ VARIABLE W
 
 : WAIT ( -- )  11 11 AT-XY ." Finished!" 1500 MS ;
 
-: RUN  ( -- ) 
+: RUN  ( -- )
          PAGE
          CR ." Dijkstra Dutch flag Demo"  CR
          CR ." Sorted in-place in Video RAM" CR
@@ -1423,8 +1423,8 @@ Abhor code duplication.  I've repeated code anyway to demonstrate FORTRAN pointe
 !a=./f && make FFLAGS='-O0 -g' $a && OMP_NUM_THREADS=2 $a < unixdict.txt
 !gfortran -std=f2008 -O0 -g -Wall -fopenmp -ffree-form -fall-intrinsics -fimplicit-none f.f08 -o f
 ! Original and flag sequences
-! WHITE RED   blue  blue  RED   WHITE WHITE WHITE blue  RED   RED   blue  
-! RED   RED   RED   RED   WHITE WHITE WHITE WHITE blue  blue  blue  blue  
+! WHITE RED   blue  blue  RED   WHITE WHITE WHITE blue  RED   RED   blue
+! RED   RED   RED   RED   WHITE WHITE WHITE WHITE blue  blue  blue  blue
 !          12 items,           8  swaps.
 !         999 items,         666  swaps.
 !        9999 items,        6666  swaps.
@@ -1533,7 +1533,7 @@ end program Netherlands
 ```freebasic
 
 ' El problema planteado por Edsger Dijkstra es:
-' "Dado un número de bolas rojas, azules y blancas en orden aleatorio, 
+' "Dado un número de bolas rojas, azules y blancas en orden aleatorio,
 ' ordénelas en el orden de los colores de la bandera nacional holandesa."
 
 Dim As String c = "RBW", n = "121509"
@@ -1597,7 +1597,7 @@ Output:
 
 ```txt
 
-Random: - Blue Red Red White White White White Red Blue White Red Red White Blue White White Blue Red White Blue 
+Random: - Blue Red Red White White White White Red Blue White Red Red White Blue White White Blue Red White Blue
 Sorted: - Red Red Red Red Red Red White White White White White White White White White Blue Blue Blue Blue Blue
 
 ```
@@ -2228,7 +2228,7 @@ define orderdutchflag(a) => {
 				#w->insert(#i)
 			case('Blue')
 				#b->insert(#i)
-		} 
+		}
 	}
 	return #r + #w + #b
 }
@@ -2631,17 +2631,17 @@ Sorted balls   (RED RED WHITE WHITE WHITE WHITE BLUE BLUE BLUE) are sorted
 ```PowerShell
 
 $Colors = 'red', 'white','blue'
- 
+
 #  Select 10 random colors
 $RandomBalls = 1..10 | ForEach { $Colors | Get-Random }
- 
+
 #  Ensure we aren't finished before we start. For some reason. It's in the task requirements.
 While ( $RandomBalls -eq $RandomBalls | Sort { $Colors.IndexOf( $_ ) } )
     { $RandomBalls = 1..10 | ForEach { $Colors | Get-Random } }
- 
+
 #  Sort the colors
 $SortedBalls = $RandomBalls | Sort { $Colors.IndexOf( $_ ) }
- 
+
 #  Display the results
 $RandomBalls
 ''
@@ -2892,7 +2892,7 @@ Sorted Ball Order: ['Red', 'Red', 'Red', 'Red', 'Red', 'White', 'Blue', 'Blue', 
 
 ### Python: sum of filters
 
-This follows the [[wp:Dutch_national_flag_problem#Critic|critics section]] 
+This follows the [[wp:Dutch_national_flag_problem#Critic|critics section]]
 of the wikipedia article by using a sum of filters.
 
 Replace the function/function call dutch_flag_sort above, with dutch_flag_sort2 defined as:
@@ -2904,7 +2904,7 @@ def dutch_flag_sort2(items, order=colours_in_order):
     return list(chain.from_iterable(filter(lambda c: c==colour, items)
                                     for colour in order))
 ```
- 
+
 
 Or equivalently using a list comprehension (though perhaps less clear):
 
@@ -2913,7 +2913,7 @@ def dutch_flag_sort2(items, order=colours_in_order):
     'return summed filter of items using the given order'
     return [c for colour in order for c in items if c==colour]
 ```
- 
+
 Output follows that of the sorting solution above.
 
 
@@ -2928,7 +2928,7 @@ def dutch_flag_sort3(items, order=colours_in_order):
     'counts each colour to construct flag'
     return sum([[colour] * items.count(colour) for colour in order], [])
 ```
- 
+
 Output follows that of the sorting solution above.
 
 ===Python: Explicit in-place sort===
@@ -3094,7 +3094,7 @@ countWords:  procedure;   parse arg ?,hay;  s=1
                   do r=0  until _==0;  _=wordpos(?, hay, s);  s=_+1;  end /*r*/;  return r
 ```
 
-'''output'''   when using the default input: 
+'''output'''   when using the default input:
 
 ```txt
 
@@ -3147,7 +3147,7 @@ say 'The sorted colored ball list has been confirmed as being sorted correctly.'
 exit                                             /*stick a fork in it,  we're all done. */
 ```
 
-'''output'''   when using the default input: 
+'''output'''   when using the default input:
 
 ```txt
 
@@ -3175,20 +3175,20 @@ The sorted colored ball list has been confirmed as being sorted correctly.
 
 flag = ["Red","White","Blue"]
 balls = list(10)
- 
+
 see "Random: |"
 for i = 1 to 10
      color = random(2) + 1
      balls[i] = flag[color]
      see  balls[i] + " |"
-next 
+next
 see nl
- 
+
 see "Sorted: |"
 for i = 1 to 3
      color = flag[i]
      for j = 1 to 10
-          if balls[j] = color 
+          if balls[j] = color
              see balls[j] + " |"
           ok
      next
@@ -3213,7 +3213,7 @@ Sorted: |Red |Red |Red |Red |White |White |White |Blue |Blue |Blue |
 ```ruby
 class Ball
   FLAG = {red: 1, white: 2, blue: 3}
- 
+
   def initialize
     @color = FLAG.keys.sample
   end
@@ -3231,12 +3231,12 @@ class Ball
   end
 end
 
-balls = [] 
+balls = []
 balls = Array.new(8){Ball.new} while balls == balls.sort
 
 puts "Random: #{balls}"
 puts "Sorted: #{balls.sort}"
-  
+
 ```
 
 {{out}}
@@ -3266,7 +3266,7 @@ print :print "Sorted: |";
 for i = 1 to 3
  color$ = word$(flag$,i,",")
  for j = 1 to 10
-  if balls$(j) = color$ then 
+  if balls$(j) = color$ then
     print balls$(j);" |";
   end if
 next j
@@ -3489,7 +3489,7 @@ red red red red red red red white white white white white white white white whit
 ```bash
 COLORS=(red white blue)
 
-# to go from name to number, we make variables out of the color names 
+# to go from name to number, we make variables out of the color names
 # (e.g. the variable "$red" has value "1").
 for (( i=0; i<${#COLORS[@]}; ++i )); do
   eval ${COLORS[i]}=$i
@@ -3595,7 +3595,7 @@ Function sort(arr)
 	lo = 0
 	mi = 0
 	hi = UBound(arr)
-	Do While mi <= hi 
+	Do While mi <= hi
 		Select Case arr(mi)
 			Case "red"
 				tmp = arr(lo)
@@ -3610,7 +3610,7 @@ Function sort(arr)
 				arr(mi) = arr(hi)
 				arr(hi) = tmp
 				hi = hi - 1
-		End Select 
+		End Select
 	Loop
 	sort = Join(arr,",")
 End Function
@@ -3666,12 +3666,12 @@ FOR i = 4 TO n
 	INSERT INTO balls (colour) VALUES (RanInt())
 ENDFOR
 *!* Show unsorted
-SELECT bb.rowid, cc.colour FROM colours cc JOIN balls bb ON cc.id = bb.colour  
+SELECT bb.rowid, cc.colour FROM colours cc JOIN balls bb ON cc.id = bb.colour
 *!* Select by correct order
 SELECT bb.rowid, cc.colour FROM colours cc JOIN balls bb ON cc.id = bb.colour ;
-ORDER BY cc.id INTO CURSOR dutchflag 
+ORDER BY cc.id INTO CURSOR dutchflag
 *!* Show sorted records
-BROWSE NOMODIFY IN SCREEN 
+BROWSE NOMODIFY IN SCREEN
 SET COLLATE TO lcCollate
 
 FUNCTION RanInt() As Integer
@@ -3717,7 +3717,7 @@ ASORT(balls, 2)
 FOR i = 1 TO n
 	? balls[i,1], balls[i,2]
 ENDFOR
-	
+
 FUNCTION RanInt() As Integer
 RETURN INT(3*RAND()) + 1
 ENDFUNC

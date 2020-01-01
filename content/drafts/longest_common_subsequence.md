@@ -269,7 +269,7 @@ This makes heavy use of BBC BASIC's shortcut '''LEFT$(a$)''' and '''RIGHT$(a$)''
       PRINT FNlcs("1234", "1224533324")
       PRINT FNlcs("thisisatest", "testing123testing")
       END
-      
+
       DEF FNlcs(a$, b$)
       IF a$="" OR b$="" THEN = ""
       IF RIGHT$(a$) = RIGHT$(b$) THEN = FNlcs(LEFT$(a$), LEFT$(b$)) + RIGHT$(a$)
@@ -302,7 +302,7 @@ tsitest
           | LCS$(!prefix.!A.!tb)&LCS$(!prefix.!ta.!B)
           )
       | !prefix:? ([>!max:[?max):?lcs
-      | 
+      |
   )
 & 0:?max
 & :?lcs
@@ -321,8 +321,8 @@ max 7 lcs t s i t e s t
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 #define MAX(a, b) (a > b ? a : b)
@@ -427,8 +427,8 @@ published 2002, Kybernetika [volume 38, Issue 1, pp. 45-66]
 
 '''Hunt and Szymanski algorithm'''
 
-```cpp>#include <stdint.h
-
+```cpp
+#include <stdint.h>
 #include <string>
 #include <memory>                       // for shared_ptr<>
 #include <iostream>
@@ -611,7 +611,7 @@ namespace LCS
         {
             string word1 = "thisisatest";
             string word2 = "testing123testing";
-            
+
             Console.WriteLine(lcsBack(word1, word2));
             Console.ReadKey();
         }
@@ -620,8 +620,8 @@ namespace LCS
         {
             string aSub = a.Substring(0, (a.Length - 1 < 0) ? 0 : a.Length - 1);
             string bSub = b.Substring(0, (b.Length - 1 < 0) ? 0 : b.Length - 1);
-            
-            if (a.Length == 0 || b.Length == 0)            
+
+            if (a.Length == 0 || b.Length == 0)
                 return "";
             else if (a[a.Length - 1] == b[b.Length - 1])
                 return lcsBack(aSub, bSub) + a[a.Length - 1];
@@ -645,8 +645,8 @@ Based on algorithm from Wikipedia.
 ```Clojure
 (defn longest [xs ys] (if (> (count xs) (count ys)) xs ys))
 
-(def lcs 
-  (memoize 
+(def lcs
+  (memoize
    (fn [[x & xs] [y & ys]]
      (cond
       (or (= x nil) (= y nil)) nil
@@ -666,10 +666,10 @@ Based on algorithm from Wikipedia.
 lcs = (s1, s2) ->
   len1 = s1.length
   len2 = s2.length
-  
-  # Create a virtual matrix that is (len1 + 1) by (len2 + 1), 
+
+  # Create a virtual matrix that is (len1 + 1) by (len2 + 1),
   # where m[i][j] is the longest common string using only
-  # the first i chars of s1 and first j chars of s2.  The 
+  # the first i chars of s1 and first j chars of s2.  The
   # matrix is virtual, because we only keep the last two rows
   # in memory.
   prior_row = ('' for i in [0..len2])
@@ -687,7 +687,7 @@ lcs = (s1, s2) ->
         else
           row.push subs2
     prior_row = row
-  
+
   row[len2]
 
 s1 = "thisisatest"
@@ -733,7 +733,7 @@ Here's a memoizing/dynamic-programming solution that uses an <var>n &times; m</v
 ```
 
 
-For example, 
+For example,
 
 
 ```lisp
@@ -761,7 +761,7 @@ Here is another version with its own memoization macro:
 (defmacro mem-defun (name args body)
   (let ((hash-name (gensym)))
     `(let ((,hash-name (make-hash-table :test 'equal)))
-       (defun ,name ,args 
+       (defun ,name ,args
          (or (gethash (list ,@args) ,hash-name)
              (setf (gethash (list ,@args) ,hash-name)
                    ,body))))))
@@ -1011,12 +1011,12 @@ void main() {
 ```txt
 lcsDynamic('1234', '1224533324') = 1234
 lcsDynamic('thisisatest', 'testing123testing') = tsitest
-lcsDynamic('', 'x') = 
+lcsDynamic('', 'x') =
 lcsDynamic('x', 'x') = x
 
 lcsRecursion('1234', '1224533324') = 1234
 lcsRecursion('thisisatest', 'testing123testing') = tsitest
-lcsRecursion('', 'x') = 
+lcsRecursion('', 'x') =
 lcsRecursion('x', 'x') = x
 ```
 
@@ -1064,7 +1064,7 @@ defmodule LCS do
   def lcs(a, b) do
     lcs(to_charlist(a), to_charlist(b), []) |> to_string
   end
-  
+
   defp lcs([h|at], [h|bt], res), do: lcs(at, bt, [h|res])
   defp lcs([_|at]=a, [_|bt]=b, res) do
     Enum.max_by([lcs(a, bt, res), lcs(at, b, res)], &length/1)
@@ -1085,7 +1085,7 @@ IO.puts LCS.lcs('1234','1224533324')
 ```elixir
 defmodule LCS do
   def lcs_length(s,t), do: lcs_length(s,t,Map.new) |> elem(0)
-  
+
   defp lcs_length([],t,cache), do: {0,Map.put(cache,{[],t},0)}
   defp lcs_length(s,[],cache), do: {0,Map.put(cache,{s,[]},0)}
   defp lcs_length([h|st]=s,[h|tt]=t,cache) do
@@ -1102,13 +1102,13 @@ defmodule LCS do
       {l,Map.put(c2,{s,t},l)}
     end
   end
-  
+
   def lcs(s,t) do
     {s,t} = {to_charlist(s),to_charlist(t)}
     {_,c} = lcs_length(s,t,Map.new)
     lcs(s,t,c,[]) |> to_string
   end
-  
+
   defp lcs([],_,_,acc), do: Enum.reverse(acc)
   defp lcs(_,[],_,acc), do: Enum.reverse(acc)
   defp lcs([h|st],[h|tt],cache,acc), do: lcs(st,tt,cache,[h|acc])
@@ -1352,7 +1352,7 @@ Copied and slightly adapted from OCaml (direct recursion)
 open System
 
 let longest xs ys = if List.length xs > List.length ys then xs else ys
- 
+
 let rec lcs a b =
     match a, b with
     | [], _
@@ -1360,7 +1360,7 @@ let rec lcs a b =
     | x::xs, y::ys ->
         if x = y then
             x :: lcs xs ys
-        else 
+        else
             longest (lcs a ys) (lcs xs b)
 
 [<EntryPoint>]
@@ -1483,7 +1483,7 @@ def lcs(xstr, ystr) {
     def x = xstr[0];
     def y = ystr[0];
 
-    def xs = xstr.size() > 1 ? xstr[1..-1] : "";    
+    def xs = xstr.size() > 1 ? xstr[1..-1] : "";
     def ys = ystr.size() > 1 ? ystr[1..-1] : "";
 
     if (x == y) {
@@ -1515,12 +1515,12 @@ tsitest
 The [[wp:Longest_common_subsequence#Solution_for_two_sequences|Wikipedia solution]] translates directly into Haskell, with the only difference that equal characters are added in front:
 
 
-```haskell>longest xs ys = if length xs 
+```haskell>longest xs ys = if length xs
  length ys then xs else ys
 
 lcs [] _ = []
 lcs _ [] = []
-lcs (x:xs) (y:ys) 
+lcs (x:xs) (y:ys)
   | x == y    = x : lcs xs ys
   | otherwise = longest (lcs (x:xs) ys) (lcs xs (y:ys))
 ```
@@ -1559,7 +1559,7 @@ lcs xs ys = a!(0,0) where
   l1 = [((i,m),[]) | i <- [0..n]]
   l2 = [((n,j),[]) | j <- [0..m]]
   l3 = [((i,j), f x y i j) | (x,i) <- zip xs [0..], (y,j) <- zip ys [0..]]
-  f x y i j 
+  f x y i j
     | x == y    = x : a!(i+1,j+1)
     | otherwise = longest (a!(i,j+1)) (a!(i+1,j))
 ```
@@ -1581,14 +1581,14 @@ longest xs ys = if length xs > length ys then xs else ys
 lcs xs ys = head $ foldr(\xs -> map head. scanr1 f. zipWith (\x y -> [x,y]) xs) e m where
     m = map (\x -> flip (++) [[]] $ map (\y -> [x | x==y]) ys) xs
     e = replicate (length ys) []
-    f [a,b] [c,d] 
+    f [a,b] [c,d]
      | null a = longest b c: [b]
      | otherwise = (a++d):[b]
 ```
 
 
 
-Simple and slow solution: 
+Simple and slow solution:
 
 
 ```haskell
@@ -1609,9 +1609,9 @@ main = print $ lcs "thisisatest" "testing123testing"
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-This solution is a modified variant of the recursive solution.  The modifications include (a) deleting all characters not common to both strings and (b) stripping off common prefixes and suffixes in a single step. 
+This solution is a modified variant of the recursive solution.  The modifications include (a) deleting all characters not common to both strings and (b) stripping off common prefixes and suffixes in a single step.
 
-{{libheader|Icon Programming Library}} [http://www.cs.arizona.edu/icon/library/src/procs/strings.icn Uses deletec from strings] 
+{{libheader|Icon Programming Library}} [http://www.cs.arizona.edu/icon/library/src/procs/strings.icn Uses deletec from strings]
 
 
 ```Icon
@@ -1642,11 +1642,11 @@ local c,nc
       }                                                       # only unequal strings and shared characters beyond
 
    i := 0 ; while a[i+1] == b[i+1] do i +:=1                  # find common prefix ...
-   if *(x := a[1+:i]) > 0  then                               # if any 
+   if *(x := a[1+:i]) > 0  then                               # if any
       return x || lcs(a[i+1:0],b[i+1:0])                      # ... remove and process remainder
 
    i := 0 ; while a[-(i+1)] == b[-(i+1)] do i +:=1            # find common suffix ...
-   if *(y := a[0-:i]) > 0 then                                # if any   
+   if *(y := a[0-:i]) > 0 then                                # if any
       return lcs(a[1:-i],b[1:-i]) || y                        # ... remove and process remainder
 
    return if *(x := lcs(a,b[1:-1])) > *(y := lcs(a[1:-1],b)) then x else y  # divide, discard, and keep longest
@@ -1799,7 +1799,7 @@ This is more or less a translation of the recursive Java version above.
 function lcs(a, b) {
   var aSub = a.substr(0, a.length - 1);
   var bSub = b.substr(0, b.length - 1);
-  
+
   if (a.length === 0 || b.length === 0) {
     return '';
   } else if (a.charAt(a.length - 1) === b.charAt(b.length - 1)) {
@@ -1940,7 +1940,7 @@ function lcs_greedy(x,y){
     }
   }
   return s.toString('utf8', 0, l);
-	
+
   function popsym(index) {
     var s = x[index],
         pos = symbols[s] + 1;
@@ -1954,7 +1954,7 @@ function lcs_greedy(x,y){
 ```
 
 
-Note that it won't return the correct answer for all inputs. For example: 
+Note that it won't return the correct answer for all inputs. For example:
 ```javascript
 lcs_greedy('bcaaaade', 'deaaaabc'); // 'bc' instead of 'aaaa'
 ```
@@ -2083,7 +2083,7 @@ lcsdynamic("thisisatest", "testing123testing") = "tsitest"
 
 fun lcs(x: String, y: String): String {
     if (x.length == 0 || y.length == 0) return ""
-    val x1 = x.dropLast(1)  
+    val x1 = x.dropLast(1)
     val y1 = y.dropLast(1)
     if (x.last() == y.last()) return lcs(x1, y1) + x.last()
     val x2 = lcs(x, y1)
@@ -2172,15 +2172,15 @@ end
 
 
 ```lua
-function LCS( a, b )    
-    if #a == 0 or #b == 0 then 
-        return "" 
+function LCS( a, b )
+    if #a == 0 or #b == 0 then
+        return ""
     elseif string.sub( a, -1, -1 ) == string.sub( b, -1, -1 ) then
-        return LCS( string.sub( a, 1, -2 ), string.sub( b, 1, -2 ) ) .. string.sub( a, -1, -1 )  
-    else    
+        return LCS( string.sub( a, 1, -2 ), string.sub( b, 1, -2 ) ) .. string.sub( a, -1, -1 )
+    else
         local a_sub = LCS( a, string.sub( b, 1, -2 ) )
         local b_sub = LCS( string.sub( a, 1, -2 ), b )
-        
+
         if #a_sub > #b_sub then
             return a_sub
         else
@@ -2254,7 +2254,7 @@ Note that Mathematica also has a built-in function called LongestCommonSubsequen
 
 ''finds the longest contiguous subsequence of elements common to the strings or lists a and b.''
 
-which would give "test" as the result for LongestCommonSubsequence[a, b]. 
+which would give "test" as the result for LongestCommonSubsequence[a, b].
 
 The description for LongestCommonSequence[a,b] is:
 
@@ -2332,7 +2332,7 @@ echo lcs("thisisatest", "testing123testing")
 
 from Haskell
 
-```ocaml>let longest xs ys = if List.length xs 
+```ocaml>let longest xs ys = if List.length xs
  List.length ys then xs else ys
 
 let rec lcs a b = match a, b with
@@ -2341,7 +2341,7 @@ let rec lcs a b = match a, b with
  | x::xs, y::ys ->
     if x = y then
       x :: lcs xs ys
-    else 
+    else
       longest (lcs a ys) (lcs xs b)
 ```
 
@@ -2458,7 +2458,7 @@ in
 
 ```pascal
 Program LongestCommonSubsequence(output);
- 
+
 function lcs(a, b: string): string;
   var
     x, y: string;
@@ -2783,9 +2783,9 @@ function Get-Lcs ($ReferenceObject, $DifferenceObject)
         else
         {
             if ($ReferenceObject[($x-1)] -ceq $DifferenceObject[($y-1)])
-            { 
+            {
                 $longestCommonSubsequence = ,($ReferenceObject[($x-1)]) + $longestCommonSubsequence
-            } 
+            }
 
             --$x
             --$y
@@ -2889,8 +2889,8 @@ First version:
 test :-
     time(lcs("thisisatest", "testing123testing", Lcs)),
     writef('%s',[Lcs]).
- 
-	
+
+
 lcs([ H|L1],[ H|L2],[H|Lcs]) :- !,
     lcs(L1,L2,Lcs).
 
@@ -2921,7 +2921,7 @@ test :-
 
 
 % check if the result is known
-lcs(L1,L2,Lcs) :- 
+lcs(L1,L2,Lcs) :-
     lcs_db(L1,L2,Lcs),!.
 
 lcs([ H|L1],[ H|L2],[H|Lcs]) :- !,
@@ -2969,14 +2969,14 @@ beginning-iddle-ending
 ```PureBasic
 Procedure.s lcs(a$, b$)
   Protected x$ , lcs$
-  If Len(a$) = 0 Or Len(b$) = 0 
+  If Len(a$) = 0 Or Len(b$) = 0
     lcs$ = ""
-  ElseIf Right(a$, 1) = Right(b$, 1) 
+  ElseIf Right(a$, 1) = Right(b$, 1)
     lcs$ = lcs(Left(a$, Len(a$) - 1), Left(b$, Len(b$) - 1)) + Right(a$, 1)
   Else
     x$ = lcs(a$, Left(b$, Len(b$) - 1))
     y$ = lcs(Left(a$, Len(a$) - 1), b$)
-    If Len(x$) > Len(y$) 
+    If Len(x$) > Len(y$)
       lcs$ = x$
     Else
       lcs$ = y$
@@ -3150,16 +3150,16 @@ string B=testing123testing
 ```ring
 
 see longest("1267834", "1224533324") + nl
- 
+
 func longest a, b
      if a = "" or b = "" return "" ok
-     if right(a, 1) = right(b, 1) 
+     if right(a, 1) = right(b, 1)
         lcs = longest(left(a, len(a) - 1), left(b, len(b) - 1)) + right(a, 1)
-        return lcs 
+        return lcs
      else
         x1 = longest(a, left(b, len(b) - 1))
         x2 = longest(left(a, len(a) - 1), b)
-        if len(x1) > len(x2) 
+        if len(x1) > len(x2)
            lcs = x1
            return lcs
         else
@@ -3193,7 +3193,7 @@ irb(main):001:0> lcs('thisisatest', 'testing123testing')
 =end
 def lcs(xstr, ystr)
   return "" if xstr.empty? || ystr.empty?
-  
+
   x, xs, y, ys = xstr[0..0], xstr[1..-1], ystr[0..0], ystr[1..-1]
   if x == y
     x + lcs(xs, ys)
@@ -3215,7 +3215,7 @@ Walker class for the LCS matrix:
 ```ruby
 class LCS
   SELF, LEFT, UP, DIAG = [0,0], [0,-1], [-1,0], [-1,-1]
-  
+
   def initialize(a, b)
     @m = Array.new(a.length) { Array.new(b.length) }
     a.each_char.with_index do |x, i|
@@ -3224,44 +3224,44 @@ class LCS
       end
     end
   end
-   
+
   def match(c, d, i, j)
     @i, @j = i, j
     @m[i][j] = compute_entry(c, d)
   end
-  
+
   def lookup(x, y)        [@i+x, @j+y]                      end
   def valid?(i=@i, j=@j)  i >= 0 && j >= 0                  end
-  
+
   def peek(x, y)
     i, j = lookup(x, y)
     valid?(i, j) ? @m[i][j] : 0
-  end 
-  
+  end
+
   def compute_entry(c, d)
     c == d ? peek(*DIAG) + 1 : [peek(*LEFT), peek(*UP)].max
   end
-  
+
   def backtrack
     @i, @j = @m.length-1, @m[0].length-1
     y = []
     y << @i+1 if backstep? while valid?
     y.reverse
   end
-  
+
   def backtrack2
     @i, @j = @m.length-1, @m[0].length-1
     y = []
     y << @j+1 if backstep? while valid?
     [backtrack, y.reverse]
   end
-  
+
   def backstep?
     backstep = compute_backstep
     @i, @j = lookup(*backstep)
     backstep == DIAG
   end
-  
+
   def compute_backstep
     case peek(*SELF)
     when peek(*LEFT) then LEFT
@@ -3414,7 +3414,7 @@ Using lazily evaluated lists:
       case None => IndexedSeq[T]()
     }
   }
-  
+
   def subsets[T](u: IndexedSeq[T]): Iterator[IndexedSeq[T]] = {
     u.indices.reverseIterator.flatMap{n => u.indices.combinations(n + 1).map(_.map(u))}
   }
@@ -3544,7 +3544,7 @@ Testing:
  (test '()  (lcs '(a b c) '()))
  (test '(a c) (lcs '(a b c) '(a B c)))
  (test '(b) (lcs '(a b c) '(A b C)))
- 
+
  (test     '(  b   d e f     g h   j)
       (lcs '(a b   d e f     g h i j)
            '(A b c d e f F a g h   j))))
@@ -3609,12 +3609,12 @@ It is interesting to note that x and y are computed in parallel, dividing work a
 
 ```sequencel>import <Utilities/Sequence.sl
 ;
-    
+
 lcsBack(a(1), b(1)) :=
     let
         aSub := allButLast(a);
         bSub := allButLast(b);
-        
+
         x := lcsBack(a, bSub);
         y := lcsBack(aSub, b);
     in
@@ -3627,7 +3627,7 @@ lcsBack(a(1), b(1)) :=
         y;
 
 main(args(2)) :=
-        lcsBack(args[1], args[2]) when size(args) >=2 
+        lcsBack(args[1], args[2]) when size(args) >=2
     else
         lcsBack("thisisatest", "testing123testing");
 ```
@@ -3651,7 +3651,7 @@ Recursive; Also works on tuples (vectors)
     op .longest(a, b);
       return if #a > #b then a else b end;
     end .longest;
-    
+
     procedure lcs(a, b);
       if exists empty in {a, b} | #empty = 0 then
         return empty;
@@ -3790,7 +3790,7 @@ func lcs(s1:String, _ s2:String) -> String {
     var lens = Array(count: x + 1, repeatedValue:
         Array(count: y + 1, repeatedValue: 0))
     var returnStr = ""
- 
+
     for i in 0..<x {
         for j in 0..<y {
             if s1[s1.startIndex.advancedBy(i)] == s2[s2.startIndex.advancedBy(j)] {
@@ -3800,7 +3800,7 @@ func lcs(s1:String, _ s2:String) -> String {
             }
         }
     }
- 
+
     while x != 0 && y != 0 {
         if lens[x][y] == lens[x - 1][y] {
             --x
@@ -3812,7 +3812,7 @@ func lcs(s1:String, _ s2:String) -> String {
             --y
         }
     }
- 
+
     return String(returnStr.characters.reverse())
 }
 ```
@@ -3937,7 +3937,7 @@ This is quite vile in terms of [time] efficiency, another algorithm should be us
 ```zkl
 fcn lcs(a,b){
    if(not a or not b) return("");
-   if (a[0]==b[0]) return(a[0] + self.fcn(a[1,*],b[1,*])); 
+   if (a[0]==b[0]) return(a[0] + self.fcn(a[1,*],b[1,*]));
    return(fcn(x,y){if(x.len()>y.len())x else y}(lcs(a,b[1,*]),lcs(a[1,*],b)))
 }
 ```

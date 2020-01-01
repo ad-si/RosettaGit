@@ -60,7 +60,7 @@ This follows the same rules as the definition of lucky numbers above ''except fo
 #* Increment <math>n</math>.
 
 ;Task requirements
-* Write one or two subroutines (functions) to generate ''lucky numbers'' and ''even lucky numbers'' 
+* Write one or two subroutines (functions) to generate ''lucky numbers'' and ''even lucky numbers''
 * Write a command-line interface to allow selection of which kind of numbers and which number(s). Since input is from the command line, tests should be made for the common errors:
 ** missing arguments
 ** too many arguments
@@ -119,8 +119,8 @@ Demonstrate the program by:
 
 {{trans|Go}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 #include <vector>
@@ -685,7 +685,7 @@ Haskell is a very nice language for this problem because it is a lazy language. 
 import System.Environment
 import Text.Regex.Posix
 
-data Lucky = Lucky | EvenLucky 
+data Lucky = Lucky | EvenLucky
 
 helpMessage :: IO ()
 helpMessage = do
@@ -720,7 +720,7 @@ evenNumbers :: [Int]
 evenNumbers = filter even [1..]
 
 luckyNumbers :: [Int] -> [Int]
-luckyNumbers xs = 
+luckyNumbers xs =
   let i = 3 in
   sieve i xs
     where
@@ -740,7 +740,7 @@ interval x x2 Lucky     = dropWhile (<x) (takeWhile (<=x2) (luckyNumbers oddNumb
 interval x x2 EvenLucky = dropWhile (<x) (takeWhile (<=x2) (luckyNumbers evenNumbers))
 
 lucky :: [String] -> Lucky
-lucky xs = 
+lucky xs =
   if "evenLucky" `elem` xs
    then EvenLucky
    else Lucky
@@ -767,7 +767,7 @@ main = do
         [x, x2] -> if x2 > 0
           then print (range x x2 l)
           else print (interval x (-x2) l)
-        _ -> do 
+        _ -> do
           putStrLn "Invalid input, wrong number of arguments"
           putStrLn "Type --help"
 ```
@@ -898,7 +898,7 @@ function luckyindex(j, wanteven, k=0)
     end
     throw("Index $j out of range for nmax of $(luck.nmax).")
 end
-    
+
 function luckyrange(j, k, wanteven)
     topvalue = max(j, k)
     luck = Lucky(wanteven, topvalue + 1)
@@ -913,7 +913,7 @@ end
 
 function helpdisplay(exitlevel=1)
     println("\n", PROGRAM_FILE, " j [-][k] [lucky|evenLucky]")
-    println("\tj: index wanted or a starting point (index or value)", 
+    println("\tj: index wanted or a starting point (index or value)",
             "\n\tk: optional ending point (index), \n\t-k: optional ending point (value)\n")
     helpstring =
 """ | Argument(s)        |    What is printed                                  |
@@ -1009,7 +1009,7 @@ end
 
 runopts()
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 > julia luckymath.jl 1 20
@@ -1327,8 +1327,8 @@ multi MAIN (Int $min where * > 0, Int $neg-max where * < 0, Luck $howlucky = 'lu
 $ ./lucky
 Usage:
   ./lucky <num>
-  ./lucky <num> , [<howlucky>] 
-  ./lucky <first> <last> [<howlucky>] 
+  ./lucky <num> , [<howlucky>]
+  ./lucky <first> <last> [<howlucky>]
   ./lucky <min> <neg-max> [<howlucky>]
 $ ./lucky 20 , lucky
 79
@@ -1355,13 +1355,13 @@ $ ./lucky 10000 , EVENLUCKY
 
 ```Phix
 constant luckyMax = 120000
- 
+
 sequence lucky
- 
+
 procedure filterLucky()
     integer n = 2
     while n<=length(lucky) do
-        integer m = lucky[n], 
+        integer m = lucky[n],
                 l = m-1
         for k=m+1 to length(lucky) do
             if mod(k,m)!=0 then
@@ -1426,7 +1426,7 @@ procedure main()
 --          printf(1,"running %s\n",{cmd})
             {} = system_exec(cmd)
         end for
-        puts(1, "tests complete\n") 
+        puts(1, "tests complete\n")
         {} = wait_key()
     else
         cl = cl[3..$] -- ({1,2} are {interperter,source} or {exe,exe})
@@ -1452,7 +1452,7 @@ procedure main()
                         fatal("first argument must be a positive integer")
                     end if
                     j = n
-                else 
+                else
                     single = false
                     if n<0 then
                         range = false
@@ -1474,7 +1474,7 @@ procedure main()
                 odd = (l=1)
             end if
         end for
- 
+
         lucky = tagset(luckyMax,2-odd,2)
         filterLucky()
         printf(1,"Output when args are %s\n",{join(cl)})
@@ -1621,7 +1621,7 @@ def arghandler(argstring):
         |(?: ^ (?P<RANGEE> \d+ \s -\d+ ) (?:  | \s evenLucky ) \s* $ )
       )
     )""", argstring)
-    
+
     if match_obj:
         # Retrieve group(s) by name
         SINGLEL = match_obj.group('SINGLEL')
@@ -1630,17 +1630,17 @@ def arghandler(argstring):
         KTHE = match_obj.group('KTHE')
         RANGEL = match_obj.group('RANGEL')
         RANGEE = match_obj.group('RANGEE')
-        if SINGLEL: 
+        if SINGLEL:
             j = int(SINGLEL)
             assert 0 < j < 10001, "Argument out of range"
             print("Single %i'th lucky number:" % j, end=' ')
             print( list(islice(lgen(), j-1, j))[0] )
-        elif SINGLEE: 
+        elif SINGLEE:
             j = int(SINGLEE)
             assert 0 < j < 10001, "Argument out of range"
             print("Single %i'th even lucky number:" % j, end=' ')
             print( list(islice(lgen(even=True), j-1, j))[0] )
-        elif KTHL: 
+        elif KTHL:
             j, k = [int(num) for num in KTHL.split()]
             assert 0 < j < 10001, "first argument out of range"
             assert 0 < k < 10001 and k > j, "second argument out of range"
@@ -1649,7 +1649,7 @@ def arghandler(argstring):
                 if n > k: break
                 if n >=j: print(luck, end = ', ')
             print('')
-        elif KTHE: 
+        elif KTHE:
             j, k = [int(num) for num in KTHE.split()]
             assert 0 < j < 10001, "first argument out of range"
             assert 0 < k < 10001 and k > j, "second argument out of range"
@@ -1658,7 +1658,7 @@ def arghandler(argstring):
                 if n > k: break
                 if n >=j: print(luck, end = ', ')
             print('')
-        elif RANGEL: 
+        elif RANGEL:
             j, k = [int(num) for num in RANGEL.split()]
             assert 0 < j < 10001, "first argument out of range"
             assert 0 < -k < 10001 and -k > j, "second argument out of range"
@@ -1668,7 +1668,7 @@ def arghandler(argstring):
                 if n > k: break
                 if n >=j: print(n, end = ', ')
             print('')
-        elif RANGEE: 
+        elif RANGEE:
             j, k = [int(num) for num in RANGEE.split()]
             assert 0 < j < 10001, "first argument out of range"
             assert 0 < -k < 10001 and -k > j, "second argument out of range"
@@ -1680,11 +1680,11 @@ def arghandler(argstring):
             print('')
     else:
         raise ArgumentError('''
-        
+
   Error Parsing Arguments!
-  
+
   Expected Arguments of the form (where j and k are integers):
-      
+
       j                #  Jth       lucky number
       j  ,      lucky  #  Jth       lucky number
       j  ,  evenLucky  #  Jth  even lucky number
@@ -1707,13 +1707,13 @@ if __name__ == '__main__':
 
 ```txt
 # Output when arguments are: 1 20 lucky
-List of 1 ... 20 lucky numbers: 1, 3, 7, 9, 13, 15, 21, 25, 31, 33, 37, 43, 49, 51, 63, 67, 69, 73, 75, 79, 
+List of 1 ... 20 lucky numbers: 1, 3, 7, 9, 13, 15, 21, 25, 31, 33, 37, 43, 49, 51, 63, 67, 69, 73, 75, 79,
 # Output when arguments are: 1 20 evenLucky
-List of 1 ... 20 even lucky numbers: 2, 4, 6, 10, 12, 18, 20, 22, 26, 34, 36, 42, 44, 50, 52, 54, 58, 68, 70, 76, 
+List of 1 ... 20 even lucky numbers: 2, 4, 6, 10, 12, 18, 20, 22, 26, 34, 36, 42, 44, 50, 52, 54, 58, 68, 70, 76,
 # Output when arguments are: 6000 -6100 lucky
-List of lucky numbers in the range 6000 ... 6100 : 6009, 6019, 6031, 6049, 6055, 6061, 6079, 6093, 
+List of lucky numbers in the range 6000 ... 6100 : 6009, 6019, 6031, 6049, 6055, 6061, 6079, 6093,
 # Output when arguments are: 6000 -6100 evenLucky
-List of even lucky numbers in the range 6000 ... 6100 : 6018, 6020, 6022, 6026, 6036, 6038, 6050, 6058, 6074, 6090, 6092, 
+List of even lucky numbers in the range 6000 ... 6100 : 6018, 6020, 6022, 6026, 6036, 6038, 6050, 6058, 6074, 6090, 6092,
 # Output when arguments are: 10000
 Single 10000'th lucky number: 115591
 # Output when arguments are: 10000 , evenLucky
@@ -1833,7 +1833,7 @@ evenLucky number: 10000 ───► 111842
 
 lucky = list(50)
 dellucky = []
-for n = 1 to 50  
+for n = 1 to 50
      lucky[n] = 2*n-1
 next
 see "the first 20 lucky numbers:" + nl
@@ -1843,7 +1843,7 @@ see nl
 
 lucky = list(50)
 dellucky = []
-for n = 1 to 50  
+for n = 1 to 50
      lucky[n] = 2*n
 next
 see "the first 20 even lucky numbers:" + nl
@@ -1853,7 +1853,7 @@ see nl
 
 lucky = list(20000)
 dellucky = []
-for n = 1 to 10000 
+for n = 1 to 10000
      lucky[n] = 2*n-1
 next
 see "lucky numbers between 6,000 and 6,100:" + nl
@@ -1863,7 +1863,7 @@ see nl
 
 lucky = list(20000)
 dellucky = []
-for n = 1 to 10000 
+for n = 1 to 10000
      lucky[n] = 2*n
 next
 see "even lucky numbers between 6,000 and 6,100:" + nl
@@ -1872,8 +1872,8 @@ showarray2(lucky)
 see nl
 
 func luckynumbers(lucky)
-      for n = 2 to len(lucky) 
-          dellucky = [] 
+      for n = 2 to len(lucky)
+          dellucky = []
           for m = lucky[n] to len(lucky) step lucky[n]
               add(dellucky, m)
           next
@@ -1883,8 +1883,8 @@ func luckynumbers(lucky)
       next
 
 func luckynumbers2(lucky)
-      for n = 2 to len(lucky) 
-          dellucky = [] 
+      for n = 2 to len(lucky)
+          dellucky = []
           for m = lucky[n] to len(lucky) step lucky[n]
               add(dellucky, m)
           next
@@ -2034,43 +2034,43 @@ The lucky numbers sequence:
 struct LuckyNumbers : Sequence, IteratorProtocol {
   let even: Bool
   let through: Int
-  
+
   private var drainI = 0
   private var n = 0
   private var lst: [Int]
-  
+
   init(even: Bool = false, through: Int = 1_000_000) {
     self.even = even
     self.through = through
     self.lst = Array(stride(from: even ? 2 : 1, through: through, by: 2))
   }
-  
+
   mutating func next() -> Int? {
     guard n != 0 else {
       defer { n += 1 }
-      
+
       return lst[0]
     }
-    
+
     while n < lst.count && lst[n] < lst.count {
       let retVal = lst[n]
-      
+
       lst = lst.enumerated().filter({ ($0.offset + 1) % lst[n] != 0  }).map({ $0.element })
       n += 1
-      
+
       return retVal
     }
-    
+
     if drainI == 0 {
       lst = Array(lst.dropFirst(n))
     }
 
     while drainI < lst.count {
       defer { drainI += 1 }
-      
+
       return lst[drainI]
     }
-    
+
     return nil
   }
 }
@@ -2096,36 +2096,36 @@ func jLuckyNumber(_ j: Int, even: Bool) {
 
 func luckyNumbersKth(j: Int, k: Int, even: Bool) {
   print("List of \(j) ... \(k) \(evenString(even)) lucky numbers: ", terminator: "")
-  
+
   for (offset, luck) in LuckyNumbers(even: even).lazy.enumerated() {
     guard offset + 1 <= k else { break }
-    
+
     if offset + 1 >= j {
       print(luck, terminator: ", ")
     }
   }
-  
+
   print()
 }
 
 func luckyNumbersRange(j: Int, k: Int, even: Bool) {
   print("List of \(evenString(even)) lucky numbers in the range \(j) ... \(-k): ", terminator: "")
-  
+
   for lucky in LuckyNumbers(even: even).lazy {
     guard lucky <= -k else { break }
-    
+
     if lucky >= j {
       print(lucky, terminator: ", ")
     }
   }
-  
+
   print()
 }
 
 switch args.count {
 case 1:
   jLuckyNumber(j, even: false)
-case 2:  
+case 2:
   switch Int(args.last!) {
   case let k? where k > 0 && k <= 10_000 && k > j:
     luckyNumbersKth(j: j, k: k, even: false)
@@ -2161,13 +2161,13 @@ case _:
 
 ```txt
 $ ./main 1 20 lucky
-List of 1 ... 20  lucky numbers: 1, 3, 7, 9, 13, 15, 21, 25, 31, 33, 37, 43, 49, 51, 63, 67, 69, 73, 75, 79, 
+List of 1 ... 20  lucky numbers: 1, 3, 7, 9, 13, 15, 21, 25, 31, 33, 37, 43, 49, 51, 63, 67, 69, 73, 75, 79,
 $ ./main 1 20 evenLucky
-List of 1 ... 20 even lucky numbers: 2, 4, 6, 10, 12, 18, 20, 22, 26, 34, 36, 42, 44, 50, 52, 54, 58, 68, 70, 76, 
+List of 1 ... 20 even lucky numbers: 2, 4, 6, 10, 12, 18, 20, 22, 26, 34, 36, 42, 44, 50, 52, 54, 58, 68, 70, 76,
 $ ./main 6000 -6100 lucky
-List of  lucky numbers in the range 6000 ... 6100: 6009, 6019, 6031, 6049, 6055, 6061, 6079, 6093, 
+List of  lucky numbers in the range 6000 ... 6100: 6009, 6019, 6031, 6049, 6055, 6061, 6079, 6093,
 $ ./main 6000 -6100 evenLucky
-List of even lucky numbers in the range 6000 ... 6100: 6018, 6020, 6022, 6026, 6036, 6038, 6050, 6058, 6074, 6090, 6092, 
+List of even lucky numbers in the range 6000 ... 6100: 6018, 6020, 6022, 6026, 6036, 6038, 6050, 6058, 6074, 6090, 6092,
 $ ./main 10000
 The 10000th  lucky number is 115591
 $ ./main 10000 , evenLucky
@@ -2307,11 +2307,11 @@ try{
 	    start=cmdLineArgs[2][0].toLower()=="e" and 2 or 1;
       }
    }
-}catch{ 
+}catch{
    fcn options{
       "args: j | j , [even]lucky | j k [even]lucky | j -k [even]lucky"
-      .println(); 
-      System.exit(1); 
+      .println();
+      System.exit(1);
    }()
 }
 luckies:=Utils.Generator(lgen,start);

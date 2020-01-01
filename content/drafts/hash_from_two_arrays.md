@@ -10,16 +10,16 @@ categories = []
 tags = []
 +++
 
-{{task|Basic language learning}} 
+{{task|Basic language learning}}
 [[Category:Data Structures]]
 {{omit from|BASIC}} <!-- Does not have hash tables or other map structures. -->
-{{omit from|PowerBASIC}} 
-{{omit from|TI-83 BASIC}} 
-{{omit from|TI-89 BASIC}} 
+{{omit from|PowerBASIC}}
+{{omit from|TI-83 BASIC}}
+{{omit from|TI-89 BASIC}}
 
 ;Task:
-Using two Arrays of equal length, create a Hash object 
-where the elements from one array (the keys) are linked 
+Using two Arrays of equal length, create a Hash object
+where the elements from one array (the keys) are linked
 to the elements of the other (the values)
 
 
@@ -43,9 +43,9 @@ package
             var hash:Object = new Object();
             var keys:Array = new Array("a", "b", "c");
             var values:Array = new Array(1, 2, 3);
-            
+
             for (var i:int = 0; i < keys.length(); i++)
-                hash[keys[i]] = values[i]; 
+                hash[keys[i]] = values[i];
         }
     }
 }
@@ -68,28 +68,28 @@ procedure Hash_Map_Test is
    begin
       return Left = Right;
    end Equivalent_Key;
-  
+
    function Hash_Func(Key : Unbounded_String) return Ada.Containers.Hash_Type is
    begin
       return Ada.Strings.Hash(To_String(Key));
    end Hash_Func;
-  
+
    package My_Hash is new Ada.Containers.Hashed_Maps(Key_Type => Unbounded_String,
       Element_Type => Unbounded_String,
       Hash => Hash_Func,
       Equivalent_Keys => Equivalent_Key);
-     
+
    type String_Array is array(Positive range <>) of Unbounded_String;
-     
+
    Hash : My_Hash.Map;
-   Key_List : String_Array := (To_Unbounded_String("foo"), 
+   Key_List : String_Array := (To_Unbounded_String("foo"),
       To_Unbounded_String("bar"),
       To_Unbounded_String("val"));
-     
-   Element_List : String_Array := (To_Unbounded_String("little"), 
-      To_Unbounded_String("miss"), 
+
+   Element_List : String_Array := (To_Unbounded_String("little"),
+      To_Unbounded_String("miss"),
       To_Unbounded_String("muffet"));
-     
+
 begin
    for I in Key_List'range loop
       Hash.Insert(Key => (Key_List(I)),
@@ -99,7 +99,7 @@ begin
       Ada.Text_Io.Put_Line(To_String(Key_List(I)) & " => " &
          To_String(Hash.Element(Key_List(I))));
    end loop;
-  
+
 end Hash_Map_Test;
 ```
 
@@ -142,14 +142,14 @@ Awk arrays are used for both lists and hash maps.
 
 ```awk
 # usage:  awk -v list1="i ii iii" -v list2="1 2 3"  -f hash2.awk
-BEGIN { 
-	if(!list1) list1="one two three" 
+BEGIN {
+	if(!list1) list1="one two three"
 	if(!list2) list2="1 2 3"
-		
+
         split(list1, a);
         split(list2, b);
         for(i=1;i in a;i++) { c[a[i]] = b[i] };
- 
+
         for(i in c) print i,c[i]
 }
 ```
@@ -179,18 +179,18 @@ one 1
 ```bbcbasic
       DIM array1$(4) : array1$() = "0", "1", "2", "3", "4"
       DIM array2$(4) : array2$() = "zero", "one", "two", "three", "four"
-      
+
       FOR index% = 0 TO DIM(array1$(),1)
         PROCputdict(mydict$, array2$(index%), array1$(index%))
       NEXT
       PRINT FNgetdict(mydict$, "3")
       END
-      
+
       DEF PROCputdict(RETURN dict$, value$, key$)
       IF dict$ = "" dict$ = CHR$(0)
       dict$ += key$ + CHR$(1) + value$ + CHR$(0)
       ENDPROC
-      
+
       DEF FNgetdict(dict$, key$)
       LOCAL I%, J%
       I% = INSTR(dict$, CHR$(0) + key$ + CHR$(1))
@@ -249,12 +249,12 @@ p zip [1 2 3] [:a :b :c]  #Prints [1: a, 2: b, 3: c]
 ## C
 
 There likely exist libraries that can be used for creating hashes that are better than the following
-implementation. There are also better functions for obtaining hash values from strings. The 
+implementation. There are also better functions for obtaining hash values from strings. The
 following implementation tries to be somewhat generic to facilitate using alternative key and
 value types.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -289,7 +289,7 @@ typedef struct he {
 } HashElement;
 
 HashElement hash[HASH_SIZE];
-    
+
 typedef void (*KeyCopyF)(KeyType *kdest, KeyType ksrc);
 typedef void (*ValCopyF)(ValType *vdest, ValType vsrc);
 typedef unsigned (*KeyHashF)( KeyType key, int upperBound );
@@ -347,7 +347,7 @@ int strCompare( const char *key1, const char *key2)
 {
     return strcmp(key1, key2) == 0;
 }
-    
+
 void HashAdd( KeyType key, ValType value )
 {
     HashAddH( key, value, &copyStr, &copyInt, &strhashkey, &strCompare);
@@ -358,7 +358,7 @@ int HashGet(ValType *val, KeyType key)
     return HashGetH( val, key, &strhashkey, &strCompare);
 }
 
-int main() 
+int main()
 {
     static const char * keyList[] = {"red","orange","yellow","green", "blue", "violet" };
     static int valuList[] = {1,43,640, 747, 42, 42};
@@ -384,7 +384,7 @@ int main()
 {
   std::string keys[] = { "1", "2", "3" };
   std::string vals[] = { "a", "b", "c" };
- 
+
   std::unordered_map<std::string, std::string> hash;
   for( int i = 0 ; i < 3 ; i++ )
      hash[ keys[i] ] = vals[i] ;
@@ -394,16 +394,17 @@ int main()
 
 {{libheader|range-v3}}
 
-```cpp>#include <range/v3/view/zip.hpp
+```cpp
+#include <range/v3/view/zip.hpp>
 
 #include <unordered_map>
-#include <string> 
- 
+#include <string>
+
 int main()
 {
   std::string keys[] = { "1", "2", "3" };
   std::string vals[] = { "foo", "bar", "baz" };
-    
+
   std::unordered_map<std::string, std::string> hash(ranges::view::zip(keys, vals));
 }
 
@@ -703,7 +704,7 @@ class Main
     values := ["one", "two", "three", "four", "five"]
 
     // create an empty map
-    map := [:]  
+    map := [:]
     // add the key-value pairs to it
     keys.size.times |Int index|
     {
@@ -803,7 +804,7 @@ def keys = ['a','b','c']
 def vals = ['aaa', 'bbb', 'ccc']
 def hash = [:]
 keys.eachWithIndex { key, i ->
- hash[key] = vals[i] 
+ hash[key] = vals[i]
 }
 ```
 
@@ -832,7 +833,7 @@ LOCAL hash := { => }
 LOCAL i, j
 
 FOR EACH i, j IN arr1, arr2
-   hash[ i ] := j 
+   hash[ i ] := j
 NEXT
 ```
 
@@ -872,7 +873,7 @@ main() {
 link ximage    # to format the structure
 
 procedure main(arglist)                          #: demonstrate hash from 2 lists
-local keylist 
+local keylist
 
 if *arglist = 0 then arglist := [1,2,3,4]        # ensure there's a list
 every put(keylist := [], "key-" || !arglist)     # make keys for each entry
@@ -910,7 +911,7 @@ hash=: vals {~ keys&i.
 
 
 ```j
-   keys=: 10?.100 
+   keys=: 10?.100
    vals=: > ;:'zero one two three four five six seven eight nine'
    hash=: vals {~ keys&i.
 
@@ -920,13 +921,13 @@ hash=: vals {~ keys&i.
 10 5
 
    hash 46
-zero 
+zero
    hash 99
-one  
+one
    hash 63 5 12 5 23
-nine 
+nine
 seven
-six  
+six
 seven
 two
 ```
@@ -1015,7 +1016,7 @@ one array (keys) is an array of strings.
 # and values taken from the input array in turn.
 # "keys" must be an array of strings.
 # The input array may be of any length and have values of any type,
-# but only the first (keys|length) values will be used; 
+# but only the first (keys|length) values will be used;
 # the input will in effect be padded with nulls if required.
 def hash(keys):
   . as $values
@@ -1211,7 +1212,7 @@ loop(#array1 -> size) => {
 ## Lang5
 
 
-```lang5>: 
+```lang5>:
 table  2 compress -1 transpose ;
 ['one 'two 'three 'four] [1 2 3 4] >table
 ```
@@ -1221,7 +1222,7 @@ table  2 compress -1 transpose ;
 ## Langur
 
 
-###  the easy way 
+###  the easy way
 
 
 ```Langur
@@ -1230,7 +1231,7 @@ writeln toHash ["a", "b", "c", "d"], [1, 2, 3, 4]
 
 
 
-###  a longer way 
+###  a longer way
 
 
 ```Langur
@@ -1379,7 +1380,7 @@ Module Checkit {
             }
             =Hash
       }
-      
+
       Module PrintKeyItems (hash, akey$, &b$()) {
             \\  n=hash(akey$)  ' use this if akey$ allways is a proper key
             \\  and hide these two lines using \\
@@ -1390,14 +1391,14 @@ Module Checkit {
             }
             Print
       }
-      
+
       Dim a$(2 to 5)
       Dim b$(4 to 7)
       a$(2)="A", "B","A","C"
       b$(4)="A1","B1","A2", "C1"
-      
+
       MyHash=MakeHash(&a$(), &b$())
-      
+
       PrintkeyItems Myhash, "A", &b$()    ' print A1 A2
       PrintkeyItems Myhash, "B", &b$()    ' print B1
       PrintkeyItems Myhash, "C", &b$()    ' print C1
@@ -1426,7 +1427,7 @@ T := table( zip( `=`, A, B ) );
 Map[(Hash[Part[#, 1]] = Part[#, 2]) &,
  Transpose[{{1, 2, 3}, {"one", "two", "three"}}]]
 
-?? Hash 
+?? Hash
 ->Hash[1]=one
 ->Hash[2]=two
 ->Hash[3]=three
@@ -1462,7 +1463,7 @@ end
 ```txt
 >> ages = StructFromArrays({'Joe' 'Bob' 'Sue'}, [21 35 27])
 
-ages = 
+ages =
 
     Joe: 21
     Bob: 35
@@ -1479,13 +1480,13 @@ containers.Map constructor provides this functionality already.
 >> ages = containers.Map({'Joe' 'Bob' 'Sue'}, [21 35 27]);
 >> keys(ages)
 
-ans = 
+ans =
 
     'Bob'    'Joe'    'Sue'
 
 >> values(ages)
 
-ans = 
+ans =
 
     [35]    [21]    [27]
 ```
@@ -1536,7 +1537,7 @@ Hashed key:     737454 Value: zero
 ## NetRexx
 
 
-###  REXX Style 
+###  REXX Style
 
 {{trans|REXX}}
 
@@ -1567,7 +1568,7 @@ options replace format comments java crossref savelog symbols nobinary
 
 
 
-###  Java Collections 
+###  Java Collections
 
 NetRexx has access to Java's Collection objects too.
 
@@ -1696,20 +1697,20 @@ Works with oo2c version 2
 ```oberon2
 
 MODULE HashFromArrays;
-IMPORT 
+IMPORT
   ADT:Dictionary,
   Object:Boxed;
 TYPE
   Key= STRING;
   Value= Boxed.LongInt;
-  
+
   PROCEDURE Do;
   VAR
     a: ARRAY 128 OF Key;
     b: ARRAY 128 OF Value;
     hash: Dictionary.Dictionary(Key,Value);
     i: INTEGER;
-    
+
   BEGIN
     hash := NEW(Dictionary.Dictionary(Key,Value));
     a[0] := "uno";
@@ -1725,7 +1726,7 @@ TYPE
       hash.Set(a[i],b[i]);
       INC(i)
     END;
-    
+
   END Do;
 BEGIN
   Do;
@@ -2026,7 +2027,7 @@ endfor;
 ```postscript
 
 % push our arrays
- [/a /b /c /d /e] [1 2 3 4 5] 
+ [/a /b /c /d /e] [1 2 3 4 5]
 % create a dict with it
 {aload pop} dip let currentdict end
 % show that we have created the hash
@@ -2073,7 +2074,7 @@ make_hash([H|Q],[H1|Q1]):-
 :-make_hash([un,deux,trois],[[a,b,c],[d,e,f],[g,h,i]])
 
 
-% this one without side effects 
+% this one without side effects
 
 make_hash_pure([],[],[]).
 make_hash_pure([H|Q],[H1|Q1],[hash(H,H1)|R]):-
@@ -2092,8 +2093,8 @@ Dim keys.s(3)
 Dim vals.s(3)
 NewMap Hash.s()
 
-keys(0)="a" : keys(1)="b" : keys(2)="c" : keys(3)="d" 
-vals(0)="1" : vals(1)="2" : vals(2)="3" : vals(3)="4" 
+keys(0)="a" : keys(1)="b" : keys(2)="c" : keys(3)="d"
+vals(0)="1" : vals(1)="2" : vals(2)="3" : vals(3)="4"
 For n = 0 To 3
     Hash(keys(n))= vals(n)
 Next
@@ -2147,7 +2148,7 @@ The original (Ruby) example uses a range of different types as keys. Here is sim
 	def __hash__(self):
 		return id(self) ^ 0xBEEF
 
-	
+
 >>> my_inst = Hashable()
 >>> my_int = 1
 >>> my_complex = 0 + 1j
@@ -2293,15 +2294,15 @@ key: dingsta                                  value: ───(not defined)─�
 
 # Project : Hash from two arrays
 
-list1="one two three" 
+list1="one two three"
 list2="1 2 3"
 a = str2list(substr(list1," ",nl))
 b = str2list(substr(list2," ",nl))
 c = list(len(a))
-for i=1 to len(b) 
+for i=1 to len(b)
      temp = number(b[i])
      c[temp] = a[i]
-next 
+next
 for i = 1 to len(c)
      see c[i] + " " + i + nl
 next
@@ -2371,12 +2372,12 @@ fn main() {
 
 ```sather
 class ZIPPER{K,E} is
-  zip(k:ARRAY{K}, e:ARRAY{E}) :MAP{K, E} 
+  zip(k:ARRAY{K}, e:ARRAY{E}) :MAP{K, E}
     pre k.size = e.size
   is
     m :MAP{K, E} := #;
     loop m[k.elt!] := e.elt!; end;
-    return m;    
+    return m;
   end;
 end;
 
@@ -2386,8 +2387,8 @@ class MAIN is
     keys:ARRAY{STR} := |"one", "three", "four"|;
     values:ARRAY{INT} := |1, 3, 4|;
     m ::= ZIPPER{STR,INT}::zip(keys, values);
-    loop 
-      #OUT + m.pair! + " "; 
+    loop
+      #OUT + m.pair! + " ";
     end;
     #OUT + "\n";
   end;
@@ -2478,7 +2479,7 @@ Array extend [
 ].
 
 
-({ 'red' . 'one' . 'two' } 
+({ 'red' . 'one' . 'two' }
  dictionaryWithValues: { '#ff0000'. 1. 2 }) displayNl.
 ```
 
@@ -2487,7 +2488,7 @@ Array extend [
 {{works with|VisualWorks Smalltalk}}
 
 ```smalltalk
-Dictionary 
+Dictionary
     withKeys:#('one' 'two' 'three')
     andValues:#('eins' 'zwei' 'drei')
 ```
@@ -2605,11 +2606,11 @@ for (key, val) in zip(keys, vals) {
 ## Tcl
 
 
-Arrays in Tcl are automatically associative, 
-i.e. there are no "not hashed arrays". 
+Arrays in Tcl are automatically associative,
+i.e. there are no "not hashed arrays".
 
-If we can take "arrays of equal length" to mean 
-"<i>lists</i> of equal length", 
+If we can take "arrays of equal length" to mean
+"<i>lists</i> of equal length",
 then the task might look like this:
 
 ```tcl
@@ -2636,14 +2637,14 @@ Alternatively, a dictionary could be used: <!-- http://ideone.com/6lI4k5 -->
 
 ```tcl
 package require Tcl 8.5
- 
+
 set keys   [list fred bob joe]
 set values [list barber plumber tailor]
- 
+
 foreach a $keys b $values {
     dict set jobs $a $b
 }
- 
+
 puts "jobs: [dict get $jobs]"
 ```
 
@@ -2706,7 +2707,7 @@ $ ./txr hash-from-two.tl
 Using a sorted file as an associative array (see Creating an associative array for usage.)
 
 
-```bash>cat <<VAL 
+```bash>cat <<VAL
 p.values
 apple
 boy
@@ -2793,7 +2794,7 @@ test = hash_function* <'bar','baz','foo','bar'>
 using Gee;
 
 void main(){
-    // mostly copied from C# example                                            
+    // mostly copied from C# example
     var hashmap = new HashMap<string, string>();
 
     string[] arg_keys = {"foo", "bar", "val"};
@@ -2839,16 +2840,16 @@ MsgBox dict.Item("Windows")
 
 {{trans|VBScript}}
 
-The [[Hash from two arrays#VBScript|VBScript]] version can be used 
-in Visual Basic unchanged, although it requires a reference to 
+The [[Hash from two arrays#VBScript|VBScript]] version can be used
+in Visual Basic unchanged, although it requires a reference to
 the [[Windows Script Host|Microsoft Scripting Runtime (scrrun.dll)]].
 
-Alternately, instead of a <code>Dictionary</code> object, 
-you can also use a <code>Collection</code> object, 
-which serves a similar purpose, without the inclusion 
-of an additional runtime library. 
-In fact, the only immediately-obvious difference between this 
-and the VBScript example is <code>dict</code>'s data type, 
+Alternately, instead of a <code>Dictionary</code> object,
+you can also use a <code>Collection</code> object,
+which serves a similar purpose, without the inclusion
+of an additional runtime library.
+In fact, the only immediately-obvious difference between this
+and the VBScript example is <code>dict</code>'s data type,
 and the order that the arguments are passed to the <code>Add</code> method.
 
 

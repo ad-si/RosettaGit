@@ -10,12 +10,12 @@ categories = []
 tags = []
 +++
 
-{{task}} 
+{{task}}
 [[Category:String_manipulation]]
 {{omit from|GUISS}}
 
 ;Task:
-Create a function taking a positive integer as its parameter and returning a string containing the Roman numeral representation of that integer. Modern Roman numerals are written by expressing each digit separately, starting with the left most digit and skipping any digit with a value of zero. 
+Create a function taking a positive integer as its parameter and returning a string containing the Roman numeral representation of that integer. Modern Roman numerals are written by expressing each digit separately, starting with the left most digit and skipping any digit with a value of zero.
 
 
 In Roman numerals:
@@ -299,9 +299,9 @@ PROCEDURE ROMAN (INTEGER VALUE NUMBER; STRING(15) RESULT CHARACTERS; INTEGER RES
 
         ASSERT (NUMBER >= 1) AND (NUMBER < 4000);
 
-        CHARACTERS := "               ";  
+        CHARACTERS := "               ";
         LENGTH := 0;
-        POWER := 1000;  
+        POWER := 1000;
         PLACE := 4;
         WHILE PLACE > 0 DO
             BEGIN
@@ -363,7 +363,7 @@ on roman(n)
     set kvs to {["M", 1000], ["CM", 900], ["D", 500], ¬
         ["CD", 400], ["C", 100], ["XC", 90], ["L", 50], ["XL", 40], ¬
         ["X", 10], ["IX", 9], ["V", 5], ["IV", 4], ["I", 1]}
-    
+
     script stringAddedValueDeducted
         on |λ|(balance, kv)
             set {k, v} to kv
@@ -375,15 +375,15 @@ on roman(n)
             end if
         end |λ|
     end script
-    
+
     concat(snd(mapAccumL(stringAddedValueDeducted, n, kvs)))
 end roman
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     map(roman, [2016, 1990, 2008, 2000, 1666])
-    
+
     --> {"MMXVI", "MCMXC", "MMVIII", "MM", "MDCLXVI"}
 end run
 
@@ -397,7 +397,7 @@ on concat(xs)
             a & b
         end |λ|
     end script
-    
+
     if length of xs > 0 and class of (item 1 of xs) is string then
         set unit to ""
     else
@@ -430,9 +430,9 @@ on map(f, xs)
     end tell
 end map
 
--- 'The mapAccumL function behaves like a combination of map and foldl; 
--- it applies a function to each element of a list, passing an 
--- accumulating parameter from left to right, and returning a final 
+-- 'The mapAccumL function behaves like a combination of map and foldl;
+-- it applies a function to each element of a list, passing an
+-- accumulating parameter from left to right, and returning a final
 -- value of this accumulator together with the new list.' (see Hoogle)
 
 -- mapAccumL :: (acc -> x -> (acc, y)) -> acc -> [x] -> (acc, [y])
@@ -443,11 +443,11 @@ on mapAccumL(f, acc, xs)
             [item 1 of pair, (item 2 of a) & {item 2 of pair}]
         end |λ|
     end script
-    
+
     foldl(result, [acc, {}], xs)
 end mapAccumL
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -465,7 +465,7 @@ on quotRem(m, n)
 end quotRem
 
 -- Egyptian multiplication - progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for binary 
+-- stages of doubling to an accumulator where needed for binary
 -- assembly of a target length
 
 -- replicate :: Int -> a -> [a]
@@ -473,7 +473,7 @@ on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -531,7 +531,7 @@ stor(value)
       value := value - (%A_LoopField%)
     }
   }
-  Return result . "O" 
+  Return result . "O"
 }
 ```
 
@@ -546,7 +546,7 @@ stor(value)
 (defun romanNumber (n / uni dec hun tho nstr strlist nlist rom)
   (if (and (> n 0) (<= n 3999))
     (progn
-       (setq 
+       (setq
          UNI (list "" "I" "II" "III" "IV" "V" "VI" "VII" "VIII" "IX")
          DEC (list "" "X" "XX" "XXX" "XL" "L" "LX" "LXX" "LXXX" "XC")
          HUN (list "" "C" "CC" "CCC" "CD" "D" "DC" "DCC" "DCCC" "CM")
@@ -569,14 +569,14 @@ rom
 
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 
-1577 "MDLXXVII" 
+1577 "MDLXXVII"
 3999 "MMMCMXCIX"
-888 "DCCCLXXXVIII" 
-159 "CLIX" 
+888 "DCCCLXXXVIII"
+159 "CLIX"
 
 ```
 
@@ -640,7 +640,7 @@ DIM SHARED  roman(0 TO 12) AS String*2 => {"M", "CM", "D","CD", "C","XC","L","XL
 FUNCTION toRoman(value AS Integer) AS String
     DIM i 	AS Integer
     DIM result  AS String
-    
+
     FOR i = 0 TO 12
         DO WHILE value >= arabic(i)
 	    result = result + roman(i)
@@ -671,27 +671,27 @@ PRINT "3888 = "; toRoman(3888)
 
 ==={{header|IS-BASIC}}===
 <lang IS-BASIC>100 PROGRAM "Roman.bas"
-110 DO 
+110 DO
 120   PRINT :INPUT PROMPT "Enter an arabic number: ":N
 130   IF N<1 THEN EXIT DO
 140   PRINT TOROMAN$(N)
-150 LOOP 
+150 LOOP
 160 DEF TOROMAN$(X)
 170   IF X>3999 THEN
 180     LET TOROMAN$="Too big."
 190     EXIT DEF
-200   END IF 
-210   RESTORE 
+200   END IF
+210   RESTORE
 220   LET SUM$=""
 230   FOR I=1 TO 13
 240     READ ARABIC,ROMAN$
 250     DO WHILE X>=ARABIC
 260       LET SUM$=SUM$&ROMAN$
 270       LET X=X-ARABIC
-280     LOOP 
-290   NEXT 
+280     LOOP
+290   NEXT
 300   LET TOROMAN$=SUM$
-310 END DEF 
+310 END DEF
 320 DATA 1000,"M",900,"CM",500,"D",400,"CD",100,"C",90,"XC"
 330 DATA 50,"L",40,"XL",10,"X",9,"IX",5,"V",4,"IV",1,"I"
 ```
@@ -775,7 +775,7 @@ goto add_val
 {{works with|BASIC256 }}
 
 ```basic256
-    
+
 print 1666+" = "+convert$(1666)
 print 2008+" = "+convert$(2008)
 print 1001+" = "+convert$(1001)
@@ -817,7 +817,7 @@ end function
       PRINT ;1666, FNroman(1666)
       PRINT ;3888, FNroman(3888)
       END
-      
+
       DEF FNroman(n%)
       LOCAL i%, r$, arabic%(), roman$()
       DIM arabic%(12), roman$(12)
@@ -941,8 +941,8 @@ Can't convert 4000 to Roman numeral
 
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 
 /*
@@ -964,7 +964,7 @@ void roman(char *s, unsigned int n)
   #define digit(loop, num, c) \
       loop (n >= num)         \
          {*(s++) = c;         \
-          n -= num;}  
+          n -= num;}
   #define digits(loop, num, c1, c2) \
       loop (n >= num)               \
          {*(s++) = c1;              \
@@ -987,7 +987,7 @@ void roman(char *s, unsigned int n)
 
   #undef digit
   #undef digits
-  
+
   *s = 0;}
 
 int main(void)
@@ -1048,11 +1048,11 @@ char *ToRoman(int num, char *buf, int buflen)
 ```
 
 
-Most straightforward (nothing elegant about it, 
+Most straightforward (nothing elegant about it,
 but it's simple, and can calculate output length)
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int to_roman(char *out, int n)
 {
@@ -1188,8 +1188,8 @@ Func<int, string> toRoman = (number) =>
 ### C++ 98
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 
 std::string to_roman(int value)
@@ -1238,27 +1238,27 @@ int main()
 
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 
 std::string to_roman(int x) {
     auto roman_digit = [&](char one, char five, char ten, int x) {
-        if (x <= 3) 
+        if (x <= 3)
             return std::string().assign(x, one);
-        if (x <= 5) 
+        if (x <= 5)
             return std::string().assign(5 - x, one) + five;
-        if (x <= 8) 
+        if (x <= 8)
            return five + std::string().assign(x - 5, one);
         return std::string().assign(10 - x, one) + ten;
     };
-    if (x <= 0) 
+    if (x <= 0)
         return "Negative or zero!";
-    if (x >= 1000) 
+    if (x >= 1000)
         return "M" + to_roman(x - 1000);
-    if (x >= 100) 
+    if (x >= 100)
         return roman_digit('C', 'D', 'M', x / 100) + to_roman(x % 100);
-    if (x >= 10) 
+    if (x >= 10)
         return roman_digit('X', 'L', 'C', x / 10) + to_roman(x % 10);
     return roman_digit('I', 'V', 'X', x);
 }
@@ -1277,43 +1277,43 @@ int main(){
 
 ```ceylon
 shared void run() {
-	
+
 	class Numeral(shared Character char, shared Integer int) {}
-	
+
 	value tiers = [
 		[Numeral('I', 1),   Numeral('V', 5),   Numeral('X', 10)],
 		[Numeral('X', 10),  Numeral('L', 50),  Numeral('C', 100)],
 		[Numeral('C', 100), Numeral('D', 500), Numeral('M', 1k)]
 	];
-	
+
 	String toRoman(Integer hindu, Integer tierIndex = 2) {
-		
+
 		assert (exists tier = tiers[tierIndex]);
-		
+
 		" Finds if it's a two character numeral like iv, ix, xl, xc, cd and cm."
 		function findTwoCharacterNumeral() =>
 			if (exists bigNum = tier.rest.find((numeral) => numeral.int - tier.first.int <= hindu < numeral.int))
 			then [tier.first, bigNum]
 			else null;
-		
+
 		if (hindu <= 0) {
 			// if it's zero then we are done!
 			return "";
-		} 
+		}
 		else if (exists [smallNum, bigNum] = findTwoCharacterNumeral()) {
 			value twoCharSymbol = "``smallNum.char````bigNum.char``";
 			value twoCharValue = bigNum.int - smallNum.int;
 			return "``twoCharSymbol````toRoman(hindu - twoCharValue, tierIndex)``";
-		} 
+		}
 		else if (exists num = tier.reversed.find((Numeral elem) => hindu >= elem.int)) {
 			return "``num.char````toRoman(hindu - num.int, tierIndex)``";
-		} 
+		}
 		else {
 			// nothing was found so move to the next smaller tier!
 			return toRoman(hindu, tierIndex - 1);
 		}
 	}
-	
+
 	assert (toRoman(1) == "I");
 	assert (toRoman(2) == "II");
 	assert (toRoman(4) == "IV");
@@ -1330,7 +1330,7 @@ shared void run() {
 The easiest way is to use the built-in cl-format function
 
 ```Clojure
-(def arabic->roman 
+(def arabic->roman
   (partial clojure.pprint/cl-format nil "~@R"))
 
 (arabic->roman 147)
@@ -1488,7 +1488,7 @@ PROCEDURE DIVISION.
       perform varying rx from 1 by +1
       until ws-number = 0
         perform until ws-number < ws-tbl-divisor (rx)
-          perform varying cx from 1 by +1 
+          perform varying cx from 1 by +1
   		  until ws-tbl-roman-ch (rx, cx) = spaces
             compute ocx = ocx + 1
             move ws-tbl-roman-ch (rx, cx) to ws-roman-ch (ocx)
@@ -1510,19 +1510,19 @@ PROCEDURE DIVISION.
 
 ```txt
 
-inp=0111 roman=CXI             
-inp=2234 roman=MMCCXXXIV       
-inp=0501 roman=DI              
-inp=0010 roman=X               
-inp=0040 roman=XL              
-inp=0050 roman=L               
-inp=0066 roman=LXVI            
-inp=0666 roman=DCLXVI          
+inp=0111 roman=CXI
+inp=2234 roman=MMCCXXXIV
+inp=0501 roman=DI
+inp=0010 roman=X
+inp=0040 roman=XL
+inp=0050 roman=L
+inp=0066 roman=LXVI
+inp=0666 roman=DCLXVI
 inp=5666 invalid
-inp=3333 roman=MMMCCCXXXIII    
-inp=3888 roman=MMMDCCCLXXXVIII 
-inp=3999 roman=MMMCMXCIX       
-inp=3345 roman=MMMCCCXLV      
+inp=3333 roman=MMMCCCXXXIII
+inp=3888 roman=MMMDCCCLXXXVIII
+inp=3999 roman=MMMCMXCIX
+inp=3345 roman=MMMCCCXLV
 
 ```
 
@@ -1541,7 +1541,7 @@ decimal_to_roman = (n) ->
     thousands = decimal_to_roman n / 1000
     ones = decimal_to_roman n % 1000
     return "M(#{thousands})#{ones}"
-    
+
   s = ''
   translate_each = (min, roman) ->
     while n >= min
@@ -1561,7 +1561,7 @@ decimal_to_roman = (n) ->
   translate_each    4, "IV"
   translate_each    1, "I"
   s
-  
+
 ###################
 tests =
   IV: 4
@@ -1710,7 +1710,7 @@ RomanEncode(UNSIGNED Int) := FUNCTION
   dsWeights  := DATASET(13,TRANSFORM(ProcessRec,SELF.val := Int, SELF := []));
 
   SymbolStr(i,n,STRING s) := CHOOSE(n+1,'',SetSymbols[i],SetSymbols[i]+SetSymbols[i],SetSymbols[i]+SetSymbols[i]+SetSymbols[i],s);
-	
+
   RECORDOF(dsWeights) XF(dsWeights L, dsWeights R, INTEGER C) := TRANSFORM
     ThisVal := IF(C=1,R.Val,L.Val);
     IsDone := ThisVal = 0;
@@ -1721,9 +1721,9 @@ RomanEncode(UNSIGNED Int) := FUNCTION
   RETURN i[13].Roman;
 END;
 
-RomanEncode(1954);  //MCMLIV 
-RomanEncode(1990 ); //MCMXC  
-RomanEncode(2008 ); //MMVIII 
+RomanEncode(1954);  //MCMLIV
+RomanEncode(1990 ); //MCMXC
+RomanEncode(2008 ); //MMVIII
 RomanEncode(1666);  //MDCLXVI
 ```
 
@@ -1803,14 +1803,14 @@ end
 ```ela
 open number string math
 
-digit x y z k = 
+digit x y z k =
   [[x],[x,x],[x,x,x],[x,y],[y],[y,x],[y,x,x],[y,x,x,x],[x,z]] :
   (toInt k - 1)
- 
+
 toRoman 0 = ""
 toRoman x | x < 0     = fail "Negative roman numeral"
           | x >= 1000 = 'M' :: toRoman (x - 1000)
-          | x >= 100  = let (q,r) = x `divrem` 100 in 
+          | x >= 100  = let (q,r) = x `divrem` 100 in
                         digit 'C' 'D' 'M' q ++ toRoman r
           | x >= 10   = let (q,r) = x `divrem` 10 in
                         digit 'X' 'L' 'C' q ++ toRoman r
@@ -1837,7 +1837,7 @@ import system'collections;
 import system'routines;
 import extensions;
 import extensions'text;
- 
+
 static RomanDictionary = new Dictionary()
                             .setAt(1000, "M")
                             .setAt(900, "CM")
@@ -1852,13 +1852,13 @@ static RomanDictionary = new Dictionary()
                             .setAt(5, "V")
                             .setAt(4, "IV")
                             .setAt(1, "I");
- 
+
 extension op
 {
     toRoman()
         = RomanDictionary.accumulate(new StringWriter("I", self), (m,kv => m.replace(new StringWriter("I",kv.Key), kv.Value)));
 }
- 
+
 public program()
 {
     console.printLine("1990 : ", 1990.toRoman());
@@ -1890,7 +1890,7 @@ defmodule Roman_numeral do
   def encode(x) when x >= 100,  do: digit(div(x,100), ?C, ?D, ?M) ++ encode(rem(x,100))
   def encode(x) when x >= 10,   do: digit(div(x,10), ?X, ?L, ?C) ++ encode(rem(x,10))
   def encode(x) when x >= 1,    do: digit(x, ?I, ?V, ?X)
-  
+
   defp digit(1, x, _, _), do: [x]
   defp digit(2, x, _, _), do: [x, x]
   defp digit(3, x, _, _), do: [x, x, x]
@@ -2001,11 +2001,11 @@ sample:
 
 ```txt
 
-1> c(roman).            
+1> c(roman).
 {ok,roman}
 2> roman:to_roman(1999).
 "MCMXCIX"
-3> roman:to_roman(25).  
+3> roman:to_roman(25).
 "XXV"
 4> roman:to_roman(944).
 "CMXLIV"
@@ -2131,7 +2131,7 @@ printf(1,"%d = %s\n",{3888,toRoman(3888)})
 
 ## Excel
 
-Excel can encode numbers in Roman forms in 5 successively concise forms. 
+Excel can encode numbers in Roman forms in 5 successively concise forms.
 These can be indicated from 0 to 4. Type in a cell:
 
 ```Excel
@@ -2162,7 +2162,7 @@ let digit x y z = function
   | 8 -> y + x + x + x
   | 9 -> x + z
   | _ -> failwith "invalid call to digit"
- 
+
 let rec to_roman acc = function
     | x when x >= 1000 -> to_roman (acc + "M") (x - 1000)
     | x when x >= 100 -> to_roman (acc + digit "C" "D" "M" (x / 100)) (x % 100)
@@ -2298,22 +2298,22 @@ class RomanNumerals
 
 
 ```forth
-: vector create ( n -- ) 0 do , loop  does>  ( n -- ) swap cells + @ execute ; 
+: vector create ( n -- ) 0 do , loop  does>  ( n -- ) swap cells + @ execute ;
 \ these are ( numerals -- numerals )
-: ,I  dup c@ C, ;  : ,V  dup 1 + c@ C, ;  : ,X  dup 2 + c@ C, ; 
+: ,I  dup c@ C, ;  : ,V  dup 1 + c@ C, ;  : ,X  dup 2 + c@ C, ;
 
 \ these are ( numerals -- )
-:noname  ,I ,X     drop ;   :noname  ,V ,I ,I ,I  drop ;   :noname  ,V ,I ,I  drop ;  
+:noname  ,I ,X     drop ;   :noname  ,V ,I ,I ,I  drop ;   :noname  ,V ,I ,I  drop ;
 :noname  ,V ,I     drop ;   :noname  ,V           drop ;   :noname  ,I ,V     drop ;
-:noname  ,I ,I ,I  drop ;   :noname  ,I ,I        drop ;   :noname  ,I        drop ;  
-' drop ( 0 : no output )  10 vector ,digit 
-	 
-: roman-rec ( numerals n -- )  10 /mod dup if >r over 2 + r> recurse else drop then ,digit ; 
-: roman ( n -- c-addr u )  
-  dup 0 4000 within 0= abort" EX LIMITO!" 
+:noname  ,I ,I ,I  drop ;   :noname  ,I ,I        drop ;   :noname  ,I        drop ;
+' drop ( 0 : no output )  10 vector ,digit
+
+: roman-rec ( numerals n -- )  10 /mod dup if >r over 2 + r> recurse else drop then ,digit ;
+: roman ( n -- c-addr u )
+  dup 0 4000 within 0= abort" EX LIMITO!"
   HERE SWAP  s" IVXLCDM" drop swap roman-rec  HERE OVER - ;
 
-1999 roman type     \ MCMXCIX 
+1999 roman type     \ MCMXCIX
   25 roman type     \ XXV
  944 roman type     \ CMXLIV
 ```
@@ -2386,7 +2386,7 @@ end function roman
 end program roman_numerals
 ```
 
- 
+
 {{out}}
 
 ```txt
@@ -2463,13 +2463,13 @@ dim as long  i
 dim as Str15 result : result = ""
 
 arabic(0) = 1000 : arabic(1) = 900 : arabic(2) = 500 : arabic(3) = 400
-arabic(4) = 100  : arabic(5) = 90  : arabic(6) = 50  : arabic(7)  = 40 
+arabic(4) = 100  : arabic(5) = 90  : arabic(6) = 50  : arabic(7)  = 40
 arabic(8) = 10   : arabic(9) = 9   : arabic(10) = 5  : arabic(11) = 4: arabic(12) = 1
 
 roman(0) = "M" : roman(1) = "CM" : roman(2) = "D"  : roman(3)  = "CD"
 roman(4) = "C" : roman(5) = "XC" : roman(6) = "L"  : roman(7)  = "XL"
 roman(8) = "X" : roman(9) = "IX" : roman(10) = "V" : roman(11) = "IV" : roman(12) = "I"
-  
+
 for i = 0 to 12
    while ( decimal >= arabic(i) )
       result = result + roman(i)
@@ -2645,7 +2645,7 @@ symbols = [ 1:'I', 4:'IV', 5:'V', 9:'IX', 10:'X', 40:'XL', 50:'L', 90:'XC', 100:
 
 def roman(arabic) {
     def result = ""
-    symbols.keySet().sort().reverse().each { 
+    symbols.keySet().sort().reverse().each {
         while (arabic >= it) {
             arabic-=it
             result+=symbols[it]
@@ -2767,10 +2767,10 @@ romanDigits = "IVXLCDM"
 --
 --    magnitude |  1 5  | index
 --   -----------|-------|-------
---        0     |  I V  |  0 1   
---        1     |  X L  |  2 3   
---        2     |  C D  |  4 5   
---        3     |  M    |  6     
+--        0     |  I V  |  0 1
+--        1     |  X L  |  2 3
+--        2     |  C D  |  4 5
+--        3     |  M    |  6
 --
 --  romanPatterns are index offsets into romanDigits,
 --  from an index base of 2 * magnitude.
@@ -2869,7 +2869,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers.icn provides roman] as seen below and is based upon a James Gimple SNOBOL4 function.
 
 
@@ -2892,7 +2892,7 @@ end
 {{out}}
 
 ```txt
-#roman.exe  3 4 8 49 2010 1666 3000 3999 4000 
+#roman.exe  3 4 8 49 2010 1666 3000 3999 4000
 
 3 -> III
 4 -> IV
@@ -2915,7 +2915,7 @@ end
 Roman := Object clone do (
     nums := list(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1)
     rum := list("M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I")
-    
+
     numeral := method(number,
         result := ""
         for(i, 0, nums size,
@@ -2936,7 +2936,7 @@ Roman numeral(1666) println
 
 ## J
 
-<tt>rfd</tt> obtains Roman numerals from decimals. 
+<tt>rfd</tt> obtains Roman numerals from decimals.
 
 
 ```j
@@ -2986,11 +2986,11 @@ public class RN {
     };
 
     public static String roman(long n) {
-        
+
         if( n <= 0) {
             throw new IllegalArgumentException();
         }
-        
+
         StringBuilder buf = new StringBuilder();
 
         final Numeral[] values = Numeral.values();
@@ -3186,7 +3186,7 @@ roman.int_to_roman(1999); // "MCMXCIX"
             }, {
                 remainder: n,
                 roman: ''
-            }).roman;   
+            }).roman;
     }
 
     // TEST
@@ -3608,7 +3608,7 @@ function toRoman$( value)
             value   = value   - arabic( i)
         wend
     next i
-    toRoman$ =result$ 
+    toRoman$ =result$
 end function
 
 ```
@@ -3622,7 +3622,7 @@ end function
 
 ```
 
- 
+
 
 
 ## LiveCode
@@ -3702,7 +3702,7 @@ to roman :n
   output digits :n [I V X L C D M]
 end
 
-print roman 1999  ; MCMXCIX 
+print roman 1999  ; MCMXCIX
 print roman 25    ; XXV
 print roman 944   ; CMXLIV
 ```
@@ -3717,7 +3717,7 @@ print roman 944   ; CMXLIV
 Function toRoman(value) As String
 	Dim arabic(12) As Integer
 	Dim roman(12) As String
-	
+
 	arabic(0) = 1000
 	arabic(1) = 900
 	arabic(2) = 500
@@ -3731,7 +3731,7 @@ Function toRoman(value) As String
 	arabic(10) = 5
 	arabic(11) = 4
 	arabic(12) = 1
-	
+
 	roman(0) = "M"
 	roman(1) = "CM"
 	roman(2) = "D"
@@ -3745,16 +3745,16 @@ Function toRoman(value) As String
 	roman(10) = "V"
 	roman(11) = "IV"
 	roman(12) = "I"
-	
+
 	Dim i As Integer, result As String
-	
+
 	For i = 0 To 12
 		Do While value >= arabic(i)
 			result = result + roman(i)
 			value = value - arabic(i)
 		Loop
 	Next i
-	
+
 	toRoman = result
 End Function
 
@@ -3822,7 +3822,7 @@ MMMDCLXXV
 
 
 ```Maple>
- for n in [ 1666, 1990, 2008 ] do printf( "%d\t%s\n", n, convert( n, 'roman' ) ) end:            
+ for n in [ 1666, 1990, 2008 ] do printf( "%d\t%s\n", n, convert( n, 'roman' ) ) end:
 1666    MDCLXVI
 1990    MCMXC
 2008    MMVIII
@@ -3878,7 +3878,7 @@ Now the semi-determinism of the functions involved is a little bit of a problem.
 But why are they semi-deterministic?  Well, this has to do with the type system.  It doesn't permit sub-typing, so when the type of a predicate is, say <code>pred(char, char)</code> (as is the case for <code>promote/2</code>), the underlying implementation *must* handle *all* values that a type <code>char</code> could possibly hold.  It is trivial to see that our code does not.  This means that, in theory, it is possible that <code>promote/2</code> (or <code>digit_to_roman/1</code>) could be passed a value which cannot be processed, thus triggering a false result, and thus being semi-deterministic.
 
 
-###  roman.m 
+###  roman.m
 
 
 
@@ -3965,7 +3965,7 @@ promote('C', 'M').
 
 
 
-###  roman2.m 
+###  roman2.m
 
 
 Another implementation using an algorithm inspired by [[#Erlang|the Erlang implementation]] could look like this:
@@ -3990,17 +3990,17 @@ main(!IO) :-
     filter_map(to_int, Args, CleanArgs),
     foldl((pred(Arg::in, !.IO::di, !:IO::uo) is det :-
                ( Roman = to_roman(Arg) ->
-                     format("%i => %s", 
-                            [i(Arg), s(from_char_list(Roman))], !IO), 
+                     format("%i => %s",
+                            [i(Arg), s(from_char_list(Roman))], !IO),
                      nl(!IO)
                ;     format("%i cannot be converted.", [i(Arg)], !IO), nl(!IO) )
           ), CleanArgs, !IO).
 
 :- func to_roman(int) = list(char).
 :- mode to_roman(in)  = out is semidet.
-to_roman(N) = ( N >= 1000 -> 
+to_roman(N) = ( N >= 1000 ->
                     ['M'] ++ to_roman(N - 1000)
-              ;( N >= 100 -> 
+              ;( N >= 100 ->
                      digit(N / 100, 'C', 'D', 'M') ++ to_roman(N rem 100)
                ;( N >= 10 ->
                       digit(N / 10, 'X', 'L', 'C') ++ to_roman(N rem 10)
@@ -4037,15 +4037,15 @@ Its output is identical to that of the previous version.
 ```microsoftsmallbasic
 
 arabicNumeral = 1990
-ConvertToRoman() 
+ConvertToRoman()
 TextWindow.WriteLine(romanNumeral) 'MCMXC
 arabicNumeral = 2018
-ConvertToRoman() 
+ConvertToRoman()
 TextWindow.WriteLine(romanNumeral) 'MMXVIII
 arabicNumeral = 3888
-ConvertToRoman() 
+ConvertToRoman()
 TextWindow.WriteLine(romanNumeral) 'MMMDCCCLXXXVIII
- 
+
 Sub ConvertToRoman
   weights[0] = 1000
   weights[1] =  900
@@ -4082,7 +4082,7 @@ Sub ConvertToRoman
     EndWhile
     i = i + 1
   EndWhile
-EndSub 
+EndSub
 
 ```
 
@@ -4254,7 +4254,7 @@ bundle Default {
   class Roman {
     nums: static : Int[];
     rum : static : String[];
-  
+
     function : Init() ~ Nil {
       nums := [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
       rum := ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
@@ -4362,7 +4362,7 @@ FUNCTION encodeRoman RETURNS CHAR (
    DEF VAR croman    AS CHAR EXTENT 7 INIT [  "M", "D", "C", "L", "X", "V", "I" ].
    DEF VAR idecimal  AS INT  EXTENT 7 INIT [ 1000, 500, 100,  50,  10,   5,   1 ].
    DEF VAR ipos      AS INT  INIT 1.
-   
+
    DO WHILE i_i > 0:
 
       IF i_i - idecimal[ ipos ] >= 0 THEN
@@ -4399,12 +4399,12 @@ VIEW-AS ALERT-BOX.
 ---------------------------
 Message (Press HELP to view stack trace)
 ---------------------------
-1990 MCMXC 
-2008 MMVIII 
-2000 MM 
-1666 MDCLXVI 
+1990 MCMXC
+2008 MMVIII
+2000 MM
+1666 MDCLXVI
 ---------------------------
-OK   Help   
+OK   Help
 ---------------------------
 ```
 
@@ -4590,8 +4590,8 @@ _RO|__Transformer|<# DEFINE KEYWORD PARAMETER>__NationalNumericID|2</#><# LET RE
 ```
 
 
-{{out}} Notice here the three different ways of representing the results. 
-For reasons for notational differences, see [[wp:Roman_numerals#Alternate_forms]] 
+{{out}} Notice here the three different ways of representing the results.
+For reasons for notational differences, see [[wp:Roman_numerals#Alternate_forms]]
 
 ```txt
 1990 is ⅿⅽⅿⅹⅽ ⅯⅭⅯⅩⅭ MCMXC
@@ -4711,7 +4711,7 @@ copied from Euphoria
 ```Phix
 constant roman  = {"M", "CM", "D","CD", "C","XC","L","XL","X","IX","V","IV","I"}
 constant decml  = {1000, 900, 500, 400, 100, 90, 50,  40,  10,  9,  5,   4,  1 }
- 
+
 function toRoman(integer val)
 string res = ""
     for i=1 to length(roman) do
@@ -4734,30 +4734,30 @@ end function
 
 /**
  * int2roman
- * Convert any positive value of a 32-bit signed integer to its modern roman 
- * numeral representation. Numerals within parentheses are multiplied by 
+ * Convert any positive value of a 32-bit signed integer to its modern roman
+ * numeral representation. Numerals within parentheses are multiplied by
  * 1000. ie. M == 1 000, (M) == 1 000 000, ((M)) == 1 000 000 000
- * 
+ *
  * @param number - an integer between 1 and 2147483647
  * @return roman numeral representation of number
  */
 function int2roman($number)
 {
 	if (!is_int($number) || $number < 1) return false; // ignore negative numbers and zero
-	
+
 	$integers = array(900, 500,  400, 100,   90,  50,   40,  10,    9,   5,    4,   1);
 	$numerals = array('CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I');
 	$major = intval($number / 1000) * 1000;
 	$minor = $number - $major;
 	$numeral = $leastSig = '';
-	
+
 	for ($i = 0; $i < sizeof($integers); $i++) {
 		while ($minor >= $integers[$i]) {
 			$leastSig .= $numerals[$i];
 			$minor  -= $integers[$i];
 		}
 	}
-	
+
 	if ($number >= 1000 && $number < 40000) {
 		if ($major >= 10000) {
 			$numeral .= '(';
@@ -4784,12 +4784,12 @@ function int2roman($number)
 			$major -= 1000;
 		}
 	}
-	
+
 	if ($number >= 40000) {
 		$major = $major/1000;
 		$numeral .= '(' . int2roman($major) . ')';
 	}
-	
+
 	return $numeral . $leastSig;
 }
 
@@ -4883,11 +4883,11 @@ Results:
 
 ```txt
 
-   11                   XI 
-   1990                 MCMXC 
-   2008                 MMVIII 
-   1666                 MDCLXVI 
-   1999                 MCMXCIX 
+   11                   XI
+   1990                 MCMXC
+   2008                 MMVIII
+   1666                 MDCLXVI
+   1999                 MCMXCIX
 
 ```
 
@@ -4907,8 +4907,8 @@ Results:
  */
 
 CREATE OR REPLACE
-FUNCTION rencode(an IN NUMBER) 
-  RETURN VARCHAR2 
+FUNCTION rencode(an IN NUMBER)
+  RETURN VARCHAR2
 IS
 BEGIN
   RETURN to_char(an, 'RN');
@@ -5010,7 +5010,7 @@ function ConvertTo-RomanNumeral
             Tens      = "","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"
             Ones      = "","I","II","III","IV","V","VI","VII","VIII","IX"
         }
-    
+
         $column = @{
             Thousands = 0
             Hundreds  = 1
@@ -5054,56 +5054,56 @@ This may be (slightly) useful.
 
 SuperbowlNumber SuperbowlNumeral
 --------------- ----------------
-              1 I               
-              2 II              
-              3 III             
-              4 IV              
-              5 V               
-              6 VI              
-              7 VII             
-              8 VIII            
-              9 IX              
-             10 X               
-             11 XI              
-             12 XII             
-             13 XIII            
-             14 XIV             
-             15 XV              
-             16 XVI             
-             17 XVII            
-             18 XVIII           
-             19 XIX             
-             20 XX              
-             21 XXI             
-             22 XXII            
-             23 XXIII           
-             24 XXIV            
-             25 XXV             
-             26 XXVI            
-             27 XXVII           
-             28 XXVIII          
-             29 XXIX            
-             30 XXX             
-             31 XXXI            
-             32 XXXII           
-             33 XXXIII          
-             34 XXXIV           
-             35 XXXV            
-             36 XXXVI           
-             37 XXXVII          
-             38 XXXVIII         
-             39 XXXIX           
-             40 XL              
-             41 XLI             
-             42 XLII            
-             43 XLIII           
-             44 XLIV            
-             45 XLV             
-             46 XLVI            
-             47 XLVII           
-             48 XLVIII          
-             49 XLIX            
-             50 L               
+              1 I
+              2 II
+              3 III
+              4 IV
+              5 V
+              6 VI
+              7 VII
+              8 VIII
+              9 IX
+             10 X
+             11 XI
+             12 XII
+             13 XIII
+             14 XIV
+             15 XV
+             16 XVI
+             17 XVII
+             18 XVIII
+             19 XIX
+             20 XX
+             21 XXI
+             22 XXII
+             23 XXIII
+             24 XXIV
+             25 XXV
+             26 XXVI
+             27 XXVII
+             28 XXVIII
+             29 XXIX
+             30 XXX
+             31 XXXI
+             32 XXXII
+             33 XXXIII
+             34 XXXIV
+             35 XXXV
+             36 XXXVI
+             37 XXXVII
+             38 XXXVIII
+             39 XXXIX
+             40 XL
+             41 XLI
+             42 XLII
+             43 XLIII
+             44 XLIV
+             45 XLV
+             46 XLVI
+             47 XLVII
+             48 XLVIII
+             49 XLIX
+             50 L
 
 ```
 
@@ -5112,7 +5112,7 @@ SuperbowlNumber SuperbowlNumeral
 ## Prolog
 
 {{works with|SWI-Prolog}}
-{{libheader|clpfd}} 
+{{libheader|clpfd}}
 Library clpfd assures that the program works in both managements : Roman towards Arabic and Arabic towards Roman.
 
 ```Prolog
@@ -5134,7 +5134,7 @@ roman(A, R) :-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % using DCG
- 
+
 roman(0, []) --> [].
 
 roman(N, [H | T]) -->
@@ -5244,17 +5244,17 @@ true .
 DataSection
   denominations:
   Data.s "M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I" ;0-12
-  
+
   denomValues:
   Data.i  1000,900,500,400,100,90,50,40,10,9,5,4,1 ;values in decending sequential order
 EndDataSection
 
 ;-setup
 Structure romanNumeral
-  symbol.s 
+  symbol.s
   value.i
 EndStructure
-  
+
 Global Dim refRomanNum.romanNumeral(#SymbolCount)
 
 Restore denominations
@@ -5265,12 +5265,12 @@ Next
 Restore denomValues
 For i = 0 To #SymbolCount
   Read refRomanNum(i)\value
-Next  
+Next
 
 Procedure.s decRoman(n)
   ;converts a decimal number to a roman numeral
   Protected roman$, i
-  
+
   For i = 0 To #SymbolCount
     Repeat
       If n >= refRomanNum(i)\value
@@ -5316,21 +5316,21 @@ adjust_arabic = (100000, 100000,  10000, 10000,  1000, 1000,  100, 100,  10, 10,
 def arabic_to_roman(dclxvi):
   org = dclxvi; # 666 #
   out = "";
-  for scale,arabic_scale  in enumerate(arabic): 
+  for scale,arabic_scale  in enumerate(arabic):
     if org == 0: break
     multiples = org / arabic_scale;
     org -= arabic_scale * multiples;
     out += roman[scale] * multiples;
-    if org >= -adjust_arabic[scale] + arabic_scale: 
+    if org >= -adjust_arabic[scale] + arabic_scale:
       org -= -adjust_arabic[scale] + arabic_scale;
       out +=  adjust_roman[scale] +  roman[scale]
   return out
- 
-if __name__ == "__main__": 
+
+if __name__ == "__main__":
   test = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,30,40,50,60,69,70,
      80,90,99,100,200,300,400,500,600,666,700,800,900,1000,1009,1444,1666,1945,1997,1999,
      2000,2008,2500,3000,4000,4999,5000,6666,10000,50000,100000,500000,1000000);
-  for val in test: 
+  for val in test:
     print '%d - %s'%(val, arabic_to_roman(val))
 ```
 
@@ -5367,13 +5367,13 @@ def to_roman(x):
         n,x = divmod(x,a)
         ret.append(r*n)
     return ''.join(ret)
-        
+
 if __name__ == "__main__":
     test = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,30,40,
             50,60,69,70,80,90,99,100,200,300,400,500,600,666,700,800,900,
             1000,1009,1444,1666,1945,1997,1999,2000,2008,2010,2011,2500,
             3000,3999)
-    
+
     for val in test:
         print '%d - %s'%(val, to_roman(val))
 
@@ -5400,12 +5400,12 @@ def arabic_to_roman(dclxvi):
       out +=  adjust_roman[scale] +  roman[scale]
   return out
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
   test = (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,30,40,50,60,69,70,
      80,90,99,100,200,300,400,500,600,666,700,800,900,1000,1009,1444,1666,1945,1997,1999,
      2000,2008,2500,3000,4000,4999,5000,6666,10000,50000,100000,500000,1000000);
-  
-  for val in test: 
+
+  for val in test:
     print("%8d %s" %(val, arabic_to_roman(val)))
 ```
 
@@ -5564,11 +5564,11 @@ Using for/fold and quotient/remainder to remove repetition:
       (append result (make-list q roman)))))
 
 (define (encode/roman number)
-  (string-join (map symbol->string (number->list number)) "")) 
+  (string-join (map symbol->string (number->list number)) ""))
 
-(for ([n '(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 25 30 40 
-           50 60 69 70 80 90 99 100 200 300 400 500 600 666 700 800 900 
-           1000 1009 1444 1666 1945 1997 1999 2000 2008 2010 2011 2500 
+(for ([n '(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 25 30 40
+           50 60 69 70 80 90 99 100 200 300 400 500 600 666 700 800 900
+           1000 1009 1444 1666 1945 1997 1999 2000 2008 2010 2011 2500
            3000 3999)])
   (printf "~a ~a\n" n (encode/roman n)))
 ```
@@ -5620,7 +5620,7 @@ to-Roman: function [n [integer!]] reduce [
     'case collect [
         foreach [a r] [1000 M 900 CM 500 D 400 CD 100 C 90 XC 50 L 40 XL 10 X 9 IX 5 V 4 IV 1 I][
             keep compose/deep [n >= (a) [append copy (form r) any [to-Roman n - (a) copy ""]]]
-        ]	
+        ]
     ]
 ]
 
@@ -5642,7 +5642,7 @@ This is a port of the [[Forth]] code; but returns a string rather than displayin
 : .I  dup     @ ^buffer'add ;
 : .V  dup 1 + @ ^buffer'add ;
 : .X  dup 2 + @ ^buffer'add ;
- 
+
 [ .I .X       drop ]
 [ .V .I .I .I drop ]
 [ .V .I .I    drop ]
@@ -5654,7 +5654,7 @@ This is a port of the [[Forth]] code; but returns a string rather than displayin
 [ .I          drop ]
 &drop
 10 vector .digit
- 
+
 : record ( an- )
   10 /mod dup [ [ over 2 + ] dip record ] &drop if .digit ;
 : toRoman   ( n-a )
@@ -5699,23 +5699,23 @@ This version of a REXX program allows almost any non-negative decimal integer.
 
 Most people think that the Romans had no word for "zero".   The Roman numeral system has no need for a
 
-zero   ''placeholder'',   so there was no name for it   (just as we have no name for a   "¶"   in the middle of our 
+zero   ''placeholder'',   so there was no name for it   (just as we have no name for a   "¶"   in the middle of our
 
-numbers ─── as we don't have that possibility).   However, the Romans did have a name for zero (or nothing).  
+numbers ─── as we don't have that possibility).   However, the Romans did have a name for zero (or nothing).
 
-In fact the Romans had several names for zero   (see the REXX code),   as does modern English.   In American 
+In fact the Romans had several names for zero   (see the REXX code),   as does modern English.   In American
 
-English, many words can be used for   '''0''':     zero, nothing, naught, bupkis, zilch, goose-egg, nebbish, squat, nil, 
+English, many words can be used for   '''0''':     zero, nothing, naught, bupkis, zilch, goose-egg, nebbish, squat, nil,
 
 crapola, what-Patty-shot-at, nineteen (only in cribbage), love (in tennis), etc.
 
 Also, this REXX version supports large numbers (with parentheses and deep parentheses).
 
-(This REXX code was ripped out of my general routine that also supported versions for '''Attic''', '''ancient Roman''', 
+(This REXX code was ripped out of my general routine that also supported versions for '''Attic''', '''ancient Roman''',
 
 and '''modern Roman''' numerals.)
 
-The general REXX code is bulkier than most at it deals with   ''any''   non-negative decimal number,   and more 
+The general REXX code is bulkier than most at it deals with   ''any''   non-negative decimal number,   and more
 
 boilerplate code is in the general REXX code to handle the above versions.
 
@@ -5775,7 +5775,7 @@ dec2rom: procedure;   parse arg n,#              /*obtain the number, assign # t
          return #
 ```
 
-Some older REXXes don't have a   '''changestr'''   BIF,   so one is included here   ──►   [[CHANGESTR.REX]]. 
+Some older REXXes don't have a   '''changestr'''   BIF,   so one is included here   ──►   [[CHANGESTR.REX]].
 
 
 '''output'''   when using the default (internal) input):
@@ -5887,11 +5887,11 @@ roman  = ["M", "CM", "D", "CD", "C" ,"XC", "L", "XL" ,"X", "IX", "V", "IV", "I"]
 see "2009 = " + toRoman(2009) + nl
 see "1666 = " + toRoman(1666) + nl
 see "3888 = " + toRoman(3888) + nl
- 
+
 func toRoman val
      result = ""
-     for i = 1 to 13 
-         while val >= arabic[i] 
+     for i = 1 to 13
+         while val >= arabic[i]
                result = result + roman[i]
                val = val - arabic[i]
          end
@@ -5912,7 +5912,7 @@ Subtractors = [ [1000, 100], [500, 100], [100, 10], [50, 10], [10, 1], [5, 1], [
 
 def roman(num)
   return Symbols[num]  if Symbols.has_key?(num)
-  Subtractors.each do |cutPoint, subtractor| 
+  Subtractors.each do |cutPoint, subtractor|
     return roman(cutPoint) + roman(num - cutPoint)      if num >  cutPoint
     return roman(subtractor) + roman(num + subtractor)  if num >= cutPoint - subtractor and num < cutPoint
   end
@@ -5986,7 +5986,7 @@ v = val(val$)
 for i = 1 to 13
   r$  = word$(a2r$,i,",")
   a   = val(word$(r$,2,":"))
-  while v >= a 
+  while v >= a
     roman$ = roman$ + word$(r$,1,":")
     v      = v - a
   wend
@@ -6059,12 +6059,12 @@ fn main() {
 
 ```scala
 val romanDigits = Map(
-  1 -> "I", 5 -> "V", 
-  10 -> "X", 50 -> "L", 
-  100 -> "C", 500 -> "D", 
-  1000 -> "M", 
-  4 -> "IV", 9 -> "IX", 
-  40 -> "XL", 90 -> "XC", 
+  1 -> "I", 5 -> "V",
+  10 -> "X", 50 -> "L",
+  100 -> "C", 500 -> "D",
+  1000 -> "M",
+  4 -> "IV", 9 -> "IX",
+  40 -> "XL", 90 -> "XC",
   400 -> "CD", 900 -> "CM")
 val romanDigitsKeys = romanDigits.keysIterator.toList sortBy (x => -x)
 def toRoman(n: Int): String = romanDigitsKeys find (_ >= n) match {
@@ -6087,15 +6087,15 @@ res55: List[String] = List(MCMXC, MMVIII, MDCLXVI)
 ```Scala
 def toRoman( v:Int ) : String = {
   val romanNumerals = List(1000->"M",900->"CM",500->"D",400->"CD",100->"C",90->"XC",
-                           50->"L",40->"XL",10->"X",9->"IX",5->"V",4->"IV",1->"I")	
-                            
-  var n = v                          
+                           50->"L",40->"XL",10->"X",9->"IX",5->"V",4->"IV",1->"I")
+
+  var n = v
   romanNumerals.foldLeft(""){(s,t) => {val c = n/t._1; n = n-t._1*c;  s + (t._2 * c) } }
 }
-  
+
 // A small test
 def test( arabic:Int ) = println( arabic + " => " + toRoman( arabic ) )
-  
+
 test(1990)
 test(2008)
 test(1666)
@@ -6182,9 +6182,9 @@ This is a general example using Chicken Scheme.
               (else (loop v (cdr decode))))))))
 
 
-(let loop ((n '(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 25 30 40 
-                  50 60 69 70 80 90 99 100 200 300 400 500 600 666 700 800 900 
-                  1000 1009 1444 1666 1945 1997 1999 2000 2008 2010 2011 2500 
+(let loop ((n '(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 25 30 40
+                  50 60 69 70 80 90 99 100 200 300 400 500 600 666 700 800 900
+                  1000 1009 1444 1666 1945 1997 1999 2000 2008 2010 2011 2500
                   3000 3999)))
   (unless (null? n)
     (printf "~a ~a\n" (car n) (to-roman (car n)))
@@ -6448,12 +6448,12 @@ ROMAN	N RPOS(1) LEN(1) . UNITS =           :F(RETURN)
 
 *  Search for digit, replace with its Roman form.
 *  Return failing if not a digit.
-	'0,1I,2II,3III,4IV,5V,6VI,7VII,8VIII,9IX,'  UNITS 
+	'0,1I,2II,3III,4IV,5V,6VI,7VII,8VIII,9IX,'  UNITS
 +	BREAK(',') . UNITS                 :F(FRETURN)
 
 *  Convert rest of N and multiply by 10.  Propagate a
 *  failure return from recursive call back to caller.
-	ROMAN = REPLACE(ROMAN(N), 'IVXLCDM', 'XLCDM**') 
+	ROMAN = REPLACE(ROMAN(N), 'IVXLCDM', 'XLCDM**')
 +	UNITS            :S(RETURN) F(FRETURN)
 ROMAN_END
 
@@ -6488,7 +6488,7 @@ rom1    s span(&ucase) . ch break(' ') . val span(' ') = :f(rom2)
         str = str dupl(ch,(n / val))
         n = remdr(n,val) :(rom1)
 rom2    roman = str :(return)
-roman_end        
+roman_end
 
 *       # Roman to Arabic
         define('arabic(n)s,ch,val,sum,x') :(arabic_end)
@@ -6499,13 +6499,13 @@ arab1   n len(1) . ch = :f(arab2)
         val = lt(val,x) (-1 * val)
         sum = sum + val; x = val :(arab1)
 arab2   arabic = sum :(return)
-arabic_end        
+arabic_end
 
 *       # Test and display
         tstr = '2010 1999 1492 1066 476 '
 tloop   tstr break(' ') . year span(' ') = :f(out)
         r = roman(year)
-        rstr = rstr year '=' r ' ' 
+        rstr = rstr year '=' r ' '
         astr = astr r '=' arabic(r) ' ' :(tloop)
 out     output = rstr; output = astr
 end
@@ -6560,7 +6560,7 @@ t = [1990,2008,1666]
 
 ```SQL
 
--- 
+--
 -- This only works under Oracle and has the limitation of 1 to 3999
 
 
@@ -6581,7 +6581,7 @@ URCOMAN         LCROMAN
 func ator(var n: Int) -> String {
 
     var result = ""
-    
+
     for (value, letter) in
        [( 1000,    "M"),
         (  900,   "CM"),
@@ -6622,7 +6622,7 @@ print(ator(1666)) // MDCLXVI
 {{output}}
 
 ```txt
-MDCLXVI 
+MDCLXVI
 ```
 
 
@@ -6729,7 +6729,7 @@ PROGRAM:DEC2ROM
 :Disp "THE NUMBER MUST"
 :Disp "BE A POSITIVE"
 :Disp "INTEGER."
-:Pause 
+:Pause
 :Goto ST
 
 ```
@@ -6756,7 +6756,7 @@ ENDLOOP
 
 Arabic number 1990 equals MCMXC
 Arabic number 2008 equals MMVIII
-Arabic number 1666 equals MDCLXVI 
+Arabic number 1666 equals MDCLXVI
 
 ```
 
@@ -6817,9 +6817,9 @@ Return
 roman() {
     local values=( 1000 900 500 400 100 90 50 40 10 5 4 1 )
     local roman=(
-        [1000]=M [900]=CM [500]=D [400]=CD 
-         [100]=C  [90]=XC  [50]=L  [40]=XL 
-          [10]=X   [9]=IX   [5]=V   [4]=IV   
+        [1000]=M [900]=CM [500]=D [400]=CD
+         [100]=C  [90]=XC  [50]=L  [40]=XL
+          [10]=X   [9]=IX   [5]=V   [4]=IV
            [1]=I
     )
     local nvmber=""
@@ -6865,7 +6865,7 @@ here.
 ```Ursala
 #import nat
 
-roman = 
+roman =
 
 -+
    'IIII'%='IV'+ 'VIIII'%='IX'+ 'XXXX'%='XL'+ 'LXXXX'%='XC'+ 'CCCC'%='CD'+ 'DCCCC'%='CM',
@@ -6907,17 +6907,17 @@ do {
     Num_Type(#1, NOCR) Message(" = ") Reg_Type(1) Type_Newline
 } while (Reg_Size(1))
 Return
- 
+
 // Convert numeric value into Roman number
 //  #1 = number to convert; on return: T-reg(1) = Roman number
 //
 :NUM_TO_ROMAN:
     Reg_Empty(1)                        // @1 = Results (Roman number)
     if (#1 < 1) { Return }              // non-positive numbers return empty string
- 
+
     Buf_Switch(Buf_Free)
     Ins_Text("M1000,CM900,D500,CD400,C100,XC90,L50,XL40,X10,IX9,V5,IV4,I1")
- 
+
     BOF
     #2 = #1
     Repeat(ALL) {
@@ -7096,7 +7096,7 @@ MMMDCCCLXXXVIII
         	<xsl:with-param name="value"><xsl:value-of select="@value"></xsl:value-of></xsl:with-param>
         </xsl:call-template>
     </xsl:template>
-    
+
     <xsl:template name="for">
       <xsl:param name="start">1</xsl:param>
       <xsl:param name="stop">1</xsl:param>
@@ -7150,13 +7150,13 @@ MMMDCCCLXXXVIII
 ```Yabasic
 roman$ = "M, CM, D, CD, C, XC, L, XL, X, IX, V, IV, I"
 decml$ = "1000, 900, 500, 400, 100, 90, 50,  40,  10,  9,  5,   4,  1"
- 
+
 sub toRoman$(value)
     local res$, i, roman$(1), decml$(1), long
-	
+
     long = token(roman$, roman$(), ", ")
     long = token(decml$, decml$(), ", ")
-	
+
     for i=1 to long
         while(value >= val(decml$(i)))
             res$ = res$ + roman$(i)
@@ -7165,7 +7165,7 @@ sub toRoman$(value)
     next i
     return res$
 end sub
- 
+
 print 400, " ", toRoman$(400)
 print 1990, " ", toRoman$(1990)
 print 2008, " ", toRoman$(2008)
@@ -7200,7 +7200,7 @@ End Sub
 {{out}}
 
 ```txt
-X MMXVI DCCC MMDCCLXIX MDCLXVI CDLXXVI MCDLIII 
+X MMXVI DCCC MMDCCLXIX MDCLXVI CDLXXVI MCDLIII
 ```
 
 

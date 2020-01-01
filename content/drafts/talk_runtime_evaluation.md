@@ -23,8 +23,8 @@ I've only shown off some of Tcl's capabilities in this area. Documenting them al
 
 Requires gdb; eval expressions as you'd type in gdb prompt; code must be compiled with -g flag and without -O.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <err.h>

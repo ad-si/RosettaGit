@@ -10,16 +10,16 @@ categories = []
 tags = []
 +++
 
-{{task|Text processing}} 
+{{task|Text processing}}
 {{selection|Short Circuit|Console Program Basics}}
-[[Category:Basic language learning]] 
-[[Category:Streams]] 
+[[Category:Basic language learning]]
+[[Category:Streams]]
 [[Category:Simple]]
 {{omit from|PARI/GP|No access to streams other than input}}
 {{omit from|TI-89 BASIC}} <!-- No streams other than user input, not really applicable. -->
 
 ;Task:
-Read from a text stream either word-by-word or line-by-line until the stream runs out of data. 
+Read from a text stream either word-by-word or line-by-line until the stream runs out of data.
 
 The stream will have an unknown amount of data on it.
 
@@ -29,7 +29,7 @@ The stream will have an unknown amount of data on it.
 
 ## Ada
 
-This example reads in a text stream from standard input line by line 
+This example reads in a text stream from standard input line by line
 and writes the output to standard output.
 
 ```ada
@@ -85,7 +85,7 @@ main:(
     read(new line);
     print(new line)
   OD;
-  except logical file end: 
+  except logical file end:
     SKIP
 )
 ```
@@ -104,11 +104,11 @@ main:(
       read(new line);
       print(new line)
     OD;
-    except page end: 
+    except page end:
       read(new page);
       print(new page)
   OD;
-  except logical file end: 
+  except logical file end:
     SKIP
 )
 ```
@@ -130,7 +130,7 @@ begin
     while not XCPNOTED(ENDFILE) do begin
         write( line );
         read(  line )
-    end        
+    end
 end.
 ```
 
@@ -172,7 +172,7 @@ ENDPROC
 
 ## AutoHotkey
 
-This example reads the text of a source file line by line 
+This example reads the text of a source file line by line
 and writes the output to a destination file.
 
 ```AutoHotkey
@@ -269,7 +269,7 @@ This specifically relates to console input (stdin).
 170     PRINT F$
 180   LOOP
 190   CLOSE #1
-200 END WHEN 
+200 END WHEN
 210 HANDLER IOERROR
 220   PRINT EXSTRING$(EXTYPE)
 230   END
@@ -343,11 +343,11 @@ file closed
 
 ## C
 
-Reads arbitrarily long line each time and return a null-terminated string.  
+Reads arbitrarily long line each time and return a null-terminated string.
 Caller is responsible for freeing the string.
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 
 char *get_line(FILE* fp)
@@ -385,7 +385,7 @@ int main()
 
 ## C++
 
-The following functions send the words resp. lines 
+The following functions send the words resp. lines
 to a generic output iterator.
 
 ```cpp
@@ -424,13 +424,13 @@ void read_lines(std::istream& is, OutIt dest)
 int main()
 {
   // 1) sending words from std. in std. out (end with Return)
-  read_words(std::cin, 
+  read_words(std::cin,
              std::ostream_iterator<std::string>(std::cout, " "));
 
   // 2) appending lines from std. to vector (end with Ctrl+Z)
   std::vector<std::string> v;
   read_lines(std::cin, std::back_inserter(v));
-  
+
   return 0;
 }
 
@@ -451,12 +451,12 @@ void read_words(std::istream& is, OutIt dest)
               dest);
 }
 
-namespace detail 
+namespace detail
 {
-    struct ReadableLine : public std::string 
-    { 
+    struct ReadableLine : public std::string
+    {
         friend std::istream & operator>>(std::istream & is, ReadableLine & line)
-        {   
+        {
             return std::getline(is, line);
         }
     };
@@ -517,26 +517,26 @@ class Program
 ```cobol
        IDENTIFICATION DIVISION.
        PROGRAM-ID. input-loop.
-       
+
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            SELECT in-stream ASSIGN TO KEYBOARD *> or any other file/stream
                ORGANIZATION LINE SEQUENTIAL
                FILE STATUS in-stream-status.
-               
+
        DATA DIVISION.
        FILE SECTION.
        FD  in-stream.
        01  stream-line                 PIC X(80).
-       
+
        WORKING-STORAGE SECTION.
        01  in-stream-status            PIC 99.
            88  end-of-stream           VALUE 10.
-       
+
        PROCEDURE DIVISION.
            OPEN INPUT in-stream
-           
+
            PERFORM UNTIL EXIT
                READ in-stream
                    AT END
@@ -544,7 +544,7 @@ class Program
                END-READ
                DISPLAY stream-line
            END-PERFORM
-           
+
            CLOSE in-stream
            .
        END PROGRAM input-loop.
@@ -754,7 +754,7 @@ feature
 
 	read_words_from_file
 			-- Read input from a text file
-			-- Echo each word of the file to standard output on a 
+			-- Echo each word of the file to standard output on a
 			-- separate line.
 			--
 			-- Some language examples omit file open/close operations
@@ -811,7 +811,7 @@ feature
 
 	read_words_from_console_with_termination
 			-- Read words from console and echo them back to output, one
-			-- word per line, until the line contains only the 
+			-- word per line, until the line contains only the
 			-- termination key 'q'
 			--
 			-- 'io' is acquired through inheritance from class ANY,
@@ -855,7 +855,7 @@ feature
 	--|--------------------------------------------------------------
 
 	read_words_from_console_forever
-			-- Read words from console and echo them back to output, one 
+			-- Read words from console and echo them back to output, one
 			-- word per line until the program is terminated externally
 			--
 			-- 'io' is acquired through inheritance from class ANY,
@@ -875,7 +875,7 @@ feature
 	read_lines_from_stdin
 			-- Read input from a stream on standard input
 			-- Echo each line of the file to standard output.
-			-- Note that we treat standard input as if it were a plain 
+			-- Note that we treat standard input as if it were a plain
 			-- text file
 		local
 			tf: PLAIN_TEXT_FILE
@@ -895,9 +895,9 @@ feature
 
 	read_words_from_stdin
 			-- Read input from a stream on standard input
-			-- Echo each word of the file to standard output on a new 
+			-- Echo each word of the file to standard output on a new
 			-- line
-			-- Note that we treat standard input as if it were a plain 
+			-- Note that we treat standard input as if it were a plain
 			-- text file
 		local
 			tf: PLAIN_TEXT_FILE
@@ -924,13 +924,13 @@ end
 
 ELENA 4.x:
 
-Using ReaderEnumerator 
+Using ReaderEnumerator
 
 ```elena
 import system'routines;
 import system'io;
 import extensions'routines;
- 
+
 public program()
 {
     ReaderEnumerator.new(File.assign:"file.txt").forEach(printingLn)
@@ -941,7 +941,7 @@ Using loop statement
 
 ```elena
 import system'io;
- 
+
 public program()
 {
     using(var reader := File.assign:"file.txt".textreader())
@@ -996,7 +996,7 @@ main() ->
 ## ERRE
 
 
-input from stdio 
+input from stdio
 
       LOOP
         INPUT(LINE,A$)
@@ -1011,7 +1011,7 @@ reading a text file line by line
       WHILE NOT EOF(1)
           INPUT(LINE,#1,A$)
           PRINT(A$)
-      END WHILE 
+      END WHILE
       CLOSE(1)
 
 Note: with GET(#1) you can read character by character.
@@ -1153,7 +1153,7 @@ end program BasicInputLoop
 ' FB 1.05.0 Win64
 
 Dim line_ As String  ' line is a keyword
-Open "input.txt" For Input As #1 
+Open "input.txt" For Input As #1
 
 While Not Eof(1)
   Input #1, line_
@@ -1181,16 +1181,16 @@ while (line = readStdin[]) != undef
 
 ## gnuplot
 
-The following gnuplot script echoes standard input 
+The following gnuplot script echoes standard input
 to standard output line-by-line until the end of the stream.
 
 ```gnuplot
 !cat
 ```
 
-It makes use of the ability of gnuplot to spawn shell commands. 
-In that sense it might be considered cheating. 
-Nevertheless, this is a valid gnuplot script 
+It makes use of the ability of gnuplot to spawn shell commands.
+In that sense it might be considered cheating.
+Nevertheless, this is a valid gnuplot script
 that does meet the requirements of the task description.
 
 It seems impossible to complete this task with just standard gnuplot commands.
@@ -1322,7 +1322,7 @@ $ groovy -e 'def lineMap = [:]
 >     lineMap[i] = line
 > }
 > lineMap.each { println it }' <<EOF
-> 
+>
 > Whose woods these are I think I know
 > His house is in the village tho'
 > He will not see me stopping here
@@ -1417,7 +1417,7 @@ procedure words()
 end
 ```
 
-{{libheader|Icon Programming Library}} 
+{{libheader|Icon Programming Library}}
 See [http://www.cs.arizona.edu/icon/library/src/procs/str2toks.icn str2toks]
 
 
@@ -1560,7 +1560,7 @@ jq -r -R . FILENAME
 ```
 
 
-If the input file consists of well-formed JSON entities (including scalars), then the following invocation could be used to "pretty-print" the input: 
+If the input file consists of well-formed JSON entities (including scalars), then the following invocation could be used to "pretty-print" the input:
 ```jq>jq . FILENAME</lang
 
 
@@ -1716,7 +1716,7 @@ while not(eof(#f))
     print t$
 wend
 close #f
-end 
+end
 ```
 
 
@@ -1781,7 +1781,7 @@ string sNOTECARD = "Input_Loop_Data_Source.txt";
 default {
 	integer iNotecardLine = 0;
 	state_entry() {
-		llOwnerSay("Reading '"+sNOTECARD+"'"); 
+		llOwnerSay("Reading '"+sNOTECARD+"'");
 		llGetNotecardLine(sNOTECARD, iNotecardLine);
 	}
 	dataserver(key kRequestId, string sData) {
@@ -1803,7 +1803,7 @@ Reading 'Input_Loop_Data_Source.txt'
 1: default {
 2: 	integer iNotecardLine = 0;
 3: 	state_entry() {
-4: 		llOwnerSay("Reading '"+sNOTECARD+"'"); 
+4: 		llOwnerSay("Reading '"+sNOTECARD+"'");
 5: 		llGetNotecardLine(sNOTECARD, iNotecardLine);
 6: 	}
 7: 	dataserver(key kRequestId, string sData) {
@@ -1834,7 +1834,7 @@ end
 
 
 
-###  Via generic for loop 
+###  Via generic for loop
 
 Reads line-by-line via an iterator (from stdin). Substitute <code>io.lines()</code> with <code>io.open(filename, "r"):lines()</code> to read from a file.
 
@@ -1915,8 +1915,8 @@ Close[stream]
 this function will read a file line by line.
 
 ```MAXScript
-fn ReadAFile FileName = 
-(	
+fn ReadAFile FileName =
+(
 	local in_file = openfile FileName
 	while not eof in_file do
 	(
@@ -1983,7 +1983,7 @@ while (%n <= $lines(input.txt)) {
 
 ## ML/I
 
-The very nature of ML/I is that its default behaviour 
+The very nature of ML/I is that its default behaviour
 is to copy from input to output until it reaches end of file.
 
 ```ML/I></lang
@@ -2043,7 +2043,7 @@ END Output.
 ## NetRexx
 
 
-###  Using NetRexx <tt>ASK</tt> Special Variable 
+###  Using NetRexx <tt>ASK</tt> Special Variable
 
 
 ```NetRexx
@@ -2073,7 +2073,7 @@ return
 
 
 
-###  Using Java <tt>Scanner</tt> 
+###  Using Java <tt>Scanner</tt>
 
 
 ```NetRexx
@@ -2129,7 +2129,7 @@ VAR
 BEGIN
   reader := StdChannels.stdin.NewReader();
   writer := StdChannels.stdout.NewWriter();
-  
+
   reader.ReadByte(c);
   WHILE reader.res = Channel.done DO
     writer.WriteByte(c);
@@ -2155,7 +2155,7 @@ VAR
 BEGIN
   reader := StdChannels.stdin.NewReader();
   writer := StdChannels.stdout.NewWriter();
-  
+
   reader.ReadByte(c);
   WHILE reader.res = Channel.done DO
     writer.WriteByte(c);
@@ -2262,7 +2262,7 @@ Reads a file line by line and write each line on standard output :
 
 
 ```Oforth
-: readFile(filename)   File new(filename) apply(#println) ; 
+: readFile(filename)   File new(filename) apply(#println) ;
 ```
 
 
@@ -2284,26 +2284,26 @@ end
 
 ## Pascal
 
- 
+
 
 ```pascal
 { for stdio }
 
 var
- 
+
  s : string ;
 
-begin 
-  
+begin
+
   repeat
 
     readln(s);
- 
+
   until s = "" ;
 
 { for a file }
 
-var 
+var
 
  f : text ;
  s : string ;
@@ -2312,7 +2312,7 @@ begin
 
   assignfile(f,'foo');
   reset(f);
-  
+
   while not eof(f) do
     readln(f,s);
 
@@ -2408,7 +2408,7 @@ for run(«find -iname *.txt -print0», :nl«\0», :out).out.lines -> $filename {
 
 
 '''Word-by-word'''
-*From a file 
+*From a file
 ```perl6
 for "filename.txt".IO.words -> $word {
     ...
@@ -2523,19 +2523,19 @@ File objects can be read bytewise, characterwise (ASCII or UNICODE), floatwise, 
 ```PureBasic
 If OpenConsole()
   ; file based line wise
-  If ReadFile(0, "Text.txt")  
-    While Eof(0) = 0          
+  If ReadFile(0, "Text.txt")
+    While Eof(0) = 0
       Debug ReadString(0)      ; each line until eof
     Wend
-    CloseFile(0)               
+    CloseFile(0)
   EndIf
-  
+
   ; file based byte wise
-  If ReadFile(1, "Text.bin")  
-    While Eof(1) = 0          
+  If ReadFile(1, "Text.bin")
+    While Eof(1) = 0
       Debug ReadByte(1)      ; each byte until eof
     Wend
-    CloseFile(1)               
+    CloseFile(1)
   EndIf
 EndIf
 ```
@@ -2645,7 +2645,7 @@ x: read/lines/part %file.txt 10
 ; Read data a line at a time:
 f: open/lines %file.txt
 while [not tail? f][
-	print f/1 
+	print f/1
 	f: next f ; Advance to next line.
 ]
 close f
@@ -2707,7 +2707,7 @@ Therefore, the following two REXX programs use the presence of a null line to in
 ```rexx
 /*REXX program reads from the (console) default input stream until null*/
        do  until _==''
-       parse pull _                    
+       parse pull _
        end   /*until*/                 /*stick a fork in it, we're done.*/
 ```
 
@@ -2848,7 +2848,7 @@ $ seq 5 | sed ''
 ```
 
 
-The automatic printing can be suppressed with -n, 
+The automatic printing can be suppressed with -n,
 and performed manually with p:
 
 
@@ -2868,7 +2868,7 @@ $ seq 5 | sed -n p
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const proc: main is func
   local
     var string: line is "";
@@ -3118,7 +3118,7 @@ End Sub
 #define STATSIZE    144
 
 // From Linux source:
-#define RDONLY      $00     
+#define RDONLY      $00
 #define PROT_READ   $0x1
 #define MAP_PRIVATE $0x02
 #define STDIN       $0
@@ -3128,7 +3128,7 @@ End Sub
 .text
 
 /* Details: */
-/* 
+/*
     Remember:  %rax(%rdi, %rsi, %rdx, %r10, %r8, %r9)
     - Open a file (get its fd)
         - int fd = open("filename", RDONLY)
@@ -3142,13 +3142,13 @@ End Sub
         - munmap(vmemptr, filesize). 0 if ok.
     - Exit
  */
-    
+
 .macro ERRCHECK code
     cmpq    $\code, %rax
     je      fs_error
 .endm
-    
-/* Local stack notes: 
+
+/* Local stack notes:
     0: int fd
     4: void* vmemptr
     12: void* head
@@ -3164,7 +3164,7 @@ _start:
     subq    $36, %rsp           // local stack
     movl    STDIN, (%rsp)
     jmp     fstat
-    
+
     open_file:
     movq    16(%rsp), %rdi      // argc(8), argv0(8) => rsp+16. filename
     movq    SYS_OPEN, %rax
@@ -3172,7 +3172,7 @@ _start:
     ERRCHECK    -1
     subq    $36, %rsp           // local stack
     movl    %eax, (%rsp)        // int fd = open(argv[1], RDONLY)
-    
+
     // fstat to get filesize
     fstat:
     movq    $statstruct, %rsi
@@ -3180,7 +3180,7 @@ _start:
     movq    SYS_FSTAT, %rax
     syscall                     // fstat(fd, statstruct)
     ERRCHECK    -1
-    
+
     // mmap - don't forget to munmap.
     mmap:
     movq    $0, %r9             // offset
@@ -3193,8 +3193,8 @@ _start:
     syscall
     ERRCHECK    -1
     movq    %rax, 4(%rsp)       // void* vmemptr = mmap(vmemptr, fsize, PROT_READ, MAP_PRIVATE, fd, 0)
-    
-    /* Print lines */ 
+
+    /* Print lines */
     movq    %rax, 12(%rsp)  // head = vmemptr
     addq    filesize, %rax
     decq    %rax
@@ -3223,7 +3223,7 @@ _start:
             safety:
             movq    %rbx, 12(%rsp)  // head = lookahead.
             jmp     scan_outer
-    
+
     cleanup:
     // munmap
     movq    filesize, %rsi
@@ -3242,7 +3242,7 @@ exit:
     movq    SYS_EXIT, %rax
     xorq    %rdi, %rdi              // The exit code.
     syscall
-    
+
 fs_error:
     movq    SYS_EXIT, %rax
     movq    $-1, %rdi
@@ -3260,9 +3260,9 @@ statstruct:     // This struct is 144 bytes. Only want size (+48)
 
 ## zkl
 
-Many objects support "stream of" concepts such as lines, characters, chunks. 
-Some are File, Data (bit bucket), List, Console. 
-Word by word isn't explicitly supported. 
+Many objects support "stream of" concepts such as lines, characters, chunks.
+Some are File, Data (bit bucket), List, Console.
+Word by word isn't explicitly supported.
 If an object is stream-able, it supports methods like foreach, pump, apply, reduce, etc.
 
 ```zkl

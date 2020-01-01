@@ -13,18 +13,18 @@ tags = []
 {{task|File System Operations}}
 
 ;Task:
-Walk a given directory and print the ''names'' of files matching a given pattern.  
+Walk a given directory and print the ''names'' of files matching a given pattern.
 
 (How is "pattern" defined?  substring match?  DOS pattern?  BASH pattern?  ZSH pattern?  Perl regular expression?)
 
 
-'''Note:''' This task is for non-recursive methods.   These tasks should read a ''single directory'', not an entire directory tree.  
+'''Note:''' This task is for non-recursive methods.   These tasks should read a ''single directory'', not an entire directory tree.
 
 '''Note:''' Please be careful when running any code presented here.
 
 
 ;Related task:
-*   [[Walk Directory Tree]]   (read entire directory tree). 
+*   [[Walk Directory Tree]]   (read entire directory tree).
 
 
 
@@ -395,14 +395,14 @@ for /F "tokens=*" %F in ('dir /b "%windir%\system32\*.exe"') do echo %F
 
 ## BBC BASIC
 
-{{works with|BBC BASIC for Windows}} 
+{{works with|BBC BASIC for Windows}}
 
 ```bbcbasic
       directory$ = "C:\Windows\"
       pattern$ = "*.ini"
       PROClistdir(directory$ + pattern$)
       END
-      
+
       DEF PROClistdir(afsp$)
       LOCAL dir%, sh%, res%
       DIM dir% LOCAL 317
@@ -425,8 +425,8 @@ for /F "tokens=*" %F in ('dir /b "%windir%\system32\*.exe"') do echo %F
 {{works with|POSIX|.1-2001}}
 In this example, the pattern is a [[POSIX]] extended regular expression.
 
-```c>#include <sys/types.h
-
+```c
+#include <sys/types.h>
 #include <dirent.h>
 #include <regex.h>
 #include <stdio.h>
@@ -441,7 +441,7 @@ int walker(const char *dir, const char *pattern)
 {
     struct dirent *entry;
     regex_t reg;
-    DIR *d; 
+    DIR *d;
 
     if (regcomp(&reg, pattern, REG_EXTENDED | REG_NOSUB))
         return WALK_BADPATTERN;
@@ -477,7 +477,7 @@ namespace DirectoryWalk
         {
             string[] filePaths = Directory.GetFiles(@"c:\MyDir", "a*");
             foreach (string filename in filePaths)
-                Console.WriteLine(filename);            
+                Console.WriteLine(filename);
         }
     }
 }
@@ -624,7 +624,7 @@ USERS:[DAVID]B.B;1
 $ @walk_a_directory *a*.*
 USERS:[DAVID]A.A;1
 USERS:[DAVID]WALK_A_DIRECTORY.COM;1
-$ 
+$
 ```
 
 
@@ -658,11 +658,11 @@ ELENA 4.0:
 import system'io;
 import system'routines;
 import extensions'routines;
-   
+
 public program()
 {
     var dir := Directory.assign("c:\MyDir");
-    
+
     dir.getFiles("a.*").forEach:printingLn;
 }
 ```
@@ -718,7 +718,7 @@ Use builtin function filelib:fold_files/5
 
 ```txt
 
-8> filelib:fold_files( "/tmp", ".*", false, fun(File, Acc) -> [File|Acc] end, []).  
+8> filelib:fold_files( "/tmp", ".*", false, fun(File, Acc) -> [File|Acc] end, []).
 ["/tmp/.X0-lock","/tmp/.cron-check-4000-was-here",
  "/tmp/kerneloops.XyN0SP","/tmp/npicagwD7tf"]
 9> filelib:fold_files( "/tmp", "k.*P", false, fun(File, Acc) -> [File|Acc] end, []).
@@ -816,7 +816,7 @@ s" ." ls
 ```gambas
 Public Sub Main()
 Dim sTemp As String
- 
+
 For Each sTemp In Dir("/etc", "*.d")
   Print sTemp
 Next
@@ -909,7 +909,7 @@ OPEN(FIle=dirtxt, Format='"",', LENgth=files) ! parses column 1 ("file names")
 DO nr = 1, files
   filename = dirtxt(nr,1) ! reads dirtxt row = nr, column = 1 to filename
   ! write file names with extensions "txt", or "hic", or "jpg" (case insensitive) using RegEx option =128:
-  IF( INDEX(filename, "\.txt|\.hic|\.jpg", 128) ) WRITE() filename 
+  IF( INDEX(filename, "\.txt|\.hic|\.jpg", 128) ) WRITE() filename
 ENDDO
 ```
 
@@ -921,13 +921,13 @@ This uses Unicon extensions for ''stat'' and to read directories.  Icon can uses
 procedure main()
 every write(getdirs(".","icn"))  # writes out all directories from the current directory down
 end
- 
+
 procedure getdirs(s,pat)  #: return a list of directories beneath the directory 's'
 local d,f
- 
+
 if ( stat(s).mode ? ="d" ) & ( d := open(s) ) then {
-      while f := read(d) do 
-         if find(pat,f) then 
+      while f := read(d) do
+         if find(pat,f) then
             suspend f
       close(d)
       }
@@ -1081,7 +1081,7 @@ on printFiles (dir, fileType)
   i = 1
   sub = fileType.length -1
   repeat while TRUE
-    fn = getNthFileNameInFolder(dir, i) 
+    fn = getNthFileNameInFolder(dir, i)
     if fn = EMPTY then exit repeat
     i = i+1
     if fn.length<fileType.length then next repeat
@@ -1135,12 +1135,12 @@ local function files(directory, recursively)
     -- Use windows" dir command
     local directory = directory:gsub("/", "\\")
     local filenames = getOutput(string.format("dir %s %s/B/A:A", directory, recursively and '/S' or ''))
-    
+
     -- Function to be called in "for filename in files(directory)"
     return coroutine.wrap(function()
         for filename in filenames:gmatch("([^\r\n]+)") do
             coroutine.yield(filename)
-        end    
+        end
     end)
 end
 
@@ -1162,7 +1162,7 @@ Console has a popup list called Menu, which we can fill using Files statements. 
 
 Files statement get as first argument a pattern or a list of file extensions "txt|bmp" return these two kind of files.
 There is a second optional parameter which examine all files founded from first filter for included letters. We can add using | as seperator, a list of strings included in same line. Files examine all files, opened one by one, using an automatic way to find what kind of text file is, an Ansi, a Utf8, a Utf-16LE, or a Utf-16BE. Also automatic find the line breaks. All files converted at open as utf-16LE and then searched. For Ansi files, Locale used to make the right conversion.
- 
+
 
 ```M2000 Interpreter
 
@@ -1318,7 +1318,7 @@ method runSample(arg) private static
   loop fn = 0 while fn < fileNames.size()
     say (fn + 1).right(5)':' fileNames.get(fn)
     end fn
-  
+
   return
 
 ```
@@ -1436,7 +1436,7 @@ var Res: TSearchRec;
 begin
    Write('File pattern: ');
    ReadLn(Pattern);            { For example .\*.pas }
-   
+
    Attr := faAnyFile;
    if FindFirst(Pattern, Attr, Res) = 0 then
    begin
@@ -1515,7 +1515,7 @@ e-1millon.txt
 ildump.txt
 output.txt
 readme.txt
-_TODO.TXT 
+_TODO.TXT
 
 ```
 
@@ -1642,19 +1642,19 @@ The match is made using DOS wildcards.  It could easily be modified to match bas
 ```PureBasic
 Procedure walkDirectory(directory.s = "", pattern.s = "")
   Protected directoryID
-  
+
   directoryID = ExamineDirectory(#PB_Any,directory,pattern)
   If directoryID
     While NextDirectoryEntry(directoryID)
       PrintN(DirectoryEntryName(directoryID))
     Wend
     FinishDirectory(directoryID)
-  EndIf 
+  EndIf
 EndProcedure
 
 If OpenConsole()
-  walkDirectory()  
-  
+  walkDirectory()
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -1775,10 +1775,10 @@ musicList = []
 
 ###---------------------------------------
 ### Main
-    
+
     ###-----------------------------------
     ### Start at this directory
-    
+
     searchVideoMusic("C:\Users\Umberto\")
 
     see nl +"Number of Music and Videos files: " +len(musicList) +nl +nl
@@ -1951,8 +1951,8 @@ end
 
 
 ```runbasic
-files #g, DefaultDir$ + "\*.jpg"   ' find all jpg files 
- 
+files #g, DefaultDir$ + "\*.jpg"   ' find all jpg files
+
 if #g HASANSWER() then
 	count = #g rowcount()	' get count of files
 	for i = 1 to count
@@ -2295,12 +2295,12 @@ Call show_files("C:\Windows",".exe")
 For Each file In IO.Directory.GetFiles("\temp", "*.txt")
   Console.WriteLine(file)
 Next
- 
+
 'Using VB's pattern matching and LINQ
 For Each file In (From name In IO.Directory.GetFiles("\temp") Where name Like "*.txt")
   Console.WriteLine(file)
 Next
- 
+
 'Using VB's pattern matching and dot-notation
 For Each file In IO.Directory.GetFiles("\temp").Where(Function(f) f Like "*.txt")
   Console.WriteLine(file)

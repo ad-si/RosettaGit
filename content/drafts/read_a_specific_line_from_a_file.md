@@ -15,7 +15,7 @@ Some languages have special semantics for obtaining a known line number from a f
 
 
 ;Task:
-Demonstrate how to obtain the contents of a specific line within a file. 
+Demonstrate how to obtain the contents of a specific line within a file.
 
 For the purpose of this task demonstrate how the contents of the seventh line of a file can be obtained, and store it in a variable or in memory (for potential future use within the program if the code were to become embedded). If the file does not contain seven lines, or the seventh line is empty, or too big to be retrieved, output an appropriate message. If no special semantics are available for obtaining the required line, it is permissible to read line by line. Note that empty lines are considered and should still be counted. Note that for functional languages or languages without variables or storage, it is permissible to output the extracted data to standard output.
 
@@ -275,7 +275,7 @@ Line 7 is: This is line 7
 ```bbcbasic
       filepath$ = @lib$ + "..\licence.txt"
       requiredline% = 7
-      
+
       file% = OPENIN(filepath$)
       IF file%=0 ERROR 100, "File could not be opened"
       FOR i% = 1 TO requiredline%
@@ -283,7 +283,7 @@ Line 7 is: This is line 7
         INPUT #file%, text$
       NEXT
       CLOSE #file%
-      
+
       IF ASCtext$=10 text$ = MID$(text$,2)
       PRINT text$
 ```
@@ -294,8 +294,8 @@ Line 7 is: This is line 7
 
 Mmap file and search for offsets to certain line number.  Since mapped file really is memory, there's no extra storage procedure once offsets are found.
 
-```c>#include <unistd.h
-
+```c
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/mman.h>
 #include <sys/stat.h>
@@ -371,8 +371,8 @@ int read_file_line(const char *path, int line_no)
 This version does not rely on POSIX APIs such as <tt>mmap</tt>, but rather sticks to ANSI C functionality.  This version also works with non-seekable files, so it can be fed by a pipe.  It performs limited but adequate error checking.  That is, <tt>get_nth_line</tt> returns NULL on all failures, and the caller can distinguish EOF, file read error and out of memory by calling <tt>feof()</tt> and <tt>ferror()</tt> on the input file.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 #define BUF_SIZE ( 256 )
@@ -394,7 +394,7 @@ char *get_nth_line( FILE *f, int line_no )
         return NULL;
 
     /* Scan the file looking for newlines */
-    while ( line_no && 
+    while ( line_no &&
             ( bytes_read = fread( buf, 1, BUF_SIZE, f ) ) > 0 )
     {
         int i;
@@ -420,7 +420,7 @@ char *get_nth_line( FILE *f, int line_no )
 
                 if ( line_no == 1 )
                     in_line = 1;
-                
+
                 if ( line_no == 0 )
                     break;
             }
@@ -428,18 +428,18 @@ char *get_nth_line( FILE *f, int line_no )
     }
 
     /* Didn't find the line? */
-    if ( line_no != 0 ) 
+    if ( line_no != 0 )
     {
         free( line );
         return NULL;
     }
 
-    /* Resize allocated buffer to what's exactly needed by the string 
+    /* Resize allocated buffer to what's exactly needed by the string
        and the terminating NUL character.  Note that this code *keeps*
-       the terminating newline as part of the string. 
+       the terminating newline as part of the string.
      */
     line = realloc( line, curr_ofs + 1 );
-    
+
     if ( !line ) /* out of memory? */
         return NULL;
 
@@ -481,8 +481,8 @@ int main( int argc, char *argv[] )
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <fstream>
 #include <iostream>
 
@@ -503,11 +503,11 @@ int main( ) {
 	 lines_read++ ;
 	 if ( lines_read == linenumber ) {
 	    std::cout << line << std::endl ;
-	    break ; 
+	    break ;
 	 }
       }
       infile.close( ) ;
-      if ( lines_read < linenumber ) 
+      if ( lines_read < linenumber )
 	 std::cout << "No " << linenumber << " lines in " << file << " !\n" ;
       return 0 ;
    }
@@ -627,7 +627,7 @@ simply
 
 void main() {
     import std.stdio, std.file, std.string;
-    auto file_lines = readText("input.txt").splitLines(); 
+    auto file_lines = readText("input.txt").splitLines();
     //file_lines becomes an array of strings, each line is one element
     writeln((file_lines.length > 6) ? file_lines[6] : "line not found");
 }
@@ -717,11 +717,11 @@ line_nr_error( Error ) -> Error.
 
 27> read_a_specific_line:task().
 "task() ->\n"
-28> read_a_specific_line:from_file("read_a_specific_line.erl", 6).  
+28> read_a_specific_line:from_file("read_a_specific_line.erl", 6).
 Error: empty_line
 ** exception exit: empty_line
      in function  read_a_specific_line:line_nr/2 (read_a_specific_line.erl, line 25)
-29> read_a_specific_line:from_file("read_a_specific_line.erl", 66). 
+29> read_a_specific_line:from_file("read_a_specific_line.erl", 66).
 Error: too_few_lines_in_file
 ** exception exit: too_few_lines_in_file
      in function  read_a_specific_line:line_nr/2 (read_a_specific_line.erl, line 25)
@@ -850,18 +850,18 @@ Fortran's file reading counts a null line as a valid record so fortunately, ther
 
 An entirely different approach is possible if the file is opened for random access, and has fixed-size records. In such a case, <code>READ (F,REC=7,ERR=666) STUFF</code> would suffice (where STUFF was the right size for the record) and if the record did not exist (being beyond the last record of a short file) then label 666 would be jumped to - without that, a crash results. In the ASCII world, text files have varying-length records so the example file reactivates source line sequence numbers of the Fortran fixed-format style and yet again, the source file highlighter doesn't recognise another foible of Fortran layout. Although there are many conventions (the simplest being digits only), here a text name is crammed in to the sequence field of columns 73-80.
 
-This results in every line being of the same length with an obvious route towards calculating the location of a random record. But, the actual record length is ''not'' 80, because in the ASCII world, plain text files have their records separated by CR, or CRLF, or LFCR, or CR - depending on the system. Experiment shows that this system (Windows XP) uses CRLF, and so the record length is 8'''2'''. But that's not the end of it. The RECL parameter by default is in terms of the default integer size, which is four bytes, and so the record length cannot be specified correctly! Fortunately, the Compaq Visual Fortran compiler has an option to specify that the RECL value is to be in bytes, and, invisibly so here, this has been done... 
+This results in every line being of the same length with an obvious route towards calculating the location of a random record. But, the actual record length is ''not'' 80, because in the ASCII world, plain text files have their records separated by CR, or CRLF, or LFCR, or CR - depending on the system. Experiment shows that this system (Windows XP) uses CRLF, and so the record length is 8'''2'''. But that's not the end of it. The RECL parameter by default is in terms of the default integer size, which is four bytes, and so the record length cannot be specified correctly! Fortunately, the Compaq Visual Fortran compiler has an option to specify that the RECL value is to be in bytes, and, invisibly so here, this has been done...
 
 Obviously, this only works because of the special nature of the file being read. Other systems offer a filesystem that does not regard record sizes or separators as being a part of the record that is read or written, and in such a case, a CR (or CRLF, or whatever) does not appear amongst the data. Some systems escalate to enabling such random access for varying-length records, or access by a key text rather than a record number (so that a key of "SAM00700" might be specified), and acronyms such as ISAM start appearing.
 
-In Fortran 77 there was no verbose REC=''n'' facility, instead one used 
+In Fortran 77 there was no verbose REC=''n'' facility, instead one used
 ```Fortran
 READ (F'7) STUFF(1:80)
 ```
  - that is, an apostrophe even though an at-sign was available - and again the source file highlighting is confused. An interesting alternative was to use the FIND(F'7) statement instead, followed by an ordinary READ (or WRITE) not necessarily specifying the desired record number. The point of this is that the FIND statement would initiate the pre-positioning for the next I/O ''asynchronously'' so that other processing could intervene between it and the READ or WRITE, and in situations more complex than this example, there could be startling changes in performance. If not always positive ones when many files were being accessed on one physical disc drive. Unfortunately, later Fortran extensions have abandoned this statement, while multiprocessing has proliferated.
 
 
-The GO TO style of handling mishaps in an I/O statement makes a simple structure difficult - note that the reception area ought not be fallen into by normal execution, thus the STOP. Unfortunately, READ and WRITE statements do not return a result that could be tested in an IF-statement or WHILE-loop, but this can be approached with only a little deformation: 
+The GO TO style of handling mishaps in an I/O statement makes a simple structure difficult - note that the reception area ought not be fallen into by normal execution, thus the STOP. Unfortunately, READ and WRITE statements do not return a result that could be tested in an IF-statement or WHILE-loop, but this can be approached with only a little deformation:
 ```Fortran
       READ (F,REC = 7,ERR = 666, IOSTAT = IOSTAT) STUFF(1:80)
   666 IF (IOSTAT.NE.0) THEN
@@ -884,7 +884,7 @@ Open "input.txt" For Input As #1
 Dim line_ As String
 Dim count As Integer = 0
 While Not Eof(1)
-  Line Input #1, line_  '' read each line  
+  Line Input #1, line_  '' read each line
   count += 1
   If count = 7 Then
     line_ = Trim(line_, Any !" \t")   '' remove any leading or trailing spaces or tabs
@@ -902,7 +902,7 @@ End If
 Close #1
 Print
 Print "Press any key to quit"
-Sleep 
+Sleep
 ```
 
 
@@ -917,8 +917,8 @@ let main args =
     let n = Int32.Parse(args.[1]) - 1
     use r = new StreamReader(args.[0])
     let lines = Seq.unfold (
-                    fun (reader : StreamReader) -> 
-                    if (reader.EndOfStream) then None 
+                    fun (reader : StreamReader) ->
+                    if (reader.EndOfStream) then None
                     else Some(reader.ReadLine(), reader)) r
     let line = Seq.nth n lines  // Seq.nth throws an ArgumentException,
                                 // if not not enough lines available
@@ -1367,28 +1367,28 @@ end proc:
 
 
 ## Mathematica
- 
+
 
 ```Mathematica
- If[# != EndOfFile , Print[#]]& @ ReadList["file",  String, 7] 
+ If[# != EndOfFile , Print[#]]& @ ReadList["file",  String, 7]
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 
 ```Matlab
-  
+
   eln = 7;  % extract line number 7
   line = '';
   fid = fopen('foobar.txt','r');
-  if (fid < 0) 
+  if (fid < 0)
 	printf('Error:could not open file\n')
   else
-        n = 0; 
+        n = 0;
 	while ~feof(fid),
-              n = n + 1; 
-              if (n ~= eln), 
+              n = n + 1;
+              if (n ~= eln),
                     fgetl(fid);
               else
                     line = fgetl(fid);
@@ -1397,7 +1397,7 @@ end proc:
         fclose(fid);
   end;
   printf('line %i: %s\n',eln,line);
- 
+
 ```
 
 <nowiki>Insert non-formatted text here</nowiki>
@@ -1438,7 +1438,7 @@ end
 
 return
 
--- 
+--
 ### =======================================================================
 
 -- NetRexx/Java programs don't have a special mechanism to seek to a specified line number
@@ -1469,12 +1469,12 @@ method readLine(inFileName, lineNr) public static signals IOException, FileNotFo
 
   return lineTxt
 
--- 
+--
 ### =======================================================================
 
 method isTrue() public static returns boolean
   return 1 == 1
--- 
+--
 ### =======================================================================
 
 method isFalse() public static returns boolean
@@ -1568,7 +1568,7 @@ begin
   Assign(myfile, filename);
   Reset(myfile);
   counter := 0;
-  Repeat 
+  Repeat
     if eof(myfile) then
     begin
       writeln('Error: The file "', filename, '" is too short. Cannot read line ', position);
@@ -1618,7 +1618,7 @@ Without an argument, the <tt>lines</tt> function reads filenames from the comman
 ```txt
 $ cal 2011 > cal.txt
 $ line7 cal.txt
-16 17 18 19 20 21 22  20 21 22 23 24 25 26  20 21 22 23 24 25 26  
+16 17 18 19 20 21 22  20 21 22 23 24 25 26  20 21 22 23 24 25 26
 $
 ```
 
@@ -1701,7 +1701,7 @@ next: ;
 ```Powershell
 
 $file = Get-Content c:\file.txt
-if ($file.count -lt 7) 
+if ($file.count -lt 7)
 {Write-Warning "The file is too short!"}
 else
 {
@@ -1768,10 +1768,10 @@ Procedure readNthLine(file, n, *results.lineLastRead)
     *results\line = ReadString(file)
     *results\lineRead + 1
   Wend
-  
+
   If *results\lineRead = n
     ProcedureReturn 1
-  EndIf 
+  EndIf
 EndProcedure
 
 Define filename.s = OpenFileRequester("Choose file to read a line from", "*.*", "All files (*.*)|*.*", 0)
@@ -1783,12 +1783,12 @@ If filename
       MessageRequester("Results", fileReadResults\line)
     Else
       MessageRequester("Error", "There are less than " + Str(lineToRead) + " lines in file.")
-    EndIf 
+    EndIf
     CloseFile(file)
   Else
     MessageRequester("Error", "Couldn't open file " + filename + ".")
   EndIf
-EndIf 
+EndIf
 ```
 
 
@@ -1843,7 +1843,7 @@ either x [print x] [print "No seventh line"]
 ```Red>>
  x: pick read/lines %file.txt 7
 
-case [  
+case [
     x = none  [print "File has less than seven lines"]
     (length? x) = 0 [print "Line 7 is empty"]
     (length? x) > 0 [print append "Line seven =  " x]
@@ -1974,14 +1974,14 @@ use std::io::BufRead;
 use std::io::BufReader;
 use std::io::Error;
 use std::path::Path;
- 
+
 fn main() {
     let path = Path::new("file.txt");
     let line_num = 7usize;
     let line = get_line_at(&path, line_num - 1);
     println!("{}", line.unwrap());
 }
- 
+
 fn get_line_at(path: &Path, line_num: usize) -> Result<String, Error> {
     let file = File::open(path).expect("File not found or cannot be opened");
     let content = BufReader::new(&file);
@@ -2071,7 +2071,7 @@ if ("" == seventhLine) println("line is empty")
 val file = try Left(io.Source.fromFile("input.txt")) catch {
   case exc => Right(exc.getMessage)
 }
-val seventhLine = (for(f <- file.left; 
+val seventhLine = (for(f <- file.left;
   line <- f.getLines.toStream.drop(6).headOption.toLeft("too few lines").left) yield
     if (line == "") Right("line is empty") else Left(line)).joinLeft
 ```
@@ -2106,7 +2106,7 @@ and reads the requested line with [http://seed7.sourceforge.net/libraries/file.h
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const func string: getLine (inout file: aFile, in var integer: lineNum) is func
   result
     var string: line is "";
@@ -2240,25 +2240,25 @@ Where it is necessary to provide very fast access to lines of text, it becomes s
   %file = new fileObject();
   %file.openForRead("File/Path.txt");
   $seventhLine = "";
-  
+
   while(!%file.isEOF())
   {
   	%line++;
-  
+
   	if(%line == 7)
   	{
   		$seventhLine = %file.readLine();
-  
+
   		if($seventhLine $= "")
   		{
   			error("Line 7 of the file is blank!");
   		}
   	}
   }
-  
+
   %file.close();
   %file.delete();
-  
+
   if(%line < 7)
   {
   	error("The file does not have seven lines!");
@@ -2311,7 +2311,7 @@ How this works is that the first <code>skip</code> will skip enough lines until 
 {{works with|bash}}
 
 ```bash
-get_nth_line() { 
+get_nth_line() {
     local file=$1 n=$2 line
     while ((n-- > 0)); do
         if ! IFS= read -r line; then
@@ -2415,7 +2415,7 @@ if (Cur_Line < 7) {
     }
     Reg_Copy(10, 1)
 }
-Buf_Close(NOMSG) 
+Buf_Close(NOMSG)
 ```
 
 
@@ -2450,8 +2450,8 @@ repeat  C:= ChIn(1);
                 [Text(0, "Line is empty (EOF)^M^L");  return false];
         L(I):= C;  I:= I+1;
 until   C=$0A\LF\ or I>=MaxLen;
-if I >= MaxLen then Text(0, "Line might be truncated^M^J"); 
-if I = 2 then Text(0, "Line is empty^M^J"); 
+if I >= MaxLen then Text(0, "Line might be truncated^M^J");
+if I = 2 then Text(0, "Line is empty^M^J");
 L(I-1):= L(I-1) ! $80;          \terminate string
 return true;
 ];

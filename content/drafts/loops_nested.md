@@ -12,9 +12,9 @@ tags = []
 
 {{task|Iteration}} [[Category:Loop modifiers]]
 
-Show a nested loop which searches a two-dimensional array filled with random numbers uniformly distributed over <math>[1,\ldots,20]</math>. 
+Show a nested loop which searches a two-dimensional array filled with random numbers uniformly distributed over <math>[1,\ldots,20]</math>.
 
-The loops iterate rows and columns of the array printing the elements until the value <math>20</math> is met. 
+The loops iterate rows and columns of the array printing the elements until the value <math>20</math> is met.
 
 Specifically, this task also shows how to [[Loop/Break|break]] out of nested loops.
 
@@ -44,7 +44,7 @@ Specifically, this task also shows how to [[Loop/Break|break]] out of nested loo
 
 
 ```360asm
-*        Loop nested               12/08/2015 
+*        Loop nested               12/08/2015
 LOOPNEST CSECT
          USING  LOOPNEST,R12
          LR     R12,R15
@@ -101,7 +101,7 @@ LOOPJ2   BXH    R7,R10,ELOOPJ2     do j=1 to hbound(x,2)
          LA     R3,4(R3)
          STH    R3,MVCI
          L      R5,X(R1)
-         C      R5,=F'20'          if x(i,j)=20 
+         C      R5,=F'20'          if x(i,j)=20
          BE     ELOOPI2            then exit
          B      LOOPJ2
 ELOOPJ2  XPRNT  MVCZ,80
@@ -116,7 +116,7 @@ MVCZ     DS     CL80
 MVCI     DC     H'0'
 XDEC     DS     CL16
 RANDSEED DC     F'16807'           running n
-         YREGS  
+         YREGS
          END    LOOPNEST
 ```
 
@@ -202,8 +202,8 @@ LAB:
 
 ```txt
 
-        +19           +5           +1           +4          +17           +6           +2          +18          +12  
-         +3          +13           +6           +8           +6          +10           +9          +15          +20  
+        +19           +5           +1           +4          +17           +6           +2          +18          +12
+         +3          +13           +6           +8           +6          +10           +9          +15          +20
 
 ```
 
@@ -260,7 +260,7 @@ xkcd com 292:
 
 /* ARM assembly Raspberry PI  */
 /*  program loopnested.s   */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -281,21 +281,21 @@ sMessResult:        .ascii " "
 sMessValeur:        .fill 11, 1, ' '            @ size => 11
 szCarriageReturn:   .asciz "\n"
 
- 
+
 .align 4
 iGraine:  .int 314159
 
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 tiValues:                .skip  4 * NBVALUECOL * NBLIGNES
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                             @ entry of program 
+.global main
+main:                                             @ entry of program
     ldr r3,iAdrtiValues
     mov r4,#0                                     @ loop indice
     mov r5,#0
@@ -303,7 +303,7 @@ main:                                             @ entry of program
 1:                                                @ begin loop 1
     mov r0,#MAXVALUE + 1
     bl genereraleas                               @ result 0 to MAXVALUE
-    
+
     mul r6,r5,r7
     add r6,r4,lsl #2
     str r0,[r3,r6]
@@ -346,52 +346,52 @@ main:                                             @ entry of program
     ldr r0,iAdrszCarriageReturn
     bl affichageMess                              @ display message
 
-100:                                              @ standard end of the program 
+100:                                              @ standard end of the program
     mov r0, #0                                    @ return code
     mov r7, #EXIT                                 @ request to exit program
     svc #0                                        @ perform the system call
- 
+
 iAdrsMessValeur:          .int sMessValeur
 iAdrszCarriageReturn:     .int szCarriageReturn
 iAdrsMessResult:          .int sMessResult
 iAdrtiValues:             .int tiValues
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
- 
+
 1:                                                  @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b                                          @ and loop
                                                     @ and move digit from left of area
@@ -404,23 +404,23 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -428,40 +428,40 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 /***************************************************/
 /*   Generation random number                  */
 /***************************************************/
 /* r0 contains limit  */
 genereraleas:
-    push {r1-r4,lr}                                    @ save registers 
+    push {r1-r4,lr}                                    @ save registers
     ldr r4,iAdriGraine
     ldr r2,[r4]
     ldr r3,iNbDep1
     mul r2,r3,r2
     ldr r3,iNbDep1
     add r2,r2,r3
-    str r2,[r4]                                        @ maj de la graine pour l appel suivant 
+    str r2,[r4]                                        @ maj de la graine pour l appel suivant
     cmp r0,#0
     beq 100f
     mov r1,r0                                          @ divisor
     mov r0,r2                                          @ dividende
     bl division
     mov r0,r3                                          @ résult = remainder
-  
+
 100:                                                   @ end function
     pop {r1-r4,lr}                                     @ restaur registers
     bx lr                                              @ return
 /*****************************************************/
 iAdriGraine: .int iGraine
 iNbDep1: .int 0x343FD
-iNbDep2: .int 0x269EC3 
+iNbDep2: .int 0x269EC3
 /***************************************************/
 /* integer division unsigned                       */
 /***************************************************/
@@ -475,14 +475,14 @@ division:
     mov r3, #0                                         @ init remainder
     mov r4, #32                                        @ init counter bits
     b 2f
-1:                                                     @ loop 
+1:                                                     @ loop
     movs r0, r0, LSL #1                                @ r0 <- r0 << 1 updating cpsr (sets C if 31st bit of r0 was 1)
-    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C 
-    cmp r3, r1                                         @ compute r3 - r1 and update cpsr 
-    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1 
-    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C 
+    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C
+    cmp r3, r1                                         @ compute r3 - r1 and update cpsr
+    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1
+    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C
 2:
-    subs r4, r4, #1                                    @ r4 <- r4 - 1 
+    subs r4, r4, #1                                    @ r4 <- r4 - 1
     bpl 1b                                             @ if r4 >= 0 (N=0) then loop
     pop {r4, lr}
     bx lr
@@ -689,8 +689,8 @@ quit
 
 Using goto (note: gotos are [http://en.wikipedia.org/wiki/Considered_harmful considered harmful]):
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <time.h>
 #include <stdio.h>
 
@@ -723,8 +723,8 @@ Done:
 Lambda call:
 {{works with|C++11}}
 
-```cpp>#include<cstdlib
-
+```cpp
+#include <cstdlib>
 #include<ctime>
 #include<iostream>
 
@@ -752,10 +752,10 @@ int main()
 Goto statement:
 {{works with|C++11}}
 
-```cpp>#include<cstdlib
-
-#include<ctime>
-#include<iostream>
+```cpp
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
 
 using namespace std;
 int main()
@@ -796,7 +796,7 @@ class Program {
                 a[i, j] = r.Next(0, 21) + 1;
             }
         }
-        
+
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 Console.Write(" {0}", a[i, j]);
@@ -858,7 +858,7 @@ var rnd = new RandomStream();
 [ n in nums ] n = floor(rnd.getNext() * 21):int;
 delete rnd;
 
-// this shows a clumsy explicit way of iterating, to actually create nested loops: 
+// this shows a clumsy explicit way of iterating, to actually create nested loops:
 label outer for i in nums.domain.dim(1) {
         for j in nums.domain.dim(2) {
                 write(" ", nums(i,j));
@@ -962,7 +962,7 @@ We explicitly return a status flag from the inner loop:
     <Cfoutput>#randNum# </Cfoutput>
     <Cfif RandNum eq 20><cfbreak></Cfif>
   </Cfloop>
-  
+
 
 </Cfloop>
 
@@ -978,7 +978,7 @@ We explicitly return a status flag from the inner loop:
   (dotimes (i 10)
     (dotimes (j 10)
       (setf (aref a i j) (1+ (random 20)))))
-   
+
   (block outer
     (dotimes (i 10)
       (dotimes (j 10)
@@ -1138,9 +1138,9 @@ There is no direct way to break out of a nested loop in Dyalect, <code>goto</cod
 
 ```dyalect
 const array = [[2, 12, 10, 4], [18, 11, 20, 2]]
- 
+
 for row in array {
-    if { 
+    if {
         for element in row {
             print("\(element)")
             if element == 20 {
@@ -1205,7 +1205,7 @@ println("done.")
 ;;
 (for* ((row array) (aij row)) (write aij) #:break (= aij 20))
   → 9 8 11 1 14 11 1 9 16 1 10 5 5 6 5 4 13 17 14 13 6 10 16 4 8 5 1 17 16 19 4 6 18 1 15 3 4 13 19
-  6 12 5 5 17 19 16 3 7 2 15 16 14 16 16 19 18 14 16 6 18 14 17 20 
+  6 12 5 5 17 19 16 3 7 2 15 16 14 16 16 19 18 14 16 6 18 14 17 20
 
 ```
 
@@ -1226,7 +1226,7 @@ defmodule Loops do
       :find -> IO.puts "done"
     end
   end
-  
+
   def nested(list) do
     Enum.each(list, fn row ->
       Enum.each(row, fn x ->
@@ -1536,7 +1536,7 @@ C       makes everybody so comfortable.
 
 C FORTRAN 77 does not come with a random number generator, but it is
 C easy enough to type "fortran 77 random number generator" into your
-C preferred search engine and to copy and paste what you find. 
+C preferred search engine and to copy and paste what you find.
 C The following code is a slightly-modified version of:
 C
 C     http://www.tat.physik.uni-tuebingen.de/
@@ -1616,7 +1616,7 @@ outer: do i = 1, size(ia, 1)
          end do
          write(*,*)
        end do outer
-       
+
 end program Example
 ```
 
@@ -1625,7 +1625,7 @@ end program Example
 ```txt
 
  14  2  1 11  8  1 14 11  3 15
-  7 15 16  6  7 17  3 20 
+  7 15 16  6  7 17  3 20
 
 ```
 
@@ -1646,8 +1646,8 @@ For i As Integer = 1 To 20
 Next i
 
 For i As Integer = 1 To 20
-  For j As Integer = 1 To 20     
-    Print Using "##"; a(i, j); 
+  For j As Integer = 1 To 20
+    Print Using "##"; a(i, j);
     Print " ";
     If a(i, j) = 20 Then Exit For, For '' Exits both for loops
   Next j
@@ -1891,7 +1891,7 @@ every !(!(L  := list(10)) := list(10))  := ?20   # setup a 2d array of random nu
 
 every i := 1 to *L do                            # using nested loops
    every j := 1 to *L[i] do
-      if L[i,j] = 20 then 
+      if L[i,j] = 20 then
          break break write("L[",i,",",j,"]=20")
 
 end
@@ -1900,7 +1900,7 @@ end
 
 ```Icon
 every x := L[i := 1 to *L,1 to *L[i]] do
-    if x = 20 then break write("L[",i,",",j,"]=20")  # more succinctly  
+    if x = 20 then break write("L[",i,",",j,"]=20")  # more succinctly
 
 every if !!L = 20 then break write("Found !!L=20")   # even more so (but looses the values of i and j
 ```
@@ -1988,7 +1988,7 @@ Demonstrates use of <code>break</code> with a label.
 Uses <code>print()</code> function from [[Rhino]].
 
 ```javascript
-// a "random" 2-D array 
+// a "random" 2-D array
 var a = [[2, 12, 10, 4], [18, 11, 9, 3], [14, 15, 7, 17], [6, 19, 8, 13], [1, 20, 16, 5]];
 
 outer_loop:
@@ -1996,7 +1996,7 @@ for (var i in a) {
     print("row " + i);
     for (var j in a[i]) {
         print(" " + a[i][j]);
-        if (a[i][j] == 20) 
+        if (a[i][j] == 20)
             break outer_loop;
     }
 }
@@ -2056,7 +2056,7 @@ console.log(
   }).join('\n')
 );
 ```
- 
+
 
 Output:
 
@@ -2127,14 +2127,14 @@ to an array of arrays is useful:
 def reshape(s; n):
   reduce s as $s ({i:0, j:0, matrix: []};
     .matrix[.i][.j] = $s
-    | if .j + 1 == n then .i += 1 | .j = 0 
+    | if .j + 1 == n then .i += 1 | .j = 0
       else .j += 1
       end)
   | .matrix;
 ```
 
 
-Assuming the availability of rand/1 (e.g. as defined below), 
+Assuming the availability of rand/1 (e.g. as defined below),
 we can now readily define functions to create the matrix and pretty-print the
 items as required:
 
@@ -2155,8 +2155,8 @@ show(20; 4; 20)
 {{out}}
 
 Assuming proper placement of PRNG functions as defined below, the following invocation:
- 
-    $ jq -cn -f program.jq --arg seed 17 
+
+    $ jq -cn -f program.jq --arg seed 17
 
 produces:
 
@@ -2351,10 +2351,10 @@ row 2:  3 6 4 6 10 2 10 20
 
 ```Lasso
 local(a) = array(
-    array(2, 12, 10, 4), 
-    array(18, 11, 9, 3), 
-    array(14, 15, 7, 17), 
-    array(6, 19, 8, 13), 
+    array(2, 12, 10, 4),
+    array(18, 11, 9, 3),
+    array(14, 15, 7, 17),
+    array(6, 19, 8, 13),
     array(1, 20, 16, 5)
 )
 
@@ -2483,7 +2483,7 @@ end repeat
 
 repeat with i = 1 to 10
     repeat with j = 1 to 10
-        if aNums[i,j] = 20 then 
+        if aNums[i,j] = 20 then
             put true into exitLoop
             exit repeat
         end if
@@ -2528,14 +2528,14 @@ until.20
 
 ```lua
 t = {}
-for i = 1, 20 do 
+for i = 1, 20 do
   t[i] = {}
   for j = 1, 20 do t[i][j] = math.random(20) end
 end
 function exitable()
   for i = 1, 20 do
     for j = 1, 20 do
-      if t[i][j] == 20 then 
+      if t[i][j] == 20 then
         return i, j
       end
     end
@@ -2601,15 +2601,15 @@ end do:
 
 
 ```Mathematica
-Do[ Print[m[[i, j]]]; 
-    If[m[[i, j]] === 20, Return[]], 
-  {i, 1, Dimensions[m][[1]]}, 
+Do[ Print[m[[i, j]]];
+    If[m[[i, j]] === 20, Return[]],
+  {i, 1, Dimensions[m][[1]]},
   {j, 1, Dimensions[m][[2]]}]
 ```
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-Loops are considered slow in Matlab and Octave, it is preferable to vectorize the code.  
+Loops are considered slow in Matlab and Octave, it is preferable to vectorize the code.
 
 ```Matlab
 	a = ceil(rand(100,100)*20);
@@ -2764,10 +2764,10 @@ NESTLOOP
 
 ```txt
 USER>D NESTLOOP^ROSETTA
- 
+
 16, 4, 6, 20,
 USER>D NESTLOOP^ROSETTA
- 
+
 9, 10, 10, 13, 2, 9, 6, 10, 1, 12, 12, 10, 8, 1, 13
 7, 14, 12, 9, 14, 3, 20,
 ```
@@ -2828,7 +2828,7 @@ while row < 10 {
 
 ```txt
 prompt$ nekoc loops-nested.neko
-prompt$ neko loops-nested       
+prompt$ neko loops-nested
 values[0][0] = 17
 values[0][1] = 1
 values[0][2] = 8
@@ -2865,10 +2865,10 @@ module NestedLoops
     {
         def arr = array(10, 10);
         def rnd = Random();
-        
+
         foreach ((i, j) in $[(i, j) | i in [0 .. 9], j in [0 .. 9]])
             arr[i, j] = rnd.Next(1, 21);
-            
+
         Finish:
         {
             foreach ((i, j) in $[(i, j) | i in [0 .. 9], j in [0 .. 9]])
@@ -2905,7 +2905,7 @@ options replace format comments java crossref savelog symbols nobinary
 
   -- run test
   loop x1 = 0 for dim2.length
-    say Rexx(x1 + 1).right(4)': \-' 
+    say Rexx(x1 + 1).right(4)': \-'
     loop x2 = 0 for dim2[x1].length
       say Rexx(dim2[x1, x2]).right(3) || '\-'
       if dim2[x1, x2] = 20 then leave x1
@@ -2934,7 +2934,7 @@ The timings are:
  0.032      Netrex with option binary
  7.223      ooRexx with x[i,j]
  6.490      ooRexx with x.i.j
- 0.188      PL/I Matrix as coded: FIXED 
+ 0.188      PL/I Matrix as coded: FIXED
  0.058      PL/I Matrix BIN FIXED(15)
 14.217      the REXX program run with Regina
 10.109      the REXX program run with ooRexx
@@ -2971,7 +2971,7 @@ import math, strutils
 const arrSize = 10
 
 var a: array[0..arrSize-1, array[0..arrSize-1, int]]
-var s: string = ""      
+var s: string = ""
 
 randomize()   # different results each time this runs
 
@@ -2985,7 +2985,7 @@ block outer:
          if a[i][j] < 10:
             s.add(" ")
          addf(s,"$#",$a[i][j])
-         if a[i][j] == 20: 
+         if a[i][j] == 20:
             break outer
          s.add(", ")
       s.add("\n")
@@ -2995,8 +2995,8 @@ echo(s)
 {{out}}
 
 ```txt
- 9, 16,  3, 18,  4, 17,  2, 16,  7,  6, 
- 1,  6,  1, 11,  9,  8, 12,  7, 19,  8, 
+ 9, 16,  3, 18,  4, 17,  2, 16,  7,  6,
+ 1,  6,  1, 11,  9,  8, 12,  7, 19,  8,
 13, 16,  4,  5,  2, 20
 ```
 
@@ -3066,7 +3066,7 @@ for i = 1:100
   endfor
 endfor
 endfunction
-    
+
 search_almost_twenty()
 
 % avoiding function, we need a control variable.
@@ -3483,10 +3483,10 @@ for(i in seq_len(m))
       {
          done <- TRUE
          break
-      } 
-      cat(", ")     
+      }
+      cat(", ")
    }
-   if(done) 
+   if(done)
    {
       cat("\n")
       break
@@ -3546,7 +3546,7 @@ zeropad: func [pad n][
     n: to-string n  insert/dup n "0" (pad - length? n)  n]
 
 ; Initialize random number generator from current time.
-random/seed now 
+random/seed now
 
 ; Create array and fill with random numbers, range 1..20.
 soup: array [10 10]
@@ -3602,7 +3602,7 @@ Loop break with catch/throw:
 
 ## REXX
 
-Since the two-dimensional array could potentially not be large enough 
+Since the two-dimensional array could potentially not be large enough
 to contain the target (20), it's possible to not find the target.
 
 Code was added to this REXX program to reflect that possibility and issue an appropriate message (whether the target was found or not).
@@ -3693,7 +3693,7 @@ for row = 1 to size
         see "row " + row + " col " + col + "value : " + array[row][col] + nl
         if array[row][col] = 20 exit for row ok
     next
-next 
+next
 
 func newlist x, y
      if isstring(x) x=0+x ok
@@ -3742,7 +3742,7 @@ row 5 col 5 value : 6
 
 ## Ruby
 
-As the break command only jumps out of the innermost loop, 
+As the break command only jumps out of the innermost loop,
 this task requires Ruby's <code>catch/throw</code> functionality.
 
 ```ruby
@@ -3795,10 +3795,10 @@ puts "done"
 
 #<Enumerator: [1, 4, 9, 13, 15, 10, 3, 5, 14, 17, 18, 8, 2, 12, 6, 19, 20, 11, 7, 16]:each_slice(4)>
 
-1 4 9 13 
-15 10 3 5 
-14 17 18 8 
-2 12 6 19 
+1 4 9 13
+15 10 3 5
+14 17 18 8
+2 12 6 19
 20 done
 
 ```
@@ -3816,7 +3816,7 @@ for row = 1 TO 10
                 a(row,col) = INT(20 * RND(1) + 1)
         next col
 next row
- 
+
 for row = 1 to 10
         for col = 1 to 10
                print a(row, col)
@@ -3876,7 +3876,7 @@ class MAIN is
   main is
     a:ARRAY2{INT} := #(10,10);
     i, j :INT;
-    
+
     RND::seed(1230);
     loop i := 0.upto!(9);
       loop j := 0.upto!(9);
@@ -3991,9 +3991,9 @@ end
 {{out}}
 
 ```txt
- 5 18 19  8 
- 5 14  5  6 
- 5  7  7 12 
+ 5 18 19  8
+ 5 14  5  6
+ 5  7  7 12
 ```
 
 
@@ -4037,9 +4037,9 @@ const proc: main is func
 
 ```txt
 
-15, 10,  5,  9, 10, 13,  1,  9, 11, 10, 
- 5,  6, 10, 13,  4, 13, 11, 12,  2,  4, 
- 4, 16, 20, 
+15, 10,  5,  9, 10, 13,  1,  9, 11, 10,
+ 5,  6, 10, 13,  4, 13, 11, 12,  2,  4,
+ 4, 16, 20,
 
 ```
 
@@ -4121,8 +4121,8 @@ in case your smalltalk does not have it, here's the definition:
 ```smalltalk
 !Block methodsFor:'looping'!
 loopWithExit
-    "the receiver must be a block of one argument.  It is evaluated in a loop forever, 
-     and is passed a block, which, if sent a value:-message, will exit the receiver block, 
+    "the receiver must be a block of one argument.  It is evaluated in a loop forever,
+     and is passed a block, which, if sent a value:-message, will exit the receiver block,
      returning the parameter of the value:-message. Used for loops with exit in the middle."
 
     |exitBlock|
@@ -4142,7 +4142,7 @@ v := 1 to:20 collect:[:i |
         1 to:20 collect:[:j | Random nextIntegerBetween:1 and:20 ]
      ].
 
-result := 
+result :=
     [:exit |
         1 to:20 do:[:row |
             1 to:20 do:[:col |
@@ -4187,7 +4187,7 @@ The following code implements a BiArray class with a method that allows iteratio
  over array's elements, from left to right and top to bottom"
 Object subclass: BiArray [
   |cols rows elements|
-  BiArray class >> columns: columns  rows: howManyRows [ 
+  BiArray class >> columns: columns  rows: howManyRows [
       ^ super basicNew init: columns per: howManyRows
   ]
   init: columns per: howManyRows [
@@ -4210,7 +4210,7 @@ Object subclass: BiArray [
      i := 1. lim := rows * cols.
      [ ( i <= lim )
          & (aBlock value: (self directAt: i) )
-     ] whileTrue: [ 
+     ] whileTrue: [
          anotherBlock value: (self directAt: i).
          i := i + 1.
        ]
@@ -4229,7 +4229,7 @@ biarr := BiArray columns: 10 rows: 10.
 ].
 
 "loop searching for 20; each block gets the element passed as argument"
-biarr whileTrue: [ :v | v ~= 20 ] 
+biarr whileTrue: [ :v | v ~= 20 ]
       do: [ :v | v displayNl ]
 ```
 
@@ -4300,7 +4300,7 @@ forv i=1/20 {
 			continue, break
 		}
 	}
-	
+
 	if `q' continue, break
 }
 if !`q' {
@@ -4359,7 +4359,7 @@ else exit _rc
 
 
 
-###  Mata 
+###  Mata
 
 In Mata, the situation is simpler: one may '''[https://www.stata.com/help.cgi?m2_return return]''' from a program without resort to exceptions, or use the '''[https://www.stata.com/help.cgi?m2_goto goto]''' statement. It's still possible to use '''[https://www.stata.com/help.cgi?m2_break break]''' and flags though.
 
@@ -4577,7 +4577,7 @@ ENDLOOP
 9 6 6 5 10 18 11 17 17 9
 5 16 2 4 2 15 13 13 4 9
 12 4 6 19 3 1 3 12 13 8
-3 7 4 8 15 12 1 20 
+3 7 4 8 15 12 1 20
 
 ```
 
@@ -4613,9 +4613,9 @@ echo
 {{out|Example output}}
 
 ```txt
- 7  5  4  6  4  5  2 15 10  7 
-15  4 14  9 10 14 14  3  3  5 
-14 20 
+ 7  5  4  6  4  5  2 15 10  7
+15  4 14  9 10 14 14  3  3  5
+14 20
 ```
 
 
@@ -4840,7 +4840,7 @@ const N=5;
 var rows=(0).pump(N,List, (0).pump.fp(N,List,(1).random.fpM("1-",21)) );
 try{
    foreach r in (N){
-      foreach c in (N){ 
+      foreach c in (N){
          x:=rows[r][c]; x.print(",");
          if (x==20) { println("Found it!"); throw(Exception.Generic); }
       }
@@ -4875,7 +4875,7 @@ try{
 90 NEXT j
 100 IF b=0 THEN PRINT
 110 NEXT i
-120 STOP 
+120 STOP
 ```
 
 {{out|Example output}}

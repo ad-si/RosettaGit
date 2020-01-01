@@ -19,8 +19,8 @@ There are no associative arrays in the C language. Some libraries provide hash t
 A hash table can be implemented with the following. Because of this example's simplicity, it comes with some restrictions on use and capabilities: It can't be resized automatically, if you try to insert more values than its capacity it will freeze, the hashing function is very simple, etc. All are fixable with additional logic or using a library:
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct {
@@ -76,8 +76,8 @@ Example using [http://judy.sourceforge.net/ Judy].
 {{libheader|Judy}}
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <Judy.h>
 
 int main()
@@ -119,8 +119,8 @@ int main()
 We can easily iterate over pair of keys (indexes) and values.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <Judy.h>
 
 #define MAXLINELEN 256
@@ -180,8 +180,8 @@ To use the hash table as an associative array, this program defines fetch() and 
 
 {{libheader|POSIX}}
 
-```c>#include <inttypes.h
-	/* intptr_t, PRIxPTR */
+```c
+#include <inttypes.h> /* intptr_t, PRIxPTR */
 #include <search.h>	/* hcreate(), hsearch() */
 #include <stdio.h>	/* perror(), printf() */
 #include <stdlib.h>	/* exit() */
@@ -293,8 +293,8 @@ black has value 000000
 
 {{libheader|POSIX}}
 
-```c>#include <inttypes.h
-
+```c
+#include <inttypes.h>
 #include <search.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -409,7 +409,7 @@ delete(int32_t key)
 			return d->deleted = 1;
 		}
 	} else
-		return 0;	
+		return 0;
 }
 
 int
@@ -477,9 +477,8 @@ Every key and value is a *void, needs a cast to the correct type. Because BSD al
 {{works with|OpenBSD|4.8}}
 
 
-```c>#include <sys/types.h
-
-
+```c
+#include <sys/types.h>
 #include <err.h>	/* err() */
 #include <fcntl.h>
 #include <limits.h>
@@ -735,9 +734,8 @@ number_example:
 {{works with|OpenBSD|4.8}}
 
 
-```c>#include <sys/tree.h
-
-
+```c
+#include <sys/tree.h>
 #include <err.h>	/* err() */
 #include <stdio.h>	/* printf(), puts() */
 #include <stdlib.h>	/* calloc(), free() */
@@ -883,7 +881,7 @@ number_example(void)
 		char *values[] = { "four", "eight", "ten" };
 
 		for (i = 0; i < 3; i++) {
-			/* 
+			/*
 			 * This shows how to add or replace a value
 			 * in the tree (so I can change an entry
 			 * from 4 => 4.47214 to 4 => "four").

@@ -781,7 +781,9 @@ Note that the problem mentioned above cannot occur if there's valid code between
 
 Single line C++-style comments
 
-```cpp>// This is a comment</lang
+```cpp
+// This is a comment
+```
 
 C++-style comments start with <tt>//</tt> and reach up to, but not including, the end of line (more exactly, up to the next unescaped newline). While formally, C++-style comments cannot be nested either, in practice they can:
 

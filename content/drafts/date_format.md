@@ -10,12 +10,12 @@ categories = []
 tags = []
 +++
 
-{{task|Text processing}} 
+{{task|Text processing}}
 {{Clarified-review}}
 
 ;Task:
 Display the   current date   in the formats of:
-:::*    '''2007-11-23'''     and 
+:::*    '''2007-11-23'''     and
 :::*    '''Sunday, November 23, 2007'''
 
 
@@ -37,7 +37,7 @@ print(Time().strftime(‘%A, %B %e, %Y’))
 
 ```forth
 
-d:new 
+d:new
 "%Y-%M-%D" over d:format . cr
 "%W, %N %D, %Y" over d:format . cr
 bye
@@ -219,7 +219,7 @@ FORMAT # some useful format declarations #
 printf((ymd repr,       now[year OF tm:mday OF tm], $l$));
 printf((dmdy repr,      now[wday OF tm], now[mon OF tm], now[mday OF tm], now[year OF tm], $l$));
 
-printf((unix time repr, now[wday OF tm], now[mon OF tm], now[mday OF tm], 
+printf((unix time repr, now[wday OF tm], now[mon OF tm], now[mday OF tm],
                         now[hour OF tm:sec OF tm], now[isdst OF tm]+1, now[year OF tm], $l$))
 ```
 
@@ -340,7 +340,7 @@ Friday, February 17, 2017
 
 DIM today As Double = Now()
 
-PRINT Format(today, "yyyy-mm-dd") 
+PRINT Format(today, "yyyy-mm-dd")
 PRINT Format(today, "dddd, mmmm d, yyyy")
 ```
 
@@ -407,18 +407,18 @@ Sunday,  16, 2017
       daysow$ = "Sunday    Monday    Tuesday   Wednesday Thursday  Friday    Saturday"
       months$ = "January   February  March     April     May       June      " + \
       \         "July      August    September October   November  December"
-      
+
       date$ = TIME$
       dayow% = (INSTR(daysow$, MID$(date$,1,3)) + 9) DIV 10
       month% = (INSTR(months$, MID$(date$,8,3)) + 9) DIV 10
-      
+
       PRINT MID$(date$,12,4) "-" RIGHT$("0"+STR$month%,2) + "-" + MID$(date$,5,2)
-      
+
       PRINT FNrtrim(MID$(daysow$, dayow%*10-9, 10)) ", " ;
       PRINT FNrtrim(MID$(months$, month%*10-9, 10)) " " ;
       PRINT MID$(date$,5,2) ", " MID$(date$,12,4)
       END
-      
+
       DEF FNrtrim(A$)
       WHILE RIGHT$(A$) = " " A$ = LEFT$(A$) : ENDWHILE
       = A$
@@ -429,8 +429,8 @@ Sunday,  16, 2017
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <time.h>
 #define MAX_BUF 50
@@ -471,7 +471,7 @@ Wednesday, May 13, 2009
 
 ```cpp
 // Display the current date in the formats of "2007-11-10"
-// and "Sunday, November 10, 2007". 
+// and "Sunday, November 10, 2007".
 
 #include <vector>
 #include <string>
@@ -496,7 +496,7 @@ public:
         time_t t = time(0);
         localtime_r(&t, &ltime);
     }
-    
+
     /** Return the date based on a format string.  The format string is
      *  fed directly into strftime().  See the strftime() documentation
      *  for information on the proper construction of format strings.
@@ -513,13 +513,13 @@ public:
         size_t result = strftime(out, sizeof out, fmt, &ltime);
         return std::string(out, out + result);
     }
-    
+
     /** Return the date in ISO-8601 date format.
      *
      *  @return a string containing the date in ISO-8601 date format.
      */
     std::string getISODate() {return getDate("%F");}
-    
+
     /** Return the date formatted as "Weekday-name, Month-name Day, Year".
      *
      *  @return a string containing the date in the specified format.
@@ -626,7 +626,7 @@ Sunday, December 06, 2009
                05  FILLER PIC X(9) VALUE "October".
                05  FILLER PIC X(9) VALUE "November".
                05  FILLER PIC X(9) VALUE "December".
-              
+
            03  Months-Values REDEFINES Months-Data.
                05  Months-Table PIC X(9) OCCURS 12 TIMES.
 
@@ -639,7 +639,7 @@ Sunday, December 06, 2009
 
        PROCEDURE DIVISION.
            MOVE FUNCTION CURRENT-DATE (1:8) TO Current-Date-Str
-           
+
            DISPLAY Current-Year "-" Current-Month "-" Current-Day
 
            ACCEPT Current-Day-Of-Week FROM DAY-OF-WEEK
@@ -686,7 +686,7 @@ console.log date.toLocaleDateString 'en-US',
 
 
 
-###  Portable version 
+###  Portable version
 
 
 ```coffeescript
@@ -712,7 +712,7 @@ DateFormatter = ->
     day = date.getDate()
     year = date.getFullYear();
     "#{weekday}, #{month} #{day}, #{year}"
- 
+
 formatter = DateFormatter()
 date = new Date()
 console.log formatter.brief(date)
@@ -724,7 +724,7 @@ console.log formatter.verbose(date)
 
 ```txt
 
-> coffee date_format.coffee 
+> coffee date_format.coffee
 2012-01-14
 Saturday, January 14, 2012
 
@@ -748,7 +748,7 @@ Saturday, January 14, 2012
 
 
 ```lisp
-(defconstant *day-names* 
+(defconstant *day-names*
     #("Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday"))
 (defconstant *month-names*
     #(nil "January" "February" "March" "April" "May" "June" "July"
@@ -756,7 +756,7 @@ Saturday, January 14, 2012
 
 (multiple-value-bind (sec min hour date month year day daylight-p zone) (get-decoded-time)
     (format t "~4d-~2,'0d-~2,'0d~%" year month date)
-    (format t "~a, ~a ~d, ~4d~%" 
+    (format t "~a, ~a ~d, ~4d~%"
         (aref *day-names* day) (aref *month-names* month) date year))
 ```
 
@@ -816,7 +816,7 @@ Spanish localization<br/>
 ```d
 module datetimedemo ;
 
-import tango.time.Time ; 
+import tango.time.Time ;
 import tango.text.locale.Locale ;
 import tango.time.chrono.Gregorian ;
 
@@ -860,13 +860,13 @@ ShowMessage(FormatDateTime('yyyy-mm-dd', Now) +#13#10+ FormatDateTime('dddd, mmm
 ```elixir
 defmodule Date_format do
   def iso_date, do: Date.utc_today |> Date.to_iso8601
-  
+
   def iso_date(year, month, day), do: Date.from_erl!({year, month, day}) |> Date.to_iso8601
-  
+
   def long_date, do: Date.utc_today |> long_date
-   
+
   def long_date(year, month, day), do: Date.from_erl!({year, month, day}) |> long_date
-  
+
   @months  Enum.zip(1..12, ~w[January February March April May June July August September October November December])
            |> Map.new
   @weekdays  Enum.zip(1..7, ~w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday])
@@ -1041,7 +1041,7 @@ Thursday, February 24, 2011
 
 : .short-date
   time&date ( s m h D M Y )
-  1 u.r .-0 1 u.r .-0 1 u.r 
+  1 u.r .-0 1 u.r .-0 1 u.r
   drop drop drop ;
 
 : str-table
@@ -1094,7 +1094,7 @@ Thursday, February 24, 2011
 
 
 
-###  Version 2: Meta Language 
+###  Version 2: Meta Language
 
 Forth is less of a language and more of an extensible toolkit of simple routines. This version attempts to demonstrate using the simple routines to extend Forth. Then using the language extensions and the power of concatenative language to solve the problem. This solution could create numerous date formats as one line definitions now that we have our "date" words defined. Typically these extensions would be saved as a library file.
 
@@ -1142,7 +1142,7 @@ CREATE MONTHS
         " August"  " September" " October" " November" " December" ]LIST
 
 CREATE DAYS
-  LIST[ " Monday" " Tuesday" " Wednesday"  " Thursday" 
+  LIST[ " Monday" " Tuesday" " Wednesday"  " Thursday"
         " Friday" " Saturday" " Sunday" ]LIST
 
 \ expose lists as indexable arrays that print the string
@@ -1150,7 +1150,7 @@ CREATE DAYS
 : ]DAY$.    ( n -- )  DAYS NTH$ WRITE$ ;
 
 
-\ 
+\
 ### =====================================
 
 \ Rosetta Task Code Begins
@@ -1179,10 +1179,10 @@ The subroutine DATE_AND_TIME does not return day of week information so we have 
 PROGRAM DATE
 
   IMPLICIT NONE
-  
+
   INTEGER :: dateinfo(8), day
   CHARACTER(9) :: month, dayname
-     
+
   CALL DATE_AND_TIME(VALUES=dateinfo)
   SELECT CASE(dateinfo(2))
     CASE(1)
@@ -1229,7 +1229,7 @@ PROGRAM DATE
     CASE(6)
       dayname = "Friday"
   END SELECT
-  
+
   WRITE(*,"(I0,A,I0,A,I0)") dateinfo(1),"-", dateinfo(2),"-", dateinfo(3)
   WRITE(*,"(4(A),I0,A,I0)") trim(dayname), ", ", trim(month), " ", dateinfo(3), ", ", dateinfo(1)
 
@@ -1238,7 +1238,7 @@ CONTAINS
   FUNCTION Day_of_week(d, m, y)
     INTEGER :: Day_of_week, j, k
     INTEGER, INTENT(IN) :: d, m, y
-    
+
     j = y / 100
     k = MOD(y, 100)
     Day_of_week = MOD(d + (m+1)*26/10 + k + k/4 + j/4 + 5*j, 7)
@@ -1489,7 +1489,7 @@ public class Dates
   //using DateFormat
   Date date = new Date();
   DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-  System.out.println(format1.format(date)); 
+  System.out.println(format1.format(date));
   DateFormat format2 = new SimpleDateFormat("EEEE, MMMM dd, yyyy");
   System.out.println(format2.format(date));
  }
@@ -1698,7 +1698,7 @@ Print str$(today, "dddd, mmm, dd, yyyy")
 
 ```Maple
 
-with(StringTools); 
+with(StringTools);
 FormatTime("%Y-%m-%d")
 FormatTime("%A,%B %d, %y")
 
@@ -1769,7 +1769,7 @@ echo -ag $time(dddd $+ $chr(44) mmmm dd $+ $chr(44) yyyy)
 Functions starting with 'Z' or '$Z' are implementation specific.
 
 ```MUMPS
-DTZ 
+DTZ
  WRITE !,"Date format 3: ",$ZDATE($H,3)
  WRITE !,"Or ",$ZDATE($H,12),", ",$ZDATE($H,9)
  QUIT
@@ -1806,15 +1806,15 @@ Demos:
 ```txt
 
 USER>D DTM^ROSETTA
- 
+
 2010-06-24
 Thursday, June 24, 2010
 USER>D DTM^ROSETTA(1234)
- 
+
 1844-05-19
 Saturday, May 19, 1844
 USER>D DTZ^ROSETTA
- 
+
 Date format 3: 2010-06-24
 Or Thursday, June 24, 2010
 
@@ -2020,7 +2020,7 @@ val gmt : Unix.tm =
 
 ```ocaml
 let months = [| "January"; "February"; "March"; "April"; "May"; "June";
-      "July"; "August"; "September"; "October"; "November"; "December" |] 
+      "July"; "August"; "September"; "October"; "November"; "December" |]
 
 let days = [| "Sunday"; "Monday"; "Tuesday";  (* Sunday is 0 *)
       "Wednesday"; "Thursday"; "Friday"; "Saturday" |]
@@ -2397,7 +2397,7 @@ Saturday, November 02, 2013
 
 ## PureBasic
 
-{{works with|PureBasic|4.41}} 
+{{works with|PureBasic|4.41}}
 
 ```PureBasic
 ;Declare Procedures
@@ -2405,8 +2405,8 @@ Declare.s MonthInText()
 Declare.s DayInText()
 
 ;Output the requested strings
-Debug FormatDate("%yyyy-%mm-%dd", Date()) 
-Debug DayInText() + ", " + MonthInText() + FormatDate(" %dd, %yyyy", Date()) 
+Debug FormatDate("%yyyy-%mm-%dd", Date())
+Debug DayInText() + ", " + MonthInText() + FormatDate(" %dd, %yyyy", Date())
 
 ;Used procedures
 Procedure.s DayInText()
@@ -2425,7 +2425,7 @@ EndProcedure
 
 Procedure.s MonthInText()
   Protected  m$
-  Select Month(Date())  
+  Select Month(Date())
     Case 1: m$="January"
     Case 2: m$="February"
     Case 3: m$="March"
@@ -2570,7 +2570,7 @@ REBOL [
 zeropad: func [pad n][
     n: to-string n
     insert/dup n "0" (pad - length? n)
-    n 
+    n
 ]
 d02: func [n][zeropad 2 n]
 
@@ -2625,7 +2625,7 @@ say weekday',' month zdd"," yyyy       /*format date as:  Month dd, yyyy*/
 ```txt
 
 2010-09-01
-Wednesday, September 1, 2010 
+Wednesday, September 1, 2010
 
 ```
 
@@ -2695,24 +2695,24 @@ dt = list(21)
 dt[1] = "abbreviated weekday name"
 dt[2] = "full weekday name"
 dt[3] = "abbreviated month name"
-dt[4] = "full month name" 
+dt[4] = "full month name"
 dt[5] = "Date & Time"
-dt[6] = "Day of the month" 
-dt[7] = "Hour (24)" 
-dt[8] = "Hour (12)" 
-dt[9] = "Day of the year" 
-dt[10] = "Month of the year" 
+dt[6] = "Day of the month"
+dt[7] = "Hour (24)"
+dt[8] = "Hour (12)"
+dt[9] = "Day of the year"
+dt[10] = "Month of the year"
 dt[11] = "Minutes after hour"
-dt[12] = "AM or PM" 
-dt[13] = "Seconds after the hour" 
-dt[14] = "Week of the year (sun-sat)" 
-dt[15] = "day of the week" 
-dt[16] = "date" 
-dt[17] = "time" 
-dt[18] = "year of the century" 
-dt[19] = "year" 
-dt[20] = "time zone" 
-dt[21] = "percent sign" 
+dt[12] = "AM or PM"
+dt[13] = "Seconds after the hour"
+dt[14] = "Week of the year (sun-sat)"
+dt[15] = "day of the week"
+dt[16] = "date"
+dt[17] = "time"
+dt[18] = "year of the century"
+dt[19] = "year"
+dt[20] = "time zone"
+dt[21] = "percent sign"
 
 for i=1 to 21
      see dt[i] + " : " + TimeList () [i] + nl
@@ -2754,7 +2754,7 @@ Sunday, February 08, 2015
 'Display the current date in the formats of "2007-11-10" and "Sunday, November 10, 2007".
 print date$("yyyy-mm-dd")
 print date$("dddd");", ";                     'return full day of the week (eg. Wednesday
-print date$("mmmm");" ";                      'return full month name (eg. March) 
+print date$("mmmm");" ";                      'return full month name (eg. March)
 print date$("dd, yyyy")                       'return day, year
 ```
 
@@ -2829,7 +2829,7 @@ println("%1$tA, %1$tB %1$td, %1$tY".format(now))
 ```seed7
 $ include "seed7_05.s7i";
   include "time.s7i";
- 
+
 const proc: main is func
   local
     const array string: months is [] ("January", "February", "March", "April", "May", "June",
@@ -2963,7 +2963,7 @@ display %tdDayname,_Month_dd,_CCYY td($S_DATE)
 
 ```Suneido
 Date().Format('yyyy-MM-dd')  -->  "2010-03-16"
-Date().LongDate() -->  "Tuesday, March 16, 2010" 
+Date().LongDate() -->  "Tuesday, March 16, 2010"
 ```
 
 
@@ -3283,16 +3283,16 @@ sub nDay$(n$)
 	case "Sat": n$ = n$ + "ur" : break
 	default: n$ = "none" : break
 	end switch
-	
+
 	return n$ + "day"
 end sub
 
 sub nMonth$(n$)
 	local month$(1), n
-	
+
 	n = token("January, February, March, April, May, June, July, August, September, October, November, December", month$(), ", ")
 	n = instr("JanFebMarAprMayJunJulAugSepOctNovDec", n$)
-	
+
 	return month$(int(n/3) + 1)
 end sub
 ```

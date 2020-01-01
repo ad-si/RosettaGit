@@ -15,9 +15,9 @@ tags = []
 Write a function that orders two lists or arrays filled with numbers.
 The function should accept two lists as arguments and return <code>true</code> if the first list should be ordered before the second, and <code>false</code> otherwise.
 
-The order is determined by [[wp:Lexicographical order#Ordering of sequences of various lengths|lexicographic order]]: Comparing the first element of each list. 
-If the first elements are equal, then the second elements should be compared, and so on, until one of the list has no more elements. 
-If the first list runs out of elements the result is <code>true</code>. 
+The order is determined by [[wp:Lexicographical order#Ordering of sequences of various lengths|lexicographic order]]: Comparing the first element of each list.
+If the first elements are equal, then the second elements should be compared, and so on, until one of the list has no more elements.
+If the first list runs out of elements the result is <code>true</code>.
 If the second list or both run out of elements the result is <code>false</code>.
 
 <small>Note: further clarification of lexicographical ordering is expounded on the talk page [[Talk:Order_two_numerical_lists#Lexicographic_order|here]] and [[Talk:Order_two_numerical_lists#Is_the_task_statement_consistent.3F|here]].</small>
@@ -41,7 +41,7 @@ NIL
 ## Ada
 
 This is already implemented in the built-in comparison operators for arrays of types that have a direct ordering.
-This also includes arrays of user defined types, using the type definition order from smallest to largest. 
+This also includes arrays of user defined types, using the type definition order from smallest to largest.
 Demonstrated in the program below:
 
 ```Ada
@@ -141,7 +141,7 @@ on compare(xs, ys)
         else
             set {hx, txs} to uncons(xs)
             set {hy, tys} to uncons(ys)
-            
+
             if hx = hy then
                 compare(txs, tys)
             else
@@ -155,10 +155,10 @@ end compare
 
 -- TEST
 on run
-    
+
     {compare([1, 2, 1, 3, 2], [1, 2, 0, 4, 4, 0, 0, 0]), ¬
         compare([1, 2, 0, 4, 4, 0, 0, 0], [1, 2, 1, 3, 2])}
-    
+
 end run
 
 
@@ -217,13 +217,13 @@ iTabList4:         .int  1,2,3,4,5,6
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                       @ entry of program 
+.global main
+main:                                       @ entry of program
     ldr r0,iAdriTabList1
     mov r1,#NBELEMENTS1
     ldr r2,iAdriTabList2
@@ -267,7 +267,7 @@ main:                                       @ entry of program
     ldr r0,iAdrszMessResult2
     bl affichageMess                        @ display message
 6:
-100:                                        @ standard end of the program 
+100:                                        @ standard end of the program
     mov r0, #0                              @ return code
     mov r7, #EXIT                           @ request to exit program
     svc #0                                  @ perform the system call
@@ -279,7 +279,7 @@ iAdrszMessResult1:        .int szMessResult1
 iAdrszMessResult2:        .int szMessResult2
 iAdrszCarriageReturn:     .int szCarriageReturn
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of list 1 */
 /* r1 contains list 1 size           */
@@ -324,26 +324,26 @@ listeOrder:
    movlt r0,#1                        @ list 1 < list 2
 100:
     pop {r1-r7,lr}                    @ restaur registers
-    bx lr                             @ return  
+    bx lr                             @ return
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                   @ save  registres
-    mov r2,#0                               @ counter length 
-1:                                          @ loop length calculation 
-    ldrb r1,[r0,r2]                         @ read octet start position + index 
-    cmp r1,#0                               @ if 0 its over 
-    addne r2,r2,#1                          @ else add 1 in the length 
-    bne 1b                                  @ and loop 
-                                            @ so here r2 contains the length of the message 
-    mov r1,r0                               @ address message in r1 
-    mov r0,#STDOUT                          @ code to write to the standard output Linux 
-    mov r7, #WRITE                          @ code call system "write" 
-    svc #0                                  @ call systeme 
-    pop {r0,r1,r2,r7,lr}                    @ restaur registers */ 
-    bx lr                                   @ return  
+    mov r2,#0                               @ counter length
+1:                                          @ loop length calculation
+    ldrb r1,[r0,r2]                         @ read octet start position + index
+    cmp r1,#0                               @ if 0 its over
+    addne r2,r2,#1                          @ else add 1 in the length
+    bne 1b                                  @ and loop
+                                            @ so here r2 contains the length of the message
+    mov r1,r0                               @ address message in r1
+    mov r0,#STDOUT                          @ code to write to the standard output Linux
+    mov r7, #WRITE                          @ code call system "write"
+    svc #0                                  @ call systeme
+    pop {r0,r1,r2,r7,lr}                    @ restaur registers */
+    bx lr                                   @ return
 
 ```
 
@@ -418,12 +418,12 @@ list3>=list4
       DIM list2(5) : list2() = 1, 2, 1, 5, 2, 2
       DIM list3(4) : list3() = 1, 2, 3, 4, 5
       DIM list4(4) : list4() = 1, 2, 3, 4, 5
-      
+
       IF FNorder(list1(), list2()) PRINT "list1<list2" ELSE PRINT "list1>=list2"
       IF FNorder(list2(), list3()) PRINT "list2<list3" ELSE PRINT "list2>=list3"
       IF FNorder(list3(), list4()) PRINT "list3<list4" ELSE PRINT "list3>=list4"
       END
-      
+
       DEF FNorder(list1(), list2())
       LOCAL i%, l1%, l2%
       l1% = DIM(list1(),1) : l2% = DIM(list2(),1)
@@ -449,12 +449,12 @@ list3>=list4
 
 ## Bracmat
 
-When evaluating a sum or a product, Bracmat creates an expression with a canonical order, which happens to be compatible with the order defined in this task. 
-In a pattern, only a sum or product on the left hand side (lhs) of the match (<code>:</code>) operator is evaluated. 
-In the solution below we match a composition of the two function arguments into a sum of two terms with itself. 
-If the match expression succeeds, the lhs must already have been in canonical order before evaluation, which means that the first argument is smaller than the second argument. 
-In that case the function outputs FALSE. 
-Notice that if the arguments are the same, evaluation of the sum produces the product of one of the terms and a factor two. This complicates the pattern a bit.  
+When evaluating a sum or a product, Bracmat creates an expression with a canonical order, which happens to be compatible with the order defined in this task.
+In a pattern, only a sum or product on the left hand side (lhs) of the match (<code>:</code>) operator is evaluated.
+In the solution below we match a composition of the two function arguments into a sum of two terms with itself.
+If the match expression succeeds, the lhs must already have been in canonical order before evaluation, which means that the first argument is smaller than the second argument.
+In that case the function outputs FALSE.
+Notice that if the arguments are the same, evaluation of the sum produces the product of one of the terms and a factor two. This complicates the pattern a bit.
 
 ```bracmat
 (  1 2 3 4 5:?List1
@@ -579,8 +579,8 @@ False
 
 The built-in comparison operators already do this:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 
 int main() {
@@ -692,7 +692,7 @@ Builtin. Example use from Erlang shell:
 
 5> [1,2,3] < [1,2,3,4].
 true
-6> [1,2,3] < [1,2,4].  
+6> [1,2,3] < [1,2,4].
 true
 
 ```
@@ -912,13 +912,13 @@ List_llt is written in the style of all Icon/Unicon relational operators returni
 
 ```Icon
 procedure main()
-   write( if list_llt([1,2,1,3,2],[1,2,0,4,4,0,0,0]) then "true" else "false" ) 
+   write( if list_llt([1,2,1,3,2],[1,2,0,4,4,0,0,0]) then "true" else "false" )
 end
 
 
 procedure list_llt(L1,L2)  #: returns L2 if L1 lexically lt L2 or fails
 every i := 1 to min(*L1,*L2) do
-   if L1[i] << L2[i] then return L2 
+   if L1[i] << L2[i] then return L2
    else if L1[i] >> L2[i] then fail
 if *L1 < *L2 then return L2
 end
@@ -1003,7 +1003,7 @@ public class ListOrder{
 					Arrays.copyOfRange(second, 1, second.length));
 		return first[0] < second[0];
 	}
-	
+
 	public static <T extends Comparable<? super T>> boolean ordered(List<T> first, List<T> second){
 		int i = 0;
 		for(; i < first.size() && i < second.size();i++){
@@ -1014,7 +1014,7 @@ public class ListOrder{
 		}
 		return i == first.size();
 	}
-	
+
 	public static boolean ordered2(double[] first, double[] second){
 		int i = 0;
 		for(; i < first.length && i < second.length;i++){
@@ -1170,7 +1170,7 @@ operator fun <T> List<T>.compareTo(other: List<T>): Int
         }
     }
     return if (this.size == other.size) 0 else -1
-} 
+}
 
 fun main(args: Array<String>) {
     val lists = listOf(
@@ -1183,8 +1183,8 @@ fun main(args: Array<String>) {
         listOf(1, 2, 0, 4, 4, 1, 0, 0)
     )
     for (i in 0 until lists.size) println("list${i + 1} : ${lists[i]}")
-    println()  
-    for (i in 0 until lists.size - 1) println("list${i + 1} > list${i + 2} = ${lists[i] > lists[i + 1]}")    
+    println()
+    for (i in 0 until lists.size - 1) println("list${i + 1} > list${i + 2} = ${lists[i] > lists[i + 1]}")
 }
 ```
 
@@ -1265,10 +1265,10 @@ print :list1 = :list2
 {{out}}
 
 ```logo
-true 
-false 
-false 
-false 
+true
+false
+false
+false
 false
 ```
 
@@ -1278,7 +1278,7 @@ false
 
 
 In Lua tables with numerical indices are used as lists or arrays and they do not support comparison out-of-the-box, so a function is needed to implement the comparison:
- 
+
 
 ```lua
 function arraycompare(a, b)
@@ -1365,8 +1365,8 @@ end proc:
 ```Mathematica
 
 order[List1_, List2_] := With[{
-   L1 = List1[[1 ;; Min @@ Length /@ {List1, List2}]], 
-   L2 = List2[[1 ;; Min @@ Length /@ {List1, List2}]] 
+   L1 = List1[[1 ;; Min @@ Length /@ {List1, List2}]],
+   L2 = List2[[1 ;; Min @@ Length /@ {List1, List2}]]
 },
    If [Thread[Order[L1, L2]] == 0,
    Length[List1] < Length[List2],
@@ -1450,9 +1450,9 @@ lt([H1|T1], [H2|T2]) :- H1 =< H2, T1 `lt` T2.
 
 :- implementation.
 
-:- instance comparable(int) where [ 
+:- instance comparable(int) where [
         pred('<'/2) is int.(<),
-        pred('=<'/2) is int.(=<) 
+        pred('=<'/2) is int.(=<)
 ].
 % likewise for float and integer...
 :- instance comparable(list(T)) <= comparable(T) where [
@@ -1858,7 +1858,7 @@ False
 function Test-Order ([int[]]$ReferenceArray, [int[]]$DifferenceArray)
 {
     for ($i = 0; $i -lt $ReferenceArray.Count; $i++)
-    { 
+    {
         if ($ReferenceArray[$i] -lt $DifferenceArray[$i])
         {
             return $true
@@ -1930,7 +1930,7 @@ EndDataSection
 ;helper subrountine to initialize a dataset, *dataPtr points to the elementcount followed by the element data
 Procedure initArrayData(Array a(1), *dataPtr)
   Protected elementCount = PeekI(*dataPtr)
-  
+
   Dim a(elementCount - 1)
   For i = 0 To elementCount - 1
     *dataPtr + SizeOf(Integer)
@@ -1939,18 +1939,18 @@ Procedure initArrayData(Array a(1), *dataPtr)
 EndProcedure
 
 ;helper subroutine that returns 'True' or 'False' for a boolean input
-Procedure.s booleanText(b) 
+Procedure.s booleanText(b)
   If b: ProcedureReturn "True": EndIf
   ProcedureReturn "False"
 EndProcedure
-  
+
 Procedure order(Array a(1), Array b(1))
   Protected len_a = ArraySize(a()), len_b = ArraySize(b()), elementIndex
 
   While elementIndex <= len_a And elementIndex <= len_b And a(elementIndex) = b(elementIndex)
     elementIndex + 1
   Wend
-  
+
   If (elementIndex > len_a  And elementIndex <= len_b) Or (elementIndex <= len_b And a(elementIndex) <= b(elementIndex))
     ProcedureReturn #True
   EndIf
@@ -1969,11 +1969,11 @@ If OpenConsole()
   PrintN(booleanText(order(A_3(), A_4()))) ;False
   PrintN(booleanText(order(A_4(), A_5()))) ;True
   PrintN(booleanText(order(A_5(), A_6()))) ;True
-  
+
   Print(#crlf$ + #crlf$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
-  
+
 ```
 
 {{out}}
@@ -2084,7 +2084,7 @@ list1 = "1, 2, 1, 5, 2"
 list2 = "5, 2, 1, 5, 2, 2"
 list3 = "1, 2, 3, 4, 5"
 list4 = "1, 2, 3, 4, 5"
- 
+
 if order(list1, list2) = 0 see "list1=list2" + nl
 but order(list1, list2) < 0 see "list1<list2" + nl
 else see "list1>list2" + nl ok
@@ -2096,7 +2096,7 @@ else see "list2>list3" + nl ok
 if order(list3, list4) = 0 see "list3=list4" + nl
 but order(list3, list4) < 0 see "list3<list4" + nl
 else see "list3>list4" + nl ok
- 
+
 func order alist, blist
      return strcmp(alist, blist)
 
@@ -2357,7 +2357,7 @@ false:  1'2'3'4'5 < 1'2'1'5'2'2
  true:  1'2'1'6'2 < 1'2'4
 false:  1'2'4 < 1'2'4
 false:  1'2'4 < 1'2
- true:  1'2 < 1'2'4 
+ true:  1'2 < 1'2'4
 
 ```
 
@@ -2416,7 +2416,7 @@ Function order_list(arr1,arr2)
 			n = n + 1
 		ElseIf arr1(i) = arr2(i) Then
 			p = p + 1
-		End If	
+		End If
 	Next
 	If (n1 < n2 And n = 0) Or _
 		 (n1 = n2 And n = 0 And p - 1 <> n1) Or _

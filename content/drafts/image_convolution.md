@@ -148,16 +148,16 @@ begin
 ```bbcbasic
       Width% = 200
       Height% = 200
-      
+
       DIM out&(Width%-1, Height%-1, 2)
-      
+
       VDU 23,22,Width%;Height%;8,16,16,128
       *DISPLAY Lena
       OFF
-      
+
       DIM filter%(2, 2)
       filter%() = -1, -1, -1, -1, 12, -1, -1, -1, -1
-      
+
       REM Do the convolution:
       FOR Y% = 1 TO Height%-2
         FOR X% = 1 TO Width%-2
@@ -179,7 +179,7 @@ begin
           out&(X%, Y%, 2) = B% / 4 + 0.5
         NEXT
       NEXT Y%
-      
+
       REM Display:
       GCOL 1
       FOR Y% = 0 TO Height%-1
@@ -188,7 +188,7 @@ begin
           LINE X%*2,Y%*2,X%*2,Y%*2
         NEXT
       NEXT Y%
-      
+
       REPEAT
         WAIT 1
       UNTIL FALSE
@@ -242,8 +242,8 @@ image filter(image im, double *K, int Ks, double divisor, double offset)
 	for(l=0; l<3; l++)
 	  cp[l] = (cp[l]>255.0) ? 255.0 : ((cp[l]<0.0) ? 0.0 : cp[l]) ;
 	put_pixel_unsafe(oi, ix, iy,
-			 (color_component)cp[0], 
-			 (color_component)cp[1], 
+			 (color_component)cp[0],
+			 (color_component)cp[1],
 			 (color_component)cp[2]);
       }
     }
@@ -259,8 +259,8 @@ Usage example:
 The <tt>read_image</tt> function is from [[Read image file through a pipe|here]].
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include "imglib.h"
 
 const char *input = "Lenna100.jpg";
@@ -342,16 +342,16 @@ Uses the RGB pixel buffer package defined here [[Basic bitmap storage#Common Lis
 (defstruct cnv-record descr width kernel divisor offset)
 (defparameter *cnv-lib* (make-hash-table))
 (setf (gethash 'emboss *cnv-lib*)
-      (make-cnv-record :descr "emboss-filter" :width 3 
+      (make-cnv-record :descr "emboss-filter" :width 3
                        :kernel '(-2.0 -1.0 0.0 -1.0 1.0 1.0 0.0 1.0 2.0) :divisor 1.0))
 (setf (gethash 'sharpen *cnv-lib*)
-      (make-cnv-record :descr "sharpen-filter" :width 3 
+      (make-cnv-record :descr "sharpen-filter" :width 3
                        :kernel '(-1.0 -1.0 -1.0 -1.0 9.0 -1.0 -1.0 -1.0 -1.0) :divisor 1.0))
 (setf (gethash 'sobel-emboss *cnv-lib*)
-      (make-cnv-record :descr "sobel-emboss-filter" :width 3 
+      (make-cnv-record :descr "sobel-emboss-filter" :width 3
                        :kernel '(-1.0 -2.0 -1.0 0.0 0.0 0.0 1.0 2.0 1.0 :divisor 1.0 :offset 0.5)))
 (setf (gethash 'box-blur *cnv-lib*)
-      (make-cnv-record :descr "box-blur-filter" :width 3 
+      (make-cnv-record :descr "box-blur-filter" :width 3
                        :kernel '(1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0) :divisor 9.0))
 
 (defun convolve (filename params)
@@ -359,44 +359,44 @@ Uses the RGB pixel buffer package defined here [[Basic bitmap storage#Common Lis
          (width (first (array-dimensions buf)))
          (height (second (array-dimensions buf)))
          (obuf (make-rgb-pixel-buffer width height)))
-    
+
     ;;; constrain a value to some range
     ;;; (int,int,int)->int
     (defun constrain (val minv maxv)
       (declare (type integer val minv maxv))
       (min maxv (max minv val)))
-    
+
     ;;; convolve a single channel
     ;;; list ubyte8->ubyte8
     (defun convolve-channel (band)
-      (constrain (round (apply #'+ (mapcar #'* band (cnv-record-kernel params)))) 0 255))  
-    
-    ;;; return the rgb convolution of a list of pixels 
+      (constrain (round (apply #'+ (mapcar #'* band (cnv-record-kernel params)))) 0 255))
+
+    ;;; return the rgb convolution of a list of pixels
     ;;; list uint24->uint24
     (defun convolve-pixels (pixels)
       (let ((reds (list)) (greens (list)) (blues (list)))
-        (dolist (pel (reverse pixels)) 
+        (dolist (pel (reverse pixels))
           (push (rgb-pixel-red pel) reds)
           (push (rgb-pixel-green pel) greens)
           (push (rgb-pixel-blue pel) blues))
         (make-rgb-pixel (convolve-channel reds) (convolve-channel greens) (convolve-channel blues))))
-     
+
     ;;; return the list of pixels to which the kernel will be applied
     ;;; (int,int)->list uint24
     (defun kernel-pixels (c r)
       (mapcar (lambda (coff roff) (rgb-pixel buf (constrain (+ c coff) 0 (1- width)) (constrain (+ r roff) 0 (1- height))))
               +col-offsets+ +row-offsets+))
-    
+
     ;;; body of function
     (dotimes (r height)
       (dotimes (c width)
         (setf (rgb-pixel obuf c r) (convolve-pixels (kernel-pixels c r)))))
-    
+
     (write-rgb-pixel-buffer-to-ppm-file (concatenate 'string (format nil "convolve-~A-" (cnv-record-descr params)) filename) obuf)))
 
 (in-package #:cl-user)
 (defun main ()
-  (loop for pars being the hash-values of convolve::*cnv-lib* 
+  (loop for pars being the hash-values of convolve::*cnv-lib*
     do (princ (convolve::convolve "lena_color.ppm" pars)) (terpri)))
 
 ```
@@ -806,26 +806,26 @@ public class ImageConvolution
     public final int[] dataArray;
     public final int width;
     public final int height;
-    
+
     public ArrayData(int width, int height)
     {
       this(new int[width * height], width, height);
     }
-    
+
     public ArrayData(int[] dataArray, int width, int height)
     {
       this.dataArray = dataArray;
       this.width = width;
       this.height = height;
     }
-    
+
     public int get(int x, int y)
     {  return dataArray[y * width + x];  }
-    
+
     public void set(int x, int y, int value)
     {  dataArray[y * width + x] = value;  }
   }
-  
+
   private static int bound(int value, int endIndex)
   {
     if (value < 0)
@@ -834,7 +834,7 @@ public class ImageConvolution
       return value;
     return endIndex - 1;
   }
-  
+
   public static ArrayData convolute(ArrayData inputData, ArrayData kernel, int kernelDivisor)
   {
     int inputWidth = inputData.width;
@@ -847,7 +847,7 @@ public class ImageConvolution
       throw new IllegalArgumentException("Kernel must have odd height");
     int kernelWidthRadius = kernelWidth >>> 1;
     int kernelHeightRadius = kernelHeight >>> 1;
-    
+
     ArrayData outputData = new ArrayData(inputWidth, inputHeight);
     for (int i = inputWidth - 1; i >= 0; i--)
     {
@@ -864,7 +864,7 @@ public class ImageConvolution
     }
     return outputData;
   }
-  
+
   public static ArrayData[] getArrayDatasFromImage(String filename) throws IOException
   {
     BufferedImage inputImage = ImageIO.read(new File(filename));
@@ -886,7 +886,7 @@ public class ImageConvolution
     }
     return new ArrayData[] { reds, greens, blues };
   }
-  
+
   public static void writeOutputImage(String filename, ArrayData[] redGreenBlue) throws IOException
   {
     ArrayData reds = redGreenBlue[0];
@@ -907,7 +907,7 @@ public class ImageConvolution
     ImageIO.write(outputImage, "PNG", new File(filename));
     return;
   }
-  
+
   public static void main(String[] args) throws IOException
   {
     int kernelWidth = Integer.parseInt(args[2]);
@@ -927,7 +927,7 @@ public class ImageConvolution
       }
       System.out.println("]");
     }
-    
+
     ArrayData[] dataArrays = getArrayDatasFromImage(args[0]);
     for (int i = 0; i < dataArrays.length; i++)
       dataArrays[i] = convolute(dataArrays[i], kernel, kernelDivisor);
@@ -965,11 +965,11 @@ Kernel size: 5x5, divisor=273
 function convolve(imageIn, kernel, callback) {
     var dim = Math.sqrt(kernel.length),
         pad = Math.floor(dim / 2);
-    
+
     if (dim % 2 !== 1) {
         return callback(new RangeError("Invalid kernel dimension"), null);
     }
-    
+
     var w = imageIn.width,
         h = imageIn.height,
         can = document.createElement('canvas'),
@@ -978,27 +978,27 @@ function convolve(imageIn, kernel, callback) {
         ctx,
         imgIn, imgOut,
         datIn, datOut;
-    
+
     can.width = cw = w + pad * 2; // add padding
     can.height = ch = h + pad * 2; // add padding
-    
+
     ctx = can.getContext('2d');
     ctx.fillStyle = '#000'; // fill with opaque black
     ctx.fillRect(0, 0, cw, ch);
     ctx.drawImage(imageIn, pad, pad);
-    
+
     imgIn = ctx.getImageData(0, 0, cw, ch);
     datIn = imgIn.data;
-    
+
     imgOut = ctx.createImageData(w, h);
     datOut = imgOut.data;
-    
+
     var row, col, pix, i, dx, dy, r, g, b;
-    
+
     for (row = pad; row <= h; row++) {
         for (col = pad; col <= w; col++) {
             r = g = b = 0;
-            
+
             for (dx = -pad; dx <= pad; dx++) {
                 for (dy = -pad; dy <= pad; dy++) {
                     i = (dy + pad) * dim + (dx + pad); // kernel index
@@ -1008,7 +1008,7 @@ function convolve(imageIn, kernel, callback) {
                     b += datIn[pix  ] * kernel[i];
                 }
             }
-            
+
             pix = 4 * ((row - pad) * w + (col - pad)); // destination index
             datOut[pix++] = (r + .5) ^ 0;
             datOut[pix++] = (g + .5) ^ 0;
@@ -1016,23 +1016,23 @@ function convolve(imageIn, kernel, callback) {
             datOut[pix  ] = 255; // we want opaque image
         }
     }
-    
+
     // reuse canvas
     can.width = w;
     can.height = h;
-    
+
     ctx.putImageData(imgOut, 0, 0);
-    
+
     var imageOut = new Image();
-    
+
     imageOut.addEventListener('load', function () {
         callback(null, imageOut);
     });
-    
+
     imageOut.addEventListener('error', function (error) {
         callback(error, null);
     });
-    
+
     imageOut.src = can.toDataURL('image/png');
 }
 ```
@@ -1046,7 +1046,7 @@ var image = new Image();
 image.addEventListener('load', function () {
     image.alt = 'Player';
     document.body.appendChild(image);
-    
+
     // laplace filter
     convolve(image,
              [0, 1, 0,
@@ -1125,7 +1125,7 @@ fun convolute(
     val kernelWidth = kernel.width
     val kernelHeight = kernel.height
     if (kernelWidth <= 0 || (kernelWidth and 1) != 1)
-        throw IllegalArgumentException("Kernel must have odd width")  
+        throw IllegalArgumentException("Kernel must have odd width")
     if (kernelHeight <= 0 || (kernelHeight and 1) != 1)
         throw IllegalArgumentException("Kernel must have odd height")
     val kernelWidthRadius = kernelWidth ushr 1
@@ -1440,7 +1440,7 @@ function ImOut = convImage(Im, Ker, varargin)
 % ImOut = convImage(Im, Ker, 'none')
 %   Image will not be padded. Convolution will only be applied to inner pixels
 %   (useful for edge and corner detection filters)
-    
+
     % Handle input
     if mod(size(Ker, 1), 2) ~= 1 || mod(size(Ker, 2), 2) ~= 1
         eid = sprintf('%s:evenRowsCols', mfilename);
@@ -1466,7 +1466,7 @@ function ImOut = convImage(Im, Ker, varargin)
                 'zeros', 'value', 'extend', 'partial', 'none'))
         end
     end
-    
+
     % Gather information and prepare for convolution
     [nImRows, nImCols, nImLayers] = size(Im);
     classIm = class(Im);
@@ -1477,7 +1477,7 @@ function ImOut = convImage(Im, Ker, varargin)
     nPadCols = nImCols+nKerCols-1;
     padH = (nKerRows-1)/2;
     padW = (nKerCols-1)/2;
-    
+
     % Convolute on a layer-by-layer basis
     for k = 1:nImLayers
         if strcmp(method, 'zeros')
@@ -1528,7 +1528,7 @@ function ImOut = convImage(Im, Ker, varargin)
                 conv2(Im(:, :, k), Ker, 'valid');
         end
     end
-    
+
     % Convert back to former image data type
     ImOut = cast(ImOut, classIm);
 end
@@ -1705,7 +1705,7 @@ function [r, g, b] = rgbconv2(a, c)
 endfunction
 
 im = jpgread("Lenna100.jpg");
-emboss = [-2, -1,  0; 
+emboss = [-2, -1,  0;
 	  -1,  1,  1;
 	  0,  1,  2 ];
 sobel = [-1., -2., -1.;
@@ -1825,7 +1825,7 @@ integer fh = length(filter), hh=(fh-1)/2,
     end for
 
     new_image = flatten(new_image) -- (as needed by IupImageRGB)
-    Ihandle new_img = IupImageRGB(width, height, new_image) 
+    Ihandle new_img = IupImageRGB(width, height, new_image)
     return new_img
 end function
 
@@ -1961,18 +1961,18 @@ Alternatively, SciPy can be used but programmers need to be careful about the co
 import numpy as np
 from scipy.ndimage.filters import convolve
 from scipy.misc import imread, imshow
- 
+
 if __name__=="__main__":
 	im = imread("test.jpg", mode="RGB")
 	im = np.array(im, dtype=float) #Convert to float to prevent clipping colors
- 
+
 	kernel = np.array([[[0,-2,0],[0,-1,0],[0,0,0]],
 						[[0,-1,0],[0,1,0],[0,1,0]],
 						[[0,0,0],[0,1,0],[0,2,0]]])#emboss
- 
+
 	im2 = convolve(im, kernel)
 	im3 = np.array(np.clip(im2, 0, 255), dtype=np.uint8) #Apply color clipping
- 
+
 	imshow(im3)
 ```
 
@@ -2009,7 +2009,7 @@ which delivers quite a performance boost over ''build-flomap''.
     [else
      (define R/2 (quotient R 2))
      (define R/-2 (quotient R -2))
-     (define-values (sz-w sz-h) (flomap-size F))     
+     (define-values (sz-w sz-h) (flomap-size F))
      (define-syntax-rule (convolution c x y i)
        (if (= 0 c)
            (flomap-ref F c x y) ; c=3 is alpha channel
@@ -2023,7 +2023,7 @@ which delivers quite a performance boost over ''build-flomap''.
               #:when (< 0 kx (sub1 sz-w))
               #:when (< 0 ly (sub1 sz-h)))
              (+ acc (* (flvector-ref K kl) (flomap-ref F c kx ly))))))
-     
+
      (inline-build-flomap 4 sz-w sz-h convolution)]))
 
 (module* test racket
@@ -2071,7 +2071,7 @@ class Pixmap
     y1 = y
     x2 = x+1==@width  ? x : x+1
     y2 = y+1==@height ? y : y+1
- 
+
     r = g = b = 0.0
     [x0, x1, x2].zip(kernel).each do |xx, kcol|
       [y0, y1, y2].zip(kcol).each do |yy, k|
@@ -2095,11 +2095,11 @@ class Pixmap
   end
 end
 
- 
+
 # Demonstration code using the teapot image from Tk's widget demo
 teapot = Pixmap.open('teapot.ppm')
-[ ['Emboss',  [[-2.0, -1.0, 0.0],  [-1.0, 1.0, 1.0],  [0.0, 1.0, 2.0]]], 
-  ['Sharpen', [[-1.0, -1.0, -1.0], [-1.0, 9.0, -1.0], [-1.0, -1.0, -1.0]]], 
+[ ['Emboss',  [[-2.0, -1.0, 0.0],  [-1.0, 1.0, 1.0],  [0.0, 1.0, 2.0]]],
+  ['Sharpen', [[-1.0, -1.0, -1.0], [-1.0, 9.0, -1.0], [-1.0, -1.0, -1.0]]],
   ['Blur',    [[0.1111,0.1111,0.1111],[0.1111,0.1111,0.1111],[0.1111,0.1111,0.1111]]],
 ].each do |label, kernel|
   savefile = 'teapot_' + label.downcase + '.ppm'

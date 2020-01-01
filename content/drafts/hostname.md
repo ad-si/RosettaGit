@@ -146,12 +146,12 @@ Since Windows 2000 :
 
 {{works with|POSIX|.1}}
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <limits.h>
 #include <unistd.h>
- 
+
 int main(void)
 {
  char name[_POSIX_HOST_NAME_MAX + 1];
@@ -394,7 +394,7 @@ The function/subroutine <tt>HOSTNM</tt> is a GNU extension.
 
 ```fortran
 program HostTest
-  character(len=128) :: name 
+  character(len=128) :: name
   call hostnm(name)
   print *, name
 end program HostTest
@@ -402,7 +402,7 @@ end program HostTest
 
 
 Using fortran 2003 C-interoperability we can call posix C function gethostname (unix system call) directly
- 
+
 
 ```fortran
 
@@ -558,7 +558,7 @@ getHostName = do
     throwErrnoIfMinus1_ "getHostName" $ c_gethostname cstr (fromIntegral size)
     peekCString cstr
 
-foreign import ccall "gethostname" 
+foreign import ccall "gethostname"
    c_gethostname :: CString -> CSize -> IO CInt
 
 main = do hostName <- getHostName
@@ -637,7 +637,7 @@ WScript.echo(hostname);
 
 ## jq
 
-Currently jq does not have a "gethostname" or a "system" command, so the best ways for a jq program to have access to the hostname are via an environment variable, or via a command line argument, as illustrated here: 
+Currently jq does not have a "gethostname" or a "system" command, so the best ways for a jq program to have access to the hostname are via an environment variable, or via a command line argument, as illustrated here:
 
 ```txt
 HOST=$(hostname) jq -n --arg hostname $(hostname) '[env.HOST, $hostname]'
@@ -995,7 +995,7 @@ Works with oo2c version 2
 ```oberon2
 
 MODULE HostName;
-IMPORT 
+IMPORT
   OS:ProcessParameters,
   Out;
 BEGIN
@@ -1300,7 +1300,7 @@ int main(){
 ```plsql
 SET serveroutput on
 BEGIN
-  DBMS_OUTPUT.PUT_LINE(UTL_INADDR.GET_HOST_NAME);  
+  DBMS_OUTPUT.PUT_LINE(UTL_INADDR.GET_HOST_NAME);
 END;
 ```
 
@@ -1351,8 +1351,8 @@ Also PowerShell can use .NET classes and methods:
 
 
 ## PureBasic
- 
-{{works with|PureBasic|4.41}} 
+
+{{works with|PureBasic|4.41}}
 
 ```PureBasic
 InitNetwork()
@@ -1390,7 +1390,7 @@ system("hostname", intern = TRUE)
 
 ```R
 
-env_var <- ifelse(.Platform$OS.type == "windows", "COMPUTERNAME", "HOSTNAME") 
+env_var <- ifelse(.Platform$OS.type == "windows", "COMPUTERNAME", "HOSTNAME")
 Sys.getenv(env_var)
 
 ```
@@ -1473,7 +1473,7 @@ But perhaps the name or version of the MS DOS system would be more appropriate t
 
 Each REXX interpreter has their own name (some have multiple names) for the environmental variables.
 
-Different operating systems may call their hostnames by different identifiers. 
+Different operating systems may call their hostnames by different identifiers.
 
 IBM mainframes (at one time) called the name of the host as a ''nodename'' and it needn't be
 
@@ -1656,9 +1656,9 @@ Output:
 
 ```txt
 
-HOST_NAME                                                                                                                                                                                                                                                      
+HOST_NAME
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-hostname                                                                                                                                                                                                                                                          
+hostname
 
   1 record(s) selected.
 
@@ -1788,7 +1788,7 @@ Option Explicit
 
 Private Declare Function GetComputerName Lib "kernel32.dll" Alias "GetComputerNameW" _
   (ByVal lpBuffer As Long, ByRef nSize As Long) As Long
- 
+
 Private Const MAX_COMPUTERNAME_LENGTH As Long = 31
 Private Const NO_ERR As Long = 0
 

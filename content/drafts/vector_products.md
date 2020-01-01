@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 
-A vector is defined as having three dimensions as being represented by an ordered collection of three numbers:   (X, Y, Z). 
+A vector is defined as having three dimensions as being represented by an ordered collection of three numbers:   (X, Y, Z).
 
 If you imagine a graph with the   '''x'''   and   '''y'''   axis being at right angles to each other and having a third,   '''z'''   axis coming out of the page, then a triplet of numbers,   (X, Y, Z)   would represent a point in the region,   and a vector from the origin to the point.
 
@@ -22,9 +22,9 @@ Given the vectors:
         <big> C = (c<sub>1</sub>,  c<sub>2</sub>,  c<sub>3</sub>) </big>
 then the following common vector products are defined:
 * '''The dot product'''       (a scalar quantity)
-:::: <big> A • B = a<sub>1</sub>b<sub>1</sub>   +   a<sub>2</sub>b<sub>2</sub>   +    a<sub>3</sub>b<sub>3</sub> </big> 
+:::: <big> A • B = a<sub>1</sub>b<sub>1</sub>   +   a<sub>2</sub>b<sub>2</sub>   +    a<sub>3</sub>b<sub>3</sub> </big>
 * '''The cross product'''       (a vector quantity)
-:::: <big> A x B = (a<sub>2</sub>b<sub>3</sub>   -   a<sub>3</sub>b<sub>2</sub>,     a<sub>3</sub>b<sub>1</sub>   -   a<sub>1</sub>b<sub>3</sub>,     a<sub>1</sub>b<sub>2</sub>   -   a<sub>2</sub>b<sub>1</sub>) </big> 
+:::: <big> A x B = (a<sub>2</sub>b<sub>3</sub>   -   a<sub>3</sub>b<sub>2</sub>,     a<sub>3</sub>b<sub>1</sub>   -   a<sub>1</sub>b<sub>3</sub>,     a<sub>1</sub>b<sub>2</sub>   -   a<sub>2</sub>b<sub>1</sub>) </big>
 * '''The scalar triple product'''       (a scalar quantity)
 :::: <big> A • (B x C) </big>
 * '''The vector triple product'''       (a vector quantity)
@@ -32,7 +32,7 @@ then the following common vector products are defined:
 
 
 ;Task:
-Given the three vectors: 
+Given the three vectors:
          a = ( 3,    4,    5)
          b = ( 4,    3,    5)
          c = (-5,  -12,  -13)
@@ -48,8 +48,8 @@ Given the three vectors:
 
 ;References:
 *   A starting page on Wolfram MathWorld is   {{Wolfram|Vector|Multiplication}}.
-*   Wikipedia   [[wp:Dot product|dot product]]. 
-*   Wikipedia   [[wp:Cross product|cross product]]. 
+*   Wikipedia   [[wp:Dot product|dot product]].
+*   Wikipedia   [[wp:Cross product|cross product]].
 *   Wikipedia   [[wp:Triple product|triple product]].
 
 
@@ -184,7 +184,7 @@ PROC crossp = (VEC a, b)VEC:(
     CO ASSERT(LWB a = LWB b AND UPB a = UPB b AND UPB b = 3 # "For 3D vectors only" #); CO
     (a[2]*b[3] - a[3]*b[2], a[3]*b[1] - a[1]*b[3], a[1]*b[2] - a[2]*b[1])
 );
- 
+
 PRIO MAXLWB = 8, MINUPB=8;
 
 OP MAXLWB = (VEC a, b)INT: (LWB a<LWB b|LWB a|LWB b);
@@ -196,17 +196,17 @@ PROC dotp = (VEC a, b)FIELD:(
     FOR i FROM a MAXLWB b TO a MINUPB b DO sum +:= a[i]*b[i] OD;
     sum
 );
- 
+
 PROC scalartriplep = (VEC a, b, c)VEC:(
     #Scalar triple product of three vectors: "a . (b x c)"#
     dotp(a, crossp(b, c))
 );
- 
+
 PROC vectortriplep = (VEC a, b, c)VEC:(
     #Vector triple product of three vectors: "a x (b x c)"#
     crossp(a, crossp(b, c))
 );
- 
+
 # Declare some useful operators #
 PRIO DOT = 5, X = 5;
 OP (VEC, VEC)FIELD DOT = dotp;
@@ -371,19 +371,19 @@ a x b x c = (-267, 204, -3)
 
 
 ```awk
-#!/usr/bin/awk -f 
+#!/usr/bin/awk -f
 BEGIN {
-     a[1] = 3; a[2]= 4; a[3] = 5; 
-     b[1] = 4; b[2]= 3; b[3] = 5; 
-     c[1] = -5; c[2]= -12; c[3] = -13; 
+     a[1] = 3; a[2]= 4; a[3] = 5;
+     b[1] = 4; b[2]= 3; b[3] = 5;
+     c[1] = -5; c[2]= -12; c[3] = -13;
 
      print "a = ",printVec(a);
      print "b = ",printVec(b);
      print "c = ",printVec(c);
      print "a.b = ",dot(a,b);
-     ## upper case variables are used as temporary or intermediate results 
+     ## upper case variables are used as temporary or intermediate results
      cross(a,b,D);print "a.b = ",printVec(D);
-     cross(b,c,D);print "a.(b x c) = ",dot(a,D); 
+     cross(b,c,D);print "a.(b x c) = ",dot(a,D);
      cross(b,c,D);cross(a,D,E); print "a x (b x c) = ",printVec(E);
 }
 
@@ -402,7 +402,7 @@ function printVec(C) {
 }
 ```
 
-Output: 
+Output:
 
 ```txt
 a =  [ 3 4 5 ]
@@ -422,7 +422,7 @@ a x (b x c) =  [ -267 204 -3 ]
 {{works with|BASIC256 }}
 
 ```basic256
-    
+
  a={3,4,5}:b={4,3,5}:c={-5,-12,-13}
 
 print "A.B = "+dot_product(ref(a),ref(b))
@@ -456,7 +456,7 @@ subroutine v_tri(ref(x1),ref(x2),ref(x3),ref(y1),ref(y2))
   call cross_product(ref(x1),ref(y1),ref(y2))
 end subroutine
 
-     
+
 ```
 
 Output:
@@ -481,7 +481,7 @@ A x (BxC) = (-267,204,-3)
       a() = 3, 4, 5
       b() = 4, 3, 5
       c() = -5, -12, -13
-      
+
       PRINT "a . b = "; FNdot(a(),b())
       PROCcross(a(),b(),d())
       PRINT "a x b = (";d(0)", ";d(1)", ";d(2)")"
@@ -489,21 +489,21 @@ A x (BxC) = (-267,204,-3)
       PROCvectortriple(a(),b(),c(),d())
       PRINT "a x (b x c) = (";d(0)", ";d(1)", ";d(2)")"
       END
-      
+
       DEF FNdot(A(),B())
       LOCAL C() : DIM C(0,0)
       C() = A().B()
       = C(0,0)
-      
+
       DEF PROCcross(A(),B(),C())
       C() = A(1)*B(2)-A(2)*B(1), A(2)*B(0)-A(0)*B(2), A(0)*B(1)-A(1)*B(0)
       ENDPROC
-      
+
       DEF FNscalartriple(A(),B(),C())
       LOCAL D() : DIM D(2)
       PROCcross(B(),C(),D())
       = FNdot(A(),D())
-      
+
       DEF PROCvectortriple(A(),B(),C(),D())
       PROCcross(B(),C(),D())
       PROCcross(A(),D(),D())
@@ -526,8 +526,8 @@ a x (b x c) = (-267, 204, -3)
 ## C
 
 
-```c>#include<stdio.h
-
+```c
+#include <stdio.h>
 
 typedef struct{
 	float i,j,k;
@@ -543,7 +543,7 @@ float dotProduct(Vector a, Vector b)
 Vector crossProduct(Vector a,Vector b)
 {
 	Vector c = {a.j*b.k - a.k*b.j, a.k*b.i - a.i*b.k, a.i*b.j - a.j*b.i};
-	
+
 	return c;
 }
 
@@ -571,7 +571,7 @@ int main()
 	printf("\n a x b = "); printVector(crossProduct(a,b));
 	printf("\n a . (b x c) = %f",scalarTripleProduct(a,b,c));
 	printf("\n a x (b x c) = "); printVector(vectorTripleProduct(a,b,c));
-	
+
 	return 0;
 }
 ```
@@ -637,14 +637,14 @@ Output:
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 template< class T >
 class D3Vector {
 
 template< class U >
-friend std::ostream & operator<<( std::ostream & , const D3Vector<U> & ) ;   
+friend std::ostream & operator<<( std::ostream & , const D3Vector<U> & ) ;
 
 public :
    D3Vector( T a , T b , T c ) {
@@ -675,7 +675,7 @@ public :
    }
 
 private :
-   T x , y , z ;  
+   T x , y , z ;
 } ;
 
 template< class T >
@@ -708,26 +708,26 @@ a x b x c : ( -267 , 204 , -3 )
 shared void run() {
 
 	alias Vector => Float[3];
-	
+
 	function dot(Vector a, Vector b) =>
 			a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
-	
+
 	function cross(Vector a, Vector b) => [
-		a[1] * b[2] - a[2] * b[1], 
-		a[2] * b[0] - a[0] * b[2], 
+		a[1] * b[2] - a[2] * b[1],
+		a[2] * b[0] - a[0] * b[2],
 		a[0] * b[1] - a[1] * b[0]
 	];
-	
+
 	function scalarTriple(Vector a, Vector b, Vector c) =>
 			dot(a, cross(b, c));
-	
+
 	function vectorTriple(Vector a, Vector b, Vector c) =>
 			cross(a, cross(b, c));
-	
+
 	value a = [ 3.0,    4.0,    5.0 ];
 	value b = [ 4.0,    3.0,    5.0 ];
 	value c = [-5.0,  -12.0,  -13.0 ];
-	
+
 	print("``a`` . ``b`` = ``dot(a, b)``");
 	print("``a`` X ``b`` = ``cross(a, b)``");
 	print("``a`` . ``b`` X ``c`` = ``scalarTriple(a, b, c)``");
@@ -851,7 +851,7 @@ Using vector type
 ```lisp
 (defun cross (a b)
   (when (and (equal (length a) 3) (equal (length b) 3))
-      (vector 
+      (vector
        (- (* (elt a 1) (elt b 2)) (* (elt a 2) (elt b 1)))
        (- (* (elt a 2) (elt b 0)) (* (elt a 0) (elt b 2)))
        (- (* (elt a 0) (elt b 1)) (* (elt a 1) (elt b 0))))))
@@ -957,7 +957,7 @@ The '''math''' library includes the '''dot-product''' and '''cross-product''' fu
 
 (define (scalar-triple-product a b c)
   (dot-product a (cross-product b c)))
-  
+
 (define (vector-triple-product a b c)
   (cross-product a (cross-product b c)))
 
@@ -984,11 +984,11 @@ The '''math''' library includes the '''dot-product''' and '''cross-product''' fu
 ```elixir
 defmodule Vector do
   def dot_product({a1,a2,a3}, {b1,b2,b3}), do: a1*b1 + a2*b2 + a3*b3
-  
+
   def cross_product({a1,a2,a3}, {b1,b2,b3}), do: {a2*b3 - a3*b2, a3*b1 - a1*b3, a1*b2 - a2*b1}
-  
+
   def scalar_triple_product(a, b, c), do: dot_product(a, cross_product(b, c))
-  
+
   def vector_triple_product(a, b, c), do: cross_product(a, cross_product(b, c))
 end
 
@@ -1190,7 +1190,7 @@ let vecTrip a b c =
     cross a (cross b c)
 
 [<EntryPoint>]
-let main _ = 
+let main _ =
     let a = (3.0, 4.0, 5.0)
     let b = (4.0, 3.0, 5.0)
     let c = (-5.0, -12.0, -13.0)
@@ -1365,7 +1365,7 @@ cr
 cr .( a . b = ) A B Dot* f.
 cr .( a x b = ) A B pad Cross* pad .Vector
 cr .( a . [b x c] = ) A B C ScalarTriple* f.
-cr .( a x [b x c] = ) A B C pad VectorTriple* pad .Vector 
+cr .( a x [b x c] = ) A B C pad VectorTriple* pad .Vector
 ```
 
 {{out}}
@@ -1475,11 +1475,11 @@ operator V3.cast() as string
 return "("+str(x)+","+str(y)+","+str(z)+")"
 end operator
 
-Operator dot(v1 As v3,v2 As v3) As double 
+Operator dot(v1 As v3,v2 As v3) As double
 Return v1.x*v2.x+v1.y*v2.y+v1.z*v2.z
 End Operator
 
-Operator cross(v1 As v3,v2 As v3) As v3 
+Operator cross(v1 As v3,v2 As v3) As v3
 Return type<v3>(v1.y*v2.z-v2.y*v1.z,-(v1.x*v2.z-v2.x*v1.z),v1.x*v2.y-v2.x*v1.y)
 End Operator
 
@@ -1598,24 +1598,24 @@ VectorTripleProduct(a, b, c);
 ```glsl
 
 vec3 a = vec3(3, 4, 5),b = vec3(4, 3, 5),c = vec3(-5, -12, -13);
- 
+
 float dotProduct(vec3 a, vec3 b)
 {
 	return a.x*b.x+a.y*b.y+a.z*b.z;
 }
- 
+
 vec3 crossProduct(vec3 a,vec3 b)
 {
 	vec3 c = vec3(a.y*b.z - a.z*b.y, a.z*b.x - a.x*b.z, a.x*b.y- a.y*b.x);
- 
+
 	return c;
 }
- 
+
 float scalarTripleProduct(vec3 a,vec3 b,vec3 c)
 {
 	return dotProduct(a,crossProduct(b,c));
 }
- 
+
 vec3 vectorTripleProduct(vec3 a,vec3 b,vec3 c)
 {
 	return crossProduct(a,crossProduct(b,c));
@@ -1837,7 +1837,7 @@ a x b     = [5,5,-7]
 a . b x c = 6
 a x b x c = [-267,204,-3]
 ** Exception: Dotted Vectors must be of equal dimension.
-a . d     = 
+a . d     =
 ```
 
 
@@ -1986,7 +1986,7 @@ cross=: (1&|.@[ * 2&|.@]) - 2&|.@[ * 1&|.@]
 ```
 
 
-However, there are other valid approaches. For example, a "generalized approach" based on [[j:Essays/Complete Tensor]]: 
+However, there are other valid approaches. For example, a "generalized approach" based on [[j:Essays/Complete Tensor]]:
 
 ```j
 CT=: C.!.2 @ (#:i.) @ $~
@@ -1999,7 +1999,7 @@ Note that there are a variety of other generalizations have cross products as a 
 
 An alternative definition for cross (based on finding the determinant of a 3 by 3 matrix where one row is unit vectors) could be:
 
-```j>cross=: [: 
+```j>cross=: [:
  [: -&.>/ .(*&.>) (<"1=i.3) , ,:&:(<"0)
 ```
 
@@ -2017,7 +2017,7 @@ B=: 1 {:: ]    NB. contents of the second box on the right
 C=: 2 {:: ]    NB. contents of the third box on the right
 
 dotP=: A ip B
-crossP=: A cross B 
+crossP=: A cross B
 scTriP=: A ip B cross C
 veTriP=: A cross B cross C
 ```
@@ -2111,15 +2111,15 @@ import java.util.stream.IntStream;
 
 public class VectorsOp {
 	// Vector dot product using Java SE 8 stream abilities
-	// the method first create an array of size values, 
+	// the method first create an array of size values,
 	// and map the product of each vectors components in a new array (method map())
 	// and transform the array to a scalr by summing all elements (method reduce)
 	// the method parallel  is there for optimization
 	private static int dotProduct(int[] v1, int[] v2,int length) {
-	
+
 	int result = IntStream.range(0, length)
-	                           .parallel() 
-	                            .map( id -> v1[id] * v2[id]) 
+	                           .parallel()
+	                            .map( id -> v1[id] * v2[id])
 	                            .reduce(0, Integer::sum);
 
 	    return result;
@@ -2134,9 +2134,9 @@ public class VectorsOp {
 		//result[0] = v1[1] * v2[2] - v1[2]*v2[1] ;
 		//result[1] = v1[2] * v2[0] - v1[0]*v2[2] ;
 		// result[2] = v1[0] * v2[1] - v1[1]*v2[0] ;
-		                         
+
 		result = IntStream.range(0, length)
-			.parallel() 
+			.parallel()
 	 		.map( i ->   v1[(i+1)%length] * v2[(i+2)%length] -  v1[(i+2)%length]*v2[(i+1)%length])
 	 		.toArray();
 
@@ -2153,8 +2153,8 @@ public class VectorsOp {
 
 	    int[] prodvect = new int[3];
 	    prodvect = crossProduct(vect1,vect2,3);
-	    System.out.println("cross product =:[" + prodvect[0] + "," 
-	    	                                   + prodvect[1] + "," 
+	    System.out.println("cross product =:[" + prodvect[0] + ","
+	    	                                   + prodvect[1] + ","
 	    	                                   + prodvect[2] + "]");
 
 	    prodvect = crossProduct(vect2,vect3,3);
@@ -2162,8 +2162,8 @@ public class VectorsOp {
 
 	    prodvect = crossProduct(vect1,prodvect,3);
 
-	    System.out.println("triple product =:[" + prodvect[0] + "," 
-	    	                                   + prodvect[1] + "," 
+	    System.out.println("triple product =:[" + prodvect[0] + ","
+	    	                                   + prodvect[1] + ","
 	    	                                   + prodvect[2] + "]");
 
 	   }
@@ -2194,26 +2194,26 @@ function dotProduct() {
   var argsLen = arguments.length;
   var i, j = len;
   var prod, sum = 0;
-  
+
   // If no arguments supplied, return undefined
   if (!len) {
     return;
   }
-  
+
   // If all vectors not same length, return undefined
   i = argsLen;
   while (i--) {
-  
+
     if (arguments[i].length != len) {
       return;  // return undefined
     }
   }
-  
+
   // Sum terms
   while (j--) {
     i = argsLen;
     prod = 1;
-    
+
     while (i--) {
       prod *= arguments[i][j];
     }
@@ -2228,11 +2228,11 @@ function crossProduct(a, b) {
   if (a.length != 3 || b.length != 3) {
      return;
   }
-  
+
   return [a[1]*b[2] - a[2]*b[1],
           a[2]*b[0] - a[0]*b[2],
           a[0]*b[1] - a[1]*b[0]];
-          
+
 }
 
 function scalarTripleProduct(a, b, c) {
@@ -2248,7 +2248,7 @@ function vectorTripleProduct(a, b, c) {
   var a = [3, 4, 5];
   var b = [4, 3, 5];
   var c = [-5, -12, -13];
-  
+
   alert(
     'A . B: ' + dotProduct(a, b) +
     '\n' +
@@ -2257,7 +2257,7 @@ function vectorTripleProduct(a, b, c) {
     'A . (B x C): ' + scalarTripleProduct(a, b, c) +
     '\n' +
     'A x (B x C): ' + vectorTripleProduct(a, b, c)
-  ); 
+  );
 }());
 ```
 
@@ -2447,7 +2447,7 @@ def scalar_triple_product(a;b;c):
 
 def vector_triple_product(a;b;c):
   cross_product(a; cross_product(b; c));
- 
+
 def main:
   [3, 4, 5] as $a
   | [4, 3, 5] as $b
@@ -2524,7 +2524,7 @@ vectorproduct(a, b, c) = [-267, 204, -3]
 class Vector3D(val x: Double, val y: Double, val z: Double) {
     infix fun dot(v: Vector3D) = x * v.x + y * v.y + z * v.z
 
-    infix fun cross(v: Vector3D) = 
+    infix fun cross(v: Vector3D) =
         Vector3D(y * v.z - z * v.y, z * v.x - x * v.z, x * v.y - y * v.x)
 
     fun scalarTriple(v: Vector3D, w: Vector3D) = this dot (v cross w)
@@ -2644,7 +2644,7 @@ put a.cross(b)
 
 
 ```lua
-Vector = {} 
+Vector = {}
 function Vector.new( _x, _y, _z )
     return { x=_x, y=_y, z=_z }
 end
@@ -2704,7 +2704,7 @@ Module checkit {
                   a,b,c
                   Property ToString$ {
                         Value {
-                            link parent a,b,c to a,b,c 
+                            link parent a,b,c to a,b,c
                              value$=format$("({0}, {1}, {2})",a,b,c)
                         }
                   }
@@ -2722,7 +2722,7 @@ Module checkit {
                         }
                   }
                   Function Mul(r)  {
-                        vv=this 
+                        vv=this
                         for vv {
                               .a*=r:.b*=r:.c*=r
                         }
@@ -2743,7 +2743,7 @@ Module checkit {
                               .c<=.a*..b-.b*..a
                               Read .b, .a
                         }
-                  }      
+                  }
                   class:
                   module Vector {
                         if match("NNN") then {
@@ -2827,7 +2827,7 @@ Output
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-Matlab / Octave use double precesion numbers per default, and pi is a builtin constant value. Arbitrary precision is only implemented in some additional toolboxes (e.g. symbolic toolbox). 
+Matlab / Octave use double precesion numbers per default, and pi is a builtin constant value. Arbitrary precision is only implemented in some additional toolboxes (e.g. symbolic toolbox).
 
 ```MATLAB
 %    Create a named function/subroutine/method to compute the dot product of two vectors.
@@ -2844,12 +2844,12 @@ Matlab / Octave use double precesion numbers per default, and pi is a builtin co
         cross(a,b)
 %    Compute and display: a • b x c, the scaler triple product.
         dot(a,cross(b,c))
-%    Compute and display: a x b x c, the vector triple product. 
+%    Compute and display: a x b x c, the vector triple product.
         cross(a,cross(b,c))
 ```
 
 
-Code for testing: 
+Code for testing:
 
 
 ```txt
@@ -3092,24 +3092,24 @@ module VectorProducts3d
         def (y1, y2, y3) = y;
         (x1 * y1) + (x2 * y2) + (x3 * y3)
     }
-    
+
     Cross(x : int * int * int, y : int * int * int) : int * int * int
     {
         def (x1, x2, x3) = x;
         def (y1, y2, y3) = y;
         ((x2 * y3 - x3 * y2), (x3 * y1 - x1 * y3), (x1 * y2 - x2 * y1))
     }
-    
+
     ScalarTriple(a : int * int * int, b : int * int * int, c : int * int * int) : int
     {
         Dot(a, Cross(b, c))
     }
-    
+
     VectorTriple(a : int * int * int, b : int * int * int, c : int * int * int) : int * int * int
     {
         Cross(a, Cross(b, c))
     }
-    
+
     Main() : void
     {
         def a = (3, 4, 5); def b = (4, 3, 5); def c = (-5, -12, -13);
@@ -3141,7 +3141,7 @@ func printv(a[d] : float) -> int {
 }
 
 func dot(a[d1] : float, b[d2] : float) -> float {
-    a[0] * b[0] + a[1] * b[1] + a[2] * b[2] 
+    a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
 }
 
 func cross(a[d1] : float, b[d2] : float) -> [_] : float {
@@ -3290,7 +3290,7 @@ a ⨯ (b ⨯ c) = [-267, 204, -3]
       newC := @a * vec->GetB() - @b * vec->GetA();
 
       return Vector3D->New(newA, newB, newC);
-    }  
+    }
 
     method : public : ScaleTrip(vec_b: Vector3D, vec_c : Vector3D) ~ Float {
       return Dot(vec_b->Cross(vec_c));
@@ -3298,7 +3298,7 @@ a ⨯ (b ⨯ c) = [-267, 204, -3]
 
     method : public : Print() ~ Nil {
       IO.Console->Print('<')->Print(@a)->Print(" ,")
-        ->Print(@b)->Print(", ")->Print(@c)->PrintLine('>');  
+        ->Print(@b)->Print(", ")->Print(@c)->PrintLine('>');
     }
 
     method : public : VectorTrip(vec_b: Vector3D, vec_c : Vector3D) ~ Vector3D {
@@ -3342,7 +3342,7 @@ let cross (a1, a2, a3) (b1, b2, b3) =
 
 let scalar_triple a b c =
   dot a (cross b c)
- 
+
 let vector_triple a b c =
   cross a (cross b c)
 
@@ -3527,34 +3527,34 @@ function dotProduct(a, b: Tvector): double;
 begin
   dotProduct := a.x*b.x + a.y*b.y + a.z*b.z;
 end;
- 
+
 function crossProduct(a, b: Tvector): Tvector;
 begin
   crossProduct.x := a.y*b.z - a.z*b.y;
   crossProduct.y := a.z*b.x - a.x*b.z;
   crossProduct.z := a.x*b.y - a.y*b.x;
 end;
- 
+
 function scalarTripleProduct(a, b, c: Tvector): double;
 begin
   scalarTripleProduct := dotProduct(a, crossProduct(b, c));
 end;
- 
+
 function vectorTripleProduct(a, b, c: Tvector): Tvector;
 begin
   vectorTripleProduct := crossProduct(a, crossProduct(b, c));
 end;
- 
+
 procedure printVector(a: Tvector);
 begin
   writeln(a.x:15:8, a.y:15:8, a.z:15:8);
 end;
- 
+
 var
   a: Tvector = (x: 3; y:  4; z:  5);
   b: Tvector = (x: 4; y:  3; z:  5);
   c: Tvector = (x:-5; y:-12; z:-13);
- 
+
 begin
   write('a: '); printVector(a);
   write('b: '); printVector(b);
@@ -3616,7 +3616,7 @@ print "$a x ($b x $c) = ", $a ^ ($b ^ $c), "\n";
 ```
 
 
-Output: 
+Output:
 ```txt
 a = (3 4 5) b = (4 3 5) c = (-5 -12 -13)
 (3 4 5) . (4 3 5) = 49
@@ -3997,10 +3997,10 @@ The output is:
 
 ```txt
 
-a . b =                       49 
-a x b =                        5                       5                      -7 
-a . (b x c) =                  6 
-a x (b x c) =               -267                     204                      -3 
+a . b =                       49
+a x b =                        5                       5                      -7
+a . (b x c) =                  6
+a x (b x c) =               -267                     204                      -3
 
 ```
 
@@ -4048,7 +4048,7 @@ $c = @(-5, -12, -13)
 a.b = 49
 axb = 5 5 -7
 a.(bxc) = 6
-ax(bxc) = -267 204 -3  
+ax(bxc) = -267 204 -3
 
 ```
 
@@ -4104,32 +4104,32 @@ Ans = [-267.0, 204.0, -3.0].
 
 ```PureBasic
 Structure vector
-  x.f 
+  x.f
   y.f
   z.f
 EndStructure
- 
+
 ;convert vector to a string for display
 Procedure.s toString(*v.vector)
   ProcedureReturn "[" + StrF(*v\x, 2) + ", " + StrF(*v\y, 2) + ", " + StrF(*v\z, 2) + "]"
 EndProcedure
-  
+
 Procedure.f dotProduct(*a.vector, *b.vector)
   ProcedureReturn *a\x * *b\x + *a\y * *b\y + *a\z * *b\z
 EndProcedure
-    
+
 Procedure crossProduct(*a.vector, *b.vector, *r.vector)
   *r\x = *a\y * *b\z - *a\z * *b\y
   *r\y = *a\z * *b\x - *a\x * *b\z
   *r\z = *a\x * *b\y - *a\y * *b\x
 EndProcedure
-      
+
 Procedure.f scalarTriple(*a.vector, *b.vector, *c.vector)
   Protected r.vector
   crossProduct(*b, *c, r)
   ProcedureReturn dotProduct(*a, r)
 EndProcedure
-        
+
 Procedure vectorTriple(*a.vector, *b.vector, *c.vector, *r.vector)
   Protected r.vector
   crossProduct(*b, *c, r)
@@ -4141,7 +4141,7 @@ If OpenConsole()
   a\x = 3: a\y = 4: a\z = 5
   b\x = 4: b\y = 3: b\z = 5
   c\x = -5: c\y = -12: c\z = -13
-  
+
   PrintN("a = " + toString(a) + ", b = " + toString(b) + ", c = " + toString(c))
   PrintN("a . b = " + StrF(dotProduct(a, b), 2))
   crossProduct(a, b, r)
@@ -4149,7 +4149,7 @@ If OpenConsole()
   PrintN("a . b x c  = " + StrF(scalarTriple(a, b, c), 2))
   vectorTriple(a, b, c, r)
   PrintN("a x b x c = " + toString(r))
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -4178,20 +4178,20 @@ def crossp(a, b):
     a1, a2, a3 = a
     b1, b2, b3 = b
     return (a2*b3 - a3*b2, a3*b1 - a1*b3, a1*b2 - a2*b1)
- 
+
 def dotp(a,b):
     '''Dot product of two eqi-dimensioned vectors'''
     assert len(a) == len(b), 'Vector sizes must match'
     return sum(aterm * bterm for aterm,bterm in zip(a, b))
- 
+
 def scalartriplep(a, b, c):
     '''Scalar triple product of three vectors: "a . (b x c)"'''
     return dotp(a, crossp(b, c))
- 
+
 def vectortriplep(a, b, c):
     '''Vector triple product of three vectors: "a x (b x c)"'''
     return crossp(a, crossp(b, c))
- 
+
 if __name__ == '__main__':
     a, b, c = (3, 4, 5), (4, 3, 5), (-5, -12, -13)
     print("a = %r;  b = %r;  c = %r" % (a, b, c))
@@ -4213,7 +4213,7 @@ a x (b x c) = (-267, 204, -3)
 ```
 
 
-;Note: 
+;Note:
 The popular [http://numpy.scipy.org/ numpy] package has functions for dot and cross products.
 
 
@@ -4395,27 +4395,27 @@ e = list(3)
 a = [3, 4, 5]
 b = [4, 3, 5]
 c = [-5, -12, -13]
- 
+
 see "a . b = " + dot(a,b) + nl
 cross(a,b,d)
 see "a x b = (" + d[1] + ", " + d[2] + ", " + d[3] + ")" + nl
 see "a . (b x c) = " + scalartriple(a,b,c) + nl
 vectortriple(a,b,c,d)
- 
+
 def dot(a,b)
     sum = 0
     for n=1 to len(a)
         sum = sum + a[n]*b[n]
     next
     return sum
- 
+
 func cross(a,b,d)
      d = [a[2]*b[3]-a[3]*b[2], a[3]*b[1]-a[1]*b[3], a[1]*b[2]-a[2]*b[1]]
- 
+
 func scalartriple(a,b,c)
      cross(b,c,d)
      return dot(a,d)
- 
+
 func vectortriple(a,b,c,d)
      cross(b,c,d)
      cross(a,d,e)
@@ -4463,7 +4463,7 @@ puts "a dot (b cross c) = #{a.scalar_triple_product b, c}"
 puts "a cross (b cross c) = #{a.vector_triple_product b, c}"
 ```
 
-Output: 
+Output:
 ```txt
 a dot b = 49
 a cross b = Vector[5, 5, -7]
@@ -4551,11 +4551,11 @@ object VectorTest {
     val a=Vector3D(3,4,5)
     val b=Vector3D(4,3,5)
     val c=Vector3D(-5,-12,-13)
-				
+
     println("      a . b : " + (a dot b))
     println("      a x b : " + (a cross b))
     println("a . (b x c) : " + (a scalarTriple(b, c)))
-    println("a x (b x c) : " + (a vectorTriple(b, c)))		
+    println("a x (b x c) : " + (a vectorTriple(b, c)))
   }
 }
 ```
@@ -4914,19 +4914,19 @@ Option Base 1
 Function dot_product(a As Variant, b As Variant) As Variant
     dot_product = WorksheetFunction.SumProduct(a, b)
 End Function
- 
+
 Function cross_product(a As Variant, b As Variant) As Variant
     cross_product = Array(a(2) * b(3) - a(3) * b(2), a(3) * b(1) - a(1) * b(3), a(1) * b(2) - a(2) * b(1))
 End Function
- 
+
 Function scalar_triple_product(a As Variant, b As Variant, c As Variant) As Variant
     scalar_triple_product = dot_product(a, cross_product(b, c))
 End Function
- 
+
 Function vector_triple_product(a As Variant, b As Variant, c As Variant) As Variant
     vector_triple_product = cross_product(a, cross_product(b, c))
 End Function
- 
+
 Public Sub main()
     a = [{3, 4, 5}]
     b = [{4, 3, 5}]
@@ -4940,9 +4940,9 @@ End Sub
 {{out}}
 
 ```txt
-      a . b =  49 
+      a . b =  49
       a x b = (5, 5, -7)
-a . (b x c) =  6 
+a . (b x c) =  6
 a x (b x c) = (-267, 204, -3)
 ```
 
@@ -5064,11 +5064,11 @@ v1 x (v2 x v3) = (-267, 204, -3)
   ]]
   scalarTripleProduct &[a b c] !!dot a !!cross b c
   vectorTripleProduct &[a b c] !!cross a !!cross b c
-  
+
   a [3 4 5]
   b [4 3 5]
   c [5N 12N 13N]
-  
+
   [[
     !!dot a b
     !!cross a b

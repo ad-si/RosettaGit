@@ -62,10 +62,10 @@ Appended record: xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -178,10 +178,10 @@ xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@rosettacode.org:/
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -192,8 +192,8 @@ xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@rosettacode.org:/
 
 '''From a C "struct" to CSV File'''
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 /* note that UID & GID are of type "int" */
 typedef const char *STRING;
@@ -232,7 +232,7 @@ main(){
           {"X Yz", "Room 1003", "(234)555-8913", "(234)555-0033", "xyz@rosettacode.org"},
           "/home/xyz", "/bin/bash"};
   sprintf(passwd_buf, PASSWD_FMT"\n", new_rec);
-/* An atomic append without a file lock, 
+/* An atomic append without a file lock,
    Note: wont work on some file systems, eg NFS */
   write(fileno(passwd_text), passwd_buf, strlen(passwd_buf));
   close(passwd_text);
@@ -262,8 +262,8 @@ Appended record: xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@
 
 {{trans|C#}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -365,7 +365,7 @@ namespace AppendPwdRosetta
     {
         public string account, password, fullname, office, extension, homephone, email, directory, shell;
         public int UID, GID;
-        public PasswordRecord(string account, string password, int UID, int GID, string fullname, string office, string extension, string homephone, 
+        public PasswordRecord(string account, string password, int UID, int GID, string fullname, string office, string extension, string homephone,
             string email, string directory, string shell)
         {
             this.account = account; this.password = password; this.UID = UID; this.GID = GID; this.fullname = fullname; this.office = office;
@@ -381,13 +381,13 @@ namespace AppendPwdRosetta
     {
         static void Main(string[] args)
         {
-            var jsmith = new PasswordRecord("jsmith", "x", 1001, 1000, "Joe Smith", "Room 1007", "(234)555-8917", "(234)555-0077", "jsmith@rosettacode.org", 
+            var jsmith = new PasswordRecord("jsmith", "x", 1001, 1000, "Joe Smith", "Room 1007", "(234)555-8917", "(234)555-0077", "jsmith@rosettacode.org",
                 "/home/jsmith", "/bin/bash");
-            var jdoe = new PasswordRecord("jdoe", "x", 1002, 1000, "Jane Doe", "Room 1004", "(234)555-8914", "(234)555-0044", "jdoe@rosettacode.org", "/home/jdoe", 
+            var jdoe = new PasswordRecord("jdoe", "x", 1002, 1000, "Jane Doe", "Room 1004", "(234)555-8914", "(234)555-0044", "jdoe@rosettacode.org", "/home/jdoe",
                 "/bin/bash");
             var xyz = new PasswordRecord("xyz", "x", 1003, 1000, "X Yz", "Room 1003", "(234)555-8913", "(234)555-0033", "xyz@rosettacode.org", "/home/xyz", "/bin/bash");
 
-            // Write these records out in the typical system format. 
+            // Write these records out in the typical system format.
             File.WriteAllLines("passwd.txt", new string[] { jsmith.ToString(), jdoe.ToString() });
 
             // Append a new record to the file and close the file again.
@@ -441,10 +441,10 @@ control, paired with WRITE and REWRITE statements.
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -457,7 +457,7 @@ control, paired with WRITE and REWRITE statements.
 |-
 | Record hierarchy || INDEXED || ISAM || ☑ || ☑ || ☑ (Not all)
 |}
-'''Note:''' Not all [[wp:File system|File Systems]] support [[wp:Atomicity_(database_systems)#Implementation|atomic appends]].  In particular [[wp:Network File System (protocol)|NFS]], and many TAPE devices do not.  Guaranteed atomic append operations will be highly dependent on file handling subsystem and device capabilities. 
+'''Note:''' Not all [[wp:File system|File Systems]] support [[wp:Atomicity_(database_systems)#Implementation|atomic appends]].  In particular [[wp:Network File System (protocol)|NFS]], and many TAPE devices do not.  Guaranteed atomic append operations will be highly dependent on file handling subsystem and device capabilities.
 
 '''Record group to passwd format, LINE SEQUENTIAL'''
 
@@ -527,14 +527,14 @@ control, paired with WRITE and REWRITE statements.
        main-routine.
        perform initial-fill
 
-       >>IF DEBUG IS DEFINED 
+       >>IF DEBUG IS DEFINED
        display "Initial data:"
        perform show-records
        >>END-IF
 
        perform append-record
- 
-       >>IF DEBUG IS DEFINED 
+
+       >>IF DEBUG IS DEFINED
        display newline "After append:"
        perform show-records
        >>END-IF
@@ -778,7 +778,7 @@ Tested on CLISP 2.49
             (t b))
           delim))))
   record :initial-value "")))
-			
+
 
 (defun main ()
   ;; Write initial values to file
@@ -799,7 +799,7 @@ Tested on CLISP 2.49
   (with-open-file (stream "./passwd")
     (when stream
       (loop for line = (read-line stream nil)
-        while line do 
+        while line do
           (if (search "xyz" line)
             (format t "Appended record: ~a~%" line))))))
 
@@ -818,10 +818,10 @@ Appended record: xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -946,22 +946,22 @@ xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@rosettacode.org:/
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
 |-
-| objects (subclass of Struct builtin) || text file || builtin || ☑ || ☑ || ☒ 
+| objects (subclass of Struct builtin) || text file || builtin || ☑ || ☑ || ☒
 |}
 
 ```elixir
 
 defmodule Gecos do
   defstruct [:fullname, :office, :extension, :homephone, :email]
-  
+
   defimpl String.Chars do
     def to_string(gecos) do
       [:fullname, :office, :extension, :homephone, :email]
@@ -969,10 +969,10 @@ defmodule Gecos do
     end
   end
 end
- 
+
 defmodule Passwd do
   defstruct [:account, :password, :uid, :gid, :gecos, :directory, :shell]
-  
+
   defimpl String.Chars do
     def to_string(passwd) do
       [:account, :password, :uid, :gid, :gecos, :directory, :shell]
@@ -998,7 +998,7 @@ defmodule Appender do
       directory: "/home/jsmith",
       shell: "/bin/bash"
     }
-    
+
     jdoe = %Passwd{
       account: "jdoe",
       password: "x",
@@ -1014,7 +1014,7 @@ defmodule Appender do
       directory: "/home/jdoe",
       shell: "/bin/bash"
     }
-    
+
     xyz = %Passwd{
       account: "xyz",
       password: "x",
@@ -1030,16 +1030,16 @@ defmodule Appender do
       directory: "/home/xyz",
       shell: "/bin/bash"
     }
-    
+
     File.open!(filename, [:write], fn file ->
       IO.puts(file, jsmith)
       IO.puts(file, jdoe)
     end)
-    
+
     File.open!(filename, [:append], fn file ->
       IO.puts(file, xyz)
     end)
-    
+
     IO.puts File.read!(filename)
   end
 end
@@ -1144,7 +1144,7 @@ The output can be read back in with the same free-format style. The fields are s
  "xyz     " "x       "   1003   1000 "X Yz                        " "Room 1003   " "(234)555-8193   " "(234)555-033    " "xyz@rosettacode.org                                                                     " "/home/xyz         " "/bin/bash   "
 
 ```
- 
+
 Numerical values are written with sufficient space to allow for their maximum value, so the sixteen-bit integers are allowed six spaces (in case a minus sign might be needed) and so on for other types. Thus, complex numbers are written in the (''real'',''imaginary'') style. Given this fixed layout, an explicit FORMAT statement could be used and delimiters be abandoned along with worry over quoting, but any changes to the data structure will require corresponding changes to the associated FORMAT statement, and mistakes are easily made. For input via free-format, the trailing spaces in the quoted strings could be omitted; any needed will be supplied by the READ process.
 
 To demonstrate that they have been read successfully, the data aggregate is printed out using the NAMELIST protocol, whereby each item in the output list is presented in the form <''name''> = <''value''>, as follows:
@@ -1248,7 +1248,7 @@ Type Record
   As Person  user
   As String  directory
   As String  shell
-  Declare Constructor() 
+  Declare Constructor()
   Declare Constructor(As String, As String, As Integer, As Integer, As Person, As String, As String)
   Declare Operator Cast() As String
 End Type
@@ -1269,7 +1269,7 @@ directory As String, shell As String)
    .shell     = shell
   End With
 
-End Constructor 
+End Constructor
 
 Operator Record.Cast() As String
   Return account + ":" + password + ":" + Str(uid) + ":" + Str(gid) + ":" + user + ":" + directory + ":" + shell
@@ -1282,9 +1282,9 @@ persons(3) = Person("X Yz",      "Room 1003", "(234)555-8913", "(234)555-0033", 
 
 Dim records(1 To 3) As Record
 records(1) = Record("jsmith", "x", 1001, 1000, persons(1), "/home/jsmith", "/bin/bash")
-records(2) = Record("jdoe",   "x", 1002, 1000, persons(2), "/home/jdoe"  , "/bin/bash")	
+records(2) = Record("jdoe",   "x", 1002, 1000, persons(2), "/home/jdoe"  , "/bin/bash")
 records(3) = Record("xyz",    "x", 1003, 1000, persons(3), "/home/xyz"   , "/bin/bash")
-   
+
 Open "passwd.txt" For Output As #1
 Print #1, records(1)
 Print #1, records(2)
@@ -1312,10 +1312,10 @@ xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@rosettacode.org:/
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -1443,10 +1443,10 @@ append okay
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -1594,20 +1594,20 @@ data Gecos = Gecos { fullname  :: String
                    , office    :: String
                    , extension :: String
                    , homephone :: String
-                   , email     :: String 
-                   } 
+                   , email     :: String
+                   }
 
 data Record = Record { account   :: String
                      , password  :: String
                      , uid       :: Int
-                     , gid       :: Int 
+                     , gid       :: Int
                      , directory :: String
                      , shell     :: String
                      , gecos     :: Gecos
-                     } 
+                     }
 
 instance Show Gecos where
-    show (Gecos {..}) = intercalate "," [fullname, office, extension, homephone, email] 
+    show (Gecos {..}) = intercalate "," [fullname, office, extension, homephone, email]
 
 instance Show Record where
     show (Record {..}) = intercalate ":" [account, password, show uid, show gid, show gecos, directory, shell]
@@ -1623,13 +1623,13 @@ Test:
 ```haskell
 
 t1 = Record "jsmith" "x" 1001 1000 "/home/jsmith" "/bin/bash"
-            (Gecos "Joe Smith" "Room 1007" "(234)555-8917" "(234)555-0077" "jsmith@rosettacode.org") 
+            (Gecos "Joe Smith" "Room 1007" "(234)555-8917" "(234)555-0077" "jsmith@rosettacode.org")
 
 t2 = Record "jdoe" "x" 1002 1000 "/home/jdoe" "/bin/bash"
-            (Gecos "Jane Doe" "Room 1004" "(234)555-8914" "(234)555-0044" "jdoe@rosettacode.org") 
+            (Gecos "Jane Doe" "Room 1004" "(234)555-8914" "(234)555-0044" "jdoe@rosettacode.org")
 
 t3 = Record "xyz" "x" 1003 1000 "/home/xyz" "/bin/bash"
-            (Gecos "X Yz" "Room 1003" "(234)555-8913" "(234)555-0033" "xyz@rosettacode.org") 
+            (Gecos "X Yz" "Room 1003" "(234)555-8913" "(234)555-0033" "xyz@rosettacode.org")
 
 main = do
     let path = "test.txt"
@@ -1675,10 +1675,10 @@ xyz:x:1003:1000:X:Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@rosettacode.org:/
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -1708,7 +1708,7 @@ R1=: passrec record''
    shell: /bin/bash
 )
 
-R2=: passrec record''   
+R2=: passrec record''
    username: jdoe
    password: x
    gid: 1002
@@ -1733,18 +1733,18 @@ passwd=: <'/tmp/passwd.txt'  NB. file needs to be writable on implementation mac
 (R1,R2) fwrite passwd
 R3 fappend passwd
 
-assert 1 e. R3 E. fread passwd 
+assert 1 e. R3 E. fread passwd
 ```
 
 
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
+!colspan=2| Data Representation
 |-
 ! In core || On disk
 |-
-| array || literal 
+| array || literal
 |}
 
 Note that no file locking is needed if this is implemented under windows (since all file writes are atomic across processes -- only one process can have a file open at one time, by default).  Note that file locking would be needed under Linux (or unix), but it's [http://0pointer.de/blog/projects/locking2 not clear] which file locking mechanism should be used.
@@ -1991,10 +1991,10 @@ xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,[email protected]:/ho
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -2065,18 +2065,18 @@ append(xyz, ".passwd")
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-data = <|"account" -> "xyz", "password" -> "x", "UID" -> 1003, 
-   "GID" -> 1000, "fullname" -> "X Yz", "office" -> "Room 1003", 
-   "extension" -> "(234)555-8913", "homephone" -> "(234)555-0033", 
-   "email" -> "xyz@rosettacode.org", "directory" -> "/home/xyz", 
+data = <|"account" -> "xyz", "password" -> "x", "UID" -> 1003,
+   "GID" -> 1000, "fullname" -> "X Yz", "office" -> "Room 1003",
+   "extension" -> "(234)555-8913", "homephone" -> "(234)555-0033",
+   "email" -> "xyz@rosettacode.org", "directory" -> "/home/xyz",
    "shell" -> "/bin/bash"|>;
-asString[data_] := 
+asString[data_] :=
   StringRiffle[
-   ToString /@ 
-    Insert[data /@ {"account", "password", "UID", "GID", "directory", 
-       "shell"}, 
+   ToString /@
+    Insert[data /@ {"account", "password", "UID", "GID", "directory",
+       "shell"},
      StringRiffle[
-      data /@ {"fullname", "office", "extension", "homephone", 
+      data /@ {"fullname", "office", "extension", "homephone",
         "email"}, ","], 5], ":"];
 fname = FileNameJoin[{$TemporaryDirectory, "testfile"}];
 str = OpenWrite[fname]; (* Use OpenAppend if file exists *)
@@ -2093,10 +2093,10 @@ Appended record: xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -2133,14 +2133,14 @@ Appended record: xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@
 
   function WriteRecord(fid, rec)
      fprintf(fid,"%s:%s:%i:%i:%s,%s,%s,%s,%s:%s%s\n", rec.account, rec.password, rec.UID, rec.GID, rec.fullname, rec.office, rec.extension, rec.homephone, rec.email, rec.directory, rec.shell);
-     return; 
-  end   
+     return;
+  end
 
-  %% write 
+  %% write
   fid = fopen('passwd.txt','w');
   WriteRecord(fid,DS{1});
   WriteRecord(fid,DS{2});
-  fclose(fid); 
+  fclose(fid);
 
   new.account='xyz';
   new.password='x';
@@ -2157,14 +2157,14 @@ Appended record: xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@
   %% append
   fid = fopen('passwd.txt','a+');
   WriteRecord(fid,new);
-  fclose(fid); 
+  fclose(fid);
 
-  % read password file 
+  % read password file
   fid = fopen('passwd.txt','r');
   while ~feof(fid)
 	printf('%s\n',fgetl(fid));
-  end; 
-  fclose(fid); 
+  end;
+  fclose(fid);
 ```
 
 {{out}}
@@ -2316,10 +2316,10 @@ xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@rosettacode.org:/
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -2420,10 +2420,10 @@ xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@rosettacode.org:/
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -2438,10 +2438,10 @@ Note that advisory locks do not prevent some other program (if it doesn't use fl
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -2546,11 +2546,11 @@ end procedure
    (234)555-0044,jdoe@rosettacode.org"
    /home/jsmith /bin/bash ) ) )
 
-(setq A '(xyz x 1003 1000 
+(setq A '(xyz x 1003 1000
     "X Yz,Room 1003,(234)555-8913,\
     (234)555-0033,xyz@rosettacode.org"
     /home/xyz /bin/bash ) )
-   
+
 (out "mythical"
    (for I L
       (prinl (glue ': I)) ) )
@@ -2786,8 +2786,8 @@ $records | Format-Table -AutoSize
 
 ```txt
 
-Account Password  UID  GID GECOS                                                                                                                   Directory    Shell    
-------- --------  ---  --- -----                                                                                                                   ---------    -----    
+Account Password  UID  GID GECOS                                                                                                                   Directory    Shell
+------- --------  ---  --- -----                                                                                                                   ---------    -----
 jsmith  x        1001 1000 @{FullName=Joe Smith; Office=Room 1007; Extension=(234)555-8917; HomePhone=(234)555-0077; Email=jsmith@rosettacode.org} /home/jsmith /bin/bash
 jdoe    x        1002 1000 @{FullName=Jane Doe; Office=Room 1004; Extension=(234)555-8914; HomePhone=(234)555-0044; Email=jdoe@rosettacode.org}    /home/jdoe   /bin/bash
 
@@ -2851,8 +2851,8 @@ $records | Sort-Object { $_.GECOS.FullName.Split(" ")[1] } | Format-Table -AutoS
 
 ```txt
 
-Account Password  UID  GID GECOS                                                                                                                   Directory    Shell    
-------- --------  ---  --- -----                                                                                                                   ---------    -----    
+Account Password  UID  GID GECOS                                                                                                                   Directory    Shell
+------- --------  ---  --- -----                                                                                                                   ---------    -----
 jdoe    x        1002 1000 @{FullName=Jane Doe; Office=Room 1004; Extension=(234)555-8914; HomePhone=(234)555-0044; Email=jdoe@rosettacode.org}    /home/jdoe   /bin/bash
 jsmith  x        1001 1000 @{FullName=Joe Smith; Office=Room 1007; Extension=(234)555-8917; HomePhone=(234)555-0077; Email=jsmith@rosettacode.org} /home/jsmith /bin/bash
 xyz     x        1003 1000 @{FullName=X Yz; Office=Room 1003; Extension=(234)555-8913; HomePhone=(234)555-0033; Email=xyz@rosettacode.org}         /home/xyz    /bin/bash
@@ -2921,15 +2921,15 @@ xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@rosettacode.org:/
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
 |-
-| dict || CSV text file || builtin || ☑ || ☑ || ☒ 
+| dict || CSV text file || builtin || ☑ || ☑ || ☒
 |-
 | instance || CSV text file || builtin ||colspan=3| To do.
 |}
@@ -3002,10 +3002,10 @@ The simplest format for such data in plain text is S-expression.
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -3074,10 +3074,10 @@ Looking up xyz in current file:
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -3115,7 +3115,7 @@ while not file.EOF
 wend
 file.close
 
-showmessage "Appended record: " + LogRec 
+showmessage "Appended record: " + LogRec
 
 ```
 
@@ -3131,13 +3131,13 @@ Appended record: xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@
 ```vb
 
 'Full solution: Create an object with all required fields and
-'build-in functions to append a record and to read the last record 
+'build-in functions to append a record and to read the last record
 $include "Rapidq.inc"
 
 Type TLogFile extends QObject
   Private:
     file as qfilestream
-    
+
   Public:
     account as string
     password as string
@@ -3150,32 +3150,32 @@ Type TLogFile extends QObject
     GECOS.email as string
     directory as string
     shell as string
-    
+
     RSep as string
     GSep as string
-    
+
     function AppendRecord(LogFile as string) as integer
         with This
-            if fileexists(LogFile) then 
+            if fileexists(LogFile) then
                 Result = .file.open(LogFile, fmOpenWrite)
             else
                 Result = .file.open(LogFile, fmCreate)
             end if
-            
+
             .file.position = .file.size
             .file.writeline .account + .RSep + .password + .RSep + str$(.UID) + .RSep + str$(.GID) + .RSep +_
                             .GECOS.fullname + .GSep + .GECOS.office + .GSep + .GECOS.extension +_
                             .GSep + .GECOS.homephone + .GSep + .GECOS.email + .RSep +_
-                            .directory + .RSep + .shell 
+                            .directory + .RSep + .shell
             .file.close
         end with
     end function
-    
+
     Function ReadLastRecord(LogFile as string) as string
         dim x as integer
         dim LogRec as string
         dim GECOSRec as string
-        
+
         With This
             if fileexists(LogFile) then
                 .file.open(LogFile, fmOpenRead)
@@ -3183,7 +3183,7 @@ Type TLogFile extends QObject
                     LogRec = .file.readline
                 Wend
                 .file.close
-                
+
                 .account = field$(LogRec, .RSep, 1)
                 .password = field$(LogRec, .RSep, 2)
                 .UID = val(field$(LogRec, .RSep, 3))
@@ -3196,14 +3196,14 @@ Type TLogFile extends QObject
                 .GECOS.extension = field$(GECOSRec, .GSep, 3)
                 .GECOS.homephone = field$(GECOSRec, .GSep, 4)
                 .GECOS.email = field$(GECOSRec, .GSep, 5)
-                
+
             else
                 showmessage "Can't read file " + Logfile
 
             end if
         end with
     End function
-    
+
     Constructor
         RSep = ":"
         GSep = ","
@@ -3211,7 +3211,7 @@ Type TLogFile extends QObject
 end type
 
 '--- Now we can use our LogFile object:
-dim LogFile as TLogFile 
+dim LogFile as TLogFile
 
 '--- Let's save a record: Set field values
 Logfile.account = "jsmith"
@@ -3222,7 +3222,7 @@ Logfile.directory = "/home/jsmith"
 Logfile.shell = "/bin/bash"
 Logfile.GECOS.fullname = "Joe Smith"
 Logfile.GECOS.office = "Room 1007"
-Logfile.GECOS.extension = "(234)555-8917" 
+Logfile.GECOS.extension = "(234)555-8917"
 Logfile.GECOS.homephone = "(234)555-0077"
 Logfile.GECOS.email = "jsmith@rosettacode.org"
 '--- And save it to our logfile
@@ -3237,7 +3237,7 @@ Logfile.directory = "/home/jsmith"
 Logfile.shell = "/bin/bash"
 Logfile.GECOS.fullname = "Jane Doe"
 Logfile.GECOS.office = "Room 1004"
-Logfile.GECOS.extension = "(234)555-8914" 
+Logfile.GECOS.extension = "(234)555-8914"
 Logfile.GECOS.homephone = "(234)555-0044"
 Logfile.GECOS.email = "jdoe@rosettacode.org"
 '--- And save it to our logfile
@@ -3252,7 +3252,7 @@ Logfile.directory = "/home/xyz"
 Logfile.shell = "/bin/bash"
 Logfile.GECOS.fullname = "X Yz"
 Logfile.GECOS.office = "Room 1003"
-Logfile.GECOS.extension = "(234)555-8913" 
+Logfile.GECOS.extension = "(234)555-8913"
 Logfile.GECOS.homephone = "(234)555-0033"
 Logfile.GECOS.email = "xyz@rosettacode.org"
 '--- And save it to our logfile
@@ -3285,17 +3285,17 @@ input "Press enter to exit:";a$
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities
 |-
-!colspan=2| data representation 
-!rowspan=2| I/O<BR>library 
-!rowspan=2| append<BR> 
-!rowspan=2| automatic<BR>append 
+!colspan=2| data representation
+!rowspan=2| I/O<BR>library
+!rowspan=2| append<BR>
+!rowspan=2| automatic<BR>append
 !rowspan=2| multi-tasking<BR>safe
 |-
 ! in memory || on disk
 |-
-| strings || text file || builtin || yes || yes || yes 
+| strings || text file || builtin || yes || yes || yes
 |}
-The data fields for the three records were coded on two statements instead of 
+The data fields for the three records were coded on two statements instead of
 
 continuing them on separate statements for brevity.
 
@@ -3364,19 +3364,19 @@ xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@rosettacode.org:/
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
 |-
-| objects (subclass of Struct builtin) || text file || builtin || ☑ || ☑ || ☒ 
+| objects (subclass of Struct builtin) || text file || builtin || ☑ || ☑ || ☒
 |}
 
 ```ruby
-Gecos = Struct.new :fullname, :office, :extension, :homephone, :email 
+Gecos = Struct.new :fullname, :office, :extension, :homephone, :email
 class Gecos
   def to_s
     "%s,%s,%s,%s,%s" % to_a
@@ -3695,10 +3695,10 @@ object RecordAppender extends App {
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
@@ -3817,15 +3817,15 @@ Note that flock uses advisory lock; some other program (if it doesn't use flock)
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
 |-
-| nested lists || Colon/Comma-separated text file || builtin || ☑ || ☑ || ☑ 
+| nested lists || Colon/Comma-separated text file || builtin || ☑ || ☑ || ☑
 |}
 Note that appending is only safe on POSIX OSes where the data is written in “small enough” amounts to a local disk. This is a limitation of the OS APIs.
 
@@ -3929,15 +3929,15 @@ The file will have this content:
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
 |-
-| one-dimensional arrays (indexed or associative) || text file || builtin (shell redirections) || ☑ || ☑ || OS defined 
+| one-dimensional arrays (indexed or associative) || text file || builtin (shell redirections) || ☑ || ☑ || OS defined
 |}
 
 ```bash
@@ -3950,7 +3950,7 @@ rec1=(
     /home/jsmith
     /bin/bash
 )
- 
+
 rec2=(
     jdoe
     x
@@ -4119,7 +4119,7 @@ Appended record: xyz:x:1003:1000:X Yz,Room 1003,(234)555-8913,(234)555-0033,xyz@
 ```Yabasic
 a = open("passwd", "a") // Open the file for appending, i.e. what you write to the file will be appended after its initial contents.
                         // If the file does not exist, it will be created.
-                        
+
 print #a "account:password:UID:GID:fullname,office,extension,homephone,email:directory:shell"
 print #a "jsmith:x:1001:1000:Joe Smith,Room 1007,(234)555-8917,(234)555-0077,jsmith@rosettacode.org:/home/jsmith:/bin/bash"
 print #a "jdoe:x:1002:1000:Jane Doe,Room 1004,(234)555-8914,(234)555-0044,jdoe@rosettacode.org:/home/jdoe:/bin/bash"
@@ -4149,7 +4149,7 @@ next
 print upper$(nameField$(field1)), "\t", upper$(nameField$(field2))
 print
 
-while(not eof(#a)) 
+while(not eof(#a))
   line input #a a$
   n = token(a$, contentField$(), ":,")
   print contentField$(field1), "\t", contentField$(field2)
@@ -4165,20 +4165,20 @@ close #a
 {|class="wikitable" style="text-align: center; margin: 1em auto 1em auto;"
 |+ Append Capabilities.
 |-
-!colspan=2| Data Representation 
-!rowspan=2| IO<BR>Library 
-!rowspan=2| Append<BR>Possible 
-!rowspan=2| Automatic<BR>Append 
+!colspan=2| Data Representation
+!rowspan=2| IO<BR>Library
+!rowspan=2| Append<BR>Possible
+!rowspan=2| Automatic<BR>Append
 !rowspan=2| Multi-tasking<BR>Safe
 |-
 ! In core || On disk
 |-
-| classes || text file || libc || ☑ || ☑ || OS defined 
+| classes || text file || libc || ☑ || ☑ || OS defined
 |}
 {{trans|Ruby}}
 
 ```zkl
-var [const] 
+var [const]
    gnames=T("fullname","office","extension","homephone","email"),
    pnames=T("account","password","uid","gid","gecos","directory","shell");
 
@@ -4208,7 +4208,7 @@ fcn strToPasswd(str){  // blow apart file line to class
 The List xplode method pushes the list contents to the parameter list.
 
 ```zkl
-jsmith:=Passwd("jsmith","x",1001, 1000, 
+jsmith:=Passwd("jsmith","x",1001, 1000,
 	Gecos("Joe Smith", "Room 1007", "(234)555-8917", "(234)555-0077", "jsmith@rosettacode.org"),
 	"/home/jsmith", "/bin/bash");
 jdoe:=strToPasswd("jdoe:x:1002:1000:Jane Doe,Room 1004,(234)555-8914,(234)555-0044,"

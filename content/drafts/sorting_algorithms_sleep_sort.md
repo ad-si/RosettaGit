@@ -184,8 +184,8 @@ Output: 1359
 ## C
 
 
-```C>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>

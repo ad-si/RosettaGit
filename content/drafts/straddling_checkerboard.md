@@ -13,7 +13,7 @@ tags = []
 {{task|Encryption}}
 
 ;Task:
-Implement functions to encrypt and decrypt a message using the [[wp:Straddling_checkerboard|straddling checkerboard]] method. The checkerboard should take a 28 character alphabet (A-Z plus a full stop and an escape character) and two different numbers representing the blanks in the first row. The output will be a series of decimal digits. 
+Implement functions to encrypt and decrypt a message using the [[wp:Straddling_checkerboard|straddling checkerboard]] method. The checkerboard should take a 28 character alphabet (A-Z plus a full stop and an escape character) and two different numbers representing the blanks in the first row. The output will be a series of decimal digits.
 
 Numbers should be encrypted by inserting the escape character before each digit, then including the digit unencrypted. This should be reversed for decryption.
 
@@ -214,8 +214,8 @@ MsgBox % dec
 {{libheader|GLib}}
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
@@ -246,7 +246,7 @@ const char *table[ROWS][COLS] =
 };
 */
 
-// task table 
+// task table
 const char *table[ROWS][COLS] =
 {
   { "0", "1", "2", "3",  "4", "5", "6", "7",  "8", "9"  },
@@ -269,7 +269,7 @@ GHashTable *create_table_from_array(const char *table[ROWS][COLS], bool is_encod
   }
 
   const size_t SELNUM = m;
-  
+
   size_t selectors[SELNUM];
   size_t numprefix_row, numprefix_col;
   bool has_numprefix = false;
@@ -362,7 +362,7 @@ char *decode(GHashTable *et, const char *enctext)
       break;
     }
   }
-  
+
   r = res->str;
   g_string_free(res, FALSE);
   g_string_free(en, TRUE);
@@ -381,22 +381,22 @@ char *encode(GHashTable *et, const char *plaintext, int (*trasf)(int), bool comp
 
   s = g_string_new(NULL);
 
-  for(buf[0] = trasf ? trasf(*plaintext) : *plaintext; 
-      buf[0] != '\0'; 
+  for(buf[0] = trasf ? trasf(*plaintext) : *plaintext;
+      buf[0] != '\0';
       buf[0] = trasf ? trasf(*++plaintext) : *++plaintext)
   {
     if ( (r = g_hash_table_lookup(et, buf)) != NULL )
     {
       g_string_append(s, r);
     }
-    else if (isspace(buf[0])) 
+    else if (isspace(buf[0]))
     {
       if (!compress_spaces) g_string_append(s, buf);
-    } 
+    }
     else
     {
       fprintf(stderr, "char '%s' is not encodable%s\n",
-	      isprint(buf[0]) ? buf : "?", 
+	      isprint(buf[0]) ? buf : "?",
 	      !compress_spaces ? ", replacing with a space" : "");
       if (!compress_spaces) g_string_append_c(s, ' ');
     }
@@ -435,8 +435,8 @@ int main()
 ### Shorter version
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 const char * board =  "ET AON RIS"
@@ -601,8 +601,8 @@ ONENIGHTITWASONTHETWENTIETHOFMARCH1888IWASRETURNING
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <map>
 #include <algorithm> // for min, max
@@ -701,7 +701,7 @@ Test program:
 int main()
 {
   StraddlingCheckerboard sc("HOLMESRTABCDFGIJKNPQUVWXYZ./", 3, 7);
-  
+
   string original = "One night-it was on the twentieth of March, 1888-I was returning";
   string en = sc.encode(original);
   string de = sc.decode(en);
@@ -916,13 +916,13 @@ Nigel Galloway May 15th., 2017
 type G={n:char;i:char;g:System.Collections.Generic.Dictionary<(char*char),string>;e:System.Collections.Generic.Dictionary<char,string>}
        member G.encode n=n|>Seq.map(fun n->if (n='/') then G.e.['/']+string n else match (G.e.TryGetValue(n)) with |(true,n)->n|(false,_)->G.e.['/']+string n)
        member G.decode n =
-         let rec fn n = seq{ if not (Seq.isEmpty n) 
+         let rec fn n = seq{ if not (Seq.isEmpty n)
            then match (match Seq.head n with |g when g=G.n||g=G.i->(G.g.[(g,(Seq.item 1 n))],(Seq.skip 2 n))|g->(G.g.[('/',g)],(Seq.tail n))) with
                 |(a,b) when a="/"->yield string (Seq.head b); yield! fn (Seq.tail b)
                 |(a,b)           ->yield a;                   yield! fn b
          }
          fn n
-let G n i g e l z= 
+let G n i g e l z=
   let a = new System.Collections.Generic.Dictionary<(char*char),string>()
   let b = new System.Collections.Generic.Dictionary<char,string>()
   Seq.iter2 (fun ng gn->a.[('/'   ,char ng)]<-string gn;b.[gn]<-ng) (List.except [n;i] z) g
@@ -1070,14 +1070,14 @@ revEnc enc = let (dec, rm) = decodeChar enc in (dec, take (length enc - length r
 ds :: String
 ds = ['0'..'9']
 
--- Decode all 1000 possible encodings of three digits and 
+-- Decode all 1000 possible encodings of three digits and
 -- use results to construct map used to encode.
 encodeMap :: Map Char String
 encodeMap = fromList [ revEnc [d2,d1,d0] | d2 <- ds, d1 <- ds, d0 <- ds ]
 
 -- Encode a single char using encoding map.
 encodeChar :: Char -> String
-encodeChar c = findWithDefault "" c encodeMap 
+encodeChar c = findWithDefault "" c encodeMap
 
 -- Encode an entire string.
 encode :: String -> String
@@ -1088,7 +1088,7 @@ main = let orig = "One night-it was on the twentieth of March, 1888-I was return
            enc = encode orig
            dec = decode enc
        in mapM_ putStrLn [ "Original: " ++ orig
-                         , "Encoded: " ++ enc 
+                         , "Encoded: " ++ enc
                          , "Decoded: " ++ dec ]
 ```
 
@@ -1115,20 +1115,20 @@ end
 procedure StraddlingCheckerBoard(act,text,b1,b2)
 static SCE,SCD
 case act of {
-   "setup" : {  
+   "setup" : {
       if (b1 < b2 < 10) & (*text = *cset(text) = 28) then {
-         SCE := table("")   
-         SCD := table()         
+         SCE := table("")
+         SCD := table()
          esc := text[-1]                               # escape
          every text[(b1|b2)+1+:0] := " "               # blanks
          uix := ["",b1,b2]                             # 1st position
          every c := text[1 + (i := 0 to *text-1)] do   # build translation
             if c ~== " " then                          # skip blanks
-               SCD[SCE[c] := SCE[map(c)] := uix[i/10+1]||(i%10) ] := c         
-         every c := !&digits do 
+               SCD[SCE[c] := SCE[map(c)] := uix[i/10+1]||(i%10) ] := c
+         every c := !&digits do
             SCD[SCE[c] := SCE[esc] || c] := c
          delete(SCD,SCE[esc])
-         delete(SCE,esc)          
+         delete(SCE,esc)
          }
          else stop("Improper setup: ",image(text),", ",b1,", ",b2)
       }
@@ -1136,11 +1136,11 @@ case act of {
       every (s := "") ||:= x := SCE[c := !text]
       return s
       }
-   "decode" : {  
+   "decode" : {
       s := ""
-      text ? until pos(0) do 
+      text ? until pos(0) do
          s ||:= \SCD[k := move(1 to 3)]
-      return s       
+      return s
       }
    }
 end
@@ -1179,11 +1179,11 @@ chkbrd=: conjunction define
     ' ' -.~ ,(":@{:"1 digits) ,.~ (1 1 0 2{":uv) {~ {."1 digits
   case. 1 do.                                                      NB. decode
     esc=. 0 chkbrd (uv;key) Esc                                    NB. find code for Esc char
-    tmp=. esc unescapenum esc,'0',y                                
+    tmp=. esc unescapenum esc,'0',y
     tmp=. ((":uv) ((-.@e.~ _1&|.) *. e.~) tmp) <;.1 tmp            NB. box on chars from rows 0 2 3
     idx=. (}. ,~ (1 1 0 2{":uv) ":@i. {.) each tmp                 NB. recreate indices for rows 0 2 3
     idx=. ;(2&{. , [: ((0 1 $~ +:@#) #inv!.'1' ]) 2&}.) each idx   NB. recreate indices for row 1
-    }.board {~ _2 (_&".)\ idx    
+    }.board {~ _2 (_&".)\ idx
   end.
 )
 ```
@@ -1321,7 +1321,7 @@ ONENIGHTITWASONTHETWENTIETHOFMARCH1888IWASRETURNING
 ```javascript><script
 
 var alphabet=new Array("ESTONIA  R","BCDFGHJKLM","PQUVWXYZ./") // scramble alphabet as you wish
-var prefixes=new Array("",alphabet[0].indexOf(" "),alphabet[0].lastIndexOf(" ")) 
+var prefixes=new Array("",alphabet[0].indexOf(" "),alphabet[0].lastIndexOf(" "))
 
 function straddle(message){
   var out=""
@@ -1374,7 +1374,7 @@ ONENIGHTITWASONTHETWENTIETHOFMARCH1888IWASRETURNING.
 
 ## Julia
 
-Unlike the precomputed table versions, this version takes a 30-character string specifying the 3 rows of the checkerboard 
+Unlike the precomputed table versions, this version takes a 30-character string specifying the 3 rows of the checkerboard
 as an argument, recomputing the lookup table each run, which allows easier changes of keys without modifying the code.
 
 ```julia
@@ -1382,7 +1382,7 @@ as an argument, recomputing the lookup table each run, which allows easier chang
 function straddlingcheckerboard(board, msg, doencode)
     lookup = Dict()
     reverselookup = Dict()
-    row2 = row3 = slash = -1  
+    row2 = row3 = slash = -1
     function encode(x)
         s = ""
         for ch in replace(replace(uppercase(x), r"([01-9])", s";=;\1"), r";=;", slash)
@@ -1418,7 +1418,7 @@ function straddlingcheckerboard(board, msg, doencode)
     for (i,c) in enumerate(board)
         c = string(c)
         if c == " "
-            if row2 == -1 
+            if row2 == -1
                 row2 = i-1
             else
                 row3 = i-1
@@ -1434,7 +1434,7 @@ function straddlingcheckerboard(board, msg, doencode)
             if c == "/"
                 slash = lookup[c]
             end
-        end     
+        end
     end
     doencode ? encode(msg) : decode(msg)
 end
@@ -1589,17 +1589,17 @@ function dec( txt )
         c = txt:sub( i, i )
         if not numb then
             if tonumber( c ) == s1 then
-                i = i + 1; s = string.format( "%d%s", s1, txt:sub( i, i ) ) 
+                i = i + 1; s = string.format( "%d%s", s1, txt:sub( i, i ) )
                 t = dicD[s]
             elseif tonumber( c ) == s2 then
-                i = i + 1; s = string.format( "%d%s", s2, txt:sub( i, i ) ) 
+                i = i + 1; s = string.format( "%d%s", s2, txt:sub( i, i ) )
                 t = dicD[s]
             else
                 t = dicD[c]
             end
             if t == "/" then
                 numb = true
-            else 
+            else
                 io.write( t )
             end
         else
@@ -1646,11 +1646,11 @@ function enterText()
     d = io.read()
     io.write( "\nEnter the text:\n" )
     txt = io.read():upper()
-    if d == "E" or d == "e" then enc( txt ) 
+    if d == "E" or d == "e" then enc( txt )
     elseif d == "D" or d == "d" then dec( txt )
-    end 
+    end
 end
--- entry point 
+-- entry point
 enterText()
 
 ```
@@ -1741,7 +1741,7 @@ module Straddling_checkerboard {
 				end if
 			else
 				decoded$+=mid$(alphabet#val$(2), val(mid$(encoded$,i+1,1))+1,1)
-				i++	
+				i++
 			end if
 		else
 			decoded$+=mid$(alphabet#val$(0), m+1,1)
@@ -1756,7 +1756,7 @@ module Straddling_checkerboard {
 		num1--
 		escapenum=instr(alphabet#val$(2),"/")-1
 		escapenum1=instr(alphabet#val$(2),".")-1
-		\\ display straddling checkerboard 
+		\\ display straddling checkerboard
 		checkerboard =cons(("0123456789",),alphabet)
 		labels=(" "," ",str$(num1,""), str$(num2,""))
 		disp=each(checkerboard)
@@ -1812,9 +1812,9 @@ Straddling_checkerboard
 
 {{out}}
 <pre style="height:30ex;overflow:scroll">
-First 
+First
   0123456789
-  ESTONIAR  
+  ESTONIAR
 8 BCDFGHJKLM
 9 /PQUVWXYZ.
 original message:
@@ -1931,7 +1931,7 @@ class Straddling_Checkerboard {
     has @!flat_board; # 10x3 stored as 30x1
     has $!plain2code; # full translation table, invertable
     has @!table;      # Printable layout, like Wikipedia entry
- 
+
     my $numeric_escape = '/';
     my $exclude = /<-[A..Z0..9.]>/; # Omit the escape character
 
@@ -2030,7 +2030,7 @@ function read_table(string cb)
     end for
     return {encode, decode}
 end function
- 
+
 function encipher(sequence encode, string in, bool strip=false)
     string out = ""
     for i=1 to length(in) do
@@ -2044,7 +2044,7 @@ function encipher(sequence encode, string in, bool strip=false)
         end if
     end for
     return out
-end function 
+end function
 
 function decipher(sequence decode, string in, bool strip=false)
     string out = ""
@@ -2067,7 +2067,7 @@ function decipher(sequence decode, string in, bool strip=false)
     end while
     return out
 end function
- 
+
 constant cb =  "ET AON RIS"&
                "BCDFGHJKLM"&
                "PQ/UVWXYZ."
@@ -2085,7 +2085,7 @@ string enc = encipher(encode, msg),
        dec = decipher(decode, enc)
 printf(1,"encoded: %s\n", {enc})
 printf(1,"decoded: %s\n", {dec})
- 
+
 printf(1,"\nNo spaces:\n")
 enc = encipher(encode, msg, true)
 dec = decipher(decode, enc, true)
@@ -2121,32 +2121,32 @@ $key2val = ["A"=>"30", "B"=>"31", "C"=>"32", "D"=>"33", "E"=>"5", "F"=>"34", "G"
         "R"=>"8", "3"=>"793", "S"=>"6", "4"=>"794", "T"=>"9", "5"=>"795", "U"=>"72",
         "6"=>"796", "V"=>"73", "7"=>"797", "W"=>"74", "8"=>"798", "X"=>"75", "9"=>"799",
         "Y"=>"76", "Z"=>"77"];
-        
+
 $val2key = array_flip($key2val);
 
 function encode(string $s) : string  {
     global $key2val;
-     
+
     $callback = function($c) use ($key2val) { return $key2val[$c] ?? ''; };
 
     return implode(array_map($callback, str_split(strtoupper($s))));
 }
-    
+
 function decode(string $s) : string {
      global $val2key;
 
      $callback = function($c) use ($val2key) { return $val2key[$c] ?? ''; };
-     
+
      preg_match_all('/79.|7.|3.|./', $s, $m);
-     
+
      return implode(array_map($callback, $m[0]));
-}   
+}
 
 function main($s) {
     $encoded = encode($s);
     echo $encoded;
     echo "\n";
-    echo decode($encoded);    
+    echo decode($encoded);
 }
 
 main('One night-it was on the twentieth of March, 1888-I was returning');
@@ -2217,19 +2217,19 @@ Procedure.s encrypt_SC(originalText.s, alphabet.s, blank_1, blank_2)
   Protected preDigit_1.s = Str(blank_1), preDigit_2.s = Str(blank_2)
   Protected i, index, curChar.s, escapeChar.s, outputText.s
   Protected NewMap cipher.s()
-  
+
   ;build cipher reference
   alphabet = UCase(alphabet)
   For i = 1 To 28
     curChar = Mid(alphabet, i, 1)
     If Not FindString(notEscape, curChar)
       escapeChar = curChar
-    EndIf 
-    
+    EndIf
+
     Select i
       Case 1 To 8
         If index = blank_1 Or index = blank_2: index + 1: EndIf ;adjust index for blank
-        
+
         cipher(curChar) = Str(index)
         index + 1
       Case 9 To 18
@@ -2238,16 +2238,16 @@ Procedure.s encrypt_SC(originalText.s, alphabet.s, blank_1, blank_2)
         cipher(curChar) = preDigit_2 + Str(i - 19)
     EndSelect
   Next
-  
-  For i = 0 To 9: cipher(Str(i)) = cipher(escapeChar) + Str(i): Next 
-  
+
+  For i = 0 To 9: cipher(Str(i)) = cipher(escapeChar) + Str(i): Next
+
   ;encrypt each character
   originalText = UCase(originalText)
   Protected length = Len(originalText)
   For i = 1 To length
     outputText + cipher(Mid(originalText, i, 1))
-  Next 
-  
+  Next
+
   ProcedureReturn outputText
 EndProcedure
 
@@ -2256,12 +2256,12 @@ Procedure.s decrypt_SC(cipherText.s, alphabet.s, blank_1, blank_2)
   Protected preDigit_1.s = Str(blank_1), preDigit_2.s = Str(blank_2)
   Protected i, index, curChar.s, escapeCipher.s, outputText.s
   Protected NewMap cipher.s()
-  
+
   ;build decipher reference
   alphabet = UCase(alphabet)
   For i = 1 To 28
     curChar = Mid(alphabet, i, 1)
-    
+
     Select i
       Case 1 To 8
         If index = blank_1 Or index = blank_2: index + 1: EndIf ;adjust index for blank
@@ -2277,9 +2277,9 @@ Procedure.s decrypt_SC(cipherText.s, alphabet.s, blank_1, blank_2)
       escapeCipher = MapKey(cipher())
     EndIf
   Next
-  
-  For i = 0 To 9: cipher(escapeCipher + Str(i)) = Str(i): Next 
-  
+
+  For i = 0 To 9: cipher(escapeCipher + Str(i)) = Str(i): Next
+
   ;decrypt each character
   Protected length = Len(cipherText)
   index = 1
@@ -2288,23 +2288,23 @@ Procedure.s decrypt_SC(cipherText.s, alphabet.s, blank_1, blank_2)
     If curChar = preDigit_1 Or curChar = preDigit_2
       curChar = Mid(cipherText, index, 2)
       If curChar = escapeCipher: curChar = Mid(cipherText, index, 3): EndIf
-    EndIf 
+    EndIf
     outputText + cipher(curChar)
     index + Len(curChar)
   Wend
-  
+
   ProcedureReturn outputText
 EndProcedure
 
 If OpenConsole()
   Define message.s = "One night-it was on the twentieth of March, 1888-I was returning"
   Define cipher.s = "HOLMESRTABCDFGIJKNPQUVWXYZ./", encoded.s
-  
+
   PrintN("Original: " + message)
   encoded = encrypt_SC(message, cipher, 3, 7)
   PrintN("encoded: " + encoded)
   PrintN("decoded: " + decrypt_SC(encoded, cipher, 3, 7))
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2362,24 +2362,24 @@ Decoded: ONENIGHTITWASONTHETWENTIETHOFMARCH1888IWASRETURNING
 
 Based in the PicoLisp version.
 
-We store the straddling checkerboard in a structure, so it can be reused or changed for the different examples. The “constructor” transforms the lines of the checkboard into an internal representation. 
+We store the straddling checkerboard in a structure, so it can be reused or changed for the different examples. The “constructor” transforms the lines of the checkboard into an internal representation.
 
 ```Racket
 #lang racket
 
-(struct *straddling (header main original) 
+(struct *straddling (header main original)
   #:reflection-name 'straddling
-  #:methods gen:custom-write 
+  #:methods gen:custom-write
   [(define (write-proc board port mode)
      (write-string "#<straddling " port)
      (write (*straddling-original board) port)
-     (write-string ">" port))]) 
+     (write-string ">" port))])
 
 (define string->vector (compose list->vector string->list))
 
 (define (straddling . lines)
-  (define header-tail (reverse 
-                       (for/fold ([rev-ret '()]) 
+  (define header-tail (reverse
+                       (for/fold ([rev-ret '()])
                                  ([char (in-list (string->list (car lines)))]
                                   [i (in-naturals)])
                          (if (equal? char #\space)
@@ -2387,10 +2387,10 @@ We store the straddling checkerboard in a structure, so it can be reused or chan
                              rev-ret))))
   (define main (list->vector
                 (map string->vector
-                     (cons "0123456789" 
-                           (map string-upcase 
+                     (cons "0123456789"
+                           (map string-upcase
                                 lines)))))
-  (define temporal-board 
+  (define temporal-board
     (*straddling (list->vector (list* "?" "" header-tail)) main lines))
   (define escape (straddling-encode-char #\/ temporal-board))
   (*straddling (list->vector (list* escape "" header-tail)) main lines))
@@ -2401,7 +2401,7 @@ Now we define the functions to straddle and unstraddle the message.
 ```Racket
 (define (straddling-encode-char char board)
   (or (for/or ([head (in-vector (*straddling-header board))]
-                [line (in-vector (*straddling-main board))]) 
+                [line (in-vector (*straddling-main board))])
         (let ([pos (vector-member char line)])
           (if pos
               (string-append head (number->string pos))
@@ -2409,7 +2409,7 @@ Now we define the functions to straddle and unstraddle the message.
       ""))
 
 (define (straddle message board)
-  (apply string-append 
+  (apply string-append
          (map (lambda (char)
                 (if (or (equal? char #\space) (equal? char #\/))
                     ""
@@ -2424,13 +2424,13 @@ Now we define the functions to straddle and unstraddle the message.
   (list->string
    (reverse
     (let-values ([(row rev-ret)
-                  (for/fold ([row #f] ;row to read in multichar codes 
+                  (for/fold ([row #f] ;row to read in multichar codes
                                       ;#f means start of new code
                              [rev-ret '()]) ;result
                             ([str (map char->string (string->list (string-upcase message)))])
                     (if (not row)
                         (let ([pos (vector-member str (*straddling-header board))])
-                          (if pos 
+                          (if pos
                               (values pos rev-ret)
                               (values #f (cons (straddling-decode-char str 1) rev-ret))))
                         (let ([decoded (straddling-decode-char str row)])
@@ -2451,7 +2451,7 @@ Now we define the functions to straddle and unstraddle the message.
     (displayln message)
     (displayln encoded)
     (displayln decoded)))
-  
+
 (test-straddling "One night-it was on the twentieth of March, 1888-I was returning"
                  (straddling "HOL MES RT"
                              "ABCDFGIJKN"
@@ -2482,10 +2482,10 @@ ONENIGHTITWASONTHETWENTIETHOFMARCH1888IWASRETURNING
 ## REXX
 
 Extra coding was added to:
-:*   allow the use of any table   (specifiable on the invocation of the   '''genCipher'''   subroutine, the 5<sup>th</sup> line in the REXX program), 
+:*   allow the use of any table   (specifiable on the invocation of the   '''genCipher'''   subroutine, the 5<sup>th</sup> line in the REXX program),
 :*   no hard-coding of the location of blanks,
-:*   no hard-coding or the numbered lines in the straddled checkerboard table, 
-:*   no hard-coding of the location of the escape character, 
+:*   no hard-coding or the numbered lines in the straddled checkerboard table,
+:*   no hard-coding of the location of the escape character,
 :*   support the usage of a blank in the 1<sup>st</sup> character (the top line of the table).
 
 ```rexx
@@ -2553,7 +2553,7 @@ plain text= One night-it was the twentieth of March, 1888-I was returning
 class StraddlingCheckerboard
   EncodableChars = "A-Z0-9."
   SortedChars = "  ./" + [*"A".."Z"].join
-  
+
   def initialize(board = nil)
     if board.nil?
       # create a new random board
@@ -2566,7 +2566,7 @@ class StraddlingCheckerboard
     end
     # find the indices of the first row blanks
     @row_labels = @board[0].each_with_index.select {|v, i| v == " "}.map {|v,i| i}
-    
+
     @mapping = {}
     @board[0].each_with_index {|char, idx| @mapping[char] = idx.to_s unless char == " "}
     @board[1..2].each_with_index do |row, row_idx|
@@ -2575,14 +2575,14 @@ class StraddlingCheckerboard
       end
     end
   end
-  
+
   def encode(message)
     msg = message.upcase.delete("^#{EncodableChars}")
     msg.chars.inject("") do |crypt, char|
       crypt << (char =~ /[0-9]/ ? @mapping["/"] + char : @mapping[char])
     end
   end
-  
+
   def decode(code)
     msg = ""
     tokens = code.chars
@@ -2602,11 +2602,11 @@ class StraddlingCheckerboard
     end
     msg
   end
-  
+
   def to_s
     @board.inject("") {|res, row| res << row.join}
   end
-  
+
   def inspect
     "#<%s board=%p, row_labels=%p, mapping=%p>" % [self.class, to_s, @row_labels, @mapping]
   end
@@ -2623,12 +2623,12 @@ class StraddlingCheckerboardTest < Test::Unit::TestCase
     @msg = "One night-it was on the twentieth of March, 1888-I was returning"
     @expected = "ONENIGHTITWASONTHETWENTIETHOFMARCH1888IWASRETURNING"
   end
-  
+
   def test1
     sc = StraddlingCheckerboard.new "ET AON RISBCDFGHJKLMPQ/UVWXYZ."
     code = sc.encode(@msg)
     plaintext = sc.decode(code)
-    
+
     puts "using checkerboard: #{sc}"
     puts "original: #{@msg}"
     puts "encoded: #{code}"
@@ -2636,7 +2636,7 @@ class StraddlingCheckerboardTest < Test::Unit::TestCase
     assert_equal("450582425181653945125016505180125423293721256216286286288653970163758524", code)
     assert_equal(@expected, plaintext)
   end
-  
+
   def test_board_with_space_in_first_char
     sc = StraddlingCheckerboard.new " RIOESN ATG./LXYBDKQMJUHWPVCFZ"
     code = sc.encode(@msg)
@@ -2646,13 +2646,13 @@ class StraddlingCheckerboardTest < Test::Unit::TestCase
     #puts "decoded: #{plaintext}"
     assert_equal(@expected, plaintext)
   end
-  
+
   def test_random_board
     sc = StraddlingCheckerboard.new
     plaintext = sc.decode(sc.encode(@msg))
     assert_equal(@expected, plaintext)
   end
-  
+
   def test_invalid_input
     assert_raise(ArgumentError) {StraddlingCheckerboard.new "ET ON RISBCDFGHJKLMPQ/UVWXYZ.!"}
   end
@@ -2663,7 +2663,7 @@ end
 output
 
 ```txt
-Run options: 
+Run options:
 
 # Running tests:
 
@@ -2817,15 +2817,15 @@ Function encrypt(ByVal originalText, ByVal alphabet, blank1, blank2)
       'Wscript.Echo "escChar=" & escChar & "  cipher(escChar)=" & cipher(escChar)
     End If
   Next 'i
-  For i = 0 To 9: cipher.Add CStr(i), cipher(escChar) & CStr(i): Next 
+  For i = 0 To 9: cipher.Add CStr(i), cipher(escChar) & CStr(i): Next
   'encrypt each character
   originalText = UCase(originalText)
   For i = 1 To Len(originalText)
     outText = outText & cipher(Mid(originalText, i, 1))
-  Next 
+  Next
   encrypt=outText
 End Function 'encrypt
- 
+
 Function decrypt(ByVal cipherText, ByVal alphabet, blank1, blank2)
   Const notEscape = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ."
   Dim i, j, curChar, escCipher, outText
@@ -2852,7 +2852,7 @@ Function decrypt(ByVal cipherText, ByVal alphabet, blank1, blank2)
       'Wscript.Echo "escCipher=" & escCipher & "  cipher(escCipher)=" & cipher(escCipher)
     End If
   Next 'i
-  For i = 0 To 9: cipher.Add escCipher & CStr(i), CStr(i): Next 
+  For i = 0 To 9: cipher.Add escCipher & CStr(i), CStr(i): Next
   'decrypt each character
   i = 1
   Do While i <= Len(cipherText)
@@ -2860,25 +2860,25 @@ Function decrypt(ByVal cipherText, ByVal alphabet, blank1, blank2)
     If curChar = CStr(blank1) Or curChar = CStr(blank2) Then
       curChar = Mid(cipherText, i, 2)
       If curChar = escCipher Then curChar = Mid(cipherText, i, 3)
-    End If 
+    End If
     outText = outText & cipher(curChar)
     i = i + Len(curChar)
   Loop 'i
   decrypt=outText
 End Function 'decrypt
- 
+
   message = "One night-it was on the twentieth of March, 1888-I was returning"
   cipher = "HOLMESRTABCDFGIJKNPQUVWXYZ./"
   '3 7         <=8
   'HOL MES RT
   'ABCDFGIJKN
   'PQUVWXYZ./
-  Buffer=Buffer & "Original: " & message & vbCrlf 
+  Buffer=Buffer & "Original: " & message & vbCrlf
   encoded = encrypt(message, cipher, 3, 7)
   Buffer=Buffer &  "encoded: " & encoded & vbCrlf
   decoded = decrypt(encoded, cipher, 3, 7)
   Buffer=Buffer &  "decoded: " & decoded & vbCrlf
-  Wscript.Echo Buffer 
+  Wscript.Echo Buffer
 ```
 
 {{out}}
@@ -2903,13 +2903,13 @@ decoded: ONENIGHTITWASONTHETWENTIETHOFMARCH1888IWASRETURNING
 var [const]
    val2key=Dictionary(
     "A","30",  "B","31",  "C","32",  "D","33",  "E","5",   "F","34",  "G","35",
-    "H","0",   "I","36",  "J","37",  "K","38",  "L","2",   "M","4",   ".","78", 
-    "N","39",  "/","79",  "O","1",   "0","790", "P","70",  "1","791", "Q","71", 
+    "H","0",   "I","36",  "J","37",  "K","38",  "L","2",   "M","4",   ".","78",
+    "N","39",  "/","79",  "O","1",   "0","790", "P","70",  "1","791", "Q","71",
     "2","792", "R","8",   "3","793", "S","6",   "4","794" ,"T","9",   "5","795",
     "U","72",  "6","796", "V","73",  "7","797", "W","74",  "8","798", "X","75",
     "9","799", "Y","76",  "Z","77"),
    key2val=val2key.pump(Dictionary(),"reverse");
- 
+
 fcn encode(txt){ txt.toUpper().pump(String,val2key.find.fp1("")) }
 fcn decode(str){ RegExp("79.|3.|7.|.").pump(str,String,key2val.get) }
 ```

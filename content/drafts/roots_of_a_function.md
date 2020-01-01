@@ -13,7 +13,7 @@ tags = []
 {{task|Arithmetic operations}}
 
 ;Task:
-Create a program that finds and outputs the roots of a given function, range and (if applicable) step width.  
+Create a program that finds and outputs the roots of a given function, range and (if applicable) step width.
 
 The program should identify whether the root is exact or approximate.
 
@@ -29,23 +29,23 @@ For this task, use:     <big><big> ƒ(x)   =   x<sup>3</sup> - 3x<sup>2</sup> + 
 
 ```ada
 with Ada.Text_Io; use Ada.Text_Io;
- 
+
 procedure Roots_Of_Function is
    package Real_Io is new Ada.Text_Io.Float_Io(Long_Float);
    use Real_Io;
-   
+
    function F(X : Long_Float) return Long_Float is
    begin
       return (X**3 - 3.0*X*X + 2.0*X);
    end F;
-   
+
    Step  : constant Long_Float := 1.0E-6;
    Start : constant Long_Float := -1.0;
    Stop  : constant Long_Float := 3.0;
    Value : Long_Float := F(Start);
    Sign  : Boolean := Value > 0.0;
    X     : Long_Float := Start + Step;
- 
+
 begin
    if Value = 0.0 then
       Put("Root found at ");
@@ -92,8 +92,8 @@ MODE XYRES = UNION(XY, VOID);
 PROC find root = (PROC (DBL)DBL f, DBLOPT in x1, in x2, in x error, in y error)XYRES:(
   INT limit = ENTIER (long real width / log(2)); # worst case of a binary search) #
   DBL x1 := (in x1|(DBL x1):x1|-5.0), # if x1 is EMPTY then -5.0 #
-      x2 := (in x2|(DBL x2):x2|+5.0), 
-      x error := (in x error|(DBL x error):x error|small real), 
+      x2 := (in x2|(DBL x2):x2|+5.0),
+      x error := (in x error|(DBL x error):x error|small real),
       y error := (in y error|(DBL y error):y error|small real);
   DBL y1 := f(x1), y2;
   DBL dx := x1 - x2, dy;
@@ -110,10 +110,10 @@ PROC find root = (PROC (DBL)DBL f, DBLOPT in x1, in x2, in x error, in y error)X
       dx := dx / dy * y2;
       x1 := x2; y1 := y2; # retain for next iteration #
       x2 -:= dx;
-  # WHILE # ABS dx > x error AND ABS dy > y error DO 
+  # WHILE # ABS dx > x error AND ABS dy > y error DO
       SKIP
     OD;
-    stop iteration: 
+    stop iteration:
       XY(x2, y2) EXIT
     value error:
       EMPTY
@@ -222,7 +222,7 @@ findRoots (~1.0, 3.0, 0.001, lam (x) => x*x*x - 3.0*x*x + 2.0*x, 0, 0.0)
 ## AutoHotkey
 
 Poly(x) is a test function of one variable, here we are searching for its roots:
-* roots() searches for intervals within given limits, shifted by a given “step”, where our function has different signs at the endpoints. 
+* roots() searches for intervals within given limits, shifted by a given “step”, where our function has different signs at the endpoints.
 * Having found such an interval, the root() function searches for a value where our function is 0, within a given tolerance.
 * It also sets ErrorLevel to info about the root found.
 
@@ -323,7 +323,7 @@ secant(expr=0,x=-0.5..0.5)
       accuracy = 1E-8
       PROCroots(function$, rangemin, rangemax, stepsize, accuracy)
       END
-      
+
       DEF PROCroots(func$, min, max, inc, eps)
       LOCAL x, sign%, oldsign%
       oldsign% = 0
@@ -359,12 +359,12 @@ Root found at x = 2
 
 
 
-###  Secant Method 
+###  Secant Method
 
 
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 #include <stdio.h>
 
 double f(double x)
@@ -384,7 +384,7 @@ double secant( double xA, double xB, double(*f)(double) )
     for (i=0; i<limit; i++) {
         fB=(*f)(xB);
         d = (xB - xA) / (fB - fA) * fB;
-        if (fabs(d) < e) 
+        if (fabs(d) < e)
             break;
         xA = xB;
         fA = fB;
@@ -428,7 +428,7 @@ int main(int argc, char *argv[])
 
 
 
-###  GNU Scientific Library 
+###  GNU Scientific Library
 
 
 
@@ -453,7 +453,7 @@ int main(int argc, char *argv[])
 ```
 
 
-One can also use the GNU Scientific Library to find roots of functions. Compile with 
+One can also use the GNU Scientific Library to find roots of functions. Compile with
 ```txt
 gcc roots.c -lgsl -lcblas -o roots
 ```
@@ -463,8 +463,8 @@ gcc roots.c -lgsl -lcblas -o roots
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 double f(double x)
 {
@@ -478,7 +478,7 @@ int main()
 	double stop = 3;
 	double value = f(start);
 	double sign = (value > 0);
-	
+
 	// Check for root at start
 	if ( 0 == value )
 		std::cout << "Root found at " << start << std::endl;
@@ -488,14 +488,14 @@ int main()
 			x += step )
 	{
 		value = f(x);
-		
+
 		if ( ( value > 0 ) != sign )
 			// We passed a root
 			std::cout << "Root found near " << x << std::endl;
 		else if ( 0 == value )
 			// We hit a root
 			std::cout << "Root found at " << x << std::endl;
-		
+
 		// Update our sign
 		sign = ( value > 0 );
 	}
@@ -510,8 +510,8 @@ The algorithm is coded as a function that returns a double value for the root. T
 
 The implementation is taken from the pseudo code on the wikipedia page for Brent's Method found here: https://en.wikipedia.org/wiki/Brent%27s_method.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cmath>
 #include <algorithm>
 #include <functional>
@@ -522,7 +522,7 @@ double brents_fun(std::function<double (double)> f, double lower, double upper, 
 	double b = upper;
 	double fa = f(a);	// calculated now to save function calls
 	double fb = f(b);	// calculated now to save function calls
-	double fs = 0;		// initialize 
+	double fs = 0;		// initialize
 
 	if (!(fa * fb < 0))
 	{
@@ -550,7 +550,7 @@ double brents_fun(std::function<double (double)> f, double lower, double upper, 
 			std::cout << "After " << iter << " iterations the root is: " << s << std::endl;
 			return s;
 		} // end if
-		
+
 		if (fa != fc && fb != fc)
 		{
 			// use inverse quadratic interopolation
@@ -644,17 +644,17 @@ double brents_fun(std::function<double (double)> f, double lower, double upper, 
 
 ```coffeescript
 
-print_roots = (f, begin, end, step) ->  
+print_roots = (f, begin, end, step) ->
   # Print approximate roots of f between x=begin and x=end,
   # using sign changes as an indicator that a root has been
-  # encountered. 
+  # encountered.
   x = begin
   y = f(x)
   last_y = y
-  
+
   cross_x_axis = ->
     (last_y < 0 and y > 0) or (last_y > 0 and y < 0)
-  
+
   console.log '-----'
   while x <= end
     y = f(x)
@@ -686,7 +686,7 @@ do ->
 output
 
 <lang>
-> coffee roots.coffee 
+> coffee roots.coffee
 -----
 Root found at 0
 Root found at 1
@@ -927,7 +927,7 @@ We use the 'math' library, and define f(x) as the polynomial : x<sup>3</sup> -3x
 (lib 'math.lib)
 Lib: math.lib loaded.
 (define fp ' ( 0 2 -3 1))
-(poly->string 'x fp) → x^3 -3x^2 +2x 
+(poly->string 'x fp) → x^3 -3x^2 +2x
 (poly->html 'x fp) → x<sup>3</sup> -3x<sup>2</sup> +2x
 (define (f x) (poly x fp))
 (math-precision 1.e-6) → 0.000001
@@ -964,7 +964,7 @@ defmodule RC do
          end
        end)
   end
-  
+
   defp sign(x) when x>0, do: 1
   defp sign(x) when x<0, do: -1
   defp sign(0)         , do: 0
@@ -1003,9 +1003,9 @@ main() ->
 	X = Start,
 	while(X, Step, Start, Stop, Sign,F).
 
-while(X, Step, Start, Stop, Sign,F) ->	
+while(X, Step, Start, Stop, Sign,F) ->
 	Value = F(X),
-	if 
+	if
 		Value == 0  ->		% We hit a root
         	io:format("Root found at ~p~n",[X]),
         	while(X+Step, Step, Start, Stop,  Value > 0,F);
@@ -1013,12 +1013,12 @@ while(X, Step, Start, Stop, Sign,F) ->
 		(Value < 0) == Sign ->	% We passed a root
 		io:format("Root found near ~p~n",[X]),
 		while(X+Step , Step, Start, Stop,  Value > 0,F);
-		 
+
 		 X > Stop ->
 		 	io:format("") ;
 		true ->
         	while(X+Step, Step, Start, Stop,  Value > 0,F)
-	end.	
+	end.
 
 ```
 
@@ -1125,12 +1125,12 @@ PROGRAM ROOTS_OF_A_FUNCTION
 
   INTEGER, PARAMETER :: dp = SELECTED_REAL_KIND(15)
   REAL(dp) :: f, e, x, step, value
-  LOGICAL :: s 
-   
+  LOGICAL :: s
+
   f(x) = x*x*x - 3.0_dp*x*x + 2.0_dp*x
-   
+
   x = -1.0_dp ; step = 1.0e-6_dp ; e = 1.0e-9_dp
- 
+
   s = (f(x) > 0)
   DO WHILE (x < 3.0)
     value = f(x)
@@ -1143,7 +1143,7 @@ PROGRAM ROOTS_OF_A_FUNCTION
     END IF
     x = x + step
   END DO
- 
+
 END PROGRAM ROOTS_OF_A_FUNCTION
 ```
 
@@ -1153,12 +1153,12 @@ The following approach uses the [[wp:Secant_method|Secant Method]] to numericall
 INTEGER, PARAMETER :: dp = SELECTED_REAL_KIND(15)
 INTEGER :: i=1, limit=100
 REAL(dp) :: d, e, f, x, x1, x2
- 
+
 f(x) = x*x*x - 3.0_dp*x*x + 2.0_dp*x
- 
+
 x1 = -1.0_dp ; x2 = 3.0_dp ; e = 1.0e-15_dp
- 
-DO 
+
+DO
   IF (i > limit) THEN
     WRITE(*,*) "Function not converging"
     EXIT
@@ -1166,7 +1166,7 @@ DO
   d = (x2 - x1) / (f(x2) - f(x1)) * f(x2)
   IF (ABS(d) < e) THEN
     WRITE(*,"(A,F18.15)") "Root found at x = ", x2
-    EXIT    
+    EXIT
   END IF
   x1 = x2
   x2 = x2 - d
@@ -1415,7 +1415,7 @@ J has builtin a root-finding operator, '''<tt>p.</tt>''', whose input is the coe
 
 
 ```j
-   1{::p.  0 2 _3 1    
+   1{::p.  0 2 _3 1
 2 1 0
 ```
 
@@ -1424,7 +1424,7 @@ We can determine whether the roots are exact or approximate by evaluating the po
 
 
 ```j
-   (0=]p.1{::p.) 0 2 _3 1 
+   (0=]p.1{::p.) 0 2 _3 1
 1 1 1
 ```
 
@@ -1547,7 +1547,7 @@ printRoots(poly, -1.0, 4, 0.002);
 
 printRoots(f; lower; upper; step) finds approximations to the roots
 of an arbitrary continuous real-valued function, f, in the range
-[lower, upper], assuming step is small enough.  
+[lower, upper], assuming step is small enough.
 
 The algorithm is similar to that used for example in the Javascript section on this page, except that a bug has been removed at the point when the previous and current signs are compared.
 
@@ -1576,7 +1576,7 @@ def printRoots(f; lowerBound; upperBound; step):
           | ($y - $oy) as $dy
     	  | ($x - ($dx *  $y / $dy)) as $cx       # by geometry
           | [$x, $y, $s, (.[3] + [ "~\($cx)" ])]  # an approximation
-       else [$x, $y, $s, .[3] ] 
+       else [$x, $y, $s, .[3] ]
        end )
   | .[3] ;
 
@@ -1632,23 +1632,23 @@ Without the Roots package, Newton's method may be defined in this manner:
 function newton(f, fp, x::Float64,tol=1e-14::Float64,maxsteps=100::Int64)
          ##f: the function of x
          ##fp: the derivative of f
- 
+
 	 local xnew, xold = x, Inf
 	 local fn, fo = f(xnew), Inf
 	 local counter = 1
- 
+
 	 while (counter < maxsteps) && (abs(xnew - xold) > tol) && ( abs(fn - fo) > tol )
 	   x = xnew - f(xnew)/fp(xnew) ## update x
 	   xnew, xold = x, xnew
            fn, fo = f(xnew), fn
 	   counter += 1
 	 end
- 
+
 	 if counter >= maxsteps
 	    error("Did not converge in ", string(maxsteps), " steps")
          else
 	   xnew, counter
-         end 
+         end
 end
 
 ```
@@ -1699,7 +1699,7 @@ fun secant(x1: Double, x2: Double, f: DoubleToDouble): Double {
     }
     if (i == limit) {
         println("Function is not converging near (${"%7.4f".format(xa)}, ${"%7.4f".format(xb)}).")
-        return -99.0 
+        return -99.0
     }
     return xb
 }
@@ -1717,7 +1717,7 @@ fun main(args: Array<String>) {
         }
         else if ((value > 0.0) != s) {
             val xx = secant(x - step, x, ::f)
-            if (xx != -99.0) 
+            if (xx != -99.0)
                 println("Root found at x = ${"%12.9f".format(xx)}")
             else
                 println("Root found near x = ${"%7.4f".format(x)}")
@@ -1889,7 +1889,7 @@ By itself (i.e. unless specifically asked to do so), Maple will only perform exa
 ## Mathematica
 
 
-There are multiple obvious ways to do this in Mathematica. 
+There are multiple obvious ways to do this in Mathematica.
 
 
 ### Solve
@@ -2060,29 +2060,29 @@ bundle Default {
     {
       return (x*x*x - 3.0*x*x + 2.0*x);
     }
-     
-    function : Main(args : String[]) ~ Nil 
+
+    function : Main(args : String[]) ~ Nil
     {
       step := 0.001;
       start := -1.0;
       stop := 3.0;
       value := f(start);
       sign := (value > 0);
-     
+
       if(0.0 = value) {
         start->PrintLine();
       };
-      
+
       for(x := start + step; x <= stop;  x += step;)  {
         value := f(x);
-        
+
         if((value > 0) <> sign) {
           IO.Console->Instance()->Print("~")->PrintLine(x);
         }
         else if(0 = value) {
           IO.Console->Instance()->Print("~")->PrintLine(x);
         };
-        
+
         sign := (value > 0);
       };
     }
@@ -2129,7 +2129,7 @@ let search lo hi step f =
   next lo (f lo);;
 
 let showroot (x,fx) =
-  Printf.printf "f(%.17f) = %.17f [%s]\n" 
+  Printf.printf "f(%.17f) = %.17f [%s]\n"
     x fx (if fx = 0.0 then "exact" else "approx") in
 let f x = ((x -. 3.0)*.x +. 2.0)*.x  in
 List.iter showroot (search (-5.0) 5.0 0.1 f);;
@@ -2166,7 +2166,7 @@ Note these roots are exact solutions with floating-point calculation.
       y ->lasty
       ] ;
 
-: f(x)   x 3 pow x sq 3 * - x 2 * + ; 
+: f(x)   x 3 pow x sq 3 * - x 2 * + ;
 ```
 
 
@@ -2364,7 +2364,7 @@ var
 function f(const x: double): double;
   begin
     f := x*x*x - 3*x*x + 2*x;
-  end;  
+  end;
 
 begin
   x    := -1;
@@ -2388,7 +2388,7 @@ begin
     end;
     x := x + step;
   end;
-  
+
   writeln('Version 2: secant method:');
   x1 := -1.0;
   x2 :=  3.0;
@@ -2521,8 +2521,8 @@ Root found at 2
 
 ```Phix
 procedure print_roots(integer f, atom start, atom stop, atom step)
--- Print approximate roots of f between x=start and x=stop, using 
---  sign changes as an indicator that a root has been encountered. 
+-- Print approximate roots of f between x=start and x=stop, using
+--  sign changes as an indicator that a root has been encountered.
 atom x = start, y = 0
 
     puts(1,"-----\n")
@@ -2665,11 +2665,11 @@ Procedure main()
   Define.d Start=-1, stop=3
   Define.d value=f(start), x=start
   Define.i oldsign=Sign(value)
-  
+
   If value=0
     PrintN("Root found at "+StrF(start))
   EndIf
-  
+
   While x<=stop
     value=f(x)
     If Sign(value) <> oldsign
@@ -2758,11 +2758,11 @@ findroots(f, -1, 3)
 ;; in a given interval [a b] by dividing the interval into N parts
 ;; and using the root-finding method on each subinterval
 ;; which proves to contain a root.
-(define (find-roots f a b 
+(define (find-roots f a b
                     #:divisions [N 10]
                     #:method [method secant])
   (define h (/ (- b a) N))
-  (for*/list ([x1 (in-range a b h)] 
+  (for*/list ([x1 (in-range a b h)]
               [x2 (in-value (+ x1 h))]
               #:when (or (root? f x1)
                          (includes-root? f x1 x2)))
@@ -2771,7 +2771,7 @@ findroots(f, -1, 3)
 ;; Finds a root of a real-valued function f
 ;; in a given interval [a b].
 (define (find-root f a b #:method [method secant])
-  (cond 
+  (cond
     [(root? f a) a]
     [(root? f b) b]
     [else (and (includes-root? f a b) (method f a b))]))
@@ -2787,7 +2787,7 @@ findroots(f, -1, 3)
 ;; Returns #t if a and b are equal with respect to
 ;; the relative accuracy (tolerance).
 (define (almost-equal? a b)
-  (or (< (abs (+ b a)) (tolerance))      
+  (or (< (abs (+ b a)) (tolerance))
       (< (abs (/ (- b a) (+ b a))) (tolerance))))
 
 (define tolerance (make-parameter 5e-16))
@@ -2806,7 +2806,7 @@ Different root-finding methods
     (cond
       ; if the method din't converge within given interval
       ; switch to more robust bisection method
-      [(or (not (< a x3 b)) (zero? n)) (bisection f a b)] 
+      [(or (not (< a x3 b)) (zero? n)) (bisection f a b)]
       [(almost-equal? x3 x2) x3]
       [else (next x2 y2 x3 (f x3) (sub1 n))])))
 
@@ -2814,7 +2814,7 @@ Different root-finding methods
   (let divide ([a x1] [b x2])
     (and (<= (* (f a) (f b)) 0)
          (let ([c (* 0.5 (+ a b))])
-           (if (almost-equal? a b) 
+           (if (almost-equal? a b)
                c
                (or (divide a c) (divide c b)))))))
 
@@ -2830,14 +2830,14 @@ Examples:
 -> (sqrt 2)
 1.4142135623730951
 
--> (define (f x) (+ (* x x x) (* -3.0 x x) (* 2.0 x))) 
+-> (define (f x) (+ (* x x x) (* -3.0 x x) (* 2.0 x)))
 -> (find-roots f -3 4 #:divisions 50)
 '(2.4932181969624796e-33 1.0 2.0)
 
 ```
 
 
-In order to provide a comprehensive code the given solution does not optimize the number of function calls. 
+In order to provide a comprehensive code the given solution does not optimize the number of function calls.
 The functional nature of Racket allows to perform the optimization without changing the main code using memoization.
 
 Simple memoization operator
@@ -2853,7 +2853,7 @@ Simple memoization operator
                 res])))
 
 ```
- 
+
 
 To use memoization just call
 
@@ -2865,7 +2865,7 @@ To use memoization just call
 ```
 
 
-The profiling shows that memoization reduces the number of function calls 
+The profiling shows that memoization reduces the number of function calls
 in this example from 184 to 67 (50 calls for primary interval division and about 6 calls for each point refinement).
 
 
@@ -2909,7 +2909,7 @@ found an exact root at 2
 
 
 ===function is coded in-line===
-This version is about 40% faster than the 1<sup>st</sup> REXX version. 
+This version is about 40% faster than the 1<sup>st</sup> REXX version.
 
 ```rexx
 /*REXX program finds the roots of a specific function:  x^3 - 3*x^2 + 2*x  via bisection*/
@@ -2928,7 +2928,7 @@ z=x*(x*(x-3)+2)                                  /*formula used   ──► x^3 
             end   /*x*/                          /*dividing by unity normalizes X  [↑]  */
 ```
 
-{{out|output|text=  is the same as the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is the same as the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -2945,20 +2945,20 @@ rangemax = 3
 stepsize = 0.001
 accuracy = 0.1
 roots(function, rangemin, rangemax, stepsize, accuracy)
- 
+
 func roots funct, min, max, inc, eps
      oldsign = 0
      for x = min to max step inc
          num = sign(eval(funct))
-         if num = 0 
+         if num = 0
             see "root found at x = " + x + nl
             num = -oldsign
          else if num != oldsign and oldsign != 0
-              if inc < eps 
+              if inc < eps
                  see "root found near x = " + x + nl
               else roots(funct, x-inc, x+inc/8, inc/8, eps) ok ok ok
          oldsign = num
-     next 
+     next
 
 ```
 
@@ -2979,7 +2979,7 @@ root found near x = 2.00
 RLaB implements a number of solvers from the GSL and the netlib that find the roots of a real or vector function of a real or vector variable.
 The solvers are grouped with respect whether the variable is a scalar, ''findroot'', or a vector, ''findroots''. Furthermore, for each group there are two types of solvers, one that does not require the derivative of the objective function (which root(s) are being sought), and one that does.
 
-The script that finds a root of a scalar function <math>f(x) = x^3-3\,x^2 + 2\,x</math> of a scalar variable ''x'' 
+The script that finds a root of a scalar function <math>f(x) = x^3-3\,x^2 + 2\,x</math> of a scalar variable ''x''
 using the bisection method on the interval -5 to 5 is,
 
 ```RLaB

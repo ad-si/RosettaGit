@@ -17,18 +17,18 @@ tags = []
 
 ;Task:
 Get two integers from the user,    and then (for those two integers), display their:
-::::*   sum 
-::::*   difference 
-::::*   product 
+::::*   sum
+::::*   difference
+::::*   product
 ::::*   integer quotient
-::::*   remainder 
-::::*   exponentiation   (if the operator exists) 
+::::*   remainder
+::::*   exponentiation   (if the operator exists)
 
 
 
-Don't include error handling. 
+Don't include error handling.
 
-For quotient, indicate how it rounds   (e.g. towards zero, towards negative infinity, etc.). 
+For quotient, indicate how it rounds   (e.g. towards zero, towards negative infinity, etc.).
 
 For remainder, indicate whether its sign matches the sign of the first operand or of the second operand, if they are different.
 
@@ -37,7 +37,7 @@ For remainder, indicate whether its sign matches the sign of the first operand o
 
 
 ## 0815
- 
+
 
 ```0815
 
@@ -75,7 +75,7 @@ a ^^ b = 510
 
 
 ## 11l
- 
+
 
 ```11l
 V a = Int(input())
@@ -93,24 +93,24 @@ print(‘a ^ b = ’(a ^ b))
 
 ## 360 Assembly
 
-From the principles of operation: Operands are signed and 32 bits long. 
-Negative quantities are held in two's-complement form. 
+From the principles of operation: Operands are signed and 32 bits long.
+Negative quantities are held in two's-complement form.
 
 '''Multiplication:'''
 
-The product of the multiplier (the second operand) and the multiplicand 
-(the first operand) replaces the multiplicand. Both multiplier and 
-multiplicand are 32-bit signed integers. The product is always a 64-bit 
+The product of the multiplier (the second operand) and the multiplicand
+(the first operand) replaces the multiplicand. Both multiplier and
+multiplicand are 32-bit signed integers. The product is always a 64-bit
 signed integer and occupies an even/odd register pair.
 
 '''Division:'''
 
-The dividend (first operand) is divided by the divisor (second operand) 
-and replaced by the quotient and remainder. The dividend is a 64-bit 
-signed integer and occupies the even/odd pair of registers. 
-A 32-bit signed remainder and a 32-bit signed quotient replace the dividend 
+The dividend (first operand) is divided by the divisor (second operand)
+and replaced by the quotient and remainder. The dividend is a 64-bit
+signed integer and occupies the even/odd pair of registers.
+A 32-bit signed remainder and a 32-bit signed quotient replace the dividend
 in the even-numbered and odd-numbered registers, respectively.
-The sign of the quotient is determined by the rules of algebra. 
+The sign of the quotient is determined by the rules of algebra.
 The remainder has the same sign as the dividend.
 
 ```360asm
@@ -128,7 +128,7 @@ SUB      L      R1,A
          XDECO  R1,BUF
          MVI    BUF,C'-'
          XPRNT  BUF,12
-MUL      L      R1,A 
+MUL      L      R1,A
          M      R0,B               r0r1=a*b
          XDECO  R1,BUF             so r1 has the lower part
          MVI    BUF,C'*'
@@ -171,7 +171,7 @@ R          9
 
 
 ## 6502 Assembly
- 
+
 Code is called as a subroutine (i.e. JSR Arithmetic).  Specific OS/hardware routines for user input and printing are left unimplemented.
 
 ```6502asm
@@ -311,7 +311,7 @@ begin
    Put_Line("a/b = " & Integer'Image(A / B));
    Put_Line("a mod b = " & Integer'Image(A mod B)); -- Sign matches B
    Put_Line("remainder of a/b = " & Integer'Image(A rem B)); -- Sign matches A
-   Put_Line("a**b = " & Integer'Image(A ** B));  
+   Put_Line("a**b = " & Integer'Image(A ** B));
 
 end Integer_Arithmetic;
 ```
@@ -373,7 +373,7 @@ a UP b = a**b = a↑b = +1.499007808785573768814747570e+288
 [[ALGOL 68R]] has the curious (and consequently non-standard) '/:=' operator.  This operator
 is equivalent to the OVERAB operator of the revised report, except it delivers the remainder as a result.
 So a '/:=' b sets a to the quotient of a%b and returns the remainder of a%b as a result.
-Note that it must be "stropped" i.e. enclosed in single quotes. eg. 
+Note that it must be "stropped" i.e. enclosed in single quotes. eg.
  INT quotient:=355, remainder;
  remainder := quotient '/:=' 113;
 Giving a quotient of 3, and a remainder of 16.
@@ -467,15 +467,15 @@ szMessSoustraction: .asciz "soustraction :"
 szMessMultiplication: .asciz "multiplication :"
 szMessDivision: .asciz "division :"
 szMessReste: .asciz "reste :"
-   
-/***********************/				   
+
+/***********************/
 /* No Initialized data */
 /***********************/
 .bss
 iValeur:  .skip  4     @ reserve 4 bytes in memory
 
 .text
-.global main 
+.global main
 main:
     push {fp,lr}    /* save des  2 registres */
     add fp,sp,#8    /* fp <- adresse début */
@@ -500,7 +500,7 @@ main:
     bl affichageMess            @ display message
     @ soustraction
     sub r0,r3,r4
-    ldr r1,=sMessValeur                 
+    ldr r1,=sMessValeur
     bl conversion10S       @ call function with 2 parameter (r0,r1)
     ldr r0,iAdrszMessResult
     bl affichageMess            @ display message
@@ -511,7 +511,7 @@ main:
 
     @ multiplication
     mul r0,r3,r4
-    ldr r1,=sMessValeur                 
+    ldr r1,=sMessValeur
     bl conversion10S       @ call function with 2 parameter (r0,r1)
     ldr r0,iAdrszMessResult
     bl affichageMess            @ display message
@@ -519,13 +519,13 @@ main:
     bl affichageMess            @ display message
     ldr r0,iAdrsMessValeur
     bl affichageMess            @ display message
-   
-    @ division 
+
+    @ division
     mov r0,r3
     mov r1,r4
     bl division
     mov r0,r2           @ quotient
-    ldr r1,=sMessValeur                 
+    ldr r1,=sMessValeur
     bl conversion10S       @ call function with 2 parameter (r0,r1)
     ldr r0,iAdrszMessResult
     bl affichageMess            @ display message
@@ -535,7 +535,7 @@ main:
     bl affichageMess            @ display message
 
     mov r0,r3           @ remainder
-    ldr r1,=sMessValeur                 
+    ldr r1,=sMessValeur
     bl conversion10S       @ call function with 2 parameter (r0,r1)
     ldr r0,iAdrszMessResult
     bl affichageMess            @ display message
@@ -543,7 +543,7 @@ main:
     bl affichageMess            @ display message
     ldr r0,iAdrsMessValeur
     bl affichageMess            @ display message
- 
+
     mov r0, #0                  @ return code
     b 100f
 error:
@@ -553,7 +553,7 @@ error:
 100: /* end of  program */
     mov r7, #EXIT              @ request to exit program
     swi 0                       @ perform the system call
-iAdrsMessValeur: .int sMessValeur	
+iAdrsMessValeur: .int sMessValeur
 iAdrszMessResult: .int szMessResult
 iAdrszMessError: .int szMessError
 iAdrszMessAddition: .int szMessAddition
@@ -562,11 +562,11 @@ iAdrszMessMultiplication: .int szMessMultiplication
 iAdrszMessDivision: .int szMessDivision
 iAdrszMessReste: .int szMessReste
 /******************************************************************/
-/*     affichage des messages   avec calcul longueur              */ 
+/*     affichage des messages   avec calcul longueur              */
 /******************************************************************/
 /* r0 contient l adresse du message */
 affichageMess:
-    push {fp,lr}    /* save des  2 registres */ 
+    push {fp,lr}    /* save des  2 registres */
     push {r0,r1,r2,r7}    /* save des autres registres */
     mov r2,#0   /* compteur longueur */
 1:       /*calcul de la longueur */
@@ -581,8 +581,8 @@ affichageMess:
     mov r7, #WRITE                  /* code de l appel systeme 'write' */
     swi #0                      /* appel systeme */
     pop {r0,r1,r2,r7}     /* restaur des autres registres */
-    pop {fp,lr}    /* restaur des  2 registres */ 
-    bx lr	        /* retour procedure */	
+    pop {fp,lr}    /* restaur des  2 registres */
+    bx lr	        /* retour procedure */
 /***************************************************/
 /*   conversion registre en décimal   signé  */
 /***************************************************/
@@ -600,16 +600,16 @@ conversion10S:
     mov r4,#10   /* longueur de la zone */
 1: /* debut de boucle de conversion */
     bl divisionpar10 /* division  */
-    add r1,#48        /* ajout de 48 au reste pour conversion ascii */	
+    add r1,#48        /* ajout de 48 au reste pour conversion ascii */
     strb r1,[r2,r4]  /* stockage du byte en début de zone r5 + la position r4 */
     sub r4,r4,#1      /* position précedente */
-    cmp r0,#0     
+    cmp r0,#0
     bne 1b	       /* boucle si quotient different de zéro */
     strb r5,[r2,r4]  /* stockage du signe à la position courante */
     subs r4,r4,#1   /* position précedente */
     blt  100f         /* si r4 < 0  fin  */
     /* sinon il faut completer le debut de la zone avec des blancs */
-    mov r3,#' '   /* caractere espace */	
+    mov r3,#' '   /* caractere espace */
 2:
     strb r3,[r2,r4]  /* stockage du byte  */
     subs r4,r4,#1   /* position précedente */
@@ -617,20 +617,20 @@ conversion10S:
 100:  /* fin standard de la fonction  */
     pop {r0-r5}   /*restaur des autres registres */
     pop {fp,lr}   /* restaur des  2 registres frame et retour  */
-    bx lr   
+    bx lr
 
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 contient le dividende   */
-/* r0 retourne le quotient */	
+/* r0 retourne le quotient */
 /* r1 retourne le reste  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
    push {r2-r4}   /* save autres registres  */
-   mov r4,r0 
+   mov r4,r0
    ldr r3, .Ls_magic_number_10 /* r1 <- magic_number */
    smull r1, r2, r3, r0   /* r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) */
    mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
@@ -643,18 +643,18 @@ divisionpar10:
    .align 4
 .Ls_magic_number_10: .word 0x66666667
 /******************************************************************/
-/*     Conversion d une chaine en nombre stocké dans un registre  */ 
+/*     Conversion d une chaine en nombre stocké dans un registre  */
 /******************************************************************/
 /* r0 contient l adresse de la zone terminée par 0 ou 0A */
 conversionAtoD:
-    push {fp,lr}    /* save des  2 registres */ 
+    push {fp,lr}    /* save des  2 registres */
     push {r1-r7}    /* save des autres registres */
     mov r1,#0
     mov r2,#10   /* facteur */
     mov r3,#0  /* compteur */
     mov r4,r0  /* save de l adresse dans r4 */
     mov r6,#0   /* signe positif par defaut */
-    mov r0,#0  /* initialisation à 0 */ 
+    mov r0,#0  /* initialisation à 0 */
 1:     /* boucle d élimination des blancs du debut */
     ldrb r5,[r4,r3]  /* chargement dans r5 de l octet situé au debut + la position */
     cmp r5,#0       /* fin de chaine -> fin routine */
@@ -676,7 +676,7 @@ conversionAtoD:
     bgt 3f
     /* caractère est un chiffre */
     sub r5,#48
-    ldr r1,iMaxi  /*verifier le dépassement du registre  */  
+    ldr r1,iMaxi  /*verifier le dépassement du registre  */
     cmp r0,r1
     bgt 99f
     mul r0,r2,r0	/* multiplier par facteur */
@@ -688,7 +688,7 @@ conversionAtoD:
     beq 4f
     cmp r5,#10    /* fin de chaine -> fin routine */
     beq 4f
-    b 2b   /* boucler */ 
+    b 2b   /* boucler */
 4:
     cmp r6,#1  /* test du registre r6 pour le signe */
     bne 100f
@@ -697,14 +697,14 @@ conversionAtoD:
     b 100f
 99:  /* erreur de dépassement */
     ldr r1,=szMessErrDep
-    bl   afficheerreur 
+    bl   afficheerreur
     mov r0,#0   /* en cas d'erreur on retourne toujours zero */
 100:
     pop {r1-r7}     /* restaur des autres registres */
-    pop {fp,lr}    /* restaur des  2 registres */ 
-    bx lr           /* retour procedure */	
-/* constante programme */	
-iMaxi: .int 1073741824	
+    pop {fp,lr}    /* restaur des  2 registres */
+    bx lr           /* retour procedure */
+/* constante programme */
+iMaxi: .int 1073741824
 szMessErrDep:  .asciz  "Nombre trop grand : dépassement de capacite de 32 bits. :\n"
 .align 4
 /*
@@ -727,16 +727,16 @@ division:
 1:
     movs r0, r0, LSL #1    /* r0 ? r0 << 1 updating cpsr (sets C if 31st bit of r0 was 1) */
     adc r3, r3, r3         /* r3 ? r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C */
- 
+
     cmp r3, r1             /* compute r3 - r1 and update cpsr */
     subhs r3, r3, r1       /* if r3 >= r1 (C=1) then r3 ? r3 - r1 */
     adc r2, r2, r2         /* r2 ? r2 + r2 + C. This is equivalent to r2 ? (r2 << 1) + C */
 2:
     subs r4, r4, #1        /* r4 ? r4 - 1 */
     bpl 1b            /* if r4 >= 0 (N=0) then branch to .Lloop1 */
- 
+
     pop {r4, lr}
-    bx lr	
+    bx lr
 
 
 
@@ -960,7 +960,7 @@ echo %D% = %C%
 ```bbcbasic
       INPUT "Enter the first integer: " first%
       INPUT "Enter the second integer: " second%
-      
+
       PRINT "The sum is " ; first% + second%
       PRINT "The difference is " ; first% - second%
       PRINT "The product is " ; first% * second%
@@ -1047,8 +1047,8 @@ y = ask("Second number: ").to_i
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int main(int argc, char *argv[])
@@ -1072,8 +1072,8 @@ int main(int argc, char *argv[])
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main()
 {
@@ -1236,7 +1236,7 @@ nil
            ACCEPT A
            DISPLAY "Second number: " WITH NO ADVANCING
            ACCEPT B
-           
+
 *          *> Note: The various ADD/SUBTRACT/etc. statements can be
 *          *> replaced with COMPUTE statements, which allow those
 *          *> operations to be defined similarly to other languages,
@@ -1259,7 +1259,7 @@ nil
 
            COMPUTE Result = A ^ B
            DISPLAY "A ^ B = " Result
-       
+
 *          *> Matches sign of first argument.
            DISPLAY "A % B = " FUNCTION REM(A, B)
 
@@ -1319,7 +1319,7 @@ VAR
    x,y	  : INTEGER;
    arg	  : ARRAY 128 OF CHAR;
    status : BOOLEAN;
-   
+
 
 PROCEDURE Error(IN str : ARRAY OF CHAR);
 BEGIN
@@ -1504,14 +1504,14 @@ $ write sys$output "a / b = ", a / b  ! truncates down
 {{out}}
 
 ```txt
-$ @arithmetic_integer 
+$ @arithmetic_integer
 Enter first number: 2
 Enter second number: 5
 a + b = 7
 a - b = -3
 a * b = 10
 a / b = 0
-$ @arithmetic_integer 
+$ @arithmetic_integer
 Enter first number: -5
 Enter second number: -2
 a + b = -7
@@ -1559,8 +1559,8 @@ var b := StrToInt(ParamStr(1));
 PrintLn(Format('%d + %d = %d', [a, b, a + b]));
 PrintLn(Format('%d - %d = %d', [a, b, a - b]));
 PrintLn(Format('%d * %d = %d', [a, b, a * b]));
-PrintLn(Format('%d / %d = %d', [a, b, a div b])); 
-PrintLn(Format('%d mod %d = %d', [a, b, a mod b])); 
+PrintLn(Format('%d / %d = %d', [a, b, a div b]));
+PrintLn(Format('%d mod %d = %d', [a, b, a mod b]));
 PrintLn(Format('%d ^ %d = %d', [a, b, Trunc(Power(a, b))]));
 ```
 
@@ -1575,9 +1575,9 @@ Dyalect has no operator for exponential.
 
 
 ```Dyalect
-const a = 6 
+const a = 6
 const b = 4
- 
+
 print("sum =\(a+b)")
 print("difference = \(a-b)")
 print("product = \(a*b)")
@@ -1639,19 +1639,19 @@ ArithmeticDemo(INTEGER A,INTEGER B) := FUNCTION
 			  {A,B,'A DIVIDE BY B is:',DIVIDEit},
 			  {A,B,'A RAISED TO B:',EXPit}],
 			  {INTEGER AVal,INTEGER BVal,STRING18 valuetype,STRING val});
-										
+
   RETURN DS;
   END;
-	
+
 ArithmeticDemo(1,1);
 ArithmeticDemo(2,2);
 ArithmeticDemo(50,5);
 ArithmeticDemo(10,3);
 ArithmeticDemo(-1,2);
-	
-/* 	NOTE:Division by zero defaults to generating a zero result (0), 
-   	rather than reporting a “divide by zero” error. 
-   	This avoids invalid or unexpected data aborting a long job. 
+
+/* 	NOTE:Division by zero defaults to generating a zero result (0),
+   	rather than reporting a “divide by zero” error.
+   	This avoids invalid or unexpected data aborting a long job.
    	This default behavior can be changed
 */
 
@@ -1735,7 +1735,7 @@ public program()
 {
     var a := console.loadLineTo(new Integer());
     var b := console.loadLineTo(new Integer());
-    
+
     console.printLine(a," + ",b," = ",a + b);
     console.printLine(a," - ",b," = ",a - b);
     console.printLine(a," * ",b," = ",a * b);
@@ -1756,12 +1756,12 @@ defmodule Arithmetic_Integer do
   defp get_int(msg) do
     IO.gets(msg) |> String.strip |> String.to_integer
   end
-  
+
   def task do
     # Get user input
-    a = get_int("Enter your first integer: ") 
+    a = get_int("Enter your first integer: ")
     b = get_int("Enter your second integer: ")
-    
+
     IO.puts "Elixir Integer Arithmetic:\n"
     IO.puts "Sum:            #{a + b}"
     IO.puts "Difference:     #{a - b}"
@@ -1852,7 +1852,7 @@ Exponent:       -0.0029154518950437317
 % Implemented by Arjun Sunel
 -module(arith).
 -export([start/0]).
- 
+
 start() ->
    case io:fread("","~d~d") of
        {ok, [A,B]} ->
@@ -2019,7 +2019,7 @@ math.parser prettyprint ;
 "a=" "b=" [ write readln string>number ] bi@
 {
     [ + "sum: " write . ]
-    [ - "difference: " write . ] 
+    [ - "difference: " write . ]
     [ * "product: " write . ]
     [ / "quotient: " write . ]
     [ /i "integer quotient: " write . ]
@@ -2052,7 +2052,7 @@ lcm: 24
 ```
 
 
-This example illustrates the use of cleave and apply combinators to alleviate the usage of shuffle words in a concatenative language. 
+This example illustrates the use of cleave and apply combinators to alleviate the usage of shuffle words in a concatenative language.
 bi@ applies a quotation to 2 inputs and 2cleave applies a sequence of quotations to 2 inputs.
 
 
@@ -2142,7 +2142,7 @@ Print i;" + "; j; " = "; i + j
 Print i;" - "; j; " = "; i - j
 Print i;" * "; j; " = "; i * j
 Print i;" / "; j; " = "; i \ j
-Print i;" % "; j; " = "; i Mod j 
+Print i;" % "; j; " = "; i Mod j
 Print i;" ^ "; j; " = "; i ^ j
 Sleep
 
@@ -2264,7 +2264,7 @@ input "Enter the second integer: "; b
 print : print
 
 i1 = val(a) : i2 = val(b)
- 
+
 print "  Number 1:"; i1
 print "  Number 2:"; i2
 print
@@ -2611,17 +2611,17 @@ WRITE() 'A to the power of B = ', A ** B
 
 ```hicest
 A=5; B=-4;
-              A + B = 1 
-              A - B = 9 
-              A * B = -20 
-              A / B = -1.25 
-truncate      A / B = -1 
-round next    A / B = -1 
-round down    A / B = -2 
-round up      A / B = -1 
-remainder of  A / B = 1 
-A to the power of B = 16E-4 
-A to the power of B = 16E-4 
+              A + B = 1
+              A - B = 9
+              A * B = -20
+              A / B = -1.25
+truncate      A / B = -1
+round next    A / B = -1
+round down    A / B = -2
+round up      A / B = -1
+remainder of  A / B = 1
+A to the power of B = 16E-4
+A to the power of B = 16E-4
 ```
 
 
@@ -2655,7 +2655,7 @@ else {
 main
 	a $= integer(in(' ')); ignore
 	b $= integer(in('\n')); ignore
-	
+
 	print("Sum:"		, a + b)
 	print("Difference:", a - b)
 	print("Product:"	, a * b)
@@ -3193,8 +3193,8 @@ print "LIL has no exponentiation expression operator"
 {{out}}
 
 ```txt
-prompt$ echo '7 4' | lil arithmeticInteger.lil  
-Enter two numbers separated by space: 
+prompt$ echo '7 4' | lil arithmeticInteger.lil
+Enter two numbers separated by space:
 A is 7, B is 4
 Sum               A + B is 11
 Difference        A - B is 3
@@ -3238,15 +3238,15 @@ put "Exponent: "  , power(x, y)
 
 
 ```C
-# Maybe you need to import the mathematical funcions 
+# Maybe you need to import the mathematical funcions
 # from Tcl with:
 # eval("namespace path ::tcl::mathfunc");
 
 void main() {
-    int a, b; 
+    int a, b;
     puts("Enter two integers:");
-    a = (int)(gets(stdin)); 
-    b = (int)(gets(stdin)); 
+    a = (int)(gets(stdin));
+    b = (int)(gets(stdin));
     puts("${a} + ${b} = ${a+b}");
     puts("${a} - ${b} = ${a-b}");
     puts("${a} * ${b} = ${a*b}");
@@ -3377,7 +3377,7 @@ Module IntegerTypes {
       Print ExpType$(a mod 5)="Double"
       Print ExpType$(a mod 5%)="Double"
       Print ExpType$(a**2)="Double"
-      
+
       Print ExpType$(b+1)="Double"
       Print ExpType$(b+1&)="Long"
       Print ExpType$(b div 5)="Double"
@@ -3391,7 +3391,7 @@ Module IntegerTypes {
       Print ExpType$(c div 5)="Decimal"
       Print ExpType$(c div 5@)="Decimal"
       Print ExpType$(c mod 5)="Decimal"
-      Print ExpType$(c mod 5@)="Decimal"     
+      Print ExpType$(c mod 5@)="Decimal"
       Print ExpType$(c**2)="Double"
 }
 IntegerTypes
@@ -3537,10 +3537,10 @@ block(
 x = getKBValue prompt:"First number"
 y = getKBValue prompt:"Second number:"
 
-format "Sum: %\n" (x + y) 
-format "Difference: %\n" (x - y) 
-format "Product: %\n" (x * y) 
-format "Quotient: %\n" (x / y) 
+format "Sum: %\n" (x + y)
+format "Difference: %\n" (x - y)
+format "Product: %\n" (x * y)
+format "Quotient: %\n" (x / y)
 format "Remainder: %\n" (mod x y)
 ```
 
@@ -3575,8 +3575,8 @@ main(!IO) :-
 
         % Division: round towards minus infinity.
         %
-        io.format("A div B = %d\n", [i(A div B)], !IO), 
-    
+        io.format("A div B = %d\n", [i(A div B)], !IO),
+
         % Modulus: X mod Y = X - (X div Y) * Y.
         %
         io.format("A mod B = %d\n", [i(A mod B)], !IO),
@@ -3663,7 +3663,7 @@ Enter an integer: 5
 
 ## ML/I
 
-ML/I will read two integers from 'standard input' or similar, 
+ML/I will read two integers from 'standard input' or similar,
 and then output the results to 'standard output' or similar.
 
 
@@ -3783,7 +3783,7 @@ Power       2**3          = 8
 Modulo      2#3           = 2
 And         2&3           = 1
 Or          2!3           = 1
- 
+
 Do Arith(16,0.5)
 Plus        16+.5         = 16.5
 Minus       16-.5         = 15.5
@@ -3794,7 +3794,7 @@ Power       16**.5        = 4
 Modulo      16#.5         = 0
 And         16&.5         = 1
 Or          16!.5         = 1
- 
+
 Do Arith(0,2)
 Plus        0+2           = 2
 Minus       0-2           = -2
@@ -3816,14 +3816,14 @@ Adapted nearly verbatim from C# solution above. Note that I've used the exponent
 
 ```Nemerle
 using System;
- 
+
 class Program
 {
     static Main(args : array[string]) : void
     {
         def a = Convert.ToInt32(args[0]);
         def b = Convert.ToInt32(args[1]);
- 
+
         Console.WriteLine("{0} + {1} = {2}", a, b, a + b);
         Console.WriteLine("{0} - {1} = {2}", a, b, a - b);
         Console.WriteLine("{0} * {1} = {2}", a, b, a * b);
@@ -3895,7 +3895,7 @@ enter 2 integer values separated by blanks
 	 (cond ((= (sgn r) (sgn x) (sgn y)) "both")
 	       ((= (sgn r) (sgn x))         "first")
 	       ((= (sgn r) (sgn y))         "second")))
-	 
+
 (println)
 (println "Exponentiation: " (pow x y))
 
@@ -3968,22 +3968,22 @@ A quotient B =f=  floor (A / B)
 
 ```nim
 
- 
+
 import parseopt, strutils
- 
-var 
+
+var
   opt: OptParser = initOptParser()
   str = opt.cmdLineRest.split
   a: int = 0
   b: int = 0
- 
+
 try:
   a = parseInt(str[0])
   b = parseInt(str[1])
 except ValueError:
   quit("Invalid params. Two integers are expected.")
- 
- 
+
+
 echo("a      : " & $a)
 echo("b      : " & $b)
 echo("a + b  : " & $(a+b))
@@ -3994,7 +3994,7 @@ echo("a mod b: " & $(a mod b))
 
 ```
 
-Execute: Aritmint 10 23 
+Execute: Aritmint 10 23
 /
 {{out}}
 
@@ -4023,7 +4023,7 @@ Function Arithmetic
 	Push $2
 	StrCpy $0 21
 	StrCpy $1 -2
-	
+
 	IntOp $2 $0 + $1
 	DetailPrint "$0 + $1 = $2"
 	IntOp $2 $0 - $1
@@ -4036,7 +4036,7 @@ Function Arithmetic
 	IntOp $2 $0 % $1
 	DetailPrint "$0 % $1 = $2"
 	DetailPrint "Sign of remainder matches the first number"
-	
+
 	Pop $2
 	Pop $1
 	Pop $0
@@ -4087,11 +4087,11 @@ bundle Default {
     function : Main(args : System.String[]) ~ Nil {
       DoArithmetic();
     }
-	
+
     function : native : DoArithmetic() ~ Nil {
       a := IO.Console->GetInstance()->ReadString()->ToInt();
       b := IO.Console->GetInstance()->ReadString()->ToInt();
-  
+
       IO.Console->GetInstance()->Print("a+b = ")->PrintLine(a+b);
       IO.Console->GetInstance()->Print("a-b = ")->PrintLine(a-b);
       IO.Console->GetInstance()->Print("a*b = ")->PrintLine(a*b);
@@ -4130,7 +4130,7 @@ let _ =
    "a - b ="   . a b - .cr
    "a * b ="   . a b * .cr
    "a / b ="   . a b / .cr
-   "a mod b =" . a b mod .cr 
+   "a mod b =" . a b mod .cr
    "a pow b =" . a b pow .cr
 ;
 ```
@@ -4349,17 +4349,17 @@ a=3 b=7 func:_bbf__number_number_number =>f.name.<b> '(' a b ')' ' => ' f(a b) n
 {{out}}
 
 ```txt
-atan2 ( 3 7 ) => 0.40489178628508343 
-divide ( 3 7 ) => 0.42857142857142855 
-gt ( 3 7 ) => UNDEFINED! 
-gte ( 3 7 ) => UNDEFINED! 
-lt ( 3 7 ) => 3 
-lte ( 3 7 ) => 3 
-max ( 3 7 ) => 7 
-min ( 3 7 ) => 3 
-minus ( 3 7 ) => -4 
-mod ( 3 7 ) => 3 
-plus ( 3 7 ) => 10 
+atan2 ( 3 7 ) => 0.40489178628508343
+divide ( 3 7 ) => 0.42857142857142855
+gt ( 3 7 ) => UNDEFINED!
+gte ( 3 7 ) => UNDEFINED!
+lt ( 3 7 ) => 3
+lte ( 3 7 ) => 3
+max ( 3 7 ) => 7
+min ( 3 7 ) => 3
+minus ( 3 7 ) => -4
+mod ( 3 7 ) => 3
+plus ( 3 7 ) => 10
 pow ( 3 7 ) => 2187
 ```
 
@@ -4472,14 +4472,14 @@ extern scanf;
 	@Pointer<@Integer> a = alloc(4);
 	@Pointer<@Integer> b = alloc(4);
 	scanf("%i %i", a, b);
-	
+
 	printf("a + b = %i\n", a::get + b::get);
 	printf("a - b = %i\n", a::get - b::get);
 	printf("a * b = %i\n", a::get * b::get);
 	printf("a / b = %i\n", a::get / b::get);
 	printf("a % b = %i\n", a::get % b::get);
 	printf("a ** b = %i\n", a::get ** b::get);
-	
+
 	return 0;
 ]
 ```
@@ -4651,9 +4651,9 @@ No exponentiation operator exists, but can be worked around with the .NET BCL:
 IGNORELINE Note: This example includes the math module.
 include arithmeticmodule
 :a
-editvar /newvar /value=a /title=Enter first integer: 
+editvar /newvar /value=a /title=Enter first integer:
 editvar /newvar /value=b /title=Enter second integer:
-editvar /newvar /value=c 
+editvar /newvar /value=c
 do add -a-,-b-=-c-
 printline -c-
 do subtract a,b
@@ -4674,7 +4674,7 @@ if -d- /hasvalue yes goto :a else goto :end
 ```ProDOS
 IGNORELINE Note: This example does not use the math module.
 :a
-editvar /newvar /value=a /title=Enter first integer: 
+editvar /newvar /value=a /title=Enter first integer:
 editvar /newvar /value=b /title=Enter second integer:
 editvar /newvar /value=-a-+-b-=-c-
 printline -c-
@@ -4741,7 +4741,7 @@ true.
 
 ```purebasic
 OpenConsole()
- 
+
 Define a, b
 
 Print("Number 1: "): a = Val(Input())
@@ -4753,9 +4753,9 @@ PrintN("Product:    " + Str(a * b))
 PrintN("Quotient:   " + Str(a / b)) ; Integer division (rounding mode=truncate)
 PrintN("Remainder: " + Str(a % b))
 PrintN("Power:      " + Str(Pow(a, b)))
- 
+
 Input()
- 
+
 CloseConsole()
 ```
 
@@ -4807,10 +4807,10 @@ y = getnum("Number2: ")
 
 Python also has the procedure ''divmod'' that returns both quotient and remainder. eg
  quotient, remainder = divmod(355,113)
-Giving a quotient of 3, and a remainder of 16. 
+Giving a quotient of 3, and a remainder of 16.
 
 
-###  Python 3.0 compatible code 
+###  Python 3.0 compatible code
 
 
 ```python
@@ -4962,12 +4962,12 @@ if match? r y [append result "second"]
 ; length of the /results/ list.
 
 print [
-	"Remainder sign matches:" 
+	"Remainder sign matches:"
 	switch length? result [
 		0 ["neither"]
 		1 [result/1]
 		2 ["both"]
-	] 
+	]
 ]
 
 print ["Exponentiation:" x ** y]
@@ -5000,7 +5000,7 @@ Exponentiation: 1.19730367213036E-5
 ## Retro
 
 Retro's arithmetic functions are based on those in [[Forth]]. The example is an adaption of the one from Forth.
- 
+
 
 ```Retro
 : arithmetic ( ab- )
@@ -5021,7 +5021,7 @@ All operators automatically produce integers where appropriate   (up to twenty d
 
 or numbers in exponential format when necessary.   (The REXX default is nine decimal digits.)
 
-For division that produces a floating point number, the result is rounded to the nearest number that can be expressed  
+For division that produces a floating point number, the result is rounded to the nearest number that can be expressed
 
 within the current number of decimal digits   (in the example program below, it is twenty decimal digits).
 
@@ -5142,7 +5142,7 @@ puts "Sum: #{x+y}",
 ```runbasic
 input "1st integer: "; i1
 input "2nd integer: "; i2
- 
+
 print "      Sum"; i1 + i2
 print "     Diff"; i1 - i2
 print "  Product"; i1 * i2
@@ -5188,7 +5188,7 @@ fn main() {
 
 ```
 
-Which you use with: 
+Which you use with:
 
 ```coffeescript
 
@@ -5234,7 +5234,7 @@ Or each of the functions separately:
 ```scala
 val a = Console.readInt
 val b = Console.readInt
- 
+
 val sum = a + b //integer addition is discouraged in print statements due to confusion with String concatenation
 println("a + b = " + sum)
 println("a - b = " + (a - b))
@@ -5257,16 +5257,16 @@ println("remainder of a / b = " + (a % b)) // same sign as first operand
               (write ((eval op) x y))
               (newline))
             '(+ - * / quotient remainder modulo max min gcd lcm)))
-           
+
 (arithmetic 8 12)
 ```
 
 quotient - truncates towards 0
 remainder - same sign as first operand
 modulo - same sign as second operand
- 
+
   prints this:
- 
+
  (+ 8 12) => 20
  (- 8 12) => -4
  (* 8 12) => 96
@@ -5295,7 +5295,7 @@ const proc: main is func
     readln(a);
     write("b = ");
     readln(b);
- 
+
     writeln("a + b = " <& a + b);
     writeln("a - b = " <& a - b);
     writeln("a * b = " <& a * b);
@@ -5520,7 +5520,7 @@ select a-b difference from test;
 
 select a*b product from test;
 
-select trunc(a/b) integer_quotient from test;  
+select trunc(a/b) integer_quotient from test;
 
 select mod(a,b) remainder from test;
 
@@ -5573,7 +5573,7 @@ INTEGER_QUOTIENT
 EXPONENTIATION
 --------------
             81
-   
+
 
 ```
 
@@ -5631,7 +5631,7 @@ end
 
 ```swift
 
-let a = 6 
+let a = 6
 let b = 4
 
 print("sum =\(a+b)")
@@ -5716,10 +5716,10 @@ Disp "Remainder: " & string(remain(a, b))
 
 ```toka
 [ ( a b -- )
-  2dup ." a+b = " + . cr  
-  2dup ." a-b = " - . cr  
-  2dup ." a*b = " * . cr  
-  2dup ." a/b = " / . ." remainder " mod . cr  
+  2dup ." a+b = " + . cr
+  2dup ." a-b = " - . cr
+  2dup ." a*b = " * . cr
+  2dup ." a/b = " / . ." remainder " mod . cr
 ] is mathops
 ```
 
@@ -5968,8 +5968,8 @@ echo "Difference: " . (a - b)
 echo "Product: " . (a * b)
 " The result of an integer division is truncated
 echo "Quotient: " . (a / b)
-" The sign of the result of the remainder operation matches the sign of 
-" the first operand 
+" The sign of the result of the remainder operation matches the sign of
+" the first operand
 echo "Remainder: " . (a % b)
 ```
 
@@ -6040,19 +6040,19 @@ Input and output would be OS-specific and are not implemented. This routine work
 arithm: mov      cx,          a
         mov      bx,          b
         xor      dx,          dx
-        
+
         mov      ax,          cx
         add      ax,          bx
         mov      sum,         ax
-        
+
         mov      ax,          cx
         imul     bx
         mov      product,     ax
-        
+
         mov      ax,          cx
         sub      ax,          bx
         mov      difference,  ax
-        
+
         mov      ax,          cx
         idiv     bx
         mov      quotient,    ax

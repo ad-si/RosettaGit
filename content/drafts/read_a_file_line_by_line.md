@@ -18,7 +18,7 @@ tags = []
 {{omit from|TI-89 BASIC|No filesystem.}}
 {{omit from|Unlambda|Does not know files.}}
 
-Read a file one line at a time, 
+Read a file one line at a time,
 as opposed to [[Read entire file|reading the entire file at once]].
 
 
@@ -57,7 +57,7 @@ EOF      CLOSE (INDCB)             close input
          L     R13,SAVEA+4         previous save area addrs
          RETURN (14,12),RC=0       return to caller with rc=0
 INEOF    CNOP  0,4                 end-of-data routine
-         MVI   EOFFLAG,C'Y'        set the end-of-file flag 
+         MVI   EOFFLAG,C'Y'        set the end-of-file flag
          BR    R14                 return to caller
 SAVEA    DS    18F                 save area for chaining
 INDCB    DCB   DSORG=PS,MACRF=PM,DDNAME=INDD,LRECL=80,                 *
@@ -77,7 +77,7 @@ PG       DS    CL80                buffer
 
 ```forth
 
-"path/to/file" f:open ( . cr ) f:eachline f:close 
+"path/to/file" f:open ( . cr ) f:eachline f:close
 
 ```
 
@@ -179,21 +179,21 @@ done: SKIP
 {{out}}
 <pre style="height:15ex;overflow:scroll">
 1: #!/usr/local/bin/a68g --script #
-2: 
+2:
 3: FILE foobar;
 4: INT errno = open(foobar, "Read_a_file_line_by_line.a68", stand in channel);
-5: 
+5:
 6: STRING line;
 7: FORMAT line fmt = $gl$;
-8: 
+8:
 9: PROC mount next tape = (REF FILE file)BOOL: (
 10:   print("Please mount next tape or q to quit");
 11:   IF read char = "q" THEN done ELSE TRUE FI
 12: );
-13: 
+13:
 14: on physical file end(foobar, mount next tape);
 15: on logical file end(foobar, (REF FILE skip)BOOL: done);
-16: 
+16:
 17: FOR count DO
 18:   getf(foobar, (line fmt, line));
 19:   printf(($g(0)": "$, count, line fmt, line))
@@ -243,15 +243,15 @@ for line in lines open('input.txt'):
 /* structure read file*/
     .struct  0
 readfile_Fd:                           @ File descriptor
-    .struct  readfile_Fd + 4 
+    .struct  readfile_Fd + 4
 readfile_buffer:                       @ read buffer
-    .struct  readfile_buffer + 4 
+    .struct  readfile_buffer + 4
 readfile_buffersize:                   @ buffer size
-    .struct  readfile_buffersize + 4 
-readfile_line:                         @ line buffer 
-    .struct  readfile_line + 4 
+    .struct  readfile_buffersize + 4
+readfile_line:                         @ line buffer
+    .struct  readfile_line + 4
 readfile_linesize:                     @ line buffer size
-    .struct  readfile_linesize + 4 
+    .struct  readfile_linesize + 4
 readfile_pointer:
     .struct  readfile_pointer + 4      @ read pointer  (init to buffer size + 1)
 readfile_end:
@@ -268,7 +268,7 @@ sDeci:               .space 15,' '
                      .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 sBuffer:             .skip BUFFERSIZE             @ buffer result
 szLineBuffer:        .skip LINESIZE
 .align 4
@@ -276,13 +276,13 @@ stReadFile:          .skip readfile_end
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
     ldr r0,iAdrszFileName               @ File name
     mov r1,#O_RDWR                      @  flags
     mov r2,#0                           @ mode
     mov r7,#OPEN                        @ open file
-    svc #0 
+    svc #0
     cmp r0,#0                           @ error ?
     ble error
     ldr r1,iAdrstReadFile               @ init struture readfile
@@ -314,7 +314,7 @@ end:
     ldr r1,iAdrstReadFile
     ldr r0,[r1,#readfile_Fd]            @ load FD to structure
     mov r7, #CLOSE                      @ call system close file
-    svc #0 
+    svc #0
     cmp r0,#0
     blt error
     mov r0,#0                           @ return code
@@ -333,12 +333,12 @@ iAdrszCarriageReturn:      .int szCarriageReturn
 iAdrstReadFile:            .int stReadFile
 iAdrszLineBuffer:          .int szLineBuffer
 /******************************************************************/
-/*     sub strings  index start  number of characters             */ 
+/*     sub strings  index start  number of characters             */
 /******************************************************************/
 /* r0 contains the address of the structure */
 /* r0 returns number of characters or -1 if error */
 readLineFile:
-    push {r1-r8,lr}                             @ save  registers 
+    push {r1-r8,lr}                             @ save  registers
     mov r4,r0                                   @ save structure
     ldr r1,[r4,#readfile_buffer]
     ldr r2,[r4,#readfile_buffersize]
@@ -353,7 +353,7 @@ readLineFile:
 1:                                              @ loop read file
     ldr r0,[r4,#readfile_Fd]
     mov r7,#READ                                @ call system read file
-    svc 0 
+    svc 0
     cmp r0,#0                                   @ error read or end ?
     ble 100f
     mov r7,r0                                   @ number of read characters
@@ -388,21 +388,21 @@ readLineFile:
     bx lr                                       @ return
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -425,12 +425,12 @@ displayError:
     bl affichageMess
 100:
     pop {r0-r2,lr}                          @ restaur registers
-    bx lr                                   @ return 
+    bx lr                                   @ return
 iAdrszMessErr:                 .int szMessErr
 iAdrsHexa:                     .int sHexa
 iAdrsDeci:                     .int sDeci
 /******************************************************************/
-/*     Converting a register to hexadecimal                      */ 
+/*     Converting a register to hexadecimal                      */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 conversion16:
@@ -440,7 +440,7 @@ conversion16:
     mov r3,r0                                @ save entry value
 1:                                           @ start loop
     and r0,r3,r4                             @ value register and mask
-    lsr r0,r2                                @ move right 
+    lsr r0,r2                                @ move right
     cmp r0,#10                               @ compare value
     addlt r0,#48                             @ <10  ->digit
     addge r0,#55                             @ >10  ->letter A-F
@@ -450,8 +450,8 @@ conversion16:
     bge 1b                                   @ no -> loop
 
 100:
-    pop {r1-r4,lr}                                     @ restaur registers 
-    bx lr     
+    pop {r1-r4,lr}                                     @ restaur registers
+    bx lr
 /***************************************************/
 /*  Converting a register to a signed decimal      */
 /***************************************************/
@@ -460,7 +460,7 @@ conversion10S:
     push {r0-r4,lr}       @ save registers
     mov r2,r1             @ debut zone stockage
     mov r3,#'+'           @ par defaut le signe est +
-    cmp r0,#0             @ negative number ? 
+    cmp r0,#0             @ negative number ?
     movlt r3,#'-'         @ yes
     mvnlt r0,r0           @ number inversion
     addlt r0,#1
@@ -471,9 +471,9 @@ conversion10S:
     strb r1,[r2,r4]       @ store digit on area
     sub r4,r4,#1          @ previous position
     cmp r0,#0             @ stop if quotient = 0
-    bne 1b	
+    bne 1b
 
-    strb r3,[r2,r4]       @ store signe 
+    strb r3,[r2,r4]       @ store signe
     subs r4,r4,#1         @ previous position
     blt  100f             @ if r4 < 0 -> end
 
@@ -482,9 +482,9 @@ conversion10S:
     strb r1,[r2,r4]       @store byte space
     subs r4,r4,#1         @ previous position
     bge 2b                @ loop if r4 > 0
-100: 
+100:
     pop {r0-r4,lr}        @ restaur registers
-    bx lr  
+    bx lr
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
@@ -497,12 +497,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 
@@ -553,8 +553,8 @@ awk '{ print $0 }' filename
 
 '''Shorter:'''
 
-Printing the input is the default-action for matching lines, 
-and "1" evaluates to "True", 
+Printing the input is the default-action for matching lines,
+and "1" evaluates to "True",
 
 so this is the shortest possible awk-program
 (not counting the [[Empty program]]):
@@ -580,7 +580,7 @@ END    { print "# Done with", f, "file(s), with a total of", NR, "lines." }
 END    { print "# Comment-lines:", c }
 ```
 
-Note: 
+Note:
 * The variables c and f are initialized automatically to 0
 *  NR is the number of records read so far, for all files read
 * FNR is the number of records read from the current file
@@ -589,10 +589,10 @@ Note:
 
 ```txt
 
-# This is the file input.txt 
-you can use it 
+# This is the file input.txt
+you can use it
 to provide input
-to your program to do 
+to your program to do
 some processing.
 
 ```
@@ -603,9 +603,9 @@ some processing.
 
 # Reading...
 # File #1 : input.txt
-you can use it 
+you can use it
 to provide input
-4 : TO your program TO do 
+4 : TO your program TO do
 some processing.
 # Done with 1 file(s), with a total of 5 lines.
 # Comment-lines: 1
@@ -628,7 +628,7 @@ OPEN filename$ FOR READING AS fh
 READLN fl$ FROM fh
 WHILE ISFALSE(ENDFILE(fh))
     INCR lines
-    READLN fl$ FROM fh 
+    READLN fl$ FROM fh
 WEND
 PRINT lines, " lines in ", filename$
 CLOSE FILE fh
@@ -668,8 +668,8 @@ prompt$ ./readlines
 =
 ## ZX Spectrum Basic
 =
-The tape recorder interface does not support fragmented reads, because tape recorder start and stop is not atomic, (and a leadin is required for tape input). 
-However, the microdrive does support fragmented reads. 
+The tape recorder interface does not support fragmented reads, because tape recorder start and stop is not atomic, (and a leadin is required for tape input).
+However, the microdrive does support fragmented reads.
 In the following example, we read a file line by line from a file on microdrive 1.
 
 
@@ -747,7 +747,7 @@ This method is appropriate if the lines are terminated by a CRLF pair:
 & (fil$(,SET,-1)|);     { Setting file position before start closes file, and fails.
                           Therefore the | }
 ```
- 
+
 
 
 ## Brat
@@ -773,16 +773,16 @@ file.each_line "foobar.txt" { line |
 /*
  * Read (and write) the standard input file
  * linie-by-line. This version is for ASCII
- * encoded text files. 
+ * encoded text files.
  */
 #include <stdio.h>
 
 /*
- * BUFSIZE is a max size of line plus 1. 
+ * BUFSIZE is a max size of line plus 1.
  *
  * It would be nice to dynamically allocate  bigger buffer for longer lines etc.
- * - but this example is as simple as possible. Dynamic buffer allocation from 
- * the heap may not be a good idea as it seems, because it can cause memory 
+ * - but this example is as simple as possible. Dynamic buffer allocation from
+ * the heap may not be a good idea as it seems, because it can cause memory
  * segmentation in embeded systems.
  */
 #define BUFSIZE 1024
@@ -790,12 +790,12 @@ file.each_line "foobar.txt" { line |
 int main(void)
 {
     static char buffer[BUFSIZE];
-    
+
     /*
-     * Never use gets() instead fgets(), because gets() 
+     * Never use gets() instead fgets(), because gets()
      * is a really unsafe function.
      */
-    while (fgets(buffer, BUFSIZE, stdin))            
+    while (fgets(buffer, BUFSIZE, stdin))
         puts(buffer);
 
     return 0;
@@ -839,8 +839,8 @@ int main(void)
 === Using mmap() ===
 Implementation using mmap syscall.  Works on Linux 2.6.* and on *BSDs.  Line reading routine takes a callback function, each line is passed into callback as begin and end pointer.  Let OS handle your memory pages, we don't need no stinking mallocs.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -924,18 +924,18 @@ int main()
 
 {{works with|C++03 to C++17 }}
 
-```cpp>#include <fstream
-
+```cpp
+#include <fstream>
 #include <string>
 #include <iostream>
 
 int main( int argc , char** argv ) {
    int linecount = 0 ;
    std::string line  ;
-   std::ifstream infile( argv[ 1 ] ) ; // input file stream 
+   std::ifstream infile( argv[ 1 ] ) ; // input file stream
    if ( infile ) {
       while ( getline( infile , line ) ) {
-	 std::cout << linecount << ": " 
+	 std::cout << linecount << ": "
                    << line      << '\n' ;  //supposing '\n' to be line end
 	 linecount++ ;
       }
@@ -981,8 +981,8 @@ int main()
         int a, b;
         if (!(iss >> a >> b)) { break; } // if no error a and b get values from file
 
-        std::cout << "a:\t" << a <<"\n"; 
-        std::cout << "b:\t" << b <<"\n"; 
+        std::cout << "a:\t" << a <<"\n";
+        std::cout << "b:\t" << b <<"\n";
      }
       std::cout << "finished" << std::endl;
 }
@@ -1007,8 +1007,8 @@ finished
 {{libheader|U++}}
 
 
-```cpp>#include <Core/Core.h
-
+```cpp
+#include <Core/Core.h>
 
 using namespace Upp;
 
@@ -1181,7 +1181,7 @@ LineByLineReader = (fn, cb) ->
           else
             done_cb()
           return
-          
+
         new_line_index = text.indexOf '\n'
         if new_line_index >= 0
           line = text.substr 0, new_line_index
@@ -1203,14 +1203,14 @@ LineByLineReader = (fn, cb) ->
         close: ->
           # The reader should call this if they abandon mid-file.
           fs.closeSync(fd) unless closed
-          
+
     cb reader
 
 # Test our interface here.
 do ->
   console.log '---'
   fn = 'read_file.coffee'
-  LineByLineReader fn, (reader) -> 
+  LineByLineReader fn, (reader) ->
     callbacks =
       process_line: (line) ->
          console.log line
@@ -1286,15 +1286,15 @@ The example file (above) '''"c:\test.txt"''' is assigned to the text file variab
 ```Delphi
 
 procedure ReadFileByLine;
-   var 
+   var
       TextLines :  TStringList;
-      i         :  Integer; 
+      i         :  Integer;
    begin
-      TextLines := TStringList.Create; 
+      TextLines := TStringList.Create;
       TextLines.LoadFromFile('c:\text.txt');
       for i := 0 to TextLines.count -1 do
       ShowMessage(TextLines[i]);
-   end;   
+   end;
 
 ```
 
@@ -1311,7 +1311,7 @@ ELENA 4.x :
 import system'io;
 import extensions;
 import extensions'routines;
- 
+
 public program()
 {
     File.assign:"file.txt".forEachLine(printingLn)
@@ -1551,7 +1551,7 @@ On the other hand, the output device might be less than accommodating when prese
 
 Peripheral to the task of reading a file line-by-line is the blather about specifying the file name and opening it. The OPEN statement allows for jumping to an ERR label (just as the READ statement has a jump for end-of-file), and carrying an IOSTAT value to specify the nature of the problem (invalid file name form, file access denied, etc.) but this is all very messy and the error codes are not the same across different systems either. I wish these statements were more like functions and returned TRUE/FALSE or a result code that could be tested in an IF-statement directly, as for example in Burroughs Algol where one could write something like <code>While Read(in) Stuff Do ... ;</code> - though a READ statement returned ''true'' for an I/O error, and ''false'' for success, so one defined ''Ican'' to be ''not'' and wrote <code>While Ican Read(in) Stuff Do ... ;</code>
 
-In the absence of such error reception, ugly messages are presented as the prog. is cancelled, and the most common such error is to name a missing file. So, an INQUIRE statement to check first. This too should have an ERR and IOSTAT blather (the file name might be malformed) but enough is enough. The assignment direction for such codes as EXIST and IOSTAT is ''left'' to right rather than the usual right to left (as in FILE = FNAME), but rather than remember this, it is easiest to take advantage of Fortran's (complete) absence of reserved words and define a logical variable EXIST so that the statement is EXIST = EXIST, and the compiler and the programmer can go their own ways. 
+In the absence of such error reception, ugly messages are presented as the prog. is cancelled, and the most common such error is to name a missing file. So, an INQUIRE statement to check first. This too should have an ERR and IOSTAT blather (the file name might be malformed) but enough is enough. The assignment direction for such codes as EXIST and IOSTAT is ''left'' to right rather than the usual right to left (as in FILE = FNAME), but rather than remember this, it is easiest to take advantage of Fortran's (complete) absence of reserved words and define a logical variable EXIST so that the statement is EXIST = EXIST, and the compiler and the programmer can go their own ways.
 
 ```Fortran
 
@@ -1608,7 +1608,7 @@ Wend
 Close #1
 Print
 Print "Press any key to quit"
-Sleep 
+Sleep
 ```
 
 
@@ -1630,7 +1630,7 @@ for line = lines["file:yourfile.txt"]
 
 
 ```gambas
-Public Sub Main() 
+Public Sub Main()
 Dim hFile As File
 Dim sLine As String
 
@@ -1666,7 +1666,7 @@ ReadByLines := function(name)
 end;
 
 # With [http://www.ibiblio.org/pub/docs/misc/amnesty.txt amnesty.txt]
-ReadByLines("amnesty.txt"); 
+ReadByLines("amnesty.txt");
 # 384
 ```
 
@@ -1907,7 +1907,7 @@ Line oriented I/O is basic.  This program reads lines from "input.txt" into the 
 ```Icon
 procedure main()
 f := open("input.txt","r") | stop("cannot open file ",fn)
-while line := read(f) 
+while line := read(f)
 close(f)
 end
 ```
@@ -2086,7 +2086,7 @@ $ seq 0 5 | jq -R 'tonumber|sin'
 ```
 
 
-To perform any kind of reduction operation while reading the lines one-by-one, one would normally use 
+To perform any kind of reduction operation while reading the lines one-by-one, one would normally use
 `input` or `inputs`.  For example, to compute the maximum of the above sin values:
 
 
@@ -2157,7 +2157,7 @@ fun main(args: Array<String>) {
 ```Lasso
 local(f) = file('foo.txt')
 handle => {#f->close}
-#f->forEachLine => {^ 
+#f->forEachLine => {^
     #1
     '
 ' // note this simply inserts an HTML line break between each line.
@@ -2190,7 +2190,7 @@ while not(eof(#f))
     t$ = inputto$(#f, chr$(13))
     print t$
 wend
-close #f 
+close #f
 ```
 
 Unix
@@ -2203,7 +2203,7 @@ while not(eof(#f))
     t$ = inputto$(#f, chr$(10))
     print t$
 wend
-close #f 
+close #f
 ```
 
 
@@ -2389,23 +2389,23 @@ Close[strm];
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 The function fgetl() read lines from file:
 
 
 ```Matlab
-  
+
   fid = fopen('foobar.txt','r');
-  if (fid < 0) 
+  if (fid < 0)
 	printf('Error:could not open file\n')
   else
 	while ~feof(fid),
 		line = fgetl(fid);
-                %% process line %% 
+                %% process line %%
 	end;
         fclose(fid)
-  end; 
+  end;
 ```
 
 
@@ -2534,9 +2534,9 @@ Tectonics:
 var stdin = $loader.loadprim("std@file_stdin", 0)()
 var file_open = $loader.loadprim("std@file_open", 2)
 var file_read_char = $loader.loadprim("std@file_read_char", 1)
- 
+
 /* Read a line from file f into string s returning length without any newline */
-var NEKO_MAX = 1 << 29 
+var NEKO_MAX = 1 << 29
 var strsize = 256
 var NEWLINE = 10
 var readline = function(f) {
@@ -2607,7 +2607,7 @@ prompt$ neko readfile.n readfile.neko | tail -4
 ## NetRexx
 
 
-###  Using Java <tt>Scanner</tt> 
+###  Using Java <tt>Scanner</tt>
 
 
 ```NetRexx
@@ -2647,7 +2647,7 @@ method scanFile(inFileName) public static returns Rexx
 
 
 
-###  Using Java <tt>Reader</tt> 
+###  Using Java <tt>Reader</tt>
 
 
 ```NetRexx
@@ -2709,7 +2709,7 @@ method readFile(inFileName) public static returns Rexx
 
 (set 'in-file (open "filename" "read"))
 (while (read-line in-file)
-       (write-line))   
+       (write-line))
 (close in-file)
 ```
 
@@ -2762,7 +2762,7 @@ NSString *words = [[NSString alloc] initWithContentsOfFile:path
 ```
 
 
-Use the UTF-8 encoder on ASCII. 
+Use the UTF-8 encoder on ASCII.
 
 Now to get the individual lines, break down the string:
 
@@ -2831,7 +2831,7 @@ let () =
 
 
 ```Oforth
-: readFile(fileName) 
+: readFile(fileName)
   | line | File new(fileName) forEach: line [ line println ] ;
 ```
 
@@ -2868,7 +2868,7 @@ i=1
 wr=""
 c=0
 el=13
-do 
+do
   wr = getline s,i,el
   if wr="" then exit do
   'print wr
@@ -2932,10 +2932,10 @@ For the simple case of iterating over the lines of a file you can do:
 ```perl
 open(my $fh, '<', 'foobar.txt')
     || die "Could not open file: $!";
-while (<$fh>) 
+while (<$fh>)
 { # each line is stored in $_, with terminating newline
   # chomp, short for chomp($_), removes the terminating newline
-    chomp; 
+    chomp;
     process($_);
 }
 close $fh;
@@ -2955,7 +2955,7 @@ Without specifying the variable that each line should be put into, it automatica
 ```perl
 open(my $fh, '<', 'foobar.txt')
     || die "Could not open file: $!";
-while (my $line = <$fh>) 
+while (my $line = <$fh>)
 {
     chomp $line;
     process($line);
@@ -3078,7 +3078,7 @@ while ($line = fgets($file)) {
 ```php
 <?php // HOW TO ECHO FILE LINE BY LINE FROM THE COMMAND LINE: php5-cli
 $file = fopen('test.txt', 'r'); // OPEN FILE WITH READ ACCESS
-while (!feof($file)) { 
+while (!feof($file)) {
     $line = rtrim(fgets($file)); // REMOVE TRAILING WHITESPACE AND GET LINE
     if($line != NULL) echo("$line\n"); // IF THE LINE ISN'T NULL, ECHO THE LINE
 }
@@ -3261,7 +3261,7 @@ say 'File' fileID 'has' linenumber-1 'lines.'   /*summary.*/
 
 ### known name version
 
-Or: the 'known name' short version: 
+Or: the 'known name' short version:
 
 ```rexx
 file='foobar.txt'
@@ -3274,7 +3274,7 @@ do while lines(file)\==0; say linein(file); end
 
 The first   '''linein'''   invocation is used to position the record pointer (current position in the file for reading)
 
-in case the parent (REXX) program has already read (for instance) the first couple of records, and the 
+in case the parent (REXX) program has already read (for instance) the first couple of records, and the
 
 beginning of the file needs to be re-established so the reading can start from the beginning of the file.
 
@@ -3310,7 +3310,7 @@ call lineout  fID                                /*close the input file  (most R
 /* Also works with Regina if you state OPTIONS AREXX_BIFS ; OPTIONS AREXX_SEMANTICS */
 filename='file.txt'
 contents=''
-IF Open(filehandle,filename,'READ') 
+IF Open(filehandle,filename,'READ')
 THEN DO UNTIL EOF(filehandle)
    line=ReadLn(filehandle)
    SAY line
@@ -3369,9 +3369,9 @@ end
 ```
 
 
-''Caution!'' IO.foreach and File.foreach take a portname. 
-To open an arbitrary filename (which might start with "|"), 
-you must use File.open, then IO#each (or IO#each_line). 
+''Caution!'' IO.foreach and File.foreach take a portname.
+To open an arbitrary filename (which might start with "|"),
+you must use File.open, then IO#each (or IO#each_line).
 The block form of File.open automatically closes the file after running the block.
 
 
@@ -3556,11 +3556,11 @@ alternatively:
 ## SNOBOL4
 
 
-In SNOBOL4, file I/O is done by associating a file with a variable.  
-Every subsequent access to the variable provides the next record of the file.  
-Options to the input() function allow the file to be opened in line mode, fixed-blocksize (raw binary) mode, and with various sharing options.  
-The input() operation generally fails (in most modern implementations) if the file requested is not found (in earlier implementations, that failure is reported the same way as end-of-file when the first actual read from the file is attempted).  
-You can specify the file unit number to use (a vestigial remnant of the Fortran I/O package used by original Bell Labs SNOBOL4 implementations... in this case, I'll use file unit 20).  
+In SNOBOL4, file I/O is done by associating a file with a variable.
+Every subsequent access to the variable provides the next record of the file.
+Options to the input() function allow the file to be opened in line mode, fixed-blocksize (raw binary) mode, and with various sharing options.
+The input() operation generally fails (in most modern implementations) if the file requested is not found (in earlier implementations, that failure is reported the same way as end-of-file when the first actual read from the file is attempted).
+You can specify the file unit number to use (a vestigial remnant of the Fortran I/O package used by original Bell Labs SNOBOL4 implementations... in this case, I'll use file unit 20).
 Accessing the variable fails (does not succeed) when the end of file is reached.
 
 
@@ -3755,7 +3755,7 @@ Reads and prints out file line by line:
 
 public static void main(){
 	var file = FileStream.open("foo.txt", "r");
-	
+
 	string line = file.read_line();
 	while (line != null){
 		stdout.printf("%s\n", line);
@@ -3811,11 +3811,11 @@ Set objFSO = Nothing
 
 ## Vedit macro language
 
-On Vedit, you do not actually read file line by line. 
-File reading and writing is handled by automatic file buffering 
+On Vedit, you do not actually read file line by line.
+File reading and writing is handled by automatic file buffering
 while you process the file.
 
-This example reads the source code of this macro, 
+This example reads the source code of this macro,
 copies it line by line into a new buffer and adds line numbers.
 
 ```vedit
@@ -3833,7 +3833,7 @@ while (!At_EOF) {
     Line(1)                     // next line
 }
 Buf_Close(NOMSG)                // close the input file
-Buf_Switch(#11)                 // show the output 
+Buf_Switch(#11)                 // show the output
 ```
 
 
@@ -3868,7 +3868,7 @@ Buf_Switch(#11)                 // show the output
 
 ### Simple version
 
-{{works with|Visual Basic|VB6 Standard}} 
+{{works with|Visual Basic|VB6 Standard}}
 
 ```vb
 ' Read a file line by line

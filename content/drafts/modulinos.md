@@ -77,8 +77,8 @@ int meaning_of_life();
 scriptedmain.c
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int meaning_of_life() {
 	return 42;
@@ -162,8 +162,8 @@ int meaning_of_life();
 scriptedmain.cpp
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 using namespace std;
 
@@ -444,9 +444,9 @@ main() {
 Example:
 
 ```sh
-$ ./scriptedmain.dart 
+$ ./scriptedmain.dart
 Main: The meaning of life is 42
-$ ./test.dart 
+$ ./test.dart
 Test: The meaning of life is 42
 ```
 
@@ -557,9 +557,9 @@ Example:
 $ make
 fsharpc --out:scriptedmain.exe ScriptedMain.fs
 fsharpc --out:test.exe ScriptedMain.fs Test.fs
-$ mono scriptedmain.exe 
+$ mono scriptedmain.exe
 Main: The meaning of life is 42
-$ mono test.exe 
+$ mono test.exe
 Test: The meaning of life is 42
 ```
 
@@ -616,9 +616,9 @@ Example:
 
 
 ```sh
-$ ./scriptedmain.factor 
+$ ./scriptedmain.factor
 Main: The meaning of life is 42
-$ ./test.factor 
+$ ./test.factor
 Test: The meaning of life is 42
 ```
 
@@ -738,9 +738,9 @@ Example:
 
 
 ```sh
-$ ./ScriptedMain.groovy 
+$ ./ScriptedMain.groovy
 Main: The meaning of life is 42
-$ ./Test.groovy 
+$ ./Test.groovy
 Test: The meaning of life is 42
 ```
 
@@ -861,7 +861,7 @@ test.io:
 
 
 ```sh
-$ ./ScriptedMain.io 
+$ ./ScriptedMain.io
 Main: The meaning of life is 42
 $ ./test.io
 Test: The meaning of life is 42
@@ -877,9 +877,9 @@ modulinos.ijs:
 
 ```j
 #!/usr/bin/env ijconsole
- 
+
 meaningOfLife =: 42
- 
+
 main =: monad define
 	echo 'Main: The meaning of life is ',": meaningOfLife
 	exit ''
@@ -890,7 +890,7 @@ shouldrun =: monad define
 		main 0
 	end.
 )
- 
+
 shouldrun 0
 ```
 
@@ -1188,10 +1188,10 @@ print("Test: The meaning of life is " .. sm.meaningoflife())
 Example
 
 ```sh
-$ make -f scriptedmain.mf 
+$ make -f scriptedmain.mf
 The meaning of life is 42
 (Main)
-$ make -f test.mf 
+$ make -f test.mf
 The meaning of life is 42
 (Test)
 ```
@@ -1451,9 +1451,9 @@ int main(int argc, char **argv) {
 ```sh
 $ gcc -o scriptedmain -lobjc -framework foundation scriptedmain.m
 $ gcc -o test -lobjc -framework foundation test.m scriptedmain.m
-$ ./scriptedmain 
+$ ./scriptedmain
 Main: The meaning of life is 42
-$ ./test 
+$ ./test
 Test: The meaning of life is 42
 ```
 
@@ -1496,7 +1496,7 @@ val meaning_of_life : int = 42
 val main : unit -> unit = <fun>
 # meaning_of_life;;
 - : int = 42
-# 
+#
 ```
 
 
@@ -1601,10 +1601,10 @@ Example:
 
 ```sh
 $ make
-$ ./scriptedmain 
+$ ./scriptedmain
 Main: The meaning of life is: 42
 $ make test
-$ ./test 
+$ ./test
 Test: The meaning of life is: 42
 ```
 
@@ -1892,7 +1892,7 @@ if howInvoked\=='COMMAND'  then do
 say
 say '(from' @fn"):  and away we go ···"
 ```
- 
+
 
 
 
@@ -1904,10 +1904,10 @@ say '(from' @fn"):  and away we go ···"
 
 # Project : Modulinos
 
-func meaningoflife()	
+func meaningoflife()
        y = 42
        return y
- 
+
 func main()
        see "Main: The meaning of life is " + meaningoflife() + nl
 
@@ -2087,9 +2087,9 @@ Example:
 ```sh
 $ make
 $ make test
-$ ./scriptedmain 
+$ ./scriptedmain
 Main: The meaning of life is 42
-$ ./test 
+$ ./test
 Test: The meaning of life is 42
 ```
 

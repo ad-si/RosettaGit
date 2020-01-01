@@ -15,7 +15,7 @@ tags = []
 
 Sometimes, one may need   (or want)   a loop which
 its   ''iterator''   (the index
-variable)   is modified within the 
+variable)   is modified within the
 
 loop body   '' in addition to the normal incrementation by the   ('''do''')   loop structure index''.
 
@@ -74,7 +74,7 @@ if the loop's index isn't modifiable.
 
 Assembler 360 provides 3 instructions to create loops: BCT, BXH and BXLE, the register which contains the loop index can be modified at any time. Nothing exceptional for an assembly, banning to modify the loop index begins with high level languages.
 
-This task is a good example of the use of ED instruction to format a number. 
+This task is a good example of the use of ED instruction to format a number.
 For macro use (IF,DO,...), see [[360_Assembly_macros#360_Assembly_Structured_Macros|Structured Macros]].
 
 ```360asm
@@ -96,7 +96,7 @@ LOOPILWB PROLOG
          AP     WP,N                   +n
          SP     WP,=P'1'               +1
          ZAP    N,WP                   n=n+n-1
-       ENDIF    ,                    endif                  
+       ENDIF    ,                    endif
          ZAP    WP,N                 n
          AP     WP,=P'1'             +1
          ZAP    N,WP                 n=n+1
@@ -303,7 +303,7 @@ n = 42       99504028301131
 
 /* ARM assembly Raspberry PI  */
 /*  program loopinc96.s   */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -325,13 +325,13 @@ szCarriageReturn:   .asciz "\n"
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                              @ entry of program 
+.global main
+main:                                              @ entry of program
     mov r7,#0                                      @ counter
     mov r5,#42                                     @ start index low bits
     mov r6,#0                                      @ start index high bits
@@ -355,19 +355,19 @@ main:                                              @ entry of program
     ldr r2,iAdrsMessValeur
     bl conversionRegDoubleU                        @ conversion double -> ascii
     ldr r0,iAdrsMessResult
-    bl affichageMess  
-    
+    bl affichageMess
+
     adds r5,r5
     add r6,r6
     addcs r6,#1
     cmp r7,#42                                     @ end ?
     blt 1b                                         @ no loop
 
-100:                                               @ standard end of the program 
+100:                                               @ standard end of the program
     mov r0, #0                                     @ return code
     mov r7, #EXIT                                  @ request to exit program
     svc #0                                         @ perform the system call
- 
+
 iAdrsMessIndex:           .int sMessIndex
 iAdrsMessValeur:          .int sMessValeur
 iAdrszCarriageReturn:     .int szCarriageReturn
@@ -375,40 +375,40 @@ iAdrsMessResult:          .int sMessResult
 
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                   @ save registers 
+    push {r1-r4,lr}                                   @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 1:                                                    @ start loop
     bl divisionpar10U                                 @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                        @ digit
     strb r1,[r3,r2]                                   @ store digit on area
-    cmp r0,#0                                         @ stop if quotient = 0 
+    cmp r0,#0                                         @ stop if quotient = 0
     subne r2,#1                                       @ else previous position
     bne 1b                                            @ and loop
                                                       @ and move digit from left of area
@@ -421,23 +421,23 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient   */	
+/* r0 quotient   */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -445,12 +445,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 /***************************************************/
 /*   number is prime ?              */
@@ -464,7 +464,7 @@ iMagicNumber:  	.int 0xCCCCCCCD
 isPrime:
     push {r1-r5,lr}                      @ save registers
     mov r4,r0                            @ save double
-    mov r5,r1  
+    mov r5,r1
     subs r2,r0,#1                        @ exposant n - 1
     sbcs r3,r1,#0
 
@@ -473,7 +473,7 @@ isPrime:
     bl moduloPuR96                       @ compute modulo
     bcs 100f                             @ overflow error
     cmp r0,#1                            @ modulo <> 1 -> no prime
-    bne 90f 
+    bne 90f
 
     mov r0,#3                            @ base 3
     mov r1,#0
@@ -481,7 +481,7 @@ isPrime:
     bcs 100f                             @ overflow error
     cmp r0,#1
     bne 90f
- 
+
     mov r0,#5                            @ base 5
     mov r1,#0
     bl moduloPuR96
@@ -522,9 +522,9 @@ isPrime:
 90:
     mov r0,#0                            @ no prime
     msr     cpsr_f, #0                   @ no error overflow zero -> flags
-100:                                     @ fin standard de la fonction 
+100:                                     @ fin standard de la fonction
     pop {r1-r5,lr}                       @ restaur registers
-    bx lr                                @ return 
+    bx lr                                @ return
 
 
 /********************************************************/
@@ -541,8 +541,8 @@ isPrime:
 /* r1 returns result high bits */
 /* if overflow , flag carry is set else is clear */
 moduloPuR96:
-    push {r2-r12,lr}                       @ save registers  
-    cmp r0,#0                              @ control low byte <> zero 
+    push {r2-r12,lr}                       @ save registers
+    cmp r0,#0                              @ control low byte <> zero
     bne 1f
     cmp r1,#0                              @ control high bytes <> zero
     beq 100f
@@ -598,7 +598,7 @@ moduloPuR96:
     mov r7,r3                               @ base <- remainder
     mov r8,r4
 
-    lsr r5,#1   
+    lsr r5,#1
     lsrs r6,#1
     orrcs r5,#0x80000000
     cmp r5,#0
@@ -632,12 +632,12 @@ multiplicationR96U:
     addcs  r8,#1              @ carry
     umull r6,r7,r1,r2         @ mult high bits 1 low bits 2
     adds r4,r6                @ add results
-    addcs  r8,#1              @ carry 
+    addcs  r8,#1              @ carry
     adds r8,r7                @ add results
     bcs 99f                   @ overflow ?
     umull r6,r7,r1,r3         @ mult high bits 1 high bits 2
     cmp r7,#0                 @ error overflow ?
-    bne 99f   
+    bne 99f
     adds r8,r6                @ add results
     bcs 99f                   @ error overflow
     mov r1,r4                 @ return median bytes
@@ -648,11 +648,11 @@ multiplicationR96U:
 	ldr r0,iAdrszMessMultOver @
 	bl affichageMess
     mov r0,#0
-    mov r1,#0 
+    mov r1,#0
     msr cpsr_f, #1<<29        @ maj flag carry à 1  et tous les autres à 0
-100:                          @ end function  
+100:                          @ end function
    	pop {r3-r8,lr}            @ restaur registers
-    bx lr                     @ return 
+    bx lr                     @ return
 iAdrszMessMultOver:         .int szMessMultOver
 /***************************************************/
 /*   division number (3 registers) 92 bits by number (2 registers) 64 bits */
@@ -677,7 +677,7 @@ divisionReg96DU:
     mov r5,r1           @ median bits dividende  -> median bits quotient
     mov r6,r2           @ high bits dividende -> high bits quotient
 
-                        @ 
+                        @
     mov r0,#0           @ low bits remainder
     mov r1,#0           @ median bits remainder
     mov r2,#0           @ high bits remainder (not useful)
@@ -700,7 +700,7 @@ divisionReg96DU:
                         @ compare  remainder and divisor
     cmp r2,#0           @ high bit remainder
     bne 2f
-    cmp r1,r8           @ compare median bits 
+    cmp r1,r8           @ compare median bits
     blo 3f              @ lower
     bhi 2f              @ highter
     cmp r0,r7           @ equal -> compare low bits
@@ -709,7 +709,7 @@ divisionReg96DU:
     subs r0,r7          @ sub divisor of remainder
     sbcs r1,r8
     mov r10,#0          @ reuse ponctuelle  r10
-    sbc r2,r2,r10       @ carry 
+    sbc r2,r2,r10       @ carry
     mov r10,#1          @ last bit à 1
 3:
     subs r9,#1          @ increment counter loop
@@ -727,9 +727,9 @@ divisionReg96DU:
     //mov r5,r2
     mov r2,r6           @ high bits quotient
 
-100:                    @ end function  
+100:                    @ end function
    	pop {r5-r10,lr}     @ restaur registers
-    bx lr               @ return 
+    bx lr               @ return
 
 /***************************************************/
 /*   Conversion double integer 64bits in ascii     */
@@ -741,24 +741,24 @@ conversionRegDoubleU:
     push {r0-r5,lr}         @ save registers
     mov r5,r2
     mov r4,#19              @ start location
-    mov r2,#10              @ conversion decimale 
-1:                          @ begin loop 
+    mov r2,#10              @ conversion decimale
+1:                          @ begin loop
     bl divisionReg64U       @ division by 10
     add r3,#48              @ -> digit ascii
     strb r3,[r5,r4]         @ store digit in area index r4
     sub r4,r4,#1            @ decrement index
     cmp r0,#0               @ low bits quotient = zero ?
     bne 1b	                @ no -> loop
-    cmp r1,#0               @ high bits quotient = zero ? 
+    cmp r1,#0               @ high bits quotient = zero ?
     bne 1b                  @ no -> loop
-                            @ spaces -> begin area 
+                            @ spaces -> begin area
     mov r3,#' '             @ space
 2:
-    strb r3,[r5,r4]         @ store space in area 
+    strb r3,[r5,r4]         @ store space in area
     subs r4,r4,#1           @ decrement index
-    bge 2b                  @ and loop if > zéro 
+    bge 2b                  @ and loop if > zéro
 
-100:                        @ end fonction  
+100:                        @ end fonction
    	pop {r0-r5,lr}          @ restaur registers
     bx lr                   @ return
 /***************************************************/
@@ -780,7 +780,7 @@ divisionReg64U:
     lsls r1,#1         @ shift left high bits quotient one bit
     orrcs r5,#1        @ and bit -> remainder
     lsls r0,#1         @ shift left low bits quotient one bit
-    orrcs r1,#1        @ and left bit -> high bits 
+    orrcs r1,#1        @ and left bit -> high bits
     orr r0,r4          @ last bit  quotient
     mov r4,#0          @ raz last bit
     cmp r5,r2          @ compare remainder divisor
@@ -790,7 +790,7 @@ divisionReg64U:
     subs r3,#1         @ decrement counter loop
     bgt 1b             @ and loop if not zero
     lsl r1,#1          @ else shift left higt bits quotient
-    lsls r0,#1         @ and shift  left low bits  
+    lsls r0,#1         @ and shift  left low bits
     orrcs r1,#1
     orr r0,r4          @ last bit quotient
     mov r3,r5
@@ -919,12 +919,12 @@ n = 42      99504028301131
 ## C
 
 The following uses a 'for' rather than a 'do/while' loop but otherwise is similar to the Kotlin
-entry. 
+entry.
 
 The 'thousands separator' aspect (using the ' flag in printf and setting the locale appropriately) works fine when compiled with gcc on Ubuntu 14.04 but may not work on some other systems as this is not a standard flag.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <locale.h>
 
 #define LIMIT 42
@@ -973,11 +973,11 @@ Same as Kotlin entry
 
 #include "stdafx.h"
 #include <iostream>
-#include <math.h> 
+#include <math.h>
 using namespace std;
 
 bool isPrime(double number)
-{    
+{
     for (double i = number - 1; i >= 2; i--) {
         if (fmod(number, i) == 0)
 	    return false;
@@ -1199,7 +1199,7 @@ This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_f
 
 ```fsharp
 
-// Well I don't do loops. Nigel Galloway: March 17th., 2019. Let me try to explain where the loopy variables are, for the imperatively constrained.  
+// Well I don't do loops. Nigel Galloway: March 17th., 2019. Let me try to explain where the loopy variables are, for the imperatively constrained.
 // cUL allows me to claim the rather trivial extra credit (commas in the numbers)
 let cUL=let g=System.Globalization.CultureInfo("en-GB") in (fun (n:uint64)->n.ToString("N0",g))
 // fN is primality by trial division
@@ -1266,7 +1266,7 @@ Seq.unfold(fun n->let n=fG n in Some(n,n+n)) 42UL|>Seq.take 42|>Seq.iteri(fun n 
 
 Explicit loop indices are non-idiomatic, but Factor is certainly capable of using them. Factor has a for loop near-equivalent, <code><range> [ ] each</code>, but since it doesn't mesh well with mutation, a while loop is used.
 
-###  Using two numbers on the data stack 
+###  Using two numbers on the data stack
 
 
 ```factor
@@ -1288,7 +1288,7 @@ IN: rosetta-code.loops-inc-body
 ```
 
 
-###  Using lexical variables 
+###  Using lexical variables
 
 Factor provides lexical variables for situations where they improve readability.
 
@@ -1506,7 +1506,7 @@ C LOOPS INCREMENT LOOP INDEX WITHIN LOOP BODY - 17/07/2018
               ISPRIME=0
               RETURN
   40        I=I+6
-          GOTO 30 
+          GOTO 30
   50      ISPRIME=1
           RETURN
       END
@@ -1663,7 +1663,7 @@ func isPrime(n uint64) bool {
         d += 2
         if n % d == 0 {
             return false
-        } 
+        }
         d += 4
     }
     return true
@@ -1721,7 +1721,7 @@ loop =: verb define
   end.
   i =. i + 1
  end.
- n 
+ n
 )
 
 ```
@@ -1826,16 +1826,16 @@ Include the index numbers with demonstration:
    (>:@:i. ,: tacit_loop) 42
  1  2   3   4   5    6    7    8     9    10    11    12     13     14     15      16      17      18       19       20       21       22        23        24        25         26         27         28          29          30          31          32           33           34           35            36            37            38             39             40             41             42
 43 89 179 359 719 1439 2879 5779 11579 23159 46327 92657 185323 370661 741337 1482707 2965421 5930887 11861791 23723597 47447201 94894427 189788857 379577741 759155483 1518310967 3036621941 6073243889 12146487779 24292975649 48585951311 97171902629 194343805267 388687610539 777375221081 1554750442183 3109500884389 6219001768781 12438003537571 24876007075181 49752014150467 99504028301131
-   
-   
+
+
    NB. fix the definition.  Here's the code.
    tacit_loop f.
 [: }: (_1&(>:@:{`[`]})@:(, (1&p: # _1 2&p.)@:{:)@:]^:(0 ~: (>: #))^:_ x:)
-   
+
 
 ```
 
-If the loop must require the output side effect, this save_if_prime definition does the trick.  Without the output hook it is probably more efficient than the copying version because it evaluates the hook 
+If the loop must require the output side effect, this save_if_prime definition does the trick.  Without the output hook it is probably more efficient than the copying version because it evaluates the hook
 ```txt
 (, _1 2&p.@:{:)
 ```
@@ -1897,7 +1897,7 @@ If the loop must require the output side effect, this save_if_prime definition d
 ## Java
 
 The following uses a 'for' rather than a 'do/while' loop but otherwise is similar to the Kotlin
-entry. 
+entry.
 
 ```java
 public class LoopIncrementWithinBody {
@@ -1943,7 +1943,7 @@ Same as Kotlin entry
 
 ## Julia
 
-Julia's <code>for</code> loop iterator is an iterator type which cannot be incremented as a simple variable would to change looping. 
+Julia's <code>for</code> loop iterator is an iterator type which cannot be incremented as a simple variable would to change looping.
 
 ```julia
 using Primes, Formatting
@@ -1954,7 +1954,7 @@ function doublemyindex(n=42)
     while shown < n
         if isprime(i + 1)
             shown += 1
-            println("The index is ", format(shown, commas=true), " and ", 
+            println("The index is ", format(shown, commas=true), " and ",
                                      format(i + 1, commas=true), " is prime.")
             i += i
         end
@@ -1965,7 +1965,7 @@ end
 doublemyindex()
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 The index is 1 and 43 is prime.
@@ -2017,7 +2017,7 @@ The index is 42 and 99,504,028,301,131 is prime.
 
 ## Kotlin
 
-Unlike many other C-family languages (notably Java), Kotlin's 'for' statement doesn't allow either the iteration variable or the step to be modified within the loop body. 
+Unlike many other C-family languages (notably Java), Kotlin's 'for' statement doesn't allow either the iteration variable or the step to be modified within the loop body.
 
 So instead we use a do/while loop here which has no such restrictions.
 
@@ -2098,7 +2098,7 @@ n = 42   99,504,028,301,131
 ```
 
 
-Although Kotlin is predominantly an object-oriented/procedural language, it does have some features which enable one to program in a functional style. These features include 'tail recursion' which, of course, is commonly used in place of loops in purely functional languages. 
+Although Kotlin is predominantly an object-oriented/procedural language, it does have some features which enable one to program in a functional style. These features include 'tail recursion' which, of course, is commonly used in place of loops in purely functional languages.
 
 In such cases, the Kotlin compiler optimizes out the recursion, leaving behind a fast and efficient loop based version instead.
 
@@ -2124,7 +2124,7 @@ fun isPrime(n: Long): Boolean {
 tailrec fun loop(index: Long, numPrimes: Int) {
     if (numPrimes == 42) return
     var i = index
-    var n = numPrimes 
+    var n = numPrimes
     if (isPrime(i)) {
         n++
         System.out.printf("n = %-2d  %,19d\n", n, i)
@@ -2133,11 +2133,11 @@ tailrec fun loop(index: Long, numPrimes: Int) {
     else loop(++i, n)
 }
 
-fun main(args: Array<String>) {    
+fun main(args: Array<String>) {
     loop(42, 0)
 }
 ```
-    
+
 
 {{out}}
 
@@ -2180,7 +2180,7 @@ Module CheckIt {
             if n<limit Else exit
             if isPrime(i)  then n++ : Print format$("n={0::2}: {1:-20}", n, str$(i,"#,###")) : i+=i-1
             i++
-            loop 
+            loop
       }
 }
 CheckIt
@@ -2285,15 +2285,15 @@ While i<imax
   n=n+1
 EndWhile
 
-Sub isprime_n 
+Sub isprime_n
   If n=2 Or n=3 Then
     ret_isprime_n="True"
-  ElseIf Math.Remainder(n,2)=0 Or Math.Remainder(n,3)=0 Then 
+  ElseIf Math.Remainder(n,2)=0 Or Math.Remainder(n,3)=0 Then
     ret_isprime_n="False"
   Else
     j=5
     While j*j<=n
-      If Math.Remainder(n,j)=0 Or Math.Remainder(n,j+2)=0 Then 
+      If Math.Remainder(n,j)=0 Or Math.Remainder(n,j+2)=0 Then
         ret_isprime_n="False"
         Goto exitsub
       EndIf
@@ -2309,7 +2309,7 @@ Sub format_i
 EndSub 'format_i
 
 Sub format_n
-  nn="" 
+  nn=""
   l=-1
   For k=Text.GetLength(n) To 1 Step -1
     l=l+1
@@ -2385,7 +2385,7 @@ i=42 :   99,504,028,301,131
 #! /usr/local/bin/newlisp
 
 (define (prime? n)
- (and 
+ (and
    (set 'lst (factor n))
    (= (length lst) 1)))
 
@@ -2402,7 +2402,7 @@ i=42 :   99,504,028,301,131
             (begin
             (setq o (string o "_"))
             (setq count3 0))))
-            
+
     (reverse o))
 
 
@@ -2415,7 +2415,7 @@ i=42 :   99,504,028,301,131
             (inc n)
             (println (string "n = " n " -> " (thousands_separator i)))
             (setq i (+ i i -1))))
-    (inc i)        
+    (inc i)
 )
 
 (exit)
@@ -2921,7 +2921,7 @@ load "stdlib.ring"
 i = 42
 n = 0
 while n < 42
-         if isprime(i) 
+         if isprime(i)
             n = n + 1
             see "n = " + n + "    " + i + nl
             i = i + i - 1
@@ -3021,7 +3021,7 @@ object LoopIncrementWithinBody extends App {
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const func boolean: isPrime (in integer: number) is func
   result
     var boolean: result is FALSE;
@@ -3232,7 +3232,7 @@ Visual Basic for Application (VBA) allows to modify the index inside the loop.
     Function ModX(a As Currency, b As Currency) As Currency
         ModX = a - Int(a / b) * b
     End Function 'ModX
-    
+
     Function RightX(c, n)
         RightX = Right(Space(n) & c, n)
     End Function 'RightX
@@ -3392,7 +3392,7 @@ var [const] BN=Import("zklBigNum");  // libGMP
 n,p := 1,BN(42);
 do{
    if(p.probablyPrime()){ println("n = %2d %,20d".fmt(n,p)); p.add(p); n+=1; }
-   p.add(1); 
+   p.add(1);
 }while(n<=42);
 ```
 

@@ -18,12 +18,12 @@ or,   equivalently,   the   ''sum of proper divisors''   (or aliquot sum)       
 
 
 ;E.G.:
-'''12'''   is abundant, it has the proper divisors     '''1,2,3,4 <small>&</small> 6'''     which sum to   '''16'''   ( > '''12''' or '''n'''); 
+'''12'''   is abundant, it has the proper divisors     '''1,2,3,4 <small>&</small> 6'''     which sum to   '''16'''   ( > '''12''' or '''n''');
 
        or alternately,   has the sigma sum of   '''1,2,3,4,6 <small>&</small> 12'''   which sum to   '''28'''   ( > '''24''' or '''2n''').
 
 
-Abundant numbers are common, though '''even''' abundant numbers seem to be much more common than '''odd''' abundant numbers. 
+Abundant numbers are common, though '''even''' abundant numbers seem to be much more common than '''odd''' abundant numbers.
 
 To make things more interesting, this task is specifically about finding   ''odd abundant numbers''.
 
@@ -35,7 +35,7 @@ To make things more interesting, this task is specifically about finding   ''odd
 
 
 ;References:
-:*   the OEIS entry:   [http://oeis.org/A005231 odd abundant numbers (odd numbers n whose sum of divisors exceeds 2n)]. 
+:*   the OEIS entry:   [http://oeis.org/A005231 odd abundant numbers (odd numbers n whose sum of divisors exceeds 2n)].
 :*   American Journal of Mathematics, Vol. 35, No. 4 (Oct., 1913), pp. 413-422 - Finiteness of the Odd Perfect and Primitive Abundant Numbers with n Distinct Prime Factors (LE Dickson)
 
 
@@ -55,19 +55,19 @@ ABUNODDS CSECT
          ST     R13,4(R15)         link backward
          ST     R15,8(R13)         link forward
          LR     R13,R15            set addressability
-         LA     R8,0               n=0 
-         LA     R6,3               i=3 
-       DO WHILE=(C,R8,LT,NN1)      do i=3 by 2 until n>=nn1 
+         LA     R8,0               n=0
+         LA     R6,3               i=3
+       DO WHILE=(C,R8,LT,NN1)      do i=3 by 2 until n>=nn1
          BAL    R14,SIGMA            s=sigma(i)
        IF    CR,R9,GT,R6 THEN        if s>i then
          LA     R8,1(R8)               n++
          BAL    R14,PRINT              print results
        ENDIF    ,                    endif
-         LA     R6,2(R6)             i+=2 
+         LA     R6,2(R6)             i+=2
        ENDDO    ,                  enddo i
-         LA     R8,0               n=0 
-         LA     R6,3               i=3 
-         XR     R1,R1              f=false 
+         LA     R8,0               n=0
+         LA     R6,3               i=3
+         XR     R1,R1              f=false
        DO WHILE=(C,R1,EQ,=F'0')    do i=3 by 2 while not f
          BAL    R14,SIGMA            s=sigma(i)
        IF    CR,R9,GT,R6 THEN        if s>i then
@@ -79,10 +79,10 @@ ABUNODDS CSECT
        ENDIF    ,                    endif
          LA     R6,2(R6)             i+=2
        ENDDO    ,                  enddo i
-         LA     R8,0               n=0 
-         L      R6,NN3             i=mm3 
+         LA     R8,0               n=0
+         L      R6,NN3             i=mm3
          LA     R6,1(R6)           +1
-         XR     R1,R1              f=false 
+         XR     R1,R1              f=false
        DO WHILE=(C,R1,EQ,=F'0')    do i=nn3+1 by 2 while not f
          BAL    R14,SIGMA            s=sigma(i)
        IF    CR,R9,GT,R6 THEN        if s>i then
@@ -95,10 +95,10 @@ ABUNODDS CSECT
          RETURN (14,12),RC=0       restore registers from calling save
 SIGMA    CNOP   0,4                ---- subroutine sigma
          LA     R9,1               s=1
-         LA     R7,3               j=3 
+         LA     R7,3               j=3
          LR     R5,R7              j
          MR     R4,R7              j*j
-       DO WHILE=(CR,R5,LT,R6)      do j=3 by 2 while j*j<i 
+       DO WHILE=(CR,R5,LT,R6)      do j=3 by 2 while j*j<i
          LR     R4,R6                i
          SRDA   R4,32                ~
          DR     R4,R7                i/j
@@ -109,7 +109,7 @@ SIGMA    CNOP   0,4                ---- subroutine sigma
          DR     R4,R7                  i/j
          AR     R9,R5                  s=s+j+i/j
        ENDIF    ,                    endif
-         LA     R7,2(R7)             j+=2 
+         LA     R7,2(R7)             j+=2
          LR     R5,R7                j
          MR     R4,R7                j*j
        ENDDO    ,                  enddo j
@@ -173,7 +173,7 @@ XDEC     DS     CL12               temp for edit
 ## Ada
 
 
-This solution uses the package ''Generic_Divisors'' from the Proper Divisors task 
+This solution uses the package ''Generic_Divisors'' from the Proper Divisors task
 [[http://rosettacode.org/wiki/Proper_divisors#Ada]].
 
 
@@ -182,29 +182,29 @@ with Ada.Text_IO, Generic_Divisors;
 
 procedure Odd_Abundant is
    function Same(P: Positive) return Positive is (P);
-   
+
    package Divisor_Sum is new Generic_Divisors
      (Result_Type => Natural, None => 0, One => Same, Add =>  "+");
-   
+
    function Abundant(N: Positive) return Boolean is
       (Divisor_Sum.Process(N) > N);
-      
+
    package NIO is new Ada.Text_IO.Integer_IO(Natural);
-   
+
    Current: Positive := 1;
-   
+
    procedure Print_Abundant_Line
      (Idx: Positive; N: Positive; With_Idx: Boolean:= True) is
    begin
-      if With_Idx then 
+      if With_Idx then
 	 NIO.Put(Idx, 6);  Ada.Text_IO.Put(" |");
       else
 	 Ada.Text_IO.Put("   *** |");
       end if;
-      NIO.Put(N, 12); Ada.Text_IO.Put(" | "); 
+      NIO.Put(N, 12); Ada.Text_IO.Put(" | ");
       NIO.Put(Divisor_Sum.Process(N), 12); Ada.Text_IO.New_Line;
-   end Print_Abundant_Line;      
-   
+   end Print_Abundant_Line;
+
 begin
    -- the first 25 abundant odd numbers
    Ada.Text_IO.Put_Line(" index |      number | proper divisor sum ");
@@ -216,7 +216,7 @@ begin
       Print_Abundant_Line(I, Current);
       Current := Current + 2;
    end loop;
-   
+
    -- the one thousandth abundant odd number
    Ada.Text_IO.Put_Line("-------+-------------+--------------------");
    for I in 26 .. 1_000 loop
@@ -226,7 +226,7 @@ begin
       end loop;
    end loop;
    Print_Abundant_Line(1000, Current);
-   
+
    -- the first abundant odd number greater than 10**9
    Ada.Text_IO.Put_Line("-------+-------------+--------------------");
    Current := 10**9+1;
@@ -241,7 +241,7 @@ end Odd_Abundant;
 {{out}}
 
 ```txt
- Index |      Number | proper divisor sum 
+ Index |      Number | proper divisor sum
 -------+-------------+--------------------
      1 |         945 |          975
      2 |        1575 |         1649
@@ -467,8 +467,8 @@ End
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 // The following function is for odd numbers ONLY
@@ -488,7 +488,7 @@ int main(int argc, char const *argv[]) {
 
   for (n = 1000000001 ;; n += 2) if (n < sum_proper_divisors(n)) break;
   printf("The first abundant odd number above one billion is: %u\n", n);
-  
+
   return 0;
 }
 ```
@@ -533,8 +533,8 @@ The first abundant odd number above one billion is: 1000000575
 
 {{trans|Go}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <numeric>
 #include <sstream>
@@ -921,7 +921,7 @@ Function SumaDivisores(n As Integer) As Integer
     ' Devuelve la suma de los divisores propios de n
     Dim suma As Integer = 1
     Dim As Integer d, otroD
-    
+
     For d = 2 To Cint(Sqr(n))
         If n Mod d = 0 Then
             suma += d
@@ -1066,7 +1066,7 @@ func abundantOdd(searchFrom, countFrom, countTo int, printOne bool) int {
             count++
             if printOne && count < countTo {
                 continue
-            } 
+            }
             s := sumStr(divs)
             if !printOne {
                 fmt.Printf("%2d. %5d < %s = %d\n", count, n, s, tot)
@@ -2066,11 +2066,11 @@ The first abundant odd number above one billion is:1,000,000,575 (proper sum:1,0
       (con @ (inc (cdr @)))
       (push Var (cons Key 1)) )
    Key )
-(de **sum (L)                                                                   
-   (let S 1                                                                     
-      (for I (cdr L)                                                            
-         (inc 'S (** (car L) I)) )                                              
-      S ) )        
+(de **sum (L)
+   (let S 1
+      (for I (cdr L)
+         (inc 'S (** (car L) I)) )
+      S ) )
 (de factor-sum (N)
    (if (=1 N)
       0
@@ -2101,9 +2101,9 @@ The first abundant odd number above one billion is:1,000,000,575 (proper sum:1,0
             (T (= C 1000)) ) ) ) )
 (let L (factor-list)
    (for N 25
-      (println N (++ L)) ) 
+      (println N (++ L)) )
    (println 1000 (last L))
-   (println 
+   (println
       '****
       1000000575
       (factor-sum 1000000575) ) )
@@ -2178,7 +2178,7 @@ EndProcedure
 
 If OpenConsole("Abundant_odd_numbers")
   Define.i n, c, s
-  
+
   n=1
   c=0
   While c<25
@@ -2193,31 +2193,31 @@ If OpenConsole("Abundant_odd_numbers")
           Print(" = ")
         Else
           Print("+")
-        EndIf        
+        EndIf
         Print(Str(l_sum()))
       Next
       PrintN("")
     EndIf
-    n+2    
-  Wend  
+    n+2
+  Wend
 
   n-2
   While c<1000
     s=sum_proper_divisors(n+2)
     c+Bool(n<s)
     n+2
-  Wend  
+  Wend
   PrintN(~"\nThe one thousandth abundant odd number is: "+Str(n)+
-         ~"\n\tand the proper divisor sum is: "+Str(s))  
-  
+         ~"\n\tand the proper divisor sum is: "+Str(s))
+
   n=1000000001-2
   Repeat
     n+2
     s=sum_proper_divisors(n)
-  Until n<s  
+  Until n<s
   PrintN("The first abundant odd number above one billion is: "+Str(n)+
          ~"\n\tand the proper divisor sum is: "+Str(s))
-  
+
   Input()
 EndIf
 ```
@@ -2274,13 +2274,13 @@ The first abundant odd number above one billion is: 1000000575
 oddNumber  = 1
 aCount  = 0
 dSum  = 0
- 
+
 from math import sqrt
- 
+
 def divisorSum(n):
     sum = 1
     i = int(sqrt(n)+1)
- 
+
     for d in range (2, i):
         if n % d == 0:
             sum += d
@@ -2288,7 +2288,7 @@ def divisorSum(n):
             if otherD != d:
                 sum += otherD
     return sum
- 
+
 print ("The first 25 abundant odd numbers:")
 while aCount  < 25:
     dSum  = divisorSum(oddNumber )
@@ -2296,7 +2296,7 @@ while aCount  < 25:
         aCount  += 1
         print("{0:5} proper divisor sum: {1}". format(oddNumber ,dSum ))
     oddNumber  += 2
- 
+
 while aCount  < 1000:
     dSum  = divisorSum(oddNumber )
     if dSum  > oddNumber :
@@ -2304,7 +2304,7 @@ while aCount  < 1000:
     oddNumber  += 2
 print ("\n1000th abundant odd number:")
 print ("    ",(oddNumber - 2)," proper divisor sum: ",dSum)
- 
+
 oddNumber  = 1000000001
 found  = False
 while not found :
@@ -2707,7 +2707,7 @@ func nice(n)
      ok
 
 func showArray(n,nArray,sum,index)
-        see "" + index + ". " + string(n) + ": divisor sum: " 
+        see "" + index + ". " + string(n) + ": divisor sum: "
         for m = 1 to len(nArray)
             if m < len(nArray)
                see string(nArray[m]) + " + "
@@ -2717,7 +2717,7 @@ func showArray(n,nArray,sum,index)
         next
 
 func showArray2(n,nArray,sum,index)
-        see "" + index + ". " + string(n) + ": divisor sum: " + 
+        see "" + index + ". " + string(n) + ": divisor sum: " +
         see string(nArray[m]) + " = " + string(sum) + nl + nl
 
 ```
@@ -2795,7 +2795,7 @@ proper_divisors method taken from http://rosettacode.org/wiki/Proper_divisors#Ru
 
 ```ruby
 require "prime"
- 
+
 class Integer
   def proper_divisors
     return [] if self == 1
@@ -2817,7 +2817,7 @@ def generator_odd_abundants(from=1)
 end
 
 generator_odd_abundants.take(25).each{|n, sum| puts "#{n} with sum #{sum}" }
-puts "\n%d with sum %#d" % generator_odd_abundants.take(1000).last 
+puts "\n%d with sum %#d" % generator_odd_abundants.take(1000).last
 puts "\n%d with sum %#d" % generator_odd_abundants(1_000_000_000).next
 
 ```
@@ -3236,7 +3236,7 @@ fcn oddDivisors(n){  // -->sorted List
     }).flatten().sort()
 }
 fcn printOAs(oas){  // List | int
-   foreach n in (vm.arglist.flatten()){ 
+   foreach n in (vm.arglist.flatten()){
       ds:=oddDivisors(n);
       println("%6,d: %6,d = %s".fmt(n, ds.sum(0), ds.sort().concat(" + ")))
    }

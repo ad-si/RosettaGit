@@ -16,7 +16,7 @@ tags = []
 {{omit from|Openscad}}
 {{omit from|TPP}}
 
-The [http://mathworld.wolfram.com/HarshadNumber.html Harshad] or Niven numbers are positive integers ≥ 1 that are divisible by the sum of their digits. 
+The [http://mathworld.wolfram.com/HarshadNumber.html Harshad] or Niven numbers are positive integers ≥ 1 that are divisible by the sum of their digits.
 
 For example,   '''42'''   is a [[oeis:A005349|Harshad number]] as   '''42'''   is divisible by   ('''4''' + '''2''')   without remainder.
 
@@ -24,7 +24,7 @@ Assume that the series is defined as the numbers in increasing order.
 
 
 ;Task:
-The task is to create a function/method/procedure to generate successive members of the Harshad sequence. 
+The task is to create a function/method/procedure to generate successive members of the Harshad sequence.
 
 Use it to list the first twenty members of the sequence and list the first Harshad number greater than 1000.
 
@@ -47,16 +47,16 @@ NIVEN    CSECT
          ST     R13,4(R15)         link backward
          ST     R15,8(R13)         link forward
          LR     R13,R15            set addressability
-         LA     R7,2               j=2 
+         LA     R7,2               j=2
 LOOP     MVC    PG,=CL80' '        clear buffer
          LA     R10,PG             @pg
-         LA     R8,0               n=0 
+         LA     R8,0               n=0
        IF C,R7,EQ,=A(2) THEN       if j=2
          LA     R9,20                nn=20
-         LA     R6,1                 i=1 
-       ELSE     ,                  else         
+         LA     R6,1                 i=1
+       ELSE     ,                  else
          LA     R9,1                 nn=1
-         LA     R6,1001              i=1001 
+         LA     R6,1001              i=1001
        ENDIF    ,                  end if
        DO WHILE=(CR,R8,LT,R9)      do i=1 by 1 while(n<nn)
          BAL    R14,HARSHAD          call harshad(i)
@@ -66,7 +66,7 @@ LOOP     MVC    PG,=CL80' '        clear buffer
          MVC    0(4,R10),XDEC+8        output i
          LA     R10,4(R10)             @pg+=4
        ENDIF    ,                    end if
-         LA     R6,1(R6)             i++ 
+         LA     R6,1(R6)             i++
        ENDDO    ,                  enddo i
          XPRNT  PG,L'PG            print buffer
          BCT    R7,LOOP            j=j-1; loop if j<>0
@@ -86,7 +86,7 @@ HARSHAD  EQU    *                  harshad(i)
        ENDDO    ,                  enddo m
          XR     R2,R2              ~
          LR     R3,R6              i
-         DR     R2,R4              i/sum     
+         DR     R2,R4              i/sum
          LR     R1,R2              rc=mod(i,sum)
          BR     R14                return to caller
 PACKED   DS     PL8                packed decimal (15num)
@@ -116,27 +116,27 @@ XDEC     DS     CL12               temp xdeco
 with Ada.Text_IO;
 
 procedure Harshad is
-   
+
    function Next(N: in out Positive) return Positive is
-      
+
       function Sum_Of_Digits(N: Natural) return Natural is
 	 ( if N = 0 then 0 else ((N mod 10) + Sum_Of_Digits(N / 10)) );
-	 
+
    begin
       while not (N mod Sum_Of_Digits(N) = 0) loop
 	 N := N + 1;
       end loop;
       return N;
    end Next;
-   
+
    Current: Positive := 1;
-   
+
 begin
    for I in 1 .. 20 loop
       Ada.Text_IO.Put(Integer'Image(Next(Current)));
       Current := Current + 1;
    end loop;
-   Current := 1000 + 1; 
+   Current := 1000 + 1;
    Ada.Text_IO.Put_Line(" ..." & Integer'Image(Next(Current)));
 end Harshad;
 ```
@@ -226,7 +226,7 @@ BEGIN {
 			++k;
 		}
 	}
-	n = 1000; 
+	n = 1000;
 	while (!isharshad(++n));
 	printf("\nFirst Harshad number larger than 1000 is \n   %i\n",n);
 }
@@ -244,8 +244,8 @@ function isharshad(n) {
 
 ```txt
 First twenty Harshad numbers are:
-   1 2 3 4 5 6 7 8 9 10 12 18 20 21 24 27 30 36 40 42 
-First Harshad number larger than 1000 is 
+   1 2 3 4 5 6 7 8 9 10 12 18 20 21 24 27 30 36 40 42
+First Harshad number larger than 1000 is
    1002
 ```
 
@@ -339,7 +339,7 @@ First Harshad number greater than 1000: 1002
         I%+=1
       ENDWHILE
       END
-      
+
       DEF FNHarshad(num%)
       LOCAL sum%,tmp%
       tmp%=num%
@@ -402,8 +402,8 @@ First Harshad number greater than 1000: 1002
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 static int digsum(int n)
 {
@@ -430,7 +430,7 @@ int main(void)
 {{out}}
 
 ```txt
-1 2 3 4 5 6 7 8 9 10 12 18 20 21 24 27 30 36 40 42 
+1 2 3 4 5 6 7 8 9 10 12 18 20 21 24 27 30 36 40 42
 1002
 ```
 
@@ -526,13 +526,13 @@ public static class Program
         WriteLine(string.Join(" ", From(1).Where(IsHarshad).Take(20)));
         WriteLine(From(1001).First(IsHarshad));
     }
-    
+
     static bool IsHarshad(this int i) => i % i.Digits().Sum() == 0;
-    
+
     static IEnumerable<int> From(int start) {
         for (int i = start; ; i++) yield return i;
     }
-    
+
     static IEnumerable<int> Digits(this int n) {
         for (; n > 0; n /= 10) yield return n % 10;
     }
@@ -544,8 +544,8 @@ public static class Program
 ## C++
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <iostream>
 
 int sumDigits ( int number ) {
@@ -566,7 +566,7 @@ int main( ) {
    int i = 0 ;
    while ( harshads.size( ) != 20 ) {
       i++ ;
-      if ( isHarshad ( i ) ) 
+      if ( isHarshad ( i ) )
 	 harshads.push_back( i ) ;
    }
    std::cout << "The first 20 Harshad numbers:\n" ;
@@ -574,7 +574,7 @@ int main( ) {
       std::cout << number << " " ;
    std::cout << std::endl ;
    int start = 1001 ;
-   while ( ! ( isHarshad ( start ) ) ) 
+   while ( ! ( isHarshad ( start ) ) )
       start++ ;
    std::cout << "The smallest Harshad number greater than 1000 : " << start << '\n' ;
    return 0 ;
@@ -586,7 +586,7 @@ int main( ) {
 ```txt
 
 The first 20 Harshad numbers:
-1 2 3 4 5 6 7 8 9 10 12 18 20 21 24 27 30 36 40 42 
+1 2 3 4 5 6 7 8 9 10 12 18 20 21 24 27 30 36 40 42
 The smallest Harshad number greater than 1000 : 1002
 
 ```
@@ -617,7 +617,7 @@ The smallest Harshad number greater than 1000 : 1002
 
 
 
-      
+
 
 
 ## COBOL
@@ -634,7 +634,7 @@ working-storage section.
 01  harshads.
     03  harshad pic 9(5)    occurs 20 times indexed by niven.
 
-*> numbers tested for harshad-niven-ness.   
+*> numbers tested for harshad-niven-ness.
 01  first-num   pic 9(5).
 01  second-num  pic 9(5).
 
@@ -657,26 +657,26 @@ working-storage section.
 01  pass        pic 9.
     88  first-pass  value 1.
     88  second-pass value 2.
-    
+
 procedure division.
 10-main section.
     move 1 to pass.
     set niven to 1.
     perform 20-calculate-harshad with test before varying first-num from 1 by 1 until niven = 21.
-    
+
     move 2 to pass.
     move first-num to second-num.
     perform 20-calculate-harshad with test after varying first-num from second-num by 1 until harshad-result > 1000.
-    
+
     perform with test after varying i from 1 by 1 until i = 20
         move harshad(i) to harshad-disp
         display function trim(harshad-disp) space with no advancing
     end-perform.
-    
+
     move harshad-result to harshad-disp.
     display "... " function trim(harshad-disp).
     stop run.
-    
+
 20-calculate-harshad.
     move first-num to div.
     move zero to harshad-result.
@@ -691,7 +691,7 @@ procedure division.
         end-if
     end-if.
     exit paragraph.
-        
+
 100-calculate-sum-of-digits.
     move zero to tot.
     perform with test after until div = 0
@@ -703,7 +703,7 @@ procedure division.
     *>  go to 100-calculate-sum-of-digits
     *> end-if.
     exit paragraph.
-    
+
 ```
 
 
@@ -721,30 +721,30 @@ procedure division.
   <Cfset startnum = harshadNum + 1>
   <Cfset digits = 0>
   <Cfset harshad = 0>
-  
+
   <Cfloop condition="Harshad eq 0">
-  
+
     <Cfset current_i = startnum>
     <Cfset digits = 0>
-    
+
     <cfloop condition="len(current_i) gt 1">
       <Cfset digit = left(current_i, 1)>
       <Cfset current_i = right(current_i, len(current_i)-1)>
       <Cfset digits = digits + digit>
     </cfloop>
     <Cfset digits = digits + current_i>
-    
+
     <Cfif Startnum MOD digits eq 0>
       <Cfset harshad = 1>
     <Cfelse>
       <cfset startnum = startnum + 1>
     </Cfif>
-    
+
   </Cfloop>
-  
+
   <cfset harshadNum = startnum>
   <Cfset counter = counter + 1>
-  
+
   <Cfif counter lte 20>
     <Cfoutput>#harshadNum# </Cfoutput>
   </Cfif>
@@ -792,7 +792,7 @@ CL-USER> (list-harshad 1 1001)
 
 ```ruby
 harshad = 1.step.select { |n| n % n.to_s.chars.sum(&.to_i) == 0 }
- 
+
 puts "The first 20 harshard numbers are: \n#{ harshad.first(20).to_a }"
 puts "The first harshard number > 1000 is #{ harshad.find { |n| n > 1000 } }"
 
@@ -840,7 +840,7 @@ void main() {
 ```scheme
 
 (define (harsh? n)
-    (zero? (modulo n 
+    (zero? (modulo n
         (apply + (map string->number (string->list (number->string n)))))))
 
 (harsh? 42)
@@ -979,9 +979,9 @@ end
 ```elixir
 defmodule Harshad do
   def series, do: Stream.iterate(1, &(&1+1)) |> Stream.filter(&(number?(&1)))
-  
+
   def number?(n), do: rem(n, digit_sum(n, 0)) == 0
-  
+
   defp digit_sum(0, sum), do: sum
   defp digit_sum(n, sum), do: digit_sum(div(n, 10), sum + rem(n, 10))
 end
@@ -1063,7 +1063,7 @@ A somewhat more simple approach. Somewhat more efficient since it produces the p
 harshad(R) ->
         case R
         rem lists:sum([X - $0|| X <- erlang:integer_to_list(R)]) of 0
-        -> R; _ -> 0 end. 
+        -> R; _ -> 0 end.
 
 % build a list of harshads retrieving input from harshad(R)
 % filter out the nulls and return
@@ -1076,20 +1076,20 @@ seq(Total) -> seq(Total, [], 0).
 seq(Total,L,_) when length(L) == Total-> L;
 seq(Total,L,Acc) when length(L) < Total ->
       NL = hlist(1,Total + Acc),
-      seq(Total,NL,Acc+1).                         
-                                        
+      seq(Total,NL,Acc+1).
+
 gt(_,L) when length(L) == 1 ->  hd(L);
 gt(X,_) ->
       NL = hlist(X+1,X+2),
-      gt(X+2,NL).                  
+      gt(X+2,NL).
 
 main() ->
       io:format("seq(20): ~w~n", [ seq(20) ]),
-      io:format("gt(1000): ~w~n", [ gt(1000,[]) ]).  
+      io:format("gt(1000): ~w~n", [ gt(1000,[]) ]).
 
 ```
 
-                                                         
+
 
 ```txt
 
@@ -1105,7 +1105,7 @@ ok
 =={{header|F_Sharp|F#}}==
 
 ```fsharp
-let divides d n = 
+let divides d n =
     match bigint.DivRem(n, d) with
     | (_, rest) -> rest = 0I
 
@@ -1120,7 +1120,7 @@ let harshads =
     loop 1I
 
 [<EntryPoint>]
-let main argv = 
+let main argv =
     for h in (Seq.take 20 harshads) do printf "%A " h
     printfn ""
     printfn "%A" (Seq.find (fun n -> n > 1000I) harshads)
@@ -1165,7 +1165,7 @@ USING: math.text.utils lists lists.lazy ;
 
 ## FBSL
 
-The INITIALIZE routine fills a dynamic array with all we need, even the ellipsis. 
+The INITIALIZE routine fills a dynamic array with all we need, even the ellipsis.
 
 ```qbasic
 #APPTYPE CONSOLE
@@ -1173,7 +1173,7 @@ The INITIALIZE routine fills a dynamic array with all we need, even the ellipsis
 CLASS harshad
     PRIVATE:
     memo[]
-    
+
     SUB INITIALIZE()
         DIM i = 1, c
         DO
@@ -1189,11 +1189,11 @@ CLASS harshad
         WHILE NOT isNiven(INCR(i)): WEND
         memo[] = i
     END SUB
-    
+
     FUNCTION isNiven(n)
         RETURN NOT (n MOD sumdigits(n))
     END FUNCTION
-    
+
     FUNCTION sumdigits(n)
         DIM num = n, m, sum
         WHILE num
@@ -1202,7 +1202,7 @@ CLASS harshad
         WEND
         RETURN sum
     END FUNCTION
-    
+
     PUBLIC:
     METHOD Yield()
         FOREACH DIM e IN memo
@@ -1230,8 +1230,8 @@ Press any key to continue...
 ## Fortran
 
 
-Please observe compilation on GNU/linux system and output from run 
-are in the comments at the START of the FORTRAN 2003 source.  
+Please observe compilation on GNU/linux system and output from run
+are in the comments at the START of the FORTRAN 2003 source.
 The 1--20 loop idea was stolen from the ada solution.  Thank you.
 
 ```FORTRAN
@@ -1322,8 +1322,8 @@ Print : Print
 Print "The first such number above 1000 is :"
 i = 1001
 
-Do  
-  If isHarshad(i) Then 
+Do
+  If isHarshad(i) Then
     Print i; " "
     Exit Do
   End If
@@ -1430,7 +1430,7 @@ For siCount = 1 To 1500
   For Each sTemp In sHold
     siTotal += Val(sTemp)
   Next
-  If siCount Mod siTotal = 0 Then 
+  If siCount Mod siTotal = 0 Then
     Inc siCounter
     If siCounter < 21 Or siCount > 1000 Then
       sNiven.Add(Str(siCount))
@@ -1548,7 +1548,7 @@ func main() {
      t = 0;
      for(i=1;t<20;i++)
       {
-        if(find(i)) 
+        if(find(i))
            {
              print(i + " ");
              t++;
@@ -1561,7 +1561,7 @@ func main() {
         if(find(y)) x = 1;
          y++;
       }
-    println(); 
+    println();
     println(y+1);
   }
 }
@@ -1572,7 +1572,7 @@ func main() {
 
 ```txt
 
-1 2 3 4 5 6 7 8 9 10 12 18 20 21 24 27 30 36 40 42 
+1 2 3 4 5 6 7 8 9 10 12 18 20 21 24 27 30 36 40 42
 1002
 
 ```
@@ -2093,7 +2093,7 @@ KTHXBYE
 {{out}}
 
 ```txt
-1 2 3 4 5 6 7 8 9 10 12 18 20 21 24 27 30 36 40 42 
+1 2 3 4 5 6 7 8 9 10 12 18 20 21 24 27 30 36 40 42
 1002
 ```
 
@@ -2145,7 +2145,7 @@ print(h)
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```mathematica
-nextHarshad = 
+nextHarshad =
   NestWhile[# + 1 &, # + 1, ! Divisible[#, Total@IntegerDigits@#] &] &;
 Print@Rest@NestList[nextHarshad, 0, 20];
 Print@nextHarshad@1000;
@@ -2165,10 +2165,10 @@ Define a testing function whether n is harshad or not
 ```MATLAB
 function v = isharshad(n)
 	v = isinteger(n) && ~mod(n,sum(num2str(n)-'0'));
-end; 
+end;
 ```
 
-Check numbers 
+Check numbers
 
 ```MATLAB
 k=1; n=1;
@@ -2179,16 +2179,16 @@ while (k<=20)
 	end;
 	n=n+1;
 end
-n = 1001; 
+n = 1001;
 while ~isharshad(n)
 	n=n+1;
-end; 
+end;
 printf('\nFirst harshad number larger than 1000 is %i\n',n);
 ```
 
 
 ```txt
-1 2 3 4 5 6 7 8 9 10 12 18 20 21 24 27 30 36 40 42 
+1 2 3 4 5 6 7 8 9 10 12 18 20 21 24 27 30 36 40 42
 First harshad number larger than 1000 is 1002
 ```
 
@@ -2244,16 +2244,16 @@ fun sumdigits
 
 fun is_harshad n = (n rem (sumdigits n) = 0)
 
-fun next_harshad_after 
-		(n, ~1) = if is_harshad n then 
-			n 
-		else 
+fun next_harshad_after
+		(n, ~1) = if is_harshad n then
+			n
+		else
 			next_harshad_after (n + 1, ~1)
 	| 	n = next_harshad_after (n + 1, ~1)
 
 fun harshad
                 (max, _, count > max, accum) = rev accum
-        |       (max, here, count, accum) = 
+        |       (max, here, count, accum) =
 			if is_harshad here then
                                 harshad (max, here + 1, count + 1, here :: accum)
                         else
@@ -2403,7 +2403,7 @@ class Harshad {
 
 ```Oforth
 : sumDigits(n)  0 while(n) [ n 10 /mod ->n + ] ;
-: isHarshad     dup sumDigits mod 0 == ;  
+: isHarshad     dup sumDigits mod 0 == ;
 
 1100 seq filter(#isHarshad) dup left(20) println dup filter(#[ 1000 > ]) first println
 ```
@@ -2481,7 +2481,7 @@ n=1000;while(!isHarshad(n++),);print("\n"n)
 {{out}}
 
 ```txt
-1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 18, 20, 21, 24, 27, 30, 36, 40, 42, 
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 18, 20, 21, 24, 27, 30, 36, 40, 42,
 1002
 ```
 
@@ -2682,7 +2682,7 @@ The first Harshad number greater than 1000 is 1002!
 
 ```perl6
 constant @harshad = grep { $_ %% .comb.sum }, 1 .. *;
- 
+
 say @harshad[^20];
 say @harshad.first: * > 1000;
 ```
@@ -2862,7 +2862,7 @@ while not isHarshad(n) do n += 1 end while
 
  End;
 ```
-       
+
 
 {{out}}
 
@@ -2922,37 +2922,37 @@ function Get-HarshadNumbers
     <#
     .SYNOPSIS
     Returns numbers in the Harshad or Niven series.
- 
+
     .DESCRIPTION
     Returns all integers in the given range that are evenly divisible by the sum of their digits
     in ascending order.
- 
+
     .PARAMETER Minimum
     Lower bound of the range to search for Harshad numbers. Defaults to 1.
- 
+
     .PARAMETER Maximum
     Upper bound of the range to search for Harshad numbers. Defaults to 2,147,483,647
- 
+
     .PARAMETER Count
     Maximum number of Harshad numbers to return.
     #>
- 
+
     [cmdletbinding()]
     Param (
         [int]$Minimum = 1,
         [int]$Maximum = [int]::MaxValue,
         [int]$Count )
- 
+
     #  Skip any non-positive numbers in the specified range
     $Minimum = [math]::Max( 1, $Minimum )
- 
+
     #  If the adjusted range has any numbers in it...
     If ( $Maximum -ge $Minimum )
         {
         #  If a count was specified, build a parameter for the Select statement to kill the pipeline when the count is achieved.
         If ( $Count ) { $SelectParam = @{ First = $Count } }
         Else          { $SelectParam = @{} }
- 
+
         #  For each number in the range, test the remainder of it divided it by iteself (converted to a string,
         #  then a character array, then a string array, then an integer array, then summed).
         $Minimum..$Maximum | Where { $_ % ( [int[]][string[]][char[]][string]$_ | Measure -Sum ).Sum -eq 0 } | Select @SelectParam
@@ -3092,7 +3092,7 @@ true.
 		if n % sum(int(ch) for ch in str(n)) == 0:
 			yield n
 
-		
+
 >>> list(itertools.islice(harshad(), 0, 20))
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 18, 20, 21, 24, 27, 30, 36, 40, 42]
 >>> for n in harshad():
@@ -3100,9 +3100,9 @@ true.
 		print(n)
 		break
 
-	
+
 1002
->>> 
+>>>
 ```
 
 
@@ -3118,7 +3118,7 @@ The for loop above [http://paddy3118.blogspot.co.uk/2013/03/itertoolsfirst.html 
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 18, 20, 21, 24, 27, 30, 36, 40, 42]
 >>> next(x for x in harshad if x > 1000)
 1002
->>> 
+>>>
 ```
 
 
@@ -3256,15 +3256,15 @@ firstAbove1000 -> [1002]
 ```scheme
 #lang racket
 
-(define (digsum n) 
+(define (digsum n)
   (for/sum ([c (number->string n)]) (string->number [string c])))
-   
-(define harshads 
+
+(define harshads
   (stream-filter (λ (n) (= (modulo n (digsum n)) 0)) (in-naturals 1)))
- 
+
 ; First 20 harshad numbers
 (displayln (for/list ([i 20]) (stream-ref harshads i)))
- 
+
 ; First harshad greater than 1000
 (displayln (for/first ([h harshads] #:when(> h 1000)) h))
 ```
@@ -3334,11 +3334,11 @@ and ''let-values'' with ''quotient/remainder'':
 
 ## REXX
 
-These REXX examples allow the user to specify how many Niven numbers to list, 
+These REXX examples allow the user to specify how many Niven numbers to list,
 
 as well as find the first Niven number greater than a specified positive integer.
 
-Also, gihugeic integers are supported   (essentially no limit). 
+Also, gihugeic integers are supported   (essentially no limit).
 
 ### generic
 
@@ -3401,7 +3401,7 @@ isNiven: procedure; parse arg x; s=0;   do k=1 for length(x); s=s+substr(x,k,1);
          return x//s==0
 ```
 
-'''output'''   is identical to the 1<sup>st</sup> REXX version. 
+'''output'''   is identical to the 1<sup>st</sup> REXX version.
 
 
 
@@ -3410,7 +3410,7 @@ isNiven: procedure; parse arg x; s=0;   do k=1 for length(x); s=s+substr(x,k,1);
 
 This REXX version optimizes the   '''isNiven'''   function by using   '''parse'''   statements instead of the   '''substr'''   BIF,
 
-yielding a faster algorithm. 
+yielding a faster algorithm.
 
 ```rexx
 /*REXX program finds the first  A  Niven numbers;  it also finds first Niven number > B.*/
@@ -3436,14 +3436,14 @@ isNiven: procedure;  parse arg x 1 sum 2 q       /*use the first decimal digit f
          return x//sum==0                        /*      └───◄ is destructively parsed. */
 ```
 
-'''output'''   is identical to the 1<sup>st</sup> REXX version. 
+'''output'''   is identical to the 1<sup>st</sup> REXX version.
 
 
 ### array of numbers
 
-This REXX version builds an   ''array''   of numbers instead of a   ''list''   (building an array is much faster than building a list, especially if the list is very long). 
+This REXX version builds an   ''array''   of numbers instead of a   ''list''   (building an array is much faster than building a list, especially if the list is very long).
 
-In addition, if the   '''A'''   number is negative, the numbers in the array aren't displayed, but the   ''last''   number in the array is displayed. 
+In addition, if the   '''A'''   number is negative, the numbers in the array aren't displayed, but the   ''last''   number in the array is displayed.
 
 ```rexx
 /*REXX program finds the first  A  Niven numbers;  it also finds first Niven number > B.*/
@@ -3496,16 +3496,16 @@ count = 0
 while true
       sum = 0
       if niven(i) = 1
-         if count < 20 see "" + i + " is a Niven number" + nl count +=1 ok   
+         if count < 20 see "" + i + " is a Niven number" + nl count +=1 ok
          if i > 1000 see "" + i + " is a Niven number" exit ok ok
       i + =1
 end
 
 func niven nr
      nrString = string(nr)
-     for j = 1 to len(nrString)  
+     for j = 1 to len(nrString)
          sum = sum + number(nrString[j])
-     next  
+     next
      niv = ((nr % sum) = 0)
      return niv
 
@@ -3715,7 +3715,7 @@ List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 18, 20, 21, 24, 27, 30, 36, 40, 42)
     (display (iota-filtered 20 1 niven?))(newline)
     (display (iota-filtered 1 1001 niven?))(newline))
 
-;; Return a list of length n 
+;; Return a list of length n
 ;; for numbers starting at start
 ;; that satisfy the predicate fn.
 (define (iota-filtered n start fn)
@@ -3782,7 +3782,7 @@ const proc: main is func
       write(nextHarshadNum(current) <& " ");
       incr(current);
     end for;
-    current := 1001; 
+    current := 1001;
     writeln(" ... " <& nextHarshadNum(current));
   end func;
 ```
@@ -4001,7 +4001,7 @@ Dim i As Long, out As String, Count As Integer
       If IsHarshad(i) Then out = out & i & ", ": Count = Count + 1
    Loop While Count < 20
    Debug.Print "First twenty Harshad numbers are : " & vbCrLf & out & "..."
-   
+
    i = 1000
    Do
       i = i + 1
@@ -4023,7 +4023,7 @@ End Function
 {{out}}
 
 ```txt
-First twenty Harshad numbers are : 
+First twenty Harshad numbers are :
 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 18, 20, 21, 24, 27, 30, 36, 40, 42, ...
 The first harshad number after 1000 is : 1002
 ```
@@ -4076,9 +4076,9 @@ End Function
 {{out}}
 
 ```txt
-First twenty Harshad numbers are: 
-1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 18, 20, 21, 24, 27, 30, 36, 40, 42, 45, 
-The first Harshad number after 1000 is: 
+First twenty Harshad numbers are:
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 18, 20, 21, 24, 27, 30, 36, 40, 42, 45,
+The first Harshad number after 1000 is:
 1002
 ```
 
@@ -4096,16 +4096,16 @@ k = 0
 *!* First 20 numbers
 ? "First 20 numbers:"
 DO WHILE lnCount < 20
-    k = k + 1 
+    k = k + 1
     IF Harshad(k)
-	lnCount = lnCount + 1 
+	lnCount = lnCount + 1
 	? lnCount, k
     ENDIF
 ENDDO
 *!* First such number > 1000
 k = 1001
 DO WHILE NOT Harshad(k)
-    k = k + 1 
+    k = k + 1
 ENDDO
 ? "First such number > 1000", k
 
@@ -4117,7 +4117,7 @@ FOR i = 1 TO LEN(cn)
     d = d + VAL(SUBSTR(cn, i, 1))
 ENDFOR
 RETURN n % d = 0
-ENDFUNC	
+ENDFUNC
 
 ```
 
@@ -4125,7 +4125,7 @@ ENDFUNC
 
 ```txt
 
-First 20 numbers:  
+First 20 numbers:
          1          1
          2          2
          3          3
@@ -4156,72 +4156,72 @@ First such number > 1000: 1002
 
 
 ```Whitespace
- 
-   
-    
 
-    
-   	
-	    
-  
-     
 
- 	 	
-	 		
-	  	 
 
- 
-  
 
-   	
- 	  	
-   	 	 
-	 			    
-	   	 	 
-	 	  
-	    
- 	  	 
-	  	
-		 	
- 	
- 	
 
-	
 
-   	 
-   					 	   
- 	  	
-	  	
-		 		
- 
-	   	
-	    
-	   	 	  
- 	  	 
-	  	
-		  
- 
- 	
- 	   	     
-	
-  
- 
-  
 
-   		
-   	 	 
-	
-  	
- 	 
 
-   	 	 
-	
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ```
 
-This solution was generated from the pseudo-Assembly below. 
+This solution was generated from the pseudo-Assembly below.
 A [http://ideone.com/AKxEMY live run] is available for the inquiring skeptic.
 
 ```asm
@@ -4256,7 +4256,7 @@ push 0 ; counter
 {{out}}
 
 ```txt
-1 2 3 4 5 6 7 8 9 10 12 18 20 21 24 27 30 36 40 42 
+1 2 3 4 5 6 7 8 9 10 12 18 20 21 24 27 30 36 40 42
 1002
 ```
 
@@ -4332,14 +4332,14 @@ L(1002)
 60 LET n=1001
 70 GO SUB 1000: IF NOT isHarshad THEN LET n=n+1: GO TO 70
 80 PRINT '"First Harshad number larger than 1000 is ";n
-90 STOP 
+90 STOP
 1000 REM is Harshad?
 1010 LET s=0: LET n$=STR$ n
 1020 FOR i=1 TO LEN n$
 1030 LET s=s+VAL n$(i)
 1040 NEXT i
 1050 LET isHarshad=NOT FN m(n,s)
-1060 RETURN 
+1060 RETURN
 1100 DEF FN m(a,b)=a-INT (a/b)*b
 ```
 

@@ -13,7 +13,7 @@ tags = []
 {{draft task}}
 
 ;Task:
-Write a procedure which accepts as arguments another procedure and a positive integer. 
+Write a procedure which accepts as arguments another procedure and a positive integer.
 
 The latter procedure is executed a number of times equal to the accepted integer.
 
@@ -29,19 +29,19 @@ The latter procedure is executed a number of times equal to the accepted integer
 with Ada.Text_IO;
 
 procedure Repeat_Example is
-   
+
    procedure Repeat(P: access Procedure; Reps: Natural) is
    begin
       for I in 1 .. Reps loop
 	 P.all; -- P points to a procedure, and P.all actually calls that procedure
       end loop;
    end Repeat;
-   
+
    procedure Hello is
    begin
       Ada.Text_IO.Put("Hello! ");
    end Hello;
-   
+
 begin
    Repeat(Hello'Access, 3); -- Hello'Access points to the procedure Hello
 end Repeat_Example;
@@ -51,7 +51,7 @@ end Repeat_Example;
 Output:
 
 ```txt
-Hello! Hello! Hello! 
+Hello! Hello! Hello!
 ```
 
 
@@ -229,8 +229,8 @@ exit /b
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void repeat(void (*f)(void), unsigned int n) {
  while (n-->0)
@@ -253,7 +253,8 @@ int main(int argc, char *argv[]) {
 ## C++
 
 
-```cpp>template <typename Function
+```cpp
+template <typename Function>
 
 void repeat(Function f, unsigned int n) {
  for(unsigned int i=n; 0<i; i--)
@@ -263,8 +264,8 @@ void repeat(Function f, unsigned int n) {
 
 usage:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 void example() {
  std::cout << "Example\n";
 }
@@ -316,7 +317,7 @@ Example 3
 
 
 ```clojure
-(defn repeat-function [f n] 
+(defn repeat-function [f n]
   (dotimes [i n] (f)))
 ```
 
@@ -381,7 +382,7 @@ Example
 (define (repeat f n) (for ((i n)) (f)))
 
 (repeat (lambda () (write (random 1000))) 5)
-    → 287 798 930 989 794 
+    → 287 798 930 989 794
 
 ;; Remark
 ;; It is also possible to iterate a function : f(f(f(f( ..(f x)))))
@@ -404,7 +405,7 @@ let Repeat c f =
     for _ in 1 .. c do
         f()
 
-let Hello _ = 
+let Hello _ =
     printfn "Hello world"
 
 [<EntryPoint>]
@@ -418,7 +419,7 @@ let main _ =
 
 ## Factor
 
-Factor comes with the <tt>times</tt> word which does exactly this. For example, 
+Factor comes with the <tt>times</tt> word which does exactly this. For example,
 
 ```factor
 
@@ -575,7 +576,7 @@ main = replicateM_ 5 sampleFunction
 ```
 
 
-And if the requirement is for something like a Church numeral, compounding the application of a given function '''n''' times (rather than repeating the same IO event '''n''' times) then we could also write something like '''applyN''' below: 
+And if the requirement is for something like a Church numeral, compounding the application of a given function '''n''' times (rather than repeating the same IO event '''n''' times) then we could also write something like '''applyN''' below:
 
 ```Haskell
 applyN :: Int -> (a -> a) -> a -> a
@@ -605,7 +606,7 @@ main = print $ applyN 10 (\x -> 2 * x) 1
 
    (, [: +/ _2&{.)  (^:4)  0 1
 0 1 1 2 3 5
-   
+
 
    NB. Repeat an infinite number of times
    NB. computes the stable point at convergence
@@ -614,10 +615,10 @@ main = print $ applyN 10 (\x -> 2 * x) 1
 
    cosine (^:_ ) 2    NB. 2 is the initial value
 0.739085
-   
+
    cosine 0.739085  NB. demonstrate the stable point x==Cos(x)
 0.739085
-   
+
 
    cosine^:(<_) 2  NB. show the convergence
 2 _0.416147 0.914653 0.610065 0.819611 0.682506 0.775995 0.713725 0.755929 0.727635 0.74675 0.733901 0.742568 0.736735 0.740666 0.738019 0.739803 0.738602 0.739411 0.738866 0.739233 0.738986 0.739152 0.73904 0.739116 0.739065 0.739099 0.739076 0.739091 0.7...
@@ -630,7 +631,7 @@ main = print $ applyN 10 (\x -> 2 * x) 1
 
    f''
 hi
-   
+
    NB. pass verbs via a gerund
    repeat =: dyad def 'for_i. i.y do. (x`:0)0 end. EMPTY'
 
@@ -639,8 +640,8 @@ hi
 hi
 hi
 hi
-   
-   
+
+
 
    NB. pass a verb directly to an adverb
 
@@ -750,8 +751,8 @@ produces:
 ```
 
 produces:
- 0 
- 1 
+ 0
+ 1
  2
  3
 
@@ -959,13 +960,13 @@ class Repeat {
   function : Main(args : String[]) ~ Nil {
     Repeat(Example() ~ Nil, 3);
   }
-  
+
   function : Repeat(e : () ~ Nil, i : Int) ~ Nil {
     while(i-- > 0) {
       e();
     };
   }
-  
+
   function : Example() ~ Nil {
     "Example"->PrintLine();
   }
@@ -1183,7 +1184,7 @@ function Out-Example
 function Step-Function ([string]$Function, [int]$Repeat)
 {
     for ($i = 1; $i -le $Repeat; $i++)
-    { 
+    {
         "$(Invoke-Expression -Command $Function) $i"
     }
 }
@@ -1215,7 +1216,7 @@ repeat(Callable, Times) :-
 	Callable,
 	repeat(Callable, TimesLess1).
 
-test :- write('Hello, World'), nl.	
+test :- write('Hello, World'), nl.
 test(Name) :- format('Hello, ~w~n', Name).
 ```
 
@@ -1376,16 +1377,16 @@ Application of a given function, repeated N times:
 
 Repeated * 3:
  (def f(x):
-        return x + 'Example\n')('\n') -> 
+        return x + 'Example\n')('\n') ->
 Example
 Example
 Example
 
-             
+
 Repeated * 3:
  (def g(x):
         return 2 * x)(1) -> 8
-        
+
 Repeated * 3:
  (def h(x):
         return 1.05 * x)(100) -> 115.7625
@@ -1578,7 +1579,7 @@ Closure Closure Closure Closure Closure
 
 ```scala
 object Repeat2 extends App {
-  
+
    implicit class IntWithTimes(x: Int) {
       def times[A](f: => A):Unit = {
     @tailrec
@@ -1621,7 +1622,7 @@ object Repeat3 extends App {
     }
   }
 
-  print("ha") * 5 // * is the method, effective should be A.*(5) 
+  print("ha") * 5 // * is the method, effective should be A.*(5)
 }
 ```
 
@@ -1630,8 +1631,8 @@ object Repeat3 extends App {
 ## Scheme
 
 
-Scheme is mostly made up from expressions which return values.  However some functions, such as <tt>display</tt>, return 
-an unspecified value.  The actual value returned varies depending on the Scheme implementation itself.  
+Scheme is mostly made up from expressions which return values.  However some functions, such as <tt>display</tt>, return
+an unspecified value.  The actual value returned varies depending on the Scheme implementation itself.
 
 
 ```scheme
@@ -1776,11 +1777,11 @@ Private Sub Repeat(rid As String, n As Integer)
         Application.Run rid
     Next i
 End Sub
- 
+
 Private Sub Hello()
     Debug.Print "Hello"
 End Sub
- 
+
 Public Sub main()
     Repeat "Hello", 5
 End Sub
@@ -1837,10 +1838,10 @@ Example 3
 {{out}}
 
 ```txt
-(HELLO ROSETTA CODE) 
-(HELLO ROSETTA CODE) 
-(HELLO ROSETTA CODE) 
-(HELLO ROSETTA CODE) 
+(HELLO ROSETTA CODE)
+(HELLO ROSETTA CODE)
+(HELLO ROSETTA CODE)
+(HELLO ROSETTA CODE)
 (HELLO ROSETTA CODE)
 ```
 
@@ -1854,13 +1855,13 @@ Example 3
 sub myFunc ()
     print "Sure looks like a function in here..."
 end sub
- 
+
 sub rep (func$, times)
     for count = 1 to times
         execute(func$)
     next
 end sub
- 
+
 rep("myFunc", 4)
 ```
 
@@ -1876,6 +1877,6 @@ repeat("ho ".print,3);
 
 {{out}}
 ```txt
-ho ho ho 
+ho ho ho
 ```
 

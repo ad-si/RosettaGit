@@ -17,7 +17,7 @@ The function is:
 
 :<math>h(n) = {\operatorname{n}!\over2(\ln{2})^{n+1}}</math>
 
-It is said to produce "almost integers" for n between 1 and 17.  
+It is said to produce "almost integers" for n between 1 and 17.
 The purpose of the task is to verify this assertion.
 
 Assume that an "almost integer" has '''either a nine or a zero as its first digit after the decimal point''' of its decimal string representation
@@ -154,14 +154,14 @@ function factorial(n,  i,out) {
 ## Bracmat
 
 This solution approximates <math>\log_e{2}</math>
-with enough terms to make the first two decimals right with high likelyhood. 
-(It stops adding more terms when the first three decimals in two consecutive approximations are the same.)  
-See [https://en.wikipedia.org/wiki/Natural_logarithm_of_2 Natural logarithm of 2] 
+with enough terms to make the first two decimals right with high likelyhood.
+(It stops adding more terms when the first three decimals in two consecutive approximations are the same.)
+See [https://en.wikipedia.org/wiki/Natural_logarithm_of_2 Natural logarithm of 2]
 
-Bracmat has no built in support for fixed point notation of rational numbers. 
-Therefore each Hickerson number is split in an integer part (using integer division) 
+Bracmat has no built in support for fixed point notation of rational numbers.
+Therefore each Hickerson number is split in an integer part (using integer division)
 and a decimal part (using a string operation) before outputting.
- 
+
 
 ```bracmat
 ( 0:?n
@@ -222,8 +222,8 @@ h(17) = 130370767029135900.458 is NOT an almost-integer.
 
 {{libheader|MPFR}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <mpfr.h>
 
 void h(int n)
@@ -284,8 +284,8 @@ int main(void)
 
 {{libheader|Boost|1.53 or later}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iomanip>
 #include <boost/multiprecision/cpp_dec_float.hpp>
 #include <boost/math/constants/constants.hpp>
@@ -295,11 +295,11 @@ int main()
 {
     const decfloat ln_two = boost::math::constants::ln_two<decfloat>();
     decfloat numerator = 1, denominator = ln_two;
-    
+
     for(int n = 1; n <= 17; n++) {
         decfloat h = (numerator *= n) / (denominator *= ln_two) / 2;
         decfloat tenths_dig = floor((h - floor(h)) * 10);
-        std::cout << "h(" << std::setw(2) << n << ") = " << std::setw(25) << std::fixed << h << 
+        std::cout << "h(" << std::setw(2) << n << ") = " << std::setw(25) << std::fixed << h <<
             (tenths_dig == 0 || tenths_dig == 9 ? " is " : " is NOT ") << "an almost-integer.\n";
     }
 }
@@ -338,20 +338,20 @@ In order to get enough precision, the natural logarithm of 2 had to be entered m
 
 
 ```clojure
-(defn hickerson 
+(defn hickerson
   "Hickerson number, calculated with BigDecimals and manually-entered high-precision value for ln(2)."
   [n]
   (let [n! (apply *' (range 1M (inc n)))]
-    (.divide n! (*' 2 (.pow 0.693147180559945309417232121458M (inc n))) 
+    (.divide n! (*' 2 (.pow 0.693147180559945309417232121458M (inc n)))
                 30 BigDecimal/ROUND_HALF_UP)))
- 
+
 (defn almost-integer?
   "Tests whether the first digit after the decimal is 0 or 9."
   [x]
-  (let [first-digit (int (mod (.divide (*' x 10) 1.0M 0 BigDecimal/ROUND_DOWN) 
+  (let [first-digit (int (mod (.divide (*' x 10) 1.0M 0 BigDecimal/ROUND_DOWN)
                               10))]
     (or (= 0 first-digit) (= 9 first-digit))))
- 
+
 ; Execute for side effects
 (doseq [n (range 1 18) :let [h (hickerson n)]]
   (println (format "%2d %24.5f" n h)
@@ -454,21 +454,21 @@ h(17) =   130370767029135900.4579853491 which is not an almost integer.
 
 ```ruby
 require "big"
- 
+
 LN2 = Math.log(2).to_big_f
 
 FACTORIALS = Hash(Int32, Float64).new{|h,k| h[k] = k * h[k-1]}
 FACTORIALS[0] = 1
- 
+
 def hickerson(n)
   FACTORIALS[n] / (2 * LN2 ** (n+1))
 end
- 
+
 def nearly_int?(n)
   int = n.round
   (int - 0.1..int + 0.1).includes? n
 end
- 
+
 1.upto(17) do |n|
   h = hickerson(n)
   str = nearly_int?(h) ? "nearly integer" : "NOT nearly integer"
@@ -705,7 +705,7 @@ For n = 2 To 1024
   Mpf_add(answer, answer, tmp)  ' answer += tmp
 Next
 
-/'  remove this line if you want to print ln(2) 
+/'  remove this line if you want to print ln(2)
 Gmp_sprintf(text,!"ln(2) =\t %2.100Ff ", answer)
 Print *text
 Print
@@ -735,7 +735,7 @@ For n = 1 To 40
   End If
 Next
 
-mpf_remove(answer)  'cleanup 
+mpf_remove(answer)  'cleanup
 mpf_remove(pow_ln2)
 mpf_remove(ln2)
 mpf_remove(tmp)
@@ -1008,15 +1008,15 @@ public class Hickerson {
 jq currently uses IEEE 754 64-bit numbers, and therefore the built-in arithmetic functions lack adequate precision to solve the task completely.  In the following, therefore, we include a check for adequate precision.
 
 ```jq
-def hickerson: 
+def hickerson:
   . as $n
-  | (2|log) as $log2 
+  | (2|log) as $log2
   | reduce range(1;$n+1) as $i ( 0.5/$log2; . * $i / $log2) ;
 
 def precise:
    (. - 0.05) as $x | . != ($x + 0.1) ;
 
-def almost_an_integer: 
+def almost_an_integer:
   tostring
   | index(".") as $ix
   | if $ix == null then true
@@ -1026,7 +1026,7 @@ def almost_an_integer:
 range(1;18)
   | . as $i
   | hickerson
-  | if precise then 
+  | if precise then
       if almost_an_integer
         then "hickerson(\($i)) is \(.) -- almost an integer"
       else "hickerson(\($i)) is \(.)"
@@ -1095,7 +1095,7 @@ function reporthickerson{T<:Real,U<:Integer}(a::T, nmax::U)
         println(@sprintf("    ->  %25.4f ", xm))
         println(@sprintf("    0>  %25.4f ", x))
         println(@sprintf("    +>  %25.4f ", xp))
-        isprecok = 
+        isprecok =
         isint =
         if ym == y == yp
             print("The precision is adequate, ")
@@ -1126,209 +1126,209 @@ reporthickerson(a, 17)
 Performing calculations using BigFloat, which has 256-bit precision.
 
 Hickerson series result for n = 1
-    ->                     1.0407 
-    0>                     1.0407 
-    +>                     1.0407 
+    ->                     1.0407
+    0>                     1.0407
+    +>                     1.0407
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 2
-    ->                     3.0028 
-    0>                     3.0028 
-    +>                     3.0028 
+    ->                     3.0028
+    0>                     3.0028
+    +>                     3.0028
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 3
-    ->                    12.9963 
-    0>                    12.9963 
-    +>                    12.9963 
+    ->                    12.9963
+    0>                    12.9963
+    +>                    12.9963
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 4
-    ->                    74.9987 
-    0>                    74.9987 
-    +>                    74.9987 
+    ->                    74.9987
+    0>                    74.9987
+    +>                    74.9987
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 5
-    ->                   541.0015 
-    0>                   541.0015 
-    +>                   541.0015 
+    ->                   541.0015
+    0>                   541.0015
+    +>                   541.0015
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 6
-    ->                  4683.0012 
-    0>                  4683.0012 
-    +>                  4683.0012 
+    ->                  4683.0012
+    0>                  4683.0012
+    +>                  4683.0012
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 7
-    ->                 47292.9987 
-    0>                 47292.9987 
-    +>                 47292.9987 
+    ->                 47292.9987
+    0>                 47292.9987
+    +>                 47292.9987
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 8
-    ->                545834.9979 
-    0>                545834.9979 
-    +>                545834.9979 
+    ->                545834.9979
+    0>                545834.9979
+    +>                545834.9979
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 9
-    ->               7087261.0016 
-    0>               7087261.0016 
-    +>               7087261.0016 
+    ->               7087261.0016
+    0>               7087261.0016
+    +>               7087261.0016
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 10
-    ->             102247563.0053 
-    0>             102247563.0053 
-    +>             102247563.0053 
+    ->             102247563.0053
+    0>             102247563.0053
+    +>             102247563.0053
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 11
-    ->            1622632572.9976 
-    0>            1622632572.9976 
-    +>            1622632572.9976 
+    ->            1622632572.9976
+    0>            1622632572.9976
+    +>            1622632572.9976
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 12
-    ->           28091567594.9816 
-    0>           28091567594.9816 
-    +>           28091567594.9816 
+    ->           28091567594.9816
+    0>           28091567594.9816
+    +>           28091567594.9816
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 13
-    ->          526858348381.0012 
-    0>          526858348381.0012 
-    +>          526858348381.0012 
+    ->          526858348381.0012
+    0>          526858348381.0012
+    +>          526858348381.0012
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 14
-    ->        10641342970443.0845 
-    0>        10641342970443.0845 
-    +>        10641342970443.0845 
+    ->        10641342970443.0845
+    0>        10641342970443.0845
+    +>        10641342970443.0845
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 15
-    ->       230283190977853.0374 
-    0>       230283190977853.0374 
-    +>       230283190977853.0374 
+    ->       230283190977853.0374
+    0>       230283190977853.0374
+    +>       230283190977853.0374
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 16
-    ->      5315654681981354.5131 
-    0>      5315654681981354.5131 
-    +>      5315654681981354.5131 
+    ->      5315654681981354.5131
+    0>      5315654681981354.5131
+    +>      5315654681981354.5131
 The precision is adequate, but the result is not an almost integer.
 
 Hickerson series result for n = 17
-    ->    130370767029135900.4580 
-    0>    130370767029135900.4580 
-    +>    130370767029135900.4580 
+    ->    130370767029135900.4580
+    0>    130370767029135900.4580
+    +>    130370767029135900.4580
 The precision is adequate, but the result is not an almost integer.
 
 Performing calculations using Float64, which has 53-bit precision.
 
 Hickerson series result for n = 1
-    ->                     1.0407 
-    0>                     1.0407 
-    +>                     1.0407 
+    ->                     1.0407
+    0>                     1.0407
+    +>                     1.0407
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 2
-    ->                     3.0028 
-    0>                     3.0028 
-    +>                     3.0028 
+    ->                     3.0028
+    0>                     3.0028
+    +>                     3.0028
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 3
-    ->                    12.9963 
-    0>                    12.9963 
-    +>                    12.9963 
+    ->                    12.9963
+    0>                    12.9963
+    +>                    12.9963
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 4
-    ->                    74.9987 
-    0>                    74.9987 
-    +>                    74.9987 
+    ->                    74.9987
+    0>                    74.9987
+    +>                    74.9987
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 5
-    ->                   541.0015 
-    0>                   541.0015 
-    +>                   541.0015 
+    ->                   541.0015
+    0>                   541.0015
+    +>                   541.0015
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 6
-    ->                  4683.0012 
-    0>                  4683.0012 
-    +>                  4683.0012 
+    ->                  4683.0012
+    0>                  4683.0012
+    +>                  4683.0012
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 7
-    ->                 47292.9987 
-    0>                 47292.9987 
-    +>                 47292.9987 
+    ->                 47292.9987
+    0>                 47292.9987
+    +>                 47292.9987
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 8
-    ->                545834.9979 
-    0>                545834.9979 
-    +>                545834.9979 
+    ->                545834.9979
+    0>                545834.9979
+    +>                545834.9979
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 9
-    ->               7087261.0016 
-    0>               7087261.0016 
-    +>               7087261.0016 
+    ->               7087261.0016
+    0>               7087261.0016
+    +>               7087261.0016
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 10
-    ->             102247563.0053 
-    0>             102247563.0053 
-    +>             102247563.0053 
+    ->             102247563.0053
+    0>             102247563.0053
+    +>             102247563.0053
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 11
-    ->            1622632572.9976 
-    0>            1622632572.9976 
-    +>            1622632572.9975 
+    ->            1622632572.9976
+    0>            1622632572.9976
+    +>            1622632572.9975
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 12
-    ->           28091567594.9816 
-    0>           28091567594.9816 
-    +>           28091567594.9815 
+    ->           28091567594.9816
+    0>           28091567594.9816
+    +>           28091567594.9815
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 13
-    ->          526858348381.0024 
-    0>          526858348381.0015 
-    +>          526858348381.0003 
+    ->          526858348381.0024
+    0>          526858348381.0015
+    +>          526858348381.0003
 The precision is adequate, and the result is an almost integer.
 
 Hickerson series result for n = 14
-    ->        10641342970443.1094 
-    0>        10641342970443.0898 
-    +>        10641342970443.0645 
+    ->        10641342970443.1094
+    0>        10641342970443.0898
+    +>        10641342970443.0645
 The precision is inadequate for a definite result.
 
 Hickerson series result for n = 15
-    ->       230283190977853.5938 
-    0>       230283190977853.1563 
-    +>       230283190977852.5625 
+    ->       230283190977853.5938
+    0>       230283190977853.1563
+    +>       230283190977852.5625
 The precision is inadequate for a definite result.
 
 Hickerson series result for n = 16
-    ->      5315654681981368.0000 
-    0>      5315654681981357.0000 
-    +>      5315654681981343.0000 
+    ->      5315654681981368.0000
+    0>      5315654681981357.0000
+    +>      5315654681981343.0000
 The precision is inadequate for a definite result.
 
 Hickerson series result for n = 17
-    ->    130370767029136256.0000 
-    0>    130370767029135968.0000 
-    +>    130370767029135600.0000 
+    ->    130370767029136256.0000
+    0>    130370767029135968.0000
+    +>    130370767029135600.0000
 The precision is inadequate for a definite result.
 
 ```
@@ -1454,7 +1454,7 @@ local
         | (n, k, last, sum) = log (n, k + 1, sum, sum + ( 1 / (k * n ^ k)))
         | n = log (n, 1, 1, 0);
   val ln2 = log 2
-in                                                                              
+in
   fun hickerson n = (fold (opt *,1) ` iota n) / (2 * ln2 ^ (n+1));
   fun almost_int ([]) = false
                | (h :: h' :: t) where (h <> #".") = almost_int (h' :: t)
@@ -1558,9 +1558,9 @@ constant h = [\*] 1/2, |(1..*) X/ ln2;
 
 use Test;
 plan *;
- 
+
 for h[1..17] {
-    ok m/'.'<[09]>/, .round(0.001) 
+    ok m/'.'<[09]>/, .round(0.001)
 }
 ```
 
@@ -1748,7 +1748,7 @@ import math
 def h(n):
     'Simple, reduced precision calculation'
     return math.factorial(n) / (2 * math.log(2) ** (n + 1))
-    
+
 def h2(n):
     'Extended precision Hickerson function'
     return Decimal(math.factorial(n)) / (2 * Decimal(2).ln() ** (n + 1))
@@ -1756,8 +1756,8 @@ def h2(n):
 for n in range(18):
     x = h2(n)
     norm = str(x.normalize())
-    almostinteger = (' Nearly integer' 
-                     if 'E' not in norm and ('.0' in norm or '.9' in norm) 
+    almostinteger = (' Nearly integer'
+                     if 'E' not in norm and ('.0' in norm or '.9' in norm)
                      else ' NOT nearly integer!')
     print('n:%2i h:%s%s' % (n, norm, almostinteger))
 ```
@@ -1802,17 +1802,17 @@ n:17 h:130370767029135900.4579853491 NOT nearly integer!
  (bf/ (bffactorial n)
       2.bf
       (bfexpt (bflog 2.bf) (bf (+ n 1)))))
- 
+
 (for ([n (in-range 18)])
   (define hickerson-n (hickerson n))
-  (define first-decimal 
+  (define first-decimal
     (bigfloat->integer (bftruncate (bf* 10.bf (bffrac hickerson-n)))))
   (define almost-integer (if (or (= first-decimal 0) (= first-decimal 9))
-                           "is Nearly integer" 
-                           "is not Nearly integer!")) 
-  (printf "~a: ~a ~a\n" 
-          (~r n #:min-width 2) 
-          (bigfloat->string hickerson-n) 
+                           "is Nearly integer"
+                           "is not Nearly integer!"))
+  (printf "~a: ~a ~a\n"
+          (~r n #:min-width 2)
+          (bigfloat->string hickerson-n)
           almost-integer))
 ```
 
@@ -1959,16 +1959,16 @@ fact: Procedure
 15      230283190977853.0374360391 almost an integer
 16     5315654681981354.5130767435
 17   130370767029135900.4579853492
-18  3385534663256845326.3903018015  
+18  3385534663256845326.3903018015
 ```
 
 
 
 ### version 2
 
-This REXX version can calculate the Hickerson series to any number up to the length (in decimal digits) 
+This REXX version can calculate the Hickerson series to any number up to the length (in decimal digits)
 
-up to the size of the number returned by the   '''ln2'''   function. 
+up to the size of the number returned by the   '''ln2'''   function.
 
 This version supports up to   '''507'''   decimal digits.
 
@@ -1995,7 +1995,7 @@ ln2: return .6931471805599453094172321214581765680755001343602552541206800094933
   || 83411372738737229289564935470257626520988596932019650585547647033067936544325476327449512504060694381470
 ```
 
-'''output''' when using the input of:   <tt> 197 </tt> 
+'''output''' when using the input of:   <tt> 197 </tt>
 <pre style="height:65ex">
   1 almost integer 1.04068
   2 almost integer 3.00278
@@ -2201,7 +2201,7 @@ ln2: return .6931471805599453094172321214581765680755001343602552541206800094933
 
 ### version 3
 
-This REXX version takes advantage that the Hickerson series are computed in order, so that the factorials need not be (re-)computed from scratch. 
+This REXX version takes advantage that the Hickerson series are computed in order, so that the factorials need not be (re-)computed from scratch.
 
 ```rexx
 /*REXX program to calculate and show the Hickerson series (are near integer). */
@@ -2225,7 +2225,7 @@ ln2: return .6931471805599453094172321214581765680755001343602552541206800094933
   || 83411372738737229289564935470257626520988596932019650585547647033067936544325476327449512504060694381470
 ```
 
-'''output'''   is identical to the 2<sup>nd</sup> REXX version. 
+'''output'''   is identical to the 2<sup>nd</sup> REXX version.
 
 
 
@@ -2241,7 +2241,7 @@ decimals(8)
 
 for i = 1 to n
     see "h(" + string(i) + ") = "
-    see "" + hickersonSeries(i) + " "  
+    see "" + hickersonSeries(i) + " "
     if nearly(hick) = 1 see "nearly integer" + nl
     else see "not nearly integer" + nl ok
 next

@@ -16,7 +16,7 @@ tags = []
 
 ## 360 Assembly
 
-The program uses DSECT and USING pseudo instruction to define a node. 
+The program uses DSECT and USING pseudo instruction to define a node.
 
 ```360asm
 *        Singly-linked list/Element definition  07/02/2017
@@ -76,7 +76,7 @@ ENDLIST  DROP   R11
          FREEMAIN A=A,LV=12        free A
          FREEMAIN A=B,LV=12        free B
          FREEMAIN A=C,LV=12        free C
-RETURN   L      R13,4(0,R13)       epilog 
+RETURN   L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    " restore
          XR     R15,R15            " rc=0
          BR     R14                exit
@@ -91,13 +91,13 @@ INSERTAF CNOP   0,4
          L      R2,0(R1)           @A
          L      R3,4(R1)           @B
          USING  NODE,R2            ->A
-         L      R4,NEXT            @C          
+         L      R4,NEXT            @C
          DROP   R2
-         USING  NODE,R3            ->B            
-         ST     R4,NEXT            B.NEXT=@C         
+         USING  NODE,R3            ->B
+         ST     R4,NEXT            B.NEXT=@C
          DROP   R3
          USING  NODE,R2            ->A
-         ST     R3,NEXT            A.NEXT=@B          
+         ST     R3,NEXT            A.NEXT=@B
          DROP   R2
          BR     R14                return
          LTORG                     all literals
@@ -150,7 +150,7 @@ package
 	{
 		public var data:Object = null;
 		public var link:Node = null;
-		
+
 		public function Node(obj:Object)
 		{
 			data = obj;
@@ -240,9 +240,9 @@ PROC obj nextlink free = (REF OBJNEXTLINK free)VOID:
 /* structure linkedlist*/
     .struct  0
 llist_next:                             @ next element
-    .struct  llist_next + 4 
+    .struct  llist_next + 4
 llist_value:                            @ element value
-    .struct  llist_value + 4 
+    .struct  llist_value + 4
 llist_fin:
 /* Initialized data */
 .data
@@ -252,13 +252,13 @@ szCarriageReturn:        .asciz "\n"
 szMessErreur:            .asciz "Error detected.\n"
 
 /* UnInitialized data */
-.bss 
-lList1:                  .skip llist_fin * NBELEMENTS    @ list memory place 
+.bss
+lList1:                  .skip llist_fin * NBELEMENTS    @ list memory place
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
     ldr r0,iAdrlList1
     mov r1,#0
     str r1,[r0,#llist_next]
@@ -273,21 +273,21 @@ iAdrszMessErreur:          .int szMessErreur
 iAdrszCarriageReturn:      .int szCarriageReturn
 iAdrlList1:                .int lList1
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -318,7 +318,7 @@ BEGIN {
     HEAD = 1
     LINK = 1
     VALUE = 2
- 
+
     delete list
     initList()
 }
@@ -350,11 +350,11 @@ r₂→{r₁}ʳ
 0→{r₁+2}ʳ
 r₁
 Return
- 
+
 Lbl NEXT
 {r₁+2}ʳ
 Return
- 
+
 Lbl VALUE
 {r₁}ʳ
 Return
@@ -367,7 +367,7 @@ Return
 {{works with|BBC BASIC for Windows}}
 
 ```bbcbasic
-      DIM node{pNext%, iData%} 
+      DIM node{pNext%, iData%}
 
 ```
 
@@ -378,7 +378,7 @@ Return
 Data mutation is not Bracmatish, but it can be done. Here is a datastructure for a mutable data value and for a mutable reference.
 
 ```bracmat
-link = 
+link =
   (next=)
   (data=)
 ```
@@ -453,8 +453,10 @@ With this constructor, new nodes can be initialized directly at allocation; e.g.
 However, C++ also allows to make it generic on the data type (e.g. if you need large numbers, you might want to use a larger type than int, e.g. long on 64-bit platforms, long long on compilers that support it, or even a bigint class).
 
 
-```cpp>template<typename T
- struct link
+```cpp
+template<typename T>
+
+struct link
 {
   link* next;
   T data;
@@ -614,7 +616,7 @@ class Link
 {
     prop int  Item;
     prop Link Next;
-    
+
     constructor(int item, Link next)
     {
         Item := item;
@@ -708,7 +710,7 @@ In ISO Fortran 95 or later:
 ```fortran
 type node
    real :: data
-   type( node ), pointer :: next => null() 
+   type( node ), pointer :: next => null()
 end type node
 !
 !. . . .
@@ -944,13 +946,13 @@ function LinkedList(value, next) {
     this._next = next;
 }
 LinkedList.prototype.value = function() {
-    if (arguments.length == 1) 
+    if (arguments.length == 1)
         this._value = arguments[0];
     else
         return this._value;
 }
 LinkedList.prototype.next = function() {
-    if (arguments.length == 1) 
+    if (arguments.length == 1)
         this._next = arguments[0];
     else
         return this._next;
@@ -1439,7 +1441,7 @@ For more flexibility, one would create a custom type:
 class Cell {
     has      $.value is rw;
     has Cell $.next  is rw;
-    
+
     # ...convenience methods here...
 }
 
@@ -1463,8 +1465,8 @@ end type
 
 But more often you would just use the builtin sequences. It is worth noting that while "node lists", such as
 {{2},{'A',3},{'B',4},{'C',0}} are one way to hold a linked list (with the first element a dummy header),
-both "parallel/tag lists" such as {{'A','B','C'},{2,3,0}} and "flat lists" such as {'A',3,'B',5,'C',0} are 
-generally more efficient, and the latter is heavily used in the compiler itself (for the ternary lookup 
+both "parallel/tag lists" such as {{'A','B','C'},{2,3,0}} and "flat lists" such as {'A',3,'B',5,'C',0} are
+generally more efficient, and the latter is heavily used in the compiler itself (for the ternary lookup
 tree, intermediate code, and the pre-packed machine code binary).
 
 Memory is automatically reclaimed the moment items are no longer needed.
@@ -1727,7 +1729,7 @@ list = ListNode.from_array([1,2,3,4])
 
 ## Rust
 
-Rust's <code>Option<T></code> type make the definition of a singly-linked list trivial. The use of <code>Box<T></code> (an owned pointer) is necessary because it has a known size, thus making sure the struct that contains it can have a finite size. 
+Rust's <code>Option<T></code> type make the definition of a singly-linked list trivial. The use of <code>Box<T></code> (an owned pointer) is necessary because it has a known size, thus making sure the struct that contains it can have a finite size.
 
 ```Rust> struct Node<T
  {
@@ -1737,7 +1739,7 @@ Rust's <code>Option<T></code> type make the definition of a singly-linked list t
 ```
 
 
-However, the above example would not be suitable for a library because, first and foremost, it is private by default but simply making it public would not allow for any encapsulation. 
+However, the above example would not be suitable for a library because, first and foremost, it is private by default but simply making it public would not allow for any encapsulation.
 
 
 ```Rust>type Link<T> = Option<Box<Node<T>>
@@ -1781,7 +1783,7 @@ fn main() {
 ```runbasic
 data = 10
 link = 10
-dim node{data,link} 
+dim node{data,link}
 ```
 
 
@@ -1888,7 +1890,7 @@ For instance, a stack and a queue are easily implemented with a linked-list:
 All the following is to be run in Mata.
 
 
-###  Structures 
+###  Structures
 
 Here we define two [https://www.stata.com/help.cgi?m2_struct structures]: one to hold a list item, another to hold the list [https://www.stata.com/help.cgi?m2_pointer pointers]: we store both the head and the tail, in order to be able to insert an element at both ends. An empty list has both head and tail set to NULL.
 
@@ -1906,7 +1908,7 @@ struct list {
 
 
 
-###  Test if empty 
+###  Test if empty
 
 
 ```stata
@@ -1919,7 +1921,7 @@ real scalar list_empty(struct list scalar a) {
 Note that when a structure value is created, here for instance with <code>a = list()</code>, the elements are set to default values (zero real scalar, NULL pointer...). Hence, a newly created list is always empty.
 
 
-###  Insertion 
+###  Insertion
 
 We can insert an element either before head or after tail. We can also insert after a given list item, but we must make sure the tail pointer of the list is updated if necessary.
 
@@ -1952,7 +1954,7 @@ void function list_insert_end(struct list scalar a, transmorphic scalar x) {
 void function list_insert_after(struct list scalar a,
 	pointer(struct item scalar) scalar p,
 	transmorphic scalar x) {
-	
+
 	struct item scalar i
 	i.value = x
 	i.next = (*p).next
@@ -1965,7 +1967,7 @@ void function list_insert_after(struct list scalar a,
 
 
 
-###  Traversal 
+###  Traversal
 
 
 Here are functions to compute the list length, and to print its elements. Here we assume list elements are either strings or real numbers, but one could write a more general function.
@@ -1975,7 +1977,7 @@ Here are functions to compute the list length, and to print its elements. Here w
 real scalar list_length(struct list scalar a) {
 	real scalar n
 	pointer(struct item scalar) scalar p
-	
+
 	n = 0
 	for (p = a.head; p != NULL; p = (*p).next) {
 		n++
@@ -1985,7 +1987,7 @@ real scalar list_length(struct list scalar a) {
 
 void list_show(struct list scalar a) {
 	pointer(struct item scalar) scalar p
-	
+
 	for (p = a.head; p != NULL; p = (*p).next) {
 		if (eltype((*p).value) == "string") {
 			printf("%s\n", (*p).value);
@@ -1998,7 +2000,7 @@ void list_show(struct list scalar a) {
 
 
 
-###  Return nth item 
+###  Return nth item
 
 The function returns a pointer to the nth list item. If there are not enough elements, NULL is returned.
 
@@ -2006,10 +2008,10 @@ The function returns a pointer to the nth list item. If there are not enough ele
 ```stata
 pointer(struct item scalar) scalar list_get(struct list scalar a,
 	real scalar n) {
-	
+
 	pointer(struct item scalar) scalar p
 	real scalar i
-	
+
 	p = a.head
 	for (i = 1; p != NULL & i < n; i++) {
 		p = (*p).next
@@ -2020,7 +2022,7 @@ pointer(struct item scalar) scalar list_get(struct list scalar a,
 
 
 
-###  Remove and return first element 
+###  Remove and return first element
 
 
 The following function "pops" the first element of the list. If the list is empty, Mata will throw an error.
@@ -2044,18 +2046,18 @@ transmorphic scalar list_pop(struct list scalar a) {
 
 
 
-###  Remove and return nth element 
+###  Remove and return nth element
 
 
 
 ```stata
 transmorphic scalar list_remove(struct list scalar a,
 	real scalar n) {
-	
+
 	pointer(struct item scalar) scalar p, q
 	real scalar i
 	transmorphic scalar x
-	
+
 	p = a.head
 	if (n == 1) {
 		if (p == NULL) {
@@ -2090,7 +2092,7 @@ transmorphic scalar list_remove(struct list scalar a,
 
 
 
-###  Examples 
+###  Examples
 
 
 Adding to the head:
@@ -2208,7 +2210,7 @@ B
 
 
 
-###  Stack behavior 
+###  Stack behavior
 
 
 
@@ -2237,7 +2239,7 @@ while (!list_empty(a)) {
 
 
 
-###  Queue behavior 
+###  Queue behavior
 
 
 

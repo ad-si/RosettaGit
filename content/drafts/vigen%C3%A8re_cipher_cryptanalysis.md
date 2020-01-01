@@ -225,8 +225,8 @@ end Vignere_Cryptanalysis;
 
 This finds the right key (I think, I didn't try to decode it after getting the key).  The program is not fully auto, but by its output, the result is pretty obvious.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -338,8 +338,8 @@ int main() {
 Not guaranteed to give a 100% correct answer, but it works here. Requires C++0x.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <vector>
 #include <map>
@@ -349,7 +349,7 @@ using namespace std;
 
 typedef array<pair<char, double>, 26> FreqArray;
 
-class VigenereAnalyser 
+class VigenereAnalyser
 {
 private:
   array<double, 26> targets;
@@ -357,7 +357,7 @@ private:
   FreqArray freq;
 
   // Update the freqs array
-  FreqArray& frequency(const string& input) 
+  FreqArray& frequency(const string& input)
   {
     for (char c = 'A'; c <= 'Z'; ++c)
       freq[c - 'A'] = make_pair(c, 0);
@@ -368,7 +368,7 @@ private:
     return freq;
   }
 
-  double correlation(const string& input) 
+  double correlation(const string& input)
   {
     double result = 0.0;
     frequency(input);
@@ -383,17 +383,17 @@ private:
   }
 
 public:
-  VigenereAnalyser(const array<double, 26>& targetFreqs) 
+  VigenereAnalyser(const array<double, 26>& targetFreqs)
   {
     targets = targetFreqs;
     sortedTargets = targets;
     sort(sortedTargets.begin(), sortedTargets.end());
   }
 
-  pair<string, string> analyze(string input) 
+  pair<string, string> analyze(string input)
   {
     string cleaned;
-    for (size_t i = 0; i < input.size(); ++i) 
+    for (size_t i = 0; i < input.size(); ++i)
     {
       if (input[i] >= 'A' && input[i] <= 'Z')
         cleaned += input[i];
@@ -406,7 +406,7 @@ public:
 
     // Assume that if there are less than 20 characters
     // per column, the key's too long to guess
-    for (size_t i = 2; i < cleaned.size() / 20; ++i) 
+    for (size_t i = 2; i < cleaned.size() / 20; ++i)
     {
       vector<string> pieces(i);
       for (size_t j = 0; j < cleaned.size(); ++j)
@@ -418,7 +418,7 @@ public:
       for (size_t j = 0; j < i; ++j)
         corr += correlation(pieces[j]);
 
-      if (corr > bestCorr) 
+      if (corr > bestCorr)
       {
         bestLength = i;
         bestCorr = corr;
@@ -437,24 +437,24 @@ public:
       freqs.push_back(frequency(pieces[i]));
 
     string key = "";
-    for (size_t i = 0; i < bestLength; ++i) 
+    for (size_t i = 0; i < bestLength; ++i)
     {
       sort(freqs[i].begin(), freqs[i].end(), [](pair<char, double> u, pair<char, double> v)->bool
         { return u.second > v.second; });
 
       size_t m = 0;
       double mCorr = 0.0;
-      for (size_t j = 0; j < 26; ++j) 
+      for (size_t j = 0; j < 26; ++j)
       {
         double corr = 0.0;
         char c = 'A' + j;
-        for (size_t k = 0; k < 26; ++k) 
+        for (size_t k = 0; k < 26; ++k)
         {
           int d = (freqs[i][k].first - c + 26) % 26;
           corr += freqs[i][k].second * targets[d];
         }
 
-        if (corr > mCorr) 
+        if (corr > mCorr)
         {
           m = j;
           mCorr = corr;
@@ -472,7 +472,7 @@ public:
   }
 };
 
-int main() 
+int main()
 {
   string input =
     "MOMUD EKAPV TQEFM OEVHP AJMII CDCTI FGYAG JSPXY ALUYM NSMYH"
@@ -671,7 +671,7 @@ import (
     "strings"
 )
 
-var encoded = 
+var encoded =
     "MOMUD EKAPV TQEFM OEVHP AJMII CDCTI FGYAG JSPXY ALUYM NSMYH" +
     "VUXJE LEPXJ FXGCM JHKDZ RYICU HYPUS PGIGM OIYHF WHTCQ KMLRD" +
     "ITLXZ LJFVQ GHOLW CUHLO MDSOE KTALU VYLNZ RFGBX PHVGA LWQIS" +
@@ -859,7 +859,7 @@ countEntries = fromListWith (+) . fmap (,1)
 -- Break a string up into substrings of n chars.
 breakup :: Int -> [a] -> [[a]]
 breakup _ [] = []
-breakup n as = 
+breakup n as =
     let (h, r) = splitAt n as
     in h:breakup n r
 
@@ -870,7 +870,7 @@ distribute as n = transpose $ breakup n as
 -- The probability that members of a pair of characters taken randomly
 -- from a given string are equal.
 coincidence :: (Ord a, Fractional b) => [a] -> b
-coincidence str = 
+coincidence str =
     let charCounts = snd <$> toList (countEntries str)
         strln = length str
         d = fromIntegral $ strln * (strln - 1)
@@ -882,7 +882,7 @@ coincidence str =
 -- The correlation increases artificially for smaller
 -- pieces/longer keys, so weigh against them a little
 rate :: (Ord a, Fractional b) => [[a]] -> b
-rate d =  average (fmap coincidence d) - fromIntegral (length d) / 3000.0 
+rate d =  average (fmap coincidence d) - fromIntegral (length d) / 3000.0
 
 -- Multiply elements of lists together and add up the results.
 dot :: Num a => [a] -> [a] -> a
@@ -891,9 +891,9 @@ dot v0 v1 = sum $ zipWith (*) v0 v1
 -- Given two lists of floats, rotate one of them by the number of
 -- characters indicated by letter and then 'dot' them together.
 rotateAndDot :: Num a => [a] -> [a] -> Char -> a
-rotateAndDot v0 v1 letter = dot v0 (drop (ord letter - ord 'A') (cycle v1))  
+rotateAndDot v0 v1 letter = dot v0 (drop (ord letter - ord 'A') (cycle v1))
 
--- Find decoding offset that results in best match 
+-- Find decoding offset that results in best match
 -- between actual char frequencies and expected frequencies.
 getKeyChar :: RealFrac a => [a] -> String -> Char
 getKeyChar expected sample =
@@ -912,14 +912,14 @@ main = do
         alphaSum a b = ['A'..'Z'] !! ((ord b - ord a) `mod` 26)
     mapM_ putStrLn ["Key: " ++ key, "Decrypted Text: " ++ zipWith alphaSum (cycle key) cr]
 
-englishFrequencies = 
-    [ 0.08167, 0.01492, 0.02782, 0.04253, 
-      0.12702, 0.02228, 0.02015, 0.06094, 
-      0.06966, 0.00153, 0.00772, 0.04025, 
-      0.02406, 0.06749, 0.07507, 0.01929, 
-      0.00095, 0.05987, 0.06327, 0.09056, 
-      0.02758, 0.00978, 0.02360, 0.00150, 
-      0.01974, 0.00074 ] 
+englishFrequencies =
+    [ 0.08167, 0.01492, 0.02782, 0.04253,
+      0.12702, 0.02228, 0.02015, 0.06094,
+      0.06966, 0.00153, 0.00772, 0.04025,
+      0.02406, 0.06749, 0.07507, 0.01929,
+      0.00095, 0.05987, 0.06327, 0.09056,
+      0.02758, 0.00978, 0.02360, 0.00150,
+      0.01974, 0.00074 ]
 
 crypt = "\
     \MOMUD EKAPV TQEFM OEVHP AJMII CDCTI FGYAG JSPXY ALUYM NSMYH\
@@ -960,14 +960,14 @@ Decrypted Text: THISWASTHEPOEMTHATALICEREADJABBERWOCKYTWASBRILLIGANDTHESLITHYTOV
 public class Vig{
 static String encodedMessage =
     "MOMUD EKAPV TQEFM OEVHP AJMII CDCTI FGYAG JSPXY ALUYM NSMYH VUXJE LEPXJ FXGCM JHKDZ RYICU HYPUS PGIGM OIYHF WHTCQ KMLRD ITLXZ LJFVQ GHOLW CUHLO MDSOE KTALU VYLNZ RFGBX PHVGA LWQIS FGRPH JOOFW GUBYI LAPLA LCAFA AMKLG CETDW VOELJ IKGJB XPHVG ALWQC SNWBU BYHCU HKOCE XJEYK BQKVY KIIEH GRLGH XEOLW AWFOJ ILOVV RHPKD WIHKN ATUHN VRYAQ DIVHX FHRZV QWMWV LGSHN NLVZS JLAKI FHXUF XJLXM TBLQV RXXHR FZXGV LRAJI EXPRV OSMNP KEPDT LPRWM JAZPK LQUZA ALGZX GVLKL GJTUI ITDSU REZXJ ERXZS HMPST MTEOE PAPJH SMFNB YVQUZ AALGA YDNMP AQOWT UHDBV TSMUE UIMVH QGVRW AEFSP EMPVE PKXZY WLKJA GWALT VYYOB YIXOK IHPDS EVLEV RVSGB JOGYW FHKBL GLXYA MVKIS KIEHY IMAPX UOISK PVAGN MZHPW TTZPV XFCCD TUHJH WLAPF YULTB UXJLN SIJVV YOVDJ SOLXG TGRVO SFRII CTMKO JFCQF KTINQ BWVHG TENLH HOGCS PSFPV GJOKM SIFPR ZPAAS ATPTZ FTPPD PORRF TAXZP KALQA WMIUD BWNCT LEFKO ZQDLX BUXJL ASIMR PNMBF ZCYLV WAPVF QRHZV ZGZEF KBYIO OFXYE VOWGB BXVCB XBAWG LQKCM ICRRX MACUO IKHQU AJEGL OIJHH XPVZW JEWBA FWAML ZZRXJ EKAHV FASMU LVVUT TGK";
- 
+
 final static double freq[] = {
     0.08167, 0.01492, 0.02782, 0.04253, 0.12702, 0.02228, 0.02015,
     0.06094, 0.06966, 0.00153, 0.00772, 0.04025, 0.02406, 0.06749,
     0.07507, 0.01929, 0.00095, 0.05987, 0.06327, 0.09056, 0.02758,
     0.00978, 0.02360, 0.00150, 0.01974, 0.00074
 };
- 
+
 
 public static void main(String[] args) {
     int lenghtOfEncodedMessage = encodedMessage.length();
@@ -979,11 +979,11 @@ public static void main(String[] args) {
     int len = 0, j;
 
     double fit, best_fit = 1e100;
- 
+
     for (j = 0; j < lenghtOfEncodedMessage; j++)
         if (Character.isUpperCase(encoded[j]))
             txt[len++] = encoded[j] - 'A';
- 
+
     for (j = 1; j < 30; j++) {
         fit = freq_every_nth(txt, len, j, key);
         System.out.printf("%f, key length: %2d ", fit, j);
@@ -1021,22 +1021,22 @@ static int best_match(final double []a, final double []b) {
             d = a[(i + rotate) % 26] / sum - b[i];
             fit += d * d / b[i];
         }
- 
+
         if (fit < best_fit) {
             best_fit = fit;
             best_rotate = rotate;
         }
     }
- 
+
     return best_rotate;
 }
- 
+
 static double freq_every_nth(final int []msg, int len, int interval, char[] key) {
     double sum, d, ret;
     double  [] accu = new double [26];
     double  [] out = new double [26];
     int i, j, rot;
- 
+
     for (j = 0; j < interval; j++) {
         for (i = 0; i < 26; i++)
             out[i] = 0;
@@ -1051,19 +1051,19 @@ static double freq_every_nth(final int []msg, int len, int interval, char[] key)
         for (i = 0; i < 26; i++)
             accu[i] += out[(i + rot) % 26];
     }
- 
+
     for (i = 0, sum = 0; i < 26; i++)
         sum += accu[i];
- 
+
     for (i = 0, ret = 0; i < 26; i++) {
         d = accu[i] / sum - freq[i];
         ret += d * d / freq[i];
     }
- 
+
     key[interval] = '\0';
     return ret;
 }
- 
+
 }
 
 ```
@@ -1271,7 +1271,7 @@ function cryptanalyze(enc::ASCIIString; maxkeylen::Integer = 20)
             maxdec = dec
         end
     end
-    
+
     (maxkey, join(maxdec))::Tuple{ASCIIString, ASCIIString}
 end
 
@@ -1306,7 +1306,7 @@ This is a reasonably faithful translation of the C entry though I've restricted 
 ```scala
 // version 1.1.3
 
-val encoded = 
+val encoded =
     "MOMUD EKAPV TQEFM OEVHP AJMII CDCTI FGYAG JSPXY ALUYM NSMYH" +
     "VUXJE LEPXJ FXGCM JHKDZ RYICU HYPUS PGIGM OIYHF WHTCQ KMLRD" +
     "ITLXZ LJFVQ GHOLW CUHLO MDSOE KTALU VYLNZ RFGBX PHVGA LWQIS" +
@@ -1341,7 +1341,7 @@ fun bestMatch(a: DoubleArray): Int {
         for (i in 0..25) {
             val d = a[(i + rotate) % 26] / sum - freq[i]
             fit += d * d / freq[i]
-        } 
+        }
         if (fit < bestFit) {
             bestFit = fit
             bestRotate = rotate
@@ -1403,7 +1403,7 @@ fun main(args: Array<String>) {
         println()
     }
     println()
-    println("Best key : $bestKey") 
+    println("Best key : $bestKey")
     println("\nDecrypted text:\n${decrypt(enc, bestKey)}")
 }
 ```
@@ -1576,7 +1576,7 @@ constant trigraphs = new_dict(
     {"ITH",2.1},
     {"FTH",2.1},
     {"ONT",2.0}})
- 
+
 function decrypt(string enc, string key)
 integer keylen = length(key), k = 1
     string msg = repeat(' ', length(enc))
@@ -1586,14 +1586,14 @@ integer keylen = length(key), k = 1
     end for
     return msg
 end function
- 
+
 function cryptanalyze(string enc, integer maxkeylen=20)
     integer enclen = length(enc)
     string maxkey = "",
            maxdec = "",
            k1 = " "
     atom maxscore = 0.0
- 
+
     for keylen=1 to maxkeylen do
         string key = repeat(' ',keylen)
         sequence idx = {}
@@ -1605,10 +1605,10 @@ function cryptanalyze(string enc, integer maxkeylen=20)
 
         for i=1 to keylen do
             atom maxsubscore = 0.0
- 
+
             for j='A' to 'Z' do
                 atom subscore = 0.0
- 
+
                 k1[1] = j
                 string encidx = ""
                 for ii=1 to length(idx) do
@@ -1618,40 +1618,40 @@ function cryptanalyze(string enc, integer maxkeylen=20)
                 for di=1 to length(dec) do
                     subscore += getd(dec[di],letters)
                 end for
- 
+
                 if subscore > maxsubscore then
                     maxsubscore = subscore
                     key[i] = j
                 end if
             end for
- 
+
             idx = sq_add(idx,1)
         end for
- 
+
         string dec = decrypt(enc, key)
         atom score = 0.0
- 
+
         for i=1 to length(dec) do
             score += getd(dec[i],letters)
         end for
- 
+
         for i=1 to enclen - 2 do
             string digraph = dec[i..i+1]
             string trigraph = dec[i..i + 2]
             score += 2 * getd(digraph,digraphs)
             score += 3 * getd(trigraph,trigraphs)
         end for
- 
+
         if score > maxscore then
             maxscore = score
             maxkey = key
             maxdec = dec
         end if
     end for
- 
+
     return {maxkey,maxdec}
 end function
- 
+
 function fold(string s, integer w)
     for i=w to length(s) by w do
         s[i..i-1] = "\n"
@@ -1661,7 +1661,7 @@ end function
 
 string {key, dec} = cryptanalyze(ciphertext)
 printf(1,"key: %s\n\n%s\n\n", {key, fold(dec,80)})
- 
+
 printf(1,"elapsed time: %3.2f seconds",{time()-t0})
 ```
 
@@ -1808,7 +1808,7 @@ main()
 
 
 
-###  Simple method 
+###  Simple method
 
 This is a simple method that just tries to find a key of any length that minimizes the difference from the expected English character distributions.
 
@@ -1903,7 +1903,7 @@ THISW ASTHE POEMT HATAL ICERE ADJAB BERWO CKYTW ASBRI LLIGA
 
 
 
-###  An attempted more complete implementation 
+###  An attempted more complete implementation
 
 This is an attempt at following the [http://en.wikipedia.org/wiki/Index_of_coincidence#Example Wikipedia] description.  However, it performs just as well as the simple version.  Most likely because I know almost nothing about cryptography...
 
@@ -2044,7 +2044,7 @@ oo::class create VigenereAnalyzer {
 
     ### Utility methods
     # Find the value of $idxvar in the range [$from..$to) that maximizes the value
-    # in $scorevar (which is computed by evaluating $body) 
+    # in $scorevar (which is computed by evaluating $body)
     method Best {idxvar from to scorevar body} {
 	upvar 1 $idxvar i $scorevar s
 	set bestI $from
@@ -2510,7 +2510,7 @@ Return
     Buf_Switch(#22)
     BOL
     #37 = Search_Block("|V", Cur_Pos, EOL_Pos, ALL+NOERR)
-Return 
+Return
 ```
 
 
@@ -2526,11 +2526,11 @@ var[const] uppercase=["A".."Z"].pump(String),
         0.06094, 0.06966, 0.00153, 0.00772, 0.04025, 0.02406, 0.06749,
         0.07507, 0.01929, 0.00095, 0.05987, 0.06327, 0.09056, 0.02758,
         0.00978, 0.02360, 0.00150, 0.01974, 0.00074);
- 
+
 fcn vigenere_decrypt(target_freqs, input){ // ( (float,...), string)
    nchars,ordA   :=uppercase.len(),"A".toAsc();
    sorted_targets:=target_freqs.sort();
- 
+
    frequency:='wrap(input){  // (n,n,n,n,...), n is ASCII index ("A"==65)
       result:=uppercase.pump(List(),List.fp1(0)); // ( ("A",0),("B",0) ...)
       foreach c in (input){ result[c - ordA][1] += 1 }
@@ -2542,26 +2542,26 @@ fcn vigenere_decrypt(target_freqs, input){ // ( (float,...), string)
       foreach i,f in (freq.enumerate()){ result+=sorted_targets[i]*f[1] }
       result	// -->Float
    };
- 
+
    cleaned:=input.toUpper().pump(List,uppercase.holds,Void.Filter,"toAsc");
- 
+
    best_len,best_corr := 0,-100.0;
     # Assume that if there are less than 20 characters
     # per column, the key's too long to guess
    foreach i in ([2..cleaned.len()/20]){
       pieces:=(i).pump(List,List.copy);		// ( (),() ... )
       foreach c in (cleaned){ pieces[__cWalker.idx%i].append(c) }
- 
+
         # The correlation seems to increase for smaller
         # pieces/longer keys, so weigh against them a little
       corr:=-0.5*i + pieces.apply(correlation).sum(0.0);
       if(corr>best_corr) best_len,best_corr=i,corr;
    }
    if(best_len==0) return("Text is too short to analyze", "");
- 
+
    pieces:=best_len.pump(List,List.copy);
    foreach c in (cleaned){ pieces[__cWalker.idx%best_len].append(c) }
- 
+
    key,freqs := "",pieces.apply(frequency);
    foreach fr in (freqs){
       fr.sort(fcn([(_,a)],[(_,b)]){ a>b });  // reverse sort by freq
@@ -2576,10 +2576,10 @@ fcn vigenere_decrypt(target_freqs, input){ // ( (float,...), string)
       }
       key+=(m + ordA).toChar();
    }
- 
+
    cleaned.enumerate().apply('wrap([(i,c])){
       ( (c - (key[i%best_len]).toAsc() + nchars)%nchars + ordA ).toChar()
-   }).concat() : 
+   }).concat() :
    T(key,_);
 }
 ```

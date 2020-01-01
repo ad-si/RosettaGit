@@ -14,7 +14,7 @@ tags = []
 
 Just as numbers can be represented in a positional notation as sums of multiples of the powers of ten (decimal) or two (binary); all the positive integers can be represented as the sum of one or zero times the distinct members of the Fibonacci series.
 
-Recall that the first six distinct Fibonacci numbers are:  1, 2, 3, 5, 8, 13. 
+Recall that the first six distinct Fibonacci numbers are:  1, 2, 3, 5, 8, 13.
 
 The decimal number eleven can be written as 0*13 + 1*8 + 0*5 + 1*3 + 0*2 + 0*1 or 010100 in positional notation where the columns represent multiplication by a particular member of the sequence. Leading zeroes are dropped so that 11 decimal becomes 10100.
 
@@ -22,9 +22,9 @@ The decimal number eleven can be written as 0*13 + 1*8 + 0*5 + 1*3 + 0*2 + 0*1 o
 
 
 ;Task:
-Generate and show here a table of the Zeckendorf number representations of the decimal numbers zero to twenty, in order.  
+Generate and show here a table of the Zeckendorf number representations of the decimal numbers zero to twenty, in order.
 
-The intention in this task to find the Zeckendorf form of an arbitrary integer.  The Zeckendorf form can be iterated by some bit twiddling rather than calculating each value separately but leave that to another separate task. 
+The intention in this task to find the Zeckendorf form of an arbitrary integer.  The Zeckendorf form can be iterated by some bit twiddling rather than calculating each value separately but leave that to another separate task.
 
 
 ;Also see:
@@ -151,10 +151,10 @@ XDEC     DS     CL12               temp
 with Ada.Text_IO, Ada.Strings.Unbounded;
 
 procedure Print_Zeck is
-   
+
    function Zeck_Increment(Z: String) return String is
    begin
-      if Z="" then 
+      if Z="" then
 	 return "1";
       elsif Z(Z'Last) = '1' then
 	 return Zeck_Increment(Z(Z'First .. Z'Last-1)) & '0';
@@ -164,15 +164,15 @@ procedure Print_Zeck is
 	 return Zeck_Increment(Z(Z'First .. Z'Last-2)) & "00";
       end if;
    end Zeck_Increment;
-   
+
    use Ada.Strings.Unbounded;
    Current: Unbounded_String := Null_Unbounded_String;
-   
+
 begin
    for I in 1 .. 20 loop
       Current := To_Unbounded_String(Zeck_Increment(To_String(Current)));
       Ada.Text_IO.Put(To_String(Current) & " ");
-   end loop;   
+   end loop;
 end Print_Zeck;
 ```
 
@@ -300,7 +300,7 @@ on zeckendorf(n)
             end if
         end |λ|
     end script
-    
+
     if n = 0 then
         {0} as string
     else
@@ -312,14 +312,14 @@ end zeckendorf
 on fibUntil(n)
     set xs to {}
     set limit to n
-    
+
     script atLimit
         property ceiling : limit
         on |λ|(x)
             (item 2 of x) > (atLimit's ceiling)
         end |λ|
     end script
-    
+
     script nextPair
         property series : xs
         on |λ|([a, b])
@@ -327,17 +327,17 @@ on fibUntil(n)
             [b, a + b]
         end |λ|
     end script
-    
+
     |until|(atLimit, nextPair, {0, 1})
     return nextPair's series
 end fibUntil
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     intercalate(linefeed, ¬
         map(zeckendorf, enumFromTo(0, 20)))
-    
+
 end run
 
 -- GENERIC FUNCTIONS ---------------------------------------------------------
@@ -368,9 +368,9 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- 'The mapAccumL function behaves like a combination of map and foldl; 
--- it applies a function to each element of a list, passing an 
--- accumulating parameter from left to right, and returning a final 
+-- 'The mapAccumL function behaves like a combination of map and foldl;
+-- it applies a function to each element of a list, passing an
+-- accumulating parameter from left to right, and returning a final
 -- value of this accumulator together with the new list.' (see Hoogle)
 
 -- mapAccumL :: (acc -> x -> (acc, y)) -> acc -> [x] -> (acc, [y])
@@ -381,7 +381,7 @@ on mapAccumL(f, acc, xs)
             [item 1 of pair, (item 2 of a) & item 2 of pair]
         end |λ|
     end script
-    
+
     foldl(result, [acc, []], xs)
 end mapAccumL
 
@@ -397,7 +397,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -439,7 +439,7 @@ end tailMay
 on |until|(p, f, x)
     set mp to mReturn(p)
     set v to x
-    
+
     tell mReturn(f)
         repeat until mp's |λ|(v)
             set v to |λ|(v)
@@ -629,7 +629,7 @@ EndFunc   ;==>Fibonacci
       NEXT
       PRINT "No Zeckendorf numbers contain consecutive 1's"
       END
-      
+
       DEF FNzeckendorf(n%)
       LOCAL i%, o$, fib%() : DIM fib%(45)
       fib%(0) = 1 : fib%(1) = 1 : i% = 1
@@ -729,8 +729,8 @@ v:-\g39_^#:<*:p39<
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef unsigned long long u64;
 
@@ -1072,7 +1072,7 @@ Common Lisp's arbitrary precision integers should handle any positive input:
 {{out}}
 
 ```txt
-   
+
 0 is 0
 1 is 1
 2 is 10
@@ -1242,14 +1242,14 @@ We analytically find the first fibonacci(i) >= n, using the formula i = log((n* 
 ;; find i : fib(i) >= n
 (define (iFib n)
    (floor (// (log (+ (* n Φ) 0.5)) logΦ)))
-    
+
 ;; left trim zeroes
 (string-delimiter "")
 (define (zeck->string digits)
-        (if (!= 0 (first digits)) 
-            (string-join digits "") 
+        (if (!= 0 (first digits))
+            (string-join digits "")
             (zeck->string (rest digits))))
-    
+
 (define (Zeck n)
         (cond
         (( < n 0) "no negative zeck")
@@ -1257,7 +1257,7 @@ We analytically find the first fibonacci(i) >= n, using the formula i = log((n* 
         ((zero? n) "0")
         (else (zeck->string
                 (for/list ((s (reverse (take fibonacci (iFib n)))))
-                (if ( > s n) 0 
+                (if ( > s n) 0
                     (begin (-= n s) 1 )))))))
 
 ```
@@ -1268,7 +1268,7 @@ We analytically find the first fibonacci(i) >= n, using the formula i = log((n* 
 ```txt
 
 (take Zeck 21)
-    → (0 1 10 100 101 1000 1001 1010 10000 10001 
+    → (0 1 10 100 101 1000 1001 1010 10000 10001
      10010 10100 10101 100000 100001 100010 100100 100101 101000 101001 101010)
 
 (Zeck 1000000000)
@@ -1292,7 +1292,7 @@ extension op
     fibonacci()
     {
         if (self < 2)
-        { 
+        {
             ^ self
         }
         else
@@ -1300,26 +1300,26 @@ extension op
             ^ (self - 1).fibonacci() + (self - 2).fibonacci()
         };
     }
-    
+
     zeckendorf()
     {
         var fibonacciNumbers := new List<int>();
-        
+
         int num := self;
         int fibPosition := 2;
         int currentFibonaciNum := fibPosition.fibonacci();
-        
+
         while (currentFibonaciNum <= num)
         {
             fibonacciNumbers.append:currentFibonaciNum;
-            
+
             fibPosition := fibPosition + 1;
             currentFibonaciNum := fibPosition.fibonacci()
         };
-        
+
         auto output := new TextBuilder();
         int temp := num;
-        
+
         fibonacciNumbers.sequenceReverse().forEach:(item)
         {
             if (item <= temp)
@@ -1332,18 +1332,18 @@ extension op
                 output.write("0")
             }
         };
-        
+
         ^ output.Value
     }
 }
-                
+
 public program()
 {
     for(int i := 1, i <= 20, i += 1)
     {
         console.printFormatted("{0} : {1}",i,i.zeckendorf()).writeLine()
     };
-    
+
     console.readChar()
 }
 ```
@@ -1385,7 +1385,7 @@ defmodule Zeckendorf do
   def number do
     Stream.unfold(0, fn n -> zn_loop(n) end)
   end
-  
+
   defp zn_loop(n) do
     bin = Integer.to_string(n, 2)
     if String.match?(bin, ~r/11/), do: zn_loop(n+1), else: {bin, n+1}
@@ -1437,7 +1437,7 @@ defmodule Zeckendorf do
        end)
     |> elem(0) |> String.to_integer
   end
-  
+
   defp fib_loop(n, fib) when n < hd(fib), do: fib
   defp fib_loop(n, [a,b|_]=fib), do: fib_loop(n, [a+b | fib])
 end
@@ -1501,11 +1501,11 @@ USING: formatting kernel locals make math sequences ;
 :: fib<= ( n -- seq )
     1 2 [ [ dup n <= ] [ 2dup + [ , ] 2dip ] while drop , ]
     { } make ;
-    
+
 :: zeck ( n -- str )
     0 :> s! n fib<= <reversed>
     [ dup s + n <= [ s + s! 49 ] [ drop 48 ] if ] "" map-as ;
-    
+
 21 <iota> [ dup zeck "%2d: %6s\n" printf ] each
 ```
 
@@ -1603,7 +1603,7 @@ Initialising this table in array <code>F1B</code> could be done via specifying t
 
 By declaring the horde of simple names to have the PRIVATE attribute, they will not litter the name space of routines invoking the module, but alas, they will still occupy their own storage space. Another possibility would be to use the EQUIVALENCE statement to have them placed within array <code>F1B</code>, but alas, as noted in [[15_Puzzle_Game#Fortran]], the compiler will not countenance PARAMETER statements for names engaged in such misbehviour. A pity.
 
-Still another possibility would be to take advantage of the formula for calculating the values of the Fibonacci series directly (with careful attention to the offsets needed for the Fib1nacci sequence), but this formula is rather intimidating: 
+Still another possibility would be to take advantage of the formula for calculating the values of the Fibonacci series directly (with careful attention to the offsets needed for the Fib1nacci sequence), but this formula is rather intimidating:
 ```Fortran
 F(N) = ((1 + SQRT(5))**N - (1 - SQRT(5))**N)/(SQRT(5)*2**N)
 ```
@@ -1736,7 +1736,7 @@ At most, 45 digits because Fib1nacci(45) = 1836311903 and the integer limit is 2
  18 101000
  19 101001
  20 101010
- 
+
 ```
 
 
@@ -1769,7 +1769,7 @@ End If
 If n < 2 Then Return Str(n)
 
   Dim As String zeckendorf
-  
+
   For x As Integer = max To 1 Step -1
     If fib(x) <= n Then
       zeckendorf = zeckendorf + "1"
@@ -1789,10 +1789,10 @@ Dim As String zeckendorf
 Print "number       zeckendorf"
 
 For x = 0 To 200000
-  
+
   zeckendorf = num2zeck(x)
   If x <= 20 Then Print x, zeckendorf
-  
+
   ' check for two consecutive Fibonacci numbers
   If InStr(zeckendorf, "11") <> 0 Then
     Print " Error: two consecutive Fibonacci numbers "; x, zeckendorf
@@ -2046,7 +2046,7 @@ Explanation:
 
 <code>fsum</code> finds the canonical list of fibonacci terms which sum to its argument.
 
-<code>fib</code> finds the nth fibonacci term of the fibonacci sequence. This would be 0 1 1 2 3 5 8 13 21 34 55 89 ... but we ignore the first two values of that sequence for the purpose of this exercise. 
+<code>fib</code> finds the nth fibonacci term of the fibonacci sequence. This would be 0 1 1 2 3 5 8 13 21 34 55 89 ... but we ignore the first two values of that sequence for the purpose of this exercise.
 
 <code>(|. fib 2+i.8)</code> is <code>34 21 13 8 5 3 2 1</code>. You can think of an eight bit Zeckendorf number such as <code>101010</code> as representing the inner product of its digits with <code>(|. fib 2+i.8)</code>. Thus, we can find the relevant Zeckendorf bits by finding which which members of that sequence are in the result of <code>fsum</code>
 
@@ -2086,7 +2086,7 @@ class Zeckendorf
     }
     return sb.toString();
   }
-  
+
   public static void main(String[] args)
   {
     for (int i = 0; i <= 20; i++)
@@ -2163,7 +2163,7 @@ public class Zeckendorf {
 
         return  getZeckString(outString, outNum, index - 1, fibs);
     }
-    
+
     public static void main(final String[] args) {
         final Zeckendorf zeckendorf = new Zeckendorf();
 
@@ -2419,7 +2419,7 @@ range(0;21) | "\(.): \(zeckendorf)"
 
 ```sh
 $ jq -n -r -f zeckendorf.jq
-0: 
+0:
 1: 1
 2: 10
 3: 100
@@ -2581,11 +2581,11 @@ on fibsUpTo (n)
         fibList.add(current)
         nxt = last + current
         last = current
-        current = nxt    
+        current = nxt
     end repeat
     return fibList
 end
- 
+
 -- Return the Zeckendorf representation of 'n'
 on zeckendorf (n)
     fib = fibsUpTo(n)
@@ -2718,7 +2718,7 @@ function fibsUpTo (n)
         table.insert(fibList, current)
         nxt = last + current
         last = current
-        current = nxt    
+        current = nxt
     end
     return fibList
 end
@@ -2781,10 +2781,10 @@ end
 
 ```Mathematica
 zeckendorf[0] = 0;
-zeckendorf[n_Integer] := 
+zeckendorf[n_Integer] :=
   10^(# - 1) + zeckendorf[n - Fibonacci[# + 1]] &@
    LengthWhile[
-    Fibonacci /@ 
+    Fibonacci /@
      Range[2, Ceiling@Log[GoldenRatio, n Sqrt@5]], # <= n &];
 zeckendorf /@ Range[0, 20]
 ```
@@ -2793,7 +2793,7 @@ zeckendorf /@ Range[0, 20]
 {{Out}}
 
 ```txt
-{0, 1, 10, 100, 101, 1000, 1001, 1010, 10000, 10001, 10010, 10100, 
+{0, 1, 10, 100, 101, 1000, 1001, 1010, 10000, 10001, 10010, 10100,
 10101, 100000, 100001, 100010, 100100, 100101, 101000, 101001, 101010}
 ```
 
@@ -3052,11 +3052,11 @@ end for
 
 <?php
 $m = 20;
- 
+
 $F = array(1,1);
 while ($F[count($F)-1] <= $m)
    $F[] = $F[count($F)-1] + $F[count($F)-2];
- 
+
 while ($n = $m--) {
    while ($F[count($F)-1] > $n) array_pop($F);
    $l = count($F)-1;
@@ -3132,11 +3132,11 @@ while ($n = $m--) {
 
 (for (N 0 (> 21 N) (inc N))
    (tab (2 4 6 2 -10)
-      N 
+      N
       " -> "
       (zecken1 N)
       "  "
-      (glue " + " (zecken2 N)) ) ) 
+      (glue " + " (zecken2 N)) ) )
 
 (bye)
 ```
@@ -3256,10 +3256,10 @@ function Get-ZeckendorfNumber ( $N )
     #  Calculate relevant portation of Fibonacci series
     $Fib = @( 1, 1 )
     While ( $Fib[-1] -lt $N ) { $Fib += $Fib[-1] + $Fib[-2] }
- 
+
     #  Start with 0
     $ZeckendorfNumber = 0
- 
+
     #  For each number in the relevant portion of Fibonacci series
     For ( $i = $Fib.Count - 1; $i -gt 0; $i-- )
         {
@@ -3324,11 +3324,11 @@ function Get-ZeckendorfNumber ( $N )
 ```PureBasic
 Procedure.s zeck(n.i)
   Dim f.i(1) : Define i.i=1, o$
-  f(0)=1 : f(1)=1 
-  While f(i)<n 
-    i+1 : ReDim f(ArraySize(f())+1) : f(i)=f(i-1)+f(i-2) 
+  f(0)=1 : f(1)=1
+  While f(i)<n
+    i+1 : ReDim f(ArraySize(f())+1) : f(i)=f(i-1)+f(i-2)
   Wend
-  For i=i To 1 Step -1    
+  For i=i To 1 Step -1
     If n>=f(i) : o$+"1" : n-f(i) : Else : o$+"0" : EndIf
   Next
   If Len(o$)>1 : o$=LTrim(o$,"0") : EndIf
@@ -3339,12 +3339,12 @@ Define n.i, t$
 OpenConsole("Zeckendorf number representation")
 PrintN(~"\tNr.\tZeckendorf")
 For n=0 To 20
-  t$=zeck(n)  
+  t$=zeck(n)
   If FindString(t$,"11")
     PrintN("Error: n= "+Str(n)+~"\tZeckendorf= "+t$)
     Break
   Else
-    PrintN(~"\t"+RSet(Str(n),3," ")+~"\t"+RSet(t$,7," "))    
+    PrintN(~"\t"+RSet(Str(n),3," ")+~"\t"+RSet(t$,7," "))
   EndIf
 Next
 Input()
@@ -3470,7 +3470,7 @@ for i in range(n + 1):
     print('%3i: %8s' % (i, ''.join(str(d) for d in z(i))))
 ```
 
-    
+
 {{out}}
 
 ```txt
@@ -3555,7 +3555,7 @@ This is definitely not the shortest way to implement the Zeckendorf numbers but 
 {{out}}
 
 ```txt
- [1] "0"      "1"      "10"     "100"    "101"    "1000"   "1001"   "1010"  
+ [1] "0"      "1"      "10"     "100"    "101"    "1000"   "1001"   "1010"
  [9] "10000"  "10001"  "10010"  "10100"  "10101"  "100000" "100001" "100010"
 [17] "100100" "100101" "101000" "101001" "101010"
 ```
@@ -3626,12 +3626,12 @@ Output:
 ```rexx
 
 /* REXX ***************************************************************
-* 11.10.2012 Walter Pachl                                              
+* 11.10.2012 Walter Pachl
 **********************************************************************/
-fib='13 8 5 3 2 1'                                                   
+fib='13 8 5 3 2 1'
 Do i=6 To 1 By -1                   /* Prepare Fibonacci Numbers     */
   Parse Var fib f.i fib             /* f.1 ... f.7                   */
-  End                                                                  
+  End
 Do n=0 To 20                        /* for all numbers in the task   */
   m=n                               /* copy of number                */
   r=''                              /* result for n                  */
@@ -3639,10 +3639,10 @@ Do n=0 To 20                        /* for all numbers in the task   */
     If m>=f.i Then Do               /* f.i must be used              */
       r=r||1                        /* 1 into result                 */
       m=m-f.i                       /* subtract                      */
-      End                                                              
+      End
     Else                            /* f.i is larger than the rest   */
       r=r||0                        /* 0 into result                 */
-    End                                                                
+    End
   r=strip(r,'L','0')                /* strip leading zeros           */
   If r='' Then r='0'                /* take care of 0                */
   Say right(n,2)':  'right(r,6)     /* show result                   */
@@ -3652,27 +3652,27 @@ Do n=0 To 20                        /* for all numbers in the task   */
 Output:
 
 ```txt
- 
- 0:       0 
- 1:       1 
- 2:      10 
- 3:     100 
- 4:     101 
- 5:    1000 
- 6:    1001 
- 7:    1010 
- 8:   10000 
- 9:   10001 
-10:   10010 
-11:   10100 
-12:   10101 
-13:  100000 
-14:  100001 
-15:  100010 
-16:  100100 
-17:  100101 
-18:  101000 
-19:  101001 
+
+ 0:       0
+ 1:       1
+ 2:      10
+ 3:     100
+ 4:     101
+ 5:    1000
+ 6:    1001
+ 7:    1010
+ 8:   10000
+ 9:   10001
+10:   10010
+11:   10100
+12:   10101
+13:  100000
+14:  100001
+15:  100010
+16:  100100
+17:  100101
+18:  101000
+19:  101001
 20:  101010
 ```
 
@@ -3683,7 +3683,7 @@ Output:
 This generalized REXX version will work for any Zeckendorf number (up to 100,000 decimal digits).
 
 
-A list of Fibonacci numbers (in ascending order) is generated large enough to handle the   '''N<sup>th</sup>'''   Zeckendorf number. 
+A list of Fibonacci numbers (in ascending order) is generated large enough to handle the   '''N<sup>th</sup>'''   Zeckendorf number.
 
 ```rexx
 /*REXX program  calculates and displays the  first   N   Zeckendorf numbers.            */
@@ -3757,7 +3757,7 @@ z=0                                              /*the index of a  Zeckendorf nu
     end   /*j*/                                  /*stick a fork in it,  we're all done. */
 ```
 
-{{out|output|text=  is identical to the previous (generalized) version. 
+{{out|output|text=  is identical to the previous (generalized) version.
 
 
 
@@ -3773,7 +3773,7 @@ see "0 0" + nl
 for n = 1 to 20
      see "" + n + " " + zeckendorf(n) + nl
 next
- 
+
 func zeckendorf(n)
        fib = list(45)
        fib[1] = 1
@@ -3837,7 +3837,7 @@ def zeckendorf
   x = 0
   loop do
     bin = x.to_s(2)
-    yield bin unless bin.include?("11") 
+    yield bin unless bin.include?("11")
     x += 1
   end
 end
@@ -3917,16 +3917,16 @@ def zNum( n:BigInt ) : String = {
   def z( v:BigInt ) : List[BigInt] = if(v == 0) List() else {val m = fibs(fibs.indexWhere(_>v) - 1); m :: z(v-m)}
 
   val zv = z(v)
-  
+
   // Walk the list of fibonacci numbers from the number that matches the most significant down to 1,
   // if the zeckendorf matchs then yield '1' otherwise '0'
   val s = (for( i <- (fibs.indexWhere(_==zv(0)) to 0 by -1) ) yield {
-  
+
     if( zv.contains(fibs(i))) "1" else "0"
-	
+
   }).mkString
-  
-  if( n < 0 ) "-" + s		// Using a negative-sign instead of twos-complement 
+
+  if( n < 0 ) "-" + s		// Using a negative-sign instead of twos-complement
   else s
 }
 
@@ -4381,7 +4381,7 @@ Private Function zeckendorf(ByVal n As Integer) As Integer
     Next i
     zeckendorf = r
 End Function
- 
+
 Public Sub main()
     Dim i As Integer
     For i = 0 To 20
@@ -4543,13 +4543,13 @@ Output:
 ```Yabasic
 sub Zeckendorf(n)
 	local i, n$, c
-	
+
 	do
 		n$ = bin$(i)
 		if not instr(n$,"11") then
 			print c,":\t",n$
 			if c = n break
-			c = c + 1			
+			c = c + 1
 		end if
 		i = i + 1
 	loop

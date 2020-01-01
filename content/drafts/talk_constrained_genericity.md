@@ -22,12 +22,12 @@ Are there any C++ compilers which implemented the feature, and which haven't dep
 Concepts have been removed from C++0x, but might appear in some future version. Code parked here to be put back if concepts reappear. --[[User:Ce|Ce]] 07:22, 9 September 2010 (UTC)
 
 
-###  The moved section 
+###  The moved section
 
 The current C++ standard doesn't support constrained genericity (however you can emulate it by having the container refer to the corresponding eat function without actually calling it). The next version will, however, allow it through concepts:
 
-```cpp>#include <concepts
-
+```cpp
+#include <concepts>
 #include <vector>
 
 auto concept Eatable<typename T> // auto makes it apply automatically
@@ -71,9 +71,10 @@ public:
 
 Then we can make all classes derived from Food eatable using <tt>Food::munch()</tt> for <tt>eat</tt> with the following concept map template:
 
-```cpp>template<std::DerivedFrom<Food> T
+```cpp
+template<std::DerivedFrom<Food> T>
 
- concept_map Eatable<T>
+concept_map Eatable<T>
 {
   void eat(T const& t) { t.munch(); }
 }

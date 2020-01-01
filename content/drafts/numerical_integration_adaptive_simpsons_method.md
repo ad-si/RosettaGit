@@ -24,19 +24,19 @@ Lychee (1969)'s Modified [[wp:Adaptive_Simpson's_method|Adaptive Simpson's metho
      h := b - a
 
      '''return multiple''' [m, fm, (h / 6) * (f(a) + f(b) + 4*sum1 + 2*sum2)]
- 
+
  '''procedure''' _quad_asr(f, a, fa, b, fb, tol, whole, m, fm, depth)
      lm, flm, left  := _quad_asr_simpsons(f, a, fa, m, fm)
      rm, frm, right := _quad_asr_simpsons(f, m, fm, b, fb)
      delta := left + right - whole
-     
+
      tol' := tol / 2
      '''if''' depth <= 0 ''or'' tol' == tol ''or'' abs(delta) <= 15 * tol:
          '''return''' left + right + delta / 15
      '''else''':
          '''return''' _quad_asr(f, a, fa, m, fm, tol', left , lm, flm, depth - 1) +
                 _quad_asr(f, m, fm, b, fb, tol', right, rm, frm, depth - 1)
- 
+
  '''procedure''' quad_asr(f, a, b, tol, depth)
     fa := f(a)
     fb := f(b)
@@ -49,8 +49,8 @@ Lychee (1969)'s Modified [[wp:Adaptive_Simpson's_method|Adaptive Simpson's metho
 
 {{trans|zkl}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 typedef struct { double m; double fm; double simp; } triple;
@@ -180,7 +180,7 @@ func quadAsr(f F, a, b, eps float64) float64 {
 func main() {
     a, b := 0.0, 1.0
     sinx := quadAsr(math.Sin, a, b, 1e-09)
-    fmt.Printf("Simpson's integration of sine from %g to %g = %f\n", a, b, sinx)   
+    fmt.Printf("Simpson's integration of sine from %g to %g = %f\n", a, b, sinx)
 }
 ```
 
@@ -210,7 +210,7 @@ Typically one would choose the library implementation:
    NB. adapt implements adaptive Simpson's rule, however recomputes some integrands
    1&o. adapt 0 1 1e_9
 0.459698
-   
+
 
 ```
 
@@ -242,7 +242,7 @@ Simp=: 1 :'2{m'
 Fm=: 1 :'1{m'
 M=: 1 :'0{m'
 
-NB. Efficient recursive implementation of adaptive Simpson's rule.	    
+NB. Efficient recursive implementation of adaptive Simpson's rule.
 NB. Function values at the start, middle, end of the intervals are retained.
 uquad_asr=: adverb define
  'a fa b fb eps whole em fm'=. y
@@ -330,7 +330,7 @@ fun quadSimpsonsMem(f: F, a: Double, fa: Double, b: Double, fb: Double): T {
 fun quadAsrRec(f: F, a: Double, fa: Double, b: Double, fb: Double,
     eps: Double, whole: Double, m: Double, fm: Double): Double {
     // Efficient recursive implementation of adaptive Simpson's rule.
-    // Function values at the start, middle, end of the intervals are retained. 
+    // Function values at the start, middle, end of the intervals are retained.
     val (lm, flm, left) = quadSimpsonsMem(f, a, fa, m, fm)
     val (rm, frm, right) = quadSimpsonsMem(f, m, fm, b, fb)
     val delta = left + right - whole
@@ -468,7 +468,7 @@ function quadSimpsonsMem(integer f, atom a, fa, b, fb)
          simp = abs(b-a) / 6 * (fa + 4*fm + fb)
     return {m, fm, simp}
 end function
- 
+
 function quadAsrRec(integer f, atom a, fa, b, fb, eps, whole, m, fm)
     -- Efficient recursive implementation of adaptive Simpson's rule.
     -- Function values at the start, middle, end of the intervals are retained.
@@ -481,7 +481,7 @@ function quadAsrRec(integer f, atom a, fa, b, fb, eps, whole, m, fm)
     return quadAsrRec(f, a, fa, m, fm, eps/2, left, lm, flm) +
            quadAsrRec(f, m, fm, b, fb, eps/2, rght, rm, frm)
 end function
- 
+
 function quadAsr(integer f, atom a, b, eps)
     -- Integrate f from a to b using ASR with max error of eps.
     atom fa := call_func(f,{a}),
@@ -494,7 +494,7 @@ end function
 -- (because sin() is implemented in low-level assembly)
 function _sin(atom a)
     return sin(a)
-end function 
+end function
 
 atom a := 0.0, b := 1.0,
      sinx := quadAsr(routine_id("_sin"), a, b, 1e-09)
@@ -524,7 +524,7 @@ Simpson's integration of sine from 0 to 1 = 0.459698
     $ python3 /tmp/integrate.py
     Simpson's integration of sine from 0.0 to 1.0 = 0.4596976941317858
 
-    expected answer computed by j www.jsoftware.com  
+    expected answer computed by j www.jsoftware.com
 
        1-&:(1&o.d._1)0
     0.459698
@@ -546,7 +546,7 @@ def _quad_simpsons_mem(f: callable, a: float , fa: float, b: float, fb: float)->
     fm = f(m)
     simp = abs(b - a) / 6 * (fa + 4*fm + fb)
     return triple(m, fm, simp,)
- 
+
 def _quad_asr(f: callable, a: float, fa: float, b: float, fb: float, eps: float, whole: float, m: float, fm: float)->float:
     '''
     	Efficient recursive implementation of adaptive Simpson's rule.

@@ -31,7 +31,7 @@ L(directory) [‘/’, ‘./’]
 ## 4DOS Batch
 
 
-```4dos>echos 
+```4dos>echos
  output.txt
 mkdir docs
 
@@ -43,7 +43,7 @@ mkdir \docs
 
 ## Ada
 
-Notes: 
+Notes:
 * Use Streams_IO to write 0 bytes.  File creation with Ada.Text_IO does not create 0 byte files (it inserts EOL/EOF).
 
 * The forward slash (/) notation works in Windows XP as well as Unix/Linux.
@@ -53,18 +53,18 @@ with Ada.Streams.Stream_IO, Ada.Directories;
 use  Ada.Streams.Stream_IO, Ada.Directories;
 
 procedure File_Creation is
-   
+
    File_Handle : File_Type;
-   
+
 begin
-   
+
    Create (File_Handle, Out_File, "output.txt");
    Close (File_Handle);
    Create_Directory("docs");
    Create (File_Handle, Out_File, "/output.txt");
    Close (File_Handle);
    Create_Directory("/docs");
-   
+
 end File_Creation;
 ```
 
@@ -136,8 +136,8 @@ main(void)
 
 ## ALGOL 68
 
-Note: file names are Operating System dependent.  
-* [[ALGOL 68G]] does not support pages, and ''"set"'' procedure only has 2 arguments. 
+Note: file names are Operating System dependent.
+* [[ALGOL 68G]] does not support pages, and ''"set"'' procedure only has 2 arguments.
 * [[ELLA ALGOL 68]] also encounters problems with ''"set"'' page on [[linux]].
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
@@ -204,26 +204,26 @@ AppleScript itself has limited built-in File System access, but folders (directo
 
 Create a zero-byte text file on the startup disk (root directory). Note: the <code>close</code> command is a memory allocation housekeeping command that should be performed once file access is complete.
 
-```AppleScript 
+```AppleScript
 close (open for access "output.txt")
 ```
 
 Create a new folder (directory) on the startup disk (root directory).
 
-```AppleScript 
+```AppleScript
 tell application "Finder" to make new folder at startup disk with properties {name:"docs"}
 ```
 
 Create a zero-byte text file in the frontmost (open) Finder window.
 
-```AppleScript 
+```AppleScript
 tell application "Finder" to set wd to target of window 1 as string
 close (open for access wd & "output.txt")
 ```
 
 Create a new folder (directory) in the frontmost (open) Finder window.
 
-```AppleScript 
+```AppleScript
 tell application "Finder" to make new folder at window 1 with properties {name:"docs"}
 ```
 
@@ -262,18 +262,18 @@ szNameFile:  .asciz "file1.txt"
 
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
-main:                @ entry of program 
-    push {fp,lr}        @ saves registers 
+.global main
+main:                @ entry of program
+    push {fp,lr}        @ saves registers
 	@ create directory
     ldr r0,iAdrszNameDir   @ directory name
     mov r1,#0775                 @ mode (in octal zero is important !!)
-    mov r7, #MKDIR             @ code call system create directory 
-    swi #0                      @ call systeme 
+    mov r7, #MKDIR             @ code call system create directory
+    swi #0                      @ call systeme
     cmp r0,#0             @ error ?
     bne 99f
 
@@ -282,8 +282,8 @@ main:                @ entry of program
     bl affichageMess
     @ change directory
     ldr r0,iAdrszNameDir   @ directory name
-    mov r7, #CHGDIR             @ code call system change directory 
-    swi #0                      @ call systeme 
+    mov r7, #CHGDIR             @ code call system change directory
+    swi #0                      @ call systeme
     cmp r0,#0     @ error ?
     bne 98f
     @ create file
@@ -291,43 +291,43 @@ main:                @ entry of program
     mov r1,#0755                 @ mode (in octal zero is important !!)
     mov r2,#0
     mov r7,#CREATE             @ code call system create file
-    swi #0                      @ call systeme 
+    swi #0                      @ call systeme
     cmp r0,#0             @ error ?
     ble 97f
-    mov r8,r0     @ save File Descriptor 
+    mov r8,r0     @ save File Descriptor
     @ display  message ok file
     ldr r0,iAdrszMessCreateFileOk
     bl affichageMess
 
     @ close file
-    mov r0,r8       @ Fd 
+    mov r0,r8       @ Fd
     mov r7, #CLOSE @ close file
-    swi 0 
+    swi 0
     cmp r0,#0
     bne 96f
     @ end Ok
     b 100f
 96:
-    @ display error message close file 
+    @ display error message close file
     ldr r0,iAdrszMessErrCloseFile
     bl affichageMess
     b 100f
 97:
-    @ display error message create file 
+    @ display error message create file
     ldr r0,iAdrszMessErrCreateFile
     bl affichageMess
     b 100f
 98:
-    @ display error message change directory 
+    @ display error message change directory
     ldr r0,iAdrszMessErrChangeDir
     bl affichageMess
     b 100f
-99: 
-    @ display error message create directory 
+99:
+    @ display error message create directory
     ldr r0,iAdrszMessErrCreateDir
     bl affichageMess
     b 100f
-100:   @ standard end of the program 
+100:   @ standard end of the program
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
     mov r7, #EXIT              @ request to exit program
@@ -342,11 +342,11 @@ iAdrszMessErrCloseFile:	.int szMessErrCloseFile
 
 iAdrszNameDir:				.int szNameDir
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -360,9 +360,9 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
-	
+
 
 
 ```
@@ -534,8 +534,8 @@ sys$"mkdir \\docs"
 
 ISO C (directory creation not supported):
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main() {
   FILE *fh = fopen("output.txt", "w");
@@ -550,7 +550,8 @@ POSIX:
 
 {{works with|POSIX}}
 
-```c>#include <sys/stat.h
+```c
+#include <sys/stat.h>
 
 #include <unistd.h>
 #include <fcntl.h>
@@ -588,8 +589,8 @@ text.open("output.txt", FileIO.WRITE);
 
 Uses some Microsoft library:
 
-```cpp>#include <fstream
-
+```cpp
+#include <fstream>
 #include <direct.h>
 
 int main() {
@@ -739,8 +740,8 @@ As lisp is capable of being run on many different platforms and no assumptions s
 So creating a file called ''output.txt'' with an absolute path in the root directory becomes:
 
 ```lisp
-(with-open-file 
-    (stream 
+(with-open-file
+    (stream
         (make-pathname :directory '(:absolute "") :name "output.txt")
         :direction :output))
 ```
@@ -771,7 +772,7 @@ BEGIN
 	f := Files.dir.New(Files.dir.This("docs"),Files.dontAsk);
 	f.Register("output","txt",TRUE,res);
 	f.Close();
-	
+
 	f := Files.dir.New(Files.dir.This("C:\AEAT\docs"),Files.dontAsk);
 	f.Register("output","txt",TRUE,res);
 	f.Close()
@@ -797,13 +798,13 @@ import std.stream ;
 
 string[] genName(string name){
   string cwd  = curdir ~ sep ; // on current directory
-  string root = sep ;          // on root 
-  name = std.path.getBaseName(name) ;  
+  string root = sep ;          // on root
+  name = std.path.getBaseName(name) ;
   return [cwd ~ name, root ~ name] ;
 }
 void Remove(string target){
   if(exists(target)){
-    if (isfile(target)) 
+    if (isfile(target))
       std.file.remove(target);
     else
       std.file.rmdir(target) ;
@@ -814,9 +815,9 @@ void testCreate(string filename, string dirname){
   foreach(fn ; genName(filename))
     try{
       writefln("file to be created : %s", fn) ;
-      std.file.write(fn, cast(void[])null) ; 
+      std.file.write(fn, cast(void[])null) ;
       writefln("\tsuccess by std.file.write") ; Remove(fn) ;
-      (new std.stream.File(fn, FileMode.OutNew)).close() ; 
+      (new std.stream.File(fn, FileMode.OutNew)).close() ;
       writefln("\tsuccess by std.stream") ; Remove(fn) ;
     } catch(Exception e) {
       writefln(e.msg) ;
@@ -825,7 +826,7 @@ void testCreate(string filename, string dirname){
   foreach(dn ; genName(dirname))
     try{
       writefln("dir to be created : %s", dn) ;
-      std.file.mkdir(dn) ; 
+      std.file.mkdir(dn) ;
       writefln("\tsuccess by std.file.mkdir") ; Remove(dn) ;
     } catch(Exception e) {
       writefln(e.msg) ;
@@ -842,7 +843,7 @@ void main(){
 ## Delphi
 
 
-These functions illustrate two methods for creating text files in Delphi: standard text file I/O and filestreams. 
+These functions illustrate two methods for creating text files in Delphi: standard text file I/O and filestreams.
 
 
 ```Delphi
@@ -989,7 +990,7 @@ create/directory [000000.docs]
 ;; "user" is the default (home) store
 
 ; before : list of stores
-(local-stores) → ("system" "user" "words" "reader" "info" "root") 
+(local-stores) → ("system" "user" "words" "reader" "info" "root")
 
 (local-put-value "output.txt" "") → "output.txt" ; into "user"
 (local-make-store "user/docs") → "user/docs"
@@ -1010,15 +1011,15 @@ ELENA 4.x :
 
 ```elena
 import system'io;
- 
+
 public program()
-{ 
+{
     File.assign("output.txt").textwriter().close();
- 
-    File.assign("\output.txt").textwriter().close();        
- 
+
+    File.assign("\output.txt").textwriter().close();
+
     Directory.assign("docs").create();
- 
+
     Directory.assign("\docs").create();
 }
 ```
@@ -1085,7 +1086,7 @@ BEGIN
 
     OPEN("O",#1,"output.txt")
     CLOSE(1)
- 
+
     OS_MKDIR("C:\RC")   ! with the appropriate access rights .......
     OPEN("O",#1,"C:\RC\output.txt")
     CLOSE(1)
@@ -1118,7 +1119,7 @@ close(fn)
 
 ```fsharp
 open System.IO
- 
+
 [<EntryPoint>]
 let main argv =
     let fileName = "output.txt"
@@ -1153,7 +1154,7 @@ USE: io.directories
   # create files /output.txt, then ./output.txt
   File open: (dir ++ "output.txt") modes: ['write] with: |f| {
     f writeln: "hello, world!"
-  }  
+  }
 }
 ```
 
@@ -1356,7 +1357,7 @@ SYSTEM(DIR="\docs")              ! create argument if not existent, make it curr
 OPEN(FILE="output.txt", "NEW")   ! in current directory
 
 SYSTEM(DIR="C:\docs")            ! create C:\docs if not existent, make it current
-OPEN(FILE="output.txt", "NEW")   ! in C:\docs 
+OPEN(FILE="output.txt", "NEW")   ! in C:\docs
 ```
 
 
@@ -1390,7 +1391,7 @@ Note: Icon and Unicon accept both / and \ for directory separators.
 ## J
 
 
-The conjunction <tt>!:</tt> with a scalar <tt>1</tt> to the left (<tt>1!:</tt>) provides the underlying cross-platform support for [http://www.jsoftware.com/help/dictionary/dx001.htm working with files]. 
+The conjunction <tt>!:</tt> with a scalar <tt>1</tt> to the left (<tt>1!:</tt>) provides the underlying cross-platform support for [http://www.jsoftware.com/help/dictionary/dx001.htm working with files].
 
 
 ```j
@@ -1449,11 +1450,11 @@ public class CreateFileTest {
 
 ```JCL
 
-// EXEC PGM=IEFBR14                                                  
+// EXEC PGM=IEFBR14
 //* CREATE EMPTY FILE NAMED "OUTPUT.TXT" (file names upper case only)
-//ANYNAME DD UNIT=SYSDA,SPACE=(0,0),DSN=OUTPUT.TXT,DISP=(,CATLG)     
-//* CREATE DIRECTORY (PARTITIONED DATA SET) NAMED "DOCS"             
-//ANYNAME DD UNIT=SYSDA,SPACE=(TRK,(1,1)),DSN=DOCS,DISP=(,CATLG)     
+//ANYNAME DD UNIT=SYSDA,SPACE=(0,0),DSN=OUTPUT.TXT,DISP=(,CATLG)
+//* CREATE DIRECTORY (PARTITIONED DATA SET) NAMED "DOCS"
+//ANYNAME DD UNIT=SYSDA,SPACE=(TRK,(1,1)),DSN=DOCS,DISP=(,CATLG)
 
 ```
 
@@ -1644,7 +1645,7 @@ end
 
 ## Little
 
-We are going to use /tmp instead the root. 
+We are going to use /tmp instead the root.
 
 
 ```C
@@ -1667,7 +1668,7 @@ void create_dir(string path) {
         unless(mkdir(path)) { //mkdir returns 0 on success, -1 on error
             puts("directory ${path} created");
         } else {
-            puts(stderr, "Error: directory ${path} not created");   
+            puts(stderr, "Error: directory ${path} not created");
         }
     } else {
         puts("directory ${path} already exists");
@@ -1763,11 +1764,11 @@ Module MakeDirAndFile {
       Def WorkingDir$, RootDir$
       If Drive$(Dir$)="Drive Fixed" Then WorkingDir$=Dir$
       If Drive$("C:\")="Drive Fixed" Then RootDir$="C:\"
-      
+
       if WorkingDir$<>"" Then task(WorkingDir$)
       If RootDir$<>"" then task(RootDir$)
       Dir User ' return to user directory
-      
+
       Sub task(WorkingDir$)
             Dir WorkingDir$
             If Not Exist.Dir("docs") then SubDir "docs" : Dir WorkingDir$
@@ -1991,7 +1992,7 @@ module CreateFile
             |e is UnauthorizedAccessException => Console.WriteLine(
             "Cannot create file in root directory without Administrator priveleges.")
         }
-        
+
         unless (Directory.Exists("docs")) Directory.CreateDirectory("docs");
         // returns a DirectoryInfo object which we're ignoring
         unless (Directory.Exists(@"\docs")) Directory.CreateDirectory(@"\docs");
@@ -2088,10 +2089,10 @@ bundle Default {
     function : Main(args : String[]) ~ Nil {
       file := FileWriter->New("output.txt");
       file->Close();
-      
+
       file := FileWriter->New("/output.txt");
       file->Close();
-      
+
       Directory->Create("docs");
       Directory->Create("/docs");
     }
@@ -2127,7 +2128,7 @@ for Dir in ["/" "./"] do
    File = {New Open.file init(name:Dir#"output.txt" flags:[create])}
 in
    {File close}
-   {OS.mkDir Dir#"docs" ['S_IRUSR' 'S_IWUSR' 'S_IXUSR' 'S_IXGRP']} 
+   {OS.mkDir Dir#"docs" ['S_IRUSR' 'S_IWUSR' 'S_IXUSR' 'S_IXGRP']}
 end
 ```
 
@@ -2252,12 +2253,12 @@ Copy of [[Create_a_file#Euphoria|Euphoria]], modified to display a warning when 
 
 ```Phix
 integer fn
- 
+
 -- In the current working directory
 system("mkdir docs",2)
 fn = open("output.txt","w")
 close(fn)
- 
+
 -- In the filesystem root
 system("mkdir \\docs",2)
 fn = open("\\output.txt","w")
@@ -2290,7 +2291,7 @@ mkdir('/docs');
 ```PicoLisp
 (out "output.txt")                     # Empty output
 (call 'mkdir "docs")                   # Call external
-(out "/output.txt")                     
+(out "/output.txt")
 (call 'mkdir "/docs")
 ```
 
@@ -2380,7 +2381,7 @@ def create(directory):
     with open(os.path.join(directory, "output.txt"), "w"):
         pass
     os.mkdir(os.path.join(directory, "docs"))
-   
+
 create(".") # current directory
 create("/") # root directory
 ```
@@ -2513,10 +2514,10 @@ fopen("output.txt", "w+")
 ```RunBasic
 open "output.txt" for output as #f
 close #f
- 
+
 dirOk = mkdir( "f:\doc")
 if not(dirOk) then print "Directory not created!": end
- 
+
 open "f:\doc\output.txt" for output as #f
 close #f
 ```
@@ -2709,7 +2710,7 @@ end
 ```sqlite3
 
 /*
-*Use '/' for *nix. Use whatever your root directory is on Windows. 
+*Use '/' for *nix. Use whatever your root directory is on Windows.
 *Must be run as admin.
 */
 .shell mkdir "docs";
@@ -2814,8 +2815,8 @@ Assuming that we're supposed to create two files and two directories (one each h
 
 
 ```tcl
-close [open output.txt w] 
-close [open [file nativename /output.txt] w] 
+close [open output.txt w]
+close [open [file nativename /output.txt] w]
 
 file mkdir docs
 file mkdir [file nativename /docs]
@@ -2831,7 +2832,7 @@ file mkdir [file nativename /docs]
 needs shell
 " output.txt" "W" file.open file.close
 " /output.txt" "W" file.open file.close
- 
+
 ( Create the directories with permissions set to 777)
 " docs" &777 mkdir
 " /docs" &777 mkdir
@@ -3043,13 +3044,13 @@ $ zkl
 zkl: fcn createOutputTxt(dir){ dir=dir+"/docs"; File.mkdir(dir); File(dir+"/output.txt","w") }
 Void
 zkl: createOutputTxt(".")
-File(./docs/output.txt)                                                      
+File(./docs/output.txt)
 zkl: createOutputTxt("/")
 Stack trace for VM#1 ():
-   Cmd.createOutputTxt@mkdir addr:16  args(1) reg(0) 
+   Cmd.createOutputTxt@mkdir addr:16  args(1) reg(0)
    Cmd.__constructor@createOutputTxt addr:9  args(0) reg(0) R
    startup.__constructor addr:2271  args(0) reg(1) ER
-   startup.__constructor addr:2207  args(0) reg(22) 
+   startup.__constructor addr:2207  args(0) reg(22)
 Exception thrown: IOError(File.mkdir(//docs): Permission denied)
 zkl: ^D
 $ ls -l docs

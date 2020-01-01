@@ -54,7 +54,7 @@ procedure Shared_Library_Call is
    -- The interface of the function we want to call. It is a pointer (access type)
    -- because we will link it dynamically. The function is from User32.dll
    --
-   type MessageBox is access function 
+   type MessageBox is access function
         (  hWnd      : Address     := Null_Address;
            lpText    : char_array;
            lpCaption : char_array  := To_C ("Greeting");
@@ -204,8 +204,8 @@ The following shared libraries are automatically available: ADVAPI32.DLL, COMCTL
 '''Tested with''' gcc on a GNU/Linux system (on GNU/Linux <code>dl*</code> functions are available linking to <tt>libdl</tt>, i.e. with <tt>-ldl</tt> option)
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <dlfcn.h>
 
@@ -247,8 +247,8 @@ int main()
 The fake <tt>fakeimglib.so</tt> code is
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 /* gcc -shared -nostartfiles fakeimglib.c -o fakeimglib.so */
 int openimage(const char *s)
 {
@@ -447,8 +447,8 @@ end;
 ### GNU Fortran on Linux
 
 Works on Linux with GNU gcc and gfortran 5.1.1
- 
-This is a slightly modified version of [[Call a foreign-language function]] task. 
+
+This is a slightly modified version of [[Call a foreign-language function]] task.
 
 A simple "C" function add_n  in add_n.c
 
@@ -458,11 +458,11 @@ double add_n(double* a, double* b)
 {
 return *a + *b;
 }
- 
+
 ```
 
 
-compile it 
+compile it
 
 gcc -c -shared -fPIC add_n.c
 
@@ -480,7 +480,7 @@ real(c_double) :: add_nf
 
 add_nf = a + b
 end function add_nf
- 
+
 ```
 
 Compile it
@@ -781,18 +781,18 @@ Compile test program
 gfortran shared_lib_new_test.f90 -ldl -o shared_lib_new_test.x
 
 {{out}}
-./shared_lib_new_test.x 
+./shared_lib_new_test.x
 
 ```txt
- 
+
  address:                     0
  load_dll: errstat=           0
  address:        47476893497132
- add_n(2,5)=   7.0000000000000000     
+ add_n(2,5)=   7.0000000000000000
  free_dll: errstat=           0
  load_dll: errstat=           0
  address:        47476893497088
- add_nf(2,5)=   7.0000000000000000     
+ add_nf(2,5)=   7.0000000000000000
  free_dll: errstat=           0
 
 ```
@@ -822,37 +822,37 @@ program dynload
     use kernel32
     use iso_c_binding
     implicit none
-    
+
     abstract interface
         function ffun_int(x, y)
             !DEC$ ATTRIBUTES STDCALL, REFERENCE :: ffun_int
             double precision :: ffun_int, x, y
         end function
     end interface
-    
+
     procedure(ffun_int), pointer :: ffun_ptr
-    
+
     integer(c_intptr_t) :: ptr
     integer(handle) :: h
     double precision :: x, y
-    
+
     h = LoadLibrary("dllfun.dll" // c_null_char)
     if (h == 0) error stop "Error: LoadLibrary"
-    
+
     ptr = GetProcAddress(h, "ffun" // c_null_char)
     if (ptr == 0) error stop "Error: GetProcAddress"
-    
+
     call c_f_procpointer(transfer(ptr, c_null_funptr), ffun_ptr)
     read *, x, y
     print *, ffun_ptr(x, y)
-    
+
     if (FreeLibrary(h) == 0) error stop "Error: FreeLibrary"
 end program
 ```
 
 
 
-###  GNU Fortran on Windows 
+###  GNU Fortran on Windows
 
 The program for Intel Fortran can easily be adapted to the GNU Fortran compiler. A kernel32 module must be provided (here a small version with only the three necessary functions is given). Also, the STDCALL declaration is different. The '''dllfun.dll''' library must be in the PATH, but also MinGW libraries.
 
@@ -887,30 +887,30 @@ program dynload
     use kernel32
     use iso_c_binding
     implicit none
- 
+
     abstract interface
         function ffun_int(x, y)
             !GCC$ ATTRIBUTES DLLEXPORT, STDCALL :: FFUN
             double precision :: ffun_int, x, y
         end function
     end interface
- 
+
     procedure(ffun_int), pointer :: ffun_ptr
- 
+
     integer(c_intptr_t) :: ptr
     integer(handle) :: h
     double precision :: x, y
- 
+
     h = LoadLibrary("dllfun.dll" // c_null_char)
     if (h == 0) error stop "Error: LoadLibrary"
- 
+
     ptr = GetProcAddress(h, "ffun_@8" // c_null_char)
     if (ptr == 0) error stop "Error: GetProcAddress"
- 
+
     call c_f_procpointer(transfer(ptr, c_null_funptr), ffun_ptr)
     read *, x, y
     print *, ffun_ptr(x, y)
- 
+
     if (FreeLibrary(h) == 0) error stop "Error: FreeLibrary"
 end program
 ```
@@ -925,7 +925,7 @@ module kernel32
     integer, parameter :: HANDLE = C_INTPTR_T
     integer, parameter :: PVOID = C_INTPTR_T
     integer, parameter :: BOOL = C_INT
-    
+
     interface
         function LoadLibrary(lpFileName) bind(C, name="LoadLibraryA")
             import C_CHAR, HANDLE
@@ -934,7 +934,7 @@ module kernel32
             character(C_CHAR) :: lpFileName
         end function
     end interface
-        
+
     interface
         function FreeLibrary(hModule) bind(C, name="FreeLibrary")
             import HANDLE, BOOL
@@ -943,7 +943,7 @@ module kernel32
             integer(HANDLE), value :: hModule
         end function
     end interface
-    
+
     interface
         function GetProcAddress(hModule, lpProcName) bind(C, name="GetProcAddress")
             import C_CHAR, PVOID, HANDLE
@@ -969,15 +969,15 @@ Dim As Any Ptr library = DyLibLoad("kernel32.dll") '' load dll
 
 If library = 0 Then
   Print "Unable to load kernel32.dll - calling built in Beep function instead"
-  Beep : Beep : Beep 
+  Beep : Beep : Beep
 Else
   Dim beep_ As Function (ByVal As ULong, ByVal As ULong) As Long  '' declare function pointer
   beep_ = DyLibSymbol(library, "Beep")
   If beep_ = 0 Then
     Print "Unable to retrieve Beep function from kernel32.dll - calling built in Beep function instead"
     Beep : Beep : Beep
-  Else 
-    For i As Integer =  1 To 3 : beep_(1000, 250) : Next 
+  Else
+    For i As Integer =  1 To 3 : beep_(1000, 250) : Next
   End If
   DyLibFree(library) '' unload library
 End If
@@ -999,8 +999,8 @@ Dynamically calling a function from a shared library can only be accomplished in
 
 This is the C code to produce fakeimglib.so:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 /* gcc -shared -fPIC -nostartfiles fakeimglib.c -o fakeimglib.so */
 int openimage(const char *s)
 {
@@ -1187,9 +1187,9 @@ public class TrySort {
 	    useC = false;
 	}
     }
-    
+
     static native void sortInC(int[] ary);
-    
+
     static class IntList extends java.util.AbstractList<Integer> {
 	int[] ary;
 	IntList(int[] ary) { this.ary = ary; }
@@ -1210,7 +1210,7 @@ public class TrySort {
 	    return a < b ? -1 : a > b ? 1 : 0;
 	}
     }
-    
+
     static void sortInJava(int[] ary) {
 	Collections.sort(new IntList(ary), new ReverseAbsCmp());
     }
@@ -1424,8 +1424,8 @@ For more information, see here [http://docs.julialang.org/en/latest/manual/calli
 
 This is the C code to produce fakeimglib.so:
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 /* gcc -shared -fPIC -nostartfiles fakeimglib.c -o fakeimglib.so */
 int openimage(const char *s)
 {
@@ -1526,7 +1526,7 @@ end if
 
 ## Mathematica
 
-This works on windows and on linux/mac too (through Mono) 
+This works on windows and on linux/mac too (through Mono)
 
 ```Mathematica
 Needs["NETLink`"];
@@ -1553,8 +1553,8 @@ echo openimage("baz")
 
 The fake <code>fakeimglib.so</code> code is
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 /* gcc -shared -nostartfiles fakeimglib.c -o fakeimglib.so */
 int openimage(const char *s)
 {
@@ -1922,13 +1922,13 @@ EndIf
 ## Python
 
 
-###  ctypes 
+###  ctypes
 
 Example that call User32.dll::GetDoubleClickTime() in windows.
 
 ```python
 import ctypes
-  
+
 user32_dll = ctypes.cdll.LoadLibrary('User32.dll')
 print user32_dll.GetDoubleClickTime()
 ```
@@ -1947,7 +1947,7 @@ hi there, world.
 
 
 
-###  CFFI 
+###  CFFI
 
 [https://cffi.readthedocs.io/ CFFI] isn't built into the stdlib, but, on the other hand, it works with other Python implementations like PyPy. It also has a variety of advantages and disadvantages over ctypes, even for simple cases like this:
 
@@ -1999,7 +1999,7 @@ The return of the <code>.C()</code> function is an R list.
 ```
 
 
-Output: 
+Output:
 ```txt
 > (extern-sqrt 42.0)
 6.48074069840786
@@ -2032,7 +2032,7 @@ call SysDropFuncs                      /*clean up: make functions inaccessible*/
                                        /*stick a fork in it,  we're all done. */
 ```
 
-'''output'''   (which happens to reflect the program's author's particular screen size for the "DOS" window): 
+'''output'''   (which happens to reflect the program's author's particular screen size for the "DOS" window):
 
 ```txt
 
@@ -2223,7 +2223,7 @@ import com.sun.jna.ptr.IntByReference
 
 object GetDiskFreeSpace extends App with SNA {
 
-  snaLibrary = "Kernel32" // Native library name 
+  snaLibrary = "Kernel32" // Native library name
 /*
  * Important Note!
  *
@@ -2231,8 +2231,8 @@ object GetDiskFreeSpace extends App with SNA {
  * (see line following this comment). This is the only place you specify the native function name.
  */
   val GetDiskFreeSpaceA = SNA[String, IntByReference, IntByReference, IntByReference, IntByReference, Boolean]
-  
-  // This Windows function is described here: 
+
+  // This Windows function is described here:
   //     http://msdn.microsoft.com/en-us/library/aa364935(v=vs.85).aspx
   val (disk, spc, bps, fc, tc) = ("C:\\",
     new IntByReference, // Sectors per cluster

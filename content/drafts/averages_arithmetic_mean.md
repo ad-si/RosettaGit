@@ -14,7 +14,7 @@ tags = []
 
 {{task heading}}
 
-Write a program to find the [[wp:arithmetic mean|mean]] (arithmetic average) of a numeric vector. 
+Write a program to find the [[wp:arithmetic mean|mean]] (arithmetic average) of a numeric vector.
 
 In case of a zero-length input, since the mean of an empty set of numbers is ill-defined, the program may choose to behave in any way it deems appropriate, though if the programming language has an established convention for conveying math errors or undefined values, it's preferable to follow it.
 
@@ -90,7 +90,7 @@ LOOP     CH     3,=AL2(NN-T-1)     for i=1 to nn
 ENDLOOP  LR     5,6                sum
          LA     4,0
          D      4,NN               sum/nn
-         XDECO  5,Z                edit binary 
+         XDECO  5,Z                edit binary
          MVC    U,Z+10             descale
          MVI    Z+10,C'.'
          MVC    Z+11(2),U
@@ -113,7 +113,7 @@ U        DS     CL2
 
 
 ## 6502 Assembly
- 
+
 Called as a subroutine (i.e., JSR ArithmeticMean), this calculates the integer average of up to 255 8-bit unsigned integers.  The address of the beginning of the list of integers is in the memory location ArrayPtr and the number of integers is in the memory location NumberInts.  The arithmetic mean is returned in the memory location ArithMean.
 
 
@@ -127,7 +127,7 @@ ArithmeticMean:		PHA
 			STA Temp
 			STA Temp+1	;temporary 16-bit storage for total
 
-			LDY NumberInts	
+			LDY NumberInts
 			BEQ Done	;if NumberInts = 0 then return an average of zero
 
 			DEY		;start with NumberInts-1
@@ -152,7 +152,7 @@ DivideLoop:		LDA Temp
 			STA Temp+1
 			INY
 			BCS DivideLoop
-			
+
 Done:			STY ArithMean	;store result here
 			PLA		;restore accumulator and Y register from stack
 			TAY
@@ -163,7 +163,7 @@ Done:			STY ArithMean	;store result here
 
 
 ## 8th
- 
+
 
 ```forth
 
@@ -172,7 +172,7 @@ Done:			STY ArithMean	;store result here
   swap a:len nip n:/ ;
 
 \ test:
-[ 1.0, 2.3, 1.1, 5.0, 3, 2.8, 2.01, 3.14159 ] avg . cr 
+[ 1.0, 2.3, 1.1, 5.0, 3, 2.8, 2.01, 3.14159 ] avg . cr
 [ ] avg . cr
 [ 10 ] avg . cr
 bye
@@ -198,7 +198,7 @@ NaN
        (mv-let (m j)
                (mean-r (rest xs))
           (mv (+ (first xs) m) (+ j 1)))))
- 
+
 (defun mean (xs)
    (if (endp xs)
        0
@@ -292,19 +292,19 @@ main(void)
 {{trans|C}}
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}} 
+{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386 - note that some necessary LONG REAL operators are missing from ELLA's library.}}
 
 ```algol68
 PROC mean = (REF[]REAL p)REAL:
 # Calculates the mean of qty REALs beginning at p. #
   IF LWB p > UPB p THEN 0.0
-  ELSE 
+  ELSE
     REAL total := 0.0;
     FOR i FROM LWB p TO UPB p DO total +:= p[i] OD;
     total / (UPB p - LWB p + 1)
   FI;
- 
+
 main:(
   [6]REAL test := (1.0, 2.0, 5.0, -5.0, 9.5, 3.14159);
   print((mean(test),new line))
@@ -346,7 +346,7 @@ end.
 ## AmigaE
 
 Because of the way Amiga E handles floating point numbers, the passed list/vector must contain
-all explicitly floating point values (e.g., you need to write "1.0", not "1") 
+all explicitly floating point values (e.g., you need to write "1.0", not "1")
 
 ```amigae
 PROC mean(l:PTR TO LONG)
@@ -485,7 +485,7 @@ BEGIN {
 
 ```txt
 
-$ awk -f mean.awk 
+$ awk -f mean.awk
 3.92689
 zero-length input !
 
@@ -554,15 +554,15 @@ To calculate the mean of an array:
 ```BBC BASIC
 
       REM specific functions for the array/vector types
-      
+
       REM Byte Array
       DEF FN_Mean_Arithmetic&(n&())
       = SUM(n&()) / (DIM(n&(),1)+1)
-      
+
       REM Integer Array
       DEF FN_Mean_Arithmetic%(n%())
       = SUM(n%()) / (DIM(n%(),1)+1)
-      
+
       REM Float 40 array
       DEF FN_Mean_Arithmetic(n())
       = SUM(n()) / (DIM(n(),1)+1)
@@ -577,7 +577,7 @@ To calculate the mean of an array:
         IF Q% sum += EVAL(n$(I%))
       NEXT
       = sum / (S%+1)
-     
+
       REM Float 64 array
       DEF FN_Mean_Arithmetic#(n#())
       = SUM(n#()) / (DIM(n#(),1)+1)
@@ -620,7 +620,7 @@ define m(a[], n) {
 
 ## Befunge
 
-The first input is the length of the vector. If a length of 0 is entered, the result is equal to <code>0/0</code>. 
+The first input is the length of the vector. If a length of 0 is entered, the result is equal to <code>0/0</code>.
 
 ```befunge
 &:0\:!v!:-1<
@@ -721,8 +721,8 @@ NaN
 Compute mean of a <code>double</code> array of given length.  If length is zero, does whatever <code>0.0/0</code> does (usually means returning <code>NaN</code>).
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 double mean(double *v, int len)
 {
@@ -818,8 +818,8 @@ class Program
 
 {{libheader|STL}}
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 
 double mean(const std::vector<double>& numbers)
 {
@@ -837,8 +837,8 @@ double mean(const std::vector<double>& numbers)
 Shorter (and more idiomatic) version:
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <algorithm>
 
 double mean(const std::vector<double>& numbers)
@@ -853,8 +853,8 @@ double mean(const std::vector<double>& numbers)
 Idiomatic version templated on any kind of iterator:
 
 
-```cpp>#include <iterator
-
+```cpp
+#include <iterator>
 #include <algorithm>
 
 template <typename Iterator>
@@ -950,16 +950,16 @@ Sample implementation:
        DATA DIVISION.
        LOCAL-STORAGE SECTION.
        01  i                       PIC 9(4).
-       
+
        01  summ                    USAGE FLOAT-LONG.
-       
+
        LINKAGE SECTION.
        01  nums-area.
            03  nums-len            PIC 9(4).
            03  nums                USAGE FLOAT-LONG
                                    OCCURS 0 TO 1000 TIMES
                                    DEPENDING ON nums-len.
-                                  
+
        01  result                  USAGE FLOAT-LONG.
 
        PROCEDURE DIVISION USING nums-area, result.
@@ -988,7 +988,7 @@ class Rosetta
 			return 0
 		else
 			sum = 0.0
-			for n in ns 
+			for n in ns
 				sum += n
 			return sum / ns.count
 
@@ -1019,9 +1019,9 @@ mean = (array) ->
  return 0 if array.length is 0
  sum = array.reduce (s,i,0) -> s += i
  sum / array.length
- 
- 
-alert mean [1]  
+
+
+alert mean [1]
 
 ```
 
@@ -1180,7 +1180,7 @@ void main(){
 
 ## dc
 
-This is not a translation of the bc solution. Array handling would add some complexity. This one-liner is similar to the K solution. 
+This is not a translation of the bc solution. Array handling would add some complexity. This one-liner is similar to the K solution.
 
 
 ```dc
@@ -1339,7 +1339,7 @@ print r
 ```ecl
 
 AveVal(SET OF INTEGER s) := AVE(s);
- 
+
 //example usage
 
 SetVals := [14,9,16,20,91];
@@ -1361,15 +1361,15 @@ extension op
     {
         real sum := 0;
         int count := 0;
-        
+
         var enumerator := self.enumerator();
-        
+
         while (enumerator.next())
         {
             sum += enumerator.get();
             count += 1;
         };
-        
+
         ^ sum / count
     }
 }
@@ -1476,15 +1476,15 @@ The output for the first expression, for the set {x | 1 <= x <= 10, x E N} is
 ```txt
 
 1	5,5
-2	
-3	
-4	
-5	
-6	
-7	
-8	
-9	
-10	
+2
+3
+4
+5
+6
+7
+8
+9
+10
 
 ```
 
@@ -1710,7 +1710,7 @@ let mean_series list =
 
 Checking this:
 
-```fsharp> 
+```fsharp>
  mean_series [1; 8; 2; 8; 1; 7; 1; 8; 2; 7; 3; 6; 1; 8; 100] ;;
  val it : float = 10.86666667
  > mean_series [] ;;
@@ -1763,10 +1763,10 @@ Output:
 
 ```txt
 
- 7.000000000000000      
+ 7.000000000000000
  1.500000000000000E+0001
  1.300000000000000E+0001
- 8.000000000000000      
+ 8.000000000000000
  2.500000000000000E+0001
  7.400000000000000E+0001
  3.100000000000000E+0001
@@ -1996,7 +1996,7 @@ REAL :: vec(100)               ! no zero-length arrays in HicEst
 
    vec = $ - 1/2               ! 0.5 ... 99.5
    mean = SUM(vec) / LEN(vec)  ! 50
-END 
+END
 ```
 
 
@@ -2056,7 +2056,7 @@ print,moment(x)
 ```
 
 
-which are mean, variance, skewness and kurtosis. 
+which are mean, variance, skewness and kurtosis.
 
 There are no zero-length vectors in IDL. Every variable has at least one value or otherwise it is <tt><Undefined></tt>.
 
@@ -2219,7 +2219,7 @@ function mean(a)
             lst.reduce((a, b) => a + b, 0) / lng
         ) : NaN;
     };
-    
+
     return mean(sample);
 
 })([1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -2242,7 +2242,7 @@ The mean of an array of numbers can be computed by simply writing
 This definition raises an error condition if the array is empty, so it may make sense to define '''mean''' as follows, '''null''' being jq's null value:
 
 ```jq
-def mean: if length == 0 then null 
+def mean: if length == 0 then null
   else add/length
   end;
 ```
@@ -2382,7 +2382,7 @@ for j = 1 to total
 next
 if total=0 then mean=0 else mean=sum/total
 print "Arithmetic mean: ";mean
- 
+
 ```
 
 
@@ -2583,7 +2583,7 @@ print (mean({3,1,4,1,5,9}))
 
 ```lucid
 avg(x)
- where 
+ where
     sum = first(x) fby sum + next(x);
     n = 1 fby n + 1;
     avg = sum / n;
@@ -2972,7 +2972,7 @@ No data
 USER>W $$MEAN^ROSETTA("")
 Empty Set
 USER>
- 
+
 USER>W $$MEAN^ROSETTA("1^6^12^4")
 5.75
 
@@ -2995,7 +2995,7 @@ module Mean
         |[] => 0.0
         |_  =>(x.FoldLeft(0, _+_) :> double) / x.Length
     }
-    
+
     Main() : void
     {
         WriteLine("Mean of [1 .. 10]: {0}", ArithmeticMean($[1 .. 10]));
@@ -3097,8 +3097,8 @@ Caught unspecified run-time exception; bypassing...
 (define (Mean Lst)
    (if (empty? Lst)
       0
-      (/ (apply + Lst) (length Lst)))) 
- 
+      (/ (apply + Lst) (length Lst))))
+
  (Mean (sequence 1 1000))-> 500
  (Mean '()) -> 0
 ```
@@ -3110,9 +3110,9 @@ Caught unspecified run-time exception; bypassing...
 in the standard way, mean is
 
 ```nial
-mean is / [sum, tally] 
+mean is / [sum, tally]
 
-mean 6 2 4 
+mean 6 2 4
 = 4
 ```
 
@@ -3308,7 +3308,7 @@ disp(omean([1,2,3]));
 ```
 
 
-If the data contains missing value, encoded as non-a-number: 
+If the data contains missing value, encoded as non-a-number:
 
 
 ```octave
@@ -3316,7 +3316,7 @@ function m = omean(l)
      n = sum(~isnan(l));
      l(isnan(l))=0;
      s = sum(l);
-     m = s./n; 
+     m = s./n;
 end;
 ```
 
@@ -3328,7 +3328,7 @@ end;
 
 ```Oforth
 : avg ( x -- avg )
-   x sum 
+   x sum
    x size dup ifZero: [ 2drop null ] else: [ >float / ]
 ;
 ```
@@ -3404,7 +3404,7 @@ A version working on floats:
 declare
   fun {Mean Xs}
      {FoldL Xs Number.'+' 0.0} / {Int.toFloat {Length Xs}}
-  end 
+  end
 in
   {Show {Mean [3. 1. 4. 1. 5. 9.]}}
 ```
@@ -3506,7 +3506,7 @@ sub avg {
   $sum += $_ foreach @_;
   return $sum/@_;
 }
- 
+
 print avg(qw(3 1 4 1 5 9)), "\n";
 ```
 
@@ -3629,9 +3629,9 @@ sum ==
 /avg {
     dup length
     {0 gt} {
-       exch 0 {add} fold exch div 
+       exch 0 {add} fold exch div
     } {
-        exch pop 
+        exch pop
     } ifte
 }.
 
@@ -4014,7 +4014,7 @@ dim value(numArray)
 for i = 1 to numArray
     value(i) = i * 1.5
 next
- 
+
 for i = 1 to total
     totValue = totValue +value(numArray)
 next
@@ -4101,7 +4101,7 @@ def mean[T](s: Seq[T])(implicit n: Integral[T]) = {
 
 This can be used with any subclass of <tt>Sequence</tt> on integral types, up
 to and including BigInt. One can also create singletons extending <tt>Integral</tt>
-for user-defined numeric classes. Likewise, <tt>Integral</tt> can be replaced by 
+for user-defined numeric classes. Likewise, <tt>Integral</tt> can be replaced by
 <tt>Fractional</tt> in the code to support fractional types, such as <tt>Float</tt>
 and <tt>Double</tt>.
 
@@ -4196,7 +4196,7 @@ inf
 
 ## Slate
 
- 
+
 
 ```slate
 [|:list| (list reduce: #+ `er ifEmpty: [0]) / (list isEmpty ifTrue: [1] ifFalse: [list size])] applyWith: #(3 1 4 1 5 9).
@@ -4213,8 +4213,8 @@ inf
 | numbers |
 
 numbers := #(1 2 3 4 5 6 7 8).
-(numbers isEmpty 
-    ifTrue:[0] 
+(numbers isEmpty
+    ifTrue:[0]
     ifFalse: [
          (numbers inject: 0 into: [:sumSoFar :eachElement | sumSoFar + eachElement]) / numbers size ]
 ) displayNl.
@@ -4264,7 +4264,7 @@ numbers average displayNl.
 {{works with|Macro Spitbol}}
 {{works with|Snobol4+}}
 {{works with|CSnobol}}
-        
+
 
 ```SNOBOL4
         define('avg(a)i,sum') :(avg_end)
@@ -4365,7 +4365,7 @@ fun mean_ints [] = raise Empty
 ## Stata
 
 
-###  Mean of a dataset variable 
+###  Mean of a dataset variable
 
 Illustration of the mean on the population (in millions) in january 2016 of a few european countries (source [http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=demo_gind&lang=fr Eurostat]).
 <lang>clear all
@@ -4403,7 +4403,7 @@ Mean estimation                   Number of obs   =          8
 
 
 
-###  Mean in Mata 
+###  Mean in Mata
 
 
 ```stata
@@ -4487,9 +4487,9 @@ function mean(numbersArr)
     }
     else return "Not defined";
 }
- 
-alert( mean( [1,2,3,4,5] ) );   
-alert( mean( [] ) );        
+
+alert( mean( [1,2,3,4,5] ) );
+alert( mean( [] ) );
 
 ```
 
@@ -4629,25 +4629,25 @@ Using array to hold the numbers of the list:
 double arithmetic(double[] list){
 	double mean;
 	double sum = 0;
-	
+
 	if (list.length == 0)
 		return 0.0;
 	foreach(double number in list){
 		sum += number;
 	} // foreach
-	
+
 	mean = sum / list.length;
-	
+
 	return mean;
 } // end arithmetic mean
 
 public static void main(){
 	double[] test = {1.0, 2.0, 5.0, -5.0, 9.5, 3.14159};
 	double[] zero_len = {};
-	
+
 	double mean = arithmetic(test);
 	double mean_zero = arithmetic(zero_len);
-	
+
 	stdout.printf("%s\n", mean.to_string());
 	stdout.printf("%s\n", mean_zero.to_string());
 }
@@ -4702,11 +4702,11 @@ End Sub
 {{out}}
 
 ```txt
-mean[1; 2; 2,178; 3; 3,142] =  0 
-mean[1; 2; 2,178; 3] =  0 
-mean[1; 2; 2,178] =  0 
-mean[1; 2] =  0 
-mean[1] =  0 
+mean[1; 2; 2,178; 3; 3,142] =  0
+mean[1; 2; 2,178; 3] =  0
+mean[1; 2; 2,178] =  0
+mean[1; 2] =  0
+mean[1] =  0
 mean[] = Fout 2007
 ```
 
@@ -4849,7 +4849,7 @@ Arithmetic.mean([1,2,3,4,5]) // 3
 @let {
   ; using a fork (sum divided-by length)
   mean1 @(@sum / #)
-	
+
   ; using a function with a named argument
   mean2 &a / @sum a #a
 
@@ -4997,7 +4997,7 @@ meanV(T(3,1,4,1,5,9)); // --> 3.83333
 ```zonnon
 
 module Averages;
-type 
+type
 	Vector = array {math} * of real;
 
 	procedure ArithmeticMean(x: Vector): real;

@@ -16,17 +16,17 @@ Write a function which says whether a number is perfect.
 
 
 
-[[wp:Perfect_numbers|A perfect number]] is a positive integer that is the sum of its proper positive divisors excluding the number itself. 
+[[wp:Perfect_numbers|A perfect number]] is a positive integer that is the sum of its proper positive divisors excluding the number itself.
 
 Equivalently, a perfect number is a number that is half the sum of all of its positive divisors (including itself).
 
 
-Note:   The faster   [[Lucas-Lehmer test]]   is used to find primes of the form   <big> 2<sup>''n''</sup>-1</big>,   all ''known'' perfect numbers can be derived from these primes 
-using the formula   <big> (2<sup>''n''</sup> - 1) × 2<sup>''n'' - 1</sup></big>. 
- 
+Note:   The faster   [[Lucas-Lehmer test]]   is used to find primes of the form   <big> 2<sup>''n''</sup>-1</big>,   all ''known'' perfect numbers can be derived from these primes
+using the formula   <big> (2<sup>''n''</sup> - 1) × 2<sup>''n'' - 1</sup></big>.
+
 It is not known if there are any odd perfect numbers (any that exist are larger than <big>10<sup>2000</sup></big>).
 
-The number of   ''known''   perfect numbers is   '''50'''   (as of September, 2018),   and the largest known perfect number contains over '''46''' million decimal digits. 
+The number of   ''known''   perfect numbers is   '''50'''   (as of September, 2018),   and the largest known perfect number contains over '''46''' million decimal digits.
 
 
 ;See also:
@@ -44,9 +44,9 @@ The number of   ''known''   perfect numbers is   '''50'''   (as of September, 20
 ### Simple code
 
 {{trans|PL/I}}
-For maximum compatibility, this program uses only the basic instruction set (S/360) 
-and two ASSIST macros (XDECO,XPRNT) to keep it as short as possible. 
-The only added optimization is the loop up to n/2 instead of n-1. 
+For maximum compatibility, this program uses only the basic instruction set (S/360)
+and two ASSIST macros (XDECO,XPRNT) to keep it as short as possible.
+The only added optimization is the loop up to n/2 instead of n-1.
 With 31 bit integers the limit is 2,147,483,647.
 
 ```360asm
@@ -143,7 +143,7 @@ ELOOPI   L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
-PERFECT  EQU    *                  function perfect(n); 
+PERFECT  EQU    *                  function perfect(n);
          ZAP    N,0(8,R1)          n=%r1
          CP     N,=P'6'            if n=6
          BNE    NOT6
@@ -247,8 +247,8 @@ PROC is perfect = (INT candidate)BOOL: (
         sum +:= f2
       FI
     FI;
-# WHILE # sum <= candidate DO 
-    SKIP 
+# WHILE # sum <= candidate DO
+    SKIP
   OD;
   sum=candidate
 );
@@ -284,7 +284,7 @@ begin
     % n must be > 0                                                %
     logical procedure isPerfect ( integer value candidate ) ;
         begin
-            integer sum; 
+            integer sum;
             sum    := 1;
             for f1 := 2 until round( sqrt( candidate ) ) do begin
                 if candidate rem f1 = 0 then begin
@@ -326,31 +326,31 @@ end.
 
 -- perfect :: integer -> bool
 on perfect(n)
-    
+
     -- isFactor :: integer -> bool
     script isFactor
         on |λ|(x)
             n mod x = 0
         end |λ|
     end script
-    
+
     -- quotient :: number -> number
     script quotient
         on |λ|(x)
             n / x
         end |λ|
     end script
-    
+
     -- sum :: number -> number -> number
     script sum
         on |λ|(a, b)
             a + b
         end |λ|
     end script
-    
+
     -- Integer factors of n below the square root
     set lows to filter(isFactor, enumFromTo(1, (n ^ (1 / 2)) as integer))
-    
+
     -- low and high factors (quotients of low factors) tested for perfection
     (n > 1) and (foldl(sum, 0, (lows & map(quotient, lows))) / 2 = n)
 end perfect
@@ -358,11 +358,11 @@ end perfect
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     filter(perfect, enumFromTo(1, 10000))
-    
+
     --> {6, 28, 496, 8128}
-    
+
 end run
 
 
@@ -419,7 +419,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -588,7 +588,7 @@ Call this subroutine and it will (eventually) return <tt>PERFECT</tt> = 1 if <tt
         IF FNperfect(n%) PRINT n%
       NEXT
       END
-      
+
       DEF FNperfect(N%)
       LOCAL I%, S%
       S% = 1
@@ -621,7 +621,7 @@ Call this subroutine and it will (eventually) return <tt>PERFECT</tt> = 1 if <tt
       [OPT 2 :.S% xor edi,edi
       .perloop mov eax,ebx : cdq : div ecx : or edx,edx : loopnz perloop : inc ecx
       add edi,ecx : add edi,eax : loop perloop : mov eax,edi : shr eax,1 : ret : ]
-      
+
       FOR B% = 2 TO 35000000 STEP 2
         C% = SQRB%
         IF B% = USRS% PRINT B%
@@ -720,15 +720,15 @@ int main()
 {
 	int j;
 	ulong fac[10000], n, sum;
- 
+
 	sieve();
- 
+
 	for (n = 2; n < 33550337; n++) {
 		j = get_factors(n, fac) - 1;
 		for (sum = 0; j && sum <= n; sum += fac[--j]);
 		if (sum == n) printf("%lu\n", n);
 	}
- 
+
 	return 0;
 }
 ```
@@ -751,7 +751,7 @@ static void Main(string[] args)
 	Console.ReadLine();
 }
 
-static bool IsPerfect(int num) 
+static bool IsPerfect(int num)
 {
 	int sum = 0;
 	for (int i = 1; i < num; i++)
@@ -780,7 +780,7 @@ static void Main(string[] args)
 	Console.ReadLine();
 }
 
-static bool IsPerfect(int num) 
+static bool IsPerfect(int num)
 {
 	return Enumerable.Range(1, num - 1).Sum(n => num % n == 0 ? n : 0 ) == num;
 }
@@ -792,25 +792,25 @@ static bool IsPerfect(int num)
 
 {{works with|gcc}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 using namespace std ;
 
-int divisor_sum( int number ) { 
-   int sum = 0 ; 
-   for ( int i = 1 ; i < number ; i++ ) 
-      if ( number % i == 0 ) 
-         sum += i ; 
-   return sum; 
+int divisor_sum( int number ) {
+   int sum = 0 ;
+   for ( int i = 1 ; i < number ; i++ )
+      if ( number % i == 0 )
+         sum += i ;
+   return sum;
 }
 
-int main( ) { 
+int main( ) {
    cout << "Perfect numbers from 1 to 33550337:\n" ;
-   for ( int num = 1 ; num < 33550337 ; num++ ) { 
-      if (divisor_sum(num) == num) 
+   for ( int num = 1 ; num < 33550337 ; num++ ) {
+      if (divisor_sum(num) == num)
          cout << num << '\n' ;
-   }   
-   return 0 ; 
+   }
+   return 0 ;
 }
 
 ```
@@ -861,7 +861,7 @@ Optimized version, for fun.
 ```coffeescript
 is_perfect_number = (n) ->
   do_factors_add_up_to n, 2*n
-  
+
 do_factors_add_up_to = (n, desired_sum) ->
   # We mildly optimize here, by taking advantage of
   # the fact that the sum_of_factors( (p^m) * x)
@@ -880,11 +880,11 @@ do_factors_add_up_to = (n, desired_sum) ->
     curr_power *= p
     sum_powers += curr_power
     n /= p
-  
+
   # if desired_sum does not divide sum_powers, we
   # can short circuit quickly
   return false unless desired_sum % sum_powers == 0
-  
+
   # otherwise, recurse
   do_factors_add_up_to n, desired_sum / sum_powers
 
@@ -894,7 +894,7 @@ smallest_prime_factor = (n) ->
     return i if n % i == 0
 
 # tests
-do -> 
+do ->
   # This is pretty fast...
   for n in [2..100000]
     console.log n if is_perfect_number n
@@ -914,7 +914,7 @@ do ->
 
 ```txt
 
-> coffee perfect_numbers.coffee 
+> coffee perfect_numbers.coffee
 6
 28
 496
@@ -932,10 +932,10 @@ main.cbl:
 
 ```cobol
       $set REPOSITORY "UPDATE ON"
-       
+
        IDENTIFICATION DIVISION.
        PROGRAM-ID. perfect-main.
-       
+
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
        REPOSITORY.
@@ -943,15 +943,15 @@ main.cbl:
            .
        DATA DIVISION.
        WORKING-STORAGE SECTION.
-       01  i                      PIC 9(8).  
-       
+       01  i                      PIC 9(8).
+
        PROCEDURE DIVISION.
            PERFORM VARYING i FROM 2 BY 1 UNTIL 33550337 = i
                IF FUNCTION perfect(i) = 0
                    DISPLAY i
                END-IF
            END-PERFORM
-       
+
            GOBACK
            .
        END PROGRAM perfect-main.
@@ -963,38 +963,38 @@ perfect.cbl:
 ```cobol
        IDENTIFICATION DIVISION.
        FUNCTION-ID. perfect.
-       
+
        DATA DIVISION.
        LOCAL-STORAGE SECTION.
        01  max-val                 PIC 9(8).
        01  total                   PIC 9(8) VALUE 1.
        01  i                       PIC 9(8).
        01  q                       PIC 9(8).
-       
+
        LINKAGE SECTION.
        01  n                       PIC 9(8).
        01  is-perfect              PIC 9.
-       
+
        PROCEDURE DIVISION USING VALUE n RETURNING is-perfect.
            COMPUTE max-val = FUNCTION INTEGER(FUNCTION SQRT(n)) + 1
-           
+
            PERFORM VARYING i FROM 2 BY 1 UNTIL i = max-val
                IF FUNCTION MOD(n, i) = 0
                    ADD i TO total
-                   
+
                    DIVIDE n BY i GIVING q
                    IF q > i
                        ADD q TO total
                    END-IF
                END-IF
            END-PERFORM
-           
+
            IF total = n
                MOVE 0 TO is-perfect
            ELSE
                MOVE 1 TO is-perfect
            END-IF
-           
+
            GOBACK
            .
        END FUNCTION perfect.
@@ -1087,7 +1087,7 @@ With a <code>33_550_337.iota</code> it outputs:
 ## Dart
 
 
-###  Explicit Iterative Version 
+###  Explicit Iterative Version
 
 
 ```d
@@ -1118,7 +1118,7 @@ bool isPerfect(int n){
 
 
 
-###  Compact Version 
+###  Compact Version
 
 {{trans|Julia}}
 
@@ -1261,13 +1261,13 @@ ELENA 4.x:
 import system'routines;
 import system'math;
 import extensions;
- 
+
 extension extension
 {
     isPerfect()
         = new Range(1, self - 1).selectBy:(n => (self.mod:n == 0).iif(n,0) ).summarize(new Integer()) == self;
 }
- 
+
 public program()
 {
     for(int n := 1, n < 10000, n += 1)
@@ -1275,7 +1275,7 @@ public program()
         if(n.isPerfect())
             { console.printLine(n," is perfect") }
     };
- 
+
     console.readChar()
 }
 ```
@@ -1302,7 +1302,7 @@ defmodule RC do
   def is_perfect(n) when n > 1 do
     Enum.sum(factor(n, 2, [1])) == n
   end
-  
+
   defp factor(n, i, factors) when n <  i*i   , do: factors
   defp factor(n, i, factors) when n == i*i   , do: [i | factors]
   defp factor(n, i, factors) when rem(n,i)==0, do: factor(n, i+1, [i, div(n,i) | factors])
@@ -1463,7 +1463,7 @@ Function isPerfect(n As Integer) As Boolean
        q = n \ i
        If q > i Then sum += q
      End If
-   Next 
+   Next
    Return n = sum
 End Function
 
@@ -1652,8 +1652,8 @@ isPerfect n =
        (sum
           (lows ++
            [ y
-           | x <- lows 
-           , let y = quot n x 
+           | x <- lows
+           , let y = quot n x
            , x /= y ]))
        2
 
@@ -1699,7 +1699,7 @@ write("Done.")
 end
 
 procedure isperfect(n)         #: returns n if n is perfect
-local sum,i 
+local sum,i
 
 every (sum := 0) +:= (n ~= divisors(n))
 if sum = n then return n
@@ -1709,7 +1709,7 @@ link factors
 ```
 
 
-{{libheader|Icon Programming Library}} [http://www.cs.arizona.edu/icon/library/src/procs/factors.icn Uses divisors from factors] 
+{{libheader|Icon Programming Library}} [http://www.cs.arizona.edu/icon/library/src/procs/factors.icn Uses divisors from factors]
 
 {{Out}}
 
@@ -1927,7 +1927,7 @@ We can always replace it with a more general monadic bind (chain) function, whic
 
   return chain(
     rng(nFrom, nTo),
-    
+
     function mPerfect(n) {
       return (chain(
         rng(1, Math.floor(Math.sqrt(n))),
@@ -1938,7 +1938,7 @@ We can always replace it with a more general monadic bind (chain) function, whic
         return a + x;
       }, 0) / 2 === n) ? [n] : [];
     }
-    
+
   );
 
   /******************************************************************/
@@ -2059,7 +2059,7 @@ perfects(10000) = [6, 28, 496, 8128]
    perfect:{(x>2)&x=+/-1_{d:&~x!'!1+_sqrt x;d,_ x%|d}x}
    perfect 33550336
 1
-     
+
    a@&perfect'a:!10000
 6 28 496 8128
 
@@ -2097,13 +2097,13 @@ fun isPerfect(n: Int): Boolean = when {
                 }
             }
             n == tot
-        }  
+        }
     }
 
 fun main(args: Array<String>) {
-    // expect a run time of about 6 minutes on a typical laptop 
+    // expect a run time of about 6 minutes on a typical laptop
     println("The first five perfect numbers are:")
-    for (i in 2 .. 33550336) if (isPerfect(i)) print("$i ")    
+    for (i in 2 .. 33550336) if (isPerfect(i)) print("$i ")
 }
 ```
 
@@ -2129,7 +2129,7 @@ The first five perfect numbers are:
 
 ```lasso
 #!/usr/bin/lasso9
- 
+
 define isPerfect(n::integer) => {
   #n < 2 ? return false
   return #n == (
@@ -2238,7 +2238,7 @@ Module PerfectNumbers {
             if  n mod i=0 then t=n div i :i=max.data(n div t, i): s+=t+ i
             i++
             }
-            =n=s 
+            =n=s
       }
       Inventory Known1=2@, 3@
       IsPrime=lambda  Known1 (x as decimal) -> {
@@ -2258,8 +2258,8 @@ Module PerfectNumbers {
       \\ Check a perfect and a non perfect number
       p=2 : n=3 : n1=2
       Document Doc$
-      IsPerfect( 0, 28)      
-      IsPerfect( 0, 1544)      
+      IsPerfect( 0, 28)
+      IsPerfect( 0, 1544)
       While p<32  { ' max 32
             if isprime(2^p-1@) then {
                    perf=(2^p-1@)*2@^(p-1@)
@@ -2277,7 +2277,7 @@ Module PerfectNumbers {
             }
             p++
       }
-      
+
       Clipboard Doc$
       \\ exit here. No need for Exit statement
       Sub IsPerfect(factors, n)
@@ -2294,9 +2294,9 @@ Module PerfectNumbers {
             Doc$=a$+{
             }
             Print a$
-      End Sub      
+      End Sub
 }
-  
+
 PerfectNumbers
 
 ```
@@ -2347,7 +2347,7 @@ for(`x',`2',`33550336',
 
 
 ## Maple
- 
+
 
 ```Maple
 isperfect := proc(n) return evalb(NumberTheory:-SumOfDivisors(n) = 2*n); end proc:
@@ -2356,7 +2356,7 @@ isperfect(6);
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 Custom function:
 
 ```Mathematica
@@ -2371,7 +2371,7 @@ PerfectQ[128]
 Flatten[PerfectQ/@Range[10000]//Position[#,True]&]
 ```
 
-gives back: 
+gives back:
 
 ```Mathematica
 True
@@ -2467,7 +2467,7 @@ fn isPerfect n =
 
 For n = 2 To 10000 Step 2
   VerifyIfPerfect()
-  If isPerfect = 1 Then 
+  If isPerfect = 1 Then
     TextWindow.WriteLine(n)
   EndIf
 EndFor
@@ -2475,24 +2475,24 @@ EndFor
 Sub VerifyIfPerfect
   s = 1
   sqrN = Math.SquareRoot(n)
-  If Math.Remainder(n, 2) = 0 Then 
+  If Math.Remainder(n, 2) = 0 Then
     s = s + 2 + Math.Floor(n / 2)
-  EndIf  
+  EndIf
   i = 3
   while i <= sqrN - 1
-    If Math.Remainder(n, i) = 0 Then 
+    If Math.Remainder(n, i) = 0 Then
       s = s + i + Math.Floor(n / i)
-    EndIf  
+    EndIf
     i = i + 1
   EndWhile
-  If i * i = n Then 
+  If i * i = n Then
     s = s + i
-  EndIf  
+  EndIf
   If n = s Then
     isPerfect = 1
   Else
     isPerfect = 0
-  EndIf  
+  EndIf
 EndSub
 
 ```
@@ -2576,26 +2576,26 @@ for i in 2..10_000:
 
 
 ```objeck
-bundle Default {  
+bundle Default {
   class Test {
     function : Main(args : String[]) ~ Nil {
       "Perfect numbers from 1 to 33550337:"->PrintLine();
-      for(num := 1 ; num < 33550337; num += 1;) { 
+      for(num := 1 ; num < 33550337; num += 1;) {
         if(IsPerfect(num)) {
           num->PrintLine();
         };
       };
     }
-		
+
     function : native : IsPerfect(number : Int) ~ Bool {
-      sum := 0 ; 
+      sum := 0 ;
       for(i := 1; i < number; i += 1;) {
-        if (number % i = 0) { 
+        if (number % i = 0) {
           sum += i;
         };
-      };   
-      
-      return sum = number; 
+      };
+
+      return sum = number;
     }
   }
 }
@@ -2637,7 +2637,7 @@ let perf n = n = List.fold_left (+) 0 (List.filter (fun i -> n mod i = 0) (1 -- 
 
 
 ```Oforth
-: isPerfect(n)  | i | 0 n 2 / loop: i [ n i mod ifZero: [ i + ] ] n == ; 
+: isPerfect(n)  | i | 0 n 2 / loop: i [ n i mod ifZero: [ i + ] ] n == ;
 ```
 
 
@@ -2773,10 +2773,10 @@ program PerfectNumbers;
 
 var
  candidate: longint;
-  
+
 begin
  writeln('Perfect numbers from 1 to 33550337:');
- for candidate := 2 to 33550337 do       
+ for candidate := 2 to 33550337 do
    if isPerfect(candidate) then
     writeln (candidate, ' is a perfect number.');
 end.
@@ -2800,7 +2800,7 @@ Perfect numbers from 1 to 33550337:
 ## Perl
 
 
-###  Functions 
+###  Functions
 
 
 ```perl
@@ -2828,7 +2828,7 @@ sub perf {
 ```
 
 
-###  Modules 
+###  Modules
 
 The functions above are terribly slow.  As usual, this is easier and faster with modules.  Both ntheory and Math::Pari have useful functions for this.
 {{libheader|ntheory}}
@@ -2980,7 +2980,7 @@ end for
 ```
 
 
-###  gmp version 
+###  gmp version
 
 {{libheader|mpfr}}
 
@@ -3124,8 +3124,8 @@ Works with SWI-Prolog
 ```Prolog
 tt_divisors(X, N, TT) :-
 	Q is X / N,
-	(   0 is X mod N -> (Q = N -> TT1 is N + TT; 
-                             TT1 is N + Q + TT); 
+	(   0 is X mod N -> (Q = N -> TT1 is N + TT;
+                             TT1 is N + Q + TT);
             TT = TT1),
 	(   sqrt(X) > N + 1 -> N1 is N+1, tt_divisors(X, N1, TT1);
 	    TT1 = X).
@@ -3241,7 +3241,7 @@ f_compose_1(F,G, \X^Z^(call(G,X,Y), call(F,Y,Z))).
 ```PureBasic
 Procedure is_Perfect_number(n)
   Protected summa, i=1, result=#False
-  Repeat  
+  Repeat
     If Not n%i
       summa+i
     EndIf
@@ -3346,7 +3346,7 @@ is.perf <- function(n){
 	x <- n %% s
 	m <- data.frame(s,x)
 	out <- with(m, s[x==0])
-	return(sum(out)==n)	
+	return(sum(out)==n)
 }
 # Usage - Warning High Memory Usage
 is.perf(28)
@@ -3363,7 +3363,7 @@ sapply(c(6,28,496,8128,33550336),is.perf)
 (require math)
 
 (define (perfect? n)
-  (= 
+  (=
    (* n 2)
    (sum (divisors n))))
 
@@ -3428,9 +3428,9 @@ return sum=n
 
 ### Classic REXX version of PL/I
 
-This version is a '''Classic REXX''' version of the '''PL/I''' program as of 14-Sep-2013,   a REXX   '''say'''   statement 
+This version is a '''Classic REXX''' version of the '''PL/I''' program as of 14-Sep-2013,   a REXX   '''say'''   statement
 
-was added to display the perfect numbers.   Also, an epilog was written for the re-worked function. 
+was added to display the perfect numbers.   Also, an epilog was written for the re-worked function.
 
 ```rexx
 /*REXX version of the  PL/I  program  (code was modified to run with Classic REXX).     */
@@ -3626,7 +3626,7 @@ isPerfect: procedure expose @.;  parse arg x     /*obtain the number to be teste
 '''output'''   is the same as the traditional version   and is about   '''75'''   times faster   (testing '''34,000,000''' numbers).
 
 ===Lucas-Lehmer + other optimizations===
-This version uses the Lucas-Lehmer method, digital roots, and restricts itself to   ''even''   numbers, and 
+This version uses the Lucas-Lehmer method, digital roots, and restricts itself to   ''even''   numbers, and
 
 also utilizes a check for the last-two-digits as per François Édouard Anatole Lucas (in 1891).
 
@@ -3684,7 +3684,7 @@ isPerfect: procedure expose @. !. ?              /*expose (make global) some var
            return s==x                           /*if the sum matches X,  then perfect! */
 ```
 
-'''output'''   is the same as the traditional version   and is about   '''500'''   times faster   (testing '''34,000,000''' numbers). 
+'''output'''   is the same as the traditional version   and is about   '''500'''   times faster   (testing '''34,000,000''' numbers).
 
 
 
@@ -3697,12 +3697,12 @@ isPerfect: procedure expose @. !. ?              /*expose (make global) some var
 for i = 1 to 10000
     if perfect(i) see i + nl ok
 next
- 
+
 func perfect n
      sum = 0
      for i = 1 to n - 1
          if n % i = 0 sum = sum + i ok
-     next 
+     next
 if sum = n return 1 else return 0 ok
 return sum
 
@@ -3771,7 +3771,7 @@ require "prime"
 def mersenne_prime_pow?(p)
   # Lucas-Lehmer test; expects prime as argument
   return true  if p == 2
-  m_p = ( 1 << p ) - 1 
+  m_p = ( 1 << p ) - 1
   s = 4
   (p-2).times{ s = (s**2 - 2) % m_p }
   s == 0
@@ -3789,7 +3789,7 @@ end
 p (1..10000).select{|num| perfect?(num)}
 t1 = Time.now
 p perfect?(13164036458569648337239753460458722910223472318386943117783728128)
-p Time.now - t1  
+p Time.now - t1
 
 ```
 
@@ -3843,14 +3843,14 @@ fn main ( ) {
 	    		v.push(x);      //add x to the array
 	    	}
 	    }
-    let mut sum = v.iter().sum(); //iterate over array and sum it up 
+    let mut sum = v.iter().sum(); //iterate over array and sum it up
     return sum;
     }
-    
+
     fn perfect_nums(n: i32) {
     	for x in 2..n {       //test numbers from 1-n
     		if factor_sum(x) == x {//call factor_sum on each value of x, if return value is = x
-    			println!("{} is a perfect number.", x); //print value of x 
+    			println!("{} is a perfect number.", x); //print value of x
     		}
     	}
     }
@@ -3867,10 +3867,10 @@ Copied from the SASL manual, page 22:
 
 ```SASL
 
-|| The function which takes a number and returns a list of its factors (including one but excluding itself) 
+|| The function which takes a number and returns a list of its factors (including one but excluding itself)
 || can be written
 factors n = { a <- 1.. n/2; n rem a = 0 }
-|| If we define a perfect number as one which is equal to the sum of its factors (for example 6 = 3 + 2 + 1 is perfect) 
+|| If we define a perfect number as one which is equal to the sum of its factors (for example 6 = 3 + 2 + 1 is perfect)
 || we can write the list of all perfect numbers as
 perfects = { n <- 1... ; n = sum(factors n) }
 
@@ -3886,11 +3886,11 @@ def perfectInt(input: Int) = ((2 to sqrt(input).toInt).collect {case x if input 
 ```
 
 
-'''or''' 
+'''or'''
 
 
 ```scala
-def perfect(n: Int) = 
+def perfect(n: Int) =
   (for (x <- 2 to n/2 if n % x == 0) yield x).sum + 1 == n
 
 ```
@@ -3939,7 +3939,7 @@ const func boolean: isPerfect (in integer: n) is func
     end for;
     isPerfect := sum = n;
   end func;
- 
+
 const proc: main is func
   local
     var integer: n is 0;
@@ -4054,7 +4054,7 @@ Integer extend [
         (self rem: i) = 0
         ifTrue: [ |q|
                   tot := tot + i.
-                  q := self // i. 
+                  q := self // i.
                   q > i ifTrue: [ tot := tot + q ]
         ]
      ].
@@ -4192,10 +4192,10 @@ End Sub
 {{out}}
 
 ```txt
- 6 
- 28 
- 496 
- 8128 
+ 6
+ 28
+ 496
+ 8128
 ```
 
 

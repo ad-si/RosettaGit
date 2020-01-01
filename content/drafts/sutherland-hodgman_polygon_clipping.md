@@ -12,7 +12,7 @@ tags = []
 
 {{task|Graphics algorithms}}
 
-The   [[wp:Sutherland-Hodgman clipping algorithm|Sutherland-Hodgman clipping algorithm]]   finds the polygon that is the intersection between an arbitrary polygon (the “subject polygon”) and a convex polygon (the “clip polygon”). 
+The   [[wp:Sutherland-Hodgman clipping algorithm|Sutherland-Hodgman clipping algorithm]]   finds the polygon that is the intersection between an arbitrary polygon (the “subject polygon”) and a convex polygon (the “clip polygon”).
 
 It is used in computer graphics (especially 2D graphics) to reduce the complexity of a scene being displayed by eliminating parts of a polygon that do not need to be displayed.
 
@@ -27,7 +27,7 @@ Print the sequence of points that define the resulting clipped polygon.
 
 
 ;Extra credit:
-Display all three polygons on a graphical surface, using a different color for each polygon and filling the resulting polygon. 
+Display all three polygons on a graphical surface, using a different color for each polygon and filling the resulting polygon.
 
 (When displaying you may use either a north-west or a south-west origin, whichever is more convenient for your display mechanism.)
 
@@ -180,20 +180,20 @@ end Main;
 ```bbcbasic
       VDU 23,22,200;200;8,16,16,128
       VDU 23,23,2;0;0;0;
-      
+
       DIM SubjPoly{(8) x, y}
       DIM ClipPoly{(3) x, y}
       FOR v% = 0 TO 8 : READ SubjPoly{(v%)}.x, SubjPoly{(v%)}.y : NEXT
       DATA 50,150,200,50,350,150,350,300,250,300,200,250,150,350,100,250,100,200
       FOR v% = 0 TO 3 : READ ClipPoly{(v%)}.x, ClipPoly{(v%)}.y : NEXT
       DATA 100,100, 300,100, 300,300, 100,300
-      
+
       GCOL 4 : PROCplotpoly(SubjPoly{()}, 9)
       GCOL 1 : PROCplotpoly(ClipPoly{()}, 4)
       nvert% = FNsutherland_hodgman(SubjPoly{()}, ClipPoly{()}, Clipped{()})
       GCOL 2 : PROCplotpoly(Clipped{()}, nvert%)
       END
-      
+
       DEF FNsutherland_hodgman(subj{()}, clip{()}, RETURN out{()})
       LOCAL i%, j%, n%, o%, p1{}, p2{}, s{}, e{}, p{}, inp{()}
       DIM p1{x,y}, p2{x,y}, s{x,y}, e{x,y}, p{x,y}
@@ -229,11 +229,11 @@ end Main;
         p1{} = p2{}
       NEXT i%
       = o%
-      
+
       REM Which side of the line p1-p2 is the point p?
       DEF FNside(p{}, p1{}, p2{})
       =  (p2.x - p1.x) * (p.y - p1.y) > (p2.y - p1.y) * (p.x - p1.x)
-      
+
       REM Find the intersection of two lines p1-p2 and p3-p4
       DEF PROCintersection(p1{}, p2{}, p3{}, p4{}, p{})
       LOCAL a{}, b{}, k, l, m : DIM a{x,y}, b{x,y}
@@ -245,7 +245,7 @@ end Main;
       p.x =  m * (k * b.x - l * a.x)
       p.y =  m * (k * b.y - l * a.y)
       ENDPROC
-      
+
       REM plot a polygon
       DEF PROCplotpoly(poly{()}, n%)
       LOCAL i%
@@ -264,8 +264,8 @@ end Main;
 
 Most of the code is actually storage util routines, such is C.  Prints out nodes, and writes test.eps file in current dir.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -320,8 +320,8 @@ int line_sect(vec x0, vec x1, vec y0, vec y1, vec res)
 	return 1;
 }
 
-/* 
-###  polygon stuff 
+/*
+###  polygon stuff
  */
 typedef struct { int len, alloc; vec v; } poly_t, *poly;
 
@@ -1177,7 +1177,7 @@ It also outputs an EPS file, the same as the C entry.
 ```elixir
 defmodule SutherlandHodgman do
   defp inside(cp1, cp2, p), do: (cp2.x-cp1.x)*(p.y-cp1.y) > (cp2.y-cp1.y)*(p.x-cp1.x)
-  
+
   defp intersection(cp1, cp2, s, e) do
     {dcx, dcy} = {cp1.x-cp2.x, cp1.y-cp2.y}
     {dpx, dpy} = {s.x-e.x, s.y-e.y}
@@ -1186,7 +1186,7 @@ defmodule SutherlandHodgman do
     n3 = 1.0 / (dcx*dpy - dcy*dpx)
     %{x: (n1*dpx - n2*dcx) * n3, y: (n1*dpy - n2*dcy) * n3}
   end
-  
+
   def polygon_clipping(subjectPolygon, clipPolygon) do
     Enum.chunk([List.last(clipPolygon) | clipPolygon], 2, 1)
     |> Enum.reduce(subjectPolygon, fn [cp1,cp2],acc ->
@@ -1238,8 +1238,8 @@ SutherlandHodgman.polygon_clipping(subjectPolygon, clipPolygon)
 ## Fortran
 
 Infos:
-The polygons are fortran type with an allocatable array "vertex" that contains the vertices and an integer n that is the size of the polygon. For any polygon, the first vertex and the last vertex have to be the same. 
-As you will see, in the main function, we allocate the vertex array of the result polygon with its maximal size. 
+The polygons are fortran type with an allocatable array "vertex" that contains the vertices and an integer n that is the size of the polygon. For any polygon, the first vertex and the last vertex have to be the same.
+As you will see, in the main function, we allocate the vertex array of the result polygon with its maximal size.
 
 ```Fortran
 
@@ -1254,25 +1254,25 @@ module SutherlandHodgmanUtil
     integer :: n
     double precision, dimension(:,:), allocatable :: vertex
   end type polygon
-  
-  contains 
-  
+
+  contains
+
   ! -------------------------------------------------------- !
   subroutine sutherlandHodgman( ref, clip, outputPolygon )
     ! Sutherland Hodgman algorithm for 2d polygons
-  
+
     ! -- parameters of the subroutine --
     type(polygon) :: ref, clip, outputPolygon
-  
+
     ! -- variables used is the subroutine
-    type(polygon) :: workPolygon               ! polygon clipped step by step 
+    type(polygon) :: workPolygon               ! polygon clipped step by step
     double precision, dimension(2) :: y1,y2    ! vertices of edge to clip workPolygon
-    integer :: i  
-  
+    integer :: i
+
     ! allocate workPolygon with the maximal possible size
     !   the sum of the size of polygon ref and clip
     allocate(workPolygon%vertex( ref%n+clip%n , 2 ))
-    
+
     !  initialise the work polygon with clip
     workPolygon%n = clip%n
     workPolygon%vertex(1:workPolygon%n,:) = clip%vertex(1:workPolygon%n,:)
@@ -1280,31 +1280,31 @@ module SutherlandHodgmanUtil
     do i=1,ref%n-1 ! for each edge i of the polygon ref
       y1(:) = ref%vertex(i,:)   !  vertex 1 of edge i
       y2(:) = ref%vertex(i+1,:) !  vertex 2 of edge i
-  
+
       ! clip the work polygon by edge i
       call edgeClipping( workPolygon, y1, y2, outputPolygon)
       ! workPolygon <= outputPolygon
       workPolygon%n = outputPolygon%n
       workPolygon%vertex(1:workPolygon%n,:) = outputPolygon%vertex(1:workPolygon%n,:)
 
-    end do 
+    end do
     deallocate(workPolygon%vertex)
   end subroutine sutherlandHodgman
-  
+
   ! -------------------------------------------------------- !
   subroutine edgeClipping( poly, y1, y2, outputPoly )
     ! make the clipping  of the polygon by the line (x1x2)
-    
+
     type(polygon) :: poly, outputPoly
     double precision, dimension(2) :: y1, y2, x1, x2, intersecPoint
     integer ::  i, c
-    
+
     c = 0 ! counter for the output polygon
-    
+
     do i=1,poly%n-1 ! for each edge i of poly
       x1(:) = poly%vertex(i,:)   ! vertex 1 of edge i
       x2(:) = poly%vertex(i+1,:) ! vertex 2 of edge i
-      
+
       if ( inside(x1, y1, y2) ) then ! if vertex 1 in inside clipping region
         if ( inside(x2, y1, y2) ) then ! if vertex 2 in inside clipping region
           ! add the vertex 2 to the output polygon
@@ -1321,16 +1321,16 @@ module SutherlandHodgmanUtil
           intersecPoint = intersection(x1, x2, y1,y2)
           c = c+1
           outputPoly%vertex(c,:) = intersecPoint(:)
-          
+
           c = c+1
           outputPoly%vertex(c,:) = x2(:)
         end if
       end if
     end do
-    
+
     if (c .gt. 0) then
       ! if the last vertice is not equal to the first one
-      if ( (outputPoly%vertex(1,1) .ne. outputPoly%vertex(c,1)) .or. & 
+      if ( (outputPoly%vertex(1,1) .ne. outputPoly%vertex(c,1)) .or. &
            (outputPoly%vertex(1,2) .ne. outputPoly%vertex(c,2)))  then
         c=c+1
         outputPoly%vertex(c,:) = outputPoly%vertex(1,:)
@@ -1339,20 +1339,20 @@ module SutherlandHodgmanUtil
     ! set the size of the outputPolygon
     outputPoly%n = c
   end subroutine edgeClipping
-  
+
   ! -------------------------------------------------------- !
   function intersection( x1, x2, y1, y2)
-    ! computes the intersection between segment [x1x2] 
-    ! and line the line (y1y2) 
+    ! computes the intersection between segment [x1x2]
+    ! and line the line (y1y2)
 
     ! -- parameters of the function --
     double precision, dimension(2) :: x1, x2, &  ! points of the segment
                                       y1, y2     ! points of the line
-    
-    double precision, dimension(2) :: intersection, vx, vy, x1y1 
+
+    double precision, dimension(2) :: intersection, vx, vy, x1y1
     double precision :: a
-  
-    vx(:) = x2(:) - x1(:) 
+
+    vx(:) = x2(:) - x1(:)
     vy(:) = y2(:) - y1(:)
 
     ! if the vectors are colinear
@@ -1368,12 +1368,12 @@ module SutherlandHodgmanUtil
       ! and (y1,y2).
       ! mathematically, we want to find a in [0;1] such
       ! that :
-      !     x1 + a vx = y1 + b vy        
+      !     x1 + a vx = y1 + b vy
       ! <=> a vx = x1y1 + b vy
       ! <=> a vx^vy = x1y1^vy      , ^ is cross product
       ! <=> a = x1y1^vy / vx^vy
-     
-      x1y1(:) = y1(:) - x1(:) 
+
+      x1y1(:) = y1(:) - x1(:)
       ! we compute a
       a = crossProduct(x1y1,vy)/crossProduct(vx,vy)
       ! if a is not in [0;1]
@@ -1385,23 +1385,23 @@ module SutherlandHodgmanUtil
     end if
 
   end function intersection
-  
-  
+
+
   ! -------------------------------------------------------- !
   function inside( p, y1, y2)
     ! function that tells is the point p is at left of the line (y1y2)
-    
+
     double precision, dimension(2) :: p, y1, y2, v1, v2
     logical :: inside
     v1(:) = y2(:) -  y1(:)
-    v2(:) = p(:)  -  y1(:)  
+    v2(:) = p(:)  -  y1(:)
     if ( crossProduct(v1,v2) .ge. 0.d0) then
       inside = .true.
-    else 
+    else
       inside = .false.
     end if
-   
-   contains 
+
+   contains
   end function inside
 
   ! -------------------------------------------------------- !
@@ -1425,16 +1425,16 @@ module SutherlandHodgmanUtil
 end module SutherlandHodgmanUtil
 
 program main
-  
+
   ! load the module for S-H algorithm
   use SutherlandHodgmanUtil, only : polygon, &
                                     sutherlandHodgman, &
                                     edgeClipping
 
   type(polygon) :: p1, p2, res
-  integer :: c, n 
+  integer :: c, n
   double precision, dimension(2) :: y1, y2
-  
+
   ! when you define a polygon, the first and the last vertices have to be the same
 
   ! first polygon
@@ -1442,56 +1442,56 @@ program main
   allocate(p1%vertex(p1%n,2))
   p1%vertex(1,1)=50.d0
   p1%vertex(1,2)=150.d0
-  
+
   p1%vertex(2,1)=200.d0
   p1%vertex(2,2)=50.d0
-  
+
   p1%vertex(3,1)= 350.d0
   p1%vertex(3,2)= 150.d0
-  
+
   p1%vertex(4,1)= 350.d0
   p1%vertex(4,2)= 300.d0
-  
+
   p1%vertex(5,1)= 250.d0
   p1%vertex(5,2)= 300.d0
-  
+
   p1%vertex(6,1)= 200.d0
   p1%vertex(6,2)= 250.d0
-  
+
   p1%vertex(7,1)= 150.d0
   p1%vertex(7,2)= 350.d0
-  
+
   p1%vertex(8,1)= 100.d0
   p1%vertex(8,2)= 250.d0
-  
+
   p1%vertex(9,1)= 100.d0
   p1%vertex(9,2)= 200.d0
-  
+
   p1%vertex(10,1)=  50.d0
   p1%vertex(10,2)= 150.d0
- 
+
   y1 = (/ 100.d0, 300.d0 /)
   y2 = (/ 300.d0, 300.d0 /)
-  
+
   ! second polygon
   p2%n = 5
   allocate(p2%vertex(p2%n,2))
 
   p2%vertex(1,1)= 100.d0
   p2%vertex(1,2)= 100.d0
-  
+
   p2%vertex(2,1)= 300.d0
   p2%vertex(2,2)= 100.d0
-  
+
   p2%vertex(3,1)= 300.d0
   p2%vertex(3,2)= 300.d0
-  
+
   p2%vertex(4,1)= 100.d0
   p2%vertex(4,2)= 300.d0
-  
+
   p2%vertex(5,1)= 100.d0
   p2%vertex(5,2)= 100.d0
- 
+
   allocate(res%vertex(p1%n+p2%n,2))
   call sutherlandHodgman( p2, p1, res)
   write(*,*) "Suterland-Hodgman"
@@ -1507,19 +1507,19 @@ end program main
 
 Output:
    Suterland-Hodgman
-   300.00000000000000        300.00000000000000     
-   250.00000000000000        300.00000000000000     
-   200.00000000000000        250.00000000000000     
-   175.00000000000000        300.00000000000000     
-   125.00000000000000        300.00000000000000     
-   100.00000000000000        250.00000000000000     
-   100.00000000000000        200.00000000000000     
-   100.00000000000000        200.00000000000000     
-   100.00000000000000        116.66666666666667     
-   125.00000000000000        100.00000000000000     
-   275.00000000000000        100.00000000000000     
-   300.00000000000000        116.66666666666666     
-   300.00000000000000        300.00000000000000     
+   300.00000000000000        300.00000000000000
+   250.00000000000000        300.00000000000000
+   200.00000000000000        250.00000000000000
+   175.00000000000000        300.00000000000000
+   125.00000000000000        300.00000000000000
+   100.00000000000000        250.00000000000000
+   100.00000000000000        200.00000000000000
+   100.00000000000000        200.00000000000000
+   100.00000000000000        116.66666666666667
+   125.00000000000000        100.00000000000000
+   275.00000000000000        100.00000000000000
+   300.00000000000000        116.66666666666666
+   300.00000000000000        300.00000000000000
 
 
 ## Go
@@ -1617,7 +1617,7 @@ linesFrom pps@(_:ps) = zip pps ps
 ((x1,y1),(x2,y2)) >< ((x3,y3),(x4,y4)) =
     let (r,s) = (x1*y2-y1*x2, x3*y4-y3*x4)
         (t,u,v,w) = (x1-x2, y3-y4, y1-y2, x3-x4)
-        d = t*u-v*w 
+        d = t*u-v*w
     in ((r*w-t*s)/d, (r*u-v*s)/d)
 
 -- Intersect the line segment (p0,p1) with the clipping line's left halfspace,
@@ -1640,7 +1640,7 @@ poly <| clipLn = polyFrom $ concatMap (-| clipLn) (linesFrom poly)
 -- Intersect a target polygon with a clipping polygon.  The latter is assumed to
 -- be convex.
 clipTo :: (Fractional a, Ord a) => [Pt a] -> [Pt a] -> [Pt a]
-targPts `clipTo` clipPts = 
+targPts `clipTo` clipPts =
     let targPoly = polyFrom targPts
         clipLines = linesFrom (polyFrom clipPts)
     in foldl' (<|) targPoly clipLines
@@ -1653,7 +1653,7 @@ Print the resulting list of points and display the polygons in a window.
 import Graphics.HGL
 import SuthHodgClip
 
-targPts = [( 50,150), (200, 50), (350,150), (350,300), (250,300), 
+targPts = [( 50,150), (200, 50), (350,150), (350,300), (250,300),
            (200,250), (150,350), (100,250), (100,200)] :: [(Float,Float)]
 clipPts = [(100,100), (300,100), (300,300), (100,300)] :: [(Float,Float)]
 
@@ -1702,10 +1702,10 @@ main = do
 NB. assumes counterclockwise orientation.
 NB. determine whether point y is inside edge x.
 isinside=:0< [:-/ .* {.@[ -~"1 {:@[,:]
- 
+
 NB. (p0,:p1) intersection (p2,:p3)
 intersection=:|:@[ (+/ .* (,-.)) [:{. ,.&(-~/) %.~ -&{:
- 
+
 SutherlandHodgman=:4 :0 NB. clip S-H subject
   clip=.2 ]\ (,{.) x
   subject=.y
@@ -1883,7 +1883,7 @@ class SutherlandHodgmanPanel extends JPanel {
     <head>
 	<script>
         function clip (subjectPolygon, clipPolygon) {
-            
+
             var cp1, cp2, s, e;
             var inside = function (p) {
                 return (cp2[0]-cp1[0])*(p[1]-cp1[1]) > (cp2[1]-cp1[1])*(p[0]-cp1[0]);
@@ -1892,7 +1892,7 @@ class SutherlandHodgmanPanel extends JPanel {
                 var dc = [ cp1[0] - cp2[0], cp1[1] - cp2[1] ],
                     dp = [ s[0] - e[0], s[1] - e[1] ],
                     n1 = cp1[0] * cp2[1] - cp1[1] * cp2[0],
-                    n2 = s[0] * e[1] - s[1] * e[0], 
+                    n2 = s[0] * e[1] - s[1] * e[0],
                     n3 = 1.0 / (dc[0] * dp[1] - dc[1] * dp[0]);
                 return [(n1*dp[0] - n2*dc[0]) * n3, (n1*dp[1] - n2*dc[1]) * n3];
             };
@@ -2019,7 +2019,7 @@ println(clipped)
 ```txt
 
 Point[Point(100.0, 116.667), Point(125.0, 100.0), Point(275.0, 100.0), Point(300.0, 116.667),
-    Point(300.0, 300.0), Point(250.0, 300.0), Point(200.0, 250.0), Point(175.0, 300.0), 
+    Point(300.0, 300.0), Point(250.0, 300.0), Point(200.0, 250.0), Point(175.0, 300.0),
     Point(125.0, 300.0), Point(100.0, 250.0)]
 
 ```
@@ -2036,16 +2036,16 @@ Point[Point(100.0, 116.667), Point(125.0, 100.0), Point(275.0, 100.0), Point(300
 import java.awt.*
 import java.awt.geom.Line2D
 import javax.swing.*
- 
+
 class SutherlandHodgman : JPanel() {
     private val subject = listOf(
-        doubleArrayOf( 50.0, 150.0), doubleArrayOf(200.0,  50.0), doubleArrayOf(350.0, 150.0), 
-        doubleArrayOf(350.0, 300.0), doubleArrayOf(250.0, 300.0), doubleArrayOf(200.0, 250.0), 
+        doubleArrayOf( 50.0, 150.0), doubleArrayOf(200.0,  50.0), doubleArrayOf(350.0, 150.0),
+        doubleArrayOf(350.0, 300.0), doubleArrayOf(250.0, 300.0), doubleArrayOf(200.0, 250.0),
         doubleArrayOf(150.0, 350.0), doubleArrayOf(100.0, 250.0), doubleArrayOf(100.0, 200.0)
     )
 
     private val clipper = listOf(
-        doubleArrayOf(100.0, 100.0), doubleArrayOf(300.0, 100.0), 
+        doubleArrayOf(100.0, 100.0), doubleArrayOf(300.0, 100.0),
         doubleArrayOf(300.0, 300.0), doubleArrayOf(100.0, 300.0)
     )
 
@@ -2054,57 +2054,57 @@ class SutherlandHodgman : JPanel() {
     init {
         preferredSize = Dimension(600, 500)
         clipPolygon()
-    } 
+    }
 
     private fun clipPolygon() {
         val len = clipper.size
-        for (i in 0 until len) { 
+        for (i in 0 until len) {
             val len2 = result.size
             val input = result
-            result = mutableListOf<DoubleArray>() 
+            result = mutableListOf<DoubleArray>()
             val a = clipper[(i + len - 1) % len]
             val b = clipper[i]
- 
+
             for (j in 0 until len2) {
                 val p = input[(j + len2 - 1) % len2]
                 val q = input[j]
- 
+
                 if (isInside(a, b, q)) {
                     if (!isInside(a, b, p)) result.add(intersection(a, b, p, q))
                     result.add(q)
-                } 
+                }
                 else if (isInside(a, b, p)) result.add(intersection(a, b, p, q))
             }
         }
-    } 
+    }
 
     private fun isInside(a: DoubleArray, b: DoubleArray, c: DoubleArray) =
         (a[0] - c[0]) * (b[1] - c[1]) > (a[1] - c[1]) * (b[0] - c[0])
 
-    private fun intersection(a: DoubleArray, b: DoubleArray, 
+    private fun intersection(a: DoubleArray, b: DoubleArray,
                              p: DoubleArray, q: DoubleArray): DoubleArray {
         val a1 = b[1] - a[1]
         val b1 = a[0] - b[0]
         val c1 = a1 * a[0] + b1 * a[1]
- 
+
         val a2 = q[1] - p[1]
         val b2 = p[0] - q[0]
         val c2 = a2 * p[0] + b2 * p[1]
- 
+
         val d = a1 * b2 - a2 * b1
         val x = (b2 * c1 - b1 * c2) / d
         val y = (a1 * c2 - a2 * c1) / d
- 
+
         return doubleArrayOf(x, y)
     }
 
     override fun paintComponent(g: Graphics) {
         super.paintComponent(g)
-        val g2 = g as Graphics2D         
+        val g2 = g as Graphics2D
         g2.translate(80, 60)
         g2.stroke = BasicStroke(3.0f)
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                            RenderingHints.VALUE_ANTIALIAS_ON) 
+                            RenderingHints.VALUE_ANTIALIAS_ON)
         drawPolygon(g2, subject, Color.blue)
         drawPolygon(g2, clipper, Color.red)
         drawPolygon(g2, result, Color.green)
@@ -2150,7 +2150,7 @@ subjectPolygon = {
   {50, 150}, {200, 50}, {350, 150}, {350, 300},
   {250, 300}, {200, 250}, {150, 350}, {100, 250}, {100, 200}
 }
- 
+
 clipPolygon = {{100, 100}, {300, 100}, {300, 300}, {100, 300}}
 
 function inside(p, cp1, cp2)
@@ -2253,7 +2253,7 @@ Polygon[{{125, 100}, {100, 350/3}, {100, 200}, {100, 250}, {125, 300}, {175, 300
 ```MATLAB
 %The inputs are a table of x-y pairs for the verticies of the subject
 %polygon and boundary polygon. (x values in column 1 and y values in column
-%2) The output is a table of x-y pairs for the clipped version of the 
+%2) The output is a table of x-y pairs for the clipped version of the
 %subject polygon.
 
 function clippedPolygon = sutherlandHodgman(subjectPolygon,clipPolygon)
@@ -2265,7 +2265,7 @@ function clippedPolygon = sutherlandHodgman(subjectPolygon,clipPolygon)
 
         %this is an implementation of
         %http://en.wikipedia.org/wiki/Line-line_intersection
-        
+
         intersection = zeros(1,2);
 
         detL1 = det(line1);
@@ -2286,17 +2286,17 @@ function clippedPolygon = sutherlandHodgman(subjectPolygon,clipPolygon)
 
     %inside() assumes the boundary is oriented counter-clockwise
     function in = inside(point,boundary)
-       
+
         pointPositionVector = [diff([point;boundary(1,:)]) 0];
         boundaryVector = [diff(boundary) 0];
         crossVector = cross(pointPositionVector,boundaryVector);
-        
+
         if ( crossVector(3) <= 0 )
             in = true;
         else
             in = false;
         end
-        
+
     end %inside
 
 %% Sutherland-Hodgman Algorithm
@@ -2304,38 +2304,38 @@ function clippedPolygon = sutherlandHodgman(subjectPolygon,clipPolygon)
     clippedPolygon = subjectPolygon;
     numVerticies = size(clipPolygon,1);
     clipVertexPrevious = clipPolygon(end,:);
-    
+
     for clipVertex = (1:numVerticies)
-       
+
         clipBoundary = [clipPolygon(clipVertex,:) ; clipVertexPrevious];
-        
+
         inputList = clippedPolygon;
-        
+
         clippedPolygon = [];
         if ~isempty(inputList),
             previousVertex = inputList(end,:);
         end
-        
+
         for subjectVertex = (1:size(inputList,1))
 
             if ( inside(inputList(subjectVertex,:),clipBoundary) )
-                
-                if( not(inside(previousVertex,clipBoundary)) )  
+
+                if( not(inside(previousVertex,clipBoundary)) )
                     subjectLineSegment = [previousVertex;inputList(subjectVertex,:)];
                     clippedPolygon(end+1,1:2) = computeIntersection(clipBoundary,subjectLineSegment);
                 end
-                
+
                 clippedPolygon(end+1,1:2) = inputList(subjectVertex,:);
-                
+
             elseif( inside(previousVertex,clipBoundary) )
                     subjectLineSegment = [previousVertex;inputList(subjectVertex,:)];
-                    clippedPolygon(end+1,1:2) = computeIntersection(clipBoundary,subjectLineSegment);                            
+                    clippedPolygon(end+1,1:2) = computeIntersection(clipBoundary,subjectLineSegment);
             end
-            
+
             previousVertex = inputList(subjectVertex,:);
             clipVertexPrevious = clipPolygon(clipVertex,:);
-            
-        end %for subject verticies                
+
+        end %for subject verticies
     end %for boundary verticies
 end %sutherlandHodgman
 ```
@@ -2593,7 +2593,7 @@ function clip ($subjectPolygon, $clipPolygon) {
     function inside ($p, $cp1, $cp2) {
         return ($cp2[0]-$cp1[0])*($p[1]-$cp1[1]) > ($cp2[1]-$cp1[1])*($p[0]-$cp1[0]);
     }
-    
+
     function intersection ($cp1, $cp2, $e, $s) {
         $dc = [ $cp1[0] - $cp2[0], $cp1[1] - $cp2[1] ];
         $dp = [ $s[0] - $e[0], $s[1] - $e[1] ];
@@ -2603,7 +2603,7 @@ function clip ($subjectPolygon, $clipPolygon) {
 
         return [($n1*$dp[0] - $n2*$dc[0]) * $n3, ($n1*$dp[1] - $n2*$dc[1]) * $n3];
     }
-    
+
     $outputList = $subjectPolygon;
     $cp1 = end($clipPolygon);
     foreach ($clipPolygon as $cp2) {
@@ -2649,10 +2649,10 @@ Structure point_f
   y.f
 EndStructure
 
-Procedure isInside(*p.point_f, *cp1.point_f, *cp2.point_f)  
+Procedure isInside(*p.point_f, *cp1.point_f, *cp2.point_f)
   If (*cp2\x - *cp1\x) * (*p\y - *cp1\y) > (*cp2\y - *cp1\y) * (*p\x - *cp1\x)
     ProcedureReturn 1
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure intersection(*cp1.point_f, *cp2.point_f, *s.point_f, *e.point_f, *newPoint.point_f)
@@ -2671,7 +2671,7 @@ Procedure clip(List vPolygon.point_f(), List vClippedBy.point_f(), List vClipped
   CopyList(vPolygon(), vClippedPolygon())
   If LastElement(vClippedBy())
     cp1 = vClippedBy()
-    
+
     NewList vPreClipped.point_f()
     ForEach vClippedBy()
       cp2 = vClippedBy()
@@ -2685,18 +2685,18 @@ Procedure clip(List vPolygon.point_f(), List vClippedBy.point_f(), List vClipped
             If Not isInside(s, cp1, cp2)
               intersection(cp1, cp2, s, e, newPoint)
               AddElement(vClippedPolygon()): vClippedPolygon() = newPoint
-            EndIf 
+            EndIf
             AddElement(vClippedPolygon()): vClippedPolygon() = e
           ElseIf isInside(s, cp1, cp2)
             intersection(cp1, cp2, s, e, newPoint)
             AddElement(vClippedPolygon()): vClippedPolygon() = newPoint
-          EndIf 
+          EndIf
           s = e
         Next
-      EndIf 
+      EndIf
       cp1 = cp2
-    Next 
-  EndIf 
+    Next
+  EndIf
 EndProcedure
 
 DataSection
@@ -2709,14 +2709,14 @@ For i = 1 To 9
   AddElement(subjectPolygon())
   Read.f subjectPolygon()\x
   Read.f subjectPolygon()\y
-Next 
+Next
 
 NewList clipPolygon.point_f()
 For i = 1 To 4
   AddElement(clipPolygon())
   Read.f clipPolygon()\x
   Read.f clipPolygon()\y
-Next 
+Next
 
 NewList newPolygon.point_f()
 clip(subjectPolygon(), clipPolygon(), newPolygon())
@@ -2724,7 +2724,7 @@ If OpenConsole()
   ForEach newPolygon()
     PrintN("(" + StrF(newPolygon()\x, 2) + ", " + StrF(newPolygon()\y, 2) + ")")
   Next
-   
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2755,18 +2755,18 @@ EndIf
 def clip(subjectPolygon, clipPolygon):
    def inside(p):
       return(cp2[0]-cp1[0])*(p[1]-cp1[1]) > (cp2[1]-cp1[1])*(p[0]-cp1[0])
-      
+
    def computeIntersection():
       dc = [ cp1[0] - cp2[0], cp1[1] - cp2[1] ]
       dp = [ s[0] - e[0], s[1] - e[1] ]
       n1 = cp1[0] * cp2[1] - cp1[1] * cp2[0]
-      n2 = s[0] * e[1] - s[1] * e[0] 
+      n2 = s[0] * e[1] - s[1] * e[0]
       n3 = 1.0 / (dc[0] * dp[1] - dc[1] * dp[0])
       return [(n1*dp[0] - n2*dc[0]) * n3, (n1*dp[1] - n2*dc[1]) * n3]
 
    outputList = subjectPolygon
    cp1 = clipPolygon[-1]
-   
+
    for clipVertex in clipPolygon:
       cp2 = clipVertex
       inputList = outputList
@@ -2827,10 +2827,10 @@ Shameless rewrite of haskell version.
                       [d (- (* t u) (* v w))])
                  (point (/ (- (* r w) (* t s)) d)
                         (/ (- (* r u) (* v s)) d)))))
-  
-  ;; Intersect the line segment (p0,p1) with the clipping line's left halfspace, 
-  ;; returning the point closest to p1.  In the special case where p0 lies outside  
-  ;; the halfspace and p1 lies inside we return both the intersection point and p1.  
+
+  ;; Intersect the line segment (p0,p1) with the clipping line's left halfspace,
+  ;; returning the point closest to p1.  In the special case where p0 lies outside
+  ;; the halfspace and p1 lies inside we return both the intersection point and p1.
   ;; This ensures we will have the necessary segment along the clipping line.
 
   (define (intersect segment clip-line)
@@ -2851,7 +2851,7 @@ Shameless rewrite of haskell version.
   ;; Intersect a subject polygon with a clipping polygon.  The latter is assumed to be convex.
   (define (clip-to sp-pts cp-edges)
     (for/fold ([out-poly sp-pts]) ([clip-line cp-edges])
-      (isect-polygon (make-edges out-poly) clip-line)))) 
+      (isect-polygon (make-edges out-poly) clip-line))))
 ```
 
 
@@ -2860,16 +2860,16 @@ Shameless rewrite of haskell version.
 Testing code (Couldn't find a way to attach image with polygons)
 
 ```scheme
-(require racket/gui)  
+(require racket/gui)
 (require 'sutherland-hodgman)
 
 (define (make-points pt-list)
     (for/list ([p pt-list])
       (make-object point% (point-x p) (point-y p))))
 
-(define subject-poly-points 
-    (list (point 50 150)  (point 200 50)  (point 350 150) 
-          (point 350 300) (point 250 300) (point 200 250) 
+(define subject-poly-points
+    (list (point 50 150)  (point 200 50)  (point 350 150)
+          (point 350 300) (point 250 300) (point 200 250)
           (point 150 350) (point 100 250) (point 100 200)))
 
 (define clip-poly-points
@@ -2878,7 +2878,7 @@ Testing code (Couldn't find a way to attach image with polygons)
           (point 300 300)
           (point 100 300)))
 
-(define clip-poly-edges 
+(define clip-poly-edges
     (make-edges clip-poly-points))
 
 (define (run)
@@ -2888,22 +2888,22 @@ Testing code (Couldn't find a way to attach image with polygons)
 	 [canvas (new canvas% [parent frame])]
 	 [dc (send canvas get-dc)]
          [clipped-poly (clip-to subject-poly-points clip-poly-edges)])
-    
+
     (send frame show #t)
     (sleep/yield 1)
 
-    (send dc set-pen (make-pen 
+    (send dc set-pen (make-pen
                         #:color (send the-color-database find-color "Blue")
                         #:width 3))
     (send dc draw-polygon (make-points subject-poly-points))
-    (send dc set-pen (make-pen 
+    (send dc set-pen (make-pen
                         #:color (send the-color-database find-color "Red")
                         #:width 4
                         #:style 'long-dash))
     (send dc draw-polygon (make-points clip-poly-points))
-    (send dc set-pen (make-pen 
+    (send dc set-pen (make-pen
                         #:color (send the-color-database find-color "Green")))
-    (send dc set-brush (make-brush 
+    (send dc set-brush (make-brush
                         #:color (send the-color-database find-color "Green")
                         #:style 'solid))
     (send dc draw-polygon (make-points clipped-poly))
@@ -2957,7 +2957,7 @@ def sutherland_hodgman(subjectPolygon, clipPolygon)
     n3 = 1.0 / (dcx*dpy - dcy*dpx)
     Point[(n1*dpx - n2*dcx) * n3, (n1*dpy - n2*dcy) * n3]
   end
-  
+
   outputList = subjectPolygon
   cp1 = clipPolygon.last
   for cp2 in clipPolygon
@@ -2981,9 +2981,9 @@ end
 subjectPolygon = [[50, 150], [200, 50], [350, 150], [350, 300],
                   [250, 300], [200, 250], [150, 350], [100, 250],
                   [100, 200]].collect{|pnt| Point[*pnt]}
- 
+
 clipPolygon = [[100, 100], [300, 100], [300, 300], [100, 300]].collect{|pnt| Point[*pnt]}
- 
+
 puts sutherland_hodgman(subjectPolygon, clipPolygon)
 ```
 
@@ -3283,7 +3283,7 @@ proc cw {x0 y0 x1 y1 x2 y2} {
     set dx1 [expr {$x1 - $x0}]; set dy1 [expr {$y1 - $y0}]
     set dx2 [expr {$x2 - $x0}]; set dy2 [expr {$y2 - $y0}]
     # (0,0,$dx1*$dy2 - $dx2*$dy1) is the crossproduct of
-    # ($x1-$x0,$y1-$y0,0) and ($x2-$x0,$y2-$y0,0). 
+    # ($x1-$x0,$y1-$y0,0) and ($x2-$x0,$y2-$y0,0).
     # Its z-component is positive if the turn
     # is clockwise, negative if the turn is counterclockwise.
     set pr1 [expr {$dx1 * $dy2}]
@@ -3408,7 +3408,7 @@ grid [canvas .c -width 400 -height 400 -background \#ffffff]
 proc demonstrate {cpoly spoly} {
     set rpoly [clippoly $cpoly $spoly]
     puts $rpoly
-    .c create polygon $cpoly -outline \#ff9999 -fill {} -width 5 
+    .c create polygon $cpoly -outline \#ff9999 -fill {} -width 5
     .c create polygon $spoly -outline \#9999ff -fill {} -width 3
     .c create polygon $rpoly -fill \#99ff99 -outline black -width 1
 }
@@ -3464,7 +3464,7 @@ dibuja(clipped(), nvert - 1)
 
 sub dibuja(figura(), i)
 	local n
-	
+
 	print
 	new curve
 	for n = 0 to i
@@ -3477,12 +3477,12 @@ end sub
 
 sub FNsutherland_hodgman(subj(), clip(), out(), n)
 	local i, j, o, tclip, p1(2), p2(2), s(2), e(2), p(2), inp(n, 2)
-	
+
 	FOR o = 0 TO arraysize(subj(), 1) : out(o, CX) = subj(o, CX) : out(o, CY) = subj(o, CY) : NEXT o
-	
+
 	tclip = arraysize(clip(),1)
 	p1(CX) = clip(tclip, CX) : p1(CY) = clip(tclip, CY)
-	
+
 	FOR i = 0 TO tclip
 	    p2(CX) = clip(i, CX) : p2(CY) = clip(i, CY)
 	    FOR n = 0 TO o - 1 : inp(n, CX) = out(n, CX) : inp(n, CY) = out(n, CY) : NEXT n : o = 0
@@ -3522,7 +3522,7 @@ end sub
 
 sub PROCintersection(p1(), p2(), p3(), p4(), p())
 	LOCAL a(2), b(2), k, l, m
-	
+
 	a(CX) = p1(CX) - p2(CX) : a(CY) = p1(CY) - p2(CY)
 	b(CX) = p3(CX) - p4(CX) : b(CY) = p3(CY) - p4(CY)
 	k = p1(CX) * p2(CY) - p1(CY) * p2(CX)
@@ -3530,7 +3530,7 @@ sub PROCintersection(p1(), p2(), p3(), p4(), p())
 	m = 1 / (a(CX) * b(CY) - a(CY) * b(CX))
 	p(CX) =  m * (k * b(CX) - l * a(CX))
 	p(CY) =  m * (k * b(CY) - l * a(CY))
-	
+
 end sub
 
 

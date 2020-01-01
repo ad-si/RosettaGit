@@ -22,7 +22,7 @@ The multiplicative order of 37 relative to 1000 is 100 because 37^100 is 1 (modu
 One possible algorithm that is efficient also for large numbers is the following: By the [[wp:Chinese_Remainder_Theorem|Chinese Remainder Theorem]], it's enough to calculate the multiplicative order for each prime exponent ''p^k'' of ''m'', and
 combine the results with the ''[[least common multiple]]'' operation.
 
-Now the order of ''a'' with regard to ''p^k'' must divide ''&Phi;(p^k)''. Call this number ''t'', and determine it's factors ''q^e''. Since each multiple of the order will also yield 1 when used as exponent for ''a'', it's enough to find the least d such that ''(q^d)*(t/(q^e))'' yields 1 when used as exponent. 
+Now the order of ''a'' with regard to ''p^k'' must divide ''&Phi;(p^k)''. Call this number ''t'', and determine it's factors ''q^e''. Since each multiple of the order will also yield 1 when used as exponent for ''a'', it's enough to find the least d such that ''(q^d)*(t/(q^e))'' yields 1 when used as exponent.
 
 
 ;Task:
@@ -34,25 +34,25 @@ An algorithm for the multiplicative order can be found in Bach & Shallit, <i>Alg
 
 <p>Exercise 5.8, page 115:</p>
 
-<p>Suppose you are given a prime<tt> p </tt>and a complete factorization 
+<p>Suppose you are given a prime<tt> p </tt>and a complete factorization
 of<tt> p-1</tt>.   Show how to compute the order of an
-element<tt> a </tt>in<tt> (Z/(p))<sup>*</sup> </tt>using<tt> O((lg p)<sup>4</sup>/(lg lg p)) </tt>bit 
+element<tt> a </tt>in<tt> (Z/(p))<sup>*</sup> </tt>using<tt> O((lg p)<sup>4</sup>/(lg lg p)) </tt>bit
 operations.</p>
 
 <p>Solution, page 337:</p>
 
 <p>Let the prime factorization of<tt> p-1 </tt> be<tt> q1<sup>e1</sup>q2<sup>e2</sup>...qk<sup>ek</sup></tt> .<tt> </tt>We use the following observation:
 if<tt> x^((p-1)/qi<sup>fi</sup>) = 1 (mod p)</tt> ,<tt> </tt>
-and<tt> fi=ei </tt>or<tt> x^((p-1)/qi<sup>fi+1</sup>) != 1 (mod p)</tt> ,<tt> </tt>then<tt> qi<sup>ei-fi</sup>||ord<sub>p</sub> x</tt>.   (This follows by combining Exercises 5.1 and 2.10.) 
+and<tt> fi=ei </tt>or<tt> x^((p-1)/qi<sup>fi+1</sup>) != 1 (mod p)</tt> ,<tt> </tt>then<tt> qi<sup>ei-fi</sup>||ord<sub>p</sub> x</tt>.   (This follows by combining Exercises 5.1 and 2.10.)
 
 Hence it suffices to find, for each<tt> i</tt> ,<tt> </tt>the exponent<tt> fi </tt> such that the condition above holds.</p>
 
 <p>This can be done as follows: first compute<tt> q1<sup>e1</sup>, q2<sup>e2</sup>, ... ,
 qk<sup>ek</sup></tt> .<tt> </tt> This can be done using<tt> O((lg p)<sup>2</sup>) </tt>bit operations. Next, compute<tt> y1=(p-1)/q1<sup>e1</sup>, ... , yk=(p-1)/qk<sup>ek</sup></tt> .<tt> </tt>
-This can be done using<tt> O((lg p)<sup>2</sup>) </tt>bit operations. Now, using the binary method, 
+This can be done using<tt> O((lg p)<sup>2</sup>) </tt>bit operations. Now, using the binary method,
 compute<tt> x1=a<sup>y1</sup>(mod p), ... ,  xk=a<sup>yk</sup>(mod p) </tt>.<tt> </tt>
 This can be done using<tt> O(k(lg p)<sup>3</sup>) </tt>bit operations, and<tt> k=O((lg p)/(lg lg p)) </tt>by Theorem 8.8.10.
-Finally, for each<tt> i</tt> ,<tt> </tt>repeatedly raise<tt> xi </tt>to the<tt> qi</tt>-th power<tt> (mod p) </tt>(as many as<tt> ei-1 </tt> times), checking to see when 1 is obtained.  
+Finally, for each<tt> i</tt> ,<tt> </tt>repeatedly raise<tt> xi </tt>to the<tt> qi</tt>-th power<tt> (mod p) </tt>(as many as<tt> ei-1 </tt> times), checking to see when 1 is obtained.
 This can be done using<tt> O((lg p)<sup>3</sup>) </tt>steps.
 The total cost is dominated by<tt> O(k(lg p)<sup>3</sup>)</tt> ,<tt> </tt>which is<tt> O((lg p)<sup>4</sup>/(lg lg p))</tt>.
 
@@ -78,10 +78,10 @@ package Multiplicative_Order is
    -- faster algorithm for the same task
    -- computes the order of all Coprime_Factors(I)
    -- and returns their least common multiple
-   -- this gives the same result as Find_Order(Element, Modulus) 
+   -- this gives the same result as Find_Order(Element, Modulus)
    -- with Modulus being the product of all the Coprime_Factors(I)
    --
-   -- preconditions: (1) 1 = GCD(Coprime_Factors(I), Coprime_Factors(J)) 
+   -- preconditions: (1) 1 = GCD(Coprime_Factors(I), Coprime_Factors(J))
    --                    for all pairs I, J with I /= J
    --                (2) 1 < Coprime_Factors(I)   for all I
 
@@ -187,7 +187,7 @@ begin
 
    -- this violates the precondition, because 8 and 2 are not coprime
    -- it gives an incorrect result
-   IIO.Put(Find_Order(37, (11, 19, 8, 2))); 
+   IIO.Put(Find_Order(37, (11, 19, 8, 2)));
 end Main;
 ```
 
@@ -276,7 +276,7 @@ PROC mult0rdr1 = (LONG INT a, p, e)LONG INT: (
     LONG INT t := (p-1)*(p**SHORTEN (e-1)); #  = Phi(p**e) where p prime #
     LONG INT q;
     FLEX[0]LONG INT qs := (1);
-  # FOR          f0,f1 IN  # factored(t # DO #, 
+  # FOR          f0,f1 IN  # factored(t # DO #,
        (LONG INT f0,f1)VOID: (
             FLEX[SHORTEN((f1+1)*UPB qs)]LONG INT next qs;
             FOR j TO SHORTEN f1 + 1 DO
@@ -426,8 +426,8 @@ int main()
 
 {{trans|C}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <bitset>
 #include <iostream>
 #include <vector>
@@ -969,7 +969,7 @@ ord(3047753288) mod 2257683301 = 62713425
 
 ;; factor-exp returns a list ((p k) ..) : a = p1^k1 * p2^k2 ..
 (define (factor-exp a)
-	(map (lambda (g) (list (first g) (length g))) 
+	(map (lambda (g) (list (first g) (length g)))
 					(group* (prime-factors a))))
 
 ;; copied from Ruby
@@ -983,7 +983,7 @@ ord(3047753288) mod 2257683301 = 62713425
 	    	(*= r q)
 	    	(set! x (powmod x q pk))))
 	r)
-	
+
 (define (order a m)
         "multiplicative order : (order a m) →  n : a^n = 1 (mod m)"
 	(assert (= 1 (gcd a m)) "a and m must be coprimes")
@@ -1416,7 +1416,7 @@ function multorder(a, m)
     res = one(m)
     for (p,e) in factor(m)
         m = p^e
-        t = div(m, p) * (p-1)        
+        t = div(m, p) * (p-1)
         for f in factors(t)
             if powermod(a, f, m) == 1
                 res = lcm(res, f)
@@ -1684,11 +1684,11 @@ sub factor($a is copy) {
             take $p => $j if $j > 0;
             last if $a < $p * $p;
         }
-        
+
         take $a => 1 if $a > 1;
     }
 }
- 
+
 sub mo-prime($a, $p, $e) {
     my $m = $p ** $e;
     my $t = ($p - 1) * ($p ** ($e - 1)); #  = Phi($p**$e) where $p prime
@@ -1696,26 +1696,26 @@ sub mo-prime($a, $p, $e) {
     for factor($t) -> $f {
         @qs = flat @qs.map(-> $q { (0..$f.value).map(-> $j { $q * $f.key ** $j }) });
     }
- 
+
     @qs.sort.first(-> $q { expmod( $a, $q, $m ) == 1});
 }
- 
+
 sub mo($a, $m) {
     $a gcd $m == 1 || die "$a and $m are not relatively prime";
     [lcm] flat 1, factor($m).map(-> $r { mo-prime($a, $r.key, $r.value) });
 }
- 
+
 sub MAIN("test") {
     use Test;
-    
+
     for (10, 21, 25, 150, 1231, 123141, 34131) -> $n {
         is ([*] factor($n).map(-> $pair { $pair.key ** $pair.value })), $n, "$n factors correctly";
     }
-    
+
     is mo(37, 1000), 100, 'mo(37,1000) == 100';
     my $b = 10**20-1;
     is mo(2, $b), 3748806900, 'mo(2,10**20-1) == 3748806900';
-    is mo(17, $b), 1499522760, 'mo(17,10**20-1) == 1499522760'; 
+    is mo(17, $b), 1499522760, 'mo(17,10**20-1) == 1499522760';
     $b = 100001;
     is mo(54, $b), 9090, 'mo(54,100001) == 9090';
 }
@@ -1746,7 +1746,7 @@ ok 11 - mo(54,100001) == 9090
 
 ```Phix
 include mpfr.e
- 
+
 procedure multi_order(mpz res, a, sequence p_and_k)
     mpz pk = mpz_init(),
         t = mpz_init(),
@@ -1786,7 +1786,7 @@ procedure multi_order(mpz res, a, sequence p_and_k)
     end for
     x = mpz_free(x)
 end procedure
- 
+
 function multiplicative_order(mpz a, m)
     mpz res = mpz_init(1),
         ri = mpz_init()
@@ -1799,7 +1799,7 @@ function multiplicative_order(mpz a, m)
     end for
     return mpz_get_str(res)
 end function
- 
+
 function shorta(mpz n)
     string res = mpz_get_str(n)
     integer lr = length(res)
@@ -1809,12 +1809,12 @@ function shorta(mpz n)
     end if
     return res
 end function
- 
+
 procedure mo_test(mpz a, n)
     string res = multiplicative_order(a, n)
     printf(1,"ord(%s) mod %s = %s\n",{shorta(a),shorta(n),res})
 end procedure
- 
+
 function i(atom i) return mpz_init(i) end function -- (ugh)
 function p10(integer e,i)   -- init to 10^e+i
     mpz res = mpz_init()
@@ -1895,10 +1895,10 @@ def gcd(a, b):
     while b != 0:
         a, b = b, a % b
     return a
- 
+
 def lcm(a, b):
     return (a*b) / gcd(a, b)
- 
+
 def isPrime(p):
     return (p > 1) and all(f == p for f,e in factored(p))
 
@@ -1924,7 +1924,7 @@ def factored( a):
         if a < p*p: break
     if a > 1:
         yield (a,1)
-        
+
 
 def multOrdr1(a,(p,e) ):
     m = p**e
@@ -1938,7 +1938,7 @@ def multOrdr1(a,(p,e) ):
         if pow( a, q, m )==1: break
     return q
 
-     
+
 def multOrder(a,m):
     assert gcd(a,m) == 1
     mofs = (multOrdr1(a,r) for r in factored(m))
@@ -2084,7 +2084,7 @@ def multOrder_(a, p, k)
       r *= q
       x = powerMod(x, q, pk)
     end
-  end      
+  end
   r
 end
 
@@ -2341,7 +2341,7 @@ proc multOrdr1 {a p e} {
     set m [expr {$p ** $e}]
     set t [expr {($p - 1) * ($p ** ($e - 1))}]
     set qs [dict create 1 ""]
-    
+
     dict for {f0 f1} [factor_num $t] {
         dict for {q -} $qs {
             foreach j [range [expr {1 + $f1}]] {
@@ -2349,11 +2349,11 @@ proc multOrdr1 {a p e} {
             }
         }
     }
-    
+
     dict for {q -} $qs {
         if {pypow($a, $q, $m) == 1} break
     }
-    return $q    
+    return $q
 }
 
 ####################################################
@@ -2420,7 +2420,7 @@ proc ::tcl::mathfunc::pypow {x y {z ""}} {
 # prime number generator
 # ref http://wiki.tcl.tk/5996
 ####################################################
-namespace eval primes {} 
+namespace eval primes {}
 
 proc primes::reset {} {
     variable list [list]
@@ -2459,7 +2459,7 @@ proc primes::is_prime {candidate} {
 proc primes::get_next_prime {} {
     variable list
     variable current_index
-    
+
     if {$current_index ne "end"} {
         set p [lindex $list $current_index]
         if {[incr current_index] == [llength $list]} {
@@ -2467,7 +2467,7 @@ proc primes::get_next_prime {} {
         }
         return $p
     }
-    
+
     switch -exact -- [llength $list] {
         0 {set candidate 2}
         1 {set candidate 3}
@@ -2536,7 +2536,7 @@ fcn _multOrdr1(a,p,e){
    m:=p.pow(e);
    t:=m/p*(p - 1);
    qs:=L(BN(1));
-   foreach p2,e2 in (factor2PP(t)){ 
+   foreach p2,e2 in (factor2PP(t)){
       qs=[[(e,q); [0..e2]; qs; '{ q*BN(p2).pow(e) }]];
    }
    qs.filter1('wrap(q){ a.powm(q,m)==1 });

@@ -15,9 +15,9 @@ tags = []
 A semi-important point and semi-nitpicking for doing Monte Carlo: you need to estimate the error in a credible way given the number of samples, and should ''not'' output more significant digits than the confidence allows.  The current C code sample size of 100M can't possibly allow 8 decimal point precision.  --[[User:Ledrug|Ledrug]] 04:29, 16 September 2012 (UTC)
 : Right, in the C/Python outputs only the first few digits are correct. Feel free to add a bit of error estimation code.
 :: This is basically what I used on reddit, but I don't feel like changing the example on the task page because MC really isn't the right tool for this task.
-:: 
-```c>#include <stdio.h
-
+::
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <tgmath.h>
 #include <time.h>
@@ -27,7 +27,7 @@ flt data[][3] = {
 	{ 1.6417233788,  1.6121789534, 0.0848270516},
 	...
 };
- 
+
 #define N sizeof(data)/sizeof(data[0])
 
 int main(void)
@@ -117,7 +117,7 @@ I like the analytical solution in Haskell, but I think a tuples soup harms reada
 
 ==Python Van der Corput==
 Is this solution converging faster or slower than the simpler grid or totally random sampling strategies?
-: Lets see, 
+: Lets see,
 :* The Python grid uses 500*500  = 250000 points to get a value of 21.561559772.
 :* After 200000 points, the Van der Corput has a value of 21.565708203389384
 :* The given analytical solution is 21.565036603856395
@@ -126,7 +126,7 @@ Is this solution converging faster or slower than the simpler grid or totally ra
 ::With 100 million points, the Python VdC area estimate is 21.565056432232886. --[[User:Paddy3118|Paddy3118]] 15:24, 22 September 2012 (UTC)
 ::: Maybe you want to write part of such information inside the page, instead of just here.
 
-::: The comparisons are incorrect.  Here are two modified examples: 
+::: The comparisons are incorrect.  Here are two modified examples:
 ```python
 from __future__ import division
 from math import sqrt, atan2
@@ -179,7 +179,7 @@ def remove_covered_circles(circles):
         if eliminate: covered += [c1, eliminate]
         for c in eliminate: circles.remove(c)
         i += 1
-    #pp(covered)   
+    #pp(covered)
 
 def main(circles):
     print('Originally %i circles' % len(circles))
@@ -216,7 +216,7 @@ if __name__ == '__main__':
 ```
 
 
-::: 
+:::
 ```python
 from collections import namedtuple
 from math import floor, atan2

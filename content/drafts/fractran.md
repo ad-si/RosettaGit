@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task}} 
+{{task}}
 
 '''[[wp:FRACTRAN|FRACTRAN]]''' is a Turing-complete esoteric programming language invented by the mathematician [[wp:John Horton Conway|John Horton Conway]].
 
@@ -40,9 +40,9 @@ which are the prime powers of 2.
 
 
 ;Task:
-Write a program that reads a list of fractions in a ''natural'' format from the keyboard or from a string, 
+Write a program that reads a list of fractions in a ''natural'' format from the keyboard or from a string,
 to parse it into a sequence of fractions (''i.e.'' two integers),
-and runs the FRACTRAN starting from a provided integer, writing the result at each step.  
+and runs the FRACTRAN starting from a provided integer, writing the result at each step.
 It is also required that the number of steps is limited (by a parameter easy to find).
 
 
@@ -147,16 +147,16 @@ XDEC     DS     CL12               temp
 with Ada.Text_IO;
 
 procedure Fractan is
-   
+
    type Fraction is record Nom: Natural; Denom: Positive; end record;
    type Frac_Arr is array(Positive range <>) of Fraction;
-   
+
    function "/" (N: Natural; D: Positive) return Fraction is
       Frac: Fraction := (Nom => N, Denom => D);
    begin
       return Frac;
    end "/";
-   
+
    procedure F(List: Frac_Arr; Start: Positive; Max_Steps: Natural) is
       N: Positive := Start;
       J: Positive;
@@ -177,13 +177,13 @@ procedure Fractan is
 	 Ada.Text_IO.Put(Integer'Image(I) & ":" & Integer'Image(N) & "   ");
       end loop;
    end F;
-   
+
 begin
-   -- F((2/3, 7/2, 1/5, 1/7, 1/9, 1/4, 1/8), 2, 100); 
+   -- F((2/3, 7/2, 1/5, 1/7, 1/9, 1/4, 1/8), 2, 100);
    -- output would be "0: 2    1: 7    2: 1" and then terminate
 
-   F((17/91, 78/85, 19/51, 23/38, 29/33, 77/29, 95/23, 
-      77/19,  1/17, 11/13, 13/11, 15/14,  15/2, 55/1), 
+   F((17/91, 78/85, 19/51, 23/38, 29/33, 77/29, 95/23,
+      77/19,  1/17, 11/13, 13/11, 15/14,  15/2, 55/1),
      2, 15);
    -- output is "0: 2    1: 15    2: 825    3: 725   ...   14: 132    15: 116"
 end Fractan;
@@ -534,7 +534,7 @@ Press any key to continue . . .
 
 This takes as input a space-separated list of fractions, a starting value, and the number of iterations to output.
 
-Note that in some interpreters you may need to press <Return> twice after entering the fractions if the ''Starting value'' prompt doesn't at first appear. 
+Note that in some interpreters you may need to press <Return> twice after entering the fractions if the ''Starting value'' prompt doesn't at first appear.
 
 
 ```befunge
@@ -644,11 +644,11 @@ time: 1,8668*10E3 sec
 
 ## C
 
-Using GMP.  Powers of two are in brackets.  
+Using GMP.  Powers of two are in brackets.
 For extra credit, pipe the output through <code>| less -S</code>.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <gmp.h>
 
@@ -750,7 +750,7 @@ public:
 		v.push_back( a );
 	    }
 	}
-		
+
 	exec( &v );
     }
 
@@ -967,16 +967,16 @@ void main() {
 ```elixir
 defmodule Fractran do
   use Bitwise
-  
+
   defp binary_to_ratio(b) do
     [_, num, den] = Regex.run(~r/(\d+)\/(\d+)/, b)
     {String.to_integer(num), String.to_integer(den)}
   end
-  
+
   def load(program) do
     String.split(program) |> Enum.map(&binary_to_ratio(&1))
   end
-  
+
   defp step(_, []), do: :halt
   defp step(n, [f|fs]) do
     {p, q} = mulrat(f, {n, 1})
@@ -985,15 +985,15 @@ defmodule Fractran do
         _ -> step(n, fs)
     end
   end
-  
+
   def exec(k, n, program) do
     exec(k-1, n, fn (_) -> true end, program, [n]) |> Enum.reverse
   end
-  
+
   def exec(k, n, pred, program) do
     exec(k-1, n, pred, program, [n]) |> Enum.reverse
   end
-  
+
   defp exec(0, _, _, _, steps), do: steps
   defp exec(k, n, pred, program, steps) do
     case step(n, program) do
@@ -1002,25 +1002,25 @@ defmodule Fractran do
                         else: exec(k, m, pred, program, steps)
     end
   end
-  
+
   def is_pow2(n), do: band(n, n-1) == 0
-  
+
   def lowbit(n), do: lowbit(n, 0)
-  
+
   defp lowbit(n, k) do
     case band(n, 1) do
         0 -> lowbit(bsr(n, 1), k + 1)
         1 -> k
     end
   end
-  
+
   # rational multiplication
   defp mulrat({a, b}, {c, d}) do
     {p, q} = {a*c, b*d}
     g = gcd(p, q)
     {div(p, g), div(q, g)}
   end
-  
+
   defp gcd(a, 0), do: a
   defp gcd(a, b), do: gcd(b, rem(a, b))
 end
@@ -1081,7 +1081,7 @@ exec(0, _, _, _, Steps) -> Steps;
 exec(K, N, Pred, Program, Steps) ->
     case step(N, Program) of
         halt -> Steps;
-        M -> case Pred(M) of 
+        M -> case Pred(M) of
                 true  -> exec(K - 1, M, Pred, Program, [M|Steps]);
                 false -> exec(K, M, Pred, Program, Steps)
             end
@@ -1119,7 +1119,7 @@ gcd(A, B) -> gcd(B, A rem B).
 
 ```txt
 
-└─ $ ▶ ./fractran.erl 
+└─ $ ▶ ./fractran.erl
 The first few states of the Fractran prime automaton are: [2,15,825,725,1925,
                                                            2275,425,390,330,
                                                            290,770,910,170,
@@ -1149,29 +1149,29 @@ STRING: fractran-string
 
 : fractran-parse ( str -- seq )
     " \n" split [ string>number ] map ;
-    
+
 : fractran-step ( seq n -- seq n'/f )
     2dup [ * integer? ] curry find nip dup [ * ] [ nip ] if ;
-    
+
 : fractran-run-full ( seq n -- )
     [ dup ] [ dup . fractran-step ] while 2drop ;
-    
+
 : fractran-run-limited ( seq n steps -- )
     [ dup pprint bl fractran-step ] times 2drop nl ;
-    
+
 : fractran-primes ( #primes seq n -- )
     [ pick zero? ] [
         dup 2 logn dup [ floor 1e-9 ~ ] [ 1. = not ] bi and [
             dup 2 logn >integer pprint bl [ 1 - ] 2dip
         ] when fractran-step
     ] until 3drop nl ;
-    
+
 : main ( -- )
     fractran-string fractran-parse 2
     [ "First 20 numbers: " print 20 fractran-run-limited nl ]
     [ "First 20 primes: " print [ 20 ] 2dip fractran-primes ]
     2bi ;
-    
+
 MAIN: main
 ```
 
@@ -1179,10 +1179,10 @@ MAIN: main
 
 ```txt
 
-First 20 numbers: 
-2 15 825 725 1925 2275 425 390 330 290 770 910 170 156 132 116 308 364 68 4 
+First 20 numbers:
+2 15 825 725 1925 2275 425 390 330 290 770 910 170 156 132 116 308 364 68 4
 
-First 20 primes: 
+First 20 primes:
 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71
 
 ```
@@ -1207,7 +1207,7 @@ As ever, how long is a piece of string: what might be the upper limit for the li
 
 ### The Code
 
-The source style is F77 except for the use of the I0 format code, though not all F77 compilers will offer INTEGER*8. By not using the MODULE scheme, array parameters can't be declared via P(:) which implies a secret additional parameter giving the size of the array and which can be accessed via the likes of <code>UBOUND(P, DIM = 1)</code> Instead, the old-style specification involves no additional parameters and can be given as P(*) meaning "no statement" as to the upper bound, or P(M) which ''may'' be interpreted as the upper bound being the value of M in the compilers that allow this. The actual upper bound of the parameter is unknown and unchecked, so the older style of P(12345) or similar might be used. Rather to my surprise, this compiler (Compaq F90/95) complained if parameter M was declared after the arrays P(M),Q(M) as it is my habit to declare parameters in the order of their appearance. 
+The source style is F77 except for the use of the I0 format code, though not all F77 compilers will offer INTEGER*8. By not using the MODULE scheme, array parameters can't be declared via P(:) which implies a secret additional parameter giving the size of the array and which can be accessed via the likes of <code>UBOUND(P, DIM = 1)</code> Instead, the old-style specification involves no additional parameters and can be given as P(*) meaning "no statement" as to the upper bound, or P(M) which ''may'' be interpreted as the upper bound being the value of M in the compilers that allow this. The actual upper bound of the parameter is unknown and unchecked, so the older style of P(12345) or similar might be used. Rather to my surprise, this compiler (Compaq F90/95) complained if parameter M was declared after the arrays P(M),Q(M) as it is my habit to declare parameters in the order of their appearance.
 ```Fortran
 C:\Nicky\RosettaCode\FRACTRAN\FRACTRAN.for(6) : Warning: This name has not been given an explicit type.   [M]
        INTEGER P(M),Q(M)!The terms of the fractions.
@@ -1215,7 +1215,7 @@ C:\Nicky\RosettaCode\FRACTRAN\FRACTRAN.for(6) : Warning: This name has not been 
 
 So much for multi-pass compilers!
 
-Similarly, without the MODULE protocol, in all calling routines function FRACTRAN would be deemed floating-point so a type declaration is needed in each. 
+Similarly, without the MODULE protocol, in all calling routines function FRACTRAN would be deemed floating-point so a type declaration is needed in each.
 ```Fortran
       INTEGER FUNCTION FRACTRAN(N,P,Q,M)	!Notion devised by J. H. Conway.
 Careful: the rule is N*P/Q being integer. N*6/3 is integer always because this is N*2/1, but 3 may not divide N.
@@ -1315,7 +1315,7 @@ Start with N = 2, step limit 28
 
 ```
 
-Later Fortrans might offer the library function <code>POPCNT(n)</code> which returns the number of on-bits in an integer, most convenient for detecting a straight power of two in a binary computer. Adjusting the interpretation loop to be 
+Later Fortrans might offer the library function <code>POPCNT(n)</code> which returns the number of on-bits in an integer, most convenient for detecting a straight power of two in a binary computer. Adjusting the interpretation loop to be
 ```Fortran
       DO I = 1,M		!Here we go!
         IT = FRACTRAN(N,P,Q,L)		!Do it!
@@ -1377,7 +1377,7 @@ For output, the value of N will not be shown multiplied out but via a schedule s
 
 ### Revised Code
 
-Because this scheme requires a supply of prime numbers, it is convenient to employ the routines prepared for the [[Extensible_prime_generator|extensible prime generator]] via module PRIMEBAG. So, this means escalating to the F90 style, and given that, some compound data structures can be used (for better mnemonics) in place of collections of arrays. 
+Because this scheme requires a supply of prime numbers, it is convenient to employ the routines prepared for the [[Extensible_prime_generator|extensible prime generator]] via module PRIMEBAG. So, this means escalating to the F90 style, and given that, some compound data structures can be used (for better mnemonics) in place of collections of arrays.
 ```Fortran
        MODULE CONWAYSIDEA	!Notion devised by J. H. Conway.
        USE PRIMEBAG		!This is a common need.
@@ -1689,7 +1689,7 @@ Require 10 primes only, up to Prime(10) = 29
 
 ```
 
-This time, restricting output to only occasions when N is a power of two requires no peculiar bit-counting function. Just change the interpretation loop to 
+This time, restricting output to only occasions when N is a power of two requires no peculiar bit-counting function. Just change the interpretation loop to
 ```Fortran
       DO I = 1,MS	!Here we go!
         IT = FRACTRAN(LF)	!Do it!
@@ -1948,7 +1948,7 @@ count          iterations    prime  2^prime
    19             1853979       67  147573952589676412928
    20             2191673       71  2361183241434822606848
 shorten output file
-   42            34533967      181  
+   42            34533967      181
    43            40326168      191
 ```
 
@@ -2032,7 +2032,7 @@ func main() {
 
 ```
 
-Extra credit:  This invokes above program with appropriate arguments, 
+Extra credit:  This invokes above program with appropriate arguments,
 and processes the output to obtain the 20 primes.
 
 ```go
@@ -2077,7 +2077,7 @@ func main() {
 
 ```txt
 
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71
 
 ```
 
@@ -2256,15 +2256,15 @@ fractran15=: ({~ (= <.) i. 1:)@(toFrac@[ * ]) ^:(<15)  NB. return first 15 Fract
 
 '''Solution'''
 
-This is a variation of the previous solution which it is not entirely tacit due to the use of the explicit standard library verb (function) charsub.  The adverb (functional) fractan is defined as a fixed tacit adverb (that is, a stateless point-free functional),  
+This is a variation of the previous solution which it is not entirely tacit due to the use of the explicit standard library verb (function) charsub.  The adverb (functional) fractan is defined as a fixed tacit adverb (that is, a stateless point-free functional),
 
 
 ```j
 fractan=. (((({~ (1 i.~ (= <.)))@:* ::]^:)(`]))(".@:('1234567890r ' {~ '1234567890/ '&i.)@:[`))(`:6)
 ```
 
-   
-The argument of fractan specifies a limit for the number of steps; if the limit is boxed the intermediate results are also included in the result. 
+
+The argument of fractan specifies a limit for the number of steps; if the limit is boxed the intermediate results are also included in the result.
 
 '''Example'''
 
@@ -2273,24 +2273,24 @@ The argument of fractan specifies a limit for the number of steps; if the limit 
    '17/91 78/85 19/51 23/38 29/33 77/29 95/23 77/19 1/17 11/13 13/11 15/14 15/2 55/1' (<15) fractan 2
 2 15 825 725 1925 2275 425 390 330 290 770 910 170 156 132
 ```
- 
 
-   
-'''Extra credit''' 
+
+
+'''Extra credit'''
 
 The prime numbers are produced via the adverb primes; its argument has the same specifications as the argument for the fractan adverb (which is used in its definition),
 
 
 ```j
 primes=. ('fractan'f.) ((1 }. 2 ^. (#~ *./@:e.&2 0"1@:q:))@:)
-   
+
    '17/91 78/85 19/51 23/38 29/33 77/29 95/23 77/19 1/17 11/13 13/11 15/14 15/2 55/1' (<555555) primes 2
 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71
 ```
 
 
 primes is also a stateless point-free functional,
-   
+
 
 ```j
    primes
@@ -2298,11 +2298,11 @@ primes is also a stateless point-free functional,
 ```
 
 
- 
+
 '''Turing completeness of J's stateless point-free dialect'''
 
-When _ is the limit argument (i.e., when no limit is imposed) the run will halt according to the FRACTAN programming language specifications (the run might also be forced to halt if a trivial changeless single cycle, induced by a useless 1/1 fraction, is detected).  Thus, the FRACTAN associated verb (function) is,   
-   
+When _ is the limit argument (i.e., when no limit is imposed) the run will halt according to the FRACTAN programming language specifications (the run might also be forced to halt if a trivial changeless single cycle, induced by a useless 1/1 fraction, is detected).  Thus, the FRACTAN associated verb (function) is,
+
 
 ```j
    _ fractan
@@ -2318,7 +2318,7 @@ FRACTAN=. ({~ (1 i.~ (= <.)))@:* ::]^:_
 ```
 
 
-which is an indirect concise confirmation that J's fixed tacit dialect is Turing complete.  
+which is an indirect concise confirmation that J's fixed tacit dialect is Turing complete.
 
 In the following example, FRACTAN calculates the product 4 * 6, the initial value 11664 = (2^4)*(3^6) holds 4 in the register associated with 2 and holds 6 in the register associated with 3; the result 59604644775390625 = 5^24 holds the product 24 = 4 * 6 in the register associated with 5,
 
@@ -2340,15 +2340,15 @@ import java.util.regex.Pattern;
 
 public class Fractran{
 
-   public static void main(String []args){ 
+   public static void main(String []args){
 
        new Fractran("17/91 78/85 19/51 23/38 29/33 77/29 95/23 77/19 1/17 11/13 13/11 15/14 15/2 55/1", 2);
    }
    final int limit = 15;
-   
 
-   Vector<Integer> num = new Vector<>(); 
-   Vector<Integer> den = new Vector<>(); 
+
+   Vector<Integer> num = new Vector<>();
+   Vector<Integer> den = new Vector<>();
    public Fractran(String prog, Integer val){
       compile(prog);
       dump();
@@ -2375,7 +2375,7 @@ public class Fractran{
        }
    }
    Integer step(int val){
-       int i=0; 
+       int i=0;
        while(i<den.size() && val%den.get(i) != 0) i++;
        if(i<den.size())
            return num.get(i)*val/den.get(i);
@@ -2855,11 +2855,11 @@ j = 0;
 break = False;
 While[break == False && j <= steplimit,
  newlist = n fractionlist;
- isintegerlist = IntegerQ[#] & /@ newlist; 
+ isintegerlist = IntegerQ[#] & /@ newlist;
  truepositions = Position[isintegerlist, True];
  If[Length[truepositions] == 0,
   break = True,
-  Print[ToString[j] <> ": " <> ToString[n]]; 
+  Print[ToString[j] <> ": " <> ToString[n]];
   n = newlist[[truepositions[[1, 1]]]]; j++;
   ]
  ]
@@ -2908,7 +2908,7 @@ let get_input () =
 let get_max_steps () =
    try int_of_string Sys.argv.(2)
    with _ -> 50
-   
+
 let read_program () =
    let line = read_line () in
    let words = Str.split (Str.regexp " +") line in
@@ -3009,7 +3009,7 @@ In this version ideas were borrowed from C++, Java and JavaScript.
 
 ```parigp
 
-\\ FRACTRAN 
+\\ FRACTRAN
 \\ 4/27/16 aev
 fractran(val,ft,lim)={
 my(ftn=#ft,fti,di,L=List(),j=0);
@@ -3026,7 +3026,7 @@ print(fractran(2,v,15));
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -3081,7 +3081,7 @@ print "\n";
 ```
 
 
-If you uncomment the 
+If you uncomment the
 ```txt
 #print $n
 ```
@@ -3288,7 +3288,7 @@ def fractran(n, fstring='17 / 91, 78 / 85, 19 / 51, 23 / 38, 29 / 33,'
         else:
             break
         n *= f
-    
+
 if __name__ == '__main__':
     n, m = 2, 15
     print('First %i members of fractran(%i):\n  ' % (m, n) +
@@ -3364,7 +3364,7 @@ Generated prime 47 from the 152026'th member of the fractran series
 (define (read-string-list str)
   (map string->number
        (string-split (string-replace str " " "") ",")))
-  
+
 (define (eval-fractran n list)
   (for/or ([e (in-list list)])
     (let ([en (* e n)])
@@ -3372,15 +3372,15 @@ Generated prime 47 from the 152026'th member of the fractran series
 
 (define (show-fractran fr n s)
   (printf "First ~a members of fractran(~a):\n" s n)
-  (displaysp n) 
+  (displaysp n)
   (for/fold ([n n]) ([i (in-range (- s 1))])
     (let ([new-n (eval-fractran n fr)])
-      (displaysp new-n) 
+      (displaysp new-n)
       new-n))
   (void))
 
 (define fractran
-  (read-string-list 
+  (read-string-list
    (string-append "17 / 91, 78 / 85, 19 / 51, 23 / 38, 29 / 33,"
                   "77 / 29, 95 / 23, 77 / 19, 1 / 17, 11 / 13,"
                   "13 / 11, 15 / 14, 15 / 2, 55 / 1")))
@@ -3402,7 +3402,7 @@ First 15 members of fractran(2):
 Programming note:   extra blanks can be inserted in the fractions before and/or after the solidus   ['''<big>/</big>'''].
 
 ### showing all terms
- 
+
 
 ```rexx
 /*REXX program runs  FRACTRAN  for a given set of  fractions  and  from a specified  N. */
@@ -3612,7 +3612,7 @@ only powers of two are being shown:
 
 ```
 
-Output note:   There are intermediary numbers (that aren't powers of two) that are hundreds of digits long. 
+Output note:   There are intermediary numbers (that aren't powers of two) that are hundreds of digits long.
 
 
 
@@ -3629,7 +3629,7 @@ Runner = Enumerator.new do |y|
   loop{ y << num *= FractalProgram.detect{|f| (num*f).denominator == 1} }
 end
 
-prime_generator = Enumerator.new do |y| 
+prime_generator = Enumerator.new do |y|
   Runner.each do |num|
     l = Math.log2(num)
     y << l.to_i if l.floor == l
@@ -3689,7 +3689,7 @@ class Fractran(val numDem: List[(Int,Int)]) {
 
 {{incorrect|Scheme|primes 29,31,47,59 missing, 20th prime is 71}}
 
-Scheme naturally handles fractions, translating to integers as required.  
+Scheme naturally handles fractions, translating to integers as required.
 The first part of the code translates from a string representation, as required, but equally the user could type the list of fractions in directly as a list.
 
 
@@ -3701,7 +3701,7 @@ The first part of the code translates from a string representation, as required,
         (scheme write))
 
 (define *string-fractions* ; string input of fractions
-  "17/91 78/85 19/51 23/38 29/33 77/29 95/23 77/19 
+  "17/91 78/85 19/51 23/38 29/33 77/29 95/23 77/19
   1/17 11/13 13/11 15/14 15/2 55/1")
 
 (define *fractions* ; create vector of fractions from string input
@@ -3720,7 +3720,7 @@ The first part of the code translates from a string representation, as required,
              #f)
             ((integer? (* n (vector-ref fractions i)))
              (* n (vector-ref fractions i)))
-            (else 
+            (else
               (loop (+ 1 i)))))))
 
 ;; Task
@@ -3766,7 +3766,7 @@ The first part of the code translates from a string representation, as required,
 
 ```txt
 
-Task: 2 15 825 725 1925 2275 425 390 330 290 770 910 170 156 132 116 308 364 68 4 
+Task: 2 15 825 725 1925 2275 425 390 330 290 770 910 170 156 132 116 308 364 68 4
 Primes:
 2 3 5 7 11 13 17 19 23 37 41 43 53 61 67 71 73 79 83 89
 
@@ -3821,7 +3821,7 @@ const proc: main is func
 
 ```txt
 
-2 15 825 725 1925 2275 425 390 330 290 770 910 170 156 132 116 
+2 15 825 725 1925 2275 425 390 330 290 770 910 170 156 132 116
 
 ```
 
@@ -3935,8 +3935,8 @@ print "\n"
 
 ```txt
 
-15 825 725 1925 2275 425 390 330 290 770 910 170 156 132 116 308 364 68 4 30 
-2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 
+15 825 725 1925 2275 425 390 330 290 770 910 170 156 132 116 308 364 68 4 30
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71
 
 ```
 
@@ -4047,9 +4047,9 @@ For(I,1,T)
 	While J<=U and F=1
 		If remainder(N,LB(J))=0
 		Then
-			Disp N 
+			Disp N
 			N->LC(I)
-			iPart(N/LB(J))*LA(J)->N 
+			iPart(N/LB(J))*LA(J)->N
 			0->F
 		End
 		J+1->J
@@ -4209,9 +4209,9 @@ End Sub
 
 ```txt
 First 20 results:
- 15  825  725  1925  2275  425  390  330  290  770  910  170  156  132  116  308  364  68  4  30 
+ 15  825  725  1925  2275  425  390  330  290  770  910  170  156  132  116  308  364  68  4  30
 First 30 primes:
- 2  3  5  7  11  13  17  19  23  29  31  37  41  43  47  53  59  61  67  71  73  79  83  89  97  101  103  107  109  113 
+ 2  3  5  7  11  13  17  19  23  29  31  37  41  43  47  53  59  61  67  71  73  79  83  89  97  101  103  107  109  113
 after 2019962 iterations.
 ```
 
@@ -4229,7 +4229,7 @@ fcn fractranW(n,fracsAsOneBigString){ //-->Walker (iterator)
    Walker(fcn(rn,fracs){
       n:=rn.value;
       foreach a,b in (fracs){
-	 if(n*a%b == 0){ 
+	 if(n*a%b == 0){
 	    rn.set(n*a/b);
 	    return(n);
 	 }
@@ -4263,7 +4263,7 @@ fcn fractranPrimes{
 	    println("Prime %3d from the nth Fractran(%8d): %d".fmt(p,n,fr));
       }
    }
-} 
+}
 fractranPrimes();
 ```
 

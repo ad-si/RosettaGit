@@ -15,9 +15,9 @@ tags = []
 
 
 
-'''Benford's law''', also called the '''first-digit law''', refers to the frequency distribution of digits in many (but not all) real-life sources of data. 
+'''Benford's law''', also called the '''first-digit law''', refers to the frequency distribution of digits in many (but not all) real-life sources of data.
 
-In this distribution, the number 1 occurs as the first digit about 30% of the time, while larger numbers occur in that position less frequently: 9 as the first digit less than 5% of the time. This distribution of first digits is the same as the widths of gridlines on a logarithmic scale. 
+In this distribution, the number 1 occurs as the first digit about 30% of the time, while larger numbers occur in that position less frequently: 9 as the first digit less than 5% of the time. This distribution of first digits is the same as the widths of gridlines on a logarithmic scale.
 
 Benford's law also concerns the expected distribution for digits beyond the first, which approach a uniform distribution.
 
@@ -29,9 +29,9 @@ A set of numbers is said to satisfy Benford's law if the leading digit <big><mat
 
 For this task, write (a) routine(s) to calculate the distribution of first significant (non-zero) digits in a collection of numbers, then display the actual vs. expected distribution in the way most convenient for your language (table / graph / histogram / whatever).
 
-Use the first 1000 numbers from the Fibonacci sequence as your data set. No need to show how the Fibonacci numbers are obtained. 
+Use the first 1000 numbers from the Fibonacci sequence as your data set. No need to show how the Fibonacci numbers are obtained.
 
-You can [[Fibonacci sequence|generate]] them or load them [http://www.fullbooks.com/The-first-1001-Fibonacci-Numbers.html from a file]; whichever is easiest. 
+You can [[Fibonacci sequence|generate]] them or load them [http://www.fullbooks.com/The-first-1001-Fibonacci-Numbers.html from a file]; whichever is easiest.
 
 Display your actual vs expected distribution.
 
@@ -113,7 +113,7 @@ with: n
 : benford  \ x -- x
     1 swap / 1+ log10 ;
 
-: fibs \ xt n 
+: fibs \ xt n
     swap >r
     0.0 1.0 rot
     ( dup r@ w:exec tuck + ) swap times
@@ -128,7 +128,7 @@ var counts
     "%g" s:strfmt
     0 s:@ '0 - nip ;
 
-: bump-digit \ n -- 
+: bump-digit \ n --
     1 swap
     counts @ swap 1- ' + a:op! drop ;
 
@@ -159,10 +159,10 @@ var counts
 : report \ --
     .header
     counts @
-    ( swap 1+ dup benford swap 
+    ( swap 1+ dup benford swap
       .digit .expected .actual cr )
     a:each drop ;
-    
+
 : benford-test
     init count-fibs adjust report ;
 
@@ -196,22 +196,22 @@ Digit   Expected  Actual
 ## Ada
 
 
-The program reads the Fibonacci-Numbers from the standard input. Each input line is supposed to hold N, followed by Fib(N).  
+The program reads the Fibonacci-Numbers from the standard input. Each input line is supposed to hold N, followed by Fib(N).
 
 
 ```Ada
-with Ada.Text_IO, Ada.Numerics.Generic_Elementary_Functions; 
+with Ada.Text_IO, Ada.Numerics.Generic_Elementary_Functions;
 
 procedure Benford is
-   
+
    subtype Nonzero_Digit is Natural range 1 .. 9;
    function First_Digit(S: String) return Nonzero_Digit is
-      (if S(S'First) in '1' .. '9' 
+      (if S(S'First) in '1' .. '9'
          then Nonzero_Digit'Value(S(S'First .. S'First))
          else First_Digit(S(S'First+1 .. S'Last)));
-      
-   package N_IO is new Ada.Text_IO.Integer_IO(Natural);  
-      
+
+   package N_IO is new Ada.Text_IO.Integer_IO(Natural);
+
    procedure Print(D: Nonzero_Digit; Counted, Sum: Natural) is
       package Math is new Ada.Numerics.Generic_Elementary_Functions(Float);
       package F_IO is new Ada.Text_IO.Float_IO(Float);
@@ -222,27 +222,27 @@ procedure Benford is
       N_IO.Put(D, 5);
       N_IO.Put(Counted, 14);
       F_IO.Put(Float(Sum)*Expected, Fore => 16, Aft => 1, Exp => 0);
-      F_IO.Put(100.0*Actual, Fore => 9, Aft => 2, Exp => 0); 
-      F_IO.Put(100.0*Expected, Fore => 11, Aft => 2, Exp => 0); 
+      F_IO.Put(100.0*Actual, Fore => 9, Aft => 2, Exp => 0);
+      F_IO.Put(100.0*Expected, Fore => 11, Aft => 2, Exp => 0);
       F_IO.Put(100.0*Deviation, Fore => 13, Aft => 2, Exp => 0);
    end Print;
-   
-   Cnt: array(Nonzero_Digit) of Natural := (1 .. 9 => 0);   
+
+   Cnt: array(Nonzero_Digit) of Natural := (1 .. 9 => 0);
    D: Nonzero_Digit;
    Sum: Natural := 0;
-   Counter: Positive;       
-       
-begin     
+   Counter: Positive;
+
+begin
    while not Ada.Text_IO.End_Of_File loop
       -- each line in the input file holds Counter, followed by Fib(Counter)
-      N_IO.Get(Counter); 
+      N_IO.Get(Counter);
         -- Counter and skip it, we just don't need it
-      D := First_Digit(Ada.Text_IO.Get_Line); 
+      D := First_Digit(Ada.Text_IO.Get_Line);
         -- read the rest of the line and extract the first digit
       Cnt(D) := Cnt(D)+1;
       Sum := Sum + 1;
    end loop;
-   Ada.Text_IO.Put_Line(" Digit  Found[total]   Expected[total]    Found[%]" 
+   Ada.Text_IO.Put_Line(" Digit  Found[total]   Expected[total]    Found[%]"
                                           & "   Expected[%]   Difference[%]");
    for I in Nonzero_Digit loop
       Print(I, Cnt(I), Sum);
@@ -271,7 +271,7 @@ end Benford;
 
 
 
-###  Extra Credit 
+###  Extra Credit
 
 
 Input is the list of primes below 100,000 from [http://www.mathsisfun.com/numbers/prime-number-lists.html]. Since each line in that file holds prime and only a prime, but no ongoing counter, we must slightly modify the program by commenting out a single line:
@@ -290,7 +290,7 @@ As it turns out, the distribution of the first digits of primes is almost flat a
 
 
 ```txt
->./benford < primes-to-100k.txt 
+>./benford < primes-to-100k.txt
  Digit  Found[total]   Expected[total]    Found[%]   Expected[%]   Difference[%]
     1          1193            2887.5       12.44         30.10           17.67
     2          1129            1689.1       11.77         17.61            5.84
@@ -403,15 +403,15 @@ main(void)
 
 ```txt
 		expected	   found
-       1          30.102          30.1  
-       2          17.609          17.7  
-       3          12.493          12.5  
+       1          30.102          30.1
+       2          17.609          17.7
+       3          12.493          12.5
        4           9.691           9.600
-       5           7.918           8    
-       6           6.694           6.7  
-       7           5.799           5.6  
+       5           7.918           8
+       6           6.694           6.7
+       7           5.799           5.6
        8           5.115           5.300
-       9           4.575           4.5  
+       9           4.575           4.5
 ```
 
 
@@ -603,8 +603,8 @@ digit expected observed deviation
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -643,7 +643,7 @@ float *get_actual_distribution(char *fn)
             ;
     }
     fclose(input);
-    
+
     static float freq[9];
     for (int i = 0; i < 9; i++)
         freq[i] = tally[i] / (float) total;
@@ -660,7 +660,7 @@ int main(int argc, char **argv)
     }
 
     float *actual = get_actual_distribution(argv[1]);
-    float *expected = benford_distribution();  
+    float *expected = benford_distribution();
 
     puts("digit\tactual\texpected");
     for (int i = 0; i < 9; i++)
@@ -694,7 +694,7 @@ digit   actual  expected
 
 
 ```cpp
-//to cope with the big numbers , I used the Class Library for Numbers( CLN ) 
+//to cope with the big numbers , I used the Class Library for Numbers( CLN )
 //if used prepackaged you can compile writing "g++ -std=c++11 -lcln yourprogram.cpp -o yourprogram"
 #include <cln/integer.h>
 #include <cln/integer_io.h>
@@ -729,7 +729,7 @@ void findFrequencies( const std::vector<cl_I> & fibos , std::map<int , int> &num
       fprintdecimal ( os , bignumber ) ;//from header file cln/integer_io.h
       int firstdigit = std::atoi( os.str( ).substr( 0 , 1 ).c_str( )) ;
       auto result = numberfrequencies.insert( std::make_pair( firstdigit , 1 ) ) ;
-      if ( ! result.second ) 
+      if ( ! result.second )
 	 numberfrequencies[ firstdigit ]++ ;
    }
 }
@@ -949,10 +949,10 @@ Digit   Actual  Expected
 
 ```lisp
 (defun calculate-distribution (numbers)
-  "Return the frequency distribution of the most significant nonzero 
-   digits in the given list of numbers. The first element of the list 
+  "Return the frequency distribution of the most significant nonzero
+   digits in the given list of numbers. The first element of the list
    is the frequency for digit 1, the second for digit 2, and so on."
-  
+
   (defun nonzero-digit-p (c)
     "Check whether the character is a nonzero digit"
     (and (digit-char-p c) (char/= c #\0)))
@@ -966,9 +966,9 @@ Digit   Actual  Expected
         (digit-char-p c))))
 
   (let ((tally (make-array 9 :element-type 'integer :initial-element 0)))
-    (loop for n in numbers 
+    (loop for n in numbers
           for digit = (first-digit n)
-          when digit 
+          when digit
           do (incf (aref tally (1- digit))))
     (loop with total = (length numbers)
           for digit-count across tally
@@ -976,7 +976,7 @@ Digit   Actual  Expected
 
 (defun calculate-benford-distribution ()
   "Return the frequency distribution according to Benford's law.
-   The first element of the list is the probability for digit 1, the second 
+   The first element of the list is the probability for digit 1, the second
    element the probability for digit 2, and so on."
   (loop for i from 1 to 9
         collect (log (1+ (/ i)) 10)))
@@ -987,7 +987,7 @@ Digit   Actual  Expected
   (let ((actual-distribution (calculate-distribution numbers))
         (expected-distribution (calculate-benford-distribution)))
     (write-line "digit actual expected")
-    (format T "~:{~3D~9,3F~8,3F~%~}" 
+    (format T "~:{~3D~9,3F~8,3F~%~}"
             (map 'list #'list '(1 2 3 4 5 6 7 8 9)
                               actual-distribution
                               expected-distribution))))
@@ -1094,7 +1094,7 @@ void main() {
 ```elixir
 defmodule Benfords_law do
   def distribution(n), do: :math.log10( 1 + (1 / n) )
-  
+
   def task(total \\ 1000) do
     IO.puts "Digit	Actual	Benfords expected"
     fib(total)
@@ -1103,7 +1103,7 @@ defmodule Benfords_law do
     |> Enum.sort
     |> Enum.each(fn {x,len} -> IO.puts "#{x}	#{len / total}	#{distribution(x)}" end)
   end
-  
+
   defp fib(n) do                        # suppresses zero
     Stream.unfold({1,1}, fn {a,b} -> {a,{b,a+b}} end) |> Enum.take(n)
   end
@@ -1198,7 +1198,7 @@ IN: rosetta-code.benfords-law
 
 : next-fib ( vec -- vec' )
     [ last2 ] keep [ + ] dip [ push ] keep ;
-    
+
 : data ( -- seq ) V{ 1 1 } clone 998 [ next-fib ] times ;
 
 : 1st-digit ( n -- m ) 1 digit-groups last ;
@@ -1207,16 +1207,16 @@ IN: rosetta-code.benfords-law
 
 : .header ( -- )
     "Digit" "Expected" "Actual" "%-10s%-10s%-10s\n" printf ;
-    
+
 : digit-report ( digit digit-count -- digit expected actual )
     dupd [ expected ] dip 1000 /f ;
-    
+
 : .digit-report ( digit digit-count -- )
     digit-report "%-10d%-10.4f%-10.4f\n" printf ;
 
 : main ( -- )
     .header leading histogram [ .digit-report ] assoc-each ;
-    
+
 MAIN: main
 ```
 
@@ -1224,16 +1224,16 @@ MAIN: main
 
 ```txt
 
-Digit     Expected  Actual    
-1         0.3010    0.3010    
-2         0.1761    0.1770    
-3         0.1249    0.1250    
-4         0.0969    0.0960    
-5         0.0792    0.0800    
-6         0.0669    0.0670    
-7         0.0580    0.0560    
-8         0.0512    0.0530    
-9         0.0458    0.0450    
+Digit     Expected  Actual
+1         0.3010    0.3010
+2         0.1761    0.1770
+3         0.1249    0.1250
+4         0.0969    0.0960
+5         0.0792    0.0800
+6         0.0669    0.0670
+7         0.0580    0.0560
+8         0.0512    0.0530
+9         0.0458    0.0450
 
 ```
 
@@ -1295,17 +1295,17 @@ Digit     Expected  Actual
 Gforth 0.7.2, Copyright (C) 1995-2008 Free Software Foundation, Inc.
 Gforth comes with ABSOLUTELY NO WARRANTY; for details type `license'
 Type `bye' to exit
-compute-benford 
+compute-benford
 Leading digital distribution of the first 1,000 Fibonacci numbers:
 Digit	Actual	Expected
-  1	0.301 	0.301 
-  2	0.177 	0.176 
-  3	0.125 	0.125 
-  4	0.096 	0.0969 
-  5	0.080 	0.0792 
-  6	0.067 	0.0669 
-  7	0.056 	0.058 
-  8	0.053 	0.0512 
+  1	0.301 	0.301
+  2	0.177 	0.176
+  3	0.125 	0.125
+  4	0.096 	0.0969
+  5	0.080 	0.0792
+  6	0.067 	0.0669
+  7	0.056 	0.058
+  8	0.053 	0.0512
   9	0.045 	0.0458  ok
 ```
 
@@ -1410,7 +1410,7 @@ end program benford
 ' version 27-10-2016
 ' compile with: fbc -s console
 
-#Define max 1000    ' total number of Fibonacci numbers 
+#Define max 1000    ' total number of Fibonacci numbers
 #Define max_sieve  15485863  ' should give 1,000,000
 
 #Include Once "gmp.bi"   ' uses the GMP libary
@@ -1436,16 +1436,16 @@ Next
 mpz_clear(fib1) : DeAllocate(fib1)
 mpz_clear(fib2) : DeAllocate(fib2)
 
-Print 
+Print
 Print "First 1000 Fibonacci numbers"
 Print "nr:  total     found   expected  difference"
 
-For d = 1 To 9 
+For d = 1 To 9
     n = digit(d)
     found = n / 10
     expect = (Log(1 + 1 / d) / Log(10)) * 100
     Print Using " ##  #####  ###.## %   ###.## %    ##.### %"; _
-                            d; n ; found; expect; expect - found  
+                            d; n ; found; expect; expect - found
 Next
 
 
@@ -1464,7 +1464,7 @@ For d = 3 To sqr(max_sieve)
     End If
 Next
 
-digit(2) = 1 ' 2 
+digit(2) = 1 ' 2
 
 Print "start collecting first digits"
 For n = 3 To max_sieve Step 2
@@ -1479,20 +1479,20 @@ For n = 1 To 9
     total = total + digit(n)
 Next
 
-Print 
+Print
 Print "First";total; " primes"
 Print "nr:     total     found   expected   difference"
 
-For d = 1 To 9 
+For d = 1 To 9
     n = digit(d)
     found = n / total * 100
     expect = (Log(1 + 1 / d) / Log(10)) * 100
     Print Using " ##  ########  ###.## %   ###.## %    ###.### %"; _
-                                d; n ; found; expect; expect - found  
+                                d; n ; found; expect; expect - found
 Next
 
 
-' empty keyboard buffer 
+' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "hit any key to end program"
 Sleep
@@ -1652,7 +1652,7 @@ fibdata = map fstdigit $ take n fibs
 freqs = M.fromListWith (+) $ zip fibdata (repeat 1)
 
 tab ::  [(Int, Double, Double)]
-tab = [(d, 
+tab = [(d,
        (fromIntegral (M.findWithDefault 0 d freqs) /(fromIntegral n) ),
         logBase 10.0 $ 1 + 1/(fromIntegral d) ) | d<-[1..9]]
 
@@ -1689,7 +1689,7 @@ procedure main()
    total := 0.0
    every benlaw(fib(1 to 1000))
 
-   every i := 1 to 9 do 
+   every i := 1 to 9 do
       write(i,": ",right(100*counts[string(i)]/total,9)," ",100*P(i))
 
 end
@@ -1705,7 +1705,7 @@ end
 procedure fib(n)        # From Fibonacci Sequence task
     return fibMat(n)[1]
 end
- 
+
 procedure fibMat(n)
     if n <= 0 then return [0,0]
     if n  = 1 then return [1,0]
@@ -1747,11 +1747,11 @@ We show the correlation coefficient of Benford's law with the leading digits of 
 log10 =: 10&^.
 benford =: log10@:(1+%)
 assert '0.30 0.18 0.12 0.10 0.08 0.07 0.06 0.05 0.05' -: 5j2 ": benford >: i. 9
- 
- 
+
+
 append_next_fib =: , +/@:(_2&{.)
 assert 5 8 13 -: append_next_fib 5 8
-   
+
 leading_digits =: {.@":&>
 assert '581' -: leading_digits 5 8 13x
 
@@ -1763,7 +1763,7 @@ assert 1r3 2r3 -: normalize 1 2x
 
 FIB =: append_next_fib ^: (1000-#) 1 1
 LDF =: leading_digits FIB
-   
+
 
 TALLY_BY_KEY =: count LDF
 assert 9 -: # TALLY_BY_KEY   NB. If all of [1-9] are present then we know what the digits are.
@@ -1872,7 +1872,7 @@ def primes(m;n):
 def runs:
   reduce .[] as $item
     ( [];
-      if . == [] then [ [ $item, 1] ] 
+      if . == [] then [ [ $item, 1] ]
       else  .[length-1] as $last
             | if $last[0] == $item
               then (.[0:length-1] + [ [$item, $last[1] + 1] ] )
@@ -1885,7 +1885,7 @@ def histogram: sort | runs;
 
 def benford_probability:
   tonumber
-  | if . > 0 then ((1 + (1 /.)) | log) / (10|log) 
+  | if . > 0 then ((1 + (1 /.)) | log) / (10|log)
     else 0
     end ;
 
@@ -1893,7 +1893,7 @@ def benford_probability:
 def benford(stream):
   [stream | tostring | .[0:1] ] | histogram as $histogram
   | reduce ($histogram | .[] | .[0]) as $digit
-      ([]; . + [$digit, ($digit|benford_probability)] ) 
+      ([]; . + [$digit, ($digit|benford_probability)] )
   | map(select(type == "number")) as $probabilities
   | ([ $histogram | .[] | .[1] ] | add) as $total
   | reduce range(0; $histogram|length) as $i
@@ -1908,7 +1908,7 @@ def chiSquared:
      else . + ($triple[1] as $o | $triple[2] as $e | ($o - $e) | (.*.)/$e)
      end) ;
 
-# truncate n places after the decimal point; 
+# truncate n places after the decimal point;
 # return a string since it can readily be converted back to a number
 def precision(n):
   tostring as $s | $s | index(".")
@@ -1926,7 +1926,7 @@ def align(n):
     else rjustify(n)
     end ;
 
-# given an array of [value, observed, expected] values, 
+# given an array of [value, observed, expected] values,
 # produce rows of the form: value observed expected
 def print_rows(prec):
   .[] | map( precision(prec)|align(5) + "  ") | add ;
@@ -1946,7 +1946,7 @@ def task:
   report("First 1000 fibonacci numbers:"; fibonacci(1000) ),
   report("Primes less than 1000:"; primes(2;1000)),
   report("Primes between 1000 and 10000:"; primes(1000;10000)),
-  report("Primes less than 100000:"; primes(2;100000)) 
+  report("Primes less than 100000:"; primes(2;100000))
 ;
 
 task
@@ -1957,71 +1957,71 @@ task
 ```txt
 First 100 fibonacci numbers:
  Digit Observed Expected
-    1     30     30.10  
-    2     18     17.60  
-    3     13     12.49  
-    4      9      9.69  
-    5      8      7.91  
-    6      6      6.69  
-    7      5      5.79  
-    8      7      5.11  
-    9      4      4.57  
+    1     30     30.10
+    2     18     17.60
+    3     13     12.49
+    4      9      9.69
+    5      8      7.91
+    6      6      6.69
+    7      5      5.79
+    8      7      5.11
+    9      4      4.57
 
  χ² = 1.0287
 
 First 1000 fibonacci numbers:
  Digit Observed Expected
-    1    301    301.02  
-    2    177    176.09  
-    3    125    124.93  
-    4     96     96.91  
-    5     80     79.18  
-    6     67     66.94  
-    7     56     57.99  
-    8     53     51.15  
-    9     45     45.75  
+    1    301    301.02
+    2    177    176.09
+    3    125    124.93
+    4     96     96.91
+    5     80     79.18
+    6     67     66.94
+    7     56     57.99
+    8     53     51.15
+    9     45     45.75
 
  χ² = 0.1694
 
 Primes less than 1000:
  Digit Observed Expected
-    1     25     50.57  
-    2     19     29.58  
-    3     19     20.98  
-    4     20     16.28  
-    5     17     13.30  
-    6     18     11.24  
-    7     18      9.74  
-    8     17      8.59  
-    9     15      7.68  
+    1     25     50.57
+    2     19     29.58
+    3     19     20.98
+    4     20     16.28
+    5     17     13.30
+    6     18     11.24
+    7     18      9.74
+    8     17      8.59
+    9     15      7.68
 
  χ² = 45.0162
 
 Primes between 1000 and 10000:
  Digit Observed Expected
-    1    135    319.39  
-    2    127    186.83  
-    3    120    132.55  
-    4    119    102.82  
-    5    114     84.01  
-    6    117     71.03  
-    7    107     61.52  
-    8    110     54.27  
-    9    112     48.54  
+    1    135    319.39
+    2    127    186.83
+    3    120    132.55
+    4    119    102.82
+    5    114     84.01
+    6    117     71.03
+    7    107     61.52
+    8    110     54.27
+    9    112     48.54
 
  χ² = 343.5583
 
 Primes less than 100000:
  Digit Observed Expected
-    1   1193   2887.47  
-    2   1129   1689.06  
-    3   1097   1198.41  
-    4   1069    929.56  
-    5   1055    759.50  
-    6   1013    642.15  
-    7   1027    556.25  
-    8   1003    490.65  
-    9   1006    438.90  
+    1   1193   2887.47
+    2   1129   1689.06
+    3   1097   1198.41
+    4   1069    929.56
+    5   1055    759.50
+    6   1013    642.15
+    7   1027    556.25
+    8   1003    490.65
+    9   1006    438.90
 
  χ² = 3204.8072
 ```
@@ -2044,10 +2044,10 @@ benford(l) = [Number[1:9;] ben(l) log10(1.+1./[1:9;])]
 ```txt
 julia> benford([fib(big(n)) for n = 1:1000])
 9x3 Array{Number,2}:
- 1  0.301  0.30103  
- 2  0.177  0.176091 
- 3  0.125  0.124939 
- 4  0.096  0.09691  
+ 1  0.301  0.30103
+ 2  0.177  0.176091
+ 3  0.125  0.124939
+ 4  0.096  0.09691
  5  0.08   0.0791812
  6  0.067  0.0669468
  7  0.056  0.0579919
@@ -2107,7 +2107,7 @@ fun main(a: Array<String>) = println(Benford(FibonacciGenerator))
 
 ## Liberty BASIC
 
-Using function from 
+Using function from
 http://rosettacode.org/wiki/Fibonacci_sequence#Liberty_BASIC
 
 ```lb
@@ -2215,7 +2215,7 @@ digit   actual  expected
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```mathematica
-fibdata = Array[First@IntegerDigits@Fibonacci@# &, 1000]; 
+fibdata = Array[First@IntegerDigits@Fibonacci@# &, 1000];
 Table[{d, N@Count[fibdata, d]/Length@fibdata, Log10[1. + 1/d]}, {d, 1,
     9}] // Grid
 ```
@@ -2272,7 +2272,7 @@ method fibonacciList(size = 1000) public static returns Rexx[]
     fibs[n_] = fibs[n_ - 1] + fibs[n_ - 2]
     end n_
   return fibs
-  
+
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 method runSample(arg) private static
   parse arg n_ .
@@ -2309,7 +2309,7 @@ Fibonacci sequence to 1000
 ```oberon2
 
 MODULE BenfordLaw;
-IMPORT 
+IMPORT
   LRealStr,
   LRealMath,
   Out := NPCT:Console;
@@ -2341,7 +2341,7 @@ BEGIN
   END
 END Dist;
 
-BEGIN 
+BEGIN
   Fibb(r);
   Dist(r,d);
   Out.String("First 1000 fibonacci numbers: ");Out.Ln;
@@ -2358,8 +2358,8 @@ END BenfordLaw.
 
 ```txt
 
-First 1000 fibonacci numbers: 
- digit  observed  predicted 
+First 1000 fibonacci numbers:
+ digit  observed  predicted
     1    0.301     0.301
     2    0.177     0.176
     3    0.125     0.125
@@ -2376,7 +2376,7 @@ First 1000 fibonacci numbers:
 
 ## OCaml
 
-For the Fibonacci sequence, we use the function from 
+For the Fibonacci sequence, we use the function from
 https://rosettacode.org/wiki/Fibonacci_sequence#Arbitrary_Precision
 
 Note the remark about the compilation of the program there.
@@ -2421,12 +2421,12 @@ let xvalues = range 1 9 in
 ```txt
 
 Frequency of the first digits in the Fibonacci sequence:
-0.301000 0.177000 0.125000 0.096000 0.080000 0.067000 0.056000 0.053000 0.045000 
+0.301000 0.177000 0.125000 0.096000 0.080000 0.067000 0.056000 0.053000 0.045000
 Prediction of Benford's law:
  0.301030 0.176091 0.124939 0.096910 0.079181 0.066947 0.057992 0.051153 0.045757
 
 ```
- 
+
 
 
 ## PARI/GP
@@ -2581,7 +2581,7 @@ for my $i( 1..9 ) {
 {{Out}}
 
 ```txt
- 
+
          Observed         Expected
 1 :       30.10 %          30.10 %
 2 :       17.70 %          17.61 %
@@ -2788,7 +2788,7 @@ Results:
 
 ```txt
 
-digit  expected     obtained 
+digit  expected     obtained
   1   0.30103000   0.30099487
   2   0.17609126   0.17698669
   3   0.12493874   0.12500000
@@ -2808,7 +2808,7 @@ digit  expected     obtained
 
 ```SQL
 
-WITH recursive 
+WITH recursive
 constant(val) AS
 (
 select 1000.
@@ -2824,7 +2824,7 @@ FROM fib
 ,
 benford(first_digit, probability_real, probability_theoretical) AS
 (
-SELECT *, 
+SELECT *,
 	CAST(log(1. + 1./CAST(first_digit AS INT)) AS NUMERIC(5,4)) probability_theoretical
 FROM (
 	SELECT  first_digit, CAST(COUNT(1)/(select val from constant) AS NUMERIC(5,4)) probability_real FROM
@@ -2977,9 +2977,9 @@ For I=2 To #MAX_N
 Next
 
 For I=1 To #MAX_N
-  d1(Left(fi(I),1))+1  
+  d1(Left(fi(I),1))+1
 Next
-  
+
 Procedure.s Sigma(sx.s, sy.s)
   Define i.i, v1.i, v2.i, r.i
   Define s.s, sa.s
@@ -2987,10 +2987,10 @@ Procedure.s Sigma(sx.s, sy.s)
   For i=1 To Len(s)*Bool(Len(s)>Len(sy))+Len(sy)*Bool(Len(sy)>=Len(s))
     v1=Val(Mid(s,i,1))
     v2=Val(Mid(sy,i,1))
-    r+v1+v2    
+    r+v1+v2
     sa+Str(r%10)
     r/10
-  Next i  
+  Next i
   If r : sa+Str(r%10) : EndIf
   ProcedureReturn ReverseString(sa)
 EndProcedure
@@ -3001,7 +3001,7 @@ Print(~"Dig.\t\tCnt."+~"\t\tExp.\t\tDif.\n\n")
 ForEach d1()
   Print(RSet(MapKey(d1()),4," ")+~"\t:\t"+RSet(Str(d1()),3," ")+~"\t\t")
   ex=Int(#MAX_N*Log(1+1/Val(MapKey(d1())))/Log(10))
-  PrintN(RSet(Str(ex),3," ")+~"\t\t"+RSet(StrF((ex-d1())*100/ex,5),8," ")+" %")  
+  PrintN(RSet(Str(ex),3," ")+~"\t\t"+RSet(StrF((ex-d1())*100/ex,5),8," ")+" %")
 Next
 
 PrintN(~"\nPress Enter...")
@@ -3314,18 +3314,18 @@ for m = 1 to 9
      fr = frequency(m)*100
      see "" + m + "   " + (actual[m]/10) + "   " + fr + nl
 next
- 
+
 func frequency(n)
-      freq = log10(n+1) - log10(n)             
+      freq = log10(n+1) - log10(n)
       return freq
 
 func log10(n)
       log1 = log(n) / log(10)
       return log1
- 
+
 func fibonacci(y)
        if y = 0 return 0 ok
-       if y = 1 return 1 ok 
+       if y = 1 return 1 ok
        if y > 1 return fibonacci(y-1) + fibonacci(y-2) ok
 
 ```
@@ -3567,19 +3567,19 @@ val fibs : Stream[BigInt] = { def series(i:BigInt,j:BigInt):Stream[BigInt] = i #
 
 
 /**
- * Given a numeric sequence, return the distribution of the most-signicant-digit 
+ * Given a numeric sequence, return the distribution of the most-signicant-digit
  * as expected by Benford's Law and then by actual distribution.
  */
 def benford[N:Numeric]( data:Seq[N] ) : Map[Int,(Double,Double)] = {
 
   import scala.math._
-  
+
   val maxSize = 10000000  // An arbitrary size to avoid problems with endless streams
-  
+
   val size = (data.take(maxSize)).size.toDouble
-  
+
   val distribution = data.take(maxSize).groupBy(_.toString.head.toString.toInt).map{ case (d,l) => (d -> l.size) }
-  
+
   (for( i <- (1 to 9) ) yield { (i -> (log10(1D + 1D / i), (distribution(i) / size))) }).toMap
 }
 
@@ -3587,8 +3587,8 @@ def benford[N:Numeric]( data:Seq[N] ) : Map[Int,(Double,Double)] = {
   println( "Fibonacci Sequence (size=1000): 1 1 2 3 5 8 13 21 34 55 ...\n" )
   println( "%9s %9s %9s".format( "Actual", "Expected", "Deviation" ) )
 
-  benford( fibs.take(1000) ).toList.sorted foreach { 
-    case (k, v) => println( "%d: %5.2f%% | %5.2f%% | %5.4f%%".format(k,v._2*100,v._1*100,math.abs(v._2-v._1)*100) ) 
+  benford( fibs.take(1000) ).toList.sorted foreach {
+    case (k, v) => println( "%d: %5.2f%% | %5.2f%% | %5.4f%%".format(k,v._2*100,v._1*100,math.abs(v._2-v._1)*100) )
   }
 }
 ```
@@ -3832,11 +3832,11 @@ import Foundation
 
 /* Reads from a file and returns the content as a String */
 func readFromFile(fileName file:String) -> String{
-    
+
     var ret:String = ""
-    
+
     let path = Foundation.URL(string: "file://"+file)
-    
+
     do {
         ret = try String(contentsOf: path!, encoding: String.Encoding.utf8)
     }
@@ -3844,18 +3844,18 @@ func readFromFile(fileName file:String) -> String{
         print("Could not read from file!")
         exit(-1)
     }
-   
+
     return ret
 }
 
 /* Calculates the probability following Benford's law */
 func benford(digit z:Int) -> Double {
-    
+
     if z<=0 || z>9 {
         perror("Argument must be between 1 and 9.")
         return 0
     }
-    
+
     return log10(Double(1)+Double(1)/Double(z))
 }
 
@@ -3920,7 +3920,7 @@ for line in lines {
             default:
                 break
         }
-    
+
 }
 
 // print result
@@ -4122,7 +4122,7 @@ const N=1000;
    // de-ref Refs ie convert to int to float, divide by N
 actual   := benford.apply(T("value","toFloat",'/(N)));
 expected := [1..9].apply(fcn(x){(1.0 + 1.0/x).log10()});
- 
+
 println("Leading digital distribution of the first 1,000 Fibonacci numbers");
 println("Digit\tActual\tExpected");
 foreach i in ([1..9]){ println("%d\t%.3f\t%.3f".fmt(i,actual[i], expected[i-1])); }
@@ -4153,7 +4153,7 @@ Digit  Observed  Predicted
 {{trans|Liberty BASIC}}
 
 ```zxbasic
-10 RANDOMIZE 
+10 RANDOMIZE
 20 DIM b(9)
 30 LET n=100
 40 FOR i=1 TO n
@@ -4167,7 +4167,7 @@ Digit  Observed  Predicted
 120 LET pdi=(LN (i+1)/LN 10)-(LN i/LN 10)
 130 PRINT i;TAB 6;b(i)/n;TAB 18;pdi
 140 NEXT i
-150 STOP 
+150 STOP
 1000 REM Fibonacci
 1010 LET fiboI=0: LET b=1
 1020 FOR j=1 TO i
@@ -4175,7 +4175,7 @@ Digit  Observed  Predicted
 1040 LET fiboI=b
 1050 LET b=temp
 1060 NEXT j
-1070 RETURN 
+1070 RETURN
 
 ```
 

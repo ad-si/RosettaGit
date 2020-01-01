@@ -356,8 +356,8 @@ file main.c
 
 
 
-```c>#include <windows.h
-
+```c
+#include <windows.h>
 #include "resource.h"
 
 #define MIN_VALUE    0
@@ -463,8 +463,8 @@ file resource.rc
 
 
 
-```c>#include <windows.h
-
+```c
+#include <windows.h>
 #include "resource.h"
 
 LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
@@ -531,8 +531,8 @@ file task.cpp
 ```
 
 
-```cpp>#include <QtGui
-
+```cpp
+#include <QtGui>
 #include <QString>
 #include "task.h"
 
@@ -595,8 +595,8 @@ main.cpp
 ```
 
 
-```cpp>#include <QApplication
-
+```cpp
+#include <QApplication>
 #include "task.h"
 
 int main( int argc, char *argv[ ] ) {

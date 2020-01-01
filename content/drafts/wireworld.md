@@ -10,19 +10,19 @@ categories = []
 tags = []
 +++
 
-{{task|Games}} 
+{{task|Games}}
 [[Category:Cellular automata]]
 {{omit from|GUISS}}
 
-[[wp:Wireworld|Wireworld]] is a cellular automaton with some similarities to [[Conway's Game of Life]]. 
+[[wp:Wireworld|Wireworld]] is a cellular automaton with some similarities to [[Conway's Game of Life]].
 
-It is capable of doing sophisticated computations with appropriate programs 
-(it is actually [[wp:Turing-complete|Turing complete]]), 
+It is capable of doing sophisticated computations with appropriate programs
+(it is actually [[wp:Turing-complete|Turing complete]]),
 and is much simpler to program for.
 
-A Wireworld arena consists of a Cartesian grid of cells, 
-each of which can be in one of four states. 
-All cell transitions happen simultaneously. 
+A Wireworld arena consists of a Cartesian grid of cells,
+each of which can be in one of four states.
+All cell transitions happen simultaneously.
 
 The cell transition rules are this:
 {| class=wikitable
@@ -92,7 +92,7 @@ procedure Test_Wireworld is
          end if;
       end "abs";
       Above   : array (State'Range (2)) of Cell := (others => ' ');
-      Left    : Cell := ' '; 
+      Left    : Cell := ' ';
       Current : Cell;
    begin
       for I in State'First (1) + 1..State'Last (1) - 1 loop
@@ -107,7 +107,7 @@ procedure Test_Wireworld is
                   State (I, J) := '.';
                when '.' =>
                   if abs Above (       J - 1) + abs Above (       J) + abs Above (       J + 1) +
-                     abs Left                                        + abs State (I,     J + 1) + 
+                     abs Left                                        + abs State (I,     J + 1) +
                      abs State (I + 1, J - 1) + abs State (I + 1, J) + abs State (I + 1, J + 1)
                   in 1..2 then
                      State (I, J) := 'H';
@@ -193,7 +193,7 @@ Step 9 ---------
 
 ## ALGOL 68
 
-{{trans|python}} - note: This specimen retains the original python coding style. 
+{{trans|python}} - note: This specimen retains the original python coding style.
 {{wont work with|ALGOL 68|Standard - the associate in the standard uses [][][]CHAR as an argument only}}
 {{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - missing transput function "printf" and non standard associate}}
@@ -202,7 +202,7 @@ Step 9 ---------
 CO
 Wireworld implementation.
 CO
- 
+
 PROC exception = ([]STRING args)VOID:(
   putf(stand error, ($"Exception"$, $", "g$, args, $l$));
   stop
@@ -218,15 +218,15 @@ STRING all states := empty;
 BOOL wrap = FALSE; # is the world round? #
 
 STRING nl := REPR 10;
- 
-STRING in string := 
+
+STRING in string :=
   "tH........."+nl+
   ".   ."+nl+
   "   ..."+nl+
   ".   ."+nl+
   "Ht.. ......"+nl
 ;
- 
+
 OP +:= = (REF FLEX[]FLEX[]CELL lines, FLEX[]CELL line)VOID:(
       [UPB lines + 1]FLEX[0]CELL new lines;
       new lines[:UPB lines]:=lines;
@@ -239,7 +239,7 @@ PROC read file = (REF FILE in file)WORLD: (
     FLEX[0]CELL line;
     FLEX[0]FLEX[0]CELL lines;
     INT upb x:=0, upb y := 0;
-    BEGIN 
+    BEGIN
       # on physical file end(in file, exit read line); #
       make term(in file, nl);
       FOR x TO 5 DO
@@ -256,10 +256,10 @@ PROC read file = (REF FILE in file)WORLD: (
     OD;
     out
 );
- 
+
 PROC new cell = (WORLD current world, INT x, y)CELL: (
     CELL istate := current world[x, y];
-    IF INT pos; char in string (istate, pos, all states); pos IS REF INT(NIL) THEN 
+    IF INT pos; char in string (istate, pos, all states); pos IS REF INT(NIL) THEN
         assertion error("Wireworld cell set to unknown value "+istate) FI;
     IF istate = head THEN
         tail
@@ -290,7 +290,7 @@ PROC new cell = (WORLD current world, INT x, y)CELL: (
         IF 1 <= n AND n <= 2 THEN head ELSE conductor FI
     FI
 );
- 
+
 PROC next gen = (WORLD world)WORLD:(
     # compute next generation of wireworld #
     WORLD new world := world;
@@ -301,7 +301,7 @@ PROC next gen = (WORLD world)WORLD:(
     OD;
     new world
 );
- 
+
 PROC world2string = (WORLD world) STRING:(
     STRING out:="";
     FOR x TO UPB world DO
@@ -309,13 +309,13 @@ PROC world2string = (WORLD world) STRING:(
     OD;
     out
 );
- 
+
 FILE in file;
 associate(in file, in string);
 
 WORLD ww := read file(in file);
 close(in file);
- 
+
 FOR gen TO 10 DO
     printf ( ($lg(-3)" "$, gen-1,  $g$,"="* (2 UPB ww-4), $l$));
     print ( world2string(ww) );
@@ -325,94 +325,94 @@ OD
 
 {{out}}
 <pre style="height:45ex;overflow:scroll">
-  0 
+  0
 ### =
 
 tH.........
-.   .      
-   ...     
-.   .      
+.   .
+   ...
+.   .
 Ht.. ......
 
-  1 
+  1
 ### =
 
 .tH........
-H   .      
-   ...     
-H   .      
+H   .
+   ...
+H   .
 t... ......
 
-  2 
+  2
 ### =
 
 H.tH.......
-t   .      
-   ...     
-t   .      
+t   .
+   ...
+t   .
 .H.. ......
 
-  3 
+  3
 ### =
 
 tH.tH......
-.   H      
-   ...     
-.   .      
+.   H
+   ...
+.   .
 HtH. ......
 
-  4 
+  4
 ### =
 
 .tH.tH.....
-H   t      
-   HHH     
-H   .      
+H   t
+   HHH
+H   .
 t.tH ......
 
-  5 
+  5
 ### =
 
 H.tH.tH....
-t   .      
-   ttt     
-t   .      
+t   .
+   ttt
+t   .
 .H.t ......
 
-  6 
+  6
 ### =
 
 tH.tH.tH...
-.   H      
-   ...     
-.   .      
+.   H
+   ...
+.   .
 HtH. ......
 
-  7 
+  7
 ### =
 
 .tH.tH.tH..
-H   t      
-   HHH     
-H   .      
+H   t
+   HHH
+H   .
 t.tH ......
 
-  8 
+  8
 ### =
 
 H.tH.tH.tH.
-t   .      
-   ttt     
-t   .      
+t   .
+   ttt
+t   .
 .H.t ......
 
-  9 
+  9
 ### =
 
 tH.tH.tH.tH
-.   H      
-   ...     
-.   .      
+.   H
+   ...
+.   .
 HtH. ......
 
 ```
@@ -491,7 +491,7 @@ Loop {
 			, pBrush := Gdip_BrushCreateSolid(C)
 			, Gdip_FillRectangle(G, pBrush, CellNum * CellSize + 1, RowNum * CellSize - 2, CellSize2, CellSize2)
 			, Gdip_DeleteBrush(pBrush)
-	
+
 
 	UpdateLayeredWindow(hwnd1, hdc, TopLeftX, TopLeftY, Width, Height)
 	, Gdip_GraphicsClear(G)
@@ -658,27 +658,27 @@ EndFunc   ;==>Wireworld
 ```bbcbasic
       Size% = 20
       DIM P&(Size%-1,Size%-1), Q&(Size%-1,Size%-1)
-      
+
       VDU 23,22,Size%*8;Size%*8;64,64,16,0
       OFF
-      
+
       DATA "tH........."
       DATA ".   .      "
       DATA "   ...     "
       DATA ".   .      "
       DATA "Ht.. ......"
-      
+
       FOR Y% = 12 TO 8 STEP -1
         READ A$
         FOR X% = 1 TO LEN(A$)
           P&(X%+4, Y%) = ASCMID$(A$, X%, 1) AND 15
         NEXT
       NEXT Y%
-      
+
       COLOUR  8,0,0,255 : REM Electron head = blue
       COLOUR  4,255,0,0 : REM Electron tail = red
       COLOUR 14,255,200,0 : REM Conductor orange
-      
+
       REPEAT
         FOR Y% = 1 TO Size%-2
           FOR X% = 1 TO Size%-2
@@ -790,8 +790,8 @@ int main()
 {{libheader|POSIX}} (for usleep)
 
 
-```cpp>#include <ggi/ggi.h
-
+```cpp
+#include <ggi/ggi.h>
 #include <set>
 #include <map>
 #include <utility>
@@ -1232,75 +1232,75 @@ shared void run() {
 <pre style="height:30ex;overflow:scroll">CL-USER> (wireworld-show-gens (make-rosetta-wireworld) 12)
 
 .tH........
-H   .      
-   ...     
-H   .      
+H   .
+   ...
+H   .
 t... ......
 
 H.tH.......
-t   .      
-   ...     
-t   .      
+t   .
+   ...
+t   .
 .H.. ......
 
 tH.tH......
-.   H      
-   ...     
-.   .      
+.   H
+   ...
+.   .
 HtH. ......
 
 .tH.tH.....
-H   t      
-   HHH     
-H   .      
+H   t
+   HHH
+H   .
 t.tH ......
 
 H.tH.tH....
-t   .      
-   ttt     
-t   .      
+t   .
+   ttt
+t   .
 .H.t ......
 
 tH.tH.tH...
-.   H      
-   ...     
-.   .      
+.   H
+   ...
+.   .
 HtH. ......
 
 .tH.tH.tH..
-H   t      
-   HHH     
-H   .      
+H   t
+   HHH
+H   .
 t.tH ......
 
 H.tH.tH.tH.
-t   .      
-   ttt     
-t   .      
+t   .
+   ttt
+t   .
 .H.t ......
 
 tH.tH.tH.tH
-.   H      
-   ...     
-.   .      
+.   H
+   ...
+.   .
 HtH. ......
 
 .tH.tH.tH.t
-H   t      
-   HHH     
-H   .      
+H   t
+   HHH
+H   .
 t.tH ......
 
 H.tH.tH.tH.
-t   .      
-   ttt     
-t   .      
+t   .
+   ttt
+t   .
 .H.t ......
 
 tH.tH.tH.tH
-.   H      
-   ...     
-.   .      
+.   H
+   ...
+.   .
 HtH. ......
 ```
 
@@ -1355,39 +1355,39 @@ void main() {
 ```txt
 
 Step 0: ------------
- tH    
+ tH
 .  ....
- ..    
+ ..
 
 Step 1: ------------
- .t    
+ .t
 .  H...
- ..    
+ ..
 
 Step 2: ------------
- ..    
+ ..
 .  tH..
- .H    
+ .H
 
 Step 3: ------------
- ..    
+ ..
 .  .tH.
- Ht    
+ Ht
 
 Step 4: ------------
- ..    
+ ..
 H  ..tH
- t.    
+ t.
 
 Step 5: ------------
- H.    
+ H.
 t  ...t
- ..    
+ ..
 
 Step 6: ------------
- tH    
+ tH
 .  ....
- ..    
+ ..
 ```
 
 
@@ -1400,7 +1400,7 @@ import system'routines.
 import extensions.
 import cellular.
 
-const literal sample = 
+const literal sample =
 " tH......
 .        ......
  ...Ht...      .
@@ -1426,9 +1426,9 @@ wireWorldRuleSet = RuleSet::
     proceed(Space s, int x, int y, ref<int> retVal)
     [
         int cell := s getAt(x, y).
-        
+
         cell =>
-            conductor 
+            conductor
             [
                 int number := s getLiveCell(x, y, electronHead).
                 if ((number == 1)||(number == 2))
@@ -1437,9 +1437,9 @@ wireWorldRuleSet = RuleSet::
                 ];
                 [
                     retVal value := conductor
-                ]                
+                ]
             ];
-            electronHead 
+            electronHead
             [
                 retVal value := electronTail
             ];
@@ -1456,11 +1456,11 @@ wireWorldRuleSet = RuleSet::
 sealed class Model
 {
     T<Space>   theSpace.
-    
+
     constructor load(LiteralValue stateString,int maxX, int maxY)
     [
         var strings := stateString split(newLine); selectBy(:s)(s toArray); toArray.
-        
+
         theSpace := IntMatrixSpace new(maxX, maxY, RuleSet::
         {
             proceed(Space s, int x, int y, ref<int> retVal)
@@ -1478,47 +1478,47 @@ sealed class Model
                     ];
                     [
                         retVal value := empty
-                    ]                    
+                    ]
                 ];
                 [
                     retVal value := empty
                 ]
-                
+
             ]
         }).
     ]
-    
+
     run
     [
         theSpace update(wireWorldRuleSet).
-    ]    
-    
+    ]
+
     print
     [
         int columns := theSpace columns.
         int rows := theSpace rows.
-        
+
         int i := 0.
         int j := 0.
         while (i < rows)
         [
             j := 0.
-            
+
             while (j < columns)
             [
                 var label := emptyLabel.
                 int cell := theSpace getAt(i, j).
-                
+
                 cell =>
                     conductor    [ label := conductorLabel ];
                     electronHead [ label := headLabel ];
                     electronTail [ label := tailLabel ].
-                
+
                 console write(label).
-                
+
                 j := j + 1.
             ].
-            
+
             i := i + 1.
             console writeLine.
         ].
@@ -1532,7 +1532,7 @@ public program
     [
         console printLineFormatted("Iteration {0}",i).
         model print; run.
-    ]    
+    ]
 ]
 ```
 
@@ -1541,72 +1541,72 @@ public program
 ```txt
 
 Iteration 0
- tH......                     
-.        ......               
- ...Ht...      .              
-              ....            
-              .  .....        
-              ....            
- ......tH      .              
-.        ......               
- ...Ht...                     
-                              
+ tH......
+.        ......
+ ...Ht...      .
+              ....
+              .  .....
+              ....
+ ......tH      .
+.        ......
+ ...Ht...
+
 Iteration 1
- .tH.....                     
-.        ......               
- ..Ht....      .              
-              ....            
-              .  .....        
-              ....            
- .......t      .              
-.        H.....               
- ..Ht....                     
-                              
+ .tH.....
+.        ......
+ ..Ht....      .
+              ....
+              .  .....
+              ....
+ .......t      .
+.        H.....
+ ..Ht....
+
 Iteration 2
- ..tH....                     
-.        ......               
- .Ht.....      .              
-              ....            
-              .  .....        
-              ....            
- ........      .              
-.        tH....               
- .Ht....H                     
-                              
+ ..tH....
+.        ......
+ .Ht.....      .
+              ....
+              .  .....
+              ....
+ ........      .
+.        tH....
+ .Ht....H
+
 Iteration 3
- ...tH...                     
-.        ......               
- Ht......      .              
-              ....            
-              .  .....        
-              ....            
- ........      .              
-.        .tH...               
- Ht....Ht                     
+ ...tH...
+.        ......
+ Ht......      .
+              ....
+              .  .....
+              ....
+ ........      .
+.        .tH...
+ Ht....Ht
 
 /* ... */
-                              
+
 Iteration 9
- ...tH...                     
-.        .tH...               
- ......Ht      .              
-              ....            
-              H  H....        
-              tttH            
- ...tH...      .              
-.        ......               
- Ht......                     
-                              
+ ...tH...
+.        .tH...
+ ......Ht      .
+              ....
+              H  H....
+              tttH
+ ...tH...      .
+.        ......
+ Ht......
+
 Iteration 10
- ....tH..                     
-.        ..tH..               
- .....Ht.      .              
-              HHHH            
-              t  tH...        
-              ...t            
- ....tH..      .              
-H        ......               
- t.......                     
+ ....tH..
+.        ..tH..
+ .....Ht.      .
+              HHHH
+              t  tH...
+              ...t
+ ....tH..      .
+H        ......
+ t.......
 
 ```
 
@@ -1623,7 +1623,7 @@ defmodule Wireworld do
   @tail       "t"
   @conductor  "."
   @neighbours (for x<- -1..1, y <- -1..1, do: {x,y}) -- [{0,0}]
-  
+
   def set_up(string) do
     lines = String.split(string, "\n", trim: true)
     grid = Enum.with_index(lines)
@@ -1637,21 +1637,21 @@ defmodule Wireworld do
     height = length(lines)
     {grid, width, height}
   end
-  
+
   # to string
   defp to_s(grid, width, height) do
     Enum.map_join(0..height-1, fn i ->
       Enum.map_join(0..width-1, fn j -> Map.get(grid, {i,j}, @empty) end) <> "\n"
     end)
   end
- 
+
   # transition all cells simultaneously
   defp transition(grid) do
     Enum.into(grid, Map.new, fn {{x, y}, state} ->
       {{x, y}, transition_cell(grid, state, x, y)}
     end)
   end
-  
+
   # how to transition a single cell
   defp transition_cell(grid, current, x, y) do
     case current do
@@ -1661,12 +1661,12 @@ defmodule Wireworld do
       _      -> if neighbours_with_state(grid, x, y) in 1..2, do: @head, else: @conductor
     end
   end
-  
+
   # given a position in the grid, find the neighbour cells with a particular state
   def neighbours_with_state(grid, x, y) do
     Enum.count(@neighbours, fn {dx,dy} -> Map.get(grid, {x+dx, y+dy}) == @head end)
   end
-  
+
   # run a simulation up to a limit of transitions, or until a recurring
   # pattern is found
   # This will print text to the console
@@ -1675,7 +1675,7 @@ defmodule Wireworld do
     Enum.reduce(0..iterations, {grid, %{}}, fn count,{grd, seen} ->
       IO.puts "Generation : #{count}"
       IO.puts to_s(grd, width, height)
- 
+
       if seen[grd] do
         IO.puts "I've seen this grid before... after #{count} iterations"
         exit(:normal)
@@ -1699,7 +1699,7 @@ text = """
 .        ......
  ...Ht...
 """
- 
+
 Wireworld.run(text)
 ```
 
@@ -1707,268 +1707,268 @@ Wireworld.run(text)
 {{out}}
 <pre style="height: 80ex; overflow: scroll">
 Generation : 0
- ......tH             
-.        ......       
- ...Ht...      .      
-              ....    
+ ......tH
+.        ......
+ ...Ht...      .
+              ....
               .  .....
-              ....    
- tH......      .      
-.        ......       
- ...Ht...             
+              ....
+ tH......      .
+.        ......
+ ...Ht...
 
 Generation : 1
- .......t             
-.        H.....       
- ..Ht....      .      
-              ....    
+ .......t
+.        H.....
+ ..Ht....      .
+              ....
               .  .....
-              ....    
- .tH.....      .      
-.        ......       
- ..Ht....             
+              ....
+ .tH.....      .
+.        ......
+ ..Ht....
 
 Generation : 2
- ........             
-.        tH....       
- .Ht....H      .      
-              ....    
+ ........
+.        tH....
+ .Ht....H      .
+              ....
               .  .....
-              ....    
- ..tH....      .      
-.        ......       
- .Ht.....             
+              ....
+ ..tH....      .
+.        ......
+ .Ht.....
 
 Generation : 3
- ........             
-.        .tH...       
- Ht....Ht      .      
-              ....    
+ ........
+.        .tH...
+ Ht....Ht      .
+              ....
               .  .....
-              ....    
- ...tH...      .      
-.        ......       
- Ht......             
+              ....
+ ...tH...      .
+.        ......
+ Ht......
 
 Generation : 4
- ........             
-H        ..tH..       
- t....Ht.      .      
-              ....    
+ ........
+H        ..tH..
+ t....Ht.      .
+              ....
               .  .....
-              ....    
- ....tH..      .      
-H        ......       
- t.......             
+              ....
+ ....tH..      .
+H        ......
+ t.......
 
 Generation : 5
- H.......             
-t        ...tH.       
- ....Ht..      .      
-              ....    
+ H.......
+t        ...tH.
+ ....Ht..      .
+              ....
               .  .....
-              ....    
- H....tH.      .      
-t        ......       
- ........             
+              ....
+ H....tH.      .
+t        ......
+ ........
 
 Generation : 6
- tH......             
-.        ....tH       
- ...Ht...      .      
-              ....    
+ tH......
+.        ....tH
+ ...Ht...      .
+              ....
               .  .....
-              ....    
- tH....tH      .      
-.        ......       
- ........             
+              ....
+ tH....tH      .
+.        ......
+ ........
 
 Generation : 7
- .tH.....             
-.        .....t       
- ..Ht....      H      
-              ....    
+ .tH.....
+.        .....t
+ ..Ht....      H
+              ....
               .  .....
-              ....    
- .tH....t      .      
-.        H.....       
- ........             
+              ....
+ .tH....t      .
+.        H.....
+ ........
 
 Generation : 8
- ..tH....             
-.        ......       
- .Ht.....      t      
-              HHH.    
+ ..tH....
+.        ......
+ .Ht.....      t
+              HHH.
               .  .....
-              ....    
- ..tH....      .      
-.        tH....       
- .......H             
+              ....
+ ..tH....      .
+.        tH....
+ .......H
 
 Generation : 9
- ...tH...             
-.        ......       
- Ht......      .      
-              tttH    
+ ...tH...
+.        ......
+ Ht......      .
+              tttH
               H  H....
-              ....    
- ...tH...      .      
-.        .tH...       
- ......Ht             
+              ....
+ ...tH...      .
+.        .tH...
+ ......Ht
 
 Generation : 10
- ....tH..             
-H        ......       
- t.......      .      
-              ...t    
+ ....tH..
+H        ......
+ t.......      .
+              ...t
               t  tH...
-              HHHH    
- ....tH..      .      
-.        ..tH..       
- .....Ht.             
+              HHHH
+ ....tH..      .
+.        ..tH..
+ .....Ht.
 
 Generation : 11
- H....tH.             
-t        ......       
- ........      .      
-              ....    
+ H....tH.
+t        ......
+ ........      .
+              ....
               .  .tH..
-              tttt    
- .....tH.      .      
-.        ...tH.       
- ....Ht..             
+              tttt
+ .....tH.      .
+.        ...tH.
+ ....Ht..
 
 Generation : 12
- tH....tH             
-.        ......       
- ........      .      
-              ....    
+ tH....tH
+.        ......
+ ........      .
+              ....
               .  ..tH.
-              ....    
- ......tH      .      
-.        ....tH       
- ...Ht...             
+              ....
+ ......tH      .
+.        ....tH
+ ...Ht...
 
 Generation : 13
- .tH....t             
-.        H.....       
- ........      .      
-              ....    
+ .tH....t
+.        H.....
+ ........      .
+              ....
               .  ...tH
-              ....    
- .......t      H      
-.        H....t       
- ..Ht....             
+              ....
+ .......t      H
+.        H....t
+ ..Ht....
 
 Generation : 14
- ..tH....             
-.        tH....       
- .......H      .      
-              ....    
+ ..tH....
+.        tH....
+ .......H      .
+              ....
               .  ....t
-              HHH.    
- ........      t      
-.        tH....       
- .Ht....H             
+              HHH.
+ ........      t
+.        tH....
+ .Ht....H
 
 Generation : 15
- ...tH...             
-.        .tH...       
- ......Ht      .      
-              ....    
+ ...tH...
+.        .tH...
+ ......Ht      .
+              ....
               H  H....
-              tttH    
- ........      .      
-.        .tH...       
- Ht....Ht             
+              tttH
+ ........      .
+.        .tH...
+ Ht....Ht
 
 Generation : 16
- ....tH..             
-.        ..tH..       
- .....Ht.      .      
-              HHHH    
+ ....tH..
+.        ..tH..
+ .....Ht.      .
+              HHHH
               t  tH...
-              ...t    
- ........      .      
-H        ..tH..       
- t....Ht.             
+              ...t
+ ........      .
+H        ..tH..
+ t....Ht.
 
 Generation : 17
- .....tH.             
-.        ...tH.       
- ....Ht..      .      
-              tttt    
+ .....tH.
+.        ...tH.
+ ....Ht..      .
+              tttt
               .  .tH..
-              ....    
- H.......      .      
-t        ...tH.       
- ....Ht..             
+              ....
+ H.......      .
+t        ...tH.
+ ....Ht..
 
 Generation : 18
- ......tH             
-.        ....tH       
- ...Ht...      .      
-              ....    
+ ......tH
+.        ....tH
+ ...Ht...      .
+              ....
               .  ..tH.
-              ....    
- tH......      .      
-.        ....tH       
- ...Ht...             
+              ....
+ tH......      .
+.        ....tH
+ ...Ht...
 
 Generation : 19
- .......t             
-.        H....t       
- ..Ht....      H      
-              ....    
+ .......t
+.        H....t
+ ..Ht....      H
+              ....
               .  ...tH
-              ....    
- .tH.....      H      
-.        .....t       
- ..Ht....             
+              ....
+ .tH.....      H
+.        .....t
+ ..Ht....
 
 Generation : 20
- ........             
-.        tH....       
- .Ht....H      t      
-              HHH.    
+ ........
+.        tH....
+ .Ht....H      t
+              HHH.
               .  ....t
-              HHH.    
- ..tH....      t      
-.        ......       
- .Ht.....             
+              HHH.
+ ..tH....      t
+.        ......
+ .Ht.....
 
 Generation : 21
- ........             
-.        .tH...       
- Ht....Ht      .      
-              tttH    
+ ........
+.        .tH...
+ Ht....Ht      .
+              tttH
               .  H....
-              tttH    
- ...tH...      .      
-.        ......       
- Ht......             
+              tttH
+ ...tH...      .
+.        ......
+ Ht......
 
 Generation : 22
- ........             
-H        ..tH..       
- t....Ht.      .      
-              ...t    
+ ........
+H        ..tH..
+ t....Ht.      .
+              ...t
               .  t....
-              ...t    
- ....tH..      .      
-H        ......       
- t.......             
+              ...t
+ ....tH..      .
+H        ......
+ t.......
 
 Generation : 23
- H.......             
-t        ...tH.       
- ....Ht..      .      
-              ....    
+ H.......
+t        ...tH.
+ ....Ht..      .
+              ....
               .  .....
-              ....    
- H....tH.      .      
-t        ......       
- ........             
+              ....
+ H....tH.      .
+t        ......
+ ........
 
 I've seen this grid before... after 23 iterations
 
@@ -2066,122 +2066,122 @@ create transition  ' noop , ' 1+ , ' 1+ , ' conductor ,
 
 {{out}}
 <pre style="height:30ex;overflow:scroll">s" wireworld.diode" load
-                
-        ..      
- tH...... .Ht   
-        ..      
-                
-                
-                
-                
+
+        ..
+ tH...... .Ht
+        ..
+
+
+
+
  ok
-gen show                
-                
-        ..      
- .tH..... Ht.   
-        ..      
-                
-                
-                
+gen show
+
+        ..
+ .tH..... Ht.
+        ..
+
+
+
                  ok
-gen show 
-                
-        .H      
- ..tH.... t..   
-        .H      
-                
-                
-                
+gen show
+
+        .H
+ ..tH.... t..
+        .H
+
+
+
                  ok
-gen show 
-                
-        Ht      
- ...tH..H ...   
-        Ht      
-                
-                
-                
+gen show
+
+        Ht
+ ...tH..H ...
+        Ht
+
+
+
                  ok
-gen show 
-                
-        t.      
- ....tH.t ...   
-        t.      
-                
-                
-                
+gen show
+
+        t.
+ ....tH.t ...
+        t.
+
+
+
                  ok
-gen show 
-                
-        ..      
- .....tH. ...   
-        ..      
-                
-                
-                
+gen show
+
+        ..
+ .....tH. ...
+        ..
+
+
+
                  ok
-gen show 
-                
-        H.      
- ......tH ...   
-        H.      
-                
-                
-                
+gen show
+
+        H.
+ ......tH ...
+        H.
+
+
+
                  ok
-gen show 
-                
-        tH      
- .......t ...   
-        tH      
-                
-                
-                
+gen show
+
+        tH
+ .......t ...
+        tH
+
+
+
                  ok
-gen show 
-                
-        .t      
- ........ H..   
-        .t      
-                
-                
-                
+gen show
+
+        .t
+ ........ H..
+        .t
+
+
+
                  ok
-gen show 
-                
-        ..      
- ........ tH.   
-        ..      
-                
-                
-                
+gen show
+
+        ..
+ ........ tH.
+        ..
+
+
+
                  ok
-gen show 
-                
-        ..      
- ........ .tH   
-        ..      
-                
-                
-                
+gen show
+
+        ..
+ ........ .tH
+        ..
+
+
+
                  ok
-gen show 
-                
-        ..      
- ........ ..t   
-        ..      
-                
-                
-                
+gen show
+
+        ..
+ ........ ..t
+        ..
+
+
+
                  ok
-gen show 
-                
-        ..      
- ........ ...   
-        ..      
-                
-                
-                
+gen show
+
+        ..
+ ........ ...
+        ..
+
+
+
                  ok
 
 ```
@@ -2195,7 +2195,7 @@ gen show
 ```fortran
 program Wireworld
   implicit none
- 
+
   integer, parameter :: max_generations = 12
   integer :: nrows = 0, ncols = 0, maxcols = 0
   integer :: gen, ierr = 0
@@ -2206,9 +2206,9 @@ program Wireworld
 
 ! open input file
   open(unit=8, file="wwinput.txt")
-    
+
 ! find numbers of rows and columns in data
-  do 
+  do
     read(8, "(a)", iostat=ierr) buff
     if(ierr /= 0) exit
     nrows = nrows + 1
@@ -2216,7 +2216,7 @@ program Wireworld
     if(ncols > maxcols) maxcols = ncols
   end do
 
-! allcate enough space to hold the data  
+! allcate enough space to hold the data
   allocate(cells(0:nrows+1, 0:maxcols+1))
   cells = " "
 
@@ -2234,7 +2234,7 @@ program Wireworld
 ! calculate format string for write statement
   write(sub, "(i8)") maxcols
   form = "(" // trim(adjustl(sub)) // "a1)"
-       
+
   do gen = 0, max_generations
     write(*, "(/a, i0)") "Generation ", gen
     do i = 1, nrows
@@ -2243,37 +2243,37 @@ program Wireworld
     call nextgen(cells)
   end do
   deallocate(cells)
-  
+
  contains
-  
+
   subroutine Nextgen(cells)
     character, intent(in out) :: cells(0:,0:)
     character :: buffer(0:size(cells, 1)-1, 0:size(cells, 2)-1)
     integer :: i, j, h
-   
+
      buffer = cells   ! Store current status
      do i = 1, size(cells, 1)-2
         do j = 1, size(cells, 2)-2
           select case (buffer(i, j))
             case(" ")
               ! no Change
-                
+
             case("H")
-              ! If a head change to tail  
+              ! If a head change to tail
               cells(i, j) = "t"
-   
+
             case("t")
               ! if a tail change to conductor
               cells(i, j) = "."
-   
+
             case (".")
               ! Count number of electron heads in surrounding eight cells.
               ! We can ignore that fact that we count the centre cell as
               ! well because we already know it contains a conductor.
               ! If surrounded by 1 or 2 heads change to a head
-              h = sum(count(buffer(i-1:i+1, j-1:j+1) == "H", 1)) 
+              h = sum(count(buffer(i-1:i+1, j-1:j+1) == "H", 1))
               if(h == 1 .or. h == 2) cells(i, j) = "H"
-          end select       
+          end select
         end do
      end do
   end subroutine Nextgen
@@ -2287,84 +2287,84 @@ end program Wireworld
 ....... ......
  .     .
   tH...
- 
+
 Generation 1
   .tH..
  .     .
 ....... ......
  .     .
   .tH..
- 
+
 Generation 2
   ..tH.
  .     .
 ....... ......
  .     .
   ..tH.
- 
+
 Generation 3
   ...tH
  .     .
 ....... ......
  .     .
   ...tH
- 
+
 Generation 4
   ....t
  .     H
 ....... ......
  .     H
   ....t
- 
+
 Generation 5
   .....
  .     t
 ......H H.....
  .     t
   .....
- 
+
 Generation 6
   .....
  .     .
 .....Ht tH....
  .     .
   .....
- 
+
 Generation 7
   .....
  .     .
 ....Ht. .tH...
  .     .
   .....
- 
+
 Generation 8
   .....
  .     .
 ...Ht.. ..tH..
  .     .
   .....
- 
+
 Generation 9
   .....
  .     .
 ..Ht... ...tH.
  .     .
   .....
- 
+
 Generation 10
   .....
  H     .
 .Ht.... ....tH
  H     .
   .....
- 
+
 Generation 11
   H....
  t     .
 .t..... .....t
  t     .
   H....
- 
+
 Generation 12
   tH...
  .     .
@@ -2428,7 +2428,7 @@ listid = ds_list_create();
         {
         ds_grid_resize(gridid,maxwidth,ds_grid_height(gridid) + 1)
         }
-        
+
         for (i = 1; i <= stringlength; i +=1)
         {
             switch (string_char_at(tempstring,i))
@@ -2488,7 +2488,7 @@ Now the step event
 /*
 This step event executes each 1/speed seconds.
 It checks everything on the board using an x and a y through two repeat loops.
-The variables westN,northN,eastN,southN, resemble the space left, up, right and down respectively, 
+The variables westN,northN,eastN,southN, resemble the space left, up, right and down respectively,
 seen from the current x & y.
 1 -> 5 (conductor is changing to head)
 2 -> 4 (head is changing to tail)
@@ -2522,7 +2522,7 @@ if working = 1
                     {
                     westN = boardwidth -1;
                     }
-                    else 
+                    else
                     {
                     westN = tempx-1;
                     }
@@ -2530,7 +2530,7 @@ if working = 1
                     {
                     northN = boardheight -1;
                     }
-                    else 
+                    else
                     {
                     northN = tempy-1;
                     }
@@ -2538,7 +2538,7 @@ if working = 1
                     {
                     eastN = 0;
                     }
-                    else 
+                    else
                     {
                     eastN = tempx+1;
                     }
@@ -2546,7 +2546,7 @@ if working = 1
                     {
                     southN = 0;
                     }
-                    else 
+                    else
                     {
                     southN = tempy+1;
                     }
@@ -2599,7 +2599,7 @@ if working = 1
                     {
                     westN = -1;
                     }
-                    else 
+                    else
                     {
                     westN = tempx - 1;
                     T=board[westN,tempy];
@@ -2612,7 +2612,7 @@ if working = 1
                     {
                     northN = -1;
                     }
-                    else 
+                    else
                     {
                     northN = tempy - 1;
                     T=board[tempx,northN];
@@ -2625,7 +2625,7 @@ if working = 1
                     {
                     eastN = -1;
                     }
-                    else 
+                    else
                     {
                     eastN = tempx + 1;
                     T=board[eastN,tempy];
@@ -2638,7 +2638,7 @@ if working = 1
                     {
                     southN = -1;
                     }
-                    else 
+                    else
                     {
                     southN = tempy + 1;
                     T=board[tempx,southN];
@@ -2647,7 +2647,7 @@ if working = 1
                         neighbouringHeads += 1;
                         }
                     }
-                    
+
                     if westN != -1 and northN != -1
                     {
                     T=board[westN,northN];
@@ -2685,12 +2685,12 @@ if working = 1
                     {
                     assignhold = coduc_to_eHead;
                     }
-                    else 
+                    else
                     {
                     assignhold = conduc;
                     }
                 break;
-                
+
             case eHead: assignhold = eHead_to_eTail; break;
             case eTail: assignhold = conduc; break;
             default: break;
@@ -2730,13 +2730,13 @@ repeat(boardheight)
     {
         switch board[tempx,tempy]
             {
-            case empty: 
-            //draw_point_color(tempx,tempy,c_black); 
+            case empty:
+            //draw_point_color(tempx,tempy,c_black);
             draw_set_color(c_black);
             draw_rectangle(tempx*factor,tempy*factor,(tempx+1)*factor-1,(tempy+1)*factor-1,false);
             break;
-            case conduc: 
-            //draw_point_color(tempx,tempy,c_yellow); 
+            case conduc:
+            //draw_point_color(tempx,tempy,c_yellow);
             draw_set_color(c_yellow);
             draw_rectangle(tempx*factor,tempy*factor,(tempx+1)*factor-1,(tempy+1)*factor-1,false);
             break;
@@ -2746,7 +2746,7 @@ repeat(boardheight)
             draw_rectangle(tempx*factor,tempy*factor,(tempx+1)*factor-1,(tempy+1)*factor-1,false);
             draw_rectangle_color(tempx*factor,tempy*factor,(tempx+1)*factor-1,(tempy+1)*factor-1,c_red,c_red,c_red,c_red,false);
             break;
-            case eTail: 
+            case eTail:
             //draw_point_color(tempx,tempy,c_blue);
             draw_set_color(c_red);
             draw_rectangle(tempx*factor,tempy*factor,(tempx+1)*factor-1,(tempy+1)*factor-1,false);
@@ -2757,11 +2757,11 @@ repeat(boardheight)
             draw_rectangle(tempx*factor,tempy*factor,(tempx+1)*factor-1,(tempy+1)*factor-1,false);
             board[tempx,tempy] = eHead;
             break;
-            case eHead_to_eTail: 
+            case eHead_to_eTail:
             //draw_point_color(tempx,tempy,c_blue);
             draw_set_color(c_red);
             draw_rectangle(tempx*factor,tempy*factor,(tempx+1)*factor-1,(tempy+1)*factor-1,false);
-            board[tempx,tempy] = eTail; 
+            board[tempx,tempy] = eTail;
             break;
             default: break;
             }
@@ -2893,8 +2893,8 @@ borden bc xs = bs: (map (\x -> bc:(x++[bc])) xs) ++ [bs]
 take3x3 = ap ((.). taken. length) (taken. length. head) `ap` borden '*'
    where taken n =  transpose. map (take n.map (take 3)).map tails
 
-nwState xs | e =='.' && noH>0 && noH<3 = 'H' 
-           | otherwise = shiftS !! (fromJust $ elemIndex e states) 
+nwState xs | e =='.' && noH>0 && noH<3 = 'H'
+           | otherwise = shiftS !! (fromJust $ elemIndex e states)
    where e = xs!!1!!1
          noH = length $ filter (=='H') $ concat xs
 
@@ -2983,17 +2983,17 @@ global Colours,Width,Height,World,oldWorld
 
 procedure main()             # wire world modified from forestfire
 
-    Height := 400            # Window height 
+    Height := 400            # Window height
     Width  := 400            # Window width
     Rounds := 500            # max Rounds
     Delay  := 5              # Runout Delay
-    
-    setup_world(read_world())  
-    every round := 1 to Rounds do {   
+
+    setup_world(read_world())
+    every round := 1 to Rounds do {
        show_world()
-       if \runout then 
-          delay(Delay) 
-       else 
+       if \runout then
+          delay(Delay)
+       else
           case Event() of {
              "q" : break                            # q = quit
              "r" : runout := 1                      # r = run w/o stepping
@@ -3002,7 +3002,7 @@ procedure main()             # wire world modified from forestfire
        evolve_world()
        }
     WDone()
-end  
+end
 
 procedure read_world()  #: for demo in place of reading
    return [ "tH.........",
@@ -3010,8 +3010,8 @@ procedure read_world()  #: for demo in place of reading
             "   ...",
             ".   .",
             "Ht.. ......"]
-end 
-    
+end
+
 procedure setup_world(L)     #: setup the world
 
     Colours := table()       # define colours
@@ -3020,20 +3020,20 @@ procedure setup_world(L)     #: setup the world
     Colours[HEAD]  := "blue"
     Colours[TAIL]  := "red"
     Colours[COND]  := "yellow"
-    
+
     States := table()
     States["t"] := TAIL
     States["H"] := HEAD
     States[" "] := EMPTY
     States["."] := COND
-    
+
     WOpen("label=Wireworld", "bg=black",
           "size=" || Width+2 || "," || Height+2) | # add for border
              stop("Unable to open Window")
     every !(World := list(Height)) := list(Width,EMPTY)  # default
-    every ( World[1,1 to Width]  | World[Height,1 to Width] | 
+    every ( World[1,1 to Width]  | World[Height,1 to Width] |
             World[1 to Height,1] | World[1 to Height,Width] ) := EDGE
-            
+
     every r := 1 to *L & c := 1 to *L[r] do {      # setup read in program
        World[r+1, c+1] :=  States[L[r,c]]
        }
@@ -3042,17 +3042,17 @@ end
 procedure show_world()      #: show World - drawn changes only
    every r := 2 to *World-1 & c := 2 to *World[r]-1 do
       if /oldWorld | oldWorld[r,c] ~= World[r,c] then {
-         WAttrib("fg=" || Colours[tr := World[r,c]]) 
+         WAttrib("fg=" || Colours[tr := World[r,c]])
          DrawPoint(r,c)
       }
 end
 
 procedure evolve_world()    #: evolve world
-    old := oldWorld := list(*World)     # freeze copy 
+    old := oldWorld := list(*World)     # freeze copy
     every old[i := 1 to *World] := copy(World[i])  # deep copy
 
-    every r := 2 to *World-1 & c := 2 to *World[r]-1 do 
-       World[r,c] := case old[r,c] of {   # apply rules 
+    every r := 2 to *World-1 & c := 2 to *World[r]-1 do
+       World[r,c] := case old[r,c] of {   # apply rules
         # EMPTY : EMPTY
           HEAD  : TAIL
           TAIL  : COND
@@ -3061,12 +3061,12 @@ procedure evolve_world()    #: evolve world
               every HEAD = ( old[r-1,c-1 to c+1] | old[r,c-1|c+1] | old[r+1,c-1 to c+1] ) do i +:= 1
               if i := 1 | 2 then HEAD
           }
-       }          
+       }
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics]
 
 
@@ -3076,9 +3076,9 @@ The example circuit:
 ```J
 circ0=:}: ] ;. _1 LF, 0 : 0
 tH........
-.   .     
-   ...    
-.   .     
+.   .
+   ...
+.   .
 Ht.. .....
 )
 ```
@@ -3101,68 +3101,68 @@ The 'most' powerful part is contained in the following iterating sentence, namel
  process=: (3 3 nwS;. _3 board)^:
 (<10) process circuit
 ```
- 
+
 Example run:
 <pre style="height:30ex;overflow:scroll">
    (<10) process circ0
 tH........
-.   .     
-   ...    
-.   .     
+.   .
+   ...
+.   .
 Ht.. .....
 
 .tH.......
-H   .     
-   ...    
-H   .     
+H   .
+   ...
+H   .
 t... .....
 
 H.tH......
-t   .     
-   ...    
-t   .     
+t   .
+   ...
+t   .
 .H.. .....
 
 tH.tH.....
-.   H     
-   ...    
-.   .     
+.   H
+   ...
+.   .
 HtH. .....
 
 .tH.tH....
-H   t     
-   HHH    
-H   .     
+H   t
+   HHH
+H   .
 t.tH .....
 
 H.tH.tH...
-t   .     
-   ttt    
-t   .     
+t   .
+   ttt
+t   .
 .H.t .....
 
 tH.tH.tH..
-.   H     
-   ...    
-.   .     
+.   H
+   ...
+.   .
 HtH. .....
 
 .tH.tH.tH.
-H   t     
-   HHH    
-H   .     
+H   t
+   HHH
+H   .
 t.tH .....
 
 H.tH.tH.tH
-t   .     
-   ttt    
-t   .     
+t   .
+   ttt
+t   .
 .H.t .....
 
 tH.tH.tH.t
-.   H     
-   ...    
-.   .     
+.   H
+   ...
+.   .
 HtH. .....
 
 ```
@@ -3222,14 +3222,14 @@ function simulate() {
                 case 0: tmp[i][j] = 0; break;
                 case 1: tmp[i][j] = 2; break;
                 case 2: tmp[i][j] = 3; break;
-                case 3: 
+                case 3:
                     if( getNeighbour( i, j ) ) tmp[i][j] = 1;
                     else tmp[i][j] = 3;
                 break;
             }
         }
     }
-    [tmp, map] = [map, tmp]; 
+    [tmp, map] = [map, tmp];
     setTimeout( simulate, 200 );
 }
 function drawWorld() {
@@ -3324,7 +3324,7 @@ def neighborhood(i;w):
 # The basic rules:
 # Input: a world
 # Output: the next state of .[i]
-def evolve(i; width) : 
+def evolve(i; width) :
   # "Ht. " | explode => [ 72,  116,  46,  32 ]
   .[i] as $c
   | if   $c ==  32 then $c           # " " => " "
@@ -3344,7 +3344,7 @@ def next:
     ($world;
       $world | evolve($i; $w) as $next
       | if  .[$i] == $next then . else .[$i] = $next end )
-  | [., $lines, $w] ; # 
+  | [., $lines, $w] ; #
 ```
 
 '''Animation'''
@@ -3360,7 +3360,7 @@ def spin:
   |  "" ;
 
 # Animate n steps;
-# if "sleep" is non-negative then cls and 
+# if "sleep" is non-negative then cls and
 # sleep about "sleep" ms between frames.
 def animate(n; sleep):
   if n == 0 then empty
@@ -3426,7 +3426,7 @@ function surround2D(b, i, j)
 end
 
 surroundhas1or2(b, i, j) = 0 < sum(map(x->Char(x)=='H', surround2D(b, i, j))) <= 2 ? 'H' : '.'
-  
+
 function boardstep!(currentboard, nextboard)
     x, y = size(currentboard)
     for j in 1:y, i in 1:x
@@ -3434,14 +3434,14 @@ function boardstep!(currentboard, nextboard)
         if ch == ' '
             continue
         else
-            nextboard[i, j] = (ch == 'H') ? 't' : (ch == 't' ? '.' : 
+            nextboard[i, j] = (ch == 'H') ? 't' : (ch == 't' ? '.' :
                    surroundhas1or2(currentboard, i, j))
         end
     end
 end
 
-const b1 = "         " * 
-           "  tH     " * 
+const b1 = "         " *
+           "  tH     " *
            " .  .... " *
            "  ..     " *
            "         "
@@ -3828,19 +3828,19 @@ end
 
 
 ```Mathematica
-DynamicModule[{data = 
+DynamicModule[{data =
    ArrayPad[PadRight[Characters /@ StringSplit["tH.........
         .   .
            ...
         .   .
-        Ht.. ......", "\n"]] /. {" " -> 0, "t" -> 2, "H" -> 1, 
-      "." -> 3}, 1]}, 
+        Ht.. ......", "\n"]] /. {" " -> 0, "t" -> 2, "H" -> 1,
+      "." -> 3}, 1]},
  Dynamic@ArrayPlot[
-   data = CellularAutomaton[{{{_, _, _}, {_, 0, _}, {_, _, _}} -> 
-       0, {{_, _, _}, {_, 1, _}, {_, _, _}} -> 
-       2, {{_, _, _}, {_, 2, _}, {_, _, _}} -> 
-       3, {{a_, b_, c_}, {d_, 3, e_}, {f_, g_, h_}} :> 
-       Switch[Count[{a, b, c, d, e, f, g, h}, 1], 1, 1, 2, 1, _, 3]}, 
+   data = CellularAutomaton[{{{_, _, _}, {_, 0, _}, {_, _, _}} ->
+       0, {{_, _, _}, {_, 1, _}, {_, _, _}} ->
+       2, {{_, _, _}, {_, 2, _}, {_, _, _}} ->
+       3, {{a_, b_, c_}, {d_, 3, e_}, {f_, g_, h_}} :>
+       Switch[Count[{a, b, c, d, e, f, g, h}, 1], 1, 1, 2, 1, _, 3]},
      data], ColorRules -> {1 -> Yellow, 2 -> Red}]]
 ```
 
@@ -4022,7 +4022,7 @@ declare
           {List.toTuple row Line}
        end}}
   end
- 
+
   %% Converts an arena to a virtual string
   fun {ShowArena G}
      {Record.map G
@@ -4032,7 +4032,7 @@ declare
   %% helpers
   fun lazy {Iterate F V} V|{Iterate F {F V}} end
   fun {Const X} fun {$ _} X end end
-  
+
   %% prepare GUI
   [QTk]={Module.link ["x-oz://system/wp/QTk.ozf"]}
   GenDisplay
@@ -4136,74 +4136,74 @@ Ht.. ......
 
 {{out}}
 <pre style="height:30ex;overflow:scroll">
- t H . . . . . . . . . 
- .       . 
-       . . . 
- .       . 
- H t . .   . . . . . . 
+ t H . . . . . . . . .
+ .       .
+       . . .
+ .       .
+ H t . .   . . . . . .
 
 
- . t H . . . . . . . . 
- H       . 
-       . . . 
- H       . 
- t . . .   . . . . . . 
+ . t H . . . . . . . .
+ H       .
+       . . .
+ H       .
+ t . . .   . . . . . .
 
 
- H . t H . . . . . . . 
- t       . 
-       . . . 
- t       . 
- . H . .   . . . . . . 
+ H . t H . . . . . . .
+ t       .
+       . . .
+ t       .
+ . H . .   . . . . . .
 
 
- t H . t H . . . . . . 
- .       H 
-       . . . 
- .       . 
- H t H .   . . . . . . 
+ t H . t H . . . . . .
+ .       H
+       . . .
+ .       .
+ H t H .   . . . . . .
 
 
- . t H . t H . . . . . 
- H       t 
-       H H H 
- H       . 
- t . t H   . . . . . . 
+ . t H . t H . . . . .
+ H       t
+       H H H
+ H       .
+ t . t H   . . . . . .
 
 
- H . t H . t H . . . . 
- t       . 
-       t t t 
- t       . 
- . H . t   . . . . . . 
+ H . t H . t H . . . .
+ t       .
+       t t t
+ t       .
+ . H . t   . . . . . .
 
 
- t H . t H . t H . . . 
- .       H 
-       . . . 
- .       . 
- H t H .   . . . . . . 
+ t H . t H . t H . . .
+ .       H
+       . . .
+ .       .
+ H t H .   . . . . . .
 
 
- . t H . t H . t H . . 
- H       t 
-       H H H 
- H       . 
- t . t H   . . . . . . 
+ . t H . t H . t H . .
+ H       t
+       H H H
+ H       .
+ t . t H   . . . . . .
 
 
- H . t H . t H . t H . 
- t       . 
-       t t t 
- t       . 
- . H . t   . . . . . . 
+ H . t H . t H . t H .
+ t       .
+       t t t
+ t       .
+ . H . t   . . . . . .
 
 
- t H . t H . t H . t H 
- .       H 
-       . . . 
- .       . 
- H t H .   . . . . . . 
+ t H . t H . t H . t H
+ .       H
+       . . .
+ .       .
+ H t H .   . . . . . .
 
 ```
 
@@ -4304,9 +4304,9 @@ When run with <code>--stop-on-repeat</code>
 ```txt
 ###########
 H.tH.tH.tH.
-t   .      
-   ttt     
-t   .      
+t   .
+   ttt
+t   .
 .H.t ......
 ###########
 ```
@@ -4320,14 +4320,14 @@ t   .
 ```Phix
 --
 -- demo\rosetta\Wireworld.exw
--- 
+--
 ### ====================
 
 --
 --  Invoke with file to read or let it read the one below (if compiled assumes source is in the same directory)
 --
 --  Note that tabs in description files are not supported - where necessary spaces can be replaced with _ chars.
---  (tab chars in text files should technically always represent (to-next) 8 spaces, but not many editors respect 
+--  (tab chars in text files should technically always represent (to-next) 8 spaces, but not many editors respect
 --   that, and instead assume the file will only ever be read by the same program/with matching settings. </rant>)
 --  (see also demo\edix\src\tabs.e\ExpandTabs() for what you'd need if you knew what tab chars really meant.)
 --
@@ -4694,11 +4694,11 @@ structure.
 
 
 ### Standalone version
- 
+
 
 ```PureBasic
-Enumeration 
-   #Empty     
+Enumeration
+   #Empty
    #Electron_head
    #Electron_tail
    #Conductor
@@ -4720,7 +4720,7 @@ EndProcedure
 Procedure Moore_neighborhood(Array World(2),x,y)
   Protected cnt=0, i, j
   For i=Limit(x-1, 0, #XSize) To Limit(x+1, 0, #XSize)
-    For j=Limit(y-1, 0, #YSize) To Limit(y+1, 0, #YSize) 
+    For j=Limit(y-1, 0, #YSize) To Limit(y+1, 0, #YSize)
       If World(i,j)=#Electron_head
         cnt+1
       EndIf
@@ -4787,14 +4787,14 @@ If OpenConsole()
       Read.i WW(x,y)
     Next
   Next
-  
+
   ;- Start the WireWorld simulation
   Repeat
     PresentWireWorld(WW())
     UpdateWireWorld(WW())
     Delay(#Delay)
   ForEver
-EndIf 
+EndIf
 
 DataSection
   StartWW:
@@ -4821,8 +4821,8 @@ CompilerIf #PB_Compiler_Unicode
   CompilerError "The file handling in this small program is only in ASCII."
 CompilerEndIf
 
-Enumeration 
-  #Empty     
+Enumeration
+  #Empty
   #Electron_head
   #Electron_tail
   #Conductor
@@ -4849,7 +4849,7 @@ EndProcedure
 Procedure Moore_neighborhood(Array World(2),x,y)
   Protected cnt=0, i, j
   For i=Limit(x-1, 0, XSize) To Limit(x+1, 0, XSize)
-    For j=Limit(y-1, 0, YSize) To Limit(y+1, 0, YSize) 
+    For j=Limit(y-1, 0, YSize) To Limit(y+1, 0, YSize)
       If World(i,j)=#Electron_head
         cnt+1
       EndIf
@@ -4919,7 +4919,7 @@ Procedure LoadDataFromFile(File$,Array A(2))
             x+1:  *c+1
           Wend
         EndIf
-      EndIf 
+      EndIf
     Wend
     XSize=x:  YSize=y
     Dim A(XSize,YSize)
@@ -4952,7 +4952,7 @@ If OpenWindow(#WW_Window,0,0,XSize,YSize,#Title,#PB_Window_SystemMenu)
   Define File$ = OpenFileRequester(Title$, DefFile$, Pattern$, Pattern)
   AddWindowTimer(#WW_Window,#WW_Timer,#Delay)
   LoadDataFromFile(File$,WW())
-  ResizeWindow(#WW_Window,0,0,XSize,YSize)  
+  ResizeWindow(#WW_Window,0,0,XSize,YSize)
   CreateImage(#WW_Image,XSize,YSize)
   Repeat
     Event=WaitWindowEvent()
@@ -4960,7 +4960,7 @@ If OpenWindow(#WW_Window,0,0,XSize,YSize,#Title,#PB_Window_SystemMenu)
       PresentWireWorld(WW())
       UpdateWireWorld (WW())
     EndIf
-  Until Event=#PB_Event_CloseWindow  
+  Until Event=#PB_Event_CloseWindow
 EndIf
 ```
 
@@ -4968,7 +4968,7 @@ Example of data file to load
 
 ```txt
 ; Save as "WireWorld.txt"
-; 
+;
 ; ;=Comment
 ; 0=Empty Cell
 ; 1=Electron Head
@@ -5059,7 +5059,7 @@ def readfile(f):
     nonrow = [ " %*s " % (-width, "") ]
     world  = nonrow + \
                [ " %*s " % (-width, row) for row in world ] + \
-               nonrow   
+               nonrow
     world = [list(row) for row in world]
     return WW(world, width, height)
 
@@ -5104,7 +5104,7 @@ for gen in range(10):
 
 {{out}}
 <pre style="height:45ex;overflow:scroll">
-  0 
+  0
 ### =
 
 
@@ -5114,7 +5114,7 @@ tH.........
 .   .
 Ht.. ......
 
-  1 
+  1
 ### =
 
 
@@ -5124,7 +5124,7 @@ H   .
 H   .
 t... ......
 
-  2 
+  2
 ### =
 
 
@@ -5134,7 +5134,7 @@ t   .
 t   .
 .H.. ......
 
-  3 
+  3
 ### =
 
 
@@ -5144,7 +5144,7 @@ tH.tH......
 .   .
 HtH. ......
 
-  4 
+  4
 ### =
 
 
@@ -5154,7 +5154,7 @@ H   t
 H   .
 t.tH ......
 
-  5 
+  5
 ### =
 
 
@@ -5164,7 +5164,7 @@ t   .
 t   .
 .H.t ......
 
-  6 
+  6
 ### =
 
 
@@ -5174,7 +5174,7 @@ tH.tH.tH...
 .   .
 HtH. ......
 
-  7 
+  7
 ### =
 
 
@@ -5184,7 +5184,7 @@ H   t
 H   .
 t.tH ......
 
-  8 
+  8
 ### =
 
 
@@ -5194,7 +5194,7 @@ t   .
 t   .
 .H.t ......
 
-  9 
+  9
 ### =
 
 
@@ -5277,10 +5277,10 @@ HtH. ......
   (define ww (wire-world-width world))
   (define wh (wire-world-height world))
   (define wc (wire-world-cells world))
-  
+
   (define (/w x) (quotient x ww))
   (define (%w x) (remainder x ww))
-  
+
   (make-wire-world
    ww wh
   (for/fxvector
@@ -5392,11 +5392,11 @@ showCells: if clearScreen  then 'CLS'                       /*◄──change CL
            signal done                                      /*jump to this pgm's "exit".*/
 ```
 
-Programming note:   the   '''hood'''   subroutine (above) could be optimized for speed by setting some short-circuit values   <code>('''r-1''', '''c-1''', '''r+1''', and '''c+1''') </code>   and using those values in the subsequent expressions. 
+Programming note:   the   '''hood'''   subroutine (above) could be optimized for speed by setting some short-circuit values   <code>('''r-1''', '''c-1''', '''r+1''', and '''c+1''') </code>   and using those values in the subsequent expressions.
 
-This REXX program makes use of the   '''linesize'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console). 
+This REXX program makes use of the   '''linesize'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console).
 
-The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZE.REX]]. 
+The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZE.REX]].
 
 
 {{out|output|text=  when using the default input file:}}
@@ -5604,9 +5604,9 @@ See: [[Wireworld/Tcl]]
 
 ## Ursala
 
-The board is represented as a list of character strings, and the 
-neighborhoods function uses the swin library function twice 
-to construct a two dimensional 3 by 3 sliding window. 
+The board is represented as a list of character strings, and the
+neighborhoods function uses the swin library function twice
+to construct a two dimensional 3 by 3 sliding window.
 The rule function maps a pair (cell,neighborhood) to a new cell.
 
 ```Ursala
@@ -5636,61 +5636,61 @@ example = mat0 evolve13 diode
 
 {{out}}
 <pre style="height:15ex;overflow:scroll">
-        ..   
+        ..
 tH....... .Ht
-        ..   
+        ..
 
-        ..   
+        ..
 .tH...... Ht.
-        ..   
+        ..
 
-        .H   
+        .H
 ..tH..... t..
-        .H   
+        .H
 
-        Ht   
+        Ht
 ...tH...H ...
-        Ht   
+        Ht
 
-        t.   
+        t.
 ....tH..t ...
-        t.   
+        t.
 
-        ..   
+        ..
 .....tH.. ...
-        ..   
+        ..
 
-        ..   
+        ..
 ......tH. ...
-        ..   
+        ..
 
-        H.   
+        H.
 .......tH ...
-        H.   
+        H.
 
-        tH   
+        tH
 ........t ...
-        tH   
+        tH
 
-        .t   
+        .t
 ......... H..
-        .t   
+        .t
 
-        ..   
+        ..
 ......... tH.
-        ..   
+        ..
 
-        ..   
+        ..
 ......... .tH
-        ..   
+        ..
 
-        ..   
+        ..
 ......... ..t
-        ..   
+        ..
 
-        ..   
+        ..
 ......... ...
-        ..   
+        ..
 
 ```
 
@@ -5770,7 +5770,7 @@ label circuit
 	DATA " Ht.. ...... "
 	DATA "             "
 	DATA ""
-	
+
 do
 	read a$
 	if a$ = "" break
@@ -5796,7 +5796,7 @@ do
           color 255,200,0
           t = 0
           for y1 = y-1 to y+1
-          	for x1 = x-1 to x+1          		
+          	for x1 = x-1 to x+1
           		t = t + ("H" = mid$(t$(y1),x1+Orig,1))
           	next x1
           next y1

@@ -20,12 +20,12 @@ Given a   [[wp:List_(abstract_data_type)|list]]   of arbitrarily many strings, s
 
 
 
-Each of those two tests should result in a single true or false value, which could be used as the condition of an   <code> if </code>   statement or similar. 
+Each of those two tests should result in a single true or false value, which could be used as the condition of an   <code> if </code>   statement or similar.
 
 If the input list has less than two elements, the tests should always return true.
 
 There is ''no'' need to provide a complete program and output.
- 
+
 Assume that the strings are already stored in an array/list/sequence/tuple variable (whatever is most idiomatic) with the name   <code>strings</code>,   and just show the expressions for performing those two tests on it (plus of course any includes and custom functions etc. that it needs),   with as little distractions as possible.
 
 Try to write your solution in a way that does not modify the original list,   but if it does then please add a note to make that clear to readers.
@@ -57,7 +57,7 @@ L(strings_s) [‘AA AA AA AA’, ‘AA ACB BB CC’]
 
 ## 360 Assembly
 
-The program uses one ASSIST macro (XPRNT) to keep the code as short as possible. 
+The program uses one ASSIST macro (XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Compare a list of strings 31/01/2017
@@ -80,8 +80,8 @@ COMPLIST CSECT
          MVC    SNAME,=C'ACB'
          LA     R1,SNAME
          LA     R2,ACB
-         BAL    R14,TEST           call test('ACB',acb)     
-         L      R13,4(0,R13)       epilog 
+         BAL    R14,TEST           call test('ACB',acb)
+         L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    " restore
          XR     R15,R15            " rc=0
          BR     R14                exit
@@ -165,12 +165,12 @@ ACB : neither equal nor in increasing order
 ## Ada
 
 
-We will store the "list" of strings in a vector. The vector will hold "indefinite" strings, i.e., the strings can have different lengths. 
+We will store the "list" of strings in a vector. The vector will hold "indefinite" strings, i.e., the strings can have different lengths.
 
 ```Ada
   package String_Vec is new Ada.Containers.Indefinite_Vectors
      (Index_Type => Positive, Element_Type => String);
-   
+
    use type String_Vec.Vector;
 ```
 
@@ -178,7 +178,7 @@ We will store the "list" of strings in a vector. The vector will hold "indefinit
 The equality test iterates from the first to the last-but one index. For index Idx,
 it checks checks if Strings(Idx) and Strings(Idx+1) are different. If the answer is
 yes for any Idx, the function immediately returns False. If the answer is no for all Idx,
-the function finally returns True. 
+the function finally returns True.
 
 ```Ada
    function All_Are_The_Same(Strings: String_Vec.Vector) return Boolean is
@@ -193,7 +193,7 @@ the function finally returns True.
 ```
 
 
-Similarily, the strictly ascending test checks if Strings(Idx) is greater or equal Strings(Idx+1). 
+Similarily, the strictly ascending test checks if Strings(Idx) is greater or equal Strings(Idx+1).
 
 ```Ada
    function Strictly_Ascending(Strings: String_Vec.Vector) return Boolean is
@@ -216,7 +216,7 @@ Put_Line(Boolean'Image(All_Are_The_Same(Strings)) & ", " &
          Boolean'Image(Strictly_Ascending(Strings)));
 ```
 
-If Strings holds two or more strings, the result will be either of TRUE, FALSE, or FALSE, TRUE, or FALSE, FALSE, indicating all strings are the same, or they are strictly ascending, or neither. 
+If Strings holds two or more strings, the result will be either of TRUE, FALSE, or FALSE, TRUE, or FALSE, FALSE, indicating all strings are the same, or they are strictly ascending, or neither.
 
 However, if Strings only holds zero or one string, the result will be TRUE, TRUE.
 
@@ -373,16 +373,16 @@ end _and
 on run
     set lstA to ["isiZulu", "isiXhosa", "isiNdebele", "Xitsonga", "Tshivenda", ¬
         "Setswana", "Sesotho sa Leboa", "Sesotho", "English", "Afrikaans"]
-    
+
     set lstB to ["Afrikaans", "English", "Sesotho", "Sesotho sa Leboa", "Setswana", ¬
         "Tshivenda", "Xitsonga", "isiNdebele", "isiXhosa", "isiZulu"]
-    
+
     set lstC to ["alpha", "alpha", "alpha", "alpha", "alpha", "alpha", "alpha", ¬
         "alpha", "alpha", "alpha"]
-    
-    
+
+
     {allEqual:map(allEqual, [lstA, lstB, lstC]), azSorted:map(azSorted, [lstA, lstB, lstC])}
-    
+
     -- > {allEqual:{false, false, true}, azSorted:{false, true, true}}
 end run
 
@@ -441,7 +441,7 @@ on cond(bool, f, g)
     end if
 end cond
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -529,14 +529,14 @@ list: single_element
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 int strings_are_equal(char * * strings, int nstrings)
 {
   int result = 1;
-  
+
   while (result && (--nstrings > 0))
   {
     result = !strcmp(*strings, *(strings+nstrings));
@@ -549,7 +549,7 @@ int strings_are_in_ascending_order(char * * strings, int nstrings)
 {
   int result = 1;
   int k = 0;
-  
+
   while (result && (++k < nstrings))
   {
     result = (0 >= strcmp(*(strings+k-1), *(strings+k)));
@@ -583,8 +583,8 @@ Assuming that the <code>strings</code> variable is of type <code>T&lt;std::strin
 
 {{works with|C++|11}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <string>
 
 std::all_of( ++(strings.begin()), strings.end(),
@@ -706,14 +706,14 @@ extension helper
 {
     isEqual()
         = nil == self.seekEach(self.FirstMember, (n,m => m.equal:n.Inverted ));
-        
+
     isAscending()
     {
         var former := self.enumerator();
         var later := self.enumerator();
-        
+
         later.next();
-        
+
         ^ nil == former.zipBy(later, (prev,next => next <= prev )).seekEach:(b => b)
     }
 }
@@ -733,7 +733,7 @@ public program()
             console.printLine(list.asEnumerable()," all equal - ",list.isEqual());
             console.printLine(list.asEnumerable()," ascending - ",list.isAscending())
         };
-        
+
     console.readChar()
 }
 ```
@@ -765,7 +765,7 @@ defmodule RC do
   def compare_strings(strings) do
     {length(Enum.uniq(strings))<=1, strict_ascending(strings)}
   end
-  
+
   defp strict_ascending(strings) when length(strings) <= 1, do: true
   defp strict_ascending([first, second | _]) when first >= second, do: false
   defp strict_ascending([_, second | rest]), do: strict_ascending([second | rest])
@@ -822,7 +822,7 @@ let allEqual strings = Seq.isEmpty strings || Seq.forall (fun x -> x = Seq.head 
 let ascending strings = Seq.isEmpty strings || Seq.forall2 (fun x y -> x < y) strings (Seq.tail strings)
 ```
 
-<p>Actually <code>allEqual</code> is a shortcut and <code>ascending</code> is a general pattern. We can make a function 
+<p>Actually <code>allEqual</code> is a shortcut and <code>ascending</code> is a general pattern. We can make a function
 out of it which constructs a new function from a comparision function</p>
 
 ```fsharp
@@ -914,7 +914,7 @@ Remarkably by concatenating these low level operations and using the simple Fort
 \ make some lists
 create strings  [[ ," ENTRY 4" ," ENTRY 3" ," ENTRY 2" ," ENTRY 1" ]]
 create strings2 [[ ," the same" ," the same" ," the same" ]]
-create strings3 [[ ," AAA" ," BBB" ," CCC" ," DDD" ]] 
+create strings3 [[ ," AAA" ," BBB" ," CCC" ," DDD" ]]
 ```
 
 
@@ -925,7 +925,7 @@ Test at the Forth console
 
 STRINGS  lex= . 0 ok
 STRINGS2 lex= . -1 ok
-STRINGS3 lex= . 0 ok 
+STRINGS3 lex= . 0 ok
 STRINGS  lex< . 0 ok
 STRINGS2 lex< . 0 ok
 STRINGS3 lex< . -1 ok
@@ -938,42 +938,42 @@ STRINGS3 lex< . -1 ok
 
 This depends upon having the novice-package available --- the novice-package is ANS-Forth, as is this code.
 
-I don't think it is a good idea to write "Raw Forth" as described above. 
+I don't think it is a good idea to write "Raw Forth" as described above.
 Application code is hard to write and hard to read when low-level code is mixed in with application code.
 It is better to hide low-level code in general-purpose code-libraries so that the application code can be simple.
 Here is my solution using LIST.4TH from my novice-package: http://www.forth.org/novice.html
 
 <lang>
-: test-equality ( string node -- new-string bad? ) 
-    over count                          \ -- string node adr cnt 
-    rot .line @ count   compare ; 
+: test-equality ( string node -- new-string bad? )
+    over count                          \ -- string node adr cnt
+    rot .line @ count   compare ;
 
-: test-ascending ( string node -- new-string bad? ) 
-    .line @ >r 
-    count  r@ count     compare -1 <>   \ -- bad? 
-    r> swap ; 
+: test-ascending ( string node -- new-string bad? )
+    .line @ >r
+    count  r@ count     compare -1 <>   \ -- bad?
+    r> swap ;
 
-: test-seq { seq 'test -- flag }        \ 'TEST picture: string node -- new-string bad? 
-     seq length 2 < if  true exit then 
-     seq .line @  seq 2nd  'test  find-node 
-     nip  0= ; 
+: test-seq { seq 'test -- flag }        \ 'TEST picture: string node -- new-string bad?
+     seq length 2 < if  true exit then
+     seq .line @  seq 2nd  'test  find-node
+     nip  0= ;
 
 ```
 
 Here is a test of the above code:
 <lang>
-(( c" aaa" new-seq >> c" aaa" new-seq >> c" aaa" new-seq )) drop  ok-1 
-dup  ' test-equality test-seq . -1  ok-1 
-kill-seq  ok 
-(( c" aaa" new-seq >> c" bbb" new-seq >> c" aaa" new-seq )) drop  ok-1 
-dup  ' test-equality test-seq . 0  ok-1 
-kill-seq  ok 
-(( c" aaa" new-seq >> c" bbb" new-seq >> c" ccc" new-seq )) drop  ok-1 
-dup  ' test-ascending test-seq . -1  ok-1 
-kill-seq  ok 
-(( c" aaa" new-seq >> c" bbb" new-seq >> c" aaa" new-seq )) drop  ok-1 
-dup  ' test-ascending test-seq . 0  ok-1 
-kill-seq  ok 
+(( c" aaa" new-seq >> c" aaa" new-seq >> c" aaa" new-seq )) drop  ok-1
+dup  ' test-equality test-seq . -1  ok-1
+kill-seq  ok
+(( c" aaa" new-seq >> c" bbb" new-seq >> c" aaa" new-seq )) drop  ok-1
+dup  ' test-equality test-seq . 0  ok-1
+kill-seq  ok
+(( c" aaa" new-seq >> c" bbb" new-seq >> c" ccc" new-seq )) drop  ok-1
+dup  ' test-ascending test-seq . -1  ok-1
+kill-seq  ok
+(( c" aaa" new-seq >> c" bbb" new-seq >> c" aaa" new-seq )) drop  ok-1
+dup  ' test-ascending test-seq . 0  ok-1
+kill-seq  ok
 
 ```
 
@@ -1010,12 +1010,12 @@ On the other hand a function such as ALLINORDER would show the sound of one hand
       END
 
 ```
- 
+
 
 And yes, if MANY is set to one and the extra texts are commented out, the results are both true, and ungrammatical statements are made. Honest. Possibly, another special function, as in <code>COUNT(STRINGS(1:MANY - 1) .LT. STRINGS(2:MANY)))</code> would involve less one-hand-clapping when there are no comparisons to make, but the production of a report that would use it is not in the specification.
 
 ===F2003-F2008===
-F2008 standard ([ISO 2010], 4.4.3)  defines the character variable of the character type as a set of values composed of character strings and a character string is a sequence of characters, numbered from left to right 1, 2, 3, ... up to the number of characters in the string. The number of characters in the string is called the length of the string. The length is a type parameter; its kind is processor dependent and its value is greater than or equal to zero. I.e in declaration 
+F2008 standard ([ISO 2010], 4.4.3)  defines the character variable of the character type as a set of values composed of character strings and a character string is a sequence of characters, numbered from left to right 1, 2, 3, ... up to the number of characters in the string. The number of characters in the string is called the length of the string. The length is a type parameter; its kind is processor dependent and its value is greater than or equal to zero. I.e in declaration
 
 ```Fortran
 
@@ -1127,7 +1127,7 @@ Note also there is the function [https://golang.org/pkg/sort/#StringsAreSorted s
 ```gosu
 var list = {"a", "b", "c", "d"}
 
-var isHomogeneous = list.toSet().Count < 2 
+var isHomogeneous = list.toSet().Count < 2
 var isOrderedSet = list.toSet().order().toList() == list
 ```
 
@@ -1139,7 +1139,7 @@ var isOrderedSet = list.toSet().order().toList() == list
 ```haskell>allEqual :: Eq a =
  [a] -> Bool
 allEqual xs = and $ zipWith (==) xs (tail xs)
- 
+
 allIncr :: Ord a => [a] -> Bool
 allIncr xs = and $ zipWith (<) xs (tail xs)
 ```
@@ -1173,10 +1173,10 @@ allEq
   => [a] -> Bool
 allEq [] = True
 allEq (h:t) =
-  null . snd $ 
-  until 
+  null . snd $
+  until
     (\(x, xs) -> null xs || x /= head xs)
-    (\(_, x:xs) -> (x, xs)) 
+    (\(_, x:xs) -> (x, xs))
     (h, t)
 
 allInc
@@ -1624,13 +1624,13 @@ Module CheckIt {
                   =True
             }
       }
-      
+
       Print Equal(("alfa","alfa","alfa", "alfa"))=True
       Print Equal(("alfa",))=True
       Dim A$(10)="alfa"
       Print Equal(A$())=True
       Print Equal(("alfa1","alfa2","alfa3", "alfa4"))=False
-      
+
       Print LessThan(("alfa1","alfa2","alfa3", "alfa4"))=True
       Print LessThan(("alfa1",))=true
       alfa$=Lambda$ k=1 ->{=String$("*", k) : k++}
@@ -1991,7 +1991,7 @@ test({"single_element"})
 
 ## PicoLisp
 
-PicoLisp has the native operators =, > and < these can take an infinite number of arguments and are also able to compare Transient symbols (the Strings of PicoLisp). 
+PicoLisp has the native operators =, > and < these can take an infinite number of arguments and are also able to compare Transient symbols (the Strings of PicoLisp).
 
 ```PicoLisp
 (= "AA" "AA" "AA")
@@ -2093,11 +2093,11 @@ ACB: neither equal nor in increasing order
 
 function IsAscending ( [string[]]$Array ) { ( 0..( $Array.Count - 2 ) ).Where{ $Array[$_] -le $Array[$_+1] }.Count -eq $Array.Count - 1 }
 function IsEqual     ( [string[]]$Array ) { ( 0..( $Array.Count - 2 ) ).Where{ $Array[$_] -eq $Array[$_+1] }.Count -eq $Array.Count - 1 }
- 
+
 IsAscending 'A', 'B', 'B', 'C'
 IsAscending 'A', 'C', 'B', 'C'
 IsAscending 'A', 'A', 'A', 'A'
- 
+
 IsEqual     'A', 'B', 'B', 'C'
 IsEqual     'A', 'C', 'B', 'C'
 IsEqual     'A', 'A', 'A', 'A'
@@ -2135,7 +2135,7 @@ EndMacro
 Macro ProcRec(Proc)
   Define tf1$,tf2$ : Static chk.b : chk=#True
   tf1$=StringField(s$,c,tz$) : tf2$=StringField(s$,c+1,tz$)
-  If Len(tf2$) : Proc(s$,tz$,c+1) : EndIf  
+  If Len(tf2$) : Proc(s$,tz$,c+1) : EndIf
 EndMacro
 
 Procedure.b IsStringsEqual(s$,tz$=~"\t",c.i=1)
@@ -2146,8 +2146,8 @@ EndProcedure
 
 Procedure.b IsStringsAscending(s$,tz$=~"\t",c.i=1)
   ProcRec(IsStringsAscending)
-  chk & Bool(tf1$<tf2$ Or tf2$="")  
-  ProcedureReturn chk  
+  chk & Bool(tf1$<tf2$ Or tf2$="")
+  ProcedureReturn chk
 EndProcedure
 
 Define t$,sf$,c.i,i.i,PF.b
@@ -2191,7 +2191,7 @@ Ascending test : Pass
 
 ## Python
 
-A useful pattern is that when you need some function of an item in a list with its next item over possibly all items in the list then <code>f(a, nexta) for a, nexta in zip(alist, alist[1:]))</code> works nicely. 
+A useful pattern is that when you need some function of an item in a list with its next item over possibly all items in the list then <code>f(a, nexta) for a, nexta in zip(alist, alist[1:]))</code> works nicely.
 (Especially if an index is not needed elsewhere in the algorithm).
 
 ```python
@@ -2205,7 +2205,7 @@ sorted(strings, reverse=True) == strings  # Concise (but not particularly effici
 
 
 
-Equivalently, we can also use additional list arguments with '''map''' rather than zip, 
+Equivalently, we can also use additional list arguments with '''map''' rather than zip,
 
 and, if we wish, pass functional forms of standard operators to either of them:
 
@@ -2347,7 +2347,7 @@ Hence the wrapper in the code below:
    (list-string=? '("a" "a")) => #t
    (list-string=? '("a" "a" "a")) => #t
    (list-string=? '("b" "b" "a")) => #f)
-  
+
   (test
    (list-string<? '()) => #t
    (list-string<? '("a")) => #t
@@ -2461,8 +2461,8 @@ List ACB: neither equal nor in increasing order
 
 ### version 2
 
-Programming note:   If a caseless compare (case insensitive) is desired, the two 
-:::::::* '''parse arg x'''        (on lines '''14'''   &   '''20''') 
+Programming note:   If a caseless compare (case insensitive) is desired, the two
+:::::::* '''parse arg x'''        (on lines '''14'''   &   '''20''')
 REXX statements could be replaced with either of   (they're equivalent):
 :::::::* '''parse upper arg x'''
 :::::::* '''arg x'''
@@ -2548,7 +2548,7 @@ cStr: procedure; parse arg x;  arg , how 2       /*set X to list; get 1st char o
       return 1                                   /*indicate strings have true comparison*/
 ```
 
-{{out|output|text=  is identical to the above REXX version. 
+{{out|output|text=  is identical to the above REXX version.
 
 
 
@@ -2587,7 +2587,7 @@ strings == strings.uniq.sort      # ascending?
 ```
 
 
-Short circuiting: 
+Short circuiting:
 
 ```ruby
 strings.all?{|str| str == strings.first} # all equal?
@@ -2627,7 +2627,7 @@ fn asc_strings(seq: &[&str]) -> bool {
 <lang S-lang>define equal_sl(sarr)
 {
   variable n = length(sarr), a0, i;
-  if (n < 2) return 1;  
+  if (n < 2) return 1;
 
   a0 = sarr[0];
   _for i (1, length(sarr)-1, 1)
@@ -2637,7 +2637,7 @@ fn asc_strings(seq: &[&str]) -> bool {
 }
 define ascending_sl(sarr) {
   variable n = length(sarr), a0, i;
-  if (n < 2) return 1;  
+  if (n < 2) return 1;
 
   _for i (0, length(sarr)-2, 1)
     if (sarr[i] >= sarr[i+1]) return 0;
@@ -2654,7 +2654,7 @@ define equal_ai(sarr) {
 
 define ascending_ai(sarr) {
   variable la = length(sarr);
-  if (la < 2) return 1;  
+  if (la < 2) return 1;
   return all(sarr[[0:la-2]] < sarr[[1:la-1]]);
 }
 
@@ -2667,7 +2667,7 @@ define atest(a) {
   () = printf("equal_ai=%d, ascending_ai=%d\n",
               equal_ai(a), ascending_ai(a));
 }
-              
+
 atest(["AA","BB","CC"]);
 atest(["AA","AA","AA"]);
 atest(["AA","CC","BB"]);
@@ -2809,7 +2809,7 @@ arr == arr.uniq.sort   # strictly ascending
 
 ## Tcl
 
-The command form of the <code>eq</code> and <code>&lt;</code> operators (introduced in Tcl 8.5) handle arbitrarily many arguments and will check if they're all equal/ordered. 
+The command form of the <code>eq</code> and <code>&lt;</code> operators (introduced in Tcl 8.5) handle arbitrarily many arguments and will check if they're all equal/ordered.
 Making the operators work with a list of values is just a matter of using the expansion syntax with them.
 
 ```tcl
@@ -2894,8 +2894,8 @@ Function string_compare(arr)
 			End If
 			If arr(i) >= arr(i+1) Then
 				ascending = "Fail"
-			End If 
-		End If	
+			End If
+		End If
 	Next
 	string_compare = "List: " & Join(arr,",") & vbCrLf &_
 					 "Lexical Test: " & lexical & vbCrLf &_
@@ -2947,7 +2947,7 @@ These short circuit.
 fcn allEQ(strings){ (not strings.filter1('!=(strings[0]))) }
 fcn monoUp(strings){
    strings.len()<2 or
-   strings.reduce(fcn(a,b){ if(a>=b) return(Void.Stop,False); b }).toBool() 
+   strings.reduce(fcn(a,b){ if(a>=b) return(Void.Stop,False); b }).toBool()
 }
 ```
 
@@ -3024,7 +3024,7 @@ end CompareStrings.
 120 NEXT i
 130 PRINT 'test1'test2
 140 NEXT j
-150 STOP 
+150 STOP
 160 DATA 3,"AA","BB","CC"
 170 DATA 3,"AA","AA","AA"
 180 DATA 3,"AA","CC","BB"

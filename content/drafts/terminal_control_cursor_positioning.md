@@ -54,16 +54,16 @@ szMessStartPgm:            .asciz "Program start \n"
 szMessEndPgm:              .asciz "Program normal end.\n"
 szMessMovePos:             .asciz "\033[6;3HHello\n"
 szCarriageReturn:          .asciz "\n"
-szClear1:                  .byte 0x1B 
+szClear1:                  .byte 0x1B
                            .byte 'c'           @ other console clear
                            .byte 0
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
 
     ldr r0,iAdrszMessStartPgm                   @ display start message
     bl affichageMess
@@ -86,21 +86,21 @@ iAdrszClear1:              .int szClear1
 iAdrszMessMovePos:         .int szMessMovePos
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -190,7 +190,7 @@ PRINT TAB(2,5);"Hello"
  100 print chr$(19) :rem change to lowercase set
  110 print chr$(14) :rem go to position 1,1
  120 print:print:print:print
- 130 print tab(2) "Hello" 
+ 130 print tab(2) "Hello"
 ```
 
 
@@ -220,8 +220,9 @@ return
 
 =={{header|C}}/{{header|C++}}==
 Using ANSI escape sequence, where ESC[y;xH moves curser to row y, col x:
-```c>#include <stdio.h
 
+```c
+#include <stdio.h>
 int main()
 {
 	printf("\033[6;3HHello\n");
@@ -235,7 +236,9 @@ The C version of the minesweeper game uses curses.
 
 On Windows, using console API:
 
-```c>#include <windows.h
+```c
+#include <windows.h>
+```
 
 
 int main() {
@@ -282,7 +285,7 @@ static void Main(string[] args)
 ## D
 
 ANSI escape sequences allow you to move the cursor anywhere on the screen. See more at: [http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/x361.html Bash Prompt HowTo - Chapter 6. ANSI Escape Sequences: Colours and Cursor Movement]
- 
+
  Position the Cursor:
   \033[<L>;<C>H
      or
@@ -304,7 +307,7 @@ void main()
 
 '''Output:'''
  0123456789
- 1     
+ 1
  2
  3
  4
@@ -369,7 +372,7 @@ program textposition
     implicit none
     integer(HANDLE) :: hConsole
     integer(BOOL) :: q
-    
+
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE)
     q = SetConsoleCursorPosition(hConsole, T_COORD(3, 6))
     q = WriteConsole(hConsole, loc("Hello"), 5, NULL, NULL)
@@ -517,8 +520,8 @@ stdout( #esc + '[6;3HHello')
 
 ```lb
 locate 3, 6
-print "Hello" 
- 
+print "Hello"
+
 ```
 
 
@@ -701,13 +704,13 @@ STD_OUTPUT_HANDLE = -11
 
 class COORD(Structure):
     pass
-    
+
 COORD._fields_ = [("X", c_short), ("Y", c_short)]
 
 def print_at(r, c, s):
     h = windll.kernel32.GetStdHandle(STD_OUTPUT_HANDLE)
     windll.kernel32.SetConsoleCursorPosition(h, COORD(c, r))
-    
+
     c = s.encode("windows-1252")
     windll.kernel32.WriteConsoleA(h, c_char_p(c), len(c), None, None)
 
@@ -851,7 +854,7 @@ const proc: main is func
 ## Tcl
 
 
-```tcl>exec tput cup 5 2 
+```tcl>exec tput cup 5 2
 /dev/tty
 puts "Hello"
 ```
@@ -875,40 +878,40 @@ tput cup 5 2
 Using ANSI escape sequence, where ESC[y;xH moves curser to row y, col x (see below):
 
 ```whitespace
-   		 				
-   		 		  
-   		 		  
-   		  	 	
-   	  	   
-   	  	   
-   		  		
-   			 		
-   		 		 
-   	 		 		
-   		 		
-   	 		
-
- 	 
 
 
 
 
-   
- 
- 
-	  	
- 
-		
-     	
-	  	
- 
- 
-
-   	
- 
 
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```
 

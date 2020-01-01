@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Basic language learning}}[[Category:String manipulation]][[Category: String manipulation]]{{basic data operation}}[[Category:Simple]]
-Create a string variable equal to any text value. 
+Create a string variable equal to any text value.
 Create another string variable whose value is the original variable concatenated with another string literal.
 
 To illustrate the operation, show the content of the variables.
@@ -199,14 +199,14 @@ szString:            .asciz "Hello "
 szString1:           .asciz " the world. \n"
 
 /* UnInitialized data */
-.bss 
+.bss
 szFinalString:   .skip 255
 
 /*  code section */
 .text
-.global main 
+.global main
 main:
-                                         @ load string 
+                                         @ load string
     ldr r1,iAdrszString
 	ldr r2,iAdrszFinalString
     mov r4,#0
@@ -237,21 +237,21 @@ iAdrszFinalString:       .int szFinalString
 iAdrszMessFinal:          .int szMessFinal
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call systeme
     pop {r0,r1,r2,r7,lr}                        @ restaur des  2 registres
     bx lr                                       @ return
@@ -432,9 +432,9 @@ echo %string2%
 
 
 ```bracmat
-"Hello ":?var1 
-& "World":?var2 
-& str$(!var1 !var2):?var12 
+"Hello ":?var1
+& "World":?var2
+& str$(!var1 !var2):?var12
 & put$("var1=" !var1 ", var2=" !var2 ", var12=" !var12 "\n")
 ```
 
@@ -459,8 +459,8 @@ blsq ) "Hello, ""world!"?+
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -476,11 +476,11 @@ int main()
 {
    const char *s = "hello";
    char *s2;
-   
+
    printf("%s literal\n", s);
    /* or */
    printf("%s%s\n", s, " literal");
-   
+
    s2 = sconcat(s, " literal");
    puts(s2);
    free(s2);
@@ -508,8 +508,8 @@ A + " World!" => string B;
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 
 int main() {
@@ -607,7 +607,7 @@ String literals can also be concatenated in the follwing ways:
 
 *      *> Using a '-' in column 7. Note the first two literals have no
 *      *> closing quotes.
-       01  Another-Long-Str PIC X(200) VALUE " Ut wisi enim ad minim 
+       01  Another-Long-Str PIC X(200) VALUE " Ut wisi enim ad minim
       -    "veniam, quis nostrud exerci tation ullamcorper suscipit
       -    "lobortis nisl ut aliquip ex ea commodo consequat".
 ```
@@ -672,7 +672,7 @@ Execute: ^Q StringConcatenation.Do<br/>
 
 ```d
 import std.stdio;
- 
+
 void main() {
     string s = "hello";
     writeln(s ~ " world");
@@ -837,7 +837,7 @@ public program()
 {
     var s := "Hello";
     var s2 := s + " literal";
- 
+
     console.writeLine:s;
     console.writeLine:s2;
     console.readChar()
@@ -1286,7 +1286,7 @@ WRITE() sl
 ```Icon
 procedure main()
 s1 := "hello"
-write(s2 := s1 || " there.")  # capture the reuslt for 
+write(s2 := s1 || " there.")  # capture the reuslt for
 write(s2)                     # ... the 2nd write
 end
 ```
@@ -1311,7 +1311,7 @@ print, s2
 ```J
    s1 =. 'Some '
    ]s1, 'text '
-Some text 
+Some text
    ]s2 =. s1 , 'more text!'
 Some more text!
 ```
@@ -1362,7 +1362,7 @@ print(s + " there!")
 ```
 
 {{Out}}
- # Use the -r command-line option if you wish 
+ # Use the -r command-line option if you wish
  # to suppress the string quotation marks
  hello there!
 
@@ -1426,8 +1426,8 @@ James Bond
 
 ## LabVIEW
 
-The two input on the left are String Controls, the output on the right is a String Indicator. All of them can be placed on the Front Panel. 
-The Concatenate Strings function can be placed on the Block Diagram. 
+The two input on the left are String Controls, the output on the right is a String Indicator. All of them can be placed on the Front Panel.
+The Concatenate Strings function can be placed on the Block Diagram.
 You can switch between the Front Panel and the Block Diagram by pressing Ctrl+E.
 
 [[File:LV_strcat.png]]
@@ -1605,7 +1605,7 @@ string1 =
 
 1 Fish
 
->> string2 = [string1 ', 2 Fish, Red Fish, Blue Fish'] 
+>> string2 = [string1 ', 2 Fish, Red Fish, Blue Fish']
 
 string2 =
 
@@ -1704,7 +1704,7 @@ STRCAT
 ```txt
 
 CACHE>D STRCAT^ROSETTA
- 
+
 STRING
 STRING LITERAL
 
@@ -1912,7 +1912,7 @@ Strings can be concatenated as arrays and joined with a separating characters:
 
 ```nim
 var str1 = "String"
-echo(join([str1, " literal.", "HelloWorld!"], "~~"))   
+echo(join([str1, " literal.", "HelloWorld!"], "~~"))
 
 # -> String~~ literal.~~HelloWorld!
 ```
@@ -1965,7 +1965,7 @@ int main()
 
     NSString *s = @"hello";
     printf("%s%s\n", [s UTF8String], " literal");
-  
+
     NSString *s2 = [s stringByAppendingString:@" literal"];
     // or, NSString *s2 = [NSString stringWithFormat:@"%@%@", s, @" literal"];
     puts([s2 UTF8String]);
@@ -1973,7 +1973,7 @@ int main()
     NSMutableString *s3 = [NSMutableString stringWithString: s];
     [s3 appendString: @" literal"];
     puts([s3 UTF8String]);
-  
+
   }
   return 0;
 }
@@ -1997,10 +1997,10 @@ let () =
 ## Oforth
 
 
-.s show the stack : 
+.s show the stack :
 
 ```Oforth
-"Hello" dup " World!" + .s 
+"Hello" dup " World!" + .s
 ```
 
 
@@ -2061,7 +2061,7 @@ print(s);
 Program StringConcat;
   Var
      s, s1   : String;
-  
+
 Begin
     s := 'hello';
     writeln(s + ' literal');
@@ -2323,7 +2323,7 @@ paste("no", "spaces", "between", "words", sep="") # "nospacesbetweenwords"
 First string and second string
 First string and second string and third string
 First stringsecond stringthird string
-First string Second string Third string 
+First string Second string Third string
 
 This is the only way to do it - NOT!!
 ```
@@ -2349,7 +2349,7 @@ str1: "Hello"
 >>str2: append str1 " World"
 >> print str2
 Hello World
->> print str1 
+>> print str1
 Hello World
 ```
 
@@ -2360,7 +2360,7 @@ Hello World
 
 ```rexx
 s = "hello"
-say s "literal" 
+say s "literal"
 t = s "literal"    /* Whitespace between the two strings causes a space in the output */
 say t
 
@@ -2421,7 +2421,7 @@ p s                     #=> "hello literal"
 fn main() {
     let s = "hello".to_owned();
     println!("{}", s);
-    
+
     let s1 = s + " world";
     println!("{}", s1);
 }
@@ -2502,15 +2502,15 @@ s2
 {{out}}
 <pre style="height:20ex> --> s1="Hello"
  s1  =
- Hello   
+ Hello
  -->s1+" world!"
  ans  =
- Hello world!   
+ Hello world!
  -->s2=s1+" world!"
  s2  =
- Hello world!   
+ Hello world!
  -->s2
- Hello world!   
+ Hello world!
 ```
 
 
@@ -2521,7 +2521,7 @@ s2
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const proc: main is func
   local
     var string: s is "hello";
@@ -2648,7 +2648,7 @@ val () =
 ## Stata
 
 
-###  Stata string scalars 
+###  Stata string scalars
 
 
 ```stata
@@ -2661,7 +2661,7 @@ di c
 
 
 
-###  Mata 
+###  Mata
 
 
 ```stata
@@ -2760,7 +2760,7 @@ print s1
 ```txt
 
 Hello literal
-Hello literal 
+Hello literal
 
 ```
 
@@ -2788,7 +2788,7 @@ echo $fruit
 
 
 ```bash
-echo "hello" 
+echo "hello"
  | xargs -n1 -i echo {} literal
 ```
 

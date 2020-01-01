@@ -72,8 +72,8 @@ Optionally, you will repeat the last step a large number of times, in order to i
 
 {{trans|D}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <random>
 #include <vector>
@@ -447,7 +447,7 @@ We build a CGA based upon a generating quadratic form  in R^n. The implementatio
 (define e-bits (build-vector 32 (lambda(i) (arithmetic-shift 1 i)))) ;; 1,2,4,..
 (define (e-index i) ;; index of ei in native vector
 	(if (zero? i) 0 (arithmetic-shift 1 (1- i))))
-				
+
 (define DIM 0) ;; 2^N
 (define N 0)
 (define MultTable null) ;; multiplication table eijk * el.. = exyz..
@@ -462,15 +462,15 @@ We build a CGA based upon a generating quadratic form  in R^n. The implementatio
 	  (for/string ((i  N))
 	  #:continue (zero? (bitwise-and E (vector-ref e-bits  i)))
 	  (string-append "e" (1+ i))))))
-	  
+
 ;; returns a string a *e1 + b*e2 + .. z*eijk + ..
 (define (multi-print V (x))
 	(for/string ((i DIM))
 	(set! x (vector-ref V i))
 	#:continue (zero? x)
 	(string-append " " (if (> x 0) "+" "") x  "*" (e-print i 0))))
-		
-		
+
+
 ;; generates the multiplication table e_i e__k . * e_j e_l ..==> e_u e_v ...
 ;; E_I and E_J are sets of indices >=1 , increasing order,  represented by a 32 bits number
 
@@ -493,14 +493,14 @@ We build a CGA based upon a generating quadratic form  in R^n. The implementatio
 		(set! result (bitwise-xor result ej))
 		(when (= -1 (vector-ref Signature ej)) (set! swaps (1+ swaps)))
 		))) ;; j loop
-		
-		(when verbose (writeln  (e-print E_I 0) '* (e-print E_J 0) 
+
+		(when verbose (writeln  (e-print E_I 0) '* (e-print E_J 0)
 				'= (e-print result  (if (even? swaps) 1 -1))))
-				
+
 		(matrix-set! MultTable E_I E_J result)
 		(matrix-set! SignTable E_I E_J (if (even? swaps) 1 -1))
 		))
-		
+
 ;; multivector operations
 ;; addition is standard vector addition
 ;; multiplication a  b -> c
@@ -509,26 +509,26 @@ We build a CGA based upon a generating quadratic form  in R^n. The implementatio
 	(for* ((i DIM) (j DIM))
 		#:continue (zero? (vector-ref a i))
 		#:continue (zero? (vector-ref b j))
-		(vector-set! c  
-			(array-ref MultTable i j) 
-			(+ 
+		(vector-set! c
+			(array-ref MultTable i j)
+			(+
 				(* (array-ref  SignTable i j) (vector-ref a i) (vector-ref b j))
 				(vector-ref c (array-ref MultTable i j)))))
 		c)
-		
+
 ;; pretty print  a • b or a • b • c
 (define ( • a b (c #f))
 	(multi-print
 	(if c  (multi-mult a (multi-mult b c)) (multi-mult a b))))
-			
-		
+
+
 ;; (Eij i j) ->  return multi-vector eiej 0 <= i <= n
 (define (Eij i j (coeff 1))
 	(define Eij (make-vector DIM))
 	(vector-set! Eij (array-ref MultTable (e-index i) (e-index j)) coeff)
 	Eij)
-	
-	
+
+
 ;; Reference : https://en.wikipedia.org/wiki/Clifford_algebra#Real_numbers
 
 ;; (make-cga  m p [verbose])  => Algebra A(m p)
@@ -554,8 +554,8 @@ We build a CGA based upon a generating quadratic form  in R^n. The implementatio
 	(for ((j (in-range m N))) (vector-set! Signature (vector-ref e-bits j) -1))
 
 	(make-mult-table verbose) DIM )
-	
-	
+
+
 
 ```
 
@@ -617,103 +617,103 @@ Signature → #( 1 -1 -1 1 -1 1 1 1 -1 1 1 1 1 1 1 1 -1 1 1 1 1 1 1 1 1 1 1 1 1 
 
 Multiplication table for A(3 0)
 
-N=     3     DIM=     8     Q=     #( 1 1 1 1 1 1 1 1)    
+N=     3     DIM=     8     Q=     #( 1 1 1 1 1 1 1 1)
 
-     <b>e</b>1     *     <b>e</b>1     =     <b>1</b>    
+     <b>e</b>1     *     <b>e</b>1     =     <b>1</b>
 
-     <b>e</b>1     *     <b>e</b>2     =     <b>e</b>1<b>e</b>2    
+     <b>e</b>1     *     <b>e</b>2     =     <b>e</b>1<b>e</b>2
 
-     <b>e</b>1     *     <b>e</b>1<b>e</b>2     =     <b>e</b>2    
+     <b>e</b>1     *     <b>e</b>1<b>e</b>2     =     <b>e</b>2
 
-     <b>e</b>1     *     <b>e</b>3     =     <b>e</b>1<b>e</b>3    
+     <b>e</b>1     *     <b>e</b>3     =     <b>e</b>1<b>e</b>3
 
-     <b>e</b>1     *     <b>e</b>1<b>e</b>3     =     <b>e</b>3    
+     <b>e</b>1     *     <b>e</b>1<b>e</b>3     =     <b>e</b>3
 
-     <b>e</b>1     *     <b>e</b>2<b>e</b>3     =     <b>e</b>1<b>e</b>2<b>e</b>3    
+     <b>e</b>1     *     <b>e</b>2<b>e</b>3     =     <b>e</b>1<b>e</b>2<b>e</b>3
 
-     <b>e</b>1     *     <b>e</b>1<b>e</b>2<b>e</b>3     =     <b>e</b>2<b>e</b>3    
+     <b>e</b>1     *     <b>e</b>1<b>e</b>2<b>e</b>3     =     <b>e</b>2<b>e</b>3
 
-     <b>e</b>2     *     <b>e</b>1     =     - <b>e</b>1<b>e</b>2    
+     <b>e</b>2     *     <b>e</b>1     =     - <b>e</b>1<b>e</b>2
 
-     <b>e</b>2     *     <b>e</b>2     =     <b>1</b>    
+     <b>e</b>2     *     <b>e</b>2     =     <b>1</b>
 
-     <b>e</b>2     *     <b>e</b>1<b>e</b>2     =     - <b>e</b>1    
+     <b>e</b>2     *     <b>e</b>1<b>e</b>2     =     - <b>e</b>1
 
-     <b>e</b>2     *     <b>e</b>3     =     <b>e</b>2<b>e</b>3    
+     <b>e</b>2     *     <b>e</b>3     =     <b>e</b>2<b>e</b>3
 
-     <b>e</b>2     *     <b>e</b>1<b>e</b>3     =     - <b>e</b>1<b>e</b>2<b>e</b>3    
+     <b>e</b>2     *     <b>e</b>1<b>e</b>3     =     - <b>e</b>1<b>e</b>2<b>e</b>3
 
-     <b>e</b>2     *     <b>e</b>2<b>e</b>3     =     <b>e</b>3    
+     <b>e</b>2     *     <b>e</b>2<b>e</b>3     =     <b>e</b>3
 
-     <b>e</b>2     *     <b>e</b>1<b>e</b>2<b>e</b>3     =     - <b>e</b>1<b>e</b>3    
+     <b>e</b>2     *     <b>e</b>1<b>e</b>2<b>e</b>3     =     - <b>e</b>1<b>e</b>3
 
-     <b>e</b>1<b>e</b>2     *     <b>e</b>1     =     - <b>e</b>2    
+     <b>e</b>1<b>e</b>2     *     <b>e</b>1     =     - <b>e</b>2
 
-     <b>e</b>1<b>e</b>2     *     <b>e</b>2     =     <b>e</b>1    
+     <b>e</b>1<b>e</b>2     *     <b>e</b>2     =     <b>e</b>1
 
-     <b>e</b>1<b>e</b>2     *     <b>e</b>1<b>e</b>2     =     - <b>1</b>    
+     <b>e</b>1<b>e</b>2     *     <b>e</b>1<b>e</b>2     =     - <b>1</b>
 
-     <b>e</b>1<b>e</b>2     *     <b>e</b>3     =     <b>e</b>1<b>e</b>2<b>e</b>3    
+     <b>e</b>1<b>e</b>2     *     <b>e</b>3     =     <b>e</b>1<b>e</b>2<b>e</b>3
 
-     <b>e</b>1<b>e</b>2     *     <b>e</b>1<b>e</b>3     =     - <b>e</b>2<b>e</b>3    
+     <b>e</b>1<b>e</b>2     *     <b>e</b>1<b>e</b>3     =     - <b>e</b>2<b>e</b>3
 
-     <b>e</b>1<b>e</b>2     *     <b>e</b>2<b>e</b>3     =     <b>e</b>1<b>e</b>3    
+     <b>e</b>1<b>e</b>2     *     <b>e</b>2<b>e</b>3     =     <b>e</b>1<b>e</b>3
 
-     <b>e</b>1<b>e</b>2     *     <b>e</b>1<b>e</b>2<b>e</b>3     =     - <b>e</b>3    
+     <b>e</b>1<b>e</b>2     *     <b>e</b>1<b>e</b>2<b>e</b>3     =     - <b>e</b>3
 
-     <b>e</b>3     *     <b>e</b>1     =     - <b>e</b>1<b>e</b>3    
+     <b>e</b>3     *     <b>e</b>1     =     - <b>e</b>1<b>e</b>3
 
-     <b>e</b>3     *     <b>e</b>2     =     - <b>e</b>2<b>e</b>3    
+     <b>e</b>3     *     <b>e</b>2     =     - <b>e</b>2<b>e</b>3
 
-     <b>e</b>3     *     <b>e</b>1<b>e</b>2     =     <b>e</b>1<b>e</b>2<b>e</b>3    
+     <b>e</b>3     *     <b>e</b>1<b>e</b>2     =     <b>e</b>1<b>e</b>2<b>e</b>3
 
-     <b>e</b>3     *     <b>e</b>3     =     <b>1</b>    
+     <b>e</b>3     *     <b>e</b>3     =     <b>1</b>
 
-     <b>e</b>3     *     <b>e</b>1<b>e</b>3     =     - <b>e</b>1    
+     <b>e</b>3     *     <b>e</b>1<b>e</b>3     =     - <b>e</b>1
 
-     <b>e</b>3     *     <b>e</b>2<b>e</b>3     =     - <b>e</b>2    
+     <b>e</b>3     *     <b>e</b>2<b>e</b>3     =     - <b>e</b>2
 
-     <b>e</b>3     *     <b>e</b>1<b>e</b>2<b>e</b>3     =     <b>e</b>1<b>e</b>2    
+     <b>e</b>3     *     <b>e</b>1<b>e</b>2<b>e</b>3     =     <b>e</b>1<b>e</b>2
 
-     <b>e</b>1<b>e</b>3     *     <b>e</b>1     =     - <b>e</b>3    
+     <b>e</b>1<b>e</b>3     *     <b>e</b>1     =     - <b>e</b>3
 
-     <b>e</b>1<b>e</b>3     *     <b>e</b>2     =     - <b>e</b>1<b>e</b>2<b>e</b>3    
+     <b>e</b>1<b>e</b>3     *     <b>e</b>2     =     - <b>e</b>1<b>e</b>2<b>e</b>3
 
-     <b>e</b>1<b>e</b>3     *     <b>e</b>1<b>e</b>2     =     <b>e</b>2<b>e</b>3    
+     <b>e</b>1<b>e</b>3     *     <b>e</b>1<b>e</b>2     =     <b>e</b>2<b>e</b>3
 
-     <b>e</b>1<b>e</b>3     *     <b>e</b>3     =     <b>e</b>1    
+     <b>e</b>1<b>e</b>3     *     <b>e</b>3     =     <b>e</b>1
 
-     <b>e</b>1<b>e</b>3     *     <b>e</b>1<b>e</b>3     =     - <b>1</b>    
+     <b>e</b>1<b>e</b>3     *     <b>e</b>1<b>e</b>3     =     - <b>1</b>
 
-     <b>e</b>1<b>e</b>3     *     <b>e</b>2<b>e</b>3     =     - <b>e</b>1<b>e</b>2    
+     <b>e</b>1<b>e</b>3     *     <b>e</b>2<b>e</b>3     =     - <b>e</b>1<b>e</b>2
 
-     <b>e</b>1<b>e</b>3     *     <b>e</b>1<b>e</b>2<b>e</b>3     =     <b>e</b>2    
+     <b>e</b>1<b>e</b>3     *     <b>e</b>1<b>e</b>2<b>e</b>3     =     <b>e</b>2
 
-     <b>e</b>2<b>e</b>3     *     <b>e</b>1     =     <b>e</b>1<b>e</b>2<b>e</b>3    
+     <b>e</b>2<b>e</b>3     *     <b>e</b>1     =     <b>e</b>1<b>e</b>2<b>e</b>3
 
-     <b>e</b>2<b>e</b>3     *     <b>e</b>2     =     - <b>e</b>3    
+     <b>e</b>2<b>e</b>3     *     <b>e</b>2     =     - <b>e</b>3
 
-     <b>e</b>2<b>e</b>3     *     <b>e</b>1<b>e</b>2     =     - <b>e</b>1<b>e</b>3    
+     <b>e</b>2<b>e</b>3     *     <b>e</b>1<b>e</b>2     =     - <b>e</b>1<b>e</b>3
 
-     <b>e</b>2<b>e</b>3     *     <b>e</b>3     =     <b>e</b>2    
+     <b>e</b>2<b>e</b>3     *     <b>e</b>3     =     <b>e</b>2
 
-     <b>e</b>2<b>e</b>3     *     <b>e</b>1<b>e</b>3     =     <b>e</b>1<b>e</b>2    
+     <b>e</b>2<b>e</b>3     *     <b>e</b>1<b>e</b>3     =     <b>e</b>1<b>e</b>2
 
-     <b>e</b>2<b>e</b>3     *     <b>e</b>2<b>e</b>3     =     - <b>1</b>    
+     <b>e</b>2<b>e</b>3     *     <b>e</b>2<b>e</b>3     =     - <b>1</b>
 
-     <b>e</b>2<b>e</b>3     *     <b>e</b>1<b>e</b>2<b>e</b>3     =     - <b>e</b>1    
+     <b>e</b>2<b>e</b>3     *     <b>e</b>1<b>e</b>2<b>e</b>3     =     - <b>e</b>1
 
-     <b>e</b>1<b>e</b>2<b>e</b>3     *     <b>e</b>1     =     <b>e</b>2<b>e</b>3    
+     <b>e</b>1<b>e</b>2<b>e</b>3     *     <b>e</b>1     =     <b>e</b>2<b>e</b>3
 
-     <b>e</b>1<b>e</b>2<b>e</b>3     *     <b>e</b>2     =     - <b>e</b>1<b>e</b>3    
+     <b>e</b>1<b>e</b>2<b>e</b>3     *     <b>e</b>2     =     - <b>e</b>1<b>e</b>3
 
-     <b>e</b>1<b>e</b>2<b>e</b>3     *     <b>e</b>1<b>e</b>2     =     - <b>e</b>3    
+     <b>e</b>1<b>e</b>2<b>e</b>3     *     <b>e</b>1<b>e</b>2     =     - <b>e</b>3
 
-     <b>e</b>1<b>e</b>2<b>e</b>3     *     <b>e</b>3     =     <b>e</b>1<b>e</b>2    
+     <b>e</b>1<b>e</b>2<b>e</b>3     *     <b>e</b>3     =     <b>e</b>1<b>e</b>2
 
-     <b>e</b>1<b>e</b>2<b>e</b>3     *     <b>e</b>1<b>e</b>3     =     <b>e</b>2    
+     <b>e</b>1<b>e</b>2<b>e</b>3     *     <b>e</b>1<b>e</b>3     =     <b>e</b>2
 
-     <b>e</b>1<b>e</b>2<b>e</b>3     *     <b>e</b>2<b>e</b>3     =     - <b>e</b>1    
+     <b>e</b>1<b>e</b>2<b>e</b>3     *     <b>e</b>2<b>e</b>3     =     - <b>e</b>1
 
      <b>e</b>1<b>e</b>2<b>e</b>3     *     <b>e</b>1<b>e</b>2<b>e</b>3     =     - <b>1</b>
 
@@ -887,7 +887,7 @@ odim=. 2^.#vzero
 ndx01=:1 :0
 :
   NB. indexed update of numeric rank 1 sparse y
-  NB. creating rank 2 sparse result 
+  NB. creating rank 2 sparse result
   NB. using scalar values from x and scalar inds from m
   NB. where x, m are rank 0 or 1
   NB. (this works around a spurious error in sparse handling)
@@ -907,7 +907,7 @@ gmul=:4 :0"1
   yb=. b yj
   rj=. ,#.xb~:"1/yb
   s=. ,_1^ ~:/"1 yb *"1/ 0,.}:"1 ~:/\"1 xb
-  vzero (~.rj)}~ rj +//. s*,(xj{x)*/yj{y 
+  vzero (~.rj)}~ rj +//. s*,(xj{x)*/yj{y
 )
 
 gdot=: (gmul + gmul~) % 2:
@@ -917,7 +917,7 @@ e=: {&obasis
 ```
 
 
-Explanation: 
+Explanation:
 
 We work with sparse vectors of length 2147483647 on 32 bit machines and of length 9223372036854775807 on 64 bit machines. These are the largest representable vector lengths in current J implementations. J allows [http://www.jsoftware.com/help/learning/06.htm negative indices] and J uses an index value corresponding to the length of the list to indicate value not found when [[j:Vocabulary/idot#dyadic|searching]]. Thus, current J implementations use signed machine integers for performance and correctness reasons and these are the largest vector lengths we can use in J.
 
@@ -927,11 +927,11 @@ Since these multivectors are silly large, and almost all zeros, we use a sparse 
 
 For addition on multivectors we use J's <code>+</code> (and "multivectors" includes "task vectors").
 
-For "geometric multiplication" (whose relationship to geometry seems obscure, at best) we define something analogous to an [[wp:Dot_product|inner product]]. More specifically, we look at the base 2 representation of the argument indices to find the result index  and to find whether we negate the product of those two values. 
+For "geometric multiplication" (whose relationship to geometry seems obscure, at best) we define something analogous to an [[wp:Dot_product|inner product]]. More specifically, we look at the base 2 representation of the argument indices to find the result index  and to find whether we negate the product of those two values.
 
 For each pair of values in the left and right argument we use the base 2 representation of the indices to determine what to do with the product of the corresponding two non-zero values:
 
-* The result index for that product is the bit-wise [[wp:Exclusive_or|exclusive-or]] of the two indices (the corresponding bit in the result index is 1 when the corresponding bits in the argument indices are different, 0 otherwise). 
+* The result index for that product is the bit-wise [[wp:Exclusive_or|exclusive-or]] of the two indices (the corresponding bit in the result index is 1 when the corresponding bits in the argument indices are different, 0 otherwise).
 
 * We negate the product depending on the bits of the left and right argument index. For each 1 bit of the right argument index, we count the number of more significant bits in the left argument index. If this total is odd, we negate the product (but not if it's even). Note that we don't actually have to form a sum to do this - exclusive-or is an adequate replacement for sum if we only need to know whether it's odd or even.
 
@@ -942,21 +942,21 @@ Task examples:
 
 ```J
    NB. test arbitrary vector being real (and having the specified result)
-   clean gmul~ +/ (e 0 1 2 3 4) gmul 1 _1 2 3 _2 (0 ndx01) vzero 
+   clean gmul~ +/ (e 0 1 2 3 4) gmul 1 _1 2 3 _2 (0 ndx01) vzero
 0 │ 19
-    
+
    NB. required orthogonality
    clean gdot&e&>/~i.4
 0 0 0 │ 1
 1 1 0 │ 1
 2 2 0 │ 1
 3 3 0 │ 1
-    
+
    NB. i j k
    i=: 0 gmul&e 1
    j=: 1 gmul&e 2
    k=: 0 gmul&e 2
-    
+
    i gmul i
 0 │ _1
    j gmul j
@@ -965,12 +965,12 @@ Task examples:
 0 │ _1
    i gmul j gmul k
 0 │ _1
-    
+
    NB. I J K
    I=: 1 gmul&e 2
    J=: 2 gmul&e 3
    K=: 1 gmul&e 3
-    
+
    I gmul I
 0 │ _1
    J gmul J
@@ -1071,7 +1071,7 @@ And then, from the console:
 
 ```javascript
 var e = GA.e, cdot = GA.cdot;
- 
+
 for (var i = 0; i < 5; i++) {
     for (var j = 0; j < 5; j++) {
         if (i < j) {
@@ -1528,11 +1528,11 @@ multi infix:<==>(MultiVector $A, Real $x) returns Bool is export {
 #########################################
 
 use Test;
- 
+
 plan 29;
- 
+
 sub infix:<cdot>($x, $y) { ($x*$y + $y*$x)/2 }
- 
+
 for ^5 X ^5 -> ($i, $j) {
     my $s = $i == $j ?? 1 !! 0;
     ok @e[$i] cdot @e[$j] == $s, "e$i cdot e$j = $s";
@@ -1543,9 +1543,9 @@ sub random {
         :blades(($_ => rand.round(.01)).MixHash)
     }, ^32;
 }
- 
+
 my ($a, $b, $c) = random() xx 3;
- 
+
 ok ($a*$b)*$c == $a*($b*$c), 'associativity';
 ok $a*($b + $c) == $a*$b + $a*$c, 'left distributivity';
 ok ($a + $b)*$c == $a*$c + $b*$c, 'right distributivity';
@@ -1564,7 +1564,7 @@ ok ($v**2).narrow ~~ Real, 'contraction';
 function bitCount(integer i)
     return sum(sq_eq(sprintf("%b",i),'1'))  -- (idea cribbed from Python)
 end function
- 
+
 function reorderingSign(integer i, j)
     i = floor(i/2)
     integer tot := 0
@@ -1574,7 +1574,7 @@ function reorderingSign(integer i, j)
     end while
     return iff(and_bits(tot,1)==0 ? 1 : -1)
 end function
- 
+
 function add(sequence a, b)
     return sq_add(a,b)
 end function
@@ -1594,22 +1594,22 @@ function mul(sequence a, b)
     end for
     return result
 end function
- 
+
 function cdot(sequence a, b)
     return mul({0.5}, add(mul(a, b), mul(b, a)))
 end function
- 
+
 function e(integer n)
     if n>4 then crash("n must be less than 5") end if
     sequence result = repeat(0,32)
     result[power(2,n)+1] = 1.0
     return result
 end function
- 
+
 --function neg(sequence x) -- (not actually used here)
 --  return mul({-1}, x)
 --end function
-  
+
 function randomVector()
     sequence result = repeat(0,32)
     for i=0 to 4 do
@@ -1617,7 +1617,7 @@ function randomVector()
     end for
     return result
 end function
- 
+
 function randomMultiVector()
     sequence result = repeat(0, 32)
     for i=1 to 32 do
@@ -1639,7 +1639,7 @@ for i=0 to 4 do
         end if
     end for
 end for
- 
+
 sequence a := randomMultiVector(),
          b := randomMultiVector(),
          c := randomMultiVector(),
@@ -1650,17 +1650,17 @@ procedure test(string txt, sequence a, b)
 --  bool eq = (a==b)                        -- no!
     bool eq = (sprint(a)==sprint(b))        -- ok!
     printf(1,"%-20s: %s\n",{txt,iff(eq?"true","false")})
-end procedure 
- 
+end procedure
+
 test("(ab)c == a(bc)",mul(mul(a, b), c),
                       mul(a, mul(b, c)))
 
 test("a(b + c) == ab + ac",mul(a, add(b, c)),
                            add(mul(a, b), mul(a, c)))
- 
+
 test("(a + b)c == ac + bc",mul(add(a, b), c),
                            add(mul(a, c), mul(b, c)))
- 
+
 test("x^2 is real",xsq,xsq[1]&repeat(0,31))
 ```
 

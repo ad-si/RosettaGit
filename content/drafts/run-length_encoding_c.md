@@ -22,8 +22,8 @@ Note: The following code sample is experimental as it implements python style it
 
 Also: In this implementation, '''string'''s are assumed to be null terminated.  Hence cannot contain the ''null'' character as data.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -51,7 +51,7 @@ typedef enum{FALSE=0, TRUE=1}BOOL;
 #define     CONTINUE return TRUE
 #define OD CONTINUE; }
 /* Warning: _Most_ FOR(,){ } loops _must_ have a CONTINUE, BREAK
- * or OD as the terminating statement. Otherwise the lambda will 
+ * or OD as the terminating statement. Otherwise the lambda will
  * return random value from stack, and may terminate early */
 
 typedef BOOL ITERATOR;
@@ -136,7 +136,7 @@ Decode output: WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWW
 
 
 
-###  Buffered 
+###  Buffered
 
 These functions have no check for the size of the output buffers.
 
@@ -195,8 +195,8 @@ int rle_decode(char *out, const char *in, int l)
 '''Usage example'''
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -206,7 +206,7 @@ int main()
 {
   char *d = malloc(2*strlen(o));
   char *oc = malloc(strlen(o));
-  
+
   int rl = rle_encode(d, o, strlen(o));
   /* fwrite(d, 1, rl, stdout); */
 
@@ -224,8 +224,8 @@ In the following codes, encoding and decoding are implemented as "filters" which
 '''Encoding filter'''
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -249,8 +249,8 @@ int main()
 '''Decoding filter'''
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {

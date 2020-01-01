@@ -384,8 +384,8 @@ The BBC BASIC interpreter is single-threaded so the 'concurrent' tasks are imple
 
 {{libheader|pthread}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
@@ -504,8 +504,8 @@ int main()
 
 Compiled with <code>gcc -std=c99 -fopenmp</code>.  The <code>#pragma omp critical</code> ensures the following block is entered by one thread at a time.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>
 
@@ -575,8 +575,8 @@ Output:<lang>1000 1000 1000 1798 1000 1000 1000 1000 202 1000  Sum: 10000
 
 {{works with|C++11}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <array>
 #include <chrono>
 #include <iomanip>

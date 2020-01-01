@@ -116,58 +116,58 @@ main:(
 
 ```txt
 
-                                  .                                  
-                       ....................###                       
-                  ...........................######                  
-               ................................#######               
-             ....................................#######             
-          ........................................#########          
-         .......................#####..............#########         
-       .......................#########............###########       
-      .......................###########...........############      
-    .........................###########...........##############    
-    ..........................#########............##############    
-   .............................#####..............###############   
-  ................................................#################  
- ................................................################### 
- ..............................................##################### 
- ............................................####################### 
- ..........................................######################### 
+                                  .
+                       ....................###
+                  ...........................######
+               ................................#######
+             ....................................#######
+          ........................................#########
+         .......................#####..............#########
+       .......................#########............###########
+      .......................###########...........############
+    .........................###########...........##############
+    ..........................#########............##############
+   .............................#####..............###############
+  ................................................#################
+ ................................................###################
+ ..............................................#####################
+ ............................................#######################
+ ..........................................#########################
 ...................................##################################
- .........................########################################## 
- .......................############################################ 
- .....................############################################## 
- ...................################################################ 
-  .................################################################  
-   ...............##############.....#############################   
-    ..............############.........##########################    
-    ..............###########...........#########################    
-      ............###########...........#######################      
-       ...........############.........#######################       
-         .........##############.....#######################         
-          .........########################################          
-             .......####################################             
-               .......################################               
-                  ......###########################                  
-                       ...####################                       
-                                  #                                  
-                .                
-         .............##         
-      .................####      
-    ...........###......#####    
-   ...........#####......#####   
-  .............###......#######  
- ......................######### 
- .....................########## 
+ .........................##########################################
+ .......................############################################
+ .....................##############################################
+ ...................################################################
+  .................################################################
+   ...............##############.....#############################
+    ..............############.........##########################
+    ..............###########...........#########################
+      ............###########...........#######################
+       ...........############.........#######################
+         .........##############.....#######################
+          .........########################################
+             .......####################################
+               .......################################
+                  ......###########################
+                       ...####################
+                                  #
+                .
+         .............##
+      .................####
+    ...........###......#####
+   ...........#####......#####
+  .............###......#######
+ ......................#########
+ .....................##########
 .................################
- ..........##################### 
- .........###################### 
-  .......######...#############  
-   .....######.....###########   
-    .....######...###########    
-      ....#################      
-         ..#############         
-                #                
+ ..........#####################
+ .........######################
+  .......######...#############
+   .....######.....###########
+    .....######...###########
+      ....#################
+         ..#############
+                #
 
 ```
 
@@ -431,7 +431,7 @@ end
       PROCyinyang(200, 200, 100)
       PROCyinyang(700, 400, 300)
       END
-      
+
       DEF PROCyinyang(xpos%, ypos%, size%)
       CIRCLE xpos%, ypos%, size%
       LINE xpos%, ypos%+size%, xpos%, ypos%-size%
@@ -907,7 +907,7 @@ sub taijitu(x,y,r)
 	color 0,0,0
 	line x, y-r to x, y+r
 	infill(x-2, y-2)
-	fill circle x,y-r/2,r/2	
+	fill circle x,y-r/2,r/2
 	color 255,255,255
 	fill circle x,y+r/2-2,r/2-1
 	fill circle x,y-r/2-2,r/8-1
@@ -934,11 +934,11 @@ sub infill(x,y)
 			for i=lx to rx
 				a$=getbit$(i,y+m,i,y+m)				// get sample for next line
 				if a$=test$ let nx=i  : break			// test if new cycle reqd
-			next i 
+			next i
 			lx=nx : rx=nx
 			y=y+m : if (y<0 or y>peek("winheight")) break		// test how far up or down to go
 		until (nx=0)
-		lx=x : rx=x : y=oy : m=-1					// m=-1 makes go upwards						
+		lx=x : rx=x : y=oy : m=-1					// m=-1 makes go upwards
 	next t
 end sub
 ```
@@ -956,7 +956,7 @@ taijitu(100,100,50)
 
 sub taijitu(x,y,r)
 	local n, x1, x2, y1, y2
-	
+
 	for n = 0 to pi*1.5 step pi/r
 		x1 = x + (r / 2) * cos(n) : y1 = y + (r / 2) * sin(n)
 		x2 = x - (r / 2) * cos(n) : y2 = y - (r / 2) * sin(n)
@@ -1077,27 +1077,27 @@ g-:*+00g:*`#v_$:0`!0\v0_:70g00
 {{out}}
 
 ```txt
-                   ...                   
-           .................##           
-       .......................####       
-     .........................######     
-   ................###........########   
-   ..............#######........######   
- ..................###........########## 
- .............................########## 
- .............................########## 
- ...........................############ 
+                   ...
+           .................##
+       .......................####
+     .........................######
+   ................###........########
+   ..............#######........######
+ ..................###........##########
+ .............................##########
+ .............................##########
+ ...........................############
 ......................###################
- ............########################### 
- ..........############################# 
- ..........############################# 
- ..........########...################## 
-   ......########.......##############   
-   ........########...################   
-     ......#########################     
-       ....#######################       
-           ..#################           
-                   ###                   
+ ............###########################
+ ..........#############################
+ ..........#############################
+ ..........########...##################
+   ......########.......##############
+   ........########...################
+     ......#########################
+       ....#######################
+           ..#################
+                   ###
 ```
 
 
@@ -1106,8 +1106,8 @@ g-:*+00g:*`#v_$:0`!0\v0_:70g00
 
 Writes to stdout a SVG file with two yin-yangs (no, it's really just that big): [[File:yinyang-C.svg]]
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void draw_yinyang(int trans, double scale)
 {
@@ -1240,44 +1240,44 @@ void main() {
 {{out}}
 
 ```txt
-            .            
-        ........#        
-      ...........##      
-     .............##     
-    ........#.....###    
-   ........###....####   
-  ........#####....####  
-  .........###....#####  
- ...........#.....###### 
- .................###### 
- ................####### 
- ...............######## 
+            .
+        ........#
+      ...........##
+     .............##
+    ........#.....###
+   ........###....####
+  ........#####....####
+  .........###....#####
+ ...........#.....######
+ .................######
+ ................#######
+ ...............########
 .............############
- ........############### 
- .......################ 
- ......################# 
- ......#####.########### 
-  .....####...#########  
-  ....####.....########  
-   ....####...########   
-    ...#####.########    
-     ..#############     
-      ..###########      
-        .########        
-            #            
-      .      
-   ......#   
-  ....#..##  
- ....###..## 
- .....#..### 
- ........### 
+ ........###############
+ .......################
+ ......#################
+ ......#####.###########
+  .....####...#########
+  ....####.....########
+   ....####...########
+    ...#####.########
+     ..#############
+      ..###########
+        .########
+            #
+      .
+   ......#
+  ....#..##
+ ....###..##
+ .....#..###
+ ........###
 .......######
- ...######## 
- ...##.##### 
- ..##...#### 
-  ..##.####  
-   .######   
-      #      
+ ...########
+ ...##.#####
+ ..##...####
+  ..##.####
+   .######
+      #
 ```
 
 
@@ -1311,39 +1311,39 @@ void main() {
 {{out}}
 
 ```txt
-                               ...                               
-                     ...................####                     
-                 ...........................####                 
-             .................................######             
-           ...................................########           
-         .......................................########         
-       ........................###..............##########       
-     ........................#######............############     
-     ......................###########............##########     
-   ..........................#######............##############   
-   ............................###..............##############   
- ...............................................################ 
- .............................................################## 
- .............................................################## 
- ...........................................#################### 
- .......................................######################## 
+                               ...
+                     ...................####
+                 ...........................####
+             .................................######
+           ...................................########
+         .......................................########
+       ........................###..............##########
+     ........................#######............############
+     ......................###########............##########
+   ..........................#######............##############
+   ............................###..............##############
+ ...............................................################
+ .............................................##################
+ .............................................##################
+ ...........................................####################
+ .......................................########################
 ..................................###############################
- ........................####################################### 
- ....................########################################### 
- ..................############################################# 
- ..................############################################# 
- ................############################################### 
-   ..............##############...############################   
-   ..............############.......##########################   
-     ..........############...........######################     
-     ............############.......########################     
-       ..........##############...########################       
-         ........#######################################         
-           ........###################################           
-             ......#################################             
-                 ....###########################                 
-                     ....###################                     
-                               ###                               
+ ........................#######################################
+ ....................###########################################
+ ..................#############################################
+ ..................#############################################
+ ................###############################################
+   ..............##############...############################
+   ..............############.......##########################
+     ..........############...........######################
+     ............############.......########################
+       ..........##############...########################
+         ........#######################################
+           ........###################################
+             ......#################################
+                 ....###########################
+                     ....###################
+                               ###
 ```
 
 
@@ -1500,44 +1500,44 @@ sq.Print;
 
 ```txt
 
-            .            
-        ........#        
-      ...........##      
-     .............##     
-    ........#.....###    
-   ........###....####   
-  ........#####....####  
-  .........###....#####  
- ...........#.....###### 
- .................###### 
- ................####### 
- ...............######## 
+            .
+        ........#
+      ...........##
+     .............##
+    ........#.....###
+   ........###....####
+  ........#####....####
+  .........###....#####
+ ...........#.....######
+ .................######
+ ................#######
+ ...............########
 ............#############
- ........############### 
- .......################ 
- ......################# 
- ......#####.########### 
-  .....####...#########  
-  ....####.....########  
-   ....####...########   
-    ...#####.########    
-     ..#############     
-      ..###########      
-        .########        
-            #            
-      .      
-   ......#   
-  ....#..##  
- ....###..## 
- .....#..### 
- ........### 
+ ........###############
+ .......################
+ ......#################
+ ......#####.###########
+  .....####...#########
+  ....####.....########
+   ....####...########
+    ...#####.########
+     ..#############
+      ..###########
+        .########
+            #
+      .
+   ......#
+  ....#..##
+ ....###..##
+ .....#..###
+ ........###
 ......#######
- ...######## 
- ...##.##### 
- ..##...#### 
-  ..##.####  
-   .######   
-      #      
+ ...########
+ ...##.#####
+ ..##...####
+  ..##.####
+   .######
+      #
 
 ```
 
@@ -1590,7 +1590,7 @@ type xysz struct {
 }
 
 // example data to specify drawing the symbol twice,
-// with different position and size. 
+// with different position and size.
 var yys = []xysz{
     {20, 20, 100},
     {140, 30, 60},
@@ -1616,9 +1616,9 @@ func main() {
 ## Haskell
 
 [[File:YinYang-Haskell.svg|thumb|Yin and Yang Haskell SVG output.]]
-This program uses the [http://hackage.haskell.org/package/diagrams diagrams] package to produce the Yin and Yang image.  
-The package implements an embedded [http://en.wikipedia.org/wiki/EDSL#Usage_patterns DSL] for producing vector graphics.  
-Depending on the command-line arguments, the program can generate SVG, PNG, PDF or PostScript output.  
+This program uses the [http://hackage.haskell.org/package/diagrams diagrams] package to produce the Yin and Yang image.
+The package implements an embedded [http://en.wikipedia.org/wiki/EDSL#Usage_patterns DSL] for producing vector graphics.
+Depending on the command-line arguments, the program can generate SVG, PNG, PDF or PostScript output.
 The sample output was created with the command <tt>yinyang -o YinYang-Haskell.svg</tt>.
 
 ```haskell
@@ -1637,8 +1637,8 @@ yinyang = lw 0 $
         xform f    = translateY (f (1/4)) . scale (1/4)
         base       = rect (1/2) 1 # fc white ||| rect (1/2) 1 # fc black
 
-main = defaultMain $ 
-       pad 1.1 $ 
+main = defaultMain $
+       pad 1.1 $
        beside (2,-1) yinyang (yinyang # scale (1/4))
 ```
 
@@ -1649,14 +1649,14 @@ main = defaultMain $
 ```Icon
 link graphics
 
-procedure main() 
+procedure main()
 YinYang(100)
 YinYang(40,"blue","yellow","white")
 WDone()  # quit on Q/q
 end
 
 procedure YinYang(R,lhs,rhs,bg)   # draw YinYang with radius of R pixels and ...
-/lhs := "white"                   # left hand side 
+/lhs := "white"                   # left hand side
 /rhs := "black"                   # right hand side
 /bg  := "grey"                    # background
 
@@ -1664,7 +1664,7 @@ wsize  := 2*(C := R + (margin := R/5))
 
 W := WOpen("size="||wsize||","||wsize,"bg="||bg) | stop("Unable to open Window")
 WAttrib(W,"fg="||lhs) & FillCircle(W,C,C,R,+dtor(90),dtor(180))        # main halves
-WAttrib(W,"fg="||rhs) & FillCircle(W,C,C,R,-dtor(90),dtor(180))     
+WAttrib(W,"fg="||rhs) & FillCircle(W,C,C,R,-dtor(90),dtor(180))
 WAttrib(W,"fg="||lhs) & FillCircle(W,C,C+R/2,R/2,-dtor(90),dtor(180))  # sub halves
 WAttrib(W,"fg="||rhs) & FillCircle(W,C,C-R/2,R/2,dtor(90),dtor(180))
 WAttrib(W,"fg="||lhs) & FillCircle(W,C,C-R/2,R/8)                      # dots
@@ -1673,7 +1673,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/gprocs/graphics.icn graphics.icn provides graphical procedures]
 
 
@@ -1701,7 +1701,7 @@ yinyang=:3 :0
 ```
 
 
-Note: although the structure of this program is based on the python implementation, some [[Yin_and_yang/J|details]] are different.  In particular, in the python implementation, the elements of squares and circles have no x,y structure -- they are flat list of coordinates.  
+Note: although the structure of this program is based on the python implementation, some [[Yin_and_yang/J|details]] are different.  In particular, in the python implementation, the elements of squares and circles have no x,y structure -- they are flat list of coordinates.
 
 Here, the three <code>squares</code> are each 3 dimensional arrays.  The first two dimensions correspond to the x and y values and the last dimension is 2 (the first value being the y coordinate and the second being the x coordinate -- having the dimensions as y,x pairs like this works because in J the first dimension of a matrix is the number of rows and the second dimension is the number of columns).
 
@@ -1712,45 +1712,45 @@ Finally, the variable <code>cInds</code> corresponds very closely to the variabl
 Example use:
 
 <lang>   yinyang 1
-      .      
-   ......*   
-  ....*..**  
- ....***..** 
- .....*..*** 
- ........*** 
+      .
+   ......*
+  ....*..**
+ ....***..**
+ .....*..***
+ ........***
 .......******
- ...******** 
- ...**.***** 
- ..**...**** 
-  ..**.****  
-   .******   
-      *      
+ ...********
+ ...**.*****
+ ..**...****
+  ..**.****
+   .******
+      *
    yinyang 2
-            .            
-        ........*        
-      ...........**      
-     .............**     
-    ........*.....***    
-   ........***....****   
-  ........*****....****  
-  .........***....*****  
- ...........*.....****** 
- .................****** 
- ................******* 
- ...............******** 
+            .
+        ........*
+      ...........**
+     .............**
+    ........*.....***
+   ........***....****
+  ........*****....****
+  .........***....*****
+ ...........*.....******
+ .................******
+ ................*******
+ ...............********
 .............************
- ........*************** 
- .......**************** 
- ......***************** 
- ......*****.*********** 
-  .....****...*********  
-  ....****.....********  
-   ....****...********   
-    ...*****.********    
-     ..*************     
-      ..***********      
-        .********        
-            *            
+ ........***************
+ .......****************
+ ......*****************
+ ......*****.***********
+  .....****...*********
+  ....****.....********
+   ....****...********
+    ...*****.********
+     ..*************
+      ..***********
+        .********
+            *
 ```
 
 
@@ -1796,12 +1796,12 @@ public class YinYangGenerator
         graphics.setColor(Color.WHITE);
         // Use fillOval to draw a filled in circle
         graphics.fillOval(0, 0, size-1, size-1);
-        
+
         graphics.setColor(Color.BLACK);
         // Use fillArc to draw part of a filled in circle
         graphics.fillArc(0, 0, size-1, size-1, 270, 180);
         graphics.fillOval(size/4, size/2, size/2, size/2);
-        
+
         graphics.setColor(Color.WHITE);
         graphics.fillOval(size/4, 0, size/2, size/2);
         graphics.fillOval(7*size/16, 11*size/16, size/8, size/8);
@@ -1810,7 +1810,7 @@ public class YinYangGenerator
         graphics.fillOval(7*size/16, 3*size/16, size/8, size/8);
         // Use drawOval to draw an empty circle for the outside border
         graphics.drawOval(0, 0, size-1, size-1);
-        
+
         // Restore the color for the caller
         graphics.setColor(colorSave);
     }
@@ -1823,7 +1823,7 @@ public class YinYangGenerator
         // A BufferedImage creates the image in memory
         final BufferedImage image = new BufferedImage(size, size, BufferedImage.TYPE_INT_RGB);
         // Get the graphics object for the image; note in many
-        // applications you actually use Graphics2D for the 
+        // applications you actually use Graphics2D for the
         // additional API calls
         final Graphics graphics = image.getGraphics();
         // Color in the background of the image
@@ -2138,9 +2138,9 @@ console.log(YinYang(8))
 
 ### SVG
 
-JavaScript is amazing in this case for the reason 
+JavaScript is amazing in this case for the reason
 that it can be embedded in SVG itself!
-This is a SVG embedded in a HTML document; 
+This is a SVG embedded in a HTML document;
 it can be isolated from the HTML document too, making it a standalone SVG
 
 ```JavaScript
@@ -2195,7 +2195,7 @@ function drawYingYang(n, x, y) {
     d: "M " + (h + x) + "," + y + " A " + q + "," + q + " -" + d * 3 + " 0,1 " + (h + x) + "," + (n + y) + " z",
     fill: "black"
   }));
-  //Circles to extend each part 
+  //Circles to extend each part
   svg.appendChild(makeElem("circle", {
     cx: h + x,
     cy: q + y,
@@ -2239,7 +2239,7 @@ function drawYingYang(n, x, y) {
   if (svg.height.baseVal.valueInSpecifiedUnits < n) {
     svg.setAttributeNS(null, "height", y * 1.25 + n + "px")
   }
-  //svg.appendChild(makeElem("circle",{cx:"100", cy:h, r:"40", stroke:"black", "stroke-width":"2", fill:"red"})) 
+  //svg.appendChild(makeElem("circle",{cx:"100", cy:h, r:"40", stroke:"black", "stroke-width":"2", fill:"red"}))
 }
 drawYingYang(100, 30, 30);
 drawYingYang(1000, 200, 200);
@@ -2351,7 +2351,7 @@ import javax.swing.JLabel
 
 class YinYangGenerator {
     private fun drawYinYang(size: Int, g: Graphics) {
-        with(g) {      
+        with(g) {
             // Preserve the color for the caller
             val colorSave = color
             color = Color.WHITE
@@ -2394,16 +2394,16 @@ class YinYangGenerator {
 
 fun main(args: Array<String>) {
     val gen = YinYangGenerator()
-    val size = 400 // say    
+    val size = 400 // say
     val p = JPanel()
-    val yinYang = gen.createImage(size, p.background) 
+    val yinYang = gen.createImage(size, p.background)
     p.add(JLabel(ImageIcon(yinYang)))
 
     val size2 = size / 2 // say
-    val yinYang2 = gen.createImage(size2, p.background) 
+    val yinYang2 = gen.createImage(size2, p.background)
     p.add(JLabel(ImageIcon(yinYang2)))
 
-    val f = JFrame("Big and Small Yin Yang")  
+    val f = JFrame("Big and Small Yin Yang")
     with (f) {
         defaultCloseOperation = JFrame.EXIT_ON_CLOSE
         add(p)
@@ -2423,55 +2423,55 @@ fun main(args: Array<String>) {
 
 
 ```logo
-to taijitu :r 
+to taijitu :r
   ; Draw a classic Taoist taijitu of the given radius centered on the current
   ; turtle position. The "eyes" are placed along the turtle's heading, the
   ; filled one in front, the open one behind.
- 
+
   ; don't bother doing anything if the pen is not down
   if not pendown? [stop]
- 
+
   ; useful derivative values
   localmake "r2 (ashift :r  -1)
   localmake "r4 (ashift :r2 -1)
   localmake "r8 (ashift :r4 -1)
- 
+
   ; remember where we started
   localmake "start  pos
- 
+
   ; draw outer circle
   pendown
   arc 360 :r
- 
+
   ; draw upper half of S
   penup
   forward :r2
   pendown
   arc 180 :r2
- 
+
   ; and filled inner eye
   arc 360 :r8
   fill
- 
+
   ; draw lower half of S
   penup
   back :r
   pendown
   arc -180 :r2
- 
+
   ; other inner eye
   arc  360 :r8
- 
-  ; fill this half of the symbol 
+
+  ; fill this half of the symbol
   penup
   forward :r4
   fill
- 
+
   ; put the turtle back where it started
   setpos :start
   pendown
 end
- 
+
 ; demo code to produce image at right
 clearscreen
 pendown
@@ -2490,13 +2490,13 @@ taijitu 75
 ## Mathematica
 
 [[File:Mathca.png|thumb|200px]]
-Mathematica's ability to symbolically build up graphics is often underrated. The following function will create a yin-yang symbol with the parameter size indicating the diameter in multiples of 40 pixels. 
+Mathematica's ability to symbolically build up graphics is often underrated. The following function will create a yin-yang symbol with the parameter size indicating the diameter in multiples of 40 pixels.
 
 ```Mathematica
-YinYang[size_] := 
- Graphics[{{Circle[{0, 0}, 2]}, {Disk[{0, 0}, 
-     2, {90 Degree, -90 Degree}]}, {White, Disk[{0, 1}, 1]}, {Black, 
-    Disk[{0, -1}, 1]}, {Black, Disk[{0, 1}, 1/4]}, {White, 
+YinYang[size_] :=
+ Graphics[{{Circle[{0, 0}, 2]}, {Disk[{0, 0},
+     2, {90 Degree, -90 Degree}]}, {White, Disk[{0, 1}, 1]}, {Black,
+    Disk[{0, -1}, 1]}, {Black, Disk[{0, 1}, 1/4]}, {White,
     Disk[{0, -1}, 1/4]}}, ImageSize -> 40 size]
 ```
 
@@ -2506,16 +2506,16 @@ YinYang[size_] :=
 
 
 ```Maple
- 
+
 with(plottools):
 with(plots):
 yingyang := r -> display(
-                         circle([0, 0], r), 
-                         disk([0, 1/2*r], 1/10*r, colour = black), 
-                         disk([0, -1/2*r], 1/10*r, colour = white), 
-                         disk([0, -1/2*r], 1/2*r, colour = black), 
-                         inequal({1/4*r^2 <= x^2 + (y - 1/2*r)^2, 1/4*r^2 <= x^2 + (y + 1/2*r)^2, x^2 + y^2 <= 
-                                  r^2}, x = 0 .. r, y = -r .. r, grid = [100, 100], colour = black), 
+                         circle([0, 0], r),
+                         disk([0, 1/2*r], 1/10*r, colour = black),
+                         disk([0, -1/2*r], 1/10*r, colour = white),
+                         disk([0, -1/2*r], 1/2*r, colour = black),
+                         inequal({1/4*r^2 <= x^2 + (y - 1/2*r)^2, 1/4*r^2 <= x^2 + (y + 1/2*r)^2, x^2 + y^2 <=
+                                  r^2}, x = 0 .. r, y = -r .. r, grid = [100, 100], colour = black),
                          scaling = constrained, axes = none
                          );
 
@@ -2535,7 +2535,7 @@ vardef yinyang(expr u) =
   p_ := halfcircle scaled 2u rotated -90 --
     halfcircle scaled u rotated 90 shifted (0, 1/2u) reflectedabout ((0,1), (0,-1)) --
     halfcircle scaled u rotated -270 shifted (0, -1/2u) -- cycle;
-  
+
   pic_ := nullpicture;
   addto pic_ contour fullcircle scaled 2u withcolor black;
   addto pic_ contour p_ withcolor white;
@@ -2782,7 +2782,7 @@ Please type a radius:
        #######################....
            #################..
                    ###
-   
+
 
 ```
 
@@ -2837,7 +2837,7 @@ sub yin_yang {
 
 print <<'HEAD';
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
         "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
         xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -2890,8 +2890,8 @@ say '</svg>';
 ```
 
 
-Seems like something of a cheat since it relies on a web browser / 
-svg image interpreter to actually view the output image. 
+Seems like something of a cheat since it relies on a web browser /
+svg image interpreter to actually view the output image.
 If that's the case, we may as well cheat harder. ;-)
 
 
@@ -2918,21 +2918,21 @@ include pGUI.e
 Ihandle dlg, canvas
 cdCanvas cd_canvas
 
-procedure cdCanvasSecArc(cdCanvas hCdCanvas, atom xc, atom yc, atom w, atom h, atom angle1, atom angle2) 
+procedure cdCanvasSecArc(cdCanvas hCdCanvas, atom xc, atom yc, atom w, atom h, atom angle1, atom angle2)
 -- cdCanvasSector does not draw anti-aliased edges, but cdCanvasArc does, so over-draw...
-    cdCanvasSector(hCdCanvas, xc, yc, w, h, angle1, angle2) 
-    cdCanvasArc   (hCdCanvas, xc, yc, w, h, angle1, angle2) 
+    cdCanvasSector(hCdCanvas, xc, yc, w, h, angle1, angle2)
+    cdCanvasArc   (hCdCanvas, xc, yc, w, h, angle1, angle2)
 end procedure
 
 procedure yinyang(atom  cx, cy, r)
-    cdCanvasArc(cd_canvas, cx, cy, r, r, 0, 360) 
-    cdCanvasSecArc(cd_canvas, cx, cy, r, r, 270, 90) 
-    cdCanvasSecArc(cd_canvas, cx, cy-r/4, r/2-1, r/2-1, 0, 360) 
+    cdCanvasArc(cd_canvas, cx, cy, r, r, 0, 360)
+    cdCanvasSecArc(cd_canvas, cx, cy, r, r, 270, 90)
+    cdCanvasSecArc(cd_canvas, cx, cy-r/4, r/2-1, r/2-1, 0, 360)
     cdCanvasSetForeground(cd_canvas, CD_WHITE)
-    cdCanvasSecArc(cd_canvas, cx, cy+r/4, r/2-1, r/2-1, 0, 360) 
-    cdCanvasSecArc(cd_canvas, cx, cy-r/4, r/8, r/8, 0, 360) 
+    cdCanvasSecArc(cd_canvas, cx, cy+r/4, r/2-1, r/2-1, 0, 360)
+    cdCanvasSecArc(cd_canvas, cx, cy-r/4, r/8, r/8, 0, 360)
     cdCanvasSetForeground(cd_canvas, CD_BLACK)
-    cdCanvasSecArc(cd_canvas, cx, cy+r/4, r/8, r/8, 0, 360) 
+    cdCanvasSecArc(cd_canvas, cx, cy+r/4, r/8, r/8, 0, 360)
 end procedure
 
 function redraw_cb(Ihandle /*ih*/, integer /*posx*/, integer /*posy*/)
@@ -2941,7 +2941,7 @@ integer r = min(width,height)-40
 integer cx = floor(width/2)
 integer cy = floor(height/2)
     cdCanvasActivate(cd_canvas)
-    cdCanvasClear(cd_canvas) 
+    cdCanvasClear(cd_canvas)
     yinyang(cx-r*.43,cy+r*.43,r/6)
     yinyang(cx,cy,r)
     cdCanvasFlush(cd_canvas)
@@ -3040,7 +3040,7 @@ extern printf;
 		for (var sx = -(radius*scale_x); sx <= radius*scale_x; sx=sx+1) {
 			var x = sx/(scale_x);
 			var y = sy/(scale_y);
-			
+
 			if (in_big_circle(radius, x, y)) {
 				if (in_while_semi_circle(radius, x, y))
 					if (in_small_black_circle(radius, x, y))
@@ -3075,57 +3075,57 @@ extern printf;
 ```txt
 
 
-                                  ###                                 
-                        .............##########                       
-                  .........................##########                 
-                ...............................########               
-              ...................................########             
-          .......................................############         
-          .........................................##########         
-        ..........................###..............############       
-      ..........................#######............##############     
-    ..........................###########............##############   
-    ............................#######............################   
-    ..............................###..............################   
-  .................................................################## 
-  ...............................................#################### 
-  ...............................................#################### 
-  .............................................###################### 
-  .........................................########################## 
+                                  ###
+                        .............##########
+                  .........................##########
+                ...............................########
+              ...................................########
+          .......................................############
+          .........................................##########
+        ..........................###..............############
+      ..........................#######............##############
+    ..........................###########............##############
+    ............................#######............################
+    ..............................###..............################
+  .................................................##################
+  ...............................................####################
+  ...............................................####################
+  .............................................######################
+  .........................................##########################
  ....................................#################################
-  ..........................######################################### 
-  ......................############################################# 
-  ....................############################################### 
-  ....................############################################### 
-  ..................################################################# 
-    ................##############...##############################   
-    ................############.......############################   
-    ..............############...........##########################   
-      ..............############.......##########################     
-        ............##############...##########################       
-          ..........#########################################         
-          ............#######################################         
-              ........###################################             
-                ........###############################               
-                  ..........#########################                 
-                        ..........#############                       
-                                  ###                                 
-                ...               
-          .............##         
-      ...................####     
-    ............###......######   
-    ..........#######......####   
-  ..............###......######## 
-  .......................######## 
-  .....................########## 
+  ..........................#########################################
+  ......................#############################################
+  ....................###############################################
+  ....................###############################################
+  ..................#################################################
+    ................##############...##############################
+    ................############.......############################
+    ..............############...........##########################
+      ..............############.......##########################
+        ............##############...##########################
+          ..........#########################################
+          ............#######################################
+              ........###################################
+                ........###############################
+                  ..........#########################
+                        ..........#############
+                                  ###
+                ...
+          .............##
+      ...................####
+    ............###......######
+    ..........#######......####
+  ..............###......########
+  .......................########
+  .....................##########
  ..................###############
-  ..........##################### 
-  ........####################### 
-  ........######...############## 
-    ....######.......##########   
-    ......######...############   
-      ....###################     
-          ..#############         
+  ..........#####################
+  ........#######################
+  ........######...##############
+    ....######.......##########
+    ......######...############
+      ....###################
+          ..#############
                 ###
 
 ```
@@ -3262,26 +3262,26 @@ showpage
 [[File:Yys.png|thumb]]
 
 <lang POV-Ray>
-// 
+//
 ### === General Scene setup ===
- 
+
 #version 3.7;
 global_settings { assumed_gamma 2.2 }
 
-camera{ location <0,2.7,4> look_at <0,.1,0> right x*1.6 
+camera{ location <0,2.7,4> look_at <0,.1,0> right x*1.6
         aperture .2 focal_point <1,0,0> blur_samples 200 variance 1/10000 }
 light_source{<2,4,8>, 1 spotlight point_at 0 radius 10}
 sky_sphere {pigment {granite scale <1,.1,1> color_map {[0 rgb 1][1 rgb <0,.4,.6>]}}}
 #default {finish {diffuse .9 reflection {.1 metallic} ambient .3}
           normal {granite scale .2}}
-plane { y, -1 pigment {hexagon color rgb .7 color rgb .75 color rgb .65} 
+plane { y, -1 pigment {hexagon color rgb .7 color rgb .75 color rgb .65}
         normal {hexagon scale 5}}
 
-// 
+//
 ### === Declare one side of the symbol as a sum and difference of discs ===
- 
-                                                   
-#declare yang = 
+
+
+#declare yang =
 difference {
   merge {
     difference {
@@ -3296,47 +3296,47 @@ difference {
   pigment{color rgb 0.1}
 }
 
-// ====== The other side is white and 180-degree turned ====== 
+// ====== The other side is white and 180-degree turned ======
 
-#declare yin = 
+#declare yin =
 object {
   yang
   rotate <0,180,0>
   pigment{color rgb 1}
 }
 
-// 
+//
 ### === Here we put the two together: ===
- 
+
 
 #macro yinyang( ysize )
   union {
     object {yin}
     object {yang}
-    scale ysize   
+    scale ysize
   }
 #end
 
-// 
+//
 ### === Here we put one into a scene: ===
- 
+
 
 object { yinyang(1)
          translate -y*1.08 }
 
-// 
+//
 ### === And a bunch more just for fun: ===
- 
+
 
 #declare scl=1.1;
-#while (scl > 0.01)  
-  
-  object { yinyang(scl) 
-        rotate <0,180,0> translate <-scl*4,scl*2-1,0> 
+#while (scl > 0.01)
+
+  object { yinyang(scl)
+        rotate <0,180,0> translate <-scl*4,scl*2-1,0>
         rotate <0,scl*360,0> translate <-.5,0,0>}
-        
-  object { yinyang(scl) 
-        translate <-scl*4,scl*2-1,0> 
+
+  object { yinyang(scl)
+        translate <-scl*4,scl*2-1,0>
         rotate <0,scl*360+180,0> translate <.5,0,0>}
 
   #declare scl = scl*0.85;
@@ -3428,7 +3428,7 @@ true.
 
 ### Text
 
-For positive integer n > 0, the following generates 
+For positive integer n > 0, the following generates
 an ASCII representation of the Yin yang symbol.
 {{works with|Python|3.x}}
 
@@ -3461,46 +3461,46 @@ def yinyang(n=3):
 
 ```txt
 >>> print(yinyang(2))
-            ·            
-        ········*        
-      ···········**      
-     ·············**     
-    ········*·····***    
-   ········***····****   
-  ········*****····****  
-  ·········***····*****  
- ···········*·····****** 
- ·················****** 
- ················******* 
- ···············******** 
+            ·
+        ········*
+      ···········**
+     ·············**
+    ········*·····***
+   ········***····****
+  ········*****····****
+  ·········***····*****
+ ···········*·····******
+ ·················******
+ ················*******
+ ···············********
 ·············************
- ········*************** 
- ·······**************** 
- ······***************** 
- ······*****·*********** 
-  ·····****···*********  
-  ····****·····********  
-   ····****···********   
-    ···*****·********    
-     ··*************     
-      ··***********      
-        ·********        
-            *            
+ ········***************
+ ·······****************
+ ······*****************
+ ······*****·***********
+  ·····****···*********
+  ····****·····********
+   ····****···********
+    ···*****·********
+     ··*************
+      ··***********
+        ·********
+            *
 >>> print(yinyang(1))
-      ·      
-   ······*   
-  ····*··**  
- ····***··** 
- ·····*··*** 
- ········*** 
+      ·
+   ······*
+  ····*··**
+ ····***··**
+ ·····*··***
+ ········***
 ·······******
- ···******** 
- ···**·***** 
- ··**···**** 
-  ··**·****  
-   ·******   
-      *      
->>> 
+ ···********
+ ···**·*****
+ ··**···****
+  ··**·****
+   ·******
+      *
+>>>
 ```
 
 
@@ -3515,7 +3515,7 @@ from turtle import *
 
 mode('logo')
 
-def taijitu(r): 
+def taijitu(r):
   '''\
   Draw a classic Taoist taijitu of the given radius centered on the current
   turtle position. The "eyes" are placed along the turtle's heading, the
@@ -3538,13 +3538,13 @@ def taijitu(r):
   # draw two 'fishes'
   begin_fill(); circle(r, 180); circle(r2, 180); circle(-r2, 180); end_fill()
 
-  # black 'eye'  
+  # black 'eye'
   setheading(0); penup(); goto(-(r4 + r8) + x0, y0); pendown()
   begin_fill(); circle(r8); end_fill()
 
   # white 'eye'
   color('white', 'white'); setheading(0); penup(); goto(-(r+r4+r8) + x0, y0); pendown()
-  begin_fill(); circle(r8); end_fill() 
+  begin_fill(); circle(r8); end_fill()
 
   # put the turtle back where it started
   penup()
@@ -3553,7 +3553,7 @@ def taijitu(r):
   color(*startcolour)
 
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
   # demo code to produce image at right
   reset()
   #hideturtle()
@@ -3602,7 +3602,7 @@ dev.off()
 (require slideshow/pict)
 
 (define (yin-yang d)
-  (define base 
+  (define base
     (hc-append (inset/clip (circle d) 0 0 (- (/ d 2)) 0)
                (inset/clip (disk d) (- (/ d 2)) 0 0 0)))
   (define with-top
@@ -3634,17 +3634,17 @@ import vis::Figure;
 
 public void yinyang(){
 	template = ellipse(fillColor("white"));
-	
+
 	smallWhite = ellipse(fillColor("white"), shrink(0.1), valign(0.75));
 	smallBlack = ellipse(fillColor("black"), shrink(0.1), valign(0.25));
-	 
+
 	dots= [ellipse(fillColor("white"), shrink(0.000001), align(0.5 + sin(0.0031415*n)/4, 0.25 + cos(0.0031415*n)/-4)) | n <- [1 .. 1000]];
 	dots2 = [ellipse(fillColor("black"), shrink(0.000001), align(0.5 + sin(0.0031415*n)/-4, 0.75 + cos(0.0031415*n)/-4)) | n <- [1 .. 1000]];
 	dots3= [ellipse(fillColor("black"), shrink(0.000001), align(0.5 + sin(0.0031415*n)/2, 0.5-cos(0.0031415*n)/-2)) | n <- [1 .. 1000]];
-	 
+
 	black= overlay([*dots, *dots2, *dots3], shapeConnected(true), shapeClosed(true), shapeCurved(true), fillColor("black"));
-	 
-	render(hcat([vcat([overlay([template, black, smallWhite, smallBlack], aspectRatio (1.0)), space(), space()]), 
+
+	render(hcat([vcat([overlay([template, black, smallWhite, smallBlack], aspectRatio (1.0)), space(), space()]),
 	                   overlay([template, black, smallWhite, smallBlack], aspectRatio (1.0))]));
 }
 ```
@@ -3947,7 +3947,7 @@ Arcs = zeros(7,n_p);
     line = gce();
     set(line.children,'polyline_style',5);
     set(line.children,'foreground',8);
-    
+
     Arcs(2,:) = -%i*R/2 + R/2 * exp(%i * angles);
     plot2d(real(Arcs(2,:)),imag(Arcs(2,:)));
     line = gce();
@@ -3960,7 +3960,7 @@ angles = linspace(-%pi/2, %pi/2, n_p);
     plot2d(real(Arcs(3,:)), imag(Arcs(3,:)));
     line = gce();
     set(line.children,'polyline_style',5);
-    
+
     Arcs(4,:) = %i*R/2 + R/2 * exp(%i * angles);
     plot2d(real(Arcs(4,:)),imag(Arcs(4,:)));
     line = gce();
@@ -3974,13 +3974,13 @@ angles = linspace(0, 2*%pi, n_p);
     plot2d(real(Arcs(5,:)),imag(Arcs(5,:)));
     line = gce();
     set(line.children,'polyline_style',5);
-    
+
     Arcs(6,:) = -%i*R/2 + R/8 * exp(%i * angles);
     plot2d(real(Arcs(6,:)),imag(Arcs(6,:)));
     line = gce();
     set(line.children,'polyline_style',5);
     set(line.children,'foreground',8);
-    
+
     Arcs(7,:) = R * exp(%i * angles);
     plot2d(real(Arcs(7,:)),imag(Arcs(7,:)));
     set(gca(),'axes_visible',['off','off','off']);
@@ -4093,13 +4093,13 @@ say '</svg>';
 ## SVG
 
 [[File:Yinyang.svg|thumb|A rendering]]
-SVG has no proper functions or variables, 
+SVG has no proper functions or variables,
 but we can translate and rescale a shape after defining it.
 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -4248,7 +4248,7 @@ A here doc (#<<<) could be used to wrap the HTML but, depending on the editor us
 
 ```txt
 
-$ zkl zz  > foo.html 
+$ zkl zz  > foo.html
 copy to browswer
 
 ```

@@ -245,8 +245,8 @@ length 183231
 
 === {{libheader|GMP}} ===
 
-```c>#include <gmp.h
-
+```c
+#include <gmp.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -464,8 +464,8 @@ This took 27.95 seconds
 === {{libheader|Boost-Multiprecision (GMP Backend)}} ===
 To compile link with GMP <code>-lgmp</code>
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <boost/multiprecision/gmp.hpp>
 #include <string>
 

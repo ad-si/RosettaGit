@@ -26,7 +26,7 @@ Is to:
 
 
 ;Task:
-# Create a function/method/routine called <code>one_of_n</code> that given <code>n</code>, the number of actual lines in a file, follows the algorithm above to return an integer - the line number of the line chosen from the file. 
+# Create a function/method/routine called <code>one_of_n</code> that given <code>n</code>, the number of actual lines in a file, follows the algorithm above to return an integer - the line number of the line chosen from the file.
 The number returned can vary, randomly, in each run.
 # Use <code>one_of_n</code> in a ''simulation'' to find what woud be the chosen line of a 10 line file simulated 1,000,000 times.
 # Print and show how many times each of the 10 lines is chosen as a rough measure of how well the algorithm works.
@@ -219,7 +219,7 @@ one_of_n_test(n=10, trials=100000){
         bins[one_of_n(n)] += 1
     return bins
 }
- 
+
 b := one_of_n_test()
 Loop 10
    out .= A_Index ": " b[A_Index] "`n"
@@ -244,7 +244,7 @@ One of n.ahk
 10: 9946
 
 ---------------------------
-OK   
+OK
 ---------------------------
 ```
 
@@ -360,7 +360,7 @@ There is also no need to parse the actual number of lines in the file to <code>o
 @echo off
 
 for /l %%i in (1,1,10000) do call one_of_n
-:: To show progress add to the FOR loop code block - 
+:: To show progress add to the FOR loop code block -
 :: title %%i
 
 for /l %%i in (1,1,10) do (
@@ -428,7 +428,7 @@ Line 10 = 9970
       NEXT
       PRINT
       END
-      
+
       DEF FNone_of_n(n%)
       LOCAL i%, l%
       FOR i% = 1 TO n%
@@ -450,8 +450,8 @@ Line 10 = 9970
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 inline int irand(int n)
@@ -491,8 +491,8 @@ output
 
 {{works with|C++11}}
 
-```cpp>#include <random
-
+```cpp
+#include <random>
 #include <iostream>
 #include <iterator>
 #include <algorithm>
@@ -839,9 +839,9 @@ defmodule One_of_n_lines_in_file do
       :io.format "Line ~2w selected: ~6w~n", [x, dict[x]]
     end)
   end
-  
+
   def one_of_n( n ), do: loop( n, 2, :rand.uniform, 1 )
-  
+
   def loop( max, n, _random, acc ) when n == max + 1, do: acc
   def loop( max, n, random, _acc ) when random < (1/n), do: loop( max, n + 1, :rand.uniform, n )
   def loop( max, n, _random, acc ), do: loop( max, n + 1, :rand.uniform, acc )
@@ -1031,7 +1031,7 @@ let main args =
             let d = one_of_n n
             ar.[d] <- 1 + ar.[d]
         Console.WriteLine (String.Join(" ", ar))
- 
+
     test 10 1000000
     0
 ```
@@ -1104,7 +1104,7 @@ MAIN: test-one-of-n
 
 
 ```txt
-$ ./factor -run=rosettacode.one-of-n 
+$ ./factor -run=rosettacode.one-of-n
 Loading resource:work/rosettacode/one-of-n/one-of-n.factor
 Loading resource:work/rosettacode/random-line/random-line.factor
 Loading resource:basis/formatting/formatting.factor
@@ -1289,7 +1289,7 @@ test = do
         x <- replicateM 1000000 (oneOfN testFile)
         let f m l = M.insertWith (+) l 1 m
         let results = foldl' f M.empty x
-        forM_ (M.toList results) $ \(x, y) -> putStrLn $ "Line number " ++ show x ++ 
+        forM_ (M.toList results) $ \(x, y) -> putStrLn $ "Line number " ++ show x ++
 								 " had count :" ++ show y
 
 main = do
@@ -1324,7 +1324,7 @@ Running with a filename argument prints the line number and the line to stdin:
 
 
 ```txt
-$ ./oneofn test.txt 
+$ ./oneofn test.txt
 Line 6.0: This is line 6
 ```
 
@@ -1336,13 +1336,13 @@ Line 6.0: This is line 6
 procedure main() # one of n
    one_of_n_test(10,1000000)
 end
- 
+
 procedure one_of_n(n)
-   every i := 1 to n do 
+   every i := 1 to n do
       choice := (?0  < 1. / i, i)
    return \choice | fail
 end
- 
+
 procedure one_of_n_test(n,trials)
    bins := table(0)
    every i := 1 to trials do
@@ -1435,28 +1435,28 @@ import java.util.Random;
 public class OneOfNLines {
 
 	static Random rand;
-	
+
 	public static int oneOfN(int n) {
 		int choice = 0;
-		
+
 		for(int i = 1; i < n; i++) {
 			if(rand.nextInt(i+1) == 0)
 				choice = i;
 		}
-		
+
 		return choice;
 	}
-	
+
 	public static void main(String[] args) {
 		int n = 10;
 		int trials = 1000000;
 		int[] bins = new int[n];
 		rand = new Random();
-		
+
 		for(int i = 0; i < trials; i++)
 			bins[oneOfN(n)]++;
-		
-		
+
+
 		System.out.println(Arrays.toString(bins));
 	}
 }
@@ -1635,7 +1635,7 @@ function one(n)
             chosen = i
         end
     end
-    
+
     return chosen
 end
 
@@ -1688,18 +1688,18 @@ one_of_n_lines_in_a_file := proc(fn)
 	local fid, N, n, L, l, line;
 	fid := fopen(fn,'READ');
 	if fid<0 then
-		return; 
-	end if; 
-	N := 0; 
+		return;
+	end if;
+	N := 0;
 	n := 1;
 	while not feof(fid) do
 		N := N+1;
 		L := FileTools[Text][ReadLine](fid);
 		if (N*GenerateFloat() < 1) then
-			n := N;		
+			n := N;
 			line := L;
 		end if;
-	end do; 
+	end do;
 	fclose(fid);
 	return(n);
 end proc;
@@ -1716,9 +1716,9 @@ end proc;
 ```Mathematica
 chooseLine[file_] := Block[{strm = OpenRead[file], n = 1, rec, selected},
   					     rec = selected = Read[strm];
-  					     While[rec =!= EndOfFile, 
+  					     While[rec =!= EndOfFile,
                                                     rec=Read[strm];
-                                                    n++; 
+                                                    n++;
                                                     If[RandomReal[] < 1/n, selected = rec]];
                                              Close[strm];
                                              selected]
@@ -1731,16 +1731,16 @@ chooseLine[file_] := Block[{strm = OpenRead[file], n = 1, rec, selected},
 ```Matlab
 function [n,line] = one_of_n_lines_in_a_file(fn)
 fid = fopen(fn,'r');
-if fid<0, return; end; 
-N = 0; 
+if fid<0, return; end;
+N = 0;
 n = 1;
 while ~feof(fid)
 	N = N+1;
 	L = fgetl(fid);
 	if (N*rand() < 1)
-		n = N;		
+		n = N;
 		line = L;
-	end; 
+	end;
 end
 fclose(fid);
 ```
@@ -1748,11 +1748,11 @@ fclose(fid);
 test
 
 ```Matlab
-x=zeros(1,10); 
+x=zeros(1,10);
 for k = 1:1e6;
   n = one_of_n_lines_in_a_file('f1');
   x(n) = x(n) + 1;
-end; 
+end;
 [1:10;x]
 ```
 
@@ -1828,7 +1828,7 @@ Executing:
 ```txt
 
 $ ocamlopt -o one.opt one.ml
-$ ./one.opt 
+$ ./one.opt
  100620 99719 99928 99864 99760 100151 99553 100529 99800 100076
 
 ```
@@ -1874,7 +1874,7 @@ function one_of_n(n: longint): longint;
       if random < 1.0 / i then
 	one_of_n := i;
   end;
- 
+
 function sum(a: array of longint): longint;
   var
     i: integer;
@@ -2157,7 +2157,7 @@ function Get-OneOfN ([int]$Number)
     $current = 1
 
     for ($i = 2; $i -le $Number; $i++)
-    { 
+    {
         $limit = 1 / $i
 
         if ((Get-Random -Minimum 0.0 -Maximum 1.0) -lt $limit)
@@ -2173,12 +2173,12 @@ function Get-OneOfN ([int]$Number)
 $table = [ordered]@{}
 
 for ($i = 1; $i -lt 11; $i++)
-{ 
+{
     $table.Add(("Line {0,2}" -f $i), 0)
 }
 
 for ($i = 0; $i -lt 1000000; $i++)
-{ 
+{
     $index = (Get-OneOfN -Number 10) - 1
     $table[$index] = $table[$index] + 1
 }
@@ -2218,35 +2218,35 @@ class Holder {
     [int] GetOneOfN([int]$Number)
     {
         $current = 1
- 
+
         for ($i = 2; $i -le $Number; $i++)
-        { 
+        {
             $limit = 1 / $i
- 
+
             if ($this.rng.NextDouble() -lt $limit)
             {
                 $current = $i
             }
         }
- 
+
         return $current
     }
 }
- 
+
 
 $table = [Collections.Generic.Dictionary[int, int]]::new()
 $X = [Holder]::new()
 
-1..10 | ForEach-Object { 
+1..10 | ForEach-Object {
     $table.Add($_, 0)
 }
- 
+
 for ($i = 0; $i -lt 1e6; $i++)
-{ 
+{
     $index = $X.GetOneOfN(10) - 1
     $table[$index] += 1
 }
- 
+
 [PSCustomObject]$table
 ```
 
@@ -2262,7 +2262,7 @@ EndProcedure
 
 Procedure one_of_n(n)
   Protected linesRead, lineChosen
-  While linesRead < n 
+  While linesRead < n
     linesRead + 1
     If randomFloat() <= (1.0 / (linesRead))
        lineChosen = linesRead
@@ -2280,12 +2280,12 @@ If OpenConsole()
     x = one_of_n(#testFileLineCount)
     a(x) + 1
   Next
-  
+
   For i = 1 To #testFileLineCount
     Print(Str(a(i)) + "  ")
   Next
   PrintN("")
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2315,7 +2315,7 @@ def one_of_n(lines): # lines is any iterable
         if randrange(i+1) == 0:
             choice = line
     return choice
-            
+
 def one_of_n_test(n=10, trials=1000000):
     bins = [0] * n
     if n:
@@ -2342,13 +2342,13 @@ print(one_of_n_test())
 one_of_n <- function(n)
 {
   choice <- 1L
-  
+
   for (i in 2:n)
   {
     if (i*runif(1) < 1)
       choice <- i
   }
-  
+
   return(choice)
 }
 
@@ -2359,8 +2359,8 @@ table(sapply(1:1000000, function(i) one_of_n(10)))
 Sample output:
 
 ```txt
-     1      2      3      4      5      6      7      8      9     10 
- 99783  99776 100214 100342 100342  99771 100394 100176  99486  99716 
+     1      2      3      4      5      6      7      8      9     10
+ 99783  99776 100214 100342 100342  99771 100394 100176  99486  99716
 ```
 
 
@@ -2490,7 +2490,7 @@ for m = 1 to 10
     see "" + m + " : " + cnt[m] + nl
 next
 see nl
- 
+
 func oneofn n
 for i = 1 to n
     if random(1) <= 1/i d = i ok
@@ -2555,7 +2555,7 @@ end
 
 
 ```txt
-$ ruby one-of-n.rb 
+$ ruby one-of-n.rb
 1 chosen 100470 times
 2 chosen 100172 times
 3 chosen 100473 times
@@ -2578,11 +2578,11 @@ for i1 = 1 to 1000000
     c = oneOfN(10)
     chosen(c) = chosen(c) + 1
 next
- 
+
 for i1 = 1 to 10
     print i1;" ";chosen(i1)
 next
- 
+
 FUNCTION oneOfN(n)
     for i2 = 1 to n
         IF int(rnd(1) * i2) = 0 then choice = i2
@@ -2726,7 +2726,7 @@ Output:
 
 ```txt
 
-100372 99661 100264 99644 100180 99748 99718 100205 99714 100494 
+100372 99661 100264 99644 100180 99748 99718 100205 99714 100494
 
 ```
 
@@ -2783,7 +2783,7 @@ var counts = [0,0,0,0,0,0,0,0,0,0]
 for _ in 1..1_000_000 {
   counts[one_of_n(10)-1]++
 }
-  
+
 println(counts)
 ```
 
@@ -2849,7 +2849,7 @@ Next
 
 For k = 1 To 10
 	WScript.StdOut.WriteLine k & ". " & chosen(k)
-Next 
+Next
 
 Function one_of_n(n)
 	Randomize
@@ -2899,7 +2899,7 @@ fcn one_of_n(lines){ # lines is any iterable
       { if((0).random(n+1)==0) line else Void.Skip }).value
 #endif
 }
- 
+
 fcn one_of_n_test(n=10, trials=0d1_000_000){
    bins:=n.pump(List(),0); // List(0,0,0...)
    if(n){ foreach i in (trials){ bins[one_of_n((n).walker())]+=1 } }

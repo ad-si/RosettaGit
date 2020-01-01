@@ -15,13 +15,13 @@ tags = []
 [[Category:Puzzles]]
 [[Category:Games]]
 
-The [[wp:24 Game|24 Game]] tests one's mental arithmetic. 
+The [[wp:24 Game|24 Game]] tests one's mental arithmetic.
 
 
 ;Task
 Write a program that [[task feature::Rosetta Code:randomness|randomly]] chooses and [[task feature::Rosetta Code:user output|displays]] four digits, each from 1 ──► 9 (inclusive) with repetitions allowed.
 
-The program should prompt for the player to enter an arithmetic expression using ''just'' those, and ''all'' of those four digits, used exactly ''once'' each. The program should ''check'' then [[task feature::Rosetta Code:parsing|evaluate the expression]]. 
+The program should prompt for the player to enter an arithmetic expression using ''just'' those, and ''all'' of those four digits, used exactly ''once'' each. The program should ''check'' then [[task feature::Rosetta Code:parsing|evaluate the expression]].
 
 The goal is for the player to [[task feature::Rosetta Code:user input|enter]] an expression that (numerically) evaluates to '''24'''.
 *  Only the following operators/functions are allowed: multiplication, division, addition, subtraction
@@ -58,77 +58,77 @@ This is a fully-worked sample of the game in 8th, showing error-detection and us
 \ then get an expression from the user using +, -, / and * and the digits
 \ the result must equal 24
 \ http://8th-dev.com/24game.html
- 
+
 \ Only the words in namespace 'game' are available to the player:
 ns: game
- 
+
 : + n:+ ;
 : - n:- ;
 : * n:* ;
 : / n:/ ;
- 
+
 ns: G
- 
+
 var random-digits
 var user-input
- 
+
 : one-digit \ a -- a
 	rand n:abs 9 n:mod n:1+ a:push ;
- 
+
 : gen-digits \ - a
 	[] clone nip \ the clone nip is not needed in versions past 1.0.2...
 	' one-digit 4 times
 	' n:cmp a:sort
 	random-digits !  ;
- 
-: prompt-user 
+
+: prompt-user
 	cr "The digits are: " .  random-digits @ . cr ;
- 
+
 : goodbye
 	cr "Thanks for playing!\n" . cr 0 die ;
- 
+
 : get-input
 	70 null con:accept dup user-input !
 	null? if drop goodbye then ;
- 
+
 : compare-digits
 	true swap
 	(
 		\ inputed-array index
 		dup >r
-		a:@ 
+		a:@
 		random-digits @ r> a:@ nip
 		n:= not if
 			break
 			swap drop false swap
 		then
 	) 0 3 loop drop ;
- 
+
 /^\D*(\d)\D+(\d)\D+(\d)\D+(\d)\D*$/  var, digits-regex
- 
-: all-digits? 
-	user-input @ digits-regex @ r:match 
+
+: all-digits?
+	user-input @ digits-regex @ r:match
 	null? if drop false else
 		5 = not if
 			false
 		else
 			\ convert the captured digits in the regex into a sorted array:
-			digits-regex @ 
+			digits-regex @
 			( r:@ >n swap ) 1 4 loop drop
 			4 a:close ' n:cmp a:sort
 			compare-digits
 		then
 	then ;
- 
+
 : does-eval?
-	0 user-input @ eval 24 n:= 
+	0 user-input @ eval 24 n:=
 	dup not if
 		cr "Sorry, that expression is wrong" . cr
 	then ;
- 
+
 : check-input
 	reset
-	all-digits?  if 
+	all-digits?  if
 		does-eval? if
 			cr "Excellent!  Your expression: \"" .
 			user-input @ .
@@ -137,20 +137,20 @@ var user-input
 	else
 		cr "You did not use the digits properly, try again." . cr
 	then ;
- 
+
 : intro quote |
- 
+
 Welcome to the '24 game'!
- 
+
 You will be shown four digits each time.  Using only the + - * and / operators
 and all the digits (and only the digits), produce the number '24'
- 
+
 Enter your result in 8th syntax, e.g.:  4 4 + 2 1 + *
- 
+
 To quit the game, just hit enter by itself. Enjoy!
- 
+
 	| . ;
- 
+
 : start
 	\ don't allow anything but the desired words
 	ns:game only
@@ -161,7 +161,7 @@ To quit the game, just hit enter by itself. Enjoy!
 		get-input
 		check-input
 	again ;
- 
+
 start
 
 ```
@@ -442,113 +442,113 @@ arc 24_game.arg -o 24_game.c && gcc 24_game.c -o 24_game /usr/lib/libargrt.a
 
 
 ```autohotkey
-AutoExecute: 
-    Title := "24 Game" 
-    Gui, -MinimizeBox 
-    Gui, Add, Text, w230 vPuzzle 
-    Gui, Add, Edit, wp vAnswer 
-    Gui, Add, Button, w70, &Generate 
-    Gui, Add, Button, x+10 wp Default, &Submit 
-    Gui, Add, Button, x+10 wp, E&xit 
+AutoExecute:
+    Title := "24 Game"
+    Gui, -MinimizeBox
+    Gui, Add, Text, w230 vPuzzle
+    Gui, Add, Edit, wp vAnswer
+    Gui, Add, Button, w70, &Generate
+    Gui, Add, Button, x+10 wp Default, &Submit
+    Gui, Add, Button, x+10 wp, E&xit
 
 
-ButtonGenerate: ; new set of numbers 
-    Loop, 4 
-        Random, r%A_Index%, 1, 9 
-    Puzzle = %r1%, %r2%, %r3%, and %r4% 
-    GuiControl,, Puzzle, The numbers are:  %Puzzle%  - Good luck! 
-    GuiControl,, Answer ; empty the edit box 
-    ControlFocus, Edit1 
-    Gui, -Disabled 
-    Gui, Show,, %Title% 
-Return ; end of auto execute section 
+ButtonGenerate: ; new set of numbers
+    Loop, 4
+        Random, r%A_Index%, 1, 9
+    Puzzle = %r1%, %r2%, %r3%, and %r4%
+    GuiControl,, Puzzle, The numbers are:  %Puzzle%  - Good luck!
+    GuiControl,, Answer ; empty the edit box
+    ControlFocus, Edit1
+    Gui, -Disabled
+    Gui, Show,, %Title%
+Return ; end of auto execute section
 
 
-ButtonSubmit: ; check solution 
-    Gui, Submit, NoHide 
-    Gui, +Disabled 
+ButtonSubmit: ; check solution
+    Gui, Submit, NoHide
+    Gui, +Disabled
 
-    ; check numbers used 
-    RegExMatch(Answer, "(\d)\D+(\d)\D+(\d)\D+(\d)", $) 
-    ListPuzzle := r1 "," r2 "," r3 "," r4 
-    ListAnswer := $1 "," $2 "," $3 "," $4 
-    Sort, ListPuzzle, D, 
-    Sort, ListAnswer, D, 
-    If Not ListPuzzle = ListAnswer { 
-        MsgBox, 48, Error - %Title%, Numbers used!`n%Answer% 
-        Goto, TryAgain 
-    } 
+    ; check numbers used
+    RegExMatch(Answer, "(\d)\D+(\d)\D+(\d)\D+(\d)", $)
+    ListPuzzle := r1 "," r2 "," r3 "," r4
+    ListAnswer := $1 "," $2 "," $3 "," $4
+    Sort, ListPuzzle, D,
+    Sort, ListAnswer, D,
+    If Not ListPuzzle = ListAnswer {
+        MsgBox, 48, Error - %Title%, Numbers used!`n%Answer%
+        Goto, TryAgain
+    }
 
-    ; check operators used 
-    StringReplace, $, $, +,, All 
-    StringReplace, $, $, -,, All 
-    StringReplace, $, $, *,, All 
-    StringReplace, $, $, /,, All 
-    StringReplace, $, $, (,, All 
-    StringReplace, $, $, ),, All 
-    Loop, 9 
-        StringReplace, $, $, %A_Index%,, All 
-    If StrLen($) > 0 
-    Or InStr(Answer, "**") 
-    Or InStr(Answer, "//") 
-    Or InStr(Answer, "++") 
-    Or InStr(Answer, "--") { 
-        MsgBox, 48, Error - %Title%, Operators used!`n%Answer% 
-        Goto, TryAgain 
-    } 
+    ; check operators used
+    StringReplace, $, $, +,, All
+    StringReplace, $, $, -,, All
+    StringReplace, $, $, *,, All
+    StringReplace, $, $, /,, All
+    StringReplace, $, $, (,, All
+    StringReplace, $, $, ),, All
+    Loop, 9
+        StringReplace, $, $, %A_Index%,, All
+    If StrLen($) > 0
+    Or InStr(Answer, "**")
+    Or InStr(Answer, "//")
+    Or InStr(Answer, "++")
+    Or InStr(Answer, "--") {
+        MsgBox, 48, Error - %Title%, Operators used!`n%Answer%
+        Goto, TryAgain
+    }
 
-    ; check result 
-    Result := Eval(Answer) 
-    If Not Result = 24 { 
-        MsgBox, 48, Error - %Title%, Result incorrect!`n%Result% 
-        Goto, TryAgain 
-    } 
+    ; check result
+    Result := Eval(Answer)
+    If Not Result = 24 {
+        MsgBox, 48, Error - %Title%, Result incorrect!`n%Result%
+        Goto, TryAgain
+    }
 
-    ; if we are sill here 
-    MsgBox, 4, %Title%, Correct solution! Play again? 
-    IfMsgBox, Yes 
-        Gosub, ButtonGenerate 
-    Else 
-        ExitApp 
-Return 
-
-
-TryAgain: ; alternative ending of routine ButtonSubmit 
-    ControlFocus, Edit1 
-    Gui, -Disabled 
-    Gui, Show 
-Return 
+    ; if we are sill here
+    MsgBox, 4, %Title%, Correct solution! Play again?
+    IfMsgBox, Yes
+        Gosub, ButtonGenerate
+    Else
+        ExitApp
+Return
 
 
-GuiClose: 
-GuiEscape: 
-ButtonExit: 
-    ExitApp 
-Return 
+TryAgain: ; alternative ending of routine ButtonSubmit
+    ControlFocus, Edit1
+    Gui, -Disabled
+    Gui, Show
+Return
 
 
-;--------------------------------------------------------------------------- 
-Eval(Expr) { ; evaluate expression using separate AHK process 
-;--------------------------------------------------------------------------- 
-    ; credit for this function goes to AutoHotkey forum member Laszlo 
-    ; http://www.autohotkey.com/forum/topic9578.html 
-    ;----------------------------------------------------------------------- 
-    static File := "24$Temp.ahk" 
+GuiClose:
+GuiEscape:
+ButtonExit:
+    ExitApp
+Return
 
-    ; delete old temporary file, and write new 
-    FileDelete, %File% 
-    FileContent := "#NoTrayIcon`r`n" 
-                .  "FileDelete, " File "`r`n" 
-                .  "FileAppend, `% " Expr ", " File "`r`n" 
-    FileAppend, %FileContent%, %File% 
 
-    ; run AHK to execute temp script, evaluate expression 
-    RunWait, %A_AhkPath% %File% 
+;---------------------------------------------------------------------------
+Eval(Expr) { ; evaluate expression using separate AHK process
+;---------------------------------------------------------------------------
+    ; credit for this function goes to AutoHotkey forum member Laszlo
+    ; http://www.autohotkey.com/forum/topic9578.html
+    ;-----------------------------------------------------------------------
+    static File := "24$Temp.ahk"
 
-    ; get result 
-    FileRead, Result, %File% 
-    FileDelete, %File% 
-    Return, Result 
+    ; delete old temporary file, and write new
+    FileDelete, %File%
+    FileContent := "#NoTrayIcon`r`n"
+                .  "FileDelete, " File "`r`n"
+                .  "FileAppend, `% " Expr ", " File "`r`n"
+    FileAppend, %FileContent%, %File%
+
+    ; run AHK to execute temp script, evaluate expression
+    RunWait, %A_AhkPath% %File%
+
+    ; get result
+    FileRead, Result, %File%
+    FileDelete, %File%
+    Return, Result
 }
 ```
 
@@ -647,7 +647,7 @@ EndFunc
       FOR choice% = 1 TO 4
         digits%(choice%) = RND(9)
       NEXT choice%
-      
+
       REM Prompt the player:
       PRINT "Enter an equation (using all of, and only, the single digits ";
       FOR index% = 1 TO 4
@@ -658,9 +658,9 @@ EndFunc
       PRINT "which evaluates to exactly 24.  Only multiplication (*), division (/),"
       PRINT "addition (+) & subtraction (-) operations and parentheses are allowed:"
       INPUT "24 = " equation$
-      
+
       REPEAT
-        
+
         REM Check that the correct digits are used:
         check%() = 0
         FOR char% = 1 TO LEN(equation$)
@@ -677,14 +677,14 @@ EndFunc
             ENDIF
           ENDIF
         NEXT char%
-        
+
         FOR index% = 1 TO 4
           IF NOT check%(index%) THEN
             PRINT "Sorry, you failed to use the digit " ; digits%(index%)
             EXIT REPEAT
           ENDIF
         NEXT index%
-        
+
         REM Check that no pairs of digits are used:
         FOR pair% = 11 TO 99
           IF INSTR(equation$, STR$(pair%)) THEN
@@ -692,7 +692,7 @@ EndFunc
             EXIT REPEAT
           ENDIF
         NEXT pair%
-        
+
         REM Check whether the equation evaluates to 24:
         ON ERROR LOCAL PRINT "Sorry, there was an error in the equation" : EXIT REPEAT
         result = EVAL(equation$)
@@ -702,9 +702,9 @@ EndFunc
         ELSE
           PRINT "Sorry, your equation evaluated to " ; result " rather than 24!"
         ENDIF
-        
+
       UNTIL TRUE
-      
+
       INPUT '"Play again", answer$
       IF LEFT$(answer$,1) = "y" OR LEFT$(answer$,1) = "Y" THEN CLS : RUN
       QUIT
@@ -744,9 +744,9 @@ _>"rorrE",,,,,$ >~:67*-!#v_:167*+-!#v_:95*-!#v_:295*+-!#v_:586*+\`#v_:97*2--!#v
 
 ```
 
-The code functions by placing the 4 randomly generated numbers into the points labelled 1,2,3,4. In order to play, press the corresponding label to draw that number onto the stack, then press the corresponding operation (+,-,*,/) to perform it on the stack elements postfix-wise according to the rules of befunge (i.e. pop the values operate and push the answer back to the stack). When you wish to check your answer enter "=" and it will perform the checks to ensure that you haven't performed any illegal operations, that you have used all four numbers and that your final value is 24. 
+The code functions by placing the 4 randomly generated numbers into the points labelled 1,2,3,4. In order to play, press the corresponding label to draw that number onto the stack, then press the corresponding operation (+,-,*,/) to perform it on the stack elements postfix-wise according to the rules of befunge (i.e. pop the values operate and push the answer back to the stack). When you wish to check your answer enter "=" and it will perform the checks to ensure that you haven't performed any illegal operations, that you have used all four numbers and that your final value is 24.
 
-Unfortunately, due to the lack of floating-point arithmetic in befunge, divide will result in the answer truncated to an integer. 
+Unfortunately, due to the lack of floating-point arithmetic in befunge, divide will result in the answer truncated to an integer.
 
 Example:
 6566
@@ -779,7 +779,7 @@ Example:
     .   (seed=.!arg:(~0:~/#?m-w.~0:~/#?m-z))
       & seed$!arg
       & ( get-random
-        =   
+        =
           .   36969*mod$(!m-z.65536)+div$(!m-z.65536):?m-z
             & 18000*mod$(!m-w.65536)+div$(!m-w.65536):?m-w
             & mod$(!m-z*65536+!m-w.9)+1
@@ -905,42 +905,42 @@ bye
 
 Simple recursive descent parser.  It doesn't have a real lexer, because all tokens are single character (digits, operators and parens).  Code is a little too long.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
 #include <setjmp.h>
 #include <time.h>
- 
+
 jmp_buf ctx;
 const char *msg;
- 
+
 enum { OP_NONE = 0, OP_NUM, OP_ADD, OP_SUB, OP_MUL, OP_DIV };
- 
+
 typedef struct expr_t *expr, expr_t;
 struct expr_t {
 	int op, val, used;
 	expr left, right;
 };
- 
+
 #define N_DIGITS 4
 expr_t digits[N_DIGITS];
- 
+
 void gen_digits()
 {
 	int i;
 	for (i = 0; i < N_DIGITS; i++)
 		digits[i].val = 1 + rand() % 9;
 }
- 
+
 #define MAX_INPUT 64
 char str[MAX_INPUT];
 int pos;
- 
+
 #define POOL_SIZE 8
 expr_t pool[POOL_SIZE];
 int pool_ptr;
- 
+
 void reset()
 {
 	int i;
@@ -953,46 +953,46 @@ void reset()
 	for (i = 0; i < N_DIGITS; i++)
 		digits[i].used = 0;
 }
- 
+
 /* longish jumpish back to input cycle */
 void bail(const char *s)
 {
 	msg = s;
 	longjmp(ctx, 1);
 }
- 
+
 expr new_expr()
 {
 	if (pool_ptr < POOL_SIZE)
 		return pool + pool_ptr++;
 	return 0;
 }
- 
+
 /* check next input char */
 int next_tok()
 {
 	while (isspace(str[pos])) pos++;
 	return str[pos];
 }
- 
+
 /* move input pointer forward */
 int take()
 {
 	if (str[pos] != '\0') return ++pos;
 	return 0;
 }
- 
+
 /* BNF(ish)
 expr = term { ("+")|("-") term }
 term = fact { ("*")|("/") expr }
 fact =	number
 	| '(' expr ')'
 */
- 
+
 expr get_fact();
 expr get_term();
 expr get_expr();
- 
+
 expr get_expr()
 {
 	int c;
@@ -1001,7 +1001,7 @@ expr get_expr()
 	while ((c = next_tok()) == '+' || c == '-') {
 		if (!take()) bail("Unexpected end of input");
 		if (!(r = get_term())) bail("Expected term");
- 
+
 		l = ret;
 		ret = new_expr();
 		ret->op = (c == '+') ? OP_ADD : OP_SUB;
@@ -1010,7 +1010,7 @@ expr get_expr()
 	}
 	return ret;
 }
- 
+
 expr get_term()
 {
 	int c;
@@ -1018,7 +1018,7 @@ expr get_term()
 	ret = get_fact();
 	while((c = next_tok()) == '*' || c == '/') {
 		if (!take()) bail("Unexpected end of input");
- 
+
 		r = get_fact();
 		l = ret;
 		ret = new_expr();
@@ -1028,7 +1028,7 @@ expr get_term()
 	}
 	return ret;
 }
- 
+
 expr get_digit()
 {
 	int i, c = next_tok();
@@ -1047,7 +1047,7 @@ expr get_digit()
 	}
 	return 0;
 }
- 
+
 expr get_fact()
 {
 	int c;
@@ -1062,7 +1062,7 @@ expr get_fact()
 	}
 	return 0;
 }
- 
+
 expr parse()
 {
 	int i;
@@ -1074,10 +1074,10 @@ expr parse()
 			bail("Not all digits are used");
 	return ret;
 }
- 
+
 typedef struct frac_t frac_t, *frac;
 struct frac_t { int denom, num; };
- 
+
 int gcd(int m, int n)
 {
 	int t;
@@ -1086,7 +1086,7 @@ int gcd(int m, int n)
 	}
 	return n;
 }
- 
+
 /* evaluate expression tree.  result in fraction form */
 void eval_tree(expr e, frac res)
 {
@@ -1097,10 +1097,10 @@ void eval_tree(expr e, frac res)
 		res->denom = 1;
 		return;
 	}
- 
+
 	eval_tree(e->left, &l);
 	eval_tree(e->right, &r);
- 
+
 	switch(e->op) {
 	case OP_ADD:
 		res->num = l.num * r.denom + l.denom * r.num;
@@ -1124,25 +1124,25 @@ void eval_tree(expr e, frac res)
 		res->num /= t;
 	}
 }
- 
+
 void get_input()
 {
 	int i;
 reinput:
 	reset();
 	printf("\nAvailable digits are:");
-	for (i = 0; i < N_DIGITS; i++) 
+	for (i = 0; i < N_DIGITS; i++)
 		printf(" %d", digits[i].val);
 	printf(". Type an expression and I'll check it for you, or make new numbers.\n"
 		"Your choice? [Expr/n/q] ");
- 
+
 	while (1) {
 		for (i = 0; i < MAX_INPUT; i++) str[i] = '\n';
 		fgets(str, MAX_INPUT, stdin);
 		if (*str == '\0') goto reinput;
 		if (str[MAX_INPUT - 1] != '\n')
 			bail("string too long");
- 
+
 		for (i = 0; i < MAX_INPUT; i++)
 			if (str[i] == '\n') str[i] = '\0';
 		if (str[0] == 'q') {
@@ -1156,12 +1156,12 @@ reinput:
 		return;
 	}
 }
- 
+
 int main()
 {
 	frac_t f;
 	srand(time(0));
- 
+
 	gen_digits();
 	while(1) {
 		get_input();
@@ -1171,9 +1171,9 @@ int main()
 			printf("%s at '%.*s'\n", msg, pos, str);
 			continue;
 		}
- 
+
 		eval_tree(parse(), &f);
- 
+
 		if (f.denom == 0) bail("Divide by zero");
 		if (f.denom == 1 && f.num == 24)
 			printf("You got 24.  Very good.\n");
@@ -1227,8 +1227,8 @@ See [[24 game/CSharp]]
 This uses the C++11 standard to simplify several parts of the code. Input is given in RPN format.
 
 
-```cpp>#include <random
-
+```cpp
+#include <random>
 #include <iostream>
 #include <stack>
 #include <set>
@@ -1357,39 +1357,39 @@ import ceylon.random {
 }
 
 class Rational(shared Integer numerator, shared Integer denominator = 1) satisfies Numeric<Rational> {
-	
+
 	assert (denominator != 0);
-	
+
 	Integer gcd(Integer a, Integer b) => if (b == 0) then a else gcd(b, a % b);
-	
+
 	shared Rational inverted => Rational(denominator, numerator);
-	
+
 	shared Rational simplified =>
 		let (largestFactor = gcd(numerator, denominator))
 			Rational(numerator / largestFactor, denominator / largestFactor);
-	
+
 	divided(Rational other) => (this * other.inverted).simplified;
-	
+
 	negated => Rational(-numerator, denominator).simplified;
-	
+
 	plus(Rational other) =>
 			let (top = numerator*other.denominator + other.numerator*denominator,
 				bottom = denominator * other.denominator)
 			Rational(top, bottom).simplified;
-	
+
 	times(Rational other) =>
 		Rational(numerator * other.numerator, denominator * other.denominator).simplified;
-	
+
 	shared Integer integer => numerator / denominator;
 	shared Float float => numerator.float / denominator.float;
-	
+
 	string => denominator == 1 then numerator.string else "``numerator``/``denominator``";
-	
+
 	shared actual Boolean equals(Object that) {
 		if (is Rational that) {
 			value simplifiedThis = this.simplified;
 			value simplifiedThat = that.simplified;
-			return simplifiedThis.numerator==simplifiedThat.numerator && 
+			return simplifiedThis.numerator==simplifiedThat.numerator &&
 					simplifiedThis.denominator==simplifiedThat.denominator;
 		}
 		else {
@@ -1426,17 +1426,17 @@ class OperatorExpression(Expression left, Character operator, Expression right) 
 			throw Exception("unknown operator ``operator``");
 		}
 	}
-	
+
 	string => "(``left.string`` ``operator.string`` ``right.string``)";
 }
 
 "A simplified top down operator precedence parser. There aren't any right
  binding operators so we don't have to worry about that."
 class PrattParser(String input) {
-	
+
 	value tokens = input.replace(" ", "");
 	variable value index = -1;
-	
+
 	shared Expression expression(Integer precedence = 0) {
 		value token = advance();
 		variable value left = parseUnary(token);
@@ -1446,13 +1446,13 @@ class PrattParser(String input) {
 		}
 		return left;
 	}
-	
+
 	Integer getPrecedence(Character op) =>
 		switch (op)
 			case ('*' | '/') 2
 			case ('+' | '-') 1
 			else 0;
-	
+
 	Character advance(Character? expected = null) {
 		index++;
 		value token = tokens[index] else ' ';
@@ -1461,23 +1461,23 @@ class PrattParser(String input) {
 		}
 		return token;
 	}
-	
+
 	Character peek() => tokens[index + 1] else ' ';
-	
+
 	Expression parseBinary(Expression left, Character operator) =>
 		let (right = expression(getPrecedence(operator)))
 			OperatorExpression(left, operator, right);
-	
+
 	Expression parseUnary(Character token) {
 		if (token.digit) {
 			assert (is Integer int = Integer.parse(token.string));
 			return NumberExpression(Rational(int));
-		} 
+		}
 		else if (token == '(') {
 			value exp = expression();
 			advance(')');
 			return exp;
-		} 
+		}
 		else {
 			throw Exception("unknown character ``token``");
 		}
@@ -1485,12 +1485,12 @@ class PrattParser(String input) {
 }
 
 shared void run() {
-	
+
 	value random = DefaultRandom();
-	
+
 	function random4Numbers() =>
 		random.elements(1..9).take(4).sequence();
-	
+
 	function isValidGuess(String input, {Integer*} allowedNumbers) {
 		value allowedOperators = set { *"()+-/*" };
 		value extractedNumbers = input
@@ -1530,12 +1530,12 @@ shared void run() {
 		}
 		return true;
 	}
-	
+
 	function evaluate(String input) =>
 		let (parser = PrattParser(input),
 			exp = parser.expression())
 			exp.evaluate();
-	
+
 	print("Welcome to The 24 Game.
 	          Create a mathematical equation with four random
 	          numbers that evaluates to 24.
@@ -1545,16 +1545,16 @@ shared void run() {
 	          For example: (1 + 2 + 3) * 4
 	          Also: enter n for new numbers and q to quit.
 	          -----------------------------------------------");
-	
+
 	value twentyfour = Rational(24);
-	
+
 	while (true) {
-		
+
 		value chosenNumbers = random4Numbers();
 		void pleaseTryAgain() => print("Sorry, please try again. (Your numbers are ``chosenNumbers``)");
-		
+
 		print("Your numbers are ``chosenNumbers``. Please turn them into 24.");
-		
+
 		while (true) {
 			value line = process.readLine()?.trimmed;
 			if (exists line) {
@@ -1572,16 +1572,16 @@ shared void run() {
 						if (result == twentyfour) {
 							print("You did it!");
 							break;
-						} 
+						}
 						else {
 							pleaseTryAgain();
 						}
-					} 
+					}
 					catch (Exception e) {
 						print(e.message);
 						pleaseTryAgain();
 					}
-				} 
+				}
 				else {
 					pleaseTryAgain();
 				}
@@ -1603,7 +1603,7 @@ shared void run() {
 (def ^:dynamic *luser*
 "You guessed wrong, or your input was not in prefix notation.")
 
-(def ^:private start #(println 
+(def ^:private start #(println
 "Your numbers are: " %1 ". Your goal is " %2 ".\n"
 "Use the ops [+ - * /] in prefix notation to reach" %2 ".\n"
 "q[enter] to quit."))
@@ -1705,8 +1705,8 @@ working-storage section.
 01  t-len pic 99 value 6.
 01  terminal-symbols
     pic x(210) value
-        '01 +                               '                                                               
-    &   '01 -                               '                                                               
+        '01 +                               '
+    &   '01 -                               '
     &   '01 *                               '
     &   '01 /                               '
     &   '01 (                               '
@@ -1721,18 +1721,18 @@ working-storage section.
 01  nt-lim pic 99 value 5.
 01  nonterminal-statements pic x(294) value
         "000 ....,....,....,....,....,....,....,....,....,"
-    &   "001 statement = expression;                      "                                                       
-    &   "005 expression = term, {('+'|'-') term,};        "                                                      
-    &   "017 term = factor, {('*'|'/') factor,};          "                                                             
-    &   "029 factor = ('(' expression, ')' | digit,);     "                                                           
-    &   "036 digit;                                       ".                                                            
+    &   "001 statement = expression;                      "
+    &   "005 expression = term, {('+'|'-') term,};        "
+    &   "017 term = factor, {('*'|'/') factor,};          "
+    &   "029 factor = ('(' expression, ')' | digit,);     "
+    &   "036 digit;                                       ".
 01  filler redefines nonterminal-statements.
     03  nonterminal-statement-entry occurs 5.
         05  nonterminal-statement-number pic 999.
         05  filler pic x.
         05  nonterminal-statement pic x(45).
 
-01  indent pic x(64) value all '|  '. 
+01  indent pic x(64) value all '|  '.
 01  interpreter-stack.
     03  r pic 99. *> previous top of stack
     03  s pic 99. *> current top of stack
@@ -1745,7 +1745,7 @@ working-storage section.
         05  filler pic x(4) value ' ec='.
         05  s-end-control pic 999. *> sequence end address
         05  filler pic x(4) value ' al='.
-        05  s-alternate pic 999. *> the next alternate 
+        05  s-alternate pic 999. *> the next alternate
         05  filler pic x(3) value ' r='.
         05  s-result pic x. *> S success, F failure, N no result
         05  filler pic x(3) value ' c='.
@@ -1852,19 +1852,19 @@ working-storage section.
 01  tsx-lim pic 99 value 14.
 01  test-statements.
     03  filler pic x(32) value '1234;1 + 2 + 3 + 4'.
-    03  filler pic x(32) value '1234;1 * 2 * 3 * 4'. 
-    03  filler pic x(32) value '1234;((1)) * (((2 * 3))) * 4'. 
-    03  filler pic x(32) value '1234;((1)) * ((2 * 3))) * 4'. 
-    03  filler pic x(32) value '1234;(1 + 2 + 3 + 4'. 
-    03  filler pic x(32) value '1234;)1 + 2 + 3 + 4'. 
-    03  filler pic x(32) value '1234;1 * * 2 * 3 * 4'. 
-    03  filler pic x(32) value '5679;6 - (5 - 7) * 9'. 
-    03  filler pic x(32) value '1268;((1 * (8 * 6) / 2))'. 
-    03  filler pic x(32) value '4583;-5-3+(8*4)'. 
-    03  filler pic x(32) value '4583;8 * 4 - 5 - 3'. 
-    03  filler pic x(32) value '4583;8 * 4 - (5 + 3)'. 
-    03  filler pic x(32) value '1223;1 * 3 / (2 - 2)'. 
-    03  filler pic x(32) value '2468;(6 * 8) / 4 / 2'. 
+    03  filler pic x(32) value '1234;1 * 2 * 3 * 4'.
+    03  filler pic x(32) value '1234;((1)) * (((2 * 3))) * 4'.
+    03  filler pic x(32) value '1234;((1)) * ((2 * 3))) * 4'.
+    03  filler pic x(32) value '1234;(1 + 2 + 3 + 4'.
+    03  filler pic x(32) value '1234;)1 + 2 + 3 + 4'.
+    03  filler pic x(32) value '1234;1 * * 2 * 3 * 4'.
+    03  filler pic x(32) value '5679;6 - (5 - 7) * 9'.
+    03  filler pic x(32) value '1268;((1 * (8 * 6) / 2))'.
+    03  filler pic x(32) value '4583;-5-3+(8*4)'.
+    03  filler pic x(32) value '4583;8 * 4 - 5 - 3'.
+    03  filler pic x(32) value '4583;8 * 4 - (5 + 3)'.
+    03  filler pic x(32) value '1223;1 * 3 / (2 - 2)'.
+    03  filler pic x(32) value '2468;(6 * 8) / 4 / 2'.
 01  filler redefines test-statements.
     03  filler occurs 14.
         05  test-numbers pic x(4).
@@ -1937,7 +1937,7 @@ generate-numbers.
     .
 validate-number.
     perform varying p4 from 1 by 1 until p4 > p4-lim
-        move permutation-4(p4) to current-permutation-4 
+        move permutation-4(p4) to current-permutation-4
         perform varying od1 from 1 by 1 until od1 > od-lim
             move operator-definitions(od1:1) to current-operators(1:1)
             perform varying od2 from 1 by 1 until od2 > od-lim
@@ -1969,7 +1969,7 @@ validate-number.
             end-perform
         end-perform
     end-perform
-    .  
+    .
 display-instructions.
     display '1)  Type h <enter> to repeat these instructions.'
     display '2)  The program will display four randomly-generated'
@@ -1981,7 +1981,7 @@ display-instructions.
     display '    Warning:  the program converts the entered infix expression'
     display '    to a reverse polish notation (rpn) expression'
     display '    which is then interpreted from RIGHT to LEFT.'
-    display '    So, for instance, 8*4 - 5 - 3 will not sum to 24.' 
+    display '    So, for instance, 8*4 - 5 - 3 will not sum to 24.'
     display '3)  Type n <enter> to generate a new set of four numbers.'
     display '    The program will ensure the generated numbers are solvable.'
     display '4)  Type m#### <enter> (e.g. m1234) to create a fixed set of numbers'
@@ -1989,10 +1989,10 @@ display-instructions.
     display '    The program will test the solvability of the entered numbers.'
     display '    For example, m1234 is solvable and m9999 is not solvable.'
     display '5)  Type d0, d1, d2 or d3 followed by <enter> to display none or'
-    display '    increasingly detailed diagnostic information as the program evaluates' 
+    display '    increasingly detailed diagnostic information as the program evaluates'
     display '    the entered expression.'
     display '6)  Type e <enter> to see a list of example expressions and results'
-    display '7)  Type <enter> or q <enter> to exit the program' 
+    display '7)  Type <enter> or q <enter> to exit the program'
     .
 show-result.
     if error-found = 'y'
@@ -2014,7 +2014,7 @@ evaluate-statement.
 
     display NL 'numbers:' space n(1) space n(2) space n(3) space n(4)
     move number-definitions to number-use
-    display 'statement is' space statement  
+    display 'statement is' space statement
 
     move 1 to l
     move 0 to loop-count
@@ -2036,8 +2036,8 @@ evaluate-statement.
     *> interpret ebnf
     *>
 ### =============================
- 
-    perform until s = 0 
+
+    perform until s = 0
     or error-found = 'y'
 
         evaluate true
@@ -2194,7 +2194,7 @@ increment-l.
         continue
     when other
         add l-len to l
-        perform varying l from l by 1 
+        perform varying l from l by 1
         until c(l) <> space
         or l > l-lim
             continue
@@ -2298,12 +2298,12 @@ test-variable.
         move c(l) to output-queue(oqx:1)
     end-evaluate
     .
-*> 
+*>
 ### ============================
 
 *> Dijkstra Shunting-Yard Algorithm
 *> to convert infix to rpn
-*> 
+*>
 ### ============================
 
 process-token.
@@ -2326,14 +2326,14 @@ process-token.
     when (c(l) = '+' or '-') and (operator-stack(osx:1) = '*' or '/')
         *> lesser operator precedence
         add 1 to oqx
-        move operator-stack(osx:1) to output-queue(oqx:1) 
+        move operator-stack(osx:1) to output-queue(oqx:1)
         move c(l) to operator-stack(osx:1)
     when other
         *> greater operator precedence
         add 1 to osx
         move c(l) to operator-stack(osx:1)
     end-evaluate
-    . 
+    .
 end-tokens.
     *> 1) copy stacked operators to the output-queue
     perform varying osx from osx by -1 until osx < 1
@@ -2369,14 +2369,14 @@ evaluate-rpn.
             when output-queue(oqx1:1) = '+'
                 compute top-numerator = top-numerator * denominator(rsx)
                     + top-denominator * numerator(rsx)
-                compute top-denominator = top-denominator * denominator(rsx)  
-            when output-queue(oqx1:1) = '-' 
+                compute top-denominator = top-denominator * denominator(rsx)
+            when output-queue(oqx1:1) = '-'
                 compute top-numerator = top-denominator * numerator(rsx)
                     - top-numerator * denominator(rsx)
-                compute top-denominator = top-denominator * denominator(rsx)  
-            when output-queue(oqx1:1) = '*' 
+                compute top-denominator = top-denominator * denominator(rsx)
+            when output-queue(oqx1:1) = '*'
                 compute top-numerator = top-numerator * numerator(rsx)
-                compute top-denominator = top-denominator * denominator(rsx)  
+                compute top-denominator = top-denominator * denominator(rsx)
             when output-queue(oqx1:1) = '/'
                 compute work-number = numerator(rsx) * top-denominator
                 compute top-denominator = denominator(rsx) * top-numerator
@@ -2389,7 +2389,7 @@ evaluate-rpn.
             *> pop the stack
             subtract 1 from rsx
         end-if
-    end-perform 
+    end-perform
     .
 *>
 ### ==============
@@ -2511,7 +2511,7 @@ numbers = []
 
 for n in [0...4]
     numbers.push Math.max 1, Math.floor(Math.random() * 9)
-    
+
 console.log "You can use the numbers: #{numbers.join ' '}"
 
 process.stdin.on 'keypress', (char, key) ->
@@ -2524,7 +2524,7 @@ process.stdin.on 'keypress', (char, key) ->
     else if !isNaN(+char) and (buffer == '' or isNaN(buffer.substr -1))
         buffer += char
         process.stdout.write char
-    
+
     # check then evaluate expression
     if key?.name is 'enter'
         result = calculate()
@@ -2534,7 +2534,7 @@ process.stdin.on 'keypress', (char, key) ->
         else
             console.log "#{result}. nope."
         process.exit 0
-    
+
     # quit
     if key?.name is 'escape' or (key?.name == 'c' and key.ctrl)
         process.exit 0
@@ -2544,16 +2544,16 @@ calculate = () ->
     if /[^\d\s()+*\/-]/.test buffer
         console.log "invalid characters"
         process.exit 1
-    
+
     used = buffer.match(/\d/g)
     if used?.length != 4 or used.sort().join() != numbers.sort().join()
         console.log "you must use the 4 numbers provided"
         process.exit 1
-    
+
     res = try eval buffer catch e
     return res or 'invalid expression'
 
-    
+
 # begin taking input
 process.stdin.resume()
 
@@ -2813,28 +2813,28 @@ Good job!
 ;; check that nums are in expr, and only once
 (define (is-valid? expr sorted: nums)
     (when (equal? 'q expr) (error "24-game" "Thx for playing"))
-    (unless (and 
-        (list? expr) 
+    (unless (and
+        (list? expr)
         (equal? nums (list-sort < (filter number? (flatten expr)))))
     (writeln "🎃 Please use" nums)
     #f))
-    
+
 ;; 4 random  digits
 (define (gen24)
      (->> (append (range 1 10)(range 1 10)) shuffle (take 4) (list-sort < )))
-    
+
 (define (is-24? num)
     (unless (= 24 num)
     (writeln "😧 Sorry - Result = " num)
     #f))
 
 (define (check-24 expr)
-    (if (and 
-        (is-valid? expr nums) 
+    (if (and
+        (is-valid? expr nums)
         (is-24?  (js-eval (string expr)))) ;; use js evaluator
         "🍀 🌸 Congrats - (play24) for another one."
         (input-expr check-24 (string nums))))
-        
+
 (define nums null)
 (define (play24)
     (set! nums (gen24))
@@ -2847,23 +2847,23 @@ Good job!
 
 ```txt
 
-24-game - Can you combine     (2 5 6 7)     to get 24 ❓ (q to exit) 
+24-game - Can you combine     (2 5 6 7)     to get 24 ❓ (q to exit)
 difficult game
-🎃 Please use     (2 5 6 7)    
+🎃 Please use     (2 5 6 7)
 12 * 2
-🎃 Please use     (2 5 6 7)    
+🎃 Please use     (2 5 6 7)
 6 * (7 - 5 + 2)
 🍀 🌸 Congrats - (play24) for another one.
-    
+
 (play24)
-24-game - Can you combine     (3 5 8 9)     to get 24 ❓ (q to exit)    
+24-game - Can you combine     (3 5 8 9)     to get 24 ❓ (q to exit)
 3 + 5 + 8 * 9
-😧 Sorry - Result =      80    
+😧 Sorry - Result =      80
 9 * 3 - (8 - 5)
 🍀 🌸 Congrats - (play24) for another one.
-    
+
 (play24)
-24-game - Can you combine     (1 8 8 9)     to get 24 ❓ (q to exit)    
+24-game - Can you combine     (1 8 8 9)     to get 24 ❓ (q to exit)
 9 + 8 + 8 - 1
 🍀 🌸 Congrats - (play24) for another one.
 
@@ -2873,7 +2873,7 @@ difficult game
 
 ## Elena
 
-ELENA 4.1 : 
+ELENA 4.1 :
 
 ```elena
 import system'routines;
@@ -2884,15 +2884,15 @@ import extensions;
 class ExpressionTree
 {
     object theTree;
-    
+
     constructor(s)
     {
         auto level := new Integer(0);
-        
+
         s.forEach:(ch)
         {
             var node := new DynamicStruct();
-            
+
             ch =>
                 $43 { node.Level := level + 1; node.Operation := __subj add }        // +
                 $45 { node.Level := level + 1; node.Operation := __subj subtract }   // -
@@ -2904,10 +2904,10 @@ class ExpressionTree
                     node.Leaf := ch.toString().toReal();
                     node.Level := level + 3
                 };
-                    
+
             if (nil == theTree)
-            { 
-                theTree := node 
+            {
+                theTree := node
             }
             else
             {
@@ -2915,7 +2915,7 @@ class ExpressionTree
                 {
                     node.Left := theTree;
                     node.Right := nilValue;
-                    
+
                     theTree := node
                 }
                 else
@@ -2923,54 +2923,54 @@ class ExpressionTree
                         var top := theTree;
                         while ((nilValue != top.Right)&&(top.Right.Level < node.Level))
                             { top := top.Right };
-                        
+
                         node.Left := top.Right;
                         node.Right := nilValue;
-                        
+
                         top.Right := node
                 }
             }
         }
     }
-    
+
     eval(node)
     {
         if (node.containsProperty(subjconst Leaf))
-        { 
-            ^ node.Leaf 
+        {
+            ^ node.Leaf
         }
         else
         {
             var left := self.eval(node.Left);
             var right := self.eval(node.Right);
-            
+
             var op := node.Operation;
-            
+
             ^ op(left, right)
         }
     }
-    
+
     get Value()
         <= eval(theTree);
-        
+
     readLeaves(list, node)
     {
         if (nil == node)
             { InvalidArgumentException.raise() };
-        
+
         var s := subjconst Leaf;
-        
+
         if (node.containsProperty(subjconst Leaf))
-        { 
-            list.append(node.Leaf) 
+        {
+            list.append(node.Leaf)
         }
         else
         {
             self.readLeaves(list, node.Left);
             self.readLeaves(list, node.Right)
         }
-    }        
-    
+    }
+
     readLeaves(list)
         <= readLeaves(list,theTree);
 }
@@ -2978,25 +2978,25 @@ class ExpressionTree
 class TwentyFourGame
 {
     object theNumbers;
-    
+
     constructor()
     {
         self.newPuzzle();
     }
-    
+
     newPuzzle()
     {
         theNumbers := new object[]::(
-                1 + randomGenerator.eval:9, 
-                1 + randomGenerator.eval:9, 
-                1 + randomGenerator.eval:9, 
+                1 + randomGenerator.eval:9,
+                1 + randomGenerator.eval:9,
+                1 + randomGenerator.eval:9,
                 1 + randomGenerator.eval:9
             )
     }
-    
+
     help()
     {
-        console 
+        console
             .printLine:"------------------------------- Instructions ------------------------------"
             .printLine:"Four digits will be displayed."
             .printLine:"Enter an equation using all of those four digits that evaluates to 24"
@@ -3009,36 +3009,36 @@ class TwentyFourGame
             .printLine:"Example: given 2 3 8 2, answer should resemble 8*3-(2-2)"
             .printLine:"------------------------------- --------------------------------------------"
     }
-    
+
     prompt()
     {
         theNumbers.forEach:(n){ console.print(n," ") };
-        
+
         console.print:": "
     }
-    
+
     resolve(expr)
     {
         var tree := new ExpressionTree(expr);
-        
+
         var leaves := new ArrayList();
         tree.readLeaves:leaves;
-        
+
         ifnot (leaves.ascendant().sequenceEqual(theNumbers.ascendant()))
             { console.printLine:"Invalid input. Enter an equation using all of those four digits. Try again."; ^ self };
-            
+
         var result := tree.Value;
         if (result == 24)
         {
             console.printLine("Good work. ",expr,"=",result);
-            
+
             self.newPuzzle()
         }
         else
         {
             console.printLine("Incorrect. ",expr,"=",result)
         }
-    }    
+    }
 }
 
 extension gameOp
@@ -3066,7 +3066,7 @@ extension gameOp
                     console.printLine:"An error occurred.  Check your input and try again."
                 }
             };
-                
+
             ^ true
         }
     }
@@ -3118,7 +3118,7 @@ defmodule Game24 do
     IO.puts "24 Game"
     play
   end
-  
+
   defp play do
     IO.puts "Generating 4 digits..."
     digts = for _ <- 1..4, do: Enum.random(1..9)
@@ -3126,7 +3126,7 @@ defmodule Game24 do
     read_eval(digts)
     play
   end
-  
+
   defp read_eval(digits) do
     exp = IO.gets("Your expression: ") |> String.strip
     if exp in ["","q"], do: exit(:normal)        # give up
@@ -3136,12 +3136,12 @@ defmodule Game24 do
       {err, _} -> IO.puts "The following numbers are wrong: #{inspect err, char_lists: :as_lists}"
     end
   end
-  
+
   defp correct_nums(exp, digits) do
     nums = String.replace(exp, ~r/\D/, " ") |> String.split |> Enum.map(&String.to_integer &1)
     if length(nums)==4 and (nums--digits)==[], do: :ok, else: nums
   end
-  
+
   defp eval(exp) do
     try do
       Code.eval_string(exp) |> elem(0)
@@ -3261,7 +3261,7 @@ The evaluator uses a simple infix scheme that doesn't care about operator preced
 Example:
 
 ```txt
-1> c(g24).    
+1> c(g24).
 {ok,g24}
 2> g24:main().
 24 Game
@@ -3321,15 +3321,15 @@ let rec reduce (str :string) =
     let subst s r = str.Replace(s, r.ToString())
     let rstr =
         match str with
-        | Parse @"\(<(-?\d+),(\d+)>([*/+-])<(-?\d+),(\d+)>\)" [matched; xn; xd; op; yn; yd] -> 
+        | Parse @"\(<(-?\d+),(\d+)>([*/+-])<(-?\d+),(\d+)>\)" [matched; xn; xd; op; yn; yd] ->
             subst matched <| eval (Rat(xn,xd)) (Rat(yn,yd)) op
-        | Parse @"<(-?\d+),(\d+)>([*/])<(-?\d+),(\d+)>" [matched; xn; xd; op; yn; yd] -> 
+        | Parse @"<(-?\d+),(\d+)>([*/])<(-?\d+),(\d+)>" [matched; xn; xd; op; yn; yd] ->
             subst matched <| eval (Rat(xn,xd)) (Rat(yn,yd)) op
-        | Parse @"<(-?\d+),(\d+)>([+-])<(-?\d+),(\d+)>" [matched; xn; xd; op; yn; yd] -> 
+        | Parse @"<(-?\d+),(\d+)>([+-])<(-?\d+),(\d+)>" [matched; xn; xd; op; yn; yd] ->
             subst matched <| eval (Rat(xn,xd)) (Rat(yn,yd)) op
-        | Parse @"\(<(-?\d+),(\d+)>\)" [matched; xn; xd] -> 
+        | Parse @"\(<(-?\d+),(\d+)>\)" [matched; xn; xd] ->
             subst matched <| Rat(xn,xd)
-        | Parse @"(?<!>)-<(-?\d+),(\d+)>" [matched; xn; xd] -> 
+        | Parse @"(?<!>)-<(-?\d+),(\d+)>" [matched; xn; xd] ->
             subst matched <| -Rat(xn,xd)
         | _ -> str
     if str = rstr then str else reduce rstr
@@ -3346,20 +3346,20 @@ let gameLoop() =
             elif d5 = "" then
                 printfn "Use this 4 digits with operators in between: %s." dddd
                 None
-            else 
+            else
                 printfn "Use only this 4 digits with operators in between: %s." dddd
                 None
         | _ ->
             printfn "Use all 4 digits with operators in between: %s." dddd
             None
-        
+
     let rec userLoop dddd  =
         let tryAgain msg =
             printfn "%s" msg
             userLoop dddd
         printf "[Expr|n|q]: "
         match Console.ReadLine() |> replace @"\s" "" |> checkInput dddd with
-        | Some(input) -> 
+        | Some(input) ->
             let data = input |> replace @"((?<!\d)-)?\d+" @"<$&,1>"
             match data with
             | "n" -> true | "q" -> false
@@ -3577,7 +3577,7 @@ program game_24
   character, parameter :: three(11) = (/ '1','x','(','(','1','x','1',')','x','1',')' /)
   character, parameter :: four(11)  = (/ '1','x','(','1','x','(','1','x','1',')',')' /)
   character, parameter :: five(11)  = (/ '(','1','x','1',')','x','(','1','x','1',')' /)
-  
+
   do
     call random_number(vector)
     numbers = 9 * vector + 1
@@ -3625,14 +3625,14 @@ program game_24
     else
       write (*,*) 'Your result (',result,') is incorrect!'
     end if
-  
+
     write (*,'(a)',advance='no') 'Another one? [y/n] '
     read (*,'(a1)') expression
     if ( expression(1:1) == 'n' .or. expression(1:1) == 'N' ) then
       stop
-    end if  
+    end if
   end do
-  
+
 contains
 
   pure real function op(x,c,y)
@@ -3649,7 +3649,7 @@ contains
         op = x/y
     end select
   end function op
-  
+
   subroutine check_numbers(a,b,c,d)
     real, intent(in) :: a,b,c,d
     integer          :: test(4)
@@ -3660,7 +3660,7 @@ contains
       stop 'You cheat ;-) (Incorrect numbers)'
     end if
   end subroutine check_numbers
-  
+
   pure subroutine Insertion_Sort(a)
     integer, intent(inout) :: a(:)
     integer                :: temp, i, j
@@ -3714,9 +3714,9 @@ contains
   end function get_token
 
   subroutine advance ! consume a token.  Move to the next token.  consume_token would have been a better name.
-    position = position + 1    
+    position = position + 1
   end subroutine advance
-  
+
   logical function unfinished()
     unfinished = get_token() /= statement_end
   end function unfinished
@@ -3766,7 +3766,7 @@ contains
        call advance()
        argument(2) = precedence2()
        if (token == '/') argument(2) = 1 / argument(2)
-       argument(1) = product(argument)       
+       argument(1) = product(argument)
        token = get_token()
     end do
     a = argument(1)
@@ -3808,7 +3808,7 @@ contains
     text_to_parse = expression
     evaluate = statement()
   end function evaluate
-  
+
 end module evaluate_algebraic_expression
 
 
@@ -3910,99 +3910,99 @@ $ gfortran -g -O0 -std=f2008 -Wall f.f08 -o f.exe && echo '8*(9/9+2)' | ./f.exe
  Using digits 9 9 8 2, and the algebraic dyadic
  operators +-*/() enter an expression computing 24.
    24.000000      close enough
-$ 
-$ 
-$ 
-$ ./f.exe 
+$
+$
+$
+$ ./f.exe
 $  Using digits 9 9 8 2, and the algebraic dyadic
 $  operators +-*/() enter an expression computing 24.
 $     8 *   ( 9 / 9  +    2   )
 $    24.000000      close enough
-$ 
-$ 
+$
+$
 $ ./f.exe
  Using digits 9 9 8 2, and the algebraic dyadic
  operators +-*/() enter an expression computing 24.
 (((2+8+9+9)))
    28.000000      no good
-$ 
-$ 
+$
+$
 $ ./f.exe
  Using digits 9 9 8 2, and the algebraic dyadic
  operators +-*/() enter an expression computing 24.
 (((8+9-2+9)))
    24.000000      close enough
-$ 
+$
 $ ./f.exe
  Using digits 9 9 8 2, and the algebraic dyadic
  operators +-*/() enter an expression computing 24.
 8929
  "9" unexpected in expression at           2
 STOP 1
-$ 
-$ 
+$
+$
 $ ./f.exe
  Using digits 9 9 8 2, and the algebraic dyadic
  operators +-*/() enter an expression computing 24.
 12348
  invalid digits
-$ 
-$ 
+$
+$
 $ ./f.exe
  Using digits 9 9 8 2, and the algebraic dyadic
  operators +-*/() enter an expression computing 24.
 892
  invalid digits
-$ 
-$ 
+$
+$
 $ ./f.exe
  Using digits 9 9 8 2, and the algebraic dyadic
  operators +-*/() enter an expression computing 24.
 8921
  invalid digits
-$ 
-$ 
-$ 
+$
+$
+$
 $ ./f.exe
  Using digits 9 9 8 2, and the algebraic dyadic
  operators +-*/() enter an expression computing 24.
 89291
  invalid digits
-$ 
-$ 
-$ 
+$
+$
+$
 $ ./f.exe
  Using digits 9 9 8 2, and the algebraic dyadic
  operators +-*/() enter an expression computing 24.
 9+x-2+8+9
  "x" unexpected in expression at           3
 STOP 1
-$ 
-$ 
-$ 
+$
+$
+$
 $ ./f.exe
  Using digits 9 9 8 2, and the algebraic dyadic
  operators +-*/() enter an expression computing 24.
 (9-2)+8+(9
  "^@" unexpected in expression at         125
 STOP 1
-$ 
-$ 
-$ 
+$
+$
+$
 $ ./f.exe
  Using digits 9 9 8 2, and the algebraic dyadic
  operators +-*/() enter an expression computing 24.
 (9-2)+8+(9)
    24.000000      close enough
-$ 
-$ 
-$ 
+$
+$
+$
 $ ./f.exe
  Using digits 9 9 8 2, and the algebraic dyadic
  operators +-*/() enter an expression computing 24.
 (9-2)+8/(9)
    7.8888888      no good
-$ 
+$
 
 ```
 
@@ -4021,7 +4021,7 @@ Const operaciones = "*/+-"
 
 Declare Sub Encabezado
 Declare Function escoge4() As String
-Declare Function quitaEspacios(cadena As String, subcadena1 As String, subcadena2 As String) As String   
+Declare Function quitaEspacios(cadena As String, subcadena1 As String, subcadena2 As String) As String
 Declare Function evaluaEntrada(cadena As String) As Integer
 Declare Function evaluador(oper1 As Byte, oper2 As Byte, operacion As String) As Integer
 
@@ -4039,12 +4039,12 @@ Sub Encabezado
     Print "multiplicación (*) y división (/) intentar obtener un resultado de 24." + Chr(13) + Chr(10)
     Print "Use la notación polaca inversa (primero los operandos y luego los operadores)."
     Print "Por ejemplo: en lugar de 2 + 4, escriba 2 4 +" + Chr(13) + Chr(10)
-End Sub 
+End Sub
 
 Function escoge4() As String
     Dim As Byte i
     Dim As String a, b
-    
+
     Print "Los dígitos a utilizar son:   ";
     For i = 1 To 4
 	a = Str(Int(Rnd*9)+1)
@@ -4058,10 +4058,10 @@ Function evaluaEntrada(cadena As String) As Integer
     Dim As Byte oper1, oper2, n(4), i
     Dim As String op
     oper1 = 0: oper2 = 0: i = 0
-    
+
     While cadena <> ""
 	op = Left(cadena, 1)
-	entrada = Mid(cadena, 2)	
+	entrada = Mid(cadena, 2)
 	If Instr(serie, op) Then
 		i = i + 1
 		n(i) = Val(op)
@@ -4074,27 +4074,27 @@ Function evaluaEntrada(cadena As String) As Integer
         Else
 		Print "Signo no v lido"
         End If
-    Wend   
+    Wend
     evaluaEntrada = n(i)
 End Function
 
 Function evaluador(oper1 As Byte, oper2 As Byte, operacion As String) As Integer
     Dim As Integer t
-    
+
     Select Case operacion
     Case "+": t = oper1 + oper2
     Case "-": t = oper1 - oper2
     Case "*": t = oper1 * oper2
     Case "/": t = oper1 / oper2
     End Select
-    
+
     evaluador = t
 End Function
 
-Function quitaEspacios(cadena As String, subcadena1 As String, subcadena2 As String) As String   
+Function quitaEspacios(cadena As String, subcadena1 As String, subcadena2 As String) As String
     Dim As Byte len1 = Len(subcadena1), len2 = Len(subcadena2)
     Dim As Byte i
-    
+
     i = Instr(cadena, subcadena1)
     While i
         cadena = Left(cadena, i - 1) & subcadena2 & Mid(cadena, i + len1)
@@ -4481,7 +4481,7 @@ def readGuess = { digits ->
     while (true) {
         print "Enter your guess using ${digits} (q to quit): "
         def expr = input.nextLine()
-        
+
         switch (expr) {
             case ~/^[qQ].*/:
                 return 'QUIT'
@@ -4511,20 +4511,20 @@ def digits = (1..4).collect { (random.nextInt(9) + 1) as String }
 while (true) {
     def guess = readGuess(digits)
     def result = evaluate(guess)
-    
+
     switch (result) {
         case 'QUIT':
             println 'Awwww. Maybe next time?'
             return
-            
+
         case 24:
             println 'Yes! You got it.'
             return
-            
+
         case 'syntax error':
-            println "A ${result} was found in ${guess}" 
+            println "A ${result} was found in ${guess}"
             break
-            
+
         default:
             println "Nope: ${guess} == ${result}, not 24"
             println 'One more try, then?'
@@ -4737,17 +4737,17 @@ main() {
 This plays the game of 24 using a simplified version of the code from the [[Arithmetic_evaluation#Icon_and_Unicon|Arithmetic evaluation]] task.
 
 ```Icon
-invocable all 
+invocable all
 link strings   # for csort, deletec
 
-procedure main() 
-help()  
-repeat { 
+procedure main()
+help()
+repeat {
    every (n := "") ||:= (1 to 4, string(1+?8))
    writes("Your four digits are : ")
-   every writes(!n," ") 
+   every writes(!n," ")
    write()
-   
+
    e := trim(read()) | fail
    case e of {
       "q"|"quit": return
@@ -4756,10 +4756,10 @@ repeat {
          e := deletec(e,' \t')         # no whitespace
          d := deletec(e,~&digits)      # just digits
          if csort(n) ~== csort(d) then # and only the 4 given digits
-            write("Invalid repsonse.") & next 
+            write("Invalid repsonse.") & next
 
          if e ? (ans := eval(E()), pos(0)) then # parse and evaluate
-            if ans = 24 then write("Congratulations you win!") 
+            if ans = 24 then write("Congratulations you win!")
             else write("Your answer was ",ans,". Try again.")
          else write("Invalid expression.")
          }
@@ -4778,10 +4778,10 @@ end
 procedure E()    #: expression
    put(lex := [],T())
    while put(lex,tab(any('+-*/'))) do
-      put(lex,T())  
-   suspend if *lex = 1 then lex[1] else lex     # strip useless []  
-end   
- 
+      put(lex,T())
+   suspend if *lex = 1 then lex[1] else lex     # strip useless []
+end
+
 procedure T()                   #: Term
    suspend 2(="(", E(), =")") | # parenthesized subexpression, or ...
        tab(any(&digits))        # just a value
@@ -4793,13 +4793,13 @@ return write(
    "Combine the 4 given digits to make 24 using only + - * / and ( ).\n ",
    "All operations have equal precedence and are evaluated left to right.\n",
    "Combining (concatenating) digits is not allowed.\n",
-   "Enter 'help', 'quit', or an expression.\n")  
+   "Enter 'help', 'quit', or an expression.\n")
 end
 ```
 
 
 {{libheader|Icon Programming Library}}
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec and sortc] 
+[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec and sortc]
 
 {{out}}
 
@@ -4918,7 +4918,7 @@ public class Game24 {
         return total;
     }
 
-    static int[] randomDigits() {        
+    static int[] randomDigits() {
         int[] result = new int[4];
         for (int i = 0; i < 4; i++)
             result[i] = r.nextInt(9) + 1;
@@ -5114,7 +5114,7 @@ fun main(args: Array<String>) = Game24.run()
 
 ## Lasso
 
-This solution requires web input from the user via a form of the expression. 
+This solution requires web input from the user via a form of the expression.
 
 On submit the expression is checked for valid chars, that the integers are valid and in the original array (which also takes care of non-duplicate integers), and that the integers are not in consecutive positions.
 
@@ -5320,7 +5320,7 @@ on keyDown k
     put "+,-,/,*,(,)" into ops
     put the text of fld "YourNumbersField" into nums
     put the text of fld "EvalField" into expr
-    if matchText(expr & k,"\d\d") then 
+    if matchText(expr & k,"\d\d") then
         answer "You can't enter 2 digits together"
         exit keyDown
     end if
@@ -5433,10 +5433,10 @@ make "operators (lput sp [+ - * / \( \)])
 ; display help message
 to show_help :digits
   type lf
-  print sentence quoted [Using only these digits:] :digits 
+  print sentence quoted [Using only these digits:] :digits
   print sentence quoted [and these operators:] [* / + -]
   print quoted [\(and parentheses as needed\),]
-  print quoted [enter an arithmetic expression 
+  print quoted [enter an arithmetic expression
      which evaluates to exactly 24.]
   type lf
   print quoted [Enter \"!\" to get fresh numbers.]
@@ -5487,13 +5487,13 @@ until [done] [
           print quoted [You win!]
           make "done true
         ] [
-          (print (sentence 
+          (print (sentence
             quoted [Incorrect \(got ] testval quoted [instead of 24\).]))
         ]
       ]
     ]
   ]]]
-] 
+]
 bye
 ```
 
@@ -5633,17 +5633,17 @@ Alternately, using the <code>lpeg.re</code> module:
 function twentyfour()
    print [[
  The 24 Game
- 
+
  Given any four digits in the range 1 to 9, which may have repetitions,
  Using just the +, -, *, and / operators; and the possible use of
  brackets, (), show how to make an answer of 24.
- 
+
  An answer of "q" will quit the game.
  An answer of "!" will generate a new set of four digits.
- 
+
  Note: you cannot form multiple digit numbers from the supplied digits,
  so an answer of 12+12 when given 1, 2, 2, and 1 would not be allowed.
- 
+
  ]]
    expr = re.compile[[   --matches properly formatted infix expressions and returns all numerals as captures
          expr <- (!.) / (<paren> / <number>) (<ws> <oper> <ws> <expr>)?
@@ -5716,7 +5716,7 @@ play24 := module()
 			return false, "";
 		end use;
 	end proc:
-	
+
 	ModuleApply := proc()
 		local replay, digits, err, message, answer;
 		randomize():
@@ -5750,14 +5750,14 @@ play24 := module()
 				if parse(answer) = 24 then
 					printf("You win! Do you wish to play another game? (Press enter for a new set of numbers or END to quit.)\n");
 					replay := StringTools[UpperCase](readline());
-				else 
+				else
 					printf("Your expression evaluated to %a. Try again!\n", parse(answer));
 					replay := "YES";
 				end if;
 			else
 				replay := answer;
 			end if;
-			
+
 			printf("\n");
 		end do:
 		printf("GAME OVER\n");
@@ -5795,25 +5795,25 @@ Most of the job is already done by Mathematica (the expression conversion); in f
 
 
 ```Mathematica
-isLegal[n_List, x_String] := 
+isLegal[n_List, x_String] :=
  Quiet[Check[
-   With[{h = ToExpression[x, StandardForm, HoldForm]}, 
-    If[Cases[Level[h, {2, \[Infinity]}, Hold, Heads -> True], 
-        Except[_Integer | Plus | _Plus | Times | _Times | Power | 
-          Power[_, -1]]] === {} && 
-      Sort[Level[h /. Power[q_, -1] -> q, {-1}] /. 
+   With[{h = ToExpression[x, StandardForm, HoldForm]},
+    If[Cases[Level[h, {2, \[Infinity]}, Hold, Heads -> True],
+        Except[_Integer | Plus | _Plus | Times | _Times | Power |
+          Power[_, -1]]] === {} &&
+      Sort[Level[h /. Power[q_, -1] -> q, {-1}] /.
          q_Integer -> Abs[q]] === Sort[n], ReleaseHold[h]]], Null]]
 Grid[{{Button[
-    "new numbers", {a, b, c, d} = Table[RandomInteger[{1, 9}], {4}]], 
-   InputField[Dynamic[x], String]}, {Dynamic[{a, b, c, d}], 
-   Dynamic[Switch[isLegal[{a, b, c, d}, x], Null, 
-     "Sorry, that is invalid.", 24, "Congrats! That's 24!", _, 
-     "Sorry, that makes " <> ToString[ToExpression@x, InputForm] <> 
+    "new numbers", {a, b, c, d} = Table[RandomInteger[{1, 9}], {4}]],
+   InputField[Dynamic[x], String]}, {Dynamic[{a, b, c, d}],
+   Dynamic[Switch[isLegal[{a, b, c, d}, x], Null,
+     "Sorry, that is invalid.", 24, "Congrats! That's 24!", _,
+     "Sorry, that makes " <> ToString[ToExpression@x, InputForm] <>
       ", not 24."]]}}]
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 
 ```Matlab
@@ -5827,23 +5827,23 @@ Grid[{{Button[
     [x,t] = strtok(t,'+-*/() \t');
      if length(x)~=1,
        error('invalid sign %s\n',x);
-     end; 
+     end;
      y = x-'0';
-     if ~(0 < y & y < 10) 
+     if ~(0 < y & y < 10)
        error('invalid sign %s\n',x);
      end;
-     z(1,k) = y;  	
-  end; 
-  if any(sort(z)-sort(n)) 
-    error('numbers do not match.\n');	
-  end; 
+     z(1,k) = y;
+  end;
+  if any(sort(z)-sort(n))
+    error('numbers do not match.\n');
+  end;
 
   val =  eval(s);
   if val==24,
-    fprintf('expression "%s" results in %i.\n',s,val);	
+    fprintf('expression "%s" results in %i.\n',s,val);
   else
     fprintf('expression "%s" does not result in 24 but %i.\n',s,val);
-  end; 	
+  end;
 ```
 
 
@@ -5880,7 +5880,7 @@ evalMultDiv = function()
         if op == "/" then result = result / rhs
     end while
 end function
-    
+
 evalAtom = function()
     if tokens[0] == "(" then
         tokens.pull
@@ -6009,7 +6009,7 @@ VAR index, counter	: INTEGER;
 	temp_expr 		: expr_t;
 	operand   		: CARDINAL;
 	operator		: operator_t;
-	
+
 	(************************************nextToken*)
 	(* returns the next CHAR that isn`t a space    *)
 	PROCEDURE nextToken(): CHAR;
@@ -6022,7 +6022,7 @@ VAR index, counter	: INTEGER;
 	END nextToken;
 	(***********************************set_operand*)
 	(* checks if the CHAR o inerhits a valid number*)
-	(* and sets 'operand' to its value             *)	
+	(* and sets 'operand' to its value             *)
 	PROCEDURE set_operand(o: CHAR);
 	BEGIN
 		CASE o OF
@@ -6071,32 +6071,32 @@ VAR index, counter	: INTEGER;
 	(************************************************)
 BEGIN
 	index := -1;
-	
+
 	token := nextToken();
 	set_operand(token);
 	expr.operand[0] := operand;
-	
+
 	token := nextToken();
 	set_operator(token);
 	expr.operator[1] := operator;
-	
-	
+
+
 	token := nextToken();
 	set_operand(token);
 	expr.operand[1] := operand;
-	
+
 	token := nextToken();
 	set_operator(token);
 	expr.operator[2] := operator;
-	
+
 	token := nextToken();
 	set_operand(token);
 	expr.operand[2] := operand;
-	
+
 	token := nextToken();
 	set_operator(token);
 	expr.operator[3] := operator;
-	
+
 	token := nextToken();
 	set_operand(token);
 	expr.operand[3] := operand;
@@ -6160,7 +6160,7 @@ BEGIN
 	CASE (TRUNC(sum) - 24) OF
 		0 : WriteString("Perfect!");|
 		1 : WriteString("Almost perfect.");
-		ELSE 
+		ELSE
 			WriteString("You loose!");
 	END;(*of CASE*)
 	WriteLn;
@@ -6562,18 +6562,18 @@ class RPNParser {
       Parse(s->Get(i));
     };
 
-    @digits->Rewind();    
-    while(@digits->More()) {      
+    @digits->Rewind();
+    while(@digits->More()) {
       left := @digits->Get()->Get();
       digits->Rewind();
       found := false;
       while(digits->More() & found = false) {
         right := digits->Get()->Get();
-        if(left = right) { 
-          digits->Remove(); found := true;  
+        if(left = right) {
+          digits->Remove(); found := true;
         }
-        else { 
-          digits->Next(); 
+        else {
+          digits->Next();
         };
       };
       @digits->Next();
@@ -6702,16 +6702,16 @@ import: mapping
 : game
 | l expr w n i |
    4 #[ 9 rand ] Array init ->l
- 
-   System.Out "Digits : " << l << " --> RPN Expression for 24 : " << drop 
+
+   System.Out "Digits : " << l << " --> RPN Expression for 24 : " << drop
    System.Console accept ->expr
- 
+
    expr words forEach: w [
       w "+" == ifTrue: [ + continue ]
       w "-" == ifTrue: [ - continue ]
       w "*" == ifTrue: [ * continue ]
       w "/" == ifTrue: [ >float / continue ]
- 
+
       w >integer dup ->n  ifNull: [ System.Out "Word " << w << " not allowed " << cr break ]
       n l indexOf dup ->i ifNull: [ System.Out "Integer " << n << " is wrong " << cr break ]
       n l put(i, null)
@@ -6771,7 +6771,7 @@ DO ii = 1 TO 7:
       IF ii MODULO 2 = 1 THEN DO:
          IF LOOKUP( cchar, Digits, " " ) = 0 THEN
             cmessage = cmessage + SUBSTITUTE( "Invalid digit: &1.~r", cchar ).
-         ELSE 
+         ELSE
             ENTRY( LOOKUP( cchar, Digits, " " ), Digits, " " ) = "".
       END.
       ELSE DO:
@@ -6789,7 +6789,7 @@ IF cmessage = "" THEN DO:
       cexpression = cexpression + SUBSTRING( Answer, ii, 1 ) + " ".
    END.
    /* use dynamic query to parse expression */
-   TEMP-TABLE tt:DEFAULT-BUFFER-HANDLE:FIND-FIRST( 
+   TEMP-TABLE tt:DEFAULT-BUFFER-HANDLE:FIND-FIRST(
       SUBSTITUTE(
          "WHERE NOT DYNAMIC-FUNCTION( 'calculate', DECIMAL( &1 ) )",
          cexpression
@@ -6797,7 +6797,7 @@ IF cmessage = "" THEN DO:
    ) NO-ERROR.
    IF p_deanswer <> 24 THEN
       cmessage = cmessage + SUBSTITUTE( "The expression evaluates to &1.", p_deanswer ).
-   ELSE 
+   ELSE
       cmessage = "Solved!".
 END.
 
@@ -6805,7 +6805,7 @@ MESSAGE cmessage VIEW-AS ALERT-BOX.
 
 ```
 
- 
+
 
 ## PARI/GP
 
@@ -6892,7 +6892,7 @@ while (1) {
   print "Expression (try ", $try++, "): ";
 
   my $entry = <>;
-  if (!defined $entry || $entry eq 'q') 
+  if (!defined $entry || $entry eq 'q')
     { say "Goodbye.  Sorry you couldn't win."; last; }
   $entry =~ s/\s+//g;  # remove all white space
   next if $entry eq '';
@@ -6923,16 +6923,16 @@ while (1) {
 ```perl6
 use MONKEY-SEE-NO-EVAL;
 
-say "Here are your digits: ", 
+say "Here are your digits: ",
 constant @digits = (1..9).roll(4)».Str;
- 
+
 grammar Exp24 {
     token TOP { ^ <exp> $ { fail unless EVAL($/) == 24 } }
     rule exp { <term>+ % <op> }
     rule term { '(' <exp> ')' | <@digits> }
     token op { < + - * / > }
 }
- 
+
 while my $exp = prompt "\n24? " {
     if try Exp24.parse: $exp {
         say "You win :)";
@@ -7149,15 +7149,15 @@ end procedure
 ```PHP
 #!/usr/bin/env php
 The 24 Game
- 
+
 Given any four digits in the range 1 to 9, which may have repetitions,
 Using just the +, -, *, and / operators; and the possible use of
 brackets, (), show how to make an answer of 24.
- 
+
 An answer of "q" will quit the game.
 An answer of "!" will generate a new set of four digits.
 Otherwise you are repeatedly asked for an expression until it evaluates to 24
- 
+
 Note: you cannot form multiple digit numbers from the supplied digits,
 so an answer of 12+12 when given 1, 2, 2, and 1 would not be allowed.
 
@@ -7237,7 +7237,7 @@ function play($numbers, $expression) {
             return;
         }
     }
-    
+
     return eval("return $expression;");
 }
 ?>
@@ -7388,7 +7388,7 @@ EVAL: procedure (E) returns (fixed decimal(15));
             if allocation(S) = 0 then signal condition (empty_stack);
             a = S;
             select (c);
-               when ('+') S = a + b; 
+               when ('+') S = a + b;
                when ('-') S = a - b;
                when ('*') S = a * b;
                when ('/') S = a / b;
@@ -7513,7 +7513,7 @@ CLS
 
 Function isNumeric ($x)
 {
-    $x2 = 0    
+    $x2 = 0
     $isNum = [System.Int32]::TryParse($x,[ref]$x2)
 Return $isNum
 }
@@ -7600,7 +7600,7 @@ editvar /newvar /value=a /userinput=1 /title=Algorithm:
 do -a-
 if -a- /hasvalue 24 printline Your algorithm worked! & goto :b (
 ) else printline Your algorithm did not work.
-:b 
+:b
 editvar /newvar /value=b /userinput=1 /title=Do you want to play again?
 if -b- /hasvalue y goto :a else exitcurrentprogram
 ```
@@ -7694,7 +7694,7 @@ EndProcedure
 
 Procedure playAgain()
   Protected answer.s
-  Repeat 
+  Repeat
     Print("Play again (y/n)? ")
     answer = LCase(Left(Trim(Input()), 1))
     Select answer
@@ -7715,8 +7715,8 @@ Procedure allDigitsUsed()
     If digits(i) <> 0
       ProcedureReturn #False
     EndIf
-  Next 
-  ProcedureReturn #True 
+  Next
+  ProcedureReturn #True
 EndProcedure
 
 Procedure isValidDigit(d)
@@ -7724,8 +7724,8 @@ Procedure isValidDigit(d)
     If digits(i) = d
       digits(i) = 0
       ProcedureReturn #True
-    EndIf 
-  Next 
+    EndIf
+  Next
   ProcedureReturn #False
 EndProcedure
 
@@ -7734,8 +7734,8 @@ Procedure doOperation(List op.c(), List operand.f())
   op = op(): DeleteElement(op())
   If op = '('
     ProcedureReturn #False ;end of sub-expression
-  EndIf 
-  
+  EndIf
+
   y = operand(): DeleteElement(operand())
   x = operand()
   Select op
@@ -7743,23 +7743,23 @@ Procedure doOperation(List op.c(), List operand.f())
       x + y
     Case '-'
       x - y
-    Case '*' 
+    Case '*'
       x * y
-    Case '/' 
+    Case '/'
       x / y
   EndSelect
   operand() = x
   ProcedureReturn #True ;operation completed
-EndProcedure 
+EndProcedure
 
 ;returns error if present and the expression results in *result\f
 Procedure.s parseExpression(expr.s, *result.Float)
   NewList op.c()
   NewList operand.f()
   expr = ReplaceString(expr, " ", "") ;remove spaces
-  
+
   If Len(expr) = 0: *result\f = 0: ProcedureReturn "": EndIf ;no expression, return zero
-  
+
   Protected *ech.Character = @expr, lastWasDigit, lastWasOper, parenCheck, c.c
   While *ech\c
     c = *ech\c
@@ -7768,7 +7768,7 @@ Procedure.s parseExpression(expr.s, *result.Float)
         If Not lastWasDigit: ProcedureReturn "Improper syntax, need a digit between operators.": EndIf
         If ListSize(op()) And (FindString("*/", Chr(op()), 1) Or (FindString("+-", Chr(op()), 1) And FindString("+-", Chr(c), 1)))
           doOperation(op(), operand())
-        EndIf 
+        EndIf
         AddElement(op()): op() = c
         lastWasOper = #True: lastWasDigit = #False
       Case '('
@@ -7789,8 +7789,8 @@ Procedure.s parseExpression(expr.s, *result.Float)
         ProcedureReturn "'" + Chr(c) + "' is not allowed in the expression."
     EndSelect
     *ech + SizeOf(Character)
-  Wend 
-  
+  Wend
+
   If parenCheck <> 0 Or lastWasOper: ProcedureReturn "Improper syntax, missing a right paren or digit.": EndIf
   Repeat
     If Not ListSize(op()): Break: EndIf
@@ -7808,7 +7808,7 @@ If OpenConsole()
     For i = 0 To #digitCount - 1
       digits(i) = 1 + Random(8)
     Next
-    
+
     showDigits()
     error = parseExpression(Input(), @result)
     If error = ""
@@ -7822,16 +7822,16 @@ If OpenConsole()
           PrintN(StrF(result, 2) + ")")
         Else
           PrintN(Str(result) + ")")
-        EndIf 
+        EndIf
         failure + 1
-      EndIf 
+      EndIf
     Else
       PrintN(error): failure + 1
-    EndIf 
+    EndIf
   Until Not playAgain()
-  
+
   PrintN("success:" + Str(success) + " failure:" + Str(failure) + " total:" + Str(success + failure))
-  
+
   Print(#CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -7907,7 +7907,7 @@ def check(answer, digits):
             ok = False
     return ok
 
-def main():    
+def main():
     digits = choose4()
     welcome(digits)
     trial = 0
@@ -7930,9 +7930,9 @@ def main():
             print (" = ", ans)
             if ans == 24:
                 print ("Thats right!")
-    print ("Thank you and goodbye")   
+    print ("Thank you and goodbye")
 
-if __name__ == '__main__': main() 
+if __name__ == '__main__': main()
 ```
 
 
@@ -7969,7 +7969,7 @@ Thank you and goodbye.
 
 ```python
 import random, re
-chars = ["(",")","/","+","-","*"]  
+chars = ["(",")","/","+","-","*"]
 while True:
     charsandints, ints = [], []
     for x in range(4):
@@ -8018,7 +8018,7 @@ twenty.four <- function(operators=c("+", "-", "*", "/", "("),
   newdigits <- function() {
     arguments <<- selector()
     cat("New digits:", paste(arguments, collapse=", "), "\n")
-  } 
+  }
   help <- function() cat("Make", goal,
       "out of the numbers",paste(arguments, collapse=", "),
       "and the operators",paste(operators, collapse=", "), ".",
@@ -8061,7 +8061,7 @@ check.call <- function(expr, operators, arguments) {
          "' not allowed. ")
   }
   numbers.used <- unlist(leaves[sapply(leaves, mode) == 'numeric'])
-  
+
   if (! isTRUE(all.equal(sort(numbers.used), sort(arguments))))
    stop("Must use each number once.")
 }
@@ -8072,29 +8072,29 @@ Example Session
 ```r>
  twenty.four()
 
-Make 24 out of the numbers 1, 6, 7, 5 and the operators +, -, *, /, ( . 
+Make 24 out of the numbers 1, 6, 7, 5 and the operators +, -, *, /, ( .
 Enter 'q' to quit, '!' to select new digits, or '?' to repeat this message.
 > 6*(5-1)
-Must use each number once. 
+Must use each number once.
 > 1 + 6*5 - 7
 Correct!
-New digits: 7, 2, 9, 3 
+New digits: 7, 2, 9, 3
 > (7+9)/2*3
 Correct!
-New digits: 1, 4, 1, 7 
+New digits: 1, 4, 1, 7
 > 4*(7-1)
-Must use each number once. 
+Must use each number once.
 > (7-1)*4*1
 Correct!
-New digits: 1, 5, 2, 8 
+New digits: 1, 5, 2, 8
 > (5-1)^2+8
 '^' not allowed.
 > !
-New digits: 2, 8, 5, 2 
+New digits: 2, 8, 5, 2
 > 52-28
 '52, 28' not allowed.
 > (8-2)*(5-2/2)
-Must use each number once. 
+Must use each number once.
 > (8+2)*2+5
 Evaluated to 25 ( goal 24 )
 > q
@@ -8281,7 +8281,7 @@ Something is wrong with the expression, try again.
 Enter your expression: 1+7*(9/3)
 The result of your expression is:  24
 You got it right!
->> 
+>>
 
 ```
 
@@ -8292,7 +8292,7 @@ You got it right!
 
 ### version 1
 
-A large part of this program deals with validating the user input   (and issuing appropriate and meaningful error 
+A large part of this program deals with validating the user input   (and issuing appropriate and meaningful error
 
 messages),   and also that the digits presented to the user, do in fact, have a possible solution.
 
@@ -8564,26 +8564,26 @@ After recent changes it can also be used, unchanged, for ooRexx.
 Therefore I removed the code of the 24 game's Version 2 for Rexx.
 
 As regards TSO (German code page):
-I wrote me a little program that just translates \ and | to ^ and ! in the source (except for literals and comments) 
-and version 1 (Gerard's) of the 24 game works, 
-if translated that way and otherwise unchanged, on TSO. TSO supports the A=;  
+I wrote me a little program that just translates \ and | to ^ and ! in the source (except for literals and comments)
+and version 1 (Gerard's) of the 24 game works,
+if translated that way and otherwise unchanged, on TSO. TSO supports the A=;
 For the sake of my 80 column CLIST PDS I had to split the few lines that are longer than that.
 
 '''Result:'''
 
 ```txt
 
-                               ISPF Command Shell                            
- Enter TSO or Workstation commands below:                                  
-  ===> tso h24   
-Using the digits 5559 , enter an expression that equals 24 (or QUIT):       
-5+5+5+9                                                                      
-                                                                           
-                             +---------------------+                         
-                             :                     :                         
-                             :  congratulations !  :                         
-                             :                     :                         
-                             +---------------------+       
+                               ISPF Command Shell
+ Enter TSO or Workstation commands below:
+  ===> tso h24
+Using the digits 5559 , enter an expression that equals 24 (or QUIT):
+5+5+5+9
+
+                             +---------------------+
+                             :                     :
+                             :  congratulations !  :
+                             :                     :
+                             +---------------------+
 
 ```
 
@@ -8591,30 +8591,30 @@ Using the digits 5559 , enter an expression that equals 24 (or QUIT):
 I just leave the complete version of changestr here although it has nothing to do with 24!
 
 ```rexx
-changestr: Procedure                                                    
+changestr: Procedure
 /* change needle to newneedle in haystack (as often as specified      */
 /* or all of them if count is omitted                                 */
-  Parse Arg needle,haystack,newneedle,count                             
-  If count>'' Then Do                                                   
-    If count=0 Then Do                                                  
-      Say 'chstr count must be > 0'                                     
-      Signal Syntax                                                     
-      End                                                               
-    End                                                                 
-  res=""                                                                
-  changes=0                                                             
-  px=1                                                                  
-  do Until py=0                                                         
-    py=pos(needle,haystack,px)                                          
-    if py>0 then Do                                                     
-      res=res||substr(haystack,px,py-px)||newneedle                     
-      px=py+length(needle)                                              
-      changes=changes+1                                                 
-      If count>'' Then                                                  
-        If changes=count Then Leave                                     
-      End                                                               
-    end                                                                 
-  res=res||substr(haystack,px)                                          
+  Parse Arg needle,haystack,newneedle,count
+  If count>'' Then Do
+    If count=0 Then Do
+      Say 'chstr count must be > 0'
+      Signal Syntax
+      End
+    End
+  res=""
+  changes=0
+  px=1
+  do Until py=0
+    py=pos(needle,haystack,px)
+    if py>0 then Do
+      res=res||substr(haystack,px,py-px)||newneedle
+      px=py+length(needle)
+      changes=changes+1
+      If count>'' Then
+        If changes=count Then Leave
+      End
+    end
+  res=res||substr(haystack,px)
   Return res
 ```
 
@@ -8632,12 +8632,12 @@ digits = list(4)
 check = list(4)
 for choice = 1 to 4
      digits[choice] = random(9)
-next 
- 
+next
+
 see "enter an equation (using all of, and only, the single digits " + nl
 for index = 1 to 4
-     see digits[index] 
-     if index != 4 
+     see digits[index]
+     if index != 4
         see " "
     ok
 next
@@ -8647,36 +8647,36 @@ see "addition (+) & subtraction (-) operations and parentheses are allowed:" + n
 see "24 = "
 give equation
 see "equation = " + equation + nl
- 
+
 while true
         for char = 1 to len(equation)
              digit = substr("0123456789", equation[char]) - 1
              if digit >= 0
                 for index = 1 to 4
-                     if digit = digits[index] 
+                     if digit = digits[index]
                         if not check[index]
                            check[index] = 1
                            exit
                         ok
                      ok
-                next 
-                if index > 4 
+                next
+                if index > 4
                    see "sorry, you used the illegal digit " + digit + nl
-                   exit 2 
+                   exit 2
                 ok
             ok
-        next 
+        next
         for index = 1 to 4
              if check[index] = 0
                 see "sorry, you failed to use the digit " + digits[index] + nl
                 exit 2
              ok
-        next 
+        next
         for pair = 11 to 99
              if substr(equation, string(pair))
                 see "sorry, you may not use a pair of digits " + pair + nl
-             ok 
-        next 
+             ok
+        next
         eval("result = " + equation)
         if result = 24
            see "congratulations, you succeeded in the task!" + nl
@@ -8692,14 +8692,14 @@ Output:
 
 ```txt
 
-enter an equation (using all of, and only, the single digits 
+enter an equation (using all of, and only, the single digits
 3 1 4 5) which evaluates to exactly 24. only multiplication (*), division (/),
 addition (+) & subtraction (-) operations and parentheses are allowed:
 24 = 4*5+3+1
 equation = 4*5+3+1
 congratulations, you succeeded in the task!
 
-enter an equation (using all of, and only, the single digits 
+enter an equation (using all of, and only, the single digits
 5 7 2 5) which evaluates to exactly 24. only multiplication (*), division (/),
 addition (+) & subtraction (-) operations and parentheses are allowed:
 24 = 98+72
@@ -8724,7 +8724,7 @@ class Guess < String
     end
     puts "You win!"
   end
-  
+
   def self.get(nums)
     loop do
       print "\nEnter a guess using #{nums}: "
@@ -8732,7 +8732,7 @@ class Guess < String
       return new(input) if validate(input, nums)
     end
   end
-  
+
   def self.validate(guess, nums)
     name, error =
       {
@@ -8741,10 +8741,10 @@ class Guess < String
         multi_digit_number: ->(str){ str.match(/\d\d/) }
       }
         .find {|name, validator| validator[guess] }
-    
+
     error ? puts("Invalid input of a(n) #{name.to_s.tr('_',' ')}!") : true
   end
-  
+
   def evaluate!
     as_rat = gsub(/(\d)/, '\1r')        # r : Rational suffix
     eval "(#{as_rat}).to_f"
@@ -8762,7 +8762,7 @@ Guess.play
 The solution below converts the infix notation to RPN and then calculates the result.
 
 I am still new to Rust so i am certain it could be written in a shorter way.
-So if there is someone better than me please feel free to improve. 
+So if there is someone better than me please feel free to improve.
 {{libheader|rand}}
 
 ```rust
@@ -8884,12 +8884,12 @@ Only problems with solution are shown to the user.
 object TwentyFourGame {
   def main(args: Array[String]) {
     import Parser.TwentyFourParser
-    
+
     println(welcome)
-    
+
     var parser = new TwentyFourParser(problemsIterator.next)
     println("Your four digits: "+parser+".")
-    
+
     var finished = false
     var expressionCount = 1
     do {
@@ -8898,10 +8898,10 @@ object TwentyFourGame {
         case "!" =>
           parser = new TwentyFourParser(problemsIterator.next)
           println("New digits: "+parser+".")
-          
+
         case "q" =>
           finished = true
-        
+
         case _ =>
           parser readExpression line match {
             case Some(24) => println("That's right!"); finished = true
@@ -8911,10 +8911,10 @@ object TwentyFourGame {
       }
       expressionCount += 1
     } while (!finished)
-    
+
     println("Thank you and goodbye!")
   }
-  
+
   val welcome = """|The 24 Game
                    |
                    |Given any four digits in the range 1 to 9, which may have repetitions,
@@ -8928,15 +8928,15 @@ object TwentyFourGame {
                    |Note: you cannot form multiple digit numbers from the supplied digits,
                    |so an answer of 12+12 when given 1, 2, 2, and 1 would not be allowed.
                    |""".stripMargin
-  
+
   val problemsIterator = (
-    Iterator 
-    continually List.fill(4)(scala.util.Random.nextInt(9) + 1 toDouble) 
+    Iterator
+    continually List.fill(4)(scala.util.Random.nextInt(9) + 1 toDouble)
     filter hasSolution
   )
-  
+
   def hasSolution(l: List[Double]) = permute(l) flatMap computeAllOperations exists (_ == 24)
-  
+
   def computeAllOperations(l: List[Double]): List[Double] = l match {
     case Nil => Nil
     case x :: Nil => l
@@ -8946,7 +8946,7 @@ object TwentyFourGame {
         z <- if (y == 0) List(x*y, x+y, x-y) else List(x*y, x/y, x+y, x-y)
       } yield z
   }
-  
+
   def permute(l: List[Double]): List[List[Double]] = l match {
     case Nil => List(Nil)
     case x :: xs =>
@@ -8956,7 +8956,7 @@ object TwentyFourGame {
         (left, right) = ys splitAt position
       } yield left ::: (x :: right)
   }
-  
+
   object Parser {
     /*  Arithmetic expression grammar production rules in EBNF form:
      *
@@ -8964,23 +8964,23 @@ object TwentyFourGame {
      * <term> --> <factor> ( '*'  <factor> | '/'  <factor> )*
      * <factor> --> '(' <expr> ')' | <digit>
      * <digit> --> 0 | 1  | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-     * 
+     *
      * Semantically, <digit> can only be a digit from the list of remaining digits.
      */
-    
+
     class TwentyFourParser(digits: List[Double]) extends scala.util.parsing.combinator.RegexParsers {
       require(digits.length == 4 && digits.forall(d => 0 <= d && d <= 9))
       override val toString = digits.map(_.toInt).mkString(", ")
-      
+
       // Grammar
       def exprConsumingAllDigits = expr ^? (remainingDigits.allDigitsConsumed, digitsRemainingError) // Guarantees all digits consumed
       def expr : Parser[Double] = term ~ rep( "+" ~ term | "-" ~ term) ^^ solveOperationChain
       def term = factor ~ rep( "*" ~ factor | "/" ~ factor) ^^ solveOperationChain
       def factor = "(" ~> expr <~ ")" | digit
-      def digit = digitRegex ^? (remainingDigits.consumeDigit, digitNotAllowedError) 
+      def digit = digitRegex ^? (remainingDigits.consumeDigit, digitNotAllowedError)
       def digitRegex = "\\d".r | digitExpected
       def digitExpected: Parser[String] = ".".r <~ failure(expectedDigitError) // Produces clear error messages
-    
+
       // Evaluate expressions
       def readExpression(input: String): Option[Double] = {
         remainingDigits = new DigitList(digits) // Initialize list of digits to be consumed
@@ -8991,10 +8991,10 @@ object TwentyFourGame {
             None
         }
       }
-      
+
       // List of digits to be consumed
       private var remainingDigits: DigitList = _
-      
+
       // Solve partial results from parsing
       private def solveOperationChain(partialResult: ~[Double,List[~[String,Double]]]): Double = partialResult match {
         case first ~ chain => chain.foldLeft(first)(doOperation)
@@ -9004,31 +9004,31 @@ object TwentyFourGame {
         case "-" ~ operand => acc - operand
         case "*" ~ operand => acc * operand
         case "/" ~ operand => acc / operand
-        case x => error("Unknown operation "+x+".") 
+        case x => error("Unknown operation "+x+".")
       }
-      
+
       // Error messages
       private def digitNotAllowedError(d: String) = "Digit "+d+" is not allowed here. Available digits: "+remainingDigits+"."
       private def digitsRemainingError(x: Any) = "Not all digits were consumed. Digits remaining: "+remainingDigits+"."
       private def expectedDigitError = "Unexpected input. Expected a digit from the list: "+remainingDigits+"."
     }
-    
+
     private object ParsingErrorFormatter {
       def apply[T](msg: String, next: scala.util.parsing.input.Reader[T]) =
         "%s\n%s\n%s\n" format (msg, next.source.toString.trim, " "*(next.offset - 1)+"^")
     }
-    
+
     private class DigitList(digits: List[Double]) {
       private var remainingDigits = digits
       override def toString = remainingDigits.map(_.toInt).mkString(", ")
-      
+
       def consumeDigit: PartialFunction[String, Double] = {
         case d if remainingDigits contains d.toDouble =>
           val n = d.toDouble
           remainingDigits = remainingDigits diff List(n)
           n
       }
-      
+
       def allDigitsConsumed: PartialFunction[Double, Double] = {
         case n if remainingDigits.isEmpty => n
       }
@@ -9093,18 +9093,18 @@ This uses read to read in a scheme expression, and eval to evaluate it, so in th
                                    (printf error-message exp (exn-message err))
                                    (loop (read)))])
        (cond [(eq? exp '!) (play)]
-             
+
              [(or (eq? exp 'q)
                   (eof-object? exp)) (printf quit-message)]
-             
+
              [(not (valid? exp))
               (printf bad-exp-message exp)
               (loop (read))]
-            
+
              [(not (= (eval exp) 24))
               (printf bad-result-message exp (eval exp))
               (loop (read))]
-            
+
              [else (printf winning-message)])))))
 
 (define (valid? exp numbers)
@@ -9114,7 +9114,7 @@ This uses read to read in a scheme expression, and eval to evaluate it, so in th
     (case sym
       [(+ - * /) #t]
       [else #f]))
-  
+
   (let* ([ls (flatten exp)]
          [numbers* (filter number? ls)]
          [symbols  (remove number? ls)])
@@ -9229,9 +9229,9 @@ loop {
 ```txt
 
 Here are your digits: 8 2 3 4
-Expression: 8 * (2 - (3 + 4))    
+Expression: 8 * (2 - (3 + 4))
 Sorry, your expression is -40, not 24
-Expression: 8 * (2 - (3 -            
+Expression: 8 * (2 - (3 -
 That's not valid
 Expression: 8 * (2 - (3 - 4))
 You win!
@@ -9418,7 +9418,7 @@ BEGIN
     NOERRORLABEL:
         END EVAL;
 
-        
+
         REAL PROCEDURE RESULT;
             RESULT := EVALUATED;
 
@@ -9766,16 +9766,16 @@ function startTwentyFourGame()
 		echo("Ending current 24 game...");
 		endTwentyFourGame();
 	}
-	
+
 	echo("Welcome to the 24 game!");
 	echo("Generating 4 numbers...");
 	for(%a = 0; %a < 4; %a++)
 		$numbers = setWord($numbers, %a, getRandom(0, 9));
-	
+
 	echo("Numbers generated! Here are your numbers:");
 	echo($numbers);
 	echo("Use try24Equation( equation ); to try and guess the equation.");
-	
+
 	$TwentyFourGame = 1;
 }
 
@@ -9786,7 +9786,7 @@ function endTwentyFourGame()
 		echo("No 24 game is active!");
 		return false;
 	}
-	
+
 	echo("Ending the 24 game.");
 	$numbers = "";
 	$TwentyFourGame = 0;
@@ -9803,11 +9803,11 @@ function try24Equation(%equ)
 	%operators = "+-*x/()";
 	%tempchars = $numbers;
 	%other = strReplace(%tempchars, " ", "");
-	
+
 	//Check it and make sure it has all the stuff
 	%equ = strReplace(%equ, " ", "");
 	%length = strLen(%equ);
-	
+
 	for(%a = 0; %a < %Length; %a++)
 	{
 		%Char = getSubStr(%equ, %a, 1);
@@ -9815,7 +9815,7 @@ function try24Equation(%equ)
 			%Next = getSubStr(%equ, %a+1, 1);
 		else
 			%Next = " ";
-		
+
 		if(strPos(%numbers @ %operators, %char) < 0)
 		{
 			echo("The equation you entered is invalid! Try again.");
@@ -9834,27 +9834,27 @@ function try24Equation(%equ)
 		}
 		else if(strPos(%operators, %char) > 0)
 			continue;
-		
+
 		%pos = 2*strPos(%other, %char);
 		if(%pos < 0)
 			return "ERROROMG";
-		
+
 		//Remove it from the allowed numbers
 		%tempchars = removeWord(%tempchars, %pos/2);
 		%other = getSubStr(%other, 0, %pos) @ getSubStr(%other, %pos+1, strLen(%other));
     }
-    
+
     %result = doEquation(%equ);
-    
+
     if(%result != 24)
     {
         echo("Your equation resulted to" SPC %result @ ", not 24! Try again.");
         return false;
     }
-    
+
     for(%a = 0; %a < 4; %a++)
         $numbers = setWord($numbers, %a, getRandom(0, 9));
-    
+
     echo("Great job!" SPC %equ SPC "Does result to 24! Here's another set for you:");
     echo($numbers);
 }
@@ -9865,7 +9865,7 @@ function doEquation(%equ)
     %equ = strReplace(%equ, " ", "");%equ = strReplace(%equ, "*", "x");
     %equ = strReplace(%equ, "+", " + ");%equ = strReplace(%equ, "x", " x ");
     %equ = strReplace(%equ, "/", " / ");%equ = strReplace(%equ, "-", " - ");
-    
+
     //Parenthesis'
     while(strPos(%equ, "(") > -1 && strPos(%equ, ")") > 0)
     {
@@ -9885,10 +9885,10 @@ function doEquation(%equ)
         %rightofbrackets = getsubStr(%equ, %end + 1, strLen(%equ) - %end);
         %equ = %leftofbrackets @ doEquation(%inbrackets) @ %rightofbrackets;
     }
-    
+
     if(strPos(%equ, "ERROR") >= 0)
         return "ERROR";
-    
+
     //Multiplication/Division loop
     for(%a = 0; %a < getWordCount(%equ); %a++)
     {
@@ -9906,7 +9906,7 @@ function doEquation(%equ)
             }
         }
     }
-    
+
     //Addition/Subraction loop
     for(%a = 0; %a < getWordCount(%equ); %a++)
     {
@@ -10059,7 +10059,7 @@ same_digits() {
 guessed() {
     [ "$(echo "$1" | tr -dc '\n0-9()*/+-' | bc 2>/dev/null)" = 24 ]
 }
-    
+
 
 while :
 do
@@ -10256,7 +10256,7 @@ until(upper$(left$(inkey$(),1)) = "N")
 
 sub genSerie$()
 	local i, c$, s$
-	
+
 	print "The numbers to be used are: ";
 	i = ran()
 	for i = 1 to 4
@@ -10271,10 +10271,10 @@ end sub
 
 sub evaluaEntrada(entr$)
 	local d1, d2, c$, n(4), i
-	
+
 	while(entr$<>"")
 		c$ = left$(entr$,1)
-		entr$ = mid$(entr$,2)		
+		entr$ = mid$(entr$,2)
 		if instr(serie$,c$) then
 			i = i + 1
 			n(i) = val(c$)
@@ -10289,31 +10289,31 @@ sub evaluaEntrada(entr$)
 			return
 		end if
 	wend
-	
+
 	return n(i)
-		
+
 end sub
 
 
 sub evaluador(d1, d2, op$)
 	local t
-	
+
 	switch op$
 		case "+": t = d1 + d2 : break
 		case "-": t = d1 - d2 : break
 		case "*": t = d1 * d2 : break
 		case "/": t = d1 / d2 : break
 	end switch
-	
+
 	return t
 end sub
 
 
 sub quitaEspacios$(entr$)
 	local n, i, s$, t$(1)
-	
+
 	n = token(entr$,t$()," ")
-	
+
 	for i=1 to n
 		s$ = s$ + t$(i)
 	next i
@@ -10323,7 +10323,7 @@ end sub
 
 sub ordenaCadena$(cadena$)
 	local testigo, n, fin, c$
-	
+
 	fin = len(cadena$)-1
 	repeat
 		testigo = false
@@ -10419,7 +10419,7 @@ end sub
 
 sub eval(c$)
 	static linea
-	
+
 	linea=linea+1
 	c$="sub s"+str$(linea+1000000,"#######")+"():return "+c$+":end sub"
 	compile c$
@@ -10443,7 +10443,7 @@ while(1){
    reg r;
    try { Compiler.Compiler.compileText(expf).__constructor(); r=vm.regX }
    catch { println("bad expression"); continue; }
-   else{ 
+   else{
       extra := (exp - "+-/*()" - digits);
       if (extra) { println("Extra goodies in expression: ",extra); continue; }
       (digits.split("").sort() != (exp - "+-/*()").split("").sort()) :
@@ -10480,12 +10480,12 @@ nice!
 
 ```zxbasic
 10 LET n$=""
-20 RANDOMIZE 
+20 RANDOMIZE
 30 FOR i=1 TO 4
 40 LET n$=n$+STR$ (INT (RND*9)+1)
 50 NEXT i
 60 LET i$="": LET f$="": LET p$=""
-70 CLS 
+70 CLS
 80 PRINT "24 game"
 90 PRINT "Allowed characters:"
 100 LET i$=n$+"+-*/()"
@@ -10495,7 +10495,7 @@ nice!
 140 NEXT i
 150 PRINT "(0 to end)"
 160 INPUT "Enter the formula";f$
-170 IF f$="0" THEN STOP 
+170 IF f$="0" THEN STOP
 180 PRINT AT 6,0;f$;" = ";
 190 FOR i=1 TO LEN f$
 200 LET c$=f$(i)
@@ -10504,7 +10504,7 @@ nice!
 230 IF c$="(" OR c$=")" THEN LET p$=p$+c$: GO TO 250
 240 LET p$=p$+"n"
 250 NEXT i
-260 RESTORE 
+260 RESTORE
 270 FOR i=1 TO 11
 280 READ t$
 290 IF t$=p$ THEN LET i=11

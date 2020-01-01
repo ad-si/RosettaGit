@@ -20,7 +20,7 @@ Then a pseudocode for the polynomial long division using the conventions describ
  degree('''P'''):
    '''return''' the index of the last non-zero element of '''P''';
           if all elements are 0, return -∞
- 
+
  polynomial_long_division('''N''', '''D''') ''returns'' ('''q''', '''r'''):
    <span class="co1">// '''N''', '''D''', '''q''', '''r''' are vectors</span>
    '''if''' degree('''D''') < 0 '''then''' ''error''
@@ -49,12 +49,12 @@ This example is from Wikipedia, but changed to show how the given pseudocode wor
     ----------------------
  N:  -42    0  -12    1        degree = 3
  D:   -3    1    0    0        degree = 1
- 
+
     <span class="co1">d(N) - d(D) = 2, so let's shift D towards right by 2:</span>
- 
+
  N:  -42    0  -12    1
  d:    0    0   -3    1
- 
+
     <span class="co1">N(3)/d(3) = 1, so d is unchanged. Now remember that "shifting by 2"
     is like multiplying by x<sup>2</sup>, and the final multiplication
     (here by 1) is the coefficient of this monomial. Let's store this
@@ -62,39 +62,39 @@ This example is from Wikipedia, but changed to show how the given pseudocode wor
                                 0     1     2
                                ---------------
                            q:   0     0     1
- 
+
     <span class="co1">now compute N - d, and let it be the "new" N, and let's loop</span>
- 
+
  N:  -42    0   -9    0        degree = 2
  D:   -3    1    0    0        degree = 1
- 
+
     <span class="co1">d(N) - d(D) = 1, right shift D by 1 and let it be d</span>
- 
+
  N:  -42    0   -9    0
  d:    0   -3    1    0        * -9/1 = -9
- 
+
                            q:   0    -9     1
- 
- d:    0   27   -9    0        
- 
+
+ d:    0   27   -9    0
+
     N ← N - d
- 
+
  N:  -42  -27    0    0        degree = 1
  D:   -3    1    0    0        degree = 1
- 
+
     <span class="co1">looping again... d(N)-d(D)=0, so no shift is needed; we
     multiply D by -27 (= -27/1) storing the result in d, then</span>
- 
+
                            q:  -27   -9     1
- 
+
     <span class="co1">and</span>
- 
+
  N:  -42  -27    0    0        -
  d:   81  -27    0    0        =
  N: -123    0    0    0        (last N)
- 
+
      <span class="co1">d(N) &lt; d(D), so now r ← N, and the result is:</span>
- 
+
         0   1  2
     -------------
  q:   -27  -9  1   →  x<sup>2</sup> - 9x - 27
@@ -252,8 +252,8 @@ div←{
       N←¯42 0 ¯12 1
       D←¯3 1
       ⍪N div D
- ¯27 ¯9 1 
- ¯123     
+ ¯27 ¯9 1
+ ¯123
 
 ```
 
@@ -270,7 +270,7 @@ div←{
       PRINT "Quotient = "; FNcoeff(q%(2)) "x^2" FNcoeff(q%(1)) "x" FNcoeff(q%(0))
       PRINT "Remainder = " ; r%(0)
       END
-      
+
       DEF PROC_poly_long_div(N%(), D%(), q%(), r%())
       LOCAL d%(), i%, s%
       DIM d%(DIM(N%(),1))
@@ -292,7 +292,7 @@ div←{
         r%() = N%()
       ENDIF
       ENDPROC
-      
+
       DEF FNdegree(a%())
       LOCAL i%
       i% = DIM(a%(),1)
@@ -301,7 +301,7 @@ div←{
         IF i%<0 EXIT WHILE
       ENDWHILE
       = i%
-      
+
       DEF FNcoeff(n%)
       IF n%=0 THEN = ""
       IF n%<0 THEN = " - " + STR$(-n%)
@@ -326,8 +326,8 @@ Remainder = -123
 
 {{libheader|GNU Scientific Library}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <assert.h>
@@ -369,7 +369,7 @@ gsl_vector *poly_long_div(gsl_vector *n, gsl_vector *d, gsl_vector **r)
     gt = 0;
 
     while( gsl_vector_get(d, gd) == 0 ) gd--;
-    
+
     while ( gn >= gd ) {
       reoshift(dt, gn-gd);
       double v = gsl_vector_get(nt, gn)/gsl_vector_get(dt, gn);
@@ -405,15 +405,15 @@ gsl_vector *poly_long_div(gsl_vector *n, gsl_vector *d, gsl_vector **r)
       gsl_vector_memcpy(*r, n);
     }
     return q;
-  } 
+  }
 }
 
 void poly_print(gsl_vector *p)
 {
   int i;
   for(i=p->size-1; i >= 0; i--) {
-    if ( i > 0 ) 
-      printf("%lfx^%d + ", 
+    if ( i > 0 )
+      printf("%lfx^%d + ",
 	     gsl_vector_get(p, i), i);
     else
       printf("%lf\n", gsl_vector_get(p, i));
@@ -428,7 +428,7 @@ gsl_vector *create_poly(int d, ...)
 
   va_start(al, d);
   r = gsl_vector_alloc(d); assert( r != NULL );
-  
+
   for(i=0; i < d; i++)
     gsl_vector_set(r, i, va_arg(al, double));
 
@@ -444,7 +444,7 @@ int main()
   int i;
   gsl_vector *q, *r;
   gsl_vector *nv, *dv;
-  
+
   //nv = create_poly(4,  -42., 0., -12., 1.);
   //dv = create_poly(2,  -3., 1.);
   //nv = create_poly(3,  2., 3., 1.);
@@ -469,8 +469,8 @@ int main()
 ### Another version
 
 Without outside libs, for clarity. Note that polys are stored and show with zero-degree term first:
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
@@ -608,9 +608,9 @@ int main() {
 	// setting the degrees of vectors
 	cout << "Enter the degree of N: ";
 	cin >> dN;
-	cout << "Enter the degree of D: "; 
+	cout << "Enter the degree of D: ";
 	cin >> dD;
-	dq = dN-dD;  
+	dq = dN-dD;
 	dr = dN-dD;
 
 	if( dD < 1 || dN < 1 ) {
@@ -620,14 +620,14 @@ int main() {
 
 	// allocation and initialization of vectors
 	N.resize(dN+1);
-	cout << "Enter the coefficients of N:"<<endl;  
+	cout << "Enter the coefficients of N:"<<endl;
 	for ( i = 0; i <= dN; i++ ) {
 		cout << "N[" << i << "]= ";
 		cin >> N[i];
 	}
 
 	D.resize(dN+1);
-	cout << "Enter the coefficients of D:"<<endl;	
+	cout << "Enter the coefficients of D:"<<endl;
 	for ( i = 0; i <= dD; i++ ) {
 		cout << "D[" << i << "]= ";
 		cin >> D[i];
@@ -671,7 +671,7 @@ int main() {
 		}
 	}
 
-	// r equals N 
+	// r equals N
 	for( i = 0 ; i <= dN ; i++ )
 		r[i] = N[i];
 
@@ -865,7 +865,7 @@ Since this algorithm is much more efficient when the input is in [https://en.wik
      ([poly2 & more] (mul poly1 poly2 more))))
   ([poly1 poly2]
    (let [product (atom (transient (sorted-map-by grevlex)))]
-     (doall  ;; `for` is lazy so must to be forced for side-effects 
+     (doall  ;; `for` is lazy so must to be forced for side-effects
       (for [term1 poly1
             term2 poly2
             :let [vars (mapv +' (key term1) (key term2))
@@ -880,7 +880,7 @@ Since this algorithm is much more efficient when the input is in [https://en.wik
   ([poly1 poly2 & more]
    (reduce mul (mul poly1 poly2) more)))
 
-(defn compl [term1 term2] 
+(defn compl [term1 term2]
   (map (fn [x y]
          (cond
            (and (zero? x) (not= 0 y)) nil
@@ -888,7 +888,7 @@ Since this algorithm is much more efficient when the input is in [https://en.wik
            (>= x y) (- x y)))
        term1
        term2))
-     
+
 (defn s-poly [f g]
   (let [f-vars (first f)
         g-vars (first g)
@@ -1081,7 +1081,7 @@ def makePolynomial(initCoeffs :List) {
         if (i &lt; 0) { -Infinity } else { i }
     }
     def coeffs := initCoeffs(0, if (degree == -Infinity) { [] } else { degree + 1 })
-    
+
     def polynomial {
       /** Print the polynomial (not necessary for the task) */
         to __printOn(out) {
@@ -1091,7 +1091,7 @@ def makePolynomial(initCoeffs :List) {
                 def coeff := coeffs[i]
                 if (coeff &lt;=> 0) { continue }
                 out.print(" ")
-                if (coeff &lt;=> 1 && !(i &lt;=> 0)) { 
+                if (coeff &lt;=> 1 && !(i &lt;=> 0)) {
                   # no coefficient written if it's 1 and not the constant term
                 } else if (first) {      out.print(coeff)
                 } else if (coeff > 0) {  out.print("+ ", coeff)
@@ -1105,33 +1105,33 @@ def makePolynomial(initCoeffs :List) {
             }
             out.print(")")
         }
-        
+
         /** Evaluate the polynomial (not necessary for the task) */
         to run(x) {
           return accum 0 for i => c in coeffs { _ + c * x**i }
         }
-        
+
         to degree() { return degree }
         to coeffs() { return coeffs }
         to highestCoeff() { return coeffs[degree] }
-        
+
         /** Could support another polynomial, but not part of this task.
             Computes this * x**power. */
         to timesXToThe(power) {
             return makePolynomial([0] * power + coeffs)
         }
-        
+
         /** Multiply (by a scalar only). */
         to multiply(scalar) {
             return makePolynomial(accum [] for x in coeffs { _.with(x * scalar) })
         }
-        
+
         /** Subtract (by another polynomial only). */
         to subtract(other) {
             def oc := other.coeffs() :List
             return makePolynomial(accum [] for i in 0..(coeffs.size().max(oc.size())) { _.with(coeffs.fetch(i, fn{0}) - oc.fetch(i, fn{0})) })
         }
-        
+
         /** Polynomial long division. */
         to quotRem(denominator, trace) {
             var numerator := polynomial
@@ -1206,7 +1206,7 @@ defmodule Polynomial do
     if r==[], do: r = [0]
     {q, r}
   end
-  
+
   defp division(g, q, r) when length(r) < length(g), do: {q, r}
   defp division(g, q, r) do
     p = hd(r) / hd(g)
@@ -1282,7 +1282,7 @@ contains
     real, dimension(:), allocatable :: nt, dt, rt
     integer :: gn, gt, gd
 
-    if ( (size(n) >= size(d)) .and. (size(d) > 0) .and. (size(n) > 0) ) then  
+    if ( (size(n) >= size(d)) .and. (size(d) > 0) .and. (size(n) > 0) ) then
        allocate(nt(size(n)), dt(size(n)), rt(size(n)))
 
        nt = n
@@ -1742,7 +1742,7 @@ fun polyLongDiv(n: DoubleArray, d: DoubleArray): Solution {
     }
     var nd = polyDegree(n)
     val dd = polyDegree(d)
-    if (dd < 0) { 
+    if (dd < 0) {
         throw IAE("Divisor must have at least one one-zero coefficient")
     }
     if (nd < dd) {
@@ -1940,7 +1940,7 @@ function [q, r] = poly_long_div(n, d)
     while ( length(n) >= gd )
       q = [q, n(1)/pv(1)];
       n = n - pv .* (n(1)/pv(1));
-      n = shift(n, -1);           % 
+      n = shift(n, -1);           %
       tn = n(1:length(n)-1);      % eat the higher power term
       n = tn;                     %
       tp = pv(1:length(pv)-1);
@@ -2005,7 +2005,7 @@ use List::Util qw(min);
 sub poly_long_div
 {
     my ($rn, $rd) = @_;
-    
+
     my @n = @$rn;
     my $gd = scalar(@$rd);
     if ( scalar(@n) >= $gd ) {
@@ -2032,7 +2032,7 @@ sub poly_print
     my $l = scalar(@c);
     for(my $i=0; $i < $l; $i++) {
 	print $c[$i];
-	print "x^" . ($l-$i-1) . " + " if ($i < ($l-1)); 
+	print "x^" . ($l-$i-1) . " + " if ($i < ($l-1));
     }
     print "\n";
 }
@@ -2055,7 +2055,7 @@ print "\n";
 poly_print(@$q);
 poly_print(@$r);
 print "\n";
-# the example from the OCaml solution 
+# the example from the OCaml solution
 ($q, $r) = poly_long_div([1,-4,6,5,3], [1,2,1]);
 poly_print(@$q);
 poly_print(@$r);
@@ -2173,14 +2173,14 @@ constant tests = {{{-42,0,-12,1},{-3,1}},
                   {{2,3,1},{1,1}},
                   {{3,5,6,-4,1},{1,2,1}},
                   {{3,0,7,0,0,0,0,0,3,0,0,1},{1,0,0,5,0,0,0,1}},
-                  {{-56,87,-94,-55,22,-7},{2,0,1}}, 
+                  {{-56,87,-94,-55,22,-7},{2,0,1}},
                  }
 
 constant fmt = "%40s / %-16s = %25s rem %s\n"
 
 for i=1 to length(tests) do
     sequence {num,denom} = tests[i],
-             {quot,rmdr} = poly_div(num,denom) 
+             {quot,rmdr} = poly_div(num,denom)
     printf(1,fmt,polyn({num,denom,quot,rmdr}))
 end for
 ```
@@ -2334,7 +2334,7 @@ print.polynomial(r$r)
 ```racket
 
 #lang racket
-(define (deg p) 
+(define (deg p)
   (for/fold ([d -inf.0]) ([(pi i) (in-indexed p)])
     (if (zero? pi) d i)))
 (define (lead p) (vector-ref p (deg p)))
@@ -2343,7 +2343,7 @@ print.polynomial(r$r)
 (define (poly+ p q) (poly/lin 1 p  1 q))
 (define (poly- p q) (poly/lin 1 p -1 q))
 (define (poly/lin a p b q)
-  (cond [(< (deg p) 0) q] 
+  (cond [(< (deg p) 0) q]
         [(< (deg q) 0) p]
         [(< (deg p) (deg q)) (poly/lin b q a p)]
         [else (define ap+bq (for/vector #:length (+ (deg p) 1) #:fill 0
@@ -2351,7 +2351,7 @@ print.polynomial(r$r)
               (for ([i (in-range (+ (deg q) 1) (+ (deg p) 1))])
                 (vector-set! ap+bq i (* a (vector-ref p i))))
               ap+bq]))
- 
+
 (define (poly/ n d)
   (define N (deg n))
   (define D (deg d))
@@ -2422,12 +2422,12 @@ Do i=1 To words(poly)
   End
 Return strip(space(res,0),'L','+')
 ```
- 
+
 {{out}}
 
 ```txt
 (x**3-12*x**2-42)/(x-3)=(x**2-9*x-27)
-Remainder: -123 
+Remainder: -123
 ```
 
 
@@ -2443,16 +2443,16 @@ def polynomial_long_division(numerator, denominator)
   if dd == 0
     return [multiply(numerator, 1.0/denominator[0]), [0]*numerator.length]
   end
-  
+
   q = [0] * numerator.length
-  
+
   while (dn = degree(numerator)) >= dd
     d = shift_right(denominator, dn - dd)
     q[dn-dd] = numerator[dn] / d[degree(d)]
     d = multiply(d, q[dn-dd])
     numerator = subtract(numerator, d)
   end
-  
+
   [q, numerator]
 end
 
@@ -2496,7 +2496,7 @@ def polynomial_division(f, g)
     [f.collect {|x| Float(x)/g[0]}, [0]]
   elsif g.length == 2
     synthetic_division(f, g)
-  else 
+  else
     higher_degree_synthetic_division(f, g)
   end
 end
@@ -2504,27 +2504,27 @@ end
 def synthetic_division(f, g)
   board = [f] << Array.new(f.length) << Array.new(f.length)
   board[2][0] = board[0][0]
-  
+
   1.upto(f.length - 1).each do |i|
     board[1][i] = board[2][i-1] * -g[1]
     board[2][i] = board[0][i] + board[1][i]
   end
-  
+
   [board[2][0..-2], [board[2][-1]]]
 end
 
 # an ugly mess of array index arithmetic
 # http://en.wikipedia.org/wiki/Polynomial_long_division#Higher_degree_synthetic_division
 def higher_degree_synthetic_division(f, g)
-  
+
   # [use] the negative coefficients of the denominator following the leading term
   lhs = g[1..-1].collect {|x| -x}
   board = [f]
-  
+
   q = []
   1.upto(f.length - lhs.length).each do |i|
     n = 2*i - 1
-    
+
     # underline the leading coefficient of the right-hand side, multiply it by
     # the left-hand coefficients and write the products beneath the next columns
     # on the right.
@@ -2533,14 +2533,14 @@ def higher_degree_synthetic_division(f, g)
     (lhs.length).times do |j|
       board[n][i+j] = q[-1]*lhs[j]
     end
-    
+
     # perform an addition
     board << Array.new(f.length).fill(0, i) # row n+1
     (lhs.length + 1).times do |j|
       board[n+1][i+j] = board[n-1][i+j] + board[n][i+j] if i+j < f.length
     end
   end
-  
+
   # the remaining numbers in the bottom row correspond to the coefficients of the remainder
   r = board[-1].compact
   q = [0] if q.empty?
@@ -2568,7 +2568,7 @@ def polynomial_division(f, g)
     raise ArgumentError, "denominator is zero"
   end
   return [[0], f] if f.length < g.length
-  
+
   q, n = [], f.dup
   while n.length >= g.length
     q << Float(n[0]) / g[0]
@@ -2759,7 +2759,7 @@ Object subclass: Polynomial [
     r := super basicNew.
     ^ r initWithCoefficients: coefficients
   ]
-  initWithCoefficients: coefficients [ 
+  initWithCoefficients: coefficients [
     coeffs := coefficients asOrderedCollection.
     ^ self
   ]
@@ -2810,11 +2810,11 @@ Object subclass: Polynomial [
       whileTrue: [ coeffs removeFirst ].
   ]
   display [
-    1 to: (coeffs size) do: [ :i | 
+    1 to: (coeffs size) do: [ :i |
       (coeffs at: i) display.
       i < (coeffs size)
         ifTrue: [ ('x^%1 + ' % {(coeffs size) - i} ) display ]
-    ] 
+    ]
   ]
   displayNl [ self display. Character nl display ]
 ].
@@ -2960,7 +2960,7 @@ Function degree(p As Variant)
     Next i
     degree = -1
 End Function
- 
+
 Function poly_div(ByVal n As Variant, ByVal d As Variant) As Variant
     If UBound(d) < UBound(n) Then
         ReDim Preserve d(UBound(n))
@@ -2987,7 +2987,7 @@ Function poly_div(ByVal n As Variant, ByVal d As Variant) As Variant
     Loop
     poly_div = Array(quot, n) '-- (n is now the remainder)
 End Function
- 
+
 Function poly(si As Variant) As String
 '-- display helper
     Dim r As String
@@ -3013,7 +3013,7 @@ Function poly(si As Variant) As String
     If r = "" Then r = "0"
     poly = r
 End Function
- 
+
 Function polyn(s As Variant) As String
     Dim t() As String
     ReDim t(2 * UBound(s))
@@ -3026,7 +3026,7 @@ Function polyn(s As Variant) As String
     t(6) = "rem"
     polyn = Join(t, " ")
 End Function
- 
+
 Public Sub main()
     Dim tests(7) As Variant
     tests(1) = Array(Array(-42, 0, -12, 1), Array(-3, 1))
@@ -3050,13 +3050,13 @@ End Sub
 {{out}}
 
 ```txt
-                          x3 - 12x2 - 42 / x - 3 = x2 - 9x - 27 rem -123 
-                          x - 3 / x3 - 12x2 - 42 = 0 rem x - 3 
-                     x3 - 12x2 - 42 / x2 + x - 3 = x - 13 rem 16x - 81 
-                             x2 + 3x + 2 / x + 1 = x + 2 rem 0 
-           x4 - 4x3 + 6x2 + 5x + 3 / x2 + 2x + 1 = x2 - 6x + 17 rem -23x - 14 
-              x11 + 3x8 + 7x2 + 3 / x7 + 5x3 + 1 = x4 + 3x - 5 rem -16x4 + 25x3 + 7x2 - 3x + 8 
-   -7x5 + 22x4 - 55x3 - 94x2 + 87x - 56 / x2 + 2 = -7x3 + 22x2 - 41x - 138 rem 169x + 220 
+                          x3 - 12x2 - 42 / x - 3 = x2 - 9x - 27 rem -123
+                          x - 3 / x3 - 12x2 - 42 = 0 rem x - 3
+                     x3 - 12x2 - 42 / x2 + x - 3 = x - 13 rem 16x - 81
+                             x2 + 3x + 2 / x + 1 = x + 2 rem 0
+           x4 - 4x3 + 6x2 + 5x + 3 / x2 + 2x + 1 = x2 - 6x + 17 rem -23x - 14
+              x11 + 3x8 + 7x2 + 3 / x7 + 5x3 + 1 = x4 + 3x - 5 rem -16x4 + 25x3 + 7x2 - 3x + 8
+   -7x5 + 22x4 - 55x3 - 94x2 + 87x - 56 / x2 + 2 = -7x3 + 22x2 - 41x - 138 rem 169x + 220
 ```
 
 
@@ -3099,7 +3099,7 @@ println("Remainder = ",polyString(r));
 
 ```txt
 
-Quotient  = -27 - 9x + x^2 
+Quotient  = -27 - 9x + x^2
 Remainder = -123
 
 ```

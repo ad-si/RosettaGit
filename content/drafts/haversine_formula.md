@@ -15,18 +15,18 @@ tags = []
 
 
 
-The '''haversine formula''' is an equation important in navigation, giving great-circle distances between two points on a sphere from their longitudes and latitudes. 
+The '''haversine formula''' is an equation important in navigation, giving great-circle distances between two points on a sphere from their longitudes and latitudes.
 
 It is a special case of a more general formula  in spherical trigonometry, the '''law of haversines''', relating the sides and angles of spherical "triangles".
 
 
 ;Task:
-Implement a great-circle distance function, or use a library function, 
+Implement a great-circle distance function, or use a library function,
 to show the great-circle distance between:
-* Nashville International Airport (BNA)   in Nashville, TN, USA,   which is: 
+* Nashville International Airport (BNA)   in Nashville, TN, USA,   which is:
    <big><big> '''N''' 36°7.2',   '''W''' 86°40.2'     (36.12,   -86.67) </big></big>          -and-
 * Los Angeles International Airport (LAX)  in Los Angeles, CA, USA,   which is:
-   <big><big> '''N''' 33°56.4',  '''W''' 118°24.0'    (33.94,  -118.40) </big></big>  
+   <big><big> '''N''' 33°56.4',  '''W''' 118°24.0'    (33.94,  -118.40) </big></big>
 
 
 
@@ -51,7 +51,7 @@ Using either of these values results, of course, in differing distances:
 
 As distances are segments of great circles/circumferences, it is
 recommended that the latter value (r = 6372.8 km) be used (which
-most of the given solutions have already adopted, anyways). 
+most of the given solutions have already adopted, anyways).
 
 ```
 
@@ -105,7 +105,7 @@ WRITE : 'Distance between given points = ' , distance , 'km .' .
 
 ```txt
 
-Distance between given points = 2.884,2687 km . 
+Distance between given points = 2.884,2687 km .
 
 ```
 
@@ -369,13 +369,13 @@ distance: 2887.2599 km
 ## BBC BASIC
 
 {{works with|BBC BASIC for Windows}}
-Uses BBC BASIC's '''MOD(array())''' function which calculates 
+Uses BBC BASIC's '''MOD(array())''' function which calculates
 the square-root of the sum of the squares of the elements of an array.
 
 ```bbcbasic
       PRINT "Distance = " ; FNhaversine(36.12, -86.67, 33.94, -118.4) " km"
       END
-      
+
       DEF FNhaversine(n1, e1, n2, e2)
       LOCAL d() : DIM d(2)
       d() = COSRAD(e1-e2) * COSRAD(n1) - COSRAD(n2), \
@@ -397,8 +397,8 @@ Distance = 2887.25995 km
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -504,12 +504,12 @@ public static class Haversine {
     var dLon = toRadians(lon2 - lon1);
     lat1 = toRadians(lat1);
     lat2 = toRadians(lat2);
-   
+
     var a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) + Math.Sin(dLon / 2) * Math.Sin(dLon / 2) * Math.Cos(lat1) * Math.Cos(lat2);
     var c = 2 * Math.Asin(Math.Sqrt(a));
     return R * 2 * Math.Asin(Math.Sqrt(a));
   }
-  
+
   public static double toRadians(double angle) {
     return Math.PI * angle / 180.0;
   }
@@ -551,7 +551,7 @@ void Main() {
 {{trans|JavaScript}}
 
 ```coffee
-haversine = (args...) -> 
+haversine = (args...) ->
   R = 6372.8; # km
   radians = args.map (deg) -> deg/180.0 * Math.PI
   lat1 = radians[0]; lon1 = radians[1]; lat2 = radians[2]; lon2 = radians[3]
@@ -601,7 +601,7 @@ console.log haversine(36.12, -86.67, 33.94, -118.40)
 {{out}}
 
 ```txt
-CL-USER> (format t "~%The distance between BNA and LAX is about ~$ km.~%" 
+CL-USER> (format t "~%The distance between BNA and LAX is about ~$ km.~%"
 		 (dist-deg 36.12 -86.67 33.94 -118.40))
 
 The distance between BNA and LAX is about 2887.26 km.
@@ -615,16 +615,16 @@ The distance between BNA and LAX is about 2887.26 km.
 
 ```ruby
 include Math
- 
+
 def haversine(lat1, lon1, lat2, lon2)
     r = 6372.8        # Earth radius in kilometers
     deg2rad = PI/180  # convert degress to radians
- 
+
     dLat = (lat2 - lat1) * deg2rad
     dLon = (lon2 - lon1) * deg2rad
     lat1 = lat1 * deg2rad
     lat2 = lat2 * deg2rad
- 
+
     a = sin(dLat / 2)**2 + cos(lat1) * cos(lat2) * sin(dLon / 2)**2
     c = 2 * asin(sqrt(a))
     r * c
@@ -638,7 +638,7 @@ puts "distance is #{haversine(36.12, -86.67, 33.94, -118.40)} km "
 
 ```txt
 
-distance is 2887.2599506071106 km 
+distance is 2887.2599506071106 km
 
 ```
 
@@ -805,24 +805,24 @@ ELENA 4.x:
 ```elena
 import extensions;
 import system'math;
- 
+
 Haversine(lat1,lon1,lat2,lon2)
 {
     var R := 6372.8r;
     var dLat := (lat2 - lat1).Radian;
     var dLon := (lon2 - lon1).Radian;
- 
+
     var dLat1 := lat1.Radian;
     var dLat2 := lat2.Radian;
- 
+
     var a := (dLat / 2).sin() * (dLat / 2).sin() + (dLon / 2).sin() * (dLon / 2).sin() * dLat1.cos() * dLat2.cos();
- 
+
     ^ R * 2 * a.sqrt().arcsin()
 }
- 
+
 public program()
 {
-    console.printLineFormatted("The distance between coordinates {0},{1} and {2},{3} is: {4}", 36.12r, -86.67r, 33.94r, -118.40r, 
+    console.printLineFormatted("The distance between coordinates {0},{1} and {2},{3} is: {4}", 36.12r, -86.67r, 33.94r, -118.40r,
         Haversine(36.12r, -86.67r, 33.94r, -118.40r))
 }
 ```
@@ -926,8 +926,8 @@ main() ->
 haversine(Lat1, Long1, Lat2, Long2) ->
 	V 	         =   math:pi()/180,
 	R 		 =   6372.8, 	% In kilometers
-	Diff_Lat 	 =   (Lat2 - Lat1)*V ,	
-	Diff_Long	 =   (Long2 - Long1)*V,	
+	Diff_Lat 	 =   (Lat2 - Lat1)*V ,
+	Diff_Long	 =   (Long2 - Long1)*V,
 	NLat 		 =   Lat1*V,
 	NLong 		 =   Lat2*V,
 	A 		 =   math:sin(Diff_Lat/2) * math:sin(Diff_Lat/2) + math:sin(Diff_Long/2) * math:sin(Diff_Long/2) * math:cos(NLat) * math:cos(NLong),
@@ -995,16 +995,16 @@ Euler has a package for spherical geometry, which is used in the following code.
 ```txt
 
 >load spherical
- Spherical functions for Euler. 
+ Spherical functions for Euler.
 >TNA=[rad(36,7.2),-rad(86,40.2)];
 >LAX=[rad(33,56.4),-rad(118,24)];
 >esdist(TNA,LAX)->km
  2886.48817482
 >type esdist
  function esdist (frompos: vector, topos: vector)
-     r1=rearth(frompos[1]); 
+     r1=rearth(frompos[1]);
      r2=rearth(topos[1]);
-     xfrom=spoint(frompos)*r1; 
+     xfrom=spoint(frompos)*r1;
      xto=spoint(topos)*r2;
      delta=xto-xfrom;
      return asin(norm(delta)/(r1+r2))*(r1+r2);
@@ -1162,12 +1162,12 @@ contains
 
           rad = degree*deg_to_rad
       end function to_radian
- 
+
       function haversine(deglat1,deglon1,deglat2,deglon2) result (dist)
-          ! great circle distance -- adapted from Matlab 
+          ! great circle distance -- adapted from Matlab
           real,intent(in) :: deglat1,deglon1,deglat2,deglon2
           real :: a,c,dist,dlat,dlon,lat1,lat2
-          real,parameter :: radius = 6372.8 
+          real,parameter :: radius = 6372.8
 
           dlat = to_radian(deglat2-deglat1)
           dlon = to_radian(deglon2-deglon1)
@@ -1239,16 +1239,16 @@ Here is a Free Pascal version, works in most Pascal dialects, but also note the 
 
 ```pascal
 program HaversineDemo;
-uses 
+uses
   Math;
 
 function HaversineDistance(const lat1, lon1, lat2, lon2:double):double;inline;
-const 
+const
   rads = pi / 180;
   dia  = 2 * 6372.8;
 begin
-  HaversineDistance := dia * arcsin(sqrt(sqr(cos(rads * (lon1 - lon2)) * cos(rads * lat1)  
-                     - cos(rads * lat2)) + sqr(sin(rads * (lon1 - lon2)) 
+  HaversineDistance := dia * arcsin(sqrt(sqr(cos(rads * (lon1 - lon2)) * cos(rads * lat1)
+                     - cos(rads * lat2)) + sqr(sin(rads * (lon1 - lon2))
                      * cos(rads * lat1)) + sqr(sin(rads * lat1) - sin(rads * lat2))) / 2);
 end;
 
@@ -1325,7 +1325,7 @@ println( haversine((36.12, -86.67), (33.94, -118.40)) )
 Note: The Haversine function returns an approximate theoretical value of the Great Circle Distance between two points because it does not factor the ellipsoidal shape of Earth -- fat in the middle from centrifugal force, and squashed at the ends. Navigators once relied on trigonometric functions like versine (versed sine) where angle A is 1-cos(A), and haversine (half versine) or ( 1-cos(A) ) / 2.
 Also, the radius of the Earth varies, at least depending on who you talk to. Here's NASA's take on it: http://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html
 
-Since it was trivial, this functions returns the distance in miles and kilometers. 
+Since it was trivial, this functions returns the distance in miles and kilometers.
 
 ```futurebasic
 
@@ -1337,11 +1337,11 @@ dim as double deg2rad, dLat, dLon, a, c, earth_radius_miles, earth_radius_kilome
 earth_radius_miles = 3959.0 // Radius of the Earth in miles
 earth_radius_kilometers = 6372.8 // Radius of the Earth in kilometers
 deg2rad = Pi / 180 // Pi is predefined in FutureBasic
-  
-dLat = deg2rad * ( lat2  - lat1 )  
-dLon = deg2rad * ( lon2 - lon1 )  
-a = sin( dLat / 2 ) * sin( dLat / 2 ) + cos( deg2rad * lat1 ) * cos( deg2rad * lat2 ) * sin( dLon / 2 ) * sin( dLon / 2 )  
-c = 2 * asin( sqr(a) )  
+
+dLat = deg2rad * ( lat2  - lat1 )
+dLon = deg2rad * ( lon2 - lon1 )
+a = sin( dLat / 2 ) * sin( dLat / 2 ) + cos( deg2rad * lat1 ) * cos( deg2rad * lat2 ) * sin( dLon / 2 ) * sin( dLon / 2 )
+c = 2 * asin( sqr(a) )
 
 miles.nil# =  earth_radius_miles * c
 kilometers.nil# = earth_radius_kilometers * c
@@ -1489,7 +1489,7 @@ The distance between BNA and LAX is about 2886 km.
 ```Icon
 link printf
 
-procedure main()  #: Haversine formula  
+procedure main()  #: Haversine formula
    printf("BNA to LAX is %d km (%d miles)\n",
       d := gcdistance([36.12, -86.67],[33.94, -118.40]),d*3280/5280)  # with cute km2mi conversion
 end
@@ -1505,8 +1505,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 
 {{out}}
 
@@ -1522,11 +1522,11 @@ BNA to LAX is 2886 km (1793 miles)
 
 ```Idris
 module Main
- 
+
 -- The haversine of an angle.
 hsin : Double -> Double
 hsin t = let u = sin (t/2) in u*u
- 
+
 -- The distance between two points, given by latitude and longtitude, on a
 -- circle.  The points are specified in radians.
 distRad : Double -> (Double, Double) -> (Double, Double) -> Double
@@ -1535,24 +1535,24 @@ distRad radius (lat1, lng1) (lat2, lng2) =
       hlng = hsin (lng2 - lng1)
       root = sqrt (hlat + cos lat1 * cos lat2 * hlng)
   in 2 * radius * asin (min 1.0 root)
- 
+
 -- The distance between two points, given by latitude and longtitude, on a
 -- circle.  The points are specified in degrees.
-distDeg : Double -> (Double, Double) -> (Double, Double) -> Double 
+distDeg : Double -> (Double, Double) -> (Double, Double) -> Double
 distDeg radius p1 p2 = distRad radius (deg2rad p1) (deg2rad p2)
-  where 
+  where
         d2r : Double -> Double
-        d2r t = t * pi / 180 
+        d2r t = t * pi / 180
         deg2rad (t, u) = (d2r t, d2r u)
- 
--- The approximate distance, in kilometers, between two points on Earth.  
+
+-- The approximate distance, in kilometers, between two points on Earth.
 -- The latitude and longtitude are assumed to be in degrees.
 earthDist : (Double, Double) -> (Double, Double) -> Double
 earthDist = distDeg 6372.8
 
-main : IO () 
+main : IO ()
 main = putStrLn $ "The distance between BNA and LAX is about " ++ show (floor dst) ++ " km."
- where 
+ where
       bna : (Double, Double)
       bna = (36.12,  -86.67)
 
@@ -1584,7 +1584,7 @@ haversineDist=: Rearth * haversin^:_1@((1 , *&(cos@{.)) +/ .* [: haversin -)&rfd
 
 ```
 
-Note: J derives the inverse haversin ( <code>haversin^:_1</code> ) 
+Note: J derives the inverse haversin ( <code>haversin^:_1</code> )
 from the definition of haversin.
 
 '''Example Use:'''
@@ -1843,7 +1843,7 @@ function radians n
 end radians
 
 function haversine lat1, lng1, lat2, lng2
-    local radiusEarth 
+    local radiusEarth
     local lat3, lng3
     local lat1Rad, lat2Rad, lat3Rad
     local lngRad1, lngRad2, lngRad3
@@ -1857,13 +1857,13 @@ function haversine lat1, lng1, lat2, lng2
     put radians(lng1) into lngRad1
     put radians(lng2) into lngRad2
     put radians(lng3) into lngRad3
-    
+
     put (sin(lat3Rad/2.0)^2) + (cos(lat1Rad)) \
           * (cos(lat2Rad)) \
           * (sin(lngRad3/2.0)^2) \
           into haver 
     return (radiusEarth * (2.0 * asin(sqrt(haver))))
-    
+
 end haversine
 ```
 
@@ -1935,9 +1935,9 @@ Inputs assumed in degrees. Sin and Haversine expect arguments in radians; the bu
 
 ```Mathematica
 
-distance[{theta1_, phi1_}, {theta2_, phi2_}] := 
+distance[{theta1_, phi1_}, {theta2_, phi2_}] :=
  2*6378.14 ArcSin@
-   Sqrt[Haversine[(theta2 - theta1) Degree] + 
+   Sqrt[Haversine[(theta2 - theta1) Degree] +
      Cos[theta1*Degree] Cos[theta2*Degree] Haversine[(phi2 - phi1) Degree]]
 
 ```
@@ -1959,13 +1959,13 @@ distance[{36.12, -86.67}, {33.94, -118.4}]
 
 
 ```Matlab
-function rad = radians(degree) 
+function rad = radians(degree)
 % degrees to radians
     rad = degree .* pi / 180;
-end; 
+end;
 
 function [a,c,dlat,dlon]=haversine(lat1,lon1,lat2,lon2)
-% HAVERSINE_FORMULA.AWK - converted from AWK 
+% HAVERSINE_FORMULA.AWK - converted from AWK
     dlat = radians(lat2-lat1);
     dlon = radians(lon2-lon1);
     lat1 = radians(lat1);
@@ -2023,15 +2023,15 @@ BEGIN
 	DECLARE dLon FLOAT unsigned;
 	DECLARE a FLOAT unsigned;
 	DECLARE c FLOAT unsigned;
-	
+
 	SET dLat = RADIANS(lat2 - lat1);
 	SET dLon = RADIANS(lon2 - lon1);
 	SET lat1 = RADIANS(lat1);
 	SET lat2 = RADIANS(lat2);
-	
+
 	SET a = POW(SIN(dLat / 2), 2) + COS(lat1) * COS(lat2) * POW(SIN(dLon / 2), 2);
 	SET c = 2 * ASIN(SQRT(a));
-	
+
 	RETURN (r * c);
 END$$
 
@@ -2113,10 +2113,10 @@ Works with oo2c version2
 ```oberon2
 
 MODULE Haversines;
-IMPORT 
+IMPORT
   LRealMath,
   Out;
-  
+
   PROCEDURE Distance(lat1,lon1,lat2,lon2: LONGREAL): LONGREAL;
   CONST
     r = 6372.8D0; (* Earth radius as LONGREAL *)
@@ -2129,11 +2129,11 @@ IMPORT
     ph1 := d * to_radians;
     th1 := lat1 * to_radians;
     th2 := lat2 * to_radians;
-    
+
     dz := LRealMath.sin(th1) - LRealMath.sin(th2);
     dx := LRealMath.cos(ph1) * LRealMath.cos(th1) - LRealMath.cos(th2);
     dy := LRealMath.sin(ph1) * LRealMath.cos(th1);
-    
+
     RETURN LRealMath.arcsin(LRealMath.sqrt(LRealMath.power(dx,2.0) + LRealMath.power(dy,2.0) + LRealMath.power(dz,2.0)) / 2.0) * 2.0 * r;
   END Distance;
 BEGIN
@@ -2195,11 +2195,11 @@ distance: 2886.44
 + (double) distanceBetweenLat1:(double)lat1 lon1:(double)lon1
                           lat2:(double)lat2 lon2:(double)lon2 {
     //degrees to radians
-    double lat1rad = lat1 * M_PI/180; 
+    double lat1rad = lat1 * M_PI/180;
     double lon1rad = lon1 * M_PI/180;
     double lat2rad = lat2 * M_PI/180;
     double lon2rad = lon2 * M_PI/180;
-    
+
     //deltas
     double dLat = lat2rad - lat1rad;
     double dLon = lon2rad - lon1rad;
@@ -2216,8 +2216,8 @@ distance: 2886.44
 ## OCaml
 
 
-The core calculation is fairly straightforward, 
-but with an eye toward generality and reuse, 
+The core calculation is fairly straightforward,
+but with an eye toward generality and reuse,
 this is how I might start:
 
 ```ocaml
@@ -2280,7 +2280,7 @@ import: math
    lat2 lat1 - asRadian ->lat
    lon2 lon1 - asRadian ->lon
 
-   lon 2 / sin sq lat1 asRadian cos * lat2 asRadian cos * 
+   lon 2 / sin sq lat1 asRadian cos * lat2 asRadian cos *
    lat 2 / sin sq + sqrt asin 2 * 6372.8 * ;
 
 haversine(36.12, -86.67, 33.94, -118.40) println
@@ -2342,7 +2342,7 @@ Los Angles:  north 33º 56.4', west 118º 24.0'   =   33.94º, -118.40º
                or    1559.00  nautical or air miles.
 ```
 
-              
+
 
 ## PARI/GP
 
@@ -2386,7 +2386,7 @@ function haversineDist(th1, ph1, th2, ph2: double): double;
     ph1 := degtorad(ph1 - ph2);
     th1 := degtorad(th1);
     th2 := degtorad(th2);
- 
+
     dz := sin(th1) - sin(th2);
     dx := cos(ph1) * cos(th1) - cos(th2);
     dy := sin(ph1) * cos(th1);
@@ -2600,7 +2600,7 @@ degrees_to_radians: procedure (degree) returns (float);
 
    return ( degree*pi/180 );
 end degrees_to_radians;
- 
+
 haversine: procedure (deglat1, deglon1, deglat2, deglon2) returns (float);
    declare (deglat1, deglon1, deglat2, deglon2) float nonassignable;
    declare (a, c, dlat, dlon, lat1, lat2) float;
@@ -2635,10 +2635,10 @@ distance:   2887.260 km
 ```PowerShell
 
 Add-Type -AssemblyName System.Device
- 
+
 $BNA = New-Object System.Device.Location.GeoCoordinate 36.12, -86.67
 $LAX = New-Object System.Device.Location.GeoCoordinate 33.94, -118.40
- 
+
 $BNA.GetDistanceTo( $LAX ) / 1000
 
 ```
@@ -2662,10 +2662,10 @@ function Get-GreatCircleDistance ( $Coord1, $Coord2 )
     $Long1 = $Coord1[1] / 180 * [math]::Pi
     $Lat2  = $Coord2[0] / 180 * [math]::Pi
     $Long2 = $Coord2[1] / 180 * [math]::Pi
- 
+
     #  Mean Earth radius (km)
     $R = 6371
-   
+
     #  Haversine formula
     $ArcLength = 2 * $R *
                     [math]::Asin(
@@ -2678,10 +2678,10 @@ function Get-GreatCircleDistance ( $Coord1, $Coord2 )
                             [math]::Sin( ( $Long1 - $Long2 ) / 2 ) ) )
     return $ArcLength
     }
- 
+
 $BNA = 36.12,  -86.67
 $LAX = 33.94, -118.40
- 
+
 Get-GreatCircleDistance $BNA $LAX
 
 ```
@@ -2787,11 +2787,11 @@ Procedure.d Haversine(th1.d,ph1.d,th2.d,ph2.d)
   Define dx.d,
          dy.d,
          dz.d
-  
+
   ph1=Radian(ph1-ph2)
   th1=Radian(th1)
   th2=Radian(th2)
-  
+
   dz=Sin(th1)-Sin(th2)
   dx=Cos(ph1)*Cos(th1)-Cos(th2)
   dy=Sin(ph1)*Cos(th1)
@@ -2834,7 +2834,7 @@ def haversine(lat1, lon1, lat2, lon2):
 
 >>> haversine(36.12, -86.67, 33.94, -118.40)
 2887.2599506071106
->>> 
+>>>
 ```
 
 
@@ -2879,11 +2879,11 @@ Almost the same as the Scheme version.
 
 (define (distance lat1 long1 lat2 long2)
   (define (h a b) (sqr (sin (/ (- b a) 2))))
-  (* 2 earth-radius 
-     (asin (sqrt (+ (h lat1 lat2) 
+  (* 2 earth-radius
+     (asin (sqrt (+ (h lat1 lat2)
                     (* (cos lat1) (cos lat2) (h long1 long2)))))))
 
-(define (deg-to-rad d m s) 
+(define (deg-to-rad d m s)
   (* (/ pi 180) (+ d (/ m 60) (/ s 3600))))
 
 (distance (deg-to-rad 36  7.2 0) (deg-to-rad  86 40.2 0)
@@ -2906,7 +2906,7 @@ Almost the same as the Scheme version.
 {{trans|Groovy}}
 
 ```Raven
-define PI 
+define PI
   -1 acos
 
 define toRadians use $degree
@@ -2919,17 +2919,17 @@ define haversine use $lat1, $lon1, $lat2, $lon2
   $lon2 $lon1 - toRadians   as $dLon
   $lat1 toRadians  as $lat1
   $lat2 toRadians  as $lat2
- 
-  $dLat 2 /  sin 
+
+  $dLat 2 /  sin
   $dLat 2 /  sin *
   $dLon 2 /  sin
   $dLon 2 /  sin *
-  $lat1 cos * 
+  $lat1 cos *
   $lat2 cos * +        as $a
   $a sqrt  asin  2 *   as $c
   $R $c *
 }
- 
+
 -118.40 33.94 -86.67 36.12 haversine "haversine: %.15g\n" print
 ```
 
@@ -2943,9 +2943,9 @@ haversine: 2887.25995060711
 
 ## REXX
 
-The use of normalization for angles isn't required for the Haversine formula, but those normalization functions were included 
+The use of normalization for angles isn't required for the Haversine formula, but those normalization functions were included
 
-herein anyway   (to support normalization of input arguments to the trigonometric functions for the general case).  
+herein anyway   (to support normalization of input arguments to the trigonometric functions for the general case).
 
 ```rexx
 /*REXX program  calculates  the  distance between  Nashville  and  Los Angles  airports.*/
@@ -3020,7 +3020,7 @@ REXX doesn't have most of the higher math functions, so they are included here (
        ║                                                                        ║
        ║ One bad side effect is that, like a automobile without a hood, you see ║
        ║ all the dirty stuff going on.    Also, don't visit a sausage factory.  ║
-       ╚════════════════════════════════════════════════════════════════════════╝ 
+       ╚════════════════════════════════════════════════════════════════════════╝
 
 ```
 
@@ -3109,16 +3109,16 @@ Alternativley:
 
 ```ruby
 include Math
- 
+
 def haversine(lat1, lon1, lat2, lon2)
     r = 6372.8        # Earth radius in kilometers
     deg2rad = PI/180  # convert degress to radians
- 
+
     dLat = (lat2 - lat1) * deg2rad
     dLon = (lon2 - lon1) * deg2rad
     lat1 = lat1 * deg2rad
     lat2 = lat2 * deg2rad
- 
+
     a = sin(dLat / 2)**2 + cos(lat1) * cos(lat2) * sin(dLon / 2)**2
     c = 2 * asin(sqrt(a))
     r * c
@@ -3132,7 +3132,7 @@ puts "distance is #{haversine(36.12, -86.67, 33.94, -118.40)} km "
 
 ```txt
 
-distance is 2887.2599506071106 km 
+distance is 2887.2599506071106 km
 
 ```
 
@@ -3163,7 +3163,7 @@ print "Haversine distance: ";using("####.#############",hDist);" km."
  '      36.12.-86.66999
  '      Distance is 35.37 inches.
 ```
-Output 
+Output
 ```txt
 Haversine distance: 2887.2599506071104 km.
 ```
@@ -3197,7 +3197,7 @@ fn main() {
 
 
 ```
-Output 
+Output
 ```txt
 Distance: 2887.2599506071106 km (1794.060157807846 mi)
 ```
@@ -3234,7 +3234,7 @@ options minoperator;
 		%put ERROR - Enter M on KM for dist;
 		%goto exit;
 		%end;
-		
+
 		data _null_;
 			convert = &convert;
 			lat1 = &lat1 * convert;
@@ -3259,7 +3259,7 @@ options minoperator;
 	%exit:
 %mend;
 
-%haver(36.12, -86.67, 33.94, -118.40); 
+%haver(36.12, -86.67, 33.94, -118.40);
 
 ```
 
@@ -3283,12 +3283,12 @@ object Haversine {
    def haversine(lat1:Double, lon1:Double, lat2:Double, lon2:Double)={
       val dLat=(lat2 - lat1).toRadians
       val dLon=(lon2 - lon1).toRadians
- 
+
       val a = pow(sin(dLat/2),2) + pow(sin(dLon/2),2) * cos(lat1.toRadians) * cos(lat2.toRadians)
       val c = 2 * asin(sqrt(a))
       R * c
    }
-	
+
    def main(args: Array[String]): Unit = {
       println(haversine(36.12, -86.67, 33.94, -118.40))
   }
@@ -3542,13 +3542,13 @@ func haversine(lat1:Double, lon1:Double, lat2:Double, lon2:Double) -> Double {
     let lon1rad = lon1 * Double.pi/180
     let lat2rad = lat2 * Double.pi/180
     let lon2rad = lon2 * Double.pi/180
-    
+
     let dLat = lat2rad - lat1rad
     let dLon = lon2rad - lon1rad
     let a = sin(dLat/2) * sin(dLat/2) + sin(dLon/2) * sin(dLon/2) * cos(lat1rad) * cos(lat2rad)
     let c = 2 * asin(sqrt(a))
     let R = 6372.8
-    
+
     return R * c
 }
 
@@ -3648,7 +3648,7 @@ FUNCTION HAVERSINE
 !*** available for use in the Function.
 !*** Usage: X=HAVERSINE
 
-    
+
     Radius=6378.137
     Lat1=(Lat1*MATH.PI/180)
     Lon1=(Lon1*MATH.PI/180)
@@ -3665,7 +3665,7 @@ FUNCTION HAVERSINE
            CASE "N"
                 HAVERSINE=ANSWER*0.539956803
                 Distance="nautical miles"
-    END SELECT       
+    END SELECT
 
 END FUNCTION
 
@@ -3688,18 +3688,18 @@ BASE 1
 
 !*** Get the GPS LAT/LONG of current location
 location = sensors.location(30)
-Lat1=location(1) 
-Lon1=location(2) 
+Lat1=location(1)
+Lon1=location(2)
 
 !*** LAT/LONG For Tampa, FL
 Lat2=27.9506
 Lon2=-82.4572
 
 !*** Units: K=kilometers  M=miles  N=nautical miles
-DIM UNIT      AS STRING 
+DIM UNIT      AS STRING
 DIM Distance  AS STRING
 DIM Result    AS SINGLE
-UNIT = "M"	
+UNIT = "M"
 
 !*** Calculate distance using Haversine Function
 Result=HAVERSINE
@@ -3736,12 +3736,12 @@ IN lat2 FLOAT,
 IN lon1 FLOAT,
 IN lon2 FLOAT,
 OUT distance FLOAT)
- 
-BEGIN 
+
+BEGIN
     DECLARE dLat FLOAT;
     DECLARE dLon FLOAT;
     DECLARE c FLOAT;
-    DECLARE a FLOAT;    
+    DECLARE a FLOAT;
     DECLARE km FLOAT;
 
     SET dLat = RADIANS(lat2-lat1);
@@ -3750,7 +3750,7 @@ BEGIN
     SET a = SIN(dLat / 2) * SIN(dLat / 2) + SIN(dLon / 2) * SIN(dLon / 2) * COS(RADIANS(lat1)) * COS(RADIANS(lat2));
     SET c = 2 * ASIN(SQRT(a));
     SET km = 6372.8 * c;
-    
+
     select km into distance;
 END;
 
@@ -3878,7 +3878,7 @@ SELECT dbo.Haversine(36.12,-86.67,33.94,-118.4)
 ```vb
 Const MER = 6371         '-- mean earth radius(km)
 Public DEG_TO_RAD As Double
- 
+
 Function haversine(lat1 As Double, long1 As Double, lat2 As Double, long2 As Double) As Double
     lat1 = lat1 * DEG_TO_RAD
     lat2 = lat2 * DEG_TO_RAD
@@ -3886,7 +3886,7 @@ Function haversine(lat1 As Double, long1 As Double, lat2 As Double, long2 As Dou
     long2 = long2 * DEG_TO_RAD
     haversine = MER * WorksheetFunction.Acos(Sin(lat1) * Sin(lat2) + Cos(lat1) * Cos(lat2) * Cos(long2 - long1))
 End Function
- 
+
 Public Sub main()
     DEG_TO_RAD = WorksheetFunction.Pi / 180
     d = haversine(36.12, -86.67, 33.94, -118.4)
@@ -3948,7 +3948,7 @@ Module Module1
 ' KBNA, BNA, NASHVILLE INTERNATIONAL, NASHVILLE, USA, 036, 007, 028, N, 086, 040, 041, W, 00183, 36.124, -86.678
 ' KLAX, LAX, LOS ANGELES INTERNATIONAL, LOS ANGELES, USA, 033, 056, 033, N, 118, 024, 029, W, 00039, 33.942, -118.408
 ' SKNV, NVA, BENITO SALAS, NEIVA, COLOMBIA, 002, 057, 000, N, 075, 017, 038, W, 00439, 2.950, -75.294
-' WIPP, PLM, SULTAN MAHMUD BADARUDDIN II, PALEMBANG, INDONESIA, 002, 053, 052, S, 104, 042, 004, E, 00012, -2.898, 104.701 
+' WIPP, PLM, SULTAN MAHMUD BADARUDDIN II, PALEMBANG, INDONESIA, 002, 053, 052, S, 104, 042, 004, E, 00012, -2.898, 104.701
 ' LOWL, LNZ, HORSCHING INTERNATIONAL AIRPORT (AUS - AFB), LINZ, AUSTRIA, 048, 014, 000, N, 014, 011, 000, E, 00096, 48.233, 14.183
 ' LOXL, N/A, LINZ, LINZ, AUSTRIA, 048, 013, 059, N, 014, 011, 015, E, 00299, 48.233, 14.188
 
@@ -4148,15 +4148,15 @@ local:haversine(36.12, -86.67, 33.94, -118.4)
 
 ```zkl
 haversine(36.12, -86.67, 33.94, -118.40).println();
- 
+
 fcn haversine(Lat1, Long1, Lat2, Long2){
    const R = 6372.8; 	// In kilometers;
    Diff_Lat  := (Lat2  - Lat1) .toRad();
    Diff_Long := (Long2 - Long1).toRad();
    NLat      := Lat1.toRad();
    NLong     := Lat2.toRad();
-   A 	     := (Diff_Lat/2) .sin().pow(2) + 
-                (Diff_Long/2).sin().pow(2) * 
+   A 	     := (Diff_Lat/2) .sin().pow(2) +
+                (Diff_Long/2).sin().pow(2) *
 		NLat.cos() * NLong.cos();
    C 	     := 2.0 * A.sqrt().asin();
    R*C;
@@ -4187,7 +4187,7 @@ fcn haversine(Lat1, Long1, Lat2, Long2){
 70 LET dy=SIN (Lg1m2)*COS (Lt1)
 80 LET hDist=ASN ((dx*dx+dy*dy+dz*dz)^0.5/2)*diam
 90 PRINT "Haversine distance: ";hDist;" km."
-100 STOP 
+100 STOP
 1000 DEF FN r(a)=a*0.017453293: REM convert degree to radians
 ```
 

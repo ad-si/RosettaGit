@@ -784,8 +784,8 @@ Note that the array index is assumed to start at zero.
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void insertion_sort(int *a, int n) {
 	for(size_t i = 1; i < n; ++i) {
@@ -830,8 +830,8 @@ Uses C++11. Compile with
  g++ -std=c++11 insertion.cpp
 Uses binary search via std::upper_bound() to find the insertion position in logarithmic time and then performs the insertion via std::rotate() in linear time.
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 

@@ -12,8 +12,8 @@ tags = []
 
 {{task|File handling}}
 
-The task is to read a configuration file in standard configuration file format, 
-and set variables accordingly. 
+The task is to read a configuration file in standard configuration file format,
+and set variables accordingly.
 
 For this task, we have a configuration file as follows:
 
@@ -21,29 +21,29 @@ For this task, we have a configuration file as follows:
  #
  # Lines beginning with a hash or a semicolon are ignored by the application
  # program. Blank lines are also ignored by the application program.
- 
+
  # This is the fullname parameter
  FULLNAME Foo Barber
- 
+
  # This is a favourite fruit
  FAVOURITEFRUIT banana
- 
+
  # This is a boolean that should be set
  NEEDSPEELING
- 
+
  # This boolean is commented out
  ; SEEDSREMOVED
- 
+
  # Configuration option names are not case sensitive, but configuration parameter
  # data is case sensitive and may be preserved by the application program.
- 
+
  # An optional equals sign can be used to separate configuration parameter data
- # from the option name. This is dropped by the parser. 
- 
+ # from the option name. This is dropped by the parser.
+
  # A configuration option may take multiple parameters separated by commas.
  # Leading and trailing whitespace around parameter names and parameter data fields
  # are ignored by the application program.
- 
+
  OTHERFAMILY Rhu Barber, Harry Barber
 
 
@@ -72,7 +72,7 @@ We also have an option that contains multiple parameters. These may be stored in
 
 
 {{works with|Ada|2005}}
-Uses package Config available at SourceForge: 
+Uses package Config available at SourceForge:
 https://sourceforge.net/projects/ini-files/
 
 ```Ada
@@ -191,7 +191,7 @@ OTHERFAMILY: Rhu Barber, Harry Barber,
 
 ```AutoHotkey
 
-; Author: AlephX, Aug 18 2011 
+; Author: AlephX, Aug 18 2011
 data = %A_scriptdir%\rosettaconfig.txt
 comma := ","
 
@@ -203,28 +203,28 @@ Loop, Read, %data%
 		if instr(A_LoopReadLine, ";") == 1
 			{
 			parameter := RegExReplace(Substr(A_LoopReadLine,2), "^[ \s]+|[ \s]+$", "")
-			%parameter% = "1"		
+			%parameter% = "1"
 			}
 		else
 			{
 			parameter := RegExReplace(A_LoopReadLine, "^[ \s]+|[ \s]+$", "")
-			
+
 			if instr(parameter, A_Space)
 				{
 				value := substr(parameter, instr(parameter, A_Space)+1,999)
 				parameter := substr(parameter, 1, instr(parameter, A_Space)-1)
-				
+
 				if (instr(value, ",") <> 0)
 					{
 					Loop, Parse, value, %comma% ,%A_Space%
-						%parameter%%A_Index% := A_Loopfield					
+						%parameter%%A_Index% := A_Loopfield
 					}
 				else
 					%parameter% = %value%
 				}
 			else
 				%parameter% = "0"
-			}		
+			}
 		}
 	}
 msgbox, FULLNAME %fullname%`nFAVOURITEFRUIT %FAVOURITEFRUIT%`nNEEDSPEELING %NEEDSPEELING%`nSEEDSREMOVED %SEEDSREMOVED%`nOTHERFAMILY %OTHERFAMILY1% + %OTHERFAMILY2%
@@ -592,15 +592,15 @@ otherfamily( 2 ) = Harry Barber
       BOOL = 1
       NAME = 2
       ARRAY = 3
-      
+
       optfile$ = "options.cfg"
-      
+
       fullname$ = FNoption(optfile$, "FULLNAME", NAME)
       favouritefruit$ = FNoption(optfile$, "FAVOURITEFRUIT", NAME)
       needspeeling% = FNoption(optfile$, "NEEDSPEELING", BOOL)
       seedsremoved% = FNoption(optfile$, "SEEDSREMOVED", BOOL)
       !^otherfamily$() = FNoption(optfile$, "OTHERFAMILY", ARRAY)
-      
+
       PRINT "fullname = " fullname$
       PRINT "favouritefruit = " favouritefruit$
       PRINT "needspeeling = "; : IF needspeeling% PRINT "true" ELSE PRINT "false"
@@ -608,7 +608,7 @@ otherfamily( 2 ) = Harry Barber
       PRINT "otherfamily(1) = " otherfamily$(1)
       PRINT "otherfamily(2) = " otherfamily$(2)
       END
-      
+
       DEF FNoption(file$, key$, type%)
       LOCAL file%, opt$, comma%, bool%, name$, size%, !^array$()
       file% = OPENIN(file$)
@@ -674,8 +674,8 @@ otherfamily(2) = Harry Barber
 '''optimized'''
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <confini.h>
@@ -700,7 +700,7 @@ struct configs {
 };
 
 static char ** make_array (size_t * arrlen, const char * src, const size_t buffsize, IniFormat ini_format) {
- 
+
 	/* Allocate a new array of strings and populate it from the stringified source */
 	*arrlen = ini_array_get_length(src, INI_ARRAY_DELIMITER, ini_format);
 	char ** const dest = *arrlen ? (char **) malloc(*arrlen * sizeof(char *) + buffsize) : NULL;
@@ -918,13 +918,13 @@ void parseLine(const string &line, configs &conf)
 			conf.fullname += tokens[i] + " ";
 		conf.fullname.erase(conf.fullname.size() -1, 1);
 	}
-	if (tokens[0] == "favouritefruit") 
+	if (tokens[0] == "favouritefruit")
 		for (unsigned int i=1; i<tokens.size(); i++)
 			conf.favoritefruit += tokens[i];
 	if (tokens[0] == "otherfamily"){
 		unsigned int i=1;
 		string tmp;
-		while (i<=tokens.size()){		
+		while (i<=tokens.size()){
 			if ( i == tokens.size() || tokens[i] ==","){
 				tmp.erase(tmp.size()-1, 1);
 				conf.otherfamily.push_back(tmp);
@@ -949,7 +949,7 @@ int _tmain(int argc, TCHAR* argv[])
 		return -1;
 	}
 	ifstream file (argv[1]);
-	
+
 	if (file.is_open())
 		while(file.good())
 		{
@@ -993,8 +993,8 @@ Other Family= Rhu Barber, Harry Barber
 
 '''Solution without Boost libraries. No optimisation.'''
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iomanip>
 #include <string>
 #include <exception>
@@ -1047,7 +1047,7 @@ void read_config(std::ifstream& in, confi& out) {
 					out.otherfamily.push_back(str.substr(found+2,str.length()));
 				}
 			}
-					
+
 		}
 	}
 	std::cout << "Full Name: " << out.fullname << std::endl;
@@ -1103,7 +1103,7 @@ Other family members: Rhu Barber, Harry Barber
 (defn get-lines
   "Read file returning vec of lines."
   [file]
-  (try 
+  (try
     (with-open [rdr (io/reader file)]
       (into [] (line-seq rdr)))
     (catch Exception e (.getMessage e))))
@@ -1197,7 +1197,7 @@ otherfamily = Rhu Barber, Harry Barber
               read config-file
                  at end
                     exit perform
-              end-read  
+              end-read
               move trim(config-record) to config-record
               if config-record(1:1) = "#" or ";" or spaces
                  exit perform cycle
@@ -1328,10 +1328,10 @@ READ-CONFIG> (with-open-file (s "test.cfg") (parse-config s))
 #<HASH-TABLE :TEST EQUAL :COUNT 4 {100BD25B43}>
 READ-CONFIG> (maphash (lambda (k v) (print (list k v))) *)
 
-("FULLNAME" "Foo Barber") 
-("FAVOURITEFRUIT" "banana") 
-("NEEDSPEELING" T) 
-("OTHERFAMILY" ("Rhu Barber" "Harry Barber")) 
+("FULLNAME" "Foo Barber")
+("FAVOURITEFRUIT" "banana")
+("NEEDSPEELING" T)
+("OTHERFAMILY" ("Rhu Barber" "Harry Barber"))
 NIL
 READ-CONFIG> (gethash "SEEDSREMOVED" **)
 NIL
@@ -1463,7 +1463,7 @@ There is no 'config file' in EchoLisp, but a '''(preferences)''' function which 
 EchoLisp - 2.13.12
 📗 local-db: db.version: 13
 
-;; enter parameters names : 
+;; enter parameters names :
 NEEDSPELLING → #t
 FAVOURITEFRUIT → banana
 SEEDSREMOVED
@@ -1490,7 +1490,7 @@ defmodule Configuration_file do
          end
        end)
   end
-  
+
   def task do
     defaults = [fullname: "Kalle", favouritefruit: "apple", needspeeling: false, seedsremoved: false]
     options = read("configuration_file") ++ defaults
@@ -1506,9 +1506,9 @@ defmodule Configuration_file do
          end
        end)
   end
-  
+
   defp to_atom(option), do: String.downcase(option) |> String.to_atom
-  
+
   defp separate(values), do: String.split(values, ",") |> Enum.map(&String.strip/1)
 end
 
@@ -1600,8 +1600,8 @@ class Main
   {
     // define the variables which need configuring
     fullname := ""
-    favouritefruit := "" 
-    needspeeling := false 
+    favouritefruit := ""
+    needspeeling := false
     seedsremoved := false
     Str[] otherfamily := [,]
 
@@ -1609,8 +1609,8 @@ class Main
     File(`config.dat`).eachLine |Str line|
     {
       line = line.trim
-      if (line.isEmpty || line.startsWith("#") || line.startsWith(";")) 
-      { 
+      if (line.isEmpty || line.startsWith("#") || line.startsWith(";"))
+      {
         // do nothing for empty and comment lines
       }
       else if (line.upper.startsWith("FULLNAME"))
@@ -1652,9 +1652,9 @@ class Main
 
 Forth is one of the unique languages that provides the programmer with both an extendable interpreter and an extendable compiler. This demonstration starts from the assumption that competent Forth programmers would not write an entire interpreter just to read a config file but would extend the Forth Interpreter to do the job. This approach is more representative of how Forth is used to create small domain specific languages for specific purposes.
 
-As a result of taking this approach some liberties have been taken here from the original task. This code creates three operators for the Forth interpreter (SET, RESET, =) and uses these operators to assign values to actual variables in the Forth system. So the "=" sign here is not optional, it is required. The "=" operator parses an entire line of text and assigns it to a string variable. Set and reset assign 0 or -1 (all bits set) to an integer variable.  Using the Forth interpreter "as is" also means that all script symbols are separated by a minimum of 1 space character however this is not a great hardship.  
+As a result of taking this approach some liberties have been taken here from the original task. This code creates three operators for the Forth interpreter (SET, RESET, =) and uses these operators to assign values to actual variables in the Forth system. So the "=" sign here is not optional, it is required. The "=" operator parses an entire line of text and assigns it to a string variable. Set and reset assign 0 or -1 (all bits set) to an integer variable.  Using the Forth interpreter "as is" also means that all script symbols are separated by a minimum of 1 space character however this is not a great hardship.
 
-A more conventional version could of course be created if absolutely mandated however it would not be created in a few lines of code as this one is. 
+A more conventional version could of course be created if absolutely mandated however it would not be created in a few lines of code as this one is.
 
 Something worth noting is that the FORTH interpreter will halt on a syntax error in the config.txt file. If this was not the proscribed behavior for the application then the FORTH error handler would need modification. This is possible in most systems by using the system error words (abort, catch, throw) appropriately while interpreting the config file.
 <lang>\ declare the configuration variables in the FORTH app
@@ -1722,7 +1722,7 @@ OTHERFAMILY(2) = Harry Barber
 Usage and result
 ```txt
 
-CONFIGURE 
+CONFIGURE
 Compiling config.txt ok
 .config
 Fullname       : Foo Barber
@@ -1751,8 +1751,8 @@ program readconfig
   integer, parameter    :: state_begin=1, state_in_fst=2, state_in_sep=3
 
   open(newunit=lun, file="config.ini", status="old")
-  
-  do 
+
+  do
     read(lun, "(a)", iostat=stat) line
     if (stat<0) exit
     if ((line(1:1) == "#") .or. &
@@ -1804,19 +1804,19 @@ program readconfig
         else
           j1 = j + j1 - 2
         end if
-        do 
+        do
           if (j>len_trim(snd)) exit
           if (snd(j:j) /= " ") exit
           j = j +1
         end do
-        allocate(tmp(ii)) 
+        allocate(tmp(ii))
         tmp(1:ii-1) = otherfamily
         call move_alloc(tmp, otherfamily)
         read(snd(j:j1),"(a)"), otherfamily(ii)
-        j = j1 + 2 
+        j = j1 + 2
         ii = ii + 1
       end do
-    else 
+    else
       print *, "unknown option '"//trim(fst)//"'"; stop
     end if
   end do
@@ -1845,7 +1845,7 @@ pure function lower (str) result (string)
         ic = index(cap, str(i:i))
         if (ic > 0) string(i:i) = low(ic:ic)
     end do
-end function 
+end function
 
 end program
 
@@ -1860,7 +1860,7 @@ end program
 ' FB 1.05.0 Win64
 
 Sub split (s As Const String, sepList As Const String, result() As String)
-  If s = "" OrElse sepList = "" Then 
+  If s = "" OrElse sepList = "" Then
      Redim result(0)
      result(0) = s
      Return
@@ -1868,26 +1868,26 @@ Sub split (s As Const String, sepList As Const String, result() As String)
   Dim As Integer i, j, count = 0, empty = 0, length
   Dim As Integer position(Len(s) + 1)
   position(0) = 0
- 
+
   For i = 0 To len(s) - 1
     For j = 0 to Len(sepList) - 1
-      If s[i] = sepList[j] Then 
+      If s[i] = sepList[j] Then
         count += 1
-        position(count) = i + 1       
+        position(count) = i + 1
       End If
     Next j
   Next i
- 
+
   Redim result(count)
   If count  = 0 Then
     result(0) = s
     Return
   End If
- 
+
   position(count + 1) = len(s) + 1
- 
-  For i = 1 To count + 1  
-    length = position(i) - position(i - 1) - 1 
+
+  For i = 1 To count + 1
+    length = position(i) - position(i - 1) - 1
     result(i - 1) = Mid(s, position(i - 1) + 1, length)
   Next
 End Sub
@@ -1912,20 +1912,20 @@ Sub readConfigData(fileName As String, cData As ConfigData)
   While Not Eof(fileNum)
     Line Input #fileNum, ln
     If ln = "" OrElse Left(ln, 1) = "#" OrElse Left(ln, 1) = ";" Then Continue While
-    If UCase(Left(ln, 8)) = "FULLNAME" Then 
+    If UCase(Left(ln, 8)) = "FULLNAME" Then
       cData.fullName = Trim(Mid(ln, 9), Any " =")
     ElseIf UCase(Left(ln, 14)) = "FAVOURITEFRUIT" Then
       cData.favouriteFruit = Trim(Mid(ln, 15), Any " =")
     ElseIf UCase(Left(ln, 12)) = "NEEDSPEELING" Then
       Dim s As String = Trim(Mid(ln, 13), Any " =")
-      If s = ""  OrElse UCase(s) = "TRUE" Then 
+      If s = ""  OrElse UCase(s) = "TRUE" Then
         cData.needsPeeling = True
       Else
         cData.needsPeeling = False
       End If
     ElseIf UCase(Left(ln, 12)) = "SEEDSREMOVED" Then
       Dim s As String = Trim(Mid(ln, 13), Any " =")
-      If s = ""  OrElse UCase(s) = "TRUE" Then 
+      If s = ""  OrElse UCase(s) = "TRUE" Then
         cData.seedsRemoved = True
       Else
         cData.seedsRemoved = False
@@ -1938,7 +1938,7 @@ Sub readConfigData(fileName As String, cData As ConfigData)
     End If
   Wend
   Close #fileNum
-End Sub   
+End Sub
 
 Dim fileName As String = "config.txt"
 Dim cData As ConfigData
@@ -2299,7 +2299,7 @@ main = readFile "config" >>= (print . parseConfig)
 parseConfig :: String -> Config
 parseConfig = foldr addConfigValue defaultConfig . clean . lines
     where clean = filter (not . flip any ["#", ";", "", " "] . (==) . take 1)
-          
+
 addConfigValue :: String -> Config -> Config
 addConfigValue raw config = case key of
     "fullname"       -> config {fullName      = values}
@@ -2395,7 +2395,7 @@ Sample run on above input:
 ->rcf <rcf.in
 favouritefruit = banana
 fullname = Foo Barber
-needspeeling 
+needspeeling
 otherfamily = Rhu Barber, Harry Barber
 ->
 
@@ -2440,10 +2440,10 @@ Example use:
 ```j
    taskCfg 'fruit.conf'
    (,' = ',]&.do)&>;: 'fullname favouritefruit needspeeling seedsremoved'
-fullname = Foo Barber  
+fullname = Foo Barber
 favouritefruit = banana
-needspeeling = 1       
-seedsremoved = 0       
+needspeeling = 1
+seedsremoved = 0
 ```
 
 
@@ -2484,10 +2484,10 @@ Example use:
 ```j
    taskCfg 'fruit.conf'
    (,' = ',]&.do)&>;: 'fullname favouritefruit needspeeling seedsremoved'
-fullname = Foo Barber  
+fullname = Foo Barber
 favouritefruit = banana
-needspeeling = 1       
-seedsremoved = 0       
+needspeeling = 1
+seedsremoved = 0
 ```
 
 
@@ -2499,17 +2499,17 @@ In JavaScript using an object makes more sense than local variables.  This funct
 
 ```javascript
 function parseConfig(config) {
-    // this expression matches a line starting with an all capital word, 
+    // this expression matches a line starting with an all capital word,
     // and anything after it
     var regex = /^([A-Z]+)(.*)$/mg;
     var configObject = {};
-    
+
     // loop until regex.exec returns null
     var match;
     while (match = regex.exec(config)) {
         // values will typically be an array with one element
         // unless we want an array
-        // match[0] is the whole match, match[1] is the first group (all caps word), 
+        // match[0] is the whole match, match[1] is the first group (all caps word),
         // and match[2] is the second (everything through the end of line)
         var key = match[1], values = match[2].split(",");
         if (values.length === 1) {
@@ -2521,9 +2521,9 @@ function parseConfig(config) {
             });
         }
     }
-    
+
     return configObject;
-}  
+}
 ```
 
 
@@ -2641,7 +2641,7 @@ In the following, in the case of collisions, the last-most specification prevail
 def parse:
 
   def uc: .name | ascii_upcase;
-  
+
   def parse_boolean:
     capture( "(?<name>^[^ ] *$)" )
     | { (uc) : true };
@@ -2731,7 +2731,7 @@ otherfamily = SubString{String}["Rhu Barber", "Harry Barber"]
 
 
 {{works with|Kotlin|1.0.6}}
-This example is more verbose than it has to be because of increased effort in providing immutability to the configuration class. 
+This example is more verbose than it has to be because of increased effort in providing immutability to the configuration class.
 
 ```scala
 import java.nio.charset.StandardCharsets
@@ -3036,49 +3036,49 @@ ImportConfig[file]
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
-This is defined as a function, parameters are returned as part of a struct. When the first line, and the assignment to return values are removed, it is a script that stores the parameters in the local workspace. 
+This is defined as a function, parameters are returned as part of a struct. When the first line, and the assignment to return values are removed, it is a script that stores the parameters in the local workspace.
 
 
 ```MATLAB
 function R = readconf(configfile)
-% READCONF reads configuration file. 
+% READCONF reads configuration file.
 %
-% The value of boolean parameters can be tested with 
+% The value of boolean parameters can be tested with
 %    exist(parameter,'var')
 
-if nargin<1, 
+if nargin<1,
    configfile = 'q.conf';
 end;
 
-fid = fopen(configfile); 
-if fid<0, error('cannot open file %s\n',a); end; 
+fid = fopen(configfile);
+if fid<0, error('cannot open file %s\n',a); end;
 
 while ~feof(fid)
     line = strtrim(fgetl(fid));
     if isempty(line) || all(isspace(line)) || strncmp(line,'#',1) || strncmp(line,';',1),
-	; % no operation 
-    else 
+	; % no operation
+    else
 	[var,tok] = strtok(line,' \t=');
-	var = upper(var); 
+	var = upper(var);
 	if any(tok==','),
-		k = 1; 
+		k = 1;
 		while (1)
 			[val, tok]=strtok(tok,',');
-			R.(var){k} = strtrim(val);  	% return value of function 
+			R.(var){k} = strtrim(val);  	% return value of function
 			eval(sprintf('%s{%i}=''%s'';',var,k,strtrim(val)));  % stores variable in local workspace
 		if isempty(tok), break; end;
 			k=k+1;
 		end;
-	else 
+	else
 		tok = strtrim(tok);
 		R.(var) = tok;		% return value of function
 		eval(sprintf('%s=''%s''; ',var,tok));  % stores variable in local workspace
 	end;
     end;
-end; 
+end;
 fclose(fid);
-whos,     % shows the parameter in the local workspace 
- 
+whos,     % shows the parameter in the local workspace
+
 ```
 
 
@@ -3088,9 +3088,9 @@ R=readconf('file.conf')
 Variables in the current scope:
 
   Attr Name                Size                     Bytes  Class
-  
+
 ### = ====                ====                     =====  ==
- 
+
        FAVOURITEFRUIT      1x6                          6  char
        FULLNAME            1x10                        10  char
        NEEDSPEELING        0x0                          0  char
@@ -3112,8 +3112,8 @@ R =
 
     FULLNAME = Foo Barber
     FAVOURITEFRUIT = banana
-    NEEDSPEELING = 
-    OTHERFAMILY = 
+    NEEDSPEELING =
+    OTHERFAMILY =
     {
       [1,1] = Rhu Barber
       [1,2] = Harry Barber
@@ -3121,7 +3121,7 @@ R =
 
 ```
 
-	
+
 
 ## OCaml
 
@@ -3196,7 +3196,7 @@ OTHERFAMILY = Harry Barber
 {{out}}
 
 ```txt
-$ ocaml conf.ml 
+$ ocaml conf.ml
 Full name: Foo Barber
 likes: banana
 needs peeling: true
@@ -3528,10 +3528,10 @@ OTHERFAMILY(2) = Harry Barber
 ## Peloton
 
 Despite the discussion, this task is still a bit ambiguous. I've taken it that
-    * blank lines and lines beginning with # and ; should be ignored. 
+    * blank lines and lines beginning with # and ; should be ignored.
     * an all uppercase word defines a configuration symbol
     * no tail means a boolean true
-    * a tail including a comma means a list 
+    * a tail including a comma means a list
     * any other kind of tail is a string
 
 What we end up with after processing rosetta.config are three VARs and a LST, named FAVOURITEFRUIT, FULLNAME, NEEDSPEELING and OTHERFAMILY respectively.
@@ -3574,7 +3574,7 @@ __ReadConfigurationFile|
 
 
 This is an all-singing, all-dancing version that checks the configuration file syntax and contents and raises exceptions if it fails.  (It is intentionally over-commented for pedagogical purposes.)
- 
+
 
 ```perl
 my $fullname;
@@ -3597,7 +3597,7 @@ my $arg = shift;               # take the configuration file name from the comma
 my $file;                      # this is going to be a file handle reference
 open $file, $arg or die "Can't open configuration file '$arg': $!";
 
-read_conf_file($file, $conf_definition); 
+read_conf_file($file, $conf_definition);
 
 print "fullname = $fullname\n";
 print "favouritefruit = $favouritefruit\n";
@@ -3700,7 +3700,7 @@ grammar ConfFile {
     token yes { :i \h* '='? \h*
     	[
 	    || ([yes|true|1])
-	    || [no|false|0] 
+	    || [no|false|0]
 	    || (<?>)
 	] \h*
     }
@@ -3853,7 +3853,7 @@ set: procedure options (main);
                      otherfamily(j) = substr(text, 1, i-1);
                      text = trim(substr(text, i+1));
                      i = index(text, ',');
-                  end;           
+                  end;
                   j = j + 1;
                   otherfamily(j) = trim(text);
          end;
@@ -3904,8 +3904,8 @@ function Read-ConfigurationFile
     )
 
     [string]$script:fullName = ""
-    [string]$script:favouriteFruit = "" 
-    [bool]$script:needsPeeling = $false 
+    [string]$script:favouriteFruit = ""
+    [bool]$script:needsPeeling = $false
     [bool]$script:seedsRemoved = $false
     [string[]]$script:otherFamily = @()
 
@@ -4044,7 +4044,7 @@ Function Read-ConfigurationFile {
          Return $__Aux
       }
    }
-   
+
    Process {
       $__Configuration = [Ordered]@{}
       # Config equivalent pattern
@@ -4088,7 +4088,7 @@ Function Show-Value ([Collections.Specialized.OrderedDictionary]$_Dictionary, $_
       } Else {
          $__Aux = $_Index + '(' + $_SubIndex + ') = '
          If ($_Dictionary[$_Index][$_SubIndex] -eq $null) {
-            $__Aux += $false		 
+            $__Aux += $false
          } Else {
             $__Aux += $_Dictionary[$_Index][$_SubIndex]
          }
@@ -4286,7 +4286,7 @@ def readconf(fn):
             # Assume whitespace is ignorable
             line = line.strip()
             if not line or line.startswith('#'): continue
-            
+
             boolval = True
             # Assume leading ";" means a false boolean
             if line.startswith(';'):
@@ -4295,7 +4295,7 @@ def readconf(fn):
                 # If more than just one word, not a valid boolean
                 if len(line.split()) != 1: continue
                 boolval = False
-            
+
             bits = line.split(None, 1)
             if len(bits) == 1:
                 # Assume booleans are just one standalone word
@@ -4365,7 +4365,7 @@ type TSettings extends QObject
     NeedSpelling as integer
     SeedsRemoved as integer
     OtherFamily as QStringlist
-    
+
     Constructor
         FullName = ""
         FavouriteFruit = ""
@@ -4391,7 +4391,7 @@ Sub ConfigOption(PData as string)
     for x = 1 to tally(PData, ",") +1
         Settings.OtherFamily.AddItems Trim$(field$(PData, "," ,x))
     next
-end sub 
+end sub
 
 Function ConfigBoolean(PData as string) as integer
     PData = Trim$(PData)
@@ -4405,11 +4405,11 @@ sub ReadSettings
     for x = 0 to ConfigList.ItemCount -1
         StrLine = Trim$(ConfigList.item(x))
         StrPara = Trim$(field$(StrLine," ",1))
-        StrData = Trim$(lTrim$(StrLine - StrPara))  
-    
+        StrData = Trim$(lTrim$(StrLine - StrPara))
+
         Select case UCase$(StrPara)
-        case "FULLNAME"       : Settings.FullName = StrData 
-        case "FAVOURITEFRUIT" : Settings.FavouriteFruit = StrData 
+        case "FULLNAME"       : Settings.FullName = StrData
+        case "FAVOURITEFRUIT" : Settings.FavouriteFruit = StrData
         case "NEEDSPEELING"   : Settings.NeedSpelling = ConfigBoolean(StrData)
         case "SEEDSREMOVED"   : Settings.SeedsRemoved = ConfigBoolean(StrData)
         case "OTHERFAMILY"    : Call ConfigOption(StrData)
@@ -4651,7 +4651,7 @@ fn config_from_file(path: String) -> Config {
         }
 
         // Split line into parameter name and rest tokens
-        let tokens = Vec::from_iter(line.split_whitespace()); 
+        let tokens = Vec::from_iter(line.split_whitespace());
         let name = tokens.first().unwrap();
         let tokens = tokens.get(1..).unwrap();
 
@@ -4659,7 +4659,7 @@ fn config_from_file(path: String) -> Config {
         let tokens = tokens.iter().filter(|t| !t.starts_with("="));
         // Remove comment after the parameters
         let tokens = tokens.take_while(|t| !t.starts_with("#") && !t.starts_with(";"));
-        
+
         // Concat back the parameters into one string to split for separated parameters
         let mut parameters = String::new();
         tokens.for_each(|t| { parameters.push_str(t); parameters.push(' '); });
@@ -4667,7 +4667,7 @@ fn config_from_file(path: String) -> Config {
         let parameters = parameters.split(',').map(|s| s.trim());
         // Converts them from Vec<&str> into Vec<String>
         let parameters: Vec<String> = parameters.map(|s| s.to_string()).collect();
-        
+
         // Setting the config parameters
         match name.to_lowercase().as_str() {
             "fullname" => cfg.full_name = parameters.get(0).cloned(),
@@ -4906,15 +4906,15 @@ configFile asFilename readingLinesDo:[:line |
         (s skipSeparators; atEnd) ifFalse:[
             |optionName values|
             optionName := s upToSeparator.
-            values := (s upToEnd asCollectionOfSubstringsSeparatedBy:$,) 
+            values := (s upToEnd asCollectionOfSubstringsSeparatedBy:$,)
                          collect:[:each | each withoutSeparators]
                          thenSelect:[:vals | vals notEmpty].
-            dict at:optionName asLowercase put:(values isEmpty 
-                                                ifTrue:[true] 
+            dict at:optionName asLowercase put:(values isEmpty
+                                                ifTrue:[true]
                                                 ifFalse:[
                                                    values size == 1
                                                      ifTrue:[values first]
-                                                     ifFalse:[values]]).    
+                                                     ifFalse:[values]]).
         ]
     ].
 ]
@@ -4925,8 +4925,8 @@ gives us in dict Dictionary ('fullname'->'Foo Barber' 'needspeeling'->true 'favo
 assuming that the target object has setters for each option name, we could write:
 
 ```smalltalk
-dict keysAndValuesDo:[:eachOption :eachValue | 
-   someObject 
+dict keysAndValuesDo:[:eachOption :eachValue |
+   someObject
        perform:(eachOption,':') asSymbol with:eachValue
        ifNotUnderstood: [ self error: 'unknown option: ', eachOption ]
 ]
@@ -5108,7 +5108,7 @@ done
 fullname = Foo Barber
 favouritefruit = banana
 needspeeling = true
-seedsremoved = 
+seedsremoved =
 otherfamily[0] = Rhu Barber
 otherfamily[1] = Harry Barber
 ```
@@ -5464,7 +5464,7 @@ while(not eof(#a))
         case "": case "#": REMARK = true : break
         case ";": FLAG = false : line$ = trim$(right$(line$, ll - 1)) : break
         default: MULTI = instr(line$, ",")
-    end switch  
+    end switch
 
     if not REMARK then
         GAP = instr(line$, "=") : if not GAP GAP = instr(line$, " ")

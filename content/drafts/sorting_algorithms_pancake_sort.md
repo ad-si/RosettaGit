@@ -14,7 +14,7 @@ tags = []
 {{Sorting Algorithm}}
 
 ;Task:
-Sort an array of integers (of any convenient size) into ascending order using [[wp:Pancake sorting|Pancake sorting]]. 
+Sort an array of integers (of any convenient size) into ascending order using [[wp:Pancake sorting|Pancake sorting]].
 
 In short, instead of individual elements being sorted, the only operation allowed is to "flip" one end of the list, like so:
  Before:
@@ -106,26 +106,26 @@ PROC flip = ([]INT s, INT n) []INT:
    BEGIN
       [UPB s]INT ss := s;
       INT temp;
-      FOR i TO n OVER 2 DO 
+      FOR i TO n OVER 2 DO
          temp := ss[i];
          ss[i] := ss[n-i+1];
          ss[n-i+1] := temp
       OD;
       ss
    END;
- 
+
 PROC pancake sort = ([]INT s) []INT:
    BEGIN
       INT m;
       [UPB s]INT ss := s;
-      FOR i FROM UPB s DOWNTO 2 DO 
+      FOR i FROM UPB s DOWNTO 2 DO
          m := 1;
          FOR j FROM 2 TO i DO
             IF ss[j] > ss[m] THEN
                 m := j
-            FI 
+            FI
          OD;
- 
+
          IF m < i THEN
             IF m > 1 THEN
                 ss := flip (ss,m)
@@ -134,8 +134,8 @@ PROC pancake sort = ([]INT s) []INT:
          FI
       OD;
     ss
-   END;  
- 
+   END;
+
 [10]INT s;
 FOR i TO UPB s DO
    s[i] := ENTIER (next random * 100-50)
@@ -372,7 +372,7 @@ Sample output:
       NEXT
       PRINT
       END
-      
+
       DEF PROCpancakesort(a())
       LOCAL i%, j%, m%
       FOR i% = DIM(a(),1)+1 TO 2 STEP -1
@@ -387,7 +387,7 @@ Sample output:
         ENDIF
       NEXT
       ENDPROC
-      
+
       DEF PROCflip(a(), n%)
       IF n% < 2 ENDPROC
       LOCAL i%
@@ -505,8 +505,8 @@ int main(int argc, char **argv)
 ## C++
 
 
-```c>#include <algorithm
-
+```c
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 #include <vector>
@@ -559,8 +559,8 @@ int main()
 ```
 Output:
 ```txt
-4 10 11 15 14 16 17 1 6 9 3 7 19 2 0 12 5 18 13 8 
-0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 
+4 10 11 15 14 16 17 1 6 9 3 7 19 2 0 12 5 18 13 8
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19
 ```
 
 
@@ -827,7 +827,7 @@ end
 ```
 
 
-Test: 
+Test:
 
 ```Eiffel
 
@@ -883,17 +883,17 @@ ELENA 4.1 :
 
 ```elena
 import extensions;
- 
+
 extension op
 {
     pancakeSort()
     {
         var list := self.clone();
- 
+
         int i := list.Length;
- 
+
         if (i < 2) { ^ self };
- 
+
         while (i > 1)
         {
             int max_num_pos := 0;
@@ -904,10 +904,10 @@ extension op
                 {
                     max_num_pos := a
                 };
- 
+
                 a += 1
             };
- 
+
             if (max_num_pos == i - 1)
             {
             }
@@ -917,15 +917,15 @@ extension op
                 {
                     list.flip(list.Length, max_num_pos + 1)
                 };
- 
+
                 list.flip(list.Length, i)
             };
             i -= 1
         };
- 
+
         ^ list
     }
- 
+
     flip(int length, int num)
     {
         int i := 0;
@@ -935,17 +935,17 @@ extension op
             var swap := self[i];
             self[i] := self[count];
             self[count] := swap;
- 
+
             i += 1;
             count -= 1
         }
     }
 }
- 
+
 public program()
 {
     var list := new int[]::(6, 7, 8, 9, 2, 5, 3, 4, 1);
- 
+
     console.printLine("before:", list.asEnumerable());
     console.printLine("after :", list.pancakeSort().asEnumerable())
 }
@@ -968,23 +968,23 @@ after :1,2,3,4,5,6,7,8,9
 ```elixir
 defmodule Sort do
   def pancake_sort(list) when is_list(list), do: pancake_sort(list, length(list))
-  
+
   defp pancake_sort(list, 0), do: list
   defp pancake_sort(list, limit) do
     index = search_max(list, limit)
     flip(list, index) |> flip(limit) |> pancake_sort(limit-1)
   end
-   
+
   defp search_max([h | t], limit), do: search_max(t, limit, 2, h, 1)
-  
+
   defp search_max(_, limit, index, _, max_index) when limit<index, do: max_index
   defp search_max([h | t], limit, index, max, max_index) do
     if h > max, do:   search_max(t, limit, index+1, h, index),
                 else: search_max(t, limit, index+1, max, max_index)
   end
- 
+
   defp flip(list, n), do: flip(list, n, [])
-  
+
   defp flip(list, 0, reverse), do: reverse ++ list
   defp flip([h | t], n, reverse) do
     flip(t, n-1, [h | reverse])
@@ -1030,7 +1030,7 @@ function pancake_sort(sequence s)
                 m = j
             end if
         end for
-        
+
         if m < i then
             if m > 1 then
                 s = flip(s,m)
@@ -1083,7 +1083,7 @@ let pancakeSort items =
 
 Usage: pancakeSort [|31; 41; 59; 26; 53; 58; 97; 93; 23; 84|] |> show
 
-Output: 
+Output:
 
 ```txt
 
@@ -1100,40 +1100,40 @@ Output:
 ```fortran
 program Pancake_Demo
   implicit none
- 
+
   integer :: list(8) = (/ 1, 4, 7, 2, 5, 8, 3, 6 /)
- 
+
   call Pancake_sort(list)
- 
+
 contains
- 
+
 subroutine Pancake_sort(a)
-  
+
   integer, intent(in out) :: a(:)
   integer :: i, maxpos
-  
+
   write(*,*) a
   do i = size(a), 2, -1
-     
+
 ! Find position of max number between index 1 and i
     maxpos = maxloc(a(1:i), 1)
- 
-! is it in the correct position already?   
+
+! is it in the correct position already?
     if (maxpos == i) cycle
- 
+
 ! is it at the beginning of the array? If not flip array section so it is
     if (maxpos /= 1) then
       a(1:maxpos) = a(maxpos:1:-1)
       write(*,*) a
     end if
- 
-! Flip array section to get max number to correct position      
+
+! Flip array section to get max number to correct position
     a(1:i) = a(i:1:-1)
     write(*,*) a
   end do
-  
+
 end subroutine
- 
+
 end program Pancake_Demo
 ```
 
@@ -1411,7 +1411,7 @@ import Data.Maybe
 dblflipIt :: (Ord a) => [a] -> [a]
 dblflipIt = uncurry ((reverse.).(++)). first reverse
   . ap (flip splitAt) (succ. fromJust. (elemIndex =<< maximum))
- 
+
 dopancakeSort :: (Ord a) => [a] -> [a]
 dopancakeSort xs = dopcs (xs,[]) where
   dopcs ([],rs) = rs
@@ -1430,7 +1430,7 @@ Example:
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main()                                        #: demonstrate various ways to sort a list and string 
+procedure main()                                        #: demonstrate various ways to sort a list and string
    demosort(pancakesort,[3, 14, 1, 5, 9, 2, 6, 3],"qwerty")
    pancakeflip := pancakeflipshow                       # replace pancakeflip procedure with a variant that displays each flip
    pancakesort([3, 14, 1, 5, 9, 2, 6, 3])
@@ -1442,7 +1442,7 @@ local i,m
    op := sortop(op,X)                                   # select how and what we sort
 
    every i := *X to 2 by -1 do {                        # work back to front
-      m := 1 
+      m := 1
       every j := 2 to i do
          if op(X[m],X[j]) then m := j                   # find X that belongs @i high (or low)
       if i ~= m then {                                  # not already in-place
@@ -1453,7 +1453,7 @@ local i,m
    return X
 end
 
-procedure pancakeflip(X,tail)                           #: return X[1:tail] flipped 
+procedure pancakeflip(X,tail)                           #: return X[1:tail] flipped
 local i
 
    i := 0
@@ -1551,21 +1551,21 @@ public class PancakeSort
          info += x + " ";
       return info;
    }
-    
+
    public void flip(int n) {
       for (int i = 0; i < (n+1) / 2; ++i) {
          int tmp = heap[i];
          heap[i] = heap[n-i];
          heap[n-i] = tmp;
-      }      
+      }
       System.out.println("flip(0.." + n + "): " + toString());
    }
-   
+
    public int[] minmax(int n) {
       int xm, xM;
       xm = xM = heap[0];
       int posm = 0, posM = 0;
-      
+
       for (int i = 1; i < n; ++i) {
          if (heap[i] < xm) {
             xm = heap[i];
@@ -1578,15 +1578,15 @@ public class PancakeSort
       }
       return new int[] {posm, posM};
    }
-   
+
    public void sort(int n, int dir) {
       if (n == 0) return;
-         
+
       int[] mM = minmax(n);
       int bestXPos = mM[dir];
       int altXPos = mM[1-dir];
       boolean flipped = false;
-      
+
       if (bestXPos == n-1) {
          --n;
       }
@@ -1608,12 +1608,12 @@ public class PancakeSort
          flip(n);
       }
    }
-   
+
    PancakeSort(int[] numbers) {
       heap = numbers;
       sort(numbers.length, 1);
-   } 
- 
+   }
+
    public static void main(String[] args) {
       int[] numbers = new int[args.length];
       for (int i = 0; i < args.length; ++i)
@@ -1630,21 +1630,21 @@ Example:
 
 ```bash
 $ java PancakeSort  1 2 5 4 3 10 9 8 7
-flip(0..5): 10 3 4 5 2 1 9 8 7 
-flip(0..8): 7 8 9 1 2 5 4 3 10 
-flip(0..2): 9 8 7 1 2 5 4 3 10 
-flip(0..7): 3 4 5 2 1 7 8 9 10 
-flip(0..2): 5 4 3 2 1 7 8 9 10 
-flip(0..4): 1 2 3 4 5 7 8 9 10 
+flip(0..5): 10 3 4 5 2 1 9 8 7
+flip(0..8): 7 8 9 1 2 5 4 3 10
+flip(0..2): 9 8 7 1 2 5 4 3 10
+flip(0..7): 3 4 5 2 1 7 8 9 10
+flip(0..2): 5 4 3 2 1 7 8 9 10
+flip(0..4): 1 2 3 4 5 7 8 9 10
 1 2 3 4 5 7 8 9 10
 
 $ java PancakeSort  6 7 2 1 8 9 5 3 4
-flip(0..5): 9 8 1 2 7 6 5 3 4 
-flip(0..8): 4 3 5 6 7 2 1 8 9 
-flip(0..1): 3 4 5 6 7 2 1 8 9 
-flip(0..4): 7 6 5 4 3 2 1 8 9 
-flip(0..6): 1 2 3 4 5 6 7 8 9 
-1 2 3 4 5 6 7 8 9 
+flip(0..5): 9 8 1 2 7 6 5 3 4
+flip(0..8): 4 3 5 6 7 2 1 8 9
+flip(0..1): 3 4 5 6 7 2 1 8 9
+flip(0..4): 7 6 5 4 3 2 1 8 9
+flip(0..6): 1 2 3 4 5 6 7 8 9
+1 2 3 4 5 6 7 8 9
 ```
 
 
@@ -1665,7 +1665,7 @@ Array.prototype.pancake_sort = function () {
             }
         }
 
-        if (max_idx == i) 
+        if (max_idx == i)
             continue; // element already in place
 
         var new_slice;
@@ -1673,13 +1673,13 @@ Array.prototype.pancake_sort = function () {
         // flip this max element to index 0
         if (max_idx > 0) {
             new_slice = this.slice(0, max_idx+1).reverse();
-            for (var j = 0; j <= max_idx; j++) 
+            for (var j = 0; j <= max_idx; j++)
                 this[j] = new_slice[j];
         }
 
         // then flip the max element to its place
         new_slice = this.slice(0, i+1).reverse();
-        for (var j = 0; j <= i; j++) 
+        for (var j = 0; j <= i; j++)
             this[j] = new_slice[j];
     }
     return this;
@@ -1870,7 +1870,7 @@ function numList:show ()
         io.write("Initial state:\t")
     else
         io.write("After step " .. self.step .. ":\t")
-    end        
+    end
     for _, v in ipairs(self.values) do io.write(v .. " ") end
     print()
 end
@@ -2030,29 +2030,29 @@ pancakeSort[{6, 7, 8, 9, 2, 5, 3, 4, 1}]
 function list = pancakeSort(list)
 
     for i = (numel(list):-1:2)
-       
+
         minElem = list(i);
         minIndex = i;
-        
+
         %Find the min element in the current subset of the list
-        for j = (i:-1:1)    
+        for j = (i:-1:1)
             if list(j) <= minElem
                 minElem = list(j);
                 minIndex = j;
-            end                              
+            end
         end
-        
+
         %If the element is already in the correct position don't flip
         if i ~= minIndex
 
             %First flip flips the min element in the stack to the top
             list(minIndex:-1:1) = list(1:minIndex);
-            
+
             %Second flip flips the min element into the correct position in
             %the stack
             list(i:-1:1) = list(1:i);
-            
-        end   
+
+        end
     end %for
 end %pancakeSort
 ```
@@ -2074,7 +2074,7 @@ ans =
 
 
 ```MAXScript
-fn flipArr arr index = 
+fn flipArr arr index =
 (
 	local new = #()
 	for i = index to 1 by -1 do
@@ -2170,7 +2170,7 @@ method runSample(arg) private static
 
   isTrue  = (1 == 1)
   isFalse = \isTrue
-  
+
   parse arg debug .
   if '-debug'.abbrev(debug.lower(), 2) then debug = isTrue
   else                                      debug = isFalse
@@ -2386,7 +2386,7 @@ procedure PancakeSort(var a: array of integer);
         if a[j] > a[maxpos] then
           maxpos := j;
 
-// is it in the correct position already?   
+// is it in the correct position already?
       if maxpos = i then
         continue;
 
@@ -2394,7 +2394,7 @@ procedure PancakeSort(var a: array of integer);
       if maxpos <> low(a) then
         flip(a, maxpos);
 
-// Flip array section to get max number to correct position      
+// Flip array section to get max number to correct position
       flip(a, i);
     end;
   end;
@@ -2518,7 +2518,7 @@ function flip(sequence s, integer n)
     end for
     return s
 end function
- 
+
 function pancake_sort(sequence s)
 integer m
     for i=length(s) to 2 by -1 do
@@ -2537,10 +2537,10 @@ integer m
     end for
     return s
 end function
-  
+
 constant s = shuffle(tagset(10))
 ? s
-? pancake_sort(s) 
+? pancake_sort(s)
 ```
 
 {{out}}
@@ -2726,18 +2726,18 @@ If OpenConsole()
       j=0
       Repeat            ;- find place of Pancake(i) in the Pile()
         j+1
-      Until Pile(j)=i 
-      
+      Until Pile(j)=i
+
       For k=1 To (j/2)  ;- Flip it up
         Swap Pile(k),Pile(j-k+1)
-      Next              
+      Next
       For k=1 To i/2    ;- Flip in place
         Swap Pile(k),Pile(i-k+1)
       Next
-      
+
     EndIf
   Next
-  
+
   Print(#CRLF$+"Resulting Pile() :")
   For i=1 To 9
     Print(" "+str(Pile(i)))
@@ -2753,7 +2753,7 @@ EndIf
  Original Pile()  : 9 4 1 8 6 3 2 5 7
  Resulting Pile() : 1 2 3 4 5 6 7 8 9
  All done in 6 loops.
- 
+
  Press ENTER to quit.
 
 
@@ -2784,7 +2784,7 @@ def pancakesort(data):
     if tutor: print()
 ```
 
-        
+
 '''A test:'''
 
 ```python
@@ -2996,7 +2996,7 @@ func pancakeSort A
      n = len(A)
      while flag =  0
            flag = 1
-           for i = 1 to n-1 
+           for i = 1 to n-1
                if A[i] < A[i+1]
                   temp = A[i]
                   A[i] = A[i+1]
@@ -3004,7 +3004,7 @@ func pancakeSort A
                   flag = 0 ok
            next
      end
-     return A 
+     return A
 
 ```
 
@@ -3032,13 +3032,13 @@ class Array
       max     = self[0..end_idx].max
       max_idx = self[0..end_idx].index(max)
       next if max_idx == end_idx
-      
+
       if max_idx > 0
-        self[0..max_idx] = self[0..max_idx].reverse 
+        self[0..max_idx] = self[0..max_idx].reverse
         p [num_flips += 1, self]  if $DEBUG
       end
-      
-      self[0..end_idx] = self[0..end_idx].reverse 
+
+      self[0..end_idx] = self[0..end_idx].reverse
       p [num_flips += 1, self]  if $DEBUG
     end
     self
@@ -3161,20 +3161,20 @@ import Foundation
 
 struct PancakeSort {
     var arr:[Int]
-    
+
     mutating func flip(n:Int) {
         for i in 0 ..< (n + 1) / 2 {
             swap(&arr[n - i], &arr[i])
         }
         println("flip(0.. \(n)): \(arr)")
     }
-    
+
     func minmax(n:Int) -> [Int] {
         var xm = arr[0]
         var xM = arr[0]
         var posm = 0
         var posM = 0
-        
+
         for i in 1..<n {
             if (arr[i] < xm) {
                 xm = arr[i]
@@ -3184,20 +3184,20 @@ struct PancakeSort {
                 posM = i
             }
         }
-        
+
         return [posm, posM]
     }
-    
+
     mutating func sort(var n:Int, var dir:Int) {
         if n == 0 {
             return
         }
-        
+
         let mM = minmax(n)
         let bestXPos = mM[dir]
         let altXPos = mM[1 - dir]
         var flipped = false
-        
+
         if bestXPos == n - 1 {
             n--
         } else if bestXPos == 0 {
@@ -3210,9 +3210,9 @@ struct PancakeSort {
         } else {
             flip(bestXPos)
         }
-        
+
         sort(n, dir: dir)
-        
+
         if flipped {
             flip(n)
         }
@@ -3313,7 +3313,7 @@ As you can see, it took 12 flips.
   PROC _Pancakesort (n)
   PROC _ShowArray (n)
 PRINT
- 
+
 END
 
 
@@ -3349,30 +3349,30 @@ _Pancakesort PARAM (1)                 ' Pancakesort
 
   NEXT
 RETURN
- 
- 
+
+
 _Swap PARAM(2)                         ' Swap two array elements
   PUSH @(a@)
   @(a@) = @(b@)
   @(b@) = POP()
 RETURN
- 
- 
+
+
 _InitArray                             ' Init example array
   PUSH 4, 65, 2, -31, 0, 99, 2, 83, 782, 1
- 
+
   FOR i = 0 TO 9
     @(i) = POP()
   NEXT
- 
+
 RETURN (i)
- 
- 
+
+
 _ShowArray PARAM (1)                   ' Show array subroutine
   FOR i = 0 TO a@-1
     PRINT @(i),
   NEXT
- 
+
   PRINT
 RETURN
 ```
@@ -3460,29 +3460,29 @@ Sample output:
 
 testpancake True
 Initial array:
- 5             7             8             3             1             10            9             23            50            0            
+ 5             7             8             3             1             10            9             23            50            0
 we'll flip the first  9 elements of the array
- 50            23            9             10            1             3             8             7             5             0            
+ 50            23            9             10            1             3             8             7             5             0
 we'll flip the first  10 elements of the array
- 0             5             7             8             3             1             10            9             23            50           
+ 0             5             7             8             3             1             10            9             23            50
 we'll flip the first  7 elements of the array
- 10            1             3             8             7             5             0             9             23            50           
+ 10            1             3             8             7             5             0             9             23            50
 we'll flip the first  8 elements of the array
- 9             0             5             7             8             3             1             10            23            50           
+ 9             0             5             7             8             3             1             10            23            50
 we'll flip the first  7 elements of the array
- 1             3             8             7             5             0             9             10            23            50           
+ 1             3             8             7             5             0             9             10            23            50
 we'll flip the first  3 elements of the array
- 8             3             1             7             5             0             9             10            23            50           
+ 8             3             1             7             5             0             9             10            23            50
 we'll flip the first  6 elements of the array
- 0             5             7             1             3             8             9             10            23            50           
+ 0             5             7             1             3             8             9             10            23            50
 we'll flip the first  3 elements of the array
- 7             5             0             1             3             8             9             10            23            50           
+ 7             5             0             1             3             8             9             10            23            50
 we'll flip the first  5 elements of the array
- 3             1             0             5             7             8             9             10            23            50           
+ 3             1             0             5             7             8             9             10            23            50
 we'll flip the first  3 elements of the array
- 0             1             3             5             7             8             9             10            23            50           
+ 0             1             3             5             7             8             9             10            23            50
 Final array:
- 0             1             3             5             7             8             9             10            23            50           
+ 0             1             3             5             7             8             9             10            23            50
 
 ```
 

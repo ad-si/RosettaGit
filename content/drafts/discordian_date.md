@@ -44,7 +44,7 @@ procedure Discordian is
    type Days_Of_Week is (Sweetmorn, Boomtime, Pungenday,
                          Prickle_Prickle, Setting_Orange);
    subtype Day_Number is Integer range 1 .. 73;
- 
+
    type Discordian_Date is record
       Year        : Year_Number;
       Season      : Seasons;
@@ -113,7 +113,7 @@ procedure Discordian is
    begin
       First_Day   := Time_Of (Year => Year (From), Month => 1, Day => 1);
       Number_Days := From - First_Day;
- 
+
       To.Year        := Year (Date => From) + 1166;
       To.Is_Tibs_Day := False;
       Leap_Year := False;
@@ -151,7 +151,7 @@ procedure Discordian is
          when others => raise Constraint_Error;
       end case;
    end Convert;
- 
+
    procedure Put (Item : Discordian_Date) is
    begin
       if Item.Is_Tibs_Day then
@@ -172,7 +172,7 @@ procedure Discordian is
       Ada.Text_IO.Put (" in the YOLD" & Integer'Image (Item.Year));
       Ada.Text_IO.New_Line;
    end Put;
- 
+
    Test_Day  : Time;
    Test_DDay : Discordian_Date;
    Year : Integer;
@@ -432,7 +432,7 @@ END FUNCTION
 {{out}}
 
 ```txt
-"Discordian date.exe" 19-10-2015 
+"Discordian date.exe" 19-10-2015
 Boomtime, Bureaucracy 73, 3181 YOLD
 ```
 
@@ -440,22 +440,22 @@ Boomtime, Bureaucracy 73, 3181 YOLD
 
 ## Batch File
 
-{{works with|Windows XP Service Pack 3}} 
+{{works with|Windows XP Service Pack 3}}
 
 ```dos
 @echo off
 goto Parse
 
  Discordian Date Converter:
- 
+
  Usage:
-	ddate 
-	ddate /v 
+	ddate
+	ddate /v
 	ddate /d isoDate
 	ddate /v /d isoDate
- 
+
 :Parse
-	shift 
+	shift
 	if "%0"==""   goto Prologue
 	if "%0"=="/v" set Verbose=1
 	if "%0"=="/d" set dateToTest=%1
@@ -670,14 +670,14 @@ Built on CMD.EXE version 5.1.2600.5512 (xpsp.080413-2111).
 
 ```bbcbasic
       INSTALL @lib$+"DATELIB"
-      
+
       PRINT "01/01/2011 -> " FNdiscordian("01/01/2011")
       PRINT "05/01/2011 -> " FNdiscordian("05/01/2011")
       PRINT "28/02/2011 -> " FNdiscordian("28/02/2011")
       PRINT "01/03/2011 -> " FNdiscordian("01/03/2011")
       PRINT "22/07/2011 -> " FNdiscordian("22/07/2011")
       PRINT "31/12/2011 -> " FNdiscordian("31/12/2011")
-      
+
       PRINT "01/01/2012 -> " FNdiscordian("01/01/2012")
       PRINT "05/01/2012 -> " FNdiscordian("05/01/2012")
       PRINT "28/02/2012 -> " FNdiscordian("28/02/2012")
@@ -686,20 +686,20 @@ Built on CMD.EXE version 5.1.2600.5512 (xpsp.080413-2111).
       PRINT "22/07/2012 -> " FNdiscordian("22/07/2012")
       PRINT "31/12/2012 -> " FNdiscordian("31/12/2012")
       END
-      
+
       DEF FNdiscordian(date$)
       LOCAL Season$(), Weekday$(), mjd%, year%, day%
       DIM Season$(4), Weekday$(4)
       Season$() =  "Chaos", "Discord", "Confusion", "Bureaucracy", "The Aftermath"
       Weekday$() = "Sweetmorn", "Boomtime", "Pungenday", "Prickle-Prickle", "Setting Orange"
-      
+
       mjd% = FN_readdate(date$, "dmy", 2000)
       year% = FN_year(mjd%)
-      
+
       IF FN_month(mjd%)=2 AND FN_day(mjd%)=29 THEN
         = "St. Tib's Day, YOLD " + STR$(year% + 1166)
       ENDIF
-      
+
       IF FN_month(mjd%) < 3 THEN
         day% = mjd% - FN_mjd(1, 1, year%)
       ELSE
@@ -775,31 +775,31 @@ Day 57 of Confusion, in the YOLD 3176
 For the source code of <code>ddate</code> in util-linux package, see [[http://jubal.westnet.com/hyperdiscordia/ddate.html]].
 
 
-```C>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <time.h>
- 
+
 #define day_of_week( x ) ((x) == 1 ? "Sweetmorn" :\
                           (x) == 2 ? "Boomtime" :\
                           (x) == 3 ? "Pungenday" :\
                           (x) == 4 ? "Prickle-Prickle" :\
                           "Setting Orange")
- 
+
 #define season( x ) ((x) == 0 ? "Chaos" :\
                     (x) == 1 ? "Discord" :\
                     (x) == 2 ? "Confusion" :\
                     (x) == 3 ? "Bureaucracy" :\
                     "The Aftermath")
- 
+
 #define date( x ) ((x)%73 == 0 ? 73 : (x)%73)
- 
+
 #define leap_year( x ) ((x) % 400 == 0 || (((x) % 4) == 0 && (x) % 100))
- 
+
 char * ddate( int y, int d ){
   int dyear = 1166 + y;
   char * result = malloc( 100 * sizeof( char ) );
- 
+
   if( leap_year( y ) ){
     if( d == 60 ){
       sprintf( result, "St. Tib's Day, YOLD %d", dyear );
@@ -808,17 +808,17 @@ char * ddate( int y, int d ){
       -- d;
     }
   }
- 
+
   sprintf( result, "%s, %s %d, YOLD %d",
            day_of_week(d%5), season(((d%73)==0?d-1:d)/73 ), date( d ), dyear );
- 
+
   return result;
 }
- 
- 
+
+
 int day_of_year( int y, int m, int d ){
   int month_lengths[ 12 ] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
- 
+
   for( ; m > 1; m -- ){
     d += month_lengths[ m - 2 ];
     if( m == 3 && leap_year( y ) ){
@@ -827,13 +827,13 @@ int day_of_year( int y, int m, int d ){
   }
   return d;
 }
- 
- 
+
+
 int main( int argc, char * argv[] ){
   time_t now;
   struct tm * now_time;
   int year, doy;
- 
+
   if( argc == 1 ){
     now = time( NULL );
     now_time = localtime( &now );
@@ -841,11 +841,11 @@ int main( int argc, char * argv[] ){
   } else if( argc == 4 ){
     year = atoi( argv[ 1 ] ); doy = day_of_year( atoi( argv[ 1 ] ), atoi( argv[ 2 ] ), atoi( argv[ 3 ] ) );
   }
- 
+
   char * result = ddate( year, doy );
   puts( result );
   free( result );
- 
+
   return 0;
 }
 ```
@@ -903,52 +903,52 @@ public:
         t.set( 5, 1, "Mungday" ); holyday.push_back( t ); t.set( 19, 2, "Chaoflux" ); holyday.push_back( t );
         t.set( 29, 2, "St. Tib's Day" ); holyday.push_back( t ); t.set( 19, 3, "Mojoday" ); holyday.push_back( t );
         t.set( 3, 5, "Discoflux" ); holyday.push_back( t ); t.set( 31, 5, "Syaday" ); holyday.push_back( t );
-        t.set( 15, 7, "Confuflux" ); holyday.push_back( t ); t.set( 12, 8, "Zaraday" ); holyday.push_back( t ); 
-        t.set( 26, 9, "Bureflux" ); holyday.push_back( t ); t.set( 24, 10, "Maladay" ); holyday.push_back( t ); 
-        t.set( 8, 12, "Afflux" ); holyday.push_back( t ); 
-        seasons.push_back( "Chaos" ); seasons.push_back( "Discord" ); seasons.push_back( "Confusion" ); 
+        t.set( 15, 7, "Confuflux" ); holyday.push_back( t ); t.set( 12, 8, "Zaraday" ); holyday.push_back( t );
+        t.set( 26, 9, "Bureflux" ); holyday.push_back( t ); t.set( 24, 10, "Maladay" ); holyday.push_back( t );
+        t.set( 8, 12, "Afflux" ); holyday.push_back( t );
+        seasons.push_back( "Chaos" ); seasons.push_back( "Discord" ); seasons.push_back( "Confusion" );
         seasons.push_back( "Bureaucracy" ); seasons.push_back( "The Aftermath" );
         wdays.push_back( "Setting Orange" ); wdays.push_back( "Sweetmorn" ); wdays.push_back( "Boomtime" );
-        wdays.push_back( "Pungenday" ); wdays.push_back( "Prickle-Prickle" ); 
+        wdays.push_back( "Pungenday" ); wdays.push_back( "Prickle-Prickle" );
     }
     void convert( int d, int m, int y ) {
-        if( d == 0 || m == 0 || m > 12 || d > getMaxDay( m, y ) ) { 
-            cout << "\nThis is not a date!"; 
-            return; 
+        if( d == 0 || m == 0 || m > 12 || d > getMaxDay( m, y ) ) {
+            cout << "\nThis is not a date!";
+            return;
         }
-        vector<myTuple>::iterator f = find( holyday.begin(), holyday.end(), make_pair( d, m ) ); 
+        vector<myTuple>::iterator f = find( holyday.begin(), holyday.end(), make_pair( d, m ) );
         int dd = d, day, wday, sea,  yr = y + 1166;
         for( int x = 1; x < m; x++ )
             dd += getMaxDay( x, 1 );
-        day = dd % 73; if( !day ) day = 73; 
-        wday = dd % 5; 
+        day = dd % 73; if( !day ) day = 73;
+        wday = dd % 5;
         sea  = ( dd - 1 ) / 73;
-        if( d == 29 && m == 2 && isLeap( y ) ) { 
-            cout << ( *f ).second() << " " << seasons[sea] << ", Year of Our Lady of Discord " << yr; 
-            return; 
+        if( d == 29 && m == 2 && isLeap( y ) ) {
+            cout << ( *f ).second() << " " << seasons[sea] << ", Year of Our Lady of Discord " << yr;
+            return;
         }
         cout << wdays[wday] << " " << seasons[sea] << " " << day;
-        if( day > 10 && day < 14 ) cout << "th"; 
-        else switch( day % 10) { 
-            case 1: cout << "st"; break; 
-            case 2: cout << "nd"; break; 
-            case 3: cout << "rd"; break; 
-            default: cout << "th"; 
+        if( day > 10 && day < 14 ) cout << "th";
+        else switch( day % 10) {
+            case 1: cout << "st"; break;
+            case 2: cout << "nd"; break;
+            case 3: cout << "rd"; break;
+            default: cout << "th";
         }
         cout << ", Year of Our Lady of Discord " << yr;
         if( f != holyday.end() ) cout << " - " << ( *f ).second();
     }
 private:
-    int getMaxDay( int m, int y ) { 
-        int dd[] = { 0, 31, isLeap( y ) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; return dd[m]; 
+    int getMaxDay( int m, int y ) {
+        int dd[] = { 0, 31, isLeap( y ) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; return dd[m];
     }
-    bool isLeap( int y ) { 
-        bool l = false; 
-        if( !( y % 4 ) ) { 
-            if( y % 100 ) l = true; 
-            else if( !( y % 400 ) ) l = true; 
+    bool isLeap( int y ) {
+        bool l = false;
+        if( !( y % 4 ) ) {
+            if( y % 100 ) l = true;
+            else if( !( y % 400 ) ) l = true;
         }
-        return l; 
+        return l;
     }
     vector<myTuple> holyday; vector<string> seasons, wdays;
 };
@@ -957,10 +957,10 @@ int main( int argc, char* argv[] ) {
     while( true ) {
         cout << "Enter a date (dd mm yyyy) or 0 to quit: "; getline( cin, date ); if( date == "0" ) break;
         if( date.length() == 10 ) {
-            istringstream iss( date ); 
+            istringstream iss( date );
             vector<string> vc;
             copy( istream_iterator<string>( iss ), istream_iterator<string>(), back_inserter<vector<string> >( vc ) );
-            disc.convert( atoi( vc[0].c_str() ), atoi( vc[1].c_str() ), atoi( vc[2].c_str() ) ); 
+            disc.convert( atoi( vc[0].c_str() ), atoi( vc[1].c_str() ), atoi( vc[2].c_str() ) );
             cout << "\n\n\n";
         } else cout << "\nIs this a date?!\n\n";
     }
@@ -1006,7 +1006,7 @@ public static class DiscordianDate
     static readonly string[] weekdays = { "Sweetmorn", "Boomtime", "Pungenday", "Prickle-Prickle", "Setting Orange" };
     static readonly string[] apostles = { "Mungday", "Mojoday", "Syaday", "Zaraday", "Maladay" };
     static readonly string[] holidays = { "Chaoflux", "Discoflux", "Confuflux", "Bureflux", "Afflux" };
-    
+
     public static string Discordian(this DateTime date) {
         string yold = $" in the YOLD {date.Year + 1166}.";
         int dayOfYear = date.DayOfYear;
@@ -1135,7 +1135,7 @@ user=> (discordian-date 2013 12 31)
 
 ```d
 import std.stdio, std.datetime, std.conv, std.string;
- 
+
 immutable seasons = ["Chaos", "Discord", "Confusion",
                      "Bureaucracy", "The Aftermath"],
           weekday = ["Sweetmorn", "Boomtime", "Pungenday",
@@ -1144,31 +1144,31 @@ immutable seasons = ["Chaos", "Discord", "Confusion",
                      "Zaraday", "Maladay"],
           holiday = ["Chaoflux", "Discoflux", "Confuflux",
                      "Bureflux", "Afflux"];
- 
+
 string discordianDate(in Date date) pure {
     immutable dYear = text(date.year + 1166);
- 
+
     immutable isLeapYear = date.isLeapYear;
     if (isLeapYear && date.month == 2 && date.day == 29)
         return "St. Tib's Day, in the YOLD " ~ dYear;
- 
+
     immutable doy = (isLeapYear && date.dayOfYear >= 60) ?
                     date.dayOfYear - 1 :
                     date.dayOfYear;
- 
+
     immutable dsDay = (doy % 73)==0? 73:(doy % 73); // Season day.
     if (dsDay == 5)
         return apostle[doy / 73] ~ ", in the YOLD " ~ dYear;
     if (dsDay == 50)
         return holiday[doy / 73] ~ ", in the YOLD " ~ dYear;
- 
+
     immutable dSeas = seasons[(((doy%73)==0)?doy-1:doy) / 73];
     immutable dWday = weekday[(doy - 1) % 5];
- 
+
     return format("%s, day %s of %s in the YOLD %s",
                   dWday, dsDay, dSeas, dYear);
 }
- 
+
 unittest {
     assert(Date(2010, 7, 22).discordianDate ==
            "Pungenday, day 57 of Confusion in the YOLD 3176");
@@ -1183,7 +1183,7 @@ unittest {
     assert(Date(2011, 5, 3).discordianDate ==
            "Discoflux, in the YOLD 3177");
 }
- 
+
 void main(string args[]) {
     int yyyymmdd, day, mon, year, sign;
     if (args.length == 1) {
@@ -1212,7 +1212,7 @@ void main(string args[]) {
             year = sign * ((yyyymmdd - day - 100*mon) / 10000);
             writefln("%s", Date(year, mon, day).discordianDate);
         }
-    } 
+    }
 }
 ```
 
@@ -1274,22 +1274,22 @@ function discordianDate(sequence Date)
     if leap and Date[MONTH] = 2 and Date[DAY] = 29 then
         return "St. Tib's Day, in the YOLD " & dyear
     end if
-    
+
     doy = dayOfYear(Date)
     if leap and doy >= 60 then
         doy -= 1
     end if
-    
+
     dsday = remainder(doy,73)
     if dsday = 5 then
         return apostle[doy/73+1] & ", in the YOLD " & dyear
     elsif dsday = 50 then
         return holiday[doy/73+1] & ", in the YOLD " & dyear
     end if
-    
+
     dseas = seasons[doy/73+1]
     dwday = weekday[remainder(doy-1,5)+1]
-    
+
     return sprintf("%s, day %d of %s in the YOLD %s", {dwday, dsday, dseas, dyear})
 end function
 
@@ -1311,7 +1311,7 @@ let seasons = [| "Chaos"; "Discord"; "Confusion"; "Bureaucracy"; "The Aftermath"
 let ddate (date:DateTime) =
     let dyear = date.Year + 1166
     let leapYear = DateTime.IsLeapYear(date.Year)
-    
+
     if leapYear && date.Month = 2 && date.Day = 29 then
         sprintf "St. Tib's Day, %i YOLD" dyear
     else
@@ -1321,7 +1321,7 @@ let ddate (date:DateTime) =
         sprintf "%s %i, %i YOLD" seasons.[season] (dday+1) dyear
 
 [<EntryPoint>]
-let main argv = 
+let main argv =
     let p = Int32.Parse
     Seq.ofArray("2012-02-28 2012-02-29 2012-03-01 2010-07-22 2015-10-19 2015-10-20".Split())
     |> Seq.map(fun (s:string) ->
@@ -1361,7 +1361,7 @@ program discordianDate
     integer,dimension(8) :: values
     integer, dimension(12) :: daysinmonth
     logical  :: isleapyear, isholyday, Pleapyear
-     
+
     ! Get the current date
     call date_and_time(VALUES=values)
     ! Set some values up to defaults
@@ -1369,7 +1369,7 @@ program discordianDate
     isleapyear = .false.
     isholyday = .false.
     ! process any command line arguments
-    ! using arguments dd mm yyyy 
+    ! using arguments dd mm yyyy
     j = iargc()
     do i = 1, iargc()
       call getarg(i, arg)  ! fetches argument as a character string
@@ -1382,7 +1382,7 @@ program discordianDate
         endif
         if (i==3) then
           read(arg,'(i4)') values(1)  ! convert to integer
- 
+
         endif
       endif
       if (j==2) then  ! arguments dd mm
@@ -1397,12 +1397,12 @@ program discordianDate
         read(arg,'(i2)') values(3)  ! convert to integer
       endif
     end do
- 
-    !Start the number crunching here 
+
+    !Start the number crunching here
 
     yold = values(1) + 1166
     daysofyear = 0
-    if (values(2)>1) then 
+    if (values(2)>1) then
     do i=1 , values(2)-1 , 1
         daysofyear = daysofyear + daysinmonth(i)
      end do
@@ -1411,7 +1411,7 @@ program discordianDate
     isholyday = .false.
     isleapyear = Pleapyear(yold)
     dayofweek = mod (daysofyear, 5)
-    seasonnum = ((daysofyear - 1) / 73) + 1 
+    seasonnum = ((daysofyear - 1) / 73) + 1
     dayofseason = daysofyear - ((seasonnum - 1)  * 73)
     k = mod(dayofseason,10)  ! just to get the day number postfix
     select case (k)
@@ -1429,36 +1429,36 @@ program discordianDate
       dayfix = 'th'
     end if
     select case (Seasonnum)
-      case (1) 
+      case (1)
         season ='Choas'
         f4 = '5'
-      case (2) 
+      case (2)
         season ='Discord'
         f4 = '7'
-      case (3) 
+      case (3)
         season ='Confusion'
         f4 = '9'
-      case (4) 
+      case (4)
         season ='Bureaucracy'
         f4 = '10'
-      case (5) 
+      case (5)
         season ='The Aftermath'
         f4 = '13'
     end select
     select case (dayofweek)
-       case (0) 
+       case (0)
          day='Setting Orange'
          f2 = '14'
-       case (1) 
+       case (1)
          day ='Sweetmorn'
          f2 = '9'
-       case (2) 
+       case (2)
          day = 'Boomtime'
          f2 = '8'
-       case (3) 
+       case (3)
          day = 'Pungenday'
          f2 = '9'
-       case (4) 
+       case (4)
          day = 'Prickle-Prickle'
          f2 = '15'
     end select
@@ -1503,10 +1503,10 @@ program discordianDate
             f1 = '6'
          end select
     end select
-    
+
 
     ! Check if it is St. Tibbs day
-    if (isleapyear .eqv. .true.) then 
+    if (isleapyear .eqv. .true.) then
       if ((values(2) == 2) .and. (values(3) == 29)) then
          isholyday = .true.
       end if
@@ -1524,7 +1524,7 @@ program discordianDate
       if (values(3) == 29) then
          print fmt1,'Celebrate for today is St. Tibbs Day in the YOLD ',yold
        else
-         print fmt2, 'Today is ',holyday, ' on ',day,' the ',dayofseason,dayfix,' day of ',season,' in the YOLD ',yold 
+         print fmt2, 'Today is ',holyday, ' on ',day,' the ',dayofseason,dayfix,' day of ',season,' in the YOLD ',yold
        end if
      else   ! not a holyday
          print fmt3, 'Today is ',day,' the ',dayofseason,dayfix, ' day of ',season,' in the YOLD ',yold
@@ -1546,7 +1546,7 @@ program discordianDate
         if (mod((dloy-1166),400)==0) then
            leaper = .true.
         end if
-    end if 
+    end if
     end function Pleapyear
 
 ```
@@ -1582,10 +1582,10 @@ package ddate
 
 import (
     "strconv"
-    "strings" 
+    "strings"
     "time"
-)   
-    
+)
+
 // Predefined formats for DiscDate.Format
 const (
     DefaultFmt = "Pungenday, Discord 5, 3131 YOLD"
@@ -1618,8 +1618,8 @@ var (
     shortSeason = []string{"Chs", "Dsc", "Cfn", "Bcy", "Afm"}
     holyday     = [][]string{{"Mungday", "Chaoflux"}, {"Mojoday", "Discoflux"},
         {"Syaday", "Confuflux"}, {"Zaraday", "Bureflux"}, {"Maladay", "Afflux"}}
-)   
-    
+)
+
 type DiscDate struct {
     StTibs bool
     Dayy   int // zero based day of year, meaningless if StTibs is true
@@ -1706,11 +1706,11 @@ func (dd DiscDate) Format(f string) (r string) {
             f = f[1:]
         }
     }
-    if st > "" { 
+    if st > "" {
         r = snarf + st + r
     }
     return
-}   
+}
 ```
 
 Example program using above package
@@ -1811,7 +1811,7 @@ instance Show DDate where
 fromYMD :: (Year, Month, Day) -> DDate
 fromYMD (y, m, d)
   | leap && dayOfYear == 59 = StTibsDay yold
-  | leap && dayOfYear >= 60 = mkDDate $ dayOfYear - 1 
+  | leap && dayOfYear >= 60 = mkDDate $ dayOfYear - 1
   | otherwise               = mkDDate dayOfYear
   where
     yold = y + 1166
@@ -1858,7 +1858,7 @@ test = mapM_ display dates
 ```
 
 
-In GHCi we can also execute shell commands. 
+In GHCi we can also execute shell commands.
 * Using Linux utility ddate
 
 ```txt
@@ -1894,7 +1894,7 @@ procedure main()
    Demo(2012,12,22)
 end
 
-procedure Demo(y,m,d)      #: demo display 
+procedure Demo(y,m,d)      #: demo display
    printf("%i-%i-%i = %s\n",y,m,d,DiscordianDateString(DiscordianDate(y,m,d)))
 end
 
@@ -1907,13 +1907,13 @@ initial cal := [31,28,31,30,31,30,31,31,30,31,30,31]
    ddate := DiscordianDateRecord(year+1166)
    every (ddate.yday := day - 1) +:= cal[1 to month-1]   # zero origin
    ddate.sday := ddate.yday
-   
-   if ddate.year % 4 = 2 &  month = 2 & day = 29 then 
+
+   if ddate.year % 4 = 2 &  month = 2 & day = 29 then
       ddate.holiday := 1   # Note: st tibs is outside of weekdays
    else {
-      ddate.season  := (ddate.yday / 73) + 1   
+      ddate.season  := (ddate.yday / 73) + 1
       ddate.sday := (ddate.yday % 73) + 1
-      ddate.holiday := 1 + ddate.season * case ddate.sday of { 5 : 1; 50 : 2}    
+      ddate.holiday := 1 + ddate.season * case ddate.sday of { 5 : 1; 50 : 2}
    }
    return ddate
 end
@@ -1924,11 +1924,11 @@ initial {
    days := ["Sweetmorn","Boomtime","Pungenday","Prickle-Prickle","Setting Orange"]
    seasons := ["Chaos","Discord","Confusion","Bureaucracy","The Aftermath"]
    holidays := ["St. Tib's Day","Mungday","Chaoflux","Mojoday","Discoflux",
-                "Syaday","Confuflux","Zaraday","Bureflux","Maladay","Afflux"]                     
+                "Syaday","Confuflux","Zaraday","Bureflux","Maladay","Afflux"]
    }
-   
+
    return (( holidays[\ddate.holiday] || "," ) |
-           ( days[1+ddate.yday%5] || ", day " || 
+           ( days[1+ddate.yday%5] || ", day " ||
              ddate.sday || " of " || seasons[ddate.season])) ||
           " in the YOLD " || ddate.year
 end
@@ -2204,7 +2204,7 @@ console.log(discordianDate(new Date(Date.now())));
 ```
 
 
-look at [http://www.cs.cmu.edu/~tilt/principia/body.html#applecorps calendar]; 
+look at [http://www.cs.cmu.edu/~tilt/principia/body.html#applecorps calendar];
 learn about [http://jubal.westnet.com/hyperdiscordia/discordian_holydays.html holydays]
 
 
@@ -2473,12 +2473,12 @@ On this day Boomtime, the 71st day of Confusion in the YOLD 3183
 
 This program will print out the current date in Erisian format as specified in
 
-                  P R I N C I P I A   D I S C O R D I A   
+                  P R I N C I P I A   D I S C O R D I A
 
-If you run it with a date it the command line in european format (dd mm yy) it 
-will print the equvolent Discordian date. If you omit the year and  month the 
+If you run it with a date it the command line in european format (dd mm yy) it
+will print the equvolent Discordian date. If you omit the year and  month the
 current Anerisiean month and year as assumed.
- 
+
 
 POPE Englebert Finklestien.
 }
@@ -2542,7 +2542,7 @@ begin
     treesaregreen := IntTOStr(yy+1166);
 end;
 
- 
+
 procedure GRAYFACE;
 {This calculates everything, but does not bother much about leap years}
 var
@@ -2553,7 +2553,7 @@ begin
     wrestle := 0;
     Thwack := 'th';
     {set bob to the name of the holyday or St. Tibs day }
-    bob := 'St. Tibs Day';         
+    bob := 'St. Tibs Day';
     if (Hedgehog = 5 )  then bob := 'Mungday';
     if (Hedgehog = 50 ) then bob := 'Chaoflux';
     if (Hedgehog = 78 ) then bob := 'Mojoday';
@@ -2567,7 +2567,7 @@ begin
     {Not doing things the usual way
     Lets find the week day and count the number of
 	5 day weeks all at the same time}
-    while (Hedgehog > 5) do begin 
+    while (Hedgehog > 5) do begin
       Hedgehog := Hedgehog -5;
       wrestle := Wrestle + 1;
     end;
@@ -2612,7 +2612,7 @@ begin
     GRAYFACE;
 	{ The only thing to bother about is holy days and St Tibs day }
     Eris := 'Today is: ' + snub +' the ' + midget +' day of the season of ' + chaotica;
-    if (YOLD) then begin 
+    if (YOLD) then begin
 	    Eris := 'Celebrate for today, ' + snub + ' the ' + midget + ' day of ' +chaotica + ' is the holy day of ' + bob;
     end;
 	{The only place we deal with St. Tibs Day}
@@ -2637,7 +2637,7 @@ Celebrate for today, Prickle-Prickle the 5th day of The Aftermath is the holy da
 Today is: Pungenday the 60th day of the season of Confusion YOLD 3183
 ./ddate 29 2 2020
 Celebrate St. Tibs Day Chaos YOLD 3186
- 
+
 ```
 
 
@@ -2660,25 +2660,25 @@ sub ordinal {
 	return $n . "th" if int($n/10) == 1;
 	return $n . ((qw< th st nd rd th th th th th th>)[$n % 10]);
 }
- 
+
 sub ddate {
 	my $d = Time::Piece->strptime( $_[0], '%Y-%m-%d' );
 	my $yold = 'in the YOLD ' . ($d->year + 1166);
 
 	my $day_of_year0 = $d->day_of_year;
- 
+
 	if( $d->is_leap_year ) {
 		return "St. Tib's Day, $yold" if $d->mon == 2 and $d->mday == 29;
 		$day_of_year0-- if $day_of_year0 >= 60; # Compensate for St. Tib's Day
 	}
- 
+
 	my $weekday = $week_days[ $day_of_year0 % @week_days ];
 	my $season = $seasons[ $day_of_year0 / 73 ];
 	my $season_day = ordinal( $day_of_year0 % 73 + 1 );
 
 	return "$weekday, the $season_day day of $season $yold";
 }
- 
+
 say "$_ is " . ddate($_) for qw< 2010-07-22 2012-02-28 2012-02-29 2012-03-01 >;
 
 ```
@@ -2750,7 +2750,7 @@ constant seasons = {"Chaos", "Discord", "Confusion", "Bureaucracy", "The Afterma
 constant weekday = {"Sweetmorn", "Boomtime", "Pungenday", "Prickle-Prickle", "Setting Orange"}
 constant apostle = {"Mungday", "Mojoday", "Syaday", "Zaraday", "Maladay"}
 constant holiday = {"Chaoflux", "Discoflux", "Confuflux", "Bureflux", "Afflux"}
- 
+
 function discordianDate(sequence dt)
 string dyear, dseas, dwday
 integer  leap, doy, dsday,dseason
@@ -2760,12 +2760,12 @@ integer {y,m,d} = dt
     if leap and m=2 and d=29 then
         return "St. Tib's Day, in the YOLD " & dyear
     end if
- 
+
     doy = day_of_year(y,m,d)-1
     if leap and doy>=60 then
         doy -= 1
     end if
- 
+
     dsday = remainder(doy,73)+1
     dseason = floor(doy/73+1)
     if dsday=5 then
@@ -2773,10 +2773,10 @@ integer {y,m,d} = dt
     elsif dsday=50 then
         return holiday[dseason] & ", in the YOLD " & dyear
     end if
- 
+
     dseas = seasons[dseason]
     dwday = weekday[remainder(doy,5)+1]
- 
+
     return sprintf("%s, day %d of %s in the YOLD %s", {dwday, dsday, dseas, dyear})
 end function
 ```
@@ -2831,7 +2831,7 @@ end for
     $Holy50 = array("Chaoflux","Discoflux","Confuflux","Bureflux","Afflux");
 
 
-    
+
 
     // Get the current system date and assign to some variables
 	$edate = explode(" ",date('Y m j L'));
@@ -2844,7 +2844,7 @@ end for
   // If you could get the date from users browser via javascript and then call
   // this script with the users date. ddate.php?y=year&m=month&d=day mostly it
   // won't matter but if the server is in a different time zone to the user
-  // There will be occasional incorrect results from the users POV. 
+  // There will be occasional incorrect results from the users POV.
 
     if (isset($_GET['y']) && isset($_GET['m']) && isset($_GET['d'])) {
         $usery = $_GET['y'];
@@ -2860,7 +2860,7 @@ end for
     $userdays = 0;
     $i = 0;
     while ($i < ($userm-1)) {
-        
+
         $userdays = $userdays + $Anerisia[$i];
         $i = $i +1;
     }
@@ -2956,11 +2956,11 @@ Pike includes a Discordian calendar.
 dates can be converted from any calendar to any other.
 
 ```Pike>
- Calendar.Discordian.now()->format_ext_ymd(); 
+ Calendar.Discordian.now()->format_ext_ymd();
  Result: "Pungenday, 59 Bureaucracy 3177"
 > Calendar.Discordian.Day(Calendar.Day(2011,11,11))->format_ext_ymd();
  Result: "Setting Orange, 23 The Aftermath 3177"
-> Calendar.Discordian.Day(Calendar.Badi.Day(168,13,9))->format_ext_ymd(); 
+> Calendar.Discordian.Day(Calendar.Badi.Day(168,13,9))->format_ext_ymd();
  Result: "Setting Orange, 23 The Aftermath 3177"
 > Calendar.Day((Calendar.Discordian.Month()+1)->day(1));
  Result: Day(Thu 20 Oct 2011)
@@ -3065,7 +3065,7 @@ Else
 $DiscordianDate = "$Day, $Year YOLD"
 return $DiscordianDate
 }
- 
+
 ConvertTo-Discordian ([datetime]'1/5/2016')
 ConvertTo-Discordian ([datetime]'2/29/2016')
 ConvertTo-Discordian ([datetime]'12/8/2016')
@@ -3119,12 +3119,12 @@ def ddate(year, month, day):
     is_leap_year = calendar.isleap(year)
     if is_leap_year and month == 2 and day == 29:
         return "St. Tib's Day, YOLD " + (year + 1166)
-    
+
     day_of_year = today.timetuple().tm_yday - 1
-    
+
     if is_leap_year and day_of_year >= 60:
         day_of_year -= 1 # Compensate for St. Tib's Day
-    
+
     season, dday = divmod(day_of_year, 73)
     return "%s %d, YOLD %d" % (DISCORDIAN_SEASONS[season], dday + 1, year + 1166)
 
@@ -3150,19 +3150,19 @@ def ddate(year, month, day):
 (define holiday '(Chaoflux  Discoflux Confuflux Bureflux        Afflux))
 
 (define (ymd->date y m d) (seconds->date (find-seconds 0 0 0 d m y)))
-(define (leap-year? y) (with-handlers ((exn? (λ (x) #f))) (= 29 (date-day (ymd->date y 2 29)))))  
+(define (leap-year? y) (with-handlers ((exn? (λ (x) #f))) (= 29 (date-day (ymd->date y 2 29)))))
 
 (define (discordian-date d)
   (define leap? (leap-year? (date-year d)))
   (define year-day (match* (leap? (date-year-day d))
                      [(#t (? (λ (D) (>= D 59)) d0)) d0]
                      [(_ d0) (add1 d0)]))
-  
+
   (define season-day (modulo year-day 73)) ; season day
   (define (list-ref-season l)
     (define season-index (quotient year-day 73))
     (symbol->string (list-ref l season-index)))
-  
+
   (string-append
    (match* (season-day leap? (date-month d) (date-day d))
      [( _ #t 2 29) "St. Tib's Day,"]
@@ -3202,7 +3202,7 @@ Pungenday, day 47 of Confusion in the YOLD 3179
 
 ## REXX
 
-This REXX version allows the   '''mm'''   or   '''dd'''   to be one or two digits. 
+This REXX version allows the   '''mm'''   or   '''dd'''   to be one or two digits.
 
 Also, the year can be two or four digits, or it may be omitted.
 
@@ -3456,7 +3456,7 @@ Celebrate Bureflux
 $ ./ddate 2012-10-24
 2012-10-24 is Boomtime, the 5th day of The Aftermath in the YOLD 3178
 Celebrate Maladay
-$ 
+$
 
 ```
 
@@ -3475,12 +3475,12 @@ import java.util.Calendar
 
 object DDate extends App {
   private val DISCORDIAN_SEASONS = Array("Chaos", "Discord", "Confusion", "Bureaucracy", "The Aftermath")
-  
+
   // month from 1-12; day from 1-31
   def ddate(year: Int, month: Int, day: Int): String = {
     val date = new GregorianCalendar(year, month - 1, day)
     val dyear = year + 1166
- 
+
     val isLeapYear = date.isLeapYear(year)
     if (isLeapYear && month == 2 && day == 29) // 2 means February
       "St. Tib's Day " + dyear + " YOLD"
@@ -3488,7 +3488,7 @@ object DDate extends App {
       var dayOfYear = date.get(Calendar.DAY_OF_YEAR) - 1
       if (isLeapYear && dayOfYear >= 60)
         dayOfYear -= 1 // compensate for St. Tib's Day
- 
+
       val dday = dayOfYear % 73
       val season = dayOfYear / 73
       "%s %d, %d YOLD".format(DISCORDIAN_SEASONS(season), dday + 1, dyear)
@@ -3528,12 +3528,12 @@ Bureaucracy 73, 3181 YOLD
 ```seed7
 $ include "seed7_05.s7i";
   include "time.s7i";
- 
+
 const array string: seasons is [0] ("Chaos", "Discord", "Confusion", "Bureaucracy", "The Aftermath");
 const array string: weekday is [0] ("Sweetmorn", "Boomtime", "Pungenday", "Prickle-Prickle", "Setting Orange");
 const array string: apostle is [0] ("Mungday", "Mojoday", "Syaday", "Zaraday",  "Maladay");
 const array string: holiday is [0] ("Chaoflux", "Discoflux", "Confuflux", "Bureflux", "Afflux");
- 
+
 const func string: discordianDate (in time: date) is func
   result
     var string: discordianDate is "";
@@ -3706,7 +3706,7 @@ fcn discordianDate(y,m,d){
    weekday=T("Sweetmorn","Boomtime","Pungenday","Prickle-Prickle","Setting Orange"),
    apostle=T("Mungday","Mojoday","Syaday","Zaraday","Maladay"),
    holiday=T("Chaoflux","Discoflux","Confuflux","Bureflux","Afflux"];
- 
+
    dYear,isLeapYear := y + 1166, Time.Date.isLeapYear(y);
    if(isLeapYear and m==2 and d==29)
       return("St. Tib's Day, in the YOLD " + dYear);
@@ -3716,7 +3716,7 @@ fcn discordianDate(y,m,d){
     dsDay:=(if(doy%73==0) 73 else doy%73); // Season day.
     if(dsDay==5)  return(String(apostle[doy/73],", in the YOLD ",dYear));
     if(dsDay==50) return(String(holiday[doy/73],", in the YOLD ",dYear));
- 
+
     dSeas:=seasons[(if(doy%73==0) doy-1 else doy)/73];
     dWday:=weekday[(doy - 1)%5];
     "%s, day %s of %s in the YOLD %s".fmt(dWday,dsDay,dSeas,dYear);

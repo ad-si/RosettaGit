@@ -136,7 +136,7 @@ printf(($g(-8,5)"; "$,
 {{out}}
 
 ```txt
- 2.71828;  3.14159;  1.64872;  0.43429;  1.00000; 15.15426;  2.71828;  2.00000;  3.00000; 23.14069; 
+ 2.71828;  3.14159;  1.64872;  0.43429;  1.00000; 15.15426;  2.71828;  2.00000;  3.00000; 23.14069;
 ```
 
 
@@ -232,11 +232,11 @@ BEGIN {
 ```
 
 
-<blockquote style="font-size: smaller;">'''Power's note:''' 
-With [[nawk]] or [[gawk]], <code>2 ** -3.4</code> acts like <code>2 ^ -3.4</code>. 
-With [[mawk]], <code>2 ** -3.4</code> is a syntax error. 
-Nawk allows <code>**</code>, but its manual page only has <code>^</code>. 
-Gawk's manual warns, ''"The POSIX standard only specifies the use of `^' for exponentiation. 
+<blockquote style="font-size: smaller;">'''Power's note:'''
+With [[nawk]] or [[gawk]], <code>2 ** -3.4</code> acts like <code>2 ^ -3.4</code>.
+With [[mawk]], <code>2 ** -3.4</code> is a syntax error.
+Nawk allows <code>**</code>, but its manual page only has <code>^</code>.
+Gawk's manual warns, ''"The POSIX standard only specifies the use of `^' for exponentiation.
 For maximum portability, do not use the `**' operator."''</blockquote>
 
 Awk misses e, pi, absolute value, floor and ceiling; but these are all easy to implement:
@@ -276,7 +276,7 @@ BEGIN {
 
 ## Axe
 
-In general, Axe does not support many operations on real numbers. 
+In general, Axe does not support many operations on real numbers.
 However, there are a few special cases that it does support.
 
 To take the square root of an integer X:
@@ -422,7 +422,7 @@ NB. Both <math>x</math> and <math>y</math> can be real numbers.
       Ceil = FNceil(1.234)
       Power = 1.23^4
       END
-      
+
       DEF FNceil(n) = INT(n) - (INT(n) <> n)
 
 ```
@@ -595,7 +595,7 @@ Bracmat does not attempt to compute the numerical value of the exponential funct
 Thus <code>e^0</code> evaluates to <code>1</code>.
 
 Bracmat has no built-in functions for computing the absolute value,
-floor or ceiling. For real numbers that are rational such functions can be written. 
+floor or ceiling. For real numbers that are rational such functions can be written.
 
 If the result of taking the power of a rational number to another rational number is rational, Bracmat can in many compute it, if needed using prime factorization. See root above. Example:
 <code> 243/1024^2/5</code> evaluates to <code>9/16</code>.
@@ -605,8 +605,8 @@ If the result of taking the power of a rational number to another rational numbe
 
 Most of the following functions take a double.
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 
 M_E; /* e - not standard but offered by most implementations */
 M_PI; /* pi - not standard but offered by most implementations */
@@ -627,8 +627,8 @@ To access the M_PI, etc. constants in Visual Studio, you may need to add the lin
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cmath>
 
 #ifdef M_E
@@ -667,7 +667,7 @@ int main()
 using System;
 
 class Program {
-    static void Main(string[] args) {        
+    static void Main(string[] args) {
         Console.WriteLine(Math.E); //E
         Console.WriteLine(Math.PI); //PI
         Console.WriteLine(Math.Sqrt(10)); //Square Root
@@ -715,7 +715,7 @@ Clojure does provide arbitrary precision versions as well:
 (math/abs x)
 (math/floor x)
 (math/ceil x)
-(math/expt x y) 
+(math/expt x y)
 ```
 
 
@@ -753,7 +753,7 @@ INTEGER(n) *> While not a proper floor function, it is implemented in the same w
 ADD 1 TO N
 MOVE INTEGER(N) TO Result
 *> There is no pow function, although the COMPUTE verb does have an exponention operator.
-COMPUTE Result = N ** 2 
+COMPUTE Result = N ** 2
 ```
 
 COBOL also has the following extra mathematical functions:
@@ -875,19 +875,19 @@ ELENA 4.x :
 ```elena
 import system'math;
 import extensions;
- 
+
 public program()
 {
     console.printLine(E_value);       //E
     console.printLine(Pi_value);      //PI
-    console.printLine(10.sqrt());     //Square Root        
-    console.printLine(10.ln());       //Logarithm        
+    console.printLine(10.sqrt());     //Square Root
+    console.printLine(10.ln());       //Logarithm
     console.printLine(10.log10());    // Base 10 Logarithm
-    console.printLine(10.exp());      //Exponential       
+    console.printLine(10.exp());      //Exponential
     console.printLine(10.Absolute); //Absolute value
     console.printLine(10.0r.floor()); //Floor
-    console.printLine(10.0r.ceil());  //Ceiling    
-    console.printLine(2.power(5));    //Exponentiation    
+    console.printLine(10.0r.ceil());  //Ceiling
+    console.printLine(2.power(5));    //Exponentiation
 }
 ```
 
@@ -946,13 +946,13 @@ main() ->
 	io:format("~p~n",	[math:exp(1)]		),		% e
 	io:format("~p~n",	[math:pi()]		),		% pi
 	io:format("~p~n",	[math:sqrt(16)]		),		% square root
-	io:format("~p~n",	[math:log(10)]		),		% natural logarithm			
+	io:format("~p~n",	[math:log(10)]		),		% natural logarithm
 	io:format("~p~n",	[math:log10(10)]	),		% base 10 logarithm
 	io:format("~p~n",	[math:exp(2)]		),		% e raised to the power of x
 	io:format("~p~n",	[abs(-2.24)]		),		% absolute value
 	io:format("~p~n",	[floor(3.1423)]		),		% floor
 	io:format("~p~n",	[ceil(20.125)]		),		% ceiling
-	io:format("~p~n",	[math:pow(3,2)]	        ).		% exponentiation 
+	io:format("~p~n",	[math:pow(3,2)]	        ).		% exponentiation
 
 floor(X) when X < 0 ->
 	T = trunc(X),
@@ -961,7 +961,7 @@ floor(X) when X < 0 ->
         	false -> T - 1
 	end;
 
-floor(X) -> 
+floor(X) ->
 	trunc(X).
 
 
@@ -973,7 +973,7 @@ ceil(X) ->
 	case X - T == 0 of
 		true -> T;
 		false -> T + 1
-	end.	
+	end.
 
 ```
 
@@ -1179,13 +1179,13 @@ Print M_E          '' constant "e" from C runtime library
 Print M_PI         '' constant "pi" from C runtime library
 Print Sqr(2)       '' square root function built into FB
 Print Log(M_E)     '' log to base "e" built into FB
-Print log10(10)    '' log to base 10 from C runtime library   
+Print log10(10)    '' log to base 10 from C runtime library
 Print Exp(1)       '' exponential function built into FB
 Print Abs(-1)      '' absolute value function (integers or floats) built into FB
-Print Int(-2.5)    '' floor function built into FB 
+Print Int(-2.5)    '' floor function built into FB
 Print ceil(-2.5)   '' ceiling function from C runtime library
 Print 2.5 ^ 3.5    '' exponentiation operator built into FB
-Sleep 
+Sleep
 ```
 
 
@@ -1394,7 +1394,7 @@ println 22**3.5
 ```
 
 
-Power results are not defined for all possible pairs of operands. 
+Power results are not defined for all possible pairs of operands.
 Any power operation that does not have a result returns a 64-bit IEEE NaN (Not a Number) value.
 
 ```groovy
@@ -1408,7 +1408,7 @@ NaN
 ```
 
 
-Also note that at the moment (07:00, 19 March 2011 (UTC)) Groovy (1.7.7) gives a mathematically incorrect result for "0**0". 
+Also note that at the moment (07:00, 19 March 2011 (UTC)) Groovy (1.7.7) gives a mathematically incorrect result for "0**0".
 The correct result should be "NaN", but the Groovy operation result is "1".
 
 
@@ -1471,8 +1471,8 @@ write("power: 3^3=",3^3)
 end
 ```
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers provides floor and ceiling] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers provides floor and ceiling]
 
 {{out}}
 
@@ -1551,8 +1551,8 @@ Math.pow(x,y)
 
 ## jq
 
-The mathematical functions available in jq are defined as 0-arity filters, so to evaluate the sqrt of 4, one writes <tt>4|sqrt</tt>. 
-In jq, "." refers to the output coming from the left in the pipeline. 
+The mathematical functions available in jq are defined as 0-arity filters, so to evaluate the sqrt of 4, one writes <tt>4|sqrt</tt>.
+In jq, "." refers to the output coming from the left in the pipeline.
 
 In the following, comments appear after the "#":
 ```jq
@@ -1681,8 +1681,8 @@ fun main(args: Array<String>) {
     println(Math.log10(10.0))      // log to base 10
     println(Math.exp(1.0))         // exponential
     println(Math.abs(-1))          // absolute value
-    println(Math.floor(-2.5))      // floor 
-    println(Math.ceil(-2.5))       // ceiling 
+    println(Math.floor(-2.5))      // floor
+    println(Math.ceil(-2.5))       // ceiling
     println(Math.pow(2.5, 3.5))    // power
 }
 ```
@@ -1950,7 +1950,7 @@ Module Checkit {
       Print exptype$(Abs(-2&))="Long"
       Print exptype$(Abs(-2%))="Integer"
       Print exptype$(Abs(-2.212e34))="Double"
-      
+
       Print exptype$(Sgn(-2.1#))="Integer"
       \\ Sgn return integer type
       Print exptype$(Sgn(-2.212e34))="Integer"
@@ -1967,7 +1967,7 @@ Module Checkit {
       Print Int(-2.7)=-3, Int(2.7)=2
       Print Floor(-2.7)=-3, Floor(2.7)=2
       Print Ceil(-2.7)=-2, Ceil(2.7)=3
-      
+
       Print Sqrt(4)=2
 }
 Checkit
@@ -1982,7 +1982,7 @@ Checkit
 
 
 ```Maple>
- abs(ceil(floor(ln(exp(1)^sqrt(exp(Pi*I)+1)))));      
+ abs(ceil(floor(ln(exp(1)^sqrt(exp(Pi*I)+1)))));
                                    0
 ```
 
@@ -2034,8 +2034,8 @@ exp(1)    % e
 pi        % pi
 sqrt(x)   % square root
 log(x)    % natural logarithm
-log2(x)   % logarithm base 2 
-log10(x)  % logarithm base 10 
+log2(x)   % logarithm base 2
+log10(x)  % logarithm base 10
 exp(x)    % exponential
 abs(-x)   % absolute value
 floor(x)  % floor
@@ -2255,7 +2255,7 @@ say Rexx('  10 to the power of log10' x':').left(pad)           Math.pow(10, Mat
 
 -- Extras
 say Rexx('  Cube root of' x':').left(pad)                       Math.cbrt(x)
-say Rexx('  Hypotenuse of' 3 'x' 4 'right triangle:').left(pad) Math.hypot(3, 4) 
+say Rexx('  Hypotenuse of' 3 'x' 4 'right triangle:').left(pad) Math.hypot(3, 4)
 say Rexx('  Max of' (-x) '&' x':').left(pad)                    Math.max((-x).todouble, x)
 say Rexx('  Min of' (-x) '&' x':').left(pad)                    Math.min((-x).todouble, x)
 say Rexx('  Signum of' x':').left(pad)                          Math.signum((x).todouble)
@@ -2820,7 +2820,7 @@ Write-Host ([Math]::Pow(2, 3))
 
 ```PureBasic
 Debug #E
-Debug #PI 
+Debug #PI
 Debug Sqr(f)
 Debug Log(f)
 Debug Exp(f)
@@ -2846,7 +2846,7 @@ math.exp(x)     # e raised to the power of x
 abs(x)          # absolute value
 math.floor(x)   # floor
 math.ceil(x)    # ceiling
-x ** y          # exponentiation 
+x ** y          # exponentiation
 pow(x, y[, n])  # exponentiation [, modulo n (useful in certain encryption/decryption algorithms)]
 
 # The math module constants and functions can, of course, be imported directly by:
@@ -2893,7 +2893,7 @@ pi              ; pi
 
 ## REXX
 
-REXX has no built-in functions for trig functions, square root, pi, exponential ('''e''' raised to a power), logarithms and other similar functions.  
+REXX has no built-in functions for trig functions, square root, pi, exponential ('''e''' raised to a power), logarithms and other similar functions.
 
 REXX doesn't have any built-in (math) constants.
 
@@ -3117,7 +3117,7 @@ see "sqrt(16) = " + sqrt(16) + nl
 
 
 
-###  Mathematical Constants 
+###  Mathematical Constants
 
 
 RLaB has a number of mathematical constants built-in within the list ''const''. These facilities are provided through the Gnu Science Library [[http://www.gnu.org/software/gsl]].
@@ -3132,9 +3132,9 @@ RLaB has a number of mathematical constants built-in within the list ''const''. 
 
 
 
-###  Physical Constants 
+###  Physical Constants
 
-Another list of physical constants and unit conversion factors exists and is called ''mks''. 
+Another list of physical constants and unit conversion factors exists and is called ''mks''.
 Here the conversion goes between that particular unit and the equivalent unit in, one and only, metric system.
 
 ```RLaB>>
@@ -3166,7 +3166,7 @@ Here the conversion goes between that particular unit and the equivalent unit in
 
 
 
-###  Elementary Functions 
+###  Elementary Functions
 
 
 ```RLaB>>
@@ -3267,7 +3267,7 @@ fn main() {
     x = x.abs();
     // floor (largest integer less than or equal to this number--not the same as truncate or int)
     x = x.floor();
-    // power (xy) 
+    // power (xy)
     x = x.powf(x);
 
     assert_eq!(x, 4.0);
@@ -3369,7 +3369,7 @@ n ln. "natural logarithm"
 n log: m. "arbitrary base logarithm"
 n exp. "exponential"
 n abs. "absolute value"
-n floor. 
+n floor.
 n ceiling.
 n raisedTo: anotherNumber
 ```
@@ -3387,7 +3387,7 @@ aNumber log. "base 10 logarithm"
 aNumber ln. "natural logarithm"
 aNumber exp. "exponential"
 aNumber abs. "absolute value"
-aNumber floor. 
+aNumber floor.
 aNumber ceiling.
 aNumber raisedTo: anotherNumber
 ```
@@ -3549,18 +3549,18 @@ ksh93 exposes math functions from the C math library
 ```bash
 echo $(( exp(1) ))      # e
 echo $(( acos(-1) ))    # PI
-x=5  
+x=5
 echo $(( sqrt(x) ))     # square root
 echo $(( log(x) ))      # logarithm base e
 echo $(( log2(x) ))     # logarithm base 2
 echo $(( log10(x) ))    # logarithm base 10
 echo $(( exp(x) ))      # exponential
-x=-42 
+x=-42
 echo $(( abs(x) ))      # absolute value
-x=-5.5 
+x=-5.5
 echo $(( floor(x) ))    # floor
 echo $(( ceil(x) ))     # ceiling
-x=10 y=3 
+x=10 y=3
 echo $(( pow(x,y) ))    # power
 ```
 
@@ -3580,7 +3580,7 @@ echo $(( pow(x,y) ))    # power
 -5
 1000
 ```
- 
+
 
 
 ## XPL0

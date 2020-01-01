@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task}} [[Category:Puzzles]]
-Five sailors are shipwrecked on an island and collect a large pile of coconuts during the day. 
+Five sailors are shipwrecked on an island and collect a large pile of coconuts during the day.
 
 That night the first sailor wakes up and decides to take his first share early  so tries to divide the pile of coconuts equally into five piles but finds that there is one coconut left over, so he tosses it to a monkey and then hides "his" one of the five equally sized piles of coconuts and pushes the other four piles together to form a single visible pile of coconuts again and goes to bed.
 
@@ -269,9 +269,9 @@ In the morning, each sailor gets 13020 nuts
 ## C
 
 
-```c>#include <stdio.h
+```c
+#include <stdio.h>
 
- 
 int valid(int n, int nuts)
 {
 	int k;
@@ -279,7 +279,7 @@ int valid(int n, int nuts)
 		if (nuts%n != 1) return 0;
 	return nuts && !(nuts%n);
 }
- 
+
 int main(void)
 {
 	int n, x;
@@ -306,11 +306,11 @@ int main(void)
 ```
 
 
-But it's faster to search backwards: if everyone receives some coconuts, 
+But it's faster to search backwards: if everyone receives some coconuts,
 see if we can backtrack to the original pile:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 // calculates if everyone got some nuts in the end, what was the original pile
 // returns 0 if impossible
@@ -357,8 +357,8 @@ sailers: original pile, final share
 
 {{trans|C#}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 bool valid(int n, int nuts) {
     for (int k = n; k != 0; k--, nuts -= 1 + nuts / n) {
@@ -412,9 +412,9 @@ class Test
             if (nuts % n != 1)
             {
                 return false;
-            }                
+            }
         }
-            
+
         return nuts != 0 && (nuts % n == 0);
     }
 
@@ -582,7 +582,7 @@ void main() {
 ```elixir
 defmodule RC do
   def valid?(sailor, nuts), do: valid?(sailor, nuts, sailor)
-  
+
   def valid?(sailor, nuts, 0), do: nuts > 0 and rem(nuts,sailor) == 0
   def valid?(sailor, nuts, _) when rem(nuts,sailor)!=1, do: false
   def valid?(sailor, nuts, i) do
@@ -636,7 +636,7 @@ defmodule Sailor do
   defp coconuts(sailor, nuts) do
     if n = do_coconuts(sailor, nuts, sailor), do: n, else: coconuts(sailor, nuts+sailor)
   end
-  
+
   defp do_coconuts(_sailor, nuts, 0), do: nuts
   defp do_coconuts(sailor, nuts, _) when rem(nuts, sailor-1) != 0, do: nil
   defp do_coconuts(sailor, nuts, i) do
@@ -1060,7 +1060,7 @@ def solve:
   | [-1] | until( .[1]; .[0] += 1 | .[1] = (.[0] | backwards($sailors)) )
   | "With \($sailors) sailors, there were originally \(.[1]) coconuts,"+
     " and each sailor finally ended up with \(.[0])." ;
-  
+
 range(2;9) | solve
 ```
 
@@ -1138,22 +1138,22 @@ fun main(args: Array<String>) {
     outer@ for (ns in 2..9) {
         val hidden = IntArray(ns)
         coconuts = (coconuts / ns) * ns + 1
-        while (true) {            
+        while (true) {
             var nc = coconuts
             for (s in 1..ns) {
                 if (nc % ns == 1) {
-                    hidden[s - 1] = nc / ns 
+                    hidden[s - 1] = nc / ns
                     nc -= hidden[s - 1] + 1
                     if (s == ns && nc % ns == 0) {
                         println("$ns sailors require a minimum of $coconuts coconuts")
                         for (t in 1..ns) println("\tSailor $t hides ${hidden[t - 1]}")
                         println("\tThe monkey gets $ns")
-                        println("\tFinally, each sailor takes ${nc / ns}\n")       
+                        println("\tFinally, each sailor takes ${nc / ns}\n")
                         continue@outer
                     }
-                }  
+                }
                 else break
-            } 
+            }
             coconuts += ns
         }
     }
@@ -1734,7 +1734,7 @@ You may want to read [http://paddy3118.blogspot.co.uk/2015/05/solving-monkey-and
 
 ```python
 def monkey_coconuts(sailors=5):
-    "Parameterised the number of sailors using an inner loop including the last mornings case"    
+    "Parameterised the number of sailors using an inner loop including the last mornings case"
     nuts = sailors
     while True:
         n0, wakes = nuts, []
@@ -1753,7 +1753,7 @@ if __name__ == "__main__":
     for sailors in [5, 6]:
         nuts, wake_stats = monkey_coconuts(sailors)
         print("\nFor %i sailors the initial nut count is %i" % (sailors, nuts))
-        print("On each waking, the nut count, portion taken, and monkeys share are:\n ", 
+        print("On each waking, the nut count, portion taken, and monkeys share are:\n ",
               ',\n  '.join(repr(ws) for ws in wake_stats))
 ```
 
@@ -1796,10 +1796,10 @@ def wake_and_split(n0, sailors, depth=None):
         return None
     else:
         return n0 if not depth else wake_and_split(n0 - portion - remainder, sailors, depth - 1)
-        
-    
+
+
 def monkey_coconuts(sailors=5):
-    "Parameterised the number of sailors using recursion including the last mornings case"    
+    "Parameterised the number of sailors using recursion including the last mornings case"
     nuts = sailors
     while True:
         if wake_and_split(n0=nuts, sailors=sailors) is None:
@@ -1897,7 +1897,7 @@ for sailors in range(2, 10):
 
 (define (sleep-and-split nuts sailors)
   (wake-and-split nuts sailors sailors '()))
- 
+
 (define (monkey_coconuts (sailors 5))
     (let loop ([nuts sailors])
       (or (sleep-and-split nuts sailors)
@@ -1960,8 +1960,8 @@ valid: procedure;  parse arg n,nuts              /*obtain the number sailors & c
        return (nuts\==0) & \(nuts//n\==0)        /*see if number coconuts>0 & remainder.*/
 ```
 
-Programming note:   The parentheses in the last REXX ('''return''') statement aren't necessary, but help for readability. 
- 
+Programming note:   The parentheses in the last REXX ('''return''') statement aren't necessary, but help for readability.
+
 
 '''output'''   when using the default inputs:
 
@@ -1974,7 +1974,7 @@ sailors=6   coconuts=233275
 
 
 ===uses in-line code===
-This REXX version is the same as the above version (but the defaults are different), 
+This REXX version is the same as the above version (but the defaults are different),
 
 and it also eliminates the use of a subroutine, making it faster.
 
@@ -2070,23 +2070,23 @@ func scm(sailors)
         if sm1 = 0
            m = sailors
         else
-           for n=sailors to 1000000000 step sailors    
+           for n=sailors to 1000000000 step sailors
                 m = n
-                for j=1 to sailors              
-                     if m % sm1 != 0     
-                        m = 0                     
+                for j=1 to sailors
+                     if m % sm1 != 0
+                        m = 0
                         exit
                      ok
-                     m = sailors*m/sm1+1   
+                     m = sailors*m/sm1+1
                 next
-                if m != 0 
-                   exit 
+                if m != 0
+                   exit
                 ok
            next
         ok
         see "Solution with " + sailors + " sailors: " + m + nl
-        for i=1 to sailors 
-             m = m - 1                                  
+        for i=1 to sailors
+             m = m - 1
              m = m / sailors
              see "Sailor " + i + " takes " + m + " giving 1 to the monkey and leaving " + m*sm1 + nl
              m = m * sm1
@@ -2506,11 +2506,11 @@ End Sub
 
 ```txt
 Sailors       Pile          Final share
- 2             11            1 
- 3             25            2 
- 4             765           60 
- 5             3121          204 
- 6             233275        13020 
+ 2             11            1
+ 3             25            2
+ 4             765           60
+ 5             3121          204
+ 6             233275        13020
 ```
 
 

@@ -26,7 +26,7 @@ This puzzle involves a [http://xunor.free.fr/en/riddles/auto/pyramidnb.php Pasca
 
 Each brick of the pyramid is the sum of the two bricks situated below it.
 
-Of the three missing numbers at the base of the pyramid, 
+Of the three missing numbers at the base of the pyramid,
 the middle one is the sum of the other two (that is, Y = X + Z).
 
 
@@ -43,7 +43,7 @@ The solution makes an upward run symbolically, though excluding Z. After that tw
 
 ```ada
 with Ada.Text_IO; use Ada.Text_IO;
- 
+
 procedure Pyramid_of_Numbers is
 
    B_X, B_Y, B_Z : Integer := 0; -- Unknown variables
@@ -65,7 +65,7 @@ procedure Pyramid_of_Numbers is
    begin -- Symbolically adds a value to the block
       L.Known := L.Known + R;
    end Add;
-   
+
    function Image (N : Block_Value) return String is
    begin -- The block value, when X,Y,Z are known
       return Integer'Image (N.Known + N.X * B_X + N.Y * B_Y + N.Z * B_Z);
@@ -82,7 +82,7 @@ procedure Pyramid_of_Numbers is
       end if;
       B_Z := B_Y - B_X;
    end Solve_2x2;
-   
+
    B : array (1..5, 1..5) of Block_Value; -- The lower triangle contains blocks
 
 begin
@@ -96,7 +96,7 @@ begin
          Add (B (Row, Column), B (Row + 1, Column + 1));
       end loop;
    end loop;
-   
+
    -- Now have known blocks 40=(3,1), 151=(1,1) and Y=X+Z to determine X,Y,Z
    Solve_2x2
    (  B(1,1).X, B(1,1).Y, 151 - B(1,1).Known,
@@ -193,7 +193,7 @@ FOR row FROM LWB puzzle TO UPB puzzle DO
         vec[known row] := value;
         known row +:= 1
       ),
-      (CHAR variable):SKIP 
+      (CHAR variable):SKIP
     ESAC
   OD
 OD;
@@ -554,7 +554,7 @@ WM_MOUSEMOVE() { ; monitor MouseMove events
 
 ```bbcbasic
       INSTALL @lib$ + "ARRAYLIB"
-      
+
       REM Describe the puzzle as a set of simultaneous equations:
       REM  a + b = 151
       REM  a - c = 40
@@ -568,7 +568,7 @@ WM_MOUSEMOVE() { ; monitor MouseMove events
       REM  h - z = 4
       REM  x - y + z = 0
       REM So we have 11 equations in 11 unknowns.
-      
+
       REM We can represent these equations as a matrix and a vector:
       DIM matrix(10,10), vector(10)
       matrix() = \ a, b, c, d, e, f, g, h, x, y, z
@@ -584,11 +584,11 @@ WM_MOUSEMOVE() { ; monitor MouseMove events
       \            0, 0, 0, 0, 0, 0, 0, 1, 0, 0,-1, \
       \            0, 0, 0, 0, 0, 0, 0, 0, 1,-1, 1
       vector() = 151, 40, 0, 40, 0, 0, 11, 11, 4, 4, 0
-      
+
       REM Now solve the simultaneous equations:
       PROC_invert(matrix())
       vector() = matrix().vector()
-      
+
       PRINT "X = " ; vector(8)
       PRINT "Y = " ; vector(9)
       PRINT "Z = " ; vector(10)
@@ -625,26 +625,26 @@ namespace Pyramid_of_Numbers
 			Console.SetWindowSize(80,60);
 			Console.ForegroundColor = ConsoleColor.Green;
 
-			
+
 			// Main Program Loop
 			ConsoleKeyInfo k = new ConsoleKeyInfo('Y', ConsoleKey.Y,true,true,true);
 			while (k.Key == ConsoleKey.Y)
 			{
 				Console.Clear();
-				
+
 				Console.WriteLine("----------------------------------------------");
 				Console.WriteLine(" Pyramid of Numbers / Pascal's triangle Puzzle");
 				Console.WriteLine("----------------------------------------------");
 				Console.WriteLine();
 
-				
-				
+
+
 				//
 				// Declare new Pyramid array
 				//
 				int r = 5;// Number of rows
 				int [,] Pyramid = new int[r,r];
-				
+
 				// Set initial Pyramid values
 				for (int i = 0; i < r; i++)
 				{
@@ -656,30 +656,30 @@ namespace Pyramid_of_Numbers
 				// Show info on created array
 				Console.WriteLine(" Pyramid has " + r + " rows");
 				Console.WriteLine("--------------------------------------------");
-				
+
 				// Enter Pyramid values
 				for(int i = 0; i <= r-1; i++)
 				{
 					Console.WriteLine(" Enter " + (i+1).ToString() + ". row values:");
 					Console.WriteLine("--------------------------------------------");
-					
+
 					for(int j = 0; j < i+1; j++)
 					{
 						Console.Write(" " + (j+1).ToString() + ". value = ");
 						int v = int.Parse(Console.ReadLine());
-						
+
 						Pyramid[i,j] = v;
 					}
 					Console.WriteLine("--------------------------------------------");
 				}
-				
+
 				//
 				// Show initial Pyramid values
 				//
 				Console.WriteLine();
 				Console.WriteLine(" Initial Pyramid Values ");
 				Console.WriteLine();
-				
+
 				// Show Pyramid values
 				for(int i = 0; i <= r-1; i++)
 				{
@@ -690,36 +690,36 @@ namespace Pyramid_of_Numbers
 					Console.WriteLine();
 				}
 				Console.WriteLine("--------------------------------------------");
-				
+
 				// Find solution
 				Solve_Pyramid(Pyramid);
-				
+
 				Console.WriteLine();
 				Console.Write(" Start new calculation <Y/N>  . . . ");
 				k = Console.ReadKey(true);
 			}
 		}
-		
+
                 //
                 // Solve Function
                 //
 		public static void Solve_Pyramid(int [,] Pyramid)
 		{
 			int r = 5; // Number of rows
-			
+
 			// Calculate Y
 			int a = Pyramid[r-1,1];
 			int b = Pyramid[r-1,3];
 			int c = Pyramid[0,0];
-			
+
 			int y =  (c - (4*a) - (4*b))/7;
 			Pyramid[r-1,2] = y;
-			
-			
+
+
 			// Create copy of Pyramid
 			int [,] Pyramid_Copy = new int[r,r];
 			Array.Copy(Pyramid,Pyramid_Copy,r*r);
-			
+
 			int n = 0; // solution counter
 			for(int x = 0; x < y + 1; x++)
 			{
@@ -729,7 +729,7 @@ namespace Pyramid_of_Numbers
 					{
 						Pyramid[r-1,0]   = x;
 						Pyramid[r-1,r-1] = z;
-						
+
 						// Recalculate Pyramid values
 						for(int i = r-1; i > 0; i--)
 						{
@@ -738,8 +738,8 @@ namespace Pyramid_of_Numbers
 								Pyramid[i-1,j] = Pyramid[i,j]+Pyramid[i,j+1];
 							}
 						}
-						
-						
+
+
 						// Compare Pyramid values
 						bool solved = true;
 						for(int i = 0; i < r-1; i++)
@@ -757,14 +757,14 @@ namespace Pyramid_of_Numbers
 								}
 							}
 						}
-						
+
 						if(solved)
 						{
 							n++;
 							Console.WriteLine();
 							Console.WriteLine(" Solved Pyramid Values no." + n);
 							Console.WriteLine();
-							
+
 							// Show Pyramid values
 							for(int i = 0; i <= r-1; i++)
 							{
@@ -781,12 +781,12 @@ namespace Pyramid_of_Numbers
 							Console.WriteLine();
 							Console.WriteLine("--------------------------------------------");
 						}
-						
+
 						Array.Copy(Pyramid_Copy,Pyramid,r*r);
 					}
 				}
 			}
-			
+
 			if(n == 0)
 			{
 				Console.WriteLine();
@@ -794,7 +794,7 @@ namespace Pyramid_of_Numbers
 				Console.WriteLine();
 			}
 		}
-		
+
 	}
 }
 
@@ -887,7 +887,7 @@ This solution is based upon algebraic necessities, namely that a solution exists
  *   [ x ] [ a ] [ y ] [ b ] [ z ]
  *             x + z = y
  *
- * This solution makes use of a little bit of mathematical observation, 
+ * This solution makes use of a little bit of mathematical observation,
  * such as the fact that top = 4(a+b) + 7(x+z) and mid = 2x + 2a + z.
  */
 
@@ -896,12 +896,12 @@ This solution is based upon algebraic necessities, namely that a solution exists
 
 void pascal(int a, int b, int mid, int top, int* x, int* y, int* z)
 {
-    double ytemp = (top - 4 * (a + b)) / 7.; 
+    double ytemp = (top - 4 * (a + b)) / 7.;
     if(fmod(ytemp, 1.) >= 0.0001)
-    { 
+    {
         x = 0;
         return;
-    } 
+    }
     *y = ytemp;
     *x = mid - 2 * a - *y;
     *z = *y - *x;
@@ -936,8 +936,8 @@ x: 5, y: 13, z: 8
 
 Treating relations between cells as if they were differential equations, and apply negative feedback to each cell at every iteration step.  This is how field equations with boundary conditions are solved numerically.  It is, of course, not the optimal solution for this particular task.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 void show(int *x) {
@@ -1034,7 +1034,7 @@ pass 115: 0
 ## Clojure
 
 
-X and Z are the independent variables, so first work bottom up and determine the value of each cell in the form (n0 + n1*X + n2*Z). 
+X and Z are the independent variables, so first work bottom up and determine the value of each cell in the form (n0 + n1*X + n2*Z).
 We'll use a vector [n0 n1 n2] to represent each cell.
 
 ```clojure
@@ -1303,15 +1303,15 @@ type expr struct {
     c       float64 // constant term
 }
 
-// add two expressions 
+// add two expressions
 func addExpr(a, b expr) expr {
     return expr{a.x + b.x, a.y + b.y, a.z + b.z, a.c + b.c}
-}   
-    
+}
+
 // subtract two expressions
 func subExpr(a, b expr) expr {
     return expr{a.x - b.x, a.y - b.y, a.z - b.z, a.c - b.c}
-}   
+}
 
 // multiply expression by a constant
 func mulExpr(a expr, c float64) expr {
@@ -1319,7 +1319,7 @@ func mulExpr(a expr, c float64) expr {
 }
 
 // given a row of expressions, produce the next row up, by the given
-// sum relation between blocks 
+// sum relation between blocks
 func addRow(l []expr) []expr {
     if len(l) == 0 {
         panic("wrong")
@@ -1329,9 +1329,9 @@ func addRow(l []expr) []expr {
         r[i] = addExpr(l[i], l[i+1])
     }
     return r
-}   
+}
 
-// given expression b in a variable, and expression a, 
+// given expression b in a variable, and expression a,
 // take b == 0 and substitute to remove that variable from a.
 func substX(a, b expr) expr {
     if b.x == 0 {
@@ -1405,7 +1405,7 @@ func main() {
     // remove x from third cell using xy relation
     r3[2] = substX(r3[2], xy)
     fmt.Println("middle row after substituting for x:", r3)
-    
+
     // continue applying brick sum relation to get top cell
     r2 := addRow(r3)
     fmt.Println("next row up:", r2)
@@ -1425,7 +1425,7 @@ func main() {
     // show final answers
     fmt.Println("x =", solveX(x))
     fmt.Println("y =", solveY(y))
-    fmt.Println("z =", solveZ(z)) 
+    fmt.Println("z =", solveZ(z))
 }
 ```
 
@@ -1474,7 +1474,7 @@ coeff xys x = maybe 0 id $ lookup x xys
 row n cs = [coeff cs k | k <- [1..n]]
 
 eqXYZ n = [(0, 1:(-1):1:replicate n 0)]
- 
+
 eqPyramid n h = do
   a <- [1..h-1]
   x <- [triangle (a-1) + 1 .. triangle a]
@@ -1493,7 +1493,7 @@ eqConst n fields = do
 equations :: [[String]] - ([Rational], [[Rational]])
 equations puzzle = unzip eqs where
   fields = concat puzzle
-  eqs = eqXYZ n ++ eqPyramid n h ++ eqConst n fields 
+  eqs = eqXYZ n ++ eqPyramid n h ++ eqConst n fields
   h = length puzzle
   n = length fields
 ```
@@ -1504,7 +1504,7 @@ To solve the system, any linear algebra library will do (e.g [http://hackage.has
 
 ```haskell
 normalize :: [Rational] - [Integer]
-normalize xs = [numerator (x * v) | x <- xs] where 
+normalize xs = [numerator (x * v) | x <- xs] where
   v = fromInteger $ foldr1 lcm $ map denominator $ xs
 
 run puzzle = map (normalize . drop 3) $ answer where
@@ -1527,7 +1527,7 @@ will output one special solution and modifications that lead to more solutions, 
 ```
 
 
-so for the second puzzle, not only X=1 Y=1 Z=0 is a solution, 
+so for the second puzzle, not only X=1 Y=1 Z=0 is a solution,
 but also X=1-1=0, Y=1+1=2 Z=0+2=2 etc.
 
 Note that the program doesn't attempt to verify that the puzzle is in correct form.
@@ -1576,9 +1576,9 @@ The J-sentence that solves the puzzle is:
    5 11 13  4 8
 ```
 
- 
+
 Get rid of zeros:
- 
+
 
 ```j
 ,.(1+i.5)<@{."0 1{.|."2(#~chk"2) 2(+/\)^:(<ord)"1 base/"1>,{ ;~i:28
@@ -1753,10 +1753,10 @@ Translation of Ada solution:
 
 ```nim
 import math, strutils
- 
+
 var B_X, B_Y, B_Z : int = 0
- 
-type 
+
+type
    Block_Value = object
       Known   : int
       X, Y, Z : int
@@ -1765,7 +1765,7 @@ let
    X: Block_Value = Block_Value(Known:0, X:1, Y:0, Z:0)
    Y: Block_Value = Block_Value(Known:0, X:0, Y:1, Z:0)
    Z: Block_Value = Block_Value(Known:0, X:0, Y:0, Z:1)
-      
+
 proc Add (L : var Block_Value, R : Block_Value) =
    # Symbolically adds one block to another
    L.Known = L.Known + R.Known
@@ -1775,11 +1775,11 @@ proc Add (L : var Block_Value, R : Block_Value) =
 proc Add (L: var Block_Value, R: int) =
    # Symbolically adds a value to the block
    L.Known = L.Known + R
- 
+
 proc Image (N : Block_Value): string =
    # The block value, when X,Y,Z are known
    result = $(N.Known + N.X * B_X + N.Y * B_Y + N.Z * B_Z)
- 
+
 proc Solve_2x2 (A11: int, A12:int, B1:int, A21:int, A22:int, B2: int) =
    # Don't care about things, supposing an integer solution exists
    if A22 == 0:
@@ -1789,7 +1789,7 @@ proc Solve_2x2 (A11: int, A12:int, B1:int, A21:int, A22:int, B2: int) =
       B_X = toInt((B1*A22 - B2*A12) / (A11*A22 - A21*A12))
       B_Y = toInt((B1 - A11*B_X) / A12)
    B_Z = B_Y - B_X
- 
+
 var B : array [1..5, array[1..5, Block_Value]]   # The lower triangle contains blocks
 
 # The bottom blocks
@@ -1798,21 +1798,21 @@ Add(B[5][2],11)
 Add(B[5][3],Y)
 Add(B[5][4],4)
 Add(B[5][5],Z)
- 
+
 # Upward run
 for Row in countdown(4,1):
    for Column in 1 .. Row:
       Add (B[Row][Column], B[Row + 1][Column])
       Add (B[Row][Column], B[Row + 1][Column + 1])
- 
+
 # Now have known blocks 40=[3][1], 151=[1][1] and Y=X+Z to determine X,Y,Z
-Solve_2x2( B[1][1].X, 
-           B[1][1].Y, 
-           151 - B[1][1].Known, 
-           B[3][1].X, 
-           B[3][1].Y,  
+Solve_2x2( B[1][1].X,
+           B[1][1].Y,
+           151 - B[1][1].Known,
+           B[3][1].X,
+           B[3][1].Y,
            40 - B[3][1].Known)
- 
+
 #Print the results
 for Row in 1..5:
    writeln(stdout,"")
@@ -1823,10 +1823,10 @@ for Row in 1..5:
 {{out}}
 
 ```txt
-151 
-81 70 
-40 41 29 
-16 24 17 12 
+151
+81 70
+40 41 29
+16 24 17 12
 5 11 13 4 8
 ```
 
@@ -1841,7 +1841,7 @@ functor
 
 import
   System Application FD Search
-define 
+define
 
   proc{Quest Root Rules}
 
@@ -1849,7 +1849,7 @@ define
       case Ls of nil then skip
       [] X|Xs then
         {Limit Rc Xs}
-        case X of N#V then        
+        case X of N#V then
           Rc.N =: V
         [] N1#N2#N3 then
           Rc.N1 =: Rc.N2 + Rc.N3
@@ -1857,13 +1857,13 @@ define
       end
     end
 
-    proc {Pyramid R}  
+    proc {Pyramid R}
       {FD.tuple solution 15 0#FD.sup R}  %% non-negative integers domain
   %%          01      , pyramid format
   %%        02  03
   %%      04  05  06
   %%    07  08  09  10
-  %%  11  12  13  14  15    
+  %%  11  12  13  14  15
       R.1 =: R.2 + R.3     %% constraints of Pyramid of numbers
       R.2 =: R.4 + R.5
       R.3 =: R.5 + R.6
@@ -1874,28 +1874,28 @@ define
       R.8 =: R.12 + R.13
       R.9 =: R.13 + R.14
       R.10 =: R.14 + R.15
-      
+
       {Limit R Rules}      %% additional constraints
-      
-      {FD.distribute ff R}   
+
+      {FD.distribute ff R}
     end
   in
-    {Search.base.one Pyramid Root} %% search for solution   
+    {Search.base.one Pyramid Root} %% search for solution
   end
 
-  local 
-    Root R    
+  local
+    Root R
   in
     {Quest Root [1#151 4#40 12#11 14#4 13#11#15]} %% supply additional constraint rules
     if {Length Root} >= 1 then
       R = Root.1
-      {For 1 15 1 
-        proc{$ I} 
+      {For 1 15 1
+        proc{$ I}
           if {Member I [1 3 6 10]} then
-            {System.printInfo R.I#'\n'} 
+            {System.printInfo R.I#'\n'}
           else
-            {System.printInfo R.I#' '}  
-          end     
+            {System.printInfo R.I#' '}
+          end
         end
       }
     else
@@ -2007,7 +2007,7 @@ my @tri = (1..$rows).map: { [ { x => 0, z => 0, v => 0, rhs => Nil } xx $_ ] }
 @tri[4][2]<z> = 1;
 @tri[4][3]<v> = 4;
 @tri[4][4]<z> = 1;
- 
+
 # aggregate from bottom to top
 for @tri - 2 ... 0 -> $row {
     for 0 ..^ @tri[$row] -> $col {
@@ -2059,8 +2059,8 @@ x=5, y=13, z=8
 I approached this with a view to solving general pyramid puzzles, not just the one given.
 
 ```Phix
---This little ditty converts the pyramid to rules quite nicely, however I will concede 
---that solving those two rules (18=2x+z and 73=5x+6z) and specifically converting them 
+--This little ditty converts the pyramid to rules quite nicely, however I will concede
+--that solving those two rules (18=2x+z and 73=5x+6z) and specifically converting them
 --into xrule(35=7x) and zrule(56=7z) is somewhat amateurish - suggestions welcome.
 
 sequence pyramid = {
@@ -2097,10 +2097,10 @@ for r=5 to 1 by -1 do
                             end if
             end if
         end if
-        pyramid[r][c] = prc             
+        pyramid[r][c] = prc
     end for
 end for
-    
+
 ppOpt({pp_Nest,1,pp_StrFmt,1})
 ?"equations"
 pp(pyramid)
@@ -2208,7 +2208,7 @@ Interestingly, this appears to match Python in that 40 is propagated up the tree
    (+ 11 @Y @F)
    (+ @Y 4 @G)
    (+ 4 @Z @H)
-   (+ @X @Z @Y) 
+   (+ @X @Z @Y)
    T )
 ```
 
@@ -2345,7 +2345,7 @@ def makeMatrix( constraints ):
 			row.append(float(c.get(vv, 0)))
 		row.append(-float(c.get('1',0)))
 		mtx.append(row)
-	
+
 	if len(constraints) == nvars:
 		print 'System appears solvable'
 	elif len(constraints) < nvars:
@@ -2392,7 +2392,7 @@ def MtxSolve(mtx):
 		f = 1.0/rw0[j]
 		for k in range(j, mDim+1):
 			rw0[k] *= f
-		
+
 		for l in range(1+j,mDim):
 			rwl = mtx[l]
 			f = -rwl[j]
@@ -2472,8 +2472,8 @@ for sol in p.xsolutions():
 
 (Based on the clojure version)
 
-Only X and Z are independent variables. 
-We'll use a struct (cell v x z) to represent each cell, 
+Only X and Z are independent variables.
+We'll use a struct (cell v x z) to represent each cell,
 where the value is (v + x*X + z*Z).
 
 ```Racket
@@ -2660,7 +2660,7 @@ def parse_equation(str)
     else          eqn[3] -= term.to_i
     end
   end
-  eqn 
+  eqn
 end
 
 -2.downto(-5) do |row|
@@ -2951,10 +2951,10 @@ print_matrix $solved
 x=5.0
 y=13.0
 z=8.0
-151.0                    
- 81.0 70.0               
- 40.0 41.0 29.0          
- 16.0 24.0 17.0 12.0     
+151.0
+ 81.0 70.0
+ 40.0 41.0 29.0
+ 16.0 24.0 17.0 12.0
   5.0 11.0 13.0  4.0 8.0
 ```
 
@@ -2972,8 +2972,8 @@ z=8.0
 #   [   ] [   ] [   ] [   ]
 #[ X ] [ 11] [ Y ] [ 4 ] [ Z ]
 # Known: X - Y + Z = 0
- 
-p:=T( L(151), L(Void,Void), L(40,Void,Void), L(Void,Void,Void,Void), 
+
+p:=T( L(151), L(Void,Void), L(40,Void,Void), L(Void,Void,Void,Void),
       L("X", 11, "Y", 4, "Z") );
 addlConstraint:=Dictionary( "X",1, "Y",-1, "Z",1, "1",0 );
 solvePyramid(p, addlConstraint);
@@ -2994,15 +2994,15 @@ fcn solvePyramid([List]vl,[Dictionary]cnstr){  //ListOfLists,Hash-->zip
 	 if(Void==sn) lvd[k]=vn;
 	 else constraints.append(constrainK(sn,vn));
       }
-   } 
+   }
    println("Constraint Equations:");
    constraints.pump(Console.println,fcn(hash){
       hash.pump(List,fcn([(k,v)]){"%d*%s".fmt(v,k)}).concat(" + ") + " = 0"
    });
- 
+
    mtx,vmap:=makeMatrix(constraints);
    mtxSolve(mtx);
- 
+
    d:=vmap.len();
    foreach j in (d){ println(vmap[j]," = ", mtx[j][d]); }
 }
@@ -3017,13 +3017,13 @@ fcn combine(snl,snr){ //Int|String|Hash *2 --> new Hash
    if(snl.isInstanceOf(Int))         cl["1"]=snl;
    else if(snl.isInstanceOf(String)) cl[snl]=1;
    else				     cl     =snl.copy();
- 
+
    if(snr.isInstanceOf(Int))         cl["1"]=cl.find("1",0) + snr;
    else if(snr.isInstanceOf(String)) cl[snr]=cl.find(snr,0) + 1;
    else{ foreach k,v in (snr){ 	     cl[k]  =cl.find(k,0)   + v; } }
    return(cl.makeReadOnly())
 }
- 
+
     //-->(listMatrix(row(X,Y,Z,c),row...),List("X","Y","Z"))
 fcn makeMatrix([Dictionary]constraints){
    vmap:=Dictionary();// create a sorted list of the variable names in constraints
@@ -3040,8 +3040,8 @@ fcn makeMatrix([Dictionary]constraints){
    else if(constraints.len()<nvars)
       println("System is not solvable - needs more constraints.");
    return(mtx,vmap);
-} 
- 
+}
+
 fcn mtxSolve([List]mtx){ //munge mtx	# Simple Matrix solver...
    mDim:=mtx.len();			# num rows
    foreach j in (mDim){

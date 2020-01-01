@@ -427,7 +427,9 @@ int main() { }
 This is technically undefined behavior but on 8086 compatible processors <code>195</code> corresponds to the <code>ret</code> assembly instruction.
 {{works with|C on 8086 compatible processors}}
 
-```c>const main = 195;</lang
+```c
+const main = 195;
+```
 
 
 =={{header|C sharp|C#}}==

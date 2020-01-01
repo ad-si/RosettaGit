@@ -14,10 +14,10 @@ tags = []
 
 
 ;Definition:
-A factorion is a natural number that equals the sum of the factorials of its digits. 
+A factorion is a natural number that equals the sum of the factorials of its digits.
 
 
-;Example: 
+;Example:
 '''145'''   is a factorion in base '''10''' because:
 <b>
           <big> 1! + 4! + 5!   =   1 + 24 + 120   =   145 </big>
@@ -31,7 +31,7 @@ It can be shown (see the Wikipedia article below) that no factorion in base '''1
 Write a program in your language to demonstrate, by calculating and printing out the factorions, that shows:
 :*   There are   '''3'''   factorions in base   '''9'''
 :*   There are   '''4'''   factorions in base '''10'''
-:*   There are   '''5'''   factorions in base '''11''' 
+:*   There are   '''5'''   factorions in base '''11'''
 :*   There are   '''2'''   factorions in base '''12'''     (up to the same upper bound as for base '''10''')
 
 
@@ -137,10 +137,10 @@ base 12 factorions: 1 2
 
 {{trans|Go}}
 
-```c>#include <stdio.h
+```c
+#include <stdio.h>
 
-
-int main() {    
+int main() {
     int n, b, d;
     unsigned long long i, j, sum, fact[12];
     // cache factorials from 0 to 11
@@ -173,16 +173,16 @@ int main() {
 ```txt
 
 The factorions for base 9 are:
-1 2 41282 
+1 2 41282
 
 The factorions for base 10 are:
-1 2 145 40585 
+1 2 145 40585
 
 The factorions for base 11 are:
-1 2 26 48 40472 
+1 2 26 48 40472
 
 The factorions for base 12 are:
-1 2 
+1 2
 
 ```
 
@@ -215,16 +215,16 @@ MEMO: factorial ( n -- n! ) [ 1 ] [ [1,b] product ] if-zero ;
 ```txt
 
 The factorions for base 9 are:
-1 2 41282 
+1 2 41282
 
 The factorions for base 10 are:
-1 2 145 40585 
+1 2 145 40585
 
 The factorions for base 11 are:
-1 2 26 48 40472 
+1 2 26 48 40472
 
 The factorions for base 12 are:
-1 2 
+1 2
 
 ```
 
@@ -284,16 +284,16 @@ func main() {
 ```txt
 
 The factorions for base 9 are:
-1 2 41282 
+1 2 41282
 
 The factorions for base 10 are:
-1 2 145 40585 
+1 2 145 40585
 
 The factorions for base 11 are:
-1 2 26 48 40472 
+1 2 26 48 40472
 
 The factorions for base 12 are:
-1 2 
+1 2
 
 ```
 
@@ -603,13 +603,13 @@ The factorions for base 12 are:
 ```txt
 
 The factorions for base 9 are:
-1 2 41282 
+1 2 41282
 The factorions for base 10 are:
-1 2 145 40585 
+1 2 145 40585
 The factorions for base 11 are:
-1 2 26 48 40472 
+1 2 26 48 40472
 The factorions for base 12 are:
-1 2 
+1 2
 
 ```
 

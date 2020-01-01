@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task}}
-Produce a graphical representation of a [[wp:Sierpinski triangle|Sierpinski triangle]] of order N in any orientation.  
+Produce a graphical representation of a [[wp:Sierpinski triangle|Sierpinski triangle]] of order N in any orientation.
 
 An example of Sierpinski's triangle (order = 8) looks like this: <br/><br/>
 [[File:Sierpinski_Triangle_Unicon.PNG]]
@@ -24,18 +24,18 @@ SierpinskiTriangle class:
 ```ActionScript3
 
 package {
-    
+
     import flash.display.GraphicsPathCommand;
     import flash.display.Sprite;
-    
+
     /**
      * A Sierpinski triangle.
      */
     public class SierpinskiTriangle extends Sprite {
-        
+
         /**
          * Creates a new SierpinskiTriangle object.
-         * 
+         *
          * @param n The order of the Sierpinski triangle.
          * @param c1 The background colour.
          * @param c2 The foreground colour.
@@ -45,10 +45,10 @@ package {
         public function SierpinskiTriangle(n:uint, c1:uint, c2:uint, width:Number, height:Number):void {
             _init(n, c1, c2, width, height);
         }
-        
+
         /**
          * Generates the triangle.
-         * 
+         *
          * @param n The order of the Sierpinski triangle.
          * @param c1 The background colour.
          * @param c2 The foreground colour.
@@ -57,49 +57,49 @@ package {
          * @private
          */
         private function _init(n:uint, c1:uint, c2:uint, width:Number, height:Number):void {
-            
+
             if ( n <= 0 )
                 return;
-                
+
             // Draw the outer triangle.
-            
+
             graphics.beginFill(c1);
             graphics.moveTo(width / 2, 0);
             graphics.lineTo(0, height);
             graphics.lineTo(width, height);
             graphics.lineTo(width / 2, 0);
-            
+
             // Draw the inner triangle.
-            
+
             graphics.beginFill(c2);
             graphics.moveTo(width / 4, height / 2);
             graphics.lineTo(width * 3 / 4, height / 2);
             graphics.lineTo(width / 2, height);
             graphics.lineTo(width / 4, height / 2);
-            
+
             if ( n == 1 )
                 return;
-            
-            // Recursively generate three Sierpinski triangles of half the size and order n - 1 and position them appropriately.    
-            
+
+            // Recursively generate three Sierpinski triangles of half the size and order n - 1 and position them appropriately.
+
             var sub1:SierpinskiTriangle = new SierpinskiTriangle(n - 1, c1, c2, width / 2, height / 2);
             var sub2:SierpinskiTriangle = new SierpinskiTriangle(n - 1, c1, c2, width / 2, height / 2);
             var sub3:SierpinskiTriangle = new SierpinskiTriangle(n - 1, c1, c2, width / 2, height / 2);
-            
+
             sub1.x = width / 4;
             sub1.y = 0;
             sub2.x = 0;
             sub2.y = height / 2;
             sub3.x = width / 2;
             sub3.y = height / 2;
-            
+
             addChild(sub1);
             addChild(sub2);
             addChild(sub3);
-            
+
         }
-        
-    } 
+
+    }
 
 }
 
@@ -111,24 +111,24 @@ Document class:
 ```ActionScript3
 
 package {
-	
+
     import flash.display.Sprite;
     import flash.events.Event;
-    
+
     public class Main extends Sprite {
-        
+
         public function Main():void {
             if ( stage ) init();
             else addEventListener(Event.ADDED_TO_STAGE, init);
         }
-        
+
         private function init(e:Event = null):void {
             var s:SierpinskiTriangle = new SierpinskiTriangle(5, 0x0000FF, 0xFFFF00, 300, 150 * Math.sqrt(3));
             // Equilateral triangle (blue and yellow)
             s.x = s.y = 20;
             addChild(s);
         }
-        
+
     }
 
 }
@@ -150,7 +150,7 @@ path subtriangle(path p, real node) {
         point(p, node - 1/2) --
         cycle;
 }
- 
+
 void sierpinski(path p, int order) {
     if (order == 0)
         fill(p);
@@ -160,7 +160,7 @@ void sierpinski(path p, int order) {
         sierpinski(subtriangle(p, 2), order - 1);
     }
 }
- 
+
 sierpinski((0, 0) -- (5 inch, 1 inch) -- (2 inch, 6 inch) -- cycle, 10);
 ```
 
@@ -185,7 +185,7 @@ extern fun triangle_remove(A: point, B: point, C: point): void = "mac#"
 extern fun sdl_drawline(x1: int, y1: int, x2: int, y2: int): void = "ext#sdl_drawline"
 
 extern fun line(A: point, B: point): void
-  
+
 extern fun ats_tredraw(): void = "mac#ats_tredraw"
 
 implement midpoint(A, B) = (xmid, ymid) where {
@@ -410,32 +410,32 @@ WM_LBUTTONDOWN()
 [[file:sierp-tri-c.png|thumb|center|128px]]Code lifted from [[Dragon curve]].  Given a depth n, draws a triangle of size 2^n in a PNM file to the standard output.  Usage: <code>gcc -lm stuff.c -o sierp; ./sierp 9 > triangle.pnm</code>.  Sample image generated with depth 9.  Generated image's size depends on the depth: it plots dots, but does not draw lines, so a large size with low depth is not possible.
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
- 
+
 long long x, y, dx, dy, scale, clen, cscale;
 typedef struct { double r, g, b; } rgb;
 rgb ** pix;
- 
+
 void sc_up()
 {
 	scale *= 2; x *= 2; y *= 2;
 	cscale *= 3;
 }
- 
+
 void h_rgb(long long x, long long y)
 {
 	rgb *p = &pix[y][x];
- 
+
 #	define SAT 1
 	double h = 6.0 * clen / cscale;
 	double VAL = 1;
 	double c = SAT * VAL;
 	double X = c * (1 - fabs(fmod(h, 2) - 1));
- 
+
 	switch((int)h) {
 	case 0: p->r += c; p->g += X; return;
 	case 1:	p->r += X; p->g += c; return;
@@ -446,7 +446,7 @@ void h_rgb(long long x, long long y)
 		p->r += c; p->b += X;
 	}
 }
- 
+
 void iter_string(const char * str, int d)
 {
 	long long len;
@@ -480,48 +480,48 @@ void iter_string(const char * str, int d)
 		}
 	}
 }
- 
+
 void sierp(long leng, int depth)
 {
 	long i;
 	long h = leng + 20, w = leng + 20;
- 
+
 	/* allocate pixel buffer */
 	rgb *buf = malloc(sizeof(rgb) * w * h);
 	pix = malloc(sizeof(rgb *) * h);
 	for (i = 0; i < h; i++)
 		pix[i] = buf + w * i;
 	memset(buf, 0, sizeof(rgb) * w * h);
- 
+
         /* init coords; scale up to desired; exec string */
 	x = y = 10; dx = leng; dy = leng; scale = 1; clen = 0; cscale = 3;
 	for (i = 0; i < depth; i++) sc_up();
 	iter_string("VXH", depth);
- 
+
 	/* write color PNM file */
 	unsigned char *fpix = malloc(w * h * 3);
 	double maxv = 0, *dbuf = (double*)buf;
- 
+
 	for (i = 3 * w * h - 1; i >= 0; i--)
 		if (dbuf[i] > maxv) maxv = dbuf[i];
 	for (i = 3 * h * w - 1; i >= 0; i--)
 		fpix[i] = 255 * dbuf[i] / maxv;
- 
+
 	printf("P6\n%ld %ld\n255\n", w, h);
 	fflush(stdout); /* printf and fwrite may treat buffer differently */
 	fwrite(fpix, h * w * 3, 1, stdout);
 }
- 
+
 int main(int c, char ** v)
 {
 	int size, depth;
- 
+
 	depth  = (c > 1) ? atoi(v[1]) : 10;
 	size = 1 << depth;
- 
+
 	fprintf(stderr, "size: %d depth: %d\n", size, depth);
 	sierp(size, depth + 2);
- 
+
 	return 0;
 }
 ```
@@ -537,9 +537,9 @@ int main(int c, char ** v)
 #include <windows.h>
 #include <string>
 #include <iostream>
- 
+
 const int BMP_SIZE = 612;
- 
+
 class myBitmap {
 public:
     myBitmap() : pen( NULL ), brush( NULL ), clr( 0 ), wid( 1 ) {}
@@ -600,7 +600,7 @@ public:
         fileheader.bfOffBits = sizeof( infoheader.bmiHeader ) + sizeof( BITMAPFILEHEADER );
         fileheader.bfSize    = fileheader.bfOffBits + infoheader.bmiHeader.biSizeImage;
         GetDIBits( hdc, bmp, 0, height, ( LPVOID )dwpBits, &infoheader, DIB_RGB_COLORS );
-        HANDLE file = CreateFile( path.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 
+        HANDLE file = CreateFile( path.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS,
                                   FILE_ATTRIBUTE_NORMAL, NULL );
         WriteFile( file, &fileheader, sizeof( BITMAPFILEHEADER ), &wb, NULL );
         WriteFile( file, &infoheader.bmiHeader, sizeof( infoheader.bmiHeader ), &wb, NULL );
@@ -627,15 +627,15 @@ public:
     void draw( int o ) {
         colors[0] = 0xff0000; colors[1] = 0x00ff33; colors[2] = 0x0033ff;
         colors[3] = 0xffff00; colors[4] = 0x00ffff; colors[5] = 0xffffff;
-        bmp.create( BMP_SIZE, BMP_SIZE ); HDC dc = bmp.getDC(); 
+        bmp.create( BMP_SIZE, BMP_SIZE ); HDC dc = bmp.getDC();
         drawTri( dc, 0, 0, ( float )BMP_SIZE, ( float )BMP_SIZE, o / 2 );
-        bmp.setPenColor( colors[0] ); MoveToEx( dc, BMP_SIZE >> 1, 0, NULL ); 
+        bmp.setPenColor( colors[0] ); MoveToEx( dc, BMP_SIZE >> 1, 0, NULL );
         LineTo( dc, 0, BMP_SIZE - 1 ); LineTo( dc, BMP_SIZE - 1, BMP_SIZE - 1 );
         LineTo( dc, BMP_SIZE >> 1, 0 ); bmp.saveBitmap( "./st.bmp" );
     }
 private:
     void drawTri( HDC dc, float l, float t, float r, float b, int i ) {
-        float w = r - l, h = b - t, hh = h / 2.f, ww = w / 4.f; 
+        float w = r - l, h = b - t, hh = h / 2.f, ww = w / 4.f;
         if( i ) {
             drawTri( dc, l + ww, t, l + ww * 3.f, t + hh, i - 1 );
             drawTri( dc, l, t + hh, l + w / 2.f, t + h, i - 1 );
@@ -947,10 +947,10 @@ link wopen
 
 procedure main(A)
    local width, margin, x, y
-   
+
    width := 2 ^ (order := (0 < integer(\A[1])) | 8)
    wsize := width + 2 * (margin := 30 )
-   WOpen("label=Sierpinski", "size="||wsize||","||wsize) | 
+   WOpen("label=Sierpinski", "size="||wsize||","||wsize) |
       stop("*** cannot open window")
 
    every y := 0 to width - 1 do
@@ -961,7 +961,7 @@ procedure main(A)
 end
 ```
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/gprogs/sier1.icn Original source IPL Graphics/sier1.]
 
 =={{header|IS-BASIC}}==
@@ -1021,7 +1021,7 @@ import java.awt.*;
 * defaults to 3
 *
 * @author Istarnion
-*/ 
+*/
 
 class SierpinskyTriangle {
 
@@ -1210,7 +1210,7 @@ function pSierpinskiT() {
 </script></head>
 <body style="font-family: arial, helvatica, sans-serif;">
   <b>Please click to start and/or change color: </b>
-  <input type="button" value=" Plot it! " onclick="pSierpinskiT();">  
+  <input type="button" value=" Plot it! " onclick="pSierpinskiT();">
   <h3>Sierpinski triangle fractal</h3>
   <canvas id="cvsId" width="640" height="640" style="border: 2px inset;"></canvas>
   <!--canvas id="cvsId" width="1280" height="1280" style="border: 2px inset;"></canvas-->
@@ -1372,7 +1372,7 @@ end sub
 ```
 
 Up to order 10 displays on a 1080 vertical pixel screen.
- 
+
 
 
 ## Logo
@@ -1426,9 +1426,9 @@ end
 ```Mathematica
 Sierpinski[n_] :=Nest[Flatten[Table[{{
        #[[i, 1]], (#[[i, 1]] + #[[i, 2]])/2, (#[[i, 1]] + #[[i, 3]])/
-        2}, {(#[[i, 1]] + #[[i, 2]])/2, #[[i, 
+        2}, {(#[[i, 1]] + #[[i, 2]])/2, #[[i,
         2]], (#[[i, 2]] + #[[i, 3]])/2}, {(#[[i, 1]] + #[[i, 3]])/
-        2, (#[[i, 2]] + #[[i, 3]])/2, #[[i, 3]]}}, {i, Length[#]}], 
+        2, (#[[i, 2]] + #[[i, 3]])/2, #[[i, 3]]}}, {i, Length[#]}],
     1] &, {{{0, 0}, {1/2, 1}, {1, 0}}}, n]
 
 Show[Graphics[{Opacity[1], Black, Map[Polygon, Sierpinski[8], 1]}, AspectRatio -> 1]]
@@ -1495,22 +1495,22 @@ class Test {
   @framework : GameFramework;
   @colors : Color[];
   @step : Int;
-  
+
   function : Main(args : String[]) ~ Nil {
     Test->New()->Run();
   }
-  
+
   New() {
     @framework := GameFramework->New(GameConsts->SCREEN_WIDTH, GameConsts->SCREEN_HEIGHT, "Sierpinski Triangle");
     @framework->SetClearColor(Color->New(0,0,0));
     @colors := Color->New[1];
     @colors[0] := Color->New(178,34,34);
   }
-  
+
   method : Run() ~ Nil {
     if(@framework->IsOk()) {
       e := @framework->GetEvent();
-      
+
       quit := false;
       while(<>quit) {
         # process input
@@ -1523,7 +1523,7 @@ class Test {
         @framework->FrameStart();
         @framework->Clear();
         Render(8, 20, 20, 450);
-        @framework->Show();        
+        @framework->Show();
         @framework->FrameEnd();
       };
     }
@@ -1540,7 +1540,7 @@ class Test {
   method : Render(level : Int, x : Int, y : Int, size : Int) ~ Nil {
     if(level > -1) {
       renderer := @framework->GetRenderer();
-      
+
       renderer->LineColor(x, y, x+size, y, @colors[0]);
       renderer->LineColor(x, y, x, y+size, @colors[0]);
       renderer->LineColor(x+size, y, x, y+size, @colors[0]);
@@ -1629,7 +1629,7 @@ run with:
 ```parigp
 
 \\ Sierpinski triangle fractal
-\\ Note: plotmat() can be found here on 
+\\ Note: plotmat() can be found here on
 \\ http://rosettacode.org/wiki/Brownian_tree#PARI.2FGP page.
 \\ 6/3/16 aev
 pSierpinskiT(n)={
@@ -1642,8 +1642,8 @@ pSierpinskiT(9); \\ SierpT9.png
 }
 
 ```
- 
-   
+
+
 {{Output}}
 
 
@@ -1865,7 +1865,7 @@ Slight modification of the [[Sierpinski_triangle#PicoLisp|text version]], requir
                (mapcar '((X) (pack X "0" X)) D) )
             S (pack S S) ) )
       D ) )
- 
+
 (out '(display -)
    (let Img (sierpinski 7)
       (prinl "P1")
@@ -2156,7 +2156,7 @@ pSierpinskiT <- function(ord, fn="", ttl="", clr="navy") {
   }}
   plotmat(M, pf, clr, ttl);
   cat(" *** END", abbr, date(), "\n");
-}  
+}
 ## Executing:
 pSierpinskiT(6,,,"red");
 pSierpinskiT(8);
@@ -2168,15 +2168,15 @@ pSierpinskiT(8);
 ```txt
 
 > pSierpinskiT(6,,,"red");
- *** START STR Sat Apr 01 21:45:23 2017 
- *** Plot file: STRo6 .png title: Sierpinski triangle, order 6 
+ *** START STR Sat Apr 01 21:45:23 2017
+ *** Plot file: STRo6 .png title: Sierpinski triangle, order 6
  *** Matrix( 64 x 64 ) 728 DOTS
- *** END STR Sat Apr 01 21:45:23 2017 
+ *** END STR Sat Apr 01 21:45:23 2017
 > pSierpinskiT(8)
- *** START STR Sat Apr 01 21:59:06 2017 
- *** Plot file: STRo8 .png title: Sierpinski triangle, order 8 
+ *** START STR Sat Apr 01 21:59:06 2017
+ *** Plot file: STRo8 .png title: Sierpinski triangle, order 8
  *** Matrix( 256 x 256 ) 6560 DOTS
- *** END STR Sat Apr 01 21:59:07 2017 
+ *** END STR Sat Apr 01 21:59:07 2017
 
 ```
 
@@ -2219,7 +2219,7 @@ Test:
 
 load "guilib.ring"
 
-new qapp 
+new qapp
     {
     win1 = new qwidget() {
            setwindowtitle("drawing using qpainter")
@@ -2330,7 +2330,7 @@ graphic #g, 300,300
 order = 8
 width = 100
 w     = width * 11
-dim canvas(w,w)  
+dim canvas(w,w)
 canvas(1,1) = 1
 
 for x = 2 to 2^order -1
@@ -2530,11 +2530,11 @@ clear window
 sub SierLineTri(x1, y1, x2, y2, x3, y3, maxDepth)
   local mx1, mx2, mx3, my1, my2, my3, ptcount, depth, i, X, Y
   Y = 1
- 
+
   //load given set of 3 points into oa = outer triangles array, ia = inner triangles array
   ptCount = 3
   depth = 1
- 
+
   dim oa(ptCount - 1, 1) //the outer points array
   oa(0, X) = x1
   oa(0, Y) = y1
@@ -2542,10 +2542,10 @@ sub SierLineTri(x1, y1, x2, y2, x3, y3, maxDepth)
   oa(1, Y) = y2
   oa(2, X) = x3
   oa(2, Y) = y3
- 
+
   dim ia(3 * ptCount - 1, 1) //the inner points array
   iaIndex = 0
- 
+
 while(depth <= maxDepth)
   for i=0 to ptCount-1 step 3 //draw outer triangles at this level
     if depth = 1 then
@@ -2553,20 +2553,20 @@ while(depth <= maxDepth)
       line oa(i+1,X), oa(i+1,Y), oa(i+2,X), oa(i+2,Y)
       line oa(i,X),     oa(i,Y), oa(i+2,X), oa(i+2,Y)
     end if
- 
+
     if oa(i+1,X) < oa(i,X)   then mx1 = (oa(i,X) - oa(i+1,X))/2 + oa(i+1,X) else mx1 = (oa(i+1,X) - oa(i,X))/2 + oa(i,X) endif
     if oa(i+1,Y) < oa(i,Y)   then my1 = (oa(i,Y) - oa(i+1,Y))/2 + oa(i+1,Y) else my1 = (oa(i+1,Y) - oa(i,Y))/2 + oa(i,Y) endif
     if oa(i+2,X) < oa(i+1,X) then mx2 = (oa(i+1,X)-oa(i+2,X))/2 + oa(i+2,X) else mx2 = (oa(i+2,X)-oa(i+1,X))/2 + oa(i+1,X) endif
     if oa(i+2,Y) < oa(i+1,Y) then my2 = (oa(i+1,Y)-oa(i+2,Y))/2 + oa(i+2,Y) else my2 = (oa(i+2,Y)-oa(i+1,Y))/2 + oa(i+1,Y) endif
     if oa(i+2,X) < oa(i,X)   then mx3 = (oa(i,X) - oa(i+2,X))/2 + oa(i+2,X) else mx3 = (oa(i+2,X) - oa(i,X))/2 + oa(i,X) endif
     if oa(i+2,Y) < oa(i,Y)   then my3 = (oa(i,Y) - oa(i+2,Y))/2 + oa(i+2,Y) else my3 = (oa(i+2,Y) - oa(i,Y))/2 + oa(i,Y) endif
-   
+
     //color 9 //testing
     //draw all inner triangles
     line mx1, my1, mx2, my2
     line mx2, my2, mx3, my3
     line mx1, my1, mx3, my3
-   
+
     //x1, y1 with mx1, my1 and mx3, my3
     ia(iaIndex,X) = oa(i,X)
     ia(iaIndex,Y) = oa(i,Y) : iaIndex = iaIndex + 1
@@ -2574,7 +2574,7 @@ while(depth <= maxDepth)
     ia(iaIndex,Y) = my1     : iaIndex = iaIndex + 1
     ia(iaIndex,X) = mx3
     ia(iaIndex,Y) = my3     : iaIndex = iaIndex + 1
-   
+
     //x2, y2 with mx1, my1 and mx2, my2
     ia(iaIndex,X) = oa(i+1,X)
     ia(iaIndex,Y) = oa(i+1,Y) : iaIndex = iaIndex + 1
@@ -2582,7 +2582,7 @@ while(depth <= maxDepth)
     ia(iaIndex,Y) = my1       : iaIndex = iaIndex + 1
     ia(iaIndex,X) = mx2
     ia(iaIndex,Y) = my2       : iaIndex = iaIndex + 1
-   
+
     //x3, y3 with mx3, my3 and mx2, my2
     ia(iaIndex,X) = oa(i+2,X)
     ia(iaIndex,Y) = oa(i+2,Y) : iaIndex = iaIndex + 1
@@ -2590,9 +2590,9 @@ while(depth <= maxDepth)
     ia(iaIndex,Y) = my2       : iaIndex = iaIndex + 1
     ia(iaIndex,X) = mx3
     ia(iaIndex,Y) = my3       : iaIndex = iaIndex + 1
-   
+
   next i
-   
+
   //update and prepare for next level
   ptCount = ptCount * 3
   depth = depth + 1
@@ -2628,7 +2628,7 @@ window origin "lb"
 
 sub SierpinskyTriangle(level, x, y, w, h)
     local w2, w4, h2
-    
+
     w2 = w/2 : w4 = w/4 : h2 = h/2
     if level=1 then
         new curve

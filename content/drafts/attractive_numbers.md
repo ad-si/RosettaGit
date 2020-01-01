@@ -92,8 +92,8 @@ attractive numbers from 1-120:
 
 {{trans|Go}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -125,13 +125,13 @@ int count_prime_factors(int n) {
             n /= f;
             if (n == 1) return count;
             if (is_prime(n)) f = n;
-        } 
+        }
         else if (f >= 3) f += 2;
         else f = 3;
     }
 }
 
-int main() {    
+int main() {
     int i, n, count = 0;
     printf("The attractive numbers up to and including %d are:\n", MAX);
     for (i = 1; i <= MAX; ++i) {
@@ -142,7 +142,7 @@ int main() {
         }
     }
     printf("\n");
-    return 0;  
+    return 0;
 }
 ```
 
@@ -165,15 +165,15 @@ The attractive numbers up to and including 120 are:
 
 {{trans|C}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iomanip>
 
 #define MAX 120
 
 using namespace std;
 
-bool is_prime(int n) {   
+bool is_prime(int n) {
     if (n < 2) return false;
     if (!(n % 2)) return n == 2;
     if (!(n % 3)) return n == 3;
@@ -187,7 +187,7 @@ bool is_prime(int n) {
     return true;
 }
 
-int count_prime_factors(int n) {    
+int count_prime_factors(int n) {
     if (n == 1) return 0;
     if (is_prime(n)) return 1;
     int count = 0, f = 2;
@@ -197,7 +197,7 @@ int count_prime_factors(int n) {
             n /= f;
             if (n == 1) return count;
             if (is_prime(n)) f = n;
-        } 
+        }
         else if (f >= 3) f += 2;
         else f = 3;
     }
@@ -438,7 +438,7 @@ Function ContandoFactoresPrimos(n As Integer) As Integer
             If esPrimo(n) Then f = n
         Elseif f >= 3 Then
             f += 2
-        Else 
+        Else
             f = 3
         End If
     Wend
@@ -547,7 +547,7 @@ func main() {
             if count % 20 == 0 {
                 fmt.Println()
             }
-        }       
+        }
     }
     fmt.Println()
 }
@@ -655,7 +655,7 @@ import Data.Numbers.Primes
 attractiveNumbers :: [Integer]
 attractiveNumbers =
   [ x
-  | x <- [1 ..] 
+  | x <- [1 ..]
   , isPrime (length (primeFactors x)) ]
 
 main :: IO ()
@@ -760,11 +760,11 @@ The attractive numbers up to and including 120 are:
 using Primes
 
 # oneliner is println("The attractive numbers from 1 to 120 are:\n", filter(x -> isprime(sum(values(factor(x)))), 1:120))
- 
+
 isattractive(n) = isprime(sum(values(factor(n))))
- 
+
 printattractive(m, n) = println("The attractive numbers from $m to $n are:\n", filter(isattractive, m:n))
- 
+
 printattractive(1, 120)
 
 ```
@@ -1367,7 +1367,7 @@ There are 617,552 attractive numbers up to 1,000,000 (4.1s)
 ```Python
 from sympy import sieve # library for primes
 
-def get_pfct(n): 
+def get_pfct(n):
 	i = 2; factors = []
 	while i * i <= n:
 		if n % i:
@@ -1377,7 +1377,7 @@ def get_pfct(n):
 			factors.append(i)
 	if n > 1:
 		factors.append(n)
-	return len(factors) 
+	return len(factors)
 
 sieve.extend(110) # first 110 primes...
 primes=sieve._list
@@ -1551,12 +1551,12 @@ if __name__ == '__main__':
 
 ## REXX
 
-Programming notes: 
-The use of a table that contains some low primes is one fast method to test for primality of the 
+Programming notes:
+The use of a table that contains some low primes is one fast method to test for primality of the
 
-various prime factors. 
+various prime factors.
 
-The   '''cFact'''   (count factors)   function   is optimized way beyond what this task requires,   and it can be optimized 
+The   '''cFact'''   (count factors)   function   is optimized way beyond what this task requires,   and it can be optimized
 
 further by expanding the     '''do while'''s     clauses   (lines   3──►6   in the   '''cFact'''   function).
 
@@ -1609,8 +1609,8 @@ genP: procedure expose @.; parse arg n;           @.=0;         @.2= 1;     @.3=
         end   /*j*/;          return             /* [↑]  generate  N  primes.           */
 ```
 
-This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the 
-screen width (or linesize) of the terminal (console).  
+This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the
+screen width (or linesize) of the terminal (console).
 
 Some REXXes don't have this BIF.   It is used here to automatically/idiomatically limit the width of the output list.
 
@@ -1678,7 +1678,7 @@ for i = 1 to nump
        end
     ok
 next
-if isPrime(len(decomp)) 
+if isPrime(len(decomp))
    see string(nump) + " = ["
 for n = 1 to len(decomp)
     if n < len(decomp)
@@ -1690,7 +1690,7 @@ next
 ok
 end
 
- 
+
 func isPrime(num)
      if (num <= 1) return 0 ok
      if (num % 2 = 0) and num != 2 return 0 ok
@@ -1743,7 +1743,7 @@ Attractive Numbers up to 120:
 
 ```ruby
 require "prime"
- 
+
 p (1..120).select{|n| n.prime_division.sum(&:last).prime? }
 
 ```

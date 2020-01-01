@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{draft task}} 
+{{draft task}}
 An [[wp:Addition_chain|addition chain]]  of length r for n is a sequence 1 = a(0) < a(1) < a(2) ... < a(r) = n , such as a(k) = a(i) + a(j) ( i < k and j < k , i may be = j) . Each member is the sum of two earlier members, not necessarily distincts.
 
 A [[wp:Addition_chain#Brauer_chain|Brauer chain]] for n is an addition chain where a(k) = a(k-1) + a(j) with j < k. Each member uses the previous member as a summand.
@@ -41,8 +41,8 @@ Extra-credit: Same task for n in {47, 79, 191, 382 , 379, 12509}
 
 {{trans|Kotlin}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -94,7 +94,7 @@ pair checkSeq(int pos, int seq[], int n, int len, int minLen) {
 pair tryPerm(int i, int pos, int seq[], int n, int len, int minLen) {
     int *seq2;
     pair p, res1, res2;
-    size_t size = sizeof(int);    
+    size_t size = sizeof(int);
     if (i > pos) {
         p.x = minLen; p.y = 0;
         return p;
@@ -210,7 +210,7 @@ void findBrauer(int num, int minLen, int nbLimit) {
     }
     if (example != NULL) {
         free(example);
-        example = NULL; 
+        example = NULL;
         exampleLen = 0;
     }
     if (num <= nbLimit) {
@@ -222,7 +222,7 @@ void findBrauer(int num, int minLen, int nbLimit) {
         }
         if (example != NULL) {
             free(example);
-            example = NULL; 
+            example = NULL;
             exampleLen = 0;
         }
     }
@@ -333,8 +333,8 @@ Non-Brauer analysis suppressed
 While this worked, something made it run extremely slow.
 {{trans|D}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <tuple>
 #include <vector>
 
@@ -657,30 +657,30 @@ Number of minimum length Brauer chains: 6583
 
 (define (register-hit chain lg  )
 (define idx (if (brauer? chain lg) 0 1))
-    (when (< lg *minlg*) 
+    (when (< lg *minlg*)
         (set! *counts* (make-vector 2 0))
         (set! *chains* (make-vector 2 ""))
         (set! *minlg* lg))
     (vector+= *counts* idx 1)
     (vector-set! *chains* idx (vector->list chain)))
- 
-;; is chain a brauer chain ?        
+
+;; is chain a brauer chain ?
 (define (brauer? chain lg)
     (for [(i (in-range 1 lg))]
         #:break (not (vector-search* (- [chain i] [chain (1- i)]) chain)) => #f
         #t))
-        
+
 ;; all min chains to target n (brute force)
 (define (chains n chain  lg   (a)  (top) (tops null))
 (++ *calls*)
 (set! top [chain  lg])
-    (cond 
+    (cond
     [(> lg *minlg*) #f] ;; too long
-    [(= n top) (register-hit chain lg)]  ;; hit 
+    [(= n top) (register-hit chain lg)]  ;; hit
     [(< n top) #f] ;; too big
     [(and (< *minlg* 32) (< (* top [exp2 (- *minlg* lg)]) n)) #f] ;; too small
     [else
-    (for*  ([i (in-range lg -1 -1)] [j (in-range lg (1- i) -1)])      
+    (for*  ([i (in-range lg -1 -1)] [j (in-range lg (1- i) -1)])
           (set! a (+ [chain i] [chain j]))
           #:continue (<= a top) ;; increasing sequence
           #:continue (memq a tops) ;; prevent duplicates
@@ -688,12 +688,12 @@ Number of minimum length Brauer chains: 6583
           (vector-push chain a)
           (chains n chain  (1+ lg))
           (vector-pop chain))]))
-          
-          
+
+
 (define (task n)
     (set!-values (*minlg* *calls*) '(Infinity 0 ))
     (chains n (make-vector 1 1) 0)
-    (printf "L(%d) = %d - brauer-chains: %d  non-brauer: %d  chains: %a %a " 
+    (printf "L(%d) = %d - brauer-chains: %d  non-brauer: %d  chains: %a %a "
          n *minlg* [*counts* 0] [*counts* 1] [*chains* 0] [*chains* 1]))
 
 ```
@@ -704,19 +704,19 @@ Number of minimum length Brauer chains: 6583
 
 (for-each task {7 14 21 29 32 42 64})
 
-L(7) = 4 - brauer-chains: 5 non-brauer: 0 chains: (1 2 3 4 7)  
-L(14) = 5 - brauer-chains: 14 non-brauer: 0 chains: (1 2 3 4 7 14)  
-L(21) = 6 - brauer-chains: 26 non-brauer: 3 chains: (1 2 3 4 7 14 21) (1 2 4 5 8 13 21) 
-L(29) = 7 - brauer-chains: 114 non-brauer: 18 chains: (1 2 3 4 7 11 18 29) (1 2 3 6 9 11 18 29) 
-L(32) = 5 - brauer-chains: 1 non-brauer: 0 chains: (1 2 4 8 16 32)  
-L(42) = 7 - brauer-chains: 78 non-brauer: 6 chains: (1 2 3 4 7 14 21 42) (1 2 4 5 8 13 21 42) 
-L(64) = 6 - brauer-chains: 1 non-brauer: 0 chains: (1 2 4 8 16 32 64) 
+L(7) = 4 - brauer-chains: 5 non-brauer: 0 chains: (1 2 3 4 7)
+L(14) = 5 - brauer-chains: 14 non-brauer: 0 chains: (1 2 3 4 7 14)
+L(21) = 6 - brauer-chains: 26 non-brauer: 3 chains: (1 2 3 4 7 14 21) (1 2 4 5 8 13 21)
+L(29) = 7 - brauer-chains: 114 non-brauer: 18 chains: (1 2 3 4 7 11 18 29) (1 2 3 6 9 11 18 29)
+L(32) = 5 - brauer-chains: 1 non-brauer: 0 chains: (1 2 4 8 16 32)
+L(42) = 7 - brauer-chains: 78 non-brauer: 6 chains: (1 2 3 4 7 14 21 42) (1 2 4 5 8 13 21 42)
+L(64) = 6 - brauer-chains: 1 non-brauer: 0 chains: (1 2 4 8 16 32 64)
 
 ;; a few extras
 (task 47)
-L(47) = 8 - brauer-chains: 183 non-brauer: 37 chains: (1 2 3 4 7 10 20 27 47) (1 2 3 5 7 14 19 28 47) 
+L(47) = 8 - brauer-chains: 183 non-brauer: 37 chains: (1 2 3 4 7 10 20 27 47) (1 2 3 5 7 14 19 28 47)
 (task 79)
-L(79) = 9 - brauer-chains: 492 non-brauer: 129 chains: (1 2 3 4 7 9 18 36 43 79) (1 2 3 5 7 12 24 31 48 79) 
+L(79) = 9 - brauer-chains: 492 non-brauer: 129 chains: (1 2 3 4 7 9 18 36 43 79) (1 2 3 5 7 12 24 31 48 79)
 
 ```
 
@@ -1169,7 +1169,7 @@ Number of minimum length Brauer chains: 6583
 
 As far as the minimal Brauer chains are concerned, I've translated the code in the Scala entry which even on my modest machine is reasonably fast for generating these in isolation - negligible for N <= 79, 10 seconds for N = 191, 25 seconds for N = 382 and about 2.5 minutes for N = 379. However, N = 12509 (which according to tables requires a minimum length of 17) is still well out of reach using this code.
 
-I've then extended the code to count the number of non-Brauer chains of the same minimum length - basically 'brute' force to generate all addition chains and then subtracted the number of Brauer ones - plus examples for both. For N <= 64 this adds little to the execution time but adds about 1 minute for N = 79 and I gave up waiting for N = 191! To deal with these glacial execution times, I've added code which enables you to suppress the non-Brauer generation for N above a specified figure.     
+I've then extended the code to count the number of non-Brauer chains of the same minimum length - basically 'brute' force to generate all addition chains and then subtracted the number of Brauer ones - plus examples for both. For N <= 64 this adds little to the execution time but adds about 1 minute for N = 79 and I gave up waiting for N = 191! To deal with these glacial execution times, I've added code which enables you to suppress the non-Brauer generation for N above a specified figure.
 
 ```scala
 // version 1.1.51
@@ -1781,7 +1781,7 @@ for i=1 to length(nums) do
            ns = iff(nbc?" eg "&sprint(non_brauer_example)&",":""),
            e = elapsed_short(time()-t)
     progress("") -- (wipe it clean)
-    printf(1,"l(%d) = %d, Brauer:%d,%s Non-Brauer:%d,%s (%s, %d perms)\n",{num,l-1,bc,bs,nbc,ns,e,tries}) 
+    printf(1,"l(%d) = %d, Brauer:%d,%s Non-Brauer:%d,%s (%s, %d perms)\n",{num,l-1,bc,bs,nbc,ns,e,tries})
 end for
 ```
 
@@ -1805,7 +1805,7 @@ l(379) = 12, Brauer:6583, eg {1,2,3,4,7,10,17,27,44,88,176,203,379}, Non-Brauer:
 
 ```
 
-For comparison with the Kotlin timings, setting the constant max_non_brauer to 79 yields the following 
+For comparison with the Kotlin timings, setting the constant max_non_brauer to 79 yields the following
 (making it about 20% slower than the Go submission above, on the same box)
 
 ```txt
@@ -2100,7 +2100,7 @@ object chains{
         else if(pos<min_len)                    try_perm(0,pos,seq,n,min_len)
         else                                    (min_len,0)
     }
-    
+
     def try_perm(i:Int,pos:Int,seq:List[Int],n:Int,min_len:Int):(Int,Int) = {
         if(i>pos)           return (min_len,0)
         val res1 = check_seq(pos+1,seq(0)+seq(i) :: seq,n,min_len)
@@ -2313,7 +2313,7 @@ Number of minimum length Brauer chains: 6583
 ```zkl
 var exp2=(32).pump(List,(2).pow),   // 2^n, n=0..31
     _minlg, _counts, _chains;      // counters and results
- 
+
 fcn register_hit(chain,lg){  // save [upto 2] chains
    idx:=(if(isBrauer(chain,lg)) 0 else 1);
    if(lg<_minlg) _counts,_chains,_minlg=List(0,0), List("",""), lg;
@@ -2331,7 +2331,7 @@ fcn isBrauer(chain,lg){
 fcn chains(n,chain,lg){
    top,tops:=chain[lg], List();
    if(lg>_minlg)   {}			   // too long
-   else if(n==top) register_hit(chain,lg); // hit 
+   else if(n==top) register_hit(chain,lg); // hit
    else if(n<top)  {}			   // too big
    else if((_minlg<32) and (top*exp2[_minlg - lg]<n)){} // too small
    else{

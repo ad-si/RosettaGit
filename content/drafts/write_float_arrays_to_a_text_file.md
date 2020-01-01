@@ -17,15 +17,15 @@ tags = []
 {{omit from|UNIX Shell}}
 
 ;Task:
-Write two equal-sized numerical arrays 'x' and 'y' to 
+Write two equal-sized numerical arrays 'x' and 'y' to
 a two-column text file named 'filename'.
 
-The first column of the file contains values from an 'x'-array with a 
+The first column of the file contains values from an 'x'-array with a
 given 'xprecision', the second -- values from 'y'-array with 'yprecision'.
 
 For example, considering:
     x = {1, 2, 3, 1e11};
-    y = {1, 1.4142135623730951, 1.7320508075688772, 316227.76601683791}; 
+    y = {1, 1.4142135623730951, 1.7320508075688772, 316227.76601683791};
                                                            /* sqrt(x) */
     xprecision = 3;
     yprecision = 5;
@@ -67,7 +67,7 @@ procedure Write_Float_Array is
          New_Line (File);
       end loop;
    end Write_Columns;
-   
+
    File : File_Type;
    X : Float_Array := (1.0, 2.0, 3.0, 1.0e11);
    Y : Float_Array;
@@ -124,7 +124,7 @@ test:(
   OD
 )
 ```
- 
+
 {{out}}
 
 ```txt
@@ -168,13 +168,13 @@ For the text file part of the task, just redirect stdout to it.
       FOR i% = 0 TO 3
         y(i%) = SQR(x(i%))
       NEXT
-      
+
       xprecision = 3
       yprecision = 5
-      
+
       outfile% = OPENOUT("filename.txt")
       IF outfile%=0 ERROR 100, "Could not create file"
-      
+
       FOR i% = 0 TO 3
         @% = &1000000 + (xprecision << 8)
         a$ = STR$(x(i%)) + CHR$(9)
@@ -182,7 +182,7 @@ For the text file part of the task, just redirect stdout to it.
         a$ += STR$(y(i%))
         PRINT #outfile%, a$ : BPUT #outfile%, 10
       NEXT
-      
+
       CLOSE #outfile%
 ```
 
@@ -202,8 +202,8 @@ For the text file part of the task, just redirect stdout to it.
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 int main(int argc, char **argv) {
@@ -291,8 +291,8 @@ void writedat(const char* filename,
 
 Example:
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <cmath>    // ::sqrt()
 #include <fstream>
 #include <iomanip>  // setprecision()
@@ -624,11 +624,11 @@ In ANSI FORTRAN 77 or later use OPEN STATEMENT, and formatted WRITE statement wi
 ```fortran
    real x(4), y(4)
    data x / 1.0, 2.0, 4.0, 1.0e11 /
-   
+
    do 10 i = 1, 4
       y = sqrt(x)
 10 continue
-   
+
    open(unit=15, file='two_cols.txt', status='new')
    write(15,'(f20.3,f21.4)') (x(I), y(I), I = 1, 4)
    end
@@ -643,7 +643,7 @@ program writefloats
 
   real, dimension(10) :: a, sqrta
   integer :: i
-  integer, parameter :: unit = 40 
+  integer, parameter :: unit = 40
 
   a = (/ (i, i=1,10) /)
   sqrta = sqrt(a)
@@ -807,10 +807,10 @@ x = (1, 2, 3, 1E11)
 y = x ^ 0.5
 DO i = 1, n
    WRITE(FIle=outP, Format='F5, F10.3') x(i), y(i)
-ENDDO 
+ENDDO
 ```
 
-Alternative: Display or Edit the formatted arrays in a [http://www.HicEst.com/MatrixExplorer spreadsheet-like dialog] with a common scroll bar. 
+Alternative: Display or Edit the formatted arrays in a [http://www.HicEst.com/MatrixExplorer spreadsheet-like dialog] with a common scroll bar.
 The menu More - Export - File writes the formatted arrays to a file:
 
 ```HicEst
@@ -858,10 +858,10 @@ Contents of <tt>filename</tt> after running:
  y=sqrt(x)
  xprecision=3
  yprecision=5
-  
+
  ; NOT how one would do things in IDL, but in the spirit of the task - the output format:
  form = string(xprecision,yprecision,format='("(G0.",I0.0,",1x,G0.",I0.0,")")')
-  
+
  ; file I/O:
  openw,unit,"datafile.txt",/get
    for i = 1L, n_elements(x) do printf, unit, x[i-1],y[i-1],format=form
@@ -878,11 +878,11 @@ The file <tt>"datafile.txt"</tt> then contains the following:
 ```
 
 
-This is fairly ugly and un-IDLish. 
-For example one shouldn't just rely on x and y having the same size. 
-And if data is output in human-readable form, 
-it should probably be lined up more nicely. 
-And if it really has to be in two-column format with x and y side by side, 
+This is fairly ugly and un-IDLish.
+For example one shouldn't just rely on x and y having the same size.
+And if data is output in human-readable form,
+it should probably be lined up more nicely.
+And if it really has to be in two-column format with x and y side by side,
 one might consider running ASCII_Template or some such instead of that ugly hand-formatting.
 
 
@@ -951,7 +951,7 @@ public class FloatArray {
         double[] y = new double[x.length];
         for (int i = 0; i < x.length; i++)
             y[i] = Math.sqrt(x[i]);
-        
+
         try {
             writeDat("sqrt.dat", x, y, 3, 5);
         } catch (IOException e) {
@@ -1137,11 +1137,11 @@ exportPrec[path_, data1_, data2_, prec1_, prec2_]:=Export[path,Transpose[{Map[To
 
 ```Matlab
     x = [1, 2, 3, 1e11];
-   y = [1, 1.4142135623730951, 1.7320508075688772, 316227.76601683791]; 
- 
+   y = [1, 1.4142135623730951, 1.7320508075688772, 316227.76601683791];
+
    fid = fopen('filename','w')
    fprintf(fid,'%.3g\t%.5g\n',[x;y]);
-   fclose(fid); 
+   fclose(fid);
 ```
 
 
@@ -1270,7 +1270,7 @@ method formatArrays(outFile, xf = Rexx[], yf = Rexx[], xprecision = 3, yprecisio
 ; author: oofoe 2012-01-30
 
 ; The "transpose" function is used to flip the joined lists around so
-; that it's easier to iterate through them together. 
+; that it's easier to iterate through them together.
 
 (define (write-float-array x xp y yp filename)
   (let ((f (format "%%-10.%dg %%-10.%dg" xp yp))
@@ -1282,7 +1282,7 @@ method formatArrays(outFile, xf = Rexx[], yf = Rexx[], xprecision = 3, yprecisio
 
 ; Test
 
-(write-float-array   
+(write-float-array
  '(1 2 3 1e11) 3
  '(1 1.4142135623730951 1.7320508075688772 316227.76601683791) 5
  "filename.chan")
@@ -1298,9 +1298,9 @@ method formatArrays(outFile, xf = Rexx[], yf = Rexx[], xprecision = 3, yprecisio
 
 ```txt
 File contents:
-1          1         
-2          1.4142    
-3          1.7321    
+1          1
+2          1.4142
+3          1.7321
 1e+011     3.1623e+005
 
 ```
@@ -1315,7 +1315,7 @@ import strutils, math, sequtils
 
 const
    outFileName = "floatarr2file.txt"
-   
+
 proc sqrt*(x: int64): float {.importc: "sqrt", header: "<math.h>".}
 
 const
@@ -1410,11 +1410,11 @@ const
   xprecision = 3;
   yprecision = 5;
   baseDigits = 7;
-  
+
 var
   i: integer;
   filename: text;
-  
+
 begin
   assign (filename, 'filename');
   rewrite (filename);
@@ -1447,11 +1447,11 @@ sub writedat {
     my ($filename, $x, $y, $xprecision, $yprecision) = @_;
 
     open my $fh, ">", $filename;
-    
+
     for my $i (0 .. $#$x) {
         printf $fh "%.*g\t%.*g\n", $xprecision||3, $x->[$i], $yprecision||5, $y->[$i];
     }
- 
+
     close $fh;
 }
 
@@ -1514,7 +1514,7 @@ sub writedat ( $filename, @x, @y, $x_precision = 3, $y_precision = 5 ) {
 
     $fh.close;
 }
- 
+
 my @x = 1, 2, 3, 1e11;
 my @y = @x.map({.sqrt});
 
@@ -1565,7 +1565,7 @@ Copy of [[Write_float_arrays_to_a_text_file#Euphoria|Euphoria]]
 ```Phix
 constant x = {1, 2, 3, 1e11},
          y = {1, 1.4142135623730951, 1.7320508075688772, 316227.76601683791}
- 
+
 integer fn = open("filename","w")
 for i=1 to length(x) do
     printf(fn,"%.3g\t%.5g\n",{x[i],y[i]})
@@ -1640,7 +1640,7 @@ An exponential format like "1e11" is not supported
   2.000000000E+0000  8.0000000000000000E+0000
   3.000000000E+0000  7.0000000000000000E+0000
   4.000000000E+0000  6.0000000000000000E+0000
-  5.000000000E+0000  1.0000000000000000E+0009 
+  5.000000000E+0000  1.0000000000000000E+0009
 ```
 
 
@@ -1653,11 +1653,11 @@ An exponential format like "1e11" is not supported
 $x = @(1, 2, 3, 1e11)
 $y = @(1, 1.4142135623730951, 1.7320508075688772, 316227.76601683791)
 $xprecision = 3
-$yprecision = 5 
+$yprecision = 5
 $arr = foreach($i in 0..($x.count-1)) {
     [pscustomobject]@{x = "{0:g$xprecision}"  -f $x[$i]; y = "{0:g$yprecision}" -f $y[$i]}
-} 
-$arr | format-table -HideTableHeaders > filename.txt  
+}
+$arr | format-table -HideTableHeaders > filename.txt
 
 ```
 
@@ -1665,9 +1665,9 @@ $arr | format-table -HideTableHeaders > filename.txt
 
 ```txt
 
-1     1         
-2     1.4142    
-3     1.7321    
+1     1
+2     1.4142
+3     1.7321
 1e+11 3.1623e+05
 
 ```
@@ -1702,7 +1702,7 @@ If file$
     For i = 0 To #Size - 1
       output$ = StrF(x(i), xprecision) + Chr(9) + StrF(y(i), yprecision)
       WriteStringN(fileID, output$)
-    Next 
+    Next
     CloseFile(fileID)
   EndIf
 EndIf
@@ -1740,7 +1740,7 @@ Example usage
 >>> y
 [1.0, 1.4142135623730951, 1.7320508075688772, 316227.76601683791]
 >>> writedat("sqrt.dat", x, y)
->>> # check 
+>>> # check
 ...
 >>> for line in open('sqrt.dat'):
 ...   print line,
@@ -1772,14 +1772,14 @@ def writedat(filename, x, y, xprecision=3, yprecision=5):
 writexy <- function(file, x, y, xprecision=3, yprecision=3)
 {
    #Format inputs as required, and join together
-   fx <- formatC(x, digits=xprecision, format="g", flag="-")   
-   fy <- formatC(y, digits=yprecision, format="g", flag="-")   
+   fx <- formatC(x, digits=xprecision, format="g", flag="-")
+   fy <- formatC(y, digits=yprecision, format="g", flag="-")
    dfr <- data.frame(fx, fy)
-   #Write to file.  Note that this encloses the formatted number in quotes, 
-   write.table(dfr, file=file, sep="\t", row.names=FALSE)  
+   #Write to file.  Note that this encloses the formatted number in quotes,
+   write.table(dfr, file=file, sep="\t", row.names=FALSE)
    #... so we have to process the output
    str <- readLines(file)
-   writeLines(gsub('"', '', str), file) 
+   writeLines(gsub('"', '', str), file)
 }
 
 
@@ -1839,7 +1839,7 @@ group
 list as $b
 
 # generate format specifier   "%-8.3g %.5g\n"
-"%%-8.%($xprecision)dg %%.%($yprecision)dg\n" as $f   
+"%%-8.%($xprecision)dg %%.%($yprecision)dg\n" as $f
 
 define print2 use $v1, $v2, $f
    $v2 1.0 prefer  $v1 1.0 prefer $f format $results push
@@ -1922,8 +1922,8 @@ fn = "C:\Ring\calmosoft\output.txt"
 fp = fopen(fn,"wb")
 for i = 1 to 4
      str[i] = string(x[i]) + " | " + string(y[i]) + windowsnl()
-     fwrite(fp, str[i]) 
-next 
+     fwrite(fp, str[i])
+next
 fclose(fp)
 fp = fopen("C:\Ring\calmosoft\output.txt","r")
 r = ""
@@ -1976,7 +1976,7 @@ Here, the writing format is specified through ''text'' function, and the result 
 ```
 
 
-Please note, ''writem'' function in RLaB can operate in two-fold fashion. RLaB keeps track of the open files that were created using the built-in function ''open''. 
+Please note, ''writem'' function in RLaB can operate in two-fold fashion. RLaB keeps track of the open files that were created using the built-in function ''open''.
 
 If user writes the data to a file using ''open'' followed by ''writem'' then RLaB opens the file in append mode if it already hasn't been opened. If it has been, then the command ''open'' is ignored (say in batch mode). Then, each successive call to ''writem'' appends newest data to the end of the file while keeping the file open. RLaB will close the file (and OS will flush its file buffer) upon the command ''close''.
 
@@ -2290,7 +2290,7 @@ writeFloatArraysToFile("floatArray.txt", xs,xprecision, ys,yprecision);
 
 ```txt
 
-$ cat floatArray 
+$ cat floatArray
 1	1
 2	1.4142
 3	1.7321
@@ -2303,9 +2303,9 @@ $ cat floatArray
 ## ZX Spectrum Basic
 
 
-The ZX Spectrum has a dedicated file format for floating point arrays. 
-Although this format is not a text file, it would be the usual format 
-for writing such data to a file on a ZX Spectrum. 
+The ZX Spectrum has a dedicated file format for floating point arrays.
+Although this format is not a text file, it would be the usual format
+for writing such data to a file on a ZX Spectrum.
 Here we write the contents of the array g() to a file:
 
 

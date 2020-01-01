@@ -23,8 +23,8 @@ Output example: HI DE TH EG OL DI NT HE TR EX ES TU MP.
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 
 using namespace std;
@@ -113,7 +113,7 @@ private:
 
     void createGrid( string k, bool ij )
     {
-	if( k.length() < 1 ) k = "KEYWORD"; 
+	if( k.length() < 1 ) k = "KEYWORD";
 	k += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; string nk = "";
 	for( string::iterator si = k.begin(); si != k.end(); si++ )
 	{
@@ -131,9 +131,9 @@ int main( int argc, char* argv[] )
 {
     string key, i, txt; bool ij, e;
     cout << "(E)ncode or (D)ecode? "; getline( cin, i ); e = ( i[0] == 'e' || i[0] == 'E' );
-    cout << "Enter a en/decryption key: "; getline( cin, key ); 
+    cout << "Enter a en/decryption key: "; getline( cin, key );
     cout << "I <-> J (Y/N): "; getline( cin, i ); ij = ( i[0] == 'y' || i[0] == 'Y' );
-    cout << "Enter the text: "; getline( cin, txt ); 
+    cout << "Enter the text: "; getline( cin, txt );
     playfair pf; pf.doIt( key, txt, ij, e ); return system( "pause" );
 }
 ```
@@ -263,7 +263,7 @@ Original: Hide the gold in...the TREESTUMP!!!
 ' FB 1.05.0 Win64
 
 Enum PlayFairOption
-  noQ 
+  noQ
   iEqualsJ
 End Enum
 
@@ -289,8 +289,8 @@ Sub buildTable(keyword As String)
       j += 1
       If j = 6 Then
         i += 1
-        If i = 6 Then Return  '' table has been filled 
-        j = 1          
+        If i = 6 Then Return  '' table has been filled
+        j = 1
       End If
     End If
   Next k
@@ -319,10 +319,10 @@ Function getCleanText(plainText As String) As String
     Else
       cleanText += "Z"
     End If
-  End If      
+  End If
   Return cleanText
-End Function    
- 
+End Function
+
 Sub findChar(c As uInteger, ByRef row As UInteger, ByRef col As UInteger)
   For i As UInteger = 1 To 5
     For j As UInteger = 1 To 5
@@ -333,8 +333,8 @@ Sub findChar(c As uInteger, ByRef row As UInteger, ByRef col As UInteger)
       End If
     Next j
   Next i
-End Sub    
-  
+End Sub
+
 Function encodePlayfair(plainText As String) As String
   Dim As String cleanText = getCleanText(plainText)
   Dim As String digram, cipherDigram, cipherText = ""
@@ -346,7 +346,7 @@ Function encodePlayfair(plainText As String) As String
     char2 = digram[1] - 64
     findChar char1, row1, col1
     findChar char2, row2, col2
-    If row1 = row2 Then 
+    If row1 = row2 Then
       cipherDigram =  Chr(table(row1, col1 Mod 5 + 1) + 64)
       cipherDigram += Chr(table(row2, col2 Mod 5 + 1) + 64)
     ElseIf col1 = col2 Then
@@ -357,8 +357,8 @@ Function encodePlayfair(plainText As String) As String
       cipherDigram += Chr(table(row2, col1) + 64)
     End If
     cipherText += cipherDigram
-    If i < length Then cipherText += " "  
-  Next i 
+    If i < length Then cipherText += " "
+  Next i
   Return cipherText
 End Function
 
@@ -372,7 +372,7 @@ Function decodePlayfair(cipherText As String) As String
     char2 = cipherDigram[1] - 64
     findChar char1, row1, col1
     findChar char2, row2, col2
-    If row1 = row2 Then 
+    If row1 = row2 Then
       digram =  Chr(table(row1, IIf(col1 > 1, col1 - 1, 5)) + 64)
       digram += Chr(table(row2, IIf(col2 > 1, col2 - 1, 5)) + 64)
     ElseIf col1 = col2 Then
@@ -383,8 +383,8 @@ Function decodePlayfair(cipherText As String) As String
       digram += Chr(table(row2, col1) + 64)
     End If
     decodedText += digram
-    If i < length Then decodedText += " "  
-  Next i 
+    If i < length Then decodedText += " "
+  Next i
   Return decodedText
 End Function
 
@@ -406,7 +406,7 @@ For i As UInteger = 1 To 5
   Print
 Next i
 
-Print 
+Print
 Line Input "Enter plain text : "; plainText
 Print
 encodedText = encodePlayfair(plainText)
@@ -667,16 +667,16 @@ Enter Playfair keyword : Playfair example
 Ignore Q when building table  y/n : n
 The table to be used is :
 
-P L A Y F 
-I R E X M 
-B C D G H 
-K N O Q S 
-T U V W Z 
+P L A Y F
+I R E X M
+B C D G H
+K N O Q S
+T U V W Z
 
 Enter plain text : Hide the gold...in the TREESTUMP!!!!
 
-Encoded text is : BM OD ZB XD NA BE KU DM UI XM MO UV IF 
-Deccoded text is : HI DE TH EG OL DI NT HE TR EX ES TU MP 
+Encoded text is : BM OD ZB XD NA BE KU DM UI XM MO UV IF
+Deccoded text is : HI DE TH EG OL DI NT HE TR EX ES TU MP
 
 ```
 
@@ -977,19 +977,19 @@ public class PlayfairCipher {
 
 
 
-###  alternative version 
+###  alternative version
 
 
 
 ```java
 import java.util.Scanner;
- 
+
 public class PlayfairCipherEncryption
 {
     private String KeyWord        = new String();
     private String Key            = new String();
     private char   matrix_arr[][] = new char[5][5];
- 
+
     public void setKey(String k)
     {
         String K_adjust = new String();
@@ -1010,7 +1010,7 @@ public class PlayfairCipherEncryption
         }
         KeyWord = K_adjust;
     }
- 
+
     public void KeyGen()
     {
         boolean flag = true;
@@ -1036,7 +1036,7 @@ public class PlayfairCipherEncryption
         System.out.println(Key);
         matrix();
     }
- 
+
     private void matrix()
     {
         int counter = 0;
@@ -1051,7 +1051,7 @@ public class PlayfairCipherEncryption
             System.out.println();
         }
     }
- 
+
     private String format(String old_text)
     {
         int i = 0;
@@ -1077,7 +1077,7 @@ public class PlayfairCipherEncryption
         }
         return text;
     }
- 
+
     private String[] Divid2Pairs(String new_string)
     {
         String Original = format(new_string);
@@ -1096,7 +1096,7 @@ public class PlayfairCipherEncryption
         }
         return x;
     }
- 
+
     public int[] GetDiminsions(char letter)
     {
         int[] key = new int[2];
@@ -1116,7 +1116,7 @@ public class PlayfairCipherEncryption
         }
         return key;
     }
- 
+
     public String encryptMessage(String Source)
     {
         String src_arr[] = Divid2Pairs(Source);
@@ -1164,7 +1164,7 @@ public class PlayfairCipherEncryption
         }
         return Code;
     }
- 
+
     public static void main(String[] args)
     {
         PlayfairCipherEncryption x = new PlayfairCipherEncryption();
@@ -1199,7 +1199,7 @@ public class PlayfairCipherEncryption
 // version 1.0.5-2
 
 enum class PlayfairOption {
-    NO_Q, 
+    NO_Q,
     I_EQUALS_J
 }
 
@@ -1208,8 +1208,8 @@ class Playfair(keyword: String, val pfo: PlayfairOption) {
 
     init {
         // build table
-        val used = BooleanArray(26)  // all elements false  
-        if (pfo == PlayfairOption.NO_Q) 
+        val used = BooleanArray(26)  // all elements false
+        if (pfo == PlayfairOption.NO_Q)
             used[16] = true  // Q used
         else
             used[9]  = true  // J used
@@ -1225,14 +1225,14 @@ class Playfair(keyword: String, val pfo: PlayfairOption) {
             if (!used[d]) {
                 table[i][j] = c
                 used[d] = true
-                if (++j == 5) { 
-                    if (++i == 5) break // table has been filled 
+                if (++j == 5) {
+                    if (++i == 5) break // table has been filled
                     j = 0
                 }
-            }          
+            }
         }
     }
-    
+
     private fun getCleanText(plainText: String): String {
         val plainText2 = plainText.toUpperCase()  // ensure everything is upper case
         // get rid of any non-letters and insert X between duplicate letters
@@ -1250,15 +1250,15 @@ class Playfair(keyword: String, val pfo: PlayfairOption) {
             else
                 cleanText += "X" + nextChar
             prevChar = nextChar
-        }        
+        }
         val len = cleanText.length
         if (len % 2 == 1)  {  // dangling letter at end so add another letter to complete digram
             if (cleanText[len - 1] != 'X')
                 cleanText += 'X'
-            else 
+            else
                 cleanText += 'Z'
         }
-        return cleanText    
+        return cleanText
     }
 
     private fun findChar(c: Char): Pair<Int, Int> {
@@ -1274,13 +1274,13 @@ class Playfair(keyword: String, val pfo: PlayfairOption) {
         val length = cleanText.length
         for (i in 0 until length step 2) {
             val (row1, col1) = findChar(cleanText[i])
-            val (row2, col2) = findChar(cleanText[i + 1])  
+            val (row2, col2) = findChar(cleanText[i + 1])
             cipherText += when {
                 row1 == row2 -> table[row1][(col1 + 1) % 5].toString() + table[row2][(col2 + 1) % 5]
                 col1 == col2 -> table[(row1 + 1) % 5][col1].toString() + table[(row2 + 1) % 5][col2]
                 else         -> table[row1][col2].toString() + table[row2][col1]
             }
-            if (i < length - 1) cipherText += " "  
+            if (i < length - 1) cipherText += " "
         }
         return cipherText
     }
@@ -1290,7 +1290,7 @@ class Playfair(keyword: String, val pfo: PlayfairOption) {
         val length = cipherText.length
         for (i in 0 until length step 3) {  // cipherText will include spaces so we need to skip them
             val (row1, col1) = findChar(cipherText[i])
-            val (row2, col2) = findChar(cipherText[i + 1])  
+            val (row2, col2) = findChar(cipherText[i + 1])
             decodedText += when {
                 row1 == row2 -> table[row1][if (col1 > 0) col1 - 1 else 4].toString() + table[row2][if (col2 > 0) col2 - 1 else 4]
                 col1 == col2 -> table[if (row1 > 0) row1- 1 else 4][col1].toString() + table[if (row2 > 0) row2 - 1 else 4][col2]
@@ -1299,7 +1299,7 @@ class Playfair(keyword: String, val pfo: PlayfairOption) {
             if (i < length - 1) decodedText += " "
         }
         return decodedText
-    }   
+    }
 
     fun printTable() {
         println("The table to be used is :\n")
@@ -1316,7 +1316,7 @@ fun main(args: Array<String>) {
     var ignoreQ: String
     do {
          print("Ignore Q when buiding table  y/n : ")
-         ignoreQ = readLine()!!.toLowerCase() 
+         ignoreQ = readLine()!!.toLowerCase()
     }
     while (ignoreQ != "y" && ignoreQ != "n")
     val pfo = if (ignoreQ == "y") PlayfairOption.NO_Q else PlayfairOption.I_EQUALS_J
@@ -1325,7 +1325,7 @@ fun main(args: Array<String>) {
     print("\nEnter plain text : ")
     val plainText: String = readLine()!!
     val encodedText = playfair.encode(plainText)
-    println("\nEncoded text is : $encodedText") 
+    println("\nEncoded text is : $encodedText")
     val decodedText = playfair.decode(encodedText)
     println("Decoded text is : $decodedText")
 }
@@ -1520,7 +1520,7 @@ method runSample(arg) private static
   say digraphs
   if ciph.upper() = 'E' then
     say encipher(km, digraphs)
-  else 
+  else
     say decipher(km, digraphs)
 
   return
@@ -1779,7 +1779,7 @@ encrypted text:  IJ DY JV OP MJ IJ DY OA JJ
                  TOBEORNOTTOBEE
  original text:  TOBEORNOTTOBEE
 ```
-          
+
 
 
 ## Perl
@@ -1887,7 +1887,7 @@ sub playfair( $key,
     sub canon($str) { $str.subst(/<-alpha>/,'', :g).uc.subst(/$from/,$to,:g) }
 
     # Build 5x5 matrix.
-    my @m = canon($key ~ ('A'..'Z').join).comb.unique.map: 
+    my @m = canon($key ~ ('A'..'Z').join).comb.unique.map:
      -> $a,$b,$c,$d,$e { [$a,$b,$c,$d,$e] }
 
     # Pregenerate all forward translations.
@@ -1965,7 +1965,7 @@ type pfoption(integer option)
 end type
 
 pfoption pfo -- 'Q' or 'J'
- 
+
 procedure build_table(string keyword, integer option)
 -- option should be 'Q' to ignore Q, or 'J' to replace Js with I
     pfo = option
@@ -2016,7 +2016,7 @@ function clean_text(string plaintext)
     end if
     return cleantext
 end function
- 
+
 function remove_x(string text)
     for i=2 to length(text)-1 do
         if text[i]='X'
@@ -2047,7 +2047,7 @@ end function
 
 constant p1 = {2,3,4,5,1},  -- easier than playing with mod(+1,5)
          m1 = {5,1,2,3,4}   --              ""          mod(-1,5)
- 
+
 function encode(string plaintext)
     return playfair(clean_text(plaintext),2,p1)
 end function
@@ -2056,7 +2056,7 @@ function decode(string ciphertext)
     -- ciphertext includes spaces we need to skip, hence by 3
     return remove_x(playfair(ciphertext,3,m1))
 end function
- 
+
 string keyword = "Playfair example"
 build_table(keyword,'Q')
 printf(1,"Playfair keyword : %s\n",{keyword})
@@ -2182,7 +2182,7 @@ Thanks to Walter Pachl, this program is now sensitive of using a suitable ''doub
 
 Also, more thanks are due to Walter Pachl for finding that the cipher key can't contain the OMIT character.
 
-A fair amount of code was added to massage the decrypted encryption to remove doubled   '''X'''es   so as to match the original text 
+A fair amount of code was added to massage the decrypted encryption to remove doubled   '''X'''es   so as to match the original text
 
 (this is the ''possible text'' part of the REXX code).
 
@@ -2295,7 +2295,7 @@ encrypted text:  BM OD ZB XD NA BE KU DM UI XM MO UV IF
                  HIDETHEGOLDINTHETREESTUMP
  original text:  HIDETHEGOLDINTHETREESTUMP
 
-════════════════Playfair encryption──► decryption──► encryption worked. 
+════════════════Playfair encryption──► decryption──► encryption worked.
 
 ```
 
@@ -2411,319 +2411,319 @@ black:	BM OD ZB XD NA BE KU DM UI XM MO UV IF
 
 ```sql
 
---Clean up previous run  
-IF EXISTS (SELECT * 
-           FROM   SYS.TYPES 
-           WHERE  NAME = 'FairPlayTable') 
-  DROP TYPE FAIRPLAYTABLE 
+--Clean up previous run
+IF EXISTS (SELECT *
+           FROM   SYS.TYPES
+           WHERE  NAME = 'FairPlayTable')
+  DROP TYPE FAIRPLAYTABLE
 
---Set Types  
-CREATE TYPE FAIRPLAYTABLE AS TABLE (LETTER VARCHAR(1), COLID INT, ROWID INT) 
+--Set Types
+CREATE TYPE FAIRPLAYTABLE AS TABLE (LETTER VARCHAR(1), COLID INT, ROWID INT)
 
-GO 
+GO
 
---Configuration Variables  
-DECLARE @KEYWORD VARCHAR(25) = 'CHARLES' --Keyword for encryption  
-DECLARE @INPUT VARCHAR(MAX) = 'Testing Seeconqz' --Word to be encrypted  
-DECLARE @Q INT = 0 -- Q removed?  
-DECLARE @ENCRYPT INT = 1 --Encrypt?  
---Setup Variables  
-DECLARE @WORDS TABLE 
-  ( 
-     WORD_PRE  VARCHAR(2), 
-     WORD_POST VARCHAR(2) 
-  ) 
-DECLARE @T_TABLE FAIRPLAYTABLE 
-DECLARE @NEXTLETTER CHAR(1) 
-DECLARE @WORD VARCHAR(2), 
-        @COL1 INT, 
-        @COL2 INT, 
-        @ROW1 INT, 
-        @ROW2 INT, 
-        @TMP  INT 
-DECLARE @SQL     NVARCHAR(MAX) = '', 
-        @COUNTER INT = 1, 
-        @I       INT = 1 
-DECLARE @COUNTER_2 INT = 1 
+--Configuration Variables
+DECLARE @KEYWORD VARCHAR(25) = 'CHARLES' --Keyword for encryption
+DECLARE @INPUT VARCHAR(MAX) = 'Testing Seeconqz' --Word to be encrypted
+DECLARE @Q INT = 0 -- Q removed?
+DECLARE @ENCRYPT INT = 1 --Encrypt?
+--Setup Variables
+DECLARE @WORDS TABLE
+  (
+     WORD_PRE  VARCHAR(2),
+     WORD_POST VARCHAR(2)
+  )
+DECLARE @T_TABLE FAIRPLAYTABLE
+DECLARE @NEXTLETTER CHAR(1)
+DECLARE @WORD VARCHAR(2),
+        @COL1 INT,
+        @COL2 INT,
+        @ROW1 INT,
+        @ROW2 INT,
+        @TMP  INT
+DECLARE @SQL     NVARCHAR(MAX) = '',
+        @COUNTER INT = 1,
+        @I       INT = 1
+DECLARE @COUNTER_2 INT = 1
 
-SET @INPUT = REPLACE(@INPUT, ' ', '') 
-SET @KEYWORD = UPPER(@KEYWORD) 
+SET @INPUT = REPLACE(@INPUT, ' ', '')
+SET @KEYWORD = UPPER(@KEYWORD)
 
-DECLARE @USEDLETTERS VARCHAR(MAX) = '' 
-DECLARE @TESTWORDS VARCHAR(2), 
-        @A         INT = 0 
+DECLARE @USEDLETTERS VARCHAR(MAX) = ''
+DECLARE @TESTWORDS VARCHAR(2),
+        @A         INT = 0
 
-WHILE @COUNTER_2 <= 5 
-  BEGIN 
-      WHILE @COUNTER <= 5 
-        BEGIN 
-            IF LEN(@KEYWORD) > 0 
-              BEGIN 
-                  SET @NEXTLETTER = LEFT(@KEYWORD, 1) 
-                  SET @KEYWORD = RIGHT(@KEYWORD, LEN(@KEYWORD) - 1) 
+WHILE @COUNTER_2 <= 5
+  BEGIN
+      WHILE @COUNTER <= 5
+        BEGIN
+            IF LEN(@KEYWORD) > 0
+              BEGIN
+                  SET @NEXTLETTER = LEFT(@KEYWORD, 1)
+                  SET @KEYWORD = RIGHT(@KEYWORD, LEN(@KEYWORD) - 1)
 
-                  IF CHARINDEX(@NEXTLETTER, @USEDLETTERS) = 0 
-                    BEGIN 
-                        INSERT INTO @T_TABLE 
-                        SELECT @NEXTLETTER, 
-                               @COUNTER, 
-                               @COUNTER_2 
+                  IF CHARINDEX(@NEXTLETTER, @USEDLETTERS) = 0
+                    BEGIN
+                        INSERT INTO @T_TABLE
+                        SELECT @NEXTLETTER,
+                               @COUNTER,
+                               @COUNTER_2
 
-                        SET @COUNTER = @COUNTER + 1 
-                        SET @USEDLETTERS = @USEDLETTERS + @NEXTLETTER 
-                    END 
-              END 
-            ELSE 
-              BEGIN 
-                  WHILE 1 = 1 
-                    BEGIN 
-                        IF CHARINDEX(CHAR(64 + @I), @USEDLETTERS) = 0 
-                           AND NOT ( CHAR(64 + @I) = 'Q' 
-                                     AND @Q = 1 ) 
-                           AND NOT ( @Q = 0 
-                                     AND CHAR(64 + @I) = 'J' ) 
-                          BEGIN 
-                              SET @NEXTLETTER = CHAR(64 + @I) 
-                              SET @USEDLETTERS = @USEDLETTERS + CHAR(64 + @I) 
-                              SET @I = @I + 1 
+                        SET @COUNTER = @COUNTER + 1
+                        SET @USEDLETTERS = @USEDLETTERS + @NEXTLETTER
+                    END
+              END
+            ELSE
+              BEGIN
+                  WHILE 1 = 1
+                    BEGIN
+                        IF CHARINDEX(CHAR(64 + @I), @USEDLETTERS) = 0
+                           AND NOT ( CHAR(64 + @I) = 'Q'
+                                     AND @Q = 1 )
+                           AND NOT ( @Q = 0
+                                     AND CHAR(64 + @I) = 'J' )
+                          BEGIN
+                              SET @NEXTLETTER = CHAR(64 + @I)
+                              SET @USEDLETTERS = @USEDLETTERS + CHAR(64 + @I)
+                              SET @I = @I + 1
 
-                              BREAK 
-                          END 
+                              BREAK
+                          END
 
-                        SET @I = @I + 1 
-                    END 
+                        SET @I = @I + 1
+                    END
 
-                  -- SELECT 1 AS [T] 
-                  --BREAK 
-                  INSERT INTO @T_TABLE 
-                  SELECT @NEXTLETTER, 
-                         @COUNTER, 
-                         @COUNTER_2 
+                  -- SELECT 1 AS [T]
+                  --BREAK
+                  INSERT INTO @T_TABLE
+                  SELECT @NEXTLETTER,
+                         @COUNTER,
+                         @COUNTER_2
 
-                  SET @COUNTER = @COUNTER + 1 
-              END 
-        END 
+                  SET @COUNTER = @COUNTER + 1
+              END
+        END
 
-      SET @COUNTER_2 = @COUNTER_2 + 1 
-      SET @COUNTER = 1 
-  END 
+      SET @COUNTER_2 = @COUNTER_2 + 1
+      SET @COUNTER = 1
+  END
 
---Split word into Digraphs  
-WHILE @A < 1 
-  BEGIN 
-      SET @TESTWORDS = UPPER(LEFT(@INPUT, 2)) 
+--Split word into Digraphs
+WHILE @A < 1
+  BEGIN
+      SET @TESTWORDS = UPPER(LEFT(@INPUT, 2))
 
-      IF LEN(@TESTWORDS) = 1 
-        BEGIN 
-            SET @TESTWORDS = @TESTWORDS + 'X' 
-            SET @A = 1 
-        END 
-      ELSE IF RIGHT(@TESTWORDS, 1) = LEFT(@TESTWORDS, 1) 
-        BEGIN 
-            SET @TESTWORDS = RIGHT(@TESTWORDS, 1) + 'X' 
-            SET @INPUT = RIGHT(@INPUT, LEN(@INPUT) - 1) 
-        END 
-      ELSE 
-        SET @INPUT = RIGHT(@INPUT, LEN(@INPUT) - 2) 
+      IF LEN(@TESTWORDS) = 1
+        BEGIN
+            SET @TESTWORDS = @TESTWORDS + 'X'
+            SET @A = 1
+        END
+      ELSE IF RIGHT(@TESTWORDS, 1) = LEFT(@TESTWORDS, 1)
+        BEGIN
+            SET @TESTWORDS = RIGHT(@TESTWORDS, 1) + 'X'
+            SET @INPUT = RIGHT(@INPUT, LEN(@INPUT) - 1)
+        END
+      ELSE
+        SET @INPUT = RIGHT(@INPUT, LEN(@INPUT) - 2)
 
-      IF LEN(@INPUT) = 0 
-        SET @A = 1 
+      IF LEN(@INPUT) = 0
+        SET @A = 1
 
-      INSERT @WORDS 
-      SELECT @TESTWORDS, 
-             '' 
-  END 
+      INSERT @WORDS
+      SELECT @TESTWORDS,
+             ''
+  END
 
---Start Encryption 
-IF @ENCRYPT = 1 
-  BEGIN 
-      --Loop through Digraphs amd encrypt  
-      DECLARE WORDS_LOOP CURSOR LOCAL FORWARD_ONLY FOR 
-        SELECT WORD_PRE 
-        FROM   @WORDS 
-        FOR UPDATE OF WORD_POST 
+--Start Encryption
+IF @ENCRYPT = 1
+  BEGIN
+      --Loop through Digraphs amd encrypt
+      DECLARE WORDS_LOOP CURSOR LOCAL FORWARD_ONLY FOR
+        SELECT WORD_PRE
+        FROM   @WORDS
+        FOR UPDATE OF WORD_POST
 
-      OPEN WORDS_LOOP 
+      OPEN WORDS_LOOP
 
-      FETCH NEXT FROM WORDS_LOOP INTO @WORD 
+      FETCH NEXT FROM WORDS_LOOP INTO @WORD
 
-      WHILE @@FETCH_STATUS = 0 
-        BEGIN 
-            --Find letter positions  
-            SET @ROW1 = (SELECT ROWID 
-                         FROM   @T_TABLE 
-                         WHERE  LETTER = LEFT(@WORD, 1)) 
-            SET @ROW2 = (SELECT ROWID 
-                         FROM   @T_TABLE 
-                         WHERE  LETTER = RIGHT(@WORD, 1)) 
-            SET @COL1 = (SELECT COLID 
-                         FROM   @T_TABLE 
-                         WHERE  LETTER = LEFT(@WORD, 1)) 
-            SET @COL2 = (SELECT COLID 
-                         FROM   @T_TABLE 
-                         WHERE  LETTER = RIGHT(@WORD, 1)) 
+      WHILE @@FETCH_STATUS = 0
+        BEGIN
+            --Find letter positions
+            SET @ROW1 = (SELECT ROWID
+                         FROM   @T_TABLE
+                         WHERE  LETTER = LEFT(@WORD, 1))
+            SET @ROW2 = (SELECT ROWID
+                         FROM   @T_TABLE
+                         WHERE  LETTER = RIGHT(@WORD, 1))
+            SET @COL1 = (SELECT COLID
+                         FROM   @T_TABLE
+                         WHERE  LETTER = LEFT(@WORD, 1))
+            SET @COL2 = (SELECT COLID
+                         FROM   @T_TABLE
+                         WHERE  LETTER = RIGHT(@WORD, 1))
 
-            --Move positions according to encryption rules  
-            IF @COL1 = @COL2 
-              BEGIN 
-                  SET @ROW1 = @ROW1 + 1 
-                  SET @ROW2 = @ROW2 + 1 
-              --select 'row'  
-              END 
-            ELSE IF @ROW1 = @ROW2 
-              BEGIN 
-                  SET @COL1 = @COL1 + 1 
-                  SET @COL2 = @COL2 + 1 
-              --select 'col'  
-              END 
-            ELSE 
-              BEGIN 
-                  SET @TMP = @COL2 
-                  SET @COL2 = @COL1 
-                  SET @COL1 = @TMP 
-              --select 'reg'  
-              END 
+            --Move positions according to encryption rules
+            IF @COL1 = @COL2
+              BEGIN
+                  SET @ROW1 = @ROW1 + 1
+                  SET @ROW2 = @ROW2 + 1
+              --select 'row'
+              END
+            ELSE IF @ROW1 = @ROW2
+              BEGIN
+                  SET @COL1 = @COL1 + 1
+                  SET @COL2 = @COL2 + 1
+              --select 'col'
+              END
+            ELSE
+              BEGIN
+                  SET @TMP = @COL2
+                  SET @COL2 = @COL1
+                  SET @COL1 = @TMP
+              --select 'reg'
+              END
 
-            IF @ROW1 = 6 
-              SET @ROW1 = 1 
+            IF @ROW1 = 6
+              SET @ROW1 = 1
 
-            IF @ROW2 = 6 
-              SET @ROW2 = 1 
+            IF @ROW2 = 6
+              SET @ROW2 = 1
 
-            IF @COL1 = 6 
-              SET @COL1 = 1 
+            IF @COL1 = 6
+              SET @COL1 = 1
 
-            IF @COL2 = 6 
-              SET @COL2 = 1 
+            IF @COL2 = 6
+              SET @COL2 = 1
 
-            --Find encrypted letters by positions  
-            UPDATE @WORDS 
-            SET    WORD_POST = (SELECT (SELECT LETTER 
-                                        FROM   @T_TABLE 
-                                        WHERE  ROWID = @ROW1 
-                                               AND COLID = @COL1) 
-                                       + (SELECT LETTER 
-                                          FROM   @T_TABLE 
-                                          WHERE  COLID = @COL2 
-                                                 AND ROWID = @ROW2)) 
-            WHERE  WORD_PRE = @WORD 
+            --Find encrypted letters by positions
+            UPDATE @WORDS
+            SET    WORD_POST = (SELECT (SELECT LETTER
+                                        FROM   @T_TABLE
+                                        WHERE  ROWID = @ROW1
+                                               AND COLID = @COL1)
+                                       + (SELECT LETTER
+                                          FROM   @T_TABLE
+                                          WHERE  COLID = @COL2
+                                                 AND ROWID = @ROW2))
+            WHERE  WORD_PRE = @WORD
 
-            FETCH NEXT FROM WORDS_LOOP INTO @WORD 
-        END 
+            FETCH NEXT FROM WORDS_LOOP INTO @WORD
+        END
 
-      CLOSE WORDS_LOOP 
+      CLOSE WORDS_LOOP
 
-      DEALLOCATE WORDS_LOOP 
-  END 
---Start Decryption 
-ELSE 
-  BEGIN 
-      --Loop through Digraphs amd decrypt  
-      DECLARE WORDS_LOOP CURSOR LOCAL FORWARD_ONLY FOR 
-        SELECT WORD_PRE 
-        FROM   @WORDS 
-        FOR UPDATE OF WORD_POST 
+      DEALLOCATE WORDS_LOOP
+  END
+--Start Decryption
+ELSE
+  BEGIN
+      --Loop through Digraphs amd decrypt
+      DECLARE WORDS_LOOP CURSOR LOCAL FORWARD_ONLY FOR
+        SELECT WORD_PRE
+        FROM   @WORDS
+        FOR UPDATE OF WORD_POST
 
-      OPEN WORDS_LOOP 
+      OPEN WORDS_LOOP
 
-      FETCH NEXT FROM WORDS_LOOP INTO @WORD 
+      FETCH NEXT FROM WORDS_LOOP INTO @WORD
 
-      WHILE @@FETCH_STATUS = 0 
-        BEGIN 
-            --Find letter positions  
-            SET @ROW1 = (SELECT ROWID 
-                         FROM   @T_TABLE 
-                         WHERE  LETTER = LEFT(@WORD, 1)) 
-            SET @ROW2 = (SELECT ROWID 
-                         FROM   @T_TABLE 
-                         WHERE  LETTER = RIGHT(@WORD, 1)) 
-            SET @COL1 = (SELECT COLID 
-                         FROM   @T_TABLE 
-                         WHERE  LETTER = LEFT(@WORD, 1)) 
-            SET @COL2 = (SELECT COLID 
-                         FROM   @T_TABLE 
-                         WHERE  LETTER = RIGHT(@WORD, 1)) 
+      WHILE @@FETCH_STATUS = 0
+        BEGIN
+            --Find letter positions
+            SET @ROW1 = (SELECT ROWID
+                         FROM   @T_TABLE
+                         WHERE  LETTER = LEFT(@WORD, 1))
+            SET @ROW2 = (SELECT ROWID
+                         FROM   @T_TABLE
+                         WHERE  LETTER = RIGHT(@WORD, 1))
+            SET @COL1 = (SELECT COLID
+                         FROM   @T_TABLE
+                         WHERE  LETTER = LEFT(@WORD, 1))
+            SET @COL2 = (SELECT COLID
+                         FROM   @T_TABLE
+                         WHERE  LETTER = RIGHT(@WORD, 1))
 
-            --Move positions according to encryption rules  
-            IF @COL1 = @COL2 
-              BEGIN 
-                  SET @ROW1 = @ROW1 - 1 
-                  SET @ROW2 = @ROW2 - 1 
-              --select 'row'  
-              END 
-            ELSE IF @ROW1 = @ROW2 
-              BEGIN 
-                  SET @COL1 = @COL1 - 1 
-                  SET @COL2 = @COL2 - 1 
-              --select 'col'  
-              END 
-            ELSE 
-              BEGIN 
-                  SET @TMP = @COL2 
-                  SET @COL2 = @COL1 
-                  SET @COL1 = @TMP 
-              --select 'reg'  
-              END 
+            --Move positions according to encryption rules
+            IF @COL1 = @COL2
+              BEGIN
+                  SET @ROW1 = @ROW1 - 1
+                  SET @ROW2 = @ROW2 - 1
+              --select 'row'
+              END
+            ELSE IF @ROW1 = @ROW2
+              BEGIN
+                  SET @COL1 = @COL1 - 1
+                  SET @COL2 = @COL2 - 1
+              --select 'col'
+              END
+            ELSE
+              BEGIN
+                  SET @TMP = @COL2
+                  SET @COL2 = @COL1
+                  SET @COL1 = @TMP
+              --select 'reg'
+              END
 
-            IF @ROW1 = 0 
-              SET @ROW1 = 5 
+            IF @ROW1 = 0
+              SET @ROW1 = 5
 
-            IF @ROW2 = 0 
-              SET @ROW2 = 5 
+            IF @ROW2 = 0
+              SET @ROW2 = 5
 
-            IF @COL1 = 0 
-              SET @COL1 = 5 
+            IF @COL1 = 0
+              SET @COL1 = 5
 
-            IF @COL2 = 0 
-              SET @COL2 = 5 
+            IF @COL2 = 0
+              SET @COL2 = 5
 
-            --Find decrypted letters by positions  
-            UPDATE @WORDS 
-            SET    WORD_POST = (SELECT (SELECT LETTER 
-                                        FROM   @T_TABLE 
-                                        WHERE  ROWID = @ROW1 
-                                               AND COLID = @COL1) 
-                                       + (SELECT LETTER 
-                                          FROM   @T_TABLE 
-                                          WHERE  COLID = @COL2 
-                                                 AND ROWID = @ROW2)) 
-            WHERE  WORD_PRE = @WORD 
+            --Find decrypted letters by positions
+            UPDATE @WORDS
+            SET    WORD_POST = (SELECT (SELECT LETTER
+                                        FROM   @T_TABLE
+                                        WHERE  ROWID = @ROW1
+                                               AND COLID = @COL1)
+                                       + (SELECT LETTER
+                                          FROM   @T_TABLE
+                                          WHERE  COLID = @COL2
+                                                 AND ROWID = @ROW2))
+            WHERE  WORD_PRE = @WORD
 
-            FETCH NEXT FROM WORDS_LOOP INTO @WORD 
-        END 
+            FETCH NEXT FROM WORDS_LOOP INTO @WORD
+        END
 
-      CLOSE WORDS_LOOP 
+      CLOSE WORDS_LOOP
 
-      DEALLOCATE WORDS_LOOP 
-  END 
+      DEALLOCATE WORDS_LOOP
+  END
 
---Output 
-DECLARE WORDS CURSOR LOCAL FAST_FORWARD FOR 
-  SELECT WORD_POST 
-  FROM   @WORDS 
+--Output
+DECLARE WORDS CURSOR LOCAL FAST_FORWARD FOR
+  SELECT WORD_POST
+  FROM   @WORDS
 
-OPEN WORDS 
+OPEN WORDS
 
-FETCH NEXT FROM WORDS INTO @WORD 
+FETCH NEXT FROM WORDS INTO @WORD
 
-WHILE @@FETCH_STATUS = 0 
-  BEGIN 
+WHILE @@FETCH_STATUS = 0
+  BEGIN
       SET @SQL = @SQL + @WORD + ' '
 
-      FETCH NEXT FROM WORDS INTO @WORD 
-  END 
+      FETCH NEXT FROM WORDS INTO @WORD
+  END
 
-CLOSE WORDS 
+CLOSE WORDS
 
-DEALLOCATE WORDS 
+DEALLOCATE WORDS
 
-SELECT @SQL 
+SELECT @SQL
 
---Cleanup  
-IF EXISTS (SELECT * 
-           FROM   SYS.TYPES 
-           WHERE  NAME = 'FairPlayTable') 
-  DROP TYPE FAIRPLAYTABLE 
+--Cleanup
+IF EXISTS (SELECT *
+           FROM   SYS.TYPES
+           WHERE  NAME = 'FairPlayTable')
+  DROP TYPE FAIRPLAYTABLE
 
 ```
 
@@ -3064,7 +3064,7 @@ End Function
 Enter your keyword : Playfair example
 Ignore Q when buiding table  y/n : N
 
-Table : 
+Table :
     P L A Y F
     I R E X M
     B C D G H

@@ -28,7 +28,7 @@ In the input string, balanced pairs of braces containing comma-separated substri
 <table align="center" style="margin-top:0.8em; margin-bottom:1em; border:double 3px #bbb; background:#F9F9F9; color:#111; line-height:1.5em"><tr><td>
 <div style="padding:0.4em 0.6em; margin:0 0 0 0.4em; background:#ddd; font-family:'DejaVu Sans Mono','Courier New',Consolas,Monaco,monospace"><nowiki>It{{em,alic}iz,erat}e{d,}</nowiki></div>
 </td><td>
-<div style="padding:0 0.6em; text-align:center; color:#665">''parse'' 
+<div style="padding:0 0.6em; text-align:center; color:#665">''parse''
 ―――――▶
 &zwnj;</div>
 </td><td>
@@ -95,7 +95,7 @@ In the input string, balanced pairs of braces containing comma-separated substri
   </tr>
 </table>
 </td><td>
-<div style="padding:0 0.6em; text-align:center; color:#665">''expand'' 
+<div style="padding:0 0.6em; text-align:center; color:#665">''expand''
 ―――――▶
 &zwnj;</div>
 </td><td style"padding:0"><div style="padding:0.5em 0.6em; margin:0.4em 0.4em 0.4em 0; background:#ddd; font-family:'DejaVu Sans Mono','Courier New',Consolas,Monaco,monospace; line-height:1.35em"><span style="padding:0.1em 0;background:#D5B874">It<span style="padding:0.1em 0;background:#F3E0B3">em</span><span style="padding:0.1em 0;background:#E5CD94">iz</span>e<span style="padding:0.1em 0;background:#E5CD94">d</span></span>
@@ -479,8 +479,8 @@ gotta have\, again\, more cowbell!
 C++11 solution:
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iterator>
 #include <string>
 #include <utility>
@@ -491,15 +491,15 @@ namespace detail {
 template <typename ForwardIterator>
 class tokenizer
 {
-	
+
 	ForwardIterator _tbegin, _tend, _end;
-	
+
 public:
-	
+
 	tokenizer(ForwardIterator begin, ForwardIterator end)
 		: _tbegin(begin), _tend(begin), _end(end)
 	{ }
-	
+
 	template <typename Lambda>
 	bool next(Lambda istoken)
 	{
@@ -517,11 +517,11 @@ public:
 		}
 		return _tbegin != _end;
 	}
-	
+
 	ForwardIterator begin() const { return _tbegin; }
 	ForwardIterator end()   const { return _tend; }
 	bool operator==(char c) { return *_tbegin == c; }
-	
+
 };
 
 template <typename List>
@@ -545,11 +545,11 @@ void append_all(List & lista, const List & listb)
 template <typename String, typename List, typename Tokenizer>
 List expand(Tokenizer & token)
 {
-	
+
 	std::vector<List> alts{ { String() } };
-	
+
 	while (token.next([](char c) { return c == '{' || c == ',' || c == '}'; })) {
-		
+
 		if (token == '{') {
 			append_all(alts.back(), expand<String, List>(token));
 		} else if (token == ',') {
@@ -573,9 +573,9 @@ List expand(Tokenizer & token)
 				a.append(token.begin(), token.end());
 			}
 		}
-		
+
 	}
-	
+
 	List result{ String{ '{' } };
 	append_all(result, alts.front());
 	for (std::size_t i = 1; i < alts.size(); i++) {
@@ -625,7 +625,7 @@ List expand(const Range & range)
 
 int main()
 {
-	
+
 	for (std::string string : {
 		R"(~/{Downloads,Pictures}/*.{jpg,gif,png})",
 		R"(It{{em,alic}iz,erat}e{d,}, please.)",
@@ -650,7 +650,7 @@ int main()
 		}
 		std::cout << '\n';
 	}
-	
+
 	return 0;
 }
 ```
@@ -955,7 +955,7 @@ a{b,{{c}}
 ```elixir
 defmodule Brace_expansion do
   def getitem(s), do: getitem(String.codepoints(s), 0, [""])
-  
+
   defp getitem([], _, out), do: {out,[]}
   defp getitem([c|_]=s, depth, out) when depth>0 and (c == "," or c == "}"), do: {out,s}
   defp getitem([c|t], depth, out) do
@@ -968,12 +968,12 @@ defmodule Brace_expansion do
       if c == "\\" and length(t) > 0 do
         c2 = c <> hd(t)
         getitem(tl(t), depth, Enum.map(out, fn a -> a <> c2 end))
-      else 
+      else
         getitem(t, depth, Enum.map(out, fn a -> a <> c end))
       end
     end
   end
-  
+
   defp getgroup([], _, _, _), do: nil
   defp getgroup(s, depth, out, comma) do
     {g, s2} = getitem(s, depth, [""])
@@ -1510,7 +1510,7 @@ expand=:3 :0
     if. 0=#candidates do. break. end.
     'begin end'=. candidates{~(i.>./) -/"1 candidates
     ndx=. I.(begin<:J)*(end>:J)*Ch e. delim
-    Ch=. M ndx} Ch 
+    Ch=. M ndx} Ch
   end.
   T=. ,<Ch
   for_mark. |.N}.i.M  do.
@@ -1533,25 +1533,25 @@ divide=:4 :0
 Examples:
 
 
-```J>   
+```J>
 expand t1
 ~/Downloads/*.jpg
 ~/Downloads/*.gif
 ~/Downloads/*.png
-~/Pictures/*.jpg 
-~/Pictures/*.gif 
-~/Pictures/*.png 
+~/Pictures/*.jpg
+~/Pictures/*.gif
+~/Pictures/*.png
    > expand t2
-Itemized, please.  
-Itemize, please.   
+Itemized, please.
+Itemize, please.
 Italicized, please.
-Italicize, please. 
-Iterated, please.  
-Iterate, please.   
+Italicize, please.
+Iterated, please.
+Iterate, please.
    >expand t3
-cowbell!                          
-more cowbell!                     
-gotta have more cowbell!          
+cowbell!
+more cowbell!
+gotta have more cowbell!
 gotta have\, again\, more cowbell!
    >expand t4
 {}} some {\\edge }{ cases, here\\\}
@@ -1658,7 +1658,7 @@ gotta have\, again\, more cowbell!
 
 
 Without importing Node.js libraries, JavaScript doesn't immediately have access to anything like Haskell's Parsec, but using a functional idiom of JavaScript, and emphasising clarity more than optimisation, we can separate out the tokenizing from the parsing, and the parsing from the generation of strings, to build a function which:
-:#returns the set of expansions for each brace expression, and 
+:#returns the set of expansions for each brace expression, and
 :#logs a pretty-printed abstract syntax tree for each expression to the console (in a JSON format).
 
 Each node of the parse tree consists of one of two simple functions (AND: syntagmatic concatenation, OR: flattening of paradigms) with a set of arguments, each of which may be a plain string or an AND or OR subtree. The expansions are derived by evaluating the parse tree as an expression.
@@ -1915,7 +1915,7 @@ Sample of parse trees logged to the console:
 
 ## Julia
 
-{{trans|Python}} 
+{{trans|Python}}
 ```julia
  function getitem(s, depth=0)
     out = [""]
@@ -1941,7 +1941,7 @@ function getgroup(s, depth)
     out, comma = "", false
     while s != ""
         g, s = getitem(s, depth)
-        if s == "" 
+        if s == ""
             break
         end
         out = vcat([out...], [g...])
@@ -1956,21 +1956,21 @@ function getgroup(s, depth)
         end
     end
     return ""
-end    
+end
 
 const teststrings = [raw"~/{Downloads,Pictures}/*.{jpg,gif,png}",
                     raw"It{{em,alic}iz,erat}e{d,}, please.",
                     raw"{,{,gotta have{ ,\, again\, }}more }cowbell!",
                     raw"{}} some }{,{\\\\{ edge, edge} \,}{ cases, {here} \\\\\\\\\}'''"]
-    
+
 for s in teststrings
     println("\n", s, "\n--------------------------------------------")
     for ans in getitem(s)[1]
         println(ans)
     end
-end 
+end
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 ~/{Downloads,Pictures}/*.{jpg,gif,png}
@@ -2110,7 +2110,7 @@ So here is a manual solution that implements the specification precisely:
 sub brace_expand {
     my $input = shift;
     my @stack = ([my $current = ['']]);
-    
+
     while ($input =~ /\G ((?:[^\\{,}]++ | \\(?:.|\z))++ | . )/gx) {
         if ($1 eq '{') {
             push @stack, [$current = ['']];
@@ -2121,10 +2121,10 @@ sub brace_expand {
         elsif ($1 eq '}' && @stack > 1) {
             my $group = pop @stack;
             $current = $stack[-1][-1];
-            
+
             # handle the case of brace pairs without commas:
             @{$group->[0]} = map { "{$_}" } @{$group->[0]} if @$group == 1;
-            
+
             @$current = map {
                 my $c = $_;
                 map { map { $c . $_ } @$_ } @$group;
@@ -2132,7 +2132,7 @@ sub brace_expand {
         }
         else { $_ .= $1 for @$current; }
     }
-    
+
     # handle the case of missing closing braces:
     while (@stack > 1) {
         my $right = pop @{$stack[-1]};
@@ -2145,7 +2145,7 @@ sub brace_expand {
             map { $c . $sep . $_ } @$right;
         } @$current;
     }
-    
+
     return @$current;
 }
 ```
@@ -2209,7 +2209,7 @@ The task description allows the taking of shortcuts, but please note that we are
 
 First, the parsing is handled with a grammar that can backtrack in the few places this problem needs it.  The <tt>+</tt> quantifier matches one or more alternatives (we handle the case of a single alternative in the walk now), and the <tt>%</tt> modifier requires a comma between each quantified item to its left.  Note that the <tt>*</tt> quantifiers do <i>not</i> backtrack here, because the <tt>token</tt> keyword suppresses that; all the backtracking here fails over to a different alternative in an outer alternation (that is, things separated by the <tt>|</tt> character in the grammar. Most of these failovers just nibble an uninteresting character and continue.)
 
-On the other end, we recursively walk the parse tree returning expanded sublists, and we do the cartesian concatenation of sublists at each level by use of the <tt>X~</tt> operator, which is a "cross" metaoperator used on a simple <tt>~</tt> concatenation.  As a list infix operator, <tt>X~</tt> does not care how many items are on either side, which is just what you want in this case, since some of the arguments are strings and some are lists.  Here we use a fold or reduction form in square brackets to interpose the cross-concat between each value generated by the map, which returns a mixture of lists and literal strings.  One other thing that might not be obvious: if we bind to the match variable, <tt>$/</tt>, we automatically get all the syntactic sugar for its submatches.  In this case, <tt>$0</tt> is short for <tt>$/[0]</tt>, and represents all the submatches captured by 0th set of parens in either <tt>TOP</tt> or <tt>alt</tt>.  <tt>$&lt;meta&gt;</tt> is likewise short for <tt>$/&lt;meta&gt;</tt>, and retrieves what was captured by that named submatch. 
+On the other end, we recursively walk the parse tree returning expanded sublists, and we do the cartesian concatenation of sublists at each level by use of the <tt>X~</tt> operator, which is a "cross" metaoperator used on a simple <tt>~</tt> concatenation.  As a list infix operator, <tt>X~</tt> does not care how many items are on either side, which is just what you want in this case, since some of the arguments are strings and some are lists.  Here we use a fold or reduction form in square brackets to interpose the cross-concat between each value generated by the map, which returns a mixture of lists and literal strings.  One other thing that might not be obvious: if we bind to the match variable, <tt>$/</tt>, we automatically get all the syntactic sugar for its submatches.  In this case, <tt>$0</tt> is short for <tt>$/[0]</tt>, and represents all the submatches captured by 0th set of parens in either <tt>TOP</tt> or <tt>alt</tt>.  <tt>$&lt;meta&gt;</tt> is likewise short for <tt>$/&lt;meta&gt;</tt>, and retrieves what was captured by that named submatch.
 
 ```perl6
 grammar BraceExpansion {
@@ -2343,7 +2343,7 @@ Fairly straightforward recursive solution
 ```Phix
 --
 -- demo\rosetta\Brace_expansion.exw
--- 
+--
 ### ==========================
 
 --
@@ -2534,7 +2534,7 @@ function Expand-Braces ( [string]$String )
     $Escaped = $False
     $Stack = New-Object System.Collections.Stack
     $ClosedBraces = $BracesToParse = $Null
- 
+
     ForEach ( $i in 0..($String.Length-1) )
         {
         Switch ( $String[$i] )
@@ -2543,15 +2543,15 @@ function Expand-Braces ( [string]$String )
                 $Escaped = -not $Escaped
                 break
                 }
- 
+
             '{' {
                 If ( -not $Escaped ) { $Stack.Push( [pscustomobject]@{ Delimiters = @( $i ) } ) }
                 }
- 
+
             ',' {
                 If ( -not $Escaped -and $Stack.Count ) { $Stack.Peek().Delimiters += $i }
                 }
- 
+
             '}' {
                 If ( -not $Escaped -and $Stack.Count )
                     {
@@ -2563,16 +2563,16 @@ function Expand-Braces ( [string]$String )
                         }
                     }
                 }
- 
+
             default { $Escaped = $False }
             }
         }
- 
+
         If ( $BracesToParse )
             {
             $Start = $String.Substring( 0, $BracesToParse.Delimiters[0] )
             $End   = $String.Substring( $BracesToParse.Delimiters[-1] + 1 )
- 
+
             ForEach ( $i in 0..($BracesToParse.Delimiters.Count-2) )
                 {
                 $Option = $String.Substring( $BracesToParse.Delimiters[$i] + 1, $BracesToParse.Delimiters[$i+1] - $BracesToParse.Delimiters[$i] - 1 )
@@ -2596,7 +2596,7 @@ $TestStrings = @(
     '{,{,gotta have{ ,\, again\, }}more }cowbell!'
     '{}} some }{,{\\{ edge, edge} \,}{ cases, {here} \\\\\}'
     )
- 
+
 ForEach ( $String in $TestStrings )
     {
     ''
@@ -4333,7 +4333,7 @@ foreach bs in (T("It{{em,alic}iz,erat}e{d,}",  "~/{Downloads,Pictures}/*.{jpg,gi
    "It{{em,alic}iz,erat}e{d,}, please.",  "a{2,1}b{X,Y,X}c",  0'|a\\{\\\{b,c\,d}|,
    "{a,b{c{,{d}}e}f",  0'|{,{,gotta have{ ,\, again\, }}more }cowbell!|,
    0'|{}} some }{,{\\{ edge, edge} \,}{ cases, {here} \\\\\}|))
-{      
+{
    "%s expands to\n   %s".fmt(bs,expando(bs)).println();
 }
 ```

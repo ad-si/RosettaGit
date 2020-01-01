@@ -13,9 +13,9 @@ tags = []
 {{task}}
 A [[wp:Pythagorean_triple|Pythagorean triple]] is defined as three positive integers <math>(a, b, c)</math> where <math>a < b < c</math>, and <math>a^2+b^2=c^2.</math>
 
-They are called primitive triples if <math>a, b, c</math> are co-prime, that is, if their pairwise greatest common divisors <math>{\rm gcd}(a, b) = {\rm gcd}(a, c) = {\rm gcd}(b, c) = 1</math>. 
+They are called primitive triples if <math>a, b, c</math> are co-prime, that is, if their pairwise greatest common divisors <math>{\rm gcd}(a, b) = {\rm gcd}(a, c) = {\rm gcd}(b, c) = 1</math>.
 
-Because of their relationship through the Pythagorean theorem, a, b, and c are co-prime if a and b are co-prime (<math>{\rm gcd}(a, b) = 1</math>).   
+Because of their relationship through the Pythagorean theorem, a, b, and c are co-prime if a and b are co-prime (<math>{\rm gcd}(a, b) = 1</math>).
 
 Each triple forms the length of the sides of a right triangle, whose perimeter is <math>P=a+b+c</math>.
 
@@ -24,16 +24,16 @@ Each triple forms the length of the sides of a right triangle, whose perimeter i
 The task is to determine how many Pythagorean triples there are with a perimeter no larger than 100 and the number of these that are primitive.
 
 
-;Extra credit: 
+;Extra credit:
 Deal with large values.   Can your program handle a maximum perimeter of 1,000,000?   What about 10,000,000?   100,000,000?
 
 Note: the extra credit is not for you to demonstrate how fast your language is compared to others;   you need a proper algorithm to solve them in a timely manner.
 
 
 ;Related tasks:
-*   [[Euler's sum of powers conjecture]]  
+*   [[Euler's sum of powers conjecture]]
 *   [[List comprehensions]]
-*   [[Pythagorean quadruples]] 
+*   [[Pythagorean quadruples]]
 
 
 
@@ -60,7 +60,7 @@ PYTHTRI  CSECT
          MH     R5,=H'10'            *10
          ST     R5,PMAX              pmax=pmax*10
          MVC    PRIM,=F'0'           prim=0
-         MVC    COUNT,=F'0'          count=0     
+         MVC    COUNT,=F'0'          count=0
          L      R1,PMAX              pmax
          BAL    R14,ISQRT            isqrt(pmax)
          SRA    R0,1                 /2
@@ -73,7 +73,7 @@ PYTHTRI  CSECT
          MR     R4,R9                  *m
          SLA    R5,1                   *2
          LR     R8,R5                  p=2*m*(m+n)
-       DO WHILE=(C,R8,LE,PMAX)         do while p<=pmax 
+       DO WHILE=(C,R8,LE,PMAX)         do while p<=pmax
          LR     R1,R9                    m
          LR     R2,R7                    n
          BAL    R14,GCD                  gcd(m,n)
@@ -119,7 +119,7 @@ XDEC     DS     CL12
 GCD      EQU    *  --------------- function gcd(a,b)
          STM    R2,R7,GCDSA        save context
          LR     R3,R1              c=a
-         LR     R4,R2              d=b      
+         LR     R4,R2              d=b
 GCDLOOP  LR     R6,R3              c
          SRDA   R6,32              ~
          DR     R6,R4              /d
@@ -133,19 +133,19 @@ GCDELOOP LR     R0,R4              return(d)
          LM     R2,R7,GCDSA        restore context
          BR     R14                return
 GCDSA    DS     6A                 context store
-ISQRT    EQU    *  --------------- function isqrt(n)                   
+ISQRT    EQU    *  --------------- function isqrt(n)
          STM    R3,R10,ISQRTSA     save context
          LR     R6,R1              n=r1
          LR     R10,R6             sqrtn=n
          SRA    R10,1              sqrtn=n/2
-       IF LTR,R10,Z,R10 THEN       if sqrtn=0 then 
+       IF LTR,R10,Z,R10 THEN       if sqrtn=0 then
          LA     R10,1                sqrtn=1
-       ELSE     ,                  else 
+       ELSE     ,                  else
          LA     R9,0                 snm2=0
          LA     R8,0                 snm1=0
          LA     R7,0                 sn=0
          LA     R3,0                 okexit=0
-       DO UNTIL=(C,R3,EQ,=A(1))      do until okexit=1 
+       DO UNTIL=(C,R3,EQ,=A(1))      do until okexit=1
          AR     R10,R7                 sqrtn=sqrtn+sn
          LR     R9,R8                  snm2=snm1
          LR     R8,R7                  snm1=sn
@@ -191,7 +191,7 @@ Max Perimeter:   1000000, Total:    808950, Primitive:     70229
 ## Ada
 
 
-Translation of efficient method from C, see [[wp:Pythagorean_triple#Parent.2Fchild_relationships|the WP article]]. Compiles on gnat/gcc. 
+Translation of efficient method from C, see [[wp:Pythagorean_triple#Parent.2Fchild_relationships|the WP article]]. Compiles on gnat/gcc.
 
 
 ```Ada
@@ -412,7 +412,7 @@ The built-in array arithmetic is very well suited to this task!
       U0%() =  1, -2, 2,  2, -1, 2,  2, -2, 3
       U1%() =  1,  2, 2,  2,  1, 2,  2,  2, 3
       U2%() = -1,  2, 2, -2,  1, 2, -2,  2, 3
-      
+
       seed%() = 3, 4, 5
       FOR power% = 1 TO 7
         all% = 0 : prim% = 0
@@ -420,14 +420,14 @@ The built-in array arithmetic is very well suited to this task!
         PRINT "Up to 10^"; power%, ": " all% " triples" prim% " primitives"
       NEXT
       END
-      
+
       DEF PROCtri(i%(), mp%, RETURN all%, RETURN prim%)
       LOCAL t%() : DIM t%(2)
-      
+
       IF SUM(i%()) > mp% ENDPROC
       prim% += 1
       all% += mp% DIV SUM(i%())
-      
+
       t%() = U0%() . i%()
       PROCtri(t%(), mp%, all%, prim%)
       t%() = U1%() . i%()
@@ -510,8 +510,8 @@ Up to 10^8:  113236940 triples   7023027 primitives
     )
   & Main$
 );
-      
-pythagoreanTriples$;      
+
+pythagoreanTriples$;
 
 ```
 
@@ -598,10 +598,10 @@ pythagoreanTriples$;
 
 Sample implemention; naive method, patentedly won't scale to larger numbers, despite the attempt to optimize it.  Calculating up to 10000 is already a test of patience.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
- 
+
 typedef unsigned long long xint;
 typedef unsigned long ulong;
 
@@ -611,7 +611,7 @@ inline ulong gcd(ulong m, ulong n)
     while (n) { t = n; n = m % n; m = t; }
     return m;
 }
- 
+
 int main()
 {
     ulong a, b, c, pytha = 0, prim = 0, max_p = 100;
@@ -639,7 +639,7 @@ int main()
             }
         }
     }
- 
+
     printf("Up to %lu, there are %lu triples, of which %lu are primitive\n",
         max_p, pytha, prim);
 
@@ -650,8 +650,8 @@ output:<lang>Up to 100, there are 17 triples, of which 7 are primitive
 ```
 
 Efficient method, generating primitive triples only as described in [[wp:Pythagorean_triple#Parent.2Fchild_relationships|the same WP article]]:
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 
@@ -713,8 +713,8 @@ Up to 100000000: 113236940 triples, 7023027 primitives.
 
 Same as above, but with loop unwound and third recursion eliminated:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 
@@ -770,7 +770,7 @@ int main()
 
 =={{header|C sharp|C#}}==
 
-Based on Ada example, which is a translation of efficient method from C, see [[wp:Pythagorean_triple#Parent.2Fchild_relationships|the WP article]]. 
+Based on Ada example, which is a translation of efficient method from C, see [[wp:Pythagorean_triple#Parent.2Fchild_relationships|the WP article]].
 
 
 ```C sharp
@@ -835,24 +835,24 @@ Perimeter up to 10E8 : 113236940 Triples, 7023027 Primitives
 
 ## Clojure
 
-This version is based on Euclid's formula: 
+This version is based on Euclid's formula:
 for each pair ''(m,n)'' such that ''m>n>0'', ''m'' and ''n'' coprime and of opposite polarity (even/odd),
-there is a primitive Pythagorean triple. It can be proven that the converse is true as well. 
+there is a primitive Pythagorean triple. It can be proven that the converse is true as well.
 
 ```clojure
 (defn gcd [a b] (if (zero? b) a (recur b (mod a b))))
-     
+
 (defn pyth [peri]
   (for [m (range 2 (Math/sqrt (/ peri 2)))
         n (range (inc (mod m 2)) m 2) ; n<m, opposite polarity
         :let [p (* 2 m (+ m n))]      ; = a+b+c for this (m,n)
         :while (<= p peri)
         :when (= 1 (gcd m n))
-        :let [m2 (* m m), n2 (* n n), 
+        :let [m2 (* m m), n2 (* n n),
               [a b] (sort [(- m2 n2) (* 2 m n)]), c (+ m2 n2)]
         k (range 1 (inc (quot peri p)))]
     [(= k 1) (* k a) (* k b) (* k c)]))
-  
+
 (defn rcount [ts] ; (->> peri pyth rcount) produces [total, primitive] counts
   (reduce (fn [[total prims] t] [(inc total), (if (first t) (inc prims) prims)])
     [0 0]
@@ -921,7 +921,7 @@ output
 
 ```txt
 
-time coffee pythag_triples.coffee 
+time coffee pythag_triples.coffee
 70230484 1294080089
 real    0m45.989s
 
@@ -977,22 +977,22 @@ class PythagoranTriplesCounter
 
   def total; @total end
   def primitives; @primitives end
- 
+
   private def generate_triples(a, b, c)
     perim = a + b + c
     return if perim > @limit
- 
+
     @primitives += 1
     @total += @limit / perim
- 
+
     generate_triples( a-2*b+2*c, 2*a-b+2*c, 2*a-2*b+3*c )
     generate_triples( a+2*b+2*c, 2*a+b+2*c, 2*a+2*b+3*c )
     generate_triples(-a+2*b+2*c,-2*a+b+2*c,-2*a+2*b+3*c )
   end
 end
- 
+
 perim = 10
-while perim <= 100_000_000 
+while perim <= 100_000_000
   c = PythagoranTriplesCounter.new perim
   p [perim, c.total, c.primitives]
   perim *= 10
@@ -1288,7 +1288,7 @@ There are 808950 triples, below 1000000. Of which 70229 are primitives.
 ```elixir
 defmodule RC do
   def count_triples(limit), do: count_triples(limit,3,4,5)
-  
+
   defp count_triples(limit, a, b, c) when limit<(a+b+c), do: {0,0}
   defp count_triples(limit, a, b, c) do
     {p1, t1} = count_triples(limit, a-2*b+2*c, 2*a-b+2*c, 2*a-2*b+3*c)
@@ -1331,7 +1331,7 @@ Enum.each(list, fn n -> IO.inspect {n, RC.count_triples(n)} end)
 -module(triples).
 -export([main/1]).
 
-%% Transformations t1, t2 and t3 to generate new triples    
+%% Transformations t1, t2 and t3 to generate new triples
 t1(A, B, C) ->
   {A-2*B+2*C, 2*A-B+2*C, 2*A-2*B+3*C}.
 t2(A, B, C) ->
@@ -1344,10 +1344,10 @@ count_triples(A, B, C, Tot_acc, Cnt_acc, Max_perimeter) when (A+B+C) =< Max_peri
   Tot1 = Tot_acc + Max_perimeter div (A+B+C),
   {A1, B1, C1} = t1(A, B, C),
   {Tot2, Cnt2} = count_triples(A1, B1, C1, Tot1, Cnt_acc+1, Max_perimeter),
-    
+
   {A2, B2, C2} = t2(A, B, C),
   {Tot3, Cnt3} = count_triples(A2, B2, C2, Tot2, Cnt2, Max_perimeter),
-    
+
   {A3, B3, C3} = t3(A, B, C),
   {Tot4, Cnt4} = count_triples(A3, B3, C3, Tot3, Cnt3, Max_perimeter),
   {Tot4, Cnt4};
@@ -1537,13 +1537,13 @@ let isqrt n =
         if (0 <= d) && (d < t+t+1) // t*t <= n < (t+1)*(t+1)
         then t else iter ((t+(n/t))/2)
     iter 1
- 
+
 let rec gcd a b =
     let t = a % b
     if t = 0 then b else gcd b t
- 
+
 let coprime a b = gcd a b = 1
- 
+
 let num_to ms =
     let mutable ctr = 0
     let mutable prim_ctr = 0
@@ -1557,11 +1557,11 @@ let num_to ms =
                     ctr <- ctr + (ms/s)
                     prim_ctr <- prim_ctr + 1
     (ctr, prim_ctr)
- 
+
 let show i =
     let s, p = num_to i in
     printfn "For perimeters up to %d there are %d total and %d primitive" i s p;;
- 
+
 List.iter show [ 100; 1000; 10000; 100000; 1000000; 10000000; 100000000 ]
 ```
 
@@ -1589,7 +1589,7 @@ USING: accessors arrays formatting kernel literals math
 math.functions math.matrices math.ranges sequences ;
 IN: rosettacode.pyth
 
-CONSTANT: T1 { 
+CONSTANT: T1 {
   {  1  2  2 }
   { -2 -1 -2 }
   {  2  2  3 }
@@ -1615,16 +1615,16 @@ TUPLE: triplets-count primitives total ;
 : add-triplets ( current-triples limit triplet -- stop )
   sum 2dup > [
    /i [ + ] curry change-total
-   [ 1 + ] change-primitives drop t 
+   [ 1 + ] change-primitives drop t
   ] [ 3drop f ] if ;
 : all-triplets ( current-triples limit seed -- triplets )
-  3dup add-triplets [ 
+  3dup add-triplets [
     candidates-triplets [ all-triplets ] with swapd reduce
   ] [ 2drop ] if ;
 : count-triplets ( limit -- count )
   <0-triplets-count> swap base all-triplets ;
 : pprint-triplet-count ( limit count -- )
-  [ total>> ] [ primitives>> ] bi 
+  [ total>> ] [ primitives>> ] bi
   "Up to %d: %d triples, %d primitives.\n" printf ;
 : pyth ( -- )
   8 [1,b] [ 10^ dup count-triplets pprint-triplet-count ] each ;
@@ -1653,7 +1653,7 @@ Running time: 57.968821207 seconds
 
 
 
-```Forth 
+```Forth
 
 
 
@@ -1759,7 +1759,7 @@ FLOAD 'C:\Forth\ancien_fibo_pythag.F'  ok
 
   ok
   ok
-3 pf_test 
+3 pf_test
         0       1       1       2       3              3              4                5
         1       3       1       4       5             15              8               17
         2       5       1       6       7             35             12               37
@@ -1802,7 +1802,7 @@ FLOAD 'C:\Forth\ancien_fibo_pythag.F'  ok
         3       1       4       5       9              9             40               41
  ok
   ok
-10 pythag_ancn 
+10 pythag_ancn
     2    1              3              4                5
     3    2              5             12               13
     4    1             15              8               17
@@ -1840,13 +1840,13 @@ FLOAD 'C:\Forth\ancien_fibo_pythag.F'  ok
 ```fortran
 module triples
   implicit none
-  
+
   integer :: max_peri, prim, total
   integer :: u(9,3) = reshape((/ 1, -2, 2,  2, -1, 2,  2, -2, 3, &
                                  1,  2, 2,  2,  1, 2,  2,  2, 3, &
                                 -1,  2, 2, -2,  1, 2, -2,  2, 3 /), &
                                 (/ 9, 3 /))
-                                
+
 contains
 
 recursive subroutine new_tri(in)
@@ -1873,7 +1873,7 @@ program Pythagorean
   implicit none
 
   integer :: seed(3) = (/ 3, 4, 5 /)
-  
+
   max_peri = 10
   do
     total = 0
@@ -2009,13 +2009,13 @@ End
 ```txt
 below           triples   primitive            time
 
-10^ 1                 0   0             
-10^ 2                17   7             
-10^ 3               325   70            
-10^ 4              4858   703           
-10^ 5             64741   7026          
-10^ 6            808950   70229         
-10^ 7           9706567   702309        
+10^ 1                 0   0
+10^ 2                17   7
+10^ 3               325   70
+10^ 4              4858   703
+10^ 5             64741   7026
+10^ 6            808950   70229
+10^ 7           9706567   702309
 10^ 8         113236940   7023027              0.94 sec.
 10^ 9        1294080089   70230484            10.13 sec.
 10^10       14557915466   702304875          109.75 sec.
@@ -2121,13 +2121,13 @@ End
 ```txt
 below           triples   primitive            time
 
-10^ 1                 0   0             
-10^ 2                17   7             
-10^ 3               325   70            
-10^ 4              4858   703           
-10^ 5             64741   7026          
-10^ 6            808950   70229         
-10^ 7           9706567   702309        
+10^ 1                 0   0
+10^ 2                17   7
+10^ 3               325   70
+10^ 4              4858   703
+10^ 5             64741   7026
+10^ 6            808950   70229
+10^ 7           9706567   702309
 10^ 8         113236940   7023027              0.66 sec.
 10^ 9        1294080089   70230484             7.48 sec.
 10^10       14557915466   702304875           83.92 sec.
@@ -2281,9 +2281,9 @@ pytr n =
   filter
     (\(_, a, b, c) -> a + b + c <= n)
     [ (prim a b c, a, b, c)
-    | a <- xs 
-    , b <- drop a xs 
-    , c <- drop b xs 
+    | a <- xs
+    , b <- drop a xs
+    , c <- drop b xs
     , a ^ 2 + b ^ 2 == c ^ 2 ]
   where
     xs = [1 .. n]
@@ -2397,29 +2397,29 @@ link printf
 procedure main(A)  # P-triples
 
    plimit := (0 < integer(\A[1])) | 100 # get perimiter limit
-   
+
    nonprimitiveS := set()  # record unique non-primitives triples
    primitiveS := set()     # record unique primitive triples
-   
+
    u :=  0
    while (g := (u +:= 1)^2) + 3 * u + 2 < plimit / 2 do {
       every v := seq(1) do {
          a := g + (i := 2*u*v)
          b := (h := 2*v^2) + i
          c := g + h + i
-         if (p := a + b + c) > plimit then break 
-         
-         insert( (gcd(u,v)=1 & u%2=1, primitiveS) | nonprimitiveS, memo(a,b,c)) 
-         every k := seq(2) do {      # k is for larger non-primitives          
-            if k*p > plimit then break      
+         if (p := a + b + c) > plimit then break
+
+         insert( (gcd(u,v)=1 & u%2=1, primitiveS) | nonprimitiveS, memo(a,b,c))
+         every k := seq(2) do {      # k is for larger non-primitives
+            if k*p > plimit then break
             insert(nonprimitiveS,memo(a*k,b*k,c*k) )
             }
          }
       }
-      
+
 printf("Under perimiter=%d: Pythagorean Triples=%d including primitives=%d\n",
-       plimit,*nonprimitiveS+*primitiveS,*primitiveS) 
-       
+       plimit,*nonprimitiveS+*primitiveS,*primitiveS)
+
 every put(gcol := []  , &collections)
 printf("Time=%d, Collections: total=%d string=%d block=%d",&time,gcol[1],gcol[3],gcol[4])
 end
@@ -2432,9 +2432,9 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers.icn provides gcd] 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers.icn provides gcd]
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
 
 The output from some sample runs with BLKSIZE=500000000 and STRSIZE=50000000 is below.  It starts getting very slow after 10M at about 9 minutes (times are shown in ms.  I suspect there may be faster gcd algorithms that would speed this up.
 
@@ -2480,7 +2480,7 @@ pytr=: 3 :0
     c=. a +&.*: b
     keep=. (c = <.c) *. y >: a+b+c
     if. 1 e. keep do.
-      r=. r, a,.b ,.&(keep&#) c 
+      r=. r, a,.b ,.&(keep&#) c
     end.
   end.
   (,.~ prim"1)r
@@ -2607,13 +2607,13 @@ public class PythTrip{
 
         for(BigInteger a = ONE; a.compareTo(peri3) < 0; a = a.add(ONE)){
             BigInteger aa = a.multiply(a);
-            
+
             for(BigInteger b = a.add(ONE);
                     b.compareTo(peri2) < 0; b = b.add(ONE)){
                 BigInteger bb = b.multiply(b);
                 BigInteger ab = a.add(b);
                 BigInteger aabb = aa.add(bb);
-                
+
                 for(BigInteger c = b.add(ONE);
                         c.compareTo(peri2) < 0; c = c.add(ONE)){
 
@@ -2801,8 +2801,8 @@ Exhaustive search of a full cartesian product. Not scalable.
 {{Out}}
 
 ```JavaScript
-[{"maxPerimeter":10, "triples":0, "primitives":0}, 
- {"maxPerimeter":100, "triples":17, "primitives":7}, 
+[{"maxPerimeter":10, "triples":0, "primitives":0},
+ {"maxPerimeter":100, "triples":17, "primitives":7},
  {"maxPerimeter":1000, "triples":325, "primitives":70}]
 ```
 
@@ -3003,7 +3003,7 @@ Up to 10000000000: 14557915466 triples, 702304875 primatives
 // Brute Force: Too slow for large numbers
 define num_pythagorean_triples(max_perimeter::integer) => {
    local(max_b) = (#max_perimeter / 3)*2
-   
+
    return (
       with a in 1 to (#max_b - 1)
       sum integer(
@@ -3102,7 +3102,7 @@ End
 
 ```
 
- 
+
 
 ## Mathematica
 
@@ -3136,22 +3136,22 @@ N=  100;
   a = 1:N;
   b = a(ones(N,1),:).^2;
   b = b+b';
-  b = sqrt(b);  [y,x]=find(b==fix(b)); % test 
+  b = sqrt(b);  [y,x]=find(b==fix(b)); % test
   % here some alternative tests
   % b = b.^(1/k); [y,x]=find(b==fix(b)); % test 2
   % [y,x]=find(b==(fix(b.^(1/k)).^k));  % test 3
   % b=b.^(1/k); [y,x]=find(abs(b - round(b)) <= 4*eps*b);
-  
+
   z  = sqrt(x.^2+y.^2);
-  ix = (z+x+y<100) & (x < y) & (y < z); 
+  ix = (z+x+y<100) & (x < y) & (y < z);
   p  = find(gcd(x(ix),y(ix))==1);   % find primitive triples
 
   printf('There are %i Pythagorean Triples and %i primitive triples with a perimeter smaller than %i.\n',...
-         sum(ix), length(p), N);  
+         sum(ix), length(p), N);
 ```
 
 
-Output: 
+Output:
 
 ```txt
  There are 17 Pythagorean Triples and 7 primitive triples with a perimeter smaller than 100.
@@ -3171,15 +3171,15 @@ From [[List comprehensions]]:
 :- interface.
 :- import_module io.
 :- import_module int.
- 
+
 :- type triple ---> triple(int, int, int).
- 
+
 :- pred pythTrip(int::in,triple::out) is nondet.
 :- pred main(io::di, io::uo) is det.
- 
+
 :- implementation.
 :- import_module solutions.
- 
+
 pythTrip(Limit,triple(X,Y,Z)) :-
     nondet_int_in_range(1,Limit,X),
     nondet_int_in_range(X,Limit,Y),
@@ -3204,7 +3204,7 @@ IMPORT IO, Fmt;
 VAR tcnt, pcnt, max, i: INTEGER;
 
 PROCEDURE NewTriangle(a, b, c: INTEGER; VAR tcount, pcount: INTEGER) =
-  VAR perim := a + b + c;      
+  VAR perim := a + b + c;
   BEGIN
     IF perim <= max THEN
       pcount := pcount + 1;
@@ -3217,7 +3217,7 @@ PROCEDURE NewTriangle(a, b, c: INTEGER; VAR tcount, pcount: INTEGER) =
 
 BEGIN
   i := 100;
-  
+
   REPEAT
     max := i;
     tcnt := 0;
@@ -3399,7 +3399,7 @@ For perimeters up to 100000000 there are 113236940 total and 7023027 primitive
 
 ## PARI/GP
 
-This version is reasonably efficient and can handle inputs like a million quickly. 
+This version is reasonably efficient and can handle inputs like a million quickly.
 
 ```parigp
 do(lim)={
@@ -3444,7 +3444,7 @@ procedure newTri(s0, s1, s2: int64);
       newTri(-s0 + 2*( s1+s2),  2*(-s0+s2) + s1,  2*(-s0+s1+s2) + s2);
     end;
   end;
-  
+
 begin
   maxPeri := 100;
   while maxPeri <= 1e10 do
@@ -3623,7 +3623,7 @@ Here's a much faster version.  Hint, "oyako" is Japanese for "parent/child". <tt
 sub triples($limit) {
     my $primitive = 0;
     my $civilized = 0;
- 
+
     sub oyako($a, $b, $c) {
         my $perim = $a + $b + $c;
         return if $perim > $limit;
@@ -3632,11 +3632,11 @@ sub triples($limit) {
         oyako( $a + 2*$b + 2*$c,  2*$a + $b + 2*$c,  2*$a + 2*$b + 3*$c);
         oyako(-$a + 2*$b + 2*$c, -2*$a + $b + 2*$c, -2*$a + 2*$b + 3*$c);
     }
- 
+
     oyako(3,4,5);
     "$limit => ($primitive $civilized)";
 }
- 
+
 for 10,100,1000 ... * -> $limit {
     say triples $limit;
 }
@@ -3704,7 +3704,7 @@ for 10, 100, 1000, 10000 -> $limit {
 
 ```Phix
 atom total, prim, maxPeri = 10
- 
+
 procedure tri(atom s0, s1, s2)
 atom p = s0 + s1 + s2
     if p<=maxPeri then
@@ -3715,7 +3715,7 @@ atom p = s0 + s1 + s2
         tri(-s0+2*( s1+s2), 2*(-s0+s2)+s1, 2*(-s0+s1+s2)+s2);
     end if
 end procedure
- 
+
 while maxPeri<=1e8 do
     prim := 0;
     total := 0;
@@ -3952,8 +3952,8 @@ function triples($p) {
                     $ci = $_
                     $pi = $ai + $bi + $ci
                     $ci*$ci -eq $ai*$ai + $bi*$bi
-                 } | 
-                foreach { 
+                 } |
+                foreach {
                     [pscustomobject]@{
                         a = "$ai"
                         b = "$bi"
@@ -3966,11 +3966,11 @@ function triples($p) {
     }
     else {
         Write-Error "$p is not greater than 4"
-    }   
+    }
 }
 function gcd ($a, $b)  {
     function pgcd ($n, $m)  {
-        if($n -le $m) { 
+        if($n -le $m) {
             if($n -eq 0) {$m}
             else{pgcd $n ($m%$n)}
         }
@@ -3981,10 +3981,10 @@ function gcd ($a, $b)  {
     (pgcd $n $m)
 }
 $triples = (triples 100)
- 
-$coprime = $triples | 
+
+$coprime = $triples |
 where {((gcd $_.a $_.b) -eq 1) -and ((gcd $_.a $_.c) -eq 1) -and  ((gcd $_.b $_.c) -eq 1)}
- 
+
 "There are $(($triples).Count) Pythagorean triples with perimeter no larger than 100
  and $(($coprime).Count) of them are coprime."
 
@@ -4230,7 +4230,7 @@ def printit(maxperimeter=100, pt=pt1):
           % (maxperimeter,
              len(trips),
              len([prim for a,b,c,prim in trips if prim])))
-  
+
 for algo, mn, mx in ((pt1, 250, 2500), (pt2, 500, 20000)):
     print(algo.__doc__)
     for maxperimeter in range(mn, mx+1, mn):
@@ -4244,7 +4244,7 @@ for algo, mn, mx in ((pt1, 250, 2500), (pt2, 500, 20000)):
 ```txt
 
 # Naive method
-    
+
   Up to a perimeter of 250 there are 56 triples, of which 18 are primitive
   Up to a perimeter of 500 there are 137 triples, of which 35 are primitive
   Up to a perimeter of 750 there are 227 triples, of which 52 are primitive
@@ -4258,7 +4258,7 @@ for algo, mn, mx in ((pt1, 250, 2500), (pt2, 500, 20000)):
 
 # Parent/child relationship method:
 # http://en.wikipedia.org/wiki/Formulas_for_generating_Pythagorean_triples#XI.
-    
+
   Up to a perimeter of 500 there are 137 triples, of which 35 are primitive
   Up to a perimeter of 1000 there are 325 triples, of which 70 are primitive
   Up to a perimeter of 1500 there are 527 triples, of which 104 are primitive
@@ -4338,7 +4338,7 @@ Output:<lang>10 (0, 0)
 #| Euclid's enumeration formula and counting is fast enough for extra credit.
 
  For maximum perimeter P₀, the primitive triples are enumerated by n,m with:
-   
+
    1 ≤ n < m
    perimeter P(n, m) ≤ P₀ where P(n, m) = (m² - n²) + 2mn + (m² + n²) = 2m(m+n)
    m and n of different parity and coprime.
@@ -4436,7 +4436,7 @@ max perimeter = 1000         Pythagorean triples = 325         primitives = 70
 
 
 ### using single evenness for determinacy
- 
+
 This REXX version takes advantage that primitive Pythagorean triples must have one and only one   ''even''   number.
 
 This REXX version is about   '''10%'''   faster than the 1<sup>st</sup> REXX version.
@@ -4502,7 +4502,7 @@ for i = 1 to size
        for k = 1 to size
            if pow(i,2) + pow(j,2) = pow(k,2) and (i+j+k) < 101
               if gcd(i,j) = 1 prime += 1 ok
-              sum += 1  
+              sum += 1
               see "" + i + " " + j + " " + k + nl ok
        next
    next
@@ -4561,7 +4561,7 @@ class PythagoranTriplesCounter
     generate_triples(3, 4, 5)
   end
   attr_reader :total, :primitives
-  
+
   private
   def generate_triples(a, b, c)
     perim = a + b + c
@@ -4577,7 +4577,7 @@ class PythagoranTriplesCounter
 end
 
 perim = 10
-while perim <= 100_000_000 
+while perim <= 100_000_000
   c = PythagoranTriplesCounter.new perim
   p [perim, c.total, c.primitives]
   perim *= 10
@@ -4608,7 +4608,7 @@ use std::thread;
 
 fn f1 (a : u64, b : u64, c : u64, d : u64) -> u64 {
     let mut primitive_count = 0;
-    for triangle in [[a - 2*b + 2*c, 2*a - b + 2*c, 2*a - 2*b + 3*c], 
+    for triangle in [[a - 2*b + 2*c, 2*a - b + 2*c, 2*a - 2*b + 3*c],
                      [a + 2*b + 2*c, 2*a + b + 2*c, 2*a + 2*b + 3*c],
                      [2*b + 2*c - a, b + 2*c - 2*a, 2*b + 3*c - 2*a]] .iter() {
         let l  = triangle[0] + triangle[1] + triangle[2];
@@ -4620,7 +4620,7 @@ fn f1 (a : u64, b : u64, c : u64, d : u64) -> u64 {
 
 fn f2 (a : u64, b : u64, c : u64, d : u64) -> u64 {
     let mut triplet_count = 0;
-    for triangle in [[a - 2*b + 2*c, 2*a - b + 2*c, 2*a - 2*b + 3*c], 
+    for triangle in [[a - 2*b + 2*c, 2*a - b + 2*c, 2*a - 2*b + 3*c],
                      [a + 2*b + 2*c, 2*a + b + 2*c, 2*a + 2*b + 3*c],
                      [2*b + 2*c - a, b + 2*c - 2*a, 2*b + 3*c - 2*a]] .iter() {
         let l  = triangle[0] + triangle[1] + triangle[2];
@@ -4770,7 +4770,7 @@ $ include "seed7_05.s7i";
 var bigInteger: total is 0_;
 var bigInteger: prim is 0_;
 var bigInteger: max_peri is 10_;
- 
+
 const proc: new_tri (in bigInteger: a, in bigInteger: b, in bigInteger: c) is func
   local
     var bigInteger: p is 0_;
@@ -4784,7 +4784,7 @@ const proc: new_tri (in bigInteger: a, in bigInteger: b, in bigInteger: c) is fu
       new_tri(-a + 2_*b + 2_*c, -2_*a + b + 2_*c, -2_*a + 2_*b + 3_*c);
     end if;
   end func;
- 
+
 const proc: main is func
   begin
     while max_peri <= 100000000_ do
@@ -4870,7 +4870,7 @@ var prim = 0
 var maxPeri = 100
 
 func newTri(s0:Int, _ s1:Int, _ s2: Int) -> () {
-    
+
     let p = s0 + s1 + s2
     if p <= maxPeri {
         prim += 1
@@ -5019,7 +5019,7 @@ Function triples(pmax)
 			p=2*m*(m+n)
 		Loop
 		n=n+1
-	Loop 
+	Loop
 	triples = "Max Perimeter: " & pmax &_
 				", Total: " & count &_
 				", Primitive: " & prim

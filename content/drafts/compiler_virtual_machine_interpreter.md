@@ -825,8 +825,8 @@ count is: 9
 
 Tested with gcc 4.81 and later, compiles warning free with -Wall -Wextra
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
@@ -1211,9 +1211,9 @@ start-vminterpreter.
     stop run
     .
 run-code.
-    move 1 to pc 
+    move 1 to pc
     perform until pc >= c
-        evaluate kode(pc:1) 
+        evaluate kode(pc:1)
         when opFETCH
             perform push-stack
             move kode(pc + 1:word-length) to word-x
@@ -1263,11 +1263,11 @@ run-code.
             perform pop-stack
         when opMUL
             multiply stack(stack1) by stack(stack2)
-                *>rounded mode nearest-toward-zero *> doesn't match python 
+                *>rounded mode nearest-toward-zero *> doesn't match python
             perform pop-stack
         when opDIV
             divide stack(stack1) into stack(stack2)
-                *>rounded mode nearest-toward-zero *> doesn't match python 
+                *>rounded mode nearest-toward-zero *> doesn't match python
             perform pop-stack
         when opMOD
             move mod(stack(stack2),stack(stack1)) to stack(stack2)
@@ -1355,7 +1355,7 @@ run-code.
                     add count1 to string1
                     subtract count1 from length1
                 end-evaluate
-            end-perform 
+            end-perform
             perform pop-stack
         when opPRTI
             move stack(stack1) to display-integer
@@ -1502,7 +1502,7 @@ start-emitbyte.
     add 1 to c
     .
 end program emitbyte.
-   
+
 identification division.
 program-id. emitword.
 data division.
@@ -1532,7 +1532,7 @@ end program vminterpreter.
 {{out|case=Count}}
 
 ```txt
-prompt$ ./lexer <testcases/Count | ./parser | ./generator | ./vminterpreter 
+prompt$ ./lexer <testcases/Count | ./parser | ./generator | ./vminterpreter
 count is: 1
 count is: 2
 count is: 3
@@ -1572,8 +1572,8 @@ CREATE A 0 ,
    BEGIN PEEK [CHAR] " <> WHILE GETC C!A+ REPEAT
    GETC DROP  PAD A @ OVER - 1- PAD C! ;
 : \INTERN ( c-addr -- c-addr)  HERE >R  A ! C@A+ DUP C,
-   BEGIN DUP WHILE C@A+  
-     DUP [CHAR] \ = IF DROP -1 R@ +!  C@A+ 
+   BEGIN DUP WHILE C@A+
+     DUP [CHAR] \ = IF DROP -1 R@ +!  C@A+
        [CHAR] n = IF 10 ELSE [CHAR] \ THEN
      THEN C,  1-
    REPEAT  DROP R> ;
@@ -1585,7 +1585,7 @@ CREATE STRINGS 0 ,
    WORD DROP  >INT 4 * BEGIN DUP WHILE 0 C, 1- REPEAT DROP ;
 : >STRINGS   HERE STRINGS !
    WORD DROP  >INT DUP >R CELLS  ALLOT
-   0 BEGIN DUP R@ < WHILE 
+   0 BEGIN DUP R@ < WHILE
      DUP CELLS >STRING \INTERN STRINGS @ ROT + !  1+
    REPEAT R> DROP DROP ;
 : >HEADER   >DATA >STRINGS ;
@@ -2145,7 +2145,7 @@ Module Virtual_Machine_Interpreter (a$){
 	Report "Virtual Assembly Code:"+{
 	}+a$
 	Print "Prepare Byte Code"
-	
+
 	\\ get datasize
 	a$=rightpart$(a$, "Datasize:")
 	m=0
@@ -2160,7 +2160,7 @@ Module Virtual_Machine_Interpreter (a$){
 	m=0
 	strings=val(a$, "int", m)
 	a$=rightpart$(a$, nl$)
-	
+
 	if strings>0 then
 		Dim strings$(strings)
 		for i=0 to strings-1
@@ -2189,7 +2189,7 @@ Module Virtual_Machine_Interpreter (a$){
 				Return code_, offset+1:=uint(val(line$)) as long : offset+=4
 			case jz_, jmp_
 				Return code_, offset+1:=val(rightpart$(line$,")")) as long : offset+=4
-			end select 
+			end select
 		end if
 	Always
 	Print "Press any key" : Push key$ : Drop
@@ -2197,8 +2197,8 @@ Module Virtual_Machine_Interpreter (a$){
 	let pc=0, sp=len(stack_) div 4
 	do {
 		func=eval(code_, pc)
-		pc++     
-		select case func 
+		pc++
+		select case func
 		case halt_
 			exit
 		case push_
@@ -2226,9 +2226,9 @@ Module Virtual_Machine_Interpreter (a$){
 		case neg_  \\ we can use neg(sint(value))+1 or uint(-sint(value))
 			Return stack_, sp:=uint(-sint(eval(stack_, sp)))
 		case and_
-			Return stack_, sp+1:=binary.and(eval(stack_, sp+1),eval(stack_, sp)):sp++	
+			Return stack_, sp+1:=binary.and(eval(stack_, sp+1),eval(stack_, sp)):sp++
 		case or_
-			Return stack_, sp+1:=binary.or(eval(stack_, sp+1),eval(stack_, sp)):sp++	
+			Return stack_, sp+1:=binary.or(eval(stack_, sp+1),eval(stack_, sp)):sp++
 		case lt_
 			Return stack_, sp+1:=uint(if(sint(eval(stack_, sp+1))<sint(eval(stack_, sp))->-1, 0)):sp++
 		case gt_
@@ -2248,8 +2248,8 @@ Module Virtual_Machine_Interpreter (a$){
 		case prtc_
 			printsrv chrcode$(eval(stack_,sp)):sp++
 		else case
-			Error "Unkown op "+str$(func) 
-		end select			
+			Error "Unkown op "+str$(func)
+		end select
 	} always
 	Print "done"
 }
@@ -2357,7 +2357,7 @@ Module Virtual_Machine_Interpreter (a$){
 	Report "Virtual Assembly Code:"+{
 	}+a$
 	Print "Prepare Byte Code"
- 
+
 	\\ get datasize
 	a$=rightpart$(a$, "Datasize:")
 	m=0
@@ -2372,7 +2372,7 @@ Module Virtual_Machine_Interpreter (a$){
 	m=0
 	strings=val(a$, "int", m)
 	a$=rightpart$(a$, nl$)
- 
+
 	if strings>0 then
 		Dim strings$(strings)
 		for i=0 to strings-1
@@ -2401,7 +2401,7 @@ Module Virtual_Machine_Interpreter (a$){
 				Return code_, offset+1:=uint(val(line$)) as long : offset+=4
 			case jz_, jmp_
 				Return code_, offset+1:=val(rightpart$(line$,")")) as long : offset+=4
-			end select 
+			end select
 		end if
 	Always
 	Print "Press any key" : Push key$ : Drop
@@ -2509,16 +2509,16 @@ Reusing cgen.e from the [[Compiler/code_generator#Phix|Code Generator task]]
 ```Phix
 --
 -- demo\rosetta\Compiler\vm.exw
--- 
+--
 ### ======================
 
 --
---  Since we have generated executable machine code, the virtual machine, such as it is, is just 
+--  Since we have generated executable machine code, the virtual machine, such as it is, is just
 --  the higher level implementations of printc/i/s, see setbuiltins() in cgen.e
 --  Otherwise the only difference between this and cgen.exw is call(code_mem) instead of decode().
 --
---  A quick test (calculating fib(44) 10^6 times) suggests ~500 times faster than interp.exw - 
---  which is to be expected given that a single add instruction (1 clock) here is implemented as 
+--  A quick test (calculating fib(44) 10^6 times) suggests ~500 times faster than interp.exw -
+--  which is to be expected given that a single add instruction (1 clock) here is implemented as
 --  at least three (and quite possibly five!) resursive calls to interp() in the other.
 
 
@@ -2527,7 +2527,7 @@ format PE32
 --  Note: cgen generates 32-bit machine code, which cannot be executed directly from a 64-bit interpreter.
 --        You can however, via the magic of either the above format directives, use a 64-bit version of
 --        Phix to compile this (just add a -c command line option) to a 32-bit executable, which can.
---        It would not be particularly difficult to emit 32 or 64 bit code, but some source code files 
+--        It would not be particularly difficult to emit 32 or 64 bit code, but some source code files
 --        would, fairly obviously, then be very nearly twice as long, and a fair bit harder to read.
 
 include cgen.e
@@ -2754,7 +2754,7 @@ All of the "Compiler/Sample programs" are correctly interpreted.
         (scheme file)
         (scheme process-context)
         (scheme write)
-        (only (srfi 13) string-contains string-delete string-filter 
+        (only (srfi 13) string-contains string-delete string-filter
               string-replace string-tokenize))
 
 (define *word-size* 4)
@@ -2763,10 +2763,10 @@ All of the "Compiler/Sample programs" are correctly interpreted.
 ;; We define operations appropriate to virtual machine:
 ;; e.g. division must return an int, not a rational
 ;; boolean values are treated as numbers: 0 is false, other is true
-(define *unary-ops* 
+(define *unary-ops*
   (list (cons 'neg (lambda (a) (- a)))
         (cons 'not (lambda (a) (if (zero? a) 1 0)))))
-(define *binary-ops* 
+(define *binary-ops*
   (let ((number-comp (lambda (op) (lambda (a b) (if (op a b) 1 0)))))
     (list (cons 'add +)
           (cons 'sub -)
@@ -2809,8 +2809,8 @@ All of the "Compiler/Sample programs" are correctly interpreted.
             (else ; keep char and look further
               (cons (car chars) (replace-newlines (cdr chars))))))
     (define (tidy-string str) ; remove quotes, map newlines to actual newlines
-      (list->string 
-        (replace-newlines 
+      (list->string
+        (replace-newlines
           (string->list
             (string-delete #\" str))))) ; " (needed to satisfy rosettacode's scheme syntax highlighter)
     ;
@@ -2824,9 +2824,9 @@ All of the "Compiler/Sample programs" are correctly interpreted.
         (cond ((= 2 (length opn))
                (list addr instr))
               ((= 3 (length opn))
-               (list addr 
-                     instr 
-                     (string->number 
+               (list addr
+                     instr
+                     (string->number
                        (string-filter char-numeric? (list-ref opn 2)))))
               (else ; assume length 4, jump instructions
                 (list addr instr (string->number (list-ref opn 3)))))))
@@ -2837,19 +2837,19 @@ All of the "Compiler/Sample programs" are correctly interpreted.
           (reverse (map cleanup-code result))
           (loop (cons (string-tokenize line) result))))))
   ;
-  (with-input-from-file 
+  (with-input-from-file
     filename
     (lambda ()
       (let-values (((data strings)
                     (setup-definitions (string-tokenize (read-line)))))
                   (read-strings strings)
-                  (values data 
-                          strings 
+                  (values data
+                          strings
                           (read-code))))))
 
 ;; run the virtual machine
 (define (run-program data strings code)
-  (define (get-instruction n) 
+  (define (get-instruction n)
     (if (assq n code)
       (cdr (assq n code))
       (error "Could not find instruction")))
@@ -2925,12 +2925,12 @@ File rvm.zkl:
 // This is a little endian machine
 const WORD_SIZE=4;
 const{ var _n=-1; var[proxy]N=fcn{ _n+=1 } }  // enumerator
-const FETCH=N, STORE=N, PUSH=N, ADD=N, SUB=N, MUL=N, DIV=N, MOD=N, 
+const FETCH=N, STORE=N, PUSH=N, ADD=N, SUB=N, MUL=N, DIV=N, MOD=N,
    LT=N, GT=N, LE=N, GE=N, EQ=N, NE=N, AND=N, OR=N, NEG=N, NOT=N,
    JMP=N, JZ=N, PRTC=N, PRTS=N, PRTI=N, HALT=N;
- 
-var [const] 
-   bops=Dictionary(ADD,'+, SUB,'-, MUL,'*, DIV,'/, MOD,'%, 
+
+var [const]
+   bops=Dictionary(ADD,'+, SUB,'-, MUL,'*, DIV,'/, MOD,'%,
 		   LT,'<, GT,'>, LE,'<=, GE,'>=, NE,'!=, EQ,'==, NE,'!=),
    strings=List();  // filled in by the loader
 ;
@@ -2953,7 +2953,7 @@ fcn run_vm(code,stackSz){
 	 }
          case(PUSH){
 	    stack.append(code.toLittleEndian(pc,WORD_SIZE,False));  // signed
-	    pc+=WORD_SIZE; 
+	    pc+=WORD_SIZE;
 	 }
 	 case(ADD,SUB,MUL,DIV,MOD,LT,GT,LE,GE,EQ,NE) { bop(stack,op) }
 	 case(AND){ stack[-2] = stack[-2] and stack[-1]; stack.pop() }
@@ -2973,10 +2973,10 @@ fcn run_vm(code,stackSz){
 		"Bad op code (%d) @%d".fmt(op,pc-1))) }
       }
    }
-} 
+}
 
 code:=File(vm.nthArg(0)).read();	// binary code file
-    // the string table is prepended to the code: 
+    // the string table is prepended to the code:
     //    66,1 byte len,text, no trailing '\0' needed
 while(code[0]==66){	// read the string table
    sz:=code[1];
@@ -2991,7 +2991,7 @@ The binary code file code.bin:
 
 ```txt
 
-$ zkl hexDump code.bin 
+$ zkl hexDump code.bin
    0: 42 0a 63 6f 75 6e 74 20 | 69 73 3a 20 42 01 0a 02   B.count is: B...
   16: 01 00 00 00 01 00 00 00 | 00 00 00 00 00 00 02 0a   ................
   32: 00 00 00 08 13 2b 00 00 | 00 02 00 00 00 00 15 00   .....+..........
@@ -3005,7 +3005,7 @@ $ zkl hexDump code.bin
 
 ```txt
 
-$ zkl rvm code.bin 
+$ zkl rvm code.bin
 count is: 1
 count is: 2
 count is: 3

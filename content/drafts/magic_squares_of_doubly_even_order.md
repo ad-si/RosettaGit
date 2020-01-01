@@ -11,11 +11,11 @@ tags = []
 +++
 
 {{task}}
-A [[wp:Magic_square|magic square]] is an '''NxN''' square matrix whose numbers consist of consecutive numbers arranged so that the sum of each row and column, ''and'' both diagonals are equal to the same sum (which is called the ''magic number'' or ''magic constant''). 
+A [[wp:Magic_square|magic square]] is an '''NxN''' square matrix whose numbers consist of consecutive numbers arranged so that the sum of each row and column, ''and'' both diagonals are equal to the same sum (which is called the ''magic number'' or ''magic constant'').
 
 A magic square of doubly even order has a size that is a multiple of four (e.g. 4, 8, 12). This means that the subsquares also have an even size, which plays a role in the construction.
 
-<!--  As more computer programming languages will be added, they will "fill up" the space to the left of this light blue grid, and the first language entry will be the (normal) full width, so the big size is essential "free space".   Gerard Schildberger.   --> 
+<!--  As more computer programming languages will be added, they will "fill up" the space to the left of this light blue grid, and the first language entry will be the (normal) full width, so the big size is essential "free space".   Gerard Schildberger.   -->
 {| class="wikitable" style="float:right;border: 2px solid black; background:lightblue; color:black; margin-left:auto;margin-right:auto;text-align:center;width:22em;height:15em;table-layout:fixed;font-size:100%"
 |-
 |<big>'''1'''</big>||<big>'''2'''</big>||<big>'''62'''</big>||<big>'''61'''</big>||<big>'''60'''</big>||<big>'''59'''</big>||<big>'''7'''</big>||<big>'''8'''</big>
@@ -156,34 +156,34 @@ on magicSquare(n)
         {}
     else
         set sqr to n * n
-        
+
         set maybePowerOfTwo to asPowerOfTwo(sqr)
         if maybePowerOfTwo is not missing value then
-            
+
             -- For powers of 2, the (append not) 'magic' series directly
             -- yields the truth table that we need
             set truthSeries to magicSeries(maybePowerOfTwo)
         else
             -- where n is not a power of 2, we can replicate a
             -- minimum truth table, horizontally and vertically
-            
+
             script scale
                 on |λ|(x)
                     replicate(n / 4, x)
                 end |λ|
             end script
-            
+
             set truthSeries to ¬
                 flatten(scale's |λ|(map(scale, splitEvery(4, magicSeries(4)))))
         end if
-        
+
         set limit to sqr + 1
         script inOrderOrReversed
             on |λ|(x, i)
                 cond(x, i, limit - i)
             end |λ|
         end script
-        
+
         -- Taken directly from an integer series  [1..sqr] where True
         -- and from the reverse of that series where False
         splitEvery(n, map(inOrderOrReversed, truthSeries))
@@ -197,7 +197,7 @@ on magicSeries(n)
             not x
         end |λ|
     end script
-    
+
     if n ≤ 0 then
         {true}
     else
@@ -209,9 +209,9 @@ end magicSeries
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     formattedTable(magicSquare(8))
-    
+
 end run
 
 -- formattedTable :: [[Int]] -> String
@@ -233,7 +233,7 @@ on wikiTable(lstRows, blnHdr, strStyle)
                 intercalate(space & strDbl & space, lstRow)
         end |λ|
     end script
-    
+
     linefeed & "{| class=\"wikitable\" " & ¬
         cond(strStyle ≠ "", "style=\"" & strStyle & "\"", "") & ¬
         intercalate("", ¬
@@ -260,7 +260,7 @@ on concatMap(f, xs)
             a & b
         end |λ|
     end script
-    
+
     foldl(append, {}, map(f, xs))
 end concatMap
 
@@ -310,13 +310,13 @@ on isPowerOf(k, n)
             x mod v is not 0
         end |λ|
     end script
-    
+
     script integerDiv
         on |λ|(x)
             x div v
         end |λ|
     end script
-    
+
     |until|(remLeft, integerDiv, n) = 1
 end isPowerOf
 
@@ -333,7 +333,7 @@ on map(f, xs)
 end map
 
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -346,7 +346,7 @@ on mReturn(f)
 end mReturn
 
 -- Egyptian multiplication - progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for binary 
+-- stages of doubling to an accumulator where needed for binary
 -- assembly of a target length
 
 -- replicate :: Int -> a -> [a]
@@ -354,7 +354,7 @@ on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -394,7 +394,7 @@ end splitEvery
 on |until|(p, f, x)
     set mp to mReturn(p)
     set v to x
-    
+
     tell mReturn(f)
         repeat until mp's |λ|(v)
             set v to |λ|(v)
@@ -538,7 +538,7 @@ int** doublyEvenMagicSquare(int n) {
 	int mult = n / 4,i,r,c,bitPos;
 
 	int** result = (int**)malloc(n*sizeof(int*));
-	
+
 	for(i=0;i<n;i++)
 		result[i] = (int*)malloc(n*sizeof(int));
 
@@ -553,20 +553,20 @@ int** doublyEvenMagicSquare(int n) {
 
 int numDigits(int n){
 	int count = 1;
-	
+
 	while(n>=10){
 		n /= 10;
 		count++;
 	}
-	
+
 	return count;
 }
 
 void printMagicSquare(int** square,int rows){
 	int i,j,baseWidth = numDigits(rows*rows) + 3;
-	
+
 	printf("Doubly Magic Square of Order : %d and Magic Constant : %d\n\n",rows,(rows * rows + 1) * rows / 2);
-	
+
 	for(i=0;i<rows;i++){
 		for(j=0;j<rows;j++){
 			printf("%*s%d",baseWidth - numDigits(square[i][j]),"",square[i][j]);
@@ -578,7 +578,7 @@ void printMagicSquare(int** square,int rows){
 int main(int argC,char* argV[])
 {
 	int n;
-	
+
 	if(argC!=2||isdigit(argV[1][0])==0)
 		printf("Usage : %s <integer specifying rows in magic square>",argV[0]);
 	else{
@@ -617,15 +617,15 @@ Doubly Magic Square of Order : 12 and Magic Constant : 870
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <sstream>
 #include <iomanip>
 using namespace std;
 
 class magicSqr
 {
-public: 
+public:
     magicSqr( int d ) {
         while( d % 4 > 0 ) { d++; }
         sz = d;
@@ -639,7 +639,7 @@ public:
         cout << "It's Magic Sum is: " << magicNumber() << "\n\n";
         ostringstream cvr; cvr << sz * sz;
         int l = cvr.str().size();
- 
+
         for( int y = 0; y < sz; y++ ) {
             int yy = y * sz;
             for( int x = 0; x < sz; x++ ) {
@@ -661,11 +661,11 @@ private:
         }
     }
     int magicNumber() const { return sz * ( ( sz * sz ) + 1 ) / 2; }
- 
+
     int* sqr;
     int sz;
 };
- 
+
 int main( int argc, char* argv[] ) {
     magicSqr s( 8 );
     s.display();
@@ -830,16 +830,16 @@ ELENA 4.x :
 import system'routines;
 import extensions;
 import extensions'routines;
- 
+
 MagicSquareDoublyEven(int n)
 {
     if(n < 4 || n.mod(4) != 0)
         { InvalidArgumentException.new:"base must be a positive multiple of 4".raise() };
- 
+
     int bits := 09669h;
     int size := n * n;
     int mult := n / 4;
- 
+
     var result := new IntMatrix(n,n);
     int i := 0;
     for (int r := 0, r < n, r += 1)
@@ -847,20 +847,20 @@ MagicSquareDoublyEven(int n)
         for(int c := 0, c < n, c += 1, i += 1)
         {
             int bitPos := c / mult + (r / mult) * 4;
- 
+
             result[r][c] := ((bits && (1 $shl bitPos)) != 0).iif(i+1,size - i)
         }
     };
- 
+
     ^ result
 }
- 
+
 public program()
 {
     int n := 8;
- 
+
     console.printLine(MagicSquareDoublyEven(n));
- 
+
     console.printLine().printLine("Magic constant: ",(n * n + 1) * n / 2)
 }
 ```
@@ -898,14 +898,14 @@ defmodule Magic_square do
     |> to_string(n)
     |> IO.puts
   end
-  
+
   defp make_pattern(n) do
     pattern = Enum.reduce(1..4, [true], fn _,acc ->
                 acc ++ Enum.map(acc, &(!&1))
               end) |> Enum.chunk(4)
     for i <- 0..n-1, j <- 0..n-1, do: Enum.at(pattern, rem(i,4)) |> Enum.at(rem(j,4))
   end
- 
+
   defp to_string(square, n) do
     format = String.duplicate("~#{length(to_char_list(n*n))}w ", n) <> "\n"
     Enum.map_join(square, fn row ->
@@ -1431,14 +1431,14 @@ public class MagicSquareDoublyEven {
 
 
 ```txt
- 1  2 62 61 60 59  7  8 
- 9 10 54 53 52 51 15 16 
-48 47 19 20 21 22 42 41 
-40 39 27 28 29 30 34 33 
-32 31 35 36 37 38 26 25 
-24 23 43 44 45 46 18 17 
-49 50 14 13 12 11 55 56 
-57 58  6  5  4  3 63 64 
+ 1  2 62 61 60 59  7  8
+ 9 10 54 53 52 51 15 16
+48 47 19 20 21 22 42 41
+40 39 27 28 29 30 34 33
+32 31 35 36 37 38 26 25
+24 23 43 44 45 46 18 17
+49 50 14 13 12 11 55 56
+57 58  6  5  4  3 63 64
 
 Magic constant: 260
 ```
@@ -1767,13 +1767,13 @@ Square:
 // version 1.1.0
 
 fun magicSquareDoublyEven(n: Int): Array<IntArray> {
-    if ( n < 4 || n % 4 != 0) 
+    if ( n < 4 || n % 4 != 0)
         throw IllegalArgumentException("Base must be a positive multiple of 4")
 
     // pattern of count-up vs count-down zones
     val bits = 0b1001_0110_0110_1001
     val size = n * n
-    val mult = n / 4  // how many multiples of 4 
+    val mult = n / 4  // how many multiples of 4
     val result = Array(n) { IntArray(n) }
     var i = 0
     for (r in 0 until n)
@@ -1783,11 +1783,11 @@ fun magicSquareDoublyEven(n: Int): Array<IntArray> {
             i++
         }
     return result
-} 
+}
 
 fun main(args: Array<String>) {
     val n = 8
-    for (ia in magicSquareDoublyEven(n)) { 
+    for (ia in magicSquareDoublyEven(n)) {
         for (i in ia) print("%2d  ".format(i))
         println()
     }
@@ -1940,7 +1940,7 @@ procedure check(sequence sq)
     end for
     if bd!=magic or fd!=magic then ?9/0 end if
 end procedure
-    
+
 --for i=4 to 16 by 4 do
 for i=8 to 8 by 4 do
     sequence square = magic_square(i)
@@ -1993,19 +1993,19 @@ EndProcedure
 Procedure.b DblEvenMagicSquare(n.i)
   Define.i q=n/4, nr=1, x, y, max, spc
   Dim sq.i(n,n)
-  
+
   For y=1 To n
     For x=q+1 To n-q
       sq(x,y)=1
     Next
   Next
-  
+
   For x=1 To n
     For y=q+1 To n-q
       sq(x,y) ! 1
     Next
   Next
-  
+
   q=n*n+1
   For y=1 To n
     For x=1 To n
@@ -2018,7 +2018,7 @@ Procedure.b DblEvenMagicSquare(n.i)
       max=MaxN(max,sq(x,y))
     Next
   Next
-  
+
   spc=MaxL(max)+1
   For y=n To 1 Step -1
     For x=n To 1 Step -1
@@ -2026,7 +2026,7 @@ Procedure.b DblEvenMagicSquare(n.i)
     Next
     PrintN("")
   Next
-    
+
 EndProcedure
 
 OpenConsole("Magic-Square-Doubly-Even")
@@ -2037,9 +2037,9 @@ Repeat
   While (n<4) Or (n%4)
     Print(">") : n=Val(Input())
     If n=0 : End : EndIf
-  Wend  
+  Wend
   PrintN("The magic sum = "+Str(MagicN(n)))
-  DblEvenMagicSquare(n)  
+  DblEvenMagicSquare(n)
   n=0
 ForEver
 ```
@@ -2114,7 +2114,7 @@ printsq(MagicSquareDoublyEven(8))
  57 58  6  5  4  3 63 64
 
 Magic constant = 260
->>> 
+>>>
 ```
 
 
@@ -2303,13 +2303,13 @@ if __name__ == '__main__':
 {{Out}}
 
 ```txt
-Row sums:  [260, 260, 260, 260, 260, 260, 260, 260] 
-Col sums: [260, 260, 260, 260, 260, 260, 260, 260] 
-1st diagonal sum: 260 
-2nd diagonal sum: 260 
+Row sums:  [260, 260, 260, 260, 260, 260, 260, 260]
+Col sums: [260, 260, 260, 260, 260, 260, 260, 260]
+1st diagonal sum: 260
+2nd diagonal sum: 260
 ```
 
-{| class="wikitable" style="text-align:center; color:#605B4B; border:2px solid silver; " 
+{| class="wikitable" style="text-align:center; color:#605B4B; border:2px solid silver; "
 |style="width:3em; "|1
 |style="width:3em; "|63
 |style="width:3em; "|62
@@ -2387,11 +2387,11 @@ Col sums: [260, 260, 260, 260, 260, 260, 260, 260]
 ## REXX
 
 
-<!--   I couldn't figure out the other code's bit shifting and bit ANDing, so I wrote my own algorithm.  --> 
+<!--   I couldn't figure out the other code's bit shifting and bit ANDing, so I wrote my own algorithm.  -->
 
-"Marked" numbers   (via the   '''diag'''   subroutine)   indicate that those (sequentially generated) numbers don't get 
+"Marked" numbers   (via the   '''diag'''   subroutine)   indicate that those (sequentially generated) numbers don't get
 
-swapped   (and thusly, stay in place in the magic square). 
+swapped   (and thusly, stay in place in the magic square).
 
 ```rexx
 /*REXX program constructs a  magic square  of doubly even sides (a size divisible by 4).*/
@@ -2632,7 +2632,7 @@ say format_matrix(double_even_magic_square(8))
 n=8  'multiple of 4
 pattern="1001011001101001"
 size=n*n: w=len(size)
-mult=n\4  'how many multiples of 4 
+mult=n\4  'how many multiples of 4
 wscript.echo "Magic square : " & n & " x " & n
 i=0
 For r=0 To n-1
@@ -2652,14 +2652,14 @@ wscript.echo "Magic constant=" & (n*n+1)*n/2
 
 ```txt
 Magic square : 8 x 8
- 1  2 62 61 60 59  7  8 
- 9 10 54 53 52 51 15 16 
-48 47 19 20 21 22 42 41 
-40 39 27 28 29 30 34 33 
-32 31 35 36 37 38 26 25 
-24 23 43 44 45 46 18 17 
-49 50 14 13 12 11 55 56 
-57 58  6  5  4  3 63 64 
+ 1  2 62 61 60 59  7  8
+ 9 10 54 53 52 51 15 16
+48 47 19 20 21 22 42 41
+40 39 27 28 29 30 34 33
+32 31 35 36 37 38 26 25
+24 23 43 44 45 46 18 17
+49 50 14 13 12 11 55 56
+57 58  6  5  4  3 63 64
 Magic constant=260
 ```
 
@@ -2774,14 +2774,14 @@ MagicSquareDoublyEven(8).println();
 
 ```txt
 
- 1  2 62 61 60 59  7  8 
- 9 10 54 53 52 51 15 16 
-48 47 19 20 21 22 42 41 
-40 39 27 28 29 30 34 33 
-32 31 35 36 37 38 26 25 
-24 23 43 44 45 46 18 17 
-49 50 14 13 12 11 55 56 
-57 58  6  5  4  3 63 64 
+ 1  2 62 61 60 59  7  8
+ 9 10 54 53 52 51 15 16
+48 47 19 20 21 22 42 41
+40 39 27 28 29 30 34 33
+32 31 35 36 37 38 26 25
+24 23 43 44 45 46 18 17
+49 50 14 13 12 11 55 56
+57 58  6  5  4  3 63 64
 
 Magic constant: 260
 

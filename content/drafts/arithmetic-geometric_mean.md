@@ -24,7 +24,7 @@ Since the limit of <math>a_n-g_n</math> tends (rapidly) to zero with iterations,
 
 Demonstrate the function by calculating:
 :<math>\mathrm{agm}(1,1/\sqrt{2})</math>
- 
+
 
 ;Also see:
 *   [http://mathworld.wolfram.com/Arithmetic-GeometricMean.html mathworld.wolfram.com/Arithmetic-Geometric Mean]
@@ -44,7 +44,7 @@ F agm(a0, g0, tolerance = 1e-10)
    L abs(an - gn) > tolerance
       (an, gn) = ((an + gn) / 2.0, sqrt(an * gn))
    R an
-   
+
 print(agm(1, 1 / sqrt(2)))
 ```
 
@@ -61,7 +61,7 @@ print(agm(1, 1 / sqrt(2)))
 For maximum compatibility, this program uses only the basic instruction set.
 
 ```360asm
-AGM      CSECT  
+AGM      CSECT
          USING  AGM,R13
 SAVEAREA B      STM-SAVEAREA(R15)
          DC     17F'0'
@@ -109,7 +109,7 @@ EWHILE1  EQU    *
          XR     R15,R15
          BR     R14
          DS     0F
-K        DC     PL8'1000000'       10^6 
+K        DC     PL8'1000000'       10^6
 A        DS     PL8
 G        DS     PL8
 AN       DS     PL8
@@ -149,8 +149,8 @@ PWL16    DC     PL16'0'
 CWL80    DC     CL80' '
 CWL16    DS     CL16
 ZWL16    DS     ZL16
-         LTORG  
-         YREGS  
+         LTORG
+         YREGS
          END    AGM
 ```
 
@@ -294,7 +294,7 @@ agd←{(⍺-⍵)<10*¯8:⍺⋄((⍺+⍵)÷2)∇(⍺×⍵)*÷2}
 
 ```
 
-Output: 
+Output:
 ```txt
 0.8472130848
 ```
@@ -318,7 +318,7 @@ on agm(a, g)
             tell m to ((its an) - (its gn)) < tolerance
         end |λ|
     end script
-    
+
     script nextRefinement
         on |λ|(m)
             tell m
@@ -327,18 +327,18 @@ on agm(a, g)
             end tell
         end |λ|
     end script
-    
+
     an of |until|(withinTolerance, ¬
         nextRefinement, {an:(a + g) / 2, gn:(a * g) ^ 0.5})
 end agm
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     agm(1, 1 / (2 ^ 0.5))
-    
+
     --> 0.847213084835
-    
+
 end run
 
 -- GENERIC FUNCTIONS ---------------------------------------------------------
@@ -355,7 +355,7 @@ on |until|(p, f, x)
     return v
 end |until|
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -463,7 +463,7 @@ Output
       @% = &1010
       PRINT FNagm(1, 1/SQR(2))
       END
-      
+
       DEF FNagm(a,g)
       LOCAL ta
       REPEAT
@@ -522,7 +522,7 @@ define m(x, y, d) {
 
     scale = o
     return(a)
-}    
+}
 
 scale = 20
 m(1, 1 / sqrt(2), 20)
@@ -543,16 +543,16 @@ m(1, 1 / sqrt(2), 20)
 ### Basic
 
 
-```c>#include<math.h
-
-#include<stdio.h>
-#include<stdlib.h>
+```c
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 double agm( double a, double g ) {
    /* arithmetic-geometric mean */
    double iota = 1.0E-16;
    double a1, g1;
-   
+
    if( a*g < 0.0 ) {
       printf( "arithmetic-geometric mean undefined when x*y<0\n" );
       exit(1);
@@ -565,7 +565,7 @@ double agm( double a, double g ) {
       a = a1;
       g = g1;
    }
-   
+
    return a;
 }
 
@@ -704,7 +704,7 @@ return 0;
 
 ```txt
 
-Enter X and Y: 1.0 2.0 
+Enter X and Y: 1.0 2.0
 The Arithmetic-Geometric Mean of 1.0 and 2.0 is 1.45679103104690677028543177584651857614517211914062
 
 ```
@@ -812,7 +812,7 @@ Even though the System.Numerics library directly supports only '''BigInteger''' 
 ```csharp
 using System;
 using System.Numerics;
- 
+
 namespace agm
 {
     class Program
@@ -821,16 +821,16 @@ namespace agm
         {
             return BigInteger.Parse(leadDig + new string('0', numDigs));
         }
- 
+
         static BigInteger IntSqRoot(BigInteger v)
         {
             int digs = Math.Max(0, v.ToString().Length / 2);
-            BigInteger res = BIP('3', digs), term; 
+            BigInteger res = BIP('3', digs), term;
             while (true) {
                 term = v / res; if (Math.Abs((double)(term - res)) < 2) break;
                 res = (res + term) / 2; } return res;
         }
- 
+
         static BigInteger CalcByAGM(int digits)
         {
             int digs = digits + (int)(Math.Log(digits) / 2), d2 = digs * 2;
@@ -843,7 +843,7 @@ namespace agm
             }
             return b;
         }
- 
+
         static void Main(string[] args)
         {
             int digits = 25000;
@@ -1015,8 +1015,8 @@ We use the '''(~= a b)''' operator which tests for  |a - b| < ε = (math-precisi
 
 (lib 'math)
 
-(define (agm a g) 
-    (if (~= a g) a 
+(define (agm a g)
+    (if (~= a g) a
        (agm (// (+ a g ) 2) (sqrt (* a g)))))
 
 (math-precision)
@@ -1075,7 +1075,7 @@ find_agm() ->
     B = 1 / (math:pow(2, 0.5)),
     AGM = agm(A, B),
     io:format("AGM = ~p", [AGM]).
-    
+
 agm (A, B) when abs(A-B) =< ?TOLERANCE ->
     A;
 agm (A, B) ->
@@ -1207,24 +1207,24 @@ A '''Fortran 77''' implementation
 ' compile with: fbc -s console
 
 Function agm(a As Double, g As Double) As Double
-    
-    Dim As Double t_a 
-    
+
+    Dim As Double t_a
+
     Do
         t_a = (a + g) / 2
         g = Sqr(a * g)
         Swap a, t_a
     Loop Until a = t_a
-    
+
     Return a
-    
+
 End Function
 
 ' ------=< MAIN >=------
 
 Print agm(1, 1 / Sqr(2) )
 
-' empty keyboard buffer 
+' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "hit any key to end program"
 Sleep
@@ -1341,7 +1341,7 @@ agm a g eq = snd . head . dropWhile (not . eq) $ iterate step (a, g)
 -- Return the relative difference of the pair.  We assume that at least one of
 -- the values is far enough from 0 to not cause problems.
 relDiff :: (Fractional a) => (a, a) -> a
-relDiff (x, y) = let n = abs (x - y) 
+relDiff (x, y) = let n = abs (x - y)
                      d = ((abs x) + (abs y)) / 2
                  in n / d
 
@@ -1396,7 +1396,7 @@ agm(1.0,0.7071067811865475) = 0.8472130847939792
 
 This one is probably worth not naming, in J, because there are so many interesting variations.
 
-First, the basic approach (with display precision set to 16 digits, which slightly exceeds the accuracy of 64 bit IEEE floating point arithmetic): 
+First, the basic approach (with display precision set to 16 digits, which slightly exceeds the accuracy of 64 bit IEEE floating point arithmetic):
 
 
 ```j
@@ -1429,10 +1429,10 @@ Another variation would be to show intermediate values, in the limit process:
 
 
 
-###  Arbitrary Precision 
+###  Arbitrary Precision
 
 
-Another variation would be to use [[j:Essays/Extended%20Precision%20Functions|arbitrary precision arithmetic]] in place of floating point arithmetic.  
+Another variation would be to use [[j:Essays/Extended%20Precision%20Functions|arbitrary precision arithmetic]] in place of floating point arithmetic.
 
 Borrowing routines from that page, but going with a default of approximately 100 digits of precision:
 
@@ -1465,7 +1465,7 @@ exp=: DP&$: : (4 : 0) " 0
  d=. (x:!.0 y)-m*xm ln 2
  if. xm<-:#":d do. d=. xm round d end.
  e=. 0.1^xm
- n=. e (>i.1:) a (^%!@]) i.>.a^.e [ a=. |y-m*^.2 
+ n=. e (>i.1:) a (^%!@]) i.>.a^.e [ a=. |y-m*^.2
  (2x^m) * 1++/*/\d%1+i.n
 )
 ```
@@ -1665,8 +1665,8 @@ def naive_agm(a; g; tolerance):
   def abs: if . < 0 then -. else . end;
   def _agm:
      # state [an,gn]
-     if ((.[0] - .[1])|abs) > tolerance 
-     then [add/2, ((.[0] * .[1])|sqrt)] | _agm 
+     if ((.[0] - .[1])|abs) > tolerance
+     then [add/2, ((.[0] * .[1])|sqrt)] | _agm
      else .
      end;
   [a, g] | _agm | .[0] ;
@@ -1683,12 +1683,12 @@ def agm(a; g; tolerance):
      | if $delta == .[2] and $delta < 10e-16 then .
        elif $delta > tolerance
        then [ .[0:2]|add / 2, ((.[0] * .[1])|sqrt), $delta] | _agm
-       else . 
+       else .
        end;
   if tolerance <= 0 then error("specified tolerance must be > 0")
   else [a, g, 0] | _agm | .[0]
   end ;
- 
+
 # Example:
 agm(1; 1/(2|sqrt); 1e-100)
 ```
@@ -1711,7 +1711,7 @@ function agm(x, y, e::Real = 5)
     end
     a
 end
- 
+
 x, y = 1.0, 1 / √2
 println("# Using literal-precision float numbers:")
 @show agm(x, y)
@@ -1831,7 +1831,7 @@ function agm(a,g)
     loop while abs(an-gn)< absdiff
     agm = a
 end function
- 
+
 
 ```
 
@@ -1842,11 +1842,11 @@ end function
 
 ```LiveCode
 function agm aa,g
-    put abs(aa-g) into absdiff 
+    put abs(aa-g) into absdiff
     put (aa+g)/2 into aan
     put sqrt(aa*g) into gn
     repeat while abs(aan - gn) < absdiff
-        put abs(aa-g) into absdiff 
+        put abs(aa-g) into absdiff
         put (aa+g)/2 into aan
         put sqrt(aa*g) into gn
         put aan into aa
@@ -2036,11 +2036,11 @@ Module Checkit {
             Repeat {
                   Read a0, b0
                   Push  Sqrt(a0*b0), (a0+b0)/2
-                  ' last pushed first read 
+                  ' last pushed first read
             } Until Stackitem(1)==Stackitem(2)
             =Stackitem(1)
             \\ stack deconstructed at exit of function
-      } 
+      }
       Print Agm(1,1/Sqrt(2))
 }
 Checkit
@@ -2068,7 +2068,7 @@ Alternatively, if one or both arguments is already a float, Maple will compute a
 
 ```Maple
 
-> GaussAGM( 1.0, 1 / sqrt( 2 ) );            
+> GaussAGM( 1.0, 1 / sqrt( 2 ) );
                               0.8472130847
 
 ```
@@ -2077,7 +2077,7 @@ Alternatively, if one or both arguments is already a float, Maple will compute a
 
 ## Mathematica
 
-To any arbitrary precision, just increase PrecisionDigits 
+To any arbitrary precision, just increase PrecisionDigits
 
 ```Mathematica
 PrecisionDigits = 85;
@@ -2101,7 +2101,7 @@ function [a,g]=agm(a,g)
 		a0=a;
 		a=(a0+g)/2;
 		g=sqrt(a0*g);
-	if (abs(a0-a) < a*eps) break; end; 
+	if (abs(a0-a) < a*eps) break; end;
 	end;
 end
 ```
@@ -2289,7 +2289,7 @@ method agm(a0, g0) public static returns Rexx
 
 (define root-reciprocal-2 (div 1.0 (sqrt 2.0)))
 
-(println 
+(println
 	"To the nearest one-quadrillionth, "
 	"the arithmetic-geometric mean of "
 	"1 and the reciprocal of the square root of 2 is "
@@ -2307,7 +2307,7 @@ method agm(a0, g0) public static returns Rexx
 import math
 
 proc agm(a, g: float,delta: float = 1.0e-15): float =
-  var 
+  var
     aNew: float = 0
     aOld: float = a
     gOld: float = g
@@ -2377,14 +2377,14 @@ BEGIN
   na := a; ng := g;
   LOOP
     og := ng;
-    ng := Math.sqrt(na * ng); 
+    ng := Math.sqrt(na * ng);
     na := (na + og) * 0.5;
     IF na - ng <= epsilon THEN EXIT END
   END;
   RETURN ng;
 END Of;
 
-BEGIN 
+BEGIN
   Out.LongReal(Of(1,1 / Math.sqrt(2)),0,0);Out.Ln
 END Agm.
 
@@ -2417,7 +2417,7 @@ class ArithmeticMean {
     };
     a1->PrintLine();
   }
-  
+
   function : Main(args : String[]) ~ Nil {
     Amg(1,1/Float->SquareRoot(2));
   }
@@ -2573,7 +2573,7 @@ Program ArithmeticGeometricMean;
 
 uses
   gmp;
-  
+
 procedure agm (in1, in2: mpf_t; var out1, out2: mpf_t);
 begin
   mpf_add (out1, in1, in2);
@@ -2581,7 +2581,7 @@ begin
   mpf_mul (out2, in1, in2);
   mpf_sqrt (out2, out2);
 end;
- 
+
 const
   nl = chr(13)+chr(10);
 var
@@ -2620,12 +2620,12 @@ my ($a0, $g0, $a1, $g1);
 sub agm($$) {
     $a0 = shift;
     $g0 = shift;
-    do { 
-        $a1 = ($a0 + $g0)/2; 
-        $g1 = sqrt($a0 * $g0); 
-        $a0 = ($a1 + $g1)/2; 
-        $g0 = sqrt($a1 * $g1); 
-    } while ($a0 != $a1); 
+    do {
+        $a1 = ($a0 + $g0)/2;
+        $g1 = sqrt($a0 * $g0);
+        $a0 = ($a1 + $g1)/2;
+        $g0 = sqrt($a1 * $g1);
+    } while ($a0 != $a1);
     return $a0;
 }
 
@@ -2647,7 +2647,7 @@ sub agm( $a is copy, $g is copy ) {
     ($a, $g) = ($a + $g)/2, sqrt $a * $g until $a ≅ $g;
     return $a;
 }
- 
+
 say agm 1, 1/sqrt 2;
 ```
 
@@ -2706,7 +2706,7 @@ end function
 
 define('PRECISION', 13);
 
-function agm($a0, $g0, $tolerance = 1e-10)                                                                                                    
+function agm($a0, $g0, $tolerance = 1e-10)
 {
     // the bc extension deals in strings and cannot convert
     // floats in scientific notation by itself - hence
@@ -2716,10 +2716,10 @@ function agm($a0, $g0, $tolerance = 1e-10)
     $gn    = $g0;
     do {
         list($an, $gn) = array(
-            bcdiv(bcadd($an, $gn), 2), 
+            bcdiv(bcadd($an, $gn), 2),
             bcsqrt(bcmul($an, $gn)),
-        );  
-    } while (bccomp(bcsub($an, $gn), $limit) > 0); 
+        );
+    } while (bccomp(bcsub($an, $gn), $limit) > 0);
 
     return $an;
 }
@@ -2788,12 +2788,12 @@ Results:
 
 ```txt
 
-The arithmetic-geometric mean of  1.00000000000000000E+0000 and  7.07106781186547524E-0001: 
+The arithmetic-geometric mean of  1.00000000000000000E+0000 and  7.07106781186547524E-0001:
 A= 8.53553390593273762E-0001                    G= 8.40896415253714543E-0001;
 A= 8.47224902923494153E-0001                    G= 8.47201266746891460E-0001;
 A= 8.47213084835192807E-0001                    G= 8.47213084752765367E-0001;
 A= 8.47213084793979087E-0001                    G= 8.47213084793979087E-0001;
-The result is:           8.47213084793979087E-0001 
+The result is:           8.47213084793979087E-0001
 
 ```
 
@@ -2843,7 +2843,7 @@ function agm ([Double]$a, [Double]$g) {
         g = "$g"
     }
 }
-agm 1 (1/[Math]::Sqrt(2)) 
+agm 1 (1/[Math]::Sqrt(2))
 
 ```
 
@@ -2851,9 +2851,9 @@ agm 1 (1/[Math]::Sqrt(2))
 
 ```txt
 
-a                                                      g                                                     
--                                                      -                                                     
-0.847213084793979                                      0.847213084793979                                                                       
+a                                                      g
+-                                                      -
+0.847213084793979                                      0.847213084793979
 
 ```
 
@@ -2880,7 +2880,7 @@ Res = 0.8472130847939792.
 ```purebasic
 Procedure.d AGM(a.d, g.d, ErrLim.d=1e-15)
   Protected.d ta=a+1, tg
-  While ta <> a 
+  While ta <> a
     ta=a: tg=g
     a=(ta+tg)*0.5
     g=Sqr(ta*tg)
@@ -2914,7 +2914,7 @@ def agm(a0, g0, tolerance=1e-10):
     """
     Calculating the arithmetic-geometric mean of two numbers a0, g0.
 
-    tolerance     the tolerance for the converged 
+    tolerance     the tolerance for the converged
                   value of the arithmetic-geometric mean
                   (default value = 1e-10)
     """
@@ -2964,12 +2964,12 @@ arithmeticMean <- function(a, b) { (a + b)/2 }
 geometricMean <- function(a, b) { sqrt(a * b) }
 
 arithmeticGeometricMean <- function(a, b) {
-  rel_error <- abs(a - b) / pmax(a, b) 
+  rel_error <- abs(a - b) / pmax(a, b)
   if (all(rel_error < .Machine$double.eps, na.rm=TRUE)) {
     agm <- a
     return(data.frame(agm, rel_error));
   }
-  Recall(arithmeticMean(a, b), geometricMean(a, b))  
+  Recall(arithmeticMean(a, b), geometricMean(a, b))
 }
 
 agm <- arithmeticGeometricMean(1, 1/sqrt(2))
@@ -3382,7 +3382,7 @@ const func float: agm (in var float: a, in var float: g) is func
       agm := a;
     end if;
   end func;
- 
+
 const proc: main is func
   begin
     writeln(agm(1.0, 2.0) digits 6);
@@ -3524,7 +3524,7 @@ RN                                         A                                    
 
 
 ```stata
-mata 
+mata
 
 real scalar agm(real scalar a, real scalar b) {
 	real scalar c
@@ -3563,18 +3563,18 @@ func agm(_ a: Double, _ g: Double, _ iota: Double = 1e-8) throws -> Double {
 	var g = g
 	var a1: Double = 0
 	var g1: Double = 0
-	
+
 	guard a * g >= 0 else {
 		throw AGRError.undefined
 	}
-	
+
 	while abs(a - g) > iota {
 		a1 = (a + g) / 2
 		g1 = sqrt(a * g)
 		a = a1
 		g = g1
 	}
-	
+
 	return a
 }
 
@@ -3670,11 +3670,11 @@ debug: a=0.8472130848	g=0.8472130848
 ```
 
 
-You can get a more approximate convergence by changing the while condition to compare the numbers as strings: change 
+You can get a more approximate convergence by changing the while condition to compare the numbers as strings: change
 ```bash
 while (( abs(a-g) > eps ))
 ```
- to 
+ to
 ```bash
 while [[ $a != $g ]]
 ```
@@ -3701,11 +3701,11 @@ End Sub
 {{out}}
 
 ```txt
- 0,853553390593274 
- 0,847224902923494 
- 0,847213084835193 
- 0,847213084793979 
- 0,847213084793979 
+ 0,853553390593274
+ 0,847224902923494
+ 0,847213084835193
+ 0,847213084793979
+ 0,847213084793979
 ```
 
 
@@ -3763,13 +3763,13 @@ Module Module1
 
         Function CalcByAGM(ByVal digits As Integer) As BigInteger
             Dim digs As Integer = digits + CInt((Math.Log(digits) / 2)), c As BigInteger,
-                d2 As Integer = digs * 2, 
+                d2 As Integer = digs * 2,
                 a As BigInteger = BIP("1", digs) ' initial value = 1
             CalcByAGM = IntSqRoot(BIP("5", d2 - 1)) ' initial value = square root of 0.5
             While True
                 c = a : a = ((a + CalcByAGM) / 2) : CalcByAGM = IntSqRoot(c * CalcByAGM)
                 If Math.Abs(CDbl((a - CalcByAGM))) <= 1 Then Exit While
-            End While 
+            End While
         End Function
 
         Sub Main(ByVal args As String())
@@ -3828,7 +3828,7 @@ Output:
 ```zkl
 a:=1.0; g:=1.0/(2.0).sqrt();
 while(not a.closeTo(g,1.0e-15)){
-   a1:=(a+g)/2.0; g=(a*g).sqrt(); a=a1; 
+   a1:=(a+g)/2.0; g=(a*g).sqrt(); a=a1;
    println(a,"  ",g," ",a-g);
 }
 ```

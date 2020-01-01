@@ -745,8 +745,8 @@ int gray_decode(int n) {
 
 Demonstration code:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 /* Simple bool formatter, only good on range 0..31 */
 void fmtbool(int n, char *buf) {

@@ -10,11 +10,11 @@ categories = []
 tags = []
 +++
 
-{{task}} 
+{{task}}
 [[Category:Date and time]]
 
 ;Task:
-Write a program or a script that returns the date of the last Fridays of each month of a given year. 
+Write a program or a script that returns the date of the last Fridays of each month of a given year.
 
 The year may be given through any simple input method in your language (command line, std in, etc).
 
@@ -52,7 +52,7 @@ Example of an expected output:
 
 ## 360 Assembly
 
-The program uses one ASSIST macro (XPRNT) to keep the code as short as possible. 
+The program uses one ASSIST macro (XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Last Friday of each month 17/07/2016
@@ -110,19 +110,19 @@ LOOPM    C      R6,=F'12'          do m=1 to 12
          SR     R2,R4              days(m)-k//7
          LR     R9,R2              d=days(m)-k//7
          L      R1,YEAR            year
-         CVD    R1,DW              year: binary to packed 
+         CVD    R1,DW              year: binary to packed
          OI     DW+7,X'0F'           zap sign
          UNPK   PG(4),DW             unpack (ZL4)
-         CVD    R6,DW              m : binary to packed 
+         CVD    R6,DW              m : binary to packed
          OI     DW+7,X'0F'           zap sign
          UNPK   PG+5(2),DW           unpack (ZL2)
-         CVD    R9,DW              d: binary to packed 
+         CVD    R9,DW              d: binary to packed
          OI     DW+7,X'0F'           zap sign
          UNPK   PG+8(2),DW           unpack (ZL2)
          XPRNT  PG,L'PG            print buffer
          LA     R6,1(R6)           m=m+1
          B      LOOPM
-ELOOPM   L      R13,4(0,R13)       epilog 
+ELOOPM   L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    " restore
          XR     R15,R15            " rc=0
          BR     R14                exit
@@ -160,7 +160,7 @@ DW       DS     D                  packed (PL8) 15num
 ## Ada
 
 
-Uses GNAT. Applicable to any day of the week, cf. [[http://rosettacode.org/wiki/Find_last_sunday_of_each_month#Ada]]. 
+Uses GNAT. Applicable to any day of the week, cf. [[http://rosettacode.org/wiki/Find_last_sunday_of_each_month#Ada]].
 
 
 ```Ada
@@ -168,20 +168,20 @@ with Ada.Text_IO, GNAT.Calendar.Time_IO, Ada.Command_Line,
   Ada.Calendar.Formatting, Ada.Calendar.Arithmetic;
 
 procedure Last_Weekday_In_Month is
-   
+
    procedure Put_Line(T: Ada.Calendar.Time) is
       use GNAT.Calendar.Time_IO;
    begin
       Ada.Text_IO.Put_Line(Image(Date => T, Picture => ISO_Date));
    end Put_Line;
-   
+
    use Ada.Calendar, Ada.Calendar.Arithmetic;
    subtype Day_Name is Formatting.Day_Name; use type Formatting.Day_Name;
-   
+
    T, Selected : Time;
    Weekday: Day_Name  := Day_Name'Value(Ada.Command_Line.Argument (1));
    Year : Year_Number := Integer'Value (Ada.Command_Line.Argument (2));
-   
+
 begin
    for Month in 1 .. 12 loop
       T := Time_Of (Year => Year, Month => Month, Day => 01);
@@ -223,61 +223,61 @@ end Last_Weekday_In_Month;
 
 --  lastFridaysOfYear :: Int -> [Date]
 on lastFridaysOfYear(y)
-    
+
     -- lastWeekDaysOfYear :: Int -> Int -> [Date]
     script lastWeekDaysOfYear
         on |λ|(intYear, iWeekday)
-            
+
             -- lastWeekDay :: Int -> Int -> Date
             script lastWeekDay
                 on |λ|(iLastDay, iMonth)
                     set iYear to intYear
-                    
+
                     calendarDate(iYear, iMonth, iLastDay - ¬
                         (((weekday of calendarDate(iYear, iMonth, iLastDay)) ¬
                             as integer) + (7 - (iWeekday))) mod 7)
                 end |λ|
             end script
-            
+
             map(lastWeekDay, lastDaysOfMonths(intYear))
         end |λ|
-        
+
         -- isLeapYear :: Int -> Bool
         on isLeapYear(y)
             (0 = y mod 4) and (0 ≠ y mod 100) or (0 = y mod 400)
         end isLeapYear
-        
+
         -- lastDaysOfMonths :: Int -> [Int]
         on lastDaysOfMonths(y)
             {31, cond(isLeapYear(y), 29, 28), ¬
                 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
         end lastDaysOfMonths
     end script
-    
+
     lastWeekDaysOfYear's |λ|(y, Friday as integer)
 end lastFridaysOfYear
 
 
 -- TEST ----------------------------------------------------------------------
 on run argv
-    
+
     intercalate(linefeed, ¬
         map(isoRow, ¬
             transpose(map(lastFridaysOfYear, ¬
                 apply(cond(class of argv is list and argv ≠ {}, ¬
                     singleYearOrRange, fiveCurrentYears), ¬
                     argIntegers(argv))))))
-    
+
 end run
 
 
 -- ARGUMENT HANDLING ---------------------------------------------------------
 
 -- Up to two optional command line arguments: [yearFrom], [yearTo]
--- (Default range in absence of arguments: 
+-- (Default range in absence of arguments:
 --  from two years ago, to two years ahead)
 
--- ~ $ osascript ~/Desktop/lastFridays.scpt 
+-- ~ $ osascript ~/Desktop/lastFridays.scpt
 -- ~ $ osascript ~/Desktop/lastFridays.scpt 2013
 -- ~ $ osascript ~/Desktop/lastFridays.scpt 2013 2016
 
@@ -300,7 +300,7 @@ on argIntegers(argv)
             s as integer
         end |λ|
     end script
-    
+
     if class of argv is list and argv ≠ {} then
         {map(parseInt, argv)}
     else
@@ -387,7 +387,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -408,11 +408,11 @@ on transpose(xss)
                     item iCol of xs
                 end |λ|
             end script
-            
+
             map(row, xss)
         end |λ|
     end script
-    
+
     map(column, item 1 of xss)
 end transpose
 ```
@@ -632,8 +632,8 @@ Year:2012
 Doesn't work with Julian calendar (then again, you probably don't need to plan your weekends for middle ages).
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int main(int c, char *v[])
@@ -774,10 +774,10 @@ int main( int argc , char* argv[ ] ) {
 (use '[clj-time.core :only [last-day-of-the-month day-of-week minus days]]
      '[clj-time.format :only [unparse formatters]])
 
-(defn last-fridays [year] 
-  (let [last-days (map #(last-day-of-the-month year %) (range 1 13 1)) 
-        dow (map day-of-week last-days) 
-        relation (zipmap last-days dow)] 
+(defn last-fridays [year]
+  (let [last-days (map #(last-day-of-the-month year %) (range 1 13 1))
+        dow (map day-of-week last-days)
+        relation (zipmap last-days dow)]
     (map #(minus (key %) (days (mod (+ (val %) 2) 7))) relation)))
 
 (defn last-fridays-formatted [year]
@@ -894,7 +894,7 @@ last_friday_of_month = (year, month) ->
   # first day of the next month
   i = 0
   while true
-    last_day = new Date(year, month, i) 
+    last_day = new Date(year, month, i)
     if last_day.getDay() == 5
       return last_day.toDateString()
     i -= 1
@@ -902,8 +902,8 @@ last_friday_of_month = (year, month) ->
 print_last_fridays_of_month = (year) ->
   for month in [1..12]
     console.log last_friday_of_month year, month
- 
-do -> 
+
+do ->
   year = parseInt process.argv[2]
   print_last_fridays_of_month year
 
@@ -937,14 +937,14 @@ The command-line argument processing is the only CLISP-specific code.
 
 ```lisp
 (defun friday-before (year month day)
- (let* 
+ (let*
   ((timestamp (encode-universal-time 0 0 12 day month year))
    (weekday (nth 6 (multiple-value-list (decode-universal-time timestamp))))
    (fri (- timestamp (* (+ (mod (+ weekday 2) 7) 1) 86400))))
     (multiple-value-bind (_ _ _ d m y) (decode-universal-time fri)
      (list y m d))))
-    
-(defun last-fridays (year) 
+
+(defun last-fridays (year)
   (append (loop for month from 2 to 12 collecting (friday-before year month 1))
           (list (friday-before (1+ year) 1 1))))
 
@@ -1078,16 +1078,16 @@ lastFridays year =
      |> map2 (\len day -> len - (day + 2 + y + y//4 - y//100 + y//400) % 7) daysInMonth
 
 lastFridayStrings : String -> List String
-lastFridayStrings yearString = 
+lastFridayStrings yearString =
   let months= ["January ", "February ", "March ", "April ", "May ", "June ", "July ", "August ", "September ", "October ", "November ", "December "]
       errString = "Only years after 1752 are valid."
-  in case toInt yearString of 
-       Ok year -> 
-           if (year < 1753) 
-           then [errString] 
+  in case toInt yearString of
+       Ok year ->
+           if (year < 1753)
+           then [errString]
            else lastFridays year
                 |> map2 (\m d -> m ++ toString d ++ ", " ++ toString year) months
-       Err _ -> 
+       Err _ ->
            [errString]
 
 view :  String -> Html Msg
@@ -1114,7 +1114,7 @@ myStyle =
     ]
 
 update : Msg -> String -> String
-update msg _ = 
+update msg _ =
     case msg of
         SetYear yearString -> yearString
 
@@ -1384,7 +1384,7 @@ For siMonth = 1 To 12
   For siDay = 31 DownTo 22
     Try dDay = Date(siYear, siMonth, siDay)
     If Error Then Continue
-    If WeekDay(dDay) = 5 Then 
+    If WeekDay(dDay) = 5 Then
       Print Format(dDay, "yyyy-mm-dd");;
       Print Space(6) & Format(dDay, "dddd dd mmmm yyyy")
       Break
@@ -1572,8 +1572,8 @@ every m := 1 to 12 do {
       4|6|9|11 : 30
       default  : 31
       }                          # last day of month
-       
-   z := 0  
+
+   z := 0
    j := julian(m,d,year) + 1     # first day of next month
    until (j-:=1)%7 = 4 do z -:=1 # backup to last friday=4
    suspend sprintf("%d-%d-%d",year,m,d+z)
@@ -1584,9 +1584,9 @@ link datetime, printf
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
-[http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn datetime.icn provides julian and IsLeapYear] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
+[http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn datetime.icn provides julian and IsLeapYear]
 
 {{out}}
 
@@ -1949,7 +1949,7 @@ def until(cond; next):
 
 # Use Zeller's Congruence to determine the day of the week, given
 # year, month and day as integers in the conventional way.
-# If iso == "iso" or "ISO", then emit an integer in 1 -- 7 where 
+# If iso == "iso" or "ISO", then emit an integer in 1 -- 7 where
 # 1 represents Monday, 2 Tuesday, etc;
 # otherwise emit 0 for Saturday, 1 for Sunday, etc.
 #
@@ -1959,7 +1959,7 @@ def day_of_week(year; month; day; iso):
   else
     [year, month, day]
   end
-  | .[2] + (13*(.[1] + 1)/5|floor) 
+  | .[2] + (13*(.[1] + 1)/5|floor)
     +  (.[0]%100)       + ((.[0]%100)/4|floor)
     +  (.[0]/400|floor) - 2*(.[0]/100|floor)
   | if iso == "iso" or iso == "ISO" then 1 + ((. + 5) % 7)
@@ -1970,7 +1970,7 @@ def day_of_week(year; month; day; iso):
 '''findLastFridays'''
 
 ```jq
-# year and month are numbered conventionally 
+# year and month are numbered conventionally
 def findLastFriday(year; month):
   def isLeapYear:
     year%4 == 0 and ( year%100!=0 or year%400==0 ) ;
@@ -2073,10 +2073,10 @@ Year> 2012
     2012-11-30
     2012-12-28
 
-Year> this year 
+Year> this year
 Sorry, but "this year" does not compute as a year.
 
-Year> 
+Year>
 
 ```
 
@@ -2143,7 +2143,7 @@ import java.util.*
 fun main(args: Array<String>) {
     print("Enter a year : ")
     val year = readLine()!!.toInt()
-    
+
     println("The last Fridays of each month in $year are as follows:")
     val calendar = GregorianCalendar(year, 0, 31)
     for (month in 1..12) {
@@ -2291,16 +2291,16 @@ Output
 
 
 ```logo
-; Determine if a Gregorian calendar year is leap 
+; Determine if a Gregorian calendar year is leap
 to leap? :year
-  output (and 
+  output (and
     equal? 0 modulo :year 4
     not member? modulo :year 400 [100 200 300]
   )
 end
 
-; Convert Gregorian calendar date to a simple day count from 
-; RD 1 = January 1, 1 CE 
+; Convert Gregorian calendar date to a simple day count from
+; RD 1 = January 1, 1 CE
 to day_number :year :month :day
   local "elapsed make "elapsed difference :year 1
   output (sum  product 365 :elapsed
@@ -2420,7 +2420,7 @@ fridays := proc(year)
 	for i to 12 do
 		dt := Date(year, i, last_days[i]);
 		change := 0;
-		if not(Calendar:-DayOfWeek(dt) = 6) then 
+		if not(Calendar:-DayOfWeek(dt) = 6) then
 			change := -(Calendar:-DayOfWeek(dt) mod 7)-1;
 		end if;
 		dt := Calendar:-AdjustDateField(dt, "date", change);
@@ -2455,8 +2455,8 @@ fridays(2012);
 
 
 ```Mathematica
-FridaysOfYear[Y_] := 
- NestWhile[(DaysPlus[#, - 1]) &, #, (DateString[#, "DayName"] != "Friday") &] & /@ 
+FridaysOfYear[Y_] :=
+ NestWhile[(DaysPlus[#, - 1]) &, #, (DateString[#, "DayName"] != "Friday") &] & /@
   Most@Reverse@NestList [DaysPlus[# /. {x_, y_, X_} -> {x, y, 1}, - 1] &, {Y + 1, 1, 1}, 12]
 Column@FridaysOfYear[2012]
 ```
@@ -2489,9 +2489,9 @@ Column@FridaysOfYear[2012]
   t  = datevec(t1:t2);
   t  = t(strmatch('Friday', datestr(t,'dddd')), :);     % find all Fridays
   t  = t([find(diff(t(:,2)) > 0); end], :);     % find Fridays before change of month
-  end; 
+  end;
 
-  datestr(last_fridays_of_year(2012),'yyyy-mm-dd')		
+  datestr(last_fridays_of_year(2012),'yyyy-mm-dd')
 
 ```
 
@@ -2520,20 +2520,20 @@ Column@FridaysOfYear[2012]
 
 
 ```maxima
-weekday(year,  month,  day) := block([m: month,  y: year,  k], 
-   if m < 3 then (m: m + 12,  y: y - 1), 
+weekday(year,  month,  day) := block([m: month,  y: year,  k],
+   if m < 3 then (m: m + 12,  y: y - 1),
    k: 1 + remainder(day + quotient((m + 1)*26,  10) + y + quotient(y,  4)
-        + 6*quotient(y,  100) + quotient(y,  400) + 5,  7), 
+        + 6*quotient(y,  100) + quotient(y,  400) + 5,  7),
    ['monday,  'tuesday,  'wednesday,  'thurdsday,  'friday,  'saturday,  'sunday][k]
 )$
 
 leapyearp(year) := is(mod(year,  4) = 0 and (mod(year,  100) # 0 or mod(year,  400) = 0))$
-   
+
 
 lastfridays(year) := block(
-   [m: [31,  if leapyearp(year) then 29 else 28,  31,  30,  31,  30,  31,  31,  30,  31,  30,  31],  v: [ ]], 
-   for month thru 12 do v: endcons(sconcat(year,  "-",  month,  "-", 
-      lmax(sublist(makelist(i,  i,  1,  m[month]),  lambda([day],  weekday(year,  month,  day) = 'friday)))),  v), 
+   [m: [31,  if leapyearp(year) then 29 else 28,  31,  30,  31,  30,  31,  31,  30,  31,  30,  31],  v: [ ]],
+   for month thru 12 do v: endcons(sconcat(year,  "-",  month,  "-",
+      lmax(sublist(makelist(i,  i,  1,  m[month]),  lambda([day],  weekday(year,  month,  day) = 'friday)))),  v),
    v
 )$
 
@@ -2737,7 +2737,7 @@ let () =
   let fridays = Array.make 12 (Unix.gmtime 0.0) in
   for month = 0 to 11 do
     for day_of_month = 1 to 31 do
-      let tm = { (Unix.gmtime 0.0) with 
+      let tm = { (Unix.gmtime 0.0) with
         tm_year = year;
         tm_mon = month;
         tm_mday = day_of_month;
@@ -2772,7 +2772,7 @@ $ ocaml last_fridays.ml 2012
 
 
 
-###  With a dedicated library 
+###  With a dedicated library
 
 {{libheader|OCaml Calendar Library}}
 
@@ -2783,10 +2783,10 @@ open CalendarLib
 let usage() =
   Printf.eprintf "%s <year>\n" Sys.argv.(0);
   exit 1
- 
+
 let print_date (year, month, day) =
   Printf.printf "%d-%02d-%02d\n" year month day
- 
+
 let () =
   let year =
     try int_of_string Sys.argv.(1)
@@ -3062,21 +3062,21 @@ PHP is generally used for web apps, so I am not implementing the command-line co
 function last_friday_of_month($year, $month) {
   $day = 0;
   while(True) {
-    $last_day = mktime(0, 0, 0, $month+1, $day, $year); 
+    $last_day = mktime(0, 0, 0, $month+1, $day, $year);
     if (date("w", $last_day) == 5) {
       return date("Y-m-d", $last_day);
     }
     $day -= 1;
   }
 }
- 
+
 function print_last_fridays_of_month($year) {
   foreach(range(1, 12) as $month) {
     echo last_friday_of_month($year, $month), "
 ";
   }
 }
- 
+
 date_default_timezone_set("GMT");
 $year = 2012;
 print_last_fridays_of_month($year);
@@ -3143,9 +3143,9 @@ Test:
 
 ```Pike
 int(0..1) last_friday(object day)
-{ 
-   return day->week_day() == 5 && 
-          day->month_day() > day->month()->number_of_days()-7; 
+{
+   return day->week_day() == 5 &&
+          day->month_day() > day->month()->number_of_days()-7;
 }
 
 int main(int argc, array argv)
@@ -3193,17 +3193,17 @@ The command: FRIDAYS /2008 produces:
 ```txt
 
 Last Fridays in each month for the year 2008:
-25Jan2008 
-29Feb2008 
-28Mar2008 
-25Apr2008 
-30May2008 
-27Jun2008 
-25Jul2008 
-29Aug2008 
-26Sep2008 
-31Oct2008 
-28Nov2008 
+25Jan2008
+29Feb2008
+28Mar2008
+25Apr2008
+30May2008
+27Jun2008
+25Jul2008
+29Aug2008
+26Sep2008
+31Oct2008
+28Nov2008
 26Dec2008
 
 ```
@@ -3212,18 +3212,18 @@ Last Fridays in each month for the year 2008:
 
 ```txt
 
-Last Fridays in each month for the year 2013: 
-25Jan2013 
-22Feb2013 
-29Mar2013 
-26Apr2013 
-31May2013 
-28Jun2013 
-26Jul2013 
-30Aug2013 
-27Sep2013 
-25Oct2013 
-29Nov2013 
+Last Fridays in each month for the year 2013:
+25Jan2013
+22Feb2013
+29Mar2013
+26Apr2013
+31May2013
+28Jun2013
+26Jul2013
+30Aug2013
+27Sep2013
+25Oct2013
+29Nov2013
 27Dec2013
 
 ```
@@ -3469,12 +3469,12 @@ Return the <code>[DateTime]</code> objects as strings (specifying the string for
 Procedure LastFridayOfEachMonth(yyyy.i,List lfem.i())
   Define dv.i=ParseDate("%yyyy",Str(yyyy)), mv.i=1
   NewList d.i()
-  For d=1 To 365 
+  For d=1 To 365
     dv=AddDate(dv,#PB_Date_Day,1)
     If DayOfWeek(dv)=5
       AddElement(d()) : d()=dv
-    EndIf    
-  Next 
+    EndIf
+  Next
   dv=0
   For mv=1 To 12
     ForEach d()
@@ -3674,7 +3674,7 @@ message(paste(collapse = "\n", fridays[tapply(
 
 (define (prev-day d)
   (time-utc->date
-   (subtract-duration 
+   (subtract-duration
     (date->time-utc d) 24hours)))
 
 (define (prev-friday d)
@@ -3765,7 +3765,7 @@ last-fridays-of-year: function [year] [
         repeat month 12 [
             d: to-date reduce [1 month year]
             d/month: d/month + 1                      ; start of next month
-            until [d/day: d/day - 1  d/weekday = 5]   ; go backwards until find a Friday  
+            until [d/day: d/day - 1  d/weekday = 5]   ; go backwards until find a Friday
             keep d
         ]
     ]
@@ -3872,7 +3872,7 @@ return date('weekday', _, "B")    date(, _, 'B')                     /*return th
      say;     exit 13                                                /*... then exit.   */
 ```
 
-'''output'''   when using the following input:   <tt> 2012 </tt>     or     <tt> 12 </tt> 
+'''output'''   when using the following input:   <tt> 2012 </tt>     or     <tt> 12 </tt>
 
 ```txt
 
@@ -3898,7 +3898,7 @@ Friday 28 Dec 2012
 
 ```ring
 
-see "What year to calculate (yyyy) : " 
+see "What year to calculate (yyyy) : "
 give year
 see "Last Friday in " + year + " are on :" + nl
 month = list(12)
@@ -4055,9 +4055,9 @@ object Fridays {
     cal.set(Calendar.DAY_OF_WEEK_IN_MONTH, -1)
     cal.getTime
   }
-	
+
   def fridaysOfYear(year:Int)=for(month <- 0 to 11) yield lastFridayOfMonth(year, month)
-	
+
   def main(args:Array[String]){
     val year=args(0).toInt
     val formatter=new SimpleDateFormat("yyyy-MMM-dd")
@@ -4091,7 +4091,7 @@ object Fridays {
 
 Uses the libraries [http://seed7.sourceforge.net/libraries/time.htm time.s7i] and
 [http://seed7.sourceforge.net/libraries/duration.htm duration.s7i].
-Applicable to any day of the week, cf. [[http://rosettacode.org/wiki/Find_last_sunday_of_each_month#Seed7]]. 
+Applicable to any day of the week, cf. [[http://rosettacode.org/wiki/Find_last_sunday_of_each_month#Seed7]].
 
 
 ```seed7
@@ -4199,9 +4199,9 @@ Pharo Smalltalk
 [ :yr | | firstDay firstFriday |
   firstDay := Date year: yr month: 1 day: 1.
   firstFriday := firstDay addDays: (6 - firstDay dayOfWeek).
-  (0 to: 53) 
+  (0 to: 53)
     collect: [ :each | firstFriday addDays: (each * 7) ]
-    thenSelect: [ :each | 
+    thenSelect: [ :each |
       (((Date daysInMonth: each monthIndex forYear: yr) - each dayOfMonth) <= 6) and: [	each year = yr ] ] ]
 
 ```
@@ -4210,7 +4210,7 @@ Pharo Smalltalk
 
 ```txt
 
-Send value: 2012 to the above block to return an array: 
+Send value: 2012 to the above block to return an array:
 (27 January 2012 24 February 2012 30 March 2012 27 April 2012 25 May 2012 29 June 2012 27 July 2012 31 August 2012 28 September 2012 26 October 2012 30 November 2012 28 December 2012)
 
 ```
@@ -4296,41 +4296,41 @@ last_fridays 2012
 import Foundation
 
 func lastFridays(of year: Int) -> [Date] {
-	
+
 	let calendar = Calendar.current
 	var dates = [Date]()
-	
+
 	for month in 2...13 {
-		
+
 		let lastDayOfMonth = DateComponents(calendar: calendar,
 		                                    year: year,
 		                                    month: month,
 		                                    day: 0,
 		                                    hour: 12)
-		
+
 		let date = calendar.date(from: lastDayOfMonth)!
-		
+
 		let isFriday = calendar.component(.weekday, from: date) == 6
-		
+
 		if isFriday {
-			
+
 			dates.append(calendar.date(from: lastDayOfMonth)!)
-			
+
 		} else {
-			
+
 			let lastWeekofMonth = calendar.ordinality(of: .weekOfMonth,
 			                                          in: .month,
 			                                          for: date)!
-			
+
 			let lastWithFriday = lastWeekofMonth - (calendar.component(.weekday, from: date) > 6 ? 0 : 1)
-			
+
 			let lastFridayOfMonth = DateComponents(calendar: calendar,
 			                                       year: year,
 			                                       month: month - 1,
 			                                       hour: 12,
 			                                       weekday: 6,
 			                                       weekOfMonth: lastWithFriday)
-			
+
 			dates.append(calendar.date(from: lastFridayOfMonth)!)
 		}
 	}
@@ -4545,7 +4545,7 @@ last_fridays() {
         	# Change of month => previous friday is the last of month
         	test "$previous_month" != "$current_month" \
         		&& echo $previous_friday
-        	
+
         	previous_month=$current_month
         	previous_friday=$current_friday
         	day=`expr $day + 1`
@@ -4611,13 +4611,13 @@ FOR i = 1 TO 12
 	*!* Use the built in function to return the day of the week
 	*!* 6 is Friday
 	DO WHILE DOW(ldDate) # 6
-		ldDate = ldDate - 1 
+		ldDate = ldDate - 1
 	ENDDO
 	? ldDate
 ENDFOR
 ENDFUNC
 
-ENDDEFINE 
+ENDDEFINE
 
 ```
 
@@ -4691,12 +4691,12 @@ fcn lastDay(y,d){
 lastDay(2012,D.Friday).concat("\n").println();
 ```
 
-For each month in year y, count back from the last day in the month 
-until a Friday is found and print that date. 
-A pump is a loop over a sequence and Void.Stop stops the pump with a value. 
-The first parameter to a pump is the sink. 
-All the imperative loop constructs are available but I didn't feel like using them. 
-A wrap is a function closure over unknown values in the function, 
+For each month in year y, count back from the last day in the month
+until a Friday is found and print that date.
+A pump is a loop over a sequence and Void.Stop stops the pump with a value.
+The first parameter to a pump is the sink.
+All the imperative loop constructs are available but I didn't feel like using them.
+A wrap is a function closure over unknown values in the function,
 necessary because functions are not lexically scoped.
 {{out}}
 

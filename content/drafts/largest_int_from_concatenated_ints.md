@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 
-;Task: 
+;Task:
 Given a set of positive integers, write a function to order the integers in such a way that the concatenation of the numbers forms the largest possible integer and return this integer.
 
 Use the following two sets of integers as tests   and   show your program output here.
@@ -23,7 +23,7 @@ Use the following two sets of integers as tests   and   show your program output
 
 
 ;Possible algorithms:
-# A solution could be found by trying all combinations and return the best. 
+# A solution could be found by trying all combinations and return the best.
 # Another way to solve this is to note that in the best arrangement, for any two adjacent original integers '''X''' and '''Y''', the concatenation '''X''' followed by '''Y''' will be numerically greater than or equal to the concatenation '''Y''' followed by '''X.
 # Yet another way to solve this is to pad the integers to the same size by repeating the digits then sort using these repeated integers as a sort key.
 
@@ -47,8 +47,8 @@ function Order(Left, Right: Natural) return Boolean is
       ( (Img(Left) & Img(Right)) > (Img(Right) & Img(Left)) );
 ```
 
-This function converts the parameters Left and Right to strings and returns True if (Left before Right) 
-exceeds (Right before Left). It needs Ada 2012 -- the code for older versions of Ada would be more verbose. 
+This function converts the parameters Left and Right to strings and returns True if (Left before Right)
+exceeds (Right before Left). It needs Ada 2012 -- the code for older versions of Ada would be more verbose.
 
 The rest is straightforward: Run your favourite sorting subprogram that allows to use the function "Order" instead of standard comparison operators ("<" or ">" or so) and print the results:
 
@@ -57,21 +57,21 @@ The rest is straightforward: Run your favourite sorting subprogram that allows t
 with Ada.Text_IO, Ada.Containers.Generic_Array_Sort;
 
 procedure Largest_Int_From_List is
-   
+
    function Img(N: Natural) return String is
       S: String := Integer'Image(N);
    begin
       return S(S'First+1 .. S'Last); -- First character is ' '
    end Img;
-   
+
    function Order(Left, Right: Natural) return Boolean is
       ( (Img(Left) & Img(Right)) > (Img(Right) & Img(Left)) );
-   
+
    type Arr_T is array(Positive range <>) of Natural;
-   
+
    procedure Sort is new Ada.Containers.Generic_Array_Sort
      (Positive, Natural, Arr_T, Order);
-   
+
    procedure Print_Sorted(A: Arr_T) is
       B: Arr_T := A;
    begin
@@ -81,7 +81,7 @@ procedure Largest_Int_From_List is
       end loop;
       Ada.Text_IO.New_Line;
    end Print_Sorted;
-   
+
 begin
    Print_Sorted((1, 34, 3, 98, 9, 76, 45, 4));
    Print_Sorted((54, 546, 548, 60));
@@ -264,7 +264,7 @@ function largest_int_from_concatenated_ints(X) {
 	u="";
 	for (i in X) u=u""X[i];
 	return u
-} 
+}
 
 BEGIN {
 	split("1 34 3 98 9 76 45 4",X);
@@ -295,7 +295,7 @@ BEGIN {
       Nums%()=54,546,548,60
       PRINT FNlargestint(4)
       END
-      
+
       DEF FNlargestint(len%)
       LOCAL i%,l$,a$,b$,sorted%
       REPEAT
@@ -357,8 +357,8 @@ BEGIN {
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -404,8 +404,8 @@ int main(void)
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <sstream>
 #include <algorithm>
 #include <vector>
@@ -416,7 +416,7 @@ std::string findLargestConcat ( std::vector< int > & mynumbers ) {
    std::sort ( mynumbers.begin( ) , mynumbers.end( ) ) ;
    do {
       std::ostringstream numberstream ;
-      for ( int i : mynumbers ) 
+      for ( int i : mynumbers )
 	 numberstream << i ;
       concatnumbers.push_back( numberstream.str( ) ) ;
    } while ( std::next_permutation( mynumbers.begin( ) ,
@@ -430,7 +430,7 @@ int main( ) {
    std::vector<int> othernumbers = { 54 , 546 , 548 , 60 } ;
    std::cout << "The largest concatenated int is " <<
       findLargestConcat( mynumbers ) << " !\n" ;
-   std::cout << "And here it is " << findLargestConcat( othernumbers ) 
+   std::cout << "And here it is " << findLargestConcat( othernumbers )
       << " !\n" ;
    return 0 ;
 }
@@ -502,18 +502,18 @@ The largest possible integer from set 2 is: 6054854654
 
 ```ceylon
 shared void run2() {
-	
+
 	function intConcatenationComparer(Integer x, Integer y) {
 		assert(exists xy = parseInteger(x.string + y.string),
 			exists yx = parseInteger(y.string + x.string));
 		return yx <=> xy;
 	}
-	
+
 	function biggestConcatenation(Integer* ints) => "".join(ints.sort(intConcatenationComparer));
-	
+
 	value test1 = {1, 34, 3, 98, 9, 76, 45, 4};
 	value test2 = {54, 546, 548, 60};
-	
+
 	print("``biggestConcatenation(*test1)`` and ``biggestConcatenation(*test2)``");
 }
 ```
@@ -557,7 +557,7 @@ shared void run2() {
 (defun by-biggest-result (first second)
   (> (int-concat  (list first second)) (int-concat (list second first))))
 
-(defun make-largest-int (ints) 
+(defun make-largest-int (ints)
   (int-concat (sort ints #'by-biggest-result)))
 
 ```
@@ -578,7 +578,7 @@ shared void run2() {
 
 
 
-###  Variation around the sort with padded most significant digit 
+###  Variation around the sort with padded most significant digit
 
 
 
@@ -747,15 +747,15 @@ IN: rosetta-code.largest-int
 
 : pad ( target seq -- padded )
     2dup length / swap <repetition> concat swap head ;
-    
+
 : largest-int ( seq -- )
     dup dup [ length ] map supremum    ! find longest length so we know how much to pad
     [ swap pad ] curry map             ! pad the integers
     <enum> sort-values                 ! sort the padded integers
     keys                               ! find the original indices of the sorted integers
     swap nths                          ! order non-padded integers according to their sorted order
-    reverse concat print ;             
-    
+    reverse concat print ;
+
 qw{ 1 34 3 98 9 76 45 4 } qw{ 54 546 548 60 } [ largest-int ] bi@
 ```
 
@@ -780,7 +780,7 @@ Passing arrays as parameters can be tricky, especially for multi-dimensional arr
 
 The sorting of the text array was to be by the notorious BubbleSort, taking advantage of the fact that each pass delivers the maximum value of the unsorted portion to its final position: the output could thereby be produced as the sort worked. Rather than mess about with early termination (no element being swapped) or attention to the bounds within which swapping took place, attention concentrated upon the comparison. Because of the left-alignment of the texts, a simple comparison seemed sufficient until I thought of unequal text lengths and then the following example. Suppose there are two numbers, 5, and one of 54, 55, or 56 as the other. Via normal comparisons, the 5 would always be first (because short texts are considered expanded with trailing spaces when compared against longer texts, and a space precedes every digit) however the biggest ordering is 5 54 for the first case but 56 5 for the last. This possibility is not exemplified in the specified trial sets. So, a more complex comparison is required. One could of course write a suitable function and consider the issue there but instead the comparison forms the compound text in the same manner as the result will be, in the two ways AB and BA, and looks to see which yields the bigger sequence. This need only be done for unequal length text pairs.
 
-The source is F77 style, except for the declaration of XLAT(N), the use of <N> in the FORMAT statements instead of some large constant or similar, and the ability to declare an array via constants as in <code>(/"5","54"/)</code> rather than mess about declaring arrays and initialising them separately. The <code>I0</code> format code to convert a number (an actual number) into a digit string aligned leftwards in a CHARACTER variable of sufficient size is also a F90 introduction, though the B6700 compiler allowed a code <code>J</code> instead. This last is to demonstrate usage of actual numbers for those unpersuaded by the argument for ambiguity that allows for texts. If the <code>I0</code> format code is unavailable then <code>I9</code> (or some suitable size) could be used, followed by <code>text = ADJUSTL(text)</code>, except that this became an intrinsic function only in F90, so perhaps you will have to write a simple alignment routine. 
+The source is F77 style, except for the declaration of XLAT(N), the use of <N> in the FORMAT statements instead of some large constant or similar, and the ability to declare an array via constants as in <code>(/"5","54"/)</code> rather than mess about declaring arrays and initialising them separately. The <code>I0</code> format code to convert a number (an actual number) into a digit string aligned leftwards in a CHARACTER variable of sufficient size is also a F90 introduction, though the B6700 compiler allowed a code <code>J</code> instead. This last is to demonstrate usage of actual numbers for those unpersuaded by the argument for ambiguity that allows for texts. If the <code>I0</code> format code is unavailable then <code>I9</code> (or some suitable size) could be used, followed by <code>text = ADJUSTL(text)</code>, except that this became an intrinsic function only in F90, so perhaps you will have to write a simple alignment routine.
 ```Fortran
       SUBROUTINE SWAP(A,B)	!Why can't the compiler supply these!
        INTEGER A,B,T
@@ -854,7 +854,7 @@ Crude bubblesort. No attempt at noting the bounds of swaps made.
         WRITE (T1(I),"(I0)") I	!This format code produces only the necessary text.
       END DO			!Thus, the numbers are aligned left in the text field.
       CALL BIGUP(T1,10)
-      END 
+      END
 ```
 
 Output: the Fortran compiler ignores spaces when reading fortran source, so, hard-core fortranners should have no difficulty doing likewise for the output...
@@ -957,7 +957,7 @@ Do
         Else
             Print ",";
         End If
-    Next 
+    Next
 Loop
 
 ' empty keyboard buffer
@@ -987,7 +987,7 @@ Public Sub Main()
 Dim iList1 As Integer[] = [1, 34, 3, 98, 9, 76, 45, 4]      'Integer list 1
 Dim iList2 As Integer[] = [54, 546, 548, 60]                'Integer list 2
 
-Calc(iList1)                                                'Send List 1 to Calc routine 
+Calc(iList1)                                                'Send List 1 to Calc routine
 Calc(iList2)                                                'Send List 2 to Calc routine
 
 End
@@ -1021,7 +1021,7 @@ For siCount1 = 0 To sList.Max                               'For each item in sL
       Continue                                              'Exit the loop
     Endif
   Next
-  If Not bTrigger Then                                      'If there was no match e.g. there is no "99" then.. 
+  If Not bTrigger Then                                      'If there was no match e.g. there is no "99" then..
     sList[siCount1] = Left(sList[siCount1], siCounter - 1)  'Strip out the end digit e.g. "99" becomes 9 again
   End If
 Next
@@ -1317,7 +1317,7 @@ Sample runs:
 
 '''Solution:'''
 
-```j>maxlen=: [: 
+```j>maxlen=: [:
 ./ #&>
 maxnum=: (0 ". ;)@(\: maxlen $&> ])@(8!:0)
 ```
@@ -1334,20 +1334,20 @@ maxnum=: (0 ". ;)@(\: maxlen $&> ])@(8!:0)
 ## Java
 
 {{works with|Java|1.5+}}
-This example sets up a comparator to order the numbers using <code>Collections.sort</code> as described in method #3 (padding and reverse sorting). 
+This example sets up a comparator to order the numbers using <code>Collections.sort</code> as described in method #3 (padding and reverse sorting).
 It was also necessary to make a join method to meet the output requirements.
 
 ```java5
 import java.util.*;
 
 public class IntConcat {
- 
+
     private static Comparator<Integer> sorter = new Comparator<Integer>(){
         @Override
         public int compare(Integer o1, Integer o2){
             String o1s = o1.toString();
             String o2s = o2.toString();
-            
+
             if(o1s.length() == o2s.length()){
                 return o2s.compareTo(o1s);
             }
@@ -1355,11 +1355,11 @@ public class IntConcat {
             int mlen = Math.max(o1s.length(), o2s.length());
             while(o1s.length() < mlen * 2) o1s += o1s;
             while(o2s.length() < mlen * 2) o2s += o2s;
-            
+
             return o2s.compareTo(o1s);
         }
     };
-    
+
     public static String join(List<?> things){
         String output = "";
         for(Object obj:things){
@@ -1367,15 +1367,15 @@ public class IntConcat {
         }
         return output;
     }
-    
+
     public static void main(String[] args){
         List<Integer> ints1 = new ArrayList<Integer>(Arrays.asList(1, 34, 3, 98, 9, 76, 45, 4));
-        
+
         Collections.sort(ints1, sorter);
         System.out.println(join(ints1));
-        
+
         List<Integer> ints2 = new ArrayList<Integer>(Arrays.asList(54, 546, 548, 60));
-        
+
         Collections.sort(ints2, sorter);
         System.out.println(join(ints2));
     }
@@ -1393,11 +1393,11 @@ public interface IntConcat {
   public static Comparator<Integer> SORTER = (o1, o2) -> {
     String o1s = o1.toString();
     String o2s = o2.toString();
-    
+
     if (o1s.length() == o2s.length()) {
       return o2s.compareTo(o1s);
     }
-    
+
     int mlen = Math.max(o1s.length(), o2s.length());
     while (o1s.length() < mlen * 2) {
       o1s += o1s;
@@ -1405,7 +1405,7 @@ public interface IntConcat {
     while (o2s.length() < mlen * 2) {
       o2s += o2s;
     }
-    
+
     return o2s.compareTo(o1s);
   };
 
@@ -1523,7 +1523,7 @@ def largest_int:
 
   map(tostring)
   | (map(length) | max) as $max
-  | map([., pad($max)]) 
+  | map([., pad($max)])
   | sort_by( .[1] )
   | map( .[0] ) | reverse | join("") ;
 
@@ -1631,7 +1631,7 @@ function icsort(numbers)
 	return numbers
 end
 
-for _,numbers in pairs({{1, 34, 3, 98, 9, 76, 45, 4}, {54, 546, 548, 60}}) do	
+for _,numbers in pairs({{1, 34, 3, 98, 9, 76, 45, 4}, {54, 546, 548, 60}}) do
 	print(('Numbers: {%s}\n  Largest integer: %s'):format(
 		table.concat(numbers,","),table.concat(icsort(numbers))
 	))
@@ -1776,7 +1776,7 @@ let icsort nums = String.concat "" (List.sort myCompare (List.map string_of_int 
 
 ```txt
 
-# icsort [1;34;3;98;9;76;45;4];;  
+# icsort [1;34;3;98;9;76;45;4];;
 - : string = "998764543431"
 # icsort [54;546;548;60];;
 - : string = "6054854654"
@@ -2321,10 +2321,10 @@ end Largest;
 ```txt
 
 54 546 548 60
-Largest integer=        6054854654 
+Largest integer=        6054854654
 
 1 34 3 98 9 76 45 4
-Largest integer=        998764543431 
+Largest integer=        998764543431
 
 ```
 
@@ -2340,17 +2340,17 @@ Function Get-LargestConcatenation ( [int[]]$Integers )
     {
     #  Get the length of the largest integer
     $Length = ( $Integers | Sort -Descending | Select -First 1 ).ToString().Length
- 
+
     #  Convert to an array of strings,
     #  sort by each number repeated Length times and truncated to Length,
     #  and concatenate (join)
     $Concat = ( [string[]]$Integers | Sort { ( $_ * $Length ).Substring( 0, $Length ) } -Descending ) -join ''
- 
+
     #  Convert to integer (upsizing type if needed)
     try           { $Integer = [ int32]$Concat }
     catch { try   { $Integer = [ int64]$Concat }
             catch { $Integer = [bigint]$Concat } }
- 
+
     return $Integer
     }
 ```
@@ -2374,7 +2374,7 @@ Get-LargestConcatenation 54, 546, 548, 60, 54, 546, 548, 60
 
 ## Prolog
 
-Works with SWI-Prolog 6.5.3. 
+Works with SWI-Prolog 6.5.3.
 
 ### All permutations method
 
@@ -2579,11 +2579,11 @@ for numbers in [(1, 34, 3, 98, 9, 76, 45, 4), (54, 546, 548, 60)]:
 
 ## REXX
 
-The algorithm used is based on exact comparisons (left to right)   with   ''right digit fill''   of the   ''left digit''. 
+The algorithm used is based on exact comparisons (left to right)   with   ''right digit fill''   of the   ''left digit''.
 
 This allows the integers to be of any size.
 
-This REXX version works with any size integer   (negative, zero, positive),   and does some basic error checking to 
+This REXX version works with any size integer   (negative, zero, positive),   and does some basic error checking to
 
 verify that the numbers are indeed integers   (and it also normalizes the integers).
 
@@ -2619,7 +2619,7 @@ norm: arg i;  #=word(z, i);   er=' ***error*** ';  if left(#, 1)=="-"  then #=su
       return # / 1                               /*it's an integer,  then normalize it. */
 ```
 
-{{out|output|text=  when using the default (internal) integer lists:}} 
+{{out|output|text=  when using the default (internal) integer lists:}}
 
 ```txt
 
@@ -2633,17 +2633,17 @@ largest concatenatated integer from  4 45 54 5            is ─────► 
 
 ### exponentiated integers
 
-In REXX, a number such as   '''6.6e77'''   would be considered an integer   ''if''   the (current)   '''numeric digits'''   is 
+In REXX, a number such as   '''6.6e77'''   would be considered an integer   ''if''   the (current)   '''numeric digits'''   is
 
 large enough to express that number as an integer without the exponent.
 
-The default for REXX is   '''9'''   decimal digits,   but the   '''norm'''   function automatically uses enough decimal digits to 
+The default for REXX is   '''9'''   decimal digits,   but the   '''norm'''   function automatically uses enough decimal digits to
 
 express the number as an integer.
 
 This REXX version can handle any sized integer   (most REXXes can handle up to around eight million decimal
 
-digits,   but displaying the result would be problematic for results wider than the display area). 
+digits,   but displaying the result would be problematic for results wider than the display area).
 
 ```rexx
 /*REXX program constructs the largest integer  from an integer list using concatenation.*/
@@ -2677,7 +2677,7 @@ norm: arg i;  #=word(z, i);   er=' ***error*** ';  if left(#, 1)=="-"  then #=su
       return #/1
 ```
 
-{{out|output|text=  when using the default (internal) integer lists:}} 
+{{out|output|text=  when using the default (internal) integer lists:}}
 
 ```txt
 
@@ -2875,7 +2875,7 @@ nums=[1,34,3,98,9,76,45,4]
 see largestInt(8) + nl
 nums=[54,546,548,60]
 see largestInt(4) + nl
- 
+
 func largestInt len
 l = ""
 sorted = false
@@ -2884,7 +2884,7 @@ while not sorted
       for i=1 to len-1
           a=string(nums[i])
           b=string(nums[i+1])
-          if a+b<b+a 
+          if a+b<b+a
              temp = nums[i]
              nums[i] = nums[i+1]
              nums[i+1] = temp
@@ -3037,7 +3037,7 @@ fn maxcat(a: &mut [u32]) {
     }
     println!();
 }
- 
+
 fn main() {
     maxcat(&mut [1, 34, 3, 98, 9, 76, 45, 4]);
     maxcat(&mut [54, 546, 548, 60]);
@@ -3059,7 +3059,7 @@ fn main() {
    b = string(b);
    return strcmp(b+a, a+b);
 }
-	  
+
 define maxcat(arr)
 {
    arr = arr[array_sort(arr, &catcmp)];

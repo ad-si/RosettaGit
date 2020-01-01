@@ -32,9 +32,9 @@ Algorithm:
 ## C++
 
 
-```cpp>#include<iostream
-
-#include<conio.h>
+```cpp
+#include <iostream>
+#include <conio.h>
 using namespace std;
 typedef unsigned long ulong;
 
@@ -756,7 +756,7 @@ class Montgomery(val m: BigInteger) {
 
     init {
         require(m > bigZero && m.testBit(0)) // must be positive and odd
-        n = m.bitLength()       
+        n = m.bitLength()
         rrm = bigOne.shiftLeft(n * 2).mod(m)
     }
 
@@ -791,7 +791,7 @@ fun main(args: Array<String>) {
     println("b :  ${Montgomery.BASE}")
     println("n :  ${mont.n}")
     println("r :  $r")
-    println("m :  ${mont.m}")   
+    println("m :  ${mont.m}")
     println("t1:  $t1")
     println("t2:  $t2")
     println("r1:  $r1")
@@ -811,7 +811,7 @@ fun main(args: Array<String>) {
         exp = exp.shiftRight(1)
         base = mont.reduce(base * base)
     }
-    println(mont.reduce(prod)) 
+    println(mont.reduce(prod))
     println("\nLibrary-based computation of x1 ^ x2 mod m :")
     println(x1.modPow(x2, m))
 }
@@ -976,9 +976,9 @@ Built-in op computation x1**x2 mod m: 151232511393500655853002423778
 
 ```Phix
 include mpfr.e
- 
+
 enum BASE, BITLEN, MODULUS, RRM
- 
+
 function reduce(sequence mont, mpz a)
     integer n = mont[BITLEN]
     mpz m = mont[MODULUS],
@@ -992,7 +992,7 @@ function reduce(sequence mont, mpz a)
     if mpz_cmp(r,m)>=0 then mpz_sub(r,r,m) end if
     return r
 end function
- 
+
 function Montgomery(mpz m)
     if mpz_sign(m)=-1 then crash("must be positive") end if
     if not mpz_odd(m) then crash("must be odd") end if
@@ -1005,13 +1005,13 @@ function Montgomery(mpz m)
             rrm -- 1<<(n*2) % m
            }
 end function
- 
+
 mpz m = mpz_init("750791094644726559640638407699"),
     x1 = mpz_init("540019781128412936473322405310"),
     x2 = mpz_init("515692107665463680305819378593"),
     t1 = mpz_init(),
     t2 = mpz_init()
- 
+
 sequence mont = Montgomery(m)
 mpz_mul(t1,x1,mont[RRM])
 mpz_mul(t2,x2,mont[RRM])
@@ -1019,7 +1019,7 @@ mpz r1 = reduce(mont,t1),
     r2 = reduce(mont,t2),
     r = mpz_init()
 mpz_ui_pow_ui(r,2,mont[BITLEN])
- 
+
 printf(1,"b :  %d\n", {mont[BASE]})
 printf(1,"n :  %d\n", {mont[BITLEN]})
 printf(1,"r :  %s\n", {mpz_get_str(r)})
@@ -1033,7 +1033,7 @@ printf(1,"Original x1       : %s\n", {mpz_get_str(x1)})
 printf(1,"Recovered from r1 : %s\n", {mpz_get_str(reduce(mont,r1))})
 printf(1,"Original x2       : %s\n", {mpz_get_str(x2)})
 printf(1,"Recovered from r2 : %s\n", {mpz_get_str(reduce(mont,r2))})
- 
+
 printf(1,"\nMontgomery computation of x1 ^ x2 mod m :")
 mpz prod = reduce(mont,mont[RRM])
 mpz_mul(r,x1,mont[RRM])
@@ -1288,11 +1288,11 @@ Alternate computation of x1 ^ x2 mod m :
 ; ---------------------------------------------------------------------------------------------------
 (module+ test
   (require typed/rackunit)
-  
+
   (check-equal? (ith-digit 1234 0 10) 4)
   (check-equal? (ith-digit 1234 3 10) 1)
-  
-  ;; e.g. ripped off from {{trans|Go}}  
+
+  ;; e.g. ripped off from {{trans|Go}}
   (let ((b  2)
         (n  100)
         (r  1267650600228229401496703205376)

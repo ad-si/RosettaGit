@@ -14,10 +14,10 @@ tags = []
 [[Category:Palindromes]]
 {{task}}
 
-An '''eertree''' is a data structure designed for efficient processing of certain palindrome tasks, for instance counting the number of sub-palindromes in an input string. 
+An '''eertree''' is a data structure designed for efficient processing of certain palindrome tasks, for instance counting the number of sub-palindromes in an input string.
 
 The data structure has commonalities to both ''tries'' and ''suffix trees''.
-  See links below. 
+  See links below.
 
 
 ;Task:
@@ -26,7 +26,7 @@ Construct an eertree for the string "eertree", then output all sub-palindromes b
 
 ;See also:
 *   Wikipedia entry:   [https://en.wikipedia.org/wiki/Trie trie].
-*   Wikipedia entry:   [https://en.wikipedia.org/wiki/Suffix_tree suffix tree] 
+*   Wikipedia entry:   [https://en.wikipedia.org/wiki/Suffix_tree suffix tree]
 *   [https://arxiv.org/abs/1506.04862 Cornell University Library, Computer Science, Data Structures and Algorithms ───► EERTREE: An Efficient Data Structure for Processing Palindromes in Strings].
 
 
@@ -37,8 +37,8 @@ Construct an eertree for the string "eertree", then output all sub-palindromes b
 
 {{trans|D}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <functional>
 #include <map>
 #include <vector>
@@ -646,7 +646,7 @@ end
 eertree("eertree")
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 Results of processing string "eertree":
@@ -815,7 +815,7 @@ Class Node {
 Class:
       Module Node(.length) {
             Read ? .suffix, .myedges
-      }     
+      }
 }
 function eertree(s$) {
       Const evenRoot=0, oddRoot=1
@@ -829,12 +829,12 @@ function eertree(s$) {
                  k=tree(n).length
                  b=i-k-1
                   if b>=0 then if mid$(s$,b+1,1)=c$ Then exit
-                  n =tree(n).suffix  
+                  n =tree(n).suffix
             } Always
             e=tree(n).edges(c$)
             if e>=0 then suffix=e :continue
             suffix=len(Tree)
-            
+
             Append Tree, len(Tree):=Node(k+2)
             Tree(n).edges_append c$, suffix
             If tree(suffix).length=1 then tree(suffix).suffix=0 : continue
@@ -846,7 +846,7 @@ function eertree(s$) {
             e=tree(n).edges(c$)
             if e>=0 then tree(suffix).suffix=e
 
-      } 
+      }
       =tree
 }
 children=lambda (s, tree,  n, root$="")->{
@@ -856,7 +856,7 @@ children=lambda (s, tree,  n, root$="")->{
             For i=0 to L {
                   c=tree(n).myEdges
                   c$=Eval$(c, i)  ' read keys at position i
-                  nxt=c(i!)   '  read value using position 
+                  nxt=c(i!)   '  read value using position
                   p$ = if$(n=1 -> c$, c$+root$+c$)
                   append s, (p$,)
                   \\ better use lambda() and not children()
@@ -908,17 +908,17 @@ class Eertree {
     tree->AddBack(Node->New(0, Nil, 1));
     tree->AddBack(Node->New(-1, Nil, 1));
     suffix := 1;
-    
+
     n : Int; k : Int;
     for(i := 0; i < s->Size(); ++i;) {
       c := s->Get(i);
 
       done := false;
-      for (j := suffix; <>done; j := tree->Get(j)->GetSuffix();) {      
+      for (j := suffix; <>done; j := tree->Get(j)->GetSuffix();) {
         k := tree->Get(j)->GetLength();
         b := i - k - 1;
         if (b >= 0 & s->Get(b) = c) {
-          n := j;      
+          n := j;
           done := true;
         };
       };
@@ -928,7 +928,7 @@ class Eertree {
         skip := true;
       };
 
-      if(<>skip) {         
+      if(<>skip) {
         suffix := tree->Size();
         tree->AddBack(Node->New(k + 2));
         tree->Get(n)->GetEdges()->Insert(c, suffix);
@@ -947,7 +947,7 @@ class Eertree {
             };
           };
           tree->Get(suffix)->SetSuffix(tree->Get(n)->GetEdges()->Find(c)->Get());
-        };          
+        };
       };
     };
 
@@ -979,7 +979,7 @@ class Eertree {
       str := ""; str += c; str += p; str += c;
       s->AddBack(str);
       SubPalindromesChildren(value, str, tree, s);
-    };    
+    };
   }
 
   function : Show(result : Vector<String>) ~ Nil {
@@ -1120,7 +1120,7 @@ enum LEN,SUFF,CHARS,NEXT
 
 function node(integer len, suffix=1, string chars="", sequence next={})
     return {len,suffix,chars,next} -- must match above enum!
-end function 
+end function
 
 function eertree(string s)
 sequence tree = {node(-1),  -- odd lengths
@@ -1258,7 +1258,7 @@ class Eertree(object):
 			k = u.len
 
 		return u
-	
+
 	def add(self, a):
 
 		# We need to find the maximum suffix-palindrome P of Ta
@@ -1280,7 +1280,7 @@ class Eertree(object):
 				P.link = self.rte
 			else:
 				# It remains to create the suffix link from P if |P|>1. Just
-				# continue traversing suffix-palindromes of T starting with the suffix 
+				# continue traversing suffix-palindromes of T starting with the suffix
 				# link of Q.
 				P.link = self.get_max_suffix_pal(Q.link, a).edges[a]
 
@@ -1294,7 +1294,7 @@ class Eertree(object):
 		self.S.append(a)
 
 		return createANewNode
-	
+
 	def get_sub_palindromes(self, nd, nodesToHere, charsToHere, result):
 		#Each node represents a palindrome, which can be reconstructed
 		#by the path from the root node to each non-root node.
@@ -1349,7 +1349,7 @@ Sub-palindromes: ['r', 'e', 'eertree', 'ertre', 'rtr', 't', 'ee']
 #lang racket
 (struct node (edges ; edges (or forward links)
               link ; suffix link (backward links)
-              len) ; the length of the node 
+              len) ; the length of the node
   #:mutable)
 
 (define (new-node link len) (node (make-hash) link len))
@@ -1386,7 +1386,7 @@ Sub-palindromes: ['r', 'e', 'eertree', 'ertre', 'rtr', 't', 'ee']
      To do this, we traverse the suffix-palindromes of T
      in the order of decreasing length, starting with maxSuf(T) |#
   (match (eertree-get-max-suffix-pal et (eertree-max-suf-t et) a)
-    [(node Q.edges Q.→ Q.len) 
+    [(node Q.edges Q.→ Q.len)
      ;; We check Q to see whether it has an outgoing edge labeled by a.
      (define new-node? (not (hash-has-key? Q.edges a)))
      (when new-node?
@@ -1400,7 +1400,7 @@ Sub-palindromes: ['r', 'e', 'eertree', 'ertre', 'rtr', 't', 'ee']
              (hash-ref (node-edges (eertree-get-max-suffix-pal et Q.→ a)) a)))
        (set-node-link! P P→)
        (hash-set! Q.edges a P)) ; create the edge (Q,P)
-     
+
      (set-eertree-max-suf-t! et (hash-ref Q.edges a)) ; P becomes the new maxSufT
      (set-eertree-S! et (append (eertree-S et) (list a))) ; Store accumulated input string
      new-node?]))
@@ -1409,7 +1409,7 @@ Sub-palindromes: ['r', 'e', 'eertree', 'ertre', 'rtr', 't', 'ee']
   (define (inr nd (node-path (list nd)) (char-path/rev null))
     ;; Each node represents a palindrome, which can be reconstructed by the path from the root node to
     ;; each non-root node.
-    (let ((deeper ; Traverse all edges, since they represent other palindromes     
+    (let ((deeper ; Traverse all edges, since they represent other palindromes
            (for/fold ((result null)) (([→-name nd2] (in-hash (node-edges nd))))
              ; The lnk-name is the character used for this edge
              (append result (inr nd2 (append node-path (list nd2)) (cons →-name char-path/rev)))))
@@ -1498,12 +1498,12 @@ for n=1 to len(str)
            for p=len(strpal) to 1 step -1
                strrev = strrev + strpal[p]
            next
-           if strpal = strrev 
+           if strpal = strrev
               add(pal, strpal)
            ok
         ok
     next
-next 
+next
 sortpal = sort(pal)
 for n=len(sortpal) to 2 step -1
     if sortpal[n] = sortpal[n-1]
@@ -1548,7 +1548,7 @@ class Eertree{
 		# two initial root nodes
 	  rto=Node(-1), # odd  length root node, or node -1
 	  rte=Node(0);  # even length root node, or node  0
- 
+
       rto.link=rte.link=rto;    # Initialize empty tree
       var S      =Data(Void,0), # accumulated input string, T=S[1..i], byte buffer
           maxSufT=rte;          # maximum suffix of tree T
@@ -1577,7 +1577,7 @@ class Eertree{
 	 P:=Node(Q.sz + 2); nodes.append(P);
 	 if(P.sz==1) P.link=rte;  # if P = a, create the suffix link (P,0)
 	 else # It remains to create the suffix link from P if |P|>1. Just
-	      # continue traversing suffix-palindromes of T starting with the suffix 
+	      # continue traversing suffix-palindromes of T starting with the suffix
 	      # link of Q.
 	    P.link=get_max_suffix_pal(Q.link,a).edges[a];
 	 Q.edges[a]=P;    # create the edge (Q,P)

@@ -38,13 +38,13 @@ and
 
 and
 
-<math>s_n </math> is the square root of the [[wp:Variance#Population_variance_and_sample_variance|unbiased sample variance]] of set <math>n</math>, i.e. 
+<math>s_n </math> is the square root of the [[wp:Variance#Population_variance_and_sample_variance|unbiased sample variance]] of set <math>n</math>, i.e.
 
 <math>s_n = \sqrt{\frac{1}{N_n-1} \sum_{i=1}^{N_n} \left(X_i - \overline{X}_n\right)^2} </math>
 
 and the degrees of freedom, <math>\nu</math> can be approximated:
 
-<math>\nu \quad  \approx \quad 
+<math>\nu \quad  \approx \quad
  {{\left( \; {s_1^2 \over N_1} \; + \; {s_2^2 \over N_2} \; \right)^2 } \over
  { \quad {s_1^4 \over N_1^2 (N_1-1)} \; + \; {s_2^4 \over N_2^2 (N_2-1) } \quad }}</math>
 
@@ -68,7 +68,7 @@ and
 
 <math> p_{2-tail} </math> can be calculated in terms of [[wp:Gamma_function|gamma functions]] and integrals more simply:
 
-<math> p_{2-tail}=\frac{\int_0^\frac{\nu}{t^2+\nu} r^{\frac{\nu}{2}-1}\,(1-r)^{-0.5}\,\mathrm{d}r}{\exp((\ln(\Gamma(\frac{\nu}{2})) + \ln(\Gamma(0.5)) - \ln(\Gamma(\frac{\nu}{2}+0.5)))} </math> 
+<math> p_{2-tail}=\frac{\int_0^\frac{\nu}{t^2+\nu} r^{\frac{\nu}{2}-1}\,(1-r)^{-0.5}\,\mathrm{d}r}{\exp((\ln(\Gamma(\frac{\nu}{2})) + \ln(\Gamma(0.5)) - \ln(\Gamma(\frac{\nu}{2}+0.5)))} </math>
 
 which simplifies to
 
@@ -96,8 +96,8 @@ or
 This shows how pvalue can be calculated from any two arrays, using Welch's 2-sided t-test, which doesn't assume equal variance.
 This is the equivalent of R's<code>t.test(vector1,vector2, alternative="two.sided", var.equal=FALSE)</code>  and as such, it is compared against R's pvalues with the same vectors/arrays to show that the differences are very small (here 10^-14).
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 
@@ -161,7 +161,7 @@ double Pvalue (const double *restrict ARRAY1, const size_t ARRAY1_SIZE, const do
 
   Licensing:
 
-    This code is distributed under the GNU LGPL license. 
+    This code is distributed under the GNU LGPL license.
 
   Modified:
 
@@ -269,7 +269,7 @@ https://www.jstor.org/stable/2346797?seq=1#page_scan_tab_contents
 
     if ( temp <= acu && temp <= acu * value )
     {
-      value = value * exp ( pp * log ( xx ) 
+      value = value * exp ( pp * log ( xx )
       + ( qq - 1.0 ) * log ( cx ) - beta ) / pp;
 
       if ( indx )
@@ -317,7 +317,7 @@ int main(void) {
 	const double s2[] = {1.0/10,2/50.0};
 	const double z1[] = {9/23.0,21/45.0,0/38.0};
 	const double z2[] = {0/44.0,42/94.0,0/22.0};
-	
+
 	const double CORRECT_ANSWERS[] = {0.021378001462867,
 0.148841696605327,
 0.0359722710297968,
@@ -332,7 +332,7 @@ int main(void) {
 	double pvalue = Pvalue(d1,sizeof(d1)/sizeof(*d1),d2,sizeof(d2)/sizeof(*d2));
 	double error = fabs(pvalue - CORRECT_ANSWERS[0]);
 	printf("Test sets 1 p-value = %g\n", pvalue);
-	
+
 	pvalue = Pvalue(d3,sizeof(d3)/sizeof(*d3),d4,sizeof(d4)/sizeof(*d4));
 	error += fabs(pvalue - CORRECT_ANSWERS[1]);
 	printf("Test sets 2 p-value = %g\n",pvalue);
@@ -352,11 +352,11 @@ int main(void) {
 	pvalue = Pvalue(v1,sizeof(v1)/sizeof(*v1),v2,sizeof(v2)/sizeof(*v2));
 	error += fabs(pvalue - CORRECT_ANSWERS[5]);
 	printf("Test sets 6 p-value = %g\n", pvalue);
-	
+
 	pvalue = Pvalue(s1,sizeof(s1)/sizeof(*s1),s2,sizeof(s2)/sizeof(*s2));
 	error += fabs(pvalue - CORRECT_ANSWERS[6]);
 	printf("Test sets 7 p-value = %g\n", pvalue);
-	
+
 	pvalue = Pvalue(z1, 3, z2, 3);
 	error += fabs(pvalue - CORRECT_ANSWERS[7]);
 	printf("Test sets z p-value = %g\n", pvalue);
@@ -386,8 +386,8 @@ the cumulative error is 1.06339e-14
 '''If''' your computer does not have <code>lgammal</code>, add the following function before <code>main</code> and replace <code>lgammal</code> with <code>lngammal</code> in the <code>calculate_Pvalue</code> function:
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 long double lngammal(const double xx) {
@@ -398,7 +398,7 @@ long double lngammal(const double xx) {
       24.01409824083091,    -1.231739572450155,
       0.1208650973866179e-2,-0.5395239384953e-5
    };
- 
+
    y = x = xx;
    tmp = x + 5.5 - (x + 0.5) * logl(x + 5.5);
    ser = 1.000000000190015;
@@ -415,7 +415,7 @@ long double lngammal(const double xx) {
 ## Fortran
 
 
-###  Using IMSL 
+###  Using IMSL
 
 Using IMSL '''TDF''' function. With Absoft Pro Fortran, compile with <code>af90 %FFLAGS% %LINK_FNL% pvalue.f90</code>.
 Alternatively, the program shows the p-value computed using the IMSL '''BETAI''' function.
@@ -460,7 +460,7 @@ end program
 
 
 
-###  Using SLATEC 
+###  Using SLATEC
 
 
 With Absoft Pro Fortran, compile with <code>af90 -m64 pvalue.f90 %SLATEC_LINK%</code>.
@@ -473,7 +473,7 @@ subroutine welch_ttest(n1, x1, n2, x2, t, df, p)
     double precision :: x1(n1), x2(n2)
     double precision :: m1, m2, v1, v2, t, df, p
     double precision :: dbetai
-    
+
     m1 = sum(x1) / n1
     m2 = sum(x2) / n2
     v1 = sum((x1 - m1)**2) / (n1 - 1)
@@ -489,7 +489,7 @@ program pvalue
     double precision :: x(4) = [3d0, 4d0, 1d0, 2.1d0]
     double precision :: y(3) = [490.2d0, 340.0d0, 433.9d0]
     double precision :: t, df, p
-    
+
     call welch_ttest(4, x, 3, y, t, df, p)
     print *, t, df, p
 end program
@@ -628,7 +628,7 @@ integrate=: adverb define
   'a b steps'=. 3{.y,128
   size=. (b - a)%steps
   size * +/ u |: 2 ]\ a + size * i.>:steps
-) 
+)
 simpson  =: adverb def '6 %~ +/ 1 1 4 * u y, -:+/y'
 
 lngamma=: ^.@!@<:`(^.@!@(1 | ]) + +/@:^.@(1 + 1&| + i.@<.)@<:)@.(1&<:)"0
@@ -659,7 +659,7 @@ p2_tail=:dyad define
 
 The initial definition of <code>nu</code> (degrees of freedom of a data set), as well as the combining form (approximating degrees of freedom for two sets of data) is from [[wp:Welch%27s_t_test#Calculations|Welch's t test]]. (Verb definitions can be forward referenced, even in J's tacit definitions, but it seems clearer to specify these definitions so they only depend on previously declared definitions.)
 
-<code>sampvar</code> is sample variance (or: standard deviation squared) 
+<code>sampvar</code> is sample variance (or: standard deviation squared)
 
 <code>ssem</code> is squared standard error of the mean
 
@@ -709,34 +709,34 @@ public class WelchTTest {
     public static double[] meanvar(double[] a) {
         double m = 0.0, v = 0.0;
         int n = a.length;
-        
+
         for (double x: a) {
             m += x;
         }
         m /= n;
-        
+
         for (double x: a) {
             v += (x - m) * (x - m);
         }
         v /= (n - 1);
-        
+
         return new double[] {m, v};
-    
+
     }
-    
+
     public static double[] welch_ttest(double[] x, double[] y) {
         double mx, my, vx, vy, t, df, p;
         double[] res;
         int nx = x.length, ny = y.length;
-        
+
         res = meanvar(x);
         mx = res[0];
         vx = res[1];
-        
+
         res = meanvar(y);
         my = res[0];
         vy = res[1];
-        
+
         t = (mx-my)/Math.sqrt(vx/nx+vy/ny);
         df = Math.pow(vx/nx+vy/ny, 2)/(vx*vx/(nx*nx*(nx-1))+vy*vy/(ny*ny*(ny-1)));
         TDistribution dist = new TDistribution(df);
@@ -852,7 +852,7 @@ fun sampleVar(da: DoubleArray): Double {
 fun welch(da1: DoubleArray, da2: DoubleArray): Double {
     val temp = sampleVar(da1) / da1.size + sampleVar(da2) / da2.size
     return (da1.average() - da2.average()) / Math.sqrt(temp)
-}  
+}
 
 fun degreesFreedom(da1: DoubleArray, da2: DoubleArray): Double {
     val s1 = sampleVar(da1)
@@ -860,16 +860,16 @@ fun degreesFreedom(da1: DoubleArray, da2: DoubleArray): Double {
     val n1 = da1.size
     val n2 = da2.size
     val temp1 = square(s1 / n1 + s2 / n2)
-    val temp2 = square(s1) / (n1 * n1 * (n1 - 1)) + square(s2) / (n2 * n2 * (n2 - 1)) 
+    val temp2 = square(s1) / (n1 * n1 * (n1 - 1)) + square(s2) / (n2 * n2 * (n2 - 1))
     return temp1 / temp2
 }
 
 fun gamma(d: Double): Double {
     var dd = d
     val p = doubleArrayOf(
-        0.99999999999980993, 
+        0.99999999999980993,
       676.5203681218851,
-    -1259.1392167224028,			     	  
+    -1259.1392167224028,
       771.32342877765313,
      -176.61502916214059,
        12.507343278686905,
@@ -886,7 +886,7 @@ fun gamma(d: Double): Double {
     return Math.sqrt(2.0 * Math.PI) * Math.pow(t, dd + 0.5) * Math.exp(-t) * a
 }
 
-fun lGamma(d: Double) = Math.log(gamma(d)) 
+fun lGamma(d: Double) = Math.log(gamma(d))
 
 fun simpson(a: Double, b: Double, n: Int, f: Func): Double {
     val h = (b - a) / n
@@ -897,11 +897,11 @@ fun simpson(a: Double, b: Double, n: Int, f: Func): Double {
     }
     return sum * h
 }
-   
+
 fun p2Tail(da1: DoubleArray, da2: DoubleArray): Double {
     val nu = degreesFreedom(da1, da2)
     val t = welch(da1, da2)
-    val g = Math.exp(lGamma(nu / 2.0) + lGamma(0.5) - lGamma(nu / 2.0 + 0.5)) 
+    val g = Math.exp(lGamma(nu / 2.0) + lGamma(0.5) - lGamma(nu / 2.0 + 0.5))
     val b = nu / (t * t + nu)
     val f: Func = { r ->  Math.pow(r, nu / 2.0 - 1.0) / Math.sqrt(1.0 - r) }
     return simpson(0.0, b, 10000, f) / g   // n = 10000 seems more than enough here
@@ -909,24 +909,24 @@ fun p2Tail(da1: DoubleArray, da2: DoubleArray): Double {
 
 fun main(args: Array<String>) {
     val da1 = doubleArrayOf(
-        27.5, 21.0, 19.0, 23.6, 17.0, 17.9, 16.9, 20.1, 21.9, 22.6, 
+        27.5, 21.0, 19.0, 23.6, 17.0, 17.9, 16.9, 20.1, 21.9, 22.6,
         23.1, 19.6, 19.0, 21.7, 21.4
     )
     val da2 = doubleArrayOf(
-        27.1, 22.0, 20.8, 23.4, 23.4, 23.5, 25.8, 22.0, 24.8, 20.2, 
+        27.1, 22.0, 20.8, 23.4, 23.4, 23.5, 25.8, 22.0, 24.8, 20.2,
         21.9, 22.1, 22.9, 20.5, 24.4
     )
     val da3 = doubleArrayOf(
         17.2, 20.9, 22.6, 18.1, 21.7, 21.4, 23.5, 24.2, 14.7, 21.8
-    ) 
-    val da4 = doubleArrayOf( 
-        21.5, 22.8, 21.0, 23.0, 21.6, 23.6, 22.5, 20.7, 23.4, 21.8, 
+    )
+    val da4 = doubleArrayOf(
+        21.5, 22.8, 21.0, 23.0, 21.6, 23.6, 22.5, 20.7, 23.4, 21.8,
         20.7, 21.7, 21.5, 22.5, 23.6, 21.5, 22.5, 23.5, 21.5, 21.8
     )
     val da5 = doubleArrayOf(
         19.8, 20.4, 19.6, 17.8, 18.5, 18.9, 18.3, 18.9, 19.5, 22.0
     )
-    val da6 = doubleArrayOf(       
+    val da6 = doubleArrayOf(
         28.2, 26.6, 20.1, 23.3, 25.2, 22.1, 17.7, 27.6, 20.6, 13.7,
         23.2, 17.5, 20.6, 18.0, 23.9, 21.6, 24.3, 20.4, 24.0, 13.2
     )
@@ -935,7 +935,7 @@ fun main(args: Array<String>) {
 
     val x = doubleArrayOf(3.0, 4.0, 1.0, 2.1)
     val y = doubleArrayOf(490.2, 340.0, 433.9)
-       
+
     val f = "%.6f"
     println(f.format(p2Tail(da1, da2)))
     println(f.format(p2Tail(da3, da4)))
@@ -1004,7 +1004,7 @@ Welch2([3,4,1,2.1], [490.2,340,433.9])
 ## Perl
 
 
-###  Using Math::AnyNum 
+###  Using Math::AnyNum
 
 Uses Math::AnyNum for gamma and pi.  It is possible to use some other modules (e.g. Math::Cephes) if Math::AnyNum has problematic dependencies.
 {{trans|Sidef}}
@@ -1518,7 +1518,7 @@ cumulative error is 5.30131e-15
 function mean(sequence a)
     return sum(a) / length(a)
 end function
- 
+
 function sv(sequence a)
     integer la = length(a)
     atom m := mean(a),
@@ -1529,13 +1529,13 @@ function sv(sequence a)
     end for
     return tot / (la-1)
 end function
- 
+
 function welch(sequence a, b)
     integer la = length(a),
             lb = length(b)
     return (mean(a) - mean(b)) / sqrt(sv(a)/la+sv(b)/lb)
 end function
- 
+
 function dof(sequence a, b)
     integer la = length(a),
             lb = length(b)
@@ -1545,7 +1545,7 @@ function dof(sequence a, b)
     return n * n / (sva*sva/(la*la*(la-1)) +
                     svb*svb/(lb*lb*(lb-1)))
 end function
- 
+
 function f(atom r, v)
     return power(r, v/2-1) / sqrt(1-r)
 end function
@@ -1568,9 +1568,9 @@ function simpson0(integer n, atom high, v)
 end function
 
 constant p = {
-                0.99999999999980993, 
+                0.99999999999980993,
               676.5203681218851,
-            -1259.1392167224028,                                  
+            -1259.1392167224028,
               771.32342877765313,
              -176.61502916214059,
                12.507343278686905,
@@ -1591,11 +1591,11 @@ function gamma(atom d)
     for i=2 to length(p) do a += p[i] / (dd + i - 1) end for
     return sqrt(2*PI) * power(t, dd + 0.5) * exp(-t) * a
 end function
- 
+
 function lGamma(atom d)
-    return log(gamma(d)) 
+    return log(gamma(d))
 end function
- 
+
 function pValue(sequence ab)
     sequence {a, b} = ab
     atom v := dof(a, b),
@@ -1617,7 +1617,7 @@ constant tests = {{{27.5, 21.0, 19.0, 23.6, 17.0, 17.9, 16.9, 20.1, 21.9, 22.6, 
                   {{3.0, 4.0, 1.0, 2.1},
                    {490.2, 340.0, 433.9}}
                  }
- 
+
 for i=1 to length(tests) do
     ?pValue(tests[i])
 end for
@@ -1642,20 +1642,20 @@ using gamma() from [[Gamma_function#Phix]] (the one from above is probably also 
 
 ```Phix
 function lgamma(atom d)
-    return log(gamma(d)) 
+    return log(gamma(d))
 end function
 
 function betain(atom x, p, q)
     if p<=0 or q<=0 or x<0 or x>1 then ?9/0 end if
     if x == 0 or x == 1 then return x end if
- 
+
     atom acu = 1e-15,
          lnbeta = lgamma(p) + lgamma(q) - lgamma(p + q),
          psq = p + q, cx = 1-x
     bool indx = (p<psq*x)
     if indx then
         {cx,x,p,q} = {x,1-x,q,p}
-    end if 
+    end if
 
     atom term = 1,
          ai = 1,
@@ -1663,12 +1663,12 @@ function betain(atom x, p, q)
          ns = floor(q + cx*psq),
          rx = iff(ns=0?x:x/cx),
          temp = q - ai
- 
+
     while true do
         term *= temp * rx / (p + ai)
         val += term
         temp = abs(term)
- 
+
         if temp<=acu and temp<=acu*val then
             val *= exp(p*log(x) + (q-1)*log(cx) - lnbeta) / p
             return iff(indx?1-val:val)
@@ -1782,7 +1782,7 @@ welch_ttest(np.array([3.0, 4.0, 1.0, 2.1]), np.array([490.2, 340.0, 433.9]))
 ```
 
 
-###  Using betain from AS 63 
+###  Using betain from AS 63
 
 First, the implementation of betain (translated from the Stata program in the discussion page). The original Fortran code is under copyrighted by the Royal Statistical Society. The C translation is under GPL, written by John Burkardt. The exact statement of the RSS license is unclear.
 
@@ -1793,13 +1793,13 @@ import math
 def betain(x, p, q):
     if p <= 0 or q <= 0 or x < 0 or x > 1:
         raise ValueError
-        
+
     if x == 0 or x == 1:
         return x
-        
+
     acu = 1e-15
     lnbeta = math.lgamma(p) + math.lgamma(q) - math.lgamma(p + q)
-    
+
     psq = p + q
     if p < psq * x:
         xx = 1 - x
@@ -1813,23 +1813,23 @@ def betain(x, p, q):
         pp = p
         qq = q
         indx = False
-        
+
     term = ai = value = 1
     ns = math.floor(qq + cx * psq)
     rx = xx / cx
     temp = qq - ai
     if ns == 0:
         rx = xx
-        
+
     while True:
         term *= temp * rx / (pp + ai)
         value += term
         temp = abs(term)
-        
+
         if temp <= acu and temp <= acu * value:
             value *= math.exp(pp * math.log(xx) + (qq - 1) * math.log(cx) - lnbeta) / pp
             return 1 - value if indx else value
-            
+
         ai += 1
         ns -= 1
         if ns >= 0:
@@ -1853,17 +1853,17 @@ def welch_ttest(a1, a2):
     n2 = len(a2)
     if n1 <= 1 or n2 <= 1:
         raise ValueError
-    
+
     mean1 = sum(a1) / n1
     mean2 = sum(a2) / n2
-    
+
     var1 = sum((x - mean1)**2 for x in a1) / (n1 - 1)
     var2 = sum((x - mean2)**2 for x in a2) / (n2 - 1)
-    
+
     t = (mean1 - mean2) / math.sqrt(var1 / n1 + var2 / n2)
     df = (var1 / n1 + var2 / n2)**2 / (var1**2 / (n1**2 * (n1 - 1)) + var2**2 / (n2**2 * (n2 - 1)))
     p = betain(df / (t**2 + df), df / 2, 1 / 2)
-    
+
     return t, df, p
 ```
 
@@ -1910,7 +1910,7 @@ s1<- c(1.0/15,10.0/62.0);
 s2<- c(1.0/10,2/50.0);
 z1<- c(9/23.0,21/45.0,0/38.0);
 z2<- c(0/44.0,42/94.0,0/22.0);
- 
+
 results <- t.test(d1,d2, alternative="two.sided", var.equal=FALSE)
 printf("%.15g\n", results$p.value);
 results <- t.test(d3,d4, alternative="two.sided", var.equal=FALSE)
@@ -1964,18 +1964,18 @@ The output here is used to compare against C's output above.
   (define N2 (sequence-length S2))
   (define σ²/sz1 (/ σ²1 N1))
   (define σ²/sz2 (/ σ²2 N2))
-  
+
   (define degrees-of-freedom
     (/ (sqr (+ σ²/sz1 σ²/sz2))
        (+ (/ (sqr σ²1) (* (sqr N1) (sub1 N1)))
           (/ (sqr σ²2) (* (sqr N2) (sub1 N2))))))
-  
+
   (define a (/ degrees-of-freedom 2))
   (define a-1 (sub1 a))
   (define x (let ((welch-t-statistic (/ (- (mean S1) (mean S2)) (sqrt (+ σ²/sz1 σ²/sz2)))))
               (/ degrees-of-freedom (+ (sqr welch-t-statistic) degrees-of-freedom))))
   (define h (/ x n))
-  
+
   (/ (* (/ h 6)
         (+ (* (expt x a-1)
               (expt (- 1 x) -1/2))
@@ -1990,18 +1990,18 @@ The output here is used to compare against C's output above.
   (list
    (p-value (list 27.5 21.0 19.0 23.6 17.0 17.9 16.9 20.1 21.9 22.6 23.1 19.6 19.0 21.7 21.4)
             (list 27.1 22.0 20.8 23.4 23.4 23.5 25.8 22.0 24.8 20.2 21.9 22.1 22.9 20.5 24.4))
-   
+
    (p-value (list 17.2 20.9 22.6 18.1 21.7 21.4 23.5 24.2 14.7 21.8)
             (list 21.5 22.8 21.0 23.0 21.6 23.6 22.5 20.7 23.4 21.8
                   20.7 21.7 21.5 22.5 23.6 21.5 22.5 23.5 21.5 21.8))
-   
+
    (p-value (list 19.8 20.4 19.6 17.8 18.5 18.9 18.3 18.9 19.5 22.0)
             (list 28.2 26.6 20.1 23.3 25.2 22.1 17.7 27.6 20.6 13.7
                   23.2 17.5 20.6 18.0 23.9 21.6 24.3 20.4 24.0 13.2))
-   
+
    (p-value (list 30.02 29.99 30.11 29.97 30.01 29.99)
             (list 29.89 29.93 29.72 29.98 30.02 29.98))
-   
+
    (p-value (list 3.0 4.0 1.0 2.1)
             (list 490.2 340.0 433.9))))
 ```
@@ -2435,7 +2435,7 @@ df = (v1/n1+v2/n2)^2/(v1^2/(n1^2*(n1-1))+v2^2/(n2^2*(n2-1)));
 
 ```txt
  ans  =
- 
+
   - 9.5594977    2.0008523    0.0107516
 ```
 
@@ -2651,13 +2651,13 @@ foreach {left right} {
 
     { 17.2 20.9 22.6 18.1 21.7 21.4 23.5 24.2 14.7 21.8 }
     { 21.5 22.8 21.0 23.0 21.6 23.6 22.5 20.7 23.4 21.8 20.7 21.7 21.5 22.5 23.6 21.5 22.5 23.5 21.5 21.8 }
- 
+
     { 19.8 20.4 19.6 17.8 18.5 18.9 18.3 18.9 19.5 22.0 }
     { 28.2 26.6 20.1 23.3 25.2 22.1 17.7 27.6 20.6 13.7 23.2 17.5 20.6 18.0 23.9 21.6 24.3 20.4 24.0 13.2 }
- 
+
     { 30.02 29.99 30.11 29.97 30.01 29.99 }
     { 29.89 29.93 29.72 29.98 30.02 29.98 }
- 
+
     { 3.0 4.0 1.0 2.1 }
     { 490.2 340.0 433.9 }
 } {
@@ -2716,7 +2716,7 @@ fcn calculate_Pvalue(array1,array2){
       sum1+=((h*i + h/2.0).pow(a - 1))/(1.0 - (h*i + h/2.0)).sqrt();
       sum2+=((h*i).pow(a - 1))/(1.0 - h*i).sqrt();
    }
-   return_value:=((h/6.0)*( x.pow(a - 1)/(1.0 - x).sqrt() + 
+   return_value:=((h/6.0)*( x.pow(a - 1)/(1.0 - x).sqrt() +
       4.0*sum1 + 2.0*sum2) ) /
       ((0.0).e.pow(lngammal(a) + 0.57236494292470009 - lngammal(a + 0.5)));
 
@@ -2729,7 +2729,7 @@ fcn lngammal(xx){
       24.01409824083091,    -1.231739572450155,
       0.1208650973866179e-2,-0.5395239384953e-5
    );
- 
+
    y:=x:=xx;
    tmp:=x + 5.5 - (x + 0.5) * (x + 5.5).log();
    ser:=1.000000000190015;

@@ -12,15 +12,15 @@ tags = []
 
 {{task|Arithmetic operations}}
 
-Number base conversion is when you express a stored integer in an integer base, such as in octal (base 8) or binary (base 2). It also is involved when you take a string representing a number in a given base and convert it to the stored integer form. Normally, a stored integer is in binary, but that's typically invisible to the user, who normally enters or sees stored integers as decimal.  
+Number base conversion is when you express a stored integer in an integer base, such as in octal (base 8) or binary (base 2). It also is involved when you take a string representing a number in a given base and convert it to the stored integer form. Normally, a stored integer is in binary, but that's typically invisible to the user, who normally enters or sees stored integers as decimal.
 
 
 ;Task:
-Write a function (or identify the built-in function) which is passed a non-negative integer to convert, and another integer representing the base. 
+Write a function (or identify the built-in function) which is passed a non-negative integer to convert, and another integer representing the base.
 
-It should return a string containing the digits of the resulting number, without leading zeros except for the number   '''0'''   itself. 
+It should return a string containing the digits of the resulting number, without leading zeros except for the number   '''0'''   itself.
 
-For the digits beyond 9, one should use the lowercase English alphabet, where the digit   '''a''' = 9+1,   '''b''' = a+1,   etc. 
+For the digits beyond 9, one should use the lowercase English alphabet, where the digit   '''a''' = 9+1,   '''b''' = a+1,   etc.
 
 For example:   the decimal number   '''26'''   expressed in base   '''16'''   would be   '''1a'''.
 
@@ -89,7 +89,7 @@ procedure Number_Base_Conversion is
    subtype Base_Type is Integer range 2..Max_Base;
    Num_Digits : constant String := "0123456789abcdefghijklmnopqrstuvwxyz";
    Invalid_Digit : exception;
-   
+
    function To_Decimal(Value : String; Base : Base_Type) return Integer is
       use Ada.Strings.Fixed;
       Result : Integer := 0;
@@ -100,13 +100,13 @@ procedure Number_Base_Conversion is
          Decimal_Value := Index(Num_Digits, Value(I..I)) - 1;
          if Decimal_Value < 0 then
             raise Invalid_Digit;
-         end if; 
+         end if;
          Result := Result + (Base**Radix_Offset * Decimal_Value);
          Radix_Offset := Radix_Offset + 1;
       end loop;
       return Result;
    end To_Decimal;
-   
+
    function To_Base(Value : Natural; Base : Base_Type) return String is
       use Ada.Strings.Unbounded;
       Result : Unbounded_String := Null_Unbounded_String;
@@ -129,7 +129,7 @@ procedure Number_Base_Conversion is
       end loop;
       return To_String(Result);
    end To_Base;
-   
+
 begin
    Put_Line("26 converted to base 16 is " & To_Base(26, 16));
    Put_line("1a (base 16) is decimal" & Integer'image(To_Decimal("1a", 16)));
@@ -166,9 +166,9 @@ o_byte('\n');
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 {{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
-The ''formatted transput'' in '''ALGOL 68''' uses the '''format''' type ('''mode''').  
+The ''formatted transput'' in '''ALGOL 68''' uses the '''format''' type ('''mode''').
 This '''format''' type has many similarities with modern ''regular expressions''
-and can be used to convert '''string''' patterns to and from many of the 
+and can be used to convert '''string''' patterns to and from many of the
 built in types ('''mode'''s) in ALGOL 68.  Here is an example converting
 a numbers base.
 
@@ -179,7 +179,7 @@ BITS to bits;
 
 FORMAT hex repr = $n(base)r2d$;
 
-FILE f; STRING str; 
+FILE f; STRING str;
 
 associate(f, str);
 putf(f, (hex repr, BIN from dec));
@@ -199,7 +199,7 @@ Int:         +26
 
 ```
 
-Note that the only conversions "officially" available are for the bases 2r, 4r, 8r 
+Note that the only conversions "officially" available are for the bases 2r, 4r, 8r
 and 16r.  But [[ALGOL 68G]] allows formatting for all numbers in the range 2r to 16r.
 
 
@@ -232,15 +232,15 @@ PROC base n = (INT num, base)STRING: (
 
 PROC unsigned int = (STRING repr, INT base)INT:
   IF UPB repr < LWB repr THEN 0 ELSE
-    INT pos; 
-    IF NOT char in string(repr[UPB repr], pos, numeric alpha) THEN 
-      raise value error("CHAR """+repr[UPB repr]+""" not valid") 
+    INT pos;
+    IF NOT char in string(repr[UPB repr], pos, numeric alpha) THEN
+      raise value error("CHAR """+repr[UPB repr]+""" not valid")
     FI;
     unsigned int(repr[:UPB repr-1], base) * base + pos - 1
   FI
 ;
 
-PROC int = (STRING repr, INT base)INT: 
+PROC int = (STRING repr, INT base)INT:
   ( repr[LWB repr]="-" | -unsigned int(repr[LWB repr + 1:], base) | unsigned int(repr, base) );
 
 []INT test = (-256, -255, -26, -25, 0, 25, 26, 255, 256);
@@ -367,7 +367,7 @@ end toBase
 -- inBaseDigits :: String -> Int -> [String]
 on inBaseDigits(strDigits, n)
     set intBase to length of strDigits
-    
+
     script nextDigit
         on |λ|(residue)
             set {divided, remainder} to quotRem(residue, intBase)
@@ -376,10 +376,10 @@ on inBaseDigits(strDigits, n)
             else
                 {nothing:true}
             end if
-            
+
         end |λ|
     end script
-    
+
     reverse of unfoldr(nextDigit, n) as string
 end inBaseDigits
 
@@ -403,7 +403,7 @@ on run
                 {upperHex:inUpperHex(x), dgDecimal:inDevanagariDecimal(x)}}
         end |λ|
     end script
-    
+
     map(result, [255, 240])
 end run
 
@@ -440,7 +440,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -456,7 +456,7 @@ end mReturn
 {{Out}}
 
 ```AppleScript
-{{{binary:"11111111", octal:"377", hex:"ff"}, {upperHex:"FF", dgDecimal:"२५५"}}, 
+{{{binary:"11111111", octal:"377", hex:"ff"}, {upperHex:"FF", dgDecimal:"२५५"}},
 {{binary:"11110000", octal:"360", hex:"f0"}, {upperHex:"F0", dgDecimal:"२४०"}}}
 ```
 
@@ -484,7 +484,7 @@ parse(number, base)
 {
   result = 0
   pos := StrLen(number) - 1
-  Loop, Parse, number 
+  Loop, Parse, number
   {
     result := ((base ** pos) * A_LoopField) + result
     base -= 1
@@ -563,7 +563,7 @@ BEGIN {
       PRINT "17f (base 16) -> " ;FNfrombase("17f", 16) " (decimal)"
       PRINT "101111111 (base 2) -> " ;FNfrombase("101111111", 2) " (decimal)"
       END
-      
+
       DEF FNtobase(N%, B%)
       LOCAL D%,A$
       REPEAT
@@ -572,7 +572,7 @@ BEGIN {
         A$ = CHR$(48 + D% - 39*(D%>9)) + A$
       UNTIL N% = FALSE
       =A$
-      
+
       DEF FNfrombase(A$, B%)
       LOCAL N%
       REPEAT
@@ -606,7 +606,7 @@ BEGIN {
 
 ```bracmat
   ( display
-  =   
+  =
     .   !arg:<10
       | !arg:<36&chr$(asc$a+!arg+-10)
       | "Base too big"
@@ -635,8 +635,8 @@ BEGIN {
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <string.h>
 #include <stdio.h>
 #include <stdint.h>
@@ -653,7 +653,7 @@ char *to_base(int64_t num, int base)
 		return 0;
 	}
 
-	/* safe against most negative integer */ 
+	/* safe against most negative integer */
 	n = ((neg = num < 0)) ? (~num) + 1 : num;
 
 	do { buf[len++] = tbl[n % base]; } while(n /= base);
@@ -697,8 +697,8 @@ output
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <cstdlib>
 #include <algorithm>
 #include <cassert>
@@ -709,7 +709,7 @@ std::string to_base(unsigned long num, int base)
 {
   if (num == 0)
     return "0";
-  
+
   std::string result;
   while (num > 0) {
     std::ldiv_t temp = std::div(num, (long)base);
@@ -809,10 +809,10 @@ public static class BaseConverter {
     /// <param name="n">The number to convert.</param>
     /// <param name="b">The base number (between 2 and 36).</param>
     public static string longToString(long n, int b) {
-        
+
         // This uses StringBuilder, so it only works with .NET 4.0 or higher. For earlier versions, the StringBuilder
         // can be replaced with simple string concatenation.
-        
+
         if ( b < 2 || b > 36 )
             throw new ArgumentException("Base must be between 2 and 36", "b");
 
@@ -823,39 +823,39 @@ public static class BaseConverter {
 
         checked {
             long longBase = b;
-            
+
             StringBuilder sb = new StringBuilder();
-            
+
             if ( n < 0 ) {
                 // Negative numbers
                 n = -n;
                 sb.Append('-');
             }
-            
+
             long div = 1;
             while ( n / div >= b )
                 // Continue multiplying the dividend by the base until it reaches the greatest power of
                 // the base which is less than or equal to the number.
                 div *= b;
-            
+
             while ( true ) {
                 byte digit = (byte) (n / div);
-            
+
                 if ( digit < 10 )
                     // Numeric character (0x30 = '0')
                     sb.Append((char) (digit + 0x30));
                 else
                     // Alphabetic character (for digits > 10) (0x61 = 'a')
                     sb.Append((char) (digit + 0x57));  // 0x61 - 10
-            
+
                 if ( div == 1 )
                     // Stop when the dividend reaches 1
                     break;
-            
+
                 n %= div;
                 div /= b;
             }
-            
+
             return sb.ToString();
         }
 
@@ -892,17 +892,17 @@ ClassMethod ConvertBase(pStr As %String = "", pFrom As %Integer = 10, pTo As %In
 {
 	// some initialisation
 	If pBaseStr="" Set pBaseStr="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-	
+
 	// check input values
 	If pFrom=10 Set pStr=$Number(pStr, "i", 0) If pStr="" Quit ""
 	Set pFrom=$Number(pFrom, "i", 2, 94) If pFrom="" Quit ""
 	Set pTo=$Number(pTo, "i", 2, 94) If pTo="" Quit ""
 	Set pLen=$Number(pLen, "i", 0, 32) If pLen="" Quit ""
-	
+
 	// does base number exceed base string?
 	If pFrom>$Length(pBaseStr) Quit ""
 	If pTo>$Length(pBaseStr) Quit ""
-	
+
 	// allow for upper/lowercase values
 	If pTo=10 {
 		If $Match(pStr, "^[0-9a-z]+$"), $Match($Extract(pBaseStr, 1, pFrom), "^[0-9A-Z]+$") {
@@ -912,7 +912,7 @@ ClassMethod ConvertBase(pStr As %String = "", pFrom As %Integer = 10, pTo As %In
 			Set pStr=$ZConvert(pStr, "L")
 		}
 	}
-	
+
 	// do the conversion
 	If pFrom=pTo {
 		Set pStr=pStr
@@ -923,7 +923,7 @@ ClassMethod ConvertBase(pStr As %String = "", pFrom As %Integer = 10, pTo As %In
 	} Else {
 		Set pStr=..ConvertBase10ToN(..ConvertBaseNTo10(pStr, pFrom, pBaseStr), pTo, pBaseStr)
 	}
-	
+
 	// return value
 	If pLen=0 Quit pStr
 	If pTo'=10 Quit ..PadStr(pStr, pLen, $Extract(pBaseStr))
@@ -1206,11 +1206,11 @@ function to_base(integer i, integer base)
         end if
         i = floor(i/base)
     end while
-    
+
     if length(s) = 0 then
         s = "0"
     end if
-    
+
     return s
 end function
 
@@ -1274,7 +1274,7 @@ $ff .   \ 255
 MODULE Conversion
   IMPLICIT NONE
   CHARACTER(36) :: alphanum = "0123456789abcdefghijklmnopqrstuvwxyz"
- 
+
   CONTAINS
 
   FUNCTION ToDecimal(base, instr)
@@ -1314,7 +1314,7 @@ PROGRAM Base_Convert
   USE Conversion
 
   WRITE (*,*) ToDecimal(16, "1a")
-  WRITE (*,*) ToBase(16, 26)     
+  WRITE (*,*) ToBase(16, 26)
 
 END PROGRAM
 ```
@@ -1331,9 +1331,9 @@ Function min(x As Integer, y As Integer) As Integer
   Return IIf(x < y, x, y)
 End Function
 
-Function convertToBase (n As UInteger, b As UInteger) As String  
+Function convertToBase (n As UInteger, b As UInteger) As String
   If n < 2 OrElse b < 2 OrElse b = 10 OrElse b > 36 Then Return Str(n)
-  Dim result As String = "" 
+  Dim result As String = ""
   Dim digit As Integer
   While n > 0
     digit = n Mod b
@@ -1371,10 +1371,10 @@ Dim s As String
 
 For b As UInteger = 2 To 36
   Print "36 base ";
-  Print Using "##"; b; 
+  Print Using "##"; b;
   s = ConvertToBase(36, b)
   Print " = "; s; Tab(21); " -> base ";
-  Print Using "##"; b; 
+  Print Using "##"; b;
   Print " = "; convertToDecimal(s, b)
 Next
 
@@ -1518,7 +1518,7 @@ def numString = '101'
     def value = radixParse(numString, radix)
     assert value == radix**2 + 1
     printf ("         %3s (%2d) == %4d (10)\n", numString, radix, value)
-    
+
     def valM2str = radixFormat(value - 2, radix)
     def biggestDigit = radixFormat(radix - 1, radix)
     assert valM2str == biggestDigit + biggestDigit
@@ -1773,12 +1773,12 @@ SUBROUTINE DectoBase(decimal, string, base)
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-Icon and Unicon natively take integers in radix form for bases 2 through 36.  There is no need to convert to integer as the value will be coerced when needed.  However, a conversion routine is needed to convert integers back into radix form. 
+Icon and Unicon natively take integers in radix form for bases 2 through 36.  There is no need to convert to integer as the value will be coerced when needed.  However, a conversion routine is needed to convert integers back into radix form.
 
 
 ```Icon
 procedure main()
-   every ( ns := "16r5a" | "-12r1a" ) & 
+   every ( ns := "16r5a" | "-12r1a" ) &
          ( b := 8 | 12 | 16 ) do {
          ns2 := convert(n := numeric(ns),b)
          printf("ns=%s -> n=%d -> %s\n",ns,n,ns2)
@@ -1797,7 +1797,7 @@ initial digits := &digits || &lcase
    if b = 10 then return i
    else {
       p := (s := "", (i := -(0 > i),"-")|"") || b || "r" # prefix/setup
-      until i = 0 & *s > 0 do  
+      until i = 0 & *s > 0 do
          s ||:= digits[1 + 1( i % b, i /:= b)]
 
       return p || reverse(s)
@@ -1806,8 +1806,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
 There are several conversion routines for bases in the IPL, however, none returns the input radix form.
 
 Output:
@@ -1858,7 +1858,7 @@ These may be combined so the conversion performed is derived from the type of ar
 
 ```j
    base=: baseNtoL :: baseLtoN
-   
+
    16 base 'aa'
 170
    16 base 170
@@ -2191,7 +2191,7 @@ fun convertToBase(n: Int, b: Int): String {
     while (nn > 0) {
         digit = nn % b
         if (digit < 10) sb.append(digit)
-        else            sb.append((digit + 87).toChar()) 
+        else            sb.append((digit + 87).toChar())
         nn /= b
     }
     return sb.reverse().toString()
@@ -2215,7 +2215,7 @@ fun convertToDecimal(s: String, b: Int): Int {
         multiplier *= b
     }
     return result
-}     
+}
 
 fun main(args: Array<String>) {
     for (b in 2..36) {
@@ -2331,7 +2331,7 @@ Converting decimal numbers 26 and 3000 in LFE, using some different mechanisms:
             toDecimal =toDecimal *base +instr( alphanum$, mid$( s$, i, 1), 1) -1
         next i
     end function
- 
+
 ```
 
 
@@ -2401,7 +2401,7 @@ end proc:
 find_digit := proc(char)
 	if (StringTools:-HasAlpha(char)) then
 		return (StringTools:-Ord(char) - 87);
-	else 
+	else
 		return (StringTools:-Ord(char) - 48);
 	end if;
 end proc:
@@ -2645,7 +2645,7 @@ let basen_of_int n d =
 
  # basen_of_int 16 26 ;;
  - : string = "1a"
- 
+
  # int_of_basen 16 "1a" ;;
  - : int = 26
 
@@ -2744,7 +2744,7 @@ const
 function ToDecimal(base: integer; instring: string): integer;
   var
     inlength, i, n: integer;
-  begin 
+  begin
     ToDecimal := 0;
     inlength := length(instring);
     for i := 1 to inlength do
@@ -2897,14 +2897,14 @@ sequence s = ""
         s = prepend(s,c)
         i = floor(i/base)
     end while
- 
+
     if length(s) = 0 then
         s = "0"
     end if
- 
+
     return s
 end function
- 
+
 function from_base(string s, integer base)
 integer res = 0, c
     for i=1 to length(s) do
@@ -3072,26 +3072,26 @@ enddefine;
 ```PureBasic
 Global alphanum$ = "0123456789abcdefghijklmnopqrstuvwxyz" ;36 digits
 #maxIntegerBitSize = SizeOf(Integer) * 8
- 
+
 Procedure toDecimal(base, s.s)
   Protected length, i, toDecimal
-  
+
   length = Len(s)
-  If length: toDecimal = FindString(alphanum$, Left(s, 1), 1) - 1: EndIf 
-  
+  If length: toDecimal = FindString(alphanum$, Left(s, 1), 1) - 1: EndIf
+
   For i = 2 To length
     toDecimal * base + FindString(alphanum$, Mid(s, i, 1), 1) - 1
   Next
   ProcedureReturn toDecimal
 EndProcedure
- 
+
 Procedure.s toBase(base, number)
-  Protected i, rem, toBase.s{#maxIntegerBitSize} = Space(#maxIntegerBitSize) 
-  
+  Protected i, rem, toBase.s{#maxIntegerBitSize} = Space(#maxIntegerBitSize)
+
   For i = #maxIntegerBitSize To 1 Step -1
     rem = number % base
     PokeC(@toBase + i - 1, PeekC(@alphanum$ + rem))
-    If number < base: Break: EndIf 
+    If number < base: Break: EndIf
     number / base
   Next
   ProcedureReturn LTrim(toBase)
@@ -3099,9 +3099,9 @@ EndProcedure
 
 If OpenConsole()
   PrintN( Str(toDecimal(16, "1a")) )
-  
+
   PrintN( toBase(16, 26) )
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -3130,8 +3130,8 @@ Converting from number to string is harder:
 ```python
 digits = "0123456789abcdefghijklmnopqrstuvwxyz"
 def baseN(num,b):
-   return (((num == 0) and  "0" ) 
-           or ( baseN(num // b, b).lstrip("0") 
+   return (((num == 0) and  "0" )
+           or ( baseN(num // b, b).lstrip("0")
                 + digits[num % b]))
 
 # alternatively:
@@ -3159,7 +3159,7 @@ s = baseN(k,16) # returns the string 1a
 int2str <- function(x, b) {
 	if(x==0) return("0")
 	if(x<0) return(paste0("-", base(-x,b)))
-	
+
 	map <- c(as.character(0:9), letters)
 	res <- ""
 	while (x>0) {
@@ -3338,18 +3338,18 @@ see "1a (base 16) -> " + dec("1a") + " (decimal)" + nl
 see "1A (base 16) -> " + dec("1A") + " (decimal)" + nl
 see "17f (base 16) -> " + dec("17f") + " (decimal)" + nl
 see "101111111 (base 2) -> " + bintodec("101111111") + " (decimal)" + nl
- 
-func tobase(nr, base) 
+
+func tobase(nr, base)
      binary = 0
-     i = 1  
-     while(nr != 0) 
+     i = 1
+     while(nr != 0)
            remainder = nr % base
            nr = floor(nr/base)
            binary= binary + (remainder*i)
            i = i*10
      end
      return string(binary)
- 
+
 func bintodec(bin)
      binsum = 0
      for n=1  to len(bin)
@@ -3384,7 +3384,7 @@ This converts strings from any base to any base up to base 36.
 ```ruby
 class String
   def convert_base(from, to)
-    Integer(self, from).to_s(to)  
+    Integer(self, from).to_s(to)
     # self.to_i(from).to_s(to) #if you don't want exceptions
   end
 end
@@ -3410,11 +3410,11 @@ html "<table border=1><tr bgcolor=wheat align=center><td>Decimal</td><td>To Base
 for i =1 to 10
   RandNum     =    int(100 * rnd(1))
   base        = 2 +int(35  * rnd(1))
- 
+
   html "<tr align=right><td>";using("###", RandNum);"</td><td>";using("###", base);"</td><td>";toBase$(base,RandNum);"</td><td>";toDecimal( base, toBase$( base, RandNum));"</td></tr>"
 next i
 html "</table>"
-end 
+end
 
 function toBase$(b,n) '   b=base n=nmber
   toBase$             =""
@@ -3424,7 +3424,7 @@ function toBase$(b,n) '   b=base n=nmber
     if n <1 then exit for
   next i
 end function
- 
+
 function toDecimal( b, s$)   '   scring number to decimal
   toDecimal   =0
   for i =1 to len( s$)
@@ -3473,7 +3473,7 @@ for corresponding purposes.
 ```seed7
 $ include "seed7_05.s7i";
   include "bigint.s7i";
- 
+
 const proc: main is func
   begin
     writeln(60272032366_ radix 36);      # Convert bigInteger to string
@@ -3500,7 +3500,7 @@ code
 
 ## Sidef
 
-Built-in: 
+Built-in:
 
 ```ruby
 say 60272032366.base(36)    # convert number to string
@@ -3604,7 +3604,7 @@ println(String(26, radix: 16)) // prints "1a"
 ```
 
 
-Converting string to integer: 
+Converting string to integer:
 
 ```swift
 import Darwin
@@ -3646,7 +3646,7 @@ proc baseconvert::baseconvert {n basefrom baseto} {
     dec2base [base2dec $n $basefrom] $baseto
 }
 
-namespace import baseconvert::baseconvert 
+namespace import baseconvert::baseconvert
 baseconvert 12345 10 23 ;# ==> 107h
 baseconvert 107h 23 7   ;# ==> 50664
 baseconvert 50664 7 10  ;# ==> 12345
@@ -3657,7 +3657,7 @@ baseconvert 50664 7 10  ;# ==> 12345
 ## Ursala
 
 A function parameterized by the base b performs the conversion in each direction.
-Folding (=>), iteration (->), and reification (-:) operators among others are helpful. 
+Folding (=>), iteration (->), and reification (-:) operators among others are helpful.
 
 ```Ursala
 #import std
@@ -3676,7 +3676,7 @@ test_data = <1,2,15,32,100,65536,323498993>
 
 #cast %sLnLUL
 
-tests = 
+tests =
 
 <
    num_to_string32* test_data,
@@ -3729,7 +3729,7 @@ End Sub
 ```
 {{out}}
 ```txt
-26 decimal in base 16 is: 1a. Conversely, hexadecimal 1a in decimal is:  26 
+26 decimal in base 16 is: 1a. Conversely, hexadecimal 1a in decimal is:  26
 ```
 
 

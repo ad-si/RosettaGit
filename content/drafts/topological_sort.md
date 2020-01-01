@@ -11,19 +11,19 @@ tags = []
 +++
 
 {{task}}
-Given a mapping between items, and items they depend on, a [[wp:Topological sorting|topological sort]] orders items so that no item precedes an item it depends upon. 
+Given a mapping between items, and items they depend on, a [[wp:Topological sorting|topological sort]] orders items so that no item precedes an item it depends upon.
 
-The compiling of a library in the [[wp:VHDL|VHDL]] language has the constraint that a library must be compiled after any library it depends on. 
+The compiling of a library in the [[wp:VHDL|VHDL]] language has the constraint that a library must be compiled after any library it depends on.
 
-A tool exists that extracts library dependencies. 
+A tool exists that extracts library dependencies.
 
 
 ;Task:
 Write a function that will return a valid compile order of VHDL libraries from their dependencies.
 
-* Assume library names are single words. 
+* Assume library names are single words.
 * Items mentioned as only dependents, (sic), have no dependents of their own, but their order of compiling must be given.
-* Any self dependencies should be ignored. 
+* Any self dependencies should be ignored.
 * Any un-orderable dependencies should be flagged.
 
 
@@ -64,7 +64,7 @@ synopsys
 
 
 There are two popular algorithms for topological sorting:
-:*   Kahn's 1962 topological sort <ref> [[wp: topological sorting]] </ref> 
+:*   Kahn's 1962 topological sort <ref> [[wp: topological sorting]] </ref>
 :*   depth-first search <ref> [[wp: topological sorting]] </ref> <ref> Jason Sachs
 [http://www.embeddedrelated.com/showarticle/799.php "Ten little algorithms, part 4: topological sort"] </ref>
 
@@ -468,7 +468,7 @@ end Toposort;
 
 
 {{out}}
-Given the name of the file with the dependencies as the parameter, 
+Given the name of the file with the dependencies as the parameter,
 Toposort generates the following output:
 
 ```txt
@@ -512,7 +512,7 @@ There is no topological sorting -- the Graph is cyclic!
   =   A Z res module dependants todo done
     .   !arg:(?todo.?done)
       & ( areDone
-        =   
+        =
           .   !arg:
             |     !arg
                 :   ( %@
@@ -573,8 +573,8 @@ cycles:
 
 Parses a multiline string and show the compile order.  Note that four lines were added to the example input to form two separate cycles.  Code is a little ugly.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
@@ -716,7 +716,7 @@ int main()
 
 #include <map>
 #include <set>
- 
+
 template <typename Goal>
 class topological_sorter
 {
@@ -728,9 +728,9 @@ protected:
 		std::set<Goal>
 			dependents;
 	};
-	std::map<Goal, relations> 
-		map;	
-public:	
+	std::map<Goal, relations>
+		map;
+public:
 	void
 		add_goal(Goal const& goal)
 	{
@@ -799,48 +799,48 @@ public:
 		map.clear();
 	}
 };
- 
+
 /*
 	Example usage with text strings
 */
- 
+
 #include <fstream>
 #include <sstream>
 #include <iostream>
 #include <string>
 #include <vector>
- 
-using namespace 
+
+using namespace
 	std;
- 
+
 void
 	display_heading(string const& message)
 {
 	cout << endl << "~ " << message << " ~" << endl;
 }
-void 
+void
 	display_results(string const& input)
 {
 	topological_sorter<string>
 		sorter;
 	vector<string>
-		sorted, 
+		sorted,
 		unsortable;
-	stringstream 
+	stringstream
 		lines(input);
-	string 
+	string
 		line;
 	while(getline(lines, line))
 	{
-		stringstream 
+		stringstream
 			buffer(line);
-		string 
-			goal, 
+		string
+			goal,
 			dependency;
 		buffer >> goal;
 		sorter.add_goal(goal);
-		while(buffer >> dependency)         
-			sorter.add_dependency(goal, dependency);          
+		while(buffer >> dependency)
+			sorter.add_dependency(goal, dependency);
 	}
 	sorter.destructive_sort(sorted, unsortable);
 	if(sorted.size() == 0)
@@ -856,15 +856,15 @@ void
 		display_heading("Error: cyclic dependencies detected!");
 		for(auto const& goal : unsortable)
 			cout << goal << endl;
-	}	
+	}
 }
-int 
-	main(int argc, char** argv) 
-{  
+int
+	main(int argc, char** argv)
+{
 	if(argc == 1)
 	{
-		string 
-			example = 
+		string
+			example =
 		"des_system_lib   std synopsys std_cell_lib des_system_lib dw02 dw01 ramlib ieee\n"
 		"dw01             ieee dw01 dware gtech\n"
 		"dw02             ieee dw02 dware\n"
@@ -883,11 +883,11 @@ int
 		"cycle_21	  dw01 cycle_22 dw02 dw03\n"
 		"cycle_22	  cycle_21 dw01 dw04";
 		display_heading("Example: each line starts with a goal followed by it's dependencies");
-		cout << example << endl;	
+		cout << example << endl;
 		display_results(example);
 		display_heading("Enter lines of data (press enter when finished)");
 		string
-			line, 
+			line,
 			data;
 		while(getline(cin, line) && !line.empty())
 			data += line + '\n';
@@ -1412,7 +1412,7 @@ Clojure 1.1.0
 toposort = (targets) ->
   # targets is hash of sets, where keys are parent nodes and
   # where values are sets that contain nodes that must precede the parent
-  
+
   # Start by identifying obviously independent nodes
   independents = []
   do ->
@@ -1428,10 +1428,10 @@ toposort = (targets) ->
       for child of targets[k].v
         reverse_deps[child] ?= []
         reverse_deps[child].push k
-  
-  # Now be greedy--start with independent nodes, then start 
+
+  # Now be greedy--start with independent nodes, then start
   # breaking dependencies, and keep going as long as we still
-  # have independent nodes left.    
+  # have independent nodes left.
   result = []
   while independents.length > 0
     k = independents.pop()
@@ -1441,12 +1441,12 @@ toposort = (targets) ->
       if targets[parent].cnt == 0
         independents.push parent
         delete targets[parent]
-      
+
   # Show unresolvable dependencies
   for k of targets
     console.log "WARNING: node #{k} is part of cyclical dependency"
   result
-    
+
 parse_deps = ->
   # parse string data, remove self-deps, and fill in gaps
   #
@@ -1465,7 +1465,7 @@ parse_deps = ->
       continue if child == ''
       set_add targets[k], child unless child == k
       set_add deps, child
-  
+
   # make sure even leaf nodes are in targets
   for dep of deps.v
     if dep not of targets
@@ -1480,7 +1480,7 @@ set_add = (s, e) ->
   return if s.v[e]
   s.cnt += 1
   s.v[e] = true
-  
+
 set_remove = (s, e) ->
   return if !s.v[e]
   s.cnt -= 1
@@ -1501,10 +1501,10 @@ data =
   std_cell_lib:     "ieee std_cell_lib"
   synopsys:         ""
 
-  
+
 targets = parse_deps()
 console.log toposort targets
-    
+
 
 ```
 
@@ -1736,7 +1736,7 @@ def topoSort(data :Map[any, Set[any]]) {
     # Tables of nodes and edges
     def forwardEdges := [].asMap().diverge()
     def reverseCount := [].asMap().diverge()
-    
+
     def init(node) {
       reverseCount[node] := 0
       forwardEdges[node] := [].asSet().diverge()
@@ -1745,7 +1745,7 @@ def topoSort(data :Map[any, Set[any]]) {
         init(node)
         for dep in deps { init(dep) }
     }
-  
+
     # 'data' holds the dependencies. Compute the other direction.
     for node => deps in data {
         for dep ? (dep != node) in deps {
@@ -1759,9 +1759,9 @@ def topoSort(data :Map[any, Set[any]]) {
     for node => ==0 in reverseCount {
       ready.enqueue(node)
     }
-    
+
     var result := []
-    
+
     while (ready.optDequeue() =~ node :notNull) {
         result with= node
         for next in forwardEdges[node] {
@@ -1772,11 +1772,11 @@ def topoSort(data :Map[any, Set[any]]) {
         }
         forwardEdges.removeKey(node)
     }
-  
+
     if (forwardEdges.size().aboveZero()) {
         throw(`Topological sort failed: $forwardEdges remains`)
     }
-    
+
     return result
 }
 ```
@@ -1808,7 +1808,7 @@ println(topoSort(data))
 ```
 
 
-{{out}} 
+{{out}}
 <code>["std", "synopsys", "ieee", "dware", "gtech", "ramlib", "std_cell_lib", "dw02", "dw05", "dw06", "dw07", "dw01", "des_system_lib", "dw03", "dw04"]</code>
 
 
@@ -1830,9 +1830,9 @@ We use the low-level primitives of the 'graph' library to build the directed gra
 (dw05             dw05 ieee dware)
 (dw06             dw06 ieee dware)
 (dw07             ieee dware)
-(dware            ieee dware) 
+(dware            ieee dware)
 (gtech            ieee gtech)
-(ramlib           std ieee ) 
+(ramlib           std ieee )
 (std_cell_lib     ieee std_cell_lib)
 (synopsys         )))
 
@@ -1841,7 +1841,7 @@ We use the low-level primitives of the 'graph' library to build the directed gra
 ;;  a depends on b
 ;;  add arc (arrow) a --> b
 (lib 'graph.lib)
-(define (a->b  g a b) 
+(define (a->b  g a b)
 		(unless (equal? a b)
 		(graph-make-arc g (graph-make-vertex g a) (graph-make-vertex g b))))
 
@@ -1857,10 +1857,10 @@ Remove all vertices with in-degree = 0, until to one left. (in-degree = number o
 ```lisp
 
 ;; topological sort
-;; 
+;;
 ;; Complexity O (# of vertices + # of edges)
 
-(define (t-sort g) 
+(define (t-sort g)
 	(stack 'Z) ; vertices of d°(0)
 	(stack 'S) ; ordered result
 
@@ -1868,7 +1868,7 @@ Remove all vertices with in-degree = 0, until to one left. (in-degree = number o
 ;; push all vertices u such as d°(u) = 0
 	(for ((u g)) (mark u (graph-vertex-indegree g u))
 	             (when (zero? (mark? u)) (push 'Z u)))
-	            
+
 ;pop a d°(0) vertex u - add it to result
 ;decrement in-degree of all v vertices u->v
 ; if d°(v) = 0, push it
@@ -1879,10 +1879,10 @@ Remove all vertices with in-degree = 0, until to one left. (in-degree = number o
 			 (for ((v (graph-vertex-out g u)))
 				  (mark v (1- (mark? v)))
 				  (when (zero? (mark? v)) (push 'Z v)))))
-				 
+
 ;; finish
 		 (writeln 't-sort (map vertex-label (stack->list 'S)))
-		
+
 ;; check no one remaining
 		(for ((u g))
 		(unless (zero? (mark? u))
@@ -1900,14 +1900,14 @@ Remove all vertices with in-degree = 0, until to one left. (in-degree = number o
 (graph-print g)
 
 (t-sort g)
-→ t-sort     (std synopsys ieee dware dw02 dw05 dw06 dw07 gtech dw01 dw03 dw04 ramlib 
-             std_cell_lib des_system_lib)  
+→ t-sort     (std synopsys ieee dware dw02 dw05 dw06 dw07 gtech dw01 dw03 dw04 ramlib
+             std_cell_lib des_system_lib)
 
 ;; Error case
 ;; add dw01 -> dw04
 (t-sort g)
-t-sort     (std synopsys ieee dware dw02 dw05 dw06 dw07 gtech ramlib std_cell_lib)    
-⛔️ error: ♻️ t-sort:cyclic (dw04 dw01)	
+t-sort     (std synopsys ieee dware dw02 dw05 dw06 dw07 gtech ramlib std_cell_lib)
+⛔️ error: ♻️ t-sort:cyclic (dw04 dw01)
 
 ```
 
@@ -1934,12 +1934,12 @@ defmodule Topological do
       end)
     end
   end
-  
+
   defp print_path(l), do: IO.puts Enum.join(l, " -> ")
-  
+
   defp add_dependency(_g,l,l), do: :ok
   defp add_dependency(g,l,d) do
-    :digraph.add_vertex(g,d)   # noop if dependency already added                                                                                                                                                                                                                       
+    :digraph.add_vertex(g,d)   # noop if dependency already added
     :digraph.add_edge(g,d,l)   # Dependencies represented as an edge d -> l
   end
 end
@@ -2026,7 +2026,7 @@ main() ->
 top_sort(Library) ->
     G = digraph:new(),
     lists:foreach(fun ({L,Deps}) ->
-                          digraph:add_vertex(G,L), % noop if library already added                                                                                                                                                                                                    
+                          digraph:add_vertex(G,L), % noop if library already added
                           lists:foreach(fun (D) ->
                                                 add_dependency(G,L,D)
                                         end, Deps)
@@ -2055,7 +2055,7 @@ print_path(L) ->
 add_dependency(_G,_L,_L) ->
     ok;
 add_dependency(G,L,D) ->
-    digraph:add_vertex(G,D), % noop if dependency already added                                                                                                                                                                                                                       
+    digraph:add_vertex(G,D), % noop if dependency already added
     digraph:add_edge(G,D,L). % Dependencies represented as an edge D -> L
 
 ```
@@ -2074,7 +2074,7 @@ ok
 ```
 
 
-Erlang has a built in digraph library and datastructure. ''digraph_utils'' contains the ''top_sort'' function which provides a topological sort of the vertices or returns false if it's not possible (due to circular references). 
+Erlang has a built in digraph library and datastructure. ''digraph_utils'' contains the ''top_sort'' function which provides a topological sort of the vertices or returns false if it's not possible (due to circular references).
 The ''digraph'' module contains ''get_short_cycle'' which returns the shortest cycle involving a vertex.
 
 
@@ -2159,7 +2159,7 @@ variable nodes 0 nodes ! \ linked list of nodes
 
 : deps ( "name" "deps" <newline> -- )
     \ name is after deps.  Implementation: Define missing nodes, then
-    \ define a colon definition for 
+    \ define a colon definition for
     >in @ define-nodes >in !
     ' :noname ]] >processing [[ source >in @ /string evaluate ]] nodeps ; [[
     swap >body ! 0 parse 2drop ;
@@ -2211,7 +2211,7 @@ NL is the number of libraries to sort, ND the number of dependencies, one for ea
 Array IPOS is used internally by the routine, to maintain a list of positions of libraries in IORD.
 ''Output'' : IORD(1:NO) is the compile order, and IORD(NO+1:NL) contains unordered libraries.
 
-This implementation is not optimal: for each ''level'' of dependency (for example A -> B -> C counts as three levels), there is a loop through all dependencies in IDEP. 
+This implementation is not optimal: for each ''level'' of dependency (for example A -> B -> C counts as three levels), there is a loop through all dependencies in IDEP.
 It would be possible to optimize a bit, without changing the main idea, by first sorting IDEP according to first column, and using more temporary space, keeping track of where is located data in IDEP for each library (all dependencies of a same library being grouped).
 
 ```fortran
@@ -2317,43 +2317,43 @@ C SORT LIBRARIES ACCORDING TO DEPENDENCIES (TOPOLOGICAL SORT)
 ```txt
 
  COMPILE ORDER
- IEEE                
- STD                 
- SYNOPSYS            
- STD_CELL_LIB        
- RAMLIB              
- GTECH               
- DWARE               
- DW07                
- DW06                
- DW05                
- DW02                
+ IEEE
+ STD
+ SYNOPSYS
+ STD_CELL_LIB
+ RAMLIB
+ GTECH
+ DWARE
+ DW07
+ DW06
+ DW05
+ DW02
  UNORDERED LIBRARIES
- DW04                
- DW03                
- DW01                
- DES_SYSTEM_LIB      
+ DW04
+ DW03
+ DW01
+ DES_SYSTEM_LIB
 
 ```
 
 
 ### Modern Fortran
 
-A modern Fortran (95-2008) version of the TSORT subroutine is shown here (note that the IPOS array is not an input). 
+A modern Fortran (95-2008) version of the TSORT subroutine is shown here (note that the IPOS array is not an input).
 
 ```fortran
 subroutine tsort(nl,nd,idep,iord,no)
 
   implicit none
-  
+
   integer,intent(in) :: nl
   integer,intent(in) :: nd
   integer,dimension(nd,2),intent(in) :: idep
   integer,dimension(nl),intent(out) :: iord
   integer,intent(out) :: no
-  
+
   integer :: i,j,k,il,ir,ipl,ipr,ipos(nl)
-  
+
   do i=1,nl
     iord(i)=i
     ipos(i)=i
@@ -2388,31 +2388,31 @@ end subroutine tsort
 
 
 ```funl
-def topsort( graph ) =    
+def topsort( graph ) =
   val L = seq()
   val S = seq()
   val g = dict( graph )
-  
+
   for (v, es) <- g
     g(v) = seq( es )
 
   for (v, es) <- g if es.isEmpty()
     S.append( v )
-    
+
   while not S.isEmpty()
     val n = S.remove( 0 )
     L.append( n )
-    
+
     for (m, es) <- g if n in es
       if (es -= n).isEmpty()
         S.append( m )
-      
+
   for (v, es) <- g
     if not es.isEmpty()
       return None
-      
+
   Some( L.toList() )
-  
+
 dependencies = '''
   des_system_lib   std synopsys std_cell_lib des_system_lib dw02 dw01 ramlib ieee
   dw01             ieee dw01 dware gtech
@@ -2426,7 +2426,7 @@ dependencies = '''
   gtech            ieee gtech
   ramlib           std ieee
   std_cell_lib     ieee std_cell_lib
-  synopsys         
+  synopsys
   '''
 
 // convert dependencies data into a directed graph
@@ -3140,28 +3140,28 @@ With the sample data set:
    gtech            ieee gtech
    ramlib           std ieee
    std_cell_lib     ieee std_cell_lib
-   synopsys 
+   synopsys
  )
 
 We would get:
 
 
-```J>    
+```J>
 dependencySort dependencies
- std           
- ieee          
- dware         
- gtech         
- ramlib        
- std_cell_lib  
- synopsys      
- dw02          
- dw05          
- dw06          
- dw07          
- dw01          
- dw04          
- dw03          
+ std
+ ieee
+ dware
+ gtech
+ ramlib
+ std_cell_lib
+ synopsys
+ dw02
+ dw05
+ dw06
+ dw07
+ dw01
+ dw04
+ dw03
  des_system_lib
 ```
 
@@ -3354,7 +3354,7 @@ while (Q.length) {
 console.log('Solution:', S);
 
 ```
- 
+
 
 Output:
 
@@ -3378,7 +3378,7 @@ Solution: [
   'des_system_lib' ]
 
 ```
- 
+
 
 
 
@@ -3411,12 +3411,12 @@ To solve and print the solution to the given problem on a 1GHz machine takes abo
 # Input: an object representing a normalized dependency graph
 def independent:
   . as $G
-  | reduce keys[] as $key 
+  | reduce keys[] as $key
       ([];
        . +  ((reduce $G[$key][] as $node
                ([];
-                if ($G[$node] == null or ($G[$node]|length)==0) then . + [$node] 
-                else . 
+                if ($G[$node] == null or ($G[$node]|length)==0) then . + [$node]
+                else .
                 end ))))
   | unique;
 
@@ -3424,8 +3424,8 @@ def independent:
 # Input: an object representing a dependency graph.
 def normalize:
   . as $G
-  | reduce keys[] as $key 
-      ($G; 
+  | reduce keys[] as $key
+      ($G;
        .[$key] as $nodes
        | if $nodes and ($nodes|index($key)) then .[$key] = $nodes - [$key] else . end);
 
@@ -3439,18 +3439,18 @@ def minus(ary):
 # in ">" order.
 # Input is assumed to be an object representing a dependency
 # graph and need not be normalized.
-def tsort: 
+def tsort:
   # _sort: input: [L, Graph], where L is the tsort so far
   def _tsort:
 
     def done: [.[]] | all( length==0 );
 
-    .[0] as $L | .[1] as $G 
+    .[0] as $L | .[1] as $G
     | if ($G|done) then $L + (($G|keys) - $L)
       else
-         ($G|independent) as $I 
+         ($G|independent) as $I
          | if (($I|length) == 0)
-           then error("the dependency graph is cyclic: \($G)") 
+           then error("the dependency graph is cyclic: \($G)")
            else [ ($L + $I), ($G|minus($I))] | _tsort
            end
       end;
@@ -3739,14 +3739,14 @@ Work in Mathematica 8 or higher versions.
 
 ```mathematica
 TopologicalSort[
-    Graph[Flatten[# /. {l_, ld_} :> 
-        Map[# -> l &, 
+    Graph[Flatten[# /. {l_, ld_} :>
+        Map[# -> l &,
          DeleteCases[ld, l]]]]] /. {_TopologicalSort -> $Failed} &@
- {{"des_system_lib", {"std", "synopsys", "std_cell_lib", 
+ {{"des_system_lib", {"std", "synopsys", "std_cell_lib",
     "des_system_lib", "dw02", "dw01", "ramlib", "ieee"}},
   {"dw01", {"ieee", "dw01", "dware", "gtech"}},
   {"dw02", {"ieee", "dw02", "dware"}},
-  {"dw03", {"std", "synopsys", "dware", "dw03", "dw02", "dw01", 
+  {"dw03", {"std", "synopsys", "dware", "dw03", "dw02", "dw01",
     "ieee", "gtech"}},
   {"dw04", {"dw04", "ieee", "dw01", "dware", "gtech"}},
   {"dw05", {"dw05", "ieee", "dware"}},
@@ -3845,7 +3845,7 @@ main(!IO) :-
 "synopsys"],
     Words=list.map(string.words,Input),
     list.map(distribute,Words,Db),
-    solutions(pred(X::out) is nondet :- topological_sort(set.from_list(Db),db_compare,X),SortedWordLists), 
+    solutions(pred(X::out) is nondet :- topological_sort(set.from_list(Db),db_compare,X),SortedWordLists),
     list.map(
 	     pred({X,Y}::in,Z::out) is det:- X=Z,
 	     list.det_head(SortedWordLists),
@@ -4433,7 +4433,7 @@ in
   [] [Sol] then
      {System.showInfo "A possible topological ordering: "}
      {ForAll {GetOrderedLibs Sol} System.showInfo}
-  
+
      {System.showInfo "\nBONUS - grouped by parallelizable compile jobs:"}
      {PrintSolution Sol}
   end
@@ -4444,7 +4444,7 @@ Output:
 
 ```txt
 
-A possible topological ordering: 
+A possible topological ordering:
 synopsys
 std
 ieee
@@ -4462,10 +4462,10 @@ dw03
 des_system_lib
 
 BONUS - grouped by parallelizable compile jobs:
-ieee std synopsys 
-dware gtech ramlib std_cell_lib 
-dw01 dw02 dw05 dw06 dw07 
-des_system_lib dw03 dw04 
+ieee std synopsys
+dware gtech ramlib std_cell_lib
+dw01 dw02 dw05 dw06 dw07
+des_system_lib dw03 dw04
 
 ```
 
@@ -4646,7 +4646,7 @@ procedure topsort(string input)
     bool more = true
     integer rank = 0
     while more do
-        more = false 
+        more = false
         rank += 1
         for i=1 to length(names) do
             if names[i][RANK]=0 then
@@ -4784,16 +4784,16 @@ dware            ieee dware
 gtech            ieee gtech
 ramlib           std ieee
 std_cell_lib     ieee std_cell_lib
-synopsys         
+synopsys
 "@
 #Convert to Object[]
-$c = switch ( $a.split([char] 10) ) { 
+$c = switch ( $a.split([char] 10) ) {
     $_ {
         $b=$_.split(' ')
         New-Object PSObject -Property @{
             Library = $b[0]
             "Library Dependencies" = @( $( $b[1..($b.length-1)] | Where-Object { $_ -match '\w' } ) )
-        } 
+        }
     }
 }
 #Add pure dependencies
@@ -4863,8 +4863,8 @@ for( $i=0; $i -lt $d.count; $i++ ) {
 }
 #Sort and Display
 if( $d ) {
-    $d | Sort "Dep Value",Library | ForEach-Object { 
-        "{0,-14} LIBRARY DEPENDENCIES`n{1,-14} 
+    $d | Sort "Dep Value",Library | ForEach-Object {
+        "{0,-14} LIBRARY DEPENDENCIES`n{1,-14}
 ### ==============
 " -f "LIBRARY", "
 ### =
@@ -4929,9 +4929,9 @@ Repeat
       For i = (CountString(itemData, " ") + 1) To 1 Step -1
         AddElement(DAG()\dependencies())
         DAG()\dependencies() = StringField(itemData, i, " ")
-      Next 
-    EndIf 
-  EndIf 
+      Next
+    EndIf
+  EndIf
 Until itemData = #EndOfDataMarker$
 
 ;// process DAG //
@@ -4942,14 +4942,14 @@ ForEach DAG()
     libraries(DAG()\dependencies()) = #True
     If DAG()\dependencies() = DAG()\Value
       DeleteElement(DAG()\dependencies()) ;remove self-dependencies
-    EndIf 
+    EndIf
   Next
 Next
 
 ForEach DAG()
   If FindMapElement(libraries(),DAG()\Value)
     DeleteMapElement(libraries(),DAG()\Value)
-  EndIf 
+  EndIf
 Next
 
 ResetList(DAG())
@@ -4961,7 +4961,7 @@ ClearMap(libraries())
 
 ;process DAG() repeatedly until no changes occur
 NewList compileOrder.s()
-Repeat 
+Repeat
   noChangesMade = #True
   ForEach DAG()
     If DAG()\forRemoval
@@ -4971,7 +4971,7 @@ Repeat
       ForEach DAG()\dependencies()
         If FindMapElement(libraries(),DAG()\dependencies())
           DeleteElement(DAG()\dependencies())
-        EndIf 
+        EndIf
       Next
       ;add DAG() entry to compileOrder if it has no more dependencies
       If ListSize(DAG()\dependencies()) = 0
@@ -4980,9 +4980,9 @@ Repeat
         libraries(DAG()\Value) = #True ;mark the library for removal as a dependency
         DAG()\forRemoval = #True
         noChangesMade = #False
-      EndIf 
-    EndIf 
-  Next 
+      EndIf
+    EndIf
+  Next
 Until noChangesMade
 
 If ListSize(DAG())
@@ -4995,7 +4995,7 @@ Else
   ForEach compileOrder()
     PrintN(" " + compileOrder())
   Next
-EndIf 
+EndIf
 
 Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
 Input()
@@ -5139,7 +5139,7 @@ If it succeeds, returns the list of items in topological order.
 tsort <- function(deps) {
 	nm <- names(deps)
 	libs <- union(as.vector(unlist(deps)), nm)
-	
+
 	s <- c()
 	# first libs that depend on nothing
 	for(x in libs) {
@@ -5147,7 +5147,7 @@ tsort <- function(deps) {
 			s <- c(s, x)
 		}
 	}
-	
+
 	k <- 1
 	while(k > 0) {
 		k <- 0
@@ -5159,12 +5159,12 @@ tsort <- function(deps) {
 			}
 		}
 	}
-	
+
 	if(length(s) < length(libs)) {
 		v <- setdiff(libs, s)
 		stop(sprintf("Unorderable items :\n%s", paste("", v, sep="", collapse="\n")))
 	}
-	
+
 	s
 }
 
@@ -5176,8 +5176,8 @@ On the given example :
 ```R
 
 tsort(deps)
-# [1] "std"            "ieee"           "dware"          "gtech"          "ramlib"        
-# [6] "std_cell_lib"   "synopsys"       "dw01"           "dw02"           "dw03"          
+# [1] "std"            "ieee"           "dware"          "gtech"          "ramlib"
+# [6] "std_cell_lib"   "synopsys"       "dw01"           "dw02"           "dw03"
 #[11] "dw04"           "dw05"           "dw06"           "dw07"           "des_system_lib"
 
 ```
@@ -5205,8 +5205,8 @@ dw03
 
 #lang racket
 
-(define G 
-  (make-hash 
+(define G
+  (make-hash
    '((des_system_lib . (std synopsys std_cell_lib des_system_lib dw02
                             dw01 ramlib ieee))
      (dw01           . (ieee dw01 dware gtech))
@@ -5250,9 +5250,9 @@ dw03
            (if (= (length L) n)
                L
                (error 'topo-sort (~a "cycle detected" G)))]
-          [else 
+          [else
            (define n   (set-first S))
-           (define S\n (set-rest S))                
+           (define S\n (set-rest S))
            (for ([m (out G n)])
              (remove! G n m)
              (remove! in m n)
@@ -5280,7 +5280,7 @@ Output:
 
 Some of the FORTRAN 77 statements were converted to   '''do'''   loops (or   '''do'''   structures),   and
 
-some variables were   [https://en.wikipedia.org/wiki/Camel_case <u>''camel capitalized]''</u>. 
+some variables were   [https://en.wikipedia.org/wiki/Camel_case <u>''camel capitalized]''</u>.
 
 ```rexx
 /*REXX pgm does a topological sort (orders such that no item precedes a dependent item).*/
@@ -5530,7 +5530,7 @@ Demonstration code (which parses it from the format that the puzzle was posed in
 ```tcl
 set inputData {
     des_system_lib	std synopsys std_cell_lib des_system_lib dw02 dw01 ramlib ieee
-    dw01		ieee dw01 dware gtech 
+    dw01		ieee dw01 dware gtech
     dw02		ieee dw02 dware
     dw03		std synopsys dware dw03 dw02 dw01 ieee gtech
     dw04		dw04 ieee dw01 dware gtech
@@ -5584,7 +5584,7 @@ $ awk '{ for (i = 1; i <= NF; i++) print $i, $1 }' <<! | tsort
 > gtech            ieee gtech
 > ramlib           std ieee
 > std_cell_lib     ieee std_cell_lib
-> synopsys         
+> synopsys
 > !
 ieee
 dware
@@ -5641,14 +5641,14 @@ ignored and unlisted libraries are presumed independent.
 ```Ursala
 tsort = ~&nmnNCjA*imSLs2nSjiNCSPT; @NiX ^=lxPrnSPX ^(~&rlPlT,~&rnPrmPljA*D@r)^|/~& ~&m!=rnSPlX
 ```
-                         
-test program:                   
+
+test program:
 
 ```Ursala
-#import std                     
-                                
-dependence_table = -[           
-                                
+#import std
+
+dependence_table = -[
+
 LIBRARY          LIBRARY DEPENDENCIES
 
 ### ====          =================
@@ -5705,17 +5705,17 @@ class topological
 	dim dictDependencies
 	dim dictReported
 	dim depth
-	
+
 	sub class_initialize
 		set dictDependencies = createobject("Scripting.Dictionary")
 		set dictReported = createobject("Scripting.Dictionary")
 		depth = 0
 	end sub
-	
+
 	sub reset
 		dictReported.removeall
 	end sub
-	
+
 	property let dependencies( s )
 		'assuming token tab token-list newline
 		dim i, j ,k
@@ -5747,11 +5747,11 @@ class topological
 				dictDependencies.add dep, aList(i)(1)
 			end if
 		next
-		
+
 	end property
-	
+
 	sub resolve( s )
-		dim i 
+		dim i
 		dim deps
 		'~ wscript.echo string(depth,"!"),s
 		depth = depth + 1
@@ -5771,11 +5771,11 @@ class topological
 	function seen( key )
 		seen = dictReported.Exists( key )
 	end function
-	
+
 	sub see( key )
 		dictReported.add key, ""
 	end sub
-	
+
 	property get keys
 		keys = dictDependencies.keys
 	end property
@@ -5934,11 +5934,11 @@ Module Program
 		})
 		fields.Add(New Field() With { _
 			.Name = "dw03", _
-			.DependsOn = Split("std synopsys dware dw03 dw02 dw01 ieee gtech", " ") _			
+			.DependsOn = Split("std synopsys dware dw03 dw02 dw01 ieee gtech", " ") _
 		})
 		fields.Add(New Field() With { _
 			.Name = "dw04", _
-			.DependsOn = Split("dw04 ieee dw01 dware gtech", " ") _			
+			.DependsOn = Split("dw04 ieee dw01 dware gtech", " ") _
 		})
 		fields.Add(New Field() With { _
 			.Name = "dw05", _
@@ -5946,11 +5946,11 @@ Module Program
 		})
 		fields.Add(New Field() With { _
 			.Name = "dw06", _
-			.DependsOn = Split("dw06 ieee dware", " ") _			
+			.DependsOn = Split("dw06 ieee dware", " ") _
 		})
 		fields.Add(New Field() With { _
 			.Name = "dw07", _
-			.DependsOn = Split("ieee dware", " ") _			
+			.DependsOn = Split("ieee dware", " ") _
 		})
 		fields.Add(New Field() With { _
 			.Name = "dware", _
@@ -5958,19 +5958,19 @@ Module Program
 		})
 		fields.Add(New Field() With { _
 			.Name = "gtech", _
-			.DependsOn = Split("ieee gtech", " ") _			
+			.DependsOn = Split("ieee gtech", " ") _
 		})
 		fields.Add(New Field() With { _
 			.Name = "ramlib", _
-			.DependsOn = Split("std ieee", " ") _			
+			.DependsOn = Split("std ieee", " ") _
 		})
 		fields.Add(New Field() With { _
 			.Name = "std_cell_lib", _
-			.DependsOn = Split("ieee std_cell_lib", " ") _			
+			.DependsOn = Split("ieee std_cell_lib", " ") _
 		})
 		fields.Add(New Field() With { _
 			.Name = "synopsys" _
-		})		
+		})
 		Console.WriteLine("Input:")
 		For Each ThisField As field In fields
 			Console.WriteLine(ThisField.Name)
@@ -5998,13 +5998,13 @@ Module Program
 		Console.Write("Press any key to continue . . . ")
 		Console.ReadKey(True)
 	End Sub
-	
+
 	Private Sub CheckDependencies (ByRef Fields As List(Of Field))
 		' Make sure all objects we depend on are part of the field list
 		' themselves, as there may be dependencies that are not specified as fields themselves.
-		' Remove dependencies on fields themselves.Y			
+		' Remove dependencies on fields themselves.Y
 		Dim AField As Field, ADependency As String
-		
+
 		For i As Integer = Fields.Count - 1 To 0 Step -1
 			AField=fields(i)
 			If AField.DependsOn IsNot Nothing  then
@@ -6022,14 +6022,14 @@ Module Program
 					End If
 				Next j
 			End If
-		Next i	
+		Next i
 	End Sub
-	
+
 	Private Sub RemoveSelfDependencies (ByRef Fields As List(Of Field))
 		' Make sure our fields don't depend on themselves.
 		' If they do, remove the dependency.
 		Dim InitialUbound as Integer
-		For Each AField As Field In Fields			
+		For Each AField As Field In Fields
 			If AField.DependsOn IsNot Nothing Then
 				InitialUbound = Ubound(AField.DependsOn)
 				For i As Integer = InitialUbound to 0 Step - 1
@@ -6041,10 +6041,10 @@ Module Program
 						ReDim Preserve Afield.DependsOn(UBound(Afield.DependsOn)-1)
 					End If
 				Next
-			End If			
+			End If
 		Next
-	End Sub	
-			
+	End Sub
+
 	Private Function ListContainsVertex(Fields As List(Of Field), VertexName As String) As Boolean
 	' Check to see if the list of Fields already contains a vertext called VertexName
 	Dim Found As Boolean = False
@@ -6060,11 +6060,11 @@ Module Program
 	Private Function getTopologicalSortOrder(ByRef Fields As List(Of Field)) As Integer()
 		' Gets sort order. Will also add required dependencies to
 		' Fields.
-		
+
 		' Make sure we don't have dependencies on ourselves.
 		' We'll just get rid of them.
 		RemoveSelfDependencies(Fields)
-		
+
 		'First check depencies, add them to Fields if required:
 		CheckDependencies(Fields)
 		' Now we have the correct Fields list, so we can proceed:
@@ -6341,8 +6341,8 @@ fcn topoSort(data){ // data is L( L(root,L(leaves)),...)
    S:=data.pump(List,'wrap([(r,_)]){ if(allDs.holds(r)) Void.Skip else r }).copy();
    while(S){        //while S is non-empty do
       (n:=S.pop()) : L.append(_); //remove a node n from S, add n to tail of L
-      foreach m in (ds:=roots.find(n,List)){ //node m with an edge e from n to m 
-	 allDs.del(allDs.index(m)); 
+      foreach m in (ds:=roots.find(n,List)){ //node m with an edge e from n to m
+	 allDs.del(allDs.index(m));
 	 if (Void==allDs.find(m)) S.append(m); //m has no other incoming edges
       } roots.del(n);  // remove edge e from the graph
    }
@@ -6368,7 +6368,7 @@ data:=T(
    "std_cell_lib",     "ieee std_cell_lib",
    "synopsys",         "",
 );
-data=data.pump(List,Void.Read,fcn(r,ds){ 
+data=data.pump(List,Void.Read,fcn(r,ds){
    T( r, ds.replace(r,"").strip().split().copy() ) // leaves writable 'cause they will be
 });
 topoSort(data).println();

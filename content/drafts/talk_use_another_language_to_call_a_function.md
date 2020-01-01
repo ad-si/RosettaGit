@@ -19,8 +19,8 @@ While writing the Tcl implementation, it occurred to me that a number of languag
 == C code is wrong ==
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 extern int Query (char * Data, size_t * Length);
 
@@ -28,7 +28,7 @@ int main (int argc, char * argv [])
 {
    char     Buffer [1024];
    unsigned Size = sizeof (Buffer);
-   
+
    if (0 == Query (Buffer, &Size))
    {
       printf ("failed to call Query\n");
@@ -44,8 +44,8 @@ int main (int argc, char * argv [])
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int Query (char * Data, size_t * Length)
 {
@@ -62,11 +62,11 @@ Reading specs from /usr/lib/gcc-lib/amd64-unknown-openbsd4.8/4.2.1/specs
 Target: amd64-unknown-openbsd4.8
 Configured with: OpenBSD/amd64 system compiler
 Thread model: posix
-gcc version 4.2.1 20070719 
+gcc version 4.2.1 20070719
 $ cc -o main main.c query.c
 main.c: In function 'main':
 main.c:10: warning: passing argument 2 of 'Query' from incompatible pointer type
-$ ./main 
+$ ./main
 Length = 7971459302400, 0x74000000400
 failed to call Query
 ```

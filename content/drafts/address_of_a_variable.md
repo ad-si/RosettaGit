@@ -40,12 +40,12 @@ I        DS    F
 To set a variable dynamically at the same address of an other variable, use a <code>DSECT</code> (dummy section):
 
 ```360asm
-         USING MYDSECT,R12 
+         USING MYDSECT,R12
          LA    R12,I               set @J=@I
          L     R2,J                now J is at the same location as I
 ...
 I        DS    F
-MYDSECT  DSECT 
+MYDSECT  DSECT
 J        DS    F
 ```
 
@@ -86,10 +86,10 @@ for I'Address use J'Address;
 
 ## ALGOL 68
 
-Basically ALGOL 68 refuses to let the programmer access the memory directly.  
-The language does  allow "references" any variables.  
-These references are effectively the address a particular variable.  
-But the value of the actual address is not available 
+Basically ALGOL 68 refuses to let the programmer access the memory directly.
+The language does  allow "references" any variables.
+These references are effectively the address a particular variable.
+But the value of the actual address is not available
 for printing or any arithmetic.
 
 ```algol68
@@ -106,14 +106,14 @@ test value is now:        +222       +444       +777       +888
 ```
 
 
-The other reason specific addresses are using in languages like [[C]] 
-to manipulate devices.  
-For this purpose site are expected to implement channels 
+The other reason specific addresses are using in languages like [[C]]
+to manipulate devices.
+For this purpose site are expected to implement channels
 for their programmers to use.
-To quote the ALGOL 68 Revised Report: <i>A "channel" corresponds to one 
-or more physical devices (e.g., a card reader, a card punch or 
-a line printer, or even to a set up in nuclear physics 
-the results of which are collected by the computer), 
+To quote the ALGOL 68 Revised Report: <i>A "channel" corresponds to one
+or more physical devices (e.g., a card reader, a card punch or
+a line printer, or even to a set up in nuclear physics
+the results of which are collected by the computer),
 or to a filestore maintained by the operating system</i>[http://www.xs4all.nl/~jmvdveer/report_5.html#A312aa].
 
 To establish a channel with such a device there is a special standard procedure:
@@ -121,18 +121,18 @@ To establish a channel with such a device there is a special standard procedure:
 PROC establish = (REF FILE file, STRING idf, CHANNEL chan, INT p, l, c) INT: ~
 ```
 
-Where the <tt>idf</tt> string is text describing which device to open, and possibly 
-options.  And <tt>chan</tt> is the actual device type.  Standard CHANNELs in 
-ALGOL 68 are <tt>stand in channel</tt>, <tt>stand out channel</tt>, and <tt>stand 
-back channel</tt>.  These determine the type of the pre opened stdio FILEs <tt>stand in</tt>, 
-<tt>stand out</tt>, and <tt>stand back</tt>. A site would be expected to 
+Where the <tt>idf</tt> string is text describing which device to open, and possibly
+options.  And <tt>chan</tt> is the actual device type.  Standard CHANNELs in
+ALGOL 68 are <tt>stand in channel</tt>, <tt>stand out channel</tt>, and <tt>stand
+back channel</tt>.  These determine the type of the pre opened stdio FILEs <tt>stand in</tt>,
+<tt>stand out</tt>, and <tt>stand back</tt>. A site would be expected to
 implement their own CHANNELs for network connections, database queries and particle accelerators etc.
 
 
 ## Argile
 
 
-###  Get the address 
+###  Get the address
 
 {{works with|Argile|1.0.0}}
 
@@ -146,7 +146,7 @@ print var		(: prints 43 :)
 ```
 
 
-###  Set the address 
+###  Set the address
 
 Since we cannot set address of a variable, we use a macro
 that returns a reference.
@@ -185,41 +185,41 @@ iValDeb:        .int 5      @ value 5 in array of 4 bytes
 iValeur:     .skip  4     @ reserve 4 bytes in memory
 
 .text
-.global main 
-main:	
+.global main
+main:
         ldr r0,=szMessage          @ adresse of message  short program
 	bl affichageMess            @ call function
 	                                @  or
 	ldr r0,iAdrszMessage         @ adresse of message big program (size code > 4K)
         bl affichageMess            @ call function
-	
+
 	ldr r1,=iValDeb              @ adresse of variable -> r1  short program
 	ldr r0,[r1]                    @ value of iValdeb  -> r0
 	ldr r1,iAdriValDeb           @ adresse of variable -> r1  big program
 	ldr r0,[r1]                    @ value of iValdeb  -> r0
 
-	
+
 	/* set variables  */
 	ldr r1,=iValeur               @ adresse of variable -> r1  short program
 	str r0,[r1]                     @ value of r0 ->  iValeur
 	ldr r1,iAdriValeur           @ adresse of variable -> r1  big program
 	str r0,[r1]                     @ value of r0 ->  iValeur
- 
- 
+
+
  /* end of  program */
     mov r0, #0                  @ return code
     mov r7, #EXIT              @ request to exit program
     swi 0                       @ perform the system call
-iAdriValDeb:  .int iValDeb	
-iAdriValeur:  .int iValeur	
+iAdriValDeb:  .int iValDeb
+iAdriValeur:  .int iValeur
 iAdrszMessage: .int szMessage
-iAdrszRetourLigne: .int szRetourLigne	
+iAdrszRetourLigne: .int szRetourLigne
 /******************************************************************/
-/*     affichage des messages   avec calcul longueur              */ 
+/*     affichage des messages   avec calcul longueur              */
 /******************************************************************/
 /* r0 contient l adresse du message */
 affichageMess:
-	push {fp,lr}    /* save des  2 registres */ 
+	push {fp,lr}    /* save des  2 registres */
 	push {r0,r1,r2,r7}    /* save des autres registres */
 	mov r2,#0   /* compteur longueur */
 1:	      /*calcul de la longueur */
@@ -234,9 +234,9 @@ affichageMess:
     mov r7, #WRITE                  /* code de l appel systeme 'write' */
     swi #0                      /* appel systeme */
 	pop {r0,r1,r2,r7}     /* restaur des autres registres */
-	pop {fp,lr}    /* restaur des  2 registres */ 
-    bx lr	        /* retour procedure */	
-	
+	pop {fp,lr}    /* restaur des  2 registres */
+    bx lr	        /* retour procedure */
+
 
 ```
 
@@ -311,7 +311,7 @@ z = z + (PEEK(y) * 256)
 
 
 
-###  Get the address 
+###  Get the address
 
 Get the address of the last variable used.
 
@@ -330,7 +330,7 @@ Get (find) the address of a function.
 
 
 
-###  Set the address 
+###  Set the address
 
 Set the address where variables are stored, but clears all variables.
 
@@ -390,7 +390,7 @@ With BBC BASIC on other platforms the address of a variable can be found by call
 Use of pointers in C# is restricted to <code>unsafe</code> sections of code, which is enabled in Microsoft's C# compiler with the commandline parameter <code>/unsafe</code> or in Mono's C# compiler with <code>-unsafe</code> (or <code>--unsafe</code> in older versions).
 
 
-###  Get the address 
+###  Get the address
 
 Note that void* is a "pure" address which doesn't carry the type information anymore. If you need the type information (e.g. to recover the variable itself in a type safe manner), use a pointer to the appropriate type instead; in this case int*.
 
@@ -408,7 +408,7 @@ unsafe
 
 {{works with|gcc}} {{works with|g++}}
 
-###  Get the address 
+###  Get the address
 
 Note that <code>void*</code> is a "pure" address which doesn't carry the type information anymore. If you need the type information (e.g. to recover the variable itself in a type safe manner), use a pointer to the appropriate type instead; in this case <code>int*</code>.
 
@@ -421,15 +421,15 @@ void* address_of_i = &i;
 '''C++ only:''' C++ allows overloading the <code>&</code> operator. To bypass this, for example in generic code, use the library function <code>addressof</code>:
 
 
-```cpp>#include <memory
-
+```cpp
+#include <memory>
 int i;
 auto address_of_i = std::addressof(i);
 ```
 
 
 
-###  Set the address 
+###  Set the address
 
 While C++ doesn't directly support putting a variable at a given address, the same effect can be achieved by creating a reference to that address:
 
@@ -440,7 +440,8 @@ int& i = *(int*)0xA100;
 
 If the type of the variable requires initialization, it is necessary to use placement new:
 
-```cpp>#include <new
+```cpp
+#include <new>
 
 struct S { int i = 0; S() {} };
 auto& s = *new (reinterpret_cast<void*>(0xa100)) S;
@@ -469,8 +470,8 @@ Note that in this case, the variables can be non-static.
 If the type of two overlaid variables is not sufficiently similar, then writes to one may not be reflected in reads from the other, even though they have the same address. This is because the optimizer is free to assume that variables of different types do not alias. To read or write a variable as a different type, use <code>memcpy</code>:
 
 
-```cpp>#include <cstring
-
+```cpp
+#include <cstring>
 inline float read_as_float(int const& i) { float f; memcpy(&f, &i, sizeof(f)); return f; }
 int i = 0x0a112233;
 float f = read_as_float(i);
@@ -507,7 +508,7 @@ Sets the address of a variable using the <code>BASED</code> clause. There are ot
 ```cobol
 
 OCOBOL*> Rosetta Code set address example
-      *> tectonics: cobc -x setaddr.cob && ./setaddr 
+      *> tectonics: cobc -x setaddr.cob && ./setaddr
        program-id. setaddr.
        data division.
        working-storage section.
@@ -560,10 +561,10 @@ These references are completely safe to use. There is no way that a place can di
 
 {{works with|CLISP}} {{works with|Linux}} {{works with|Cygwin}}
 
-What does it mean to "set the address of a variable?" One interpretation of this task is: rather than let the programming language compiler or run-time allocate a named storage location in its usual ways, force the allocation of a variable at some particular memory location, such as a hardware register, or a variable in a foreign library.  
+What does it mean to "set the address of a variable?" One interpretation of this task is: rather than let the programming language compiler or run-time allocate a named storage location in its usual ways, force the allocation of a variable at some particular memory location, such as a hardware register, or a variable in a foreign library.
 Lisp implementations have foreign function interfaces for doing this sort of thing.
 
-Here is an example specific to CLISP running on either Linux or Cygwin. It creates a Lisp <code>errno</code> variable which is located in the C Library's <code>errno</code>.  
+Here is an example specific to CLISP running on either Linux or Cygwin. It creates a Lisp <code>errno</code> variable which is located in the C Library's <code>errno</code>.
 The C Library's <code>errno</code> is actually thread-specific, whose location is retrieved by calling a hidden function.
 
 We wrap this function with a Lisp foreign call which is properly annotated as returning a C pointer to int. When we call this function, we get an object that behaves like a reference to that location. All we need then is a macro which looks like a storage location.
@@ -640,16 +641,16 @@ DEF ScreenSizeX,ScreenSizeY,Col:INT
 DECLARE "Kernel32",Lstrcpy(P1:POINTER,P2:POINTER),INT
 'The pointers replace the VB3 variable type of Any.
 
-'Note: This is translated from VB3 or earlier code, and "Ptr" is *not* a Creative Basic pointer. 
+'Note: This is translated from VB3 or earlier code, and "Ptr" is *not* a Creative Basic pointer.
 DEF Ptr:INT
 DEF X1:INT
 DEF X2:STRING
 
 X1=123
 
-'***Call function***   
+'***Call function***
 Ptr=Lstrcpy(X1,X1)
-     
+
 GETSCREENSIZE(ScreenSizeX,ScreenSizeY)
 
 WINDOW Win,0,0,ScreenSizeX,ScreenSizeY,@MINBOX|@MAXBOX|@SIZE|@MAXIMIZED,0,"Skel Win",MainHandler
@@ -707,7 +708,7 @@ IMPORT SYSTEM,StdLog;
 
 VAR
 	x: INTEGER;
-	
+
 PROCEDURE Do*;
 BEGIN
 	StdLog.String("ADR(x):> ");StdLog.IntForm(SYSTEM.ADR(x),StdLog.hexadecimal,8,'0',TRUE);StdLog.Ln
@@ -844,19 +845,19 @@ whereby a is set to refer to the variable b. Assignment through the PointerOf op
 3. Function pointers can be both retrieved and set using an AddressOf operator as in the following sample script. Assignment via AddressOf also accepts integer literals to set a function pointer to an absolute address.
 
     #APPTYPE CONSOLE
-    
+
     SUB Foo()
         PRINT "foo"
     END SUB
-    
+
     SUB Bar()
         PRINT "bar"
     END SUB
-    
+
     ADDRESSOF Foo = ADDRESSOF Bar
-    
+
     Foo() // prints "bar" to the console
-    
+
     PAUSE
 
 4. Values at an absolute address or address read by a PointerOf operator plus a byte offset can be retrieved or set using the Peek()/Poke() and GetMem()/SetMem() functions.
@@ -870,7 +871,7 @@ Variables and created memory blocks return their address when referenced. The "f
  8 foo !
  foo @ .  \ 8
 
-You can define a constant or value with an address, which then acts like a variable. 
+You can define a constant or value with an address, which then acts like a variable.
 This can be used to refer to fixed addresses (such as I/O ports), graphics buffers, or allocated memory.
  $3F8 constant LPT1:
  8 LPT1: !
@@ -895,7 +896,7 @@ program test_loc
 end program test_loc
 ```
 
-Note: <code>loc</code> is a common extension that is implemented 
+Note: <code>loc</code> is a common extension that is implemented
 by e.g. the Intel Fortran Compiler, G95 and gfortran.
 
 
@@ -907,7 +908,7 @@ One can get the address of a variable using the @ operator:
 ' FB 1.05.0 Win64
 Dim a As Integer = 3
 Dim p As Integer Ptr = @a
-Print a, p 
+Print a, p
 ```
 
 To my knowledge, it is not possible to set the address of a variable to a specific address in FB though (as in C/C++) you can do something like this as a workaround:
@@ -953,16 +954,16 @@ Value of i = 575
 
 Go has pointers. Just like in C, you can "take the address" of an addressable value by using the <code>&</code> operator, and access the value pointed to by a pointer using the <code>*</code> operator.
 
-Unlike in C, pointers are not readily convertible to integers and 
+Unlike in C, pointers are not readily convertible to integers and
 there is no direct pointer arithmetic.
-You may print out the address of a pointer, either using the Print function 
-on the pointer, or using the <code>%p</code> format specifier 
+You may print out the address of a pointer, either using the Print function
+on the pointer, or using the <code>%p</code> format specifier
 in formatted output (just like in C).
 
 When rarely required, you can convert a pointer to an integer using the [https://godoc.org/pkg/unsafe unsafe package].
 
-It is not possible in Go to set the address of a variable, 
-however you can assign an arbitrary value to a pointer and 
+It is not possible in Go to set the address of a variable,
+however you can assign an arbitrary value to a pointer and
 use/deference that pointer.
 
 The following demonstrates getting the address of a variable and storing/printing it various ways.
@@ -1038,7 +1039,7 @@ There are at least three ways to get the address of a variable in IWBASIC. The f
 
 DEF X:INT
 PRINT &X
-'This will print in the console window (after OPENCONSOLE is issued.) 
+'This will print in the console window (after OPENCONSOLE is issued.)
 'To Print in an open window the appropriate Window variable is specified, e.g., PRINT Win,&X.
 
 The second is to use a pointer:
@@ -1089,15 +1090,15 @@ Julia provides a variety of ways to work with and manipulate raw address pointer
 
 Julia has both mutable and immutable objects.  Immutable objects are values, such as constants, bit-based values such as numeric 3, or immutable structs. Immutable objects may not have a single set location in memory, but instead might in some cases be created on demand by the compiled code. Mutable objects such as typical arrays and mutable structs, on the other hand, have addresses on the Julia heap that can be found with specific base Julia functions which use the <code>Ptr</code> type.
 
-To get the memory address of a Julia object, one can use <code>pointer_from_objref(object)</code>, and the reverse is accomplished by <code>unsafe_pointer_to_objref(ptr)</code>: 
+To get the memory address of a Julia object, one can use <code>pointer_from_objref(object)</code>, and the reverse is accomplished by <code>unsafe_pointer_to_objref(ptr)</code>:
 ```julia>julia
  x = [1, 2, 3]
 julia> ptr = pointer_from_objref(x)
 Ptr{Void} @0x000000010282e4a0
 julia> unsafe_pointer_to_objref(ptr)
 3-element Array{Int64,1}:
- 1 
- 2 
+ 1
+ 2
  3
 ```
   The latter is "unsafe" because it only works if <code>ptr</code> refers to a valid heap-allocated "boxed" Julia object, which can only be safely allocated by Julia itself.
@@ -1119,27 +1120,27 @@ julia> unsafe_load(p, 3)
 julia> unsafe_store!(p, 3.14159, 3)
 julia> A
 3-element Array{Float64,1}:
- 1.0    
- 2.3    
+ 1.0
+ 2.3
  3.14149
 
 julia> pointer_to_array(p, (3,))
 3-element Array{Float64,1}:
- 1.0    
- 2.3    
+ 1.0
+ 2.3
  3.14149
 ```
 
 
 Finally, an arbitrary integer can be converted to a pointer type with <code>convert</code>, which allows an arbitrary address to be converted into and viewed as an array of an arbitrary type and read or written (although this can easily result in a crash if an invalid address is used).   In the following example, we create a "new" length-two array <code>B</code> at an address offset by 8 bytes from the address of the data in <code>A</code> above, which will make it point to the second element of <code>A</code>:
 ```julia>julia
- 
+
 julia> q = convert(Ptr{Float64}, 0x0000000113f70d68)
 Ptr{Float64} @0x0000000113f70d68
 
 julia> B = pointer_to_array(q, (2,))
 2-element Array{Float64,1}:
- 2.3    
+ 2.3
  3.14149
 ```
 
@@ -1185,7 +1186,7 @@ Value is 42, address is 0xc149f0
 To obtain the address of any expression in Maple, use the builtin function <code>addressof</code>.
 
 ```Maple>
- addressof( x );             
+ addressof( x );
                               18446884674469911422
 ```
 The inverse operation is <code>pointto</code>:
@@ -1344,7 +1345,7 @@ In Oforth, addresses are not exposed.
 Variables (like all Oforth metamodel) are objects.
 It is possible to retrieve the object corresponding to a variable and use #at and #put to change its value.
 
-For instance, here, after creating and setting a variable A, we store the corresponding word into a variable B :  
+For instance, here, after creating and setting a variable A, we store the corresponding word into a variable B :
 
 
 ```Oforth
@@ -1409,10 +1410,10 @@ print adr(a)
 Whether Panoramic is able to set the value of a variable may depend on what is meant by that. Panoramic implements the
 poke command to set a byte from a value of 0 to 255 (inclusive). Panoramic also implements the peek command to get
 the value of a byte, so it is possible to the following:
- 
+
 (A)
 dim a
-rem a variable with no post-fix is a real. 
+rem a variable with no post-fix is a real.
 poke adr(a),57
 rem the value of a variable being set by setting an address, the address of a in this instance.
 
@@ -1547,7 +1548,7 @@ Since all hll variables are dword-aligned or better, a shr 2 loses no informatio
 result can be safely stored in an integer, avoiding some nasty int/float conversions for
 anything above #3FFFFFFF (on 32 bit, add another 8Fs on 64 bit).
 Obviously extreme caution must be exercised, in the example below if you save the address
-of V which is local to the address() procedure, and then exit said, you have a pointer to 
+of V which is local to the address() procedure, and then exit said, you have a pointer to
 memory that will be re-used for something completely different almost immediately.
 Example is 32 and 64 bit compatible, which at this level needs twice the code, however the
 compiler only omits the appropriate binary for the currently selected target architecture.
@@ -1604,7 +1605,7 @@ it is a negative number, and for cons pairs a positive number. The same function
 : (setq X 7)
 -> 7
 
-: (adr 'X)  
+: (adr 'X)
 -> -2985527269106
 
 : (val (adr -2985527269106))
@@ -1613,7 +1614,7 @@ it is a negative number, and for cons pairs a positive number. The same function
 : (set (adr -2985527269106) '(a b c))
 -> (a b c)
 
-: X                                  
+: X
 -> (a b c)
 ```
 
@@ -1704,7 +1705,7 @@ Set the address of a structured pointer. The pointer can be dereferenced to inte
 
 ```PureBasic
 a.i = 5
-*b.Integer = @a    ;set *b equal to the address of variable a 
+*b.Integer = @a    ;set *b equal to the address of variable a
 *c.Integer = $A100 ;set *c to point at memory location $A100 (in hex)
 
 
@@ -1842,28 +1843,28 @@ $e #100 b:store
 
 REXX has no easy way of getting the address of variables within the langage itself, but since each
 
-REXX variable can be accessed by name and its name passed to (say) subroutines [PROCEDUREs], 
+REXX variable can be accessed by name and its name passed to (say) subroutines [PROCEDUREs],
 
-with the use of the VALUE and SYMBOL built-in functions (BIFs), it's possible to determine 
+with the use of the VALUE and SYMBOL built-in functions (BIFs), it's possible to determine
 
 the state of any variable (defined or not defined, its value, length of the variable's value).
 
 
-It is possible to use the BIF (shown below)  (at least, in the original REXX) 
+It is possible to use the BIF (shown below)  (at least, in the original REXX)
 
 ```rexx
 zzz = storage(xxx)
 ```
 
-(but only in '''some''' REXX interpreters)   to access the internal REXX pool of variables, but it 
+(but only in '''some''' REXX interpreters)   to access the internal REXX pool of variables, but it
 
-would depend on the (internal) REXX internal structure(s) and almost likely be not portable nor 
+would depend on the (internal) REXX internal structure(s) and almost likely be not portable nor
 
-useable across releases of REXX or the operating system.   It would be necessary to follow a 
+useable across releases of REXX or the operating system.   It would be necessary to follow a
 
-pretty complex chain of pointers to just find the REXX pool of variables and the internal structure 
+pretty complex chain of pointers to just find the REXX pool of variables and the internal structure
 
-may be pretty complicated and somewhat obscure.   Going down this path is not for the faint of 
+may be pretty complicated and somewhat obscure.   Going down this path is not for the faint of
 
 heart.
 
@@ -1871,7 +1872,7 @@ heart.
 ## Ruby
 
 
-You can't access the address of a "variable" in Ruby. 
+You can't access the address of a "variable" in Ruby.
 However, it may be possible to get the address of an object.
 
 The Ruby <code>object_id</code> method returns an object ID that is unique among active objects. It turns out that for the official Ruby implementation, the object ID is based on the address. For non-immediate objects (i.e. anything other than a <code>Fixnum</code>, <code>Symbol</code>, <code>true</code>, <code>false</code>, or <code>nil</code>), the address can be obtained by shifting the object ID one to the left. For more information, see the source code for the <code>object_id</code> method:[http://www.ruby-doc.org/core/Object.html#method-i-object_id].
@@ -1899,7 +1900,7 @@ let v1 = vec![vec![1,2,3]; 10];
 println!("Original address: {:p}", &v1);
 let mut v2;
 // Override rust protections on reading from uninitialized memory
-unsafe {v2 = mem::uninitialized();} 
+unsafe {v2 = mem::uninitialized();}
 let addr = &mut v2 as *mut _;
 
 // ptr::write() though it takes v1 by value, v1s destructor is not run when it goes out of
@@ -1967,7 +1968,7 @@ say Sys.refaddr(n);         # prints the address of the object at which the vari
 
 ## Smalltalk
 
-This task does not really make sense in Smalltalk: for one, all we could ask for is the address of an object, not a variable, which is a binding of a name to a value in a lexical scoping (similar to Scheme, Common Lisp and other managed languages). Second, the underlying memory management (garbage collector) is usually free to move objects around, and most implementations do so when objects are tenured or memory areas are defragmented (also similar). 
+This task does not really make sense in Smalltalk: for one, all we could ask for is the address of an object, not a variable, which is a binding of a name to a value in a lexical scoping (similar to Scheme, Common Lisp and other managed languages). Second, the underlying memory management (garbage collector) is usually free to move objects around, and most implementations do so when objects are tenured or memory areas are defragmented (also similar).
 So its usefulness is limited to VM developers and debuggers ;-)
 
 You asked for it, and here it is:
@@ -1981,7 +1982,7 @@ ObjectMemory collectGarbage.
 ObjectMemory addressOf:p "may return another value"
 ```
 
-to deal with non-Smalltalk objects, all Smalltalks provide libraries to pass-in and out parameters to foreign function calls (FFI). The underlying memory block will not be moved by the garbage collector and the address can be passed to external (eg. C, C++, asm) functions. 
+to deal with non-Smalltalk objects, all Smalltalks provide libraries to pass-in and out parameters to foreign function calls (FFI). The underlying memory block will not be moved by the garbage collector and the address can be passed to external (eg. C, C++, asm) functions.
 For those, we can allocate a block of memory and fiddle around with its "address":
 {{works with|Smalltalk/X}}{{works with|VisualWorks Smalltalk}}
 
@@ -2141,7 +2142,7 @@ The default behaviour of a data element in Toka is to return its address. This m
 
 ### Set the Address
 
-You can manually assign a name to any memory address (or other number), 
+You can manually assign a name to any memory address (or other number),
 but you should make sure it's part of allocated memory first.
 
   hex abcdef is-data foo
@@ -2167,15 +2168,15 @@ Declare Sub PutMem4 Lib "msvbvm60" (ByVal ptr As Long, ByVal x As Long)
 Sub Test()
     Dim a As Long, ptr As Long, s As Long
     a = 12345678
-    
+
     'Get and print address
     ptr = VarPtr(a)
     Debug.Print ptr
-    
+
     'Peek
     Call GetMem4(ptr, s)
     Debug.Print s
-    
+
     'Poke
     Call PutMem4(ptr, 87654321)
     Debug.Print a
@@ -2302,8 +2303,8 @@ HexOut(0, A);  CrLf(0);
 ## Yorick
 
 
-Yorick has pointers, but they are typically used in an opaque fashion. 
-Pointer arithmetic is not supported, not is referencing arbitrary memory locations. However, a pointer address may be copied to other variables. 
+Yorick has pointers, but they are typically used in an opaque fashion.
+Pointer arithmetic is not supported, not is referencing arbitrary memory locations. However, a pointer address may be copied to other variables.
 Here is an interactive example that illustrates some of this.
 
 ```txt
@@ -2337,7 +2338,7 @@ Here is an interactive example that illustrates some of this.
 {{omit from|GUISS}}
 {{omit from|Haskell}}
 {{omit from|JavaScript}}
-{{omit from|Joy}} 
+{{omit from|Joy}}
 {{omit from|Icon}}{{omit from|Unicon}}
 {{omit from|LaTeX}}
 {{omit from|Lily}}

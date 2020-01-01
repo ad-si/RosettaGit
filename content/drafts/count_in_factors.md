@@ -13,15 +13,15 @@ tags = []
 {{task|Prime Numbers}}
 
 ;Task:
-Write a program which counts up from   '''1''',   displaying each number as the multiplication of its prime factors. 
+Write a program which counts up from   '''1''',   displaying each number as the multiplication of its prime factors.
 
 For the purpose of this task,   '''1'''   (unity)   may be shown as itself.
 
 
 ;Example:
-      '''2'''   is prime,   so it would be shown as itself. 
+      '''2'''   is prime,   so it would be shown as itself.
 
-      '''6'''   is not prime;   it would be shown as   '''<math>2\times3</math>.''' 
+      '''6'''   is not prime;   it would be shown as   '''<math>2\times3</math>.'''
 
 '''2144'''   is not prime;   it would be shown as   '''<math>2\times2\times2\times2\times2\times67</math>.'''
 
@@ -121,7 +121,7 @@ COUNTFAC CSECT                     assist plig\COUNTFAC
          MVI    0(R10),C'1'            output n
        ELSE     ,                    else
          LA     R8,2                   p=2
-       DO WHILE=(CR,R8,LE,R7)          do while p<=n 
+       DO WHILE=(CR,R8,LE,R7)          do while p<=n
          LR     R4,R7                    n
          SRDA   R4,32                    ~
          DR     R4,R8                    /p
@@ -140,9 +140,9 @@ COUNTFAC CSECT                     assist plig\COUNTFAC
          MVC    EDIT12,WORK12              L12<-L13
          LA     R4,EDIT12+12               source+12
          SR     R4,R9                      -lengh(p)
-         LR     R5,R9                      lengh(p) 
+         LR     R5,R9                      lengh(p)
          LR     R2,R10                     target ix
-         LR     R3,R9                      lengh(p) 
+         LR     R3,R9                      lengh(p)
          MVCL   R2,R4                      f=f||p
          AR     R10,R9                     ix=ix+lengh(p)
          LR     R4,R7                      n
@@ -230,11 +230,11 @@ The solution uses the generic package Prime_Numbers from [[Prime decomposition#A
 
 ```Ada
 with Ada.Command_Line, Ada.Text_IO, Prime_Numbers;
- 
+
 procedure Count is
    package Prime_Nums is new Prime_Numbers
      (Number => Natural, Zero => 0, One => 1, Two => 2); use Prime_Nums;
- 
+
    procedure Put (List : Number_List) is
    begin
       for Index in List'Range loop
@@ -244,7 +244,7 @@ procedure Count is
          end if;
       end loop;
    end Put;
- 
+
    N     : Natural := 1;
    Max_N : Natural := 15; -- the default for Max_N
 begin
@@ -311,9 +311,9 @@ PROC factorize = (INT nn) []INT:
 	      k +:= 1
 	  OD;
 	  result
-      FI 
+      FI
    END;
- 
+
 FLEX[0]INT factors;
 FOR i TO 22 DO
     factors := factorize (i);
@@ -475,7 +475,7 @@ function factors(n,  f,p) {
         PRINT i% " = " FNfactors(i%)
       NEXT
       END
-      
+
       DEF FNfactors(N%)
       LOCAL P%, f$
       IF N% = 1 THEN = "1"
@@ -535,20 +535,20 @@ v4_^#-1:/.:g00_00g1+>>0v
 {{out}}
 
 ```txt
-1 = 1 
-2 = 2 
-3 = 3 
-4 = 2 x 2 
-5 = 5 
-6 = 2 x 3 
-7 = 7 
-8 = 2 x 2 x 2 
-9 = 3 x 3 
-10 = 2 x 5 
-11 = 11 
-12 = 2 x 2 x 3 
-13 = 13 
-14 = 2 x 7 
+1 = 1
+2 = 2
+3 = 3
+4 = 2 x 2
+5 = 5
+6 = 2 x 3
+7 = 7
+8 = 2 x 2 x 2
+9 = 3 x 3
+10 = 2 x 5
+11 = 11
+12 = 2 x 2 x 3
+13 = 13
+14 = 2 x 7
 .
 .
 .
@@ -560,8 +560,8 @@ v4_^#-1:/.:g00_00g1+>>0v
 
 Code includes a dynamically extending prime number list. The program doesn't stop until you kill it, or it runs out of memory, or it overflows.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef unsigned long long ULONG;
@@ -669,7 +669,7 @@ void getPrimeFactors( int li )
     {
 	while( true )
 	{
-	    if( !( li % f ) ) 
+	    if( !( li % f ) )
 	    {
 		stringstream ss; ss << f;
 		res += ss.str();
@@ -686,7 +686,7 @@ int main( int argc, char* argv[] )
 {
     for( int x = 1; x < 101; x++ )
     {
-	cout << right << setw( 4 ) << x << ": "; 
+	cout << right << setw( 4 ) << x << ": ";
 	getPrimeFactors( x );
     }
     cout << 2144 << ": "; getPrimeFactors( 2144 );
@@ -744,7 +744,7 @@ namespace prog
 		public static void Main (string[] args)
 		{
 			for( int i=1; i<=22; i++ )
-			{				
+			{
 				List<int> f = Factorize(i);
 				Console.Write( i + ":  " + f[0] );
 				for( int j=1; j<f.Count; j++ )
@@ -754,11 +754,11 @@ namespace prog
 				Console.WriteLine();
 			}
 		}
-		
+
 		public static List<int> Factorize( int n )
 		{
 			List<int> l = new List<int>();
-		    
+
 			if ( n == 1 )
 			{
 				l.Add(1);
@@ -766,7 +766,7 @@ namespace prog
 			else
 			{
 				int k = 2;
-				while( n > 1 ) 
+				while( n > 1 )
 				{
 					while( n % k == 0 )
 					{
@@ -775,9 +775,9 @@ namespace prog
 					}
 					k++;
 				}
-			}			
+			}
 			return l;
-		}	
+		}
 	}
 }
 ```
@@ -878,7 +878,7 @@ count_primes = (max) ->
         i += 1
         if i >= digits.length
           digits.push 0
-      
+
     if factors.length == 0
       primes.push [n, [0, 1]]
       factors.push n
@@ -930,7 +930,7 @@ Auto extending prime list:
 {{out}}
 
 ```txt
-1: 
+1:
 2: 2
 3: 3
 4: 4
@@ -1184,7 +1184,7 @@ for i := 1 to 22 do
 ```scheme
 
 (define (task (nfrom 2) (range 20))
- (for ((i (in-range nfrom (+ nfrom range)))) 
+ (for ((i (in-range nfrom (+ nfrom range))))
      (writeln i "=" (string-join (prime-factors i) " x "))))
 
 
@@ -1196,26 +1196,26 @@ for i := 1 to 22 do
 
 (task 1_000_000_000)
 
-1000000000     =     2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 5 x 5 x 5 x 5 x 5 x 5 x 5 x 5 x 5    
-1000000001     =     7 x 11 x 13 x 19 x 52579    
-1000000002     =     2 x 3 x 43 x 983 x 3943    
-1000000003     =     23 x 307 x 141623    
-1000000004     =     2 x 2 x 41 x 41 x 148721    
-1000000005     =     3 x 5 x 66666667    
-1000000006     =     2 x 500000003    
-1000000007     =     1000000007    
-1000000008     =     2 x 2 x 2 x 3 x 3 x 7 x 109 x 109 x 167    
-1000000009     =     1000000009    
-1000000010     =     2 x 5 x 17 x 5882353    
-1000000011     =     3 x 29 x 11494253    
-1000000012     =     2 x 2 x 11 x 47 x 79 x 6121    
-1000000013     =     7699 x 129887    
-1000000014     =     2 x 3 x 13 x 103 x 124471    
-1000000015     =     5 x 7 x 31 x 223 x 4133    
-1000000016     =     2 x 2 x 2 x 2 x 62500001    
-1000000017     =     3 x 3 x 111111113    
-1000000018     =     2 x 500000009    
-1000000019     =     83 x 12048193    
+1000000000     =     2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 2 x 5 x 5 x 5 x 5 x 5 x 5 x 5 x 5 x 5
+1000000001     =     7 x 11 x 13 x 19 x 52579
+1000000002     =     2 x 3 x 43 x 983 x 3943
+1000000003     =     23 x 307 x 141623
+1000000004     =     2 x 2 x 41 x 41 x 148721
+1000000005     =     3 x 5 x 66666667
+1000000006     =     2 x 500000003
+1000000007     =     1000000007
+1000000008     =     2 x 2 x 2 x 3 x 3 x 7 x 109 x 109 x 167
+1000000009     =     1000000009
+1000000010     =     2 x 5 x 17 x 5882353
+1000000011     =     3 x 29 x 11494253
+1000000012     =     2 x 2 x 11 x 47 x 79 x 6121
+1000000013     =     7699 x 129887
+1000000014     =     2 x 3 x 13 x 103 x 124471
+1000000015     =     5 x 7 x 31 x 223 x 4133
+1000000016     =     2 x 2 x 2 x 2 x 62500001
+1000000017     =     3 x 3 x 111111113
+1000000018     =     2 x 500000009
+1000000019     =     83 x 12048193
 
 ```
 
@@ -1334,7 +1334,7 @@ Test Output:
 ```elixir
 defmodule RC do
   def factor(n), do: factor(n, 2, [])
-  
+
   def factor(n, i, fact) when n < i*i, do: Enum.reverse([n|fact])
   def factor(n, i, fact) do
     if rem(n,i)==0, do: factor(div(n,i), i, [i|fact]),
@@ -1702,17 +1702,17 @@ Sub getPrimeFactors(factors() As UInteger, n As UInteger)
       n \= factor
       If n = 1 Then Return
     Else
-      factor += 1  
-    End If    
+      factor += 1
+    End If
   Loop
-End Sub 
+End Sub
 
 Dim factors() As UInteger
 
 For i As UInteger = 1 To 20
   Print Using "##"; i;
-  Print " = ";   
-  If i > 1 Then 
+  Print " = ";
+  If i > 1 Then
     Erase factors
     getPrimeFactors factors(), i
     For j As Integer = LBound(factors) To UBound(factors)
@@ -1723,7 +1723,7 @@ For i As UInteger = 1 To 20
   Else
     Print i
   End If
-Next i 
+Next i
 
 Print
 Print "Press any key to quit"
@@ -1885,7 +1885,7 @@ showFactors n = show n ++ " = " ++ (intercalate " * " . map show . factorize) n
 -- Pointfree form
 showFactors = ((++) . show) <*> ((" = " ++) . intercalate " * " . map show . factorize)
 ```
- 
+
 isPrime n = n > 1 && noDivsBy primeNums n
 {{out}}
 <small>
@@ -1951,7 +1951,7 @@ link factors
 ```
 
 {{libheader|Icon Programming Library}}
-[http://www.cs.arizona.edu/icon/library/src/procs/factors.icn factors.icn provides factors] 
+[http://www.cs.arizona.edu/icon/library/src/procs/factors.icn factors.icn provides factors]
 {{out}}
 
 ```txt
@@ -2038,22 +2038,22 @@ link factors
 
 ## J
 
-'''Solution''':Use J's factoring primitive, 
+'''Solution''':Use J's factoring primitive,
 ```j>q:</lang
 
 '''Example''' (including formatting):
 ```j
    ('1 : 1',":&> ,"1 ': ',"1 ":@q:) 2+i.10
-1 : 1    
-2 : 2    
-3 : 3    
-4 : 2 2  
-5 : 5    
-6 : 2 3  
-7 : 7    
+1 : 1
+2 : 2
+3 : 3
+4 : 2 2
+5 : 5
+6 : 2 3
+7 : 7
 8 : 2 2 2
-9 : 3 3  
-10: 2 5  
+9 : 3 3
+10: 2 5
 11: 11
 ```
 
@@ -2064,38 +2064,38 @@ link factors
 {{trans|Visual Basic .NET}}
 
 ```java
-public class CountingInFactors{ 
+public class CountingInFactors{
     public static void main(String[] args){
         for(int i = 1; i<= 10; i++){
             System.out.println(i + " = "+ countInFactors(i));
         }
- 
+
         for(int i = 9991; i <= 10000; i++){
         	System.out.println(i + " = "+ countInFactors(i));
         }
     }
- 
+
     private static String countInFactors(int n){
         if(n == 1) return "1";
- 
+
         StringBuilder sb = new StringBuilder();
- 
+
         n = checkFactor(2, n, sb);
         if(n == 1) return sb.toString();
- 
+
         n = checkFactor(3, n, sb);
         if(n == 1) return sb.toString();
- 
+
         for(int i = 5; i <= n; i+= 2){
             if(i % 3 == 0)continue;
- 
+
             n = checkFactor(i, n, sb);
             if(n == 1)break;
         }
- 
+
         return sb.toString();
     }
- 
+
     private static int checkFactor(int mult, int n, StringBuilder sb){
         while(n % mult == 0 ){
             if(sb.length() > 0) sb.append(" x ");
@@ -2351,7 +2351,7 @@ function factorial$(num)
    fct = fct + 1
  end if
  wend
-end function 
+end function
 ```
 
 {{out}}
@@ -2445,7 +2445,7 @@ Module Count_in_factors    {
 				Append Factors, (k,)
 			End While
 			if n=1 then exit
-			k++ 
+			k++
 			While frac(n/k)=0
 				n/=k
 				Append Factors, (k,)
@@ -2459,7 +2459,7 @@ Module Count_in_factors    {
 				End While
 				if n=1 then exit
 				loop
-			}             
+			}
 		}
 		=Factors
 	}
@@ -2588,9 +2588,9 @@ end do;
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-n = 2; 
-While[n < 100, 
- Print[Row[Riffle[Flatten[Map[Apply[ConstantArray, #] &, FactorInteger[n]]],"*"]]]; 
+n = 2;
+While[n < 100,
+ Print[Row[Riffle[Flatten[Map[Apply[ConstantArray, #] &, FactorInteger[n]]],"*"]]];
  n++]
 ```
 
@@ -2664,71 +2664,71 @@ method runSample(arg) private static
        1 = 1
        2 = 2 <prime>
        3 = 3 <prime>
-       4 = 2 x 2 
+       4 = 2 x 2
        5 = 5 <prime>
-       6 = 2 x 3 
+       6 = 2 x 3
        7 = 7 <prime>
-       8 = 2 x 2 x 2 
-       9 = 3 x 3 
-      10 = 2 x 5 
+       8 = 2 x 2 x 2
+       9 = 3 x 3
+      10 = 2 x 5
       11 = 11 <prime>
 
 ------------------------------------------------------------
       89 to 101
 ------------------------------------------------------------
       89 = 89 <prime>
-      90 = 2 x 3 x 3 x 5 
-      91 = 7 x 13 
-      92 = 2 x 2 x 23 
-      93 = 3 x 31 
-      94 = 2 x 47 
-      95 = 5 x 19 
-      96 = 2 x 2 x 2 x 2 x 2 x 3 
+      90 = 2 x 3 x 3 x 5
+      91 = 7 x 13
+      92 = 2 x 2 x 23
+      93 = 3 x 31
+      94 = 2 x 47
+      95 = 5 x 19
+      96 = 2 x 2 x 2 x 2 x 2 x 3
       97 = 97 <prime>
-      98 = 2 x 7 x 7 
-      99 = 3 x 3 x 11 
-     100 = 2 x 2 x 5 x 5 
+      98 = 2 x 7 x 7
+      99 = 3 x 3 x 11
+     100 = 2 x 2 x 5 x 5
      101 = 101 <prime>
 
 ------------------------------------------------------------
     1000 to 1020
 ------------------------------------------------------------
-    1000 = 2 x 2 x 2 x 5 x 5 x 5 
-    1001 = 7 x 11 x 13 
-    1002 = 2 x 3 x 167 
-    1003 = 17 x 59 
-    1004 = 2 x 2 x 251 
-    1005 = 3 x 5 x 67 
-    1006 = 2 x 503 
-    1007 = 19 x 53 
-    1008 = 2 x 2 x 2 x 2 x 3 x 3 x 7 
+    1000 = 2 x 2 x 2 x 5 x 5 x 5
+    1001 = 7 x 11 x 13
+    1002 = 2 x 3 x 167
+    1003 = 17 x 59
+    1004 = 2 x 2 x 251
+    1005 = 3 x 5 x 67
+    1006 = 2 x 503
+    1007 = 19 x 53
+    1008 = 2 x 2 x 2 x 2 x 3 x 3 x 7
     1009 = 1009 <prime>
-    1010 = 2 x 5 x 101 
-    1011 = 3 x 337 
-    1012 = 2 x 2 x 11 x 23 
+    1010 = 2 x 5 x 101
+    1011 = 3 x 337
+    1012 = 2 x 2 x 11 x 23
     1013 = 1013 <prime>
-    1014 = 2 x 3 x 13 x 13 
-    1015 = 5 x 7 x 29 
-    1016 = 2 x 2 x 2 x 127 
-    1017 = 3 x 3 x 113 
-    1018 = 2 x 509 
+    1014 = 2 x 3 x 13 x 13
+    1015 = 5 x 7 x 29
+    1016 = 2 x 2 x 2 x 127
+    1017 = 3 x 3 x 113
+    1018 = 2 x 509
     1019 = 1019 <prime>
-    1020 = 2 x 2 x 3 x 5 x 17 
+    1020 = 2 x 2 x 3 x 5 x 17
 
 ------------------------------------------------------------
    10000 to 10010
 ------------------------------------------------------------
-   10000 = 2 x 2 x 2 x 2 x 5 x 5 x 5 x 5 
-   10001 = 73 x 137 
-   10002 = 2 x 3 x 1667 
-   10003 = 7 x 1429 
-   10004 = 2 x 2 x 41 x 61 
-   10005 = 3 x 5 x 23 x 29 
-   10006 = 2 x 5003 
+   10000 = 2 x 2 x 2 x 2 x 5 x 5 x 5 x 5
+   10001 = 73 x 137
+   10002 = 2 x 3 x 1667
+   10003 = 7 x 1429
+   10004 = 2 x 2 x 41 x 61
+   10005 = 3 x 5 x 23 x 29
+   10006 = 2 x 5003
    10007 = 10007 <prime>
-   10008 = 2 x 2 x 2 x 3 x 3 x 139 
+   10008 = 2 x 2 x 2 x 3 x 3 x 139
    10009 = 10009 <prime>
-   10010 = 2 x 5 x 7 x 11 x 13 
+   10010 = 2 x 5 x 7 x 11 x 13
 
 ```
 
@@ -3677,7 +3677,7 @@ def pfactor(n):
             if n > primes[-1]:
                 primes.append(n)
             return [n]
-        
+
 if __name__ == '__main__':
     mx = 5000
     for n in range(1, mx + 1):
@@ -3688,7 +3688,7 @@ if __name__ == '__main__':
                                    'x'.join(str(i) for i in factors)) )
         if n == 11:
             print('...')
-            
+
     print('\nNumber of primes gathered up to', n, 'is', len(primes))
     print(pfactor.cache_info())
 ```
@@ -3744,7 +3744,7 @@ CacheInfo(hits=3935, misses=7930, maxsize=2000, currsize=2000)
 
 findfactors <- function(num) {
   x <- c()
-  p1<- 2 
+  p1<- 2
   p2 <- 3
   everyprime <- num
   while( everyprime != 1 ) {
@@ -3861,11 +3861,11 @@ As per the task's requirements, the prime factors of   '''1'''   (unity) will be
 
 even though, strictly speaking, it should be   '''null'''.         The same applies to   '''0'''.
 
-Programming note:   if the   '''high'''   argument is negative, its positive value is used and no displaying of the 
+Programming note:   if the   '''high'''   argument is negative, its positive value is used and no displaying of the
 
-prime factors are listed, but the number of primes found is always shown.   The showing of the count of 
+prime factors are listed, but the number of primes found is always shown.   The showing of the count of
 
-primes was included to help verify the factoring (of composites). 
+primes was included to help verify the factoring (of composites).
 
 ```rexx
 /*REXX program lists the prime factors of a specified integer  (or a range of integers).*/
@@ -3907,7 +3907,7 @@ factr: procedure expose @; parse arg z 1 n,$;  if z<2  then return z   /*is Z to
                      return substr($||@||z, 1+length(@) )  /*elide superfluous header.  */
 ```
 
-{{out|output|text=  when using the default inputs:}} 
+{{out|output|text=  when using the default inputs:}}
 
 ```txt
 
@@ -3999,7 +3999,7 @@ factr: procedure expose @; parse arg z 1 n,$;  if z<2  then return z   /*is Z to
 
 This REXX version computes the   ''integer square root''   of the integer being factor   (to limit the range of factors),
 
-this makes this version about   '''50%'''   faster than the 1<sup>st</sup> REXX version. 
+this makes this version about   '''50%'''   faster than the 1<sup>st</sup> REXX version.
 
 Also, the number of early testing of prime factors was expanded.
 
@@ -4059,7 +4059,7 @@ factr: procedure expose @; parse arg z 1 n,$;  if z<2  then return z   /*is Z to
                      return substr($||@||z, 1+length(@) )  /*elide superfluous header.  */
 ```
 
-{{out|output|text=  when using the default inputs:}} 
+{{out|output|text=  when using the default inputs:}}
 
 ```txt
 
@@ -4118,7 +4118,7 @@ factr: procedure expose @; parse arg z 1 n,$;  if z<2  then return z   /*is Z to
 for i = 1 to 20
     see "" + i + " = " + factors(i) + nl
 next
- 
+
 func factors n
      f = ""
      if n = 1 return "1" ok
@@ -4198,7 +4198,7 @@ end
 $ ruby prime-count.rb -h
 Usage: prime-count.rb [-m MAXIMUM]
     -m MAXIMUM                       Count up to MAXIMUM [10]
-$ ruby prime-count.rb -m 10000 | sed -e '11,9990d' 
+$ ruby prime-count.rb -m 10000 | sed -e '11,9990d'
 1 is 1
 2 is 2
 3 is 3
@@ -4362,7 +4362,7 @@ def primeFactors( n:Int ) = {
     case None => Nil
     case Some(p) => p :: factors( n/p )
   }
-  
+
   if( n == 1 ) List(1) else factors(n)
 }
 
@@ -4661,7 +4661,7 @@ Function CountFactors(n)
 		Next
 	End If
 End Function
- 
+
 Function IsPrime(n)
 	If n = 2 Then
 		IsPrime = True
@@ -4677,7 +4677,7 @@ Function IsPrime(n)
 		Next
 	End If
 End Function
- 
+
 Function ListPrimes(n)
 	ListPrimes = ""
 	For i = 1 To n
@@ -4877,7 +4877,7 @@ fcn primeFactors(n){  // Return a list of factors of n
 
 ```txt
 
-1: 
+1:
 2: 2
 3: 3
 4: 2✕2
@@ -4908,7 +4908,7 @@ fcn primeFactors(n){  // Return a list of factors of n
 70 LET p=p+1: GO TO 50
 80 PRINT f$( TO LEN f$-3)
 90 NEXT i
-100 STOP 
+100 STOP
 110 DEF FN m(a,b)=a-INT (a/b)*b
 ```
 

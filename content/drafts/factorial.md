@@ -2076,7 +2076,8 @@ long long int factorial(long long int n)
 ### Template
 
 
-```cpp>template <int N
+```cpp
+template <int N>
 
 struct Factorial
 {
@@ -2101,8 +2102,8 @@ void foo()
 
 ===Compare all Solutions (except the meta)===
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <chrono>
 #include <vector>
 #include <numeric>
@@ -7503,8 +7504,8 @@ ok
 
 Simple recursion:
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8fac                     \
 ORDER_PP_FN(8fn(8N,                           \
@@ -7517,7 +7518,9 @@ ORDER_PP(8to_lit(8fac(8)))    // 40320
 
 Tail recursion:
 
-```c>#include <order/interpreter.h
+```c
+#include <order/interpreter.h>
+```
 
 
 #define ORDER_PP_DEF_8fac                                                                         \

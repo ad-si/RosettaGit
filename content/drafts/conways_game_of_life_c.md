@@ -68,8 +68,8 @@ void evolve(const char *field, char *t, int size)
 The function '''evolve''' needs a buffer where to store the result, and this buffer must be provided by the user calling the function. An example of usage to test the blinker and the glider is the following.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 /* some additional header needed to use the function evolve provided
    previously, or just copy/paste the given code here */
@@ -107,7 +107,7 @@ int main(int argc, char **argv)
 {
     int i;
     char *fa, *fb, *tt, op;
-    
+
     /* fast and dirty selection option */
     if ( argc > 1 )
     {
@@ -115,7 +115,7 @@ int main(int argc, char **argv)
     } else {
        op = 'b';
     }
-    
+
     switch ( op )
     {
       case 'B':

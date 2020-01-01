@@ -99,8 +99,8 @@ PG       DC     CL92' '
 ```ada
 with Ada.Containers.Ordered_Sets, Ada.Text_IO;
 use Ada.Text_IO;
- 
-procedure Duplicate is	
+
+procedure Duplicate is
 	package Int_Sets is new Ada.Containers.Ordered_Sets (Integer);
 	Nums : constant array (Natural range <>) of Integer := (1,2,3,4,5,5,6,7,1);
 	Unique : Int_Sets.Set;
@@ -253,7 +253,7 @@ on nub(xs)
             end ignoring
         end |λ|
     end script
-    
+
     nubBy(Eq, xs)
 end nub
 
@@ -264,7 +264,7 @@ on run
         nub(splitOn(space, "4 3 2 8 0 1 9 5 1 7 6 3 9 9 4 2 1 5 3 2"))), ¬
         intercalate("", ¬
             nub(characters of "abcabc ABCABC"))}
-    
+
     --> {"4 3 2 8 0 1 9 5 7 6", "abc "}
 end run
 
@@ -292,7 +292,7 @@ on intercalate(strText, lstText)
     return strJoined
 end intercalate
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -306,20 +306,20 @@ end mReturn
 
 -- nubBy :: (a -> a -> Bool) -> [a] -> [a]
 on nubBy(fnEq, xxs)
-    
+
     set lng to length of xxs
     if lng > 1 then
         set x to item 1 of xxs
         set xs to items 2 thru -1 of xxs
         set p to mReturn(fnEq)
-        
+
         -- notEq :: a -> Bool
         script notEq
             on |λ|(a)
                 not (p's |λ|(a, x))
             end |λ|
         end script
-        
+
         {x} & nubBy(fnEq, filter(notEq, xs))
     else
         xxs
@@ -407,10 +407,10 @@ MsgBox % a  ; 1,2,3,4,5,15
 
 ## AWK
 
-We produce an array a with duplicates from a string; 
-then index a second array b with the contents of a, 
-so that duplicates make only one entry; 
-then produce a string with the keys of b, 
+We produce an array a with duplicates from a string;
+then index a second array b with the contents of a,
+so that duplicates make only one entry;
+then produce a string with the keys of b,
 which is finally output.
 
 ```awk
@@ -434,7 +434,7 @@ a b c d
       NEXT
       PRINT
       END
-      
+
       DEF FNremoveduplicates(l$())
       LOCAL i%, j%, n%, i$
       n% = 1
@@ -559,8 +559,8 @@ unique_array = some_array.unique
 Since there's no way to know ahead of time how large the new data structure will need to be, we'll return a linked list instead of an array.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 struct list_node {int x; struct list_node *next;};
@@ -602,8 +602,8 @@ int main(void)
 ===O(n^2) version, pure arrays===
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
@@ -673,8 +673,8 @@ int main(void)
 
 
 Using qsort and return uniques in-place:
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int icmp(const void *a, const void *b)
@@ -741,8 +741,8 @@ int[] unique = nums.Distinct().ToArray();
 
 This version uses <tt>std::set</tt>, which requires its element type be comparable using the < operator.
 
-```cpp>#include <set
-
+```cpp
+#include <set>
 #include <iostream>
 using namespace std;
 
@@ -809,8 +809,8 @@ int main() {
 Alternative method working directly on the array:
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iterator>
 #include <algorithm>
 
@@ -831,8 +831,8 @@ int main()
 Using sort, unique, and erase on a vector.
 {{works with|C++11}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -865,7 +865,7 @@ int main() {
 mod! NO-DUP-LIST(ELEMENTS :: TRIV)  {
     [ List < Elem < Elt]  -- Sorts in Ordered Sorted Algebra
     op [] : -> List { prec: 0 }  -- Empty List
-    op _,_ : Elt Elt -> Elt { comm assoc idem prec: 80 l-assoc } 
+    op _,_ : Elt Elt -> Elt { comm assoc idem prec: 80 l-assoc }
     op [_] : Elt -> List  { prec: 0 }
 }
 
@@ -1113,14 +1113,14 @@ ELENA 4.1 :
 import extensions;
 import system'collections;
 import system'routines;
- 
+
 public program()
 {
     var nums := new int[]::(1,1,2,3,4,4);
     auto unique := new Map<int, int>();
- 
+
     nums.forEach:(n){ unique[n] := n };
- 
+
     console.printLine(unique.MapValues.asEnumerable())
 }
 ```
@@ -1144,13 +1144,13 @@ Elixir has an <code>Enum.uniq</code> built-in function.
 defmodule RC do
   # Set approach
   def uniq1(list), do: MapSet.new(list) |> MapSet.to_list
-  
+
   # Sort approach
   def uniq2(list), do: Enum.sort(list) |> Enum.dedup
-  
+
   # Go through the list approach
   def uniq3(list), do: uniq3(list, [])
-  
+
   defp uniq3([], res), do: Enum.reverse(res)
   defp uniq3([h|t], res) do
     if h in res, do: uniq3(t, res), else: uniq3(t, [h | res])
@@ -1321,7 +1321,7 @@ To test this code, you can execute:
 ```forth
 create test 1 , 2 , 3 , 2 , 6 , 4 , 5 , 3 , 6 ,
 here test - cell / constant ntest
-: .test ( n -- ) 0 ?do test i cells + ? loop ; 
+: .test ( n -- ) 0 ?do test i cells + ? loop ;
 
 test ntest 2dup cell-sort uniq .test
 ```
@@ -1425,9 +1425,9 @@ Sub removeDuplicates(a() As Integer, b() As Integer)
   b(lb) = a(lb)
   Dim count As Integer = 1
   Dim unique As Boolean
-  
+
   For i As Integer = lb + 1 To ub
-    unique = True 
+    unique = True
     For j As Integer = lb to i - 1
       If a(i) = a(j) Then
         unique = False
@@ -1440,9 +1440,9 @@ Sub removeDuplicates(a() As Integer, b() As Integer)
     End If
   Next i
 
-  If count > 0 Then Redim Preserve b(lb To lb + count - 1)  
+  If count > 0 Then Redim Preserve b(lb To lb + count - 1)
 End Sub
-  
+
 Dim a(1 To 10) As Integer = {1, 2, 1, 4, 5, 2, 15, 1, 3, 4}
 Dim b() As Integer
 removeDuplicates a(), b()
@@ -1817,7 +1817,7 @@ println "                       Set: ${set}"
 60   FOR I% = 1 TO 7
 70    READ D(I%)
 80   NEXT I%
-90   ' Remove duplicates.   
+90   ' Remove duplicates.
 100  LET R(1) = D(1)
 110  LET LRI% = 1: ' last index of result
 120  LET P% = 1: ' position
@@ -1943,7 +1943,7 @@ WRITE(Text=workspace) nums                   ! convert to string
 EDIT(Text=workspace, SortDelDbls=workspace)  ! do the job for a string
 READ(Text=workspace, ItemS=individuals) nums ! convert to numeric
 
-WRITE(ClipBoard) individuals, "individuals: ", nums ! 6 individuals: 0 1 2 3 8 9 0 0 0 0 0 0 
+WRITE(ClipBoard) individuals, "individuals: ", nums ! 6 individuals: 0 1 2 3 8 9 0 0 0 0 0 0
 ```
 
 
@@ -2026,13 +2026,13 @@ To decide which list of Ks is (L - list of values of kind K) without duplicates:
 250   FOR I=LBOUND(A)+1 TO UBOUND(A)
 260     LET A(I)=A(I-1)+RND(3)
 270   NEXT
-280 END DEF 
+280 END DEF
 290 DEF REMOVE(REF A)
 300   LET ST=0
 310   FOR I=LBOUND(A)+1 TO UBOUND(A)
 320     IF A(I-1)=A(I) THEN LET ST=ST+1
 330     IF ST>0 THEN LET A(I-ST)=A(I)
-340   NEXT 
+340   NEXT
 350   LET REMOVE=UBOUND(A)-ST
 360 END DEF
 ```
@@ -2042,23 +2042,23 @@ To decide which list of Ks is (L - list of values of kind K) without duplicates:
 
 ```txt
 START
- 1  1  2  4  5  7  9  10  12  14  16  16  16  17  18  20  20  22  23  23 
- 1  2  4  5  7  9  10  12  14  16  17  18  20  22  23 
+ 1  1  2  4  5  7  9  10  12  14  16  16  16  17  18  20  20  22  23  23
+ 1  2  4  5  7  9  10  12  14  16  17  18  20  22  23
 ok
 START
- 1  2  4  5  5  5  7  8  9  9  10  10  10  12  14  15  17  17  18  20 
- 1  2  4  5  7  8  9  10  12  14  15  17  18  20 
+ 1  2  4  5  5  5  7  8  9  9  10  10  10  12  14  15  17  17  18  20
+ 1  2  4  5  7  8  9  10  12  14  15  17  18  20
 ok
 START
- 1  3  3  4  5  6  8  10  11  12  14  16  16  16  16  18  18  19  21  21 
- 1  3  4  5  6  8  10  11  12  14  16  18  19  21 
+ 1  3  3  4  5  6  8  10  11  12  14  16  16  16  16  18  18  19  21  21
+ 1  3  4  5  6  8  10  11  12  14  16  18  19  21
 ok
 START
- 1  3  3  4  5  5  7  9  11  13  13  14  16  17  17  18  19  19  20  21 
- 1  3  4  5  7  9  11  13  14  16  17  18  19  20  21 
+ 1  3  3  4  5  5  7  9  11  13  13  14  16  17  17  18  19  19  20  21
+ 1  3  4  5  7  9  11  13  14  16  17  18  19  20  21
 ok
 START
- 1  2  3  5  5  6  6  7  8  10  12  14  15  17  17  19  21  23  25  25 
+ 1  2  3  5  5  6  6  7  8  10  12  14  15  17  17  19  21  23  25  25
  1  2  3  5  6  7  8  10  12  14  15  17  19  21  23  25
 ok
 ```
@@ -2070,7 +2070,7 @@ ok
 The verb<code> ~. </code>removes duplicate items from ''any'' array (numeric, character, or other; vector, matrix, rank-n array). For example:
 
 ```j
-   ~. 4 3 2 8 0 1 9 5 1 7 6 3 9 9 4 2 1 5 3 2  
+   ~. 4 3 2 8 0 1 9 5 1 7 6 3 9 9 4 2 1 5 3 2
 4 3 2 8 0 1 9 5 7 6
    ~. 'chthonic eleemosynary paronomasiac'
 chtoni elmsyarp
@@ -2160,7 +2160,7 @@ function unique(ary) {
 
 var ary = [1, 2, 3, "a", "b", "c", 2, 3, 4, "b", "c", "d", "4"];
 var uniq = unique(ary);
-for (var i = 0; i < uniq.length; i++) 
+for (var i = 0; i < uniq.length; i++)
     print(uniq[i] + "\t" + typeof(uniq[i]));
 ```
 
@@ -2231,7 +2231,7 @@ function uniq(lst) {
     );
   }
   u.sort(); // optional
-  
+
   return u;
 }
 ```
@@ -2271,7 +2271,7 @@ Or, to allow for customised definitions of equality and duplication, we can foll
 
 
     // TEST
-    
+
     return [
         nub('4 3 2 8 0 1 9 5 1 7 6 3 9 9 4 2 1 5 3 2'.split(' '))
         .map(function (x) {
@@ -2297,7 +2297,7 @@ Or, to allow for customised definitions of equality and duplication, we can foll
 ## jq
 
 If it is acceptable to alter the ordering of elements, then
-the builtin (fast) filter, '''unique''', can be used. It can be used for arrays with elements of any JSON type and returns the distinct elements in sorted order. 
+the builtin (fast) filter, '''unique''', can be used. It can be used for arrays with elements of any JSON type and returns the distinct elements in sorted order.
 
 ```jq
 [4,3,2,1,1,2,3,4] | unique
@@ -2310,7 +2310,7 @@ If all but the first occurrence of each element should be deleted, then the foll
 def removeAllButFirst:
 
   # The hash table functions all expect the hash table to be the input.
-  
+
   # Is x in the hash table?
   def hashed(x):
     (x|tostring) as $value
@@ -2382,7 +2382,7 @@ Set(a) = Set([4, 2, 3, 1])
 ("this"
  "that"
  "was")
- 
+
    0 1 1 2 0 *\: 0 1 2
 (0 0 0
  0 1 2
@@ -2447,7 +2447,7 @@ Built-in function:
 ## Lasso
 
 
-```Lasso 
+```Lasso
 local(
 	x = array(3,4,8,1,8,1,4,5,6,8,9,6),
 	y = array
@@ -2485,7 +2485,7 @@ end function
 
 ```
 
- 
+
  Original set of elements = [ 1 $23.19 2 elbow 3 2 Bork 4 3 elbow 2 $23.19 ]
  With duplicates removed  = [ 1 $23.19 2 elbow 3 Bork 4  ]
 
@@ -2529,12 +2529,12 @@ Lua doesn't accept Not-a-Number (NaN) and nil as table key, we can handle them l
 local items = {1,2,3,4,1,2,3,4,0/0,nil,"bird","cat","dog","dog","bird",0/0}
 
 function rmdup(t)
-  local r,dup,c,NaN = {},{},1,{}  
-  for i=1,#t do 
+  local r,dup,c,NaN = {},{},1,{}
+  for i=1,#t do
     local e = t[i]
     local k = e~=e and NaN or e
-    if k~=nil and not dup[k] then  
-      c, r[c], dup[k]= c+1, e, true 
+    if k~=nil and not dup[k] then
+      c, r[c], dup[k]= c+1, e, true
     end
   end
   return r
@@ -2667,7 +2667,7 @@ dataArray[4] = 3
 dataArray[5] = 4
 dataArray[6] = 5
 dataArray[7] = 5
- 
+
 resultArray[1] = dataArray[1]
 lastResultIndex = 1
 position = 1
@@ -2705,7 +2705,7 @@ A bit like option 3, except copying each element as encountered, and checking to
 fun mem (x, []) = false
       | (x eql a, a :: as) = true
       | (x, _ :: as) = mem (x, as)
-;	  
+;
 fun remdup
 		([], uniq) = rev uniq
 	|	(h :: t, uniq) = if mem(h, uniq) then
@@ -2713,8 +2713,8 @@ fun remdup
 			else
 				remdup (t, h :: uniq)
 	|	L =	remdup (L, [])
-	
-;	
+
+;
 println ` implode ` remdup ` explode "the quick brown fox jumped over the lazy dog";
 println ` remdup [1,2,3,4,4,3,2,1, "dog","cat","dog", 1.1, 2.2, 3.3, 1.1];
 
@@ -2922,7 +2922,7 @@ loop ix = 1 to lists[0]
 
 return
 
--- 
+--
 ### =======================================================================
 
 method remove_dups(list) public static
@@ -2939,7 +2939,7 @@ method remove_dups(list) public static
 
   return newlist.space
 
--- 
+--
 ### =======================================================================
 
 method array2wordlist(ra = Rexx[]) public static
@@ -3448,7 +3448,7 @@ end;
 Input:
   6  6  1  5  6  2  1  7  5 22  4 19  1  1  6  8  9 10 11 12
 Unique elements are:
-  6  1  5  2  7 22  4 19  8  9 10 11 12   
+  6  1  5  2  7 22  4 19  8  9 10 11 12
 ```
 
 
@@ -3894,7 +3894,7 @@ print mold unique [1 $23.19 2 elbow 3 2 Bork 4 3 elbow 2 $23.19]
 
 ## REXX
 
-Note that in REXX, strings are quite literal.  
+Note that in REXX, strings are quite literal.
 :*   '''+7'''          is different from     '''7'''    (but compares numerically equal).
 :*   '''00'''          is different from     '''0'''    (but compares numerically equal).
 :*   '''─0'''          is different from     '''0'''    (but compares numerically equal).
@@ -3902,7 +3902,7 @@ Note that in REXX, strings are quite literal.
 :*   '''Ab'''          is different from          '''AB'''   (but can compare equal if made ''case insensitive'').
 
 Note that all the REXX examples below don't care what   ''type''   of element is used,
-integer, floating point, character, binary,   ···  
+integer, floating point, character, binary,   ···
 
 ===version 1, using method 1===
 
@@ -3952,7 +3952,7 @@ say 'modified list:'     space($)                /*stick a fork in it,  we're al
 say right( words(z), 17, '─')    'words in the modified list.'
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -3972,40 +3972,40 @@ say 'modified list:'     space(new)              /*stick a fork in it,  we're al
 say right( words(new), 17, '─')    'words in the modified list.'
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
 ===version 4, using method 1 (hash table) via REXX stems===
 
 ```rexx
-/* REXX ************************************************************ 
-* 26.11.2012 Walter Pachl 
-* added: show multiple occurrences                                              
-**********************************************************************/ 
-old='2 3 5 7 11 13 17 19 cats 222 -100.2 +11 1.1 +7 7. 7 5 5',          
-    '3 2 0 4.4 2'                                                       
-say 'old list='old                                                      
-say 'words in the old list=' words(old)                                 
-new=''                                                                  
-found.=0                                                                
-count.=0                                                                
-Do While old<>''                                                        
-  Parse Var old w old                                                   
-  If found.w=0 Then Do                                                  
-    new=new w                                                           
-    found.w=1                                                           
-    End                                                                 
-  count.w=count.w+1                                                     
-  End                                                                   
-say 'new list='strip(new)                                               
-say 'words in the new list=' words(new)                                 
-Say 'Multiple occurrences:'                                             
-Say 'occ word'                                                          
-Do While new<>''                                                        
-  Parse Var new w new                                                   
-  If count.w>1 Then                                                     
-    Say right(count.w,3) w                                              
+/* REXX ************************************************************
+* 26.11.2012 Walter Pachl
+* added: show multiple occurrences
+**********************************************************************/
+old='2 3 5 7 11 13 17 19 cats 222 -100.2 +11 1.1 +7 7. 7 5 5',
+    '3 2 0 4.4 2'
+say 'old list='old
+say 'words in the old list=' words(old)
+new=''
+found.=0
+count.=0
+Do While old<>''
+  Parse Var old w old
+  If found.w=0 Then Do
+    new=new w
+    found.w=1
+    End
+  count.w=count.w+1
+  End
+say 'new list='strip(new)
+say 'words in the new list=' words(new)
+Say 'Multiple occurrences:'
+Say 'occ word'
+Do While new<>''
+  Parse Var new w new
+  If count.w>1 Then
+    Say right(count.w,3) w
   End
 ```
 
@@ -4013,16 +4013,16 @@ Do While new<>''
 
 ```txt
 
-old list=2 3 5 7 11 13 17 19 cats 222 -100.2 +11 1.1 +7 7. 7 5 5 3 2 0 4.4 2 
-words in the old list= 23                                                    
-new list=2 3 5 7 11 13 17 19 cats 222 -100.2 +11 1.1 +7 7. 0 4.4             
-words in the new list= 17                                                    
-Multiple occurrences:                                                        
-occ word                                                                     
-  3 2                                                                        
-  2 3                                                                        
-  3 5                                                                        
-  2 7  
+old list=2 3 5 7 11 13 17 19 cats 222 -100.2 +11 1.1 +7 7. 7 5 5 3 2 0 4.4 2
+words in the old list= 23
+new list=2 3 5 7 11 13 17 19 cats 222 -100.2 +11 1.1 +7 7. 0 4.4
+words in the new list= 17
+Multiple occurrences:
+occ word
+  3 2
+  2 3
+  3 5
+  2 7
 
 ```
 
@@ -4035,7 +4035,7 @@ occ word
 
 list = ["Now", "is", "the", "time", "for", "all", "good", "men", "to", "come", "to", "the", "aid", "of", "the", "party."]
 for i = 1 to len(list)
-    for j = i + 1 to len(list) 
+    for j = i + 1 to len(list)
         if list[i] = list[j] del(list, j) j-- ok
     next
 next
@@ -4067,7 +4067,7 @@ p ary.uniq              # => [1, 2, "redundant", [1, 2, 3]]
 ```
 
 
-You can also write your own uniq method. 
+You can also write your own uniq method.
 
 ```ruby
 class Array
@@ -4134,7 +4134,7 @@ for i = 1 to len(a$)
   b$ = b$ + a1$ + " "
 [nextWord]
 next i
- 
+
  print "Dups:";a$
  print "No Dups:";b$
 ```
@@ -4142,7 +4142,7 @@ next i
 
 ```txt
 Dups:2 3 5 7 11 13 17 19 cats 222 -100.2 +11 1.1 +7 7. 7 5 5 3 2 0 4.4 2
-No Dups:2 3 5 7 11 13 17 19 cats 222 -100.2 +11 1.1 +7 7. 0 4.4 
+No Dups:2 3 5 7 11 13 17 19 cats 222 -100.2 +11 1.1 +7 7. 0 4.4
 ```
 
 
@@ -4247,7 +4247,7 @@ The function 'delete-duplicates' is also available in srfi-1.
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const proc: main is func
   local
     const array integer: data is [] (1, 3, 2, 9, 1, 2, 3, 8, 8, 1, 0, 2);
@@ -4361,7 +4361,7 @@ say ary.last_uniq.dump;
 
 
 ```slate
-[|:s| #(1 2 3 4 1 2 3 4) >> s] writingAs: Set. 
+[|:s| #(1 2 3 4 1 2 3 4) >> s] writingAs: Set.
 
 "==> {"Set traitsWindow" 1. 2. 3. 4}"
 ```
@@ -4387,7 +4387,7 @@ Set (1 2 #symbol 'world' #another 'hello' )
 
 
 the above has the disadvantage of loosing the original order (because Sets are unordered, and the hashing shuffles elements into an arbitrary order).
-When tried, I got: 
+When tried, I got:
 
 ```txt
 Set('world' 1 #another 'hello' #symbol 2)
@@ -4572,8 +4572,8 @@ println(uniq([3,2,1,2,3,4]))
 
 ## Tcl
 
-The concept of an "array" in Tcl is strictly associative - and since there cannot be duplicate keys, there cannot be a redundant element in an array. 
-What is called "array" in many other languages is probably better represented by the "list" in Tcl (as in LISP). 
+The concept of an "array" in Tcl is strictly associative - and since there cannot be duplicate keys, there cannot be a redundant element in an array.
+What is called "array" in many other languages is probably better represented by the "list" in Tcl (as in LISP).
 With the correct option, the <code>lsort</code> command will remove duplicates.
 
 ```tcl
@@ -4605,7 +4605,7 @@ b'A'A'5'1'2'3'2'3'4
 
 ```
 
-or 
+or
 
 ```tuscript
 
@@ -4710,7 +4710,7 @@ Sub Main()
 Dim myArr() As Variant, i As Long
 
     myArr = Remove_Duplicate(Array(1.23456789101112E+16, True, False, True, "Alpha", 1, 235, 4, 1.25, 1.25, "Beta", 1.23456789101112E+16, "Delta", "Alpha", "Charlie", 1, 2, "Foxtrot", "Foxtrot", "Alpha", 235))
-'return : 
+'return :
     For i = LBound(myArr) To UBound(myArr)
         Debug.Print myArr(i)
     Next
@@ -4738,18 +4738,18 @@ End Function
 {{out}}
 
 ```txt
- 1.23456789101112E+16 
+ 1.23456789101112E+16
 True
 False
 Alpha
- 1 
- 235 
- 4 
- 1.25 
+ 1
+ 235
+ 4
+ 1.25
 Beta
 Delta
 Charlie
- 2 
+ 2
 Foxtrot
 ```
 
@@ -4857,7 +4857,7 @@ SCAN
     lcOut = lcOut + TRANSFORM(num) + ","
 ENDSCAN
 lcOut = LEFT(lcOut, LEN(lcOut)-1)
-? lcOut	
+? lcOut
 
 FUNCTION RanInt(tnLow As Integer, tnHigh As Integer) As Integer
 RETURN INT((tnHigh - tnLow + 1)*RAND() + tnLow)

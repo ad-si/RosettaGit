@@ -13,7 +13,7 @@ tags = []
 {{task|Mathematical operations}}
 
 ;Task:
-Implement one algorithm (or more) to compute the [[wp:Gamma function|Gamma]] (<math>\Gamma</math>) function (in the real field only). 
+Implement one algorithm (or more) to compute the [[wp:Gamma function|Gamma]] (<math>\Gamma</math>) function (in the real field only).
 
 If your language has the function as built-in or you know a library which has it, compare your implementation's results with the results of the built-in/library function.
 
@@ -59,7 +59,7 @@ LOOPI    EQU   *
          LH    R4,NT
          BCTR  R4,0
          SLA   R4,2
-         LE    F0,T(R4)         
+         LE    F0,T(R4)
          STE   F0,SUM           sum=t(nt)
          LH    R3,NT
          BCTR  R3,0
@@ -84,7 +84,7 @@ ENDLOOPJ EQU   *
          LE    F0,GAMMA
          BAL   R14,CONVERT
          MVC   BUF+9(13),CONVERTM
-         WTO   MF=(E,WTOMSG)		  
+         WTO   MF=(E,WTOMSG)
          BCT   R2,LOOPI
 *        ----  END CODE
          CNOP  0,4
@@ -125,7 +125,7 @@ T        DC    E'1.00000000000000000000'
          DC    E'0.00000000000000000141'
          DC    E'-0.00000000000000000023'
          DC    E'0.00000000000000000002'
-TEND     DS    0E 
+TEND     DS    0E
 X        DS    E
 SUM      DS    E
 GAMMA    DS    E
@@ -178,18 +178,18 @@ CONVERT6 SR    R8,R8
          LCR   R9,R9
 CONVERT7 ST    R9,CONVERTB
          CVD   R9,CONVERTP
-         MVC   CONVERTD,=X'402020202120202020202020' 
+         MVC   CONVERTD,=X'402020202120202020202020'
          ED    CONVERTD,CONVERTP+2
-         MVC   CONVERTM(6),CONVERTD 
+         MVC   CONVERTM(6),CONVERTD
          MVI   CONVERTM+6,C'.'
          MVC   CONVERTM+7(6),CONVERTD+6
          BR    R14
 *
 CONVERTC DC    E'1E6'           X'45F42400'
 CONVERTF DS    F
-CONVERTB DS    F                
+CONVERTB DS    F
 CONVERTS DS    X
-CONVERTM DS    CL13       
+CONVERTM DS    CL13
 CONVERTD DS    CL12
 CONVERTP DS    PL8
 *
@@ -238,8 +238,8 @@ CONVERTP DS    PL8
 
 ## Ada
 
-The implementation uses [[wp:Taylor series|Taylor series]] coefficients of <span style="font-family:serif;">&Gamma;(x+1)<sup>-1</sup>, |x| &lt; &infin;</span>. 
-The coefficients are taken from ''Mathematical functions and their approximations'' 
+The implementation uses [[wp:Taylor series|Taylor series]] coefficients of <span style="font-family:serif;">&Gamma;(x+1)<sup>-1</sup>, |x| &lt; &infin;</span>.
+The coefficients are taken from ''Mathematical functions and their approximations''
 by [[wp:Yudell Luke|Yudell L. Luke]].
 
 ```ada
@@ -331,12 +331,12 @@ end Test_Gamma;
 
 ```algol68
 # Coefficients used by the GNU Scientific Library #
-[]LONG REAL p = ( LONG    0.99999 99999 99809 93, 
-                  LONG  676.52036 81218 851,    
-                 -LONG 1259.13921 67224 028, 
-                  LONG  771.32342 87776 5313,  
-                 -LONG  176.61502 91621 4059,  
-                  LONG   12.50734 32786 86905, 
+[]LONG REAL p = ( LONG    0.99999 99999 99809 93,
+                  LONG  676.52036 81218 851,
+                 -LONG 1259.13921 67224 028,
+                  LONG  771.32342 87776 5313,
+                 -LONG  176.61502 91621 4059,
+                  LONG   12.50734 32786 86905,
                  -LONG    0.13857 10952 65720 12,
                   LONG    9.98436 95780 19571 6e-6,
                   LONG    1.50563 27351 49311 6e-7);
@@ -403,14 +403,14 @@ PROC sterling gamma = (LONG REAL n)LONG REAL:
 ( # improves for values much greater then 1 #
   long sqrt(2*long pi/n)*(n/long e)**n
 );
- 
+
 PROC factorial = (LONG INT n)LONG REAL:
 (
   IF n=0 OR n=1 THEN 1
   ELIF n=2 THEN 2
   ELSE n*factorial(n-1) FI
 );
- 
+
 REF[]LONG REAL fm := NIL;
 
 PROC sponge gamma = (LONG REAL x)LONG REAL:
@@ -418,7 +418,7 @@ PROC sponge gamma = (LONG REAL x)LONG REAL:
   INT a = 12; # alter to get required precision #
   REF []LONG REAL fm := NIL;
   LONG REAL res;
- 
+
   IF fm :=: REF[]LONG REAL(NIL) THEN
     fm := HEAP[0:a-1]LONG REAL;
     fm[0] := long sqrt(LONG 2*long pi);
@@ -507,20 +507,20 @@ gamma( 70)= 1.711224524e98, 1.711224524281e98, 1.711224524281e98, 7.57303907062e
 
 ```ANSI Standard BASIC
 100 DECLARE EXTERNAL FUNCTION FNlngamma
-110 
+110
 120 DEF FNgamma(z) = EXP(FNlngamma(z))
-130 
+130
 140 FOR x = 0.1 TO 2.05 STEP 0.1
 150    PRINT USING$("#.#",x), USING$("##.############", FNgamma(x))
 160 NEXT x
 170 END
-180 
+180
 190 EXTERNAL FUNCTION FNlngamma(z)
 200 DIM lz(0 TO 6)
 210 RESTORE
 220 MAT READ lz
 230 DATA 1.000000000190015, 76.18009172947146, -86.50532032941677, 24.01409824083091, -1.231739572450155, 0.0012086509738662, -0.000005395239385
-240 IF z < 0.5 THEN 
+240 IF z < 0.5 THEN
 250    LET FNlngamma = LOG(PI / SIN(PI * z)) - FNlngamma(1.0 - z)
 260    EXIT FUNCTION
 270 END IF
@@ -547,79 +547,79 @@ The code is based on: "Computation of Special Functions" Zhang and Jin,
 John Wiley and Sons, 1996
 */
 
-SetFormat FloatFast, 0.9e 
+SetFormat FloatFast, 0.9e
 
-Loop 10 
-   MsgBox % GAMMA(A_Index/3) "`n" GAMMA(A_Index*10) 
+Loop 10
+   MsgBox % GAMMA(A_Index/3) "`n" GAMMA(A_Index*10)
 
-GAMMA(a,x=0) {  ; upper incomplete gamma: Integral(t**(a-1)*e**-t, t = x..inf) 
-   If (a > 171 || x < 0) 
-      Return 2.e308   ; overflow 
+GAMMA(a,x=0) {  ; upper incomplete gamma: Integral(t**(a-1)*e**-t, t = x..inf)
+   If (a > 171 || x < 0)
+      Return 2.e308   ; overflow
 
-   xam := x > 0 ? -x+a*ln(x) : 0 
-   If (xam > 700) 
-      Return 2.e308   ; overflow 
+   xam := x > 0 ? -x+a*ln(x) : 0
+   If (xam > 700)
+      Return 2.e308   ; overflow
 
-   If (x > 1+a) {     ; no need for gamma(a) 
-      t0 := 0, k := 60 
-      Loop 60 
-          t0 := (k-a)/(1+k/(x+t0)), --k 
-      Return exp(xam) / (x+t0) 
-   } 
+   If (x > 1+a) {     ; no need for gamma(a)
+      t0 := 0, k := 60
+      Loop 60
+          t0 := (k-a)/(1+k/(x+t0)), --k
+      Return exp(xam) / (x+t0)
+   }
 
-   r := 1, ga := 1.0  ; compute ga = gamma(a) ... 
-   If (a = round(a))  ; if integer: factorial 
-      If (a > 0) 
-         Loop % a-1 
-            ga *= A_Index 
-      Else            ; negative integer 
-         ga := 1.7976931348623157e+308 ; Dmax 
-   Else {             ; not integer 
-      If (abs(a) > 1) { 
-         z := abs(a) 
-         m := floor(z) 
-         Loop %m% 
-             r *= (z-A_Index) 
-         z -= m 
-      } 
-      Else 
-         z := a 
+   r := 1, ga := 1.0  ; compute ga = gamma(a) ...
+   If (a = round(a))  ; if integer: factorial
+      If (a > 0)
+         Loop % a-1
+            ga *= A_Index
+      Else            ; negative integer
+         ga := 1.7976931348623157e+308 ; Dmax
+   Else {             ; not integer
+      If (abs(a) > 1) {
+         z := abs(a)
+         m := floor(z)
+         Loop %m%
+             r *= (z-A_Index)
+         z -= m
+      }
+      Else
+         z := a
 
-      gr := (((((((((((((((((((((((       0.14e-14 
-          *z - 0.54e-14)             *z - 0.206e-13)          *z + 0.51e-12) 
-          *z - 0.36968e-11)          *z + 0.77823e-11)        *z + 0.1043427e-9) 
-          *z - 0.11812746e-8)        *z + 0.50020075e-8)      *z + 0.6116095e-8) 
-          *z - 0.2056338417e-6)      *z + 0.1133027232e-5)    *z - 0.12504934821e-5) 
-          *z - 0.201348547807e-4)    *z + 0.1280502823882e-3) *z - 0.2152416741149e-3) 
-          *z - 0.11651675918591e-2)  *z + 0.7218943246663e-2) *z - 0.9621971527877e-2) 
-          *z - 0.421977345555443e-1) *z + 0.1665386113822915) *z - 0.420026350340952e-1) 
-          *z - 0.6558780715202538)   *z + 0.5772156649015329) *z + 1 
+      gr := (((((((((((((((((((((((       0.14e-14
+          *z - 0.54e-14)             *z - 0.206e-13)          *z + 0.51e-12)
+          *z - 0.36968e-11)          *z + 0.77823e-11)        *z + 0.1043427e-9)
+          *z - 0.11812746e-8)        *z + 0.50020075e-8)      *z + 0.6116095e-8)
+          *z - 0.2056338417e-6)      *z + 0.1133027232e-5)    *z - 0.12504934821e-5)
+          *z - 0.201348547807e-4)    *z + 0.1280502823882e-3) *z - 0.2152416741149e-3)
+          *z - 0.11651675918591e-2)  *z + 0.7218943246663e-2) *z - 0.9621971527877e-2)
+          *z - 0.421977345555443e-1) *z + 0.1665386113822915) *z - 0.420026350340952e-1)
+          *z - 0.6558780715202538)   *z + 0.5772156649015329) *z + 1
 
-      ga := 1.0/(gr*z) * r 
-      If (a < -1) 
-         ga := -3.1415926535897931/(a*ga*sin(3.1415926535897931*a)) 
-   } 
+      ga := 1.0/(gr*z) * r
+      If (a < -1)
+         ga := -3.1415926535897931/(a*ga*sin(3.1415926535897931*a))
+   }
 
-   If (x = 0)         ; complete gamma requested 
-      Return ga 
+   If (x = 0)         ; complete gamma requested
+      Return ga
 
-   s := 1/a           ; here x <= 1+a 
-   r := s 
-   Loop 60 { 
-      r *= x/(a+A_Index) 
-      s += r 
-      If (abs(r/s) < 1.e-15) 
-         break 
-   } 
-   Return ga - exp(xam)*s 
+   s := 1/a           ; here x <= 1+a
+   r := s
+   Loop 60 {
+      r *= x/(a+A_Index)
+      s += r
+      If (abs(r/s) < 1.e-15)
+         break
+   }
+   Return ga - exp(xam)*s
 }
 
 /*
 The 10 results shown:
-2.678938535e+000  1.354117939e+000  1.0               8.929795115e-001  9.027452930e-001 
-3.628800000e+005  1.216451004e+017  8.841761994e+030  2.039788208e+046  6.082818640e+062 
+2.678938535e+000  1.354117939e+000  1.0               8.929795115e-001  9.027452930e-001
+3.628800000e+005  1.216451004e+017  8.841761994e+030  2.039788208e+046  6.082818640e+062
 
-1.000000000e+000  1.190639348e+000  1.504575489e+000  2.000000000e+000  2.778158479e+000 
+1.000000000e+000  1.190639348e+000  1.504575489e+000  2.000000000e+000  2.778158479e+000
 1.386831185e+080  1.711224524e+098  8.946182131e+116  1.650795516e+136  9.332621544e+155
 */
 ```
@@ -634,14 +634,14 @@ Uses the Lanczos approximation.
 ```bbcbasic
       *FLOAT64
       INSTALL @lib$+"FNUSING"
-      
+
       FOR x = 0.1 TO 2.05 STEP 0.1
         PRINT FNusing("#.#",x), FNusing("##.############", FNgamma(x))
       NEXT
       END
-      
+
       DEF FNgamma(z) = EXP(FNlngamma(z))
-      
+
       DEF FNlngamma(z)
       LOCAL a, b, i%, lz()
       DIM lz(6)
@@ -693,8 +693,8 @@ Uses the Lanczos approximation.
 This implements [[wp:Stirling's approximation|Stirling's approximation]] and [[wp:Spouge's approximation|Spouge's approximation]].
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <gsl/gsl_sf_gamma.h>
@@ -716,7 +716,7 @@ double sp_gamma(double z)
   static double *c = NULL;
   int k;
   double accm;
- 
+
   if ( c == NULL ) {
     double k1_factrl = 1.0; /* (k - 1)!*(-1)^k with 0!==1*/
     c = c_space;
@@ -741,7 +741,7 @@ int main()
 
   printf("%15s%15s%15s%15s\n", "Stirling", "Spouge", "GSL", "libm");
   for(x=1.0; x <= 10.0; x+=1.0) {
-    printf("%15.8lf%15.8lf%15.8lf%15.8lf\n", st_gamma(x/3.0), sp_gamma(x/3.0), 
+    printf("%15.8lf%15.8lf%15.8lf%15.8lf\n", st_gamma(x/3.0), sp_gamma(x/3.0),
 	   gsl_sf_gamma(x/3.0), tgamma(x/3.0));
   }
   return 0;
@@ -778,7 +778,7 @@ static int g = 7;
 static double[] p = {0.99999999999980993, 676.5203681218851, -1259.1392167224028,
 	     771.32342877765313, -176.61502916214059, 12.507343278686905,
 	     -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7};
-		 
+
 Complex Gamma(Complex z)
 {
     // Reflection formula
@@ -807,7 +807,7 @@ Complex Gamma(Complex z)
 
 
 ```clojure
-(defn gamma 
+(defn gamma
   "Returns Gamma(z + 1 = number) using Lanczos approximation."
   [number]
   (if (< number 0.5)
@@ -820,7 +820,7 @@ Complex Gamma(Complex z)
          (* (Math/sqrt (* 2 Math/PI))
 	    (Math/pow (+ n 7 0.5) (+ n 0.5))
 	    (Math/exp (- (+ n 7 0.5)))
-            (+ (first c) 
+            (+ (first c)
                (apply + (map-indexed #(/ %2 (+ n %1 1)) (next c))))))))
 ```
 
@@ -891,7 +891,7 @@ Complex Gamma(Complex z)
 (defun gamma (x)
   (let ((y (- x 1.0))
         (sum (nth (- numcoeff 1) tcoeff)))
-    (loop for i from (- numcoeff 2) downto 0 do 
+    (loop for i from (- numcoeff 2) downto 0 do
           (setf sum (+ (* sum y) (nth i tcoeff))))
     (/ 1.0 sum)))
 
@@ -946,8 +946,8 @@ end
 
 # Lanczos Method
 def p
-  [ 0.99999_99999_99809_93, 676.52036_81218_851, -1259.13921_67224_028, 
-    771.32342_87776_5313, -176.61502_91621_4059,  12.50734_32786_86905, 
+  [ 0.99999_99999_99809_93, 676.52036_81218_851, -1259.13921_67224_028,
+    771.32342_87776_5313, -176.61502_91621_4059,  12.50734_32786_86905,
     -0.13857_10952_65720_12, 9.98436_95780_19571_6e-6, 1.50563_27351_49311_6e-7 ]
 end
 
@@ -973,7 +973,7 @@ puts "                Taylor Series         Lanczos Method        Builtin Functi
 {{out}}
 
 ```txt
- 
+
                 Taylor Series         Lanczos Method        Builtin Function
 gamma(0.33) = 2.67893853470775e+00  2.67893853470775e+00  2.67893853470775e+00
 gamma(0.67) = 1.35411793942640e+00  1.35411793942640e+00  1.35411793942640e+00
@@ -1250,7 +1250,7 @@ contains
   pure function intfuncgamma(x, y) result(z)
     real :: z
     real, intent(in) :: x, y
-    
+
     z = x**(y-1.0) * exp(-x)
   end function intfuncgamma
 
@@ -1298,7 +1298,7 @@ contains
 
   end function my_gamma
 
-  
+
   recursive function lacz_gamma(a) result(g)
     real, intent(in) :: a
     real :: g
@@ -1367,37 +1367,37 @@ Function gammaStirling (x As Double) As Double
 End Function
 
 Function gammaLanczos (x As Double) As Double
-  Dim p(0 To 8) As Double = _ 
+  Dim p(0 To 8) As Double = _
   { _
-       0.99999999999980993, _ 
-     676.5203681218851, _ 
-   -1259.1392167224028, _			     	  
-     771.32342877765313, _ 
-    -176.61502916214059, _ 
+       0.99999999999980993, _
+     676.5203681218851, _
+   -1259.1392167224028, _
+     771.32342877765313, _
+    -176.61502916214059, _
       12.507343278686905, _
-      -0.13857109526572012, _ 
+      -0.13857109526572012, _
        9.9843695780195716e-6, _
        1.5056327351493116e-7 _
   }
- 
+
   Dim As Integer g = 7
   If x < 0.5 Then Return pi / (Sin(pi * x) * gammaLanczos(1-x))
   x -= 1
   Dim a As Double = p(0)
   Dim t As Double = x + g + 0.5
-  
+
   For i As Integer = 1 To 8
     a += p(i) / (x + i)
-  Next		 
- 
-  Return Sqr(2.0 * pi) * (t ^ (x + 0.5)) * Exp(-t) * a  
+  Next
+
+  Return Sqr(2.0 * pi) * (t ^ (x + 0.5)) * Exp(-t) * a
 End Function
 
 Print " x", "    Stirling",, "    Lanczos"
 Print
 For i As Integer = 1 To 20
    Dim As Double d = i / 10.0
-   Print   Using "#.##"; d; 
+   Print   Using "#.##"; d;
    Print , Using "#.###############"; gammaStirling(d);
    Print , Using "#.###############"; gammaLanczos(d)
 Next
@@ -1449,7 +1449,7 @@ Solved using the Lanczos Coefficients described in Numerical Recipes (Press et a
 
 open System
 
-let gamma z = 
+let gamma z =
     let lanczosCoefficients = [76.18009172947146;-86.50532032941677;24.01409824083091;-1.231739572450155;0.1208650973866179e-2;-0.5395239384953e-5]
     let rec sumCoefficients acc i coefficients =
         match coefficients with
@@ -1709,7 +1709,7 @@ end
 
 ## J
 
-This code shows the built-in method, which works for any value (positive, negative and complex numbers -- but note that negative integer arguments give infinite results). 
+This code shows the built-in method, which works for any value (positive, negative and complex numbers -- but note that negative integer arguments give infinite results).
 
 ```j
 gamma=: !@<:
@@ -1749,7 +1749,7 @@ public class GammaFunction {
 	public double st_gamma(double x){
 		return Math.sqrt(2*Math.PI/x)*Math.pow((x/Math.E), x);
 	}
-	
+
 	public double la_gamma(double x){
 		double[] p = {0.99999999999980993, 676.5203681218851, -1259.1392167224028,
 			     	  771.32342877765313, -176.61502916214059, 12.507343278686905,
@@ -1763,10 +1763,10 @@ public class GammaFunction {
 		for(int i = 1; i < p.length; i++){
 			a += p[i]/(x+i);
 		}
-		
+
 		return Math.sqrt(2*Math.PI)*Math.pow(t, x+0.5)*Math.exp(-t)*a;
 	}
-	
+
 	public static void main(String[] args) {
 		GammaFunction test = new GammaFunction();
 		System.out.println("Gamma \t\tStirling \t\tLanczos");
@@ -1882,7 +1882,7 @@ def gamma_by_lanczos:
     | ($x + 7.5) as $t
     |  reduce range(1; $p|length) as $i
           ($p[0]; . + ($p[$i]/($x + $i) ))
-       * ((2*$pi) | sqrt) * ($t | pow($x+0.5)) * ((-$t)|exp) 
+       * ((2*$pi) | sqrt) * ($t | pow($x+0.5)) * ((-$t)|exp)
     end;
 ```
 
@@ -1904,7 +1904,7 @@ contrast the Taylor series and Lanczos methods with built-in tgamma:
 
 ```jq
 def pad(n): tostring | . + (n - length) * " ";
- 
+
 "                 i:      gamma                lanczos              tgamma",
 (range(1;11)
  | . / 3.0
@@ -1942,19 +1942,19 @@ function gamma(x) {
         771.32342877765313, -176.61502916214059, 12.507343278686905,
         -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7
     ];
- 
+
     var g = 7;
     if (x < 0.5) {
         return Math.PI / (Math.sin(Math.PI * x) * gamma(1 - x));
     }
- 
+
     x -= 1;
     var a = p[0];
     var t = x + g + 0.5;
     for (var i = 1; i < p.length; i++) {
         a += p[i] / (x + i);
     }
- 
+
     return Math.sqrt(2 * Math.PI) * Math.pow(t, x + 0.5) * Math.exp(-t) * a;
 }
 
@@ -2084,9 +2084,9 @@ fun gammaStirling(x: Double): Double = Math.sqrt(2.0 * Math.PI / x) * Math.pow(x
 fun gammaLanczos(x: Double): Double {
     var xx = x
     val p = doubleArrayOf(
-        0.99999999999980993, 
+        0.99999999999980993,
       676.5203681218851,
-    -1259.1392167224028,			     	  
+    -1259.1392167224028,
       771.32342877765313,
      -176.61502916214059,
        12.507343278686905,
@@ -2264,7 +2264,7 @@ Module PrepareLambdaFunctions {
             For i= 1@ To 8@ {
                   a += p(i) / (x + i)
             }
-             = Sqrt(2.0 * pi) * (t ^ (x + 0.5)) * Exp(-t) * a  
+             = Sqrt(2.0 * pi) * (t ^ (x + 0.5)) * Exp(-t) * a
       }
       Push gammaStirling, gammaLanczos
 }
@@ -2408,7 +2408,7 @@ gamma_coeff(n) := block([a: makelist(1, n)],
    for k from 3 thru n do
       a[k]: bfloat((sum((-1)^j * zeta(j) * a[k - j], j, 2, k - 1) - a[2] * a[k - 1]) / (1 - k * a[1])),
    a)$
-      
+
 poleval(a, x) := block([y: 0],
    for k from length(a) thru 1 step -1 do
       y: y * x + a[k],
@@ -2460,7 +2460,7 @@ PROCEDURE Taylor(x: EXTENDED): EXTENDED =
     END;
     RETURN 1.0X0 / sum;
   END Taylor;
-  
+
 BEGIN
   FOR i := 1 TO 10 DO
     Put(Extended(Taylor(FLOAT(i, EXTENDED) / 3.0X0), style := Style.Sci) & "\n");
@@ -2599,7 +2599,7 @@ let _ =
   for i = 1 to 20 do
     let z = float i /. 10. in
     Printf.printf "%-10.8g\t%10.8e\t%10.8e\t%10.8e\n"
-    		  z 
+    		  z
 		  (mirror Lanczos.gamma z)
 		  (mirror Stirling.gamma z)
 		  (mirror Stirling2.gamma z)
@@ -2704,9 +2704,9 @@ Which suggests that the built-in gamma uses the same approximation.
 ```oforth
 import: math
 
-[ 
-   676.5203681218851,  -1259.1392167224028, 771.32342877765313, 
-  -176.61502916214059, 12.507343278686905, -0.13857109526572012, 
+[
+   676.5203681218851,  -1259.1392167224028, 771.32342877765313,
+  -176.61502916214059, 12.507343278686905, -0.13857109526572012,
    9.9843695780195716e-6, 1.5056327351493116e-7
 ] const: Gamma.Lanczos
 
@@ -2716,7 +2716,7 @@ import: math
    z 1.0 - ->z
    0.99999999999980993 Gamma.Lanczos size loop: i [ i Gamma.Lanczos at z i + / + ]
    z Gamma.Lanczos size + 0.5 - ->t
-   2 Pi * sqrt * 
+   2 Pi * sqrt *
    t z 0.5 + powf *
    t neg exp * ;
 ```
@@ -2798,7 +2798,7 @@ use constant e  => exp(1);
 # Normally would be:  use Math::MPFR
 # but this will use it if it's installed and ignore otherwise
 my $have_MPFR = eval { require Math::MPFR; Math::MPFR->import(); 1; };
- 
+
 sub Gamma {
     my $z = shift;
     my $method = shift // 'lanczos';
@@ -2853,7 +2853,7 @@ sub Gamma {
         $result;
     } else { die "unknown method '$method'" }
 }
- 
+
 for my $method (qw(MPFR lanczos taylor stirling)) {
     next if $method eq 'MPFR' && !$have_MPFR;
     printf "%10s: ", $method;
@@ -2982,14 +2982,14 @@ si(gamma(4))
 ```
 
 
-###  mpfr version 
+###  mpfr version
 
 Above translated to mpfr, with higher accuracy and more iterations as per REXX, and compared against the builtin.
 {{libheader|mpfr}}
 
 ```Phix
 include mpfr.e
-mpfr_set_default_prec(-87) -- 87 decimal places. 
+mpfr_set_default_prec(-87) -- 87 decimal places.
 
 sequence c = mpfr_inits(40)
 
@@ -3216,17 +3216,17 @@ end test;
 
 ```txt
 
-Lanczos                 Builtin 
- 2.67893853470774706E+0000           2.678938534707747630E+0000 
- 1.35411793942640071E+0000           1.354117939426400420E+0000 
- 1.00000000000000021E+0000           1.000000000000000000E+0000 
- 8.92979511569249470E-0001           8.929795115692492110E-0001 
- 9.02745292950933961E-0001           9.027452929509336110E-0001 
- 1.00000000000000048E+0000           1.000000000000000000E+0000 
- 1.19063934875899964E+0000           1.190639348758998950E+0000 
- 1.50457548825155704E+0000           1.504575488251556020E+0000 
- 2.00000000000000154E+0000           2.000000000000000000E+0000 
- 2.77815848043766660E+0000           2.778158480437664210E+0000 
+Lanczos                 Builtin
+ 2.67893853470774706E+0000           2.678938534707747630E+0000
+ 1.35411793942640071E+0000           1.354117939426400420E+0000
+ 1.00000000000000021E+0000           1.000000000000000000E+0000
+ 8.92979511569249470E-0001           8.929795115692492110E-0001
+ 9.02745292950933961E-0001           9.027452929509336110E-0001
+ 1.00000000000000048E+0000           1.000000000000000000E+0000
+ 1.19063934875899964E+0000           1.190639348758998950E+0000
+ 1.50457548825155704E+0000           1.504575488251556020E+0000
+ 2.00000000000000154E+0000           2.000000000000000000E+0000
+ 2.77815848043766660E+0000           2.778158480437664210E+0000
 
 ```
 
@@ -3387,9 +3387,9 @@ Debug "Factorial 6 = "+StrD(Factorial(6), 0) ; 72
 [Debug] 4.333   9.2605282681
 [Debug] 4.667   14.7114047740
 [Debug] 5.000   24.0000000000
-[Debug] 
+[Debug]
 [Debug] Ln(Gamma(5.0)) = 3.1780538303479458
-[Debug] 
+[Debug]
 [Debug] Factorial 6 = 720
 ```
 
@@ -3414,13 +3414,13 @@ _a =    ( 1.00000000000000000000, 0.57721566490153286061, -0.6558780715202538810
           0.00000000000000122678, -0.00000000000000011813, 0.00000000000000000119,
           0.00000000000000000141, -0.00000000000000000023, 0.00000000000000000002
        )
-def gamma (x): 
+def gamma (x):
    y  = float(x) - 1.0;
    sm = _a[-1];
    for an in _a[-2::-1]:
       sm = sm * y + an;
    return 1.0 / sm;
- 
+
 
 if __name__ == '__main__':
     for i in range(1,11):
@@ -3561,7 +3561,7 @@ Lanczos' approximation is loosely converted from the Octave code.
 
 ```r
 stirling <- function(z) sqrt(2*pi/z) * (exp(-1)*z)^z
-     
+
 nemes <- function(z) sqrt(2*pi/z) * (exp(-1)*(z + (12*z - (10*z)^-1)^-1))^z
 
 lanczos <- function(z)
@@ -3575,10 +3575,10 @@ lanczos <- function(z)
       p <- c(0.99999999999980993, 676.5203681218851, -1259.1392167224028,
         771.32342877765313, -176.61502916214059, 12.507343278686905,
         -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7)
-      z <- as.complex(z) 
-      if(Re(z) < 0.5) 
+      z <- as.complex(z)
+      if(Re(z) < 0.5)
       {
-         pi / (sin(pi*z) * lanczos(1-z)) 
+         pi / (sin(pi*z) * lanczos(1-z))
       } else
       {
          z <- z - 1
@@ -3586,7 +3586,7 @@ lanczos <- function(z)
          tt <- z + g + 0.5
          sqrt(2*pi) * tt^(z+0.5) * exp(-tt) * x
       }
-   }   
+   }
 }
 
 spouge <- function(z, a=49)
@@ -3666,11 +3666,11 @@ data.frame(z=z, stirling=stirling(z), nemes=nemes(z), lanczos=lanczos(z), spouge
 ## REXX
 
 ===Taylor series, 80-digit coefficients===
-This version uses a Taylor series with 80-digits coefficients with much more accuracy. 
+This version uses a Taylor series with 80-digits coefficients with much more accuracy.
 
-As a result, the gamma value for   <big> ½ </big>   is now   25   decimal digits more accurate than the previous version 
+As a result, the gamma value for   <big> ½ </big>   is now   25   decimal digits more accurate than the previous version
 
-(which only used   20   digit coefficients). 
+(which only used   20   digit coefficients).
 
 Note:   The Taylor series isn't much good above values of   <big>'''6½'''</big>.
 
@@ -3754,22 +3754,22 @@ gamma(0.5) = 1.77245385090551602729816748334114518279754945612238712821380509003
 ```
 
 
-<!-- 
-Note that:   <span style="font-family:serif;"> <b><big><big>&Gamma;(&frac12;)</big></big> = <big><big> &radic;<math>\overline{\pi}</math> </big></big></b> =                             
+<!--
+Note that:   <span style="font-family:serif;"> <b><big><big>&Gamma;(&frac12;)</big></big> = <big><big> &radic;<math>\overline{\pi}</math> </big></big></b> =
    won't display properly with Chrome.
---> 
+-->
 
-Note that:   <span style="font-family:serif;"> <b><big><big>&Gamma;(&frac12;)</big></big> = <big><big> &radic;<math>\pi</math> </big></big></b> = 
+Note that:   <span style="font-family:serif;"> <b><big><big>&Gamma;(&frac12;)</big></big> = <big><big> &radic;<math>\pi</math> </big></big></b> =
 
 1.77245 38509 05516 02729 81674 83341 14518 27975 49456 12238 71282 1380{{overline|7}} 78985 29112 84591 03218 13749 50656 73854 46654 16226 82362 +
 </span>
 
 
-to 110 digits past the decimal point,   the vinculum (overbar) marks the   ''difference digit''   from the computed value (by this REXX program) of   gamma(<b><big>½</big></b>). 
+to 110 digits past the decimal point,   the vinculum (overbar) marks the   ''difference digit''   from the computed value (by this REXX program) of   gamma(<b><big>½</big></b>).
 
 
 
-===Spouge's approximation, using 87 digit coefficients=== 
+===Spouge's approximation, using 87 digit coefficients===
 {{trans|Phix}}
 {{trans|C}}
 
@@ -3886,7 +3886,7 @@ next
 
 func recigamma z
      return z + gamma * pow(z,2) + coeff * pow(z,3) + quad * pow(z,4) + qui * pow(z,5) + set * pow(z,6)
- 
+
 func gammafunc z
      if z = 1 return 1
      but fabs(z) <= 0.5 return 1 / recigamma(z)
@@ -3903,7 +3903,7 @@ namely, ''Gamma'', ''GammaRegularizedC'', ''LogGamma'', ''RecGamma'', and ''Poch
 :<math>Gamma(a) = \Gamma(a)</math>, the Gamma function;
 :<math>Gamma(a,x) = \frac{1}{\Gamma(a)} \int_x^{\infty} dt \, t^{a-1} \, exp(-t) </math>, the regularized Gamma function which is also known as the normalized incomplete Gamma function;
 :<math>GammaRegularizedC(a,x) = \frac{1}{\Gamma(a)} \int_0^x dt \, t^{a-1} \, exp(-t)</math>, which the GSL calls the complementary normalized Gamma function;
-:<math>LogGamma(a) = \ln \Gamma(a)</math>; 
+:<math>LogGamma(a) = \ln \Gamma(a)</math>;
 :<math>RecGamma(a) = \frac{1}{\Gamma(a)}</math>;
 :<math>Pochhammer(a,x) = \frac{\Gamma(a+x)}{\Gamma(x)}</math>.
 
@@ -3926,7 +3926,7 @@ $a = [ 1.00000_00000_00000_00000,  0.57721_56649_01532_86061, -0.65587_80715_202
        0.00000_00000_00510_03703, -0.00000_00000_00020_58326, -0.00000_00000_00005_34812,
        0.00000_00000_00001_22678, -0.00000_00000_00000_11813,  0.00000_00000_00000_00119,
        0.00000_00000_00000_00141, -0.00000_00000_00000_00023,  0.00000_00000_00000_00002 ]
- 
+
 def gamma(x)
   y = Float(x) - 1
   1.0 / $a.reverse.inject {|sum, an| sum * y + an}
@@ -3984,9 +3984,9 @@ import java.util.Locale._
 
 object Gamma {
   def stGamma(x:Double):Double=math.sqrt(2*math.Pi/x)*math.pow((x/math.E), x)
-  
+
   def laGamma(x:Double):Double={
-    val p=Seq(676.5203681218851, -1259.1392167224028, 771.32342877765313, 
+    val p=Seq(676.5203681218851, -1259.1392167224028, 771.32342877765313,
              -176.61502916214059, 12.507343278686905, -0.13857109526572012,
                 9.9843695780195716e-6, 1.5056327351493116e-7)
 
@@ -3999,7 +3999,7 @@ object Gamma {
       math.sqrt(2*math.Pi)*math.pow(t, x2+0.5)*math.exp(-t)*a
     }
   }
-  
+
   def main(args: Array[String]): Unit = {
     println("Gamma    Stirling             Lanczos")
     for(x <- 0.1 to 2.0 by 0.1)
@@ -4049,11 +4049,11 @@ Gamma    Stirling             Lanczos
         (scheme inexact)
         (scheme write))
 
-(define PI 3.14159265358979323846264338327950)  
+(define PI 3.14159265358979323846264338327950)
 (define e 2.7182818284590452353602875)
 
 (define gamma-lanczos
-  (let ((p '(676.5203681218851 -1259.1392167224028 771.32342877765313 
+  (let ((p '(676.5203681218851 -1259.1392167224028 771.32342877765313
              -176.61502916214059 12.507343278686905 -0.13857109526572012
              9.9843695780195716e-6 1.5056327351493116e-7)))
     (lambda (x)
@@ -4063,7 +4063,7 @@ Gamma    Stirling             Lanczos
                (t (+ x2 7 0.5))
                (a (do ((ps p (cdr ps))
                        (idx 0 (+ 1 idx))
-                       (res 0.99999999999980993 (+ res 
+                       (res 0.99999999999980993 (+ res
                                                    (/ (car ps)
                                                       (+ x2 idx 1)))))
                     ((null? ps) res))))
@@ -4074,20 +4074,20 @@ Gamma    Stirling             Lanczos
 
 (define gamma-taylor
   (let ((a (reverse
-             '(1.00000000000000000000  0.57721566490153286061 
-               -0.65587807152025388108 -0.04200263503409523553  
+             '(1.00000000000000000000  0.57721566490153286061
+               -0.65587807152025388108 -0.04200263503409523553
                0.16653861138229148950 -0.04219773455554433675
-               -0.00962197152787697356  0.00721894324666309954 
-               -0.00116516759185906511 -0.00021524167411495097  
+               -0.00962197152787697356  0.00721894324666309954
+               -0.00116516759185906511 -0.00021524167411495097
                0.00012805028238811619 -0.00002013485478078824
-               -0.00000125049348214267  0.00000113302723198170 
-               -0.00000020563384169776 0.00000000611609510448  
+               -0.00000125049348214267  0.00000113302723198170
+               -0.00000020563384169776 0.00000000611609510448
                0.00000000500200764447 -0.00000000118127457049
-               0.00000000010434267117 0.00000000000778226344 
-               -0.00000000000369680562 0.00000000000051003703 
+               0.00000000010434267117 0.00000000000778226344
+               -0.00000000000369680562 0.00000000000051003703
                -0.00000000000002058326 -0.00000000000000534812
-               0.00000000000000122678 -0.00000000000000011813  
-               0.00000000000000000119 0.00000000000000000141 
+               0.00000000000000122678 -0.00000000000000011813
+               0.00000000000000000119 0.00000000000000000141
                -0.00000000000000000023  0.00000000000000000002))))
     (lambda (x)
       (let ((y (- x 1)))
@@ -4115,83 +4115,83 @@ Gamma    Stirling             Lanczos
 
 ```txt
 
-Gamma (0.1): 
+Gamma (0.1):
  --- Lanczos : 9.513507698668736
  --- Stirling: 5.69718714897717
  --- Taylor  : 9.513507698668734
-Gamma (0.2): 
+Gamma (0.2):
  --- Lanczos : 4.590843711998803
  --- Stirling: 3.3259984240223925
  --- Taylor  : 4.5908437119988035
-Gamma (0.30000000000000004): 
+Gamma (0.30000000000000004):
  --- Lanczos : 2.9915689876875904
  --- Stirling: 2.3625300362696198
  --- Taylor  : 2.991568987687591
-Gamma (0.4): 
+Gamma (0.4):
  --- Lanczos : 2.218159543757687
  --- Stirling: 1.8414763359362354
  --- Taylor  : 2.2181595437576886
-Gamma (0.5): 
+Gamma (0.5):
  --- Lanczos : 1.7724538509055159
  --- Stirling: 1.5203469010662807
  --- Taylor  : 1.772453850905516
-Gamma (0.6): 
+Gamma (0.6):
  --- Lanczos : 1.489192248812818
  --- Stirling: 1.307158857448356
  --- Taylor  : 1.489192248812817
-Gamma (0.7): 
+Gamma (0.7):
  --- Lanczos : 1.2980553326475577
  --- Stirling: 1.15905329211392
  --- Taylor  : 1.298055332647558
-Gamma (0.7999999999999999): 
+Gamma (0.7999999999999999):
  --- Lanczos : 1.1642297137253035
  --- Stirling: 1.0533709684256085
  --- Taylor  : 1.1642297137253033
-Gamma (0.8999999999999999): 
+Gamma (0.8999999999999999):
  --- Lanczos : 1.0686287021193193
  --- Stirling: 0.9770615078776956
  --- Taylor  : 1.0686287021193195
-Gamma (0.9999999999999999): 
+Gamma (0.9999999999999999):
  --- Lanczos : 1.0000000000000002
  --- Stirling: 0.9221370088957892
  --- Taylor  : 1.0000000000000002
-Gamma (1.0999999999999999): 
+Gamma (1.0999999999999999):
  --- Lanczos : 0.9513507698668728
  --- Stirling: 0.8834899531687039
  --- Taylor  : 0.9513507698668733
-Gamma (1.2): 
+Gamma (1.2):
  --- Lanczos : 0.9181687423997607
  --- Stirling: 0.8577553353965909
  --- Taylor  : 0.9181687423997608
-Gamma (1.3): 
+Gamma (1.3):
  --- Lanczos : 0.8974706963062777
  --- Stirling: 0.842678259448392
  --- Taylor  : 0.8974706963062773
-Gamma (1.4000000000000001): 
+Gamma (1.4000000000000001):
  --- Lanczos : 0.8872638175030759
  --- Stirling: 0.8367445486370818
  --- Taylor  : 0.8872638175030753
-Gamma (1.5000000000000002): 
+Gamma (1.5000000000000002):
  --- Lanczos : 0.8862269254527583
  --- Stirling: 0.8389565525264964
  --- Taylor  : 0.886226925452758
-Gamma (1.6000000000000003): 
+Gamma (1.6000000000000003):
  --- Lanczos : 0.8935153492876904
  --- Stirling: 0.8486932421525738
  --- Taylor  : 0.8935153492876904
-Gamma (1.7000000000000004): 
+Gamma (1.7000000000000004):
  --- Lanczos : 0.9086387328532912
  --- Stirling: 0.865621471793884
  --- Taylor  : 0.9086387328532904
-Gamma (1.8000000000000005): 
+Gamma (1.8000000000000005):
  --- Lanczos : 0.931383770980243
  --- Stirling: 0.8896396352879945
  --- Taylor  : 0.9313837709802427
-Gamma (1.9000000000000006): 
+Gamma (1.9000000000000006):
  --- Lanczos : 0.9617658319073875
  --- Stirling: 0.9208427218942294
  --- Taylor  : 0.9617658319073876
-Gamma (2.0000000000000004): 
+Gamma (2.0000000000000004):
  --- Lanczos : 1.000000000000001
  --- Stirling: 0.9595021757444918
  --- Taylor  : 1.0000000000000002
@@ -4206,7 +4206,7 @@ Gamma (2.0000000000000004):
     lz=[  1.000000000190015 ..
           76.18009172947146  -86.50532032941677      24.01409824083091    ..
          -1.231739572450155   1.208650973866179e-3  -5.395239384953129e-6 ]
-    if z < 0.5 then 
+    if z < 0.5 then
         x=%pi/sin(%pi*z)-gammal(1-z)
     else
         z=z-1.0
@@ -4603,7 +4603,7 @@ for {set x 1.0} {$x <= 10.0} {set x [expr {$x + 0.5}]} {
 
 =={{header|TI-83 BASIC}}==
 There is an hidden Gamma function in TI-83. Factorial (!) is implemented in increments of 0.5 :
- .5! -> .8862269255 
+ .5! -> .8862269255
 As far as Gamma(n)=(n-1)! , we have everything needed.
 ===Stirling's approximation===
 
@@ -4621,19 +4621,19 @@ The output display for x=0.5 to 5 by 0.5 : x, (x-1)!, Y(x) .
 Y(x) is Stirling's approximation of Gamma.
 <pre style="height:20ex">
         0.5
-1.772453851   
+1.772453851
 1.520346901
           1
-          1             
+          1
 .9221370089
         1.5
-.8862269255   
+.8862269255
 .8389565525
           2
-          1             
+          1
 .9595021757
         2.5
-1.329340388 
+1.329340388
 1.285978615
           3
           2
@@ -4642,13 +4642,13 @@ Y(x) is Stirling's approximation of Gamma.
  3.32335097
 3.245363748
           4
-          6             
+          6
 5.876543783
         4.5
- 11.6317284    
-11.41865156   
+ 11.6317284
+11.41865156
           5
-         24            
+         24
 23.60383359
 
 ```
@@ -4678,20 +4678,20 @@ The output display for x=0.5 to 5 by 0.5 : x, (x-1)!, Y(x) .
 Y(x) is Lanczos's approximation of Gamma.
 <pre style="height:20ex">
         0.5
-1.772453851   
-1.772453851   
+1.772453851
+1.772453851
           1
-          1             
-          1             
+          1
+          1
         1.5
-.8862269255   
-.8862269254   
+.8862269255
+.8862269254
           2
-          1             
-          1             
+          1
+          1
         2.5
-1.329340388 
-1.329340388 
+1.329340388
+1.329340388
           3
           2
           2
@@ -4699,14 +4699,14 @@ Y(x) is Lanczos's approximation of Gamma.
  3.32335097
  3.32335097
           4
-          6             
-          6             
+          6
+          6
         4.5
- 11.6317284    
- 11.6317284    
+ 11.6317284
+ 11.6317284
           5
-         24            
-         24            
+         24
+         24
 
 ```
 
@@ -4751,7 +4751,7 @@ WITH THIS
     .LanCoeff[6] = 0.0012086509738662
     .LanCoeff[7] = -0.000005395239385
     .nSize = ALEN(.LanCoeff)
-ENDWITH 
+ENDWITH
 ENDPROC
 
 FUNCTION Gamma(z)
@@ -4763,8 +4763,8 @@ LOCAL a As Double, b As Double, i As Integer, j As Integer, lg As Double
 IF z < 0.5
     lg = LOG(PY/SIN(PY*z)) - THIS.LogGamma(1 - z)
 ELSE
-    WITH THIS	
-	z = z - 1 
+    WITH THIS
+	z = z - 1
 	b = z + FPF
 	a = .LanCoeff[1]
 	FOR i = 2 TO .nSize
@@ -4772,10 +4772,10 @@ ELSE
 	    a = a + .LanCoeff[i]/(z + j)
 	ENDFOR
 	lg = (LOG(SQRT(2*PY)) + LOG(a) - b) + LOG(b)*(z + HALF)
-    ENDWITH	
+    ENDWITH
 ENDIF
 RETURN lg
-ENDFUNC	
+ENDFUNC
 
 ENDDEFINE
 
@@ -4817,15 +4817,15 @@ zval	gamval
 
 ```Yabasic
 dim c(12)
- 
+
 sub gamma(z)
     local accm, k, k1_factrl
-    
+
     accm = c(1)
     if accm=0 then
         accm = sqrt(2*PI)
         c(1) = accm
-        k1_factrl = 1 
+        k1_factrl = 1
         for k=2 to 12
             c(k) = exp(13-k)*(13-k)^(k-1.5)/k1_factrl
             k1_factrl = k1_factrl * -(k-1)
@@ -4837,7 +4837,7 @@ sub gamma(z)
     accm = accm * exp(-(z+12))*(z+12)^(z+0.5)
     return accm/z
 end sub
- 
+
 sub si(x)
     print x using "%18.13f"
 end sub
@@ -4872,7 +4872,7 @@ fcn taylorGamma(x){
      0x1.6198491a83bccbep-50,  -0x1.10613dde57a88bd6p-53,
      0x1.5e3fee81de0e9c84p-60,  0x1.a0dc770fb8a499b6p-60,
     -0x1.0f635344a29e9f8ep-62,  0x1.43d79a4b90ce8044p-66).reverse();
- 
+
     y  := x.toFloat() - 1.0;
     sm := table[1,*].reduce('wrap(sm,an){ sm * y + an },table[0]);
 
@@ -4897,7 +4897,7 @@ fcn lanczosGamma(z) { z = z.toFloat();
             -0.13857_10952_65720_12,
              9.98436_95780_19571_6e-6,
              1.50563_27351_49311_6e-7);
- 
+
     // Reflection formula.
     if (z < 0.5) {
         return(PI / ((PI * z).sin() * lanczosGamma(1.0 - z)));

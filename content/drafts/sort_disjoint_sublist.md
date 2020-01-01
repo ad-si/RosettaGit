@@ -17,7 +17,7 @@ Make your example work with the following list of values and set of indices:
 <code>
     values: [7, <b>6</b>, 5, 4, 3, 2, <b>1</b>, <b>0</b>]
     indices: {6, 1, 7}</code>
-Where the correct result would be: 
+Where the correct result would be:
     <code>[7, <b>0</b>, 5, 4, 3, 2, <b>1</b>, <b>6</b>]</code>.
 
 Note that for one based, rather than the zero-based indexing above, use the <code>indices: {7, 2, 8}</code>. The indices are described as a set rather than a list but any collection-type of those indices without duplication may be used as long as the example is insensitive to the order of indices given.
@@ -143,7 +143,7 @@ on disjointSort(ixs, xs)
         end |λ|
     end script
     set dct to mapFromList(zip(ks, sort(map(nth, ks))))
-    
+
     script build
         on |λ|(x, i)
             set mb to lookupDict(pred(i) as string, dct)
@@ -231,7 +231,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -343,14 +343,14 @@ end zipWith
 ```bbcbasic
       INSTALL @lib$+"SORTLIB"
       Sort% = FN_sortinit(0,0) : REM Ascending
-      
+
       DIM list%(7) : list%() = 7, 6, 5, 4, 3, 2, 1, 0
       DIM indices%(2) : indices%() = 6, 1, 7
-      
+
       PROCsortdisjoint(list%(), indices%())
       PRINT FNshowlist(list%())
       END
-      
+
       DEF PROCsortdisjoint(l%(), i%())
       LOCAL C%, i%, n%, t%()
       n% = DIM(i%(),1)
@@ -365,7 +365,7 @@ end zipWith
         l%(i%(i%)) = t%(i%)
       NEXT
       ENDPROC
-      
+
       DEF FNshowlist(l%())
       LOCAL i%, o$
       o$ = "["
@@ -418,8 +418,8 @@ Output:
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 /* yes, bubble sort */
 void bubble_sort(int *idx, int n_idx, int *buf)
@@ -463,7 +463,7 @@ int main()
 using System;
 using System.Linq;
 using System.Collections.Generic;
-     
+
 public class Test
 {
     public static void Main()
@@ -473,7 +473,7 @@ public class Test
         Console.WriteLine(string.Join(", ", list));
     }
 }
-     
+
 public static class Extensions
 {
     public static void SortSublist<T>(this List<T> list, params int[] indices)
@@ -482,12 +482,12 @@ public static class Extensions
         var sublist = indices.OrderBy(i => i)
             .Zip(indices.Select(i => list[i]).OrderBy(v => v),
                 (Index, Value) => new { Index, Value });
-     
+
         foreach (var entry in sublist) {
             list[entry.Index] = entry.Value;
         }
     }
-     
+
 }
 ```
 
@@ -496,8 +496,8 @@ public static class Extensions
 ## C++
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 #include <vector>
@@ -517,7 +517,7 @@ void sortDisjoint(ValueIterator valsBegin, IndicesIterator indicesBegin,
     for (IndicesIterator i = indicesBegin; i != indicesEnd; ++i, ++j)
         valsBegin[*i] = *j; // replace
 }
-		  
+
 
 int main()
 {
@@ -537,7 +537,7 @@ int main()
 
 ```txt
 
-7 0 5 4 3 2 1 6 
+7 0 5 4 3 2 1 6
 
 ```
 
@@ -545,8 +545,8 @@ int main()
 {{trans|Go}}
 Solution that sorts using a custom iterator that iterates a disjoint sublist.
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 #include <vector>
@@ -594,7 +594,7 @@ void sortDisjoint(ValueIterator valsBegin, IndicesIterator indicesBegin,
   std::sort(DisjointSubsetIterator<ValueIterator, IndicesIterator>(valsBegin, indicesBegin),
             DisjointSubsetIterator<ValueIterator, IndicesIterator>(valsBegin, indicesEnd));
 }
-		  
+
 
 int main()
 {
@@ -614,7 +614,7 @@ int main()
 
 ```txt
 
-7 0 5 4 3 2 1 6 
+7 0 5 4 3 2 1 6
 
 ```
 
@@ -766,16 +766,16 @@ void main() {
     (define sorted (list-sort <
     (for/list [(v values) (i (in-naturals))]
 	#:when (member i indices)  v)))
-	
+
     (for/list [(v values) (i (in-naturals))]
 	(if (not (member i indices)) v
 	(begin0
 		(first sorted)
 		(set! sorted (rest sorted))))))
-		
+
 (define (task)
 	(sort-disjoint '[7 6 5 4 3 2 1 0] {6 1 7}))
-	
+
 (task)
     → (7 0 5 4 3 2 1 6)
 
@@ -790,30 +790,30 @@ ELENA 4.1 :
 import extensions;
 import system'routines;
 import system'culture;
- 
+
 extension op
 {
     sortSublist(indices)
     {
         var subList := indices.orderBy:(x => x)
-                            .zipBy(indices.selectBy:(i => self[i]) 
-                                .orderBy:(x => x), (index,val => new::{ Index = index; Value = val; })) 
+                            .zipBy(indices.selectBy:(i => self[i])
+                                .orderBy:(x => x), (index,val => new::{ Index = index; Value = val; }))
                             .toArray();
- 
+
         var list := self.clone();
         subList.forEach:(r)
         {
             list[r.Index] := r.Value
         };
- 
+
         ^ list
     }
 }
- 
+
 public program()
 {
     var list := new int[]::( 7, 6, 5, 4, 3, 2, 1, 0 );
- 
+
     console.printLine(list.sortSublist(new int[]::(6, 1, 7)).asEnumerable())
 }
 ```
@@ -838,11 +838,11 @@ defmodule Sort_disjoint do
     selected = select(values, indices2, 0, []) |> Enum.sort
     replace(values, Enum.zip(indices2, selected), 0, [])
   end
-  
+
   defp select(_, [], _, selected), do: selected
   defp select([val|t], [i|rest], i, selected), do: select(t, rest, i+1, [val|selected])
   defp select([_|t], indices, i, selected), do: select(t, indices, i+1, selected)
-  
+
   defp replace(values, [], _, list), do: Enum.reverse(list, values)
   defp replace([_|t], [{i,v}|rest], i, list), do: replace(t, rest, i+1, [v|list])
   defp replace([val|t], indices, i, list), do: replace(t, indices, i+1, [val|list])
@@ -1065,7 +1065,7 @@ program Example
   call Isort(indices)
 
 ! Should work with any sort routine as long as the dummy
-! argument array has been declared as an assumed shape array 
+! argument array has been declared as an assumed shape array
 ! Standard insertion sort used in this example
   call Isort(array(indices))
 
@@ -1077,7 +1077,7 @@ subroutine Isort(a)
   integer, intent(in out) :: a(:)
   integer :: temp
   integer :: i, j
-   
+
   do i = 2, size(a)
      j = i - 1
      temp = a(i)
@@ -1087,7 +1087,7 @@ subroutine Isort(a)
      end do
      a(j+1) = temp
   end do
-  
+
 end subroutine Isort
 end program Example
 ```
@@ -1372,9 +1372,9 @@ procedure main ()
   every writes (!items || " ")
   write ()
   every writes (!indices || " ")
-  write () 
+  write ()
   every writes (!result || " ")
-  write () 
+  write ()
 end
 
 ```
@@ -1384,14 +1384,14 @@ Output:
 
 ```txt
 
-7 6 5 4 3 2 1 0 
-2 7 8 
+7 6 5 4 3 2 1 0
+2 7 8
 7 0 5 4 3 2 1 6
 
 ```
 
 
-The expression <code>!indices</code> generates the value of each index in turn, so the line 
+The expression <code>!indices</code> generates the value of each index in turn, so the line
 ```icon
 every put (values, result[!indices])
 ```
@@ -1725,11 +1725,11 @@ but for clarity we first define a utility function for updating an array at mult
 def setpaths(indices; values):
   reduce range(0; indices|length) as $i
     (.; .[indices[$i]] = values[$i]);
-      
+
 def disjointSort(indices):
   (indices|unique) as $ix   # "unique" sorts
   # Set $sorted to the sorted array of values at $ix:
-  | ([ .[ $ix[] ] ] | sort) as $sorted  
+  | ([ .[ $ix[] ] ] | sort) as $sorted
   | setpaths( $ix; $sorted) ;
 ```
 
@@ -1795,7 +1795,7 @@ Original: [7, 6, 5, 4, 3, 2, 1, 0]
 
 sort : {x[<x]}
 nums : 7 6 5 4 3 2 1 0
-i : sort 6 1 7 
+i : sort 6 1 7
 nums[i] : sort nums[i]
 nums
 7 0 5 4 3 2 1 6
@@ -1813,7 +1813,7 @@ nums
 /* in place sort */
 fun IntArray.sortDisjoint(indices: Set<Int>) {
     val sortedSubset = this.filterIndexed { index, _ -> index in indices }.sorted()
-    if (sortedSubset.size < indices.size) 
+    if (sortedSubset.size < indices.size)
         throw IllegalArgumentException("Argument set contains out of range indices")
     indices.sorted().forEachIndexed { index, value -> this[value] = sortedSubset[index] }
 }
@@ -1822,9 +1822,9 @@ fun main(args: Array<String>) {
     val values = intArrayOf(7, 6, 5, 4, 3, 2, 1, 0)
     val indices = setOf(6, 1, 7)
     println("Original array : ${values.asList()} sorted on indices $indices")
-    values.sortDisjoint(indices)   
+    values.sortDisjoint(indices)
     println("Sorted array   : ${values.asList()}")
-}    
+}
 
 ```
 
@@ -1899,7 +1899,7 @@ sortDisjoint := proc(values, indices::set)
 		values(inds[i]) := vals[i]:
 	od:
 end proc:
-tst := Array([7,6,5,4,3,2,1,0]):	
+tst := Array([7,6,5,4,3,2,1,0]):
 sortDisjoint(tst,{7,2,8});
 ```
 
@@ -2078,13 +2078,13 @@ Sorts an array "wrapper" which represents a "view" into the disjoint sublist of 
 
 int main(int argc, const char *argv[]) {
   @autoreleasepool {
-  
+
     NSMutableArray *a = [@[@7, @6, @5, @4, @3, @2, @1, @0] mutableCopy];
     NSMutableIndexSet *ind = [NSMutableIndexSet indexSet];
     [ind addIndex:6]; [ind addIndex:1]; [ind addIndex:7];
     [a sortDisjointSublist:ind usingSelector:@selector(compare:)];
     NSLog(@"%@", a);
-  
+
   }
   return 0;
 }
@@ -2222,8 +2222,8 @@ Sorted data is: [7, 0, 5, 4, 3, 2, 1, 6]
 ## Order
 
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8sort_disjoint_sublist ORDER_PP_FN(              \
 8fn(8L, 8I,                                                           \
@@ -2357,7 +2357,7 @@ integer last=s[1], this, ndx = 1
     end for
     return s[1..ndx]
 end function
- 
+
 function disjoint_sort(sequence s, sequence idx)
 sequence copies
     if length(idx)>1 then
@@ -2417,7 +2417,7 @@ Output:
 ```PowerShell
 
 function sublistsort($values, $indices) {
-   $indices = $indices | sort 
+   $indices = $indices | sort
    $sub, $i = ($values[$indices] | sort), 0
    $indices | foreach { $values[$_] = $sub[$i++] }
    $values
@@ -2452,7 +2452,7 @@ Procedure Bubble_sort(Array idx(1), n, Array buf(1))
         Swap buf(idx(j)), buf(idx(i))
       EndIf
     Next
-  Next 
+  Next
 EndProcedure
 
 Procedure main()
@@ -2460,26 +2460,26 @@ Procedure main()
     values: Data.i 7, 6, 5, 4, 3, 2, 1, 0
     indices:Data.i 6, 1, 7
   EndDataSection
-  
+
   Dim values.i(7) :CopyMemory(?values, @values(), SizeOf(Integer)*8)
   Dim indices.i(2):CopyMemory(?indices,@indices(),SizeOf(Integer)*3)
-  
+
   If OpenConsole()
     Protected i
     PrintN("Before sort:")
     For i=0 To ArraySize(values())
       Print(Str(values(i))+" ")
     Next
-    
+
     PrintN(#CRLF$+#CRLF$+"After sort:")
     Bubble_sort(indices(), ArraySize(indices()), values())
     For i=0 To ArraySize(values())
       Print(Str(values(i))+" ")
     Next
-    
+
     Print(#CRLF$+#CRLF$+"Press ENTER to exit")
     Input()
-  EndIf 
+  EndIf
 EndProcedure
 
 main()
@@ -2508,7 +2508,7 @@ The function modifies the input data list in-place and follows the Python conven
 	for index, value in zip(indices, values):
 		data[index] = value
 
-		
+
 >>> d = [7, 6, 5, 4, 3, 2, 1, 0]
 >>> i = set([6, 1, 7])
 >>> sort_disjoint_sublist(d, i)
@@ -2518,8 +2518,8 @@ The function modifies the input data list in-place and follows the Python conven
 >>> def sort_disjoint_sublist(data, indices):
 	for index, value in zip(sorted(indices), sorted(data[i] for i in indices)): data[index] = value
 
-	
->>> 
+
+>>>
 ```
 
 
@@ -2600,7 +2600,7 @@ Disjoint sublists at indices [6, 1, 7] sorted:
 
 ## R
 
-R lets you access elements of vectors with a vector of indices. 
+R lets you access elements of vectors with a vector of indices.
 
 
 ```R
@@ -2645,7 +2645,7 @@ Output:
 Duplicate entries in the index list aren't destructive or illegal.
 
 
-Note that the list may contain numbers in any form (integer, floating point, exponentationed), 
+Note that the list may contain numbers in any form (integer, floating point, exponentationed),
 
 as well as alphabetic/alphanumeric/non-displayable characters.
 
@@ -2700,7 +2700,7 @@ sortL: procedure; parse arg L;    n= words(L);       do j=1  for n;        @.j= 
 
 ## Ruby
 
-By convention, the exlamation mark in the method name indicates that something potentially dangerous can happen.  (In this case, the in place modification). 
+By convention, the exlamation mark in the method name indicates that something potentially dangerous can happen.  (In this case, the in place modification).
 
 ```ruby
 def sort_disjoint_sublist!(ar, indices)
@@ -2795,7 +2795,7 @@ object SortedDisjointSubList extends App {
 (use gauche.sequence)
 (define num-list '(7 6 5 4 3 2 1 0))
 (define indices '(6 1 7))
-(define table 
+(define table
   (alist->hash-table
     (map cons
       (sort indices)
@@ -2929,7 +2929,7 @@ Sorts an array "wrapper" which represents a "view" into the disjoint sublist of 
  : MutableCollectionType {
   let array : UnsafeMutablePointer<T>
   let indexes : [Int]
-  
+
   subscript (position: Int) -> T {
     get {
       return array[indexes[position]]
@@ -3022,7 +3022,7 @@ Output:
 
 ```txt
 
-7'0'5'4'3'2'1'6 
+7'0'5'4'3'2'1'6
 
 ```
 

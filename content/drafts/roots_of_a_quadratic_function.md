@@ -10,13 +10,13 @@ categories = []
 tags = []
 +++
 
-{{task|Arithmetic operations}}{{Clarified-review}}Write a program to find the roots of a quadratic equation, i.e., solve the equation <math>ax^2 + bx + c = 0</math>. 
+{{task|Arithmetic operations}}{{Clarified-review}}Write a program to find the roots of a quadratic equation, i.e., solve the equation <math>ax^2 + bx + c = 0</math>.
 Your program must correctly handle non-real roots, but it need not check that <math>a \neq 0</math>.
 
-The problem of solving a quadratic equation is a good example of how dangerous it can be to ignore the peculiarities of floating-point arithmetic. 
-The obvious way to implement the quadratic formula suffers catastrophic loss of accuracy when one of the roots to be found is much closer to 0 than the other. 
-In their classic textbook on numeric methods ''[http://www.pdas.com/fmm.htm Computer Methods for Mathematical Computations]'', George Forsythe, Michael Malcolm, and Cleve Moler suggest trying the naive algorithm with <math>a = 1</math>, <math>b = -10^5</math>, and <math>c = 1</math>. 
-(For double-precision floats, set <math>b = -10^9</math>.) 
+The problem of solving a quadratic equation is a good example of how dangerous it can be to ignore the peculiarities of floating-point arithmetic.
+The obvious way to implement the quadratic formula suffers catastrophic loss of accuracy when one of the roots to be found is much closer to 0 than the other.
+In their classic textbook on numeric methods ''[http://www.pdas.com/fmm.htm Computer Methods for Mathematical Computations]'', George Forsythe, Michael Malcolm, and Cleve Moler suggest trying the naive algorithm with <math>a = 1</math>, <math>b = -10^5</math>, and <math>c = 1</math>.
+(For double-precision floats, set <math>b = -10^9</math>.)
 Consider the following implementation in [[Ada]]:
 
 ```ada
@@ -51,7 +51,7 @@ Suggested by Middlebrook (D-OA), a better numerical method: to define two parame
 and the two roots of the quardratic are: <math> \frac{-b}{a} f </math> and <math> \frac{-c}{b f} </math>
 
 
-'''Task''': do it better. This means that given <math>a = 1</math>, <math>b = -10^9</math>, and <math>c = 1</math>, both of the roots your program returns should be greater than <math>10^{-11}</math>. Or, if your language can't do floating-point arithmetic any more precisely than single precision, your program should be able to handle <math>b = -10^6</math>. Either way, show what your program gives as the roots of the quadratic in question. See page 9 of 
+'''Task''': do it better. This means that given <math>a = 1</math>, <math>b = -10^9</math>, and <math>c = 1</math>, both of the roots your program returns should be greater than <math>10^{-11}</math>. Or, if your language can't do floating-point arithmetic any more precisely than single precision, your program should be able to handle <math>b = -10^6</math>. Either way, show what your program gives as the roots of the quadratic in question. See page 9 of
 [https://web.archive.org/web/20080921074325/http://dlc.sun.com/pdf//800-7895/800-7895.pdf "What Every Scientist Should Know About Floating-Point Arithmetic"] for a possible algorithm.
 
 
@@ -79,11 +79,11 @@ procedure Quadratic_Equation is
 
    R : constant Roots := Solve (1.0, -10.0E5, 1.0);
 begin
-   Put_Line ("X1 =" & Float'Image (R (1)) & " X2 =" & Float'Image (R (2))); 
+   Put_Line ("X1 =" & Float'Image (R (1)) & " X2 =" & Float'Image (R (2)));
 end Quadratic_Equation;
 ```
 
-Here precision loss is prevented by checking signs of operands. On errors, Constraint_Error is propagated on numeric errors and when roots are complex. 
+Here precision loss is prevented by checking signs of operands. On errors, Constraint_Error is propagated on numeric errors and when roots are complex.
 {{out}}
 
 ```txt
@@ -104,7 +104,7 @@ X1 = 1.00000E+06 X2 = 1.00000E-06
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] -  probably need to "USE" the compl ENVIRON}}
 
 ```algol68
-quadratic equation: 
+quadratic equation:
 BEGIN
 
   MODE ROOTS  = UNION([]REAL, []COMPL);
@@ -126,13 +126,13 @@ BEGIN
       []COMPL (r1, r2)
     FI
   END # solve #;
- 
+
   PROC real  evaluate = (QUADRATIC q, REAL x )REAL:  (a OF q*x + b OF q)*x + c OF q;
   PROC compl evaluate = (QUADRATIC q, COMPL x)COMPL: (a OF q*x + b OF q)*x + c OF q;
 
   # only a very tiny difference between the 2 examples #
   []QUADRATIC test = ((1, -10e5, 1), (1, 0, 1), (1,-3,2), (1,3,2), (4,0,4), (3,4,5));
- 
+
   FORMAT real fmt = $g(-0,8)$;
   FORMAT compl fmt = $f(real fmt)"+"f(real fmt)"i"$;
   FORMAT quadratic fmt = $f(real fmt)" x**2 + "f(real fmt)" x + "f(real fmt)" = 0"$;
@@ -140,18 +140,18 @@ BEGIN
   FOR index TO UPB test DO
     QUADRATIC quadratic = test[index];
     ROOTS r = solve(quadratic);
- 
+
 # Output the two different scenerios #
     printf(($"Quadratic: "$, quadratic fmt, quadratic, $l$));
     CASE r IN
-      ([]REAL r): 
+      ([]REAL r):
         printf(($"REAL x1 = "$, real fmt, r[1],
                    $", x2 = "$, real fmt, r[2],  $"; "$,
                 $"REAL y1 = "$, real fmt, real evaluate(quadratic,r[1]),
                    $", y2 = "$, real fmt, real evaluate(quadratic,r[2]), $";"ll$
         )),
       ([]COMPL c):
-        printf(($"COMPL x1,x2 = "$, real fmt, re OF c[1], $"+/-"$, 
+        printf(($"COMPL x1,x2 = "$, real fmt, re OF c[1], $"+/-"$,
                                     real fmt, ABS im OF c[1], $"; "$,
                   $"COMPL y1 = "$, compl fmt, compl evaluate(quadratic,c[1]),
                       $", y2 = "$, compl fmt, compl evaluate(quadratic,c[2]), $";"ll$
@@ -229,7 +229,7 @@ quadratic(ByRef x1, ByRef x2, a,b,c) { ; -> #real roots {x1,x2} of ax²+bx+c
         PROCsolvequadratic(EVAL(a$), EVAL(b$), EVAL(c$))
       NEXT
       END
-      
+
       DATA 1, -1E9, 1
       DATA 1, 0, 1
       DATA 2, -1, -6
@@ -237,7 +237,7 @@ quadratic(ByRef x1, ByRef x2, a,b,c) { ; -> #real roots {x1,x2} of ax²+bx+c
       DATA 0.5, SQR(2), 1
       DATA 1, 3, 2
       DATA 3, 4, 5
-      
+
       DEF PROCsolvequadratic(a, b, c)
       LOCAL d, f
       d = b^2 - 4*a*c
@@ -271,8 +271,8 @@ For a = 3, b = 4, c = 5         the complex roots are -0.666666667 +/- 1.1055416
 
 Code that tries to avoid floating point overflow and other unfortunate loss of precissions: (compiled with <code>gcc -std=c99</code> for <code>complex</code>, though easily adapted to just real numbers)
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <complex.h>
 #include <math.h>
@@ -343,8 +343,8 @@ int main()
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 #include <complex.h>
 
@@ -441,8 +441,8 @@ class QuadraticRoots
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <utility>
 #include <complex>
 
@@ -481,7 +481,7 @@ int main()
 
 
 ```clojure
-(defn quadratic 
+(defn quadratic
   "Compute the roots of a quadratic in the form ax^2 + bx + c = 1.
    Returns any of nil, a float, or a vector."
   [a b c]
@@ -724,9 +724,9 @@ Middlebrook method
 
 ```factor
 :: quadratic-equation2 ( a b c -- x1 x2 )
- a c * sqrt b / :> q 
+ a c * sqrt b / :> q
  1 4 q sq * - sqrt 0.5 * 0.5 + :> f
- b neg a / f * c neg b / f / ; 
+ b neg a / f * c neg b / f / ;
 
 ```
 
@@ -757,7 +757,7 @@ Without locals:
   fover f0< if fnegate then
   f+ fnegate
   ( c a b-det )
-  2e f/ fover f/  
+  2e f/ fover f/
   ( c a r1 )
   frot frot f/ fover f/ ;
 ```
@@ -801,11 +801,11 @@ PROGRAM QUADRATIC
  READ *, b
  WRITE(*,"(A)", ADVANCE="NO") "c = "
  READ *, c
- 
+
  WRITE(*,"(3(A,E23.15))") "Coefficients are: a = ", a, "   b = ", b, "   c = ", c
  e = 1.0e-9_dp
  discriminant = b*b - 4.0_dp*a*c
- 
+
  IF (ABS(discriminant) < e) THEN
     rroot1 = -b / (2.0_dp * a)
     WRITE(*,*) "The roots are real and equal:"
@@ -816,9 +816,9 @@ PROGRAM QUADRATIC
     WRITE(*,*) "The roots are real:"
     WRITE(*,"(2(A,E23.15))") "Root1 = ", rroot1, "  Root2 = ", rroot2
  ELSE
-    croot1 = (-b + SQRT(CMPLX(discriminant))) / (2.0_dp*a) 
+    croot1 = (-b + SQRT(CMPLX(discriminant))) / (2.0_dp*a)
     croot2 = CONJG(croot1)
-    WRITE(*,*) "The roots are complex:" 
+    WRITE(*,*) "The roots are complex:"
     WRITE(*,"(2(A,2E23.15,A))") "Root1 = ", croot1, "j ", "  Root2 = ", croot2, "j"
  END IF
 ```
@@ -827,15 +827,15 @@ PROGRAM QUADRATIC
  Coefficients are: a =   0.300000000000000E+01   b =   0.400000000000000E+01   c =   0.133333333330000E+01
  The roots are real and equal:
  Root =  -0.666666666666667E+00
- 
+
  Coefficients are: a =   0.300000000000000E+01   b =   0.200000000000000E+01   c =  -0.100000000000000E+01
  The roots are real:
  Root1 =  -0.100000000000000E+01  Root2 =   0.333333333333333E+00
- 
+
  Coefficients are: a =   0.300000000000000E+01   b =   0.200000000000000E+01   c =   0.100000000000000E+01
  The roots are complex:
  Root1 =  -0.333333333333333E+00  0.471404512723287E+00j   Root2 =  -0.333333333333333E+00 -0.471404512723287E+00j
- 
+
  Coefficients are: a =   0.100000000000000E+01   b =  -0.100000000000000E+07   c =   0.100000000000000E+01
  The roots are real:
  Root1 =   0.999999999999000E+06  Root2 =   0.100000000000100E-05
@@ -1020,7 +1020,7 @@ main =
 compile_OPT IDL2
 
 print, "input a, press enter, input b, press enter, input c, press enter"
-read,a,b,c 
+read,a,b,c
 Promt='Enter values of a,b,c and hit enter'
 
 a0=0.0
@@ -1074,7 +1074,7 @@ end
 110 PRINT "Enter coefficients a, b and c:":INPUT PROMPT "a= ,b= ,c= ":A,B,C
 120 IF A=0 THEN
 130   PRINT "The coefficient of x^2 can not be 0."
-140 ELSE 
+140 ELSE
 150   LET D=B^2-4*A*C
 160   SELECT CASE SGN(D)
 170   CASE 0
@@ -1083,7 +1083,7 @@ end
 200     PRINT "The real roots are ";(-B+SQR(D))/(2*A);"and ";(-B-SQR(D))/(2*A)
 210   CASE -1
 220     PRINT "The complex roots are ";-B/2/A;"+/- ";STR$(SQR(-D)/2/A);"*i"
-230   END SELECT 
+230   END SELECT
 240 END IF
 ```
 
@@ -1269,7 +1269,7 @@ X2 = -0.500000 - 0.866025i
 
 {{ works with |jq|1.4}}
 Currently jq does not include support for complex number operations, so
-a small library is included in the first section. 
+a small library is included in the first section.
 
 The second section defines <tt>quadratic_roots(a;b;c)</tt>,
 which emits a stream of 0 or two solutions, or the value <tt>true</tt> if a==b==c==0.
@@ -1293,7 +1293,7 @@ def plus(x; y):
     elif (y|type) == "number" then plus(y;x)
     else [ x[0] + y[0], x[1] + y[1] ]
     end;
- 
+
 def multiply(x; y):
     if (x|type) == "number" then
        if  (y|type) == "number" then [ x*y, 0 ]
@@ -1306,7 +1306,7 @@ def multiply(x; y):
 def negate(x): multiply(-1; x);
 
 def minus(x; y): plus(x; multiply(-1; y));
- 
+
 def conjugate(z):
   if (z|type) == "number" then [z, 0]
   else  [z[0], -(z[1]) ]
@@ -1322,7 +1322,7 @@ def invert(z):
 
 def divide(x;y): multiply(x; invert(y));
 
-def magnitude(z): 
+def magnitude(z):
   real( multiply(z; conjugate(z))) | sqrt;
 
 # exp^z
@@ -1342,7 +1342,7 @@ def complex_sqrt(z):
       (real(z)/$r) as $a
       | (imag(z)/$r) as $b
       | $r | sqrt as $r
-      | (($a | acos) / 2) 
+      | (($a | acos) / 2)
       | [ ($r * cos), ($r * sin)]
       end
   end ;
@@ -1352,7 +1352,7 @@ def complex_sqrt(z):
 
 ```jq
 # If there are infinitely many solutions, emit true;
-# if none, emit empty; 
+# if none, emit empty;
 # otherwise always emit two.
 # For numerical accuracy, Middlebrook's approach is adopted:
 def quadratic_roots(a; b; c):
@@ -1389,7 +1389,7 @@ def example:
   | (- (10|pow($i))) as $b
   | quadratic_roots(1; $b; 1) as $x
   | $x | poly(1; $b; 1) as $zero
-  | "\($i|lpad(4)): error = \(zero($zero)|lpad(18)) x=\($x)" 
+  | "\($i|lpad(4)): error = \(zero($zero)|lpad(18)) x=\($x)"
 ;
 
 example
@@ -1435,7 +1435,7 @@ $ jq -M -r -n -f Roots_of_a_quadratic_function.jq
 
 This solution is an implementation of algorithm from the Goldberg paper cited in the task description.  It does check for <tt>a=0</tt> and returns the linear solution in that case.  Julia's <tt>sqrt</tt> throws a domain error for negative real inputs, so negative discriminants are converted to complex by adding <tt>0im</tt> prior to taking the square root.
 
-Alternative solutions might make use of Julia's Polynomials or Roots packages.  
+Alternative solutions might make use of Julia's Polynomials or Roots packages.
 
 
 ```julia
@@ -1562,16 +1562,16 @@ X1 = -0.5 + 0.8660254037844386i, X2 = -0.5 + -0.8660254037844386i
   {b equation :a*x{sup 2}+:b*x+:c=0}
   {{lambda {:a' :b' :d}
    {if {> :d 0}
-   then {{lambda {:b' :d'}          
+   then {{lambda {:b' :d'}
          {equation.disp {+ :b' :d'} {- :b' :d'} 2 real roots}
         } :b' {/ {sqrt :d} :a'}}
    else {if {< :d 0}
-   then {{lambda {:b' :d'} 
+   then {{lambda {:b' :d'}
          {equation.disp [:b',:d'] [:b',-:d'] 2 complex roots}
         } :b' {/ {sqrt {- :d}} :a'} }
    else {equation.disp :b'  :b' one real double root}
   }}
-  } {* 2 :a} {/ {- :b} {* 2 :a}} {- {* :b :b} {* 4 :a :c}} } }} 
+  } {* 2 :a} {/ {- :b} {* 2 :a}} {- {* :b :b} {* 4 :a :c}} } }}
 
 2) using let:
 
@@ -1587,32 +1587,32 @@ X1 = -0.5 + 0.8660254037844386i, X2 = -0.5 + -0.8660254037844386i
           {equation.disp {+ :b' :d'} {- :b' :d'} 2 real roots} }
     else {if {< :d 0}
     then {let { {:b' :b'}
-                {:d' {/ {sqrt {- :d}} :a'}} } 
-          {equation.disp [:b',:d'] [:b',-:d'] 2 complex roots} } 
+                {:d' {/ {sqrt {- :d}} :a'}} }
+          {equation.disp [:b',:d'] [:b',-:d'] 2 complex roots} }
     else  {equation.disp :b' :b' one real double root} }} }}}
 
 3) a function to display results in an HTML table format
 
 {def equation.disp
  {lambda {:x1 :x2 :txt}
-  {table {@ style="background:#ffa"} 
+  {table {@ style="background:#ffa"}
    {tr {td :txt:    }}
-   {tr {td x1 = :x1 }} 
+   {tr {td x1 = :x1 }}
    {tr {td x2 = :x2 }} } }}
 
 4) testing:
 
-equation 1*x2+1*x+-1=0 
+equation 1*x2+1*x+-1=0
 2 real roots:
  x1 = 0.6180339887498949
  x2 = -1.618033988749895
-    
-equation 1*x2+1*x+1=0 
+
+equation 1*x2+1*x+1=0
 2 complex roots:
  x1 = [-0.5,0.8660254037844386]
  x2 = [-0.5,-0.8660254037844386]
 
-equation 1*x2+-2*x+1=0 
+equation 1*x2+-2*x+1=0
 one real double root:
  x1 = 1
  x2 = 1
@@ -1693,16 +1693,16 @@ fsolve(x^2-10^9*x+1,x,complex);
 
 ```txt
                                 (1/2)                     (1/2)
-                   /          2\             /          2\     
-              -b + \-4 a c + b /         b + \-4 a c + b /     
+                   /          2\             /          2\
+              -b + \-4 a c + b /         b + \-4 a c + b /
               -----------------------, - ----------------------
-                        2 a                       2 a    
-      
+                        2 a                       2 a
+
                                     9                -9
-                      1.000000000 10 , 1.000000000 10  
+                      1.000000000 10 , 1.000000000 10
 
                                     -9                9
-                      1.000000000 10  , 1.000000000 10 
+                      1.000000000 10  , 1.000000000 10
 ```
 
 
@@ -1787,7 +1787,7 @@ solve(x^2 - 10^9*x + 1 = 0, x);
     x = sqrt(249999999999999999) + 500000000] */
 
 bfloat(%);
-/* [x = 1.0000000000000000009999920675269450501b-9, 
+/* [x = 1.0000000000000000009999920675269450501b-9,
     x = 9.99999999999999998999999999999999999b8] */
 ```
 
@@ -1932,7 +1932,7 @@ Program QuadraticRoots;
 
 var
   a, b, c, q, f: double;
- 
+
 begin
   a := 1;
   b := -10e9;
@@ -1974,7 +1974,7 @@ x1:  1.00000000E+010, x2:  1.00000000E-010
 
 ## Perl
 
-When using [http://perldoc.perl.org/Math/Complex.html Math::Complex] perl automatically convert numbers when necessary. 
+When using [http://perldoc.perl.org/Math/Complex.html Math::Complex] perl automatically convert numbers when necessary.
 
 ```perl
 use Math::Complex;
@@ -2013,7 +2013,7 @@ for
 
 sub quadroots (*[$a, $b, $c]) {
     ( -$b + $_ ) / (2 * $a),
-    ( -$b - $_ ) / (2 * $a) 
+    ( -$b - $_ ) / (2 * $a)
     given
     ($b ** 2 - 4 * $a * $c ).Complex.sqrt.narrow
 }
@@ -2232,31 +2232,31 @@ real nan nan
 real nan nan
 
 Middlebrook:
--0.66667 -0.66667 
-(-1+0j) (0.33333+0j) 
-(-0.33333-0.4714j) (-0.33333+0.4714j) 
-1e+09 1e-09 
-1e+100 1e-100 
-1e+200 1e-200 
-1e+300 1e-300 
+-0.66667 -0.66667
+(-1+0j) (0.33333+0j)
+(-0.33333-0.4714j) (-0.33333+0.4714j)
+1e+09 1e-09
+1e+100 1e-100
+1e+200 1e-200
+1e+300 1e-300
 
 What Every...
--0.66667 -0.66667 
-0.33333 -1.0 
-(-0.33333+0.4714j) (-0.33333-0.4714j) 
-1e+09 1e-09 
-1e+100 1e-100 
-inf 0.0 
-inf 0.0 
+-0.66667 -0.66667
+0.33333 -1.0
+(-0.33333+0.4714j) (-0.33333-0.4714j)
+1e+09 1e-09
+1e+100 1e-100
+inf 0.0
+inf 0.0
 
 Numpy:
--0.66667 -0.66667 
--1.0 0.33333 
-(-0.33333+0.4714j) (-0.33333-0.4714j) 
-1e+09 1e-09 
-1e+100 1e-100 
-1e+200 1e-200 
-1e+300 0.0 
+-0.66667 -0.66667
+-1.0 0.33333
+(-0.33333+0.4714j) (-0.33333-0.4714j)
+1e+09 1e-09
+1e+100 1e-100
+1e+200 1e-200
+1e+300 0.0
 
 ```
 
@@ -2369,7 +2369,7 @@ root2 = 0.000001
 
 ```
 
-The following output is when Regina 3.9.1 REXX is used. 
+The following output is when Regina 3.9.1 REXX is used.
 
 '''output'''   when using the input of:   <tt> 1   -10e9   1 </tt>
 
@@ -2384,7 +2384,7 @@ root2 = 1E-10
 
 ```
 
-The following output is when R4 REXX is used. 
+The following output is when R4 REXX is used.
 
 '''output'''   when using the input of:   <tt> 1   -10e9   1 </tt>
 
@@ -2427,7 +2427,7 @@ root2 = 0-1i
 
 
 
-###  Version 2 
+###  Version 2
 
 
 ```rexx
@@ -2493,9 +2493,9 @@ sqrt:
     End
   Numeric Digits prec
   Return (r+0)
-exit: Say arg(1) 
+exit: Say arg(1)
 ```
-          
+
 {{out}}
 
 ```txt
@@ -2616,7 +2616,7 @@ object QuadraticRoots {
   def solve(a:Double, b:Double, c:Double)={
     val d = b*b-4.0*a*c
     val aa = a+a
- 
+
     if (d < 0.0) {  // complex roots
       val re= -b/aa;
       val im = math.sqrt(-d)/aa;
@@ -2625,7 +2625,7 @@ object QuadraticRoots {
     else { // real roots
       val re=if (b < 0.0) (-b+math.sqrt(d))/aa else (-b -math.sqrt(d))/aa
       (re, (c/(a*re)))
-    }	
+    }
   }
 }
 ```
@@ -2641,7 +2641,7 @@ val equations=Array(
   (1.0, 0.0, 1.0),        // two imaginary roots
   (1.0, 1.0, 1.0)         // two complex roots
 );
-	 
+
 equations.foreach{v =>
   val (a,b,c)=v
   println("a=%g   b=%g   c=%g".format(a,b,c))
@@ -2767,7 +2767,7 @@ const proc: main is func
     var roots: r is roots.value;
   begin
     r := solve(1.0, -10.0E5, 1.0);
-    writeln("X1 = " <& r.x1 digits 6 <& " X2 = " <& r.x2 digits 6); 
+    writeln("X1 = " <& r.x1 digits 6 <& " X2 = " <& r.x2 digits 6);
   end func;
 ```
 
@@ -2914,11 +2914,11 @@ report_quad  1  3  3  ;# {(-3 - sqrt(3)i)/2), (-3 + sqrt(3)i)/2)}
 
 =={{header|TI-89 BASIC}}==
 
-TI-89 BASIC has built-in numeric and algebraic solvers. 
+TI-89 BASIC has built-in numeric and algebraic solvers.
 <lang>solve(x^2-1E9x+1.0)
 ```
- 
-returns 
+
+returns
 
 ```txt
 x=1.E-9 or x=1.E9

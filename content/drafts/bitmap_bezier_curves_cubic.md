@@ -120,7 +120,7 @@ SKIP
 ```algol68
 #!/usr/bin/a68g --script #
 # -*- coding: utf-8 -*- #
- 
+
 PR READ "prelude/Bitmap.a68" PR; # c.f. [[rc:Bitmap]] #
 PR READ "prelude/Bitmap/Bresenhams_line_algorithm.a68" PR; # c.f. [[rc:Bitmap/Bresenhams_line_algorithm]] #
 PR READ "prelude/Bitmap/Bezier_curves/Cubic.a68" PR;
@@ -166,18 +166,18 @@ ffffff000000ffffffffffffffffffffffffffffffffffffffffffffffffffffff000000ffffffff
 ```bbcbasic
       Width% = 200
       Height% = 200
-      
+
       REM Set window size:
       VDU 23,22,Width%;Height%;8,16,16,128
-      
+
       REM Draw cubic Bézier curve:
       PROCbeziercubic(160,150, 10,120, 30,0, 150,50, 20, 0,0,0)
       END
-      
+
       DEF PROCbeziercubic(x1,y1,x2,y2,x3,y3,x4,y4,n%,r%,g%,b%)
       LOCAL i%, t, t1, a, b, c, d, p{()}
       DIM p{(n%) x%,y%}
-      
+
       FOR i% = 0 TO n%
         t = i% / n%
         t1 = 1 - t
@@ -188,13 +188,13 @@ ffffff000000ffffffffffffffffffffffffffffffffffffffffffffffffffffff000000ffffffff
         p{(i%)}.x% = INT(a * x1 + b * x2 + c * x3 + d * x4 + 0.5)
         p{(i%)}.y% = INT(a * y1 + b * y2 + c * y3 + d * y4 + 0.5)
       NEXT
-      
+
       FOR i% = 0 TO n%-1
         PROCbresenham(p{(i%)}.x%,p{(i%)}.y%,p{(i%+1)}.x%,p{(i%+1)}.y%, \
         \             r%,g%,b%)
       NEXT
       ENDPROC
-      
+
       DEF PROCbresenham(x1%,y1%,x2%,y2%,r%,g%,b%)
       LOCAL dx%, dy%, sx%, sy%, e
       dx% = ABS(x2% - x1%) : sx% = SGN(x2% - x1%)
@@ -210,7 +210,7 @@ ffffff000000ffffffffffffffffffffffffffffffffffffffffffffffffffffff000000ffffffff
         ENDIF
       UNTIL FALSE
       ENDPROC
-      
+
       DEF PROCsetpixel(x%,y%,r%,g%,b%)
       COLOUR 1,r%,g%,b%
       GCOL 1
@@ -239,8 +239,8 @@ void cubic_bezier(
 
 
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 
 /* number of segments for the curve */
 #define N_SEG 20
@@ -274,7 +274,7 @@ void cubic_bezier(
         pts[i][0] = x;
         pts[i][1] = y;
     }
- 
+
 #if 0
     /* draw only points */
     for (i=0; i <= N_SEG; ++i)
@@ -397,7 +397,7 @@ let drawPoints points (canvas:System.Windows.Controls.Canvas) =
                                         X2 = v2.[0],
                                         Y2 = -v2.[1],
                                         StrokeThickness = 2.)) |> ignore
-    let renderPoint (previous:vector) (current:vector) = 
+    let renderPoint (previous:vector) (current:vector) =
         addLineToScreen previous current
         current
 
@@ -441,9 +441,9 @@ SUB BezierCube(x1, y1, x2, y2, x3, y3, x4, y4, n)
 		x AS INTEGER
 		y AS INTEGER
 	END TYPE
-	
+
 	DIM t, t1, a, b, c, d, p[n] AS POINTAPI
-	
+
 	FOR DIM i = 0 TO n
 		t = i / n: t1 = 1 - t
 		a = t1 ^ 3
@@ -453,16 +453,16 @@ SUB BezierCube(x1, y1, x2, y2, x3, y3, x4, y4, n)
 		p[i].x = a * x1 + b * x2 + c * x3 + d * x4 + 0.5
 		p[i].y = Height - (a * y1 + b * y2 + c * y3 + d * y4 + 0.5)
 	NEXT
-	
+
 	FOR i = 0 TO n - 1
 		Bresenham(p[i].x, p[i].y, p[i + 1].x, p[i + 1].y)
 	NEXT
-	
+
 	SUB Bresenham(x0, y0, x1, y1)
 		DIM dx = ABS(x0 - x1), sx = SGN(x0 - x1)
 		DIM dy = ABS(y0 - y1), sy = SGN(y0 - y1)
 		DIM tmp, er = IIF(dx > dy, dx, -dy) / 2
-		
+
 		WHILE NOT (x0 = x1 ANDALSO y0 = y1)
 			PSET(FBSL.GETDC, x0, y0, &HFF) ' Red: Windows stores colors in BGR order
 			tmp = er
@@ -499,7 +499,7 @@ IN: rosettacode.raster.line
 ! turns a list of points into the list of lines between them
 : points-to-lines ( seq -- seq )
     dup rest [ 2array ] 2map ;
-: draw-lines ( {R,G,B} points image -- ) 
+: draw-lines ( {R,G,B} points image -- )
     [ [ first2 ] dip draw-line ] curry with each ;
 :: bezier-lines ( {R,G,B} P0 P1 P2 P3 image -- )
     ! 100 is an arbitrary value.. could be given as a parameter..
@@ -818,7 +818,7 @@ cubicbezier!(xy)
 
 ## Kotlin
 
-This incorporates code from other relevant tasks in order to provide a runnable example. 
+This incorporates code from other relevant tasks in order to provide a runnable example.
 
 ```scala
 // Version 1.2.40
@@ -943,9 +943,9 @@ function bezierCubic(obj,pixel_0,pixel_1,pixel_2,pixel_3,color,varargin)
     for i = (1:length(curve)-1)
         obj.bresenhamLine(curve(i,:),curve(i+1,:),color);
     end
-    
+
     assignin('caller',inputname(1),obj); %saves the changes to the object
-    
+
 end
 
 ```
@@ -1133,7 +1133,7 @@ See [https://github.com/thundergnat/rc/blob/master/img/Bezier-cubic-perl6.png ex
 ## Phix
 
 Output similar to [[Bitmap/Bézier_curves/Cubic#Mathematica|Mathematica]]
-Requires new_image() from [[Bitmap#Phix|Bitmap]], bresLine() from [[Bitmap/Bresenham's_line_algorithm#Phix|Bresenham's_line_algorithm]], write_ppm() from [[Bitmap/Write_a_PPM_file#Phix|Write_a_PPM_file]]. 
+Requires new_image() from [[Bitmap#Phix|Bitmap]], bresLine() from [[Bitmap/Bresenham's_line_algorithm#Phix|Bresenham's_line_algorithm]], write_ppm() from [[Bitmap/Write_a_PPM_file#Phix|Write_a_PPM_file]].
 Included as demo\rosetta\Bitmap_BezierCubic.exw, results may be verified with demo\rosetta\viewppm.exw
 
 ```Phix
@@ -1274,7 +1274,7 @@ Procedure cubic_bezier(img, p1x, p1y, p2x, p2y, p3x, p3y, p4x, p4y, Color, n_seg
   Protected i
   Protected.f t, t1, a, b, c, d
   Dim pts.POINT(n_seg)
-  
+
   For i = 0 To n_seg
     t = i / n_seg
     t1 = 1.0 - t
@@ -1285,7 +1285,7 @@ Procedure cubic_bezier(img, p1x, p1y, p2x, p2y, p3x, p3y, p4x, p4y, Color, n_seg
     pts(i)\x = a * p1x + b * p2x + c * p3x + d * p4x
     pts(i)\y = a * p1y + b * p2y + c * p3y + d * p4y
   Next
-  
+
   StartDrawing(ImageOutput(img))
     FrontColor(Color)
     For i = 0 To n_seg - 1
@@ -1325,7 +1325,7 @@ def cubicbezier(self, x0, y0, x1, y1, x2, y2, x3, y3, n=20):
         b = 3. * t * (1. - t)**2
         c = 3.0 * t**2 * (1.0 - t)
         d = t**3
-        
+
         x = int(a * x0 + b * x1 + c * x2 + d * x3)
         y = int(a * y0 + b * y1 + c * y2 + d * y3)
         pts.append( (x, y) )
@@ -1434,7 +1434,7 @@ points(bezierCurve(x,y,20), type="l", col="red")
 (define (int t p q)
   (define ((int1 t) x0 x1) (+ (* (- 1 t) x0) (* t x1)))
   (map (int1 t) p q))
-  
+
 (define (bezier-points p0 p1 p2 p3)
   (for/list ([t (in-range 0.0 1.0 (/ 1.0 20))])
     (int t (int t p0 p1) (int t p2 p3))))
@@ -1482,7 +1482,7 @@ def bezier(t, points)
     sum += n.choose(i) * (1-t)**(n - i) * t**i * point.y
   end
 end
- 
+
 class Fixnum
   def choose(k)
     self.factorial / (k.factorial * (self - k).factorial)
@@ -1494,7 +1494,7 @@ end
 
 bitmap = Pixmap.new(400, 400)
 points = [
-  Pixel[40,100], Pixel[100,350], Pixel[150,50], 
+  Pixel[40,100], Pixel[100,350], Pixel[150,50],
   Pixel[150,150], Pixel[350,250], Pixel[250,250]
 ]
 points.each {|p| bitmap.draw_circle(p, 3, RGBColour::RED)}
@@ -1515,7 +1515,7 @@ package require Tk
 proc drawBezier {img colour args} {
     # ensure the points are increasing along the x-axis
     set points [lsort -real -index 0 $args]
-    
+
     set xmin [x [lindex $points 0]]
     set xmax [x [lindex $points end]]
     set prev [lindex $points 0]
@@ -1558,9 +1558,9 @@ proc newbezier {n w} {
         drawCircle $bezier red $point 3
     }
     puts $points
-    
-    drawBezier $bezier blue {*}$points    
-    
+
+    drawBezier $bezier blue {*}$points
+
     $w configure -image $bezier
 }
 

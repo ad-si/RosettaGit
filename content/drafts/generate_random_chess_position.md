@@ -17,7 +17,7 @@ The purpose of this task is to generate a random chess position in [[wp:Forsyth�
 * there is one and only one king of each color (one black king and one white king);
 * the kings must not be placed on adjacent squares;
 * there can not be any pawn in the promotion square (no white pawn in the eighth rank, and no black pawn in the first rank);
-* including the kings, up to 32 pieces of either color can be placed.  There is no requirement for material balance between sides;  The picking of pieces does not have to comply to a regular chess set : there can be five knights, twenty rooks, whatever... as long as the total number of pieces do not exceed thirty-two.  
+* including the kings, up to 32 pieces of either color can be placed.  There is no requirement for material balance between sides;  The picking of pieces does not have to comply to a regular chess set : there can be five knights, twenty rooks, whatever... as long as the total number of pieces do not exceed thirty-two.
 * it is white's turn, it is assumed that both sides have lost castling rights and that there is no possibility for ''en passant'' (the FEN should thus end in <tt>w - - 0 1</tt>).
 
 
@@ -29,8 +29,8 @@ No requirement is made regarding the probability distribution of your method, bu
 
 {{trans|Java}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
@@ -84,7 +84,7 @@ void toFen() {
             else {
                 if (countEmpty > 0) {
                     fen[index++] = countEmpty + 48;
-                    countEmpty = 0;               
+                    countEmpty = 0;
                 }
                 fen[index++] = ch;
             }
@@ -122,14 +122,14 @@ Sample position:
 
 ```txt
 
- .  .  .  Q  .  .  b  . 
- .  .  .  .  .  .  .  . 
- R  .  .  b  .  .  r  . 
- .  .  .  .  q  .  .  K 
- .  .  .  .  P  .  .  . 
- .  B  k  P  .  .  .  . 
- .  n  .  .  .  .  .  . 
- .  .  .  N  .  .  .  . 
+ .  .  .  Q  .  .  b  .
+ .  .  .  .  .  .  .  .
+ R  .  .  b  .  .  r  .
+ .  .  .  .  q  .  .  K
+ .  .  .  .  P  .  .  .
+ .  B  k  P  .  .  .  .
+ .  n  .  .  .  .  .  .
+ .  .  .  N  .  .  .  .
 3Q2b1/8/R2b2r1/4q2K/4P3/1BkP4/1n6/3N4/ w - - 0 1
 
 ```
@@ -161,7 +161,7 @@ public:
                 while( true ) {
                     a = rand() % 8; b = rand() % 8;
                     if( brd[a][b] == 0 ) {
-                        if( c == 'P' && !b || c == 'p' && b == 7 || 
+                        if( c == 'P' && !b || c == 'p' && b == 7 ||
                           ( ( c == 'K' || c == 'k' ) && search( c == 'k' ? 'K' : 'k', a, b ) ) ) continue;
                         break;
                     }
@@ -194,7 +194,7 @@ private:
                     std::cout << brd[x][y];
                 }
             }
-            if( e > 0 ) { std::cout << e; e = 0; } 
+            if( e > 0 ) { std::cout << e; e = 0; }
             if( y < 7 ) std::cout << "/";
         }
         std::cout << " w - - 0 1\n\n";
@@ -261,7 +261,7 @@ def hasNK(board, a, b)
             if (0..7).includes?(aa) && (0..7).includes?(bb)
                 p = board[aa + 8 * bb]
                 return true if p == "K" || p == "k"
-            end 
+            end
         end
     end
     return false
@@ -271,7 +271,7 @@ def generateBoard(board, pieces)
     pieces.each_char do |p|
         while true
             a = rand(8); b = rand(8)
-            next  if ( (b == 0 || b == 7) && (p == "P" || p == "p") ) || 
+            next  if ( (b == 0 || b == 7) && (p == "P" || p == "p") ) ||
                ( (p == "k" || p == "K") && hasNK(board, a, b) )
             break if board[a + b * 8] == '.'
         end
@@ -295,7 +295,7 @@ board = Array.new(64, '.'); generateBoard(board, pieces)
 puts
 e = 0
 8.times do |j| row_j = j * 8
-    8.times do |i| 
+    8.times do |i|
         board[row_j + i ] == '.' ? (e += 1) :
             ( (print(e); e = 0) if e > 0
             print board[row_j + i] )
@@ -419,7 +419,7 @@ Dim Shared As Byte grid(8, 8), r, c
 
 Sub placeKings()
     Dim As Byte r1, r2, c1, c2
-    
+
     Do
         r1 = Int(Rnd*8)
         c1 = Int(Rnd*8)
@@ -435,7 +435,7 @@ End Sub
 
 Sub placePieces(pieces As String, isPawn As Byte)
     Dim numToPlace As Byte = Int(Rnd*(Len(pieces)))
-    
+
     For n As Byte = 0 To numToPlace-1
         Do
             r = Int(Rnd*8)
@@ -448,13 +448,13 @@ End Sub
 Sub toFen()
     Dim As Byte ch, countEmpty = 0
     Dim As String fen
-    
+
     For r = 0 To 8-1
         For c = 0 To 8-1
             ch = grid(r, c)
-            If ch <> 0 Then 
+            If ch <> 0 Then
                 Print " " & Chr(ch);
-            Else 
+            Else
                 Print " .";
             End If
             If ch = 0 Then
@@ -613,15 +613,15 @@ Sample position:
 
 ```txt
 
- .  q  .  .  .  .  .  . 
- .  .  .  p  .  .  .  K 
- .  .  .  .  .  .  .  b 
- .  r  .  b  .  .  .  . 
- .  .  .  k  .  .  .  . 
- .  .  .  .  .  .  p  . 
- .  .  .  .  .  .  .  . 
+ .  q  .  .  .  .  .  .
+ .  .  .  p  .  .  .  K
+ .  .  .  .  .  .  .  b
+ .  r  .  b  .  .  .  .
+ .  .  .  k  .  .  .  .
+ .  .  .  .  .  .  p  .
+ .  .  .  .  .  .  .  .
  .  n  n  .  .  .  .  .
-1q6/3p3K/7b/1r1b4/3k4/6p1/8/1nn5/ w - - 0 1 
+1q6/3p3K/7b/1r1b4/3k4/6p1/8/1nn5/ w - - 0 1
 
 ```
 
@@ -777,14 +777,14 @@ public class Fen {
 
 ```txt
 (lol, the black king is in check, it couldn't possibly be white's turn)
- .  .  .  .  .  B  .  . 
- P  .  P  .  .  .  .  . 
- .  .  k  .  R  .  .  . 
- p  .  P  p  .  .  .  . 
- .  .  .  .  .  .  .  Q 
- P  .  .  .  .  .  .  . 
- .  N  .  .  r  N  P  . 
- .  .  .  .  .  .  B  K 
+ .  .  .  .  .  B  .  .
+ P  .  P  .  .  .  .  .
+ .  .  k  .  R  .  .  .
+ p  .  P  p  .  .  .  .
+ .  .  .  .  .  .  .  Q
+ P  .  .  .  .  .  .  .
+ .  N  .  .  r  N  P  .
+ .  .  .  .  .  .  B  K
 5B2/P1P5/2k1R3/p1Pp4/7Q/P7/1N2rNP1/6BK/ w - - 0 1
 ```
 
@@ -970,15 +970,15 @@ Sample output:
 
 ```txt
 
- .  .  .  .  .  .  .  . 
- K  .  .  .  .  .  .  . 
- .  P  p  .  b  .  P  P 
- .  p  P  .  .  .  P  . 
- .  p  .  q  .  p  P  P 
- .  .  .  k  .  .  .  b 
- .  .  .  n  p  .  .  . 
+ .  .  .  .  .  .  .  .
+ K  .  .  .  .  .  .  .
+ .  P  p  .  b  .  P  P
+ .  p  P  .  .  .  P  .
+ .  p  .  q  .  p  P  P
+ .  .  .  k  .  .  .  b
+ .  .  .  n  p  .  .  .
  .  .  r  .  .  .  .  .
-8/K7/1Pp1b1PP/1pP3P1/1p1q1pPP/3k3b/3np3/2r5/ w - - 0 1 
+8/K7/1Pp1b1PP/1pP3P1/1p1q1pPP/3k3b/3np3/2r5/ w - - 0 1
 
 ```
 
@@ -1133,7 +1133,7 @@ function fen()
     res &= " w - - 0 1"
     return res
 end function
- 
+
 function p15()
     string res = "pppppppprrnnbbq"
     -- promote 0..8 pawns
@@ -1150,7 +1150,7 @@ function kings_adjacent(sequence p12)
             col_diff = abs(mod(p1,8)-mod(p2,8))
     return row_diff<=1 and col_diff<=1
 end function
- 
+
 integer lp
 procedure show_board()
     printf(1,"%d pieces\n%s",{lp,join_by(board,1,8,"")})
@@ -1431,7 +1431,7 @@ start()
 
 This REXX version normally generates balanced number of pieces   (both sides have an equal number of total pieces,
 
-but not necessarily of the same kind). 
+but not necessarily of the same kind).
 
 If the number of chessboards specified is negative, then the number of chess pieces for each side will be random.
 
@@ -1480,12 +1480,12 @@ piece: parse arg x;    if p//2  then upper x;     arg ux         /*use white if 
          end   /*#*/                                             /*#: isn't incremented.*/
 ```
 
-Some older REXXes don't have a   '''changestr'''   BIF,   so one is included here:   ───►   [[CHANGESTR.REX]]. 
+Some older REXXes don't have a   '''changestr'''   BIF,   so one is included here:   ───►   [[CHANGESTR.REX]].
 
 
 '''output'''   showing five chess positions (starting with a specific position by seeding the   '''random'''   BIF with   '''96'''),
 
-specifying the arguments (for Regina REXX under Windows):   96   5 
+specifying the arguments (for Regina REXX under Windows):   96   5
 
 ```txt
 
@@ -1565,7 +1565,7 @@ def hasNK( board, a, b )
             if aa.between?( 0, 7 ) && bb.between?( 0, 7 )
                 p = board[aa + 8 * bb]
                 if p == "K" || p == "k"; return true; end
-            end 
+            end
         end
     end
     return false
@@ -1576,8 +1576,8 @@ def generateBoard(  board, pieces  )
         pieces = pieces[0...-1]
         while( true )
             a = rand( 8 ); b = rand( 8 )
-            if ( ( b == 0 || b == 7 ) && ( p == "P" || p == "p" ) ) || 
-               ( ( p == "k" || p == "K" ) && hasNK( board, a, b ) ); next; end  
+            if ( ( b == 0 || b == 7 ) && ( p == "P" || p == "p" ) ) ||
+               ( ( p == "k" || p == "K" ) && hasNK( board, a, b ) ); next; end
             if board[a + b * 8] == nil; break;end
         end
         board[a + b * 8] = p
@@ -1587,17 +1587,17 @@ pieces = "ppppppppkqrrbbnnPPPPPPPPKQRRBBNN"
 for i in 0 .. 10
     e = pieces.length - 1
     while e > 0
-        p = rand( e ); t = pieces[e]; 
+        p = rand( e ); t = pieces[e];
         pieces[e] = pieces[p]; pieces[p] = t; e -= 1
     end
 end
 board = Array.new( 64 ); generateBoard( board, pieces )
 puts
 e = 0
-for j in 0 .. 7 
-    for i in 0 .. 7 
+for j in 0 .. 7
+    for i in 0 .. 7
         if board[i + 8 * j] == nil; e += 1
-        else 
+        else
             if e > 0; print( e ); e = 0; end
             print( board[i + 8 * j] )
         end
@@ -1606,8 +1606,8 @@ for j in 0 .. 7
     if j < 7; print( "/" ); end
 end
 print( " w - - 0 1\n" )
-for j in 0 .. 7 
-    for i in 0 .. 7 
+for j in 0 .. 7
+    for i in 0 .. 7
         if board[i + j * 8] == nil; print( "." )
         else print( board[i + j * 8] ); end
     end
@@ -1664,7 +1664,7 @@ impl Board {
     fn empty() -> Self {
         Board { grid: [[EMPTY; 8]; 8] }
     }
-    
+
     fn fen(&self) -> String {
         let mut fen = String::new();
         let mut count_empty = 0;
@@ -1730,14 +1730,14 @@ fn main() {
 {{out}}
 
 ```txt
-b . . . . . . . 
-. R P . . . . . 
-n . . P . . . k 
-p . . . P r . . 
-P p . b . . . n 
-. . P . . . . . 
-K . . . . . . . 
-. . . q . . . . 
+b . . . . . . .
+. R P . . . . .
+n . . P . . . k
+p . . . P r . .
+P p . b . . . n
+. . P . . . . .
+K . . . . . . .
+. . . q . . . .
 b7/1RP5/n2P3k/p3Pr2/Pp1b3n/2P5/K7/3q4/ w - - 0 1
 ```
 
@@ -1831,10 +1831,10 @@ object RandomFen extends App {
 
 ```Yabasic
 dim grid(8, 8)
- 
+
 sub placeKings()
     local r1, r2, c1, c2
-    
+
     do
         r1 = int(ran(8))
         c1 = int(ran(8))
@@ -1847,10 +1847,10 @@ sub placeKings()
         end if
     loop
 end sub
- 
+
 sub placePieces(pieces$, isPawn)
     local n, r, c, numToPlace
-    
+
     numToPlace = int(ran(len(pieces$)))
     for n = 0 to numToPlace-1
         repeat
@@ -1860,10 +1860,10 @@ sub placePieces(pieces$, isPawn)
         grid(r, c) = asc(mid$(pieces$, n, 1))
     next
 end sub
- 
+
 sub toFen()
     local fen$, ch, r, c, countEmpty
-    
+
     for r = 0 to 8-1
         for c = 0 to 8-1
             ch = grid(r, c)
@@ -1888,7 +1888,7 @@ sub toFen()
     fen$ = fen$ + " w - - 0 1"
     print fen$
 end sub
- 
+
 sub createFen()
     placeKings()
     placePieces("PPPPPPPP", TRUE)
@@ -1897,7 +1897,7 @@ sub createFen()
     placePieces("rnbqbnr", FALSE)
     toFen()
 end sub
- 
+
 createFen()
 
 ```
@@ -1912,23 +1912,23 @@ createFen()
 fcn pickFEN{
    # First we chose how many pieces to place: 2 to 32
    n := (0).random(2,33);
- 
+
    # Then we pick $n squares: first n of shuffle (0,1,2,3...63)
-   n = [0..63].walk().shuffle()[0,n]; 
- 
+   n = [0..63].walk().shuffle()[0,n];
+
    # We try to find suitable king positions on non-adjacent squares.
    # If we could not find any, we return recursively
    kings := Walker.cproduct(n,n).filter1(fcn([(a,b)]){  // Cartesian product
       a!=b and (a/8 - b/8).abs() or (a%8 - b%8).abs()>1
    }); # (a,b) on success, False on fail
    if(not kings) return(pickFEN());    // tail recursion
- 
+
    # We make a list of pieces we can pick (apart from the kings)
    pieces,pnp,pnP := "p P n N b B r R q Q".split(" "), pieces-"p", pieces-"P";
- 
+
    # We make a list of two king symbols to pick randomly a black or white king
    k := "K k".split(" ").shuffle();
- 
+
    [0..63].apply('wrap(sq){  # look at each square
       if(kings.holds(sq)) k.pop();
       else if(n.holds(sq)){

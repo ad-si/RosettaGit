@@ -14,11 +14,11 @@ tags = []
 
 ;Task:
 Rename:
-:::*   a file called     '''input.txt'''     into     '''output.txt'''     and 
+:::*   a file called     '''input.txt'''     into     '''output.txt'''     and
 :::*   a directory called     '''docs'''     into     '''mydocs'''.
 
 
-This should be done twice:   
+This should be done twice:
 once "here", i.e. in the current working directory and once in the filesystem root.
 
 It can be assumed that the user has the rights to do so.
@@ -226,8 +226,8 @@ ren$(@"d:\docs".@"d:\mydocs")          { @ used as syntactic sugar as in C# for 
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -245,8 +245,8 @@ int main()
 
 {{trans|C}}
 
-```cpp>#include <cstdio
-
+```cpp
+#include <cstdio>
 
 int main()
 {
@@ -335,10 +335,10 @@ Clipper has no it's own functions to rename a directory, it is possible, though,
 (.renameTo (File. "input.txt") (File. "output.txt"))
 (.renameTo (File. "docs") (File. "mydocs"))
 
-(.renameTo 
+(.renameTo
  (File. (str (File/separator) "input.txt"))
  (File. (str (File/separator) "output.txt")))
-(.renameTo 
+(.renameTo
  (File. (str (File/separator) "docs"))
  (File. (str (File/separator) "mydocs")))
 ```
@@ -481,7 +481,7 @@ with an obvious meaning of the string variables.
 
 ```fsharp
 open System.IO
- 
+
 [<EntryPoint>]
 let main args =
     File.Move("input.txt","output.txt")
@@ -497,7 +497,7 @@ let main args =
 
 
 ```factor
-"" "/" [ 
+"" "/" [
     [ "input.txt" "output.txt" move-file "docs" "mydocs" move-file ] with-directory
 ] bi@
 ```
@@ -657,7 +657,7 @@ WRITE(FIle='.\docs', REName='.\mydocs')
 
 WRITE(FIle='\input.txt', REName='\output.txt')
 SYSTEM(DIR='\')
-WRITE(FIle='\docs', REName='\mydocs') 
+WRITE(FIle='\docs', REName='\mydocs')
 ```
 
 
@@ -666,7 +666,7 @@ Icon supports 'rename' for files only.
 
 ```Unicon
 every dir := !["./","/"] do {
-   rename(f := dir || "input.txt", dir || "output.txt")  |stop("failure for file rename ",f) 
+   rename(f := dir || "input.txt", dir || "output.txt")  |stop("failure for file rename ",f)
    rename(f := dir || "docs", dir || "mydocs")           |stop("failure for directory rename ",f)
    }
 ```
@@ -703,7 +703,7 @@ d moveTo("/mydocs")
 ## J
 
 
-J does not ship with a built-in utility for renaming files. 
+J does not ship with a built-in utility for renaming files.
 The following will work on Windows, Linux and Macs:
 
 
@@ -740,10 +740,10 @@ public class FileRenameTest {
    public static boolean renameFile(String oldname, String newname) {
        // File (or directory) with old name
        File file = new File(oldname);
-   
+
        // File (or directory) with new name
        File file2 = new File(newname);
-   
+
        // Rename file (or directory)
        boolean success = file.renameTo(file2);
        return success;
@@ -832,7 +832,7 @@ mv("/docs", "/mydocs")
 
 /* testing on Windows 10 which needs administrative privileges
    to rename files in the root */
- 
+
 import java.io.File
 
 fun main(args: Array<String>) {
@@ -847,7 +847,7 @@ fun main(args: Array<String>) {
             println("${oldPaths[i]} successfully renamed to ${newPaths[i]}")
         else
             println("${oldPaths[i]} could not be renamed")
-    }            
+    }
 }
 ```
 
@@ -868,7 +868,7 @@ c:\docs successfully renamed to c:\mydocs
 ## Lasso
 
 
-```Lasso 
+```Lasso
 // move file
 local(f = file('input.txt'))
 #f->moveTo('output.txt')
@@ -1006,11 +1006,11 @@ RenameDirectory["docs", "mydocs"]
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 
 ```Matlab
- [STATUS, MSG, MSGID] = movefile (F1, F2);  
+ [STATUS, MSG, MSGID] = movefile (F1, F2);
 ```
 
 
@@ -1264,27 +1264,27 @@ rename("input.txt", "output.txt");
 
 
 ```pascal
-  var  
+  var
     f : file ; // Untyped file
  begin
- 
+
   // as current directory
   AssignFile(f,'input.doc');
   Rename(f,'output.doc');
- 
+
   // as root directory
   AssignFile(f,'\input.doc');
   Rename(f,'\output.doc');
- 
-  // rename a directory 
+
+  // rename a directory
   AssignFile(f,'docs');
   Rename(f,'mydocs');
- 
+
   //rename a directory off the root
- 
+
   AssignFile(f,'\docs');
   Rename(f,'\mydocs');
- 
+
 end;
 ```
 
@@ -1412,7 +1412,7 @@ void setup(){
   boolean rootfile = rename("input.txt", "output.txt");
   boolean rootfold = rename("docs", "mydocs");
   // true if succeeded, false if failed
-  println(sketchfile, sketchfold, rootfile, rootfold);  
+  println(sketchfile, sketchfold, rootfile, rootfold);
 }
 
 boolean rename(String oldname, String newname) {
@@ -1573,7 +1573,7 @@ End Function
 rename %input.txt %output.txt
 rename %docs/ %mydocs/
 
-; Unix. Note that there's no path specification used for the 
+; Unix. Note that there's no path specification used for the
 ; new name. "Rename" is not "move".
 
 rename %/input.txt %output.txt
@@ -1584,7 +1584,7 @@ rename %/docs/ %mydocs/
 rename %/c/input.txt %output.txt
 rename %/c/docs/ %mydocs/
 
-; Because REBOL treats data access schemes as uniformly as possible, 
+; Because REBOL treats data access schemes as uniformly as possible,
 ; you can do tricks like this:
 
 rename ftp://username:password@ftp.site.com/www/input.txt %output.txt
@@ -1657,7 +1657,7 @@ File.rename('/docs', '/mydocs')
 ```
 
 
-With 'fileutils' from the standard library: The <tt>FileUtils#move</tt> method has some more flexibility than the core <tt>File#rename</tt> method (not really demonstrated here). 
+With 'fileutils' from the standard library: The <tt>FileUtils#move</tt> method has some more flexibility than the core <tt>File#rename</tt> method (not really demonstrated here).
 
 
 ```ruby
@@ -1879,7 +1879,7 @@ Use a '''[http://www.stata.com/help.cgi?shell shell]''' command. The following w
 ```tcl
 file rename inputs.txt output.txt
 file rename docs mydocs
- 
+
 file rename [file nativename /inputs.txt] [file nativename /output.txt]
 file rename [file nativename /docs] [file nativename /mydocs]
 ```
@@ -1889,7 +1889,7 @@ Without the need to work on unusual platforms like Mac OS 9, the code could be j
 ```tcl
 file rename inputs.txt output.txt
 file rename docs mydocs
- 
+
 file rename /inputs.txt /output.txt
 file rename /docs /mydocs
 ```

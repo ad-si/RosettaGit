@@ -11,9 +11,9 @@ tags = []
 +++
 
 {{task|Percolation Simulations}}{{Percolation Simulation}}
-Let <math>v</math> be a vector of <math>n</math> values of either <tt>1</tt> or <tt>0</tt> where the probability of any 
-value being <tt>1</tt> is <math>p</math>; the probability of a value being <tt>0</tt> is therefore <math>1-p</math>. 
-Define a run of <tt>1</tt>s as being a group of consecutive <tt>1</tt>s in the vector bounded 
+Let <math>v</math> be a vector of <math>n</math> values of either <tt>1</tt> or <tt>0</tt> where the probability of any
+value being <tt>1</tt> is <math>p</math>; the probability of a value being <tt>0</tt> is therefore <math>1-p</math>.
+Define a run of <tt>1</tt>s as being a group of consecutive <tt>1</tt>s in the vector bounded
 either by the limits of the vector or by a <tt>0</tt>. Let the number of such runs in a given
 vector of length <math>n</math> be <math>R_n</math>.
 
@@ -26,13 +26,13 @@ For example, the following vector has <math>R_{10} = 3</math>
 
 ```
 
-Percolation theory states that 
+Percolation theory states that
 
 :<math>K(p) = \lim_{n\to\infty} R_n / n = p(1 - p)</math>
 
 ;Task
 
-Any calculation of <math>R_n / n</math> for finite <math>n</math> is subject to randomness so should be 
+Any calculation of <math>R_n / n</math> for finite <math>n</math> is subject to randomness so should be
 computed as the average of <math>t</math> runs, where <math>t \ge 100</math>.
 
 For values of <math>p</math> of 0.1, 0.3, 0.5, 0.7, and 0.9, show the effect of varying <math>n</math>
@@ -47,8 +47,8 @@ Show your output here.
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 // just generate 0s and 1s without storing them
@@ -124,8 +124,8 @@ running 1000 tests each:
 ## C++
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <random>
 #include <vector>
 #include <iostream>
@@ -141,9 +141,9 @@ std::vector<int> createVector( int n, double p ) {
    std::uniform_real_distribution<> dis( 0 , 1 ) ;
    for ( int i = 0 ; i < n ; i++ ) {
       double number = dis( gen ) ;
-      if ( number <= p ) 
+      if ( number <= p )
 	 result[ i ] = 1 ;
-      else 
+      else
 	 result[ i ] = 0 ;
    }
    return result ;
@@ -153,12 +153,12 @@ std::vector<int> createVector( int n, double p ) {
 int find_Runs( const std::vector<int> & numberVector ) {
    int runs = 0 ;
    VecIt found = numberVector.begin( ) ;
-   while ( ( found = std::find( found , numberVector.end( ) , 1 ) ) 
+   while ( ( found = std::find( found , numberVector.end( ) , 1 ) )
 	 != numberVector.end( ) ) {
       runs++ ;
-      while ( found != numberVector.end( ) && ( *found == 1 ) ) 
+      while ( found != numberVector.end( ) && ( *found == 1 ) )
 	 std::advance( found , 1 ) ;
-      if ( found == numberVector.end( ) ) 
+      if ( found == numberVector.end( ) )
 	 break ;
    }
    return runs ;
@@ -167,7 +167,7 @@ int find_Runs( const std::vector<int> & numberVector ) {
 int main( ) {
    std::cout << "t = 100\n" ;
    std::vector<double> p_values { 0.1 , 0.3 , 0.5 , 0.7 , 0.9 } ;
-   for ( double p : p_values ) { 
+   for ( double p : p_values ) {
       std::cout << "p = " << p << " , K(p) = " << p * ( 1 - p ) << std::endl ;
       for ( int n = 10 ; n < 100000 ; n *= 10 ) {
 	 std::vector<double> runsFound ;
@@ -289,11 +289,11 @@ t=500, p=0.90, n=16384, p(1-p)=0.09000, sim=0.09007, delta=0.1%
             (when run-1 (set! ct (1+ ct)))
             (set! run-1 #f))))
     (// ct n))
-            
+
 ;; mean of t counts
 (define (truns p (n 1000 )  (t 1000))
     (// (for/sum ([i t]) (runs p n)) t))
-            
+
 (define (task)
     (for ([p (in-range 0.1 1.0 0.2)])
     (writeln)
@@ -308,23 +308,23 @@ t=500, p=0.90, n=16384, p(1-p)=0.09000, sim=0.09007, delta=0.1%
 ```txt
 
 (task) ;; t = 1000
-🔸     p     0.1     Kp     0.09    
+🔸     p     0.1     Kp     0.09
  -- n    10 → 0.171
  -- n   100 → 0.0974
  -- n  1000 → 0.0907
-🔸     p     0.3     Kp     0.21    
+🔸     p     0.3     Kp     0.21
  -- n    10 → 0.2642
  -- n   100 → 0.2161
  -- n  1000 → 0.2105
-🔸     p     0.5     Kp     0.25    
+🔸     p     0.5     Kp     0.25
  -- n    10 → 0.2764
  -- n   100 → 0.2519
  -- n  1000 → 0.2503
-🔸     p     0.7     Kp     0.21    
+🔸     p     0.7     Kp     0.21
  -- n    10 → 0.2218
  -- n   100 → 0.2106
  -- n  1000 → 0.2098
-🔸     p     0.9     Kp     0.09    
+🔸     p     0.9     Kp     0.09
  -- n    10 → 0.087
  -- n   100 → 0.0894
  -- n  1000 → 0.0905
@@ -408,7 +408,7 @@ p    n      K       p(1-p)  diff
 
 ! loosely translated from python.  We do not need to generate and store the entire vector at once.
 ! compilation: gfortran -Wall -std=f2008 -o thisfile thisfile.f08
- 
+
 program percolation_mean_run_density
   implicit none
   integer :: i, p10, n2, n, t
@@ -599,7 +599,7 @@ randomList :: Int -> Double -> Rand StdGen [Int]
 randomList n p = take n . map f <$> getRandomRs (0,1)
   where f n = if (n > p) then 0 else 1
 
-countRuns xs = fromIntegral . sum $ 
+countRuns xs = fromIntegral . sum $
                zipWith (\x y -> x .&. xor y 1) xs (tail xs ++ [0])
 
 calcK :: Int -> Double -> Rand StdGen Double
@@ -685,14 +685,14 @@ Output:
 ```txt
 
 ->pmrd
-p        n        p(1-p)     SimK(p)   
+p        n        p(1-p)     SimK(p)
 0.1      1000     0.09000000 0.09021400
 0.1      2000     0.09000000 0.08984799
 0.1      3000     0.09000000 0.08993666
 0.3      1000     0.21       0.21080999
-0.3      2000     0.21       0.209953  
-0.3      3000     0.21       0.210564  
-0.5      1000     0.25       0.250024  
+0.3      2000     0.21       0.209953
+0.3      3000     0.21       0.210564
+0.5      1000     0.25       0.250024
 0.5      2000     0.25       0.25007399
 0.5      3000     0.25       0.24975266
 0.7      1000     0.21       0.21098799
@@ -713,9 +713,9 @@ p        n        p(1-p)     SimK(p)
 ```J
 
 NB. translation of python
- 
+
 NB.  'N P T' =: 100 0.5 500            NB. hypothetical example values, to aid comprehension...
- 
+
 newv =: (> ?@(#&0))~                   NB. generate a random binary vector.  Use:  N newv P
 runs =: {: + [: +/ 1 0&E.              NB. add the tail to the sum of 1 0 occurrences  Use: runs V
 mean_run_density =: [ %~ [: runs newv  NB. perform experiment.  Use: N mean_run_density P
@@ -926,14 +926,14 @@ running 1000 tests each:
 
 
 ```Mathematica
-meanRunDensity[p_, len_, trials_] := 
- Mean[Length[Cases[Split@#, {1, ___}]] & /@ 
+meanRunDensity[p_, len_, trials_] :=
+ Mean[Length[Cases[Split@#, {1, ___}]] & /@
     Unitize[Chop[RandomReal[1, {trials, len}], 1 - p]]]/len
 
 Column@Table[
-  Grid[Join[{{p, n, K, diff}}, 
-    Table[{q, n, x = meanRunDensity[q, n, 100] // N, 
-      q (1 - q) - x}, {n, {100, 1000, 10000, 100000}}], {}], 
+  Grid[Join[{{p, n, K, diff}},
+    Table[{q, n, x = meanRunDensity[q, n, 100] // N,
+      q (1 - q) - x}, {n, {100, 1000, 10000, 100000}}], {}],
    Alignment -> Left], {q, {.1, .3, .5, .7, .9}}]
 ```
 
@@ -1034,7 +1034,7 @@ Begin
    end;
 end.
 ```
- 
+
 Output
 
 ```txt
@@ -1086,7 +1086,7 @@ use constant t => 100;
 
 printf "t= %d\n", t;
 for my $p (qw(.1 .3 .5 .7 .9)) {
-    printf "p= %f, K(p)= %f\n", $p, $p*(1-$p);  
+    printf "p= %f, K(p)= %f\n", $p, $p*(1-$p);
     for my $n (qw(10 100 1000)) {
         my $r; $r += R($n, $p) for 1 .. t; $r /= $n;
         printf " R(n, p)= %f\n", $r / t;
@@ -1237,7 +1237,7 @@ Running 1000 tests each:
 0.9  100000  0.0900  0.0900  +0.0000 (+0.03%)
 
 ```
- 
+
 
 
 ## Python
@@ -1250,10 +1250,10 @@ from math import fsum
 
 n, p, t = 100, 0.5, 500
 
-def newv(n, p): 
+def newv(n, p):
     return [int(random() < p) for i in range(n)]
 
-def runs(v): 
+def runs(v):
     return sum((a & ~b) for a, b in zip(v, v[1:] + [0]))
 
 def mean_run_density(n, p):

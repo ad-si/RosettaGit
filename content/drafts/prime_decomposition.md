@@ -14,8 +14,8 @@ tags = []
 [[Category:Arbitrary precision]]
 {{omit from|GUISS}}
 
-The prime decomposition of a number is defined as a list of prime numbers 
-which when all multiplied together, are equal to that number. 
+The prime decomposition of a number is defined as a list of prime numbers
+which when all multiplied together, are equal to that number.
 
 
 ;Example:
@@ -23,11 +23,11 @@ which when all multiplied together, are equal to that number.
 
 
 ;Task:
-Write a function which returns an [[Arrays|array]] or [[Collections|collection]] which contains the prime decomposition of a given number   <big><big><math>n</math></big></big>   greater than   '''1'''. 
+Write a function which returns an [[Arrays|array]] or [[Collections|collection]] which contains the prime decomposition of a given number   <big><big><math>n</math></big></big>   greater than   '''1'''.
 
-If your language does not have an isPrime-like function available, 
-you may assume that you have a function which determines 
-whether a number is prime (note its name before your code). 
+If your language does not have an isPrime-like function available,
+you may assume that you have a function which determines
+whether a number is prime (note its name before your code).
 
 If you would like to test code from this task, you may use code from [[Primality by trial division|trial division]] or the [[Sieve of Eratosthenes]].
 
@@ -53,7 +53,7 @@ Note: The program must not be limited by the word size of your computer or some 
 For maximum compatibility, this program uses only the basic instruction set.
 
 ```360asm
-PRIMEDE  CSECT  
+PRIMEDE  CSECT
          USING  PRIMEDE,R13
          B      80(R15)            skip savearea
          DC     17F'0'             savearea
@@ -106,7 +106,7 @@ EWHILE2  EQU    *
 NE2      L      R2,I               else
          LA     R2,2(R2)
          ST     R2,I               i=i+2
-EIFNE2   B      WHILE1        
+EIFNE2   B      WHILE1
 EWHILE1  EQU    *
          CLI    OK,X'01'           if ^ok then
          BE     NOTPRIME
@@ -116,7 +116,7 @@ EWHILE1  EQU    *
 NOTPRIME L      R1,M               m
          XDECO  R1,WDECO
          MVC    0(5,R5),WDECO+7
-EPRIME   XPRNT  WBUFFER,80         put 
+EPRIME   XPRNT  WBUFFER,80         put
          L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)
          XR     R15,R15
@@ -127,7 +127,7 @@ M        DS     F
 OK       DC     X'00'
 WBUFFER  DC     CL80' '
 WDECO    DS     CL16
-         YREGS  
+         YREGS
          END    PRIMEDE
 ```
 
@@ -226,7 +226,7 @@ ENDCLASS.
 ## Ada
 
 
-The solution is generic. 
+The solution is generic.
 
 The package '''Prime_Numbers''' is instantiated by a type that supports necessary operations +, *, /, mod, >. The constants 0, 1, 2 are parameters too, because the type might have no literals.  The same package is used for [[Almost prime#Ada]], [[Semiprime#Ada]], [[Count in factors#Ada]], [[Primality by Trial Division#Ada]], [[Sequence of primes by Trial Division#Ada]], and [[Ulam_spiral_(for_primes)#Ada]].
 
@@ -252,7 +252,7 @@ end Prime_Numbers;
 ```
 
 
-The function Decompose first estimates the maximal result length as log<sub>2</sub> of the argument. Then it allocates the result and starts to enumerate divisors. It does not care to check if the divisors are prime, because non-prime divisors will be automatically excluded. 
+The function Decompose first estimates the maximal result length as log<sub>2</sub> of the argument. Then it allocates the result and starts to enumerate divisors. It does not care to check if the divisors are prime, because non-prime divisors will be automatically excluded.
 
 This is the implementation of the generic package '''Prime_Numbers''':
 
@@ -263,7 +263,7 @@ package body Prime_Numbers is
    function First_Factor (N : Number; Start : Number) return Number is
       K    : Number  := Start;
    begin
-      while ((N mod K) /= Zero) and then (N > (K*K))  loop 
+      while ((N mod K) /= Zero) and then (N > (K*K))  loop
          K := K + One;
       end loop;
       if (N mod K) = Zero then
@@ -272,7 +272,7 @@ package body Prime_Numbers is
          return N;
       end if;
    end First_Factor;
-   
+
    function Decompose (N : Number; Start : Number) return Number_List is
       F: Number := First_Factor(N, Start);
       M: Number := N / F;
@@ -283,34 +283,34 @@ package body Prime_Numbers is
          return F & Decompose(M, Start);
       end if;
    end Decompose;
-   
+
  -- functions visible from the outside
    function Decompose (N : Number) return Number_List is (Decompose(N, Two));
    function Is_Prime (N : Number) return Boolean is
       (N > One and then First_Factor(N, Two)=N);
 end Prime_Numbers;
 ```
- 
+
 
 In the example provided, the package '''Prime_Numbers''' is instantiated with plain integer type:
 
 
 ```ada
-with Prime_Numbers, Ada.Text_IO; 
- 
+with Prime_Numbers, Ada.Text_IO;
+
 procedure Test_Prime is
 
-   package Integer_Numbers is new 
-     Prime_Numbers (Natural, 0, 1, 2); 
+   package Integer_Numbers is new
+     Prime_Numbers (Natural, 0, 1, 2);
    use Integer_Numbers;
-     
+
    procedure Put (List : Number_List) is
    begin
       for Index in List'Range loop
          Ada.Text_IO.Put (Positive'Image (List (Index)));
       end loop;
    end Put;
-     
+
 begin
    Put (Decompose (12));
 end Test_Prime;
@@ -329,7 +329,7 @@ end Test_Prime;
 
 ## ALGOL 68
 
-{{trans|Python}} - note: This specimen retains the original [[Prime decomposition#Python|Python]] coding style. 
+{{trans|Python}} - note: This specimen retains the original [[Prime decomposition#Python|Python]] coding style.
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 
@@ -533,7 +533,7 @@ loop $(filter $(range 2 60) { isPrime & }) [num]{
 
 ```AutoHotkey
 MsgBox % factor(8388607)   ; 47 * 178481
- 
+
 factor(n)
 {
     if (n = 1)
@@ -599,7 +599,7 @@ Unfortunately Batch does'nt have a BigNum library so the maximum number that can
 ```Batch file
 
 @echo off
-::usage: cmd /k primefactor.cmd number 
+::usage: cmd /k primefactor.cmd number
 setlocal enabledelayedexpansion
 
 set /a compo=%1
@@ -657,10 +657,10 @@ blsq ) 12fC
 
 ## C
 
-Relatively sophiscated sieve method based on size 30 prime wheel. The code does not pretend to handle prime factors larger than 64 bits. All 32-bit primes are cached with 137MB data. Cache data takes about a minute to compute the first time the program is run, which is also saved to the current directory, and will be loaded in a second if needed again. 
+Relatively sophiscated sieve method based on size 30 prime wheel. The code does not pretend to handle prime factors larger than 64 bits. All 32-bit primes are cached with 137MB data. Cache data takes about a minute to compute the first time the program is run, which is also saved to the current directory, and will be loaded in a second if needed again.
 
-```c>#include <inttypes.h
-
+```c
+#include <inttypes.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -842,13 +842,13 @@ int main()
 
 {{works with|gcc|4.3.0 20080428 (Red Hat 4.3.0-8)}}
 
-Note: The following code sample is experimental as it implements python style 
-iterators for (potentially) infinite sequences.  C is not normally written this 
-way, and in the case of this sample it requires the GCC "nested procedure" 
+Note: The following code sample is experimental as it implements python style
+iterators for (potentially) infinite sequences.  C is not normally written this
+way, and in the case of this sample it requires the GCC "nested procedure"
 extension to the C language.
 
-```c>#include <limits.h
-
+```c
+#include <limits.h>
 #include <stdio.h>
 #include <math.h>
 
@@ -865,7 +865,7 @@ typedef long long int lint;
 #define     BREAK return false
 #define     CONTINUE return true
 #define OD CONTINUE; }
-/* Warning: _Most_ FOR(,){ } loops _must_ have a CONTINUE as the last statement. 
+/* Warning: _Most_ FOR(,){ } loops _must_ have a CONTINUE as the last statement.
  *   Otherwise the lambda will return random value from stack, and may terminate early */
 
 typedef void iterator, lint_iterator; /* hint at procedure purpose */
@@ -908,7 +908,7 @@ bool is_prime_cached (lint n){
     }
 }
 
-lint_iterator primes (){ 
+lint_iterator primes (){
     YIELDS(lint);
     YIELD(2);
     lint n = 3;
@@ -984,17 +984,17 @@ main(){
 Note: gcc took 487,719 BogoMI to complete the example.
 
 To understand what was going on with the above code, pass it through <code>cpp</code> and read the outcome.  Translated into normal C code sans the function call overhead, it's really this (the following uses a adjustable cache, although setting it beyond a few thousands doesn't gain further benefit):
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
- 
+
 typedef uint32_t pint;
 typedef uint64_t xint;
 typedef unsigned int uint;
- 
+
 int is_prime(xint);
- 
+
 inline int next_prime(pint p)
 {
 	if (p == 2) return 3;
@@ -1002,31 +1002,31 @@ inline int next_prime(pint p)
 	if (p == 1) return 0;
 	return p;
 }
- 
+
 int is_prime(xint n)
 {
 #	define NCACHE 256
 #	define S (sizeof(uint) * 2)
 	static uint cache[NCACHE] = {0};
- 
+
 	pint p = 2;
 	int ofs, bit = -1;
- 
+
 	if (n < NCACHE * S) {
 		ofs = n / S;
 		bit = 1 << ((n & (S - 1)) >> 1);
 		if (cache[ofs] & bit) return 1;
 	}
- 
+
 	do {
 		if (n % p == 0) return 0;
 		if (p * p > n) break;
 	} while ((p = next_prime(p)));
- 
+
 	if (bit != -1) cache[ofs] |= bit;
 	return 1;
 }
- 
+
 int decompose(xint n, pint *out)
 {
 	int i = 0;
@@ -1041,7 +1041,7 @@ int decompose(xint n, pint *out)
 	if (n > 1) out[i++] = n;
 	return i;
 }
- 
+
 int main()
 {
 	int i, j, len;
@@ -1055,7 +1055,7 @@ int main()
 		for (j = 0; j < len; j++)
 			printf("%u%s", out[j], j < len - 1 ? " x " : "\n");
 	}
- 
+
 	return 0;
 }
 ```
@@ -1085,11 +1085,11 @@ namespace PrimeDecomposition
                 while (true)
                 {
                     if (IsPrime(i))
-                    {                        
+                    {
                         if (((decimal)n / i) == Math.Round((decimal) n / i))
                         {
                             n /= i;
-                            storage.Add(i);                            
+                            storage.Add(i);
                             break;
                         }
                     }
@@ -1145,8 +1145,8 @@ namespace PrimeDecomposition
 {{works with|g++|4.1.2 20061115 (prerelease) (Debian 4.1.1-21)}}
 {{libheader|GMP}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <gmpxx.h>
 
 // This function template works for any type representing integers or
@@ -1154,7 +1154,7 @@ namespace PrimeDecomposition
 // arithmetic and comparison operators, as well as explicit conversion
 // from int.
 //
-// OutputIterator must be an output iterator with value_type Integer. 
+// OutputIterator must be an output iterator with value_type Integer.
 // It receives the prime factors.
 template<typename Integer, typename OutputIterator>
  void decompose(Integer n, OutputIterator out)
@@ -1221,7 +1221,7 @@ int main()
   std::cout << "please enter a positive number: ";
   mpz_class number;
   std::cin >> number;
-  
+
   if (number <= 0)
     std::cout << "this number is not positive!\n;";
   else
@@ -1245,9 +1245,9 @@ int main()
   ([n]
     (factors n 2 ()))
   ([n k acc]
-    (if (= 1 n)      
+    (if (= 1 n)
       acc
-      (if (= 0 (rem n k))        
+      (if (= 0 (rem n k))
         (recur (quot n k) k (cons k acc))
         (recur n (inc k) acc)))))
 ```
@@ -1270,7 +1270,7 @@ It's not easily possible to have arbitrary precision integers in PET basic, so h
 9070 FOR ca=3 TO INT( SQR(i)) STEP 2
 9080 IF i=1 THEN RETURN
 9090 IF INT(i/ca)*ca=i THEN GOSUB 9200 : GOTO 9080
-9100 NEXT 
+9100 NEXT
 9110 IF i>1 THEN ca=i : GOSUB 9200
 9120 RETURN
 9200 pf(0)=pf(0)+1
@@ -1303,9 +1303,9 @@ It's not easily possible to have arbitrary precision integers in PET basic, so h
   (when (> n 1) (loop with max-d = (isqrt n)
 		   for d = 2 then (if (evenp d) (1+ d) (+ d 2)) do
 		     (cond ((> d max-d) (return (cons (list n 1) acc)))
-			   ((zerop (rem n d)) 
+			   ((zerop (rem n d))
 			    (return (factor (truncate n d) (if (eq d (caar acc))
-							       (cons 
+							       (cons
 								(list (caar acc) (1+ (cadar acc)))
 								(cdr acc))
 							       (cons (list d 1) acc)))))))))
@@ -1426,7 +1426,7 @@ The built-in '''prime-factors''' function performs the task.
 
 ## Eiffel
 
-Uses the feature prime from the Task Primality by Trial Devision in the contract to check if the Result contains only prime numbers. 
+Uses the feature prime from the Task Primality by Trial Devision in the contract to check if the Result contains only prime numbers.
 
 ```Eiffel
 class
@@ -1492,7 +1492,7 @@ factor(5000)
 open integer //arbitrary sized integers
 
 decompose_prime n = loop n 2I
-  where 
+  where
     loop c p | c < (p * p) = [c]
              | c % p == 0I = p :: (loop (c / p) p)
              | else = loop c (p + 1I)
@@ -1514,13 +1514,13 @@ decompose_prime 600851475143I
 ```elixir
 defmodule Prime do
   def decomposition(n), do: decomposition(n, 2, [])
-  
+
   defp decomposition(n, k, acc) when n < k*k, do: Enum.reverse(acc, [n])
   defp decomposition(n, k, acc) when rem(n, k) == 0, do: decomposition(div(n, k), k, [k | acc])
   defp decomposition(n, k, acc), do: decomposition(n, k+1, acc)
 end
 
-prime = Stream.iterate(2, &(&1+1)) |> 
+prime = Stream.iterate(2, &(&1+1)) |>
         Stream.filter(fn n-> length(Prime.decomposition(n)) == 1 end) |>
         Enum.take(17)
 mersenne = Enum.map(prime, fn n -> {n, round(:math.pow(2,n)) - 1} end)
@@ -1722,7 +1722,7 @@ This version is a translation from Commodore BASIC program.
     பின்கொடு கூறுகள்
 
   முடி
-  
+
   @(பகாஎண்ணா(எண்1) == 1) ஆனால்
 
     ## தரப்பட்ட எண்ணே பகா எண்ணாக அமைந்துவிட்டால், அதற்கு அதுவே பகாஎண் கூறு ஆகும்
@@ -1744,7 +1744,7 @@ This version is a translation from Commodore BASIC program.
     @(விடை1 == 1) ஆனால்
 
       விடை2 = தாற்காலிகஎண்%எண்2
-      
+
       @(விடை2 == 0) ஆனால்
 
         ## பகா எண்ணால் முழுமையாக வகுபட்டுள்ளது, அதனைப் பட்டியலில் இணைக்கிறோம்
@@ -1758,7 +1758,7 @@ This version is a translation from Commodore BASIC program.
         மீண்டும்தொடங்கு = 1
 
       முடி
-      
+
     முடி
 
     @(மீண்டும்தொடங்கு == 0) ஆனால்
@@ -1781,7 +1781,7 @@ This version is a translation from Commodore BASIC program.
 
 பகாஎண்கூறுகள் = பகுத்தெடு(அ)
 
-பதிப்பி "நீங்கள் தந்த எண்ணின் பகா எண் கூறுகள் இவை: ", பகாஎண்கூறுகள் 
+பதிப்பி "நீங்கள் தந்த எண்ணின் பகா எண் கூறுகள் இவை: ", பகாஎண்கூறுகள்
 
 ```
 
@@ -1789,14 +1789,14 @@ This version is a translation from Commodore BASIC program.
 =={{header|F_Sharp|F#}}==
 
 ```Fsharp
-let decompose_prime n = 
+let decompose_prime n =
   let rec loop c p =
     if c < (p * p) then [c]
     elif c % p = 0I then p :: (loop (c/p) p)
     else loop c (p + 1I)
- 
+
   loop n 2I
-  
+
 printfn "%A" (decompose_prime 600851475143I)
 ```
 
@@ -1815,7 +1815,7 @@ printfn "%A" (decompose_prime 600851475143I)
 ```factor
 USING: io kernel math math.parser math.primes.factors sequences ;
 
-27720 factors 
+27720 factors
 [ number>string ] map
 " " join print ;
 ```
@@ -1871,9 +1871,9 @@ contains
 
     i = 1
     div = 2; next = 3; rest = n
-    
+
     do while ( rest /= 1 )
-       do while ( mod(rest, div) == 0 ) 
+       do while ( mod(rest, div) == 0 )
           d(i) = div
           i = i + 1
           rest = rest / div
@@ -1942,18 +1942,18 @@ Sub getPrimeFactors(factors() As UInteger, n As UInteger)
     If n Mod factor = 0 Then
       Redim Preserve factors(0 To UBound(factors) + 1)
       factors(UBound(factors)) = factor
-      n \= factor     
+      n \= factor
       If n = 1 Then Return
       If isPrime(n) Then factor = n
     Else
-      factor += 1  
-    End If    
+      factor += 1
+    End If
   Loop
-End Sub 
+End Sub
 
 Dim factors() As UInteger
 Dim primes(1 To 17) As UInteger = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59}
-Dim n As UInteger 
+Dim n As UInteger
 For i As UInteger = 1 To 17
   Erase factors
   n = 1 Shl primes(i) - 1
@@ -1999,7 +1999,7 @@ Sleep
 
 ## Frink
 
-Frink has a built-in factoring function which uses wheel factoring, trial division, Pollard p-1 factoring, and Pollard rho factoring.  
+Frink has a built-in factoring function which uses wheel factoring, trial division, Pollard p-1 factoring, and Pollard rho factoring.
 It also recognizes some special forms (e.g. Mersenne numbers) and handles them efficiently.
 
 ```frink
@@ -2024,14 +2024,14 @@ Note that this means 3<SUP>1</SUP> * 5<SUP>1</SUP> * ...
 Built-in function :
 
 ```gap
-FactorsInt(2^67-1); 
+FactorsInt(2^67-1);
 # [ 193707721, 761838257287 ]
 ```
 
 Or using the [http://www.gap-system.org/Manuals/pkg/factint/doc/chap0.html FactInt] package :
 
 ```gap
-FactInt(2^67-1);    
+FactInt(2^67-1);
 # [ [ 193707721, 761838257287 ], [  ] ]
 ```
 
@@ -2096,23 +2096,23 @@ func main() {
 
 ## Groovy
 
-This solution uses the fact that a given factor must be prime 
-if no smaller factor divides it evenly, 
-so it does not require an "isPrime-like function", 
+This solution uses the fact that a given factor must be prime
+if no smaller factor divides it evenly,
+so it does not require an "isPrime-like function",
 assumed or otherwise.
 
 ```groovy
-def factorize = { long target -> 
- 
+def factorize = { long target ->
+
     if (target == 1) return [1L]
- 
+
     if (target < 4) return [1L, target]
- 
+
     def targetSqrt = Math.sqrt(target)
     def lowfactors = (2L..targetSqrt).findAll { (target % it) == 0 }
     if (lowfactors == []) return [1L, target]
     def nhalf = lowfactors.size() - ((lowfactors[-1]**2 == target) ? 1 : 0)
- 
+
     [1] + lowfactors + (0..<nhalf).collect { target.intdiv(lowfactors[it]) }.reverse() + [target]
 }
 
@@ -2219,7 +2219,7 @@ The task description hints at using the <code>isPrime</code> function from the [
 factorize n = [ d | p <- [2..n], isPrime p, d <- divs n p ]
            -- [2..n] >>= (\p-> [p|isPrime p]) >>= divs n
     where
-    divs n p | rem n p == 0 = p : divs (quot n p) p 
+    divs n p | rem n p == 0 = p : divs (quot n p) p
              | otherwise    = []
 ```
 
@@ -2231,10 +2231,10 @@ import Data.Maybe (listToMaybe)
 import Data.List (unfoldr)
 
 factorize :: Integer -> [Integer]
-factorize n 
+factorize n
   = unfoldr (\n     -> listToMaybe [(x, div n x)      | x <- [2..n], mod n x==0]) n
   = unfoldr (\(d,n) -> listToMaybe [(x, (x, div n x)) | x <- [d..n], mod n x==0]) (2,n)
-  = unfoldr (\(d,n) -> listToMaybe [(x, (x, div n x)) | x <- 
+  = unfoldr (\(d,n) -> listToMaybe [(x, (x, div n x)) | x <-
                     takeWhile ((<=n).(^2)) [d..] ++ [n|n>1], mod n x==0]) (2,n)
   = unfoldr (\(ds,n) -> listToMaybe [(x, (dropWhile (< x) ds, div n x)) | n>1, x <-
                     takeWhile ((<=n).(^2)) ds ++ [n|n>1], mod n x==0]) (primesList,n)
@@ -2254,7 +2254,7 @@ factorize n = divs n primesList
 ```
 
 
-See [[Sieve of Eratosthenes]] or [[Primality by trial division]] for a source of primes to use with this function. 
+See [[Sieve of Eratosthenes]] or [[Primality by trial division]] for a source of primes to use with this function.
 Actually as some other entries notice, with any ascending order list containing all primes (e.g. <code>2:[3,5..]</code>) used in place of <code>primesList</code>, the factors found by this function are guaranteed to be prime, so no separate testing for primality is strictly needed; however using just primes is more efficient, if we already have them.
 
 {{out}}
@@ -2299,7 +2299,7 @@ link factors
 ```
 
 
-{{libheader|Icon Programming Library}} [http://www.cs.arizona.edu/icon/library/src/procs/factors.icn Uses genfactors and prime from factors] 
+{{libheader|Icon Programming Library}} [http://www.cs.arizona.edu/icon/library/src/procs/factors.icn Uses genfactors and prime from factors]
 
 Sample Output showing factors of a large integer:
 
@@ -2340,7 +2340,7 @@ and, more elaborately:
 ## Java
 
 {{works with|Java|1.5+}}
-This is a version for arbitrary-precision integers 
+This is a version for arbitrary-precision integers
 which assumes the existence of a function with the signature:
 
 ```java
@@ -2373,7 +2373,7 @@ private static final BigInteger two = BigInteger.valueOf(2);
 public List<BigInteger> primeDecomp(BigInteger a) {
     // impossible for values lower than 2
     if (a.compareTo(two) < 0) {
-        return null; 
+        return null;
     }
 
     //quickly handle even values
@@ -2414,25 +2414,25 @@ private static final BigInteger FIVE = BigInteger.valueOf(5);
 public static ArrayList<BigInteger> primeDecomp(BigInteger n){
 	if(n.compareTo(TWO) < 0) return null;
 	ArrayList<BigInteger> factors = new ArrayList<BigInteger>();
-	
+
 	// handle even values
 	while(n.and(BigInteger.ONE).equals(BigInteger.ZERO)){
 		n = n.shiftRight(1);
 		factors.add(TWO);
 	}
-	
+
 	// handle values divisible by three
 	while(n.mod(THREE).equals(BigInteger.ZERO)){
 		factors.add(THREE);
 		n = n.divide(THREE);
 	}
-	
+
 	// handle values divisible by five
 	while(n.mod(FIVE).equals(BigInteger.ZERO)){
 		factors.add(FIVE);
 		n = n.divide(FIVE);
 	}
-	
+
 	// much like how we can skip multiples of two, we can also skip
 	// multiples of three and multiples of five. This increment array
 	// helps us to accomplish that
@@ -2447,15 +2447,15 @@ public static ArrayList<BigInteger> primeDecomp(BigInteger n){
 		current_test = current_test.add(BigInteger.valueOf(pattern[pattern_index]));
 		pattern_index = (pattern_index + 1) & 7;
 	}
-	
+
 	return factors;
 }
 
 ```
 
 {{trans|C#}}
-Simple but very inefficient method, 
-because it will test divisibility of all numbers from 2 to max prime factor.  
+Simple but very inefficient method,
+because it will test divisibility of all numbers from 2 to max prime factor.
 When decomposing a large prime number this will take O(n) trial divisions instead of more common O(log n).
 
 ```java>public static List<BigInteger
@@ -2485,37 +2485,37 @@ function run_factorize(input, output) {
     var divisor = new BigInteger("3", 10);
     var prod = false;
 
-    if (n.compareTo(TWO) < 0) 
-        return; 
+    if (n.compareTo(TWO) < 0)
+        return;
 
     output.value = "";
 
     while (true) {
         var qr = n.divideAndRemainder(TWO);
         if (qr[1].equals(BigInteger.ZERO)) {
-            if (prod) 
-                output.value += "*"; 
-            else 
-                prod = true; 
+            if (prod)
+                output.value += "*";
+            else
+                prod = true;
             output.value += "2";
             n = qr[0];
         }
-        else 
-            break; 
+        else
+            break;
     }
 
     while (!n.equals(BigInteger.ONE)) {
         var qr = n.divideAndRemainder(divisor);
         if (qr[1].equals(BigInteger.ZERO)) {
-            if (prod) 
-                output.value += "*"; 
-            else 
-                prod = true; 
+            if (prod)
+                output.value += "*";
+            else
+                prod = true;
             output.value += divisor;
             n = qr[0];
         }
-        else 
-            divisor = divisor.add(TWO); 
+        else
+            divisor = divisor.add(TWO);
     }
 }
 ```
@@ -2652,7 +2652,7 @@ describe("Prime Factors", function() {
 
 "factors" as defined below emits a stream of all the prime factors of the input integer.
 The implementation is compact, fast and highly space-efficient:
-no space is required to store the primes or factors already computed, 
+no space is required to store the primes or factors already computed,
 there is no reliance on an "is_prime" function, and square roots are only computed if needed.
 
 The economy comes about through the use of the builtin filter recurse/1,
@@ -2667,7 +2667,7 @@ could be easily modified to work with a "BigInt" library for jq, such as [https:
 
 ```jq
 def factors:
-  . as $in 
+  . as $in
   | [2, $in, false]
   | recurse( .[0] as $p |.[1] as $q | .[2] as $valid | .[3] as $s
              | if $q == 1        then empty
@@ -2681,7 +2681,7 @@ def factors:
 	       end )
    | if .[2] then .[0] else empty end ;
 ```
- 
+
 '''Examples''':
 
 ```jq
@@ -2708,7 +2708,7 @@ julia> factor(8796093022207)
 
 ```
 
-(The <code>factor</code> function returns a dictionary 
+(The <code>factor</code> function returns a dictionary
 whose keys are the factors and whose values are the multiplicity of each factor.)
 
 
@@ -2739,7 +2739,7 @@ fun getPrimeFactors(n: BigInteger): MutableList<BigInteger> {
             if (nn == BigInteger.ONE) return factors
             if (nn.isProbablePrime(20)) factor = nn
         }
-        else if (factor >= bigThree) factor += bigTwo 
+        else if (factor >= bigThree) factor += bigTwo
         else factor = bigThree
     }
 }
@@ -2870,14 +2870,14 @@ end
 
 ## Lua
 
-The code of the used auxiliary function "IsPrime(n)" 
+The code of the used auxiliary function "IsPrime(n)"
 is located at [[Primality by trial division#Lua]]
 
 
 ```lua
 function PrimeDecomposition( n )
     local f = {}
-    
+
     if IsPrime( n ) then
         f[1] = n
         return f
@@ -2889,12 +2889,12 @@ function PrimeDecomposition( n )
             f[#f+1] = i
             n = n / i
         end
-        
+
         repeat
             i = i + 1
-        until IsPrime( i )       
+        until IsPrime( i )
     until n == 1
-    
+
     return f
 end
 ```
@@ -2930,11 +2930,11 @@ Module  Prime_decomposition    {
                       Append Factors, k
                  }
                  if n=1 then exit
-                 k++ 
+                 k++
                  While frac(n/k)=0 {
                  n/=k
                         Append Factors, k
-                 }   
+                 }
                  if n=1 then exit
                  {
                  k+=2
@@ -2945,7 +2945,7 @@ Module  Prime_decomposition    {
                  }
                       if n=1 then exit
                       loop
-                 }             
+                 }
             }
             =Factors
       }
@@ -2962,9 +2962,9 @@ Prime_decomposition
 
 ## Maple
 
-Maple has two commands for integer factorization: '''ifactor''', 
-which returns results in a form resembling textbook presentation 
-and '''ifactors''', which returns a list of two-element lists 
+Maple has two commands for integer factorization: '''ifactor''',
+which returns results in a form resembling textbook presentation
+and '''ifactors''', which returns a list of two-element lists
 of prime factors and their multiplicities:
 
 
@@ -2992,7 +2992,7 @@ Bare built-in function does:
 ```
 
 
-Read as: 2 to the power 5 times 3 squared times 7 (to the power 1). 
+Read as: 2 to the power 5 times 3 squared times 7 (to the power 1).
 To show them nicely we could use the following functions:
 
 ```Mathematica
@@ -3135,11 +3135,11 @@ Based on python solution:
 
 ```nim
 import strutils, math, sequtils, times
-       
+
 proc getStep(n: int64) : int64 {.inline.} =
    result = 1 + n*4 - int64(n /% 2)*2
 
-proc primeFac(n: int64): seq[int64] =    
+proc primeFac(n: int64): seq[int64] =
     var res: seq[int64] = @[]
     var maxq = int64(floor(sqrt(float(n))))
     var d = 1
@@ -3147,20 +3147,20 @@ proc primeFac(n: int64): seq[int64] =
     while (q <= maxq) and ((n %% q) != 0):
         q = getStep(d)
         d += 1
-    if q <= maxq:        
+    if q <= maxq:
         var q1: seq[int64] = primeFac(n /% q)
         var q2: seq[int64] = primeFac(q)
         res = concat(q2, q1, res)
-    else: 
-        res.add(n)    
+    else:
+        res.add(n)
     result = res
 
 var is_prime: seq[Bool] = @[]
 is_prime.add(False)
 is_prime.add(False)
-    
+
 iterator primes(limit: int): int =
-    for n in high(is_prime) .. limit+2: is_prime.add(True)    
+    for n in high(is_prime) .. limit+2: is_prime.add(True)
     for n in 2 .. limit + 1:
         if is_prime[n]:
             yield n
@@ -3168,11 +3168,11 @@ iterator primes(limit: int): int =
                 try:
                     is_prime[i] = False
                 except EInvalidIndex: break
-   
+
 # Example: calculate factors of Mersenne numbers to M59 #
 
 for m in primes(59):
-    var p = int64(pow(2.0,float(m)) - 1) 
+    var p = int64(pow(2.0,float(m)) - 1)
     write(stdout,"2**$1-1 = $2, with factors: " % [$m, $p] )
     var start = cpuTime()
     var f = primeFac(p)
@@ -3250,13 +3250,13 @@ Oforth handles aribitrary precision integers.
    2 ->k
    n nsqrt ->p
    while( k p <= ) [
-      n k /mod swap ifZero: [ 
-         dup ->n nsqrt ->p 
+      n k /mod swap ifZero: [
+         dup ->n nsqrt ->p
          k over add continue
          ]
       drop k 1+ ->k
       ]
-   n 1 > ifTrue: [ n over add ] 
+   n 1 > ifTrue: [ n over add ]
    dup freeze ;
 ```
 
@@ -3276,10 +3276,10 @@ ok
 
 ## PARI/GP
 
-GP normally returns factored integers as a matrix 
-with the first column representing the primes 
-and the second their exponents.  
-Thus <code>factor(12)==[2,2;3,1]</code> is true.  
+GP normally returns factored integers as a matrix
+with the first column representing the primes
+and the second their exponents.
+Thus <code>factor(12)==[2,2;3,1]</code> is true.
 But it's simple enough to convert this to a vector with repetition:
 
 ```parigp
@@ -3416,7 +3416,7 @@ end.
 
 ## Perl
 
-These will work for large integers 
+These will work for large integers
 by adding the <tt>use bigint;</tt> clause.
 
 ===Trivial trial division (very slow)===
@@ -3460,7 +3460,7 @@ sub prime_factors {
 
 ### Modules
 
-As usual, there are CPAN modules for this that will be much faster.  
+As usual, there are CPAN modules for this that will be much faster.
 These both take about 1 second to factor all Mersenne numbers from M_1 to M_150.
 {{libheader|ntheory}}
 
@@ -3667,7 +3667,7 @@ printf(1,"%s = %s\n",{s,mpz_factorstring(mpz_prime_factors(z,500))})
 
 ```
 
-Note that mpz_prime_factors() needs to be told how far to push things before giving up, but if 
+Note that mpz_prime_factors() needs to be told how far to push things before giving up, but if
 pushed to (say) 20,000,000 primes, performance can suffer quite dramatically.
 
 ```Phix
@@ -3941,19 +3941,19 @@ Optimized to stop on square root, and count by +2 on odds, above 2.
 
 
 ```Prolog
-factors( N, FS):- 
+factors( N, FS):-
     factors2( N, FS).
- 
+
 factors2( N, FS):-
-    ( N < 2        -> FS = [] 
-    ; 4 > N        -> FS = [N] 
+    ( N < 2        -> FS = []
+    ; 4 > N        -> FS = [N]
     ; 0 is N rem 2 -> FS = [K|FS2], N2 is N div 2, factors2( N2, FS2)
     ;                 factors( N, 3, FS)
     ).
- 
+
 factors( N, K, FS):-
-    ( N < 2        -> FS = [] 
-    ; K*K > N      -> FS = [N] 
+    ( N < 2        -> FS = []
+    ; K*K > N      -> FS = [N]
     ; 0 is N rem K -> FS = [K|FS2], N2 is N div K, factors( N2, K, FS2)
     ;                 K2 is K+2, factors( N, K2, FS)
     ).
@@ -4053,15 +4053,15 @@ except ImportError:
 
 def is_prime(n):
     return list(zip((True, False), decompose(n)))[-1][0]
- 
+
 class IsPrimeCached(dict):
     def __missing__(self, n):
         r = is_prime(n)
         self[n] = r
         return r
- 
+
 is_prime_cached = IsPrimeCached()
- 
+
 def croft():
     """Yield prime integers using the Croft Spiral sieve.
 
@@ -4099,7 +4099,7 @@ def croft():
             roots[q*q] = q
             yield q
 primes = croft
- 
+
 def decompose(n):
     for p in primes():
         if p*p > n: break
@@ -4112,9 +4112,9 @@ def decompose(n):
 
 if __name__ == '__main__':
     # Example: calculate factors of Mersenne numbers to M59 #
- 
+
     import time
- 
+
     for m in primes():
         p = 2 ** m - 1
         print( "2**{0:d}-1 = {1:d}, with factors:".format(m, p) )
@@ -4122,7 +4122,7 @@ if __name__ == '__main__':
         for factor in decompose(p):
             print(factor, end=' ')
             sys.stdout.flush()
- 
+
         print( "=> {0:.2f}s".format( time.time()-start ) )
         if m >= 59:
             break
@@ -4176,16 +4176,16 @@ Here a shorter and marginally faster algorithm:
 
 ```python
 from math import floor, sqrt
-try: 
+try:
     long
-except NameError: 
+except NameError:
     long = int
 
 def fac(n):
     step = lambda x: 1 + (x<<2) - ((x>>1)<<1)
     maxq = long(floor(sqrt(n)))
     d = 1
-    q = n % 2 == 0 and 2 or 3 
+    q = n % 2 == 0 and 2 or 3
     while q <= maxq and n % q != 0:
         q = step(d)
         d += 1
@@ -4231,7 +4231,7 @@ print(findfactors(1027*4))
 ```
 
 
-Or a more explicit (but less efficient) recursive approach: 
+Or a more explicit (but less efficient) recursive approach:
 
 ===Recursive Approach (Less efficient for large numbers)===
 
@@ -4249,21 +4249,21 @@ max_prime_checker <- function(n){
       divisor[i]<<-1
     } else {
       divisor[i]<<-0
-    } 
+    }
   }
   num_find <<- primes*as.integer(divisor)
-  
+
   return(max(num_find))
 }
 
 #recursive prime finder
 prime_factors <- function(n){
-  
+
   factors <- NULL
-  
+
   large <- max_prime_checker(n)
-  n1 <- n/large 
-  
+  n1 <- n/large
+
   if(max_prime_checker(n1) == n1){
     factors <- c(large,n1)
     return(factors)
@@ -4321,7 +4321,7 @@ If the   ''top''   number is negative, only the number of primes up to   '''abs(
 
 A method exists in this REXX program to also test Mersenne-type numbers   <big>(2<sup>n</sup> - 1)</big>.
 
-Since the majority of computing time is spent looking for primes, that part of the program was 
+Since the majority of computing time is spent looking for primes, that part of the program was
 
 optimized somewhat (but could be extended if more optimization is wanted).
 
@@ -4684,7 +4684,7 @@ if x==1  then return $                           /*Is residual=unity? Then don't
               return $ x                         /*return   $   with appended residual. */
 ```
 
-'''output'''   is identical to the 1<sup>st</sup> REXX version. 
+'''output'''   is identical to the 1<sup>st</sup> REXX version.
 
 
 
@@ -4705,7 +4705,7 @@ for i = 1 to nr
     if i = nr
        x2 = substr(x,1,(len(x)-2))
        see string(nr) + " = " + x2 + nl ok
-next 
+next
 
 func isPrime num
      if (num <= 1) return 0 ok
@@ -4741,7 +4741,7 @@ irb(main):003:0> 2543821448263974486045199.prime_division
 # Get prime decomposition of integer _i_.
 # This routine is terribly inefficient, but elegance rules.
 def prime_factors(i)
-  v = (2..i-1).detect{|j| i % j == 0} 
+  v = (2..i-1).detect{|j| i % j == 0}
   v ? ([v] + prime_factors(i/v)) : [i]
 end
 
@@ -4907,7 +4907,7 @@ object PrimeFactors extends App {
 ```
 
 
-Getting the prime factors does not require identifying prime numbers. 
+Getting the prime factors does not require identifying prime numbers.
 Since the problems seems to ask for it, here is one version that does it:
 
 
@@ -4935,7 +4935,7 @@ class PrimeFactors(n: BigInt) extends Iterator[BigInt] {
   def next = {
     if (!hasNext)
       throw new NoSuchElementException("next on empty iterator")
-      
+
     while(currentN % prime != zero) {
       nextPrime
     }
@@ -4949,8 +4949,8 @@ class PrimeFactors(n: BigInt) extends Iterator[BigInt] {
 
 
 The method isProbablePrime(n) has a chance of 1 - 1/(2^n) of correctly
-identifying a prime. 
-Next is a version that does not depend on identifying primes, 
+identifying a prime.
+Next is a version that does not depend on identifying primes,
 and works with arbitrary integral numbers:
 
 ```Scala
@@ -4963,13 +4963,13 @@ class PrimeFactors[N](n: N)(implicit num: Integral[N]) extends Iterator[N] {
   def next = {
     if (!hasNext)
       throw new NoSuchElementException("next on empty iterator")
-      
+
     while(currentN % divisor != zero) {
       if (divisor == two)
         divisor += one
       else
         divisor += two
-        
+
       if (divisor * divisor > currentN)
         divisor = currentN
     }
@@ -4983,7 +4983,7 @@ class PrimeFactors[N](n: N)(implicit num: Integral[N]) extends Iterator[N] {
 
 {{out}}
 Both versions can be rather slow, as they accept arbitrarily big numbers,
-as requested. 
+as requested.
 {{out|Test}}
 
 ```txt
@@ -5081,7 +5081,7 @@ isPrime(n) := n = 2 or (n > 1 and none(n mod ([2]++((1...floor(sqrt(n)/2))*2+1))
 
 primeFactorization(num) := primeFactorizationHelp(num, []);
 
-primeFactorizationHelp(num, current(1)) := 
+primeFactorizationHelp(num, current(1)) :=
 	 let
 	 	primeFactors[i] := i when num mod i = 0 and isPrime(i) foreach i within 2 ... num;
 	 in
@@ -5350,14 +5350,14 @@ function factor(n_) {
 			for (i=0; mod(n,2)==0; i++) n = floor(n/2)
 			a = a\(2,i)
 		}
-			
+
 		for (k=3; k*k<=n; k=k+2) {
 			if (mod(n,k)==0) {
 				for (i=0; mod(n,k)==0; i++) n = floor(n/k)
 				a = a\(k,i)
 			}
 		}
-		
+
 		if (n>1) a = a\(n,1)
 		return(a)
 	}
@@ -5560,7 +5560,7 @@ N=?1047552
 
 ```txr
 @(next :args)
-@(do 
+@(do
   (defun factor (n)
     (if (> n 1)
       (for ((max-d (isqrt n))
@@ -5568,7 +5568,7 @@ N=?1047552
            ()
            ((inc d (if (evenp d) 1 2)))
         (cond ((> d max-d) (return (list n)))
-              ((zerop (mod n d)) 
+              ((zerop (mod n d))
                (return (cons d (factor (trunc n d))))))))))
 @{num /[0-9]+/}
 @(bind factors @(factor (int-str num 10)))
@@ -5711,7 +5711,7 @@ C:\>cscript /nologo primefactors.vbs 50
 
 ## XSLT
 
-Let's assume that in XSLT the application of a template is similar to the invocation of a function. So when the following template 
+Let's assume that in XSLT the application of a template is similar to the invocation of a function. So when the following template
 
 ```xml
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
@@ -5753,7 +5753,7 @@ Let's assume that in XSLT the application of a template is similar to the invoca
             <!-- 1 is no prime and does not have any factors -->
             <xsl:when test="$number = 1"></xsl:when>
             <!-- if the candidate is larger than the sqrt of the number, it's prime and the last factor -->
-            <xsl:when test="$candidate * $candidate &gt; $number"> 
+            <xsl:when test="$candidate * $candidate &gt; $number">
                 <xsl:value-of select="$number" />
             </xsl:when>
             <!-- if the number is factored by the candidate, add the factor and try again with the same factor -->
@@ -5808,43 +5808,43 @@ then the output contains the prime decomposition of each number:
 
 <body>
 <ul>
-    
+
 <li>
             Number:
             1
             Factors:
             </li>
-    
+
 <li>
             Number:
             2
             Factors:
             2</li>
-    
+
 <li>
             Number:
             4
             Factors:
             2 2</li>
-    
+
 <li>
             Number:
             8
             Factors:
             2 2 2</li>
-    
+
 <li>
             Number:
             9
             Factors:
             3 3</li>
-    
+
 <li>
             Number:
             255
             Factors:
             3 5 17</li>
-    
+
 </ul>
 </body>
 </html>
@@ -5876,7 +5876,7 @@ fcn primeFactors(n){  // Return a list of factors of n
 ```zkl
 foreach n in (T(5,12, 2147483648, 2199023255551, 8796093022207,
 	9007199254740991, 576460752303423487)){
-   println(n,": ",primeFactors(n).concat(", ")) 
+   println(n,": ",primeFactors(n).concat(", "))
 }
 ```
 
@@ -5917,7 +5917,7 @@ fcn factorsBI(n){  // Return a list of factors of n
 var BN=Import("zklBigNum");
 foreach n in (T(BN("12"),
 	BN("340282366920938463463374607431768211455"))){
-   println(n,": ",factorsBI(n).concat(", ")) 
+   println(n,": ",factorsBI(n).concat(", "))
 }
 ```
 

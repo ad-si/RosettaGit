@@ -14,7 +14,7 @@ tags = []
 [[Category:Basic language learning]]
 
 ;Task:
-Using either native language concurrency syntax or freely available libraries, write a program to display the strings "Enjoy" "Rosetta" "Code", one string per line, in random order. 
+Using either native language concurrency syntax or freely available libraries, write a program to display the strings "Enjoy" "Rosetta" "Code", one string per line, in random order.
 
 Concurrency syntax must use [[thread|threads]], tasks, co-routines, or whatever concurrency is called in your language.
 
@@ -133,31 +133,31 @@ The BBC BASIC interpreter is single-threaded so the only way of achieving 'concu
 
 ```bbcbasic
       INSTALL @lib$+"TIMERLIB"
-      
+
       tID1% = FN_ontimer(100, PROCtask1, 1)
       tID2% = FN_ontimer(100, PROCtask2, 1)
       tID3% = FN_ontimer(100, PROCtask3, 1)
-      
+
       ON ERROR PRINT REPORT$ : PROCcleanup : END
       ON CLOSE PROCcleanup : QUIT
-      
+
       REPEAT
         WAIT 0
       UNTIL FALSE
       END
-      
+
       DEF PROCtask1
       PRINT "Enjoy"
       ENDPROC
-      
+
       DEF PROCtask2
       PRINT "Rosetta"
       ENDPROC
-      
+
       DEF PROCtask3
       PRINT "Code"
       ENDPROC
-      
+
       DEF PROCcleanup
       PROC_killtimer(tID1%)
       PROC_killtimer(tID2%)
@@ -174,8 +174,8 @@ The BBC BASIC interpreter is single-threaded so the only way of achieving 'concu
 {{libheader|pthread}}
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <unistd.h>
 #include <pthread.h>
 
@@ -218,7 +218,7 @@ int main()
    int i;
    pthread_t a[3];
    threadfunc p[3] = {t_enjoy, t_rosetta, t_code};
-   
+
    for(i=0;i<3;i++)
    {
      pthread_create(&a[i], NULL, p[i], NULL);
@@ -241,8 +241,8 @@ int main()
 
 Compile with <code>gcc -std=c99 -fopenmp</code>:
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <omp.h>
 
 int main()
@@ -265,12 +265,12 @@ The following example compiles with GCC 4.7.
 <code>g++ -std=c++11 -D_GLIBCXX_USE_NANOSLEEP -o concomp concomp.cpp</code>
 
 
-```cpp>#include <thread
-
+```cpp
+#include <thread>
 #include <iostream>
 #include <vector>
 #include <random>
-#include <chrono> 
+#include <chrono>
 
 int main()
 {
@@ -281,15 +281,15 @@ int main()
 
   for(const auto& str: {"Enjoy\n", "Rosetta\n", "Code\n"}) {
     // between 1 and 1000ms per our distribution
-    std::chrono::milliseconds duration(dist(eng)); 
+    std::chrono::milliseconds duration(dist(eng));
 
-    threads.emplace_back([str, duration](){                                                                    
+    threads.emplace_back([str, duration](){
       std::this_thread::sleep_for(duration);
       std::cout << str;
     });
   }
 
-  for(auto& t: threads) t.join(); 
+  for(auto& t: threads) t.join();
 
   return 0;
 }
@@ -308,8 +308,8 @@ Rosetta
 {{libheader|Microsoft Parallel Patterns Library (PPL)}}
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <ppl.h> // MSVC++
 
 void a(void) { std::cout << "Eat\n";   }
@@ -447,7 +447,7 @@ execute() {
 A simple way to obtain concurrency is using the ''future'' function, which evaluates its body on a separate thread.
 
 ```clojure
-(doseq [text ["Enjoy" "Rosetta" "Code"]] 
+(doseq [text ["Enjoy" "Rosetta" "Code"]]
   (future (println text)))
 ```
 
@@ -523,7 +523,7 @@ Concurrency and threads are not part of the Common Lisp standard.  However, most
 (defun concurrency-example (&optional (out *standard-output*))
   (let ((lock (bordeaux-threads:make-lock)))
     (flet ((writer (string)
-             #'(lambda () 
+             #'(lambda ()
                  (bordeaux-threads:acquire-lock lock t)
                  (write-line string out)
                  (bordeaux-threads:release-lock lock))))
@@ -673,19 +673,19 @@ for string in ["Enjoy", "Rosetta", "Code"] {
 (lib 'tasks) ;; use the tasks library
 
 (define (tprint line ) ;; task definition
-		(writeln _TASK  line) 
+		(writeln _TASK  line)
 		#f )
-		
+
 (for-each  task-run ;; run three // tasks
       (map (curry make-task tprint) '(Enjoy Rosetta code )))
 
    →
-   #task:id:66:running     Rosetta    
-   #task:id:67:running     code    
-   #task:id:65:running     Enjoy 
+   #task:id:66:running     Rosetta
+   #task:id:67:running     code
+   #task:id:65:running     Enjoy
 
 ```
-   
+
 
 
 ## Egel
@@ -699,9 +699,9 @@ import "io.ego"
 using System
 using IO
 
-def main = 
-    let _ = par (par [_ -> print "enjoy\n"] 
-                    [_ -> print "rosetta\n"]) 
+def main =
+    let _ = par (par [_ -> print "enjoy\n"]
+                    [_ -> print "rosetta\n"])
                 [_ -> print "code\n"] in nop
 
 ```
@@ -723,7 +723,7 @@ defmodule Concurrent do
     Process.sleep(1000)
   end
 end
- 
+
 Concurrent.computing ["Enjoy", "Rosetta", "Code"]
 ```
 
@@ -809,14 +809,14 @@ Output:
 We define a parallel version of <code>Seq.iter</code> by using asynchronous workflows:
 
 ```fsharp
-module Seq =     
+module Seq =
     let piter f xs =
         seq { for x in xs -> async { f x } }
         |> Async.Parallel
         |> Async.RunSynchronously
         |> ignore
 
-let main() =  Seq.piter 
+let main() =  Seq.piter
                 (System.Console.WriteLine:string->unit)
                 ["Enjoy"; "Rosetta"; "Code";]
 
@@ -988,7 +988,7 @@ This solution also shows a good practice for generating random numbers in concur
 
 ```go
 package main
-  
+
 import (
     "fmt"
     "golang.org/x/exp/rand"
@@ -1125,7 +1125,7 @@ Note how the map treats the list of processes just like any other data.
 import Control.Concurrent
 
 main = mapM_ forkIO [process1, process2, process3] where
-  process1 = putStrLn "Enjoy" 
+  process1 = putStrLn "Enjoy"
   process2 = putStrLn "Rosetta"
   process3 = putStrLn "Code"
 ```
@@ -1178,8 +1178,8 @@ Example:
 ```j
    smoutput&>({~?~@#);:'Enjoy Rosetta Code'
 Rosetta
-Code   
-Enjoy  
+Code
+Enjoy
 ```
 
 
@@ -1207,13 +1207,13 @@ public class Threads
   {
     private CyclicBarrier barrier;
     private String msg;
-    
+
     public DelayedMessagePrinter(CyclicBarrier barrier, String msg)
     {
       this.barrier = barrier;
       this.msg = msg;
     }
-    
+
     public void run()
     {
       try
@@ -1223,7 +1223,7 @@ public class Threads
       System.out.println(msg);
     }
   }
-  
+
   public static void main(String[] args)
   {
     CyclicBarrier barrier = new CyclicBarrier(3);
@@ -1550,7 +1550,7 @@ sys_sleep(4);
 
 ```txt
 prompt$ nekoc threading.neko
-prompt$ neko threading      
+prompt$ neko threading
 Enjoy
 Rosetta
 Code
@@ -1676,12 +1676,12 @@ let () =
 ## Oforth
 
 
-Oforth uses tasks to implement concurrent computing. A task is scheduled using #& on a function, method, block, ... 
+Oforth uses tasks to implement concurrent computing. A task is scheduled using #& on a function, method, block, ...
 
 
 ```Oforth
-#[ "Enjoy" println ] & 
-#[ "Rosetta" println ] & 
+#[ "Enjoy" println ] &
+#[ "Rosetta" println ] &
 #[ "Code" println ] &
 ```
 
@@ -1820,7 +1820,7 @@ use Coro::Timer qw( sleep );
 
 $_->join for map {
     async {
-        sleep rand; 
+        sleep rand;
         say @_;
     } $_
 } qw( Enjoy Rosetta Code );
@@ -1915,7 +1915,7 @@ int main() {
 		Thread.Thread(write, "Rosetta\n"),
 		Thread.Thread(write, "Code\n")
 	})->wait();
-	
+
 	// Exit program
 	exit(0);
 }
@@ -1955,7 +1955,7 @@ $Strings = "Enjoy","Rosetta","Code"
 $SB = {param($String)Write-Output $String}
 
 foreach($String in $Strings) {
-    Start-Job -ScriptBlock $SB -ArgumentList $String | Out-Null    
+    Start-Job -ScriptBlock $SB -ArgumentList $String | Out-Null
     }
 
 Get-Job | Wait-Job | Receive-Job
@@ -2029,14 +2029,14 @@ If OpenConsole()
 	thread2 = CreateThread(@Printer(), @"Rosetta")
 	thread3 = CreateThread(@Printer(), @"Code")
 	UnlockMutex(mutex)
-	
+
 	WaitThread(thread1)
 	WaitThread(thread2)
 	WaitThread(thread3)
-	
+
 	Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
 	Input()
-	
+
 	CloseConsole()
 EndIf
 
@@ -2093,10 +2093,10 @@ Code
 ```python
 import threading
 import random
- 
+
 def echo(text):
     print(text)
- 
+
 threading.Timer(random.random(), echo, ("Enjoy",)).start()
 threading.Timer(random.random(), echo, ("Rosetta",)).start()
 threading.Timer(random.random(), echo, ("Code",)).start()
@@ -2119,7 +2119,7 @@ for text in ["Enjoy", "Rosetta", "Code"]:
 
 
 
-###  threading.Thread 
+###  threading.Thread
 
 
 ```python
@@ -2141,7 +2141,7 @@ for line in 'Enjoy Rosetta Code'.split():
 
 
 
-###  multiprocessing 
+###  multiprocessing
 
 
 {{works with|Python|2.6}}
@@ -2160,7 +2160,7 @@ if __name__=="__main__":
 
 
 
-###  twisted 
+###  twisted
 
 
 ```python
@@ -2177,7 +2177,7 @@ reactor.run()
 
 
 
-###  gevent 
+###  gevent
 
 
 ```python
@@ -2252,7 +2252,7 @@ In Rhope, expressions with no shared dependencies run in parallel by default.
         sleep rand
         puts x
     end
-end.each do |t| 
+end.each do |t|
   t.join
 end
 ```
@@ -2292,10 +2292,10 @@ fn main() {
 ```scala
 import scala.actors.Futures
 List("Enjoy", "Rosetta", "Code").map { x =>
-    Futures.future {                           
-      Thread.sleep((Math.random * 1000).toInt)   
-       println(x)                                 
-    }         
+    Futures.future {
+      Thread.sleep((Math.random * 1000).toInt)
+       println(x)
+    }
 }.foreach(_())
 ```
 

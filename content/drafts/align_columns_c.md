@@ -13,10 +13,10 @@ tags = []
 {{collection|Column Aligner}}
 
 
-```c>#include <stdio.h
+```c
+#include <stdio.h>
 
-
-const char *str = 
+const char *str =
 	"Given$a$text$file$of$many$lines,$where$fields$within$a$line$\n"
 	"are$delineated$by$a$single$'dollar'$character,$write$a$program\n"
 	"that$aligns$each$column$of$fields$by$ensuring$that$words$in$each$\n"

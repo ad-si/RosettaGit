@@ -12,11 +12,11 @@ tags = []
 
 {{task|Date and time}}
 [[Category:Puzzles]]
-The month of October in 2010 has five Fridays, five Saturdays, and five Sundays. 
+The month of October in 2010 has five Fridays, five Saturdays, and five Sundays.
 
 
 ;Task:
-# Write a program to show all months that have this same characteristic of five full weekends from the year 1900 through 2100 (Gregorian calendar). 
+# Write a program to show all months that have this same characteristic of five full weekends from the year 1900 through 2100 (Gregorian calendar).
 # Show the ''number'' of months with this property (there should be 201).
 # Show at least the first and last five dates, in order.
 
@@ -43,8 +43,8 @@ Count and/or show all of the years which do not have at least one five-weekend m
 ## 360 Assembly
 
 {{trans|Fortran}}
-For maximum compatibility, this program uses only the basic instruction set (S/360) 
-and two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible. 
+For maximum compatibility, this program uses only the basic instruction set (S/360)
+and two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Five weekends             31/05/2016
@@ -54,7 +54,7 @@ FIVEWEEK CSECT
          DC     17F'0'             savearea
          STM    R14,R12,12(R13)    prolog
          ST     R13,4(R15)         "
-         ST     R15,8(R13)         " 
+         ST     R15,8(R13)         "
          LR     R13,R15            "
          LM     R10,R11,=AL8(0)    nko=0; nok=0
          LH     R6,Y1              y=y1
@@ -130,7 +130,7 @@ ELOOPY   XDECO  R11,XDEC           nok
          MVC    PG+0(4),XDEC+8     output nko
          MVC    PG+4(33),=C' years with no five weekend month'
          XPRNT  PG,80              print buffer
-         L      R13,4(0,R13)       epilog 
+         L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
@@ -498,9 +498,9 @@ Years with no such months (29):
 ```AppleScript
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     fiveWeekends(1900, 2100)
-    
+
 end run
 
 -- FIVE WEEKENDS --------------------------------------------------------------
@@ -508,7 +508,7 @@ end run
 -- fiveWeekends :: Int -> Int -> Record
 on fiveWeekends(fromYear, toYear)
     set lstYears to enumFromTo(fromYear, toYear)
-    
+
     -- yearMonthString :: (Int, Int) -> String
     script yearMonthString
         on |λ|(lstYearMonth)
@@ -518,35 +518,35 @@ on fiveWeekends(fromYear, toYear)
                     "July", "August", "", "October", "", "December"}
         end |λ|
     end script
-    
+
     -- addLongMonthsOfYear :: [(Int, Int)] -> [(Int, Int)]
     script addLongMonthsOfYear
         on |λ|(lstYearMonth, intYear)
-            
+
             -- yearMonth :: Int -> (Int, Int)
             script yearMonth
                 on |λ|(intMonth)
                     {intYear, intMonth}
                 end |λ|
             end script
-            
+
             lstYearMonth & ¬
                 map(yearMonth, my longMonthsStartingFriday(intYear))
         end |λ|
     end script
-    
+
     -- leanYear :: Int -> Bool
     script leanYear
         on |λ|(intYear)
             0 = length of longMonthsStartingFriday(intYear)
         end |λ|
     end script
-    
+
     set lstFullMonths to map(yearMonthString, ¬
         foldl(addLongMonthsOfYear, {}, lstYears))
-    
+
     set lstLeanYears to filter(leanYear, lstYears)
-    
+
     {{|number|:length of lstFullMonths}, ¬
         {firstFive:(items 1 thru 5 of lstFullMonths)}, ¬
         {lastFive:(items -5 thru -1 of lstFullMonths)}, ¬
@@ -556,14 +556,14 @@ end fiveWeekends
 
 -- longMonthsStartingFriday :: Int -> [Int]
 on longMonthsStartingFriday(intYear)
-    
+
     --     startIsFriday :: Int -> Bool
     script startIsFriday
         on |λ|(iMonth)
             weekday of calendarDate(intYear, iMonth, 1) is Friday
         end |λ|
     end script
-    
+
     filter(startIsFriday, [1, 3, 5, 7, 8, 10, 12])
 end longMonthsStartingFriday
 
@@ -581,7 +581,7 @@ end calendarDate
 -- enumFromTo :: Enum a => a -> a -> [a]
 on enumFromTo(m, n)
     set {intM, intN} to {fromEnum(m), fromEnum(n)}
-    
+
     if intM > intN then
         set d to -1
     else
@@ -658,7 +658,7 @@ on map(f, xs)
 end map
 
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -678,8 +678,8 @@ end mReturn
 {firstFive:{"1901 March", "1902 August", "1903 May", "1904 January", "1904 July"}},
 {lastFive:{"2097 March", "2098 August", "2099 May", "2100 January", "2100 October"}},
 {leanYearCount:29},
-{leanYears:{1900, 1906, 1917, 1923, 1928, 1934, 1945, 1951, 1956, 1962, 1973, 1979, 
-1984, 1990, 2001, 2007, 2012, 2018, 2029, 2035, 2040, 2046, 2057, 2063, 2068, 2074, 
+{leanYears:{1900, 1906, 1917, 1923, 1928, 1934, 1945, 1951, 1956, 1962, 1973, 1979,
+1984, 1990, 2001, 2007, 2012, 2018, 2029, 2035, 2040, 2046, 2057, 2063, 2068, 2074,
 2085, 2091, 2096}}}
 ```
 
@@ -796,12 +796,12 @@ EndFunc   ;==>Five_weekends
 five_weekends: BEGIN
   INT m, year, nfives := 0, not5 := 0;
   BOOL no5weekend;
- 
+
   MODE MONTH = STRUCT(
     INT n,
     [3]CHAR name
   ) # MODE MONTH #;
- 
+
   []MONTH month = (
     MONTH(13, "Jan"),
     MONTH(3,  "Mar"),
@@ -811,7 +811,7 @@ five_weekends: BEGIN
     MONTH(10, "Oct"),
     MONTH(12, "Dec")
   );
- 
+
   FOR year FROM 1900 TO 2100 DO
     IF year = 1905 THEN printf($"..."l$) FI;
     no5weekend := TRUE;
@@ -822,7 +822,7 @@ five_weekends: BEGIN
           nfives +:= 1;
           no5weekend := FALSE
         FI
-      ELSE 
+      ELSE
         IF day_of_week(1, n OF month(m), year) = 6 THEN
           IF year<1905 OR year > 2096 THEN printf(($g, 5zl$, name OF month(m), year)) FI;
           nfives +:= 1;
@@ -832,12 +832,12 @@ five_weekends: BEGIN
     OD;
     IF no5weekend THEN not5 +:= 1 FI
   OD;
- 
+
   printf(($g, g(0)l$, "Number of months with five weekends between 1900 and 2100 = ", nfives));
   printf(($g, g(0)l$, "Number of years between 1900 and 2100 with no five weekend months = ", not5));
- 
+
 # contains #
- 
+
   PROC day_of_week = (INT d, m, y)INT: BEGIN
     INT j, k;
     j := y OVER 100;
@@ -900,20 +900,20 @@ Number of years between 1900 and 2100 with no five weekend months = 29
 # see http://rosettacode.org/wiki/Five_weekends#UNIX_Shell
 
 BEGIN   { print("# Month with 5 weekends:")
-          badYears = numW5 = 0; 
+          badYears = numW5 = 0;
           lastW5 = -1
         }
 
 0+$2>33 { if( $2>currYear ) {       # calendar-header: month, year
-            if( lastW5==numW5 ) { 
+            if( lastW5==numW5 ) {
               badYears++; sep="\n"
               if( badYears % 10 ) { sep=" " }
               bY=bY currYear sep;   # collect years in string
-            ##print badYears,":", currYear 
+            ##print badYears,":", currYear
             }
-            lastW5=numW5 
+            lastW5=numW5
           }
-          WE=0; currYear=$2; currMY = $1 " " $2; 
+          WE=0; currYear=$2; currMY = $1 " " $2;
         ##print currMY;
           next
         }
@@ -924,12 +924,12 @@ BEGIN   { print("# Month with 5 weekends:")
 
 NF>2    { WE++;                     # 3 fields left => complete weekend found
           if( WE>4 ) {
-            numW5++; printf("%4d : %s\n", numW5, currMY) 
-          } 
+            numW5++; printf("%4d : %s\n", numW5, currMY)
+          }
         }
 
 END     { print("# Found", numW5, "month with 5 weekends.")
-          print("# Found", badYears, "years with no month having 5 weekends:") 
+          print("# Found", badYears, "years with no month having 5 weekends:")
           print(bY)
         }
 
@@ -975,7 +975,7 @@ See also: [http://rosettacode.org/wiki/Five_weekends#UNIX_Shell unix-shell] and 
       DIM Month$(12)
       Month$() = "","January","February","March","April","May","June", \
       \   "July","August","September","October","November","December"
-      
+
       num% = 0
       FOR year% = 1900 TO 2100
         PRINT ; year% ": " ;
@@ -996,21 +996,21 @@ See also: [http://rosettacode.org/wiki/Five_weekends#UNIX_Shell unix-shell] and 
 ```txt
 
 1900: (none)
-1901: March         
-1902: August        
-1903: May 
-1904: January       July      
-1905: December      
+1901: March
+1902: August
+1903: May
+1904: January       July
+1905: December
 1906: (none)
 ...
-2093: May 
-2094: January       October   
+2093: May
+2094: January       October
 2095: July
 2096: (none)
-2097: March         
-2098: August        
-2099: May 
-2100: January       October   
+2097: March
+2098: August
+2099: May
+2100: January       October
 Total = 201
 
 ```
@@ -1020,8 +1020,8 @@ Total = 201
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <time.h>
 
 static const char *months[] = {"January", "February", "March", "April", "May",
@@ -1089,8 +1089,8 @@ Error: 1901 December
 
 Not your typical method.  Requires <code>ncal</code>.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 int check_month(int y, int m)
@@ -1140,7 +1140,7 @@ int main()
 .
 .
 .
-2093-05 2094-01 2094-10 2095-07 2097-03 2098-08 2099-05 2100-01 2100-10 
+2093-05 2094-01 2094-10 2095-07 2097-03 2098-08 2099-05 2100-01 2100-10
 Total: 201
 
 ```
@@ -1151,8 +1151,8 @@ Total: 201
 
 {{libheader|Boost}}
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <boost/date_time/gregorian/gregorian.hpp>
 #include <algorithm>
 #include <iostream>
@@ -1451,7 +1451,7 @@ namespace _5_Weekends
     {
         const int FIRST_YEAR = 1900;
         const int LAST_YEAR = 2100;
-        static int[] _31_MONTHS = { 1, 3, 5, 7, 8, 10, 12 }; 
+        static int[] _31_MONTHS = { 1, 3, 5, 7, 8, 10, 12 };
 
         static void Main(string[] args)
         {
@@ -1519,7 +1519,7 @@ public class Program
     public static void Main()
     {
         const int startYear = 1900, endYear = 2100;
-        
+
         var query = (
             from year in startYear.To(endYear)
             from month in 1.To(12)
@@ -1528,7 +1528,7 @@ public class Program
             where date.DayOfWeek == DayOfWeek.Friday
             select date)
             .ToList();
-        
+
         Console.WriteLine("Count: " + query.Count);
         Console.WriteLine();
         Console.WriteLine("First and last 5:");
@@ -2113,7 +2113,7 @@ end.
 defmodule Date do
   @months { "January", "February", "March",     "April",   "May",      "June",
             "July",    "August",   "September", "October", "November", "December" }
-  
+
   def five_weekends(year) do
     for m <-[1,3,5,7,8,10,12], :calendar.day_of_the_week(year, m, 31) == 7, do: elem(@months, m-1)
   end
@@ -2206,7 +2206,7 @@ Second, a more verbose Erlang module:
 report() ->
   Years = make_nested_period_list(1900, 2100),
   {CountedYears, {All5WMonths, CountOf5WMonths}} = lists:mapfoldl(
-    fun(SingleYearSublist, {All5WMonths, CountOf5WMonths}) -> 
+    fun(SingleYearSublist, {All5WMonths, CountOf5WMonths}) ->
       MonthsWith5W = [Month || Month <- SingleYearSublist, if_has_5w(Month)],
       CountOf5WMonthsFor1Year = length(MonthsWith5W),
       { % Result of map for this year sublist:
@@ -2352,22 +2352,22 @@ END PROGRAM
 
 ```txt
 
-1901: MARCH         
-1902: AUGUST        
-1903: MAY 
+1901: MARCH
+1902: AUGUST
+1903: MAY
 1904: JANUARY
-1904: JULY      
-1905: DECEMBER      
+1904: JULY
+1905: DECEMBER
 ...
 2093: MAY
 2094: JANUARY
-2094: OCTOBER   
+2094: OCTOBER
 2095: JULY
-2097: MARCH         
-2098: AUGUST        
-2099: MAY 
+2097: MARCH
+2098: AUGUST
+2099: MAY
 2100: JANUARY
-2100: OCTOBER   
+2100: OCTOBER
 Total = 201
 ```
 
@@ -2391,7 +2391,7 @@ datetime dt
 
 for year = 1900 to 2100 do
 	atom flag = 0
-	for month = 1 to length(longmonths) do 
+	for month = 1 to length(longmonths) do
 		dt = new(year, longmonths[month], 1)
 		if weeks_day(dt) = 6 then --Friday is day 6
 			flag = 1
@@ -2506,10 +2506,10 @@ IN: rosetta-code.five-weekends
 
 : month-range ( start-year #months -- seq )
     '[ _ <year> _ <iota> ] call [ months time+ ] with map ;
-    
+
 : find-five-weekend-months ( months -- months' )
     [ [ friday? ] [ days-in-month ] bi 31 = and ] filter ;
-    
+
 1900 12 201 * month-range find-five-weekend-months
 [ length "%d five-weekend months found.\n" printf ]
 [ 5 head  timestamps>my "..." print               ]
@@ -2556,7 +2556,7 @@ program Five_weekends
   end type month
 
   type(month) :: month31(7)
-  
+
   month31(1) = month(13, "Jan")
   month31(2) = month(3,  "Mar")
   month31(3) = month(5,  "May")
@@ -2574,7 +2574,7 @@ program Five_weekends
           nfives = nfives + 1
           no5weekend = .false.
         end if
-      else 
+      else
         if(Day_of_week(1, month31(m)%n, year) == 6) then
           write(*,"(a3, i5)") month31(m)%name, year
           nfives = nfives + 1
@@ -2584,21 +2584,21 @@ program Five_weekends
     end do
     if(no5weekend) not5 = not5 + 1
   end do
-  
+
   write(*, "(a, i0)") "Number of months with five weekends between 1900 and 2100 = ", nfives
   write(*, "(a, i0)") "Number of years between 1900 and 2100 with no five weekend months = ", not5
-  
+
 contains
- 
+
 function Day_of_week(d, m, y)
   integer :: Day_of_week
   integer, intent(in) :: d, m, y
   integer :: j, k
-    
+
   j = y / 100
   k = mod(y, 100)
   Day_of_week = mod(d + (m+1)*26/10 + k + k/4 + j/4 + 5*j, 7)
-  
+
 end function Day_of_week
 end program Five_weekends
 ```
@@ -2707,10 +2707,10 @@ End
 nr of month from 1900 to 2100 that has five weekends 201
 
  29 years don't have months with five weekends
- 1900  1906  1917  1923  1928  1934  1945  1951 
- 1956  1962  1973  1979  1984  1990  2001  2007 
- 2012  2018  2029  2035  2040  2046  2057  2063 
- 2068  2074  2085  2091  2096 
+ 1900  1906  1917  1923  1928  1934  1945  1951
+ 1956  1962  1973  1979  1984  1990  2001  2007
+ 2012  2018  2029  2035  2040  2046  2057  2063
+ 2068  2074  2085  2091  2096
 ```
 
 
@@ -2748,7 +2748,7 @@ sTemp = aMMStore.Join(",")                                            'Put all t
 aMMStore.Clear                                                        'Clear the store for reuse
 
 For siYear = 1900 To 2100                                             'Loop through each year
-   If Not InStr(sTemp, Str(siYear)) Then                              'If the year is not in the stored string then.. 
+   If Not InStr(sTemp, Str(siYear)) Then                              'If the year is not in the stored string then..
     Inc siCount                                                       'Increase siCount (Amount of years that don't have 5 weekend months)
     aMMStore.Add(Str(siYear))                                         'Add to the store
    End If
@@ -2820,7 +2820,7 @@ Length(r[2]);
 # 29
 r[1]{[1 .. 5]};
 # [ "Mar-1901", "Aug-1902", "May-1903", "Jan-1904", "Jul-1904" ]
-r[1]{[n-4 .. n]}; 
+r[1]{[n-4 .. n]};
 # [ "Mar-2097", "Aug-2098", "May-2099", "Jan-2100", "Oct-2100" ]
 ```
 
@@ -3226,16 +3226,16 @@ yearsWithout.each { println it }
 ```visualfoxpro
 
 PROCEDURE Main()
-   LOCAL y, m, d, nFound, cNames, nTot := 0, nNotFives := 0 
+   LOCAL y, m, d, nFound, cNames, nTot := 0, nNotFives := 0
    LOCAL aFounds := {}
-   
+
    SET DATE ANSI
-   
+
    FOR y := 1900 TO 2100
       nFound := 0 ; cNames := ""
       FOR m := 1 TO 12
       d := CtoD( hb_NtoS( y ) +"/" + hb_NtoS( m ) + "/1" )
-         IF CDoW( d ) == "Friday"			
+         IF CDoW( d ) == "Friday"
 	    IF DaysInMonth( m ) == 31
 	       nFound++
 	       cNames += CMonth( d ) + " "
@@ -3255,7 +3255,7 @@ PROCEDURE Main()
    AEval( aFounds, { | e, n | Iif( n < 6, Qout( e ), NIL ) } )
    Qout("...")
    AEval( aFounds, { | e, n | Iif( n > Len(aFounds)-5, Qout( e ), NIL ) } )
-   ? 
+   ?
    ? "Years with no five weekends months: " + hb_NtoS( nNotFives )
 
    RETURN
@@ -3406,7 +3406,7 @@ main = do
     putStrLn $ "\n" ++ show answer31 ++ " years don't have at least one five-weekened month"
     putStrLn "\nThose are:"
     putStrLn answer32
-    
+
 formatMonth :: (Year, [Month]) -> String
 formatMonth (y, m) = show y ++ ": " ++ intercalate ", " [ show x | x <- m ]
 ```
@@ -3456,14 +3456,14 @@ fiveFridayMonths y =
   [1 .. 12] >>=
   \m ->
      [ (y, m)
-     | isFriday (fromGregorian y m 1) 
+     | isFriday (fromGregorian y m 1)
      , gregorianMonthLength y m == 31 ]
 
 isFriday :: Day -> Bool
 isFriday d =
   let (_, _, day) = toWeekDate d
   in day == 5
-  
+
 
 -- TEST -----------------------------------------------------------------------
 main :: IO ()
@@ -3670,12 +3670,12 @@ end
 
 procedure fiveweekends(start,finish)
    L := []        # months years with five weekends FRI-SUN
-   every year := start to finish & month := 1 to 12 do 
+   every year := start to finish & month := 1 to 12 do
       if month = (2|4|6|9|11) then next
-      else if julian(month,1,year) % 7 = 4 then 
+      else if julian(month,1,year) % 7 = 4 then
          put(L,sprintf("%d-%d-1",year,month))
    return L
-end  
+end
 
 procedure Bonus(start,finish,fwe)
 every insert(Y := set(), start to finish)
@@ -3685,9 +3685,9 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
-[http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn datetime.icn provides julian] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
+[http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn datetime.icn provides julian]
 
 {{out}}
 
@@ -4011,7 +4011,7 @@ for (; year < endYear + 1; year++) {
 
     // February -- if leap year, then +1 day
     if (i == 1) {
-      day = (day + leap) % 7; 
+      day = (day + leap) % 7;
     } else {
       day = (day + offset[i]) % 7;
     }
@@ -4238,10 +4238,10 @@ def day_of_week(year; month; day):
     [month + 12, year - 1]
   else
     [month, year]
-  end 
+  end
   | day + (13*(.[0] + 1)/5|floor)
     +  (.[1]%100)       + ((.[1]%100)/4|floor)
-    +  (.[1]/400|floor) - 2*(.[1]/100|floor) 
+    +  (.[1]/400|floor) - 2*(.[1]/100|floor)
   | . % 7
 ;
 ```
@@ -4256,8 +4256,8 @@ def weekday_of_last_day_of_month(year; month):
   else day_before( day_of_week( year; month+1; 1 ) )
   end
 ;
-  
-# The only case where the month has 5 weekends is when the last day 
+
+# The only case where the month has 5 weekends is when the last day
 # of the month falls on a Sunday and the month has 31 days.
 #
 def five_weekends(from; to):
@@ -4279,7 +4279,7 @@ def pp:
 '''The Task''':
 
 ```jq
-five_weekends(1900;2101) 
+five_weekends(1900;2101)
 | "There are \(length) months with 5 weekends from 1900 to 2100 inclusive;",
   "the first and last five are as follows:",
   ( .[0: 5][] | pp),
@@ -4420,7 +4420,7 @@ fun main(args: Array<String>) {
     for (year in 1900..2100) {
         var countInYear = 0 //  counts months in a given year with 5 weekends
         for (month in 1..12) {
-            if ((month in months31) && (Calendar.FRIDAY == calendar[Calendar.DAY_OF_WEEK])) { 
+            if ((month in months31) && (Calendar.FRIDAY == calendar[Calendar.DAY_OF_WEEK])) {
                 countInYear++
                 monthsWithFive.add("%02d".format(month) + "-" + year)
             }
@@ -4515,8 +4515,8 @@ with year in #emptyears do {
 
 ```txt
 Total number of months 201
-Starting five months 1901 Mar, 1902 Aug, 1903 May, 1903 Jan, 1904 Jul, 
-Ending five months 2095 Jul, 2097 Mar, 2098 Aug, 2099 May, 2099 Jan, 2100 Oct, 
+Starting five months 1901 Mar, 1902 Aug, 1903 May, 1903 Jan, 1904 Jul,
+Ending five months 2095 Jul, 2097 Mar, 2098 Aug, 2099 May, 2099 Jan, 2100 Oct,
 Years with no five weekend months 29
 1900, 1906, 1917, 1923, 1928, 1934, 1945, 1951, 1956, 1962, 1973, 1979, 1984, 1990, 2001, 2007, 2012, 2018, 2029, 2035, 2040, 2046, 2057, 2063, 2068, 2074, 2085, 2091, 2096,
 ```
@@ -4564,13 +4564,13 @@ print("Years without 5 weekends in the same month:",cnt_no5we)
 {{out}}
 
 ```txt
-1900 0: 
+1900 0:
 1901 1: MAR
 1902 1: AUG
 1903 1: MAY
 1904 2: JAN, JUL
 1905 1: DEC
-1906 0: 
+1906 0:
 1907 1: MAR
 1908 1: MAY
 1909 2: JAN, OCT
@@ -4578,12 +4578,12 @@ print("Years without 5 weekends in the same month:",cnt_no5we)
 ...
 ...
 2090 1: DEC
-2091 0: 
+2091 0:
 2092 1: AUG
 2093 1: MAY
 2094 2: JAN, OCT
 2095 1: JUL
-2096 0: 
+2096 0:
 2097 1: MAR
 2098 1: AUG
 2099 1: MAY
@@ -4828,7 +4828,7 @@ five_weekends();
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-years = {1900, 2100}; months = {1 ,3 ,5 ,7 ,8 ,10 ,12}; 
+years = {1900, 2100}; months = {1 ,3 ,5 ,7 ,8 ,10 ,12};
 result = Select[Tuples[{Range@@years, months}], (DateString[# ~ Join ~ 1, "DayNameShort"] == "Fri")&];
 
 Print[result // Length," months with 5 weekends" ];
@@ -4851,7 +4851,7 @@ Last months:  {March 2097, August 2098, May 2099, January 2100, October 2100}
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 
 ```Matlab
@@ -4888,18 +4888,18 @@ end
 There are 201 months with 5 weekends between 1900 and 2100.
 
  The first 5 months are:
-	 Mar 1901 
-	 Aug 1902 
-	 May 1903 
-	 Jan 1904 
-	 Jul 1904 
+	 Mar 1901
+	 Aug 1902
+	 May 1903
+	 Jan 1904
+	 Jul 1904
 
  The final 5 months are:
-	 Mar 2097 
-	 Aug 2098 
-	 May 2099 
-	 Jan 2100 
-	 Oct 2100 
+	 Mar 2097
+	 Aug 2098
+	 May 2099
+	 Jan 2100
+	 Oct 2100
 ```
 
 
@@ -4985,7 +4985,7 @@ The following months have five full weekends:
 01-1904
 07-1904
 12-1905
-. . . . . . 
+. . . . . .
 01-2094
 10-2094
 07-2095
@@ -4995,7 +4995,7 @@ The following months have five full weekends:
 01-2100
 10-2100
 For a total of 201 months.
- 
+
 There are 29 years with no five full weekends in any month.
 They are: 1900,1906,1917,1923,1928,1934,1945,1951,1956,1962,1973,1979,1984,1990,2001,2007,2012,2018,2029,2035,2040,2046,2057,2063,2068,2074,2085,2091,2096
 ```
@@ -5068,7 +5068,7 @@ Output: see Rexx version 3
 
 (context 'KR)
 
-(define (Kraitchik year month day)    
+(define (Kraitchik year month day)
     ; See https://en.wikipedia.org/wiki/Determination_of_the_day_of_the_week#Kraitchik.27s_variation
     ; Function adapted for specific task (not for general usage).
     (if (or (= 1 month) (= 2 month))
@@ -5078,16 +5078,16 @@ Output: see Rexx version 3
     (setf m-table '(_ 1 4 3 6 1 4 6 2 5 0 3 5)) ; - - - First element of list is dummy!
     (setf m (m-table month))
     ;- - - -
-    (setf c-table '(0 5 3 1))    
+    (setf c-table '(0 5 3 1))
     (setf century%4 (mod (int (slice (string year) 0 2)) 4))
-    (setf c (c-table century%4))    
+    (setf c (c-table century%4))
     ;- - - -
     (setf yy* (slice (string year) -2))
     (if (= "0" (yy* 0))
         (setf yy* (yy* 1))
     )
     (setf yy (int yy*))
-    (setf y  (mod (+ (/ yy 4) yy) 7))    
+    (setf y  (mod (+ (/ yy 4) yy) 7))
     ;- - - -
     (setf dow-table '(6 0 1 2 3 4 5))
     (dow-table (mod (+ day m c y) 7))
@@ -5099,10 +5099,10 @@ Output: see Rexx version 3
 (setf NotFives 0)
 (setf Report '())
 (setf months-table '((1 "Jan") (3 "Mar") (5 "May") (7 "Jul") (8 "Aug") (10 "Oct") (12 "Dec")))
-    
+
 (for (y 1900 2100)
     (setf FivesFound 0)
-    (setf Names "")    
+    (setf Names "")
     (dolist (m '(1 3 5 7 8 10 12))
         (setf Dow (KR:Kraitchik y m 1))
         (if (= 5 Dow)
@@ -5120,7 +5120,7 @@ Output: see Rexx version 3
             (setf Fives (+ Fives FivesFound))
         )
     )
-)    
+)
 
 
 ;- - - - Display all report data
@@ -5250,7 +5250,7 @@ let () =
 {{out}}
 
 ```txt
-$ ocaml unix.cma str.cma -I +calendar calendarLib.cma five_we.ml 
+$ ocaml unix.cma str.cma -I +calendar calendarLib.cma five_we.ml
 Number of months with 5 weekends: 201
 First and last months between 1900 and 2100:
 1901-03
@@ -5279,7 +5279,7 @@ First and last months between 1900 and 2100:
    ListBuffer new
    y1 y2 for: y [
       Date.JANUARY Date.DECEMBER for: m [
-         Date.DaysInMonth(y, m) 31 == 
+         Date.DaysInMonth(y, m) 31 ==
          [ y, m, 01 ] asDate dayOfWeek Date.FRIDAY == and
             ifTrue: [ [ y, m ] over add ]
          ]
@@ -5463,10 +5463,10 @@ integer y,m,
 string months
 sequence res = {},
          none = {}
- 
+
 for y=1900 to 2100 do
     months = ""
-    for m=1 to 12 do 
+    for m=1 to 12 do
         if string(m31[m])
         and day_of_week(y,m,1)=6 then
             if length(months)!=0 then months &= ", " end if
@@ -5480,7 +5480,7 @@ for y=1900 to 2100 do
         res = append(res,sprintf("%d : %s\n",{y,months}))
     end if
 end for
- 
+
 printf(1,"Found %d months with five full weekends\n",nmonths)
 res[6..-6] = {" ...\n"}
 puts(1,join(res,""))
@@ -5562,20 +5562,20 @@ There are 29 years with no five-weekend months:
 
 
 ```Pike
-int(0..1) weekends(object day)                                                      
+int(0..1) weekends(object day)
 {
     return (<5,6,7>)[day->week_day()];
 }
 
 int(0..1) has5(object month)
-{ 
-    return sizeof(filter(month->days(), weekends))==15; 
+{
+    return sizeof(filter(month->days(), weekends))==15;
 }
- 
-object range = Calendar.Year(1900)->distance(Calendar.Year(2101));
-array have5 = filter(range->months(), has5); 
 
-write("found %d months:\n%{%s\n%}...\n%{%s\n%}", 
+object range = Calendar.Year(1900)->distance(Calendar.Year(2101));
+array have5 = filter(range->months(), has5);
+
+write("found %d months:\n%{%s\n%}...\n%{%s\n%}",
        sizeof(have5), have5[..4]->format_nice(), have5[<4..]->format_nice());
 
 array rest = range->years() - have5->year();
@@ -5644,21 +5644,21 @@ end weekends;
 
 ```txt
 
-Mar1901 has 5 weekends 
-Aug1902 has 5 weekends 
-May1903 has 5 weekends 
-Jan1904 has 5 weekends 
-Jul1904 has 5 weekends 
-Dec1905 has 5 weekends 
+Mar1901 has 5 weekends
+Aug1902 has 5 weekends
+May1903 has 5 weekends
+Jan1904 has 5 weekends
+Jul1904 has 5 weekends
+Dec1905 has 5 weekends
        .....
-Jan2094 has 5 weekends 
-Oct2094 has 5 weekends 
-Jul2095 has 5 weekends 
-Mar2097 has 5 weekends 
-Aug2098 has 5 weekends 
-May2099 has 5 weekends 
-Jan2100 has 5 weekends 
-Oct2100 has 5 weekends 
+Jan2094 has 5 weekends
+Oct2094 has 5 weekends
+Jul2095 has 5 weekends
+Mar2097 has 5 weekends
+Aug2098 has 5 weekends
+May2099 has 5 weekends
+Jan2100 has 5 weekends
+Oct2100 has 5 weekends
 Total number of months having 3-day weekends =       201
 
 ```
@@ -5698,35 +5698,35 @@ end weekends;
 
 ```txt
 
-1900 has no month of 5 weekends 
-1906 has no month of 5 weekends 
-1917 has no month of 5 weekends 
-1923 has no month of 5 weekends 
-1928 has no month of 5 weekends 
-1934 has no month of 5 weekends 
-1945 has no month of 5 weekends 
-1951 has no month of 5 weekends 
-1956 has no month of 5 weekends 
-1962 has no month of 5 weekends 
-1973 has no month of 5 weekends 
-1979 has no month of 5 weekends 
-1984 has no month of 5 weekends 
-1990 has no month of 5 weekends 
-2001 has no month of 5 weekends 
-2007 has no month of 5 weekends 
-2012 has no month of 5 weekends 
-2018 has no month of 5 weekends 
-2029 has no month of 5 weekends 
-2035 has no month of 5 weekends 
-2040 has no month of 5 weekends 
-2046 has no month of 5 weekends 
-2057 has no month of 5 weekends 
-2063 has no month of 5 weekends 
-2068 has no month of 5 weekends 
-2074 has no month of 5 weekends 
-2085 has no month of 5 weekends 
-2091 has no month of 5 weekends 
-2096 has no month of 5 weekends 
+1900 has no month of 5 weekends
+1906 has no month of 5 weekends
+1917 has no month of 5 weekends
+1923 has no month of 5 weekends
+1928 has no month of 5 weekends
+1934 has no month of 5 weekends
+1945 has no month of 5 weekends
+1951 has no month of 5 weekends
+1956 has no month of 5 weekends
+1962 has no month of 5 weekends
+1973 has no month of 5 weekends
+1979 has no month of 5 weekends
+1984 has no month of 5 weekends
+1990 has no month of 5 weekends
+2001 has no month of 5 weekends
+2007 has no month of 5 weekends
+2012 has no month of 5 weekends
+2018 has no month of 5 weekends
+2029 has no month of 5 weekends
+2035 has no month of 5 weekends
+2040 has no month of 5 weekends
+2046 has no month of 5 weekends
+2057 has no month of 5 weekends
+2063 has no month of 5 weekends
+2068 has no month of 5 weekends
+2074 has no month of 5 weekends
+2085 has no month of 5 weekends
+2091 has no month of 5 weekends
+2096 has no month of 5 weekends
 
 ```
 
@@ -5781,24 +5781,24 @@ Works with SWI-Prolog;
 main() :-
     weekends(1900, 2100, FiveWeekendList, RemainderWeekendList),
 
-    length(FiveWeekendList, FiveLen),    
+    length(FiveWeekendList, FiveLen),
     maplist(write, ["Total five weekend months:", FiveLen, '\n']),
-    
+
     slice(FiveWeekendList, 5, FirstFiveList),
     maplist(write, ["First five {year,month} pairs:", FirstFiveList, '\n']),
-    
+
     slice(FiveWeekendList, -5, LastFiveList),
     maplist(write, ["Last five {year,month} pairs:", LastFiveList, '\n']),
 
     maplist(take_year, FiveWeekendList, FiveYearList),
     list_to_set(FiveYearList, FiveYearSet),
-    
-    maplist(take_year, RemainderWeekendList, RemainderYearList),
-    list_to_set(RemainderYearList, RemainderYearSet),    
 
-    subtract(RemainderYearSet, FiveYearSet, NonFiveWeekendSet),    
+    maplist(take_year, RemainderWeekendList, RemainderYearList),
+    list_to_set(RemainderYearList, RemainderYearSet),
+
+    subtract(RemainderYearSet, FiveYearSet, NonFiveWeekendSet),
     length(NonFiveWeekendSet, NonFiveWeekendLen),
-    
+
     maplist(write, ["Total years with no five weekend months:", NonFiveWeekendLen, '\n']),
     writeln(NonFiveWeekendSet).
 
@@ -5882,7 +5882,7 @@ Procedure DateG(year.w, month.b, day)
     year - 1
   EndIf
   days + Int(year/4) - Int(year/100) + Int(year/400)
-  
+
   ProcedureReturn days
 EndProcedure
 
@@ -5892,7 +5892,7 @@ Procedure startsOnFriday(year, month)
   Protected resultDay = (((DateG(year, month, 1) + referenceDay) % 7) + 7) % 7
    If resultDay = 5
     ProcedureReturn #True
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure has31Days(month)
@@ -5908,7 +5908,7 @@ Procedure checkMonths(year)
     If startsOnFriday(year, month) And has31Days(month)
       count + 1
       PrintN(Str(year) + " " + Str(month))
-    EndIf 
+    EndIf
   Next
   ProcedureReturn count
 EndProcedure
@@ -5916,7 +5916,7 @@ EndProcedure
 Procedure fiveWeekends()
   Protected startYear = 1900, endYear = 2100, year, monthTotal, total
   NewList yearsWithoutFiveWeekends()
-  
+
   For year = startYear To endYear
     monthTotal = checkMonths(year)
     total + monthTotal
@@ -5924,16 +5924,16 @@ Procedure fiveWeekends()
     If monthTotal = 0
       AddElement(yearsWithoutFiveWeekends())
       yearsWithoutFiveWeekends() = year
-    EndIf 
+    EndIf
   Next
-    
+
    PrintN("Total number of months: " + Str(total) + #CRLF$)
    PrintN("Years with no five-weekend months: " + Str(ListSize(yearsWithoutFiveWeekends())) )
 EndProcedure
 
 If OpenConsole()
   fiveWeekends()
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -5975,7 +5975,7 @@ FMT     = '%Y %m(%B)'
 
 def fiveweekendspermonth(start=START, stop=STOP):
     'Compute months with five weekends between dates'
-    
+
     when = start
     lastmonth = weekenddays = 0
     fiveweekends = []
@@ -6005,7 +6005,7 @@ print('\nThere are %i years in the range that do not have months with five weeke
 
 '''Alternate Algorithm'''
 
-The condition is equivalent to having a thirty-one day month in which the last day of the month is a Sunday. 
+The condition is equivalent to having a thirty-one day month in which the last day of the month is a Sunday.
 
 ```python
 LONGMONTHS = (1, 3, 5, 7, 8, 10, 12) # Jan Mar May Jul Aug Oct Dec
@@ -6082,10 +6082,10 @@ message("The last five: ", paste(tail(ms, 5), collapse = ", "))
 
 (displayln (~a "There are " count " weeks with five weekends."))
 (displayln "The first five are: ")
-(for ([w (take weekends 5)]) 
+(for ([w (take weekends 5)])
   (displayln (date->string w "~b ~Y")))
 (displayln "The last five are: ")
-(for ([w (drop weekends (- count 5))]) 
+(for ([w (drop weekends (- count 5))])
   (displayln (date->string w "~b ~Y")))
 
 ```
@@ -6095,13 +6095,13 @@ message("The last five: ", paste(tail(ms, 5), collapse = ", "))
 ```txt
 
 There are 201 weeks with five weekends.
-The first five are: 
+The first five are:
 Mar 1901
 Aug 1902
 May 1903
 Jan 1904
 Jul 1904
-The last five are: 
+The last five are:
 Mar 2097
 Aug 2098
 May 2099
@@ -6459,7 +6459,7 @@ s:    if arg(1)==1  then return arg(3);      return word(arg(2) 's',1)     /*plu
 ```rexx
 /* REXX ***************************************************************
 * Short(er) solution focussed at the task's description
-* Only 7 months can have 5 full weekends 
+* Only 7 months can have 5 full weekends
 * and it's enough to test if the 1st day of the month is a Friday
 * 30.08.2012 Walter Pachl
 **********************************************************************/
@@ -6518,22 +6518,22 @@ leapyear: Return ( (arg(1)//4=0) & (arg(1)//100<>0) ) | (arg(1)//400=0)
 
 ```txt
 
-Mar 1901 has 5 full weekends                     
-Aug 1902 has 5 full weekends                     
-May 1903 has 5 full weekends                     
-Jan 1904 has 5 full weekends                     
-Jul 1904 has 5 full weekends                     
-Dec 1905 has 5 full weekends                     
-...                                              
-Jul 2095 has 5 full weekends                     
-Mar 2097 has 5 full weekends                     
-Aug 2098 has 5 full weekends                     
-May 2099 has 5 full weekends                     
-Jan 2100 has 5 full weekends                     
-Oct 2100 has 5 full weekends                     
-                                                 
-201 occurrences of 5 full weekends in a month    
-29 years without 5 full weekends                 
+Mar 1901 has 5 full weekends
+Aug 1902 has 5 full weekends
+May 1903 has 5 full weekends
+Jan 1904 has 5 full weekends
+Jul 1904 has 5 full weekends
+Dec 1905 has 5 full weekends
+...
+Jul 2095 has 5 full weekends
+Mar 2097 has 5 full weekends
+Aug 2098 has 5 full weekends
+May 2099 has 5 full weekends
+Jan 2100 has 5 full weekends
+Oct 2100 has 5 full weekends
+
+201 occurrences of 5 full weekends in a month
+29 years without 5 full weekends
 
 ```
 
@@ -6635,7 +6635,7 @@ for year = 1900 to 2100
     oldsum = sum
     for n = 1 to 12
         month[n] = (mo[n] + m) % 7
-        x = (month[n] + 1) % 7 
+        x = (month[n] + 1) % 7
         if x = 2 and mon[n] = 31 sum += 1 see "" + year + "-" + mont[n] + nl ok
     next
     if sum = oldsum see "" + year + "-" + "(none)" + nl ok
@@ -6677,7 +6677,7 @@ Total : 201
 
 ```ruby
 require 'date'
-# The only case where the month has 5 weekends is when the last day 
+# The only case where the month has 5 weekends is when the last day
 # of the month falls on a Sunday and the month has 31 days.
 
 LONG_MONTHS = [1,3,5,7,8,10,12]
@@ -6722,7 +6722,7 @@ There are 29 years without months with 5 weekends:
 
 ```runbasic
 preYear = 1900
-for yyyy      = 1900 to 2100           
+for yyyy      = 1900 to 2100
    for mm     = 1 to 12                ' go thru all 12 months
       dayOne$ = mm;"-01-";yyyy         ' First day of month
       n       = date$(dayOne$)         ' Days since 1700
@@ -6741,7 +6741,7 @@ for yyyy      = 1900 to 2100
       end if
 
    next mm
-   if preCount = count then 
+   if preCount = count then
      noCount = noCount + 1             ' count years that have none
      print yyyy;" has none ";noCount
    end if
@@ -7544,7 +7544,7 @@ awk -f 5weekends.awk  cal.txt
 ```
 
 
-See also: [http://rosettacode.org/wiki/Five_weekends#AWK awk] and [[Calendar]]. 
+See also: [http://rosettacode.org/wiki/Five_weekends#AWK awk] and [[Calendar]].
 
 Try it out online: [http://www.compileonline.com/execute_ksh_online.php compileonline.com]
 
@@ -7688,8 +7688,8 @@ CrLf(0);  IntOut(0, C);  CrLf(0);               \show number of years
 2100 10
 201
 
-1900 1906 1917 1923 1928 1934 1945 1951 1956 1962 1973 1979 1984 1990 2001 2007 
-2012 2018 2029 2035 2040 2046 2057 2063 2068 2074 2085 2091 2096 
+1900 1906 1917 1923 1928 1934 1945 1951 1956 1962 1973 1979 1984 1990 2001 2007
+2012 2018 2029 2035 2040 2046 2057 2063 2068 2074 2085 2091 2096
 29
 
 ```
@@ -7710,7 +7710,7 @@ foreach y,m in ([1900..2100],[1..12]){
 Alternatively, in a functional style using list comprehensions:
 
 ```zkl
-r:=[[(y,m); [1900..2100]; 
+r:=[[(y,m); [1900..2100];
             [1..12],{D.daysInMonth(y,m)==31 and 5==D.weekDay(y,m,1)};
             {String(y,"-",m)}]];
 ```
@@ -7730,7 +7730,7 @@ Extra credit: Years with no five day weekends:
 
 ```zkl
 var [const] D=Time.Date, r=L();
-foreach y in ([1900..2100]){ yes:=True; 
+foreach y in ([1900..2100]){ yes:=True;
    foreach m in ([1..12]){
       if (D.daysInMonth(y,m)==31 and 5==D.weekDay(y,m,1)) { yes=False; break; }
    }
@@ -7744,12 +7744,12 @@ Alternatively:
 var yes, r=[[(y,m);
    [1900..2100];
    [1..12],{if(m==1)yes=True; if(D.daysInMonth(y,m)==31 and 5==D.weekDay(y,m,1)) yes=False; True},
-           {if (m==12) yes else False}; 
+           {if (m==12) yes else False};
    {y}]]
 ```
 
-Bit of a sleaze using a global var (yes) to hold state. 
-First filter: On the first month, reset global, note if month has five weekends, always pass. 
+Bit of a sleaze using a global var (yes) to hold state.
+First filter: On the first month, reset global, note if month has five weekends, always pass.
 Second filter: fail if any five day weekends and ignore all months other than December.
 {{out}}
 

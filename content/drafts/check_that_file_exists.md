@@ -14,9 +14,9 @@ tags = []
 
 ;Task:
 Verify that a file called     '''input.txt'''     and   a directory called     '''docs'''     exist.
- 
 
-This should be done twice:   
+
+This should be done twice:
 :::*   once for the current working directory,   and
 :::*   once for a file and a directory in the filesystem root.
 
@@ -175,14 +175,14 @@ use scripting additions
 
 on run
     setCurrentDirectory("~/Desktop")
-    
+
     ap({doesFileExist, doesDirectoryExist}, ¬
         {"input.txt", "/input.txt", "docs", "/docs"})
-    
+
     --> {true, true, true, true, false, false, true, true}
-    
+
     -- The first four booleans are returned by `doesFileExist`.
-    
+
     -- The last four are returned by `doesDirectoryExist`,
     -- which yields false for simple files, and true for directories.
 end run
@@ -252,7 +252,7 @@ on ap(fs, xs)
     return lst
 end ap
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -267,7 +267,7 @@ end mReturn
 
 {{Out}}
 The first four booleans are returned by `doesFileExist`.
-	
+
 The last four are returned by `doesDirectoryExist`,
 which yields false for simple files, and true for directories.
 
@@ -346,11 +346,11 @@ szFicName2:  .asciz "/debian-binary"
 
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* saves 2 registers */
 
@@ -358,19 +358,19 @@ main:                /* entry of program  */
      open file 1
     ************************************/
     ldr r0,iAdrszFicName1    @ file name
-    mov r1,#O_RDWR             @ flags    
-    mov r2,#0                    @ mode 
-    mov r7, #OPEN               @ call system OPEN 
-    swi 0 
+    mov r1,#O_RDWR             @ flags
+    mov r2,#0                    @ mode
+    mov r7, #OPEN               @ call system OPEN
+    swi 0
     cmp r0,#0    @ error ?
     ble 1f
     mov r1,r0    @ FD
     ldr r0,iAdrszMessFound1
     bl affichageMess
     @ close file
-    mov r0,r1   @ Fd 
-    mov r7, #CLOSE 
-    swi 0 
+    mov r0,r1   @ Fd
+    mov r7, #CLOSE
+    swi 0
     b 2f
 1:
     ldr r0,iAdrszMessNotFound1
@@ -379,23 +379,23 @@ main:                /* entry of program  */
     /*************************************
      open file 2
     ************************************/
-    ldr r0,iAdrszFicName2    @ file name 
-    mov r1,#O_RDWR   @  flags    
-    mov r2,#0         @ mode 
-    mov r7, #OPEN    @ call system OPEN 
-    swi 0 
+    ldr r0,iAdrszFicName2    @ file name
+    mov r1,#O_RDWR   @  flags
+    mov r2,#0         @ mode
+    mov r7, #OPEN    @ call system OPEN
+    swi 0
     vidregtit verif
-    cmp r0,#-13    @ permission denied 
+    cmp r0,#-13    @ permission denied
     beq 4f
-    cmp r0,#0    @ error ? 
+    cmp r0,#0    @ error ?
     ble 3f
     mov r1,r0    @ FD
     ldr r0,iAdrszMessFound2
     bl affichageMess
     @ close file
-    mov r0,r1   @ Fd 
-    mov r7, #CLOSE 
-    swi 0 
+    mov r0,r1   @ Fd
+    mov r7, #CLOSE
+    swi 0
     b 100f
 3:
     ldr r0,iAdrszMessNotFound2
@@ -417,11 +417,11 @@ iAdrszMessNotFound1: 	.int szMessNotFound1
 iAdrszMessNotFound2: 	.int szMessNotFound2
 iAdrszMessNotAuth2:	.int szMessNotAuth2
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -435,7 +435,7 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 
 ```
@@ -713,7 +713,7 @@ empty.bac exists
 =
 ## Commodore BASIC
 =
-Try a file, then check the error status of the disk drive. Error code 62 is the "File not found" error. The trick is to open the file without specifying the file type (PRG, SEQ, REL, etc.) and the Read/Write mode in the OPEN statement, otherwise you may end up with error code 64 "File Type Mismatch". 
+Try a file, then check the error status of the disk drive. Error code 62 is the "File not found" error. The trick is to open the file without specifying the file type (PRG, SEQ, REL, etc.) and the Read/Write mode in the OPEN statement, otherwise you may end up with error code 64 "File Type Mismatch".
 
 ```gwbasic
 10 REM CHECK FILE EXISTS
@@ -742,7 +742,7 @@ Try a file, then check the error status of the disk drive. Error code 62 is the 
 {{Out}}
 ```txt
 ENTER FILENAME TO CHECK? INDEX.TXT
-  
+
 FILE EXISTS.
 
 ENTER FILENAME TO CHECK? NOFILE.DOC
@@ -772,19 +772,19 @@ if exist \docs\ echo The following directory called \docs\ exists.
         CLOSE #test%
         PRINT "File input.txt exists"
       ENDIF
-      
+
       test% = OPENIN("\input.txt")
       IF test% THEN
         CLOSE #test%
         PRINT "File \input.txt exists"
       ENDIF
-      
+
       test% = OPENIN("docs\NUL")
       IF test% THEN
         CLOSE #test%
         PRINT "Directory docs exists"
       ENDIF
-      
+
       test% = OPENIN("\docs\NUL")
       IF test% THEN
         CLOSE #test%
@@ -798,8 +798,8 @@ if exist \docs\ echo The following directory called \docs\ exists.
 
 {{libheader|POSIX}}
 
-```c>#include <sys/types.h
- 
+```c
+#include <sys/types.h>
 #include <sys/stat.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -914,7 +914,7 @@ Console.WriteLine(Directory.Exists("/docs"));
              10 file-hours     pic x comp-x.
              10 file-minutes   pic x comp-x.
              10 file-seconds   pic x comp-x.
-             10 file-hundredths  pic x comp-x. 
+             10 file-hundredths  pic x comp-x.
 
        procedure division.
        files-main.
@@ -1004,7 +1004,7 @@ for p in [ local_file, local_dir, root_file, root_dir ] then do ( p ) ->
             console.log "#{ p } does not exist."
         else then fs.stat p, ( error, stat ) ->
             console.log "#{ p } exists and is a #{ if stat.isFile() then 'file' else then 'directory' }."
-            
+
 
 
 ```
@@ -1200,16 +1200,16 @@ extension op
 {
     validatePath()
         = self.Available.iif("exists","not found");
-} 
-   
+}
+
 public program()
 {
     console.printLine("input.txt file ",File.assign("input.txt").validatePath());
- 
-    console.printLine("\input.txt file ",File.assign("\input.txt").validatePath());        
+
+    console.printLine("\input.txt file ",File.assign("\input.txt").validatePath());
 
     console.printLine("docs directory ",Directory.assign("docs").validatePath());
- 
+
     console.printLine("\docs directory ",Directory.assign("\docs").validatePath())
 }
 ```
@@ -1386,13 +1386,13 @@ Sub CheckFileExists(ByRef filePath As String)
 End Sub
 
 Sub CheckDirectoryExists(ByVal dirPath As ZString Ptr)
-  Dim attrib As ULong = GetFileAttributes(dirPath) 
-  Dim dirExists As ULong = attrib <> InvalidFileAttributes AndAlso (attrib And FileAttributeDirectory) <> 0 
+  Dim attrib As ULong = GetFileAttributes(dirPath)
+  Dim dirExists As ULong = attrib <> InvalidFileAttributes AndAlso (attrib And FileAttributeDirectory) <> 0
   If dirExists Then
     Print "'"; *dirPath; "' exists"
   Else
     Print "'"; *dirPath; "' does not exist"
-  End If 
+  End If
 End Sub
 
 CheckFileExists(CurDir + "\input.txt")
@@ -1457,7 +1457,7 @@ The folder '/docs' does NOT exist
 
 
 ```gap
-IsExistingFile("input.txt");     
+IsExistingFile("input.txt");
 IsDirectoryPath("docs");
 IsExistingFile("/input.txt");
 IsDirectoryPath("/docs");
@@ -1595,7 +1595,7 @@ println "Dir \"/docs\"?       " + (exists "/docs/")
    OPEN(FIle=   'input.txt', OLD, IOStat=ios, ERror=99)
    OPEN(FIle='C:\input.txt', OLD, IOStat=ios, ERror=99)
 ! ...
-99 WRITE(Messagebox='!') 'File does not exist. Error message ', ios 
+99 WRITE(Messagebox='!') 'File does not exist. Error message ', ios
 ```
 
 
@@ -1626,12 +1626,12 @@ software {
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-Icon doesn't support 'stat'; however, information can be obtained by use of the system function to access command line. 
+Icon doesn't support 'stat'; however, information can be obtained by use of the system function to access command line.
 
 ```Unicon
 every dir := !["./","/"] do {
-   write("file ", f := dir || "input.txt", if stat(f) then " exists." else " doesn't exist.") 
-   write("directory ", f := dir || "docs", if stat(f) then " exists." else " doesn't exist.") 
+   write("file ", f := dir || "input.txt", if stat(f) then " exists." else " doesn't exist.")
+   write("directory ", f := dir || "docs", if stat(f) then " exists." else " doesn't exist.")
    }
 ```
 
@@ -1706,7 +1706,7 @@ public class FileExistsTest {
        return exists;
    }
    public static void test(String type, String filename) {
-       System.out.println("The following " + type + " called " + filename + 
+       System.out.println("The following " + type + " called " + filename +
            (isFileExists(filename) ? " exists." : " not exists.")
        );
    }
@@ -1731,7 +1731,7 @@ public class FileExistsTest{
        return Files.exists(defaultFS.getPath(filename));
    }
    public static void test(String type, String filename){
-       System.out.println("The following " + type + " called " + filename + 
+       System.out.println("The following " + type + " called " + filename +
            (isFileExists(filename) ? " exists." : " not exists.")
        );
    }
@@ -1863,8 +1863,8 @@ fso.FolderExists('c:/docs');
 ```
 
 {{Out}}
-The first four booleans are returned by doesFileExist – the last four by 
-doesDirectoryExist, which returns false in the case of files which do 
+The first four booleans are returned by doesFileExist – the last four by
+doesDirectoryExist, which returns false in the case of files which do
 exist but are not directories.
 
 ```txt
@@ -2010,16 +2010,16 @@ end function
 
 ```C
 if (exists("input.txt")) {
-    puts("The file \"input.txt\" exist");   
+    puts("The file \"input.txt\" exist");
 }
 if (exists("/input.txt")) {
-    puts("The file \"/input.txt\" exist");  
+    puts("The file \"/input.txt\" exist");
 }
 if (exists("docs")) {
-    puts("The file \"docs\" exist");    
+    puts("The file \"docs\" exist");
 }
 if (exists("/docs")) {
-    puts("The file \"/docs\" exist");   
+    puts("The file \"/docs\" exist");
 }
 ```
 
@@ -2074,7 +2074,7 @@ function output( s, b )
         print ( s, " does not exist." )
     else
         print ( s, " does exist." )
-    end    
+    end
 end
 
 output( "input.txt",  io.open( "input.txt", "r" ) == nil )
@@ -2108,11 +2108,11 @@ Report print proportional text using word wrap, and justification. Can be used t
 
 Module ExistDirAndFile {
       Let WorkingDir$=Dir$, RootDir$="C:\"
- 
+
       task(WorkingDir$)
       task(RootDir$)
       Dir User ' return to user directroy
- 
+
       Sub task(WorkingDir$)
             Local counter
             Dir WorkingDir$
@@ -2156,9 +2156,9 @@ DirectoryQ["/" <> "docs"]
 =={{header|MATLAB}} / {{header|Octave}}==
 
 ```Matlab
- exist('input.txt','file') 
- exist('/input.txt','file') 
- exist('docs','dir') 
+ exist('input.txt','file')
+ exist('/input.txt','file')
+ exist('docs','dir')
  exist('/docs','dir')
 ```
 
@@ -2261,7 +2261,7 @@ empty.txt exists as empty file: true
 ```Nemerle
 using System.Console;
 using System.IO;
- 
+
 WriteLine(File.Exists("input.txt"));
 WriteLine(File.Exists("/input.txt"));
 WriteLine(Directory.Exists("docs"));
@@ -2472,7 +2472,7 @@ object d = dir(name)
         printf(1,"%s does not exist.\n",{name})
     end if
 end procedure
- 
+
 check("input.txt")
 check("docs")
 check("/input.txt")
@@ -2571,11 +2571,11 @@ say "♥ Unicode.txt".IO ~~ :e;  # same
    (prinl "Size: " (car @) " bytes, last modified " (stamp (cadr @) (cddr @)))
    (prinl "File doesn't exist") )
 
-# for directory existing 
+# for directory existing
 # Nehal-Singhal 2018-05-25
 
-(if (info "./docs") 
-  (print 'exists) 
+(if (info "./docs")
+  (print 'exists)
   (print 'doesNotExist)))
 
 # To verify if it's really a directory, (CAR of return value will be 'T').
@@ -2586,7 +2586,7 @@ say "♥ Unicode.txt".IO ~~ :e;  # same
          (nond
             (I "Does not exist")
             ((=T (car I)) "Is not a directory")
-            (NIL "Directory exists") ) ) )  
+            (NIL "Directory exists") ) ) )
 
 ```
 
@@ -2642,12 +2642,12 @@ int main(){
 {{out}}
 
 ```txt
-  
+
 First line of file D:\_l\tst.txt: Test line 1
-File D:\_l\nix.txt not found    
+File D:\_l\nix.txt not found
 
 ```
-         
+
 
 
 ## Pop11
@@ -2731,22 +2731,22 @@ exists_directory('/docs').
 result = ReadFile(#PB_Any, "input.txt")
 If result>0 : Debug "this local file exists"
   Else : Debug "result=" +Str(result) +" so this local file is missing"
-EndIf 
+EndIf
 
 result = ReadFile(#PB_Any, "/input.txt")
 If result>0 : Debug "this root file exists"
   Else : Debug "result=" +Str(result) +" so this root file is missing"
-EndIf 
+EndIf
 
 result = ExamineDirectory(#PB_Any,"docs","")
 If result>0 : Debug "this local directory exists"
   Else : Debug "result=" +Str(result) +" so this local directory is missing"
-EndIf 
+EndIf
 
 result = ExamineDirectory(#PB_Any,"/docs","")
 If result>0 : Debug "this root directory exists"
   Else : Debug "result=" +Str(result) +" so this root directory is missing"
-EndIf 
+EndIf
 ```
 
 
@@ -3169,11 +3169,11 @@ Taking the meaning of the task from the DOS example: <!-- multiline “if” bec
 ```tcl
 if { [file exists "input.txt"] } {
     puts "input.txt exists"
-} 
+}
 
 if { [file exists [file nativename "/input.txt"]] } {
     puts "/input.txt exists"
-} 
+}
 
 if { [file isdirectory "docs"] } {
     puts "docs exists and is a directory"
@@ -3226,7 +3226,7 @@ ENDIF
 ```txt
 
 input.txt exists
-@@@@@@@@  directory docs not exists                                    @@@@@@@@ 
+@@@@@@@@  directory docs not exists                                    @@@@@@@@
 
 ```
 
@@ -3351,9 +3351,9 @@ Console.WriteLine(If(IO.Directory.Exists("\docs"), "directory exists", "director
 Console.WriteLine(If(IO.Directory.Exists("\output.txt"), "file exists", "file doesn't exists"))
 
 'Root, platform independent
-Console.WriteLine(If(IO.Directory.Exists(IO.Path.DirectorySeparatorChar & "docs"), _ 
+Console.WriteLine(If(IO.Directory.Exists(IO.Path.DirectorySeparatorChar & "docs"), _
    "directory exists", "directory doesn't exists"))
-Console.WriteLine(If(IO.Directory.Exists(IO.Path.DirectorySeparatorChar & "output.txt"), _ 
+Console.WriteLine(If(IO.Directory.Exists(IO.Path.DirectorySeparatorChar & "output.txt"), _
   "file exists", "file doesn't exists"))
 ```
 
@@ -3369,7 +3369,7 @@ Option Explicit
 
 Sub Main_File_Exists()
 Dim myFile As String, myDirectory As String
-    
+
     myFile = "Abdu'l-Bahá.txt"
     myDirectory = "C:\"
     Debug.Print File_Exists(myFile, myDirectory)
@@ -3403,7 +3403,7 @@ Function FileExists(strFile)
         FileExists = False
     End If
 End Function
- 
+
 Function FolderExists(strFolder)
     If FSO.FolderExists(strFolder) Then
         FolderExists = True
@@ -3411,7 +3411,7 @@ Function FolderExists(strFolder)
         Folderexists = False
     End If
 End Function
- 
+
 '''''Usage (apostrophes indicate comments-this section will not be run)'''''
 'If FileExists("C:\test.txt") Then
 '   MsgBox "It Exists!"

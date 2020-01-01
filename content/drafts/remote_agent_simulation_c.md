@@ -15,11 +15,11 @@ Server/client programs share a lot of code, so they are all lumped together here
 
 ;<nowiki>server.c:</nowiki>
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <sys/types.h> 
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
@@ -37,26 +37,26 @@ int main()
 	int one = 1, client_fd, port = 11111;
 	struct sockaddr_in svr_addr, cli_addr;
 	socklen_t sin_len = sizeof(cli_addr);
- 
+
 	int sock = socket(AF_INET, SOCK_STREAM, 0);
 	if (sock < 0)
 		err(1, "can't open socket");
- 
+
 	setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(int));
- 
+
 	svr_addr.sin_family = AF_INET;
 	svr_addr.sin_addr.s_addr = INADDR_ANY;
 	svr_addr.sin_port = htons(port);
- 
+
 	if (bind(sock, (struct sockaddr *) &svr_addr, sizeof(svr_addr)) == -1) {
 		close(sock);
 		err(1, "Can't bind");
 	}
- 
+
 	listen(sock, 5);
 	while (1) {
 		client_fd = accept(sock, (struct sockaddr *) &cli_addr, &sin_len);
- 
+
 		if (client_fd == -1) {
 			perror("Can't accept");
 			continue;
@@ -150,24 +150,24 @@ int do_server_stuff(int fd)
 
 ;<nowiki>client.c:</nowiki>
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <sys/types.h> 
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
 #include <arpa/inet.h>
 #include <err.h>
 #include "common.c"
- 
+
 typedef struct task_node_t {
 	int x, y;
 	struct task_node_t *prev, *sibling, *chain;
 } task_node_t, *task;
- 
+
 task pool = 0, used = 0;
 task find_place_to_go(byte **f);
 int is_interesting(byte **f, task t);
@@ -182,7 +182,7 @@ task new_task_node()
 	pool = t;
 	return used;
 }
- 
+
 void remove_tasks()
 {
 	task t;
@@ -193,42 +193,42 @@ void remove_tasks()
 		pool = t;
 	}
 }
- 
+
 int w, h;
 int do_client_stuff(int);
- 
+
 int main(int c, char *v[])
 {
 	int sfd, port;
 	struct sockaddr_in peer;
 	struct hostent *server;
- 
+
 	if (c < 3) err(1, "Usage: %s host port\n", v[0]);
- 
+
 	port = atoi(v[2]);
 	if (port <= 0) err(1, "bad port: %d\n", port);
- 
+
 	server = gethostbyname(v[1]);
 	if (!server) err(1, "Unknown server %s", v[1]);
- 
+
 	if ((sfd = socket(AF_INET, SOCK_STREAM, 0)) == -1)
 		err(1, "Can't open socket");
- 
+
 	memset(&peer, 0, sizeof(peer));
 	peer.sin_family = AF_INET;
 	memcpy(&peer.sin_addr.s_addr, server->h_addr, server->h_length);
 	peer.sin_port = htons(port);
- 
+
 	if (connect(sfd, (struct sockaddr *)&peer, sizeof(peer)) < 0)
 		err(1, "Can't connect to %s port %d", v[1], port);
- 
+
 	puts("\033[H\033[J");
 	do_client_stuff(sfd);
 	close(sfd);
- 
+
 	return 0;
 }
- 
+
 byte ** init_map()
 {
 	int i, j;
@@ -237,17 +237,17 @@ byte ** init_map()
 	agent.x = agent.y = 1;
 	return f;
 }
- 
+
 byte **f;
 int try_forward(int);
 void say_and_listen(int, int, int*);
- 
+
 int do_client_stuff(int fd)
 {
 	int c = hear_l(), x, y;
 	int response[MAX_CMD];
 	task tgt;
- 
+
 	if (c != 'A') {
 		fprintf(stderr, "Bad handshake: %c\n", c);
 		return 0;
@@ -255,11 +255,11 @@ int do_client_stuff(int fd)
 	say_l('A');
 	f = init_map();
 	c = 0;
- 
+
 	while (c != -1) {
 		x = agent.x, y = agent.y;
 		show_field(f, w, h);
- 
+
 		if (agent.ball == -1 && cell_ball(f, x, y) >= 0
 				&& cell_ball(f, x, y) != cell_color(f, x, y))
 		{
@@ -269,7 +269,7 @@ int do_client_stuff(int fd)
 			f[y][x] &= ~ball;
 			continue;
 		}
- 
+
 		if (agent.ball == cell_color(f, x, y) && cell_ball(f, x, y) == -1) {
 			say_and_listen(fd, c_drop, response);
 			if (response[s_full] || response[a_empty]) continue;
@@ -278,41 +278,41 @@ int do_client_stuff(int fd)
 			if (response[c_over]) return 1;
 			continue;
 		}
- 
+
 		goto_place(fd, f, tgt = find_place_to_go(f));
 		continue;
 	}
 	return 0;
 }
- 
+
 void expand_map()
 {
 	int w2 = w, h2 = h, i, j, d = agent.facing;
 	int dx, dy;
 	byte **nf;
- 
+
 	switch(d) {
 	case 0: case 2: w2++; break;
 	default: h2++; break;
 	}
- 
+
 	nf = byte_array(w2, h2);
 	FOR(i, h2) FOR(j, w2) nf[i][j] = unknown;
- 
+
 	dx = agent.x == 0;
 	dy = agent.y == 0;
- 
+
 	FOR(i, h) FOR(j, w) nf[i + dy][j + dx] = f[i][j];
- 
+
 	if (!agent.x) agent.x = 1;
 	if (!agent.y) agent.y = 1;
- 
+
 	w = w2, h = h2;
 	printf("expand: %d %d\n", w, h);
 	free(f);
-	f = nf;	
+	f = nf;
 }
- 
+
 int try_forward(int fd)
 {
 	int c, x, y, response[MAX_CMD] = {0};
@@ -344,7 +344,7 @@ int try_forward(int fd)
 		expand_map();
 	return 1;
 }
- 
+
 void say_and_listen(int fd, int cmd, int *resp)
 {
 	int c;
@@ -357,25 +357,25 @@ void say_and_listen(int fd, int cmd, int *resp)
 		if (c == c_stop) return;
 	}
 }
- 
+
 int is_interesting(byte **f, task t)
 {
 	int x = t->x, y = t->y, a, b, c;
 	if ((f[y][x] & unknown))
 		return y != agent.y || x != agent.x;
- 
+
 	c = cell_color(f, x, y);
 	b = cell_ball(f, x, y);
 	a = agent.ball;
- 
+
 	if (a >= 0)
 		return a == c && b == -1;
 	else if (b >= 0 && b != c)
 		return 1;
- 
+
 	return 0;
 }
- 
+
 task find_place_to_go(byte **f)
 {
 	int d, x, y;
@@ -385,9 +385,9 @@ task find_place_to_go(byte **f)
 	current = new_task_node();
 	current->x = agent.x, current->y = agent.y;
 	f[current->y][current->x] |= marked;
- 
+
 	if (is_interesting(f, current)) return current;
- 
+
 	while (current) {
 		while (current) {
 			FOR(d, 4) {
@@ -410,14 +410,14 @@ task find_place_to_go(byte **f)
 	puts("nowhere to go");
 	abort();
 }
- 
+
 void goto_place(int fd, byte **f, task t)
 {
 	show_field(f, w, h);
 	if (t->prev) goto_place(fd, f, t->prev);
 	usleep(50000);
 	t->prev = 0;
- 
+
 	if (agent.x == t->x && agent.y == t->y) return;
 	while (	t->x != agent.x + dirs[agent.facing][0] ||
 		t->y != agent.y + dirs[agent.facing][1])
@@ -528,7 +528,7 @@ int randomize(byte **f, int w, int h, int x, int y, int rem)
 	int d[4] = {0, 1, 2, 3}, i;
 	if (x <= 0 || x >= w - 1 || y <= 0 || y >= h - 1) return rem;
 	if (f[y][x] != wall) return rem;
-	
+
 	f[y][x] = 0;
 	--rem;
 

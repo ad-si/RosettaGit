@@ -248,8 +248,8 @@ A previous solution used <tt>atof("infinity")</tt>, which returned infinity with
 C89 has a macro HUGE_VAL in <math.h>. HUGE_VAL is a <tt>double</tt>. HUGE_VAL will be infinity if infinity exists, else it will be the largest possible number. HUGE_VAL is a <tt>double</tt>.
 
 
-```c>#include <math.h
-	/* HUGE_VAL */
+```c
+#include <math.h>  /* HUGE_VAL */
 #include <stdio.h>	/* printf() */
 
 double inf(void) {
@@ -309,8 +309,8 @@ Output:
 
 
 
-```cpp>#include <limits
-
+```cpp
+#include <limits>
 
 double inf()
 {

@@ -63,7 +63,7 @@ procedure Test_Common_Path is
          end if;
          At_A := At_A + 1;
          At_B := At_B + 1;
-      end loop;      
+      end loop;
    end "rem";
 begin
    Put_Line
@@ -140,7 +140,7 @@ PROC dir name = (STRING dir)STRING: (
       GO TO out exit
     FI
   OD;
-  # else: # out:=""; 
+  # else: # out:="";
   out exit: out
 );
 
@@ -166,13 +166,13 @@ PROC common prefix = ([]STRING strings)STRING: (
     FOR pos FROM LWB prefix TO UPB prefix DO
       CHAR first = prefix[pos];
       FOR key FROM LWB strings+1 TO UPB strings DO
-        IF strings[key][@1][pos] NE first THEN 
+        IF strings[key][@1][pos] NE first THEN
           prefix := prefix[:pos-1];
           GO TO prefix exit
         FI
       OD
     OD;
-    prefix exit: prefix 
+    prefix exit: prefix
   FI
 );
 
@@ -430,14 +430,14 @@ exit /b
 
 ```bbcbasic
       DIM path$(3)
-      
+
       path$(1) = "/home/user1/tmp/coverage/test"
       path$(2) = "/home/user1/tmp/covert/operator"
       path$(3) = "/home/user1/tmp/coven/members"
-      
+
       PRINT FNcommonpath(path$(), "/")
       END
-      
+
       DEF FNcommonpath(p$(), s$)
       LOCAL I%, J%, O%
       REPEAT
@@ -455,8 +455,8 @@ exit /b
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int common_len(const char *const *names, int n, char sep)
 {
@@ -499,8 +499,8 @@ output:<lang>Common path: /home/user1/tmp
 ## C++
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -523,9 +523,9 @@ std::string longestPath( const std::vector<std::string> & dirs , char separator 
    int maxCharactersCommon = vsi->length( ) ;
    std::string compareString = *vsi ;
    for ( vsi = dirs.begin( ) + 1 ; vsi != dirs.end( ) ; vsi++ ) {
-      std::pair<std::string::const_iterator , std::string::const_iterator> p = 
+      std::pair<std::string::const_iterator , std::string::const_iterator> p =
 	 std::mismatch( compareString.begin( ) , compareString.end( ) , vsi->begin( ) ) ;
-      if (( p.first - compareString.begin( ) ) < maxCharactersCommon ) 
+      if (( p.first - compareString.begin( ) ) < maxCharactersCommon )
 	 maxCharactersCommon = p.first - compareString.begin( ) ;
    }
    std::string::size_type found = compareString.rfind( separator , maxCharactersCommon ) ;
@@ -547,7 +547,7 @@ The longest common path of the given directories is /home/user1/tmp!
 
 
 ```clojure
-(use '[clojure.string :only [join,split]]) 
+(use '[clojure.string :only [join,split]])
 
 (defn common-prefix [sep paths]
   (let [parts-per-path (map #(split % (re-pattern sep)) paths)
@@ -626,7 +626,7 @@ namespace RosettaCodeTasks
 					break;
 				}
 			}
-			
+
 			return CommonPath;
 		}
 	}
@@ -788,7 +788,7 @@ The common preffix is: "/home/user1/tmp"
  ( scratchpad ) {
                     "/home/user1/tmp/coverage/test"
                     "/home/user1/tmp/covert/operator"
-                    "/home/user1/tmp/coven/members" 
+                    "/home/user1/tmp/coven/members"
                 } CHAR: / common-prefix .
  "/home/user1/tmp/"
 
@@ -806,7 +806,7 @@ Dim As String Path(), s
 Dim As Integer i, j, k = 1
 Dim arg As Any Ptr
 Const PATH_SEPARATOR As String = "/"
- 
+
   arg = va_first()
   ReDim Preserve Path(1 To count)
   For i = 1 To count
@@ -814,7 +814,7 @@ Const PATH_SEPARATOR As String = "/"
 	Print Path(i)
     arg = va_next(arg, ZString Ptr)
   Next i
-  
+
   Do
     For i = 1 To count
       If i > 1 Then
@@ -834,7 +834,7 @@ Const PATH_SEPARATOR As String = "/"
     k = j + 1
   Loop
   Return s
-  
+
 End Function
 
 
@@ -844,20 +844,20 @@ Print CommonDirectoryPath( 3, _
   "/home/user1/tmp/coverage/test", _
   "/home/user1/tmp/covert/operator", _
   "/home/user1/tmp/coven/members") & " <- common"
-Print  
- 
+Print
+
 Print CommonDirectoryPath( 4, _
   "/home/user1/tmp/coverage/test", _
   "/home/user1/tmp/covert/operator", _
   "/home/user1/tmp/coven/members", _
   "/home/user1/abc/coven/members") & " <- common"
-Print    
+Print
 
 Print CommonDirectoryPath( 3, _
   "/home/user1/tmp/coverage/test", _
   "/hope/user1/tmp/covert/operator", _
   "/home/user1/tmp/coven/members") & " <- common"
-Print    
+Print
 
 ' empty keyboard buffer
 While Inkey <> "" : Wend
@@ -1277,13 +1277,13 @@ public class CommonPath {
 		}
 		return commonPath;
 	}
-	
+
 	public static void main(String[] args){
 		String[] paths = { "/home/user1/tmp/coverage/test",
 				 "/home/user1/tmp/covert/operator",
 				 "/home/user1/tmp/coven/members"};
 		System.out.println(commonPath(paths));
-		
+
 		String[] paths2 = { "/hame/user1/tmp/coverage/test",
 				 "/home/user1/tmp/covert/operator",
 				 "/home/user1/tmp/coven/members"};
@@ -1308,11 +1308,11 @@ A slightly modified version of the previous program, only the method commonPath(
 	static String commonPath(String...  paths){
 		String commonPath = "";
 		String[][] folders = new String[paths.length][];
-		
+
 		for(int i=0; i<paths.length; i++){
 			folders[i] = paths[i].split("/");
 		}
-			
+
 		for(int j = 0; j< folders[0].length; j++){
 			String s = folders[0][j];
 			for(int i=1; i<paths.length; i++){
@@ -1321,7 +1321,7 @@ A slightly modified version of the previous program, only the method commonPath(
 			}
 			commonPath += s + "/";
 		}
-		return commonPath;		
+		return commonPath;
 	}
 
 ```
@@ -1634,22 +1634,22 @@ DECLARE FUNCTION commonPath(paths() AS STRING, ByVal pathSep AS STRING) as Strin
 FUNCTION commonPath(paths() AS STRING, ByVal pathSep AS STRING) as String
     DIM tmpint1 AS INTEGER, tmpint2 AS INTEGER, tmpstr1 AS STRING, tmpstr2 AS STRING
     DIM L0 AS INTEGER, L1 AS INTEGER, lowerbound AS INTEGER, upperbound AS INTEGER
-    
+
     lowerbound = 1
     upperbound = UBOUND(paths)
- 
+
     IF (lowerbound) = upperbound THEN       'Some quick error checking...
         commonPath = paths(lowerbound)
     ELSEIF lowerbound > upperbound THEN     'How in the...?
         commonPath = ""
     ELSE
         tmpstr1 = paths(lowerbound)
- 
+
         FOR L0 = (lowerbound) TO upperbound 'Find common strings.
             tmpstr2 = paths(L0)
             tmpint1 = LEN(tmpstr1)
             tmpint2 = LEN(tmpstr2)
-            IF tmpint1 > tmpint2 
+            IF tmpint1 > tmpint2
             THEN tmpint1 = tmpint2
 
             FOR L1 = 1 TO tmpint1
@@ -1658,24 +1658,24 @@ FUNCTION commonPath(paths() AS STRING, ByVal pathSep AS STRING) as String
                     EXIT FOR
                 END IF
             NEXT
-                      end If 
+                      end If
            tmpstr1 = LEFT$(tmpstr1, tmpint1)
         NEXT
- 
+
         IF RIGHT$(tmpstr1, 1) <> pathSep THEN
             FOR L1 = tmpint1 TO 2 STEP -1
                 IF (pathSep) = MID$(tmpstr1, L1, 1) THEN
                     tmpstr1 = LEFT$(tmpstr1, L1 - 1)
                     EXIT FOR
                 END IF
-            NEXT  
-            IF LEN(tmpstr1) = tmpint1 
+            NEXT
+            IF LEN(tmpstr1) = tmpint1
             THEN tmpstr1 = ""
-       		 ELSEIF tmpint1 > 1 
+       		 ELSEIF tmpint1 > 1
        		 THEN
             tmpstr1 = LEFT$(tmpstr1, tmpint1 - 1)
         	END IF
- 		 end if  
+ 		 end if
         commonPath = tmpstr1
     END IF
 END FUNCTION
@@ -1683,11 +1683,11 @@ END FUNCTION
 Sub Main()
 	Dim x(3) as  String
 	Define Sep "/"
-	
+
 	x(1) = "/home/user1/tmp/"
 	x(2) = "/home/user1/tmp/covert/operator"
 	x(3) = "/home/user1/tmp/coven/members"
- 
+
 
 PRINT "Common path is " + commonPath(x(), Sep)
 
@@ -1772,7 +1772,7 @@ Usage:
 ```txt
 
 USER>D FCD^ROSETTA
- 
+
 For the paths:
 /home/user1/tmp/coverage/test
 /home/user1/tmp/covert/operator
@@ -1857,7 +1857,7 @@ FUNCTION findCommonDir RETURNS CHAR(
 ):
 
    DEF VAR idir      AS INT.
-   DEF VAR idepth    AS INT. 
+   DEF VAR idepth    AS INT.
    DEF VAR cdir      AS CHAR EXTENT.
    DEF VAR lsame     AS LOGICAL INITIAL TRUE.
    DEF VAR cresult   AS CHAR.
@@ -1870,8 +1870,8 @@ FUNCTION findCommonDir RETURNS CHAR(
 
    DO idepth = 2 TO NUM-ENTRIES( cdir [ 1 ], i_cseparator ) WHILE lsame:
       DO idir = 1 TO EXTENT( cdir ) - 1 WHILE lsame:
-         lsame =  ( 
-                     ENTRY( idepth, cdir [ idir ], i_cseparator ) = 
+         lsame =  (
+                     ENTRY( idepth, cdir [ idir ], i_cseparator ) =
                      ENTRY( idepth, cdir [ idir + 1 ], i_cseparator )
                   ).
       END.
@@ -1887,7 +1887,7 @@ END FUNCTION.
 
 
 ```progress
-MESSAGE 
+MESSAGE
    findCommonDir(
       '/home/user1/tmp/coverage/test' + '~n' +
       '/home/user1/tmp/covert/operator' + '~n' +
@@ -1907,7 +1907,7 @@ Message (Press HELP to view stack trace)
 ---------------------------
 /home/user1/tmp
 ---------------------------
-OK   Help   
+OK   Help
 ---------------------------
 ```
 
@@ -1999,11 +1999,11 @@ use List::Util qw(first);
 sub common_prefix {
     my ($sep, @paths) = @_;
     my %prefixes;
-    
+
     for (@paths) {
         do { ++$prefixes{$_} } while s/$sep [^$sep]* $//x
     }
-    
+
     return first { $prefixes{$_} == @paths } reverse sort keys %prefixes;
 }
 ```
@@ -2013,7 +2013,7 @@ sub common_prefix {
 
 
 ```perl
-my @paths = qw(/home/user1/tmp/coverage/test 
+my @paths = qw(/home/user1/tmp/coverage/test
                /home/user1/tmp/covert/operator
                /home/user1/tmp/coven/members);
 print common_prefix('/', @paths), "\n";
@@ -2037,7 +2037,7 @@ my @dirs = </home/user1/tmp/coverage/test
             /home/user1/tmp/covert/operator
             /home/user1/tmp/coven/members>;
 
-my @comps = @dirs.map: { [ .comb(/ $sep [ <!before $sep> . ]* /) ] }; 
+my @comps = @dirs.map: { [ .comb(/ $sep [ <!before $sep> . ]* /) ] };
 
 my $prefix = '';
 
@@ -2150,22 +2150,22 @@ function _commonPath($dirList)
 	{
 		$dirList[$i]	= explode('/', $path);
 		unset($dirList[$i][0]);
-		
+
 		$arr[$i] = count($dirList[$i]);
 	}
-	
+
 	$min = min($arr);
-	
+
 	for($i = 0; $i < count($dirList); $i++)
 	{
 		while(count($dirList[$i]) > $min)
 		{
 			array_pop($dirList[$i]);
 		}
-		
+
 		$dirList[$i] = '/' . implode('/' , $dirList[$i]);
 	}
-	
+
 	$dirList = array_unique($dirList);
 	while(count($dirList) !== 1)
 	{
@@ -2173,7 +2173,7 @@ function _commonPath($dirList)
 		$dirList = array_unique($dirList);
 	}
 	reset($dirList);
-	
+
 	return current($dirList);
 }
 
@@ -2381,8 +2381,8 @@ function Get-CommonDirectoryPath($paths){
    for($i=0; $i -lt $paths.Count; $i++) {
       $paths[$i] =  ($paths[$i].TrimStart('/').Split('/'))
    }
-	
-   # Loop through tokens	
+
+   # Loop through tokens
    $c = -1
    $found = $false
    do {		# Do Until loop used to handle paths with different number of directories
@@ -2421,10 +2421,10 @@ Function Get-CommonPath( $Separator, $PathList ){
         if ($UniquePath.Length -gt 1) {
             break;
         }
- 
+
         $UniquePath
     }
- 
+
     [String]::Join($Separator, $CommonPath)
 }
 
@@ -2451,11 +2451,11 @@ Simply by checking the catalog names until they mismatch and add up the correct 
 Procedure.s CommonPath(Array InPaths.s(1),separator.s="/")
   Protected SOut$=""
   Protected i, j, toggle
-  
+
   If ArraySize(InPaths())=0
     ProcedureReturn InPaths(0)  ; Special case, only one path
   EndIf
-  
+
   Repeat
     i+1
     toggle=#False
@@ -2467,7 +2467,7 @@ Procedure.s CommonPath(Array InPaths.s(1),separator.s="/")
         EndIf
       Else
         ProcedureReturn SOut$
-      EndIf      
+      EndIf
     Next
   ForEver
 EndProcedure
@@ -2493,7 +2493,7 @@ The Python os.path.commonprefix function is [http://nedbatchelder.com/blog/20100
 
 ```python>>>
  import os
->>> os.path.commonprefix(['/home/user1/tmp/coverage/test', 
+>>> os.path.commonprefix(['/home/user1/tmp/coverage/test',
                           '/home/user1/tmp/covert/operator', '/home/user1/tmp/coven/members'])
 '/home/user1/tmp/cove'
 ```
@@ -2505,7 +2505,7 @@ This result can be fixed:
  def commonprefix(args, sep='/'):
 	return os.path.commonprefix(args).rpartition(sep)[0]
 
->>> commonprefix(['/home/user1/tmp/coverage/test', 
+>>> commonprefix(['/home/user1/tmp/coverage/test',
                   '/home/user1/tmp/covert/operator', '/home/user1/tmp/coven/members'])
 '/home/user1/tmp'
 ```
@@ -2531,14 +2531,14 @@ But it may be better to not rely on the faulty implementation at all:
 	bydirectorylevels = zip(*[p.split(sep) for p in paths])
 	return sep.join(x[0] for x in takewhile(allnamesequal, bydirectorylevels))
 
->>> commonprefix(['/home/user1/tmp/coverage/test', 
+>>> commonprefix(['/home/user1/tmp/coverage/test',
                   '/home/user1/tmp/covert/operator', '/home/user1/tmp/coven/members'])
 '/home/user1/tmp'
 >>> # And also
 >>> commonprefix(['/home/user1/tmp', '/home/user1/tmp/coverage/test',
                   '/home/user1/tmp/covert/operator', '/home/user1/tmp/coven/members'])
 '/home/user1/tmp'
->>> 
+>>>
 ```
 
 
@@ -2551,7 +2551,7 @@ But it may be better to not rely on the faulty implementation at all:
 get_common_dir <- function(paths, delim = "/")
 {
   path_chunks <- strsplit(paths, delim)
-  
+
   i <- 1
   repeat({
     current_chunk <- sapply(path_chunks, function(x) x[i])
@@ -2628,7 +2628,7 @@ say 'common directory path: '  common            /* [↑]  handle trailing   /  
                                                  /*stick a fork in it,  we're all done. */
 ```
 
-{{out|output|text=  when using the default inputs:}} 
+{{out|output|text=  when using the default inputs:}}
 
 ```txt
 
@@ -2649,19 +2649,19 @@ load "stdlib.ring"
 i = null
 o = null
 path = list(3)
- 
+
 path[1] = "/home/user1/tmp/coverage/test"
 path[2] = "/home/user1/tmp/covert/operator"
 path[3] = "/home/user1/tmp/coven/members"
- 
+
 see commonpath(path, "/")
- 
+
 func commonpath(p, s)
 while i != 0
       o = i
       i = substring(p[1], s, i+1)
       for j = 2 to len(p)
-          if left(p[1], i) != left(p[j], i) 
+          if left(p[1], i) != left(p[j], i)
              exit 2
           ok
       next
@@ -2781,7 +2781,7 @@ print "
 "
 
 mem$ = "SELECT t.seq as seq,t.pos as pos,t.dir as dir,t1.seq as t1Seq ,t1.dir as t1Dir
-FROM	dirTree as t 
+FROM	dirTree as t
 JOIN	dirTree as t1
 ON	t1.dir = t.dir
 AND	t1.seq > t.seq
@@ -2818,7 +2818,7 @@ end
 
 ### ====== Common paths =============
 <br />
-shows only the first few common paths.. 
+shows only the first few common paths..
 
 <table border=1><TR align=center>
 <TD>Seq</TD><TD>Path</TD><TD>Common Dir</TD><TD>Seq</TD><TD>With Path</TD>
@@ -3049,7 +3049,7 @@ const func integer: commonLen (in array string: names, in char: sep) is func
       until result <> -1;
     end if;
   end func;
- 
+
 const proc: main is func
   local
     var integer: length is 0;
@@ -3112,7 +3112,7 @@ func getPrefix(_ text:[String]) -> String? {
     return common
 }
 
-var test = ["/home/user1/tmp/coverage/test", 
+var test = ["/home/user1/tmp/coverage/test",
  "/home/user1/tmp/covert/operator",
  "/home/user1/tmp/coven/members"]
 
@@ -3259,7 +3259,7 @@ test program:
 ```Ursala
 #cast %s
 
-test = 
+test =
 
 comdir`/ <
    '/home/user1/tmp/coverage/test',
@@ -3285,7 +3285,7 @@ output:
 
 ' Read the list of paths (newline-separated) into an array...
 strPaths = Split(WScript.StdIn.ReadAll, vbCrLf)
- 
+
 ' Split each path by the delimiter (/)...
 For i = 0 To UBound(strPaths)
 	strPaths(i) = Split(strPaths(i), "/")
@@ -3295,7 +3295,7 @@ With CreateObject("Scripting.FileSystemObject")
 
 	' Test each path segment...
 	For j = 0 To UBound(strPaths(0))
-		
+
 		' Test each successive path against the first...
 		For i = 1 To UBound(strPaths)
 			If strPaths(0)(j) <> strPaths(i)(j) Then Exit For
@@ -3303,11 +3303,11 @@ With CreateObject("Scripting.FileSystemObject")
 
 		' If we didn't make it all the way through, exit the block...
 		If i <= UBound(strPaths) Then Exit For
-		
+
 		' Make sure this path exists...
 		If Not .FolderExists(strPath & strPaths(0)(j) & "/") Then Exit For
 		strPath = strPath & strPaths(0)(j) & "/"
-		
+
 	Next
 
 End With
@@ -3332,15 +3332,15 @@ Dim v As Variant
 Dim Path() As String, s As String
 Dim i As Long, j As Long, k As Long
 Const PATH_SEPARATOR As String = "/"
-  
+
   For Each v In Paths
     ReDim Preserve Path(0 To i)
     Path(i) = v
     i = i + 1
   Next v
-  
+
   k = 1
-  
+
   Do
     For i = 0 To UBound(Path)
       If i Then
@@ -3360,7 +3360,7 @@ Const PATH_SEPARATOR As String = "/"
     k = j + 1
   Loop
   CommonDirectoryPath = s
-  
+
 End Function
 
 Sub Main()
@@ -3372,7 +3372,7 @@ Debug.Assert CommonDirectoryPath( _
  "/home/user1/tmp/covert/operator", _
  "/home/user1/tmp/coven/members") = _
  "/home/user1/tmp"
- 
+
  Debug.Assert CommonDirectoryPath( _
  "/home/user1/tmp/coverage/test", _
  "/home/user1/tmp/covert/operator", _

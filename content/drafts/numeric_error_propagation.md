@@ -12,9 +12,9 @@ tags = []
 
 {{task}}
 
-If   '''f''',   '''a''',   and   '''b'''   are values with uncertainties   σ<sub>f</sub>,   σ<sub>a</sub>,   and   σ<sub>b</sub>,   and   '''c'''   is a constant; 
+If   '''f''',   '''a''',   and   '''b'''   are values with uncertainties   σ<sub>f</sub>,   σ<sub>a</sub>,   and   σ<sub>b</sub>,   and   '''c'''   is a constant;
 
-then if   '''f'''   is derived from   '''a''',   '''b''',   and   '''c'''   in the following ways, 
+then if   '''f'''   is derived from   '''a''',   '''b''',   and   '''c'''   in the following ways,
 
 then   σ<sub>f</sub>   can be calculated as follows:
 
@@ -35,22 +35,22 @@ Caution:
 
 
 ;Task details:
-# Add an uncertain number type to your language that can support addition, subtraction, multiplication, division, and exponentiation between numbers with an associated error term together with 'normal' floating point numbers without an associated error term. 
+# Add an uncertain number type to your language that can support addition, subtraction, multiplication, division, and exponentiation between numbers with an associated error term together with 'normal' floating point numbers without an associated error term.
 Implement enough functionality to perform the following calculations.
 # Given coordinates and their errors:
 x1 = 100 &plusmn; 1.1
 y1 =  50 &plusmn; 1.2
 x2 = 200 &plusmn; 2.2
 y2 = 100 &plusmn; 2.3
- if point p1 is located at (x1, y1) and p2 is at (x2, y2); calculate the distance between the two points using the classic Pythagorean formula: 
+ if point p1 is located at (x1, y1) and p2 is at (x2, y2); calculate the distance between the two points using the classic Pythagorean formula:
  <big><big> d = &radic;<span style="text-decoration:overline">   (x1 - x2)²   +   (y1 - y2)²   </span> </big></big>
 # Print and display both   <big> '''d''' </big>   and its error.
 
- <!-- the superscript  
-       2 glyph  [²]  
-had to be used instead of the     
-       <sup>2</sup>     
-notation which causes the  overline  "text-decoration"  to either overlay the superscript or it causes a "break" in the continuous overline part of the radic.    Gerard Schildberger.  --> 
+ <!-- the superscript
+       2 glyph  [²]
+had to be used instead of the
+       <sup>2</sup>
+notation which causes the  overline  "text-decoration"  to either overlay the superscript or it causes a "break" in the continuous overline part of the radic.    Gerard Schildberger.  -->
 
 ;References:
 * [http://casa.colorado.edu/~benderan/teaching/astr3510/stats.pdf A Guide to Error Propagation] B. Keeney, 2005.
@@ -380,12 +380,12 @@ Rewrote code to make it more compact and added a nice formatting function for im
 #include <string.h>
 #include <stdio.h>
 #include <math.h>
- 
+
 typedef struct{
     double value;
     double delta;
 }imprecise;
- 
+
 #define SQR(x) ((x) * (x))
 imprecise imprecise_add(imprecise a, imprecise b)
 {
@@ -394,7 +394,7 @@ imprecise imprecise_add(imprecise a, imprecise b)
     ret.delta = sqrt(SQR(a.delta) + SQR(b.delta));
     return ret;
 }
- 
+
 imprecise imprecise_mul(imprecise a, imprecise b)
 {
     imprecise ret;
@@ -402,7 +402,7 @@ imprecise imprecise_mul(imprecise a, imprecise b)
     ret.delta = sqrt(SQR(a.value * b.delta) + SQR(b.value * a.delta));
     return ret;
 }
- 
+
 imprecise imprecise_div(imprecise a, imprecise b)
 {
     imprecise ret;
@@ -410,7 +410,7 @@ imprecise imprecise_div(imprecise a, imprecise b)
     ret.delta = sqrt(SQR(a.value * b.delta) + SQR(b.value * a.delta)) / SQR(b.value);
     return ret;
 }
- 
+
 imprecise imprecise_pow(imprecise a, double c)
 {
     imprecise ret;
@@ -424,26 +424,26 @@ char* printImprecise(imprecise val)
 	char principal[30],error[30],*string,sign[2];
 	sign[0] = 241;    /* ASCII code for ±, technical notation for denoting errors */
 	sign[1] = 00;
-	
+
 	sprintf(principal,"%f",val.value);
 	sprintf(error,"%f",val.delta);
-	
+
 	string = (char*)malloc((strlen(principal)+1+strlen(error)+1)*sizeof(char));
-	
+
 	strcpy(string,principal);
 	strcat(string,sign);
 	strcat(string,error);
-	
+
 	return string;
 }
- 
+
 int main(void) {
     imprecise x1 = {100, 1.1};
     imprecise y1 = {50, 1.2};
     imprecise x2 = {-200, 2.2};
     imprecise y2 = {-100, 2.3};
     imprecise d;
- 
+
     d = imprecise_pow(imprecise_add(imprecise_pow(imprecise_add(x1, x2), 2),imprecise_pow(imprecise_add(y1, y2), 2)), 0.5);
     printf("Distance, d, between the following points :");
     printf("\n( x1, y1) = ( %s, %s)",printImprecise(x1),printImprecise(y1));
@@ -520,8 +520,8 @@ private:
 
 numeric_error.cpp
 
-```cpp>#include <cstdlib
-
+```cpp
+#include <cstdlib>
 #include <iostream>
 #include "numeric_error.hpp"
 
@@ -759,7 +759,7 @@ type Approx (value : float, sigma : float) =
     static member (%/) (x : Approx, y : Approx) =
         Approx (x.value / y.value, sqrt(sqr(x.sigma/x.value))+sqr(y.sigma/y.value))
     static member (%^) (x : Approx, y : float) =
-        if y < 0. then failwith ("Cannot raise the power with a negative number " + y.ToString()) 
+        if y < 0. then failwith ("Cannot raise the power with a negative number " + y.ToString())
         let v = pow(x.value,y)
         Approx (v, abs(v * y * x.sigma / x.value))
 
@@ -789,7 +789,7 @@ Distance: 111.80 ±2.49
 
 ### Direct calculation
 
-Following the propagation of error estimates through a computation is a nightmare of convoluted formulae wherein mistakes are easily made. The basic method is to derive the formulae according to the standard rules while carrying forward the calculation by hand with the utmost caution. A computer can perform the calculations, but the real problem is in ensuring that it performs the correct calculations, not some misbegotten confusion... So, rather than attempt to "optimise" the calculation, the objective is to reduce brain strain by producing code whose ''checkability'' is optimised instead, somewhat as follows: 
+Following the propagation of error estimates through a computation is a nightmare of convoluted formulae wherein mistakes are easily made. The basic method is to derive the formulae according to the standard rules while carrying forward the calculation by hand with the utmost caution. A computer can perform the calculations, but the real problem is in ensuring that it performs the correct calculations, not some misbegotten confusion... So, rather than attempt to "optimise" the calculation, the objective is to reduce brain strain by producing code whose ''checkability'' is optimised instead, somewhat as follows:
 ```Fortran
       PROGRAM CALCULATE	!A distance, with error propagation.
       REAL X1, Y1, X2, Y2	!The co-ordinates.
@@ -988,7 +988,7 @@ Euclidean distance between two points:
    vSqrt: Vstack( 1) =   111.8±  2.49      2.2%
 Distance 111.8±2.49
 ```
- 
+
 
 Although the example source file uses the F90 MODULE protocol, this is merely for convenience. Otherwise, there would be the same collection of routines, all sharing a COMMON work area. It would be easy enough to prepare an interactive calculator using this scheme so that different calculations (and data) could be more easily experimented with. Inspection might suggest a return to the laboratory in order to measure some factor with greater precision because its error proves to be the largest contributor to the spread in the result.
 
@@ -1009,7 +1009,7 @@ A latter-day expansion of Fortran makes it possible to define a compound entity 
 
 ```
 
-Whereupon, instead of a swarm of separate variables named according to some scheme, you can have a collection of variables with subcomponents named systematically. Further, via a great deal of syntax one can devise functions dealing with those compound types and moreover, prepare procedures that will perform operations such as addition and subtraction, etc. and merge these with the ordinary usages of addition, etc. of ordinary variables. One would then write the formula to be calculated, and it would all just happen. This has been done for arithmetic with rational numbers, in [[Arithmetic/Rational#Fortran]] for example. 
+Whereupon, instead of a swarm of separate variables named according to some scheme, you can have a collection of variables with subcomponents named systematically. Further, via a great deal of syntax one can devise functions dealing with those compound types and moreover, prepare procedures that will perform operations such as addition and subtraction, etc. and merge these with the ordinary usages of addition, etc. of ordinary variables. One would then write the formula to be calculated, and it would all just happen. This has been done for arithmetic with rational numbers, in [[Arithmetic/Rational#Fortran]] for example.
 
 But with the details of the calculation's progress out of sight. This is probably not a good idea.
 
@@ -1318,41 +1318,41 @@ Finally, our required example:
 public class Approx {
     private double value;
     private double error;
-    
+
     public Approx(){this.value = this.error = 0;}
-    
+
     public Approx(Approx b){
         this.value = b.value;
         this.error = b.error;
     }
-    
+
     public Approx(double value, double error){
         this.value = value;
         this.error = error;
     }
-    
+
     public Approx add(Approx b){
         value+= b.value;
         error = Math.sqrt(error * error + b.error * b.error);
         return this;
     }
-    
+
     public Approx add(double b){
         value+= b;
         return this;
     }
-    
+
     public Approx sub(Approx b){
         value-= b.value;
         error = Math.sqrt(error * error + b.error * b.error);
         return this;
     }
-    
+
     public Approx sub(double b){
         value-= b;
         return this;
     }
-    
+
     public Approx mult(Approx b){
         double oldVal = value;
         value*= b.value;
@@ -1366,7 +1366,7 @@ public class Approx {
         error = Math.abs(b * error);
         return this;
     }
-    
+
     public Approx div(Approx b){
         double oldVal = value;
         value/= b.value;
@@ -1380,25 +1380,25 @@ public class Approx {
         error = Math.abs(b * error);
         return this;
     }
-    
+
     public Approx pow(double b){
         double oldVal = value;
         value = Math.pow(value, b);
         error = Math.abs(value * b * (error / oldVal));
         return this;
     }
-    
+
     @Override
     public String toString(){return value+"±"+error;}
-    
+
     public static void main(String[] args){
         Approx x1 = new Approx(100, 1.1);
         Approx y1 = new Approx(50, 1.2);
         Approx x2 = new Approx(200, 2.2);
         Approx y2 = new Approx(100, 2.3);
-        
+
         x1.sub(x2).pow(2).add(y1.sub(y2).pow(2)).pow(0.5);
-        
+
         System.out.println(x1);
     }
 }
@@ -1606,7 +1606,7 @@ template `/`(a, b: Imprecise): Imprecise =
   Imprecise(x: x, σ: σ)
 template `^`(a: Imprecise, b: float): Imprecise =
   if b < 0:
-    raise newException(IOError, "Cannot raise to negative power.") 
+    raise newException(IOError, "Cannot raise to negative power.")
   let x = a.x ^ b
   let σ = abs(x * b * a.σ / a.x)
   Imprecise(x: x, σ: σ)
@@ -1683,7 +1683,7 @@ use overload
 	'bool'	=> \&_bool,
 	'<=>'	=> \&_ncmp,
 	'neg'	=> \&_neg,
-	
+
 	'sqrt'	=> \&_sqrt,
 	'log'	=> \&_log,
 	'exp'	=> \&_exp,
@@ -1891,32 +1891,32 @@ multi infix:<+>(Approx $a, Approx $b) { approx $a.x + $b.x, [$a.c Z+ $b.c] }
 multi infix:<->($a, Approx $b) { approx($a) - $b }
 multi infix:<->(Approx $a, $b) { $a - approx($b) }
 multi infix:<->(Approx $a, Approx $b) { approx $a.x - $b.x, [$a.c Z- $b.c] }
- 
+
 multi covariance(Real   $a, Real   $b) { 0 }
 multi covariance(Approx $a, Approx $b) { [+] $a.c Z* $b.c }
 
 multi infix:«<=>»(Approx $a, Approx $b) { $a.x <=> $b.x }
 multi infix:<cmp>(Approx $a, Approx $b) { $a.x <=> $b.x }
- 
+
 multi infix:<*>($a, Approx $b) { approx($a) * $b }
 multi infix:<*>(Approx $a, $b) { $a * approx($b) }
 multi infix:<*>(Approx $a, Approx $b) {
     approx $a.x * $b.x,
            [$a.c.map({$b.x * $_}) Z+ $b.c.map({$a.x * $_})];
 }
- 
+
 multi infix:</>($a, Approx $b) { approx($a) / $b }
 multi infix:</>(Approx $a, $b) { $a / approx($b) }
 multi infix:</>(Approx $a, Approx $b) {
     approx $a.x / $b.x,
            [ $a.c.map({ $_ / $b.x }) Z+ $b.c.map({ $a.x * $_ / $b.x / $b.x }) ];
 }
- 
+
 multi sqrt(Approx $a) {
     my $x = sqrt($a.x);
     approx $x, [ $a.c.map: { $_ / 2 / $x } ];
 }
- 
+
 multi infix:<**>(Approx $a, Real $b) { $a ** approx($b) }
 multi infix:<**>(Approx $a is copy, Approx $b) {
 	my $ax = $a.x;
@@ -1930,17 +1930,17 @@ multi infix:<**>(Approx $a is copy, Approx $b) {
 	}
 	exp($b * log $a);
 }
- 
+
 multi exp(Approx $a) {
 	my $x = exp($a.x);
 	approx $x, [ $a.c.map: { $x * $_ } ];
 }
- 
+
 multi log(Approx $a) {
 	my $x0 = $a.x;
 	approx log($x0), [ $a.c.map: { $_ / $x0 }];
 }
- 
+
 # Each ± sets up an independent source component.
 my $x1 = 100 ± 1.1;
 my $x2 = 200 ± 2.2;
@@ -1975,7 +1975,7 @@ enum VALUE, DELTA
 
 type imprecise(object imp)
     return sequence(imp) and atom(imp[VALUE]) and atom(imp[DELTA])
-end type 
+end type
 
 function sqr(atom a)
     return a*a
@@ -1986,37 +1986,37 @@ function imprecise_add(imprecise a, b)
     imprecise ret = {a[VALUE] + b[VALUE], delta}
     return ret
 end function
- 
+
 function imprecise_mul(imprecise a, b)
     atom delta = sqrt(sqr(a[VALUE]*b[DELTA]) + sqr(b[VALUE]*a[DELTA]))
     imprecise ret = {a[VALUE] * b[VALUE],delta}
     return ret
 end function
- 
+
 function imprecise_div(imprecise a, b)
     atom delta = sqrt(sqr(a[VALUE]*b[DELTA]) + sqr(b[VALUE]*a[DELTA]))/sqr(b[VALUE])
     imprecise ret = {a[VALUE] / b[VALUE], delta}
     return ret
 end function
- 
+
 function imprecise_pow(imprecise a, atom c)
     atom v = power(a[VALUE], c),
          delta = abs(v*c*a[DELTA]/a[VALUE])
     imprecise ret = {v,delta}
     return ret
 end function
- 
+
 function printImprecise(imprecise imp)
     return sprintf("%g+/-%g",imp)
 end function
- 
+
 imprecise x1 = {100, 1.1},
           y1 = {50, 1.2},
           x2 = {-200, 2.2},
           y2 = {-100, 2.3},
           tmp1, tmp2,
           d
- 
+
     tmp1 = imprecise_add(x1, x2)
     tmp1 = imprecise_pow(tmp1, 2)
     tmp2 = imprecise_add(y1, y2)
@@ -2177,26 +2177,26 @@ Distance: 111.8033988750 ± 2.48716706
 ```python
 from collections import namedtuple
 import math
- 
+
 class I(namedtuple('Imprecise', 'value, delta')):
-    'Imprecise type: I(value=0.0, delta=0.0)' 
- 
-    __slots__ = () 
- 
+    'Imprecise type: I(value=0.0, delta=0.0)'
+
+    __slots__ = ()
+
     def __new__(_cls, value=0.0, delta=0.0):
         'Defaults to 0.0 ± delta'
         return super().__new__(_cls, float(value), abs(float(delta)))
- 
+
     def reciprocal(self):
-        return I(1. / self.value, self.delta / (self.value**2)) 
- 
+        return I(1. / self.value, self.delta / (self.value**2))
+
     def __str__(self):
         'Shorter form of Imprecise as string'
         return 'I(%g, %g)' % self
- 
+
     def __neg__(self):
         return I(-self.value, self.delta)
- 
+
     def __add__(self, other):
         if type(other) == I:
             return I( self.value + other.value, (self.delta**2 + other.delta**2)**0.5 )
@@ -2208,13 +2208,13 @@ class I(namedtuple('Imprecise', 'value, delta')):
 
     def __sub__(self, other):
         return self + (-other)
- 
+
     def __radd__(self, other):
         return I.__add__(self, other)
- 
+
     def __mul__(self, other):
         if type(other) == I:
-            #if id(self) == id(other):    
+            #if id(self) == id(other):
             #    return self ** 2
             a1,b1 = self
             a2,b2 = other
@@ -2225,7 +2225,7 @@ class I(namedtuple('Imprecise', 'value, delta')):
         except:
             return NotImplemented
         return I(self.value * c, self.delta * c)
- 
+
     def __pow__(self, other):
         if type(other) == I:
             return NotImplemented
@@ -2235,10 +2235,10 @@ class I(namedtuple('Imprecise', 'value, delta')):
             return NotImplemented
         f = self.value ** c
         return I(f, f * c * (self.delta / self.value))
- 
+
     def __rmul__(self, other):
         return I.__mul__(self, other)
- 
+
     def __truediv__(self, other):
         if type(other) == I:
             return self.__mul__(other.reciprocal())
@@ -2247,19 +2247,19 @@ class I(namedtuple('Imprecise', 'value, delta')):
         except:
             return NotImplemented
         return I(self.value / c, self.delta / c)
- 
+
     def __rtruediv__(self, other):
         return other * self.reciprocal()
- 
+
     __div__, __rdiv__ = __truediv__, __rtruediv__
- 
+
 Imprecise = I
 
 def distance(p1, p2):
     x1, y1 = p1
     x2, y2 = p2
     return ((x1 - x2)**2 + (y1 - y2)**2)**0.5
- 
+
 x1 = I(100, 1.1)
 x2 = I(200, 2.2)
 y1 = I( 50, 1.2)

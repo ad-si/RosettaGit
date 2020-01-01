@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task|Basic language learning}} 
+{{task|Basic language learning}}
 [[Category:Functions and subroutines]]
 {{omit from|GUISS}}
 
@@ -42,9 +42,9 @@ Show how to return more than one value from a function.
 
 ## Ada
 
-Ada functions can only return one type. 
-That type could be an array or record holding multiple values, 
-but the usual method for returning several values is using 
+Ada functions can only return one type.
+That type could be an array or record holding multiple values,
+but the usual method for returning several values is using
 a procedure with 'out' parameters.
 By default, all parameters are 'in', but can also be 'out', 'in out' and 'access'. Writing to an 'out' parameter simply changes the value of the variable passed to the procedure.
 
@@ -102,7 +102,7 @@ epocs
 ## ALGOL 68
 
 {{works with|ALGOL 68G|Any - tested with release 2.6.win32}}
-Procedures in Algol 68 can only return one value, so to return multiple values, 
+Procedures in Algol 68 can only return one value, so to return multiple values,
 a structure (or array if all the values have the same mode) can be used.
 
 ```algol68
@@ -303,7 +303,7 @@ The most straightforward way of returning multiple values is to specify them as 
       PRINT "Sum is " ; sum
       PRINT "Difference is " ; diff
       END
-      
+
       DEF PROCsumdiff(a, b, RETURN c, RETURN d)
       c = a + b
       d = a - b
@@ -315,7 +315,7 @@ The most straightforward way of returning multiple values is to specify them as 
 <lang IS-BASIC>100 NUMERIC SUM,DIFF
 110 CALL SUMDIFF(5,3,SUM,DIFF)
 120 PRINT "Sum is";SUM:PRINT "Difference is";DIFF
-130 END 
+130 END
 140 DEF SUMDIFF(A,B,REF C,REF D)
 150   LET C=A+B:LET D=A-B
 160 END DEF
@@ -354,8 +354,8 @@ You can use pattern matching to extract the components:
 
 C has structures which can hold multiple data elements of varying types.
 
-```c>#include<stdio.h
-
+```c
+#include <stdio.h>
 
 typedef struct{
 	int integer;
@@ -393,8 +393,8 @@ Values from a function returning a structure : { 1, 2.300000, a, Hello World, 45
 
 C99 and above also allow structure literals to refer to the name, rather than position, of the element to be initialized:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef struct {
     char *first, *last;
@@ -427,8 +427,8 @@ The name's Bond. James Bond.
 
 Since C++11, the C++-standard-library includes tuples, as well as an easy way to destructure them.
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <array>
 #include <cstdint>
 #include <iostream>
@@ -491,7 +491,7 @@ Max: 51
 
 ## Clipper
 
-Every function returns one value. 
+Every function returns one value.
 The conventional way to return multiple values is to bundle them into an array.
 
 ```Clipper
@@ -503,7 +503,7 @@ Return { x+y, x-y }
 
 ## Clojure
 
-Multiple values can be returned by packaging them in a vector. 
+Multiple values can be returned by packaging them in a vector.
 At receiving side, these arguments can be obtained individually by using [http://blog.jayfields.com/2010/07/clojure-destructuring.html destructuring].
 
 ```clojure
@@ -514,7 +514,7 @@ At receiving side, these arguments can be obtained individually by using [http:/
   (println q)
   (println r))
 ```
- 
+
 In complex cases, it would make more sense to return a map, which can be destructed in a similar manner.
 
 ```clojure
@@ -598,7 +598,7 @@ statement.  ''This example uses in source REPLACE to avoid copy books.''
        :linked-items:
 
        :record-item:
-       
+
        procedure division.
        sample-main.
 
@@ -609,7 +609,7 @@ statement.  ''This example uses in source REPLACE to avoid copy books.''
        display "Original: " a ", " b ", " c
        call "subprogram" using a b c
        display "Modified: " a ", " b ", " c
-       
+
        move multiples() to master
        display "Multiple: " ma ", " mb ", " mc
 
@@ -936,8 +936,8 @@ Greater control over the type of return values can also be enforced by explicitl
 ```Eiffel
 some_feature: TUPLE[INTEGER_32, CHARACTER_8, STRING_8]
 	do
-		--Result := [ ]			-- compile error	
-		--Result := [1, "r", 'j']	-- also compile error	
+		--Result := [ ]			-- compile error
+		--Result := [1, "r", 'j']	-- also compile error
 		Result := [1, 'j', "r"]		-- okay
 		Result := [1, 'j', "r", 1.23]	-- also okay
 	end
@@ -951,24 +951,24 @@ ELENA 4.1 :
 ```elena
 import system'routines;
 import extensions;
- 
+
 extension op
 {
     MinMax(ref int minVal, ref int maxVal)
     {
         var ordered := self.ascendant();
- 
+
         minVal := ordered.FirstMember;
         maxVal := ordered.LastMember
     }
 }
- 
+
 public program()
 {
     var values := new int[]::(4, 51, 1, -3, 3, 6, 8, 26, 2, 4);
- 
+
     values.MinMax(ref int min, ref int max);
- 
+
     console.printLine("Min: ",min," Max: ",max)
 }
 ```
@@ -1070,7 +1070,7 @@ atom aFloat = 1.999999
 sequence aSequence = {3, 4}
 sequence result = {} --empty initialized sequence
 
-function addmultret(integer first, atom second, sequence third)--takes three kinds of input, adds them all into one element of the.. 
+function addmultret(integer first, atom second, sequence third)--takes three kinds of input, adds them all into one element of the..
     return (first + second + third[1]) + third[2] & (first * second * third[1]) * third[2] --..output sequence and multiplies them into..
 end function --..the second element
 
@@ -1089,7 +1089,7 @@ Press Any Key to continue...
 
 
 =={{header|F_Sharp|F#}}==
-A function always returns exactly one value. 
+A function always returns exactly one value.
 To return multiple results, they are typically packed into a tuple:
 
 ```fsharp
@@ -1107,7 +1107,7 @@ It is also possible to use output parameters explicitly with the <code>byref</co
 
 ## Factor
 
-With stack-oriented languages like Factor, a function returns multiple values by pushing them on the data stack. 
+With stack-oriented languages like Factor, a function returns multiple values by pushing them on the data stack.
 For example, this word ''*/'' pushes both x*y and x/y.
 
 ```factor
@@ -1170,16 +1170,16 @@ contains
 
 function addsub(x,y) result(r)
   integer :: x, y
-  type(res) :: r 
+  type(res) :: r
   r%p = x+y
   r%m = x-y
 end function
 end module
 
 program main
-  use multiple_values 
+  use multiple_values
   print *, addsub(33, 22)
-end program 
+end program
 
 ```
 
@@ -1193,7 +1193,7 @@ end program
 
 ' One way to return multiple values is to use ByRef parameters for the additional one(s)
 Function tryOpenFile (fileName As String, ByRef fileNumber As Integer) As Boolean
-   Dim result As Integer 
+   Dim result As Integer
    fileNumber = FreeFile
    result = Open(fileName For Input As # fileNumber)
    If result <> 0 Then
@@ -1219,10 +1219,10 @@ Type FileOpenInfo
 End Type
 
 Function tryOpenFile2(fileName As String) As FileOpenInfo
-   Dim foi As FileOpenInfo 
+   Dim foi As FileOpenInfo
    foi.fn = FreeFile
    Dim result As Integer
-   result = Open(fileName For Input As # foi.fn)   
+   result = Open(fileName For Input As # foi.fn)
    If  result <> 0 Then
      foi.fn = 0
      foi.opened = False
@@ -1233,7 +1233,7 @@ Function tryOpenFile2(fileName As String) As FileOpenInfo
 End Function
 
 Print
-Var foi = tryOpenFile2("xxx.zyz") 
+Var foi = tryOpenFile2("xxx.zyz")
 Print foi.opened, foi.fn
 foi = tryOpenFile2("input.txt")
 Print foi.opened, foi.fn
@@ -1354,7 +1354,7 @@ dim as long zip
 end record
 
 begin globals
-dim as Addresses  gAddressData(_maxDim) 
+dim as Addresses  gAddressData(_maxDim)
 end globals
 
 local fn FillRecord( array(_maxDim) as Addresses )
@@ -1404,7 +1404,7 @@ include "ConsoleWindow"
 _maxDim = 3
 
 begin globals
-dim as Str31  gAddressArray(_maxDim, _maxDim) 
+dim as Str31  gAddressArray(_maxDim, _maxDim)
 end globals
 
 local fn FillRecord( array(_maxDim, _maxDim) as Str31 )
@@ -1571,8 +1571,8 @@ def addSub(x,y) {
 Result:
 
 ```groovy
-addSub(10,12) 
- 
+addSub(10,12)
+
 ["sum":22, "difference":-2]
 ```
 
@@ -1634,7 +1634,7 @@ return [1,2,3]
 end
 
 procedure retSet()             # returns as un-ordered list
-insert(S := set(),3,1,2)  
+insert(S := set(),3,1,2)
 return S
 end
 
@@ -1645,7 +1645,7 @@ end
 procedure retTable()           # return as a table
 T := table()
 T["A"] := 1
-T["B"] := 2 
+T["B"] := 2
 T["C"] := 3
 return T
 end
@@ -1680,7 +1680,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
-// 
+//
 ### =======================================================================
 
 public class RReturnMultipleVals {
@@ -1754,7 +1754,7 @@ public class RReturnMultipleVals {
     return rset;
   }
 
-  // 
+  //
 ### =====================================================================
 
   private static class Pair<L, R> {
@@ -1795,7 +1795,7 @@ public class Values {
 	public Object[] get() {
 		return objects;
 	}
-	
+
 	// to test
 	public static void main(String[] args) {
 		Values v = getValues();
@@ -1864,7 +1864,7 @@ var {foo, ...rest} = objBind();//assigns foo => "abc, rest => {bar: "123", baz: 
 
 ## jq
 
-jq supports streams of JSON values, so there are two main ways in which a function can return multiple values: as a stream, or as an array.  Using the same example given for the Julia entry: 
+jq supports streams of JSON values, so there are two main ways in which a function can return multiple values: as a stream, or as an array.  Using the same example given for the Julia entry:
 ```jq
 # To produce a stream:
 def addsub(x; y): (x + y), (x - y);
@@ -1876,7 +1876,7 @@ def add_subtract(x; y): [ x+y, x-y ];
 
 The builtin filter .[] streams its input if the input is an array, e.g. the expression <code>[1,2] | .[]</code> produces the stream:
 ```jq
- 
+
 1
 2
 ```
@@ -2056,24 +2056,24 @@ addsub[4,2]
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 ```Matlab
   function [a,b,c]=foo(d)
-    a = 1-d; 
-    b = 2+d; 
+    a = 1-d;
+    b = 2+d;
     c = a+b;
-  end;  
-  [x,y,z] = foo(5) 
+  end;
+  [x,y,z] = foo(5)
 ```
 
 {{out}}
 
-```Matlab>  
- [x,y,z] = foo(5) 
+```Matlab>
+ [x,y,z] = foo(5)
   x = -4
   y =  7
-  z =  3 
+  z =  3
 ```
 
 
@@ -2092,10 +2092,10 @@ f(a, b) := [a * b, a + b]$
 
 ## Mercury
 
-Mercury is a logic language.  
-Its unification semantics permit any number of output parameters (the closest equivalent to return values).  
-The sample code provided here centres on the <code>addsub/4</code> predicate.  
-The <code>mode</code> statement identifies the first two parameters as input parameters and the last two as output parameters, thus, in effect, returning two results.  
+Mercury is a logic language.
+Its unification semantics permit any number of output parameters (the closest equivalent to return values).
+The sample code provided here centres on the <code>addsub/4</code> predicate.
+The <code>mode</code> statement identifies the first two parameters as input parameters and the last two as output parameters, thus, in effect, returning two results.
 In this case the first output parameter returns the sum of the two inputs and the second output returns the difference of the two inputs.
 
 
@@ -2119,7 +2119,7 @@ main(!IO) :-
         X = det_index1(CleanArgs,1),
         Y = det_index1(CleanArgs,2),
         addsub(X, Y, S, D),
-        format("%d + %d = %d\n%d - %d = %d\n", 
+        format("%d + %d = %d\n%d - %d = %d\n",
                [i(X), i(Y), i(S), i(X), i(Y), i(D)], !IO)
     ;
         write_string("Please pass two integers on the command line.\n", !IO)
@@ -2139,7 +2139,7 @@ addsub(X, Y, S, D) :-
 
 
 ```txt
-<nowiki>$ mmc addsub.m -E && ./addsub 100 999   
+<nowiki>$ mmc addsub.m -E && ./addsub 100 999
 100 + 999 = 1099
 100 - 999 = -899</nowiki>
 ```
@@ -2148,8 +2148,8 @@ addsub(X, Y, S, D) :-
 
 ### Functions and tuples
 
-Mercury is also a functional language, thus a function-based implementation is also possible.  
-Functions in Mercury can only return a single value, but Mercury allows the use of arbitrary tuples containing multiple heterogeneous ad-hoc values which is, for all practical purposes, the same thing.  
+Mercury is also a functional language, thus a function-based implementation is also possible.
+Functions in Mercury can only return a single value, but Mercury allows the use of arbitrary tuples containing multiple heterogeneous ad-hoc values which is, for all practical purposes, the same thing.
 The above code can be modified so that the definition of <code>addsub/4</code> is now instead this function <code>addsub/2</code>:
 
 
@@ -2172,8 +2172,8 @@ All other code remains exactly the same as does the use and output of it.
 
 ### Functions and type constructors
 
-It should be noted that tuples as a construct are generally frowned upon in Mercury, relying as they do on structural type equivalence instead of nominative.  
-The preferred approach is either to have multiple explicit output parameters on predicates or to have an explicit named type that covers the multi-return needs.  
+It should be noted that tuples as a construct are generally frowned upon in Mercury, relying as they do on structural type equivalence instead of nominative.
+The preferred approach is either to have multiple explicit output parameters on predicates or to have an explicit named type that covers the multi-return needs.
 
 An example of this follows:
 
@@ -2232,10 +2232,10 @@ module MultReturn
     {
         def greaterOf(a, b) { if (a.CompareTo(b) > 0) a else b }
         def lesserOf(a, b)  { if (a.CompareTo(b) < 0) a else b }
-        
+
         (ls.FoldLeft(ls.Head, lesserOf), ls.FoldLeft(ls.Head, greaterOf)) // packing tuple
     }
-    
+
     Main() : void
     {
         def nums = [1, 34, 12, -5, 4, 0];
@@ -2257,7 +2257,7 @@ Another common idiom inherited from [[REXX]] is the ability to collect the retur
 /* NetRexx */
 options replace format comments java crossref symbols nobinary
 
--- 
+--
 ### =======================================================================
 
 class RReturnMultipleVals public
@@ -2346,7 +2346,7 @@ class RReturnMultipleVals public
     rset.put(R, sv_)
     return rset
 
--- 
+--
 ### =======================================================================
 
 class RReturnMultipleVals.Pair dependent
@@ -2400,7 +2400,7 @@ class Program {
     Addon(a,b);
     a->Get()->PrintLine(); b->Get()->PrintLine();
   }
-  
+
   function : Addon(a : IntHolder, b : IntHolder) ~ Nil {
     a->Set(a->Get() + 2); b->Set(b->Get() + 13);
   }
@@ -2433,7 +2433,7 @@ let sum, difference = addsub 33 12 in
 ## Oforth
 
 
-Oforth uses a data stack. A function return is everything left on the stack when the function ends, so a function can return as many objects as needed : 
+Oforth uses a data stack. A function return is everything left on the stack when the function ends, so a function can return as many objects as needed :
 
 ```Oforth
 import: date
@@ -2546,7 +2546,7 @@ print aa.ShowValues() 'result 1,2,3,4
 
 aa.values = bb.ScaledValues(100,100,-100,100)
 
-print aa.ShowValues() 'result 100,200,-300,400 
+print aa.ShowValues() 'result 100,200,-300,400
 
 
 ```
@@ -2641,7 +2641,7 @@ function multiples($param1, &$param2) {
 		$param2 = 'is your grandmother';
 		return true;
 	}
-	
+
 	return false;
 }
 
@@ -2656,7 +2656,7 @@ echo "Param 2 from second run: '${y}'\r\n";
 The above will yield the following output:
 
 ```txt
-First run: 
+First run:
 Param 2 from first run: ''
 Second run: 1
 Param 2 from second run: 'is your grandmother'
@@ -2796,9 +2796,9 @@ Procedure example_1(x, y, Array r(1))  ;array r() will contain the return values
   Dim r(2) ;clear and resize the array
   r(0) = x + y  ;return these values in the array
   r(1) = x - y
-  r(2) = x * y 
+  r(2) = x * y
 EndProcedure
-  
+
 ;A pointer to memory or a structured variable may also be returned to reference
 ;multiple return values (requiring the memory to be manually freed afterwards).
 Procedure example_2(x, y)
@@ -2813,13 +2813,13 @@ If OpenConsole()
   Dim a(5)
   example_1(6, 5, a()) ;a() now contains {11, 1, 30}
   PrintN("Array returned with {" + Str(a(0)) + ", " + Str(a(1)) + ", " + Str(a(2)) + "}")
-  
+
   Define *aPoint.POINT
   *aPoint = example_2(6, 5) ;*aPoint references structured memory containing {6, 5}
-  
+
   PrintN("structured memory holds: (" + Str(*aPoint\x) + ", " + Str(*aPoint\y) + ")")
    FreeMemory(*aPoint) ;freememory
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2880,7 +2880,7 @@ Racket has a defined function "values" that returns multiple values using contin
 
 ```Raven
 define multiReturn use $v
-   $v each 
+   $v each
 
 3 multiReturn
 ```
@@ -2908,7 +2908,7 @@ Functions take and return values via a stack. This makes returning multiple valu
 
 ## REXX
 
-Strictly speaking, REXX only returns one value (or no values), but the value (a string) can comprise of 
+Strictly speaking, REXX only returns one value (or no values), but the value (a string) can comprise of
 
 multiple "values" or substrings.
 
@@ -2967,7 +2967,7 @@ arithmetics: procedure;  parse arg x,y;  return  x||y  x+y  x-y  x//y  x/y  x%y 
 
 ```ring
 
-Func AddSub x,y 
+Func AddSub x,y
      Return [ x+y, x-y ]
 
 ```
@@ -3188,18 +3188,18 @@ Smalltalk returns a single value from methods, so this task is usually implement
 
 
 ```smalltalk
-foo multipleValuesInto:[:a :b | 
+foo multipleValuesInto:[:a :b |
    Transcript show:a; cr.
    Transcript show:b; cr.
 ]
 ```
 
 
-or: 
+or:
 
 ```smalltalk
 |val1 val2|
-foo multipleValuesInto:[:a :b | 
+foo multipleValuesInto:[:a :b |
    val1 := a.
    val2 := b.
 ].
@@ -3321,7 +3321,7 @@ Successful call binding only one new variable:
 
 ## UNIX Shell
 
-Shell scripts don't directly support returning values from a function, 
+Shell scripts don't directly support returning values from a function,
 it can be simulated through some clunky code.
 
 
@@ -3358,7 +3358,7 @@ y=6
 
 ## Ursa
 
-The most straightforward way to return multiple values from a function in Ursa is to return a stream. 
+The most straightforward way to return multiple values from a function in Ursa is to return a stream.
 
 This example gets a specified amount of strings from the user, then returns a stream containing them.
 
@@ -3389,7 +3389,7 @@ out endl ret endl console
 
 ```txt
 how many strings do you want to enter? 5
-: these   
+: these
 : are
 : some
 : test
@@ -3514,14 +3514,14 @@ End Sub
 
 ```txt
 The function return : 1
-The values in return are : 
- 3,33333333333333 
- 1,11111111111111 
- 0,37037037037037 
- 0,123456790123457 
+The values in return are :
+ 3,33333333333333
+ 1,11111111111111
+ 0,37037037037037
+ 0,123456790123457
 --------------------------------------
 The function return : 0
-The values in return are : 
+The values in return are :
 vbNullString
 vbNullString
 vbNullString
@@ -3586,10 +3586,10 @@ b = 6
 ? "Sum =", AddUp(@a, @b)    && Displays 9
 
 FUNCTION AddUp(n1, n2)
-LOCAL n 
+LOCAL n
 n = n1 + n2
 n1 = n1 - 1
-n2 = n2 - 1 
+n2 = n2 - 1
 RETURN n
 ENDFUNC
 
@@ -3611,8 +3611,8 @@ real X,Y,A,D;
 
 real Ang, Dist;
 [Rect2Polar(4.0, 3.0, @Ang, @Dist);  \("@" is a new feature similar to 'addr')
-RlOut(0, Ang); 
-RlOut(0, Dist); 
+RlOut(0, Ang);
+RlOut(0, Dist);
 CrLf(0);
 ]
 ```

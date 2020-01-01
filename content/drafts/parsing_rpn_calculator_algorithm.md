@@ -17,9 +17,9 @@ Create a stack-based evaluator for an expression in   [[wp:Reverse Polish notati
 
 
 * Assume an input of a correct, space separated, string of tokens of an RPN expression
-* Test with the RPN expression generated from the   [[Parsing/Shunting-yard algorithm]]   task: 
+* Test with the RPN expression generated from the   [[Parsing/Shunting-yard algorithm]]   task:
 
-        <big><big><code> 3 4 2 * 1 5 - 2 3 ^ ^ / + </code></big></big> 
+        <big><big><code> 3 4 2 * 1 5 - 2 3 ^ ^ / + </code></big></big>
 * Print or display the output here
 
 
@@ -41,7 +41,7 @@ Create a stack-based evaluator for an expression in   [[wp:Reverse Polish notati
 ## 360 Assembly
 
 {{trans|FORTRAN}}
-For concision, only integer arithmetic is handled, but input numbers can be of any length. The formal task is not completed, but the spirit of it is. 
+For concision, only integer arithmetic is handled, but input numbers can be of any length. The formal task is not completed, but the spirit of it is.
 
 ```360asm
 *        RPN calculator         RC 25/01/2019
@@ -114,7 +114,7 @@ EXPONENT M      R2,STACK-8(R4)         r3=r3*stack(j-1)
          MVC    PG+5(5),CTOK         output cc
          MVC    PG+11(6),=C'Stack:'  output
          LA     R2,1                 i=1
-         LA     R3,STACK             @stack 
+         LA     R3,STACK             @stack
          LA     R9,PG+18             @buffer
        DO WHILE=(CR,R2,LE,R5)        do i=1 to ns
          L      R1,0(R3)               stack(i)
@@ -343,7 +343,7 @@ BEGIN
                          );
                 get( number f, ( value ) );
                 close( number f );
- 
+
                 token type := "number"
 
             ELSE
@@ -457,8 +457,8 @@ Result is:  +3.00012207
 1060 DO
 1070    PRINT "enter an RPN expression:"
 1080    INPUT expn$
-1090    IF LEN( expn$ ) = 0 THEN EXIT DO 
-1100    PRINT "expn: ";expn$      
+1090    IF LEN( expn$ ) = 0 THEN EXIT DO
+1100    PRINT "expn: ";expn$
 1110    CALL rpn( expn$ )
 1120 LOOP
 1130 END
@@ -523,7 +523,7 @@ Result is:  +3.00012207
 1720          END IF
 1730       ELSE
 1740          PRINT REPEAT$( " ", i+5 ); "^ error"
-1750          EXIT DO 
+1750          EXIT DO
 1760       END IF
 1770    END IF
 1780 LOOP
@@ -540,7 +540,7 @@ Result is:  +3.00012207
 1890    LET i = i + 1
 1900    LET j = j + 1
 1910    IF is_digit( expn$(i:i) ) = false THEN
-1920       IF expn$(i:i) = "." then          
+1920       IF expn$(i:i) = "." then
 1930          LET number$(j:j) = expn$(i:i)           ! include decimal point
 1940          LET i = i + 1
 1950          LET j = j + 1
@@ -697,10 +697,10 @@ TOKEN		ACTION			STACK
 ```bbcbasic
       @% = &60B
       RPN$ = "3 4 2 * 1 5 - 2 3 ^ ^ / +"
-      
+
       DIM Stack(1000)
       SP% = 0
-      
+
       FOR i% = 1 TO LEN(RPN$)
         Token$ = MID$(RPN$,i%,1)
         IF Token$ <> " " THEN
@@ -722,13 +722,13 @@ TOKEN		ACTION			STACK
         ENDIF
       NEXT i%
       END
-      
+
       DEF PROCpush(n)
       IF SP% > DIM(Stack(),1) ERROR 100, "Stack full"
       Stack(SP%) = n
       SP% += 1
       ENDPROC
-      
+
       DEF FNpop
       IF SP% = 0 ERROR 100, "Stack empty"
       SP% -= 1
@@ -829,8 +829,8 @@ Output:
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -897,8 +897,8 @@ int main(void)
 
 It's also possible to parse RPN string backwards and recursively; good luck printing out your token stack ''as a table'': there isn't one.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
@@ -958,8 +958,8 @@ int main(void)
 ## C++
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <string>
 #include <sstream>
 #include <iostream>
@@ -1009,7 +1009,7 @@ double rpn(const std::string &expr){
 int main() {
   std::string s = " 3 4 2 * 1 5 - 2 3 ^ ^ / + ";
   std::cout << "Final answer: " << rpn(s) << std::endl;
-  
+
   return 0;
 }
 ```
@@ -1019,19 +1019,19 @@ int main() {
 ```txt
 
 Input	Operation	Stack after
-3	Push		3 
-4	Push		3 4 
-2	Push		3 4 2 
-*	Operate		3 8 
-1	Push		3 8 1 
-5	Push		3 8 1 5 
--	Operate		3 8 -4 
-2	Push		3 8 -4 2 
-3	Push		3 8 -4 2 3 
-^	Operate		3 8 -4 8 
-^	Operate		3 8 65536 
-/	Operate		3 0.00012207 
-+	Operate		3.00012 
+3	Push		3
+4	Push		3 4
+2	Push		3 4 2
+*	Operate		3 8
+1	Push		3 8 1
+5	Push		3 8 1 5
+-	Operate		3 8 -4
+2	Push		3 8 -4 2
+3	Push		3 8 -4 2 3
+^	Operate		3 8 -4 8
+^	Operate		3 8 65536
+/	Operate		3 0.00012207
++	Operate		3.00012
 Final answer: 3.00012
 
 ```
@@ -1135,7 +1135,7 @@ namespace RPNEvaluator
             {
                 Console.Write("{0,-8:F3}", arr[i]);
             }
-            
+
             Console.WriteLine();
         }
     }
@@ -1176,7 +1176,7 @@ Result is 3.0001220703125
 }
 
 shared void run() {
-	
+
 	value ops = map {
 		"+" -> plus<Float>,
 		"*" -> times<Float>,
@@ -1184,19 +1184,19 @@ shared void run() {
 		"/" -> ((Float a, Float b) => a / b),
 		"^" -> ((Float a, Float b) => a ^ b)
 	};
-	
+
 	void printTableRow(String|Float token, String description, {Float*} stack) {
 		print("``token.string.padTrailing(8)````description.padTrailing(30)````stack``");
 	}
-	
+
 	function calculate(String input) {
-		
+
 		value stack = ArrayList<Float>();
-		value tokens = input.split().map((String element) 
+		value tokens = input.split().map((String element)
 			=> if(ops.keys.contains(element)) then element else parseFloat(element));
-		
+
 		print("Token   Operation                     Stack");
-		
+
 		for(token in tokens.coalesced) {
 			if(is Float token) {
 				stack.push(token);
@@ -1211,7 +1211,7 @@ shared void run() {
 		}
 		return stack.pop();
 	}
-	
+
 	print(calculate("3 4 2 * 1 5 - 2 3 ^ ^ / +"));
 }
 ```
@@ -1278,7 +1278,7 @@ This would be a lot simpler and generic if we were allowed to use something othe
 ```
 
 {{out}}
-stacks: 
+stacks:
 ([]
  [3]
  [3 4]
@@ -1309,9 +1309,9 @@ answer: 24577/8192
   (cond
     ((and (not tokens) (not stack)) 0)
     ((not tokens) (car stack))
-    (T 
+    (T
       (let* ((current (car tokens))
-             (next-stack (if (numberp current) 
+             (next-stack (if (numberp current)
                            (cons current stack)
                            (let* ((arg2 (car stack))
                                   (arg1 (cadr stack))
@@ -1333,19 +1333,19 @@ answer: 24577/8192
 
 24577/8192
 > (rpn *tokens* :verbose T)
-3: 3 
-4: 3 4 
-2: 3 4 2 
-*: 3 8 
-1: 3 8 1 
-5: 3 8 1 5 
--: 3 8 -4 
-2: 3 8 -4 2 
-3: 3 8 -4 2 3 
-^: 3 8 -4 8 
-^: 3 8 65536 
-/: 3 1/8192 
-+: 24577/8192 
+3: 3
+4: 3 4
+2: 3 4 2
+*: 3 8
+1: 3 8 1
+5: 3 8 1 5
+-: 3 8 -4
+2: 3 8 -4 2
+3: 3 8 -4 2 3
+^: 3 8 -4 8
+^: 3 8 65536
+/: 3 1/8192
++: 24577/8192
 24577/8192
 ```
 
@@ -1361,7 +1361,7 @@ answer: 24577/8192
 (lib 'hash)
 
 (define OPS (make-hash))
-(hash-set OPS "^" expt) 
+(hash-set OPS "^" expt)
 (hash-set OPS "*" *)
 (hash-set OPS "/" //) ;; float divide
 (hash-set OPS "+" +)
@@ -1380,7 +1380,7 @@ answer: 24577/8192
 	    	(writeln op1 token op2 "→" (stack-top S)))
 	    (push S (string->number token))))
 	(pop S))
-	
+
 (define (task rpn)
  (define S (stack 'S))
  (calculator (text-parse rpn) S ))
@@ -1393,26 +1393,26 @@ answer: 24577/8192
 
 (task "3 4 2 * 1 5 - 2 3 ^ ^ / +")
 
-4      *     2     →     8    
-1      -     5     →     -4    
-2      ^     3     →     8    
--4     ^     8     →     65536    
-8     /     65536     →     0.0001220703125    
-3     +     0.0001220703125     →     3.0001220703125  
-  
+4      *     2     →     8
+1      -     5     →     -4
+2      ^     3     →     8
+-4     ^     8     →     65536
+8     /     65536     →     0.0001220703125
+3     +     0.0001220703125     →     3.0001220703125
+
     → 3.0001220703125
 
 ;; RATIONAL CALCULATOR
 (hash-set OPS "/" /) ;; rational divide
 (task "3 4 2 * 1 5 - 2 3 ^ ^ / +")
 
-4      *     2     →     8    
-1      -     5     →     -4    
-2      ^     3     →     8    
--4     ^     8     →     65536    
-8     /     65536     →     1/8192    
-3     +     1/8192     →     24577/8192   
- 
+4      *     2     →     8
+1      -     5     →     -4
+2      ^     3     →     8
+-4     ^     8     →     65536
+8     /     65536     →     1/8192
+3     +     1/8192     →     24577/8192
+
 → 24577/8192
 
 ```
@@ -1438,11 +1438,11 @@ eval stack []      = []
 eval stack (x::xs) = op :: eval nst xs
   where (op, nst)  = conv x stack
         conv "+"@x = operate x (+)
-        conv "-"@x = operate x (-) 
+        conv "-"@x = operate x (-)
         conv "*"@x = operate x (*)
         conv "/"@x = operate x (/)
         conv "^"@x = operate x (**)
-        conv x     = \stack -> 
+        conv x     = \stack ->
           let n = gread x::stack in
           (Op Push x n, n)
         operate input fn (x::y::ys) =
@@ -1628,7 +1628,7 @@ print(Stack) ->
 let reduce op = function
   | b::a::r -> (op a b)::r
   | _ -> failwith "invalid expression"
- 
+
 let interprete s = function
   | "+" -> "add",    reduce ( + ) s
   | "-" -> "subtr",  reduce ( - ) s
@@ -1636,14 +1636,14 @@ let interprete s = function
   | "/" -> "divide", reduce ( / ) s
   | "^" -> "exp",    reduce ( ** ) s
   | str -> "push", (System.Double.Parse str) :: s
- 
+
 let interp_and_show s inp =
   let op,s'' = interprete s inp
   printf "%5s%8s " inp op
   List.iter (printf " %-6.3F") (List.rev s'')
   printf "\n";
   s''
- 
+
 let eval str =
   printfn "Token  Action  Stack";
   let ss = str.ToString().Split() |> Array.toList
@@ -1655,19 +1655,19 @@ let eval str =
 ```txt
 > eval "3 4 2 * 1 5 - 2 3 ^ ^ / +";;
 Token  Action  Stack
-    3    push  3.000 
-    4    push  3.000  4.000 
-    2    push  3.000  4.000  2.000 
-    *    mult  3.000  8.000 
-    1    push  3.000  8.000  1.000 
-    5    push  3.000  8.000  1.000  5.000 
+    3    push  3.000
+    4    push  3.000  4.000
+    2    push  3.000  4.000  2.000
+    *    mult  3.000  8.000
+    1    push  3.000  8.000  1.000
+    5    push  3.000  8.000  1.000  5.000
     -   subtr  3.000  8.000  -4.000
-    2    push  3.000  8.000  -4.000 2.000 
-    3    push  3.000  8.000  -4.000 2.000  3.000 
-    ^     exp  3.000  8.000  -4.000 8.000 
+    2    push  3.000  8.000  -4.000 2.000
+    3    push  3.000  8.000  -4.000 2.000  3.000
+    ^     exp  3.000  8.000  -4.000 8.000
     ^     exp  3.000  8.000  65536.000
-    /  divide  3.000  0.000 
-    +     add  3.000 
+    /  divide  3.000  0.000
+    +     add  3.000
 val it : float list = [3.00012207]
 ```
 
@@ -1675,7 +1675,7 @@ val it : float list = [3.00012207]
 
 ## Factor
 
-Factor <i>is</i> a stack-based evaluator for an expression in reverse Polish notation. In the listener:  
+Factor <i>is</i> a stack-based evaluator for an expression in reverse Polish notation. In the listener:
 
 ```factor
 IN: scratchpad 3 4 2 * 1 5 - 2 3 ^ ^ / +
@@ -1685,7 +1685,7 @@ IN: scratchpad 3 4 2 * 1 5 - 2 3 ^ ^ / +
 ```
 
 
-To show intermediate steps:  
+To show intermediate steps:
 
 ```factor
 { 3 4 2 * 1 5 - 2 3 ^ ^ / + } [ 1quotation ] map
@@ -1816,7 +1816,7 @@ def evaluate( expr ) =
             stack = op( stack.tail().head(), stack.head() ) : stack.tail().tail()
             println( "perform $token: ${stack.reversed()}" )
           None -> error( "unrecognized operator '$token'" )
-          
+
   stack.head()
 
 res = evaluate( '3 4 2 * 1 5 - 2 3 ^ ^ / +' )
@@ -2138,7 +2138,7 @@ calcRPNM = foldM (verbose interprete) [] . words
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main() 
+procedure main()
    EvalRPN("3 4 2 * 1 5 - 2 3 ^ ^ / +")
 end
 
@@ -2148,11 +2148,11 @@ invocable all
 procedure EvalRPN(expr)          #: evaluate (and trace stack) an RPN string
 
    stack := []
-   expr ? until pos(0) do { 
+   expr ? until pos(0) do {
       tab(many(' '))                         # consume previous seperator
       token := tab(upto(' ')|0)              # get token
       if token := numeric(token) then {      # ... numeric
-         push(stack,token)                   
+         push(stack,token)
          printf("pushed numeric   %i : %s\n",token,list2string(stack))
          }
       else {                                 # ... operator
@@ -2174,8 +2174,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 
 {{out}}
 
@@ -2199,8 +2199,8 @@ applied operator + : [ 3.0001220703125 ]
 
 ## J
 
-This task's operations are all dyadic - having two arguments. 
-So on each step we may either "shift" a number to the stack 
+This task's operations are all dyadic - having two arguments.
+So on each step we may either "shift" a number to the stack
 or "reduce" two topmost stack items to one.
 
 Our implementation will be a monadic verb: it will take a single argument, which contains both the accumulated stack and the tokens to be processed. First, create initial state of the input:
@@ -2214,18 +2214,18 @@ Our implementation will be a monadic verb: it will take a single argument, which
 
 As an example, let's also add monadic operation _ which inverses the sign of the stack top element.
 
-We're going to read tokens from input one by one. 
-Each time we read a token, we're checking if it's a number - in this case we put the number to the stack - or an operation - in this case we apply the operation to the stack. 
-The monad which returns 1 (true) for a token representing an operation and 0 (false) otherwise is "isOp". 
+We're going to read tokens from input one by one.
+Each time we read a token, we're checking if it's a number - in this case we put the number to the stack - or an operation - in this case we apply the operation to the stack.
+The monad which returns 1 (true) for a token representing an operation and 0 (false) otherwise is "isOp".
 The dyad, which moves an input token to the stack, is "doShift". Applying the operation to the stack is "doApply".
 
-There are 6 operations - one monadic "_" and five dyadic "+", "-", "*", "/", "^". 
-For operation, we need to translate input token into operation and apply it to the stack. 
+There are 6 operations - one monadic "_" and five dyadic "+", "-", "*", "/", "^".
+For operation, we need to translate input token into operation and apply it to the stack.
 The dyad which converts the input token to the operation is "dispatch". It uses two miscellaneous adverbs, one for monadic operations - "mo" - and another for dyadic - "dy".
 
-The RPN driver is the monad "consume", which handles one token. 
-The output is the state of the program after the token was consumed - stack in the 0th box, and remaining input afterwards. 
-As a side effect, "consume" is going to print the resulting stack, 
+The RPN driver is the monad "consume", which handles one token.
+The output is the state of the program after the token was consumed - stack in the 0th box, and remaining input afterwards.
+As a side effect, "consume" is going to print the resulting stack,
 so running "consume" once for each token will produce intermediate states of the stack.
 
 ```J
@@ -2265,7 +2265,7 @@ _3 4
 
 
 
-###  Alternate Implementation 
+###  Alternate Implementation
 
 
 
@@ -2320,9 +2320,9 @@ In other words:
 ```
 
 
-Note that the seed stack is boxed while computed stacks are not. 
-Note that top of stack here is on the left. 
-Note also that adjacent constants are bundled in the parsing phase. 
+Note that the seed stack is boxed while computed stacks are not.
+Note that top of stack here is on the left.
+Note also that adjacent constants are bundled in the parsing phase.
 Finally, note that the result of rpn (and of rpnD - lines previous to the last line in the rpnD example here are output and not a part of the result) is the final state of the stack - in the general case it may not contain exactly one value.
 
 
@@ -2381,12 +2381,12 @@ public class RPN{
 		}
 		System.out.println("Final answer: " + stack.pop());
 	}
-	
+
 	private static String cleanExpr(String expr){
 		//remove all non-operators, non-whitespace, and non digit chars
 		return expr.replaceAll("[^\\^\\*\\+\\-\\d/\\s]", "");
 	}
-	
+
 	public static void main(String[] args){
 		evalRPN("3 4 2 * 1 5 - 2 3 ^ ^ / +");
 	}
@@ -2590,7 +2590,7 @@ fun rpnCalculate(expr: String) {
         val d = token.toDoubleOrNull()
         if (d != null) {
             stack.add(d)
-            println(" $d   Push num onto top of stack  $stack") 
+            println(" $d   Push num onto top of stack  $stack")
         }
         else if ((token.length > 1) || (token !in "+-*/^")) {
             throw IllegalArgumentException("$token is not a valid token")
@@ -2606,11 +2606,11 @@ fun rpnCalculate(expr: String) {
                 "-"  -> d2 - d1
                 "*"  -> d2 * d1
                 "/"  -> d2 / d1
-                else -> Math.pow(d2, d1)  
+                else -> Math.pow(d2, d1)
             })
             println(" $token     Apply op to top of stack    $stack")
         }
-    }   
+    }
     println("\nThe final value is ${stack[0]}")
 }
 
@@ -2817,7 +2817,7 @@ function calc( s )
     for i = 1, #s do
         a = s:sub( i, i )
         if a == " " then operate( t ); t = ""
-        else t = t .. a 
+        else t = t .. a
         end
     end
     if a ~= "" then operate( a ) end
@@ -2864,7 +2864,7 @@ result: 242.0000000000000
 
 ```M2000 Interpreter
 
-Module Rpn_Calc {  
+Module Rpn_Calc {
 	Rem Form 80,60
 	function rpn_calc(a$) {
 		def m=0
@@ -2973,13 +2973,13 @@ Rpn_Calc
 (This code takes advantage of the fact that all of the operands and functions in the specified RPN syntax can be used to form valid Mathematica expressions, so we can use the built-in ToExpression function to turn them into numbers and the corresponding Mathematica functions. Note that we need to add braces around arguments, otherwise "-4^8" would be parsed as "-(4^8)" instead of "(-4)^8".)
 
 ```Mathematica
-calc[rpn_] := 
+calc[rpn_] :=
   Module[{tokens = StringSplit[rpn], s = "(" <> ToString@InputForm@# <> ")" &, op, steps},
    op[o_, x_, y_] := ToExpression[s@x <> o <> s@y];
    steps = FoldList[Switch[#2, _?DigitQ, Append[#, FromDigits[#2]],
         _, Append[#[[;; -3]], op[#2, #[[-2]], #[[-1]]]]
         ] &, {}, tokens][[2 ;;]];
-   Grid[Transpose[{# <> ":" & /@ tokens, 
+   Grid[Transpose[{# <> ":" & /@ tokens,
       StringRiffle[ToString[#, InputForm] & /@ #] & /@ steps}]]];
 Print[calc["3 4 2 * 1 5 - 2 3 ^ ^ / +"]];
 ```
@@ -3027,7 +3027,7 @@ rpow(x, y) := y^x$
 rpn(sexpr) := (
     operands: [],
     expr: charlist(sexpr),
-    
+
     for token in expr do (
         if token = "+" then (
             push(pop(operands) + pop(operands), operands)
@@ -3050,7 +3050,7 @@ rpn(sexpr) := (
         elseif token # " " then (
             push(parse_string(token), operands)
         ),
-        
+
         if token # " " then (
             print(token, " : ", operands)
         )
@@ -3067,19 +3067,19 @@ rpn("3 4 2 * 1 5 - 2 3 ^ ^ / +"), numer;
 ### Output
 
 <lang>(%i5) ev(rpn("3 4 2 * 1 5 - 2 3 ^ ^ / +"),numer)
-3  :  [3] 
-4  :  [4, 3] 
-2  :  [2, 4, 3] 
-*  :  [8, 3] 
-1  :  [1, 8, 3] 
-5  :  [5, 1, 8, 3] 
--  :  [- 4, 8, 3] 
-2  :  [2, - 4, 8, 3] 
-3  :  [3, 2, - 4, 8, 3] 
-^  :  [8, - 4, 8, 3] 
-^  :  [65536, 8, 3] 
-/  :  [1.220703125e-4, 3] 
-+  :  [3.0001220703125] 
+3  :  [3]
+4  :  [4, 3]
+2  :  [2, 4, 3]
+*  :  [8, 3]
+1  :  [1, 8, 3]
+5  :  [5, 1, 8, 3]
+-  :  [- 4, 8, 3]
+2  :  [2, - 4, 8, 3]
+3  :  [3, 2, - 4, 8, 3]
+^  :  [8, - 4, 8, 3]
+^  :  [65536, 8, 3]
+/  :  [1.220703125e-4, 3]
++  :  [3.0001220703125]
 (%o5)                           3.0001220703125
 ```
 
@@ -3315,7 +3315,7 @@ This version sees great improvement on syntax, stacks can now be as big as they 
 .		nr i 0 1
 .		rm ou
 .		while \\\\n+i<=\\\\n[\\$1.c] \{ \
-.			as ou "\\\\n[\\$1..\\\\ni] 
+.			as ou "\\\\n[\\$1..\\\\ni]
 .		\}
 .		tm \\\\*(ou
 .		rr i
@@ -3392,19 +3392,19 @@ This version sees great improvement on syntax, stacks can now be as big as they 
 
 ### =Output=
 
-<lang>3 
-3 4 
-3 4 2 
-3 8 
-3 8 1 
-3 8 1 5 
-3 8 -4 
-3 8 -4 2 
-3 8 -4 2 3 
-3 8 -4 8 
-3 8 16 
-3 0 
-3 
+<lang>3
+3 4
+3 4 2
+3 8
+3 8 1
+3 8 1 5
+3 8 -4
+3 8 -4 2
+3 8 -4 2 3
+3 8 -4 8
+3 8 16
+3 0
+3
 3
 ```
 
@@ -3615,19 +3615,19 @@ for x in rp:
 
 ```txt
 For RPN expression: 3 4 2 * 1 5 - 2 3 ^ ^ / +
-TOKEN ACTION                     STACK                
-3     Push num onto top of stack 3.0                  
-4     Push num onto top of stack 3.0 4.0              
-2     Push num onto top of stack 3.0 4.0 2.0          
-*     Apply op to top of stack   3.0 8.0              
-1     Push num onto top of stack 3.0 8.0 1.0          
-5     Push num onto top of stack 3.0 8.0 1.0 5.0      
--     Apply op to top of stack   3.0 8.0 -4.0         
-2     Push num onto top of stack 3.0 8.0 -4.0 2.0     
-3     Push num onto top of stack 3.0 8.0 -4.0 2.0 3.0 
-^     Apply op to top of stack   3.0 8.0 -4.0 8.0     
-^     Apply op to top of stack   3.0 8.0 65536.0      
-/     Apply op to top of stack   3.0 0.0001220703125  
+TOKEN ACTION                     STACK
+3     Push num onto top of stack 3.0
+4     Push num onto top of stack 3.0 4.0
+2     Push num onto top of stack 3.0 4.0 2.0
+*     Apply op to top of stack   3.0 8.0
+1     Push num onto top of stack 3.0 8.0 1.0
+5     Push num onto top of stack 3.0 8.0 1.0 5.0
+-     Apply op to top of stack   3.0 8.0 -4.0
+2     Push num onto top of stack 3.0 8.0 -4.0 2.0
+3     Push num onto top of stack 3.0 8.0 -4.0 2.0 3.0
+^     Apply op to top of stack   3.0 8.0 -4.0 8.0
+^     Apply op to top of stack   3.0 8.0 65536.0
+/     Apply op to top of stack   3.0 0.0001220703125
 +     Apply op to top of stack   3.0001220703125
 ```
 
@@ -3646,10 +3646,10 @@ bundle Default {
     function : Main(args : String[]) ~ Nil {
       Caculate("3 4 2 * 1 5 - 2 3 ^ ^ / +");
     }
-    
+
     function : native : Caculate(rpn : String) ~ Nil {
       rpn->PrintLine();
-      
+
       tokens := rpn->Split(" ");
       stack := FloatVector->New();
       each(i : tokens) {
@@ -3682,7 +3682,7 @@ bundle Default {
                 stack->AddBack(right->Power(left));
               }
             };
-          };  
+          };
           PrintStack(stack);
         };
       };
@@ -3769,19 +3769,19 @@ Evaluation of the test expression:
 
 # rpn_eval "3 4 2 * 1 5 - 2 3 ^ ^ / +";;
 Token	Action	Stack
-3	push	3. 
-4	push	3. 4. 
-2	push	3. 4. 2. 
-*	mult	3. 8. 
-1	push	3. 8. 1. 
-5	push	3. 8. 1. 5. 
--	subtr	3. 8. -4. 
-2	push	3. 8. -4. 2. 
-3	push	3. 8. -4. 2. 3. 
-^	exp	3. 8. -4. 8. 
-^	exp	3. 8. 65536. 
-/	divide	3. 0.0001220703125 
-+	add	3.00012207031 
+3	push	3.
+4	push	3. 4.
+2	push	3. 4. 2.
+*	mult	3. 8.
+1	push	3. 8. 1.
+5	push	3. 8. 1. 5.
+-	subtr	3. 8. -4.
+2	push	3. 8. -4. 2.
+3	push	3. 8. -4. 2. 3.
+^	exp	3. 8. -4. 8.
+^	exp	3. 8. 65536.
+/	divide	3. 0.0001220703125
++	add	3.00012207031
 - : float list = [3.0001220703125]
 
 ```
@@ -3808,7 +3808,7 @@ Oforth uses RPN and natively parse RPN.
 ```
 
 
-To show the changes in the stack, we can use .l after evaluating each word : 
+To show the changes in the stack, we can use .l after evaluating each word :
 
 
 ```Oforth
@@ -3891,10 +3891,10 @@ Stack contents:
 3 0.0001220703125
 3.0001220703125
 The reverse polish expression = 3 4 2 * 1 5 - 2 3 ^ ^ / +
-The evaluated expression = 3.0001220703125    
+The evaluated expression = 3.0001220703125
 
 ```
-   
+
 
 
 ## PARI/GP
@@ -3918,7 +3918,7 @@ epop() = {
 
 registerRPNToken(t) = {
     local(o1, o2);
-    
+
     if(type(t) == "t_STR",
         if(t == "+", o2 = epop(); o1 = epop(); epush(o1 + o2),
         if(t == "-", o2 = epop(); o1 = epop(); epush(o1 - o2),
@@ -4121,12 +4121,12 @@ function rpn($postFix){
     echo "Input\tOperation\tStack\tafter\n" ;
 	$token = explode(" ", trim($postFix));
 	$count = count($token);
-	
+
     for($i = 0 ; $i<$count;$i++)
 	{
         echo $token[$i] ." \t";
         $tokenNum = "";
-		
+
         if (is_numeric($token[$i])) {
             echo  "Push";
 			array_push($stack,$token[$i]);
@@ -4156,7 +4156,7 @@ function rpn($postFix){
 		echo "\t\t" . implode(" ", $stack) .  "\n";
     }
     return end($stack);
-} 
+}
 
 echo "Compute Value: " . rpn("3 4 2 * 1 5 - 2 3 ^ ^ / + ");
 ?>
@@ -4271,15 +4271,15 @@ end Calculator;
 
 ```txt
 
-Stack contents: 
+Stack contents:
       3.0000000000      8.0000000000
       3.0000000000      8.0000000000     -4.0000000000
       3.0000000000      8.0000000000     -4.0000000000      8.0000000000
       3.0000000000      8.0000000000  65536.0000000000
       3.0000000000      0.0001220703
       3.0001220703
-The reverse polish expression = 3 4 2 * 1 5 - 2 3 ^ ^ / + 
-The evaluated expression =  3.00012207031250000E+0000 
+The reverse polish expression = 3 4 2 * 1 5 - 2 3 ^ ^ / +
+The evaluated expression =  3.00012207031250000E+0000
 
 ```
 
@@ -4365,7 +4365,7 @@ function Invoke-Rpn
                 {
                     Out-State $stack
                 }
-        
+
                 if ($shortcuts[$argument])
                 {
                     $argument = $shortcuts[$argument]
@@ -4448,19 +4448,19 @@ Invoke-Rpn -Expression "3 4 2 * 1 5 - 2 3 ^ ^ / +" -DisplayState
 
 ```txt
 
-3.000   
-3.000   4.000   
-3.000   4.000   2.000   
-3.000   8.000   
-3.000   8.000   1.000   
-3.000   8.000   1.000   5.000   
-3.000   8.000   -4.000  
-3.000   8.000   -4.000  2.000   
-3.000   8.000   -4.000  2.000   3.000   
-3.000   8.000   -4.000  8.000   
+3.000
+3.000   4.000
+3.000   4.000   2.000
+3.000   8.000
+3.000   8.000   1.000
+3.000   8.000   1.000   5.000
+3.000   8.000   -4.000
+3.000   8.000   -4.000  2.000
+3.000   8.000   -4.000  2.000   3.000
+3.000   8.000   -4.000  8.000
 3.000   8.000   65536.000
-3.000   0.000   
-3.000   
+3.000   0.000
+3.000
 
 Result = 3.0001220703125
 
@@ -4551,7 +4551,7 @@ true .
 ## Python
 
 
-###  Version 1 
+###  Version 1
 
 
 ```python
@@ -4572,7 +4572,7 @@ def op_sub(stack):
     stack.append( a - b )
 def op_num(stack, num):
     stack.append( num )
-    
+
 ops = {
  '^': op_pow,
  '*': op_mul,
@@ -4583,7 +4583,7 @@ ops = {
 
 def get_input(inp = None):
     'Inputs an expression and returns list of tokens'
-    
+
     if inp is None:
         inp = input('expression: ')
     tokens = inp.strip().split()
@@ -4622,27 +4622,27 @@ if __name__ == '__main__':
 ```txt
 For RPN expression: '3 4 2 * 1 5 - 2 3 ^ ^ / +'
 
-TOKEN           ACTION                 STACK      
-3     Push num onto top of stack 3                
-4     Push num onto top of stack 3 4              
-2     Push num onto top of stack 3 4 2            
-*     Apply op to top of stack   3 8              
-1     Push num onto top of stack 3 8 1            
-5     Push num onto top of stack 3 8 1 5          
--     Apply op to top of stack   3 8 -4           
-2     Push num onto top of stack 3 8 -4 2         
-3     Push num onto top of stack 3 8 -4 2 3       
-^     Apply op to top of stack   3 8 -4 8         
-^     Apply op to top of stack   3 8 65536        
+TOKEN           ACTION                 STACK
+3     Push num onto top of stack 3
+4     Push num onto top of stack 3 4
+2     Push num onto top of stack 3 4 2
+*     Apply op to top of stack   3 8
+1     Push num onto top of stack 3 8 1
+5     Push num onto top of stack 3 8 1 5
+-     Apply op to top of stack   3 8 -4
+2     Push num onto top of stack 3 8 -4 2
+3     Push num onto top of stack 3 8 -4 2 3
+^     Apply op to top of stack   3 8 -4 8
+^     Apply op to top of stack   3 8 65536
 /     Apply op to top of stack   3 0.0001220703125
-+     Apply op to top of stack   3.0001220703125  
++     Apply op to top of stack   3.0001220703125
 
  The final output value is: '3.0001220703125'
 ```
 
 
 
-###  Version 2 
+###  Version 2
 
 
 
@@ -4683,7 +4683,7 @@ for c in '3 4 2 * 1 5 - 2 3 ^ ^ / +'.split():
 ```racket
 
 #lang racket
- 
+
 (define (calculate-RPN expr)
   (for/fold ([stack '()]) ([token expr])
     (printf "~a\t -> ~a~N" token stack)
@@ -4694,7 +4694,7 @@ for c in '3 4 2 * 1 5 - 2 3 ^ ^ / +'.split():
      [('* (list x y s ___)) (cons (* x y) s)]
      [('/ (list x y s ___)) (cons (/ y x) s)]
      [('^ (list x y s ___)) (cons (expt y x) s)]
-     [(x s) (error "calculate-RPN: Cannot calculate the expression:" 
+     [(x s) (error "calculate-RPN: Cannot calculate the expression:"
                    (reverse (cons x s)))])))
 
 
@@ -4818,7 +4818,7 @@ The evaluated expression = 3.0001220703125
 
 This REXX version handles tokens (not characters)   so that the RPN could be   (for instance):
 :::: <big><big> 3.0   .4e1   2e0   *   +1.   5   -   2   3   **   **   /   + </big></big>
-which is the essentially the same as the default used by the REXX program. 
+which is the essentially the same as the default used by the REXX program.
 
 ```REXX
 /*REXX program  evaluates  a   ═════ Reverse Polish notation  (RPN) ═════   expression. */
@@ -4885,8 +4885,8 @@ This REXX version is the same as above, but also checks for various errors and a
 ::*   checks for malformed RPN expression
 ::*   checks for division by zero
 ::*   allows alternative exponentiation symbol                   <big>**</big>
-::*   allows logical operations                                  <big>&amp; </big>   <big>&amp;&amp;</big>   <big>|</big> 
-::*   allows alternative division symbol                         <big>÷</big> 
+::*   allows logical operations                                  <big>&amp; </big>   <big>&amp;&amp;</big>   <big>|</big>
+::*   allows alternative division symbol                         <big>÷</big>
 ::*   allows integer division                                    <big>%</big>
 ::*   allows remainder division                                  <big>//</big>
 ::*   allows concatenation                                       <big>||</big>
@@ -4985,7 +4985,7 @@ j = 0
 while word$(prn$,i + 1," ") <> ""
 i = i + 1
   n$ = word$(prn$,i," ")
-  if n$ < "0" or n$ > "9" then 
+  if n$ < "0" or n$ > "9" then
     num1   = val(word$(stack$,s," "))
     num2   = val(word$(stack$,s-1," "))
     n      = op(n$,num2,num1)
@@ -5017,18 +5017,18 @@ end function
 
 
 ```txt
-Push Num 3 to stack:  3 
-Push Num 4 to stack:  3 4 
-Push Num 2 to stack:  3 4 2 
-Push Opr * to stack:  3 8 
-Push Num 1 to stack:  3 8 1 
-Push Num 5 to stack:  3 8 1 5 
-Push Opr - to stack:  3 8 -4 
-Push Num 2 to stack:  3 8 -4 2 
-Push Num 3 to stack:  3 8 -4 2 3 
-Push Opr ^ to stack:  3 8 -4 8 
-Push Opr ^ to stack:  3 8 65536 
-Push Opr / to stack:  3 1.22070312e-4 
+Push Num 3 to stack:  3
+Push Num 4 to stack:  3 4
+Push Num 2 to stack:  3 4 2
+Push Opr * to stack:  3 8
+Push Num 1 to stack:  3 8 1
+Push Num 5 to stack:  3 8 1 5
+Push Opr - to stack:  3 8 -4
+Push Num 2 to stack:  3 8 -4 2
+Push Num 3 to stack:  3 8 -4 2 3
+Push Opr ^ to stack:  3 8 -4 8
+Push Opr ^ to stack:  3 8 65536
+Push Opr / to stack:  3 1.22070312e-4
 Push Opr + to stack:  3.00012207
 ```
 
@@ -5084,19 +5084,19 @@ object RPN {
 
 ```txt
 
-Input: 3 Stack: 3.0 
-Input: 4 Stack: 3.0 4.0 
-Input: 2 Stack: 3.0 4.0 2.0 
-Input: * Stack: 3.0 8.0 
-Input: 1 Stack: 3.0 8.0 1.0 
-Input: 5 Stack: 3.0 8.0 1.0 5.0 
-Input: - Stack: 3.0 8.0 -4.0 
-Input: 2 Stack: 3.0 8.0 -4.0 2.0 
-Input: 3 Stack: 3.0 8.0 -4.0 2.0 3.0 
-Input: ^ Stack: 3.0 8.0 -4.0 8.0 
-Input: ^ Stack: 3.0 8.0 65536.0 
-Input: / Stack: 3.0 1.220703125E-4 
-Input: + Stack: 3.0001220703125 
+Input: 3 Stack: 3.0
+Input: 4 Stack: 3.0 4.0
+Input: 2 Stack: 3.0 4.0 2.0
+Input: * Stack: 3.0 8.0
+Input: 1 Stack: 3.0 8.0 1.0
+Input: 5 Stack: 3.0 8.0 1.0 5.0
+Input: - Stack: 3.0 8.0 -4.0
+Input: 2 Stack: 3.0 8.0 -4.0 2.0
+Input: 3 Stack: 3.0 8.0 -4.0 2.0 3.0
+Input: ^ Stack: 3.0 8.0 -4.0 8.0
+Input: ^ Stack: 3.0 8.0 65536.0
+Input: / Stack: 3.0 1.220703125E-4
+Input: + Stack: 3.0001220703125
 Answer: 3.0001220703125
 ```
 
@@ -5488,18 +5488,18 @@ rpn 3 4 2 '*' 1 5 '-' 2 3 '^' '^' '/' '+'
 
 ```VBA
 Global stack$
- 
+
 Function RPN(expr$)
 Debug.Print "Expression:"
 Debug.Print expr$
 Debug.Print "Input", "Operation", "Stack after"
- 
+
 stack$ = ""
 token$ = "#"
 i = 1
 token$ = Split(expr$)(i - 1) 'split is base 0
 token2$ = " " + token$ + " "
- 
+
 Do
     Debug.Print "Token "; i; ": "; token$,
     'operation
@@ -5511,10 +5511,10 @@ Do
             Debug.Print "Error: stack empty for "; i; "-th token: "; token$
             End
         End If
- 
+
         op1 = Val(op1$)
         op2 = Val(op2$)
- 
+
         Select Case token$
         Case "+"
             res = CDbl(op1) + CDbl(op2)
@@ -5527,7 +5527,7 @@ Do
         Case "^"
             res = CDbl(op1) ^ CDbl(op2)
         End Select
- 
+
         Call push2(str$(res))
     'default:number
     Else
@@ -5543,7 +5543,7 @@ Do
         token2$ = " " + token$ + " "
     End If
 Loop Until token$ = ""
- 
+
 Debug.Print
 Debug.Print "Result:"; pop$()
 'extra$ = pop$()
@@ -5552,7 +5552,7 @@ If stack <> "" Then
 End If
 End
 End Function
- 
+
 '---------------------------------------
 Function reverse$(s$)
     reverse$ = ""
@@ -5567,7 +5567,7 @@ End Function
 Sub push2(s$)
     stack$ = s$ + "|" + stack$ 'stack
 End Sub
- 
+
 Function pop$()
     'it does return empty on empty stack
     pop$ = Split(stack$, "|")(0)
@@ -5583,19 +5583,19 @@ End Function
 Expression:
 3 4 2 * 1 5 - 2 3 ^ ^ / +
 Input         Operation     Stack after
-Token  1 : 3  push          Stack:  3 
-Token  2 : 4  push          Stack:  3 4 
-Token  3 : 2  push          Stack:  3 4 2 
-Token  4 : *  operate       Stack:  3  8 
-Token  5 : 1  push          Stack:  3  8 1 
-Token  6 : 5  push          Stack:  3  8 1 5 
-Token  7 : -  operate       Stack:  3  8 -4 
-Token  8 : 2  push          Stack:  3  8 -4 2 
-Token  9 : 3  push          Stack:  3  8 -4 2 3 
-Token  10 : ^ operate       Stack:  3  8 -4  8 
-Token  11 : ^ operate       Stack:  3  8  65536 
-Token  12 : / operate       Stack:  3  .0001220703125 
-Token  13 : + operate       Stack:   3.0001220703125 
+Token  1 : 3  push          Stack:  3
+Token  2 : 4  push          Stack:  3 4
+Token  3 : 2  push          Stack:  3 4 2
+Token  4 : *  operate       Stack:  3  8
+Token  5 : 1  push          Stack:  3  8 1
+Token  6 : 5  push          Stack:  3  8 1 5
+Token  7 : -  operate       Stack:  3  8 -4
+Token  8 : 2  push          Stack:  3  8 -4 2
+Token  9 : 3  push          Stack:  3  8 -4 2 3
+Token  10 : ^ operate       Stack:  3  8 -4  8
+Token  11 : ^ operate       Stack:  3  8  65536
+Token  12 : / operate       Stack:  3  .0001220703125
+Token  13 : + operate       Stack:   3.0001220703125
 
 Result: 3.0001220703125
 ```
@@ -5612,30 +5612,30 @@ Result: 3.0001220703125
 
 ```Xojo
 
- 
+
 Function RPN(expr As String) As String
 
   Dim tokenArray() As String
   Dim stack() As String
-  
+
   Dim Wert1 As Double
   Dim Wert2 As Double
-  
-  
-  
+
+
+
   'Initialize array (removed later)
   ReDim tokenArray(1)
   ReDim stack(1)
-  
-  
+
+
   tokenArray = Split(expr, " ")
-  
-  Dim i As integer 
+
+  Dim i As integer
   i = 0
-  
-  While i <= tokenArray.Ubound    
-    
-    
+
+  While i <= tokenArray.Ubound
+
+
     If  tokenArray(i) = "+" Then
       Wert2 = Val(stack.pop)
       Wert1 = Val(stack.pop)
@@ -5659,15 +5659,15 @@ Function RPN(expr As String) As String
     Else
       stack.Append(tokenArray(i))
     End If
-    
-    
+
+
     i = i +1
-    
+
   Wend
-  
-  
+
+
   Return stack(2)
- 
+
 End Function
 ```
 
@@ -5682,17 +5682,17 @@ Expression:
 3 4 2 * 1 5 - 2 3 ^ ^ / +
 
 Input         Operation     Stack after
-Token  1 : 3  push          Stack:  3 
-Token  2 : 4  push          Stack:  3 4 
-Token  3 : 2  push          Stack:  3 4 2 
-Token  4 : *  operate       Stack:  3  8 
-Token  5 : 1  push          Stack:  3  8 1 
-Token  6 : 5  push          Stack:  3  8 1 5 
-Token  7 : -  operate       Stack:  3  8 -4 
-Token  8 : 2  push          Stack:  3  8 -4 2 
-Token  9 : 3  push          Stack:  3  8 -4 2 3 
-Token  10 : ^ operate       Stack:  3  8 -4  8 
-Token  11 : ^ operate       Stack:  3  8  65536 
+Token  1 : 3  push          Stack:  3
+Token  2 : 4  push          Stack:  3 4
+Token  3 : 2  push          Stack:  3 4 2
+Token  4 : *  operate       Stack:  3  8
+Token  5 : 1  push          Stack:  3  8 1
+Token  6 : 5  push          Stack:  3  8 1 5
+Token  7 : -  operate       Stack:  3  8 -4
+Token  8 : 2  push          Stack:  3  8 -4 2
+Token  9 : 3  push          Stack:  3  8 -4 2 3
+Token  10 : ^ operate       Stack:  3  8 -4  8
+Token  11 : ^ operate       Stack:  3  8  65536
 Token  12 : / operate       Stack:  3  .000122
 Token  13 : + operate       Stack:   3.000122
 

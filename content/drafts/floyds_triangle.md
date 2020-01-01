@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 
-[[wp:Floyd's triangle|Floyd's triangle]]   lists the natural numbers in a right triangle aligned to the left where 
+[[wp:Floyd's triangle|Floyd's triangle]]   lists the natural numbers in a right triangle aligned to the left where
 * the first row is   '''1'''     (unity)
 * successive rows start towards the left with the next number followed by successive naturals listing one more number than the line above.
 
@@ -32,7 +32,7 @@ The first few lines of a Floyd triangle looks like this:
 
 
 ;Task:
-:# Write a program to generate and display here the first   n   lines of a Floyd triangle. 
+:# Write a program to generate and display here the first   n   lines of a Floyd triangle.
 (Use   n=5   and   n=14   rows).
 :# Ensure that when displayed in a mono-space font, the numbers line up in vertical columns as shown and that only one space separates numbers of the last row.
 
@@ -42,7 +42,7 @@ The first few lines of a Floyd triangle looks like this:
 
 ## 360 Assembly
 
-A very concise coding, an illustration of CISC power of the S/360 operation codes. Also an example of the use of EDMK and EX instructions. 
+A very concise coding, an illustration of CISC power of the S/360 operation codes. Also an example of the use of EDMK and EX instructions.
 For macro usage see [[360_Assembly_macros#360_Assembly_Structured_Macros|Structured Macros]] .
 
 ```360asm
@@ -134,8 +134,8 @@ procedure Floyd_Triangle is
   rows : constant Natural := Natural'Value(Ada.Command_Line.Argument(1));
 begin
   for r in 1..rows loop
-    for i in 1..r loop 
-      Ada.Integer_Text_IO.put (r*(r-1)/2+i, Width=> Natural'Image(rows*(rows-1)/2+i)'Length); 
+    for i in 1..r loop
+      Ada.Integer_Text_IO.put (r*(r-1)/2+i, Width=> Natural'Image(rows*(rows-1)/2+i)'Length);
     end loop;
     Ada.Text_IO.New_Line;
   end loop;
@@ -282,7 +282,7 @@ begin
                 writeon( i_w := widths( col ), s_w := 0, " ", number )
             end for_col ;
             write()
-        end for_row 
+        end for_row
     end; % floyds triangle %
 
     floydsTriangle(  5 );
@@ -336,14 +336,14 @@ on floyd(n)
             {start + row + 1, enumFromTo(start, start + row)}
         end |λ|
     end script
-    
+
     snd(mapAccumL(floydRow, 1, enumFromTo(0, n - 1)))
 end floyd
 
 -- showFloyd :: [[Int]] -> String
 on showFloyd(xss)
     set ws to map(compose({my succ, my |length|, my show}), |last|(xss))
-    
+
     script aligned
         on |λ|(xs)
             script pad
@@ -351,11 +351,11 @@ on showFloyd(xss)
                     justifyRight(w, space, show(x))
                 end |λ|
             end script
-            
+
             concat(zipWith(pad, ws, xs))
         end |λ|
     end script
-    
+
     unlines(map(aligned, xss))
 end showFloyd
 
@@ -367,7 +367,7 @@ on run
             showFloyd(floyd(n)) & linefeed
         end |λ|
     end script
-    
+
     unlines(map(test, {5, 14}))
 end run
 
@@ -383,7 +383,7 @@ on compose(fs)
                     mReturn(f)'s |λ|(a)
                 end |λ|
             end script
-            
+
             foldr(result, x, fs)
         end |λ|
     end script
@@ -496,7 +496,7 @@ on mapAccumL(f, acc, xs)
             [item 1 of pair, (item 2 of a) & {item 2 of pair}]
         end |λ|
     end script
-    
+
     foldl(result, [acc, []], xs)
 end mapAccumL
 
@@ -530,7 +530,7 @@ on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -557,7 +557,7 @@ on show(e)
                 show(v)
             end |λ|
         end script
-        
+
         "{" & intercalate(", ", map(serialized, e)) & "}"
     else if c = record then
         script showField
@@ -566,7 +566,7 @@ on show(e)
                 k & ":" & show(v)
             end |λ|
         end script
-        
+
         "{" & intercalate(", ", ¬
             map(showField, zip(allKeys(e), allValues(e)))) & "}"
     else if c = date then
@@ -671,9 +671,9 @@ end showFloyd
 
 -- TEST -------------------------------------------------------------
 on run
-    
+
     showFloyd(floydN(5))
-    
+
 end run
 
 
@@ -765,7 +765,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -783,14 +783,14 @@ on pred(x)
 end pred
 
 -- Egyptian multiplication - progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for binary 
+-- stages of doubling to an accumulator where needed for binary
 -- assembly of a target length
 -- replicate :: Int -> a -> [a]
 on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -864,19 +864,19 @@ end unlines
 ```AutoHotkey
 Floyds_triangle(row){
 	i = 0
-	loop %row% 
+	loop %row%
 	{
 		n := A_Index
 		loop, %n%
 		{
 			m := n, j := i, i++
-			while (m<row) 
+			while (m<row)
 				j += m , m++
 			res .= spaces(StrLen(j+1)-StrLen(i) +(A_Index=1?0:1)) i
 		}
 		if (A_Index < row)
 			res .= "`r`n"
-	}	
+	}
 	return res
 }
 Spaces(no){
@@ -1008,7 +1008,7 @@ for /l %%i in (1,1,%iterations%) do (
     call:getlength %%j
     set /a sparespace=%digits%-!errorlevel!
     for /l %%k in (0,1,!sparespace!) do set "space=!space! "
-      
+
     set line=!line!!space!%%j
     set /a startn=%%j+1
   )
@@ -1070,14 +1070,14 @@ Line <code>150,160</code> creates a vector of the length of all entries is the l
  100 :
  110  REM  FLOYD'S TRIANGLE
  120 :
- 130  DEF  FN Q(A) =  INT ( LOG (A) /  LOG (10)) + 1                
+ 130  DEF  FN Q(A) =  INT ( LOG (A) /  LOG (10)) + 1
  140 N = 14
- 150  DIM P(N): P(0) =  - 1: FOR J = 1 TO N: I = (N * N - N) / 2 + J                              
- 160 P(J) = P(J - 1) + FN Q(I) + 1: NEXT J                          
- 200  FOR R = 1 TO N: FOR C = 1 TO R                                  
- 210 NR = NR + 1:COL = P(C) - ( FN Q(NR) - 1)                         
+ 150  DIM P(N): P(0) =  - 1: FOR J = 1 TO N: I = (N * N - N) / 2 + J
+ 160 P(J) = P(J - 1) + FN Q(I) + 1: NEXT J
+ 200  FOR R = 1 TO N: FOR C = 1 TO R
+ 210 NR = NR + 1:COL = P(C) - ( FN Q(NR) - 1)
  220  HTAB COL: PRINT NR;: NEXT C
- 230  PRINT : NEXT R                    
+ 230  PRINT : NEXT R
 
 ```
 
@@ -1092,7 +1092,7 @@ Line <code>150,160</code> creates a vector of the length of all entries is the l
 11 12 13 14 15
 ```
 
-                                                                                
+
 
 ```txt
 ]RUN
@@ -1347,8 +1347,8 @@ Floyd 14:
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void t(int n)
 {
@@ -1406,7 +1406,7 @@ int main(void)
 {
 	t(5), t(14);
 
-	// maybe not 
+	// maybe not
 	// t(10000);
 	return 0;
 }
@@ -1444,7 +1444,7 @@ public:
 private:
     void killArray()
     {
-	if( lastLineLen ) 
+	if( lastLineLen )
 	    delete [] lastLineLen;
     }
 
@@ -1757,26 +1757,26 @@ Output as Kotlin.
 92 93 94 95 96 97 98 99 100 101 102 103 104 105
 
 (floydtriangle 5 2)
-   1 
-  10   11 
- 100  101  110 
- 111 1000 1001 1010 
-1011 1100 1101 1110 1111 
+   1
+  10   11
+ 100  101  110
+ 111 1000 1001 1010
+1011 1100 1101 1110 1111
 
 (floydtriangle 14 36)
- 1 
- 2  3 
- 4  5  6 
- 7  8  9  A 
- B  C  D  E  F 
- G  H  I  J  K  L 
- M  N  O  P  Q  R  S 
- T  U  V  W  X  Y  Z 10 
-11 12 13 14 15 16 17 18 19 
-1A 1B 1C 1D 1E 1F 1G 1H 1I 1J 
-1K 1L 1M 1N 1O 1P 1Q 1R 1S 1T 1U 
-1V 1W 1X 1Y 1Z 20 21 22 23 24 25 26 
-27 28 29 2A 2B 2C 2D 2E 2F 2G 2H 2I 2J 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9  A
+ B  C  D  E  F
+ G  H  I  J  K  L
+ M  N  O  P  Q  R  S
+ T  U  V  W  X  Y  Z 10
+11 12 13 14 15 16 17 18 19
+1A 1B 1C 1D 1E 1F 1G 1H 1I 1J
+1K 1L 1M 1N 1O 1P 1Q 1R 1S 1T 1U
+1V 1W 1X 1Y 1Z 20 21 22 23 24 25 26
+27 28 29 2A 2B 2C 2D 2E 2F 2G 2H 2I 2J
 2K 2L 2M 2N 2O 2P 2Q 2R 2S 2T 2U 2V 2W 2X
 
 ```
@@ -1842,7 +1842,7 @@ defmodule Floyd do
     format = Enum.map(widths, fn wide -> "~#{wide}w" end) |> List.to_tuple
     line(n, 0, 1, format)
   end
-  
+
   def line(n, n, _, _), do: :ok
   def line(n, i, count, format) do
     Enum.each(0..i, fn j -> :io.fwrite(elem(format,j), [count+j]) end)
@@ -2021,7 +2021,7 @@ Example for n=14
 open System
 
 [<EntryPoint>]
-let main argv = 
+let main argv =
     // columns and rows are 0-based, so the input has to be decremented:
     let maxRow =
         match UInt32.TryParse(argv.[0]) with
@@ -2092,26 +2092,26 @@ IN: rosetta-code.floyds-triangle
 
 ```txt
 
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
 
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
-92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
+92 93 94 95 96 97 98 99 100 101 102 103 104 105
 
 ```
 
@@ -2152,27 +2152,27 @@ Please find compilation instructions on GNU/linux system at the beginning of the
 !
 !a=./f && make $a && OMP_NUM_THREADS=2 $a 1223334444
 !gfortran -std=f2008 -Wall -ffree-form -fall-intrinsics f.f08 -o f
-!  1 
-!  2  3 
-!  4  5  6 
-!  7  8  9 10 
-! 11 12 13 14 15 
+!  1
+!  2  3
+!  4  5  6
+!  7  8  9 10
+! 11 12 13 14 15
 !
 !
-!  1 
-!  2  3 
-!  4  5  6 
-!  7  8  9 10 
-! 11 12 13 14 15 
-! 16 17 18 19 20 21 
-! 22 23 24 25 26 27 28 
-! 29 30 31 32 33 34 35 36 
-! 37 38 39 40 41 42 43 44  45 
-! 46 47 48 49 50 51 52 53  54  55 
-! 56 57 58 59 60 61 62 63  64  65  66 
-! 67 68 69 70 71 72 73 74  75  76  77  78 
-! 79 80 81 82 83 84 85 86  87  88  89  90  91 
-! 92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+!  1
+!  2  3
+!  4  5  6
+!  7  8  9 10
+! 11 12 13 14 15
+! 16 17 18 19 20 21
+! 22 23 24 25 26 27 28
+! 29 30 31 32 33 34 35 36
+! 37 38 39 40 41 42 43 44  45
+! 46 47 48 49 50 51 52 53  54  55
+! 56 57 58 59 60 61 62 63  64  65  66
+! 67 68 69 70 71 72 73 74  75  76  77  78
+! 79 80 81 82 83 84 85 86  87  88  89  90  91
+! 92 93 94 95 96 97 98 99 100 101 102 103 104 105
 !
 !
 !
@@ -2208,7 +2208,7 @@ contains
       write(6,*) ''
     end do
   end subroutine floyd
-  
+
 end program p
 
 ```
@@ -2277,8 +2277,8 @@ End
 {{out}}
 
 ```txt
-output for 5             output for 14  
-                         
+output for 5             output for 14
+
   1                        1
   2  3                     2  3
   4  5  6                  4  5  6
@@ -2313,8 +2313,8 @@ For siCount = 0 To siInput.Max
     Inc siNo
     Inc siCounter
     Print Format(siNo, "####");
-      If siLine = siCounter Then 
-        Print 
+      If siLine = siCounter Then
+        Print
         Inc siLine
         siCounter = 0
       End If
@@ -2640,25 +2640,25 @@ Example use:
 
 ```J
    floyd 5
- 1            
- 2  3         
- 4  5  6      
- 7  8  9 10   
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
 11 12 13 14 15
    floyd 14
- 1                                             
- 2  3                                          
- 4  5  6                                       
- 7  8  9 10                                    
-11 12 13 14 15                                 
-16 17 18 19 20 21                              
-22 23 24 25 26 27 28                           
-29 30 31 32 33 34 35 36                        
-37 38 39 40 41 42 43 44  45                    
-46 47 48 49 50 51 52 53  54  55                
-56 57 58 59 60 61 62 63  64  65  66            
-67 68 69 70 71 72 73 74  75  76  77  78        
-79 80 81 82 83 84 85 86  87  88  89  90  91    
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
 92 93 94 95 96 97 98 99 100 101 102 103 104 105
 ```
 
@@ -2690,7 +2690,7 @@ public class Floyd {
 		printTriangle(5);
 		printTriangle(14);
 	}
-	
+
 	private static void printTriangle(int n){
 		System.out.println(n + " rows:");
 		for(int rowNum = 1, printMe = 1, numsPrinted = 0;
@@ -2711,26 +2711,26 @@ Output:
 
 ```txt
 5 rows:
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
 14 rows:
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
-92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
+92 93 94 95 96 97 98 99 100 101 102 103 104 105
 ```
 
 
@@ -2738,7 +2738,7 @@ Output:
 ## JavaScript
 
 
-###  ES5 
+###  ES5
 
 (In a functional idiom of JavaScript)
 
@@ -3029,7 +3029,7 @@ Two main functions:
 
 
 
-###  Spidermonkey 
+###  Spidermonkey
 
 
 (Used TCL example as a starting point.)
@@ -3055,7 +3055,7 @@ function padLeft(s, w) {
 function floyd(nRows) {
     var lowerLeft = nRows * (nRows - 1) / 2 + 1;
     var lowerRight = nRows * (nRows + 1) / 2;
-    
+
     var colWidths = [];
     for (var col = lowerLeft; col <= lowerRight; col++) {
         colWidths.push(String(col).length);
@@ -3084,7 +3084,7 @@ main();
   4  5  6
   7  8  9 10
  11 12 13 14 15
- 
+
  Floyd 14:
   1
   2  3
@@ -3143,28 +3143,28 @@ def floyd(n):
 
 ```sh
 $ jq -M -r -n -f floyds_triangle.jq > floyds_triangle.out
-floyd(5): 
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
+floyd(5):
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
 
-floyd(14): 
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
-92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+floyd(14):
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
+92 93 94 95 96 97 98 99 100 101 102 103 104 105
 ```
 
 
@@ -3183,7 +3183,7 @@ function floydtriangle(rows)
         println()
     end
 end
- 
+
 floydtriangle(5); println(); floydtriangle(14)
 
 ```
@@ -3325,27 +3325,27 @@ next
 
 ```txt
 Number of rows needed:- 5
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
 
 Number of rows needed:- 14
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
-92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
+92 93 94 95 96 97 98 99 100 101 102 103 104 105
 ```
 
 
@@ -3442,25 +3442,25 @@ floyd(14);
 
 ```txt
 
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
-92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
+92 93 94 95 96 97 98 99 100 101 102 103 104 105
 
 ```
 
@@ -3503,7 +3503,7 @@ Output:
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 
 ```Matlab
@@ -3641,30 +3641,30 @@ Say ll                                -- output last line
 
 ```txt
 
-Rows: 5 
- 
-  1 
-  2  3 
-  4  5  6 
-  7  8  9 10 
- 11 12 13 14 15 
+Rows: 5
 
-Rows: 14 
- 
-  1 
-  2  3 
-  4  5  6 
-  7  8  9 10 
- 11 12 13 14 15 
- 16 17 18 19 20 21 
- 22 23 24 25 26 27 28 
- 29 30 31 32 33 34 35 36 
- 37 38 39 40 41 42 43 44  45 
- 46 47 48 49 50 51 52 53  54  55 
- 56 57 58 59 60 61 62 63  64  65  66 
- 67 68 69 70 71 72 73 74  75  76  77  78 
- 79 80 81 82 83 84 85 86  87  88  89  90  91 
- 92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+  1
+  2  3
+  4  5  6
+  7  8  9 10
+ 11 12 13 14 15
+
+Rows: 14
+
+  1
+  2  3
+  4  5  6
+  7  8  9 10
+ 11 12 13 14 15
+ 16 17 18 19 20 21
+ 22 23 24 25 26 27 28
+ 29 30 31 32 33 34 35 36
+ 37 38 39 40 41 42 43 44  45
+ 46 47 48 49 50 51 52 53  54  55
+ 56 57 58 59 60 61 62 63  64  65  66
+ 67 68 69 70 71 72 73 74  75  76  77  78
+ 79 80 81 82 83 84 85 86  87  88  89  90  91
+ 92 93 94 95 96 97 98 99 100 101 102 103 104 105
 ```
 
 
@@ -3701,29 +3701,29 @@ loop row = 1 for numRows
 
 ```txt
 
-displaying a 5 row Floyd's triangle: 
- 
-  1 
-  2  3 
-  4  5  6 
-  7  8  9 10 
+displaying a 5 row Floyd's triangle:
+
+  1
+  2  3
+  4  5  6
+  7  8  9 10
  11 12 13 14 15
-  
-displaying a 14 row Floyd's triangle: 
- 
-  1 
-  2  3 
-  4  5  6 
-  7  8  9 10 
- 11 12 13 14 15 
- 16 17 18 19 20 21 
- 22 23 24 25 26 27 28 
- 29 30 31 32 33 34 35 36 
- 37 38 39 40 41 42 43 44  45 
- 46 47 48 49 50 51 52 53  54  55 
- 56 57 58 59 60 61 62 63  64  65  66 
- 67 68 69 70 71 72 73 74  75  76  77  78 
- 79 80 81 82 83 84 85 86  87  88  89  90  91 
+
+displaying a 14 row Floyd's triangle:
+
+  1
+  2  3
+  4  5  6
+  7  8  9 10
+ 11 12 13 14 15
+ 16 17 18 19 20 21
+ 22 23 24 25 26 27 28
+ 29 30 31 32 33 34 35 36
+ 37 38 39 40 41 42 43 44  45
+ 46 47 48 49 50 51 52 53  54  55
+ 56 57 58 59 60 61 62 63  64  65  66
+ 67 68 69 70 71 72 73 74  75  76  77  78
+ 79 80 81 82 83 84 85 86  87  88  89  90  91
  92 93 94 95 96 97 98 99 100 101 102 103 104 105
 
 ```
@@ -3765,26 +3765,26 @@ Output:
 
 ```txt
 @[@[1], @[2, 3], @[4, 5, 6], @[7, 8, 9, 10], @[11, 12, 13, 14, 15]]
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
 
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
-92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
+92 93 94 95 96 97 98 99 100 101 102 103 104 105
 ```
 
 
@@ -3916,7 +3916,7 @@ procedure floyd1 (numberOfLines: integer);
 { variant with repeat .. until loop }
   var
     i, j, numbersInLine, startOfLastlLine: integer;
- 
+
   begin
     startOfLastlLine := (numberOfLines - 1) * numberOfLines div 2 + 1;
     i := 1;
@@ -3933,12 +3933,12 @@ procedure floyd1 (numberOfLines: integer);
       inc(numbersInLine);
     until (numbersInLine > numberOfLines);
   end;
- 
+
 procedure floyd2 (numberOfLines: integer);
 { Variant with for .. do loop }
   var
     i, j, numbersInLine, startOfLastlLine: integer;
- 
+
   begin
     startOfLastlLine := (numberOfLines - 1) * numberOfLines div 2 + 1;
     i := 1;
@@ -3952,7 +3952,7 @@ procedure floyd2 (numberOfLines: integer);
       writeln;
     end;
   end;
- 
+
 begin
   writeln ('*** Floyd 5 ***');
   floyd1(5);
@@ -3967,27 +3967,27 @@ Output:
 ```txt
 % ./Floyd
 *** Floyd 5 ***
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
 
 *** Floyd 14 ***
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
-92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
+92 93 94 95 96 97 98 99 100 101 102 103 104 105
 ```
 
 
@@ -4020,7 +4020,7 @@ sub displayFloydTriangle {
   return;
 }
 
-# 
+#
 ### = Main =============================================
 
 my @counts;
@@ -4094,25 +4094,25 @@ say format-rows(@floyd2[^14]);
 {{out}}
 
 ```txt
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
 11 12 13 14 15
- 
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
+
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
 92 93 94 95 96 97 98 99 100 101 102 103 104 105
 ```
 
@@ -4202,28 +4202,28 @@ function floyds_triangle($n) {
 {{out}}
 
 ```txt
- 
+
 n = 5
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
 n = 14
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
-92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
+92 93 94 95 96 97 98 99 100 101 102 103 104 105
 
 ```
 
@@ -4326,7 +4326,7 @@ How many rows do you want?
   7  8  9 10
  11 12 13 14 15
 
-How many rows do you want? 
+How many rows do you want?
   1
   2  3
   4  5  6
@@ -4374,28 +4374,28 @@ Output :
 
 ```txt
  ?- floyd(5).
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
 true.
 
  ?- floyd(14).
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
-92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
+92 93 94 95 96 97 98 99 100 101 102 103 104 105
 true.
 
 ```
@@ -4407,23 +4407,23 @@ true.
 
 
 ```PureBasic
-Procedure.i sumTo(n) 
+Procedure.i sumTo(n)
   Protected r,i
-  For i=1 To n 
+  For i=1 To n
     r+i
-  Next 
+  Next
   ProcedureReturn r.i
 EndProcedure
- 
+
 ; [1]
 ; array rsA(n)... string-lengths of the numbers
 ; in the bottom row
- 
+
 ; [2]
 ; sumTo(i-1)+1    to     sumTo(i)
            ; 11 12 13 14 15
   ; here k is the column-index for array rsA(k)
- 
+
 Procedure.s FloydsTriangle(n)
   Protected r.s,s.s,t.s,i,j,k
   ; [1]
@@ -4434,26 +4434,26 @@ Procedure.s FloydsTriangle(n)
     rsA(i)=Len(Str(j))
   Next
   ; [2]
-  For i=1 To n 
+  For i=1 To n
     t.s="":k=0
     For j=sumTo(i-1)+1 To sumTo(i)
       k+1:t.s+RSet(Str(j),rsA(k)," ")+" "
-    Next 
+    Next
     r.s+RTrim(t.s)+Chr(13)+Chr(10)
-  Next 
+  Next
   r.s=Left(r.s,Len(r.s)-2)
   ProcedureReturn r.s
 EndProcedure
- 
-If OpenConsole() 
+
+If OpenConsole()
   n=5
   r.s=FloydsTriangle(n)
   PrintN(r.s)
-  
+
   n=14
   r.s=FloydsTriangle(n)
   PrintN(r.s)
-  
+
   Print(#crlf$ + #crlf$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -4509,7 +4509,7 @@ EndIf
 	for row in rows:
 		print( ' '.join('%*i' % space_n for space_n in zip(colspace, row)))
 
-		
+
 >>> pfloyd()
 1
 2 3
@@ -4536,7 +4536,7 @@ EndIf
 67 68 69 70 71 72 73 74  75  76  77  78
 79 80 81 82 83 84 85 86  87  88  89  90  91
 92 93 94 95 96 97 98 99 100 101 102 103 104 105
->>> 
+>>>
 ```
 
 
@@ -4758,11 +4758,11 @@ if __name__ == '__main__':
 
 (define (floyd n)
   (define (width x) (string-length (~a x)))
-  (define (~n x c) (~a x 
+  (define (~n x c) (~a x
                        #:width (width (+ (tri (- n 1)) 1 c))
                        #:align 'right #:left-pad-string " "))
   (for ([r n])
-    (for ([c (+ r 1)]) 
+    (for ([c (+ r 1)])
       (display (~a (~n (+ (tri r) 1 c) c) " ")))
     (newline)))
 
@@ -4775,25 +4775,25 @@ Output:
 
 ```txt
 
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
-92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
+92 93 94 95 96 97 98 99 100 101 102 103 104 105
 
 ```
 
@@ -4806,29 +4806,29 @@ Output:
 
 
 ```rexx
-  
-/* REXX *************************************************************** 
-* Parse Arg rowcount                                                    
-* 12.07.2012 Walter Pachl  - translated from Python                     
-**********************************************************************/ 
-Parse Arg rowcount                                                      
-col=0                               
-ll=''                               /* last line of triangle         */ 
-Do j=rowcount*(rowcount-1)/2+1 to rowcount*(rowcount+1)/2               
-  col=col+1                         /* column number                 */ 
-  ll=ll j                           /* build last line               */ 
-  len.col=length(j)                 /* remember length of column     */ 
-  End                                                                   
-Do i=1 To rowcount-1                /* now do and output the rest    */ 
-  ol=''                                                                 
-  col=0                                                                 
-  Do j=i*(i-1)/2+1 to i*(i+1)/2     /* elements of line i            */ 
-    col=col+1                                                           
-    ol=ol right(j,len.col)          /* element in proper length      */ 
-    end                                                                 
-  Say ol                            /* output ith line               */ 
-  end                                                                   
-Say ll                              /* output last line              */ 
+
+/* REXX ***************************************************************
+* Parse Arg rowcount
+* 12.07.2012 Walter Pachl  - translated from Python
+**********************************************************************/
+Parse Arg rowcount
+col=0
+ll=''                               /* last line of triangle         */
+Do j=rowcount*(rowcount-1)/2+1 to rowcount*(rowcount+1)/2
+  col=col+1                         /* column number                 */
+  ll=ll j                           /* build last line               */
+  len.col=length(j)                 /* remember length of column     */
+  End
+Do i=1 To rowcount-1                /* now do and output the rest    */
+  ol=''
+  col=0
+  Do j=i*(i-1)/2+1 to i*(i+1)/2     /* elements of line i            */
+    col=col+1
+    ol=ol right(j,len.col)          /* element in proper length      */
+    end
+  Say ol                            /* output ith line               */
+  end
+Say ll                              /* output last line              */
 
 ```
 
@@ -4841,9 +4841,9 @@ n=5
   2  3
   4  5  6
   7  8  9 10
- 11 12 13 14 15 
+ 11 12 13 14 15
 
-n=14  
+n=14
   1
   2  3
   4  5  6
@@ -4857,7 +4857,7 @@ n=14
  56 57 58 59 60 61 62 63  64  65  66
  67 68 69 70 71 72 73 74  75  76  77  78
  79 80 81 82 83 84 85 86  87  88  89  90  91
- 92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+ 92 93 94 95 96 97 98 99 100 101 102 103 104 105
 
 ```
 
@@ -4920,7 +4920,7 @@ displaying a  14  row Floyd's triangle:
 
 ```txt
 
-  ··· 44 rows not shown ··· 
+  ··· 44 rows not shown ···
 991  992  993  994  995  996  997  998  999 1000 1001 1002 1003 1004 1005 1006 1007 1008 1009 1010 1011 1012 1013 1014 1015 1016 1017 1018 1019 1020 1021 1022 1023 1024 1025 1026 1027 1028 1029 1030 1031 1032 1033 1034 1035
 
 ```
@@ -4991,7 +4991,7 @@ FE FF 100 101 102 103 104 105 106 107 108 109 10A 10B 10C 10D 10E 10F 110 111 11
 
 
 ===version 4, up to base 90===
-This REXX version could be extended to even higher bases, all that is needed is to append more viewable characters to express "higher" numerals   ("digits" in base '''X'''). 
+This REXX version could be extended to even higher bases, all that is needed is to append more viewable characters to express "higher" numerals   ("digits" in base '''X''').
 
 This version of the '''base''' function has some boilerplate for signed numbers and various error checking.
 
@@ -5053,7 +5053,7 @@ ser:  say; say  '***error***';             say arg(1);     say;      exit 13
 ```txt
 
 displaying a  6  row Floyd's triangle in base 2:
- 
+
     1
    10    11
   100   101   110
@@ -5142,11 +5142,11 @@ displaying a  40  row Floyd's triangle in base 81:
 
 rows = 10
 n = 0
-for r = 1 to rows   
-    for c = 1 to r  
+for r = 1 to rows
+    for c = 1 to r
         n = n + 1
-        see string(n) + " " 
-    next 
+        see string(n) + " "
+    next
     see nl
 next
 
@@ -5157,20 +5157,20 @@ Output:
 
 ```txt
 
-1 
-2 3 
-4 5 6 
-7 8 9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44 45 
-46 47 48 49 50 51 52 53 54 55 
-56 57 58 59 60 61 62 63 64 65 66 
-67 68 69 70 71 72 73 74 75 76 77 78 
-79 80 81 82 83 84 85 86 87 88 89 90 91 
-92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+1
+2 3
+4 5 6
+7 8 9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44 45
+46 47 48 49 50 51 52 53 54 55
+56 57 58 59 60 61 62 63 64 65 66
+67 68 69 70 71 72 73 74 75 76 77 78
+79 80 81 82 83 84 85 86 87 88 89 90 91
+92 93 94 95 96 97 98 99 100 101 102 103 104 105
 
 ```
 
@@ -5227,11 +5227,11 @@ floyd(14)
 
 ```runbasic
 input "Number of rows: "; rows
-dim colSize(rows)   
+dim colSize(rows)
 for col=1 to rows
     colSize(col) = len(str$(col + rows * (rows-1)/2))
 next
- 
+
 thisNum = 1
 for r = 1 to rows
     for col = 1 to r
@@ -5245,20 +5245,20 @@ next
 
 ```txt
 Number of rows: ?14
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
-92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
+92 93 94 95 96 97 98 99 100 101 102 103 104 105
 ```
 
 
@@ -5310,19 +5310,19 @@ fn floyds_triangle(n: u32) {
 
 
 ```scala
-def floydstriangle( n:Int ) { 
+def floydstriangle( n:Int ) {
   val s = (1 to n)
   val t = s map {i => (s take(i-1) sum) + 1}
-  
-  (s zip t) foreach { n => 
-    var m = n._2; 
-	  
+
+  (s zip t) foreach { n =>
+    var m = n._2;
+
     for( i <- 0 until n._1 ) {
       val w = (t.last + i).toString.length + 1  // Column width from last row
       print("           " + m takeRight w )
       m+=1
     }
-	  
+
     print("\n")
   }
 }
@@ -5547,26 +5547,26 @@ floydTriangle 14
 ```txt
 
 Floyd 5:
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
 Floyd 14:
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
-92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
+92 93 94 95 96 97 98 99 100 101 102 103 104 105
 
 ```
 
@@ -5668,26 +5668,26 @@ End Sub
 
 {{out}}
 <lang>5 lines
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
 
 14 lines
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
 92 93 94 95 96 97 98 99 100 101 102 103 104 105
 ```
 
@@ -5876,26 +5876,26 @@ floydsTriangle(14);
 
 ```txt
 
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
 
- 1 
- 2  3 
- 4  5  6 
- 7  8  9 10 
-11 12 13 14 15 
-16 17 18 19 20 21 
-22 23 24 25 26 27 28 
-29 30 31 32 33 34 35 36 
-37 38 39 40 41 42 43 44  45 
-46 47 48 49 50 51 52 53  54  55 
-56 57 58 59 60 61 62 63  64  65  66 
-67 68 69 70 71 72 73 74  75  76  77  78 
-79 80 81 82 83 84 85 86  87  88  89  90  91 
-92 93 94 95 96 97 98 99 100 101 102 103 104 105 
+ 1
+ 2  3
+ 4  5  6
+ 7  8  9 10
+11 12 13 14 15
+16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31 32 33 34 35 36
+37 38 39 40 41 42 43 44  45
+46 47 48 49 50 51 52 53  54  55
+56 57 58 59 60 61 62 63  64  65  66
+67 68 69 70 71 72 73 74  75  76  77  78
+79 80 81 82 83 84 85 86  87  88  89  90  91
+92 93 94 95 96 97 98 99 100 101 102 103 104 105
 
 ```
 
@@ -5911,7 +5911,7 @@ floydsTriangle(14);
 40 PRINT TAB (col);j;
 50 LET col=col+3
 60 NEXT j
-70 PRINT 
+70 PRINT
 80 LET col=1
 90 NEXT r
 ```

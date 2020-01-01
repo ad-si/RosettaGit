@@ -27,8 +27,8 @@ tags = []
 
 Record a monophonic 16-bit PCM sound into either memory space, a file or array.
 
-(This task neglects to specify the sample rate, and whether to use signed samples. 
-The programs in this page might use signed 16-bit or unsigned 16-bit samples, at 8000 Hz, 44100 Hz, or any other sample rate. 
+(This task neglects to specify the sample rate, and whether to use signed samples.
+The programs in this page might use signed 16-bit or unsigned 16-bit samples, at 8000 Hz, 44100 Hz, or any other sample rate.
 Therefore, these programs might not record sound in the same format.)
 
 
@@ -85,37 +85,37 @@ MCI_SendString(p_lpszCommand,ByRef r_lpszReturnString="",p_hwndCallback=0) {
       bitspersample% = 16
       channels% = 2
       samplespersec% = 44100
- 
+
       alignment% = bitspersample% * channels% / 8
       bytespersec% = alignment% * samplespersec%
- 
+
       params$ = " bitspersample " + STR$(bitspersample%) + \
       \         " channels " + STR$(channels%) + \
       \         " alignment " + STR$(alignment%) + \
       \         " samplespersec " + STR$(samplespersec%) + \
       \         " bytespersec " + STR$(bytespersec%)
- 
+
       SYS "mciSendString", "close all", 0, 0, 0
       SYS "mciSendString", "open new type waveaudio alias capture", 0, 0, 0
       SYS "mciSendString", "set capture" + params$, 0, 0, 0 TO res%
       IF res% ERROR 100, "Couldn't set capture parameters: " + STR$(res% AND &FFFF)
- 
+
       PRINT "Press SPACE to start recording..."
       REPEAT UNTIL INKEY(1) = 32
- 
+
       SYS "mciSendString", "record capture", 0, 0, 0 TO res%
       IF res% ERROR 100, "Couldn't start audio capture: " + STR$(res% AND &FFFF)
- 
+
       PRINT "Recording, press SPACE to stop..."
       REPEAT UNTIL INKEY(1) = 32
- 
+
       SYS "mciSendString", "stop capture", 0, 0, 0
       SYS "mciSendString", "save capture " + wavfile$, 0, 0, 0 TO res%
       IF res% ERROR 100, "Couldn't save to WAV file: " + STR$(res% AND &FFFF)
- 
+
       SYS "mciSendString", "delete capture", 0, 0, 0
       SYS "mciSendString", "close capture", 0, 0, 0
- 
+
       PRINT "Captured audio is stored in " wavfile$
 ```
 
@@ -129,8 +129,8 @@ MCI_SendString(p_lpszCommand,ByRef r_lpszReturnString="",p_hwndCallback=0) {
 Read/write raw device <code>/dev/dsp</code>.  On Linux you need access to said device, meaning probably you should be in audio user group.
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <unistd.h>
 #include <sys/types.h>
 #include <fcntl.h>
@@ -206,9 +206,9 @@ private:
     void record()
     {
 	if( mciExecute( "open new type waveaudio alias my_sound") )
-	{ 
-	    mciExecute( "record my_sound" ); 
-	    action = "RECORDING"; rec = true; 
+	{
+	    mciExecute( "record my_sound" );
+	    action = "RECORDING"; rec = true;
 	}
     }
     void play()
@@ -274,7 +274,7 @@ int main( int argc, char* argv[] )
 
 ```c
 // chuck this with other shreds to record to file
-// example> chuck foo.ck bar.ck rec 
+// example> chuck foo.ck bar.ck rec
 
 // arguments: rec:<filename>
 
@@ -460,7 +460,7 @@ fun main(args: Array<String>) {
          }
     }).start()
 
-    // Captures the sound and saves it in a WAV file             
+    // Captures the sound and saves it in a WAV file
     try {
         if (AudioSystem.isLineSupported(info)) {
             line.open(format)
@@ -505,7 +505,7 @@ A more direct way is..
     print "     .... now stopping the recording."
     r$ =mciSendString$( "stop capture")
     r$ =mciSendString$( "save capture " +chr$( 34) +"sample.wav" +chr$( 34))
-    r$ =mciSendString$( "close capture")    
+    r$ =mciSendString$( "close capture")
     print "Done recording."
     r$=mciSendString$( "open " +q$ +"sample.wav" +q$ +" type waveaudio alias sfx")
     r$=mciSendString$( "play sfx wait")
@@ -541,12 +541,12 @@ command makeRecording
     set the recordFormat to "wave" -- can be wav,aiff, au
     set the recordRate to 44.1 -- sample at 44100 Hz
     set the recordSampleSize to 16  --default is 8 bit
-    ask file "Save recording as" 
+    ask file "Save recording as"
     if it is not empty then
         answer record --show sound input dialog with presets above
         record sound file it  -- actual record command
         wait 10 seconds
-        stop recording 
+        stop recording
     end if
 end makeRecording
 ```
@@ -590,7 +590,7 @@ play(p)
 
 ```ocaml
 #load "unix.cma"
- 
+
 let record bytes =
   let buf = String.make bytes '\000' in
   let ic = open_in "/dev/dsp" in
@@ -600,12 +600,12 @@ let record bytes =
   done;
   close_in ic;
   (buf)
- 
+
 let play buf len =
   let oc = open_out "/dev/dsp" in
   output_string oc buf;
   close_out oc
- 
+
 let () =
   let bytes = 65536 in
   let p = record bytes in

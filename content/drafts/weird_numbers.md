@@ -17,7 +17,7 @@ In other words, the sum of the proper divisors (divisors including 1 but not its
 
 E.G. '''12''' is ''not'' a weird number. It is abundant; the proper divisors '''1, 2, 3, 4 <small>&</small> 6''' sum to '''16''', but it is semiperfect, '''6 + 4 + 2 == 12'''.
 
-'''70''' ''is'' a weird number. It is abundant; the proper divisors '''1, 2, 5, 7, 10, 14 <small>&</small> 35''' sum to '''74''', but there is no subset of proper divisors that sum to '''70'''. 
+'''70''' ''is'' a weird number. It is abundant; the proper divisors '''1, 2, 5, 7, 10, 14 <small>&</small> 35''' sum to '''74''', but there is no subset of proper divisors that sum to '''70'''.
 
 ;Task:
 
@@ -25,7 +25,7 @@ Find and display, here on this page, the first '''25''' weird numbers.
 
 ;See also:
 
-:* [[oeis:A006037|OEIS:A006037 Weird numbers]] 
+:* [[oeis:A006037|OEIS:A006037 Weird numbers]]
 :* [[Abundant,_deficient_and_perfect_number_classifications|RosettaCode: Abundant, deficient and perfect number classifications]]
 :* [[Proper_divisors|RosettaCode: Proper divisors]]
 
@@ -96,26 +96,26 @@ on descProperDivisors(n)
         set realRoot to n ^ (1 / 2)
         set intRoot to realRoot as integer
         set blnPerfect to intRoot = realRoot
-        
-        -- isFactor :: Int -> Bool 
+
+        -- isFactor :: Int -> Bool
         script isFactor
             on |λ|(x)
                 n mod x = 0
             end |λ|
         end script
-        
+
         -- Factors up to square root of n,
         set lows to filter(isFactor, enumFromTo(1, intRoot))
-        
+
         -- and cofactors of these beyond the square root,
-        
+
         -- integerQuotient :: Int -> Int
         script integerQuotient
             on |λ|(x)
                 (n / x) as integer
             end |λ|
         end script
-        
+
         set t to rest of lows
         if blnPerfect then
             set xs to t
@@ -183,7 +183,7 @@ on sum(xs)
             a + b
         end |λ|
     end script
-    
+
     foldl(add, 0, xs)
 end sum
 
@@ -201,7 +201,7 @@ on take(n, xs)
     return ys
 end take
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if script is class of f then
@@ -354,8 +354,8 @@ int main() {
 
 {{trans|D}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <numeric>
 #include <vector>
@@ -684,7 +684,7 @@ It also uses a sieve so we can make use of the fact that all multiples of a semi
 
 Runs in less than 10 ms on an Intel Core i7-8565U machine. The first fifty (with a sieve size of 27000) takes roughly double that.
 
-When run on the same machine, the 'tweaked' version (linked to below), which was supplied by Enter your username, is almost 3 times faster than this. 
+When run on the same machine, the 'tweaked' version (linked to below), which was supplied by Enter your username, is almost 3 times faster than this.
 
 ```go
 package main
@@ -730,7 +730,7 @@ func semiperfect(n int, divs []int) bool {
     } else {
         return false
     }
-} 
+}
 
 func sieve(limit int) []bool {
     // false denotes abundant and not semi-perfect.
@@ -773,7 +773,7 @@ func main() {
 ```txt
 
 The first 25 weird numbers are:
-70 836 4030 5830 7192 7912 9272 10430 10570 10792 10990 11410 11690 12110 12530 12670 13370 13510 13790 13930 14770 15610 15890 16030 16310 
+70 836 4030 5830 7192 7912 9272 10430 10570 10792 10990 11410 11690 12110 12530 12670 13370 13510 13790 13930 14770 15610 15890 16030 16310
 
 ```
 
@@ -808,7 +808,7 @@ descProperDivisors n =
   let root = (floor . sqrt) (fromIntegral n :: Double)
       lows = filter ((0 ==) . rem n) [root,root - 1 .. 1]
       factors
-        | n == root ^ 2 = tail lows 
+        | n == root ^ 2 = tail lows
         | otherwise = lows
   in tail $ reverse (quot n <$> lows) ++ factors
 
@@ -1146,7 +1146,7 @@ fun main() {
 ```txt
 
 The first 25 weird numbers are:
-70 836 4030 5830 7192 7912 9272 10430 10570 10792 10990 11410 11690 12110 12530 12670 13370 13510 13790 13930 14770 15610 15890 16030 16310 
+70 836 4030 5830 7192 7912 9272 10430 10570 10792 10990 11410 11690 12110 12530 12670 13370 13510 13790 13930 14770 15610 15890 16030 16310
 
 ```
 
@@ -1315,7 +1315,7 @@ function semiperfect(integer n, sequence divs)
        or (n>h and semiperfect(n-h, divs))
        or          semiperfect(n, divs)
 end function
- 
+
 function sieve(integer limit)
 -- true denotes abundant and not semi-perfect.
 -- only interested in even numbers >= 2
@@ -1337,8 +1337,8 @@ function sieve(integer limit)
     return wierd
 end function
 
---constant MAX = 25, sieve_limit = 16313 
-constant MAX = 50, sieve_limit = 26533 
+--constant MAX = 25, sieve_limit = 16313
+constant MAX = 50, sieve_limit = 26533
 
 sequence wierd := sieve(sieve_limit), res = {}
 for i=2 to sieve_limit by 2 do
@@ -1616,16 +1616,16 @@ if __name__ == '__main__':
 ```txt
 First 50 weird numbers:
 
- 1 -> 70       11 -> 10990    21 -> 14770    31 -> 18410    41 -> 22190    
- 2 -> 836      12 -> 11410    22 -> 15610    32 -> 18830    42 -> 23170    
- 3 -> 4030     13 -> 11690    23 -> 15890    33 -> 18970    43 -> 23590    
- 4 -> 5830     14 -> 12110    24 -> 16030    34 -> 19390    44 -> 24290    
- 5 -> 7192     15 -> 12530    25 -> 16310    35 -> 19670    45 -> 24430    
- 6 -> 7912     16 -> 12670    26 -> 16730    36 -> 19810    46 -> 24710    
- 7 -> 9272     17 -> 13370    27 -> 16870    37 -> 20510    47 -> 25130    
- 8 -> 10430    18 -> 13510    28 -> 17272    38 -> 21490    48 -> 25690    
- 9 -> 10570    19 -> 13790    29 -> 17570    39 -> 21770    49 -> 26110    
-10 -> 10792    20 -> 13930    30 -> 17990    40 -> 21910    50 -> 26530    
+ 1 -> 70       11 -> 10990    21 -> 14770    31 -> 18410    41 -> 22190
+ 2 -> 836      12 -> 11410    22 -> 15610    32 -> 18830    42 -> 23170
+ 3 -> 4030     13 -> 11690    23 -> 15890    33 -> 18970    43 -> 23590
+ 4 -> 5830     14 -> 12110    24 -> 16030    34 -> 19390    44 -> 24290
+ 5 -> 7192     15 -> 12530    25 -> 16310    35 -> 19670    45 -> 24430
+ 6 -> 7912     16 -> 12670    26 -> 16730    36 -> 19810    46 -> 24710
+ 7 -> 9272     17 -> 13370    27 -> 16870    37 -> 20510    47 -> 25130
+ 8 -> 10430    18 -> 13510    28 -> 17272    38 -> 21490    48 -> 25690
+ 9 -> 10570    19 -> 13790    29 -> 17570    39 -> 21770    49 -> 26110
+10 -> 10792    20 -> 13930    30 -> 17990    40 -> 21910    50 -> 26530
 
 Approx computation time: 278 ms
 ```
@@ -1634,7 +1634,7 @@ Approx computation time: 278 ms
 
 ## REXX
 
-This REXX program could be optimized by finding and using   ''primitive weird numbers''   and multiplying them by 
+This REXX program could be optimized by finding and using   ''primitive weird numbers''   and multiplying them by
 
 prime numbers <big>≥</big> '''149''' to find higher weird numbers,   but it would've added complexity to the REXX program.
 

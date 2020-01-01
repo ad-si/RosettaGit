@@ -113,8 +113,8 @@ YFJBGMTKWNOQXCHIDVALZRSPUE JIBMESWKYZXUCOPRTLNHFAGVQD
 
 {{trans|Kotlin}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -517,13 +517,13 @@ SYMBOLS: l-alphabet r-alphabet last-index ;
 : init-alphabets ( -- )
     "HXUCZVAMDSLKPEFJRIGTWOBNYQ" l-alphabet
     "PTLNBQDEOYSFAVZKGJRIHWXUMC" r-alphabet [ set ] 2bi@ ;
-    
+
 : zero-alphabet ( seq -- seq' )
     last-index get rotate ;
-    
+
 : 3append ( a b c d -- abcd )
     append append append ;
-    
+
 :: permute-l-alphabet ( -- )
     l-alphabet get zero-alphabet dup
     zenith 1 + swap nth :> extracted-char
@@ -534,7 +534,7 @@ SYMBOLS: l-alphabet r-alphabet last-index ;
         [ nadir 1 + tail ]
     } cleave
     3append l-alphabet set ;
-      
+
 :: permute-r-alphabet ( -- )
     r-alphabet get zero-alphabet
     1 rotate dup
@@ -546,17 +546,17 @@ SYMBOLS: l-alphabet r-alphabet last-index ;
         [ nadir 1 + tail ]
     } cleave
     3append r-alphabet set ;
-      
+
 : encipher-char ( char alpha1 alpha2 -- char' )
     '[ _ get index dup last-index set _ get nth ] call ;
-    
+
 : encipher ( str quot -- str' )
     [ permute-l-alphabet permute-r-alphabet ] compose map
     init-alphabets ; inline
-    
+
 : encrypt ( str -- str' )
     [ r-alphabet l-alphabet encipher-char ] encipher ;
-    
+
 : decrypt ( str -- str' )
     [ l-alphabet r-alphabet encipher-char ] encipher ;
 
@@ -564,7 +564,7 @@ SYMBOLS: l-alphabet r-alphabet last-index ;
     init-alphabets
     "WELLDONEISBETTERTHANWELLSAID" encrypt dup decrypt
     [ print ] bi@ ;
-    
+
 MAIN: main
 ```
 
@@ -1109,7 +1109,7 @@ class Chaocipher {
     System.IO.Console->Print("The recovered plaintext is: ")->PrintLine(plainText2);
   }
 
-  function : Chao(in : Char[], mode : Mode, show_steps : Bool) ~ Char[] {  
+  function : Chao(in : Char[], mode : Mode, show_steps : Bool) ~ Char[] {
     i : Int; j : Int; index : Int;
     store : Char;
     len := in->Size();
@@ -1155,7 +1155,7 @@ class Chaocipher {
           temp[13] := store;
           Runtime->Copy(right, 0, temp, 0, temp->Size());
     };
-        
+
     return eText;
   }
 
@@ -1169,7 +1169,7 @@ class Chaocipher {
     return -1;
   }
 
-  enum Mode { ENCRYPT, DECRYPT }  
+  enum Mode { ENCRYPT, DECRYPT }
 }
 ```
 
@@ -1342,7 +1342,7 @@ constant l_alphabet = "HXUCZVAMDSLKPEFJRIGTWOBNYQ",
          r_alphabet = "PTLNBQDEOYSFAVZKGJRIHWXUMC"
 
 enum ENCRYPT, DECRYPT
- 
+
 function chao_cipher(string in, integer mode, bool show_steps)
     integer len = length(in)
     string out = repeat(' ',len)
@@ -1354,7 +1354,7 @@ function chao_cipher(string in, integer mode, bool show_steps)
         out[i] = iff(mode==ENCRYPT?left:right)[index]
 
         if i==len then exit end if
- 
+
         /* permute left */
         left = left[index..26]&left[1..index-1]
         left[2..14] = left[3..14]&left[2]
@@ -1365,7 +1365,7 @@ function chao_cipher(string in, integer mode, bool show_steps)
     end for
     return out
 end function
- 
+
 string plain_text = "WELLDONEISBETTERTHANWELLSAID"
 printf(1,"The original plaintext is : %s\n", {plain_text})
 
@@ -1400,12 +1400,12 @@ The recovered plaintext is : WELLDONEISBETTERTHANWELLSAID
 
 
 ```python
-# Python3 implementation of Chaocipher 
+# Python3 implementation of Chaocipher
 # left wheel = ciphertext wheel
 # right wheel = plaintext wheel
 
 def main():
-    # letters only! makealpha(key) helps generate lalpha/ralpha. 
+    # letters only! makealpha(key) helps generate lalpha/ralpha.
     lalpha = "HXUCZVAMDSLKPEFJRIGTWOBNYQ"
     ralpha = "PTLNBQDEOYSFAVZKGJRIHWXUMC"
     msg = "WELLDONEISBETTERTHANWELLSAID"
@@ -1414,16 +1414,16 @@ def main():
     print("R:", ralpha)
     print("I:", msg)
     print("O:", do_chao(msg, lalpha, ralpha, 1, 0), "\n")
-    
+
     do_chao(msg, lalpha, ralpha, 1, 1)
 
 def do_chao(msg, lalpha, ralpha, en=1, show=0):
     msg = correct_case(msg)
-    out = ""    
+    out = ""
     if show:
-        print("="*54)        
+        print("="*54)
         print(10*" " + "left:" + 21*" " + "right: ")
-        print("="*54)        
+        print("="*54)
         print(lalpha, ralpha, "\n")
     for L in msg:
         if en:
@@ -1434,9 +1434,9 @@ def do_chao(msg, lalpha, ralpha, en=1, show=0):
             out += ralpha[0]
         lalpha, ralpha = scramble_wheels(lalpha, ralpha)
         if show:
-            print(lalpha, ralpha)            
+            print(lalpha, ralpha)
     return out
-    
+
 def makealpha(key=""):
     alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     z = set()
@@ -1453,18 +1453,18 @@ def permu(alp, num):
 
 def rotate_wheels(lalph, ralph, key):
     newin = ralph.index(key)
-    return permu(lalph, newin), permu(ralph, newin)    
+    return permu(lalph, newin), permu(ralph, newin)
 
 def scramble_wheels(lalph, ralph):
-    # LEFT = cipher wheel 
+    # LEFT = cipher wheel
     # Cycle second[1] through nadir[14] forward
     lalph = list(lalph)
     lalph = "".join([*lalph[0],
                     *lalph[2:14],
                     lalph[1],
                     *lalph[14:]])
-    
-    # RIGHT = plain wheel                    
+
+    # RIGHT = plain wheel
     # Send the zenith[0] character to the end[25],
     # cycle third[2] through nadir[14] characters forward
     ralph = list(ralph)
@@ -1483,16 +1483,16 @@ main()
 L: HXUCZVAMDSLKPEFJRIGTWOBNYQ
 R: PTLNBQDEOYSFAVZKGJRIHWXUMC
 I: WELLDONEISBETTERTHANWELLSAID
-O: OAHQHCNYNXTSZJRRHJBYHQKSOUJY 
+O: OAHQHCNYNXTSZJRRHJBYHQKSOUJY
 
 
 ### ================================================
 
-          left:                     right: 
+          left:                     right:
 
 ### ================================================
 
-HXUCZVAMDSLKPEFJRIGTWOBNYQ PTLNBQDEOYSFAVZKGJRIHWXUMC 
+HXUCZVAMDSLKPEFJRIGTWOBNYQ PTLNBQDEOYSFAVZKGJRIHWXUMC
 
 ONYQHXUCZVAMDBSLKPEFJRIGTW XUCPTLNBQDEOYMSFAVZKGJRIHW
 ADBSLKPEFJRIGMTWONYQHXUCZV OYSFAVZKGJRIHMWXUCPTLNBQDE
@@ -1751,11 +1751,11 @@ def encrypt(char)
   @right.rotate!(@right.index(char)+1)
   part = @right.slice!(2,12).rotate
   @right.insert(2, *part)
-  
+
   @left[0]
 end
 
-puts txt.each_char.map{|c| encrypt(c) }.join 
+puts txt.each_char.map{|c| encrypt(c) }.join
 
 ```
 
@@ -1828,11 +1828,11 @@ templates chaocipher@{left:,right:,decode:}
     ..|@chaocipher: { ct: [ $ctshift(1), $ctshift(3..14)..., $ctshift(2), $ctshift(15..-1)...],
       pt: [ $ptshift(1..2)..., $ptshift(4..14)..., $ptshift(3), $ptshift(15..-1)...] };
   end permute
- 
+
   @: {ct:[ $left... ], pt: [ $right... ], result:[]};
   $... -> #
   '$@.result...;' !
- 
+
   <?($decode <0>)>
     def plain: $;
     def index: $@.pt -> [i](<$plain> $i!) -> $(1);
@@ -1844,10 +1844,10 @@ templates chaocipher@{left:,right:,decode:}
     ..|@.result: $@.pt($index);
     $index -> permute -> !VOID
 end chaocipher
- 
+
 'WELLDONEISBETTERTHANWELLSAID' -> chaocipher@{left:'HXUCZVAMDSLKPEFJRIGTWOBNYQ', right:'PTLNBQDEOYSFAVZKGJRIHWXUMC',decode:0} -> '$;
 ' -> !OUT::write
- 
+
 'OAHQHCNYNXTSZJRRHJBYHQKSOUJY' -> chaocipher@{left:'HXUCZVAMDSLKPEFJRIGTWOBNYQ', right:'PTLNBQDEOYSFAVZKGJRIHWXUMC',decode:1} -> '$;
 ' -> !OUT::write
 

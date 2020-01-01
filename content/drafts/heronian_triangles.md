@@ -24,14 +24,14 @@ where   <big>''s''</big>   is half the perimeter of the triangle; that is,
 
 '''[http://www.had2know.com/academics/heronian-triangles-generator-calculator.html Heronian triangles]'''
 are triangles whose sides ''and area'' are all integers.
-: An example is the triangle with sides   '''3, 4, 5'''   whose area is   '''6'''   (and whose perimeter is   '''12'''). 
+: An example is the triangle with sides   '''3, 4, 5'''   whose area is   '''6'''   (and whose perimeter is   '''12''').
 
 
 
 Note that any triangle whose sides are all an integer multiple of   '''3, 4, 5''';   such as   '''6, 8, 10,'''   will also be a Heronian triangle.
 
-Define a '''Primitive Heronian triangle''' as a Heronian triangle where the greatest common divisor 
-of all three sides is   '''1'''   (unity). 
+Define a '''Primitive Heronian triangle''' as a Heronian triangle where the greatest common divisor
+of all three sides is   '''1'''   (unity).
 
 This will exclude, for example, triangle   '''6, 8, 10.'''
 
@@ -62,10 +62,10 @@ with Ada.Text_IO; use Ada.Text_IO;
 procedure Heronian is
    package Int_IO is new Ada.Text_IO.Integer_IO(Integer);
    use Int_IO;
-   
+
    -- ----- Some math...
    function GCD (A, B : in Natural) return Natural is (if B = 0 then A else GCD (B, A mod B));
-   
+
    function Int_Sqrt (N : in Natural) return Natural is
       R1 : Natural := N;
       R2 : Natural;
@@ -80,8 +80,8 @@ procedure Heronian is
          end if;
          R1 := R2;
       end loop;
-   end Int_Sqrt;   
-   
+   end Int_Sqrt;
+
    -- ----- Defines the triangle with sides as discriminants and a constructor which will
    -- compute its other characteristics
    type t_Triangle (A, B, C : Positive) is new Ada.Finalization.Controlled with record
@@ -107,7 +107,7 @@ procedure Heronian is
       Self.Area        := Int_Sqrt (Short_Product);
       Self.Is_Heronian := (Long_Product mod 16 = 0) and (Self.Area * Self.Area = Short_Product);
    end Initialize;
-   
+
    -- ----- Ordering triangles with criteria (Area,Perimeter,A,B,C)
    function "<" (Left, Right : in t_Triangle) return Boolean is
      (Left.Area      < Right.Area      or else (Left.Area      = Right.Area      and then
@@ -119,7 +119,7 @@ procedure Heronian is
    use Triangle_Lists;
 
    -- ----- Displaying triangle characteristics
-   Header : constant String := "  A   B   C Per  Area" & ASCII.LF & "---+---+---+---+-----";   
+   Header : constant String := "  A   B   C Per  Area" & ASCII.LF & "---+---+---+---+-----";
    procedure Put_Triangle (Position : Cursor) is
       Triangle : constant t_Triangle := Element(Position);
    begin
@@ -155,7 +155,7 @@ procedure Heronian is
          end if;
       end if;
    end Memorize_Triangle;
-      
+
 begin
    -- Loops restrict to unique A,B,C (ensured by A <= B <= C) with sides < 200 and for
    -- which a triangle is constructible : C is not greater than B+A (flat triangle)
@@ -163,18 +163,18 @@ begin
       for B in A..200 loop
          for C in B..Integer'Min(A+B-1,200) loop
             -- Filter non-primitive triangles
-            if GCD(GCD(A,B),C) = 1 then 
+            if GCD(GCD(A,B),C) = 1 then
                Memorize_Triangle (A, B, C);
             end if;
          end loop;
       end loop;
    end loop;
-   
+
    Put_Line (Triangles.Length'Img & " heronian triangles found :");
    Put_Line (Header);
    Triangles.Iterate (Process => Put_Triangle'Access);
    New_Line;
-   
+
    Put_Line ("Heronian triangles with area = 201");
    Put_Line (Header);
    declare
@@ -185,7 +185,7 @@ begin
          exit when Position = Last_201;
          Position := Next(Position);
       end loop;
-   end;      
+   end;
 end Heronian;
 ```
 
@@ -508,7 +508,7 @@ on heroniansOfSideUpTo(n)
                                 gcd(gcd(x, y), z) = 1 and ¬
                                 isIntegerValue(hArea(x, y, z))
                         end primitiveHeronian
-                        
+
                         on |λ|(c)
                             if primitiveHeronian(a, b, c) then
                                 {{a, b, c}}
@@ -517,15 +517,15 @@ on heroniansOfSideUpTo(n)
                             end if
                         end |λ|
                     end script
-                    
+
                     concatMap(sideC, enumFromTo(b, n))
                 end |λ|
             end script
-            
+
             concatMap(sideB, enumFromTo(a, n))
         end |λ|
     end script
-    
+
     concatMap(sideA, enumFromTo(1, n))
 end heroniansOfSideUpTo
 
@@ -533,15 +533,15 @@ end heroniansOfSideUpTo
 -- TEST ----------------------------------------------------------------------
 on run
     set n to 200
-    
+
     set lstHeron to ¬
         sortByComparing({{"area", true}, {"perimeter", true}, {"maxSide", true}}, ¬
             map(triangleDimensions, heroniansOfSideUpTo(n)))
-    
+
     set lstCols to {"sides", "perimeter", "area"}
     set lstColWidths to {20, 15, 0}
     set area to 210
-    
+
     script areaFilter
         -- Record -> [Record]
         on |λ|(recTriangle)
@@ -552,7 +552,7 @@ on run
             end if
         end |λ|
     end script
-    
+
     intercalate("\n \n", {("Number of triangles found (with sides <= 200): " & ¬
         length of lstHeron as string), ¬
         ¬
@@ -563,7 +563,7 @@ on run
                 concatMap(areaFilter, lstHeron), lstCols, lstColWidths)})
 end run
 
--- triangleDimensions :: (Int, Int, Int) -> 
+-- triangleDimensions :: (Int, Int, Int) ->
 --       {sides: (Int, Int, Int),  area: Int, perimeter: Int, maxSize: Int}
 on triangleDimensions(lstSides)
     set {x, y, z} to lstSides
@@ -574,7 +574,7 @@ end triangleDimensions
 on hArea(x, y, z)
     set s to (x + y + z) / 2
     set a to s * (s - x) * (s - y) * (s - z)
-    
+
     if a > 0 then
         a ^ 0.5
     else
@@ -602,28 +602,28 @@ on tabulation(strLegend, lstRecords, lstKeys, lstWidths)
             str & replicate((item iCol of lstWidths) - (length of str), space)
         end |λ|
     end script
-    
+
     script lineString
         on |λ|(rec)
             script fieldString
                 -- fieldString :: String -> Int -> String
                 on |λ|(strKey, i)
                     set v to keyValue(strKey, rec)
-                    
+
                     if class of v is list then
                         set strData to ("(" & intercalate(", ", v) & ")")
                     else
                         set strData to v as string
                     end if
-                    
+
                     strData & replicate(space, (item i of (lstWidths)) - (length of strData))
                 end |λ|
             end script
-            
+
             tab & intercalate(tab, map(fieldString, lstKeys))
         end |λ|
     end script
-    
+
     strLegend & ":" & linefeed & linefeed & ¬
         tab & intercalate(tab, ¬
         map(heading, lstKeys)) & linefeed & ¬
@@ -712,7 +712,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -729,7 +729,7 @@ on replicate(n, s)
     set out to ""
     if n < 1 then return out
     set dbl to s
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -743,21 +743,21 @@ end replicate
 -- sortByComparing :: [(String, Bool)] -> [Records] -> [Records]
 on sortByComparing(keyDirections, xs)
     set ca to current application
-    
+
     script recDict
         on |λ|(x)
             ca's NSDictionary's dictionaryWithDictionary:x
         end |λ|
     end script
     set dcts to map(recDict, xs)
-    
+
     script asDescriptor
         on |λ|(kd)
             set {k, d} to kd
             ca's NSSortDescriptor's sortDescriptorWithKey:k ascending:d selector:dcts
         end |λ|
     end script
-    
+
     ((ca's NSArray's arrayWithArray:dcts)'s ¬
         sortedArrayUsingDescriptors:map(asDescriptor, keyDirections)) as list
 end sortByComparing
@@ -839,8 +839,8 @@ loop, parse, res, `n, `r
 	Counter := A_Index
 }
 
-MsgBox % Counter " results found" 
-. "`n`nFirst 10 results:" 
+MsgBox % Counter " results found"
+. "`n`nFirst 10 results:"
 . "`n" "Area`tPerimeter`tSides`n" res2
 . "`nResults for Area = 210:"
 . "`n" "Area`tPerimeter`tSides`n" res3
@@ -905,13 +905,13 @@ typedef cell* list;
 void addAndOrderList(list *a,triangle t){
 	list iter,temp;
 	int flag = 0;
-	
+
 	if(*a==NULL){
 		*a = (list)malloc(sizeof(cell));
 		(*a)->t = t;
 		(*a)->next = NULL;
 	}
-	
+
 	else{
 		temp = (list)malloc(sizeof(cell));
 
@@ -929,7 +929,7 @@ void addAndOrderList(list *a,triangle t){
 
 				iter = iter->next;
 			}
-			
+
 			if(flag!=1){
 				temp->t = t;
 				temp->next = NULL;
@@ -953,9 +953,9 @@ list generateTriangleList(int maxSide,int *count){
 	int a,b,c;
 	triangle t;
 	list herons = NULL;
-	
+
 	*count = 0;
-	
+
 	for(a=1;a<=maxSide;a++){
 		for(b=1;b<=a;b++){
 			for(c=1;c<=b;c++){
@@ -965,21 +965,21 @@ list generateTriangleList(int maxSide,int *count){
 					if(t.area/(int)t.area == 1){
 						addAndOrderList(&herons,t);
 						(*count)++;
-					}	
+					}
 				}
 			}
 		}
 	}
-	
+
 	return herons;
 }
 
 void printList(list a,int limit,int area){
 	list iter = a;
 	int count = 1;
-	
+
 	printf("\nDimensions\tPerimeter\tArea");
-	
+
 	while(iter!=NULL && count!=limit+1){
 		if(area==-1 ||(area==iter->t.area)){
 			printf("\n%d x %d x %d\t%d\t\t%d",iter->t.a,iter->t.b,iter->t.c,iter->t.perimeter,(int)iter->t.area);
@@ -993,7 +993,7 @@ int main(int argC,char* argV[])
 {
 	int count;
 	list herons = NULL;
-	
+
 	if(argC!=4)
 		printf("Usage : %s <Max side, max triangles to print and area, -1 for area to ignore>",argV[0]);
 	else{
@@ -1045,8 +1045,8 @@ Dimensions      Perimeter       Area
 
 {{Works with|C++11}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <cmath>
 #include <iostream>
 #include <tuple>
@@ -1172,7 +1172,7 @@ using System.Collections.Generic;
 namespace heron
 {
     class Program{
-        static void Main(string[] args){           
+        static void Main(string[] args){
             List<int[]> list = new List<int[]>();
             for (int c = 1; c <= 200; c++)
                 for (int b = 1; b <= c; b++)
@@ -1186,7 +1186,7 @@ namespace heron
             Console.WriteLine("\nPerimeter = 210\nSides\t\t\tPerimeter\tArea");
             foreach (int[] i in list)
                 if (i[4] == 210)
-                    Console.WriteLine(i[0] + "\t" + i[1] + "\t" + i[2] + "\t" + i[3] + "\t\t" + i[4]);     
+                    Console.WriteLine(i[0] + "\t" + i[1] + "\t" + i[2] + "\t" + i[3] + "\t\t" + i[4]);
         }
         static bool isHeron(double heronArea){
             return heronArea % 1 == 0 && heronArea != 0;
@@ -1219,7 +1219,7 @@ namespace heron
                         list[i] = list[i - 1];
                         list[i - 1] = temp;
                         changed = true;
-                    }                
+                    }
             }
         }
     }
@@ -1432,8 +1432,8 @@ Area Perimeter Sides
 	(set! s (// (+ a b c) 2))
 	(set! A (* s (- s a)(- s b)(- s c)))
 	(when (square? A)
-		(list (sqrt A) (* s 2)  c b a)))) 
-		
+		(list (sqrt A) (* s 2)  c b a))))
+
 ;; all heroes a,b,c < sidemax
 ;; sorted by A|s|c & a <=b <= c
 (define (heroes (sidemax 201))
@@ -1442,9 +1442,9 @@ Area Perimeter Sides
 	#:continue (<= (+ a b) c) ;; triangle inequality must hold !! cut search
 	#:continue (not (hero a b c))
 		(hero a b c))))
-		
+
 (define (print-hero h)
-		(printf "A: %6d s: %6d    sides: %dx%dx%d" 
+		(printf "A: %6d s: %6d    sides: %dx%dx%d"
 			(list-ref  h  0) (list-ref  h  1)
 			(list-ref h 2)(list-ref h 3) (list-ref h 4)))
 (define (print-laurels H)
@@ -1458,7 +1458,7 @@ Area Perimeter Sides
 (define H (heroes))
 
 (print-laurels H)
-🌿🌿     517     heroes     🌿🌿    
+🌿🌿     517     heroes     🌿🌿
 
 (for-each print-hero (take H 10))
 
@@ -1495,14 +1495,14 @@ defmodule Heronian do
     area = area(a,b,c)
     area == round(area) and primitive?(a,b,c)
   end
-  
+
   def area(a,b,c) do
     s = (a + b + c) / 2
     :math.sqrt(s * (s-a) * (s-b) * (s-c))
   end
-  
+
   defp primitive?(a,b,c), do: gcd(gcd(a,b),c) == 1
-  
+
   defp gcd(a,0), do: a
   defp gcd(a,b), do: gcd(b, rem(a,b))
 end
@@ -1677,9 +1677,9 @@ TUPLE: triangle a b c area perimeter ;
 : heronian? ( a b c -- ? )
     area dup [ complex? ] [ 0 number= ] bi or
     [ drop f ] [ dup >integer number= ] if ;
-    
+
 : 3gcd ( a b c -- n ) [ gcd nip ] twice ;
-    
+
 : primitive-heronian? ( a b c -- ? )
     { [ 3gcd 1 = ] [ heronian? ] } 3&& ;
 
@@ -1691,34 +1691,34 @@ TUPLE: triangle a b c area perimeter ;
         a b c primitive-heronian? must-be-true
         { a b c } <triangle>
     ] bag-of ;                     ! collect every triangle
-    
+
 : sort-triangles ( seq -- seq' )
     { { area>> <=> } { perimeter>> <=> } } sort-by ;
-    
+
 CONSTANT: format "%4s%5s%5s%5s%10s\n"
-    
+
 : print-header ( -- )
     qw{ a b c area perimeter } format vprintf
     "---- ---- ---- ---- ---------" print ;
-    
+
 : print-triangle ( triangle -- )
     <mirror> >alist values [ number>string ] map format vprintf ;
 
 : print-triangles ( seq -- ) [ print-triangle ] each ; inline
-    
+
 : first10 ( sorted-triangles -- )
     dup length "%d triangles found. First 10: \n" printf
     print-header 10 head print-triangles ;
-    
+
 : area210= ( sorted-triangles -- )
     "Triangles with area 210: " print print-header
     [ area>> 210 = ] filter print-triangles ;
-    
+
 : main ( -- )
     "Finding heronian triangles with sides <= 200..." print nl
     find-triangles sort-triangles
     [ first10 nl ] [ area210= ] bi ;
-    
+
 MAIN: main
 ```
 
@@ -1728,7 +1728,7 @@ MAIN: main
 
 Finding heronian triangles with sides <= 200...
 
-517 triangles found. First 10: 
+517 triangles found. First 10:
    a    b    c area perimeter
 ---- ---- ---- ---- ---------
    3    4    5    6        12
@@ -1742,7 +1742,7 @@ Finding heronian triangles with sides <= 200...
   10   13   13   60        36
    8   15   17   60        40
 
-Triangles with area 210: 
+Triangles with area 210:
    a    b    c area perimeter
 ---- ---- ---- ---- ---------
   17   25   28  210        70
@@ -1761,7 +1761,7 @@ Triangles with area 210:
 Earlier Fortran doesn't offer special functions such as SUM, PRODUCT and MAXVAL of arrays, nor the ability to create compound data aggregates such as STASH to store a triangle's details. Simple code would have to be used in the absence of such conveniences, and multiple  ordinary arrays rather than an array of a compound data entity. Rather than attempt to create the candidate triangles in the desired order, the simple approach is to sort a list of triangles, and using an XNDX array evades tossing compound items about. Rather than create a procedure to do the sorting, a comb sort is not too much trouble to place in-line once. Further, since the ordering is based on a compound key, having only one comparison to code is a boon. The three-way-if statement is central to the expedient evaluation of a compound sort key, but this facility is deprecated by the modernists, with no alternative offered that avoids re-comparison of parts.
 
 ```Fortran
- 
+
       MODULE GREEK MATHEMATICIANS	!Two millenia back and more.
        CONTAINS
         INTEGER FUNCTION GCD(I,J)	!Greatest common divisor.
@@ -1945,10 +1945,10 @@ Function Heronian_triangles(a_max As UInteger, b_max As UInteger, _
         For b = a To b_max
             ' make sure that a + b + c is even
             For c = b + (a And 1) To c_max Step 2
-                ' to form a triangle a + b must be greater then c 
+                ' to form a triangle a + b must be greater then c
                 If (a + b) <= c Then Exit For
                 ' check if a, b and c have a common divisor
-                If (gcd(c, b) <> 1 And gcd(c, a) <> 1) Then 
+                If (gcd(c, b) <> 1 And gcd(c, a) <> 1) Then
                     Continue For
                 End If
                 s = (a + b + c) \ 2
@@ -2150,9 +2150,9 @@ print "Number of triangles:"; count
 print
 print "---------------------------------------------"
 print "Side A", "Side B", "Side C", "Perimeter", "Area"
-print "---------------------------------------------" 
+print "---------------------------------------------"
 
-// Sort array 
+// Sort array
 dim as Boolean flips : flips = _true
 while ( flips = _true )
    flips = _false
@@ -2165,7 +2165,7 @@ while ( flips = _true )
       end if
    next
 wend
- 
+
 // Find first 10 heronian triangles
 for i = 1 to 10
    print triangleInfo( i, 0 ), triangleInfo( i, 1 ), triangleInfo( i, 2 ), triangleInfo( i, 3 ), triangleInfo( i, 4 )
@@ -2609,40 +2609,40 @@ Sides		Perimeter	Area
 
 ```JavaScript
 
-window.onload = function(){	
+window.onload = function(){
     var list = [];
-    var j = 0;	
+    var j = 0;
     for(var c = 1; c <= 200; c++)
         for(var b = 1; b <= c; b++)
             for(var a = 1; a <= b; a++)
-	        if(gcd(gcd(a, b), c) == 1 && isHeron(heronArea(a, b, c)))							
+	        if(gcd(gcd(a, b), c) == 1 && isHeron(heronArea(a, b, c)))
 		    list[j++] = new Array(a, b, c, a + b + c, heronArea(a, b, c));
-    sort(list);	
+    sort(list);
     document.write("<h2>Primitive Heronian triangles with sides up to 200: " + list.length + "</h2><h3>First ten when ordered by increasing area, then perimeter:</h3><table><tr><th>Sides</th><th>Perimeter</th><th>Area</th><tr>");
     for(var i = 0; i < 10; i++)
 	document.write("<tr><td>" + list[i][0] + " x " + list[i][1] + " x " + list[i][2] + "</td><td>" + list[i][3] + "</td><td>" + list[i][4] + "</td></tr>");
     document.write("</table><h3>Area = 210</h3><table><tr><th>Sides</th><th>Perimeter</th><th>Area</th><tr>");
     for(var i = 0; i < list.length; i++)
 	if(list[i][4] == 210)
-	    document.write("<tr><td>" + list[i][0] + " x " + list[i][1] + " x " + list[i][2] + "</td><td>" + list[i][3] + "</td><td>" + list[i][4] + "</td></tr>");    		
+	    document.write("<tr><td>" + list[i][0] + " x " + list[i][1] + " x " + list[i][2] + "</td><td>" + list[i][3] + "</td><td>" + list[i][4] + "</td></tr>");
     function heronArea(a, b, c){
 	var s = (a + b + c)/ 2;
-	return Math.sqrt(s *(s -a)*(s - b)*(s - c));		
-    }	
+	return Math.sqrt(s *(s -a)*(s - b)*(s - c));
+    }
     function isHeron(h){
         return h % 1 == 0 && h > 0;
-    }	
+    }
     function gcd(a, b){
-	var leftover = 1, dividend = a > b ? a : b, divisor = a > b ? b : a;		
+	var leftover = 1, dividend = a > b ? a : b, divisor = a > b ? b : a;
 	while(leftover != 0){
 	    leftover = dividend % divisor;
 	    if(leftover > 0){
 		dividend = divisor;
 		divisor = leftover;
 	    }
-	}		
+	}
 	return divisor;
-    }	
+    }
     function sort(list){
 	var swapped = true;
 	var temp = [];
@@ -2654,8 +2654,8 @@ window.onload = function(){
 		    list[i] = list[i - 1];
 		    list[i - 1] = temp;
 		    swapped = true;
-		}				
-	    }			
+		}
+	    }
 	}
     }
 }
@@ -2694,7 +2694,7 @@ Sides	Perimeter	Area
 ===Functional (ES5)===
 
 Using the list monad pattern to define a filtered cartesian product:
-:- Monadic bind/chain for lists is ''concat map''. 
+:- Monadic bind/chain for lists is ''concat map''.
 :- Return/inject for lists is  ''λx -> [x]''
 :- Monadic fail for lists is simply ''λx -> []''.
 
@@ -2705,33 +2705,33 @@ ES6 JavaScript introduces syntactic sugar for list comprehensions, but the list 
 
 ```JavaScript
 (function (n) {
- 
+
   var chain = function (xs, f) {                  // Monadic bind/chain
       return [].concat.apply([], xs.map(f));
     },
- 
+
     hArea = function (x, y, z) {
       var s = (x + y + z) / 2,
         a = s * (s - x) * (s - y) * (s - z);
       return a ? Math.sqrt(a) : 0;
     },
- 
+
     gcd = function (m, n) { return n ? gcd(n, m % n) : m; },
- 
+
     rng = function (m, n) {
       return Array.apply(null, Array(n - m + 1)).map(function (x, i) {
         return m + i;
       });
     },
- 
+
     sum = function (a, x) { return a + x; };
- 
+
   // DEFINING THE SORTED SUB-SET IN TERMS OF A LIST MONAD
- 
+
   var lstHeron = chain( rng(1, n), function (x) {
           return chain( rng(x, n), function (y) {
           return chain( rng(y, n), function (z) {
- 
+
         return (
           (x + y > z) &&
           gcd(gcd(x, y), z) === 1 &&            // Primitive.
@@ -2740,7 +2740,7 @@ ES6 JavaScript introduces syntactic sugar for list comprehensions, but the list 
             return a && (a === parseInt(a, 10))
           })()
         ) ? [[x, y, z]] : [];                   // Monadic inject or fail
- 
+
   })})}).sort(function (a, b) {
     var dArea = hArea.apply(null, a) - hArea.apply(null, b);
     if (dArea) return dArea;
@@ -2749,9 +2749,9 @@ ES6 JavaScript introduces syntactic sugar for list comprehensions, but the list 
       return dPerim ? dPerim : (a[2] - b[2]);
     }
   });
- 
+
   // OUPUT FORMATTED AS TWO WIKITABLES
- 
+
   var lstColumns = ['Sides Perimeter Area'.split(' ')],
     fnData = function (lst) {
       return [JSON.stringify(lst), lst.reduce(sum, 0), hArea.apply(null, lst)];
@@ -2761,13 +2761,13 @@ ES6 JavaScript introduces syntactic sugar for list comprehensions, but the list 
         strStyle ? 'style="' + strStyle + '"' : ''
       ) + lstRows.map(function (lstRow, iRow) {
         var strDelim = ((blnHeaderRow && !iRow) ? '!' : '|');
- 
+
         return '\n|-\n' + strDelim + ' ' + lstRow.map(function (v) {
           return typeof v === 'undefined' ? ' ' : v;
         }).join(' ' + strDelim + strDelim + ' ');
       }).join('') + '\n|}';
     };
- 
+
   return 'Found: ' + lstHeron.length +
     ' primitive Heronian triangles with sides up to ' + n + '.\n\n' +
     '(Showing first 10, sorted by increasing area, ' +
@@ -2784,7 +2784,7 @@ ES6 JavaScript introduces syntactic sugar for list comprehensions, but the list 
       }).map(fnData)),
       true
     ) + '\n\n';
- 
+
 })(200);
 ```
 
@@ -2794,7 +2794,7 @@ Found: 517 primitive Heronian triangles with sides up to 200.
 
 (Showing first 10, sorted by increasing area, perimeter, and longest side)
 
-{| class="wikitable" 
+{| class="wikitable"
 |-
 ! Sides !! Perimeter !! Area
 |-
@@ -2823,7 +2823,7 @@ All primitive Heronian triangles in this range where area = 210
 
 (also in order of increasing perimeter and longest side)
 
-{| class="wikitable" 
+{| class="wikitable"
 |-
 ! Sides !! Perimeter !! Area
 |-
@@ -2855,7 +2855,7 @@ def hero:
 def is_heronian:
   hero as $h
   | $h > 0 and ($h|floor) == $h;
- 
+
 def gcd3(x; y; z):
   # subfunction expects [a,b] as input
   def rgcd:
@@ -2863,10 +2863,10 @@ def gcd3(x; y; z):
     else [.[1], .[0] % .[1]] | rgcd
     end;
   [ ([x,y] | rgcd), z ] | rgcd;
- 
+
 def task(maxside):
   def rjust(width): tostring |  " " * (width - length) + .;
-  
+
   [ range(1; maxside+1) as $c
     | range(1; $c+1) as $b
     | range(1; $b+1) as $a
@@ -2876,7 +2876,7 @@ def task(maxside):
       end ]
 
   # sort by increasing area, perimeter, then sides
-  | sort_by( [ hero, add, .[2] ] )  
+  | sort_by( [ hero, add, .[2] ] )
   | "The number of primitive Heronian triangles with sides up to \(maxside): \(length)",
     "The first ten when ordered by increasing area, then perimeter, then maximum sides:",
     "      perimeter area",
@@ -3233,34 +3233,34 @@ Heronian triangles with area 210:
 import math, algorithm, strfmt, sequtils
 
 type
-  HeronianTriangle = tuple  
-    a: int  
-    b: int  
+  HeronianTriangle = tuple
+    a: int
+    b: int
     c: int
     s: float
     A: int
 
-proc `$` (t: HeronianTriangle): string = 
+proc `$` (t: HeronianTriangle): string =
   fmt("{:3d}, {:3d}, {:3d}\t{:7.3f}\t{:3d}", t.a, t.b, t.c, t.s, t.A)
-  
-proc hero(a:int, b:int, c:int): tuple[s, A: float] = 
+
+proc hero(a:int, b:int, c:int): tuple[s, A: float] =
   let s: float = (a + b + c) / 2
   result = (s, sqrt( s * (s - float(a)) * (s - float(b)) * (s - float(c)) ))
- 
+
 proc isHeronianTriangle(x: float): bool = ceil(x) == x and x.toInt > 0
 
 proc gcd(x: int, y: int): int =
   var
     (dividend, divisor) = if x > y: (x, y) else: (y, x)
     remainder = dividend mod divisor
-    
+
   while remainder != 0:
     dividend = divisor
     divisor = remainder
     remainder = dividend mod divisor
   result = divisor
-            
-            
+
+
 var list = newSeq[HeronianTriangle]()
 const max = 200
 
@@ -3296,7 +3296,7 @@ for t in list.filter(proc (x: HeronianTriangle): bool = x.A == 210):
 
 ```txt
 Numbers of Heronian Triangle : 517
-Ten first Heronian triangle ordered : 
+Ten first Heronian triangle ordered :
 Sides          Perimeter Area
   3,   4,   5	  6.000	  6
   5,   5,   6	  8.000	 12
@@ -3308,7 +3308,7 @@ Sides          Perimeter Area
   7,  15,  20	 21.000	 42
  10,  13,  13	 18.000	 60
   8,  15,  17	 20.000	 60
-Heronian triangle ordered with Area 210 : 
+Heronian triangle ordered with Area 210 :
 Sides          Perimeter Area
  17,  25,  28	 35.000	210
  20,  21,  29	 35.000	210
@@ -3322,7 +3322,7 @@ Sides          Perimeter Area
 
 ## ooRexx
 
-Derived from REXX with some changes 
+Derived from REXX with some changes
 
 ```rexx
 /*REXX pgm generates primitive Heronian triangles by side length & area.*/
@@ -3489,7 +3489,7 @@ Listing of the primitive Heronian triangles with area=210
         4     area:   210      perimeter:  84     sides:  17  28  39
         5     area:   210      perimeter: 140     sides:   7  65  68
         6     area:   210      perimeter: 300     sides:   3 148 149
-26.054000 seconds elapsed 
+26.054000 seconds elapsed
 ```
 
 
@@ -3729,7 +3729,7 @@ sub main {
     print "Area $witharea:\n";
     show grep { $_->[0] == $witharea } @h;
 
-    
+
 }
 
 &main();
@@ -3772,10 +3772,10 @@ sub hero($a, $b, $c) {
     my $s = ($a + $b + $c) / 2;
     ($s * ($s - $a) * ($s - $b) * ($s - $c)).sqrt;
 }
- 
+
 sub heronian-area($a, $b, $c) {
     $_ when Int given hero($a, $b, $c).narrow;
-} 
+}
 
 sub primitive-heronian-area($a, $b, $c) {
     heronian-area $a, $b, $c
@@ -3788,7 +3788,7 @@ sub show(@measures) {
 	printf "%6d %6d %12s\n", $area, $perim, "$a×$b×$c";
     }
 }
- 
+
 sub MAIN ($maxside = 200, $first = 10, $witharea = 210) {
     my @hh[1000];
     my atomicint $i;
@@ -3849,7 +3849,7 @@ Area 210:
 ```Phix
 function heroArea(integer a, b, c)
 atom s = (a+b+c)/2
-    return sqrt(s*(s-a)*(s-b)*(s-c))        
+    return sqrt(s*(s-a)*(s-b)*(s-c))
 end function
 
 function hero(atom h)
@@ -3871,7 +3871,7 @@ integer tries = 0
             end for
         end for
     end for
-    list = sort(list)   
+    list = sort(list)
     printf(1,"Primitive Heronian triangles with sides up to 200: %d (of %,d tested)\n\n",{length(list),tries})
     printf(1,"First 10 ordered by area/perimeter/sides:\n")
     printf(1,"area  perimeter sides")
@@ -3942,20 +3942,20 @@ function Get-Gcd($a, $b){
 			}
     }
     $divisor
-} 
+}
 function Is-Heron($heronArea){
     $heronArea -gt 0 -and $heronArea % 1 -eq 0
-} 
+}
 function Get-HeronArea($a, $b, $c){
     $s = ($a + $b + $c) / 2
-    [math]::Sqrt($s * ($s - $a) * ($s - $b) * ($s - $c)) 
+    [math]::Sqrt($s * ($s - $a) * ($s - $b) * ($s - $c))
 }
 $result = @()
 foreach ($c in 1..200){
     for($b = 1; $b -le $c; $b++){
         for($a = 1; $a -le $b; $a++){
             if((Get-Gcd $c (Get-Gcd $b $a)) -eq 1 -and (Is-Heron(Get-HeronArea $a $b $c))){
-                $result += @(,@($a, $b, $c,($a + $b + $c), (Get-HeronArea $a $b $c)))                
+                $result += @(,@($a, $b, $c,($a + $b + $c), (Get-HeronArea $a $b $c)))
             }
         }
     }
@@ -3964,12 +3964,12 @@ $result = $result | sort-object @{Expression={$_[4]}}, @{Expression={$_[3]}}, @{
 "Primitive Heronian triangles with sides up to 200: $($result.length)`nFirst ten when ordered by increasing area, then perimeter,then maximum sides:`nSides`t`t`t`tPerimeter`tArea"
 for($i = 0; $i -lt 10; $i++){
 "$($result[$i][0])`t$($result[$i][1])`t$($result[$i][2])`t`t`t$($result[$i][3])`t`t`t$($result[$i][4])"
-}  
+}
 "`nArea = 210`nSides`t`t`t`tPerimeter`tArea"
 foreach($i in $result){
     if($i[4] -eq 210){
         "$($i[0])`t$($i[1])`t$($i[2])`t`t`t$($i[3])`t`t`t$($i[4])"
-    } 
+    }
 }
 
 ```
@@ -4235,7 +4235,7 @@ This program generates HTML, so the output is inline with the page, not in a <co
 ## REXX
 
 
-###  using iSQRT 
+###  using iSQRT
 
 This REXX version makes use of these facts:
 :::*   if   '''A'''   is even,   then   '''B'''   and   '''C'''   must be odd.
@@ -4245,28 +4245,28 @@ This REXX version makes use of these facts:
 ::::::*   '''C'''   can be incremented by   <big>'''2'''</big>.
 ::::::*   the area is always even.
 
- 	
+
 Programming notes:
- 		 	
+
 The   '''hGCD'''   subroutine is a specialized version of a '''GCD''' routine in that:
 :::*   it doesn't check for non-positive integers
 :::*   it expects exactly three arguments
-	
-	
-Also, a fair amount of code was added to optimize the speed   (at the expense of program simplicity).
-	
-By thoughtful ordering of the elimination checks, and also the use of an   ''integer version''   
-of a   '''SQRT''' 
 
-subroutine,   the execution time was greatly reduced   (by a factor of eight).  
- 		 	
-	
-Note that the   '''hIsqrt'''   ('''h'''eronian '''I'''nteger '''sq'''are '''r'''oo'''t''')   
+
+Also, a fair amount of code was added to optimize the speed   (at the expense of program simplicity).
+
+By thoughtful ordering of the elimination checks, and also the use of an   ''integer version''
+of a   '''SQRT'''
+
+subroutine,   the execution time was greatly reduced   (by a factor of eight).
+
+
+Note that the   '''hIsqrt'''   ('''h'''eronian '''I'''nteger '''sq'''are '''r'''oo'''t''')
 subroutine doesn't use floating point.
 
 ['''hIsqrt'''   is a modified/simplified version of an   '''Isqrt'''   function.]
-		
-This REXX version doesn't need to explicitly sort the triangles as they are listed in the proper order.  
+
+This REXX version doesn't need to explicitly sort the triangles as they are listed in the proper order.
 
 ```rexx
 /*REXX program generates & displays primitive Heronian triangles by side length and area*/
@@ -4360,7 +4360,7 @@ Listing of the (above) found primitive Heronian triangles with an area of  210
 
 ### using SQRT table
 
-This REXX version makes use of a precalculated table of squares of some 
+This REXX version makes use of a precalculated table of squares of some
 integers   (which are used to find square roots very quickly).
 
 It is about eight times faster than the 1<sup>st</sup> REXX version.
@@ -4414,7 +4414,7 @@ show: m=0;  say;  say;   parse arg ae;     say arg(2);         if ae\==''  then 
             end       /*i*/;            return        /* [↑]  show any found triangles. */
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -4507,24 +4507,24 @@ class Triangle
     short, middle, long = [a, b, c].sort
     short + middle > long
   end
-  
+
   attr_reader :sides, :perimeter, :area
-  
+
   def initialize(a,b,c)
     @sides = [a, b, c].sort
     @perimeter = a + b + c
     s = @perimeter / 2.0
     @area = Math.sqrt(s * (s - a) * (s - b) * (s - c))
   end
-  
+
   def heronian?
     area == area.to_i
   end
-  
+
   def <=>(other)
     [area, perimeter, sides] <=> [other.area, other.perimeter, other.sides]
   end
-  
+
   def to_s
     "%-11s%6d%8.1f" % [sides.join('x'), perimeter, area]
   end
@@ -4764,7 +4764,7 @@ There are 517 Heronian triangles
    7    15    20     42        42
   10    13    13     60        36
    8    15    17     60        40
-               ...                
+               ...
   17    25    28    210        70
   20    21    29    210        70
   12    35    37    210        84
@@ -4789,10 +4789,10 @@ func heronianArea(side1 s1:Int, side2 s2:Int, side3 s3:Int) -> Int? {
     let d1 = Double(s1)
     let d2 = Double(s2)
     let d3 = Double(s3)
-    
+
     let s = (d1 + d2 + d3) / 2.0
     let a = sqrt(s * (s - d1) * (s - d2) * (s - d3))
-    
+
     if a % 1 != 0 || a <= 0 {
         return nil
     } else {
@@ -5004,11 +5004,11 @@ Function heroArea(a As Integer, b As Integer, c As Integer) As Double
 Err:
     heroArea = -1
 End Function
- 
+
 Function hero(h As Double) As Boolean
     hero = (h - Int(h) = 0) And h > 0
 End Function
- 
+
 Public Sub main()
     Dim list() As Variant, items As Integer
     Dim a As Integer, b As Integer, c As Integer
@@ -5101,7 +5101,7 @@ foreach a,b,c in ([1..MAX_SIDE],[a..MAX_SIDE],[b..MAX_SIDE]){
    if(a.gcd(b).gcd(c)==1 and (h:=isHeronian(a,b,c))) heros.write(T(h,a+b+c,a,b,c));
 }
 // sort by increasing area, perimeter, then sides
-heros=heros.close().sort(fcn([(h1,p1,_,_,c1)],[(h2,p2,_,_,c2)]){ 
+heros=heros.close().sort(fcn([(h1,p1,_,_,c1)],[(h2,p2,_,_,c2)]){
    if(h1!=h2) return(h1<h2);
    if(p1!=p2) return(p1<p2);
    c1<c2;

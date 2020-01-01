@@ -15,11 +15,11 @@ tags = []
 
 
 
-In [[wp:logic|logic]], a '''three-valued logic''' (also '''trivalent''', '''ternary''', or  '''trinary logic''', sometimes abbreviated '''3VL''') is any of several [[wp:many-valued logic|many-valued logic]] systems in which there are three [[wp:truth value|truth value]]s indicating ''true'', ''false'' and some indeterminate third value.  
+In [[wp:logic|logic]], a '''three-valued logic''' (also '''trivalent''', '''ternary''', or  '''trinary logic''', sometimes abbreviated '''3VL''') is any of several [[wp:many-valued logic|many-valued logic]] systems in which there are three [[wp:truth value|truth value]]s indicating ''true'', ''false'' and some indeterminate third value.
 
-This is contrasted with the more commonly known [[wp:Principle of bivalence|bivalent]] logics (such as classical sentential or [[wp:boolean logic|boolean logic]]) which provide only for ''true'' and ''false''. 
+This is contrasted with the more commonly known [[wp:Principle of bivalence|bivalent]] logics (such as classical sentential or [[wp:boolean logic|boolean logic]]) which provide only for ''true'' and ''false''.
 
-Conceptual form and basic ideas were initially created by [[wp:Jan Łukasiewicz|Łukasiewicz]], [[wp:C. I. Lewis|Lewis]]  and [[wp:Sulski|Sulski]]. 
+Conceptual form and basic ideas were initially created by [[wp:Jan Łukasiewicz|Łukasiewicz]], [[wp:C. I. Lewis|Lewis]]  and [[wp:Sulski|Sulski]].
 
 These were then re-formulated by [[wp:Grigore Moisil|Grigore Moisil]] in an axiomatic algebraic form, and also extended to ''n''-valued logics in 1945.
 {|
@@ -117,7 +117,7 @@ We first specify a package "Logic" for three-valued logic. Observe that predefin
 
 ```Ada
 package Logic is
-   type Ternary is (True, Unknown, False); 
+   type Ternary is (True, Unknown, False);
 
    -- logic functions
    function "and"(Left, Right: Ternary) return Ternary;
@@ -416,7 +416,7 @@ PR READ "Ternary_logic.a68" PR
 
 []TRIT trits = (false, maybe, true);
 
-FORMAT 
+FORMAT
   col fmt = $" "g" "$,
   row fmt = $l3(f(col fmt)"|")f(col fmt)$,
   row sep fmt = $l3("---+")"---"l$;
@@ -451,7 +451,7 @@ printf((
 
 FOR it FROM LWB trits TO UPB trits DO
   TRIT t = trits[it];
-  printf(( $"  "g"  "$, REPR t, 
+  printf(( $"  "g"  "$, REPR t,
     IF trit OF t = trit OF maybe THEN " " ELSE B t FI,
     INITINT t, $l$))
 OD;
@@ -486,9 +486,9 @@ print trit op table("∨","OR",      (TRIT a,b)TRIT: a OR b)
 
 Comparitive table of coercions:
   TRIT BOOL         INT
-  ⌊    F             -1  
-  ?                  +0  
-  ⌈    T             +1  
+  ⌊    F             -1
+  ?                  +0
+  ⌈    T             +1
 
 Specific test of the IMPLIES operator:
   F implies F is not a contradiction!
@@ -504,40 +504,40 @@ Specific test of the IMPLIES operator:
 Kleene logic truth table samples:
 
 Operator: EQV
- ≡ | ⌊ | ? | ⌈ 
+ ≡ | ⌊ | ? | ⌈
 ---+---+---+---
- ⌊ | ⌈ | ? | ⌊ 
+ ⌊ | ⌈ | ? | ⌊
 ---+---+---+---
- ? | ? | ? | ? 
+ ? | ? | ? | ?
 ---+---+---+---
- ⌈ | ⌊ | ? | ⌈ 
+ ⌈ | ⌊ | ? | ⌈
 
 Operator: IMPLIES
- ⊃ | ⌊ | ? | ⌈ 
+ ⊃ | ⌊ | ? | ⌈
 ---+---+---+---
- ⌊ | ⌈ | ⌈ | ⌈ 
+ ⌊ | ⌈ | ⌈ | ⌈
 ---+---+---+---
- ? | ? | ? | ⌈ 
+ ? | ? | ? | ⌈
 ---+---+---+---
- ⌈ | ⌊ | ? | ⌈ 
+ ⌈ | ⌊ | ? | ⌈
 
 Operator: AND
- ∧ | ⌊ | ? | ⌈ 
+ ∧ | ⌊ | ? | ⌈
 ---+---+---+---
- ⌊ | ⌊ | ⌊ | ⌊ 
+ ⌊ | ⌊ | ⌊ | ⌊
 ---+---+---+---
- ? | ⌊ | ? | ? 
+ ? | ⌊ | ? | ?
 ---+---+---+---
- ⌈ | ⌊ | ? | ⌈ 
+ ⌈ | ⌊ | ? | ⌈
 
 Operator: OR
- ∨ | ⌊ | ? | ⌈ 
+ ∨ | ⌊ | ? | ⌈
 ---+---+---+---
- ⌊ | ⌊ | ? | ⌈ 
+ ⌊ | ⌊ | ? | ⌈
 ---+---+---+---
- ? | ? | ? | ⌈ 
+ ? | ? | ? | ⌈
 ---+---+---+---
- ⌈ | ⌈ | ⌈ | ⌈ 
+ ⌈ | ⌈ | ⌈ | ⌈
 
 ```
 
@@ -661,7 +661,7 @@ false	Ternary_equiv	false	=	true
 
 ```bbcbasic
       INSTALL @lib$ + "CLASSLIB"
-      
+
       REM Create a ternary class:
       DIM trit{tor, tand, teqv, tnot, tnor, s, v}
       DEF PRIVATE trit.s (t&) LOCAL t$():DIM t$(2):t$()="FALSE","MAYBE","TRUE":=t$(t&)
@@ -672,15 +672,15 @@ false	Ternary_equiv	false	=	true
       DEF trit.tand (a$,b$) = FN(trit.tnor)(FN(trit.tnot)(a$),FN(trit.tnot)(b$))
       DEF trit.teqv (a$,b$) = FN(trit.tor)(FN(trit.tand)(a$,b$),FN(trit.tnor)(a$,b$))
       PROC_class(trit{})
-      
+
       PROC_new(mytrit{}, trit{})
-      
+
       REM Test it:
       PRINT "Testing NOT:"
       PRINT "NOT FALSE = " FN(mytrit.tnot)("FALSE")
       PRINT "NOT MAYBE = " FN(mytrit.tnot)("MAYBE")
       PRINT "NOT TRUE  = " FN(mytrit.tnot)("TRUE")
-      
+
       PRINT '"Testing OR:"
       PRINT "FALSE OR FALSE = " FN(mytrit.tor)("FALSE","FALSE")
       PRINT "FALSE OR MAYBE = " FN(mytrit.tor)("FALSE","MAYBE")
@@ -688,7 +688,7 @@ false	Ternary_equiv	false	=	true
       PRINT "MAYBE OR MAYBE = " FN(mytrit.tor)("MAYBE","MAYBE")
       PRINT "MAYBE OR TRUE  = " FN(mytrit.tor)("MAYBE","TRUE")
       PRINT "TRUE  OR TRUE  = " FN(mytrit.tor)("TRUE","TRUE")
-      
+
       PRINT '"Testing AND:"
       PRINT "FALSE AND FALSE = " FN(mytrit.tand)("FALSE","FALSE")
       PRINT "FALSE AND MAYBE = " FN(mytrit.tand)("FALSE","MAYBE")
@@ -696,7 +696,7 @@ false	Ternary_equiv	false	=	true
       PRINT "MAYBE AND MAYBE = " FN(mytrit.tand)("MAYBE","MAYBE")
       PRINT "MAYBE AND TRUE  = " FN(mytrit.tand)("MAYBE","TRUE")
       PRINT "TRUE  AND TRUE  = " FN(mytrit.tand)("TRUE","TRUE")
-      
+
       PRINT '"Testing EQV (similar to EOR):"
       PRINT "FALSE EQV FALSE = " FN(mytrit.teqv)("FALSE","FALSE")
       PRINT "FALSE EQV MAYBE = " FN(mytrit.teqv)("FALSE","MAYBE")
@@ -704,7 +704,7 @@ false	Ternary_equiv	false	=	true
       PRINT "MAYBE EQV MAYBE = " FN(mytrit.teqv)("MAYBE","MAYBE")
       PRINT "MAYBE EQV TRUE  = " FN(mytrit.teqv)("MAYBE","TRUE")
       PRINT "TRUE  EQV TRUE  = " FN(mytrit.teqv)("TRUE","TRUE")
-      
+
       PROC_discard(mytrit{})
 ```
 
@@ -751,30 +751,30 @@ TRUE  EQV TRUE  = TRUE
 ### Implementing logic using lookup tables
 
 
-```c>#include <stdio.h
+```c
+#include <stdio.h>
 
- 
 typedef enum {
   TRITTRUE,  /* In this enum, equivalent to integer value 0 */
   TRITMAYBE, /* In this enum, equivalent to integer value 1 */
   TRITFALSE  /* In this enum, equivalent to integer value 2 */
 } trit;
- 
+
 /* We can trivially find the result of the operation by passing
    the trinary values as indeces into the lookup tables' arrays. */
 trit tritNot[3] = {TRITFALSE , TRITMAYBE, TRITTRUE};
 trit tritAnd[3][3] = { {TRITTRUE, TRITMAYBE, TRITFALSE},
                        {TRITMAYBE, TRITMAYBE, TRITFALSE},
                        {TRITFALSE, TRITFALSE, TRITFALSE} };
- 
+
 trit tritOr[3][3] = { {TRITTRUE, TRITTRUE, TRITTRUE},
                       {TRITTRUE, TRITMAYBE, TRITMAYBE},
                       {TRITTRUE, TRITMAYBE, TRITFALSE} };
- 
+
 trit tritThen[3][3] = { { TRITTRUE, TRITMAYBE, TRITFALSE},
                         { TRITTRUE, TRITMAYBE, TRITMAYBE},
                         { TRITTRUE, TRITTRUE, TRITTRUE } };
- 
+
 trit tritEquiv[3][3] = { { TRITTRUE, TRITMAYBE, TRITFALSE},
                          { TRITMAYBE, TRITMAYBE, TRITMAYBE},
                          { TRITFALSE, TRITMAYBE, TRITTRUE } };
@@ -809,7 +809,7 @@ int main()
 {
   trit op1 = TRITTRUE; /* Declare. Initialize for CYA */
   trit op2 = TRITTRUE; /* Declare. Initialize for CYA */
- 
+
   /* Demo 'not' */
   for( op1 = TRITTRUE; op1 <= TRITFALSE; ++op1 )
   {
@@ -820,7 +820,7 @@ int main()
   demo_binary_op(tritThen, "Then");
   demo_binary_op(tritEquiv, "Equiv");
 
- 
+
   return 0;
 }
 ```
@@ -879,8 +879,8 @@ F Equiv F: T
 ### Using functions
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef enum { t_F = -1, t_M, t_T } trit;
 
@@ -959,14 +959,14 @@ T | F ? T
 
 ### Variable truthfulness
 
-Represent each possible truth value as a floating point value x, 
-where the var has x chance of being true and 1 - x chance of being false. 
-When using <code>if3</code> conditional on a potential truth varible, 
-the result is randomly sampled to true or false according to the chance.  
+Represent each possible truth value as a floating point value x,
+where the var has x chance of being true and 1 - x chance of being false.
+When using <code>if3</code> conditional on a potential truth varible,
+the result is randomly sampled to true or false according to the chance.
 (This description is definitely very confusing perhaps).
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef double half_truth, maybe;
@@ -1029,8 +1029,8 @@ int main()
 
 Essentially the same logic as the [[#Using functions|Using functions]] implementation above, but using class-based encapsulation and overridden operators.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <stdlib.h>
 
 class trit {
@@ -1282,31 +1282,31 @@ T | F
 F | T
 
 AND:
-    T ? F 
+    T ? F
 ---------
-T | T ? F 
-? | ? ? F 
-F | F F F 
+T | T ? F
+? | ? ? F
+F | F F F
 
 OR:
-    T ? F 
+    T ? F
 ---------
-T | T T T 
-? | T ? ? 
-F | T ? F 
+T | T T T
+? | T ? ?
+F | T ? F
 
 IMPLY:
-    T ? F 
+    T ? F
 ---------
-T | T ? F 
-? | T ? ? 
-F | T T T 
+T | T ? F
+? | T ? ?
+F | T T T
 
 EQUAL:
-    T ? F 
+    T ? F
 ---------
-T | T ? F 
-? | ? ? ? 
+T | T ? F
+? | ? ? ?
 F | F ? T
 ```
 
@@ -1548,27 +1548,27 @@ ELENA 4.1 :
 import extensions;
 import system'routines;
 import system'collections;
- 
+
 sealed class Trit
 {
     bool _value;
- 
+
     bool cast() = _value;
- 
+
     constructor(v)
     {
         if (v != nil)
         {
             _value := cast bool(v);
-        }        
+        }
     }
- 
+
     Trit equivalent(b)
         = _value.equal(cast bool(b)) \ back:nilValue;
- 
+
     Trit Inverted
         = _value.Inverted \ back:nilValue;
- 
+
     Trit and(b)
     {
         if (nil == _value)
@@ -1580,7 +1580,7 @@ sealed class Trit
             ^ _value.and(lazy::(cast bool(b))) \ back:nilValue
         }
     }
- 
+
     Trit or(b)
     {
         if (nil == _value)
@@ -1592,13 +1592,13 @@ sealed class Trit
             ^ _value.or(lazy::(cast bool(b))) \ back:nilValue
         }
     }
- 
+
     Trit implies(b)
         = self.Inverted.or(b);
- 
+
     string Printable = _value.Printable \ back:"maybe";
 }
- 
+
 public program()
 {
     List<Trit> values := new Trit[]::(true, nilValue, false);
@@ -1678,7 +1678,7 @@ main() ->
 	andd(A,B).
 
 nott(S) ->
-	if 
+	if
 		S=="T" ->
 			io : format("F\n");
 
@@ -1687,61 +1687,61 @@ nott(S) ->
 
 		true ->
 			io: format("?\n")
-	end.	 
-	
+	end.
+
 andd(A, B) ->
-	if 
+	if
 		A=="T", B=="T" ->
 			io : format("T\n");
-		
+
 		A=="F"; B=="F" ->
-			io : format("F\n");	
+			io : format("F\n");
 
 		true ->
 			io: format("?\n")
-	end.	
+	end.
 
 
 orr(A, B) ->
-	if 
+	if
 		A=="T"; B=="T" ->
 			io : format("T\n");
-		
+
 		A=="?"; B=="?" ->
-			io : format("?\n");	
+			io : format("?\n");
 
 		true ->
 			io: format("F\n")
 	end.
-	
+
 
 then(A, B) ->
-	if 
+	if
 		B=="T" ->
 			io : format("T\n");
-		
+
 		A=="?" ->
-			io : format("?\n");	
+			io : format("?\n");
 
 		A=="F" ->
 			io :format("T\n");
 		B=="F" ->
-			io:format("F\n");	
+			io:format("F\n");
 		true ->
 			io: format("?\n")
-	end.	
+	end.
 
 equiv(A, B) ->
-	if 
+	if
 		A=="?" ->
 			io : format("?\n");
-		
+
 		A=="F" ->
-			io : format("~s\n", [nott(B)]);	
+			io : format("~s\n", [nott(B)]);
 
 		true ->
 			io: format("~s\n", [B])
-	end.			
+	end.
 
 ```
 
@@ -1952,7 +1952,7 @@ type
   trit = (tFalse=-1, tMaybe=0, tTrue=1);
 
  { ternary operators }
-  
+
   { equivalence = multiplication }
   operator * (const a,b:trit):trit;
   operator and (const a,b:trit):trit;inline;
@@ -1961,7 +1961,7 @@ type
   operator xor (const a,b:trit):trit;
   { imp ==>}
   operator >< (const a,b:trit):trit;
-                
+
 
 implementation
 
@@ -1973,7 +1973,7 @@ implementation
   begin
     Result:= LookupAnd[a,b];
   end;
-         
+
   operator or (const a,b:trit):trit;inline;
     const lookupOr:array[trit,trit] of trit =
                    ((tFalse,tMaybe,tTrue),
@@ -1982,13 +1982,13 @@ implementation
   begin
     Result := LookUpOr[a,b];
   end;
- 
+
   operator not (const a:trit):trit;inline;
     const LookupNot:array[trit] of trit =(tTrue,tMaybe,tFalse);
   begin
      Result:= LookUpNot[a];
   end;
- 
+
   operator xor (const a,b:trit):trit;
     const LookupXor:array[trit,trit] of trit =
                     ((tFalse,tMaybe,tTrue),
@@ -2016,8 +2016,8 @@ end.
 ```pascal
 program ternarytests;
 {$mode objfpc}
-uses 
-  ternarylogic;   
+uses
+  ternarylogic;
 begin
   writeln(' a AND b');
   writeln('F':7,'U':7, 'T':7);
@@ -2025,34 +2025,34 @@ begin
   writeln('U|',tMaybe and tFalse:7,tMaybe and tMaybe:7,tMaybe and tTrue:7);
   writeln('T|',tTrue and tFalse:7,tTrue and tMaybe:7,tTrue and tTrue:7);
   writeln;
- 
+
   writeln(' a OR b');
   writeln('F':7,'U':7, 'T':7);
   writeln('F|',tFalse or tFalse:7,tFalse or tMaybe:7,tFalse or tTrue:7);
   writeln('U|',tMaybe or tFalse:7,tMaybe or tMaybe:7,tMaybe or tTrue:7);
   writeln('T|',tTrue or tFalse:7,tTrue or tMaybe:7,tTrue or tTrue:7);
   writeln;
- 
+
   writeln(' NOT a');
   writeln('F|',not tFalse:7);
   writeln('U|',not tMaybe:7);
   writeln('T|',not tTrue:7);
   writeln;
- 
+
   writeln(' a XOR b');
   writeln('F':7,'U':7, 'T':7);
   writeln('F|',tFalse xor tFalse:7,tFalse xor tMaybe:7,tFalse xor tTrue:7);
   writeln('U|',tMaybe xor tFalse:7,tMaybe xor tMaybe:7,tMaybe xor tTrue:7);
   writeln('T|',tTrue xor tFalse:7,tTrue xor tMaybe:7,tTrue xor tTrue:7);
   writeln;
- 
+
   writeln('equality/equivalence and multiplication');
   writeln('F':7,'U':7, 'T':7);
   writeln('F|', tFalse * tFalse:7,tFalse * tMaybe:7, tFalse * tTrue:7);
   writeln('U|', tMaybe * tFalse:7,tMaybe * tMaybe:7,tMaybe * tTrue:7);
   writeln('T|', tTrue * tFalse:7, tTrue * tMaybe:7, tTrue * tTrue:7);
    writeln;
- 
+
   writeln('IMP. a.k.a. IfThen -> not(a) or b');
   writeln('F':7,'U':7, 'T':7);
   writeln('T|',tTrue >< tTrue:7,tTrue >< tMaybe:7,tTrue >< tFalse:7);
@@ -2068,37 +2068,37 @@ end.
 Output:
 a AND b
       F      U      T
-F|tFalse tFalse tFalse 
-U|tFalse tMaybe tMaybe 
-T|tFalse tMaybe tTrue  
+F|tFalse tFalse tFalse
+U|tFalse tMaybe tMaybe
+T|tFalse tMaybe tTrue
 
  a OR b
       F      U      T
-F|tFalse tMaybe tTrue  
-U|tMaybe tMaybe tTrue  
-T|tTrue  tTrue  tTrue  
+F|tFalse tMaybe tTrue
+U|tMaybe tMaybe tTrue
+T|tTrue  tTrue  tTrue
 
  NOT a
-F|tTrue  
-U|tMaybe 
-T|tFalse 
+F|tTrue
+U|tMaybe
+T|tFalse
 
  a XOR b
       F      U      T
-F|tFalse tMaybe tTrue  
-U|tMaybe tMaybe tMaybe 
-T|tTrue  tMaybe tFalse 
+F|tFalse tMaybe tTrue
+U|tMaybe tMaybe tMaybe
+T|tTrue  tMaybe tFalse
 
 equality/equivalence and multiplication
       F      U      T
-F|tTrue  tMaybe tFalse 
-U|tMaybe tMaybe tMaybe 
-T|tFalse tMaybe tTrue  
+F|tTrue  tMaybe tFalse
+U|tMaybe tMaybe tMaybe
+T|tFalse tMaybe tTrue
 
 IMP. a.k.a. IfThen -> not(a) or b
       F      U      T
-T|tTrue  tMaybe tFalse 
-U|tTrue  tMaybe tMaybe 
+T|tTrue  tMaybe tFalse
+U|tTrue  tMaybe tMaybe
 F|tTrue  tTrue  tTrue
 
 ```
@@ -2192,7 +2192,7 @@ func main() {
 ```txt
 
 t     not t
-False True 
+False True
 Maybe Maybe
 True  False
 
@@ -2205,21 +2205,21 @@ Maybe Maybe Maybe
 Maybe True  Maybe
 True  False False
 True  Maybe Maybe
-True  True  True 
+True  True  True
 
 s     t     s or t
 False False False
 False Maybe Maybe
-False True  True 
+False True  True
 Maybe False Maybe
 Maybe Maybe Maybe
-Maybe True  True 
-True  False True 
-True  Maybe True 
-True  True  True 
+Maybe True  True
+True  False True
+True  Maybe True
+True  True  True
 
 s     t     s eq t
-False False True 
+False False True
 False Maybe Maybe
 False True  False
 Maybe False Maybe
@@ -2227,7 +2227,7 @@ Maybe Maybe Maybe
 Maybe True  Maybe
 True  False False
 True  Maybe Maybe
-True  True  True 
+True  True  True
 
 ```
 
@@ -2240,7 +2240,7 @@ Solution:
 ```groovy
 enum Trit {
     TRUE, MAYBE, FALSE
-  
+
     private Trit nand(Trit that) {
         switch ([this,that]) {
             case { FALSE in it }: return TRUE
@@ -2249,7 +2249,7 @@ enum Trit {
         }
     }
     private Trit nor(Trit that) { this.or(that).not() }
-  
+
     Trit and(Trit that)   { this.nand(that).not() }
     Trit or(Trit that)    { this.not().nand(that.not()) }
     Trit not()            { this.nand(this) }
@@ -2446,10 +2446,10 @@ False False True
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-The following example works in both Icon and Unicon.  
+The following example works in both Icon and Unicon.
 There are a couple of comments on the code that pertain to the task requirements:
 * Strictly speaking there are no binary values in Icon and Unicon. There are a number of flow control operations that result in expression success (and a result) or failure which affects flow.  As a result there really isn't a set of binary operators to map into ternary.  The example provides the minimum required by the task plus xor.
-* The code below does not define a data type as it doesn't really make sense in this case.  Icon and Unicon can create records which would be overkill and clumsy in this case.  Unicon can create objects which would also be overkill.  The only remaining option is to reinterpret one of the existing types as ternary values.  The code below implements balanced ternary values as integers in order to simplify several of the functions.  
+* The code below does not define a data type as it doesn't really make sense in this case.  Icon and Unicon can create records which would be overkill and clumsy in this case.  Unicon can create objects which would also be overkill.  The only remaining option is to reinterpret one of the existing types as ternary values.  The code below implements balanced ternary values as integers in order to simplify several of the functions.
 * The use of integers doesn't really support strings of trits well.  While there is a function showtrit to ease display a converse function to decode character trits in a string is not included.
 
 
@@ -2457,7 +2457,7 @@ There are a couple of comments on the code that pertain to the task requirements
 ```Icon
 $define TRUE    1
 $define FALSE  -1
-$define UNKNOWN 0 
+$define UNKNOWN 0
 
 invocable all
 link printf
@@ -2473,10 +2473,10 @@ every f := !ufunc  do {   # display unary functions
       printf(" %s : %s\n",showtrit(t1),showtrit(not3(t1)))
    }
 
-   
+
 every f :=  !bfunc do {   # display binary functions
    printf("\nbinary function=%s:\n     ",f)
-   every t1 := (&null | TRUE | FALSE | UNKNOWN) do { 
+   every t1 := (&null | TRUE | FALSE | UNKNOWN) do {
       printf(" %s : ",showtrit(\t1))
       every t2 := (TRUE | FALSE | UNKNOWN | &null) do {
          if /t1 then printf("  %s",showtrit(\t2)|"\n")
@@ -2491,7 +2491,7 @@ return case a of {TRUE:"T";FALSE:"F";UNKNOWN:"?";default:runerr(205,a)}
 end
 
 procedure istrit(a)     #: return value of trit or error if invalid
-return (TRUE|FALSE|UNKNOWN|runerr(205,a)) = a 
+return (TRUE|FALSE|UNKNOWN|runerr(205,a)) = a
 end
 
 procedure not3(a)       #: not of trit or error if invalid
@@ -2520,8 +2520,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides support for the printf family of functions] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides support for the printf family of functions]
 
 {{out}}
 
@@ -2693,7 +2693,7 @@ And, the boolean result tables would look like this:
 public class Logic{
 	public static enum Trit{
 		TRUE, MAYBE, FALSE;
-		
+
 		public Trit and(Trit other){
 			if(this == TRUE){
 				return other;
@@ -2703,7 +2703,7 @@ public class Logic{
 				return FALSE;
 			}
 		}
-		
+
 		public Trit or(Trit other){
 			if(this == TRUE){
 				return TRUE;
@@ -2713,7 +2713,7 @@ public class Logic{
 				return other;
 			}
 		}
-		
+
 		public Trit tIf(Trit other){
 			if(this == TRUE){
 				return other;
@@ -2723,7 +2723,7 @@ public class Logic{
 				return TRUE;
 			}
 		}
-		
+
 		public Trit not(){
 			if(this == TRUE){
 				return FALSE;
@@ -2733,7 +2733,7 @@ public class Logic{
 				return TRUE;
 			}
 		}
-		
+
 		public Trit equals(Trit other){
 			if(this == TRUE){
 				return other;
@@ -2832,7 +2832,7 @@ L3.or(a, 2 == 3)     // false
 
 L3.ifThen(true, a)   // undefined
 
-L3.iff(a, 2 == 2)    // undefined     
+L3.iff(a, 2 == 2)    // undefined
 
 ```
 
@@ -2843,7 +2843,7 @@ L3.iff(a, 2 == 2)    // undefined
 jq itself does not have an extensible type system, so we'll use false, "maybe", and true
 as the three values since ternary logic agrees with Boolean logic for true and false, and because jq prints these three values consistently.
 
-For consistency, all the ternary logic operators are defined here with the prefix "ternary_", but such a prefix is only needed for "not", "and", and "or", as these are jq keywords. 
+For consistency, all the ternary logic operators are defined here with the prefix "ternary_", but such a prefix is only needed for "not", "and", and "or", as these are jq keywords.
 ```jq
 def ternary_nand(a; b):
   if a == false or b == false then true
@@ -2862,11 +2862,11 @@ def ternary_and(a; b): ternary_not( ternary_nand(a; b) );
 def ternary_imply(this; that):
   ternary_nand(this, ternary_not(that));
 
-def ternary_equiv(this; that): 
+def ternary_equiv(this; that):
   ternary_or( ternary_and(this; that); ternary_nor(this; that) );
 
 def display_and(a; b):
-  a as $a | b as $b 
+  a as $a | b as $b
   | "\($a) and \($b) is \( ternary_and($a; $b) )";
 def display_equiv(a; b):
   a as $a | b as $b
@@ -3071,7 +3071,7 @@ end
 
 enum class Trit {
     TRUE, MAYBE, FALSE;
- 
+
     operator fun not() = when (this) {
         TRUE  -> FALSE
         MAYBE -> MAYBE
@@ -3168,27 +3168,27 @@ not
 
 and | T  M  F
 -------------
- T  | T  M  F  
- M  | M  M  F  
- F  | F  F  F  
+ T  | T  M  F
+ M  | M  M  F
+ F  | F  F  F
 
 or  | T  M  F
 -------------
- T  | T  T  T  
- M  | T  M  M  
- F  | T  M  F  
+ T  | T  T  T
+ M  | T  M  M
+ F  | T  M  F
 
 imp | T  M  F
 -------------
- T  | T  M  F  
- M  | T  M  M  
- F  | T  T  T  
+ T  | T  M  F
+ M  | T  M  M
+ F  | T  T  T
 
 eqv | T  M  F
 -------------
- T  | T  M  F  
- M  | M  M  M  
- F  | F  M  T  
+ T  | T  M  F
+ M  | M  M  M
+ F  | F  M  T
 
 ```
 
@@ -3269,7 +3269,7 @@ end function
 function longName3$(i)
     longName3$ = word$("False,Don't know,True", i+1, ",")
 end function
- 
+
 ```
 
 
@@ -3376,26 +3376,26 @@ Example:
 ```mathematica
 trits = {True, Maybe, False};
 Print@Grid[
-   ArrayFlatten[{{{{Not}}, {{Null}}}, {List /@ trits, 
+   ArrayFlatten[{{{{Not}}, {{Null}}}, {List /@ trits,
       List /@ Not /@ trits}}]];
 Do[Print@Grid[
-   ArrayFlatten[{{{{operator}}, {{Null, Null, 
-        Null}}}, {{{Null}}, {trits}}, {List /@ trits, 
-      Outer[operator, trits, trits]}}]], {operator, {And, Or, Nand, 
+   ArrayFlatten[{{{{operator}}, {{Null, Null,
+        Null}}}, {{{Null}}, {trits}}, {List /@ trits,
+      Outer[operator, trits, trits]}}]], {operator, {And, Or, Nand,
    Nor, Xor, Xnor, Implies, Equivalent}}]
 ```
 
 {{out}}
 
 ```txt
-Not	
+Not
 True	False
 Maybe	Maybe
 False	True
 
 
 
-And			
+And
 	True	Maybe	False
 True	True	Maybe	False
 Maybe	Maybe	Maybe	False
@@ -3403,7 +3403,7 @@ False	False	False	False
 
 
 
-Or			
+Or
 	True	Maybe	False
 True	True	True	True
 Maybe	True	Maybe	Maybe
@@ -3411,7 +3411,7 @@ False	True	Maybe	False
 
 
 
-Nand			
+Nand
 	True	Maybe	False
 True	False	Maybe	True
 Maybe	Maybe	Maybe	True
@@ -3419,7 +3419,7 @@ False	True	True	True
 
 
 
-Nor			
+Nor
 	True	Maybe	False
 True	False	False	False
 Maybe	False	Maybe	Maybe
@@ -3427,7 +3427,7 @@ False	False	Maybe	True
 
 
 
-Xor			
+Xor
 	True	Maybe	False
 True	False	Maybe	True
 Maybe	Maybe	Maybe	Maybe
@@ -3435,7 +3435,7 @@ False	True	Maybe	False
 
 
 
-Xnor			
+Xnor
 	True	Maybe	False
 True	True	Maybe	False
 Maybe	Maybe	Maybe	Maybe
@@ -3443,7 +3443,7 @@ False	False	Maybe	True
 
 
 
-Implies			
+Implies
 	True	Maybe	False
 True	True	Maybe	False
 Maybe	True	Maybe	Maybe
@@ -3451,7 +3451,7 @@ False	True	True	True
 
 
 
-Equivalent			
+Equivalent
 	True	Maybe	False
 True	True	Maybe	False
 Maybe	Maybe	Maybe	Maybe
@@ -3743,11 +3743,11 @@ table2 "implies" t_imply;;
 
 not:
   True  -> False
-  False -> True 
+  False -> True
   Maybe -> Maybe
 
 and:
-  True  True  -> True 
+  True  True  -> True
   True  False -> False
   True  Maybe -> Maybe
   False True  -> False
@@ -3758,35 +3758,35 @@ and:
   Maybe Maybe -> Maybe
 
 or:
-  True  True  -> True 
-  True  False -> True 
-  True  Maybe -> True 
-  False True  -> True 
+  True  True  -> True
+  True  False -> True
+  True  Maybe -> True
+  False True  -> True
   False False -> False
   False Maybe -> Maybe
-  Maybe True  -> True 
+  Maybe True  -> True
   Maybe False -> Maybe
   Maybe Maybe -> Maybe
 
 equiv:
-  True  True  -> True 
+  True  True  -> True
   True  False -> False
   True  Maybe -> Maybe
   False True  -> False
-  False False -> True 
+  False False -> True
   False Maybe -> Maybe
   Maybe True  -> Maybe
   Maybe False -> Maybe
   Maybe Maybe -> Maybe
 
 implies:
-  True  True  -> True 
+  True  True  -> True
   True  False -> False
   True  Maybe -> Maybe
-  False True  -> True 
-  False False -> True 
-  False Maybe -> True 
-  Maybe True  -> True 
+  False True  -> True
+  False False -> True
+  False Maybe -> True
+  Maybe True  -> True
   Maybe False -> Maybe
   Maybe Maybe -> Maybe
 ```
@@ -4087,7 +4087,7 @@ end.
 Ternary logic test:
 
 NOT  True  Maybe False
-     False Maybe True 
+     False Maybe True
 
 AND    True  Maybe False
 True   True  Maybe False
@@ -4095,19 +4095,19 @@ Maybe  Maybe Maybe False
 False  False False False
 
 OR     True  Maybe False
-True   True  True  True 
+True   True  True  True
 Maybe  True  Maybe Maybe
 False  True  Maybe False
 
 IFTHEN True  Maybe False
 True   True  Maybe False
 Maybe  True  Maybe Maybe
-False  True  True  True 
+False  True  True  True
 
 EQUAL  True  Maybe False
 True   True  Maybe False
 Maybe  Maybe Maybe Maybe
-False  False Maybe True 
+False  False Maybe True
 
 
 ```
@@ -4263,8 +4263,8 @@ maybe	maybe	maybe	maybe
 false	false	maybe	true
 
 ==	true	maybe	false
-true	1		
-maybe		1	
+true	1
+maybe		1
 false			1
 ```
 
@@ -4320,7 +4320,7 @@ say ~(
     ¬Too ∧ (Too ∨ Too) ≡ ¬Too,
     Too ∨ Too ∧ ¬Too ≡ Too,
     (Too ∨ Too) ∧ ¬Too ≡ ¬Too,
- 
+
     Foo ∧ Too ∨ Foo ⇒ Foo ≡ Too,
     Foo ∧ Too ∨ Too ⇒ Foo ≡ Foo,
 );
@@ -4376,11 +4376,11 @@ function t_not(ternary a)
 end function
 
 function t_and(ternary a, ternary b)
-    return iff(a=T and b=T?T:iff(a=F or b=F?F:M))   
+    return iff(a=T and b=T?T:iff(a=F or b=F?F:M))
 end function
 
 function t_or(ternary a, ternary b)
-    return iff(a=T or b=T?T:iff(a=F and b=F?F:M))   
+    return iff(a=T or b=T?T:iff(a=F and b=F?F:M))
 end function
 
 function t_xor(ternary a, ternary b)
@@ -4388,7 +4388,7 @@ function t_xor(ternary a, ternary b)
 end function
 
 function t_implies(ternary a, ternary b)
-    return iff(a=F or b=T?T:iff(a=T and b=F?F:M))   
+    return iff(a=F or b=T?T:iff(a=T and b=F?F:M))
 end function
 
 function t_equal(ternary a, ternary b)
@@ -4492,13 +4492,13 @@ function triString ($tri) {
 }
 
 function triAnd() {
-    if (func_num_args() < 2) 
+    if (func_num_args() < 2)
        trigger_error('triAnd needs 2 or more parameters', E_USER_ERROR);
     return min(func_get_args());
 }
 
 function triOr() {
-    if (func_num_args() < 2) 
+    if (func_num_args() < 2)
        trigger_error('triOr needs 2 or more parameters', E_USER_ERROR);
     return max(func_get_args());
 }
@@ -4543,15 +4543,15 @@ Sample output:
 ```txt
 --- Sample output for a equivalent b ---
 
-for a=true    and b=true    a equivalent b is true   
+for a=true    and b=true    a equivalent b is true
 for a=true    and b=unknown a equivalent b is unknown
-for a=true    and b=false   a equivalent b is false  
+for a=true    and b=false   a equivalent b is false
 for a=unknown and b=true    a equivalent b is unknown
 for a=unknown and b=unknown a equivalent b is unknown
 for a=unknown and b=false   a equivalent b is unknown
-for a=false   and b=true    a equivalent b is false  
+for a=false   and b=true    a equivalent b is false
 for a=false   and b=unknown a equivalent b is unknown
-for a=false   and b=false   a equivalent b is true   
+for a=false   and b=false   a equivalent b is true
 
 ```
 
@@ -4658,7 +4658,7 @@ class Trit(int):
             value = 0
         elif value == 'MAYBE':
             value = -1
-        return super(Trit, cls).__new__(cls, value // (abs(value) or 1)) 
+        return super(Trit, cls).__new__(cls, value // (abs(value) or 1))
 
     def __repr__(self):
         if self > 0:
@@ -4734,7 +4734,7 @@ class Trit(int):
 
     def __invert__(self):
         return _ttable[self]
-    
+
     def __getattr__(self, name):
         if name in ('_n', 'flip'):
             # So you can do x._n == x.flip; the inverse of x
@@ -4742,10 +4742,10 @@ class Trit(int):
             # Same applies to keywords 'and' and 'or'.
             return _ttable[self]
         else:
-            raise AttributeError 
+            raise AttributeError
 
 
-        
+
 TRUE, FALSE, MAYBE = Trit(1), Trit(0), Trit(-1)
 
 _ttable = {
@@ -4834,8 +4834,8 @@ Trit logical exclusive-or, '^'
 	for b in values:
 		assert (a & ~b) | (b & ~a) == a ^ b
 
-		
->>> 
+
+>>>
 ```
 
 
@@ -5349,7 +5349,7 @@ irb(main):001:0> require './trit'
 => true
 irb(main):002:0> maybe = MAYBE
 => maybe
-irb(main):003:0> !true.trit       
+irb(main):003:0> !true.trit
 => false
 irb(main):004:0> !maybe.trit
 => maybe
@@ -5357,7 +5357,7 @@ irb(main):005:0> maybe.trit & false
 => false
 irb(main):006:0> maybe.trit | true
 => true
-irb(main):007:0> false.trit == true       
+irb(main):007:0> false.trit == true
 => false
 irb(main):008:0> false.trit == maybe
 => maybe
@@ -5402,20 +5402,20 @@ false ^ false => false
 testFalse	= 0  ' F
 testDoNotKnow	= 1  ' ?
 testTrue	= 2  ' T
- 
+
 print "Short and long names for ternary logic values"
 for i = testFalse to testTrue
     print shortName3$(i);" ";longName3$(i)
 next i
 print
- 
+
 print "Single parameter functions"
 print "x";" ";"=x";"  ";"not(x)"
 for i = testFalse to testTrue
     print shortName3$(i);"  ";shortName3$(i);"    ";shortName3$(not3(i))
 next
 print
- 
+
 print "Double  parameter fuctions"
 html "<table border=1><TR align=center bgcolor=wheat><TD>x</td><td>y</td><td>x AND y</td><td>x OR y</td><td>x EQ y</td><td>x XOR y</td></tr>"
 for a	= testFalse to testTrue
@@ -5430,30 +5430,30 @@ html "</table>"
 function and3(a,b)
     and3	= min(a,b)
 end function
- 
+
 function or3(a,b)
     or3	= max(a,b)
 end function
- 
+
 function eq3(a,b)
     eq3 	= testFalse
     if a	= tDontKnow or b	= tDontKnow then eq3	= tDontKnow
     if a	= b then eq3	= testTrue
 end function
- 
+
 function xor3(a,b)
     xor3	= not3(eq3(a,b))
 end function
- 
+
 function not3(b)
     not3	= 2-b
 end function
- 
+
 '------------------------------------------------
 function shortName3$(i)
    shortName3$	= word$("F ? T", i+1)
 end function
- 
+
 function longName3$(i)
     longName3$	= word$("False,Don't know,True", i+1, ",")
 end function
@@ -5568,7 +5568,7 @@ fn main() {
     for &t in &TRITS {
         println!(" {}  | {}", t, !t);
     }
-    
+
     table("and", |a, b| a & b);
     table("or", |a, b| a | b);
     table("imp", |a, b| a.imp(b));
@@ -5601,27 +5601,27 @@ not
 
 and | T  M  F
 -------------
- T  | T  M  F  
- M  | M  M  F  
- F  | F  F  F  
+ T  | T  M  F
+ M  | M  M  F
+ F  | F  F  F
 
 or  | T  M  F
 -------------
- T  | T  T  T  
- M  | T  M  M  
- F  | T  M  F  
+ T  | T  T  T
+ M  | T  M  M
+ F  | T  M  F
 
 imp | T  M  F
 -------------
- T  | T  M  F  
- M  | T  M  M  
- F  | T  T  T  
+ T  | T  M  F
+ M  | T  M  M
+ F  | T  T  T
 
 eqv | T  M  F
 -------------
- T  | T  M  F  
- M  | M  M  M  
- F  | F  M  T  
+ T  | T  M  F
+ M  | M  M  M
+ F  | F  M  T
 ```
 
 
@@ -5636,7 +5636,7 @@ sealed trait Trit { self =>
     case (_, TMaybe) => TMaybe
     case _ => TFalse
   }
-		
+
   def nor(that:Trit):Trit = this.or(that).not()
   def and(that:Trit):Trit = this.nand(that).not()
   def or(that:Trit):Trit = this.not().nand(that.not())
@@ -5659,7 +5659,7 @@ object TernaryLogic extends App {
   println("\n- Imply -")
   for(a<-v; b<-v) println("%6s : %6s => %6s".format(a, b, a imply b))
   println("\n- Equiv -")
-  for(a<-v; b<-v) println("%6s : %6s => %6s".format(a, b, a equiv b))		
+  for(a<-v; b<-v) println("%6s : %6s => %6s".format(a, b, a equiv b))
 }
 ```
 
@@ -5781,7 +5781,7 @@ const func trit: not (in trit: aTrit) is
 
 const func trit: (in trit: aTrit1) and (in trit: aTrit2) is
   return tritAnd[succ(ord(aTrit1))][succ(ord(aTrit2))];
- 
+
 const func trit: (in trit: aTrit1) and (ref func trit: aTrit2) is func
   result
     var trit: res is False;
@@ -5795,7 +5795,7 @@ const func trit: (in trit: aTrit1) and (ref func trit: aTrit2) is func
 
 const func trit: (in trit: aTrit1) or (in trit: aTrit2) is
   return tritOr[succ(ord(aTrit1))][succ(ord(aTrit2))];
- 
+
 const func trit: (in trit: aTrit1) or (ref func trit: aTrit2) is func
   result
     var trit: res is True;
@@ -5863,37 +5863,37 @@ const proc: main is func
 
  not     | False  Maybe  True
 ---------+---------------------
-         | True   Maybe  False  
+         | True   Maybe  False
 
  and     | False  Maybe  True
 ---------+---------------------
- False   | False  False  False  
- Maybe   | False  Maybe  Maybe  
- True    | False  Maybe  True   
+ False   | False  False  False
+ Maybe   | False  Maybe  Maybe
+ True    | False  Maybe  True
 
  or      | False  Maybe  True
 ---------+---------------------
- False   | False  Maybe  True   
- Maybe   | Maybe  Maybe  True   
- True    | True   True   True   
+ False   | False  Maybe  True
+ Maybe   | Maybe  Maybe  True
+ True    | True   True   True
 
  xor     | False  Maybe  True
 ---------+---------------------
- False   | True   True   True   
- Maybe   | Maybe  Maybe  True   
- True    | False  Maybe  True   
+ False   | True   True   True
+ Maybe   | Maybe  Maybe  True
+ True    | False  Maybe  True
 
  ->      | False  Maybe  True
 ---------+---------------------
- False   | True   True   True   
- Maybe   | Maybe  Maybe  True   
- True    | False  Maybe  True   
+ False   | True   True   True
+ Maybe   | Maybe  Maybe  True
+ True    | False  Maybe  True
 
  ==      | False  Maybe  True
 ---------+---------------------
- False   | True   Maybe  False  
- Maybe   | Maybe  Maybe  Maybe  
- True    | False  Maybe  True   
+ False   | True   Maybe  False
+ Maybe   | Maybe  Maybe  Maybe
+ True    | False  Maybe  True
 
 ```
 
@@ -5995,7 +5995,7 @@ foreach x {true maybe false} {
 x /\ y == x \/ y
  x     | y     || result
 -------+-------++--------
- true  | true  || true 
+ true  | true  || true
  true  | maybe || maybe
  true  | false || false
  maybe | true  || maybe
@@ -6003,7 +6003,7 @@ x /\ y == x \/ y
  maybe | false || maybe
  false | true  || false
  false | maybe || maybe
- false | false || true 
+ false | false || true
 
 ```
 

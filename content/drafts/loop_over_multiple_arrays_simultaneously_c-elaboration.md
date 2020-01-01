@@ -11,14 +11,14 @@ tags = []
 +++
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef struct closure {
     void (*f)( void *elem, void *data);
     void  *data;
 } *Closure;
-        
+
 typedef struct listSpec{
     void (*print)(const void *);
     void *ary;

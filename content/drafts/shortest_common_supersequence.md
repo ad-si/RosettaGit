@@ -23,7 +23,7 @@ Demonstrate this by printing <math>s</math> where <math>u = </math>“<tt>abcbda
 
 
 ;Also see:
-*   The Wikipedia article:   [http://wikipedia.org/wiki/Shortest_common_supersequence_problem shortest common supersequence]. 
+*   The Wikipedia article:   [http://wikipedia.org/wiki/Shortest_common_supersequence_problem shortest common supersequence].
 
 
 
@@ -33,8 +33,8 @@ Demonstrate this by printing <math>s</math> where <math>u = </math>“<tt>abcbda
 
 The C99 code here isn't all that different from Levenstein distance calculation.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 typedef struct link link_t;
@@ -49,7 +49,7 @@ int scs(char *x, char *y, char *out)
 {
 	int lx = strlen(x), ly = strlen(y);
 	link_t lnk[ly + 1][lx + 1];
-	
+
 	for (int i = 0; i < ly; i++)
 		lnk[i][lx] = (link_t) {ly - i, y[i], &lnk[i + 1][lx]};
 
@@ -218,7 +218,7 @@ defmodule SCS do
     lcs = LCS.lcs(u, v) |> to_charlist
     scs(to_charlist(u), to_charlist(v), lcs, []) |> to_string
   end
-  
+
   defp scs(u, v, [], res), do: Enum.reverse(res) ++ u ++ v
   defp scs([h|ut], [h|vt], [h|lt], res),      do: scs(ut, vt, lt, [h|res])
   defp scs([h|_]=u, [vh|vt], [h|_]=lcs, res), do: scs(u, vt, lcs, [vh|res])
@@ -317,7 +317,7 @@ Uses 'lcs' function from [[Longest common subsequence#Kotlin]]:
 
 fun lcs(x: String, y: String): String {
     if (x.length == 0 || y.length == 0) return ""
-    val x1 = x.dropLast(1)  
+    val x1 = x.dropLast(1)
     val y1 = y.dropLast(1)
     if (x.last() == y.last()) return lcs(x1, y1) + x.last()
     val x2 = lcs(x, y1)
@@ -331,7 +331,7 @@ fun scs(u: String, v: String): String{
     var vi = 0
     val sb = StringBuilder()
     for (i in 0 until lcs.length) {
-        while (ui < u.length && u[ui] != lcs[i]) sb.append(u[ui++])       
+        while (ui < u.length && u[ui] != lcs[i]) sb.append(u[ui++])
         while (vi < v.length && v[vi] != lcs[i]) sb.append(v[vi++])
         sb.append(lcs[i])
         ui++; vi++
@@ -340,10 +340,10 @@ fun scs(u: String, v: String): String{
     if (vi < v.length) sb.append(v.substring(vi))
     return sb.toString()
 }
-                
+
 fun main(args: Array<String>) {
     val u = "abcbdab"
-    val v = "bdcaba"  
+    val v = "bdcaba"
     println(scs(u, v))
 }
 ```
@@ -381,7 +381,7 @@ sub lcs { # longest common subsequence
 sub scs { # shortest common supersequence
     my( $u, $v ) = @_;
     my @lcs = split //, lcs $u, $v;
-    my $pat = "(.*)".join("(.*)",@lcs)."(.*)"; 
+    my $pat = "(.*)".join("(.*)",@lcs)."(.*)";
     my @u = $u =~ /$pat/;
     my @v = $v =~ /$pat/;
     my $scs = shift(@u).shift(@v);
@@ -467,7 +467,7 @@ sequence res = ""
     end if
     return res
 end function
- 
+
 function shortest_common_supersequence(string a, b)
     string lcs = longest_common_subsequence(a, b),
            scs = ""
@@ -558,7 +558,7 @@ SCS:  WEASRDANCELS
 (struct link (len letters))
 
 (define (link-add li n letter)
-  (link (+ n (link-len li)) 
+  (link (+ n (link-len li))
         (cons letter (link-letters li))))
 
 (define (memoize f)
@@ -567,7 +567,7 @@ SCS:  WEASRDANCELS
       (dict-ref! table args (λ () (apply f args))))))
 
 (define scs/list
-  (memoize 
+  (memoize
    (lambda (x y)
      (cond
        [(null? x)
@@ -648,7 +648,7 @@ shortest common supersequence= acb
                      string u= ac
                      string v= ab
 
-shortest common supersequence= abc 
+shortest common supersequence= abc
 
 ```
 
@@ -837,7 +837,7 @@ fcn scs(x,y,out){
 
    foreach i in (ly){ lnk[i][lx]=Link(ly-i, y[i]) }
    foreach j in (lx){ lnk[ly][j]=Link(lx-j, x[j]) }
- 
+
    foreach i,j in ([ly-1..0,-1],[lx-1..0,-1]){
       lp:=lnk[i][j];
       if (y[i]==x[j]){

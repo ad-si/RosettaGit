@@ -11,17 +11,17 @@ tags = []
 +++
 
 {{task|Basic language learning}}
-[[Category:Probability and statistics]] 
+[[Category:Probability and statistics]]
 [[Category:Randomness]]
 {{omit from|GUISS}}
 {{omit from|UNIX Shell|From the shell, we simply invoke the awk solution}}
 
 ;Task:
-Generate a collection filled with   '''1000'''   normally distributed random (or pseudo-random) numbers 
+Generate a collection filled with   '''1000'''   normally distributed random (or pseudo-random) numbers
 with a mean of   '''1.0'''   and a   [[wp:Standard_deviation|standard deviation]]   of   '''0.5'''
 
 
-Many libraries only generate uniformly distributed random numbers. 
+Many libraries only generate uniformly distributed random numbers.
 
 If so, use [[wp:Normal_distribution#Generating_values_from_normal_distribution|this formula]] to convert them to a normal distribution.
 
@@ -46,14 +46,14 @@ procedure Normal_Random is
             (  Seed  : Generator;
                Mu    : Float := 1.0;
                Sigma : Float := 0.5
-            )  return Float is 
+            )  return Float is
    begin
       return
          Mu + (Sigma * Sqrt (-2.0 * Log (Random (Seed), 10.0)) * Cos (2.0 * Pi * Random (Seed)));
    end Normal_Distribution;
-      
+
    Seed         : Generator;
-   Distribution : array (1..1_000) of Float; 
+   Distribution : array (1..1_000) of Float;
 begin
    Reset (Seed);
    for I in Distribution'Range loop
@@ -101,7 +101,7 @@ test:(
 ## AutoHotkey
 
 contributed by Laszlo on the ahk
-[http://www.autohotkey.com/forum/post-276261.html#276261 forum] 
+[http://www.autohotkey.com/forum/post-276261.html#276261 forum]
 
 ```AutoHotkey
 Loop 40
@@ -120,7 +120,7 @@ RandN(m,s) { ; Normally distributed random numbers of mean = m, std.dev = s by B
    Return Y
 }
 ```
- 
+
 
 
 ## AWK
@@ -155,7 +155,7 @@ BEGIN {
 
 ```txt
 
-0.783753 1.16682 1.17989 1.14975 1.34784 0.29296 0.979227 1.04402 0.567835 1.58812 0.465559 1.27186 0.324533 0.725827 -0.0626549 0.632273 1.0145 1.3387 0.861667 1.04147 1.2576 1.02497 0.58453 0.9619 1.26902 0.851048 -0.126259 0.863256 
+0.783753 1.16682 1.17989 1.14975 1.34784 0.29296 0.979227 1.04402 0.567835 1.58812 0.465559 1.27186 0.324533 0.725827 -0.0626549 0.632273 1.0145 1.3387 0.861667 1.04147 1.2576 1.02497 0.58453 0.9619 1.26902 0.851048 -0.126259 0.863256
 ```
 
 ...
@@ -181,11 +181,11 @@ BEGIN {
       FOR number% = 0 TO 999
         array(number%) = 1.0 + 0.5 * SQR(-2*LN(RND(1))) * COS(2*PI*RND(1))
       NEXT
-      
+
       mean = SUM(array()) / (DIM(array(),1) + 1)
       array() -= mean
       stdev = MOD(array()) / SQR(DIM(array(),1) + 1)
-      
+
       PRINT "Mean = " ; mean
       PRINT "Standard deviation = " ; stdev
 ```
@@ -202,8 +202,8 @@ Standard deviation = 0.503551814
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <math.h>
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -296,8 +296,8 @@ Standard Deviation: 0,502540443430955
 The new C++ standard looks very similar to the Boost library example below.
 
 
-```cpp>#include <random
-
+```cpp
+#include <random>
 #include <functional>
 #include <vector>
 #include <algorithm>
@@ -319,8 +319,8 @@ int main()
 
 {{works with|C++03}}
 
-```cpp>#include <cstdlib
-   // for rand
+```cpp
+#include <cstdlib>   // for rand
 #include <cmath>     // for atan, sqrt, log, cos
 #include <algorithm> // for generate_n
 
@@ -359,7 +359,7 @@ This example used Mersenne Twister generator. It can be changed by changing the 
 
 #include <vector>
 #include "boost/random.hpp"
-#include "boost/generator_iterator.hpp"    
+#include "boost/generator_iterator.hpp"
 #include <boost/random/normal_distribution.hpp>
 #include <algorithm>
 
@@ -367,11 +367,11 @@ typedef boost::mt19937 RNGType; ///< mersenne twister generator
 
 int main() {
     RNGType rng;
-    boost::normal_distribution<> rdist(1.0,0.5); /**< normal distribution 
+    boost::normal_distribution<> rdist(1.0,0.5); /**< normal distribution
                            with mean of 1.0 and standard deviation of 0.5 */
 
     boost::variate_generator< RNGType, boost::normal_distribution<> >
-                    get_rand(rng, rdist);  
+                    get_rand(rng, rdist);
 
     std::vector<double> v(1000);
     generate(v.begin(),v.end(),get_rand);
@@ -650,37 +650,37 @@ ELENA 4.1 :
 ```elena
 import extensions;
 import extensions'math;
- 
+
 randomNormal()
 {
-    ^ cos(2 * Pi_value * randomGenerator.nextReal()) 
-                      * sqrt(-2 * ln(randomGenerator.nextReal())) 
+    ^ cos(2 * Pi_value * randomGenerator.nextReal())
+                      * sqrt(-2 * ln(randomGenerator.nextReal()))
 }
- 
+
 public program()
 {
     real[] a := new real[](1000);
- 
+
     real tAvg := 0;
     for (int x := 0, x < a.Length, x += 1)
     {
         a[x] := (randomNormal()) / 2 + 1;
         tAvg += a[x]
     };
- 
+
     tAvg /= a.Length;
     console.printLine("Average: ", tAvg);
- 
+
     real s := 0;
     for (int x := 0, x < a.Length, x += 1)
     {
         s += power(a[x] - tAvg, 2)
     };
- 
+
     s := sqrt(s / 1000);
- 
+
     console.printLine("Standard Deviation: ", s);
- 
+
     console.readChar()
 }
 ```
@@ -703,8 +703,8 @@ Standard Deviation: 0.5109070975558
 defmodule Random do
   def normal(mean, sd) do
     {a, b} = {:rand.uniform, :rand.uniform}
-    mean + sd * (:math.sqrt(-2 * :math.log(a)) * :math.cos(2 * :math.pi * b)) 
-  end 
+    mean + sd * (:math.sqrt(-2 * :math.log(a)) * :math.cos(2 * :math.pi * b))
+  end
 end
 
 std_dev = fn (list) ->
@@ -932,7 +932,7 @@ for i in [0:1000] : a+= norm_rand_num()
 
 function norm_rand_num()
    pi = 2*acos(0)
-   return 1 + (cos(2 * pi * random()) * pow(-2 * log(random()) ,1/2)) /2 
+   return 1 + (cos(2 * pi * random()) * pow(-2 * log(random()) ,1/2)) /2
 end
 ```
 
@@ -1038,7 +1038,7 @@ PROGRAM Random
 
   pi = 4.0*ATAN(1.0)
   CALL RANDOM_NUMBER(array) ! Uniform distribution
- 
+
 ! Now convert to normal distribution
   DO i = 1, n-1, 2
     temp = sd * SQRT(-2.0*LOG(array(i))) * COS(2*pi*array(i+1)) + mean
@@ -1049,7 +1049,7 @@ PROGRAM Random
 ! Check mean and standard deviation
   mean = SUM(array)/n
   sd = SQRT(SUM((array - mean)**2)/n)
- 
+
   WRITE(*, "(A,F8.6)") "Mean = ", mean
   WRITE(*, "(A,F8.6)") "Standard Deviation = ", sd
 
@@ -1057,7 +1057,7 @@ END PROGRAM Random
 ```
 
 
-{{out}} 
+{{out}}
 
 ```txt
 
@@ -1078,7 +1078,7 @@ Const pi As Double = 3.141592653589793
 Randomize
 
 ' Generates normally distributed random numbers with mean 0 and standard deviation 1
-Function randomNormal() As Double 
+Function randomNormal() As Double
   Return Cos(2.0 * pi * Rnd) * Sqr(-2.0 * Log(Rnd))
 End Function
 
@@ -1088,7 +1088,7 @@ Dim sum As Double = 0.0
 ' Generate 1000 normally distributed random numbers
 ' with mean 1 and standard deviation 0.5
 ' and calculate their sum
-For i As Integer = 0 To 999 
+For i As Integer = 0 To 999
    r(i) = 1.0 + randomNormal/2.0
    sum += r(i)
 Next
@@ -1140,7 +1140,7 @@ function randg(mean,stddev: float): float;
 let gaussianRand count =
     let o = new System.Random()
     let pi = System.Math.PI
-    let gaussrnd = 
+    let gaussrnd =
         (fun _ -> 1. + 0.5 * sqrt(-2. * log(o.NextDouble())) * cos(2. * pi * o.NextDouble()))
     [ for i in {0 .. (int count)} -> gaussrnd() ]
 ```
@@ -1241,7 +1241,7 @@ end fn = result
 local fn RandomGaussian as double
 dim as double r
 
-r = fn RandomZeroToOne             
+r = fn RandomZeroToOne
 end fn = 1 + .5 * ( sqr( -2 * log(r) ) * cos( 2 * pi * r ) )
 
 dim as long i
@@ -1295,7 +1295,7 @@ pairs :: [a] -> [(a,a)]
 pairs (x:y:zs) = (x,y):pairs zs
 pairs _        = []
 
-gauss mu sigma (r1,r2) = 
+gauss mu sigma (r1,r2) =
   mu + sigma * sqrt (-2 * log r1) * cos (2 * pi * r2)
 
 gaussians :: (RandomGen g, Random a, Floating a) => Int -> g -> [a]
@@ -1335,7 +1335,7 @@ main = do
 REAL :: n=1000, m=1, s=0.5, array(n)
 
 pi = 4 * ATAN(1)
-array = s * (-2*LOG(RAN(1)))^0.5  * COS(2*pi*RAN(1)) + m 
+array = s * (-2*LOG(RAN(1)))^0.5  * COS(2*pi*RAN(1)) + m
 ```
 
 
@@ -1350,7 +1350,7 @@ procedure main()
     local L
     L := list(1000)
     every L[1 to 1000] := 1.0 + 0.5 * sqrt(-2.0 * log(?0)) * cos(2.0 * &pi * ?0)
- 
+
     every write(!L)
 end
 
@@ -1372,7 +1372,7 @@ result = 1.0 + 0.5*randomn(seed,1000)
 '''Solution:'''
 
 ```j
-urand=: ?@$ 0: 
+urand=: ?@$ 0:
 zrand=: (2 o. 2p1 * urand) * [: %: _2 * [: ^. urand
 
 1 + 0.5 * zrand 100
@@ -1425,8 +1425,8 @@ for (var i=0; i < 1000; i++){
 
 {{works with|jq|1.4}}
 
-Since jq is a purely functional language, it is convenient 
-to define the pseudo-random number generator functions as filters 
+Since jq is a purely functional language, it is convenient
+to define the pseudo-random number generator functions as filters
 whose inputs and outputs are arrays containing a "seed".
 
 The following uses the same pseudo-random number generator as the
@@ -1453,7 +1453,7 @@ def next_rand_Microsoft:
 # Input: [n, state]
 # Output [n+1, nextstate, r]
 def next_rand_normal:
-  def u: next_rand_Microsoft | .[2] /= 32767; 
+  def u: next_rand_Microsoft | .[2] /= 32767;
   u as $u1
   | ($u1 | u) as $u2
   | ((( (8*(1|atan)) * $u1[2]) | cos)
@@ -1616,7 +1616,7 @@ Module CheckIt {
           \\ A()  has a copy of values
             N=Len(A())
             if N<1 then Error "Empty Array"
-            M=Each(A()) 
+            M=Each(A())
             k=0
             \\ make sum, dev same type as A(k)
             sum=A(k)-A(k)
@@ -1630,8 +1630,8 @@ Module CheckIt {
             P=A()
             \\ subtruct from each item
             P-=Mean
-            
-            M=Each(P) 
+
+            M=Each(P)
             While M {
                   dev+=Array(M)*Array(M)
             }
@@ -1642,7 +1642,7 @@ Module CheckIt {
             \\ by default all numbers are double
             \\ cos() get degrees
           =1+Cos(360 * rnd) * Sqrt(-2 * Ln(rnd)) /2
-      }  
+      }
       \\ fill array calling  randomNormal() for each item
       Dim A(1000)<<randomNormal()
       \\ we can pass a pointer to array and place it to stack of values
@@ -1655,10 +1655,10 @@ Module CheckIt {
       DisplayMeanAndStdDeviation((0,0,14,14))  ' mean = 7 std deviation = 7
       DisplayMeanAndStdDeviation((0,6,8,14))  ' mean = 7 std deviation = 5
       DisplayMeanAndStdDeviation((6,6,8,8))  ' mean = 7 std deviation = 1
-      
+
       Sub DisplayMeanAndStdDeviation(A)
             \\ push to stack all items of an array (need an array pointer)
-            Push  ! StdDev(A) 
+            Push  ! StdDev(A)
             \\ read from strack two numbers
             Print "Mean is               "; Number
             Print "Standard Deviation is "; Number
@@ -1696,16 +1696,16 @@ RandomReal[NormalDistribution[1, 1/2], 1000]
 Native support :
 
 ```MATLAB
-    mu = 1; sd = 0.5; 
+    mu = 1; sd = 0.5;
     x = randn(1000,1) * sd + mu;
 
 ```
 
 
-The statistics toolbox provides this function 
+The statistics toolbox provides this function
 
 ```MATLAB
-   x = normrnd(mu, sd, [1000,1]); 
+   x = normrnd(mu, sd, [1000,1]);
 ```
 
 
@@ -1714,7 +1714,7 @@ This script uses the Box-Mueller Transform to transform a number from the unifor
 
 ```MATLAB
 function randNum = randNorm(mu0,chi2, sz)
-           
+
     radiusSquared = +Inf;
 
     while (radiusSquared >= 1)
@@ -1760,7 +1760,7 @@ random_normal(1.0, 0.5, 1000);
 
 ```maxscript
 arr = #()
-for i in 1 to 1000 do 
+for i in 1 to 1000 do
 (
     a = random 0.0 1.0
     b = random 0.0 1.0
@@ -1789,7 +1789,7 @@ endfor
 % testing
 m := m / 1000;       % finalize the computation of the mean
 
-s := 0;              % in s we compute the standard deviation 
+s := 0;              % in s we compute the standard deviation
 for i = 1 upto 1000:
   s := s + (col[i] - m)**2;
 endfor
@@ -1823,7 +1823,7 @@ list = double[999]
 mean = 1.0
 std = 0.5
 rng = Random.new
-0.upto(998) do | i | 
+0.upto(998) do | i |
     list[i] = mean + std * rng.nextGaussian
 end
 
@@ -1864,7 +1864,7 @@ VAR rands: ARRAY [1..1000] OF LONGREAL;
 PROCEDURE RandNorm(): LONGREAL =
   BEGIN
     WITH rand = NEW(Random.Default).init() DO
-      RETURN 
+      RETURN
         sqrt(-2.0D0 * log(rand.longreal())) * cos(2.0D0 * Pi * rand.longreal());
     END;
   END RandNorm;
@@ -2011,7 +2011,7 @@ randomize()
 for j in 0..5:
    for i in 0..1000:
       rs.push(normGauss())
-   echo("mean: ", $formatFloat(rs.mean,ffDecimal,precisn), 
+   echo("mean: ", $formatFloat(rs.mean,ffDecimal,precisn),
         " stdDev: ", $formatFloat(rs.standardDeviation(),ffDecimal,precisn))
 ```
 
@@ -2144,7 +2144,7 @@ stddev:
 old standard deviation= 0.283199568
 
               new mean= 1.00377404
-new standard deviation= 0.501444536  
+new standard deviation= 0.501444536
 ```
 
 
@@ -2281,7 +2281,7 @@ say my $stddev = sqrt $mean**2 R- @nums R/ [+] @nums X** 2;
 function RandomNormal()
     return sqrt(-2*log(rnd())) * cos(2*PI*rnd())
 end function
- 
+
 sequence s = repeat(0,1000)
 for i=1 to length(s) do
     s[i] = 1 + 0.5 * RandomNormal()
@@ -2304,7 +2304,7 @@ $pi 	= pi();          // Set PI
 $a = array();
 for ($i = 0; $i < 1000; $i++) {
     $a[$i] = 1.0 + ((sqrt(-2 * log(random())) * cos(2 * $pi * random())) * 0.5);
-    
+
 }
 ```
 
@@ -2351,7 +2351,7 @@ Normal_Random: procedure options (main);
    declare (array(1000), pi, temp,
             mean initial (1.0), sd initial (0.5)) float (18);
    declare (i, n) fixed binary;
-   
+
    n = hbound(array, 1);
    pi = 4.0*ATAN(1.0);
    array = random(); /* Uniform distribution */
@@ -2378,7 +2378,7 @@ Mean = 1.0125630677913652  Standard Deviation = 0.5067289784535284
 3 runs with different seeds to random():
 Mean = 1.0008390411168471  Standard Deviation = 0.5095810511317908
 Mean = 0.9754351286894838  Standard Deviation = 0.4804376530558166
-Mean = 1.0177411222687990  Standard Deviation = 0.5165899662493400   
+Mean = 1.0177411222687990  Standard Deviation = 0.5165899662493400
 
 ```
 
@@ -2391,7 +2391,7 @@ Mean = 1.0177411222687990  Standard Deviation = 0.5165899662493400
 
 DECLARE
   --The desired collection
-  type t_coll is table of number index by binary_integer; 
+  type t_coll is table of number index by binary_integer;
   l_coll t_coll;
 
   c_max pls_integer := 1000;
@@ -2441,30 +2441,30 @@ function Get-RandomNormal
     {
     [CmdletBinding()]
     Param ( [double]$Mean, [double]$StandardDeviation )
- 
+
     $RandomNormal = $Mean + $StandardDeviation * [math]::Sqrt( -2 * [math]::Log( ( Get-Random -Minimum 0.0 -Maximum 1.0 ) ) ) * [math]::Cos( 2 * [math]::PI * ( Get-Random -Minimum 0.0 -Maximum 1.0 ) )
- 
+
     return $RandomNormal
     }
- 
+
 #  Standard deviation function for testing
 function Get-StandardDeviation
     {
     [CmdletBinding()]
     param ( [double[]]$Numbers )
- 
+
     $Measure = $Numbers | Measure-Object -Average
     $PopulationDeviation = 0
     ForEach ($Number in $Numbers) { $PopulationDeviation += [math]::Pow( ( $Number - $Measure.Average ), 2 ) }
     $StandardDeviation = [math]::Sqrt( $PopulationDeviation / ( $Measure.Count - 1 ) )
     return $StandardDeviation
     }
- 
+
 #  Test
 $RandomNormalNumbers = 1..1000 | ForEach { Get-RandomNormal -Mean 1 -StandardDeviation 0.5 }
- 
+
 $Measure = $RandomNormalNumbers | Measure-Object -Average
- 
+
 $Stats = [PSCustomObject]@{
     Count             = $Measure.Count
     Average           = $Measure.Average
@@ -2520,7 +2520,7 @@ Next
 ```python>>>
  import random
 >>> values = [random.gauss(1, .5) for i in range(1000)]
->>> 
+>>>
 ```
 
 
@@ -2535,7 +2535,7 @@ Next
 
 >>> quick_check(values)
 (1.0140373306786599, 0.49943411329234066)
->>> 
+>>>
 ```
 
 
@@ -2547,7 +2547,7 @@ Note that the ''random'' module in the Python standard library supports a number
  values = [ random.normalvariate(1, 0.5) for i in range(1000)]
 >>> quick_check(values)
 (0.990099111944864, 0.5029847005836282)
->>> 
+>>>
 ```
 
 
@@ -2580,23 +2580,23 @@ result <- rnorm(1000, mean=1, sd=0.5)
 ```raven
 define PI
    -1 acos
-   
+
 define rand1
    9999999 choose 1 + 10000000.0 /
-   
+
 define randNormal
    rand1 PI * 2 * cos
    rand1 log -2 * sqrt
    *
    2 / 1 +
-   
+
 1000 each drop randNormal "%f\n" print
 ```
 
 Quick Check (on linux with code in file rand.rv)
 
 ```raven
-raven rand.rv | awk '{sum+=$1; sumsq+=$1*$1;} END {print "stdev = " sqrt(sumsq/NR - (sum/NR)**2); print "mean = " sum/NR}' 
+raven rand.rv | awk '{sum+=$1; sumsq+=$1*$1;} END {print "stdev = " sqrt(sumsq/NR - (sum/NR)**2); print "mean = " sum/NR}'
 stdev = 0.497773
 mean = 1.01497
 ```
@@ -2680,7 +2680,7 @@ new standard deviation= 0.50002924192766720838
 
 ```ring
 
-for i = 1 to 10 
+for i = 1 to 10
     see random(i) + nl
 next i
 
@@ -2702,7 +2702,7 @@ Array.new(1000) { 1 + Math.sqrt(-2 * Math.log(rand)) * Math.cos(2 * Math::PI * r
 ```runbasic
 dim a(1000)
 pi = 22/7
-for i = 1 to 1000                
+for i = 1 to 1000
    a( i)  = 1 + .5 * (sqr(-2 * log(rnd(0))) * cos(2 * pi * rnd(0)))
 next i
 ```
@@ -2751,12 +2751,12 @@ fn main() {
 
 ```SAS
 
-/* Generate 1000 random numbers with mean 1 and standard deviation 0.5. 
+/* Generate 1000 random numbers with mean 1 and standard deviation 0.5.
   SAS version 9.2 was used to create this code.*/
 
 data norm1000;
-  call streaminit(123456); 
-/* Set the starting point, so we can replicate results. 
+  call streaminit(123456);
+/* Set the starting point, so we can replicate results.
    If you want different results each time, comment the above line. */
   do i=1 to 1000;
     r=rand('normal',1,0.5);
@@ -2766,7 +2766,7 @@ run;
 
 ```
 
-Results: 
+Results:
 
 ```txt
 
@@ -2957,9 +2957,9 @@ arr.each { .say }
 {{works with|SML/NJ}}
 SML/NJ has two structures for random numbers:
 
-1) Rand (a linear congruential generator). 
-You create the generator by calling <code>Rand.mkRandom</code> with a seed (of <code>word</code> type). 
-You can call the generator with <code>()</code> repeatedly to get a word in the range <code>[Rand.randMin, Rand.randMax]</code>. 
+1) Rand (a linear congruential generator).
+You create the generator by calling <code>Rand.mkRandom</code> with a seed (of <code>word</code> type).
+You can call the generator with <code>()</code> repeatedly to get a word in the range <code>[Rand.randMin, Rand.randMax]</code>.
 You can use the <code>Rand.norm</code> function to transform the output into a <code>real</code> from 0 to 1, or use the <code>Rand.range (i,j)</code> function to transform the output into an <code>int</code> of the given range.
 
 ```sml
@@ -3010,7 +3010,7 @@ let
 val store =  ref (0.0,0.0);
 val rec u =  fn S => fn 0 => [] | n=> (store:=uniformdeviate S; (#1 (!store)):: (u (#2 (!store)) (n-1))) ;
 in
-	u seed n 
+	u seed n
 end;
 
 local
@@ -3040,7 +3040,7 @@ gen x=rnormal(1,0.5)
 
 
 
-###  Mata 
+###  Mata
 
 
 ```stata
@@ -3118,7 +3118,7 @@ sample_stats("mu","sigma") = plus^*D(minus/"mu"+ mean,~&)+ vid^*D(div\"sigma"+ s
 
 #cast %eWL
 
-test = 
+test =
 
 ^(mean,stdev)* <
    pop_stats(1.,0.5) 1000,
@@ -3143,7 +3143,7 @@ the latter being exact by construction.
 
 LOCAL i As Integer, m As Double, n As Integer, sd As Double
 py = PI()
-SET TALK OFF 
+SET TALK OFF
 SET DECIMALS TO 6
 CREATE CURSOR gdev (deviate B(6))
 RAND(-1)
@@ -3157,7 +3157,7 @@ ENDFOR
 CALCULATE AVG(deviate), STD(deviate) TO m, sd
 ? "Mean", m, "Std Dev", sd
 SET TALK ON
-SET DECIMALS TO 
+SET DECIMALS TO
 
 FUNCTION GaussDev(mean As Double, sdev As Double) As Double
 LOCAL z As Double
@@ -3165,7 +3165,7 @@ z = SQRT(-2*LOG(RAND()))*COS(py*RAND())
 IF sdev # 0
 	z = mean + z/sdev
 ENDIF
-RETURN z	
+RETURN z
 ENDFUNC
 
 ```

@@ -169,7 +169,7 @@ These differ from the the previous tokens, in that each occurrence of them has a
 
 For example, the following two program fragments are equivalent, and should produce the same token stream except for the line and column positions:
 
-* 
+*
 ```c
 if ( p /* meaning n is prime */ ) {
     print ( n , " " ) ;
@@ -177,7 +177,7 @@ if ( p /* meaning n is prime */ ) {
 }
 ```
 
-* 
+*
 ```c
 if(p){print(n," ");count=count+1;}
 ```
@@ -735,40 +735,40 @@ end.
 
 ```txt
 
-    5     16  Keyword_print            
-    5     40  Op_subtract     
-    6     16  Keyword_putc            
-    6     40  Op_less         
-    7     16  Keyword_if            
-    7     40  Op_greater      
-    8     16  Keyword_else            
-    8     40  Op_lessequal    
-    9     16  Keyword_while            
-    9     40  Op_greaterequal 
-   10     16  LeftBrace       
-   10     40  Op_equal        
-   11     16  RightBrace      
-   11     40  Op_notequal     
-   12     16  LeftParen       
-   12     40  Op_and          
-   13     16  RightParen      
-   13     40  Op_or           
-   14     16  Op_subtract     
-   14     40  Semicolon       
-   15     16  Op_not          
-   15     40  Comma           
-   16     16  Op_multiply     
-   16     40  Op_assign       
-   17     16  Op_divide       
-   17     40  Integer                  42  
-   18     16  Op_mod          
+    5     16  Keyword_print
+    5     40  Op_subtract
+    6     16  Keyword_putc
+    6     40  Op_less
+    7     16  Keyword_if
+    7     40  Op_greater
+    8     16  Keyword_else
+    8     40  Op_lessequal
+    9     16  Keyword_while
+    9     40  Op_greaterequal
+   10     16  LeftBrace
+   10     40  Op_equal
+   11     16  RightBrace
+   11     40  Op_notequal
+   12     16  LeftParen
+   12     40  Op_and
+   13     16  RightParen
+   13     40  Op_or
+   14     16  Op_subtract
+   14     40  Semicolon
+   15     16  Op_not
+   15     40  Comma
+   16     16  Op_multiply
+   16     40  Op_assign
+   17     16  Op_divide
+   17     40  Integer                  42
+   18     16  Op_mod
    18     40  String              "String literal"
-   19     16  Op_add          
+   19     16  Op_add
    19     40  Identifier          variable_name
-   20     26  Integer                  10  
-   21     26  Integer                  92  
-   22     26  Integer                  32  
-   23      1  End_of_input    
+   20     26  Integer                  10
+   21     26  Integer                  92
+   22     26  Integer                  32
+   23      1  End_of_input
 
 ```
 
@@ -994,33 +994,33 @@ function gettok() {
 ```txt
 
     1      1 Identifier      count
-    1      7 Op_assign     
+    1      7 Op_assign
     1      9 Integer              1
-    1     10 Semicolon     
-    2      1 Keyword_while 
-    2      7 LeftParen     
+    1     10 Semicolon
+    2      1 Keyword_while
+    2      7 LeftParen
     2      8 Identifier      count
-    2     14 Op_less       
+    2     14 Op_less
     2     16 Integer             10
-    2     18 RightParen    
-    2     20 LeftBrace     
-    3      5 Keyword_print 
-    3     10 LeftParen     
+    2     18 RightParen
+    2     20 LeftBrace
+    3      5 Keyword_print
+    3     10 LeftParen
     3     11 String          "count is: "
-    3     23 Comma         
+    3     23 Comma
     3     25 Identifier      count
-    3     30 Comma         
+    3     30 Comma
     3     32 String          "\n"
-    3     36 RightParen    
-    3     37 Semicolon     
+    3     36 RightParen
+    3     37 Semicolon
     4      5 Identifier      count
-    4     11 Op_assign     
+    4     11 Op_assign
     4     13 Identifier      count
-    4     19 Op_add        
+    4     19 Op_add
     4     21 Integer              1
-    4     22 Semicolon     
-    5      1 RightBrace    
-    5      3 End_of_input 
+    4     22 Semicolon
+    5      1 RightBrace
+    5      3 End_of_input
 
 ```
 
@@ -1031,8 +1031,8 @@ function gettok() {
 
 Tested with gcc 4.81 and later, compiles warning free with -Wall -Wextra
 
-```C>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <stdarg.h>
 #include <ctype.h>
@@ -1356,13 +1356,13 @@ namespace Rosetta {
     /// </summary>
     public class LexicalScanner {
 
-        // character classes 
-        private const string _letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";        
+        // character classes
+        private const string _letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_";
         private const string _numbers = "0123456789";
         private const string _identifier = _letters + _numbers + "_";
         private const string _whitespace = " \t\n\r";
-        
-        // mappings from string keywords to token type 
+
+        // mappings from string keywords to token type
         private Dictionary<string, TokenType> _keywordTokenTypeMap = new Dictionary<string, TokenType>() {
             { "if", TokenType.Keyword_if },
             { "else", TokenType.Keyword_else },
@@ -1423,7 +1423,7 @@ namespace Rosetta {
                     _position = 0;
                     _line++;
                 }
-                    
+
                 _code = _code.Substring(characters, _code.Length - characters);
                 _position += characters;
             } catch (ArgumentOutOfRangeException) {
@@ -1432,7 +1432,7 @@ namespace Rosetta {
         }
 
         /// <summary>
-        /// Outputs error message to the console and exits 
+        /// Outputs error message to the console and exits
         /// </summary>
         /// <param name="message">Error message to display to user</param>
         /// <param name="line">Line error occurred on</param>
@@ -1452,13 +1452,13 @@ namespace Rosetta {
         /// <param name="tokenType">Type of token the match represents.</param>
         /// <param name="notNextClass">Optional class of characters that cannot follow the match</param>
         /// <param name="maxLen">Optional maximum length of token value</param>
-        /// <param name="exact">Denotes whether recogniseClass represents an exact match or class match. 
+        /// <param name="exact">Denotes whether recogniseClass represents an exact match or class match.
         /// Default: false</param>
         /// <param name="discard">Denotes whether the token is kept or discarded. Default: false</param>
         /// <param name="offset">Optiona line position offset to account for discarded tokens</param>
         /// <returns>Boolean indicating if a match was made </returns>
-        public bool match(string recogniseClass, string matchClass, TokenType tokenType, 
-                          string notNextClass=null, int maxLen=Int32.MaxValue, bool exact=false, 
+        public bool match(string recogniseClass, string matchClass, TokenType tokenType,
+                          string notNextClass=null, int maxLen=Int32.MaxValue, bool exact=false,
                           bool discard=false, int offset=0) {
 
             // if we've hit the end of the file, there's no more matching to be done
@@ -1473,8 +1473,8 @@ namespace Rosetta {
             // special case exact tokens to avoid needing to worry about backtracking
             if (exact) {
                 if (_code.StartsWith(recogniseClass)) {
-                    if (!discard) 
-                        tokens.Add(new Token() { Type = tokenType, Value = recogniseClass, Line = line, Position = position - offset});   
+                    if (!discard)
+                        tokens.Add(new Token() { Type = tokenType, Value = recogniseClass, Line = line, Position = position - offset});
                     advance(recogniseClass.Length);
                     return true;
                 }
@@ -1512,7 +1512,7 @@ namespace Rosetta {
         }
 
         /// <summary>
-        /// Tokenise the input code 
+        /// Tokenise the input code
         /// </summary>
         /// <returns>List of Tokens</returns>
         public List<Token> scan() {
@@ -1523,7 +1523,7 @@ namespace Rosetta {
 
                 // match integers
                 match(_numbers, _numbers, TokenType.Integer, notNextClass:_letters);
-                
+
                 // match identifiers and keywords
                 if (match(_letters, _identifier, TokenType.Identifier)) {
                     Token match = tokens.Last();
@@ -1594,7 +1594,7 @@ namespace Rosetta {
                     tokens.Add(new Rosetta.Token() { Type = TokenType.Integer, Value = value.ToString(), Line = _line, Position = position - 1 });
                 }
 
-                // match comments by checking for starting token, then advancing 
+                // match comments by checking for starting token, then advancing
                 // until closing token is matched
                 if (match("/*", null, TokenType.None, exact: true, discard: true)) {
                     while (!match("*/", null, TokenType.None, exact: true, discard: true)) {
@@ -1632,7 +1632,7 @@ namespace Rosetta {
 
             // end of file token
             tokens.Add(new Rosetta.Token() { Type = TokenType.End_of_input, Line = _line, Position = _position });
-            
+
             return tokens;
         }
 
@@ -1662,7 +1662,7 @@ namespace Rosetta {
 
             foreach(Token token in tokens) {
                 Console.WriteLine(token.ToString());
-            }       
+            }
         }
     }
 }
@@ -1838,9 +1838,9 @@ start-lexer.
                         move 0 to col-increment
                     end-if
                 end-evaluate
-                
+
             when 'comment'
-                if previous-character = '*' and current-character = '/' 
+                if previous-character = '*' and current-character = '/'
                     move 'comment' to token
                 end-if
 
@@ -1872,7 +1872,7 @@ start-lexer.
                     subtract 1 from ord(out-value(1:1)) giving out-integer
                     move 'Integer' to token
                 when "'" also 2
-                    evaluate true 
+                    evaluate true
                     when out-value(1:2) = '\n'
                         move 10 to out-integer
                     when out-value(1:2) = '\\'
@@ -1931,7 +1931,7 @@ start-lexer.
                 when '<' also '='
                     move 'Op_lessequal' to token
                 when '<' also any
-                    move 'Op_less' to token 
+                    move 'Op_less' to token
                     move 0 to col-increment
 
                 when '>' also '='
@@ -2035,7 +2035,7 @@ start-lexer.
                 perform process-token
 
             when '<'
-                move 'Op_less' to token 
+                move 'Op_less' to token
                 perform process-token
 
             when '>'
@@ -2065,7 +2065,7 @@ start-lexer.
         string 'in lexer unclosed comment at end of input' into error-message
         perform report-error
      end-evaluate
-    
+
     move 'End_of_input' to token
     move 1 to out-column
     move 1 to start-col
@@ -2398,40 +2398,40 @@ Lisp has a built-in reader and you can customize the reader by modifying its rea
 {{out|case=test case 3}}
 
 ```txt
-    5    16 KEYWORD-PRINT  
-    5    40 OP-SUBTRACT    
-    6    16 KEYWORD-PUTC   
-    6    40 OP-LESS        
-    7    16 KEYWORD-IF     
-    7    40 OP-GREATER     
-    8    16 KEYWORD-ELSE   
-    8    40 OP-LESSEQUAL   
-    9    16 KEYWORD-WHILE  
+    5    16 KEYWORD-PRINT
+    5    40 OP-SUBTRACT
+    6    16 KEYWORD-PUTC
+    6    40 OP-LESS
+    7    16 KEYWORD-IF
+    7    40 OP-GREATER
+    8    16 KEYWORD-ELSE
+    8    40 OP-LESSEQUAL
+    9    16 KEYWORD-WHILE
     9    40 OP-GREATEREQUAL
-   10    16 LEFTBRACE      
-   10    40 OP-EQUAL       
-   11    16 RIGHTBRACE     
-   11    40 OP-NOTEQUAL    
-   12    16 LEFTPAREN      
-   12    40 OP-AND         
-   13    16 RIGHTPAREN     
-   13    40 OP-OR          
-   14    16 OP-SUBTRACT    
-   14    40 SEMICOLON      
-   15    16 OP-NOT         
-   15    40 COMMA          
-   16    16 OP-MULTIPLY    
-   16    40 OP-ASSIGN      
-   17    16 OP-DIVIDE      
+   10    16 LEFTBRACE
+   10    40 OP-EQUAL
+   11    16 RIGHTBRACE
+   11    40 OP-NOTEQUAL
+   12    16 LEFTPAREN
+   12    40 OP-AND
+   13    16 RIGHTPAREN
+   13    40 OP-OR
+   14    16 OP-SUBTRACT
+   14    40 SEMICOLON
+   15    16 OP-NOT
+   15    40 COMMA
+   16    16 OP-MULTIPLY
+   16    40 OP-ASSIGN
+   17    16 OP-DIVIDE
    17    40 INTEGER         42
-   18    16 OP-MOD         
+   18    16 OP-MOD
    18    40 STRING          "String literal"
-   19    16 OP-ADD         
+   19    16 OP-ADD
    19    40 IDENTIFIER      variable_name
    20    26 INTEGER         10
    21    26 INTEGER         92
    22    26 INTEGER         32
-   23     1 END-OF-INPUT   
+   23     1 END-OF-INPUT
 ```
 
 
@@ -2982,7 +2982,7 @@ CREATE ESC  4 C, CHAR $ C, CHAR $ C, CHAR \ C, 0 C,
 : ESCAPE   DUP >ESC FIND IF NIP EXECUTE ELSE DROP ?ESC? THEN ;
 : ?ESCAPE   DUP [CHAR] \ = IF DROP GETC ESCAPE THEN ;
 : ?EOF   DUP 4 = IF CR ." End-of-file in string" CR BYE THEN ;
-: ?EOL   DUP NEWLINE? 
+: ?EOL   DUP NEWLINE?
          IF CR ." End-of-line in string" CR BYE THEN ;
 : STRING   PAD
    BEGIN  GETC ?EOF ?EOL DUP  [CHAR] " <>
@@ -2999,7 +2999,7 @@ CREATE TOKEN  4 C, CHAR $ C, CHAR $ C, 0 C, 0 C,
 : ?EOF   DUP 4 = IF CR ." End-of-file in comment" CR BYE THEN ;
 : $$2F   PEEK [CHAR] * =
    IF SKIP
-       BEGIN 
+       BEGIN
    	GETC ?EOF  [CHAR] * =
    	PEEK [CHAR] / =  AND
        UNTIL  SKIP
@@ -3142,9 +3142,9 @@ function is_alnum(byval ch as string) as long
 end function
 
 sub error_msg(byval eline as integer, byval ecol as integer, byval msg as string)
-    print "("; eline; ":"; ecol; ") "; msg   
-    print : print "Hit any to end program"   
-    sleep                                    
+    print "("; eline; ":"; ecol; ") "; msg
+    print : print "Hit any to end program"
+    sleep
     system
 end sub
 
@@ -3240,12 +3240,12 @@ sub gettok(byref err_line as integer, byref err_col as integer, byref tok as Tok
             next_char()
             v = str(asc(cur_ch))
             if cur_ch = "'" then error_msg(err_line, err_col, "empty character constant")
-            if cur_ch = BackSlash then          
+            if cur_ch = BackSlash then
                 next_char()
                 if cur_ch = "n" then
                     v = "10"
-                elseif cur_ch = BackSlash then  
-                    v = "92"                  
+                elseif cur_ch = BackSlash then
+                    v = "92"
                 else error_msg(err_line, err_col, "unknown escape sequence: " + cur_ch)
                 end if
             end if
@@ -3360,14 +3360,14 @@ sub scanner()
 end sub
 
 sub main()
-    if command(1) = "" then print "filename required" : exit sub   
+    if command(1) = "" then print "filename required" : exit sub
     init_lex(command(1))
     scanner()
 end sub
 
 main()
-print : print "Hit any to end program"  
-sleep                                   
+print : print "Hit any to end program"
+sleep
 system
 ```
 
@@ -3432,9 +3432,9 @@ public class Lexer {
     private int position;
     private char chr;
     private String s;
-    
+
     Map<String, TokenType> keywords = new HashMap<>();
-    
+
     static class Token {
         public TokenType tokentype;
         public String value;
@@ -3460,7 +3460,7 @@ public class Lexer {
             return result;
         }
     }
-    
+
     static enum TokenType {
         End_of_input, Op_multiply,  Op_divide, Op_mod, Op_add, Op_subtract,
         Op_negate, Op_not, Op_less, Op_lessequal, Op_greater, Op_greaterequal,
@@ -3468,7 +3468,7 @@ public class Lexer {
         Keyword_else, Keyword_while, Keyword_print, Keyword_putc, LeftParen, RightParen,
         LeftBrace, RightBrace, Semicolon, Comma, Identifier, Integer, String
     }
-    
+
     static void error(int line, int pos, String msg) {
         if (line > 0 && pos > 0) {
             System.out.printf("%s in line %d, pos %d\n", msg, line, pos);
@@ -3489,7 +3489,7 @@ public class Lexer {
         this.keywords.put("print", TokenType.Keyword_print);
         this.keywords.put("putc", TokenType.Keyword_putc);
         this.keywords.put("while", TokenType.Keyword_while);
-        
+
     }
     Token follow(char expect, TokenType ifyes, TokenType ifno, int line, int pos) {
         if (getNextChar() == expect) {
@@ -3541,7 +3541,7 @@ public class Lexer {
             return new Token(TokenType.Op_divide, "", line, pos);
         }
         getNextChar();
-        while (true) { 
+        while (true) {
             if (this.chr == '\u0000') {
                 error(line, pos, "EOF in comment");
             } else if (this.chr == '*') {
@@ -3557,7 +3557,7 @@ public class Lexer {
     Token identifier_or_integer(int line, int pos) {
         boolean is_number = true;
         String text = "";
-        
+
         while (Character.isAlphabetic(this.chr) || Character.isDigit(this.chr) || this.chr == '_') {
             text += this.chr;
             if (!Character.isDigit(this.chr)) {
@@ -3565,18 +3565,18 @@ public class Lexer {
             }
             getNextChar();
         }
-        
+
         if (text.equals("")) {
             error(line, pos, String.format("identifer_or_integer unrecopgnized character: (%d) %c", (int)this.chr, this.chr));
         }
-        
+
         if (Character.isDigit(text.charAt(0))) {
             if (!is_number) {
                 error(line, pos, String.format("invaslid number: %s", text));
             }
             return new Token(TokenType.Integer, text, line, pos);
         }
-        
+
         if (this.keywords.containsKey(text)) {
             return new Token(this.keywords.get(text), "", line, pos);
         }
@@ -3589,7 +3589,7 @@ public class Lexer {
         }
         line = this.line;
         pos = this.pos;
-        
+
         switch (this.chr) {
             case '\u0000': return new Token(TokenType.End_of_input, "", this.line, this.pos);
             case '/': return div_or_comment(line, pos);
@@ -3611,11 +3611,11 @@ public class Lexer {
             case '%': getNextChar(); return new Token(TokenType.Op_mod, "", line, pos);
             case ';': getNextChar(); return new Token(TokenType.Semicolon, "", line, pos);
             case ',': getNextChar(); return new Token(TokenType.Comma, "", line, pos);
-            
+
             default: return identifier_or_integer(line, pos);
         }
     }
-    
+
     char getNextChar() {
         this.pos++;
         this.position++;
@@ -3641,7 +3641,7 @@ public class Lexer {
     public static void main(String[] args) {
         if (args.length > 0) {
             try {
-                
+
                 File f = new File(args[0]);
                 Scanner s = new Scanner(f);
                 String source = " ";
@@ -3701,7 +3701,7 @@ class Lexer {
     getNextChar() {
         this.pos++
         this.position++
-        
+
         if (this.position >= this.source.length) {
             this.chr = undefined
             return this.chr
@@ -3736,7 +3736,7 @@ class Lexer {
             return { type: TokenType.Op_divide, value: "/", line, pos }
         }
         this.getNextChar()
-        while (true) { 
+        while (true) {
             if (this.chr === '\u0000') {
                 this.error(line, pos, "EOF in comment")
             } else if (this.chr === '*') {
@@ -3787,7 +3787,7 @@ class Lexer {
     identifier_or_integer(line, pos) {
         let is_number = true
         let text = ""
- 
+
         while (/\w/.test(this.chr) || this.chr === '_') {
             text += this.chr
             if (!/\d/.test(this.chr)) {
@@ -3798,14 +3798,14 @@ class Lexer {
         if (text === "") {
             this.error(line, pos, "identifer_or_integer unrecopgnized character: follow: unrecognized character: (" + this.chr.charCodeAt(0) + ") '" + this.chr + "'")
         }
- 
+
         if (/\d/.test(text.charAt(0))) {
             if (!is_number) {
                 this.error(line, pos, "invaslid number: " + text)
             }
             return { type: TokenType.Integer, value: text, line, pos }
         }
- 
+
         if (text in this.keywords) {
             return { type: this.keywords[text], value: "", line, pos }
         }
@@ -4479,40 +4479,40 @@ Test Case 3:
 
 ```txt
 
-    5     16 Keyword_print   
-    5     40 Op_subtract     
-    6     16 Keyword_putc    
-    6     40 Op_less         
-    7     16 Keyword_if      
-    7     40 Op_greater      
-    8     16 Keyword_else    
-    8     40 Op_lessequal    
-    9     16 Keyword_while   
-    9     40 Op_greaterequal 
-   10     16 LeftBrace       
-   10     40 Op_equal        
-   11     16 RightBrace      
-   11     40 Op_notequal     
-   12     16 LeftParen       
-   12     40 Op_and          
-   13     16 RightParen      
-   13     40 Op_or           
-   14     16 Op_subtract     
-   14     40 Semicolon       
-   15     16 Op_not          
-   15     40 Comma           
-   16     16 Op_multiply     
-   16     40 Op_assign       
-   17     16 Op_divide       
+    5     16 Keyword_print
+    5     40 Op_subtract
+    6     16 Keyword_putc
+    6     40 Op_less
+    7     16 Keyword_if
+    7     40 Op_greater
+    8     16 Keyword_else
+    8     40 Op_lessequal
+    9     16 Keyword_while
+    9     40 Op_greaterequal
+   10     16 LeftBrace
+   10     40 Op_equal
+   11     16 RightBrace
+   11     40 Op_notequal
+   12     16 LeftParen
+   12     40 Op_and
+   13     16 RightParen
+   13     40 Op_or
+   14     16 Op_subtract
+   14     40 Semicolon
+   15     16 Op_not
+   15     40 Comma
+   16     16 Op_multiply
+   16     40 Op_assign
+   17     16 Op_divide
    17     40 Integer         42
-   18     16 Op_mod          
+   18     16 Op_mod
    18     40 String          "String literal"
-   19     16 Op_add          
+   19     16 Op_add
    19     40 Identifier      variable_name
    20     26 Integer         10
    21     26 Integer         92
    22     26 Integer         32
-   23      1 End_of_input    
+   23      1 End_of_input
 
 ```
 
@@ -4639,13 +4639,13 @@ Module lexical_analyzer {
 			While Ahead2("[0-9]", offset)
 					offset++ : ColumnNo++
 			End While
-			if Ahead2("[a-zA-Z_]", offset) then  
+			if Ahead2("[a-zA-Z_]", offset) then
 				{Error " Invalid number. Starts like a number, but ends in non-numeric characters."+er$}
 			else
 				Output$=Eval$(Scanner, strin, (offset-strin)*2)+nl$
 			end if
 		} Else {
-			Symbols(Eval$(Scanner, Offset, 2))		
+			Symbols(Eval$(Scanner, Offset, 2))
 			offset++ : ColumnNo++
 		}
 		Until offset>=lim
@@ -4663,7 +4663,7 @@ Module lexical_analyzer {
 	document lex$
 	Load.Doc lex$,"lex.t", Ansi
 	Report lex$
-	
+
 	Sub Keywords(a$)
 		select case a$
 		case "if"
@@ -5952,7 +5952,7 @@ Code to print the human readable forms is likewise kept separate from any re-usa
 ```Phix
 --
 -- demo\\rosetta\\Compiler\\core.e
--- 
+--
 ### =========================
 
 --
@@ -6112,7 +6112,7 @@ The main lexer is also written to be reusable by later stages.
 ```Phix
 --
 -- demo\\rosetta\\Compiler\\lex.e
--- 
+--
 ### ========================
 
 --
@@ -6300,7 +6300,7 @@ Finally, a simple test driver for the specific task:
 ```Phix
 --
 -- demo\\rosetta\\Compiler\\lex.exw
--- 
+--
 ### ==========================
 
 --
@@ -6779,13 +6779,13 @@ TEST
                          (cons 'putc 'Keyword_putc)))
 
 ;; return list of tokens from current port
-(define (read-tokens) 
+(define (read-tokens)
   ; information on position in input
-  (define line 1) 
+  (define line 1)
   (define col 0)
-  (define next-char #f) 
+  (define next-char #f)
   ; get char, updating line/col posn
-  (define (get-next-char) 
+  (define (get-next-char)
     (if (char? next-char) ; check for returned character
       (let ((c next-char))
         (set! next-char #f)
@@ -6833,10 +6833,10 @@ TEST
                (error "End of file while scanning string literal."))
               ((char=? (peek-char) #\newline)
                (error "End of line while scanning string literal."))
-              ((char=? (peek-char) #\") ; " 
+              ((char=? (peek-char) #\") ; "
                (get-next-char) ; consume the final quote
                (list->string (reverse (cons #\" chars)))) ; "  highlighter)
-              (else 
+              (else
                 (loop (cons (get-next-char) chars))))))
     (define (read-identifier initial-c) ; returns identifier as a Scheme symbol
       (do ((chars (list initial-c) (cons c chars))
@@ -6890,12 +6890,12 @@ TEST
                 ((#\!)
                  (check-eq-extend start-line start-col 'Op_notequal 'Op_not))
                 ((#\& #\|)
-                 (if (char=? (peek-char) c) ; looks for && or || 
+                 (if (char=? (peek-char) c) ; looks for && or ||
                    (begin (get-next-char) ; consume second character if valid
-                          (list start-line start-col 
+                          (list start-line start-col
                                 (if (char=? c #\&) 'Op_and 'Op_or)))
                    (push-char c)))
-                ((#\") ; " 
+                ((#\") ; "
                  (list start-line start-col 'String (read-string)))
                 ((#\')
                  (let* ((c1 (get-next-char))
@@ -6930,13 +6930,13 @@ TEST
         (loop (cons tok tokens))))))
 
 (define (lexer filename)
-  (with-input-from-file filename 
+  (with-input-from-file filename
                         (lambda () (read-tokens))))
 
 ;; output tokens to stdout, tab separated
 ;; line number, column number, token type, optional value
 (define (display-tokens tokens)
-  (for-each 
+  (for-each
     (lambda (token)
       (display (list-ref token 0))
       (display #\tab) (display (list-ref token 1))

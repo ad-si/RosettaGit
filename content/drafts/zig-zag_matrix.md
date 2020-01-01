@@ -13,12 +13,12 @@ tags = []
 {{task|Matrices}}
 
 ;Task:
-Produce a zig-zag array.  
+Produce a zig-zag array.
 
 
-A   ''zig-zag''   array is a square arrangement of the first   <big>N<sup>2</sup></big>   integers,   where the  
+A   ''zig-zag''   array is a square arrangement of the first   <big>N<sup>2</sup></big>   integers,   where the
 
-numbers increase sequentially as you zig-zag along the array's   [https://en.wiktionary.org/wiki/antidiagonal anti-diagonals]. 
+numbers increase sequentially as you zig-zag along the array's   [https://en.wiktionary.org/wiki/antidiagonal anti-diagonals].
 
 For a graphical representation, see   [[wp:Image:JPEG_ZigZag.svg|JPG zigzag]]   (JPG uses such arrays to encode images).
 
@@ -57,7 +57,7 @@ For example, given   '''5''',   produce this array:
 *        Zig-zag matrix            15/08/2015
 ZIGZAGMA CSECT
          USING  ZIGZAGMA,R12       set base register
-         LR     R12,R15            establish addressability 
+         LR     R12,R15            establish addressability
          LA     R9,N               n : matrix size
          LA     R6,1               i=1
          LA     R7,1               j=1
@@ -132,7 +132,7 @@ ELOOPI   XR     R15,R15            end i; return_code=0
 N        EQU    5                  matrix size
 BUFFER   DS     CL80
 XDEC     DS     CL12
-T        DS     (N*N)H             t(n,n) matrix 
+T        DS     (N*N)H             t(n,n) matrix
          YREGS
          END    ZIGZAGMA
 ```
@@ -156,26 +156,26 @@ T        DS     (N*N)H             t(n,n) matrix
 
 ```as
 
-package 
+package
 {
    public class ZigZagMatrix extends Array
    {
-      
+
       private var height:uint;
       private var width:uint;
       public var mtx:Array = [];
-      
+
       public function ZigZagMatrix(size:uint)
       {
          this.height = size;
          this.width = size;
-         
+
          this.mtx = [];
-         for (var i:uint = 0; i < size; i++) { 
+         for (var i:uint = 0; i < size; i++) {
             this.mtx[i] = [];
          }
          i = 1;
-         var j:uint = 1; 
+         var j:uint = 1;
          for (var e:uint = 0; e < size*size; e++) {
             this.mtx[i-1][j-1] = e;
             if ((i + j) % 2 == 0) {
@@ -190,8 +190,8 @@ package
                if (j > 1) j --;
             }
          }
-      }  
-   }  
+      }
+   }
 }
 
 ```
@@ -238,7 +238,7 @@ procedure Test_Zig_Zag is
       end loop;
       return Data;
    end Zig_Zag;
-   
+
    procedure Put (Data : Matrix) is
    begin
       for I in Data'Range (1) loop
@@ -359,10 +359,10 @@ PROC zig zag = (INT n)[,]INT: (
             i +:= 1
         FI
     );
- 
+
     [n, n]INT a;
     INT x:=LWB a, y:=LWB a;
- 
+
     FOR v FROM 0 TO n**2-1 DO
         a[y, x] := v;
         IF ODD (x + y) THEN
@@ -390,7 +390,7 @@ ELSE#
 ```
 
 {{out}}
-{|border="1" style="border-collapse: collapse; border: 5px double grey;" 
+{|border="1" style="border-collapse: collapse; border: 5px double grey;"
 |align=center width=50%| With formatted transput possible, e.g. [[ALGOL 68G]]
 |align=center| '''not''' formatted transput possible, e.g. [[ELLA ALGOL 68]]
 |-
@@ -469,7 +469,7 @@ begin % zig-zag matrix %
             end;
         end;
     end makeZigZap ;
- 
+
     begin
         integer array zigZag( 1 :: 10, 1 :: 10 );
         for n := 5 do begin
@@ -556,7 +556,7 @@ repeat while v < (n ^ 2)
 end repeat
 --> R = {{0, 1, 5, 6, 14}, {2, 4, 7, 13, 15}, {3, 8, 12, 16, 21}, {9, 11, 17, 20, 22}, {10, 18, 19, 23, 24}}
 
--- Reformat the matrix into a table for viewing. 
+-- Reformat the matrix into a table for viewing.
 repeat with i in m
 	repeat with j in i
 		set j's contents to  (characters -(length of (n ^ 2 as string)) thru -1 of ("          " & j)) as string
@@ -596,7 +596,7 @@ on f(v, n)
 	return (characters -(length of (n ^ 2 as string)) thru -1 of ("          " & v)) as string
 end f
 
--- Reformat the matrix into a table for viewing. 
+-- Reformat the matrix into a table for viewing.
 set text item delimiters to ""
 repeat with i in m
 	set i's contents to (i as string) & return
@@ -626,7 +626,7 @@ By functional composition:
 ```AppleScript
 -- zigzagMatrix
 on zigzagMatrix(n)
-    
+
     -- diagonals :: n -> [[n]]
     script diagonals
         on |λ|(n)
@@ -638,7 +638,7 @@ on zigzagMatrix(n)
                         else
                             set iNext to iCol - 1
                         end if
-                        
+
                         set {headList, tail} to splitAt(iCol, xs)
                         {headList} & diags(tail, iNext, iRow + 1)
                     else
@@ -646,11 +646,11 @@ on zigzagMatrix(n)
                     end if
                 end diags
             end script
-            
+
             diags(enumFromTo(0, n * n - 1), 1, 1) of mf
         end |λ|
     end script
-    
+
     -- oddReversed :: [a] -> Int -> [a]
     script oddReversed
         on |λ|(lst, i)
@@ -661,25 +661,25 @@ on zigzagMatrix(n)
             end if
         end |λ|
     end script
-    
+
     rowsFromDiagonals(n, map(oddReversed, |λ|(n) of diagonals))
-    
+
 end zigzagMatrix
 
 -- Rows of given length from list of diagonals
 -- rowsFromDiagonals :: Int -> [[a]] -> [[a]]
 on rowsFromDiagonals(n, lst)
     if length of lst > 0 then
-        
+
         -- lengthOverOne :: [a] -> Bool
         script lengthOverOne
             on |λ|(lst)
                 length of lst > 1
             end |λ|
         end script
-        
+
         set {edge, residue} to splitAt(n, lst)
-        
+
         {map(my head, edge)} & ¬
             rowsFromDiagonals(n, ¬
                 map(my tail, ¬
@@ -692,9 +692,9 @@ end rowsFromDiagonals
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     zigzagMatrix(5)
-    
+
 end run
 
 
@@ -748,7 +748,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -787,10 +787,10 @@ end tail
 {{Out}}
 
 ```txt
-{{0, 1, 5, 6, 14}, 
-{2, 4, 7, 13, 15}, 
-{3, 8, 12, 16, 21}, 
-{9, 11, 17, 20, 22}, 
+{{0, 1, 5, 6, 14},
+{2, 4, 7, 13, 15},
+{3, 8, 12, 16, 21},
+{9, 11, 17, 20, 22},
 {10, 18, 19, 23, 24}}
 ```
 
@@ -901,7 +901,7 @@ main0() = () where
 
 ## AutoHotkey
 
-{{trans|lisp}} 
+{{trans|lisp}}
 contributed by Laszlo on the ahk [http://www.autohotkey.com/forum/post-276307.html#276307 forum].
 
 ```AutoHotkey
@@ -1023,7 +1023,7 @@ BEGIN {
 ```bbcbasic
       Size% = 5
       DIM array%(Size%-1,Size%-1)
-      
+
       i% = 1
       j% = 1
       FOR e% = 0 TO Size%^2-1
@@ -1036,7 +1036,7 @@ BEGIN {
           IF j% > 1 j% -= 1
         ENDIF
       NEXT
-      
+
       @% = &904
       FOR row% = 0 TO Size%-1
         FOR col% = 0 TO Size%-1
@@ -1065,7 +1065,7 @@ BEGIN {
 The size, ''N'', is specified by the first value on the stack - 5 in the example below. The upper limit is constrained only by the range of the playfield cells used for variables, since we're using an algorithm that calculates the values on the fly rather than building them up in memory. On an 8 bit interpreter this means an upper limit of at least 127, but with an extended cell range the size of ''N'' can be almost unlimited.
 
 
-```befunge>>> 5 >>00p0010p:1:>20p030pv 
+```befunge>>> 5 >>00p0010p:1:>20p030pv
 0g-:0`*:*-:00g:*1-55+/>\55+/:v  v:,*84<
 v:++!\**2p01:+1g01:g02$$_>>#^4#00#+p#1:#+1#g0#0g#3<^/+ 55\_$:>55+/\|
 >55+,20g!00g10g`>#^_$$$@^!`g03g00!g04++**2p03:+1g03!\*+1*2g01:g04.$<
@@ -1087,24 +1087,24 @@ v:++!\**2p01:+1g01:g02$$_>>#^4#00#+p#1:#+1#g0#0g#3<^/+ 55\_$:>55+/\|
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
- 
+
 int main(int c, char **v)
 {
 	int i, j, m, n, *s;
- 
+
 	/* default size: 5 */
 	if (c < 2 || ((m = atoi(v[1]))) <= 0) m = 5;
- 
+
 	/* alloc array*/
 	s = malloc(sizeof(int) * m * m);
- 
+
 	for (i = n = 0; i < m * 2; i++)
 		for (j = (i < m) ? 0 : i-m+1; j <= i && j < m; j++)
 			s[(i&1)? j*(m-1)+i : (i-j)*m+j ] = n++;
- 
+
 	for (i = 0; i < m * m; putchar((++i % m) ? ' ':'\n'))
 		printf("%3d", s[i]);
 
@@ -1131,8 +1131,8 @@ int main(int c, char **v)
 ## C++
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <memory>	// for auto_ptr
 #include <cmath>	// for the log10 and floor functions
 #include <iostream>
@@ -1268,32 +1268,32 @@ public static int[,] ZigZag(int n)
 
 ```ceylon
 class ZigZag(Integer size) {
-	
+
 	value data = Array {
 		for (i in 0:size)
 		Array.ofSize(size, 0)
 	};
-	
+
 	variable value i = 1;
 	variable value j = 1;
-	
+
 	for (element in 0 : size^2) {
 		data[j - 1]?.set(i - 1, element);
 		if ((i + j).even) {
 			if (j < size) {
 				j++;
-			} 
+			}
 			else {
 				i += 2;
 			}
 			if (i > 1) {
 				i--;
 			}
-		} 
+		}
 		else {
 			if (i < size) {
 				i++;
-			} 
+			}
 			else {
 				j += 2;
 			}
@@ -1302,7 +1302,7 @@ class ZigZag(Integer size) {
 			}
 		}
 	}
-	
+
 	shared void display() {
 		for (row in data) {
 			for (element in row) {
@@ -1389,7 +1389,7 @@ zig_zag_value = (x, y, n) ->
       triangle_area + y
     else
       triangle_area + x
-    
+
   if x + y < n
     upper_triangle_zig_zag x, y
   else
@@ -1399,7 +1399,7 @@ zig_zag_value = (x, y, n) ->
     n -= 1
     v = upper_triangle_zig_zag(n-x, n-y)
     bottom_right_cell - v
-    
+
 zig_zag_matrix = (n) ->
   row = (i) -> (zig_zag_value i, j, n for j in [0...n])
   (row i for i in [0...n])
@@ -1417,7 +1417,7 @@ do ->
 
 ```txt
 
-> coffee zigzag.coffee 
+> coffee zigzag.coffee
 ---- n=4
 [ [ 0, 1, 5, 6 ],
   [ 2, 4, 7, 12 ],
@@ -1490,7 +1490,7 @@ do ->
       (format t "~%")
       (do ((j i (+ 1 j))) ((>= j (+ COLS i)))
         (format t "~3d" (nth j st))
-        (setf (nth j st) (+ (nth j st) (nth j dx))))))) 
+        (setf (nth j st) (+ (nth j st) (nth j dx)))))))
 
 ```
 
@@ -1549,12 +1549,12 @@ def zigzag(n)
     .sort_by {|x,y| [x+y, (x+y).even? ? y : -y]}
     .map_with_index{|v, i| {v, i}}.sort.map(&.last).each_slice(n).to_a
 end
- 
+
 def print_matrix(m)
   format = "%#{m.flatten.max.to_s.size}d " * m[0].size
   m.each {|row| puts format % row}
 end
- 
+
 print_matrix zigzag(5)
 ```
 
@@ -1562,11 +1562,11 @@ print_matrix zigzag(5)
 
 ```txt
 
- 0  1  5  6 14 
- 2  4  7 13 15 
- 3  8 12 16 21 
- 9 11 17 20 22 
-10 18 19 23 24 
+ 0  1  5  6 14
+ 2  4  7 13 15
+ 3  8 12 16 21
+ 9 11 17 20 22
+10 18 19 23 24
 
 ```
 
@@ -1687,24 +1687,24 @@ ELENA 4.x:
 
 ```elena
 import extensions;
- 
+
 extension op : IntNumber
 {
     zigzagMatrix()
     {
         auto result := new IntMatrix(self, self);
- 
+
         int i := 0;
         int j := 0;
         int d := -1;
         int start := 0;
         int end := self*self - 1;
- 
+
         while (start < end)
         {
             result.setAt(i, j, start); start += 1;
             result.setAt(self - i - 1, self - j - 1, end); end -= 1;
- 
+
             i := i + d;
             j := j - d;
             if (i < 0)
@@ -1716,16 +1716,16 @@ extension op : IntNumber
                 j := j + 1; d := d.Negative
             }
         };
- 
+
         if (start == end)
         {
             result.setAt(i, j, start)
         };
- 
+
         ^ result
     }
 }
- 
+
 public program()
 {
     console.printLine(5.zigzagMatrix()).readChar()
@@ -2166,7 +2166,7 @@ class ZigZag
     loop
   loop 2drop ;
 
-: test ( n -- )  here over zigzag here .matrix ; 
+: test ( n -- )  here over zigzag here .matrix ;
 5 test
   0  1  5  6 14
   2  4  7 13 15
@@ -2184,15 +2184,15 @@ class ZigZag
 
 ```fortran
 PROGRAM ZIGZAG
- 
+
   IMPLICIT NONE
     INTEGER, PARAMETER :: size = 5
     INTEGER :: zzarray(size,size), x(size*size), y(size*size), i, j
-     
+
     ! index arrays
     x = (/ ((j, i = 1, size), j = 1, size) /)
     y = (/ ((i, i = 1, size), j = 1, size) /)
-   
+
     ! Sort indices
     DO i = 2, size*size
        j = i - 1
@@ -2202,7 +2202,7 @@ PROGRAM ZIGZAG
        x(j+1:i) = cshift(x(j+1:i),-1)
        y(j+1:i) = cshift(y(j+1:i),-1)
     END DO
- 
+
     ! Create zig zag array
     DO i = 1, size*size
        IF (MOD(x(i)+y(i), 2) == 0) THEN
@@ -2211,7 +2211,7 @@ PROGRAM ZIGZAG
           zzarray(y(i),x(i)) = i - 1
        END IF
     END DO
-  
+
     ! Print zig zag array
     DO j = 1, size
        DO i = 1, size
@@ -2219,7 +2219,7 @@ PROGRAM ZIGZAG
        END DO
        WRITE(*,*)
     END DO
-  
+
  END PROGRAM ZIGZAG
 ```
 
@@ -2235,7 +2235,7 @@ Dim As Integer n
 
 Do
   Input "Enter size of matrix "; n
-Loop Until n > 0 
+Loop Until n > 0
 
 Dim zigzag(1 To n, 1 To n) As Integer '' all zero by default
 
@@ -2252,7 +2252,7 @@ If n > 1 Then
         row += 1
         col -= 1
         zigzag(row, col) = i
-      Next     
+      Next
       down = false
     Else
       For k = 1 To j
@@ -2260,7 +2260,7 @@ If n > 1 Then
         row -= 1
         col += 1
         zigzag(row, col) = i
-      Next   
+      Next
       down = true
     End If
     If increment Then
@@ -2275,28 +2275,28 @@ If n > 1 Then
     End If
     If down AndAlso increment Then
       col += 2
-      row -= 1    
+      row -= 1
     ElseIf Not Down AndAlso increment Then
       row += 2
       col -= 1
     ElseIf down AndAlso Not increment Then
-      col += 1 
-    Else '' Not down AndAlso NotIncrement 
+      col += 1
+    Else '' Not down AndAlso NotIncrement
       row += 1
-    End If       
+    End If
   Loop
 End If
 
-' print zigzag matrix if n < 20 
+' print zigzag matrix if n < 20
 Print
 If n < 20 Then
   For i As Integer = 1 To n
     For j As Integer = 1 To n
-      Print Using "####"; zigzag(i, j); 
+      Print Using "####"; zigzag(i, j);
     Next j
     Print
   Next i
-Else 
+Else
   Print "Matrix is too big to display on 80 column console"
 End If
 
@@ -2359,7 +2359,7 @@ ZigZag := function(n)
   return a;
 end;
 
-PrintArray(ZigZag(5));  
+PrintArray(ZigZag(5));
 # [ [   0,   1,   5,   6,  14 ],
 #   [   2,   4,   7,  13,  15 ],
 #   [   3,   8,  12,  16,  21 ],
@@ -2440,9 +2440,9 @@ func main() {
 
 
 
-###  Edge 
+###  Edge
 
-An odd technique that traverses the grid edges directly 
+An odd technique that traverses the grid edges directly
 and calculates the transform onto the grid.
 
 
@@ -2476,7 +2476,7 @@ def zz = { n ->
 
 
 
-###  Cursor 
+###  Cursor
 
 
 Ported from the Java example
@@ -2512,7 +2512,7 @@ def zz = { n->
 
 
 
-###  Sorting 
+###  Sorting
 
 Ported from the Python example with some input from J
 
@@ -2564,12 +2564,12 @@ zigZag upper = array b $ zip (sortBy compZig (range b)) [0 ..]
     b = ((0, 0), upper)
 ```
 
-   
-<tt>compZig</tt> compares coordinates using the order of a zigzag walk: 
+
+<tt>compZig</tt> compares coordinates using the order of a zigzag walk:
 primarily, the antidiagonals; secondarily, alternating directions along them.
 
-In <tt>zigZag</tt>, <tt>array</tt> takes the bounds and a list of indexes paired with values. 
-We take the list of all indexes, <tt>range b</tt>, and sort it in the zigzag order, then zip that with the integers starting from 0. 
+In <tt>zigZag</tt>, <tt>array</tt> takes the bounds and a list of indexes paired with values.
+We take the list of all indexes, <tt>range b</tt>, and sort it in the zigzag order, then zip that with the integers starting from 0.
 (This algorithm was inspired by the explanation of the J example.)
 
 Displaying the array (not part of the task):
@@ -2657,7 +2657,7 @@ procedure zigzag(A)
     every i := 0 to (*A^2 -1) do {
         x := nextIndices(*A, x)
         A[x[1]][x[2]] := i
-        }   
+        }
     return A
 end
 
@@ -2667,7 +2667,7 @@ procedure nextIndices(n, x)
            else if x[1] = n then [x[1], x[2]+1] else [x[1]+1, max(1, x[2]-1)]
 end
 ```
- 
+
 
 {{out}}
 
@@ -2746,7 +2746,7 @@ This version is longer, but more "mathematical" and less "procedural":
 Leveraging a [[Talk:Zig Zag#reading_the_J_examples|useful relationship among the indices]]:
 
 ```j
-   ($ ([: /:@;@(+/"1 <@|.`</. ]) (#: i.@(*/))))@,~ 5 
+   ($ ([: /:@;@(+/"1 <@|.`</. ]) (#: i.@(*/))))@,~ 5
  0  1  5  6 14
  2  4  7 13 15
  3  8 12 16 21
@@ -2755,10 +2755,10 @@ Leveraging a [[Talk:Zig Zag#reading_the_J_examples|useful relationship among the
 ```
 
 
-By the way, all the edge cases are handled transparently, 
-without any special checks.  
-Furthermore, by simply ''removing'' the trailing <tt>@,~</tt> 
-from the solutions, they automatically generalize 
+By the way, all the edge cases are handled transparently,
+without any special checks.
+Furthermore, by simply ''removing'' the trailing <tt>@,~</tt>
+from the solutions, they automatically generalize
 to rectangular (non-square) matrices:
 
 ```j
@@ -2831,7 +2831,7 @@ function ZigZagMatrix(n) {
     this.width = n;
 
     this.mtx = [];
-    for (var i = 0; i < n; i++) 
+    for (var i = 0; i < n; i++)
         this.mtx[i] = [];
 
     var i=1, j=1;
@@ -2899,7 +2899,7 @@ print(z);
     //   [10, 11, 12, 13, 14],
     //   [15, 16, 17, 18],
     //   [19, 20, 21],
-    //   [22, 23], 
+    //   [22, 23],
     //   [24]
     //  ]
 
@@ -2960,7 +2960,7 @@ print(z);
     // Recursively take n heads from the alternately reversed diagonals
 
     //  [                                            [
-    //   [0],           ->    [0, 1, 5, 6, 14] and:      
+    //   [0],           ->    [0, 1, 5, 6, 14] and:
     //   [1, 2],                                       [2],
     //   [5, 4, 3],                                    [4, 3],
     //   [6, 7, 8, 9],                                 [7, 8, 9],
@@ -2970,7 +2970,7 @@ print(z);
     //   [22, 23],                                     [22, 23],
     //   [24]                                          [24]
     // ]                                             ]
-    // 
+    //
     //    In the next recursion with the remnant on the right, the next
     //    5 heads will be [2, 4, 7, 13, 15] - the second row of our zig zag matrix.
     //    (and so forth)
@@ -3180,7 +3180,7 @@ def zigzag(n):
                          else            .[i+1][j] = m+1 | _next(i+2; j-1; m+2; [ 1,-1]) end
       elif j == n-1 then if i+1 < n then .[i+1][j] = m+1 | _next(i+2; j-1; m+2; [ 1,-1]) else . end
       elif j ==   0 then if i+1 < n then .[i+1][j] = m+1 | _next(i;   j+1; m+2; [-1, 1])
-                         else            .[i][j+1] = m+1 | _next(i-1; j+1; m+2; [-1, 1]) end 
+                         else            .[i][j+1] = m+1 | _next(i-1; j+1; m+2; [-1, 1]) end
       else _next(i+ d[0]; j+ d[1]; m+1;  d)
       end ;
   matrix(n;n;-1) | _next(0;0; 0; [0,1]) ;
@@ -3203,7 +3203,7 @@ $ jq -n -r -f zigzag.jq
 ```
 
 
-###  another solution 
+###  another solution
 
 
 ```jq
@@ -3215,21 +3215,21 @@ $ jq -n -r -f zigzag.jq
 # e.g. for n=3 initial runs are [[0],[1,2],[3,4,5],[6,7],[8]]
 # runs below are shown as columns:
 #
-#   initial column runs    0  1  3  6  8      
-#                             2  4  7        
-#                                5           
-#                                             
-#   reverse cols 0,2,4     0  1  5  6  8      
-#                             2  4  7        
-#                                3           
-#                                             
-#   shift cols 3,4 down    0  1  5            
-#                             2  4  6        
-#                                3  7  8             
-#                                             
-#   shift rows left        0  1  5 
-#   to get final zigzag    2  4  6           
-#                          3  7  8           
+#   initial column runs    0  1  3  6  8
+#                             2  4  7
+#                                5
+#
+#   reverse cols 0,2,4     0  1  5  6  8
+#                             2  4  7
+#                                3
+#
+#   shift cols 3,4 down    0  1  5
+#                             2  4  6
+#                                3  7  8
+#
+#   shift rows left        0  1  5
+#   to get final zigzag    2  4  6
+#                          3  7  8
 
     def N:  $n ;                                # size of matrix
     def NR: 2*N - 1;                            # number of runs
@@ -3247,9 +3247,9 @@ $ jq -n -r -f zigzag.jq
     def reverseruns:                            # reverse alternate runs
       .[keys|map(select(even))[]] |= reverse ;
     def zeros: [range(.|N-length)|0] ;          # array of padding zeros
-    def shiftdown:                              
+    def shiftdown:
       def pad($r):                              # pad run with zeros
-        if $r < N                               # determine where zeros go 
+        if $r < N                               # determine where zeros go
         then . = . + zeros                      # at back for left runs
         else . = zeros + .                      # at front for right runs
         end ;
@@ -3297,7 +3297,7 @@ $ ./zigzag.jq --argjson n 8
 ## Julia
 
 
-###  simple solution 
+###  simple solution
 
 
 ```Julia
@@ -3344,7 +3344,7 @@ julia> zigzag_matrix(5)
 
 
 
-###  a more generic solution 
+###  a more generic solution
 
 Create an iterator that steps through a matrix's indices in the zig-zag pattern and use this to create zig-zag matrices and related objects.
 
@@ -3360,7 +3360,7 @@ immutable ZigZag
     numd::Int
     lohi::(Int,Int)
 end
-    
+
 function zigzag(m::Int, n::Int)
     0<m && 0<n || error("The matrix dimensions must be positive.")
     ZigZag(m, n, [-1,1], m*n, m+n-1, extrema([m,n]))
@@ -3524,9 +3524,9 @@ fun zigzagMatrix(n: Int): Matrix {
     var down = false
     var count = 0
     for (col in 0 until n) {
-        if (down) 
+        if (down)
             for (row in 0..col) result[row][col - row] = count++
-        else 
+        else
             for (row in col downTo 0) result[row][col - row] = count++
         down = !down
     }
@@ -3558,22 +3558,22 @@ fun main(args: Array<String>) {
 
 ```txt
 
- 0  1  5  6 14 
- 2  4  7 13 15 
- 3  8 12 16 21 
- 9 11 17 20 22 
-10 18 19 23 24 
+ 0  1  5  6 14
+ 2  4  7 13 15
+ 3  8 12 16 21
+ 9 11 17 20 22
+10 18 19 23 24
 
- 0  1  5  6 14 15 27 28 44 45 
- 2  4  7 13 16 26 29 43 46 63 
- 3  8 12 17 25 30 42 47 62 64 
- 9 11 18 24 31 41 48 61 65 78 
-10 19 23 32 40 49 60 66 77 79 
-20 22 33 39 50 59 67 76 80 89 
-21 34 38 51 58 68 75 81 88 90 
-35 37 52 57 69 74 82 87 91 96 
-36 53 56 70 73 83 86 92 95 97 
-54 55 71 72 84 85 93 94 98 99 
+ 0  1  5  6 14 15 27 28 44 45
+ 2  4  7 13 16 26 29 43 46 63
+ 3  8 12 17 25 30 42 47 62 64
+ 9 11 18 24 31 41 48 61 65 78
+10 19 23 32 40 49 60 66 77 79
+20 22 33 39 50 59 67 76 80 89
+21 34 38 51 58 68 75 81 88 90
+35 37 52 57 69 74 82 87 91 96
+36 53 56 70 73 83 86 92 95 97
+54 55 71 72 84 85 93 94 98 99
 
 ```
 
@@ -3734,7 +3734,7 @@ function zigzag.new(n)
 end
 
 function zigzag:__tostring()
-    local s = {} 
+    local s = {}
     for j = 1, self.n do
         local row = {}
         for i = 1, self.n do
@@ -3801,9 +3801,9 @@ show2d(`a',5,5)
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
-Rule-based implementation, the upper-left half is correctly calculated 
-using a direct formula. 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
+Rule-based implementation, the upper-left half is correctly calculated
+using a direct formula.
 The lower-right half is then 'mirrored' from the upper-left half.
 
 ```Mathematica
@@ -3870,9 +3870,9 @@ gives back:
 
 ## MATLAB
 
-This isn't the best way to solve this task 
-and the algorithm is completely unintuitive 
-without some major exploration of the code. 
+This isn't the best way to solve this task
+and the algorithm is completely unintuitive
+without some major exploration of the code.
 But! It is pretty fast for n < 10000.
 
 
@@ -3882,21 +3882,21 @@ function matrix = zigZag(n)
     %This is very unintiutive. This algorithm parameterizes the
     %zig-zagging movement along the matrix indicies. The easiest way to see
     %what this algorithm does is to go through line-by-line and write out
-    %what the algorithm does on a peace of paper. 
+    %what the algorithm does on a peace of paper.
 
     matrix = zeros(n);
     counter = 1;
     flipCol = true;
     flipRow = false;
-    
+
     %This for loop does the top-diagonal of the matrix
     for i = (2:n)
         row = (1:i);
         column = (1:i);
-        
-        %Causes the zig-zagging. Without these conditionals, 
-        %you would end up with a diagonal matrix. 
-        %To see what happens, comment these conditionals out.         
+
+        %Causes the zig-zagging. Without these conditionals,
+        %you would end up with a diagonal matrix.
+        %To see what happens, comment these conditionals out.
         if flipCol
             column = fliplr(column);
             flipRow = true;
@@ -3904,25 +3904,25 @@ function matrix = zigZag(n)
         elseif flipRow
             row = fliplr(row);
             flipRow = false;
-            flipCol = true;           
+            flipCol = true;
         end
-        
-        %Selects a diagonal of the zig-zag matrix and places the 
+
+        %Selects a diagonal of the zig-zag matrix and places the
         %correct integer value in each index along that diagonal
         for j = (1:numel(row))
             matrix(row(j),column(j)) = counter;
             counter = counter + 1;
-        end   
+        end
     end
 
     %This for loop does the bottom-diagonal of the matrix
     for i = (2:n)
         row = (i:n);
         column = (i:n);
-        
-        %Causes the zig-zagging. Without these conditionals, 
-        %you would end up with a diagonal matrix. 
-        %To see what happens comment these conditionals out. 
+
+        %Causes the zig-zagging. Without these conditionals,
+        %you would end up with a diagonal matrix.
+        %To see what happens comment these conditionals out.
         if flipCol
             column = fliplr(column);
             flipRow = true;
@@ -3930,18 +3930,18 @@ function matrix = zigZag(n)
         elseif flipRow
             row = fliplr(row);
             flipRow = false;
-            flipCol = true;           
+            flipCol = true;
         end
-        
-        %Selects a diagonal of the zig-zag matrix and places the 
+
+        %Selects a diagonal of the zig-zag matrix and places the
         %correct integer value in each index along that diagonal
         for j = (1:numel(row))
             matrix(row(j),column(j)) = counter;
             counter = counter + 1;
-        end   
+        end
     end
-    
-    
+
+
 end
 ```
 
@@ -3975,7 +3975,7 @@ for k from 0 thru n*n - 1 do (
    a[i, j]: k,
    if evenp(i + j) then (
       if j < n then j: j + 1 else i: i + 2,
-      if i > 1 then i: i - 1      
+      if i > 1 then i: i - 1
    ) else (
       if i < n then i: i + 1 else j: j + 2,
       if j > 1 then j: j - 1
@@ -4015,7 +4015,7 @@ PROCEDURE Create(size: CARDINAL): Matrix =
         INC(i);
       END;
     END move;
-    
+
   VAR data := NEW(Matrix, size, size);
       x, y: INTEGER := 0;
   BEGIN
@@ -4156,11 +4156,11 @@ echo zigzagMatrix(6)
 {{out}}
 
 ```txt
- 0  1  5  6 14 15 
- 2  4  7 13 16 25 
- 3  8 12 17 24 26 
- 9 11 18 23 27 32 
-10 19 22 28 31 33 
+ 0  1  5  6 14 15
+ 2  4  7 13 16 25
+ 3  8 12 17 24 26
+ 9 11 18 23 27 32
+10 19 22 28 31 33
 20 21 29 30 34 35
 ```
 
@@ -4176,11 +4176,11 @@ function : native : ZigZag(size : Int) ~ Int[,] {
   data := Int->New[size, size];
   i := 1;
   j := 1;
-  
+
   max := size * size;
   for(element := 0; element < max ; element += 1;) {
     data[i - 1, j - 1] := element;
-    
+
     if((i + j) % 2 = 0) {
       # even stripes
       if(j < size){
@@ -4189,7 +4189,7 @@ function : native : ZigZag(size : Int) ~ Int[,] {
       else{
         i+= 2;
       };
-      
+
       if(i > 1) {
         i -= 1;
       };
@@ -4202,13 +4202,13 @@ function : native : ZigZag(size : Int) ~ Int[,] {
       else{
         j+= 2;
       };
-      
+
       if(j > 1){
         j -= 1;
       };
     };
   };
-  
+
   return data;
 }
 
@@ -4475,7 +4475,7 @@ var
   element, i, j: integer;
   direction: integer;
   width, n: integer;
- 
+
 begin
   i := 1;
   j := 1;
@@ -4567,7 +4567,7 @@ end.
 
 
 
-{{trans|Seed7}} 
+{{trans|Seed7}}
 
 
 
@@ -4575,7 +4575,7 @@ end.
 
 Program zigzag;
 {$APPTYPE CONSOLE}
- 
+
 const
   size = 5;
 
@@ -4590,7 +4590,7 @@ begin
     max := 0;
     n := 0;
     max := size * size;
-  
+
   for n := 1 to (max div 2)+1 do begin
       s[i,j] := n;
       s[size - i + 1,size - j + 1] := max - n + 1;
@@ -4712,34 +4712,34 @@ Using the same Turtle class as in the [[Spiral_matrix#Perl_6|Spiral matrix]] tas
 class Turtle {
     my @dv =  [0,-1], [1,-1], [1,0], [1,1], [0,1], [-1,1], [-1,0], [-1,-1];
     my $points = 8; # 'compass' points of neighbors on grid: north=0, northeast=1, east=2, etc.
- 
+
     has @.loc = 0,0;
     has $.dir = 0;
     has %.world;
     has $.maxegg;
     has $.range-x;
     has $.range-y;
- 
+
     method turn-left ($angle = 90) { $!dir -= $angle / 45; $!dir %= $points; }
     method turn-right($angle = 90) { $!dir += $angle / 45; $!dir %= $points; }
- 
+
     method lay-egg($egg) {
     %!world{~@!loc} = $egg;
     $!maxegg max= $egg;
     $!range-x minmax= @!loc[0];
     $!range-y minmax= @!loc[1];
     }
- 
+
     method look($ahead = 1) {
     my $there = @!loc »+« @dv[$!dir] »*» $ahead;
     %!world{~$there};
     }
- 
+
     method forward($ahead = 1) {
     my $there = @!loc »+« @dv[$!dir] »*» $ahead;
     @!loc = @($there);
     }
- 
+
     method showmap() {
     my $form = "%{$!maxegg.chars}s";
     my $endx = $!range-x.max;
@@ -4843,7 +4843,7 @@ function ZigZagMatrix($num) {
     for ($i = 0; $i < $num; $i++){
 		$matrix[$i] = array();
 	}
-	
+
     $i=1;
 	$j=1;
     for ($e = 0; $e < $num*$num; $e++) {
@@ -4854,11 +4854,11 @@ function ZigZagMatrix($num) {
 			}else{
 				$i += 2;
 			}
-            if ($i > 1){ 
+            if ($i > 1){
 				$i --;
 			}
         } else {
-            if ($i < $num){ 
+            if ($i < $num){
 				$i++;
 			}else{
 				$j += 2;
@@ -4876,8 +4876,8 @@ function ZigZagMatrix($num) {
 
 ## PicoLisp
 
-This example uses 'grid' from "lib/simul.l", which maintains 
-a two-dimensional structure and is normally used 
+This example uses 'grid' from "lib/simul.l", which maintains
+a two-dimensional structure and is normally used
 for simulations and board games.
 
 ```PicoLisp
@@ -4979,13 +4979,13 @@ end;
    2   4   7  13  15
    3   8  12  16  21
    9  11  17  20  22
-  10  18  19  23  24 
+  10  18  19  23  24
 ```
-        
+
 
 
 ## PlainTeX
-     
+
 The code works with any etex engine.
 
 ```tex
@@ -5029,8 +5029,8 @@ pdf output:
 ## PostScript
 
 
-This implementation is far from being elegant or smart, 
-but it builds the ''zigzag'' how a human being could do, 
+This implementation is far from being elegant or smart,
+but it builds the ''zigzag'' how a human being could do,
 and also draws lines to show the path.
 
 
@@ -5155,11 +5155,11 @@ zigzag 5 | Format-Wide {"{0,2}" -f $_} -Column 5 -Force
 
 ```txt
 
- 0                          1                          5                          6                         14                       
- 2                          4                          7                         13                         15                       
- 3                          8                         12                         16                         21                       
- 9                         11                         17                         20                         22                       
-10                         18                         19                         23                         24                       
+ 0                          1                          5                          6                         14
+ 2                          4                          7                         13                         15
+ 3                          8                         12                         16                         21
+ 9                         11                         17                         20                         22
+10                         18                         19                         23                         24
 
 ```
 
@@ -5254,29 +5254,29 @@ print_val(V) :-
 
 ```txt
 ?- zig_zag(5).
-  0   1   5   6  14 
-  2   4   7  13  15 
-  3   8  12  16  21 
-  9  11  17  20  22 
- 10  18  19  23  24 
+  0   1   5   6  14
+  2   4   7  13  15
+  3   8  12  16  21
+  9  11  17  20  22
+ 10  18  19  23  24
 true .
 
 ?- zig_zag(5, 7).
-  0   1   5   6  14  15  24 
-  2   4   7  13  16  23  25 
-  3   8  12  17  22  26  31 
-  9  11  18  21  27  30  32 
- 10  19  20  28  29  33  34 
+  0   1   5   6  14  15  24
+  2   4   7  13  16  23  25
+  3   8  12  17  22  26  31
+  9  11  18  21  27  30  32
+ 10  19  20  28  29  33  34
 true .
 
 ?- zig_zag(7,5).
-  0   1   5   6  14 
-  2   4   7  13  15 
-  3   8  12  16  24 
-  9  11  17  23  25 
- 10  18  22  26  31 
- 19  21  27  30  32 
- 20  28  29  33  34 
+  0   1   5   6  14
+  2   4   7  13  15
+  3   8  12  16  24
+  9  11  17  23  25
+ 10  18  22  26  31
+ 19  21  27  30  32
+ 20  28  29  33  34
 true .
 
 ```
@@ -5285,59 +5285,59 @@ true .
 
 ## PureBasic
 
-{{trans|AutoHotkey}} 
+{{trans|AutoHotkey}}
 
 
 ```purebasic
 Procedure zigZag(size)
   Protected i, v, x, y
-  
+
   Dim a(size - 1, size - 1)
-  
+
   x = 1
   y = 1
   For i = 1 To  size * size  ;loop once for each element
     a(x - 1, y - 1) = v      ;assign the next index
-    
+
     If (x + y) & 1 = 0       ;even diagonal (zero based count)
       If x < size            ;while inside the square
         If y > 1             ;move right-up
           y - 1
-        EndIf 
+        EndIf
         x + 1
       Else
         y + 1                ;on the edge increment y, but not x until diagonal is odd
-      EndIf 
+      EndIf
     Else                     ;odd diagonal (zero based count)
       If y < size            ;while inside the square
         If x > 1             ;move left-down
           x - 1
-        EndIf  
+        EndIf
         y + 1
       Else
         x + 1                ;on the edge increment x, but not y until diagonal is even
-      EndIf 
-    EndIf 
+      EndIf
+    EndIf
     v + 1
-  Next 
-  
+  Next
+
 
   ;generate and show printout
   PrintN("Zig-zag matrix of size " + Str(size) + #CRLF$)
   maxDigitCount = Len(Str(size * size)) + 1
-  For y = 0 To size - 1 
+  For y = 0 To size - 1
     For x = 0 To size - 1
       Print(RSet(Str(a(x, y)), maxDigitCount, " "))
-    Next 
+    Next
     PrintN("")
   Next
   PrintN("")
 EndProcedure
 
-If OpenConsole()  
+If OpenConsole()
   zigZag(5)
   zigZag(6)
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -5373,7 +5373,7 @@ Zig-zag matrix of size 6
 
 ### Python: By sorting indices
 
-There is a full explanation of the algorithm used 
+There is a full explanation of the algorithm used
 by [http://paddy3118.blogspot.com/2008/08/zig-zag.html paddy3118].
 {{Works with|Python|3}}
 
@@ -5493,11 +5493,11 @@ for x in range(0,COLS):
 
 ```txt
 
-  1   2   6   7  15 
-  3   5   8  14  16 
-  4   9  13  17  22 
- 10  12  18  21  23 
- 11  19  20  24  25 
+  1   2   6   7  15
+  3   5   8  14  16
+  4   9  13  17  22
+ 10  12  18  21  23
+ 11  19  20  24  25
 
 ```
 
@@ -5505,35 +5505,35 @@ for x in range(0,COLS):
 
 ```txt
 
-  1   2   6   7  15  16  28  29 
-  3   5   8  14  17  27  30  43 
-  4   9  13  18  26  31  42  44 
- 10  12  19  25  32  41  45  54 
- 11  20  24  33  40  46  53  55 
- 21  23  34  39  47  52  56  61 
- 22  35  38  48  51  57  60  62 
- 36  37  49  50  58  59  63  64 
+  1   2   6   7  15  16  28  29
+  3   5   8  14  17  27  30  43
+  4   9  13  18  26  31  42  44
+ 10  12  19  25  32  41  45  54
+ 11  20  24  33  40  46  53  55
+ 21  23  34  39  47  52  56  61
+ 22  35  38  48  51  57  60  62
+ 36  37  49  50  58  59  63  64
 
 ```
- 
+
 {{out}} COLS = 9 Produces:
 
 ```txt
 
-  1   2   6   7  15  16  28  29  45 
-  3   5   8  14  17  27  30  44  46 
-  4   9  13  18  26  31  43  47  60 
- 10  12  19  25  32  42  48  59  61 
- 11  20  24  33  41  49  58  62  71 
- 21  23  34  40  50  57  63  70  72 
- 22  35  39  51  56  64  69  73  78 
- 36  38  52  55  65  68  74  77  79 
- 37  53  54  66  67  75  76  80  81 
+  1   2   6   7  15  16  28  29  45
+  3   5   8  14  17  27  30  44  46
+  4   9  13  18  26  31  43  47  60
+ 10  12  19  25  32  42  48  59  61
+ 11  20  24  33  41  49  58  62  71
+ 21  23  34  40  50  57  63  70  72
+ 22  35  39  51  56  64  69  73  78
+ 36  38  52  55  65  68  74  77  79
+ 37  53  54  66  67  75  76  80  81
 
 ```
 
 
-###  Another alternative version 
+###  Another alternative version
 
 
 ```python
@@ -5559,7 +5559,7 @@ def zigzag( dimension):
     # 'fake' that we are going up and right
     direction = 1
     # the first index is always 0, so start with the second
-    # until halfway 
+    # until halfway
     for i in range(1, HALFWAY + KERNEL_ODD):
         if direction > 0:
             # going up and right
@@ -5569,7 +5569,7 @@ def zigzag( dimension):
                 direction = -1
             else:
                 ix += 1
-                iy -= 1 
+                iy -= 1
         else:
             # going down and left
             if ix == 0:
@@ -5610,11 +5610,11 @@ if __name__ == '__main__':
 ```txt
 
 zigzag of 5:
- 0  1  5  6 14 
- 2  4  7 13 15 
- 3  8 12 16 21 
- 9 11 17 20 22 
-10 18 19 23 24 
+ 0  1  5  6 14
+ 2  4  7 13 15
+ 3  8 12 16 21
+ 9 11 17 20 22
+10 18 19 23 24
 
 ```
 
@@ -5622,11 +5622,11 @@ zigzag of 5:
 
 ## Rascal
 
-{{incorrect|Rascal|Output is striped rather than zig-zag 
+{{incorrect|Rascal|Output is striped rather than zig-zag
 i.e. your numbers always increase  going diagonally down and to the left when it should alternativly increase/decrease.}}
-This is a translation of the [[Zig-zag_matrix#Python|Python]] example. 
-As explained on the [[Talk:Zig-zag_matrix#anti-diagonals|Talk]] page, 
-the key way to understand a zig-zag matrix is to write down 
+This is a translation of the [[Zig-zag_matrix#Python|Python]] example.
+As explained on the [[Talk:Zig-zag_matrix#anti-diagonals|Talk]] page,
+the key way to understand a zig-zag matrix is to write down
 an example with coordinates:
 
 ```rascal
@@ -5641,9 +5641,9 @@ If you order these coordinates on the number, you create the order:
  0 (0,0), 1 (0,1), 2 (1,0), 3 (0,2), 4 (1,1), 5 (2,0), 6 (1,2), 7 (2,1), 8 (2,2)
 ```
 
-One can observe that this increases with the sum of the coordinates, 
-and secondly with the the first number of the coordinates. 
-The Rascal example uses this phenomenon: 
+One can observe that this increases with the sum of the coordinates,
+and secondly with the the first number of the coordinates.
+The Rascal example uses this phenomenon:
 
 ```rascal
 import util::Math;
@@ -5664,7 +5664,7 @@ public rel[cd, int] zz(int n){
 	 		return true;
 	 		;
 	 	});
-	 return {<indexorder[z] , z> | z <- index(indexorder)};	 	
+	 return {<indexorder[z] , z> | z <- index(indexorder)};
 }
 
 public void printzz(rel[cd, int] myarray){
@@ -5680,11 +5680,11 @@ public void printzz(rel[cd, int] myarray){
 
 ```rascal>rascal
 printzz(zz(4))
-{0}	{1}	{3}	{6}	{10}	
-{2}	{4}	{7}	{11}	{15}	
-{5}	{8}	{12}	{16}	{19}	
-{9}	{13}	{17}	{20}	{22}	
-{14}	{18}	{21}	{23}	{24}	
+{0}	{1}	{3}	{6}	{10}
+{2}	{4}	{7}	{11}	{15}
+{5}	{8}	{12}	{16}	{19}
+{9}	{13}	{17}	{20}	{22}
+{14}	{18}	{21}	{23}	{24}
 ok
 ```
 
@@ -5706,7 +5706,7 @@ The code can probably be simplified somewhat.
   0 0 N -> 0
 
   X 0 N -> (1+ (zigzag-val (1- X) 0 N)) where (odd? X)
-  X 0 N -> (1+ (zigzag-val (1- X) 1 N)) 
+  X 0 N -> (1+ (zigzag-val (1- X) 1 N))
 
   0 Y N -> (1+ (zigzag-val 1 (1- Y) N)) where (odd? Y)
   0 Y N -> (1+ (zigzag-val 0 (1- Y) N))
@@ -5719,9 +5719,9 @@ The code can probably be simplified somewhat.
   S E -> [S|(range (1+ S) E)])
 
 (define zigzag
-  N -> (map (/. Y 
-                (map (/. X 
-                         (zigzag-val X Y N)) 
+  N -> (map (/. Y
+                (map (/. X
+                         (zigzag-val X Y N))
                      (range 0 N)))
             (range 0 N)))
 
@@ -5781,10 +5781,10 @@ zigzag(5)
     (sort (for*/list ([x n] [y n]) (list x y))
           compare #:key key))
   (for/hash ([(n i) (in-indexed indexorder)]) (values n i)))
-       
+
 (define (zigzag n)
   (define ht (zigzag-ht n))
-  (for/list ([x n]) 
+  (for/list ([x n])
     (for/list ([y n])
       (hash-ref ht (list x y)))))
 
@@ -5796,9 +5796,9 @@ zigzag(5)
 
 ```racket
 
-'((0 2 3 9) 
+'((0 2 3 9)
   (1 4 8 10)
-  (5 7 11 14) 
+  (5 7 11 14)
   (6 12 13 15))
 
 ```
@@ -5858,7 +5858,7 @@ w=max(length(start), length(start + size*inc) )  /*maximum width of any matrix e
 
 load "guilib.ring"
 load "stdlib.ring"
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("Zig-zag matrix")
@@ -5867,38 +5867,38 @@ new qapp
                   a = newlist(n,n)
                   zigzag = newlist(n,n)
                   for j = 1 to n
-                       for i = 1 to n 
+                       for i = 1 to n
                             a[j][i] = 0
                        next
                   next
                   i = 1
                   j = 1
                   k = 1
-                  while k < n * n 
+                  while k < n * n
                           a[j][i] = k
                           k = k + 1
-                          if i = n 
+                          if i = n
                              j = j + 1
                              a[j][i] = k
                              k = k + 1
                              di = -1
                              dj = 1
                           ok
-                          if j = 1 
+                          if j = 1
                              i = i + 1
                              a[j][i] = k
                              k = k + 1
                              di = -1
                              dj = 1
                           ok
-                          if j = n 
+                          if j = n
                              i = i + 1
                              a[j][i] = k
                              k = k + 1
                              di = 1
                              dj = -1
                           ok
-                          if i = 1 
+                          if i = 1
                              j = j + 1
                              a[j][i] = k
                              k = k + 1
@@ -5917,7 +5917,7 @@ new qapp
                                                   settext(string(a[p][m]))
                                                   }
                        next
-                  next  
+                  next
         show()
         }
         exec()
@@ -5953,10 +5953,10 @@ print_matrix zigzag(5)
 
 ```txt
 
- 0  1  5  6 14 
- 2  4  7 13 15 
- 3  8 12 16 21 
- 9 11 17 20 22 
+ 0  1  5  6 14
+ 2  4  7 13 15
+ 3  8 12 16 21
+ 9 11 17 20 22
 10 18 19 23 24
 
 ```
@@ -5972,10 +5972,10 @@ Uses the array indices sort solution used by others here.
   def zigzag(n: Int): Array[Array[Int]] = {
     val l = for (i <- 0 until n*n) yield (i%n, i/n)
     val lSorted = l.sortWith {
-      case ((x,y), (u,v)) => 
-        if (x+y == u+v) 
-          if ((x+y) % 2 == 0) x<u else y<v 
-        else x+y < u+v 
+      case ((x,y), (u,v)) =>
+        if (x+y == u+v)
+          if ((x+y) % 2 == 0) x<u else y<v
+        else x+y < u+v
     }
     val res = Array.ofDim[Int](n, n)
     lSorted.zipWithIndex foreach {
@@ -5983,7 +5983,7 @@ Uses the array indices sort solution used by others here.
     }
     res
   }
-  
+
   zigzag(5).foreach{
     ar => ar.foreach(x => print("%3d".format(x)))
     println
@@ -6020,11 +6020,11 @@ endfunction
 
 -->zigzag3(5)
  ans  =
- 
-    0.     1.     5.     6.     14.  
-    2.     4.     7.     13.    15.  
-    3.     8.     12.    16.    21.  
-    9.     11.    17.    20.    22.  
+
+    0.     1.     5.     6.     14.
+    2.     4.     7.     13.    15.
+    3.     8.     12.    16.    21.
+    9.     11.    17.    20.    22.
     10.    18.    19.    23.    24.
 ```
 
@@ -6223,7 +6223,7 @@ proc zigzag {size} {
     set m [lrepeat $size [lrepeat $size .]]
     set x 0; set dx -1
     set y 0; set dy 1
-    
+
     for {set i 0} {$i < $size ** 2} {incr i} {
         if {$x >= $size} {
             incr x -1
@@ -6260,10 +6260,10 @@ print_matrix [zigzag 5]
 {{out}}
 
 ```txt
- 0  1  5  6 14 
- 2  4  7 13 15 
- 3  8 12 16 21 
- 9 11 17 20 22 
+ 0  1  5  6 14
+ 2  4  7 13 15
+ 3  8 12 16 21
+ 9 11 17 20 22
 10 18 19 23 24
 ```
 
@@ -6446,20 +6446,20 @@ End Sub
 
 zigzag 5
 Result for n= 5 :
- 0             1             5             6             14           
- 2             4             7             13            15           
- 3             8             12            16            21           
- 9             11            17            20            22           
- 10            18            19            23            24           
+ 0             1             5             6             14
+ 2             4             7             13            15
+ 3             8             12            16            21
+ 9             11            17            20            22
+ 10            18            19            23            24
 
 zigzag 6
 Result for n= 6 :
- 0             1             5             6             14            15           
- 2             4             7             13            16            25           
- 3             8             12            17            24            26           
- 9             11            18            23            27            32           
- 10            19            22            28            31            33           
- 20            21            29            30            34            35           
+ 0             1             5             6             14            15
+ 2             4             7             13            16            25
+ 3             8             12            17            24            26
+ 9             11            18            23            27            32
+ 10            19            22            28            31            33
+ 20            21            29            30            34            35
 
 ```
 
@@ -6627,8 +6627,8 @@ fcn zz(n){
 ```
 
 {{trans|C}}
-Using list comprehension (and side effects) for the double loop, 
-the resulting list is just thrown away, 
+Using list comprehension (and side effects) for the double loop,
+the resulting list is just thrown away,
 which is easier than creating an enumerated list and sorting.
 
 ```zkl
@@ -6641,7 +6641,7 @@ fcn ceg(m){
 }
 ```
 
-To be pedantic, the same as above, 
+To be pedantic, the same as above,
 but using the output of the list comprehension:
 
 ```zkl

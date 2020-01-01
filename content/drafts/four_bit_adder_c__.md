@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-Remarks before we start: 
+Remarks before we start:
 *'...aim of this task is to simulate a four-bit adder chip.' According to this, the class design is laid out like this: starting with 'I/O pins' of our 'chip', we represent its 'inner circuit' by a 'logic block'. Logic blocks have a transfer function which creates signals for the output pins from the signals at the input pins (and the inner state of the block, if necessary). Logic blocks may be connected to form a more complex logic block; thereby we work our way up from the simple gates (AND, OR etc.) via more complex circuits (XOR, half adder, etc.) to the four bit adder. In order to avoid the tedious work of encoding numbers to bits and vice versa, we added conveniency blocks: a source (logic block without input pins) which sets its output pins according to a given decimal number, and a sink (logic block without output pins) which calculates a decimal number from the state of its input pins.
 *'... gates ... can be imitated by using the bitwise operators...' I decided to use a boolean for a bit - firstly because the largest 'numbers' in this example are 5 bits wide and secondly because this is should become rather a prove of concept than highly efficient code.
 *As C++ provides nice operator overloading and sophisticated templates, we'll make heavy use of these features - just for fun and elegance of syntax!
@@ -62,15 +62,15 @@ Pin& Pin::Signal(bool value)
   signal = value;
   return *this;
   }
-          
+
 bool Pin::Signal()const
   {
   return signal;
   }
 ```
 
-An input pin is a Pin which a value may be assigned to and can be got from; also, the input pin may be 
-connected to a signal source which then determines the input pin's value. Obviously, in our simple world, 
+An input pin is a Pin which a value may be assigned to and can be got from; also, the input pin may be
+connected to a signal source which then determines the input pin's value. Obviously, in our simple world,
 such a signal source needs to be an output pin (PinIn.h):
 
 ```cpp
@@ -108,8 +108,8 @@ namespace rosetta
 
 The input pin's definition (PinIn.cpp):
 
-```cpp>#include <memory
-
+```cpp
+#include <memory>
 #include <cassert>
 
 #include "PinIn.h"
@@ -133,7 +133,7 @@ PinIn::operator bool()const
   if(signalSource == NULL)
     return Signal();
   else
-    return *signalSource;   
+    return *signalSource;
   }
 
 void PinIn::Disconnect()
@@ -147,7 +147,7 @@ void PinIn::Connect(const PinOut& output)
   }
 ```
 
-An output pin is a Pin which a value may be assigned to and can be got from; also, the output pin may be 
+An output pin is a Pin which a value may be assigned to and can be got from; also, the output pin may be
 get its signal from the transfer function of a (logic) block. For this to work out properly, it is necessary
 that an output pin knows to which block ('chip') it belongs to and what position it has there. Being
 the bridge between a chip's inner circuits (the logic block) and the outside world, an output pin
@@ -288,12 +288,12 @@ namespace rosetta
             for(int i =0; i < NumIn; i++)
               in.push_back(std::auto_ptr<PinIn>(new PinIn()));
             for(int i =0; i < NumOut; i++)
-              out.push_back(std::auto_ptr<PinOut>(new PinOut(*this, i)));            
+              out.push_back(std::auto_ptr<PinOut>(new PinOut(*this, i)));
             }
 
-          enum 
+          enum
             {
-            NumInputs = NumIn, 
+            NumInputs = NumIn,
             NumOutputs = NumOut
             };
         private:
@@ -307,8 +307,8 @@ namespace rosetta
 #endif //!defined __BASELOGIC_H__
 ```
 
-Defining a gate as a logic block with just one output, we declare such a base class. Then, definition of 
-the basic AND, OR and NOT gates with an arbitrary number of input pins is as easy as writing down the 
+Defining a gate as a logic block with just one output, we declare such a base class. Then, definition of
+the basic AND, OR and NOT gates with an arbitrary number of input pins is as easy as writing down the
 appropriate transfer function.
 
 ```cpp
@@ -436,7 +436,7 @@ bool XorGate::TransferFunction(unsigned indexOfOutput)
   notA.In(0) = In(0);
   andB.In(0) = In(1);
   notB.In(0) = In(1);
-          
+
   return or.Out();
   }
 ```
@@ -484,8 +484,8 @@ namespace rosetta
 Internal wiring is not required for the half adder; we just write down the transfer function which
 is able to provide the values for either of the two outputs (HalfAdder.cpp):
 
-```cpp>#include <stdexcept
-
+```cpp
+#include <stdexcept>
 using std::out_of_range;
 
 #include "HalfAdder.h"
@@ -562,11 +562,11 @@ namespace rosetta
 #endif //!defined __FULLADDER_H__
 ```
 
-The full adder's definition consists of setting up the internal connections of writing down the 
+The full adder's definition consists of setting up the internal connections of writing down the
 proper transfer function (FullAdder.cpp):
 
-```cpp>#include <stdexcept
-
+```cpp
+#include <stdexcept>
 using std::out_of_range;
 
 #include "FullAdder.h"
@@ -588,9 +588,9 @@ bool FullAdder::TransferFunction(unsigned indexOfOutput)
   switch(indexOfOutput)
     {
     case 0: //sum
-      return bitBHalfAdder.Sum();     
+      return bitBHalfAdder.Sum();
     case 1: //carry bit
-      return or.Out();                
+      return or.Out();
     default:
       throw new out_of_range("There are only two output pins.");
     }
@@ -655,8 +655,8 @@ carry input is always false, and carry outputs are connected to carry inputs of 
 MSB full adder's carry output is the four bit adders carry output). The other input and output pins of our
 full adders are related to the four bit adders input and output by the transfer function (FourBitAdder.cpp):
 
-```cpp>#include <stdexcept
-
+```cpp
+#include <stdexcept>
 using std::out_of_range;
 #include <memory>
 using std::auto_ptr;
@@ -756,7 +756,7 @@ namespace rosetta
     {
 
     template<int NumSources>
-    class Source 
+    class Source
       : protected detail::LogicBlock<0, NumSources>
       {
       public:
@@ -826,7 +826,7 @@ namespace rosetta
 ```
 
 In order to interpret output, there is the sink: a logic block providing an arbitrary number of inputs,
-but no outputs. Instead, from its input signals the sink calculates a decimal number. A sink may be 
+but no outputs. Instead, from its input signals the sink calculates a decimal number. A sink may be
 connected to (some of) the outputs of a logic block and thus allows easy access to that state of the latter (Sink.h):
 
 ```cpp
@@ -847,7 +847,7 @@ namespace rosetta
     {
 
     template<int NumSinks>
-    class Sink 
+    class Sink
       : protected detail::LogicBlock<NumSinks, 0>
       {
       template<typename LogicBlock, int NumSinks>
@@ -909,12 +909,12 @@ namespace rosetta
 ```
 
 Now, using the four bit adder with two sources of input and one sink for the result is quite simple:
-We create the four necessary objects and connect them properly. With these preparations, 
+We create the four necessary objects and connect them properly. With these preparations,
 making the four bit adder do its calculation is just a matter of setting the sources to the
 desired numbers and reading their sum from the sink. There's main.cpp:
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 using std::cout;
 using std::endl;
 
@@ -926,8 +926,8 @@ using namespace rosetta::fourBitAdder;
 int main(int argc, char** argv)
   {
   //create four bit adder, 'input numbers' and 'output display'
-  Source<4> 
-    fourBitAdderInputA, 
+  Source<4>
+    fourBitAdderInputA,
     fourBitAdderInputB;
   FourBitAdder fba;
   Sink<5> fourBitAdderResult;

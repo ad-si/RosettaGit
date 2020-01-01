@@ -14,16 +14,16 @@ tags = []
 {{Control Structures}}
 
 ;Task:
-Document common flow-control structures. 
+Document common flow-control structures.
 
-One common example of a flow-control structure is the   <big><code> goto </code></big>   construct. 
+One common example of a flow-control structure is the   <big><code> goto </code></big>   construct.
 
 Note that   [[Conditional Structures]]   and   [[Iteration|Loop Structures]]   have their own articles/categories.
 
 
 ;Related tasks:
 *   [[Conditional Structures]]
-*   [[Iteration|Loop Structures]] 
+*   [[Iteration|Loop Structures]]
 
 
 
@@ -42,17 +42,17 @@ To perform a 'goto'.
 
 ```
 
-===Branch and Link (BAL)=== 
+===Branch and Link (BAL)===
 To perform a 'call' to a subroutine. The first register at execution time is the next sequential address to allow a 'return'.
 
 ```360asm
 
-         LA     15,SINUSX  load in reg15 address of function SINUSX 
+         LA     15,SINUSX  load in reg15 address of function SINUSX
          BALR   14,15      call the subroutine SINUX and place address RETPNT in reg14
 RETPNT   EQU    *
-		 
+
 SINUSX   EQU    *          subroutine SINUSX
-         ...		 
+         ...
          BR     14         return to caller
 
 ```
@@ -119,7 +119,7 @@ LOOPI    EQU    *
 
 
 ## 6502 Assembly
- 
+
 
 
 ### JMP
@@ -263,14 +263,14 @@ print(("Medal awarded: ",medal, new line));
 ```
 
 
-### Another use is to implement finite state machines 
+### Another use is to implement finite state machines
 
 
 ```algol68
 STRING final state = (
   INT condition;
   PROC do something = VOID: condition := 1 + ENTIER (3 * random);
-  
+
   state1:
      do something;
      CASE condition IN
@@ -279,11 +279,11 @@ STRING final state = (
         state n
      ESAC
   EXIT
-  
+
   state 2:
      "State Two"
   EXIT
-  
+
   state n:
      "State N"
 );
@@ -291,7 +291,7 @@ print(("Final state: ",final state, new line));
 ```
 
 
-### ALGOL 68G implements a Refinement Preprocessor to aid with top down code development 
+### ALGOL 68G implements a Refinement Preprocessor to aid with top down code development
 
 
 ```algol68
@@ -368,14 +368,14 @@ end.
 
 ```AutoHotkey
 MsgBox, calling Label1
-Gosub, Label1 
-MsgBox, Label1 subroutine finished 
+Gosub, Label1
+MsgBox, Label1 subroutine finished
 Goto Label2
 MsgBox, calling Label2 ; this part is never reached
 Return
 
 Label1:
-  MsgBox, Label1 
+  MsgBox, Label1
 Return
 
 Label2:
@@ -408,12 +408,12 @@ BBC BASIC has '''GOSUB''' and '''GOTO''' but they are deprecated.
 
 ```bbcbasic
       GOSUB subroutine
-      
+
       (loop)
       PRINT "Infinite loop"
       GOTO loop
       END
-      
+
       (subroutine)
       PRINT "In subroutine"
       WAIT 100
@@ -476,12 +476,12 @@ out:
 ## C++
 
 
-###  goto 
+###  goto
 
 {{works with|GCC|3.3.4}}
 
-```cpp>#include <iostream
- 
+```cpp
+#include <iostream>
 
 int main()
 {
@@ -495,14 +495,14 @@ int main()
 Note that "goto" may also be used in conjunction with other forms of branching.
 
 
-###  Exceptions 
+###  Exceptions
 
 {{works with|GCC|4.0.2}}
 
 Exceptions are a way to give control back to a direct or indirect caller in case of an error. Note that throwing exceptions is usually very expensive, therefore they generally should only be used for exceptional situations.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <ostream>
 
 void foo()
@@ -681,18 +681,18 @@ NextSection: DoOtherStuff();
 ## COBOL
 
 
-###  CALL 
+###  CALL
 
 This transfers control to a subprogram, with control eventually being returned (provided the subprogram does not terminate the program).
 
 
-###  CHAIN 
+###  CHAIN
 
-This transfers control to the subprogram specified with ''no'' return of control. <code>CHAIN</code> is a non-standard extension 
+This transfers control to the subprogram specified with ''no'' return of control. <code>CHAIN</code> is a non-standard extension
 created by Micro Focus and is found in [[Visual COBOL]].
 
 
-###  EXIT 
+###  EXIT
 
 <code>EXIT</code> takes a variety of clauses:
 * <code>PARAGRAPH</code>/<code>PERFORM</code>/<code>SECTION</code>: Control will be transferred immediately past the end of those blocks.
@@ -701,12 +701,12 @@ created by Micro Focus and is found in [[Visual COBOL]].
 The <code>PERFORM</code>/<code>PERFORM CYCLE</code> clauses can only be used inside of an inline <code>PERFORM</code> statement.
 
 
-###  GOBACK 
+###  GOBACK
 
 If used in a called function, control will transferred back to the calling program. If it is used in the main program, the program will be terminated.
 
 
-###  GO TO 
+###  GO TO
 
 Basic use:
 
@@ -751,7 +751,7 @@ The previous example is equivalent to:
 
 
 
-###  ALTER 
+###  ALTER
 
 The much maligned altered GO.
 
@@ -801,7 +801,7 @@ Then pause to think about the fact that some COBOL code, written before ALTER we
        DISPLAY "The story ends, happily ever after"
        .
 
-      *> fall through to the exit      
+      *> fall through to the exit
        exit program.
 
 ```
@@ -819,12 +819,12 @@ The story ends, happily ever after
 
 
 
-###  INVOKE 
+###  INVOKE
 
 The <code>INVOKE</code> statement is used to transfer control to a method of a class/factory object.
 
 
-###  PERFORM 
+###  PERFORM
 
 The <code>PERFORM</code> statement can be used to transfer program flow to the specified sections/paragraphs in the subprogram, with control being returned when the end of the last paragraph/section or a relevant <code>EXIT</code> statement is reached.
 
@@ -866,7 +866,7 @@ Boo Moo
 
 
 
-###  STOP RUN 
+###  STOP RUN
 
 This immediately terminates the program.
 
@@ -931,7 +931,7 @@ END
 ## D
 
 
-###  goto 
+###  goto
 
 
 ```d
@@ -946,7 +946,7 @@ void main() {
 
 
 
-###  Exceptions 
+###  Exceptions
 
 D supports the try/catch/finally mechanism:
 
@@ -977,7 +977,7 @@ void main(string[] args) {
 
 
 
-###  Scope guards 
+###  Scope guards
 
 In a complex function, you might need to do cleanup in case of an exception, but it gets out of hand if there are many initialization steps that could fail. Scope guards offer a simplified syntax for try/finally.
 
@@ -1065,13 +1065,13 @@ Fortran offers <code>GO TO ''label''</code> where ''label'' is a number, an inte
 
 A compiler may offer the "assigned GO TO" facility, with statements such as <code>ASSIGN 120 TO THENCE</code> scattered about: 120 is a statement label, not an integer, and any statement label may be assigned to variable THENCE (which is an integer variable) as execution proceeds. A relatively restrained usage would be to select the label of a suitable FORMAT statement to use in a READ or WRITE statement in place of a fixed label, without affecting the flow of control. But <code>GO TO THENCE</code> will cause a GO TO for the current address held in THENCE... Should you yield to temptations such as <code>THENCE = THENCE - 6</code> (treating it as an ordinary integer), a subsequent <code>GO TO THENCE</code> may end execution with an error message, or something else...
 
-Aside from facilitating the production of spaghetti code, this sort of behaviour actually can be put to a positive use to handle the situation where in a large programme there may be portions that could be employed from a number of locations, and one does not wish to repeat that code each time - apart from the tedium of punching additional cards, each replication would demand its own unique set of statement labels. Further, such replication increases the total code size and memory is limited... 
+Aside from facilitating the production of spaghetti code, this sort of behaviour actually can be put to a positive use to handle the situation where in a large programme there may be portions that could be employed from a number of locations, and one does not wish to repeat that code each time - apart from the tedium of punching additional cards, each replication would demand its own unique set of statement labels. Further, such replication increases the total code size and memory is limited...
 ```Fortran
       ...
       ASSIGN 1101 to WHENCE   !Remember my return point.
       GO TO 1000              !Dive into a "subroutine"
  1101 CONTINUE                !Resume.
-      ... 
+      ...
       ASSIGN 1102 to WHENCE   !Prepare for another invocation.
       GO TO 1000              !Like GOSUB in BASIC.
  1102 CONTINUE                !Carry on.
@@ -1120,22 +1120,22 @@ More delicate souls prefer to see an integer parameter whose value will be set b
 
 Thus, a subroutine (or a function) may exit via a RETURN statement, rather than by completing its logic and "falling out" of the end of its definition. If the subprogram is large, these escape holes may be missed by the (human) reader!
 
-Persons writing in assembler have further opportunities, for example providing an integer function such as IOR(A,B) that performs an '''or''' on integers A and B. Instead of doing so, the function overwrites its invocation by placing in-line code that performs A '''or''' B, then returns not to its return address but to where it was invoked from so as to compute the result. 
+Persons writing in assembler have further opportunities, for example providing an integer function such as IOR(A,B) that performs an '''or''' on integers A and B. Instead of doing so, the function overwrites its invocation by placing in-line code that performs A '''or''' B, then returns not to its return address but to where it was invoked from so as to compute the result.
 
 ====Away, and maybe, back====
 Similarly to escaping from a subroutine, within a DO-loop, a GO TO might jump out of the loop(s) - perhaps for good reason. More interesting is the possibility of jumping ''into'' a DO-loop's scope, possibly after jumping out - who knows what its index variable might have been changed to. This is considered poor form by others not writing such code and some compilers will reject any attempts. With the F77 introduction of IF ... THEN ... ELSE ... END IF constructions, jumping out of a block is still acceptable but jumping in is frowned on (even if only from the THEN clause to some part of its ELSE clause) and may be prevented.
 
-F90 offers a more decorous means for exiting DO-loops, including the additional DO WHILE loop, via the statements CYCLE and EXIT - the text "GO TO" does not appear as such, but the effect is the same. The CYCLE option means abandoning further statements within the block to test afresh the iteration condition, while EXIT means ending the iteration as if it had completed. Further syntax allows some compiler checking, as follows: 
+F90 offers a more decorous means for exiting DO-loops, including the additional DO WHILE loop, via the statements CYCLE and EXIT - the text "GO TO" does not appear as such, but the effect is the same. The CYCLE option means abandoning further statements within the block to test afresh the iteration condition, while EXIT means ending the iteration as if it had completed. Further syntax allows some compiler checking, as follows:
 ```Fortran
       XX:DO WHILE(condition)
            statements...
-        NN:DO I = 1,N        
+        NN:DO I = 1,N
              statements...
              IF (...) EXIT XX
              IF (...) CYCLE NN
              statements...
            END DO NN
-         END DO XX 
+         END DO XX
 ```
 
 A DO-loop can be given a label such as XX (which is ''not'' in the numeric-only label area of fixed source format Fortran, and the syntax highlghter has missed yet another trick of Fortran syntax) and its corresponding END DO can be given a label also: the compiler checks that they match and some programmer errors might thereby be caught. With such labels in use, the CYCLE and EXIT statements can name the loop they are intended for, so that CYCLE NN steps to the next iteration for <code>I</code> (as if it were a GO TO the END DO having its label as a suffix) while the EXIT XX exits both the numeric DO-LOOP and the DO-WHILE loop - without such labels only the innermost loop is affected and one can lose track. These labels must not be the name of any other entity in the source, and specifically not the name of the variable of the DO-LOOP concerned. Thus, if there are many DO I = 1,N loops, each must have its own label. There is unfortunately no equivalent to <code>NEXT I</code> as in BASIC instead of <code>END DO</code>so as to be clear just which DO-LOOP is being ended and for which index variable.
@@ -1189,7 +1189,7 @@ Output:
 
 ```txt
 
-0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77
 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100
 
 ```
@@ -1607,7 +1607,7 @@ top: for (int 1 = 0; i < 10; ++i) {
     if (bottom_condition) { continue; /* this will also restart bottom loop */ }
     ...
     }
-    ... 
+    ...
   }
   ....
 }
@@ -1742,11 +1742,11 @@ This is because Lua supports proper tail recursion.  This means that because som
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 Relevant functions are:
 
-TimeConstrained[expr,t] evaluates expr, stopping after t seconds. 
+TimeConstrained[expr,t] evaluates expr, stopping after t seconds.
 
-MemoryConstrained[expr,b] evaluates expr, stopping if more than b bytes of memory are requested. 
+MemoryConstrained[expr,b] evaluates expr, stopping if more than b bytes of memory are requested.
 
-Goto[tag] scans for Label[tag], and transfers control to that point. 
+Goto[tag] scans for Label[tag], and transfers control to that point.
 
 CreateScheduledTask[expr,t] creates a task that will repeatedly evaluate expr every t second.
 
@@ -1754,7 +1754,7 @@ Interrupt[]	interrupt a computation
 
 Abort[]	abort a computation
 
-Quit[] immediately stops all execution and returns to the top level read-eval-print loop 
+Quit[] immediately stops all execution and returns to the top level read-eval-print loop
 
 Catch[] prepares for receiving a  Throw[]  while running a given list of executable expressions
 
@@ -1763,8 +1763,8 @@ Throw[] causes a non-local jump to a specified Catch[]
 =={{header|MATLAB}} / {{header|Octave}}==
 
 ```Matlab
- 
-try 
+
+try
    % do some stuff
 catch
    % in case of error, continue here
@@ -1796,7 +1796,7 @@ errcatch(..., error("Bad luck!"), ...);
 
 ### GOTO / G
 
-<p>The GOTO command jumps to a label. If the label is not in the current routine, it is necessary to include the circumflex and routine name. 
+<p>The GOTO command jumps to a label. If the label is not in the current routine, it is necessary to include the circumflex and routine name.
 ```MUMPS
 GOTO LABEL^ROUTINE
 ```
@@ -1807,7 +1807,7 @@ GOTO LABEL^ROUTINE
 
 ### HALT / H
 
-<p>Halt and Hang have the same abbreviation, i.e. "H" but (as a mnemonic) Halt takes no arguments. Halt stops the current process, and clears all Locks and devices in Use. 
+<p>Halt and Hang have the same abbreviation, i.e. "H" but (as a mnemonic) Halt takes no arguments. Halt stops the current process, and clears all Locks and devices in Use.
 On the Cache variant of MUMPS, there is a $HALT special variable that can be set, the value of the $HALT special variable is a routine that is called before cleaning up (in effect, a specialized final error trap).</p>
 
 ```MUMPS
@@ -1819,11 +1819,11 @@ On the Cache variant of MUMPS, there is a $HALT special variable that can be set
 
 ### JOB / J
 
-<p> The JOB command starts another MUMPS job starting at a label. If the label is not in the current routine, it is necessary to include the circumflex and routine name. 
+<p> The JOB command starts another MUMPS job starting at a label. If the label is not in the current routine, it is necessary to include the circumflex and routine name.
 ```MUMPS
 JOB LABEL^ROUTINE
 ```
-. 
+.
 ```MUMPS>JOB THERE</lang
  This does not affect the subroutine stack, nor the program pointer in the current job. Since MUMPS is a multi-processing (rather than multi-threading) language, the new job is independent of the current job.</p>
 
@@ -1929,7 +1929,7 @@ loop vv over ['A', 'B']
       if (1 == 1) then leave selecting;
       say '...';
       end
-    otherwise do; say 'nl selection'; say '...'; end 
+    otherwise do; say 'nl selection'; say '...'; end
     end selecting
   end vv
 ```
@@ -2068,10 +2068,10 @@ declare
      [] X = 10
         {System.showInfo "choosing 10"}
      end
-  
+
      2 * X = 18
   end
-in  
+in
   {Show {SearchOne Stupid}}
 ```
 
@@ -2090,7 +2090,7 @@ choosing 9
 
 ## PARI/GP
 
-Flow control structures include function calling and returning, <code>error</code>/<code>trap</code>, <code>next</code>/<code>break</code>, <code>alarm</code>, 
+Flow control structures include function calling and returning, <code>error</code>/<code>trap</code>, <code>next</code>/<code>break</code>, <code>alarm</code>,
 and the various loops.
 
 
@@ -2104,7 +2104,7 @@ and the various loops.
 label
   jumpto;
 begin
-  ... 
+  ...
 jumpto:
   some statement;
   ...
@@ -2195,7 +2195,7 @@ Labels that have not been defined yet must be enclosed in quotes.
 
 ### goto
 
-There is no hll goto statement in Phix. However in the very rare cases a goto is genuinely needed in hll code, the following 
+There is no hll goto statement in Phix. However in the very rare cases a goto is genuinely needed in hll code, the following
 construct(s) may be used:
 
 ```Phix
@@ -2204,11 +2204,11 @@ construct(s) may be used:
 #ilASM{ ::label }
 ```
 
-In top level code, label scope is restricted to a single ilASM construct, 
-but within a routine, the scope is across all the ilasm in that routine. 
+In top level code, label scope is restricted to a single ilASM construct,
+but within a routine, the scope is across all the ilasm in that routine.
 
-There is quite deliberately no support for jumping from the middle of one 
-routine into another: without a frame, then quite simply parameters and 
+There is quite deliberately no support for jumping from the middle of one
+routine into another: without a frame, then quite simply parameters and
 local variables have not been allocated and cannot be used/referenced.
 
 It is also possible to declare global labels, which are superficially similar:
@@ -2222,15 +2222,15 @@ It is also possible to declare global labels, which are superficially similar:
        ::skip }
 ```
 
-Global labels cannot be declared inside a routine, and as shown (almost always) 
-require a skip construct. It is up to the programmer to ensure global labels 
-are unique across the entire application. 
+Global labels cannot be declared inside a routine, and as shown (almost always)
+require a skip construct. It is up to the programmer to ensure global labels
+are unique across the entire application.
 Note that global labels are both declared and referenced with ":%", whereas
-local labels are declared with "::" but referenced with ":". 
+local labels are declared with "::" but referenced with ":".
 
 Making "goto" somewhat more difficult to type in this manner ensures that
-it is far less likely to be abused, and discourages newbie programmers 
-from adopting it as a weapon of choice, as usually(/always) happens with 
+it is far less likely to be abused, and discourages newbie programmers
+from adopting it as a weapon of choice, as usually(/always) happens with
 a hll goto.
 
 
@@ -2299,7 +2299,7 @@ Introduced in PHP 5.3, PHP now has a goto flow-control structure, even though mo
 <?php
 goto a;
 echo 'Foo';
- 
+
 a:
 echo 'Bar';
 ?>
@@ -2406,7 +2406,7 @@ SIGNAL statement
    UNDERFLOW, ZERODIVIDE, SUBSCRIPTRANGE, STRINGRANGE, etc, or a
    user-defined condition.
 CALL
-   The CALL statement causes control to transfer to the named 
+   The CALL statement causes control to transfer to the named
    subroutine.
 SELECT
    The SELECT statement permits the execution of just one of a
@@ -2471,7 +2471,7 @@ Another use is to implement finite state machines:
 ```pop11
 state1:
    DO_SOMETHING();
-   if condition1 then 
+   if condition1 then
       goto state1;
    elseif condition2 then
       goto state2;
@@ -2578,16 +2578,16 @@ If OpenConsole()
   PrintN("Hello world.")
   If i < 10
     Goto top
-  EndIf 
-  
+  EndIf
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
-EndIf 
+EndIf
 ```
 
 ===Gosub & Return===
-Gosub stands for 'Go to sub routine'. A label must be specified after Gosub where the program execution continues and will do so until encountering a Return. When a return is reached, the program execution is then transferred immediately below the Gosub. 
+Gosub stands for 'Go to sub routine'. A label must be specified after Gosub where the program execution continues and will do so until encountering a Return. When a return is reached, the program execution is then transferred immediately below the Gosub.
 Gosub is useful when building fast structured code with very low overhead.
 
 ```PureBasic
@@ -2617,7 +2617,7 @@ MySub:
 If #PI>3
   FakeReturn  ; This will simulate the function of a normal "Return".
   Goto Lable2
-EndIf 
+EndIf
 Return
 ```
 
@@ -2625,7 +2625,7 @@ Return
 
 ### OnErrorGoto
 
-This will transferee the program execution to the defined label if an error accrue. 
+This will transferee the program execution to the defined label if an error accrue.
 
 ```PureBasic
 OnErrorGoto(?MyExitHandler)
@@ -2691,7 +2691,7 @@ A Python exception is simply any subclass of the built-in BaseException class, o
 
 As a consequence of this one must arrange the order of exception clauses such that the more specific exceptions are listed (caught) before their more general base exceptions.  Only the first matching exception clause will be executed.  An except clause which lists no exceptions will catch '''all''' possible exceptions.  (This is usually considered to be very poor programming practice because it can hide unintended coding errors).
 
-An exception can be re-raised by simply calling the ''raise'' statement without any arguments (from within any exception handler).  Thus a function can catch an exception, attempt to deal with it, then, if necessary, throw it it back to the next layer out in a given call stack.  Uncaught exceptions will be handled by the interpreter by terminating the program and printing an error message and stack trace. 
+An exception can be re-raised by simply calling the ''raise'' statement without any arguments (from within any exception handler).  Thus a function can catch an exception, attempt to deal with it, then, if necessary, throw it it back to the next layer out in a given call stack.  Uncaught exceptions will be handled by the interpreter by terminating the program and printing an error message and stack trace.
 
 A custom Exception class is normally declared with the ''pass'' statement as no methods of the parent class are over-ridden, no additional functionality is defined and no attributes need be set.  Example:
 
@@ -2740,7 +2740,7 @@ except ZeroDivisionError:
     print "You've divided by zero!"
 # Output : "You've divided by zero!"
 ```
-    
+
 
 '''Case 3 - Try, Except, Finally'''
 
@@ -2749,7 +2749,7 @@ try:
     temp = 0/0
 except:
     print "An error occurred."
-# here, 'finally' executes when the try - except block ends, regardless of whether an error was raised or not    
+# here, 'finally' executes when the try - except block ends, regardless of whether an error was raised or not
 # useful in areas such as closing opened file streams in the try block whether they were successfully opened or not
 finally:
     print "End of 'try' block..."
@@ -2759,7 +2759,7 @@ finally:
 ```
 
 
-Note: Prior to version 2.5 a ''try:'' statement could contain either series of ''except:'' clauses '''or''' a ''finally:'' clause but '''not both.'''  
+Note: Prior to version 2.5 a ''try:'' statement could contain either series of ''except:'' clauses '''or''' a ''finally:'' clause but '''not both.'''
 It was thus necessary to nest the exception handling in an enclosing ''try:''...''finally:'' loop like so:
 
 
@@ -2773,7 +2773,7 @@ try:
 finally:
     do_some_cleanup() # run in any case, whether any exceptions were thrown or not
 ```
- 
+
 
 '''Case 4 - Try, Except, Else'''
 
@@ -2788,7 +2788,7 @@ else:
 # Output :
 # No apparent error occurred.
 ```
-   
+
 
 '''Case 5 - Try, Except, break, continue'''
 
@@ -2798,7 +2798,7 @@ while 1: # infinite loop
     try:
        temp2 = 0/i # will raise a ZeroDivisionError first.
        temp = math.sqrt(i)
-       
+
        break # 'break' will break out of the while loop
     except ValueError: #
         print "Imaginary Number! Breaking out of loop"
@@ -2806,7 +2806,7 @@ while 1: # infinite loop
     except ZeroDivisionError:
         print "You've divided by zero. Decrementing i and continuing..."
         i-=1 # we decrement i.
-        # we 'continue', everything within the try - except block will be executed again, 
+        # we 'continue', everything within the try - except block will be executed again,
         # this time however, ZeroDivisionError would not be raised again.
         continue # Note that removing it, replacing it with 'pass' would perform the equivalent
                  # see below for a better example
@@ -2814,7 +2814,7 @@ while 1: # infinite loop
 # You've divided by zero. Decrementing i and continuing...
 # Imaginary Number! Breaking out of loop
 ```
-    
+
 
 '''Case 6 - Creating your own custom exceptions, raise'''
 
@@ -2822,13 +2822,13 @@ while 1: # infinite loop
 # Let's call our custom error "StupidError"; it inherits from the Exception class
 
 class StupidError(Exception): pass
-        
+
 # Try it out.
 try:
     raise StupidError("Segfault") # here, we manually 'raise' the error within the try block
 except StupidError, details: # 'details' is the StupidError object we create in the try block.
     print 'Something stupid occurred:', details # so we access the value we had stored for it...
-        
+
 
 # Output :
 # Something stupid occurred: Segfault
@@ -2846,7 +2846,7 @@ except StupidError, details: # 'details' is the StupidError object we create in 
         print "I'll only be seen every other time."
     else:
         print "Loop done"
-    
+
     # Output:
     # I will always be seen.
     # I will always be seen.
@@ -2855,7 +2855,7 @@ except StupidError, details: # 'details' is the StupidError object we create in 
     # I will always be seen.
     # I'll only be seen every other time.
     # Loop done
-        
+
 if(__name__ == "__main__"):
     main()
 ```
@@ -2868,13 +2868,13 @@ See [[http://www.python.org/peps/pep-0343.html PEP 0343, The "with" statement]]
 
 ```python
 class Quitting(Exception): pass
-max = 10 
+max = 10
 with open("some_file") as myfile:
     exit_counter = 0
     for line in myfile:
         exit_counter += 1
         if exit_counter > max:
-            raise Quitting 
+            raise Quitting
         print line,
 ```
 
@@ -2901,12 +2901,12 @@ See [[http://www.python.org/peps/pep-0342.html PEP 0342, Coroutines via Enhanced
 
 
 
-###  exit 
+###  exit
 
 Racket's <tt>exit</tt> quits the whole process, optionally returning an exit code.  Note that there is an <tt>exit-handler</tt> that can be set to intercept such exit attempts.
 
 
-###  goto 
+###  goto
 
 Racket doesn't have a <tt>goto</tt>, but like other implementations of Scheme, it adopts the mantra of "Lambda: the Ultimate GOTO" by having all tail calls optimized.  This allows writing code that is no different from your average assembly code -- for example, here's a direct translation of [[Greatest_common_divisor#x86_Assembly]] into a Racket function:
 
@@ -2938,7 +2938,7 @@ Racket doesn't have a <tt>goto</tt>, but like other implementations of Scheme, i
 
 
 
-###  Exceptions 
+###  Exceptions
 
 
 Racket has exceptions which are used in the usual way, and <tt>with-handlers</tt> to catch them.  In fact, any value can be raised, not just exceptions.  For example:
@@ -2957,13 +2957,13 @@ Racket has exceptions which are used in the usual way, and <tt>with-handlers</tt
 
 
 
-###  Continuations 
+###  Continuations
 
 
 Racket has full continuations, of all kinds, including delimited and not.  That's plenty of control flow...
 
 
-###  And more 
+###  And more
 
 
 Given that Racket has macros, and continuations, and a zillion other features, it is easy to implement
@@ -3055,7 +3055,7 @@ print div 10 0
 
 ### call
 
-The '''call''' statement immediately transfers control to a named subroutine, and the '''call''' statement may have any number (or none) parameters.   (However, most REXXes have some practical limit to the number of arguments, usually at least 50).  
+The '''call''' statement immediately transfers control to a named subroutine, and the '''call''' statement may have any number (or none) parameters.   (However, most REXXes have some practical limit to the number of arguments, usually at least 50).
 
 The named subroutine may or may not return a   '''result'''   (which is similar to a ''return code'', but REXX allows character strings as well).
 
@@ -3107,7 +3107,7 @@ return !
 
 ### exit
 
-The '''exit''' statement terminates the running (REXX) program and passes control to the invoking program (it could be the shell/host/supervisor program). 
+The '''exit''' statement terminates the running (REXX) program and passes control to the invoking program (it could be the shell/host/supervisor program).
 
 If an expression is coded, it normally is used to set the '''result''' (if a REXX program) or return code (also called ''RetCode'', ''RC'', ''completion code'', or other such names).
 
@@ -3115,7 +3115,7 @@ When using the '''exit''' with an expressing to pass control to the operating sy
 
 If the expression is a number, it is normalized to the current '''numeric digits'''.
 
-(Also, see the '''return''' statement below.) 
+(Also, see the '''return''' statement below.)
 
 ```rexx
 exit
@@ -3127,11 +3127,11 @@ exit  expression
 
 ### function invocation
 
-A function invocation (similar to a '''call''') immediately transfers control to a named function (subroutine), and the function/subroutine invocation statement may have any number (or none) parameters.   (However, most REXXes have some practical limit to the number of arguments, usually at least 50). 
+A function invocation (similar to a '''call''') immediately transfers control to a named function (subroutine), and the function/subroutine invocation statement may have any number (or none) parameters.   (However, most REXXes have some practical limit to the number of arguments, usually at least 50).
 
-(In REXX, the only difference between a ''function'' and a ''subroutine'' is that a ''function'' returns a   '''result'''   --- that is, some value is returned, which may be ''null'') 
+(In REXX, the only difference between a ''function'' and a ''subroutine'' is that a ''function'' returns a   '''result'''   --- that is, some value is returned, which may be ''null'')
 
-The named function/subroutine must return a   '''result'''   (which is similar to a return code, but REXX allows character strings as well). 
+The named function/subroutine must return a   '''result'''   (which is similar to a return code, but REXX allows character strings as well).
 
 If no   '''result'''   is returned, REXX generates a syntax error   (which may be trapped via the '''signal on syntax''' instruction).
 
@@ -3177,7 +3177,7 @@ prod=0
                         if m>99  then iterate k
                         prod=prod*m
                         end   /*m*/
-                  end      /*k*/ 
+                  end      /*k*/
 say 'prod=' prod
 ```
 
@@ -3286,7 +3286,7 @@ Moral: don't do that.
 A note regarding the following REXXes:
 ::* PC/REXX
 ::* Personal REXX
-::* R4 
+::* R4
 ::* ROO
 ::* CMS REXX
 ::* TSO REXX
@@ -3301,7 +3301,7 @@ A short example:
 
 ```rexx
 Say 'Interrupt this program after a short while'
-Call on halt 
+Call on halt
 Do i=1 To 10000000
   j=i**2+1
   End
@@ -3313,7 +3313,7 @@ Return
 
 ### return
 
-The '''return''' statement terminates the running (REXX) program (which could be a subroutine or function) and passes control to the invoking program (it could be the shell/host/supervisor program). 
+The '''return''' statement terminates the running (REXX) program (which could be a subroutine or function) and passes control to the invoking program (it could be the shell/host/supervisor program).
 
 If no internal subroutine or function is active,   '''return'''   is equivalent to   '''exit'''.
 
@@ -3321,7 +3321,7 @@ If a subroutine is active (a '''call''' was used), control goes to the instructi
 
 If a function is active (a function reference was used) control goes back to the expression evaluation using the value resulting from the   '''return'''   expression.
 
-(Also, see the '''exit''' statement above.) 
+(Also, see the '''exit''' statement above.)
 
 ```rexx
 return
@@ -3380,7 +3380,7 @@ The '''signal''' statement is also used to transfer control in case of some spec
 ::::* Del   (key)                                               most System V variants
 ::::* SIGINT                                          (SIGnal INTerrupt) some variants of UNIX
 ::::* kill(1)                               from the command line (same as above)
-::::* signal(3)                                            from a program (same as above) 
+::::* signal(3)                                            from a program (same as above)
 ::::*                                                 [to be sure, check with your operating system documentation]
 ::* when there is a loss of digits   (for the newer REXXes).
 ::* when a command executed returns an error return code [other than 0 (zero)].
@@ -3459,7 +3459,7 @@ i = 1
 while true
       see i + nl
       if i = 10 see "Break!" exit ok
-      i = i + 1 
+      i = i + 1
 end
 
 ```
@@ -3469,16 +3469,16 @@ end
 ## Ruby
 
 
-###  return 
+###  return
 
 Return from the currently executing method to the caller.
 
-###  loop control 
+###  loop control
 
 Ruby's loop control statements are:   <code>break, next, redo and retry</code>.  Break and next are obvious.  Redo and retry both restart the current loop iteration, but retry first reevaluates the condition.
 They can control <code>while, until, for</code> loops and iterators.
 
-###  exceptions 
+###  exceptions
 
 Use <code>raise</code> to throw an exception.  You catch exceptions in the <code>rescue</code> clause of a <code>begin...end</code> block.
 
@@ -3508,7 +3508,7 @@ result = values.map {|v| Integer(v) rescue Float(v) rescue String(v)}
 
 
 
-###  catch and throw 
+###  catch and throw
 
 <code>break</code> will only break out of a single level of loop.  You can surround code in a catch block, and within the block you can throw a string or symbol to jump out to the end of the catch block (Ruby's GOTO, I suppose):
 
@@ -3533,7 +3533,7 @@ puts "continuing after catching the throw"
 ```
 
 
-###  yield 
+###  yield
 
 <code>yield</code> passes control from the currently executing method to its code block.
 
@@ -3650,7 +3650,7 @@ World
 ## SSEM
 
 
-###  Indirect absolute jump 
+###  Indirect absolute jump
 
 The <tt>000 n to CI</tt> instruction loads the value stored at address <i>n</i> into the Current Instruction register. For instance,
 
@@ -3663,7 +3663,7 @@ The <tt>000 n to CI</tt> instruction loads the value stored at address <i>n</i> 
 loads the number 10 into CI. Since CI is incremented <i>after</i> the instruction has been executed, rather than before, this fragment will cause execution to jump to address 11.
 
 
-###  Indirect relative jump 
+###  Indirect relative jump
 
 <tt>100 Add n to CI</tt> increases the number in the CI register by the value stored at address <i>n</i>.
 
@@ -3708,10 +3708,10 @@ pythagorean_triple(1980)
 ## Tcl
 
 
-###  after 
+###  after
 
 
-The <tt>after</tt> facility can be used to execute some code 
+The <tt>after</tt> facility can be used to execute some code
 at some future time asynchronously, like this
 
 
@@ -3720,10 +3720,10 @@ after 1000 {myroutine x}
 ```
 
 
-which will call "<tt>myroutine</tt>" with parameter "<tt>x</tt>" 1000ms from 'now'; 
+which will call "<tt>myroutine</tt>" with parameter "<tt>x</tt>" 1000ms from 'now';
 no matter what other code might be running at the time (i.e. "<tt>after</tt>"; schedules the execution, then returns and continues program flow with the following code).
 
-The scheduled task can be removed from the scheduler for example with 
+The scheduled task can be removed from the scheduler for example with
 
 
 ```tcl>after cancel myroutine</lang
@@ -3731,9 +3731,9 @@ The scheduled task can be removed from the scheduler for example with
 
 (other ways are possible).
 
-The correct way to schedule some regularly recurring task in TCL 
-is to incorporate a self-scheduling at the end of the routine. 
-For example the following will produce a clock 
+The correct way to schedule some regularly recurring task in TCL
+is to incorporate a self-scheduling at the end of the routine.
+For example the following will produce a clock
 whose display is updated once a second:
 
 
@@ -3750,12 +3750,12 @@ update
 
 
 
-###  loop control 
+###  loop control
 
 Tcl has the <code>break</code> command to abort the current loop (<tt>for</tt>/<tt>foreach</tt>/<tt>while</tt>) and the <code>continue</code> command to skip to the next loop iteration.
 
 
-###  exception 
+###  exception
 
 Tcl's <code>catch</code> command can be used to provide a basic exception-handling mechanism:
 
@@ -3784,9 +3784,9 @@ try {
 
 
 
-###  custom control structures 
+###  custom control structures
 
-A novel aspect of Tcl is that it's relatively easy to create new control structures (more detail at http://wiki.tcl.tk/685).  
+A novel aspect of Tcl is that it's relatively easy to create new control structures (more detail at http://wiki.tcl.tk/685).
 For example, this example defines a command to perform some operation for each line of an input file:
 
 ```tcl
@@ -3814,7 +3814,7 @@ forfilelines myline mydata.txt {
 
 
 
-###  Goto 
+###  Goto
 
 
 This skips the line that changes the value of x to 5.
@@ -3832,7 +3832,7 @@ label:
 
 
 
-###  On Error Goto 
+###  On Error Goto
 
 
 This brances in the event of an error. Usually there is an Exit (Sub|Function) to seperate the normal code from the error handling code
@@ -3852,7 +3852,7 @@ label:
 ''This style of code is rarely used.''
 
 
-###  On Error Resume Next 
+###  On Error Resume Next
 
 
 This performs a sequence of actions. If any action fails, the exception is discarded and next operation is performed.
@@ -3872,10 +3872,10 @@ End Sub
 ''This style of code is rarely used.''
 
 
-###  Return / Exit Sub 
+###  Return / Exit Sub
 
 
-This shows the classical and modern syntax for exiting a sub routine early. 
+This shows the classical and modern syntax for exiting a sub routine early.
 
 
 ```vbnet
@@ -3883,7 +3883,7 @@ Sub Foo1()
     If Not WorkNeeded() Then Exit Sub
     DoWork()
 End Sub
- 
+
 Sub Foo2()
     If Not WorkNeeded() Then Return
     DoWork()
@@ -3892,11 +3892,11 @@ End Sub
 
 
 
-###  Return value / Exit Function 
+###  Return value / Exit Function
 
 
-This shows the classical and modern syntax for exiting a function early. 
-There is an implied variable with the same name as the function. 
+This shows the classical and modern syntax for exiting a function early.
+There is an implied variable with the same name as the function.
 This variable is write-only.
 
 
@@ -3906,7 +3906,7 @@ Function Foo3()
     If Not MoreWorkNeeded() Then Exit Function
     Foo3 = CalculateAnotherValue()
 End Function
- 
+
 Function Foo4()
     Dim result = CalculateValue()
     If Not MoreWorkNeeded() Then Return result

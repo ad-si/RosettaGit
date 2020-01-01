@@ -42,7 +42,7 @@ generic
 package Generic_Taylor_Series is
    use Rational_Numbers;
    type Taylor_Series is array (Natural range <>) of Rational;
-   
+
    function "+" (A : Taylor_Series) return Taylor_Series;
    function "-" (A : Taylor_Series) return Taylor_Series;
 
@@ -153,7 +153,7 @@ package body Generic_Taylor_Series is
             end loop;
             return Result;
          end;
-      end if;         
+      end if;
    end Differential;
 
    function Value (A : Taylor_Series; X : Rational) return Rational is
@@ -541,8 +541,8 @@ FPS > (force-list (take 10 (coeffs (- (+ 2 (force *cosx*))
 
 Following is a simple implementation of formal power series in C.  It's not "new datatype for the language" per se, but does demonstrate how lazy evaluation and infinite list generation can be done for this task.  Note that, to be of real use, one should also cache terms looked up and free up memory.  Both are trivially done (I actually had them, but removed them for simplicity).
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h> /* for NaN */
 
@@ -712,38 +712,38 @@ We implement infinite formal power series (FPS) using '''streams'''. No operator
 	(make-stream (lambda(n) (cons (if (< n (length list)) (list-ref list n) 0) (1+ n))) 0))
 
 ;; c = a + b , c_n = a_n + b_n
-(define (s-add a b) 
+(define (s-add a b)
 	(make-stream (lambda (n) (cons (+ (stream-ref a n) (stream-ref b n)) (1+ n))) 0))
-	
+
 ;; c = a * b , c_n = ∑ (0 ..n) a_i * b_n-i
 (define (s-mul-coeff n a b) (sigma (lambda(i) (* (stream-ref a i)(stream-ref b (- n i)))) 0 n))
 
-(define (s-mul a b) 
+(define (s-mul a b)
 	(make-stream (lambda(n) (cons (s-mul-coeff n a b) (1+ n))) 0))
 
 ;; b = 1/a ; b_0 = 1/a_0, b_n =  - ∑ (1..n) a_i * b_n-i / a_0
-(define (s-inv-coeff n a b) 
+(define (s-inv-coeff n a b)
 			(if (zero? n) (/ (stream-ref a 0))
 			(- (/ (sigma (lambda(i) (* (stream-ref a i)(stream-ref b (- n i)))) 1 n)
 			 (stream-ref a 0)))))
 
 ;; note the self keyword which refers to b = (s-inv a)
-(define (s-inv a) 
+(define (s-inv a)
 	(make-stream (lambda(n) (cons (s-inv-coeff n a self ) (1+ n))) 0))
 
 ;; b = (s-k-add k a) = k + a_0, a_1, a_2, ...
 (define (s-k-add k a)
 	(make-stream (lambda(n) (cons
 	(if(zero? n) (+ k (stream-ref a 0)) (stream-ref a n)) (1+ n))) 0))
-	
+
 ;; b = (s-neg a) = -a_0,-a_1, ....
 (define (s-neg a)
 	(make-stream (lambda(n) (cons (- (stream-ref a n)) (1+ n))) 0))
 
 ;; b = (s-int a) = ∫ a ; b_0 = 0 by convention, b_n = a_n-1/n
-(define (s-int a) 
+(define (s-int a)
 	(make-stream (lambda(n) (cons (if (zero? n) 0 (/ (stream-ref a (1- n)) n)) (1+ n))) 0))
-	
+
 ;; value of power serie at x, n terms
 (define (s-value a x (n 20))
 	(poly x (take a n)))
@@ -779,7 +779,7 @@ We implement infinite formal power series (FPS) using '''streams'''. No operator
 (define inv-fps-1 (s-inv fps-1))
 (take inv-fps-1 13)
     → (1 1 1 1 1 1 1 1 1 1 1 1 1)
-(s-value inv-fps-1 0.5) ;; check that 1 / (1 - 0.5) = 2 
+(s-value inv-fps-1 0.5) ;; check that 1 / (1 - 0.5) = 2
    → 1.9999980926513672
 (s-value inv-fps-1 0.5 100) ;; 100 terms
    → 2
@@ -1031,8 +1031,8 @@ Output:
 
 ```txt
 
-sin:   0.00000   1.00000   0.00000  -0.16667   0.00000   0.00833 
-cos:   1.00000   0.00000  -0.50000   0.00000   0.04167   0.00000 
+sin:   0.00000   1.00000   0.00000  -0.16667   0.00000   0.00833
+cos:   1.00000   0.00000  -0.50000   0.00000   0.04167   0.00000
 
 ```
 
@@ -1048,11 +1048,11 @@ component FormalPowerSeries(Number);
        PowerSeries(Size = integer) -> PowerSeries;
 
        + PowerSeries -> PowerSeries;
-       - PowerSeries -> PowerSeries;  
+       - PowerSeries -> PowerSeries;
 
-       PowerSeries + PowerSeries -> PowerSeries; 
+       PowerSeries + PowerSeries -> PowerSeries;
        PowerSeries - PowerSeries -> PowerSeries;
-       PowerSeries * PowerSeries -> PowerSeries; 
+       PowerSeries * PowerSeries -> PowerSeries;
 
        Integral(PowerSeries)     -> PowerSeries;
        Differential(PowerSeries) -> PowerSeries;
@@ -1066,10 +1066,10 @@ component FormalPowerSeries(Number);
 
        + A = A;
 
-       - A = [ C = PowerSeries(A.Size); 
+       - A = [ C = PowerSeries(A.Size);
 		       [ i = 1 .. A.Size; C.T[i] := - A.T[i] ];
 		     C];
-  
+
        A + B = [ if A.Size > B.Size then return(B + A);
 		         C = PowerSeries(B.Size);
 		         [ i = 1 .. A.Size; C.T[i] := A.T[i] + B.T[i] ];
@@ -1079,15 +1079,15 @@ component FormalPowerSeries(Number);
        A - B = A + (- B );
 
        A * B = [ C = PowerSeries(A.Size + B.Size - 1);
- 	         [ i = 1 .. A.Size; 
-		     [j = 1.. B.Size; 
+ 	         [ i = 1 .. A.Size;
+		     [j = 1.. B.Size;
 		         C.T[i + j - 1] := C.T[i + j - 1] + A.T[i] * B.T[j] ] ];
 	          C];
 
       Integral(A) = [ if A.Size == 0 then return (A);
  		      C = PowerSeries(A.Size + 1);
 		      [ i = 1 .. A.Size; C.T[i +1] := A.T[i] / Number( i )];
-		      C.T[1]:= Number(0); 
+		      C.T[1]:= Number(0);
 		      C ];
 
       Differential(A) = [ if A.Size == 1 then return (A);
@@ -1095,8 +1095,8 @@ component FormalPowerSeries(Number);
 		          [ i = 1 .. C.Size; C.T[i] := A.T[i + 1] * Number( i )];
 		          C ];
 
-      Zero = [ C = PowerSeries (1); C.T[1]:= Number(0);  C];	
-      One =  [ C = PowerSeries (1); C.T[1]:= Number(1);  C];	
+      Zero = [ C = PowerSeries (1); C.T[1]:= Number(0);  C];
+      One =  [ C = PowerSeries (1); C.T[1]:= Number(1);  C];
 
       Array(PowerSeries) -> array(Number);
       Array(TS) = TS.T;
@@ -1118,10 +1118,10 @@ use FormalPowerSeries(Rational);
  symbol ** integer => term;
 
  Output(text,PowerSeries) -> term;
- Output(Name,PS) = [ E1 := term:symbol(Name); E2:= null(term); 
+ Output(Name,PS) = [ E1 := term:symbol(Name); E2:= null(term);
 	             [ i = 1..size(Array(PS));
-			   Num = Numerator(Array(PS)[i]); 
-			   if Num <> 0 then 
+			   Num = Numerator(Array(PS)[i]);
+			   if Num <> 0 then
 			       [ E2:= term: Num / term: Denominator(Array(PS)[i]) * X ** (i-1);
 			         E1:= E1 + E2 ];
 		     ];
@@ -1134,15 +1134,15 @@ use FormalPowerSeries(Rational);
  Sin(integer) -> PowerSeries;
  Sin(Limit) = Integral(Cos (Limit));
 
- Output("cos = ",Cos(5))? 
- Output("sin = ",Sin(5))? 
+ Output("cos = ",Cos(5))?
+ Output("sin = ",Sin(5))?
 
 ```
 
 Output
 
 ```Elisa
-cos =  + 1 / 1 * X ** 0 + -1 / 2 * X ** 2 + 1 / 24 * X ** 4 + -1 / 720 * X ** 6 + 1 / 40320 * X ** 8 
+cos =  + 1 / 1 * X ** 0 + -1 / 2 * X ** 2 + 1 / 24 * X ** 4 + -1 / 720 * X ** 6 + 1 / 40320 * X ** 8
 sin =  + 1 / 1 * X ** 1 + -1 / 6 * X ** 3 + 1 / 120 * X ** 5 + -1 / 5040 * X ** 7 + 1 / 362880 * X ** 9
 ```
 
@@ -1467,7 +1467,7 @@ This is a translation of the Java entry except that it uses fractions rather tha
 // version 1.2.10
 
 fun gcd(a: Long, b: Long): Long = if (b == 0L) a else gcd(b, a % b)
- 
+
 class Frac : Comparable<Frac> {
     val num: Long
     val denom: Long
@@ -1515,7 +1515,7 @@ class Frac : Comparable<Frac> {
 
     operator fun inc() = this + ONE
     operator fun dec() = this - ONE
- 
+
     fun inverse(): Frac {
         require(num != 0L)
         return Frac(denom, num)
@@ -1540,7 +1540,7 @@ class Frac : Comparable<Frac> {
     }
 
     override fun hashCode() = num.hashCode() xor denom.hashCode()
-  
+
     override fun toString() = if (denom == 1L) "$num" else "$num/$denom"
 
     fun toDouble() = num.toDouble() / denom
@@ -1692,13 +1692,13 @@ COS(x) = 1 - 1/2x^2 + 1/24x^4 - 1/720x^6 + 1/40320x^8 - 1/3628800x^10 + ...
 
 ### =Introduction and Examples=
 
-Since a formal power series can be viewed as a function from the non-negative integers onto a suitable range, 
-we shall identify a jq filter that maps integers to the appropriate range as a power series. For example, the jq function 
+Since a formal power series can be viewed as a function from the non-negative integers onto a suitable range,
+we shall identify a jq filter that maps integers to the appropriate range as a power series. For example, the jq function
 
 ```jq
 1/(1+.)
 ```
- 
+
 represents the power series 1 + x/2 + x/3 + ... because 1/(1+.) maps i to 1/(i+1).
 
 Similarly, the jq filter 1 (i.e. the filter that always returns 1) represents the power series Σ x^i.
@@ -1736,7 +1736,7 @@ should evaluate to the number e approximately; using the version of ps_evaluate 
 1 | ps_evaluate(1/factorial)
 ```
 
-evaluates to 2.7182818284590455. 
+evaluates to 2.7182818284590455.
 
 The following function definitions are useful for other power series:
 
@@ -1821,7 +1821,7 @@ def I(s):
 The following function, ps_equal(s;t;k;eps) will check whether the first k coefficients of the two power series agree to within eps:
 
 ```jq
-def ps_equal(s; t; k; eps): 
+def ps_equal(s; t; k; eps):
   def abs: if . < 0 then -. else . end;
   reduce range(0;k) as $i
     (true;
@@ -1865,12 +1865,12 @@ def ps_evaluate(p):
       | .[3] as $delta
       | .[4] as $prevdelta
       | if $delta < 1e-17 and $prevdelta < 1e-17
-           and ( $xi < 1e-100 
+           and ( $xi < 1e-100
                  or ( $sum != 0 and
                       (($delta/$sum) | abs) < 1e-10 and
-                      (($prevdelta/$sum) | abs) < 1e-10) )  
+                      (($prevdelta/$sum) | abs) < 1e-10) )
         then empty
-        else 
+        else
           ($xi * ($i|p)) as $newdelta
         | [ $i + 1,
             x*$xi,
@@ -2329,7 +2329,7 @@ function fps_new(fps_type ft=FPS_UNDEF, fpsn s1=0, s2=0, atom a0=0)
     fpss = append(fpss,{ft,s1,s2,a0})
     fps fpsid = length(fpss)
     return fpsid
-end function 
+end function
 
 -- as per C, for (eg) self or mutually recursive definitions.
 procedure fps_redefine(fps fpsid, fps_type ft, fpsn s1id, s2id, object a0="")
@@ -2344,11 +2344,11 @@ end procedure
 function fps_const(atom a0)
     fps x = fps_new(FPS_CONST,a0:=a0)
     -- (aside: in the above, the ":=a0" refers to the local namespace
-    --         as usual, whereas "a0:=" refers to the param namespace 
+    --         as usual, whereas "a0:=" refers to the param namespace
     --         /inside/ the () of fps_new(), so there is no conflict.)
     return x
 end function
- 
+
 constant INF = 1e300*1e300,
          NAN = -(INF/INF)
 
@@ -2378,7 +2378,7 @@ function term(fps x, int n)
     end switch
     return ret
 end function
- 
+
 procedure term9(string txt, fps x)
     printf(1,"%s:",{txt})
     for i=0 to 9 do printf(1," %g", term(x, i)) end for
@@ -2390,14 +2390,14 @@ procedure main()
     fps fcos = fps_new()                    /* cosine */
     fps fsin = fps_new(FPS_INT,fcos)        /* sine */
     fps ftan = fps_new(FPS_DIV,fsin,fcos)   /* tangent */
- 
+
     /* redefine cos to complete the mutual recursion */
     fps_redefine(fcos, FPS_SUB, one, fps_new(FPS_INT,fsin))
- 
+
     fps fexp = fps_const(1);        /* exponential */
     /* make exp recurse on self */
     fps_redefine(fexp, FPS_INT, fexp, 0);
- 
+
     term9("Sin",fsin)
     term9("Cos",fcos)
     term9("Tan",ftan)
@@ -2909,7 +2909,7 @@ Examples:
 '(1 0 0 0 0 0 0 0 0 0)
 
 ; series of (tan x)
--> (!! (take 10 (</> <sin> <cos>))) 
+-> (!! (take 10 (</> <sin> <cos>)))
 '(0 1 0 1/3 0 2/15 0 17/315 0 62/2835)
 
 ```
@@ -3029,7 +3029,7 @@ This code makes ''extensive'' use of the fact that objects can have methods and 
 
 ```tcl
 package require TclOO
- 
+
 oo::class create PowerSeries {
     variable name
     constructor {{body {}} args} {
@@ -3053,7 +3053,7 @@ oo::class create PowerSeries {
     method limit {} {
 	return inf
     }
- 
+
     # A pretty-printer, that prints the first $terms non-zero terms
     method print {terms} {
 	set result "${name}(x) == "
@@ -3083,7 +3083,7 @@ oo::class create PowerSeries {
 	}
 	return [string trimright $result "+ "]
     }
- 
+
     # Evaluate (a prefix of) the series at a particular x
     # The terms parameter gives the number; 5 is enough for show
     method evaluate {x {terms 5}} {
@@ -3098,7 +3098,7 @@ oo::class create PowerSeries {
 	}
 	return $result
     }
- 
+
     # Operations to build new sequences from old ones
     method add {s} {
 	PowerSeries new {
@@ -3239,7 +3239,7 @@ Define sine in terms of a Taylor series, cos in terms of sine.
 ```zkl
 fcn sine{  // sine Taylor series: 0 + x - x^3/3! + x^5/5! - x^7/7! + x^9/9! - ...
    IPS(Utils.Helpers.cycle(1.0, 0.0, -1.0, 0.0).zipWith('/,IPS.facts()))
-   .cons(0.0) 
+   .cons(0.0)
 }
 print("Sine Taylor series: "); dostuff(sine,"sin");
 

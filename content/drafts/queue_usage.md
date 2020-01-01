@@ -14,7 +14,7 @@ tags = []
 [[File:Fifo.gif|frame|right|Illustration of FIFO behavior]]
 
 ;Task:
-Create a queue data structure and demonstrate its operations. 
+Create a queue data structure and demonstrate its operations.
 
 (For implementations of queues, see the [[FIFO]] task.)
 
@@ -54,7 +54,7 @@ q:len . cr  \ displays 0
 ```ada
 with FIFO;
 with Ada.Text_Io; use Ada.Text_Io;
- 
+
 procedure Queue_Test is
    package Int_FIFO is new FIFO (Integer);
    use Int_FIFO;
@@ -62,7 +62,7 @@ procedure Queue_Test is
    Value : Integer;
 begin
    Push (Queue, 1);
-   Push (Queue, 2);   
+   Push (Queue, 2);
    Push (Queue, 3);
    Pop (Queue, Value);
    Pop (Queue, Value);
@@ -154,7 +154,7 @@ Total Annual Cost:   = $39.93
 ## AppleScript
 
 
-```AppleScript 
+```AppleScript
 on push(StackRef, value)
     set StackRef's contents to {value} & StackRef's contents
     return StackRef
@@ -365,7 +365,7 @@ len(queue) {                ; number of entries in "queue"
 
 ```bbcbasic
       FIFOSIZE = 1000
-      
+
       FOR n = 3 TO 5
         PRINT "Push ";n : PROCenqueue(n)
       NEXT
@@ -376,7 +376,7 @@ len(queue) {                ; number of entries in "queue"
       UNTIL FNisempty
       PRINT "Pop " ; FNdequeue
       END
-      
+
       DEF PROCenqueue(n) : LOCAL f%
       DEF FNdequeue : LOCAL f% : f% = 1
       DEF FNisempty : LOCAL f% : f% = 2
@@ -420,7 +420,7 @@ Error: queue empty
 
 Below, <code>queue</code> is the name of a class with a data member <code>list</code> and three methods <code>enqueue</code>, <code>dequeue</code> and <code>empty</code>.
 
-No special provision is implemented to "throw and exception" in case you try to dequeue from and empty queue, because, in Bracmat, evaluation of an expression, besides resulting in an evaluated expression, always also either "succeeds" or "fails". (There is, in fact, a third possibility, "ignore", telling Bracmat to close an eye even though an evaluation didn't succeed.) So in the example below, the last dequeue operation fails and the program continues on the right hand side of the bar (<code>|</code>) operator 
+No special provision is implemented to "throw and exception" in case you try to dequeue from and empty queue, because, in Bracmat, evaluation of an expression, besides resulting in an evaluated expression, always also either "succeeds" or "fails". (There is, in fact, a third possibility, "ignore", telling Bracmat to close an eye even though an evaluation didn't succeed.) So in the example below, the last dequeue operation fails and the program continues on the right hand side of the bar (<code>|</code>) operator
 
 ```bracmat
   ( queue
@@ -481,11 +481,11 @@ Attempt to dequeue failed
 
 See [[FIFO]] for the needed code.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
- 
+
 #include <sys/queue.h>
 
 /* #include "fifolist.h" */
@@ -507,7 +507,7 @@ int main()
     printf("%d\n", i);
 
   fprintf(stderr, "FIFO list %s\n",
-      ( m_dequeue(&i, &head) ) ? 
+      ( m_dequeue(&i, &head) ) ?
       "had still an element" :
       "is void!");
 
@@ -521,8 +521,8 @@ int main()
 
 Note that with C++'s standard queue, accessing the first element of the queue and removing it are two separate operations, <tt>front()</tt> and <tt>pop()</tt>.
 
-```cpp>#include <queue
-
+```cpp
+#include <queue>
 #include <cassert> // for run time assertions
 
 int main()
@@ -695,7 +695,7 @@ do ->
   while !q.is_empty()
     v = q.dequeue()
   console.log v # 1000
-  
+
   try
     q.dequeue() # throws Error
   catch e
@@ -705,7 +705,7 @@ do ->
 
 output
 <lang>
-> coffee queue.coffee 
+> coffee queue.coffee
 1
 100000
 Error: queue is empty
@@ -742,7 +742,7 @@ IMPORT
 	Queue,
 	Boxes,
 	StdLog;
-	
+
 PROCEDURE Do*;
 VAR
 	q: Queue.Instance;
@@ -1014,24 +1014,24 @@ ELENA 4.x :
 ```elena
 import system'collections;
 import extensions;
- 
+
 public program()
 {
     // Create a queue and "push" items into it
     var queue := new Queue();
- 
+
     queue.push:1;
     queue.push:3;
     queue.push:5;
- 
+
     // "Pop" items from the queue in FIFO order
     console.printLine(queue.pop()); // 1
     console.printLine(queue.pop()); // 3
     console.printLine(queue.pop()); // 5
- 
+
     // To tell if the queue is empty, we check the count
     console.printLine("queue is ",(queue.Length == 0).iif("empty","nonempty"));
- 
+
     // If we try to pop from an empty queue, an exception
     // is thrown.
     queue.pop() | on:(e){ console.writeLine:"Queue empty." }
@@ -1094,7 +1094,7 @@ All functions, from the shell:
 {fifo,[],[]}
 2> fifo:empty(Q).
 true
-3> Q2 = fifo:push(Q,1).         
+3> Q2 = fifo:push(Q,1).
 {fifo,[1],[]}
 4> Q3 = fifo:push(Q2,2).
 {fifo,[2,1],[]}
@@ -1252,8 +1252,8 @@ Create 2 Queues and test the operators at the Forth console interactively
 64 cqueue: XQ ok
 32 cqueue: YQ ok
 
-char A XQ qc! ok 
-char B XQ qc! ok 
+char A XQ qc! ok
+char B XQ qc! ok
 char C XQ qc! ok
 
 XQ qc@ emit A ok
@@ -1280,10 +1280,10 @@ make-queue constant q2
 q1 empty? .
 5 q1 enqueue
 q1 empty? .
-7 q1 enqueue 
-9 q1 enqueue 
+7 q1 enqueue
+9 q1 enqueue
 q2 empty? .
-3 q2 enqueue 
+3 q2 enqueue
 q2 empty? .
 q1 dequeue .
 q1 dequeue .
@@ -1318,7 +1318,7 @@ program FIFOTest
   type(fifo_head) :: thehead
   type(fifo_node), dimension(5) :: ex, xe
   integer :: i
-  
+
   call new_fifo(thehead)
 
   do i = 1, 5
@@ -1390,7 +1390,7 @@ fourth popped
 fifth popped
 
 Number of Strings in the Queue : 0
-Capacity of string Queue       : 8 
+Capacity of string Queue       : 8
 Is Queue empty now             : true
 
 ```
@@ -1693,12 +1693,12 @@ every x := !arglist do {
 end
 
 procedure empty(X)        #: fail if X is not empty
-if *X = 0 then return 
+if *X = 0 then return
 end
 ```
 
 
-Sample output: 
+Sample output:
 ```txt
 queue - 1 3 4 5 6 - - - - - - - -
 Usage:
@@ -1708,15 +1708,15 @@ queue x x x - x - - - - -
 Queue is:
 pop(empty) failed.
 empty
-1 
-1 3 
-1 3 4 
-1 3 4 5 
-1 3 4 5 6 
-3 4 5 6 
-4 5 6 
-5 6 
-6 
+1
+1 3
+1 3 4
+1 3 4 5
+1 3 4 5 6
+3 4 5 6
+4 5 6
+5 6
+6
 empty
 pop(empty) failed.
 empty
@@ -1749,7 +1749,7 @@ This is an interactive J session:
    isEmpty__queue ''
 0
    pop__queue ''
-9  
+9
    pop__queue ''
 8
    pop__queue ''
@@ -2132,7 +2132,7 @@ method main(args = String[]) public constant
 class RCQueueImpl
   properties private
     qqq = Deque
-  
+
 method RCQueueImpl() public
   qqq = ArrayDeque()
   return
@@ -2162,7 +2162,7 @@ method isFalse public constant binary returns boolean
 
 The queue is empty
 
-To be or not to be? That is the question. 
+To be or not to be? That is the question.
 
 To be or not to be? That is the question.
 
@@ -2244,7 +2244,7 @@ val q : '_a Queue.t = <abstr>
 # Queue.length q;;
 - : int = 3
 # Queue.iter (Printf.printf "%d, ") q; print_newline ();;
-1, 2, 3, 
+1, 2, 3,
 - : unit = ()
 # Queue.take q;;
 - : int = 1
@@ -2271,7 +2271,7 @@ val q : '_a Queue.t = <abstr>
 ## Oforth
 
 
-Using FIFO implementation : 
+Using FIFO implementation :
 
 
 ```oforth
@@ -2286,7 +2286,7 @@ Using FIFO implementation :
 
 ## ooRexx
 
-ooRexx includes a built-in queue class. 
+ooRexx includes a built-in queue class.
 
 ```ooRexx
 
@@ -2302,7 +2302,7 @@ Output:
 
 ```txt
 
-1 3 2 1       
+1 3 2 1
 
 ```
 
@@ -2367,7 +2367,7 @@ but there's also @list.pop which removes a item from the end,
 and @list.unshift which add a item on the start of the list.<br/>
 Example:
 
-```perl6>my @queue = < a 
+```perl6>my @queue = < a
 ;
 
 @queue.push('b', 'c'); # [ a, b, c ]
@@ -2493,27 +2493,27 @@ end test;
 
 The output:
 <lang>
-       1 
-       3 
-       5 
-       7 
-       9 
-      11 
-      13 
-      15 
-      17 
-      19 
-The queue has: 
-       1 
-       3 
-       5 
-       7 
-       9 
-      11 
-      13 
-      15 
-      17 
-      19 
+       1
+       3
+       5
+       7
+       9
+      11
+      13
+      15
+      17
+      19
+The queue has:
+       1
+       3
+       5
+       7
+       9
+      11
+      13
+      15
+      17
+      19
 
 ```
 
@@ -2578,7 +2578,7 @@ if ($queue.Count -eq 0) {
 ```txt
 
 isEmpty? result : the queue is empty
-the queue contains : 
+the queue contains :
 push result : 1
 push result : 1 2 3
 pop result : 2 3
@@ -2617,25 +2617,25 @@ Get-Member -InputObject $queue
 
    TypeName: System.Collections.Queue
 
-Name           MemberType Definition                                                                                                
-----           ---------- ----------                                                                                                
-Clear          Method     void Clear()                                                                                              
-Clone          Method     System.Object Clone(), System.Object ICloneable.Clone()                                                   
-Contains       Method     bool Contains(System.Object obj)                                                                          
-CopyTo         Method     void CopyTo(array array, int index), void ICollection.CopyTo(array array, int index)                      
-Dequeue        Method     System.Object Dequeue()                                                                                   
-Enqueue        Method     void Enqueue(System.Object obj)                                                                           
-Equals         Method     bool Equals(System.Object obj)                                                                            
+Name           MemberType Definition
+----           ---------- ----------
+Clear          Method     void Clear()
+Clone          Method     System.Object Clone(), System.Object ICloneable.Clone()
+Contains       Method     bool Contains(System.Object obj)
+CopyTo         Method     void CopyTo(array array, int index), void ICollection.CopyTo(array array, int index)
+Dequeue        Method     System.Object Dequeue()
+Enqueue        Method     void Enqueue(System.Object obj)
+Equals         Method     bool Equals(System.Object obj)
 GetEnumerator  Method     System.Collections.IEnumerator GetEnumerator(), System.Collections.IEnumerator IEnumerable.GetEnumerator()
-GetHashCode    Method     int GetHashCode()                                                                                         
-GetType        Method     type GetType()                                                                                            
-Peek           Method     System.Object Peek()                                                                                      
-ToArray        Method     System.Object[] ToArray()                                                                                 
-ToString       Method     string ToString()                                                                                         
-TrimToSize     Method     void TrimToSize()                                                                                         
-Count          Property   int Count {get;}                                                                                          
-IsSynchronized Property   bool IsSynchronized {get;}                                                                                
-SyncRoot       Property   System.Object SyncRoot {get;}                                                                             
+GetHashCode    Method     int GetHashCode()
+GetType        Method     type GetType()
+Peek           Method     System.Object Peek()
+ToArray        Method     System.Object[] ToArray()
+ToString       Method     string ToString()
+TrimToSize     Method     void TrimToSize()
+Count          Property   int Count {get;}
+IsSynchronized Property   bool IsSynchronized {get;}
+SyncRoot       Property   System.Object SyncRoot {get;}
 
 ```
 
@@ -2776,7 +2776,7 @@ Test of the queue : Queue not empty
 
 Pop the queue : Value 2 Queue : _G148-_G148
 
-Pop the queue : 
+Pop the queue :
 false.
 
 ```
@@ -2920,7 +2920,7 @@ Trying to pop an empty queue yields: none
 
 ## REXX
 
-The REXX language was developed under IBM VM/CMS operating system, and CMS had a stack mechanism built-into the 
+The REXX language was developed under IBM VM/CMS operating system, and CMS had a stack mechanism built-into the
 
 operating system, so REXX utilized that resource.
 
@@ -3083,7 +3083,7 @@ val it = [1,2,3,4] : int list
 - val (q''', v) = dequeue q'';
 val q''' = Q {front=[2,3,4],rear=[]} : int fifo
 val v = 1 : int
-- val (q'''', v') = dequeue q'''; 
+- val (q'''', v') = dequeue q''';
 val q'''' = Q {front=[3,4],rear=[]} : int fifo
 val v' = 2 : int
 - val (q''''', v'') = dequeue q'''';
@@ -3101,7 +3101,7 @@ val it = true : bool
 ; Imperative interface
 
 ```sml
-- open Queue;  
+- open Queue;
 opening Queue
   type 'a queue
   exception Dequeue
@@ -3188,15 +3188,15 @@ See [[Queue/Definition#UNIX_Shell|Queue/Definition]] for implementation:
 
 ```bash
 # any valid variable name can be used as a queue without initialization
- 
+
 queue_empty foo && echo foo is empty || echo foo is not empty
- 
+
 queue_push foo bar
 queue_push foo baz
 queue_push foo "element with spaces"
- 
+
 queue_empty foo && echo foo is empty || echo foo is not empty
- 
+
 print "peek: $(queue_peek foo)"; queue_pop foo
 print "peek: $(queue_peek foo)"; queue_pop foo
 print "peek: $(queue_peek foo)"; queue_pop foo
@@ -3212,7 +3212,7 @@ foo is not empty
 peek: bar
 peek: baz
 peek: element with spaces
-peek: 
+peek:
 queue foo is empty
 ```
 
@@ -3343,7 +3343,7 @@ end sub
 
 sub pop$()
     local i, r$
-    
+
     if queue$ <> "" then
         i = instr(queue$, "#")
         if i then
@@ -3363,7 +3363,7 @@ sub empty()
     return queue$ = ""
 end sub
 
-// 
+//
 ### ===== test =====
 
 

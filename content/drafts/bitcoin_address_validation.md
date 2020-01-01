@@ -18,7 +18,7 @@ tags = []
 
 
 ;Task:
-Write a program that takes a [[wp:bitcoin|bitcoin address]] as argument, 
+Write a program that takes a [[wp:bitcoin|bitcoin address]] as argument,
 and checks whether or not this address is valid.
 
 A bitcoin address uses a base58 encoding, which uses an alphabet of the characters 0 .. 9, A ..Z, a .. z, but without the four characters:
@@ -46,7 +46,7 @@ You can use a digest library for [[SHA-256]].
  1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i
 </big>
 
-It doesn't belong to anyone and is part of the test suite of the bitcoin software.   
+It doesn't belong to anyone and is part of the test suite of the bitcoin software.
 
 You can change a few characters in this string and check that it'll fail the test.
 
@@ -206,8 +206,8 @@ end Bitcoin_Addr_Validate;
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <openssl/sha.h>
 
@@ -869,11 +869,11 @@ import (
 
 // A25 is a type for a 25 byte (not base58 encoded) bitcoin address.
 type A25 [25]byte
-    
+
 func (a *A25) Version() byte {
     return a[0]
 }
-    
+
 func (a *A25) EmbeddedChecksum() (c [4]byte) {
     copy(c[:], a[21:])
     return
@@ -897,7 +897,7 @@ func (a *A25) doubleSHA256() []byte {
 func (a *A25) ComputeChecksum() (c [4]byte) {
     copy(c[:], a.doubleSHA256())
     return
-}/* {{header|Go}} */ 
+}/* {{header|Go}} */
 
 // Tmpl and Set58 are adapted from the C solution.
 // Go has big integers but this techinique seems better.
@@ -1052,7 +1052,7 @@ main  = do
   validate "1ANNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i"     -- data changed, original checksum.
   validate "1A Na15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i"     -- invalid chars
   validate "1ANa55215ZQXAZUgFiqJ2i7Z2DPU2J6hW62i"   -- too long
-  validate "i55j"                                   -- too short 
+  validate "i55j"                                   -- too short
 
 ```
 
@@ -1070,15 +1070,15 @@ main  = do
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-chars = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"; data = 
+chars = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"; data =
  IntegerDigits[
   FromDigits[
-   StringPosition[chars, #][[1]] - 1 & /@ Characters[InputString[]], 
+   StringPosition[chars, #][[1]] - 1 & /@ Characters[InputString[]],
    58], 256, 25];
-data[[-4 ;;]] == 
+data[[-4 ;;]] ==
  IntegerDigits[
    Hash[FromCharacterCode[
-     IntegerDigits[Hash[FromCharacterCode[data[[;; -5]]], "SHA256"], 
+     IntegerDigits[Hash[FromCharacterCode[data[[;; -5]]], "SHA256"],
       256, 32]], "SHA256"], 256, 32][[;; 4]]
 ```
 
@@ -1461,7 +1461,7 @@ Note: The last two test addresses have valid checksums and conform to the specif
 ```oberon2
 
 MODULE BitcoinAddress;
-IMPORT 
+IMPORT
   Object,
   NPCT:Tools,
   Crypto:SHA256,
@@ -1489,13 +1489,13 @@ END IndexOfB58Char;
 PROCEDURE DecodeB58(s [NO_COPY]: ARRAY OF CHAR;VAR out: BC_RAW): BOOLEAN;
 VAR
   i,j,k: LONGINT;
-  
+
 BEGIN
   FOR i := 0 TO LEN(out) - 1 DO; out[i] := CHR(0) END;
   i := 0;
   WHILE (s[i] # 0X) DO;
     k := IndexOfB58Char(s[i]);
-    IF k < 0 THEN 
+    IF k < 0 THEN
       Out.String("Error: Bad base58 character");Out.Ln;
       RETURN FALSE
     END;
@@ -1509,7 +1509,7 @@ BEGIN
     INC(i)
   END;
   RETURN TRUE
-END DecodeB58; 
+END DecodeB58;
 
 PROCEDURE Valid(s [NO_COPY]: ARRAY OF CHAR): BOOLEAN;
 VAR
@@ -1525,16 +1525,16 @@ BEGIN
   d2 := SHA256.NewHash();d2.Initialize();
   d1.Update(dec,0,21);d1.GetHash(d1Str,0);
   d2.Update(d1Str,0,d1.size);d2.GetHash(d2Str,0);
-  
+
   S.MOVE(S.ADR(dec) + 21,S.ADR(x),4);
   S.MOVE(S.ADR(d2Str),S.ADR(y),4);
-  
+
   RETURN (x = y)
 END Valid;
 
 BEGIN
   b58 := Tools.AsString(BASE58);
- 
+
   Out.Bool(Valid("1Q1pE5vPGEEMqRcVRMbtBK842Y6Pzo6nK9"));Out.Ln;
   Out.Bool(Valid("1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i"));Out.Ln;
   Out.Bool(Valid("1Q1pE5vPGEEMqRcVRMbtBK842Y6Pzo6nJ9"));Out.Ln;
@@ -1589,8 +1589,8 @@ sub check_bitcoin_address {
     # dies otherwise
     use Digest::SHA qw(sha256);
     my @byte = unbase58 shift;
-    die "wrong checksum\n" unless 
-    (pack 'C*', @byte[21..24]) eq 
+    die "wrong checksum\n" unless
+    (pack 'C*', @byte[21..24]) eq
     substr sha256(sha256 pack 'C*', @byte[0..20]), 0, 4;
 }
 ```
@@ -1616,7 +1616,7 @@ my $bitcoin-address = rx/
         .reverse;
     }>
 /;
- 
+
 say "Here is a bitcoin address: 1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i" ~~ $bitcoin-address;
 ```
 
@@ -1656,7 +1656,7 @@ function valid(string s, bool expected)
     string out = repeat('\0',25)
     for i=1 to length(s) do
         integer c = charmap[s[i]]
-        if c=0 then 
+        if c=0 then
             return {res,"bad char"}
         end if
         c -= 1
@@ -1678,7 +1678,7 @@ function valid(string s, bool expected)
     res := (expected==true)
     return {res,"OK"}
 end function
- 
+
 constant tests = {{"1Q1pE5vPGEEMqRcVRMbtBK842Y6Pzo6nK9",true},  -- OK
                   {"1Q1pE5vPGEEMqRcVRMbtBK842Y6Pzo6nJ9",false}, -- bad digest
                   {"1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i",true},  -- OK
@@ -1706,7 +1706,7 @@ for i=1 to length(tests) do
     if not res then
         printf(1,"%s: %s\n", {ti, coin_err})
         {} = wait_key()
-    end if          
+    end if
 end for
 ```
 
@@ -1798,13 +1798,13 @@ main();
 ```PicoLisp
 (load "sha256.l")
 
-(setq *Alphabet 
+(setq *Alphabet
    (chop "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz") )
 (de unbase58 (Str)
    (let (Str (chop Str)  Lst (need 25 0)  C)
       (while (setq C (dec (index (pop 'Str) *Alphabet)))
          (for (L Lst L)
-            (set 
+            (set
                L (& (inc 'C (* 58 (car L))) 255)
                'C (/ C 256) )
             (pop 'L) ) )
@@ -1846,11 +1846,11 @@ Macro IsValid(expression)
   EndIf
 EndMacro
 
-Procedure.i DecodeBase58(Address$, Array result.a(1)) 
+Procedure.i DecodeBase58(Address$, Array result.a(1))
   Protected i, j, p
   Protected charSet$ = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
   Protected c$
-  
+
   For i = 1 To Len(Address$)
     c$ = Mid(Address$, i, 1)
     p = FindString(charSet$, c$) - 1
@@ -1883,28 +1883,28 @@ Procedure.i IsBitcoinAddressValid(Address$)
   ; and begin with either 1 or 3 which is the format number
   format$ = Left(Address$, 1)
   If format$ <> "1" And format$ <> "3" : ProcedureReturn #False : EndIf
-  isValid = DecodeBase58(Address$, result())  
+  isValid = DecodeBase58(Address$, result())
   If Not isValid : ProcedureReturn #False : EndIf
   UseSHA2Fingerprint(); Using functions from PB's built-in Cipher library
   digest$ = Fingerprint(@result(), 21, #PB_Cipher_SHA2, 256); apply SHA2-256 to first 21 bytes
-  HexToBytes(digest$, result2()); change hex string to ascii array 
+  HexToBytes(digest$, result2()); change hex string to ascii array
   digest$ = Fingerprint(@result2(), 32,  #PB_Cipher_SHA2, 256); apply SHA2-256 again to all 32 bytes
   HexToBytes(digest$, result2())
   result$ = PeekS(@result() + 21, 4, #PB_Ascii); last 4 bytes
   result2$ = PeekS(@result2(), 4, #PB_Ascii); first 4 bytes
   If result$ <> result2$ : ProcedureReturn #False : EndIf
-  ProcedureReturn #True  
+  ProcedureReturn #True
 EndProcedure
 
 If OpenConsole()
   Define address$ = "1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i"
   Define address2$ = "1BGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i"
   Define address3$ = "1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62I"
-  Print(address$ + " -> ") 
+  Print(address$ + " -> ")
   IsValid(IsBitcoinAddressValid(address$))
-  Print(address2$ + " -> ") 
+  Print(address2$ + " -> ")
   IsValid(IsBitcoinAddressValid(address2$))
-  Print(address3$ + " -> ") 
+  Print(address3$ + " -> ")
   IsValid(IsBitcoinAddressValid(address3$))
   PrintN("")
   PrintN("Press any key to close the console")
@@ -1968,7 +1968,7 @@ Returns:
 >>> list( reversed(range(length)) )
 [24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 >>> assert n.to_bytes(length, 'big') == bytes( (n >> i*8) & 0xff for i in reversed(range(length)))
->>> 
+>>>
 ```
 
 
@@ -2075,7 +2075,7 @@ I calculate that it is         c046b2ff
 ## Rust
 
 This requires the [https://crates.io/crates/rust-crypto rust-crypto] crate for sha256.
- 
+
 
 ```Rust
 
@@ -2106,7 +2106,7 @@ fn validate_address(address: &str) -> bool {
     let mut first_round = vec![0u8; sha.output_bytes()];
     sha.result(&mut first_round);
     sha.reset();
-    
+
     sha.input(&first_round);
     let mut second_round = vec![0u8; sha.output_bytes()];
     sha.result(&mut second_round);
@@ -2389,7 +2389,7 @@ decodeBase58() {
     for i in {0..57}
     do s="${s//${base58[i]}/ $i}"
     done
-    dc <<< "16o0d${s// /+58*}+f" 
+    dc <<< "16o0d${s// /+58*}+f"
 }
 
 checksum() {
@@ -2436,7 +2436,7 @@ fcn unbase58(str){  // --> Data (byte bucket)
 }
 
 fcn coinValide(addr){
-   reg dec,chkSum; 
+   reg dec,chkSum;
    try{ dec=unbase58(addr) }catch{ return(False) }
    chkSum=dec[-4,*]; dec.del(21,*);
    // hash then hash the hash --> binary hash (instead of hex string)

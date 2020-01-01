@@ -191,8 +191,8 @@ public class Program
 ## C++
 
 
-```Cpp>#include <string
-
+```cpp
+#include <string>
 #include <vector>
 #include <algorithm>
 #include <boost/tokenizer.hpp>
@@ -203,7 +203,7 @@ std::vector<std::string> splitOnChar ( std::string & s , const char c ) {
    std::vector<std::string> parts ;
    boost::char_separator<char> sep( &c ) ;
    tokenizer tokens( s , sep ) ;
-   for ( auto it = tokens.begin( ) ; it != tokens.end( ) ; it++ ) 
+   for ( auto it = tokens.begin( ) ; it != tokens.end( ) ; it++ )
       parts.push_back( *it ) ;
    return parts ;
 }
@@ -238,7 +238,7 @@ int main( ) {
       "1.3.6.1.4.1.11.2.17.19.3.4.0.1" ,
       "1.3.6.1.4.1.11150.3.4.0" } ;
    std::sort( arrayOID.begin( ) , arrayOID.end( ) , myCompare ) ;
-   for ( std::string s : arrayOID ) 
+   for ( std::string s : arrayOID )
       std::cout << s << '\n' ;
    return 0 ;
 }
@@ -357,7 +357,7 @@ qw{
     1.3.6.1.4.1.11.2.17.19.3.4.0.4
     1.3.6.1.4.1.11150.3.4.0.1
     1.3.6.1.4.1.11.2.17.19.3.4.0.1
-    1.3.6.1.4.1.11150.3.4.0 
+    1.3.6.1.4.1.11150.3.4.0
 } [ human<=> ] sort [ print ] each
 ```
 
@@ -476,7 +476,7 @@ func main() {
 
 
 ```Haskell
-import Data.List ( sort , intercalate ) 
+import Data.List ( sort , intercalate )
 
 splitString :: Eq a => (a) -> [a] -> [[a]]
 splitString c [] = []
@@ -640,14 +640,14 @@ In other words, for each line in that script, remove the spaces and put the rest
 Sorting:
 
 
-```J>   
+```J>
 (/: __&".;._1&.('.'&,)&>) oids
-1.3.6.1.4.1.11.2.17.5.2.0.79   
-1.3.6.1.4.1.11.2.17.19.3.4.0.1 
-1.3.6.1.4.1.11.2.17.19.3.4.0.4 
+1.3.6.1.4.1.11.2.17.5.2.0.79
+1.3.6.1.4.1.11.2.17.19.3.4.0.1
+1.3.6.1.4.1.11.2.17.19.3.4.0.4
 1.3.6.1.4.1.11.2.17.19.3.4.0.10
-1.3.6.1.4.1.11150.3.4.0        
-1.3.6.1.4.1.11150.3.4.0.1 
+1.3.6.1.4.1.11150.3.4.0
+1.3.6.1.4.1.11150.3.4.0.1
 ```
 
 
@@ -807,7 +807,7 @@ local OIDs = {
     "1.3.6.1.4.1.11.2.17.19.3.4.0.1",
     "1.3.6.1.4.1.11150.3.4.0"
 }
- 
+
 function compare (a, b)
     local aList, bList, Na, Nb = {}, {}
     for num in a:gmatch("%d+") do table.insert(aList, num) end
@@ -817,7 +817,7 @@ function compare (a, b)
         if Na ~= Nb then return Na < Nb end
     end
 end
- 
+
 table.sort(OIDs, compare)
 for _, oid in pairs(OIDs) do print(oid) end
 ```
@@ -864,7 +864,7 @@ local OIDs = {
     "1.3.6.1.4.1.11.2.17.19.3.4.0.1",
     "1.3.6.1.4.1.11150.3.4.0"
 }
- 
+
 table.sort(OIDs, oidCmp)
 for _, oid in pairs(OIDs) do print(oid) end
 
@@ -938,7 +938,7 @@ GT=lambda (a$, b$)->{
       } until n$="" or m$="" or m$<>n$
       if n$="" then =m$<>"":exit
       if m$="" then =False:exit
-      =val(m$)>val(n$)     
+      =val(m$)>val(n$)
 }
 Stack new {
       \\ data push to end of stack (we use it as FIFO)
@@ -980,7 +980,7 @@ Using a function which split pieces one time. We have to insert one more item, b
             } until a$(i)="" or b$(i)="" or a$(i)<>b$(i)
             if  b$(i)="" then =a$(i)<>"":exit
             if a$(i)="" then =False:exit
-            =val(a$(i))>val(b$(i))     
+            =val(a$(i))>val(b$(i))
       }
 
 ```
@@ -1045,9 +1045,9 @@ Stack New {
             link arr() to arr$()
             i=0 :  While not Empty {arr$(i)=piece$(letter$+".", ".") : i++ }
 }
- 
+
 For i=0 to len(arr())-1 {
-      Print join$(arr(i))   
+      Print join$(arr(i))
 }
 Quick.LE=lambda (a, b)->{
       Link a, b to a$(), b$()
@@ -1057,11 +1057,11 @@ Quick.LE=lambda (a, b)->{
        } until a$(i)="" or b$(i)="" or a$(i)<>b$(i)
        if  b$(i)="" then =a$(i)="":exit
        if a$(i)="" then =true:exit
-       =val(a$(i))<=val(b$(i))     
+       =val(a$(i))<=val(b$(i))
 }
 Call Quick.quicksort(&arr(), 0, Len(arr())-1)
 For i=0 to len(arr())-1 {
-      Print join$(arr(i))   
+      Print join$(arr(i))
 }
 
 
@@ -1306,7 +1306,7 @@ Tests run with no output, indicating success.
 
 ## REXX
 
-This REXX version supports negative integers in the OID. 
+This REXX version supports negative integers in the OID.
 
 ```rexx
 /*REXX program performs a  sort  of  OID  (Object IDentifiers ◄── used in Network data).*/
@@ -1565,7 +1565,7 @@ fn main() {
     ];
 
     oids.sort_by(|a, b| Iterator::cmp(split(a), split(b)));
-    
+
     println!("{:#?}", oids);
 }
 ```
@@ -1666,11 +1666,11 @@ extension OID: Comparable {
 }
 
 let ids = [
-  "1.3.6.1.4.1.11.2.17.19.3.4.0.10", 
-  "1.3.6.1.4.1.11.2.17.5.2.0.79", 
-  "1.3.6.1.4.1.11.2.17.19.3.4.0.4", 
-  "1.3.6.1.4.1.11150.3.4.0.1", 
-  "1.3.6.1.4.1.11.2.17.19.3.4.0.1", 
+  "1.3.6.1.4.1.11.2.17.19.3.4.0.10",
+  "1.3.6.1.4.1.11.2.17.5.2.0.79",
+  "1.3.6.1.4.1.11.2.17.19.3.4.0.4",
+  "1.3.6.1.4.1.11150.3.4.0.1",
+  "1.3.6.1.4.1.11.2.17.19.3.4.0.1",
   "1.3.6.1.4.1.11150.3.4.0"
 ].map(OID.init)
 
@@ -1732,7 +1732,7 @@ for {set ii 0} {$ii < $i} {incr ii} {
         }
     }
     lappend oid3_lists $oid_list
-}       
+}
 for {set n $dots_max} {$n >= 0 } {incr n -1} {
     set oid3_lists [lsort -integer -index $n -increasing $oid3_lists]
 }

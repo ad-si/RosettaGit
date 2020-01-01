@@ -37,8 +37,8 @@ Generate the first 10 closed-form expressions, starting with ''p = 0''.
 
 {{trans|Modula-2}}
 
-```c>#include <stdbool.h
-
+```c
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -231,8 +231,8 @@ int main() {
 {{trans|D}}
 Uses C++17
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <numeric>
 #include <sstream>
 #include <vector>
@@ -813,9 +813,9 @@ void main() {
 
 ;; prints formal polynomial
 (define (task (pmax 10))
-    (for ((p pmax)) 
+    (for ((p pmax))
     (writeln p '→  (/ 1 (1+ p)) '* (poly->string 'n (Faulhaber p)))))
-    
+
 ;; extra credit - compute sums
 (define (Faulcomp n p)
 	(printf "Σ(1..%d) n^%d = %d" n p (/  (poly n (Faulhaber p)) (1+ p) )))
@@ -827,16 +827,16 @@ void main() {
 ```txt
 
 (task)
-0     →     1     *     n     
-1     →     1/2     *     n^2 + n     
-2     →     1/3     *     n^3 + 3/2 n^2 + 1/2 n     
-3     →     1/4     *     n^4 + 2 n^3 + n^2     
-4     →     1/5     *     n^5 + 5/2 n^4 + 5/3 n^3 -1/6 n     
-5     →     1/6     *     n^6 + 3 n^5 + 5/2 n^4 -1/2 n^2     
-6     →     1/7     *     n^7 + 7/2 n^6 + 7/2 n^5 -7/6 n^3 + 1/6 n     
-7     →     1/8     *     n^8 + 4 n^7 + 14/3 n^6 -7/3 n^4 + 2/3 n^2     
-8     →     1/9     *     n^9 + 9/2 n^8 + 6 n^7 -21/5 n^5 + 2 n^3 -3/10 n     
-9     →     1/10     *     n^10 + 5 n^9 + 15/2 n^8 -7 n^6 + 5 n^4 -3/2 n^2     
+0     →     1     *     n
+1     →     1/2     *     n^2 + n
+2     →     1/3     *     n^3 + 3/2 n^2 + 1/2 n
+3     →     1/4     *     n^4 + 2 n^3 + n^2
+4     →     1/5     *     n^5 + 5/2 n^4 + 5/3 n^3 -1/6 n
+5     →     1/6     *     n^6 + 3 n^5 + 5/2 n^4 -1/2 n^2
+6     →     1/7     *     n^7 + 7/2 n^6 + 7/2 n^5 -7/6 n^3 + 1/6 n
+7     →     1/8     *     n^8 + 4 n^7 + 14/3 n^6 -7/3 n^4 + 2/3 n^2
+8     →     1/9     *     n^9 + 9/2 n^8 + 6 n^7 -21/5 n^5 + 2 n^3 -3/10 n
+9     →     1/10     *     n^10 + 5 n^9 + 15/2 n^8 -7 n^6 + 5 n^4 -3/2 n^2
 
 (Faulcomp 100 2)
     Σ(1..100) n^2 = 338350
@@ -887,13 +887,13 @@ math.functions regexp sequences ;
 0: n
 1: 1/2n^2 + 1/2n
 2: 1/3n^3 + 1/2n^2 + 1/6n
-3: 1/4n^4 + 1/2n^3 + 1/4n^2 
+3: 1/4n^4 + 1/2n^3 + 1/4n^2
 4: 1/5n^5 + 1/2n^4 + 1/3n^3 - 1/30n
-5: 1/6n^6 + 1/2n^5 + 5/12n^4 - 1/12n^2 
+5: 1/6n^6 + 1/2n^5 + 5/12n^4 - 1/12n^2
 6: 1/7n^7 + 1/2n^6 + 1/2n^5 - 1/6n^3 + 1/42n
-7: 1/8n^8 + 1/2n^7 + 7/12n^6 - 7/24n^4 + 1/12n^2 
+7: 1/8n^8 + 1/2n^7 + 7/12n^6 - 7/24n^4 + 1/12n^2
 8: 1/9n^9 + 1/2n^8 + 2/3n^7 - 7/15n^5 + 2/9n^3 - 1/30n
-9: 1/10n^10 + 1/2n^9 + 3/4n^8 - 7/10n^6 + 1/2n^4 - 3/20n^2 
+9: 1/10n^10 + 1/2n^9 + 3/4n^8 - 7/10n^6 + 1/2n^4 - 3/20n^2
 
 ```
 
@@ -1009,13 +1009,13 @@ func main() {
 0 :     1×n
 1 :   1/2×n^2  -1/2 ×n
 2 :   1/3×n^3  -1/2 ×n^2  +1/6 ×n
-3 :   1/4×n^4  -1/2 ×n^3  +1/4 ×n^2 
+3 :   1/4×n^4  -1/2 ×n^3  +1/4 ×n^2
 4 :   1/5×n^5  -1/2 ×n^4  +1/3 ×n^3  -1/30×n
-5 :   1/6×n^6  -1/2 ×n^5  +5/12×n^4  -1/12×n^2 
+5 :   1/6×n^6  -1/2 ×n^5  +5/12×n^4  -1/12×n^2
 6 :   1/7×n^7  -1/2 ×n^6  +1/2 ×n^5  -1/6 ×n^3  +1/42×n
-7 :   1/8×n^8  -1/2 ×n^7  +7/12×n^6  -7/24×n^4  +1/12×n^2 
+7 :   1/8×n^8  -1/2 ×n^7  +7/12×n^6  -7/24×n^4  +1/12×n^2
 8 :   1/9×n^9  -1/2 ×n^8  +2/3 ×n^7  -7/15×n^5  +2/9 ×n^3  -1/30×n
-9 :  1/10×n^10 -1/2 ×n^9  +3/4 ×n^8  -7/10×n^6  +1/2 ×n^4  -3/20×n^2 
+9 :  1/10×n^10 -1/2 ×n^9  +3/4 ×n^8  -7/10×n^6  +1/2 ×n^4  -3/20×n^2
 
 ```
 
@@ -1133,15 +1133,15 @@ main = (putStrLn . unlines . expressionTable . take 10) polynomials
 {{Out}}
 
 ```txt
-0 ->  n                                                 
-1 ->  n^2  * 1/2  + n   * 1/2                                   
-2 ->  n^3  * 1/3  + n^2 * 1/2 + n   * 1/6                            
-3 ->  n^4  * 1/4  + n^3 * 1/2 + n^2 * 1/4                            
-4 ->  n^5  * 1/5  + n^4 * 1/2 + n^3 * 1/3  - n   * 1/30                  
-5 ->  n^6  * 1/6  + n^5 * 1/2 + n^4 * 5/12 - n^2 * 1/12                  
-6 ->  n^7  * 1/7  + n^6 * 1/2 + n^5 * 1/2  - n^3 * 1/6  + n   * 1/42          
-7 ->  n^8  * 1/8  + n^7 * 1/2 + n^6 * 7/12 - n^4 * 7/24 + n^2 * 1/12          
-8 ->  n^9  * 1/9  + n^8 * 1/2 + n^7 * 2/3  - n^5 * 7/15 + n^3 * 2/9  - n   * 1/30 
+0 ->  n
+1 ->  n^2  * 1/2  + n   * 1/2
+2 ->  n^3  * 1/3  + n^2 * 1/2 + n   * 1/6
+3 ->  n^4  * 1/4  + n^3 * 1/2 + n^2 * 1/4
+4 ->  n^5  * 1/5  + n^4 * 1/2 + n^3 * 1/3  - n   * 1/30
+5 ->  n^6  * 1/6  + n^5 * 1/2 + n^4 * 5/12 - n^2 * 1/12
+6 ->  n^7  * 1/7  + n^6 * 1/2 + n^5 * 1/2  - n^3 * 1/6  + n   * 1/42
+7 ->  n^8  * 1/8  + n^7 * 1/2 + n^6 * 7/12 - n^4 * 7/24 + n^2 * 1/12
+8 ->  n^9  * 1/9  + n^8 * 1/2 + n^7 * 2/3  - n^5 * 7/15 + n^3 * 2/9  - n   * 1/30
 9 ->  n^10 * 1/10 + n^9 * 1/2 + n^8 * 3/4  - n^6 * 7/10 + n^4 * 1/2  - n^2 * 3/20
 ```
 
@@ -1454,7 +1454,7 @@ Faulhaber.formula.(1:10)
 
 ## Kotlin
 
-As Kotlin doesn't have support for rational numbers built in, a cut-down version of the Frac class in the Arithmetic/Rational task has been used in order to express the polynomial coefficients as fractions. 
+As Kotlin doesn't have support for rational numbers built in, a cut-down version of the Frac class in the Arithmetic/Rational task has been used in order to express the polynomial coefficients as fractions.
 
 ```scala
 // version 1.1.2
@@ -1469,7 +1469,7 @@ class Frac : Comparable<Frac> {
         val ZERO = Frac(0, 1)
         val ONE  = Frac(1, 1)
     }
- 
+
     constructor(n: Long, d: Long) {
         require(d != 0L)
         var nn = n
@@ -1480,7 +1480,7 @@ class Frac : Comparable<Frac> {
         else if (dd < 0) {
             nn = -nn
             dd = -dd
-        } 
+        }
         val g = Math.abs(gcd(nn, dd))
         if (g > 1) {
             nn /= g
@@ -1491,8 +1491,8 @@ class Frac : Comparable<Frac> {
     }
 
     constructor(n: Int, d: Int) : this(n.toLong(), d.toLong())
- 
-    operator fun plus(other: Frac) = 
+
+    operator fun plus(other: Frac) =
         Frac(num * other.denom + denom * other.num, other.denom * denom)
 
     operator fun unaryMinus() = Frac(-num, denom)
@@ -1500,7 +1500,7 @@ class Frac : Comparable<Frac> {
     operator fun minus(other: Frac) = this + (-other)
 
     operator fun times(other: Frac) = Frac(this.num * other.num, this.denom * other.denom)
-      
+
     fun abs() = if (num >= 0) this else -this
 
     override fun compareTo(other: Frac): Int {
@@ -1509,16 +1509,16 @@ class Frac : Comparable<Frac> {
             diff < 0.0  -> -1
             diff > 0.0  -> +1
             else        ->  0
-        } 
+        }
     }
 
     override fun equals(other: Any?): Boolean {
-       if (other == null || other !is Frac) return false 
+       if (other == null || other !is Frac) return false
        return this.compareTo(other) == 0
-    }                  
+    }
 
     override fun toString() = if (denom == 1L) "$num" else "$num/$denom"
- 
+
     fun toDouble() = num.toDouble() / denom
 }
 
@@ -1533,7 +1533,7 @@ fun bernoulli(n: Int): Frac {
 }
 
 fun binomial(n: Int, k: Int): Int {
-    require(n >= 0 && k >= 0 && n >= k) 
+    require(n >= 0 && k >= 0 && n >= k)
     if (n == 0 || k == 0) return 1
     val num = (k + 1..n).fold(1) { acc, i -> acc * i }
     val den = (2..n - k).fold(1) { acc, i -> acc * i }
@@ -1544,7 +1544,7 @@ fun faulhaber(p: Int) {
     print("$p : ")
     val q = Frac(1, p + 1)
     var sign = -1
-    for (j in 0..p) {        
+    for (j in 0..p) {
         sign *= -1
         val coeff = q * Frac(sign, 1) * Frac(binomial(p + 1, j), 1) * bernoulli(j)
         if (coeff == Frac.ZERO) continue
@@ -1553,16 +1553,16 @@ fun faulhaber(p: Int) {
                 coeff == Frac.ONE  -> ""
                 coeff == -Frac.ONE -> "-"
                 else               -> "$coeff"
-            }) 
+            })
         }
-        else { 
+        else {
             print(when {
                 coeff == Frac.ONE  -> " + "
                 coeff == -Frac.ONE -> " - "
                 coeff >  Frac.ZERO -> " + $coeff"
                 else               -> " - ${-coeff}"
             })
-        } 
+        }
         val pwr = p + 1 - j
         if (pwr > 1)
             print("n^${p + 1 - j}")
@@ -1573,7 +1573,7 @@ fun faulhaber(p: Int) {
 }
 
 
-fun main(args: Array<String>) {    
+fun main(args: Array<String>) {
     for (i in 0..9) faulhaber(i)
 }
 ```
@@ -2032,7 +2032,7 @@ sreplace(str,ssrch,srepl)={
   for(i=1,vin1, vi=Vi[i];
   for(j=js,sn, \\print("ij:",i,"/",j,": ",sres);
     if(j!=vi, sres=concat(sres,ssubstr(str,j,1)),
-              sres=concat(sres,srepl); js=j+ssn; break) 
+              sres=concat(sres,srepl); js=j+ssn; break)
   ); \\fend j
   ); \\fend i
   return(sres);
@@ -2097,7 +2097,7 @@ Faulhaber1(m)={
 
 ```txt
 
-0: n                          
+0: n
 1: 1/2*n^2 + 1/2*n
 2: 1/3*n^3 + 1/2*n^2 + 1/6*n
 3: 1/4*n^4 + 1/2*n^3 + 1/4*n^2
@@ -2279,7 +2279,7 @@ function binomial(integer n, k)
     end for
     return num / denom
 end function
- 
+
 procedure faulhaber(integer p)
     string res = sprintf("%d : ", p)
     frac q = {1, p+1}
@@ -2308,7 +2308,7 @@ procedure faulhaber(integer p)
     end for
     printf(1,"%s\n",{res})
 end procedure
- 
+
 for i=0 to 9 do
     faulhaber(i)
 end for
@@ -2463,7 +2463,7 @@ Racket will simplify rational numbers; if this code simplifies the expressions t
 (define (expression->infix-string e)
   (define (parenthesise-maybe s p?)
     (if p? (string-append "(" s ")") s))
-  
+
   (letrec ((e->is
             (lambda (paren?)
               (match-lambda
@@ -2472,7 +2472,7 @@ Racket will simplify rational numbers; if this code simplifies the expressions t
                  (define compound (string-join bits (format " ~a " op)))
                  (values (if paren? (string-append "(" compound ")") compound) #f)]
                 [(list 'expt (app (e->is #t) x xp?) (app (e->is #t) n np?))
-                 (values (format "~a^~a" (parenthesise-maybe x xp?) (parenthesise-maybe n np?)) #f)]                
+                 (values (format "~a^~a" (parenthesise-maybe x xp?) (parenthesise-maybe n np?)) #f)]
                 [(? number? (app number->string s)) (values s #f)]
                 [(? symbol? (app symbol->string s)) (values s #f)]))))
     (define-values (str needs-parens?) ((e->is #f) e))
@@ -2797,7 +2797,7 @@ fcn faulhaberFormula(p){  //-->(Rational,Rational...)
 
 
 ```zkl
-foreach p in (10){ 
+foreach p in (10){
    println("F(%d) --> %s".fmt(p,polyRatString(faulhaberFormula(p))))
 }
 ```
@@ -2806,9 +2806,9 @@ foreach p in (10){
 ```zkl
 class Rational{  // Weenie Rational class, can handle BigInts
    fcn init(_a,_b){ var a=_a, b=_b; normalize(); }
-   fcn toString{ 
+   fcn toString{
       if(b==1) a.toString()
-      else     "%d/%d".fmt(a,b) 
+      else     "%d/%d".fmt(a,b)
    }
    var [proxy] isZero=fcn{ a==0   };
    fcn normalize{  // divide a and b by gcd
@@ -2855,16 +2855,16 @@ fcn polyRatString(terms){ // (a1,a2...)-->"a1n + a2n^2 ..."
 
 ```txt
 
-F(0) -->  n 
-F(1) -->  1/2n + 1/2n^2 
-F(2) -->  1/6n + 1/2n^2 + 1/3n^3 
-F(3) -->  1/4n^2 + 1/2n^3 + 1/4n^4 
-F(4) --> -1/30n + 1/3n^3 + 1/2n^4 + 1/5n^5 
-F(5) --> -1/12n^2 + 5/12n^4 + 1/2n^5 + 1/6n^6 
-F(6) -->  1/42n - 1/6n^3 + 1/2n^5 + 1/2n^6 + 1/7n^7 
-F(7) -->  1/12n^2 - 7/24n^4 + 7/12n^6 + 1/2n^7 + 1/8n^8 
-F(8) --> -1/30n + 2/9n^3 - 7/15n^5 + 2/3n^7 + 1/2n^8 + 1/9n^9 
-F(9) --> -3/20n^2 + 1/2n^4 - 7/10n^6 + 3/4n^8 + 1/2n^9 + 1/10n^10 
+F(0) -->  n
+F(1) -->  1/2n + 1/2n^2
+F(2) -->  1/6n + 1/2n^2 + 1/3n^3
+F(3) -->  1/4n^2 + 1/2n^3 + 1/4n^4
+F(4) --> -1/30n + 1/3n^3 + 1/2n^4 + 1/5n^5
+F(5) --> -1/12n^2 + 5/12n^4 + 1/2n^5 + 1/6n^6
+F(6) -->  1/42n - 1/6n^3 + 1/2n^5 + 1/2n^6 + 1/7n^7
+F(7) -->  1/12n^2 - 7/24n^4 + 7/12n^6 + 1/2n^7 + 1/8n^8
+F(8) --> -1/30n + 2/9n^3 - 7/15n^5 + 2/3n^7 + 1/2n^8 + 1/9n^9
+F(9) --> -3/20n^2 + 1/2n^4 - 7/10n^6 + 3/4n^8 + 1/2n^9 + 1/10n^10
 
 ```
 

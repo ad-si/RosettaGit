@@ -56,37 +56,37 @@ The   '''do'''   index must be incremented/decremented in the same order shown.
 
 If feasible, add commas to the two output numbers (being displayed).
 
-Show all output here. 
+Show all output here.
 <lang>      A simple PL/I   DO  loop  (incrementing or decrementing)  has the construct of:
 
             DO variable = start_expression    {TO ending_expression]       {BY increment_expression} ;
                  ---or---
-            DO variable = start_expression    {BY increment_expression}    {TO ending_expression]    ;  
+            DO variable = start_expression    {BY increment_expression}    {TO ending_expression]    ;
 
-      where it is understood that all expressions will have a value.  The  variable  is normally a 
+      where it is understood that all expressions will have a value.  The  variable  is normally a
       scaler variable,  but need not be  (but for this task, all variables and expressions are declared
       to be scaler integers).   If the   BY   expression is omitted,  a   BY   value of unity is used.
       All expressions are evaluated before the   DO   loop is executed,  and those values are used
       throughout the   DO   loop execution   (even though, for instance,  the value of   Z   may be
-      changed within the   DO   loop.    This isn't the case here for this task.  
+      changed within the   DO   loop.    This isn't the case here for this task.
 
       A multiple-range   DO   loop can be constructed by using a comma (,) to separate additional ranges
       (the use of multiple   TO   and/or   BY   keywords).     This is the construct used in this task.
- 
-      There are other forms of   DO   loops in PL/I involving the  WHILE  clause,  but those won't be 
-      needed here.    DO  loops without a   TO   clause might need a   WHILE   clause  or some other 
-      means of exiting the loop  (such as  LEAVE,  RETURN,  SIGNAL,  GOTO,  or  STOP),  or some other 
-      (possible error) condition that causes transfer of control outside the  DO  loop.
- 
-      Also, in PL/I, the check if the   DO   loop index value is outside the range is made at the 
-      "head"  (start)  of the   DO  loop,  so it's possible that the   DO   loop isn't executed,  but 
-      that isn't the case for any of the ranges used in this task. 
 
-      In the example above, the clause:                    x    to y       by z     
+      There are other forms of   DO   loops in PL/I involving the  WHILE  clause,  but those won't be
+      needed here.    DO  loops without a   TO   clause might need a   WHILE   clause  or some other
+      means of exiting the loop  (such as  LEAVE,  RETURN,  SIGNAL,  GOTO,  or  STOP),  or some other
+      (possible error) condition that causes transfer of control outside the  DO  loop.
+
+      Also, in PL/I, the check if the   DO   loop index value is outside the range is made at the
+      "head"  (start)  of the   DO  loop,  so it's possible that the   DO   loop isn't executed,  but
+      that isn't the case for any of the ranges used in this task.
+
+      In the example above, the clause:                    x    to y       by z
       will cause the variable   J   to have to following values  (in this order):  5  3  1  -1  -3  -5
 
-      In the example above, the clause:                 -seven  to +seven  by x  
-      will cause the variable   J   to have to following values  (in this order):  -7  -2   3  
+      In the example above, the clause:                 -seven  to +seven  by x
+      will cause the variable   J   to have to following values  (in this order):  -7  -2   3
 ```
 
 
@@ -148,8 +148,8 @@ end
 {{out}}
 
 ```txt
- sum= 348173 
-prod= -793618560 
+ sum= 348173
+prod= -793618560
 
 ```
 
@@ -256,8 +256,8 @@ prod=     -793618560
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
 
@@ -340,7 +340,7 @@ sequences sequences.generalizations tools.memory.private ;
             [ prod j * prod! ] when
         ] each                      ! Loop over range.
     ] each                          ! Loop over array of ranges.
-    
+
     ! SUM and PROD are used for verification of J incrementation.
     sum prod [ commas ] bi@ " sum=  %s\nprod= %s\n" printf
 ]
@@ -536,7 +536,7 @@ f =: 3 :0
 
    ] A =: f '((-three), (3^3), three); ((-seven),seven,x); (555 , 550-y); (22 _28, -three); 1927 1939; (x,y,z); (0 1 + 11^x)'
 348173 _7.93619e8
-   
+
    20j0 ": A
               348173          _793618560
 
@@ -582,11 +582,11 @@ end
 PL1example()
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
-     sum = 348,173      
-    prod = -793,618,560 
+     sum = 348,173
+    prod = -793,618,560
 
 ```
 
@@ -821,7 +821,7 @@ prod = -793,618,560
 
 ## Prolog
 
-Prolog does not have the richness of some other languages where it comes to loops, variables and the like, but does have some rather interesting features such as difference lists and backtracking for generating solutions. 
+Prolog does not have the richness of some other languages where it comes to loops, variables and the like, but does have some rather interesting features such as difference lists and backtracking for generating solutions.
 
 ```prolog
 for(Lo,Hi,Step,Lo)  :- Step>0, Lo=<Hi.
@@ -852,8 +852,8 @@ translate(A-B, V) :- translate(A,A0), translate(B, B0), !, V is A0-B0.
 translate(A^B, V) :- translate(A,A0), translate(B, B0), !, V is A0^B0.
 
 range_value(Val) :-             % enumerate values for all ranges in order
-	range(From,To,Step), 
-	translate(From,F), translate(To,T), translate(Step,S), 
+	range(From,To,Step),
+	translate(From,F), translate(To,T), translate(Step,S),
 	for(F,T,S,Val).
 
 calc_values([], S, P, S, P).    % calculate all values in generated order
@@ -945,7 +945,7 @@ def _range(x, y, z=1):
 print(f'list(_range(x, y, z)) = {list(_range(x, y, z))}')
 print(f'list(_range(-seven, seven, x)) = {list(_range(-seven, seven, x))}')
 
-for j in chain(_range(-three, 3**3, three), _range(-seven, seven, x), 
+for j in chain(_range(-three, 3**3, three), _range(-seven, seven, x),
                _range(555, 550 - y), _range(22, -28, -three),
                _range(1927, 1939), _range(x, y, z),
                _range(11**x, 11**x + 1)):

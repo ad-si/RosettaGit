@@ -14,7 +14,7 @@ tags = []
 {{:Range extraction/Format}}
 
 ;Task:
-* Create a function that takes a list of integers in increasing order and returns a correctly formatted string in the range format. 
+* Create a function that takes a list of integers in increasing order and returns a correctly formatted string in the range format.
 * Use the function to compute and print the range formatted version of the following ordered list of integers. (The correct answer is: <code>0-2,4,6-8,11,12,14-25,27-33,35-39</code>).
 
 
@@ -34,16 +34,16 @@ tags = []
 
 ## Ada
 
-The provided solutions return an empty string, if the Sequence of integers is empty. 
-Ranges with negative bounds are represented as '''-9--4''', as the task requires. 
+The provided solutions return an empty string, if the Sequence of integers is empty.
+Ranges with negative bounds are represented as '''-9--4''', as the task requires.
 For real-life applications it is better to use the notation '''-9..-4'''.
 
 
 ### Iterative Solution
 
 
-Since we don't know in advance how long the output will be, 
-the iterative solution uses Unbounded_Strings. 
+Since we don't know in advance how long the output will be,
+the iterative solution uses Unbounded_Strings.
 
 
 ```Ada
@@ -209,12 +209,12 @@ main(void)
 Note: The following [[Range extraction#Iterative|Iterative]] code specimen is the "unrolled" version of the [[Range extraction#Generative|Generative]] code specimen below. Together they provided as a comparison of the two different methods.
 
 
-###  Iterative 
+###  Iterative
 
 {{works with|ALGOL 68|Revision 1 - one minor extension to language used - PRAGMA READ, similar to C's #include directive.}}
 {{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.3.2 algol68g-2.3.2].}}
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of '''format'''[ted] ''transput''.}}{{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due use of LWB and UPB operators on a UNION}}
-* The closest concept that ''Algol 68'' has to [[wp:duck typing|duck typing]] is the [[wp:tagged union|tagged union]].  This is used to define '''mode''' '''urange''' = '''union'''('''int''', '''struct'''('''int''' lwb, upb)). If ''duck typing'' was available it could reduced the size of the code specimen, but would have lost some of <i>Algol 68</i>'s strong type ''data security''. 
+* The closest concept that ''Algol 68'' has to [[wp:duck typing|duck typing]] is the [[wp:tagged union|tagged union]].  This is used to define '''mode''' '''urange''' = '''union'''('''int''', '''struct'''('''int''' lwb, upb)). If ''duck typing'' was available it could reduced the size of the code specimen, but would have lost some of <i>Algol 68</i>'s strong type ''data security''.
 '''File: Template_Range_extraction_Base.a68'''
 
 ```algol68
@@ -363,7 +363,7 @@ test: BEGIN
     (37,37), (38,38), (39,39));
 
   []RANGEINT list a = ( # unnormalised #
-    RANGE(0,2), 4, RANGE(6,8), RANGE(11,12), 
+    RANGE(0,2), 4, RANGE(6,8), RANGE(11,12),
     RANGE(14,25), RANGE(27,33), RANGE(35,39));
 
   []RANGEINT list b = ( # unnormalised #
@@ -398,7 +398,7 @@ END
 
 
 
-###  Generative 
+###  Generative
 
 {{works with|ALGOL 68|Revision 1 - one minor extension to language used - PRAGMA READ, similar to C's #include directive.}}
 {{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.3.2 algol68g-2.3.2].}}
@@ -527,13 +527,13 @@ on rangeFormat(xs)
             end if
         end |λ|
     end script
-    
+
     script nonConsec
         on |λ|(a, b)
             b - a > 1
         end |λ|
     end script
-    
+
     intercalate(",", map(rangeString, splitBy(nonConsec, xs)))
 end rangeFormat
 
@@ -543,9 +543,9 @@ on run
     set xs to {0, 1, 2, 4, 6, 7, 8, 11, 12, 14, 15, 16, ¬
         17, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28, 29, 30, 31, 32, ¬
         33, 35, 36, 37, 38, 39}
-    
+
     rangeFormat(xs)
-    
+
     --> "0-2,4,6-8,11,12,14-25,27-33,35-39"
 end run
 
@@ -555,7 +555,7 @@ end run
 -- splitBy :: (a -> a -> Bool) -> [a] -> [[a]]
 on splitBy(f, xs)
     set mf to mReturn(f)
-    
+
     if length of xs < 2 then
         {xs}
     else
@@ -569,7 +569,7 @@ on splitBy(f, xs)
                 end if
             end |λ|
         end script
-        
+
         set h to item 1 of xs
         set lstParts to foldl(p, {{}, {h}, h}, items 2 thru -1 of xs)
         item 1 of lstParts & {item 2 of lstParts}
@@ -608,7 +608,7 @@ on intercalate(strText, lstText)
     return strJoined
 end intercalate
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -654,7 +654,7 @@ Range extraction.ahk
 ---------------------------
 0-2,4,6-8,11,12,14-25,27-33,35-39
 ---------------------------
-OK   
+OK
 ---------------------------
 ```
 
@@ -665,7 +665,7 @@ OK
 
 AWK is a primitive bird that prefers global scope for arrays.
 
-Local variables for functions are declared in the parameters and, 
+Local variables for functions are declared in the parameters and,
 by convention, separated from the expected ones by extra space.
 
 
@@ -749,7 +749,7 @@ function fillSequence(seqStr,    n, s) {
       \        "37, 38, 39"
       PRINT FNrangeextract(range$)
       END
-      
+
       DEF FNrangeextract(r$)
       LOCAL f%, i%, r%, t%, t$
       f% = VAL(r$)
@@ -797,7 +797,7 @@ function fillSequence(seqStr,    n, s) {
                     | "-"
                     )
                     -1+!nextInRange
-              | 
+              |
               )
           : ?accumulator
         )
@@ -807,7 +807,7 @@ function fillSequence(seqStr,    n, s) {
             )
         )
       & ( rangePattern
-        =   ( 
+        =   (
             |   ?
                 ( !nextInRange
                 & 1+!nextInRange:?nextInRange
@@ -827,7 +827,7 @@ function fillSequence(seqStr,    n, s) {
       & (   !arg:(?,?)
           & whl'(!arg:(?A,?arg)&(!A,!L):?L)
           & whl'(!L:(?A,?L)&!A !arg:?arg)
-        | 
+        |
         )
       & out$(rangeExtract$!arg)
   )
@@ -849,13 +849,13 @@ function fillSequence(seqStr,    n, s) {
 
 ## C
 
-Using the fine tradition of <code>snprintf</code>, <code>rprint</code> is not responsible for allocating output buffer.  
-It prints the range only if supplied a non-null pointer, 
-but always returns the output length sans the terminating null, 
+Using the fine tradition of <code>snprintf</code>, <code>rprint</code> is not responsible for allocating output buffer.
+It prints the range only if supplied a non-null pointer,
+but always returns the output length sans the terminating null,
 so caller can allocate buffer.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 size_t rprint(char *s, int *x, int len)
@@ -1063,12 +1063,12 @@ public class RangeExtraction
         Console.WriteLine(string.Join(",", Ranges(s.Split(',').Select(int.Parse))
             .Select(r => r.end == r.start ? $"{r.start}" : $"{r.start}-{r.end}")));
     }
-    
+
     static IEnumerable<(int start, int end)> Ranges(IEnumerable<int> numbers) {
         if (numbers == null) yield break;
         var e = numbers.GetEnumerator();
         if (!e.MoveNext()) yield break;
-        
+
         int start = e.Current;
         int end = start;
         while (e.MoveNext()) {
@@ -1085,7 +1085,7 @@ public class RangeExtraction
         }
         yield return (start, end);
     }
-    
+
 }
 ```
 
@@ -1104,19 +1104,19 @@ public class RangeExtraction
 
 ```ceylon
 shared void run() {
-	
+
 	value numbers = [
 		0,  1,  2,  4,  6,  7,  8, 11, 12, 14,
 		15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
 		25, 27, 28, 29, 30, 31, 32, 33, 35, 36,
 		37, 38, 39
 	];
-	
-	function asRangeFormattedString<Value>([Value*] values) 
+
+	function asRangeFormattedString<Value>([Value*] values)
 			given Value satisfies Enumerable<Value> {
-		
+
 		value builder = StringBuilder();
-		
+
 		void append(Range<Value> range) {
 			if(!builder.empty) {
 				builder.append(",");
@@ -1127,7 +1127,7 @@ shared void run() {
 				builder.append("``range.first``-``range.last``");
 			}
 		}
-		
+
 		if(nonempty values) {
 			variable value currentRange = values.first..values.first;
 			for(val in values.rest) {
@@ -1142,7 +1142,7 @@ shared void run() {
 		}
 		return builder.string;
 	}
-	
+
 	value rangeString = asRangeFormattedString(numbers);
 	assert(rangeString == "0-2,4,6-8,11,12,14-25,27-33,35-39");
 	print(rangeString);
@@ -1199,57 +1199,57 @@ shared void run() {
 ```cobol
        IDENTIFICATION DIVISION.
        PROGRAM-ID. extract-range-task.
- 
+
        DATA DIVISION.
        WORKING-STORAGE SECTION.
        01  data-str                PIC X(200) VALUE "0,  1,  2,  4,  6,"
            & " 7,  8, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, "
            & "24, 25, 27, 28, 29, 30, 31, 32, 33, 35, 36, 37, 38, 39".
- 
+
        01  result                  PIC X(200).
- 
+
        PROCEDURE DIVISION.
            CALL "extract-range" USING CONTENT data-str, REFERENCE result
            DISPLAY FUNCTION TRIM(result)
- 
+
            GOBACK
            .
        END PROGRAM extract-range-task.
- 
- 
+
+
        IDENTIFICATION DIVISION.
        PROGRAM-ID. extract-range.
- 
+
        DATA DIVISION.
        LOCAL-STORAGE SECTION.
        COPY "nums-table.cpy".
- 
+
        01  difference              PIC 999.
- 
+
        01  rng-begin               PIC S999.
        01  rng-end                 PIC S999.
- 
+
        01  num-trailing            PIC 999.
- 
+
        01  trailing-comma-pos      PIC 999.
 
        LINKAGE SECTION.
        01  nums-str                PIC X(200).
        01  extracted-range         PIC X(200).
- 
+
        01  extracted-range-len     CONSTANT LENGTH extracted-range.
 
        PROCEDURE DIVISION USING nums-str, extracted-range.
            CALL "split-nums" USING CONTENT nums-str, ", ",
                REFERENCE nums-table
- 
+
            *> Process the table
            MOVE nums (1) TO rng-begin
            PERFORM VARYING nums-idx FROM 2 BY 1
                    UNTIL num-nums < nums-idx
                SUBTRACT nums (nums-idx - 1) FROM nums (nums-idx)
                    GIVING difference
- 
+
                *> If number is more than one away from the previous one
                *> end the range and start a new one.
                IF difference > 1
@@ -1259,49 +1259,49 @@ shared void run() {
                    MOVE nums (nums-idx) TO rng-begin
                END-IF
            END-PERFORM
- 
+
            *> Process the last number
            MOVE nums (num-nums) TO rng-end
            CALL "add-next-range" USING CONTENT rng-begin,
                rng-end, REFERENCE extracted-range
- 
+
            *> Remove trailing comma.
            CALL "find-num-trailing-spaces"
                USING CONTENT extracted-range, REFERENCE num-trailing
            COMPUTE trailing-comma-pos =
                extracted-range-len - num-trailing
            MOVE SPACE TO extracted-range (trailing-comma-pos:1)
- 
+
            GOBACK
            .
- 
+
        IDENTIFICATION DIVISION.
        PROGRAM-ID. split-nums INITIAL.
- 
+
        DATA DIVISION.
        WORKING-STORAGE SECTION.
        01  num-len                 PIC 9.
        01  next-num-pos            PIC 999.
- 
+
        LINKAGE SECTION.
        01  str                     PIC X(200).
        01  delim                   PIC X ANY LENGTH.
- 
+
        COPY "nums-table.cpy".
- 
+
        PROCEDURE DIVISION USING str, delim, nums-table.
            INITIALIZE num-nums
- 
+
            PERFORM UNTIL str = SPACES
                INITIALIZE num-len
                INSPECT str TALLYING num-len FOR CHARACTERS BEFORE delim
- 
+
                ADD 1 TO num-nums
- 
+
                *> If there are no more instances of delim in the string,
                *> add the rest of the string to the last element of the
                *> table.
-               IF num-len = 0 
+               IF num-len = 0
                    MOVE str TO nums (num-nums)
                    EXIT PERFORM
                ELSE
@@ -1312,7 +1312,7 @@ shared void run() {
            END-PERFORM
            .
        END PROGRAM split-nums.
- 
+
        IDENTIFICATION DIVISION.
        PROGRAM-ID. add-next-range INITIAL.
 
@@ -1320,27 +1320,27 @@ shared void run() {
        WORKING-STORAGE SECTION.
        01  num-trailing            PIC 999.
        01  start-pos               PIC 999.
- 
+
        01  range-len               PIC 999.
- 
+
        01  begin-edited            PIC -ZZ9.
        01  end-edited              PIC -ZZ9.
 
        LINKAGE SECTION.
        01  rng-begin               PIC S999.
        01  rng-end                 PIC S999.
- 
+
        01  extracted-range         PIC X(200).
 
        01  extracted-range-len     CONSTANT LENGTH extracted-range.
- 
+
        PROCEDURE DIVISION USING rng-begin, rng-end, extracted-range.
            CALL "find-num-trailing-spaces"
                USING CONTENT extracted-range, REFERENCE num-trailing
            COMPUTE start-pos = extracted-range-len - num-trailing + 1
- 
+
            SUBTRACT rng-begin FROM rng-end GIVING range-len
- 
+
            MOVE rng-begin TO begin-edited
            MOVE rng-end TO end-edited
 
@@ -1348,12 +1348,12 @@ shared void run() {
                WHEN rng-begin = rng-end
                    STRING FUNCTION TRIM(begin-edited), ","
                        INTO extracted-range (start-pos:)
- 
+
                WHEN range-len = 1
                    STRING FUNCTION TRIM(begin-edited), ",",
                        FUNCTION TRIM(end-edited), ","
                        INTO extracted-range (start-pos:)
- 
+
                WHEN OTHER
                    STRING FUNCTION TRIM(begin-edited), "-",
                          FUNCTION TRIM(end-edited), ","
@@ -1361,21 +1361,21 @@ shared void run() {
            END-EVALUATE
            .
        END PROGRAM add-next-range.
- 
+
        IDENTIFICATION DIVISION.
        PROGRAM-ID. find-num-trailing-spaces.
- 
+
        DATA DIVISION.
        LINKAGE SECTION.
        01  str                     PIC X(200).
        01  num-trailing            PIC 999.
- 
+
        PROCEDURE DIVISION USING str, num-trailing.
            INITIALIZE num-trailing
            INSPECT str TALLYING num-trailing FOR TRAILING SPACES
            .
        END PROGRAM find-num-trailing-spaces.
- 
+
        END PROGRAM extract-range.
 ```
 
@@ -1582,7 +1582,7 @@ range format: 0-2,4,6-8,11,12,14-25,27-33,35-39
 
 ## E
 
-Cheeky solution: relying on the standard library for finding ranges, 
+Cheeky solution: relying on the standard library for finding ranges,
 and just formatting them ourselves.
 
 
@@ -1591,7 +1591,7 @@ def rex(numbers :List[int]) {
     var region := 0..!0
     for n in numbers { region |= n..n }
     var ranges := []
-    for interval in region.getSimpleRegions() { 
+    for interval in region.getSimpleRegions() {
         def a := interval.getOptStart()
         def b := interval.getOptBound() - 1
         ranges with= if (b > a + 1) {
@@ -1633,11 +1633,11 @@ def rex(numbers :List[int]) {
     (or (empty? acc) (!= (caar acc) (1- item)))
       (cons (cons item item) acc)
       (begin  (set-car! (car acc) item) acc)))
-      
+
 ;; intermediate result
 ;; (foldl group-range () task)
 ;; → ((39 . 35) (33 . 27) (25 . 14) (12 . 11) (8 . 6) (4 . 4) (2 . 0))
-      
+
 ;; 2- FORMATTING
 (define (range->string range)
 (let ((from (rest range)) (to (first range)))
@@ -1645,7 +1645,7 @@ def rex(numbers :List[int]) {
 		((= from to) (format "%d " from))
 		((= to (1+ from))  (format "%d, %d " from to))
 		(else (format "%d-%d " from to)))))
-		
+
 ;; 3 - FINAL
 (string-join (map range->string  (reverse (foldl group-range () task))) ",")
     → "0-2 ,4 ,6-8 ,11, 12 ,14-25 ,27-33 ,35-39 "
@@ -1748,7 +1748,7 @@ Extracted range: 0 - 2,  4,  6 - 8, 11, 12, 14 - 25, 27 - 33, 35 - 39
 ## Elixir
 
 {{trans|Ruby}}
- 
+
 ```elixir
 defmodule RC do
   def range_extract(list) do
@@ -1758,7 +1758,7 @@ defmodule RC do
     current_number = hd(sorted)
     extract(tl(sorted), candidate_number, current_number, [])
   end
-  
+
   defp extract([], _, _, range), do: Enum.reverse(range) |> Enum.join(",")
   defp extract([next|rest], candidate, current, range) when current+1 >= next do
     extract(rest, candidate, next, range)
@@ -2007,14 +2007,14 @@ IN: rosetta-code.range-extraction
 
 : make-range ( seq -- str )
     [ first ] [ last ] bi "%d-%d" sprintf ;
-    
+
 : make-atomic ( seq -- str ) [ number>string ] map "," join ;
 
 : extract-range ( seq -- str )
     [ - -1 = ] monotonic-split
     [ dup length 2 > [ make-range ] [ make-atomic ] if ] map
     "," join ;
-    
+
 {
     0 1 2 4 6 7 8 11 12 14 15 16 17 18 19 20 21 22
     23 24 25 27 28 29 30 31 32 33 35 36 37 38 39
@@ -2075,13 +2075,13 @@ values /values .ranges
 
 ## Fortran
 
-There was some initial confusion as to whether the list was to be supplied as an array of integer values, or as a text string from which integer values were to be extracted. The consensus is a text string. In principle the text string could be parsed to find the starting and stopping positions of each number so that any size integers could be processed merely by copying the texts around without reading the values into integer variables of limited capacity, but that would be complicated by the possible presence of signs. So, it was simpler to take advantage of the free-format data reading protocol that would handle signs without difficulty and on output any spurious +signs would be omitted. This however immediately raises the question: how many numbers are there to be read? A very useful input style is to start with the number of values to read followed by the values; then something like <code>READ(IN,*) N,A(1:N)</code> works nicely. But this is not the given style of input, so a fallback: count how many commas appear to deduce how many numbers there are to be read. The free-format style allows either commas or spaces between numbers (and if there is a comma, any spaces also present are passed by), so the layout is easy. Data errors could still be encountered, so a more complete version would have <code>READ (TEXT,*,ERR=''label'') VAL(1:N)</code> to catch these, but the specification does not call for checking.	
+There was some initial confusion as to whether the list was to be supplied as an array of integer values, or as a text string from which integer values were to be extracted. The consensus is a text string. In principle the text string could be parsed to find the starting and stopping positions of each number so that any size integers could be processed merely by copying the texts around without reading the values into integer variables of limited capacity, but that would be complicated by the possible presence of signs. So, it was simpler to take advantage of the free-format data reading protocol that would handle signs without difficulty and on output any spurious +signs would be omitted. This however immediately raises the question: how many numbers are there to be read? A very useful input style is to start with the number of values to read followed by the values; then something like <code>READ(IN,*) N,A(1:N)</code> works nicely. But this is not the given style of input, so a fallback: count how many commas appear to deduce how many numbers there are to be read. The free-format style allows either commas or spaces between numbers (and if there is a comma, any spaces also present are passed by), so the layout is easy. Data errors could still be encountered, so a more complete version would have <code>READ (TEXT,*,ERR=''label'') VAL(1:N)</code> to catch these, but the specification does not call for checking.
 
 The standard problem is "how long is a piece of string?" - arrays normally must be given a specific bound. With F90, it is possible to allocate an array of a size determined at run time via some tedious gibberish, but for this example, LOTS will suffice. More seriously, the specification calls for a function returning the text representation of the list, but unfortunately, a function must have a specified size as in <code>CHARACTER*66 FUNCTION IRANGE(TEXT)</code> where the 66 is fixed at compile time. With Fortran 2003, there are facilities for the run-time sizing of character variables, but not in F90/95 though they could be devised with a great deal of blather. In any case, the size required is not known until the end, so successively reallocating space of size 1, 2, 3, 4, ... and each time copying the existing text into the larger text area would soon be painful. A largeish value for the size of the result could be used but instead, a subroutine, which returns its result via modifying its parameter. It is up to the caller to provide a parameter of sufficient size.
 
-Although Pascal offers a Str procedure for converting a variable to a text string, maddeningly, it is a procedure not a function and so cannot be used within a compound statement. Fortran could offer access to the FORMAT facility via something like a function FMT(x) which returns the text representation of variable x with no leading or trailing spaces (whereby FMT(-6) would return "-6" and so forth) but alas, does not. Such a function cannot be written in ordinary Fortran until such time as it is possible to return varying-sized character results. The I0 format code standardised in F90 comes close but of course it must be used in a complex environment. All in all, it is easier to devise a subroutine SPLOT(n) to write the value of an integer (with possible leading hyphen if negative) to a scratchpad and then EMIT its text character by character to the output variable character until stopped by a space. Subroutines EMIT and SPLOT could be normal separate subroutines, but as servants of IRANGE it is easier to take advantage of the F90 facility whereby they can be "contained" inside IRANGE and thereby gain access to its internal context. Otherwise, there would have to be additional parameters or usage of COMMON variables for such communication. 
+Although Pascal offers a Str procedure for converting a variable to a text string, maddeningly, it is a procedure not a function and so cannot be used within a compound statement. Fortran could offer access to the FORMAT facility via something like a function FMT(x) which returns the text representation of variable x with no leading or trailing spaces (whereby FMT(-6) would return "-6" and so forth) but alas, does not. Such a function cannot be written in ordinary Fortran until such time as it is possible to return varying-sized character results. The I0 format code standardised in F90 comes close but of course it must be used in a complex environment. All in all, it is easier to devise a subroutine SPLOT(n) to write the value of an integer (with possible leading hyphen if negative) to a scratchpad and then EMIT its text character by character to the output variable character until stopped by a space. Subroutines EMIT and SPLOT could be normal separate subroutines, but as servants of IRANGE it is easier to take advantage of the F90 facility whereby they can be "contained" inside IRANGE and thereby gain access to its internal context. Otherwise, there would have to be additional parameters or usage of COMMON variables for such communication.
 
-The method grinds through the list of values, looking ahead for consecutive continuations (relying on the value of a DO-loop's index variable being available on exit from the loop) and thereby placing in its output string either a range of numbers or a single number. This could be done by using WRITE with suitable FORMAT statements to appropriate portions of the output string via careful counting of positions, but using EMIT and SPLOT avoids the requisite cogitations. A fancier method would be to devise a list of numbers to be output along with a suitable FORMAT statement that would supply the commas and hyphens as appropriate. Of course, one would again face the question "how long is a FORMAT string?", so, grinding stepwise it is. 
+The method grinds through the list of values, looking ahead for consecutive continuations (relying on the value of a DO-loop's index variable being available on exit from the loop) and thereby placing in its output string either a range of numbers or a single number. This could be done by using WRITE with suitable FORMAT statements to appropriate portions of the output string via careful counting of positions, but using EMIT and SPLOT avoids the requisite cogitations. A fancier method would be to devise a list of numbers to be output along with a suitable FORMAT statement that would supply the commas and hyphens as appropriate. Of course, one would again face the question "how long is a FORMAT string?", so, grinding stepwise it is.
 ```Fortran
       SUBROUTINE IRANGE(TEXT)	!Identifies integer ranges in a list of integers.
 Could make this a function, but then a maximum text length returned would have to be specified.
@@ -2169,20 +2169,20 @@ Function formatRange (a() As Integer) As String
     If a(i) = a(i - 1) + 1 Then
       rangeCount += 1
     ElseIf rangeCount = 1 Then
-      range += "," + Str(a(i)) 
+      range += "," + Str(a(i))
     ElseIf rangeCount = 2 Then
       rangeCount = 1
-      range += "," + Str(a(i-1)) + "," + Str(a(i))  
+      range += "," + Str(a(i-1)) + "," + Str(a(i))
     Else
       rangeCount = 1
-      range += "-" + Str(a(i-1)) + "," + Str(a(i))    
+      range += "-" + Str(a(i-1)) + "," + Str(a(i))
     End If
   Next
-  If rangeCount = 2 Then 
+  If rangeCount = 2 Then
     range += "," + Str(a(ub))
   ElseIf rangeCount > 2 Then
     range += "-" + Str(a(ub))
-  End If      
+  End If
   Return range
 End Function
 
@@ -2224,7 +2224,7 @@ Sleep
 ```gambas
 siInput As New Short[]
 siInput1 As Short[] = [0, 1, 2, 4, 6, 7, 8, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28, 29, 30, 31, 32, 33, 35, 36, 37, 38, 39]
-siInput2 As Short[] = [-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20] 
+siInput2 As Short[] = [-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]
 sOutput As New String[]
 siCount As Short
 siNum As Short
@@ -2243,7 +2243,7 @@ For siLoop = 0 To 1
         GetOutput
       Endif
     Until siCount = siInput.Max
-  
+
   GetOutput
   Print sOutput.join(", ")
   sOutput.clear
@@ -2253,7 +2253,7 @@ End
 '__________________
 Public Sub GetOutput()
 
-If siNum = siCount Then 
+If siNum = siCount Then
   sOutput.add(siInput[siNum])
   Inc siCount
   siNum = siCount
@@ -2532,7 +2532,7 @@ rangeFormat xs =
   intercalate "," $
   (head . ((bool <*> tail) <*> (> 1) . length)) <$>
   groupBy isPrefixOf (rangeString <$> chop succSpan (zip xs (tail xs)))
-  
+
 rangeString [] = ""
 rangeString xxs@(x:xs)
   | null xs = show (snd x)
@@ -2566,9 +2566,9 @@ main =
 ```Icon
 procedure main()
 
-   R := [  0,  1,  2,  4,  6,  7,  8, 11, 12, 14, 
-          15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 
-          25, 27, 28, 29, 30, 31, 32, 33, 35, 36, 
+   R := [  0,  1,  2,  4,  6,  7,  8, 11, 12, 14,
+          15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+          25, 27, 28, 29, 30, 31, 32, 33, 35, 36,
           37, 38, 39 ]
 
    write("Input list      := ",list2string(R))
@@ -2578,7 +2578,7 @@ end
 procedure range_extract(R)         #: return string/range representation of a list of unique integers
 local s,sep,low,high,x
 
-   every if integer(x:= !R) ~= x then fail                  # ensure all are integers, 
+   every if integer(x:= !R) ~= x then fail                  # ensure all are integers,
    R := sort(set(R))                                        # unique, and sorted
 
    s := sep := ""
@@ -2726,18 +2726,18 @@ function rangeExtraction(list) {
   for (i = 0; i < len; i = j + 1) {
     // beginning of range or single
     out.push(list[i]);
-    
+
     // find end of range
     for (var j = i + 1; j < len && list[j] == list[j-1] + 1; j++);
     j--;
-    
+
     if (i == j) {
       // single number
       out.push(",");
     } else if (i + 1 == j) {
       // two numbers
       out.push(",", list[j], ",");
-    } else { 
+    } else {
       // range
       out.push("-", list[j], ",");
     }
@@ -2917,8 +2917,8 @@ Defining the range format in terms of a reusable '''splitBy''' function:
 def extract:
   reduce .[] as $i
     # state is an array with integers or [start, end] ranges
-    ([]; 
-     if length == 0 then [ $i ] 
+    ([];
+     if length == 0 then [ $i ]
      else ( .[-1]) as $last
             | if ($last|type) == "array" then
                 if ($last[1] + 1) == $i then setpath([-1,1]; $i)
@@ -2956,7 +2956,7 @@ function rangeExtraction(list) {
   var len = list.length;
   var out = [];
   var i, j;
- 
+
   for (i = 0; i < len; i = j + 1) {
     // beginning of range or single
     out.push(list[i]);
@@ -3016,7 +3016,7 @@ function sprintfrange{T<:Integer}(a::Array{T,1})
     s = join(s, ",")
     replace(s, r",[,X]+,", "-")
 end
-   
+
 testa = [ 0,  1,  2,  4,  6,  7,  8, 11, 12, 14,
          15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
          25, 27, 28, 29, 30, 31, 32, 33, 35, 36,
@@ -3089,7 +3089,7 @@ fun extractRange(list: List<Int>): String {
     append(list.size - 1)
     return sb.toString()
 }
-  
+
 fun main(args: Array<String>) {
     val list1 = listOf(-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20)
     println(extractRange(list1))
@@ -3186,7 +3186,7 @@ function rangeExtract nums
     set itemDelimiter to "#"
     repeat for each line z in znums
         if z is empty then next repeat
-        switch the number of items of z 
+        switch the number of items of z
             case 1
                 put z & "," after rangedNums
                 break
@@ -3215,7 +3215,7 @@ command testRangeExtract
 end testRangeExtract
 ```
 
-Output: 
+Output:
 ```LiveCode
 0-2,4,6-8,11,12,14-25,27-33,35-39
 ```
@@ -3268,7 +3268,7 @@ print(extractRange(intList))
 
 
 ```Maple
-lst := [0, 1, 2, 4, 6, 7, 8, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 
+lst := [0, 1, 2, 4, 6, 7, 8, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
 25, 27, 28, 29, 30, 31, 32, 33, 35, 36, 37, 38, 39]:
 r1,r2:= lst[1],lst[1]:
 for i from 2 to numelems(lst) do
@@ -3376,14 +3376,14 @@ function S=range_extraction(L)
         if (L(k)+1==L(k+1) && L(k)+2==L(k+2) )
             m = 2;
             while (L(k)+m==L(k+m))
-                m = m+1; 
+                m = m+1;
             end
-            k = k+m-1; 
+            k = k+m-1;
             S = [S,'-',int2str(L(k))];
         else
             k = k+1;
             S = [S,',',int2str(L(k))];
-        end 	   
+        end
     end
 end
 
@@ -3428,7 +3428,7 @@ Example:
 
 ```txt
 USER>SET S="0,1,2,4,6,7,8,11,12,14,15,16,17,18,19,20,21,22,23,24,25,27,28,29,30,31,32,33,35,36,37,38,39"
- 
+
 USER>W $$RANGCONT^ROSETTA(S)
 0-2,4,6-8,11,12,14-25,27-33,35-39
 ```
@@ -3487,7 +3487,7 @@ Say 'new='ol
 
 NetRexx program derived from Rexx
 old=0 1 2 4 6 7 8 11 12 14 15 16 17 18 19 20 21 22 23 24 25 27 28 29 30 31 32 33 35 36 37 38 39
-new=0-2,4,6-8,11,12,14-25,27-33,35-39                   
+new=0-2,4,6-8,11,12,14-25,27-33,35-39
 
 ```
 
@@ -3553,7 +3553,7 @@ method delim(range) private static
 
 -- ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 -- sample driver
-method runSample(arg) public static 
+method runSample(arg) public static
 
 parse arg userInput
 td = 0
@@ -3647,10 +3647,10 @@ echo("""
 class IdentityMatrix {
   function : Main(args : String[]) ~ Nil {
     Compress2Range("-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20")->PrintLine();
-        
+
     Compress2Range("0,  1,  2,  4,  6,  7,  8, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28, 29, 30, 31, 32, 33, 35, 36, 37, 38, 39")->PrintLine();
   }
-  
+
   function : Compress2Range(expanded : String) ~ String {
     result := "";
     nums := expanded->ReplaceAll(" ", "")->Split(",");
@@ -3676,17 +3676,17 @@ class IdentityMatrix {
         firstNum := thisNum;
       };
     };
-      
+
     if(rangeSize <> 0){
       result->Append(firstNum);
       result->Append((rangeSize = 1) ? "," : "-");
       result->Append(firstNum + rangeSize);
       rangeSize := 0;
-    } 
+    }
     else {
       result->Append(firstNum);
     };
-    
+
     return result;
   }
 }
@@ -3705,7 +3705,7 @@ IMPORT Out;
 PROCEDURE Range(s: ARRAY OF INTEGER);
 VAR
 	i,j: INTEGER;
-	
+
 	PROCEDURE Emit(sep: CHAR);
 	BEGIN
 		IF i > 2 THEN
@@ -3716,14 +3716,14 @@ VAR
 			INC(j)
 		END;
 	END Emit;
-	
+
 BEGIN
 	j := 0;i := -1;
 	LOOP
 		INC(i);
-		IF j + i >= LEN(s) THEN 
+		IF j + i >= LEN(s) THEN
 			Emit(0AX);
-			EXIT 
+			EXIT
 		ELSIF s[j + i] # (s[j] + i) THEN
 			Emit(',');
 			i := 0;
@@ -3805,7 +3805,7 @@ END RangeExtraction.
 
 
 =={{header|Objective-C}}==
-We can use <code>NSIndexSet</code> to do this. 
+We can use <code>NSIndexSet</code> to do this.
 However, it only works for non-negative integers.
 {{works with|Mac OS X|10.7+}}
 {{works with|iOS|5+}}
@@ -4063,7 +4063,7 @@ declare
      fun {Loop Ys Start End}
         case Ys
         of Y|Yr andthen Y == End+1 then {Loop Yr Start Y}
-        [] Y|Yr                    then Start#End|{Loop Yr Y Y} 
+        [] Y|Yr                    then Start#End|{Loop Yr Y Y}
         [] nil                     then [Start#End]
         end
      end
@@ -4073,7 +4073,7 @@ declare
      [] nil then nil
      end
   end
-  
+
   fun {RangeToString S#E}
      if E-S >= 2 then
         {VirtualString.toString S#"-"#E}
@@ -4086,7 +4086,7 @@ declare
   fun {CommaSeparated Xs}
      {Flatten {Intersperse "," Xs}}
   end
-   
+
   fun {Intersperse Sep Xs}
      case Xs of X|Y|Xr then
         X|Sep|{Intersperse Sep Y|Xr}
@@ -4478,7 +4478,7 @@ function range-extraction($arr) {
             if($test){"$a-$e"}
             elseif((-not $arr) -and $test){"$a-$d"}
             elseif(-not $arr){"$a-$d,$e"}
-            else{"$a-$d," + (range-extraction (@($e)+$arr))}            
+            else{"$a-$d," + (range-extraction (@($e)+$arr))}
         }
         elseif(($b + 1) -eq $c) {"$a," + (range-extraction (@($b, $c)+$arr))}
         else {"$a,$b," + (range-extraction (@($c)+$arr))}
@@ -4511,7 +4511,7 @@ range-extraction @(0,  1,  2,  4,  6,  7,  8, 11, 12, 14,
 
 Works with SWI-Prolog and library clpfd.<BR>
 The code uses three predicates '''extract_Range/2''', '''study_Range/2''' and '''pack_Range/2'''.<BR>
-Every predicate works in both directions arg1 towards arg2 and arg2 towards arg1, so that '''Range extraction''' and '''Range expansion''' work with the same predicates but in reverse order. 
+Every predicate works in both directions arg1 towards arg2 and arg2 towards arg1, so that '''Range extraction''' and '''Range expansion''' work with the same predicates but in reverse order.
 
 ```Prolog
 range_extract :-
@@ -4620,7 +4620,7 @@ true
 
 ## PureBasic
 
-Even though the example integer list only includes ascending ranges 
+Even though the example integer list only includes ascending ranges
 this code will also handles descending ranges.
 
 ```PureBasic
@@ -4637,13 +4637,13 @@ Read.i elementCount
 For i = 1 To elementCount
   AddElement(values()): Read.i values()
 Next
-  
+
 Procedure.s rangeExtract(List values())
   Protected listSize = ListSize(values()) - 1
   Protected rangeMarker, rangeStart, rangeIncrement, retraceSteps, rangeSize, endOfRange, output.s, sub.s
-  
+
   ForEach values()
-    rangeStart = values(): 
+    rangeStart = values():
     sub = Str(rangeStart)
     If NextElement(values())
       retraceSteps = 1
@@ -4663,33 +4663,33 @@ Procedure.s rangeExtract(List values())
             rangeSize + 1
             rangeMarker = values()
           Wend
-          
+
           If rangeSize > 2
             sub = Str(rangeStart) + "-" + Str(rangeMarker)
             If Not endOfRange
               retraceSteps = 0 ;at end of list
             Else
               retraceSteps = 1
-            EndIf 
+            EndIf
           EndIf
-        EndIf 
+        EndIf
       EndIf
-      
+
       ;return to the value before look-aheads
       While retraceSteps > 0
         PreviousElement(values()): retraceSteps - 1
-      Wend 
+      Wend
     EndIf
-    
-    output + sub + "," 
+
+    output + sub + ","
   Next
-  
+
   ProcedureReturn RTrim(output, ",")
-EndProcedure 
+EndProcedure
 
 If OpenConsole()
   PrintN(rangeExtract(values()))
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -5195,7 +5195,7 @@ Output is the same as above.
 
 int = "0,1,2,4,6,7,8,11,12,14,15,16,17,18,19,20,21,22,23,24,25,27,28,29,30,31,32,33,35,36,37,38,39"
 int = str2list(substr(int, ",", nl))
-sumint = [] 
+sumint = []
 intnew = 1
 for n=1 to len(int)
      flag = 0
@@ -5320,13 +5320,13 @@ Iterators are very Rustic. This solution is generic for all numeric types.
 
 ```rust
 use std::ops::Add;
- 
+
 struct RangeFinder<'a, T: 'a> {
     index: usize,
     length: usize,
     arr: &'a [T],
 }
- 
+
 impl<'a, T> Iterator for RangeFinder<'a, T> where T: PartialEq + Add<i8, Output=T> + Copy {
     type Item = (T,  Option<T>);
     fn next(&mut self) -> Option<Self::Item> {
@@ -5349,7 +5349,7 @@ impl<'a, T> Iterator for RangeFinder<'a, T> where T: PartialEq + Add<i8, Output=
         }
     }
 }
- 
+
 impl<'a, T> RangeFinder<'a, T> {
     fn new(a: &'a [T]) -> Self {
         RangeFinder {
@@ -5405,7 +5405,7 @@ impl<'a, T> Iterator for RangeFinder<'a, T> where T: PartialEq + Add<T, Output=T
 ```
 
 
-And this line: 
+And this line:
 
 ```rust
  while self.index < self.length - 1 && self.arr[self.index + 1] == self.arr[self.index] + 1 {
@@ -5567,7 +5567,7 @@ Handles +/- and negative ranges.
 
 
 ```SNOBOL4
-*       # Absolute value               
+*       # Absolute value
         define('abs(n)') :(abs_end)
 abs     abs = ~(abs = lt(n,0) -n) n :(return)
 abs_end
@@ -5575,14 +5575,14 @@ abs_end
         define('rangext(str)d1,d2') :(rangext_end)
 rangext num = ('+' | '-' | '') span('0123456789')
 rxt1    str ',' span(' ') = ' ' :s(rxt1)
-rxt2    str num . d1 ' ' num . d2 = 
+rxt2    str num . d1 ' ' num . d2 =
 +           d1 ('~,' ? *eq(abs(d2 - d1),1) '~' | ',') d2 :s(rxt2)
 rxt3    str ('~' | '-') num '~' = '-' :s(rxt3)
 rxt4    str '~' = ',' :s(rxt4)
         rangext = str :(return)
 rangext_end
 
-*       # Test and display        
+*       # Test and display
         test =  '0,  1,  2,  4,  6,  7,  8, 11, 12, 14, '
 +              '15, 16, 17, 18, 19, 20, 21, 22, 23, 24, '
 +              '25, 27, 28, 29, 30, 31, 32, 33, 35, 36, '
@@ -5610,7 +5610,7 @@ end
 import Darwin
 
 func ranges(from ints:[Int]) -> [(Int, Int)] {
- 
+
 	var range : (Int, Int)?
 	var ranges = [(Int, Int)]()
 	for this in ints {
@@ -5626,10 +5626,10 @@ func ranges(from ints:[Int]) -> [(Int, Int)] {
 		else { range = (this, this) }
 	}
 	ranges.append(range!)
- 
+
 	return ranges
 }
- 
+
 func description(from ranges:[(Int, Int)]) -> String {
 	var desc = ""
 	for (start, end) in ranges {
@@ -5646,14 +5646,14 @@ func description(from ranges:[(Int, Int)]) -> String {
 	}
 	return desc
 }
- 
- 
+
+
 let ex = [-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]
 let longer = [0,  1,  2,  4,  6,  7,  8, 11, 12, 14,
 	15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
 	25, 27, 28, 29, 30, 31, 32, 33, 35, 36,
 	37, 38, 39]
- 
+
 print(description(from: ranges(from: ex)))
 print(description(from: ranges(from: longer)))
 
@@ -6061,7 +6061,7 @@ Function Range_Extraction(list)
 	Next
 	Range_Extraction = Left(Range_Extraction,Len(Range_Extraction)-1)
 End Function
- 
+
 WScript.StdOut.Write Range_Extraction("0,1,2,4,6,7,8,11,12,14,15,16,17,18,19,20,21,22,23,24,25,27,28,29,30,31,32,33,35,36,37,38,39")
 ```
 
@@ -6089,9 +6089,9 @@ fcn range(ns){
 }
 ```
 
-The trick here is to use a modified iterator, 
-one that can look past the end of the sequence without puking. 
-The function gathers three or more successive ints (saved as a "a-b" string list element) or just returns the first one (as a number) if it can't. 
+The trick here is to use a modified iterator,
+one that can look past the end of the sequence without puking.
+The function gathers three or more successive ints (saved as a "a-b" string list element) or just returns the first one (as a number) if it can't.
 The resulting list is converted to strings separated by commas.
 
 ```zkl

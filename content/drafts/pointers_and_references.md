@@ -96,8 +96,8 @@ The forthcoming standard (Ada 2012) allows a more direct way to reference all th
 
 ```ada
 type Container is array (Positive range <>) of Element;
-for Item of Container loop 
-      Do_Something(Item);  
+for Item of Container loop
+      Do_Something(Item);
 end loop;
 ```
 
@@ -214,26 +214,26 @@ MsgBox % *&var ; integer at address of var contents  (87)
       pointer_to_varA = ^varA%
       !pointer_to_varA = 123456
       PRINT !pointer_to_varA
-      
+
       REM Pointer to variant variable:
       pointer_to_varB = ^varB
       |pointer_to_varB = PI
       PRINT |pointer_to_varB
-      
+
       REM Pointer to procedure:
       PROCmyproc : REM conventional call to initialise
       pointer_to_myproc = ^PROCmyproc
       PROC(pointer_to_myproc)
-      
+
       REM Pointer to function:
       pointer_to_myfunc = ^FNmyfunc
       PRINT FN(pointer_to_myfunc)
       END
-      
+
       DEF PROCmyproc
       PRINT "Executing myproc"
       ENDPROC
-      
+
       DEF FNmyfunc
       = "Returned from myfunc"
 ```
@@ -315,8 +315,8 @@ v = *(pointer - 1); /* array[0] */
 The following code snippet shows a practical example of using pointers in C with structs. Note there are many ways to access to a value using the * operator.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct {
@@ -685,10 +685,10 @@ E is a [[memory-safe]] [[object-graph]] language, and as such uses only object r
 
  var x := 0
  def slot := &x # define "slot" to be x's slot
- 
+
  x := 1         # direct assignment; value is now 1
  slot.put(2)    # via slot object; value is now 2
- 
+
 There are also mutable data structures:
 
  def flexList := [].diverge()
@@ -718,9 +718,9 @@ No pointers in EchoLisp. '''Boxes ''' or vectors can be used  to perform call-by
     → 42 ;; box contents
 
 ;; sets new value for box contents
-(define ( change-by-ref abox avalue) 
+(define ( change-by-ref abox avalue)
     (set-box! abox avalue) )
-  
+
 (change-by-ref B 666)
     → #[box 666]
 (unbox B)
@@ -1254,12 +1254,12 @@ Module TestFuncRef {
       TestFun &K()  ' 30
       K=Lambda Z=50 (x)->x**3/Z
       TestFun &K()  ' 60
-      
+
       M$=Lambda$ t$="9876543210" (x)->Mid$(t$,x+1,1)
       Module TestFun2 (&L$) {
             For i=4 to 7 : Print L$(i): Next i
       }
-      
+
       TestFun2 &M$
       Module TestFun2 (&L$()) {
             For i=4 to 7 : Print L$(i): Next i
@@ -1315,7 +1315,7 @@ ShowModalFormWithCLock
 
 
 ### Pointer of Container
- 
+
 There are three containers, Arrays, Inventories and Stacks. Arrays have two interfaces, the value one and the pointer one. The value one has parenthesis in the name. Containers may have items other containers. Usually containers combined with functions and statements, but because  they are COM objects (but pointers inside work different from other Com objects), we can use statemends Method and With as for com objects.
 
 ```M2000 Interpreter
@@ -1381,7 +1381,7 @@ Module GroupPointers {
       Print P.A(2)=Zeta.A(2) ' True because its member is a reference
       Print L.A(2)=1 ' True
       Print M=>A(2)=Zeta.A(2) 'True
-      Print N=>A(2)=Zeta.A(2) 'False 
+      Print N=>A(2)=Zeta.A(2) 'False
       Print N=>A(2)=L.A(2) ' True
       N->0& ' Null
       N->M ' pointers can point to another group.
@@ -1415,7 +1415,7 @@ Module CheckGroupRef {
                   Set {
                      read x
                      Link parent acc to acc
-                     acc+=x   
+                     acc+=x
                   }
             }
              Property X { Value }=100
@@ -1424,7 +1424,7 @@ Module CheckGroupRef {
                   .[X]++
             }
       }
-      
+
       Module GetIt (&Fun()) {
             Print Fun(30)
       }
@@ -1601,7 +1601,7 @@ p := k + 1;;    (* set the value inside to a new value *)
 ## Oforth
 
 
-Oforth does not have pointers and all Oforth objets are implicitly references to objects. 
+Oforth does not have pointers and all Oforth objets are implicitly references to objects.
 
 The data stack only holds references to objects. When you use dup, swap, over, ... you work on those references : objects are not copied.
 
@@ -1620,16 +1620,16 @@ If the object that a reference is pointing to is mutable (i.e. it has methods th
 ```oorexx
 
  ::class Foo
- ::method init 
+ ::method init
    expose x
-   x = 0 
- ::attribute x   
+   x = 0
+ ::attribute x
 
  ::routine somefunction
-     a = .Foo~new   -- assigns a to point to a new Foo object 
-     b = a          -- b and a now point to the same object 
+     a = .Foo~new   -- assigns a to point to a new Foo object
+     b = a          -- b and a now point to the same object
      a~x = 5        -- modifies the X variable inside the object pointer to by a
-     say b~x        -- displays "5" because b points to the same object as a 
+     say b~x        -- displays "5" because b points to the same object as a
 
 ```
 
@@ -1706,7 +1706,7 @@ Perl has "references" that roughly correspond with "smart pointers" of C-like la
  my $scalar = 'aa';
  my @array = ('bb', 'cc');
  my %hash = ( dd => 'DD', ee => 'EE' );
- 
+
  # make references
  my $scalarref = \$scalar;
  my $arrayref = \@array;
@@ -1723,7 +1723,7 @@ Using a reference
  print @$arrayref;      # 'bbcc'
  print $arrayref->[1];  # 'cc'
  print $hashref->{ee};  # 'EE'
- 
+
  # changing the value
  $$scalarref = 'a new string'; # changes $scalar
  $arrayref->[0] = 'foo';       # changes the first value of @array
@@ -1781,7 +1781,7 @@ free(addr)
 ```
 
 There are in fact 5 variants of poke: poke1, poke2, poke4, poke8, and pokeN which allows the size to be dynamically specified.
-Likewise there are 9 versions of peek: peek1s, peek2s, peek4s, peek8s, peek1u, peek2u, peek4u, peek8u, and peekNS, and again the 
+Likewise there are 9 versions of peek: peek1s, peek2s, peek4s, peek8s, peek1u, peek2u, peek4u, peek8u, and peekNS, and again the
 latter allows the size and signed flag to be dynamically specified. All variants can peek/poke a single byte/word/dword/qword or
 a specified number of consecutive such from the specified address. Note that floating point values need to go via atom_to_float32
 or float32_to_atom, where 32 could also be 64 or 80.
@@ -1816,7 +1816,7 @@ string mystring = "mystring"
 ```
 
 Of course in a reference counted language like Phix, playing directly with the innards like that may have dire unexpected side effects.
-        
+
 Phix does not have references, however everything is passed by reference, with copy-on-write semantics. Unless the source and destination are the same, and it is local, so it cannot possibly be referenced elsewhere, in which case automatic pass-by-reference is used, which for Phix means skipping the reference counting. For example:
 
 ```Phix
@@ -2038,7 +2038,7 @@ Dim myArray(10)
 *myInteger = @myArray(4) ;element 4
 ```
 
-PureBasic does not provide pointer arithmetic but it does allow integer math operations on its pointers.  This makes it easy to implement a variety of pointer arithmetic with the help of the compiler function <tt>SizeOf()</tt>.  
+PureBasic does not provide pointer arithmetic but it does allow integer math operations on its pointers.  This makes it easy to implement a variety of pointer arithmetic with the help of the compiler function <tt>SizeOf()</tt>.
 
 ```PureBasic
 *myInteger + 3 * SizeOf(Integer) ;pointer now points to myArray(3)
@@ -2073,7 +2073,7 @@ Addresses to variables and functions are obtained with the '@' operator.
 
 ### Addresses of labels
 
-To find the address of a label, you put a question mark (?) in front of the label name. 
+To find the address of a label, you put a question mark (?) in front of the label name.
 
 ```PureBasic
 ; Getting the address of a lable in the code
@@ -2269,17 +2269,17 @@ This second technique is most commonly used between stack levels (i.e., with the
 
 Toka is an untyped language, and treats pointers in a manner similar to that of assembly language. In Toka, memory can be addressed in characters and cells. Cells are the native word size of the host processor, and are generally either 32 or 64 bits in size. Address alignment is dependent on the host processor.
 
-To declare a variable that lives in memory: 
+To declare a variable that lives in memory:
 
  variable myvar   #! stores 1 cell
 
-This creates the word "myvar", which when executed leaves the address of a cell of memory on the stack. This address may be accessed with @ (fetch) or ! (store): 
+This creates the word "myvar", which when executed leaves the address of a cell of memory on the stack. This address may be accessed with @ (fetch) or ! (store):
 
  1 myvar !  #! place the value 1 into myvar
  myvar @ .  #! prints the value stored in myvar
  1 myvar +! #! add 1 to the value stored in myvar
 
-Other fetch and store operations: 
+Other fetch and store operations:
  c@ c!  \ fetch/store a single character
  @  !   \ fetch/store one cell
 
@@ -2290,12 +2290,12 @@ Toka also has an optional "value", which is a construct similar to other languag
  myval .         #! prints 10
  20 to myval     #! Changes myval to return 20 instead of 10
 
-Toka has a concept similar to that of function pointers. The word ` returns the address of a quote which can be invoked or passed around. 
+Toka has a concept similar to that of function pointers. The word ` returns the address of a quote which can be invoked or passed around.
 
  ` myval         #! Leaves the address of myval on the stack
  ` myval invoke  #! Equivalent to just typing "myval"
 
-For pointer arithmetic, standard integer math operations may be used. There are some words that are specifically designed to enable portable pointer arithmetic: 
+For pointer arithmetic, standard integer math operations may be used. There are some words that are specifically designed to enable portable pointer arithmetic:
 
  cell-size   #! Puts the number of bytes in one cell on the stack
  cell+       #! Adds one cell
@@ -2314,7 +2314,7 @@ For pointer arithmetic, standard integer math operations may be used. There are 
 int Var, Ptr, V;
 Ptr:= @Var;
 
-\Access the integer variable through the pointer: 
+\Access the integer variable through the pointer:
 Var:= 3;
 V:= Ptr(0);     \set V to the value of Var, i.e. 3
 Ptr(0):= 42;    \set Var to 42
@@ -2326,7 +2326,7 @@ Ptr:= @OtherVar;
 \Change the pointer to not point to anything:
 Ptr:= 0;        \or any integer expression that evaluates to 0
 
-\Set the pointer to the first item of an array: 
+\Set the pointer to the first item of an array:
 int Array(10);
 Ptr:= Array;
 \Or alternatively:

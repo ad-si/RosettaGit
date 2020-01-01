@@ -13,8 +13,8 @@ tags = []
 {{collection|Go Fish}}
 Reasonably smart computer AI.  Programs require utf-8 locale.  AI keeps a record of probabilities of each card player may have and always asks for the card with highest score (which backfires quite often btw).
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
 #include <ctype.h>
@@ -405,7 +405,7 @@ void check_opponent_draw(player p)
 
 	for (i = 1; i < 14; i++) {
 		if (ai->prob[i] < 0 || ai->prob[i] >= 1) continue;
-		sum += ai->n_wild[i]; 
+		sum += ai->n_wild[i];
 	}
 	for (i = 1; i < 14; i++) {
 		if (ai->prob[i] < 0 || ai->prob[i] >= 1) continue;

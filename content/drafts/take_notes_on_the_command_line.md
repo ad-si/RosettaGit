@@ -16,9 +16,9 @@ tags = []
 {{omit from|Openscad}}
 {{omit from|ZX Spectrum Basic|Does not support command line parameters}}
 
-Invoking NOTES without commandline arguments displays the current contents of the local NOTES.TXT if it exists. 
-If NOTES has arguments, the current date and time are appended to the local NOTES.TXT followed by a newline. 
-Then all the arguments, joined with spaces, prepended with a tab, and appended with a trailing newline, are written to NOTES.TXT. 
+Invoking NOTES without commandline arguments displays the current contents of the local NOTES.TXT if it exists.
+If NOTES has arguments, the current date and time are appended to the local NOTES.TXT followed by a newline.
+Then all the arguments, joined with spaces, prepended with a tab, and appended with a trailing newline, are written to NOTES.TXT.
 If NOTES.TXT doesn't already exist in the current directory then a new NOTES.TXT file should be created.
 
 
@@ -121,7 +121,7 @@ if (argc() == 1) {
 
 ## AppleScript
 
-Requires a modernish version of OS X (Lion or later) on which osascript works as a shebang interpreter.  
+Requires a modernish version of OS X (Lion or later) on which osascript works as a shebang interpreter.
 
 ```applescript
 #!/usr/bin/osascript
@@ -189,10 +189,10 @@ on run argv
        return paragraphs of (read notesFile) as text
     else
        log "No notes here."
-       return 
+       return
     end if
   else
-    try 
+    try
       set fd to open for access notesFile with write permission
       write (iso8601() & linefeed & tab) to fd starting at eof
       set AppleScript's text item delimiters to {" "}
@@ -291,7 +291,7 @@ function update_log(  i,q) {
 
 {{works with|QuickBASIC|7}}
 
-An implementation of <code>DIR$</code> is all that's required 
+An implementation of <code>DIR$</code> is all that's required
 for this to work with older versions of QB.
 
 
@@ -341,18 +341,18 @@ This must be compiled to an EXE and run from the command prompt.
       REM!Exefile C:\NOTES.EXE, encrypt, console
       REM!Embed
       LF = 10
-      
+
       SYS "GetStdHandle", -10 TO @hfile%(1)
       SYS "GetStdHandle", -11 TO @hfile%(2)
       SYS "SetConsoleMode", @hfile%(1), 0
       *INPUT 13
       *OUTPUT 14
       ON ERROR PRINT REPORT$ : QUIT ERR
-      
+
       notes% = OPENUP(@dir$ + "NOTES.TXT")
       IF notes% = 0 notes% = OPENOUT(@dir$ + "NOTES.TXT")
       IF notes% = 0 PRINT "Cannot open or create NOTES.TXT" : QUIT 1
-      
+
       IF @cmd$ = "" THEN
         WHILE NOT EOF#notes%
           INPUT #notes%, text$
@@ -364,7 +364,7 @@ This must be compiled to an EXE and run from the command prompt.
         PRINT #notes%,TIME$ : BPUT#notes%,LF
         PRINT #notes%,CHR$(9) + @cmd$ : BPUT#notes%,LF
       ENDIF
-      
+
       CLOSE #notes%
       QUIT
 ```
@@ -374,8 +374,8 @@ This must be compiled to an EXE and run from the command prompt.
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <time.h>
 
 #define note_file "NOTES.TXT"
@@ -413,8 +413,8 @@ int main(int argc, char**argv)
 ## C++
 
 
-```cpp>#include <fstream
-
+```cpp
+#include <fstream>
 #include <iostream>
 #include <ctime>
 using namespace std;
@@ -453,7 +453,7 @@ int main(int argc, char **argv)
 }
 ```
 
-	
+
 =={{header|C sharp|C#}}==
 
 ```csharp
@@ -520,7 +520,7 @@ namespace RosettaCode
 
 rayne@ubuntu:~/cljprojs/rosettacode$ java -cp 'lib/*' clojure.main src/rosettacode/notes.clj I tawt I taw a puddy cat!
 rayne@ubuntu:~/cljprojs/rosettacode$ java -cp 'lib/*' clojure.main src/rosettacode/notes.clj I did! I did!
-rayne@ubuntu:~/cljprojs/rosettacode$ cat NOTES.txt 
+rayne@ubuntu:~/cljprojs/rosettacode$ cat NOTES.txt
 Wed Dec 29 14:09:24 CST 2010
 	I tawt I taw a puddy cat!
 Wed Dec 29 14:09:28 CST 2010
@@ -591,7 +591,7 @@ Wed Dec 29 14:09:28 CST 2010
                PERFORM FOREVER
 *                  *> READ has no syntax highlighting, but END-READ does.
 *                  *> Go figure.
-                   READ notes 
+                   READ notes
                        AT END
                            EXIT PERFORM
 
@@ -602,14 +602,14 @@ Wed Dec 29 14:09:28 CST 2010
            ELSE
                OPEN EXTEND notes
 
-*              *> Write date and time to file.       
+*              *> Write date and time to file.
                ACCEPT date-now FROM DATE YYYYMMDD
                ACCEPT time-now FROM TIME
                STRING current-year "-" current-month "-" current-day
                    " " current-hour ":" current-min ":" current-sec
                    INTO note-record
                WRITE note-record
-               
+
 *              *> Write arguments to file as they were passed.
                STRING X"09", args INTO note-record
                WRITE note-record
@@ -773,10 +773,10 @@ switch (interp.getArgs()) {
 ```elixir
 defmodule Take_notes do
   @filename "NOTES.TXT"
-  
+
   def main( [] ), do: display_notes
   def main( arguments ), do: save_notes( arguments )
-  
+
   def display_notes, do: IO.puts File.read!(@filename)
 
   def save_notes( arguments ) do
@@ -874,11 +874,11 @@ let file_path = "notes.txt";;
 let show_notes () =
     try
         printfn "%s" <| File.ReadAllText(file_path)
-    with 
+    with
         _ -> printfn "Take some notes first!";;
 
 let take_note (note : string) =
-    let now = DateTime.Now.ToString() in 
+    let now = DateTime.Now.ToString() in
     let note = sprintf "%s\n\t%s" now note in
     use file_stream = File.AppendText file_path in (* 'use' closes file_stream automatically when control leaves the scope *)
         file_stream.WriteLine note;;
@@ -945,17 +945,17 @@ class Notes
     notesFile := File(`notes.txt`) // the backticks make a URI
     if (args.isEmpty)
     {
-      if (notesFile.exists) 
+      if (notesFile.exists)
       {
         notesFile.eachLine |line| { echo (line) }
       }
     }
     else
     {
-      // notice the following uses a block so the 'printLine/close' 
+      // notice the following uses a block so the 'printLine/close'
       // operations are all applied to the same output stream for notesFile
-      notesFile.out(true) // 'true' to append to file 
-      { 
+      notesFile.out(true) // 'true' to append to file
+      {
         printLine ( DateTime.now.toLocale("DD-MM-YY hh:mm:ss").toStr )
         printLine ( "\t" + args.join(" ") )
         close
@@ -975,7 +975,7 @@ Sample:
 $ fan notes.fan started notes file
 $ fan notes.fan added second set of notes
 $ fan notes.fan and a third
-$ fan notes.fan 
+$ fan notes.fan
 30-01-11 12:30:05
 	started notes file
 30-01-11 12:30:17
@@ -996,7 +996,7 @@ The following is SwiftForth-specific, and runs in the Forth environment rather t
 vocabulary note-words
 get-current also note-words definitions
 
-\ -- notes.txt 
+\ -- notes.txt
 variable file
 : open       s" notes.txt" r/w open-file if
              s" notes.txt" r/w create-file throw then file ! ;
@@ -1030,7 +1030,7 @@ create buf 4096 allot
   date write space time write cr
   tab ( note ) write cr ;
 
-set-current 
+set-current
 
 \ -- note
 : note ( "note" -- )
@@ -1058,7 +1058,7 @@ include lib/ansfacil.4th
 : -00 <# # # [char] - hold #> type ;
 : .time 0 .r :00 :00 ;
 : .date 0 .r -00 -00 ;
- 
+
 \ -- add note
 : add-note ( c-addr u -- )
   output append [+] 1 arg-open -rot
@@ -1278,7 +1278,7 @@ end
 
 procedure main (args)
   notes_file := "notes.txt"
-  if *args = 0 
+  if *args = 0
     then write_out_notes (notes_file)
     else add_to_notes (notes_file, args)
 end
@@ -1295,13 +1295,13 @@ no notes file yet
 $ ./take-notes finished notes program
 $ ./take-notes
 Thu Jun  2 23:39:49 2011
-	finished notes program 
+	finished notes program
 $ ./take-notes for Unicon
 $ ./take-notes
 Thu Jun  2 23:39:49 2011
-	finished notes program 
+	finished notes program
 Thu Jun  2 23:40:13 2011
-	for Unicon 
+	for Unicon
 
 ```
 
@@ -1557,9 +1557,9 @@ if #arg == 0 then
     end
 else
     fp = io.open( filename, "a+" )
-	
+
     fp:write( os.date( "%x %X\n" ) )
-	
+
     fp:write( "\t" )
     for i = 1, #arg do
 	fp:write( arg[i], " " )
@@ -1574,10 +1574,10 @@ end
 
 ## Mathematica
 
-<lang>If[Length[$CommandLine < 11], str = OpenRead["NOTES.TXT"]; 
- Print[ReadString[str, EndOfFile]]; Close[str], 
- str = OpenAppend["NOTES.TXT"]; WriteLine[str, DateString[]]; 
- WriteLine[str, "\t" <> StringRiffle[$CommandLine[[11 ;;]]]]; 
+<lang>If[Length[$CommandLine < 11], str = OpenRead["NOTES.TXT"];
+ Print[ReadString[str, EndOfFile]]; Close[str],
+ str = OpenAppend["NOTES.TXT"]; WriteLine[str, DateString[]];
+ WriteLine[str, "\t" <> StringRiffle[$CommandLine[[11 ;;]]]];
  Close[str]]
 ```
 
@@ -1587,31 +1587,31 @@ end
 
 ```Matlab
  function notes(varargin)
-    % NOTES can be used for taking notes 
+    % NOTES can be used for taking notes
     % usage:
     %    notes    displays the content of the file NOTES.TXT
-    %    notes arg1 arg2 ... 
+    %    notes arg1 arg2 ...
     %             add the current date, time and arg# to NOTES.TXT
     %
 
-    filename = 'NOTES.TXT'; 
+    filename = 'NOTES.TXT';
     if nargin==0
 	fid = fopen(filename,'rt');
-	if fid<0, return; end; 
+	if fid<0, return; end;
 	while ~feof(fid)
 		fprintf('%s\n',fgetl(fid));
-	end; 
-	fclose(fid); 
+	end;
+	fclose(fid);
     else
         fid = fopen(filename,'a+');
-	if fid<0, error('cannot open %s\n',filename); end; 
+	if fid<0, error('cannot open %s\n',filename); end;
         fprintf(fid, '%s\n\t%s', datestr(now),varargin{1});
         for k=2:length(varargin)
             fprintf(fid, ', %s', varargin{k});
-	end; 
+	end;
 	fprintf(fid,'\n');
 	fclose(fid);
-    end;    
+    end;
 ```
 
 
@@ -1771,7 +1771,7 @@ define
    fun {Join X|Xr Sep}
       {FoldL Xr fun {$ Z X} Z#Sep#X end X}
    end
-   
+
    case {Application.getArgs plain}
    of nil then
       try
@@ -1779,7 +1779,7 @@ define
       in
          {System.printInfo {F read(list:$ size:all)}}
          {F close}
-      catch _ then skip end      
+      catch _ then skip end
    [] Args then
       F = {New Open.file init(name:"notes.txt" flags:[write text create append])}
    in
@@ -1803,7 +1803,7 @@ Free Pascal in Delphi mode or Delphi in console mode.
 {$mode delphi}
 PROGRAM notes;
 // Notes: a time-stamped command line notebook
-// usage: >notes "note"< or >notes< to display contents  
+// usage: >notes "note"< or >notes< to display contents
 USES Classes, SysUtils;
 
 VAR
@@ -1812,7 +1812,7 @@ VAR
 	Dtime : STRING;
 	Ntext : STRING;
 	c     : Cardinal;
-	
+
 BEGIN
 	DTime := FormatDateTime('YYYY-MM-DD-hhnn',Now);
 	Note  := TStringList.Create;
@@ -2087,7 +2087,7 @@ After assorted runs:
 <?php
 if ($argc > 1)
     file_put_contents(
-        'notes.txt', 
+        'notes.txt',
         date('r')."\n\t".implode(' ', array_slice($argv, 1))."\n",
         FILE_APPEND
     );
@@ -2105,7 +2105,7 @@ Note that the error suppression operator (@) is considered bad coding practice.
 
 zls@zls:~$ ./notes hello rosetta code
 zls@zls:~$ ./notes todo notes program
-zls@zls:~$ ./notes 
+zls@zls:~$ ./notes
 Tue, 12 Jun 2012 19:27:35 +0200
 	hello rosetta code
 Tue, 12 Jun 2012 19:27:45 +0200
@@ -2182,7 +2182,7 @@ either any [none? args: system/script/args  empty? args] [
 {{out|Sample session}}
 
 ```txt
-> rebol -w notes.r 
+> rebol -w notes.r
 > rebol -w notes.r "Test line 1"
 > rebol -w notes.r "Test" "line" "2"
 > rebol -w notes.r Test line 3
@@ -2237,7 +2237,7 @@ end
 
 ## Rust
 
-This uses version 0.4 of the <code>chrono</code> crate 
+This uses version 0.4 of the <code>chrono</code> crate
 
 ```Rust
 extern crate chrono;
@@ -2303,7 +2303,7 @@ object TakeNotes extends App {
     ps.println(LocalDateTime.now() + args.mkString("\n\t", " ", "."))
     ps.close()
   } else try {
-    io.Source.fromFile(notesFileName).getLines().foreach(println) 
+    io.Source.fromFile(notesFileName).getLines().foreach(println)
   } catch {
     case e: FileNotFoundException => println(e.getLocalizedMessage())
     case e: Throwable => {
@@ -2483,9 +2483,9 @@ Example output
 ```txt
 
 2015.01.22 at 14:19:18 EST
-	this is a note 
+	this is a note
 2015.01.22 at 14:19:36 EST
-	this is something important 
+	this is something important
 
 ```
 
@@ -2605,7 +2605,7 @@ File notes.zkl:
 ```zkl
 const notesName="NOTES.TXT";
 args:=vm.arglist;
-if (not args) 
+if (not args)
    { try{ File(notesName).read(*).text.print(); } catch{println("no file")} }
 else{
    f:=File(notesName,"a+");

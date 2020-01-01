@@ -13,45 +13,45 @@ tags = []
 {{task|Sorting Algorithms}}{{Sorting Algorithm}}
 
 ;Task:
-Sort an array of elements using the [[wp:Shell sort|Shell sort]] algorithm, a diminishing increment sort. 
+Sort an array of elements using the [[wp:Shell sort|Shell sort]] algorithm, a diminishing increment sort.
 
 The Shell sort   (also known as Shellsort or Shell's method)   is named after its inventor, Donald Shell, who published the algorithm in 1959.
- 
-Shell sort is a sequence of interleaved insertion sorts based on an increment sequence. 
-The increment size is reduced after each pass until the increment size is 1. 
 
-With an increment size of 1, the sort is a basic insertion sort, but by this time the data is guaranteed to be almost sorted, which is insertion sort's "best case". 
+Shell sort is a sequence of interleaved insertion sorts based on an increment sequence.
+The increment size is reduced after each pass until the increment size is 1.
 
-Any sequence will sort the data as long as it ends in 1, but some work better than others. 
+With an increment size of 1, the sort is a basic insertion sort, but by this time the data is guaranteed to be almost sorted, which is insertion sort's "best case".
+
+Any sequence will sort the data as long as it ends in 1, but some work better than others.
 
 Empirical studies have shown a geometric increment sequence with a ratio of about 2.2 work well in practice.
-[http://www.cs.princeton.edu/~rs/shell/]  
+[http://www.cs.princeton.edu/~rs/shell/]
 
 Other good sequences are found at the [https://oeis.org/search?q=shell+sort On-Line Encyclopedia of Integer Sequences].
 
 
 
- 
+
 
 ## 360 Assembly
 
 {{trans|PL/I}}
-The program uses ASM structured macros and two ASSIST macros to keep the code as short as possible. 
+The program uses ASM structured macros and two ASSIST macros to keep the code as short as possible.
 
 ```360asm
-*        Shell sort                24/06/2016 
+*        Shell sort                24/06/2016
 SHELLSRT CSECT
          USING  SHELLSRT,R13       base register
          B      72(R15)            skip savearea
          DC     17F'0'             savearea
          STM    R14,R12,12(R13)    prolog
          ST     R13,4(R15)         "
-         ST     R15,8(R13)         " 
+         ST     R15,8(R13)         "
          LR     R13,R15            "
          L      RK,N               incr=n
          SRA    RK,1               incr=n/2
          DO WHILE=(LTR,RK,P,RK)    do while(incr>0)
-         LA     RI,1(RK)             i=1+incr    
+         LA     RI,1(RK)             i=1+incr
          DO WHILE=(C,RI,LE,N)        do i=1+incr to n
          LR     RJ,RI                  j=i
          LR     R1,RI                  i
@@ -68,7 +68,7 @@ SHELLSRT CSECT
          LR     R5,RJ                  j
          SLA    R5,2                   .
          LA     R5,A-4(R5)             @a(j)
-*        do while j-incr>=1 and a(j-incr)>temp 
+*        do while j-incr>=1 and a(j-incr)>temp
          DO WHILE=(CR,RJ,GE,R2,AND,C,RT,LT,0(R3))
          L      R0,0(R3)                 a(j-incr)
          ST     R0,0(R5)                 a(j)=a(j-incr)
@@ -100,7 +100,7 @@ SHELLSRT CSECT
          LA     RI,1(RI)             i=i+1
          ENDDO  ,                  end do
          XPRNT  PG,L'PG            print buffer
-         L      R13,4(0,R13)       epilog 
+         L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
@@ -171,7 +171,7 @@ end Shell_Sort;
 
 ```ada
 package body Shell_Sort is
-   
+
    ----------
    -- Sort --
    ----------
@@ -214,7 +214,7 @@ end Shell_Sort;
 ```algol68
 # -*- coding: utf-8 -*- #
 
-COMMENT 
+COMMENT
   REQUIRES(
     MODE SORTELEMENT = mode of element of array to be sorted...
     OP < = (SORTELEMENT a, b)BOOL: a < b;
@@ -235,8 +235,8 @@ PROC sort gap shell = (INT k, n)INT: n OVER 2;
 #     2**k+1, prefixed with 1; 1, 3, 5, 9, 17, 33, 65, ...; Θ(n**(3/2)); Papernov & Stasevich, 1965 #
 #     successive numbers of the form 2**p 3**q; 1, 2, 3, 4, 6, 8, 9, 12, ...; Θ(n log**2 n); Pratt 1971 #
 #     (3**k-1)/2, not greater than ⌈n/3⌉; 1, 4, 13, 40, 121, ...; Θ(n**(3/2)); Knuth 1973 #
-#     ∏a[q], where r=⌊√(2k+√(2k))⌋ and a[q]=min(n∈𝒩:n≥(5/2)**(q+1) and ∀ p:0≤ p<q → gcd(a[p],n)=1); 
-      limit where 0≤q<r and q≠(r**2+r)/2-k 
+#     ∏a[q], where r=⌊√(2k+√(2k))⌋ and a[q]=min(n∈𝒩:n≥(5/2)**(q+1) and ∀ p:0≤ p<q → gcd(a[p],n)=1);
+      limit where 0≤q<r and q≠(r**2+r)/2-k
          1, 3, 7, 21, 48, 112, ...; O(n e**√(8ln(5/2)ln n)); Incerpi & Sedgewick, 1985 #
 #     4**k+3×2**(k-1)+1, prefixed with 1; 1, 8, 23, 77, 281, ...; Θ(n**(4/3)); Sedgewick, 1986 #
 #     9(4**(k-1)-2**(k-1))+1, 4**(k+1)-6×2**k+1; 1, 5, 19, 41, 109, ...; Θ(n**(4/3)); Sedgewick, 1986 #
@@ -303,7 +303,7 @@ print((shell sort(char array data), new line))
 
 /* ARM assembly Raspberry PI  */
 /*  program shellSort.s   */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -319,7 +319,7 @@ szMessSortNok:      .asciz "Table not sorted !!!!!.\n"
 sMessResult:        .ascii "Value  : "
 sMessValeur:        .fill 11, 1, ' '            @ size => 11
 szCarriageReturn:   .asciz "\n"
- 
+
 .align 4
 iGraine:  .int 123456
 .equ NBELEMENTS,      10
@@ -328,24 +328,24 @@ TableNumber:     .int   10,9,8,7,6,5,4,3,2,1
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                             @ entry of program 
- 
+.global main
+main:                                             @ entry of program
+
 1:
     ldr r0,iAdrTableNumber                        @ address number table
     mov r1,#0                                     @ not use in routine
-    mov r2,#NBELEMENTS                            @ number of élements 
+    mov r2,#NBELEMENTS                            @ number of élements
     bl shellSort
     ldr r0,iAdrTableNumber                        @ address number table
     bl displayTable
- 
+
     ldr r0,iAdrTableNumber                        @ address number table
-    mov r1,#NBELEMENTS                            @ number of élements 
+    mov r1,#NBELEMENTS                            @ number of élements
     bl isSorted                                   @ control sort
     cmp r0,#1                                     @ sorted ?
     beq 2f
@@ -355,11 +355,11 @@ main:                                             @ entry of program
 2:                                                @ yes
     ldr r0,iAdrszMessSortOk
     bl affichageMess
-100:                                              @ standard end of the program 
+100:                                              @ standard end of the program
     mov r0, #0                                    @ return code
     mov r7, #EXIT                                 @ request to exit program
     svc #0                                        @ perform the system call
- 
+
 iAdrsMessValeur:          .int sMessValeur
 iAdrszCarriageReturn:     .int szCarriageReturn
 iAdrsMessResult:          .int sMessResult
@@ -367,7 +367,7 @@ iAdrTableNumber:          .int TableNumber
 iAdrszMessSortOk:         .int szMessSortOk
 iAdrszMessSortNok:        .int szMessSortNok
 /******************************************************************/
-/*     control sorted table                                   */ 
+/*     control sorted table                                   */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the number of elements  > 0  */
@@ -389,7 +389,7 @@ isSorted:
     b 1b
 100:
     pop {r2-r4,lr}
-    bx lr                                              @ return 
+    bx lr                                              @ return
 /***************************************************/
 /*   shell Sort                                    */
 /***************************************************/
@@ -406,7 +406,7 @@ shellSort:
 1:                               @ start loop 1
     lsrs r1,#1                   @ gap = gap / 2
     beq 100f                     @ if gap = 0 -> end
-    mov r3,r1                    @ init loop indice 1 
+    mov r3,r1                    @ init loop indice 1
 2:                               @ start loop 2
     ldr r4,[r0,r3,lsl #2]        @ load first value
     mov r5,r3                    @ init loop indice 2
@@ -425,14 +425,14 @@ shellSort:
     cmp r3,r2                    @ end ?
     ble 2b                       @ no -> loop 2
     b 1b                         @ yes loop for new gap
- 
+
 100:                             @ end function
     pop {r0-r7,lr}               @ restaur registers
-    bx lr                        @ return 
+    bx lr                        @ return
 
 
 /******************************************************************/
-/*      Display table elements                                */ 
+/*      Display table elements                                */
 /******************************************************************/
 /* r0 contains the address of table */
 displayTable:
@@ -454,41 +454,41 @@ displayTable:
     pop {r0-r3,lr}
     bx lr
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
- 
+
 1:                                                  @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b                                          @ and loop
                                                     @ and move digit from left of area
@@ -501,23 +501,23 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -525,12 +525,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 ```
@@ -563,7 +563,7 @@ ShellSort(var) {                         ; SORT COMMA SEPARATED LIST
    Return SubStr(s,2)                    ; drop leading comma
 }
 ```
- 
+
 
 
 ## AWK
@@ -588,7 +588,7 @@ END { # sort it with shell sort
     }
     if ( increment == 2 )
       increment = 1
-    else 
+    else
       increment = int(increment*5/11)
   }
   #print it
@@ -613,7 +613,7 @@ Note that the array index is assumed to start at zero.
       NEXT
       PRINT
       END
-      
+
       DEF PROCshellsort(a(), n%)
       LOCAL h%, i%, j%, k
       h% = n%
@@ -672,7 +672,7 @@ LET start() = VALOF
 { LET v = getvec(upb)
 
   try("shell", shellsort, v, upb)
- 
+
   writes("*nEnd of test*n")
   freevec(v)
   RESULTIS 0
@@ -680,7 +680,7 @@ LET start() = VALOF
 
 AND try(name, sortroutine, v, upb) BE
 { // delay, referencing the first and last elements of v
-   FOR i = 1 TO 50000 DO v!upb := v!1 
+   FOR i = 1 TO 50000 DO v!upb := v!1
    writef("*nSetting %n words of data for %s sort*n", upb, name)
    FOR i = 1 TO upb DO v!i := randno(10000)
    writef("Entering %s sort routine*n", name)
@@ -702,8 +702,8 @@ AND sorted(v, n) = VALOF
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void shell_sort (int *a, int n) {
     int h, i, j, t;
@@ -759,7 +759,7 @@ const int MAX = 126;
 class shell
 {
 public:
-    shell() 
+    shell()
     { _gap[0] = 1750; _gap[1] = 701; _gap[2] = 301; _gap[3] = 132; _gap[4] = 57; _gap[5] = 23; _gap[6] = 10; _gap[7] = 4; _gap[8] = 1; }
 
     void sort( int* a, int count )
@@ -772,7 +772,7 @@ public:
 	sortIt( a );
     }
 
-private:	
+private:
     void sortIt( int* arr )
     {
 	bool sorted = false;
@@ -812,7 +812,7 @@ int main( int argc, char* argv[] )
 	cout << endl;
     }
     cout << endl; shell s; s.sort( arr, MAX );
-	
+
     cout << " After: \n
 ### ==
 \n";
@@ -867,7 +867,7 @@ public static class ShellSorter
         int h = 1;
 
         while (h < (n >> 1))
-        {   
+        {
             h = (h << 1) + 1;
         }
 
@@ -932,105 +932,105 @@ Program will sort any array using standard EBCDIC sequence (won't work properly 
 
 
 ```cobol
-      *******************************************************           
-       IDENTIFICATION DIVISION.                                         
-      *******************************************************           
-       PROGRAM-ID.      SHELLSRT.                                       
-      ************************************************************      
-      *** SHELLSORT                                           ****      
-      ************************************************************      
-       ENVIRONMENT DIVISION.                                            
-       DATA DIVISION.                                                   
-       WORKING-STORAGE SECTION.                                         
-       01 II                        PIC S9(008) COMP-5.                 
-       01 IJ                        PIC S9(008) COMP-5.                 
-       01 IZ                        PIC S9(008) COMP-5.                 
-       01 IA                        PIC S9(008) COMP-5.                 
-       01 STRT1                     PIC S9(008) COMP-5.                 
-       01 STRT2                     PIC S9(008) COMP-5.                 
-       01 LGT                       PIC S9(008) COMP-5.                 
-       01 ORG                       PIC S9(008) COMP-5.                 
-       01 DST                       PIC S9(008) COMP-5.                 
-      *                                                                 
-       01 GAP                       PIC S9(008) COMP-5.                 
-       01 NEGAP                     PIC S9(008) COMP-5.                 
-       01 TEMP                      PIC X(32768).                       
-       77 KEY-RESULT                PIC X.                              
-      *                                                                 
-       LINKAGE SECTION.                                                 
-       01 SRT-ARRAY                 PIC  X(1000000).                    
-       01 NUM-ITEM                  PIC  9(008) COMP-5.                 
-       01 SRT-DATA.                                                     
-          03 LGT-ITEM               PIC  9(004) COMP-5.                 
-          03 SRT-KEYS.                                                  
-             05 SRT-KEY OCCURS 10.                                      
-                07 K-START         PIC S9(004) COMP-5.                  
-                07 K-LENGTH        PIC S9(004) COMP-5.                  
-                07 K-ASC           PIC X.                               
-      *                                                                 
-      *    P R O C E D U R E      D I V I S I O N                       
-      *                                                                 
-       PROCEDURE DIVISION USING SRT-ARRAY NUM-ITEM SRT-DATA.                
-                                                                        
-           COMPUTE GAP = NUM-ITEM / 2.                                  
-           PERFORM UNTIL GAP < 1                                        
-              COMPUTE NEGAP = GAP * -1                                  
-              PERFORM VARYING II FROM GAP BY 1                          
-                        UNTIL II GREATER  NUM-ITEM                      
-                 MOVE ' ' TO KEY-RESULT                                 
-                 COMPUTE ORG = (II - 1) * LGT-ITEM + 1                  
-                 MOVE SRT-ARRAY(ORG:LGT-ITEM) TO TEMP(1:LGT-ITEM)       
-                 PERFORM VARYING IJ FROM II BY NEGAP                    
-                           UNTIL IJ NOT GREATER  GAP                    
-                              OR (KEY-RESULT NOT EQUAL '<' AND ' ')     
-                    COMPUTE IA = IJ - GAP                               
-                    IF IA < 1                                           
-                       MOVE 1 TO IA                                     
-                    END-IF                                              
-                    PERFORM COMPARE-KEYS                                
-                    IF KEY-RESULT = '<'                                 
-                       COMPUTE ORG = (IA - 1) * LGT-ITEM + 1            
-                       COMPUTE DST = (IJ - 1) * LGT-ITEM + 1            
-                       MOVE SRT-ARRAY(ORG:LGT-ITEM)                     
-                         TO SRT-ARRAY(DST:LGT-ITEM)                     
-                       COMPUTE DST = (IA - 1) * LGT-ITEM + 1            
-                       MOVE TEMP(1:LGT-ITEM) TO SRT-ARRAY(DST:LGT-ITEM) 
-                    END-IF                                              
-                 END-PERFORM                                            
-              END-PERFORM                                               
-              IF GAP = 2                                                
-                 MOVE 1 TO GAP                                          
-              ELSE                                                      
-                 COMPUTE GAP = GAP / 2.2                                
-              END-IF                                                    
-           END-PERFORM.                                                 
-           GOBACK.                                                      
-      *                                                                 
-       COMPARE-KEYS.                                                    
-           MOVE ' ' TO KEY-RESULT                                       
-           PERFORM VARYING IZ FROM 1 BY 1                               
-                     UNTIL IZ GREATER 10                                
-                        OR (KEY-RESULT NOT EQUAL '=' AND ' ')           
-              IF SRT-KEY(IZ) GREATER LOW-VALUES                         
-                 COMPUTE STRT1 = (IJ - 1) * LGT-ITEM + K-START(IZ)      
-                 COMPUTE STRT2 = (IA - 1) * LGT-ITEM + K-START(IZ)      
-                 MOVE K-LENGTH(IZ) TO LGT                               
-                 IF SRT-ARRAY(STRT1:LGT) > SRT-ARRAY(STRT2:LGT) AND     
-                    K-ASC(IZ) EQUAL 'A'                                 
-                 OR SRT-ARRAY(STRT1:LGT) < SRT-ARRAY(STRT2:LGT) AND     
-                    K-ASC(IZ) EQUAL 'D'                                 
-                    MOVE '>' TO KEY-RESULT                              
-                 END-IF                                                 
-                 IF SRT-ARRAY(STRT1:LGT) < SRT-ARRAY(STRT2:LGT) AND     
-                    K-ASC(IZ) EQUAL 'A'                                 
-                 OR SRT-ARRAY(STRT1:LGT) > SRT-ARRAY(STRT2:LGT) AND     
-                    K-ASC(IZ) EQUAL 'D'                                 
-                    MOVE '<' TO KEY-RESULT                              
-                 END-IF                                                 
-              END-IF                                                    
-           END-PERFORM.                                                 
-           IF KEY-RESULT = ' '                                          
-              MOVE '=' TO KEY-RESULT                                    
+      *******************************************************
+       IDENTIFICATION DIVISION.
+      *******************************************************
+       PROGRAM-ID.      SHELLSRT.
+      ************************************************************
+      *** SHELLSORT                                           ****
+      ************************************************************
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 II                        PIC S9(008) COMP-5.
+       01 IJ                        PIC S9(008) COMP-5.
+       01 IZ                        PIC S9(008) COMP-5.
+       01 IA                        PIC S9(008) COMP-5.
+       01 STRT1                     PIC S9(008) COMP-5.
+       01 STRT2                     PIC S9(008) COMP-5.
+       01 LGT                       PIC S9(008) COMP-5.
+       01 ORG                       PIC S9(008) COMP-5.
+       01 DST                       PIC S9(008) COMP-5.
+      *
+       01 GAP                       PIC S9(008) COMP-5.
+       01 NEGAP                     PIC S9(008) COMP-5.
+       01 TEMP                      PIC X(32768).
+       77 KEY-RESULT                PIC X.
+      *
+       LINKAGE SECTION.
+       01 SRT-ARRAY                 PIC  X(1000000).
+       01 NUM-ITEM                  PIC  9(008) COMP-5.
+       01 SRT-DATA.
+          03 LGT-ITEM               PIC  9(004) COMP-5.
+          03 SRT-KEYS.
+             05 SRT-KEY OCCURS 10.
+                07 K-START         PIC S9(004) COMP-5.
+                07 K-LENGTH        PIC S9(004) COMP-5.
+                07 K-ASC           PIC X.
+      *
+      *    P R O C E D U R E      D I V I S I O N
+      *
+       PROCEDURE DIVISION USING SRT-ARRAY NUM-ITEM SRT-DATA.
+
+           COMPUTE GAP = NUM-ITEM / 2.
+           PERFORM UNTIL GAP < 1
+              COMPUTE NEGAP = GAP * -1
+              PERFORM VARYING II FROM GAP BY 1
+                        UNTIL II GREATER  NUM-ITEM
+                 MOVE ' ' TO KEY-RESULT
+                 COMPUTE ORG = (II - 1) * LGT-ITEM + 1
+                 MOVE SRT-ARRAY(ORG:LGT-ITEM) TO TEMP(1:LGT-ITEM)
+                 PERFORM VARYING IJ FROM II BY NEGAP
+                           UNTIL IJ NOT GREATER  GAP
+                              OR (KEY-RESULT NOT EQUAL '<' AND ' ')
+                    COMPUTE IA = IJ - GAP
+                    IF IA < 1
+                       MOVE 1 TO IA
+                    END-IF
+                    PERFORM COMPARE-KEYS
+                    IF KEY-RESULT = '<'
+                       COMPUTE ORG = (IA - 1) * LGT-ITEM + 1
+                       COMPUTE DST = (IJ - 1) * LGT-ITEM + 1
+                       MOVE SRT-ARRAY(ORG:LGT-ITEM)
+                         TO SRT-ARRAY(DST:LGT-ITEM)
+                       COMPUTE DST = (IA - 1) * LGT-ITEM + 1
+                       MOVE TEMP(1:LGT-ITEM) TO SRT-ARRAY(DST:LGT-ITEM)
+                    END-IF
+                 END-PERFORM
+              END-PERFORM
+              IF GAP = 2
+                 MOVE 1 TO GAP
+              ELSE
+                 COMPUTE GAP = GAP / 2.2
+              END-IF
+           END-PERFORM.
+           GOBACK.
+      *
+       COMPARE-KEYS.
+           MOVE ' ' TO KEY-RESULT
+           PERFORM VARYING IZ FROM 1 BY 1
+                     UNTIL IZ GREATER 10
+                        OR (KEY-RESULT NOT EQUAL '=' AND ' ')
+              IF SRT-KEY(IZ) GREATER LOW-VALUES
+                 COMPUTE STRT1 = (IJ - 1) * LGT-ITEM + K-START(IZ)
+                 COMPUTE STRT2 = (IA - 1) * LGT-ITEM + K-START(IZ)
+                 MOVE K-LENGTH(IZ) TO LGT
+                 IF SRT-ARRAY(STRT1:LGT) > SRT-ARRAY(STRT2:LGT) AND
+                    K-ASC(IZ) EQUAL 'A'
+                 OR SRT-ARRAY(STRT1:LGT) < SRT-ARRAY(STRT2:LGT) AND
+                    K-ASC(IZ) EQUAL 'D'
+                    MOVE '>' TO KEY-RESULT
+                 END-IF
+                 IF SRT-ARRAY(STRT1:LGT) < SRT-ARRAY(STRT2:LGT) AND
+                    K-ASC(IZ) EQUAL 'A'
+                 OR SRT-ARRAY(STRT1:LGT) > SRT-ARRAY(STRT2:LGT) AND
+                    K-ASC(IZ) EQUAL 'D'
+                    MOVE '<' TO KEY-RESULT
+                 END-IF
+              END-IF
+           END-PERFORM.
+           IF KEY-RESULT = ' '
+              MOVE '=' TO KEY-RESULT
            END-IF.
 ```
 
@@ -1226,7 +1226,7 @@ Translated from pseudocode at [http://en.wikipedia.org/wiki/Shell_sort#Shell_sor
 
 {{works with|EiffelStudio|6.6 (with provisional loop syntax)}}
 
-This solution is shown in the routine <code lang="eiffel">sort</code> of the class <code lang="eiffel">MY_SORTED_SET</code>. 
+This solution is shown in the routine <code lang="eiffel">sort</code> of the class <code lang="eiffel">MY_SORTED_SET</code>.
 
 For a more complete explanation of the Eiffel sort examples, see [[Sorting algorithms/Bubble sort#Eiffel|Bubble sort]].
 
@@ -1285,7 +1285,7 @@ end
 defmodule Sort do
   def shell_sort(list) when length(list)<=1, do: list
   def shell_sort(list), do: shell_sort(list, div(length(list),2))
-  
+
   defp shell_sort(list, inc) do
     gb = Enum.with_index(list) |> Enum.group_by(fn {_,i} -> rem(i,inc) end)
     wk = Enum.map(0..inc-1, fn i ->
@@ -1294,7 +1294,7 @@ defmodule Sort do
          |> merge
     if sorted?(wk), do: wk, else: shell_sort( wk, max(trunc(inc / 2.2), 1) )
   end
-  
+
   defp merge(lists) do
     len = length(hd(lists))
     Enum.map(lists, fn list -> if length(list)<len, do: list++[nil], else: list end)
@@ -1302,16 +1302,16 @@ defmodule Sort do
     |> Enum.flat_map(fn tuple -> Tuple.to_list(tuple) end)
     |> Enum.filter(&(&1))               # remove nil
   end
-  
+
   defp sorted?(list) do
     Enum.chunk(list,2,1) |> Enum.all?(fn [a,b] -> a <= b end)
   end
-  
+
   defp insert_sort(list), do: insert_sort(list, [])
-  
+
   defp insert_sort([], sorted), do: sorted
   defp insert_sort([h | t], sorted), do: insert_sort(t, insert(h, sorted))
-  
+
   defp insert(x, []), do: [x]
   defp insert(x, sorted) when x < hd(sorted), do: [x | sorted]
   defp insert(x, [h | t]), do: [h | insert(x, t)]
@@ -1430,7 +1430,7 @@ defer precedes ' < is precedes
 : shell dup begin dup 2 = if 2/ else 5 11 */ then dup while (shell) repeat drop 2drop ;
 
 create array 8 , 1 , 4 , 2 , 10 , 3 , 7 , 9 , 6 , 5 ,
- 
+
 array 10 shell
 array 10 cells dump
 ```
@@ -1452,7 +1452,7 @@ SUBROUTINE Shell_Sort(a)
   INTEGER :: i, j, increment
   REAL :: temp
   REAL, INTENT(in out) :: a(:)
-	
+
   increment = SIZE(a) / 2
   DO WHILE (increment > 0)
       DO i = increment+1, SIZE(a)
@@ -1468,9 +1468,9 @@ SUBROUTINE Shell_Sort(a)
    	  increment = 1
       ELSE
          increment = increment * 5 / 11
-      END IF      
+      END IF
   END DO
- 
+
 END SUBROUTINE Shell_Sort
 
 END MODULE sort
@@ -1481,17 +1481,17 @@ USE sort
 
   IMPLICIT NONE
   REAL :: array(1000)
-     
+
   CALL RANDOM_SEED
   CALL RANDOM_NUMBER(array)
- 
+
   WRITE (*,*) "Unsorted array"
   WRITE (*,*) array
-  WRITE (*,*) 
+  WRITE (*,*)
   CALL Shell_Sort(array)
   WRITE (*,*) "Sorted array"
   WRITE (*,*) array
-  
+
 END PROGRAM Shellsort
 ```
 
@@ -1527,7 +1527,7 @@ Sub shellsort(s() As Long)
                 End If
             Next
         Loop Until done = 0
-        
+
     Loop Until inc = 1
 
 End Sub
@@ -1651,7 +1651,7 @@ l shellSortInPlace println # ==> list(1, 2, 3, 4, 5)
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main()                     #: demonstrate various ways to sort a list and string 
+procedure main()                     #: demonstrate various ways to sort a list and string
    demosort(shellsort,[3, 14, 1, 5, 9, 2, 6, 3],"qwerty")
 end
 
@@ -1677,7 +1677,7 @@ end
 
 Note: This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'sortop', and 'demosort' in Bubble Sort]]. The full demosort exercises the named sort of a list with op = "numeric", "string", ">>" (lexically gt, descending),">" (numerically gt, descending), a custom comparator, and also a string.
 
-{{out}} Abbreviated sample 
+{{out}} Abbreviated sample
 
 ```txt
 Sorting Demo using procedure shellsort
@@ -1691,7 +1691,7 @@ Sorting Demo using procedure shellsort
 
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 PROGRAM "ShellSrt.bas"
-110 RANDOMIZE 
+110 RANDOMIZE
 120 LET N=20 ! Number of elements
 130 NUMERIC ARRAY(1 TO N)
 140 CALL INIT(ARRAY)
@@ -1963,7 +1963,7 @@ siz = 100
 dim a(siz)
 for i = 1 to siz
  a(i) = int(rnd(1) * 1000)
-next 
+next
 
 ' -------------------------------
 ' Shell Sort
@@ -1978,7 +1978,7 @@ next
                j    = j - incr
                wend
             a(j) = temp
-         next 
+         next
          IF incr = 2 THEN
             incr = 1
          ELSE
@@ -2065,8 +2065,8 @@ function shellsort( a )
             a[j] = tmp
         end
         inc = math.floor( 0.5 + inc / 2.2 )
-    end 
-    
+    end
+
     return a
 end
 
@@ -2087,7 +2087,7 @@ end
 We use & for passing by reference. Variables with % are integers, and can be any type, a double by default with no decimals, or Decimal, Currency, Long, Integer, Float. When we change value, using operators ++ -- += -= /= *= the final value round to integer using 0.5 where 1.5 give 2. So A%=1/2 give A%=1 and A%=-1/2 give A%=-1. A%=Int(1/2) give A%=0, A%=Int(-1/2) give A%=-1 (int is same as floor() and there is ceil() too, and there is a Bank() for bank type rounding)
 
 For Next in M2000 always execute at least one time the code inside (we can change it using a switch, in M2000 environment, to act as in BASIC). From step get the absolute value, and direction get from starting and ending value. So For i=1 to 0 { } execute two times the block with standard switch "-For" or no execute if switch is "+For".
-A For statement can be as in this example or the faster For  { } without Next 
+A For statement can be as in this example or the faster For  { } without Next
 
 
 ```M2000 Interpreter
@@ -2110,7 +2110,7 @@ Module ShellSortExample {
                     NEXT i%
             }
       }
-      
+
       Dim numbers(10)
       numbers(0)=4, 65, 2, -31, 0, 99, 2, 83, 782, 1
       shellsort &numbers()
@@ -2179,7 +2179,7 @@ shellSort[ lst_ ] := Module[ {list = lst, incr, temp, i, j},
 
 
 ```txt
-shellSort[{2,1,4,6,8}] 
+shellSort[{2,1,4,6,8}]
 {1,2,4,6,8}
 ```
 
@@ -2192,9 +2192,9 @@ function list = shellSort(list)
 
     N = numel(list);
     increment = round(N/2);
-    
+
     while increment > 0
-        
+
         for i = (increment+1:N)
             temp = list(i);
             j = i;
@@ -2202,16 +2202,16 @@ function list = shellSort(list)
                 list(j) = list(j-increment);
                 j = j - increment;
             end
-            
+
             list(j) = temp;
-            
+
         end %for
-        
+
         if increment == 2 %This case causes shell sort to become insertion sort
             increment = 1;
         else
             increment = round(increment/2.2);
-        end        
+        end
     end %while
 end %shellSort
 ```
@@ -2384,7 +2384,7 @@ let shellsort a =
   let len = Array.length a in
   let incSequence = [| 412771; 165103; 66041; 26417; 10567;
                        4231; 1693; 673; 269; 107; 43; 17; 7; 3; 1 |] in
- 
+
   Array.iter (fun increment ->
     if (increment * 2) <= len then
       for i = increment to pred len do
@@ -2840,7 +2840,7 @@ EndProcedure
 
 {{trans|Java}}
 
-This method sorts in place. 
+This method sorts in place.
 If you want to preserve your unsorted list, copy it first.
 
 ```python
@@ -2889,7 +2889,7 @@ print data # [-5, 2, 4, 7, 8, 22]
 
 ## REXX
 
-Historical data note:   the three-character abbreviations were (and probably still are) the 
+Historical data note:   the three-character abbreviations were (and probably still are) the
 
 official three-character abbreviations for the states of the USA before the advent of ZIP codes.
 
@@ -2946,10 +2946,10 @@ shellSort: procedure expose @.;   parse arg N    /*obtain the  N  from the argum
 show:      do j=1  for #;  say 'element'  right(j,length(#)) arg(1)": "  @.j; end;  return
 ```
 
-{{out|output|text=  when using the (internal) inputs:}} 
+{{out|output|text=  when using the (internal) inputs:}}
 <pre style="height:85ex">
 element  1 before sort:  3 character abbreviations for states of the USA
-element  2 before sort:  
+element  2 before sort:
 ### =========================================
 
 element  3 before sort:  RHO  Rhode Island and Providence Plantations
@@ -3004,7 +3004,7 @@ element 51 before sort:  NYK  New York
 element 52 before sort:  WYO  Wyoming
 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
 element  1  after sort:  3 character abbreviations for states of the USA
-element  2  after sort:  
+element  2  after sort:
 ### =========================================
 
 element  3  after sort:  ALA  Alabama
@@ -3073,21 +3073,21 @@ shellSort(aList)
 for i=1 to len(aList)
     see "" + aList[i] + " "
 next
- 
-func shellSort a 
+
+func shellSort a
      inc = ceil( len(a) / 2 )
      while inc > 0
            for i = inc to len(a)
                tmp = a[i]
                j = i
-               while j > inc and a[j-inc] > tmp 
+               while j > inc and a[j-inc] > tmp
                      a[j] = a[j-inc]
                      j = j - inc
                end
                a[j] = tmp
            next
            inc = floor( 0.5 + inc / 2.2 )
-     end 
+     end
      return a
 
 ```
@@ -3135,7 +3135,7 @@ dim a(siz)
 for i = 1 to siz
  a(i) = rnd(1) * 1000
 next i
- 
+
 ' -------------------------------
 ' Shell Sort
 ' -------------------------------
@@ -3168,18 +3168,18 @@ object ShellSort {
   }
 
   def InsertionSort(a:Array[Int], inc:Int)={
-    for (i <- inc until a.length; temp=a(i)){ 
+    for (i <- inc until a.length; temp=a(i)){
       var j=i;
-      while (j>=inc && a(j-inc)>temp){ 
+      while (j>=inc && a(j-inc)>temp){
         a(j)=a(j-inc)
         j=j-inc
       }
       a(j)=temp
     }
   }
-  
+
   def shellSort(a:Array[Int])=for(inc<-incSeq(a.length)) InsertionSort(a, inc)
-  
+
   def main(args: Array[String]): Unit = {
     var a=Array(2, 5, 3, 4, 3, 9, 3, 2, 5, 4, 1, 3, 22, 7, 2, -5, 8, 4)
     println(a.mkString(","))
@@ -3340,7 +3340,7 @@ puts [shellsort {8 6 4 2 1 3 5 7 9}] ;# => 1 2 3 4 5 6 7 8 9
   PROC _Shellsort (n)
   PROC _ShowArray (n)
 PRINT
- 
+
 END
 
 
@@ -3361,30 +3361,30 @@ _Shellsort PARAM (1)                   ' Shellsort subroutine
     NEXT
   LOOP
 RETURN
- 
- 
+
+
 _Swap PARAM(2)                         ' Swap two array elements
   PUSH @(a@)
   @(a@) = @(b@)
   @(b@) = POP()
 RETURN
- 
- 
+
+
 _InitArray                             ' Init example array
   PUSH 4, 65, 2, -31, 0, 99, 2, 83, 782, 1
- 
+
   FOR i = 0 TO 9
     @(i) = POP()
   NEXT
- 
+
 RETURN (i)
- 
- 
+
+
 _ShowArray PARAM (1)                   ' Show array subroutine
   FOR i = 0 TO a@-1
     PRINT @(i),
   NEXT
- 
+
   PRINT
 RETURN
 ```
@@ -3492,20 +3492,20 @@ end sub
 if peek$("library") = "main" then
 
 	clear screen
-	
+
 	ITEMS = 100
 	dim numeros(ITEMS)
-	
+
 	for n = 1 to ITEMS
 		numeros(n) = ran(ITEMS + 1)
 	next n
-	
+
 	print time$
 	shell_sort(numeros())
 	print time$
 	print "Press a key to see ordered numbers."
 	inkey$
-	
+
 	for n = 1 to ITEMS
 		print numeros(n),", ";
 	next n

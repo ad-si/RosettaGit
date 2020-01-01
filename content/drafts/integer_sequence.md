@@ -505,8 +505,8 @@ loop {
 
 Prints from 1 to max unsigned integer (usually 2**32 -1), then stops.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -519,9 +519,12 @@ int main()
 
 
 ==={{libheader|GMP}}===
-This one never stops.  It's not even likely that you'll run out of memory before you run out of patience.
-```c>#include <gmp.h
 
+This one never stops.
+It's not even likely that you'll run out of memory before you run out of patience.
+
+```c
+#include <gmp.h>
 
 int main()
 {
@@ -542,7 +545,8 @@ int main()
 OpenSSL provides arbitrarily large integers.
 
 
-```c>#include <openssl/bn.h
+```c
+#include <openssl/bn.h>
 		/* BN_*() */
 #include <openssl/err.h>	/* ERR_*() */
 #include <stdio.h>		/* fprintf(), puts() */
@@ -575,7 +579,7 @@ main()
 ```
 
 
-=={{header|C sharp|C#}}==
+## C#
 
 ```csharp
 using System;
@@ -598,21 +602,19 @@ class Program
 ## ChucK
 
 Math.INT_MAX is a constant value that represents the greater integer, 32 bit , 64 bit systems.
-<lang>
+
+```chuck
 for(1 => int i; i < Math.INT_MAX; i ++)
 {
     <<< i >>>;
 }
-
 ```
-
 
 
 ## C++
 
-
-```cpp>#include <cstdint
-
+```cpp
+#include <cstdint>
 #include <iostream>
 #include <limits>
 
@@ -2291,8 +2293,8 @@ When a decimal requires mores than 50 digits error 536 is raised (Decimal number
 
 Order supports arbitrarily-large positive integers natively. However, the simple version:
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8printloop ORDER_PP_FN( \
 8fn(8N,                                      \
@@ -2306,8 +2308,8 @@ ORDER_PP( 8printloop(1) )
 
 To actually see anything with GCC, add a maximum limit so that the task can complete:
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8printloop ORDER_PP_FN( \
 8fn(8N,                                      \

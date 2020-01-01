@@ -2563,23 +2563,17 @@ Version using square numbers:
 
 
 ```burlesque
-
 blsq ) 10ro2?^
 {1 4 9 16 25 36 49 64 81 100}
-
 ```
-
 
 
 ## C
 
+### Unoptimized
 
-### unoptimized
-
-{{uses from|Library|C Runtime|component1=printf}}
-
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -2603,8 +2597,8 @@ int main()
 Using defensive programming, pointers, sentinel values and some other standard programming practices,
 {{uses from|Library|C Runtime|component1=printf}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define NUM_DOORS 100
 
@@ -2634,10 +2628,8 @@ int main(int argc, char *argv[])
 
 This optimized version makes use of the fact that finally only the doors with square index are open, as well as the fact that <math>n^2 = 1 + 3 + 5 + \ldots + (2n-1)</math>.
 
-{{uses from|Library|C Runtime|component1=printf}}
-
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -2662,7 +2654,8 @@ int main()
 The following ultra-short optimized version demonstrates the flexibility of C loops, but isn't really considered good C style:
 
 
-```c>#include <stdio.h
+```c
+#include <stdio.h>
 
 
 int main()
@@ -2676,7 +2669,8 @@ int main()
 
 
 Or really optimize it -- square of an integer is, well, computable:
-```C>#include <stdio.h
+```C
+#include <stdio.h>
 
 
 int main()
@@ -2697,8 +2691,8 @@ int main()
 
 '''unoptimized '''
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main()
 {
@@ -2721,8 +2715,8 @@ int main()
 This optimized version makes use of the fact that finally only the doors with square index are open, as well as the fact that <math>(n+1)^2 = 1 + 3 + 5 + \ldots + (2n+1)</math>.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main()
 {
@@ -2746,8 +2740,9 @@ int main()
 
 The only calculation that's really needed:
 
-```cpp>#include <iostream
- //compiled with "Dev-C++" , from RaptorOne
+```cpp
+#include <iostream>
+//compiled with "Dev-C++" , from RaptorOne
 
 int main()
 {
@@ -2759,8 +2754,9 @@ int main()
 
 Compile time computation using C++17 to produce fastest runtime.
 
-```cpp>#include <iostream
-    // compiled with clang (tags/RELEASE_600/final)
+```cpp
+#include <iostream>
+// compiled with clang (tags/RELEASE_600/final)
 #include <type_traits> // or g++ (GCC) 7.3.1 20180406 -- from hare1039
 namespace functional_list // basic building block for template meta programming
 {
@@ -2888,11 +2884,9 @@ int main()
 ```
 
 
-
 ## C sharp
 
-
-===Unoptimized with Modulus % Operator===
+### Unoptimized with Modulus % Operator
 
 ```csharp
 namespace ConsoleApplication1

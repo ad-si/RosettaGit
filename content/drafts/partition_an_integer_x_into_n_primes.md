@@ -13,7 +13,7 @@ tags = []
 {{Task|Prime Numbers}}
 
 ;Task:
-Partition a positive integer   '''X'''   into   '''N'''   distinct primes. 
+Partition a positive integer   '''X'''   into   '''N'''   distinct primes.
 
 
 Or, to put it in another way:
@@ -60,8 +60,8 @@ This task is similar to factoring an integer.
 
 {{trans|D}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <functional>
 #include <iostream>
 #include <vector>
@@ -510,11 +510,11 @@ math.parser math.primes sequences ;
 : partition ( x n -- str )
     over [ primes-upto ] 2dip '[ sum _ = ] find-combination
     [ number>string ] map "+" join ;
-    
+
 : print-partition ( x n seq -- )
     [ "no solution" ] when-empty
     "Partitioned %5d with %2d primes: %s\n" printf ;
-    
+
 { 99809 1 18 2 19 3 20 4 2017 24 22699 1 22699 2 22699 3 22699
   4 40355 3 } 2 group
 [ first2 2dup partition print-partition ] each
@@ -784,20 +784,20 @@ primes =
 ```j
 
 load 'format/printf'
- 
-NB. I don't know of any way to easily make an idiomatic lazy exploration, 
+
+NB. I don't know of any way to easily make an idiomatic lazy exploration,
 NB. except falling back on explicit imperative control strutures.
 NB. However this is clearly not where J shines neither with speed nor elegance.
- 
+
 primes_up_to  =: monad def 'p: i. _1 p: 1 + y'
-terms_as_text =: monad def '; }: , (": each y),.<'' + ''' 
- 
+terms_as_text =: monad def '; }: , (": each y),.<'' + '''
+
 search_next_terms =: dyad define
  acc=. x     NB. -> an accumulator that contains given beginning of the partition.
  p=.   >0{y  NB. -> number of elements wanted in the partition
  ns=.  >1{y  NB. -> candidate values to be included in the partition
- sum=. >2{y  NB. -> the integer to partition 
- 
+ sum=. >2{y  NB. -> the integer to partition
+
  if. p=0 do.
     if. sum=+/acc do. acc return. end.
  else.
@@ -806,13 +806,13 @@ search_next_terms =: dyad define
      if. #r do. r return. end.
    end.
  end.
- 
+
  0$0   NB. Empty result if nothing found at the end of this path.
 )
- 
- 
+
+
 NB. Prints  a partition of y primes whose sum equals x.
-partitioned_in =: dyad define    
+partitioned_in =: dyad define
     terms =. (0$0) search_next_terms y;(primes_up_to x);x
     if. #terms do.
        'As the sum of %d primes, %d = %s' printf y;x; terms_as_text terms
@@ -1005,14 +1005,14 @@ Partition of 40355 into 3 prime pieces: 3 + 139 + 40213
 // version 1.1.2
 
 // compiled with flag -Xcoroutines=enable to suppress 'experimental' warning
- 
-import kotlin.coroutines.experimental.* 
+
+import kotlin.coroutines.experimental.*
 
 val primes = generatePrimes().take(50_000).toList()  // generate first 50,000 say
 var foundCombo = false
- 
+
 fun isPrime(n: Int) : Boolean {
-    if (n < 2) return false 
+    if (n < 2) return false
     if (n % 2 == 0) return n == 2
     if (n % 3 == 0) return n == 3
     var d : Int = 5
@@ -1024,12 +1024,12 @@ fun isPrime(n: Int) : Boolean {
     }
     return true
 }
- 
+
 fun generatePrimes() =
     buildSequence {
         yield(2)
         var p = 3
-        while (p <= Int.MAX_VALUE) { 
+        while (p <= Int.MAX_VALUE) {
            if (isPrime(p)) yield(p)
            p += 2
         }
@@ -1043,11 +1043,11 @@ fun findCombo(k: Int, x: Int, m: Int, n: Int, combo: IntArray) {
            for (i in 0 until m) {
                print(primes[combo[i]])
                if (i < m - 1) print("+") else println()
-           } 
+           }
            foundCombo = true
-        }            
+        }
     }
-    else { 
+    else {
         for (j in 0 until n) {
             if (k == 0 || j > combo[k - 1]) {
                 combo[k] = j
@@ -1064,13 +1064,13 @@ fun partition(x: Int, m: Int) {
     if (n < m) throw IllegalArgumentException("Not enough primes")
     val combo = IntArray(m)
     foundCombo = false
-    findCombo(0, x, m, n, combo)   
+    findCombo(0, x, m, n, combo)
     if (!foundCombo) {
-        val s = if (m > 1) "s" else " "   
+        val s = if (m > 1) "s" else " "
         println("Partitioned ${"%5d".format(x)} with ${"%2d".format(m)} prime$s: (not possible)")
     }
 }
-    
+
 fun main(args: Array<String>) {
     val a = arrayOf(
         99809 to 1,
@@ -1084,7 +1084,7 @@ fun main(args: Array<String>) {
         22699 to 4,
         40355 to 3
     )
-    for (p in a) partition(p.first, p.second)    
+    for (p in a) partition(p.first, p.second)
 }
 ```
 
@@ -1119,11 +1119,11 @@ Using the prime generator class "sieve" from task [[Extensible prime generator#L
 -- or FALSE if there is no such partition of primes for <n>
 ----------------------------------------
 on getPrimePartition (n, cnt,   primes, ptr, res)
-    if voidP(primes) then 
+    if voidP(primes) then
         primes = _global.sieve.getPrimesInRange(2, n)
         ptr = 1
         res = []
-    end if  
+    end if
     if cnt=1 then
         if primes.getPos(n)>=ptr then
             res.addAt(1, n)
@@ -1152,7 +1152,7 @@ end
 -- gets partition, prints formatted result
 ----------------------------------------
 on showPrimePartition (n, cnt)
-    res = getPrimePartition(n, cnt) 
+    res = getPrimePartition(n, cnt)
     if res=FALSE then res = "not prossible"
     else res = implode("+", res)
     put "Partitioned "&n&" with "&cnt&" primes: " & res
@@ -1215,25 +1215,25 @@ showPrimePartition(40355, 3)
 
 {{output?|Mathematica}}
 
-{{incorrect|Mathematica| 
+{{incorrect|Mathematica|
 
- the partitioning of   '''40,356'''   into three primes isn't the lowest primes that are possible, 
+ the partitioning of   '''40,356'''   into three primes isn't the lowest primes that are possible,
 
-the primes should be: 
+the primes should be:
 
-   <big> '''3''',   '''139''',   '''40213'''. </big>   
+   <big> '''3''',   '''139''',   '''40213'''. </big>
 }}
 
 
 Just call the function F[X,N]
 
 ```Mathematica
-F[x_, n_] := 
- Print["Partitioned ", x, " with ", n, " primes: ", 
+F[x_, n_] :=
+ Print["Partitioned ", x, " with ", n, " primes: ",
   StringRiffle[
-   ToString /@ 
+   ToString /@
     Reverse[First@
-      Sort[Select[IntegerPartitions[x, {n}, Prime@Range@PrimePi@x], 
+      Sort[Select[IntegerPartitions[x, {n}, Prime@Range@PrimePi@x],
         Length@Union@# == n &], Last]], "+"]]
 
 F[40355, 3]
@@ -1476,13 +1476,13 @@ def genP(n):
     p = [2]
     p.extend([x for x in range(3, n+1, 2) if isP(x)])
     return p
-    
+
 data = [(99809, 1), (18, 2), (19, 3), (20, 4), (2017, 24), (22699, 1), (22699, 2), (22699, 3), (22699, 4), (40355, 3)]
 
 for n, cnt in data:
     ci = iter(cmb(genP(n), cnt))
     while True:
-        try: 
+        try:
             c = next(ci)
             if sum(c)==n:
                 print(n, ',', cnt , "->", '+'.join(str(s) for s in c))
@@ -1531,7 +1531,7 @@ for n, cnt in data:
            (let ((P′ (memoised-next-prime P)))
              (or (partition-x-into-n-primes-starting-at-P (- x P) (- n 1) P′ (cons P result))
                  (partition-x-into-n-primes-starting-at-P x n P′ result))))))
-  
+
   (reverse (or (partition-x-into-n-primes-starting-at-P X N 2 null) (list 'no-solution))))
 
 (define (report-partition X N)
@@ -1577,7 +1577,7 @@ Usage note:   entering ranges of   '''X'''   and   '''N'''   numbers (arguments)
 
 which means:   partition all integers (inclusive) from   '''X''' ──► '''Y'''   with   '''N''' ──► '''M'''   primes.
 
-The   ''to''   number   ('''Y'''   or   '''M''')   can be omitted. 
+The   ''to''   number   ('''Y'''   or   '''M''')   can be omitted.
 
 ```rexx
 /*REXX program  partitions  integer(s)    (greater than unity)   into   N   primes.     */
@@ -1676,26 +1676,26 @@ see nl
 
 func showarray(items,ind)
         for p = 1 to 20
-              if (p > 17 and p < 21) or p = 99809 or p = 2017  or p = 22699  or p = 40355  
+              if (p > 17 and p < 21) or p = 99809 or p = 2017  or p = 22699  or p = 40355
                   for n = 1 to len(items)
                        flag = 0
                        for m = 1 to ind
-                             if items[n][m] = 0 
+                             if items[n][m] = 0
                                 exit
-                             ok   
+                             ok
                              flag = flag + items[n][m]
                        next
                        if flag = p
                           str = ""
                           for x = 1 to len(items[n])
-                               if items[n][x] != 0  
+                               if items[n][x] != 0
                                   str = str + items[n][x] + " "
                                ok
-                          next  
-                          str = left(str, len(str) - 1) 
+                          next
+                          str = left(str, len(str) - 1)
                           str = str + "]"
                           if substr(str, " ") > 0
-                             see "" + p + " = [" 
+                             see "" + p + " = ["
                              see str + nl
                              exit
                           else
@@ -1713,7 +1713,7 @@ func powerset(list,ind)
         for i = 2 to (2 << len(list)) - 1 step 2
              num2 = 0
              num = num + 1
-             for j = 1 to len(list) 
+             for j = 1 to len(list)
                   if i & (1 << j)
                       num2 = num2 + 1
                       if list[j] != 0
@@ -1755,11 +1755,11 @@ def prime_partition(x, n)
   Prime.each(x).to_a.combination(n).detect{|primes| primes.sum == x}
 end
 
-TESTCASES = [[99809, 1], [18, 2], [19, 3], [20, 4], [2017, 24], 
+TESTCASES = [[99809, 1], [18, 2], [19, 3], [20, 4], [2017, 24],
              [22699, 1], [22699, 2], [22699, 3], [22699, 4], [40355, 3]]
 
 TESTCASES.each do |prime, num|
-  res = prime_partition(prime, num) 
+  res = prime_partition(prime, num)
   str = res.nil? ? "no solution" : res.join(" + ")
   puts  "Partitioned #{prime} with #{num} primes: #{str}"
 end
@@ -1953,7 +1953,7 @@ sub part()
         if not bu then
             if v=g then exit do
             if v<g then call getp(q)
-        end if    
+        end if
     loop
     wscript.echo "partition "&g&" into "&q&" "&list
 end sub 'part

@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Basic Data Operations}}{{basic data operation}} [[Category:Basic language learning]] [[Category:Simple]]
-The task is to demonstrate how to compare two strings from within the language and how to achieve a lexical comparison. 
+The task is to demonstrate how to compare two strings from within the language and how to achieve a lexical comparison.
 
 The task should demonstrate:
 * Comparing two strings for exact equality
@@ -20,13 +20,13 @@ The task should demonstrate:
 * Comparing two strings to see if one is lexically ordered after than the other
 * How to achieve both case sensitive comparisons and case insensitive comparisons within the language
 * How the language handles comparison of numeric strings if these are not treated lexically
-* Demonstrate any other kinds of string comparisons that the language provides, particularly as it relates to your type system.   For example, you might demonstrate the difference between generic/polymorphic comparison and coercive/allomorphic comparison if your language supports such a distinction. 
+* Demonstrate any other kinds of string comparisons that the language provides, particularly as it relates to your type system.   For example, you might demonstrate the difference between generic/polymorphic comparison and coercive/allomorphic comparison if your language supports such a distinction.
 
 
 
-Here "generic/polymorphic" comparison means that the function or operator you're using doesn't always do string comparison, but bends the actual semantics of the comparison depending on the types one or both arguments; with such an operator, you achieve string comparison only if the arguments are sufficiently string-like in type or appearance.  
+Here "generic/polymorphic" comparison means that the function or operator you're using doesn't always do string comparison, but bends the actual semantics of the comparison depending on the types one or both arguments; with such an operator, you achieve string comparison only if the arguments are sufficiently string-like in type or appearance.
 
-In contrast, a "coercive/allomorphic" comparison function or operator has fixed string-comparison semantics regardless of the argument type;   instead of the operator bending, it's the arguments that are forced to bend instead and behave like strings if they can,   and the operator simply fails if the arguments cannot be viewed somehow as strings.   A language may have one or both of these kinds of operators;   see the Perl 6 entry for an example of a language with both kinds of operators. 
+In contrast, a "coercive/allomorphic" comparison function or operator has fixed string-comparison semantics regardless of the argument type;   instead of the operator bending, it's the arguments that are forced to bend instead and behave like strings if they can,   and the operator simply fails if the arguments cannot be viewed somehow as strings.   A language may have one or both of these kinds of operators;   see the Perl 6 entry for an example of a language with both kinds of operators.
 
 
 ;Related tasks:
@@ -40,8 +40,8 @@ In contrast, a "coercive/allomorphic" comparison function or operator has fixed 
 
 ## Ada
 
-Ada uses the usual comparison operators ("=" for equality, "/=" for not being equal, etc.) for strings. One uses the same comparison operators to compare variables of other types (integers, floating point numbers, etc.). 
-But, as Ada is strongly typed, comparing two objects of different type is not possible. 
+Ada uses the usual comparison operators ("=" for equality, "/=" for not being equal, etc.) for strings. One uses the same comparison operators to compare variables of other types (integers, floating point numbers, etc.).
+But, as Ada is strongly typed, comparing two objects of different type is not possible.
 To compare, say, a string and an integer, one would need to call an explicit type conversion for one of these objects.
 
 String comparisons are case sensitive. Case insensitive comparisons have to use some conversion operation, such as Ada.Characters.Handling.To_Lower from the standard library, cf. [[http://rosettacode.org/wiki/String_case#Ada]]
@@ -82,11 +82,11 @@ end String_Compare;
 {{out}}
 
 ```txt
-"this" and "that": not equal at all, /=, after, (not <=), and >=. 
+"this" and "that": not equal at all, /=, after, (not <=), and >=.
 "that" and "this": not equal at all, /=, before, <=, and (not >=).
 "THAT" and "That": case-insensitive-equal, /=, before, <=, and (not >=).
-"this" and "This": case-insensitive-equal, /=, after, (not <=), and >=. 
-"this" and "this": equal, <=, and >=. 
+"this" and "This": case-insensitive-equal, /=, after, (not <=), and >=.
+"this" and "this": equal, <=, and >=.
 "the" and "there": not equal at all, /=, before, <=, and (not >=).
 "there" and "the": not equal at all, /=, after, (not <=), and >=.
 ```
@@ -128,7 +128,7 @@ Oriental vs oriental (==, !=, <, >): 1 0 0 0
 ## Apex
 
 
-Unlike Java, Apex Strings support using the comparison operators ==, !=, <, <=, >, and >=. 
+Unlike Java, Apex Strings support using the comparison operators ==, !=, <, <=, >, and >=.
 Comparisons can be done also using the equals(), equalsIgnoreCase() and compareTo() methods.
 
 
@@ -142,7 +142,7 @@ public class Compare
 	 * Compare.compare('java', 'Java');
 	 * Compare.compare('ĴÃVÁ', 'ĴÃVÁ');
 	*/
-    
+
     public static void compare (String A, String B)
     {
         if (A.equals(B))
@@ -154,17 +154,17 @@ public class Compare
             System.debug(A + ' and  ' + B + ' are case-insensitive lexically equal.');
         else
             System.debug(A + ' and  ' + B + ' are not case-insensitive lexically equal.');
- 
+
         if (A.compareTo(B) < 0)
             System.debug(A + ' is lexically before ' + B);
         else if (A.compareTo(B) > 0)
             System.debug(A + ' is lexically after ' + B);
- 
+
         if (A.compareTo(B) >= 0)
             System.debug(A + ' is not lexically before ' + B);
         if (A.compareTo(B) <= 0)
             System.debug(A + ' is not lexically after ' + B);
- 
+
         System.debug('The lexical relationship is: ' + A.compareTo(B));
     }
 }
@@ -323,7 +323,7 @@ PROC equal ignoring case = ( STRING a, b )BOOL: caseless comparison( a, b ) = 0;
 
 test( equal ignoring case( a, b ), "a = b (ignoring case)" );
 
-                    
+
 # Algol 68 is strongly typed - strings cannot be compared to e.g. integers    #
 # unless procedures or operators are written, e.g.                            #
 # e.g. OP = = ( STRING a, INT b )BOOL: a = whole( b, 0 );                     #
@@ -410,7 +410,7 @@ begin
 
         if equalIgnoringCase( a, b ) then write( "a = b (ignoring case)" )
     end caselessComparison ;
-                    
+
     % Algol W is strongly typed - strings cannot be compared to e.g. integers %
     % e.g. "if a = 23 then ..." would be a syntax error                       %
 
@@ -463,11 +463,11 @@ szString4:   .asciz "ABC"
 szString5:   .asciz "abcde"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* saves 2 registers */
 
@@ -482,12 +482,12 @@ main:                /* entry of program  */
     ldr r0,iAdrszString1
     ldr r1,iAdrszString4
     bl Comparaison
-	
+
     @ case sensitive comparisons ABCDE et abcde
     ldr r0,iAdrszString1
     ldr r1,iAdrszString5
     bl Comparaison
-	
+
     @ case insensitive comparisons  ABCDE et abcde
     ldr r0,iAdrszString1
     ldr r1,iAdrszString5
@@ -500,7 +500,7 @@ main:                /* entry of program  */
 1:
     ldr r0,iAdrszMessStringNotEqu
     bl affichageMess
-	
+
 2:
 
 100:   /* standard end of the program */
@@ -521,8 +521,8 @@ iAdrszCarriageReturn:  .int  szCarriageReturn
 /*********************************************/
 /* r0 contains address String 1           */
 /* r1 contains address String 2         */
-Comparaison: 
-    push {fp,lr}    			/* save  registres */ 
+Comparaison:
+    push {fp,lr}    			/* save  registres */
     bl comparStrings
     cmp r0,#0
     bne 1f
@@ -532,16 +532,16 @@ Comparaison:
 1:
     ldr r0,iAdrszMessStringNotEqu
     bl affichageMess
-	
+
 2:
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -555,11 +555,11 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
-/************************************/	   
+/************************************/
 /* Strings case sensitive comparisons  */
-/************************************/	  
+/************************************/
 /* r0 et r1 contains the address of strings */
 /* return 0 in r0 if equals */
 /* return -1 if string r0 < string r1 */
@@ -567,25 +567,25 @@ affichageMess:
 comparStrings:
     push {r1-r4}  /* save des registres */
     mov r2,#0   /* counter */
-1:	
+1:
     ldrb r3,[r0,r2]   /* byte string 1 */
     ldrb r4,[r1,r2]   /* byte string 2 */
     cmp r3,r4
-    movlt r0,#-1	 /* small */ 	
-    movgt r0,#1	 /* greather */ 	
+    movlt r0,#-1	 /* small */
+    movgt r0,#1	 /* greather */
     bne 100f     /* not equals */
     cmp r3,#0   /* 0 end string */
-    moveq r0,#0    /* equals */ 	
+    moveq r0,#0    /* equals */
     beq 100f     /*  end string */
     add r2,r2,#1 /* else add 1 in counter */
     b 1b         /* and loop */
 100:
     pop {r1-r4}
-    bx lr   
-	
-/************************************/	   
+    bx lr
+
+/************************************/
 /* Strings case insensitive comparisons    */
-/************************************/	  
+/************************************/
 /* r0 et r1 contains the address of strings */
 /* return 0 in r0 if equals */
 /* return -1 if string r0 < string r1 */
@@ -594,7 +594,7 @@ comparStringsInsensitive:
     push {r1-r4}  /* save des registres */
     mov r2,#0   /* counter */
 
-1:	
+1:
     ldrb r3,[r0,r2]   /* byte string 1 */
     ldrb r4,[r1,r2]   /* byte string 2 */
     @ majuscules --> minuscules  byte 1
@@ -609,13 +609,13 @@ comparStringsInsensitive:
     cmp r4,#90
     bgt 3f
     add r4,#32
-3:	
+3:
     cmp r3,r4
-    movlt r0,#-1	 /* small */ 	
-    movgt r0,#1	 /* greather */ 	
+    movlt r0,#-1	 /* small */
+    movgt r0,#1	 /* greather */
     bne 100f     /* not equals */
     cmp r3,#0   /* 0 end string */
-    moveq r0,#0    /* equal */ 	
+    moveq r0,#0    /* equal */
     beq 100f     /* end strings */
     add r2,r2,#1 /* else add 1 in counter */
     b 1b         /* and loop */
@@ -654,14 +654,14 @@ compare(5.0, 5)
 
 
 ## AWK
- 
-In awk, the string matching operators are case sensitive, and the behaviour of the comparative operators depends on the locale being used. 
 
-Be very careful with numeric strings, because whether they will be treated as numeric values or strings depends on how the values were obtained, and on which awk interpreter is being used. 
+In awk, the string matching operators are case sensitive, and the behaviour of the comparative operators depends on the locale being used.
 
-Numeric strings obtained from the input source, will be treated as numeric values, when compared with other strings containing numeric values. 
+Be very careful with numeric strings, because whether they will be treated as numeric values or strings depends on how the values were obtained, and on which awk interpreter is being used.
 
-Strings valued defined as constants using doublequote enclosures will be treated as strings of characters and compared lexically. 
+Numeric strings obtained from the input source, will be treated as numeric values, when compared with other strings containing numeric values.
+
+Strings valued defined as constants using doublequote enclosures will be treated as strings of characters and compared lexically.
 
 The behaviour of the operators when one value is considered to be numeric (eg. from the input source), but the other value has been defined explicitly as a numeric string by using doublequote enclosures may also vary depending on which awk interpreter is being used.
 
@@ -724,7 +724,7 @@ Applesoft BASIC does not have a built in UPPER$ function.
 ## BBC BASIC
 
 
-```bbcbasic>REM 
+```bbcbasic>REM
 strcomp
 shav$ = "Shaw, George Bernard"
 shakes$ = "Shakespeare, William"
@@ -986,8 +986,8 @@ int main(int ac, char*av[]) {
 ## C++
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -1258,15 +1258,15 @@ BEGIN
 	StdLog.String(str1+" equals " + str2  + ":> ");StdLog.Bool(str1 = str2);StdLog.Ln;
 	StdLog.String(str1+" greater than " + str2  + ":> ");StdLog.Bool(str1 > str2);StdLog.Ln;
 	StdLog.String(str1+" lower than " + str2  + ":> ");StdLog.Bool(str1 < str2);StdLog.Ln;
-	
+
 	str2 := "ABCDE";
 	StdLog.String(str1+" equals " + str2  + ":> ");StdLog.Bool(str1 = str2);StdLog.Ln;
 	StdLog.String(str1+" greater than " + str2  + ":> ");StdLog.Bool(str1 > str2);StdLog.Ln;
 	StdLog.String(str1+" lower than " + str2  + ":> ");StdLog.Bool(str1 < str2);StdLog.Ln;
-	
+
 	Strings.ToLower(str1,aux1);Strings.ToLower(str2,aux2);
 	StdLog.String(str1+" equals (case insensitive) " + str2  + ":> ");StdLog.Bool(aux1 = aux2);StdLog.Ln;
-	
+
 	str1 := "01234";str2 := "01234";
 	StdLog.String(str1+" equals " + str2  + ":> ");StdLog.Bool(str1 = str2);StdLog.Ln;
 	str2 := "0123";
@@ -1316,15 +1316,15 @@ void main() {
 
     /* Comparing the lexical order of two strings;
     -1 means smaller, 0 means equal, 1 means larger */
-      
+
     assert(s.icmp("Bcde") == -1); // case insensitive
     assert(s.cmp("Bcde") == 1); // case sensitive
 
     assert(s.icmp("Aabc") == 1); // case insensitive
     assert(s.cmp("Aabc") == 1); // case sensitive
-    
+
     assert(s.icmp("ABCD") == 0); // case insensitive
-    assert(s.cmp("ABCD") == 1); // case sensitive    
+    assert(s.cmp("ABCD") == 1); // case sensitive
 }
 ```
 
@@ -1342,14 +1342,14 @@ func compare(a, b) {
   if a != b {
     print("'\(a)' and '\(b)' are not lexically equal.")
   }
-  
+
   if a < b {
     print("'\(a)' is lexically before '\(b)'.")
   }
   if a > b {
     print("'\(a)' is lexically after '\(b)'.")
   }
-  
+
   if a >= b {
     print("'\(a)' is not lexically before '\(b)'.")
   }
@@ -1377,7 +1377,7 @@ ELENA 4.x:
 
 ```elena
 import extensions;
- 
+
 compareStrings = (val1,val2)
 {
     if (val1 == val2) { console.printLine("The strings ",val1," and ",val2," are equal") };
@@ -1387,13 +1387,13 @@ compareStrings = (val1,val2)
     if (val1 >= val2) { console.printLine("The string ",val1," is not lexically before than ",val2) };
     if (val1 <= val2) { console.printLine("The string ",val1," is not lexically after than ",val2) }
 };
- 
+
 public program()
 {
     var s1 := "this";
     var s2 := "that";
     compareStrings(s1,s2);
- 
+
     console.readChar()
 }
 ```
@@ -1443,7 +1443,7 @@ true
 
 ## Fortran
 
-Early Fortran offered no facilities for manipulating text, only numbers, though the FORMAT statement could present text via the "Hollerith" format code of ''n''H, where ''n'' characters follow the H, as in 
+Early Fortran offered no facilities for manipulating text, only numbers, though the FORMAT statement could present text via the "Hollerith" format code of ''n''H, where ''n'' characters follow the H, as in
 ```Fortran
       PRINT 42,N
    42 FORMAT (14HThe answer is ,I9)
@@ -1856,7 +1856,7 @@ end
 ## J
 
 '''Solution:'''
-The primitive <code>-:</code> can be used to determine whether two strings are equivalent, but J doesn't have other inbuilt lexical comparison operators. They can defined as follows: 
+The primitive <code>-:</code> can be used to determine whether two strings are equivalent, but J doesn't have other inbuilt lexical comparison operators. They can defined as follows:
 
 ```j
 eq=: -:                         NB. equal
@@ -1908,7 +1908,7 @@ public class Compare
         else
             System.out.printf("'%s' and '%s' are not case-insensitive lexically equal.", A, B);
         System.out.println();
-    
+
         if (A.compareTo(B) < 0)
             System.out.printf("'%s' is lexically before '%s'.\n", A, B);
         else if (A.compareTo(B) > 0)
@@ -1982,7 +1982,7 @@ jq strings are JSON strings.  The jq comparison operators (==, !=, <, <=, >=, >)
 "alpha" < "beta"     # true
 "beta" < "alpha"     # false
 
-# > is the inverse of < 
+# > is the inverse of <
 ```
 
 Currently, jq does not have any "toupper" or "tolower" case conversion, but it is easy to define jq equivalents of ruby's downcase and upcase:
@@ -2148,14 +2148,14 @@ kotlin comes after Kotlin       = false
 "'01234' > '0123': " + ('01234' > '0123') // true
 "'01234' < '0123': " + ('01234' < '0123') //false
 
-// Additional string comparisons 
-"'The quick brown fox jumps over the rhino' >> 'fox' (contains): " + 
+// Additional string comparisons
+"'The quick brown fox jumps over the rhino' >> 'fox' (contains): " +
     ('The quick brown fox jumps over the rhino' >> 'fox') // true
-"'The quick brown fox jumps over the rhino' >> 'cat' (contains): " + 
+"'The quick brown fox jumps over the rhino' >> 'cat' (contains): " +
     ('The quick brown fox jumps over the rhino' >> 'cat') // false
-"'The quick brown fox jumps over the rhino'->beginswith('rhino'): " + 
+"'The quick brown fox jumps over the rhino'->beginswith('rhino'): " +
     ('The quick brown fox jumps over the rhino'->beginswith('rhino')) // false
-"'The quick brown fox jumps over the rhino'->endswith('rhino'): " + 
+"'The quick brown fox jumps over the rhino'->endswith('rhino'): " +
     ('The quick brown fox jumps over the rhino'->endswith('rhino')) // true
 
 ```
@@ -2248,7 +2248,7 @@ function compare(a, b)
     if a ~= b then print(('%s is not equal to %s'):format(a, b)) end
     print ""
 end
- 
+
 compare('YUP', 'YUP')
 compare('BALL', 'BELL')
 compare('24', '123')
@@ -2296,18 +2296,18 @@ BALL is not equal to BELL
 
 ```Mathematica
 compare[x_, y_] := Module[{},
-  If[x == y, 
-   Print["Comparing for equality (case sensitive): " <> x <> " and " <> y <> " ARE equal"], 
+  If[x == y,
+   Print["Comparing for equality (case sensitive): " <> x <> " and " <> y <> " ARE equal"],
    Print["Comparing for equality (case sensitive): " <> x <> " and " <> y <> " are NOT equal" ]] ;
-  If[x != y, 
-   Print["Comparing for inequality (case sensitive): " <> x <> " and " <> y <> " are NOT equal"], 
+  If[x != y,
+   Print["Comparing for inequality (case sensitive): " <> x <> " and " <> y <> " are NOT equal"],
    Print["Comparing for inequality (case sensitive): " <> x <> " and " <> y <> " ARE equal" ]] ;
-  Switch[Order[x, y], 
-    1, Print["Comparing for order (case sensitive): " <> x <> " comes before " <> y], 
-   -1, Print["Comparing for order (case sensitive): " <> x <> " comes after " <> y], 
+  Switch[Order[x, y],
+    1, Print["Comparing for order (case sensitive): " <> x <> " comes before " <> y],
+   -1, Print["Comparing for order (case sensitive): " <> x <> " comes after " <> y],
     0, Print["Comparing for order (case sensitive): " <> x <> " comes in the same spot as " <> y]];
-  If[ToLowerCase[x] == ToLowerCase[y], 
-   Print["Comparing for equality (case insensitive): " <> x <> " and " <> y <> " ARE equal"], 
+  If[ToLowerCase[x] == ToLowerCase[y],
+   Print["Comparing for equality (case insensitive): " <> x <> " and " <> y <> " ARE equal"],
    Print["Comparing for equality (case insensitive): " <> x <> " and " <> y <> " are NOT equal" ]] ;
   Print[];
   ]
@@ -2360,7 +2360,7 @@ end if
 
 if string1 > string2 then
     print string1 + " is lexically ordered AFTER " + string2
-    
+
 //Comparing two strings to see if one is lexically ordered after than the other
 
 else if string1 < string2 then
@@ -2432,10 +2432,10 @@ if animal <= 'cat' then
    leading and trailing whitespace when making comparisons. */
 if '  cat  ' = 'cat' then
   say "this will print because whitespace is stripped"
- 
+
 /* To consider all whitespace in a comparison
    we need to use strict comparative operators */
- 
+
 if '  cat  ' == 'cat' then
   say "this will not print because comparison is strict"
 
@@ -2480,7 +2480,7 @@ echo(">= : ", s1 >= s2)
 ```Oforth
 "abcd" "abcd" ==
 "abcd" "abce" <>
-"abcd" "abceed" <= 
+"abcd" "abceed" <=
 "abce" "abcd" >
 "abcEEE" toUpper "ABCeee" toUpper ==
 ```
@@ -2530,16 +2530,16 @@ sub compare {
     my ($a, $b) = @_;
     my $A = "'$a'";
     my $B = "'$b'";
-    
+
     print "$A and $B are lexically equal.\n"     if $a eq $b;
     print "$A and $B are not lexically equal.\n" if $a ne $b;
-    
+
     print "$A is lexically before $B.\n"         if $a lt $b;
     print "$A is lexically after $B.\n"          if $a gt $b;
-    
+
     print "$A is not lexically before $B.\n"     if $a ge $b;
     print "$A is not lexically after $B.\n"      if $a le $b;
-    
+
     print "The lexical relationship is: ", $a cmp $b, "\n";
     print "The case-insensitive lexical relationship is: ", fc($a) cmp fc($b), "\n";
     print "\n";
@@ -2698,21 +2698,21 @@ if match("pete",lower(name)) then ?"petes in there somewhere" end if
 ```PicoLisp
 (setq
    str= =
-   str< < 
+   str< <
    str> > )
-  
-(println 
+
+(println
    (str= (lowc "Foo") (lowc "foo") (lowc "fOO"))
    (str= "f" "foo")
    (str= "foo" "foo" "foo")
    (str= "" "") )
-   
+
 (println
    (str< "abc" "def")
    (str> "abc" "def")
    (str< "" "")
    (str< "12" "45") )
-   
+
 (bye)
 ```
 
@@ -2745,7 +2745,7 @@ False
 
 ```
 
-By default operators are case insensitive. 
+By default operators are case insensitive.
 Preceed them by the letter "c" to make them case sensitive like this:
 
 ```PowerShell
@@ -2769,18 +2769,18 @@ False
 
 
 ```purebasic
-Macro StrTest(Check,tof)  
+Macro StrTest(Check,tof)
   Print("Test "+Check+#TAB$)
   If tof=1 : PrintN("true") : Else : PrintN("false") : EndIf
 EndMacro
 
 Procedure.b StrBool_eq(a$,b$)   :   ProcedureReturn Bool(a$=b$)             :   EndProcedure
 Procedure.b StrBool_n_eq(a$,b$) :   ProcedureReturn Bool(a$<>b$)            :   EndProcedure
-Procedure.b StrBool_a(a$,b$)    :   ProcedureReturn Bool(a$>b$)             :   EndProcedure  
+Procedure.b StrBool_a(a$,b$)    :   ProcedureReturn Bool(a$>b$)             :   EndProcedure
 Procedure.b StrBool_b(a$,b$)    :   ProcedureReturn Bool(a$<b$)             :   EndProcedure
 Procedure.b NumBool_eq(a$,b$)   :   ProcedureReturn Bool(Val(a$)=Val(b$))   :   EndProcedure
 Procedure.b NumBool_n_eq(a$,b$) :   ProcedureReturn Bool(Val(a$)<>Val(b$))  :   EndProcedure
-Procedure.b NumBool_a(a$,b$)    :   ProcedureReturn Bool(Val(a$)>Val(b$))   :   EndProcedure  
+Procedure.b NumBool_a(a$,b$)    :   ProcedureReturn Bool(Val(a$)>Val(b$))   :   EndProcedure
 Procedure.b NumBool_b(a$,b$)    :   ProcedureReturn Bool(Val(a$)<Val(b$))   :   EndProcedure
 
 Procedure Compare(a$,b$,cs.b=1,num.b=0)
@@ -2789,21 +2789,21 @@ Procedure Compare(a$,b$,cs.b=1,num.b=0)
   If Not num  :   StrTest(" a=b ",StrBool_eq(a$,b$))     :   Else  :   StrTest(" a=b ",NumBool_eq(a$,b$))     :   EndIf
   If Not num  :   StrTest(" a<>b ",StrBool_n_eq(a$,b$))  :   Else  :   StrTest(" a<>b ",NumBool_n_eq(a$,b$))  :   EndIf
   If Not num  :   StrTest(" a>b ",StrBool_a(a$,b$))      :   Else  :   StrTest(" a>b ",NumBool_a(a$,b$))      :   EndIf
-  If Not num  :   StrTest(" a<b ",StrBool_b(a$,b$))      :   Else  :   StrTest(" a<b ",NumBool_b(a$,b$))      :   EndIf  
+  If Not num  :   StrTest(" a<b ",StrBool_b(a$,b$))      :   Else  :   StrTest(" a<b ",NumBool_b(a$,b$))      :   EndIf
 EndProcedure
 
-If OpenConsole() 
+If OpenConsole()
   PrintN("String comparison - ")
   a$="Abcd" : b$="abcd"
   PrintN(#CRLF$+"- case sensitive:")
   Compare(a$,b$)
-  PrintN(#CRLF$+"- case insensitive:")  
+  PrintN(#CRLF$+"- case insensitive:")
   Compare(a$,b$,0)
   a$="1241" : b$="222"
   PrintN(#CRLF$+"- num-string; lexically compared:")
   Compare(a$,b$)
   PrintN(#CRLF$+"- num-string; numerically compared:")
-  Compare(a$,b$,1,1)  
+  Compare(a$,b$,1,1)
   Input()
 EndIf
 ```
@@ -2853,7 +2853,7 @@ Test  a<b       false
 ## Python
 
 Notes:
-* Python is strongly typed. The string '24' is never coerced to a number, (or vice versa). 
+* Python is strongly typed. The string '24' is never coerced to a number, (or vice versa).
 * Python does not have case-insensitive string comparison operators, instead use <code>name.upper()</code> or <code>name.lower()</code> to coerce strings to the same case and compare the results.
 
 ```python
@@ -2921,14 +2921,14 @@ compare(5.0, 5)
 compare <- function(a, b)
 {
   cat(paste(a, "is of type", class(a), "and", b, "is of type", class(b), "\n"))
-  
+
   if (a < b) cat(paste(a, "is strictly less than", b, "\n"))
   if (a <= b) cat(paste(a, "is less than or equal to", b, "\n"))
   if (a > b) cat(paste(a, "is strictly greater than", b, "\n"))
   if (a >= b) cat(paste(a, "is greater than or equal to", b, "\n"))
   if (a == b) cat(paste(a, "is equal to", b, "\n"))
   if (a != b) cat(paste(a, "is not equal to", b, "\n"))
-  
+
   invisible()
 }
 
@@ -2944,30 +2944,30 @@ compare(5.0, 5)
 
 ```txt
 1> compare('YUP', 'YUP')
-YUP is of type character and YUP is of type character 
-YUP is less than or equal to YUP 
-YUP is greater than or equal to YUP 
-YUP is equal to YUP 
+YUP is of type character and YUP is of type character
+YUP is less than or equal to YUP
+YUP is greater than or equal to YUP
+YUP is equal to YUP
 1> compare('BALL', 'BELL')
-BALL is of type character and BELL is of type character 
-BALL is strictly less than BELL 
-BALL is less than or equal to BELL 
-BALL is not equal to BELL 
+BALL is of type character and BELL is of type character
+BALL is strictly less than BELL
+BALL is less than or equal to BELL
+BALL is not equal to BELL
 1> compare('24', '123')
-24 is of type character and 123 is of type character 
-24 is strictly greater than 123 
-24 is greater than or equal to 123 
-24 is not equal to 123 
+24 is of type character and 123 is of type character
+24 is strictly greater than 123
+24 is greater than or equal to 123
+24 is not equal to 123
 1> compare(24, 123)
-24 is of type numeric and 123 is of type numeric 
-24 is strictly less than 123 
-24 is less than or equal to 123 
-24 is not equal to 123 
+24 is of type numeric and 123 is of type numeric
+24 is strictly less than 123
+24 is less than or equal to 123
+24 is not equal to 123
 1> compare(5.0, 5)
-5 is of type numeric and 5 is of type numeric 
-5 is less than or equal to 5 
-5 is greater than or equal to 5 
-5 is equal to 5 
+5 is of type numeric and 5 is of type numeric
+5 is less than or equal to 5
+5 is greater than or equal to 5
+5 is equal to 5
 ```
 
 
@@ -2977,9 +2977,9 @@ And a more ridiculous version:
 compare <- function(a, b)
 {
   cat(paste(a, "is of type", class(a), "and", b, "is of type", class(b), "\n"))
-  
+
   printer <- function(a, b, msg) cat(paste(a, msg, b, "\n"))
-  
+
   op <- c(`<`, `<=`, `>`, `>=`, `==`, `!=`)
   msgs <- c(
     "is strictly less than",
@@ -2989,9 +2989,9 @@ compare <- function(a, b)
     "is equal to",
     "is not equal to"
   )
-  
+
   sapply(1:length(msgs), function(i) if(op[[i]](a, b)) printer(a, b, msgs[i]))
-  
+
   invisible()
 }
 ```
@@ -3015,7 +3015,7 @@ compare <- function(a, b)
 ;; Comparing two strings to see if one is lexically ordered before than the other
 (string<? "abc" "def")
 
-;; Comparing two strings to see if one is lexically ordered after than the other 
+;; Comparing two strings to see if one is lexically ordered after than the other
 (string>? "def" "abc")
 
 ;; How to achieve both case sensitive comparisons and case insensitive comparisons within the language
@@ -3032,12 +3032,12 @@ compare <- function(a, b)
 
 Note that   '''Dog'''   may or may not be higher than   '''cat''',   depending upon the underlying hardware
 
-(the order of lowercase and uppercase isn't defined by the REXX language, but rather on ''how'' the 
+(the order of lowercase and uppercase isn't defined by the REXX language, but rather on ''how'' the
 
-characters are represented). 
+characters are represented).
 
 
-In   '''ASCII''',   uppercase letters are   ''lower'' than lowercase, and 
+In   '''ASCII''',   uppercase letters are   ''lower'' than lowercase, and
 
 in '''EBCDIC''', uppercase letters are ''higher'' than lowercase.
 
@@ -3437,16 +3437,16 @@ The case-insensitive lexical relationship is: 0
 
 ;; Comparing two strings for exact equality
 (string=? "hello" "hello")
- 
+
 ;; Comparing two strings for inequality
 (not (string=? "hello" "Hello"))
- 
+
 ;; Checking if the first string is lexically ordered before the second
 (string<? "bar" "foo")
- 
-;; Checking if the first string is lexically ordered after the second 
+
+;; Checking if the first string is lexically ordered after the second
 (string>? "foo" "bar")
- 
+
 ;; case insensitive comparison
 (string-ci=? "hello" "Hello")
 ```
@@ -3634,14 +3634,14 @@ func compare (a: String, b: String) {
   if a != b {
     println("'\(a)' and '\(b)' are not lexically equal.")
   }
-  
+
   if a < b {
     println("'\(a)' is lexically before '\(b)'.")
   }
   if a > b {
     println("'\(a)' is lexically after '\(b)'.")
   }
-  
+
   if a >= b {
     println("'\(a)' is not lexically before '\(b)'.")
   }

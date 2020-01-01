@@ -11,12 +11,12 @@ tags = []
 +++
 
 {{task}}
-'''[[wp:Hamming numbers|Hamming numbers]]''' are numbers of the form   
+'''[[wp:Hamming numbers|Hamming numbers]]''' are numbers of the form
        <big><big> H  =  2<sup>i</sup> &times; 3<sup>j</sup> &times; 5<sup>k</sup> </big></big>
-where 
+where
        <big>      i, j, k  ≥  0 </big>
 
-''Hamming numbers''   are also known as   ''ugly numbers''   and also   ''5-smooth numbers''   (numbers whose prime divisors are less or equal to 5).  
+''Hamming numbers''   are also known as   ''ugly numbers''   and also   ''5-smooth numbers''   (numbers whose prime divisors are less or equal to 5).
 
 
 ;Task:
@@ -133,7 +133,7 @@ HAMMING  EQU    *             ---- hamming(ll)
        ENDDO    ,                  enddo n
          L      R1,LL              ll
          SLA    R1,2               *4
-         L      R0,HH-4(R1)        return h(ll) 
+         L      R0,HH-4(R1)        return h(ll)
          L      R14,R14HAM         restore return addr
          BR     R14           ---- return
 R14HAM   DS     A                  return addr of hamming
@@ -345,7 +345,7 @@ PROC hamming number = (INT n) UNT: # The n-th Hamming number #
          OP LAST = (SERIES h) UNT: h[UPB h]; # Last element of a series #
          OP +:= = (REF SERIES s, UNT elem) VOID:
             # Extend a series by one element, only keep the elements you need #
-            (INT lwb = (i MIN j) MIN k, upb = UPB s; 
+            (INT lwb = (i MIN j) MIN k, upb = UPB s;
              REF SERIES new s = HEAP FLEX [lwb : upb + 1] UNT;
              (new s[lwb : upb] := s[lwb : upb], new s[upb + 1] := elem);
              s := new s
@@ -364,7 +364,7 @@ PROC hamming number = (INT n) UNT: # The n-th Hamming number #
      ESAC;
 
 FOR k TO 20
-DO print ((whole (hamming number (k), 0), blank)) 
+DO print ((whole (hamming number (k), 0), blank))
 OD;
 print ((newline, whole (hamming number (1 691), 0)));
 print ((newline, whole (hamming number (1 000 000), 0)))
@@ -374,7 +374,7 @@ print ((newline, whole (hamming number (1 000 000), 0)))
 
 ```txt
 
-1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36 
+1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36
 2125764000
 519312780448388736089589843750000000000000000000000000000000000000000000000000000000
 
@@ -615,7 +615,7 @@ hamming(first,last=0)
 	}
 	Sort ans, N
 
-	Loop, parse, ans, `n, `r 
+	Loop, parse, ans, `n, `r
 	{
 		if (A_index > last)
 			break
@@ -685,7 +685,7 @@ function min(x,y) {
       NEXT
       PRINT "H(1691) = "; FNhamming(1691)
       END
-      
+
       DEF FNhamming(l%)
       LOCAL i%, j%, k%, n%, m, x2, x3, x5, h%()
       DIM h%(l%) : h%(0) = 1
@@ -774,11 +774,11 @@ quit
 
 ```txt
 
-$ bc hamming_numbers.bc 
+$ bc hamming_numbers.bc
 bc 1.06.95
 Copyright 1991-1994, 1997, 1998, 2000, 2004, 2006 Free Software Foundation, Inc.
 This is free software with ABSOLUTELY NO WARRANTY.
-For details type `warranty'. 
+For details type `warranty'.
 1
 2
 3
@@ -863,8 +863,8 @@ For details type `warranty'.
 
 Using a min-heap to keep track of numbers.  Does not handle big integers.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef unsigned long long ham;
@@ -927,8 +927,8 @@ int main()
 
 Standard algorithm.  Numbers are stored as exponents of factors instead of big integers, while GMP is only used for display.  It's much more efficient this way.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -1053,7 +1053,7 @@ namespace Hamming {
             h[0] = 1;
             BigInteger x2 = 2, x3 = 3, x5 = 5;
             int i = 0, j = 0, k = 0;
-            
+
             for (int index = 1; index < n; index++) {
                 h[index] = BigInteger.Min(x2, BigInteger.Min(x3, x5));
                 if (h[index] == x2) x2 = two * h[++i];
@@ -1112,7 +1112,7 @@ namespace Hamming {
             }
             return results;
         }
-        
+
         public static void Main(string[] args) {
             foreach (int[] primes in new int[][] { new int[] {2,3,5}, new int[] {2,3,5,7} }) {
                 Console.WriteLine("{0}-Smooth:", primes.Last());
@@ -1278,7 +1278,7 @@ namespace HammingTest
         public HammingNode next;
         public int series;
     }
-    
+
     class HammingListEnumerator : IEnumerable<BigInteger>
     {
         private int[] primes;
@@ -1319,12 +1319,12 @@ namespace HammingTest
             for(int i = 1; i < values.Length; ++i)
                 if(values[i].log < values[min].log)
                     min = i;
-            
+
             // Add it to the end of the 'list', and move to it
             next.next = values[min];
             next = values[min];
 
-            // Find the next node in an allowed sequence (skip those that would be duplicates) 
+            // Find the next node in an allowed sequence (skip those that would be duplicates)
             HammingNode val = indexes[min].next;
             while(val.series < min)
                 val = val.next;
@@ -1372,7 +1372,7 @@ namespace HammingTest
     {
         static void Main(string[] args)
         {
-            foreach(int[] primes in new int[][] { 
+            foreach(int[] primes in new int[][] {
                 new int[] { 2, 3, 5 },
                 new int[] { 2, 3, 5, 7 },
                 new int[] { 2, 3, 5, 7, 9}})
@@ -1457,7 +1457,7 @@ namespace Hamming {
       }
     }
     private LazyList<BigInteger> llmult(uint mltplr,
-                                        LazyList<BigInteger> ll) {      
+                                        LazyList<BigInteger> ll) {
       return new LazyList<BigInteger>(mltplr * ll.v,
                                       new Lazy<LazyList<BigInteger>>(() =>
                                         llmult(mltplr, ll.cont.Value)));
@@ -1830,7 +1830,8 @@ If converted to use multi-precision integers (via GMP, as in this code), the abo
 {{trans|Haskell}}
 {{works with|C++11}}
 
-```cpp>#include <chrono
+```cpp
+#include <chrono>
 
 #include <iostream>
 #include <gmpxx.h>
@@ -1933,7 +1934,7 @@ int main() {
 {{output}}
 
 ```txt
-1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36 
+1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36
 2125764000
 519312780448388736089589843750000000000000000000000000000000000000000000000000000000 in 1079 milliseconds.
 ```
@@ -1951,7 +1952,8 @@ To show that it is the execution time for the functional LazyList that is taking
 {{trans|Rust}}
 {{works with|C++11}}
 
-```cpp>#include <chrono
+```cpp
+#include <chrono>
 
 #include <iostream>
 #include <vector>
@@ -2022,7 +2024,7 @@ int main() {
 {{output}}
 
 ```txt
-1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36 
+1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36
 2125764000
 519312780448388736089589843750000000000000000000000000000000000000000000000000000000 in 79 milliseconds.
 ```
@@ -2124,7 +2126,7 @@ generate_hamming_sequence = (primes, max_n) ->
   # hammings*3:  3,6,9,12,15,18,24,30,36,45,...
   # hammings*5:  5,10,15,20,25,30,40,50,...
   #
-  # After encountering 40 for the last time, our candidates 
+  # After encountering 40 for the last time, our candidates
   # will be
   #   50 = 2 * 25
   #   45 = 3 * 15
@@ -2132,7 +2134,7 @@ generate_hamming_sequence = (primes, max_n) ->
   # Then, after 45
   #   50 = 2 * 25
   #   48 = 3 * 16 <= new
-  #   50 = 5 * 10 
+  #   50 = 5 * 10
   hamming_numbers = [1]
   candidates = ([p, p, 1] for p in primes)
   last_number = 1
@@ -2141,7 +2143,7 @@ generate_hamming_sequence = (primes, max_n) ->
     i = min_idx(candidates)
     candidate = candidates[i]
     [n, p, seq_idx] = candidate
-    
+
     # Add to sequence unless it's a duplicate.
     if n > last_number
       hamming_numbers.push n
@@ -2150,8 +2152,8 @@ generate_hamming_sequence = (primes, max_n) ->
     # Replace the candidate with its successor (based on
     # p = 2, 3, or 5).
     #
-    # This is the heart of the algorithm.  Let's say, over the 
-    # primes [2,3,5], we encounter the hamming number 32 based on it being 
+    # This is the heart of the algorithm.  Let's say, over the
+    # primes [2,3,5], we encounter the hamming number 32 based on it being
     # 2 * 16, where 16 is the 12th number in the sequence.
     # We'll be passed in [32, 2, 12] as candidate, and
     # hamming_numbers will be [1,2,3,4,5,6,8,9,10,12,16,18,...]
@@ -2161,12 +2163,12 @@ generate_hamming_sequence = (primes, max_n) ->
     #    36 - next multiple of 2 of a Hamming number
     #     2 - prime number
     #    13 - 1-based index of 18 in the sequence
-    # 
+    #
     # When we encounter [36, 2, 13], we will then enqueue
     # [40, 2, 14], based on 20 being the 14th hamming number.
     q = hamming_numbers[seq_idx]
     candidates[i] = [p*q, p, seq_idx+1]
-    
+
   hamming_numbers
 
 min_idx = (arr) ->
@@ -2482,15 +2484,15 @@ void main() {
 }
 ```
 
-The output is similar to the second C version. 
-Runtime is about 0.11 seconds if MAX_HAM = 1_000_000 (as the task requires), 
+The output is similar to the second C version.
+Runtime is about 0.11 seconds if MAX_HAM = 1_000_000 (as the task requires),
 and 0.90 seconds if MAX_HAM = 10_000_000.
 
 
 ### Alternative Version 3
 
-This version is similar to the precedent, but frees unused values. 
-It's a little slower than the precedent version, but it uses much less RAM, 
+This version is similar to the precedent, but frees unused values.
+It's a little slower than the precedent version, but it uses much less RAM,
 so it allows to compute the result for larger n.
 
 ```d
@@ -2699,9 +2701,9 @@ Iterable<Trival> makeHammings() sync* {
   Trival rslt;
   while (true) {
     if (s532.log2 < mrg.log2) {
-      rslt = s532; h.add(s532); ++i; s532 = h[i].mul2(); 
+      rslt = s532; h.add(s532); ++i; s532 = h[i].mul2();
     } else {
-      rslt = mrg; h.add(mrg); 
+      rslt = mrg; h.add(mrg);
       if (s53.log2 < s5.log2) {
         mrg = s53; m.add(s53); ++j; s53 = m[j].mul3();
       } else {
@@ -3132,7 +3134,7 @@ defmodule Hamming do
     queues = [{2, queue}, {3, queue}, {5, queue}]
     Stream.unfold({1, queues}, fn {n, q} -> next(n, q) end)
   end
-  
+
   defp next(n, queues) do
     queues = Enum.map(queues, fn {m, queue} -> {m, push(queue, m*n)} end)
     min    = Enum.map(queues, fn {_, queue} -> top(queue) end) |> Enum.min
@@ -3141,14 +3143,14 @@ defmodule Hamming do
              end)
     {n, {min, queues}}
   end
-  
+
   defp queue, do: {[], []}
-  
+
   defp push({input, output}, term), do: {[term | input], output}
-  
+
   defp top({input, []}), do: List.last(input)
   defp top({_, [h|_]}), do: h
-  
+
   defp erase_top({input, []}), do: erase_top({[], Enum.reverse(input)})
   defp erase_top({input, [_|t]}), do: {input, t}
 end
@@ -3261,10 +3263,10 @@ let rec hammings() =
                 let z = inf_map ((*) 5I) hamming
                 x -|- y -|- z))
 
-// testing...    
+// testing...
 [<EntryPoint>]
 let main args =
-  let rec iterLazyListFor f n (Cons(v, rf)) = 
+  let rec iterLazyListFor f n (Cons(v, rf)) =
     if n > 0 then f v; iterLazyListFor f (n - 1) rf.Value
   let rec nthLazyList n ((Cons(v, rf)) as ll) =
     if n <= 1 then v else nthLazyList (n - 1) rf.Value
@@ -3290,7 +3292,7 @@ let hamming() =
   let rec smult m (Cons(x, rxs)) =
     Cons(m * x, lazy(smult m (rxs.Force())))
   let rec first = smult 5I (Cons(1I, lazy first))
-  let u s n = 
+  let u s n =
     let rec r = merge s (smult n (Cons(1I, lazy r))) in r
   (Cons(1I, lazy(Seq.fold u first [| 3I; 2I |])))
 ```
@@ -3365,9 +3367,9 @@ let main argv =
 
   let stop = System.DateTime.Now.Ticks
 
-  printfn "%A" (rslt |> trival)  
+  printfn "%A" (rslt |> trival)
   printfn "\r\nFound this last up to %A in %A milliseconds." topNum ((stop - strt) / 10000L)
-  
+
   printf "\r\nPress any key to exit:"
   System.Console.ReadKey(true) |> ignore
   printfn ""
@@ -3438,9 +3440,9 @@ let main argv =
     {0..100..lngth-1}
       |> Seq.iter (fun i ->
         printfn "%s" (s.Substring(i, if i + 100 < lngth then 100 else lngth - i)))
-  
+
   printfn "\r\nFound this last up to %A in %A milliseconds." topNum ((stop - strt) / 10000L)
-  
+
   printf "\r\nPress any key to exit:"
   System.Console.ReadKey(true) |> ignore
   printfn ""
@@ -3648,7 +3650,7 @@ bitfields in the cell (20 bits for now).  It also uses a fixed-point logarithm t
 variable seqlast 0 seqlast !
 
 : lastseq ( -- u )
-    \ last stored number in the sequence 
+    \ last stored number in the sequence
     seq seqlast @ th @ ;
 
 : genseq ( h1 "name" -- )
@@ -3697,8 +3699,8 @@ cr 1000000 nthseq h.
 
 ```txt
 
-2^0*3^0*5^0 2^1*3^0*5^0 2^0*3^1*5^0 2^2*3^0*5^0 2^0*3^0*5^1 2^1*3^1*5^0 2^3*3^0*5^0 2^0*3^2*5^0 2^1*3^0*5^1 2^2*3^1*5^0 2^0*3^1*5^1 2^4*3^0*5^0 2^1*3^2*5^0 2^2*3^0*5^1 2^3*3^1*5^0 2^0*3^0*5^2 2^0*3^3*5^0 2^1*3^1*5^1 2^5*3^0*5^0 2^2*3^2*5^0 
-2^5*3^12*5^3 
+2^0*3^0*5^0 2^1*3^0*5^0 2^0*3^1*5^0 2^2*3^0*5^0 2^0*3^0*5^1 2^1*3^1*5^0 2^3*3^0*5^0 2^0*3^2*5^0 2^1*3^0*5^1 2^2*3^1*5^0 2^0*3^1*5^1 2^4*3^0*5^0 2^1*3^2*5^0 2^2*3^0*5^1 2^3*3^1*5^0 2^0*3^0*5^2 2^0*3^3*5^0 2^1*3^1*5^1 2^5*3^0*5^0 2^2*3^2*5^0
+2^5*3^12*5^3
 2^55*3^47*5^64
 
 ```
@@ -3744,13 +3746,13 @@ Using big_integer_module from here [http://fortran.com/big_integer_module.f95]
 program Hamming_Test
   use big_integer_module
   implicit none
-  
+
   call Hamming(1,20)
   write(*,*)
   call Hamming(1691)
   write(*,*)
   call Hamming(1000000)
-   
+
 contains
 
 subroutine Hamming(first, last)
@@ -3770,10 +3772,10 @@ subroutine Hamming(first, last)
     write(*,*) "Invalid input"
     return
   end if
-  
+
   allocate(hnums(lim))
-  
-  i2 = 1 ;  i3 = 1 ; i5 = 1  
+
+  i2 = 1 ;  i3 = 1 ; i5 = 1
   hnums(1) = 1
   n = 1
   do while(n < lim)
@@ -3783,7 +3785,7 @@ subroutine Hamming(first, last)
     if(3*hnums(i3) == hnums(n)) i3 = i3 + 1
     if(5*hnums(i5) == hnums(n)) i5 = i5 + 1
   end do
-  
+
   if(present(last)) then
     do i = first, last
       call print_big(hnums(i))
@@ -3792,15 +3794,15 @@ subroutine Hamming(first, last)
   else
     call print_big(hnums(first))
   end if
-  
+
   deallocate(hnums)
 end subroutine
- 
+
 function mini(a, b, c)
   type(big_integer) :: mini
   type(big_integer), intent(in) :: a, b, c
-   
-  if(a < b ) then 
+
+  if(a < b ) then
     if(a < c) then
       mini = a
     else
@@ -3810,15 +3812,15 @@ function mini(a, b, c)
     mini = b
   else
     mini = c
-  end if 
-end function mini 
+  end if
+end function mini
 end program
 ```
 
 {{out}}
 
 ```txt
-1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36 
+1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36
 2125764000
 519312780448388736089589843750000000000000000000000000000000000000000000000000000000
 ```
@@ -3832,7 +3834,7 @@ end program
 ' FB 1.05.0 Win64
 
 ' The biggest integer which FB supports natively is 8 bytes so unable
-' to calculate 1 millionth Hamming number without using an external 
+' to calculate 1 millionth Hamming number without using an external
 ' "bigint" library such as GMP
 
 Function min(x As Integer, y As Integer) As Integer
@@ -3842,12 +3844,12 @@ End Function
 Function hamming(n As Integer) As Integer
   Dim h(1 To n) As Integer
   h(1) = 1
-  Dim As Integer i = 1, j = 1, k = 1   
+  Dim As Integer i = 1, j = 1, k = 1
   Dim As Integer x2 = 2, x3 = 3, x5 = 5
-  
+
   For m As Integer = 2 To n
     h(m) = min(x2, min(x3, x5))
-    If h(m) = x2 Then 
+    If h(m) = x2 Then
       i += 1
       x2 = 2 * h(i)
     End If
@@ -3859,7 +3861,7 @@ Function hamming(n As Integer) As Integer
       k += 1
       x5 = 5 * h(k)
     End If
-  Next     
+  Next
 
   Return h(n)
 End Function
@@ -3870,7 +3872,7 @@ For i As Integer = 1 To 20
 Next
 Print : Print
 Print "The 1691st hamming number is :"
-Print hamming(1691) 
+Print hamming(1691)
 Print
 Print "Press any key to quit"
 Sleep
@@ -3902,7 +3904,7 @@ val hamming =
   q2 = Queue()
   q3 = Queue()
   q5 = Queue()
-  
+
   def enqueue( n ) =
     q2.enqueue( n*2 )
     q3.enqueue( n*3 )
@@ -3910,16 +3912,16 @@ val hamming =
 
   def stream =
     val n = min( min(q2.head(), q3.head()), q5.head() )
-    
+
     if q2.head() == n then q2.dequeue()
     if q3.head() == n then q3.dequeue()
     if q5.head() == n then q5.dequeue()
-    
+
     enqueue( n )
     n # stream()
-    
+
   for q <- [q2, q3, q5] do q.enqueue( 1 )
-  
+
   stream()
 ```
 
@@ -3981,9 +3983,9 @@ func hamming(n int) []*big.Int {
     i, j, k := 0, 0, 0
     for m := 1; m < len(h); m++ {
         h[m] = new(big.Int).Set(min(next2, min(next3, next5)))
-        if h[m].Cmp(next2) == 0 { i++; next2.Mul(  two, h[i]) } 
-        if h[m].Cmp(next3) == 0 { j++; next3.Mul(three, h[j]) } 
-        if h[m].Cmp(next5) == 0 { k++; next5.Mul( five, h[k]) } 
+        if h[m].Cmp(next2) == 0 { i++; next2.Mul(  two, h[i]) }
+        if h[m].Cmp(next3) == 0 { j++; next3.Mul(three, h[j]) }
+        if h[m].Cmp(next5) == 0 { k++; next5.Mul( five, h[k]) }
     }
     return h
 }
@@ -4555,7 +4557,7 @@ func main() {
 {{output}}
 
 ```txt
-1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36 
+1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36
 2125764000
 2^55 times 3^47 times 5^64
 Approximately:  5.193127804483804E+83
@@ -4593,10 +4595,10 @@ main = do
 -- 519312780448388736089589843750000000000000000000000000000000000000000000000000000000
 ```
 
-Runs in about a second on [http://ideone.com/q3fma Ideone.com]. 
-The nested <code>union</code>s' effect is to produce the minimal value at each step, 
-with duplicates removed. As Haskell evaluation model is ''on-demand'', 
-the three <code>map</code> expressions are in effect iterators, maintaining hidden pointers back into the shared named storage with which they were each created ''(a name is a pointer/handle in Haskell; to name is to point at, to refer to, to take a handle on)''. 
+Runs in about a second on [http://ideone.com/q3fma Ideone.com].
+The nested <code>union</code>s' effect is to produce the minimal value at each step,
+with duplicates removed. As Haskell evaluation model is ''on-demand'',
+the three <code>map</code> expressions are in effect iterators, maintaining hidden pointers back into the shared named storage with which they were each created ''(a name is a pointer/handle in Haskell; to name is to point at, to refer to, to take a handle on)''.
 
 The amount of operations is constant for each number produced, so the time complexity should be <math>O(n)</math>. [http://ideone.com/k8PU3 Empirically], it is slightly above that and worsening, suggestive of extra cost of bignum arithmetics. [http://ideone.com/k8PU3 Using triples representation] with logarithm values for comparisons amends this problem, but runs ~ 1.2x slower for the 1,000,000.
 
@@ -4611,7 +4613,7 @@ The classic version can be sped up quite a bit (about twice, with roughly the sa
 ```haskell
 hamming = 1 : foldr u [] [2,3,5] where
         u n s = -- fix (merge s . map (n*) . (1:))
-                r where 
+                r where
                 r = merge s (map (n*) (1:r))
 
 merge [] b = b
@@ -4633,7 +4635,7 @@ This is a common approach which explicitly maintains an internal buffer of <math
 ```Haskell
 hamm n = drop n $ iterate (\(_,(a:t))-> (a,union t [2*a,3*a,5*a])) (0,[1])
 ```
- 
+
 {{out}}
 
 ```Haskell
@@ -4667,8 +4669,8 @@ Runs too slowly to reach 1,000,000, with empirical orders of growth above ''~''&
 
 
 ```Haskell
-hamm = foldr merge1 [] . iterate (map (5*)) . 
-         foldr merge1 [] . iterate (map (3*)) $ iterate (2*) 1 
+hamm = foldr merge1 [] . iterate (map (5*)) .
+         foldr merge1 [] . iterate (map (3*)) $ iterate (2*) 1
     where
     merge1 (x:xs) ys = x : merge xs ys
 
@@ -4679,11 +4681,11 @@ hamm = foldr merge1 [] . iterate (map (5*)) .
 ```
 
 
-Uses <code>merge</code>, as there's no need for duplicates-removing <code>union</code> because each number is produced only once here, too. 
+Uses <code>merge</code>, as there's no need for duplicates-removing <code>union</code> because each number is produced only once here, too.
 
 The merges are arranged in a chain of folds. Might be suitable for parallel execution, because of their large number.
 
-Twice slower than the classic version at producing ''1,000,000th'' Hamming number, and worsening, running at ~n<sup>1.14..1.16</sup> empirically (vs. the classic version's linear operations). This is surprisingly efficient considering the large number of merges going on (about ''300'' for the ''1Mth'' number, and ~3n<sup>1/3</sup> in general). 
+Twice slower than the classic version at producing ''1,000,000th'' Hamming number, and worsening, running at ~n<sup>1.14..1.16</sup> empirically (vs. the classic version's linear operations). This is surprisingly efficient considering the large number of merges going on (about ''300'' for the ''1Mth'' number, and ~3n<sup>1/3</sup> in general).
 
 Can be ''significantly'' improved, both in time complexity and absolute run time, by replacing the linear fold with the tree-shaped <code>mergeAll</code> from the <code>Data.List.Ordered</code> module of <code>data-ordlist</code> package.
 
@@ -4692,22 +4694,22 @@ Can be ''significantly'' improved, both in time complexity and absolute run time
 
 It is also possible to more or less directly calculate the n-th Hamming number by enumerating (and counting) all the <code>(i,j,k)</code> triples below its [http://en.wikipedia.org/wiki/Regular_number#Number_theory estimated value] &ndash; with ordering according to their exponents, <code>i*ln2 + j*ln3 + k*ln5</code> &ndash; while storing only the "band" of topmost triples close enough to the target value (more in the [http://drdobbs.com/blogs/architecture-and-design/228700538 original post on DDJ]). The savings come from enumerating only pairs of indices, and finding the corresponding third index by a direct calculation, thus achieving the O(n^(2/3)) time complexity. Space complexity, with constant empirical estimation correction, is ~n^(2/3); but is further tweaked to ~n^(1/3) (following the idea from the entry below).
 
-The total count of thus produced triples is then the band's topmost value's index in the Hamming sequence, 1-based. The ''n''th number in the sequence is then found by a simple lookup in the sorted band, provided it was wide enough. This produces the 1,000,000-th value   instantaneously. Following the 2017-10 IDEOne update to a faster 64-bit system, the 1 trillionth number [https://ideone.com/GfMUOT is found in 0.78s] on Ideone.com: 
+The total count of thus produced triples is then the band's topmost value's index in the Hamming sequence, 1-based. The ''n''th number in the sequence is then found by a simple lookup in the sorted band, provided it was wide enough. This produces the 1,000,000-th value   instantaneously. Following the 2017-10 IDEOne update to a faster 64-bit system, the 1 trillionth number [https://ideone.com/GfMUOT is found in 0.78s] on Ideone.com:
 
 ```haskell
 -- directly find n-th Hamming number, in ~ O(n^{2/3}) time
 -- based on "top band" idea by Louis Klauder, from DDJ discussion
 -- by Will Ness, original post: drdobbs.com/blogs/architecture-and-design/228700538
- 
+
 {-# OPTIONS -O3 -XStrict -XBangPatterns #-}
- 
+
 import Data.List (sortBy, foldl') -- ' fix apostrophe coloring
 import Data.Function (on)
- 
+
 main = let (r,t) = nthHam 1000000000000 in print t -- >> print (trival t)
- 
+
 trival (i,j,k) = 2^i * 3^j * 5^k
- 
+
 nthHam :: Int -> (Double, (Int, Int, Int))                -- ( 64bit: use Int!!!     NB! )
 nthHam n                                                  -- n: 1-based: 1,2,3...
   | n <= 0    = error $ "n is 1--based: must be n > 0: " ++ show n
@@ -4716,7 +4718,7 @@ nthHam n                                                  -- n: 1-based: 1,2,3..
   | m <  0    = error $ "Not enough triples generated: " ++ show ((c,n) :: (Int, Int))
   | m >= nb   = error $ "Generated band is too narrow: " ++ show (m,nb)
   | otherwise = sortBy (flip compare `on` fst) b !! m     -- m-th from top in sorted band
- where  
+ where
   lb3 = logBase 2 3;  lb5 = logBase 2 5;  lb30_2 = logBase 2 30 / 2
   v = (6*lb3*lb5* fromIntegral n)**(1/3) - lb30_2         -- estimated logval, base 2
   estval n = (v + (1/v), 2/v)                             -- the space tweak! (thx, GBG!)
@@ -4727,9 +4729,9 @@ nthHam n                                                  -- n: 1-based: 1,2,3..
                      case t of []-> (c2,b);[v]->(c2,v:b) ) (0,[])  -- ( =~= mconcat )
             [ ( fromIntegral i+1,                         -- total triples w/ this (j,k)
                 [ (r,(i,j,k)) | frac < w ] )              -- store it, if inside band
-              | k <- [ 0 .. floor ( hi   /lb5) ],  let p = fromIntegral k*lb5,    
+              | k <- [ 0 .. floor ( hi   /lb5) ],  let p = fromIntegral k*lb5,
                 j <- [ 0 .. floor ((hi-p)/lb3) ],  let q = fromIntegral j*lb3 + p,
-                let (i,frac) = pr  (hi-q) ;            r = hi - frac  -- r = i + q 
+                let (i,frac) = pr  (hi-q) ;            r = hi - frac  -- r = i + q
             ] where  pr      = properFraction             -- pr 1.24 => (1,0.24)
                      foldl_  = foldl'
 ```
@@ -4837,7 +4839,7 @@ nthHam n                                               -- n: 1-based 1,2,3...
                             r = hi - frac
                             nbndj = i `seq` bndj `seq`
                                     if r < lo then bndj
-                                    else 
+                                    else
                                       let bglg = bglb2 * fromIntegral i +
                                                    bglb3 * fromIntegral j +
                                                    bglb5 * fromIntegral k in
@@ -4882,7 +4884,7 @@ procedure main(args)
     limit := integer(args[1]) | 30
     every write("\t", generateHamming() \ limit)
 end
-    
+
 # Do the work.   Start with known Hamming number 1 and maintain
 #   a set of triplet Hamming numbers as they get derived from that
 #   one.  Most of the code here is to figure out which Hamming
@@ -4910,7 +4912,7 @@ procedure generateHamming()
 
         # Ok, t1 has the next Hamming number, grab it
         suspend t1.cv
-        insert(triplers, Triplet(t1.cv)) 
+        insert(triplers, Triplet(t1.cv))
         # Advance triplet t1, if none left in t1, remove it
         t1.nextVal() | delete(triplers, t1)
         }
@@ -5068,22 +5070,22 @@ public class HammingTriple implements Comparable<HammingTriple> {
     private static final double logOf2 = Math.log(2);
     private static final double logOf3 = Math.log(3);
     private static final double logOf5 = Math.log(5);
-        
+
     // The powers of this triple
     private int a, b, c;
-      
+
     public HammingTriple(int a, int b, int c) {
         this.a = a; this.b = b; this.c = c;
     }
-    
+
     public String toString() {
         return "[" + a + ", " + b + ", " + c + "]";
     }
-    
+
     public BigInteger getValue() {
         return two.pow(a).multiply(three.pow(b)).multiply(five.pow(c));
     }
-    
+
     public boolean equals(Object other) {
         if(other instanceof HammingTriple) {
             HammingTriple h = (HammingTriple) other;
@@ -5091,7 +5093,7 @@ public class HammingTriple implements Comparable<HammingTriple> {
         }
         else { return false; }
     }
-    
+
     // Return 0 if this == other, +1 if this > other, and -1 if this < other
     public int compareTo(HammingTriple other) {
         // equality
@@ -5106,41 +5108,41 @@ public class HammingTriple implements Comparable<HammingTriple> {
         if(this.a <= other.a && this.b <= other.b && this.c <= other.c) {
             return -1;
         }
-       
+
         // take the logarithms for comparison
         double log1 = this.a * logOf2 + this.b * logOf3 + this.c * logOf5;
         double log2 = other.a * logOf2 + other.b * logOf3 + other.c * logOf5;
-        
+
         // are these different enough to be reliable?
         if(Math.abs(log1 - log2) > 0.0000001) {
             return (log1 < log2) ? -1: +1;
         }
-        
+
         // oh well, looks like we have to do this the hard way
         return this.getValue().compareTo(other.getValue());
         // (getting this far should be pretty rare, though)
     }
-    
+
     public static BigInteger computeHamming(int n, boolean verbose) {
         if(verbose) {
             System.out.println("Hamming number #" + n);
         }
         long startTime = System.currentTimeMillis();
-        
+
         // The elements of the search frontier
         PriorityQueue<HammingTriple> frontierQ = new PriorityQueue<HammingTriple>();
         int maxFrontierSize = 1;
-        
+
         // Initialize the frontier
         frontierQ.offer(new HammingTriple(0, 0, 0)); // 1
-        
+
         while(true) {
             if(frontierQ.size() > maxFrontierSize) {
                 maxFrontierSize = frontierQ.size();
             }
             // Pop out the next Hamming number from the frontier
             HammingTriple curr = frontierQ.poll();
-            
+
             if(--n == 0) {
                 if(verbose) {
                     System.out.println("Time: " + (System.currentTimeMillis() - startTime) + " ms");
@@ -5150,7 +5152,7 @@ public class HammingTriple implements Comparable<HammingTriple> {
                 }
                 return curr.getValue();
             }
-            
+
             // Current times five, if at origin in (a,b) plane
             if(curr.a == 0 && curr.b == 0) {
                 frontierQ.offer(new HammingTriple(curr.a, curr.b, curr.c + 1));
@@ -5320,11 +5322,11 @@ public class Hamming
 
 ```txt
 
-$ java Hamming 
-H[1..20] 1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36 
+$ java Hamming
+H[1..20] 1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36
 H[1691] 2125764000
 H[10^6] 519312780448388736089589843750000000000000000000000000000000000000000000000000000000
-$ 
+$
 
 ```
 
@@ -5359,11 +5361,11 @@ function hamming() {
 var ham = hamming();
 var first20=[], i=1;
 
-for (; i <= 20; i++) 
+for (; i <= 20; i++)
     first20.push(ham.next());
 print(first20.join(', '));
 print('...');
-for (; i <= 1690; i++) 
+for (; i <= 1690; i++)
     ham.next();
 print(i + " => " + ham.next());
 ```
@@ -5373,7 +5375,7 @@ print(i + " => " + ham.next());
 ```txt
 1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24, 25, 27, 30, 32, 36
 ...
-1691 => 2125764000 
+1691 => 2125764000
 ```
 
 
@@ -5581,10 +5583,10 @@ def index_min_by(f):
   . as $in
   | if length == 0 then null
     else .[0] as $first
-    | reduce range(0; length) as $i 
+    | reduce range(0; length) as $i
         ([0, $first, ($first|f)];   # state: [ix; min; f|min]
          ($in[$i]|f) as $v
-         | if $v < .[2] then [ $i, $in[$i], $v ] else . end) 
+         | if $v < .[2] then [ $i, $in[$i], $v ] else . end)
     | .[0]
     end;
 
@@ -5616,8 +5618,8 @@ def hamming(n):
       else (.[1]|next) as $ix     # $ix cannot be null
       | pop($ix)
       | .[0] as $next
-      | (if $next == $previous then empty elif n>=0 then $previous else empty end), 
-        (if $next == $previous then . else push($next) end | _hamming) 
+      | (if $next == $previous then empty elif n>=0 then $previous else empty end),
+        (if $next == $previous then . else push($next) end | _hamming)
       end;
   [1, [[2],[3],[5]], 1] | _hamming;
 
@@ -5667,10 +5669,10 @@ def index_min_by(f):
   . as $in
   | if length == 0 then null
     else .[0] as $first
-    | reduce range(0; length) as $i 
+    | reduce range(0; length) as $i
         ([0, $first, ($first|f)];   # state: [ix; min; f|min]
          ($in[$i]|f) as $v
-         | if $v < .[2] then [ $i, $in[$i], $v ] else . end) 
+         | if $v < .[2] then [ $i, $in[$i], $v ] else . end)
     | .[0]
     end;
 
@@ -5707,8 +5709,8 @@ def hamming(n):
       else (.[1]|next) as $ix     # $ix cannot be null
       | pop($ix)
       | .[0] as $next
-      | (if $next == $previous then empty elif n>=0 then $previous else empty end), 
-        (if $next == $previous then . else push($next) end | _hamming) 
+      | (if $next == $previous then empty elif n>=0 then $previous else empty end),
+        (if $next == $previous then . else push($next) end | _hamming)
       end;
   [[0,0,0], [ [[1,0,0]] ,[[0,1,0]], [[0,0,1]] ], 1] | _hamming;
 
@@ -5734,7 +5736,7 @@ hamming(-1000000)
 
 ## Julia
 
-Simple brute force algorithm, derived from the discussion at ProgrammingPraxis.com. 
+Simple brute force algorithm, derived from the discussion at ProgrammingPraxis.com.
 
 ```julia
 function hammingsequence(N)
@@ -5758,8 +5760,8 @@ function hammingsequence(N)
     end
     ham
 end
- 
-println(hammingsequence(20)) 
+
+println(hammingsequence(20))
 println(hammingsequence(1691)[end])
 println(hammingsequence(1000000)[end])
 ```
@@ -6299,7 +6301,7 @@ Module hamming_long {
 	function hamming(l as long, &h(),&last()) {
 		l=if(l<1->1&, l)
 		long oldlen=len(h())
-		if oldlen<l then dim h(l) else =h(l-1): exit 
+		if oldlen<l then dim h(l) else =h(l-1): exit
 		def long  i, j, k, n, m, x2, x3, x5, ll
 		stock last(0) out x2,x3,x5,i,j,k
 		n=oldlen : ll=l-1
@@ -6373,7 +6375,7 @@ Module hamming {
 	function hamming(l as long, &h(),&last()) {
 		l=if(l<1->1&, l)
 		oldlen=len(h())
-		if oldlen<l then dim h(l) else =h(l-1): exit 
+		if oldlen<l then dim h(l) else =h(l-1): exit
 		def decimal  i, j, k, m, x2, x3, x5
 		stock last(0) out x2,x3,x5,i,j,k
 		n=oldlen : ll=l-1&
@@ -6444,7 +6446,7 @@ hamming
 
 ```mathematica
 HammingList[N_] := Module[{A, B, C}, {A, B, C} = (N^(1/3))*{2.8054745679851933, 1.7700573778298891, 1.2082521307023026} - {1, 1, 1};
- Take[ Sort@Flatten@Table[ 2^x * 3^y * 5^z , 
+ Take[ Sort@Flatten@Table[ 2^x * 3^y * 5^z ,
 {x, 0, A}, {y, 0, (-B/A)*x + B}, {z, 0, C - (C/A)*x - (C/B)*y}], N]];
 ```
 
@@ -6505,7 +6507,7 @@ Hamming(n)	New count,ok,next,number,which
 	. Quit
 	Quit
 Do Hamming(2000)
- 
+
     1: 1
     2: 2
     3: 3
@@ -6590,7 +6592,7 @@ The following code improves on the above by reducing the number of computational
 
 ```nim
 import bigints, times
- 
+
 proc hamming(limit: int): BigInt =
   doAssert limit > 0
   var
@@ -6614,9 +6616,9 @@ proc hamming(limit: int): BigInt =
     if (cs and 1) != 0: i += 1; x2 = h[i] * 2
     if (cs and 2) != 0: j += 1; x3 = h[j] * 3
     if (cs and 4) != 0: k += 1; x5 = h[k] * 5
-  
+
   h[h.high]
- 
+
 for i in 1 .. 20:
   write stdout, hamming(i), " "
 echo ""
@@ -6624,7 +6626,7 @@ echo hamming(1691)
 
 let strt = epochTime()
 let rslt = hamming(1_000_000)
-let stop = epochTime() 
+let stop = epochTime()
 
 echo rslt
 echo "This last took ", (stop - strt)*1000, " milliseconds."
@@ -6649,7 +6651,7 @@ The above code still wastes quite a lot of time doing redundant BigInt calculati
 
 ```nim
 import bigints, math, sequtils, algorithm, times
- 
+
 iterator func_hamming() : BigInt =
   type Thunk[T] = proc(): T {.closure.}
   type Lazy[T] = ref object of RootObj # tuple[val: T, thnk: Thunk[T]]
@@ -6708,7 +6710,7 @@ cnt = 1
 for h in func_hamming():
   if cnt < 1000000: cnt += 1; continue
   else: rslt = h; break
-let stop = epochTime() 
+let stop = epochTime()
 
 echo rslt
 echo "This last took ", (stop - strt)*1000, " milliseconds."
@@ -6737,7 +6739,7 @@ The above claims with respect to the inefficiency of Nim's memory allocation can
 
 ```nim
 import bigints, math, sequtils, times
- 
+
 iterator nodups_hamming(): BigInt =
   var
     m = newSeq[BigInt](1) # give it two values so doubling size works
@@ -6773,7 +6775,7 @@ iterator nodups_hamming(): BigInt =
       m[jm] = mrg
       jm += 1
     ih += 1
-  
+
     yield h[ih - 1]
 ```
 
@@ -6791,7 +6793,7 @@ Still, much of the above time is used by BigInt calculations and still many heap
 
 ```nim
 import bigints, math, sequtils, times
- 
+
 proc convertTrival2BigInt(tpl: (uint32, uint32, uint32)): BigInt =
   result = initBigInt 1
   let (x, y, z) = tpl
@@ -6847,7 +6849,7 @@ iterator log_nodups_hamming(): (uint32, uint32, uint32) =
       m[jm] = mrg
       jm += 1
     ih += 1
-  
+
     let (_, rslt) = h[ih - 1]
     yield rslt
 
@@ -6867,7 +6869,7 @@ cnt = 1
 for h in log_nodups_hamming():
   if cnt < 1000000: cnt += 1; continue
   else: rslt = h; break # """
-let stop = epochTime() 
+let stop = epochTime()
 
 let (x2, x3, x5) = rslt
 writeLine stdout, "2^", x2, " + 3^", x3, " + 5^", x5
@@ -6911,7 +6913,7 @@ The above code is about as fast as one can go generating sequences; however, if 
 
 ```nim
 import bigints, math, sequtils, algorithm, times
- 
+
 proc convertTrival2BigInt(tpl: (uint32, uint32, uint32)): BigInt =
   result = initBigInt 1
   let (x, y, z) = tpl
@@ -6953,7 +6955,7 @@ proc nth_hamming(n: uint64): (uint32, uint32, uint32) =
   bnd.sort((proc (a, b: Logrep): int = # sort decreasing order
     let (la, _) = a; let (lb, _) = b
     la.cmp lb), SortOrder.Descending)
- 
+
   let (_, rslt) = bnd[ndx]
   rslt
 
@@ -6964,7 +6966,7 @@ echo nth_hamming(1691).convertTrival2BigInt
 
 let strt = epochTime()
 let rslt = nth_hamming(1_000_000u64)
-let stop = epochTime() 
+let stop = epochTime()
 
 let (x2, x3, x5) = rslt
 writeLine stdout, "2^", x2, " + 3^", x3, " + 5^", x5
@@ -6997,9 +6999,9 @@ import bigints, math, sequtils, algorithm, times
 proc nth_hamming(n: uint64): (uint32, uint32, uint32) =
   doAssert n > 0u64
   if n < 2: return (0u32, 0u32, 0u32) # trivial case for 1
-  
+
   type Logrep = (float64, (uint32, uint32, uint32))
-  
+
   let
     lb3 = 3.0f64.log2
     lb5 = 5.0f64.log2
@@ -7028,21 +7030,21 @@ proc nth_hamming(n: uint64): (uint32, uint32, uint32) =
   bnd.sort((proc (a, b: Logrep): int = # sort decreasing order
     let (la, _) = a; let (lb, _) = b
     la.cmp lb), SortOrder.Descending)
-  
+
   let (_, rslt) = bnd[ndx]
   rslt
-  
+
 let num_hammings = 1_000_000_000_000u64
 
 for i in 1 .. 20:
   write stdout, nth_hamming(i.uint64).convertTrival2BigInt, " "
 echo ""
 echo nth_hamming(1691).convertTrival2BigInt
-  
+
 let strt = epochTime()
 let rslt = nth_hamming(num_hammings)
-let stop = epochTime() 
-  
+let stop = epochTime()
+
 let (x2, x3, x5) = rslt
 writeLine stdout, "2^", x2, " + 3^", x3, " + 5^", x5
 let lgrslt = (x2.float64 + x3.float64 * 3.0f64.log2 +
@@ -7057,7 +7059,7 @@ if ls <= 2000:
   for i in countup(0, ls - 1, 100):
     if i + 100 < ls: echo s[i .. i + 99]
     else: echo s[i .. ls - 1]
-  
+
 echo "This last took ", (stop - strt)*1000, " milliseconds."
 ```
 
@@ -7100,7 +7102,7 @@ let () =
 
 
 Output:
-<blockquote>The first 20 are: 1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36 
+<blockquote>The first 20 are: 1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36
 The 1691st is 2125764000
 </blockquote>
 
@@ -7214,7 +7216,7 @@ class Multiplier
 		{self next}
 	end
 	meth next
-		local 
+		local
 			A
 			AS
 		in
@@ -7293,7 +7295,7 @@ class PriorityQueue
 		end
 	end
 
-end		
+end
 
 
 local
@@ -7312,7 +7314,7 @@ local
 		 end
 		 S
 	end
- 
+
 	fun {Primes N}
 		 S = {Sieve N}
 	in
@@ -7487,7 +7489,7 @@ Output
 
 ```txt
 
-2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36 40 
+2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36 40
 
 No 1690 | 2125764000 = 2^5 3^12 5^3
 
@@ -7496,7 +7498,7 @@ user    0m17.310s
 ```
 
 
-### a fast alternative 
+### a fast alternative
 
 The Pascal code above is by far slower.Easily to use for smooth-3 .. smooth-37.
 
@@ -7505,13 +7507,13 @@ This depends extreme on sorting speed.
 
 http://rosettacode.org/wiki/Hamming_numbers#Direct_calculation_through_triples_enumeration is head to head, but still faster for very big numbers  >1e8 (10^8: 4 MB 0.27 sec)
 
-100'200'300'400 calculates in 8.33 s 
+100'200'300'400 calculates in 8.33 s
 
 For fpc 3.1.1_64 linux on 3.5 Ghz i4330, depends on 64-Bit by a factor of 4 slower on 32-Bit
 
 /* For 12 primes  "smooth-37"  1e8  it takes 02.807 s */
 
-I collect only the factors between p^n and p^(n+1), in a recursive way in different lists 
+I collect only the factors between p^n and p^(n+1), in a recursive way in different lists
 
 5 is a list consisting only 5^? = 1 factor
 
@@ -7879,7 +7881,7 @@ ln   192.7618989  2^55  3^47  5^64  0^0
 ln   417.2530468  2^80  3^92  5^162  0^0
 00:00:00.028
 
-Actual Index 10201068944--> hamming Nr: 100200300400 see http://ideone.com/q3fma 
+Actual Index 10201068944--> hamming Nr: 100200300400 see http://ideone.com/q3fma
 ln  4215.6152353  2^942  3^2276  5^660  0^0
 2 elemcount  5028911 out of 5841156
 3 elemcount    2620 out of     3165
@@ -7890,7 +7892,7 @@ user    0m35.907s
 sys     0m0.023s
 
 ...
-change zu use 12 primes [2..37] ( 32 bit ) -> 2.2x runtime  over using 3 primes 
+change zu use 12 primes [2..37] ( 32 bit ) -> 2.2x runtime  over using 3 primes
 Begin
   PlInit(12)
 
@@ -7973,7 +7975,7 @@ The core module bigint (Math::BigInt) is very slow, even with the GMP backend, a
 
 
 
-###  Merge version 
+###  Merge version
 
 {{Works with|rakudo|2015-11-04}}
 The limit scaling is not <em>required</em>, but it cuts down on a bunch of unnecessary calculation.
@@ -7983,9 +7985,9 @@ my $limit = 32;
 
 sub powers_of ($radix) { 1, |[\*] $radix xx * }
 
-my @hammings = 
+my @hammings =
   (   powers_of(2)[^ $limit ]       X*
-      powers_of(3)[^($limit * 2/3)] X* 
+      powers_of(3)[^($limit * 2/3)] X*
       powers_of(5)[^($limit * 1/2)]
    ).sort;
 
@@ -8002,7 +8004,7 @@ say @hammings[1690]; # zero indexed
 
 
 
-###  Iterative version 
+###  Iterative version
 
 {{Works with|rakudo|6.c}}
 
@@ -8022,7 +8024,7 @@ my \Hammings := gather {
     }
   }
 }
-  
+
 say Hammings.[^20];
 say Hammings.[1691 - 1];
 say Hammings.[1000000 - 1];
@@ -8062,11 +8064,11 @@ integer i = 1, j = 1, k = 1
 end function
 
 include builtins\mpfr.e
- 
+
 function mpz_min(mpz a, b)
     return iff(mpz_cmp(a,b)<0?a:b)
 end function
- 
+
 function mpz_hamming(integer N)
 sequence h = mpz_inits(N,1)
 mpz x2 = mpz_init(2),
@@ -8083,7 +8085,7 @@ integer i = 1, j = 1, k = 1
     end for
     return h[N]
 end function
- 
+
 sequence s = {}
 for i=1 to 20 do
     s = append(s,hamming(i))
@@ -8091,7 +8093,7 @@ end for
 ?s
 ?hamming(1691)
 ?{hamming(1000000),"wrong!"} --(the hn=x2 etc fail, so multiplies are all wrong)
- 
+
 mpfr_printf(1,"%Zd\n",mpz_hamming(1691))
 mpfr_printf(1,"%Zd\n",mpz_hamming(1000000))
 ```
@@ -8129,7 +8131,7 @@ constant ln1 = log(1), ln2 = log(2), ln3 = log(3), ln5 = log(5)
 
 function hamming(integer N)
 sequence h = repeat(0,N)
-sequence x2 = {ln2,{1,0,0}}, 
+sequence x2 = {ln2,{1,0,0}},
          x3 = {ln3,{0,1,0}},
          x5 = {ln5,{0,0,1}}
 integer i = 1, j = 1, k = 1
@@ -8221,12 +8223,12 @@ end function
 
 ## PL/I
 
-{{improve|PL/I| 
- output does not match the program. 
- 
- The PL/I program lists the first '''2,197''' Hamming numbers, not '''20'''. 
- 
- Also, the wrong number is being displayed, it isn't H(1653), it should be H(1691). 
+{{improve|PL/I|
+ output does not match the program.
+
+ The PL/I program lists the first '''2,197''' Hamming numbers, not '''20'''.
+
+ Also, the wrong number is being displayed, it isn't H(1653), it should be H(1691).
 }}
 
 ```PL/I
@@ -8295,29 +8297,29 @@ H(20)=                36;
 
 
 ### Generator idiom
- 
+
 
 ```Prolog
 %% collect N elements produced by a generator in a row
- 
+
 take( 0, Next, Z-Z, Next).
 take( N, Next, [A|B]-Z, NZ):- N>0, !, next(Next,A,Next1),
   N1 is N-1,
   take(N1,Next1,B-Z,NZ).
- 
+
 %% a generator provides specific {next} implementation
- 
-next( hamm( A2,B,C3,D,E5,F,[H|G] ), H, hamm(X,U,Y,V,Z,W,G) ):- 
+
+next( hamm( A2,B,C3,D,E5,F,[H|G] ), H, hamm(X,U,Y,V,Z,W,G) ):-
   H is min(A2, min(C3,E5)),
   (   A2 =:= H -> B=[N2|U],X is N2*2 ; (X,U)=(A2,B) ),
   (   C3 =:= H -> D=[N3|V],Y is N3*3 ; (Y,V)=(C3,D) ),
   (   E5 =:= H -> F=[N5|W],Z is N5*5 ; (Z,W)=(E5,F) ).
- 
+
 mkHamm( hamm(1,X,1,X,1,X,X) ).       % Hamming numbers generator init state
 
-main(N) :- 
-    mkHamm(G),take(20,G,A-[],_),           write(A), nl, 
-    take(1691-1,G,_,G2),take(2,G2,B-[],_),     write(B), nl,  
+main(N) :-
+    mkHamm(G),take(20,G,A-[],_),           write(A), nl,
+    take(1691-1,G,_,G2),take(2,G2,B-[],_),     write(B), nl,
     take(  N  -1,G,_,G3),take(2,G3,[C1|_]-_,_),   write(C1), nl.
 ```
 
@@ -8359,7 +8361,7 @@ multlist([X|L],N,XLN) :-
 	% the trick to stop
 	nb_getval(go, 1) ->
 
-	% laziness flavor	
+	% laziness flavor
 	when(ground(X),
 	     (	 XN is X*N,
 		 XLN=[XN|LN],
@@ -8453,14 +8455,14 @@ Procedure.i Hamming(l.i)
     h(n)=m
     If m=x : i+1 : x=#X2*h(i) : EndIf
     If m=y : j+1 : y=#X3*h(j) : EndIf
-    If m=z : k+1 : z=#X5*h(k) : EndIf    
+    If m=z : k+1 : z=#X5*h(k) : EndIf
   Next
   ProcedureReturn h(l-1)
 EndProcedure
 
 OpenConsole("Hamming numbers")
 For h.i=1 To 20
-  Ham(h)  
+  Ham(h)
 Next
 Ham(1691)
 Input()
@@ -8521,7 +8523,7 @@ def hamming2():
                 h[++n] = min(x2,x3,x5);
                 if (x2==h[n]) { x2=2*h[++i]; }
                 if (x3==h[n]) { x3=3*h[++j]; }
-                if (x5==h[n]) { x5=5*h[++k]; } 
+                if (x5==h[n]) { x5=5*h[++k]; }
     '''
     h = 1
     _h=[h]    # memoized
@@ -8621,7 +8623,7 @@ print list(islice(h(), 999999, 1000000)) # runtime 9.5 sec on i5-3570S
 
 
 ==="Cyclical Iterators"===
-The original author is Raymond Hettinger and the code was first published [http://code.activestate.com/recipes/576961/ here] under the MIT license. Uses iterators dubbed "cyclical" in a sense that they are referring back (explicitly, with <code>p2, p3, p5</code> iterators) to the previously produced values, same as the above versions (through indecies into shared storage) and the classic [[#Haskell|Haskell]] version (implicitly timed by lazy evaluation). 
+The original author is Raymond Hettinger and the code was first published [http://code.activestate.com/recipes/576961/ here] under the MIT license. Uses iterators dubbed "cyclical" in a sense that they are referring back (explicitly, with <code>p2, p3, p5</code> iterators) to the previously produced values, same as the above versions (through indecies into shared storage) and the classic [[#Haskell|Haskell]] version (implicitly timed by lazy evaluation).
 
 Memory is efficiently maintained automatically by the <code>tee</code> function for each of the three generator expressions, i.e. only that much is maintained as needed to produce the next value (although it looks like the storage is not shared so three copies are maintained implicitly there).
 
@@ -8653,12 +8655,12 @@ print islice(raymonds_hamming(), 1689, 1690).next()
 print islice(raymonds_hamming(), 999999, 1000000).next()
 ```
 
-Results are the same as before. 
+Results are the same as before.
 
 ====Non-sharing recursive generator====
-Another formulation along the same lines, but greatly simplified, found [http://programmingpraxis.com/2011/08/30/hamming-numbers/#comment-3486 here]. 
-Lacks data sharing, i.e. calls self recursively thus creating a separate copy of the data stream fed to the tee() call, again and again, instead of using its own output. 
-This [http://ideone.com/PIkWEN gravely impacts the efficiency]. Not to be used. 
+Another formulation along the same lines, but greatly simplified, found [http://programmingpraxis.com/2011/08/30/hamming-numbers/#comment-3486 here].
+Lacks data sharing, i.e. calls self recursively thus creating a separate copy of the data stream fed to the tee() call, again and again, instead of using its own output.
+This [http://ideone.com/PIkWEN gravely impacts the efficiency]. Not to be used.
 
 
 ```python
@@ -8796,7 +8798,7 @@ print(h[length(h)])
 
 
 
-###  Alternate version 
+###  Alternate version
 
 The '''nextn''' R function provides the needed functionality:
 
@@ -8842,7 +8844,7 @@ hamming <- function(n) {
 (define (mult k) (λ(x) (* x k)))
 
 (define hamming
-  (stream-cons 
+  (stream-cons
    1 (merge (stream-map (mult 2) hamming)
             (merge (stream-map (mult 3) hamming)
                    (stream-map (mult 5) hamming)))))
@@ -8871,7 +8873,7 @@ The above version consumes quite a lot of memory as streams are retained since t
 (require racket/stream)
 (define first stream-first)
 (define rest  stream-rest)
- 
+
 (define (hamming)
   (define (merge s1 s2)
     (let ([x1 (first s1)]
@@ -8890,7 +8892,7 @@ The above version consumes quite a lot of memory as streams are retained since t
         (letrec ([r (merge s (smult n (stream-cons 1 r)))])
           r)))
   (stream-cons 1 (stream-fold u empty-stream '(5 3 2))))
- 
+
 (for/list ([i 20] [x (hamming)]) x) (newline)
 (stream-ref (hamming) 1690) (newline)
 (stream-ref (hamming) 999999) (newline)
@@ -8937,7 +8939,7 @@ define hamming use $limit
 {{out}}
 
 ```txt
-1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36 
+1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36
 Hamming(1691) is: 2125764000
 ```
 
@@ -8945,7 +8947,7 @@ Hamming(1691) is: 2125764000
 
 ## REXX
 
-Both REXX versions compute and produce the Hamming numbers in numerical order. 
+Both REXX versions compute and produce the Hamming numbers in numerical order.
 
 ### idiomatic
 
@@ -9045,7 +9047,7 @@ hamming: procedure;  parse arg x,y;    if y==''  then y= x;            w= length
          return
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -9061,12 +9063,12 @@ for nr = 1 to 19
 next
 see "h(1691) = " + hamming(1690) + nl
 see nl
- 
+
 func hamming limit
      h = list(1690)
      h[1] =1
      x2 = 2 x3 = 3 x5 =5
-     i  = 0 j  = 0 k  =0   
+     i  = 0 j  = 0 k  =0
      for n =1 to limit
          h[n]  = min(x2, min(x3, x5))
          if x2 = h[n]  i = i +1  x2 =2 *h[i] ok
@@ -9117,10 +9119,10 @@ h(1691) = 2125764000
 hamming = Enumerator.new do |yielder|
   next_ham = 1
   queues = [[ 2, []], [3, []], [5, []] ]
-  
+
   loop do
     yielder << next_ham   # or: yielder.yield(next_ham)
-    
+
     queues.each {|m,queue| queue << next_ham * m}
     next_ham = queues.collect{|m,queue| queue.first}.min
     queues.each {|m,queue| queue.shift if queue.first==next_ham}
@@ -9185,13 +9187,13 @@ dim h(1000000)
 for i =1 to 20
     print hamming(i);" ";
 next i
- 
+
 print
 print "Hamming List First(1691)   =";chr$(9);hamming(1691)
 print "Hamming List Last(1000000) =";chr$(9);hamming(1000000)
- 
+
 end
- 
+
 function hamming(limit)
     h(0) =1
     x2 = 2: x3 = 3: x5 =5
@@ -9208,7 +9210,7 @@ end function
 
 
 ```txt
-1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36 
+1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36
 Hamming List First(1691)   =	2125764000
 Hamming List Last(1000000) =	519312780448388736089589843750000000000000000000000000000000000000000000000000000000
 ```
@@ -9243,7 +9245,7 @@ fn basic_hamming(n: usize) -> BigUint {
 
     // BigUint comparisons are expensive, so do it only as necessary...
     fn min3(x: &BigUint, y: &BigUint, z: &BigUint) -> (usize, BigUint) {
-        let (cs, r1) = if y == z { (0x6, y) } 
+        let (cs, r1) = if y == z { (0x6, y) }
                         else if y < z { (2, y) } else { (4, z) };
         if x == r1 { (cs | 1, x.clone()) }
         else if x < r1 { (1, x.clone()) } else { (cs, r1.clone()) }
@@ -9254,7 +9256,7 @@ fn basic_hamming(n: usize) -> BigUint {
         let (cs, e1) = { min3(&x2, &x3, &x5) };
         h[c] = e1; // vector now owns the generated value
         if (cs & 1) != 0 { i += 1; x2 = &two * &h[i] }
-        if (cs & 2) != 0 { j += 1; x3 = &three * &h[j] }	
+        if (cs & 2) != 0 { j += 1; x3 = &three * &h[j] }
         if (cs & 4) != 0 { k += 1; x5 = &five * &h[k] }
         c += 1;
     }
@@ -9557,7 +9559,7 @@ fn main() {
     println!("{}", convert_log2big(log_nodups_hamming_iter().take(1691).last().unwrap()));
 
     let strt = Instant::now();
-	
+
 //  let rslt = convert_log2big(log_nodups_hamming_iter().take(1000000000).last().unwrap());
     let mut it = log_nodups_hamming_iter().into_iter();
     for _ in 0 .. 100-1 { // a little faster; less one level of iteration
@@ -9641,7 +9643,7 @@ use std::time::Instant;
 // since Box<FnOnce() -> T + 'a> doesn't currently work and
 // FnBox, which does work, (version 1.13) is UnStable;
 // use the boilerplate Invoke trait and Thunk
-// from the old removed thunk standard library... 
+// from the old removed thunk standard library...
 
 pub trait Invoke<R = ()> {
     fn invoke(self: Box<Self>) -> R;
@@ -9986,7 +9988,7 @@ fn main() {
     let secs = elpsd.as_secs();
     let millis = (elpsd.subsec_nanos() / 1000000)as u64;
     let dur = secs * 1000 + millis;
-    
+
     println!("2^{} times 3^{} times 5^{}", rslt.0, rslt.1, rslt.2);
     let rs = convert_log2big(rslt).to_str_radix(10);
     let mut s = rs.as_str();
@@ -10095,7 +10097,7 @@ There's also a fairly mechanical translation from Haskell using purely functiona
 ```scala
 val hamming : Stream[BigInt] = {
    def merge(inx : Stream[BigInt], iny : Stream[BigInt]) : Stream[BigInt] = {
-      if (inx.head < iny.head) inx.head #:: merge(inx.tail, iny) else 
+      if (inx.head < iny.head) inx.head #:: merge(inx.tail, iny) else
       if (iny.head < inx.head) iny.head #:: merge(inx, iny.tail) else
       merge(inx, iny.tail)
    }
@@ -10255,10 +10257,10 @@ Although the algorithm above is true to the classic Dijkstra version and althoug
   (cons 1 (delay (foldl u '() '(5 3 2)))))
 
 ;;; test...
-(define (stream-take->list n strm) 
-  (if (= n 0) (list) (cons (car strm) 
+(define (stream-take->list n strm)
+  (if (= n 0) (list) (cons (car strm)
     (stream-take->list (- n 1) (force (cdr strm))))))
-(define (stream-ref strm nth) 
+(define (stream-ref strm nth)
   (do ((nxt strm (force (cdr nxt))) (cnt 0 (+ cnt 1)))
       ((>= cnt nth) (car nxt))))
 (display (stream-take->list 20 (hamming))) (newline)
@@ -10331,7 +10333,7 @@ const func bigInteger: hamming (in integer: n) is func
       end if;
     end for;
   end func;
- 
+
 const proc: main is func
   local
     var integer: n is 0;
@@ -10349,7 +10351,7 @@ const proc: main is func
 
 ```txt
 
-1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36 
+1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36
 2125764000
 519312780448388736089589843750000000000000000000000000000000000000000000000000000000
 
@@ -10404,7 +10406,7 @@ This is a straightforward implementation of the pseudocode snippet found in the 
 ```smalltalk
 Object subclass: Hammer [
   Hammer class >> hammingNumbers: howMany [
-    |h i j k x2 x3 x5| 
+    |h i j k x2 x3 x5|
       h := OrderedCollection new.
       i := 0. j := 0. k := 0.
       h add: 1.
@@ -10415,7 +10417,7 @@ Object subclass: Hammer [
         (( h indexOf: m ) = 0) ifTrue: [ h add: m ].
         ( x2 = (h last) ) ifTrue: [ i := i + 1. x2 := 2 * (h at: i) ].
         ( x3 = (h last) ) ifTrue: [ j := j + 1. x3 := 3 * (h at: j) ].
-        ( x5 = (h last) ) ifTrue: [ k := k + 1. x5 := 5 * (h at: k) ]. 
+        ( x5 = (h last) ) ifTrue: [ k := k + 1. x5 := 5 * (h at: k) ].
       ].
       ^ h sort
   ]
@@ -10435,11 +10437,11 @@ tape := Set new.
 
 hammingProcess := [:newHamming|
 	(newHamming <= limit)
-		ifTrue: 
+		ifTrue:
 			[| index |
 			index := tape scanFor: newHamming.
-			(tape array at: index) 
-				ifNil: 
+			(tape array at: index)
+				ifNil:
 					[tape atNewIndex: index put: newHamming asSetElement.
 					hammingProcess value: newHamming * 2.
 					hammingProcess value: newHamming * 3.
@@ -10449,8 +10451,8 @@ hammingProcess value: 1.
 
 sc := tape asSortedCollection.
 sc first: 20. "a SortedCollection(1 2 3 4 5 6 8 9 10 12 15 16 18 20 24 25 27 30 32 36)"
-sc at: 1691. "2125764000" 
-sc at: 1000000. "519312780448388736089589843750000000000000000000000000000000000000000000000000000000" 
+sc at: 1691. "2125764000"
+sc at: 1000000. "519312780448388736089589843750000000000000000000000000000000000000000000000000000000"
 
 ```
 
@@ -10801,7 +10803,7 @@ yields this list of the first 20 Hamming numbers.
 <1,2,3,4,5,6,8,9,10,12,15,16,18,20,24,25,27,30,32,36>
 
 ```
- 
+
 Although all calculations are performed using unlimited precision, the version
 above is impractical for large numbers. A more hardcore approach is the following.
 
@@ -11004,8 +11006,8 @@ End Sub
 
 ```txt
 The first twenty Hamming numbers are:
- 1   2   3   4   5   6   8   9   10   12   15   16   18   20   24   25   27   30   32  
-Hamming number 1691 is: 2^5 * 3^12 * 5^3= 2125764000 
+ 1   2   3   4   5   6   8   9   10   12   15   16   18   20   24   25   27   30   32
+Hamming number 1691 is: 2^5 * 3^12 * 5^3= 2125764000
 Hamming number 1000000 is: 2^55 * 3^47 * 5^64=
 519312780448388671875000000000000000000000000000000000000000000000000000000000000000
 Execution time 79  milliseconds
@@ -11084,14 +11086,14 @@ dim h(1000000)
 for i =1 to 20
     print hamming(i)," ";
 next i
- 
+
 print
 print "Hamming List First(1691)   = ",hamming(1691)
 end
- 
+
 sub hamming(limit)
     local x2,x3,x5,i,j,k,n
-	
+
     h(0) =1
     x2 = 2: x3 = 3: x5 =5
     i  = 0: j  = 0: k  =0
@@ -11167,11 +11169,11 @@ var lg3 = (3.0).log()/(2.0).log(), lg5 = (5.0).log()/(2.0).log();
 fcn logval(i,j,k){ lg5*k + lg3*j + i }
 fcn trival(i,j,k){ BN(2).pow(i) * BN(3).pow(j) * BN(5).pow(k) }
 fcn estval(n){ (6.0*lg3*lg5*n).pow(1.0/3) } #-- estimated logval, base 2
-fcn rngval(n){                                                
-   if(n > 500000) return(2.4496 , 0.0076);	#-- empirical estimation 
+fcn rngval(n){
+   if(n > 500000) return(2.4496 , 0.0076);	#-- empirical estimation
    if(n > 50000)  return(2.4424 , 0.0146);	#--   correction, base 2
    if(n > 500)	  return(2.3948 , 0.0723);	#--     (dist,width)
-   if(n > 1)	  return(2.2506 , 0.2887);	#-- around (log $ sqrt 30), 
+   if(n > 1)	  return(2.2506 , 0.2887);	#-- around (log $ sqrt 30),
 		  return(2.2506 , 0.5771);	#--   says WP
 }
 
@@ -11238,7 +11240,7 @@ Hamming(1,000,000,000)-->2^1334 * 3^335 * 5^404-->
 ```zxbasic
 10 FOR h=1 TO 20: GO SUB 1000: NEXT h
 20 LET h=1691: GO SUB 1000
-30 STOP 
+30 STOP
 1000 REM Hamming
 1010 DIM a(h)
 1030 LET a(1)=1: LET x2=2: LET x3=3: LET x5=5: LET i=1: LET j=1: LET k=1
@@ -11252,6 +11254,6 @@ Hamming(1,000,000,000)-->2^1334 * 3^335 * 5^404-->
 1110 IF m=x5 THEN LET k=k+1: LET x5=5*a(k)
 1120 NEXT n
 1130 PRINT "H(";h;")= ";a(h)
-1140 RETURN 
+1140 RETURN
 ```
 

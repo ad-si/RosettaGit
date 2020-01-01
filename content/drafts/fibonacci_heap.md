@@ -18,7 +18,7 @@ tags = []
 * Implement queue operations for '''Fibonacci heaps'''. Where H is heap, x node with data value, k integer.
 *Operations:
 ** MakeHeap() - create new empty Fibonacci heap
-** Insert(H,x) - insert new element x into heap H 
+** Insert(H,x) - insert new element x into heap H
 ** Union(H1, H2) - union heap H1 and heap H2
 ** Minimum(H) - return minimum value from heap H
 ** ExtractMin(H) - (or DeleteMin(H)) - return minimum value from heap H and remove it from heap
@@ -32,8 +32,9 @@ tags = []
 ## C++
 
 
-```cpp>template <class V
- class FibonacciHeap;
+```cpp
+template <class V>
+class FibonacciHeap;
 
 template <class V> struct node {
 private:
@@ -147,7 +148,7 @@ private:
 			} while(c!=n);
 		}
 	}
-	
+
 	void _addChild(node<V>* parent,node<V>* child) {
 		child->prev=child->next=child;
 		child->parent=parent;
@@ -176,7 +177,7 @@ private:
 		}
 		if(n==NULL)return n;
 		node<V>* trees[64]={NULL};
-		
+
 		while(true) {
 			if(trees[n->degree]!=NULL) {
 				node<V>* t=trees[n->degree];
@@ -968,7 +969,7 @@ end procedure
 function MakeHeap()
     return new_slot()
 end function
- 
+
 procedure meld1(integer list, single)
     nodes[nodes[list][PREV]][NEXT] = single
     nodes[single][PREV] = nodes[list][PREV]
@@ -995,7 +996,7 @@ function Insert(integer h, object v)
     end if
     return {h,n}
 end function
- 
+
 procedure meld2(integer a, b)
     nodes[nodes[a][PREV]][NEXT] = b
     nodes[nodes[b][PREV]][NEXT] = a
@@ -1016,7 +1017,7 @@ function Union(integer h, h2)
     end if
     return {h,NULL} -- (h2:=NULL implied)
 end function
- 
+
 -- task requirement
 function Minimum(integer h)
     if nodes[h] == NULL then
@@ -1049,7 +1050,7 @@ procedure add_roots(integer r, integer roots)
     end while
     setd(nodes[r][RANK],r,roots)
 end procedure
- 
+
 -- task requirement
 function ExtractMin(integer h)
     if nodes[h] == NULL then
@@ -1169,7 +1170,7 @@ function Delete(integer h, n)
     end if
     return h
 end function
- 
+
 constant W=platform()=WINDOWS,
          Horizontal = iff(W?#C4:'-'),
          Vertical   = iff(W?#B3:'|'),
@@ -1210,21 +1211,21 @@ end procedure
 printf(1,"MakeHeap:\n")
 integer h := MakeHeap()
 Vis(h)
- 
+
 printf(1,"\nInsert:\n")
 {h} = Insert(h,"cat")
 Vis(h)
- 
+
 printf(1,"\nUnion:\n")
 integer h2 := MakeHeap()
 {h2} = Insert(h2,"rat")
 {h,h2} = Union(h,h2)     -- (h2:=NULL)
 Vis(h)
- 
+
 printf(1,"\nMinimum:\n")
 {object m, {}} = Minimum(h)
 ?m
- 
+
 printf(1,"\nExtractMin:\n")
 -- add a couple more items to demonstrate parent-child linking that
 -- happens on delete min.
@@ -1292,15 +1293,15 @@ Delete:
 
 ```python
 class FibonacciHeap:
-    
-    # internal node class 
+
+    # internal node class
     class Node:
         def __init__(self, data):
             self.data = data
             self.parent = self.child = self.left = self.right = None
             self.degree = 0
             self.mark = False
-            
+
     # function to iterate through a doubly linked list
     def iterate(self, head):
         node = stop = head
@@ -1312,17 +1313,17 @@ class FibonacciHeap:
                 flag = True
             yield node
             node = node.right
-    
+
     # pointer to the head and minimum node in the root list
     root_list, min_node = None, None
-    
+
     # maintain total node count in full fibonacci heap
     total_nodes = 0
-    
+
     # return min node in O(1) time
     def find_min(self):
         return self.min_node
-         
+
     # extract (delete) the min node from the heap in O(log n) time
     # amortized cost analysis can be found here (http://bit.ly/1ow1Clm)
     def extract_min(self):
@@ -1343,7 +1344,7 @@ class FibonacciHeap:
                 self.consolidate()
             self.total_nodes -= 1
         return z
-                    
+
     # insert new node into the unordered root list in O(1) time
     def insert(self, data):
         n = self.Node(data)
@@ -1352,7 +1353,7 @@ class FibonacciHeap:
         if self.min_node is None or n.data < self.min_node.data:
             self.min_node = n
         self.total_nodes += 1
-        
+
     # modify the data of some node in the heap in O(1) time
     def decrease_key(self, x, k):
         if k > x.data:
@@ -1364,7 +1365,7 @@ class FibonacciHeap:
             self.cascading_cut(y)
         if x.data < self.min_node.data:
             self.min_node = x
-            
+
     # merge two fibonacci heaps in O(1) time by concatenating the root lists
     # the root of the new root list becomes equal to the first list and the second
     # list is simply appended to the end (then the proper min node is determined)
@@ -1383,7 +1384,7 @@ class FibonacciHeap:
         # update total nodes
         H.total_nodes = self.total_nodes + h2.total_nodes
         return H
-        
+
     # if a child node becomes smaller than its parent node we
     # cut this child node off and bring it up to the root list
     def cut(self, x, y):
@@ -1392,7 +1393,7 @@ class FibonacciHeap:
         self.merge_with_root_list(x)
         x.parent = None
         x.mark = False
-    
+
     # cascading cut of parent node to obtain good time bounds
     def cascading_cut(self, y):
         z = y.parent
@@ -1402,7 +1403,7 @@ class FibonacciHeap:
             else:
                 self.cut(y, z)
                 self.cascading_cut(z)
-    
+
     # combine root nodes of equal degree to consolidate the heap
     # by creating a list of unordered binomial trees
     def consolidate(self):
@@ -1412,7 +1413,7 @@ class FibonacciHeap:
             x = nodes[w]
             d = x.degree
             while A[d] != None:
-                y = A[d] 
+                y = A[d]
                 if x.data > y.data:
                     temp = x
                     x, y = y, temp
@@ -1421,13 +1422,13 @@ class FibonacciHeap:
                 d += 1
             A[d] = x
         # find new min node - no need to reconstruct new root list below
-        # because root list was iteratively changing as we were moving 
+        # because root list was iteratively changing as we were moving
         # nodes around in the above loop
         for i in xrange(0, len(A)):
             if A[i] is not None:
                 if A[i].data < self.min_node.data:
                     self.min_node = A[i]
-        
+
     # actual linking of one node to another in the root list
     # while also updating the child linked list
     def heap_link(self, y, x):
@@ -1437,8 +1438,8 @@ class FibonacciHeap:
         x.degree += 1
         y.parent = x
         y.mark = False
-        
-    # merge a node with the doubly linked root list   
+
+    # merge a node with the doubly linked root list
     def merge_with_root_list(self, node):
         if self.root_list is None:
             self.root_list = node
@@ -1447,7 +1448,7 @@ class FibonacciHeap:
             node.left = self.root_list
             self.root_list.right.left = node
             self.root_list.right = node
-            
+
     # merge a node with the doubly linked child list of a root node
     def merge_with_child_list(self, parent, node):
         if parent.child is None:
@@ -1457,14 +1458,14 @@ class FibonacciHeap:
             node.left = parent.child
             parent.child.right.left = node
             parent.child.right = node
-            
+
     # remove a node from the doubly linked root list
     def remove_from_root_list(self, node):
         if node == self.root_list:
             self.root_list = node.right
         node.left.right = node.right
         node.right.left = node.left
-        
+
     # remove a node from the doubly linked child list
     def remove_from_child_list(self, parent, node):
         if parent.child == parent.child.right:

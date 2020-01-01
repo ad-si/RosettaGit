@@ -27,7 +27,7 @@ This task needs a full description of the calculation method to use, probably in
 
 I've improved the C function to work with larger arrays using tgammal instead of tgamma, and have exception handling if the entered array is too small.  I have made some modifications to the Simpson integration part, and the function now runs about twice as fast as before.  I have also added a description.  I have removed comments in my code.  I hope this is satisfactory.--[[User:Hailholyghost|Hailholyghost]] ([[User talk:Hailholyghost|talk]]) 18:28, 3 June 2015 (UTC)
 
-: Looks like you pulled some of that math out of wikipedia, but even there there's not quite enough context. For example, what is the definition of <code>u</code> and of <code>f(u)</code>? That kind of stuff works in a classroom context where representative examples have been recently referenced, but that's not the case here. 
+: Looks like you pulled some of that math out of wikipedia, but even there there's not quite enough context. For example, what is the definition of <code>u</code> and of <code>f(u)</code>? That kind of stuff works in a classroom context where representative examples have been recently referenced, but that's not the case here.
 
 : Also, if you are going the math route I think you should mention basic assumptions (for example, I think you are assuming that the list of values were taken from what would be some normal distribution). --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 20:04, 3 June 2015 (UTC)
 
@@ -56,7 +56,7 @@ As for the task description, how much detail is required? I only put what I cons
  \Beta(x,y) = \dfrac{\Gamma(x)\,\Gamma(y)}{\Gamma(x+y)}
 \!</math>
 
-:::But this is equivalent to 
+:::But this is equivalent to
 ::: <math>
  \Beta(x,y) = \exp((\ln(\Gamma(x)) + \ln(\Gamma(y))) - \ln(\Gamma(x+y)))
 \!</math>
@@ -72,8 +72,8 @@ someone keeps deleting my Perl translation of C, which works without installing 
 ==Task description complete?==
 I have made the task description more complete.  I consider this page as ready to be published as a complete task.  If someone else feels it is not ready, please give me a *specific* description of what's missing or why this isn't yet ready.  I tried adding references but had formatting issues.  I would like to cite this link, among others, if someone could please show me how to do this: http://www.nature.com/polopoly_fs/1.14700!/menu/main/topColumns/topLeftColumn/pdf/506150a.pdf --[[User:Hailholyghost|Hailholyghost]] ([[User talk:Hailholyghost|talk]]) 13:28, 23 June 2015 (UTC)--
 
-:If you look at most of the other tasks and consider the authorship of the examples, then you might agree with me that your task description stands out as being couched in heavy mathematical notation rather than in, say, pseudo-code for example. This puts a barrier between the readership and the task as perfectly proficient programmers would also need to be statisticians to follow the description. 
-:This is not what RC is about - as you can see from other examples where very mathematical concepts such as [[Quaternion type|Quaternions]] are given in task form that is explained to a programming audience. That has not been done in your draft task. 
+:If you look at most of the other tasks and consider the authorship of the examples, then you might agree with me that your task description stands out as being couched in heavy mathematical notation rather than in, say, pseudo-code for example. This puts a barrier between the readership and the task as perfectly proficient programmers would also need to be statisticians to follow the description.
+:This is not what RC is about - as you can see from other examples where very mathematical concepts such as [[Quaternion type|Quaternions]] are given in task form that is explained to a programming audience. That has not been done in your draft task.
 
 :In short; explain it to the RC audience rather than to yourself - If you don't have an idea of the RC audience, (and that might be the case as you are asking how to create links),  then you need to both lurk more on the site and read other tasks until you do. --[[User:Paddy3118|Paddy3118]] ([[User talk:Paddy3118|talk]]) 14:03, 23 June 2015 (UTC)
 
@@ -101,7 +101,7 @@ But after reading the C implementation, what is actually being calculated is
 
 <math> p = \frac{\int_0^\frac{\nu}{t^2+\nu} \frac{r^{\frac{\nu}{2}-1}}{\sqrt{1-r}}\,\mathrm{d}r}{ \exp((\ln(\Gamma(\frac{\nu}{2})) + \ln(\Gamma(0.5)) - \ln(\Gamma(\frac{\nu}{2}+0.5))) }</math>
 
-In other words, for <27.5 21 19 23.6 17 17.9 16.9 20.1 21.9 22.6 23.1 19.6 19 21.7 21.4> and <27.1 22 20.8 23.4 23.4 23.5 25.8 22 24.8 20.2 21.9 22.1 22.9 20.5 24.4> the task description would have us calculate a value of 0.989311 but the implementations give a value of 0.021378. And you can easily see this in the code - 
+In other words, for <27.5 21 19 23.6 17 17.9 16.9 20.1 21.9 22.6 23.1 19.6 19 21.7 21.4> and <27.1 22 20.8 23.4 23.4 23.5 25.8 22 24.8 20.2 21.9 22.1 22.9 20.5 24.4> the task description would have us calculate a value of 0.989311 but the implementations give a value of 0.021378. And you can easily see this in the code -
 
 
 ```c
@@ -135,16 +135,16 @@ You probably do not need to have duplicate copies of your implementation just fo
 Hi Rdm, I'm a little confused, but I think I understand what you mean.  The copies I put are not complete duplicates, because lgammal and LnGamma are spelled differently.  I am concerned that lgamma and LnGamma do not output exactly the same numbers, as you can see in the output section.  I don't see alternate implementation coded on any other Rosetta Code page, could you please provide an example of how to format the implementations on the page? I'm trying to imitate the formatting of the quaternion page, but I don't see alternate implementations there or on a few other pages.--[[User:Hailholyghost|Hailholyghost]] ([[User talk:Hailholyghost|talk]]) 14:13, 15 July 2015 (UTC)
 
 : How bad are the differences from the alternate implementation of ln gamma? Do they matter for the task example? What kind of example would they matter for?
-: Anyways, yes, I would get rid of the LnGamma implementation. And, I would change the spelling of its name to 'lngamma' so it can be used as a drop in replacement. If accuracy is a concern, I would document that as an issue so that an interested programmer could address the problem(s). 
+: Anyways, yes, I would get rid of the LnGamma implementation. And, I would change the spelling of its name to 'lngamma' so it can be used as a drop in replacement. If accuracy is a concern, I would document that as an issue so that an interested programmer could address the problem(s).
 : Does that address your concerns adequately? --[[User:Rdm|Rdm]] ([[User talk:Rdm|talk]]) 15:39, 15 July 2015 (UTC)
 
 The max difference between lgamma and LnGamma for double is 1.862645e-09, and for long double is 1.919034e-10.  I don't think this matters for most applications.  The code belows shows how I calculated the difference.
 
 
-```C>#include <stdio.h
-//printf 
+```c
+#include <stdio.h>//printf
 #include <math.h>//lgamma
- 
+
 long double LnGamma(const double xx) {
    unsigned int j;
    long double x,y,tmp,ser;
@@ -153,7 +153,7 @@ long double LnGamma(const double xx) {
       24.01409824083091,    -1.231739572450155,
       0.1208650973866179e-2,-0.5395239384953e-5
    };
- 
+
    y = x = xx;
    tmp = x + 5.5 - (x + 0.5) * logl(x + 5.5);
    ser = 1.000000000190015;
@@ -161,7 +161,7 @@ long double LnGamma(const double xx) {
       ser += (cof[j] / ++y);
    return(log(2.5066282746310005 * ser / x) - tmp);
 }
- 
+
 int main (void) {
 	long double max_difference = 0.0;
 	long double lgamma_ans = 0.0, LnGamma_ans = 0.0;
@@ -227,7 +227,7 @@ sub lgamma {  # per code from numerical recipies, http://hea-www.harvard.edu/~al
 	     24.01409824083091, -1.231739572450155, 0.1208650973866179e-2,
 	     -0.5395239384953e-5);
   my $stp = 2.5066282746310005;
-    
+
   $x = $xx; $y = $x;
   $tmp = $x + 5.5;
   $tmp = ($x+0.5)*log($tmp)-$tmp;
@@ -250,14 +250,14 @@ I got this code from another website (commented) is this acceptable to use in Pe
 
 is it acceptable to have two different implementations of this C code:
 1. for computers with lgamma implemented, the first C program,
-and 
+and
 2. for computers without lgamma implemented, a 2nd C program?
 
 there are minor differences between LnGamma and lgamma, as you can see when you run this program:
 
 ```C
 
-#include <stdio.h> // printf 
+#include <stdio.h> // printf
 #include <math.h>//lgamma,log
 
 double LnGamma(const double xx) {
@@ -306,7 +306,7 @@ sub lngamma {  # per code from numerical recipies, http://hea-www.harvard.edu/~a
 	     24.01409824083091, -1.231739572450155, 0.1208650973866179e-2,
 	     -0.5395239384953e-5);
   my $stp = 2.5066282746310005;
-    
+
   $x = $xx; $y = $x;
   $tmp = $x + 5.5;
   $tmp = ($x+0.5)*log($tmp)-$tmp;
@@ -412,7 +412,7 @@ Test sets 5 p-value = 0.010752
 real	0m0.287s
 user	0m0.284s
 sys	0m0.000s
-con@e:~/DNA_Methylation$ ./pvalue 
+con@e:~/DNA_Methylation$ ./pvalue
 t = -2.455356; DOF = 24.988529
 sum1 = 880.779357; sum2 = 880.684789
 Test sets 1 p-value = 0.021378001462867
@@ -466,7 +466,7 @@ add differently.  I am not a programmer by trade, and I'm completely self-taught
 
 : Presumably either the numbers are different or the implementation of addition is different. (Though you have other operations in there, besides addition, which could also be different.) Hypothetically speaking, you might also have type differences giving you different results, but I don't see any obvious expressions where that seems likely (still, you might try changing your C implementation so that everything is type double - I don't think that will change anything but when isolating problems you sort of have to assume that all assumptions are suspect).
 
-: I suppose you might try logging summed numbers to a file, instead of adding them up. And then verifying whether or not you get the same or different sums in the same language or a different language. 
+: I suppose you might try logging summed numbers to a file, instead of adding them up. And then verifying whether or not you get the same or different sums in the same language or a different language.
 
 : Or often it's useful to just guess what might be going wrong and then putting print statements in the calculation to test that. (Maybe shrink N to something much smaller, just for isolating the differences, so that you are not spamming yourself.)
 
@@ -484,7 +484,7 @@ Perhaps thundergnat can see what happens when attempting to use this Math::AnyNu
 
 ```txt
 sudo cpanm Math::AnyNum
-[sudo] password for con: 
+[sudo] password for con:
 --> Working on Math::AnyNum
 Fetching http://www.cpan.org/authors/id/T/TR/TRIZEN/Math-AnyNum-0.17.tar.gz ... OK
 Configuring Math-AnyNum-0.17 ... OK
@@ -611,7 +611,7 @@ sub betain {
     $temp = abs ( $term );
     if ( $temp <= $acu && $temp <= $acu * $value )
     {
-      $value = $value * exp ( $pp * log ( $xx ) 
+      $value = $value * exp ( $pp * log ( $xx )
       + ( $qq - 1.0 ) * log ( $cx ) - $beta ) / $pp;
 
       if ( $indx )
@@ -650,7 +650,7 @@ sub lgamma {#http://hea-www.harvard.edu/~alexey/calc-src.txt
 	     24.01409824083091, -1.231739572450155, 0.1208650973866179e-2,
 	     -0.5395239384953e-5);
   my $stp = 2.5066282746310005;
-    
+
   $x = $xx; $y = $x;
   $tmp = $x + 5.5;
   $tmp = ($x+0.5)*log($tmp)-$tmp;
@@ -866,7 +866,7 @@ How can I use the Betain function in my function <code>Pvalue</code>?
 // x =? nu / (t^2 + nu)
 // p =? nu/2
 // q =? 1/2
-// 
+//
 
 double betain ( double x, double p, double q, double beta, int *restrict ifault )
 
@@ -878,7 +878,7 @@ double betain ( double x, double p, double q, double beta, int *restrict ifault 
 
   Licensing:
 
-    This code is distributed under the GNU LGPL license. 
+    This code is distributed under the GNU LGPL license.
 
   Modified:
 
@@ -989,7 +989,7 @@ https://www.jstor.org/stable/2346797?seq=1#page_scan_tab_contents
 
     if ( temp <= acu && temp <= acu * value )
     {
-      value = value * exp ( pp * log ( xx ) 
+      value = value * exp ( pp * log ( xx )
       + ( qq - 1.0 ) * log ( cx ) - beta ) / pp;
 
       if ( indx )
@@ -1031,7 +1031,7 @@ double r8_max ( double x, double y )
 
   Licensing:
 
-    This code is distributed under the GNU LGPL license. 
+    This code is distributed under the GNU LGPL license.
 
   Modified:
 
@@ -1053,7 +1053,7 @@ double r8_max ( double x, double y )
   if ( y < x )
   {
     value = x;
-  } 
+  }
   else
   {
     value = y;
@@ -1143,7 +1143,7 @@ int main(void) {
 	const double s2[] = {1.0/10,2/50.0};
 	const double z1[] = {9/23.0,21/45.0,0/38.0};
 	const double z2[] = {0/44.0,42/94.0,0/22.0};
-	
+
 	printf("Test sets 1 p-value = %g\n",Pvalue(d1,sizeof(d1)/sizeof(*d1),d2,sizeof(d2)/sizeof(*d2)));
 	printf("Test sets 2 p-value = %g\n",Pvalue(d3,sizeof(d3)/sizeof(*d3),d4,sizeof(d4)/sizeof(*d4)));
 	printf("Test sets 3 p-value = %g\n",Pvalue(d5,sizeof(d5)/sizeof(*d5),d6,sizeof(d6)/sizeof(*d6)));
@@ -1152,11 +1152,11 @@ int main(void) {
 	printf("Test sets 6 p-value = %g\n",Pvalue(v1,sizeof(v1)/sizeof(*v1),v2,sizeof(v2)/sizeof(*v2)));
 	printf("Test sets 7 p-value = %g\n",Pvalue(s1,sizeof(s1)/sizeof(*s1),s2,sizeof(s2)/sizeof(*s2)));
 	printf("Test sets z p-value = %g\n", Pvalue(z1, 3, z2, 3));
-	
+
 	const double g41[] = {1.062, 0.774, 0.909};
 	const double g412[] = {1.459, 0.674, 0.732};
 	const double g414[]= {1.174, 1.406, 1.536};
-	
+
 	printf("41 gr -vs- 41.2 gr p-value = %g\n", Pvalue(g41, 3, g412, 3));
 	printf("41 gr -vs- 41.4 gr p-value = %g\n", Pvalue(g41, 3, g414, 3));
 	printf("41.2 gr -vs- 41.4 gr p-value = %g\n", Pvalue(g412, 3, g414, 3));
@@ -1213,7 +1213,7 @@ The original C code can be simplified in several places using shortcuts (it coul
 ```stata
 mata
 /*
-This code is distributed under the GNU LGPL license. 
+This code is distributed under the GNU LGPL license.
 Modified 28dec2017
 Author:
 	Original Fortran 77 version by KL Majumder, GP Bhattacharjee.
@@ -1228,7 +1228,7 @@ function betain(x,p,q) {
 	if (x==0 | x==1) {
 		return(x)
 	}
-	
+
 	acu = 1e-15
 	lnbeta = lngamma(p)+lngamma(q)-lngamma(p+q)
 
@@ -1248,7 +1248,7 @@ function betain(x,p,q) {
 		qq = q
 		indx = 0
 	}
-	
+
 	term = ai = value = 1
 	ns = floor(qq+cx*psq)
 
@@ -1256,17 +1256,17 @@ function betain(x,p,q) {
 	rx = xx/cx
 	temp = qq-ai
 	if (ns==0) rx = xx
-	
+
 	while(1) {
 		term = term*temp*rx/(pp+ai)
 		value = value+term
 		temp = abs(term)
-		
+
 		if (temp<=acu & temp<=acu*value) {
 			value = value*exp(pp*log(xx)+(qq-1)*log(cx)-lnbeta)/pp
 			return(indx?1-value:value)
 		}
-		
+
 		ai++
 		if (--ns>=0) {
 			temp = qq-ai

@@ -13,11 +13,11 @@ tags = []
 {{task|Fractals}}
 
 ;Task
-Produce an ASCII representation of a [[wp:Sierpinski triangle|Sierpinski triangle]] of order '''N'''.  
+Produce an ASCII representation of a [[wp:Sierpinski triangle|Sierpinski triangle]] of order '''N'''.
 
 
 ;Example
-The Sierpinski triangle of order '''4''' should look like this: 
+The Sierpinski triangle of order '''4''' should look like this:
 
 ```txt
 
@@ -43,7 +43,7 @@ The Sierpinski triangle of order '''4''' should look like this:
 
 
 ;Related tasks
-* [[Sierpinski triangle/Graphical]] for graphics images of this pattern.  
+* [[Sierpinski triangle/Graphical]] for graphics images of this pattern.
 * [[Sierpinski carpet]]
 
 
@@ -108,8 +108,8 @@ with Interfaces; use Interfaces;
 
 procedure Sieteri_Triangles is
    subtype Practical_Order is Unsigned_32 range 0..4;
-   
-   
+
+
    function Pow(X : Unsigned_32; N : Unsigned_32) return Unsigned_32 is
    begin
       if N = 0 then
@@ -118,7 +118,7 @@ procedure Sieteri_Triangles is
          return X * Pow(X, N - 1);
       end if;
    end Pow;
-   
+
    procedure Print(Item : Unsigned_32) is
       use Ada.Strings.Fixed;
       package Ord_Io is new Ada.Text_Io.Modular_Io(Unsigned_32);
@@ -139,7 +139,7 @@ procedure Sieteri_Triangles is
       end loop;
       New_Line;
    end Print;
-   
+
    procedure Sierpinski (N : Practical_Order) is
       Size : Unsigned_32 := Pow(2, N);
       V : Unsigned_32 := Pow(2, Size);
@@ -149,7 +149,7 @@ procedure Sieteri_Triangles is
          V := Shift_Left(V, 1) xor Shift_Right(V,1);
       end loop;
    end Sierpinski;
-   
+
 begin
    for N in Practical_Order loop
       Sierpinski(N);
@@ -258,19 +258,19 @@ on sierpinski(n)
     if n > 0 then
         set previous to sierpinski(n - 1)
         set padding to replicate(2 ^ (n - 1), space)
-        
+
         script alignedCentre
             on |λ|(s)
                 concat(padding & s & padding)
             end |λ|
         end script
-        
+
         script adjacentDuplicates
             on |λ|(s)
                 unwords(replicate(2, s))
             end |λ|
         end script
-        
+
         -- Previous triangle block centered,
         -- and placed on 2 adjacent duplicates.
         map(alignedCentre, previous) & map(adjacentDuplicates, previous)
@@ -337,7 +337,7 @@ on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -359,21 +359,21 @@ end unwords
 {{Out}}
 
 ```txt
-               *               
-              * *              
-             *   *             
-            * * * *            
-           *       *           
-          * *     * *          
-         *   *   *   *         
-        * * * * * * * *        
-       *               *       
-      * *             * *      
-     *   *           *   *     
-    * * * *         * * * *    
-   *       *       *       *   
-  * *     * *     * *     * *  
- *   *   *   *   *   *   *   * 
+               *
+              * *
+             *   *
+            * * * *
+           *       *
+          * *     * *
+         *   *   *   *
+        * * * * * * * *
+       *               *
+      * *             * *
+     *   *           *   *
+    * * * *         * * * *
+   *       *       *       *
+  * *     * *     * *     * *
+ *   *   *   *   *   *   *   *
 * * * * * * * * * * * * * * * *
 ```
 
@@ -386,28 +386,28 @@ Or generating each line as an XOR / Rule 90 / Pascal triangle rewrite of the pre
 
 -- sierpinskiTriangle :: Int -> String
 on sierpinskiTriangle(intOrder)
-    
+
     -- A Sierpinski triangle of order N
     -- is a Pascal triangle (of N^2 rows)
     -- mod 2
-    
+
     -- pascalModTwo :: Int -> [[String]]
     script pascalModTwo
         on |λ|(intRows)
-            
+
             -- addRow [[Int]] -> [[Int]]
             script addRow
-                
+
                 -- nextRow :: [Int] -> [Int]
                 on nextRow(row)
                     -- The composition of AsciiBinary . mod two . add
                     -- is reduced here to a rule from
                     -- two parent characters above,
                     -- to the child character below.
-                    
-                    -- Rule 90 also reduces to this XOR relationship 
+
+                    -- Rule 90 also reduces to this XOR relationship
                     -- between left and right neighbours.
-                    
+
                     -- rule :: Character -> Character -> Character
                     script rule
                         on |λ|(a, b)
@@ -418,44 +418,44 @@ on sierpinskiTriangle(intOrder)
                             end if
                         end |λ|
                     end script
-                    
+
                     zipWith(rule, {" "} & row, row & {" "})
                 end nextRow
-                
+
                 on |λ|(xs)
                     xs & {nextRow(item -1 of xs)}
                 end |λ|
             end script
-            
+
             foldr(addRow, {{"*"}}, enumFromTo(1, intRows - 1))
         end |λ|
     end script
-    
-    -- The centring foldr (fold right) below starts from the end of the list, 
+
+    -- The centring foldr (fold right) below starts from the end of the list,
     -- (the base of the triangle) which has zero indent.
-    
+
     -- Each preceding row has one more indent space than the row below it.
-    
+
     script centred
         on |λ|(sofar, row)
             set strIndent to indent of sofar
-            
+
             {triangle:strIndent & intercalate(space, row) & linefeed & ¬
                 triangle of sofar, indent:strIndent & space}
         end |λ|
     end script
-    
+
     triangle of foldr(centred, {triangle:"", indent:""}, ¬
         pascalModTwo's |λ|(intOrder ^ 2))
-    
+
 end sierpinskiTriangle
 
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     set strTriangle to sierpinskiTriangle(4)
-    
+
     set the clipboard to strTriangle
     strTriangle
 end run
@@ -506,7 +506,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -632,7 +632,7 @@ Triangle(n,x=0,y=1) { ; Triangle(n) -> string of dots and spaces of Sierpinski t
    Return t
 }
 ```
- 
+
 
 
 ## AWK
@@ -668,7 +668,7 @@ BEGIN {
 =={{header|BASH (feat. sed & tr)}}==
 This version completely avoids any number-theoretic workarounds.
 Instead, it repeatedly replaces characters by "blocks of characters".
-The strategy is in no way bash-specific, it would work with any 
+The strategy is in no way bash-specific, it would work with any
 other language just as well, but is particularly well suited for
 tools like sed and tr.
 
@@ -677,7 +677,7 @@ tools like sed and tr.
 #!/bin/bash
 
 # Basic principle:
-# 
+#
 #
 #  x ->  dxd       d -> dd      s -> s
 #        xsx            dd           s
@@ -686,10 +686,10 @@ tools like sed and tr.
 # 0x7F800000
 function rec(){
   if [ $1 == 0 ]
-  then 
+  then
     echo "x"
   else
-    rec $[ $1 - 1 ] | while read line ; do 
+    rec $[ $1 - 1 ] | while read line ; do
       echo "$line" | sed "s/d/dd/g" | sed "s/x/dxd/g"
       echo "$line" | sed "s/d/dd/g" | sed "s/x/xsx/g"
     done
@@ -736,12 +736,12 @@ Note: The total height of the triangle is 2 * parameter ''length''. It should be
 ```bbcbasic
       MODE 8
       OFF
-      
+
       order% = 5
       PROCsierpinski(0, 0, 2^(order%-1))
       REPEAT UNTIL GET
       END
-      
+
       DEF PROCsierpinski(x%, y%, l%)
       IF l% = 0 THEN
         PRINT TAB(x%,y%) "*";
@@ -792,8 +792,8 @@ vg11<\*g11!:g 0-1:::<p<
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define SIZE (1 << 4)
 int main()
@@ -814,8 +814,8 @@ int main()
 
 This solution uses a cellular automaton (''rule 90'') with a proper initial status.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
@@ -944,7 +944,7 @@ namespace RosettaCode {
 ```
 
 
-{{trans|C}} 
+{{trans|C}}
 {{works with|C sharp|C#|6.0+}}
 
 ```csharp
@@ -967,7 +967,7 @@ class Sierpinsky
 ```
 
 
-{{trans|OCaml}} 
+{{trans|OCaml}}
 {{works with|C sharp|C#|3.0+}}
 
 ```csharp
@@ -1008,7 +1008,7 @@ Or, with fold / reduce (a.k.a. aggregate):
 using System;
 using System.Collections.Generic;
 using System.Linq;
- 
+
 class Program
 {
     static List<string> Sierpinski(int n)
@@ -1040,8 +1040,8 @@ class Program
 {{works with|C++11}}
 A STL-centric recursive solution that uses the new lambda functions in C++11.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <list>
 #include <algorithm>
@@ -1108,7 +1108,7 @@ With a touch of Clojure's sequence handling.
       (println
        (apply str (map #(if (bit-test v %) "*" " ")
 		       (range (integer-length v)))))
-      (recur 
+      (recur
        (dec size)
        (bit-xor (bit-shift-left v 1) (bit-shift-right v 1))))))
 
@@ -1185,7 +1185,7 @@ Alternate approach:
 
 ```lisp
 (defun sierpinski (n)
-  (if (= n 0) '("*") 
+  (if (= n 0) '("*")
       (nconc (mapcar (lambda (e) (format nil "~A~A~0@*~A" (make-string (expt 2 (1- n)) :initial-element #\ ) e)) (sierpinski (1- n)))
 	     (mapcar (lambda (e) (format nil "~A ~A" e e)) (sierpinski (1- n))))))
 
@@ -1216,21 +1216,21 @@ void main() /*@safe*/ {
 {{out}}
 
 ```txt
-               *               
-              * *              
-             *   *             
-            * * * *            
-           *       *           
-          * *     * *          
-         *   *   *   *         
-        * * * * * * * *        
-       *               *       
-      * *             * *      
-     *   *           *   *     
-    * * * *         * * * *    
-   *       *       *       *   
-  * *     * *     * *     * *  
- *   *   *   *   *   *   *   * 
+               *
+              * *
+             *   *
+            * * * *
+           *       *
+          * *     * *
+         *   *   *   *
+        * * * * * * * *
+       *               *
+      * *             * *
+     *   *           *   *
+    * * * *         * * * *
+   *       *       *       *
+  * *     * *     * *     * *
+ *   *   *   *   *   *   *   *
 * * * * * * * * * * * * * * * *
 ```
 
@@ -1336,71 +1336,71 @@ void main() @safe nothrow {
 {{out}}
 
 ```txt
- # 
+ #
 ###
 
-   #   
-  ###  
- ## ## 
+   #
+  ###
+ ## ##
 #######
 
-       #       
-      ###      
-     ## ##     
-    #######    
-   ##     ##   
-  ####   ####  
- ##  ## ##  ## 
+       #
+      ###
+     ## ##
+    #######
+   ##     ##
+  ####   ####
+ ##  ## ##  ##
 ###############
 
-               #               
-              ###              
-             ## ##             
-            #######            
-           ##     ##           
-          ####   ####          
-         ##  ## ##  ##         
-        ###############        
-       ##             ##       
-      ####           ####      
-     ##  ##         ##  ##     
-    ########       ########    
-   ##      ##     ##      ##   
-  ####    ####   ####    ####  
- ##  ##  ##  ## ##  ##  ##  ## 
+               #
+              ###
+             ## ##
+            #######
+           ##     ##
+          ####   ####
+         ##  ## ##  ##
+        ###############
+       ##             ##
+      ####           ####
+     ##  ##         ##  ##
+    ########       ########
+   ##      ##     ##      ##
+  ####    ####   ####    ####
+ ##  ##  ##  ## ##  ##  ##  ##
 ###############################
 
-                               #                               
-                              ###                              
-                             ## ##                             
-                            #######                            
-                           ##     ##                           
-                          ####   ####                          
-                         ##  ## ##  ##                         
-                        ###############                        
-                       ##             ##                       
-                      ####           ####                      
-                     ##  ##         ##  ##                     
-                    ########       ########                    
-                   ##      ##     ##      ##                   
-                  ####    ####   ####    ####                  
-                 ##  ##  ##  ## ##  ##  ##  ##                 
-                ###############################                
-               ##                             ##               
-              ####                           ####              
-             ##  ##                         ##  ##             
-            ########                       ########            
-           ##      ##                     ##      ##           
-          ####    ####                   ####    ####          
-         ##  ##  ##  ##                 ##  ##  ##  ##         
-        ################               ################        
-       ##              ##             ##              ##       
-      ####            ####           ####            ####      
-     ##  ##          ##  ##         ##  ##          ##  ##     
-    ########        ########       ########        ########    
-   ##      ##      ##      ##     ##      ##      ##      ##   
-  ####    ####    ####    ####   ####    ####    ####    ####  
- ##  ##  ##  ##  ##  ##  ##  ## ##  ##  ##  ##  ##  ##  ##  ## 
+                               #
+                              ###
+                             ## ##
+                            #######
+                           ##     ##
+                          ####   ####
+                         ##  ## ##  ##
+                        ###############
+                       ##             ##
+                      ####           ####
+                     ##  ##         ##  ##
+                    ########       ########
+                   ##      ##     ##      ##
+                  ####    ####   ####    ####
+                 ##  ##  ##  ## ##  ##  ##  ##
+                ###############################
+               ##                             ##
+              ####                           ####
+             ##  ##                         ##  ##
+            ########                       ########
+           ##      ##                     ##      ##
+          ####    ####                   ####    ####
+         ##  ##  ##  ##                 ##  ##  ##  ##
+        ################               ################
+       ##              ##             ##              ##
+      ####            ####           ####            ####
+     ##  ##          ##  ##         ##  ##          ##  ##
+    ########        ########       ########        ########
+   ##      ##      ##      ##     ##      ##      ##      ##
+  ####    ####    ####    ####   ####    ####    ####    ####
+ ##  ##  ##  ##  ##  ##  ##  ## ##  ##  ##  ##  ##  ##  ##  ##
 ###############################################################
 ```
 
@@ -1474,7 +1474,7 @@ PrintSierpinski(4);
 ```e
 def printSierpinski(order, out) {
     def size := 2**order
-    for y in (0..!size).descending() { 
+    for y in (0..!size).descending() {
         out.print(" " * y)
         for x in 0..!(size-y) {
             out.print((x & y).isZero().pick("* ", "  "))
@@ -1496,7 +1496,7 @@ Non-ASCII version (quality of results will depend greatly on text renderer):
 ```e
 def printSierpinski(order, out) {
     def size := 2**order
-    for y in (0..!size).descending() { 
+    for y in (0..!size).descending() {
         out.print("　" * y)
         for x in 0..!(size-y) {
             out.print((x & y).isZero().pick("◢◣", "　　"))
@@ -1518,7 +1518,7 @@ defmodule RC do
     f = fn(x) -> IO.puts "#{x}" end
     Enum.each(triangle(n, ["*"], " "), f)
   end
-  
+
   defp triangle(0, down, _), do: down
   defp triangle(n, down, sp) do
     newDown = (for x <- down, do: sp<>x<>sp) ++ (for x <- down, do: x<>" "<>x)
@@ -1532,7 +1532,7 @@ RC.sierpinski_triangle(4)
 
 ## Elm
 
-{{trans|Haskell}} 
+{{trans|Haskell}}
 
 ```elm
 import String exposing (..)
@@ -1548,7 +1548,7 @@ sierpinski n =
       space n = repeat (2 ^ (n - 1)) " "
   in case n of
        0 -> ["*"]
-       _ ->    List.map ((\st -> space n ++ st) << (\st -> st ++ space n)) (down n) 
+       _ ->    List.map ((\st -> space n ++ st) << (\st -> st ++ space n)) (down n)
             ++ List.map (join " " << List.repeat 2) (down n)
 
 main = beginnerProgram { model = "4", view = view, update = update }
@@ -1558,24 +1558,24 @@ update newStr oldStr = newStr
 view : String -> Html String
 view levelString =
   div []
-    ([ Html.form 
-          [] 
+    ([ Html.form
+          []
           [ label [ myStyle ] [ text "Level: "]
           , input
             [ placeholder "triangle level."
             , value levelString
-            , on "input" targetValue 
+            , on "input" targetValue
             , type' "number"
             , A.min "0"
             , myStyle
             ]
             []
           ]
-     ] ++ 
-     [ pre [] (levelString 
-               |> toInt 
-               |> withDefault 0 
-               |> sierpinski  
+     ] ++
+     [ pre [] (levelString
+               |> toInt
+               |> withDefault 0
+               |> sierpinski
                |> List.map (\s -> div [] [text s]))
      ])
 
@@ -1595,7 +1595,7 @@ Link to live demo: http://dc25.github.io/sierpinskiElm/
 
 ## Erlang
 
-{{trans|OCaml}} 
+{{trans|OCaml}}
 
 ```erlang
 -module(sierpinski).
@@ -1646,7 +1646,7 @@ let sierpinski n =
         (space + space)
         (n - 1)
   in loop ["*"] " " n
- 
+
 let () =
   List.iter (fun (i:string) -> System.Console.WriteLine(i)) (sierpinski 4)
 ```
@@ -1710,7 +1710,7 @@ IN: sierpinski
     cr  over i - spaces  dup stars
     dup 2* xor
   loop 2drop ;
- 
+
 5 triangle
 ```
 
@@ -1718,13 +1718,13 @@ IN: sierpinski
 
 ## Fortran
 
-{{works with|Fortran|90 and later}} 
+{{works with|Fortran|90 and later}}
 This method calculates a Pascal's triangle and replaces every odd number with a * and every even number with a space. The limitation of this approach is the size of the numbers in the Pascal's triangle. Tryng to print an order 8 Sierpinski's triangle will overflow a 32 bit integer and an order 16 will overflow a 64 bit integer.
 
 ```fortran
 program Sierpinski_triangle
   implicit none
-  
+
   call Triangle(4)
 
 contains
@@ -1735,7 +1735,7 @@ subroutine Triangle(n)
   integer, intent(in) :: n
   integer :: i, k
   integer(i64) :: c
-  
+
   do i = 0, n*4-1
     c = 1
     write(*, "(a)", advance="no") repeat(" ", 2 * (n*4 - 1 - i))
@@ -1781,22 +1781,22 @@ SierpinskiTriangle := function(n)
 end;
 
 SierpinskiTriangle(4);
-               * 
-              * * 
-             *   * 
-            * * * * 
-           *       * 
-          * *     * * 
-         *   *   *   * 
-        * * * * * * * * 
-       *               * 
-      * *             * * 
-     *   *           *   * 
-    * * * *         * * * * 
-   *       *       *       * 
-  * *     * *     * *     * * 
- *   *   *   *   *   *   *   * 
-* * * * * * * * * * * * * * * * 
+               *
+              * *
+             *   *
+            * * * *
+           *       *
+          * *     * *
+         *   *   *   *
+        * * * * * * * *
+       *               *
+      * *             * *
+     *   *           *   *
+    * * * *         * * * *
+   *       *       *       *
+  * *     * *     * *     * *
+ *   *   *   *   *   *   *   *
+* * * * * * * * * * * * * * * *
 ```
 
 
@@ -1909,136 +1909,136 @@ stGrid(6).reverse().each { println it.sum() }
 <pre style="height:30ex;overflow:scroll;">
 0
 
- 1 
+ 1
 1 1
 
-   2   
-  2 2  
- 2   2 
+   2
+  2 2
+ 2   2
 2 2 2 2
 
-       3       
-      3 3      
-     3   3     
-    3 3 3 3    
-   3       3   
-  3 3     3 3  
- 3   3   3   3 
+       3
+      3 3
+     3   3
+    3 3 3 3
+   3       3
+  3 3     3 3
+ 3   3   3   3
 3 3 3 3 3 3 3 3
 
-               4               
-              4 4              
-             4   4             
-            4 4 4 4            
-           4       4           
-          4 4     4 4          
-         4   4   4   4         
-        4 4 4 4 4 4 4 4        
-       4               4       
-      4 4             4 4      
-     4   4           4   4     
-    4 4 4 4         4 4 4 4    
-   4       4       4       4   
-  4 4     4 4     4 4     4 4  
- 4   4   4   4   4   4   4   4 
+               4
+              4 4
+             4   4
+            4 4 4 4
+           4       4
+          4 4     4 4
+         4   4   4   4
+        4 4 4 4 4 4 4 4
+       4               4
+      4 4             4 4
+     4   4           4   4
+    4 4 4 4         4 4 4 4
+   4       4       4       4
+  4 4     4 4     4 4     4 4
+ 4   4   4   4   4   4   4   4
 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
 
-                               5                               
-                              5 5                              
-                             5   5                             
-                            5 5 5 5                            
-                           5       5                           
-                          5 5     5 5                          
-                         5   5   5   5                         
-                        5 5 5 5 5 5 5 5                        
-                       5               5                       
-                      5 5             5 5                      
-                     5   5           5   5                     
-                    5 5 5 5         5 5 5 5                    
-                   5       5       5       5                   
-                  5 5     5 5     5 5     5 5                  
-                 5   5   5   5   5   5   5   5                 
-                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5                
-               5                               5               
-              5 5                             5 5              
-             5   5                           5   5             
-            5 5 5 5                         5 5 5 5            
-           5       5                       5       5           
-          5 5     5 5                     5 5     5 5          
-         5   5   5   5                   5   5   5   5         
-        5 5 5 5 5 5 5 5                 5 5 5 5 5 5 5 5        
-       5               5               5               5       
-      5 5             5 5             5 5             5 5      
-     5   5           5   5           5   5           5   5     
-    5 5 5 5         5 5 5 5         5 5 5 5         5 5 5 5    
-   5       5       5       5       5       5       5       5   
-  5 5     5 5     5 5     5 5     5 5     5 5     5 5     5 5  
- 5   5   5   5   5   5   5   5   5   5   5   5   5   5   5   5 
+                               5
+                              5 5
+                             5   5
+                            5 5 5 5
+                           5       5
+                          5 5     5 5
+                         5   5   5   5
+                        5 5 5 5 5 5 5 5
+                       5               5
+                      5 5             5 5
+                     5   5           5   5
+                    5 5 5 5         5 5 5 5
+                   5       5       5       5
+                  5 5     5 5     5 5     5 5
+                 5   5   5   5   5   5   5   5
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
+               5                               5
+              5 5                             5 5
+             5   5                           5   5
+            5 5 5 5                         5 5 5 5
+           5       5                       5       5
+          5 5     5 5                     5 5     5 5
+         5   5   5   5                   5   5   5   5
+        5 5 5 5 5 5 5 5                 5 5 5 5 5 5 5 5
+       5               5               5               5
+      5 5             5 5             5 5             5 5
+     5   5           5   5           5   5           5   5
+    5 5 5 5         5 5 5 5         5 5 5 5         5 5 5 5
+   5       5       5       5       5       5       5       5
+  5 5     5 5     5 5     5 5     5 5     5 5     5 5     5 5
+ 5   5   5   5   5   5   5   5   5   5   5   5   5   5   5   5
 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5
 
-                                                               6                                                               
-                                                              6 6                                                              
-                                                             6   6                                                             
-                                                            6 6 6 6                                                            
-                                                           6       6                                                           
-                                                          6 6     6 6                                                          
-                                                         6   6   6   6                                                         
-                                                        6 6 6 6 6 6 6 6                                                        
-                                                       6               6                                                       
-                                                      6 6             6 6                                                      
-                                                     6   6           6   6                                                     
-                                                    6 6 6 6         6 6 6 6                                                    
-                                                   6       6       6       6                                                   
-                                                  6 6     6 6     6 6     6 6                                                  
-                                                 6   6   6   6   6   6   6   6                                                 
-                                                6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6                                                
-                                               6                               6                                               
-                                              6 6                             6 6                                              
-                                             6   6                           6   6                                             
-                                            6 6 6 6                         6 6 6 6                                            
-                                           6       6                       6       6                                           
-                                          6 6     6 6                     6 6     6 6                                          
-                                         6   6   6   6                   6   6   6   6                                         
-                                        6 6 6 6 6 6 6 6                 6 6 6 6 6 6 6 6                                        
-                                       6               6               6               6                                       
-                                      6 6             6 6             6 6             6 6                                      
-                                     6   6           6   6           6   6           6   6                                     
-                                    6 6 6 6         6 6 6 6         6 6 6 6         6 6 6 6                                    
-                                   6       6       6       6       6       6       6       6                                   
-                                  6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6                                  
-                                 6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6                                 
-                                6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6                                
-                               6                                                               6                               
-                              6 6                                                             6 6                              
-                             6   6                                                           6   6                             
-                            6 6 6 6                                                         6 6 6 6                            
-                           6       6                                                       6       6                           
-                          6 6     6 6                                                     6 6     6 6                          
-                         6   6   6   6                                                   6   6   6   6                         
-                        6 6 6 6 6 6 6 6                                                 6 6 6 6 6 6 6 6                        
-                       6               6                                               6               6                       
-                      6 6             6 6                                             6 6             6 6                      
-                     6   6           6   6                                           6   6           6   6                     
-                    6 6 6 6         6 6 6 6                                         6 6 6 6         6 6 6 6                    
-                   6       6       6       6                                       6       6       6       6                   
-                  6 6     6 6     6 6     6 6                                     6 6     6 6     6 6     6 6                  
-                 6   6   6   6   6   6   6   6                                   6   6   6   6   6   6   6   6                 
-                6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6                                 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6                
-               6                               6                               6                               6               
-              6 6                             6 6                             6 6                             6 6              
-             6   6                           6   6                           6   6                           6   6             
-            6 6 6 6                         6 6 6 6                         6 6 6 6                         6 6 6 6            
-           6       6                       6       6                       6       6                       6       6           
-          6 6     6 6                     6 6     6 6                     6 6     6 6                     6 6     6 6          
-         6   6   6   6                   6   6   6   6                   6   6   6   6                   6   6   6   6         
-        6 6 6 6 6 6 6 6                 6 6 6 6 6 6 6 6                 6 6 6 6 6 6 6 6                 6 6 6 6 6 6 6 6        
-       6               6               6               6               6               6               6               6       
-      6 6             6 6             6 6             6 6             6 6             6 6             6 6             6 6      
-     6   6           6   6           6   6           6   6           6   6           6   6           6   6           6   6     
-    6 6 6 6         6 6 6 6         6 6 6 6         6 6 6 6         6 6 6 6         6 6 6 6         6 6 6 6         6 6 6 6    
-   6       6       6       6       6       6       6       6       6       6       6       6       6       6       6       6   
-  6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6  
- 6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6 
+                                                               6
+                                                              6 6
+                                                             6   6
+                                                            6 6 6 6
+                                                           6       6
+                                                          6 6     6 6
+                                                         6   6   6   6
+                                                        6 6 6 6 6 6 6 6
+                                                       6               6
+                                                      6 6             6 6
+                                                     6   6           6   6
+                                                    6 6 6 6         6 6 6 6
+                                                   6       6       6       6
+                                                  6 6     6 6     6 6     6 6
+                                                 6   6   6   6   6   6   6   6
+                                                6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6
+                                               6                               6
+                                              6 6                             6 6
+                                             6   6                           6   6
+                                            6 6 6 6                         6 6 6 6
+                                           6       6                       6       6
+                                          6 6     6 6                     6 6     6 6
+                                         6   6   6   6                   6   6   6   6
+                                        6 6 6 6 6 6 6 6                 6 6 6 6 6 6 6 6
+                                       6               6               6               6
+                                      6 6             6 6             6 6             6 6
+                                     6   6           6   6           6   6           6   6
+                                    6 6 6 6         6 6 6 6         6 6 6 6         6 6 6 6
+                                   6       6       6       6       6       6       6       6
+                                  6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6
+                                 6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6
+                                6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6
+                               6                                                               6
+                              6 6                                                             6 6
+                             6   6                                                           6   6
+                            6 6 6 6                                                         6 6 6 6
+                           6       6                                                       6       6
+                          6 6     6 6                                                     6 6     6 6
+                         6   6   6   6                                                   6   6   6   6
+                        6 6 6 6 6 6 6 6                                                 6 6 6 6 6 6 6 6
+                       6               6                                               6               6
+                      6 6             6 6                                             6 6             6 6
+                     6   6           6   6                                           6   6           6   6
+                    6 6 6 6         6 6 6 6                                         6 6 6 6         6 6 6 6
+                   6       6       6       6                                       6       6       6       6
+                  6 6     6 6     6 6     6 6                                     6 6     6 6     6 6     6 6
+                 6   6   6   6   6   6   6   6                                   6   6   6   6   6   6   6   6
+                6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6                                 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6
+               6                               6                               6                               6
+              6 6                             6 6                             6 6                             6 6
+             6   6                           6   6                           6   6                           6   6
+            6 6 6 6                         6 6 6 6                         6 6 6 6                         6 6 6 6
+           6       6                       6       6                       6       6                       6       6
+          6 6     6 6                     6 6     6 6                     6 6     6 6                     6 6     6 6
+         6   6   6   6                   6   6   6   6                   6   6   6   6                   6   6   6   6
+        6 6 6 6 6 6 6 6                 6 6 6 6 6 6 6 6                 6 6 6 6 6 6 6 6                 6 6 6 6 6 6 6 6
+       6               6               6               6               6               6               6               6
+      6 6             6 6             6 6             6 6             6 6             6 6             6 6             6 6
+     6   6           6   6           6   6           6   6           6   6           6   6           6   6           6   6
+    6 6 6 6         6 6 6 6         6 6 6 6         6 6 6 6         6 6 6 6         6 6 6 6         6 6 6 6         6 6 6 6
+   6       6       6       6       6       6       6       6       6       6       6       6       6       6       6       6
+  6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6     6 6
+ 6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6   6
 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6
 
 ```
@@ -2168,7 +2168,7 @@ Or simply as a right fold:
 sierpinski :: Int -> [String]
 sierpinski n =
   foldr
-    (\i xs -> 
+    (\i xs ->
         let s = replicate (2 ^ i) ' '
         in fmap ((s ++) . (++ s)) xs ++ fmap ((++) <*> (' ' :)) xs)
     ["*"]
@@ -2206,24 +2206,24 @@ main = (putStrLn . unlines. sierpinski) 4
 
 
 ```haxe
-class Main 
+class Main
 {
-	static function main() 
+	static function main()
 	{
 		triangle(3);
 	}
-	
+
 	static inline var SPACE = ' ';
 	static inline var STAR = '*';
-	
+
 	static function triangle(o) {
 		var n = 1 << o;
 		var line = new Array<String>();
-		
+
 		for (i in 0...(n*2)) line[i] = SPACE;
-		
+
 		line[n] = '*';
-		
+
 		for (i in 0...n) {
 			Sys.println(line.join(''));
 			var u ='*';
@@ -2235,7 +2235,7 @@ class Main
 				line[j-1] = u;
 				u = t;
 			}
-			
+
 			line[n+i] = t;
 			line[n+i+1] = STAR;
 		}
@@ -2248,7 +2248,7 @@ class Main
 This is a text based adaption of a program from the IPL and Icon Graphics book.  The triangle is presented with a twist. Based on an idea from "Chaos and Fractals" by Peitgen, Jurgens, and Saupe.
 
 ```Icon
-# text based adaptaion of 
+# text based adaptaion of
 
 procedure main(A)
 
@@ -2266,8 +2266,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-Adapted from [http://www.cs.arizona.edu/icon/library/src/gprogs/sier1.icn graphics/sier1.icn] 
+{{libheader|Icon Programming Library}}
+Adapted from [http://www.cs.arizona.edu/icon/library/src/gprogs/sier1.icn graphics/sier1.icn]
 
 {{out|Sample output for order 3}}
 
@@ -2293,7 +2293,7 @@ The only 'special' thing here is that the math is done in a byte array, filled w
 ```idl
 pro sierp,n
   s = (t = bytarr(3+2^(n+1))+32b)
-  t[2^n+1] = 42b  
+  t[2^n+1] = 42b
   for lines = 1,2^n do begin
         print,string( (s = t) )
         for i=1,n_elements(t)-2 do if s[i-1] eq s[i+1] then t[i]=32b else t[i]=42b
@@ -2305,7 +2305,7 @@ end
 
 ## J
 
-There are any number of succinct ways to produce this in J.  
+There are any number of succinct ways to produce this in J.
 Here's one that exploits self-similarity:
 
 ```j
@@ -2423,7 +2423,7 @@ sierpinski(4);
 ### =Functional=
 
 
-Using a functional idiom of JavaScript, we can construct a Sierpinksi triangle as a Pascal triangle (mod 2), 
+Using a functional idiom of JavaScript, we can construct a Sierpinksi triangle as a Pascal triangle (mod 2),
 mapping the binary pattern to centred strings.
 
 
@@ -2445,9 +2445,9 @@ mapping the binary pattern to centred strings.
                         // The composition ( asciiBinary . mod 2 . add )
                         // reduces to a rule from 2 parent characters
                         // to a single child character
-                       
-                        // Rule 90 also reduces to the same XOR 
-                        // relationship between left and right neighbours  
+
+                        // Rule 90 also reduces to the same XOR
+                        // relationship between left and right neighbours
 
                         return left === right ? " " : "▲";
                     }, [' '].concat(lstPrevRow), lstPrevRow.concat(' '))]);
@@ -2581,7 +2581,7 @@ Directly in terms of the built-in Array methods '''.map''', '''.reduce''', and '
 
 
 {{Trans|Haskell}}
-Centering any preceding triangle block over two adjacent duplicates: 
+Centering any preceding triangle block over two adjacent duplicates:
 
 ```JavaScript
 (() => {
@@ -2596,7 +2596,7 @@ Centering any preceding triangle block over two adjacent duplicates:
             map(xs => intercalate(xs, ap(
                 [s => concat(replicate(Math.pow(2, (n - 1)), s))], [' ', '-']
             ))),
-            
+
             // above a pair of duplicates, placed one character apart.
             map(xs => intercalate('+', [xs, xs]))
         ], [sierpTriangle(n - 1)])) : ['▲'];
@@ -2670,7 +2670,7 @@ Centering any preceding triangle block over two adjacent duplicates:
 ```
 
 
-Or constructed as 2^N lines of Pascal's triangle mod 2, 
+Or constructed as 2^N lines of Pascal's triangle mod 2,
 and mapped to centred {1:asterisk, 0:space} strings.
 
 ```JavaScript
@@ -2689,7 +2689,7 @@ and mapped to centred {1:asterisk, 0:space} strings.
                 // is reduced here to a rule from two parent characters
                 // to a single child character.
 
-                // Rule 90 also reduces to the same XOR 
+                // Rule 90 also reduces to the same XOR
                 // relationship between left and right neighbours.
 
                 return sofar
@@ -2910,21 +2910,21 @@ print(sierpinski(4))
 
 ```txt
 
-               *               
-              * *              
-             *   *             
-            * * * *            
-           *       *           
-          * *     * *          
-         *   *   *   *         
-        * * * * * * * *        
-       *               *       
-      * *             * *      
-     *   *           *   *     
-    * * * *         * * * *    
-   *       *       *       *   
-  * *     * *     * *     * *  
- *   *   *   *   *   *   *   * 
+               *
+              * *
+             *   *
+            * * * *
+           *       *
+          * *     * *
+         *   *   *   *
+        * * * * * * * *
+       *               *
+      * *             * *
+     *   *           *   *
+    * * * *         * * * *
+   *       *       *       *
+  * *     * *     * *     * *
+ *   *   *   *   *   *   *   *
 * * * * * * * * * * * * * * * *
 
 ```
@@ -2947,7 +2947,7 @@ S := proc(n)
             values[position[j]-1] := values[position[j]-1] + 1;
             values[position[j]+1] := values[position[j]+1] + 1;
         end do;
-        values := subs( { 2 = " ", 0 = " ", 1 = "*"}, values );  
+        values := subs( { 2 = " ", 0 = " ", 1 = "*"}, values );
         printf("%s\n",cat(op(convert(values, list))));
     end do:
 end proc:
@@ -3013,21 +3013,21 @@ disp(d.join(char(10)))
 
 ```txt
 
-               *               
-              * *              
-             *   *             
-            * * * *            
-           *       *           
-          * *     * *          
-         *   *   *   *         
-        * * * * * * * *        
-       *               *       
-      * *             * *      
-     *   *           *   *     
-    * * * *         * * * *    
-   *       *       *       *   
-  * *     * *     * *     * *  
- *   *   *   *   *   *   *   * 
+               *
+              * *
+             *   *
+            * * * *
+           *       *
+          * *     * *
+         *   *   *   *
+        * * * * * * * *
+       *               *
+      * *             * *
+     *   *           *   *
+    * * * *         * * * *
+   *       *       *       *
+  * *     * *     * *     * *
+ *   *   *   *   *   *   *   *
 * * * * * * * * * * * * * * * *
 
 ```
@@ -3172,7 +3172,7 @@ let () =
 ## Oforth
 
 
-This solution uses a cellular automaton (rule 90 for triangle). 
+This solution uses a cellular automaton (rule 90 for triangle).
 
 automat(rule, n) runs cellular automaton for rule "rule" for n generations.
 
@@ -3192,7 +3192,7 @@ automat(rule, n) runs cellular automaton for rule "rule" for n generations.
    StringBuffer new " " <<n(n) "*" over + +
    #[ dup println rule nextGen ] times(n) drop ;
 
-: sierpinskiTriangle(n) 
+: sierpinskiTriangle(n)
    90 4 n * automat ;
 ```
 
@@ -3240,7 +3240,7 @@ declare
   end
 
   fun {Spaces N} if N == 0 then nil else & |{Spaces N-1} end end
-  
+
   fun lazy {Iterate F X}
      X|{Iterate F {F X}}
   end
@@ -3304,7 +3304,7 @@ program Sierpinski;
 function ipow(b, n	: Integer) : Integer;
 var
    i : Integer;
-begin 
+begin
    ipow := 1;
    for i := 1 to n do
       ipow := ipow * b
@@ -3351,7 +3351,7 @@ procedure triangle(n : Integer);
 var
    i, l	: Integer;
    b	: String;
-begin 
+begin
    l := ipow(2, n+1);
    b := ' ';
    for i := 1 to l do
@@ -3409,7 +3409,7 @@ sub sierpinski ($n) {
     }
     return @down;
 }
- 
+
 .say for sierpinski 4;
 ```
 
@@ -3736,23 +3736,23 @@ rule_90(' ',' ',' ', ' ').
 
 ```txt
  ?- sierpinski_triangle(4).
-                *                
-               * *               
-              *   *              
-             * * * *             
-            *       *            
-           * *     * *           
-          *   *   *   *          
-         * * * * * * * *         
-        *               *        
-       * *             * *       
-      *   *           *   *      
-     * * * *         * * * *     
-    *       *       *       *    
-   * *     * *     * *     * *   
-  *   *   *   *   *   *   *   *  
- * * * * * * * * * * * * * * * * 
-true 
+                *
+               * *
+              *   *
+             * * * *
+            *       *
+           * *     * *
+          *   *   *   *
+         * * * * * * * *
+        *               *
+       * *             * *
+      *   *           *   *
+     * * * *         * * * *
+    *       *       *       *
+   * *     * *     * *     * *
+  *   *   *   *   *   *   *   *
+ * * * * * * * * * * * * * * * *
+true
 ```
 
 
@@ -3762,17 +3762,17 @@ true
 
 ```PureBasic
 Procedure Triangle (X,Y, Length, N)
-   If N = 0 
+   If N = 0
       DrawText( Y,X, "*",#Blue)
    Else
       Triangle (X+Length,          Y, Length/2, N-1)
       Triangle (X,   Y+Length,        Length/2, N-1)
       Triangle (X+Length, Y+Length*2, Length/2, N-1)
    EndIf
-EndProcedure 
-      
+EndProcedure
 
-OpenWindow(0, 100, 100,700,500 ,"Sierpinski triangle",  #PB_Window_SystemMenu |1) 
+
+OpenWindow(0, 100, 100,700,500 ,"Sierpinski triangle",  #PB_Window_SystemMenu |1)
 StartDrawing(WindowOutput(0))
    DrawingMode(#PB_2DDrawing_Transparent )
    Triangle(10,10,120,5)
@@ -4135,7 +4135,7 @@ numeric digits 12000                             /*this should handle the biggy 
 
 ```
 
-</b> 
+</b>
 
 
 
@@ -4158,12 +4158,12 @@ norder=4
 xy = list(40)
 for i = 1 to 40
     xy[i] = "                               "
-next 
+next
 triangle(1, 1, norder)
 for i = 1 to 36
     see xy[i] + nl
-next 
- 
+next
+
 func triangle(x, y, n)
      if n = 0
         xy[y] = left(xy[y],x-1) + "*" + substr(xy[y],x+1)
@@ -4181,21 +4181,21 @@ Output:
 
 ```txt
 
-               *               
-              * *              
-             *   *             
-            * * * *            
-           *       *           
-          * *     * *          
-         *   *   *   *         
-        * * * * * * * *        
-       *               *       
-      * *             * *      
-     *   *           *   *     
-    * * * *         * * * *    
-   *       *       *       *   
-  * *     * *     * *     * *  
- *   *   *   *   *   *   *   * 
+               *
+              * *
+             *   *
+            * * * *
+           *       *
+          * *     * *
+         *   *   *   *
+        * * * * * * * *
+       *               *
+      * *             * *
+     *   *           *   *
+    * * * *         * * * *
+   *       *       *       *
+  * *     * *     * *     * *
+ *   *   *   *   *   *   *   *
 * * * * * * * * * * * * * * * *
 
 ```
@@ -4233,7 +4233,7 @@ Using fold / reduce (aka. inject):
 
 ```ruby
 def sierpinski_triangle(n)
-  (0...n).inject(["*"]) {|triangle, i| 
+  (0...n).inject(["*"]) {|triangle, i|
     space = " " * (2**i)
     triangle.map {|x| space + x + space} + triangle.map {|x| x + " " + x}
   }
@@ -4258,7 +4258,7 @@ for i = 1 to 36
     print xy$(i)
 next i
 end
- 
+
 SUB triangle x, y, n
     IF n = 0 THEN
         xy$(y) = left$(xy$(y),x-1) + "*" + mid$(xy$(y),x+1)
@@ -4274,21 +4274,21 @@ END SUB
 
 
 ```txt
-               *               
-              * *              
-             *   *             
-            * * * *            
-           *       *           
-          * *     * *          
-         *   *   *   *         
-        * * * * * * * *        
-       *               *       
-      * *             * *      
-     *   *           *   *     
-    * * * *         * * * *    
-   *       *       *       *   
-  * *     * *     * *     * *  
- *   *   *   *   *   *   *   * 
+               *
+              * *
+             *   *
+            * * * *
+           *       *
+          * *     * *
+         *   *   *   *
+        * * * * * * * *
+       *               *
+      * *             * *
+     *   *           *   *
+    * * * *         * * * *
+   *       *       *       *
+  * *     * *     * *     * *
+ *   *   *   *   *   *   *   *
 * * * * * * * * * * * * * * * *
 ```
 
@@ -4386,7 +4386,7 @@ const func array string: sierpinski (in integer: n) is func
       space &:= space;
     end for;
   end func;
- 
+
 const proc: main is func
   begin
     writeln(join(sierpinski(4), "\n"));
@@ -4427,7 +4427,7 @@ extension String {
             var charAtIndex = array[index]
             return String(charAtIndex)
         }
-        
+
         set(newValue) {
             var asChar = Character(newValue)
             var array = Array(self)
@@ -4442,13 +4442,13 @@ func triangle(var n:Int) {
     var line = ""
     var t = ""
     var u = ""
-    
+
     for (var i = 0; i <= 2 * n; i++) {
         line += " "
     }
-    
+
     line[n] = "*"
-    
+
     for (var i = 0; i < n; i++) {
         println(line)
         u = "*"
@@ -4648,14 +4648,14 @@ examples = mat0 ~&?(`*!,` !)*** <sierpinski3,triangle4>
 
 {{out}}
 <pre style="height:30ex;overflow:scroll;">
-        *        
-       * *       
-      *   *      
-     * * * *     
-    *       *    
-   * *     * *   
-  *   *   *   *  
- * * * * * * * * 
+        *
+       * *
+      *   *
+     * * * *
+    *       *
+   * *     * *
+  *   *   *   *
+ * * * * * * * *
 
                *
               * *
@@ -4700,130 +4700,130 @@ Public Sub main()
 End Sub
 ```
 {{out}}
-<pre style="font-size: 4px"> 
-# 
+<pre style="font-size: 4px">
+#
 
-# # 
-   
-# 
-  
-# # 
- 
-#   # 
+# #
 
-# # # # 
-       
-# 
-      
-# # 
-     
-#   # 
-    
-# # # # 
-   
-#       # 
-  
-# #     # # 
- 
-#   #   #   # 
+#
 
-# # # # # # # # 
-               
-# 
-              
-# # 
-             
-#   # 
-            
-# # # # 
-           
-#       # 
-          
-# #     # # 
-         
-#   #   #   # 
-        
-# # # # # # # # 
-       
-#               # 
-      
-# #             # # 
-     
-#   #           #   # 
-    
-# # # #         # # # # 
-   
-#       #       #       # 
-  
-# #     # #     # #     # # 
- 
-#   #   #   #   #   #   #   # 
+# #
 
-# # # # # # # # # # # # # # # # 
-                               
-# 
-                              
-# # 
-                             
-#   # 
-                            
-# # # # 
-                           
-#       # 
-                          
-# #     # # 
-                         
-#   #   #   # 
-                        
-# # # # # # # # 
-                       
-#               # 
-                      
-# #             # # 
-                     
-#   #           #   # 
-                    
-# # # #         # # # # 
-                   
-#       #       #       # 
-                  
-# #     # #     # #     # # 
-                 
-#   #   #   #   #   #   #   # 
-                
-# # # # # # # # # # # # # # # # 
-               
-#                               # 
-              
-# #                             # # 
-             
-#   #                           #   # 
-            
-# # # #                         # # # # 
-           
-#       #                       #       # 
-          
-# #     # #                     # #     # # 
-         
-#   #   #   #                   #   #   #   # 
-        
-# # # # # # # #                 # # # # # # # # 
-       
-#               #               #               # 
-      
-# #             # #             # #             # # 
-     
-#   #           #   #           #   #           #   # 
-    
-# # # #         # # # #         # # # #         # # # # 
-   
-#       #       #       #       #       #       #       # 
-  
-# #     # #     # #     # #     # #     # #     # #     # # 
- 
-#   #   #   #   #   #   #   #   #   #   #   #   #   #   #   # 
+#   #
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# # # #
+
+#
+
+# #
+
+#   #
+
+# # # #
+
+#       #
+
+# #     # #
+
+#   #   #   #
+
+# # # # # # # #
+
+#
+
+# #
+
+#   #
+
+# # # #
+
+#       #
+
+# #     # #
+
+#   #   #   #
+
+# # # # # # # #
+
+#               #
+
+# #             # #
+
+#   #           #   #
+
+# # # #         # # # #
+
+#       #       #       #
+
+# #     # #     # #     # #
+
+#   #   #   #   #   #   #   #
+
+# # # # # # # # # # # # # # # #
+
+#
+
+# #
+
+#   #
+
+# # # #
+
+#       #
+
+# #     # #
+
+#   #   #   #
+
+# # # # # # # #
+
+#               #
+
+# #             # #
+
+#   #           #   #
+
+# # # #         # # # #
+
+#       #       #       #
+
+# #     # #     # #     # #
+
+#   #   #   #   #   #   #   #
+
+# # # # # # # # # # # # # # # #
+
+#                               #
+
+# #                             # #
+
+#   #                           #   #
+
+# # # #                         # # # #
+
+#       #                       #       #
+
+# #     # #                     # #     # #
+
+#   #   #   #                   #   #   #   #
+
+# # # # # # # #                 # # # # # # # #
+
+#               #               #               #
+
+# #             # #             # #             # #
+
+#   #           #   #           #   #           #   #
+
+# # # #         # # # #         # # # #         # # # #
+
+#       #       #       #       #       #       #       #
+
+# #     # #     # #     # #     # #     # #     # #     # #
+
+#   #   #   #   #   #   #   #   #   #   #   #   #   #   #   #
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 ```
 
 
@@ -5049,16 +5049,16 @@ for I:= 0 to Size-1 do
 ```Yabasic
 sub rep$(n, c$)
     local i, s$
-	
+
     for i = 1 to n
-	s$ = s$ + c$ 
+	s$ = s$ + c$
     next
     return s$
 end sub
 
 sub sierpinski(n)
     local lim, y, x
-	
+
     lim = 2**n - 1
     for y = lim to 0 step -1
         print rep$(y, " ");
@@ -5095,21 +5095,21 @@ d.concat("\n").println();
 
 ```txt
 
-               *               
-              * *              
-             *   *             
-            * * * *            
-           *       *           
-          * *     * *          
-         *   *   *   *         
-        * * * * * * * *        
-       *               *       
-      * *             * *      
-     *   *           *   *     
-    * * * *         * * * *    
-   *       *       *       *   
-  * *     * *     * *     * *  
- *   *   *   *   *   *   *   * 
+               *
+              * *
+             *   *
+            * * * *
+           *       *
+          * *     * *
+         *   *   *   *
+        * * * * * * * *
+       *               *
+      * *             * *
+     *   *           *   *
+    * * * *         * * * *
+   *       *       *       *
+  * *     * *     * *     * *
+ *   *   *   *   *   *   *   *
 * * * * * * * * * * * * * * * *
 
 ```

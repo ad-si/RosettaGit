@@ -13,7 +13,7 @@ tags = []
 {{task|Data Structures}}
 Define the data structure for a complete Doubly Linked List.
 
-* The structure should support adding elements to the head, tail and middle of the list. 
+* The structure should support adding elements to the head, tail and middle of the list.
 * The structure should not allow circular loops
 
 
@@ -35,7 +35,7 @@ Ada 2005 defines doubly-linked lists in [http://www.adaic.com/standards/05rm/htm
 ## ALGOL 68
 
 {{trans|C}}
-{{works with|ALGOL 68|Revision 1 - one extension to language used - PRAGMA READ - a non standard feature similar to C's #include directive.}}{{works with|ALGOL 68G|Any - tested with release algol68g-2.7}} 
+{{works with|ALGOL 68|Revision 1 - one extension to language used - PRAGMA READ - a non standard feature similar to C's #include directive.}}{{works with|ALGOL 68G|Any - tested with release algol68g-2.7}}
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}}
 '''File: prelude/Doubly-linked_list_Link.a68'''
 ```algol68
@@ -159,9 +159,9 @@ main: (
 
 ```txt
 
-Iterate forward: Was it a cat I saw 
-Iterate backward: saw I cat a it Was 
-Empty from tail: saw I cat a it Was 
+Iterate forward: Was it a cat I saw
+Iterate backward: saw I cat a it Was
+Empty from tail: saw I cat a it Was
 
 ```
 
@@ -195,11 +195,11 @@ dllist_fin:
 /* structure Node Doublylinked List*/
     .struct  0
 NDlist_next:                    @ next element
-    .struct  NDlist_next + 4 
+    .struct  NDlist_next + 4
 NDlist_prev:                    @ previous element
-    .struct  NDlist_prev + 4 
+    .struct  NDlist_prev + 4
 NDlist_value:                   @ element value or key
-    .struct  NDlist_value + 4 
+    .struct  NDlist_value + 4
 NDlist_fin:
 /* Initialized data */
 .data
@@ -208,13 +208,13 @@ szCarriageReturn:        .asciz "\n"
 szMessErreur:            .asciz "Error detected.\n"
 
 /* UnInitialized data */
-.bss 
-dllist1:              .skip dllist_fin    @ list memory place 
+.bss
+dllist1:              .skip dllist_fin    @ list memory place
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
     ldr r0,iAdrdllist1
     bl newDList                      @ create new list
     ldr r0,iAdrszMessInitListe
@@ -248,35 +248,35 @@ iAdrszMessErreur:          .int szMessErreur
 iAdrszCarriageReturn:      .int szCarriageReturn
 iAdrdllist1:               .int dllist1
 /******************************************************************/
-/*     create new list                         */ 
+/*     create new list                         */
 /******************************************************************/
 /* r0 contains the address of the list structure */
 newDList:
-    push {r1,lr}                         @ save  registers 
+    push {r1,lr}                         @ save  registers
     mov r1,#0
     str r1,[r0,#dllist_tail]
     str r1,[r0,#dllist_head]
     pop {r1,lr}                          @ restaur registers
     bx lr                                @ return
 /******************************************************************/
-/*     list is empty ?                         */ 
+/*     list is empty ?                         */
 /******************************************************************/
 /* r0 contains the address of the list structure */
 /* r0 return 0 if empty  else return 1 */
 isEmpty:
-    //push {r1,lr}                         @ save  registers 
+    //push {r1,lr}                         @ save  registers
     ldr r0,[r0,#dllist_head]
     cmp r0,#0
     movne r0,#1
     //pop {r1,lr}                          @ restaur registers
     bx lr                                @ return
 /******************************************************************/
-/*     insert value at list head                        */ 
+/*     insert value at list head                        */
 /******************************************************************/
 /* r0 contains the address of the list structure */
 /* r1 contains value */
 insertHead:
-    push {r1-r4,lr}                         @ save  registers 
+    push {r1-r4,lr}                         @ save  registers
     mov r4,r0                            @ save address
     mov r0,r1                            @ value
     bl createNode
@@ -286,7 +286,7 @@ insertHead:
     str r2,[r0,#NDlist_next]             @ store in next pointer on new node
     mov r1,#0
     str r1,[r0,#NDlist_prev]             @ store zero in previous pointer on new node
-    str r0,[r4,#dllist_head]             @ store address new node in address head list 
+    str r0,[r4,#dllist_head]             @ store address new node in address head list
     cmp r2,#0                            @ address first node is null ?
     strne r0,[r2,#NDlist_prev]           @ no store adresse new node in previous pointer
     streq r0,[r4,#dllist_tail]           @ else store new node in tail address
@@ -294,12 +294,12 @@ insertHead:
     pop {r1-r4,lr}                       @ restaur registers
     bx lr                                @ return
 /******************************************************************/
-/*     insert value at list tail                        */ 
+/*     insert value at list tail                        */
 /******************************************************************/
 /* r0 contains the address of the list structure */
 /* r1 contains value */
 insertTail:
-    push {r1-r4,lr}                         @ save  registers 
+    push {r1-r4,lr}                         @ save  registers
     mov r4,r0                            @ save list address
     mov r0,r1                            @ value
     bl createNode                        @ create new node
@@ -317,13 +317,13 @@ insertTail:
     pop {r1-r4,lr}                          @ restaur registers
     bx lr                                @ return
 /******************************************************************/
-/*     insert value after other element                        */ 
+/*     insert value after other element                        */
 /******************************************************************/
 /* r0 contains the address of the list structure */
 /* r1 contains value to search*/
 /* r2 contains value to insert */
 insertAfter:
-    push {r1-r5,lr}                         @ save  registers 
+    push {r1-r5,lr}                         @ save  registers
     mov r4,r0                               @ save list address
     bl searchValue                          @ search this value in r1
     cmp r0,#-1
@@ -338,19 +338,19 @@ insertAfter:
     str r5,[r0,#NDlist_prev]                @ store address find node in previous pointer on new node
     str r2,[r0,#NDlist_next]                @ store pointer next of find node on pointer next on new node
     cmp r2,#0                               @ next pointer is null ?
-    strne r0,[r2,#NDlist_prev]              @ no store address new node in previous pointer 
+    strne r0,[r2,#NDlist_prev]              @ no store address new node in previous pointer
     streq r0,[r4,#dllist_tail]              @ else store in list tail
 100:
     pop {r1-r5,lr}                          @ restaur registers
     bx lr                                   @ return
 /******************************************************************/
-/*     search value                                               */ 
+/*     search value                                               */
 /******************************************************************/
 /* r0 contains the address of the list structure */
 /* r1 contains the value to search  */
 /* r0 return address of node or -1 if not found */
 searchValue:
-    push {r2,lr}                         @ save  registers 
+    push {r2,lr}                         @ save  registers
     ldr r0,[r0,#dllist_head]             @ load first node
 1:
     cmp r0,#0                            @ null -> end search not found
@@ -359,18 +359,18 @@ searchValue:
     ldr r2,[r0,#NDlist_value]            @ load node value
     cmp r2,r1                            @ equal ?
     beq 100f
-    ldr r0,[r0,#NDlist_next]             @ load addresse next node 
+    ldr r0,[r0,#NDlist_next]             @ load addresse next node
     b 1b                                 @ and loop
 100:
     pop {r2,lr}                          @ restaur registers
     bx lr                                @ return
 /******************************************************************/
-/*     Create new node                                            */ 
+/*     Create new node                                            */
 /******************************************************************/
 /* r0 contains the value */
 /* r0 return node address or -1 if allocation error*/
 createNode:
-    push {r1-r7,lr}                         @ save  registers 
+    push {r1-r7,lr}                         @ save  registers
     mov r4,r0                            @ save value
     @ allocation place on the heap
     mov r0,#0                                   @ allocation place heap
@@ -391,21 +391,21 @@ createNode:
     pop {r1-r7,lr}                          @ restaur registers
     bx lr                                @ return
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -601,7 +601,7 @@ int main()
     LIST lista;
     struct IntNode *m;
     NODE n;
-    
+
     lista = newList();
     if ( lista != NULL )
     {
@@ -631,8 +631,8 @@ int main()
 
 {{works with|C++11}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <list>
 
 int main ()
@@ -652,7 +652,7 @@ int main ()
 
 ```txt
 
-9 1 5 7 6 0 3 2 4 
+9 1 5 7 6 0 3 2 4
 
 ```
 
@@ -1052,9 +1052,9 @@ void main ()
 
 ```txt
 
-Iterate forward: Was it really a cat I saw 
-Iterate backward: saw I cat a really it Was 
-Empty from tail: saw I cat a really it Was 
+Iterate forward: Was it really a cat I saw
+Iterate backward: saw I cat a really it Was
+Empty from tail: saw I cat a really it Was
 
 ```
 
@@ -1067,18 +1067,18 @@ Empty from tail: saw I cat a really it Was
 def makeDLList() {
     def firstINode
     def lastINode
-    
+
     def makeNode(var value, var prevI, var nextI) {
-        # To meet the requirement that the client cannot create a loop, the 
-        # inter-node refs are protected: clients only get the external facet 
+        # To meet the requirement that the client cannot create a loop, the
+        # inter-node refs are protected: clients only get the external facet
         # with invariant-preserving operations.
         def iNode
-        
+
         def node { # external facet
-            
+
             to get() { return value }
             to put(new) { value := new }
-            
+
             /** Return the value of the element of the list at the specified offset
                 from this element. */
             to get(index :int) {
@@ -1126,7 +1126,7 @@ def makeDLList() {
                 prevI.node().insertAfter(newValue)
             }
         }
-        
+
         bind iNode { # internal facet
             to node() { return node }
             to nextI() { return nextI }
@@ -1134,7 +1134,7 @@ def makeDLList() {
             to setNextI(new) { nextI := new }
             to setPrevI(new) { prevI := new }
         }
-        
+
         return iNode
     } # end makeNode
 
@@ -1163,7 +1163,7 @@ def makeDLList() {
         to atLast() { return lastINode.prevI().node() }
         to insertFirst(new) { return firstINode.node().insertAfter(new) }
         to push(new) { return lastINode.node().insertBefore(new) }
-        
+
         /** Return the node which has the specified value */
         to nodeOf(value) {
             for node => v ? (v == value) in dlList { return node }
@@ -1587,7 +1587,7 @@ func main() {
         e1 := l.PushFront(1)
         l.InsertBefore(3, e4)
         l.InsertAfter("two", e1)
-        
+
         // Iterate through list and print its contents.
         for e := l.Front(); e != nil; e = e.Next() {
             fmt.Println(e.Value)
@@ -1695,24 +1695,24 @@ class DoubleList (item)
     every (node := node.traverse_forwards ()) # move to end of list
     return node
   end
-  
+
   method insert_at_head (value)
     head().insert_before (DoubleLink(value))
   end
 
   method insert_at_tail (value)
     tail().insert_after (DoubleLink (value))
-  end  
+  end
 
-  # insert a node for new_value after that for target_value, 
+  # insert a node for new_value after that for target_value,
   # i.e. in the middle of the list
   method insert_after (target_value, new_value)
     node := head ()
-    every node := head().traverse_forwards () do 
-      if (node.value = target_value) 
-        then { 
+    every node := head().traverse_forwards () do
+      if (node.value = target_value)
+        then {
           node.insert_after (DoubleLink (new_value))
-         break 
+         break
         }
   end
 
@@ -1747,7 +1747,7 @@ To test the double-linked list:
 
 procedure main ()
   dlist := DoubleList (5)
-  every i := 4 to 1 by -1 do 
+  every i := 4 to 1 by -1 do
     dlist.insert_at_head (i)
   every i := 6 to 10 do
     dlist.insert_at_tail (i)
@@ -1840,7 +1840,7 @@ See [[Doubly-Linked List (element)#JavaScript]], [[Doubly-Linked List (element i
 
 ## Julia
 
-Regarding the avoidance or circular loops part of this task, a call to 
+Regarding the avoidance or circular loops part of this task, a call to
 ```julia
 show(DLNode)
 ```
@@ -1893,7 +1893,7 @@ function printconnected(nd; fromtail = false)
     if fromtail
         nd = last(nd)
         print(nd.value)
-        while nd.pred != nothing 
+        while nd.pred != nothing
             nd = nd.pred
             print(" -> $(nd.value)")
         end
@@ -1921,7 +1921,7 @@ delete(node4)
 print("From end to beginning post deletion: "); printconnected(node1, fromtail = true)
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 First value is 1 and last value is 3
@@ -2044,7 +2044,7 @@ Module Checkit {
             Remove {
                   Print "destroyed", .dat
             }
-            class: 
+            class:
             module Node {
                   .pred->Null
                   .succ->Null
@@ -2070,7 +2070,7 @@ Module Checkit {
                   if n is .Head then {
                         .Head->Null
                         .Tail->Null
-                  } Else { 
+                  } Else {
                         .Tail<=n=>succ
                         .Tail=>pred=n=>pred
                         n=>pred->Null
@@ -2098,10 +2098,10 @@ Module Checkit {
                   if n is .Tail then {
                         .Head->Null
                         .Tail->Null
-                  } Else { 
+                  } Else {
                       .Head<=n=>pred
                       .Head=>succ=n=>succ
-                       n=>succ->Null    
+                       n=>succ->Null
                    }
                   for n {
                         .succ->Null
@@ -2118,7 +2118,7 @@ Module Checkit {
                         clear k
                   } else {
                        pred=>succ=succ
-                       succ=>pred=pred 
+                       succ=>pred=pred
                   }
             }
             Module InsertAfter(k as pointer, n as pointer) {
@@ -2138,7 +2138,7 @@ Module Checkit {
             }
       }
       m->Node(100)
-      
+
       L=LList()
       L.PushTail m
       If not L.Head is Null then Print L.Head=>dat=100
@@ -2152,7 +2152,7 @@ Module Checkit {
             L.PushHead m
             Print "ok....", i
       }
-      
+
       Print "Use Head to display from last to first"
       m=L.Head
       do {
@@ -2161,7 +2161,7 @@ Module Checkit {
       } Until m is null
       Print "ok, now find 3rd and remove it"
       m1=L.Head
-      i=1 
+      i=1
       Index=3
       While i<Index {
             if m1 is null then exit
@@ -2185,8 +2185,8 @@ Module Checkit {
             Print m=>dat
             m=m=>succ
       } Until m is null
-      
-      
+
+
       useother=True
       While not L.IsEmpty(){
             For This {
@@ -2198,7 +2198,7 @@ Module Checkit {
                         clear A
              }
       }
-      Print "list is empty:"; L.IsEmpty()    
+      Print "list is empty:"; L.IsEmpty()
 }
 Checkit
 
@@ -2341,7 +2341,7 @@ class Program {
 
 ```oforth
 Object Class new: DNode(value, mutable prev, mutable next)
- 
+
 DNode method: initialize  := next := prev := value ;
 DNode method: value  @value ;
 DNode method: prev  @prev ;
@@ -2349,44 +2349,44 @@ DNode method: next  @next ;
 DNode method: setPrev := prev ;
 DNode method: setNext  := next ;
 DNode method: <<  @value << ;
- 
+
 DNode method: insertAfter(node)
    node setPrev(self)
    node setNext(@next)
    @next ifNotNull: [ @next setPrev(node) ]
    node := next ;
- 
-// Double linked list definition 
+
+// Double linked list definition
 Collection Class new: DList(mutable head, mutable tail)
 DList method: head  @head ;
 DList method: tail  @tail ;
- 
-DList method: insertFront(v) 
+
+DList method: insertFront(v)
 | p |
    @head ->p
    DNode new(v, null, p) := head
    p ifNotNull: [ p setPrev(@head) ]
    @tail ifNull: [ @head := tail ] ;
- 
-DList method: insertBack(v) 
+
+DList method: insertBack(v)
 | n |
    @tail ->n
-   DNode new(v, n, null) := tail 
+   DNode new(v, n, null) := tail
    n ifNotNull: [ n setNext(@tail) ]
    @head ifNull: [ @tail := head ] ;
- 
+
 DList method: forEachNext
    dup ifNull: [ drop @head ifNull: [ false ] else: [ @head @head true] return ]
    next dup ifNull: [ drop false ] else: [ dup true ] ;
- 
+
 DList method: forEachPrev
    dup ifNull: [ drop @tail ifNull: [ false ] else: [ @tail @tail true] return ]
    prev dup ifNull: [ drop false ] else: [ dup true ] ;
- 
+
 : test      // ( -- aDList )
 | dl dn |
    DList new ->dl
-   dl insertFront("A") 
+   dl insertFront("A")
    dl insertBack("B")
    dl head insertAfter(DNode new("C", null , null))
    dl ;
@@ -2680,7 +2680,7 @@ EndDataSection
 
 Procedure displayList(List x.s(), title$)
   ;display all elements from list of strings
-  Print(title$)  
+  Print(title$)
   ForEach x()
     Print(x() + " ")
   Next
@@ -2691,18 +2691,18 @@ EndProcedure
 OpenConsole()
 
 NewList a.s() ;create a new list of strings
- 
+
 ;add words to the head of list
 Restore words
 Repeat
   Read.s a$
   If a$ <> "EndOfData"
     ResetList(a()) ;Move to head of list
-    AddElement(a()) 
+    AddElement(a())
     a() = a$
   EndIf
 Until a$ = "EndOfData"
-displayList(a(),"Insertion at Head: ")  
+displayList(a(),"Insertion at Head: ")
 
 
 ClearList(a())
@@ -2712,11 +2712,11 @@ LastElement(a()) ;Move to the tail of the list
 Repeat
   Read.s a$
   If a$ <> "EndOfData"
-    AddElement(a()) ;after insertion the new position is still at the tail 
+    AddElement(a()) ;after insertion the new position is still at the tail
     a() = a$
   EndIf
 Until a$ = "EndOfData"
-displayList(a(),"Insertion at Tail: ")  
+displayList(a(),"Insertion at Tail: ")
 
 
 ClearList(a())
@@ -2731,12 +2731,12 @@ Repeat
       SelectElement(a(),Random(c - 2)) ;insert after a random element but before tail
     Else
       FirstElement(a())
-    EndIf 
+    EndIf
     AddElement(a())
     a() = a$
   EndIf
 Until a$ = "EndOfData"
-displayList(a(),"Insertion in Middle: ") 
+displayList(a(),"Insertion in Middle: ")
 
 Repeat: Until Inkey() <> ""
 ```
@@ -2768,9 +2768,9 @@ The following is a port of the Common Lisp solution. The ouput is '(1 2 3 4).
 #lang racket
 (define-struct dlist (head tail) #:mutable #:transparent)
 (define-struct dlink (content prev next) #:mutable #:transparent)
- 
+
 (define (insert-between dlist before after data)
-  ; Insert a fresh link containing DATA after existing link 
+  ; Insert a fresh link containing DATA after existing link
   ; BEFORE if not nil and before existing link AFTER if not nil
   (define new-link (make-dlink data before after))
   (if before
@@ -2780,23 +2780,23 @@ The following is a port of the Common Lisp solution. The ouput is '(1 2 3 4).
       (set-dlink-prev! after new-link)
       (set-dlist-tail! dlist new-link))
     new-link)
- 
+
 (define (insert-before dlist dlink data)
   ; Insert a fresh link containing DATA before existing link DLINK
   (insert-between dlist (dlink-prev dlink) dlink data))
- 
+
 (define (insert-after dlist dlink data)
   ; Insert a fresh link containing DATA after existing link DLINK
   (insert-between dlist dlink (dlink-next dlink) data))
- 
+
 (define (insert-head dlist data)
   ; Insert a fresh link containing DATA at the head of DLIST
   (insert-between dlist #f (dlist-head dlist) data))
- 
+
 (define (insert-tail dlist data)
   ; Insert a fresh link containing DATA at the tail of DLIST
   (insert-between dlist (dlist-tail dlist) #f data))
- 
+
 (define (remove-link dlist dlink)
   ; Remove link DLINK from DLIST and return its content
   (let ((before (dlink-prev dlink))
@@ -2807,7 +2807,7 @@ The following is a port of the Common Lisp solution. The ouput is '(1 2 3 4).
     (if after
         (set-dlink-prev! after before)
         (set-dlist-tail! dlist before))))
- 
+
 (define (dlist-elements dlist)
   ; Returns the elements of DLIST as a list
   (define (extract-values dlink acc)
@@ -2944,7 +2944,7 @@ Was it a black cat I saw there, in the shadows, stalking its prey (and next meal
                                ─── adding to head: Oy! ───
 
                                ─── showing list ───
-Oy! Was it a black cat I saw there, in the shadows, stalking its prey (and next meal). 
+Oy! Was it a black cat I saw there, in the shadows, stalking its prey (and next meal).
 
 ```
 
@@ -2998,16 +2998,16 @@ However, on very long lists, insertions and deletions
 In such cases, the implementation below may be helpful.
 It provides a single ''dl'' command, which is called
 with the name of a DList, a method name, and possibly
-more arguments as required. The testcases below should 
+more arguments as required. The testcases below should
 give a good idea.
-The ''asList'' and ''asList2'' methods demonstrate 
-forward and backward traversal. 
+The ''asList'' and ''asList2'' methods demonstrate
+forward and backward traversal.
 
 See also [[Doubly-Linked List (element)]] for a TclOO-based version.
 
 
 ```Tcl
-package require Tcl 8.4 
+package require Tcl 8.4
 proc dl {_name cmd {where error} {value ""}} {
     upvar 1 $_name N
     switch -- $cmd {
@@ -3045,7 +3045,7 @@ proc dl {_name cmd {where error} {value ""}} {
             foreach {prev next} $N($i) break
             if {$prev ne ""} {lset N($prev) 1 $next}
             if {$next ne ""} {lset N($next) 0 $prev}
-            if {[dl N head] == $i} {lset N() 0 $next} 
+            if {[dl N head] == $i} {lset N() 0 $next}
             if {[dl N end] == $i}  {lset N() 1 $prev}
             unset N($i)
         }
@@ -3054,7 +3054,7 @@ proc dl {_name cmd {where error} {value ""}} {
             for {set i $where} {$i ne ""} {set i [dl N next $i]} {
                 if {[dl N get $i] eq $value} {return $i}
             }
-        } 
+        }
         get    {lindex $N($where) 2}
         set    {lset   N($where) 2 $value; set value}
         head   {lindex $N() 0}
@@ -3068,14 +3068,14 @@ proc dl {_name cmd {where error} {value ""}} {
                 lappend res [dl N get $i]
             }
             return $res
-        } 
+        }
         asList2 {
             set res {}
             for {set i [dl N end]} {$i ne ""} {set i [dl N prev $i]} {
                 lappend res [dl N get $i]
             }
             return $res
-        } 
+        }
     }
 }
 ```
@@ -3263,16 +3263,16 @@ class Node{
       if(c) c.prev=b;
       b
    }
-   fcn delete{ 
+   fcn delete{
       if(prev) prev.next=next;
-      if(next) next.prev=prev; 
-      self 
+      if(next) next.prev=prev;
+      self
    }
    fcn last  { n,p := self,self; while(n){ p,n = n,n.next } p }
    fcn first { n,p := self,self; while(n){ p,n = n,n.prev } p }
    fcn walker(forward=True){
       dir:=forward and "next" or "prev";
-      Walker(fcn(rn,dir){ 
+      Walker(fcn(rn,dir){
          if(not (n:=rn.value)) return(Void.Stop);
 	 rn.set(n.setVar(dir));
          n.value;
@@ -3283,7 +3283,7 @@ class Node{
 
 
 ```zkl
-a:=Node("a"); 
+a:=Node("a");
 a.append("c").append("d");
 a.last().append("e");
 a.last().first().append("b");
@@ -3295,8 +3295,8 @@ foreach n in (a.last().walker(False)){ print(n,"  ") } println();
 
 ```txt
 
-a  b  c  d  e  
-e  d  c  b  a 
+a  b  c  d  e
+e  d  c  b  a
 
 ```
 

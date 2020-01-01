@@ -13,7 +13,7 @@ tags = []
 {{task|Object oriented}}
 
 ;Task:
-Demonstrate how to make the object respond (sensibly/usefully) to an invocation of a method on it that it does not support through its class definitions. 
+Demonstrate how to make the object respond (sensibly/usefully) to an invocation of a method on it that it does not support through its class definitions.
 
 Note that this is not the same as just invoking a defined method whose name is given dynamically; the method named at the point of invocation must not be defined.
 
@@ -71,7 +71,7 @@ example = object.new
 
 example.no_method = { meth_name, *args |
   p "#{meth_name} was called with these arguments: #{args}"
-} 
+}
 
 example.this_does_not_exist "at all"  #Prints "this_does_not_exist was called with these arguments: [at all]"
 ```
@@ -265,7 +265,7 @@ void main() {
 This is foo
 This is bar
 Tried to handle unknown method 'grill'
-Tried to handle unknown method 'ding', with arguments: dong 11 
+Tried to handle unknown method 'ding', with arguments: dong 11
 ```
 
 =={{header|Déjà Vu}}==
@@ -330,7 +330,7 @@ Using generic handler (ELENA 4.x):
 
 ```elena
 import extensions;
- 
+
 class Example
 {
     generic()
@@ -338,22 +338,22 @@ class Example
         // __received is an built-in variable containing the incoming message name
         console.printLine(__received," was invoked")
     }
- 
+
     generic(x)
     {
         console.printLine(__received,"(",x,") was invoked")
     }
- 
+
     generic(x,y)
     {
         console.printLine(__received,"(",x,",",y,") was invoked")
     }
 }
- 
+
 public program()
 {
     var o := new Example();
- 
+
     o.foo();
     o.bar(1);
     o.someMethod(1,2)
@@ -420,10 +420,10 @@ class A
   // override the 'trap' method, which catches dynamic invocations of methods
   override Obj? trap(Str name, Obj?[]? args := null)
   {
-    try 
+    try
     {
       return super.trap(name, args)
-    } 
+    }
     catch (UnknownSlotErr err)
     {
       echo ("In trap, you called: " + name + " with args " + args.join(","))
@@ -450,7 +450,7 @@ Output:
 
 ```txt
 
-$ fan unknown-method.fan 
+$ fan unknown-method.fan
 known function called on 1
 In trap, you called: methodName with args 1,2,3
 
@@ -565,7 +565,7 @@ Invoked missing method bar[1, 2, Test]
 Unicon implements objects via a translator that emits native code. While Icon does not support objects, the native code could potentially be translated and run under Icon provided other Unicon extensions are not used.
 
 Unicon does not natively allow a class to intercept unknown method calls and this task was originally marked as an omit.  However, there are several ways that this functionality could be added to Unicon including:
-* Using a try/catch (as per [[:Category:Unicon_Code_Library|The Unicon Code Library]]) to catch the error (invalid method call). This is not very general and adds a lot of syntax for each method call. 
+* Using a try/catch (as per [[:Category:Unicon_Code_Library|The Unicon Code Library]]) to catch the error (invalid method call). This is not very general and adds a lot of syntax for each method call.
 * Using execution monitoring to catch and handle the error in a parallel co-expression.  This would be very general and transparent requiring no extra syntax.  It would be an excellent choice for a debugger.
 * Using a procedure to invoke the method and catch any error.  While not as general as the execution monitor approach, it doesn't require as much extra syntax as a try/catch and is focused specifically on method calls.
 
@@ -576,15 +576,15 @@ The example below is based upon the last case.  The procedure 'DynMethod' would 
 procedure DynMethod(obj,meth,arglist[])
    local m
 
-   if not (type(obj) ? ( tab(find("__")), ="__state", pos(0))) then 
+   if not (type(obj) ? ( tab(find("__")), ="__state", pos(0))) then
       runerr(205,obj)                       # invalid value - not an object
 
-   if meth == ("initially"|"UndefinedMethod") then fail  # avoid protected 
+   if meth == ("initially"|"UndefinedMethod") then fail  # avoid protected
 
    m := obj.__m                                          # get methods list
    if fieldnames(m) == meth then                         # method exists?
       return m[meth]!push(copy(arglist),obj)             # ... call it
-   else 
+   else
       if fieldnames(m) == "UndefinedMethod" then         # handler exists?
          return obj.UndefinedMethod!arglist              # ... call it
       else runerr(207,obj)                  # error invalid method (i.e. field)
@@ -608,7 +608,7 @@ end
 class foo(A) # sample class and methods
    method a(p1)
       l1 := p1
-      return 
+      return
    end
    method b(p2)
       l2 := p2
@@ -647,7 +647,7 @@ Example := Object clone do(
 )
 
 example := Example clone
- 
+
 example foo          // prints "this is foo"
 example bar          // prints "this is bar"
 example grill        // prints "tried to handle unknown method grill"
@@ -698,14 +698,14 @@ There is a way (a bit unconfortable if you compare it to php´s way), involves u
 
 ```javascript
 
-obj  = new Proxy({}, 
-        { get : function(target, prop) 
-            { 
-                if(target[prop] === undefined) 
+obj  = new Proxy({},
+        { get : function(target, prop)
+            {
+                if(target[prop] === undefined)
                     return function()  {
                         console.log('an otherwise undefined function!!');
                     };
-                else 
+                else
                     return target[prop];
             }
         });
@@ -772,7 +772,7 @@ println(add("Hello ", "world"))
 
 ## Kotlin
 
-Kotlin JS does not currently target ECMAScript 2015 and so the Proxy object cannot be used for this task. The only way it can currently be accomplished is to use the Mozilla extension __noSuchMethod__ property which works with Firefox 43 but is no longer supported by more up to date versions: 
+Kotlin JS does not currently target ECMAScript 2015 and so the Proxy object cannot be used for this task. The only way it can currently be accomplished is to use the Mozilla extension __noSuchMethod__ property which works with Firefox 43 but is no longer supported by more up to date versions:
 
 ```scala
 // Kotlin JS version 1.2.0 (Firefox 43)
@@ -796,7 +796,7 @@ fun main(args: Array<String>) {
 
 ```txt
 
-Class C does not have a method called foo 
+Class C does not have a method called foo
 
 ```
 
@@ -804,7 +804,7 @@ Class C does not have a method called foo
 
 ## Lasso
 
-Unknown methods are handled by the inclusion of the special "_unknownTag" method. 
+Unknown methods are handled by the inclusion of the special "_unknownTag" method.
 
 If this is not included in the type, an error will result that may terminate processing unless otherwise handled.
 
@@ -824,7 +824,7 @@ If this is not included in the type, an error will result that may terminate pro
 }
 
 local(e = exampletype)
- 
+
 #e->foo()
 // outputs 'this is foo'
 
@@ -917,11 +917,11 @@ To check if a method exist we make a group (user object in M2000) with that meth
 ```M2000 Interpreter
 
 module checkit  {
-      
+
       Class Alfa {
             k=1000
             module a (x, y) {
-                  Print x, y 
+                  Print x, y
             }
             module NoParam {
                   Print "ok"
@@ -978,13 +978,13 @@ module checkit  {
                         }
             }  else  Error  "unknown Function "+method$
       }
-      
+
       Module obj.alfa {
             Flush 'empty stack
             Print "this is a fake module, is not part of obj"
       }
       Function obj.alfa {
-                  Print "this is a fake function, is not part of obj"      
+                  Print "this is a fake function, is not part of obj"
       }
       Obj=Alfa()
       \\ normal invoke, interpreter not know that this is an object method
@@ -992,7 +992,7 @@ module checkit  {
       Obj.a 10,20
       \\ call the fake method (can't access object methods and properties), has empty weak reference to object
       obj.alfa 10, 20
-      
+
       \\ check before call using custom invoke
       \\ to check if a method (module) exist, we have to compare this object with other temporary object
       \\ we make one with the method name and empty definition, and then check if obj has anything this temp object has
@@ -1018,8 +1018,8 @@ module checkit  {
             Print Invoke$(&obj, "Alfa$()")
       }
       If Error Then Print Error$
-      
-      
+
+
       \\ so now lets copy obj to obj2
       \\ fake method didn't passed to new object
       obj2=obj
@@ -1027,13 +1027,13 @@ module checkit  {
             invoke &obj2, "alfa", (10, 20)
       }
       If Error Then Print Error$
-      
+
       p->obj2
       \\ if p is a pointer to named group we can pass it as is
       invoke &p, "a", (10, 20)
-      \\ normal called 
+      \\ normal called
       p=>a 10,20
-      
+
       For p {
             invoke &this, "a", (10, 20)
             Try ok {
@@ -1041,7 +1041,7 @@ module checkit  {
             }
             If Error Then Print Error$
       }
- 
+
       p->(obj2)   ' p point to a copy of obj2 (an unnamed group)
       For p {
             invoke &this, "a", (10, 20)
@@ -1051,9 +1051,9 @@ module checkit  {
                   invoke &this, "alfa", (10, 20)
             }
             If Error Then Print Error$
- 
+
       }
-      
+
 }
 checkit
 
@@ -1121,8 +1121,8 @@ end.
 <code>-forwardInvocation:</code> is usually used to "forward" the message on to another object to handle.
 
 
-```objc>#include <Foundation/Foundation.h
-
+```objc
+#include <Foundation/Foundation.h>
 
 // The methods need to be declared somewhere
 @interface Dummy : NSObject
@@ -1219,12 +1219,12 @@ Oforth has not concept such as "unknow method" : if a method exists, it can be c
 ```
 
 
-doesNotUnderstand can be redefined for a particular class : 
+doesNotUnderstand can be redefined for a particular class :
 
 
 ```Oforth
 Object Class new: MyClass
-MyClass method: doesNotUnderstand(m) 
+MyClass method: doesNotUnderstand(m)
    "Well, sorry, I don't understand " print m println ;
 
 MyClass new first
@@ -1235,7 +1235,7 @@ Well, sorry, I don't understand #first
 
 ## ooRexx
 
-To respond to unknown method calls, classes can implement an <code>unknown</code> method.  This method is passed the name of the method and an array of the arguments that were used on the call. 
+To respond to unknown method calls, classes can implement an <code>unknown</code> method.  This method is passed the name of the method and an array of the arguments that were used on the call.
 
 ```ooRexx
 u = .unknown~new
@@ -1260,14 +1260,14 @@ Unknown method FOO invoked with arguments: 1, 2, 3
 To respond to unknown method calls, classes can implement the <code>otherwise</code> method. As its sole argument, this method gets the received message, i.e. a record with the name of the unknown method as its label and the arguments as the record features.
 
 ```oz
-declare 
+declare
   class Example
      meth init skip end
- 
+
      meth foo {System.showInfo foo} end
- 
+
      meth bar {System.showInfo bar} end
- 
+
      meth otherwise(Msg)
         {System.showInfo "Unknown method "#{Label Msg}}
         if {Width Msg} > 0 then
@@ -1276,7 +1276,7 @@ declare
         end
      end
   end
- 
+
   Object = {New Example init}
  in
   {Object foo}
@@ -1325,10 +1325,10 @@ sub AUTOLOAD {
 sub DESTROY {}          # dummy method to prevent AUTOLOAD from
                         # being triggered when an Example is
                         # destroyed
- 
+
 package main;
 my $example = Example->new;
- 
+
 $example->foo;          # prints "this is foo"
 $example->bar;          # prints "this is bar"
 $example->grill;        # prints "tried to handle unknown method Example::grill"
@@ -1362,11 +1362,11 @@ Sparrow: Hoist the Jolly Roger mateys, full speed ahead!
 ```
 
 
-<tt>[http://design.perl6.org/S12.html#FALLBACK_methods FALLBACK]</tt> will be called for any method that is not defined. Since any class inherits from <tt>Any</tt>, there will be plenty of already defined methods. Those which are not defined can also be used as L-Values by the magic of <tt>[http://design.perl6.org/S12.html#Lvalue_methods is rw]</tt>. 
+<tt>[http://design.perl6.org/S12.html#FALLBACK_methods FALLBACK]</tt> will be called for any method that is not defined. Since any class inherits from <tt>Any</tt>, there will be plenty of already defined methods. Those which are not defined can also be used as L-Values by the magic of <tt>[http://design.perl6.org/S12.html#Lvalue_methods is rw]</tt>.
 
 
 ```perl6
-class L-Value { 
+class L-Value {
     our $.value = 10;
     method FALLBACK($name, |c) is rw { $.value }
 }
@@ -1773,7 +1773,7 @@ a theyCanToo: 'eat' and: 'walk'.
 ```
 
 
-There are two ways to catch unimplemented messages: 
+There are two ways to catch unimplemented messages:
 * on the receiver side, by redefining the "doesNotUnderstand:" method in the receiver class hierarchy, as shown above.
 * on the sender side, by catching the MessageNotUnderstood exception, as follows:
 
@@ -1797,7 +1797,7 @@ We can check for this in the handler, by checking for which message got us there
    bla := someObject fooBar.
    foo := bla.
 ] on: MessageNotUnderstood do:[:ex |
-   ((ex message selector == #fooBar) and: [ ex message receiver == someObject]) 
+   ((ex message selector == #fooBar) and: [ ex message receiver == someObject])
    ifTrue:[
        ex return: 'fortyTwo'
    ] ifFalse:[
@@ -1878,7 +1878,7 @@ Catch the method call:
 
 ```SuperCollider
 
-i = Ingorabilis.new 
+i = Ingorabilis.new
 try { i.think } { "We are not delegating to super, because I don't want it".postln };
 
 ```

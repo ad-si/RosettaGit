@@ -14,7 +14,7 @@ tags = []
 From Wikipedia, the free encyclopedia:
 :A [[wp:Happy number|happy number]] is defined by the following process:
 
-: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals   '''1'''   (where it will stay),   or it loops endlessly in a cycle which does not include   '''1'''.   Those numbers for which this process ends in   '''1'''   are happy numbers,   while those that do not end in   '''1'''   are unhappy numbers. 
+: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals   '''1'''   (where it will stay),   or it loops endlessly in a cycle which does not include   '''1'''.   Those numbers for which this process ends in   '''1'''   are happy numbers,   while those that do not end in   '''1'''   are unhappy numbers.
 
 Display an example of your output here.
 
@@ -243,7 +243,7 @@ Sample output:
 ## ALGOL 68
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}} 
+{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}}
 
 ```algol68
@@ -395,7 +395,7 @@ first 8 happy numbers:  1   7   10   13   19   23   28   31
 ```txt
 
       HappyNumbers 100 8
- 1  7  10  13  19  23  28  31 
+ 1  7  10  13  19  23  28  31
 
 ```
 
@@ -437,7 +437,7 @@ on run
     set howManyHappyNumbers to 8
     set happyNumberList to {}
     set globalCounter to 1
-    
+
     repeat howManyHappyNumbers times
         repeat while not isHappy(globalCounter)
             set globalCounter to globalCounter + 1
@@ -486,25 +486,25 @@ Result: (*1, 7, 10, 13, 19, 23, 28, 31*)
 
 -- isHappy :: Int -> Bool
 on isHappy(n)
-    
+
     -- endsInOne :: [Int] -> Int -> Bool
     script endsInOne
-        
+
         -- sumOfSquaredDigits :: Int -> Int
         script sumOfSquaredDigits
-            
+
             -- digitSquared :: Int -> Int -> Int
             script digitSquared
                 on |λ|(a, x)
                     (a + (x as integer) ^ 2) as integer
                 end |λ|
             end script
-            
+
             on |λ|(n)
                 foldl(digitSquared, 0, splitOn("", n as string))
             end |λ|
         end script
-        
+
         -- [Int] -> Int -> Bool
         on |λ|(s, n)
             if n = 1 then
@@ -518,27 +518,27 @@ on isHappy(n)
             end if
         end |λ|
     end script
-    
+
     endsInOne's |λ|({}, n)
 end isHappy
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     -- seriesLength :: {n:Int, xs:[Int]} -> Bool
     script seriesLength
         property target : 8
-        
+
         on |λ|(rec)
             length of xs of rec = target of seriesLength
         end |λ|
     end script
-    
+
     -- succTest :: {n:Int, xs:[Int]} -> {n:Int, xs:[Int]}
     script succTest
         on |λ|(rec)
             tell rec to set {xs, n} to {its xs, its n}
-            
+
             script testResult
                 on |λ|(x)
                     if isHappy(x) then
@@ -548,13 +548,13 @@ on run
                     end if
                 end |λ|
             end script
-            
+
             {n:n + 1, xs:testResult's |λ|(n)}
         end |λ|
     end script
-    
+
     xs of |until|(seriesLength, succTest, {n:1, xs:{}})
-    
+
     --> {1, 7, 10, 13, 19, 23, 28, 31}
 end run
 
@@ -573,7 +573,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -597,7 +597,7 @@ end splitOn
 on |until|(p, f, x)
     set mp to mReturn(p)
     set v to x
-    
+
     tell mReturn(f)
         repeat until mp's |λ|(v)
             set v to |λ|(v)
@@ -1044,7 +1044,7 @@ ERROR: Maximum integer value reached
         ENDIF
       UNTIL total% = 8
       END
-      
+
       DEF FNhappy(num%)
       LOCAL digit&()
       DIM digit&(10)
@@ -1079,14 +1079,14 @@ Output:
 bool isHappy (int n)
 {
    ints cache;
-	
+
    while (n != 1)
    {
       int sum = 0;
-	
+
       if (cache.contains(n))
          return false;
-		
+
       cache.add(n);
       while (n != 0)
       {
@@ -1101,10 +1101,10 @@ bool isHappy (int n)
 
 void test ()
 {
-   int num = 1;            
+   int num = 1;
    ints happynums;
-	
-   while (happynums.count() < 8)            
+
+   while (happynums.count() < 8)
    {
       if (isHappy(num))
          happynums.add(num);
@@ -1117,7 +1117,7 @@ void test ()
 Output:
 
 ```txt
-First 8 happy numbers : 
+First 8 happy numbers :
 [1, 7, 10, 13, 19, 23, 28, 31]
 ```
 
@@ -1172,8 +1172,8 @@ Sad numbers found: [2, 3, 4, 5, 6, 8, 9, 11, 12, 14, 15, 16, 17, 18, 20, 21, 22,
 
 Recursively look up if digit square sum is happy.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define CACHE 256
 enum { h_unknown = 0, h_yes, h_no };
@@ -1210,14 +1210,14 @@ int main()
 
 output
 ```txt
-1 7 10 13 19 23 28 31 
+1 7 10 13 19 23 28 31
 The 1000000th happy number: 7105849
 ```
 
 Without caching, using cycle detection:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int dsum(int n)
 {
@@ -1256,8 +1256,8 @@ int main()
 
 {{trans|Python}}
 
-```cpp>#include <map
-
+```cpp
+#include <map>
 #include <set>
 
 bool happy(int number) {
@@ -1360,7 +1360,7 @@ int main()
 Output:
 
 ```txt
-1 7 10 13 19 23 28 31 
+1 7 10 13 19 23 28 31
 ```
 
 Cycle detection in <code>is_happy()</code> above is done using [[wp:Floyd's cycle-finding algorithm|Floyd's cycle-finding algorithm]].
@@ -1397,7 +1397,7 @@ namespace HappyNums
                 n = sum;
                 sum = 0;
             }
-           return true;            
+           return true;
         }
 
         static void Main(string[] args)
@@ -1490,7 +1490,7 @@ Computation time 33.264518 seconds.
 ```clojure
 (defn happy? [n]
   (loop [n n, seen #{}]
-    (cond 
+    (cond
       (= n 1)  true
       (seen n) false
       :else
@@ -1544,7 +1544,7 @@ Output:
 	_ (swap! (res cache) union nums)]
     res))
 
-(def happy-numbers (->> (iterate inc 1) 
+(def happy-numbers (->> (iterate inc 1)
                         (filter #(= :happy (happy-algo %)))))
 
 (println (take 8 happy-numbers))
@@ -1564,14 +1564,14 @@ happy = (n) ->
     return true if n == 1
     return false if seen[n]
     seen[n] = true
-    
+
 sum_digit_squares = (n) ->
   sum = 0
   for c in n.toString()
     d = parseInt(c)
     sum += d*d
   sum
-    
+
 i = 1
 cnt = 0
 while cnt < 8
@@ -1585,7 +1585,7 @@ output
 
 ```txt
 
-> coffee happy.coffee 
+> coffee happy.coffee
 1
 7
 10
@@ -1610,19 +1610,19 @@ output
   (loop for i = n then (floor i 10)
         while (plusp i)
         sum (sqr (mod i 10))))
- 
+
 (defun happy-p (n &optional cache)
-  (or (= n 1) 
+  (or (= n 1)
       (unless (find n cache)
         (happy-p (sum-of-sqr-dgts n)
                  (cons n cache)))))
- 
+
 (defun happys (&aux (happys 0))
   (loop for i from 1
         while (< happys 8)
         when (happy-p i)
         collect i and do (incf happys)))
- 
+
 (print (happys))
 
 ```
@@ -2107,7 +2107,7 @@ ELENA 4.x :
 import extensions;
 import system'collections;
 import system'routines;
- 
+
 isHappy(int n)
 {
     auto cache := new List<int>(5);
@@ -2129,10 +2129,10 @@ isHappy(int n)
         num := sum;
         sum := 0
     };
- 
+
     ^ true
 }
- 
+
 public program()
 {
     auto happynums  := new List<int>(8);
@@ -2143,7 +2143,7 @@ public program()
         {
             happynums.append(num)
         };
- 
+
         num += 1
     };
     console.printLine("First 8 happy numbers: ", happynums.asEnumerable())
@@ -2171,7 +2171,7 @@ defmodule Happy do
     |> Stream.filter(fn n -> happy?(n) end)
     |> Enum.take(num)
   end
-  
+
   defp happy?(n) do
     sum = square_sum(n, 0)
     val = Process.get({:happy, sum})
@@ -2182,7 +2182,7 @@ defmodule Happy do
     end
     val
   end
-  
+
   defp square_sum(0, sum), do: sum
   defp square_sum(n, sum) do
     r = rem(n, 10)
@@ -2222,7 +2222,7 @@ is_happy(X, XS) ->
 	    case member(X, XS) of
 		true -> false;
 		false ->
-		    is_happy(sum(map(fun(Z) -> Z*Z end, 
+		    is_happy(sum(map(fun(Z) -> Z*Z end,
 				     [Y - 48 || Y <- integer_to_list(X)])),
 			     [X|XS])
 	    end
@@ -2243,12 +2243,12 @@ main() ->
 
 ```
 
-Command: 
+Command:
 ```Bash
 erl -run tasks main -run init stop -noshell
 ```
 
-Output: 
+Output:
 ```Bash
 8 Happy Numbers: [1,7,10,13,19,23,28,31]
 ```
@@ -2264,7 +2264,7 @@ In a more functional style (assumes integer_to_list/1 will convert to the ASCII 
 main() -> io:format("~w ~n", [happy_list(1, 8, [])]).
 
 happy_list(_, N, L) when length(L) =:= N -> lists:reverse(L);
-happy_list(X, N, L) -> 
+happy_list(X, N, L) ->
 	Happy = is_happy(X),
 	if Happy -> happy_list(X + 1, N, [X|L]);
 	true -> happy_list(X + 1, N, L) end.
@@ -2364,7 +2364,7 @@ let answer =
             f                                                       // Return the boolean
 
     1                                                               // Starting with 1,
-    |> Seq.unfold (fun i -> Some (i, i + 1))                        // make an infinite sequence of consecutive integers 
+    |> Seq.unfold (fun i -> Some (i, i + 1))                        // make an infinite sequence of consecutive integers
     |> Seq.filter IsHappy                                           // Keep only the happy ones
     |> Seq.truncate 8                                               // Stop when we've found 8
     |> Seq.iter (Printf.printf "%d\n")				    // Print results
@@ -2463,12 +2463,12 @@ class Main
   {
     Int[] record := [,]
     while (n != 1 && !record.contains(n))
-    { 
+    {
       record.add (n)
       // find sum of squares of digits
       newn := 0
       while (n > 0)
-      { 
+      {
         newn += (n.mod(10) * n.mod(10))
         n = n.div(10)
       }
@@ -2483,12 +2483,12 @@ class Main
     count := 0
     while (count < 8)
     {
-      if (isHappy (i)) 
+      if (isHappy (i))
       {
         echo (i)
         count += 1
       }
-      i += 1 
+      i += 1
     }
   }
 }
@@ -2574,9 +2574,9 @@ CREATE HAPPINESS 0 C, 1 C, 0 C, 0 C, 0 C, 0 C, 0 C, 1 C, 0 C, 0 C,
 Produces the 1 millionth happy number with:
 
 ```forth
-: happy-number ( n -- n')  \ produce the nth happy number 
+: happy-number ( n -- n')  \ produce the nth happy number
    >r 0  BEGIN r@ WHILE
-     BEGIN 1+ dup happy? UNTIL  r> 1- >r        
+     BEGIN 1+ dup happy? UNTIL  r> 1- >r
    REPEAT r> drop ;
 1000000 happy-number .  \ 7105849
 ```
@@ -2683,7 +2683,7 @@ Function isHappy(n As Integer) As Boolean
   ' Declare a dynamic array to store previous sums.
   ' If a previous sum is duplicated before a sum of 1 is reached
   ' then the number can't be "happy" as the cycle will just repeat
-  Dim prevSums() As Integer 
+  Dim prevSums() As Integer
   Dim As Integer digit, ub, sum = 0
   Do
     While n > 0
@@ -2698,25 +2698,25 @@ Function isHappy(n As Integer) As Boolean
          If sum = prevSums(i) Then Return False
       Next
     End If
-    ub += 1 
+    ub += 1
     Redim Preserve prevSums(0 To ub)
     prevSums(ub) = sum
     n = sum
     sum  = 0
-  Loop  
+  Loop
 End Function
- 
+
 Dim As Integer n = 1, count = 0
 
 Print "The first 8 happy numbers are : "
 Print
 While count < 8
   If isHappy(n) Then
-    count += 1 
+    count += 1
     Print count;" =>"; n
   End If
   n += 1
-Wend 
+Wend
 Print
 Print "Press any key to quit"
 Sleep
@@ -2872,7 +2872,7 @@ PROCEDURE Main()
    END
 
    RETURN
-	
+
 STATIC FUNCTION IsHappy( nNumber )
    STATIC aUnhappy := {}
    LOCAL nDigit, nSum := 0, cNumber := hb_NtoS( nNumber )
@@ -2990,7 +2990,7 @@ Usage and Output:
 
 ```txt
 
-| happynum.exe 
+| happynum.exe
 
 The first 8 happy numbers are: 1 7 10 13 19 23 28 31
 
@@ -3148,7 +3148,7 @@ Output:
 function happy(number) {
     var m, digit ;
     var cycle = [] ;
- 
+
     while(number != 1 && cycle[number] !== true) {
         cycle[number] = true ;
         m = 0 ;
@@ -3161,10 +3161,10 @@ function happy(number) {
     }
     return (number == 1) ;
 }
- 
+
 var cnt = 8 ;
 var number = 1 ;
- 
+
 while(cnt-- > 0) {
     while(!happy(number))
         number++ ;
@@ -3176,7 +3176,7 @@ while(cnt-- > 0) {
 Output:
 
 ```txt
-1 7 10 13 19 23 28 31 
+1 7 10 13 19 23 28 31
 ```
 
 
@@ -3350,7 +3350,7 @@ Or, to stop immediately at the 8th member of the series, we can preserve functio
 def is_happy_number:
   def next: tostring | explode | map( (. - 48) | .*.) | add;
   def last(g): reduce g as $i (null; $i);
-  # state: either 1 or [i, o] 
+  # state: either 1 or [i, o]
   # where o is an an object with the previously encountered numbers as keys
   def loop:
    recurse( if      . == 1 then empty    # all done
@@ -3365,14 +3365,14 @@ def is_happy_number:
 ```
 
 '''Emit a stream of the first n happy numbers''':
- 
+
 ```jq
 # Set n to -1 to continue indefinitely:
 def happy(n):
   def subtask:  # state: [i, found]
     if .[1] == n then empty
     else .[0] as $n
-    | if ($n | is_happy_number) then $n, ([ $n+1, .[1]+1 ] | subtask) 
+    | if ($n | is_happy_number) then $n, ([ $n+1, .[1]+1 ] | subtask)
       else  (.[0] += 1) | subtask
       end
     end;
@@ -3570,7 +3570,7 @@ fun isHappy(n: Int): Boolean {
         nn = sum
         sum = 0
     }
-    return true 
+    return true
 }
 
 fun main(args: Array<String>) {
@@ -3600,7 +3600,7 @@ First 8 happy numbers : 1, 7, 10, 13, 19, 23, 28, 31
 
 ```lasso
 #!/usr/bin/lasso9
- 
+
 define isHappy(n::integer) => {
   local(past = set)
   while(#n != 1) => {
@@ -3708,7 +3708,7 @@ Output:-
 ```logo
 to sum_of_square_digits :number
   output (apply "sum (map [[d] d*d] ` :number))
-end 
+end
 
 to is_happy? :number [:seen []]
   output cond [
@@ -3747,18 +3747,18 @@ Output:
 
 
 ```lolcode
-OBTW 
+OBTW
   Happy Numbers Rosetta Code task in LOLCODE
   Requires 1.3 for BUKKIT availability
 TLDR
 HAI 1.3
 CAN HAS STDIO?
 
-BTW Simple list implementation.  
+BTW Simple list implementation.
 BTW Used for the list of numbers already seen in IZHAPPY
 
 BTW Create a list
-HOW IZ I MAEKLIST 
+HOW IZ I MAEKLIST
   I HAS A LIST ITZ A BUKKIT
   LIST HAS A LENGTH ITZ 0
   FOUND YR LIST
@@ -3786,7 +3786,7 @@ IF U SAY SO
 BTW Calculate the next number using the happy formula
 HOW IZ I HAPPYSTEP YR NUM
   I HAS A NEXT ITZ 0
-  IM IN YR LOOP 
+  IM IN YR LOOP
     BOTH SAEM NUM AN 0
     O RLY?
       YA RLY
@@ -3803,10 +3803,10 @@ IF U SAY SO
 BTW Check to see if a number is happy
 HOW IZ I IZHAPPY YR NUM
   I HAS A SEENIT ITZ I IZ MAEKLIST MKAY
-  IM IN YR LOOP 
+  IM IN YR LOOP
     BOTH SAEM NUM AN 1
     O RLY?
-      YA RLY   
+      YA RLY
         FOUND YR WIN
     OIC
     I IZ DUZLISTHAS YR SEENIT AN YR NUM MKAY
@@ -4126,7 +4126,7 @@ end
 {{out}}
 
 ```txt
-1 7 10 13 19 23 28 31 
+1 7 10 13 19 23 28 31
 ```
 
 
@@ -4148,7 +4148,7 @@ fn isHappyNumber n =
 			local digit = n[i] as integer
 			newNumber += pow digit 2
 		)
-		n = newNumber 
+		n = newNumber
 		if (finditem pastNumbers n) != 0 do return false
 		append pastNumbers newNumber
 	)
@@ -4160,7 +4160,7 @@ for i in (for h in 1 to 500 where isHappyNumber h collect h) do
 	if printed == 8 do exit
 	print i as string
 	printed += 1
-	
+
 )
 
 ```
@@ -4244,20 +4244,20 @@ sqr(X) = X * X.
 
 ```ocaml
 (*
-A happy number is defined by the following process. Starting with any positive integer, replace the number 
-by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will 
+A happy number is defined by the following process. Starting with any positive integer, replace the number
+by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will
 stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends
- in 1 are happy numbers, while those that do not end in 1 are unhappy numbers. Display an example of your 
+ in 1 are happy numbers, while those that do not end in 1 are unhappy numbers. Display an example of your
 output here.
 *)
 
 local
-	fun get_digits 
+	fun get_digits
 			(d, s) where (d = 0) = s
 		| 	(d, s) = get_digits( d div 10, (d mod 10) :: s)
 		| 	n = get_digits( n div 10, [n mod 10] )
 	;
-	fun mem 
+	fun mem
 			(x, []) = false
 		| 	(x, a :: as) where (x = a) = true
 		| 	(x, _ :: as) = mem (x, as)
@@ -4265,7 +4265,7 @@ in
 	fun happy
 			1 = "happy"
 		|	n =
-				let 
+				let
 					val this = (fold (+,0) ` map (fn n = n ^ 2) ` get_digits n);
 					val sads = [2, 4, 16, 37, 58, 89, 145, 42, 20]
 				in
@@ -4332,7 +4332,7 @@ Output:
 ```txt
 
 USER>D HAPPY^ROSETTA(8)
- 
+
 The first 8 happy numbers are:
 1
 7
@@ -4345,7 +4345,7 @@ The first 8 happy numbers are:
 USER>W:+$$ISHAPPY^ROSETTA(320) "Happy Number"
 Happy Number
 USER>W:+$$ISHAPPY^ROSETTA(321) "Happy Number"
- 
+
 USER>
 
 ```
@@ -4366,20 +4366,20 @@ haps	 = 0                             /*count of happy numbers so far.  */
 loop n=1 while haps < limit              /*search integers starting at one.*/
   q=n                                    /*Q may or may not be "happy".    */
   a=0
-  
+
   loop forever                           /*see if  Q  is a happy number.   */
     if q==1 then do                      /*if  Q  is unity, then it's happy*/
       haps = haps + 1                    /*bump the count of happy numbers.*/
       say n                              /*display the number.             */
       iterate n                          /*and then keep looking for more. */
     end
-    
+
     sum=0                                /*initialize sum to zero.         */
-    
+
     loop j=1 for q.length                /*add the squares of the numerals.*/
       sum = sum + q.substr(j,1) ** 2
     end
-    
+
     if a[sum] then iterate n             /*if already summed, Q is unhappy.*/
     a[sum]=1                             /*mark the sum as being found.    */
     q=sum                                /*now, lets try the  Q  sum.      */
@@ -4567,19 +4567,19 @@ bundle Default {
           if(cache->Has(n)) {
             return false;
           };
-              
+
           cache->AddBack(n);
           while(n <> 0) {
             digit := n % 10;
             sum += (digit * digit);
             n /= 10;
           };
-          
+
           n := sum;
           sum := 0;
         };
 
-        return true;            
+        return true;
       }
 
       function : Main(args : String[]) ~ Nil {
@@ -4590,10 +4590,10 @@ bundle Default {
           if(IsHappy(num)) {
             happynums->AddBack(num);
         };
-        
+
         num += 1;
       };
-          
+
       Console->Print("First 8 happy numbers: ");
       each(i : happynums) {
         Console->Print(happynums->Get(i))->Print(",");
@@ -4668,14 +4668,14 @@ $ ocaml nums.cma happy_numbers.ml
 : isHappy(n)
 | cycle |
    ListBuffer new ->cycle
- 
+
    while(n 1 <>) [
       cycle include(n) ifTrue: [ false return ]
       cycle add(n)
       0 n asString apply(#[ asDigit sq + ]) ->n
       ]
    true ;
- 
+
 : happyNum(N)
 | numbers |
    ListBuffer new ->numbers
@@ -4759,7 +4759,7 @@ define
   fun {IsHappy N}
      {IsHappy2 N nil}
   end
- 
+
   fun {IsHappy2 N Seen}
      if     N == 1          then true
      elseif {Member N Seen} then false
@@ -4773,17 +4773,17 @@ define
   fun {Sum Xs}
      {FoldL Xs Number.'+' 0}
   end
-  
+
   fun {Digits N}
      {Map {Int.toString N} fun {$ D} D - &0 end}
   end
- 
+
   fun {Square N} N*N end
 
   fun lazy {Nat I}
      I|{Nat I+1}
   end
- 
+
   %% List.filter is eager. But we need a lazy Filter:
   fun lazy {LFilter Xs P}
      case Xs of X|Xr andthen {P X} then X|{LFilter Xr P}
@@ -4879,7 +4879,7 @@ function is_happy(n: integer): boolean;
       setlength(cache, length(cache)+1);
     until false;
   end;
- 
+
 var
   n, count: integer;
 
@@ -5216,7 +5216,7 @@ subset Happy of Int where sub ($n) {
     $n < 7  ?? False !!
     &?ROUTINE([+] $n.comb »**» 2);
 }
- 
+
 say (grep Happy, 1 .. *)[^8];
 ```
 
@@ -5247,7 +5247,7 @@ integer k
     end while
     return 1
 end function
- 
+
 integer n = 1
 sequence s = {}
 while length(s)<8 do
@@ -5302,7 +5302,7 @@ while ($cnt < 8) {
 
 
 ```txt
-1 7 10 13 19 23 28 31 
+1 7 10 13 19 23 28 31
 ```
 
 
@@ -5370,13 +5370,13 @@ OUTPUT:
 ```txt
 
              1 is a happy number
-             7 is a happy number 
-            10 is a happy number 
-            13 is a happy number 
-            19 is a happy number 
-            23 is a happy number 
-            28 is a happy number 
-            31 is a happy number 
+             7 is a happy number
+            10 is a happy number
+            13 is a happy number
+            19 is a happy number
+            23 is a happy number
+            28 is a happy number
+            31 is a happy number
 
 ```
 
@@ -5430,7 +5430,7 @@ function happy([int] $n) {
                 $sum2+=$k*$k
             }
             $sum=$sum2
-        } 
+        }
     }
     $a -join ','
 }
@@ -5463,12 +5463,12 @@ get_happy_number([], _).
 % querying the newt happy_number
 get_happy_number([H | T], N) :-
      N1 is N+1,
-    (is_happy_number(N) -> 
-        H = N, 
-        get_happy_number(T, N1); 
+    (is_happy_number(N) ->
+        H = N,
+        get_happy_number(T, N1);
         get_happy_number([H | T], N1)).
 
-% we must memorized the numbers reached 
+% we must memorized the numbers reached
 is_happy_number(N) :-
     is_happy_number(N, [N]).
 
@@ -5540,7 +5540,7 @@ Procedure is_happy(n)
       j/10
       sum+dig*dig
     Wend
-    If sum=1: ProcedureReturn #True: EndIf  
+    If sum=1: ProcedureReturn #True: EndIf
     j=sum
     i+1
   Until i>#MaxTests
@@ -5571,7 +5571,7 @@ Sample output:
 
 ```python>>>
  def happy(n):
-    past = set()			
+    past = set()
     while n != 1:
         n = sum(int(i)**2 for i in str(n))
         if n in past:
@@ -5699,7 +5699,7 @@ is.happy <- function(n)
       if(sumsq==1L)
       {
          happy <- TRUE
-         break      
+         break
       } else if(sumsq %in% previous)
       {
          happy <- FALSE
@@ -5897,7 +5897,7 @@ haps=0                                           /*count of the happy numbers  (
                          13302
                          13303
                          13305
-                         13307 
+                         13307
 
 ```
 
@@ -5942,9 +5942,9 @@ if $\=''  then say  strip($)                     /*display any residual happy nu
                                                  /*stick a fork in it,  we're all done. */
 ```
 
-This REXX program makes use of   '''linesize'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console). 
+This REXX program makes use of   '''linesize'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console).
 
-Some REXXes don't have this BIF, so the   '''linesize.rex'''   REXX program is included here   ──►   [[LINESIZE.REX]]. 
+Some REXXes don't have this BIF, so the   '''linesize.rex'''   REXX program is included here   ──►   [[LINESIZE.REX]].
 
 
 {{out|output|text=  when using the input of:     <tt> 1   15002 </tt>}}
@@ -6005,16 +6005,16 @@ Some REXXes don't have this BIF, so the   '''linesize.rex'''   REXX program is i
 ```ring
 n = 1
 found = 0
- 
+
 While found < 8
-    If IsHappy(n) 
+    If IsHappy(n)
           found += 1
           see string(found) + " : " + string(n) + nl
     ok
     n += 1
 End
- 
-Func IsHappy n 
+
+Func IsHappy n
     cache = []
     While n != 1
         Add(cache,n)
@@ -6161,13 +6161,13 @@ end
 
 ```runbasic
 for i = 1 to 100
- if happy(i) = 1 then 
+ if happy(i) = 1 then
   cnt = cnt + 1
   PRINT cnt;". ";i;" is a happy number "
   if cnt = 8 then end
  end if
 next i
- 
+
 FUNCTION happy(num)
 while count < 50 and happy <> 1
   num$	= str$(num)
@@ -6183,14 +6183,14 @@ end function
 
 
 ```txt
-1. 1 is a happy number 
-2. 7 is a happy number 
-3. 10 is a happy number 
-4. 13 is a happy number 
-5. 19 is a happy number 
-6. 23 is a happy number 
-7. 28 is a happy number 
-8. 31 is a happy number  
+1. 1 is a happy number
+2. 7 is a happy number
+3. 10 is a happy number
+4. 13 is a happy number
+5. 19 is a happy number
+6. 23 is a happy number
+7. 28 is a happy number
+8. 31 is a happy number
 
 ```
 
@@ -6448,7 +6448,7 @@ Output:
 proc is_happy(n);
   s := [n];
   while n > 1 loop
-    if (n := +/[val(i)**2: i in str(n)]) in s then 
+    if (n := +/[val(i)**2: i in str(n)]) in s then
        return false;
     end if;
     s with:= n;
@@ -6541,10 +6541,10 @@ isHappy(n) := isHappyHelper(n, []);
 
 isHappyHelper(n, cache(1)) :=
     let
-        digits[i] := (n / integerPower(10, i - 1)) mod 10 
+        digits[i] := (n / integerPower(10, i - 1)) mod 10
                     foreach i within 1 ... ceiling(log(10, n + 1));
         newN := sum(integerPower(digits, 2));
-    in 
+    in
         false when some(n = cache)
     else
         true when n = 1
@@ -6628,9 +6628,9 @@ Object subclass: HappyNumber [
       cycle do: [ :e | self addHappy: e ].
       ^true
     ]
-    ifFalse: [ 
+    ifFalse: [
       cycle do: [ :e | self addSad: e ].
-      ^false 
+      ^false
     ]
   ]
 ].
@@ -6663,13 +6663,13 @@ an alternative version is:
 ```smalltalk
 |next isHappy happyNumbers|
 
-next := 
-    [:n | 
+next :=
+    [:n |
         (n printString collect:[:ch | ch digitValue squared] as:Array) sum
     ].
 
-isHappy := 
-    [:n |  | t already | 
+isHappy :=
+    [:n |  | t already |
         already := Set new.
         t := n.
         [ t == 1 or:[ (already includes:t)]] whileFalse:[
@@ -6697,7 +6697,7 @@ OrderedCollection(1 7 10 13 19 23 28 31)
 ```Swift
 func isHappyNumber(var n:Int) -> Bool {
     var cycle = [Int]()
-    
+
     while n != 1 && !cycle.contains(n) {
         cycle.append(n)
         var m = 0
@@ -6821,7 +6821,7 @@ Output:
 19 is a happy number
 23 is a happy number
 28 is a happy number
-31 is a happy number 
+31 is a happy number
 
 ```
 
@@ -7014,10 +7014,10 @@ bool is_happy(int total){
 		total = sum(total);
 		if (total == 1){
 			return true;}
-		
+
 		if (total in past){
 			return false;}
-		
+
 		past.add(total);
 	} // end while loop
 } // end happy
@@ -7025,13 +7025,13 @@ bool is_happy(int total){
 public static void main(){
 	var happynums = new ArrayList<int>();
 	int x = 1;
-	
+
 	while (happynums.size < 8){
 		if (is_happy(x) == true)
 			happynums.add(x);
 		x++;
 	}
-	
+
 	foreach(int num in happynums)
 		stdout.printf("%d ", num);
 	stdout.printf("\n");
@@ -7389,10 +7389,10 @@ Utils.Generator(happyNumbers).drop(0d1_000_000-1).next().println();
 20 GO SUB 1000
 30 IF isHappy=1 THEN PRINT i;" is a happy number"
 40 NEXT i
-50 STOP 
+50 STOP
 1000 REM Is Happy?
 1010 LET isHappy=0: LET count=0: LET num=i
-1020 IF count=50 OR isHappy=1 THEN RETURN 
+1020 IF count=50 OR isHappy=1 THEN RETURN
 1030 LET n$=STR$ (num)
 1040 LET count=count+1
 1050 LET isHappy=0

@@ -22,26 +22,27 @@ There are at least 4 implementations of curses:
 
 Curses is terminal-independent, and uses ''termcap'' or ''terminfo'' to send escape sequences to different flavors of terminals. (The exception is PDCurses, which never sends escape sequences, because it uses a DOS console or a graphical interface.)
 
-* '''C''' 
-```c>#include <curses.h>
+* '''C'''
+```c
+#include <curses.h>
 ```
  Then link the program with <code
 -lcurses</code>. (Some old or strange systems might need <code>-lcurses -ltermlib</code>.)
 
-* '''Common Lisp''' 
+* '''Common Lisp'''
 ```lisp
 ;; After installing the quicklisp library manager
 (ql:quickload :croatoan)
 ```
 
 
-* '''Ruby''' 
+* '''Ruby'''
 ```ruby
 require 'curses'
 ```
 
 
-* '''Go''' 
+* '''Go'''
 ```go
 import "github.com/gbin/goncurses"
 ```

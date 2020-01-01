@@ -10,10 +10,10 @@ categories = []
 tags = []
 +++
 
-{{task|String manipulation}} 
+{{task|String manipulation}}
 {{basic data operation}}
-[[Category: String manipulation]] 
-[[Category:Simple]] 
+[[Category: String manipulation]]
+[[Category:Simple]]
 
 ;Task:
 Given two strings, demonstrate the following three types of string matching:
@@ -235,21 +235,21 @@ AppleScript doesn't have a builtin means of matching multiple occurrences of a s
 -- Handle multiple occurrences of a string for part 2
 on offset of needle in haystack
 	local needle, haystack
-	
+
 	if the needle is not in the haystack then return {}
 	set my text item delimiters to the needle
 	script
 		property N : needle's length
 		property t : {1 - N} & haystack's text items
 	end script
-	
+
 	tell the result
 		repeat with i from 2 to (its t's length) - 1
 			set x to item i of its t
 			set y to item (i - 1) of its t
 			set item i of its t to (its N) + (x's length) + y
 		end repeat
-		
+
 		items 2 thru -2 of its t
 	end tell
 end offset
@@ -272,7 +272,7 @@ on offsets(needle, haystack)
             mx ≥ z and needle = text i thru z of xs
         end |λ|
     end script
-    
+
     findIndices(match, haystack)
 end offsets
 
@@ -282,9 +282,9 @@ on run
     set txt to "I felt happy because I saw the others " & ¬
         "were happy and because I knew I should " & ¬
         "feel happy, but I wasn’t really happy."
-    
+
     offsets("happy", txt)
-    
+
     --> {8, 44, 83, 110}
 end run
 
@@ -321,7 +321,7 @@ on findIndices(p, xs)
 end findIndices
 
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if script is class of f then
@@ -357,8 +357,8 @@ end mReturn
 
 /* Initialized data */
 .data
-szMessFound:             .asciz "String found. \n" 
-szMessNotFound:          .asciz "String not found. \n" 
+szMessFound:             .asciz "String found. \n"
+szMessNotFound:          .asciz "String not found. \n"
 szString:                .asciz "abcdefghijklmnopqrstuvwxyz"
 szString2:               .asciz "abc"
 szStringStart:           .asciz "abcd"
@@ -368,12 +368,12 @@ szStringEnd2:            .asciz "xabc"
 szCarriageReturn:        .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
 
     ldr r0,iAdrszString                         @ address input string
     ldr r1,iAdrszStringStart                    @ address search string
@@ -403,7 +403,7 @@ main:
     ldr r0,iAdrszString2                        @ address input string
     ldr r1,iAdrszStringStart2                   @ address search string
 
-    bl searchStringDeb                          @ 
+    bl searchStringDeb                          @
     cmp r0,#0
     ble 5f
     ldr r0,iAdrszMessFound                      @ display message
@@ -452,14 +452,14 @@ iAdrszStringStart2:       .int szStringStart2
 iAdrszStringEnd2:         .int szStringEnd2
 iAdrszCarriageReturn:     .int szCarriageReturn
 /******************************************************************/
-/*     search substring at begin of input string                  */ 
+/*     search substring at begin of input string                  */
 /******************************************************************/
 /* r0 contains the address of the input string */
 /* r1 contains the address of substring */
 /* r0 returns 1 if find or 0 if not or -1 if error */
 searchStringDeb:
-    push {r1-r4,lr}                             @ save  registers 
-    mov r3,#0                                   @ counter byte  string 
+    push {r1-r4,lr}                             @ save  registers
+    mov r3,#0                                   @ counter byte  string
     ldrb r4,[r1,r3]                             @ load first byte of substring
     cmp r4,#0                                   @ empty string ?
     moveq r0,#-1                                @ error
@@ -476,22 +476,22 @@ searchStringDeb:
     ldrb r4,[r1,r3]                             @ and load next byte of substring
     cmp r4,#0                                   @ zero final ?
     bne 1b                                      @ no -> loop
-    mov r0,#1                                   @ yes is ok 
+    mov r0,#1                                   @ yes is ok
 100:
     pop {r1-r4,lr}                              @ restaur registers
     bx lr                                       @ return
 
 /******************************************************************/
-/*     search substring at end of input string                    */ 
+/*     search substring at end of input string                    */
 /******************************************************************/
 /* r0 contains the address of the input string */
 /* r1 contains the address of substring */
 /* r0 returns 1 if find or 0 if not or -1 if error */
 searchStringFin:
-    push {r1-r5,lr}                             @ save  registers 
-    mov r3,#0                                   @ counter byte  string 
+    push {r1-r5,lr}                             @ save  registers
+    mov r3,#0                                   @ counter byte  string
                                                 @ search the last character of substring
-1: 
+1:
     ldrb r4,[r1,r3]                             @ load byte of substring
     cmp r4,#0                                   @ zero final ?
     addne r3,#1                                 @ no increment counter
@@ -503,7 +503,7 @@ searchStringFin:
     ldrb r4,[r1,r3]                             @ load last byte of substring
                                                 @ search the last character of string
     mov r2,#0                                   @ index last character
-2: 
+2:
     ldrb r5,[r0,r2]                             @ load first byte of substring
     cmp r5,#0                                   @ zero final ?
     addne r2,#1                                 @ no -> increment counter
@@ -519,37 +519,37 @@ searchStringFin:
     bne 100f
     subs r3,#1                                  @ decrement counter
     movlt r0,#1                                 @ if zero -> ok found
-    blt 100f 
+    blt 100f
     subs r2,#1                                  @ decrement counter input string
     movlt r0,#0                                 @ if zero -> not found
     blt 100f
     ldrb r4,[r1,r3]                             @ load previous byte of substring
     b 3b                                        @ and loop
-    
+
 100:
     pop {r1-r5,lr}                              @ restaur registers
     bx lr                                       @ return
 
 /******************************************************************/
-/*   search a substring in the string                            */ 
+/*   search a substring in the string                            */
 /******************************************************************/
 /* r0 contains the address of the input string */
 /* r1 contains the address of substring */
 /* r0 returns index of substring in string or -1 if not found */
 searchSubString:
-    push {r1-r6,lr}                       @ save registers 
+    push {r1-r6,lr}                       @ save registers
     mov r2,#0                             @ counter byte input string
-    mov r3,#0                             @ counter byte string 
+    mov r3,#0                             @ counter byte string
     mov r6,#-1                            @ index found
     ldrb r4,[r1,r3]
 1:
-    ldrb r5,[r0,r2]                       @ load byte string 
+    ldrb r5,[r0,r2]                       @ load byte string
     cmp r5,#0                             @ zero final ?
     moveq r0,#-1                          @ yes returns error
     beq 100f
-    cmp r5,r4                             @ compare character 
+    cmp r5,r4                             @ compare character
     beq 2f
-    mov r6,#-1                            @ no equals - > raz index 
+    mov r6,#-1                            @ no equals - > raz index
     mov r3,#0                             @ and raz counter byte
     add r2,#1                             @ and increment counter byte
     b 1b                                  @ and loop
@@ -566,24 +566,24 @@ searchSubString:
     mov r0,r6
 100:
     pop {r1-r6,lr}                        @ restaur registers
-    bx lr   
+    bx lr
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -832,13 +832,13 @@ set curr=0&set exist=0
 if "!str1:~%curr%,%length%!"=="" (
 	if !exist!==0 echo "%str1%" does not contain "%str2%".
 	goto :EOF
-) 
+)
 if "!str1:~%curr%,%length%!"=="!str2!" (
 	echo "%str1%" contains "%str2%". ^(in Position %curr%^)
 	set exist=1
 )
 set /a curr+=1&goto scanchrloop
-	
+
 :matchend
 echo.
 if "!str1:~-%length%!"=="!str2!" (
@@ -880,7 +880,7 @@ Press any key to continue . . .
 
 ```bbcbasic
       first$ = "The fox jumps over the dog"
-      
+
       FOR test% = 1 TO 3
         READ second$
         starts% = FN_first_starts_with_second(first$, second$)
@@ -894,16 +894,16 @@ Press any key to continue . . .
       NEXT
       DATA "The", "he", "dog"
       END
-      
+
       DEF FN_first_starts_with_second(A$, B$)
       = B$ = LEFT$(A$, LEN(B$))
-      
+
       DEF FN_first_ends_with_second(A$, B$)
       = B$ = RIGHT$(A$, LEN(B$))
-      
+
       DEF FN_first_contains_second_where(A$, B$)
       = INSTR(A$, B$)
-      
+
       DEF FN_first_contains_second_howmany(A$, B$)
       LOCAL I%, N% : I% = 0
       REPEAT
@@ -931,7 +931,7 @@ Press any key to continue . . .
 
 ## Bracmat
 
-Bracmat does pattern matching in expressions <code><i>subject</i>:<i>pattern</i></code> and in strings <code>@(<i>subject</i>:<i>pattern</i>)</code>. The (sub)pattern <code>?</code> is a wild card. 
+Bracmat does pattern matching in expressions <code><i>subject</i>:<i>pattern</i></code> and in strings <code>@(<i>subject</i>:<i>pattern</i>)</code>. The (sub)pattern <code>?</code> is a wild card.
 
 ```Bracmat
 ( (sentence="I want a number such that that number will be even.")
@@ -945,9 +945,9 @@ Bracmat does pattern matching in expressions <code><i>subject</i>:<i>pattern</i>
 )
 ```
 
-In the last line, Bracmat is forced by the always failing node <code>~</code> to backtrack until all occurrences of 'be' are found. 
-Thereafter the pattern match expression fails. 
-The interesting part is the side effect: while backtracking, 
+In the last line, Bracmat is forced by the always failing node <code>~</code> to backtrack until all occurrences of 'be' are found.
+Thereafter the pattern match expression fails.
+The interesting part is the side effect: while backtracking,
 the accumulator <code>N</code> keeps track of how many are found.
 
 {{out}}
@@ -1010,8 +1010,8 @@ Contains Test ( Google,msn ) : 0
 
 Code without using string library to demonstrate how char strings are just pointers:
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 /* returns 0 if no match, 1 if matched, -1 if matched and at end */
 int s_cmp(const char *a, const char *b)
@@ -1079,8 +1079,8 @@ end match
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 using namespace std;
 
 string s1="abcd";
@@ -1152,13 +1152,13 @@ matchAt = (s, frag, i) ->
 
 startsWith = (s, frag) ->
   matchAt s, frag, 0
-  
+
 endsWith = (s, frag) ->
   matchAt s, frag, s.length - frag.length
-  
+
 matchLocations = (s, frag) ->
   (i for i in [0..s.length - frag.length] when matchAt s, frag, i)
-  
+
 console.log startsWith "tacoloco", "taco" # true
 console.log startsWith "taco", "tacoloco" # false
 console.log startsWith "tacoloco", "talk" # false
@@ -1182,7 +1182,7 @@ console.log matchLocations "xxx", "x" # [0,1,2]
   (let ((p (search str2 str1)))
     (and p (= 0 p))))
 
-(print (starts-with-p "foobar" "foo")) ; T 
+(print (starts-with-p "foobar" "foo")) ; T
 (print (starts-with-p "foobar" "bar")) ; NIL
 
 (defun ends-with-p (str1 str2)
@@ -1199,7 +1199,7 @@ console.log matchLocations "xxx", "x" # [0,1,2]
    for every occurence of `str2` in `str1`"
    (unless (string-equal str2 "")
      (loop for p = (search str2 str1) then (search str2 str1 :start2 (1+ p))
-           while p 
+           while p
            collect p)))
 
 (print (containsp "foobar" "oba")) ; (2)
@@ -1222,7 +1222,7 @@ CONST
 	strSize = 1024;
 	patSize = 256;
 
-TYPE 
+TYPE
 	Matcher* = POINTER TO LIMITED RECORD
 		str: ARRAY strSize OF CHAR;
 		pat: ARRAY patSize OF CHAR;
@@ -1238,10 +1238,10 @@ BEGIN
 END NewMatcher;
 
 PROCEDURE (m: Matcher) Match*(IN pat: ARRAY OF CHAR): INTEGER,NEW;
-VAR 
+VAR
 	pos: INTEGER;
 BEGIN
-	m.pat := pat$; 
+	m.pat := pat$;
 	pos := m.pos;
 	Strings.Find(m.str,m.pat,pos,m.pos);
 	RETURN m.pos
@@ -1302,7 +1302,7 @@ BEGIN
 	StdLog.String(" at: ");StdLog.Int(at);StdLog.Ln;
 	pat := 'efd';
 	StdLog.String(aStr + " contains " + pat + " :>");StdLog.Bool(Contains(aStr,pat,at));
-	StdLog.String(" at: ");StdLog.Int(at);StdLog.Ln;	
+	StdLog.String(" at: ");StdLog.Int(at);StdLog.Ln;
 	pat := 'abc';
 	StdLog.String(aStr + " contains " + pat + " :>");StdLog.Bool(Contains(aStr,pat,at));
 	StdLog.String(" at: ");StdLog.Int(at);StdLog.Ln;
@@ -1320,7 +1320,7 @@ BEGIN
 	pat:= 'def';
 	StdLog.String(aStr + " endsWith " + pat + " :>");StdLog.Bool(EndsWith(aStr,pat));StdLog.Ln;
 	StdLog.Ln;
-	
+
 	m := NewMatcher("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz");
 	StdLog.String("Matching 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz' against 'abc':> ");
 	StdLog.Ln;
@@ -1351,7 +1351,7 @@ abcdefghijklmnopqrstuvwxyz endsWith zyx :> $FALSE
 abcdefghijklmnopqrstuvwxyz endsWith abc :> $FALSE
 abcdefghijklmnopqrstuvwxyz endsWith def :> $FALSE
 
-Matching 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz' against 'abc':> 
+Matching 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz' against 'abc':>
 Match at:  0
 Match at:  26
 Match at:  -1
@@ -1492,7 +1492,7 @@ loc = "abab".indexOf("ab") //returns 0
 ```e
 def f(string1, string2) {
     println(string1.startsWith(string2))
-    
+
     var index := 0
     while ((index := string1.startOf(string2, index)) != -1) {
         println(`at $index`)
@@ -1526,27 +1526,27 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     var s := "abcd";
- 
+
     console.printLine(s," starts with ab: ",s.startingWith:"ab");
     console.printLine(s," starts with cd: ",s.startingWith:"cd");
- 
+
     console.printLine(s," ends with ab: ",s.endingWith:"ab");
     console.printLine(s," ends with cd: ",s.endingWith:"cd");
- 
+
     console.printLine(s," contains ab: ",s.containing:"ab");
     console.printLine(s," contains bc: ",s.containing:"bc");
     console.printLine(s," contains cd: ",s.containing:"cd");
     console.printLine(s," contains az: ",s.containing:"az");
- 
+
     console.printLine(s," index of az: ",s.indexOf(0, "az"));
     console.printLine(s," index of cd: ",s.indexOf(0, "cd"));
     console.printLine(s," index of bc: ",s.indexOf(0, "bc"));
     console.printLine(s," index of ab: ",s.indexOf(0, "ab"));
- 
+
     console.readChar()
 }
 ```
@@ -1597,9 +1597,9 @@ Regex.scan(~r/#{s3}/, "abcabc", return: :index)
 
 (defun match (word str)
   (progn
-    
+
     (setq regex (format "^%s.*$" word) )
-    
+
     (if (string-match regex str)
 	(insert (format "%s found in beginning of: %s\n" word str) )
       (insert (format "%s not found in beginning of: %s\n" word str) ))
@@ -1609,9 +1609,9 @@ Regex.scan(~r/#{s3}/, "abcabc", return: :index)
     (if pos
 	(insert (format "%s found at position %d in: %s\n" word pos str) )
       (insert (format "%s not found in: %s\n" word str) ))
-    
+
     (setq regex (format "^.*%s$" word) )
-    
+
     (if (string-match regex str)
 	(insert (format "%s found in end of: %s\n" word str) )
       (insert (format "%s not found in end of: %s\n" word str) ))))
@@ -1655,8 +1655,8 @@ after found in end of: before center after
 -module(character_matching).
 -export([starts_with/2,ends_with/2,contains/2]).
 
-%% Both starts_with and ends_with are mappings to 'lists:prefix/2' and                                                                                                                                                                                                                
-%% 'lists:suffix/2', respectively.                                                                                                                                                                                                                                                    
+%% Both starts_with and ends_with are mappings to 'lists:prefix/2' and
+%% 'lists:suffix/2', respectively.
 
 starts_with(S1,S2) ->
     lists:prefix(S2,S1).
@@ -1667,10 +1667,10 @@ ends_with(S1,S2) ->
 contains(S1,S2) ->
     contains(S1,S2,1,[]).
 
-%% While S1 is at least as long as S2 we check if S2 is its prefix,                                                                                                                                                                                                                   
-%% storing the result if it is. When S1 is shorter than S2, we return                                                                                                                                                                                                                 
-%% the result. NB: this will work on any arbitrary list in erlang                                                                                                                                                                                                                     
-%% since it makes no distinction between strings and lists.                                                                                                                                                                                                                           
+%% While S1 is at least as long as S2 we check if S2 is its prefix,
+%% storing the result if it is. When S1 is shorter than S2, we return
+%% the result. NB: this will work on any arbitrary list in erlang
+%% since it makes no distinction between strings and lists.
 contains([_|T]=S1,S2,N,Acc) when length(S2) =< length(S1) ->
     case starts_with(S1,S2) of
         true ->
@@ -2027,7 +2027,7 @@ Output: text strings are bounded by >''etc.''< in case of leading or trailing sp
 ```
 
 
-Similar program using modern Fortran style 
+Similar program using modern Fortran style
 
 ```Fortran
 
@@ -2125,11 +2125,11 @@ Dim As String s2 = "abra"
 Print "First string  : "; s1
 Print "Second string : "; s2
 Print
-Print "First string begins with second string : "; CBool(s2 = Left(s1, Len(s2))) 
+Print "First string begins with second string : "; CBool(s2 = Left(s1, Len(s2)))
 Dim As Integer i1 = Instr(s1, s2)
-Dim As Integer i2 
+Dim As Integer i2
 Print "First string contains second string    : ";
-If i1 Then 
+If i1 Then
   Print "at index"; i1;
   i2 = Instr(i1 + Len(s2), s1, s2)
   If i2 Then
@@ -2200,7 +2200,7 @@ False
 {
     first = "qwertyuiop";
 
-    // Determining if the first string starts with second string 
+    // Determining if the first string starts with second string
     second = "qwerty";
     if (string_pos(second, first) > 0) {
         show_message("'" + first + "' starts with '" + second + "'");
@@ -2223,7 +2223,7 @@ False
 // Determining if the first string ends with the second string
     second = "random garbage"
     temp = string_copy(first,
-                       (string_length(first) - string_length(second)) + 1, 
+                       (string_length(first) - string_length(second)) + 1,
                        string_length(second));
     if (temp == second) {
         show_message("'" + first + "' ends with '" + second + "'");
@@ -2351,12 +2351,12 @@ True
 procedure main()
 
    write("Matching s2 :=",image(s2 := "ab")," within s1:= ",image(s1 := "abcdabab"))
- 
+
    write("Test #1 beginning ",if match(s2,s1) then "matches " else "failed")
-   writes("Test #2 all matches at positions [") 
+   writes("Test #2 all matches at positions [")
       every writes(" ",find(s2,s1)|"]\n")
    write("Test #3 ending ", if s1[0-:*s2] == s2 then "matches" else "fails")
-   
+
 end
 ```
 
@@ -2414,7 +2414,7 @@ Note that these verbs contain no constraints restricting them to sequences of ch
 1
    4.2 5.1 1.3 9 3 contains 1.3 4.2     NB. floating point
 0
-   4.2 5.1 1.3 4.2 9 3 contains 1.3 4.2 
+   4.2 5.1 1.3 4.2 9 3 contains 1.3 4.2
 1
 ```
 
@@ -2453,7 +2453,7 @@ public class JavaApplication6 {
         } else {
             System.out.println(match);       // returns false
         }
-        for (int i = 0; i < two.length(); i++) {  
+        for (int i = 0; i < two.length(); i++) {
             int temp = i;
             for (int x = 0; x < one.length(); x++) {
                 if (two.charAt(temp) == one.charAt(x)) {
@@ -2533,7 +2533,7 @@ Using the builtins of jq 1.4 and later:
 
 
 ```jq
-# index/1 returns the index or null, 
+# index/1 returns the index or null,
 # so the jq test "if index(_) then ...." can be used
 # without any type conversion.
 
@@ -2645,7 +2645,7 @@ contains: {0<#_ss[x;y]}
 
 fun main(args: Array<String>) {
     val s1 = "abracadabra"
-    val s2 = "abra"    
+    val s2 = "abra"
     println("$s1 begins with $s2 : ${s1.startsWith(s2)}")
     println("$s1 ends with $s2   : ${s1.endsWith(s2)}")
     val b  = s2 in s1
@@ -2834,8 +2834,8 @@ print( "s1 starts with s2: ", string.find( s1, s2 ) == 1 )
 print( "s1 starts with s3: ", string.find( s1, s3 ) == 1, "\n" )
 
 print( "s1 contains s3: ", string.find( s1, s3 ) ~= nil )
-print( "s1 contains s3: ", string.find( s1, s4 ) ~= nil, "\n" )   
-   
+print( "s1 contains s3: ", string.find( s1, s4 ) ~= nil, "\n" )
+
 print( "s1 ends with s2: ", select( 2, string.find( s1, s2 ) ) == string.len( s1 ) )
 print( "s1 ends with s3: ", select( 2, string.find( s1, s3 ) ) == string.len( s1 ) )
 ```
@@ -2950,12 +2950,12 @@ True
 	strcmp(str1,str2,length(str2))
    % 2. Determining if the first string contains the second string at any location
 	~isempty(strfind(s1,s2))
-   % 3. Determining if the first string ends with the second string 
+   % 3. Determining if the first string ends with the second string
 	( (length(str1)>=length(str2)) && strcmp(str1(end+[1-length(str2):0]),str2) )
 
    % 1. Print the location of the match for part 2
 	disp(strfind(s1,s2))
-   % 2. Handle multiple occurrences of a string for part 2. 
+   % 2. Handle multiple occurrences of a string for part 2.
 	ix = strfind(s1,s2);   % ix is a vector containing the starting positions of s2 within s1
 
 ```
@@ -2986,7 +2986,7 @@ string.findAll = function(s)
         after = foundPos + s.len - 1
     end while
 end function
-    
+
 first = "The brown dog jumped jumped and jumped"
 second = "jumped"
 
@@ -3015,11 +3015,11 @@ print firstQ + doesOrNot[first.endsWith(second)] + "end with " + secondQ
 ```txt
 
 "The brown dog jumped jumped and jumped" does start with "jumped"
- 
+
 "The brown dog jumped jumped and jumped" is found at position 14 in "jumped"
 "The brown dog jumped jumped and jumped" is found at position 21 in "jumped"
 "The brown dog jumped jumped and jumped" is found at position 32 in "jumped"
- 
+
 "The brown dog jumped jumped and jumped" does end with "jumped"
 
 ```
@@ -3280,12 +3280,12 @@ let match2_num s1 s2 =
 : stringMatching(s1, s2)
 | i |
    s2 isAllAt(s1, 1) ifTrue: [ System.Out s1 << " begins with " << s2 << cr ]
-   s2 isAllAt(s1, s1 size s2 size - 1 + ) ifTrue: [ System.Out s1 << " ends with " << s2 << cr ] 
+   s2 isAllAt(s1, s1 size s2 size - 1 + ) ifTrue: [ System.Out s1 << " ends with " << s2 << cr ]
 
    s1 indexOfAll(s2) ->i
    i ifNotNull: [ System.Out s1 << " includes " << s2 << " at position : " << i << cr ]
 
-   "\nAll positions : " println 
+   "\nAll positions : " println
    1 ->i
    while (s1 indexOfAllFrom(s2, i) dup ->i notNull) [
       System.Out s1 << " includes " << s2 << " at position : " << i << cr
@@ -3493,12 +3493,12 @@ if match(word,sentence)=1 then
     ?"yes(1)"
 end if
 -- A more efficient method is to test the appropriate slice
-if length(sentence)>=length(word) 
+if length(sentence)>=length(word)
 and sentence[1..length(word)]=word then
     ?"yes(2)"
 end if
 -- Which is almost identical to checking for a word at the end
-if length(sentence)>=length(word) 
+if length(sentence)>=length(word)
 and sentence[-length(word)..-1]=word then
     ?"yes(3)"
 end if
@@ -3756,7 +3756,7 @@ If OpenConsole()
   PrintN(Str(EndsWith  ("Rosettacode", "Rosetta")))  ; = 0
   PrintN(Str(EndsWith  ("Rosettacode", "code")))     ; = 1
   PrintN(Str(EndsWith  ("Rosettacode", "e")))        ; = 2
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -3770,7 +3770,7 @@ Procedure startsWith(string1$, string2$)
   ;returns one if string1$ starts with string2$, otherwise returns zero
   If FindString(string1$, string2$, 1) = 1
     ProcedureReturn 1
-  EndIf 
+  EndIf
   ProcedureReturn 0
 EndProcedure
 
@@ -3792,7 +3792,7 @@ EndProcedure
 If OpenConsole()
   PrintN(Str(startsWith("RosettaCode", "Rosetta")))           ; = 1, true
   PrintN(Str(startsWith("RosettaCode", "Code")))              ; = 0, false
-  
+
   PrintN("")
   PrintN(Str(contains("RosettaCode", "luck")))                ; = 0, no occurrences
   Define location
@@ -3800,11 +3800,11 @@ If OpenConsole()
     location = contains("eleutherodactylus cruralis", "e", location)
     PrintN(Str(location))                                     ;display each occurrence: 1, 3, 7,  & 0 (no more occurrences)
   Until location = 0
-  
+
   PrintN("")
   PrintN(Str(endsWith  ("RosettaCode", "Rosetta")))            ; = 0, false
   PrintN(Str(endsWith  ("RosettaCode", "Code")))               ; = 1, true
-   
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -3998,13 +3998,13 @@ string  B  =  Chi
 string  A  starts with string  B
 
 string  A  contains string B  (starting in position 1)
- 
+
 string  A  doesn't end with string  B
 
 string  A  contains string  B  1  time (at position 1)
 
 ```
- 
+
 {{out|output|text=  when the following is specified:   <tt> Chico_Harpo_Groucho_Zeppo_Gummo mmo </tt> }}
 
 ```txt
@@ -4062,11 +4062,11 @@ p 'abab'.rindex('ab')       #returns 2
 ```runbasic
 s1$ = "abc def ghi klmnop"
 s2$  = "abc"  ' begins with
-s3$  = "ef"   ' is in the string 
+s3$  = "ef"   ' is in the string
 s4$  = "nop"  ' ends with
 
 sn2$ = "abcx"  ' not begins with
-sn3$ = "efx"   ' not in the string 
+sn3$ = "efx"   ' not in the string
 sn4$ = "nopx"  ' not ends with
 
 if left$(s1$,len(s2$)) <> s2$ then a$ = "Not "
@@ -4120,12 +4120,12 @@ fn main() {
     let s1 = "abcd";
     let s2 = "abab";
     let s3 = "ab";
-    
+
     // Determining if the first string starts with second string
     assert!(s1.starts_with(s3));
     // Determining if the first string contains the second string at any location
     assert!(s1.contains(s3));
-    // Print the location of the match 
+    // Print the location of the match
     print_match(s1.find(s3)); // Found match at pos 0
     print_match(s1.find(s2)); // Did not find any matches
     // Determining if the first string ends with the second string
@@ -4139,7 +4139,7 @@ fn main() {
 
 fn main(){
     let hello = String::from("Hello world");
-    println!(" Start with \"he\" {} \n Ends with \"rd\" {}\n Contains \"wi\" {}", 
+    println!(" Start with \"he\" {} \n Ends with \"rd\" {}\n Contains \"wi\" {}",
                                                         hello.starts_with("He"),
                                                         hello.ends_with("ld"),
                                                         hello.contains("wi"));
@@ -4148,7 +4148,7 @@ fn main(){
 
 
 {{out}}
- Start with "he" true 
+ Start with "he" true
  Ends with "ld" true
  Contains "wi" false
 
@@ -4161,7 +4161,7 @@ fn main(){
 "abcd".endsWith("zn") //returns false
 "abab".contains("bb") //returns false
 "abab".contains("ab") //returns true
-		
+
 var loc="abab".indexOf("bb") //returns -1
 loc = "abab".indexOf("ab") //returns 0
 loc = "abab".indexOf("ab", loc+1) //returns 2
@@ -4462,7 +4462,7 @@ Rosetta Code not starts with Code
 Rosetta Code contains        Code
   starting in position 9
   ending   in position 13
-Rosetta Code ends with       Code 
+Rosetta Code ends with       Code
 
 ```
 
@@ -4575,7 +4575,7 @@ Public Sub string_matching()
     word = "the"                                        '-- (also try this with "th"/"he")
     sentence = "the last thing the man said was the"
     '--       sentence = "thelastthingthemansaidwasthe" '-- (practically the same results)
-     
+
     '-- A common, but potentially inefficient idiom for checking for a substring at the start is:
     If InStr(1, sentence, word) = 1 Then
         Debug.Print "yes(1)"
@@ -4610,9 +4610,9 @@ yes(1)
 yes(2)
 yes(3)
 yes(4)
- 1 
- 16 
- 33 
+ 1
+ 16
+ 33
 ```
 
 
@@ -4672,7 +4672,7 @@ WScript.StdOut.Write "Ends with test, 'bar' in 'foobar': " & EndsWith("foobar","
 
 
 Starts with test, 'foo' in 'foobar': True
-Contains test, 'o' in 'fooooobar': True at positions 2, 3, 4, 5, 6, 
+Contains test, 'o' in 'fooooobar': True at positions 2, 3, 4, 5, 6,
 Ends with test, 'bar' in 'foobar': True
 
 ```
@@ -4741,7 +4741,7 @@ Text(0, if StrFind(Str, "x w" ) = StrLen(Str)-StrLen("x w" ) then "yes" else "no
 yes
 no
 yes, at offset 10
-4 7 11 
+4 7 11
 no
 yes
 no
@@ -4768,7 +4768,7 @@ f("foobar","food") //--> Nope
 
 
 ```zkl
-fcn f(text,p){ 
+fcn f(text,p){
    if( Void!=(n:=text.rfind(p)) and n+p.len()==text.len() )
       println("tail gunner") else println("Nope")
 }

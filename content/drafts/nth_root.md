@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task|Classic CS problems and programs}} 
+{{task|Classic CS problems and programs}}
 [[Category:Simple]]
 
 ;Task:
@@ -49,7 +49,7 @@ ROOTN    MVC    ZN,=E'0'           zn=0  ----------------------------
          MVC    ZN,N               n
          MVI    ZN,X'46'           zn=unnormalize(n)
          LE     F0,ZN              zn
-         AE     F0,=E'0'           normalized         
+         AE     F0,=E'0'           normalized
          STE    F0,ZN              zn=normalize(n)
          LE     F6,=E'0'           xm=0
          LE     F0,X               x
@@ -66,10 +66,10 @@ WHILEA   LE     F0,XN              xn
          SE     F0,=E'1'             zn-1
          MER    F0,F6                f0=(zn-1)*xm
          L      R2,N                 n
-         BCTR   R2,0                 n-1        
+         BCTR   R2,0                 n-1
          LE     F2,=E'1'             xm
 POW      MER    F2,F6                *xm
-         BCT    R2,POW               f2=xm**(n-1)   
+         BCT    R2,POW               f2=xm**(n-1)
          LE     F4,X                 x
          DER    F4,F2                x/xm**(n-1)
          AER    F0,F4                (zn-1)*xm+x/xm**(n-1)
@@ -85,8 +85,8 @@ EPSILON  DC     E'1E-6'            imprecision
 XN       DS     E                  xn :: output
 ZN       DS     E                  zn=float(n)
 PG       DC     CL80' '            buffer
-         REGEQU 
-         END    NTHROOT 
+         REGEQU
+         END    NTHROOT
 ```
 
 {{out}}
@@ -109,7 +109,7 @@ procedure Test_Nth_Root is
    generic
       type Real is digits <>;
    function Nth_Root (Value : Real; N : Positive) return Real;
-   
+
    function Nth_Root (Value : Real; N : Positive) return Real is
       type Index is mod 2;
       X : array (Index) of Real := (Value, Value);
@@ -157,17 +157,17 @@ Sample output:
 
 ```algol68
 REAL default p = 0.001;
- 
+
 PROC nth root = (INT n, LONG REAL a, p)LONG REAL:
 (
   [2]LONG REAL x := (a, a/n);
- 
+
   WHILE ABS(x[2] - x[1]) > p DO
     x := (x[2], ((n-1)*x[2] + a/x[2]**(n-1))/n )
   OD;
   x[2]
 );
- 
+
 PRIO ROOT = 8;
 OP ROOT = (INT n, LONG REAL a)LONG REAL: nth root(n, a, default p);
 OP ROOT = (INT n, INT a)LONG REAL: nth root(n, a, default p);
@@ -246,8 +246,8 @@ end.
 
 /* ARM assembly Raspberry PI  */
 /*  program nroot.s   */
-/* compile with option -mfpu=vfpv3 -mfloat-abi=hard */ 
-/* link with gcc. Use C function for display float */  
+/* compile with option -mfpu=vfpv3 -mfloat-abi=hard */
+/* link with gcc. Use C function for display float */
 
 /* Constantes               */
 .equ EXIT,   1                         @ Linux syscall
@@ -259,19 +259,19 @@ szFormat1:         .asciz " %+09.15f\n"
 iNumberA:          .int 1024
 
 /* UnInitialized data */
-.bss 
+.bss
 .align 4
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                                   @ entry of program
     push {fp,lr}                        @ saves registers
 
     /* root 10ieme de 1024  */
     ldr r0,iAdriNumberA                 @ number address
     ldr r0,[r0]
-    vmov s0,r0                          @ 
+    vmov s0,r0                          @
     vcvt.f64.s32 d0, s0                 @conversion in float single précision (32 bits)
     mov r0,#10                          @ N
     bl nthRoot
@@ -279,7 +279,7 @@ main:                                   @ entry of program
     vmov r2,r3,d0
     bl printf                           @ call C function !!!
                                         @ Attention register dn lost !!!
-    /* square root of 2   */ 
+    /* square root of 2   */
     vmov.f64 d1,#2.0                    @ conversion 2 in float register d1
     mov r0,#2                           @ N
     bl nthRoot
@@ -297,27 +297,27 @@ iAdrszFormat1:           .int szFormat1
 iAdriNumberA:            .int iNumberA
 
 /******************************************************************/
-/*     compute  nth root                                          */ 
+/*     compute  nth root                                          */
 /******************************************************************/
 /* r0 contains N   */
 /* d0 contains the value                 */
 /* d0 return result                      */
 nthRoot:
-    push {r1,r2,lr}                    @ save  registers 
+    push {r1,r2,lr}                    @ save  registers
     vpush {d1-d8}                         @ save float registers
     FMRX    r1,FPSCR                   @ copy FPSCR into r1
     BIC     r1,r1,#0x00370000          @ clears STRIDE and LEN
     FMXR    FPSCR,r1                   @ copy r1 back into FPSCR
 
-    vmov s2,r0                         @ 
+    vmov s2,r0                         @
     vcvt.f64.s32 d6, s2                @ N conversion in float double précision (64 bits)
     sub r1,r0,#1                       @ N - 1
-    vmov s8,r1                         @ 
+    vmov s8,r1                         @
     vcvt.f64.s32 d4, s8                @conversion in float double précision (64 bits)
     vmov.f64 d2,d0                     @ a = A
     vdiv.F64 d3,d0,d6                  @ b = A/n
     adr r2,dfPrec                      @ load précision
-    vldr d8,[r2]                  
+    vldr d8,[r2]
 1:                                     @ begin loop
     vmov.f64 d2,d3                     @ a <- b
     vmul.f64 d5,d3,d4                  @ (N-1)*b
@@ -325,7 +325,7 @@ nthRoot:
     vmov.f64 d1,#1.0                   @ constante 1 -> float
     mov r2,#0                          @ loop indice
 2:                                     @ compute pow (n-1)
-    vmul.f64 d1,d1,d3                  @ 
+    vmul.f64 d1,d1,d3                  @
     add r2,#1
     cmp r2,r1                          @ n -1 ?
     blt 2b                             @ no -> loop
@@ -337,7 +337,7 @@ nthRoot:
     vcmp.f64 d1,d8                     @ compare float maj FPSCR
     fmstat                             @ transfert FPSCR -> APSR
                                        @ or use VMRS APSR_nzcv, FPSCR
-    bgt 1b                             @ if gap > précision -> loop 
+    bgt 1b                             @ if gap > précision -> loop
     vmov.f64 d0,d3                     @ end return result in d0
 
 100:
@@ -452,11 +452,11 @@ BEGIN {
 
 function nthroot(y,n) {
         eps = 1e-15;   # relative accuracy
-        x   = 1; 
+        x   = 1;
 	do {
 		d  = ( y / ( x^(n-1) ) - x ) / n ;
-		x += d; 
-		e = eps*x;   # absolute accuracy	
+		x += d;
+		e = eps*x;   # absolute accuracy
 	} while ( d < -e  || d > e )
 
 	return x
@@ -467,7 +467,7 @@ function nthroot(y,n) {
 
 Sample output:
   2
-  4 
+  4
   2
   5
   1.44225
@@ -532,7 +532,7 @@ See also the [[#Liberty BASIC|Liberty BASIC]] and [[#PureBasic|PureBasic]] solut
       PRINT "Cube root of 5 is "; FNroot(3, 5, 0)
       PRINT "125th root of 5643 is "; FNroot(125, 5643, 0)
       END
-      
+
       DEF FNroot(n%, a, d)
       LOCAL x0, x1 : x0 = a / n% : REM Initial guess
       REPEAT
@@ -569,7 +569,7 @@ define r(a, n, d) {
 
     o = scale
     scale = d
-    e = 1 / 10 ^ d 
+    e = 1 / 10 ^ d
 
     if (n < 0) {
         n = -n
@@ -642,8 +642,8 @@ Output:
 
 Implemented without using math library, because if we were to use <code>pow()</code>, the whole exercise wouldn't make sense.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <float.h>
 
 double pow_ (double x, int e) {
@@ -696,14 +696,14 @@ static void Main(string[] args)
 public static double NthRoot(double A,int n,  double p)
 {
 	double _n= (double) n;
-	double[] x = new double[2];		
+	double[] x = new double[2];
 	x[0] = A;
 	x[1] = A/_n;
 	while(Math.Abs(x[0] -x[1] ) > p)
 	{
 		x[1] = x[0];
 		x[0] = (1/_n)*(((_n-1)*x[1]) + (A/Math.Pow(x[1],_n-1)));
-			
+
 	}
 	return x[0];
 }
@@ -793,7 +793,7 @@ nth_root = (A, n, precision=0.0000000000001) ->
     x = x_new
 
 # tests
-do -> 
+do ->
   tests = [
     [8, 3]
     [16, 4]
@@ -816,7 +816,7 @@ do ->
 
 output
 <lang>
-> coffee nth_root.coffee 
+> coffee nth_root.coffee
 8 root 3 = 2 (root^3 = 8)
 16 root 4 = 2 (root^4 = 16)
 32 root 5 = 2 (root^5 = 32)
@@ -867,7 +867,7 @@ produces the following output.
 
 
 ```txt
-1176549099958810982335712173626176/117654909634627320192156007194483 
+1176549099958810982335712173626176/117654909634627320192156007194483
 10.0
 ```
 
@@ -987,7 +987,7 @@ defmodule RC do
     f = fn(prev) -> ((n - 1) * prev + x / :math.pow(prev, (n-1))) / n end
     fixed_point(f, x, precision, f.(x))
   end
-  
+
   defp fixed_point(_, guess, tolerance, next) when abs(guess - next) < tolerance, do: next
   defp fixed_point(f, _, tolerance, next), do: fixed_point(f, next, tolerance, f.(next))
 end
@@ -1372,7 +1372,7 @@ The above version is for 64 bit wide floating point numbers. The following uses 
 import "math/big"
 
 func Root(a *big.Float, n uint64) *big.Float {
-	limit := Exp(New(2), 256) 
+	limit := Exp(New(2), 256)
 	n1 := n-1
 	n1f, rn := New(float64(n1)), Div(New(1.0), New(float64(n)))
 	x, x0 := New(1.0), Zero()
@@ -1386,7 +1386,7 @@ func Root(a *big.Float, n uint64) *big.Float {
 			potx = Mul(potx, potx)
 		}
 		x0, x = x, Mul(rn, Add(Mul(n1f, x), t2) )
-		if Lesser(Mul(Abs(Sub(x, x0)), limit), x) { break } 
+		if Lesser(Mul(Abs(Sub(x, x0)), limit), x) { break }
 	}
 	return x
 }
@@ -1615,11 +1615,11 @@ procedure showroot(a,n)
 end
 
 procedure root(a,n,p) #: finds the n-th root of the number a to precision p
-   if n < 0 | type(n) !== "integer" then runerr(101,n)     
-   if a < 0 then runerr(205,a)   
+   if n < 0 | type(n) !== "integer" then runerr(101,n)
+   if a < 0 then runerr(205,a)
    /p := 1e-14                  # precision
    xn := a / real(n)            # initial guess
-   while abs(a - xn^n) > p do       
+   while abs(a - xn^n) > p do
       xn := ((n - 1) * (xi := xn) + a / (xi ^ (n-1))) / real(n)
    return xn
 end
@@ -1714,12 +1714,12 @@ Gives the ''n'':nth root of ''num'', with precision ''prec''. (''n'' defaults to
 function nthRoot(num, nArg, precArg) {
   var n = nArg || 2;
   var prec = precArg || 12;
-  
+
   var x = 1; // Initial guess.
   for (var i=0; i<prec; i++) {
     x = 1/n * ((n-1)*x + (num / Math.pow(x, n-1)));
   }
-  
+
   return x;
 }
 ```
@@ -1731,7 +1731,7 @@ function nthRoot(num, nArg, precArg) {
 
 ```jq
 # An iterative algorithm for finding: self ^ (1/n) to the given
-# absolute precision if "precision" > 0, or to within the precision 
+# absolute precision if "precision" > 0, or to within the precision
 # allowed by IEEE 754 64-bit numbers.
 
 # The following implementation handles underflow caused by poor estimates.
@@ -1746,7 +1746,7 @@ def iterative_nth_root(n; precision):
         then  [$A, $x1, ($x1 + $x2)/2, n] | _iterate
 	else (((n-1)*$x2 + ($A/$power))/n) as $x1
 	| (($x1 - $x2)|abs) as $delta
-        | if (precision == 0 and $delta == $prevdelta and $delta < 1e-15) 
+        | if (precision == 0 and $delta == $prevdelta and $delta < 1e-15)
              or (precision > 0 and $delta <= precision) or $delta == 0 then $x1
           else [$A, $x2, $x1, $delta] | _iterate
           end
@@ -1857,8 +1857,8 @@ fun nthRoot(x: Double, n: Int): Double {
 }
 
 fun main(args: Array<String>) {
-   val numbers = arrayOf(1728.0 to 3, 1024.0 to 10, 2.0 to 2) 
-   for (number in numbers)  
+   val numbers = arrayOf(1728.0 to 3, 1024.0 to 10, 2.0 to 2)
+   for (number in numbers)
        println("${number.first} ^ 1/${number.second}\t = ${nthRoot(number.first, number.second)}")
 }
 ```
@@ -1902,7 +1902,7 @@ function NthRoot( n, A, p)
 end function
 
 end
- 
+
 
 ```
 
@@ -1968,14 +1968,14 @@ end
 Using stack statements PUSH, READ, OVER, SHIFT, DROP, NUMBER, FLUSH
 
 ```txt
- 
+
 Flush empty stack
 Over 2 copy 2nd as new top (so 2nd now is 3rd)
 Over 2,2 repeat Over 2 two times.
 Shift 2 send top to 2nd, and 2nd to top (1st) (there is a SHFITBACK to revesre action)
 Drop drop top
 Number get top if is number, else raise error
-Read, read a variable form top. 
+Read, read a variable form top.
 Functions parameters works with a read too
      Function Root {
              Read a, n%, d as double=1.e-4
@@ -1983,8 +1983,8 @@ Functions parameters works with a read too
       }
 because we can send any type and number if function, interpreter can make conversions if we declare that,
 or if it not possible (no conversion done to a numeric variable if a string is in top of stack) we get an error.
-Also if we send less values, and we didn't initialize variable before, we get error too.  
-Here we need to flush stack for other parameters if from an error anyone put more arguments. 
+Also if we send less values, and we didn't initialize variable before, we get error too.
+Here we need to flush stack for other parameters if from an error anyone put more arguments.
 (interpreter never count before call a user function, except for calling events by using event object,
 so there there is a signature to follow)
 
@@ -2000,7 +2000,7 @@ n% is double inside.
 
 Module Checkit {
       Function Root (a, n%, d as double=1.e-4) {
-             if n%=0 then Error "Division by zero: 1/0" 
+             if n%=0 then Error "Division by zero: 1/0"
              if a<=0 then Error "Negative or zero number"
              if n%=1 then = a : exit
              Flush
@@ -2076,10 +2076,10 @@ function answer = nthRoot(number,root)
 
     answer = number / root;
     guess = number;
-    
+
     while not(guess == answer)
        guess = answer;
-       answer = (1/root)*( ((root - 1)*guess) + ( number/(guess^(root - 1)) ) ); 
+       answer = (1/root)*( ((root - 1)*guess) + ( number/(guess^(root - 1)) ) );
     end
 
 end
@@ -2177,7 +2177,7 @@ class nth_root
     say '  root	= ' root
     say 'digits	= ' digs
     say 'answer	= ' root(x,root,digs)
-    
+
   method root(x,r,digs) static --procedure; parse arg x,R 1 oldR  /*assign 2nd arg-->r and rOrig.  */
     /*this subroutine will use the   */
     /*digits from the calling prog.  */
@@ -2191,9 +2191,9 @@ class nth_root
       say
       return '[n/a]'
     end
-    
+
     R=R.abs()                              /*use absolute value of root.    */
-    
+
     if x<0 & (R//2==0) then do
       say
       say '*** error! ***'
@@ -2203,7 +2203,7 @@ class nth_root
       say
       return '[n/a]'
     end
-    
+
     if x=0 | r=1 then return x/1           /*handle couple of special cases.*/
     Rm1=R-1                                /*just a fast version of  ROOT-1 */
     oldDigs=digs                           /*get the current number of digs.*/
@@ -2213,21 +2213,21 @@ class nth_root
  --   numeric fuzz 3                         /*fuzz digits for higher roots.  */
     d=5                                    /*start with only five digits.   */
     /*each calc doubles precision.   */
-    
+
     loop forever
-      
+
       d=d+d
       if d>dm then d = dm                        /*double the digits, but not>DM. */
       numeric digits d                     /*tell REXX to use   D   digits. */
       old=0                                /*assume some kind of old guess. */
-      
+
       loop forever
 	_=(Rm1*g**R+ax)/R/g**rm1           /*this is the nitty-gritty stuff.*/
 	if _=g | _=old then leave          /*computed close to this before? */
 	old=g                              /*now, keep calculation for OLD. */
 	g=_                                /*set calculation to guesstimate.*/
       end
-      
+
       if d==dm then leave                  /*found the root for DM digits ? */
     end
 
@@ -2339,7 +2339,7 @@ let () =
 
 ## Octave
 
-Octave has it's how <tt>nthroot</tt> function. 
+Octave has it's how <tt>nthroot</tt> function.
 
 ```octave
 
@@ -2374,7 +2374,7 @@ Here is an more elegant way by computing the successive differences in an explic
 function r = m_nthroot(n, A)
   r = A / n;
   m = n - 1;
-  do 
+  do
     d = (A ./ r .^ m - r) / n;
     r+= d;
   until (abs(d) < abs(r * 1e-9))
@@ -2382,7 +2382,7 @@ endfunction
 ```
 
 
-Show its usage and the built-in <tt>nthroot</tt> function 
+Show its usage and the built-in <tt>nthroot</tt> function
 
 
 ```octave
@@ -2397,7 +2397,7 @@ nthroot(7, .5)
 
 
 ## Oforth
- 
+
 
 
 ```Oforth
@@ -2539,12 +2539,12 @@ atom x = 1
 --      atom d = ( y / power(x,n-1) - x ) / n
         atom d = ( y / pow_(x,n-1) - x ) / n
         x += d
-        atom e = eps*x   -- absolute accuracy       
+        atom e = eps*x   -- absolute accuracy
         if d > -e and d < e then exit end if
-    end while 
+    end while
     return {y,n,x,power(y,1/n)}
 end function
- 
+
 ?nth_root(1024,10)
 ?nth_root(27,3)
 ?nth_root(2,2)
@@ -2734,7 +2734,7 @@ PS>
 #Def_p=0.001
 
 Procedure.d Nth_root(n.i, A.d, p.d=#Def_p)
-  Protected Dim x.d(1) 
+  Protected Dim x.d(1)
   x(0)=A: x(1)=A/n
   While Abs(x(1)-x(0))>p
     x(0)=x(1)
@@ -2769,7 +2769,7 @@ from decimal import Decimal, getcontext
 
 def nthroot (n, A, precision):
     getcontext().prec = precision
-    
+
     n = Decimal(n)
     x_0 = A / n #step 1: make a while guess.
     x_1 = 1     #need it to exist before step 2
@@ -2819,10 +2819,10 @@ nthroot(7, 0.5)          # 49
 (define (nth-root number root (tolerance 0.001))
   (define (acceptable? next current)
     (< (abs (- next current)) tolerance))
-  
+
   (define (improve current)
     (/ (+ (* (- root 1) current) (/ number (expt current (- root 1)))) root))
-  
+
   (define (loop current)
     (define next-guess (improve current))
     (if (acceptable? next-guess current)
@@ -2959,7 +2959,7 @@ while fabs (x - y) > d
       y = ((n - 1)*x + a/pow(x,(n-1))) / n
       temp = x
       x = y
-      y = temp 
+      y = temp
 end
 return x
 
@@ -2985,7 +2985,7 @@ def nthroot(n, a, precision = 1e-5)
     prev = x
     x = ((n - 1) * prev + a / (prev ** (n - 1))) / n
   end while (prev - x).abs > precision
-  x 
+  x
 end
 
 p nthroot(5,34)  # => 2.02439745849989
@@ -3003,9 +3003,9 @@ print "125th Root of 5643 Precision .00001 ";using( "#.###############",  NthRoo
 print "  3rd Root of   27 Precision .00001 ";using( "#.###############",  NthRoot(   3,   27, 0.00001))
 print "  2nd Root of    2 Precision .00001 ";using( "#.###############",  NthRoot(   2,    2, 0.00001))
 print " 10th Root of 1024 Precision .00001 ";using( "#.###############",  NthRoot(  10, 1024, 0.00001))
- 
+
 wait
- 
+
 function NthRoot( root, A, precision)
   x0 = A
   x1 = A /root
@@ -3016,7 +3016,7 @@ function NthRoot( root, A, precision)
   wend
   NthRoot =x1
 end function
- 
+
 end
 ```
 
@@ -3039,7 +3039,7 @@ end
 class MATH is
   nthroot(n:INT, a:FLT):FLT
     pre n > 0
-  is  
+  is
     x0 ::= a / n.flt;
     m  ::= n - 1;
     loop
@@ -3078,7 +3078,7 @@ def nroot(n: Int, a: Double): Double = {
     val x1 = ((n - 1) * x0 + a/math.pow(x0, n-1))/n
     if (x0 <= x1) x0 else rec(x1)
   }
-  
+
   rec(a)
 }
 ```
@@ -3136,7 +3136,7 @@ const func float: nthRoot (in integer: n, in float: a) is func
     var float: x1 is 0.0;
   local
     var float: x0 is 0.0;
-  begin 
+  begin
     x0 := a;
     x1 := a / flt(n);
     while abs(x1 - x0) >= abs(x0 * 1.0E-9) do
@@ -3381,18 +3381,18 @@ End Sub
 {{out}}
 
 ```txt
- 1024  10  2  2 
- 27  3  3  3 
- 2  2  1,41421356237309  1,4142135623731 
- 5642  125  1,07154759194477  1,07154759194477 
- 7  0,5  49  49 
- 4913  3  17  17 
- 8  3  2  2 
- 16  2  4  4 
- 16  4  2  2 
- 125  3  5  5 
- 1000000000  3  1000  1000 
- 1000000000  9  10  10 
+ 1024  10  2  2
+ 27  3  3  3
+ 2  2  1,41421356237309  1,4142135623731
+ 5642  125  1,07154759194477  1,07154759194477
+ 7  0,5  49  49
+ 4913  3  17  17
+ 8  3  2  2
+ 16  2  4  4
+ 16  4  2  2
+ 125  3  5  5
+ 1000000000  3  1000  1000
+ 1000000000  9  10  10
 
 ```
 
@@ -3454,16 +3454,16 @@ loop
 
 sub nthroot(y, n)
     local eps, x, d, e
-    
+
     eps = 1e-15     // relative accuracy
     x   = 1
     repeat
         d  = ( y / ( x^(n-1) ) - x ) / n
         x = x + d
         e = eps * x // absolute accuracy
-        
+
     until(not(d < -e or d > e ))
- 
+
     return x
 end sub
 ```
@@ -3480,11 +3480,11 @@ fcn nthroot(nth,a,precision=1.0e-5){
    do{
       prev=x;
       x=( prev*n1 + a/prev.pow(n1) ) / nth;
-   }    
+   }
    while( not prev.closeTo(x,precision) );
-   x 
+   x
 }
- 
+
 nthroot(5,34) : "%.20f".fmt(_).println()  # => 2.02439745849988828041
 ```
 

@@ -12,7 +12,7 @@ tags = []
 
 {{task|Probability and statistics}}
 {{wikipedia|Combination}}
- 
+
 {{wikipedia|Permutation}}
 
 
@@ -75,7 +75,7 @@ OP P = (CPINT n, r)CPOUT: (
   out
 );
 
-OP P = (CPREAL n, r)CPREAL: # 'ln gamma' requires GSL library # 
+OP P = (CPREAL n, r)CPREAL: # 'ln gamma' requires GSL library #
   exp(ln gamma(n+1)-ln gamma(n-r+1));
 
 # basically nPk = (n-r+1)(n-r+2)...(n-2)(n-1)n = n!/(n-r)! #
@@ -102,11 +102,11 @@ OP C = (CPINT n, r)CPOUT: (
   CPINT smallest = n - largest;
   CPOUT out := 1;
   INT smaller fact := 2;
-  FOR larger fact FROM largest+1 TO n DO 
+  FOR larger fact FROM largest+1 TO n DO
 # try and prevent overflow, p.s. there must be a smarter way to do this #
 #   Problems: loop stalls when 'smaller fact' is a largeish co prime #
     out *:= larger fact;
-    WHILE smaller fact <= smallest ANDF out MOD smaller fact = 0 DO 
+    WHILE smaller fact <= smallest ANDF out MOD smaller fact = 0 DO
       out OVERAB smaller fact;
       smaller fact +:= 1
     OD
@@ -114,7 +114,7 @@ OP C = (CPINT n, r)CPOUT: (
   out # EXIT with: n P r OVER r P r #
 );
 
-OP C = (CPREAL n, CPREAL r)CPREAL: # 'ln gamma' requires GSL library # 
+OP C = (CPREAL n, CPREAL r)CPREAL: # 'ln gamma' requires GSL library #
   exp(ln gamma(n+1)-ln gamma(n-r+1)-ln gamma(r+1));
 
 # basically C(n,r) = nCk = nPk/r! = n!/(n-r)!/r! #
@@ -129,7 +129,7 @@ OP C = (CPREAL n, REAL r)CPREAL: (
   WHILE larger fact <= n DO # todo: check underflow here #
 # try and prevent overflow, p.s. there must be a smarter way to do this #
     out *:= larger fact;
-    WHILE smaller fact <= smallest ANDF out > smaller fact DO 
+    WHILE smaller fact <= smallest ANDF out > smaller fact DO
       out /:= smaller fact;
       smaller fact +:= 1
     OD;
@@ -151,8 +151,8 @@ CO REQUIRED by "prelude_combinations_and_permutations.a68" CO
   MODE CPOUT = #LONG# INT; # the answer, can be REAL #
   MODE CPREAL = REAL; # the answer, can be REAL #
   PROC cp fix value error = (#REF# CPARGS args)BOOL: (
-    putf(stand error, ($"Value error: "g(0)gg(0)"arg out of range"l$, 
-                         n OF args, name OF args, k OF args)); 
+    putf(stand error, ($"Value error: "g(0)gg(0)"arg out of range"l$,
+                         n OF args, name OF args, k OF args));
     FALSE # unfixable #
   );
 #PROVIDES:#
@@ -293,7 +293,7 @@ Bracmat cannot handle floating point numbers. Instead, this solution shows the f
     & out$(!i C !k "=" C$(!i,!k))
     )
 & ( displayBig
-  =   
+  =
     .     @(!arg:?show [50 ? [?length)
         & !show "... (" !length+-50 " more digits)"
       | !arg
@@ -358,8 +358,8 @@ Output:
 
 Using big integers. GMP in fact has a factorial function which is quite possibly more efficient, though using it would make code longer.
 
-```c>#include <gmp.h
-
+```c
+#include <gmp.h>
 
 void perm(mpz_t out, int n, int k)
 {
@@ -423,29 +423,29 @@ int main(void)
 ```ruby
 require "big"
 include Math
- 
+
 struct Int
- 
+
   def permutation(k)
     (self-k+1..self).product(1.to_big_i)
   end
- 
+
   def combination(k)
     self.permutation(k) / (1..k).product(1.to_big_i)
   end
- 
+
   def big_permutation(k)
-    exp(lgamma_plus(self) - lgamma_plus(self-k)) 
+    exp(lgamma_plus(self) - lgamma_plus(self-k))
   end
- 
+
   def big_combination(k)
     exp( lgamma_plus(self) - lgamma_plus(self - k) - lgamma_plus(k))
   end
- 
+
   private def lgamma_plus(n)
     lgamma(n+1)  #lgamma is the natural log of gamma
   end
- 
+
 end
 
 p 12.permutation(9)               #=> 79833600
@@ -573,12 +573,12 @@ void main() {
 ```elixir
 defmodule Combinations_permutations do
   def perm(n, k), do: product(n - k + 1 .. n)
-  
+
   def comb(n, k), do: div( perm(n, k), product(1 .. k) )
-  
+
   defp product(a..b) when a>b, do: 1
   defp product(list), do: Enum.reduce(list, 1, fn n, acc -> n * acc end)
-  
+
   def test do
     IO.puts "\nA sample of permutations from 1 to 12:"
     Enum.each(1..12, &show_perm(&1, div(&1, 3)))
@@ -589,14 +589,14 @@ defmodule Combinations_permutations do
     IO.puts "\nA sample of combinations from 100 to 1000:"
     Enum.take_every(100..1000, 100) |> Enum.each(&show_comb(&1, div(&1, 3)))
   end
-  
+
   defp show_perm(n, k), do: show_gen(n, k, "perm", &perm/2)
- 
+
   defp show_comb(n, k), do: show_gen(n, k, "comb", &comb/2)
- 
+
   defp show_gen(n, k, strfun, fun), do:
     IO.puts "#{strfun}(#{n}, #{k}) = #{show_big(fun.(n, k), 40)}"
-  
+
   defp show_big(n, limit) do
     strn = to_string(n)
     if String.length(strn) < limit do
@@ -707,10 +707,10 @@ show_big(N, Limit) ->
     case length(StrN) < Limit of
         true ->
             StrN;
-        false -> 
+        false ->
             {Shown, Hidden} = lists:split(Limit, StrN),
-            io_lib:format("~s... (~p more digits)", [Shown, length(Hidden)]) 
-    end. 
+            io_lib:format("~s... (~p more digits)", [Shown, length(Hidden)])
+    end.
 
 ```
 
@@ -903,12 +903,12 @@ main = do
                     stlen = length st
                 in if stlen < maxlen then st else take maxlen st ++ "... ("  ++ show (stlen-maxlen) ++  " more digits)"
 
-        let showPerm pr = 
+        let showPerm pr =
                 putStrLn $ "perm(" ++ show n ++ "," ++ show k ++ ") = "  ++ showBig 40 (perm n k)
                 where n = fst pr
                       k = snd pr
 
-        let showComb pr = 
+        let showComb pr =
                 putStrLn $ "comb(" ++ show n ++ "," ++ show k ++ ") = "  ++ showBig 40 (comb n k)
                 where n = fst pr
                       k = snd pr
@@ -1097,7 +1097,7 @@ Example use (P is permutations, C is combinations):
 2.09224e254
    700 P 800
 3.18349e287
-   
+
    5 C 100
 75287520
    100 C 200
@@ -1117,7 +1117,7 @@ Currently, jq approximates large integers by IEEE 754 64-bit floats, and only su
 ```jq
 def permutation(k): . as $n
   | reduce range($n-k+1; 1+$n) as $i (1; . * $i);
- 
+
 def combination(k): . as $n
   | if k > ($n/2) then combination($n-k)
     else reduce range(0; k) as $i (1; (. * ($n - $i)) / ($i + 1))
@@ -1128,7 +1128,7 @@ def log_factorial: (1+.) | tgamma | log;
 
 def log_permutation(k):
   (log_factorial - ((.-k) | log_factorial));
- 
+
 def log_combination(k):
   (log_factorial - ((. - k)|log_factorial) - (k|log_factorial));
 
@@ -1295,7 +1295,7 @@ Tests of the combinations (⊞) and permutations (⊠) operators for (big) float
 
 ## Kotlin
 
-As Kotlin/JVM can use the java.math.BigInteger class, there is no need to use floating point approximations and so we use exact integer arithmetic for all parts of the task. 
+As Kotlin/JVM can use the java.math.BigInteger class, there is no need to use floating point approximations and so we use exact integer arithmetic for all parts of the task.
 
 ```scala
 // version 1.1.2
@@ -1313,15 +1313,15 @@ fun comb(n: Int, k: Int): BigInteger {
     return perm(n, k) / fact
 }
 
-fun main(args: Array<String>) {    
-    println("A sample of permutations from 1 to 12:")    
+fun main(args: Array<String>) {
+    println("A sample of permutations from 1 to 12:")
     for (n in 1..12) System.out.printf("%2d P %-2d = %d\n", n, n / 3, perm(n, n / 3))
 
     println("\nA sample of combinations from 10 to 60:")
     for (n in 10..60 step 10) System.out.printf("%2d C %-2d = %d\n", n, n / 3, comb(n, n / 3))
 
     println("\nA sample of permutations from 5 to 15000:")
-    val na = intArrayOf(5, 50, 500, 1000, 5000, 15000)    
+    val na = intArrayOf(5, 50, 500, 1000, 5000, 15000)
     for (n in na) {
         val k = n / 3
         val s = perm(n, k).toString()
@@ -1330,7 +1330,7 @@ fun main(args: Array<String>) {
         System.out.printf("%5d P %-4d = %s%s\n", n, k, s.take(40), e)
     }
 
-    println("\nA sample of combinations from 100 to 1000:")   
+    println("\nA sample of combinations from 100 to 1000:")
     for (n in 100..1000 step 100) {
         val k = n / 3
         val s = comb(n, k).toString()
@@ -1420,12 +1420,12 @@ Module PermComb {
                   def decimal  i, z=1, ym
                   ym=y
                   For i=x to x-y+1
-                        z*=i 
+                        z*=i
                         z=z/ym
                        ym-- : if ym<1 then ym=1@
                   next  i
                   =round(z,0)
-               
+
             }
       }
       Document Doc$
@@ -1448,7 +1448,7 @@ Module PermComb {
       For i=200 to 1000 step 200
       l$="" : For j=20 to 100 step 20: l$+= format$("C({0},{1})={2}  ",i, j,comb(i, j)) :next j
       Writetext(l$)
-      Next i  
+      Next i
       ClipBoard Doc$
       Sub WriteText(a$)
       doc$=a$+{
@@ -1468,41 +1468,41 @@ PermComb
 {{out}}
 -- Permutations - from 1 to 12
 
-P(1,1)=1  
-P(2,1)=2  P(2,2)=2  
-P(3,1)=3  P(3,2)=6  P(3,3)=6  
-P(4,1)=4  P(4,2)=12  P(4,3)=24  P(4,4)=24  
-P(5,1)=5  P(5,2)=20  P(5,3)=60  P(5,4)=120  P(5,5)=120  
-P(6,1)=6  P(6,2)=30  P(6,3)=120  P(6,4)=360  P(6,5)=720  P(6,6)=720  
-P(7,1)=7  P(7,2)=42  P(7,3)=210  P(7,4)=840  P(7,5)=2520  P(7,6)=5040  P(7,7)=5040  
-P(8,1)=8  P(8,2)=56  P(8,3)=336  P(8,4)=1680  P(8,5)=6720  P(8,6)=20160  P(8,7)=40320  P(8,8)=40320  
-P(9,1)=9  P(9,2)=72  P(9,3)=504  P(9,4)=3024  P(9,5)=15120  P(9,6)=60480  P(9,7)=181440  P(9,8)=362880  P(9,9)=362880  
-P(10,1)=10  P(10,2)=90  P(10,3)=720  P(10,4)=5040  P(10,5)=30240  P(10,6)=151200  P(10,7)=604800  P(10,8)=1814400  P(10,9)=3628800  P(10,10)=3628800  
-P(11,1)=11  P(11,2)=110  P(11,3)=990  P(11,4)=7920  P(11,5)=55440  P(11,6)=332640  P(11,7)=1663200  P(11,8)=6652800  P(11,9)=19958400  P(11,10)=39916800  P(11,11)=39916800  
-P(12,1)=12  P(12,2)=132  P(12,3)=1320  P(12,4)=11880  P(12,5)=95040  P(12,6)=665280  P(12,7)=3991680  P(12,8)=19958400  P(12,9)=79833600  P(12,10)=239500800  P(12,11)=479001600  P(12,12)=479001600 
- 
+P(1,1)=1
+P(2,1)=2  P(2,2)=2
+P(3,1)=3  P(3,2)=6  P(3,3)=6
+P(4,1)=4  P(4,2)=12  P(4,3)=24  P(4,4)=24
+P(5,1)=5  P(5,2)=20  P(5,3)=60  P(5,4)=120  P(5,5)=120
+P(6,1)=6  P(6,2)=30  P(6,3)=120  P(6,4)=360  P(6,5)=720  P(6,6)=720
+P(7,1)=7  P(7,2)=42  P(7,3)=210  P(7,4)=840  P(7,5)=2520  P(7,6)=5040  P(7,7)=5040
+P(8,1)=8  P(8,2)=56  P(8,3)=336  P(8,4)=1680  P(8,5)=6720  P(8,6)=20160  P(8,7)=40320  P(8,8)=40320
+P(9,1)=9  P(9,2)=72  P(9,3)=504  P(9,4)=3024  P(9,5)=15120  P(9,6)=60480  P(9,7)=181440  P(9,8)=362880  P(9,9)=362880
+P(10,1)=10  P(10,2)=90  P(10,3)=720  P(10,4)=5040  P(10,5)=30240  P(10,6)=151200  P(10,7)=604800  P(10,8)=1814400  P(10,9)=3628800  P(10,10)=3628800
+P(11,1)=11  P(11,2)=110  P(11,3)=990  P(11,4)=7920  P(11,5)=55440  P(11,6)=332640  P(11,7)=1663200  P(11,8)=6652800  P(11,9)=19958400  P(11,10)=39916800  P(11,11)=39916800
+P(12,1)=12  P(12,2)=132  P(12,3)=1320  P(12,4)=11880  P(12,5)=95040  P(12,6)=665280  P(12,7)=3991680  P(12,8)=19958400  P(12,9)=79833600  P(12,10)=239500800  P(12,11)=479001600  P(12,12)=479001600
+
 -- Combinations from 10 to 60
 
-C(10,1)=10  C(10,3)=120  C(10,5)=252  C(10,7)=120  C(10,9)=10  
-C(20,1)=20  C(20,5)=15504  C(20,9)=167960  C(20,13)=77520  C(20,17)=1140  
-C(30,1)=30  C(30,7)=2035800  C(30,13)=119759850  C(30,19)=54627300  C(30,25)=142506  
-C(40,1)=40  C(40,9)=273438880  C(40,17)=88732378800  C(40,25)=40225345056  C(40,33)=18643560  
-C(50,1)=50  C(50,11)=37353738800  C(50,21)=67327446062800  C(50,31)=30405943383200  C(50,41)=2505433700  
-C(60,1)=60  C(60,13)=5166863427600  C(60,25)=51915437974328292  C(60,37)=23385332420868600  C(60,49)=342700125300  
+C(10,1)=10  C(10,3)=120  C(10,5)=252  C(10,7)=120  C(10,9)=10
+C(20,1)=20  C(20,5)=15504  C(20,9)=167960  C(20,13)=77520  C(20,17)=1140
+C(30,1)=30  C(30,7)=2035800  C(30,13)=119759850  C(30,19)=54627300  C(30,25)=142506
+C(40,1)=40  C(40,9)=273438880  C(40,17)=88732378800  C(40,25)=40225345056  C(40,33)=18643560
+C(50,1)=50  C(50,11)=37353738800  C(50,21)=67327446062800  C(50,31)=30405943383200  C(50,41)=2505433700
+C(60,1)=60  C(60,13)=5166863427600  C(60,25)=51915437974328292  C(60,37)=23385332420868600  C(60,49)=342700125300
 
 -- Permutations from 5000 to 15000
 
-P(5000,10)=9,67807348145655E+36  P(5000,30)=8,53575581200676E+110  P(5000,50)=6,94616656703754E+184  P(5000,70)=5,21383580146195E+258  
-P(10000,10)=9,95508690556325E+39  P(10000,30)=9,57391540294832E+119  P(10000,50)=8,84526658067387E+199  P(10000,70)=7,850079552152E+279  
-P(15000,10)=5,74922667554068E+41  P(15000,30)=1,86266591363916E+125  P(15000,50)=5,87565776023335E+208  P(15000,70)=1,80450662858719E+292  
+P(5000,10)=9,67807348145655E+36  P(5000,30)=8,53575581200676E+110  P(5000,50)=6,94616656703754E+184  P(5000,70)=5,21383580146195E+258
+P(10000,10)=9,95508690556325E+39  P(10000,30)=9,57391540294832E+119  P(10000,50)=8,84526658067387E+199  P(10000,70)=7,850079552152E+279
+P(15000,10)=5,74922667554068E+41  P(15000,30)=1,86266591363916E+125  P(15000,50)=5,87565776023335E+208  P(15000,70)=1,80450662858719E+292
 
 -- Combinations from 200 to 1000
 
-C(200,20)=1613587787967350073386147640  C(200,40)=721126811024990370  C(200,60)=286107190317772000463240955  C(200,80)=900482  C(200,100)=478205104  
-C(400,20)=3558235073  C(400,40)=130321  C(400,60)=74780600187861332802765  C(400,80)=9521248771125  C(400,100)=447355513982663594791392  
-C(600,20)=2801445153584  C(600,40)=266319106596345  C(600,60)=14409368913  C(600,80)=271441  C(600,100)=52868467287780595308  
-C(800,20)=1925279023672620  C(800,40)=23121069591511231041  C(800,60)=18702067923763447158  C(800,80)=1193559552292625  C(800,100)=172727802  
-C(1000,20)=1239329180287869852  C(1000,40)=1937726921514640866484017  C(1000,60)=149470629867337347460963500  C(1000,80)=1269150275532146867313740  C(1000,100)=10088410532027029794548  
+C(200,20)=1613587787967350073386147640  C(200,40)=721126811024990370  C(200,60)=286107190317772000463240955  C(200,80)=900482  C(200,100)=478205104
+C(400,20)=3558235073  C(400,40)=130321  C(400,60)=74780600187861332802765  C(400,80)=9521248771125  C(400,100)=447355513982663594791392
+C(600,20)=2801445153584  C(600,40)=266319106596345  C(600,60)=14409368913  C(600,80)=271441  C(600,100)=52868467287780595308
+C(800,20)=1925279023672620  C(800,40)=23121069591511231041  C(800,60)=18702067923763447158  C(800,80)=1193559552292625  C(800,100)=172727802
+C(1000,20)=1239329180287869852  C(1000,40)=1937726921514640866484017  C(1000,60)=149470629867337347460963500  C(1000,80)=1269150275532146867313740  C(1000,100)=10088410532027029794548
 
 
 ## Maple
@@ -1762,12 +1762,12 @@ Notice that Perl6 can process arbitrary long integers, though.  So it's not clea
 ```perl6
 multi P($n, $k) { [*] $n - $k + 1 .. $n }
 multi C($n, $k) { P($n, $k) / [*] 1 .. $k }
- 
+
 sub lstirling(\n) {
     n < 10 ?? lstirling(n+1) - log(n+1) !!
     .5*log(2*pi*n)+ n*log(n/e+1/(12*e*n))
 }
- 
+
 role Logarithm {
     method gist {
 	my $e = (self/10.log).Int;
@@ -1782,25 +1782,25 @@ multi C($n, $k, :$float!) {
     (lstirling($n) - lstirling($n -$k) - lstirling($k))
     but Logarithm
 }
- 
+
 say "Exact results:";
 for 1..12 -> $n {
     my $p = $n div 3;
     say "P($n, $p) = ", P($n, $p);
 }
- 
+
 for 10, 20 ... 60 -> $n {
     my $p = $n div 3;
     say "C($n, $p) = ", C($n, $p);
 }
- 
+
 say '';
 say "Floating point approximations:";
 for 5, 50, 500, 1000, 5000, 15000 -> $n {
     my $p = $n div 3;
     say "P($n, $p) = ", P($n, $p, :float);
 }
- 
+
 for 100, 200 ... 1000 -> $n {
     my $p = $n div 3;
     say "C($n, $p) = ", C($n, $p, :float);
@@ -1869,14 +1869,14 @@ end function
 function lstirling(atom n)
     if n<10 then
         return lstirling(n+1)-log(n+1)
-    end if  
+    end if
     return 0.5*log(2*PI*n) + n*log(n/E + 1/(12*E*n))
 end function
- 
+
 function P_approx(integer n, k)
     return lstirling(n)-lstirling(n-k)
 end function
- 
+
 function C_approx(integer n, k)
     return lstirling(n)-lstirling(n-k)-lstirling(k)
 end function
@@ -1895,19 +1895,19 @@ for n=1 to 12 do
     integer p = floor(n/3)
     printf(1,"P(%d,%d) = %d\n",{n,p,P(n,p)})
 end for
- 
+
 for n=10 to 60 by 10 do
     integer p = floor(n/3)
     printf(1,"C(%d,%d) = %d\n",{n,p,C(n,p)})
 end for
- 
+
 printf(1,"=> Floating point approximations:\n")
 constant tests = {5, 50, 500, 1000, 5000, 15000}
 for i=1 to length(tests) do
     integer n=tests[i], p = floor(n/3)
     printf(1,"P(%d,%d) = %s\n",{n,p,to_s(P_approx(n,p))})
 end for
- 
+
 for n=100 to 1000 by 100 do
     integer p = floor(n/3)
     printf(1,"C(%d,%d) = %s\n",{n,p,to_s(C_approx(n,p))})
@@ -1934,7 +1934,7 @@ print('Sample Perms 1..12')
 for N in range(1, 13):
     k = max(N-2, 1)
     print('%iP%i =' % (N, k), perm(N, k, exact), end=', ' if N % 5 else '\n')
-          
+
 print('\n\nSample Combs 10..60')
 for N in range(10, 61, 10):
     k = N-2
@@ -1945,7 +1945,7 @@ print('\n\nSample Perms 5..1500 Using FP approximations')
 for N in [5, 15, 150, 1500, 15000]:
     k = N-2
     print('%iP%i =' % (N, k), perm(N, k, exact))
-          
+
 print('\nSample Combs 100..1000 Using FP approximations')
 for N in range(100, 1001, 100):
     k = N-2
@@ -1960,11 +1960,11 @@ for N in range(100, 1001, 100):
 Sample Perms 1..12
 1P1 = 1, 2P1 = 2, 3P1 = 3, 4P2 = 12, 5P3 = 60
 6P4 = 360, 7P5 = 2520, 8P6 = 20160, 9P7 = 181440, 10P8 = 1814400
-11P9 = 19958400, 12P10 = 239500800, 
+11P9 = 19958400, 12P10 = 239500800,
 
 Sample Combs 10..60
 10C8 = 45, 20C18 = 190, 30C28 = 435, 40C38 = 780, 50C48 = 1225
-60C58 = 1770, 
+60C58 = 1770,
 
 Sample Perms 5..1500 Using FP approximations
 5P3 = 60.0
@@ -2063,7 +2063,7 @@ comb:      procedure; parse arg x,y              /*arguments:  X  things,  Y  at
                       return _ / !(y)            /*just perform one last division.      */
 ```
 
-'''output''' 
+'''output'''
 
 ```txt
 
@@ -2136,7 +2136,7 @@ class Integer
   end
 
   def big_permutation(k)
-    exp( lgamma_plus(self) - lgamma_plus(self -k)) 
+    exp( lgamma_plus(self) - lgamma_plus(self -k))
   end
 
   def big_combination(k)
@@ -2620,7 +2620,7 @@ function perm(x,y)
 	next 'i
 	perm=z
 end function 'perm
-	
+
 function fact(x)
 	dim i,z
 	z=1
@@ -2631,9 +2631,9 @@ function fact(x)
 end function 'fact
 
 function comb(byval x,byval y)
-	if y>x then 
+	if y>x then
 		comb=0
-	elseif x=y then 
+	elseif x=y then
 		comb=1
 	else
 		if x-y<y then y=x-y
@@ -2669,7 +2669,7 @@ C(5000,10)=9,67807348145655E+36  C(5000,30)=8,53575581200676E+110  C(5000,50)=6,
 C(10000,10)=9,95508690556325E+39  C(10000,30)=9,57391540294832E+119  C(10000,50)=8,84526658067387E+199  C(10000,70)=7,850079552152E+279
 C(15000,10)=5,74922667554068E+41  C(15000,30)=1,86266591363916E+125  C(15000,50)=5,87565776023335E+208  C(15000,70)=1,80450662858719E+292
 -- Float integer - Combinations from 200 to 1000
-P(200,20)=1,61358778796735E+27  P(200,40)=2,05015799519859E+42  P(200,60)=7,04050484926892E+51  P(200,80)=1,64727865245176E+57  P(200,100)=9,05485146561033E+58 
+P(200,20)=1,61358778796735E+27  P(200,40)=2,05015799519859E+42  P(200,60)=7,04050484926892E+51  P(200,80)=1,64727865245176E+57  P(200,100)=9,05485146561033E+58
 P(400,20)=2,7883609836709E+33  P(400,40)=1,9703374084393E+55  P(400,60)=1,50867447857277E+72  P(400,80)=4,22814216193593E+85  P(400,100)=2,24185479155434E+96
 P(600,20)=1,09108668819553E+37  P(600,40)=4,33518929550349E+62  P(600,60)=2,77426667704894E+83  P(600,80)=1,00412999166192E+101  P(600,100)=1,11141121906619E+116
 P(800,20)=3,72976760205571E+39  P(800,40)=6,04464684067502E+67  P(800,60)=1,90370080982158E+91  P(800,80)=4,14170924105943E+111  P(800,100)=3,4111376846871E+129
@@ -2686,7 +2686,7 @@ P(1000,20)=3,39482811302458E+41  P(1000,40)=5,55974423571664E+71  P(1000,60)=1,9
 ```vbnet
 ' Combinations and permutations - 10/04/2017
 Imports System.Numerics 'BigInteger
-Module CombPermRc 
+Module CombPermRc
 
     Sub Main()
         Dim i, j As Long
@@ -2757,33 +2757,33 @@ End Module
 
 {{out}}
 <pre style="height:40ex">
-P(1,1)=1  
-P(2,1)=2  P(2,2)=2  
-P(3,1)=3  P(3,2)=6  P(3,3)=6  
-P(4,1)=4  P(4,2)=12  P(4,3)=24  P(4,4)=24  
-P(5,1)=5  P(5,2)=20  P(5,3)=60  P(5,4)=120  P(5,5)=120  
-P(6,1)=6  P(6,2)=30  P(6,3)=120  P(6,4)=360  P(6,5)=720  P(6,6)=720  
-P(7,1)=7  P(7,2)=42  P(7,3)=210  P(7,4)=840  P(7,5)=2520  P(7,6)=5040  P(7,7)=5040  
-P(8,1)=8  P(8,2)=56  P(8,3)=336  P(8,4)=1680  P(8,5)=6720  P(8,6)=20160  P(8,7)=40320  P(8,8)=40320  
-P(9,1)=9  P(9,2)=72  P(9,3)=504  P(9,4)=3024  P(9,5)=15120  P(9,6)=60480  P(9,7)=181440  P(9,8)=362880  P(9,9)=362880  
-P(10,1)=10  P(10,2)=90  P(10,3)=720  P(10,4)=5040  P(10,5)=30240  P(10,6)=151200  P(10,7)=604800  P(10,8)=1814400  P(10,9)=3628800  P(10,10)=3628800  
-P(11,1)=11  P(11,2)=110  P(11,3)=990  P(11,4)=7920  P(11,5)=55440  P(11,6)=332640  P(11,7)=1663200  P(11,8)=6652800  P(11,9)=19958400  P(11,10)=39916800  P(11,11)=39916800  
-P(12,1)=12  P(12,2)=132  P(12,3)=1320  P(12,4)=11880  P(12,5)=95040  P(12,6)=665280  P(12,7)=3991680  P(12,8)=19958400  P(12,9)=79833600  P(12,10)=239500800  P(12,11)=479001600  P(12,12)=479001600  
+P(1,1)=1
+P(2,1)=2  P(2,2)=2
+P(3,1)=3  P(3,2)=6  P(3,3)=6
+P(4,1)=4  P(4,2)=12  P(4,3)=24  P(4,4)=24
+P(5,1)=5  P(5,2)=20  P(5,3)=60  P(5,4)=120  P(5,5)=120
+P(6,1)=6  P(6,2)=30  P(6,3)=120  P(6,4)=360  P(6,5)=720  P(6,6)=720
+P(7,1)=7  P(7,2)=42  P(7,3)=210  P(7,4)=840  P(7,5)=2520  P(7,6)=5040  P(7,7)=5040
+P(8,1)=8  P(8,2)=56  P(8,3)=336  P(8,4)=1680  P(8,5)=6720  P(8,6)=20160  P(8,7)=40320  P(8,8)=40320
+P(9,1)=9  P(9,2)=72  P(9,3)=504  P(9,4)=3024  P(9,5)=15120  P(9,6)=60480  P(9,7)=181440  P(9,8)=362880  P(9,9)=362880
+P(10,1)=10  P(10,2)=90  P(10,3)=720  P(10,4)=5040  P(10,5)=30240  P(10,6)=151200  P(10,7)=604800  P(10,8)=1814400  P(10,9)=3628800  P(10,10)=3628800
+P(11,1)=11  P(11,2)=110  P(11,3)=990  P(11,4)=7920  P(11,5)=55440  P(11,6)=332640  P(11,7)=1663200  P(11,8)=6652800  P(11,9)=19958400  P(11,10)=39916800  P(11,11)=39916800
+P(12,1)=12  P(12,2)=132  P(12,3)=1320  P(12,4)=11880  P(12,5)=95040  P(12,6)=665280  P(12,7)=3991680  P(12,8)=19958400  P(12,9)=79833600  P(12,10)=239500800  P(12,11)=479001600  P(12,12)=479001600
 --
-C(10,1)=10  C(10,3)=120  C(10,5)=252  C(10,7)=120  C(10,9)=10  
-C(20,1)=20  C(20,5)=15504  C(20,9)=167960  C(20,13)=77520  C(20,17)=1140  
-C(30,1)=30  C(30,7)=2035800  C(30,13)=119759850  C(30,19)=54627300  C(30,25)=142506  
-C(40,1)=40  C(40,9)=273438880  C(40,17)=88732378800  C(40,25)=40225345056  C(40,33)=18643560  
-C(50,1)=50  C(50,11)=37353738800  C(50,21)=67327446062800  C(50,31)=30405943383200  C(50,41)=2505433700  
-C(60,1)=60  C(60,13)=5166863427600  C(60,25)=51915437974328292  C(60,37)=23385332420868600  C(60,49)=342700125300  
+C(10,1)=10  C(10,3)=120  C(10,5)=252  C(10,7)=120  C(10,9)=10
+C(20,1)=20  C(20,5)=15504  C(20,9)=167960  C(20,13)=77520  C(20,17)=1140
+C(30,1)=30  C(30,7)=2035800  C(30,13)=119759850  C(30,19)=54627300  C(30,25)=142506
+C(40,1)=40  C(40,9)=273438880  C(40,17)=88732378800  C(40,25)=40225345056  C(40,33)=18643560
+C(50,1)=50  C(50,11)=37353738800  C(50,21)=67327446062800  C(50,31)=30405943383200  C(50,41)=2505433700
+C(60,1)=60  C(60,13)=5166863427600  C(60,25)=51915437974328292  C(60,37)=23385332420868600  C(60,49)=342700125300
 --
-P(5000,4000)=1,050873E+13758  P(5000,5000)=4,228578E+16325  
-P(10000,4000)=1,060455E+15594  P(10000,5000)=6,731009E+19333  
-P(15000,4000)=8,685001E+16448  P(15000,5000)=9,649854E+20469  
+P(5000,4000)=1,050873E+13758  P(5000,5000)=4,228578E+16325
+P(10000,4000)=1,060455E+15594  P(10000,5000)=6,731009E+19333
+P(15000,4000)=8,685001E+16448  P(15000,5000)=9,649854E+20469
 --
-C(5000,4000)=5,746236E+1084  C(5000,5000)=1,000000E+000  
-C(10000,4000)=5,798630E+2920  C(10000,5000)=1,591790E+3008  
-C(15000,4000)=4,749011E+3775  C(15000,5000)=2,282057E+4144  
+C(5000,4000)=5,746236E+1084  C(5000,5000)=1,000000E+000
+C(10000,4000)=5,798630E+2920  C(10000,5000)=1,591790E+3008
+C(15000,4000)=4,749011E+3775  C(15000,5000)=2,282057E+4144
 --
 C(5000,4000)=57462357505803375604893834658665168251899919793850512934468881710397678593302188064618445132583370701755893065787216750992391223467601994741594656878559929037277303674963658032197224327768110236651567704673226756781828332650887849150208195780031161286578505113618731045004523840401144118298192191997565735245181433457469532981432785237769191864102953974244072964471109551273603780184330987071947790993108191904370472373403157802158903129815170101708451875442019845175637901995588390614304812103202403626211504997668649346891167495657556154392183988627948442807346603688457854135114491955258804187129028256547543888109987151649038111791932035229202856007767332717845596528598314477979861265222941138323298702349967224867703420888363395662988291273283611081068577160905840445308086112429900453394212790633910614322699210850302387512579976209123523546689147207974269396548873838155355768985614160932799226261509866933143702889005270480654844312094564956178277998090168826124850606847021667494019587077659107276117413835912767949017954979839258481340540145909025953956582025656306426226560
 

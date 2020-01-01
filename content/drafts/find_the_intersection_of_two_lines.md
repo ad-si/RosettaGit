@@ -16,10 +16,10 @@ tags = []
 
 
 ;Task:
-Find the point of intersection of two lines in 2D. 
+Find the point of intersection of two lines in 2D.
 
 
-The 1<sup>st</sup>     line passes though   <big> (4,0) </big>   and   <big> (6,10)</big> . 
+The 1<sup>st</sup>     line passes though   <big> (4,0) </big>   and   <big> (6,10)</big> .
 
 The 2<sup>nd</sup> line passes though   <big> (0,3) </big>   and   <big> (10,7)</big> .
 
@@ -33,7 +33,7 @@ The 2<sup>nd</sup> line passes though   <big> (0,3) </big>   and   <big> (10,7)<
 
 ```360asm
 *        Intersection of two lines   01/03/2019
-INTERSEC CSECT                     
+INTERSEC CSECT
          USING  INTERSEC,R13       base register
          B      72(R15)            skip savearea
          DC     17F'0'             savearea
@@ -140,7 +140,7 @@ INTERSEC CSECT
          BAL    R14,FORMATF          format y
          MVC    PG+13(13),0(R1)      output y
        ENDIF    ,                  endif
-         MVC    PG+28(1),MSG       output msg  
+         MVC    PG+28(1),MSG       output msg
          XPRNT  PG,L'PG            print buffer
          L      R13,4(0,R13)       restore previous savearea pointer
          RETURN (14,12),RC=0       restore registers from calling sav
@@ -397,7 +397,7 @@ typedef struct{
 }point;
 
 double lineSlope(point a,point b){
-	
+
 	if(a.x-b.x == 0.0)
 		return NAN;
 	else
@@ -408,22 +408,22 @@ point extractPoint(char* str){
 	int i,j,start,end,length;
 	char* holder;
 	point c;
-	
+
 	for(i=0;str[i]!=00;i++){
 		if(str[i]=='(')
 			start = i;
 		if(str[i]==','||str[i]==')')
 		{
 			end = i;
-			
+
 			length = end - start;
-			
+
 			holder = (char*)malloc(length*sizeof(char));
-			
+
 			for(j=0;j<length-1;j++)
 				holder[j] = str[start + j + 1];
 			holder[j] = 00;
-			
+
 			if(str[i]==','){
 				start = i;
 				c.x = atof(holder);
@@ -432,15 +432,15 @@ point extractPoint(char* str){
 				c.y = atof(holder);
 		}
 	}
-	
+
 	return c;
 }
 
 point intersectionPoint(point a1,point a2,point b1,point b2){
 	point c;
-	
+
 	double slopeA = lineSlope(a1,a2), slopeB = lineSlope(b1,b2);
-	
+
 	if(slopeA==slopeB){
 		c.x = NAN;
 		c.y = NAN;
@@ -457,25 +457,25 @@ point intersectionPoint(point a1,point a2,point b1,point b2){
 		c.x = (slopeA*a1.x - slopeB*b1.x + b1.y - a1.y)/(slopeA - slopeB);
 		c.y = slopeB*(c.x - b1.x) + b1.y;
 	}
-	
+
 	return c;
 }
 
 int main(int argC,char* argV[])
 {
 	point c;
-	
+
 	if(argC < 5)
 		printf("Usage : %s <four points specified as (x,y) separated by a space>",argV[0]);
 	else{
 		c = intersectionPoint(extractPoint(argV[1]),extractPoint(argV[2]),extractPoint(argV[3]),extractPoint(argV[4]));
-		
+
 		if(c.x==NAN)
 			printf("The lines do not intersect, they are either parallel or co-incident.");
 		else
 			printf("Point of intersection : (%lf,%lf)",c.x,c.y);
 	}
-	
+
 	return 0;
 }
 
@@ -538,8 +538,8 @@ public class Program
 
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cmath>
 #include <assert.h>
 using namespace std;
@@ -559,7 +559,7 @@ bool LineLineIntersect(double x1, double y1, //Line 1 start
 	double x2, double y2, //Line 1 end
 	double x3, double y3, //Line 2 start
 	double x4, double y4, //Line 2 end
-	double &ixOut, double &iyOut) //Output 
+	double &ixOut, double &iyOut) //Output
 {
 	double detL1 = Det(x1, y1, x2, y2);
 	double detL2 = Det(x3, y3, x4, y4);
@@ -578,7 +578,7 @@ bool LineLineIntersect(double x1, double y1, //Line 1 start
 		return false;
 	}
 
-	ixOut = xnom / denom;	
+	ixOut = xnom / denom;
 	iyOut = ynom / denom;
 	if(!isfinite(ixOut) || !isfinite(iyOut)) //Probably a numerical issue
 		return false;
@@ -593,7 +593,7 @@ int main()
 	//Line 1
 	double x1=4.0, y1=0.0;
 	double x2=6.0, y2=10.0;
-	
+
 	//Line 2
 	double x3=0.0, y3=3.0;
 	double x4=10.0, y4=7.0;
@@ -712,21 +712,21 @@ intersect {a=3.18;b=4.23;c=7.13} {a=6.36;b=8.46;c=9.75}
 ```fortran
 program intersect_two_lines
   implicit none
-  
+
   type point
     real::x,y
   end type point
-  
+
   integer, parameter :: n = 4
   type(point)        :: p(n)
-  
-  p(1)%x = 4; p(1)%y = 0; p(2)%x = 6;  p(2)%y = 10 ! fist line 
+
+  p(1)%x = 4; p(1)%y = 0; p(2)%x = 6;  p(2)%y = 10 ! fist line
   p(3)%x = 0; p(3)%y = 3; p(4)%x = 10; p(4)%y = 7  ! second line
-  
+
   call intersect(p, n)
-  
+
   contains
-  
+
   subroutine intersect(p,m)
   integer, intent(in)       :: m
   type(point), intent(in)   :: p(m)
@@ -734,7 +734,7 @@ program intersect_two_lines
   real      :: a(2), b(2) ! y = a*x + b, for each line
   real      :: x, y       ! intersect point
   real      :: dx,dy      ! working variables
-  
+
   do i = 1, 2
     dx = p(2*i-1)%x - p(2*i)%x
     dy = p(2*i-1)%y - p(2*i)%y
@@ -746,12 +746,12 @@ program intersect_two_lines
         b(i) = p(2*i-1)%y - a(i)*p(2*i-1)%x
     endif
   enddo
-  
+
   if( a(1) - a(2) == 0. ) then
     write(*,*)"lines are not intersecting"
     return
   endif
-  
+
   x = ( b(2) - b(1) ) / ( a(1) - a(2) )
   y = a(1) * x + b(1)
   write(*,*)x,y
@@ -762,7 +762,7 @@ end program intersect_two_lines
 {{out}}
 
 ```txt
- 5.00000000       5.00000000 
+ 5.00000000       5.00000000
 ```
 
 
@@ -852,7 +852,7 @@ func CreateLine (a, b Point) Line {
 	slope := (b.y-a.y) / (b.x-a.x)
 	yint := a.y - slope*a.x
 	return Line{slope, yint}
-} 
+}
 
 func EvalX (l Line, x float64) float64 {
 	return l.slope*x + l.yint
@@ -1129,7 +1129,7 @@ public class Intersection {
 ## jq
 
 The implementation closely follows the zkl entry but uses the JSON array [x,y]
-to represent the point (x,y), and an array [P1,P2] to represent the line through 
+to represent the point (x,y), and an array [P1,P2] to represent the line through
 points P1 and P2.  Array destructuring is used for simplicity.
 
 
@@ -1745,7 +1745,7 @@ Intersection: (5,5.0)
 complete implementation taking care of all possibilities.
 
 
-Variables are named after the Austrian notation for a straight line: y=k*x+d 
+Variables are named after the Austrian notation for a straight line: y=k*x+d
 
 ```rexx
 say ggx1('4.0 0.0 6.0 10.0 0.0 3.0 10.0 7.0')
@@ -2164,7 +2164,7 @@ Else
   ([A](2,2)-[A](1,2))/([A](2,1)-[A](1,1))→[B](1,1)
   [A](1,2)-[B](1,1)*[A](1,1)→[B](2,1)
 End
-If [A](3,1)=[A](4,1) 
+If [A](3,1)=[A](4,1)
 Then
   [A](3,1)→[B](3,2)
   If [A](3,2)=[A](4,2):2→M
@@ -2175,10 +2175,10 @@ Else
 End
 If M=0 Then
   If [B](4,1)=0
-  Then 
+  Then
     If [B](4,2)=0
-    Then 
-      If [B](3,1)=[B](3,2) 
+    Then
+      If [B](3,1)=[B](3,2)
       Then:3→M
       Else:4→M
       End
@@ -2193,7 +2193,7 @@ If M=0 Then
       [B](1,1)*X+[B](2,1)→Y
     Else
       If [B](1,1)=[B](1,2)
-      Then 
+      Then
         If [B](2,1)=[B](2,2)
         Then:5→M
         Else:6→M
@@ -2238,7 +2238,7 @@ Public Type Line
   s As Point
   e As Point
 End Type
-  
+
 Public Function GetIntersectionPoint(L1 As Line, L2 As Line) As Point
 Dim a1 As Double
 Dim b1 As Double
@@ -2255,7 +2255,7 @@ Dim det As Double
   b2 = L2.s.x - L2.e.x
   c2 = a2 * L2.s.x + b2 * L2.s.y
   det = a1 * b2 - a2 * b1
-  
+
   If det Then
     With GetIntersectionPoint
       .x = (b2 * c1 - b1 * c2) / det
@@ -2270,7 +2270,7 @@ Sub Main()
 Dim ln1 As Line
 Dim ln2 As Line
 Dim ip As Point
-  
+
   ln1.s.x = 4
   ln1.s.y = 0
   ln1.e.x = 6
@@ -2282,15 +2282,15 @@ Dim ip As Point
   ip = GetIntersectionPoint(ln1, ln2)
   Debug.Assert Not ip.invalid
   Debug.Assert ip.x = 5 And ip.y = 5
-  
+
   LSet ln2.s = ln2.e
   ip = GetIntersectionPoint(ln1, ln2)
   Debug.Assert ip.invalid
-  
+
   LSet ln2 = ln1
   ip = GetIntersectionPoint(ln1, ln2)
   Debug.Assert ip.invalid
-  
+
 End Sub
 ```
 

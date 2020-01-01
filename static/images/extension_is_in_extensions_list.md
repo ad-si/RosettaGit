@@ -230,7 +230,7 @@ BEGIN {
     }
     filenames = "MyData.a##,MyData.tar.Gz,MyData.gzip,MyData.7z.backup,MyData...,MyData,MyData_v1.0.tar.bz2,MyData_v1.0.bz2"
     n = split(filenames, fn_arr, ",")
-    
+
     for (i=1; i<=n; i++) {
       ext_found = ""
       for (ext in ext_arr) {
@@ -311,7 +311,7 @@ Filename: "MyData" | Extension: "" | FALSE
 
 
 
-### C: dots allowed 
+### C: dots allowed
 
 There is no magic in extensions: they are just trailing characters in names.
 
@@ -381,10 +381,10 @@ bool test(char* fileName, char* extension, bool expectedResult)
 {
     bool result = checkFileExtension(fileName,extension);
     bool returnValue = result == expectedResult;
-    printf("%20s  result: %-5s  expected: %-5s  test %s\n", 
+    printf("%20s  result: %-5s  expected: %-5s  test %s\n",
         fileName,
         result         ? "true"   : "false",
-        expectedResult ? "true"   : "false", 
+        expectedResult ? "true"   : "false",
         returnValue    ? "passed" : "failed" );
     return returnValue;
 }
@@ -405,7 +405,7 @@ int main(void)
     &&   test("MyData...",          extensions,false)
     &&   test("MyData",             extensions,false)
     &&   test("MyData_v1.0.tar.bz2",extensions,true )
-    &&   test("MyData_v1.0.bz2",    extensions,false) 
+    &&   test("MyData_v1.0.bz2",    extensions,false)
     &&   test("filename",           extensions,false)
     )
         printf("\n%s\n", "All tests passed.");
@@ -449,13 +449,13 @@ press enter
 
 
 
-### C: another solution 
+### C: another solution
 
 According to this, an extension is whatever comes after the '''last''' dot. Dotless filename won't match anything.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
 
@@ -508,7 +508,7 @@ const char *fnames[] = {
 };
 
 const char *exts[] = {
-    ".txt", ".gz", ".bat", ".c", 
+    ".txt", ".gz", ".bat", ".c",
     ".c++", ".exe", ".pdf",
     NULL
 };
@@ -518,7 +518,7 @@ int  main(void)
   size_t i;
 
   for (i = 0; fnames[i]; ++i) {
-    printf("%s: %s\n", fnames[i], 
+    printf("%s: %s\n", fnames[i],
 	   ext_is_in_list(fnames[i], exts) ? "yes" : "no");
   }
 
@@ -612,10 +612,10 @@ void main()
   auto filenames = ["MyData.a##",
                     "MyData.tar.Gz",
                     "MyData.gzip",
-                    "MyData.7z.backup", 
-                    "MyData...", 
-                    "MyData", 
-                    "MyData_v1.0.tar.bz2", 
+                    "MyData.7z.backup",
+                    "MyData...",
+                    "MyData",
+                    "MyData_v1.0.tar.bz2",
                     "MyData_v1.0.bz2"];
 
   writeln("extensions: ", exts);
@@ -709,9 +709,9 @@ MyData_v1.0.tar.bz2  t
 
 ## Fortran
 
-The plan is to use the extractor function for file name extensions that was defined in [[Extract_file_extension#Fortran|another problem]] to obtain the extension's text, then use that text to index a character string of approved extensions. These are defined with the period included, but no extension's text can include a period - all start with a period and continue with letters or digits only - so the specification of a list of such items need not mess about with quotes and commas and so forth. The deed is done via function EXTIN(FNAME,LIST), but there is a lot of support stuff in the absence of an existing library to call upon. 
+The plan is to use the extractor function for file name extensions that was defined in [[Extract_file_extension#Fortran|another problem]] to obtain the extension's text, then use that text to index a character string of approved extensions. These are defined with the period included, but no extension's text can include a period - all start with a period and continue with letters or digits only - so the specification of a list of such items need not mess about with quotes and commas and so forth. The deed is done via function EXTIN(FNAME,LIST), but there is a lot of support stuff in the absence of an existing library to call upon.
 
-When the task was revised to include a # as a possible character in the file name extension part, the scan in FEXT that allowed only certain characters via GOODEXT required changing. One possibility was to increase the size of GOODEXT so as to encompass the three characters in ODDITIES, that includes a #. But it also includes a : (all this is from a different context) and in file names, under DOS, this character is special. So, all-in-all, it seemed better to retreat from exclusions and simply allow all characters, as per the original specification. This done, the function EXTIN that checked that the extension was one of a specified set seemed no longer restricted to file name extensions, so instead it became FOUND(TEXT,LIST) and the period, the only special character now, is used as the delimiter in LIST.  
+When the task was revised to include a # as a possible character in the file name extension part, the scan in FEXT that allowed only certain characters via GOODEXT required changing. One possibility was to increase the size of GOODEXT so as to encompass the three characters in ODDITIES, that includes a #. But it also includes a : (all this is from a different context) and in file names, under DOS, this character is special. So, all-in-all, it seemed better to retreat from exclusions and simply allow all characters, as per the original specification. This done, the function EXTIN that checked that the extension was one of a specified set seemed no longer restricted to file name extensions, so instead it became FOUND(TEXT,LIST) and the period, the only special character now, is used as the delimiter in LIST.
 
 Petty details include the list employing capitals only, as the match is to not distinguish capital from lower case letters, so in the usual way the candidate extension's text is converted to capitals. The list could be subjected to UPCASE, but it is bad form to damage what might be a constant, and one possibly in read-only storage at that. An internal working copy could be made which would then be fed to UPCASE, except that this would be a waste on every invocation. A further trick involves appending a period to the candidate text so that for example ".JP" becomes ".JP." - otherwise a ".JP" would be found in the sequence ".JPG" which would be wrong, so as a result, the list of texts must have a period appended to its last entry, otherwise it would not be findable. Again, this could be done internally, via <code>INDEX(LIST//".",EXT(1:L)//".")</code> at a run-time cost.
 
@@ -949,7 +949,7 @@ func main() {
 ```txt
 
 The listed extensions are:
-[zip rar 7z gz archive A## tar.bz2] 
+[zip rar 7z gz archive A## tar.bz2]
 
 MyData.a##           => true   (extension = A##)
 MyData.tar.Gz        => true   (extension = gz)
@@ -972,7 +972,7 @@ MyData_v1.0.bz2      => false  (extension = bz2)
 import Data.List
 import qualified Data.Char as Ch
 
-toLower :: String -> String 
+toLower :: String -> String
 toLower = map Ch.toLower
 
 isExt :: String -> [String] -> Bool
@@ -1005,7 +1005,7 @@ Given definition handles composite extensions as well.
 main = mapM_ (\f -> putStr(f ++ "\t") >> print (f `isExt` extensions)) files
   where
     files = [ "MyData.a##"
-            , "MyData.tar.Gz" 
+            , "MyData.tar.Gz"
             , "MyData.gzip"
             , "MyData.7z.backup"
             , "MyData..."
@@ -1132,24 +1132,24 @@ public class FileExt{
 	public static void main(String[] args){
 		String[] tests = {"text.txt", "text.TXT", "test.tar.gz", "test/test2.exe", "test\\test2.exe", "test", "a/b/c\\d/foo"};
 		String[] exts = {".txt",".gz","",".bat"};
-		
+
 		System.out.println("Extensions: " + Arrays.toString(exts) + "\n");
-		
+
 		for(String test:tests){
 			System.out.println(test +": " + extIsIn(test, exts));
 		}
 	}
-	
+
 	public static boolean extIsIn(String test, String... exts){
 		int lastSlash = Math.max(test.lastIndexOf('/'), test.lastIndexOf('\\')); //whichever one they decide to use today
 		String filename = test.substring(lastSlash + 1);//+1 to get rid of the slash or move to index 0 if there's no slash
-		
+
 		//end of the name if no dot, last dot index otherwise
 		int lastDot = filename.lastIndexOf('.') == -1 ? filename.length() : filename.lastIndexOf('.');
 		String ext = filename.substring(lastDot);//everything at the last dot and after is the extension
-		
+
 		Arrays.sort(exts);//sort for the binary search
-		
+
 		return Arrays.binarySearch(exts, ext, new Comparator<String>() { //just use the built-in binary search method
 			@Override                                                //it will let us specify a Comparator and it's fast enough
 			public int compare(String o1, String o2) {
@@ -1216,7 +1216,7 @@ def has_extension(list):
 '''Examples:'''
 
 ```jq
-("c:", "txt", "text.txt", "text.TXT", "foo.c", "foo.C++", "document.pdf") 
+("c:", "txt", "text.txt", "text.TXT", "foo.c", "foo.C++", "document.pdf")
 | has_extension([".txt", ".c"]) as $ext
 | if $ext then "\(.) has extension \($ext)"
   else "\"\(.)\" does not have an admissible file extension"
@@ -1373,7 +1373,7 @@ MyData_v1.0.bz2: false
 
 class FileExtension  {
   function : Main(args : String[]) ~ Nil {
-    files := ["MyData.a##", "MyData.tar.Gz", "MyData.gzip", 
+    files := ["MyData.a##", "MyData.tar.Gz", "MyData.gzip",
       "MyData.7z.backup", "MyData...", "MyData", "MyData_v1.0.tar.bz2", "MyData_v1.0.bz2"];
     exts := ["zip", "rar", "7z", "gz", "archive", "A##", "tar.bz2"];
     each(i : files) {
@@ -1573,7 +1573,7 @@ constant tests = {"MyData.a##",
 
 for i=1 to length(tests) do
     string ti = tests[i],
-           ext = get_known_extension(ti) 
+           ext = get_known_extension(ti)
     printf(1,"%-20s %-10s %s\n",{ti,ext,{"true","false"}[2-(find(ext,extensions)!=0)]})
 end for
 ```
@@ -1771,7 +1771,7 @@ MyData_v1.0.tar.bz2 -> .tar.bz2
 (define (file-extension-in-list? f lst)
   (let ([lcase (string-downcase f)])
     (ormap (lambda (x) (equal? (string-right lcase (string-length x)) x)) extensions)))
- 
+
 (for ((f (in-list filenames)))
   (printf "~a ~a~%" (~a #:width 20 f) (file-extension-in-list? f extensions)))
 
@@ -1851,7 +1851,7 @@ if fn\=''  then       @.1 = strip(fn)            /*A filename specified?   Then 
 # Project : File extension is in extensions list
 
 extensions = [".zip", ".rar", ".7z", ".gz", ".archive", ".a##", ".tar.bz2"]
- 
+
 filenames = ["MyData.a##", "MyData.tar.gz", "MyData.gzip", "MyData.7z.backup",
                    "MyData...", "MyData", "MyData_v1.0.tar.bz2", "MyData_v1.0.bz2"]
 
@@ -1893,7 +1893,7 @@ MyData_v1.0.bz2 -> false
 
 ```ruby
 def is_ext(filename, extensions)
-  if filename.respond_to?(:each) 
+  if filename.respond_to?(:each)
     filename.each do |fn|
       is_ext(fn, extensions)
     end
@@ -1912,7 +1912,7 @@ end
 
 ```txt
 
-is_ext ['MyData.a##', 'MyData.tar.Gz', 'MyData.gzip', 'MyData.7z.backup', 'MyData...', 'MyData', 'MyData.tar.bz2'], 
+is_ext ['MyData.a##', 'MyData.tar.Gz', 'MyData.gzip', 'MyData.7z.backup', 'MyData...', 'MyData', 'MyData.tar.bz2'],
        %w(zip rar 7z gz archive A## tar.bz2)
 #=>
           MyData.a## : true
@@ -2091,7 +2091,7 @@ foreach filename0 $f_list {
     foreach file_suffix $file_suffix_list {
         if { $file_suffix in $suffix_list } {
             set a_suffix_found_p 1
-        } 
+        }
     }
     puts -nonewline "${filename0}\t"
     if { $a_suffix_found_p } {

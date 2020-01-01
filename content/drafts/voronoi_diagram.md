@@ -13,19 +13,19 @@ tags = []
 {{task}}
 A [[wp:Voronoi diagram|Voronoi diagram]] is a diagram consisting of a number of sites. Each Voronoi site ''s''  also has a Voronoi cell consisting of all points closest to ''s''.
 
-The task is to demonstrate how to generate and display a Voroni diagram.  
+The task is to demonstrate how to generate and display a Voroni diagram.
 See algo [[K-means++ clustering]].
 
 
 ## C
 
 [[File:voronoi-C.png|center|300px]]
-C code drawing a color map of a set of Voronoi sites.  
-Image is in PNM P6, written to stdout.  
+C code drawing a color map of a set of Voronoi sites.
+Image is in PNM P6, written to stdout.
 Run as <code>a.out > stuff.pnm</code>.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -215,7 +215,7 @@ class MyBitmap {
 
     BITMAPFILEHEADER fileheader;
     BITMAPINFO infoheader;
-    BITMAP bitmap;    
+    BITMAP bitmap;
     GetObject(bmp_, sizeof(bitmap), &bitmap);
 
     DWORD* dwp_bits = new DWORD[bitmap.bmWidth * bitmap.bmHeight];
@@ -508,7 +508,7 @@ import Data.Word
 import Data.Array.Repa as Repa
 import Data.Array.Repa.IO.BMP
 
-{-# INLINE sqDistance #-}    
+{-# INLINE sqDistance #-}
 sqDistance :: Word32 -> Word32 -> Word32 -> Word32 -> Word32
 sqDistance !x1 !y1 !x2 !y2 = ((x1-x2)^2) + ((y1-y2)^2)
 
@@ -516,13 +516,13 @@ centers :: Int -> Int -> Array U DIM2 Word32
 centers nCenters nCells =
     fromListUnboxed (Z :. nCenters :. 2) $ take (2*nCenters) $ randomRs (0, fromIntegral nCells) (mkStdGen 1)
 
-applyReduce2 arr f = 
+applyReduce2 arr f =
     traverse arr (\(i :. j) -> i) $ \lookup (Z:.i) ->
         f (lookup (Z:.i:.0)) (lookup (Z:.i:.1))
 
 minimize1D arr = foldS f h t
   where
-    indexed arr = traverse arr id (\src idx@(Z :. i) -> (src idx, (fromIntegral i)))        
+    indexed arr = traverse arr id (\src idx@(Z :. i) -> (src idx, (fromIntegral i)))
     (Z :. n) = extent arr
     iarr = indexed arr
     h = iarr ! (Z :. 0)
@@ -538,7 +538,7 @@ voronoi nCenters nCells =
       cellReducer = applyReduce2 (centers nCenters nCells)
       {-# INLINE nearestCenterIndex #-}
       nearestCenterIndex = snd . (Repa.! Z) . minimize1D
-    in        
+    in
       Repa.fromFunction (Z :. nCells :. nCells :: DIM2) $ \ (Z:.i:.j) ->
           nearestCenterIndex $ cellReducer (sqDistance (fromIntegral i) (fromIntegral j))
 
@@ -555,7 +555,7 @@ colorize ctable = Repa.map $ \x -> ctable Repa.! (Z:. fromIntegral x)
 
 main = do
   let nsites = 150
-  let ctable = genColorTable nsites 
+  let ctable = genColorTable nsites
   voro <- computeP $ colorize ctable (voronoi nsites 512) :: IO (Array U DIM2 (Word8, Word8, Word8))
   writeImageToBMP "out.bmp" voro
 
@@ -573,18 +573,18 @@ link graphics,printf,strings
 
 record site(x,y,colour)  # site data position and colour
 invocable all            # needed for string metrics
- 
-procedure main(A)  # voronoi
- 
-&window := open("Voronoi","g","bg=black") | stop("Unable to open window")   
 
-WAttrib("canvas=hidden")   # figure out maximal size width & height 
+procedure main(A)  # voronoi
+
+&window := open("Voronoi","g","bg=black") | stop("Unable to open window")
+
+WAttrib("canvas=hidden")   # figure out maximal size width & height
 WAttrib(sprintf("size=%d,%d",WAttrib("displaywidth"),WAttrib("displayheight")))
 WAttrib("canvas=maximal")
 height := WAttrib("height")
 width  := WAttrib("width")
 
-metrics := ["hypot","taxi","taxi3"]  # different metrics 
+metrics := ["hypot","taxi","taxi3"]  # different metrics
 
 while case a := get(A) of {          # command line arguments
   "--sites"  | "-s" : sites  := 0 < integer(a := get(A)) | runerr(205,a)
@@ -601,12 +601,12 @@ while case a := get(A) of {          # command line arguments
 /sites := ?(r := integer(.1*width)) + r   # sites = random .1 to .2 of width if not given
 
 WAttrib(sprintf("label=Voronoi %dx%d %d %s",width,height,sites,metric))
-WAttrib(sprintf("size=%d,%d",width,height)) 
+WAttrib(sprintf("size=%d,%d",width,height))
 
 x := "0123456789abcdef"    # hex for random sites (colour)
 siteL := []
 every 1 to sites do        # random sites
-  put(siteL, site(?width,?height,cat("#",?x,?x,?x,?x,?x,?x))) 
+  put(siteL, site(?width,?height,cat("#",?x,?x,?x,?x,?x,?x)))
 
 VoronoiDiagram(width,height,siteL,metric)  # Voronoi-ize it
 WDone()
@@ -638,14 +638,14 @@ procedure VoronoiDiagram(width,height,siteL,metric)
 
    Fg("Black")
    every site := !siteL do                              # mark sites
-      DrawCircle(site.x,site.y,1)     
+      DrawCircle(site.x,site.y,1)
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides the printf family] 
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics support] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides the printf family]
+[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics support]
 [http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides cat ]
 
 
@@ -654,7 +654,7 @@ end
 
 
 
-###  Explicit version 
+###  Explicit version
 
 
 A straightforward solution: generate random points and for each pixel find the index of the least distance. Note that the square root is avoided to improve performance.
@@ -675,7 +675,7 @@ viewmat 25 voronoi 500 500
 Another solution generates Voronoi cells from Delaunay triangulation. The page [[Voronoi diagram/J/Delaunay triangulation]] also contains a convex hull algorithm. This is a vector based approach instead of a pixel based approach and is about twice as fast for this task's example.
 
 
-###  Tacit version 
+###  Tacit version
 
 
 This a direct reformulation of the explicit version.
@@ -692,7 +692,7 @@ viewmat 25 Voronoi 500 500 [ load'viewmat'
 
 
 ```delphi
- 
+
 procedure TForm1.Voronoi;
 const
    p = 3;
@@ -973,14 +973,14 @@ function pVoronoiD() {
 </script></head>
 <body style="font-family: arial, helvatica, sans-serif;">
   <b>Please input number of sites: </b>
-  <input id="sites" value=100 type="number" min="10" max="150" size="3">  
+  <input id="sites" value=100 type="number" min="10" max="150" size="3">
   <b>Metric: </b>
   <select id="mt">
     <option value=1 selected>Euclidean</option>
     <option value=2>Manhattan</option>
     <option value=3>Minkovski</option>
-  </select> 
-  <input type="button" value="Plot it!" onclick="pVoronoiD();">  
+  </select>
+  <input type="button" value="Plot it!" onclick="pVoronoiD();">
   <h3>Voronoi diagram</h3>
   <canvas id="cvsId" width="640" height="640" style="border: 2px inset;"></canvas>
 </body>
@@ -1039,7 +1039,7 @@ function voronoi_img!(img, n_centroids)
         append!(c, [img[p[1],p[2]]])
     end
     dots = [dots c]
-    
+
     for x in 1:n, y in 1:m
         distances = dist([x,y],dots) # distance
         nn = findmin(distances)[2]
@@ -1077,7 +1077,7 @@ fun distSq(x1: Int, x2: Int, y1: Int, y2: Int): Int {
 class Voronoi(val cells: Int, val size: Int) : JFrame("Voronoi Diagram") {
     val bi: BufferedImage
 
-    init { 
+    init {
         setBounds(0, 0, size, size)
         defaultCloseOperation = EXIT_ON_CLOSE
         val r = Random()
@@ -1089,7 +1089,7 @@ class Voronoi(val cells: Int, val size: Int) : JFrame("Voronoi Diagram") {
             for (y in 0 until size) {
                 var n = 0
                 for (i in 0 until cells) {
-                    if (distSq(px[i], x, py[i], y) < distSq(px[n], x, py[n], y)) n = i                   
+                    if (distSq(px[i], x, py[i], y) < distSq(px[n], x, py[n], y)) n = i
                 }
                 bi.setRGB(x, y, cl[n])
             }
@@ -1098,7 +1098,7 @@ class Voronoi(val cells: Int, val size: Int) : JFrame("Voronoi Diagram") {
         g.color = Color.BLACK
         for (i in 0 until cells) {
             g.fill(Ellipse2D.Double(px[i] - 2.5, py[i] - 2.5, 5.0, 5.0))
-        }      
+        }
     }
 
     override fun paint(g: Graphics) {
@@ -1116,7 +1116,7 @@ fun main(args: Array<String>) {
 ## Liberty BASIC
 
 For first site it fills the table with distances to that site.
-For other sites it looks at vertical lines left and right from its location. 
+For other sites it looks at vertical lines left and right from its location.
 If no place on a vertical line is closer to the current site, then there's no point looking further left or right.
 Don't bother square-rooting to get distances..
 
@@ -1313,7 +1313,7 @@ end
 
 ```Mathematica
 Needs["ComputationalGeometry`"]
-DiagramPlot[{{4.4, 14}, {6.7, 15.25}, {6.9, 12.8}, {2.1, 11.1}, {9.5, 14.9}, {13.2, 11.9}, {10.3, 12.3}, 
+DiagramPlot[{{4.4, 14}, {6.7, 15.25}, {6.9, 12.8}, {2.1, 11.1}, {9.5, 14.9}, {13.2, 11.9}, {10.3, 12.3},
 {6.8, 9.5}, {3.3, 7.7}, {0.6, 5.1}, {5.3, 2.4}, {8.45, 4.7}, {11.5, 9.6}, {13.8, 7.3}, {12.9, 3.1}, {11, 1.1}}]
 ```
 
@@ -1388,7 +1388,7 @@ proc generateVoronoi(img: gdImagePtr) =
   # random sites
   let sx = newSeqWith(nSites, rand(img_width))
   let sy = newSeqWith(nSites, rand(img_height))
-  
+
   # generate a random color for each site
   let sc = newSeqWith(nSites, img.setColor(rand(255), rand(255), rand(255)))
 
@@ -1435,13 +1435,13 @@ main()
 
 ```ocaml
 let n_sites = 220
- 
+
 let size_x = 640
 let size_y = 480
- 
+
 let sq2 ~x ~y =
   (x * x + y * y)
- 
+
 let rand_int_range a b =
   a + Random.int (b - a + 1)
 
@@ -1475,7 +1475,7 @@ let gen_map ~site ~rgb =
     Bytes.set buf (j+1) (char_of_int g);
     Bytes.set buf (j+2) (char_of_int b);
   done;
- 
+
   Printf.printf "P6\n%d %d\n255\n" size_x size_y;
   print_bytes buf;
 ;;
@@ -1569,7 +1569,7 @@ for my $type (keys %type) {
 {{trans|Python}}
 Perhaps "Inspired by Python" would be more accurate.
 
-Generates a Euclidean, a Taxicab and a Minkowski Voronoi diagram using the same set of domain points and colors. 
+Generates a Euclidean, a Taxicab and a Minkowski Voronoi diagram using the same set of domain points and colors.
 
 
 ```perl6
@@ -1628,7 +1628,7 @@ See [https://github.com/thundergnat/rc/blob/master/img/Voronoi-Euclidean-perl6.p
 
 {{trans|Liberty_BASIC}}
 {{libheader|pGUI}}
-Lifted the calculation strategy from Liberty Basic. 
+Lifted the calculation strategy from Liberty Basic.
 Can resize, double or halve sites (press +/-), and toggle between Euclid, Manhattan, and Minkowski (press e/m/w).
 
 ```Phix
@@ -1643,7 +1643,7 @@ cdCanvas cddbuffer, cdcanvas
 -- Stop any current drawing process before starting a new one:
 -- Without this it /is/ going to crash, if it tries to finish
 -- drawing all 100 sites, when there are now only 50, for eg.
-integer timer_active = 0    
+integer timer_active = 0
 
 integer nsites = 200
 integer last_width = -1, last_height
@@ -1762,7 +1762,7 @@ integer {width, height} = IupGetIntInt(canvas, "DRAWSIZE")
         if not timer_active then
             cdCanvasSetForeground(cddbuffer, CD_BLACK)
             for i=1 to nsites do
-                cdCanvasSector(cddbuffer, siteX[i], siteY[i], 2, 2, 0, 360) 
+                cdCanvasSector(cddbuffer, siteX[i], siteY[i], 2, 2, 0, 360)
             end for
             cdCanvasFlush(cddbuffer)
             IupSetStrAttribute(dlg, "TITLE", "Voronoi diagram - %s, %dx%d, %d sites, %3.2fs",{dmodes[dmode],width,height,nsites,time()-t0})
@@ -1808,7 +1808,7 @@ end function
 
 procedure main()
     IupOpen()
-    
+
     canvas = IupCanvas(NULL)
     IupSetAttribute(canvas, "RASTERSIZE", "600x400") -- initial size
     IupSetCallback(canvas, "MAP_CB", Icallback("map_cb"))
@@ -1833,7 +1833,7 @@ main()
 
 ## Prolog
 
-Works with SWI-Prolog and XPCE. 
+Works with SWI-Prolog and XPCE.
 
 3 Voronoi diagrams are given for the same sites, one with the Manhattan distance, one with the Euclidean distance and the last with the Minkowski distance (order 3).
 
@@ -1953,7 +1953,7 @@ Procedure MakeVoronoiDiagram(Array a.VCoo(1),xMax, yMax) ; Euclidean
         dist = Infinity()
         For i=0 To ArraySize(a())
           dt = SQ2(x-a(i)\x, y-a(i)\y)
-          If dt > dist 
+          If dt > dist
             Continue
           ElseIf dt < dist
             dist = dt
@@ -1969,14 +1969,14 @@ Procedure MakeVoronoiDiagram(Array a.VCoo(1),xMax, yMax) ; Euclidean
     Next
     StopDrawing()
   EndIf
-  ProcedureReturn img 
+  ProcedureReturn img
 EndProcedure
 
 ; Main code
 Define img, x, y, file$
 Dim V.VCoo(0)
 x = 640: y = 480
-If Not GenRandomPoints(V(), x, y, 150): End: EndIf  
+If Not GenRandomPoints(V(), x, y, 150): End: EndIf
 img = MakeVoronoiDiagram(V(), x, y)
 If img And OpenWindow(0, 0, 0, x, y, "Voronoi Diagram in PureBasic", #PB_Window_SystemMenu)
   ImageGadget(0, 0, 0, x, y, ImageID(img))
@@ -2031,7 +2031,7 @@ Procedure MakeVoronoiDiagram(Array a.VCoo(1),xMax, yMax)
           dy = y-a(i)\y
           dt = Sign(dx)*dx + Sign(dy)*dy
           If dt > dist ; no update
-            Continue 
+            Continue
           ElseIf dt < dist  ; an new 'owner' is found
             dist = dt
             Plot(x,y,a(i)\FillColour)
@@ -2046,14 +2046,14 @@ Procedure MakeVoronoiDiagram(Array a.VCoo(1),xMax, yMax)
     Next
     StopDrawing()
   EndIf
-  ProcedureReturn img 
+  ProcedureReturn img
 EndProcedure
 
 ; Main code
 Define img, x, y, file$
 Dim V.VCoo(0)
 x = 640: y = 480
-If Not GenRandomPoints(V(), x, y, 150): End: EndIf  
+If Not GenRandomPoints(V(), x, y, 150): End: EndIf
 img = MakeVoronoiDiagram(V(), x, y)
 If img And OpenWindow(0, 0, 0, x, y, "Voronoi Diagram in PureBasic", #PB_Window_SystemMenu)
   ImageGadget(0, 0, 0, x, y, ImageID(img))
@@ -2070,7 +2070,7 @@ EndIf
 
 
 ## Python
- 
+
 This implementation takes in a list of points, each point being a tuple and returns a dictionary consisting of all the points at a given site.
 
 ```python
@@ -2105,7 +2105,7 @@ def generate_voronoi_diagram(width, height, num_cells):
 			putpixel((x, y), (nr[j], ng[j], nb[j]))
 	image.save("VoronoiDiagram.png", "PNG")
         image.show()
-	
+
 generate_voronoi_diagram(500, 500, 25)
 ```
 
@@ -2115,12 +2115,12 @@ generate_voronoi_diagram(500, 500, 25)
 
 ## R
 
-One of the R's great powers is its unlimited number of packages, virtually thousands of them. For any applications big or small you can find a package. 
-In case of Voronoi diagram there are many of packages, e.g.: deldir, alphahull, dismo, ggplot, ggplot2, tripack, CGAL, etc. 
+One of the R's great powers is its unlimited number of packages, virtually thousands of them. For any applications big or small you can find a package.
+In case of Voronoi diagram there are many of packages, e.g.: deldir, alphahull, dismo, ggplot, ggplot2, tripack, CGAL, etc.
 Not to mention all linked packages.
 Do you need random colors? Again, find a few packages more...
 
-So, I've decided to use proven algorithms instead. Result - small compact code and 
+So, I've decided to use proven algorithms instead. Result - small compact code and
 beautiful diagrams with any reasonable amount of sites.
 A few custom helper functions simplified code, and they can be used for any other applications.
 
@@ -2154,7 +2154,7 @@ Metric <- function(x, y, mt) {
 ## mt - type of metric: 1 - Euclidean, 2 - Manhattan, 3 - Minkovski.
 pVoronoiD <- function(ns, fn="", ttl="",mt=1) {
   cat(" *** START VD:", date(), "\n");
-  if(mt<1||mt>3) {mt=1}; mts=""; if(mt>1) {mts=paste0(", mt - ",mt)}; 
+  if(mt<1||mt>3) {mt=1}; mts=""; if(mt>1) {mts=paste0(", mt - ",mt)};
   m=640; i=j=k=m1=m-2; x=y=d=dm=0;
   if(fn=="") {pf=paste0("VDR", mt, ns, ".png")} else {pf=paste0(fn, ".png")};
   if(ttl=="") {ttl=paste0("Voronoi diagram, sites - ", ns, mts)};
@@ -2162,7 +2162,7 @@ pVoronoiD <- function(ns, fn="", ttl="",mt=1) {
   plot(NA, xlim=c(0,m), ylim=c(0,m), xlab="", ylab="", main=ttl);
   X=numeric(ns); Y=numeric(ns); C=numeric(ns);
   for(i in 1:ns) {
-    X[i]=sample(0:m1, 1, replace=TRUE); 
+    X[i]=sample(0:m1, 1, replace=TRUE);
     Y[i]=sample(0:m1, 1, replace=TRUE);
     C[i]=randHclr();
   }
@@ -2194,16 +2194,16 @@ pVoronoiD(10,"","",3)   ## Minkovski metric
 
 > pVoronoiD(150)          ## Euclidean metric
  *** START VD: Sun Mar 12 19:04:26 2017
- *** Plot file - VDR1150.png title: Voronoi diagram, sites - 150 
- *** END VD: Sun Mar 12 19:11:03 2017 
+ *** Plot file - VDR1150.png title: Voronoi diagram, sites - 150
+ *** END VD: Sun Mar 12 19:11:03 2017
 > pVoronoiD(10,"","",2)   ## Manhattan metric
- *** START VD: Mon Mar 20 13:57:46 2017 
- *** Plot file - VDR210.png title: Voronoi diagram, sites - 10, mt - 2 
- *** END VD: Mon Mar 20 13:59:42 2017 
+ *** START VD: Mon Mar 20 13:57:46 2017
+ *** Plot file - VDR210.png title: Voronoi diagram, sites - 10, mt - 2
+ *** END VD: Mon Mar 20 13:59:42 2017
  > pVoronoiD(10,"","",3)   ## Minkovski metric
- *** START VD: Mon Mar 20 14:45:15 2017 
- *** Plot file - VDR310.png title: Voronoi diagram, sites - 10, mt - 3 
- *** END VD: Mon Mar 20 14:47:21 2017 
+ *** START VD: Mon Mar 20 14:45:15 2017
+ *** Plot file - VDR310.png title: Voronoi diagram, sites - 10, mt - 3
+ *** END VD: Mon Mar 20 14:47:21 2017
 
 ```
 
@@ -2212,7 +2212,7 @@ pVoronoiD(10,"","",3)   ## Minkovski metric
 ## Racket
 
 
-[[File:voronoi1.png|200px|thumb|right|Clustering using the nearest neigbour approach.]] 
+[[File:voronoi1.png|200px|thumb|right|Clustering using the nearest neigbour approach.]]
 
 First approach
 
@@ -2231,9 +2231,9 @@ First approach
     (for*/list ([x (in-range 0 1 0.005)]
                 [y (in-range 0 1 0.005)])
       (vector x y)))
-  
+
   (define clusters (clusterize pts point-list))
-  
+
   (plot
    (append
     (for/list ([r (in-list clusters)] [i (in-naturals)])
@@ -2255,11 +2255,11 @@ Different metrics
 ```racket
 
 (define (euclidean-distance a b)
-  (for/sum ([x (in-vector a)] [y (in-vector b)]) 
+  (for/sum ([x (in-vector a)] [y (in-vector b)])
     (sqr (- x y))))
 
 (define (manhattan-distance a b)
-  (for/sum ([x (in-vector a)] [y (in-vector b)]) 
+  (for/sum ([x (in-vector a)] [y (in-vector b)])
     (abs (- x y))))
 
 (define metric (make-parameter euclidean-distance))
@@ -2267,9 +2267,9 @@ Different metrics
 ```
 
 
-[[File:voronoi2.png|200px|thumb|right|The contour plot of the classification function.]] 
-[[File:voronoi3.png|200px|thumb|right|Using Manhattan metric.]] 
-[[File:voronoi4.png|200px|thumb|right|Voronoi diagram in 3D space.]] 
+[[File:voronoi2.png|200px|thumb|right|The contour plot of the classification function.]]
+[[File:voronoi3.png|200px|thumb|right|Using Manhattan metric.]]
+[[File:voronoi4.png|200px|thumb|right|Voronoi diagram in 3D space.]]
 
 Alternative approach
 
@@ -2281,7 +2281,7 @@ Alternative approach
 (define (plot-Voronoi-diagram2 point-list)
   (define n (length point-list))
   (define F (classification-function point-list))
-  (plot 
+  (plot
    (list
     (contour-intervals (compose F vector) 0 1 0 1
                        #:samples 300
@@ -2291,11 +2291,11 @@ Alternative approach
                        #:alphas '(1))
     (points point-list #:sym 'fullcircle3))))
 
-;; For a set of centroids returns a function 
-;; which finds the index of the centroid nearest 
+;; For a set of centroids returns a function
+;; which finds the index of the centroid nearest
 ;; to a given point
 (define (classification-function centroids)
-  (define tbl 
+  (define tbl
     (for/hash ([p (in-list centroids)] [i (in-naturals)])
       (values p i)))
   (λ (x)
@@ -2322,7 +2322,7 @@ Alternative approach
 ;; Using the classification function it is possible to plot Voronoi diagram in 3D.
 (define pts3d (for/list ([i 7]) (vector (random) (random) (random))))
 (plot3d (list
-         (isosurfaces3d (compose (classification-function pts3d) vector) 
+         (isosurfaces3d (compose (classification-function pts3d) vector)
                         0 1 0 1 0 1
                         #:line-styles '(transparent)
                         #:samples 100
@@ -2345,12 +2345,12 @@ load "guilib.ring"
 load "stdlib.ring"
 paint = null
 
-new qapp 
+new qapp
         {
         spots	= 100
         leftside = 400
         rightside = 400
- 
+
         locx = list(spots)
         locy = list(spots)
         rgb = newlist(spots,3)
@@ -2393,26 +2393,26 @@ func draw
              rgb[i][1] = floor(256 * randomf())
              rgb[i][2] = floor(256 * randomf())
              rgb[i][3] = floor(256 * randomf())
-        next 
-        for x = 1 to leftside 
-             for y = 1 to rightside 
+        next
+        for x = 1 to leftside
+             for y = 1 to rightside
                  reach[x][y] = pow((locx[1] - x),2) + pow((locy[1] - y),2)
                  seal[x][y] = 1
-             next 
-        next 
+             next
+        next
         for i = 2 to spots
-             for x = locx[i] to 0 step -1		
+             for x = locx[i] to 0 step -1
                  if not (chkpos(i,x,1, rightside-1))
-                   exit 
+                   exit
                  ok
-             next 
-             for x = locx[i] + 1 to leftside - 1		
+             next
+             for x = locx[i] + 1 to leftside - 1
                   if not (chkpos(i, x, 1, rightside-1))
                      exit
                   ok
-             next 
-        next  
-        for x = 1 to leftside 
+             next
+        next
+        for x = 1 to leftside
              for y = 1 to rightside
            	  c1 = rgb[seal[x][y]][1]
         	  c2 = rgb[seal[x][y]][2]
@@ -2423,9 +2423,9 @@ func draw
                   starty = y
                   nearest = seal[x][y]
                   for y = (y + 1)  to rightside
-                       if seal[x][y] != nearest 
+                       if seal[x][y] != nearest
                           y = y - 1
-                          exit 
+                          exit
                        ok
                   next
                   paint.drawline(x,starty,x,y + 1)
@@ -2449,7 +2449,7 @@ func chkpos(site,x,starty,endy)
 		chkpos = 1
              ok
 	     ok
-	next 
+	next
         return chkpos
 
 func randomf()
@@ -2485,7 +2485,7 @@ class ColourPixel < Pixel
 
   def distance_to(px, py)
     Math::hypot(px - x, py - y)
-  end 
+  end
 end
 
 width, height = 300, 200
@@ -2499,12 +2499,12 @@ pixmap = Pixmap.new(width,height)
   )
 end
 
-pixmap.each_pixel do |x, y| 
+pixmap.each_pixel do |x, y|
   nearest = @bases.min_by {|base| base.distance_to(x, y)}
   pixmap[x, y] = nearest.colour
 end
 
-@bases.each do |base| 
+@bases.each do |base|
   pixmap[base.x, base.y] = RGBColour::BLACK
   pixmap.draw_circle(base, 2, RGBColour::BLACK)
 end
@@ -2523,7 +2523,7 @@ graphic #g, 400,400
 spots		= 100
 leftSide	= 400
 rightSide	= 400
- 
+
 dim locX(spots)
 dim locY(spots)
 dim rgb(spots,3)
@@ -2558,7 +2558,7 @@ for i = 2 to spots
         if not(chkPos(i, x, 0, rightSide - 1)) then exit for
     next x
 next i
- 
+
 for x = 0 to leftSide - 1
     for y = 0 to rightSide - 1
 	c1	= rgb(seal(x, y),1)
@@ -2730,7 +2730,7 @@ fn event_loop(settings: &Settings) {
                 }
             });
         }
-    } 
+    }
 
 }
 
@@ -3029,9 +3029,9 @@ xEdge = 600
 yEdge = 400
 
 open window xEdge, yEdge
- 
+
 dim townX(sites), townY(sites), col$(sites)
- 
+
 for i =1 to sites
     townX(i) =int(xEdge *ran(1))
     townY(i) =int(yEdge *ran(1))
@@ -3039,7 +3039,7 @@ for i =1 to sites
     color col$(i)
     fill circle townX(i), townY(i), 2
 next i
- 
+
 dim nearestIndex(xEdge, yEdge)
 dim dist(xEdge, yEdge)
 
@@ -3050,13 +3050,13 @@ for x = 0 to xEdge - 1
         nearestIndex(x, y) = 1
     next y
 next x
- 
+
 color 0,0,255
 //for other towns
 for i = 2 to sites
     //display some progress
     //print at(0,20) "computing: ", (i/sites*100) using "###.#", " %"
-    
+
     //look left
     for x = townX(i) to 0 step -1
         if not(checkRow(i, x,0, yEdge - 1)) break
@@ -3066,7 +3066,7 @@ for i = 2 to sites
         if not(checkRow(i, x, 0, yEdge - 1)) break
     next x
 next i
- 
+
 for x = 0 to xEdge - 1
     for y =0 to yEdge - 1
     	color col$(nearestIndex(x, y))
@@ -3078,7 +3078,7 @@ for x = 0 to xEdge - 1
         line x, startY, x, y + 1
     next y
 next x
- 
+
 color 0,0,0
 for i =1 to sites
     fill circle townX( i), townY( i), 2
@@ -3087,7 +3087,7 @@ print peek("millisrunning"), " ms"
 
 sub checkRow(site, x, startY, endY)
     local dxSquared, y, check
-	
+
     dxSquared = (townX(site) - x) ^ 2
     for y = startY to endY
          dSquared = (townY(site) - y) ^ 2 + dxSquared
@@ -3111,7 +3111,7 @@ open window width, height
 export sub hypot(a, b)
    return (sqrt(a^2+b^2))
 end sub
- 
+
 sub generate_voronoi_diagram(width, height, num_cells)
     local nx(num_cells), ny(num_cells), nr(num_cells), ng(num_cells), nb(num_cells)
 
@@ -3136,7 +3136,7 @@ sub generate_voronoi_diagram(width, height, num_cells)
     next
 
 end sub
- 
+
 generate_voronoi_diagram(width, height, 25)
 ```
 

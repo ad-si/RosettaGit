@@ -12,18 +12,18 @@ tags = []
 
 {{task}}
 
-A [[wp:semordnilap|semordnilap]] is a word (or phrase) that spells a different word (or phrase) backward. 
+A [[wp:semordnilap|semordnilap]] is a word (or phrase) that spells a different word (or phrase) backward.
 "Semordnilap" is a word that itself is a semordnilap.
 
 Example: ''lager'' and ''regal''
 
 
- 
+
 ;Task
 Using only words from <u>[http://wiki.puzzlers.org/pub/wordlists/unixdict.txt this list]</u>, report the total number of unique semordnilap pairs, and print 5 examples. (Note that lager/regal and regal/lager should be counted as one unique pair.)
 
 
- 
+
 ;Related tasks
 * [[Palindrome_detection|Palindrome detection]]
 
@@ -42,14 +42,14 @@ We're using a map to keep track of what's been seen, and an array to store the r
 : processline \ m s --
   clone nip
   tuck s:rev
-  m:exists? if 
+  m:exists? if
     results @ rot a:push drop
   else
     swap true m:!
   then ;
 
 {} "unixdict.txt" app:asset >s
-' processline s:eachline 
+' processline s:eachline
 
 results @ dup a:len . " pairs" . cr
 a:shuffle
@@ -184,7 +184,7 @@ end Semordnilap;
 {{out}}
 
 ```txt
->./semordnilap unixdict.txt 
+>./semordnilap unixdict.txt
 ca - ac
 dab - bad
 diva - avid
@@ -239,7 +239,7 @@ Semordnilap pairs: 158
 ## ALGOL 68
 
 {{works with|ALGOL 68G|Any - tested with release 2.8.3.win32}}
-The Algol 68 G "read" PRAGMA is used to include the associative array code from Associative_array/Iteration. 
+The Algol 68 G "read" PRAGMA is used to include the associative array code from Associative_array/Iteration.
 
 ```algol68
 # find the semordnilaps in a list of words                           #
@@ -302,7 +302,7 @@ ELSE
         FI
     OD;
     close( input file );
-    print( ( whole( semordnilap count, 0 ), " semordnilaps found", newline ) ) 
+    print( ( whole( semordnilap count, 0 ), " semordnilaps found", newline ) )
 FI
 ```
 
@@ -416,9 +416,9 @@ al la
 ```bbcbasic
       INSTALL @lib$+"SORTLIB"
       Sort% = FN_sortinit(0,0)
-      
+
       DIM dict$(26000*2)
-      
+
       REM Load the dictionary, eliminating palindromes:
       dict% = OPENIN("C:\unixdict.txt")
       IF dict%=0 ERROR 100, "No dictionary file"
@@ -434,11 +434,11 @@ al la
       UNTIL EOF#dict%
       CLOSE #dict%
       Total% = index%
-      
+
       REM Sort the dictionary:
       C% = Total%
       CALL Sort%, dict$(0)
-      
+
       REM Find semordnilaps:
       pairs% = 0
       examples% = 0
@@ -451,10 +451,10 @@ al la
           pairs% += 1
         ENDIF
       NEXT
-      
+
       PRINT "Total number of unique pairs = "; pairs%/2
       END
-      
+
       DEF FNreverse(A$)
       LOCAL I%, L%, P%
       IF A$="" THEN =""
@@ -528,8 +528,8 @@ semordnilap 158 dnuoF
 
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <alloca.h> /* stdlib.h might not have obliged. */
 #include <string.h>
@@ -630,7 +630,7 @@ public class Semordnilap
         Console.WriteLine("5 random results:");
         foreach (string s in results.OrderBy(_ => random.Next()).Distinct().Take(5)) Console.WriteLine(s + " " + Reversed(s));
     }
-    
+
     private static IEnumerable<string> FindSemordnilaps(string url) {
         var found = new HashSet<string>();
         foreach (string line in GetLines(url)) {
@@ -642,7 +642,7 @@ public class Semordnilap
             }
         }
     }
-    
+
     private static IEnumerable<string> GetLines(string url) {
         WebRequest request = WebRequest.Create(url);
         using (var reader = new StreamReader(request.GetResponse().GetResponseStream(), true)) {
@@ -651,7 +651,7 @@ public class Semordnilap
             }
         }
     }
-    
+
     private static string Reversed(string value) => new string(value.Reverse().ToArray());
 }
 ```
@@ -674,8 +674,8 @@ gar rag
 ## C++
 
 
-```cpp>#include <fstream
-
+```cpp
+#include <fstream>
 #include <iostream>
 #include <set>
 #include <string>
@@ -735,8 +735,8 @@ Semordnilap pairs: 158
 
 (def dict (-> dict-file io/reader line-seq set))
 
-(defn semordnilap? [word] 
-  (let [rev (str/reverse word)] 
+(defn semordnilap? [word]
+  (let [rev (str/reverse word)]
     (and (not= word rev) (dict rev))))
 
 (def semordnilaps
@@ -745,8 +745,8 @@ Semordnilap pairs: 158
        (map #([% (str/reverse %)]))
        (filter (fn [[x y]] (<= (compare x y) 0)))))
 
-(printf "There are %d semordnilaps in %s.  Here are 5:\n" 
-  (count semordnilaps) 
+(printf "There are %d semordnilaps in %s.  Here are 5:\n"
+  (count semordnilaps)
   dict-file)
 
 (dorun (->> semordnilaps shuffle (take 5) sort (map println)))
@@ -892,14 +892,14 @@ We use the '''words''' library, and the french dictionary delivered with EchoLis
 (define (semordnilap? w)
 	    (define r (list->string (reverse (string->list w))))
 	    (and (word? r) (string<? r w)))
-	    
+
 ;; to get longest first
 (define (string-sort a b) (> (string-length a) (string-length b)))
-	    
+
 (define (task)
 ;; select unique words into the list 'mots'
     (define mots (make-set (words-select #:any null 999999)))
-    (define semordnilap 
+    (define semordnilap
 	    (list-sort string-sort (for/list ((w mots))
 	    #:when (semordnilap? w)
 	    w )))
@@ -908,8 +908,8 @@ We use the '''words''' library, and the french dictionary delivered with EchoLis
 
 {{out}}
 (task)
-    pairs       →     345    
-    longest     →     (rengager tresser strasse reveler retrace)    
+    pairs       →     345
+    longest     →     (rengager tresser strasse reveler retrace)
 
 
 ```
@@ -918,8 +918,8 @@ We use the '''words''' library, and the french dictionary delivered with EchoLis
 
 ## Eiffel
 
-First the programm reads the wordlist into an array. 
-Then it mirrors each word and searchs for it across the array using binary search. 
+First the programm reads the wordlist into an array.
+Then it mirrors each word and searchs for it across the array using binary search.
 
 ```Eiffel
 
@@ -1005,7 +1005,7 @@ end
 
 ```
 
-Test: 
+Test:
 
 ```Eiffel
 
@@ -1095,11 +1095,11 @@ Semordnilap pair: 158
 #!/usr/bin/env escript
 main([]) -> main(["unixdict.txt"]);
 
-main([DictFile]) -> 
+main([DictFile]) ->
   Dict = sets:from_list(read_lines(DictFile)),
-  Semordnilaps = 
+  Semordnilaps =
     lists:filter(fun([W,R]) -> W < R end,
-      lists:map(fun(W) -> [W, lists:reverse(W)] end, 
+      lists:map(fun(W) -> [W, lists:reverse(W)] end,
         semordnilaps(Dict))),
   io:fwrite("There are ~b semordnilaps in ~s~n",
             [length(Semordnilaps), DictFile]),
@@ -1116,14 +1116,14 @@ read_lines(File) when is_pid(File) ->
     eof        -> []
    end.
 
-is_semordnilap(Word, Dict) -> 
+is_semordnilap(Word, Dict) ->
   Rev = lists:reverse(Word),
   sets:is_element(Word, Dict) and sets:is_element(Rev, Dict).
 
-semordnilaps(Dict) -> 
+semordnilaps(Dict) ->
   lists:filter(fun(W) -> is_semordnilap(W, Dict) end, sets:to_list(Dict)).
 
-shuffle(List) -> 
+shuffle(List) ->
   [X||{_,X} <- lists:sort([ {random:uniform(), N} || N <- List])].
 
 chop(L) -> [_|T] = lists:reverse(L), lists:reverse(T).
@@ -1198,7 +1198,7 @@ CONSTANT: words $[ "unixdict.txt" utf8 file-lines ]
         [
             dup reverse 2dup
             { [ semordnilap? ] [ drop seen member? not ] } 2&&
-            [ 2dup [ seen push ] bi@ ,, ] [ 2drop ] if 
+            [ 2dup [ seen push ] bi@ ,, ] [ 2drop ] if
         ] each
     ]
 ] H{ } make >alist
@@ -1263,7 +1263,7 @@ wordlist constant dict
     2drop ;
 
 : nt-semicheck ( u1 nt -- u2 f )
-    dup >r name>string xreverse 2dup dict find-name-in dup if ( u1 c-addr u nt2) 
+    dup >r name>string xreverse 2dup dict find-name-in dup if ( u1 c-addr u nt2)
 	r@ < if ( u1 c-addr u ) \ count pairs only once and not palindromes
 	    2dup 4 pick .example
 	    rot 1+ -rot then
@@ -1288,7 +1288,7 @@ paz zap
 way yaw
 pay yap
 may yam
-158 
+158
 
 ```
 
@@ -1296,8 +1296,8 @@ may yam
 
 ## Fortran
 
-Please read the comments at the beginning of the f90 source to see the compilation instructions and output of 5 random words from a run.  
-Note that program Semordnilap opens the file unixdict.txt .  
+Please read the comments at the beginning of the f90 source to see the compilation instructions and output of 5 random words from a run.
+Note that program Semordnilap opens the file unixdict.txt .
 It does not read from stdin, hence the command line redirection from unixdict.txt is irrelevant.  I haven't bothered to change it.
 
 
@@ -1309,12 +1309,12 @@ It does not read from stdin, hence the command line redirection from unixdict.tx
 !
 !a=./F && make $a && $a < unixdict.txt
 !f95 -Wall -ffree-form F.F -o F
-! 5 of          158 semordnilaps            
-!yaw                     
-!room                    
-!xi                      
-!tim                     
-!nova                    
+! 5 of          158 semordnilaps
+!yaw
+!room
+!xi
+!tim
+!nova
 !
 !
 !Compilation finished at Sun May 19 21:50:08
@@ -1505,7 +1505,7 @@ Next
 
 Print
 
-' empty keyboard buffer 
+' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "Hit any key to end program"
 Sleep
@@ -1632,7 +1632,7 @@ Test Code
 ```groovy
 def semordnilaps = semordnilapWords(new URL('http://www.puzzlers.org/pub/wordlists/unixdict.txt'))
 println "Found ${semordnilaps.size()} semordnilap words"
-semordnilaps[0..<5].each { println "$it -> ${it.reverse()}" } 
+semordnilaps[0..<5].each { println "$it -> ${it.reverse()}" }
 ```
 
 {{out}}
@@ -1785,11 +1785,11 @@ public class Semordnilap {
 
 
 ```txt
-ca         ac        
-dab        bad       
-diva       avid      
-dna        and       
-drab       bard      
+ca         ac
+dab        bad
+diva       avid
+dna        and
+drab       bard
 
 Semordnilap pairs found: 158
 ```
@@ -1837,7 +1837,7 @@ sys.puts("There are " + count + " semordnilaps in " +
 var indices=[]
 for (var i=0; i<count; ++i) {
   if (Math.random() < 1/Math.ceil(i/5.0)) {
-    indices[i%5] = i 
+    indices[i%5] = i
   }
 }
 indices.sort()
@@ -1885,7 +1885,7 @@ print("There are " + count + " semordnilaps in " +
 var indices=[]
 for (var i=0; i<count; ++i) {
   if (Math.random() < 1/Math.ceil(i/5.0)) {
-     indices[i%5] = i 
+     indices[i%5] = i
   }
 }
 indices.sort()
@@ -1926,7 +1926,7 @@ haw,wah
     };
 
     const main = () => {
-        
+
         // xs :: [String]
         const xs = semordnilap(
             lines(readFile('unixdict.txt'))
@@ -2046,9 +2046,9 @@ julia> res[1:5,:]
 5x2 String Array:
  "able"  "elba"
  "abut"  "tuba"
- "ac"    "ca"  
- "ah"    "ha"  
- "al"    "la"  
+ "ac"    "ca"
+ "ah"    "ha"
+ "al"    "la"
 ```
 
 
@@ -2061,7 +2061,7 @@ julia> res[1:5,:]
 // version 1.2.0
 
 import java.io.File
- 
+
 fun main(args: Array<String>) {
     val words = File("unixdict.txt").readLines().toSet()
     val pairs = words.map { Pair(it, it.reversed()) }
@@ -2226,7 +2226,7 @@ print("There are " .. #semordnilaps .. " semordnilaps in " .. dictfile .. ".  He
 math.randomseed( os.time() )
 for i = 1, sample_size do
   local j
-  repeat 
+  repeat
     j = math.random(1,#semordnilaps)
   until semordnilaps[j]
   local f, r = unpack(semordnilaps[j])
@@ -2262,7 +2262,7 @@ Module semordnilaps {
             m$=a$:k=Len(a$):for i=1 to k {insert i, 1 m$=mid$(a$, k, 1):k--} : =m$
       }
       L=Doc.Par(d$)
-      m=Paragraph(d$, 0) 
+      m=Paragraph(d$, 0)
       If not Forward(d$,m) then exit
       i=1
       While m {
@@ -2353,11 +2353,11 @@ return
 
 ```txt
 
-ac ca 
-bad dab 
-avid diva 
-and dna 
-bard drab 
+ac ca
+bad dab
+avid diva
+and dna
+bard drab
 158 words in unixdict.txt have a palindrome
 
 ```
@@ -2487,7 +2487,7 @@ al la
 | w wr wrds |
    ListBuffer new ->wrds
    ListBuffer new
-   File new("unixdict.txt") forEach: w [ 
+   File new("unixdict.txt") forEach: w [
       wrds include(w reverse dup ->wr) ifTrue: [ [wr, w] over add ]
       w wr < ifTrue: [ wrds add(w) ]
       ] ;
@@ -2555,7 +2555,7 @@ part trap
 sequence words={}, semilordnaps={}
 object word
 constant fn = open("demo\\unixdict.txt","r")
- 
+
 while 1 do
     word = trim(gets(fn))
     if atom(word) then exit end if
@@ -2564,9 +2564,9 @@ while 1 do
     end if
     words = append(words,word)
 end while
- 
+
 close(fn)
- 
+
 ?length(semilordnaps)
 for i=1 to 5 do
     word = semilordnaps[i]
@@ -2697,7 +2697,7 @@ end find;
 
 ```txt
 
-There are 158 pairs. 
+There are 158 pairs.
 
 ```
 
@@ -2792,13 +2792,13 @@ Semordnilap count: 158
 	wordset = set(f.read().strip().split())
 
 >>> revlist = (''.join(word[::-1]) for word in wordset)
->>> pairs   = set((wrd, rev) for wrd, rev in zip(wordset, revlist) 
+>>> pairs   = set((wrd, rev) for wrd, rev in zip(wordset, revlist)
                   if wrd < rev and rev in wordset)
 >>> len(pairs)
 158
 >>> sorted(pairs, key=lambda p: (len(p[0]), p))[-5:]
 [('damon', 'nomad'), ('lager', 'regal'), ('leper', 'repel'), ('lever', 'revel'), ('kramer', 'remark')]
->>> 
+>>>
 ```
 
 
@@ -3135,7 +3135,7 @@ bad dab
 avid diva
 and dna
 bard drab
-158 words in unixdict.txt have a palindrome  
+158 words in unixdict.txt have a palindrome
 
 ```
 
@@ -3148,11 +3148,11 @@ This REXX version makes use of sparse (stemmed) arrays.
 
 The dictionary file wasn't assumed to be in any particular case (upper/lower/mixed).
 
-For instance,   '''DNA'''   <big> &amp; </big>   '''and'''   would be considered palindromes. 
+For instance,   '''DNA'''   <big> &amp; </big>   '''and'''   would be considered palindromes.
 
-The UNIXDICT dictionary specified to be used ''is'' all lowercase, however, but the REXX 
+The UNIXDICT dictionary specified to be used ''is'' all lowercase, however, but the REXX
 
-program assumes that the words may be in any ''case''.  
+program assumes that the words may be in any ''case''.
 
 
 The order of the words in the dictionary isn't important.
@@ -3214,9 +3214,9 @@ aList = file2list("C:\Ring\CalmoSoft\unixdict.txt")
 for n = 1 to len(aList)
      bool = semordnilap(aList[n])
      if (bool > 0 and nr > n)
-        num = num + 1 
+        num = num + 1
         if num % 31 = 0
-           see aList[n] + " " + aList[nr] + nl 
+           see aList[n] + " " + aList[nr] + nl
         ok
      ok
 next
@@ -3254,7 +3254,7 @@ Note: An alternative (old fashioned) method of solving this task (not using a Se
 ```Ruby
 dict = File.readlines("unixdict.txt").collect(&:strip)
 i = 0
-res = dict.collect(&:reverse).sort.select do |z| 
+res = dict.collect(&:reverse).sort.select do |z|
   i += 1  while z > dict[i] and i < dict.length-1
   z == dict[i] and z < z.reverse
 end
@@ -3297,7 +3297,7 @@ output is the same above.
 val wordsAll = scala.io.Source.fromURL("http://www.puzzlers.org/pub/wordlists/unixdict.txt").getLines.map(_.toLowerCase).to[IndexedSeq]
 
 /**
- * Given a sequence of lower-case words return a sub-sequence 
+ * Given a sequence of lower-case words return a sub-sequence
  * of matches containing the word and its reverse if the two
  * words are different.
  */
@@ -3305,9 +3305,9 @@ def semordnilap( words:Seq[String] ) : Seq[(String,String)] = {
 
   ( words.
     zipWithIndex.                        // index will be needed to eliminate duplicate
-    filter { 
-      case (w,i) => 
-        val j = words.indexOf(w.reverse) // eg. (able,62) and (elba,7519) 
+    filter {
+      case (w,i) =>
+        val j = words.indexOf(w.reverse) // eg. (able,62) and (elba,7519)
         i < j && w != w.reverse          // save the matches which are not palindromes
     }
   ).
@@ -3616,7 +3616,7 @@ Do Until objInFile.AtEndOfStream
 	If reverse_line <> line And objUnixDict.Exists(reverse_line) Then
 		objSemordnilap.Add line, reverse_line
 	End If
-Loop	
+Loop
 
 'Display the first 5 keys.
 k = 0

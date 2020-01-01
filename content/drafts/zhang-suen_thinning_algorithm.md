@@ -11,59 +11,59 @@ tags = []
 +++
 
 {{task}}
-This is an algorithm used to thin a black and white i.e. one bit per pixel images. 
+This is an algorithm used to thin a black and white i.e. one bit per pixel images.
 
 For example, with an input image of:
 
 ```txt
-                                                           
- #################                   #############         
- ##################               ################         
- ###################            ##################         
- ########     #######          ###################         
-   ######     #######         #######       ######         
-   ######     #######        #######                       
-   #################         #######                       
-   ################          #######                       
-   #################         #######                       
-   ######     #######        #######                       
-   ######     #######        #######                       
-   ######     #######         #######       ######         
- ########     #######          ###################         
- ########     ####### ######    ################## ######  
- ########     ####### ######      ################ ######  
- ########     ####### ######         ############# ######  
-                                                           
+
+ #################                   #############
+ ##################               ################
+ ###################            ##################
+ ########     #######          ###################
+   ######     #######         #######       ######
+   ######     #######        #######
+   #################         #######
+   ################          #######
+   #################         #######
+   ######     #######        #######
+   ######     #######        #######
+   ######     #######         #######       ######
+ ########     #######          ###################
+ ########     ####### ######    ################## ######
+ ########     ####### ######      ################ ######
+ ########     ####### ######         ############# ######
+
 ```
 
 It produces the thinned output:
 
 ```txt
-                                                           
-                                                           
-    # ##########                       #######             
-     ##        #                   ####       #            
-     #          #                 ##                       
-     #          #                #                         
-     #          #                #                         
-     #          #                #                         
-     ############               #                          
-     #          #               #                          
-     #          #                #                         
-     #          #                #                         
-     #          #                #                         
-     #                            ##                       
-     #                             ############            
-                       ###                          ###    
-                                                           
-                                                           
+
+
+    # ##########                       #######
+     ##        #                   ####       #
+     #          #                 ##
+     #          #                #
+     #          #                #
+     #          #                #
+     ############               #
+     #          #               #
+     #          #                #
+     #          #                #
+     #          #                #
+     #                            ##
+     #                             ############
+                       ###                          ###
+
+
 ```
 
 
 ;Algorithm:
 Assume black pixels are one and white pixels zero, and that the input image is a rectangular N by M array of ones and zeroes.
 
-The algorithm operates on all black pixels P1 that can have eight neighbours. 
+The algorithm operates on all black pixels P1 that can have eight neighbours.
 
 The neighbours are, in order, arranged as:
 
@@ -108,7 +108,7 @@ If any pixels were set in this round of either step 1 or step 2 then all steps a
 
 ;Task:
 # Write a routine to perform Zhang-Suen thinning on an image matrix of ones and zeroes.
-# Use the routine to thin the following image and show the output here on this page as either a matrix of ones and zeroes, an image, or an ASCII-art image of space/non-space characters. 
+# Use the routine to thin the following image and show the output here on this page as either a matrix of ones and zeroes, an image, or an ASCII-art image of space/non-space characters.
 
            00000000000000000000000000000000
            01111111110000000111111110000000
@@ -128,7 +128,7 @@ If any pixels were set in this round of either step 1 or step 2 then all steps a
 
 
 
- 
+
 
 ## AutoHotkey
 
@@ -162,7 +162,7 @@ Loop {
 			; (0)
 				if (Pix = 0 || (P := GetNeighbors(LineNum, PixNum, S)) = 1)
 					continue
-			; (1)	
+			; (1)
 				BP := 0
 				for j, Val in P
 					BP += Val
@@ -182,7 +182,7 @@ Loop {
 				}
 				else if (P[2] + P[4] + P[8] = 3 || P[2] + P[6] + P[8] = 3)
 					continue
-				
+
 				Noted.Insert([LineNum, PixNum])
 				FlipCount++
 			}
@@ -203,7 +203,7 @@ FileAppend, % Out, % FileOut
 
 GetNeighbors(Y, X, S) {
 	Neighbors := []
-	if ((Neighbors[8] := S[Y, X - 1]) = "") 
+	if ((Neighbors[8] := S[Y, X - 1]) = "")
 		return 1
 	if ((Neighbors[4] := S[Y, X + 1]) = "")
 		return 1
@@ -220,16 +220,16 @@ GetNeighbors(Y, X, S) {
 '''Output:'''
 
 ```txt
-                                
-  #######         ######        
-  #     #        ##             
-  #      #       #              
-  #     #        #              
-  ##### #        #              
-       ##        #              
-        #    #   ##    ##   #   
-         #         ####         
-                                
+
+  #######         ######
+  #     #        ##
+  #      #       #
+  #     #        #
+  ##### #        #
+       ##        #
+        #    #   ##    ##   #
+         #         ####
+
 ```
 
 
@@ -262,16 +262,16 @@ typedef struct{
 }pixel;
 
 int getBlackNeighbours(int row,int col){
-	
+
 	int i,j,sum = 0;
-	
+
 	for(i=-1;i<=1;i++){
 		for(j=-1;j<=1;j++){
 			if(i!=0 && j!=0)
 				sum+= (imageMatrix[row+i][col+i]==imagePixel);
 		}
 	}
-	
+
 	return sum;
 }
 
@@ -288,56 +288,56 @@ int getBWTransitions(int row,int col){
 
 int zhangSuenTest1(int row,int col){
 	int neighbours = getBlackNeighbours(row,col);
-	
-	return ((neighbours>=2 && neighbours<=6) 
-		&& (getBWTransitions(row,col)==1) 
-		&& (imageMatrix[row-1][col]==blankPixel||imageMatrix[row][col+1]==blankPixel||imageMatrix[row+1][col]==blankPixel) 
+
+	return ((neighbours>=2 && neighbours<=6)
+		&& (getBWTransitions(row,col)==1)
+		&& (imageMatrix[row-1][col]==blankPixel||imageMatrix[row][col+1]==blankPixel||imageMatrix[row+1][col]==blankPixel)
 		&& (imageMatrix[row][col+1]==blankPixel||imageMatrix[row+1][col]==blankPixel||imageMatrix[row][col-1]==blankPixel));
 }
 
 int zhangSuenTest2(int row,int col){
 	int neighbours = getBlackNeighbours(row,col);
-	
-	return ((neighbours>=2 && neighbours<=6) 
-		&& (getBWTransitions(row,col)==1) 
-		&& (imageMatrix[row-1][col]==blankPixel||imageMatrix[row][col+1]==blankPixel||imageMatrix[row][col-1]==blankPixel) 
+
+	return ((neighbours>=2 && neighbours<=6)
+		&& (getBWTransitions(row,col)==1)
+		&& (imageMatrix[row-1][col]==blankPixel||imageMatrix[row][col+1]==blankPixel||imageMatrix[row][col-1]==blankPixel)
 		&& (imageMatrix[row-1][col]==blankPixel||imageMatrix[row+1][col]==blankPixel||imageMatrix[row][col+1]==blankPixel));
 }
 
 void zhangSuen(char* inputFile, char* outputFile){
-	
+
 	int startRow = 1,startCol = 1,endRow,endCol,i,j,count,rows,cols,processed;
-	
+
 	pixel* markers;
-	
+
 	FILE* inputP = fopen(inputFile,"r");
-	
+
 	fscanf(inputP,"%d%d",&rows,&cols);
-	
+
 	fscanf(inputP,"%d%d",&blankPixel,&imagePixel);
-	
+
 	blankPixel<=9?blankPixel+='0':blankPixel;
 	imagePixel<=9?imagePixel+='0':imagePixel;
-	
+
 	printf("\nPrinting original image :\n");
-	
+
 	imageMatrix = (char**)malloc(rows*sizeof(char*));
-	
+
 	for(i=0;i<rows;i++){
 		imageMatrix[i] = (char*)malloc((cols+1)*sizeof(char));
 		fscanf(inputP,"%s\n",imageMatrix[i]);
 		printf("\n%s",imageMatrix[i]);
-		
+
 	}
 
 	fclose(inputP);
-	
+
 	endRow = rows-2;
 	endCol = cols-2;
 	do{
 		markers = (pixel*)malloc((endRow-startRow+1)*(endCol-startCol+1)*sizeof(pixel));
 		count = 0;
-		
+
 		for(i=startRow;i<=endRow;i++){
 			for(j=startCol;j<=endCol;j++){
 				if(imageMatrix[i][j]==imagePixel && zhangSuenTest1(i,j)==1){
@@ -347,17 +347,17 @@ void zhangSuen(char* inputFile, char* outputFile){
 				}
 			}
 		}
-		
+
 		processed = (count>0);
-		
+
 		for(i=0;i<count;i++){
 			imageMatrix[markers[i].row][markers[i].col] = blankPixel;
 		}
-		
+
 		free(markers);
 		markers = (pixel*)malloc((endRow-startRow+1)*(endCol-startCol+1)*sizeof(pixel));
 		count = 0;
-		
+
 		for(i=startRow;i<=endRow;i++){
 			for(j=startCol;j<=endCol;j++){
 				if(imageMatrix[i][j]==imagePixel && zhangSuenTest2(i,j)==1){
@@ -367,21 +367,21 @@ void zhangSuen(char* inputFile, char* outputFile){
 				}
 			}
 		}
-		
+
 		if(processed==0)
 			processed = (count>0);
-		
+
 		for(i=0;i<count;i++){
 			imageMatrix[markers[i].row][markers[i].col] = blankPixel;
 		}
-		
+
 		free(markers);
 	}while(processed==1);
-	
+
 	FILE* outputP = fopen(outputFile,"w");
-	
+
 	printf("\n\n\nPrinting image after applying Zhang Suen Thinning Algorithm : \n\n\n");
-	
+
 	for(i=0;i<rows;i++){
 		for(j=0;j<cols;j++){
 			printf("%c",imageMatrix[i][j]);
@@ -390,24 +390,24 @@ void zhangSuen(char* inputFile, char* outputFile){
 		printf("\n");
 		fprintf(outputP,"\n");
 	}
-	
+
 	fclose(outputP);
-	
+
 	printf("\nImage also written to : %s",outputFile);
 }
 
 int main()
 {
 	char inputFile[100],outputFile[100];
-	
+
 	printf("Enter full path of input image file : ");
 	scanf("%s",inputFile);
-	
+
 	printf("Enter full path of output image file : ");
 	scanf("%s",outputFile);
-	
+
 	zhangSuen(inputFile,outputFile);
-	
+
 	return 0;
 }
 
@@ -497,8 +497,8 @@ Contents of out.txt :
 
 Compiled with --std=c++14
 
-```CPP>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <sstream>
 #include <valarray>
@@ -544,7 +544,7 @@ public:
     static const pixel_t BLACK_PIX;
     static const pixel_t WHITE_PIX;
 
-    Image(unsigned width = 1, unsigned height = 1) 
+    Image(unsigned width = 1, unsigned height = 1)
     : width_{width}, height_{height}, data_( '\0', width_ * height_)
     {}
     Image(const Image& i) : width_{ i.width_}, height_{i.height_}, data_{i.data_}
@@ -611,7 +611,7 @@ public:
         , p6_{p5_ - 1}
         , p7_{p6_ - 1}
         , p8_{p1_ - 1}
-        , p9_{p2_ - 1} 
+        , p9_{p2_ - 1}
         {}
         const Image& img_;
         const Image::pixel_t& p1() const noexcept { return img_.data_[p1_]; }
@@ -679,7 +679,7 @@ public:
                         auto bp = black_pixels(n);
                         if (bp >= 2 && bp <= 6) {
                             auto tr = transitions_white_black(n);
-                            if (    tr == 1 
+                            if (    tr == 1
                                 && (n.p2() * n.p4() * n.p6() == 0)
                                 && (n.p4() * n.p6() * n.p8() == 0)
                                 ) {
@@ -687,7 +687,7 @@ public:
                                 ++changed_pixels;
                             }
                         }
-                    } 
+                    }
                 }
             }
             // Step 2
@@ -699,7 +699,7 @@ public:
                         auto bp = black_pixels(n);
                         if (bp >= 2 && bp <= 6) {
                             auto tr = transitions_white_black(n);
-                            if (    tr == 1 
+                            if (    tr == 1
                                 && (n.p2() * n.p4() * n.p8() == 0)
                                 && (n.p2() * n.p6() * n.p8() == 0)
                                 ) {
@@ -707,7 +707,7 @@ public:
                                 ++changed_pixels;
                             }
                         }
-                    } 
+                    }
                 }
             }
         } while(changed_pixels > 0);
@@ -1065,7 +1065,7 @@ import system'collections.
 import system'routines.
 import extensions.
 import extensions'routines.
- 
+
 const image = (
         "                                                          ",
         " #################                   #############        ",
@@ -1085,53 +1085,53 @@ const image = (
         " ########     ####### ######      ################ ###### ",
         " ########     ####### ######         ############# ###### ",
         "                                                          ").
- 
+
 nbrs = ((0, -1), (1, -1), (1, 0), (1, 1), (0, 1),
         (-1, 1), (-1, 0), (-1, -1), (0, -1)).
- 
+
 nbrGroups = (((0, 2, 4), (2, 4, 6)), ((0, 2, 6),
         (0, 4, 6))).
- 
+
 extension<Matrix<CharValue>> zhangsuenOp
 {
     proceed(r, c, toWhite, firstStep)
     [
         if (self[r][c] != $35)
             [ ^ false ].
- 
+
         int nn := self numNeighbors(r,c).
- 
+
         if ((nn < 2) || (nn > 6))
             [ ^ false ].
- 
+
         if(self numTransitions(r,c) != 1)
             [ ^ false ].
- 
+
         ifnot (self atLeastOneIsWhite(r,c,firstStep iif(0,1)))
             [ ^ false ].
- 
+
         toWhite append:{ x = c. y = r. }.
- 
-        ^ true.      
+
+        ^ true.
     ]
- 
+
     numNeighbors(r,c)
     [
         int count := 0.
- 
+
         0 till(nbrs length - 1) do(:i)
         [
             if (self[r + nbrs[i][1]][c + nbrs[i][0]] == $35)
                 [ count := count + 1. ].
         ].
- 
+
         ^ count.
     ]
- 
+
     numTransitions(r,c)
     [
         int count := 0.
- 
+
         0 till(nbrs length - 1) do(:i)
         [
             if (self[r + nbrs[i][1]][c + nbrs[i][0]] == $32)
@@ -1142,42 +1142,42 @@ extension<Matrix<CharValue>> zhangsuenOp
                 ].
             ].
         ].
- 
+
         ^ count.
-    ]  
- 
+    ]
+
     atLeastOneIsWhite(r, c, step)
     [
         int count := 0.
         var group := nbrGroups[step].
         0 till:2 do(:i)
-        [            
+        [
             0 till(group[i] length) seek(:j)
             [
                 var nbr := nbrs[group[i][j]].
- 
+
                 if (self[r + nbr[1]][c + nbr[0]] == $32)
                     [ count := count + 1. ^ true ].
- 
-                ^ false.                    
+
+                ^ false.
             ].
         ].
- 
+
         ^ count > 1.
-    ]    
- 
+    ]
+
     thinImage
     [
         bool firstStep := false.
         bool hasChanged := true.
         var toWhite := List new.
- 
+
         while (hasChanged || firstStep)
         [
             hasChanged := false.
             firstStep := firstStep inverted.
- 
-            1 till(self rows - 1) do(:r) 
+
+            1 till(self rows - 1) do(:r)
             [
                 1 till(self columns - 1) do(:c)
                 [
@@ -1185,37 +1185,37 @@ extension<Matrix<CharValue>> zhangsuenOp
                         [ hasChanged := true ].
                 ].
             ].
- 
-            toWhite forEach(:p)[ self[p y][p x] := $32. ].                
+
+            toWhite forEach(:p)[ self[p y][p x] := $32. ].
             toWhite clear.
         ].
     ]
- 
+
     print
     [
         var it := self enumerator.
- 
+
         it forEach(:ch) [ console print(ch," ") ].
         while (it next)
         [
             console writeLine.
- 
+
             it forEach(:ch) [ console print(ch," ") ].
         ].
     ]
 }
- 
+
 public program
 [
     Matrix<CharValue> grid := MatrixSpace::
     {
         int rows = image length.
- 
+
         int columns = image[0] length.
- 
+
         getAt(int i, int j)
             = image[i][j].
- 
+
         setAt(int i, int j, object o)
         [
             image[i][j] := o.
@@ -1223,9 +1223,9 @@ public program
     }.
 
     grid thinImage.
- 
+
     grid print.
- 
+
     console readChar
 ]
 ```
@@ -1234,24 +1234,24 @@ public program
 
 ```txt
 
-                                                                                                                    
-                                                                                                                  
-      #   # # # # # # # # # #                                               # # # # # # #                         
-        # #                 #                                       # # # #               #                       
-        #                     #                                   # #                                             
-        #                     #                                 #                                                 
-        #                     #                                 #                                                 
-        #                     #                                 #                                                 
-        # # # # # # # # # # # #                               #                                                   
-        #                     #                               #                                                   
-        #                     #                                 #                                                 
-        #                     #                                 #                                                 
-        #                     #                                 #                                                 
-        #                                                         # #                                             
-        #                                                           # # # # # # # # # # # #                       
-                                            # # #                                                     # # #       
-                                                                                                                  
-                                                                                                                  
+
+
+      #   # # # # # # # # # #                                               # # # # # # #
+        # #                 #                                       # # # #               #
+        #                     #                                   # #
+        #                     #                                 #
+        #                     #                                 #
+        #                     #                                 #
+        # # # # # # # # # # # #                               #
+        #                     #                               #
+        #                     #                                 #
+        #                     #                                 #
+        #                     #                                 #
+        #                                                         # #
+        #                                                           # # # # # # # # # # # #
+                                            # # #                                                     # # #
+
+
 ```
 
 
@@ -1263,7 +1263,7 @@ public program
 ```elixir
 defmodule ZhangSuen do
   @neighbours  [{-1,0},{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1}]  # 8 neighbours
-  
+
   def thinning(str, black \\ ?#) do
     s0 = for {line, i} <- (String.split(str, "\n") |> Enum.with_index),
              {c, j}    <- (to_char_list(line) |> Enum.with_index),
@@ -1274,17 +1274,17 @@ defmodule ZhangSuen do
     s1 = thinning_loop(s0, xrange, yrange)
     print(s1, xrange, yrange)
   end
-  
+
   defp thinning_loop(s0, xrange, yrange) do
     s1 = step(s0, xrange, yrange, 1)            # Step 1
     s2 = step(s1, xrange, yrange, 0)            # Step 2
     if Map.equal?(s0, s2), do: s2, else: thinning_loop(s2, xrange, yrange)
   end
-  
+
   defp step(s, xrange, yrange, g) do
     for x <- xrange, y <- yrange, into: Map.new, do: {{x,y}, s[{x,y}] - zs(s,x,y,g)}
   end
-  
+
   defp zs(s, x, y, g) do
     if get(s,x,y) == 0 or                                       # P1
       (get(s,x-1,y) + get(s,x,y+1) + get(s,x+g,y-1+g)) == 3 or  # P2, P4, P6/P8
@@ -1301,13 +1301,13 @@ defmodule ZhangSuen do
       end
     end
   end
-  
+
   defp get(map, x, y), do: Map.get(map, {x,y}, 0)
-  
+
   defp range(map), do: range(Map.keys(map), 0, 0)
   defp range([], xmax, ymax), do: {0 .. xmax, 0 .. ymax}
   defp range([{x,y} | t], xmax, ymax), do: range(t, max(x,xmax), max(y,ymax))
-  
+
   @display  %{0 => " ", 1 => "#"}
   defp print(map, xrange, yrange) do
     Enum.each(xrange, fn x ->
@@ -1358,62 +1358,62 @@ ZhangSuen.thinning(str, ?1)
 
 ```txt
 
-                                                           
- #################                   #############         
- ##################               ################         
- ###################            ##################         
- ########     #######          ###################         
-   ######     #######         #######       ######         
-   ######     #######        #######                       
-   #################         #######                       
-   ###############           #######                       
-   #################         #######                       
-   ######    ########        #######                       
-   ######     #######        #######                       
-   ######     #######         #######       ######         
- ########     #######          ###################         
- ########     #######  #####    ################## ######  
- ########     #######  #####      ################ ######  
- ########     #######  #####         ############# ######  
-                                                           
-                                                           
-                                                           
-    # ##########                       #######             
-     ##        #                   ####       #            
-     #          #                 ##                       
-     #          #                #                         
-     #          #                #                         
-     #          #                #                         
-     ############               #                          
-     #          #               #                          
-     #          #                #                         
-     #          #                #                         
-     #          #                #                         
-     #                            ##                       
-     #                             ############            
-                        ##                          ###    
-                                                           
-                                                           
-                                
- #########       ########       
- ###   ####     ####  ####      
- ###    ###     ###    ###      
- ###   ####     ###             
- #########      ###             
- ### ####       ###    ###      
- ###  ####  ### ####  #### ###  
- ###   #### ###  ########  ###  
-                                
-                                
-  #######         ######        
-  #     #        ##             
-  #      #       #              
-  #     #        #              
-  ##### #        #              
-       ##        #              
-        #    #   ##    ##   #   
-         #         ####         
-                                
+
+ #################                   #############
+ ##################               ################
+ ###################            ##################
+ ########     #######          ###################
+   ######     #######         #######       ######
+   ######     #######        #######
+   #################         #######
+   ###############           #######
+   #################         #######
+   ######    ########        #######
+   ######     #######        #######
+   ######     #######         #######       ######
+ ########     #######          ###################
+ ########     #######  #####    ################## ######
+ ########     #######  #####      ################ ######
+ ########     #######  #####         ############# ######
+
+
+
+    # ##########                       #######
+     ##        #                   ####       #
+     #          #                 ##
+     #          #                #
+     #          #                #
+     #          #                #
+     ############               #
+     #          #               #
+     #          #                #
+     #          #                #
+     #          #                #
+     #                            ##
+     #                             ############
+                        ##                          ###
+
+
+
+ #########       ########
+ ###   ####     ####  ####
+ ###    ###     ###    ###
+ ###   ####     ###
+ #########      ###
+ ### ####       ###    ###
+ ###  ####  ### ####  #### ###
+ ###   #### ###  ########  ###
+
+
+  #######         ######
+  #     #        ##
+  #      #       #
+  #     #        #
+  ##### #        #
+       ##        #
+        #    #   ##    ##   #
+         #         ####
+
 
 ```
 
@@ -1590,17 +1590,17 @@ End result
 
 ## Fortran
 
-With F90 came standardisation of a variety of array manipulation facilities. Since the image array is to be inspected as a whole then adjusted rather than adjusted step-by-step as it is inspected, the first thought was to employ the special facility of the FOR ALL statement, which is that in an expression such as 
+With F90 came standardisation of a variety of array manipulation facilities. Since the image array is to be inspected as a whole then adjusted rather than adjusted step-by-step as it is inspected, the first thought was to employ the special facility of the FOR ALL statement, which is that in an expression such as
 ```Fortarn
 FOR ALL (i = 2:n - 1) A(i) = (A(i - 1) + A(i) + A(i + 1))/3
 ```
- all right-hand-side expressions will be evaluated with the original values of the array, while in the less special array assignment 
+ all right-hand-side expressions will be evaluated with the original values of the array, while in the less special array assignment
 ```Fortran
 A(2:N - 1) = (A(1:N - 2) + A(2:N - 1) + A(3:N))/3
 ```
- as in the case of the equivalent DO-loop, the processing will be with a mixture of old and new values as the loop proceeds. 
+ as in the case of the equivalent DO-loop, the processing will be with a mixture of old and new values as the loop proceeds.
 
-So, that suggests something like 
+So, that suggests something like
 ```Fortran
       FOR ALL (I = 2:N - 1, J = 2:M - 1)
        WHERE(DOT(I,J) .NE. 0) DOT(I,J) = ADJUST(DOT,I,J)
@@ -1610,7 +1610,7 @@ This requires function ADJUST to be a "pure" function, and they are not supposed
 
 Instead, thought turned to more closely following the task specification, which involves producing a list of elements to be adjusted after an inspection pass. Given that array DOT is two-dimensional, it would be nice if an element could be indexed via an expression such as <code>DOT(INDEX)</code> where INDEX was an array of two elements with INDEX(1) = i, and INDEX(2) = j, so as to access DOT(i,j) If this were possible, then obviously one could hope that array INDEX could be extended so as to store the multiple elements of a list of such locations to access, with a view to <code>DOT(INDEX(1:n)) = 0</code> adjusting the image.
 
-Alas, such a syntax form is not accommodated. However, F90 also introduced the ability to define and use compound data types, such as the type PLACE as used below. It is not possible to define a type of a special, recognised form, such as say "SUBSCRIPT LIST" that can be used as dreamt of above, so the components are just ordinary variables. Two ordinary arrays could be used, one for each of the two subscripts, or a compound type could be devised in a hint towards self-documentation. Thus, 
+Alas, such a syntax form is not accommodated. However, F90 also introduced the ability to define and use compound data types, such as the type PLACE as used below. It is not possible to define a type of a special, recognised form, such as say "SUBSCRIPT LIST" that can be used as dreamt of above, so the components are just ordinary variables. Two ordinary arrays could be used, one for each of the two subscripts, or a compound type could be devised in a hint towards self-documentation. Thus,
 ```Fortran
       DOT(WHACK(1:WHACKCOUNT).I,WHACK(1:WHACKCOUNT).J) = 0
 ```
@@ -1725,7 +1725,7 @@ Can't use     DOT(WHACK(1:WHACKCOUNT).I,WHACK(1:WHACKCOUNT).J) = 0
        WRITE (6,*) "And after 'thinning'..."
        CALL SHOW(IMAGE)
 
-      END PROGRAM POKE 
+      END PROGRAM POKE
 ```
 
 
@@ -1960,16 +1960,16 @@ func (b wbArray) zhangSuen() {
 
 ```txt
 
-                                
-  #######         ######        
-  #     #        ##             
-  #      #       #              
-  #     #        #              
-  ##### #        #              
-       ##        #              
-        #    #   ##    ##   #   
-         #         ####         
-                                
+
+  #######         ######
+  #     #        ##
+  #      #       #
+  #     #        #
+  ##### #        #
+       ##        #
+        #    #   ##    ##   #
+         #         ####
+
 
 ```
 
@@ -2249,32 +2249,32 @@ main = mapM_ (putStrLn . showBWArray . thin . toBWArray) [sampleExA, sampleExB]
 {{out}}
 
 ```txt
-  #######         ######        
-  #     #        ##             
-  #      #       #              
-  #     #        #              
-  ##### #        #              
-       ##        #              
-        #    #   ##    ##   #   
-         #         ####         
-                                
-                                                          
-                                                          
-    # ##########                       #######            
-     ##        #                   ####       #           
-     #          #                 ##                      
-     #          #                #                        
-     #          #                #                        
-     #          #                #                        
-     ############               #                         
-     #          #               #                         
-     #          #                #                        
-     #          #                #                        
-     #          #                #                        
-     #                            ##                      
-     #                             ############           
-                       ###                          ###   
-                                                          
+  #######         ######
+  #     #        ##
+  #      #       #
+  #     #        #
+  ##### #        #
+       ##        #
+        #    #   ##    ##   #
+         #         ####
+
+
+
+    # ##########                       #######
+     ##        #                   ####       #
+     #          #                 ##
+     #          #                #
+     #          #                #
+     #          #                #
+     ############               #
+     #          #               #
+     #          #                #
+     #          #                #
+     #          #                #
+     #                            ##
+     #                             ############
+                       ###                          ###
+
 ```
 
 
@@ -2290,7 +2290,7 @@ frameImg=: 0 ,. 0 , >:@$ {. ]     NB. adds border of 0's to image
 
 neighbrs=: 1 :'(1 1 ,: 3 3)&(u;._3)'  NB. applies verb u to neighbourhoods
 
-Bdry=: 1 2 5 8 7 6 3 0 1          NB. map pixel index to neighbour order 
+Bdry=: 1 2 5 8 7 6 3 0 1          NB. map pixel index to neighbour order
 getPx=: { ,                       NB. get desired pixels from neighbourhood
 Ap1=: [: +/ 2 </\ Bdry&getPx      NB. count 0->1 transitions
 Bp1=: [: +/ [: }. Bdry&getPx      NB. count black neighbours
@@ -2345,16 +2345,16 @@ ExampleImg=: noun define
 )
 
    toASCII zhangSuen ExampleImg
-                                
-  #######         ######        
-  #     #        ##             
-  #      #       #              
-  #     #        #              
-  ##### #        #              
-       ##        #              
-        #    #   ##    ##   #   
-         #         ####         
-                                
+
+  #######         ######
+  #     #        ##
+  #      #       #
+  #     #        #
+  ##### #        #
+       ##        #
+        #    #   ##    ##   #
+         #         ####
+
 ```
 
 
@@ -2488,21 +2488,21 @@ Output:
 
 
 ```txt
-                                                          
-    # ##########                       #######            
-     ##        #                   ####       #           
-     #          #                 ##                      
-     #          #                #                        
-     #          #                #                        
-     #          #                #                        
-     ############               #                         
-     #          #               #                         
-     #          #                #                        
-     #          #                #                        
-     #          #                #                        
-     #                            ##                      
-     #                             ############           
-                       ###                          ###   
+
+    # ##########                       #######
+     ##        #                   ####       #
+     #          #                 ##
+     #          #                #
+     #          #                #
+     #          #                #
+     ############               #
+     #          #               #
+     #          #                #
+     #          #                #
+     #          #                #
+     #                            ##
+     #                             ############
+                       ###                          ###
 ```
 
 
@@ -2519,7 +2519,7 @@ function Point(x, y) {
 var ZhangSuen = (function () {
     function ZhangSuen() {
     }
-    ZhangSuen.image = 
+    ZhangSuen.image =
     ["                                                          ",
      " #################                   #############        ",
      " ##################               ################        ",
@@ -2625,21 +2625,21 @@ Output:
 
 
 ```txt
-                                                          
-    # ##########                       #######            
-     ##        #                   ####       #           
-     #          #                 ##                      
-     #          #                #                        
-     #          #                #                        
-     #          #                #                        
-     ############               #                         
-     #          #               #                         
-     #          #                #                        
-     #          #                #                        
-     #          #                #                        
-     #                            ##                      
-     #                             ############           
-                       ###                          ###    
+
+    # ##########                       #######
+     ##        #                   ####       #
+     #          #                 ##
+     #          #                #
+     #          #                #
+     #          #                #
+     ############               #
+     #          #               #
+     #          #                #
+     #          #                #
+     #          #                #
+     #                            ##
+     #                             ############
+                       ###                          ###
 ```
 
 
@@ -2669,7 +2669,7 @@ function surroundtesting(px, i, j, step)
         return false
     end
     isize, jsize = size(px)
-    if i < 1 || j < 1 || i == isize || j == jsize                         # criteria 0.both    
+    if i < 1 || j < 1 || i == isize || j == jsize                         # criteria 0.both
         return false
     end
     s = Array{Int,1}(9)
@@ -2776,12 +2776,12 @@ val image = arrayOf(
     " ########     ####### ######    ################## ###### ",
     " ########     ####### ######      ################ ###### ",
     " ########     ####### ######         ############# ###### ",
-    "                                                          " 
+    "                                                          "
 )
 
 val nbrs = arrayOf(
-    intArrayOf( 0, -1), intArrayOf( 1, -1), intArrayOf( 1,  0), 
-    intArrayOf( 1,  1), intArrayOf( 0,  1), intArrayOf(-1,  1), 
+    intArrayOf( 0, -1), intArrayOf( 1, -1), intArrayOf( 1,  0),
+    intArrayOf( 1,  1), intArrayOf( 0,  1), intArrayOf(-1,  1),
     intArrayOf(-1,  0), intArrayOf(-1, -1), intArrayOf( 0, -1)
 )
 
@@ -2803,7 +2803,7 @@ fun thinImage() {
             for (c in 1 until grid[0].size - 1) {
                 if (grid[r][c] != '#') continue
                 val nn = numNeighbors(r, c)
-                if (nn !in 2..6) continue 
+                if (nn !in 2..6) continue
                 if (numTransitions(r, c) != 1) continue
                 val step = if (firstStep) 0 else 1
                 if (!atLeastOneIsWhite(r, c, step)) continue
@@ -2861,22 +2861,22 @@ fun main(args: Array<String>) {
 
 ```txt
 
-                                                                                                                   
-    # ##########                       #######            
-     ##        #                   ####       #           
-     #          #                 ##                      
-     #          #                #                        
-     #          #                #                        
-     #          #                #                        
-     ############               #                         
-     #          #               #                         
-     #          #                #                        
-     #          #                #                        
-     #          #                #                        
-     #                            ##                      
-     #                             ############           
-                       ###                          ###   
-                                                                                                     
+
+    # ##########                       #######
+     ##        #                   ####       #
+     #          #                 ##
+     #          #                #
+     #          #                #
+     #          #                #
+     ############               #
+     #          #               #
+     #          #                #
+     #          #                #
+     #          #                #
+     #                            ##
+     #                             ############
+                       ###                          ###
+
 
 ```
 
@@ -3034,16 +3034,16 @@ Output:
 
 ```txt
 
-                                
-  #######         ######        
-  #     #        ##             
-  #      #       #              
-  #     #        #              
-  ##### #        #              
-       ##        #              
-        #    #   ##    ##   #   
-         #         ####         
-                                
+
+  #######         ######
+  #     #        ##
+  #      #       #
+  #     #        #
+  ##### #        #
+       ##        #
+        #    #   ##    ##   #
+         #         ####
+
 
 ```
 
@@ -3060,17 +3060,17 @@ nB[mat_] := Delete[mat // Flatten, 5] // Total;
 
 nA[mat_] := Module[{l},
    l = Flatten[mat][[{2, 3, 6, 9, 8, 7, 4, 1, 2}]];
-   Total[Map[If[#[[1]] == 0 && #[[2]] == 1, 1, 0] &, 
+   Total[Map[If[#[[1]] == 0 && #[[2]] == 1, 1, 0] &,
      Partition[l, 2, 1]]]
    ];
 
-iW1[mat_] := 
-  Module[{l = Flatten[mat]}, 
-   If[Apply[Times, l[[{2, 6, 8}]]] + Apply[Times, l[[{4, 6, 8}]]] == 
+iW1[mat_] :=
+  Module[{l = Flatten[mat]},
+   If[Apply[Times, l[[{2, 6, 8}]]] + Apply[Times, l[[{4, 6, 8}]]] ==
      0, 0, 1]];
-iW2[mat_] := 
-  Module[{l = Flatten[mat]}, 
-   If[Apply[Times, l[[{2, 6, 4}]]] + Apply[Times, l[[{4, 2, 8}]]] == 
+iW2[mat_] :=
+  Module[{l = Flatten[mat]},
+   If[Apply[Times, l[[{2, 6, 4}]]] + Apply[Times, l[[{4, 2, 8}]]] ==
      0, 0, 1]];
 
 check[i_, j_, dat_, t_] := Module[{mat, d = Dimensions[dat], r, c},
@@ -3078,18 +3078,18 @@ check[i_, j_, dat_, t_] := Module[{mat, d = Dimensions[dat], r, c},
    c = d[[2]];
    If[i > 1 && i < r && j > 1 && j < c,
     mat = dat[[i - 1 ;; i + 1, j - 1 ;; j + 1]];
-    If[dat[[i, j]] == 1 && nA[mat] == 1 && 2 <= nB[mat] <= 6 && 
+    If[dat[[i, j]] == 1 && nA[mat] == 1 && 2 <= nB[mat] <= 6 &&
       If[t == 1, iW1[mat], iW2[mat]] == 0, 0, dat[[i, j]]],
     dat[[i, j]]
     ]];
 
-iter[dat_] := 
-  Module[{i = 
-     Flatten[Outer[List, Range[Dimensions[dat][[1]]], 
+iter[dat_] :=
+  Module[{i =
+     Flatten[Outer[List, Range[Dimensions[dat][[1]]],
        Range[Dimensions[dat][[2]]]], 1], tmp},
-   tmp = Partition[check[#[[1]], #[[2]], dat, 1] & /@ i, 
+   tmp = Partition[check[#[[1]], #[[2]], dat, 1] & /@ i,
      Dimensions[dat][[2]]];
-   Partition[check[#[[1]], #[[2]], tmp, 2] & /@ i, 
+   Partition[check[#[[1]], #[[2]], tmp, 2] & /@ i,
     Dimensions[tmp][[2]]]];
 
 
@@ -3103,26 +3103,26 @@ Which results in:
 ```txt
 
 
-printMat[mat_] := 
+printMat[mat_] :=
   StringReplace[
-   Riffle[Map[StringJoin, Map[ToString, mat, {2}]], "\n"] // 
+   Riffle[Map[StringJoin, Map[ToString, mat, {2}]], "\n"] //
     StringJoin, {"1" -> "#", "0" -> "."}];
 
-dat1 = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 1, 
-    1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 
-    0}, {0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 
-    0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 0, 0, 0, 0, 1, 
-    1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 
-    0}, {0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 1, 
-    1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 
-    0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 0, 0, 1, 1, 1, 
-    1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 
-    0}, {0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 
-    1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+dat1 = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+    0}, {0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+    0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 0, 0, 0, 0, 1,
+    1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0,
+    0}, {0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0,
+    0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 0, 0, 1, 1, 1,
+    1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0,
+    0}, {0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1,
+    1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0}};
 
 printMat[dat1]
@@ -3149,55 +3149,55 @@ printMat[FixedPoint[iter, dat1]]
 .........#.........####.........
 ................................
 
-dat2 = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-    1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-    1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0}, {0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-    1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 1, 
-    1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 
-    1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 
-    0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 
-    1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-    1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0}, {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 1, 
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 
-    0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 
-    1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 
-    1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0}, {0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 
-    0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 
-    1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-    1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 
-    0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 
-    1, 1, 1, 0, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 
-    1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 
-    0}, {0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 
-    1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 
-    1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+dat2 = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 0, 0, 0, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+    0}, {0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1,
+    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 1,
+    1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+    1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 1, 0,
+    0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+    1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0}, {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 1, 0,
+    0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+    1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0}, {0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1,
+    1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0}, {0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1,
+    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
+    0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1,
+    1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1,
+    1, 1, 1, 0, 0}, {0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1,
+    1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0,
+    0}, {0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1,
+    1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0}, {0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
 printMat[dat2]
@@ -3402,9 +3402,9 @@ say @black.splice(0,h).join.trans('01' => '.#') while @black;
 Ping: 66 remaining after removing 33 41 49 56 67 71 74 80 83 86 89 99 106 114 119 120 121 131 135 138 146 169 178 195 197 210 215 217 227 230 233 236 238 240 243 246 249 251 253 257 258 259 263 264 266 268 269 270 273 274 279 280 283 284 285
 Pong: 47 remaining after removing 65 73 88 97 104 112 129 137 144 161 167 176 193 198 208 216 225 226 231
 Ping: 45 remaining after removing 87 194
-Pong: 45 remaining after removing 
-Ping: 45 remaining after removing 
-Pong: 45 remaining after removing 
+Pong: 45 remaining after removing
+Ping: 45 remaining after removing
+Pong: 45 remaining after removing
 ................................
 ..#######.........######........
 ..#.....#........##.............
@@ -3432,7 +3432,7 @@ string p2468 = ""
     for i=1 to length(n) do
         next = text[y+n[i][1]][x+n[i][2]]
         wtb += (prev='.' and next<='#')
-        bn += (i>1 and next<='#')   
+        bn += (i>1 and next<='#')
         if and_bits(i,1)=0 then p2468 = append(p2468,prev) end if
         prev = next
     end for
@@ -3441,7 +3441,7 @@ string p2468 = ""
     end if
     return {wtb,bn,p2468}
 end function
-        
+
 procedure Zhang_Suen(sequence text)
 integer wtb, bn, changed, changes
 string p2468    -- (p6842 for step 2)
@@ -3454,9 +3454,9 @@ string p2468    -- (p6842 for step 2)
                 for x=2 to length(text[y])-1 do
                     if text[y][x]='#' then
                         {wtb,bn,p2468} = AB(text,y,x,step)
-                        if wtb=1 
-                        and bn>=2 and bn<=6 
-                        and find('.',p2468[1..3]) 
+                        if wtb=1
+                        and bn>=2 and bn<=6
+                        and find('.',p2468[1..3])
                         and find('.',p2468[2..4])then
                             changes = 1
                             text[y][x] = '!'    -- (logically still black)
@@ -3531,7 +3531,7 @@ Zhang_Suen(small_rc)
 
    m = hbound(image,1); n = hbound(image,2);
 
-   call display; 
+   call display;
 
    /* Pixel labelling for pixels surrounding P1, co-ordinates (i,j). */
    /* P9 P2 P3 */
@@ -3619,7 +3619,7 @@ A: procedure (i,j) returns (fixed binary);
    n(6)  = image(i+1,j);  n(7) = image(i+1,j-1);
    n(8)  = image(i,j-1);  n(9) = image(i-1,j-1);
    n(10) = image(i-1,j);
-   
+
    return ( tally(string(n), '01'b) );
 end A;
 
@@ -3640,90 +3640,90 @@ end zhang;
 ```txt
 
 [Initial configuration:]
-row:  1                                
-row:  2 .........       ........       
-row:  3 ...   ....     ....  ....      
-row:  4 ...    ...     ...    ...      
-row:  5 ...   ....     ...             
-row:  6 .........      ...             
-row:  7 ... ....       ...    ...      
-row:  8 ...  ....  ... ....  .... ...  
-row:  9 ...   .... ...  ........  ...  
-row: 10                                
+row:  1
+row:  2 .........       ........
+row:  3 ...   ....     ....  ....
+row:  4 ...    ...     ...    ...
+row:  5 ...   ....     ...
+row:  6 .........      ...
+row:  7 ... ....       ...    ...
+row:  8 ...  ....  ... ....  .... ...
+row:  9 ...   .... ...  ........  ...
+row: 10
 
 [Intermeduiate "images" omitted]
 
-Final image after 3 iterations: 
-row:  1                                
-row:  2  .......         ......        
-row:  3  .     .        ..             
-row:  4  .      .       .              
-row:  5  .     .        .              
-row:  6  ..... .        .              
-row:  7       ..        .              
-row:  8        .    .   ..    ..   .   
-row:  9         .         ....         
+Final image after 3 iterations:
+row:  1
+row:  2  .......         ......
+row:  3  .     .        ..
+row:  4  .      .       .
+row:  5  .     .        .
+row:  6  ..... .        .
+row:  7       ..        .
+row:  8        .    .   ..    ..   .
+row:  9         .         ....
 row: 10
 
 Second image:
-Image to be thinned: 
-row  1:                         
-row  2:  ...............        
-row  3: ..................      
-row  4:  ..................     
-row  5:     ....       .....    
-row  6:     ....        .....   
-row  7:     ....         .....  
-row  8:     ....         .....  
-row  9:     ....        ......  
-row 10:     ....        .....   
-row 11:     ....       .....    
-row 12:     ....      .....     
-row 13:     ....     .....      
-row 14:     .............       
-row 15:     ..............      
-row 16:     ...............     
-row 17:     ....      ......    
-row 18:     ....       ......   
-row 19:     ....        .....   
-row 20:     ....        ......  
-row 21:     ....         .....  
-row 22:     ....         .....  
-row 23:     ....        ......  
-row 24:     ....       ......   
-row 25:  ...................    
-row 26: ...................     
-row 27:  .................      
-row 28:                         
+Image to be thinned:
+row  1:
+row  2:  ...............
+row  3: ..................
+row  4:  ..................
+row  5:     ....       .....
+row  6:     ....        .....
+row  7:     ....         .....
+row  8:     ....         .....
+row  9:     ....        ......
+row 10:     ....        .....
+row 11:     ....       .....
+row 12:     ....      .....
+row 13:     ....     .....
+row 14:     .............
+row 15:     ..............
+row 16:     ...............
+row 17:     ....      ......
+row 18:     ....       ......
+row 19:     ....        .....
+row 20:     ....        ......
+row 21:     ....         .....
+row 22:     ....         .....
+row 23:     ....        ......
+row 24:     ....       ......
+row 25:  ...................
+row 26: ...................
+row 27:  .................
+row 28:
 
-Final image after 3 iterations: 
-row  1:                         
-row  2:                         
-row  3:   ..............        
-row  4:      .          .       
-row  5:      .           .      
-row  6:      .            .     
-row  7:      .            .     
-row  8:      .            .     
-row  9:      .            .     
-row 10:      .           ..     
-row 11:      .           .      
-row 12:      .          .       
-row 13:      .          .       
-row 14:      .         .        
-row 15:      ...........        
-row 16:      .          .       
-row 17:      .          ..      
-row 18:      .           .      
-row 19:      .            .     
-row 20:      .            .     
-row 21:      .            .     
-row 22:      .            .     
-row 23:      .            .     
-row 24:      .           ..     
-row 25:      .          ..      
-row 26:   ... ...........       
-row 27:                         
+Final image after 3 iterations:
+row  1:
+row  2:
+row  3:   ..............
+row  4:      .          .
+row  5:      .           .
+row  6:      .            .
+row  7:      .            .
+row  8:      .            .
+row  9:      .            .
+row 10:      .           ..
+row 11:      .           .
+row 12:      .          .
+row 13:      .          .
+row 14:      .         .
+row 15:      ...........
+row 16:      .          .
+row 17:      .          ..
+row 18:      .           .
+row 19:      .            .
+row 20:      .            .
+row 21:      .            .
+row 22:      .            .
+row 23:      .            .
+row 24:      .           ..
+row 25:      .          ..
+row 26:   ... ...........
+row 27:
 row 28:
 ```
 
@@ -3791,7 +3791,7 @@ rc01 = '''\
 
 def intarray(binstring):
     '''Change a 2D matrix of 01 chars into a list of lists of ints'''
-    return [[1 if ch == '1' else 0 for ch in line] 
+    return [[1 if ch == '1' else 0 for ch in line]
             for line in binstring.strip().split()]
 
 def chararray(intmatrix):
@@ -3844,7 +3844,7 @@ def zhangSuen(image):
         #print changing1
         #print changing2
     return image
-            
+
 
 if __name__ == '__main__':
     for picture in (beforeTxt, smallrc01, rc01):
@@ -3940,7 +3940,7 @@ To thinned:
          (n/bour-check-1 P2 P4 P6 P8)
          (n/bour-check-2 P2 P4 P6 P8)
          idx))
-  
+
   (define (has-white?-246 P2 P4 P6 P8) (not-all-black? P2 P4 P6))
   (define (has-white?-468 P2 P4 P6 P8) (not-all-black? P4 P6 P8))
   (define (has-white?-248 P2 P4 P6 P8) (not-all-black? P2 P4 P8))
@@ -3952,15 +3952,15 @@ To thinned:
                                       even-Pn-check-1
                                       even-Pn-check-2)))
                 #:when idx) idx))
-  
+
   (define (step-1) (step-n has-white?-246 has-white?-468))
-  (define (step-2) (step-n has-white?-248 has-white?-268))  
+  (define (step-2) (step-n has-white?-248 has-white?-268))
   (define (inner-z-s-thin)
     (define changed-list-1 (step-1))
     (for ((idx (in-list changed-list-1))) (vector-set! v idx 0))
     (define changed-list-2 (step-2))
     (for ((idx (in-list changed-list-2))) (vector-set! v idx 0))
-    (unless (and (null? changed-list-1) (null? changed-list-2)) (inner-z-s-thin)))  
+    (unless (and (null? changed-list-1) (null? changed-list-2)) (inner-z-s-thin)))
   (inner-z-s-thin))
 
 (define (read-display-thin-display-image img-str)
@@ -4245,16 +4245,16 @@ ZhangSuen.new(task_example, "1")
 (only the requested result is shown here)
 
 ```txt
-                                
-  #######         ######        
-  #     #        ##             
-  #      #       #              
-  #     #        #              
-  ##### #        #              
-       ##        #              
-        #    #   ##    ##   #   
-         #         ####         
-                              
+
+  #######         ######
+  #     #        ##
+  #      #       #
+  #     #        #
+  ##### #        #
+       ##        #
+        #    #   ##    ##   #
+         #         ####
+
 
 ```
 
@@ -4328,16 +4328,16 @@ ZhangSuen.new(text, black: "1").display
 
 ```txt
 
-                                
-  #######         ######        
-  #     #        ##             
-  #      #       #              
-  #     #        #              
-  ##### #        #              
-       ##        #              
-        #    #   ##    ##   #   
-         #         ####         
-                                
+
+  #######         ######
+  #     #        ##
+  #      #       #
+  #     #        #
+  ##### #        #
+       ##        #
+        #    #   ##    ##   #
+         #         ####
+
 
 ```
 
@@ -4391,7 +4391,7 @@ proc step {number _data} {
 			set P4 [getpix $data [expr $x+1] $y]
 			set P6 [getpix $data $x [expr $y+1]]
 			set P8 [getpix $data [expr $x-1] $y]
-			if $cond {lappend hits $x $y} 
+			if $cond {lappend hits $x $y}
 		    }
 		}
 	    }
@@ -4480,7 +4480,7 @@ Private Function AB(text As Variant, y As Integer, x As Integer, step As Integer
     ret(2) = p2468
     AB = ret
 End Function
- 
+
 Private Sub Zhang_Suen(text As Variant)
     Dim wtb As Integer
     Dim bn As Integer

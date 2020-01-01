@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{draft task}}
-From lines of input starting with a line containing the numbers of pairs to follows, followed by that number of pairs of integers separated by a space on separate lines from STDIN, output the sum of each pair to STDOUT. 
+From lines of input starting with a line containing the numbers of pairs to follows, followed by that number of pairs of integers separated by a space on separate lines from STDIN, output the sum of each pair to STDOUT.
 
 
 ;Sample input with corresponding output:
@@ -98,8 +98,8 @@ OD
 
 
 ```awk
-NR == 1 {n=$1; next} 
-NR > n+1 {exit} 
+NR == 1 {n=$1; next}
+NR > n+1 {exit}
 {print $1+$2}
 ```
 
@@ -192,8 +192,8 @@ With the sample inputs:
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int main(void)
@@ -239,28 +239,28 @@ Modified in order to take in all inputs and then give the output, the original g
 
 #include <iostream>
 using namespace std;
- 
+
 int doStuff(int a, int b) {
     return a + b;
 }
- 
+
 int main() {
-	
+
 	int t, **list;
-	
+
 	cin >> t;
-	
+
 	list = new int*[t];
-	
+
 	for(int j=0; j<t; j++){
-		
+
 		list[j] = new int[2];
 		cin >> list[j][0]>> list[j][1];
-		
+
 	}
-	
+
 	cout << endl;
-	
+
 	for(int j=0;j<t;j++){
 		cout << doStuff(list[j][0], list[j][1]) << endl;;
 	}
@@ -351,7 +351,7 @@ IN: rosetta-code.pair-output
 : process-line ( str -- n )
     " " split [ string>number ] map-sum ;
 : main ( -- ) lines 1 tail [ process-line ] map [ . ] each ;
-    
+
 MAIN: main
 
 ```
@@ -384,7 +384,7 @@ program i_o_pairs
 
   read(*,*) npairs
   allocate(pairs(npairs,2))
- 
+
   do i = 1, npairs
     read(*,*) pairs(i,:)
   end do
@@ -401,18 +401,18 @@ end program
 ```freebasic
 ' FB 1.05.0 Win64
 
-Dim As UInteger n 
+Dim As UInteger n
 Dim As Integer x, y
 Input "", n
 Dim sums(1 To n) As Integer
 For i As Integer = 1 To  n
   Input "", x, y
   sums(i) =  x + y
-Next 
+Next
 Print
 For i As Integer = 1 To n
   Print Str(sums(i))
-Next 
+Next
 Sleep
 ```
 
@@ -543,8 +543,8 @@ public class Main {
 
 
 ```julia
-parseints() = (a = split(strip(readline()), r"\s+"); map(x -> parse(Int, x), a)) 
- 
+parseints() = (a = split(strip(readline()), r"\s+"); map(x -> parse(Int, x), a))
+
 const lines = parseints()[1]
 
 for _ in 1:lines
@@ -583,7 +583,7 @@ fun main(args: Array<String>) {
     val y = IntArray(n)
     for (i in 0 until n) {
         x[i] = sc.nextInt()
-        y[i] = sc.nextInt()  
+        y[i] = sc.nextInt()
     }
     println()
     for (i in 0 until n) println(x[i] + y[i])
@@ -660,7 +660,7 @@ $ cat input.txt
 -3 5
 100 2
 5 5
-$ cat input.txt | ocaml pairs.ml 
+$ cat input.txt | ocaml pairs.ml
 3
 30
 2
@@ -677,34 +677,34 @@ $ cat input.txt | ocaml pairs.ml
 
 Interestingly, this task is not possible to implement directly in GP, since <code>input()</code>, like the gp REPL itself, ignores spaces. One must use PARI:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <pari/pari.h>
 
 int main(void);
- 
+
 int
 main()
 {
   int i, n, a, b;
   GEN f, sum;
   pari_sp ltop;
-  
+
   // 1 MB stack, not using prime table
   pari_init(1000000, 0);
-  
+
   scanf("%d", &n);
   GEN f = cgetg(n+1, t_VEC);
 
   for (i = 1; i <= n; i++) {
     if (2 != scanf("%d %d", &a, &b)) abort();
-	
+
     ltop = avma;
-	
+
 	// Add a and b in PARI
 	sum = addii(stoi(a), stoi(b));
-	
+
 	// Store the sum in a vector, collecting garbage as you go.
 	gel(f, i) = gerepileupto(ltop, sum);
   }
@@ -796,7 +796,7 @@ $in, $line = (Get-Content $args[0]), 0
 $nb = $in[$line++]
 1..$nb | foreach {
     $sum = 0
-    $in[$line++].Split() | foreach{ $sum += $_} 
+    $in[$line++].Split() | foreach{ $sum += $_}
     $sum
 }
 
@@ -834,7 +834,7 @@ except NameError: raw_input = input
 		  for numberstring
 		  in raw_input().strip().split()))
 
-	
+
 5
 1 2
 3
@@ -846,7 +846,7 @@ except NameError: raw_input = input
 102
 5 5
 10
->>> 
+>>>
 ```
 
 (All but the first line of single numbers, (the 5), is output from the program).
@@ -858,10 +858,10 @@ More than is asked for by the task, but if working interactively then the follow
 
 ```python>>>
  for i in range(int(raw_input('lines: '))):
-	print(sum(int(numberstring) 
+	print(sum(int(numberstring)
                   for numberstring in raw_input('two numbers: ').strip().split()))
 
-	
+
 lines: 5
 two numbers: 1 2
 3
@@ -873,7 +873,7 @@ two numbers: 100 2
 102
 two numbers: 5 5
 10
->>> 
+>>>
 ```
 
 
@@ -883,16 +883,16 @@ two numbers: 5 5
 
 ```Racket
 #lang racket
-;(define line-number (read)) ;reads all kind of things 
+;(define line-number (read)) ;reads all kind of things
 ;(for ([i (in-range line-number)])
 ;  (displayln (+ (read) (read))))
 
 (define line-count (string->number ;only reads numbers
-                    (string-trim (read-line)))) 
- 
+                    (string-trim (read-line))))
+
 (for ([i (in-range line-count)])
-  (displayln (apply + 
-                    (map string->number 
+  (displayln (apply +
+                    (map string->number
                          (string-split (read-line))))))
 ```
 
@@ -900,7 +900,7 @@ two numbers: 5 5
 
 ## REXX
 
-This version isn't limited to summing integers, any form of number that REXX supports can be used. 
+This version isn't limited to summing integers, any form of number that REXX supports can be used.
 
 ```rexx
 /*REXX pgm reads a number (from the CL), reads that number of pairs, & writes their sum.*/
@@ -974,7 +974,7 @@ for n = 1 to len(pairs)
        see ev + nl
     ok
 next
->>> 
+>>>
 ```
 
 
@@ -1110,7 +1110,7 @@ Using the console as the input stream:
 
 ```zkl
 fcn pairs{
-   n:=ask("num pairs: ").toInt(); 
+   n:=ask("num pairs: ").toInt();
    do(n){ask("1 pair: ").split(" ").sum().println()}
 }
 ```
@@ -1129,7 +1129,7 @@ num pairs: 5
 2
 1 pair: 100 2
 102
-1 pair: 5 5 
+1 pair: 5 5
 10
 
 ```

@@ -129,10 +129,10 @@ A joke code entry... :-) ¢ but the code does actually work!
 # -*- coding: utf-8 -*- #
 
 STRING dog = "Benjamin";
-OP D = (INT og)STRING: "Samba"; 
+OP D = (INT og)STRING: "Samba";
 OP DOG = (INT gy)STRING: "Bernie";
 INT og=~, gy=~;
- 
+
 main:(
   printf(($"The three dogs are named "g", "g" and "g"."l$, dog, Dog, DOGgy));
   0
@@ -211,7 +211,7 @@ end.
 
 ```txt
 
-There is just one dog named: Bernie  
+There is just one dog named: Bernie
 
 ```
 
@@ -366,8 +366,8 @@ echo The three dogs are named Benjamin, Samba and Bernie
 C is case sensitive; if it would be case insensitive, an error about redefinition of a variable would be raised.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 static const char *dog = "Benjamin";
 static const char *Dog = "Samba";
@@ -386,14 +386,14 @@ int main()
 
 C++ is case-sensitive.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 using namespace std;
 
 int main() {
     string dog = "Benjamin", Dog = "Samba", DOG = "Bernie";
-    
+
     cout << "The three dogs are named " << dog << ", " << Dog << ", and " << DOG << endl;
 }
 ```
@@ -480,7 +480,7 @@ console.log "The three dogs are names #{dog}, #{Dog}, and #{DOG}."
 
 output
 <lang>
-> coffee foo.coffee 
+> coffee foo.coffee
 The three dogs are names Benjamin, Samba, and Bernie.
 
 ```
@@ -496,13 +496,13 @@ CL-USER> (let* ((dog "Benjamin") (Dog "Samba") (DOG "Bernie"))
 ; in: LAMBDA NIL
 ;     (LET* ((DOG "Benjamin") (DOG "Samba") (DOG "Bernie"))
 ;       (FORMAT NIL "There is just one dog named ~a." DOG))
-; 
+;
 ; caught STYLE-WARNING:
 ;   The variable DOG is defined but never used.
-; 
+;
 ; caught STYLE-WARNING:
 ;   The variable DOG is defined but never used.
-; 
+;
 ; compilation unit finished
 ;   caught 2 STYLE-WARNING conditions
 "There is just one dog named Bernie."
@@ -591,7 +591,7 @@ There is just one dog named Bernie
 local :dog "Benjamin"
 local :Dog "Samba"
 local :DOG "Bernie"
- 
+
 !print( "There are three dogs named " dog ", " Dog " and " DOG "." )
 ```
 
@@ -636,14 +636,14 @@ There is just one dog named Bernie
 (define DOG "Bernie")
 
 (printf "The three dogs are named %a, %a and %a. " dog Dog DOG)
-    The three dogs are named Benjamin, Samba and Bernie. 
+    The three dogs are named Benjamin, Samba and Bernie.
 
 ```
 
 
 ## Elena
 
-In ELENA identifiers are case sensitive. 
+In ELENA identifiers are case sensitive.
 ELENA 4.x:
 
 ```elena
@@ -817,7 +817,7 @@ Output:
 ' FB 1.05.0 Win64
 
 ' FreeBASIC is case-insensitive
-Dim dog As String 
+Dim dog As String
 dog = "Benjamin"
 Dog = "Samba"
 DOG = "Bernie"
@@ -868,7 +868,7 @@ Gambas in case insensitive
 
 ```gambas
 Public Sub Main()
-Dim dog As String 
+Dim dog As String
 
 Dog = "Benjamin"
 DOG = "Samba"
@@ -1053,10 +1053,10 @@ procedure main()
    dog := "Benjamin"
    Dog := "Samba"
    DOG := "Bernie"
-	
-   if dog == DOG then 
-      write("There is just one dog named ", dog,".") 
-   else 
+
+   if dog == DOG then
+      write("There is just one dog named ", dog,".")
+   else
       write("The three dogs are named ", dog, ", ", Dog, " and ", DOG, ".")
 
 end
@@ -1073,7 +1073,7 @@ end
    Dog=: 'Samba'
    DOG=: 'Bernie'
    'The three dogs are named ',dog,', ',Dog,', and ',DOG
-The three dogs are named Benjamin, Samba, and Bernie 
+The three dogs are named Benjamin, Samba, and Bernie
 ```
 
 
@@ -1257,7 +1257,7 @@ Output:
 
 ```txt
 3
-Samba 
+Samba
 ```
 
 
@@ -1310,7 +1310,7 @@ MoDuLe CheckIT {
       \\ keys as case sensitive if they are strings
       Inventory A= "Dog":=1, "dog":=2,"DOG":="Hello", 100:="Dog"
       Print A("Dog"), A("dog"), A$("DOG"), A$(100)
-      
+
       \\ Enumeration get type as defined (same case)
       Enum Dogs {Benjamin, Samba, Bernie}
       Print Type$(Bernie)="Dogs"
@@ -1318,7 +1318,7 @@ MoDuLe CheckIT {
       m=BenJamiN
       m++
       Print Eval$(m)="Samba"  ' same case as defined
-      
+
       DoG$="Benjamin"
       DOG$="Samba"
       doG$="Bernie"
@@ -1327,8 +1327,8 @@ MoDuLe CheckIT {
 dog:
       Print "dog"
       Exit
-Dog:   
-      Print "Dog"   
+Dog:
+      Print "Dog"
       GoTo dog
 }
 Checkit
@@ -1355,13 +1355,13 @@ There are three dogs named Benjamin, Samba and Bernie.
 
 ```Mathematica
 dog = "Benjamin"; Dog = "Samba"; DOG = "Bernie";
-"The three dogs are named "<> dog <>", "<> Dog <>" and "<> DOG 
+"The three dogs are named "<> dog <>", "<> Dog <>" and "<> DOG
 
 -> "The three dogs are named Benjamin, Samba and Bernie"
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 
 ```Matlab
@@ -1369,7 +1369,7 @@ dog = "Benjamin"; Dog = "Samba"; DOG = "Bernie";
   Dog = 'Samba';
   DOG = 'Bernie';
 
-  printf('There are three dogs %s, %s, %s.\n',dog, Dog, DOG); 
+  printf('There are three dogs %s, %s, %s.\n',dog, Dog, DOG);
 ```
 
 
@@ -1377,7 +1377,7 @@ Output
 
 
 ```txt
-  There are three dogs Benjamin, Samba, Bernie.  
+  There are three dogs Benjamin, Samba, Bernie.
 ```
 
 
@@ -1537,7 +1537,7 @@ IMPORT
   Out;
 VAR
   dog, Dog, DOG: STRING;
-BEGIN  
+BEGIN
   dog := "Benjamin";
   Dog := "Samba";
   DOG := "Bernie";
@@ -1795,7 +1795,7 @@ Python names are case sensitive:
  dog = 'Benjamin'; Dog = 'Samba'; DOG = 'Bernie'
 >>> print ('The three dogs are named ',dog,', ',Dog,', and ',DOG)
 The three dogs are named  Benjamin ,  Samba , and  Bernie
->>> 
+>>>
 ```
 
 
@@ -1808,7 +1808,7 @@ dog <- 'Benjamin'
 Dog <- 'Samba'
 DOG <- 'Bernie'
 
-# Having fun with cats and dogs 
+# Having fun with cats and dogs
 cat('The three dogs are named ')
 cat(dog)
 cat(', ')
@@ -1841,7 +1841,7 @@ The default setting for the Racket reader is to be case sensitive:
 (define dog "Benjamin")
 (define Dog "Samba")
 (define DOG "Bernie")
- 
+
 (if (equal? dog DOG)
     (displayln (~a "There is one dog named " DOG "."))
     (displayln (~a "The three dogs are named " dog ", " Dog ", and, " DOG ".")))
@@ -1865,7 +1865,7 @@ If you need case insensitive identifiers, then use #ci to turn on case insensiti
 #ci(module dogs racket
      (define dog "Benjamin")
      (set! Dog "Samba")
-     (set! DOG "Bernie")     
+     (set! DOG "Bernie")
      (if (equal? dog DOG)
          (displayln (~a "There is one dog named " DOG "."))
          (displayln (~a "The three dogs are named " dog ", " Dog ", and, " DOG "."))))
@@ -2015,7 +2015,7 @@ end
 ```
 
 
-Output: 
+Output:
 ```txt
 There are 5 dogs named Benjamin, Dogley, Fido, Samba, Bernie.
 
@@ -2085,7 +2085,7 @@ class MAIN is
     dog ::= "Benjamin";
     Dog ::= "Samba";
     DOG ::= "Bernie";
-    #OUT + #FMT("The three dogs are %s, %s and %s\n", 
+    #OUT + #FMT("The three dogs are %s, %s and %s\n",
                  dog, Dog, DOG);
   end;
 end;
@@ -2366,7 +2366,7 @@ The three dogs are named Benjamin, Samba, and Bernie
 
 ## VBA
 
-VBA is case sensitive case insensitive. The variable names 'dog', 'Dog' and 'DOG' can not co-exist. 
+VBA is case sensitive case insensitive. The variable names 'dog', 'Dog' and 'DOG' can not co-exist.
 
 ```vb
 Public Sub case_sensitivity()

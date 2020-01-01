@@ -22,7 +22,7 @@ tags = []
   I have written the following simple routine, which may separate the 'man-compilers' from the 'boy-compilers'
  &mdash; <span style="font-style:normal">Donald Knuth</span></blockquote>
 
-'''Task''': Imitate [[#ALGOL 60 - Knuth's example|Knuth's example in Algol 60]] in another language, as far as possible. 
+'''Task''': Imitate [[#ALGOL 60 - Knuth's example|Knuth's example in Algol 60]] in another language, as far as possible.
 
 '''Details''': Local variables of routines are often kept in [http://c2.com/cgi/wiki?ActivationRecord ''activation records''] (also ''call frames''). In many languages, these records are kept on a [[System stack|call stack]]. In Algol (and e.g. in [[Smalltalk]]), they are allocated on a [[heap]] instead. Hence it is possible to pass references to routines that still can use and update variables from their call environment, even if the routine where those variables are declared already returned. This difference in implementations is sometimes called the [[wp:Funarg_problem|Funarg Problem]].
 
@@ -133,9 +133,9 @@ The table below shows the result, call depths, and total calls for a range of ''
 |align="right"| 61,786,266
 |align="right"| 134,202,509
 |align="right"| 292,011,464
-| 
-| 
-| 
+|
+|
+|
 |-
 ! ''A'' depth
 |align="right"| 1
@@ -163,12 +163,12 @@ The table below shows the result, call depths, and total calls for a range of ''
 |align="right"| 2,097,152
 |align="right"| 4,194,304
 |align="right"| 8,388,608
-| 
-| 
-| 
-| 
-| 
-| 
+|
+|
+|
+|
+|
+|
 |-
 ! ''B'' called
 |align="right"| 0
@@ -196,12 +196,12 @@ The table below shows the result, call depths, and total calls for a range of ''
 |align="right"| 6,100,851
 |align="right"| 13,172,238
 |align="right"| 28,499,826
-| 
-| 
-| 
-| 
-| 
-| 
+|
+|
+|
+|
+|
+|
 |-
 ! ''B'' depth
 |align="right"| 0
@@ -229,12 +229,12 @@ The table below shows the result, call depths, and total calls for a range of ''
 |align="right"| 2,097,151
 |align="right"| 4,194,303
 |align="right"| 8,388,607
-| 
-| 
-| 
-| 
-| 
-| 
+|
+|
+|
+|
+|
+|
 |}
 
 
@@ -496,13 +496,13 @@ It is most likely that this was a deliberate attempt by Knuth to find yet anothe
 
 {{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of FORMATted transput}}
-[[wp:Charles_H._Lindsey|Charles H. Lindsey]] implemented this [http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A52/P43.HTM man boy test] in [[ALGOL 68]], and - as call by name is not necessary - the same algorithm can be implemented in many languages including [[:Category:Pascal|Pascal]] and [[:Category:PL/I|PL/I]] <!-- <ref>{{cite web|title=Block Structure and Environments | author=[[Charles H. Lindsey]] | url=http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A52/P43.HTM | accessyear=2007 | accessmonthday=May 2| year=1988 | month=Dec}}</ref>. -->  <!-- <ref>{{cite web|title="Man or boy" test|url=http://groups.google.com/group/comp.lang.haskell/browse_thread/thread/eef78beaaac73b26/7a6672ceea07b34e}}</ref>,  -->. 
+[[wp:Charles_H._Lindsey|Charles H. Lindsey]] implemented this [http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A52/P43.HTM man boy test] in [[ALGOL 68]], and - as call by name is not necessary - the same algorithm can be implemented in many languages including [[:Category:Pascal|Pascal]] and [[:Category:PL/I|PL/I]] <!-- <ref>{{cite web|title=Block Structure and Environments | author=[[Charles H. Lindsey]] | url=http://archive.computerhistory.org/resources/text/algol/algol_bulletin/A52/P43.HTM | accessyear=2007 | accessmonthday=May 2| year=1988 | month=Dec}}</ref>. -->  <!-- <ref>{{cite web|title="Man or boy" test|url=http://groups.google.com/group/comp.lang.haskell/browse_thread/thread/eef78beaaac73b26/7a6672ceea07b34e}}</ref>,  -->.
 
 ```algol68
 PROC a = (INT in k, PROC INT xl, x2, x3, x4, x5) INT:(
   INT k := in k;
   PROC b = INT: a(k-:=1, b, xl, x2, x3, x4);
-  ( k<=0 | x4 + x5 | b ) 
+  ( k<=0 | x4 + x5 | b )
 );
 
 test:(
@@ -567,12 +567,12 @@ Output:
 
 ```bbcbasic
       HIMEM = PAGE + 200000000 : REM Increase recursion depth
-      
+
       FOR k% = 0 TO 20
         PRINT FNA(k%, ^FN1(), ^FN_1(), ^FN_1(), ^FN1(), ^FN0())
       NEXT
       END
-      
+
       DEF FNA(k%, x1%, x2%, x3%, x4%, x5%)
       IF k% <= 0 THEN = FN(x4%)(x4%) + FN(x5%)(x5%)
       LOCAL b{}
@@ -587,7 +587,7 @@ Output:
       DEF FNB(!(^b{}+4))
       b.k% -= 1
       = FNA(b.k%, b{}, b.x1%, b.x2%, b.x3%, b.x4%)
-      
+
       DEF FN0(d%) = 0
       DEF FN1(d%) = 1
       DEF FN_1(d%) = -1
@@ -680,8 +680,8 @@ Two gcc extensions to the C language, nested functions and block sub-expressions
 
 Version: gcc version 4.1.2 20070925 (Red Hat 4.1.2-27)
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #define INT(body) ({ int lambda(){ body; }; lambda; })
 main(){
   int a(int k, int xl(), int x2(), int x3(), int x4(), int x5()){
@@ -698,10 +698,10 @@ main(){
 C without C99 or gcc extensions:
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
- 
+
 typedef struct frame
 {
   int (*fn)(struct frame*);
@@ -721,18 +721,18 @@ FRAME* Frame(FRAME* f, int* k, FRAME* x1, FRAME* x2, FRAME *x3, FRAME *x4, FRAME
 }
 
 int F(FRAME* a) { return a->u.constant; }
- 
+
 int eval(FRAME* a) { return a->fn(a); }
- 
+
 int A(FRAME*);
- 
+
 int B(FRAME* a)
 {
   int k = (*a->u.k -= 1);
   FRAME b = { B };
   return A(Frame(&b, &k, a, a->x1, a->x2, a->x3, a->x4));
 }
- 
+
 int A(FRAME* a)
 {
   return *a->u.k <= 0 ? eval(a->x4) + eval(a->x5) : B(a);
@@ -760,8 +760,8 @@ works with GCC
 Uses "shared_ptr" smart pointers from Boost / TR1 to automatically deallocate objects. Since we have an object which needs to pass a pointer to itself to another function, we need to use "enable_shared_from_this".
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <tr1/memory>
 using std::tr1::shared_ptr;
 using std::tr1::enable_shared_from_this;
@@ -819,8 +819,8 @@ int main() {
 
 {{works with|C++11}} uses anonymous functions. Tested with g++ version 4.5 and Visual C++ version 16 (Windows SDK 7.1):
 
-```cpp>#include <functional
-
+```cpp
+#include <functional>
 #include <iostream>
 
 typedef std::function<int()> F;
@@ -850,8 +850,8 @@ int main()
 
 {{works with|TR1}} uses TR1 without C++11.
 
-```cpp>#include <tr1/functional
-
+```cpp
+#include <tr1/functional>
 #include <iostream>
 
 typedef std::tr1::function<int()> F;
@@ -894,21 +894,21 @@ C# 2.0 supports anonymous methods which are used in the implementation below:
 
 ```csharp
 using System;
- 
+
 delegate T Func<T>();
- 
+
 class ManOrBoy
 {
     static void Main()
     {
         Console.WriteLine(A(10, C(1), C(-1), C(-1), C(1), C(0)));
     }
- 
+
     static Func<int> C(int i)
     {
         return delegate { return i; };
     }
- 
+
     static int A(int k, Func<int> x1, Func<int> x2, Func<int> x3, Func<int> x4, Func<int> x5)
     {
         Func<int> b = null;
@@ -927,14 +927,14 @@ C# 3.0 supports lambda expressions which are used in the implementation below:
 
 ```csharp
 using System;
- 
+
 class ManOrBoy
 {
     static void Main()
     {
         Console.WriteLine(A(10, () => 1, () => -1, () => -1, () => 1, () => 0));
     }
- 
+
     static int A(int k, Func<int> x1, Func<int> x2, Func<int> x3, Func<int> x4, Func<int> x5)
     {
         Func<int> b = null;
@@ -987,7 +987,7 @@ EVALUATE (0)  Unrecoverable error 650: Processor stack fault
 ```
 
 
-// Using Blinker v5.1 it can get up to k=7 by increasing the stack size via BLINKER PROCEDURE DEPTH 74.  But that may be the limit for 16-bit Clipper; increasing the procedure depth further does not help, and eventually results in 
+// Using Blinker v5.1 it can get up to k=7 by increasing the stack size via BLINKER PROCEDURE DEPTH 74.  But that may be the limit for 16-bit Clipper; increasing the procedure depth further does not help, and eventually results in
 
 ```txt
 A (0)  Unrecoverable error 667: Eval stack fault
@@ -997,26 +997,26 @@ A (0)  Unrecoverable error 667: Eval stack fault
 Harbour however is definitely a man: a 32-bit WinXP executable built with Harbour v3.1 and mingw gcc 4.6.1 manages up to k=13 with the default settings.  Increasing the stack size (via the Microsoft utility "editbin /STACK:nnn", or "ulimit -s" in linux) allows it to achieve deeper levels:
 
 ```txt
-A(          0 , 1, -1, -1, 1, 0) =          1 
-A(          1 , 1, -1, -1, 1, 0) =          0 
-A(          2 , 1, -1, -1, 1, 0) =         -2 
-A(          3 , 1, -1, -1, 1, 0) =          0 
-A(          4 , 1, -1, -1, 1, 0) =          1 
-A(          5 , 1, -1, -1, 1, 0) =          0 
-A(          6 , 1, -1, -1, 1, 0) =          1 
-A(          7 , 1, -1, -1, 1, 0) =         -1 
-A(          8 , 1, -1, -1, 1, 0) =        -10 
-A(          9 , 1, -1, -1, 1, 0) =        -30 
-A(         10 , 1, -1, -1, 1, 0) =        -67 
-A(         11 , 1, -1, -1, 1, 0) =       -138 
-A(         12 , 1, -1, -1, 1, 0) =       -291 
-A(         13 , 1, -1, -1, 1, 0) =       -642 
-A(         14 , 1, -1, -1, 1, 0) =      -1446 
-A(         15 , 1, -1, -1, 1, 0) =      -3250 
-A(         16 , 1, -1, -1, 1, 0) =      -7244 
-A(         17 , 1, -1, -1, 1, 0) =     -16065 
-A(         18 , 1, -1, -1, 1, 0) =     -35601 
-A(         19 , 1, -1, -1, 1, 0) =     -78985 
+A(          0 , 1, -1, -1, 1, 0) =          1
+A(          1 , 1, -1, -1, 1, 0) =          0
+A(          2 , 1, -1, -1, 1, 0) =         -2
+A(          3 , 1, -1, -1, 1, 0) =          0
+A(          4 , 1, -1, -1, 1, 0) =          1
+A(          5 , 1, -1, -1, 1, 0) =          0
+A(          6 , 1, -1, -1, 1, 0) =          1
+A(          7 , 1, -1, -1, 1, 0) =         -1
+A(          8 , 1, -1, -1, 1, 0) =        -10
+A(          9 , 1, -1, -1, 1, 0) =        -30
+A(         10 , 1, -1, -1, 1, 0) =        -67
+A(         11 , 1, -1, -1, 1, 0) =       -138
+A(         12 , 1, -1, -1, 1, 0) =       -291
+A(         13 , 1, -1, -1, 1, 0) =       -642
+A(         14 , 1, -1, -1, 1, 0) =      -1446
+A(         15 , 1, -1, -1, 1, 0) =      -3250
+A(         16 , 1, -1, -1, 1, 0) =      -7244
+A(         17 , 1, -1, -1, 1, 0) =     -16065
+A(         18 , 1, -1, -1, 1, 0) =     -35601
+A(         19 , 1, -1, -1, 1, 0) =     -78985
 A(         20 , 1, -1, -1, 1, 0) =    -175416
 ```
 
@@ -1371,7 +1371,7 @@ The latest editions of Delphi support anonymous methods, providing a way to impl
 ```delphi
 type
   TFunc<T> = reference to function: T;
-  
+
 function C(x: Integer): TFunc<Integer>;
 begin
   Result := function: Integer
@@ -1403,7 +1403,7 @@ end.
 
 =={{header|Déjà Vu}}==
 
-{{trans|Python}} 
+{{trans|Python}}
 
 
 ```dejavu
@@ -1432,7 +1432,7 @@ local x i:
 func C(i) {
     () => i
 }
- 
+
 func A(k, x1, x2, x3, x4, x5) {
     var b
     b = () => {
@@ -1506,7 +1506,7 @@ def a(var k, &x1, &x2, &x3, &x4, &x5) {
     bind bS {
         to get() {
             k -= 1
-            return a(k, &b, &x1, &x2, &x3, &x4)        
+            return a(k, &b, &x1, &x2, &x3, &x4)
         }
     }
     return if (k <= 0) { x4 + x5 } else { b }
@@ -1585,16 +1585,16 @@ import extensions;
 A(k,x1,x2,x3,x4,x5)
 {
     var m := new ref<int>(k);
-    
+
     var b := { m -= 1; ^ A(m,this self,x1,x2,x3,x4) };
-    
+
     if (m <= 0)
-    { 
-        ^ x4() + x5() 
+    {
+        ^ x4() + x5()
     }
     else
-    { 
-        ^ b() 
+    {
+        ^ b()
     }
 }
 
@@ -1642,11 +1642,11 @@ kloop(K) ->
         {decr,Pid} -> Pid ! K-1, kloop(K-1);
         _          -> ok
     end.
- 
- 
+
+
 a(K, X1, X2, X3, X4, X5) ->
     Kproc = spawn(fun() -> kloop(K) end),
-    B = fun (B) -> 
+    B = fun (B) ->
                 Kproc ! {decr, self()},
                 receive Kdecr ->
                         a(Kdecr, fun() -> B(B) end, X1, X2, X3, X4)
@@ -1656,9 +1656,9 @@ a(K, X1, X2, X3, X4, X5) ->
         K =< 0  -> Kproc ! X4() + X5();
         true    -> Kproc ! B(B)
     end.
- 
- 
-manorboy(N) ->                
+
+
+manorboy(N) ->
      a(N, fun() -> 1 end, fun() -> -1 end, fun() -> -1 end, fun() -> 1 end, fun() -> 0 end ).
 
 ```
@@ -1809,7 +1809,7 @@ Gforth provides flat closures [{: ... :}L ... ;] that are initialized from the s
       -1 k +!
       k @ B @ x1 x2 x3 x4 A ;] dup B !
       execute  THEN ;
-10 [: 1e ;] [: -1e ;] 2dup swap [: 0e ;] A f. 
+10 [: 1e ;] [: -1e ;] 2dup swap [: 0e ;] A f.
 ```
 
 
@@ -1846,14 +1846,14 @@ contains
       m = k
       res = B()
     end if
-  
+
   contains
-  
-    recursive integer function B() result(res)    
+
+    recursive integer function B() result(res)
       m = m-1
       res = A(m,B,x1,x2,x3,x4)
     end function B
-  
+
   end function A
 
 
@@ -2174,37 +2174,37 @@ On an AMD Opteron 6282 SE using GHC 7.8.2 this program can compute ''k'' = 30 in
   73,969,319,136 bytes maximum residency (20 sample(s))
      488,551,728 bytes maximum slop
           159874 MB total memory in use (0 MB lost due to fragmentation)
- 
+
                                        Tot time (elapsed)      Avg pause    Max pause
   Gen  0     711625 colls,     0 par   456.87s   10710.35s       0.0151s       3.1180s
   Gen  1         20 colls,     0 par   273.65s    9674.71s     483.7353s    5204.3968s
- 
+
   INIT    time     0.00s  (    0.00s elapsed)
   MUT     time   332.81s  (14301.58s elapsed)
   GC      time   730.52s  (20385.06s elapsed)
   EXIT    time     0.43s  (   12.66s elapsed)
   Total   time  1063.76s  (34699.30s elapsed)
- 
+
   %GC     time      68.7%  (58.7% elapsed)
- 
+
   Alloc rate    1,155,911,179 bytes per MUT second
- 
+
   Productivity  31.3% of total user, 1.0% of total elapsed
 
 =={{header|Icon}} and {{header|Unicon}}==
-There are a few challenges to implementing MoB in Icon/Unicon.  
+There are a few challenges to implementing MoB in Icon/Unicon.
 * There are no nested procedures and non-local variables that go with them
 * There is no selectable call by value .vs. call by name/reference.  Knowledge of the implicit mutable/immutable types is needed.
-* Procedure calls can't be deferred transparently but can be deferred through co-expressions 
+* Procedure calls can't be deferred transparently but can be deferred through co-expressions
 * Co-expressions aren't enough as they trap local copies of variables which follow Icon rules for mutability/immutability
 
 The initial solution below involved the use of co-expressions which seemed a natural tool to solve MoB. It turns out that co-expressions aren't necessary to solve this task.  Co-expressions are very powerful and MoB really doesn't exercise their full capability.  There is a lighter weight solution and also a cheat solution which is a further simplification.  The light weight version exploits that procedures are a data type and can be passed around and assigned.  This allows us to defer calling 'B' which is just what is required. The change introduces a new record definition 'defercall' and changes only two lines of the original solution in 'eval' and 'B'. The cheat would be to have 'eval' know that it always called 'B'.
 
-MoB is intense and can be pushed to challenge any machine.  If you run this and the program hangs up or fails with an inadequate space for static allocation error, you may need to tweak the way Icon/Unicon allocates memory.  This is controlled through the environment variables COEXPSIZE, MSTKSIZE, BLKSIZE (see [[Icon%2BUnicon/Intro#Environment_Variables|Icon and Unicon Environment Variables]]).  
+MoB is intense and can be pushed to challenge any machine.  If you run this and the program hangs up or fails with an inadequate space for static allocation error, you may need to tweak the way Icon/Unicon allocates memory.  This is controlled through the environment variables COEXPSIZE, MSTKSIZE, BLKSIZE (see [[Icon%2BUnicon/Intro#Environment_Variables|Icon and Unicon Environment Variables]]).
 
 Notes:
 * The co-expression version will require adjustment to COEXPRSIZE, and possibly BLKSIZE and MSTKSIZE.
-** Mob 13 ran on a machine with 4GB RAM running Unicon Win32 using COEXPSIZE=71000; BLKSIZE=2000000; and  MSTKSIZE=1000000. 
+** Mob 13 ran on a machine with 4GB RAM running Unicon Win32 using COEXPSIZE=71000; BLKSIZE=2000000; and  MSTKSIZE=1000000.
 ** Mob 15 ran on on a 64-bit linux box with 16GB RAM with COEXPSIZE to 200000 (and everything else defaulting).
 * The non-co-expression version required adjustment to BLKSIZE and MSTKSIZE.
 ** Mob 21 ran on the same 4GB machine with BLKSIZE=10000000; and MSTKSIZE=70000000
@@ -2223,7 +2223,7 @@ end
 procedure eval(ref)                                           # evaluator to distinguish between a simple value and a code reference
 return if type(ref) == "co-expression" then @ref  else ref
 end
- 
+
 procedure A(k,x1,x2,x3,x4,x5)                                 # Knuth's A
 k := mutable(k)                                               # make k mutable for B
 return if k.value <= 0 then                                   # -> boy compilers may recurse and die here
@@ -2231,7 +2231,7 @@ return if k.value <= 0 then                                   # -> boy compilers
 else                                                          # -> boy compilers can run into trouble at k=5+
    B(k,x1,x2,x3,x4,x5)
 end
- 
+
 procedure B(k,x1,x2,x3,x4,x5)                                 # Knuth's B
 k.value -:= 1                                                 # diddle A's copy of k
 return A(k.value, create |B(k,x1,x2,x3,x4,x5),x1,x2,x3,x4)    # call A with a new k and 5 x's
@@ -2264,7 +2264,7 @@ Io is nothing if not aggressively manly.
 ```io
 Range
 
-a := method(k, xs, 
+a := method(k, xs,
     b := block(
         k = k -1
         a(k, list(b, xs slice(0,4)) flatten))
@@ -2324,20 +2324,20 @@ Java Version 8 and up
 import java.util.function.DoubleSupplier;
 
 public class ManOrBoy {
-    
+
     static double A(int k, DoubleSupplier x1, DoubleSupplier x2,
                  DoubleSupplier x3, DoubleSupplier x4, DoubleSupplier x5) {
-        
+
         DoubleSupplier B = new DoubleSupplier() {
             int m = k;
             public double getAsDouble() {
                 return A(--m, this, x1, x2, x3, x4);
             }
         };
-                
+
         return k <= 0 ? x4.getAsDouble() + x5.getAsDouble() : B.getAsDouble();
     }
-    
+
     public static void main(String[] args) {
         System.out.println(A(10, () -> 1.0, () -> -1.0, () -> -1.0, () -> 1.0, () -> 0.0));
     }
@@ -2488,13 +2488,13 @@ fun a(k: Int, x1: Func, x2: Func, x3: Func, x4: Func, x5: Func): Int {
     var kk = k
     fun b(): Int = a(--kk, ::b, x1, x2, x3, x4)
     return if (kk <= 0) x4() + x5() else b()
-} 
+}
 
 fun main(args: Array<String>) {
     println(" k  a")
-    for (k in 0..12) { 
+    for (k in 0..12) {
         println("${"%2d".format(k)}: ${a(k, { 1 }, { -1 }, { -1 }, { 1 }, { 0 })}")
-    }  
+    }
 }
 
 ```
@@ -2561,13 +2561,13 @@ function a(k,x1,x2,x3,x4,x5)
   end
    if k <= 0 then return x4() + x5() else return b() end
 end
- 
+
 function K(n)
   return function()
     return n
   end
 end
- 
+
 print(a(10, K(1), K(-1), K(-1), K(1), K(0)))
 ```
 
@@ -2579,7 +2579,7 @@ print(a(10, K(1), K(-1), K(-1), K(1), K(0)))
 This ''Mathematica'' code was derived from the Ruby example appearing below.
 
  $RecursionLimit = 1665; (* anything less fails for k0 = 10 *)
- 
+
  a[k0_, x1_, x2_, x3_, x4_, x5_] := Module[{k, b },
    k = k0;
    b = (k--; a[k, b, x1, x2, x3, x4]) &;
@@ -2769,7 +2769,7 @@ NSInteger A (NSInteger k, id<IntegerFun> x1, id<IntegerFun> x2, id<IntegerFun> x
 
 int main(int argc, const char *argv[]) {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-  
+
   NSInteger result = A(10,
                        [[[K alloc] initWithN:1] autorelease],
                        [[[K alloc] initWithN:-1] autorelease],
@@ -2777,7 +2777,7 @@ int main(int argc, const char *argv[]) {
                        [[[K alloc] initWithN:1] autorelease],
                        [[[K alloc] initWithN:0] autorelease]);
   NSLog(@"%ld\n", result);
-  
+
   [pool release];
   return 0;
 }
@@ -2796,39 +2796,39 @@ interface Arg {
 
 class ManOrBoy {
   New() {}
-  
+
   function : A(mb : ManOrBoy, k : Int, x1 : Arg, x2 : Arg, x3 : Arg, x4 : Arg, x5 : Arg) ~ Int {
     if(k <= 0) {
             return x4->Run() + x5->Run();
     };
-    
+
     return Base->New(mb, k, x1, x2, x3, x4) implements Arg {
       @mb : ManOrBoy; @k : Int; @x1 : Arg; @x2 : Arg; @x3 : Arg; @x4 : Arg; @m : Int;
-      
+
       New(mb : ManOrBoy, k : Int, x1 : Arg, x2 : Arg, x3 : Arg, x4 : Arg) {
         @mb := mb; @k := k; @x1 := x1; @x2 := x2; @x3 := x3; @x4 := x4; @m := @k;
       }
-      
+
       method : public : Run() ~ Int {
         @m -= 1;
         return @mb->A(@mb, @m, @self, @x1, @x2, @x3, @x4);
       }
     }->Run();
   }
-  
+
   function : C(i : Int) ~ Arg {
     return Base->New(i) implements Arg {
       @i : Int;
       New(i : Int) {
         @i := i;
       }
-      
+
       method : public : Run() ~ Int {
         return @i;
       }
     };
   }
-  
+
   function : Main(args : String[]) ~ Nil {
     mb := ManOrBoy->New();
     mb->A(mb, 10, C(1), C(-1), C(-1), C(1), C(0))->PrintLine();
@@ -2994,7 +2994,7 @@ sub A {
     $B = sub { A(--$k, $B, $x1, $x2, $x3, $x4) };
     $k <= 0 ? &$x4 + &$x5 : &$B;
 }
- 
+
 print A(10, sub{1}, sub {-1}, sub{-1}, sub{1}, sub{0} ), "\n";
 ```
 
@@ -3015,7 +3015,7 @@ sub A($k is copy, &x1, &x2, &x3, &x4, &x5) {
         ?? x4() + x5()
         !! (my &B = { A(--$k, &B, &x1, &x2, &x3, &x4) })();
 };
- 
+
 say A(10, {1}, {-1}, {-1}, {1}, {0});
 ```
 
@@ -3089,12 +3089,12 @@ function A($k,$x1,$x2,$x3,$x4,$x5) {
         return A(--$k,$b,$x1,$x2,$x3,$x4);
     };
     return $k <= 0 ? $x4() + $x5() : $b();
-}  
+}
 
 echo A(10, function () { return  1; },
            function () { return -1; },
            function () { return -1; },
-           function () { return  1; }, 
+           function () { return  1; },
            function () { return  0; }) . "\n";
 ?>
 ```
@@ -3157,24 +3157,24 @@ Output:
 
  morb: proc options (main) reorder;
   dcl sysprint file;
- 
+
   put skip list(a((10), lambda1, lambdam1, lambdam1, lambda0, lambda0));
- 
+
   a: proc(k, x1, x2, x3, x4, x5) returns(fixed bin (31)) recursive;
     dcl k                    fixed bin (31);
     dcl (x1, x2, x3, x4, x5) entry returns(fixed bin (31));
- 
+
     b: proc returns(fixed bin(31)) recursive;
       k = k - 1;
       return(a((k), b, x1, x2, x3, x4));
     end b;
- 
+
     if k <= 0 then
-      return(x4 + x5); 
+      return(x4 + x5);
     else
       return(b);
   end a;
- 
+
   lambdam1: proc returns(fixed bin (31)); return(-1); end lambdam1;
   lambda0:  proc returns(fixed bin (31)); return(1);  end lambda0;
   lambda1:  proc returns(fixed bin (31)); return(1);  end lambda1;
@@ -3182,7 +3182,7 @@ Output:
 
 The above PL/I code has been tested on OS PL/I V2.3.0, Enterprise PL/I V3R9M0 and PL/I for Windows V8.0. The limit for OS PL/I on a z/OS machine with 4Gb seems to be A=15, the limit for Enterprise PL/I on the same machine seems to be A=23, and the limit for PL/I for Windows on a 16Gb system seems to be A=26.
 
-The «Russian» compiler (that is based on Kildall’s compiler PL/I-86) produced the best results. However, two tricks were used there: a) hardware stack pointer was set directly to allocated memory by quasi-assembler’s instruction; b) stack of parameters was replaced by array of parameters and contexts. The result is A=27 for Win32 (Windows-XP) and A=31 for Win64 (Windows-7). Source code test for Win32 see: http://rsdn.org/article/pl1/PL1ex7/pl1ex7.xml  
+The «Russian» compiler (that is based on Kildall’s compiler PL/I-86) produced the best results. However, two tricks were used there: a) hardware stack pointer was set directly to allocated memory by quasi-assembler’s instruction; b) stack of parameters was replaced by array of parameters and contexts. The result is A=27 for Win32 (Windows-XP) and A=31 for Win64 (Windows-7). Source code test for Win32 see: http://rsdn.org/article/pl1/PL1ex7/pl1ex7.xml
 In source code test for Win64 FIXED(31) was replaced by FIXED(63) and pseudo-variable ?ESP by ?RSP.
 
 
@@ -3229,7 +3229,7 @@ def a(in_k, x1, x2, x3, x4, x5):
     return x4() + x5() if k[0] <= 0 else b()
 
 x = lambda i: lambda: i
-print(a(10, x(1), x(-1), x(-1), x(1), x(0))) 
+print(a(10, x(1), x(-1), x(-1), x(1), x(0)))
 
 ```
 
@@ -3248,7 +3248,7 @@ def a(k, x1, x2, x3, x4, x5):
     return x4() + x5() if b.k <= 0 else b()
 
 x = lambda i: lambda: i
-print(a(10, x(1), x(-1), x(-1), x(1), x(0))) 
+print(a(10, x(1), x(-1), x(-1), x(1), x(0)))
 
 ```
 
@@ -3257,7 +3257,7 @@ Output:
  -67
 
 
-###  Py3k 
+###  Py3k
 
 {{works with|Python|3.0}}
 
@@ -3345,13 +3345,13 @@ One has to increase the recursion limit a bit, but it gives correct answers:
  [1]   1   0  -2   0   1   0   1  -1 -10 -30 -67
 ```
 
-  
+
 If you inspect <tt>A</tt> without the original source you will see what has happened: <tt>call.by.name</tt> rewrote A so that it looks like this:
 
 
 ```r>
  print(A, useSource=FALSE)
-function (k, x1, x2, x3, x4, x5) 
+function (k, x1, x2, x3, x4, x5)
 {
     .caller <- parent.frame()
     eval(substitute({
@@ -3362,10 +3362,10 @@ function (k, x1, x2, x3, x4, x5)
         }
         if (k <= 0) Aout <- x4 + x5 else B()
         Aout
-    }, list(x1 = substitute(evalq(., .caller), list(. = substitute(x1))), 
-        x2 = substitute(evalq(., .caller), list(. = substitute(x2))), 
-        x3 = substitute(evalq(., .caller), list(. = substitute(x3))), 
-        x4 = substitute(evalq(., .caller), list(. = substitute(x4))), 
+    }, list(x1 = substitute(evalq(., .caller), list(. = substitute(x1))),
+        x2 = substitute(evalq(., .caller), list(. = substitute(x2))),
+        x3 = substitute(evalq(., .caller), list(. = substitute(x3))),
+        x4 = substitute(evalq(., .caller), list(. = substitute(x4))),
         x5 = substitute(evalq(., .caller), list(. = substitute(x5))))))
 }
 ```
@@ -3390,7 +3390,7 @@ Copied from Scheme, works fine:
   (if (<= k 0)
       (+ (x4) (x5))
       (B)))
- 
+
 (A 10 (lambda () 1) (lambda () -1) (lambda () -1) (lambda () 1) (lambda () 0))
 ```
 
@@ -3639,7 +3639,7 @@ say obj.a(10, ->{1}, ->{-1}, ->{-1}, ->{1}, ->{0});
     k := self.
     b := [ k := k - 1. k x1: b x2: x1 x3: x2 x4: x3 x5: x4 ].
     ^k <= 0 ifTrue: [ x4 value + x5 value ] ifFalse: b
- 
+
  10 x1: [1] x2: [-1] x3: [-1] x4: [1] x5: [0]
 
 
@@ -3703,26 +3703,26 @@ As of Swift 3.0, closure parameters are "non-escaping" by default.  The Man or B
 
 
 ```swift
-func A(_ k: Int,                          
-       _ x1: @escaping () -> Int,         
-       _ x2: @escaping () -> Int,         
-       _ x3: @escaping () -> Int,         
-       _ x4: @escaping () -> Int,         
+func A(_ k: Int,
+       _ x1: @escaping () -> Int,
+       _ x2: @escaping () -> Int,
+       _ x3: @escaping () -> Int,
+       _ x4: @escaping () -> Int,
        _ x5: @escaping () -> Int) -> Int {
-    var k1 = k                            
-                                          
-    func B() -> Int {                     
-        k1 -= 1                           
-        return A(k1, B, x1, x2, x3, x4)   
-    }                                     
-                                          
-    if k1 <= 0 {                          
-        return x4() + x5()                
-    } else {                              
-        return B()                        
-    }                                     
-}                                         
-                                          
+    var k1 = k
+
+    func B() -> Int {
+        k1 -= 1
+        return A(k1, B, x1, x2, x3, x4)
+    }
+
+    if k1 <= 0 {
+        return x4() + x5()
+    } else {
+        return B()
+    }
+}
+
 print(A(10, {1}, {-1}, {-1}, {1}, {0}))
 ```
 
@@ -3813,7 +3813,7 @@ AS
 	DECLARE	@name NVARCHAR(MAX) = 'LAMBDA_' + UPPER(REPLACE(NEWID(), '-', '_'))
 	DECLARE @SQL NVARCHAR(MAX) = '
 			CREATE PROCEDURE dbo.' + @name + '
-				AS 
+				AS
 
 			RETURN ' + CAST(@v AS NVARCHAR(MAX))
 
@@ -3843,9 +3843,9 @@ BEGIN
 
 	SELECT	@SQL = N'
 		CREATE PROCEDURE dbo.' + @name + N'
-		
-			AS 
-		
+
+			AS
+
 		DECLARE @retval INT, @k INT, @x1 INT, @x2 INT, @x3 INT, @x4 INT
 
 		SELECT	@k = k - 1, @x1 = x1, @x2 = x2,	@x3 = x3, @x4 = x4
@@ -3856,7 +3856,7 @@ BEGIN
 		SET	k = k -1
 		FROM	#t_args t
 		WHERE	t.i = ' + CAST(@q AS NVARCHAR(MAX)) + '
-		
+
 		EXEC	@retval = LAMBDA_A @k, @@PROCID, @x1, @x2, @x3, @x4
 		RETURN @retval'
 	EXEC(@SQL)
@@ -3866,7 +3866,7 @@ END
 
 GO
 -- A-procedure
-CREATE PROCEDURE dbo.LAMBDA_A 
+CREATE PROCEDURE dbo.LAMBDA_A
 (
 
 	@k INT
@@ -3882,7 +3882,7 @@ AS
 	,	@res2 INT
 	,	@Name SYSNAME
 	,	@q INT
-	
+
 	-- First add the arguments to the "stack"
 	INSERT INTO #t_args (k,	x1, x2, x3, x4, x5
 	)
@@ -3998,7 +3998,7 @@ We define the global function with <code>defun-cbn</code> ("cbn" stands for "cal
 
 Even the fact that a return value is established by an assignment to the function name is simulated. Note that in <code>A</code> and <code>B</code>, we must assign to the variables <code>A</code> and <code>B</code> respectively to establish the return value. This in turn allows the faithful rendition of the detail in the original that the <code>if</code> form discards the value of the call to <code>B</code>. Establishing a return value by assignment, as in Algol, is achieved thanks to the Lisp-2 base of TXR Lisp; we can simultaneously bind a symbol to a function and variable in the same scope.
 
-Also, <code>k</code> is treated as a call-by-name argument also, and is explicitly subject to a rebinding inside <code>A</code>, as is apparently the case in the Algol code. This detail is necessary; if we do not rebind <code>k</code>, then it is a by-name reference to the caller's <code>k</code>, which is a by-name reference to its caller's <code>k</code> and so on. 
+Also, <code>k</code> is treated as a call-by-name argument also, and is explicitly subject to a rebinding inside <code>A</code>, as is apparently the case in the Algol code. This detail is necessary; if we do not rebind <code>k</code>, then it is a by-name reference to the caller's <code>k</code>, which is a by-name reference to its caller's <code>k</code> and so on.
 
 Call-by-name is achieved by representing arguments as structure objects that hold get/set lambdas, serving as access thunks, hidden behind macros. These thunks allow two-way access: the passed values can be stored, not only accessed. This creates a problem when the actual arguments are constants or function calls; that is solved.  Constants are recognized and re-bound to hidden variables, which are passed in their place. Function calls are passed as thunks configured to reject store attempts with a run-time error.
 
@@ -4152,7 +4152,7 @@ self.a(10, self.K(1), self.K(-1), self.K(-1), self.K(1), self.K(0)).print()
 The compiler is OK but the VM is a girlie-man VM. Due to the way closures are built, the stack blows quickly when closures recurse. So, while the code can be written per Knuth, it is unable to do anything. So, classes are used to simulate the closures. Also (5)()-->5 so no problems there.
 
 ```zkl
-fcn A(k, x1, x2, x3, x4, x5){ // -->1,0,-2,0,1,0,1,-1,-10,-30,-67,-138	
+fcn A(k, x1, x2, x3, x4, x5){ // -->1,0,-2,0,1,0,1,-1,-10,-30,-67,-138
    B:=CB(k, x1, x2, x3, x4, x5);
    if(k <= 0) x4()+x5() else B.B();
 }
@@ -4161,7 +4161,7 @@ foreach k in (12){
    println("k=%2d A=%d".fmt(k, A(k, 1, -1, -1, 1, 0)))
 }
 
-class CB{ var k, x1, x2, x3, x4, x5; 
+class CB{ var k, x1, x2, x3, x4, x5;
    fcn init{ k, x1, x2, x3, x4, x5 = vm.arglist; }
    fcn B{
       k= k - 1;

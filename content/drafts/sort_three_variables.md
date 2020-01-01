@@ -504,8 +504,8 @@ Output:
 ## C++
 
 
-```Cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <vector>
 

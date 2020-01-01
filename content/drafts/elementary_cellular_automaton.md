@@ -39,7 +39,7 @@ This task is basically a generalization of [[one-dimensional cellular automata]]
 ```Ada
 with Ada.Text_IO;
 procedure Elementary_Cellular_Automaton is
-   
+
    type t_Rule  is new Integer range 0..2**8-1;
    type t_State is array (Integer range <>) of Boolean;
 
@@ -211,9 +211,9 @@ NextState(state, rule) {
 	return result
 }
 
-; Returns an array with each three digit sequence as a key corresponding to a value 
+; Returns an array with each three digit sequence as a key corresponding to a value
 ; of true or false depending on the rule.
-ByteDigits(rule) { 
+ByteDigits(rule) {
 	res := {}
 	for i, val in ["000", "001", "010", "011", "100", "101", "110", "111"] {
 		res[val] := Mod(rule, 2)
@@ -252,8 +252,8 @@ Rule: 90
 
 64 cells, edges are cyclic.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <limits.h>
 
 typedef unsigned long long ull;
@@ -309,8 +309,8 @@ Rule 90:
 ## C++
 
 
-```cpp>#include <bitset
-
+```cpp
+#include <bitset>
 #include <stdio.h>
 
 #define SIZE	           80
@@ -527,27 +527,27 @@ namespace ElementaryCellularAutomaton
 
 ```ceylon
 class Rule(number) satisfies Correspondence<Boolean[3], Boolean> {
-	
+
 	shared Byte number;
-	
+
 	"all 3 bit patterns will return a value so this is always true"
 	shared actual Boolean defines(Boolean[3] key) => true;
-	
-	shared actual Boolean? get(Boolean[3] key) => 
+
+	shared actual Boolean? get(Boolean[3] key) =>
 			number.get((key[0] then 4 else 0) + (key[1] then 2 else 0) + (key[2] then 1 else 0));
-	
+
 	function binaryString(Integer integer, Integer maxPadding) =>
 			Integer.format(integer, 2).padLeading(maxPadding, '0');
-	
-	string => 
+
+	string =>
 			let (digits = binaryString(number.unsigned, 8))
 			"Rule #``number``
-			 ``" | ".join { for (pattern in $111..0) binaryString(pattern, 3) }`` 
+			 ``" | ".join { for (pattern in $111..0) binaryString(pattern, 3) }``
 			 ``" | ".join(digits.map((Character element) => element.string.pad(3)))``";
 }
 
 class ElementaryAutomaton {
-	
+
 	shared static ElementaryAutomaton|ParseException parse(Rule rule, String cells, Character aliveChar, Character deadChar) {
 		if (!cells.every((Character element) => element == aliveChar || element == deadChar)) {
 			return ParseException("the string was not a valid automaton");
@@ -556,20 +556,20 @@ class ElementaryAutomaton {
 	}
 
 	shared Rule rule;
-	
+
 	Array<Boolean> cells;
-	
+
 	shared new(Rule rule, {Boolean*} initialCells) {
 		this.rule = rule;
-		this.cells = Array { *initialCells }; 
+		this.cells = Array { *initialCells };
 	}
-	
+
 	shared Boolean evolve() {
-		
+
 		if (cells.empty) {
 			return false;
 		}
-		
+
 		function left(Integer index) {
 			assert (exists cell = cells[index - 1] else cells.last);
 			return cell;
@@ -579,7 +579,7 @@ class ElementaryAutomaton {
 			assert (exists cell = cells[index + 1] else cells.first);
 			return cell;
 		}
-		
+
 		value newCells = Array.ofSize(cells.size, false);
 		for (index->cell in cells.indexed) {
 			value neighbourhood = [left(index), cell, right(index)];
@@ -590,11 +590,11 @@ class ElementaryAutomaton {
 		if (newCells == cells) {
 			return false;
 		}
-		
+
 		newCells.copyTo(cells);
-		return true;	
+		return true;
 	}
-	
+
 	shared void display(Character aliveChar = '#', Character deadChar = ' ') {
 		print("".join(cells.map((Boolean element) => element then aliveChar else deadChar)));
 	}
@@ -603,10 +603,10 @@ class ElementaryAutomaton {
 shared void run() {
 	value rule = Rule(90.byte);
 	print(rule);
-	
+
 	value automaton = ElementaryAutomaton.parse(rule, "          #          ", '#', ' ');
 	assert (is ElementaryAutomaton automaton);
-	
+
 	for (generation in 0..10) {
 		automaton.display();
 		automaton.evolve();
@@ -618,18 +618,18 @@ shared void run() {
 
 ```txt
 Rule #90
-111 | 110 | 101 | 100 | 011 | 010 | 001 | 000 
- 0  |  1  |  0  |  1  |  1  |  0  |  1  |  0 
-          #          
-         # #         
-        #   #        
-       # # # #       
-      #       #      
-     # #     # #     
-    #   #   #   #    
-   # # # # # # # #   
-  #               #  
- # #             # # 
+111 | 110 | 101 | 100 | 011 | 010 | 001 | 000
+ 0  |  1  |  0  |  1  |  1  |  0  |  1  |  0
+          #
+         # #
+        #   #
+       # # # #
+      #       #
+     # #     # #
+    #   #   #   #
+   # # # # # # # #
+  #               #
+ # #             # #
 #   #           #   #
 ```
 
@@ -641,7 +641,7 @@ Rule #90
 ```lisp
 (defun automaton (init rule &optional (stop 10))
   (labels ((next-gen (cells)
-             (mapcar #'new-cell 
+             (mapcar #'new-cell
                      (cons (car (last cells)) cells)
                      cells
                      (append (cdr cells) (list (car cells)))))
@@ -651,7 +651,7 @@ Rule #90
                (if (logtest rule (ash 1 shift)) 1 0)))
 
            (pretty-print (cells)
-             (format T "~{~a~}~%" 
+             (format T "~{~a~}~%"
                      (mapcar (lambda (x) (if (zerop x) #\. #\#))
                              cells))))
 
@@ -800,43 +800,43 @@ Pictures of the (nice) generated colored bit-maps : The Escher like [http://www.
 		#:when (bitwise-bit-set? n i)
 		(for/vector  ((j (in-range 2 -1 -1)))
 		(if (bitwise-bit-set? i j) BIT1  BIT0 ))))
-		
+
 ;; test if three pixels match a pattern
 (define (pmatch a b c pat)
 		(for/or ((v pat))
 		(and (= a (vector-ref v 0))  (= b (vector-ref v 1))   (= c (vector-ref v 2)) )))
-		
+
 ;; next generation = next row
-(define (generate x0 width PAT PIX (x)) 
+(define (generate x0 width PAT PIX (x))
 		(for ((dx (in-range 0 width)))
 		(set! x (+ x0 dx))
 		(vector-set! PIX (+ x width) ;; next row
-			(if 
-			(pmatch 
+			(if
+			(pmatch
 				(vector-ref PIX (if (zero? dx) (+ x0 width) (1- x))) ;; let's wrap
-				(vector-ref PIX x)  
+				(vector-ref PIX x)
 				(vector-ref PIX (if (= dx (1- width)) x0 (1+ x)))
-				PAT) 
+				PAT)
 			BIT1 BIT0))))
-		
+
 ;; n is the pattern, starters in the number of set pixels at generation 0
 (define (task n (starters 1))
 		(define width (first (plot-size)))
 		(define height (rest (plot-size)))
 		(define PAT (n->pat n))
 		(plot-clear)
-		
+
 		(define PIX (pixels->int32-vector))
 		(init-pix  starters  width height PIX)
-		
+
 		(for ((y (1- height)))
 			(generate (* y width) width PAT into: PIX))
 		(vector->pixels PIX))
-		
+
 ;; put n starters on first row
 (define (init-pix starters width height PIX)
 	(define dw (floor (/ width (1+ starters))))
-	(for ((x (in-range dw width (1+ dw))))  
+	(for ((x (in-range dw width (1+ dw))))
 				(vector-set! PIX x BIT1)))
 
 ;; usage
@@ -864,14 +864,14 @@ defmodule Elementary_cellular_automaton do
     IO.puts "rule : #{rule}"
     each(start_str, rule_pattern(rule), times)
   end
-  
+
   defp rule_pattern(rule) do
     list = Integer.to_string(rule, 2) |> String.pad_leading(8, "0")
            |> String.codepoints |> Enum.reverse
     Enum.map(0..7, fn i -> Integer.to_string(i, 2) |> String.pad_leading(3, "0") end)
     |> Enum.zip(list) |> Map.new
   end
-  
+
   defp each(_, _, 0), do: :ok
   defp each(str, patterns, times) do
     IO.puts String.replace(str, "0", ".") |> String.replace("1", "#")
@@ -951,86 +951,86 @@ eca 90 [|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0
 
 ```txt
 
-                                @                         
-                               @ @                               
-                              @   @                              
-                             @ @ @ @                             
-                            @       @                            
-                           @ @     @ @                           
-                          @   @   @   @                          
-                         @ @ @ @ @ @ @ @                         
-                        @               @                        
-                       @ @             @ @                       
-                      @   @           @   @                      
-                     @ @ @ @         @ @ @ @                     
-                    @       @       @       @                    
-                   @ @     @ @     @ @     @ @                   
-                  @   @   @   @   @   @   @   @                  
-                 @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @                 
-                @                               @                
-               @ @                             @ @               
-              @   @                           @   @              
-             @ @ @ @                         @ @ @ @             
-            @       @                       @       @            
-           @ @     @ @                     @ @     @ @           
-          @   @   @   @                   @   @   @   @          
-         @ @ @ @ @ @ @ @                 @ @ @ @ @ @ @ @         
-        @               @               @               @        
-       @ @             @ @             @ @             @ @       
-      @   @           @   @           @   @           @   @      
-     @ @ @ @         @ @ @ @         @ @ @ @         @ @ @ @     
-    @       @       @       @       @       @       @       @    
-   @ @     @ @     @ @     @ @     @ @     @ @     @ @     @ @   
-  @   @   @   @   @   @   @   @   @   @   @   @   @   @   @   @  
- @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ 
+                                @
+                               @ @
+                              @   @
+                             @ @ @ @
+                            @       @
+                           @ @     @ @
+                          @   @   @   @
+                         @ @ @ @ @ @ @ @
+                        @               @
+                       @ @             @ @
+                      @   @           @   @
+                     @ @ @ @         @ @ @ @
+                    @       @       @       @
+                   @ @     @ @     @ @     @ @
+                  @   @   @   @   @   @   @   @
+                 @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @
+                @                               @
+               @ @                             @ @
+              @   @                           @   @
+             @ @ @ @                         @ @ @ @
+            @       @                       @       @
+           @ @     @ @                     @ @     @ @
+          @   @   @   @                   @   @   @   @
+         @ @ @ @ @ @ @ @                 @ @ @ @ @ @ @ @
+        @               @               @               @
+       @ @             @ @             @ @             @ @
+      @   @           @   @           @   @           @   @
+     @ @ @ @         @ @ @ @         @ @ @ @         @ @ @ @
+    @       @       @       @       @       @       @       @
+   @ @     @ @     @ @     @ @     @ @     @ @     @ @     @ @
+  @   @   @   @   @   @   @   @   @   @   @   @   @   @   @   @
+ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @
 @                                                               @
 @@                                                             @@
- @@                                                           @@ 
+ @@                                                           @@
 @@@@                                                         @@@@
-   @@                                                       @@   
-  @@@@                                                     @@@@  
- @@  @@                                                   @@  @@ 
+   @@                                                       @@
+  @@@@                                                     @@@@
+ @@  @@                                                   @@  @@
 @@@@@@@@                                                 @@@@@@@@
-       @@                                               @@       
-      @@@@                                             @@@@      
-     @@  @@                                           @@  @@     
-    @@@@@@@@                                         @@@@@@@@    
-   @@      @@                                       @@      @@   
-  @@@@    @@@@                                     @@@@    @@@@  
- @@  @@  @@  @@                                   @@  @@  @@  @@ 
+       @@                                               @@
+      @@@@                                             @@@@
+     @@  @@                                           @@  @@
+    @@@@@@@@                                         @@@@@@@@
+   @@      @@                                       @@      @@
+  @@@@    @@@@                                     @@@@    @@@@
+ @@  @@  @@  @@                                   @@  @@  @@  @@
 @@@@@@@@@@@@@@@@                                 @@@@@@@@@@@@@@@@
-               @@                               @@               
-              @@@@                             @@@@              
-             @@  @@                           @@  @@             
-            @@@@@@@@                         @@@@@@@@            
-           @@      @@                       @@      @@           
-          @@@@    @@@@                     @@@@    @@@@          
-         @@  @@  @@  @@                   @@  @@  @@  @@         
-        @@@@@@@@@@@@@@@@                 @@@@@@@@@@@@@@@@        
-       @@              @@               @@              @@       
-      @@@@            @@@@             @@@@            @@@@      
-     @@  @@          @@  @@           @@  @@          @@  @@     
-    @@@@@@@@        @@@@@@@@         @@@@@@@@        @@@@@@@@    
-   @@      @@      @@      @@       @@      @@      @@      @@   
-  @@@@    @@@@    @@@@    @@@@     @@@@    @@@@    @@@@    @@@@  
- @@  @@  @@  @@  @@  @@  @@  @@   @@  @@  @@  @@  @@  @@  @@  @@ 
+               @@                               @@
+              @@@@                             @@@@
+             @@  @@                           @@  @@
+            @@@@@@@@                         @@@@@@@@
+           @@      @@                       @@      @@
+          @@@@    @@@@                     @@@@    @@@@
+         @@  @@  @@  @@                   @@  @@  @@  @@
+        @@@@@@@@@@@@@@@@                 @@@@@@@@@@@@@@@@
+       @@              @@               @@              @@
+      @@@@            @@@@             @@@@            @@@@
+     @@  @@          @@  @@           @@  @@          @@  @@
+    @@@@@@@@        @@@@@@@@         @@@@@@@@        @@@@@@@@
+   @@      @@      @@      @@       @@      @@      @@      @@
+  @@@@    @@@@    @@@@    @@@@     @@@@    @@@@    @@@@    @@@@
+ @@  @@  @@  @@  @@  @@  @@  @@   @@  @@  @@  @@  @@  @@  @@  @@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                               @ @                               
-                              @   @                              
-                             @ @ @ @                             
-                            @       @                            
-                           @ @     @ @                           
-                          @   @   @   @                          
-                         @ @ @ @ @ @ @ @                         
-                        @               @                        
-                       @ @             @ @                       
-                      @   @           @   @                      
-                     @ @ @ @         @ @ @ @                     
-                    @       @       @       @                    
-                   @ @     @ @     @ @     @ @                   
-                  @   @   @   @   @   @   @   @                  
-                 @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @                 
-                @                               @                
+                               @ @
+                              @   @
+                             @ @ @ @
+                            @       @
+                           @ @     @ @
+                          @   @   @   @
+                         @ @ @ @ @ @ @ @
+                        @               @
+                       @ @             @ @
+                      @   @           @   @
+                     @ @ @ @         @ @ @ @
+                    @       @       @       @
+                   @ @     @ @     @ @     @ @
+                  @   @   @   @   @   @   @   @
+                 @ @ @ @ @ @ @ @ @ @ @ @ @ @ @ @
+                @                               @
 
 ```
 
@@ -1110,21 +1110,21 @@ eca 110 [|0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
   @@@  @@@@   @@@ @   @@    @@@@@    @  @@ @@@@  @@   @  @@ @@@@@
  @@ @ @@  @  @@ @@@  @@@   @@   @   @@ @@@@@  @ @@@  @@ @@@@@   @
 @@@@@@@@ @@ @@@@@ @ @@ @  @@@  @@  @@@@@   @ @@@@ @ @@@@@   @  @@
-       @@@@@@   @@@@@@@@ @@ @ @@@ @@   @  @@@@  @@@@@   @  @@ @@ 
-      @@    @  @@      @@@@@@@@ @@@@  @@ @@  @ @@   @  @@ @@@@@@ 
-     @@@   @@ @@@     @@      @@@  @ @@@@@@ @@@@@  @@ @@@@@    @ 
-    @@ @  @@@@@ @    @@@     @@ @ @@@@    @@@   @ @@@@@   @   @@ 
-   @@@@@ @@   @@@   @@ @    @@@@@@@  @   @@ @  @@@@   @  @@  @@@ 
-  @@   @@@@  @@ @  @@@@@   @@     @ @@  @@@@@ @@  @  @@ @@@ @@ @ 
- @@@  @@  @ @@@@@ @@   @  @@@    @@@@@ @@   @@@@ @@ @@@@@ @@@@@@ 
-@@ @ @@@ @@@@   @@@@  @@ @@ @   @@   @@@@  @@  @@@@@@   @@@    @ 
+       @@@@@@   @@@@@@@@ @@ @ @@@ @@   @  @@@@  @@@@@   @  @@ @@
+      @@    @  @@      @@@@@@@@ @@@@  @@ @@  @ @@   @  @@ @@@@@@
+     @@@   @@ @@@     @@      @@@  @ @@@@@@ @@@@@  @@ @@@@@    @
+    @@ @  @@@@@ @    @@@     @@ @ @@@@    @@@   @ @@@@@   @   @@
+   @@@@@ @@   @@@   @@ @    @@@@@@@  @   @@ @  @@@@   @  @@  @@@
+  @@   @@@@  @@ @  @@@@@   @@     @ @@  @@@@@ @@  @  @@ @@@ @@ @
+ @@@  @@  @ @@@@@ @@   @  @@@    @@@@@ @@   @@@@ @@ @@@@@ @@@@@@
+@@ @ @@@ @@@@   @@@@  @@ @@ @   @@   @@@@  @@  @@@@@@   @@@    @
 @@@@@@ @@@  @  @@  @ @@@@@@@@  @@@  @@  @ @@@ @@    @  @@ @   @@@
-     @@@ @ @@ @@@ @@@@      @ @@ @ @@@ @@@@ @@@@   @@ @@@@@  @@  
-    @@ @@@@@@@@ @@@  @     @@@@@@@@@ @@@  @@@  @  @@@@@   @ @@@  
-   @@@@@      @@@ @ @@    @@       @@@ @ @@ @ @@ @@   @  @@@@ @  
-  @@   @     @@ @@@@@@   @@@      @@ @@@@@@@@@@@@@@  @@ @@  @@@  
- @@@  @@    @@@@@    @  @@ @     @@@@@            @ @@@@@@ @@ @  
-@@ @ @@@   @@   @   @@ @@@@@    @@   @           @@@@    @@@@@@  
+     @@@ @ @@ @@@ @@@@      @ @@ @ @@@ @@@@ @@@@   @@ @@@@@  @@
+    @@ @@@@@@@@ @@@  @     @@@@@@@@@ @@@  @@@  @  @@@@@   @ @@@
+   @@@@@      @@@ @ @@    @@       @@@ @ @@ @ @@ @@   @  @@@@ @
+  @@   @     @@ @@@@@@   @@@      @@ @@@@@@@@@@@@@@  @@ @@  @@@
+ @@@  @@    @@@@@    @  @@ @     @@@@@            @ @@@@@@ @@ @
+@@ @ @@@   @@   @   @@ @@@@@    @@   @           @@@@    @@@@@@
 
 ```
 
@@ -1378,26 +1378,26 @@ func elem(rule uint, cells, generations int, a *big.Int) {
 ```txt
 
 Single 1, rule 90:
-         #          
-        # #         
-       #   #        
-      # # # #       
-     #       #      
-    # #     # #     
-   #   #   #   #    
-  # # # # # # # #   
- #               #  
-# #             # # 
+         #
+        # #
+       #   #
+      # # # #
+     #       #
+    # #     # #
+   #   #   #   #
+  # # # # # # # #
+ #               #
+# #             # #
 Random intial state, rule 30:
  #   # #  ####     #
  ## ## ####   #   ##
- #  #  #   # ### ## 
+ #  #  #   # ### ##
 ######### ## #   # #
           #  ## ## #
 #        #####  #  #
  #      ##    ######
- ##    ## #  ##     
-## #  ##  #### #    
+ ##    ## #  ##
+## #  ##  #### #
 #  #### ###    ##  #
 
 ```
@@ -1450,51 +1450,51 @@ displayCA n rule init = mapM_ putStrLn $ take n result
 
 ```txt
 λ> displayCA 40 (rule 90) (initial 40 [1])
-                   *                    
-                  * *                   
-                 *   *                  
-                * * * *                 
-               *       *                
-              * *     * *               
-             *   *   *   *              
-            * * * * * * * *             
-           *               *            
-          * *             * *           
-         *   *           *   *          
-        * * * *         * * * *         
-       *       *       *       *        
-      * *     * *     * *     * *       
-     *   *   *   *   *   *   *   *      
-    * * * * * * * * * * * * * * * *     
-   *                               *    
-  * *                             * *   
- *   *                           *   *  
-* * * *                         * * * * 
-       *                       *        
-      * *                     * *       
-     *   *                   *   *      
-    * * * *                 * * * *     
-   *       *               *       *    
-  * *     * *             * *     * *   
- *   *   *   *           *   *   *   *  
-* * * * * * * *         * * * * * * * * 
-               *       *                
-              * *     * *               
-             *   *   *   *              
-            * * * * * * * *             
-           *               *            
-          * *             * *           
-         *   *           *   *          
-        * * * *         * * * *         
-       *       *       *       *        
-      * *     * *     * *     * *       
-     *   *   *   *   *   *   *   *      
-    * * * * * * * * * * * * * * * *  
+                   *
+                  * *
+                 *   *
+                * * * *
+               *       *
+              * *     * *
+             *   *   *   *
+            * * * * * * * *
+           *               *
+          * *             * *
+         *   *           *   *
+        * * * *         * * * *
+       *       *       *       *
+      * *     * *     * *     * *
+     *   *   *   *   *   *   *   *
+    * * * * * * * * * * * * * * * *
+   *                               *
+  * *                             * *
+ *   *                           *   *
+* * * *                         * * * *
+       *                       *
+      * *                     * *
+     *   *                   *   *
+    * * * *                 * * * *
+   *       *               *       *
+  * *     * *             * *     * *
+ *   *   *   *           *   *   *   *
+* * * * * * * *         * * * * * * * *
+               *       *
+              * *     * *
+             *   *   *   *
+            * * * * * * * *
+           *               *
+          * *             * *
+         *   *           *   *
+        * * * *         * * * *
+       *       *       *       *
+      * *     * *     * *     * *
+     *   *   *   *   *   *   *   *
+    * * * * * * * * * * * * * * * *
 ```
 
 
 
-###  Comonadic solution 
+###  Comonadic solution
 
 This solution is more involved, but it is slightly more efficient than Array-based one. What is more important, this solution is guaranteed to be total and correct by type checker.
 
@@ -1565,15 +1565,15 @@ We'll define a state transition mechanism, and then rely on the language for ite
 ```J
    next=: ((8$2) #: [) {~ 2 #. 1 - [: |: |.~"1 0&_1 0 1@]
    ' *'{~90 next^:(i.9) 0 0 0 0 0 0 1 0 0 0 0 0
-      *     
-     * *    
-    *   *   
-   * * * *  
-  *       * 
+      *
+     * *
+    *   *
+   * * * *
+  *       *
  * *     * *
-    *   *   
-   * * * *  
-  *       * 
+    *   *
+   * * * *
+  *       *
 ```
 
 
@@ -1697,7 +1697,7 @@ def states:
 
 # Compute the next "state"
 # input: a state ("111" or "110" ...)
-# rule: the rule represented as a string of 0s and 1s 
+# rule: the rule represented as a string of 0s and 1s
 # output: the next state "0" or "1" depending on the rule
 def next(rule):
   states[.] as $n | rule[($n-1):$n] ;
@@ -1781,22 +1781,22 @@ def automaton(rule; steps):
 const lines = 10
 const start = ".........#........."
 const rules = [90, 30, 14]
- 
+
 rule2poss(rule) = [rule & (1 << (i - 1)) != 0 for i in 1:8]
- 
+
 cells2bools(cells) = [cells[i] == '#' for i in 1:length(cells)]
- 
+
 bools2cells(bset) = prod([bset[i] ? "#" : "." for i in 1:length(bset)])
- 
+
 function transform(bset, ruleposs)
     newbset = map(x->ruleposs[x],
         [bset[i - 1] * 4 + bset[i] * 2 + bset[i + 1] + 1
         for i in 2:length(bset)-1])
     vcat(newbset[end], newbset, newbset[1])
 end
- 
+
 const startset = cells2bools(start)
- 
+
 for rul in rules
     println("\nUsing Rule $rul:")
     bset = vcat(startset[end], startset, startset[1]) # wrap ends
@@ -1808,7 +1808,7 @@ for rul in rules
 end
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 Using Rule 90:
@@ -1902,22 +1902,22 @@ fun main(args: Array<String>) {
 ```txt
 
 Rule 90:
-               *                
-              * *               
-             *   *              
-            * * * *             
-           *       *            
-          * *     * *           
-         *   *   *   *          
-        * * * * * * * *         
-       *               *        
-      * *             * *       
-     *   *           *   *      
-    * * * *         * * * *     
-   *       *       *       *    
-  * *     * *     * *     * *   
- *   *   *   *   *   *   *   *  
-* * * * * * * * * * * * * * * * 
+               *
+              * *
+             *   *
+            * * * *
+           *       *
+          * *     * *
+         *   *   *   *
+        * * * * * * * *
+       *               *
+      * *             * *
+     *   *           *   *
+    * * * *         * * * *
+   *       *       *       *
+  * *     * *     * *     * *
+ *   *   *   *   *   *   *   *
+* * * * * * * * * * * * * * * *
 
 ```
 
@@ -1952,21 +1952,21 @@ function init = cellularAutomaton(rule, init, n)
 ```MATLAB>>
   char(cellularAutomaton(90, ~(-15:15), 15) * 10 + 32)
 ans =
-               *               
-              * *              
-             *   *             
-            * * * *            
-           *       *           
-          * *     * *          
-         *   *   *   *         
-        * * * * * * * *        
-       *               *       
-      * *             * *      
-     *   *           *   *     
-    * * * *         * * * *    
-   *       *       *       *   
-  * *     * *     * *     * *  
- *   *   *   *   *   *   *   * 
+               *
+              * *
+             *   *
+            * * * *
+           *       *
+          * *     * *
+         *   *   *   *
+        * * * * * * * *
+       *               *
+      * *             * *
+     *   *           *   *
+    * * * *         * * * *
+   *       *       *       *
+  * *     * *     * *     * *
+ *   *   *   *   *   *   *   *
 * * * * * * * * * * * * * * * *
 ```
 
@@ -2014,7 +2014,7 @@ for (1..40) {
     print "|$a|\n"; $a->next;
 }
 ```
- 
+
 {{out}}
 
 ```txt
@@ -2073,11 +2073,11 @@ class Automaton {
     has $.rule;
     has @.cells;
     has @.code = $!rule.fmt('%08b').flip.comb».Int;
- 
+
     method gist { "|{ @!cells.map({+$_ ?? '#' !! ' '}).join }|" }
- 
+
     method succ {
-        self.new: :$!rule, :@!code, :cells( 
+        self.new: :$!rule, :@!code, :cells(
             @!code[
                     4 «*« @!cells.rotate(-1)
                 »+« 2 «*« @!cells
@@ -2204,19 +2204,19 @@ play :-	initial(I), do_auto(50, I).
 initial([0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0]).
 
 do_auto(0, _) :- !.
-do_auto(N, I) :- 
+do_auto(N, I) :-
 	maplist(writ, I), nl,
 	apply_rules(I, Next),
 	succ(N1, N),
 	do_auto(N1, Next).
 
-r(0,0,0,0). 
-r(0,0,1,1). 
-r(0,1,0,0). 
-r(0,1,1,1). 
-r(1,0,0,1). 
-r(1,0,1,0). 
-r(1,1,0,1). 
+r(0,0,0,0).
+r(0,0,1,1).
+r(0,1,0,0).
+r(0,1,1,1).
+r(1,0,0,1).
+r(1,0,1,0).
+r(1,1,0,1).
 r(1,1,1,0).
 
 apply_rules(In, Out) :-
@@ -2416,7 +2416,7 @@ if __name__ == '__main__':
 Note: This only fitted the original task description that read:
 :''You can deal with the limit conditions (what happens on the borders of the space) in any way you please.''
 
-Pad and extend with inverse of end cells on each iteration. 
+Pad and extend with inverse of end cells on each iteration.
 
 ```python
 def _notcell(c):
@@ -2449,31 +2449,31 @@ if __name__ == '__main__':
 
 ```txt
    Rules: (90, 30, 122)
- 0:                          #                                                      #                                                      #                         
- 1:                         #.#                                                    ###                                                    #.#                        
- 2:                        #...#                                                  ##..#                                                  #.#.#                       
- 3:                       #.#.#.#                                                ##.####                                                #.#.#.#                      
- 4:                      #.......#                                              ##..#...#                                              #.#.#.#.#                     
- 5:                     #.#.....#.#                                            ##.####.###                                            #.#.#.#.#.#                    
- 6:                    #...#...#...#                                          ##..#....#..#                                          #.#.#.#.#.#.#                   
- 7:                   #.#.#.#.#.#.#.#                                        ##.####..######                                        #.#.#.#.#.#.#.#                  
- 8:                  #...............#                                      ##..#...###.....#                                      #.#.#.#.#.#.#.#.#                 
- 9:                 #.#.............#.#                                    ##.####.##..#...###                                    #.#.#.#.#.#.#.#.#.#                
-10:                #...#...........#...#                                  ##..#....#.####.##..#                                  #.#.#.#.#.#.#.#.#.#.#               
-11:               #.#.#.#.........#.#.#.#                                ##.####..##.#....#.####                                #.#.#.#.#.#.#.#.#.#.#.#              
-12:              #.......#.......#.......#                              ##..#...###..##..##.#...#                              #.#.#.#.#.#.#.#.#.#.#.#.#             
-13:             #.#.....#.#.....#.#.....#.#                            ##.####.##..###.###..##.###                            #.#.#.#.#.#.#.#.#.#.#.#.#.#            
-14:            #...#...#...#...#...#...#...#                          ##..#....#.###...#..###..#..#                          #.#.#.#.#.#.#.#.#.#.#.#.#.#.#           
-15:           #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#                        ##.####..##.#..#.#####..#######                        #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#          
-16:          #...............................#                      ##..#...###..####.#....###......#                      #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#         
-17:         #.#.............................#.#                    ##.####.##..###....##..##..#....###                    #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#        
-18:        #...#...........................#...#                  ##..#....#.###..#..##.###.####..##..#                  #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#       
-19:       #.#.#.#.........................#.#.#.#                ##.####..##.#..######..#...#...###.####                #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#      
-20:      #.......#.......................#.......#              ##..#...###..####.....####.###.##...#...#              #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#     
-21:     #.#.....#.#.....................#.#.....#.#            ##.####.##..###...#...##....#...#.#.###.###            #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#    
-22:    #...#...#...#...................#...#...#...#          ##..#....#.###..#.###.##.#..###.##.#.#...#..#          #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#   
-23:   #.#.#.#.#.#.#.#.................#.#.#.#.#.#.#.#        ##.####..##.#..###.#...#..####...#..#.##.######        #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#  
-24:  #...............#...............#...............#      ##..#...###..####...##.#####...#.#####.#..#.....#      #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.# 
+ 0:                          #                                                      #                                                      #
+ 1:                         #.#                                                    ###                                                    #.#
+ 2:                        #...#                                                  ##..#                                                  #.#.#
+ 3:                       #.#.#.#                                                ##.####                                                #.#.#.#
+ 4:                      #.......#                                              ##..#...#                                              #.#.#.#.#
+ 5:                     #.#.....#.#                                            ##.####.###                                            #.#.#.#.#.#
+ 6:                    #...#...#...#                                          ##..#....#..#                                          #.#.#.#.#.#.#
+ 7:                   #.#.#.#.#.#.#.#                                        ##.####..######                                        #.#.#.#.#.#.#.#
+ 8:                  #...............#                                      ##..#...###.....#                                      #.#.#.#.#.#.#.#.#
+ 9:                 #.#.............#.#                                    ##.####.##..#...###                                    #.#.#.#.#.#.#.#.#.#
+10:                #...#...........#...#                                  ##..#....#.####.##..#                                  #.#.#.#.#.#.#.#.#.#.#
+11:               #.#.#.#.........#.#.#.#                                ##.####..##.#....#.####                                #.#.#.#.#.#.#.#.#.#.#.#
+12:              #.......#.......#.......#                              ##..#...###..##..##.#...#                              #.#.#.#.#.#.#.#.#.#.#.#.#
+13:             #.#.....#.#.....#.#.....#.#                            ##.####.##..###.###..##.###                            #.#.#.#.#.#.#.#.#.#.#.#.#.#
+14:            #...#...#...#...#...#...#...#                          ##..#....#.###...#..###..#..#                          #.#.#.#.#.#.#.#.#.#.#.#.#.#.#
+15:           #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#                        ##.####..##.#..#.#####..#######                        #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#
+16:          #...............................#                      ##..#...###..####.#....###......#                      #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#
+17:         #.#.............................#.#                    ##.####.##..###....##..##..#....###                    #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#
+18:        #...#...........................#...#                  ##..#....#.###..#..##.###.####..##..#                  #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#
+19:       #.#.#.#.........................#.#.#.#                ##.####..##.#..######..#...#...###.####                #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#
+20:      #.......#.......................#.......#              ##..#...###..####.....####.###.##...#...#              #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#
+21:     #.#.....#.#.....................#.#.....#.#            ##.####.##..###...#...##....#...#.#.###.###            #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#
+22:    #...#...#...#...................#...#...#...#          ##..#....#.###..#.###.##.#..###.##.#.#...#..#          #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#
+23:   #.#.#.#.#.#.#.#.................#.#.#.#.#.#.#.#        ##.####..##.#..###.#...#..####...#..#.##.######        #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#
+24:  #...............#...............#...............#      ##..#...###..####...##.#####...#.#####.#..#.....#      #.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#.#
 ```
 
 
@@ -2633,13 +2633,13 @@ unmodified for [[Elementary cellular automaton/Infinite length]].
 ```ruby
 class ElemCellAutomat
   include Enumerable
-  
+
   def initialize (start_str, rule, disp=false)
     @cur = start_str
     @patterns = Hash[8.times.map{|i|["%03b"%i, "01"[rule[i]]]}]
     puts "Rule (#{rule}) : #@patterns" if disp
   end
-  
+
   def each
     return to_enum unless block_given?
     loop do
@@ -2648,7 +2648,7 @@ class ElemCellAutomat
       @cur = @cur.size.times.map {|i| @patterns[str[i,3]]}.join
     end
   end
-  
+
 end
 
 eca = ElemCellAutomat.new('1'.center(39, "0"), 18, true)
@@ -3133,25 +3133,25 @@ do(20){ cells.apply(map.get).println(); cells=applyRule(r90,cells); }
 ```txt
 
 01011010 rule 90
-               *               
-              * *              
-             *   *             
-            * * * *            
-           *       *           
-          * *     * *          
-         *   *   *   *         
-        * * * * * * * *        
-       *               *       
-      * *             * *      
-     *   *           *   *     
-    * * * *         * * * *    
-   *       *       *       *   
-  * *     * *     * *     * *  
- *   *   *   *   *   *   *   * 
+               *
+              * *
+             *   *
+            * * * *
+           *       *
+          * *     * *
+         *   *   *   *
+        * * * * * * * *
+       *               *
+      * *             * *
+     *   *           *   *
+    * * * *         * * * *
+   *       *       *       *
+  * *     * *     * *     * *
+ *   *   *   *   *   *   *   *
 * * * * * * * * * * * * * * * *
 *                             *
 **                           **
- **                         ** 
+ **                         **
 ****                       ****
 
 ```

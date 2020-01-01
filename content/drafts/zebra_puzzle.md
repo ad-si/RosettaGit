@@ -15,8 +15,8 @@ tags = []
 [[Category:Constraint Handling Rules]]
 [[Category:Puzzles]]
 
-The [[wp:Zebra puzzle|Zebra puzzle]], a.k.a. Einstein's Riddle, 
-is a logic puzzle which is to be solved programmatically. 
+The [[wp:Zebra puzzle|Zebra puzzle]], a.k.a. Einstein's Riddle,
+is a logic puzzle which is to be solved programmatically.
 
 
 It has several variants, one of them this:
@@ -35,12 +35,12 @@ It has several variants, one of them this:
 # The man who smokes Blue Master drinks beer.
 # The German smokes Prince.
 # The Norwegian lives next to the blue house.
-# They drink water in a house next to the house where they smoke Blend. 
+# They drink water in a house next to the house where they smoke Blend.
 
 
 The question is, who owns the zebra?
 
-Additionally, list the solution for all the houses. 
+Additionally, list the solution for all the houses.
 Optionally, show the solution is unique.
 
 
@@ -98,7 +98,7 @@ procedure Zebra is
 
    function Constrained (mat : Alley; atest : Natural) return Boolean is begin
       --  Tests seperated into levels for speed, not strictly necessary
-      --  As such, the program finishes in around ~0.02s 
+      --  As such, the program finishes in around ~0.02s
       case Test'Val (atest) is
          when Drink => --  Drink
             if mat (Drink, Three) /= Milk then return False; end if;
@@ -168,10 +168,10 @@ end Zebra;
 {{out}}
 
 ```txt
-ONE: DRINK=WATER PERSON=NORWEGIAN COLOR=YELLOW SMOKE=DUNHILL PET=CAT 
-TWO: DRINK=TEA PERSON=DANISH COLOR=BLUE SMOKE=BLEND PET=HORSE 
-THREE: DRINK=MILK PERSON=ENGLISH COLOR=RED SMOKE=PALLMALL PET=BIRD 
-FOUR: DRINK=COFFEE PERSON=GERMAN COLOR=GREEN SMOKE=PRINCE PET=ZEBRA 
+ONE: DRINK=WATER PERSON=NORWEGIAN COLOR=YELLOW SMOKE=DUNHILL PET=CAT
+TWO: DRINK=TEA PERSON=DANISH COLOR=BLUE SMOKE=BLEND PET=HORSE
+THREE: DRINK=MILK PERSON=ENGLISH COLOR=RED SMOKE=PALLMALL PET=BIRD
+FOUR: DRINK=COFFEE PERSON=GERMAN COLOR=GREEN SMOKE=PRINCE PET=ZEBRA
 FIVE: DRINK=BEER PERSON=SWEDISH COLOR=WHITE SMOKE=BLUEMASTER PET=DOG
 ```
 
@@ -295,7 +295,7 @@ BEGIN
                       any( ( same, birds, same, same, pall mall ), VOID:
                         # if we can place the zebra, we have a solution         #
                         any( ( same, zebra, same, same, same ), VOID:
-                             ( solutions +:= 1;                                             
+                             ( solutions +:= 1;
                                FOR h TO UPB house DO
                                  print( ( whole( h, 0 )
                                         , " ",  nationality[ 1 + nationality OF house[ h ] ]
@@ -358,24 +358,24 @@ See [[Dinesman's multiple-dwelling problem/AutoHotkey]].
       Colr$()   = "Blue", "Green", "Red", "White", "Yellow"
       Smoke$()  = "Blend", "BlueMaster", "Dunhill", "PallMall", "Prince"
       Animal$() = "Birds", "Cats", "Dog", "Horse", "Zebra"
-      
+
       REM Some single-character tags:
       a$ = "A" : b$ = "B" : c$ = "C" : d$ = "D" : e$ = "E"
-      
+
       REM BBC BASIC Doesn't have enumerations!
       Beer$=a$    : Coffee$=b$     : Milk$=c$    : Tea$=d$      : Water$=e$
       Denmark$=a$ : England$=b$    : Germany$=c$ : Norway$=d$   : Sweden$=e$
       Blue$=a$    : Green$=b$      : Red$=c$     : White$=d$    : Yellow$=e$
       Blend$=a$   : BlueMaster$=b$ : Dunhill$=c$ : PallMall$=d$ : Prince$=e$
       Birds$=a$   : Cats$=b$       : Dog$=c$     : Horse$=d$    : Zebra$=e$
-      
+
       REM Create the 120 permutations of 5 objects:
       DIM perm$(120), x$(4) : x$() = a$, b$, c$, d$, e$
       REPEAT
         p% += 1
         perm$(p%) = x$(0)+x$(1)+x$(2)+x$(3)+x$(4)
       UNTIL NOT FNperm(x$())
-      
+
       REM Express the statements as conditional expressions:
       ex2$ = "INSTR(Nation$,England$) = INSTR(Colr$,Red$)"
       ex3$ = "INSTR(Nation$,Sweden$) = INSTR(Animal$,Dog$)"
@@ -392,7 +392,7 @@ See [[Dinesman's multiple-dwelling problem/AutoHotkey]].
       ex14$ = "INSTR(Nation$,Germany$) = INSTR(Smoke$,Prince$)"
       ex15$ = "ABS(INSTR(Nation$,Norway$)-INSTR(Colr$,Blue$)) = 1"
       ex16$ = "ABS(INSTR(Smoke$,Blend$)-INSTR(Drink$,Water$)) = 1"
-      
+
       REM Solve:
       solutions% = 0
       TIME = 0
@@ -434,7 +434,7 @@ See [[Dinesman's multiple-dwelling problem/AutoHotkey]].
       PRINT '"Number of solutions = "; solutions%
       PRINT "Solved in " ; TIME/100 " seconds"
       END
-      
+
       DEF FNperm(x$())
       LOCAL i%, j%
       FOR i% = DIM(x$(),1)-1 TO 0 STEP -1
@@ -548,7 +548,7 @@ Solved in 0.12 seconds
                       . !houses
                       )
                   )
-              |   
+              |
                 & relations$!houses
                 & out$(Solution !houses)
               )
@@ -578,8 +578,8 @@ Output:
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 enum HouseStatus { Invalid, Underfull, Valid };
@@ -823,11 +823,11 @@ int main() {
 
 ```txt
 % gcc -Wall -O3 -std=c99 zebra.c -o zebra && time ./zebra
-House     Color     Man       Drink     Animal    Smoke     
-0         Yellow    Norwegian Water     Cats      Dunhill   
-1         Blue      Dane      Tea       Horse     Blend     
-2         Red       English   Milk      Birds     PallMall  
-3         Green     German    Coffee    Zebra     Prince    
+House     Color     Man       Drink     Animal    Smoke
+0         Yellow    Norwegian Water     Cats      Dunhill
+1         Blue      Dane      Tea       Horse     Blend
+2         Red       English   Milk      Birds     PallMall
+3         Green     German    Coffee    Zebra     Prince
 4         White     Swede     Beer      Dog       BlueMaster
 ./zebra  0.00s user 0.00s system 0% cpu 0.002 total
 ```
@@ -1021,10 +1021,10 @@ make_c;
 output (ran as <code>perl test.pl | gcc -Wall -x c -; ./a.out</code>):
 ```txt
 
-0      dunhill         cats       yellow        water       Norske 
-1        blend        horse         blue          tea       Danske 
-2    pall_mall        birds          red         milk     AEnglisk 
-3       prince        zebra        green       coffee      Deutsch 
+0      dunhill         cats       yellow        water       Norske
+1        blend        horse         blue          tea       Danske
+2    pall_mall        birds          red         milk     AEnglisk
+3       prince        zebra        green       coffee      Deutsch
 4  blue_master          dog        white         beer       Svensk
 
 ```
@@ -1194,11 +1194,11 @@ int main() {
 ```txt
 
 $ g++ -O3 -std=c++11 zebra.cpp -o zebracpp && time ./zebracpp
-House     Color     Man       Drink     Animal    Smoke     
-0         Yellow    Norwegian Water     Cats      Dunhill   
-1         Blue      Dane      Tea       Horse     Blend     
-2         Red       English   Milk      Birds     PallMall  
-3         Green     German    Coffee    Zebra     Prince    
+House     Color     Man       Drink     Animal    Smoke
+0         Yellow    Norwegian Water     Cats      Dunhill
+1         Blue      Dane      Tea       Horse     Blend
+2         Red       English   Milk      Birds     PallMall
+3         Green     German    Coffee    Zebra     Prince
 4         White     Swede     Beer      Dog       BlueMaster
 
 real	0m0.003s
@@ -1259,7 +1259,7 @@ public static class ZebraPuzzle
 
         _solved = solve.First();
     }
-    
+
     private static int IndexOf<T>(this T[] arr, T obj) => Array.IndexOf(arr, obj);
 
     private static bool IsRightOf<T, U>(this (T[] a, T v) right, U[] a, U v) => right.a.IndexOf(right.v) == a.IndexOf(v) + 1;
@@ -1323,9 +1323,9 @@ House Colour Drink    Nationality Smokes     Pet
 {{works with|C sharp|C#|7+ }}
 {{trans|Scala}}
 <!-- By Martin Freedman, 19/01/2018 -->
-This is similar to the Scala solution although there are differences in how the rules are calculated and it keeps all the original constraints/rules rather than does any simplification of them. 
+This is similar to the Scala solution although there are differences in how the rules are calculated and it keeps all the original constraints/rules rather than does any simplification of them.
 
-This is a different type of generate-and-prune compared to Norvig.  The Norvig solution generates each attribute for 5 houses, then prunes and repeats with the next attribute. Here all houses with possible attributes are first generated and pruned to 78 candidates. The second phase proceeds over the combination of 5 houses from that 78, generating and pruning 1 house at a time. (See Benchmarks below) 
+This is a different type of generate-and-prune compared to Norvig.  The Norvig solution generates each attribute for 5 houses, then prunes and repeats with the next attribute. Here all houses with possible attributes are first generated and pruned to 78 candidates. The second phase proceeds over the combination of 5 houses from that 78, generating and pruning 1 house at a time. (See Benchmarks below)
 
 ```csharp
 using System;
@@ -1591,7 +1591,7 @@ static class ZebraProgram
         var solver = ConstraintSystem.CreateSolver();
         _solver = solver;
         var terms = new Dictionary<CspTerm, string>();
-        
+
         CspTerm Term(string name)
         {
             CspTerm x = solver.CreateVariable(solver.CreateIntegerInterval(1, 5), name);
@@ -1601,10 +1601,10 @@ static class ZebraProgram
 
         CspTerm red = Term("red"), green = Term("green"), white = Term("white"), blue = Term("blue"), yellow = Term("yellow");
         CspTerm tea = Term("tea"), coffee = Term("coffee"), milk = Term("milk"), beer = Term("beer"), water = Term("water");
-        CspTerm english = Term("Englishman"), swede = Term("Swede"), dane = Term("Dane"), norwegian = Term("Norwegian"), 
+        CspTerm english = Term("Englishman"), swede = Term("Swede"), dane = Term("Dane"), norwegian = Term("Norwegian"),
             german = Term("German");
         CspTerm dog = Term("dog"), birds = Term("birds"), cats = Term("cats"), horse = Term("horse"), zebra = Term("zebra");
-        CspTerm pallmall = Term("pallmall"), dunhill = Term("dunhill"), blend = Term("blend"), bluemaster = Term("bluemaster"), 
+        CspTerm pallmall = Term("pallmall"), dunhill = Term("dunhill"), blend = Term("blend"), bluemaster = Term("bluemaster"),
             prince = Term("prince");
 
         solver.AddConstraints(
@@ -1665,7 +1665,7 @@ static class ZebraProgram
     public static void Main()
     {
         var (solver, terms) = BuildSolver();
-        
+
         var solved = solver.Solve();
 
         if (solved.HasFoundSolution)
@@ -1699,7 +1699,7 @@ The German owns the zebra
 ```
 
 
-### Benchmarking the 3 solutions: 
+### Benchmarking the 3 solutions:
 
 
 ```txt
@@ -1850,11 +1850,11 @@ solution 1
 The :german owns the zebra.
 house nationality color   drink   cig          pet
 ----- ----------- ------- ------- ------------ ------
-    1 :norwegian  :yellow :water  :dunhill     :cats 
+    1 :norwegian  :yellow :water  :dunhill     :cats
     2 :dane       :blue   :tea    :blend       :horse
     3 :english    :red    :milk   :pall-mall   :birds
     4 :german     :green  :coffee :prince      :zebra
-    5 :swede      :white  :beer   :blue-master :dog  
+    5 :swede      :white  :beer   :blue-master :dog
 "Elapsed time: 10.555482 msecs"
 nil
 
@@ -2094,11 +2094,11 @@ void main() {
 {{out}}
 
 ```txt
-  One:      Water  Norwegian     Yellow    Dunhill        Cat 
-  Two:        Tea     Danish       Blue      Blend      Horse 
-Three:       Milk    English        Red   PallMall       Bird 
- Four:     Coffee     German      Green     Prince      Zebra 
- Five:       Beer    Swedish      White BlueMaster        Dog 
+  One:      Water  Norwegian     Yellow    Dunhill        Cat
+  Two:        Tea     Danish       Blue      Blend      Horse
+Three:       Milk    English        Red   PallMall       Bird
+ Four:     Coffee     German      Green     Prince      Zebra
+ Five:       Beer    Swedish      White BlueMaster        Dog
 ```
 
 Run-time about 0.04 seconds.
@@ -2291,33 +2291,33 @@ We use the '''amb''' library to solve the puzzle. The number of tries - calls to
 (lib 'hash)
 (lib 'amb)
 
-;; return #f or house# for thing/category 
+;; return #f or house# for thing/category
 ;; houses := (0 1 2 3 4)
 (define (house-get H  category thing houses)
         (for/or ((i houses)) #:continue (!equal? (hash-ref (vector-ref H i) category) thing)
         i))
-        
+
  ;; return house # for thing (eg cat) in category (eq animals)
  ;; add thing if not already here
 (define-syntax-rule (house-set thing category)
     	(or
     	 (house-get H 'category 'thing houses)
          (dispatch H 'category 'thing context houses )))
-         
+
 ;; we know that thing/category is in a given house
 (define-syntax-rule (house-force thing category house)
         (dispatch H 'category 'thing context houses  house))
-        
+
 ;; return house# or fail if impossible
 (define (dispatch H category thing  context houses  (forced #f))
         (define house (or forced  (amb context houses))) ;; get a house number
         (when (hash-ref (vector-ref H house) category) (amb-fail)) ;; fail if occupied
         (hash-set (vector-ref H house) category thing) ;; else remember house contents
         house)
-        
+
 (define (house-next h1 h2)
  	(amb-require (or (= h1 (1+ h2)) (= h1 (1- h2)))))
-	
+
 (define (zebra-puzzle context houses  )
     (define H (build-vector 5 make-hash)) ;; house[i] :=  hash(category) -> thing
 ; In the middle house they drink milk.
@@ -2348,16 +2348,16 @@ We use the '''amb''' library to solve the puzzle. The number of tries - calls to
     (house-force beer drinks (house-set bluemaster smoke))
 ; The German smokes Prince.
     (house-force prince smoke (house-set german people))
-; They drink water in a house next to the house where they smoke Blend. 
+; They drink water in a house next to the house where they smoke Blend.
     (house-next (house-set water drinks) (house-set blend smoke))
 
 ;; Finally .... the zebra 🐴
     (house-set 🐴 animals)
-    
+
     (for ((i houses))
     (writeln i (hash-values (vector-ref H i))))
     (writeln '----------)
-    
+
     (amb-fail) ;; will ensure ALL solutions are printed
 )
 
@@ -2371,13 +2371,13 @@ We use the '''amb''' library to solve the puzzle. The number of tries - calls to
     (amb-run zebra-puzzle  (amb-make-context) (iota 5)))
 
 (task)
-   → 
-0     (norvegian yellow dunhill cats water)    
-1     (dane tea blue blend horse)    
-2     (milk english red pallmall birds)    
-3     (green coffee german prince 🐴)    
-4     (swede dog white bluemaster beer)    
-----------    
+   →
+0     (norvegian yellow dunhill cats water)
+1     (dane tea blue blend horse)
+2     (milk english red pallmall birds)
+3     (green coffee german prince 🐴)
+4     (swede dog white bluemaster beer)
+----------
   → #f
 
 
@@ -2396,15 +2396,15 @@ defmodule ZebraPuzzle do
       (Enum.at(n,x)==i and Enum.at(g,x+1)==e) or (Enum.at(n,x+1)==i and Enum.at(g,x)==e)
     end)
   end
-  
+
   defp leftof?(n,i,g,e) do
     Enum.any?(0..3, fn x -> Enum.at(n,x)==i and Enum.at(g,x+1)==e end)
   end
-  
+
   defp coincident?(n,i,g,e) do
     Enum.with_index(n) |> Enum.any?(fn {x,idx} -> x==i and Enum.at(g,idx)==e end)
   end
-  
+
   def solve(content) do
     colours = permutation(content[:Colour])
     pets    = permutation(content[:Pet])
@@ -2433,16 +2433,16 @@ defmodule ZebraPuzzle do
                         print_out(content, transpose([nation, colour, pet, drink, smoke]))
     end)end)end)end)end)
   end
-  
+
   defp permutation([]), do: [[]]
   defp permutation(list) do
     for x <- list, y <- permutation(list -- [x]), do: [x|y]
   end
-  
+
   defp transpose(lists) do
     List.zip(lists) |> Enum.map(&Tuple.to_list/1)
   end
-  
+
   defp print_out(content, result) do
     width = for {k,v}<-content, do: Enum.map([k|v], &length(to_char_list &1)) |> Enum.max
     fmt = Enum.map_join(width, " ", fn w -> "~-#{w}s" end) <> "~n"
@@ -2811,7 +2811,7 @@ match n|>Seq.map(fun n->{Nz=Option.get n;Iz=[||];Gz=[||];Ez=[||];Lz=[||]})
 ```txt
 
 The man who owns a zebra is German
- 
+
 {Nz = [|Norwegian; Danish; English; German; Swedish|];
  Iz = [|Water; Tea; Milk; Coffee; Beer|];
  Gz = [|Cats; Horse; Birds; Zebra; Dog|];
@@ -2828,179 +2828,179 @@ The man who owns a zebra is German
 ```FormulaOne
 
 // First, let's give some variables some values:
-Nationality = Englishman | Swede   | Dane       | Norwegian | German 
+Nationality = Englishman | Swede   | Dane       | Norwegian | German
 Colour      = Red        | Green   | Yellow     | Blue      | White
 Cigarette   = PallMall   | Dunhill | BlueMaster | Blend     | Prince
 Domestic    = Dog        | Bird    | Cat        | Zebra     | Horse
 Beverage    = Tea        | Coffee  | Milk       | Beer      | Water
-HouseOrder  = First      | Second  | Third      | Fourth    | Fifth 
- 
-{ 
+HouseOrder  = First      | Second  | Third      | Fourth    | Fifth
+
+{
 We use injections to make the array-elements unique.
-Example: 'Pet' is an array of unique elements of type 'Domestic', indexed by 'Nationality'. 
+Example: 'Pet' is an array of unique elements of type 'Domestic', indexed by 'Nationality'.
 In the predicate 'Zebra', we use this injection 'Pet' to define the array-variable 'pet'.
 The symbol used is the '->>'. 'Nationality->>Domestic' can be read as 'Domestic(Nationality)' in "plain array-speak";
 the difference being that the elements are by definition unique.
- 
-So, in FormulaOne we use a formula like: 'pet(Swede) = Dog', which simply means that the 'Swede' (type 'Nationality') 
-has a 'pet' (type 'Pet', which is of type 'Domestic', indexed by 'Nationality'), which appears to be a 'Dog' (type 'Domestic'). 
+
+So, in FormulaOne we use a formula like: 'pet(Swede) = Dog', which simply means that the 'Swede' (type 'Nationality')
+has a 'pet' (type 'Pet', which is of type 'Domestic', indexed by 'Nationality'), which appears to be a 'Dog' (type 'Domestic').
 Or, one could say that the 'Swede' has been mapped to the 'Dog' (Oh, well...).
 }
- 
+
 Pet          = Nationality->>Domestic
-Drink        = Nationality->>Beverage                             
+Drink        = Nationality->>Beverage
 HouseColour  = Nationality->>Colour
 Smoke        = Nationality->>Cigarette
-Order        = HouseOrder->>Nationality 
- 
+Order        = HouseOrder->>Nationality
+
 pred Zebra(houseColour::HouseColour, pet::Pet, smoke::Smoke, drink::Drink, order::Order) iff
- 
+
 // For convenience sake, some temporary place_holder variables are used.
 // An underscore distinguishes them:
 
      houseColour(green_house) = Green &
-     houseColour(white_house) = White & 
-     houseColour(yellow_house) = Yellow & 
-     smoke(pallmall_smoker) = PallMall & 
-     smoke(blend_smoker) = Blend & 
-     smoke(dunhill_smoker) = Dunhill &  
-     smoke(bluemaster_smoker) = BlueMaster & 
-     pet(cat_keeper) = Cat & 
-     pet(neighbour_dunhill_smoker) = Horse & 
+     houseColour(white_house) = White &
+     houseColour(yellow_house) = Yellow &
+     smoke(pallmall_smoker) = PallMall &
+     smoke(blend_smoker) = Blend &
+     smoke(dunhill_smoker) = Dunhill &
+     smoke(bluemaster_smoker) = BlueMaster &
+     pet(cat_keeper) = Cat &
+     pet(neighbour_dunhill_smoker) = Horse &
 
 { 2. The English man lives in the red house: }
      houseColour(Englishman) = Red &
- 
+
 { 3. The Swede has a dog: }
-     pet(Swede) = Dog &     
- 
+     pet(Swede) = Dog &
+
 { 4. The Dane drinks tea: }
-     drink(Dane) = Tea &  
- 
+     drink(Dane) = Tea &
+
     { 'smoke' and 'drink' are both nouns, like the other variables.
       One could read the formulas like: 'the colour of the Englishman's house is Red' ->
      'the Swede's pet is a dog' -> 'the Dane's drink is tea'.
     }
-  
+
 { 5. The green house is immediately to the left of the white house: }
      { The local predicate 'LeftOf' determines the order: }
-       LeftOf(green_house, white_house, order) &  
- 
+       LeftOf(green_house, white_house, order) &
+
 { 6. They drink coffee in the green house: }
-     drink(green_house) = Coffee & 
- 
+     drink(green_house) = Coffee &
+
 { 7. The man who smokes Pall Mall has birds: }
      pet(pallmall_smoker) = Bird &
- 
+
 { 8. In the yellow house they smoke Dunhill: }
-     smoke(yellow_house) = Dunhill & 
- 
+     smoke(yellow_house) = Dunhill &
+
 { 9. In the middle house they drink milk: }
-     drink(order(Third)) = Milk & 
- 
+     drink(order(Third)) = Milk &
+
 {10. The Norwegian lives in the first house: }
-     order(First) = Norwegian &  
- 
+     order(First) = Norwegian &
+
 {11. The man who smokes Blend lives in the house next to the house with cats: }
      { Another local predicate 'Neighbour' makes them neighbours:}
-       Neighbour(blend_smoker, cat_keeper, order) & 
- 
+       Neighbour(blend_smoker, cat_keeper, order) &
+
 {12. In a house next to the house where they have a horse, they smoke Dunhill: }
      Neighbour(dunhill_smoker, neighbour_dunhill_smoker, order) &
- 
+
 {13. The man who smokes Blue Master drinks beer: }
      drink(bluemaster_smoker) = Beer &
- 
+
 {14. The German smokes Prince: }
      smoke(German) = Prince &
- 
+
 {15. The Norwegian lives next to the blue house: }
      {10. The Norwegian lives in the first house,
           so the blue house is the second house }
-          houseColour(order(Second)) = Blue & 
- 
+          houseColour(order(Second)) = Blue &
+
 {16. They drink water in a house next to the house where they smoke Blend: }
-     drink(neighbour_blend_smoker) = Water & 
-     Neighbour(blend_smoker, neighbour_blend_smoker, order)  
- 
+     drink(neighbour_blend_smoker) = Water &
+     Neighbour(blend_smoker, neighbour_blend_smoker, order)
+
 {  A simplified solution would number the houses 1, 2, 3, 4, 5
    which makes it easier to order the houses.
    'right in the center' would become 3; 'in the first house', 1
    But we stick to the original puzzle and use some local predicates.
 }
- 
+
 local pred Neighbour(neighbour1::Nationality, neighbour2::Nationality, order::Order)iff
    neighbour1 <> neighbour2 &
-   order(house1) = neighbour1 & 
-   order(house2) = neighbour2 & 
-   ( house1 = house2 + 1 | 
-     house1 = house2 - 1 ) 
- 
-local pred LeftOf(neighbour1::Nationality, neighbour2::Nationality, order::Order) iff 
+   order(house1) = neighbour1 &
+   order(house2) = neighbour2 &
+   ( house1 = house2 + 1 |
+     house1 = house2 - 1 )
+
+local pred LeftOf(neighbour1::Nationality, neighbour2::Nationality, order::Order) iff
    neighbour1 <> neighbour2 &
-   order(house1) = neighbour1 & 
-   order(house2) = neighbour2 & 
-   house1 = house2 - 1 
- 
-{ 
+   order(house1) = neighbour1 &
+   order(house2) = neighbour2 &
+   house1 = house2 - 1
+
+{
 The 'all'-query in FormulaOne:
-     all Zebra(houseColour, pet, smokes, drinks, order) 
+     all Zebra(houseColour, pet, smokes, drinks, order)
 gives, of course, only one solution, so it can be replaced by:
      one Zebra(houseColour, pet, smokes, drinks, order)
 }
- 
+
 // The compacted version:
- 
-Nationality = Englishman | Swede   | Dane       | Norwegian | German 
+
+Nationality = Englishman | Swede   | Dane       | Norwegian | German
 Colour      = Red        | Green   | Yellow     | Blue      | White
 Cigarette   = PallMall   | Dunhill | BlueMaster | Blend     | Prince
 Domestic    = Dog        | Bird    | Cat        | Zebra     | Horse
 Beverage    = Tea        | Coffee  | Milk       | Beer      | Water
-HouseOrder  = First      | Second  | Third      | Fourth    | Fifth 
- 
+HouseOrder  = First      | Second  | Third      | Fourth    | Fifth
+
 Pet          = Nationality->>Domestic
-Drink        = Nationality->>Beverage                             
+Drink        = Nationality->>Beverage
 HouseColour  = Nationality->>Colour
 Smoke        = Nationality->>Cigarette
-Order        = HouseOrder->>Nationality 
+Order        = HouseOrder->>Nationality
 
 pred Zebra(houseColour::HouseColour, pet::Pet, smoke::Smoke, drink::Drink, order::Order) iff
 
   houseColour(green_house) = Green &
-  houseColour(white_house) = White & 
-  houseColour(yellow_house) = Yellow & 
-  smoke(pallmall_smoker) = PallMall & 
-  smoke(blend_smoker) = Blend & 
-  smoke(dunhill_smoker) = Dunhill &  
-  smoke(bluemaster_smoker) = BlueMaster & 
-  pet(cat_keeper) = Cat & 
-  pet(neighbour_dunhill_smoker) = Horse & 
+  houseColour(white_house) = White &
+  houseColour(yellow_house) = Yellow &
+  smoke(pallmall_smoker) = PallMall &
+  smoke(blend_smoker) = Blend &
+  smoke(dunhill_smoker) = Dunhill &
+  smoke(bluemaster_smoker) = BlueMaster &
+  pet(cat_keeper) = Cat &
+  pet(neighbour_dunhill_smoker) = Horse &
 
   houseColour(Englishman) = Red &
-  pet(Swede) = Dog &     
-  drink(Dane) = Tea &  
-  LeftOf(green_house, white_house, order) &  
-  drink(green_house) = Coffee & 
+  pet(Swede) = Dog &
+  drink(Dane) = Tea &
+  LeftOf(green_house, white_house, order) &
+  drink(green_house) = Coffee &
   pet(pallmall_smoker) = Bird &
-  smoke(yellow_house) = Dunhill & 
-  drink(order(Third)) = Milk & 
-  order(First) = Norwegian &  
-  Neighbour(blend_smoker, cat_keeper, order) & 
+  smoke(yellow_house) = Dunhill &
+  drink(order(Third)) = Milk &
+  order(First) = Norwegian &
+  Neighbour(blend_smoker, cat_keeper, order) &
   Neighbour(dunhill_smoker, neighbour_dunhill_smoker, order) &
   drink(bluemaster_smoker) = Beer &
-  smoke(German) = Prince & 
+  smoke(German) = Prince &
   houseColour(order(Second)) = Blue &
-  drink(neighbour_blend_smoker) = Water & 
-  Neighbour(blend_smoker, neighbour_blend_smoker, order)  
- 
+  drink(neighbour_blend_smoker) = Water &
+  Neighbour(blend_smoker, neighbour_blend_smoker, order)
+
 local pred Neighbour(neighbour1::Nationality, neighbour2::Nationality, order::Order)iff
-   neighbour1 <> neighbour2 & 
-   order(house1) = neighbour1 & order(house2) = neighbour2 & 
-   ( house1 = house2 + 1 | house1 = house2 - 1 ) 
- 
-local pred LeftOf(neighbour1::Nationality, neighbour2::Nationality, order::Order) iff 
    neighbour1 <> neighbour2 &
-   order(house1) = neighbour1 & order(house2) = neighbour2 & 
+   order(house1) = neighbour1 & order(house2) = neighbour2 &
+   ( house1 = house2 + 1 | house1 = house2 - 1 )
+
+local pred LeftOf(neighbour1::Nationality, neighbour2::Nationality, order::Order) iff
+   neighbour1 <> neighbour2 &
+   order(house1) = neighbour1 & order(house2) = neighbour2 &
    house1 = house2 - 1
 
 ```
@@ -3010,10 +3010,10 @@ local pred LeftOf(neighbour1::Nationality, neighbour2::Nationality, order::Order
 ```txt
 
 houseColour  = [ {Englishman} Red, {Swede}  White, {Dane}  Blue, {Norwegian}  Yellow, {German} Green ]
-pet = [ {Englishman} Birds, {Swede} Dog, {Dane} Horse, {Norwegian} Cats, {German}  Zebra ]  
-smokes = [ {Englishman} PallMall, {Swede} BlueMaster, {Dane} Blend, {Norwegian} Dunhill, {German} Prince ] 
+pet = [ {Englishman} Birds, {Swede} Dog, {Dane} Horse, {Norwegian} Cats, {German}  Zebra ]
+smokes = [ {Englishman} PallMall, {Swede} BlueMaster, {Dane} Blend, {Norwegian} Dunhill, {German} Prince ]
 drinks = [ {Englishman} Milk, {Swede} Beer, {Dane} Tea, {Norwegian}  Water,  {German} Coffee ]
-order = [ {First} Norwegian, {Second} Dane, {Third} Englishman, {Fourth} German,  {Fifth}, Swede ] 
+order = [ {First} Norwegian, {Second} Dane, {Third} Englishman, {Fourth} German,  {Fifth}, Swede ]
 
 ```
 
@@ -3423,7 +3423,7 @@ import Control.Monad (foldM, forM_)
 import Data.List ((\\))
 
 -- types
-data House = House   
+data House = House
     { color :: Color      -- <trait> :: House -> <Trait>
     , man   :: Man
     , pet   :: Pet
@@ -3504,7 +3504,7 @@ finalCheck solution = and                    -- fulfills the rules:
     where
       nextTo :: (House -> Bool) -> (House -> Bool) -> Bool
       nextTo p q = leftOf p q || leftOf q p
-      leftOf p q 
+      leftOf p q
           | (_:h:_) <- dropWhile (not . p) solution = q h
           | otherwise                               = False
 ```
@@ -3585,8 +3585,8 @@ answers = do
 main = do
     forM_ answers $ (\answer ->  -- for answer in answers:
       do
-        mapM_ print answer 
-        print [nation | (nation, _, Zebra, _, _) <- answer] 
+        mapM_ print answer
+        print [nation | (nation, _, Zebra, _, _) <- answer]
         putStrLn "" )
     putStrLn "No more solutions!"
 ```
@@ -3676,12 +3676,12 @@ The worker and its helper verbs
 ```j
 select=: ~.@(,: #~ ,&(0~:#))
 filter=: #~*./@:(2>#S:0)"1
-compose=: [: filter f. [: ,/ select f. L:0"1"1 _ 
+compose=: [: filter f. [: ,/ select f. L:0"1"1 _
 
 solve=: 4 :0
 h=. ,:x
 whilst. 0=# z do.
-  for_e. y do. h=. h compose > e end. 
+  for_e. y do. h=. h compose > e end.
   z=.(#~1=[:+/"1 (0=#)S:0"1) h=.~. h
 end.
 )
@@ -3689,7 +3689,7 @@ end.
 
 {{out}}
 
-```j>   
+```j>
 "0 houses solve constraints
 ┌─────────┬─────┬──────┬──────┬──────────┐
 │Norwegian│cats │water │yellow│Dunhill   │
@@ -3752,27 +3752,27 @@ First, create a class which express the puzzle line.
 package zebra;
 
 public class LineOfPuzzle implements Cloneable{
-            
+
     private Integer order;
-    private String nation; 
-    private String color; 
+    private String nation;
+    private String color;
     private String animal;
     private String drink;
     private String cigarette;
-    
+
     private LineOfPuzzle rightNeighbor;
     private LineOfPuzzle leftNeighbor;
     private PuzzleSet<LineOfPuzzle> undefNeighbors;
-        
-    public LineOfPuzzle (Integer order, String nation, String color, 
+
+    public LineOfPuzzle (Integer order, String nation, String color,
                          String animal, String drink, String cigarette){
-    
+
         this.animal=animal;
         this.cigarette=cigarette;
         this.color=color;
         this.drink=drink;
         this.nation=nation;
-        this.order=order;                
+        this.order=order;
     }
 
     public Integer getOrder() {
@@ -3837,7 +3837,7 @@ public class LineOfPuzzle implements Cloneable{
         else
             return false;
     }
-    
+
     public int getFactsCount(){
         int facts = 0;
         facts+=this.getOrder()!=null?1:0;
@@ -3848,41 +3848,41 @@ public class LineOfPuzzle implements Cloneable{
         facts+=this.getDrink()!=null?1:0;
         return facts;
     }
-            
+
     public int getCommonFactsCount(LineOfPuzzle lineOfFacts){
         int ordrCmp = (this.order!=null && lineOfFacts.getOrder()!= null &&
-                       this.order.intValue()== lineOfFacts.getOrder().intValue())?1:0;        
-        
-        int natnCmp = (this.nation!=null && lineOfFacts.getNation()!= null && 
+                       this.order.intValue()== lineOfFacts.getOrder().intValue())?1:0;
+
+        int natnCmp = (this.nation!=null && lineOfFacts.getNation()!= null &&
                        this.nation.equalsIgnoreCase(lineOfFacts.getNation()))?1:0;
-        
-        int colrCmp = (this.color!=null && lineOfFacts.getColor()!= null && 
+
+        int colrCmp = (this.color!=null && lineOfFacts.getColor()!= null &&
                        this.color.equalsIgnoreCase(lineOfFacts.getColor()))?1:0;
 
-        int petsCmp = (this.animal!=null && (lineOfFacts.getAnimal()!= null && 
+        int petsCmp = (this.animal!=null && (lineOfFacts.getAnimal()!= null &&
                        this.animal.equalsIgnoreCase(lineOfFacts.getAnimal())))?1:0;
 
-        int cigrCmp = (this.cigarette!=null && lineOfFacts.getCigarette()!= null && 
+        int cigrCmp = (this.cigarette!=null && lineOfFacts.getCigarette()!= null &&
                        this.cigarette.equalsIgnoreCase(lineOfFacts.getCigarette()))?1:0;
 
-        int drnkCmp = (this.drink!=null && lineOfFacts.getDrink()!= null && 
+        int drnkCmp = (this.drink!=null && lineOfFacts.getDrink()!= null &&
                        this.drink.equalsIgnoreCase(lineOfFacts.getDrink()))?1:0;
-        
+
         int result = (ordrCmp + natnCmp + colrCmp + petsCmp + cigrCmp + drnkCmp);
-        
+
         return result;
-    } 
-    
-    public void addUndefindedNeighbor(LineOfPuzzle newNeighbor){        
-        if (this.undefNeighbors==null) 
+    }
+
+    public void addUndefindedNeighbor(LineOfPuzzle newNeighbor){
+        if (this.undefNeighbors==null)
             this.undefNeighbors = new PuzzleSet<>();
-        
+
         this.undefNeighbors.add(newNeighbor);
     }
-    
+
     public boolean hasUndefNeighbors(){
         return (this.undefNeighbors!=null);
-    } 
+    }
 
     public PuzzleSet<LineOfPuzzle> getUndefNeighbors(){
         return this.undefNeighbors;
@@ -3890,24 +3890,24 @@ public class LineOfPuzzle implements Cloneable{
 
     public void setLeftNeighbor(LineOfPuzzle leftNeighbor){
         this.leftNeighbor = leftNeighbor;
-        this.leftNeighbor.setOrder(this.order - 1);        
+        this.leftNeighbor.setOrder(this.order - 1);
     }
-    
+
     public void setRightNeighbor(LineOfPuzzle rightNeighbor){
-        this.rightNeighbor=rightNeighbor;                    
-        this.rightNeighbor.setOrder(this.order + 1);        
+        this.rightNeighbor=rightNeighbor;
+        this.rightNeighbor.setOrder(this.order + 1);
     }
-    
+
     public boolean hasLeftNeighbor(){
         return (leftNeighbor!=null);
     }
-    
+
     public LineOfPuzzle getLeftNeighbor(){
         return this.leftNeighbor;
     }
-    
+
     public boolean hasNeighbor(int direction){
-        if (direction < 0) 
+        if (direction < 0)
             return (leftNeighbor!=null);
         else
             return (rightNeighbor!=null);
@@ -3915,55 +3915,55 @@ public class LineOfPuzzle implements Cloneable{
 
     public boolean hasRightNeighbor(){
         return (rightNeighbor!=null);
-    } 
-    
+    }
+
     public LineOfPuzzle getRightNeighbor(){
         return this.rightNeighbor;
     }
 
     public LineOfPuzzle getNeighbor(int direction){
-        if (direction < 0) 
+        if (direction < 0)
             return this.leftNeighbor;
         else
             return this.rightNeighbor;
     }
-    
+
     public String getWholeLine() {
-        String sLine = this.order + " - " + 
+        String sLine = this.order + " - " +
                        this.nation + " - " +
-                       this.color + " - " + 
-                       this.animal + " - " +                       
+                       this.color + " - " +
+                       this.animal + " - " +
                        this.drink + " - " +
                        this.cigarette;
             return sLine;
-    }    
-    
+    }
+
     @Override
     public int hashCode() {
         int sLine = (this.order + " - " +
                      this.nation + " - " +
-                     this.color + " - " + 
+                     this.color + " - " +
                      this.animal + " - " +
                      this.drink + " - " +
                      this.cigarette
                 ).hashCode();
         return sLine;
-    }    
-
-    public void merge(LineOfPuzzle mergedLine){        
-        if (this.order == null) this.order = mergedLine.order;    
-        if (this.nation == null) this.nation = mergedLine.nation;    
-        if (this.color == null) this.color = mergedLine.color;    
-        if (this.animal == null) this.animal = mergedLine.animal;    
-        if (this.drink == null) this.drink = mergedLine.drink;    
-        if (this.cigarette == null) this.cigarette = mergedLine.cigarette;            
     }
-    
-    
+
+    public void merge(LineOfPuzzle mergedLine){
+        if (this.order == null) this.order = mergedLine.order;
+        if (this.nation == null) this.nation = mergedLine.nation;
+        if (this.color == null) this.color = mergedLine.color;
+        if (this.animal == null) this.animal = mergedLine.animal;
+        if (this.drink == null) this.drink = mergedLine.drink;
+        if (this.cigarette == null) this.cigarette = mergedLine.cigarette;
+    }
+
+
     public LineOfPuzzle clone() {
         try {
             return (LineOfPuzzle) super.clone();
-        } catch (CloneNotSupportedException e) {        
+        } catch (CloneNotSupportedException e) {
             e.printStackTrace();
             throw new RuntimeException();
         }
@@ -3983,85 +3983,85 @@ package zebra;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-public class PuzzleSet<T extends LineOfPuzzle> extends LinkedHashSet{     
+public class PuzzleSet<T extends LineOfPuzzle> extends LinkedHashSet{
     private T t;
-    
+
     private int countOfOne=0;
     private int countOfTwo=0;
     private int countOfThree=0;
     private int countOfFour=0;
     private int countOfFive=0;
-    
+
     PuzzleSet() {
-        super();        
+        super();
     }
-               
-    public void set(T t) { this.t = t; }    
-    
-    public T get(int index) { 
-        return ((T)this.toArray()[index]); 
-    }   
-    
-    public PuzzleSet<T> getSimilarLines(T searchLine) { 
+
+    public void set(T t) { this.t = t; }
+
+    public T get(int index) {
+        return ((T)this.toArray()[index]);
+    }
+
+    public PuzzleSet<T> getSimilarLines(T searchLine) {
         PuzzleSet<T> puzzleSubSet = new PuzzleSet<>();
         for (Iterator<T> it = this.iterator(); it.hasNext();) {
             T lineOfPuzzle = it.next();
-            
+
             if(lineOfPuzzle.getCommonFactsCount(searchLine) == searchLine.getFactsCount())
-                puzzleSubSet.add(lineOfPuzzle);            
+                puzzleSubSet.add(lineOfPuzzle);
         }
-        if (puzzleSubSet.isEmpty()) 
+        if (puzzleSubSet.isEmpty())
             return null;
-        
-        return puzzleSubSet; 
-    }   
-    
+
+        return puzzleSubSet;
+    }
+
     public boolean contains(T searchLine) {
         for (Iterator<T> it = this.iterator(); it.hasNext();) {
             T puzzleLine = it.next();
-            
+
             if(puzzleLine.getCommonFactsCount(searchLine) == searchLine.getFactsCount())
                 return true;
         }
         return false;
     }
-    
+
     public boolean accepts(T searchLine) {
         int passed=0;
         int notpassed=0;
-        
+
         for (Iterator<T> it = this.iterator(); it.hasNext();) {
             T puzzleSetLine = it.next();
-            
+
             int lineFactsCnt = puzzleSetLine.getFactsCount();
             int comnFactsCnt = puzzleSetLine.getCommonFactsCount(searchLine);
-            
+
             if( lineFactsCnt != comnFactsCnt && lineFactsCnt !=0 && comnFactsCnt !=0){
-                notpassed++;        
+                notpassed++;
             }
-            
+
             if( lineFactsCnt == comnFactsCnt)
                 passed++;
         }
-        return (passed >= 0 && notpassed == 0);        
+        return (passed >= 0 && notpassed == 0);
     }
 
-    public void riseLineCountFlags(int lineOrderId){         
+    public void riseLineCountFlags(int lineOrderId){
          switch (lineOrderId){
              case 1: countOfOne++; break;
              case 2: countOfTwo++; break;
              case 3: countOfThree++; break;
-             case 4: countOfFour++; break;                 
+             case 4: countOfFour++; break;
              case 5: countOfFive++; break;
              default:;
          }
      }
 
-    public void clearLineCountFlags(){         
+    public void clearLineCountFlags(){
         countOfOne=0;
         countOfTwo=0;
         countOfThree=0;
-        countOfFour=0;                 
+        countOfFour=0;
         countOfFive=0;
      }
 
@@ -4070,7 +4070,7 @@ public class PuzzleSet<T extends LineOfPuzzle> extends LinkedHashSet{
              case 1: return countOfOne;
              case 2: return countOfTwo;
              case 3: return countOfThree;
-             case 4: return countOfFour;                 
+             case 4: return countOfFour;
              case 5: return countOfFive;
              default:return -1;
          }
@@ -4096,7 +4096,7 @@ public class Puzzle {
     private static final ArrayList<String> drinks = new ArrayList<>(5);
     private static final ArrayList<String> cigarettes = new ArrayList<>(5);
     private static final ArrayList<String> colors = new ArrayList<>(5);
-    private static PuzzleSet<LineOfPuzzle> puzzleTable; 
+    private static PuzzleSet<LineOfPuzzle> puzzleTable;
     static
     {
         // House orders
@@ -4122,25 +4122,25 @@ public class Puzzle {
         drinks.add("Tea");
         drinks.add("Beer");
         drinks.add("Water");
-        drinks.add("Milk");        
+        drinks.add("Milk");
         //Smokes
         cigarettes.add("Pall Mall");
         cigarettes.add("Blend");
         cigarettes.add("Blue Master");
         cigarettes.add("Prince");
-        cigarettes.add("Dunhill");        
+        cigarettes.add("Dunhill");
         //Colors
         colors.add("Red");
         colors.add("Green");
         colors.add("White");
         colors.add("Blue");
-        colors.add("Yellow");       
-    }    
-    
-    public static void main (String[] args){        
+        colors.add("Yellow");
+    }
+
+    public static void main (String[] args){
         boolean validLine=true;
         puzzleTable = new PuzzleSet<>();
-        
+
         //Rules
         LineOfPuzzle rule2 = new LineOfPuzzle(null, "English", "Red", null, null, null);
         LineOfPuzzle rule3 = new LineOfPuzzle(null, "Swedesh", null, "Dog", null, null);
@@ -4153,7 +4153,7 @@ public class Puzzle {
         LineOfPuzzle rule13 = new LineOfPuzzle(null, null, null, null, "Beer", "Blue Master");
         LineOfPuzzle rule14 = new LineOfPuzzle(null, "German", null, null, null, "Prince");
         LineOfPuzzle rule15 = new LineOfPuzzle(2, null, "Blue", null, null, null);
-        
+
         PuzzleSet<LineOfPuzzle> ruleSet = new PuzzleSet<>();
         ruleSet.add(rule2);
         ruleSet.add(rule3);
@@ -4167,110 +4167,110 @@ public class Puzzle {
         ruleSet.add(rule14);
         ruleSet.add(rule15);
 
-        //Creating all possible combination of a puzzle line. 
+        //Creating all possible combination of a puzzle line.
         //The maximum number of lines is 5^^6 (15625).
         //Each combination line is checked against a set of knowing facts, thus
         //only a small number of line result at the end.
-        for (Integer orderId : Puzzle.orders) {            
-            for (String nation : Puzzle.nations) {                
-                for (String color : Puzzle.colors) {                    
-                    for (String animal : Puzzle.animals) {                        
-                        for (String drink : Puzzle.drinks) {                            
+        for (Integer orderId : Puzzle.orders) {
+            for (String nation : Puzzle.nations) {
+                for (String color : Puzzle.colors) {
+                    for (String animal : Puzzle.animals) {
+                        for (String drink : Puzzle.drinks) {
                             for (String cigarette : Puzzle.cigarettes) {
-                                LineOfPuzzle pzlLine = new LineOfPuzzle(orderId, 
-                                                                     nation, 
+                                LineOfPuzzle pzlLine = new LineOfPuzzle(orderId,
+                                                                     nation,
                                                                      color,
                                                                      animal,
                                                                      drink,
                                                                      cigarette);
                                 // Checking against a set of knowing facts
-                                if (ruleSet.accepts(pzlLine)){                                      
+                                if (ruleSet.accepts(pzlLine)){
                                         // Adding rules of neighbors
-                                        if (cigarette.equalsIgnoreCase("Blend") 
-                                                && (animal.equalsIgnoreCase("Cats") 
+                                        if (cigarette.equalsIgnoreCase("Blend")
+                                                && (animal.equalsIgnoreCase("Cats")
                                                 || drink.equalsIgnoreCase("Water")))
                                             validLine = false;
-                                        
-                                        if (cigarette.equalsIgnoreCase("Dunhill") 
+
+                                        if (cigarette.equalsIgnoreCase("Dunhill")
                                                 && animal.equalsIgnoreCase("Horse"))
                                             validLine = false;
-                                        
+
                                         if (validLine){
                                             puzzleTable.add(pzlLine);
-                                            
+
                                             //set neighbors constraints
                                             if (color.equalsIgnoreCase("Green")){
                                                 pzlLine.setRightNeighbor(new LineOfPuzzle(null, null, "White", null, null, null));
-                                            }                                        
+                                            }
                                             if (color.equalsIgnoreCase("White")){
                                                 pzlLine.setLeftNeighbor(new LineOfPuzzle(null, null, "Green", null, null, null));
                                             }
                                             //
-                                            if (animal.equalsIgnoreCase("Cats") 
+                                            if (animal.equalsIgnoreCase("Cats")
                                                     && !cigarette.equalsIgnoreCase("Blend") ){
                                                 pzlLine.addUndefindedNeighbor(new LineOfPuzzle(null, null, null, null, null, "Blend"));
-                                            }                                                                  
-                                            if (cigarette.equalsIgnoreCase("Blend") 
+                                            }
+                                            if (cigarette.equalsIgnoreCase("Blend")
                                                     && !animal.equalsIgnoreCase("Cats")){
                                                 pzlLine.addUndefindedNeighbor(new LineOfPuzzle(null, null, null, "Cats", null, null));
                                             }
                                             //
-                                            if (drink.equalsIgnoreCase("Water") 
-                                                    && !animal.equalsIgnoreCase("Cats") 
+                                            if (drink.equalsIgnoreCase("Water")
+                                                    && !animal.equalsIgnoreCase("Cats")
                                                     && !cigarette.equalsIgnoreCase("Blend")){
                                                 pzlLine.addUndefindedNeighbor(new LineOfPuzzle(null, null, null, null, null, "Blend"));
                                             }
 
-                                            if (cigarette.equalsIgnoreCase("Blend") 
+                                            if (cigarette.equalsIgnoreCase("Blend")
                                                     && !drink.equalsIgnoreCase("Water")){
                                                 pzlLine.addUndefindedNeighbor(new LineOfPuzzle(null, null, null, null, "Water", null));
-                                            }                                        
+                                            }
                                             //
-                                            if (animal.equalsIgnoreCase("Horse") 
+                                            if (animal.equalsIgnoreCase("Horse")
                                                     && !cigarette.equalsIgnoreCase("Dunhill")){
                                                 pzlLine.addUndefindedNeighbor(new LineOfPuzzle(null, null, null, null, null, "Dunhill"));
                                             }
-                                            if (cigarette.equalsIgnoreCase("Dunhill") 
+                                            if (cigarette.equalsIgnoreCase("Dunhill")
                                                     && !animal.equalsIgnoreCase("Horse")){
                                                 pzlLine.addUndefindedNeighbor(new LineOfPuzzle(null, null, null, "Horse", null, null));
-                                            }                                               
+                                            }
                                         }
                                         validLine = true;
                                 }
                             } //cigarette end
                         } //drinks end
                     } //animal end
-                } //color end                    
+                } //color end
             } //nations end
         } //order end
-        
-        System.out.println("After general rule set validation, remains "+ 
-                                                puzzleTable.size() + " lines.");      
-        
+
+        System.out.println("After general rule set validation, remains "+
+                                                puzzleTable.size() + " lines.");
+
         for (Iterator<LineOfPuzzle> it = puzzleTable.iterator(); it.hasNext();){
             validLine=true;
-            
+
             LineOfPuzzle lineOfPuzzle = it.next();
-            
+
             if (lineOfPuzzle.hasLeftNeighbor()){
-                LineOfPuzzle neighbor = lineOfPuzzle.getLeftNeighbor();                
+                LineOfPuzzle neighbor = lineOfPuzzle.getLeftNeighbor();
                 if (neighbor.getOrder()<1 || neighbor.getOrder()>5){
                     validLine=false;
                     it.remove();
-                        
+
                 }
             }
             if (validLine && lineOfPuzzle.hasRightNeighbor()){
-                LineOfPuzzle neighbor = lineOfPuzzle.getRightNeighbor();                
+                LineOfPuzzle neighbor = lineOfPuzzle.getRightNeighbor();
                 if (neighbor.getOrder()<1 || neighbor.getOrder()>5){
                     it.remove();
-                }                
-            }                        
+                }
+            }
         }
-        
-        System.out.println("After removing out of bound neighbors, remains " + 
-                                                puzzleTable.size() + " lines.");        
-        
+
+        System.out.println("After removing out of bound neighbors, remains " +
+                                                puzzleTable.size() + " lines.");
+
         //Setting left and right neighbors
         for (Iterator<LineOfPuzzle> it = puzzleTable.iterator(); it.hasNext();) {
             LineOfPuzzle puzzleLine = it.next();
@@ -4294,53 +4294,53 @@ public class Puzzle {
                             puzzleLine.getRightNeighbor().merge(rightNeighbor);
                         else
                             puzzleLine.setRightNeighbor(rightNeighbor);
-                    }                    
+                    }
                 }
             }
         }
-        
+
         int iteration=1;
         int lastSize=0;
-        
+
         //Recursively validate against neighbor rules
         while (puzzleTable.size()>5 && lastSize != puzzleTable.size()) {
             lastSize = puzzleTable.size();
             puzzleTable.clearLineCountFlags();
-            
+
             recursiveSearch(null, puzzleTable, -1);
-            
+
             ruleSet.clear();
             // Assuming we'll get at leas one valid line each iteration, we create
-            // a set of new rules with lines which have no more then one instance of same OrderId.            
+            // a set of new rules with lines which have no more then one instance of same OrderId.
             for (int i = 1; i < 6; i++) {
                 if (puzzleTable.getLineCountByOrderId(i)==1)
                    ruleSet.addAll(puzzleTable.getSimilarLines(new LineOfPuzzle(i, null, null, null, null, null)));
             }
-    
+
             for (Iterator<LineOfPuzzle> it = puzzleTable.iterator(); it.hasNext();) {
                 LineOfPuzzle puzzleLine = it.next();
 
                 if (!ruleSet.accepts(puzzleLine))
-                    it.remove();           
+                    it.remove();
             }
             //
             System.out.println("After " + iteration + " recursive iteration, remains "
                                                 + puzzleTable.size() + " lines");
-            iteration+=1;            
-        }        
+            iteration+=1;
+        }
 
         // Print the results
-        System.out.println("-------------------------------------------");  
+        System.out.println("-------------------------------------------");
         if (puzzleTable.size()==5){
             for (Iterator<LineOfPuzzle> it = puzzleTable.iterator(); it.hasNext();) {
             LineOfPuzzle puzzleLine = it.next();
-                System.out.println(puzzleLine.getWholeLine());             
+                System.out.println(puzzleLine.getWholeLine());
             }
         }else
-            System.out.println("Sorry, solution not found!");                
+            System.out.println("Sorry, solution not found!");
     }
-    
-    // Recursively checks the input set to ensure each line has right neighbor. 
+
+    // Recursively checks the input set to ensure each line has right neighbor.
     // Neighbors can be of three type, left, right or undefined.
     // Direction: -1 left, 0 undefined, 1 right
     private static boolean recursiveSearch(LineOfPuzzle pzzlNodeLine,
@@ -4348,14 +4348,14 @@ public class Puzzle {
         boolean validLeaf = false;
         boolean hasNeighbor = false;
         PuzzleSet<LineOfPuzzle> puzzleSubSet = null;
-        
+
         for (Iterator<LineOfPuzzle> it = puzzleSet.iterator(); it.hasNext();) {
-            LineOfPuzzle pzzlLeafLine = it.next();            
+            LineOfPuzzle pzzlLeafLine = it.next();
             validLeaf = false;
-                        
+
             hasNeighbor = pzzlLeafLine.hasNeighbor(direction);
-            
-            if (hasNeighbor){                                
+
+            if (hasNeighbor){
                 puzzleSubSet = puzzleTable.getSimilarLines(pzzlLeafLine.getNeighbor(direction));
                 if (puzzleSubSet != null){
                     if (pzzlNodeLine !=null)
@@ -4366,14 +4366,14 @@ public class Puzzle {
                 else
                     validLeaf = false;
             }
-            
+
             if (!validLeaf && pzzlLeafLine.hasNeighbor(-1*direction)){
                 hasNeighbor = true;
                 if (hasNeighbor){
                     puzzleSubSet = puzzleTable.getSimilarLines(pzzlLeafLine.getNeighbor(-1*direction));
                     if (puzzleSubSet != null){
                         if (pzzlNodeLine !=null)
-                            validLeaf = puzzleSubSet.contains(pzzlNodeLine);                        
+                            validLeaf = puzzleSubSet.contains(pzzlNodeLine);
                         else
                             validLeaf = recursiveSearch(pzzlLeafLine, puzzleSubSet, direction);
                     }
@@ -4381,10 +4381,10 @@ public class Puzzle {
                         validLeaf = false;
                 }
             }
-            
+
             if (pzzlNodeLine != null && validLeaf)
                 return validLeaf;
-                
+
             if (pzzlNodeLine == null && hasNeighbor && !validLeaf){
                 it.remove();
             }
@@ -4396,8 +4396,8 @@ public class Puzzle {
                 if (!hasNeighbor){
                     puzzleSet.riseLineCountFlags(pzzlLeafLine.getOrder());
                 }
-            }         
-        }                
+            }
+        }
         return validLeaf;
     }
 }
@@ -4428,7 +4428,7 @@ After 3 recursive iteration, remains 5 lines
 ## jq
 
 {{works with|jq|1.4}}
-The main function presented here, zebra, generates all possible solutions.  By letting it run to 
+The main function presented here, zebra, generates all possible solutions.  By letting it run to
 completion, we can see that there is only one solution to the
 puzzle.  The program is fast because pruning takes place.  That is, the program implements a "generate-and-prune" strategy.
 
@@ -4439,11 +4439,11 @@ puzzle.  The program is fast because pruning takes place.  That is, the program 
 # Attempt to unify the input object with the specified object
 def unify( object ):
   # Attempt to unify the input object with the specified tag:value
-  def unify2(tag; value): 
+  def unify2(tag; value):
     if . == null then null
     elif .[tag] == value then .
     elif .[tag] == null then .[tag] = value
-    else null 
+    else null
     end;
   reduce (object|keys[]) as $key
     (.; unify2($key; object[$key]) );
@@ -4463,13 +4463,13 @@ def enforce(i; cond):
 '''Part 2''': Zebra Puzzle
 
 ```jq
-# Each house is a JSON object of the form: 
-# { "number": _, "nation": _, "owns": _, "color": _, "drinks": _, "smokes": _} 
+# Each house is a JSON object of the form:
+# { "number": _, "nation": _, "owns": _, "color": _, "drinks": _, "smokes": _}
 
 # The list of houses is represented by an array of five such objects.
 
 # Input: an array of objects representing houses.
-# Output: [i, solution] where i is the entity unified with obj 
+# Output: [i, solution] where i is the entity unified with obj
 # and solution is the updated array
 def solve_with_index( obj ):
   . as $Houses
@@ -4521,7 +4521,7 @@ def zebra:
 
   | solve( {"owns": "zebra"} )
 ;
- 
+
 zebra
 ```
 
@@ -4574,7 +4574,7 @@ $ time jq -n -f zebra.jq
 ]
 
 # Times include compilation:
-real	0m0.284s 
+real	0m0.284s
 user	0m0.260s
 sys	0m0.005s
 ```
@@ -4616,7 +4616,7 @@ end
 
 function print_houses(n, pet, nationality, colors, drink, smokes)
   println("$n, $pet,    $nationality       $colors       $drink    $smokes")
-end 
+end
 
 for m = men, c = colors
   if eq("red",c, "english",m) && adj("norwegian",m, "blue",c)
@@ -4640,11 +4640,11 @@ for m = men, c = colors
             end
           end
         end
-      end 
+      end
     end
   end
 end
-  
+
 
 ```
 
@@ -4796,10 +4796,10 @@ House  Color   Nation     Animal  Drink   Smokes
 
 ### ==  ======  =========  ======  ======  ========
 
-  1    Yellow  Norwegian  Cats    Water   Dunhill    
-  2    Blue    Danish     Horse   Tea     Blend      
-  3    Red     English    Birds   Milk    Pall Mall  
-  4    Green   German     Zebra   Coffee  Prince     
+  1    Yellow  Norwegian  Cats    Water   Dunhill
+  2    Blue    Danish     Horse   Tea     Blend
+  3    Red     English    Birds   Milk    Pall Mall
+  4    Green   German     Zebra   Coffee  Prince
   5    White   Swede      Dog     Beer    Blue Master
 
 The German owns the Zebra
@@ -4820,20 +4820,20 @@ The Logtalk distribution includes a solution for a variant of this puzzle (here 
 /* Houses logical puzzle: who owns the zebra and who drinks water?
 
      1) Five colored houses in a row, each with an owner, a pet, cigarettes, and a drink.
-     2) The English lives in the red house. 
-     3) The Spanish has a dog. 
-     4) They drink coffee in the green house. 
-     5) The Ukrainian drinks tea. 
-     6) The green house is next to the white house. 
-     7) The Winston smoker has a serpent. 
-     8) In the yellow house they smoke Kool. 
+     2) The English lives in the red house.
+     3) The Spanish has a dog.
+     4) They drink coffee in the green house.
+     5) The Ukrainian drinks tea.
+     6) The green house is next to the white house.
+     7) The Winston smoker has a serpent.
+     8) In the yellow house they smoke Kool.
      9) In the middle house they drink milk.
-    10) The Norwegian lives in the first house from the left. 
-    11) The Chesterfield smoker lives near the man with the fox. 
-    12) In the house near the house with the horse they smoke Kool. 
-    13) The Lucky Strike smoker drinks juice. 
-    14) The Japanese smokes Kent. 
-    15) The Norwegian lives near the blue house. 
+    10) The Norwegian lives in the first house from the left.
+    11) The Chesterfield smoker lives near the man with the fox.
+    12) In the house near the house with the horse they smoke Kool.
+    13) The Lucky Strike smoker drinks juice.
+    14) The Japanese smokes Kent.
+    15) The Norwegian lives near the blue house.
 
 Who owns the zebra and who drinks water?
 */
@@ -4859,11 +4859,11 @@ Who owns the zebra and who drinks water?
         member(h(english, _, _, _, red), Solution),                         %  2
         member(h(spanish, dog, _, _, _), Solution),                         %  3
         member(h(_, _, _, coffee, green), Solution),                        %  4
-        member(h(ukrainian, _, _, tea, _), Solution),                       %  5 
+        member(h(ukrainian, _, _, tea, _), Solution),                       %  5
         next(h(_, _, _, _, green), h(_, _, _, _, white), Solution),         %  6
         member(h(_, snake, winston, _, _), Solution),                       %  7
         member(h(_, _, kool, _, yellow), Solution),                         %  8
-        Solution = [_, _, h(_, _, _, milk, _), _, _],                       %  9    
+        Solution = [_, _, h(_, _, _, milk, _), _, _],                       %  9
         Solution = [h(norwegian, _, _, _, _)| _],                           % 10
         next(h(_, fox, _, _, _), h(_, _, chesterfield, _, _), Solution),    % 11
         next(h(_, _, kool, _, _), h(_, horse, _, _, _), Solution),          % 12
@@ -4876,7 +4876,7 @@ Who owns the zebra and who drinks water?
     print([]).
     print([House| Houses]) :-
         write(House), nl,
-        print(Houses).    
+        print(Houses).
 
     % h(Nationality, Pet, Cigarette, Drink, Color)
     template([h(_, _, _, _, _), h(_, _, _, _, _), h(_, _, _, _, _), h(_, _, _, _, _), h(_, _, _, _, _)]).
@@ -4948,7 +4948,7 @@ smoke		Prince		Prince		Prince		Prince		Prince
 ```
 
 This should be read as follows: Each column shows (in blocks of 5) the possible candidates of each kind (beverage, animal, smoke...)
-We solve it now in a 'sudoku' way: We remove candidates iteratively until we are left with 1 candidate of each kind for each house. 
+We solve it now in a 'sudoku' way: We remove candidates iteratively until we are left with 1 candidate of each kind for each house.
 
 ```Mathematica
 ClearAll[EliminatePoss, FilterPuzzle]
@@ -4972,7 +4972,7 @@ FilterPuzzle[tbl_] := Module[{t = tbl, poss1, poss2, poss, notposs, rows, column
   t = EliminatePoss[t, "Yellow", "Dunhill"]; (* 8. In the yellow house they smoke Dunhill. *)
   t = EliminatePoss[t, "Blue Master", "Beer"]; (*13. The man who smokes Blue Master drinks beer. *)
   t = EliminatePoss[t, "German", "Prince"]; (* 14. The German smokes Prince. *)
- 
+
   (* 9. In the middle house they drink milk. *)
   poss = Position[t, "Milk"];
   delpos = Select[poss, #[[2]] != 3 &];
@@ -4982,7 +4982,7 @@ FilterPuzzle[tbl_] := Module[{t = tbl, poss1, poss2, poss, notposs, rows, column
   poss = Position[t, "Norwegian"];
   delpos = Select[poss, #[[2]] != 1 &];
   t = ReplacePart[t, delpos -> Null];
-  
+
   (* 15. The Norwegian lives next to the blue house.*)
   poss1 = Position[t, "Norwegian"];
   poss2 = Position[t, "Blue"];
@@ -4992,7 +4992,7 @@ FilterPuzzle[tbl_] := Module[{t = tbl, poss1, poss2, poss, notposs, rows, column
   t = ReplacePart[t, delpos -> Null];
   delpos = Complement[poss2, poss[[2]]];
   t = ReplacePart[t, delpos -> Null];
-  
+
   (* 5. The green house is immediately to the left of the white house. *)
   poss1 = Position[t, "Green"];
   poss2 = Position[t, "White"];
@@ -5002,7 +5002,7 @@ FilterPuzzle[tbl_] := Module[{t = tbl, poss1, poss2, poss, notposs, rows, column
   t = ReplacePart[t, delpos -> Null];
   delpos = Complement[poss2, poss[[2]]];
   t = ReplacePart[t, delpos -> Null];
-  
+
   (*11. The man who smokes Blend lives in the house next to the house with cats.*)
   poss1 = Position[t, "Blend"];
   poss2 = Position[t, "Cats"];
@@ -5012,7 +5012,7 @@ FilterPuzzle[tbl_] := Module[{t = tbl, poss1, poss2, poss, notposs, rows, column
   t = ReplacePart[t, delpos -> Null];
   delpos = Complement[poss2, poss[[2]]];
   t = ReplacePart[t, delpos -> Null];
-  
+
   (* 12. In a house next to the house where they have a horse, they smoke Dunhill. *)
   poss1 = Position[t, "Horse"];
   poss2 = Position[t, "Dunhill"];
@@ -5022,7 +5022,7 @@ FilterPuzzle[tbl_] := Module[{t = tbl, poss1, poss2, poss, notposs, rows, column
   t = ReplacePart[t, delpos -> Null];
   delpos = Complement[poss2, poss[[2]]];
   t = ReplacePart[t, delpos -> Null];
-  
+
   (* 16. They drink water in a house next to the house where they smoke Blend. *)
   poss1 = Position[t, "Water"];
   poss2 = Position[t, "Blend"];
@@ -5032,7 +5032,7 @@ FilterPuzzle[tbl_] := Module[{t = tbl, poss1, poss2, poss, notposs, rows, column
   t = ReplacePart[t, delpos -> Null];
   delpos = Complement[poss2, poss[[2]]];
   t = ReplacePart[t, delpos -> Null];
-  
+
   (*General rule 1 in a line => cross out vertical and horizontal lines*)
   (* 1 in a row*)
   vals = Select[t, Count[#, Null] == 4 &];
@@ -5041,7 +5041,7 @@ FilterPuzzle[tbl_] := Module[{t = tbl, poss1, poss2, poss, notposs, rows, column
   delpos = With[{r = First[#], c = Last[#]}, {#, c} & /@ (Range[-4, 0] + Ceiling[r, 5])] & /@ poss; (*delete in columns*)
   delpos = Flatten[MapThread[DeleteCases, {delpos, poss}], 1];
   t = ReplacePart[t, delpos -> Null];
-  
+
   (* 1 in a column*)
   sets = Flatten[Table[{i + k*5, j}, {k, 0, 4}, {j, 1, 5}, {i, 1, 5}],1];
   sets = {#, Extract[t, #]} & /@ sets;
@@ -5052,7 +5052,7 @@ FilterPuzzle[tbl_] := Module[{t = tbl, poss1, poss2, poss, notposs, rows, column
   delpos = With[{r = First[#], c = Last[#]}, {r, #} & /@ (DeleteCases[Range[5], c])] & /@ delpos;
   delpos = Flatten[delpos, 1];
   t = ReplacePart[t, delpos -> Null];
-  
+
   t
 ]
 colors = {"Blue", "Green", "Red", "White", "Yellow"};
@@ -5109,9 +5109,9 @@ constraint exists(n in 1..4)((Gz[n]=Horse /\ Lz[n+1]=Dunhill) \/ (Gz[n+1]=Horse 
 constraint exists(n in 1..5)(Lz[n]=BlueMaster /\ Iz[n]=Beer);                                        %The man who smokes Blue Master drinks beer.
 constraint exists(n in 1..5)(Nz[n]=German /\ Lz[n]=Prince);                                          %The German smokes Prince.
 constraint exists(n in 1..4)((Nz[n]=Norwegian /\ Ez[n+1]=Blue) \/ (Nz[n+1]=Norwegian /\ Ez[n]=Blue));%The Norwegian lives next to the blue house.
-constraint exists(n in 1..4)((Lz[n]=Blend /\ Iz[n+1]=Water) \/ (Lz[n+1]=Blend /\ Iz[n]=Water));      %They drink water in a house next to the house where they smoke Blend. 
+constraint exists(n in 1..4)((Lz[n]=Blend /\ Iz[n+1]=Water) \/ (Lz[n+1]=Blend /\ Iz[n]=Water));      %They drink water in a house next to the house where they smoke Blend.
 var 1..5: n;
-constraint Gz[n]=Zebra; 
+constraint Gz[n]=Zebra;
 solve satisfy;
 output ["The "++show(Nz[n])++" owns the zebra"++"\n\n"++show(Nz)++"\n"++show(Iz)++"\n"++show(Gz)++"\n"++show(Ez)++"\n"++show(Lz)++"\n"];
 
@@ -5531,11 +5531,11 @@ sub plausible(%house, %atts) {
 
 ```txt
 
-COLOR     | DRINK     | NAT       | NUM       | PET       | SMOKE    
-yellow    | water     | Norwegian | 1         | cats      | Dunhill  
-blue      | tea       | Dane      | 2         | horse     | Blend    
+COLOR     | DRINK     | NAT       | NUM       | PET       | SMOKE
+yellow    | water     | Norwegian | 1         | cats      | Dunhill
+blue      | tea       | Dane      | 2         | horse     | Blend
 red       | milk      | English   | 3         | birds     | Pall-Mall
-green     | coffee    | German    | 4         | zebra     | Prince   
+green     | coffee    | German    | 4         | zebra     | Prince
 white     | beer      | Swede     | 5         | dog       | Blue-Master
 
 ```
@@ -5590,7 +5590,7 @@ for C=1 to factorial5 do
         for N=1 to factorial5 do
             perm[Nationality] = permute(N,tagset5)
             if house(Nationality,"Norwegian")==1
-            and house(Nationality,"English")==house(Colour,"red") 
+            and house(Nationality,"English")==house(Colour,"red")
             and next_to(house(Nationality,"Norwegian"),house(Colour,"blue")) then
                 for D=1 to factorial5 do
                     perm[Drink] = permute(D,tagset5)
@@ -5725,17 +5725,17 @@ In Prolog we can specify the domain by selecting elements from it, making mutual
 
 ```Prolog
 select([A|As],S):- select(A,S,S1),select(As,S1).
-select([],_). 
- 
+select([],_).
+
 next_to(A,B,C):- left_of(A,B,C) ; left_of(B,A,C).
 left_of(A,B,C):- append(_,[A,B|_],C).
- 
+
 zebra(Owns, HS):-  % color,nation,pet,drink,smokes
-      HS =    [ h(_,norwegian,_,_,_), _,  h(_,_,_,milk,_), _, _], 
+      HS =    [ h(_,norwegian,_,_,_), _,  h(_,_,_,milk,_), _, _],
       select( [ h(red,englishman,_,_,_),  h(_,swede,dog,_,_),
                 h(_,dane,_,tea,_),        h(_,german,_,_,prince) ], HS),
       select( [ h(_,_,birds,_,pallmall),  h(yellow,_,_,_,dunhill),
-                h(_,_,_,beer,bluemaster) ],                         HS), 
+                h(_,_,_,beer,bluemaster) ],                         HS),
       left_of(  h(green,_,_,coffee,_),    h(white,_,_,_,_),         HS),
       next_to(  h(_,_,_,_,dunhill),       h(_,_,horse,_,_),         HS),
       next_to(  h(_,_,_,_,blend),         h(_,_,cats, _,_),         HS),
@@ -5743,7 +5743,7 @@ zebra(Owns, HS):-  % color,nation,pet,drink,smokes
       next_to(  h(_,norwegian,_,_,_),     h(blue,_,_,_,_),          HS),
       member(   h(_,Owns,zebra,_,_), HS).
 
-:- ?- time(( zebra(Who, HS), maplist(writeln,HS), nl, write(Who), nl, nl, fail 
+:- ?- time(( zebra(Who, HS), maplist(writeln,HS), nl, write(Who), nl, nl, fail
              ; write('No more solutions.') )).
 ```
 
@@ -5786,7 +5786,7 @@ in( G, HS, Attrs) :- call( G, A, HS), attrs( A, Attrs).
 
 left_of( [A,B], HS) :- append( _, [A,B | _], HS).
 next_to( [A,B], HS) :- left_of( [A,B], HS) ; left_of( [B,A], HS).
- 
+
 zebra( Owner, Houses):-
     Houses = [A,_,C,_,_],                                               % 1
     maplist( in(Houses), [ [ nation-englishman,   color-red          ]  % 2
@@ -5800,7 +5800,7 @@ zebra( Owner, Houses):-
                          ] ),
     in( left_of, Houses,   [[color -green    ],  [color -white    ]]),  % 5
     in( left_of,  [C,A],   [[drink -milk     ],  [nation-norwegian]]),  % 9, 10
-    maplist( in( next_to, Houses),  
+    maplist( in( next_to, Houses),
                          [ [[smoke -'Blend'  ],  [owns -cats      ]]    % 11
                          , [[owns  -horse    ],  [smoke-'Dunhill' ]]    % 12
                          , [[nation-norwegian],  [color-blue      ]]    % 15
@@ -5809,19 +5809,19 @@ zebra( Owner, Houses):-
     in( Houses, [owns-zebra, nation-Owner]).
 ```
 
-    
+
 [http://ideone.com/wcwXfZ Output]:
 
 ```Prolog
 ?- time(( zebra(Z,HS), (maplist(length,HS,_) -> maplist(sort,HS,S),
              maplist(writeln,S),nl,writeln(Z)), false ; writeln('No More Solutions'))).
- 
+
 [color-yellow,drink-water, nation-norwegian, owns-cats,  smoke-Dunhill    ]
 [color-blue,  drink-tea,   nation-dane,      owns-horse, smoke-Blend      ]
 [color-red,   drink-milk,  nation-englishman,owns-birds, smoke-Pall Mall  ]
 [color-green, drink-coffee,nation-german,    owns-zebra, smoke-Prince     ]
 [color-white, drink-beer,  nation-swede,     owns-dog,   smoke-Blue Master]
- 
+
 german
 No More Solutions
 % 263,486 inferences, 0.047 CPU in 0.063 seconds (74% CPU, 5630007 Lips)
@@ -5873,7 +5873,7 @@ houses(Hs) :-
   .
 
 
-flip(F,X,Y) :- call(F,Y,X). 
+flip(F,X,Y) :- call(F,Y,X).
 
 infix(Xs,Ys) :- append(Xs,_,Zs) , append(_,Zs,Ys).
 nextto(P,Xs) :- permutation(P,R), infix(R,Xs).
@@ -5919,14 +5919,14 @@ zebra :-
     Smoke  ins 1..5,
     Pet    ins 1..5,
     Drink  ins 1..5,
-    
+
     % the values in each list are exclusive
     all_different(Nation),
     all_different(Color),
     all_different(Smoke),
     all_different(Pet),
     all_different(Drink),
-    
+
     % actual constraints
     Englishman    #= Red,
     Spaniard      #= Dog,
@@ -5945,7 +5945,7 @@ zebra :-
 
     % get solution
     flatten([Nation, Color, Smoke, Pet, Drink], List), label(List),
-   
+
     % print the answers
     sort([Englishman-englishman, Spaniard-spaniard, Japanese-japanese,         Ukrainian-ukrainian,     Norwegian-norwegian],   NationNames),
     sort([Red-red,               Green-green,       White-white,               Yellow-yellow,           Blue-blue],             ColorNames),
@@ -6367,30 +6367,30 @@ house_with <- function(f,val){
 
 for (i in seq(length(col_p))){
   col <- factor(col, levels=col_p[[i]])
-  
+
   if (imright(house_with(col,"Green"),house_with(col,"White"))) {
     for (j in seq(length(own_p))){
       own <- factor(own, levels=own_p[[j]])
-      
+
       if(house_with(own,"English") == house_with(col,"Red")){
         if(house_with(own,"Norwegian") == 1){
           if(nextto(house_with(own,"Norwegian"),house_with(col,"Blue"))){
             for(k in seq(length(drink_p))){
               drink <- factor(drink, levels=drink_p[[k]])
-              
+
               if(house_with(drink,"Coffee") == house_with(col,"Green")){
                 if(house_with(own,"Danish") == house_with(drink,"Tea")){
                   if(house_with(drink,"Milk") == 3){
                     for(l in seq(length(smoke_p))){
                       smoke <- factor(smoke, levels=smoke_p[[l]])
-                      
+
                       if(house_with(smoke,"Dunhill") == house_with(col,"Yellow")){
                         if(house_with(smoke,"BlueMaster") == house_with(drink,"Beer")){
                           if(house_with(own,"German") == house_with(smoke,"Prince")){
                             if(nextto(house_with(smoke,"Blend"),house_with(drink,"Water"))){
                               for(m in seq(length(pet_p))){
                                 pet <- factor(pet, levels=pet_p[[m]])
-                                
+
                                 if(house_with(own,"Swedish") == house_with(pet,"Dog")){
                                   if(house_with(smoke,"PallMall") == house_with(pet,"Birds")){
                                     if(nextto(house_with(smoke,"Blend"),house_with(pet,"Cats"))){
@@ -6403,7 +6403,7 @@ for (i in seq(length(col_p))){
                                   }
                                 }
                               }
-                            }  
+                            }
                           }
                         }
                       }
@@ -6417,7 +6417,7 @@ for (i in seq(length(col_p))){
       }
     }
   }
-  
+
 }
 ```
 
@@ -6425,11 +6425,11 @@ for (i in seq(length(col_p))){
 
 ```txt
 
-     Nationality Colour   Pet     Drink        Smoke   
-[1,] "Norwegian" "Yellow" "Cats"  "Dunhill"    "Water" 
-[2,] "Danish"    "Blue"   "Horse" "Blend"      "Tea"   
-[3,] "English"   "Red"    "Birds" "PallMall"   "Milk"  
-[4,] "Swedish"   "White"  "Dog"   "BlueMaster" "Beer"  
+     Nationality Colour   Pet     Drink        Smoke
+[1,] "Norwegian" "Yellow" "Cats"  "Dunhill"    "Water"
+[2,] "Danish"    "Blue"   "Horse" "Blend"      "Tea"
+[3,] "English"   "Red"    "Birds" "PallMall"   "Milk"
+[4,] "Swedish"   "White"  "Dog"   "BlueMaster" "Beer"
 [5,] "German"    "Green"  "Zebra" "Prince"     "Coffee"
 
 ```
@@ -6778,12 +6778,12 @@ solve_zebra_puzzle
 
 The Zebra is owned by the man who is German
 
-House Nationality Colour Pet   Drink  Smoke     
+House Nationality Colour Pet   Drink  Smoke
 ----- ----------- ------ ----- ------ ----------
-1     Norwegian   Yellow Cats  Water  Dunhill   
-2     Danish      Blue   Horse Tea    Blend     
-3     English     Red    Birds Milk   PallMall  
-4     German      Green  Zebra Coffee Prince    
+1     Norwegian   Yellow Cats  Water  Dunhill
+2     Danish      Blue   Horse Tea    Blend
+3     English     Red    Birds Milk   PallMall
+4     German      Green  Zebra Coffee Prince
 5     Swedish     White  Dog   Beer   BlueMaster
 
 ```
@@ -6843,11 +6843,11 @@ Dog        Swede      White      Beer       Bluemaster
 
 ```Scala
 /* Note to the rules:
- * 
+ *
  * It can further concluded that:
  * 5a: The green house cannot be at the h1 position
  * 5b: The white house cannot be at the h5 position
- * 
+ *
  * 16: This rule is redundant.
  */
 
@@ -7025,16 +7025,16 @@ object Einstein extends App {
 }// loc 38
 ```
 
-{{Out}}Experience running it in your browser by [https://scalafiddle.io/sf/hJgtjYG/1 ScalaFiddle (JavaScript executed in browser)] or by [https://scastie.scala-lang.org/ajeuRgDSQKyVv4Jd6SPfVQ Scastie (remote JVM)]. 
+{{Out}}Experience running it in your browser by [https://scalafiddle.io/sf/hJgtjYG/1 ScalaFiddle (JavaScript executed in browser)] or by [https://scastie.scala-lang.org/ajeuRgDSQKyVv4Jd6SPfVQ Scastie (remote JVM)].
 {{out}}
 
 ```txt
-            House 1     House 2     House 3     House 4     House 5    
-Color:      Yellow      Blue        Red         Green       White      
-Nation:     Norwegian   Dane        Brit        German      Swede      
-Drink:      Water       Tea         Milk        Coffee      Beer       
-Pet:        Cats        Horses      Birds       Fish        Dogs       
-Smoke:      Dunhill     Blend       Pall Mall   Prince      BlueMaster 
+            House 1     House 2     House 3     House 4     House 5
+Color:      Yellow      Blue        Red         Green       White
+Nation:     Norwegian   Dane        Brit        German      Swede
+Drink:      Water       Tea         Milk        Coffee      Beer
+Pet:        Cats        Horses      Birds       Fish        Dogs
+Smoke:      Dunhill     Blend       Pall Mall   Prince      BlueMaster
 
 The German owns the Fish
 
@@ -7107,12 +7107,12 @@ res[0].indices.map{|i| res.map{|a| a[i] }}.each_kv {|k,v| say fmt%(k,v...) }
 
 The Zebra is owned by the man who is German
 
-House   Nationality   Colour   Pet   Drink   Smoke  
------   -----------   ------   ---   -----   -----  
+House   Nationality   Colour   Pet   Drink   Smoke
+-----   -----------   ------   ---   -----   -----
 0       Norwegian     Yellow   Cats  Water   Dunhill
-1       Danish        Blue     Horse Tea     Blend  
+1       Danish        Blue     Horse Tea     Blend
 2       English       Red      Birds Milk    PallMall
-3       German        Green    Zebra Coffee  Prince 
+3       German        Green    Zebra Coffee  Prince
 4       Swedish       White    Dog   Beer    BlueMaster
 
 ```
@@ -7305,7 +7305,7 @@ fun printHouses houses =
 
 exception SolutionFound
 
-fun search (houses : house array, used : bool Array2.array) (no : houseno, attr : attr) = 
+fun search (houses : house array, used : bool Array2.array) (no : houseno, attr : attr) =
 	let
 	  val i = ref 0
 	  val (nextno, nextattr) = if attr < 4 then (no, attr + 1) else (no + 1, 0)
@@ -7384,12 +7384,12 @@ fun main () = let
 ```txt
 
 - main();
-House       Color       Nation      Drink       Pet         Smoke       
-0           Yellow      Norwegian   Water       Cats        Dunhill     
-1           Blue        Dane        Tea         Horse       Blend       
-2           Red         English     Milk        Birds       PallMall    
-3           Green       German      Coffee      Zebra       Prince      
-4           White       Swede       Beer        Dog         BlueMaster  
+House       Color       Nation      Drink       Pet         Smoke
+0           Yellow      Norwegian   Water       Cats        Dunhill
+1           Blue        Dane        Tea         Horse       Blend
+2           Red         English     Milk        Birds       PallMall
+3           Green       German      Coffee      Zebra       Prince
+4           White       Swede       Beer        Dog         BlueMaster
 val it = () : unit
 
 ```
@@ -7616,15 +7616,15 @@ Function house(i As Integer, name As Variant) As Integer
         End If
     Next x
 End Function
- 
+
 Function left_of(h1 As Integer, h2 As Integer) As Boolean
     left_of = (h1 - h2) = -1
 End Function
- 
+
 Function next_to(h1 As Integer, h2 As Integer) As Boolean
     next_to = Abs(h1 - h2) = 1
 End Function
- 
+
 Private Sub print_house(i As Integer)
     Debug.Print i & ": "; Colours(perm(Colour)(i)), Nationalities(perm(Nationality)(i)), _
         Drinks(perm(Beverage)(i)), Smokes(perm(Smoke)(i)), Pets(perm(Pet)(i))
@@ -7794,11 +7794,11 @@ fcn printSolution{
 
 ```txt
 
-Houses: Yellow      Blue        Red         Green       White       
-People: Norwegian   Dane        English     German      Swede       
-Drinks: Water       Tea         Milk        Coffee      Beer        
-Smokes: Dunhill     Blend       Pall Mall   Prince      Blue Master 
-Pets:   Cat         Horse       Bird        Zebra       Dog         
+Houses: Yellow      Blue        Red         Green       White
+People: Norwegian   Dane        English     German      Swede
+Drinks: Water       Tea         Milk        Coffee      Beer
+Smokes: Dunhill     Blend       Pall Mall   Prince      Blue Master
+Pets:   Cat         Horse       Bird        Zebra       Dog
 
 ```
 

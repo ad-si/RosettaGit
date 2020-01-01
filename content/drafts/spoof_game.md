@@ -25,8 +25,8 @@ Create Spoof game. See details: [https://en.wikipedia.org/wiki/Spoof_(game) Spoo
 
 {{trans|Kotlin}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -624,18 +624,18 @@ function get_number(string prompt, integer lo, hi, pot, bool show=false)
     end if
     return n
 end function
- 
+
 constant help = """
 Guess the total number of coins in everybody's hands.
 Inputs/guesses between 1 and 9 can be entered using the keys 1 to 9, but
-just to make life a little more interesting, guesses of 10 .. 54 must be 
-entered using :;<=>?@AB ... XYZ[\]^_`abcdef (no return key required). 
+just to make life a little more interesting, guesses of 10 .. 54 must be
+entered using :;<=>?@AB ... XYZ[\]^_`abcdef (no return key required).
 Use ! to see your hand, obviously only when no-one else is looking.
-You may not guess less than the number of coins in your hand, or more 
+You may not guess less than the number of coins in your hand, or more
 than that plus (players-1)*maxcoins, or any already known wrong guess.
 
 """
- 
+
 procedure main()
     printf(1,help)
     integer players = get_number("Number of players", 2, 9, -1, show:=true),
@@ -903,7 +903,7 @@ do(getNum("How many games you want? ")){
    while(True){
       yourpot  =getNum("Your pot? ");
       yourguess=getNum("Your guess? ");
-      if(((0<=yourpot<=6) and (0<=yourguess<=6)) and 
+      if(((0<=yourpot<=6) and (0<=yourguess<=6)) and
          yourpot + 3 >= yourguess) break;
       println("Bad input! Try again");
    }
@@ -914,7 +914,7 @@ do(getNum("How many games you want? ")){
    else if(yourguess==pot)     println("You won!\n");
    else 		       println("No winner!\n");
 }
-fcn getNum(msg){ 
+fcn getNum(msg){
    try{ return(ask(msg).strip().toInt()) }
    catch{ println("ack"); return(self.fcn(msg)) }  // tail recursion
 }

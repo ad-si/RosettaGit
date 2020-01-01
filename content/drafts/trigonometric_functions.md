@@ -10,7 +10,7 @@ categories = []
 tags = []
 +++
 
-{{task|Arithmetic operations}} 
+{{task|Arithmetic operations}}
 [[Category:Mathematics]]
 
 ;Task:
@@ -20,11 +20,11 @@ If your language has a library or built-in functions for trigonometry, show exam
 ::*   tangent
 ::*   inverses   (of the above)
 
-using the same angle in radians and degrees. 
+using the same angle in radians and degrees.
 
-For the non-inverse functions,   each radian/degree pair should use arguments that evaluate to the same angle   (that is, it's not necessary to use the same angle for all three regular functions as long as the two sine calls use the same angle). 
+For the non-inverse functions,   each radian/degree pair should use arguments that evaluate to the same angle   (that is, it's not necessary to use the same angle for all three regular functions as long as the two sine calls use the same angle).
 
-For the inverse functions,   use the same number and convert its answer to radians and degrees. 
+For the inverse functions,   use the same number and convert its answer to radians and degrees.
 
 If your language does not have trigonometric functions available or only has some available,   write functions to calculate the functions based on any   [[wp:List of trigonometric identities|known approximation or identity]].
 
@@ -57,7 +57,7 @@ If your language does not have trigonometric functions available or only has som
 
 (defmacro cat (&rest args)
    `(concatenate 'string ,@args))
- 
+
 (defun num-to-str-r (n)
    (if (zp n)
        ""
@@ -159,9 +159,9 @@ trace("arctan2(-1,-2) = ", Math.atan2(-1,-2)*180/Math.PI);
 
 ## Ada
 
-Ada provides library trig functions which default to radians along with corresponding library functions for which the cycle can be specified. 
+Ada provides library trig functions which default to radians along with corresponding library functions for which the cycle can be specified.
 
-The examples below specify the cycle for degrees and for radians. 
+The examples below specify the cycle for degrees and for radians.
 
 The output of the inverse trig functions is in units of the specified cycle (degrees or radians).
 
@@ -184,21 +184,21 @@ procedure Trig is
       New_Line;
    end Put;
 begin
-   Put (Sin (Angle_Degrees, Degrees_Cycle), 
+   Put (Sin (Angle_Degrees, Degrees_Cycle),
         Sin (Angle_Radians, Radians_Cycle));
-   Put (Cos (Angle_Degrees, Degrees_Cycle), 
+   Put (Cos (Angle_Degrees, Degrees_Cycle),
         Cos (Angle_Radians, Radians_Cycle));
-   Put (Tan (Angle_Degrees, Degrees_Cycle), 
+   Put (Tan (Angle_Degrees, Degrees_Cycle),
         Tan (Angle_Radians, Radians_Cycle));
-   Put (Cot (Angle_Degrees, Degrees_Cycle), 
+   Put (Cot (Angle_Degrees, Degrees_Cycle),
         Cot (Angle_Radians, Radians_Cycle));
-   Put (ArcSin (Sin (Angle_Degrees, Degrees_Cycle), Degrees_Cycle), 
+   Put (ArcSin (Sin (Angle_Degrees, Degrees_Cycle), Degrees_Cycle),
         ArcSin (Sin (Angle_Radians, Radians_Cycle), Radians_Cycle));
-   Put (Arccos (Cos (Angle_Degrees, Degrees_Cycle), Degrees_Cycle), 
+   Put (Arccos (Cos (Angle_Degrees, Degrees_Cycle), Degrees_Cycle),
         Arccos (Cos (Angle_Radians, Radians_Cycle), Radians_Cycle));
    Put (Arctan (Y => Tan (Angle_Degrees, Degrees_Cycle)),
         Arctan (Y => Tan (Angle_Radians, Radians_Cycle)));
-   Put (Arccot (X => Cot (Angle_Degrees, Degrees_Cycle)), 
+   Put (Arccot (X => Cot (Angle_Degrees, Degrees_Cycle)),
         Arccot (X => Cot (Angle_Degrees, Degrees_Cycle)));
 end Trig;
 ```
@@ -424,20 +424,20 @@ arctangent
 {{trans|C}}
 
 ```AutoHotkey
-pi := 4 * atan(1) 
-  radians := pi / 4 
-  degrees := 45.0 
+pi := 4 * atan(1)
+  radians := pi / 4
+  degrees := 45.0
   result .= "`n" . sin(radians) . "     " . sin(degrees * pi / 180)
   result .= "`n" . cos(radians) . "     " . cos(degrees * pi / 180)
   result .= "`n" . tan(radians) . "     " . tan(degrees * pi / 180)
 
-  temp := asin(sin(radians)) 
+  temp := asin(sin(radians))
   result .= "`n" . temp . "     " . temp * 180 / pi
 
-  temp := acos(cos(radians)) 
+  temp := acos(cos(radians))
   result .= "`n" . temp . "     " . temp * 180 / pi
 
-  temp := atan(tan(radians)) 
+  temp := atan(tan(radians))
   result .= "`n" . temp . "     " . temp * 180 / pi
 
 msgbox % result
@@ -467,7 +467,7 @@ Function arguments are expressed in radians.
 (defun deg_to_rad (deg)(* PI (/ deg 180.0)))
 
 (defun asin (x)
-  (cond 
+  (cond
     ((and(> x -1.0)(< x 1.0)) (atan (/ x (sqrt (- 1.0 (* x x))))))
     ((= x -1.0) (* -1.0 (/ pi 2)))
     ((= x 1) (/ pi 2))
@@ -475,10 +475,10 @@ Function arguments are expressed in radians.
 )
 
 (defun acos (x)
-  (cond 
+  (cond
     ((and(>= x -1.0)(<= x 1.0)) (-(* pi 0.5) (asin x)))
   )
-)  
+)
 
 (list
 (list "cos PI/6" (cos (/ pi 6)) "cos 30 deg" (cos (deg_to_rad 30)))
@@ -491,12 +491,12 @@ Function arguments are expressed in radians.
 
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 
 (("cos PI/6 rad" 0.866025 "cos 30 deg" 0.866025)
- ("sin PI/4 rad" 0.707107 "sin 45 deg" 0.707107) 
+ ("sin PI/4 rad" 0.707107 "sin 45 deg" 0.707107)
  ("tan PI/3 rad" 1.73205 " tan 60 deg" 1.73205)
  ("asin 1 rad" 1.57080 "asin 1 rad (deg)" 90.0000)
  ("acos 1/2 rad" 1.04720 "acos 1/2 rad" 60.0000)
@@ -569,7 +569,7 @@ BEGIN {
 ```
 
 
-{{out}} 
+{{out}}
 
 ```txt
 Using radians:
@@ -650,11 +650,11 @@ NEXT
 {{out}}
 
 ```txt
-prompt$ bacon -q trigonometric-functions.bac 
+prompt$ bacon -q trigonometric-functions.bac
 ...
 Done, program 'trigonometric-functions' ready.
 
-prompt$ ./trigonometric-functions            
+prompt$ ./trigonometric-functions
 Sine: 0 degrees (or 0 radians) is 0
 Cosine: 0 degrees (or 0 radians) is 1
 Tangent: 0 degrees (or 0 radians) is 0
@@ -728,16 +728,16 @@ PRINT ATN(TAN(radians)) + " " + ATN(TAN(radians)) * 180 / pi 'arctan
 
 ```bbcbasic
       @% = &90F : REM set column width
-      
+
       angle_radians = PI/5
       angle_degrees = 36
-      
+
       PRINT SIN(angle_radians), SIN(RAD(angle_degrees))
       PRINT COS(angle_radians), COS(RAD(angle_degrees))
       PRINT TAN(angle_radians), TAN(RAD(angle_degrees))
-      
+
       number = 0.6
-      
+
       PRINT ASN(number), DEG(ASN(number))
       PRINT ACS(number), DEG(ACS(number))
       PRINT ATN(number), DEG(ATN(number))
@@ -829,7 +829,7 @@ quit
 ```
 
 
-{{out}} 
+{{out}}
 
 ```txt
 Using radians:
@@ -854,8 +854,8 @@ Using degrees:
 
 
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 #include <stdio.h>
 
 int main() {
@@ -903,8 +903,8 @@ int main() {
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cmath>
 
 #ifdef M_PI // defined by all POSIX systems and some non-POSIX ones
@@ -918,7 +918,7 @@ double const degree = pi/180;
 int main()
 {
   std::cout << "
-###  radians 
+###  radians
 \n";
   std::cout << "sin(pi/3) = " << std::sin(pi/3) << "\n";
   std::cout << "cos(pi/3) = " << std::cos(pi/3) << "\n";
@@ -928,7 +928,7 @@ int main()
   std::cout << "arctan(1/2) = " << std::atan(0.5) << "\n";
 
   std::cout << "\n
-###  degrees 
+###  degrees
 \n";
   std::cout << "sin(60°) = " << std::sin(60*degree) << "\n";
   std::cout << "cos(60°) = " << std::cos(60*degree) << "\n";
@@ -951,7 +951,7 @@ namespace RosettaCode {
     class Program {
         static void Main(string[] args) {
             Console.WriteLine("
-###  radians 
+###  radians
 ");
             Console.WriteLine("sin (pi/3) = {0}", Math.Sin(Math.PI / 3));
             Console.WriteLine("cos (pi/3) = {0}", Math.Cos(Math.PI / 3));
@@ -961,7 +961,7 @@ namespace RosettaCode {
             Console.WriteLine("arctan (1/2) = {0}", Math.Atan(0.5));
             Console.WriteLine("");
             Console.WriteLine("
-###  degrees 
+###  degrees
 ");
             Console.WriteLine("sin (60) = {0}", Math.Sin(60 * Math.PI / 180));
             Console.WriteLine("cos (60) = {0}", Math.Cos(60 * Math.PI / 180));
@@ -1001,7 +1001,7 @@ namespace RosettaCode {
 (println (str (acos (cos radians) ) " " (* (acos (cos (* degrees dtor))) rtod)))
 (println (str (atan (tan radians) ) " " (* (atan (tan (* degrees dtor))) rtod)))
 ```
- 
+
 
 {{out}} (matches that of Java)
  0.7071067811865475 0.7071067811865475
@@ -1192,7 +1192,7 @@ ELENA 4.x:
 ```elena
 import system'math;
 import extensions;
- 
+
 public program()
 {
     console.printLine("Radians:");
@@ -1203,7 +1203,7 @@ public program()
     console.printLine("arccos(1/2) = ",0.5r.arccos());
     console.printLine("arctan(1/2) = ",0.5r.arctan());
     console.printLine();
- 
+
     console.printLine("Degrees:");
     console.printLine("sin(60º) = ",60.0r.Radian.sin());
     console.printLine("cos(60º) = ",60.0r.Radian.cos());
@@ -1211,7 +1211,7 @@ public program()
     console.printLine("arcsin(1/2) = ",0.5r.arcsin().Degree,"º");
     console.printLine("arccos(1/2) = ",0.5r.arccos().Degree,"º");
     console.printLine("arctan(1/2) = ",0.5r.arctan().Degree,"º");
- 
+
     console.readChar()
 }
 ```
@@ -1327,8 +1327,8 @@ pi 4 / 45 deg>rad [ sin ] [ cos ] [ tan ]
 ## Fantom
 
 
-Fantom's Float library includes all six trigonometric functions, 
-which assume the number is in radians. 
+Fantom's Float library includes all six trigonometric functions,
+which assume the number is in radians.
 
 Methods are provided to convert: toDegrees and toRadians.
 
@@ -1384,13 +1384,13 @@ Trigonometic functions expect arguments in radians so degrees require conversion
 PROGRAM Trig
 
   REAL pi, dtor, rtod, radians, degrees
- 
+
   pi = 4.0 * ATAN(1.0)
   dtor = pi / 180.0
   rtod = 180.0 / pi
   radians = pi / 4.0
-  degrees = 45.0 
- 
+  degrees = 45.0
+
   WRITE(*,*) SIN(radians), SIN(degrees*dtor)
   WRITE(*,*) COS(radians), COS(degrees*dtor)
   WRITE(*,*) TAN(radians), TAN(degrees*dtor)
@@ -1411,7 +1411,7 @@ END PROGRAM Trig
 The following trigonometric functions are also available
 
 ```fortran
- ATAN2(y,x) ! Arctangent(y/x), ''-pi < result <= +pi'' 
+ ATAN2(y,x) ! Arctangent(y/x), ''-pi < result <= +pi''
  SINH(x)    ! Hyperbolic sine
  COSH(x)    ! Hyperbolic cosine
  TANH(x)    ! Hyperbolic tangent
@@ -1544,8 +1544,8 @@ Output:
  330: -0.57735026 -0.57735056 -0.00000030  -30.0000000  -30.0000134   -0.0000134
  360:  0.00000000  0.00000017  0.00000017    0.0000000    0.0000100    0.0000100
  ...Special deal for 90 degrees...
- TanD =  1.6331778E+16 Atan =   90.00000    
- TanR = -2.2877332E+07 Atan =  -90.00000    
+ TanD =  1.6331778E+16 Atan =   90.00000
+ TanR = -2.2877332E+07 Atan =  -90.00000
  Pi ~ 11.00100100001111110110110000
     = 11.00100100001111110110101010001000100001...
 Notice that the calculations in radians are less accurate. Firstly, pi cannot be represented exactly and secondly, the conversion factor of pi/180 or 180/pi adds further to the error. The degree-based functions obviously can fold their angles using exact arithmetic (though ACosD has surprising trouble with 30°) and so 360° is the same as 0°, unlike the case with radians. TanD(90°) should yield Infinity (but, which sign?) but perhaps this latter-day feature of computer floating-point was not included. In any case, Tan(90° in radians) faces the problem that its parameter will not in fact be pi/2 but some value just over (or under), and likewise with double precision and quadruple precision and any other finite precision.
@@ -1902,7 +1902,7 @@ dtor = pi / 180.0
 rtod = 180.0 / pi
 radians = pi / 4.0
 degrees = 45.0
- 
+
 WRITE(ClipBoard) SIN(radians), SIN(degrees*dtor)
 WRITE(ClipBoard) COS(radians), COS(degrees*dtor)
 WRITE(ClipBoard) TAN(radians), TAN(degrees*dtor)
@@ -1961,7 +1961,7 @@ print, sinh(rad)                       ; etc
 x = !dpi/[[2,3],[4,5],[6,7]] ; !dpi is a read-only sysvar = 3.1415...
 print,sin(x)
 
-;outputs:     
+;outputs:
 ;      1.0000000      0.86602540
 ;      0.70710678      0.58778525
 ;      0.50000000      0.43388374
@@ -1989,7 +1989,7 @@ invocable all
 procedure main()
 
 d := 30          # degrees
-r := dtor(d)     # convert to radians 
+r := dtor(d)     # convert to radians
 
 every write(f := !["sin","cos","tan"],"(",r,")=",y := f(r)," ",fi := "a" || f,"(",y,")=",x := fi(y)," rad = ",rtod(x)," deg")
 end
@@ -2053,7 +2053,7 @@ The <code>trig</code> script adds cover functions for the trigonometric operatio
 ## Java
 
 
-Java's <tt>Math</tt> class contains all six functions and is automatically included as part of the language. The functions all accept radians only, so conversion is necessary when dealing with degrees. The <tt>Math</tt> class also has a <tt>PI</tt> constant for easy conversion. 
+Java's <tt>Math</tt> class contains all six functions and is automatically included as part of the language. The functions all accept radians only, so conversion is necessary when dealing with degrees. The <tt>Math</tt> class also has a <tt>PI</tt> constant for easy conversion.
 
 
 ```java
@@ -2100,7 +2100,7 @@ public class Trig {
 ## JavaScript
 
 
-JavaScript's <tt>Math</tt> class contains all six functions and is automatically included as part of the language. The functions all accept radians only, so conversion is necessary when dealing with degrees. The <tt>Math</tt> class also has a <tt>PI</tt> constant for easy conversion. 
+JavaScript's <tt>Math</tt> class contains all six functions and is automatically included as part of the language. The functions all accept radians only, so conversion is necessary when dealing with degrees. The <tt>Math</tt> class also has a <tt>PI</tt> constant for easy conversion.
 
 
 ```javascript
@@ -2133,7 +2133,7 @@ window.alert(arctan + " " + (arctan * 180 / Math.PI));
 ## jq
 
 
-jq includes the standard C-library trigonometric functions (sin, cos, tan, asin, acos, atan), but they are provided as filters as illustrated in the definition of <tt>radians</tt> below. 
+jq includes the standard C-library trigonometric functions (sin, cos, tan, asin, acos, atan), but they are provided as filters as illustrated in the definition of <tt>radians</tt> below.
 
 The trigonometric filters only accept radians, so conversion is necessary when dealing with degrees. The constant <tt>π</tt> can be defined as also shown in the following definition of <tt>radians</tt>:
 ```jq
@@ -2323,8 +2323,8 @@ fun main(args: Array<String>) {
     val degrees = 45.0
     val conv = Math.PI / 180.0
     val f = "%1.15f"
-    var inverse: Double 
-    
+    var inverse: Double
+
     println("                Radians              Degrees")
     println("Angle      : ${f.format(radians)}\t ${f.format(degrees)}\n")
     println("Sin        : ${f.format(sin(radians))}\t  ${f.format(sin(degrees * conv))}")
@@ -2576,7 +2576,7 @@ A full list of built-in trig functions can be found in the [http://www.mathworks
 function trigExample(angleDegrees)
 
     angleRadians = angleDegrees * (pi/180);
-    
+
     disp(sprintf('sin(%f)= %f\nasin(%f)= %f',[angleRadians sin(angleRadians) sin(angleRadians) asin(sin(angleRadians))]));
     disp(sprintf('sind(%f)= %f\narcsind(%f)= %f',[angleDegrees sind(angleDegrees) sind(angleDegrees) asind(sind(angleDegrees))]));
     disp('-----------------------');
@@ -3006,29 +3006,29 @@ import: math
 
 : testTrigo
 | rad deg hyp z |
-   Pi 4 / ->rad 
+   Pi 4 / ->rad
    45.0   ->deg
     0.5   ->hyp
 
-   System.Out rad sin << " - " << deg asRadian sin << cr 
-   System.Out rad cos << " - " << deg asRadian cos << cr 
-   System.Out rad tan << " - " << deg asRadian tan << cr 
+   System.Out rad sin << " - " << deg asRadian sin << cr
+   System.Out rad cos << " - " << deg asRadian cos << cr
+   System.Out rad tan << " - " << deg asRadian tan << cr
 
    printcr
 
-   rad sin asin ->z   
+   rad sin asin ->z
    System.Out z << " - " << z asDegree << cr
 
-   rad cos acos ->z   
+   rad cos acos ->z
    System.Out z << " - " << z asDegree << cr
 
-   rad tan atan ->z   
+   rad tan atan ->z
    System.Out z << " - " << z asDegree << cr
-   
+
    printcr
 
-   System.Out hyp sinh << " - " << hyp sinh asinh << cr 
-   System.Out hyp cosh << " - " << hyp cosh acosh << cr 
+   System.Out hyp sinh << " - " << hyp sinh asinh << cr
+   System.Out hyp cosh << " - " << hyp cosh acosh << cr
    System.Out hyp tanh << " - " << hyp tanh atanh << cr ;
 ```
 
@@ -4501,15 +4501,15 @@ Results:
 
 ```txt
 
- 5.00000E-0001 
- 5.00000E-0001 
- 5.00000E-0001 
- 7.07107E-0001 
- 7.07107E-0001 
- 4.50000E+0001 
- 5.21095E-0001 
- 1.12763E+0000 
- 5.00000E-0001 
+ 5.00000E-0001
+ 5.00000E-0001
+ 5.00000E-0001
+ 7.07107E-0001
+ 7.07107E-0001
+ 4.50000E+0001
+ 5.21095E-0001
+ 1.12763E+0000
+ 5.00000E-0001
 
 ```
 
@@ -4743,12 +4743,12 @@ Input()
 ## Python
 
 
-Python's <tt>math</tt> module contains all six functions. 
+Python's <tt>math</tt> module contains all six functions.
 
-The functions all accept radians only, so conversion is necessary 
-when dealing with degrees. 
+The functions all accept radians only, so conversion is necessary
+when dealing with degrees.
 
-The <tt>math</tt> module also has <tt>degrees()</tt> and <tt>radians()</tt> functions for easy conversion. 
+The <tt>math</tt> module also has <tt>degrees()</tt> and <tt>radians()</tt> functions for easy conversion.
 
 
 ```python
@@ -4771,7 +4771,7 @@ Arccosine: 0.7853981633974483 45.0
 >>> arctangent = atan(tan(rad))
 >>> print("Arctangent:", arctangent, degrees(arctangent))
 Arctangent: 0.7853981633974483 45.0
->>> 
+>>>
 ```
 
 
@@ -4814,19 +4814,19 @@ print( c( atan(T), atand(T) ) )
 #lang racket
 (define radians (/ pi 4))
 (define degrees 45)
- 
+
 (displayln (format "~a ~a" (sin radians) (sin (* degrees (/ pi 180)))))
- 
+
 (displayln (format "~a ~a" (cos radians) (cos (* degrees (/ pi 180)))))
- 
+
 (displayln (format "~a ~a" (tan radians) (tan (* degrees (/ pi 180)))))
- 
+
 (define arcsin (asin (sin radians)))
 (displayln (format "~a ~a" arcsin (* arcsin (/ 180 pi))))
- 
+
 (define arccos (acos (cos radians)))
 (displayln (format "~a ~a" arccos (* arccos (/ 180 pi))))
- 
+
 (define arctan (atan (tan radians)))
 (display (format "~a ~a" arctan (* arctan (/ 180 pi))))
 ```
@@ -4923,10 +4923,10 @@ print [d2r arctan  arctan]
 
 ## REXX
 
-The REXX language doesn't have any trig functions (or for that matter, 
-a square root [SQRT] function), so if higher math  
+The REXX language doesn't have any trig functions (or for that matter,
+a square root [SQRT] function), so if higher math
 
-functions are wanted, you have to roll your own.  
+functions are wanted, you have to roll your own.
 Some of the normal/regular trigonometric functions are included here.
      ┌──────────────────────────────────────────────────────────────────────────┐
      │  One common method that ensures enough accuracy in REXX is specifying    │
@@ -4934,14 +4934,14 @@ Some of the normal/regular trigonometric functions are included here.
      │  displaying the number of digits that are desired,  or  the number(s)    │
      │  could be re-normalized using the  FORMAT  BIF.                          │
      │                                                                          │
-     │  The technique used (below) is to set the   numeric digits   ten higher  │ 
+     │  The technique used (below) is to set the   numeric digits   ten higher  │
      │  than the desired digits,  as specified by the   SHOWDIGS  variable.     │
      └──────────────────────────────────────────────────────────────────────────┘
-Most math (POW, EXP, LOG, LN, GAMMA, etc.), trigonometric, and hyperbolic functions need only five extra digits, but ten  
+Most math (POW, EXP, LOG, LN, GAMMA, etc.), trigonometric, and hyperbolic functions need only five extra digits, but ten
 
 extra digits is safer in case the argument is close to an asymptotic point or a multiple or fractional part of pi or somesuch.
 
-It should also be noted that both the '''pi''' and '''e''' constants have only around 77 decimal digits as included here, if more 
+It should also be noted that both the '''pi''' and '''e''' constants have only around 77 decimal digits as included here, if more
 
 precision is needed, those constants should be extended.   Both '''pi''' and '''e''' could've been shown with more precision,
 
@@ -5116,7 +5116,7 @@ Using 25 decimal digits precision.
 pi = 3.14
 decimals(8)
 see "sin(pi/4.0) = " + sin(pi/4.0) + nl
-see "cos(pi/4.0) = " + cos(pi/4.0) + nl 
+see "cos(pi/4.0) = " + cos(pi/4.0) + nl
 see "tan(pi/4.0) = " + tan(pi/4.0)+   nl
 see "asin(sin(pi/4.0)) = " + asin(sin(pi/4.0)) + nl
 see "acos(cos(pi/4.0)) = " + acos(cos(pi/4.0)) + nl
@@ -5178,7 +5178,7 @@ puts "#{arctan} #{rad2deg(arctan)}"
 
 
 
-###  BigDecimal 
+###  BigDecimal
 
 If you want more digits in the answer, then you can use the <tt>BigDecimal</tt> class. <tt>BigMath</tt> only has big versions of sine, cosine, and arctangent; so we must implement tangent, arcsine and arccosine.
 
@@ -5201,7 +5201,7 @@ def asin(y, prec)
   # Handle angles with no tangent.
   return -PI / 2 if y == -1
   return PI / 2 if y == 1
-  
+
   # Tangent of angle is y / x, where x^2 + y^2 = 1.
   atan(y / sqrt(1 - y * y, prec), prec)
 end
@@ -5210,7 +5210,7 @@ end
 def acos(x, prec)
   # Handle angle with no tangent.
   return PI / 2 if x == 0
-  
+
   # Tangent of angle is y / x, where x^2 + y^2 = 1.
   a = atan(sqrt(1 - x * x, prec) / x, prec)
   if a < 0
@@ -5408,7 +5408,7 @@ object Gonio extends App {
 (display " ")
 (display (tan (* degrees (/ pi 180))))
 (newline)
- 
+
 (define arcsin (asin (sin radians)))
 (display arcsin)
 (display " ")
@@ -5734,18 +5734,18 @@ End Sub
 {{out}}
 
 ```txt
- 1 
- 1 
- 1 
- 1 
- 1 
- 1 
- 3,14159265358979 
- 90 
- 3,14159265358979 
- 90 
- 3,14159265358979 
- 45 
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 3,14159265358979
+ 90
+ 3,14159265358979
+ 90
+ 3,14159265358979
+ 45
 
 ```
 
@@ -5759,7 +5759,7 @@ Module Module1
 
     Sub Main()
         Console.WriteLine("
-###  radians 
+###  radians
 ")
         Console.WriteLine("  sin (pi/3) = {0}", Math.Sin(Math.PI / 3))
         Console.WriteLine("  cos (pi/3) = {0}", Math.Cos(Math.PI / 3))
@@ -5769,7 +5769,7 @@ Module Module1
         Console.WriteLine("arctan (1/2) = {0}", Math.Atan(0.5))
         Console.WriteLine()
         Console.WriteLine("
-###  degrees 
+###  degrees
 ")
         Console.WriteLine("    sin (60) = {0}", Math.Sin(60 * Math.PI / 180))
         Console.WriteLine("    cos (60) = {0}", Math.Cos(60 * Math.PI / 180))
@@ -5786,7 +5786,7 @@ End Module
 
 ```txt
 
-###  radians 
+###  radians
 
   sin (pi/3) = 0.866025403784439
   cos (pi/3) = 0.5
@@ -5796,7 +5796,7 @@ arccos (1/2) = 1.0471975511966
 arctan (1/2) = 0.463647609000806
 
 
-###  degrees 
+###  degrees
 
     sin (60) = 0.866025403784439
     cos (60) = 0.5

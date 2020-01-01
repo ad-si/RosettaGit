@@ -15,9 +15,9 @@ A truncatable prime is a prime number that when you successively remove digits f
 
 
 ;Examples:
-The number '''997''' is called a ''left-truncatable prime'' as the numbers '''997''', '''97''', and '''7''' are all prime. 
+The number '''997''' is called a ''left-truncatable prime'' as the numbers '''997''', '''97''', and '''7''' are all prime.
 
-The number '''7393''' is a ''right-truncatable prime'' as the numbers '''7393''', '''739''', '''73''', and '''7''' formed by removing digits from its right are also prime. 
+The number '''7393''' is a ''right-truncatable prime'' as the numbers '''7393''', '''739''', '''73''', and '''7''' formed by removing digits from its right are also prime.
 
 No zeroes are allowed in truncatable primes.
 
@@ -26,7 +26,7 @@ No zeroes are allowed in truncatable primes.
 The task is to find the largest left-truncatable and right-truncatable primes less than one million (base 10 is implied).
 
 
-;Related tasks: 
+;Related tasks:
 * [[Find largest left truncatable prime in a given base]]
 * [[Sieve of Eratosthenes]]
 
@@ -51,7 +51,7 @@ procedure Truncatable_Primes is
    use Natural_Set;
 
    Primes : Set;
-   
+
    function Is_Prime (N : Natural) return Boolean is
       Position : Cursor := First (Primes);
    begin
@@ -396,7 +396,7 @@ largest R truncatable: 739399
 
 ## Bracmat
 
-Primality test: In an attempt to compute the result of taking a (not too big, 2^32 or 2^64, depending on word size) number to a fractional power, Bracmat computes the prime factors of the number and checks whether the powers of prime factors make the fractional power go away. If the number is prime, the output of the computation is the same as the input. 
+Primality test: In an attempt to compute the result of taking a (not too big, 2^32 or 2^64, depending on word size) number to a fractional power, Bracmat computes the prime factors of the number and checks whether the powers of prime factors make the fractional power go away. If the number is prime, the output of the computation is the same as the input.
 
 ```bracmat
 ( 1000001:?i
@@ -430,8 +430,8 @@ right: 739399
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -501,8 +501,8 @@ output<lang>Left: 998443; right: 739399
 
 Faster way of doing primality test for small numbers (1000000 isn't big), and generating truncatable primes bottom-up:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define MAXN 1000000
 int maxl, maxr;
@@ -688,7 +688,7 @@ max_right_truncatable_number = (n, f) ->
   # the first n-1 digits before having to iterate through
   # the 10 possibilities for the last digit.
   if n < 10
-    candidate = n 
+    candidate = n
     while candidate > 0
       return candidate if f(candidate)
       candidate -= 1
@@ -703,10 +703,10 @@ max_right_truncatable_number = (n, f) ->
         right -= 1
       left -= 1
   throw Error "none found"
-      
+
 max_left_truncatable_number = (max, f) ->
   # This is a pretty straightforward countdown.  The first
-  # optimization here would probably be to cache results of 
+  # optimization here would probably be to cache results of
   # calling f on small numbers.
   is_left_truncatable = (n) ->
     candidate = 0
@@ -725,7 +725,7 @@ max_left_truncatable_number = (max, f) ->
       return n if is_left_truncatable n, f
       n -= 1
     throw Error "none found"
-  
+
 is_prime = (n) ->
   return false if n == 1
   return true if n == 2
@@ -733,7 +733,7 @@ is_prime = (n) ->
     return false if n % d == 0
     return true if d * d >= n
 
-    
+
 console.log "right", max_right_truncatable_number(999999, is_prime)
 console.log "left", max_left_truncatable_number(999999, is_prime)
 
@@ -741,7 +741,7 @@ console.log "left", max_left_truncatable_number(999999, is_prime)
 
 output
 <lang>
-> coffee truncatable_prime.coffee 
+> coffee truncatable_prime.coffee
 right 739399
 left 998443
 
@@ -769,7 +769,7 @@ left 998443
     (6-digits-R-truncatables (R-trunc lst) (- n 1))))
 
 (defun R-trunc (lst)
-  (remove-if (lambda (x) (not (primep x))) 
+  (remove-if (lambda (x) (not (primep x)))
 	     (loop for el in lst
 		   append (mapcar (lambda (x) (+ (* 10 el) x)) '(1 3 7 9)))))
 
@@ -784,7 +784,7 @@ left 998443
     (6-digits-L-truncatables (L-trunc lst (- 6 n)) (- n 1))))
 
 (defun L-trunc (lst n)
-  (remove-if (lambda (x) (not (primep x))) 
+  (remove-if (lambda (x) (not (primep x)))
 	     (loop for el in lst
 		   append (mapcar (lambda (x) (+ (* (expt 10 n) x) el)) '(1 2 3 4 5 6 7 8 9)))))
 
@@ -865,13 +865,13 @@ Largest right-truncatable prime in 2 .. 1000000: 739399
 (define (nozero? n) (= -1 (string-index (number->string n) "0")))
 
 ;; right truncate : p and successive quotients by 10 (integer division) must be primes
-(define (right-trunc p) (unless (zero? p) 
+(define (right-trunc p) (unless (zero? p)
 	(and (prime? p) (right-trunc (quotient p 10)))))
 (remember 'right-trunc)
 
 ;; left truncate : p and successive modulo by 10, 100, .. must be prime
-(define (left-trunc p (mod 1000000)) 
-	(unless (< mod 1) 
+(define (left-trunc p (mod 1000000))
+	(unless (< mod 1)
 	(and (prime? p) (nozero? p) (left-trunc (modulo p mod) (/ mod 10)))))
 
 ;; start from 999999. stop on first found
@@ -885,9 +885,9 @@ Output:
 ```lisp
 
 (fact-trunc left-trunc)
-998443    
+998443
 (fact-trunc right-trunc)
-739399    
+739399
 
 ```
 
@@ -1077,38 +1077,38 @@ extension mathOp
     isPrime()
     {
         int n := cast int(self);
-        
-        if (n < 2) { ^ false };        
-        if (n < 4) { ^ true };        
+
+        if (n < 2) { ^ false };
+        if (n < 4) { ^ true };
         if (n mod:2 == 0) { ^ false };
-        if (n < 9) { ^ true }; 
+        if (n < 9) { ^ true };
         if (n mod:3 == 0) { ^ false };
-        
+
         int r := n.sqrt();
         int f := 5;
         while (f <= r)
         {
             if ((n.mod(f) == 0) || (n.mod(f + 2) == 0))
                 { ^ false };
-                
-            f := f + 6            
+
+            f := f + 6
         };
-        
+
         ^ true
     }
-    
+
     isRightTruncatable()
     {
         int n := self;
-        
+
         while (n != 0)
         {
             ifnot (n.isPrime())
                 { ^ false };
-            
+
             n := n / 10
         };
-        
+
         ^ true
     }
 
@@ -1116,10 +1116,10 @@ extension mathOp
     {
         int n := self;
         int tens := 1;
-        
+
         while (tens < n)
             { tens := tens * 10 };
-            
+
         while (n != 0)
         {
             ifnot (n.isPrime())
@@ -1128,7 +1128,7 @@ extension mathOp
             tens := tens / 10;
             n := n - (n / tens * tens)
         };
-        
+
         ^ true
     }
 }
@@ -1147,17 +1147,17 @@ program()
                 {
                     max_lt := n
                 };
-                
+
             if ((max_rt == 0) && (n.isRightTruncatable()))
                 {
                     max_rt := n
                 }
         };
-                        
+
         n := n - 1
     };
 
-    console.printLine("Largest truncable left is ",max_lt);   
+    console.printLine("Largest truncable left is ",max_lt);
     console.printLine("Largest truncable right is ",max_rt);
 }
 ```
@@ -1184,43 +1184,43 @@ defmodule Prime do
               i           -> to_string(i) |> String.slice(1..-1) |> String.to_integer end
     truncatable?(n, prime, func)
   end
-  
+
   defp right_truncatable?(n, prime) do
     truncatable?(n, prime, fn i -> div(i, 10) end)
   end
-  
+
   defp truncatable?(n, prime, trunc_func) do
     if to_string(n) |> String.match?(~r/0/),
       do:   false,
       else: trunc_loop(trunc_func.(n), prime, trunc_func)
   end
-  
+
   defp trunc_loop(0, _prime, _trunc_func), do: true
   defp trunc_loop(n, prime, trunc_func) do
     if elem(prime,n), do: trunc_loop(trunc_func.(n), prime, trunc_func), else: false
   end
-  
+
   def eratosthenes(limit) do            # descending order
     Enum.to_list(2..limit) |> sieve(:math.sqrt(limit), [])
   end
-  
+
   defp sieve([h|_]=list, max, sieved) when h>max, do: Enum.reverse(list, sieved)
   defp sieve([h | t], max, sieved) do
     list = for x <- t, rem(x,h)>0, do: x
     sieve(list, max, [h | sieved])
   end
-  
+
   defp prime_table(_, [], list), do: [false, false | list]
   defp prime_table(n, [n|t], list), do: prime_table(n-1, t,      [true|list])
   defp prime_table(n, prime, list), do: prime_table(n-1, prime, [false|list])
-  
+
   def task(limit \\ 1000000) do
     prime = eratosthenes(limit)
     prime_tuple = prime_table(limit, prime, []) |> List.to_tuple
     left = Enum.find(prime, fn n -> left_truncatable?(n, prime_tuple) end)
     IO.puts "Largest left-truncatable prime : #{left}"
     right = Enum.find(prime, fn n -> right_truncatable?(n, prime_tuple) end)
-    IO.puts "Largest right-truncatable prime: #{right}" 
+    IO.puts "Largest right-truncatable prime: #{right}"
   end
 end
 
@@ -1265,17 +1265,17 @@ CONSTANT: primes $[ 1,000,000 primes-upto reverse ]
 
 : right-truncatable-prime? ( n -- ? ) [ truncate-right ]
     truncatable-prime? ;
-    
+
 : left-truncatable-prime? ( n -- ? ) [ truncate-left ]
     truncatable-prime? ;
-    
+
 : find-truncatable-primes ( -- ltp rtp )
     primes [ [ left-truncatable-prime?  ] find nip ]
            [ [ right-truncatable-prime? ] find nip ] bi ;
-           
+
 : main ( -- ) find-truncatable-primes
     "Left: %d\nRight: %d\n" printf ;
-    
+
 MAIN: main
 ```
 
@@ -1297,9 +1297,9 @@ Right: 739399
 ```fortran
 module primes_mod
   implicit none
-  
+
   logical, allocatable :: primes(:)
-  
+
 contains
 
 subroutine Genprimes(parr)
@@ -1329,7 +1329,7 @@ function is_rtp(candidate)
     end if
     n = n / 10
   end do
-  
+
 end function
 
 function is_ltp(candidate)
@@ -1354,15 +1354,15 @@ end module primes_mod
 program Truncatable_Primes
   use primes_mod
   implicit none
-  
+
   integer, parameter :: limit = 999999
   integer :: i
   character(10) :: nstr
- 
+
 ! Generate an array of prime flags up to limit of search
   allocate(primes(limit))
   call Genprimes(primes)
-   
+
 ! Find left truncatable prime
   do i = limit, 1, -1
     write(nstr, "(i10)") i
@@ -1416,7 +1416,7 @@ Function isPrime(n As Integer) As Boolean
   Return True
 End Function
 
-Dim As UInteger i, j, p, pow, lMax = 2, rMax = 2 
+Dim As UInteger i, j, p, pow, lMax = 2, rMax = 2
 Dim s As String
 
 ' largest left truncatable prime less than 1000000
@@ -1424,7 +1424,7 @@ Dim s As String
 ' Nor can it end in 2 if it has more than one digit as such a number would divide by 2
 For i = 3 To 999997 Step 2
   s = Str(i)
-  If Instr(s, "0") > 1 Then Continue For '' cannot contain 0   
+  If Instr(s, "0") > 1 Then Continue For '' cannot contain 0
   j = s[Len(s) - 1] - 48
   If j = 1 OrElse j = 9 Then Continue For
   p = i
@@ -1441,12 +1441,12 @@ Next
 ' It can't begin with 1, 4, 6, 8 or 9 as these numbers are not prime
 For i = 3 To 799999 Step 2
   s = Str(i)
-  If Instr(s, "0") > 1 Then Continue For '' cannot contain 0   
+  If Instr(s, "0") > 1 Then Continue For '' cannot contain 0
   j = s[0] - 48
   If j = 1 OrElse j = 4 OrElse j = 6 Then Continue For
   p = i
-  While p > 0 
-    If Not isPrime(p) Then Continue For  
+  While p > 0
+    If Not isPrime(p) Then Continue For
     p \= 10
   Wend
   rMax = i
@@ -1657,7 +1657,7 @@ rightT, leftT :: Int -> Bool
 rightT = all isPrime. takeWhile(>0). drop 1. iterate (`div`10)
 leftT x = all isPrime. takeWhile(<x).map (x`mod`) $ iterate (*10) 10
 
-main = do 
+main = do
   let (ltp, rtp) = (head. filter leftT &&& head. filter rightT) primes1e6
   putStrLn $ "Left truncatable  " ++ show ltp
   putStrLn $ "Right truncatable " ++ show rtp
@@ -1699,25 +1699,25 @@ Output:
 == {{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main(arglist)     
+procedure main(arglist)
    N := 0 < integer(\arglist[1]) | 1000000              # primes to generator 1 to ... (1M or 1st arglist)
    D := (0 < integer(\arglist[2]) | 10) / 2             # primes to display (10 or 2nd arglist)
    P := sieve(N)                                        # from sieve task (modified)
    write("There are ",*P," prime numbers in the range 1 to ",N)
-   if *P <= 2*D then 
-      every writes( "Primes: "|!sort(P)||" "|"\n" ) 
-   else 
-      every writes( "Primes: "|(L := sort(P))[1 to D]||" "|"... "|L[*L-D+1 to *L]||" "|"\n" ) 
+   if *P <= 2*D then
+      every writes( "Primes: "|!sort(P)||" "|"\n" )
+   else
+      every writes( "Primes: "|(L := sort(P))[1 to D]||" "|"... "|L[*L-D+1 to *L]||" "|"\n" )
    largesttruncateable(P)
 end
 
 procedure largesttruncateable(P)            #: find the largest left and right trucatable numbers in P
 local ltp,rtp
 
-   every x  := sort(P)[*P to 1 by -1] do    # largest to smallest 
+   every x  := sort(P)[*P to 1 by -1] do    # largest to smallest
       if not find('0',x) then {
          /ltp  := islefttrunc(P,x)
-         /rtp  := isrighttrunc(P,x) 
+         /rtp  := isrighttrunc(P,x)
          if \ltp & \rtp then break          # until both found
          }
    write("Largest left truncatable prime  = ", ltp)
@@ -1763,7 +1763,7 @@ Here, selPrime discards non-prime numbers from a list, so seed is the list 2 3 5
 The largest truncatable primes less than a million can be obtained by adding five digits to the prime seeds, then finding the largest value from the result.
 
 
-```j>   
+```j>
 ./ digits&step^:5 seed  NB. left truncatable
 998443
    >./ step&digits^:5 seed  NB. right truncatable
@@ -1787,24 +1787,24 @@ public class Main {
 		final int MAX = 1000000;
 
 		//Sieve of Eratosthenes (using BitSet only for odd numbers)
-		BitSet primeList = new BitSet(MAX>>1); 
-		primeList.set(0,primeList.size(),true); 
+		BitSet primeList = new BitSet(MAX>>1);
+		primeList.set(0,primeList.size(),true);
 
-		int sqroot = (int) Math.sqrt(MAX); 
-		primeList.clear(0); 
-		for(int num = 3; num <= sqroot; num+=2) 
-		{ 
-			if( primeList.get(num >> 1) ) 
-			{ 
+		int sqroot = (int) Math.sqrt(MAX);
+		primeList.clear(0);
+		for(int num = 3; num <= sqroot; num+=2)
+		{
+			if( primeList.get(num >> 1) )
+			{
 				int inc = num << 1;
-				for(int factor = num * num; factor < MAX; factor += inc) 
-				{ 
-					//if( ((factor) & 1) == 1) 
-					//{ 
-					primeList.clear(factor >> 1); 
-					//} 
-				} 
-			} 
+				for(int factor = num * num; factor < MAX; factor += inc)
+				{
+					//if( ((factor) & 1) == 1)
+					//{
+					primeList.clear(factor >> 1);
+					//}
+				}
+			}
 		}
 		//Sieve ends...
 
@@ -1850,7 +1850,7 @@ public class Main {
 
 ```
 
-Output : 
+Output :
 
 ```txt
 
@@ -1926,7 +1926,7 @@ The largest right truncatable prime ≤ 1000000 is 739399.
 //  version 1.0.5-2
 
 fun isPrime(n: Int) : Boolean {
-    if (n < 2) return false 
+    if (n < 2) return false
     if (n % 2 == 0) return n == 2
     if (n % 3 == 0) return n == 3
     var d : Int = 5
@@ -1946,7 +1946,7 @@ fun main(args: Array<String>) {
     var lMax: Int = 2
     var rMax: Int = 2
     var s: String
-    
+
     // calculate maximum left truncatable prime less than 1 million
     loop@ for( i in 3..999997 step 2) {
         s = i.toString()
@@ -1963,7 +1963,7 @@ fun main(args: Array<String>) {
         }
         lMax = i
     }
-    
+
     // calculate maximum right truncatable prime less than 1 million
     loop@ for( i in 3..799999 step 2) {
         s = i.toString()
@@ -1972,14 +1972,14 @@ fun main(args: Array<String>) {
         if (j == '1' || j == '4' || j == '6') continue
         p = i
         while(p > 0) {
-            if (!isPrime(p)) continue@loop 
+            if (!isPrime(p)) continue@loop
             p /= 10
         }
         rMax = i
     }
-    
+
     println("Largest left  truncatable prime : " + lMax.toString())
-    println("Largest right truncatable prime : " + rMax.toString())    
+    println("Largest right truncatable prime : " + rMax.toString())
 }
 ```
 
@@ -2014,21 +2014,21 @@ end
 
 max_prime_left, max_prime_right = 2, 2
 for i = 2, max_number do
-    if numbers[i] ~= 0 then 
+    if numbers[i] ~= 0 then
         local is_prime = true
-        
+
         local l = math.floor( i / 10 )
         while l > 1 do
             if numbers[l] == 0 then
                 is_prime = false
-                break 
+                break
             end
             l = math.floor( l / 10 )
         end
         if is_prime then
             max_prime_left = i
         end
-        
+
         is_prime = true
         local n = 10;
         while math.floor( i % 10 ) ~= 0 and n < max_number do
@@ -2037,7 +2037,7 @@ for i = 2, max_number do
                 break
             end
             n = n * 10
-        end    
+        end
         if is_prime then
             max_prime_right = i
         end
@@ -2094,7 +2094,7 @@ local tprimes := table();
                     p := iquo(p, b);
                 end if;
             elif assigned(tprimes[c]) then
-                j := j + 1;    
+                j := j + 1;
             elif isprime(c) then
                 p := c;
                 i := i + 1;
@@ -2127,10 +2127,10 @@ end proc;
 
 ```Mathematica
 LeftTruncatablePrimeQ[n_] := Times @@ IntegerDigits[n] > 0 &&
-  And @@ PrimeQ /@ ToExpression /@ StringJoin /@ 
+  And @@ PrimeQ /@ ToExpression /@ StringJoin /@
       Rest[Most[NestList[Rest, #, Length[#]] &[Characters[ToString[n]]]]]
 RightTruncatablePrimeQ[n_] := Times @@ IntegerDigits[n] > 0 &&
-  And @@ PrimeQ /@ ToExpression /@ StringJoin /@ 
+  And @@ PrimeQ /@ ToExpression /@ StringJoin /@
       Rest[Most[NestList[Most, #, Length[#]] &[Characters[ToString[n]]]]]
 ```
 
@@ -2158,14 +2158,14 @@ function largestTruncatablePrimes(boundary)
 
         numDigits = ceil(log10(prime)); %calculate the number of digits in the prime less one
         powersOfTen = 10.^(0:numDigits); %cache the needed powers of ten
-        
+
         leftTruncated = mod(prime,powersOfTen); %generate a list of numbers by repeatedly left truncating the prime
-  
+
         %leading zeros will cause duplicate entries thus it is possible to
         %detect leading zeros if we rotate the list to the left or right
         %and check for any equivalences with the original list
-        hasLeadingZeros = any( circshift(leftTruncated,[0 1]) == leftTruncated ); 
-        
+        hasLeadingZeros = any( circshift(leftTruncated,[0 1]) == leftTruncated );
+
         if( hasLeadingZeros || not(checkLeftTruncatable) )
             leftTruncatable = false;
         else
@@ -2391,7 +2391,7 @@ FUNCTION isLeftTruncatablePrime RETURNS LOGICAL (
    DEF VAR ii        AS INT.
    DEF VAR cc        AS CHAR.
    DEF VAR lresult   AS LOGICAL INITIAL TRUE.
-   
+
    cc = STRING( i_i ).
 
    DO WHILE cc > "":
@@ -2410,7 +2410,7 @@ FUNCTION isRightTruncatablePrime RETURNS LOGICAL (
    DEF VAR ii        AS INT.
    DEF VAR cc        AS CHAR.
    DEF VAR lresult   AS LOGICAL INITIAL TRUE.
-   
+
    cc = STRING( i_i ).
 
    DO WHILE cc > "":
@@ -2445,10 +2445,10 @@ FUNCTION getHighestTruncatablePrimes RETURNS CHARACTER (
 
 END FUNCTION. /* getHighestTruncatablePrimes */
 
-MESSAGE 
+MESSAGE
    getHighestTruncatablePrimes( 1000000 )
 VIEW-AS ALERT-BOX.
-                          
+
 ```
 
 Output:
@@ -2460,7 +2460,7 @@ Message
 Left: 998443
 Right: 739399
 ---------------------------
-OK   
+OK
 ---------------------------
 ```
 
@@ -2838,10 +2838,10 @@ function Truncatable ( [int] $num )
     $ltprimes = @{}
     $rtprimes = @{}
     1..$declen | ForEach-Object { $ltprimes[$_]=@{}; $rtprimes[$_]=@{} }
-    IsPrime $num | ForEach-Object { 
+    IsPrime $num | ForEach-Object {
         $lastltprime = 2
         $lastrtprime = 2
-    } { 
+    } {
         $curprim = $_
         $curdeclen = $curprim.ToString().Length
         $primes += $curprim
@@ -2853,12 +2853,12 @@ function Truncatable ( [int] $num )
         } else {
             $curmod = $curprim % [math]::pow(10,$curdeclen - 1)
             $curdiv = [math]::floor($curprim / 10)
-            if( $ltprimes[$curdeclen - 1][[int]$curmod] ) { 
+            if( $ltprimes[$curdeclen - 1][[int]$curmod] ) {
                 $ltprimes[$curdeclen][$curprim] = $true
                 $lastltprime = $curprim
             }
-            if( $rtprimes[$curdeclen - 1][[int]$curdiv] ) { 
-                $rtprimes[$curdeclen][$curprim] = $true 
+            if( $rtprimes[$curdeclen - 1][[int]$curdiv] ) {
+                $rtprimes[$curdeclen][$curprim] = $true
                 $lastrtprime = $curprim
             }
         }
@@ -2922,7 +2922,7 @@ Procedure TruncateRight(a)
     EndIf
   ForEver
   ProcedureReturn #True
-EndProcedure 
+EndProcedure
 
 i=#MaxLim
 Repeat
@@ -2935,10 +2935,10 @@ Repeat
     EndIf
   EndIf
   If truncateleft And truncateright
-    Break 
+    Break
   Else
     i-2
-  EndIf 
+  EndIf
 Until i<=0
 
 x.s="Largest TruncateLeft= "+Str(truncateleft)
@@ -3033,11 +3033,11 @@ print(truncatableprime(maxprime))
 
 ```
 
- 
+
 
 ## REXX
 
-Extra code was added to the prime number generator as this is the section of the REXX program that consumes the vast majority of the computation time. 
+Extra code was added to the prime number generator as this is the section of the REXX program that consumes the vast majority of the computation time.
 
 ```REXX
 /*REXX program finds largest  left─ and right─truncatable  primes ≤ 1m  (or argument 1).*/
@@ -3139,7 +3139,7 @@ for n = 1000000 to 1 step -1
            exit
         ok
     next
-    if flag = 1 
+    if flag = 1
        nend = n
        exit
     ok
@@ -3226,16 +3226,16 @@ This example uses lazily evaluated lists. The functions to determine if a number
 object TruncatablePrimes {
   def main(args: Array[String]): Unit = {
     val max = 1000000
-    
+
     println(
       s"""|ltPrime: ${ltPrimes.takeWhile(_ <= max).last}
           |rtPrime: ${rtPrimes.takeWhile(_ <= max).last}
           |""".stripMargin)
   }
-  
+
   def ltPrimes: LazyList[Int] = 2 #:: LazyList.from(3, 2).filter(isLeftTruncPrime)
   def rtPrimes: LazyList[Int] = 2 #:: LazyList.from(3, 2).filter(isRightTruncPrime)
-  
+
   def isPrime(num: Int): Boolean = (num > 1) && !LazyList.range(3, math.sqrt(num).toInt + 1, 2).exists(num%_ == 0)
   def isLeftTruncPrime(num: Int): Boolean = !num.toString.contains('0') && Iterator.unfold(num.toString){str => if(str.nonEmpty) Some((str.toInt, str.tail)) else None}.forall(isPrime)
   def isRightTruncPrime(num: Int): Boolean = !num.toString.exists(_.asDigit%2 == 0) && Iterator.unfold(num.toString){str => if(str.nonEmpty) Some((str.toInt, str.init)) else None}.forall(isPrime)
@@ -3288,7 +3288,7 @@ say t_prime(5, left: false)
 
 ```tcl
 package require Tcl 8.5
- 
+
 # Optimized version of the Sieve-of-Eratosthenes task solution
 proc sieve n {
     set primes [list]

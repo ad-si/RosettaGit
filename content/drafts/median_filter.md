@@ -109,16 +109,16 @@ This example is a 5 x 5 median filter:
 ```bbcbasic
       INSTALL @lib$+"SORTLIB"
       Sort% = FN_sortinit(0,0)
-      
+
       Width% = 200
       Height% = 200
-      
+
       DIM out&(Width%-1, Height%-1)
-      
+
       VDU 23,22,Width%;Height%;8,16,16,128
       *DISPLAY Lenagrey
       OFF
-      
+
       REM Do the median filtering:
       DIM pix&(24)
       C% = 25
@@ -135,7 +135,7 @@ This example is a 5 x 5 median filter:
           out&(X%, Y%) = pix&(12)
         NEXT
       NEXT Y%
-      
+
       REM Display:
       GCOL 1
       FOR Y% = 0 TO Height%-1
@@ -144,7 +144,7 @@ This example is a 5 x 5 median filter:
           LINE X%*2,Y%*2,X%*2,Y%*2
         NEXT
       NEXT Y%
-      
+
       REPEAT
         WAIT 1
       UNTIL FALSE
@@ -156,8 +156,8 @@ This example is a 5 x 5 median filter:
 
 O(n) filter with histogram.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -438,7 +438,7 @@ FUNCTION MEDIANF,ARRAY,WINDOW
 		COLARRAY=fltarr(WINDOW,1)
 		FOR FX=0, WINDOW-1 DO BEGIN
 			COLARRAY[FX]=ARRAY[X + FX - EDGEX]
-		END 
+		END
 		T=COLARRAY[SORT(COLARRAY)]
 		RET[X]=T[WINDOW/2]
 	END
@@ -447,7 +447,7 @@ END
 
 ```
 
-Usage: 
+Usage:
 
 ```GDL
 Result = MEDIANF(ARRAY, WINDOW)
@@ -664,9 +664,9 @@ mapwindow(median!, img, (3, 3))
 
 ## Kotlin
 
-We reuse the class in the [[Bitmap]] task for this and add a member function to filter the image as per the Wikipedia pseudo-code. The colors in the Window array are sorted by their luminance. 
+We reuse the class in the [[Bitmap]] task for this and add a member function to filter the image as per the Wikipedia pseudo-code. The colors in the Window array are sorted by their luminance.
 
-To test the function we use the left half of the sample image file (Medianfilterp.png) in the Wikipedia article and see if we can get close to the right half.  
+To test the function we use the left half of the sample image file (Medianfilterp.png) in the Wikipedia article and see if we can get close to the right half.
 
 ```scala
 // Version 1.2.41
@@ -787,7 +787,7 @@ let median_value img radius =
 
     for _x = (x - radius) to (x + radius) do
       for _y = (y - radius) to (y + radius) do
-      
+
         let v = get_rgb img _x _y in
 
         sample := v :: !sample;
@@ -1025,7 +1025,7 @@ Due to the use of flomaps the solution below works for all types of images.
 (flomap->bitmap
  (build-flomap
   4 (send bm get-width) (send bm get-height)
-  (λ (k x y) 
+  (λ (k x y)
     (define (f x y) (flomap-ref fm k x y))
     (median < (list (f (- x 1) (- y 1))
                     (f (- x 1)    y)
@@ -1101,7 +1101,7 @@ class ProgressBar
   def update(n)
     new_pos = n * @progress_view/@progress_max
     if new_pos > @progress_pos
-      @progress_pos = new_pos 
+      @progress_pos = new_pos
       $stdout.print '='
     end
   end

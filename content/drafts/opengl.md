@@ -274,7 +274,7 @@ glutMainLoop()
 
 ```bbcbasic
       *FLOAT64
-      
+
       SYS "LoadLibrary", "OPENGL32.DLL" TO opengl%
       SYS "GetProcAddress", opengl%, "wglCreateContext" TO `wglCreateContext`
       SYS "GetProcAddress", opengl%, "wglDeleteContext" TO `wglDeleteContext`
@@ -285,30 +285,30 @@ glutMainLoop()
       SYS "GetProcAddress", opengl%, "glColor3dv"       TO `glColor3dv`
       SYS "GetProcAddress", opengl%, "glVertex2dv"      TO `glVertex2dv`
       SYS "GetProcAddress", opengl%, "glEnd"            TO `glEnd`
-      
+
       MODE 8
-      
+
       PFD_MAIN_PLANE = 0
       PFD_TYPE_RGBA = 0
       PFD_DOUBLEBUFFER = 1
       PFD_DRAW_TO_WINDOW = 4
       PFD_SUPPORT_OPENGL = &20
-      
+
       GL_MODELVIEW  = &1700
       GL_TRIANGLES = 4
       GL_DEPTH_BUFFER_BIT = &00000100
       GL_COLOR_BUFFER_BIT = &00004000
-      
+
       ON CLOSE PROCcleanup : QUIT
       ON ERROR PROCcleanup : SYS "MessageBox", @hwnd%, REPORT$, 0, 48 : QUIT
-      
+
       DIM GLcolor{r#, g#, b#}, GLvertex{x#, y#}
       DIM pfd{nSize{l&,h&}, nVersion{l&,h&}, dwFlags%, iPixelType&, cColorBits&, \
       \       cRedBits&, cRedShift&, cGreenBits&, cGreenShift&, cBlueBits&, cBlueShift&, \
       \       cAlphaBits&, cAlphaShift&, cAccumBits&, cAccumRedBits&, cAccumGreenBits&, \
       \       cAccumBlueBits&, cAccumAlphaBits&, cDepthBits&, cStencilBits&, cAuxBuffers&, \
       \       iLayerType&, bReserved&, dwLayerMask%, dwVisibleMask%, dwDamageMask%}
-      
+
       pfd.nSize.l& = DIM(pfd{})
       pfd.nVersion.l& = 1
       pfd.dwFlags% = PFD_DRAW_TO_WINDOW OR PFD_SUPPORT_OPENGL OR PFD_DOUBLEBUFFER
@@ -316,19 +316,19 @@ glutMainLoop()
       pfd.iPixelType& = PFD_TYPE_RGBA
       pfd.cColorBits& = 24
       pfd.cDepthBits& = 16
-      
+
       SYS "GetDC", @hwnd% TO ghDC%
-      
+
       SYS "ChoosePixelFormat", ghDC%, pfd{} TO pixelformat%
       IF pixelformat% = 0 ERROR 100, "ChoosePixelFormat failed"
-      
+
       SYS "SetPixelFormat", ghDC%, pixelformat%, pfd{} TO res%
       IF res% = 0 ERROR 100, "SetPixelFormat failed"
-      
+
       SYS `wglCreateContext`, ghDC% TO ghRC%
       SYS `wglMakeCurrent`, ghDC%, ghRC%
       SYS `glMatrixMode`, GL_MODELVIEW
-      
+
       REPEAT
         WAIT 2
         SYS `glClear`, GL_COLOR_BUFFER_BIT OR GL_DEPTH_BUFFER_BIT
@@ -349,7 +349,7 @@ glutMainLoop()
         SYS "SwapBuffers", ghDC%
       UNTIL FALSE
       END
-      
+
       DEF PROCcleanup
       ON ERROR OFF
       ghRC% += 0 : IF ghRC% SYS `wglDeleteContext`, ghRC%  : ghRC% = 0
@@ -366,8 +366,8 @@ glutMainLoop()
 In this example, we use [[:Category:GLUT|GLUT]] to create a window and handle the main loop in a portable way. Windowing systems like MS Windows and X11 have their own platform-specific ways of handling these things.
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <GL/gl.h>
 #include <GL/glut.h>
 
@@ -999,7 +999,7 @@ TUPLE: triangle-gadget < gadget ;
     -30.0 30.0 -30.0 30.0 -30.0 30.0 glOrtho
     GL_MODELVIEW glMatrixMode ;
 
-: paint ( -- ) 
+: paint ( -- )
     0.3 0.3 0.3 0.0 glClearColor
     GL_COLOR_BUFFER_BIT GL_DEPTH_BUFFER_BIT bitor glClear
     GL_SMOOTH glShadeModel
@@ -1008,14 +1008,14 @@ TUPLE: triangle-gadget < gadget ;
     GL_TRIANGLES glBegin
     1.0 0.0 0.0 glColor3f 0.0 0.0 glVertex2f
     0.0 1.0 0.0 glColor3f 30.0 0.0 glVertex2f
-    0.0 0.0 1.0 glColor3f 0.0 30.0 glVertex2f 
+    0.0 0.0 1.0 glColor3f 0.0 30.0 glVertex2f
     glEnd
     glFlush ;
 
 M: triangle-gadget pref-dim* drop { 640 480 } ;
 M: triangle-gadget draw-gadget*
     rect-bounds nip first2 reshape paint ;
- 
+
 : triangle-window ( -- )
    [ triangle-gadget new "Triangle" open-window ] with-ui ;
 MAIN: triangle-window
@@ -1081,7 +1081,7 @@ GL_TRIANGLES glBegin
 30e 0e glVertex2f
 0e 0e 1e glColor3f
 0e 30e glVertex2f
-glEnd 
+glEnd
 glFlush
 endwith ]GL ( MINOS ) ^^ CK[ ( x y b n -- ) 2drop 2drop ]CK ( MINOS ) $280 $1 *hfil $1E0 $1 *vfil glcanvas new
       &1 vabox new
@@ -1214,12 +1214,12 @@ main = do
   getArgsAndInitialize
   createWindow "Triangle"
   displayCallback $= display
-      
+
   matrixMode $= Projection
   loadIdentity
   ortho2D 0 30 0 30
   matrixMode $= Modelview 0
-  
+
   mainLoop
 
 display = do
@@ -1229,7 +1229,7 @@ display = do
     corner 0 1 0 25 5
     corner 0 0 1 5 25
   swapBuffers
-       
+
 corner r g b x y = do color  (Color3  r g b :: Color3  GLfloat)
                       vertex (Vertex2 x y   :: Vertex2 GLfloat)
 ```
@@ -1298,31 +1298,31 @@ public class OpenGlExample {
 	public void run() throws LWJGLException {
 		Display.setDisplayMode(new DisplayMode(640, 480));
 		Display.create();
-		
+
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		glOrtho(-30, 30, -30, 30, -30, 30);
 		glMatrixMode(GL_MODELVIEW);
-		
+
 		while(!Display.isCloseRequested()) {
 			render();
-			
+
 			Display.update();
 		}
-		
+
 		Display.destroy();
 	}
-	
+
 	public void render() {
-		
+
 		glClearColor(0.3f, 0.3f, 0.3f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		
+
 		glShadeModel(GL_SMOOTH);
-		
+
 		glLoadIdentity();
 		glTranslatef(-15.0f, -15.0f, 0.0f);
-		
+
 		glBegin(GL_TRIANGLES);
 		glColor3f(1.0f, 0.0f, 0.0f);
 		glVertex2f(0.0f, 0.0f);
@@ -1331,9 +1331,9 @@ public class OpenGlExample {
 		glColor3f(0.0f, 0.0f, 1.0f);
 		glVertex2f(0.0f, 30.0f);
 		glEnd();
-		
+
 	}
-	
+
 	public static void main(String[] args) {
 		OpenGlExample openGlExmpl = new OpenGlExample();
 		try {
@@ -1342,7 +1342,7 @@ public class OpenGlExample {
 			System.err.println(e);
 		}
 	}
-	
+
 }
 
 
@@ -1405,13 +1405,13 @@ In the interest of brevity and not depending on an external matrix library, this
     <canvas id="glcanvas" style="border: none; margin: auto; display: block;" width="640" height="480"></canvas>
     <script type="text/javascript">
       var canvas = document.getElementById("glcanvas");
-      
+
       // Get WebGL context.
       var gl = canvas.getContext("webgl")
             || canvas.getContext("experimental-webgl");
       if (!gl)
         throw new Error("WebGL context not found");
-      
+
       // Create shader program from vertex and fragment shader code.
       var shaderProgram = gl.createProgram();
       gl.attachShader(shaderProgram, getShader(gl, "shader-vs"));
@@ -1419,17 +1419,17 @@ In the interest of brevity and not depending on an external matrix library, this
       gl.linkProgram(shaderProgram);
       if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS))
         throw new Error(gl.getProgramInfoLog(shaderProgram));
-      
+
       // Specify to render using that program.
       gl.useProgram(shaderProgram);
-      
+
       // Get the indexes to communicate vertex attributes to the program.
       var positionAttr = gl.getAttribLocation(shaderProgram, "a_position");
       var colorAttr = gl.getAttribLocation(shaderProgram, "a_color");
       // And specify that we will be actually delivering data to those attributes.
       gl.enableVertexAttribArray(positionAttr);
       gl.enableVertexAttribArray(colorAttr);
-      
+
       // Store vertex positions and colors in array buffer objects.
       var vertices;
       var positionBuffer = gl.createBuffer();
@@ -1447,18 +1447,18 @@ In the interest of brevity and not depending on an external matrix library, this
         0, 0, 1, 1
       ]), gl.STATIC_DRAW);
       var numVertices = vertices.length / 3; // 3 coordinates per vertex
-      
+
       // Set GL state
       gl.clearColor(0.3, 0.3, 0.3, 1.0);
       gl.enable(gl.DEPTH_TEST);
       gl.viewport(0, 0, gl.drawingBufferWidth || canvas.width,
                         gl.drawingBufferHeight || canvas.height);
-      
+
       // Draw scene.
       // If this were an animation, everything after this point would go in a main loop.
       //   Clear frame.
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-      //   Specify the array data to render. 
+      //   Specify the array data to render.
       //   3 and 4 are the lengths of the vectors (3 for XYZ, 4 for RGBA).
       gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
       gl.vertexAttribPointer(positionAttr, 3, gl.FLOAT, false, 0, 0);
@@ -1507,12 +1507,12 @@ import opengl.*
 fun paint() {
     glClearColor(0.3f, 0.3f, 0.3f, 0.0f)
     glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT)
- 
+
     glShadeModel(GL_SMOOTH)
- 
+
     glLoadIdentity()
     glTranslatef(-15.0f, -15.0f, 0.0f)
- 
+
     glBegin(GL_TRIANGLES)
     glColor3f(1.0f, 0.0f, 0.0f)
     glVertex2f(0.0f, 0.0f)
@@ -1536,15 +1536,15 @@ fun reshape(width: Int, height: Int) {
 fun main(args: Array<String>) {
     memScoped {
         val argc = alloc<IntVar>().apply { value = 0 }
-        glutInit(argc.ptr, null) 
+        glutInit(argc.ptr, null)
     }
 
     glutInitWindowSize(640, 480)
     glutCreateWindow("Triangle")
- 
+
     glutDisplayFunc(staticCFunction(::paint))
     glutReshapeFunc(staticCFunction(::reshape))
- 
+
     glutMainLoop()
 }
 ```
@@ -1889,7 +1889,7 @@ OpenGL window works in background (as coroutine) and allow user to call any func
    (glMatrixMode GL_MODELVIEW)
    (glLoadIdentity)
    (glTranslatef -15.0 -15.0 0.0)
- 
+
    (glBegin GL_TRIANGLES)
       (glColor3f 1.0 0.0 0.0)
       (glVertex2f 0.0 0.0)
@@ -2034,12 +2034,12 @@ procedure paint; cdecl;
 begin
   glClearColor(0.3,0.3,0.3,0.0);
   glClear(GL_COLOR_BUFFER_BIT or GL_DEPTH_BUFFER_BIT);
- 
+
   glShadeModel(GL_SMOOTH);
- 
+
   glLoadIdentity();
   glTranslatef(-15.0, -15.0, 0.0);
- 
+
   glBegin(GL_TRIANGLES);
   glColor3f(1.0, 0.0, 0.0);
   glVertex2f(0.0, 0.0);
@@ -2048,10 +2048,10 @@ begin
   glColor3f(0.0, 0.0, 1.0);
   glVertex2f(0.0, 30.0);
   glEnd();
- 
+
   glFlush();
 end;
- 
+
 procedure reshape(width, height: cint); cdecl;
 begin
   glViewport(0, 0, width, height);
@@ -2060,15 +2060,15 @@ begin
   glOrtho(-30.0, 30.0, -30.0, 30.0, -30.0, 30.0);
   glMatrixMode(GL_MODELVIEW);
 end;
- 
+
 begin
   glutInit(@argc, @argv);
   glutInitWindowSize(640, 480);
   glutCreateWindow('Triangle');
- 
+
   glutDisplayFunc(@paint);
   glutReshapeFunc(@reshape);
- 
+
   glutMainLoop();
 end.
 
@@ -2173,7 +2173,7 @@ sequence rect
         dy = floor(dh/4)+1
         if sequence(screen_dib) then killDib(screen_dib) end if
         screen_dib = newDib(dw, dh)
-    elsif msg=WM_CHAR 
+    elsif msg=WM_CHAR
       and wParam=VK_ESCAPE then
         closeWindow(win)
     end if
@@ -2206,12 +2206,12 @@ function action(Ihandle /*ih*/)
 
     glClearColor(0.3,0.3,0.3,0.0)
     glClear(GL_COLOR_BUFFER_BIT+GL_DEPTH_BUFFER_BIT)
- 
+
     glShadeModel(GL_SMOOTH)
- 
+
     glLoadIdentity()
     glTranslate(-15.0, -15.0, 0.0)
- 
+
     glBegin(GL_TRIANGLES)
     glColor(1.0, 0.0, 0.0)
     glVertex(0.0, 0.0)
@@ -2220,7 +2220,7 @@ function action(Ihandle /*ih*/)
     glColor(0.0, 0.0, 1.0)
     glVertex(0.0, 30.0)
     glEnd()
- 
+
     glFlush()
 
     return IUP_DEFAULT
@@ -2304,22 +2304,22 @@ int main() {
 		"fullscreen": 0,
 		"resolution": ({ 640, 480 }),
 	]));
-	
+
 	while (1) {
 		GL.glViewport(0, 0, 640, 480);
 		GL.glMatrixMode(GL.GL_PROJECTION);
 		GL.glLoadIdentity();
 		GL.glOrtho(-30.0, 30.0, -30.0, 30.0, -30.0, 30.0);
 		GL.glMatrixMode(GL.GL_MODELVIEW);
-		
+
 		GL.glClearColor(0.3,0.3,0.3,0.0);
 		GL.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
-		
+
 		GL.glShadeModel(GL.GL_SMOOTH);
-		
+
 		GL.glLoadIdentity();
 		GL.glTranslate(-15.0, -15.0, 0.0);
-		
+
 		GL.glBegin(GL.GL_TRIANGLES);
 		GL.glColor(1.0, 0.0, 0.0);
 		GL.glVertex(0.0, 0.0);
@@ -2328,9 +2328,9 @@ int main() {
 		GL.glColor(0.0, 0.0, 1.0);
 		GL.glVertex(0.0, 30.0);
 		GL.glEnd();
-		
+
 		GL.glFlush();
-		
+
 		GLUE.swap_buffers();
 		Pike.DefaultBackend(0.0);
 		sleep(0.01);
@@ -2571,10 +2571,10 @@ paint = lambda do
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
   glShadeModel(GL_SMOOTH)
- 
+
   glLoadIdentity
   glTranslatef(-15.0, -15.0, 0.0)
- 
+
   glBegin(GL_TRIANGLES)
     glColor3f(1.0, 0.0, 0.0)
     glVertex2f(0.0, 0.0)
@@ -2583,10 +2583,10 @@ paint = lambda do
     glColor3f(0.0, 0.0, 1.0)
     glVertex2f(0.0, 30.0)
   glEnd
- 
+
   glFlush
 end
- 
+
 reshape = lambda do |width, height|
   glViewport(0, 0, width, height)
   glMatrixMode(GL_PROJECTION)
@@ -2594,7 +2594,7 @@ reshape = lambda do |width, height|
   glOrtho(-30.0, 30.0, -30.0, 30.0, -30.0, 30.0)
   glMatrixMode(GL_MODELVIEW)
 end
- 
+
 glutInit
 glutInitWindowSize(640, 480)
 glutCreateWindow("Triangle")

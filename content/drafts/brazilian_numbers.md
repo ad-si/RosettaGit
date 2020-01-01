@@ -31,7 +31,7 @@ The set of positive integer numbers where each number '''N''' has at least one n
 
 All even integers '''2P >= 8''' are Brazilian because '''2P = 2(P-1) + 2''', which is '''22''' in '''base P-1''' when '''P-1 > 2'''. That becomes true when '''P >= 4'''.<BR>
 More common: all integers, that factor decomposition is '''R*S >= 8''', with '''S+1 > R''', are Brazilian because '''R*S = R(S-1) + R''', which is '''RR''' in '''base S-1'''<BR>
-The only problematic numbers are squares of primes, where R = S.Only 11^2 is brazilian to base 3.<BR>   
+The only problematic numbers are squares of primes, where R = S.Only 11^2 is brazilian to base 3.<BR>
 All prime integers, that are brazilian, can only have the digit '''1''' .Otherwise one could factor out the digit, therefore it cannot be a prime number.Mostly in form of '''111''' to base Integer(sqrt(prime number)).Must be an odd count of '''1''' to stay odd like primes >  2<BR>
 
 ;Task:
@@ -139,8 +139,8 @@ first 20 prime Brazilian numbers: 7 13 31 43 73 127 157 211 241 307 421 463 601 
 
 {{trans|Go}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef char bool;
 
@@ -183,7 +183,7 @@ bool is_prime(int n) {
 
 int main() {
     int i, c, n;
-    const char *kinds[3] = {" ", " odd ", " prime "};    
+    const char *kinds[3] = {" ", " odd ", " prime "};
     for (i = 0; i < 3; ++i) {
         printf("First 20%sBrazilian numbers:\n", kinds[i]);
         c = 0;
@@ -199,7 +199,7 @@ int main() {
             switch (i) {
                 case 0: n++; break;
                 case 1: n += 2; break;
-                case 2: 
+                case 2:
                     do {
                         n += 2;
                     } while (!is_prime(n));
@@ -209,7 +209,7 @@ int main() {
     }
 
     for (n = 7, c = 0; c < 100000; ++n) {
-        if (is_brazilian(n)) c++; 
+        if (is_brazilian(n)) c++;
     }
     printf("The 100,000th Brazilian number: %d\n", n - 1);
     return 0;
@@ -222,10 +222,10 @@ int main() {
 ```txt
 
 First 20 Brazilian numbers:
-7 8 10 12 13 14 15 16 18 20 21 22 24 26 27 28 30 31 32 33 
+7 8 10 12 13 14 15 16 18 20 21 22 24 26 27 28 30 31 32 33
 
 First 20 odd Brazilian numbers:
-7 13 15 21 27 31 33 35 39 43 45 51 55 57 63 65 69 73 75 77 
+7 13 15 21 27 31 33 35 39 43 45 51 55 57 63 65 69 73 75 77
 
 First 20 prime Brazilian numbers:
 7 13 31 43 73 127 157 211 241 307 421 463 601 757 1093 1123 1483 1723 2551 2801
@@ -240,8 +240,8 @@ The 100,000th Brazilian number: 110468
 
 {{trans|D}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 bool sameDigits(int n, int b) {
     int f = n % b;
@@ -341,20 +341,20 @@ First 20 prime Brazillian numbers:
 ```csharp
 using System;
 class Program {
- 
+
   static bool sameDigits(int n, int b) {
     int f = n % b;
     while ((n /= b) > 0) if (n % b != f) return false;
     return true;
   }
- 
+
   static bool isBrazilian(int n) {
     if (n < 7) return false;
     if (n % 2 == 0) return true;
     for (int b = 2; b < n - 1; b++) if (sameDigits(n, b)) return true;
     return false;
   }
- 
+
   static bool isPrime(int n) {
     if (n < 2) return false;
     if (n % 2 == 0) return n == 2;
@@ -366,7 +366,7 @@ class Program {
     }
     return true;
   }
- 
+
   static void Main(string[] args) {
     foreach (string kind in ",odd ,prime ".Split(',')) {
       bool quiet = false; int BigLim = 99999, limit = 20;
@@ -398,12 +398,12 @@ class Program {
 
 ```txt
 First 20 Brazilian numbers:
-7 8 10 12 13 14 15 16 18 20 21 22 24 26 27 28 30 31 32 33 
+7 8 10 12 13 14 15 16 18 20 21 22 24 26 27 28 30 31 32 33
 
 The 100,000th Brazilian number is: 110,468
 
 First 20 odd Brazilian numbers:
-7 13 15 21 27 31 33 35 39 43 45 51 55 57 63 65 69 73 75 77 
+7 13 15 21 27 31 33 35 39 43 45 51 55 57 63 65 69 73 75 77
 
 First 20 prime Brazilian numbers:
 7 13 31 43 73 127 157 211 241 307 421 463 601 757 1,093 1,123 1,483 1,723 2,551 2,801
@@ -421,7 +421,7 @@ Based on the Pascal version, with some shortcuts.  Can calculate to one billion 
 using System;
 
 class Program
-{   
+{
     const           // flags:
     int PrMk = 0,   // a number that is prime
         SqMk = 1,   // a number that is the square of a prime number
@@ -446,9 +446,9 @@ class Program
              // which is around the UInt32.MaxValue, or 4294967295
 
     static SByte[] PS; // the prime/Brazilian number sieve
-    // once the sieve is populated, primes are <= 0, non-primes are > 0, 
+    // once the sieve is populated, primes are <= 0, non-primes are > 0,
     // Brazilian numbers are (< 0) or (> 1)
-    // 121 is a special case, in the sieve it is marked with the BrMk (-2) 
+    // 121 is a special case, in the sieve it is marked with the BrMk (-2)
 
     // typical sieve of Eratosthenes algorithm
     static void PrimeSieve(int top) {
@@ -499,7 +499,7 @@ class Program
         // now check the '111_X' style numbers. many are factorable, but some are prime,
         // then re-mark the primes found in the sieve as Brazilian.
         // curiously, only the numbers with a prime number of ones will turn out, so
-        // restricting the search to those saves time. no need to wast time on even numbers of ones, 
+        // restricting the search to those saves time. no need to wast time on even numbers of ones,
         // or 9 ones, 15 ones, etc...
         foreach(int i in primes) { Console.Write("{0,4}", i); cnt = 0; n = 2;
             do { if ((n - 1) % i != 0) { long br = Expand(i, n);
@@ -701,7 +701,7 @@ Brazilian() |> Seq.filter(fun n->n%2=1) |> Seq.take 20 |> Seq.iter(printf "%d ")
 
 ```txt
 
-7 13 15 21 27 31 33 35 39 43 45 51 55 57 63 65 69 73 75 77 
+7 13 15 21 27 31 33 35 39 43 45 51 55 57 63 65 69 73 75 77
 
 ```
 
@@ -710,7 +710,7 @@ Using [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_function E
 
 ```fsharp
 
-Brazilian() |> Seq.filter isPrime |> Seq.take 20 |> Seq.iter(printf "%d "); printfn ""                                       
+Brazilian() |> Seq.filter isPrime |> Seq.take 20 |> Seq.iter(printf "%d "); printfn ""
 
 ```
 
@@ -718,7 +718,7 @@ Brazilian() |> Seq.filter isPrime |> Seq.take 20 |> Seq.iter(printf "%d "); prin
 
 ```txt
 
-7 13 31 43 73 127 157 211 241 307 421 463 601 757 1093 1123 1483 1723 2551 2801 
+7 13 31 43 73 127 157 211 241 307 421 463 601 757 1093 1123 1483 1723 2551 2801
 
 ```
 
@@ -904,10 +904,10 @@ func main() {
 ```txt
 
 First 20 Brazilian numbers:
-7 8 10 12 13 14 15 16 18 20 21 22 24 26 27 28 30 31 32 33 
+7 8 10 12 13 14 15 16 18 20 21 22 24 26 27 28 30 31 32 33
 
 First 20 odd Brazilian numbers:
-7 13 15 21 27 31 33 35 39 43 45 51 55 57 63 65 69 73 75 77 
+7 13 15 21 27 31 33 35 39 43 45 51 55 57 63 65 69 73 75 77
 
 First 20 prime Brazilian numbers:
 7 13 31 43 73 127 157 211 241 307 421 463 601 757 1093 1123 1483 1723 2551 2801
@@ -1143,13 +1143,13 @@ ones checked found
 Adding Brazilian primes to the sieve took 1.2049 ms
 
 The first 20 Brazilian numbers are:
-7 8 10 12 13 14 15 16 18 20 21 22 24 26 27 28 30 31 32 33 
+7 8 10 12 13 14 15 16 18 20 21 22 24 26 27 28 30 31 32 33
 
 The first 20 odd Brazilian numbers are:
-7 13 15 21 27 31 33 35 39 43 45 51 55 57 63 65 69 73 75 77 
+7 13 15 21 27 31 33 35 39 43 45 51 55 57 63 65 69 73 75 77
 
 The first 20 prime Brazilian numbers are:
-7 13 31 43 73 127 157 211 241 307 421 463 601 757 1093 1123 1483 1723 2551 2801 
+7 13 31 43 73 127 157 211 241 307 421 463 601 757 1093 1123 1483 1723 2551 2801
 
 Required output took 0.0912 ms
 
@@ -1384,14 +1384,14 @@ fun main() {
 
 ```txt
 First 20 Brazilian numbers:
-7 8 10 12 13 14 15 16 18 20 21 22 24 26 27 28 30 31 32 33 
+7 8 10 12 13 14 15 16 18 20 21 22 24 26 27 28 30 31 32 33
 
 The 100,000th Brazilian number is: 110,468
 First 20 odd Brazilian numbers:
-7 13 15 21 27 31 33 35 39 43 45 51 55 57 63 65 69 73 75 77 
+7 13 15 21 27 31 33 35 39 43 45 51 55 57 63 65 69 73 75 77
 
 First 20 primeBrazilian numbers:
-7 13 31 43 73 127 157 211 241 307 421 463 601 757 1,093 1,123 1,483 1,723 2,551 2,801 
+7 13 31 43 73 127 157 211 241 307 421 463 601 757 1,093 1,123 1,483 1,723 2,551 2,801
 ```
 
 
@@ -1913,7 +1913,7 @@ function same_digits(integer n, b)
     end while
     return true
 end function
- 
+
 function is_brazilian(integer n)
     if n>=7 then
         if remainder(n,2)=0 then return true end if
@@ -1923,7 +1923,7 @@ function is_brazilian(integer n)
     end if
     return false
 end function
- 
+
 constant kinds = {" ", " odd ", " prime "}
 for i=1 to length(kinds) do
     printf(1,"First 20%sBrazilian numbers:\n", {kinds[i]})
@@ -1944,7 +1944,7 @@ for i=1 to length(kinds) do
         end switch
     end while
 end for
- 
+
 integer n = 7, c = 0
 atom t0 = time(), t1 = time()+1
 while c<100000 do
@@ -2328,13 +2328,13 @@ End Module
 
 ```txt
 First 20 Brazilian numbers:
-7 8 10 12 13 14 15 16 18 20 21 22 24 26 27 28 30 31 32 33 
+7 8 10 12 13 14 15 16 18 20 21 22 24 26 27 28 30 31 32 33
 
 First 20 odd Brazilian numbers:
-7 13 15 21 27 31 33 35 39 43 45 51 55 57 63 65 69 73 75 77 
+7 13 15 21 27 31 33 35 39 43 45 51 55 57 63 65 69 73 75 77
 
 First 20 prime Brazilian numbers:
-7 13 31 43 73 127 157 211 241 307 421 463 601 757 1093 1123 1483 1723 2551 2801 
+7 13 31 43 73 127 157 211 241 307 421 463 601 757 1093 1123 1483 1723 2551 2801
 
 ```
 
@@ -2372,9 +2372,9 @@ Module Module1
     ' which is around the UInt32.MaxValue, Or 4294967295
 
     Dim PS As SByte() ' the prime/Brazilian number sieve
-    ' once the sieve is populated, primes are <= 0, non-primes are > 0, 
+    ' once the sieve is populated, primes are <= 0, non-primes are > 0,
     ' Brazilian numbers are (< 0) or (> 1)
-    ' 121 is a special case, in the sieve it is marked with the BrMk (-2) 
+    ' 121 is a special case, in the sieve it is marked with the BrMk (-2)
 
     ' typical sieve of Eratosthenes algorithm
     Sub PrimeSieve(ByVal top As Integer)
@@ -2437,7 +2437,7 @@ Module Module1
         ' now check the '111_X' style numbers. many are factorable, but some are prime,
         ' then re-mark the primes found in the sieve as Brazilian.
         ' curiously, only the numbers with a prime number of ones will turn out, so
-        ' restricting the search to those saves time. no need to wast time on even numbers of ones, 
+        ' restricting the search to those saves time. no need to wast time on even numbers of ones,
         ' or 9 ones, 15 ones, etc...
         For Each i As Integer In primes
             Console.Write("{0,4}", i) : cnt = 0 : n = 2 : Do
@@ -2552,7 +2552,7 @@ L(7,13,15,21,27,31,33,35,39,43,45,51,55,57,63,65,69,73,75,77)
 ```
 
 {{libheader|GMP}} GNU Multiple Precision Arithmetic Library
-Using GMP ( probabilistic primes), 
+Using GMP ( probabilistic primes),
 because it is easy and fast to generate primes.
 
 [[Extensible prime generator#zkl]] could be used instead.

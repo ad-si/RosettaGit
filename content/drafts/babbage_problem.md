@@ -24,7 +24,7 @@ He thought the answer might be 99,736, whose square is 9,947,269,696; but he cou
 
 {{task heading}}
 
-The task is to find out if Babbage had the right answer — and to do so, as far as your language allows it, in code that Babbage himself would have been able to read and understand. 
+The task is to find out if Babbage had the right answer — and to do so, as far as your language allows it, in code that Babbage himself would have been able to read and understand.
 As Babbage evidently solved the task with pencil and paper, a similar efficient solution is preferred.
 
 For these purposes, Charles Babbage may be taken to be an intelligent person, familiar with mathematics and with the idea of a computer; he has written the first drafts of simple computer programmes in tabular form. [[https://collection.sciencemuseum.org.uk/documents/aa110000020 Babbage Archive Series L]].
@@ -107,59 +107,59 @@ Solution is: i=       25264  (i*i=   638269696)
 
 
 ```Ada
--- The program is written in the programming language Ada. The name "Ada" 
--- has been chosen in honour of your friend, 
---      Augusta Ada King-Noel, Countess of Lovelace (née Byron). 
+-- The program is written in the programming language Ada. The name "Ada"
+-- has been chosen in honour of your friend,
+--      Augusta Ada King-Noel, Countess of Lovelace (née Byron).
 --
 -- This is an program to search for the smallest integer X, such that
 -- (X*X) mod 1_000_000 = 269_696.
 --
--- In the Ada language, "*" represents the multiplication symbol, "mod" the 
--- modulo reduction, and the underscore "_" after every third digit in 
--- literals is supposed to simplify reading numbers for humans. 
--- Everything written after "--" in a line is a comment for the human, 
--- and will be ignored by the computer. 
+-- In the Ada language, "*" represents the multiplication symbol, "mod" the
+-- modulo reduction, and the underscore "_" after every third digit in
+-- literals is supposed to simplify reading numbers for humans.
+-- Everything written after "--" in a line is a comment for the human,
+-- and will be ignored by the computer.
 
-with Ada.Text_IO; 
--- We need this to tell the computer how it will later output its result. 
+with Ada.Text_IO;
+-- We need this to tell the computer how it will later output its result.
 
 procedure Babbage_Problem is
-   
+
    -- We know that 99_736*99_736 is 9_947_269_696. This implies:
    -- 1. The smallest X with X*X mod 1_000_000 = 269_696 is at most 99_736.
-   -- 2. The largest square X*X, which the program may have to deal with, 
-   --    will be at most 9_947_269_69. 
+   -- 2. The largest square X*X, which the program may have to deal with,
+   --    will be at most 9_947_269_69.
 
    type Number is range 1 .. 99_736*99_736;
-   X: Number := 1; 
-   -- X can store numbers between 1 and 99_736*99_736. Computations 
+   X: Number := 1;
+   -- X can store numbers between 1 and 99_736*99_736. Computations
    -- involving X can handle intermediate results in that range.
-   -- Initially the value stored at X is 1. 
-   -- When running the program, the value will become 2, 3, 4, etc. 
-   
+   -- Initially the value stored at X is 1.
+   -- When running the program, the value will become 2, 3, 4, etc.
+
 begin
-   -- The program starts running. 
-   
+   -- The program starts running.
+
    -- The computer first squares X, then it truncates the square, such
-   -- that the result is a six-digit number. 
-   -- Finally, the computer checks if this number is 269_696. 
+   -- that the result is a six-digit number.
+   -- Finally, the computer checks if this number is 269_696.
    while not (((X*X) mod 1_000_000) = 269_696) loop
 
-      -- When the computer goes here, the number was not 269_696. 
-      X := X+1; 
-      -- So we replace X by X+1, and then go back and try again. 
+      -- When the computer goes here, the number was not 269_696.
+      X := X+1;
+      -- So we replace X by X+1, and then go back and try again.
 
    end loop;
-   
+
    -- When the computer eventually goes here, the number is 269_696.
    -- E.e., the value stored at X is the value we are searching for.
-   -- We still have to print out this value. 
-   
+   -- We still have to print out this value.
+
    Ada.Text_IO.Put_Line(Number'Image(X));
-   -- Number'Image(X) converts the value stored at X into a string of 
-   -- printable characters (more specifically, of digits). 
+   -- Number'Image(X) converts the value stored at X into a string of
+   -- printable characters (more specifically, of digits).
    -- Ada.Text_IO.Put_Line(...) prints this string, for humans to read.
-   -- I did already run the program, and it did print out 25264. 
+   -- I did already run the program, and it did print out 25264.
 end Babbage_Problem;
 ```
 
@@ -196,7 +196,7 @@ INT v := ENTIER sqrt( s );
 COMMENT the construct: WHILE...DO...OD repeatedly executes the
         instructions between DO and OD, the execution stops when
         the instructions between WHILE and DO yield the value FALSE.
-COMMENT 
+COMMENT
 WHILE ( v * v ) MOD 1 000 000 /= s DO v := v + 1 OD;
 
 COMMENT print displays the values of its parameters
@@ -271,18 +271,18 @@ on babbage(intTests)
         on toSquare(x)
             (x * 1000000) + 269696
         end toSquare
-        
+
         on |λ|(x)
             hasIntRoot(toSquare(x))
         end |λ|
     end script
-    
+
     script toRoot
         on |λ|(x)
             ((x * 1000000) + 269696) ^ (1 / 2)
         end |λ|
     end script
-    
+
     set xs to filter(test, enumFromTo(1, intTests))
     zip(map(toRoot, xs), map(test's toSquare, xs))
 end babbage
@@ -290,9 +290,9 @@ end babbage
 -- TEST ----------------------------------------------------------------------
 on run
     -- Try 1000 candidates
-    
+
     unlines(map(curry(intercalate)'s |λ|("  ->  "), babbage(1000)))
-    
+
     --> "2.5264E+4 -> 6.38269696E+8"
 end run
 
@@ -374,7 +374,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -419,7 +419,7 @@ end zip
 
 /* ARM assembly Raspberry PI  */
 /*  program babbage.s   */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -438,13 +438,13 @@ szCarriageReturn:      .asciz "\n"
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                             @ entry of program 
+.global main
+main:                                             @ entry of program
 
     ldr r4,iNbStart                               @ start number = 269696
     mov r5,#0                                     @ counter multiply
@@ -469,18 +469,18 @@ main:                                             @ entry of program
     add r6,r3,r4                                  @ add start number
     b 1b
 
-100:                                              @ standard end of the program 
+100:                                              @ standard end of the program
     mov r0, #0                                    @ return code
     mov r7, #EXIT                                 @ request to exit program
     svc #0                                        @ perform the system call
- 
+
 iAdrsMessValeur:          .int sMessValeur
 iAdrszCarriageReturn:     .int szCarriageReturn
 iAdrsMessResult:          .int sMessResult
 iNbStart:                 .int 269696
 iNbMult:                  .int 1000000
 /******************************************************************/
-/*     compute squareRoot                                       */ 
+/*     compute squareRoot                                       */
 /******************************************************************/
 /* r0 contains n          */
 /* r0 return result or -1 */
@@ -497,66 +497,66 @@ squareRoot:
     clz r2,r0                           @ number of zeros on the left
     rsb r2,#32                          @ so many useful numbers right
     bic r2,#1                           @ to have an even number of digits
-    mov r3,#0b11                        @ mask for extract 2 bits 
+    mov r3,#0b11                        @ mask for extract 2 bits
     lsl r3,r2
     mov r1,#0                           @ init résult with 0
     mov r4,#0                           @ raz remainder area
-   
+
 1:                                      @ begin loop
     and r5,r0,r3                        @ extract 2 bits with mask
-    add r4,r5,lsr r2                    @ shift right and addition with remainder 
-    lsl r5,r1,#1                        @ multiplication by 2 
+    add r4,r5,lsr r2                    @ shift right and addition with remainder
+    lsl r5,r1,#1                        @ multiplication by 2
     lsl r5,#1                           @ shift left one bit
-    orr r5,#1                           @ bit right = 1 
+    orr r5,#1                           @ bit right = 1
     lsl r1,#1                           @ shift left one bit
-    subs r4,r5                          @ sub remainder 
+    subs r4,r5                          @ sub remainder
     addmi r4,r4,r5                      @ if negative restaur register
-    addpl r1,#1                         @ else add 1 
+    addpl r1,#1                         @ else add 1
     subs r2,#2                          @ decrement number bits
     movmi r0,r1                         @ if end return result
     bmi 100f
     lsl r4,#2                           @ no -> shift left remainder 2 bits
-    lsr r3,#2                           @ and shift right mask 2 bits 
+    lsr r3,#2                           @ and shift right mask 2 bits
     b 1b                                @ and loop
 
 100:
-    pop {r1-r5,lr}                      @ restaur registers 
+    pop {r1-r5,lr}                      @ restaur registers
     bx lr                               @return
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 1:                                                  @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b                                          @ and loop
                                                     @ and move digit from left of area
@@ -569,18 +569,18 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
@@ -591,12 +591,12 @@ divisionpar10U:
     push {r2,r3,r4, lr}
     mov r4,r0                                          @ save value
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 ```
@@ -734,24 +734,24 @@ This is an implementation based on the alternative solution for the BBC BASIC. W
  140 N = 269696
  150 N = N + 1000000
  160 R =  SQR (N)
- 170  IF FN ST(R) <  > 0 AND N < 999999999 THEN GOTO 150           
- 180  IF N > 999999999 THEN  GOTO 210                                
- 190  PRINT "SMALLESt NUMBER WHOSE 
+ 170  IF FN ST(R) <  > 0 AND N < 999999999 THEN GOTO 150
+ 180  IF N > 999999999 THEN  GOTO 210
+ 190  PRINT "SMALLESt NUMBER WHOSE
       SQUARE ENDS IN"; CHR$ (13);
-      "269696 IS ";R;", AND THE 
-      SQUARE IS"; CHR$ (13);N             
- 200  END                               
- 210  PRINT "THERE IS NO SOLUTION       
+      "269696 IS ";R;", AND THE
+      SQUARE IS"; CHR$ (13);N
+ 200  END
+ 210  PRINT "THERE IS NO SOLUTION
       FOR VALUES SMALLER"; CHR$(13);
-      "THAN 999999999."              
+      "THAN 999999999."
 
 ```
 
 {{out}}
 
 ```txt
-]RUN                                    
-SMALLEST NUMBER WHOSE SQUARE ENDS IN    
+]RUN
+SMALLEST NUMBER WHOSE SQUARE ENDS IN
 269696 IS 25264, AND THE SQUARE IS
 638269696
 ```
@@ -841,17 +841,17 @@ REM The machine will ignore them.
 LET n = 269696
 
 REPEAT
-  
+
   LET n = n + 1000000
-  
+
   REM Find the next number that ends in 269,696.
-  
+
   REM The function SQR finds the square root.
-  
+
   LET root = SQR n
-  
+
   REM The function INT truncates a real number to an integer.
-  
+
 UNTIL root = INT root
 
 REM If the square root is equal to its integer truncation, then it is an integer: so we have found our answer.
@@ -867,7 +867,7 @@ Identical to the first BBC BASIC version.
 ==={{header|IS-BASIC}}===
 <lang IS-BASIC>100 PROGRAM "Babbage.bas"
 110 LET N=2
-120 DO 
+120 DO
 130   LET N=N+2
 140 LOOP UNTIL MOD(N*N,1000000)=269696
 150 PRINT "The smallest number whose square ends in 269696 is:";N
@@ -877,7 +877,7 @@ Identical to the first BBC BASIC version.
 Alternative method:
 <lang IS-BASIC>100 PROGRAM "Babbage.bas"
 110 LET N=269696
-120 DO 
+120 DO
 130   LET N=N+1000000
 140   LET R=SQR(N)
 150 LOOP UNTIL R=INT(R)
@@ -897,12 +897,12 @@ Befunge is not an easily readable language, but with a basic understanding of th
     1+       ::*    "d"::** %       "V8":** -!     #v_ > > > > >
                                                     v
 increment n  n*n  modulo 1000000  equal to 269696?  v  if false, loop to right
-                                                    v  
+                                                    v
 v"Smallest number whose square ends in 269696 is "0 <  else output n below
->:#,_$           .      55+,     @ 
+>:#,_$           .      55+,     @
 
 ouput message  then n  newline  exit
-                                       
+
 numeric constants explained:
 
 "d"  ascii value of 'd', i.e. 100
@@ -934,9 +934,9 @@ Smallest number whose square ends in 269696 is 25264
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
- 
+
 int main() {
-	int current = 0, 	//the current number 
+	int current = 0, 	//the current number
 	    square;		//the square of the current number
 
 	//the strategy of take the rest of division by 1e06 is
@@ -948,9 +948,9 @@ int main() {
         //output
 	if (square>+INT_MAX)
 	    printf("Condition not satisfied before INT_MAX reached.");
-	else		   
+	else
 	    printf ("The smallest number whose square ends in 269696 is %d\n", current);
-	   
+
         //the end
 	return 0 ;
 }
@@ -969,12 +969,12 @@ The smallest number whose square ends in 269696 is 25264
 ## C++
 
 
-```Cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main( ) {
    int current = 0 ;
-   while ( ( current * current ) % 1000000 != 269696 ) 
+   while ( ( current * current ) % 1000000 != 269696 )
       current++ ;
    std::cout << "The square of " << current << " is " << (current * current) << " !\n" ;
    return 0 ;
@@ -1046,20 +1046,20 @@ The square is 638269696
 <lang Caché ObjectScript>BABBAGE
 	; start at the integer prior to the square root of 269,696 as it has to be at least that big
 	set i = ($piece($zsqr(269696),".",1,1) - 1)    ; piece 1 of . gets the integer portion
-	
+
 	; loop forever, incrementing by one, until we find a square ending in 269696
 	for {
 		set i = i + 1    ; this will start us at the integer value from the piece statement above
-		
+
 		; evaluate if the last 6 digits of the square equal 269696
 		set square = i * i
 		if ($extract(square,$length(square) - 5,$length(square)) = 269696) {
 			; We match - display the integer and square value to the screen, formatting the numerics with a comma separator as needed.
 			write !,"Result: "_$fnumber(i,",")_" squared is "_$fnumber(square,",")_".  This ends in 269696."
 			quit    ; exit for loop
-		} 
+		}
 	}
-	
+
 	quit    ; exit routine
 ```
 
@@ -1151,7 +1151,7 @@ COMPUTATION-PARAGRAPH.
     (do* ((i 0 (1+ i))
           (d (expt 10 (1+ (truncate (log n) (log 10))))) )
       ((= (mod (* i i) d) n) i) )))
-    
+
 
 ```
 
@@ -1257,7 +1257,7 @@ void main( )
         k = k - 1;
 
     // cycle through numbers
-    while ((k * k) % 1000000 != 269696) 
+    while ((k * k) % 1000000 != 269696)
         k = k + 2;
 
     // display output
@@ -1353,12 +1353,12 @@ method Main() decreases *
 ```dart
 
 
- 
+
 main() {
 	var x = 0;
-	while((x*x)% 1000000 != 269696) 
+	while((x*x)% 1000000 != 269696)
 	{	x++;}
-	
+
 	print('$x');
 }
 
@@ -1433,7 +1433,7 @@ Here, the last character sets the teleprinter to figures.]
         T56K   [define load address for subroutine]
         GKA3FT25@H29@VFT4DA3@TFH30@S6@T1FV4DU4DAFG26@
         TFTFO5FA4DF4FS4FL4FT4DA1FS3@G9@EFSFO31@E20@J995FJF!F
-        
+
                [Main routine. Load after subroutine P6.
                 Must be at an even address because each double
                 value at the start must be at an even address.]
@@ -1461,7 +1461,7 @@ Here, the last character sets the teleprinter to figures.]
         RD     [right shift]
         T4#@   [(1st difference for n^2) := -64]
 
-           [Start of loop]                       
+           [Start of loop]
    [22] TF     [clear acc]
         A#@    [load n]
         A8#@   [add 8]
@@ -1516,16 +1516,16 @@ ELENA 4.x :
 ```elena
 import extensions;
 import system'math;
- 
+
 public program()
 {
     var n := 1;
- 
+
     until(n.sqr().mod:1000000 == 269696)
     {
         n += 1
     };
- 
+
     console.printLine(n)
 }
 ```
@@ -1579,7 +1579,7 @@ Stream.iterate(2, &(&1+2))
 -export([main/0]).
 babbage(N,E) when N*N rem 1000000 == 269696 ->
 	io:fwrite("~p",[N]);
-babbage(N,E) -> 
+babbage(N,E) ->
 	case E of
 	4 -> babbage(N+2,6);
 	6 -> babbage(N+8,4)
@@ -1667,7 +1667,7 @@ USING: kernel math math.ranges prettyprint sequences ;
 ! to specify order of operations in the language, because you do
 ! so inherently by the order you place things on the data stack.
 
-! 
+!
 ###  BEGIN PROGRAM =========================================
 
 
@@ -1679,7 +1679,7 @@ USING: kernel math math.ranges prettyprint sequences ;
                        ! sequence. 2 represents the "step" of
                        ! the sequence, or a constant distance
                        ! between members.
-                       
+
                        ! <range> takes those three numbers and
                        ! creates an object representing the
                        ! described range of numbers. Computers
@@ -1688,7 +1688,7 @@ USING: kernel math math.ranges prettyprint sequences ;
                        ! doesn't store them all; it calculates
                        ! the number that is needed at the
                        ! current time.
-                       
+
                        ! The rationale for the sequence is as
                        ! follows. Odd squares are always odd, so
                        ! we don't need to consider them. That's
@@ -1720,16 +1720,16 @@ find
                        ! value (denoting a boolean true) and
                        ! then leaves that number, along with its
                        ! index in the sequence, on the stack.
-                       
+
                        ! Let's take a look at what happens
                        ! for each iteration of find. Let's look
                        ! at what happens with the first number
                        ! in the sequence.
-                       
+
 ! language token | data stack
 ! ---------------+-----------
 ! 518              518               ! 518 is placed on the stack
-                                     ! from the sequence by find.              
+                                     ! from the sequence by find.
 ! sq               268,324           ! square it
 ! 1,000,000        268,324 1,000,000 ! place a million on the stack
 ! mod              268,324           ! take modulus of 268,324
@@ -1737,12 +1737,12 @@ find
 ! 269,696          268,324 269,696   ! place 269,696 on the stack
 ! =                f                 ! test 268,324 and 269,696 for
                                      ! equality.
-                                     
+
                        ! So the square of the first number in
                        ! the sequence, 518, does not end with
                        ! 269,696. We'll try each number in the
                        ! sequence until we get a t.
-                       
+
 .    ! Consume the top member of the data stack and print it out.
 
 drop ! find leaves both the found element from the sequence
@@ -1812,19 +1812,19 @@ BABBAGE
 
 ### First FORTRAN
 
-Mister Babbage, 
+Mister Babbage,
 
-I have been working for 2 years in New York on an IBM 704 computer. 
+I have been working for 2 years in New York on an IBM 704 computer.
 
-I have just finished my work on a new language, a language for non-specialists. 
+I have just finished my work on a new language, a language for non-specialists.
 
-I called it: FORTRAN (FORmula TRANslator). 
+I called it: FORTRAN (FORmula TRANslator).
 
-And with it I solved your problem. 
+And with it I solved your problem.
 
-Sincerely, 
+Sincerely,
 
-John Backus - September 1956 
+John Backus - September 1956
 
 
 ```fortran
@@ -1845,9 +1845,9 @@ John Backus - September 1956
 
 Mister Babbage, an addendum :
 
-I was confident that my program will work because the FORTRAN for IBM 704 rely on a computer with a hardware of 36 bit integers. 
+I was confident that my program will work because the FORTRAN for IBM 704 rely on a computer with a hardware of 36 bit integers.
 
-You already proved than the number N must be less or equal to 99736. But if N were greater than 46340 (&radic;{{overline| 2<sup>31</sup>-1 }}), half of the programs you see here use 32 bit integers and they would have failed with an overflow exception. 
+You already proved than the number N must be less or equal to 99736. But if N were greater than 46340 (&radic;{{overline| 2<sup>31</sup>-1 }}), half of the programs you see here use 32 bit integers and they would have failed with an overflow exception.
 
 Sincerely - J. B.
 
@@ -1939,7 +1939,7 @@ dim as long i
 for i = 1 to 1000000
   if i ^ 2 mod 1000000 == 269696 then exit for
 next
- 
+
 print "The smallest number whose square ends in 269696 is"; i
 print "Its square is"; i ^ 2
 ```
@@ -2021,8 +2021,8 @@ The smallest number whose square ends with 269696 is 25264
 
 ```Groovy
 
-int n=104;   ///starting point  
-while( (n**2)%1000000 != 269696 ) 
+int n=104;   ///starting point
+while( (n**2)%1000000 != 269696 )
     {  if (n%10==4)   n=n+2;
        if (n%10==6)   n=n+8;
     }
@@ -2122,7 +2122,7 @@ babbagePairs =
          i = floor r                 -- and the integer part of that root.
      in [ [i, y]                     -- Root and square harvested together,
         | r == fromIntegral i ]      -- only if that root is an integer.
-          
+
 
 main :: IO ()
 main = do
@@ -2214,18 +2214,18 @@ NB. In our notation, a dyad is a word that takes an x value on the left and an y
 
 NB. This dyad selects values from the list x, as marked by the list y
    where=: dyad : ' y # x '
-   
+
 NB. Now that we defined our words, we can ask our question with them :
    first n where 269696 ends squareof n
 25264
 
 NB. With a bit of habit, you won't need to define words in english anymore.
 NB. The following easily relates word for word to the sentence we've written :
-   {. (i.100000) #~ 269696 = 1000000 | *: i.100000 
+   {. (i.100000) #~ 269696 = 1000000 | *: i.100000
 25264
 
 NB. Like all mathematical notations, in J you see patterns that suggest simplification :
-   {. I. 269696 = 1000000 | *: i.100000 
+   {. I. 269696 = 1000000 | *: i.100000
 25264
 
 
@@ -2444,7 +2444,7 @@ $ jq -n '1 | until( .*. | tostring | test("269696$"); .+1)'
 
 
 In words: start with n=1; if the decimal representation of n*n ends with 269696 then print n, otherwise increment n and restart.
- 
+
 '''Note for Mr Babbage.'''
 
 ```txt
@@ -2544,7 +2544,7 @@ Program complete.
 
 ```
 
-Now my question for you, Sir, is how did you know that the square of ANY number would end in 269696?? 
+Now my question for you, Sir, is how did you know that the square of ANY number would end in 269696??
 Oh, and by the way, 99,736 is an answer too.
 
 
@@ -2618,7 +2618,7 @@ Report format$("The smallest number whose square ends in {0} is {1}, Its square 
 
 ## Mathematica
 
-Solving up to his guess would show that there is indeed a smaller integer with that property. 
+Solving up to his guess would show that there is indeed a smaller integer with that property.
 
 ```Mathematica
  Solve[Mod[x^2, 10^6] == 269696 && 0 <= x <= 99736, x, Integers]
@@ -2648,7 +2648,7 @@ n = 500
 ' So, we start with 500, n is being incremented by 1 at each round
 ' while its square (n*n) (* means multiplication) does not have
 ' a remainder (function Math.Remainder) of 269696 when divided by one million.
-' This means that the loop will stop when the smallest positive integer 
+' This means that the loop will stop when the smallest positive integer
 ' whose square ends in 269696
 ' is found and stored in n.
 ' (<>)  means "not equal to"
@@ -2661,7 +2661,7 @@ EndWhile
 TextWindow.WriteLine("The smallest positive integer whose square ends in 269696 is " + (n) + ".")
 TextWindow.WriteLine("Its square is " + (n*n) + ".")
 
-' End of Program. 
+' End of Program.
 ```
 
 {{out}}
@@ -2679,7 +2679,7 @@ Its square is 638269696.
 
 
 ```maxscript
--- MAXScript : Babbage problem : N.H. 
+-- MAXScript : Babbage problem : N.H.
 posInt = 1
 while posInt < 1000000 do
 	(
@@ -2762,7 +2762,7 @@ method babbage() public static binary
   -- begin a processing loop to determine the value
   -- starting point: 104
   loop while ((n * n) // 1000000) \= 269696
-    -- loop continues while the remainder of n squared divided by 1,000,000 is not equal to 269,696 
+    -- loop continues while the remainder of n squared divided by 1,000,000 is not equal to 269,696
     if n // 10 == 4 then do
       -- increment n by 2 if the remainder of n divided by 10 equals 4
       n = n + 2
@@ -2810,7 +2810,7 @@ class Babbage  {
       cur++;
     }
     while(cur * cur % 1000000 <> 269696);
-        
+
         cur_sqr := cur * cur;
     "The square of {$cur} is {$cur_sqr}!"->PrintLine();
   }
@@ -2940,10 +2940,10 @@ This could certainly be written more concisely. Extra verbiage is included to ma
 ```perl6
 # For all positives integers from 1 to Infinity
 for 1 .. Inf -> $integer {
-    
+
     # calculate the square of the integer
     my $square = $integer²;
-    
+
     # print the integer and square and exit if the square modulo 1000000 is equal to 269696
     print "{$integer}² equals $square" and exit if $square mod 1000000 == 269696;
 }
@@ -3104,14 +3104,14 @@ By looping through potential squares instead of potential square roots, we reduc
 ```PowerShell
 #  Start with the smallest potential square number
 $TestSquare = 269696
- 
+
 #  Test if our potential square is a square
 #  by testing if the square root of it is an integer
 #  Test if the square root is an integer by testing if the remainder
 #  of the square root divided by 1 is greater than zero
 #  % is the remainder operator
 #  -gt is the "greater than" operator
- 
+
 #  While the remainder of the square root divided by one is greater than zero
 While ( [Math]::Sqrt( $TestSquare ) % 1 -gt 0 )
     {
@@ -3119,10 +3119,10 @@ While ( [Math]::Sqrt( $TestSquare ) % 1 -gt 0 )
     $TestSquare = $TestSquare + 1000000
     }
 #  This will loop until we get a value for $TestSquare that is a square number
- 
+
 #  Caclulate the root
 $Root = [Math]::Sqrt( $TestSquare )
- 
+
 #  Display the result and its square
 $Root
 $TestSquare
@@ -3192,16 +3192,16 @@ Works with Swi-Prolog version 7+
 ```prolog
 :- use_module(library(clpfd)).
 
-babbage_(B, B, Sq) :- 
-	B * B #= Sq, 
-	number_chars(Sq, R), 
+babbage_(B, B, Sq) :-
+	B * B #= Sq,
+	number_chars(Sq, R),
 	append(_, ['2','6','9','6','9','6'], R).
-babbage_(B, R, Sq) :- 
+babbage_(B, R, Sq) :-
 	N #= B + 1,
 	babbage_(N, R, Sq).
-	
-babbage :- 
-	once(babbage_(1, Num, Square)), 
+
+babbage :-
+	once(babbage_(1, Num, Square)),
 	format('lowest number is ~p which squared becomes ~p~n', [Num, Square]).
 ```
 
@@ -3226,7 +3226,7 @@ Macro putresult(n)
   If OpenConsole("Babbage_problem")
     PrintN("The smallest number whose square ends in 269696 is " + Str(n))
     Input()
-  EndIf  
+  EndIf
 EndMacro
 
 CompilerIf #PB_Processor_x64
@@ -3270,7 +3270,7 @@ while n**2 % 1000000 != 269696:
     # n**2 -> n squared
     # %    -> 'modulo' or remainer after division
     # !=   -> not equal to
-    
+
     n += 1 # += -> increase by a certain number
 
 print(n) # prints n
@@ -3523,10 +3523,10 @@ number: 510 ;; starting number
 ;; repeat, until the last condition in the block is true
 until [
  number: number + 2 ;; only even numbers can have even squares
- ;; The word modulo computes the non-negative remainder of the 
+ ;; The word modulo computes the non-negative remainder of the
  ;; first argument divided by the second argument.
  ;; **  =>  Returns a number raised to a given power (exponent)
-  269696 = modulo (number ** 2) 1000000  
+  269696 = modulo (number ** 2) 1000000
 ]
 ?? number
 
@@ -3554,7 +3554,7 @@ be:   <big>'''j'''</big> x <big>'''j'''</big>   or   <big>'''j ∙ j'''</big>.  
 mathematical or algebraic texts used simple letters for   ''values''   (we
 would now call them   ''variables''   when dealing with computer programs).
 
-Fortunately, the REXX language uses decimal numbers, so binary values don't need to be 
+Fortunately, the REXX language uses decimal numbers, so binary values don't need to be
 explained.
 
 So, with that in mind, the use of (REXX) arithermetic operators were explained within a
@@ -3584,8 +3584,8 @@ mirror,   possibly having a blinking   ''cursor'',   whatever that is.
 
 If this were a computer program to be shown to a computer programming novice   (albeit a very
 
-intelligent polymath novice),   the computer program would also have 
-a   <big>''lot''</big>   more comments, 
+intelligent polymath novice),   the computer program would also have
+a   <big>''lot''</big>   more comments,
 
 notes, and accompanying verbiage which would/could/should explain:
 
@@ -3593,12 +3593,12 @@ notes, and accompanying verbiage which would/could/should explain:
 :::*   what a computer is
 :::*   what a computer program is
 :::*   how a computer stores numbers and such
-:::*   what are   ''variables''   and how to store   ''stuff''   in them 
+:::*   what are   ''variables''   and how to store   ''stuff''   in them
 :::*   how the   '''do'''   loop works (initial value, incrementation, etc)
 :::*   how an assignment   <big>'''=''' </big>   operator works
 :::*   how a comparison   <big>'''==''' </big>   operator works
 :::*   how an   '''if'''   statement works
-:::*   what a (computer program) statement is 
+:::*   what a (computer program) statement is
 :::*   what the   <big>'''*'''</big>    operator is and how it does multiplication
 :::*   what the   <big>'''+'''</big>    operator is and how it does addition
 :::*   what the   <big>'''//'''</big>   operator is and how it does division remainder
@@ -3641,7 +3641,7 @@ The smallest integer whose square ends in  269,696  is:  25264
 say "The smallest integer whose square ends in  269,696  is: "    j
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -3663,9 +3663,9 @@ say "The smallest integer whose square ends in  269,696  is: "    j
 say "The smallest integer whose square ends in  269,696  is: "   k
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
- 
+
 
 
 ### start with smallest possible number
@@ -3704,9 +3704,9 @@ The smallest integer whose square ends in 269696 is: 25264
 n = 0
 while pow(n,2) % 1000000 != 269696
         n = n + 1
-end 
- 
-see "The smallest number whose square ends in 269696 is : " + n + nl 
+end
+
+see "The smallest number whose square ends in 269696 is : " + n + nl
 see "Its square is : " + pow(n,2)
 
 ```
@@ -3727,8 +3727,8 @@ Its square is : 638269696
 
 ```ruby
 n = 0
-n = n + 2 until (n*n).modulo(1000000) == 269696 
-print n 
+n = n + 2 until (n*n).modulo(1000000) == 269696
+print n
 
 ```
 
@@ -3741,7 +3741,7 @@ print n
 for n = 1 to  1000000
 if n^2 MOD 1000000 = 269696 then exit for
 next
- 
+
 PRINT "The smallest number whose square ends in 269696 is "; n
 PRINT "Its square is "; n^2
 ```
@@ -3758,7 +3758,7 @@ Its square is 638269696
 ## Rust
 
 
-###  Imperative version 
+###  Imperative version
 
 
 ```rust
@@ -3784,7 +3784,7 @@ The smallest number whose square ends in 269696 is 25264
 
 
 
-###  Finding in infinite range 
+###  Finding in infinite range
 
 
 ```rust
@@ -3807,17 +3807,17 @@ Which outputs the same thing as above.
 
 object babbage{
 	def main( args:Array[String] ){
-		
+
 		var x:Int = 524		//Sqrt of 269696 = 519.something
-		
+
 		while( (x*x) % 1000000 != 269696 ){
-			
+
 			if( x%10 == 4 )
 				x = x+2
 			else
 				x = x+8
 		}
-		
+
 		println("The smallest positive integer whose square ends in 269696 = " + x )
 	}
 }
@@ -3917,8 +3917,8 @@ The square of 25264 is 638269696
 
 ```sequencel
 main() := babbage(0);
-	
-babbage(current) := 
+
+babbage(current) :=
         current when current * current mod 1000000 = 269696
     else
         babbage(current + 1);
@@ -4081,7 +4081,7 @@ The language is small and neat. For example to store 500 into a variable, it is 
 
 Do not be attracted by brute force, let's do some basic maths:
 
-As 
+As
   N²=1000000&middot;A+269696
   269696=2<sup>7</sup>&times;7<sup>2</sup>&times;43
   1000000=2<sup>6</sup>&times;5<sup>6</sup>
@@ -4168,22 +4168,22 @@ echo $trial_value
 {{works with|Bourne Again Shell}}
 {{works with|Debian Almquist Shell}}
 
-The simple method above requires more than 20000 multiplications 
+The simple method above requires more than 20000 multiplications
 and would run days on Babbage's ''Analytical Engine'' (AE),
 if he would have managed to build such a machine.
 
 As he had found a solution with pen and paper, and would have programmed the AE
 correspondingly, the following solution could have been used on the AE.
 
-It should run on any shell, including the original Bourne Shell, if the arithmetic expressions 
+It should run on any shell, including the original Bourne Shell, if the arithmetic expressions
 are replaced by "expr".
 
 
 ```bash
-#!/bin/dash				
+#!/bin/dash
 
 #  Babbage problem:
-#  	What is the smallest (positive) integer whose square ends in the digits 269,696?  
+#  	What is the smallest (positive) integer whose square ends in the digits 269,696?
 #
 #  He found the second to smallest number (99736 instead of 25264) using pencil and paper,
 #  and would not have wasted hours of computing time on his (planned) Analytical Engine (AE).
@@ -4193,22 +4193,22 @@ are replaced by "expr".
 #  Thus, the result must have the last digits 14 or 16 in the above case.
 #
 #  So the algorithm starts with the set {0} and an increment of 1,
-#  squaring all numbers of 0+i, and keeping only those that have 
+#  squaring all numbers of 0+i, and keeping only those that have
 #  the correct end digit.
 #  Then, the new i is 10*i, and a new set of two digit endings
 #  created from the old set of one digit endings, and so on.
 #
 #  As the AE did not have arrays or the like, the sets must be punched
-#  on cards and read in for the next round. 
+#  on cards and read in for the next round.
 #  The classical (original) Bourne Shell did not have arrays,
 #  so you may use this script on very old machines, if 'expr' is used
-#  instead of arithmetic expansion. 
+#  instead of arithmetic expansion.
 #  And so his script works with 'dash', the standard command interpreter
 #  for non-interactive use.
 #
 #  To prove the speed, try 1234554321 instead of 269696,
 #  the practicall immedidate answer should be 1250061111,
-#  while the simple method will take hours.  
+#  while the simple method will take hours.
 #
 #  Note that this method will stop if there is no solution,
 #  while the simple method continues endlessly.
@@ -4224,13 +4224,13 @@ m=1
 while test $m -le $e
 do m=$((m*10))
 done
- 
+
 # $a is number to add in each round (power of 10)
 a=1
- 
-# first workfile contains just the number 0 
-echo 0 >$wrk	
- 
+
+# first workfile contains just the number 0
+echo 0 >$wrk
+
 # test all workfile numbers with another digit in front
 while test $a -lt $m		# until the increment excees the modulus
 do mm=$((a*10))			# modulus in this round
@@ -4238,10 +4238,10 @@ do mm=$((a*10))			# modulus in this round
    cat $wrk |			# numbers from current workfile
       while read x
       do y=$x			# first number to test is the number read
-	 while test $y -le $((x+mm-1))		
+	 while test $y -le $((x+mm-1))
 	 do z=$(($y * $y))	# calculate the square
 	    z=$(($z % $mm))	# ending in this round
-	    if test $z -eq $ee	
+	    if test $z -eq $ee
 	    then echo $y	# candidate for next round
 	    fi
 	    y=$(($y + $a))	# advance leftmost digit
@@ -4261,7 +4261,7 @@ cat $wrk |			# numbers from last workfile
       if test $y -eq $e
       then echo $x		# solution found
       fi
-   done | 
+   done |
    sort -n |    		# numbers in ascending order
    head -n 1 			# show only smallest
 
@@ -4272,7 +4272,7 @@ cat $wrk |			# numbers from last workfile
 
 ```txt
 
-$ sh babbage.sh 
+$ sh babbage.sh
 25264
 $ sh babbage.sh 1234554321
 1250061111
@@ -4392,7 +4392,7 @@ Loop
 WScript.Echo("The smallest positive integer whose square ends in 269696 is " & n & ".")
 WScript.Echo("Its square is " & n*n & ".")
 
-'End of Program. 
+'End of Program.
 
 ```
 
@@ -4473,7 +4473,7 @@ main:
 # Move the number 1,000,000 into EBX:
 
         mov    $1000000, %ebx
-        
+
 # The numbers we are testing will be stored in ECX. We start by moving a 1 there:
 
         mov    $1,       %ecx
@@ -4483,24 +4483,24 @@ main:
 next:
 
 # We move (in fact copy) the number stored in ECX into EAX, where we shall be able to perform some calculations upon it without disturbing the original:
-        
+
         mov    %ecx,     %eax
 
 # Multiply the number in EAX by itself:
 
         mul    %eax
-        
+
 # Divide the number in EAX (now the square of the number in ECX) by the number in EBX (one million). The quotient -- for which we have no use -- will be placed in EAX, and the remainder in EDX:
-        
+
         idiv   %ebx
-        
+
 # Compare the number in EDX with 269,696. If they are equal, jump ahead to the label 'done':
-        
+
         cmp    $269696,  %edx
         je     done
-        
+
 # Otherwise, increment the number in ECX and jump back to the label 'next':
-        
+
         inc    %ecx
         jmp    next
 
@@ -4509,24 +4509,24 @@ next:
 done:
 
 # Put a reference to the codes for PRINTF into EAX:
-        
+
         lea    decin,    %eax
 
 # Now copy the number in ECX, which is our answer, into an area of temporary storage where PRINTF will expect to find it:
 
         push   %ecx
-        
+
 # Do the same with EAX -- giving the code for 'decimal integer' -- and then call PRINTF to print the answer:
-        
+
         push   %eax
         call   printf
-        
+
 # The pieces of information we provided to PRINTF are still taking up some temporary storage. They are no longer needed, so make that space available again:
-        
+
         add    $8,       %esp
-        
+
 # Place the number 0 in EAX -- a conventional way of indicating that the program has finished correctly -- and return control to whichever program called this one:
-        
+
         mov    $0,       %eax
         ret
 
@@ -4584,7 +4584,7 @@ done:
 
 
 ```zkl
-// The magic number is 269696, so, starting about its square root, 
+// The magic number is 269696, so, starting about its square root,
 // find the first integer that, when squared, its last six digits are the magic number.
 // The last digits are found with modulo, represented here by the % symbol
 const N=269696; [500..].filter1(fcn(n){ n*n%0d1_000_000 == N })

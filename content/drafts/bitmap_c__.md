@@ -13,12 +13,12 @@ tags = []
 {{collection|Basic bitmap storage}}
 
 
-```cpp>#include <cstddef
-
+```cpp
+#include <cstddef>
 #include <stdexcept>
 
 // CBitmap as found below is a class that represents bitmap images
-// in main memory, alternatively the images could be stored in 
+// in main memory, alternatively the images could be stored in
 // memory in a graphics system (OpenGL, DirectX, ...), but this
 // would not be generic, nor simple.
 

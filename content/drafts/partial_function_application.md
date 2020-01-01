@@ -27,7 +27,7 @@ E.g:
 Note that in the partial application of a parameter, (in the above case param1), other parameters are not explicitly mentioned. This is a recurring feature of partial function application.
 
 
-;Task 
+;Task
 * Create a function fs( f, s ) that takes a function, f( n ), of one value and a sequence of values s.
  Function fs should return an ordered sequence of the result of applying function f to every value of s in turn.
 
@@ -51,7 +51,7 @@ Note that in the partial application of a parameter, (in the above case param1),
 ## Ada
 
 
-Ada allows to define generic functions with generic parameters, which are partially applicable.  
+Ada allows to define generic functions with generic parameters, which are partially applicable.
 
 
 ```Ada
@@ -122,7 +122,7 @@ Output:
 
 ## ALGOL 68
 
-{{trans|Python}} 
+{{trans|Python}}
 {{works with|ALGOL 68|Revision 1 - Requires [[Currying]] extensions to language.}}
 {{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny].}}
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of '''format'''[ted] ''transput''.}}
@@ -138,13 +138,13 @@ PROC fs = (F f, SET set)SET: (
   FOR i FROM LWB set TO UPB set DO out[i]:=f(set[i]) OD;
   out
 );
- 
+
 PROC f1 = (INT value)INT: value * 2,
      f2 = (INT value)INT: value ** 2;
- 
+
 FS fsf1 = fs(f1,),
    fsf2 = fs(f2,);
- 
+
 [4]INT set;
 FORMAT set fmt = $"("n(UPB set-LWB set)(g(0)", ")g(0)")"l$;
 
@@ -188,12 +188,12 @@ on f2(x)
 end f2
 
 on run
-    
+
     tell curry(map)
         set fsf1 to |λ|(f1)
         set fsf2 to |λ|(f2)
     end tell
-    
+
     {fsf1's |λ|({0, 1, 2, 3}), ¬
         fsf2's |λ|({0, 1, 2, 3}), ¬
         fsf1's |λ|({2, 4, 6, 8}), ¬
@@ -228,7 +228,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -256,7 +256,7 @@ end mReturn
 ```bbcbasic
       fsf1 = FNpartial(PROCfs(), FNf1())
       fsf2 = FNpartial(PROCfs(), FNf2())
-      
+
       DIM seq(3)
       PRINT "Calling function fsf1 with sequence 1:"
       seq() = 0, 1, 2, 3 : PROC(fsf1)(seq())
@@ -271,7 +271,7 @@ end mReturn
       seq() = 2, 4, 6, 8 : PROC(fsf2)(seq())
       FOR i% = 0 TO 3 : PRINT seq(i%); : NEXT : PRINT
       END
-      
+
       REM Create a partial function:
       DEF FNpartial(RETURN f1%, RETURN f2%)
       LOCAL f$, p%
@@ -281,7 +281,7 @@ end mReturn
       DIM p% LEN(f$) + 4
       $(p%+4) = f$ : !p% = p%+4
       = p%
-      
+
       REM Replaces the input sequence with the output sequence:
       DEF PROCfs(RETURN f%, seq())
       LOCAL i%
@@ -289,9 +289,9 @@ end mReturn
         seq(i%) = FN(^f%)(seq(i%))
       NEXT
       ENDPROC
-      
+
       DEF FNf1(n) = n * 2
-      
+
       DEF FNf2(n) = n ^ 2
 ```
 
@@ -382,14 +382,14 @@ seq:  (2 4 6 8)
   (* i 2))
 (defun f2 (i)
   (expt i 2))
- 
+
 (defun partial (func &rest args1)
   (lambda (&rest args2)
     (apply func (append args1 args2))))
 
 (setf (symbol-function 'fsf1) (partial #'fs #'f1))
 (setf (symbol-function 'fsf2) (partial #'fs #'f2))
- 
+
 (dolist (seq '((0 1 2 3) (2 4 6 8)))
   (format t
           "~%seq: ~A~%  fsf1 seq: ~A~%  fsf2 seq: ~A"
@@ -400,7 +400,7 @@ seq:  (2 4 6 8)
 ```
 
 
-Output: 
+Output:
 ```txt
 seq: (0 1 2 3)
   fsf1 seq: (0 2 4 6)
@@ -416,8 +416,8 @@ seq: (2 4 6 8)
 
 Nasty hack, but the partial does return a true C function pointer, which is otherwise hard to achieve. (In case you are wondering, no, this is not a good or serious solution.)  Compiled with <code>gcc -Wall -ldl</code>.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <dlfcn.h>
@@ -476,7 +476,10 @@ int main()
 	return 0;
 }
 ```
-output<lang>partial square:
+output:
+
+```txt
+partial square:
 1
 4
 9
@@ -489,12 +492,11 @@ partial double:
 ```
 
 
-
 ## C++
 
-
-```cpp>#include <utility
- // For declval.
+```cpp
+#include <utility>
+// For declval.
 #include <algorithm>
 #include <array>
 #include <iterator>
@@ -513,7 +515,7 @@ struct PApply
     {
     }
 
-    /* 
+    /*
      * The return type of F only gets deduced based on the number of arguments
      * supplied. PApply otherwise has no idea whether f takes 1 or 10 args.
      */
@@ -535,14 +537,14 @@ PApply<F,Arg> papply( F&& f, Arg&& arg )
 template< class F >
 std::array<int,4> fs( F&& f, std::array<int,4> cont )
 {
-    std::transform( std::begin(cont), std::end(cont), std::begin(cont), 
+    std::transform( std::begin(cont), std::end(cont), std::begin(cont),
                     std::forward<F>(f) );
     return cont;
 }
 
 std::ostream& operator << ( std::ostream& out, const std::array<int,4>& c )
 {
-    std::copy( std::begin(c), std::end(c), 
+    std::copy( std::begin(c), std::end(c),
                std::ostream_iterator<int>(out, ", ") );
     return out;
 }
@@ -695,19 +697,19 @@ fsf2, evens: 4, 16, 36, 64
 
 ```ceylon
 shared void run() {
-	
+
 	function fs(Integer f(Integer n), {Integer*} s) => s.map(f);
-	
+
 	function f1(Integer n) => n * 2;
 	function f2(Integer n) => n ^ 2;
-	
+
 	value fsCurried = curry(fs);
 	value fsf1 = fsCurried(f1);
 	value fsf2 = fsCurried(f2);
-	
-	value ints = 0..3; 
+
+	value ints = 0..3;
 	print("fsf1(``ints``) is ``fsf1(ints)`` and fsf2(``ints``) is ``fsf2(ints)``");
-	
+
 	value evens = (2..8).by(2);
 	print("fsf1(``evens``) is ``fsf1(evens)`` and fsf2(``evens``) is ``fsf2(evens)``");
 }
@@ -725,10 +727,10 @@ partial = (f, g) ->
 
 fs = (f, s) -> (f(a) for a in s)
 f1 = (a) -> a * 2
-f2 = (a) -> a * a 
+f2 = (a) -> a * a
 fsf1 = partial(fs, f1)
 fsf2 = partial(fs, f2)
- 
+
 do ->
   for seq in [[0..3], [2,4,6,8]]
     console.log fsf1 seq
@@ -738,7 +740,7 @@ do ->
 
 output
 <lang>
-> coffee partials.coffee 
+> coffee partials.coffee
 [ 0, 2, 4, 6 ]
 [ 0, 1, 4, 9 ]
 [ 4, 8, 12, 16 ]
@@ -863,18 +865,18 @@ ELENA 4.1 :
 import system'collections;
 import system'routines;
 import extensions;
- 
+
 public program()
 {
     var partial := (afs,af => (s => afs(af, s)));
- 
+
     var fs := (f,s => s.selectBy:(x => f(x)).summarize(new ArrayList()).toArray());
     var f1 := (x => x * 2);
     var f2 := (x => x * x);
- 
+
     var fsf1 := partial(fs, f1);
     var fsf2 := partial(fs, f2);
- 
+
     console.printLine(fsf1(new int[]::(2,4,6,8)).toString());
     console.printLine(fsf2(new int[]::(2,4,6,8)).toString())
 }
@@ -1127,12 +1129,12 @@ procedure main()
                [ 2, 4, 6, 8 ] do {
          printf("\ns       := %s\n",list2string(s))
          printf("fsf1(s) := %s\n",list2string(fsf1(s)))
-         printf("fsf2(s) := %s\n",list2string(fsf2(s)))         
+         printf("fsf2(s) := %s\n",list2string(fsf2(s)))
       }
 end
 
 procedure partial(f,g)  #: partial application of f & g
-   @( p := create repeat { 
+   @( p := create repeat {
                   s := (r@&source)[1]  # return r / get argument s
                   r := f(g,s)          # apply f(g,...)
                   }
@@ -1160,8 +1162,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 
 Output:
 ```txt
@@ -1271,7 +1273,7 @@ public class PartialApplication {
 		int[] r = new int[s.length];
 		for (int i = 0; i < s.length; i++)
 			r[i] = f.call(s[i]);
-		return r;		
+		return r;
 	}
 
 	interface SequenceFunction {
@@ -1400,10 +1402,10 @@ public interface PartialApplication<INPUT1, INPUT2, OUTPUT> extends BiFunction<I
 ```
 
 
-Compilation and output for both versions: 
+Compilation and output for both versions:
 ```txt
-$ javac PartialApplication.java  
-$ java PartialApplication                                                      
+$ javac PartialApplication.java
+$ java PartialApplication
 array: [0, 1, 2, 3]
   fsf1(array): [0, 2, 4, 6]
   fsf2(array): [0, 1, 4, 9]
@@ -1442,7 +1444,7 @@ var f1 = function (x) { return x * 2; },
     [
         fsf1([0, 1, 2, 3]),
         fsf2([0, 1, 2, 3]),
-		
+
         fsf1([2, 4, 6, 8]),
         fsf2([2, 4, 6, 8])
     ]
@@ -1696,7 +1698,7 @@ fun main(args: Array<String>) {
   {{add 1 2} 3}   -> 6
   {{{add 1} 2} 3} -> 6
 
-3) application: 
+3) application:
 {def fs {lambda {:f} map :f}}
 {def f1 {lambda {:x} {* :x 2}}}
 {def f2 {lambda {:x} {pow :x 2}}}
@@ -1704,13 +1706,13 @@ fun main(args: Array<String>) {
 {def fsf2 {fs f2}}
 
 {{fsf1} 0 1 2 3}
-{{fsf2} 0 1 2 3} 
+{{fsf2} 0 1 2 3}
 {{fsf1} 2 4 6 8}
 {{fsf2} 2 4 6 8}
 
 Output:
 0 2 4 6
-0 1 4 9 
+0 1 4 9
 4 8 12 16
 4 16 36 64
 
@@ -1991,40 +1993,40 @@ module Partial
     {
         $[f(x)| x in s]
     }
-    
+
     f1 (x : int) : int
     {
         x * 2
     }
-    
+
     f2 (x : int) : int
     {
         x * x
     }
-    
+
     curry[T, U, V] (f : T * U -> V, x : T) : U -> V
     {
         f(x, _)
     }
-    
+
     // curryr() isn't actually used in this task, I just include it for symmetry
     curryr[T, U, V] (f : T * U -> V, x : U) : T -> V
     {
         f(_, x)
     }
-    
+
     Main() : void
     {
         def fsf1 = curry(fs, f1);
         def fsf2 = curry(fs, f2);
         def test1 = $[0 .. 3];
         def test2 = $[x | x in [2 .. 8], x % 2 == 0];
-        
+
         WriteLine (fsf1(test1));
         WriteLine (fsf1(test2));
         WriteLine (fsf2(test1));
         WriteLine (fsf2(test2));
-        
+
     }
 }
 ```
@@ -2036,7 +2038,7 @@ module Partial
 OCaml functions are curried. i.e. All functions actually take exactly one argument. Functions of multiple arguments are simply functions that take the first argument, which returns another function to take the remaining arguments, etc. Therefore, partial function application is trivial. Not giving a multi-argument function all of its arguments will simply return a function that takes the remaining arguments.
 
 ```ocaml
-# 
+#
 let fs f s = List.map f s
 let f1 value = value * 2
 let f2 value = value * value
@@ -2097,7 +2099,9 @@ val fsf2 : int list -> int list = <fun>
 
 Much like Haskell and ML, not giving a multi-argument function all of its arguments returns a function that will accept the rest.
 
-```c>#include <order/interpreter.h
+```c
+#include <order/interpreter.h>
+```
 
 
 #define ORDER_PP_DEF_8fs ORDER_PP_FN( 8fn(8F, 8S, 8seq_map(8F, 8S)) )
@@ -2150,7 +2154,7 @@ PARI can do true partial function application, along the lines of [[#C|C]]; see 
 Note: this is written according to my understanding of the task spec and the discussion page; it doesn't seem a consensus was reached regarding what counts as a "partial" yet.
 
 ```Perl
-sub fs(&) { 
+sub fs(&) {
         my $func = shift;
         sub { map $func->($_), @_ }
 }
@@ -2170,7 +2174,7 @@ print "fs_double(@s): @{[ $fs_double->(@s) ]}\n";
 print "fs_square(@s): @{[ $fs_square->(@s) ]}\n";
 ```
 
-Output: 
+Output:
 ```txt
 fs_double(0 1 2 3): 0 2 4 6
 fs_square(0 1 2 3): 0 1 4 9
@@ -2187,13 +2191,13 @@ All Code objects have the .assuming method, which partially applies its argument
 
 ```perl6
 sub fs ( Code $f, @s ) { @s.map: { .$f } }
- 
+
 sub f1 ( $n ) { $n *  2 }
 sub f2 ( $n ) { $n ** 2 }
- 
+
 my &fsf1 := &fs.assuming(&f1);
 my &fsf2 := &fs.assuming(&f2);
- 
+
 for [1..3], [2, 4 ... 8] X &fsf1, &fsf2 -> ($s, $f) {
     say $f.($s);
 }
@@ -2583,14 +2587,14 @@ f2:= [ :x | x * x ].
 fsf1 := partial value: fs value: f1.
 fsf2 := partial value: fs value: f2.
 
-fsf1 value: (0 to: 3). 
+fsf1 value: (0 to: 3).
 " #(0 2 4 6)"
-fsf2 value: (0 to: 3). 
-" #(0 1 4 9)" 
+fsf2 value: (0 to: 3).
+" #(0 1 4 9)"
 
-fsf1 value: #(2 4 6 8). 
-" #(4 8 12 16)" 
-fsf2 value: #(2 4 6 8). 
+fsf1 value: #(2 4 6 8).
+" #(4 8 12 16)"
+fsf2 value: #(2 4 6 8).
 " #(4 16 36 64)"
 
 ```
@@ -2674,7 +2678,7 @@ $ txr -e "(progn
   (defun f1 (num) (* 2 num))
   (defun f2 (num) (* num num))
   (defvar fsf1 (op fs f1))  ;; pointless: can just be (defun fsf1 (seq) (fs f1 seq)) !!!
-  (defvar fsf2 (op fs f2)) 
+  (defvar fsf2 (op fs f2))
 
   (print [fs fsf1 '((0 1 2 3) (2 4 6 8))]) (put-line \"\")
   (print [fs fsf2 '((0 1 2 3) (2 4 6 8))]) (put-line \"\"))"

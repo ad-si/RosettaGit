@@ -50,8 +50,8 @@ TODO: pick an example from a reputable source, and bring the algorithm descripti
 
 {{trans|Kotlin}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 typedef struct {
@@ -75,7 +75,7 @@ double vabs(vector v) {
 }
 
 vector mulAdd(vector v1, vector v2, double x1, double x2) {
-    return add(mul(v1, x1), mul(v2, x2)); 
+    return add(mul(v1, x1), mul(v2, x2));
 }
 
 void vecAsStr(char buffer[], vector v) {
@@ -86,7 +86,7 @@ void rotate(vector i, vector j, double alpha, vector ps[]) {
     ps[0] = mulAdd(i, j, cos(alpha), sin(alpha));
     ps[1] = mulAdd(i, j, -sin(alpha), cos(alpha));
 }
- 
+
 void orbitalStateVectors(
     double semimajorAxis, double eccentricity, double inclination,
     double longitudeOfAscendingNode, double argumentOfPeriapsis,
@@ -145,8 +145,8 @@ Speed    : (-0.55277084096044382, 0.95742708317976177, 0)
 
 {{trans|C#}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <tuple>
 
 class Vector {
@@ -560,55 +560,55 @@ Speed    : (-0.5527708409604438, 0.9574270831797618, 0)
 public class OrbitalElements {
     private static class Vector {
         private double x, y, z;
- 
+
         public Vector(double x, double y, double z) {
             this.x = x;
             this.y = y;
             this.z = z;
         }
- 
+
         public Vector plus(Vector rhs) {
             return new Vector(x + rhs.x, y + rhs.y, z + rhs.z);
         }
- 
+
         public Vector times(double s) {
             return new Vector(s * x, s * y, s * z);
         }
- 
+
         public Vector div(double d) {
             return new Vector(x / d, y / d, z / d);
         }
- 
+
         public double abs() {
             return Math.sqrt(x * x + y * y + z * z);
         }
- 
+
         @Override
         public String toString() {
             return String.format("(%.16f, %.16f, %.16f)", x, y, z);
         }
     }
- 
+
     private static Vector mulAdd(Vector v1, Double x1, Vector v2, Double x2) {
         return v1.times(x1).plus(v2.times(x2));
     }
- 
+
     private static Vector[] rotate(Vector i, Vector j, double alpha) {
         return new Vector[]{
             mulAdd(i, Math.cos(alpha), j, Math.sin(alpha)),
             mulAdd(i, -Math.sin(alpha), j, Math.cos(alpha))
         };
     }
- 
+
     private static Vector[] orbitalStateVectors(
-        double semimajorAxis, double eccentricity, 
-        double inclination, double longitudeOfAscendingNode, 
+        double semimajorAxis, double eccentricity,
+        double inclination, double longitudeOfAscendingNode,
         double argumentOfPeriapsis, double trueAnomaly
     ) {
         Vector i = new Vector(1, 0, 0);
         Vector j = new Vector(0, 1, 0);
         Vector k = new Vector(0, 0, 1);
- 
+
         Vector[] p = rotate(i, j, longitudeOfAscendingNode);
         i = p[0];
         j = p[1];
@@ -617,7 +617,7 @@ public class OrbitalElements {
         p = rotate(i, j, argumentOfPeriapsis);
         i = p[0];
         j = p[1];
- 
+
         double l = (eccentricity == 1.0) ? 2.0 : 1.0 - eccentricity * eccentricity;
         l *= semimajorAxis;
         double c = Math.cos(trueAnomaly);
@@ -628,10 +628,10 @@ public class OrbitalElements {
         Vector speed = mulAdd(i, rprime * c - r * s, j, rprime * s + r * c);
         speed = speed.div(speed.abs());
         speed = speed.times(Math.sqrt(2.0 / r - 1.0 / semimajorAxis));
- 
+
         return new Vector[]{position, speed};
     }
- 
+
     public static void main(String[] args) {
         Vector[] ps = orbitalStateVectors(1.0, 0.1, 0.0, 355.0 / (113.0 * 6.0), 0.0, 0.0);
         System.out.printf("Position : %s\n", ps[0]);
@@ -658,9 +658,9 @@ Speed : (-0.5527708409604438, 0.9574270831797618, 0.0000000000000000)
 // version 1.1.4-3
 
 class Vector(val x: Double, val y: Double, val z: Double) {
- 
+
     operator fun plus(other: Vector) = Vector(x + other.x, y + other.y, z + other.z)
-    
+
     operator fun times(m: Double) = Vector(x * m, y * m, z * m)
 
     operator fun div(d: Double) = this * (1.0 / d)
@@ -684,7 +684,7 @@ fun orbitalStateVectors(
 
     fun mulAdd(v1: Vector, x1: Double, v2: Vector, x2: Double) = v1 * x1 + v2 * x2
 
-    fun rotate(i: Vector, j: Vector, alpha: Double) = 
+    fun rotate(i: Vector, j: Vector, alpha: Double) =
         Pair(mulAdd(i, +Math.cos(alpha), j, Math.sin(alpha)),
              mulAdd(i, -Math.sin(alpha), j, Math.cos(alpha)))
 
@@ -715,7 +715,7 @@ fun main(args: Array<String>) {
         longitudeOfAscendingNode = 355.0 / (113.0 * 6.0),
         argumentOfPeriapsis = 0.0,
         trueAnomaly = 0.0
-    ) 
+    )
     println("Position : $position")
     println("Speed    : $speed")
 }
@@ -877,7 +877,7 @@ sub orbital_state_vectors {
     ) = @_[0..5];
 
     my ($i, $j, $k) = (V(1,0,0), V(0,1,0), V(0,0,1));
-    
+
     sub rotate {
         my $alpha = shift;
         @_[0,1] = (
@@ -901,7 +901,7 @@ sub orbital_state_vectors {
 
     my $position = $r*($c*$i + $s*$j);
 
-    my $speed = 
+    my $speed =
     ($rprime*$c - $r*$s)*$i + ($rprime*$s + $r*$c)*$j;
     $speed /= abs($speed);
     $speed *= sqrt(2/$r - 1/$semimajor_axis);
@@ -977,7 +977,7 @@ sub orbital-state-vectors(
 
     my $position = r*($c*$i + $s*$j);
 
-    my $speed = 
+    my $speed =
     (rprime*$c - r*$s)*$i + (rprime*$s + r*$c)*$j;
     $speed /= sqrt($speed**2);
     $speed *= sqrt(2/r - 1/$semimajor-axis);
@@ -1008,7 +1008,7 @@ say orbital-state-vectors
 ```Phix
 function vabs(sequence v)
     return sqrt(sum(sq_power(v,2)))
-end function 
+end function
 
 function mulAdd(sequence v1, atom x1, sequence v2, atom x2)
     return sq_add(sq_mul(v1,x1),sq_mul(v2,x2))
@@ -1024,11 +1024,11 @@ procedure orbitalStateVectors(atom semimajorAxis, eccentricity, inclination, lon
     sequence i = {1, 0, 0},
              j = {0, 1, 0},
              k = {0, 0, 1}
- 
+
     {i,j} = rotate(i, j, longitudeOfAscendingNode)
     {j} = rotate(j, k, inclination)
     {i,j} = rotate(i, j, argumentOfPeriapsis)
- 
+
     atom l = iff(eccentricity=1?2:1-eccentricity*eccentricity)*semimajorAxis,
          c = cos(trueAnomaly),
          s = sin(trueAnomaly),
@@ -1038,11 +1038,11 @@ procedure orbitalStateVectors(atom semimajorAxis, eccentricity, inclination, lon
              speed = mulAdd(i, rprime*c-r*s, j, rprime*s+r*c)
     speed = sq_div(speed,vabs(speed))
     speed = sq_mul(speed,sqrt(2/r - 1/semimajorAxis))
- 
+
     puts(1,"Position :") ?posn
     puts(1,"Speed    :") ?speed
 end procedure
- 
+
 orbitalStateVectors(1.0, 0.1, 0.0, 355.0 / (113.0 * 6.0), 0.0, 0.0)
 ```
 
@@ -1289,7 +1289,7 @@ Speed    : (-0.5527708409604436,0.9574270831797613,0)
 
 ### version 2
 
-Re-coding of REXX version 1,   but with greater decimal digits precision.  
+Re-coding of REXX version 1,   but with greater decimal digits precision.
 
 ```rexx
 /*REXX pgm converts orbital elements ──► orbital state vectors  (angles are in radians).*/
@@ -1368,7 +1368,7 @@ sqrt: procedure; arg x;  if x=0  then return 0;  d= digits();  numeric form; m.=
       argument of periapsis:  0.785398163397448309
                true anomaly:  0
                    position: ( 0.237771283982206547,  0.860960261697715834,  0.110509023572075562)
-                      speed: (-1.061933017480060047,  0.275850020569249507,  0.135747024865598167) 
+                      speed: (-1.061933017480060047,  0.275850020569249507,  0.135747024865598167)
 
 ```
 
@@ -1633,10 +1633,10 @@ Position: 0.779423	0.450000	0.000000; Speed: -0.552771	0.957427	0.000000
 {{trans|Perl}}
 
 ```zkl
-fcn orbital_state_vectors(semimajor_axis, eccentricity, inclination, 
+fcn orbital_state_vectors(semimajor_axis, eccentricity, inclination,
         longitude_of_ascending_node, argument_of_periapsis, true_anomaly){
    i,j,k:=T(1.0, 0.0, 0.0), T(0.0, 1.0, 0.0), T(0.0, 0.0, 1.0);
- 
+
    vdot:=fcn(c,vector){ vector.apply('*,c) };
    vsum:=fcn(v1,v2)   { v1.zipWith('+,v2)  };
    rotate:='wrap(alpha, a,b){  // a&b are vectors: (x,y,z)
@@ -1646,21 +1646,21 @@ fcn orbital_state_vectors(semimajor_axis, eccentricity, inclination,
    i,j=rotate(longitude_of_ascending_node,i,j);
    j,k=rotate(inclination,		  j,k);
    i,j=rotate(argument_of_periapsis,      i,j);
- 
+
    l:=if(eccentricity==1)   # PARABOLIC CASE
         semimajor_axis*2  else
         semimajor_axis*(1.0 - eccentricity.pow(2));;
    c,s,r:=true_anomaly.cos(), true_anomaly.sin(), l/(eccentricity*c + 1);
    rprime:=s*r.pow(2)/l;
- 
+
    position:=vdot(r,vsum(vdot(c,i), vdot(s,j)));  #r*(c*i + s*j)
- 
+
    speed:=vsum(vdot(rprime*c - r*s,i), vdot(rprime*s + r*c,j)); #(rprime*c - r*s)*i + (rprime*s + r*c)*j
    z:=speed.zipWith('*,speed).sum(0.0).sqrt();  #sqrt(speed**2)
    speed=vdot(1.0/z,speed);			#speed/z
 
    speed=vdot((2.0/r - 1.0/semimajor_axis).sqrt(),speed); #speed*sqrt(2/r - 1/semimajor_axis)
- 
+
    return(position,speed);
 }
 ```

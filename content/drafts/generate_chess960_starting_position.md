@@ -131,12 +131,12 @@ void swap(int i,int j){
 
 void generateFirstRank(){
 	 int kPos,qPos,bPos1,bPos2,rPos1,rPos2,nPos1,nPos2,i;
-	 
+
 	 for(i=0;i<8;i++){
 		 rank[i] = 'e';
 		 pos[i] = i;
 	 }
-		 
+
 	 do{
 		 kPos = rand()%8;
 		 rPos1 = rand()%8;
@@ -146,11 +146,11 @@ void generateFirstRank(){
 	 rank[pos[rPos1]] = 'R';
 	 rank[pos[kPos]] = 'K';
 	 rank[pos[rPos2]] = 'R';
-	 
+
 	 swap(rPos1,7);
 	 swap(rPos2,6);
 	 swap(kPos,5);
-	 
+
 	 do{
 		 bPos1 = rand()%5;
 		 bPos2 = rand()%5;
@@ -158,28 +158,28 @@ void generateFirstRank(){
 
 	 rank[pos[bPos1]] = 'B';
 	 rank[pos[bPos2]] = 'B';
-	 
+
 	 swap(bPos1,4);
 	 swap(bPos2,3);
-	 
+
 	 do{
 		 qPos = rand()%3;
 		 nPos1 = rand()%3;
 	 }while(qPos==nPos1);
-	 
+
 	 rank[pos[qPos]] = 'Q';
 	 rank[pos[nPos1]] = 'N';
-	 
+
 	 for(i=0;i<8;i++)
 		 if(rank[i]=='e'){
 			 rank[i] = 'N';
 			 break;
-		 }		
+		 }
 }
 
 void printRank(){
 	int i;
-	
+
 	#ifdef _WIN32
 		printf("%s\n",rank);
 	#else
@@ -205,14 +205,14 @@ void printRank(){
 int main()
 {
 	int i;
-	
+
 	srand((unsigned)time(NULL));
-	
+
 	for(i=0;i<9;i++){
 		generateFirstRank();
 		printRank();
 	}
-	
+
 	return 0;
 }
 
@@ -251,8 +251,8 @@ QNRBBNKR
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <time.h>
 using namespace std;
@@ -468,12 +468,12 @@ QBNNBRKR
             (> (list-index K p) (list-index R p))
             (> (list-index K (reverse p)) (list-index R (reverse p)))
             (even? (+ (list-index B p) (list-index B (reverse p))))))
-            
+
 ;; random shuffle current position until a legal one is found
-(define (c960) 
-	(set! *pos* (shuffle *pos*)) 
-	(if (legal-pos *pos*) 
-		(map unicode-piece *pos*)  (c960)))  
+(define (c960)
+	(set! *pos* (shuffle *pos*))
+	(if (legal-pos *pos*)
+		(map unicode-piece *pos*)  (c960)))
 
 ```
 
@@ -506,7 +506,7 @@ QBNNBRKR
 defmodule Chess960 do
   @pieces   ~w(♔ ♕ ♘ ♘ ♗ ♗ ♖ ♖)             # ~w(K Q N N B B R R)
   @regexes  [~r/♗(..)*♗/, ~r/♖.*♔.*♖/]        # [~r/B(..)*B/, ~r/R.*K.*R/]
-  
+
   def shuffle do
     row = Enum.shuffle(@pieces) |> Enum.join
     if Enum.all?(@regexes, &Regex.match?(&1, row)), do: row, else: shuffle
@@ -563,9 +563,9 @@ Enum.each(1..5, fn _ -> IO.puts Chess960.construct end)
 ```elixir
 defmodule Chess960 do
   @krn  ~w(NNRKR NRNKR NRKNR NRKRN RNNKR RNKNR RNKRN RKNNR RKNRN RKRNN)
-  
+
   def start_position, do: start_position(:rand.uniform(960)-1)
-  
+
   def start_position(id) do
     pos = List.duplicate(nil, 8)
     q = div(id, 4)
@@ -718,7 +718,7 @@ This implementation simply iterates through all 960 positions.
 ```fortran
 program chess960
     implicit none
-    
+
     integer, pointer  :: a,b,c,d,e,f,g,h
     integer, target   :: p(8)
     a => p(1)
@@ -753,7 +753,7 @@ program chess960
             end do r2
         end do r1
     end do king
-    
+
 contains
 
     logical function skip_pos(i, n)
@@ -771,7 +771,7 @@ contains
         end do
         write(*,'(a)') position
     end subroutine write_position
-    
+
 end program chess960
 
 ```
@@ -805,7 +805,7 @@ Randomize Timer
 For i As Byte = 1 To 10
     Dim As String inicio = "RKR", pieza = "QNN"
     Dim As Byte posic
-    
+
     For n As Byte = 1 To Len(pieza)
         posic = Int(Rnd*(Len(inicio) + 1)) + 1
         inicio = Left(inicio, posic-1) + _
@@ -998,8 +998,8 @@ public class Chess960{
 	public static List<Character> generateFirstRank(){
 		do{
 			Collections.shuffle(pieces);
-		}while(!check(pieces.toString().replaceAll("[^\\p{Upper}]", ""))); //List.toString adds some human stuff, remove that 
-		
+		}while(!check(pieces.toString().replaceAll("[^\\p{Upper}]", ""))); //List.toString adds some human stuff, remove that
+
 		return pieces;
 	}
 
@@ -1226,11 +1226,11 @@ Generates all possible initial conditions, filters for validity, and chooses a r
 Print[StringJoin[
    RandomChoice[
     Select[Union[
-      Permutations[{"\[WhiteKing]", "\[WhiteQueen]", "\[WhiteRook]", 
-        "\[WhiteRook]", "\[WhiteBishop]", "\[WhiteBishop]", 
-        "\[WhiteKnight]", "\[WhiteKnight]"}]], 
-     MatchQ[#, {___, "\[WhiteRook]", ___, "\[WhiteKing]", ___, 
-         "\[WhiteRook]", ___}] && 
+      Permutations[{"\[WhiteKing]", "\[WhiteQueen]", "\[WhiteRook]",
+        "\[WhiteRook]", "\[WhiteBishop]", "\[WhiteBishop]",
+        "\[WhiteKnight]", "\[WhiteKnight]"}]],
+     MatchQ[#, {___, "\[WhiteRook]", ___, "\[WhiteKing]", ___,
+         "\[WhiteRook]", ___}] &&
        OddQ[Subtract @@ Flatten[Position[#, "\[WhiteBishop]"]]] &]]]];
 ```
 
@@ -1245,21 +1245,21 @@ Print[StringJoin[
   function : Main(args : String[]) ~ Nil {
     Generate(10);
   }
-  
+
   function : Generate(c : Int) ~ Nil {
     for(x := 0; x < c; x += 1;) {
       StartPos()->PrintLine();
     };
   }
-  
+
   function : StartPos() ~ String {
     p := Char->New[8];
-    
+
     # bishops
     b1 : Int; b2 : Int;
     while(true) {
-      b1 := GetPosition(); b2 := GetPosition(); 
-      
+      b1 := GetPosition(); b2 := GetPosition();
+
       b1c := b1 and 1; b2c := b2 and 1;
       c := b1c = 0 & b2c <> 0;
       if(c) {
@@ -1271,14 +1271,14 @@ Print[StringJoin[
     # queen, knight, knight
     q := false;
     for(x := 0; x < 3; x += 1;) {
-      do { 
-        b1 := GetPosition(); 
+      do {
+        b1 := GetPosition();
       } while( p[b1] <> '\0');
-      
-      if(<>q) { 
-        p[b1] := 0x2655; q := true; 
+
+      if(<>q) {
+        p[b1] := 0x2655; q := true;
       }
-      else { 
+      else {
         p[b1] := 0x2658;
       };
     };
@@ -1294,11 +1294,11 @@ Print[StringJoin[
         a += 1;
       };
 
-      if(<>q) { 
-        p[a] := 0x2656; q := true; 
+      if(<>q) {
+        p[a] := 0x2656; q := true;
       }
-      else { 
-        p[a] := 0x2654; q := false; 
+      else {
+        p[a] := 0x2654; q := false;
       };
     };
 
@@ -1595,7 +1595,7 @@ function Get-RandomChess960Start
     ForEach ( $B1 in       0..3 ) {
     ForEach ( $B2 in       0..3 ) {
         $BB = $B1 * 2 + ( $B1 -lt $B2 )
-        $BW = $B2 * 2 
+        $BW = $B2 * 2
         $Start = [System.Collections.ArrayList]( '♖', '♔', '♖' )
         $Start.Insert( $Q , '♕' )
         $Start.Insert( $N1, '♘' )
@@ -1641,7 +1641,7 @@ This uses indexing rather than regexps. Rooks and bishops are in upper and lower
 >>> pieces = 'KQRrBbNN'
 >>> starts = {''.join(p).upper() for p in permutations(pieces)
                      if p.index('B') % 2 != p.index('b') % 2 		# Bishop constraint
-                     and ( p.index('r') < p.index('K') < p.index('R')	# King constraint	
+                     and ( p.index('r') < p.index('K') < p.index('R')	# King constraint
                            or p.index('R') < p.index('K') < p.index('r') ) }
 >>> len(starts)
 960
@@ -1722,7 +1722,7 @@ def generate960():
                 s2.insert(pos, piece)
                 starts2.add(tuple(s2))
         starts = starts2
-    
+
     # For each of the previous starting positions insert the bishops in their 16 positions
     starts2 = set()
     for s in starts:
@@ -1733,7 +1733,7 @@ def generate960():
                 s3 = s2[::]
                 s3.insert(bishpos2, 'B')
                 starts2.add(tuple(s3))
-                
+
     return  list(starts2)
 
 gen = generate960()
@@ -1788,7 +1788,7 @@ cat(convert_to_unicode(generateFirstRank()), "\n")
 ♘♗♘♖♗♕♔♖
 
 ```
- 
+
 
 ## Racket
 
@@ -1814,7 +1814,7 @@ Constructive:
      r]))
 
 (define (chess960-start-position)
-  (define v (make-vector 8 #f))  
+  (define v (make-vector 8 #f))
   ;; Kings and Rooks
   (let ((k (find/set!-random-slot v (white 'K) 6 add1)))
     (find/set!-random-slot v (white 'R) k)
@@ -1930,8 +1930,8 @@ x._=1                                  /*define this position as being found. */
 #=#+1                                  /*bump the # of unique positions found,*/   /*▒*/
 if #==960  then leave                                                              /*▒*/
 end   /*t ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒*/
-                                                                                   
-say # 'unique starting positions found after '   t   "generations."                
+
+say # 'unique starting positions found after '   t   "generations."
                                        /*stick a fork in it,  we're all done. */         /**/
 ```
 
@@ -1976,7 +1976,7 @@ Do r1=1 To 6
       poss=space(translate('12345678',' ',r1||kk||r2),0)
       Call rest
       End
-   
+
  End
   End
 say cnt.1 'solutions'
@@ -2048,7 +2048,7 @@ Translation of Tcl.
 ```ruby
 pieces = %i(♔ ♕ ♘ ♘ ♗ ♗ ♖ ♖)
 regexes = [/♗(..)*♗/, /♖.*♔.*♖/]
-row = pieces.shuffle.join until regexes.all?{|re| re.match(row)} 
+row = pieces.shuffle.join until regexes.all?{|re| re.match(row)}
 puts row
 ```
 

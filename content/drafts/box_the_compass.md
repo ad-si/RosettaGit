@@ -13,7 +13,7 @@ tags = []
 {{task}}Avast me hearties!
 
 There be many a [http://talklikeapirate.com/wordpress/how-to/ land lubber] that knows [https://dictionary.cambridge.org/dictionary/english/naught naught] of the pirate ways and gives direction by degree!
-They know not how to [[wp:Boxing the compass|box the compass]]! 
+They know not how to [[wp:Boxing the compass|box the compass]]!
 
 
 ;Task description:
@@ -402,7 +402,7 @@ OS X Yosemite onwards (uses Foundation classes for record handling etc)
 {{Trans|JavaScript}}
 (ES6 version)
 
-Functional composition, allowing for additional languages, and different numbers of compass points – see the test section) 
+Functional composition, allowing for additional languages, and different numbers of compass points – see the test section)
 
 
 ```AppleScript
@@ -440,7 +440,7 @@ on compassKeys(intDepth)
     -- with one peak of ambiguity to the left,
     -- and one to the right  (encoded by the commas in this list):
     set urCompass to ["N", "S", "N"]
-    
+
     -- Necessity drives recursive subdivision of broader directions, shrinking
     -- boxes down to a workable level of precision:
     script subdivision
@@ -451,7 +451,7 @@ on compassKeys(intDepth)
                 script subKeys
                     on |λ|(a, x, i, xs)
                         -- Borders between N and S engender E and W.
-                        -- further subdivisions (boxes) 
+                        -- further subdivisions (boxes)
                         -- concatenate their two parent keys.
                         if i > 1 then
                             cond(N = intDepth, ¬
@@ -462,12 +462,12 @@ on compassKeys(intDepth)
                         end if
                     end |λ|
                 end script
-                
+
                 |λ|(foldl(subKeys, {}, lstCompass), N - 1)
             end if
         end |λ|
     end script
-    
+
     tell subdivision to items 1 thru -2 of |λ|(urCompass, intDepth)
 end compassKeys
 
@@ -482,14 +482,14 @@ end pointIndex
 -- pointNames :: Int -> Int -> [String]
 on pointNames(precision, iBox)
     set k to item iBox of compassKeys(precision)
-    
+
     script translation
         on |λ|(recLang)
             set maybeTrans to keyValue(recLang, k)
             set strBrief to cond(maybeTrans is missing value, k, maybeTrans)
-            
+
             set recExpand to keyValue(recLang, "expansions")
-            
+
             if recExpand is not missing value then
                 script expand
                     on |λ|(c)
@@ -505,7 +505,7 @@ on pointNames(precision, iBox)
             end if
         end |λ|
     end script
-    
+
     map(translation, plstLangs)
 end pointNames
 
@@ -538,13 +538,13 @@ on compassTable(precision, xs)
         set rightAligned to curry(alignRight)
         set leftAligned to curry(alignLeft)
         set join to curry(my intercalate)
-        
+
         -- INDEX COLUMN
         set lstIndex to map(|λ|(precision) of curry(pointIndex), xs)
         set lstStrIndex to map(show, lstIndex)
         set nIndexWidth to maxLen(lstStrIndex)
         set colIndex to map(|λ|(nIndexWidth + intPad) of rightAligned, lstStrIndex)
-        
+
         -- ANGLES COLUMN
         script degreeFormat
             on |λ|(x)
@@ -555,25 +555,25 @@ on compassTable(precision, xs)
         set lstAngles to map(degreeFormat, xs)
         set nAngleWidth to maxLen(lstAngles) + intPad
         set colAngles to map(|λ|(nAngleWidth) of rightAligned, lstAngles)
-        
+
         -- NAMES COLUMNS
         script precisionNames
             on |λ|(iBox)
                 pointNames(precision, iBox)
             end |λ|
         end script
-        
+
         set lstTrans to transpose(map(precisionNames, lstIndex))
         set lstTransWidths to map(maxLen, lstTrans)
-        
+
         script spacedNames
             on |λ|(lstLang, i)
                 map(|λ|((item i of lstTransWidths) + 2) of leftAligned, lstLang)
             end |λ|
         end script
-        
+
         set colsTrans to map(spacedNames, lstTrans)
-        
+
         -- TABLE
         intercalate(linefeed, ¬
             map(|λ|("") of join, ¬
@@ -591,13 +591,13 @@ on run
         185.62, 185.63, 202.5, 219.37, 219.38, 236.25, 253.12, 253.13, ¬
         270.0, 286.87, 286.88, 303.75, 320.62, 320.63, 337.5, 354.37, ¬
         354.38]
-    
+
     --   If we supply other precisions, like 4 or 6, (2^n -> 16 or 64 boxes)
     --    the bearings will be divided amongst smaller or larger numbers of boxes,
     --    either using name translations retrieved by the generic hash
     --    or using the keys of the hash itself (combined with any expansions)
     --    to substitute for missing names for very finely divided boxes.
-    
+
     compassTable(5, xs) -- // 2^5  -> 32 boxes
 end run
 
@@ -712,7 +712,7 @@ on map(f, xs)
     end tell
 end map
 
--- maximumBy :: (a -> a -> Ordering) -> [a] -> a 
+-- maximumBy :: (a -> a -> Ordering) -> [a] -> a
 on maximumBy(f, xs)
     set cmp to mReturn(f)
     script max
@@ -724,7 +724,7 @@ on maximumBy(f, xs)
             end if
         end |λ|
     end script
-    
+
     foldl(max, missing value, xs)
 end maximumBy
 
@@ -745,7 +745,7 @@ on replicate(N, a)
     set out to {}
     if N < 1 then return out
     set dbl to {a}
-    
+
     repeat while (N > 1)
         if (N mod 2) > 0 then set out to out & dbl
         set N to (N div 2)
@@ -771,11 +771,11 @@ on transpose(xss)
                     item iCol of xs
                 end |λ|
             end script
-            
+
             map(row, xss)
         end |λ|
     end script
-    
+
     map(column, item 1 of xss)
 end transpose
 
@@ -804,39 +804,39 @@ end toUpper
 {{Out}}
 
 ```txt
-   1    0.00°  North               北     
-   2   16.87°  North by east       北微东   
-   3   16.88°  North-northeast     东北偏北  
-   4   33.75°  Northeast by north  东北微北  
-   5   50.62°  Northeast           东北    
-   6   50.63°  Northeast by east   东北微东  
-   7   67.50°  East-northeast      东北偏东  
-   8   84.37°  East by north       东微北   
-   9   84.38°  East                东     
-  10  101.25°  East by south       东微南   
-  11  118.12°  East-southeast      东南偏东  
-  12  118.13°  Southeast by east   东南微东  
-  13  135.00°  Southeast           东南    
-  14  151.87°  Southeast by south  东南微南  
-  15  151.88°  South-southeast     东南偏南  
-  16  168.75°  South by east       南微东   
-  17  185.62°  South               南     
-  18  185.63°  South by west       南微西   
-  19  202.50°  South-southwest     西南偏南  
-  20  219.37°  Southwest by south  西南微南  
-  21  219.38°  Southwest           西南    
-  22  236.25°  Southwest by west   西南微西  
-  23  253.12°  West-southwest      西南偏西  
-  24  253.13°  West by south       西微南   
-  25  270.00°  West                西     
-  26  286.87°  West by north       西微北   
-  27  286.88°  West-northwest      西北偏西  
-  28  303.75°  Northwest by west   西北微西  
-  29  320.62°  Northwest           西北    
-  30  320.63°  Northwest by north  西北微北  
-  31  337.50°  North-northwest     西北偏北  
-  32  354.37°  North by west       北微西   
-   1  354.38°  North               北     
+   1    0.00°  North               北
+   2   16.87°  North by east       北微东
+   3   16.88°  North-northeast     东北偏北
+   4   33.75°  Northeast by north  东北微北
+   5   50.62°  Northeast           东北
+   6   50.63°  Northeast by east   东北微东
+   7   67.50°  East-northeast      东北偏东
+   8   84.37°  East by north       东微北
+   9   84.38°  East                东
+  10  101.25°  East by south       东微南
+  11  118.12°  East-southeast      东南偏东
+  12  118.13°  Southeast by east   东南微东
+  13  135.00°  Southeast           东南
+  14  151.87°  Southeast by south  东南微南
+  15  151.88°  South-southeast     东南偏南
+  16  168.75°  South by east       南微东
+  17  185.62°  South               南
+  18  185.63°  South by west       南微西
+  19  202.50°  South-southwest     西南偏南
+  20  219.37°  Southwest by south  西南微南
+  21  219.38°  Southwest           西南
+  22  236.25°  Southwest by west   西南微西
+  23  253.12°  West-southwest      西南偏西
+  24  253.13°  West by south       西微南
+  25  270.00°  West                西
+  26  286.87°  West by north       西微北
+  27  286.88°  West-northwest      西北偏西
+  28  303.75°  Northwest by west   西北微西
+  29  320.62°  Northwest           西北
+  30  320.63°  Northwest by north  西北微北
+  31  337.50°  North-northwest     西北偏北
+  32  354.37°  North by west       北微西
+   1  354.38°  North               北
 ```
 
 
@@ -883,7 +883,7 @@ For n, a in headings
     i := get_Index(a)
     out .= SubStr(" " i, -1) " "
         . SubStr(Build_Name_From_Abbr(get_Abbr_From_Index(i))
-        . "                    ", 1, 24) . SubStr("  " a, -5)  . "`r`n" ; 
+        . "                    ", 1, 24) . SubStr("  " a, -5)  . "`r`n" ;
 }
 clipboard := out
 ```
@@ -956,7 +956,7 @@ EndFunc   ;==>Boxing_the_compass
 ```
 
 
-Output : 
+Output :
 ```txt
 0  : North                : 0
 1  : North by east        : 16.87
@@ -1001,7 +1001,7 @@ Output :
 ```awk
 #!/usr/bin/awk -f
 BEGIN {
-  split("N NbE NNE NEbN NE NEbE ENE EbN E EbS ESE SEbE SE SEbS SSE SbE S SbW SSW SWbS SW SWbW WSW WbS W WbN WNW NWbW NW NWbN NNW NbW",A," "); 
+  split("N NbE NNE NEbN NE NEbE ENE EbN E EbS ESE SEbE SE SEbS SSE SbE S SbW SSW SWbS SW SWbW WSW WbS W WbN WNW NWbW NW NWbN NNW NbW",A," ");
 }
 
 function ceil(x) {
@@ -1010,17 +1010,17 @@ function ceil(x) {
 }
 
 function compassbox(d) {
-    return ceil( ( (d + 360 / 64) % 360) * 32 / 360); 
+    return ceil( ( (d + 360 / 64) % 360) * 32 / 360);
 }
 
-{ 
+{
     box = compassbox($1);
     printf "%6.2f : %2d\t%s\n",$1,box,A[box];
 }
 
 ```
 
-Output: 
+Output:
 
 ```txt
   0.00 :  1	N
@@ -1070,20 +1070,20 @@ Output:
       \ 84.38, 101.25, 118.12, 118.13, 135.0, 151.87, 151.88, 168.75, \
       \ 185.62, 185.63, 202.5, 219.37, 219.38, 236.25, 253.12, 253.13, \
       \ 270.0, 286.87, 286.88, 303.75, 320.62, 320.63, 337.5, 354.37, 354.38
-      
+
       FOR i% = 0 TO 32
         box% = FNcompassbox(bearing(i%), compass$)
         PRINT ; bearing(i%), ; box%, compass$
       NEXT
       END
-      
+
       DEF FNcompassbox(bearing, RETURN box$)
       LOCAL pt%
       pt% = INT(bearing / 360 * 32 + 0.5) MOD 32
       box$ = FNpt(pt%)
       LEFT$(box$,1) = CHR$(ASC(LEFT$(box$,1))-32)
       = pt% + 1
-      
+
       DEF FNpt(pt%)
       LOCAL pt$() : DIM pt$(3)
       IF pt% AND 1 THEN = FNpt((pt% + 1) AND 28) + " by " + \
@@ -1202,8 +1202,8 @@ W>0"tsaE"0"htron yb tsaE"0"tsaehtron-tsaE"0"tsae"v
 Like [[wp:Box the compass|Wikipedia's article]], this program uses indexes to count the headings. There are now 33 headings, from 1 to 33, because 0.0 and 354.38 are different angles. (This differs from the task pseudocode, which mapped the 32 compass points to indexes.)
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -1304,8 +1304,8 @@ Output:
 Using the Boost libraries
 {{libheader|Boost}}
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <boost/array.hpp>
 #include <boost/assign/list_of.hpp>
 #include <boost/format.hpp>
@@ -1336,10 +1336,10 @@ string Build_Name_From_Abbreviation(string a)
     for (int i = 0; i < a.size(); ++i){
         if ((1 == i) && (a[i] != 'b') && (a.size() == 3)) retval += "-";
         switch (a[i]){
-            case 'N' : retval += "north"; break; 
-            case 'S' : retval += "south"; break; 
-            case 'E' : retval += "east";  break; 
-            case 'W' : retval += "west";  break; 
+            case 'N' : retval += "north"; break;
+            case 'S' : retval += "south"; break;
+            case 'E' : retval += "east";  break;
+            case 'W' : retval += "west";  break;
             case 'b' : retval += " by ";  break;
         }
     }
@@ -1418,10 +1418,10 @@ namespace BoxTheCompass
 {
     class Compass
     {
-        string[] cp = new string[] {"North", "North by east", "North-northeast", "Northeast by north", "Northeast","Northeast by east", 
-	    "East-northeast", "East by north", "East", "East by south", "East-southeast", "Southeast by east", "Southeast", 
-            "Southeast by south", "South-southeast", "South by east", "South", "South by west", "South-southwest", "Southwest by south", 
-            "Southwest", "Southwest by west", "West-southwest", "West by south", "West", "West by north", "West-northwest", 
+        string[] cp = new string[] {"North", "North by east", "North-northeast", "Northeast by north", "Northeast","Northeast by east",
+	    "East-northeast", "East by north", "East", "East by south", "East-southeast", "Southeast by east", "Southeast",
+            "Southeast by south", "South-southeast", "South by east", "South", "South by west", "South-southwest", "Southwest by south",
+            "Southwest", "Southwest by west", "West-southwest", "West by south", "West", "West by north", "West-northwest",
             "Northwest by west", "Northwest", "Northwest by north", "North-northwest", "North by west", "North"};
 
         public void compassHeading(float a)
@@ -1435,8 +1435,8 @@ namespace BoxTheCompass
         static void Main(string[] args)
        {
             Compass c = new Compass();
-            float[] degs = new float[] {0.0f, 16.87f, 16.88f, 33.75f, 50.62f, 50.63f, 67.5f, 84.37f, 84.38f, 101.25f, 
-                118.12f, 118.13f, 135.0f, 151.87f, 151.88f, 168.75f, 185.62f, 185.63f, 202.5f, 219.37f, 219.38f, 236.25f, 
+            float[] degs = new float[] {0.0f, 16.87f, 16.88f, 33.75f, 50.62f, 50.63f, 67.5f, 84.37f, 84.38f, 101.25f,
+                118.12f, 118.13f, 135.0f, 151.87f, 151.88f, 168.75f, 185.62f, 185.63f, 202.5f, 219.37f, 219.38f, 236.25f,
                 253.12f, 253.13f, 270.0f, 286.87f, 286.88f, 303.75f, 320.62f, 320.63f, 337.5f, 354.37f, 354.38f};
 
             foreach (float d in degs)
@@ -1499,7 +1499,7 @@ namespace BoxTheCompass
 ```lisp
 (ns boxing-the-compass
   (:use [clojure.string :only [capitalize]]))
- 
+
 (def headings
      (for [i (range 0 (inc 32))]
        (let [heading (* i 11.25)]
@@ -1507,7 +1507,7 @@ namespace BoxTheCompass
 	       1 (+ heading 5.62)
 	       2 (- heading 5.62)
 	       heading))))
- 
+
 (defn angle2compass
   [angle]
   (let [dirs ["N" "NbE" "N-NE" "NEbN" "NE" "NEbE" "E-NE" "EbN"
@@ -1518,7 +1518,7 @@ namespace BoxTheCompass
 	sep  (/ 360 (count dirs))
 	dir  (int (/ (mod (+ angle (/ sep 2)) 360) sep))]
     (capitalize (apply str (map unpack (dirs dir))))))
- 
+
 (print
  (apply str (map-indexed #(format "%2s %-18s %7.2f\n"
 				  (inc (mod %1 32)) (angle2compass %2) %2)
@@ -1851,7 +1851,7 @@ defmodule Box do
     |> Enum.map(fn {s, i} -> {i+1, String.capitalize(s)} end)
     |> Map.new
   end
-  
+
   def compass do
     header = head()
     angles = Enum.map(0..32, fn i -> i * 11.25 + elem({0, 5.62, -5.62}, rem(i, 3)) end)
@@ -2141,7 +2141,7 @@ contains
 
 function compasspoint(h)
   character(18) :: compasspoint
-  character(18) :: points(32) = (/ "North             ", "North by east     ", "North-northeast   ", & 
+  character(18) :: points(32) = (/ "North             ", "North by east     ", "North-northeast   ", &
              "Northeast by north", "Northeast         ", "Northeast by east ", "East-northeast    ", &
              "East by north     ", "East              ", "East by south     ", "East-southeast    ", &
              "Southeast by east ", "Southeast         ", "Southeast by south", "South-southeast   ", &
@@ -2149,7 +2149,7 @@ function compasspoint(h)
              "Southwest by south", "Southwest         ", "Southwest by west ", "West-southwest    ", &
              "West by south     ", "West              ", "West by north     ", "West-northwest    ", &
              "Northwest by west ", "Northwest         ", "Northwest by north", "North-northwest   ", &
-             "North by west     "  /)  
+             "North by west     "  /)
   real, intent(in) :: h
   real :: x
 
@@ -2288,7 +2288,7 @@ Dim fDeg As Float[] = [0.0, 16.87, 16.88, 33.75, 50.62, 50.63, 67.5, 84.37, 84.3
 Dim cHeading As Collection = ["N": "North", "S": "South", "W": "West", "E": "East", "b": "by"]
 Dim sHeading As String[] = ["N", "NbE", "NNE", "NEbE", "NE", "NEbE", "ENE", "EbN", "E", "EbS", "ESE", "SEbE", "SE", "SEbS", "SSE", "SbE", "S", "SbW", "SSW", "SWbS", "SW", "SWbW", "WSW", "WbS", "W", "WbN", "WNW", "NWbW", "NW", "NWbN", "NNW", "NbW"]
 Dim siLoop As Short
-Dim sDirection As String 
+Dim sDirection As String
 Dim fCount, fTemp As Float
 
 For Each fCount In fDeg
@@ -2297,7 +2297,7 @@ For Each fCount In fDeg
     For siLoop = 0 To Len(sHeading[fTemp])
       sDirection &= cHeading[Mid(sHeading[fTemp], siLoop + 1, 1)] & " "
     Next
-  Print "Index=" & Format(fTemp + 1, "#0") & "  " & Format(Str(fCount), "##0.00") & " degrees = " & sDirection 
+  Print "Index=" & Format(fTemp + 1, "#0") & "  " & Format(Str(fCount), "##0.00") & " degrees = " & sDirection
   sDirection = ""
 Next
 
@@ -2308,39 +2308,39 @@ Output:
 
 ```txt
 
-Index= 1    0.00 degrees = North  
-Index= 2   16.87 degrees = North by East  
-Index= 3   16.88 degrees = North North East  
-Index= 4   33.75 degrees = North East by East  
-Index= 5   50.62 degrees = North East  
-Index= 6   50.63 degrees = North East by East  
-Index= 7   67.50 degrees = East North East  
-Index= 8   84.37 degrees = East by North  
-Index= 9   84.38 degrees = East  
-Index=10  101.25 degrees = East by South  
-Index=11  118.12 degrees = East South East  
-Index=12  118.13 degrees = South East by East  
-Index=13  135.00 degrees = South East  
-Index=14  151.87 degrees = South East by South  
-Index=15  151.88 degrees = South South East  
-Index=16  168.75 degrees = South by East  
-Index=17  185.62 degrees = South  
-Index=18  185.63 degrees = South by West  
-Index=19  202.50 degrees = South South West  
-Index=20  219.37 degrees = South West by South  
-Index=21  219.38 degrees = South West  
-Index=22  236.25 degrees = South West by West  
-Index=23  253.12 degrees = West South West  
-Index=24  253.13 degrees = West by South  
-Index=25  270.00 degrees = West  
-Index=26  286.87 degrees = West by North  
-Index=27  286.88 degrees = West North West  
-Index=28  303.75 degrees = North West by West  
-Index=29  320.62 degrees = North West  
-Index=30  320.63 degrees = North West by North  
-Index=31  337.50 degrees = North North West  
-Index=32  354.37 degrees = North by West  
-Index= 1  354.38 degrees = North  
+Index= 1    0.00 degrees = North
+Index= 2   16.87 degrees = North by East
+Index= 3   16.88 degrees = North North East
+Index= 4   33.75 degrees = North East by East
+Index= 5   50.62 degrees = North East
+Index= 6   50.63 degrees = North East by East
+Index= 7   67.50 degrees = East North East
+Index= 8   84.37 degrees = East by North
+Index= 9   84.38 degrees = East
+Index=10  101.25 degrees = East by South
+Index=11  118.12 degrees = East South East
+Index=12  118.13 degrees = South East by East
+Index=13  135.00 degrees = South East
+Index=14  151.87 degrees = South East by South
+Index=15  151.88 degrees = South South East
+Index=16  168.75 degrees = South by East
+Index=17  185.62 degrees = South
+Index=18  185.63 degrees = South by West
+Index=19  202.50 degrees = South South West
+Index=20  219.37 degrees = South West by South
+Index=21  219.38 degrees = South West
+Index=22  236.25 degrees = South West by West
+Index=23  253.12 degrees = West South West
+Index=24  253.13 degrees = West by South
+Index=25  270.00 degrees = West
+Index=26  286.87 degrees = West by North
+Index=27  286.88 degrees = West North West
+Index=28  303.75 degrees = North West by West
+Index=29  320.62 degrees = North West
+Index=30  320.63 degrees = North West by North
+Index=31  337.50 degrees = North North West
+Index=32  354.37 degrees = North by West
+Index= 1  354.38 degrees = North
 
 ```
 
@@ -2741,19 +2741,19 @@ Output:
 {{incomplete|Icon|354.38?}}
 
 ```Icon
-link strings,numbers 
- 
+link strings,numbers
+
 procedure main()
- 
+
 every heading := 11.25 * (i := 0 to 32) do {
    case i%3 of {
       1: heading +:= 5.62
       2: heading -:= 5.62
       }
    write(right(i+1,3)," ",left(direction(heading),20)," ",fix(heading,,7,2))
-   } 
+   }
 end
- 
+
 procedure direction(d)  # compass heading given +/- degrees
 static dirs
 initial {
@@ -2762,15 +2762,15 @@ initial {
                         "E","EbS","E-SE","SEbE","SE","SEbS","S-SE","SbE",
 	                     "S","SbW","S-SW","SWbS","SW","SWbW","W-SW","WbS",
 	                    "W","WbN","W-NW","NWbW","NW","NWbN","N-NW","NbW"],
-                       "N","north","E","east","W","west","S","south","b"," by "))   
+                       "N","north","E","east","W","west","S","south","b"," by "))
    }
- 
+
    return dirs[round(((((d%360)+360)%360)/11.25)%32 + 1)]
 end
 ```
 
 
-{{libheader|Icon Programming Library}} 
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/procs/strings.htm strings for replacem]
 [http://www.cs.arizona.edu/icon/library/procs/numbers.htm numbers for round, fix]
 
@@ -2816,12 +2816,12 @@ Output:
 110 STRING DR$(1 TO 33)*18
 120 FOR I=1 TO 33
 130   READ DR$(I)
-140 NEXT 
-150 DO 
+140 NEXT
+150 DO
 160   READ IF MISSING EXIT DO:D
 170   LET DIR=COMP(D)
 180   PRINT D;TAB(12);DIR,DR$(DIR)
-190 LOOP 
+190 LOOP
 200 DEF COMP(D)=CEIL(MOD((D+360/64),360)*32/360)
 210 DATA North,North by east,North-northeast,Northeast by north,Northeast,Northeast by east,East-northeast,East by north,East,East by south,East-southeast,Southeast by east,Southeast,Southeast by south,South-southeast,South by east
 220 DATA South,South by west,South-southwest,Southwest by south,Southwest,Southwest by west,West-southwest,West by south,West,West by north,West-northwest,Northwest by west,Northwest,Northwest by north,North-northwest,North by west,North
@@ -2946,12 +2946,12 @@ Required example:
 ```java
 public class BoxingTheCompass{
     private static String[] points = new String[32];
- 
+
     public static void main(String[] args){
         buildPoints();
- 
+
         double heading = 0;
- 
+
         for(int i = 0; i<= 32;i++){
             heading = i * 11.25;
             switch(i % 3){
@@ -2963,17 +2963,17 @@ public class BoxingTheCompass{
                     break;
                 default:
             }
- 
+
             System.out.printf("%s\t%18s\t%s°\n",(i % 32) + 1, initialUpper(getPoint(heading)), heading);
         }
     }
- 
+
     private static void buildPoints(){
         String[] cardinal = {"north", "east", "south", "west"};
         String[] pointDesc = {"1", "1 by 2", "1-C", "C by 1", "C", "C by 2", "2-C", "2 by 1"};
- 
+
         String str1, str2, strC;
- 
+
         for(int i = 0;i <= 3;i++){
             str1 = cardinal[i];
             str2 = cardinal[(i + 1) % 4];
@@ -2983,11 +2983,11 @@ public class BoxingTheCompass{
             }
         }
     }
- 
+
     private static String initialUpper(String s){
         return s.substring(0, 1).toUpperCase() + s.substring(1);
     }
- 
+
     private static String getPoint(double degrees){
         double testD = (degrees / 11.25) + 0.5;
         return points[(int)Math.floor(testD % 32)];
@@ -3060,7 +3060,7 @@ function createRow(i, point, heading) {
     td = document.createElement('td');
     td.appendChild(document.createTextNode(heading));
     tr.appendChild(td);
-    
+
     return tr;
 }
 
@@ -3070,7 +3070,7 @@ function getPoint(i) {
         cardinal = ['north', 'east', 'south', 'west'],
         pointDesc = ['1', '1 by 2', '1-C', 'C by 1', 'C', 'C by 2', '2-C', '2 by 1'],
         str1, str2, strC;
-        
+
     str1 = cardinal[i];
     str2 = cardinal[(i + 1) % 4];
     strC = (str1 === 'north' || str1 === 'south') ? str1 + str2 : str2 + str1;
@@ -3383,39 +3383,39 @@ Functional composition, allowing for additional languages (and different numbers
 {{Out}}
 
 ```txt
- 1    0.00°  North               北     
- 2   16.87°  North by east       北微东   
- 3   16.88°  North-northeast     东北偏北  
- 4   33.75°  Northeast by north  东北微北  
- 5   50.62°  Northeast           东北    
- 6   50.63°  Northeast by east   东北微东  
- 7   67.50°  East-northeast      东北偏东  
- 8   84.37°  East by north       东微北   
- 9   84.38°  East                东     
-10  101.25°  East by south       东微南   
-11  118.12°  East-southeast      东南偏东  
-12  118.13°  Southeast by east   东南微东  
-13  135.00°  Southeast           东南    
-14  151.87°  Southeast by south  东南微南  
-15  151.88°  South-southeast     东南偏南  
-16  168.75°  South by east       南微东   
-17  185.62°  South               南     
-18  185.63°  South by west       南微西   
-19  202.50°  South-southwest     西南偏南  
-20  219.37°  Southwest by south  西南微南  
-21  219.38°  Southwest           西南    
-22  236.25°  Southwest by west   西南微西  
-23  253.12°  West-southwest      西南偏西  
-24  253.13°  West by south       西微南   
-25  270.00°  West                西     
-26  286.87°  West by north       西微北   
-27  286.88°  West-northwest      西北偏西  
-28  303.75°  Northwest by west   西北微西  
-29  320.62°  Northwest           西北    
-30  320.63°  Northwest by north  西北微北  
-31  337.50°  North-northwest     西北偏北  
-32  354.37°  North by west       北微西   
- 1  354.38°  North               北  
+ 1    0.00°  North               北
+ 2   16.87°  North by east       北微东
+ 3   16.88°  North-northeast     东北偏北
+ 4   33.75°  Northeast by north  东北微北
+ 5   50.62°  Northeast           东北
+ 6   50.63°  Northeast by east   东北微东
+ 7   67.50°  East-northeast      东北偏东
+ 8   84.37°  East by north       东微北
+ 9   84.38°  East                东
+10  101.25°  East by south       东微南
+11  118.12°  East-southeast      东南偏东
+12  118.13°  Southeast by east   东南微东
+13  135.00°  Southeast           东南
+14  151.87°  Southeast by south  东南微南
+15  151.88°  South-southeast     东南偏南
+16  168.75°  South by east       南微东
+17  185.62°  South               南
+18  185.63°  South by west       南微西
+19  202.50°  South-southwest     西南偏南
+20  219.37°  Southwest by south  西南微南
+21  219.38°  Southwest           西南
+22  236.25°  Southwest by west   西南微西
+23  253.12°  West-southwest      西南偏西
+24  253.13°  West by south       西微南
+25  270.00°  West                西
+26  286.87°  West by north       西微北
+27  286.88°  West-northwest      西北偏西
+28  303.75°  Northwest by west   西北微西
+29  320.62°  Northwest           西北
+30  320.63°  Northwest by north  西北微北
+31  337.50°  North-northwest     西北偏北
+32  354.37°  North by west       北微西
+ 1  354.38°  North               北
 ```
 
 
@@ -3503,7 +3503,7 @@ fun expand(cp: String): String {
     val sb = StringBuilder()
     for (c in cp) {
         sb.append(when (c) {
-            'N'  -> "north" 
+            'N'  -> "north"
             'E'  -> "east"
             'S'  -> "south"
             'W'  -> "west"
@@ -3686,7 +3686,7 @@ The representation of the names was inspired by Tcl (etc.).
    f:{m:x!3;(11.25*x)+:[1=m;+5.62;2=m;-5.62;0]}
 ```
 
-  
+
 The table:
 
 ```K
@@ -3761,7 +3761,7 @@ define compassLongProcessor(char::string) => {
 	#char == 'E' ? return #char + 'ast'
 	#char == 'W' ? return #char + 'est'
 	#char == 'b' ? return ' by '
-	#char == '-' ? return '-'	
+	#char == '-' ? return '-'
 }
 // test output points as decimals
 //pointsarray
@@ -3782,7 +3782,7 @@ with p in pointsarray do => {^
 	#counter += 1
 	#counter > 32 ? #counter = 1
 	#pformatted + ' |  ' + (#counter < 10 ? ' ') + #counter + '  | ' + compassLong(compassShort->get(#counter)) + '\r'
-	
+
 ^}
 ```
 
@@ -4189,7 +4189,7 @@ Module CheckIt {
             if oldvalue<>newvalue then Print format$("{0:2:-6}°|  {1::-2} | {2}",i, newvalue, wind$(newvalue)) : oldvalue=newvalue : refresh
       Next i
 }
-CheckIt 
+CheckIt
 
 ```
 
@@ -4240,7 +4240,7 @@ Map[List[Part[#,1], dirs[[Part[#,1]]], ToString@Part[#,2]<>"°"]&,
   Map[{Floor[Mod[ #+5.625 , 360]/11.25]+1,#}&,input] ]//TableForm
 ```
 
- 
+
 ```txt
 1	North			0.°
 2	North by east		16.87°
@@ -4281,9 +4281,9 @@ Map[List[Part[#,1], dirs[[Part[#,1]]], ToString@Part[#,2]<>"°"]&,
 =={{header|MATLAB}} / {{header|Octave}}==
 
 ```MATLAB
-function b = compassbox(d) 
-    b = ceil(mod(d+360/64,360)*32/360); 
-end; 
+function b = compassbox(d)
+    b = ceil(mod(d+360/64,360)*32/360);
+end;
 ```
 
 Output:
@@ -4855,33 +4855,33 @@ Output:
 ﻿class BoxCompass {
   function : Main(args : String[]) ~ Nil {
     points := [
-      "North             ", "North by east     ", "North-northeast   ", 
+      "North             ", "North by east     ", "North-northeast   ",
       "Northeast by north", "Northeast         ", "Northeast by east ", "East-northeast    ",
       "East by north     ", "East              ", "East by south     ", "East-southeast    ",
       "Southeast by east ", "Southeast         ", "Southeast by south", "South-southeast   ",
-      "South by east     ", "South             ", "South by west     ", "South-southwest   ", 
+      "South by east     ", "South             ", "South by west     ", "South-southwest   ",
       "Southwest by south", "Southwest         ", "Southwest by west ", "West-southwest    ",
       "West by south     ", "West              ", "West by north     ", "West-northwest    ",
       "Northwest by west ", "Northwest         ", "Northwest by north", "North-northwest   ",
       "North by west     " ];
-  
+
     for(i := 0; i<= 32; i += 1;) {
       heading := i * 11.25;
       select(i % 3) {
         label 1: {
           heading += 5.62;
         }
-        
+
         label 2: {
           heading -= 5.62;
         }
       };
-      
+
       IO.Console->Print((i % 32) + 1)->Print('\t')->Print(points[GetPoint(heading)])
         ->Print('\t')->PrintLine(heading);
     };
   }
-  
+
   function : GetPoint(degrees : Float) ~ Int {
     return (degrees / 11.25 + 0.5)->Floor()->As(Int) % 32;
   }
@@ -4965,7 +4965,7 @@ let print_direction input =
   let index = get_direction_index input in
   let direction = List.nth directions index in
   let test = Printf.printf "%3d %-20s %.2f\n" (index + 1) direction in
-  test input;; 
+  test input;;
 
 List.iter (print_direction) test_cases;;
 
@@ -5283,73 +5283,73 @@ Exit
 
 ;Output
 <pre style="height: 60ex; overflow:scroll;">
-  1 N    North                  354.375° (354°22′30″)     0.000° (  0°00′00″)     5.625° (  5°37′30″) 
-  2 NbE  North by East            5.625° (  5°37′30″)    11.250° ( 11°15′00″)    16.875° ( 16°52′30″) 
-  3 NNE  North-Northeast         16.875° ( 16°52′30″)    22.500° ( 22°30′00″)    28.125° ( 28°07′30″) 
-  4 NEbn Northeast by North      28.125° ( 28°07′30″)    33.750° ( 33°45′00″)    39.375° ( 39°22′30″) 
-  5 NE   Northeast               39.375° ( 39°22′30″)    45.000° ( 45°00′00″)    50.625° ( 50°37′30″) 
-  6 NEbE Northeast by East       50.625° ( 50°37′30″)    56.250° ( 56°15′00″)    61.875° ( 61°52′30″) 
-  7 ENE  East-Northeast          61.875° ( 61°52′30″)    67.500° ( 67°30′00″)    73.125° ( 73°07′30″) 
-  8 EbN  East by North           73.125° ( 73°07′30″)    78.750° ( 78°45′00″)    84.375° ( 84°22′30″) 
-  9 E    East                    84.375° ( 84°22′30″)    90.000° ( 90°00′00″)    95.625° ( 95°37′30″) 
- 10 EbS  East by South           95.625° ( 95°37′30″)   101.250° (101°15′00″)   106.875° (106°52′30″) 
- 11 ESE  East-Southeast         106.875° (106°52′30″)   112.500° (112°30′00″)   118.125° (118°07′30″) 
- 12 SEbE Southeast by East      118.125° (118°07′30″)   123.750° (123°45′00″)   129.375° (129°22′30″) 
- 13 SE   Southeast              129.375° (129°22′30″)   135.000° (135°00′00″)   140.625° (140°37′30″) 
- 14 SEbS Southeast by South     140.625° (140°37′30″)   146.250° (146°15′00″)   151.875° (151°52′30″) 
- 15 SSE  South-Southeast        151.875° (151°52′30″)   157.500° (157°30′00″)   163.125° (163°07′30″) 
- 16 SbE  South by East          163.125° (163°07′30″)   168.750° (168°45′00″)   174.375° (174°22′30″) 
- 17 S    South                  174.375° (174°22′30″)   180.000° (180°00′00″)   185.625° (185°37′30″) 
- 18 SbW  South by West          185.625° (185°37′30″)   191.250° (191°15′00″)   196.875° (196°52′30″) 
- 19 SSW  South-Southwest        196.875° (196°52′30″)   202.500° (202°30′00″)   208.125° (208°07′30″) 
- 20 SWbS Southwest by South     208.125° (208°07′30″)   213.750° (213°45′00″)   219.375° (219°22′30″) 
- 21 SW   Southwest              219.375° (219°22′30″)   225.000° (225°00′00″)   230.625° (230°37′30″) 
- 22 SWbW Southwest by West      230.625° (230°37′30″)   236.250° (236°15′00″)   241.875° (241°52′30″) 
- 23 WSW  Southwest              241.875° (241°52′30″)   247.500° (247°30′00″)   253.125° (253°07′30″) 
- 24 WbS  West by South          253.125° (253°07′30″)   258.750° (258°45′00″)   264.375° (264°22′30″) 
- 25 W    West                   264.375° (264°22′30″)   270.000° (270°00′00″)   275.625° (275°37′30″) 
- 26 WbN  West by North          275.625° (275°37′30″)   281.250° (281°15′00″)   286.875° (286°52′30″) 
- 27 WNW  West-Northwest         286.875° (286°52′30″)   292.500° (292°30′00″)   298.125° (298°07′30″) 
- 28 NWbW Northwest by West      298.125° (298°07′30″)   303.750° (303°45′00″)   309.375° (309°22′30″) 
- 29 NW   Northwest              309.375° (309°22′30″)   315.000° (315°00′00″)   320.625° (320°37′30″) 
- 30 NWbN Northwest by North     320.625° (320°37′30″)   326.250° (326°15′00″)   331.875° (331°52′30″) 
- 31 NNW  North-Northwest        331.875° (331°52′30″)   337.500° (337°30′00″)   343.125° (343°07′30″) 
- 32 NbW  North by West          343.125° (343°07′30″)   348.750° (348°45′00″)   354.375° (354°22′30″) 
+  1 N    North                  354.375° (354°22′30″)     0.000° (  0°00′00″)     5.625° (  5°37′30″)
+  2 NbE  North by East            5.625° (  5°37′30″)    11.250° ( 11°15′00″)    16.875° ( 16°52′30″)
+  3 NNE  North-Northeast         16.875° ( 16°52′30″)    22.500° ( 22°30′00″)    28.125° ( 28°07′30″)
+  4 NEbn Northeast by North      28.125° ( 28°07′30″)    33.750° ( 33°45′00″)    39.375° ( 39°22′30″)
+  5 NE   Northeast               39.375° ( 39°22′30″)    45.000° ( 45°00′00″)    50.625° ( 50°37′30″)
+  6 NEbE Northeast by East       50.625° ( 50°37′30″)    56.250° ( 56°15′00″)    61.875° ( 61°52′30″)
+  7 ENE  East-Northeast          61.875° ( 61°52′30″)    67.500° ( 67°30′00″)    73.125° ( 73°07′30″)
+  8 EbN  East by North           73.125° ( 73°07′30″)    78.750° ( 78°45′00″)    84.375° ( 84°22′30″)
+  9 E    East                    84.375° ( 84°22′30″)    90.000° ( 90°00′00″)    95.625° ( 95°37′30″)
+ 10 EbS  East by South           95.625° ( 95°37′30″)   101.250° (101°15′00″)   106.875° (106°52′30″)
+ 11 ESE  East-Southeast         106.875° (106°52′30″)   112.500° (112°30′00″)   118.125° (118°07′30″)
+ 12 SEbE Southeast by East      118.125° (118°07′30″)   123.750° (123°45′00″)   129.375° (129°22′30″)
+ 13 SE   Southeast              129.375° (129°22′30″)   135.000° (135°00′00″)   140.625° (140°37′30″)
+ 14 SEbS Southeast by South     140.625° (140°37′30″)   146.250° (146°15′00″)   151.875° (151°52′30″)
+ 15 SSE  South-Southeast        151.875° (151°52′30″)   157.500° (157°30′00″)   163.125° (163°07′30″)
+ 16 SbE  South by East          163.125° (163°07′30″)   168.750° (168°45′00″)   174.375° (174°22′30″)
+ 17 S    South                  174.375° (174°22′30″)   180.000° (180°00′00″)   185.625° (185°37′30″)
+ 18 SbW  South by West          185.625° (185°37′30″)   191.250° (191°15′00″)   196.875° (196°52′30″)
+ 19 SSW  South-Southwest        196.875° (196°52′30″)   202.500° (202°30′00″)   208.125° (208°07′30″)
+ 20 SWbS Southwest by South     208.125° (208°07′30″)   213.750° (213°45′00″)   219.375° (219°22′30″)
+ 21 SW   Southwest              219.375° (219°22′30″)   225.000° (225°00′00″)   230.625° (230°37′30″)
+ 22 SWbW Southwest by West      230.625° (230°37′30″)   236.250° (236°15′00″)   241.875° (241°52′30″)
+ 23 WSW  Southwest              241.875° (241°52′30″)   247.500° (247°30′00″)   253.125° (253°07′30″)
+ 24 WbS  West by South          253.125° (253°07′30″)   258.750° (258°45′00″)   264.375° (264°22′30″)
+ 25 W    West                   264.375° (264°22′30″)   270.000° (270°00′00″)   275.625° (275°37′30″)
+ 26 WbN  West by North          275.625° (275°37′30″)   281.250° (281°15′00″)   286.875° (286°52′30″)
+ 27 WNW  West-Northwest         286.875° (286°52′30″)   292.500° (292°30′00″)   298.125° (298°07′30″)
+ 28 NWbW Northwest by West      298.125° (298°07′30″)   303.750° (303°45′00″)   309.375° (309°22′30″)
+ 29 NW   Northwest              309.375° (309°22′30″)   315.000° (315°00′00″)   320.625° (320°37′30″)
+ 30 NWbN Northwest by North     320.625° (320°37′30″)   326.250° (326°15′00″)   331.875° (331°52′30″)
+ 31 NNW  North-Northwest        331.875° (331°52′30″)   337.500° (337°30′00″)   343.125° (343°07′30″)
+ 32 NbW  North by West          343.125° (343°07′30″)   348.750° (348°45′00″)   354.375° (354°22′30″)
 
 
-  1 N    North                    0.000° (  0°00′00″) 
-  2 NbE  North by East           16.870° ( 16°52′12″) 
-  3 NNE  North-Northeast         16.880° ( 16°52′48″) 
-  4 NEbn Northeast by North      33.750° ( 33°45′00″) 
-  5 NE   Northeast               50.620° ( 50°37′12″) 
-  6 NEbE Northeast by East       50.630° ( 50°37′48″) 
-  7 ENE  East-Northeast          67.500° ( 67°30′00″) 
-  8 EbN  East by North           84.370° ( 84°22′12″) 
-  9 E    East                    84.380° ( 84°22′48″) 
- 10 EbS  East by South          101.250° (101°15′00″) 
- 11 ESE  East-Southeast         118.120° (118°07′12″) 
- 12 SEbE Southeast by East      118.130° (118°07′48″) 
- 13 SE   Southeast              135.000° (135°00′00″) 
- 14 SEbS Southeast by South     151.870° (151°52′12″) 
- 15 SSE  South-Southeast        151.880° (151°52′48″) 
- 16 SbE  South by East          168.750° (168°45′00″) 
- 17 S    South                  185.620° (185°37′12″) 
- 18 SbW  South by West          185.630° (185°37′48″) 
- 19 SSW  South-Southwest        202.500° (202°30′00″) 
- 20 SWbS Southwest by South     219.370° (219°22′12″) 
- 21 SW   Southwest              219.380° (219°22′48″) 
- 22 SWbW Southwest by West      236.250° (236°15′00″) 
- 23 WSW  Southwest              253.120° (253°07′12″) 
- 24 WbS  West by South          253.130° (253°07′48″) 
- 25 W    West                   270.000° (270°00′00″) 
- 26 WbN  West by North          286.870° (286°52′12″) 
- 27 WNW  West-Northwest         286.880° (286°52′48″) 
- 28 NWbW Northwest by West      303.750° (303°45′00″) 
- 29 NW   Northwest              320.620° (320°37′12″) 
- 30 NWbN Northwest by North     320.630° (320°37′48″) 
- 31 NNW  North-Northwest        337.500° (337°30′00″) 
- 32 NbW  North by West          354.370° (354°22′12″) 
-  1 N    North                  354.380° (354°22′48″) 
+  1 N    North                    0.000° (  0°00′00″)
+  2 NbE  North by East           16.870° ( 16°52′12″)
+  3 NNE  North-Northeast         16.880° ( 16°52′48″)
+  4 NEbn Northeast by North      33.750° ( 33°45′00″)
+  5 NE   Northeast               50.620° ( 50°37′12″)
+  6 NEbE Northeast by East       50.630° ( 50°37′48″)
+  7 ENE  East-Northeast          67.500° ( 67°30′00″)
+  8 EbN  East by North           84.370° ( 84°22′12″)
+  9 E    East                    84.380° ( 84°22′48″)
+ 10 EbS  East by South          101.250° (101°15′00″)
+ 11 ESE  East-Southeast         118.120° (118°07′12″)
+ 12 SEbE Southeast by East      118.130° (118°07′48″)
+ 13 SE   Southeast              135.000° (135°00′00″)
+ 14 SEbS Southeast by South     151.870° (151°52′12″)
+ 15 SSE  South-Southeast        151.880° (151°52′48″)
+ 16 SbE  South by East          168.750° (168°45′00″)
+ 17 S    South                  185.620° (185°37′12″)
+ 18 SbW  South by West          185.630° (185°37′48″)
+ 19 SSW  South-Southwest        202.500° (202°30′00″)
+ 20 SWbS Southwest by South     219.370° (219°22′12″)
+ 21 SW   Southwest              219.380° (219°22′48″)
+ 22 SWbW Southwest by West      236.250° (236°15′00″)
+ 23 WSW  Southwest              253.120° (253°07′12″)
+ 24 WbS  West by South          253.130° (253°07′48″)
+ 25 W    West                   270.000° (270°00′00″)
+ 26 WbN  West by North          286.870° (286°52′12″)
+ 27 WNW  West-Northwest         286.880° (286°52′48″)
+ 28 NWbW Northwest by West      303.750° (303°45′00″)
+ 29 NW   Northwest              320.620° (320°37′12″)
+ 30 NWbN Northwest by North     320.630° (320°37′48″)
+ 31 NNW  North-Northwest        337.500° (337°30′00″)
+ 32 NbW  North by West          354.370° (354°22′12″)
+  1 N    North                  354.380° (354°22′48″)
 
 ```
 
@@ -5418,14 +5418,14 @@ program BoxTheCompass(output);
 
 function compasspoint(angle: real): string;
   const
-    points: array [1..32] of string = 
-      ('North             ', 'North by east     ', 'North-northeast   ', 'Northeast by north', 
-       'Northeast         ', 'Northeast by east ', 'East-northeast    ', 'East by north     ', 
-       'East              ', 'East by south     ', 'East-southeast    ', 'Southeast by east ', 
-       'Southeast         ', 'Southeast by south', 'South-southeast   ', 'South by east     ', 
-       'South             ', 'South by west     ', 'South-southwest   ', 'Southwest by south', 
-       'Southwest         ', 'Southwest by west ', 'West-southwest    ', 'West by south     ', 
-       'West              ', 'West by north     ', 'West-northwest    ', 'Northwest by west ', 
+    points: array [1..32] of string =
+      ('North             ', 'North by east     ', 'North-northeast   ', 'Northeast by north',
+       'Northeast         ', 'Northeast by east ', 'East-northeast    ', 'East by north     ',
+       'East              ', 'East by south     ', 'East-southeast    ', 'Southeast by east ',
+       'Southeast         ', 'Southeast by south', 'South-southeast   ', 'South by east     ',
+       'South             ', 'South by west     ', 'South-southwest   ', 'Southwest by south',
+       'Southwest         ', 'Southwest by west ', 'West-southwest    ', 'West by south     ',
+       'West              ', 'West by north     ', 'West-northwest    ', 'Northwest by west ',
        'Northwest         ', 'Northwest by north', 'North-northwest   ', 'North by west     '
       );
   var
@@ -5435,7 +5435,7 @@ function compasspoint(angle: real): string;
     index := index mod 32 + 1;
     compasspoint := points[index];
   end;
-  
+
 var
   i:       integer;
   heading: real;
@@ -5763,8 +5763,8 @@ constant compass_points = { "North",        "North by east",        "North-north
                             "Southwest",    "Southwest by west",    "West-southwest",       "West by south",
                             "West",         "West by north",        "West-northwest",       "Northwest by west",
                             "Northwest",    "Northwest by north",   "North-northwest",      "North by west"},
-        test_points = {    0.0,  16.87,  16.88,  33.75,  50.62,  50.63,  67.5,   84.37,  84.38, 101.25, 118.12, 
-                        118.13, 135.0,  151.87, 151.88, 168.75, 185.62, 185.63, 202.5,  219.37, 219.38, 236.25, 
+        test_points = {    0.0,  16.87,  16.88,  33.75,  50.62,  50.63,  67.5,   84.37,  84.38, 101.25, 118.12,
+                        118.13, 135.0,  151.87, 151.88, 168.75, 185.62, 185.63, 202.5,  219.37, 219.38, 236.25,
                         253.12, 253.13, 270.0,  286.87, 286.88, 303.75, 320.62, 320.63, 337.5,  354.37, 354.38}
 for i=1 to length(test_points) do
     integer compass_point = remainder(floor(test_points[i]*32/360+0.5),32)+1
@@ -5860,19 +5860,19 @@ Output:
 ```powershell
 function Convert-DegreeToDirection ( [double]$Degree )
     {
- 
+
     $Directions = @(    'n','n by e','n-ne','ne by n','ne','ne by e','e-ne','e by n',
                         'e','e by s','e-se','se by e','se','se by s','s-se','s by e',
                         's','s by w','s-sw','sw by s','sw','sw by w','w-sw','w by s',
                         'w','w by n','w-nw','nw by w','nw','nw by n','n-nw','n by w',
                         'n'
                     ).Replace( 's', 'south' ).Replace( 'e', 'east' ).Replace( 'n', 'north' ).Replace( 'w', 'west' )
- 
+
     $Directions[[math]::floor(( $Degree % 360 ) / 11.25 + 0.5 )]
     }
- 
+
 $x = 0.0, 16.87, 16.88, 33.75, 50.62, 50.63, 67.5, 84.37, 84.38, 101.25, 118.12, 118.13, 135.0, 151.87, 151.88, 168.75, 185.62, 185.63, 202.5, 219.37, 219.38, 236.25, 253.12, 253.13, 270.0, 286.87, 286.88, 303.75, 320.62, 320.63, 337.5, 354.37, 354.38
- 
+
 $x | % { Convert-DegreeToDirection -Degree $_ }
 ```
 
@@ -5919,20 +5919,20 @@ A more general solution allowing you to choose whether to use 4, 8, 16, or 32 co
 ```powershell
 function Convert-DegreeToDirection ( [double]$Degree, [int]$Points )
     {
- 
+
     $Directions = @(    'n','n by e','n-ne','ne by n','ne','ne by e','e-ne','e by n',
                         'e','e by s','e-se','se by e','se','se by s','s-se','s by e',
                         's','s by w','s-sw','sw by s','sw','sw by w','w-sw','w by s',
                         'w','w by n','w-nw','nw by w','nw','nw by n','n-nw','n by w',
                         'n'
                     ).Replace( 's', 'south' ).Replace( 'e', 'east' ).Replace( 'n', 'north' ).Replace( 'w', 'west' )
- 
+
     $Directions[[math]::floor((( $Degree % 360 ) * $Points / 360 + 0.5 )) * 32 / $Points ]
     }
- 
+
 $x = 0.0, 16.87, 16.88, 33.75, 50.62, 50.63, 67.5, 84.37, 84.38, 101.25, 118.12, 118.13, 135.0, 151.87, 151.88, 168.75, 185.62, 185.63, 202.5, 219.37, 219.38, 236.25, 253.12, 253.13, 270.0, 286.87, 286.88, 303.75, 320.62, 320.63, 337.5, 354.37, 354.38
- 
- 
+
+
 $Values = @()
 ForEach ( $Degree in $X ) { $Values += [pscustomobject]@{  Degree = $Degree
                                                                32 = ( Convert-DegreeToDirection -Degree $Degree -Points 32 )
@@ -5945,20 +5945,20 @@ $Values | Format-Table
 {{out}}
 
 ```txt
-Degree 32                 16              8         4    
------- --                 --              -         -    
+Degree 32                 16              8         4
+------ --                 --              -         -
      0 north              north           north     north
  16.87 north by east      north-northeast north     north
  16.88 north-northeast    north-northeast north     north
  33.75 northeast by north northeast       northeast north
- 50.62 northeast          northeast       northeast east 
- 50.63 northeast by east  northeast       northeast east 
-  67.5 east-northeast     east-northeast  east      east 
- 84.37 east by north      east            east      east 
- 84.38 east               east            east      east 
-101.25 east by south      east-southeast  east      east 
-118.12 east-southeast     east-southeast  southeast east 
-118.13 southeast by east  east-southeast  southeast east 
+ 50.62 northeast          northeast       northeast east
+ 50.63 northeast by east  northeast       northeast east
+  67.5 east-northeast     east-northeast  east      east
+ 84.37 east by north      east            east      east
+ 84.38 east               east            east      east
+101.25 east by south      east-southeast  east      east
+118.12 east-southeast     east-southeast  southeast east
+118.13 southeast by east  east-southeast  southeast east
    135 southeast          southeast       southeast south
 151.87 southeast by south south-southeast southeast south
 151.88 south-southeast    south-southeast southeast south
@@ -5968,13 +5968,13 @@ Degree 32                 16              8         4
  202.5 south-southwest    south-southwest southwest south
 219.37 southwest by south southwest       southwest south
 219.38 southwest          southwest       southwest south
-236.25 southwest by west  west-southwest  southwest west 
-253.12 west-southwest     west-southwest  west      west 
-253.13 west by south      west-southwest  west      west 
-   270 west               west            west      west 
-286.87 west by north      west-northwest  west      west 
-286.88 west-northwest     west-northwest  west      west 
-303.75 northwest by west  northwest       northwest west 
+236.25 southwest by west  west-southwest  southwest west
+253.12 west-southwest     west-southwest  west      west
+253.13 west by south      west-southwest  west      west
+   270 west               west            west      west
+286.87 west by north      west-northwest  west      west
+286.88 west-northwest     west-northwest  west      west
+303.75 northwest by west  northwest       northwest west
 320.62 northwest          northwest       northwest north
 320.63 northwest by north northwest       northwest north
  337.5 north-northwest    north-northwest north     north
@@ -6001,7 +6001,7 @@ For i = 1 To 5
   Read.s abbr
   Read.s expansion
   dirSubst(abbr) = expansion
-Next 
+Next
 
 Dim dirs.s(32)
 Define j, s.s
@@ -6012,12 +6012,12 @@ For j = 0 To 1
     dirs(j * 16 + i) = abbr
   Next
 Next
-    
+
 ;expand abbreviated compass point and capitalize
 Procedure.s abbr2compassPoint(abbr.s)
   Shared dirSubst()
   Protected i, compassPoint.s, key.s
-  
+
   For i = 1 To Len(abbr)
     key.s = Mid(abbr, i, 1)
     If FindMapElement(dirSubst(), key)
@@ -6033,31 +6033,31 @@ Procedure.s angle2compass(angle.f)
   Shared dirs()
   Static segment.f = 360.0 / 32 ;width of each compass segment
   Protected dir
-  
+
   ;work out which segment contains the compass angle
   dir = Int((Mod(angle, 360) / segment) + 0.5)
-  
+
   ;convert to a named direction
   ProcedureReturn abbr2compassPoint(dirs(dir))
 EndProcedure
- 
+
 ;box the compass
 If OpenConsole()
-  
-  Define i, heading.f, index 
+
+  Define i, heading.f, index
   For i = 0 To 32
     heading = i * 11.25
     If i % 3 = 1
       heading + 5.62
-    EndIf 
+    EndIf
     If i % 3 = 2
       heading - 5.62
-    EndIf 
+    EndIf
     index = i % 32 + 1
-    
+
     PrintN(RSet(Str(index), 2) + " " + LSet(angle2compass(heading), 18) + RSet(StrF(heading, 2), 7))
-  Next 
-  
+  Next
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -6142,7 +6142,7 @@ compassangle(30, 'Northwest by north', nwbn, 326.25).
 compassangle(31, 'North-northwest', nnw, 337.50).
 compassangle(32, 'North by west', nbw, 348.75).
 compassangle(1, 'North', n, 360.00).
-compassangle(Index , Name, Heading, Angle) :- nonvar(Angle), resolveindex(Angle, Index), 
+compassangle(Index , Name, Heading, Angle) :- nonvar(Angle), resolveindex(Angle, Index),
                                                compassangle(Index,Name, Heading, _).
 
 resolveindex(Angle, Index) :- N is Angle / 11.25 + 0.5, I is floor(N),Index is (I mod 32) + 1.
@@ -6153,7 +6153,7 @@ Part 2 : The following rules print a table of indexes.
 
 ```prolog
 
-printTableRow(Angle) :- compassangle(Index, Name, _, Angle), 
+printTableRow(Angle) :- compassangle(Index, Name, _, Angle),
                         write(Index), write('    '),
                         write(Name), write('   '),
                         write(Angle).
@@ -6167,7 +6167,7 @@ The following query prints the required table.
 
 ```prolog
 
-?- printTable([0.0, 16.87, 16.88, 33.75, 50.62, 50.63, 67.5, 84.37, 84.38, 101.25, 118.12, 118.13, 135.0, 151.87, 151.88, 168.75, 185.62, 
+?- printTable([0.0, 16.87, 16.88, 33.75, 50.62, 50.63, 67.5, 84.37, 84.38, 101.25, 118.12, 118.13, 135.0, 151.87, 151.88, 168.75, 185.62,
                        185.63, 202.5, 219.37, 219.38, 236.25, 253.12, 253.13, 270.0, 286.87, 286.88, 303.75, 320.62, 320.63, 337.5, 354.37, 354.38]).
 1    North   0.0
 2    North by east   16.87
@@ -6206,7 +6206,7 @@ true.
 
 ```
 
- 
+
 
 ## Python
 
@@ -6475,24 +6475,24 @@ Some older REXXes don't have a   '''changestr'''   BIF,   so one is included her
 
 # Project : Box the compass
 
-names = ["North", "North by east", "North-northeast", 
-               "Northeast by north", "Northeast", "Northeast by east", "East-northeast", 
-               "East by north", "East", "East by south", "East-southeast", 
-               "Southeast by east", "Southeast", "Southeast by south", "South-southeast", 
-               "South by east", "South", "South by west", "South-southwest", 
-               "Southwest by south", "Southwest", "Southwest by west", "West-southwest", 
-               "West by south", "West", "West by north", "West-northwest", 
-               "Northwest by west", "Northwest", "Northwest by north", "North-northwest", 
+names = ["North", "North by east", "North-northeast",
+               "Northeast by north", "Northeast", "Northeast by east", "East-northeast",
+               "East by north", "East", "East by south", "East-southeast",
+               "Southeast by east", "Southeast", "Southeast by south", "South-southeast",
+               "South by east", "South", "South by west", "South-southwest",
+               "Southwest by south", "Southwest", "Southwest by west", "West-southwest",
+               "West by south", "West", "West by north", "West-northwest",
+               "Northwest by west", "Northwest", "Northwest by north", "North-northwest",
                "North by west", "North"]
- 
-degrees = [0, 16.87, 16.88, 33.75, 50.62, 50.63, 
+
+degrees = [0, 16.87, 16.88, 33.75, 50.62, 50.63,
                 67.5, 84.37, 84.38, 101.25, 118.12, 118.13, 135, 151.87, 151.88, 168.75,
                 185.62, 185.63, 202.5, 219.37, 219.38, 236.25, 253.12, 253.13, 270,
                 286.87, 286.88, 303.75, 320.62, 320.63, 337.5, 354.37, 354.38]
- 
+
 for i = 1 to len(degrees)
      j = floor((degrees[i] + 5.625) / 11.25)
-    if j > 31 
+    if j > 31
        j = j - 32
     ok
     see "" + degrees[i] + " " + j + " "
@@ -6557,7 +6557,7 @@ Headings = %w(north east south west north).each_cons(2).flat_map do |a, b|
   "#{a} by #{b}",
   "#{a}-#{a}#{b}",
   "#{a}#{b} by #{a}",
-  "#{a}#{b}", 
+  "#{a}#{b}",
   "#{a}#{b} by #{b}",
   "#{b}-#{a}#{b}",
   "#{b} by #{a}"]
@@ -6632,7 +6632,7 @@ direct$(22) = "est"    'West
 dim point$(32)
 for i =1 to 32: read point$(i) :next i
 
-html "<table border=1>" 
+html "<table border=1>"
 for i = 0 to 32
     hdng = i * 11.25
     if (i mod 3) = 1 then
@@ -6645,7 +6645,7 @@ for i = 0 to 32
 next i
 html "</table>"
 end
- 
+
 function compas$(hd)
 x = hd /11.25 + 1.5
 if (x >=33.0) then x =x -32.0
@@ -6654,7 +6654,7 @@ if (x >=33.0) then x =x -32.0
     compas$ = compas$ + mid$(p$,i,1) + direct$(max(asc(upper$(mid$(p$,i,1)))-65,0))
   next i
 end function
- 
+
 data "N","N b e","N-ne","Ne b n","Ne","Ne b e","E-ne","E b n","E","E b s","E-se"
 data "Se b e","Se","Se b s","S-se","S b e","S","S b w","S-sw","Sw b s","Sw","Sw b w"
 data "W-sw","W b s","W","W b n","W-nw","Nw b w","Nw","Nw b n","N-nw","N b w"
@@ -6802,7 +6802,7 @@ object BoxingTheCompass extends App {
   }
 
   val deg2ind: Double => Int = deg => (deg*32/360+.5).toInt%32+1
-  
+
   val pointName: Int => String = ind => {
     val i = ind - 1
     val str1 = cardinal(i%32/8)
@@ -7009,7 +7009,7 @@ FOR j=1 TO 5
 READ point$(i,j)
 NEXT j
 NEXT i
-html$= "<table border=1>" 
+html$= "<table border=1>"
 html$&= "<TR><TD align=right></td><td>Boxing The Compass</td><td>Abbr</td><td>Min</td><td>Med</td><td>Max</td></tr>"
 FOR i =1 TO 32
   html$&= "<TR><TD align=right>"&i&"</td><td>"&point$(i,1)&"</td><td>"&point$(i,2)&"</td><td>"&point$(i,3)&"</td><td>"&point$(i,4)&"</td><td>"&point$(i,5)&"</td></tr>"
@@ -7045,7 +7045,7 @@ Output:
 
 This chart actually displays as a table in a browser object running in smart Basic
 
-   Boxing The Compass   Abbr  Min     Med     Max 
+   Boxing The Compass   Abbr  Min     Med     Max
  1 North                N     354.38  0       5.62
  2 North by east        NbE   5.63    11.25   16.87
  3 North-northeast      NNE   16.88   22.50   28.12
@@ -7272,16 +7272,16 @@ Requires the standard POSIX bc(1) and sed(1) commands to function.
 
 ```sh
 # List of abbreviated compass point labels
-compass_points=( N NbE N-NE NEbN NE NEbE E-NE EbN 
-                 E EbS E-SE SEbE SE SEbS S-SE SbE 
-                 S SbW S-SW SWbS SW SWbW W-SW WbS 
+compass_points=( N NbE N-NE NEbN NE NEbE E-NE EbN
+                 E EbS E-SE SEbE SE SEbS S-SE SbE
+                 S SbW S-SW SWbS SW SWbW W-SW WbS
                  W WbN W-NW NWbW NW NWbN N-NW NbW )
 
 # List of angles to test
 test_angles=(  0.00  16.87  16.88  33.75  50.62  50.63  67.50
-              84.37  84.38 101.25 118.12 118.13 135.00 151.87 
+              84.37  84.38 101.25 118.12 118.13 135.00 151.87
              151.88 168.75 185.62 185.63 202.50 219.37 219.38
-             236.25 253.12 253.13 270.00 286.87 286.88 303.75 
+             236.25 253.12 253.13 270.00 286.87 286.88 303.75
              320.62 320.63 337.50 354.37 354.38 )
 
 
@@ -7325,7 +7325,7 @@ done
 ```
 
 
-Output: 
+Output:
 ```txt
 Degrees | Closest Point      | Index
    0.00 | North              |  1
@@ -7408,39 +7408,39 @@ End Sub
 {{out}}
 
 ```txt
- 1  North                0 
- 2  North by east        16,87 
- 3  North-northeast      16,88 
- 4  Northeast by north   33,75 
- 5  Northeast            50,62 
- 6  Northeast by east    50,63 
- 7  East-northeast       67,5 
- 8  East by north        84,37 
- 9  East                 84,38 
-10  East by south        101,25 
-11  East-southeast       118,12 
-12  Southeast by east    118,13 
-13  Southeast            135 
-14  Southeast by south   151,87 
-15  South-southeast      151,88 
-16  South by east        168,75 
-17  South                185,62 
-18  South by west        185,63 
-19  South-southwest      202,5 
-20  Southwest by south   219,37 
-21  Southwest            219,38 
-22  Southwest by west    236,25 
-23  West-southwest       253,12 
-24  West by south        253,13 
-25  West                 270 
-26  West by north        286,87 
-27  West-northwest       286,88 
-28  Northwest by west    303,75 
-29  Northwest            320,62 
-30  Northwest by north   320,63 
-31  North-northwest      337,5 
-32  North by west        354,37 
- 1  North                354,38 
+ 1  North                0
+ 2  North by east        16,87
+ 3  North-northeast      16,88
+ 4  Northeast by north   33,75
+ 5  Northeast            50,62
+ 6  Northeast by east    50,63
+ 7  East-northeast       67,5
+ 8  East by north        84,37
+ 9  East                 84,38
+10  East by south        101,25
+11  East-southeast       118,12
+12  Southeast by east    118,13
+13  Southeast            135
+14  Southeast by south   151,87
+15  South-southeast      151,88
+16  South by east        168,75
+17  South                185,62
+18  South by west        185,63
+19  South-southwest      202,5
+20  Southwest by south   219,37
+21  Southwest            219,38
+22  Southwest by west    236,25
+23  West-southwest       253,12
+24  West by south        253,13
+25  West                 270
+26  West by north        286,87
+27  West-northwest       286,88
+28  Northwest by west    303,75
+29  Northwest            320,62
+30  Northwest by north   320,63
+31  North-northwest      337,5
+32  North by west        354,37
+ 1  North                354,38
 ```
 
 
@@ -7547,7 +7547,7 @@ Output:
 ```Yabasic
 
 dim point$(32)
- 
+
 for i =1 to 32
     read point$(i)
 next i
@@ -7555,7 +7555,7 @@ next i
 print "Index\tClosest Point\t\tDegrees"
 print "
 ### ==\t=============\t\t====
-" 
+"
 for i = 0 to 32
     heading = i *11.25
     resto=mod(i,3)
@@ -7567,15 +7567,15 @@ for i = 0 to 32
     ind = mod(i,32)+1
     print ind,"\t",compasspoint$( heading),"\t",heading
 next i
- 
+
 end
- 
+
 sub compasspoint$(h)
     x = h / 11.25 + 1.5
     if (x >= 33.0)  x = x - 32.0
     return point$(int(x))
 end sub
- 
+
 10 data  "North             ", "North by east     ", "North-northeast   "
 20 data  "Northeast by north", "Northeast         ", "Northeast by east ", "East-northeast    "
 30 data  "East by north     ", "East              ", "East by south     ", "East-southeast    "
@@ -7596,10 +7596,10 @@ end sub
 ```zkl
 A:=("X N NbE NNE NEbN NE NEbE ENE EbN E EbS ESE "  // one based array
         "SEbE SE SEbS SSE SbE S SbW SSW SWbS SW SWbW "
-        "WSW WbS W WbN WNW NWbW NW NWbN NNW NbW").split(" "); 
- 
+        "WSW WbS W WbN WNW NWbW NW NWbN NNW NbW").split(" ");
+
 fcn compassBox(d){
-    return(( ( (d + 360.0 / 64.0) % 360.0) * 32.0 / 360.0).ceil()); 
+    return(( ( (d + 360.0 / 64.0) % 360.0) * 32.0 / 360.0).ceil());
 }
 
 foreach i in ([0..32]){
@@ -7660,7 +7660,7 @@ foreach i in ([0..32]){
 220 IF x>=33 THEN LET x=x-32
 230 PRINT p$(INT x);TAB 25;h
 240 NEXT i
-250 STOP 
+250 STOP
 260 DEF FN m(i,n)=((i/n)-INT (i/n))*n : REM modulus function
 
 ```

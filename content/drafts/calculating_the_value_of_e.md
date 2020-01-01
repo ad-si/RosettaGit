@@ -13,10 +13,10 @@ tags = []
 {{task}}
 
 ;Task:
-Calculate the value of   <big>''e''</big>. 
+Calculate the value of   <big>''e''</big>.
 
 
-(<big>''e''</big>   is also known as   ''Euler's number''   and   ''Napier's constant''.)  
+(<big>''e''</big>   is also known as   ''Euler's number''   and   ''Napier's constant''.)
 
 
 See details: [https://en.wikipedia.org/wiki/E_(mathematical_constant) Calculating the value of e]
@@ -92,7 +92,7 @@ EWHILE   LER    F0,F2              e
 EOLD     DS     E                  eold
 PG       DC     CL80' '            buffer
          REGEQU
-         END    CALCE 
+         END    CALCE
 ```
 
 {{out}}
@@ -118,7 +118,7 @@ procedure Euler is
    E       : Long_Float   := 2.0;
    E0      : Long_Float   := 0.0;
    N       : Long_Integer := 2;
-  
+
 begin
 
    loop
@@ -185,12 +185,12 @@ For the purposes of 32 bit floating point, the value seems to stabilise after su
 
 ```applescript
 on run
-    
+
     sum(map(inverse, ¬
         scanl(product, 1, enumFromToInt(1, 16))))
-    
+
     --> 2.718281828459
-    
+
 end run
 
 -- inverse :: Float -> Float
@@ -248,7 +248,7 @@ on iterateUntil(p, f, x)
     |λ|(x) of result
 end iterateUntil
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -293,7 +293,7 @@ on sum(xs)
             a + b
         end |λ|
     end script
-    
+
     foldl(add, 0, xs)
 end sum
 ```
@@ -355,8 +355,8 @@ blsq ) 70rz?!{10 100**\/./}ms36.+Sh'.1iash
 
 {{trans|Kotlin}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 #define EPSILON 1.0e-15
@@ -392,8 +392,8 @@ e = 2.718281828459046
 
 {{trans|C}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iomanip>
 #include <cmath>
 
@@ -582,7 +582,7 @@ e = 2.718281828459041093
 
 ```lisp
 ;;Change this to change how many iterations
-(setq iters 1000) 
+(setq iters 1000)
 
 ;;Tail Recursive Factorial function
 (defun fact (x &optional (y 1)) "calculates x!"
@@ -726,7 +726,7 @@ func calculateE(epsilon = 1.0e-15) {
 
     return e
 }
- 
+
 print(calculateE())
 ```
 
@@ -769,20 +769,20 @@ It will be seen that the answer is 3 out in the 10th decimal place.
 
   [Calculate e]
   [EDSAC program, Initial Orders 2]
-  
+
   [Library subroutine M3. Prints header and is then overwritten]
   [Here, last character sets teleprinter to figures]
    PFGKIFAFRDLFUFOFE@A6FG@E8FEZPF
    @&*CALCULATION!OF!E@&#
      ..PZ  [blank tape, needed to mark end of header text]
-  
+
   [Library subroutine D6. Division, accurate, fast.
   Closed, 36 locations, working positions 6D and 8D.
   C(0D) := C(0D)/C(4D), where C(4D) <> 0, -1.]
      T56K  [define load address for subroutine]
      GKA3FT34@S4DE13@T4DSDTDE2@T4DADLDTDA4DLDE8@RDU4DLDA35@
      T6DE25@U8DN8DA6DT6DH6DS6DN4DA4DYFG21@SDVDTDEFW1526D
-  
+
   [Library subroutine P1.
   Prints a single positive number (without layout or round-off).
   Prints number in 0D to n places of decimals, where
@@ -977,7 +977,7 @@ Type `bye' to exit
 ## Fortran
 
 
-```fortran 
+```fortran
 
 Program eee
 implicit none
@@ -987,13 +987,13 @@ real(QP)            :: ee
 
 write(*,*) '    exp(1.) ', exp(1._QP)
 
-ee = 1. +(one +(one +(one +(one +(one+ (one +(one +(one +(one +(one +(one & 
-        +(one +(one +(one +(one +(one +(one +(one +(one +(one +(one)      & 
+ee = 1. +(one +(one +(one +(one +(one+ (one +(one +(one +(one +(one +(one &
+        +(one +(one +(one +(one +(one +(one +(one +(one +(one +(one)      &
         /21.)/20.)/19.)/18.)/17.)/16.)/15.)/14.)/13.)/12.)/11.)/10.)/9.)  &
         /8.)/7.)/6.)/5.)/4.)/3.)/2.)
 
 write(*,*) ' polynomial ', ee
-			   
+
 end Program eee
 ```
 
@@ -1205,7 +1205,7 @@ For the purposes of 64 bit floating point precision, the value seems to stabilis
 ```haskell
 eApprox :: Double
 eApprox = foldr ((+) . (1 /)) 0 (scanl (*) 1 [1 .. 20])
- 
+
 main :: IO ()
 main = print eApprox
 ```
@@ -1250,7 +1250,7 @@ main = print eApprox2
 120 DO WHILE E<>E1
 130   LET E1=E:LET E=E+1/N
 140   LET N1=N1+1:LET N=N*N1
-150 LOOP 
+150 LOOP
 160 PRINT "The value of e =";E
 ```
 
@@ -1331,7 +1331,7 @@ Finally, to compute e find the sum as insert plus +/ of the reciprocals % of fac
 
    While =: conjunction def 'u^:(0~:v)^:_'
 
-   
+
    NB. return number of terms and the corresponding decimal representation
    e_places =: ({: , {.)@:(((f n) ; {.@:] , <@:(>:@:n@:]))While([: ~:/ 2 {. ]) '0' ; '1'&;)&1
 
@@ -1344,7 +1344,7 @@ Finally, to compute e find the sum as insert plus +/ of the reciprocals % of fac
 ┌─┬─────┐
 │9│2.718│
 └─┴─────┘
-   
+
    e_places 40
 ┌──┬─────────────────────────────────────────┐
 │37│2.718281828459045235360287471352662497757│
@@ -1682,7 +1682,7 @@ or even just
 𝕖
 ```
 
-input as 
+input as
 ```Mathematica
 ≡ee≡
 ```
@@ -1861,8 +1861,8 @@ use Math::Decimal qw(dec_canonise dec_mul dec_rndiv_and_rem);
 
 sub factorial { my $n = 1; $n *= $_ for 1..shift; $n }
 
-for $n (0..70) { 
-   $sum += 1/factorial($n); 
+for $n (0..70) {
+   $sum += 1/factorial($n);
 }
 
 ($num,$den) = $sum =~ m#(\d+)/(\d+)#;
@@ -2142,7 +2142,7 @@ cat("e =",sum(rep(1,20)/factorial(0:19)))
 
 ```txt
 
-e = 2.718281828459046 
+e = 2.718281828459046
 
 ```
 
@@ -2183,7 +2183,7 @@ e = 2.718281828459046
 This REXX version uses the following formula to calculate Napier's constant   <big>''e''</big>:
 
   ╔═══════════════════════════════════════════════════════════════════════════════════════╗
-  ║                                                                                       ║ 
+  ║                                                                                       ║
   ║           1         1         1         1         1         1         1               ║
   ║   e  =   ───   +   ───   +   ───   +   ───   +   ───   +   ───   +   ───   +    ∙∙∙   ║
   ║           0!        1!        2!        3!        4!        5!        6!              ║
@@ -2211,7 +2211,7 @@ say                                              /*stick a fork in it,  we're al
 say '(with'    abs(digs)      "decimal digits)   the value of   e   is:";         say e
 ```
 
-Programming note:   the factorial of the   '''do'''   loop index is calculated by   ''division'',   not by the usual   ''multiplication''   (for optimization). 
+Programming note:   the factorial of the   '''do'''   loop index is calculated by   ''division'',   not by the usual   ''multiplication''   (for optimization).
 
 
 {{out|output|text=  when using the default input:}}
@@ -2335,7 +2335,7 @@ Return left(e,dig+1) '('n 'iterations required)'
 J:\>rexx eval compey(66)
 compey(66)=2.71828182845904523536028747135266249775724709369995957496696762772 (52 iterations required)
 ```
- 
+
 Check the function's correctness
 
 ```rexx
@@ -2354,7 +2354,7 @@ Do d=3 To 100
     End
   Else ok=ok+1
   End
-Say ok 'comparisons are ok' 
+Say ok 'comparisons are ok'
 ```
 
 {{out}}
@@ -2363,7 +2363,7 @@ Say ok 'comparisons are ok'
 J:\>rexx compez
 98 comparisons are ok
 ```
-                 
+
 
 
 ## Ring
@@ -2389,8 +2389,8 @@ see "Calculating the value of e with method #2:" + nl
 see "e = " + e + nl
 
 func factorial(n)
-       if n = 0 or n = 1 
-          return 1 
+       if n = 0 or n = 1
+          return 1
        else
           return n * factorial(n-1)
        ok

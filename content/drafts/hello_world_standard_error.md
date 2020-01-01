@@ -335,8 +335,8 @@ The program must be compiled as a console application for this to work.
 
 Unlike puts(), fputs() does not append a terminal newline.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -365,8 +365,8 @@ static class StdErr
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main() {
   std::cerr << "Goodbye, World!\n";

@@ -44,7 +44,7 @@ This is the item list in the butcher's shop:
 |-
 | sausage || 5.9 || 98
 |- style="background-color: rgb(255, 204, 255);"
-| Knapsack || &lt;=15 kg || ? 
+| Knapsack || &lt;=15 kg || ?
 |}
 
 
@@ -76,25 +76,25 @@ Show which items the thief carries in his knapsack so that their total weight do
 with Ada.Text_IO;
 with Ada.Float_Text_IO;
 with Ada.Strings.Unbounded;
- 
+
 procedure Knapsack_Continuous is
    package US renames Ada.Strings.Unbounded;
- 
+
    type Item is record
       Name   : US.Unbounded_String;
       Weight : Float;
       Value  : Positive;
       Taken  : Float;
    end record;
- 
+
    function "<" (Left, Right : Item) return Boolean is
    begin
       return Float (Left.Value) / Left.Weight <
              Float (Right.Value) / Right.Weight;
    end "<";
- 
+
    type Item_Array is array (Positive range <>) of Item;
- 
+
    function Total_Weight (Items : Item_Array) return Float is
       Sum : Float := 0.0;
    begin
@@ -103,7 +103,7 @@ procedure Knapsack_Continuous is
       end loop;
       return Sum;
    end Total_Weight;
- 
+
    function Total_Value (Items : Item_Array) return Float is
       Sum : Float := 0.0;
    begin
@@ -112,7 +112,7 @@ procedure Knapsack_Continuous is
       end loop;
       return Sum;
    end Total_Value;
- 
+
    procedure Solve_Knapsack_Continuous
      (Items        : in out Item_Array;
       Weight_Limit : Float)
@@ -157,7 +157,7 @@ procedure Knapsack_Continuous is
       (US.To_Unbounded_String ("welt"), 3.7, 67, 0.0),
       (US.To_Unbounded_String ("salami"), 3.0, 95, 0.0),
       (US.To_Unbounded_String ("sausage"), 5.9, 98, 0.0));
- 
+
 begin
    Solve_Knapsack_Continuous (All_Items, 15.0);
    Ada.Text_IO.Put ("Total Weight: ");
@@ -308,23 +308,23 @@ welt      3.50  67.00  18.11 take 3.5 of 3.7
 ```bbcbasic
       INSTALL @lib$+"SORTSALIB"
       Sort% = FN_sortSAinit(1, 0) : REM Descending
-      
+
       nItems% = 9
       maxWeight = 15.0
-      
+
       DIM items{(nItems%-1) name$, weight, price, worth}
       FOR item% = 0 TO nItems%-1
         READ items{(item%)}.name$, items{(item%)}.weight, items{(item%)}.price
         items{(item%)}.worth = items{(item%)}.price / items{(item%)}.weight
       NEXT
-      
+
       DATA "beef", 3.8, 36, "pork", 5.4, 43, "ham", 3.6, 90
       DATA "greaves", 2.4, 45, "flitch", 4.0, 30, "brawn", 2.5, 56
       DATA "welt", 3.7, 67, "salami", 3.0, 95, "sausage", 5.9, 98
-      
+
       C% = nItems% : D% = 0
       CALL Sort%, items{()}, items{(0)}.worth
-      
+
       TotalWeight = 0
       TotalPrice = 0
       FOR i% = 0 TO nItems%-1
@@ -341,7 +341,7 @@ welt      3.50  67.00  18.11 take 3.5 of 3.7
           EXIT FOR
         ENDIF
       NEXT
-      
+
       PRINT '"Total weight = " ; TotalWeight " kg"
       PRINT "Total price  = " ; TotalPrice
       END
@@ -404,7 +404,7 @@ nib@_>0022p6>12p:212gg48*:**012gg/\-:0`3^+>,,55+%6v
 
 
 ```bracmat
-( ( fixed    {function to convert a rational number to fixed point notation. 
+( ( fixed    {function to convert a rational number to fixed point notation.
                             The second argument is the number of decimals. }
   =   value decimals powerOf10
     .   !arg:(?value.?decimals)
@@ -471,8 +471,8 @@ Output:
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 struct item { double w, v; const char *name; } items[] = {
@@ -625,34 +625,34 @@ class Program
    :sausage [5.9 98]})
 
 (defn rob [items maxW]
-  (let[ 
+  (let[
     val-item
         (fn[key]
           (- (/ (second (items key)) (first (items key )))))
-    compare-items 
-        (fn[key1 key2]  
+    compare-items
+        (fn[key1 key2]
           (compare (val-item key1) (val-item key2)))
     sorted (into (sorted-map-by compare-items) items)]
-    
-  (loop [current (first sorted) 
-         array (rest sorted) 
-         value 0 
+
+  (loop [current (first sorted)
+         array (rest sorted)
+         value 0
          weight 0]
-    (let[new-weight (first (val current)) 
+    (let[new-weight (first (val current))
          new-value (second (val current))]
     (if (> (- maxW weight new-weight) 0)
-      (do 
+      (do
         (println "Take all " (key current))
-        (recur 
-         (first array) 
-         (rest array) 
+        (recur
+         (first array)
+         (rest array)
          (+ value new-value)
          (+ weight new-weight)))
       (let [t (- maxW weight)] ; else
-      (println 
-       "Take " t " of " 
+      (println
+       "Take " t " of "
        (key current) "\n"
-       "Total Value is:" 
+       "Total Value is:"
        (+ value (* t (/ new-value new-weight))))))))))
 
 (rob items maxW)
@@ -666,7 +666,7 @@ Take all  :salami
 Take all  :ham
 Take all  :brawn
 Take all  :greaves
-Take  3.5  of  :welt 
+Take  3.5  of  :welt
  Total Value is: 349.3783783783784
 
 ```
@@ -710,8 +710,8 @@ Take  3.5  of  :welt
 ## C++
 
 
-```cpp>#include<iostream
-
+```cpp
+#include<iostream>
 #include<algorithm>
 #include<string.h>
 
@@ -856,11 +856,11 @@ vector< item_type > items =
     { 3.0, 95, "salami"  },
     { 5.9, 98, "sausage" }
 };
- 
+
 int main()
 {
     sort
-    ( 
+    (
         begin( items ), end( items ),
         [] (const item_type& a, const item_type& b)
         {
@@ -874,12 +874,12 @@ int main()
     {
         if ( space >= item.weight )
             cout << "Take all " << item.name << endl;
-        else 
+        else
         {
             cout << "Take " << space << "kg of " << item.name << endl;
             break;
         }
-            
+
         space -= item.weight;
     }
 }
@@ -1212,20 +1212,20 @@ defmodule KnapsackProblem do
     |> elem(1)
     |> Enum.reverse
   end
-  
+
   def task( items, max_weight ) do
     IO.puts "The robber takes the following to maximize the value"
     Enum.each( select( max_weight, items ), fn {name, weight} ->
       :io.fwrite("~.2f of ~s~n", [weight, name])
     end )
   end
-  
+
   defp select_until( {name, weight, _price}, {remains, acc} ) when remains > 0 do
     selected_weight = select_until_weight( weight, remains )
     {remains - selected_weight, [{name, selected_weight} | acc]}
   end
   defp select_until( _item, acc ), do: acc
-  
+
   defp select_until_weight( weight, remains ) when weight < remains, do: weight
   defp select_until_weight( _weight, remains ), do: remains
 end
@@ -1382,15 +1382,15 @@ The robber takes the following to maximize the value
 
 //Fill a knapsack optimally - Nigel Galloway: February 1st., 2015
 let items = [("beef", 3.8, 36);("pork", 5.4, 43);("ham", 3.6, 90);("greaves", 2.4, 45);("flitch" , 4.0, 30);("brawn", 2.5, 56);("welt", 3.7, 67);("salami" , 3.0, 95);("sausage", 5.9, 98)]
-            |> List.sortBy(fun(_,weight,value) -> float(-value)/weight) 
+            |> List.sortBy(fun(_,weight,value) -> float(-value)/weight)
 
 
 let knap items maxW=
-  let rec take(n,g,a) = 
+  let rec take(n,g,a) =
     match g with
       | i::e -> let name, weight, value = i
                 let total = n + weight
-                if total <= maxW then 
+                if total <= maxW then
                   printfn "Take all %s" name
                   take(total, e, a+float(value))
                 else
@@ -1470,7 +1470,7 @@ create items                           \ list of items
   (items) dup #items dup 0 ?do i items (items) i th ! loop sort
   begin                                \ use the sorted array
      dup weight@ left <=               \ still room in the knapsack?
-  while 
+  while
      ." Take all of the " dup .item    \ take all of the item
      left over weight@ - to left cell+ \ adjust knapsack, increment item
   repeat left 100 * dup                \ so how much is left?
@@ -1491,11 +1491,11 @@ knapsack
 ```fortran
 program KNAPSACK_CONTINUOUS
   implicit none
- 
+
   real, parameter :: maxweight = 15.0
   real :: total_weight = 0, total_value = 0, frac
   integer :: i, j
-  
+
   type Item
     character(7) :: name
     real :: weight
@@ -1503,7 +1503,7 @@ program KNAPSACK_CONTINUOUS
   end type Item
 
   type(Item) :: items(9), temp
-  
+
   items(1) = Item("beef",    3.8, 36.0)
   items(2) = Item("pork",    5.4, 43.0)
   items(3) = Item("ham",     3.6, 90.0)
@@ -1524,7 +1524,7 @@ program KNAPSACK_CONTINUOUS
      end do
     items(j+1) = temp
   end do
- 
+
   i = 0
   write(*, "(a4, a13, a6)") "Item", "Weight", "Value"
   do while(i < size(items) .and. total_weight < maxweight)
@@ -1538,11 +1538,11 @@ program KNAPSACK_CONTINUOUS
       total_weight = total_weight + items(i)%weight * frac
       total_value = total_value + items(i)%value * frac
       write(*, "(a7, 2f8.2)") items(i)%name, items(i)%weight * frac, items(i)%value * frac
-    end if 
+    end if
   end do
 
   write(*, "(f15.2, f8.2)") total_weight, total_value
- 
+
 end program KNAPSACK_CONTINUOUS
 ```
 
@@ -1801,26 +1801,26 @@ link printf
 
 procedure main()
 room := 15
-every (x := !(choices := get_items())).uprice := x.price / x.weight 
-choices := reverse(sortf(choices,4))  
+every (x := !(choices := get_items())).uprice := x.price / x.weight
+choices := reverse(sortf(choices,4))
 
 every (value := 0, x := !choices) do {
    if x.weight <= room then {
       printf("Take all of the %s (%r kg) worth $%r\n",x.name,x.weight,x.price)
       value +:= x.price
-      room -:= x.weight      
+      room -:= x.weight
       }
    else {
-      fvalue := x.uprice * room  
+      fvalue := x.uprice * room
       printf("Take (%r kg) of the %s worth $%r\n",room,x.name,fvalue)
       value +:= fvalue
       break
    }
-} 
+}
 printf("Total value of a full knapsack is $%r\n",value)
 end
 
-record item(name,weight,price,uprice)   
+record item(name,weight,price,uprice)
 
 procedure get_items()
    return [  item("beef", 3.8, 36),
@@ -1836,8 +1836,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
 
 Output:
 ```txt
@@ -2021,7 +2021,7 @@ public class ContinuousKnapsack {
             }
             calculated = true;
         }
-        
+
         return itemList;
     }
 
@@ -2134,10 +2134,10 @@ Total weight of solution = 15 kg
 Total value (profit)     = 349,378
 
 You can carry the following materials in the knapsack:
-3 kg       salami          (value = 95)    
-3,6 kg     ham             (value = 90)    
-2,5 kg     brawn           (value = 56)    
-2,4 kg     greaves         (value = 45)    
+3 kg       salami          (value = 95)
+3,6 kg     ham             (value = 90)
+2,5 kg     brawn           (value = 56)
+2,4 kg     greaves         (value = 45)
 3,5 kg     welt            (value = 63,378)
 ```
 
@@ -2163,7 +2163,7 @@ def continuous_knapsack(W):
        .[1] as $c
        | if $c <= 0 then .
          else ( [$item.weight, $c] | min) as $min
-              | [.[0] + [ $item | (.weight = $min) | .value = (.price * $min)], 
+              | [.[0] + [ $item | (.weight = $min) | .value = (.price * $min)],
                 ($c - $min) ]
          end)
   | .[1] as $remainder
@@ -2381,7 +2381,7 @@ Module Knapsack {
             partition=lambda-> {
                   Read &A(), p, r : i = p-1 : x=A(r)
                   For j=p to r-1 {If .LE(A(j), x) Then i++:Swap A(i),A(j)
-                  } : Swap A(i+1), A(r) :  Push  i+2, i 
+                  } : Swap A(i+1), A(r) :  Push  i+2, i
             }
       Public:
             LE=Lambda->Number<=Number
@@ -2390,7 +2390,7 @@ Module Knapsack {
                  Read ref$
                  {
                          loop : If Stackitem() >= Stackitem(2) Then Drop 2 : if  empty then {Break} else continue
-                         over 2,2 : call .partition(ref$) :shift 3 
+                         over 2,2 : call .partition(ref$) :shift 3
                  }
             }
       }
@@ -2471,7 +2471,7 @@ Knapsack[shop_, capacity_] :=  Block[{sortedTable, overN, overW, output},
  sortedTable = SortBy[{#1, #2, #3, #3/#2} & @@@ shop, -#[[4]] &];
  overN = Position[Accumulate[sortedTable[[1 ;;, 2]]], a_ /; a > capacity, 1,1][[1, 1]];
  overW = Accumulate[sortedTable[[1 ;;, 2]]][[overN]] - capacity;
-  
+
  output = Reverse@sortedTable[[Ordering[sortedTable[[1 ;;, 4]], -overN]]];
  output[[-1, 2]] = output[[-1, 2]] - overW;
  output[[-1, 3]] = output[[-1, 2]] output[[-1, 4]];
@@ -2482,8 +2482,8 @@ Knapsack[shop_, capacity_] :=  Block[{sortedTable, overN, overW, output},
 A test using the specified data:
 
 ```Mathematica
-weightPriceTable = 
-{{"beef", 3.8, 36}, {"pork", 5.4, 43}, {"ham", 3.6, 90}, {"greaves", 2.4, 45}, {"flitch", 4., 30}, 
+weightPriceTable =
+{{"beef", 3.8, 36}, {"pork", 5.4, 43}, {"ham", 3.6, 90}, {"greaves", 2.4, 45}, {"flitch", 4., 30},
 {"brawn", 2.5, 56}, {"welt", 3.7, 67}, {"salami", 3., 95}, {"sausage",  5.9, 98}};
 carryCapacity = 15;
 Knapsack[weightPriceTable, carryCapacity] // Grid
@@ -2502,9 +2502,9 @@ Total	15.	349.378
 ## Mathprog
 
 <lang>/*Knapsack
- 
+
   This model finds the optimal packing of a knapsack
- 
+
   Nigel_Galloway
   January 10th., 2012
 */
@@ -2521,16 +2521,16 @@ maximize knap_value: sum{t in Items} take[t] * (value[t]/weight[t]);
 data;
 
 param : Items          : weight   value :=
-        beef 	          3.8     36    
-        pork 	          5.4	  43	
-        ham 		  3.6	  90    
+        beef 	          3.8     36
+        pork 	          5.4	  43
+        ham 		  3.6	  90
         greaves           2.4     45
         flitch 	          4.0     30
         brawn 	          2.5     56
         welt 	          3.7     67
         salami 	          3.0     95
-        sausage           5.9     98                               
-        ;                                                        
+        sausage           5.9     98
+        ;
 end;
 ```
 
@@ -2580,7 +2580,7 @@ let () =
 
 
 {{out}}
- 
+
     Items  Weight Price
  greaves:   2.40  45
    brawn:   2.50  56
@@ -2600,15 +2600,15 @@ let () =
    [ "greaves", 2.4, 45 ], [ "flitch",  4.0, 30 ], [ "brawn",  	2.5, 56 ],
    [ "welt",  	3.7, 67 ], [ "salami",  3.0, 95 ], [ "sausage", 5.9, 98 ]
 ] const: Items
- 
+
 : rob
 | item value |
   0.0 ->value
   15.0 #[ dup second swap third / ] Items sortBy forEach: item [
      dup 0.0 == ifTrue: [ return ]
-     dup item second >= ifTrue: [ 
+     dup item second >= ifTrue: [
         "Taking" . item first . " :" . item second dup .cr -
-        item third value + ->value continue 
+        item third value + ->value continue
         ]
      "And part of" . item first . " :" . dup .cr
      item third * item second / value + "Total value :" . .cr break
@@ -3270,9 +3270,9 @@ Procedure addItem(name.s, weight.f, Value.f)
     \Value = Value
     If Not \weight
       \vDensity = \Value
-    Else 
+    Else
       \vDensity = \Value / \weight
-    EndIf 
+    EndIf
   EndWith
   itemCount + 1
 EndProcedure
@@ -3305,7 +3305,7 @@ For i = 0 To itemCount
     TotalWeight = #maxWeight
     TotalValue + knapsack()\Value
     Break
-  EndIf 
+  EndIf
 Next
 
 If OpenConsole()
@@ -3315,12 +3315,12 @@ If OpenConsole()
   PrintN("You can carry the following materials in the knapsack: ")
   ForEach knapsack()
     PrintN(RSet(StrF(knapsack()\weight, 1), 5, " ") + " kg  " + LSet(knapsack()\name, 10, " ") + "  (Value = " + StrF(knapsack()\Value, 3) + ")")
-  Next 
-  
+  Next
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
-EndIf 
+EndIf
 ```
 
 Sample output:
@@ -3415,7 +3415,7 @@ knapsack<- function(Value, Weight, Objects, Capacity){
     Fits <- TRUE
   }
   else{
-    Fits <- FALSE 
+    Fits <- FALSE
   }
   while (Fits && i <= n ){
     Fraction[i] <- 1
@@ -3461,11 +3461,11 @@ knapsack(v, w, o, 15)
 ```txt
 
 [1] "Fraction of available quantity to take:"
- salami     ham   brawn greaves    welt sausage    beef    pork  flitch 
-  1.000   1.000   1.000   1.000   0.946   0.000   0.000   0.000   0.000 
+ salami     ham   brawn greaves    welt sausage    beef    pork  flitch
+  1.000   1.000   1.000   1.000   0.946   0.000   0.000   0.000   0.000
 [1] "KG of each to take:"
- salami     ham   brawn greaves    welt sausage    beef    pork  flitch 
-    3.0     3.6     2.5     2.4     3.5     0.0     0.0     0.0     0.0 
+ salami     ham   brawn greaves    welt sausage    beef    pork  flitch
+    3.0     3.6     2.5     2.4     3.5     0.0     0.0     0.0     0.0
 [1] "Total value of tasty meats:"
 [1] 349.3784
 ```
@@ -3509,7 +3509,7 @@ knapsack(v, w, o, 15)
                              (+ sack-total-value bvi-taken-value)))))
 
 (define (report-knapsack sack total-value)
-  (for-each (lambda (item) 
+  (for-each (lambda (item)
               (if (eq? 'all-of (second item))
                   (printf "Take all of the ~a (for ~a)~%"
                           (first item) (third item))
@@ -3792,15 +3792,15 @@ dim wgt(9)
 dim price(9)
 dim tak$(100)
 
-name$(1) = "beef"      : wgt(1) = 3.8 : price(1) = 36 
-name$(2) = "pork"      : wgt(2) = 5.4 : price(2) = 43 
-name$(3) = "ham"       : wgt(3) = 3.6 : price(3) = 90 
-name$(4) = "greaves"   : wgt(4) = 2.4 : price(4) = 45 
-name$(5) = "flitch"    : wgt(5) = 4.0 : price(5) = 30 
-name$(6) = "brawn"     : wgt(6) = 2.5 : price(6) = 56 
-name$(7) = "welt"      : wgt(7) = 3.7 : price(7) = 67 
-name$(8) = "salami"    : wgt(8) = 3.0 : price(8) = 95 
-name$(9) = "sausage"   : wgt(9) = 5.9 : price(9) = 98 
+name$(1) = "beef"      : wgt(1) = 3.8 : price(1) = 36
+name$(2) = "pork"      : wgt(2) = 5.4 : price(2) = 43
+name$(3) = "ham"       : wgt(3) = 3.6 : price(3) = 90
+name$(4) = "greaves"   : wgt(4) = 2.4 : price(4) = 45
+name$(5) = "flitch"    : wgt(5) = 4.0 : price(5) = 30
+name$(6) = "brawn"     : wgt(6) = 2.5 : price(6) = 56
+name$(7) = "welt"      : wgt(7) = 3.7 : price(7) = 67
+name$(8) = "salami"    : wgt(8) = 3.0 : price(8) = 95
+name$(9) = "sausage"   : wgt(9) = 5.9 : price(9) = 98
 
 for beef    =         0 to 15 step 3.8
  for pork    =        0 to 15 step 5.4
@@ -3813,8 +3813,8 @@ for beef    =         0 to 15 step 3.8
         for sausage = 0 to 15 step 5.9
           if beef + pork + ham + greaves + flitch + brawn + welt + salami + sausage <= 15 then
              totPrice = beef     / 3.8 * 36 + _
-                        pork     / 5.4 * 43 + _ 
-                        ham      / 3.6 * 90 + _ 
+                        pork     / 5.4 * 43 + _
+                        ham      / 3.6 * 90 + _
                         greaves  / 2.4 * 45 + _
                         flitch   / 4.0 * 30 + _
                         brawn    / 2.5 * 56 + _
@@ -3826,14 +3826,14 @@ for beef    =         0 to 15 step 3.8
               theMax   = max(totPrice,maxPrice)
               t        = t + 1
               tak$(t)  = str$(maxPrice);",";beef;",";pork;",";ham;",";greaves;",";flitch;",";brawn;",";welt;",";salami;",";sausage
-            end if 
+            end if
           end if
 next:next :next :next :next :next :next :next :next
 
 print "Best 2 Options":print
 for i = t-1 to t
  totTake = val(word$(tak$(i),1,","))
- if totTake > 0 then 
+ if totTake > 0 then
    totWgt  = 0
    for j   = 2 to 10
     wgt    = val(word$(tak$(i),j,","))
@@ -3921,15 +3921,15 @@ Use LP solver in SAS/OR:
 data mydata;
    input item $ weight value;
    datalines;
-beef    3.8  36  
-pork    5.4  43  
-ham     3.6  90  
-greaves 2.4  45  
-flitch  4.0  30  
-brawn   2.5  56  
-welt    3.7  67  
-salami  3.0  95  
-sausage 5.9  98  
+beef    3.8  36
+pork    5.4  43
+ham     3.6  90
+greaves 2.4  45
+flitch  4.0  30
+brawn   2.5  56
+welt    3.7  67
+salami  3.0  95
+sausage 5.9  98
 ;
 
 /* call OPTMODEL procedure in SAS/OR */
@@ -3959,15 +3959,15 @@ quit;
 Output:
 
 ```txt
-TotalValue 
-349.38 
+TotalValue
+349.38
 
-[1] WeightSelected 
-brawn 2.5 
-greaves 2.4 
-ham 3.6 
-salami 3.0 
-welt 3.5 
+[1] WeightSelected
+brawn 2.5
+greaves 2.4
+ham 3.6
+salami 3.0
+welt 3.5
 ```
 
 
@@ -4187,7 +4187,7 @@ contents:
 
 ## Ursala
 
-We might as well leave this one to the experts by setting it up as a 
+We might as well leave this one to the experts by setting it up as a
 [[wp:Linear_programming|linear programming]] problem and handing it off to an external library (which will be either [http://sourceforge.net/projects/lpsolve lpsolve] or
 [http://www.gnu.org/software/glpk/glpk.html glpk] depending on the
 [http://www.basis.netii.net/avram run-time system] configuration).
@@ -4298,7 +4298,7 @@ items:=List( T(3.8, 36.0, "beef"),  T(5.4, 43.0, "pork"),  // weight, value, nam
 	     T(5.9, 98.0, "sausage"),
 );
 fcn item_cmp(a,b){ a[1]/a[0] > b[1]/b[0] }
- 
+
 items.sort(item_cmp);
 space := 15.0;
 foreach it in (items){ w,_,nm:=it;

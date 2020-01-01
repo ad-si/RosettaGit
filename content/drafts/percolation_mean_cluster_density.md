@@ -11,8 +11,8 @@ tags = []
 +++
 
 {{task|Percolation Simulations}}{{Percolation Simulation}}
-Let <math>c</math> be a 2D boolean square matrix of <math>n \times n</math> values of either <tt>1</tt> or <tt>0</tt> where the 
-probability of any value being <tt>1</tt> is <math>p</math>, (and of <tt>0</tt> is therefore <math>1-p</math>). 
+Let <math>c</math> be a 2D boolean square matrix of <math>n \times n</math> values of either <tt>1</tt> or <tt>0</tt> where the
+probability of any value being <tt>1</tt> is <math>p</math>, (and of <tt>0</tt> is therefore <math>1-p</math>).
 We define a ''cluster'' of <tt>1</tt>'s as being a group of <tt>1</tt>'s connected vertically or
 horizontally (i.e., using the [[wp:Von Neumann neighborhood|Von Neumann neighborhood rule]]) and bounded by either <math>0</math> or by the limits of the matrix.
 Let the number of such clusters in such a randomly constructed matrix be <math>C_n</math>.
@@ -21,9 +21,9 @@ Percolation theory states that <math>K(p)</math> (the mean cluster density) will
 
 ;Task
 
-Show the effect of varying <math>n</math> on the accuracy of simulated <math>K(p)</math> for <math>p = 0.5</math> and 
+Show the effect of varying <math>n</math> on the accuracy of simulated <math>K(p)</math> for <math>p = 0.5</math> and
 for values of <math>n</math> up to at least <math>1000</math>.
-Any calculation of <math>C_n</math> for finite <math>n</math> is subject to randomness, so an approximation should be 
+Any calculation of <math>C_n</math> for finite <math>n</math> is subject to randomness, so an approximation should be
 computed as the average of <math>t</math> runs, where <math>t</math> &ge; <math>5</math>.
 
 For extra credit, graphically show clusters in a <math>15\times 15</math>, <math>p=0.5</math> grid.
@@ -37,8 +37,8 @@ Show your output here.
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int *map, w, ww;
@@ -301,20 +301,20 @@ We use the canvas bit-map as 2D-matrix. For extra-extra credit, a 800x800 nice c
     (define C (pixels->int32-vector )) ;; get canvas bit-map
     (pixels-map (lambda (x y) (if (< (random) p) WHITE BLACK )) C)
     C )
-    
+
 ;; random color for new cluster
 (define (new-color)
     (hsv->rgb (random) 0.9 0.9))
-    
+
 ;; make-region predicate
 (define (in-cluster C x y)
     (= (pixel-ref C x y) WHITE))
-    
+
 ;; paint all adjacents to (x0,y0) with new color
 (define (make-cluster C x0 y0)
                 (pixel-set! C x0 y0 (new-color))
                 (make-region in-cluster C x0 y0))
-        
+
 ;; task
 (define (make-clusters (n 400) (p 0.5))
     (define Cn 0)
@@ -323,7 +323,7 @@ We use the canvas bit-map as 2D-matrix. For extra-extra credit, a 800x800 nice c
         (plot-clear)
         (set!  C (init-C n p))
         (for* ((x0 n) (y0 n))
-            #:when  (= (pixel-ref C x0 y0) WHITE) 
+            #:when  (= (pixel-ref C x0 y0) WHITE)
             (set! Cn (1+ Cn))
          (make-cluster C x0 y0)))
 
@@ -336,11 +336,11 @@ We use the canvas bit-map as 2D-matrix. For extra-extra credit, a 800x800 nice c
 
 ```txt
 
-n     100      Cn     3420       density     0.0684    
-n     400      Cn     53246      density     0.0665575    
-n     600      Cn     118346     density     0.06574778  
-n     800      Cn     212081     density     0.0662753125  
-n     1000     Cn     330732     density     0.0661464    
+n     100      Cn     3420       density     0.0684
+n     400      Cn     53246      density     0.0665575
+n     600      Cn     118346     density     0.06574778
+n     800      Cn     212081     density     0.0662753125
+n     1000     Cn     330732     density     0.0661464
 
 ```
 
@@ -519,20 +519,20 @@ func main() {
 
 Found 29 clusters in this 15 by 15 grid
 
-0)          a a a   b     c      
+0)          a a a   b     c
 1)  d     e     a       c c     f
-2)    g   e e e                  
+2)    g   e e e
 3)      h   e       i     j     k
-4)  l   h             m m     n  
+4)  l   h             m m     n
 5)  l           o   p     n n n n
-6)      q     o o o   r   n      
-7)          o o     r r       s  
+6)      q     o o o   r   n
+7)          o o     r r       s
 8)  t t     o   u     r   s s s s
 9)  t t   v   u u   r r   s s s s
-0)    t   v   u     r   r   s    
+0)    t   v   u     r   r   s
 1)      w       x   r   r     y y
 2)          z   x   r r r r r   y
-3)    A   z z     B     r r r r  
+3)    A   z z     B     r r r r
 4)  A A A   z   C       r   r r r
 
 t=  5 p=0.50 n=    4 sim=0.16250
@@ -636,7 +636,7 @@ Example use:
 So we can create a word that performs a simulation experiment, given a probability getting a 1 and the number of rows (and columns) of our square matrix M.
 
 
-```J>experiment=: K@ idclust@: 
+```J>experiment=: K@ idclust@:
  0 ?@$~ ,~
 ```
 
@@ -869,21 +869,21 @@ end
 ```txt
 Found 20 clusters in this 15×15 grid
 
-1) A       B   C C   D D D      
-2)       E   F         D   D    
-3)   G       F     D D D D D D  
+1) A       B   C C   D D D
+2)       E   F         D   D
+3)   G       F     D D D D D D
 4) G G   H   F   I   D D   D   J
 5)   G G   K   L       D       J
-6) G G G G       M       N N    
-7) G G   G G G G   O O O   N    
+6) G G G G       M       N N
+7) G G   G G G G   O O O   N
 8)         G   G     O     N N N
 9) P P P       G G G       N   N
 0) P   P P P   G     Q Q Q     N
 1) P             Q Q Q Q   N   N
 2) P                     N N N N
-3) P P P     R       S       N  
-4) P       R R R   S S     N N  
-5)     R R R       S   T     N  
+3) P P P     R       S       N
+4) P       R R R   S S     N N
+5)     R R R       S   T     N
 
 nrep =  5 p = 0.50 dim = 16 × 16       sim = 0.07500
 nrep =  5 p = 0.50 dim = 64 × 64       sim = 0.07178
@@ -1207,21 +1207,21 @@ sub fill ( @cur, $block ) {
 {{out}}
 
 ```txt
-.  .  1  .  2  .  .  3  .  .  .  4  .  .  . 
-2  2  .  .  2  2  2  .  5  5  .  4  4  4  4 
-2  2  2  2  2  .  2  .  5  .  .  4  .  .  4 
-2  .  2  .  2  2  .  .  .  .  4  4  4  .  4 
-.  .  .  .  .  2  .  .  .  .  4  4  4  .  . 
-6  6  6  6  .  .  7  7  .  .  4  .  4  4  . 
-6  .  6  .  .  .  .  .  4  4  4  4  4  .  . 
-6  6  6  .  .  .  8  8  .  4  4  4  .  .  4 
-6  .  .  .  9  .  .  .  .  .  .  4  4  .  4 
-.  10 .  11 .  .  12 12 .  4  .  .  4  4  4 
-11 .  11 11 11 11 .  12 .  4  .  4  4  4  . 
-11 11 11 11 11 11 11 .  .  4  4  .  .  4  . 
-11 11 11 11 .  11 .  .  .  4  4  4  4  4  . 
+.  .  1  .  2  .  .  3  .  .  .  4  .  .  .
+2  2  .  .  2  2  2  .  5  5  .  4  4  4  4
+2  2  2  2  2  .  2  .  5  .  .  4  .  .  4
+2  .  2  .  2  2  .  .  .  .  4  4  4  .  4
+.  .  .  .  .  2  .  .  .  .  4  4  4  .  .
+6  6  6  6  .  .  7  7  .  .  4  .  4  4  .
+6  .  6  .  .  .  .  .  4  4  4  4  4  .  .
+6  6  6  .  .  .  8  8  .  4  4  4  .  .  4
+6  .  .  .  9  .  .  .  .  .  .  4  4  .  4
+.  10 .  11 .  .  12 12 .  4  .  .  4  4  4
+11 .  11 11 11 11 .  12 .  4  .  4  4  4  .
+11 11 11 11 11 11 11 .  .  4  4  .  .  4  .
+11 11 11 11 .  11 .  .  .  4  4  4  4  4  .
 11 11 11 .  11 11 11 .  .  4  4  4  4  .  13
-.  11 11 .  11 11 .  .  .  .  4  4  .  14 . 
+.  11 11 .  11 11 .  .  .  .  4  4  .  14 .
 𝘱 = 0.5, 𝘕 = 15, 𝘒 = 0.062222
 
 𝘱 = 0.5, trials = 5, 𝘕 = 10, 𝘒 = 0.114
@@ -1260,7 +1260,7 @@ procedure show_cluster()
     end for
     puts(1,join_by(grid,w,w,""))
 end procedure
- 
+
 procedure recur(integer x, v)
     if x>=1 and x<=ww and grid[x]==-1 then
         grid[x] = v
@@ -1270,7 +1270,7 @@ procedure recur(integer x, v)
         recur(x+w, v)
     end if
 end procedure
- 
+
 function count_clusters()
     integer cls = 0
     for i=1 to ww do
@@ -1278,10 +1278,10 @@ function count_clusters()
             cls += 1
             recur(i, cls)
         end if
-    end for 
+    end for
     return cls
 end function
- 
+
 function tests(int n, atom p)
     atom k = 0
     for i=1 to n do
@@ -1290,18 +1290,18 @@ function tests(int n, atom p)
     end for
     return k / n
 end function
- 
+
 procedure main()
     w = 15
     make_grid(0.5)
     printf(1,"width=15, p=0.5, %d clusters:\n", count_clusters())
     show_cluster()
- 
+
     printf(1,"\np=0.5, iter=5:\n")
     w = 4
     while w<=4096 do
         printf(1,"%5d %9.6f\n", {w, tests(5,0.5)})
-        w *= 4 
+        w *= 4
     end while
 end procedure
 main()
@@ -1360,7 +1360,7 @@ def newgrid(n, p):
 
 def pgrid(cell):
     for n in range(N):
-        print( '%i)  ' % (n % 10) 
+        print( '%i)  ' % (n % 10)
                + ' '.join(cell2char[cell[n][m]] for m in range(M)))
 
 
@@ -1376,10 +1376,10 @@ def clustercount(cell):
                 walk_index += 1
                 walk_maze(m, n, cell, walk_index)
     return walk_index - 1
-        
+
 
 def walk_maze(m, n, cell, indx):
-    # fill cell 
+    # fill cell
     cell[n][m] = indx
     # down
     if n < N - 1 and cell[n+1][m] == NOT_CLUSTERED:
@@ -1397,11 +1397,11 @@ def walk_maze(m, n, cell, indx):
 
 if __name__ == '__main__':
     cell = newgrid(n=N, p=0.5)
-    print('Found %i clusters in this %i by %i grid\n' 
+    print('Found %i clusters in this %i by %i grid\n'
           % (clustercount(cell), N, N))
     pgrid(cell)
     print('')
-    
+
     for n in n_range:
         N = M = n
         sim = fsum(cluster_density(n, p) for i in range(t)) / t
@@ -1416,20 +1416,20 @@ if __name__ == '__main__':
 Found 20 clusters in this 15 by 15 grid
 
 0)  a a     b     c       d d d d
-1)  a a   e     f   g g   d      
-2)        e   f f f       d      
-3)  h h   e     f   i i   d d    
-4)        e       j     d d d d  
+1)  a a   e     f   g g   d
+2)        e   f f f       d
+3)  h h   e     f   i i   d d
+4)        e       j     d d d d
 5)    k k   k   k   l         d d
-6)  k k k k k   k   l   m   n    
+6)  k k k k k   k   l   m   n
 7)  k k k   k   k   l     o   p p
-8)      k   k k k   l l l   q    
+8)      k   k k k   l l l   q
 9)  k     k k k k     l     q q q
 0)  k   k k k         l     q q q
-1)  k k     k k k       r r      
-2)  k     k k       r r r   s s  
-3)  k k k k   r r r r r     s s  
-4)  k   k   t   r   r r     s s  
+1)  k k     k k k       r r
+2)  k     k k       r r r   s s
+3)  k k k k   r r r r r     s s
+4)  k   k   t   r   r r     s s
 
 t=  5 p=0.50 n=   16 sim=0.08984
 t=  5 p=0.50 n=   64 sim=0.07310
@@ -1458,7 +1458,7 @@ As n increases, the sim result gets closer to 0.065770...
   (only-in racket/fixnum for/fxvector in-fxvector fxvector-copy))
 
 ; ...(but less safe). if in doubt use this rather than the one above
-; (require racket/fixnum) 
+; (require racket/fixnum)
 
 (define t (make-parameter 5))
 
@@ -1494,7 +1494,7 @@ As n increases, the sim result gets closer to 0.065770...
     (when (fx= 1 (fxvector-ref g k))
       (define k-r (fxquotient k M))
       (define k-c (fxremainder k M))
-      (fxvector-set! g k c)       
+      (fxvector-set! g k c)
       (define-syntax-rule (gather-surrounds range? k+)
         (let ((idx k+))
           (when (and range? (fx= 1 (fxvector-ref g idx)))
@@ -1503,7 +1503,7 @@ As n increases, the sim result gets closer to 0.065770...
       (gather-surrounds (fx> k-c 0) (fx- k 1))
       (gather-surrounds (fx< k-c (fx- M 1)) (fx+ k 1))
       (gather-surrounds (fx< k-r (fx- N 1)) (fx+ k M))))
-  
+
   (define-values (rv _c)
     (for/fold ((rv 0) (c 2))
       ((pos (in-range (fx* M N)))
@@ -1562,21 +1562,21 @@ Experiment: 1/2 200 10	[0*][1*][2*][3*][4*][5*][6*][7*][8*][9*]	mean K(p) = 0.06
 Experiment: 1/2 100 10	[0*][1*][2*][3*][4*][5*][6*][7*][8*][9*]	mean K(p) = 0.069980
 Experiment: 1/2 15 10	[0*][1*][2*][3*][4*][5*][6*][7*][8*][9*]	mean K(p) = 0.089778
 Percolation cluster sample: p=1/2
-|.  ...     . . | |A  BBB     A A | 
-|...    .. .... | |AAA    AA AAAA | 
-|. .   .... ... | |A A   AAAA AAA | 
-|. . . .........| |A A C AAAAAAAAA| 
-| ...   ..  ....| | AAA   AA  AAAA| 
-|.. ......... ..| |AA AAAAAAAAA AA| 
-|     . ...     | |     A AAA     | 
-|. ..  ..       | |D AA  AA       | 
-|   .. ... . .. | |   AA AAA E AA | 
-|.  ..  ..  . . | |F  AA  AA  A A | 
-|. ........ . ..| |F AAAAAAAA A AA| 
-|.. .  .... ... | |FF A  AAAA AAA | 
-| .  .  . ....  | | F  G  A AAAA  | 
-|.... .. ..  . .| |FFFF HH AA  A A| 
-|  .  ..   .....| |  F  HH   AAAAA| 
+|.  ...     . . | |A  BBB     A A |
+|...    .. .... | |AAA    AA AAAA |
+|. .   .... ... | |A A   AAAA AAA |
+|. . . .........| |A A C AAAAAAAAA|
+| ...   ..  ....| | AAA   AA  AAAA|
+|.. ......... ..| |AA AAAAAAAAA AA|
+|     . ...     | |     A AAA     |
+|. ..  ..       | |D AA  AA       |
+|   .. ... . .. | |   AA AAA E AA |
+|.  ..  ..  . . | |F  AA  AA  A A |
+|. ........ . ..| |F AAAAAAAA A AA|
+|.. .  .... ... | |FF A  AAAA AAA |
+| .  .  . ....  | | F  G  A AAAA  |
+|.... .. ..  . .| |FFFF HH AA  A A|
+|  .  ..   .....| |  F  HH   AAAAA|
 8 clusters
 ```
 
@@ -1696,7 +1696,7 @@ fcn showCluster{
 }
 fcn countClusters{
    clusters:=0;
-   foreach n in (NN){ 
+   foreach n in (NN){
       if(X!=C[n]) continue;
       fcn(n,v){
 	 if((0<=n<NN) and C[n]==X){

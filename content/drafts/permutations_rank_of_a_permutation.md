@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task}}
-A particular ranking of a permutation associates an integer with a particular ordering of all the permutations of a set of distinct items. 
+A particular ranking of a permutation associates an integer with a particular ordering of all the permutations of a set of distinct items.
 For our purposes the ranking will assign integers <math>0 .. (n! - 1)</math> to an ordering of all the permutations of the integers <math>0 .. (n - 1)</math>.
 
 For example, the permutations of the digits zero to 3 arranged lexicographically have the following rank:
@@ -76,12 +76,12 @@ A [http://stackoverflow.com/questions/12884428/generate-sample-of-1-000-000-rand
 ## C
 
 
-###  C: Myrvold and Ruskey 
+###  C: Myrvold and Ruskey
 
 This is algorithm #1 from the M&R paper.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 #define SWAP(a,b) do{t=(a);(a)=(b);(b)=t;}while(0)
@@ -350,13 +350,13 @@ Sub unrank2(n As ULong, r As ULongInt, pi() As ubyte)
 End Sub
 
 Function rank2(n As ULong, pi() As UByte, pi_inv() As UByte) As ULongInt
-    
+
     If n = 1 Then Return 0
     Dim As UByte s = pi(n -1)
     Swap pi(n -1), pi(pi_inv(n -1))
     Swap pi_inv(s), pi_inv(n -1)
     Return (s * Factorial(n -1) + rank2(n -1, pi(), pi_inv()))
-    
+
 End Function
 
 ' ------=< MAIN >=------
@@ -366,7 +366,7 @@ Dim As UByte pi(), pi_inv()
 Dim As String frmt1, frmt2
 Randomize timer
 
-n = 3 : n1 = Factorial(n) 
+n = 3 : n1 = Factorial(n)
 ReDim pi(n -1), pi_inv(n - 1)
 frmt1 = " ###"
 frmt2 = "##"
@@ -407,7 +407,7 @@ Next
 Print : Print String(69,"-") : Print
 Print "Rank:     unrank2       rank2"
 
-n = 3 : n1 = Factorial(n) 
+n = 3 : n1 = Factorial(n)
 ReDim pi(n -1), pi_inv(n - 1)
 frmt1 = " ###"
 frmt2 = "##"
@@ -423,7 +423,7 @@ For i = 0 To n1 -1
         Print Using frmt2; pi(j);
         pi_inv(pi(j))= j
     Next
-    
+
     Print Using "  -->" & frmt1; rank2(n, pi(), pi_inv())
 
 Next
@@ -579,7 +579,7 @@ For i = 1 To 4
         Print pi[j]; " ";
     Next
     Print : Print
-    
+
 Next
 
 ' test rank1
@@ -600,7 +600,7 @@ Else
     Print "Oh no, they are different"
 End If
 
-' clean up 
+' clean up
 Gmp_randclear(@rnd_): DeAllocate(gmp_str)
 Mpz_clear(_tmp1_)  : Mpz_clear(_tmp2_)
 Mpz_clear(rank_nr) : Mpz_clear(max_nr)
@@ -616,16 +616,16 @@ End
 
 ```txt
 862993243747395020367391904490190117106585269146708404403331561502140758428008657463653366643611155380240799622282374456087743515643868809722278635878978733132591027133490410275442362000562723356064257191755491520940533177124123076535632269113257248
-84 75 30 143 96 137 6 93 1 7 139 13 128 26 54 53 58 80 49 121 48 57 110 18 65 39 28 123 104 74 0 115 118 55 94 124 79 3 40 37 31 19 91 15 45 4 99 85 12 125 73 105 50 103 2 72 100 106 140 59 131 111 132 71 87 101 33 83 116 61 117 46 23 102 22 78 34 122 97 67 21 66 38 95 133 56 51 119 134 130 76 136 10 5 108 86 98 64 68 14 89 127 36 126 29 32 42 135 107 47 88 141 109 82 90 138 41 44 9 113 81 43 77 25 17 52 69 70 20 60 129 92 120 142 24 11 112 27 63 8 114 62 35 16 
+84 75 30 143 96 137 6 93 1 7 139 13 128 26 54 53 58 80 49 121 48 57 110 18 65 39 28 123 104 74 0 115 118 55 94 124 79 3 40 37 31 19 91 15 45 4 99 85 12 125 73 105 50 103 2 72 100 106 140 59 131 111 132 71 87 101 33 83 116 61 117 46 23 102 22 78 34 122 97 67 21 66 38 95 133 56 51 119 134 130 76 136 10 5 108 86 98 64 68 14 89 127 36 126 29 32 42 135 107 47 88 141 109 82 90 138 41 44 9 113 81 43 77 25 17 52 69 70 20 60 129 92 120 142 24 11 112 27 63 8 114 62 35 16
 
 47917723140095432157221855096154499194255080002636063395350120073895688582070571512322163408396671848674709640997560726617711987824266984538507398611573887009966471806599805673347764192963174688919909816413311485279097811517332552325468088920570999
-51 66 35 132 62 41 85 11 102 10 8 77 47 86 67 133 7 113 68 63 55 14 2 53 136 123 120 134 98 44 82 135 38 56 33 3 18 73 59 39 24 87 60 49 100 130 54 125 142 12 143 36 108 79 88 52 48 40 70 121 97 106 27 50 84 81 101 103 69 104 65 80 127 21 129 138 71 83 0 31 109 61 91 42 9 89 25 28 37 1 57 111 94 64 90 58 128 139 72 17 22 29 78 137 34 95 45 122 43 4 112 32 105 119 116 114 46 140 5 126 117 141 99 75 74 16 92 93 30 15 76 124 131 19 6 118 115 13 110 107 26 20 96 23 
+51 66 35 132 62 41 85 11 102 10 8 77 47 86 67 133 7 113 68 63 55 14 2 53 136 123 120 134 98 44 82 135 38 56 33 3 18 73 59 39 24 87 60 49 100 130 54 125 142 12 143 36 108 79 88 52 48 40 70 121 97 106 27 50 84 81 101 103 69 104 65 80 127 21 129 138 71 83 0 31 109 61 91 42 9 89 25 28 37 1 57 111 94 64 90 58 128 139 72 17 22 29 78 137 34 95 45 122 43 4 112 32 105 119 116 114 46 140 5 126 117 141 99 75 74 16 92 93 30 15 76 124 131 19 6 118 115 13 110 107 26 20 96 23
 
 637688984437952365760382441209327118273063325774553997216592843807533086351173589568994187460815088373920825908715346187961371659995682060813263279599005102426783594559898201756229325528014412155293729428911717526485652807912451026347128904648868007
-19 83 140 55 33 120 47 36 25 67 88 37 96 56 81 45 0 119 40 136 118 132 106 4 51 21 94 124 115 48 43 14 50 65 117 6 12 42 91 135 69 101 125 113 93 1 100 63 139 8 85 134 22 44 38 92 107 18 29 73 123 78 59 137 16 98 114 103 58 80 57 77 84 129 102 17 111 46 76 122 13 141 68 143 23 74 90 20 70 7 61 53 121 99 52 126 133 72 34 15 30 75 3 27 116 86 54 105 32 95 97 41 110 71 79 62 131 9 128 26 49 109 35 2 130 82 104 142 66 138 127 60 24 64 112 11 31 5 10 108 89 28 39 87 
+19 83 140 55 33 120 47 36 25 67 88 37 96 56 81 45 0 119 40 136 118 132 106 4 51 21 94 124 115 48 43 14 50 65 117 6 12 42 91 135 69 101 125 113 93 1 100 63 139 8 85 134 22 44 38 92 107 18 29 73 123 78 59 137 16 98 114 103 58 80 57 77 84 129 102 17 111 46 76 122 13 141 68 143 23 74 90 20 70 7 61 53 121 99 52 126 133 72 34 15 30 75 3 27 116 86 54 105 32 95 97 41 110 71 79 62 131 9 128 26 49 109 35 2 130 82 104 142 66 138 127 60 24 64 112 11 31 5 10 108 89 28 39 87
 
 535399200299805723659842638329571779126013359471038683394020671731433287381148973163739727170996720550440081854802426694781596591608094704788192315510887507170772714624651896802083185333111090759049957219000637867635603301395042723152111042332094947
-57 21 94 2 117 69 46 105 86 43 109 25 101 62 50 89 121 7 142 95 113 136 51 15 14 111 54 66 61 1 138 116 23 19 123 129 12 134 82 127 73 100 78 39 37 135 63 90 139 28 67 58 122 49 125 99 60 4 44 141 76 71 11 108 59 110 9 112 5 92 16 124 131 56 48 72 68 40 74 34 130 55 133 42 119 132 97 22 118 52 140 83 103 27 32 84 96 65 10 107 88 18 30 87 115 120 93 70 35 64 75 91 8 126 20 31 98 128 104 13 80 77 0 106 6 33 17 36 41 24 102 137 81 38 45 53 79 143 29 26 114 47 85 3 
+57 21 94 2 117 69 46 105 86 43 109 25 101 62 50 89 121 7 142 95 113 136 51 15 14 111 54 66 61 1 138 116 23 19 123 129 12 134 82 127 73 100 78 39 37 135 63 90 139 28 67 58 122 49 125 99 60 4 44 141 76 71 11 108 59 110 9 112 5 92 16 124 131 56 48 72 68 40 74 34 130 55 133 42 119 132 97 22 118 52 140 83 103 27 32 84 96 65 10 107 88 18 30 87 115 120 93 70 35 64 75 91 8 126 20 31 98 128 104 13 80 77 0 106 6 33 17 36 41 24 102 137 81 38 45 53 79 143 29 26 114 47 85 3
 
 Calculate rank from last return of unrank1
 
@@ -808,7 +808,7 @@ from rank to permutation back to rank:
 
 ## J
 
-The J primitive <code>A.</code> provides an effective solution to this task. Generating 4 random permutations of 144 items takes about 6 milliseconds so solving the Stack Overflow question ought to take about 100 minutes on that particular test machine.  
+The J primitive <code>A.</code> provides an effective solution to this task. Generating 4 random permutations of 144 items takes about 6 milliseconds so solving the Stack Overflow question ought to take about 100 minutes on that particular test machine.
 
 
 ```j
@@ -874,7 +874,7 @@ class RankPermutation
     }
     return rank;
   }
-  
+
   public static int[] getPermutation(int n, BigInteger rank)
   {
     int[] digits = new int[n];
@@ -897,7 +897,7 @@ class RankPermutation
     }
     return permutation;
   }
-  
+
   public static void main(String[] args)
   {
     for (int i = 0; i < 6; i++)
@@ -922,7 +922,7 @@ class RankPermutation
       }
     }
   }
-  
+
 }
 ```
 
@@ -954,7 +954,7 @@ n = 144
 
 ## Julia
 
-Julia has native support for permutations.  Depending upon its arguments, <tt>nthperm</tt> will either return the rank of a permutation or permute a vector according to the provided rank.  <tt>randperm(n)</tt> returns a random permutation of <tt>n</tt> objects.  
+Julia has native support for permutations.  Depending upon its arguments, <tt>nthperm</tt> will either return the rank of a permutation or permute a vector according to the provided rank.  <tt>randperm(n)</tt> returns a random permutation of <tt>n</tt> objects.
 
 Note that, because Julia uses 1-based array indexing, permutations consists of lists of [1, ..., <tt>n</tt>] rather than the [0, ..., <tt>n-1</tt>] used for many of the other solutions to this task.  Also, Julian partition ranks range from 1 to <tt>n!</tt> rather than from 0 to <tt>n!-1</tt>.
 
@@ -1050,7 +1050,7 @@ tailrec fun mrUnrank1(rank: Int, n: Int, vec: IntArray) {
     if (n < 1) return
     val q = rank / n
     val r = rank % n
-    vec.swap(r, n - 1) 
+    vec.swap(r, n - 1)
     mrUnrank1(q, n - 1, vec)
 }
 
@@ -1060,7 +1060,7 @@ fun mrRank1(n: Int, vec: IntArray, inv: IntArray): Int {
     vec.swap(n - 1, inv[n - 1])
     inv.swap(s, n - 1)
     return s + n * mrRank1(n - 1, vec, inv)
-} 
+}
 
 fun getPermutation(rank: Int, n: Int, vec: IntArray) {
     for (i in 0 until n) vec[i] = i
@@ -1078,13 +1078,13 @@ fun getRank(n: Int, vec: IntArray): Int {
 }
 
 fun main(args: Array<String>) {
-    var tv = IntArray(3)   
+    var tv = IntArray(3)
     for (r in 0..5) {
         getPermutation(r, 3, tv)
         System.out.printf("%2d -> %s -> %d\n", r, tv.contentToString(), getRank(3, tv))
     }
     println()
-    tv = IntArray(4)   
+    tv = IntArray(4)
     for (r in 0..23) {
         getPermutation(r, 4, tv)
         System.out.printf("%2d -> %s -> %d\n", r, tv.contentToString(), getRank(4, tv))
@@ -1155,15 +1155,15 @@ fun main(args: Array<String>) {
 
 ```mathematica
 fromrank[list_, 0] := list;
-fromrank[list_, n_] := 
-  Prepend[fromrank[DeleteCases[list, #], 
+fromrank[list_, n_] :=
+  Prepend[fromrank[DeleteCases[list, #],
       Mod[n, (Length@list - 1)!]], #] &@
    RankedMin[list, Quotient[n, (Length@list - 1)!] + 1];
 
 rank[{}] = 0;
 rank[{x_, y___}] := Count[{y}, _?(# < x &)] Length@{y}! + rank[{y}];
 
-Print /@ Table[{n, fromrank[{0, 1, 2, 3}, n], 
+Print /@ Table[{n, fromrank[{0, 1, 2, 3}, n],
     rank@fromrank[{0, 1, 2, 3}, n]}, {n, 0, 23}];
 
 Do[Print@fromrank[Range[0, 12 - 1], RandomInteger[12!]], {4}];
@@ -1305,7 +1305,7 @@ sub rank2inv ( $rank, $n = * ) {
 }
 
 sub inv2rank ( @inv ) {
-    [+] @inv Z* [\*] 1, 1, * + 1 ... * 
+    [+] @inv Z* [\*] 1, 1, * + 1 ... *
 }
 
 sub inv2perm ( @inv, @items is copy = ^@inv.elems ) {
@@ -1316,12 +1316,12 @@ sub inv2perm ( @inv, @items is copy = ^@inv.elems ) {
     @perm;
 }
 
-sub perm2inv ( @perm ) {     #not in linear time 
+sub perm2inv ( @perm ) {     #not in linear time
     (
-        { @perm[++$ .. *].grep( * < $^cur ).elems } for @perm;  
+        { @perm[++$ .. *].grep( * < $^cur ).elems } for @perm;
     ).reverse;
-}    
-    
+}
+
 for ^6 {
     my @row.push: $^rank;
     for ( *.&rank2inv(3) , &inv2perm, &perm2inv, &inv2rank )  -> &code {
@@ -1335,7 +1335,7 @@ my $n     = 12;      #144;
 
 say 'Via BigInt rank';
 for ( ( ^([*] 1 .. $n) ).pick($perms) ) {
-    say $^rank.&rank2inv($n).&inv2perm; 
+    say $^rank.&rank2inv($n).&inv2perm;
 };
 
 say 'Via inversion vectors';
@@ -1461,7 +1461,7 @@ from math import factorial as fact
 from random import randrange
 from textwrap import wrap
 
-def identity_perm(n): 
+def identity_perm(n):
     return list(range(n))
 
 def unranker1(n, r, pi):
@@ -1472,14 +1472,14 @@ def unranker1(n, r, pi):
         r = rdivn
     return pi
 
-def init_pi1(n, pi): 
+def init_pi1(n, pi):
     pi1 = [-1] * n
-    for i in range(n): 
+    for i in range(n):
         pi1[pi[i]] = i
     return pi1
 
 def ranker1(n, pi, pi1):
-    if n == 1: 
+    if n == 1:
         return 0
     n1 = n-1
     s = pi[n1]
@@ -1497,7 +1497,7 @@ def unranker2(n, r, pi):
     return pi
 
 def ranker2(n, pi, pi1):
-    if n == 1: 
+    if n == 1:
         return 0
     n1 = n-1
     s = pi[n1]
@@ -1505,15 +1505,15 @@ def ranker2(n, pi, pi1):
     pi1[s], pi1[n1] = pi1[n1], pi1[s]
     return s * fact(n1) + ranker2(n1, pi, pi1)
 
-def get_random_ranks(permsize, samplesize):    
+def get_random_ranks(permsize, samplesize):
     perms = fact(permsize)
     ranks = set()
     while len(ranks) < samplesize:
-        ranks |= set( randrange(perms) 
+        ranks |= set( randrange(perms)
                       for r in range(samplesize - len(ranks)) )
-    return ranks    
+    return ranks
 
-def test1(comment, unranker, ranker):    
+def test1(comment, unranker, ranker):
     n, samplesize, n2 = 3, 4, 12
     print(comment)
     perms = []
@@ -1530,7 +1530,7 @@ def test1(comment, unranker, ranker):
         print('    ' + ' '.join('%2i' % i for i in unranker(n2, r, pi)))
     print('')
 
-def test2(comment, unranker):    
+def test2(comment, unranker):
     samplesize, n2 = 4, 144
     print(comment)
     print('  %i random individual samples of %i items:' % (samplesize, n2))
@@ -1625,7 +1625,7 @@ Functions ranker1 and ranker2 can be changed from the recursive form as used in 
 
 ```python
 def ranker1(n, pi, pi1):
-    if n == 1: 
+    if n == 1:
         return 0
     n1 = n-1
     s = pi[n1]
@@ -1660,7 +1660,7 @@ Mimicking the Haskell style.
               (def (a (cons c b)) (split-at xs q))
               (cons c (perm (append a b) r))]))
 
-(define (rank ys) 
+(define (rank ys)
   (cond [(empty? ys) 0]
         [else (def ((cons x0 xs)) ys)
               (+ (rank xs)
@@ -1712,7 +1712,7 @@ The   '''permsets'''   subroutine (actually, a function) is a modified version o
 
 This modified version starts the permute numbers with   '''0'''   (zero)   instead of   '''1'''.
 
-Since this REXX program generates permutations without recursive calls, 
+Since this REXX program generates permutations without recursive calls,
 testing for the limit for a   ''stack overflow''   wouldn't be necessary using this REXX program.
 
 ```rexx
@@ -1808,12 +1808,12 @@ for perm = 0 to 23
     see "(" + str + ") -> " + perm
     nextPermutation(list)
 next
- 
+
 func nextPermutation(a)
      elementcount = len(a)
      if elementcount < 1 then return ok
      pos = elementcount-1
-     while a[pos] >= a[pos+1] 
+     while a[pos] >= a[pos+1]
            pos -= 1
            if pos <= 0 permutationReverse(a, 1, elementcount)
               return
@@ -1827,7 +1827,7 @@ func nextPermutation(a)
      a[pos] = a[last]
      a[last] = temp
      permutationReverse(a, pos+1, elementcount)
- 
+
  func permutationReverse(a, first, last)
       while first < last
             temp = a[first]
@@ -1879,17 +1879,17 @@ Output:
 class Permutation
   include Enumerable
   attr_reader :num_elements, :size
-  
+
   def initialize(num_elements)
     @num_elements = num_elements
     @size = fact(num_elements)
   end
-  
+
   def each
     return self.to_enum unless block_given?
     (0...@size).each{|i| yield unrank(i)}
   end
-  
+
   def unrank(r)  # nonrecursive version of Myrvold Ruskey unrank2 algorithm.
     pi = (0...num_elements).to_a
     (@num_elements-1).downto(1) do |n|
@@ -1898,7 +1898,7 @@ class Permutation
     end
     pi
   end
-  
+
   def rank(pi)  # nonrecursive version of Myrvold Ruskey rank2 algorithm.
     pi = pi.dup
     pi1 = pi.zip(0...pi.size).sort.map(&:last)
@@ -1908,7 +1908,7 @@ class Permutation
       memo += s * fact(i)
     end
   end
-  
+
   private
   def fact(n)
     n.zero? ? 1 : n.downto(1).inject(:*)
@@ -1922,7 +1922,7 @@ Demo:
 puts "All permutations of 3 items from and back to rank."
 perm = Permutation.new(3)
 (0...perm.size).each{|num| puts "#{num} --> #{prm=perm.unrank(num)} --> #{perm.rank(prm)}"}
- 
+
 puts "\n4 random samples of 12 items from and back to rank."
 perm = Permutation.new(12)
 4.times{ puts "%9d --> %s --> %9d" % [r=rand(perm.size), prm=perm.unrank(r), perm.rank(prm)]}
@@ -2200,7 +2200,7 @@ foreach rank in ((5).pump(List,(0).random.fp(max)).sort()){
    println("%3d: %s = %d".fmt(rank, p, computeRank(p)));
 }
 println();
- 
+
     // Permutations of 12 to compare to other solutions
 items:=(12).toList();  // (0,1,2,3,..11)
 foreach rank in (T(340494881,469128647,460982459,432900481)){

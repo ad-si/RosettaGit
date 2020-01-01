@@ -11,11 +11,11 @@ tags = []
 +++
 
 {{task}}[[Category:HTML]]
-Create an HTML table. 
+Create an HTML table.
 * The table body should have at least three rows of three columns.
-* Each of these three columns should be labelled "X", "Y", and "Z". 
-* An extra column should be added at either the extreme left or the extreme right of the table that has no heading, but is filled with sequential row numbers. 
-* The rows of the "X", "Y", and "Z" columns should be filled with random or sequential integers having 4 digits or less. 
+* Each of these three columns should be labelled "X", "Y", and "Z".
+* An extra column should be added at either the extreme left or the extreme right of the table that has no heading, but is filled with sequential row numbers.
+* The rows of the "X", "Y", and "Z" columns should be filled with random or sequential integers having 4 digits or less.
 * The numbers should be aligned in the same fashion for all columns.
 
 
@@ -52,7 +52,7 @@ CREHTML  CSECT
        DO WHILE=(C,R7,LE,NCOLS)      do col=1 to ncols
        IF LTR,R6,Z,R6 THEN             if row=0
          LR     R1,R7                    col
-         LA     R4,TCAR-1(R1)            tcar(col) 
+         LA     R4,TCAR-1(R1)            tcar(col)
          MVC    PGTH+4(1),0(R4)          output heading
          XPRNT  PGTH,64                  <th>.</th>
        ELSE     ,                      else
@@ -66,7 +66,7 @@ CREHTML  CSECT
        ENDDO    ,                    enddo col
          XPRNT  PGETR,64             </tr>
          LA     R6,1(R6)             row++
-       ENDDO    ,                  enddo row 
+       ENDDO    ,                  enddo row
          XPRNT  PGETAB,64          </table>
          XPRNT  PGEBODY,64         </body></html>
          L      R13,4(0,R13)       epilog
@@ -190,13 +190,13 @@ The implementation of the package:
 
 
 ```Ada
-package body HTML_Table is                                                                        
-                                                                                                  
-   procedure Print(Items: Item_Array; Column_Heads: Header_Array) is                              
-                                                                                                  
-      function Blanks(N: Natural) return String is                                                
-         -- indention for better readable HTML                                                    
-      begin                                                                                       
+package body HTML_Table is
+
+   procedure Print(Items: Item_Array; Column_Heads: Header_Array) is
+
+      function Blanks(N: Natural) return String is
+         -- indention for better readable HTML
+      begin
          if N=0 then
             return "";
          else
@@ -309,10 +309,10 @@ Each time you run the program, you get different random values for the table. {{
 {{out}}
 
 ```txt
-        X    Y    Z                                                                                  
-   1 7255 3014 9436                                                                                  
-   2  554 3314 8765                                                                                  
-   3 4832  129 2048                                                                                  
+        X    Y    Z
+   1 7255 3014 9436
+   2  554 3314 8765
+   3 4832  129 2048
    4   31 6897 8265
 
 ```
@@ -655,11 +655,11 @@ Rand(u=1000){
 
 ## AWK
 
- 	
+
 
 ```AWK
 #!/usr/bin/awk -f
-BEGIN { 
+BEGIN {
    print "<table>\n  <thead align = \"right\">"
    printf "    <tr><th></th><td>X</td><td>Y</td><td>Z</td></tr>\n  </thead>\n  <tbody align = \"right\">\n"
    for (i=1; i<=10; i++) {
@@ -817,12 +817,12 @@ Uses BBC BASIC's *spool command to create a file.
 ```bbcbasic
       ncols% = 3
       nrows% = 4
-      
+
       *spool temp.htm
-      
+
       PRINT "<html><head></head><body>"
       PRINT "<table border=1 cellpadding=10 cellspacing=0>"
-      
+
       FOR row% = 0 TO nrows%
         IF row% = 0 THEN
           PRINT "<tr><th></th>" ;
@@ -838,12 +838,12 @@ Uses BBC BASIC's *spool command to create a file.
         NEXT col%
         PRINT "</tr>"
       NEXT row%
-      
+
       PRINT "</table>"
       PRINT "</body></html>"
-      
+
       *spool
-      
+
       SYS "ShellExecute", @hwnd%, 0, "temp.htm", 0, 0, 1
 
 ```
@@ -890,7 +890,7 @@ To make this interesting, the table is created as a Bracmat structure and then c
         =   cellText
           .     !arg:%?cellText ?arg
               & (th.,!cellText) headCells$!arg
-            | 
+            |
         )
       & ( cells
         =   cellText cellTexts numberGenerator
@@ -898,23 +898,23 @@ To make this interesting, the table is created as a Bracmat structure and then c
                 : (%?cellText ?cellTexts.(=?numberGenerator))
               &   (td.,numberGenerator$)
                   cells$(!cellTexts.'$numberGenerator)
-            | 
+            |
         )
       & ( rows
         =   headTexts rowNr maxRowNr Generator
           .     !arg:(?headTexts.?rowNr.?maxRowNr.?Generator)
               & !rowNr:~>!maxRowNr
               &   ( tr
-                  .   
+                  .
                     ,   (td.,!rowNr)
                         cells$(!headTexts.!Generator)
                   )
                   \n
                   rows$(!headTexts.!rowNr+1.!maxRowNr.!Generator)
-            | 
+            |
         )
       &   ( table
-          .   
+          .
             ,   ( thead
                 .   (align.right)
                   , \n (tr.,(th.," ") headCells$!headTexts)
@@ -961,8 +961,8 @@ To make this interesting, the table is created as a Bracmat structure and then c
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int main()
@@ -986,8 +986,8 @@ int main()
 ## C++
 
 
-```cpp>#include <fstream
-
+```cpp
+#include <fstream>
 #include <boost/array.hpp>
 #include <string>
 #include <cstdlib>
@@ -995,7 +995,7 @@ int main()
 #include <sstream>
 
 void makeGap( int gap , std::string & text ) {
-   for ( int i = 0 ; i < gap ; i++ ) 
+   for ( int i = 0 ; i < gap ; i++ )
       text.append( " " ) ;
 }
 
@@ -1087,12 +1087,12 @@ using System.Text;
 namespace prog
 {
 	class MainClass
-	{		
+	{
 		public static void Main (string[] args)
 		{
 			StringBuilder s = new StringBuilder();
 			Random rnd = new Random();
-			
+
 			s.AppendLine("<table>");
 			s.AppendLine("<thead align = \"right\">");
 			s.Append("<tr><th></th>");
@@ -1105,12 +1105,12 @@ namespace prog
 			{
 				s.Append("<tr><td>"+i+"</td>");
 				for( int j=0; j<3; j++ )
-					s.Append("<td>"+rnd.Next(10000)+"</td>");				
+					s.Append("<td>"+rnd.Next(10000)+"</td>");
 				s.AppendLine("</tr>");
 			}
 			s.AppendLine("</tbody>");
 			s.AppendLine("</table>");
-			
+
 			Console.WriteLine( s );
 		}
 	}
@@ -1119,7 +1119,7 @@ namespace prog
 
 
 
-###  More modern version 
+###  More modern version
 
 
 ```csharp
@@ -1134,7 +1134,7 @@ namespace N
 		public static void Main()
 		{
 			var headers = new [] { "", "X", "Y", "Z" };
-			
+
 			var cols = headers.Select(name =>
 				new XElement(
 					"th",
@@ -1142,7 +1142,7 @@ namespace N
 					new XAttribute("text-align", "center")
 				)
 			);
-		
+
 			var rows = Enumerable.Range(0, 4).Select(ri =>
 				new XElement(
 					"tr",
@@ -1156,16 +1156,16 @@ namespace N
 					)
 				)
 			);
-				
+
 			var xml = new XElement(
-				"table", 
+				"table",
 				new XElement(
-					"thead", 
+					"thead",
 					new XElement("tr",    cols),
 					new XElement("tbody", rows)
 				)
 			);
-			
+
 			Console.WriteLine(xml.ToString());
 		}
 	}
@@ -1210,7 +1210,7 @@ table = (header_row, rows) ->
   #{rows.join '\n'}
   </table>
   """
-  
+
 tr = (cells) -> "<tr>#{cells.join ''}</tr>"
 th = (s) -> "<th align='right'>#{s}</th>"
 td = (s) -> "<td align='right'>#{s}</td>"
@@ -1348,7 +1348,7 @@ end.
 
 ```scheme
 
-;; styles - 
+;; styles -
 (style 'td "text-align:right")
 (style 'table "border-spacing: 10px;border:1px solid red")
 (style 'th "color:blue;")
@@ -1361,9 +1361,9 @@ end.
 		 	(push html (format "<%s>" tag )))
 		 (html-proc content)
 		 (push html (format "</%s> " tag )))
-		 
+
 ;; html procs : 1 tag, 1 proc
-(define (h-raw content) 
+(define (h-raw content)
 		(push html (format "%s" content)))
 (define (h-header headers)
 		(for ((h headers)) (emit-tag 'th h-raw h)))
@@ -1373,7 +1373,7 @@ end.
 	(emit-tag 'tr h-header (first table))
 	;; add row-num  i at head of row
 	(for ((i 1000)(row (rest table))) (emit-tag 'tr h-row (cons i row))))
-	
+
 
 ```
 
@@ -1407,7 +1407,7 @@ defmodule Table do
       end) <> "</tr>\n"
     end)
   end
-  
+
   def create_table(n\\3) do
     "<table border=1>\n" <>
     "<th></th><th>X</th><th>Y</th><th>Z</th>\n" <>
@@ -1591,7 +1591,7 @@ xd.WriteContentTo(xw)
 ## Forth
 
 Printing out a group of HTML text strings is not difficult for Forth or most computer languages.
-Another way to do this in Forth is to extend Forth with new "words" that output the HTML tags. 
+Another way to do this in Forth is to extend Forth with new "words" that output the HTML tags.
 The HTML words will output HTML code when they are interpreted by Forth. In this example the extended Forth code looks at lot like HTML. :-)  The biggest difference is that Forth requires 1 space minimum between each tag.
 
 Although this example is not a complete HTML interpreter, with these few extensions we can demonstrate mixing HTML tags with Forth code to generate the specified random numbers in-line with HTML. We could even use Forth to compile tags together and make HTML generating sub-routines like NETREXX does.
@@ -1696,7 +1696,7 @@ cr
 <td align="right" > 592 </td>
 <td align="right" > 83 </td>
 </tr>
-</table> 
+</table>
 ```
 
 
@@ -1735,27 +1735,27 @@ Result
 
 ### Origin
 
-The task could be achieved by a series of direct WRITE statements, with some simple loop to generate N lines for the table. 
-This would not show anything beyond the usage of WRITE statements, possibly obfuscated by cunning FORMAT sequences. 
-Instead, what follows is a trimmed version of some routines that were used for writing HTML tables of various shapes, with perhaps dozens of columns and hundreds of rows. 
-The idea was that module HTMLSTUFF would contain an attempt at organised assistance for the task. 
-The system would produce output tables according to the type of the output file: space-aligned or, if .csv then comma-separated, or if .html then it used the HTML table protocol. 
-In-line code was used for the details of the body of the tables because their cells involved different types and layout (and even decoration, as with RED ... DER for negative correlations) but here the task requires only HTML and that each row show only integers so it seemed worthwhile to devise a subroutine for writing a row of integers and likewise for a row of texts. Thus, the caller need not worry over the multitude of details involved in preparing a well-formed HTML file, just invoke some subroutines with a few parameters. This is done in the mainline. 
+The task could be achieved by a series of direct WRITE statements, with some simple loop to generate N lines for the table.
+This would not show anything beyond the usage of WRITE statements, possibly obfuscated by cunning FORMAT sequences.
+Instead, what follows is a trimmed version of some routines that were used for writing HTML tables of various shapes, with perhaps dozens of columns and hundreds of rows.
+The idea was that module HTMLSTUFF would contain an attempt at organised assistance for the task.
+The system would produce output tables according to the type of the output file: space-aligned or, if .csv then comma-separated, or if .html then it used the HTML table protocol.
+In-line code was used for the details of the body of the tables because their cells involved different types and layout (and even decoration, as with RED ... DER for negative correlations) but here the task requires only HTML and that each row show only integers so it seemed worthwhile to devise a subroutine for writing a row of integers and likewise for a row of texts. Thus, the caller need not worry over the multitude of details involved in preparing a well-formed HTML file, just invoke some subroutines with a few parameters. This is done in the mainline.
 The specification is for columns headed "X", "Y", and "Z" but a proper table would have more useful annotations.
 
-These routines were written to wallow in a much larger context. 
-For instance, each subprogram would start with a call to SUBIN naming the subprogram, and just before exit each would invoke SUBOUT. 
-A stack of active names was thereby maintained, and was available for use by subroutine ECART (to produce trace output, annotated via the name stack with the name of the routine requesting that output), and subroutine STATE that accepted a text declaring the activity about to be started (surprisingly useful when checking and documenting the source), and if there was a disaster, subroutine CROAK reported its message and what was being attempted at each level back to the start. Similarly, (almost) all output to the screen was echoed to file TRAIL and after every 6666 lines written to the screen, there was an opportunity to stop a runaway output, and details for the I/O unit variables and associated arrays were in named COMMON via file cIOunits.for. Most of this has been commented out. 
-There was also an attempt at dealing with annoying differences in glyphs between keyboard input, screen display, and the display rendered by text editors. 
-This had to be extended for HTML output as certain character codes also evoked an unsuitable glyph and others interfered with the interpretation of text versus instructions. 
-The first part of the source therefore is a wad of support routines, starting with a text <code>I AM</code> (see the painting by Colin McCahon) that names the programme, and another that is filled with the user's code identity. 
+These routines were written to wallow in a much larger context.
+For instance, each subprogram would start with a call to SUBIN naming the subprogram, and just before exit each would invoke SUBOUT.
+A stack of active names was thereby maintained, and was available for use by subroutine ECART (to produce trace output, annotated via the name stack with the name of the routine requesting that output), and subroutine STATE that accepted a text declaring the activity about to be started (surprisingly useful when checking and documenting the source), and if there was a disaster, subroutine CROAK reported its message and what was being attempted at each level back to the start. Similarly, (almost) all output to the screen was echoed to file TRAIL and after every 6666 lines written to the screen, there was an opportunity to stop a runaway output, and details for the I/O unit variables and associated arrays were in named COMMON via file cIOunits.for. Most of this has been commented out.
+There was also an attempt at dealing with annoying differences in glyphs between keyboard input, screen display, and the display rendered by text editors.
+This had to be extended for HTML output as certain character codes also evoked an unsuitable glyph and others interfered with the interpretation of text versus instructions.
+The first part of the source therefore is a wad of support routines, starting with a text <code>I AM</code> (see the painting by Colin McCahon) that names the programme, and another that is filled with the user's code identity.
 These are used in the metadata for the HTML.
 
-Since the HTML text that results was going to be inspected by eye to catch blunders there was a lot of attention to layout, in particular the use of indenting as each level was tracked by INDEEP, and the content of a row was to appear on one (possibly long) line. 
-Browsers often pass over hiccoughs and still present a correct-looking display, thus it is useful to employ HTML-checking routines. 
-I have considered adding various checks to the routines in HTMLSTUFF such as that when a level was closed, its interior levels had also been closed off, but that would mean even more cogitation. 
-Avoiding endless text shuffling was another objective, thus rather than concatenate pieces and write the result, routine HTML3 has three parts, a preamble, a body, and a tail to generate a complete line. 
-Further, for layout assistance, if the preamble was not empty then it would be written on a new line and indented according to INDEEP, and if the tail was not empty then it would be written and the line ended. 
+Since the HTML text that results was going to be inspected by eye to catch blunders there was a lot of attention to layout, in particular the use of indenting as each level was tracked by INDEEP, and the content of a row was to appear on one (possibly long) line.
+Browsers often pass over hiccoughs and still present a correct-looking display, thus it is useful to employ HTML-checking routines.
+I have considered adding various checks to the routines in HTMLSTUFF such as that when a level was closed, its interior levels had also been closed off, but that would mean even more cogitation.
+Avoiding endless text shuffling was another objective, thus rather than concatenate pieces and write the result, routine HTML3 has three parts, a preamble, a body, and a tail to generate a complete line.
+Further, for layout assistance, if the preamble was not empty then it would be written on a new line and indented according to INDEEP, and if the tail was not empty then it would be written and the line ended.
 It is tempting to prepare a similar routine for presenting a single item, say <code>HTML3TERM("&lt;th&gt;",TEXT(I)(1:L),"</th>")</code> rather than preparing a compound string via <code>"&lt;th&gt;"//TEXT(I)(1:L)//"</th>"</code> first. Even more direct would be to use WRITE statements straight to the output file, employing suitable FORMAT statements, but in the larger context it was more useful to avoid this since with all output in one place via subroutine WRITE, mishaps could be attended to in one place only.
 
 
@@ -2481,12 +2481,12 @@ every r := 1 to 4 do {
 printf("</tr>\n</table>\n")
 end
 
-link printf 
+link printf
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf]
 
 {{out}}
 
@@ -2573,7 +2573,7 @@ public class HTML {
 		html.append("</table>");
 		return html.toString();
 	}
-	
+
 	public static void main(String[] args){
 		Object[][] ints = {{"","X","Y","Z"},{1,1,2,3},{2,4,5,6},{3,7,8,9},{4,10,11,12}};
 		System.out.println(array2HTML(ints));
@@ -2847,7 +2847,7 @@ Alternatively we could:
     return main();
 })();
 ```
- 
+
 {{Out}}
 
 <table style="width:25%; border:2px solid silver;">
@@ -3065,7 +3065,7 @@ fun main(args: Array<String>) {
         append("<style>\n")
         append("table, th, td  { border: 1px solid black; }\n")
         append("th, td { text-align: right; }\n")
-        append("</style>\n</head>\n<body>\n") 
+        append("</style>\n</head>\n<body>\n")
         append("<table style=\"width:60%\">\n")
         append("$i<thead>\n")
         append("$i$i<tr><th></th>")
@@ -3076,7 +3076,7 @@ fun main(args: Array<String>) {
         val f = "$i$i<tr><td>%d</td><td>%d</td><td>%d</td><td>%d</td></tr>\n"
         for (j in 1..4) {
             append(f.format(j, r.nextInt(10000), r.nextInt(10000), r.nextInt(10000)))
-        }      
+        }
         append("$i</tbody>\n")
         append("</table>\n")
         append("</body>\n</html>")
@@ -3127,12 +3127,12 @@ Lambdatalk outputs standard HTML/CSS code sent to the web browser who does the j
  {@ style="background:#ffe; width:50%;"}
  {tr {@ style="text-align:right; font:bold 1.0em arial;"}
      {td } {td X} {td Y} {td Z}}
- {map {lambda {:i} 
+ {map {lambda {:i}
        {tr {td {b :i}}
-           {map {lambda {_} 
-            {td {@ style="text-align:right; font:italic 1.0em courier;"} 
+           {map {lambda {_}
+            {td {@ style="text-align:right; font:italic 1.0em courier;"}
                 {floor {* {random} 10000}} }}
-      {serie 1 3}}}} 
+      {serie 1 3}}}}
       {serie 1 3}}}
 
 ```
@@ -3388,7 +3388,7 @@ MODULE HtmlTable {
 	STACK NEW {
 		DATA "html", "head", "body", "table", "tr", "th", "td"
 		WHILE NOT EMPTY
-			OVER ' duplicate top of stack		
+			OVER ' duplicate top of stack
 			APPEND Fun, LETTER$:=tag$(LETTER$)
 		END WHILE
 	}
@@ -3473,7 +3473,7 @@ Print["</table>"]
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
- 	
+
 
 ```matlab
 function htmltable(fid,table,Label)
@@ -3484,7 +3484,7 @@ function htmltable(fid,table,Label)
        fprintf(fid,'    <tr><th></th>');
        fprintf(fid,'<td>%s</td>',Label{:});
        fprintf(fid,'</tr>\n  </thead>\n  <tbody align = "right">\n');
-   end; 
+   end;
    fprintf(fid,'    <tr><td>%2i</td><td>%5i</td><td>%5i</td><td>%5i</td></tr>\n', [1:size(table,1);table']);
    fprintf(fid,'  </tbody>\n</table>\n');
 end
@@ -3806,7 +3806,7 @@ p.classname {
 
     (if (list? (data 0)) (setq data (data 0)))
 
-    (inc tab) 
+    (inc tab)
     (dolist (el data) (extend s (<td> el)))
     (dec tab)
 
@@ -3868,7 +3868,7 @@ p.classname {
 ```
 
 
-Table: 
+Table:
 
 <table>
   <tr>
@@ -3935,7 +3935,7 @@ Raw output:
 ﻿class CreateTable {
   function : Main(args : String[]) ~ Nil {
     s := String->New();
-     
+
     s->Append("<table>");
     s->Append("<thead align = \"right\">");
     s->Append("<tr><th></th>");
@@ -3956,12 +3956,12 @@ Raw output:
         s->Append("<td>");
         s->Append((Float->Random() * 10000)->As(Int));
         s->Append("</td>");
-      };        
+      };
       s->Append("</tr>");
     };
     s->Append("</tbody>");
     s->Append("</table>");
- 
+
     s->PrintLine();
   }
 }
@@ -4004,7 +4004,7 @@ let () =
 
 
 
-###  With a dedicated library 
+###  With a dedicated library
 
 
 Using the library [http://theorie.physik.uni-wuerzburg.de/~ohl/xhtml/ ocaml-xhtml]. With this library the validity of the pages is guaranteed by the OCaml type system.
@@ -4054,7 +4054,7 @@ let () =
 
 
 
-###  TyXml 
+###  TyXml
 
 
 The library [http://ocsigen.org/tyxml/ TyXml] contains a module for XHTML that provides the same interface than the previous <code>ocaml-xhtml</code> library.
@@ -4110,7 +4110,7 @@ let make_table () =
 
 ## Oz
 
-As a complete web application, using the [https://github.com/wmeyer/roads/wiki "Roads"] web programming library. Connect your browser to http://localhost:8080/table after starting the program. 
+As a complete web application, using the [https://github.com/wmeyer/roads/wiki "Roads"] web programming library. Connect your browser to http://localhost:8080/table after starting the program.
 
 ```oz
 declare
@@ -4218,7 +4218,7 @@ Opcodes of interest: SDC -- simple document; R!I -- ranged random integer
 			<@ DTDCAPLIT><@ SAYR!ILI2>1|9999</@>|[style]width:50;text-align:right</@>
 			<@ DTDCAPLIT><@ SAYR!ILI2>1|9999</@>|[style]width:50;text-align:right</@>
 			|[style]background-color:white;color:black</@>
-		</@> 
+		</@>
 	</@>
 |Number Table</@>
 ```
@@ -4232,11 +4232,11 @@ Opcodes of interest: SDC -- simple document; R!I -- ranged random integer
 my @heading = qw(X Y Z);
 my $rows = 5;
 print   '<table><thead><td>',
-        (map { "<th>$_</th>" } @heading), 
+        (map { "<th>$_</th>" } @heading),
         "</thead><tbody>";
 
 for (1 .. $rows) {
-        print   "<tr><th>$_</th>", 
+        print   "<tr><th>$_</th>",
                 (map { "<td>".int(rand(10000))."</td>" } @heading),
                 "</tr>";
 }
@@ -4274,9 +4274,9 @@ sub tag ($tag, $string, $param?) { return "<$tag" ~ ($param ?? " $param" !! '') 
 
 my $table = tag('tr', ( tag('th', $_) for @header));
 
-for 1 .. $rows -> $row { 
+for 1 .. $rows -> $row {
     $table ~=  tag('tr', ( tag('td', $row, 'align="right"')
-    ~ (tag('td', (^10000).pick, 'align="right"') for 1..^@header)));  
+    ~ (tag('td', (^10000).pick, 'align="right"') for 1..^@header)));
 }
 
 say tag('table', $table, 'cellspacing=4 style="text-align:right; border: 1px solid;"');
@@ -4334,7 +4334,7 @@ puts(1,"</table>")
 
 
 
-###  normal style 
+###  normal style
 
 
 ```PHP
@@ -4379,13 +4379,13 @@ echo $html;
 
 
 
-###  template engine style 
+###  template engine style
 
 
 ```PHP
 <?php
 /**
- * @author Elad Yosifon 
+ * @author Elad Yosifon
  * @desc HTML Table - template engine style
  */
 $cols = array('', 'X', 'Y', 'Z');
@@ -4567,8 +4567,8 @@ theader([]) --> []. theader([H|T])  --> html(th(H)), theader(T).
 trows([],_) --> []. trows([R|T], N) --> html(tr([td(N),\trow(R)])), { N1 is N + 1 }, trows(T, N1).
 trow([])    --> []. trow([E|T])     --> html(td(E)), trow(T).
 
-table :- 
-	Header = ['X','Y','Z'], 
+table :-
+	Header = ['X','Y','Z'],
 	Rows = [
 		[7055,5334,5795],
 		[2895,3019,7747],
@@ -4861,9 +4861,9 @@ index+1
 tablebody.s+"<tr><th>"+str(index)+"</th>"
 for col=1 to 3
 tablebody.s+"<td align="+chr(34)+"right"+chr(34)+">"+str(Random(9999,1))+"</td>"
-next 
+next
 tablebody.s+"</tr>"+chr(13)+chr(10)
-next 
+next
 
 tablefoot.s=""
 tablefoot.s+"</table>"+chr(13)+chr(10)
@@ -4960,10 +4960,10 @@ str td(str content) = item("td", content);
 
 public str generateTable(int rows){
 	int i(){return arbInt(10000);};
-	rows = (tr(td("")+td("X")+td("Y")+td("Z")) 
+	rows = (tr(td("")+td("X")+td("Y")+td("Z"))
 			| it + tr(td("<x>")+td("<i()>")+td("<i()>")+td("<i()>"))
 			| x <- [1..rows]);
-	writeFile(|file:///location|, 
+	writeFile(|file:///location|,
 	           html("Rosetta Code Table", table(rows)));
 	return "written";
 }
@@ -5072,9 +5072,9 @@ with casket::html'
 
 ## REXX
 
-The   LINEOUTs   (writes to a file for the various HTML tags)   were broken up into separate pieces which 
+The   LINEOUTs   (writes to a file for the various HTML tags)   were broken up into separate pieces which
 
-makes reading the file easier and also helps in debugging,   but they could've been combined into a 
+makes reading the file easier and also helps in debugging,   but they could've been combined into a
 
 single   '''lineout'''   for succinctness.
 
@@ -5231,32 +5231,32 @@ wrt: call lineout oFID,arg(1);   say '══►'  arg(1);   w=w+1;    return    
 ```ring
 
 # Project: Create an HTML table
- 
+
 load "stdlib.ring"
 
 str = ""
 ncols = 3
-nrows = 4 
- 
+nrows = 4
+
 str = str + "<html><head></head><body>" + windowsnl()
 str = str + "<table border=1 cellpadding=10 cellspacing=0>" + windowsnl()
- 
+
 for row = 0 to nrows
      if row = 0
         str = str + "<tr><th></th>"
     else
-        str = str + "<tr><th>" + row + "</th>" 
+        str = str + "<tr><th>" + row + "</th>"
     ok
     for col = 1 to ncols
-         if row = 0 
+         if row = 0
             str = str + "<th>" + char(87 + col) + "</th>"
          else
-            str = str + "<td align=" + '"right"' + ">" + random(9999) + "</td>" 
+            str = str + "<td align=" + '"right"' + ">" + random(9999) + "</td>"
          ok
-    next 
+    next
     str = str + windowsnl() + "</tr>" +windowsnl()
 next
- 
+
 str = str + "</table>" + windowsnl()
 str = str + "</body></html>" + windowsnl()
 
@@ -5705,7 +5705,7 @@ The procedure <code>mkHtmlTable</code> gets:
 
 ```sml
 (*
- * val mkHtmlTable : ('a list * 'b list) -> ('a -> string * 'b -> string) 
+ * val mkHtmlTable : ('a list * 'b list) -> ('a -> string * 'b -> string)
  * 			-> (('a * 'b) -> string) -> string
  * The int list is list of colums, the function returns the values
  * at a given colum and row.
@@ -6059,7 +6059,7 @@ Public Function HTMLWrap(s As String, tag As String, ParamArray attributes()) As
   'returns string s wrapped in HTML tag with optional "attribute=value" strings
   'ex.: HTMLWrap("Link text", "a", "href=""http://www.somesite.org""")
   'returns: <a href="http://www.somesite.org">Link text</a>
-  
+
   Dim sOpenTag As String
   Dim sClosingTag As String
 
@@ -6075,7 +6075,7 @@ End Function
 ```
 
 
-Subroutine BuildHTMLTable builds the HTML code as one big string. 
+Subroutine BuildHTMLTable builds the HTML code as one big string.
 Sample output of call to BuildHMTLTable:
 
 
@@ -6100,7 +6100,7 @@ Set objFSO = CreateObject("Scripting.FileSystemObject")
 'Open the input csv file for reading. The file is in the same folder as the script.
 Set objInFile = objFSO.OpenTextFile(objFSO.GetParentFolderName(WScript.ScriptFullName) &_
 	"\in.csv",1)
-	
+
 'Create the output html file.
 Set objOutHTML = objFSO.OpenTextFile(objFSO.GetParentFolderName(WScript.ScriptFullName) &_
 	"\out.html",2,True)

@@ -13,8 +13,8 @@ tags = []
 {{collection|Closest pair problem}}
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <values.h>
 #include <math.h>

@@ -12,29 +12,29 @@ tags = []
 
 {{Task|Arithmetic operations}}
 
-Implementation of   [[wp:Interval_arithmetic|interval arithmetic]]   and more generally fuzzy number arithmetic require operations that yield safe upper and lower bounds of the exact result. 
+Implementation of   [[wp:Interval_arithmetic|interval arithmetic]]   and more generally fuzzy number arithmetic require operations that yield safe upper and lower bounds of the exact result.
 
-For example, for an addition, it is the operations   <big> +&uarr; </big>   and   <big> +&darr; </big>   defined as:   <big> ''a'' +&darr; ''b'' &le; ''a'' + ''b'' &le; ''a'' +&uarr; ''b''. </big>  
+For example, for an addition, it is the operations   <big> +&uarr; </big>   and   <big> +&darr; </big>   defined as:   <big> ''a'' +&darr; ''b'' &le; ''a'' + ''b'' &le; ''a'' +&uarr; ''b''. </big>
 
-Additionally it is desired that the width of the interval   <big> (''a'' +&uarr; ''b'') - (''a'' +&darr; ''b'') </big>    would be about the machine epsilon after removing the exponent part. 
+Additionally it is desired that the width of the interval   <big> (''a'' +&uarr; ''b'') - (''a'' +&darr; ''b'') </big>    would be about the machine epsilon after removing the exponent part.
 
-Differently to the standard floating-point arithmetic, safe interval arithmetic is '''accurate''' (but still imprecise). 
+Differently to the standard floating-point arithmetic, safe interval arithmetic is '''accurate''' (but still imprecise).
 
 I.E.:   the result of each defined operation contains (though does not identify) the exact mathematical outcome.
 
-Usually a   [[wp:Floating_Point_Unit|FPU's]]   have machine   <big> +,-,*,/ </big>   operations accurate within the machine precision. 
+Usually a   [[wp:Floating_Point_Unit|FPU's]]   have machine   <big> +,-,*,/ </big>   operations accurate within the machine precision.
 
-To illustrate it, let us consider a machine with decimal floating-point arithmetic that has the precision is '''3''' decimal points. 
+To illustrate it, let us consider a machine with decimal floating-point arithmetic that has the precision is '''3''' decimal points.
 
-If the result of the machine addition is   <big> 1.23, </big>   then the exact mathematical result is within the interval   <big> ]1.22, 1.24[. </big> 
+If the result of the machine addition is   <big> 1.23, </big>   then the exact mathematical result is within the interval   <big> ]1.22, 1.24[. </big>
 
 When the machine rounds towards zero, then the exact result is within   <big> [1.23,1.24[. </big>   This is the basis for an implementation of safe addition.
 
 
 ;Task;
-Show how   <big> +&darr; </big>   and   <big> +&uarr; </big>   can be implemented in your language using the standard floating-point type. 
+Show how   <big> +&darr; </big>   and   <big> +&uarr; </big>   can be implemented in your language using the standard floating-point type.
 
-Define an interval type based on the standard floating-point one,   and implement an interval-valued addition of two floating-point numbers considering them exact, in short an operation that yields the interval   <big> [''a'' +&darr; ''b'', ''a'' +&uarr; ''b'']. </big> 
+Define an interval type based on the standard floating-point one,   and implement an interval-valued addition of two floating-point numbers considering them exact, in short an operation that yields the interval   <big> [''a'' +&darr; ''b'', ''a'' +&uarr; ''b'']. </big>
 
 
 
@@ -62,13 +62,13 @@ begin
          return (Float'Adjacent (Result, Float'First), Float'Adjacent (Result, 0.0));
       else
          return (Float'Adjacent (Result, Float'First), Result);
-      end if;         
-   elsif Result > 0.0 then   
+      end if;
+   elsif Result > 0.0 then
       if Float'Machine_Rounds then
          return (Float'Adjacent (Result, 0.0), Float'Adjacent (Result, Float'Last));
       else
          return (Result, Float'Adjacent (Result, Float'Last));
-      end if;         
+      end if;
    else -- Underflow
       return (Float'Adjacent (0.0, Float'First), Float'Adjacent (0.0, Float'Last));
    end if;
@@ -109,10 +109,10 @@ Msgbox % IntervalAdd(1,2) ; [2.999999,3.000001]
 SetFormat, FloatFast, 0.20
 Msgbox % IntervalAdd(1,2) ; [2.99999999999999910000,3.00000000000000090000]
 
-;In v1.0.48+, floating point variables have about 15 digits of precision internally 
-;unless SetFormat Float (i.e. the slow mode) is present anywhere in the script. 
-;In that case, the stored precision of floating point numbers is determined by A_FormatFloat. 
-;As there is no way for this function to know whether this is the case or not, 
+;In v1.0.48+, floating point variables have about 15 digits of precision internally
+;unless SetFormat Float (i.e. the slow mode) is present anywhere in the script.
+;In that case, the stored precision of floating point numbers is determined by A_FormatFloat.
+;As there is no way for this function to know whether this is the case or not,
 ;it conservatively uses A_FormatFloat in all cases.
 IntervalAdd(a,b){
 	err:=0.1**(SubStr(A_FormatFloat,3) > 15 ? 15 : SubStr(A_FormatFloat,3))
@@ -138,10 +138,10 @@ An optimizing compiler might break the code. (For example, it might calculate a 
 
 === C99 with fesetround() ===
 
-```c>#include <fenv.h
-	/* fegetround(), fesetround() */
+```c
+#include <fenv.h> /* fegetround(), fesetround() */
 #include <stdio.h>	/* printf() */
- 
+
 /*
  * Calculates an interval for a + b.
  *   interval[0] <= a + b
@@ -152,7 +152,7 @@ safe_add(volatile double interval[2], volatile double a, volatile double b)
 {
 #pragma STDC FENV_ACCESS ON
 	unsigned int orig;
- 
+
 	orig = fegetround();
 	fesetround(FE_DOWNWARD);	/* round to -infinity */
 	interval[0] = a + b;
@@ -160,7 +160,7 @@ safe_add(volatile double interval[2], volatile double a, volatile double b)
 	interval[1] = a + b;
 	fesetround(orig);
 }
- 
+
 int
 main()
 {
@@ -172,13 +172,13 @@ main()
 	};
 	double ival[2];
 	int i;
- 
+
 	for (i = 0; i < sizeof(nums) / sizeof(nums[0]); i++) {
 		/*
 		 * Calculate nums[i][0] + nums[i][1].
 		 */
 		safe_add(ival, nums[i][0], nums[i][1]);
- 
+
 		/*
 		 * Print the result. %.17g gives the best output.
 		 * %.16g or plain %g gives not enough digits.
@@ -218,8 +218,8 @@ Output:
 {{works with|MinGW}}
 
 
-```c>#include <float.h
-	/* _controlfp() */
+```c
+#include <float.h> /* _controlfp() */
 #include <stdio.h>	/* printf() */
 
 /*
@@ -275,8 +275,8 @@ main()
 {{works with|OpenBSD|4.8/amd64}}
 
 
-```c>#include <ieeefp.h
-	/* fpsetround() */
+```c
+#include <ieeefp.h> /* fpsetround() */
 #include <stdio.h>	/* printf() */
 
 /*
@@ -328,7 +328,7 @@ main()
 ```
 
 
-Output from OpenBSD: 
+Output from OpenBSD:
 ```txt
 1 + 2 =
     [3, 3]
@@ -354,8 +354,8 @@ Output from OpenBSD:
 
 {{trans|C#}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <tuple>
 
 union conv {
@@ -598,7 +598,7 @@ func stepAway(x float64) interval {
 // function requested by task
 func safeAdd(a, b float64) interval {
     return stepAway(a + b)
-    
+
 }
 
 // example
@@ -705,7 +705,7 @@ julia> a + b
 
 fun stepDown(d: Double) = Math.nextAfter(d, Double.NEGATIVE_INFINITY)
 
-fun stepUp(d: Double) = Math.nextUp(d) 
+fun stepUp(d: Double) = Math.nextUp(d)
 
 fun safeAdd(a: Double, b: Double) = stepDown(a + b).rangeTo(stepUp(a + b))
 
@@ -729,7 +729,7 @@ fun main(args: Array<String>) {
 
 ## Mathematica
 
-When you use //N to get a numerical result, Mathematica does what a standard calculator would do: it gives you a result to a fixed number of significant figures. You can also tell Mathematica exactly how many significant figures to keep in a particular calculation. This allows you to get numerical results in Mathematica to any degree of precision. 
+When you use //N to get a numerical result, Mathematica does what a standard calculator would do: it gives you a result to a fixed number of significant figures. You can also tell Mathematica exactly how many significant figures to keep in a particular calculation. This allows you to get numerical results in Mathematica to any degree of precision.
 
 
 ## Nim
@@ -900,8 +900,8 @@ Rat::Precise stringification for 1.5**63:
 ## Phix
 
 {{Trans|C}}
-Note the Phix printf builtin has (automatic rounding and) a built-in limit of 16 digits, 
-(20 digits on 64 bit) for pretty much the same reason the C version went with 17 digits, 
+Note the Phix printf builtin has (automatic rounding and) a built-in limit of 16 digits,
+(20 digits on 64 bit) for pretty much the same reason the C version went with 17 digits,
 namely that the 17th digit is so inaccurate as to be completely meaningless in normal use.
 
 Hence errors in the low,high are a bit more disguised, but as always it is the size that matters.
@@ -1105,7 +1105,7 @@ end
 ```
 
 
-Output: 
+Output:
 ```txt
 1 + 2 = 0.3E1..0.3E1
 0.1 + 0.2 = 0.3E0..0.3E0

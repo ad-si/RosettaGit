@@ -18,9 +18,9 @@ tags = []
 {{omit from|Pascal}}
 {{omit from|MATLAB|MATLAB has no multiline string literal functionality}}
 {{omit from|VBA|VBA can't create a console application}}
-A   ''here document''    (or "heredoc")   is a way of specifying a text block, preserving the line breaks, indentation and other whitespace within the text. 
+A   ''here document''    (or "heredoc")   is a way of specifying a text block, preserving the line breaks, indentation and other whitespace within the text.
 
-Depending on the language being used, a   ''here document''   is constructed using a command followed by "<<" (or some other symbol) followed by a token string. 
+Depending on the language being used, a   ''here document''   is constructed using a command followed by "<<" (or some other symbol) followed by a token string.
 
 The text block will then start on the next line, and will be followed by the chosen token at the beginning of the following line, which is used to mark the end of the text block.
 
@@ -45,7 +45,7 @@ Multiline strings are simply parsed using "quote", which parses first a characte
 quote *
 Hi
    there
-* . 
+* .
 
 ```
 
@@ -62,7 +62,7 @@ Hi
 ## Ada
 
 
-Ada has neither heredocs nor multiline strings. 
+Ada has neither heredocs nor multiline strings.
 A workaround is to use containers of strings:
 
 
@@ -106,7 +106,7 @@ Have fun!
 {{works with|ALGOL 68|Revision 1 - no extensions to language used.}}
 {{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny].}}
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of '''format'''[ted] ''transput''.}}
-Algol 68 does not have a "heredoc" feature.  
+Algol 68 does not have a "heredoc" feature.
 It can be crudely achieved using an array of strings:
 
 
@@ -174,16 +174,16 @@ szMessString:            .asciz "String :
 szCarriageReturn:       .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
 
     ldr r0,iAdrszMessString                     @ display message
     bl affichageMess
- 
+
 
 100:                                            @ standard end of the program
     mov r0, #0                                  @ return code
@@ -193,21 +193,21 @@ iAdrszMessString:         .int szMessString
 iAdrszCarriageReturn:     .int szCarriageReturn
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -291,7 +291,7 @@ int main()
     I may be old, but do not forget that it all started with me.\
     \n\nEver enigmatic...\n\
     C   ");
-    
+
     return 0;
 }
 
@@ -318,8 +318,8 @@ Ever enigmatic...
 C++11 raw string literals are similar to heredocs, except there is no newline after the opening token or before the ending token (unless you actually want newlines there).
 
 
-```cpp>#include <iostream
- // Only for cout to demonstrate
+```cpp
+#include <iostream> // Only for cout to demonstrate
 
 int main()
 {
@@ -554,10 +554,10 @@ iex(2)> '''
 ...(2)> 1 + 1 = #{a}
 ...(2)> '''
 '1 + 1 = 2\n'
-iex(3)> 
+iex(3)>
 iex(3)> '''2'''
 ** (SyntaxError) iex:3: heredoc start must be followed by a new line after '''
-    
+
 iex(3)>
 ```
 
@@ -641,7 +641,7 @@ EOF
 : EOD   ( -- ca u ; end-of-doc )
   latest name>string ;
 
-: >>   ( "doc-name" "doc-body" -- )   input-fix 
+: >>   ( "doc-name" "doc-body" -- )   input-fix
   CREATE 0 ,              \ post body length
   here dup >R
   BEGIN  refill >R
@@ -900,17 +900,17 @@ def horse='stallion'
 def christ='Jesus'
 
 println """
-Buffalo Bill's 
-              ${expired} 
-                          who used to 
-                          ride a watersmooth-silver 
-                                                                  ${horse} 
-              and break onetwothreefourfive pigeonsjustlikethat 
+Buffalo Bill's
+              ${expired}
+                          who used to
+                          ride a watersmooth-silver
+                                                                  ${horse}
+              and break onetwothreefourfive pigeonsjustlikethat
                                                                                            ${christ}
 
-              he was a handsome man 
-                                                    and what i want to know is 
-              how do you like your blueeyed boy 
+              he was a handsome man
+                                                    and what i want to know is
+              how do you like your blueeyed boy
               Mister Death
 """
 ```
@@ -920,17 +920,17 @@ Buffalo Bill's
 
 ```txt
 
-Buffalo Bill's 
-              defunct 
-                          who used to 
-                          ride a watersmooth-silver 
-                                                                  stallion 
-              and break onetwothreefourfive pigeonsjustlikethat 
+Buffalo Bill's
+              defunct
+                          who used to
+                          ride a watersmooth-silver
+                                                                  stallion
+              and break onetwothreefourfive pigeonsjustlikethat
                                                                                            Jesus
 
-              he was a handsome man 
-                                                    and what i want to know is 
-              how do you like your blueeyed boy 
+              he was a handsome man
+                                                    and what i want to know is
+              how do you like your blueeyed boy
               Mister Death
 
 ```
@@ -994,7 +994,7 @@ here=:0 :0
   one instance of the explicit definition token ':'.
   Any indentation in the here document will be retained in the result.
   There must be a space to the left of : or it will combine with the
-  0 on its left to form the token 0: which is something completely 
+  0 on its left to form the token 0: which is something completely
   different.
 
   The here document is terminated by a line which contains only a
@@ -1021,7 +1021,7 @@ and_here=:noun define
 
   Other useful alternatives include verb (which has the value 3)
   and dyad (which has the value 4), and adverb (which has the value 1).
-  In other words 'verb define' (if unquoted) would be replaced by a 
+  In other words 'verb define' (if unquoted) would be replaced by a
   verb whose definition is provided in the following 'script'.
   However, all of these names are normal variables which can
   be declared to have different values by the developer.  And, of course,
@@ -1037,7 +1037,7 @@ and_here=:noun define
 
 ### ES6
 
-ES6 introduced template literals. These are string literals that suport multi-line text and can include 
+ES6 introduced template literals. These are string literals that suport multi-line text and can include
 interpolated expressions using ${···} syntax. It is indicated with the backtich character [`]
 
 ```JavaScript
@@ -1148,20 +1148,20 @@ fun main(args: Array<String>) {
     val ev = "embed variables"
 
     val here = """
-               This is a raw string literal   
-               which does not treat escaped characters 
+               This is a raw string literal
+               which does not treat escaped characters
                (\t, \b, \n, \r, \', \", \\, \$ and \u)
                specially and can contain new lines,
                indentation and other        whitespace
                within the string.
- 
+
 "Quotes" or doubled ""quotes"" can
 be included without problem but not
 tripled quotes.
 
            It's also possible to $ev
            in a raw string literal using string
-           interpolation. 
+           interpolation.
 
   If you need to include a
   literal ${'$'} sign in a raw string literal then
@@ -1513,7 +1513,7 @@ FOO
 ```
 
 
-Alternately, you can use backticks to cause the here document to be executed 
+Alternately, you can use backticks to cause the here document to be executed
 and the result returned, just like a normal backtick operator:
 
 
@@ -1524,14 +1524,14 @@ BAR
 ```
 
 
-Note that in the above examples, that a semicolon was left 
-after the here document's token string. 
-This is because (unlike PHP) the here document does not start 
-immediately at the "<<END" token -- it starts on the next line. 
-The "<<END" is actually an expression, whose value will be substituted 
-by the contents of the here document. 
-The "<<END" must still live inside a valid statement on the line that it's used. 
-To further illustrate this fact, we can use the "<<END" inside a complex, 
+Note that in the above examples, that a semicolon was left
+after the here document's token string.
+This is because (unlike PHP) the here document does not start
+immediately at the "<<END" token -- it starts on the next line.
+The "<<END" is actually an expression, whose value will be substituted
+by the contents of the here document.
+The "<<END" must still live inside a valid statement on the line that it's used.
+To further illustrate this fact, we can use the "<<END" inside a complex,
 nested expression:
 
 
@@ -1560,7 +1560,7 @@ sub flibbertigibbet {
 
 ## Perl 6
 
-Heredocs in Perl 6 use the <code>:to</code> modifier to a quoting operator, 
+Heredocs in Perl 6 use the <code>:to</code> modifier to a quoting operator,
 such as <code>q</code> or <code>qq</code>.
 The indentation of the end marker is removed from every line.
 
@@ -1641,7 +1641,7 @@ say Q :array :to 'EOH';
 
 ## Phix
 
-Phix does not have here-docs. In Phix normal double quoted strings are single line and require escaping. Strings can also be entered by using triple doublequotes or single backticks to include linebreaks and avoid any backslash interpretation. If the literal begins with a newline, it is discarded and any immediately following leading underscores specify a (maximum) trimming that should be applied to all subsequent lines. Interpolation is left to printf and friends. Both """`""" and `"""` are valid. Examples: 
+Phix does not have here-docs. In Phix normal double quoted strings are single line and require escaping. Strings can also be entered by using triple doublequotes or single backticks to include linebreaks and avoid any backslash interpretation. If the literal begins with a newline, it is discarded and any immediately following leading underscores specify a (maximum) trimming that should be applied to all subsequent lines. Interpolation is left to printf and friends. Both """`""" and `"""` are valid. Examples:
 
 ```Phix
 string ts1 = """
@@ -1702,9 +1702,9 @@ file.`"""
 
 In PHP, the here document symbol is 3 less-than signs, not two: <code><<<</code>
 
-There must not be a space between the "<<<" and the token string. 
-The ending token must always be the entire end line (i.e. no surrounding spaces) 
-for it to be recognised, except for a possible semicolon. 
+There must not be a space between the "<<<" and the token string.
+The ending token must always be the entire end line (i.e. no surrounding spaces)
+for it to be recognised, except for a possible semicolon.
 Interpolation is allowed, like a double-quoted string:
 
 
@@ -1718,8 +1718,8 @@ END;
 ```
 
 
-In PHP 5.3+, it is possible to make a here-document that does not interpolate 
-(PHP calls this a "nowdoc"), by surrounding the token with single-quotes 
+In PHP 5.3+, it is possible to make a here-document that does not interpolate
+(PHP calls this a "nowdoc"), by surrounding the token with single-quotes
 (like in Perl):
 
 
@@ -1797,7 +1797,7 @@ $XMLdata=@"
 
 ## Python
 
-Python does not have here-docs. 
+Python does not have here-docs.
 It does however have [http://docs.python.org/py3k/tutorial/introduction.html#strings triple-quoted strings] which can be used similarly.
 
 
@@ -2068,7 +2068,7 @@ text ="
 <<'FOO'
 Now
    is
-     the 
+     the
        time
             for
                all
@@ -2098,8 +2098,8 @@ to come to the aid of their country.
 
 ## Ruby
 
-In Ruby, there must not be a space between the "<<" and the token string. 
-The ending token must always be the entire end line (i.e. no surrounding spaces) for it to be recognised, unless you use "<<-" instead of "<<", in which case indentation before the ending token is allowed. 
+In Ruby, there must not be a space between the "<<" and the token string.
+The ending token must always be the entire end line (i.e. no surrounding spaces) for it to be recognised, unless you use "<<-" instead of "<<", in which case indentation before the ending token is allowed.
 Interpolation is allowed, like a double-quoted string:
 
 
@@ -2125,7 +2125,7 @@ NO MORE INGREDIENTS
 ```
 
 
-It is possible to make a here-document that behaves differently than a double-quoted string, by applying a different kind of quoting to the token. 
+It is possible to make a here-document that behaves differently than a double-quoted string, by applying a different kind of quoting to the token.
 For example, if you use single quotes, then the here document will not support interpolation, like a normal single-quoted string:
 
 
@@ -2138,7 +2138,7 @@ FOO
 ```
 
 
-Alternately, you can use backticks to cause the here document to be executed 
+Alternately, you can use backticks to cause the here document to be executed
 and the result returned, just like a normal backtick operator:
 
 
@@ -2149,9 +2149,9 @@ BAR
 ```
 
 
-The here document does not start immediately at the "<<END" token -- it starts on the next line. 
-The "<<END" is actually an expression, whose value will be substituted by the contents of the here document. 
-The "<<END" must still live inside a valid statement on the line that it's used. 
+The here document does not start immediately at the "<<END" token -- it starts on the next line.
+The "<<END" is actually an expression, whose value will be substituted by the contents of the here document.
+The "<<END" must still live inside a valid statement on the line that it's used.
 To further illustrate this fact, we can use the "<<END" inside a complex, nested expression:
 
 
@@ -2172,7 +2172,7 @@ text$ ="
 <<'FOO'
 Now
    is
-     the 
+     the
        time
             for
                all
@@ -2187,7 +2187,7 @@ print text$
 <<'FOO'
 Now
    is
-     the 
+     the
        time
             for
                all
@@ -2205,7 +2205,7 @@ Similar to [[#C++|C++]], Rust offers raw strings:
 
 ```rust
 let x = r#"
-    This is a "raw string literal," roughly equivalent to a heredoc.   
+    This is a "raw string literal," roughly equivalent to a heredoc.
   "#;
 ```
 
@@ -2217,8 +2217,8 @@ let x = r#"
 
 ### All versions
 
-Scala multiline literal are called raw strings. 
-Triple quotes (""") marks the beginning and end. 
+Scala multiline literal are called raw strings.
+Triple quotes (""") marks the beginning and end.
 Specially handy when using escape sequences in e.g. regular expressions.
 {{libheader|Scala}}
 ```Scala
@@ -2251,15 +2251,15 @@ val MemoriesOfHolland=
 }
 ```
 
-All control codes are transparent e.g. new lines. 
-In order for a neat code each lines has as prefix spaces and a | symbol 
+All control codes are transparent e.g. new lines.
+In order for a neat code each lines has as prefix spaces and a | symbol
 which will be removed by the stripMargin function.
 
 
 ## Sidef
 
-There must not be a space between the "<<" and the token string. 
-When the token string is double-quoted ("") or not quoted, 
+There must not be a space between the "<<" and the token string.
+When the token string is double-quoted ("") or not quoted,
 the content will be interpolated like a double-quoted string:
 
 ```ruby
@@ -2280,7 +2280,7 @@ here
 FOO
 ```
 
-The here document does not start immediately at the "<<END" token -- it starts on the next line. The "<<END" is actually an expression, whose value will be substituted by the contents of the here document. 
+The here document does not start immediately at the "<<END" token -- it starts on the next line. The "<<END" is actually an expression, whose value will be substituted by the contents of the here document.
 To further illustrate this fact, we can use the "<<END" inside a complex, nested expression:
 
 ```ruby
@@ -2306,7 +2306,7 @@ EOF
 
 
 ```sequencel
-main := 
+main :=
 "In SequenceL
 strings are
 multiline
@@ -2352,7 +2352,7 @@ Output:
 
 ```txt
 
-1                                                                       
+1
 ------------------------------------------------------------------------
 This is the first line.
 This is the second line.
@@ -2447,36 +2447,36 @@ set hereDocExample {
 In Tcl, the {curly brace} notation is strictly a here-document style notation
 as it permits arbitrary content inside it *except* for an unbalanced brace.
 That is typically not a problem as seen in reality, as almost all content that
-might be placed in a here-doc is either brace-free or balanced. 
-The content of the braces is not interpreted at all; 
+might be placed in a here-doc is either brace-free or balanced.
+The content of the braces is not interpreted at all;
 no substitutions are performed on it.
 
-The sole exception is that there is limited processing of backslashes; 
-a single backslash at the end of a line causes the end-of-line 
-plus all whitespace at the start of the next line 
+The sole exception is that there is limited processing of backslashes;
+a single backslash at the end of a line causes the end-of-line
+plus all whitespace at the start of the next line
 to be compressed to a single space.
 }
 ```
 
 
-If substitution is desired within the document, it should either be written 
-inside <tt>"</tt>double quotes<tt>"</tt> (instead of <tt>{</tt>braces<tt>}</tt>) ''or'' it should be passed through the <code>subst</code> command, 
+If substitution is desired within the document, it should either be written
+inside <tt>"</tt>double quotes<tt>"</tt> (instead of <tt>{</tt>braces<tt>}</tt>) ''or'' it should be passed through the <code>subst</code> command,
 which performs another round of substitutions.
 
 
 ## TXR
 
-TXR was originally conceived out of the need to have "there documents": 
-parse a document and extract variables, but in a style similar to generation 
-of here documents. 
+TXR was originally conceived out of the need to have "there documents":
+parse a document and extract variables, but in a style similar to generation
+of here documents.
 Here doc output was added later.
 
-We use @(maybe)/@(or)/@(end) to set up some default values for variables 
+We use @(maybe)/@(or)/@(end) to set up some default values for variables
 which are overridden from the command line.
-Unification fails for an overridden variable, which is why we have 
+Unification fails for an overridden variable, which is why we have
 to separate out the bind directives into the branches of a maybe.
 
-By passing the script to txr using -f we can pass additional command arguments 
+By passing the script to txr using -f we can pass additional command arguments
 to the resulting script which are interpreted by txr.
 
 
@@ -2541,7 +2541,7 @@ txr: (cmdline:2) bad substitution: FOO
 
 ## UNIX Shell
 
-In the shell, here document act as input to the command, 
+In the shell, here document act as input to the command,
 rather than providing a string definition.
 
 {{works with|Bourne Shell}}
@@ -2594,7 +2594,7 @@ TOKEN
 ```bash
 echo '
 In any unix shell, you specify a text block and can use all whitespace like
-  (spaces) &    (tab) in it, by using single quotes. 
+  (spaces) &    (tab) in it, by using single quotes.
 As mentioned above, a Unix "here document" is a type of redirection.
 In a literal Bash here document, the starting token must be
 quoted, but the end token must not, so they are not the same, which does not
@@ -2626,7 +2626,7 @@ $PATH \$PATH `shutdown now`
 
 
 ```Ursala
-hd = 
+hd =
 
 -[
 The text enclosed within the so called dash-brackets shown above
@@ -2724,7 +2724,7 @@ Set objDialog = CreateObject("UserAccounts.CommonDialog")
 objDialog.Filter = "All Files|*.*"
 objDialog.InitialDir = WshShell.CurrentDirectory
 intResult = objDialog.ShowOpen
- 
+
 If intResult = 0 Then
     WshShell.Popup "No file selected.", 2, " ", 64
     Wscript.Quit
@@ -2745,10 +2745,10 @@ If objFSO.FileExists(strFileNameOUT) then  'does the file EXIST?
     else
         WshShell.Popup "Exiting as requested.", 1, " ", 64
         Wscript.Quit
-    End If 
+    End If
 Else
 '   WScript.Echo "not found" 'strFileNameOUT does NOT exists already
-    
+
 END if
 
 strBaseName=objFSO.GetBaseName(strFileNameIN)
@@ -2875,7 +2875,7 @@ the CDATA section are also preserved may be application-dependent.
 ```zkl
 x:=
 #<<<
-"#<<< starts a block of lines that are concatenated verbatim 
+"#<<< starts a block of lines that are concatenated verbatim
 and fed into the parser as one line. #<<< ends the block.
 Both #<<< tokens must start the line that is otherwise ignored
 
@@ -2888,7 +2888,7 @@ x.println();
 
 ```txt
 
-#<<< starts a block of lines that are concatenated verbatim 
+#<<< starts a block of lines that are concatenated verbatim
 and fed into the parser as one line. #<<< ends the block.
 Both #<<< tokens must start the line that is otherwise ignored
 

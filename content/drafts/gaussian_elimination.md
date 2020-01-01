@@ -13,11 +13,11 @@ tags = []
 {{task}}[[Category:Matrices]]
 
 ;Task:
-Solve   '''Ax=b'''   using Gaussian elimination then backwards substitution. 
+Solve   '''Ax=b'''   using Gaussian elimination then backwards substitution.
 
-'''A'''   being an   '''n''' by '''n'''   matrix. 
+'''A'''   being an   '''n''' by '''n'''   matrix.
 
-Also,   '''x''' and '''b'''   are   '''n''' by '''1'''   vectors. 
+Also,   '''x''' and '''b'''   are   '''n''' by '''1'''   vectors.
 
 To improve accuracy, please use partial pivoting and scaling.
 
@@ -118,7 +118,7 @@ GAUSSEL  CSECT
          LR     R1,R7                  j
          MH     R1,=AL2(NN)            *n
          AR     R1,R6                  i
-         BCTR   R1,0                   j*n+i-1  
+         BCTR   R1,0                   j*n+i-1
          SLA    R1,2                   ~
          LE     F0,A-(NN*4)(R1)        a(j,i)
          LR     R1,R6                  i
@@ -205,7 +205,7 @@ COMMENT PROVIDES
   PROC (STRING message) FIXED raise, raise value error
 END COMMENT
 
-# Note: ℵ indicates attribute is "private", and 
+# Note: ℵ indicates attribute is "private", and
         should not be used outside of this prelude #
 
 MODE FIXED = BOOL; # if an exception is detected, can it be fixed "on-site"? #
@@ -229,7 +229,7 @@ SKIP
 '''File: prelude_mat_lib.a68'''
 ```algol68
 # -*- coding: utf-8 -*- #
-COMMENT PRELUDE REQUIRES 
+COMMENT PRELUDE REQUIRES
   MODE SCAL = REAL;
   FORMAT scal repr = real repr
   # and various SCAL OPerators #
@@ -242,7 +242,7 @@ COMMENT PRELUDE PROIVIDES
   FORMAT vec repr, mat repr
 END COMMENT
 
-# Note: ℵ indicates attribute is "private", and 
+# Note: ℵ indicates attribute is "private", and
         should not be used outside of this prelude #
 
 INT #ℵ#lwb vec := 1, #ℵ#upb vec := 0;
@@ -285,7 +285,7 @@ SKIP
 '''File: prelude_gaussian_elimination.a68'''
 ```algol68
 # -*- coding: utf-8 -*- #
-COMMENT PRELUDE REQUIRES 
+COMMENT PRELUDE REQUIRES
   MODE SCAL = REAL,
   REAL near min scal = min real ** 0.99,
   MODE VEC = []REAL,
@@ -297,7 +297,7 @@ END COMMENT
 COMMENT PRELUDE PROVIDES
   PROC(MAT a, b)MAT gaussian elimination;
   PROC(REF MAT a, b)REF MAT in situ gaussian elimination
-END COMMENT 
+END COMMENT
 
 ####################################################
 # using Gaussian elimination, find x where A*x = b #
@@ -309,7 +309,7 @@ PROC in situ gaussian elimination = (REF MAT a, b)REF MAT: (
     INT pivot row := diag; SCAL pivot factor := ABS a[diag,diag];
     FOR row FROM diag + 1 TO UPB a DO # Full pivoting #
       SCAL abs a diag = ABS a[row,diag];
-      IF abs a diag>=pivot factor THEN 
+      IF abs a diag>=pivot factor THEN
         pivot row := row; pivot factor := abs a diag FI
     OD;
   # now we have the "best" diag to full pivot, do the actual pivot #
@@ -319,7 +319,7 @@ PROC in situ gaussian elimination = (REF MAT a, b)REF MAT: (
       b[pivot row,] =:= b[diag,] # swap/pivot the diags of a & b #
     FI;
 
-    IF ABS a[diag,diag] <= near min scal THEN 
+    IF ABS a[diag,diag] <= near min scal THEN
       raise value error("singular matrix") FI;
     SCAL a diag reciprocal := 1 / a[diag, diag];
 
@@ -337,7 +337,7 @@ PROC in situ gaussian elimination = (REF MAT a, b)REF MAT: (
 
   FOR diag FROM UPB a BY -1 TO 1+LWB a DO
 
-    IF ABS a[diag,diag] <= near min scal THEN 
+    IF ABS a[diag,diag] <= near min scal THEN
       raise value error("Zero pivot encountered?") FI;
     SCAL a diag reciprocal = 1 / a[diag,diag];
 
@@ -421,8 +421,8 @@ PR READ "postlude_exception.a68" PR
 
 This modifies A and b in place, which might not be quite desirable.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -522,11 +522,11 @@ int main(void)
 
 
 (defun gauss (m)
-  (labels 
+  (labels
     ((redc (m) ; Reduce to triangular form
        (if (null (cdr m))
          m
-        (cons (car m) (mapcar-1 #'cons 0 (redc (mapcar #'cdr (mapcar #'(lambda (r) (mapcar #'- (mapcar-1 #'* (caar m) r) 
+        (cons (car m) (mapcar-1 #'cons 0 (redc (mapcar #'cdr (mapcar #'(lambda (r) (mapcar #'- (mapcar-1 #'* (caar m) r)
                                                                                             (mapcar-1 #'* (car r) (car m)))) (cdr m)))))) ))
      (rev (m) ; Reverse each row except the last element
        (reverse (mapcar #'(lambda (r) (append (reverse (butlast r)) (last r))) m)) ))
@@ -637,7 +637,7 @@ namespace Rosetta
         {
             this.rows = rows;
             this.cols = cols;
-            b = new double[rows * cols];            
+            b = new double[rows * cols];
         }
 
         internal Matrix(int size)
@@ -661,8 +661,8 @@ namespace Rosetta
         {
             get { return b[row * cols + col]; }
             set { b[row * cols + col] = value; }
-        }        
-        
+        }
+
         public static Vector operator*(Matrix lhs, Vector rhs)
         {
             if (lhs.cols != rhs.rows) throw new Exception("I can't multiply matrix by vector");
@@ -722,7 +722,7 @@ namespace Rosetta
                 }
             }
         }
-        
+
         internal void print()
         {
             for (int i = 0; i < rows; i++)
@@ -756,8 +756,8 @@ namespace Rosetta
             1.12,2.51,6.32,15.88,39.9,100.28,
             1.16,3.14,9.87,31.01,97.41,306.02});
             Vector B = new Vector(new double[] { -0.01, 0.61, 0.91, 0.99, 0.60, 0.02 });
-            A.ElimPartial(B);            
-            B.print();           
+            A.ElimPartial(B);
+            B.print();
         }
     }
 }
@@ -868,7 +868,7 @@ void main() {
 ```Delphi
 program GuassianElimination;
 
-// Modified from: 
+// Modified from:
 // R. Sureshkumar (10 January 1997)
 // Gregory J. McRae (22 October 1997)
 // http://web.mit.edu/10.001/Web/Course_Notes/Gauss_Pivoting.c
@@ -1034,7 +1034,7 @@ let gelim augM=
   let fG n (g:bigint list) t=n|>List.map(fun n->List.map2(fun n g->g-n)(List.map(fun n->n*g.[t])n)(List.map(fun g->g*n.[t])g))
   let rec fN i (g::e as l)=
     match i with i when i=f->l|>List.mapi(fun n (g:bigint list)->(g.[f],g.[n]))
-                |_->fN (i+1) (fG e g i@[g]) 
+                |_->fN (i+1) (fG e g i@[g])
   fN 0 augM
 
 ```
@@ -1054,7 +1054,7 @@ let test=[[ -6I; -18I;  13I;   6I;  -6I; -15I;  -2I;  -9I;  -231I];
           [-13I;  -1I;   3I;   5I;  -2I;  17I;  14I; -12I; -1080I];
           [ 19I;  24I; -21I;  -5I; -19I;   0I; -24I; -17I;  1006I];
           [ 20I;  -3I; -14I; -16I; -23I; -25I; -15I;  20I;  1496I]]
-let fN (n,g)=cN2S(π(rI2cf n g)) 
+let fN (n,g)=cN2S(π(rI2cf n g))
 gelim test |> List.map fN |> List.iteri(fun i n->(printfn "x[%d]=%1.14f " (i+1) (snd (Seq.pairwise n|> Seq.find(fun (n,g)->n-g < 0.0000000000001M)))))
 
 ```
@@ -1063,14 +1063,14 @@ gelim test |> List.map fN |> List.iteri(fun i n->(printfn "x[%d]=%1.14f " (i+1) 
 
 ```txt
 
-x[1]=12.00000000000000 
-x[2]=10.00000000000000 
-x[3]=-20.00000000000000 
-x[4]=22.00000000000000 
-x[5]=-1.00000000000000 
-x[6]=-20.00000000000000 
-x[7]=-25.00000000000000 
-x[8]=23.00000000000000 
+x[1]=12.00000000000000
+x[2]=10.00000000000000
+x[3]=-20.00000000000000
+x[4]=22.00000000000000
+x[5]=-1.00000000000000
+x[6]=-20.00000000000000
+x[7]=-25.00000000000000
+x[8]=23.00000000000000
 
 ```
 
@@ -1095,7 +1095,7 @@ Gaussian Elimination with partial pivoting using augmented matrix
           print'(f15.7)',solve_wbs(ge_wpp(a,b))
 
         contains
-  
+
           function solve_wbs(u) result(x) ! solve with backward substitution
             real                 :: u(:,:)
             integer              :: i,n
@@ -1149,7 +1149,7 @@ Sub GaussJordan(matrix() As Double,rhs() As Double,ans() As Double)
     Next c
     #macro pivot(num)
     For p1 As Long  = num To n - 1
-        For p2 As Long  = p1 + 1 To n  
+        For p2 As Long  = p1 + 1 To n
             If Abs(b(p1,num))<Abs(b(p2,num)) Then
                 Swap r(p1),r(p2)
                 For g As Long=1 To n
@@ -1159,9 +1159,9 @@ Sub GaussJordan(matrix() As Double,rhs() As Double,ans() As Double)
         Next p2
     Next p1
     #endmacro
-     
+
     For k As Long=1 To n-1
-        pivot(k)              'full pivoting 
+        pivot(k)              'full pivoting
         For row As Long =k To n-1
             If b(row+1,k)=0 Then Exit For
             Var f=b(k,k)/b(row+1,k)
@@ -1171,7 +1171,7 @@ Sub GaussJordan(matrix() As Double,rhs() As Double,ans() As Double)
             Next g
         Next row
     Next k
-    'back substitute 
+    'back substitute
     For z As Long=n To 1 Step -1
         ans(z)=r(z)/b(z,z)
         For j As Long = n To z+1 Step -1
@@ -1188,10 +1188,10 @@ dim as double a(1 to 6,1 to 6) = { _
 		                  {1.00, 2.51, 6.32, 15.88, 39.90, 100.28}, _
 		                  {1.00, 3.14, 9.87, 31.01, 97.41, 306.02} _
 	                      }
-                          
+
 dim as double b(1 to 6) = { -0.01, 0.61, 0.91, 0.99, 0.60, 0.02 }
 
-redim as double result() 
+redim as double result()
 GaussJordan(a(),b(),result())
 
 for n as long=lbound(result) to ubound(result)
@@ -1477,7 +1477,7 @@ bubble f g (r:rs) (t:ts) = bub r t (f r) rs ts [] []
   bub l k _ [] _ xs ys          = (l:xs,k:ys)
   bub l k _ _ [] xs ys          = (l:xs,k:ys)
   bub l k m (u:us) (v:vs) xs ys = ans
-    where 
+    where
     mu = f u
     ans | g m mu    = bub l k m us vs (u:xs) (v:ys)
         | otherwise = bub u v mu us vs (l:xs) (k:ys)
@@ -1492,7 +1492,7 @@ pivot xs ks ys ls = go ys ls [] []
   go _ [] us vs  = (us,vs)
   go rs ts us vs = go (tail rs) (tail ts) (es:us) (fs:vs)
     where (es,fs) = val (head rs) (head ts)
-        
+
 triangle::(Num a,Ord a) => [[a]] -> [[a]] -> ([[a]],[[a]])
 triangle as bs = go (as,bs) [] []
   where
@@ -1513,7 +1513,7 @@ solveTriangle ([c]:as) (b:bs) = go as bs [map (/c) b]
   go [] _ zs          = zs
   go _ [] zs          = zs
   go (x:xs) (y:ys) zs = go xs ys $ (val x y zs):zs
-  
+
 solveGauss:: (Fractional a, Ord a) => [[a]] -> [[a]] -> [[a]]
 solveGauss as bs = uncurry solveTriangle $ triangle as bs
 
@@ -1605,7 +1605,7 @@ verification: y = a * x = mult a x =
 [99 % 100]
 [3 % 5]
 [1 % 50]
-test: y == b = 
+test: y == b =
 True
 identity matrix: identity =
 [1 % 1,0 % 1,0 % 1,0 % 1,0 % 1,0 % 1]
@@ -1628,7 +1628,7 @@ verification: h = a * a1 = mult a a1 =
 [0 % 1,0 % 1,0 % 1,1 % 1,0 % 1,0 % 1]
 [0 % 1,0 % 1,0 % 1,0 % 1,1 % 1,0 % 1]
 [0 % 1,0 % 1,0 % 1,0 % 1,0 % 1,1 % 1]
-test: h == identity = 
+test: h == identity =
 True
 z = a1 * b = mult a1 b =
 [(-1) % 100]
@@ -1652,15 +1652,15 @@ foldlZipWith::(a -> b -> c) -> (d -> c -> d) -> d -> [a] -> [b]  -> d
 foldlZipWith _ _ u [] _          = u
 foldlZipWith _ _ u _ []          = u
 foldlZipWith f g u (x:xs) (y:ys) = foldlZipWith f g (g u (f x y)) xs ys
- 
+
 foldl1ZipWith::(a -> b -> c) -> (c -> c -> c) -> [a] -> [b] -> c
 foldl1ZipWith _ _ [] _          = error "First list is empty"
 foldl1ZipWith _ _ _ []          = error "Second list is empty"
 foldl1ZipWith f g (x:xs) (y:ys) = foldlZipWith f g (f x y) xs ys
- 
+
 multAdd::(a -> b -> c) -> (c -> c -> c) -> [[a]] -> [[b]] -> [[c]]
 multAdd f g xs ys = map (\us -> foldl1ZipWith (\u vs -> map (f u) vs) (zipWith g) us ys) xs
- 
+
 mult:: Num a => [[a]] -> [[a]] -> [[a]]
 mult xs ys = multAdd (*) (+) xs ys
 
@@ -1669,7 +1669,7 @@ triangle as bs = pivot 1 [] $ zipWith3 (\x y i -> ((x,y),i)) as bs [(0::Int)..]
   where
   good rs ts = (abs.head.fst.fst $ ts) <= (abs.head.fst.fst $ rs)
   go (us,vs) ((os,ps),i) = if o == 0 then ((rs,f vs ps),i) else ((f us rs,f vs ps),i)
-    where 
+    where
     (o,rs) = (head os,tail os)
     f = zipWith (\x y -> y - x*o)
   change i (ys:zs) = map (\xs -> if (==i).snd $ xs then ys else xs) zs
@@ -1680,7 +1680,7 @@ triangle as bs = pivot 1 [] $ zipWith3 (\x y i -> ((x,y),i)) as bs [(0::Int)..]
     ws = map (go (map (/u) us,map (/u) vs)) $ if i == j then ys else change i zs
     ps@((u:us,vs),i) = foldl1 (\rs ts ->  if good rs ts then rs else ts) zs
 
--- ((det,sol),permutation) = gauss as bs 
+-- ((det,sol),permutation) = gauss as bs
 -- det = determinant as
 -- sol is solution of: as * sol = bs
 -- perm is a permutation with: (matPerm perm) * as * sol = (matPerm perm) * bs
@@ -1696,13 +1696,13 @@ gauss as bs = if 0 == det then ((0,[]),[]) else solveTriangle ms
 
 solveGauss::(Fractional a,Ord a) => [[a]] -> [[a]] -> [[a]]
 solveGauss as = snd.fst.gauss as
-        
+
 matI::Num a => Int -> [[a]]
 matI n = [ [fromIntegral.fromEnum $ i == j | i <- [1..n]] | j <- [1..n]]
 
 matPerm::Num a => [Int] -> [[a]]
 matPerm ns = [ [fromIntegral.fromEnum $ i == j | (j,_) <- zip [0..] ns] | i <- ns]
- 
+
 task::[[Rational]] -> [[Rational]] -> IO()
 task a b = do
   let ((d,x),perm)   = gauss a b
@@ -1741,7 +1741,7 @@ task a b = do
   mapM_ print z
   putStrLn "test: z == x ="
   print $ z == x
- 
+
 main = do
   let a  = [[1.00, 0.00, 0.00,  0.00,  0.00,   0.00],
             [1.00, 0.63, 0.39,  0.25,  0.16,   0.10],
@@ -1795,7 +1795,7 @@ verification: y = a * x = mult a x =
 [99 % 100]
 [3 % 5]
 [1 % 50]
-test: y == b = 
+test: y == b =
 True
 ps is the permutation associated to matrix a and ps =
 [1,0,0,0,0,0]
@@ -1825,7 +1825,7 @@ verification: h = a * a1 = mult a a1 =
 [0 % 1,0 % 1,0 % 1,1 % 1,0 % 1,0 % 1]
 [0 % 1,0 % 1,0 % 1,0 % 1,1 % 1,0 % 1]
 [0 % 1,0 % 1,0 % 1,0 % 1,0 % 1,1 % 1]
-test: h == identity = 
+test: h == identity =
 True
 z = a1 * b = mult a1 b =
 [(-1) % 100]
@@ -1939,18 +1939,18 @@ function ludcmp(A, update) {
 		if (max == 0) return // Singular Matrix!
 		vv[i] = 1 / max // Scaling
 	}
-	
-	if (!update) { // make a copy of A 
+
+	if (!update) { // make a copy of A
 		var Acpy = new Array(n)
-		for (var i=0; i<n; i++) {		
-			var Ai = A[i] 
+		for (var i=0; i<n; i++) {
+			var Ai = A[i]
 			Acpyi = new Array(Ai.length)
 			for (j=0; j<Ai.length; j+=1) Acpyi[j] = Ai[j]
 			Acpy[i] = Acpyi
 		}
 		A = Acpy
 	}
-	
+
 	var tiny = 1e-20 // in case pivot element is zero
 	for (var i=0; ; i++) {
 		for (var j=0; j<i; j++) {
@@ -1996,13 +1996,13 @@ function lubksb(lu, b, update) {
 	var A = lu.A
 	var idx = lu.idx
 	var n = idx.length
-	
+
 	if (!update) { // make a copy of b
-		var bcpy = new Array(n) 
+		var bcpy = new Array(n)
 		for (var i=0; i<b.length; i+=1) bcpy[i] = b[i]
 		b = bcpy
 	}
-	
+
 	for (var ii=-1, i=0; i<n; i++) {
 		var ix = idx[i]
 		var sum = b[ix]
@@ -2082,7 +2082,7 @@ Example, matrix taken from C version:
  1.60279039450211414
  -1.6132030599055625
  1.24549412137143782
- -0.490989719584658025 
+ -0.490989719584658025
  0.0657606961752320591]
 
 ```
@@ -2236,9 +2236,9 @@ module checkit {
                               d2=d1*b(diag)
                               if ro<>diag Then {
                                          for col=diag to cols {a(ro, col)-=d1*a(diag, col)}
-                                          b(ro)-=d2  
+                                          b(ro)-=d2
                               }
-                        }        
+                        }
                   }
             =b()
       }
@@ -2252,7 +2252,7 @@ module checkit {
                   while m {ex$+=format$(way$,array(m))}
                   Insert 3, 2  ex$=string$(" ", leftmargin)
                   =ex$ :    Break
-            } 
+            }
             for i=1 to dimension(a(),1)  {
                   ex1$=""
                   for j=1 to dimension(a(),2 ) {
@@ -2313,7 +2313,7 @@ Module Checkit2 {
             link n to n()
             if m(0)=0 then  return m, 0:=-n(0), 1:=n(1) : exit
             if n(0)=0 then  exit
-             return m, 0:=m(0)*(n(1)/m(1))-n(0), 1:=n(1)     
+             return m, 0:=m(0)*(n(1)/m(1))-n(0), 1:=n(1)
       }
       Function Global Inv(m as array){
             link m to m()
@@ -2335,7 +2335,7 @@ Module Checkit2 {
       Function Global Res(m as array) {
             link m to m()
             if m(0)=0@ then =0@: exit
-            =m(0)/m(1) 
+            =m(0)/m(1)
       }
       \\  GaussJordan  get arrays byvalue
       function GaussJordan(a(), b()) {
@@ -2346,7 +2346,7 @@ Module Checkit2 {
             Dim Base 1, a(cols, rows)
             for i=1 to cols : for j=1 to rows : a(i, j)=(a(i, j), 1@) : next j : next i
             def d as decimal
-            for j=1 to rows : b(j)=(b(j), 1@) : next j 
+            for j=1 to rows : b(j)=(b(j), 1@) : next j
             for diag=1 to rows {
                         max_row=diag
                         max_val=abs(Res(a(diag, diag)))
@@ -2375,10 +2375,10 @@ Module Checkit2 {
                               d1=copypointer(a(ro, diag))
                               if ro<>diag Then {
                                          for col=diag to cols {subd a(ro, col), mul(d1, a(diag, col))}
-                                          subd b(ro), mul(d1, b(diag)) 
+                                          subd b(ro), mul(d1, b(diag))
                               }
-                        }        
-      
+                        }
+
                   }
                   dim base 1, ans(len(b()))
                   for i=1 to cols {
@@ -2396,7 +2396,7 @@ Module Checkit2 {
                   while m {ex$+=format$(way$,array(m))}
                   Insert 3, 2  ex$=string$(" ", leftmargin)
                   =ex$ :    Break
-            } 
+            }
             for i=1 to dimension(a(),1)  {
                   ex1$=""
                   for j=1 to dimension(a(),2 ) {
@@ -2420,7 +2420,7 @@ Module Checkit2 {
             For j=1 to dimension(a(),2)
                   sum+=r(j)*a(i,j)
             next j
-            Print round(sum-b(i),26), b(i) 
+            Print round(sum-b(i),26), b(i)
       next i
       \\ check accuracy
       Document out$={Algorithm using pair of decimals as rational numbers
@@ -2440,7 +2440,7 @@ Module Checkit2 {
             }
       next i
       Report out$
-      clipboard out$     
+      clipboard out$
 }
 Checkit2
 
@@ -2459,7 +2459,7 @@ Matrix A:
 
 Vector B:
          -0,01,     0,61,     0,91,     0,99,     0,60,     0,02
-Solution: 
+Solution:
 Coef.  1,  rounding to 26 decimal, compare  True, solution: -0,0597391027501962649904316335
 Coef.  2,  rounding to 26 decimal, compare  True, solution: 1,8501896672627829700670299288
 Coef.  3,  rounding to 26 decimal, compare  True, solution: -1,9727833018116428175300387318
@@ -2478,7 +2478,7 @@ Matrix A:
 
 Vector B:
          -0,01,     0,61,     0,91,     0,99,     0,60,     0,02
-Solution: 
+Solution:
 Coef.  1,  rounding to 26 decimal, compare  True, solution: -0,0597391027501962649904316335
 Coef.  2,  rounding to 26 decimal, compare  True, solution: 1,8501896672627829700670299288
 Coef.  3,  rounding to 26 decimal, compare  True, solution: -1,9727833018116428175300387317
@@ -2499,7 +2499,7 @@ Matrix A:
 
 Vector B:
          -0,01,     0,61,     0,91,     0,99,     0,60,     0,02
-Solution: 
+Solution:
 Coef.  1,  rounding to 25 decimal, compare  True, solution: -0,01
 Coef.  2,  rounding to 25 decimal, compare  True, solution: 1,6027903945021139442641548525
 Coef.  3,  rounding to 25 decimal, compare  True, solution: -1,6132030599055614189052834829
@@ -2519,7 +2519,7 @@ Matrix A:
 
 Vector B:
          -0,01,     0,61,     0,91,     0,99,     0,60,     0,02
-Solution: 
+Solution:
 Coef.  1,  rounding to 26 decimal, compare  True, solution: -0,01
 Coef.  2,  rounding to 26 decimal, compare  True, solution: 1,6027903945021139442641548522
 Coef.  3,  rounding to 26 decimal, compare  True, solution: -1,6132030599055614189052834817
@@ -2564,11 +2564,11 @@ aug = [A b];
 tempmatrix = aug;
 
 for i=2:sz(1)
-    
-    
+
+
     % Find maximum of row and divide by the maximum
     tempmatrix(1,:) = tempmatrix(1,:)/max(tempmatrix(1,:));
-    
+
     % Finds the maximum in column
     temp = find(abs(tempmatrix) - max(abs(tempmatrix(:,1))));
     if length(temp)>2
@@ -2581,14 +2581,14 @@ for i=2:sz(1)
     else % length(temp)==2
         maxi=1;
     end
-    
+
     % Row swap if maxi is not 1
     if maxi~=1
         temp = tempmatrix(maxi,:);
         tempmatrix(maxi,:) = tempmatrix(1,:);
         tempmatrix(1,:) = temp;
-    end    
-    
+    end
+
     % Row reducing
     for j=2:length(tempmatrix)-1
         tempmatrix(j,:) = tempmatrix(j,:)-tempmatrix(j,1)/tempmatrix(1,1)*tempmatrix(1,:);
@@ -2599,7 +2599,7 @@ for i=2:sz(1)
         end
     end
     aug(i-1:end,i-1:end) = tempmatrix;
-    
+
     % Decrease matrix size
     tempmatrix = tempmatrix(2:end,2:end);
 end
@@ -3156,7 +3156,7 @@ print $x;
 ## Perl 6
 
 {{works with|Rakudo|2018.03}}
-Gaussian elimination results in a matrix in row echelon form. Gaussian elimination with back-substitution (also known as Gauss-Jordan elimination) results in a matrix in reduced row echelon form. That being the case, we can reuse much of the code from the [[Reduced row echelon form]] task. Perl 6 stores and does calculations on decimal numbers within its limit of precision using Rational numbers by default, meaning the calculations are exact. 
+Gaussian elimination results in a matrix in row echelon form. Gaussian elimination with back-substitution (also known as Gauss-Jordan elimination) results in a matrix in reduced row echelon form. That being the case, we can reuse much of the code from the [[Reduced row echelon form]] task. Perl 6 stores and does calculations on decimal numbers within its limit of precision using Rational numbers by default, meaning the calculations are exact.
 
 
 ```perl6
@@ -3315,7 +3315,7 @@ function gauss_eliminate(sequence a, b)
     end for
     return x
 end function
- 
+
 constant a = {{1.00, 0.00, 0.00,  0.00,  0.00,   0.00},
               {1.00, 0.63, 0.39,  0.25,  0.16,   0.10},
               {1.00, 1.26, 1.58,  1.98,  2.49,   3.13},
@@ -3323,7 +3323,7 @@ constant a = {{1.00, 0.00, 0.00,  0.00,  0.00,   0.00},
               {1.00, 2.51, 6.32, 15.88, 39.90, 100.28},
               {1.00, 3.14, 9.87, 31.01, 97.41, 306.02}},
          b = {-0.01, 0.61, 0.91,  0.99,  0.60,   0.02}
- 
+
 pp(gauss_eliminate(a, b))
 ```
 
@@ -3518,23 +3518,23 @@ end Solve;
 
 ```txt
 
-Program to solve n simultaneous equations of the form Ax = b. Please type n: 
+Program to solve n simultaneous equations of the form Ax = b. Please type n:
 
-Please type A: 
+Please type A:
 
-Please type the right-hand sides, b: 
+Please type the right-hand sides, b:
 
-The equations are: 
+The equations are:
     1     2     3    14
     2     1     3    13
     3    -2    -1    -4
-Solutions: 
+Solutions:
 X(1)= 1.00000000000000000E+0000                 X(2)= 2.00000000000000000E+0000
 X(3)= 3.00000000000000000E+0000;
-Residuals: 
- 0.00000000000000000E+0000 
- 0.00000000000000000E+0000 
- 0.00000000000000000E+0000 
+Residuals:
+ 0.00000000000000000E+0000
+ 0.00000000000000000E+0000
+ 0.00000000000000000E+0000
 
 ```
 
@@ -3549,7 +3549,7 @@ Residuals:
 ```PowerShell
 
 function gauss($a,$b) {
-    $n = $a.count  
+    $n = $a.count
     for ($k = 0; $k -lt $n; $k++) {
         $lmax, $max = $k, [Math]::Abs($a[$k][$k])
         for ($l = $k+1; $l -lt $n; $l++) {
@@ -3557,7 +3557,7 @@ function gauss($a,$b) {
             if($max -lt $tmp) {
                 $max, $lmax = $tmp, $l
             }
-        }        
+        }
         if ($k -ne $lmax) {
             $a[$k], $a[$lmax] = $a[$lmax], $a[$k]
             $b[$k], $b[$lmax] = $b[$lmax], $b[$k]
@@ -3569,7 +3569,7 @@ function gauss($a,$b) {
                 $a[$i][$j] = $a[$i][$j]*$akk - $a[$k][$j]*$aik
             }
             $b[$i] = $b[$i]*$akk - $b[$k]*$aik
-        }    
+        }
     }
     for ($i = $n-1; $i -ge 0; $i--) {
         for ($j = $i+1; $j -lt $n; $j++) {
@@ -3580,7 +3580,7 @@ function gauss($a,$b) {
     $b
 }
 function show($a) {
-    if($a) { 
+    if($a) {
         0..($a.Count - 1) | foreach{ if($a[$_]){"$($a[$_][0..($a[$_].count -1)])"}else{""} }
     }
 }
@@ -3640,7 +3640,7 @@ x =
 ```PowerShell
 
 function gauss-jordan($a,$b) {
-    $n = $a.count  
+    $n = $a.count
     for ($k = 0; $k -lt $n; $k++) {
         $lmax, $max = $k, [Math]::Abs($a[$k][$k])
         for ($l = $k+1; $l -lt $n; $l++) {
@@ -3648,7 +3648,7 @@ function gauss-jordan($a,$b) {
             if($max -lt $tmp) {
                 $max, $lmax = $tmp, $l
             }
-        }        
+        }
         if ($k -ne $lmax) {
             $a[$k], $a[$lmax] = $a[$lmax], $a[$k]
             $b[$k], $b[$lmax] = $b[$lmax], $b[$k]
@@ -3664,12 +3664,12 @@ function gauss-jordan($a,$b) {
                 }
                 $b[$i] = $b[$i] - $b[$k]*$aik
             }
-        }    
+        }
     }
     $b
 }
 function show($a) {
-    if($a) { 
+    if($a) {
         0..($a.Count - 1) | foreach{ if($a[$_]){"$($a[$_][0..($a[$_].count -1)])"}else{""} }
     }
 }
@@ -3750,14 +3750,14 @@ def gauss(a, b):
             a[i], a[k] = a[k], a[i]
             b[i], b[k] = b[k], b[i]
             det = -det
-            
+
         for j in range(i + 1, n):
             t = a[j][i]/a[i][i]
             for k in range(i + 1, n):
                 a[j][k] -= t*a[i][k]
             for k in range(p):
                 b[j][k] -= t*b[i][k]
-                
+
     for i in range(n - 1, -1, -1):
         for j in range(i + 1, n):
             t = a[i][j]
@@ -3834,7 +3834,7 @@ matmul(a, c)
 ```python3
 
 $ python3
-Python 3.6.0 |Anaconda custom (64-bit)| (default, Dec 23 2016, 12:22:00) 
+Python 3.6.0 |Anaconda custom (64-bit)| (default, Dec 23 2016, 12:22:00)
 [GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> # https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.solve.html
@@ -3858,7 +3858,7 @@ array([[-0.10277778,  0.18888889, -0.01944444],
 
 #lang racket
 (require math/matrix)
-(define A 
+(define A
   (matrix [[1.00  0.00  0.00  0.00  0.00   0.00]
            [1.00  0.63  0.39  0.25  0.16   0.10]
            [1.00  1.26  1.58  1.98  2.49   3.13]
@@ -3906,7 +3906,7 @@ array([[-0.10277778,  0.18888889, -0.01944444],
   25  20  -6  15   0 -10   9  17    1316
  -13  -1   3   5  -2  17  14 -12   -1080
   19  24 -21  -5 -19   0 -24 -17    1006
-  20  -3 -14 -16 -23 -25 -15  20    1496 
+  20  -3 -14 -16 -23 -25 -15  20    1496
 *--------------------------------------------------------------------*/
   Numeric Digits 20
   Parse Arg t
@@ -3963,16 +3963,16 @@ array([[-0.10277778,  0.18888889, -0.01944444],
 Exit
 
 Gauss_elimination:
-  Do j=1 to n-1                    
-    ma=a.j.j                       
-    Do ja=j+1 To n                 
-      mb=a.ja.j                    
-      Do i=1 To n                  
-        new=a.j.i*mb-a.ja.i*ma     
-        a.ja.i=new                 
-        End                        
-      b.ja=b.j*mb-b.ja*ma          
-      End                          
+  Do j=1 to n-1
+    ma=a.j.j
+    Do ja=j+1 To n
+      mb=a.ja.j
+      Do i=1 To n
+        new=a.j.i*mb-a.ja.i*ma
+        a.ja.i=new
+        End
+      b.ja=b.j*mb-b.ja*ma
+      End
     End
   Return
 
@@ -4381,7 +4381,7 @@ pub fn eliminate(mut system: [[f32; SIZE+1]; SIZE]) -> Option<Vec<f32>> {
     // produce gaussian eliminated array
     //
     // the process follows a similar pattern
-    // but this one reduces the upper triangular 
+    // but this one reduces the upper triangular
     // elements
     for i in (1..SIZE).rev() {
         if system[i][i] == 0f32 {
@@ -4442,7 +4442,7 @@ mod tests {
 ## Stata
 
 
-###  Gaussian elimination 
+###  Gaussian elimination
 
 This implementation computes also the determinant of the matrix A, as it requires only a few operations. The matrix B is overwritten with the solution of the system, and A is overwritten with garbage.
 
@@ -4451,7 +4451,7 @@ This implementation computes also the determinant of the matrix A, as it require
 void gauss(real matrix a, real matrix b, real scalar det) {
 	real scalar i,j,n,s
 	real vector js
-	
+
 	det = 1
 	n = rows(a)
 	for (i=1; i<n; i++) {
@@ -4468,7 +4468,7 @@ void gauss(real matrix a, real matrix b, real scalar det) {
 			b[j,.] = b[j,.]-s*b[i,.]
 		}
 	}
-	
+
 	for (i=n; i>=1; i--) {
 		for (j=i+1; j<=n; j++) {
 			b[i,.] = b[i,.]-a[i,j]*b[j,.]
@@ -4481,7 +4481,7 @@ void gauss(real matrix a, real matrix b, real scalar det) {
 
 
 
-###  LU decomposition and backsubstitution 
+###  LU decomposition and backsubstitution
 
 
 
@@ -4489,7 +4489,7 @@ void gauss(real matrix a, real matrix b, real scalar det) {
 void ludec(real matrix a, real matrix l, real matrix u, real vector p) {
 	real scalar i,j,n,s
 	real vector js
-	
+
 	l = a
 	n = rows(a)
 	p = 1::n
@@ -4505,7 +4505,7 @@ void ludec(real matrix a, real matrix l, real matrix u, real vector p) {
 			l[j,i+1..n] = l[j,i+1..n]-s*l[i,i+1..n]
 		}
 	}
-	
+
 	u = uppertriangle(l)
 	l = lowertriangle(l, 1)
 }
@@ -4521,7 +4521,7 @@ void luback(real matrix l, real matrix u, real vector p, real matrix y) {
 		}
 		/*y[i,.] = y[i,.]/l[i,i]*/
 	}
-	
+
 	for (i=n; i>=1; i--) {
 		for (j=i+1; j<=n; j++) {
 			y[i,.] = y[i,.]-u[i,j]*y[j,.]
@@ -4533,7 +4533,7 @@ void luback(real matrix l, real matrix u, real vector p, real matrix y) {
 
 
 
-###  Example 
+###  Example
 
 Here we are computing the inverse of a 3x3 matrix (which happens to be a magic square), using both methods.
 
@@ -4600,7 +4600,7 @@ puts -nonewline [math::linearalgebra::show [math::linearalgebra::solveGauss $A $
 =={{header|TI-83 BASIC}}==
 {{trans|BBC BASIC}}
 {{works with|TI-83 BASIC|TI-84Plus 2.55MP}}
-The '''rref()''' function performs reduced row-echelon form using Gaussian elimination 
+The '''rref()''' function performs reduced row-echelon form using Gaussian elimination
 on a n*(n+1) matrix. The (n+1)th column receives the resulting vector.
 The n*n maxtrix is set to 0 and the pivots are set to 1.
 

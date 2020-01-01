@@ -226,84 +226,84 @@ Department D202
 
 
 ```autohotkey
-Departments = D050, D101, D190, D202 
-StringSplit, Department_, Departments, `,, %A_Space% 
+Departments = D050, D101, D190, D202
+StringSplit, Department_, Departments, `,, %A_Space%
 
-; Employee Name, Employee ID, Salary, Department 
-Add_Employee("Tyler Bennett  ", "E10297", 32000, "D101") 
-Add_Employee("John Rappl     ", "E21437", 47000, "D050") 
-Add_Employee("George Woltman ", "E00127", 53500, "D101") 
-Add_Employee("Adam Smith     ", "E63535", 18000, "D202") 
-Add_Employee("Claire Buckman ", "E39876", 27800, "D202") 
-Add_Employee("David McClellan", "E04242", 41500, "D101") 
-Add_Employee("Rich Holcomb   ", "E01234", 49500, "D202") 
-Add_Employee("Nathan Adams   ", "E41298", 21900, "D050") 
-Add_Employee("Richard Potter ", "E43128", 15900, "D101") 
-Add_Employee("David Motsinger", "E27002", 19250, "D202") 
-Add_Employee("Tim Sampair    ", "E03033", 27000, "D101") 
-Add_Employee("Kim Arlich     ", "E10001", 57000, "D190") 
-Add_Employee("Timothy Grove  ", "E16398", 29900, "D190") 
+; Employee Name, Employee ID, Salary, Department
+Add_Employee("Tyler Bennett  ", "E10297", 32000, "D101")
+Add_Employee("John Rappl     ", "E21437", 47000, "D050")
+Add_Employee("George Woltman ", "E00127", 53500, "D101")
+Add_Employee("Adam Smith     ", "E63535", 18000, "D202")
+Add_Employee("Claire Buckman ", "E39876", 27800, "D202")
+Add_Employee("David McClellan", "E04242", 41500, "D101")
+Add_Employee("Rich Holcomb   ", "E01234", 49500, "D202")
+Add_Employee("Nathan Adams   ", "E41298", 21900, "D050")
+Add_Employee("Richard Potter ", "E43128", 15900, "D101")
+Add_Employee("David Motsinger", "E27002", 19250, "D202")
+Add_Employee("Tim Sampair    ", "E03033", 27000, "D101")
+Add_Employee("Kim Arlich     ", "E10001", 57000, "D190")
+Add_Employee("Timothy Grove  ", "E16398", 29900, "D190")
 
-; display top 3 ranks for each department 
-Loop, %Department_0% ; all departments 
-    MsgBox,, % "Department:  " Department_%A_Index% 
-           , % TopRank(3, Department_%A_Index%) 
+; display top 3 ranks for each department
+Loop, %Department_0% ; all departments
+    MsgBox,, % "Department:  " Department_%A_Index%
+           , % TopRank(3, Department_%A_Index%)
 
-;--------------------------------------------------------------------------- 
-TopRank(N, Department) { ; find the top N salaries in each department 
-;--------------------------------------------------------------------------- 
-    local Collection := Msg := "" 
-    Loop, %m% ; all employees 
-        If (Employee_%A_Index%_Dept = Department) 
-            ; collect all the salaries being paid in this department 
-            Collection .= (Collection ? "," : "") Employee_%A_Index%_Salary 
-    Sort, Collection, ND,R 
-    StringSplit, Collection, Collection, `, 
-    Loop, % (N < Collection0) ? N : Collection0 { 
-        Salary := Collection%A_Index% 
-        Loop, %m% ; find the respective employee 
-            If (Employee_%A_Index%_Salary = Salary) 
-                ; and put out his/her details 
-                Msg .= Employee_%A_Index%_Name "`t" 
-                    .  Employee_%A_Index%_ID "`t" 
-                    .  Employee_%A_Index%_Salary "`t" 
-                    .  Employee_%A_Index%_Dept "`t`n" 
-    } 
-    Return, Msg 
-} 
+;---------------------------------------------------------------------------
+TopRank(N, Department) { ; find the top N salaries in each department
+;---------------------------------------------------------------------------
+    local Collection := Msg := ""
+    Loop, %m% ; all employees
+        If (Employee_%A_Index%_Dept = Department)
+            ; collect all the salaries being paid in this department
+            Collection .= (Collection ? "," : "") Employee_%A_Index%_Salary
+    Sort, Collection, ND,R
+    StringSplit, Collection, Collection, `,
+    Loop, % (N < Collection0) ? N : Collection0 {
+        Salary := Collection%A_Index%
+        Loop, %m% ; find the respective employee
+            If (Employee_%A_Index%_Salary = Salary)
+                ; and put out his/her details
+                Msg .= Employee_%A_Index%_Name "`t"
+                    .  Employee_%A_Index%_ID "`t"
+                    .  Employee_%A_Index%_Salary "`t"
+                    .  Employee_%A_Index%_Dept "`t`n"
+    }
+    Return, Msg
+}
 
-;--------------------------------------------------------------------------- 
-Add_Employee(Name, ID, Salary, Department) { 
-;--------------------------------------------------------------------------- 
-    global 
-    m++ 
-    Employee_%m%_Name   := Name 
-    Employee_%m%_ID     := ID 
-    Employee_%m%_Salary := Salary 
-    Employee_%m%_Dept   := Department 
+;---------------------------------------------------------------------------
+Add_Employee(Name, ID, Salary, Department) {
+;---------------------------------------------------------------------------
+    global
+    m++
+    Employee_%m%_Name   := Name
+    Employee_%m%_ID     := ID
+    Employee_%m%_Salary := Salary
+    Employee_%m%_Dept   := Department
 }
 ```
 {{out}}
-<pre style="height:30ex;overflow:scroll">Department:  D050 
---------------------------- 
-John Rappl        E21437   47000   D050    
+<pre style="height:30ex;overflow:scroll">Department:  D050
+---------------------------
+John Rappl        E21437   47000   D050
 Nathan Adams      E41298   21900   D050
 
-Department:  D101 
---------------------------- 
-George Woltman    E00127   53500   D101    
-David McClellan   E04242   41500   D101    
+Department:  D101
+---------------------------
+George Woltman    E00127   53500   D101
+David McClellan   E04242   41500   D101
 Tyler Bennett     E10297   32000   D101
 
-Department:  D190 
---------------------------- 
-Kim Arlich        E10001   57000   D190    
+Department:  D190
+---------------------------
+Kim Arlich        E10001   57000   D190
 Timothy Grove     E16398   29900   D190
 
-Department:  D202 
---------------------------- 
-Rich Holcomb      E01234   49500   D202    
-Claire Buckman    E39876   27800   D202    
+Department:  D202
+---------------------------
+Rich Holcomb      E01234   49500   D202
+Claire Buckman    E39876   27800   D202
 David Motsinger   E27002   19250   D202
 ```
 
@@ -389,7 +389,7 @@ D202  19250 E27002 David Motsinger
 
 ## Bracmat
 
-Bracmat has no dedicated sorting functions. However, when evaluating algebraic expressions, Bracmat sorts factors in products and terms in sums. Moreover, Bracmat simplifies products by, amongst other transformations, collecting exponents of the same base into a single exponent, which is the sum of the collected exponents: <code>a^b*a^c</code> &rarr; <code>a^(b+c)</code>. This built-in behaviour is made use of in this solution. 
+Bracmat has no dedicated sorting functions. However, when evaluating algebraic expressions, Bracmat sorts factors in products and terms in sums. Moreover, Bracmat simplifies products by, amongst other transformations, collecting exponents of the same base into a single exponent, which is the sum of the collected exponents: <code>a^b*a^c</code> &rarr; <code>a^(b+c)</code>. This built-in behaviour is made use of in this solution.
 
 ```bracmat
       (Tyler Bennett,E10297,32000,D101)
@@ -456,8 +456,8 @@ Department D202:
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -534,8 +534,8 @@ D202 27800: Claire Buckman
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <set>
 #include <list>
 #include <map>
@@ -637,7 +637,7 @@ int main(int argc, char* argv[])
 	// Fill our list of employees
 	initialize(Employees);
 
-	// Our departments.  
+	// Our departments.
 	DEPARTMENTLIST Departments;
 
 	// Sort our employees into their departments.
@@ -1158,9 +1158,9 @@ We use the '''sql.lib''' to select, sort and group records from the table 'emps'
 
 ;; sort/group procedure
 (define (get-high num-records: N into: high)
-(sql-select emp.dept emp.name emp.salary 
-  from emps  
-  group-by emp.dept 
+(sql-select emp.dept emp.name emp.salary
+  from emps
+  group-by emp.dept
   order-by emp.salary desc limit N into high))
 
 ```
@@ -1169,7 +1169,7 @@ We use the '''sql.lib''' to select, sort and group records from the table 'emps'
 
 ```scheme
 
-(define emps_file 
+(define emps_file
 '(("Tyler Bennett" E10297 32000 D101)
 ("John Rappl" E21437 47000 D050)
 ("George Woltman" E00127 53500 D101)
@@ -1190,24 +1190,24 @@ We use the '''sql.lib''' to select, sort and group records from the table 'emps'
 (get-high 2 high)
 (table-print high)
 
-[0]   D050  John Rappl       47000 
-[1]   D050  Nathan Adams     21900 
-[2]   D101  George Woltman   53500 
-[3]   D101  David McClellan  41500 
-[4]   D190  Kim Arlich       57000 
-[5]   D190  Timothy Grove    29900 
-[6]   D202  Rich Holcomb     49500 
-[7]   D202  Claire Buckman   27800 
-[8]   D666  Simon Gallubert  42  
+[0]   D050  John Rappl       47000
+[1]   D050  Nathan Adams     21900
+[2]   D101  George Woltman   53500
+[3]   D101  David McClellan  41500
+[4]   D190  Kim Arlich       57000
+[5]   D190  Timothy Grove    29900
+[6]   D202  Rich Holcomb     49500
+[7]   D202  Claire Buckman   27800
+[8]   D666  Simon Gallubert  42
 
 (sql-delete from high)
 (get-high 1 high)
 (table-print high)
-[0]   D050  John Rappl       47000 
-[1]   D101  George Woltman   53500 
-[2]   D190  Kim Arlich       57000 
-[3]   D202  Rich Holcomb     49500 
-[4]   D666  Simon Gallubert  42      
+[0]   D050  John Rappl       47000
+[1]   D101  George Woltman   53500
+[2]   D190  Kim Arlich       57000
+[3]   D202  Rich Holcomb     49500
+[4]   D666  Simon Gallubert  42
 
 ```
 
@@ -1230,14 +1230,14 @@ import system'routines;
 import extensions;
 import extensions'routines;
 import extensions'text;
- 
+
 class Employee
 {
     prop string Name;
     prop string ID;
     prop int    Salary;
     prop string Department;
- 
+
     string Printable
         = new StringWriter()
             .writePaddingRight(Name, 25)
@@ -1245,7 +1245,7 @@ class Employee
             .writePaddingRight(Salary.Printable, 12)
             .write:Department;
 }
- 
+
 extension reportOp
 {
     topNPerDepartment(n)
@@ -1253,13 +1253,13 @@ extension reportOp
         {
             ^ new :: {
                 Department = x.Key;
- 
+
                 Employees
                     = x.orderBy:(f,l => f.Salary > l.Salary ).top(n).summarize(new ArrayList());
             }
         };
 }
- 
+
 public program()
 {
     var employees := new Employee[]::
@@ -1278,16 +1278,16 @@ public program()
         new Employee::{ this Name := "Kim Arlich"; this ID := "E10001"; this Salary:=57000; this Department:="D190";},
         new Employee::{ this Name := "Timothy Grove"; this ID := "E16398"; this Salary:=29900; this Department:="D190";}
     );
- 
+
     employees.topNPerDepartment:2.forEach:(info)
     {
         console.printLine("Department: ",info.Department);
- 
+
         info.Employees.forEach:printingLn;
- 
+
         console.writeLine:"---------------------------------------------"
     };
- 
+
     console.readChar()
 }
 ```
@@ -1335,7 +1335,7 @@ defmodule TopRank do
          |> Enum.each(fn person -> IO.puts str_format(person) end)
        end)
   end
-  
+
   defp salary([_,_,x,_]), do: String.to_integer(x)
   defp department([_,_,_,x]), do: x
   defp str_format([a,b,c,_]), do: "  #{a} - #{b} - #{c} annual salary"
@@ -1452,19 +1452,19 @@ task_write( Highest_payeds ) ->
 ```fsharp
 let data =
   [
-    "Tyler Bennett",   "E10297",  32000,  "D101";   
-    "John Rappl",      "E21437",  47000,  "D050";   
-    "George Woltman",  "E00127",  53500,  "D101";   
-    "Adam Smith",      "E63535",  18000,  "D202";   
-    "Claire Buckman",  "E39876",  27800,  "D202";   
-    "David McClellan", "E04242",  41500,  "D101";   
-    "Rich Holcomb",    "E01234",  49500,  "D202";   
-    "Nathan Adams",    "E41298",  21900,  "D050";   
-    "Richard Potter",  "E43128",  15900,  "D101";   
-    "David Motsinger", "E27002",  19250,  "D202";   
-    "Tim Sampair",     "E03033",  27000,  "D101";   
-    "Kim Arlich",      "E10001",  57000,  "D190";   
-    "Timothy Grove",   "E16398",  29900,  "D190";   
+    "Tyler Bennett",   "E10297",  32000,  "D101";
+    "John Rappl",      "E21437",  47000,  "D050";
+    "George Woltman",  "E00127",  53500,  "D101";
+    "Adam Smith",      "E63535",  18000,  "D202";
+    "Claire Buckman",  "E39876",  27800,  "D202";
+    "David McClellan", "E04242",  41500,  "D101";
+    "Rich Holcomb",    "E01234",  49500,  "D202";
+    "Nathan Adams",    "E41298",  21900,  "D050";
+    "Richard Potter",  "E43128",  15900,  "D101";
+    "David Motsinger", "E27002",  19250,  "D202";
+    "Tim Sampair",     "E03033",  27000,  "D101";
+    "Kim Arlich",      "E10001",  57000,  "D190";
+    "Timothy Grove",   "E16398",  29900,  "D190";
   ]
 
 let topRank n =
@@ -1582,11 +1582,11 @@ constant employee
     hstr    r@ .id !
     hstr    r@ .name !
     r> ;
-    
+
 : new-employee ( name id salary dept -- node )
     employee alloc
     init-employee ;
-    
+
 : <kill-employee> ( node -- )
     dup .name @     dealloc
     dup .id @       dealloc
@@ -1595,14 +1595,14 @@ constant employee
 
 : kill-employee ( head -- )
     each[  <kill-employee>  ]each ;
-    
+
 : <clone-employee> ( node -- new-node )
     clone-node
     dup .name @     hstr    over .name !
     dup .id @       hstr    over .id !
     dup .dept @     hstr    over .dept ! ;
-    
-: clone-employee ( head -- new-head )    
+
+: clone-employee ( head -- new-head )
     nil
     swap each[  <clone-employee> link  ]each ;
 
@@ -1612,22 +1612,22 @@ constant employee
     dup .salary @   .           4 spaces
     dup .name @     count type  cr
     drop ;
-    
-: show-employee ( head -- )    
+
+: show-employee ( head -- )
     cr
     each[  <show-employee>  ]each ;
 
-    
+
 \ ******
 \ ****** The following code is specific to the query that we want to do in this example problem.
 \ ******
 
 : employee-dept-salary ( new-node node -- new-node ? )                      \ for use by FIND-PRIOR or INSERT-ORDERED
-    2dup  
+    2dup
     .dept @ count   rot .dept @ count   compare     ?dup if  A>B =  nip exit then
     .salary @       over .salary @      < ;
 
-: <top> ( n rank current-dept head node -- n rank current-dept head )    
+: <top> ( n rank current-dept head node -- n rank current-dept head )
     2>r                         \ -- n rank current-dept
     dup count  r@ .dept @ count  compare  A=B <> if                         \ we have a new department
         2drop                                                               \ discard RANK and CURRENT-DEPT
@@ -1638,18 +1638,18 @@ constant employee
         >r >r  then             \ -- n rank current-dept
     swap 1+  swap                                                           \ increment RANK
     rdrop  r> ;                 \ -- n rank current-dept head
-    
+
 : top ( n head -- new-head )    \ make a new list of the top N salary earners in each dept      \ requires that list be sorted by dept-salary
     >r
     0  c" xxx"  nil             \ -- n rank current-dept new-head           \ initially for an invalid department
-    r>  ['] <top>  each 
+    r>  ['] <top>  each
     3nip ;
-    
-    
+
+
 \ ******
 \ ****** The following is a test of the program using sample data.
 \ ******
-    
+
 nil  ' employee-dept-salary
 c" Tyler Bennett"       c" E10297"  32000  c" D101"     new-employee  insert-ordered
 c" John Rappl"          c" E21437"  47000  c" D050"     new-employee  insert-ordered
@@ -1681,18 +1681,18 @@ cr .( N = 3 )
 test-data kill-employee
 
 ```
-            
+
 {{out}}
 <pre style="height:30ex;overflow:scroll">
-N = 0 
+N = 0
 
-N = 1 
+N = 1
 E21437    D050    47000     John Rappl
 E00127    D101    53500     George Woltman
 E10001    D190    57000     Kim Arlich
 E01234    D202    49500     Rich Holcomb
 
-N = 2 
+N = 2
 E21437    D050    47000     John Rappl
 E41298    D050    21900     Nathan Adams
 E00127    D101    53500     George Woltman
@@ -1702,7 +1702,7 @@ E16398    D190    29900     Timothy Grove
 E01234    D202    49500     Rich Holcomb
 E39876    D202    27800     Claire Buckman
 
-N = 3 
+N = 3
 E21437    D050    47000     John Rappl
 E41298    D050    21900     Nathan Adams
 E00127    D101    53500     George Woltman
@@ -1720,7 +1720,7 @@ E27002    D202    19250     David Motsinger
 
 ## Fortran
 
-The example data can easily be declared via DATA statements, as with 
+The example data can easily be declared via DATA statements, as with
 ```Fortran
       DATA EMPLOYEE(1:3)/
      1 GRIST("Tyler Bennett","E10297",32000,"D101"),
@@ -1729,7 +1729,7 @@ The example data can easily be declared via DATA statements, as with
 
 ```
 
-(just showing the first three), however this does not allow the preparation of the header line, because <code>GRIST("Employee Name","Employee ID","Salary","Department")</code> would be invalid since the "salary" entry is a floating-point number in the data aggregate, not text. The header line could be discarded, but this is in violation of the ideas of properly-described data files. So, the plan is to read the data from an input file containing the full example input, with its header line given special treatment. No attempt is made to detect or report improperly-formatted data. The READ statements could refer to an internally-defined block of text, but reading an actual disc file is more normal. Ad-hoc decisions are made for the size of the CHARACTER variables, that are "surely big enough" for the example data, likewise with the size of the array to hold all the records. 
+(just showing the first three), however this does not allow the preparation of the header line, because <code>GRIST("Employee Name","Employee ID","Salary","Department")</code> would be invalid since the "salary" entry is a floating-point number in the data aggregate, not text. The header line could be discarded, but this is in violation of the ideas of properly-described data files. So, the plan is to read the data from an input file containing the full example input, with its header line given special treatment. No attempt is made to detect or report improperly-formatted data. The READ statements could refer to an internally-defined block of text, but reading an actual disc file is more normal. Ad-hoc decisions are made for the size of the CHARACTER variables, that are "surely big enough" for the example data, likewise with the size of the array to hold all the records.
 
 For simplicity, and following the specification to not parse the data at runtime but to use built-in facilities, free-format input is intended. This does not require text variables to be quoted, however, because ''both'' a comma ''and'' a space are accepted as delimiters the specified data cannot be read as provided since some text fields contain a space. Such text fields must be placed within quotes to avoid missteps. This of course must also be done if a DATA statement as above were to be employed. On the other hand, the example data contains only names with two parts separated by a space - and this could be relied on as a separator to read a two-part name variable. Similarly, all the salary values have the same number of digits and so could be sorted as text variables to give the desired numerical order. The resulting scheme will be easily disrupted by data other than those of the example! I recall working at the NZ Post Office in the 1970s when there came a time that higher-paid staff achieved fortnightly pays in excess of $999·99 and the computer system couldn't handle it. Similarly, I have a three-part name. Asian names are often written with family first, and there should be a comma when this ordering is used in English: Bloggs, Joe; Kim, Il-sung; Kim, Jong-il; Kim, Jong-un. To have such name texts read as one variable would definitely require them to be enclosed in quotes so that their included comma is not taken as a delimiter in free-format input, but a more likely usage would be to read two fields and argue over two-part names only. Some Asian names are one-part, even as a formal usage. The question is whether the names part is a "block" of text to be shown as-is, or whether it is to have components.
 
@@ -1739,7 +1739,7 @@ The source is unstructured by subroutines and the like, but uses the facilities 
 
 If the requirement had been to report the highest-ranked salary, the deed could have been done via the F90 function MAXLOC, which locates the array index of the (first-encountered?) maximum value of an array of values; further, it allows an additional MASK parameter which could be used to select only those entries having a particular "department" code. However, aside from the multiple scans that would be required for multiple departmental codes, there is the requirement for the top N salaries, and anyway, there would still be the need to identify the different departmental codes once only. Accordingly, the way ahead is the classic: sort the data and then work through the sorted sequence. Since standard Fortran provides no "sort" function in its standard libraries nor does it offer a pre-processor that might include a sort generator and the like to generate the specific code needed for a particular data aggregate and sort key specification, one must engage in some repetition. For this purpose, the "comb" sort is convenient with its code requiring just one comparison and one "swap" action, so in-line code is not troublesome. On the other hand, when dealing with compound sort keys, a three-way IF statement (or equivalent) is necessary whereby the first field of the sort key is compared with appropriate action for the < and > cases, but for the = case the comparison moves on to the second key. ''Three'' different consequences from the one comparison. Despite the deprecations of the modernisers this is still possible for numerical comparisons, but alas, character comparisons are not allowed in an arithmetic-IF statement - though one could struggle with ICHAR action. Thus, two comparisons are made where only one should suffice.
 
-Finally, standard Fortran does not offer a means of receiving parameters as might be supplied when a code file is activated in a command-line environment. There may be special library routines with names such as GETARG, but they're not standard. So, a READ statement is employed. Or, one could rewrite this routine as a subroutine having one parameter so as to approximate the form of the specification more closely. Extra statements... 
+Finally, standard Fortran does not offer a means of receiving parameters as might be supplied when a code file is activated in a command-line environment. There may be special library routines with names such as GETARG, but they're not standard. So, a READ statement is employed. Or, one could rewrite this routine as a subroutine having one parameter so as to approximate the form of the specification more closely. Extra statements...
 ```Fortran
       PROGRAM TOP RANK	!Just do it.
       CHARACTER*28 HEADING(4)	!The first line is a header.
@@ -1869,14 +1869,14 @@ N = 2
 
 for (dept, empl) <- employees.groupBy( e -> e.dept ).>toList().sortWith( (<) )
   println( dept )
-  
+
   for e <- empl.sortWith( \a, b -> a.salary > b.salary ).take( N )
     printf( "    %-16s  %6s  %7d\n", e.name, e.id, e.salary )
-    
+
   println()
 ```
 
-  
+
 {{out}}
 
 
@@ -2381,7 +2381,7 @@ Timothy Grove       E16398   29900  D190
 
 Rich Holcomb        E01234   49500  D202
 Claire Buckman      E39876   27800  D202
-David Motsinger     E27002   19250  D202 
+David Motsinger     E27002   19250  D202
 ```
 
 Note: In place of writing the sorted result to file outP, [http://www.HicEst.com/DLG.htm DLG] allows the direct export of the formatted and sorted result.
@@ -2429,7 +2429,7 @@ procedure main (args)
       if employee.dept == group then put(employeesInGroup, employee)
     }
     # sort by third field and reverse, so highest salary comes first
-    employeesInGroup := reverse(sortf(employeesInGroup, 3)) 
+    employeesInGroup := reverse(sortf(employeesInGroup, 3))
     # show the first N records, up to the end of the list
     every show_employee (!employeesInGroup[1:(1+min(N,*employeesInGroup))])
   }
@@ -2439,34 +2439,34 @@ end
 <pre style="height:30ex;overflow:scroll">
 $ ./top-rank-by-group 2
 == Top 2 in group D101
-George Woltman E00127 53500 D101 
-David McClellan E04242 41500 D101 
+George Woltman E00127 53500 D101
+David McClellan E04242 41500 D101
 == Top 2 in group D202
-Rich Holcomb E01234 49500 D202 
-Claire Buckman E39876 27800 D202 
+Rich Holcomb E01234 49500 D202
+Claire Buckman E39876 27800 D202
 == Top 2 in group D050
-John Rappl E21437 47000 D050 
-Nathan Adams E41298 21900 D050 
+John Rappl E21437 47000 D050
+Nathan Adams E41298 21900 D050
 == Top 2 in group D190
-Kim Arlich E10001 57000 D190 
-Timothy Grove E16398 29900 D190 
+Kim Arlich E10001 57000 D190
+Timothy Grove E16398 29900 D190
 
 $ ./top-rank-by-group 4
 == Top 4 in group D101
-George Woltman E00127 53500 D101 
-David McClellan E04242 41500 D101 
-Tyler Bennett E10297 32000 D101 
-Tim Sampair E03033 27000 D101 
+George Woltman E00127 53500 D101
+David McClellan E04242 41500 D101
+Tyler Bennett E10297 32000 D101
+Tim Sampair E03033 27000 D101
 == Top 4 in group D202
-Rich Holcomb E01234 49500 D202 
-Claire Buckman E39876 27800 D202 
-David Motsinger E27002 19250 D202 
-Adam Smith E63535 18000 D202 
+Rich Holcomb E01234 49500 D202
+Claire Buckman E39876 27800 D202
+David Motsinger E27002 19250 D202
+Adam Smith E63535 18000 D202
 == Top 4 in group D050
-John Rappl E21437 47000 D050 
-Nathan Adams E41298 21900 D050 
+John Rappl E21437 47000 D050
+Nathan Adams E41298 21900 D050
 == Top 4 in group D190
-Kim Arlich E10001 57000 D190 
+Kim Arlich E10001 57000 D190
 Timothy Grove E16398 29900 D190
 ```
 
@@ -2480,7 +2480,7 @@ J has a rich set of primitive functions, which combine the power of an imperativ
 ```j
 NB.  Dynamically generate convenience functions
 ('`',,;:^:_1: N=:{.Employees) =:, (_&{"1)`'' ([^:(_ -: ])L:0)"0 _~ i.# E =: {: Employees
- 
+
 NB.  Show top six ranked employees in each dept
 N , (<@:>"1@:|:@:((6 <. #) {. ] \: SALARY)/.~ DEPT) |: <"1&> E
 ```
@@ -2518,30 +2518,30 @@ N , (<@:>"1@:|:@:((6 <. #) {. ] \: SALARY)/.~ DEPT) |: <"1&> E
 using the data set:<pre style="height:30ex;overflow:scroll">
     Employees=: (<;.1~(1 1{.~#);+./@:(;:E.S:0])@:{.)];._2 noun define
     ID   DEPT NAME             SALARY
-    1001 AB   Janssen A.H.     41000 
-    101  KA   't Woud B.       45000 
-    1013 AB   de Bont C.A.     65000 
-    1101 CC   Modaal A.M.J.    30000 
-    1203 AB   Anders H.        50000 
-    100  KA   Ezelbips P.J.    52000 
-    1102 CC   Zagt A.          33000 
-    1103 CC   Ternood T.R.     21000 
-    1104 CC   Lageln M.        23000 
-    1105 CC   Amperwat A.      19000 
-    1106 CC   Boon T.J.        25000 
-    1107 CC   Beloop L.O.      31000 
-    1009 CD   Janszoon A.      38665 
-    1026 CD   Janszen H.P.     41000 
-    1011 CC   de Goeij J.      39000 
-    106  KA   Pragtweik J.M.V. 42300 
-    111  KA   Bakeuro S.       31000 
-    105  KA   Clubdrager C.    39800 
-    104  KA   Karendijk F.     23000 
-    107  KA   Centjes R.M.     34000 
-    119  KA   Tegenstroom H.L. 39000 
-    1111 CD   Telmans R.M.     55500 
-    1093 AB   de Slegte S.     46987 
-    1199 CC   Uitlaat G.A.S.   44500 
+    1001 AB   Janssen A.H.     41000
+    101  KA   't Woud B.       45000
+    1013 AB   de Bont C.A.     65000
+    1101 CC   Modaal A.M.J.    30000
+    1203 AB   Anders H.        50000
+    100  KA   Ezelbips P.J.    52000
+    1102 CC   Zagt A.          33000
+    1103 CC   Ternood T.R.     21000
+    1104 CC   Lageln M.        23000
+    1105 CC   Amperwat A.      19000
+    1106 CC   Boon T.J.        25000
+    1107 CC   Beloop L.O.      31000
+    1009 CD   Janszoon A.      38665
+    1026 CD   Janszen H.P.     41000
+    1011 CC   de Goeij J.      39000
+    106  KA   Pragtweik J.M.V. 42300
+    111  KA   Bakeuro S.       31000
+    105  KA   Clubdrager C.    39800
+    104  KA   Karendijk F.     23000
+    107  KA   Centjes R.M.     34000
+    119  KA   Tegenstroom H.L. 39000
+    1111 CD   Telmans R.M.     55500
+    1093 AB   de Slegte S.     46987
+    1199 CC   Uitlaat G.A.S.   44500
     )
 ```
 
@@ -2993,7 +2993,7 @@ def top_rank_per_department(n):
   group_by(.Department)
   | reduce .[] as $dept
      ([]; ($dept
-           | map(.Salary) 
+           | map(.Salary)
            | sort            # from least to most
            | .[length - n:]  # top n salaries
            | reverse) as $max
@@ -3062,7 +3062,7 @@ function top_rank(n) {
         puts("");
     }
 }
- 
+
 // group by dept, and sort by salary
 function group_by_dept(data) {
     var by_dept = {};
@@ -3078,7 +3078,7 @@ function group_by_dept(data) {
     }
     return by_dept;
 }
- 
+
 if (Interp.conf('unitTest')) {
     var data = [
         {name: "Tyler Bennett",   id: "E10297", salary: 32000, dept: "D101"},
@@ -3095,7 +3095,7 @@ if (Interp.conf('unitTest')) {
         {name: "Kim Arlich",      id: "E10001", salary: 57000, dept: "D190"},
         {name: "Timothy Grove",   id: "E16398", salary: 29900, dept: "D190"}
     ];
-     
+
     top_rank(3);
 }
 
@@ -3304,19 +3304,19 @@ fun main(args: Array<String>) {
 
 Highest 2 salaries by department:
 
-Dept D050 => 
+Dept D050 =>
 John Rappl      E21437 47000
 Nathan Adams    E41298 21900
 
-Dept D101 => 
+Dept D101 =>
 George Woltman  E00127 53500
 David McClellan E04242 41500
 
-Dept D190 => 
+Dept D190 =>
 Kim Arlich      E10001 57000
 Timothy Grove   E16398 29900
 
-Dept D202 => 
+Dept D202 =>
 Rich Holcomb    E01234 49500
 Claire Buckman  E39876 27800
 
@@ -3357,7 +3357,7 @@ end
 
 for i, _ in pairs( dep ) do
     table.sort( dep[i], function (a,b) return a[3] > b[3] end )
-	
+
     print( "Department:", dep[i][1][4] )
     for l = 1, math.min( N, #dep[i] ) do
 	print( "", dep[i][l][1], dep[i][l][2], dep[i][l][3] )
@@ -3423,10 +3423,10 @@ Module Checkit {
             Rem : Print name$, id$, salary, dep
             If Exist(Department, dep) Then {
                   z=Eval(Department)    ' get pointer to inventory
-                  AppendOne()            
+                  AppendOne()
             } Else {
                   z=queue
-                  AppendDep()            
+                  AppendDep()
                   AppendOne()
             }
             Read name$
@@ -3440,7 +3440,7 @@ Module Checkit {
             \\ when we pass a number to a enum variable
             \\ if the number exist, get that enum item else raise error
             depname=val(eval$(i, i^))
-            \\ z is a pointer to inventory 
+            \\ z is a pointer to inventory
             z=Eval(i)
             Sort descending z as number
             k=each(z,1,N)
@@ -3460,7 +3460,7 @@ Module Checkit {
                   Append z, salary:=Empl(name$, id$, salary)
       End Sub
 }
-Checkit 
+Checkit
 
 ```
 
@@ -3632,19 +3632,19 @@ let toprank data n =
 ;;
 
 let data = [
-  "Tyler Bennett",   "E10297",  32000,  "D101";   
-  "John Rappl",      "E21437",  47000,  "D050";   
-  "George Woltman",  "E00127",  53500,  "D101";   
-  "Adam Smith",      "E63535",  18000,  "D202";   
-  "Claire Buckman",  "E39876",  27800,  "D202";   
-  "David McClellan", "E04242",  41500,  "D101";   
-  "Rich Holcomb",    "E01234",  49500,  "D202";   
-  "Nathan Adams",    "E41298",  21900,  "D050";   
-  "Richard Potter",  "E43128",  15900,  "D101";   
-  "David Motsinger", "E27002",  19250,  "D202";   
-  "Tim Sampair",     "E03033",  27000,  "D101";   
-  "Kim Arlich",      "E10001",  57000,  "D190";   
-  "Timothy Grove",   "E16398",  29900,  "D190";   
+  "Tyler Bennett",   "E10297",  32000,  "D101";
+  "John Rappl",      "E21437",  47000,  "D050";
+  "George Woltman",  "E00127",  53500,  "D101";
+  "Adam Smith",      "E63535",  18000,  "D202";
+  "Claire Buckman",  "E39876",  27800,  "D202";
+  "David McClellan", "E04242",  41500,  "D101";
+  "Rich Holcomb",    "E01234",  49500,  "D202";
+  "Nathan Adams",    "E41298",  21900,  "D050";
+  "Richard Potter",  "E43128",  15900,  "D101";
+  "David Motsinger", "E27002",  19250,  "D202";
+  "Tim Sampair",     "E03033",  27000,  "D101";
+  "Kim Arlich",      "E10001",  57000,  "D190";
+  "Timothy Grove",   "E16398",  29900,  "D190";
 ]
 
 let () =
@@ -3679,16 +3679,16 @@ Then sort each department by salaries and keep only the first n elements.
 
 ```Oforth
 Object Class new: Employee(name, id, salary, dep)
- 
+
 Employee method: initialize  := dep  := salary := id := name ;
 Employee method: salary  @salary ;
 Employee method: dep     @dep ;
 Employee method: <<      "[" << @dep << "," << @name << "," << @salary << "]" << ;
- 
+
 : topRank(n)
 | employees |
    ListBuffer new ->employees
- 
+
    Employee new("Tyler Bennett",   "E10297", 32000, "D101") employees add
    Employee new("John Rappl",      "E21437", 47000, "D050") employees add
    Employee new("George Woltman",  "E00127", 53500, "D101") employees add
@@ -3702,9 +3702,9 @@ Employee method: <<      "[" << @dep << "," << @name << "," << @salary << "]" <<
    Employee new("Tim Sampair",     "E03033", 27000, "D101") employees add
    Employee new("Kim Arlich",      "E10001", 57000, "D190") employees add
    Employee new("Timothy Grove",   "E16398", 29900, "D190") employees add
- 
-   #dep employees sortBy groupWith( #dep ) 
-   map(#[ sortBy(#[ salary neg ]) left(n) ]) apply(#println) ; 
+
+   #dep employees sortBy groupWith( #dep )
+   map(#[ sortBy(#[ salary neg ]) left(n) ]) apply(#println) ;
 ```
 
 
@@ -3755,7 +3755,7 @@ declare
 	  N}
       end}
   end
-  
+
   fun {CompareSalary E1 E2}
      E1.salary > E2.salary
   end
@@ -3859,7 +3859,7 @@ var
   depts   : TStringList;
   deptList: Tlist;
   number, i, j: integer;
-  
+
 begin
   write ('Enter the number of ranks: ');
   readln (number);
@@ -3891,7 +3891,7 @@ end.
 
 ```
 {{out}}
-<pre style="height:30ex;overflow:scroll">% ./TopRankPerGroup 
+<pre style="height:30ex;overflow:scroll">% ./TopRankPerGroup
 Enter the number of ranks: 3
 
 Department: D050
@@ -4147,7 +4147,7 @@ function top_sal($num){
 	foreach($data as $key => $arr){
 		if(!isset($depts[$arr[3]])) $depts[$arr[3]] = Array();
 		$depts[$arr[3]][] = $key;
-	}	
+	}
 	function topsalsort($a,$b){
 		global $data;
 		if ($data[$a][2] == $data[$b][2]) {
@@ -4357,38 +4357,38 @@ completed_input:
 end rank;
 ```
 {{out}}
-<pre style="height:30ex;overflow:scroll">How many highest-paid employees do you want? 
+<pre style="height:30ex;overflow:scroll">How many highest-paid employees do you want?
 
 Looking for the 2 highest-paid employees in each department
-Employees in department D101 are:- 
-Tyler Bennett           E10297                     32000                D101 
-George Woltman          E00127                     53500                D101 
-David McClellan         E04242                     41500                D101 
-Richard Potter          E43128                     15900                D101 
-Tim Sampair             E03033                     27000                D101 
-Highest-paid employees in department D101:- 
-George Woltman          E00127                     53500                D101 
-David McClellan         E04242                     41500                D101 
-Employees in department D050 are:- 
-John Rappl              E21437                     47000                D050 
-Nathan Adams            E41298                     21900                D050 
-Highest-paid employees in department D050:- 
-John Rappl              E21437                     47000                D050 
-Nathan Adams            E41298                     21900                D050 
-Employees in department D202 are:- 
-Adam Smith              E63535                     18000                D202 
-Claire Buckman          E39876                     27800                D202 
-Rich Holcomb            E01234                     49500                D202 
-David Motsinger         E27002                     19250                D202 
-Highest-paid employees in department D202:- 
-Rich Holcomb            E01234                     49500                D202 
-Claire Buckman          E39876                     27800                D202 
-Employees in department D190 are:- 
-Kim Arlich              E10001                     57000                D190 
-Timothy Grove           E16398                     29900                D190 
-Highest-paid employees in department D190:- 
-Kim Arlich              E10001                     57000                D190 
-Timothy Grove           E16398                     29900                D190 
+Employees in department D101 are:-
+Tyler Bennett           E10297                     32000                D101
+George Woltman          E00127                     53500                D101
+David McClellan         E04242                     41500                D101
+Richard Potter          E43128                     15900                D101
+Tim Sampair             E03033                     27000                D101
+Highest-paid employees in department D101:-
+George Woltman          E00127                     53500                D101
+David McClellan         E04242                     41500                D101
+Employees in department D050 are:-
+John Rappl              E21437                     47000                D050
+Nathan Adams            E41298                     21900                D050
+Highest-paid employees in department D050:-
+John Rappl              E21437                     47000                D050
+Nathan Adams            E41298                     21900                D050
+Employees in department D202 are:-
+Adam Smith              E63535                     18000                D202
+Claire Buckman          E39876                     27800                D202
+Rich Holcomb            E01234                     49500                D202
+David Motsinger         E27002                     19250                D202
+Highest-paid employees in department D202:-
+Rich Holcomb            E01234                     49500                D202
+Claire Buckman          E39876                     27800                D202
+Employees in department D190 are:-
+Kim Arlich              E10001                     57000                D190
+Timothy Grove           E16398                     29900                D190
+Highest-paid employees in department D190:-
+Kim Arlich              E10001                     57000                D190
+Timothy Grove           E16398                     29900                D190
 FINISHED
 ```
 
@@ -4602,7 +4602,7 @@ emp('Timothy Grove','E16398',29900,'D190').
 departments(Depts) :-  % Find the set of departments
   findall(Dpt, emp(_,_,_,Dpt), DList), list_to_set(DList, Depts).
 
-greater(emp(_,_,Sal1,_), emp(_,_,Sal2,_)) :- 
+greater(emp(_,_,Sal1,_), emp(_,_,Sal2,_)) :-
   Sal1 > Sal2.  % First employee salary greater than second
 
 % Maintains a decreasing ordered list of employees truncated after (N) items.
@@ -4611,21 +4611,21 @@ greater(emp(_,_,Sal1,_), emp(_,_,Sal2,_)) :-
 %  Rule 3: Try to add new employee at N-1
 %  Rule 4: for an empty input list regardless of N, add the new employee
 topSalary(0, _, _, []).
-topSalary(N, Emp, [E|R], [Emp|Res]) :-  
+topSalary(N, Emp, [E|R], [Emp|Res]) :-
   greater(Emp,E), N0 is N - 1, !, topSalary(N0, E, R, Res).
-topSalary(N, Emp, [E|R], [E|Res]) :-  
+topSalary(N, Emp, [E|R], [E|Res]) :-
   N0 is N - 1, !, topSalary(N0, Emp, R, Res).
 topSalary(_, Emp, [], [Emp]).
 
 % For each employee, add him to the list if top salary
-topEmps(N, [Emp|Emps], R, Res) :-     
+topEmps(N, [Emp|Emps], R, Res) :-
   topSalary(N, Emp, R, Rt), !, topEmps(N, Emps, Rt, Res).
 topEmps(_, [], Res, Res).
 
 % For each department, find the list of top employees in that department
 topDeps(N, [Dept|T], [dept(Dept,Ro)|Res]) :-
   findall(emp(Name, Id, Sal, Dept), emp(Name, Id, Sal, Dept), Emps),
-  topEmps(N, Emps, [], Ro), !, topDeps(N, T, Res).  
+  topEmps(N, Emps, [], Ro), !, topDeps(N, T, Res).
 topDeps(_, [], []).
 
 % Calculate and report the list of highest salaried employees per department
@@ -4671,11 +4671,11 @@ EndStructure
 
 Procedure displayTopEarners(List MyEmployees.Employees(), n)
   Protected filename$ = OpenFileRequester("Top rank per group", "DataFile.txt", "", 0)
-  If ReadFile(0, filename$) 
+  If ReadFile(0, filename$)
     Protected InData.Employees, txt.s, MaxNameLength
-    
-    While Eof(0) = 0    
-      AddElement(MyEmployees())      
+
+    While Eof(0) = 0
+      AddElement(MyEmployees())
       txt = ReadString(0)
       With MyEmployees()
         \Name$ = StringField(txt, 1, ",")
@@ -4685,7 +4685,7 @@ Procedure displayTopEarners(List MyEmployees.Employees(), n)
         If Len(\Name$) > MaxNameLength: MaxNameLength = Len(\Name$): EndIf
       EndWith
     Wend
-    CloseFile(0) 
+    CloseFile(0)
   Else
     MessageRequester("Information", "Couldn't open the file!")
     End
@@ -4693,7 +4693,7 @@ Procedure displayTopEarners(List MyEmployees.Employees(), n)
 
   If OpenConsole()
     Protected OldDepartment$, count
-     
+
     SortStructuredList(MyEmployees(), #PB_Sort_Descending, OffsetOf(Employees\Salary), #PB_Sort_integer)
     SortStructuredList(MyEmployees(), #PB_Sort_Ascending, OffsetOf(Employees\Department$), #PB_Sort_String)
     ForEach MyEmployees()
@@ -4706,7 +4706,7 @@ Procedure displayTopEarners(List MyEmployees.Employees(), n)
           PrintN("Department " + \Department$ + #CRLF$ + "---------------")
           PrintN(LSet("Name", MaxNameLength + 3) + LSet("ID", 7) + LSet("Salary", 7))
           count = 0
-        EndIf 
+        EndIf
         count + 1
         If count <= n
           PrintN(LSet(\Name$, MaxNameLength + 1) + " " + RSet(\ID$, 7) + " $" + Str(\Salary))
@@ -4714,7 +4714,7 @@ Procedure displayTopEarners(List MyEmployees.Employees(), n)
       EndWith
     Next
     PrintN(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
-  EndIf             
+  EndIf
 EndProcedure
 
 NewList MyEmployees.Employees()
@@ -4783,7 +4783,7 @@ Python 2.7/3.x compatible.
 ```python
 from collections import defaultdict
 from heapq import nlargest
- 
+
 data = [('Employee Name', 'Employee ID', 'Salary', 'Department'),
         ('Tyler Bennett', 'E10297', 32000, 'D101'),
         ('John Rappl', 'E21437', 47000, 'D050'),
@@ -4798,11 +4798,11 @@ data = [('Employee Name', 'Employee ID', 'Salary', 'Department'),
         ('Tim Sampair', 'E03033', 27000, 'D101'),
         ('Kim Arlich', 'E10001', 57000, 'D190'),
         ('Timothy Grove', 'E16398', 29900, 'D190')]
- 
+
 departments = defaultdict(list)
 for rec in data[1:]:
     departments[rec[-1]].append(rec)
- 
+
 N = 3
 format = " %-15s " * len(data[0])
 for department, recs in sorted(departments.items()):
@@ -4814,26 +4814,26 @@ for department, recs in sorted(departments.items()):
 ```
 {{out}}
 <pre style="height:30ex;overflow:scroll">Department D050
- Employee Name    Employee ID      Salary           Department      
- John Rappl       E21437           47000            D050            
- Nathan Adams     E41298           21900            D050            
+ Employee Name    Employee ID      Salary           Department
+ John Rappl       E21437           47000            D050
+ Nathan Adams     E41298           21900            D050
 
 Department D101
- Employee Name    Employee ID      Salary           Department      
- George Woltman   E00127           53500            D101            
- David McClellan  E04242           41500            D101            
- Tyler Bennett    E10297           32000            D101            
+ Employee Name    Employee ID      Salary           Department
+ George Woltman   E00127           53500            D101
+ David McClellan  E04242           41500            D101
+ Tyler Bennett    E10297           32000            D101
 
 Department D190
- Employee Name    Employee ID      Salary           Department      
- Kim Arlich       E10001           57000            D190            
- Timothy Grove    E16398           29900            D190            
+ Employee Name    Employee ID      Salary           Department
+ Kim Arlich       E10001           57000            D190
+ Timothy Grove    E16398           29900            D190
 
 Department D202
- Employee Name    Employee ID      Salary           Department      
- Rich Holcomb     E01234           49500            D202            
- Claire Buckman   E39876           27800            D202            
- David Motsinger  E27002           19250            D202            
+ Employee Name    Employee ID      Salary           Department
+ Rich Holcomb     E01234           49500            D202
+ Claire Buckman   E39876           27800            D202
+ David Motsinger  E27002           19250            D202
 
 ```
 
@@ -4933,11 +4933,11 @@ To return N salaries, we replace max with our own function.
 
 ```R
 get.top.N.salaries <- function(N)
-{ 
-   with(dfr, tapply(Salary, Department, 
-      function(x) 
+{
+   with(dfr, tapply(Salary, Department,
+      function(x)
       {
-         sort(x); 
+         sort(x);
          lx <- length(x)
          if(N >= lx) return(x)
          x[-1:(N-lx)]
@@ -4949,13 +4949,13 @@ get.top.N.salaries(3)
 
  $D050
  [1] 47000 21900
- 
+
  $D101
  [1] 41500 15900 27000
- 
+
  $D190
  [1] 57000 29900
- 
+
  $D202
  [1] 27800 49500 19250
 
@@ -4963,14 +4963,14 @@ To return the whole record for each of the top salaries, a different tack is req
 
 ```R
 get.top.N.salaries2 <- function(N)
-{    
+{
    #Sort data frame by Department, then by Salary
    sorted <- dfr[with(dfr, order(Department, Salary, decreasing=TRUE)),]
    #Split the dataframe up, by Department
    bydept <- split(sorted, sorted$Department)
    #Return the first N values (or all of them
-   lapply(bydept, 
-      function(x) 
+   lapply(bydept,
+      function(x)
       {
          n <- min(N, nrow(x))
          x[1:n,]
@@ -4983,18 +4983,18 @@ get.top.N.salaries2(3)
    Employee.Name Employee.ID Salary Department
  2    John Rappl      E21437  47000       D050
  8  Nathan Adams      E41298  21900       D050
- 
+
  $D101
      Employee.Name Employee.ID Salary Department
  3  George Woltman      E00127  53500       D101
  6 David McClellan      E04242  41500       D101
  1   Tyler Bennett      E10297  32000       D101
- 
+
  $D190
     Employee.Name Employee.ID Salary Department
  12    Kim Arlich      E10001  57000       D190
  13 Timothy Grove      E16398  29900       D190
- 
+
  $D202
       Employee.Name Employee.ID Salary Department
  7     Rich Holcomb      E01234  49500       D202
@@ -5004,16 +5004,16 @@ get.top.N.salaries2(3)
 
 
 
-###  With dplyr 
+###  With dplyr
 
-With the dplyr package we can use group_by and top_n to select the top n records in each group. 
+With the dplyr package we can use group_by and top_n to select the top n records in each group.
 
 
 ```R
 
 library(dplyr)
-dfr %>% 
-  group_by(Department) %>% 
+dfr %>%
+  group_by(Department) %>%
   top_n(2, Salary)
 
 ```
@@ -5021,15 +5021,15 @@ dfr %>%
 Provides:
 <pre style="height:30ex;overflow:scroll">
 Employee.Name   Employee.ID Salary Department
-  <fct>           <fct>        <int> <fct>     
-John Rappl      E21437       47000 D050      
-George Woltman  E00127       53500 D101      
-Claire Buckman  E39876       27800 D202      
-David McClellan E04242       41500 D101      
-Rich Holcomb    E01234       49500 D202      
-Nathan Adams    E41298       21900 D050      
-Kim Arlich      E10001       57000 D190      
-Timothy Grove   E16398       29900 D190      
+  <fct>           <fct>        <int> <fct>
+John Rappl      E21437       47000 D050
+George Woltman  E00127       53500 D101
+Claire Buckman  E39876       27800 D202
+David McClellan E04242       41500 D101
+Rich Holcomb    E01234       49500 D202
+Nathan Adams    E41298       21900 D050
+Kim Arlich      E10001       57000 D190
+Timothy Grove   E16398       29900 D190
 
 ```
 
@@ -5272,7 +5272,7 @@ help: Say 'Syntax: rexx topsal [topn]'
       Exit
 ```
 
-'''output''' 
+'''output'''
 
 ```txt
 13 employees, 4 departments:  D101 D050 D202 D190
@@ -5329,7 +5329,7 @@ for n = 1 to len(temp)
 next
 for n = 1 to len(depsal)-1
      for m = n+1 to len(depsal)
-          if strcmp(depsal[m][4], depsal[n][4]) < 0 
+          if strcmp(depsal[m][4], depsal[n][4]) < 0
               tmp = depsal[n]
               depsal[n] = depsal[m]
               depsal[m] = tmp
@@ -5338,7 +5338,7 @@ for n = 1 to len(depsal)-1
 next
 for n = 1 to len(depsal)-1
      for m = n+1 to len(depsal)
-           if (depsal[m][4] = depsal[n][4]) and (depsal[m][3] > depsal[n][3]) 
+           if (depsal[m][4] = depsal[n][4]) and (depsal[m][3] > depsal[n][3])
                tmp = depsal[n]
                depsal[n] = depsal[m]
                depsal[m] = tmp
@@ -5494,7 +5494,7 @@ while sw = 1
   sw = 0
   for i = 1 to n -1
     if word$(depSal$(i),4,",")+word$(depSal$(i),3,",") > word$(depSal$(i+1),4,",")+word$(depSal$(i+1),3,",") then
-      temp$        = depSal$(i)   
+      temp$        = depSal$(i)
       depSal$(i)   = depSal$(i+1)
       depSal$(i+1) = temp$
       sw           = 1
@@ -5503,7 +5503,7 @@ while sw = 1
 wend
 print "Employee Name";chr$(9);"ID";chr$(9);"Salary"
 for i = 1 to n
-  if dep$ <> word$(depSal$(i),4,",") then 
+  if dep$ <> word$(depSal$(i),4,",") then
     dep$ = word$(depSal$(i),4,",")
     print : print"Department:";dep$
   end if
@@ -5639,7 +5639,7 @@ Department: D202  pop: 4 avg: 28637,50
 import scala.slick.driver.H2Driver.simple._
 import scala.slick.lifted.ProvenShape
 
-// A Employees table with 4 columns: Employee ID, Employee Name, Department, Salary 
+// A Employees table with 4 columns: Employee ID, Employee Name, Department, Salary
 class Emp(tag: Tag) extends Table[(String, String, String, Double)](tag, "EMP") {
   def id: Column[String] = column[String]("EMP_ID", O.PrimaryKey) // This is the primary key column
   def name: Column[String] = column[String]("EMP_NAME", O.NotNull)
@@ -6305,18 +6305,18 @@ for (dept, employees) in highestSalaries(employees: employees, n: 3) {
 
 {{out}}
 
-<pre style="height:30ex;overflow:scroll">D050's highest paid employees are: 
+<pre style="height:30ex;overflow:scroll">D050's highest paid employees are:
 	John Rappl: 47000
 	Nathan Adams: 21900
-D101's highest paid employees are: 
+D101's highest paid employees are:
 	George Woltman: 53500
 	David McClellan: 41500
 	Tyler Bennett: 32000
-D202's highest paid employees are: 
+D202's highest paid employees are:
 	Rich Holcomb: 49500
 	Claire Buckman: 27800
 	David Motsinger: 19250
-D190's highest paid employees are: 
+D190's highest paid employees are:
 	Kim Arlich: 57000
 	Timothy Grove: 29900
 ```
@@ -6343,7 +6343,7 @@ David Motsinger,E27002,19250,D202
 Tim Sampair,E03033,27000,D101
 Kim Arlich,E10001,57000,D190
 Timothy Grove,E16398,29900,D190}
-    
+
 set data [dict create]
 foreach line [split $text \n] {
     lassign [split $line ,] name id salary dept
@@ -6466,7 +6466,7 @@ employeeName    employee ID    Salary
 Rich Holcomb    E01234          49500
 Claire Buckman  E39876          27800
 David Motsinger E27002          19250
-Adam Smith      E63535          18000	 
+Adam Smith      E63535          18000
 
 ```
 
@@ -6588,11 +6588,11 @@ Next, we bind five variables to the output of some TXR Lisp code, which will ret
 
 
 This code binds some successive variables. <code>n</code> is an integer conversion of the command line argument.
-<code>dept-hash</code> is a hash whose keys are department strings, and whose values are lists of records belonging to each respective department (the records collected previously).  The hash keys are the departments; these are extracted into a variable called <code>dept</code> for later use. The <code>ranked</code> variable takes the ranking information. 
+<code>dept-hash</code> is a hash whose keys are department strings, and whose values are lists of records belonging to each respective department (the records collected previously).  The hash keys are the departments; these are extracted into a variable called <code>dept</code> for later use. The <code>ranked</code> variable takes the ranking information.
 
-The salary ranking info is obtained by sorting each department's records by descending salary and then taking a 0..n slice of the list. 
+The salary ranking info is obtained by sorting each department's records by descending salary and then taking a 0..n slice of the list.
 
-The "apply mapcar list" is a Lisp pattern for doing a matrix transpose.   We use it twice: once within the department over the list of records, and then over the list of lists of records. 
+The "apply mapcar list" is a Lisp pattern for doing a matrix transpose.   We use it twice: once within the department over the list of records, and then over the list of lists of records.
 
 The reason for these transpositions is to convert the data into individual nested lists, once for each field. This is the format needed by the TXR <code>@(output)</code> clause:
 
@@ -6671,7 +6671,7 @@ Tim Sampair,E03033,27000,D101
 Kim Arlich,E10001,57000,D190
 Timothy Grove,E16398,29900,D190]-
 
-top "n" = @tt sep`,*; mat0+ ^C(~&hz,mat`,*yS)*+ take/*"n"+ *zK2 (nleq+ %np~~)-<x&yzNC 
+top "n" = @tt sep`,*; mat0+ ^C(~&hz,mat`,*yS)*+ take/*"n"+ *zK2 (nleq+ %np~~)-<x&yzNC
 
 #show+
 

@@ -31,8 +31,8 @@ tags = []
 {{works with | C++11}}
 {{works with | Visual Studio 2010}}
 
-```cpp>#include <map
-
+```cpp
+#include <map>
 #include <set>
 #include <ctime>
 #include <cctype>
@@ -56,7 +56,7 @@ map<string, string> unalias;
 void canonical(string &s)
 {
   transform(s.begin(), s.end(), s.begin(), tolower);
-  
+
   while(unalias.find(s) != unalias.end())
     s = unalias[s];
 }
@@ -121,7 +121,7 @@ class itemSet
 {
 public:
   map<string, int> counts;
-  
+
   int count(string item)
   {
     if(counts.find(item) == counts.end())
@@ -530,10 +530,10 @@ void alias(stringstream &ss)
   string from, to;
   ss >> from >> to;
 
-  if(actions.find(from) == actions.end() && unalias.find(from) == unalias.end() && 
+  if(actions.find(from) == actions.end() && unalias.find(from) == unalias.end() &&
     from != "gold" && from != "sledge" && from != "ladder")
     cout << "I don't understand " << from << "." << endl;
-  else if(actions.find(to) != actions.end() || unalias.find(to) != unalias.end() || 
+  else if(actions.find(to) != actions.end() || unalias.find(to) != unalias.end() ||
     to == "gold" || to == "sledge" || to == "ladder")
     cout << "Can't redefine words." << endl;
   else

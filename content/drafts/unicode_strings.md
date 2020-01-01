@@ -11,25 +11,25 @@ tags = []
 +++
 
 {{task}}
-As the world gets smaller each day, internationalization becomes more and more important.   For handling multiple languages, [[Unicode]] is your best friend. 
+As the world gets smaller each day, internationalization becomes more and more important.   For handling multiple languages, [[Unicode]] is your best friend.
 
-It is a very capable tool, but also quite complex compared to older single- and double-byte character encodings. 
+It is a very capable tool, but also quite complex compared to older single- and double-byte character encodings.
 
-How well prepared is your programming language for Unicode? 
+How well prepared is your programming language for Unicode?
 
 
 ;Task:
-Discuss and demonstrate its unicode awareness and capabilities. 
+Discuss and demonstrate its unicode awareness and capabilities.
 
 
 Some suggested topics:
-:*   How easy is it to present Unicode strings in source code? 
+:*   How easy is it to present Unicode strings in source code?
 :*   Can Unicode literals be written directly, or be part of identifiers/keywords/etc?
-:*   How well can the language communicate with the rest of the world? 
+:*   How well can the language communicate with the rest of the world?
 :*   Is it good at input/output with Unicode?
 :*   Is it convenient to manipulate Unicode strings in the language?
-:*   How broad/deep does the language support Unicode? 
-:*   What encodings (e.g. UTF-8, UTF-16, etc) can be used? 
+:*   How broad/deep does the language support Unicode?
+:*   What encodings (e.g. UTF-8, UTF-16, etc) can be used?
 :*   Does it support normalization?
 
 
@@ -50,7 +50,7 @@ This task is a bit unusual in that it encourages general discussion rather than 
 
 * How well prepared is the programming language for Unicode? - Prepared, in terms of handling: Assembly language can do anything the computer can do. However, it has no Unicode facilities as part of the language.
 
-* How easy is it to present Unicode strings in source code? - Easy, they are in hexadecimal. 
+* How easy is it to present Unicode strings in source code? - Easy, they are in hexadecimal.
 
 * Can Unicode literals be written directly - Depends on the compiler. MASM does not allow this. All data in assembly language is created from a series of bytes. Literal characters are not part of the language. They are number crunched down into a byte sequence by the compiler. If the compiler can read Unicode, then you are onto a winner.
 
@@ -61,7 +61,7 @@ This task is a bit unusual in that it encourages general discussion rather than 
 * Is it good at input/output with Unicode? - Yes and No. The Unicode bit is easy, but for input/output, we have to set up data structures and produce many lines of code, or link to code libraries.
 
 * Is it convenient to manipulate Unicode strings in the language? - No. String manipulation requires lots of code. We can link to code libraries though, but it is not as straightforward, as it would be in a higher level language.
- 
+
 * How broad/deep does the language support Unicode? We can do anything in assembly language, so support is 100%, but nothing is convenient with respect to Unicode. Strings are just a series of bytes, treatment of a series of bytes as a string is down to the compiler, if it provides string support as an extension. You need to be prepared to define data structures containing the values that you want.
 
 * What encodings (e.g. UTF-8, UTF-16, etc) can be used? All encodings are supported, but again, nothing is convenient with respect to encodings, although hexadecimal notation is good to use in assembly language. Normalization is not supported unless you write lots of code.
@@ -69,7 +69,7 @@ This task is a bit unusual in that it encourages general discussion rather than 
 
 ## 8th
 
-* In 8th all strings are UTF-8 encoded.  You can simply enter any text you like in a string.    
+* In 8th all strings are UTF-8 encoded.  You can simply enter any text you like in a string.
 * For special characters one may use the "\u" escape, e.g. "\u05ad"
 * All the string manipulation words are UTF-8 aware, so in general the user doesn't have to be concerned about bytes vs characters
 
@@ -87,7 +87,7 @@ This task is a bit unusual in that it encourages general discussion rather than 
 
 How well prepared is the programming language for Unicode? - ALGOL 68 is character set agnostic and the standard explicitly permits the use of a universal character set.  The standard includes routines like "make conv" to permit the opening of files and devices using alternate characters sets and converting character sets on the fly.
 
-How easy is it to present Unicode strings in source code? - Easy. 
+How easy is it to present Unicode strings in source code? - Easy.
 
 Can Unicode literals be written directly - No, a REPR operator must be used to encode the string in UTF8.
 
@@ -144,7 +144,7 @@ OP DOCONV = (GENUNICHAR gen unichar, YIELDCHAR yield)VOID:(
         buf[ofs]:= REPR ABS (byte lead bits OR bits AND 2r111111);
         bits := bits SHR 6;
     # WHILE # bits NE 2r0 DO
-        SKIP 
+        SKIP
       OD;
       BITS first byte lead bits = BIN (ABS(2r1 SHL bytes)-2) SHL (UPB buf - bytes + 1);
       buf := buf[UPB buf-bytes+1:];
@@ -178,7 +178,7 @@ PROC upb utf8 = (STRING utf8 string)INT:(
   FOR i FROM LWB utf8 string TO UPB utf8 string DO
     CHAR byte := utf8 string[i];
     IF bytes to go = 0 THEN # start new utf char #
-      bytes to go := 
+      bytes to go :=
         IF   ABS byte <= ABS 2r01111111 THEN 1 #  7 bits #
         ELIF ABS byte <= ABS 2r11011111 THEN 2 # 11 bits #
         ELIF ABS byte <= ABS 2r11101111 THEN 3 # 16 bits #
@@ -203,7 +203,7 @@ OP DOCONV = (GENCHAR gen char, YIELDUNICHAR yield)VOID: (
   ##   (CHAR byte)VOID: (
       INT bits := ABS byte;
       IF bytes to go = 0 THEN # start new unichar #
-        bytes to go := 
+        bytes to go :=
           IF   bits <= ABS 2r01111111 THEN 1 #  7 bits #
           ELIF bits <= ABS 2r11011111 THEN 2 # 11 bits #
           ELIF bits <= ABS 2r11101111 THEN 3 # 16 bits #
@@ -211,10 +211,10 @@ OP DOCONV = (GENCHAR gen char, YIELDUNICHAR yield)VOID: (
           ELIF bits <= ABS 2r11111011 THEN 5 # 26 bits #
           ELIF bits <= ABS 2r11111101 THEN 6 # 31 bits #
           ELSE raise value error(("Invalid UTF-8 bytes", BIN bits)); ~ FI;
-        IF bytes to go = 1 THEN 
+        IF bytes to go = 1 THEN
           lshift := 7; mask := 2r1111111
-        ELSE 
-          lshift := 7 - bytes to go; mask :=  BIN(ABS(2r1 SHL lshift)-1) 
+        ELSE
+          lshift := 7 - bytes to go; mask :=  BIN(ABS(2r1 SHL lshift)-1)
         FI;
         out := mask AND BIN bits;
 
@@ -253,7 +253,7 @@ OP U = (CHAR char)UNICHAR:
 # Convert a STRING into a UNICODE string #
 OP U = (STRING utf8 string)UNICODE: (
   FLEX[upb utf8(utf8 string)]UNICHAR out;
-  INT i := 0; 
+  INT i := 0;
 # FOR UNICHAR char IN # utf8 string DOCONV (
 ##   (UNICHAR char)VOID:
        out[i+:=1] := char
@@ -274,8 +274,8 @@ OP REPR = (UNICODE string)STRING: (
 # define the most useful OPerators on UNICODE CHARacter arrays #
 # Note: LWB, UPB and slicing works as per normal #
 
-OP + = (UNICODE a,b)UNICODE: ( 
-  [UPB a + UPB b]UNICHAR out; 
+OP + = (UNICODE a,b)UNICODE: (
+  [UPB a + UPB b]UNICHAR out;
   out[:UPB a]:= a; out[UPB a+1:]:= b;
   out
 );
@@ -444,9 +444,9 @@ How well prepared is the programming language for Unicode? - Not really prepared
 
 How easy is it to present Unicode strings in source code? - Easy. They can be represented in hexadecimal.
 
-Can Unicode literals be written directly - No 
+Can Unicode literals be written directly - No
 
-or be part of identifiers/keywords/etc? - No 
+or be part of identifiers/keywords/etc? - No
 
 How well can the language communicate with the rest of the world? - The language is not good at communications, but can utilize external tools.
 
@@ -467,7 +467,7 @@ If a suitable keyboard and/or Input Method Editor is available Unicode text may 
 * or be part of identifiers/keywords/etc?
 Identifiers (variable names) and keywords cannot use Unicode characters.
 * How well can the language communicate with the rest of the world? Is it good at input/output with Unicode?
-Output of Unicode text to both the screen and the printer is supported, but must be enabled using a '''VDU 23,22''' command since the default output mode is ANSI.  
+Output of Unicode text to both the screen and the printer is supported, but must be enabled using a '''VDU 23,22''' command since the default output mode is ANSI.
 The text printing direction can be set to right-to-left for languages such as Hebrew and Arabic.  Run-time support for Arabic ligatures is not built-in, but is provided by means of the FNarabic() function.  No specific support for Unicode input at run time is provided, although this is possible by means of Windows controls.
 * Is it convenient to manipulate Unicode strings in the language?
 The supported character encoding is UTF-8 which, being a byte stream, is compatible with most of the language's string manipulation functions.  However, the parameters in functions like '''LEFT$''' and '''MID$''' refer to byte counts rather than character counts.
@@ -478,26 +478,26 @@ The supported character encoding is UTF-8 which, being a byte stream, is compati
 ```bbcbasic
       VDU 23,22,640;512;8,16,16,128+8 : REM Select UTF-8 mode
       *FONT Times New Roman, 20
-      
+
       PRINT "Arabic:"
-      
+
       arabic1$ = "هنا مثال يمكنك من الكتابة من اليمين"
       arabic2$ = "الى اليسار باللغة العربية"
-      
+
       VDU 23,16,2;0;0;0;13 : REM Select right-to-left printing
       PRINT FNarabic(arabic1$) ' FNarabic(arabic2$)
       VDU 23,16,0;0;0;0;13 : REM Select left-to-right printing
-      
+
       PRINT '"Hebrew:"
-      
+
       hebrew$ = "זוהי הדגמה של כתיבת טקסט בעברית מימין לשמאל"
-      
+
       VDU 23,16,2;0;0;0;13 : REM Select right-to-left printing
       PRINT hebrew$
       VDU 23,16,0;0;0;0;13 : REM Select left-to-right printing
-      
+
       END
-      
+
       REM!Eject
       DEF FNarabic(A$)
       LOCAL A%, B%, L%, O%, P%, U%, B$
@@ -549,15 +549,15 @@ The few keywords Bracmat knows are all ASCII. Identifiers and values can consist
 Input and output of UTF-8 encoded data and source code is easy. No special measures have to be taken. On reading HTML and JSON, hexcodes and HTML entities are converted to their UTF-8 equivalents.
 * Is it convenient to manipulate Unicode strings in the language?
 Yes, apart from counting characters, as UTF-8 has varying width. When converting a string to lower or uppercase, UTF-8 is assumed. If a string is not valid UTF-8, ISO-8859-1 (Latin-1) is assumed.
-* How broad/deep does the language support Unicode? What encodings (e.g. UTF-8, UTF-16, etc) can be used? 
+* How broad/deep does the language support Unicode? What encodings (e.g. UTF-8, UTF-16, etc) can be used?
 Most UTF-16 and UTF-32 strings contain null bytes in non-final positions and can therefore not be handled easily.
 
 
 ## C
 
 C is not the most unicode friendly language, to put it mildly.  Generally using unicode in C requires dealing with locales, manage data types carefully, and checking various aspects of your compiler.  Directly embedding unicode strings in your C source might be a bad idea, too; it's safer to use their hex values.  Here's a short example of doing the simplest string handling: print it.
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
 
@@ -658,7 +658,7 @@ Strings are UTF-16.
 
 ## Elena
 
-ELENA supports both UTF8 and UTF16 strings, Unicode identifiers are also supported: 
+ELENA supports both UTF8 and UTF16 strings, Unicode identifiers are also supported:
 
 ELENA 4.x:
 
@@ -667,7 +667,7 @@ public program()
 {
     var 四十二 := "♥♦♣♠";     // UTF8 string
     var строка := "Привет"w;  // UTF16 string
- 
+
     console.writeLine:строка;
     console.writeLine:四十二;
 }
@@ -841,7 +841,7 @@ When this is likely to be an issue, you should enforce a single representation. 
 
 Here, we see that even when comparing non-ascii characters, we can coerce both arguments to be utf-8 or utf-16 and in either case the resulting literal strings match.  (8 u: string produces a utf-8 result.)
 
-Output uses characters in whatever format they happen to be in.  
+Output uses characters in whatever format they happen to be in.
 Character input assumes 8 bit characters but places no additional interpretation on them.
 
 See also: http://www.jsoftware.com/help/dictionary/duco.htm
@@ -870,9 +870,9 @@ Is it convenient to manipulate Unicode strings in the language?
 
 The <code>String</code> class in Java is basically a sequence of <code>char</code> elements, representing the string encoded in UTF-16. <code>char</code> is a 16-bit type, and thus one <code>char</code> does not necessarily correspond to one Unicode character, since supplementary characters can have code points greater than U+FFFF. However, if your string only consists of characters from the Basic Multilingual Plane (which is most of the time), then one <code>char</code> does correspond to one Unicode character.
 
-Starting in J2SE 5 (1.5), Java has fairly convenient methods for dealing with true Unicode characters, even supplementary ones. Many methods that deal with characters have versions for both <code>char</code> and <code>int</code>. For example, <code>String</code> has the <code>codePointAt</code> method, analogous to the <code>charAt</code> method. 
+Starting in J2SE 5 (1.5), Java has fairly convenient methods for dealing with true Unicode characters, even supplementary ones. Many methods that deal with characters have versions for both <code>char</code> and <code>int</code>. For example, <code>String</code> has the <code>codePointAt</code> method, analogous to the <code>charAt</code> method.
 
-How broad/deep does the language support Unicode? What encodings (e.g. UTF-8, UTF-16, etc) can be used? Normalization? 
+How broad/deep does the language support Unicode? What encodings (e.g. UTF-8, UTF-16, etc) can be used? Normalization?
 
 
 ## jq
@@ -961,8 +961,8 @@ See langurlang.org for more details.
 
 ## Lasso
 
-All string data in Lasso is processed as double-byte Unicode characters. Any input is assumed to be UTF-8 if not otherwise told. 
-All output is UTF-8 unless specified to a different encoding. 
+All string data in Lasso is processed as double-byte Unicode characters. Any input is assumed to be UTF-8 if not otherwise told.
+All output is UTF-8 unless specified to a different encoding.
 You can specify unicode characters by ordinal.
 
 Variable names can not contain anything but ASCII.
@@ -1001,11 +1001,11 @@ Here is example UFT-8 encoding:
 #B(195 165 195 164 195 182 32 195 176)
 
 ```
- 
+
 
 Display it in native Erlang format:
 
- 
+
 ```lisp
 
 > (io:format "~tp~n" (list encoded))
@@ -1022,7 +1022,7 @@ Example UFT-8 decoding:
 "åäö ð"
 
 ```
- 
+
 
 
 ## Lingo
@@ -1051,11 +1051,11 @@ The Amstrad CPC464 does not have native Unicode support. It is possible to repre
 
 *  How well prepared is the programming language for Unicode? - Not good. There are no Unicode symbols in the ROM.
 
-* How easy is it to present Unicode strings in source code? - Easy, they are in hexadecimal. 
+* How easy is it to present Unicode strings in source code? - Easy, they are in hexadecimal.
 
-* Can Unicode literals be written directly - No 
+* Can Unicode literals be written directly - No
 
-* or be part of identifiers/keywords/etc? - No 
+* or be part of identifiers/keywords/etc? - No
 
 * How well can the language communicate with the rest of the world? - Not good. There is no TCP/IP stack, and the computer does not have an Ethernet port.
 
@@ -1124,7 +1124,7 @@ Strings are same as Visual Basic 6 strings (M2000 Interpreter written in VB6). W
 
 From variables/keys to files and screen/printer output. Also we can use external COM objects using unicode strings,
 
-* What encodings (e.g. UTF-8, UTF-16, etc) can be used? 
+* What encodings (e.g. UTF-8, UTF-16, etc) can be used?
 
 A string may contain a one byte char array or a two byte char array. The Len() function always return the two byte length, so 3 bytes string return a length of 1.5. Encoding is not bound to string but with function which process the string. So there are functions to process in UTF-16LE, other to process in ANSI, and one function for conversions from and to UTF-8. UTF-16BE supported only for loading/Saving a document object (internal is always in UTF16-LE)
 
@@ -1170,22 +1170,22 @@ The global variable $CharacterEncodings is an option for input and output functi
 
 
 ```txt
-{"AdobeStandard", "ASCII", "CP936", "CP949", "CP950", "Custom", 
-"EUC-JP", "EUC", "IBM-850", "ISO10646-1", "ISO8859-15", "ISO8859-1", 
-"ISO8859-2", "ISO8859-3", "ISO8859-4", "ISO8859-5", "ISO8859-6", 
-"ISO8859-7", "ISO8859-8", "ISO8859-9", "ISOLatin1", "ISOLatin2", 
-"ISOLatin3", "ISOLatin4", "ISOLatinCyrillic", "Klingon", "KOI8-R", 
-"MacintoshArabic", "MacintoshChineseSimplified", 
-"MacintoshChineseTraditional", "MacintoshCroatian", 
-"MacintoshCyrillic", "MacintoshGreek", "MacintoshHebrew", 
-"MacintoshIcelandic", "MacintoshKorean", 
-"MacintoshNonCyrillicSlavic", "MacintoshRomanian", "MacintoshRoman", 
-"MacintoshThai", "MacintoshTurkish", "MacintoshUkrainian", "Math1", 
+{"AdobeStandard", "ASCII", "CP936", "CP949", "CP950", "Custom",
+"EUC-JP", "EUC", "IBM-850", "ISO10646-1", "ISO8859-15", "ISO8859-1",
+"ISO8859-2", "ISO8859-3", "ISO8859-4", "ISO8859-5", "ISO8859-6",
+"ISO8859-7", "ISO8859-8", "ISO8859-9", "ISOLatin1", "ISOLatin2",
+"ISOLatin3", "ISOLatin4", "ISOLatinCyrillic", "Klingon", "KOI8-R",
+"MacintoshArabic", "MacintoshChineseSimplified",
+"MacintoshChineseTraditional", "MacintoshCroatian",
+"MacintoshCyrillic", "MacintoshGreek", "MacintoshHebrew",
+"MacintoshIcelandic", "MacintoshKorean",
+"MacintoshNonCyrillicSlavic", "MacintoshRomanian", "MacintoshRoman",
+"MacintoshThai", "MacintoshTurkish", "MacintoshUkrainian", "Math1",
 "Math2", "Math3", "Math4", "Math5", "Mathematica1", "Mathematica2",
-"Mathematica3", "Mathematica4", "Mathematica5", "Mathematica6", 
-"Mathematica7", "PrintableASCII", "ShiftJIS", "Symbol", "Unicode", 
-"UTF8", "WindowsANSI", "WindowsBaltic", "WindowsCyrillic", 
-"WindowsEastEurope", "WindowsGreek", "WindowsThai", "WindowsTurkish", 
+"Mathematica3", "Mathematica4", "Mathematica5", "Mathematica6",
+"Mathematica7", "PrintableASCII", "ShiftJIS", "Symbol", "Unicode",
+"UTF8", "WindowsANSI", "WindowsBaltic", "WindowsCyrillic",
+"WindowsEastEurope", "WindowsGreek", "WindowsThai", "WindowsTurkish",
 "ZapfDingbats"}
 ```
 
@@ -1197,7 +1197,7 @@ How easy is it to present Unicode strings in source code? '''Very; they can be i
 
 Can Unicode literals be written directly, or be part of identifiers/keywords/etc? '''Yes; identifiers, literals and such can be written directly as UTF8 strings.'''
 
-How well can the language communicate with the rest of the world? Is it good at input/output with Unicode? '''Nemerle plays well with the 'rest of the world' (it was developed in Poland and most of its user-base is Polish or Russian, so the 'rest of the world' from the language developers/users perspective is different than that typically envisioned by an Anglophone.) 
+How well can the language communicate with the rest of the world? Is it good at input/output with Unicode? '''Nemerle plays well with the 'rest of the world' (it was developed in Poland and most of its user-base is Polish or Russian, so the 'rest of the world' from the language developers/users perspective is different than that typically envisioned by an Anglophone.)
 Input/output in UTF8 is handled readily, other encodings, text directions and such are handled by classes in the <tt>System.Text</tt> and <tt>System.Globalization</tt> namespaces. See [http://msdn.microsoft.com/en-us/library/h6270d0z.aspx this] MSDN page for recommendations on globalization/localization of applications.'''
 
 Is it convenient to manipulate Unicode strings in the language? '''Yes; string methods expect UTF8 strings'''
@@ -1207,7 +1207,7 @@ How broad/deep does the language support Unicode? What encodings (e.g. UTF-8, UT
 
 ## Nim
 
-Strings are assumed to be UTF-8 in Nim. 
+Strings are assumed to be UTF-8 in Nim.
 
 ```nim
 let c = "abcdé"
@@ -1367,7 +1367,7 @@ Further points:
 
 Ruby focuses on encodings (exactly 100 encodings are supported in Ruby 2.1.0). It includes pretty much all known Unicode Transformation Formats, including UTF-8 which is the default encoding since 2.1.0 .
 
-Most Unicode support is to be found in the Regexp engine, for instance /\p{Sc}/ matches everything from the Symbol: Currency category;  \p{} matches a character’s Unicode script, like /\p{Linear_B}/. 
+Most Unicode support is to be found in the Regexp engine, for instance /\p{Sc}/ matches everything from the Symbol: Currency category;  \p{} matches a character’s Unicode script, like /\p{Linear_B}/.
 
 Unicode strings are no problem:
 
@@ -1563,20 +1563,20 @@ I am Stanisław Lec from południow
 
 ## Tcl
 
-All characters in Tcl are ''always'' Unicode characters, with ordinary string operations (as listed elsewhere on Rosetta Code) always performed on Unicode. 
-Input and output characters are translated from and to the system's native encoding automatically (with this being able to be overridden on a per file-handle basis via <code>fconfigure -encoding</code>). 
-Source files can be written in encodings other than the native encoding — from Tcl 8.5 onwards, the encoding to use for a file can be controlled by the <code>-encoding</code> option to [[tclsh]], [[wish]] and <code>source</code> — though it is usually recommended that programmers maximize their portability by writing in the ASCII subset and using the <code>\uXXXX</code> escape sequence for all other characters. 
+All characters in Tcl are ''always'' Unicode characters, with ordinary string operations (as listed elsewhere on Rosetta Code) always performed on Unicode.
+Input and output characters are translated from and to the system's native encoding automatically (with this being able to be overridden on a per file-handle basis via <code>fconfigure -encoding</code>).
+Source files can be written in encodings other than the native encoding — from Tcl 8.5 onwards, the encoding to use for a file can be controlled by the <code>-encoding</code> option to [[tclsh]], [[wish]] and <code>source</code> — though it is usually recommended that programmers maximize their portability by writing in the ASCII subset and using the <code>\uXXXX</code> escape sequence for all other characters.
 Tcl does ''not'' handle byte-order marks by default, because that requires deeper understanding of the application level (and sometimes the encoding information is available in metadata anyway, such as when handling HTTP connections).
 
-The way in which characters are encoded in memory is not defined by the Tcl language (the implementation uses byte arrays, UTF-16 arrays and UCS-2 strings as appropriate) and the only characters with any restriction on use as command or variable names are the ASCII parenthesis and colon characters. 
+The way in which characters are encoded in memory is not defined by the Tcl language (the implementation uses byte arrays, UTF-16 arrays and UCS-2 strings as appropriate) and the only characters with any restriction on use as command or variable names are the ASCII parenthesis and colon characters.
 However, the <code>$var</code> shorthand syntax is much more restricted (to ASCII alphanumeric plus underline only); other cases have to use the more verbose form: <code>[set funny–var–name]</code>.
 
 
 ## TXR
 
 
-TXR source code and I/O are all assumed to be text which is UTF-8 encoded. 
-This is a self-contained implementation, not relying on any encoding library. 
+TXR source code and I/O are all assumed to be text which is UTF-8 encoded.
+This is a self-contained implementation, not relying on any encoding library.
 TXR ignores LANG and such environment variables.
 
 One of the regression test cases uses Japanese text.
@@ -1650,9 +1650,9 @@ STANZA[17]="野でもなく"
 ## UNIX Shell
 
 
-The Bourne shell does not have any inbuilt Unicode functionality. 
-However, Unicode can be represented as ASCII based hexadecimal number sequences, or by using form of escape sequence encoding, such as \uXXXX. 
-The shell will produce its output in ASCII, but can call other programs to produce the Unicode output. 
+The Bourne shell does not have any inbuilt Unicode functionality.
+However, Unicode can be represented as ASCII based hexadecimal number sequences, or by using form of escape sequence encoding, such as \uXXXX.
+The shell will produce its output in ASCII, but can call other programs to produce the Unicode output.
 The shell does not have any inbuilt string manipulation utilities, so uses external tools such as cut, expr, grep, sed and awk. These would typically manipulate the hexadecimal sequences to provide string manipulation, or dedicated Unicode based tools could be used.
 
 * How well prepared is the programming language for Unicode? - Fine. All Unicode strings can be represented as hexadecimal sequences.
@@ -1740,7 +1740,7 @@ let プリント t => io.writeln io.stdout t;
 ## zkl
 
 zkl doesn't do unicode; all string handling is 8 bit ASCIIZ. The language source is a subset of ASCII. Then again, it doesn't care if you use UTF-8 and provides "\uXXXX" and "\Ux*;" string escapes for up to 31 bit Unicode characters. You can verify a string is valid UTF-8 by using the string len method: "text".len(8). Future support would be in the form of extension libraries that add objects for whatever Unicode form (32 bit, 16 bit, UTF-8, etc) is desired. zkl is designed for this type of extension.
-*Unicode in source: UTF-8 in strings. If your terminal/editor supports UTF-8, you can use the glyphs directly, otherwise, use string escapes to represent the Unicode characters. 
+*Unicode in source: UTF-8 in strings. If your terminal/editor supports UTF-8, you can use the glyphs directly, otherwise, use string escapes to represent the Unicode characters.
 *Unicode identifiers, etc? No
 *Communications with the rest of the world: Byte streams plus methods to change endianness.
 *Can zkl manipulate Unicode? PITA
@@ -1755,11 +1755,11 @@ The ZX Spectrum does not have native Unicode support. However, it does support u
 
 *  How well prepared is the programming language for Unicode? - Not good. There are no Unicode symbols in the ROM.
 
-* How easy is it to present Unicode strings in source code? - Easy, they are in hexadecimal. 
+* How easy is it to present Unicode strings in source code? - Easy, they are in hexadecimal.
 
-* Can Unicode literals be written directly - No 
+* Can Unicode literals be written directly - No
 
-* or be part of identifiers/keywords/etc? - No 
+* or be part of identifiers/keywords/etc? - No
 
 * How well can the language communicate with the rest of the world? - Not good. There is no TCP/IP stack, and the computer does not have an Ethernet port.
 

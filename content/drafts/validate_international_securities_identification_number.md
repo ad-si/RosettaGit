@@ -12,7 +12,7 @@ tags = []
 
 {{task}}
 
-An [[wp:International_Securities_Identification_Number|International Securities Identification Number]] (ISIN) is a unique international identifier for a financial security such as a stock or bond. 
+An [[wp:International_Securities_Identification_Number|International Securities Identification Number]] (ISIN) is a unique international identifier for a financial security such as a stock or bond.
 
 {{task heading}}
 
@@ -49,7 +49,7 @@ You don't have to replicate the implementation of this test here &ndash; you can
 ! Validity
 ! Comment
 |-
-| <tt>US0378331005</tt>  || valid || 
+| <tt>US0378331005</tt>  || valid ||
 |-
 | <tt>US0373831005</tt>  || not valid || The transposition typo is caught by the checksum constraint.
 |-
@@ -57,11 +57,11 @@ You don't have to replicate the implementation of this test here &ndash; you can
 |-
 | <tt>US03378331005</tt> || not valid || The duplication typo is caught by the format constraint.
 |-
-| <tt>AU0000XVGZA3</tt>  || valid || 
+| <tt>AU0000XVGZA3</tt>  || valid ||
 |-
 | <tt>AU0000VXGZA3</tt>  || valid || Unfortunately, not ''all'' transposition typos are caught by the checksum constraint.
 |-
-| <tt>FR0000988040</tt>  || valid || 
+| <tt>FR0000988040</tt>  || valid ||
 |}
 
 (The comments are just informational. Your function should simply return a Boolean result. See [[#Perl_6]] for a reference solution.)
@@ -115,12 +115,12 @@ LENTRIB  BCT    R1,LENTRIA         i--; if i<>0 then loop
 LENTRIC  L      R4,LCC             lcc
        IF    CH,R4,EQ,=H'12' THEN  if lcc=12 then
          MVC    LC,=F'0'           lc=0
-         MVC    WW,=CL28' '        ww='' 
+         MVC    WW,=CL28' '        ww=''
          LA     R10,WW             @ww
-         LA     R6,1               i=1 
+         LA     R6,1               i=1
        DO WHILE=(C,R6,LE,LCC)      do i=1 to lcc
          LA     R4,CC-1            @cc
-         AR     R4,R6              +i 
+         AR     R4,R6              +i
          MVC    CI(1),0(R4)        ci=substr(cc,i,1)
          LA     R2,BASE36          @base36
          LA     R3,L'BASE36        length(base36)
@@ -140,7 +140,7 @@ LENTRIC  L      R4,LCC             lcc
          LA     R8,WW              @ww
          LA     R9,C               @c
          LA     R10,0              length(c)
-         LA     R6,1               i=1 
+         LA     R6,1               i=1
        DO WHILE=(C,R6,LE,=A(L'WW)) do i=1 to length(ww)
        IF   CLI,0(R8),NE,C' ' THEN   if ww[i]<>' ' then
          MVC    0(1,R9),0(R8)          c=ww[i]
@@ -159,7 +159,7 @@ LENTRIC  L      R4,LCC             lcc
          LA     R2,ALPHA             @alpha
          LA     R3,L'ALPHA           length(alpha)
          BAL    R14,INDEX            r0=index(alpha,ci)
-       IF   LTR,R0,Z,R0 THEN         if index(alpha,ci)=0 then 
+       IF   LTR,R0,Z,R0 THEN         if index(alpha,ci)=0 then
          MVI    ERR,X'FF'              err=true
        ENDIF    ,                    endif
          LA     R6,1(R6)             i++
@@ -212,10 +212,10 @@ LENTRIC  L      R4,LCC             lcc
          MVC    MSG,=CL6'OK'         msg='ok'
        ELSE     ,                  else
          MVC    MSG,=CL6'?err1'      msg='?1'
-       ENDIF    ,                  endif 
+       ENDIF    ,                  endif
        ELSE     ,                  else
          MVC    MSG,=CL6'?err2'      msg='?2'
-       ENDIF    ,                  endif 
+       ENDIF    ,                  endif
        ELSE     ,                  else
          MVC    MSG,=CL6'?err3'      msg='?3'
        ENDIF    ,                  endif
@@ -303,32 +303,32 @@ procedure ISIN is
       end loop;
       return (Sum mod 10) = 0;
    end Luhn_Test;
-   
+
    subtype Decimal   is Character range '0' .. '9';
    subtype Letter    is Character range 'A' .. 'Z';
    subtype ISIN_Type is String(1..12);
-   
+
    -- converts a string of decimals and letters into a string of decimals
    function To_Digits(S: String) return String is
       -- Character'Pos('A')-Offset=10, Character'Pos('B')-Offset=11, ...
       Offset: constant Integer := Character'Pos('A')-10;
-   
+
       Invalid_Character: exception;
    begin
       if S = "" then
          return "";
       elsif S(S'First) = ' ' then -- skip blanks
-         return To_Digits(S(S'First+1 .. S'Last)); 
-      elsif S(S'First) in Decimal then 
+         return To_Digits(S(S'First+1 .. S'Last));
+      elsif S(S'First) in Decimal then
          return S(S'First) & To_Digits(S(S'First+1 .. S'Last));
       elsif S(S'First) in Letter then
          return To_Digits(Integer'Image(Character'Pos(S(S'First))-Offset))
            & To_Digits(S(S'First+1 .. S'Last));
-      else 
+      else
          raise Invalid_Character;
       end if;
    end To_Digits;
-   
+
    function Is_Valid_ISIN(S: ISIN_Type) return Boolean is
       Number : String := To_Digits(S);
    begin
@@ -477,12 +477,12 @@ FR0000988040                     is valid
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int check_isin(char *a) {
     int i, j, k, v, s[24];
-    
+
     j = 0;
     for(i = 0; i < 12; i++) {
         k = a[i];
@@ -498,19 +498,19 @@ int check_isin(char *a) {
             return 0;
         }
     }
-    
+
     if(a[i]) return 0;
-    
+
     v = 0;
     for(i = j - 2; i >= 0; i -= 2) {
         k = 2 * s[i];
         v += k > 9 ? k - 9 : k;
     }
-    
+
     for(i = j - 1; i >= 0; i -= 2) {
         v += s[i];
     }
-    
+
     return v % 10 == 0;
 }
 
@@ -829,7 +829,7 @@ start-callISINtest.
     .
 display-ISINtest-result.
     evaluate ISINtest-result
-    when 0 
+    when 0
         display ' is valid'
     when -1
         display ' invalid length '
@@ -892,7 +892,7 @@ start-ISINtest.
         move -2 to ISINtest-result
         goback
     when test-number(1:2) = country-code(cc-idx)
-        continue 
+        continue
     end-search
 
     *> convert each character from base 36 to base 10
@@ -1171,28 +1171,28 @@ CONSTANT: test-cases qw{
 
 : valid-security-code? ( str -- ? )
     [ 2 11 ] dip subseq [ alpha? ] all? ;
-    
+
 : valid-checksum-digit? ( str -- ? ) last digit? ;
-    
+
 : valid-format? ( str -- ? ) {
         [ valid-length?         ]
         [ valid-country-code?   ]
         [ valid-security-code?  ]
         [ valid-checksum-digit? ]
     } && ;
-    
+
 : base36>base10 ( str -- n )
     >upper [ dup LETTER? [ 55 - number>string ] [ 1string ] if ]
     { } map-as concat string>number ;
-    
+
 : isin? ( str -- ? )
     { [ valid-format? ] [ base36>base10 luhn? ] } && ;
-    
+
 : main ( -- )
     test-cases [
         dup isin? "" " not" ? "%s is%s valid\n" printf
     ] each ;
-    
+
 MAIN: main
 ```
 
@@ -1238,7 +1238,7 @@ contains
 
         n = len_trim(a)
         if (n /= 12) return
-        
+
         ! Convert to an array of digits
         j = 0
         do i = 1, n
@@ -1270,7 +1270,7 @@ contains
         do i = j, 1, -2
             v = v + s(i)
         end do
-        
+
         check_isin = 0 == mod(v, 10)
     end function
 end program
@@ -1292,7 +1292,7 @@ end program
 
 Function luhntest(cardnr As String) As Long
 
-    cardnr = Trim(cardnr) ' remove spaces  
+    cardnr = Trim(cardnr) ' remove spaces
 
     Dim As String reverse_nr = cardnr
     Dim As Long i, j, s1, s2, l = Len(cardnr) -1
@@ -1557,7 +1557,7 @@ main = do
         ]
   mapM_ printSolution isinnumbers
 ```
- 
+
 
 {{out}}
 
@@ -1677,31 +1677,31 @@ As the Luhn test method from the ''[[Luhn test of credit card numbers]]'' task i
 
 ```java
 public class ISIN {
- 
+
     public static void main(String[] args) {
         String[] isins = {
-            "US0378331005", 
-            "US0373831005", 
-            "U50378331005", 
+            "US0378331005",
+            "US0373831005",
+            "U50378331005",
             "US03378331005",
-            "AU0000XVGZA3", 
-            "AU0000VXGZA3", 
+            "AU0000XVGZA3",
+            "AU0000VXGZA3",
             "FR0000988040"
         };
         for (String isin : isins)
             System.out.printf("%s is %s\n", isin, ISINtest(isin) ? "valid" : "not valid");
     }
- 
+
     static boolean ISINtest(String isin) {
         isin = isin.trim().toUpperCase();
- 
+
         if (!isin.matches("^[A-Z]{2}[A-Z0-9]{9}\\d$"))
             return false;
- 
+
         StringBuilder sb = new StringBuilder();
         for (char c : isin.substring(0, 12).toCharArray())
             sb.append(Character.digit(c, 36));
- 
+
         return luhnTest(sb.toString());
     }
 
@@ -1901,13 +1901,13 @@ use English;
 use POSIX;
 use Test::Simple tests => 7;
 
-ok(   validate_isin('US0378331005'),  'Test 1');	
+ok(   validate_isin('US0378331005'),  'Test 1');
 ok( ! validate_isin('US0373831005'),  'Test 2');
 ok( ! validate_isin('U50378331005'),  'Test 3');
 ok( ! validate_isin('US03378331005'), 'Test 4');
-ok(   validate_isin('AU0000XVGZA3'),  'Test 5');	
+ok(   validate_isin('AU0000XVGZA3'),  'Test 5');
 ok(   validate_isin('AU0000VXGZA3'),  'Test 6');
-ok(   validate_isin('FR0000988040'),  'Test 7');	
+ok(   validate_isin('FR0000988040'),  'Test 7');
 exit 0;
 
 sub validate_isin {
@@ -1998,7 +1998,7 @@ integer s=0, d
     end for
     return remainder(s,10)=0
 end function
- 
+
 function valid_ISIN(string st)
 -- returns 1 if valid, else 0/2/3/4.
 -- (feel free to return 0 instead of 2/3/4)
@@ -2017,11 +2017,11 @@ function valid_ISIN(string st)
     return Luhn(st)
 end function
 
-sequence tests = {"US0378331005",   --  valid   
+sequence tests = {"US0378331005",   --  valid
                   "US0373831005",   --  not valid       The transposition typo is caught by the checksum constraint.
                   "U50378331005",   --  not valid       The substitution typo is caught by the format constraint.
                   "US03378331005",  --  not valid       The duplication typo is caught by the format constraint.
-                  "AU0000XVGZA3",   --  valid   
+                  "AU0000XVGZA3",   --  valid
                   "AU0000VXGZA3",   --  valid   Unfortunately, not all transposition typos are caught by the checksum constraint.
                   "FR0000988040"}   --  valid
 
@@ -2196,26 +2196,26 @@ EnableExplicit
 Procedure.b Check_ISIN(*c.Character)
   Define count.i=0, Idx.i=1, v.i=0, i.i
   Dim s.i(24)
-  
+
   If MemoryStringLength(*c) > 12 : ProcedureReturn #False : EndIf
-  
+
   While *c\c
     count+1
-    If *c\c>='0' And *c\c<='9'      
+    If *c\c>='0' And *c\c<='9'
       If count<=2 : ProcedureReturn #False : EndIf
       s(Idx)= *c\c - '0'
       Idx+1
-    ElseIf *c\c>='A' And *c\c<='Z'      
+    ElseIf *c\c>='A' And *c\c<='Z'
       s(Idx)= (*c\c - ('A'-10)) / 10
       Idx+1
       s(Idx)= (*c\c - ('A'-10)) % 10
       Idx+1
     Else
-      ProcedureReturn #False      
-    EndIf    
+      ProcedureReturn #False
+    EndIf
     *c + SizeOf(Character)
   Wend
-  
+
   For i=Idx-2 To 0 Step -2
     If s(i)*2 > 9
       v+ s(i)*2 -9
@@ -2225,7 +2225,7 @@ Procedure.b Check_ISIN(*c.Character)
     v+s(i+1)
   Next
 
-  ProcedureReturn Bool(v%10=0)      
+  ProcedureReturn Bool(v%10=0)
 EndProcedure
 
 Define.s s
@@ -2235,7 +2235,7 @@ If ReadFile(0,"c:\code_pb\rosettacode\data\isin.txt")
   While Not Eof(0)
     s=ReadString(0)
     Print(s+~"\t")
-    If Check_ISIN(@s) : PrintN("TRUE") : Else : PrintN("FALSE") : EndIf    
+    If Check_ISIN(@s) : PrintN("TRUE") : Else : PrintN("FALSE") : EndIf
   Wend
   CloseFile(0)
 EndIf
@@ -2268,7 +2268,7 @@ def check_isin(a):
     return 0 == (sum(sum(divmod(2 * (ord(c) - 48), 10)) for c in s[-2::-2]) +
                  sum(ord(c) - 48 for c in s[::-2])) % 10
 
-# A more readable version 
+# A more readable version
 def check_isin_alt(a):
     if len(a) != 12:
         return False
@@ -2389,7 +2389,7 @@ Luhn: procedure;  parse arg x;       $=0         /*get credit card number;  zero
                  US03378331005   not valid
                   AU0000XVGZA3       valid
                   AU0000VXGZA3       valid
-                  FR0000988040       valid 
+                  FR0000988040       valid
 
 ```
 
@@ -2413,7 +2413,7 @@ test = ["US0378331005",
            "FR0000988040"]
 
 for n = 1 to len(test)
-      testold = test[n] 
+      testold = test[n]
       ascii1 = ascii(left(test[n],1))
       ascii2 = ascii(substr(test[n],2,1))
       if len(test[n]) != 12 or (ascii1 < 65 or ascii1 > 90) or (ascii2 < 65 or ascii2 > 90)
@@ -2428,7 +2428,7 @@ for n = 1 to len(test)
       next
       see testold + " -> " + cardtest(test[n]) + nl
 next
- 
+
 func cardtest(numstr)
         revstring = revstr(numstr)
         s1 = revodd(revstring)
@@ -2439,14 +2439,14 @@ func cardtest(numstr)
         else
            return "Invalid"
         ok
- 
+
 func revstr(str)
       strnew = ""
       for nr = len(str) to 1 step -1
            strnew = strnew + str[nr]
       next
       return strnew
- 
+
 func revodd(str)
         strnew = ""
         for nr = 1 to len(str) step 2
@@ -2455,9 +2455,9 @@ func revodd(str)
         sumodd = 0
         for p = 1 to len(strnew)
               sumodd = sumodd + number(strnew[p])
-        next     
+        next
         return sumodd
- 
+
 func reveven(str)
         strnew = ""
         for nr = 2 to len(str) step 2
@@ -2466,7 +2466,7 @@ func reveven(str)
         lsteven = []
         for p = 1 to len(strnew)
              add(lsteven, string(2*number(strnew[p])))
-        next  
+        next
         arreven = list(len(lsteven))
         for q = 1 to len(lsteven)
               sum = 0
@@ -2479,7 +2479,7 @@ func reveven(str)
         for x = 1 to len(arreven)
              sumarr = sumarr + arreven[x]
         next
-        return sumarr 
+        return sumarr
 
 ```
 
@@ -2517,8 +2517,8 @@ U50378331005
 US03378331005
 AU0000XVGZA3
 AU0000VXGZA3
-FR0000988040).map{|tc| valid_isin?(tc) }	 
- 
+FR0000988040).map{|tc| valid_isin?(tc) }
+
 # => [true, false, false, false, true, true, true]
 ```
 
@@ -2732,7 +2732,7 @@ CREATE OR REPLACE FUNCTION VALIDATE_ISIN (
   END WHILE;
 
   CALL DBMS_OUTPUT.PUT_LINE(CONVERTED);
-  
+
   -- This function is implemented in Rosetta code.
   SET CHECKSUM_FUNC = LUHN_TEST(CONVERTED);
   IF (CHECKSUM_FUNC = 0) THEN
@@ -2755,7 +2755,7 @@ db2 => BEGIN
 db2 (cont.) => END @
 DB20000I  The SQL command completed successfully.
 db2 => VALUES VALIDATE_ISIN('US0378331005')@
-1     
+1
 ------
      0
 
@@ -2764,7 +2764,7 @@ db2 => VALUES VALIDATE_ISIN('US0378331005')@
 30280378331005
 It is a valid number 27+23=50
 db2 => VALUES VALIDATE_ISIN('US0373831005')@
-1     
+1
 ------
      1
 
@@ -2773,16 +2773,16 @@ db2 => VALUES VALIDATE_ISIN('US0373831005')@
 30280373831005
 It is NOT a valid number 22+24=46
 db2 => VALUES VALIDATE_ISIN('U50378331005')@
-1     
+1
 ------
-SQL0438N  Application raised error or warning with diagnostic text: "Country 
+SQL0438N  Application raised error or warning with diagnostic text: "Country
 code with invalid characters".  SQLSTATE=ISIN1
 db2 => VALUES VALIDATE_ISIN('U503378331005')@
-1     
+1
 ------
 SQL0433N  Value "U503378331005" is too long.  SQLSTATE=22001
 db2 => VALUES VALIDATE_ISIN('AU0000XVGZA3')@
-1     
+1
 ------
      0
 
@@ -2791,7 +2791,7 @@ db2 => VALUES VALIDATE_ISIN('AU0000XVGZA3')@
 1030000033311635103
 It is a valid number 18+12=30
 db2 => VALUES VALIDATE_ISIN('AU0000VXGZA3')@
-1     
+1
 ------
      0
 
@@ -2801,7 +2801,7 @@ db2 => VALUES VALIDATE_ISIN('AU0000VXGZA3')@
 It is a valid number 18+12=30
 db2 => VALUES VALIDATE_ISIN('FR0000988040')@
 
-1     
+1
 ------
      0
 
@@ -2940,7 +2940,7 @@ IF @bValid = 1
 				SET @intSum = @intSum + @intValue
 			END
 		-- If the of the digits' mapped values ends in 0 (modulo 10 = 0) then the Luhn test succeeds
-		SET @bValid = CASE WHEN @intSum % 10 = 0 THEN 1 ELSE 0 END 
+		SET @bValid = CASE WHEN @intSum % 10 = 0 THEN 1 ELSE 0 END
 	END;
 
 RETURN @bValid
@@ -2991,7 +2991,7 @@ function test(cc)
 			if p<>0 then c=c&(p-1) else err=1
 		next 'i
 		for i=1 to 2
-			if instr("ABCDEFGHIJKLMNOPQRSTUVWXYZ",mid(cc,i,1))=0 then err=1 
+			if instr("ABCDEFGHIJKLMNOPQRSTUVWXYZ",mid(cc,i,1))=0 then err=1
 		next 'i
 		if err=0 then
 			for i=len(c) to 1 step -1
@@ -3018,7 +3018,7 @@ function test(cc)
 		msg="invalid ??3"
 	end if
 	test=cc&" "&msg
-end function 'test 
+end function 'test
 ```
 
 {{out}}
@@ -3089,11 +3089,11 @@ End Sub
 ```Yabasic
 sub luhntest(cardnr$)
     local i, j, s1, s2, l
- 
+
     cardnr$ = Trim$(cardnr$) // remove spaces
-    
+
     l = Len(cardnr$)
- 
+
     // sum odd numbers
     For i = l To 1 Step -2
         s1 = s1 + (asc(mid$(cardnr$, i, 1)) - Asc("0"))
@@ -3105,18 +3105,18 @@ sub luhntest(cardnr$)
         If j > 9 j = mod(j, 10) + 1
         s2 = s2 + j
     Next
- 
+
     return mod(s1 + s2, 10) = 0
 End sub
- 
+
 // ------=< MAIN >=-----
- 
+
 data "US0378331005", "US0373831005", "U50378331005", "US03378331005", "AU0000XVGZA3", "AU0000VXGZA3", "FR0000988040", ""
- 
+
 do
     read test_item$
     if test_item$ = "" break
-    
+
     l = Len(test_item$)
     If l <> 12 Then
         Print test_item$, " Invalid, length <> 12 char."
@@ -3152,7 +3152,7 @@ Uses the luhn test from [[Luhn_test_of_credit_card_numbers#zkl]] (copied here as
 
 ```zkl
 fcn validateISIN(isin){
-   RegExp(String("^","[A-Z]"*2,"[A-Z0-9]"*9,"[0-9]$")).matches(isin) and 
+   RegExp(String("^","[A-Z]"*2,"[A-Z0-9]"*9,"[0-9]$")).matches(isin) and
       luhnTest(isin.split("").apply("toInt",36).concat().toInt())
 }
 fcn luhnTest(n){

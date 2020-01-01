@@ -13,11 +13,11 @@ tags = []
 {{task|Probability and statistics}}
 [[WP:K-means%2B%2B|K-means++ clustering]] a classification of data, so that points assigned to the same cluster are similar (in some sense).  It is identical to the [[WP:K-means_clustering|K-means]] algorithm, except for the selection of initial conditions.  [[Image:CircleClusters.png|thumb|right|alt=A circular distribution of data partitioned into 7 colored clusters; similar to the top of a beach ball|This data was partitioned into 7 clusters using the [[WP:K-means_clustering|K-means algorithm]].]]
 
-The task is to '''''implement the K-means++ algorithm'''''.  Produce a function which takes two arguments: the number of clusters K, and the dataset to classify.  K is a positive integer and the dataset is a list of points in the Cartesian plane.  The output is a list of clusters (related sets of points, according to the algorithm). 
+The task is to '''''implement the K-means++ algorithm'''''.  Produce a function which takes two arguments: the number of clusters K, and the dataset to classify.  K is a positive integer and the dataset is a list of points in the Cartesian plane.  The output is a list of clusters (related sets of points, according to the algorithm).
 
 For '''''extra credit''''' (in order):
 # Provide a function to exercise your code, which generates a list of random points.
-# Provide a visualization of your results, including centroids (see example image). 
+# Provide a visualization of your results, including centroids (see example image).
 # Generalize the function to polar coordinates (in radians).
 # Generalize the function to points in an arbitrary N space (i.e. instead of x,y pairs, points are an N-tuples representing coordinates in ℝ<sup>N</sup>). <BR>''If this is different or more difficult than the [naive] solution for ℝ<sup>2</sup>, discuss what had to change to support N dimensions.''
 
@@ -31,8 +31,8 @@ Output is in EPS. 100,000 point EPS file can take quite a while to display.
 
 To extend the code to handle dimensions higher than 2, just make <code>point_t</code> have more coordinates, and change the <code>dist2</code> distance function (and the point generation, or course) accordingly.  Neither is difficult to do, but it would make code somewhat longer and less to the point of the demonstrating the algorithm, so I chose simplicity and clarity over extra credit.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -556,7 +556,7 @@ Let us apply to random data.
 * Refer to:
 *    "kmeans++: the advantages of careful seeding"
 *    David Arthur and Sergei Vassilvitskii
-*    Proceedings of the eighteenth annual ACM-SIAM symposium 
+*    Proceedings of the eighteenth annual ACM-SIAM symposium
 *      on Discrete algorithms, 2007
 *
 *____Variable_______I/O_______Description___________________Type_______
@@ -570,20 +570,20 @@ Let us apply to random data.
 *    IFAULT         Out       Error code                    Integer
 ************************************************************************
       SUBROUTINE KMPP (X, P, N, K, C, Z, WORK, IFAULT)
-       
+
        IMPLICIT NONE
        INTEGER P, N, K, Z, IFAULT
        REAL X, C, WORK
        DIMENSION X(P,N), C(P,K), Z(N), WORK(N)
-  
+
 *               constants
        INTEGER ITER                 ! maximum iterations
        REAL BIG                     ! arbitrary large number
        PARAMETER (ITER = 1000,
      $            BIG = 1E33)
-                 
+
 *                local variables
-       INTEGER 
+       INTEGER
      $         H,          ! count iterations
      $         I,          ! count points
      $         I1,         ! point marked as initial center
@@ -591,13 +591,13 @@ Let us apply to random data.
      $         L,          ! count clusters
      $         L0,         ! present cluster ID
      $         L1          ! new cluster ID
-     
-       REAL 
+
+       REAL
      $      BEST,                 ! shortest distance to a center
      $      D2,                   ! squared distance
      $      TOT,                  ! a total
      $      W                     ! temp scalar
-     
+
        LOGICAL CHANGE             ! whether any points have been reassigned
 
 ************************************************************************
@@ -611,7 +611,7 @@ Let us apply to random data.
        DO I = 1, N                       ! clear Z
          Z(I) = 0
        END DO
-        
+
 ************************************************************************
 *        initial centers
 ************************************************************************
@@ -624,7 +624,7 @@ Let us apply to random data.
        DO J = 1, P
          C(J,1) = X(J,I1)
        END DO
-       
+
        DO L = 2, K                    ! initialize other centers
          TOT = 0.
          DO I = 1, N                     ! measure from each point
@@ -634,11 +634,11 @@ Let us apply to random data.
              D2 = D2 + (X(J,I) - C(J,L-1)) **2  ! Squared Euclidean distance
              IF (D2 .GE. BEST) GO TO 10               ! needless to add to D2
            END DO                          ! next J
-           IF (D2 < BEST) BEST = D2          ! shortest squared distance 
-           WORK(I) = BEST 
+           IF (D2 < BEST) BEST = D2          ! shortest squared distance
+           WORK(I) = BEST
   10       TOT = TOT + BEST             ! cumulative squared distance
          END DO                      ! next data point
-         
+
 ************************************************************************
 * Choose center with probability proportional to its squared distance
 *     from existing centers.
@@ -663,7 +663,7 @@ Let us apply to random data.
        DO H = 1, ITER
          CHANGE = .FALSE.
 
-*             find nearest center for each point 
+*             find nearest center for each point
          DO I = 1, N
            L0 = Z(I)
            L1 = 0
@@ -678,11 +678,11 @@ Let us apply to random data.
              IF (D2 < BEST) THEN           ! new nearest center
                BEST = D2
                L1 = L
-             END IF             
+             END IF
            END DO        ! next L
-        
+
            IF (L0 .NE. L1) THEN
-             Z(I) = L1                   !  reassign point 
+             Z(I) = L1                   !  reassign point
              CHANGE = .TRUE.
            END IF
          END DO         ! next I
@@ -707,7 +707,7 @@ Let us apply to random data.
              C(J,L) = C(J,L) + X(J,I)         ! add
            END DO
          END DO
-           
+
          DO L = 1, K
            IF (WORK(L) < 0.5) THEN          ! empty cluster check
              IFAULT = 1                     ! fatal error
@@ -718,11 +718,11 @@ Let us apply to random data.
              C(J,L) = C(J,L) * W     ! multiplication is faster than division
            END DO
          END DO
-             
+
        END DO                   ! next H
        IFAULT = 2                ! too many iterations
        RETURN
-    
+
       END  ! of KMPP
 
 
@@ -750,11 +750,11 @@ Let us apply to random data.
          X(1,I) = R * COS(THETA)          ! Cartesian coordinates
          X(2,I) = R * SIN(THETA)
        END DO
-       
+
 *             Call subroutine
        CALL KMPP (X, P, N, K, C, Z, WORK, IFAULT)
        PRINT *, 'kmpp returns with error code ', IFAULT
-       
+
 *            Print lists of points in each cluster
        DO L = 1, K
          PRINT *, 'Cluster ', L, ' contains points: '
@@ -765,7 +765,7 @@ Let us apply to random data.
          END DO
          PRINT 20
        END DO
-       
+
 *         Write CSV file with Y-coordinates in different columns by cluster
        OPEN (UNIT=1, FILE='tpec1.csv', STATUS='NEW', IOSTAT=IFAULT)
        IF (IFAULT .NE. 0) PRINT *, 'tpec1: trouble opening file'
@@ -782,7 +782,7 @@ Let us apply to random data.
          WRITE (UNIT=1, FMT=50, IOSTAT=IFAULT) X(2,I)
          IF (IFAULT .NE. 0) PRINT *, 'tpec1: trouble writing Y-coord'
        END DO
-       
+
 *           Write the centroids in the far column
        DO L = 1, K
          WRITE (UNIT=1, FMT=30, IOSTAT=IFAULT) C(1,L)
@@ -795,7 +795,7 @@ Let us apply to random data.
          IF (IFAULT .NE. 0) PRINT *, 'tpec1: trouble writing Y-coord'
        END DO
        CLOSE (UNIT=1)
-       
+
       END  ! of test program
 
 ```
@@ -929,7 +929,7 @@ type ecParam struct {
 // extra credit 1 and 2:
 func main() {
     ec := &ecParam{6, 30000, 300, 200, 30}
-    
+
     origin, data := genECData(ec)
     vis(ec, data, "origin")
     fmt.Println("Data set origins:")
@@ -939,7 +939,7 @@ func main() {
     }
 
     kmpp(ec.k, data)
-    
+
     fmt.Println(
         "\nCluster centroids, mean distance from centroid, number of points:")
     fmt.Println("    x      y  distance  points")
@@ -947,8 +947,8 @@ func main() {
     cLen := make([]int, ec.k)
     inv := make([]float64, ec.k)
     for _, p := range data {
-        cent[p.c].x += p.x 
-        cent[p.c].y += p.y 
+        cent[p.c].x += p.x
+        cent[p.c].y += p.y
         cLen[p.c]++
     }
     for i, iLen := range cLen {
@@ -1076,51 +1076,51 @@ Vectors are represented as lists, so the solution could be extended to any space
 ```haskell
 {-# LANGUAGE Strict,FlexibleInstances #-}
 module KMeans where
- 
+
 import Control.Applicative
 import Control.Monad.Random
 import Data.List (minimumBy, genericLength, transpose)
 import Data.Ord (comparing)
 import qualified Data.Map.Strict as M
 
- 
+
 type Vec = [Float]
 type Cluster = [Vec]
- 
+
 kMeansIteration :: [Vec] -> [Vec] -> [Cluster]
 kMeansIteration pts = clusterize . fixPoint iteration
   where
     iteration = map centroid . clusterize
- 
+
     clusterize centroids = M.elems $ foldr add m0 pts
       where add x = M.insertWith (++) (centroids `nearestTo` x) [x]
             m0 = M.unions $ map (`M.singleton` []) centroids
- 
+
 nearestTo :: [Vec] -> Vec -> Vec
 nearestTo pts x =  minimumBy (comparing (distance x)) pts
- 
+
 distance :: Vec -> Vec -> Float
 distance a b = sum $ map (^2) $ zipWith (-) a b
- 
+
 centroid :: [Vec] -> Vec
 centroid = map mean . transpose
   where  mean pts = sum pts / genericLength pts
- 
+
 fixPoint :: Eq a => (a -> a) -> a -> a
 fixPoint f x = if x == fx then x else fixPoint f fx where fx = f x
- 
+
 -- initial sampling
- 
+
 kMeans :: MonadRandom m => Int -> [Vec] -> m [Cluster]
 kMeans n pts = kMeansIteration pts <$> take n <$> randomElements pts
- 
+
 kMeansPP :: MonadRandom m => Int -> [Vec] -> m [Cluster]
 kMeansPP n pts = kMeansIteration pts <$> centroids
   where centroids = iterate (>>= nextCentroid) x0 !! (n-1)
         x0 = take 1 <$> randomElements pts
         nextCentroid cs = (: cs) <$> fromList (map (weight cs) pts)
         weight cs x = (x, toRational $ distance x (cs `nearestTo` x))
- 
+
 randomElements :: MonadRandom m => [a] -> m [a]
 randomElements pts = map (pts !!) <$> getRandomRs (0, length pts)
 
@@ -1425,7 +1425,7 @@ print_eps( points, cluster_centers, W = 400, H = 400 ) {
 '''Extra credit''':
 ```j
    randMatrix           =:  ?@$&0  NB.  Extra credit #1
-   packPoints           =:  <"1@:|: NB.  Extra credit #2: Visualization code due to Max Harms http://j.mp/l8L45V  
+   packPoints           =:  <"1@:|: NB.  Extra credit #2: Visualization code due to Max Harms http://j.mp/l8L45V
    plotClusters         =:  dyad define  NB.  as is the example image in this task
 	require 'plot'
 	pd 'reset;aspect 1;type dot;pensize 2'
@@ -1437,7 +1437,7 @@ print_eps( points, cluster_centers, W = 400, H = 400 ) {
 	pd 'show'
 )
 
-NB.  Extra credit #4:  Polar coordinates are not available in this version 
+NB.  Extra credit #4:  Polar coordinates are not available in this version
 NB.  but wouldn't be hard to provide with  &.cartToPole  .
 ```
 
@@ -1470,7 +1470,7 @@ Live Demo (Extra Credit #2) [https://ezward.github.io/kmeans-javascript/kmeansra
 
 /**
  * kmeans module
- * 
+ *
  *   cluster(model, k, converged = assignmentsConverged)
  *   distance(p, q),
  *   distanceSquared(p, q),
@@ -1480,7 +1480,7 @@ Live Demo (Extra Credit #2) [https://ezward.github.io/kmeans-javascript/kmeansra
  */
 define(function () {
     "use strict";
-    
+
     /**
      * @public
      * Calculate the squared distance between two vectors.
@@ -1632,22 +1632,22 @@ define(function () {
      * @public
      * Run k-means on the given model until each centroid converges to with the given delta
      * The initial model is NOT modified by the algorithm, rather a new model is returned.
-     * 
-     * @param {*} model - object with 
-     *                    observations: array, length n, of data points; each datapoint is 
+     *
+     * @param {*} model - object with
+     *                    observations: array, length n, of data points; each datapoint is
      *                                  itself an array of numbers (a vector).
-     *                                  The length each datapoint (d) vector should be the same.  
+     *                                  The length each datapoint (d) vector should be the same.
      *                    centroids: array of data points.
      *                               The length of the centroids array indicates the number of
      *                               of desired clusters (k).
-     *                               each datapoint is array (vector) of numbers 
-     *                               with same dimension as the datapoints in observations. 
-     *                    assignments: array of integers, one per observation, 
+     *                               each datapoint is array (vector) of numbers
+     *                               with same dimension as the datapoints in observations.
+     *                    assignments: array of integers, one per observation,
      *                                 with values 0..centroids.length - 1
      * @param number delta - the maximum difference between each centroid in consecutive runs for convergence
-     * @return {*} - result with 
-     *               model: model, as described above, with updated centroids and assignments, 
-     *               iterations: number of iterations, 
+     * @return {*} - result with
+     *               model: model, as described above, with updated centroids and assignments,
+     *               iterations: number of iterations,
      *               durationMs: elapsed time in milliseconds
      */
     function kmeans(model, maximumIterations = 200, converged = assignmentsConverged) {
@@ -1677,7 +1677,7 @@ define(function () {
      * Return a function that determines convergence based on the centroids.
      * If two consecutive sets of centroids remain within a given delta,
      * then the algorithm is converged.
-     * 
+     *
      * @param number delta, the maximum difference between each centroid in consecutive runs for convergence
      * @return function to use as the converged function in kmeans call.
      */
@@ -1692,14 +1692,14 @@ define(function () {
         return function(model, newModel) {
             const centroids = model.centroids;
             const newCentroids = newModel.centroids;
-    
+
             const k = centroids.length; // number of clusters/centroids
             for(let i = 0; i < k; i += 1) {
                 if(distance(centroids[i], newCentroids[i]) > delta) {
                     return false;
                 }
             }
-    
+
             return true;
         }
     }
@@ -1719,28 +1719,28 @@ define(function () {
             if (a === undefined || b === undefined) return false;
             if (a === null || b === null) return false;
             if (a.length !== b.length) return false;
-        
+
             // If you don't care about the order of the elements inside
             // the array, you should sort both arrays here.
-        
+
             for (var i = 0; i < a.length; ++i) {
             if (a[i] !== b[i]) return false;
             }
             return true;
         }
-        
+
         return arraysEqual(model.assignments, newModel.assignments);
     }
 
     /**
      * Use the model assignments to create
      * array of observation indices for each centroid
-     * 
+     *
      * @param {object} model with observations, centroids and assignments
      * @reutrn [[number]] array of observation indices for each cluster
      */
     function assignmentsToClusters(model) {
-        // 
+        //
         // put offset of each data points into clusters using the assignments
         //
         const n = model.observations.length;
@@ -1757,12 +1757,12 @@ define(function () {
         return clusters;
     }
 
-    
+
     //
     // return public methods
     //
     return {
-        'cluster': kmeans, 
+        'cluster': kmeans,
         'distance': distance,
         'distanceSquared': distanceSquared,
         'centroidsConverged': centroidsConverged,
@@ -1783,17 +1783,17 @@ define(function (require) {
     /**
      * @public
      * create an initial model given the data and the number of clusters.
-     * 
+     *
      * This uses the kmeans++ algorithm:
      * 1. Choose one center uniformly at random from among the data points.
-     * 2. For each data point x, compute D(x), the distance between x and 
+     * 2. For each data point x, compute D(x), the distance between x and
      *    the nearest center that has already been chosen.
-     * 3. Choose one new data point at random as a new center, 
+     * 3. Choose one new data point at random as a new center,
      *    using a weighted probability distribution where a point x is chosen with probability proportional to D(x)^2.
      * 4. Repeat Steps 2 and 3 until k centers have been chosen.
      * 5. Now that the initial centers have been chosen, proceed using
      *    standard k-means clustering.
-     * 
+     *
      * @param {[float]} observations the data as an array of number
      * @param {integer} k the number of clusters
      */
@@ -1803,8 +1803,8 @@ define(function (require) {
          * given a set of n  weights,
          * choose a value in the range 0..n-1
          * at random using weights as a distribution.
-         * 
-         * @param {*} weights 
+         *
+         * @param {*} weights
          */
         function weightedRandomIndex(weights, normalizationWeight) {
             const n = weights.length;
@@ -1820,7 +1820,7 @@ define(function (require) {
             let cumulativeWeight = 0.0;
             for(let i = 0; i < n; i += 1) {
                 //
-                // use the uniform probability to search 
+                // use the uniform probability to search
                 // within the normalized weighting (we divide by totalWeight to normalize).
                 // once we hit the probability, we have found our index.
                 //
@@ -1853,13 +1853,13 @@ define(function (require) {
         let centroidIndex = Math.floor(Math.random() * n);
         centroids.push(centroidIndex);
 
-        for(let c = 1; c < k; c += 1) {        
+        for(let c = 1; c < k; c += 1) {
             index.slice(centroids[c - 1], 1);    // remove previous centroid from further consideration
             distanceToCloseCentroid[centroids[c - 1]] = 0;  // this effectively removes it from the probability distribution
 
             //
-            // 2. For each data point x, compute D(x), the distance between x and 
-            //    the nearest center that has already been chosen.  
+            // 2. For each data point x, compute D(x), the distance between x and
+            //    the nearest center that has already been chosen.
             //
             // NOTE: we used the distance squared (L2 norm)
             //
@@ -1870,15 +1870,15 @@ define(function (require) {
                 // Otherwise, choose the minimum of the prior closest and this new centroid
                 //
                 const distanceToCentroid = kmeans.distanceSquared(observations[index[i]], observations[centroids[c - 1]]);
-                distanceToCloseCentroid[index[i]] = 
-                    (typeof distanceToCloseCentroid[index[i]] === 'number') 
+                distanceToCloseCentroid[index[i]] =
+                    (typeof distanceToCloseCentroid[index[i]] === 'number')
                     ? Math.min(distanceToCloseCentroid[index[i]], distanceToCentroid)
                     : distanceToCentroid;
                 totalWeight += distanceToCloseCentroid[index[i]];
-            }  
+            }
 
             //
-            //  3. Choose one new data point at random as a new center, 
+            //  3. Choose one new data point at random as a new center,
             //     using a weighted probability distribution where a point x is chosen with probability proportional to D(x)^2.
             //
             centroidIndex = index[weightedRandomIndex(distanceToCloseCentroid, totalWeight)];
@@ -1920,7 +1920,7 @@ define(function (require) {
 
     /**
      * Generate a uniform random unit vector
-     * 
+     *
      * @param {Integer} d dimension of data
      * @return n random datapoints of dimension d with length == 1
      */
@@ -1947,7 +1947,7 @@ define(function (require) {
 
     /**
      * Generate a uniform random unit vectors for clustering
-     * 
+     *
      * @param {Integer} n number of data points
      * @param {Integer} d dimension of data
      * @return n random datapoints of dimension d with length == 1
@@ -1969,7 +1969,7 @@ define(function (require) {
 
     /**
      * Generate a spherical random vector
-     * 
+     *
      * @param {Integer} n number of data points
      * @param {Integer} d dimension of data
      * @param {Number} r radium from center for data point
@@ -1999,7 +1999,7 @@ define(function (require) {
 
     /**
      * Generate a spherical random vectors
-     * 
+     *
      * @param {Integer} n number of data points
      * @param {Integer} d dimension of data
      * @param {Number} max radius from center for data points
@@ -2020,7 +2020,7 @@ define(function (require) {
 
     /**
      * Generate a uniform random model for clustering
-     * 
+     *
      * @param {Integer} n number of data points
      * @param {Integer} d dimension of data
      * @param {Number} radius of sphere
@@ -2043,7 +2043,7 @@ define(function (require) {
 
     /**
      * Generate a uniform random model for clustering
-     * 
+     *
      * @param {Integer} d dimension of data
      * @param {Number} radius of sphere
      * @return n random datapoints of dimension d
@@ -2074,7 +2074,7 @@ define(function (require) {
 /**
  * Extra Credit #4
  * Application to cluster random data using kmeans++
- * 
+ *
  * cluster(k, n, d) - cluster n data points of dimension d into k clusters
  * plot(canvas, result) - plot the results of cluster() to the given html5 canvas using clusterjs
  */
@@ -2089,7 +2089,7 @@ define(function (require) {
     /**
      * @public
      * Load iris dataset and run kmeans on it given the number of clusters
-     * 
+     *
      * @param {integer} k number of clusters to create
      */
     function cluster(k, n, d) {
@@ -2109,7 +2109,7 @@ define(function (require) {
         // cluster into given number of clusters
         //
         const results = kmeans.cluster(initialModel);
-    
+
         //
         // do this for the convenience of the plotting functions
         //
@@ -2123,7 +2123,7 @@ define(function (require) {
 
     /**
      * plot the clustred iris data model.
-     * 
+     *
      * @param {object} results of cluster(), with model, clusters and clusterCompositions
      * @param {boolean} showClusterColor true to show learned cluster points
      * @param {boolean} showSpeciesColor true to show known dataset labelled points
@@ -2141,7 +2141,7 @@ define(function (require) {
         const n = observations.length;
         const k = centroids.length;
 
-        // 
+        //
         // put offset of each data points into clusters using the assignments
         //
         const clusters = results.clusters;
@@ -2150,9 +2150,9 @@ define(function (require) {
         // plot the clusters
         //
         const chartData = {
-            // for the purposes of plotting in 2 dimensions, we will use 
-            // x = dimension 0 and y = dimension 1 
-            datasets: clusters.map(function(c, i) { 
+            // for the purposes of plotting in 2 dimensions, we will use
+            // x = dimension 0 and y = dimension 1
+            datasets: clusters.map(function(c, i) {
                 return {
                     label: "cluster" + i,
                     data: c.map(d => ({'x': observations[d][0], 'y': observations[d][1]})),
@@ -2197,12 +2197,12 @@ define(function (require) {
         };
 
         //
-        // we need to destroy the previous chart so it's interactivity 
+        // we need to destroy the previous chart so it's interactivity
         // does not continue to run
         //
         if(undefined !== chart) {
             chart.destroy()
-        } 
+        }
         chart = new Chart(canvas, {
             type: 'scatter',
             data: chartData,
@@ -2254,7 +2254,7 @@ for center in unique(result.assignments)
         limits = FRect(1.5, 4.0, 3.0, 4.0))
 end
 
-scene2[Axis][:names][:axisnames] = scene1[Axis][:names][:axisnames] = 
+scene2[Axis][:names][:axisnames] = scene1[Axis][:names][:axisnames] =
     ("Sepal Width", "Sepal Length")
 t1 = text(Theme(), "Species Classification", camera=campixel!)
 t2 = text(Theme(), "Kmeans Classification", camera=campixel!)
@@ -2269,7 +2269,7 @@ vbox(hbox(plt[1], t1), hbox(plt[2], t2))
 {{trans|C}}
 The terminal output should, of course, be redirected to an .eps file so that it can be viewed with (for instance) Ghostscript.
 
-As in the case of the C example, the data is partitioned into 11 clusters though, unlike C (which doesn't use srand), the output will be different each time the program is run.  
+As in the case of the C example, the data is partitioned into 11 clusters though, unlike C (which doesn't use srand), the output will be different each time the program is run.
 
 ```scala
 // version 1.2.21
@@ -2471,9 +2471,9 @@ local function print_eps(data, nclusters, centers, cluster)
     colors[3*k + 2] = (9 * k % 11) / 11.0
   end
 
-  local max_x, max_y, min_x, min_y = -math.maxinteger, -math.maxinteger, 
+  local max_x, max_y, min_x, min_y = -math.maxinteger, -math.maxinteger,
     math.maxinteger, math.maxinteger
-  
+
   for i = 1,#data do
     if max_x < data[i].x then max_x = data[i].x end
     if min_x > data[i].x then min_x = data[i].x end
@@ -2487,7 +2487,7 @@ local function print_eps(data, nclusters, centers, cluster)
   local cx = (max_x + min_x) / 2.0
   local cy = (max_y + min_y) / 2.0
 
-  print(string.format("%%!PS-Adobe-3.0\n%%%%BoundingBox: -5 -5 %d %d", 
+  print(string.format("%%!PS-Adobe-3.0\n%%%%BoundingBox: -5 -5 %d %d",
     WIDTH + 10, HEIGHT + 10))
   print(string.format("/l {rlineto} def /m {rmoveto} def\n/c { .25 sub exch .25 sub exch .5 0 360 arc fill } def\n/s { moveto -2 0 m 2 2 l 2 -2 l -2 -2 l closepath gsave 1 setgray fill grestore gsave 3 setlinewidth 1 setgray stroke grestore 0 setgray stroke }def"
 ))
@@ -2498,12 +2498,12 @@ local function print_eps(data, nclusters, centers, cluster)
 
     for i = 1,#data do
       if cluster[i] == k then
-        print(string.format("%.3f %.3f c", 
-          (data[i].x - cx) * scale + WIDTH  / 2.0, 
+        print(string.format("%.3f %.3f c",
+          (data[i].x - cx) * scale + WIDTH  / 2.0,
           (data[i].y - cy) * scale + HEIGHT / 2.0))
       end
     end
-    
+
     print(string.format("0 setgray %g %g s",
       (centers[k].x - cx) * scale + WIDTH  / 2.0,
       (centers[k].y - cy) * scale + HEIGHT / 2.0))
@@ -2520,47 +2520,47 @@ local function kmeans(data, nclusters, init)
 
   local diss = function(p, q)
     -- Computes the dissimilarity between points 'p' and 'q'
-    -- 
+    --
     return math.pow(p.x - q.x, 2) + math.pow(p.y - q.y, 2)
   end
-  
+
   -- Initialization
-  --  
+  --
   local centers = {} -- clusters centroids
   if init == "kmeans++" then
     local K = 1
-    
+
     -- take one center c1, chosen uniformly at random from 'data'
     local i = math.random(1, #data)
     centers[K] = {x = data[i].x, y = data[i].y}
-        
+
     -- repeat until we have taken 'nclusters' centers
     while K < nclusters do
-      -- take a new center ck, choosing a point 'i' of 'data' with probability 
+      -- take a new center ck, choosing a point 'i' of 'data' with probability
       -- D(i)^2 / sum_{i=1}^n D(i)^2
-      
+
       local D = {}
       local sum_D = 0.0
       for i = 1,#data do
         local min_d = nil
-        
+
         for c = 1,K do
           local d = diss(data[i], centers[c])
-          
+
           if min_d == nil or d < min_d then
             min_d = d
           end
         end
-        
+
         D[i] = min_d
         sum_D = sum_D + min_d
       end
-      
+
       sum_D = math.random() * sum_D
       for i = 1,#data do
         sum_D = sum_D - D[i]
-        
-        if sum_D <= 0 then 
+
+        if sum_D <= 0 then
           K = K + 1
           centers[K] = {x = data[i].x, y = data[i].y}
           break
@@ -2578,7 +2578,7 @@ local function kmeans(data, nclusters, init)
   --
   local cluster = {} -- k-partition
   for i = 1,#data do cluster[i] = 0 end
-      
+
   local J = function()
     -- Computes the loss value
     --
@@ -2588,7 +2588,7 @@ local function kmeans(data, nclusters, init)
     end
     return loss
   end
-  
+
   local updated = false
   repeat
     -- update k-partition
@@ -2597,14 +2597,14 @@ local function kmeans(data, nclusters, init)
     for k = 1,nclusters do
       card[k] = 0.0
     end
-    
+
     updated = false
     for i = 1,#data do
       local min_d, min_k = nil, nil
 
       for k = 1,nclusters do
         local d = diss(data[i], centers[k])
-        
+
         if min_d == nil or d < min_d then
           min_d, min_k = d, k
         end
@@ -2623,10 +2623,10 @@ local function kmeans(data, nclusters, init)
       centers[k].x = 0.0
       centers[k].y = 0.0
     end
-    
+
     for i = 1,#data do
       local k = cluster[i]
-      
+
       centers[k].x = centers[k].x + (data[i].x / card[k])
       centers[k].y = centers[k].y + (data[i].y / card[k])
     end
@@ -2658,25 +2658,25 @@ print_eps(data, N_CLUSTERS, centers, cluster)
 
 '''Solution - Initial kmeans code comes from http://mathematica.stackexchange.com/questions/7441/k-means-clustering, now extended to kmeans++ by introducing the function initM.
  Was not able to upload pictures of the result...''':
-<lang>initM[list_List, k_Integer, distFunc_Symbol] := 
+<lang>initM[list_List, k_Integer, distFunc_Symbol] :=
   Module[{m = {RandomChoice[list]}, n, d},
    While[Length[m] < k,
     n = RandomChoice@Nearest[m, #] & /@ list;
     d = Apply[distFunc, Transpose[{n, list}], {1}];
-    m = Append[m, RandomChoice[d -> list]] 
+    m = Append[m, RandomChoice[d -> list]]
     ];
    m
    ];
-kmeanspp[list_, k_, 
-   opts : OptionsPattern[{DistanceFunction -> 
-       SquaredEuclideanDistance, "RandomSeed" -> {}}]] := 
+kmeanspp[list_, k_,
+   opts : OptionsPattern[{DistanceFunction ->
+       SquaredEuclideanDistance, "RandomSeed" -> {}}]] :=
   BlockRandom[SeedRandom[OptionValue["RandomSeed"]];
-   Module[{m = initM[list, k, OptionValue[DistanceFunction]], update, 
+   Module[{m = initM[list, k, OptionValue[DistanceFunction]], update,
      partition, clusters}, update[] := m = Mean /@ clusters;
-    partition[_] := (clusters = 
-       GatherBy[list, 
+    partition[_] := (clusters =
+       GatherBy[list,
         RandomChoice@
-          Nearest[m, #, (# -> OptionValue[#] &@DistanceFunction)] &]; 
+          Nearest[m, #, (# -> OptionValue[#] &@DistanceFunction)] &];
       update[]);
     FixedPoint[partition, list];
     {clusters, m}
@@ -2697,26 +2697,26 @@ points = 3000;
 l = RandomReal[1, {points, dim}];
 ```
 
-or 
+or
 
 ```txt
-l = Select[ RandomReal[{-1, 1}, {points,2}], 
+l = Select[ RandomReal[{-1, 1}, {points,2}],
    EuclideanDistance[#, {0, 0}] <= 1 &];
 ```
 
-or 
+or
 
 ```txt
 x1 = RandomVariate[MultinormalDistribution[{0, 0}, {{1, 0}, {0, 20}}],
-   points]; 
-x2 = 
- RandomVariate[MultinormalDistribution[{10, 0}, {{1, 0}, {0, 20}}], 
+   points];
+x2 =
+ RandomVariate[MultinormalDistribution[{10, 0}, {{1, 0}, {0, 20}}],
   points];
 l = Join[x1, x2];
 
 ```
 
-3. data can be visualized with 
+3. data can be visualized with
 2D:
 
 ```txt
@@ -2752,21 +2752,21 @@ Another version
 KMeans[k_, data_] :=
  Module[{Renew, Label, Iteration},
   clusters = RandomSample[data, k];
-  Label[clusters_] := 
+  Label[clusters_] :=
    Flatten[Table[
      Ordering[
-      Table[EuclideanDistance[data[[i]], clusters[[j]]], {j, 
+      Table[EuclideanDistance[data[[i]], clusters[[j]]], {j,
         Length[clusters]}], 1], {i, Length[data]}]];
   Renew[labels_] :=
    Module[{position},
     position = PositionIndex[labels];
     Return[Table[Mean[data[[position[[i]]]]], {i, Length[position]}]]];
   Iteration[labels_, clusters_] :=
-   
+
    Module[{newlabels, newclusters},
     newclusters = Renew[labels];
     newlabels = Label[newclusters];
-    If[newlabels == labels, labels, 
+    If[newlabels == labels, labels,
      Iteration[newlabels, newclusters]]];
   Return[Iteration[clusters, Label[clusters]]]]
 
@@ -2841,11 +2841,11 @@ constant N = 30000,                     -- number of points
 sequence {Px, Py, Pc} @= repeat(0,N),   -- coordinates of points and their cluster
          {Cx, Cy} @= repeat(0,K)        -- coordinates of centroid of cluster
 
-constant colours = {CD_RED, CD_DARK_RED, CD_BLUE, CD_DARK_BLUE, CD_CYAN, CD_DARK_CYAN, 
+constant colours = {CD_RED, CD_DARK_RED, CD_BLUE, CD_DARK_BLUE, CD_CYAN, CD_DARK_CYAN,
                     CD_GREEN, CD_DARK_GREEN, CD_MAGENTA, CD_DARK_MAGENTA, CD_YELLOW,
                     CD_DARK_YELLOW, CD_DARK_ORANGE, CD_INDIGO, CD_PURPLE, CD_DARK_GREY}
 if length(colours)<K then ?9/0 end if
- 
+
 function Centroid()
 -- Find new centroids of points grouped with current centroids
 bool change = false
@@ -2871,11 +2871,11 @@ bool change = false
     end for
     return change
 end function
- 
+
 function sq(atom x) return x*x end function
 
 procedure Voronoi()             -- Group points with their nearest centroid
-    integer d2,                 -- distance squared, 
+    integer d2,                 -- distance squared,
             min_d2              -- minimum distance squared
     for i=1 to N do             -- for each point...
         min_d2 := #3FFFFFFF     -- find closest centroid
@@ -2888,7 +2888,7 @@ procedure Voronoi()             -- Group points with their nearest centroid
         end for
     end for
 end procedure
- 
+
 function rand_xy()              -- Return random X,Y biased for polar coordinates
     atom d := rand(240)-1,              -- distance: 0..239
          a := rnd()*2*PI                -- angle:    0..2pi
@@ -2926,7 +2926,7 @@ function genECData()
     return {orig, data}
 end function
 --</Go ends>
- 
+
 integer iteration = 0
 
 function redraw_cb(Ihandle /*ih*/, integer /*posx*/, integer /*posy*/)
@@ -3009,7 +3009,7 @@ main()
 ```
 
 Probably the hardest part of handling more than 2 dimensions would be deleteing all
-the GUI code, or modifying it to produce an n-dimensional representation. Obviously 
+the GUI code, or modifying it to produce an n-dimensional representation. Obviously
 you would need Pz and Cz, or replace them with n-tuples, and to replace rand_xy().
 
 
@@ -3209,7 +3209,7 @@ The k-means clustering:
 ;; Divides the set of points into k clusters
 ;; using the standard k-means clustering algorithm
 (define (k-means data k #:initialization (init k-means++))
-  (define (iteration centroids)     
+  (define (iteration centroids)
     (map centroid (clusterize data centroids)))
   (fixed-point iteration (init data k) #:same-test small-shift?))
 
@@ -3269,11 +3269,11 @@ Different metrics
 ```racket
 
 (define (euclidean-distance a b)
-  (for/sum ([x (in-vector a)] [y (in-vector b)]) 
+  (for/sum ([x (in-vector a)] [y (in-vector b)])
     (sqr (- x y))))
 
 (define (manhattan-distance a b)
-  (for/sum ([x (in-vector a)] [y (in-vector b)]) 
+  (for/sum ([x (in-vector a)] [y (in-vector b)])
     (abs (- x y))))
 
 (define metric (make-parameter euclidean-distance))
@@ -3306,16 +3306,16 @@ Creating sample clusters
 
 ```racket
 
-(define (gaussian-cluster N 
-                          #:stdev (σ 1) 
-                          #:center (r0 #(0 0)) 
+(define (gaussian-cluster N
+                          #:stdev (σ 1)
+                          #:center (r0 #(0 0))
                           #:dim (d 2))
   (for/list ([i (in-range N)])
     (define r (for/vector ([j (in-range d)]) (sample (normal-dist 0 σ))))
     (vector-map + r r0)))
 
-(define (uniform-cluster N 
-                         #:radius (R 1) 
+(define (uniform-cluster N
+                         #:radius (R 1)
                          #:center (r0 #(0 0)))
   (for/list ([i (in-range N)])
     (define r (* R (sqrt (sample (uniform-dist)))))
@@ -3335,12 +3335,12 @@ Visualization
 (define (show-clustering data k #:method (method k-means++))
   (define c (k-means data k #:initialization method))
   (display
-   (plot 
+   (plot
     (append
-     (for/list ([d (clusterize data c)] 
+     (for/list ([d (clusterize data c)]
                 [i (in-naturals)])
        (points d #:color i #:sym 'fullcircle1))
-     (list (points c  
+     (list (points c
                    #:sym 'fullcircle7
                    #:fill-color 'yellow
                    #:line-width 3)))
@@ -3379,7 +3379,7 @@ The difficult case.
      (gaussian-cluster 1000 #:stdev 0.5 #:center #(2 3))
      (gaussian-cluster 1000 #:stdev 0.5 #:center #(2.5 -1))
      (gaussian-cluster 1000 #:stdev 0.5 #:center #(6 0))))
-  
+
   ; using k-means++ method
   (show-clustering clouds 4)
   ; using standard k-means method
@@ -3401,9 +3401,9 @@ Multi-dimensional case.
      (gaussian-cluster 1000 #:dim 5 #:center #(0 0 2 0 0))
      (gaussian-cluster 1000 #:dim 5 #:center #(0 0 0 2 0))
      (gaussian-cluster 1000 #:dim 5 #:center #(0 0 0 0 2))))
-  
+
   (define centroids (k-means 5d-data 5))
-  
+
   (map (curry vector-map round) centroids))
 
 ```
@@ -3712,7 +3712,7 @@ fn main() {
 
     println!(" k       centroid{}mean dist    pop",
              std::iter::repeat(" ").take((points[0].len() - 2) * 7 + 7).collect::<String>());
-    println!("===  {}  
+    println!("===  {}
 ### ========  ==
 ",
              std::iter::repeat("=").take(points[0].len() * 7 + 2).collect::<String>());
@@ -3788,7 +3788,7 @@ Nothing special is needed to handle multiple dimensions: all points are represen
 ;; calculate euclidean distance between points, any dimension
 (define (euclidean-distance pt1 pt2)
   (sqrt (apply + (map (lambda (x y) (square (- x y))) pt1 pt2))))
- 
+
 ;; input
 ;; - K: the target number of clusters K
 ;; - data: a list of points in the Cartesian plane
@@ -3836,7 +3836,7 @@ Nothing special is needed to handle multiple dimensions: all points are represen
   (let* ((distances (map (lambda (centre) (euclidean-distance centre pt)) centres))
          (smallest (apply min distances)))
     (list-index (lambda (d) (= d smallest)) distances)))
- 
+
 ;; input
 ;; - num: the number of clusters K
 ;; - data: a list of points in the Cartesian plane
@@ -3880,16 +3880,16 @@ Nothing special is needed to handle multiple dimensions: all points are represen
              (cy (/ (+ max-y min-y) 2)))
 
         ;; set up colours
-        (for-each 
-          (lambda (i) 
+        (for-each
+          (lambda (i)
             (vector-set! colours (+ (* i 3) 0) (inexact (/ (modulo (* 3 (+ i 1)) 11) 11)))
             (vector-set! colours (+ (* i 3) 1) (inexact (/ (modulo (* 7 i) 11) 11)))
             (vector-set! colours (+ (* i 3) 2) (inexact (/ (modulo (* 9 i) 11) 11))))
           (iota K))
 
         (display ;; display header
-          (string-append 
-            "%!PS-Adobe-3.0\n%%BoundingBox: -5 -5 " 
+          (string-append
+            "%!PS-Adobe-3.0\n%%BoundingBox: -5 -5 "
             (number->string (+ 10 W)) " " (number->string (+ 10 H)) "\n"
             "/l {rlineto} def /m {rmoveto} def\n"
             "/c { .25 sub exch .25 sub exch .5 0 360 arc fill } def\n"
@@ -3917,7 +3917,7 @@ Nothing special is needed to handle multiple dimensions: all points are represen
                                    " c\n"))))
               data)
             (let ((center (list-ref clusters i))) ; display cluster centre
-              (display 
+              (display
                 (string-append "\n0 setgray "
                                (number->string (+ (* (- (car center) cx) scale) (/ W 2)))
                                " "
@@ -3939,7 +3939,7 @@ Nothing special is needed to handle multiple dimensions: all points are represen
 ;; extra credit 3: uses radians instead to make data
 (define (tester-2 num-points K radius)
   (random-source-randomize! default-random-source)
-  (let ((data (map (lambda (i) 
+  (let ((data (map (lambda (i)
                      (let ((ang (* (random-real) 2 (* 4 (atan 1))))
                            (rad (* radius (random-real))))
                        (list (* rad (cos ang)) (* rad (sin ang)))))
@@ -3950,7 +3950,7 @@ Nothing special is needed to handle multiple dimensions: all points are represen
 ;; extra credit 4: arbitrary dimensions - already handled, as all points are lists
 (define (tester-3 num-points K num-dimensions)
   (display "Results:\n")
-  (display (cluster K (make-data num-points num-dimensions))) 
+  (display (cluster K (make-data num-points num-dimensions)))
   (newline))
 
 (tester-1 30000 6)
@@ -3966,11 +3966,11 @@ Text output for the 5D centres:
 
 ```txt
 Results:
-((0.2616723761604841 0.6134082964889989 0.29284958577190745 0.5883330600440337 0.2701242883590077) 
- (0.4495151954110258 0.7213650269267102 0.4785552477630192 0.2520793123281655 0.73785249828929) 
- (0.6873676767669482 0.3228592693134481 0.4713526933057497 0.23850999205524145 0.3104607677290796) 
- (0.6341937732424933 0.36435831485631176 0.2760548254423423 0.7120766805103155 0.7028127288541974) 
- (0.2718747392615238 0.2743005712228975 0.7515030778279079 0.5424997615106112 0.5849261595501698) 
+((0.2616723761604841 0.6134082964889989 0.29284958577190745 0.5883330600440337 0.2701242883590077)
+ (0.4495151954110258 0.7213650269267102 0.4785552477630192 0.2520793123281655 0.73785249828929)
+ (0.6873676767669482 0.3228592693134481 0.4713526933057497 0.23850999205524145 0.3104607677290796)
+ (0.6341937732424933 0.36435831485631176 0.2760548254423423 0.7120766805103155 0.7028127288541974)
+ (0.2718747392615238 0.2743005712228975 0.7515030778279079 0.5424997615106112 0.5849261595501698)
  (0.6882031980026069 0.7048387370769692 0.7373477088448752 0.6859917992267395 0.4027193966445248))
 
 ```
@@ -4096,25 +4096,25 @@ printGroup(points(1), groups(1), centers(1), k, maxVal, scale, group) :=
             toString((points[i].x - maxVal) * scale + W/2) ++ " " ++
             toString((points[i].y - maxVal) * scale + H/2) ++ " c\n"
                 when groups[i] = group;
-        
+
         colors := toString((3 * group mod k) / (k * 1.0)) ++ " " ++
                   toString((7 * (group - 1) mod k) / (k * 1.0)) ++ " " ++
                   toString((9 * (group - 1) mod k) / (k * 1.0)) ++
                   " setrgbcolor\n";
-        
+
         printedCenters := "\n0 setgray " ++
                    toString((centers[group].x - maxVal) * scale + W/2) ++ " " ++
                    toString((centers[group].y - maxVal) * scale + H/2) ++ " s\n";
     in
         colors ++ join(printedPoints) ++ printedCenters;
-        
+
 // Take number of points, K and seed for random data as command line inputs
-main(args(2)) := 
+main(args(2)) :=
     let
         n := stringToInt(args[1]) when size(args) >= 1 else 1000;
         k := stringToInt(args[2]) when size(args) >= 2 else 7;
         seed := stringToInt(args[3]) when size(args) >= 3 else 13;
-        
+
         points := gen2DPoints(n, 10.0, seedRandom(seed));
         initialGroups := kpp(points.first, k, points.second);
         result := kMeans(points.first, initialGroups, k);

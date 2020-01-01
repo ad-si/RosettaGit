@@ -13,7 +13,7 @@ tags = []
 {{task}}
 
 ;Task:
-The objective is to write a function that finds the sum of all positive multiples of 3 or 5 below ''n''. 
+The objective is to write a function that finds the sum of all positive multiples of 3 or 5 below ''n''.
 
 Show output for ''n'' = 1000.
 
@@ -69,7 +69,7 @@ ITERI    LA     R6,1(R6)               i++
          XR     R15,R15            rc=0
          BR     R14                exit
 SUM      DS     PL8
-IP       DS     PL8    		 
+IP       DS     PL8
 EM16     DC     X'40202020202020202020202020202120'  mask CL16 15num
 PG       DC     CL80'123456789012 : 1234567890123456'
          YREGS
@@ -116,12 +116,12 @@ PROC sum of multiples of 3 and 5 below = ( LONG LONG INT n )LONG LONG INT:
 
 print( ( "Sum of multiples of 3 and 5 below 1000: "
        , whole( sum of multiples of 3 and 5 below( 1000 ), 0 )
-       , newline 
+       , newline
        )
      );
 print( ( "Sum of multiples of 3 and 5 below 1e20: "
        , whole( sum of multiples of 3 and 5 below( 100 000 000 000 000 000 000 ), 0 )
-       , newline 
+       , newline
        )
      )
 ```
@@ -161,21 +161,21 @@ Sum of multiples of 3 and 5 below 1e20: 2333333333333333333316666666666666666668
 
 -- sum35Result :: String -> Int -> Int -> String
 script sum35Result
-    
+
     -- sum35 :: Int -> Int
     on sum35(n)
         sumMults(n, 3) + sumMults(n, 5) - sumMults(n, 15)
     end sum35
-    
+
     -- Area under straight line between first multiple and last:
-    
+
     -- sumMults :: Int -> Int -> Int
     on sumMults(n, f)
         set n1 to (n - 1) div f
-        
+
         f * n1 * (n1 + 1) div 2
     end sumMults
-    
+
     on |λ|(a, x, i)
         a & "10<sup>" & i & "</sup> -> " & ¬
             sum35(10 ^ x) & "
@@ -186,9 +186,9 @@ end script
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     foldl(sum35Result, "", enumFromTo(1, 8))
-    
+
 end run
 
 
@@ -220,7 +220,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -307,7 +307,7 @@ Sum3_5_b( i ) {
 }
 ```
 
-'''Output:''' 
+'''Output:'''
 ```txt
 Sum is 233168 for n = 1000
 Sum is 233168 for n = 1000
@@ -321,7 +321,7 @@ Save this into file "sum_multiples_of3and5.awk"
 
 ```AWK
 #!/usr/bin/awk -f
-{ 
+{
 	n = $1-1;
 	print sum(n,3)+sum(n,5)-sum(n,15);
 }
@@ -335,7 +335,7 @@ function sum(n,d) {
 {{Out}}
 
 ```txt
-$ echo 1000 |awk -f sum_multiples_of3and5.awk 
+$ echo 1000 |awk -f sum_multiples_of3and5.awk
 233168
 ```
 
@@ -348,7 +348,7 @@ In Awk, all numbers are represented internally as double precision floating-poin
 
 
 ```txt
-$ echo -e "1000\n1e20" | gawk -M -v PREC=80 -f sum_multiples_of3and5.awk 
+$ echo -e "1000\n1e20" | gawk -M -v PREC=80 -f sum_multiples_of3and5.awk
 233168
 2333333333333333333316666666666666666668
 ```
@@ -489,8 +489,8 @@ Fast (analytic) version:
 ### Simple version
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 unsigned long long sum35(unsigned long long limit)
@@ -531,8 +531,8 @@ $ ./a.out 12345
 
 {{libheader|GMP}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <gmp.h>
 
 void sum_multiples(mpz_t result, const mpz_t limit, const unsigned f)
@@ -568,7 +568,7 @@ int main(int argc, char **argv)
 
     mpz_t temp_sum;
     mpz_t sum35;
-    
+
     mpz_init(temp_sum);
     sum_multiples(temp_sum, limit, 3);
     mpz_init_set(sum35, temp_sum);
@@ -590,7 +590,7 @@ int main(int argc, char **argv)
 {{Out}}
 
 ```txt
-$ ./a.out 
+$ ./a.out
 233333333333333333333166666666666666666668
 $ ./a.out 23e45
 123433333333333333333333333333333333333333333314166666666666666666666666666666666666666666668
@@ -683,7 +683,7 @@ public:
 
 	cout << "Sum is " << sum << " for n = " << i << endl << endl;
     }
-	
+
     // this method uses less than half iterations than the first one
     void doIt_b( bigInt i )
     {
@@ -761,7 +761,7 @@ Working-storage section.
 Procedure division.
 Main-program.
     Perform Do-sum
-        varying ws-the-number from 1 by 1 
+        varying ws-the-number from 1 by 1
         until ws-the-number = ws-the-limit.
     Move ws-the-sum to ws-sum-out.
     Display "Sum = " ws-sum-out.
@@ -863,7 +863,7 @@ A brute-method using only comparisons and adds. Compiles and runs as is in GnuCO
            88 IS-THREE VALUE 3.
        01  FIVE-COUNTER    USAGE BINARY-CHAR value 1.
            88 IS-FIVE VALUE 5.
-       01  SUMMER          USAGE BINARY-DOUBLE value zero. 
+       01  SUMMER          USAGE BINARY-DOUBLE value zero.
        01  I               USAGE BINARY-LONG.
        01  N               USAGE BINARY-LONG.
 
@@ -875,7 +875,7 @@ A brute-method using only comparisons and adds. Compiles and runs as is in GnuCO
            DISPLAY SUMMER.
            STOP RUN.
        20-INNER-LOOP.
-           IF IS-THREE OR IS-FIVE 
+           IF IS-THREE OR IS-FIVE
                ADD I TO SUMMER END-ADD
                IF IS-THREE
                    MOVE 1 TO THREE-COUNTER
@@ -884,7 +884,7 @@ A brute-method using only comparisons and adds. Compiles and runs as is in GnuCO
                END-IF
                IF IS-FIVE
                    MOVE 1 TO FIVE-COUNTER
-               ELSE    
+               ELSE
                    ADD 1 TO FIVE-COUNTER
                END-IF
            ELSE
@@ -923,8 +923,8 @@ Fast version (adapted translation of [[#Tcl|Tcl]]):
 (defun sum-3-5-fast (limit)
   (flet ((triangular (n) (truncate (* n (1+ n)) 2)))
     (let ((n (1- limit)))  ; Sum multiples *below* the limit
-      (- (+ (* 3 (triangular (truncate n 3))) 
-            (* 5 (triangular (truncate n 5)))) 
+      (- (+ (* 3 (triangular (truncate n 3)))
+            (* 5 (triangular (truncate n 5))))
          (* 15 (triangular (truncate n 15)))))))
 ```
 
@@ -1026,7 +1026,7 @@ end
 
 puts g(3,5,999)
 puts g(3,5,1000)
- 
+
 # For extra credit
 puts g(3,5,"100000000000000000000".to_big_i - 1)
 puts g(3,5,"100000000000000000000".to_big_i)
@@ -1053,11 +1053,11 @@ def sumMul(n, f)
   n1 = (n.to_big_i - 1) / f  # number of multiples of f < n
   f * n1 * (n1 + 1) / 2      # f * (sum of number of multiples)
 end
- 
+
 def sum35(n)
   sumMul(n, 3) + sumMul(n, 5) - sumMul(n, 15)
 end
- 
+
 (1..20).each do |e| limit = 10.to_big_i ** e
   puts "%2d:%22d %s" % [e, limit, sum35(limit)]
 end
@@ -1194,12 +1194,12 @@ end.
 
 (define (task n  (k 3)  (p 5 ))
 	 (when (!= (gcd k p) 1) (error "expected coprimes" (list k p)))
-		(- 
+		(-
 	 	(+ (sum/mults n k) (sum/mults n p)) ;; add multiples of k , multiples of p
 	 	(sum/mults n (* k p)))) ;; remove multiples of k * p
 
 ;; using sequences
-;; sum of multiples of k < n 
+;; sum of multiples of k < n
 
 (define (sum/mults n k)
 	(sum/when (rcurry divides? k) [1 .. n]))
@@ -1208,7 +1208,7 @@ end.
     → 233168
 
 ;; using simple arithmetic - 🎩 young Gauss formula
-;; sum of multiples of k < n  = 
+;; sum of multiples of k < n  =
 ;; k*m*(m+1)/2 where m = floor(n/k)
 (lib 'bigint)
 
@@ -1221,7 +1221,7 @@ end.
 
 (task 1000 42 666)
     ❌ error: expected coprimes (42 666)
-		
+
 
 ```
 
@@ -1292,7 +1292,7 @@ defmodule RC do
     n1 = div(n - 1, f)
     div(f * n1 * (n1 + 1), 2)
   end
-  
+
   def sum35(n) do
     sumMul(n, 3) + sumMul(n, 5) - sumMul(n, 15)
   end
@@ -1469,7 +1469,7 @@ USING: formatting kernel math math.functions sequences
 tools.time ;
 IN: rosetta-code.sum35
 
-: {x+y-z} ( {x,y,z} -- x+y-z ) first3 [ + ] dip - ; 
+: {x+y-z} ( {x,y,z} -- x+y-z ) first3 [ + ] dip - ;
 
 : range-length ( limit multiple -- len ) [ 1 - ] dip /i ;
 
@@ -1478,12 +1478,12 @@ IN: rosetta-code.sum35
 
 : sum35 ( limit -- sum )
     { 3 5 15 } [ triangular ] with map {x+y-z} ;
-    
+
 : msg ( limit sum -- )
     "The sum of multiples of 3 or 5 below %d is %d.\n" printf ;
-    
+
 : output ( limit -- ) dup sum35 msg ;
-    
+
 : main ( -- ) [ 1000 10 20 ^ [ output ] bi@ ] time ;
 
 MAIN: main
@@ -1579,25 +1579,25 @@ Another FORTH version using the Inclusion/Exclusion Principle.  The result is a 
     LOOP drop ;
 
 euler1 . 233168  ok
-euler1tower 
-                  1 0 
-                 10 23 
-                100 2318 
-               1000 233168 
-              10000 23331668 
-             100000 2333316668 
-            1000000 233333166668 
-           10000000 23333331666668 
-          100000000 2333333316666668 
-         1000000000 233333333166666668 
-        10000000000 23333333331666666668 
-       100000000000 2333333333316666666668 
-      1000000000000 233333333333166666666668 
-     10000000000000 23333333333331666666666668 
-    100000000000000 2333333333333316666666666668 
-   1000000000000000 233333333333333166666666666668 
-  10000000000000000 23333333333333331666666666666668 
- 100000000000000000 2333333333333333316666666666666668 
+euler1tower
+                  1 0
+                 10 23
+                100 2318
+               1000 233168
+              10000 23331668
+             100000 2333316668
+            1000000 233333166668
+           10000000 23333331666668
+          100000000 2333333316666668
+         1000000000 233333333166666668
+        10000000000 23333333331666666668
+       100000000000 2333333333316666666668
+      1000000000000 233333333333166666666668
+     10000000000000 23333333333331666666666668
+    100000000000000 2333333333333316666666666668
+   1000000000000000 233333333333333166666666666668
+  10000000000000000 23333333333333331666666666666668
+ 100000000000000000 2333333333333333316666666666666668
 1000000000000000000 233333333333333333166666666666666668  ok
 
 ```
@@ -1691,7 +1691,7 @@ Function sum35 (n As UInteger) As UInteger
   For i = 1 To n
     If (i Mod 3 = 0) OrElse (i Mod 5 = 0) Then sum += i
   Next
-  Return sum 
+  Return sum
 End Function
 
 Print "Sum of positive integers below 1000 divisible by 3 or 5 is : "; sum35(999)
@@ -1734,7 +1734,7 @@ func s35(n int) int {
     fifteen = 15 * fifteen * (fifteen + 1)
 
     n = (threes + fives - fifteen) / 2
-	
+
     return n
 }
 ```
@@ -1968,13 +1968,13 @@ Stealing the idea from the python implementation to use 3 simple patterns rather
 ### ES5
 
 
-JavaScript is better equipped for flexibility than for scale. The value of  
+JavaScript is better equipped for flexibility than for scale. The value of
 ```JavaScript
  Number.MAX_SAFE_INTEGER
 ```
  is 9007199254740991, or 2^53 - 1 – resulting from an IEEE 754 double-precision floating point representation of numeric values).
 
-As ''Number.MAX_SAFE_INTEGER < 1E20'' evaluates to ''true'', the most obvious JS attack on a solution for 1E20 might involve some string processing …  
+As ''Number.MAX_SAFE_INTEGER < 1E20'' evaluates to ''true'', the most obvious JS attack on a solution for 1E20 might involve some string processing …
 
 At more modest scales, however, we can generalise a little to allow for an arbitrary list of integer factors, and write a simple generate, filter and sum approach:
 
@@ -2045,7 +2045,7 @@ At more modest scales, however, we can generalise a little to allow for an arbit
 
 For [3,5]:
 
-{| class="wikitable" 
+{| class="wikitable"
 |-
 ! Below !! Sum
 |-
@@ -2248,26 +2248,26 @@ elapsed time: 5.8114e-5 seconds seconds (3968 bytes allocated)
 
 julia> [(BigInt(10)^n, multsum(3, 5, BigInt(10)^n)) for n=0:20]
 21-element Array{(BigInt,BigInt),1}:
- (1,0)                                                           
- (10,23)                                                         
- (100,2318)                                                      
- (1000,233168)                                                   
- (10000,23331668)                                                
- (100000,2333316668)                                             
- (1000000,233333166668)                                          
- (10000000,23333331666668)                                       
- (100000000,2333333316666668)                                    
- (1000000000,233333333166666668)                                 
- (10000000000,23333333331666666668)                              
- (100000000000,2333333333316666666668)                           
- (1000000000000,233333333333166666666668)                        
- (10000000000000,23333333333331666666666668)                     
- (100000000000000,2333333333333316666666666668)                  
- (1000000000000000,233333333333333166666666666668)               
- (10000000000000000,23333333333333331666666666666668)            
- (100000000000000000,2333333333333333316666666666666668)         
- (1000000000000000000,233333333333333333166666666666666668)      
- (10000000000000000000,23333333333333333331666666666666666668)   
+ (1,0)
+ (10,23)
+ (100,2318)
+ (1000,233168)
+ (10000,23331668)
+ (100000,2333316668)
+ (1000000,233333166668)
+ (10000000,23333331666668)
+ (100000000,2333333316666668)
+ (1000000000,233333333166666668)
+ (10000000000,23333333331666666668)
+ (100000000000,2333333333316666666668)
+ (1000000000000,233333333333166666666668)
+ (10000000000000,23333333333331666666666668)
+ (100000000000000,2333333333333316666666666668)
+ (1000000000000000,233333333333333166666666666668)
+ (10000000000000000,23333333333333331666666666666668)
+ (100000000000000000,2333333333333333316666666666666668)
+ (1000000000000000000,233333333333333333166666666666666668)
+ (10000000000000000000,23333333333333333331666666666666666668)
  (100000000000000000000,2333333333333333333316666666666666666668)
 ```
 
@@ -2502,8 +2502,8 @@ function tri (n) return n * (n + 1) / 2 end
 
 function sum35 (n)
 	n = n - 1
-	return	(	3 * tri(math.floor(n / 3)) + 
-			5 * tri(math.floor(n / 5)) - 
+	return	(	3 * tri(math.floor(n / 3)) +
+			5 * tri(math.floor(n / 5)) -
 			15 * tri(math.floor(n / 15))
 		)
 end
@@ -2545,11 +2545,11 @@ Output:
 ```txt
 
                                2                                      2
-               3      /1     2\    3      /1     2\   5      /1     4\ 
-     F := n -> - floor|- n + -|  - - floor|- n + -| + - floor|- n + -| 
-               2      \3     3/    2      \3     3/   2      \5     5/ 
+               3      /1     2\    3      /1     2\   5      /1     4\
+     F := n -> - floor|- n + -|  - - floor|- n + -| + - floor|- n + -|
+               2      \3     3/    2      \3     3/   2      \5     5/
 
-                                                2                      
+                                                2
           5      /1     4\   15      /1      14\    15      /1      14\
         - - floor|- n + -| - -- floor|-- n + --|  + -- floor|-- n + --|
           2      \5     5/   2       \15     15/    2       \15     15/
@@ -2567,8 +2567,8 @@ Output:
 
 
 ```mathematica
-sum35[n_] := 
- Sum[k, {k, 3, n - 1, 3}] + Sum[k, {k, 5, n - 1, 5}] - 
+sum35[n_] :=
+ Sum[k, {k, 3, n - 1, 3}] + Sum[k, {k, 5, n - 1, 5}] -
   Sum[k, {k, 15, n - 1, 15}]
 
 sum35[1000]
@@ -2592,10 +2592,10 @@ sum35[10^20]
 ```
 
 
-Another alternative is 
+Another alternative is
 
 ```mathematica
- Union @@ Range[0, 999, {3, 5}] // Tr 
+ Union @@ Range[0, 999, {3, 5}] // Tr
 ```
 
 
@@ -2619,7 +2619,7 @@ n=1000; sum(0:3:n-1)+sum(0:5:n-1)-sum(0:15:n-1)
 Of course, it's more efficient to use [http://mathforum.org/library/drmath/view/57919.html Gauss' approach] of adding subsequent integers:
 
 ```MATLAB
-n=999; 
+n=999;
 n3=floor(n/3);
 n5=floor(n/5);
 n15=floor(n/15);
@@ -3008,13 +3008,13 @@ a(1e20)
 
 ```Pascal
 program Sum3sAnd5s;
- 
+
 function Multiple(x, y: integer): Boolean;
   { Is X a multiple of Y? }
    begin
       Multiple := (X mod Y) = 0
    end;
- 
+
 function SumMultiples(n: integer): longint;
   { Return the sum of all multiples of 3 or 5. }
    var i: integer; sum: longint;
@@ -3215,7 +3215,7 @@ procedure sum_multiples(mpz result, limit, integer f)
     mpz_fdiv_q_2exp(result, result, 1)
     m = mpz_free(m)
 end procedure
- 
+
 mpz {res,tmp,limit} = mpz_inits(3)
 for i=0 to 20 do
     string sp = repeat(' ',20-i)
@@ -3382,17 +3382,17 @@ function Get-SumOfMultiples
 
     $Multiples = @()
     $Sum = 0
-    $multiplier | 
+    $multiplier |
       ForEach-Object {
         For($i = 1; $i -lt $Cap; $i ++)
-        {        
+        {
           If($i % $_ -eq 0)
           {$Multiples += $i}
         }
       }
 
-     $Multiples | 
-         select -Unique | 
+     $Multiples |
+         select -Unique |
          ForEach-Object {
             $Sum += $_
          }
@@ -3496,10 +3496,10 @@ Procedure.q SumMultiples(Limit.q)
     If i % 3 = 0 Or i % 5 = 0
       sum + i
     EndIf
-  Next  
+  Next
   ProcedureReturn sum
 EndProcedure
-  
+
 If OpenConsole()
   PrintN("Sum of numbers below 1000 which are multiples of 3 or 5 is : " + SumMultiples(1000))
   PrintN("")
@@ -3531,11 +3531,11 @@ def sum35a(n):
     # note: ranges go to n-1
     return sum(x for x in range(n) if x%3==0 or x%5==0)
 
-def sum35b(n): 
+def sum35b(n):
     "Count all the 3's; all the 5's; minus double-counted 3*5's"
     # note: ranges go to n-1
     return sum(range(3, n, 3)) + sum(range(5, n, 5)) - sum(range(15, n, 15))
-    
+
 def sum35c(n):
     'Sum the arithmetic progressions: sum3 + sum5 - sum15'
     consts = (3, 5, 15)
@@ -3555,7 +3555,7 @@ print('For n = %7i -> %i\n' % (n, sc))
 for p in range(7):
     print('For n = %7i -> %i' % (10**p, sum35c(10**p)))
 
-# Scalability 
+# Scalability
 p = 20
 print('\nFor n = %20i -> %i' % (10**p, sum35c(10**p)))
 ```
@@ -3720,7 +3720,7 @@ m35(1000)   # 233168
 
 ;;; A naive solution
 (define (naive k)
-  (for/sum ([n (expt 10 k)] 
+  (for/sum ([n (expt 10 k)]
             #:when (or (divides? 3 n) (divides? 5 n)))
     n))
 
@@ -3897,7 +3897,7 @@ exit                                             /*stick a fork in it,  we're al
 sumDiv: procedure;  parse arg x,d;     $=x % d;            return d * $ * ($+1) % 2
 ```
 
-'''output'''   when using the default input: 
+'''output'''   when using the default input:
 
 ```txt
 
@@ -4007,11 +4007,11 @@ integers from 1 ──► 1e84-1  is  233333333333333333333333333333333333333333
 ```ring
 
 see sum35(1000) + nl
- 
+
 func sum35 n
      n = n - 1
-     return(3 * tri(floor(n / 3)) + 
-	    5 * tri(floor(n / 5)) - 
+     return(3 * tri(floor(n / 3)) +
+	    5 * tri(floor(n / 5)) -
 	    15 * tri(floor(n / 15)))
 
 func tri n
@@ -4137,13 +4137,13 @@ def sum35( max:BigInt ) : BigInt = max match {
 
   // Simplest solution but limited to Ints only
   case j if j < 100000 => (1 until j.toInt).filter( i => i % 3 == 0 || i % 5 == 0 ).sum
-  
+
   // Using a custom iterator that takes Longs
   case j if j < 10e9.toLong => {
     def stepBy( step:Long ) : Iterator[Long] = new Iterator[Long] { private var i = step; def hasNext = true; def next() : Long = { val result = i; i = i + step; result } }
-    stepBy(3).takeWhile( _< j ).sum + stepBy(5).takeWhile( _< j ).sum - stepBy(15).takeWhile( _< j ).sum 	
+    stepBy(3).takeWhile( _< j ).sum + stepBy(5).takeWhile( _< j ).sum - stepBy(15).takeWhile( _< j ).sum
   }
-  
+
   // Using the formula for a Triangular number
   case j => {
     def triangle( i:BigInt ) = i * (i+1) / BigInt(2)
@@ -4204,24 +4204,24 @@ fn main() {
         let mut aux_3_4 = Integer::from(3 + aux_3_2);
         let mut aux_3_5 = Integer::from(&aux_3_3*&aux_3_4);
         let mut aux_3_6 = Integer::from(&aux_3_5/2);
- 
+
         let mut aux_5_1 = &limit.mod_u(5u32);
-        let mut aux_5_2 = Integer::from(&limit - aux_5_1); 
+        let mut aux_5_2 = Integer::from(&limit - aux_5_1);
         let mut aux_5_3 = Integer::from(&aux_5_2/5);
-        let mut aux_5_4 = Integer::from(5 + aux_5_2); 
+        let mut aux_5_4 = Integer::from(5 + aux_5_2);
         let mut aux_5_5 = Integer::from(&aux_5_3*&aux_5_4);
-        let mut aux_5_6 = Integer::from(&aux_5_5/2); 
+        let mut aux_5_6 = Integer::from(&aux_5_5/2);
 
         let mut aux_15_1 = &limit.mod_u(15u32);
-        let mut aux_15_2 = Integer::from(&limit - aux_15_1); 
+        let mut aux_15_2 = Integer::from(&limit - aux_15_1);
         let mut aux_15_3 = Integer::from(&aux_15_2/15);
         let mut aux_15_4 = Integer::from(15 + aux_15_2);
         let mut aux_15_5 = Integer::from(&aux_15_3*&aux_15_4);
-        let mut aux_15_6 = Integer::from(&aux_15_5/2); 
+        let mut aux_15_6 = Integer::from(&aux_15_5/2);
 
-        let mut result_aux_1 = Integer::from(&aux_3_6 + &aux_5_6); 
+        let mut result_aux_1 = Integer::from(&aux_3_6 + &aux_5_6);
         let mut result = Integer::from(&result_aux_1 - &aux_15_6);
- 
+
         println!("Sum for 10^{} : {}",i,result);
     }
 }
@@ -4269,7 +4269,7 @@ Or, more clearly by decomposition:
 
 ```scheme
 (define (fac35? x)
-    (or (zero? (remainder x 3)) 
+    (or (zero? (remainder x 3))
         (zero? (remainder x 5))))
 
 (define (fac35filt x tot)
@@ -4293,7 +4293,7 @@ For larger numbers iota can take quite a while just to build the list -- forget 
 
 ```scheme
 (define (trisum n fac)
-    (let* ((n1 (quotient (- n 1) fac)) 
+    (let* ((n1 (quotient (- n 1) fac))
            (n2 (+ n1 1)))
         (quotient (* fac n1 n2) 2)))
 
@@ -4340,7 +4340,7 @@ const func bigInteger: sum35 (in bigInteger: n) is func
    begin
      sum35 := sumMul(n, 3_) + sumMul(n, 5_) - sumMul(n, 15_);
    end func;
- 
+
 const proc: main is func
   begin
     writeln(sum35(1000_));
@@ -4437,7 +4437,7 @@ BEGIN
         sumMultiples := multiples(n, limit) + multiples(m, limit)
                         - multiples(LCM, limit)
     END sumMultiples;
-    
+
     ! Extra creditable: math is about avoiding calculation tedium;
     TEXT PROCEDURE repeat(c, n); CHARACTER c; INTEGER n; BEGIN
         TEXT r; r :- BLANKS(n);
@@ -4483,7 +4483,7 @@ sum of positive multiples of 3 and 5: 233168<br />
 ## Stata
 
 
-###  With a dataset 
+###  With a dataset
 
 
 ```stata
@@ -4495,7 +4495,7 @@ tabstat a if mod(a,3)==0 | mod(a,5)==0, statistic(sum)
 
 
 
-###  With Mata 
+###  With Mata
 
 
 ```stata
@@ -4516,14 +4516,14 @@ sum(a:*(mod(a,3):==0 :| mod(a,5):==0))
 var n:Int=1000
 
 func sum(x:Int)->Int{
-	
+
 	var s:Int=0
 	for i in 0...x{
 		if i%3==0 || i%5==0
 		{
 			s=s+i
 		}
-		
+
 	}
 	return s
 }
@@ -4708,7 +4708,7 @@ F:\>cscript /nologo multsum35.vbs 1000
 ```wortel
 @let {
   sum35 ^(@sum \!-@(\~%%3 || \~%%5) @til)
-	
+
   !sum35 1000 ; returns 233168
 }
 ```

@@ -80,7 +80,7 @@ LOOP     EQU    *                  do loop
          BAL    R14,CHOOSEMV         call choosemv(x,y)
          C      R0,=F'0'           until(choosemv(x,y)=0)
          BNE    LOOP               loop
-         LA     R2,KN*KN           n*n  
+         LA     R2,KN*KN           n*n
        IF C,R2,NE,TOTAL THEN       if total<>n*n then
          XPRNT  =C'error!!',7        print error
        ENDIF    ,                  endif
@@ -183,7 +183,7 @@ TRYMV    EQU    *                  trymv(xt,yt)
          L      R2,YT
          LA     R2,2(R2)           yt+2
          BAL    R14,VALIDMV
-       IF C,R0,EQ,=F'1' THEN       if validmv(xt+1,yt+2)=1 then 
+       IF C,R0,EQ,=F'1' THEN       if validmv(xt+1,yt+2)=1 then
          LA     R10,1(R10)           n=n+1;
        ENDIF    ,                  endif
          L      R1,XT
@@ -191,7 +191,7 @@ TRYMV    EQU    *                  trymv(xt,yt)
          L      R2,YT
          SH     R2,=H'2'           yt-2
          BAL    R14,VALIDMV
-       IF C,R0,EQ,=F'1' THEN       if validmv(xt+1,yt-2)=1 then 
+       IF C,R0,EQ,=F'1' THEN       if validmv(xt+1,yt-2)=1 then
          LA     R10,1(R10)           n=n+1;
        ENDIF    ,                  endif
          L      R1,XT
@@ -320,31 +320,31 @@ Knight's tour  8x 8
 ## Ada
 
 
-First, we specify a naive implementation the package Knights_Tour with naive backtracking. It is a bit more general than required for this task, by providing a mechanism '''not''' to visit certain coordinates. This mechanism is actually useful for the task [[Solve a Holy Knight's tour#Ada]], which also uses the package Knights_Tour. 
+First, we specify a naive implementation the package Knights_Tour with naive backtracking. It is a bit more general than required for this task, by providing a mechanism '''not''' to visit certain coordinates. This mechanism is actually useful for the task [[Solve a Holy Knight's tour#Ada]], which also uses the package Knights_Tour.
 
 
 ```Ada
 generic
    Size: Integer;
 package Knights_Tour is
- 
+
    subtype Index is Integer range 1 .. Size;
    type Tour is array  (Index, Index) of Natural;
    Empty: Tour := (others => (others => 0));
-   
+
    function Get_Tour(Start_X, Start_Y: Index; Scene: Tour := Empty) return Tour;
    -- finds tour via backtracking
    -- either no tour has been found, i.e., Get_Tour returns Scene
    -- or the Result(X,Y)=K if and only if I,J is visited at the K-th move
    -- for all X, Y, Scene(X,Y) must be either 0 or Natural'Last,
    --   where Scene(X,Y)=Natural'Last means "don't visit coordiates (X,Y)!"
- 
+
    function Count_Moves(Board: Tour) return Natural;
    -- counts the number of possible moves, i.e., the number of 0's on the board
-   
+
    procedure Tour_IO(The_Tour: Tour; Width: Natural := 4);
    -- writes The_Tour to the output using Ada.Text_IO;
-      
+
 end Knights_Tour;
 ```
 
@@ -354,31 +354,31 @@ Here is the implementation:
 
 ```Ada
 with Ada.Text_IO, Ada.Integer_Text_IO;
- 
+
 package body Knights_Tour is
- 
- 
+
+
    type Pair is array(1..2) of Integer;
    type Pair_Array is array (Positive range <>) of Pair;
- 
+
    Pairs: constant Pair_Array (1..8)
      := ((-2,1),(-1,2),(1,2),(2,1),(2,-1),(1,-2),(-1,-2),(-2,-1));
    -- places for the night to go (relative to the current position)
-   
+
    function Count_Moves(Board: Tour) return Natural is
       N: Natural := 0;
    begin
       for I in Index loop
 	 for J in Index loop
-	    if Board(I,J) < Natural'Last then 
-	       N := N + 1; 
+	    if Board(I,J) < Natural'Last then
+	       N := N + 1;
 	    end if;
 	 end loop;
       end loop;
       return N;
    end Count_Moves;
-   
-   function Get_Tour(Start_X, Start_Y: Index; Scene: Tour := Empty) 
+
+   function Get_Tour(Start_X, Start_Y: Index; Scene: Tour := Empty)
 		    return Tour is
       Done: Boolean;
       Move_Count: Natural := Count_Moves(Scene);
@@ -387,7 +387,7 @@ package body Knights_Tour is
       -- Visited(I, J) = 0: not yet visited
       -- Visited(I, J) = K: visited at the k-th move
       -- Visited(I, J) = Integer'Last: never visit
- 
+
       procedure Visit(X, Y: Index; Move_Number: Positive; Found: out Boolean) is
          XX, YY: Integer;
       begin
@@ -410,7 +410,7 @@ package body Knights_Tour is
             Visited(X, Y) := 0; -- undo previous mark
          end if;
       end Visit;
- 
+
    begin
       Visited := Scene;
       Visit(Start_X, Start_Y, 1, Done);
@@ -419,7 +419,7 @@ package body Knights_Tour is
       end if;
       return Visited;
    end Get_Tour;
-  
+
    procedure Tour_IO(The_Tour: Tour; Width: Natural := 4) is
    begin
       for I in Index loop
@@ -436,7 +436,7 @@ package body Knights_Tour is
          Ada.Text_IO.New_Line;
       end loop;
    end Tour_IO;
- 
+
 end Knights_Tour;
 ```
 
@@ -477,8 +477,8 @@ For small sizes, this already works well (< 1 sec for size 8). Sample output:
 For larger sizes we'll use Warnsdorff's heuristic (without any thoughtful tie breaking). We enhance the specification adding a function Warnsdorff_Get_Tour. This enhancement of the package Knights_Tour will also be used for the task [[Solve a Holy Knight's tour#Ada]]. The specification of Warnsdorff_Get_Tour is the following.
 
 ```Ada
-   
-   function Warnsdorff_Get_Tour(Start_X, Start_Y: Index; Scene: Tour := Empty) 
+
+   function Warnsdorff_Get_Tour(Start_X, Start_Y: Index; Scene: Tour := Empty)
 			       return Tour;
    -- uses Warnsdorff heurisitic to find a tour faster
    -- same interface as Get_Tour
@@ -494,7 +494,7 @@ Its implementation is as follows.
       Done: Boolean;
       Visited: Tour; -- see comments from Get_Tour above
       Move_Count: Natural := Count_Moves(Scene);
- 
+
       function Neighbors(X, Y: Index) return Natural is
          Result: Natural := 0;
       begin
@@ -506,7 +506,7 @@ Its implementation is as follows.
          end loop;
          return Result;
       end Neighbors;
- 
+
       procedure Sort(Options: in out Pair_Array) is
          N_Bors: array(Options'Range) of Natural;
          K: Positive range Options'Range;
@@ -531,7 +531,7 @@ Its implementation is as follows.
             Options(K)   := P;
          end loop;
       end Sort;
- 
+
       procedure Visit(X, Y: Index; Move: Positive; Found: out Boolean) is
          Next_Count: Natural range 0 .. 8 := 0;
          Next_Steps: Pair_Array(1 .. 8);
@@ -552,21 +552,21 @@ Its implementation is as follows.
                   Next_Steps(Next_Count) := (XX, YY);
                end if;
             end loop;
- 
+
             Sort(Next_Steps(1 .. Next_Count));
- 
+
             for N in 1 .. Next_Count loop
                Visit(Next_Steps(N)(1), Next_Steps(N)(2), Move+1, Found);
                if Found then
                   return; -- no need to search further
             end if;
             end loop;
- 
+
             -- if we didn't return above, we have to undo our move
             Visited(X, Y) := 0;
          end if;
       end Visit;
- 
+
    begin
       Visited := Scene;
       Visit(Start_X, Start_Y, 1, Done);
@@ -952,7 +952,7 @@ ANSI BASIC doesn't allow function parameters to be passed by reference so X and 
 ```ANSI Standard BASIC
 100 DECLARE EXTERNAL FUNCTION choosemove
 110 !
-120 RANDOMIZE 
+120 RANDOMIZE
 130 PUBLIC NUMERIC X, Y, TRUE, FALSE
 140 LET TRUE = -1
 150 LET FALSE = 0
@@ -963,7 +963,7 @@ ANSI BASIC doesn't allow function parameters to be passed by reference so X and 
 200    FOR y=0 TO 512-128 STEP 128
 210       PLOT AREA:x+64,y;x+128,y;x+128,y+64;x+64,y+64
 220       PLOT AREA:x,y+64;x+64,y+64;x+64,y+128;x,y+128
-230    NEXT y 
+230    NEXT y
 240 NEXT x
 250 !
 260 SET LINE COLOR "red"
@@ -992,7 +992,7 @@ ANSI BASIC doesn't allow function parameters to be passed by reference so X and 
 490 CALL trymove(X1+2, Y1-1, M, newx, newy)
 500 CALL trymove(X1-2, Y1+1, M, newx, newy)
 510 CALL trymove(X1-2, Y1-1, M, newx, newy)
-520 IF M=9 THEN 
+520 IF M=9 THEN
 530    LET choosemove = FALSE
 540    EXIT FUNCTION
 550 END IF
@@ -1016,7 +1016,7 @@ ANSI BASIC doesn't allow function parameters to be passed by reference so X and 
 730 IF N>M THEN EXIT SUB
 740 IF N=M AND RND<.5 THEN EXIT SUB
 750 LET M = N
-760 LET newx = X 
+760 LET newx = X
 770 LET newy = Y
 780 END SUB
 790 !
@@ -1136,7 +1136,7 @@ WM_LBUTTONDOWN()
 For start at b3
 
 ```txt
-b3 d2 c4 a5 b7 d8 e6 d4 b5 c7 a8 b6 c8 a7 c6 b8 a6 b4 d5 e3 d1 b2 a4 c5 d7 f8 h7 f6 g8 h6 f7 h8 g6 e7 f5 h4 g2 e1 d3 e5 g4 f2 h1 g3 f1 h2 f3 g1 h3 g5 e4 d6 e8 g7 h5 f4 e2 c1 a2 c3 b1 a3 c2 a1 
+b3 d2 c4 a5 b7 d8 e6 d4 b5 c7 a8 b6 c8 a7 c6 b8 a6 b4 d5 e3 d1 b2 a4 c5 d7 f8 h7 f6 g8 h6 f7 h8 g6 e7 f5 h4 g2 e1 d3 e5 g4 f2 h1 g3 f1 h2 f3 g1 h3 g5 e4 d6 e8 g7 h5 f4 e2 c1 a2 c3 b1 a3 c2 a1
 ```
 
 ... plus an animation.
@@ -1253,7 +1253,7 @@ function printBoard(  i,j,leng) {
         RECTANGLE FILL 0,y%,512,64
       NEXT
       GCOL 9
-      
+
       DIM Board%(7,7)
       X% = 0
       Y% = 0
@@ -1266,7 +1266,7 @@ function printBoard(  i,j,leng) {
       IF Total%<>64 STOP
       REPEAT WAIT 1 : UNTIL FALSE
       END
-      
+
       DEF FNchoosemove(RETURN X%, RETURN Y%)
       LOCAL M%, newx%, newy%
       M% = 9
@@ -1281,7 +1281,7 @@ function printBoard(  i,j,leng) {
       IF M%=9 THEN = FALSE
       X% = newx% : Y% = newy%
       = TRUE
-      
+
       DEF PROCtrymove(X%, Y%, RETURN M%, RETURN newx%, RETURN newy%)
       LOCAL N%
       IF NOT FNvalidmove(X%,Y%) THEN ENDPROC
@@ -1298,7 +1298,7 @@ function printBoard(  i,j,leng) {
       M% = N%
       newx% = X% : newy% = Y%
       ENDPROC
-      
+
       DEF FNvalidmove(X%,Y%)
       IF X%<0 OR X%>7 OR Y%<0 OR Y%>7 THEN = FALSE
       = NOT(Board%(X%,Y%))
@@ -1330,7 +1330,7 @@ function printBoard(  i,j,leng) {
                           ' ( !fys:%?fy ?fys
                             &     (   (!x+!fx*!dx.!y+!fy*!dy)
                                     : (>0:<9.>0:<9)
-                                  | 
+                                  |
                                   )
                                   !moves
                               : ?moves
@@ -1370,7 +1370,7 @@ function printBoard(  i,j,leng) {
                               ' ( !moves:%?move ?moves
                                 & (   !fieldsToVisit:? !move ?
                                     & !weight+1:?weight
-                                  | 
+                                  |
                                   )
                                 )
                             & (!weight.!pos)
@@ -1407,7 +1407,7 @@ function printBoard(  i,j,leng) {
             .     !arg:(?x.?y) ?arg
                 &   str$(chr$(asc$a+!x+-1) !y " ")
                     algebraicNotation$!arg
-              | 
+              |
           )
         & @(!arg:?x #?y)
         & asc$!x+-1*asc$a+1:?x
@@ -1431,8 +1431,8 @@ For an animated version using OpenGL, see [[Knight's tour/C]].
 
 The following draws on console the progress of the horsie.  Specify board size on commandline, or use default 8.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -1546,8 +1546,8 @@ int main(int c, char **v)
 Uses Warnsdorff's rule and (iterative) backtracking if that fails.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iomanip>
 #include <array>
 #include <string>
@@ -1556,13 +1556,13 @@ Uses Warnsdorff's rule and (iterative) backtracking if that fails.
 using namespace std;
 
 template<int N = 8>
-class Board 
+class Board
 {
 public:
     array<pair<int, int>, 8> moves;
     array<array<int, N>, N> data;
 
-    Board() 
+    Board()
     {
         moves[0] = make_pair(2, 1);
         moves[1] = make_pair(1, 2);
@@ -1574,16 +1574,16 @@ public:
         moves[7] = make_pair(2, -1);
     }
 
-    array<int, 8> sortMoves(int x, int y) const 
+    array<int, 8> sortMoves(int x, int y) const
     {
         array<tuple<int, int>, 8> counts;
-        for(int i = 0; i < 8; ++i) 
+        for(int i = 0; i < 8; ++i)
         {
             int dx = get<0>(moves[i]);
             int dy = get<1>(moves[i]);
 
             int c = 0;
-            for(int j = 0; j < 8; ++j) 
+            for(int j = 0; j < 8; ++j)
             {
                 int x2 = x + dx + get<0>(moves[j]);
                 int y2 = y + dy + get<1>(moves[j]);
@@ -1611,7 +1611,7 @@ public:
         return out;
     }
 
-    void solve(string start) 
+    void solve(string start)
     {
         for(int v = 0; v < N; ++v)
             for(int u = 0; u < N; ++u)
@@ -1625,20 +1625,20 @@ public:
         order[0] = make_tuple(x0, y0, 0, sortMoves(x0, y0));
 
         int n = 0;
-        while(n < N*N-1) 
+        while(n < N*N-1)
         {
             int x = get<0>(order[n]);
             int y = get<1>(order[n]);
 
             bool ok = false;
-            for(int i = get<2>(order[n]); i < 8; ++i) 
+            for(int i = get<2>(order[n]); i < 8; ++i)
             {
                 int dx = moves[get<3>(order[n])[i]].first;
                 int dy = moves[get<3>(order[n])[i]].second;
 
                 if(x+dx < 0 || x+dx >= N || y+dy < 0 || y+dy >= N)
                     continue;
-                if(data[y + dy][x + dx] != 0) 
+                if(data[y + dy][x + dx] != 0)
                     continue;
 
                 ++n;
@@ -1662,11 +1662,11 @@ public:
 };
 
 template<int N>
-ostream& operator<<(ostream &out, const Board<N> &b) 
+ostream& operator<<(ostream &out, const Board<N> &b)
 {
-    for (int v = 0; v < N; ++v) 
+    for (int v = 0; v < N; ++v)
     {
-        for (int u = 0; u < N; ++u) 
+        for (int u = 0; u < N; ++u)
         {
             if (u != 0) out << ",";
             out << setw(3) << b.data[v][u];
@@ -1676,7 +1676,7 @@ ostream& operator<<(ostream &out, const Board<N> &b)
     return out;
 }
 
-int main() 
+int main()
 {
     Board<5> b1;
     b1.solve("c3");
@@ -1759,80 +1759,80 @@ using System.Collections.Generic;
 namespace prog
 {
 	class MainClass
-	{	
+	{
 		const int N = 8;
-		
+
 		readonly static int[,] moves = { {+1,-2},{+2,-1},{+2,+1},{+1,+2},
 			                         {-1,+2},{-2,+1},{-2,-1},{-1,-2} };
 		struct ListMoves
 		{
-			public int x, y;			
+			public int x, y;
 			public ListMoves( int _x, int _y ) { x = _x; y = _y; }
-		}		
-		
+		}
+
 		public static void Main (string[] args)
 		{
 			int[,] board = new int[N,N];
 			board.Initialize();
-			
+
 			int x = 0,						// starting position
 			    y = 0;
-			
+
 			List<ListMoves> list = new List<ListMoves>(N*N);
 			list.Add( new ListMoves(x,y) );
-						
+
 			do
-			{								
+			{
 				if ( Move_Possible( board, x, y ) )
-				{										
-					int move = board[x,y];					
+				{
+					int move = board[x,y];
 					board[x,y]++;
 					x += moves[move,0];
-					y += moves[move,1];			
-					list.Add( new ListMoves(x,y) );							
+					y += moves[move,1];
+					list.Add( new ListMoves(x,y) );
 				}
 				else
-				{					
+				{
 					if ( board[x,y] >= 8 )
-					{						
-						board[x,y] = 0;																
-						list.RemoveAt(list.Count-1);						
+					{
+						board[x,y] = 0;
+						list.RemoveAt(list.Count-1);
 						if ( list.Count == 0 )
 						{
 							Console.WriteLine( "No solution found." );
 							return;
-						}		
+						}
 						x = list[list.Count-1].x;
-						y = list[list.Count-1].y;						
+						y = list[list.Count-1].y;
 					}
 					board[x,y]++;
-				}				
+				}
 			}
 			while( list.Count < N*N );
-			
+
 			int last_x = list[0].x,
 			    last_y = list[0].y;
 			string letters = "ABCDEFGH";
 			for( int i=1; i<list.Count; i++ )
-			{				
+			{
 				Console.WriteLine( string.Format("{0,2}:  ", i) + letters[last_x] + (last_y+1) + " - " + letters[list[i].x] + (list[i].y+1) );
-				
+
 				last_x = list[i].x;
 				last_y = list[i].y;
 			}
 		}
-		
+
 		static bool Move_Possible( int[,] board, int cur_x, int cur_y )
-		{			
-			if ( board[cur_x,cur_y] >= 8 ) 
+		{
+			if ( board[cur_x,cur_y] >= 8 )
 				return false;
-			
+
 			int new_x = cur_x + moves[board[cur_x,cur_y],0],
 			    new_y = cur_y + moves[board[cur_x,cur_y],1];
-			
+
 			if ( new_x >= 0 && new_x < N && new_y >= 0 && new_y < N && board[new_x,new_y] == 0 )
 				return true;
-			
+
 			return false;
 		}
 	}
@@ -1859,7 +1859,7 @@ graph_tours = (graph, max_num_solutions) ->
   visited = (false for node in graph)
   dead_ends = ({} for node in graph)
   tour = [0]
-  
+
   valid_neighbors = (i) ->
     arr = []
     for neighbor in graph[i]
@@ -1867,7 +1867,7 @@ graph_tours = (graph, max_num_solutions) ->
       continue if dead_ends[i][neighbor]
       arr.push neighbor
     arr
-    
+
   next_square_to_visit = (i) ->
     arr = valid_neighbors i
     return null if arr.length == 0
@@ -1881,7 +1881,7 @@ graph_tours = (graph, max_num_solutions) ->
         fewest_neighbors = n
         neighbor = arr[i]
     neighbor
-  
+
   while tour.length > 0
     current_square = tour[tour.length - 1]
     visited[current_square] = true
@@ -1900,7 +1900,7 @@ graph_tours = (graph, max_num_solutions) ->
       dead_ends[doomed_square] = {}
       visited[doomed_square] = false
   complete_tours
-  
+
 
 knight_graph = (board_width) ->
   # Turn the Knight's Tour into a pure graph-traversal problem
@@ -1909,7 +1909,7 @@ knight_graph = (board_width) ->
   index = (i, j) ->
     # index squares from 0 to n*n - 1
     board_width * i + j
-  
+
   reachable_squares = (i, j) ->
     deltas = [
       [ 1,  2]
@@ -1930,29 +1930,29 @@ knight_graph = (board_width) ->
         if 0 <= jj < board_width
           neighbors.push index(ii, jj)
     neighbors
-  
+
   graph = []
   for i in [0...board_width]
-    for j in [0...board_width] 
+    for j in [0...board_width]
       graph[index(i, j)] = reachable_squares i, j
   graph
-  
+
 illustrate_knights_tour = (tour, board_width) ->
   pad = (n) ->
     return " _" if !n?
     return " " + n if n < 10
     "#{n}"
-    
+
   console.log "\n------"
   moves = {}
-  for square, i in tour  
+  for square, i in tour
     moves[square] = i + 1
   for i in [0...board_width]
     s = ''
     for j in [0...board_width]
       s += "  " + pad moves[i*board_width + j]
     console.log s
-    
+
 BOARD_WIDTH = 8
 MAX_NUM_SOLUTIONS = 100000
 
@@ -1967,7 +1967,7 @@ illustrate_knights_tour tours.pop(), BOARD_WIDTH
 
 output
 <lang>
-> time coffee knight.coffee 
+> time coffee knight.coffee
 100000 tours found (showing first and last)
 
 ------
@@ -2248,8 +2248,8 @@ The algorithm uses iterative backtracking and Warnsdorff's heuristic. It can out
 ```lisp
 
 (require 'plot)
-(define *knight-moves* 
-	'((2 . 1)(2 . -1 ) (1 . -2) (-1 . -2  )(-2 . -1) (-2 . 1) (-1 . 2) (1 . 2))) 
+(define *knight-moves*
+	'((2 . 1)(2 . -1 ) (1 . -2) (-1 . -2  )(-2 . -1) (-2 . 1) (-1 . 2) (1 . 2)))
 (define *hit-squares* null)
 (define *legal-moves* null)
 (define *tries* 0)
@@ -2265,7 +2265,7 @@ The algorithm uses iterative backtracking and Warnsdorff's heuristic. It can out
  	   (y (+  (modulo sq n)  (rest k-move))))
  	   (if (and (>= x 0) (< x n) (>= y 0) (< y n))
  	       (list (square x y n))  null)))
- 	       
+
  ;; list of legal destination squares from sq
  (define (legal-moves  sq  k-moves n )
            (if (null? k-moves) null
@@ -2275,12 +2275,12 @@ The algorithm uses iterative backtracking and Warnsdorff's heuristic. It can out
 (define (freedom sq)
 		(for/sum ((dest (vector-ref *legal-moves* sq)))
 				(if (vector-ref *hit-squares* dest) 0 1)))
-				
+
 ;; The chess adage" A knight on the rim is dim" is false here :
 ;; choose to move to square with smallest freedom : Warnsdorf's rule
 (define (square-sort a b)
 	(< (freedom a) (freedom b)))
-				
+
 ;; knight tour engine
 (define (play sq step starter last-one wants-open)
 (set! *tries* (1+ *tries*))
@@ -2289,12 +2289,12 @@ The algorithm uses iterative backtracking and Warnsdorff's heuristic. It can out
 
 		(when (or wants-open ;; cut search iff closed path
 		(and  (< step last-one) (> (freedom starter) 0))) ;; this ensures a closed path
-		
+
 		(for ((target (list-sort square-sort (vector-ref *legal-moves* sq))))
 			 (unless (vector-ref *hit-squares* target)
 			         (play target (1+ step)  starter last-one wants-open))))
 		(vector-set! *hit-squares* sq #f)) ;; unflag used square
-		
+
 (define (show-steps n wants-open)
 	(string-delimiter "")
 	(if wants-open
@@ -2309,7 +2309,7 @@ The algorithm uses iterative backtracking and Warnsdorff's heuristic. It can out
 (define (k-tour (n  8) (starter 0) (wants-open #t))
 (set! *hit-squares* (make-vector (* n n) #f))
 ;; build vector of legal moves for squares 0..n^2-1
-(set! *legal-moves* 
+(set! *legal-moves*
 		(build-vector (* n n) (lambda(sq) (legal-moves sq *knight-moves* n))))
 (set! *tries* 0) ; counter
 	(try
@@ -2326,37 +2326,37 @@ The algorithm uses iterative backtracking and Warnsdorff's heuristic. It can out
 
 (k-tour 8 0 #f)
 ♞-closed-tour: 66 tries.
-0   47  14  31  62  27  12  29 
-15  32  63  54  13  30  57  26 
-48  1   46  61  56  59  28  11 
-33  16  55  50  53  44  25  58 
-2   49  42  45  60  51  10  39 
-17  34  19  52  43  40  7   24 
-20  3   36  41  22  5   38  9  
-35  18  21  4   37  8   23  6  
+0   47  14  31  62  27  12  29
+15  32  63  54  13  30  57  26
+48  1   46  61  56  59  28  11
+33  16  55  50  53  44  25  58
+2   49  42  45  60  51  10  39
+17  34  19  52  43  40  7   24
+20  3   36  41  22  5   38  9
+35  18  21  4   37  8   23  6
 
 (k-tour 20 57)
 ♘-tour: 400 tries.
 31  34  29  104 209 36  215 300 211 38  213 354 343 40  345 386 383 42  1   388
-28  103 32  35  216 299 210 37  214 335 342 39  346 385 382 41  390 387 396 43 
-33  30  105 208 201 308 301 336 323 212 353 340 355 344 391 384 395 0   389 2  
+28  103 32  35  216 299 210 37  214 335 342 39  346 385 382 41  390 387 396 43
+33  30  105 208 201 308 301 336 323 212 353 340 355 344 391 384 395 0   389 2
 102 27  202 219 298 217 322 309 334 341 356 347 358 351 376 381 378 399 44  397
 203 106 207 200 307 228 311 302 337 324 339 352 373 364 379 392 375 394 3   368
-26  101 220 229 218 297 304 321 310 333 348 357 350 359 374 377 380 367 398 45 
-107 204 199 206 227 306 231 312 303 338 325 330 363 372 365 328 393 254 369 4  
+26  101 220 229 218 297 304 321 310 333 348 357 350 359 374 377 380 367 398 45
+107 204 199 206 227 306 231 312 303 338 325 330 363 372 365 328 393 254 369 4
 100 25  122 221 230 233 296 305 320 313 332 349 326 329 360 371 366 251 46  253
 121 108 205 198 145 226 237 232 295 286 319 314 331 362 327 316 255 370 5   178
-24  99  144 123 222 129 234 279 236 281 294 289 318 315 256 361 250 179 252 47 
-109 120 111 130 197 146 225 238 285 278 287 272 293 290 317 180 257 162 177 6  
+24  99  144 123 222 129 234 279 236 281 294 289 318 315 256 361 250 179 252 47
+109 120 111 130 197 146 225 238 285 278 287 272 293 290 317 180 257 162 177 6
 98  23  124 143 128 223 276 235 280 239 282 291 288 265 270 249 176 181 48  161
-115 110 119 112 131 196 147 224 277 284 273 266 271 292 245 258 163 174 7   58 
-22  97  114 125 142 127 140 275 194 267 240 283 264 269 248 175 182 59  160 49 
-87  116 95  118 113 132 195 148 187 274 263 268 191 244 259 246 173 164 57  8  
-96  21  88  133 126 141 150 139 262 193 190 241 260 247 172 183 60  159 50  65 
-77  86  117 94  89  138 135 188 149 186 261 192 171 184 243 156 165 64  9   56 
-20  81  78  85  134 93  90  151 136 189 170 185 242 155 166 61  158 53  66  51 
-79  76  83  18  91  74  137 16  169 72  153 14  167 70  157 12  63  68  55  10 
-82  19  80  75  84  17  92  73  152 15  168 71  154 13  62  69  54  11  52  67  
+115 110 119 112 131 196 147 224 277 284 273 266 271 292 245 258 163 174 7   58
+22  97  114 125 142 127 140 275 194 267 240 283 264 269 248 175 182 59  160 49
+87  116 95  118 113 132 195 148 187 274 263 268 191 244 259 246 173 164 57  8
+96  21  88  133 126 141 150 139 262 193 190 241 260 247 172 183 60  159 50  65
+77  86  117 94  89  138 135 188 149 186 261 192 171 184 243 156 165 64  9   56
+20  81  78  85  134 93  90  151 136 189 170 185 242 155 166 61  158 53  66  51
+79  76  83  18  91  74  137 16  169 72  153 14  167 70  157 12  63  68  55  10
+82  19  80  75  84  17  92  73  152 15  168 71  154 13  62  69  54  11  52  67
 
 ```
 
@@ -2372,7 +2372,7 @@ The algorithm uses iterative backtracking and Warnsdorff's heuristic. It can out
 		(cond ((= 0 step) (rgb 1 0 0)) ;; red starter
 			  ((= last-one step) (rgb 0 1 0)) ;; green end
 			  (else (gray (// step n n))))))
-		
+
 (define  ( k-plot n)
 	(plot-rgb (lambda (x y) (step-color x y n (dim n))) (- n epsilon) (- n epsilon)))
 
@@ -2392,13 +2392,13 @@ Open path on a 24x24 board: [http://www.echolalie.org/echolisp/images/k-tour-24.
 ```elixir
 defmodule Board do
   import Integer, only: [is_odd: 1]
-  
+
   defmodule Cell do
     defstruct [:value, :adj]
   end
-  
+
   @adjacent  [[-1,-2],[-2,-1],[-2,1],[-1,2],[1,2],[2,1],[2,-1],[1,-2]]
-  
+
   defp initialize(rows, cols) do
     board = for i <- 1..rows, j <- 1..cols, into: %{}, do: {{i,j}, true}
     for i <- 1..rows, j <- 1..cols, into: %{} do
@@ -2406,7 +2406,7 @@ defmodule Board do
       {{i,j}, %Cell{value: 0, adj: adj}}
     end
   end
-  
+
   defp solve(board, ij, num, goal) do
     board = Map.update!(board, ij, fn cell -> %{cell | value: num} end)
     if num == goal do
@@ -2424,7 +2424,7 @@ defmodule Board do
          Enum.count(board[k].adj, fn x -> board[x].value == 0 end)
        end)
   end
-  
+
   defp to_string(board, rows, cols) do
     width = to_string(rows * cols) |> String.length
     format = String.duplicate("~#{width}w ", cols)
@@ -2432,7 +2432,7 @@ defmodule Board do
       :io_lib.fwrite format, (for j <- 1..cols, do: board[{i,j}].value)
     end)
   end
-  
+
   def knight_tour(rows, cols, sx, sy) do
     IO.puts "\nBoard (#{rows} x #{cols}), Start: [#{sx}, #{sy}]"
     if is_odd(rows*cols) and is_odd(sx+sy) do
@@ -2500,7 +2500,7 @@ Board (12 x 12), Start: [2, 2]
  54  73  52  77 130 139  70 119 132 137  44  13
  19  50  75  72  17  48 131  68  15  46 135  66
  74  53  18  49  76  71  16  47 136  67  14  45
- 
+
 ```
 
 
@@ -2512,7 +2512,7 @@ Board (12 x 12), Start: [2, 2]
 import List exposing (concatMap, foldl, head,member,filter,length,minimum,concat,map,map2,tail)
 import List.Extra exposing (minimumBy, andThen)
 import String exposing (join)
-import Html as H 
+import Html as H
 import Html.Attributes as HA
 import Html.App exposing (program)
 import Time exposing (Time,every, second)
@@ -2528,7 +2528,7 @@ dt = 0.03
 
 type alias Cell = (Int, Int)
 
-type alias Model = 
+type alias Model =
     { path : List Cell
     , board : List Cell
     }
@@ -2536,7 +2536,7 @@ type alias Model =
 type Msg = NoOp | Tick Time | SetStart Cell
 
 init : (Model,Cmd Msg)
-init = 
+init =
     let board = [0..rowCount-1] `andThen` \r ->
                 [0..colCount-1] `andThen` \c ->
                 [(r, c)]
@@ -2544,26 +2544,26 @@ init =
     in (Model path board, Cmd.none)
 
 view : Model -> H.Html Msg
-view model = 
+view model =
     let
-        showChecker row col = 
+        showChecker row col =
             rect [ x <| toString col
-                 , y <| toString row 
+                 , y <| toString row
                  , width "1"
                  , height "1"
                  , fill <| if (row + col) % 2 == 0 then "blue" else "grey"
                  , onClick <| SetStart (row, col)
                  ]
-                 [] 
+                 []
 
-        showMove (row0,col0) (row1,col1) = 
+        showMove (row0,col0) (row1,col1) =
             line [ x1 <| toString ((toFloat col0) + 0.5)
                  , y1 <| toString ((toFloat row0) + 0.5)
                  , x2 <| toString ((toFloat col1) + 0.5)
                  , y2 <| toString ((toFloat row1) + 0.5)
-                 , style "stroke:yellow;stroke-width:0.05" 
+                 , style "stroke:yellow;stroke-width:0.05"
                  ]
-                 [] 
+                 []
 
         render model =
             let checkers = model.board `andThen` \(r,c) ->
@@ -2575,36 +2575,36 @@ view model =
 
         unvisited = length model.board - length model.path
 
-        center = HA.style [ ( "text-align", "center") ] 
+        center = HA.style [ ( "text-align", "center") ]
 
-    in 
-        H.div 
+    in
+        H.div
           []
           [ H.h2 [center] [H.text "Knight's Tour"]
           , H.h2 [center] [H.text <| "Unvisited count : " ++ toString unvisited ]
           , H.h2 [center] [H.text "(pick a square)"]
-          , H.div 
-              [center] 
-              [ svg 
+          , H.div
+              [center]
+              [ svg
                   [ version "1.1"
                   , width (toString w)
                   , height (toString h)
-                  , viewBox (join " " 
-                               [ toString 0        
-                               , toString 0        
-                               , toString colCount 
+                  , viewBox (join " "
+                               [ toString 0
+                               , toString 0
+                               , toString colCount
                                , toString rowCount ])
-                  ] 
+                  ]
                   [ g [] <| render model]
               ]
-          ] 
+          ]
 
 nextMoves : Model -> Cell -> List Cell
-nextMoves model (stRow,stCol) = 
+nextMoves model (stRow,stCol) =
   let c = [ 1,  2, -1, -2]
 
-      km = c `andThen` \cRow -> 
-           c `andThen` \cCol -> 
+      km = c `andThen` \cRow ->
+           c `andThen` \cCol ->
            if abs(cRow) == abs(cCol) then [] else [(cRow,cCol)]
 
       jumps = List.map (\(kmRow,kmCol) -> (kmRow + stRow, kmCol + stCol)) km
@@ -2612,7 +2612,7 @@ nextMoves model (stRow,stCol) =
   in List.filter (\j -> List.member j model.board && not (List.member j model.path) ) jumps
 
 bestMove : Model -> Maybe Cell
-bestMove model = 
+bestMove model =
     case List.head (model.path) of
         Nothing -> Nothing
         Just mph -> minimumBy (List.length << nextMoves model) (nextMoves model mph)
@@ -2620,9 +2620,9 @@ bestMove model =
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
     let mo = case msg of
-                 SetStart start -> 
-                     {model |  path = [start]} 
-                 Tick t ->  
+                 SetStart start ->
+                     {model |  path = [start]}
+                 Tick t ->
                      case model.path of
                          [] -> model
                          _ -> case bestMove model of
@@ -2632,11 +2632,11 @@ update msg model =
     in (mo, Cmd.none)
 
 subscriptions : Model -> Sub Msg
-subscriptions _ = 
-    Time.every (dt * second) Tick 
+subscriptions _ =
+    Time.every (dt * second) Tick
 
 main =
-  program 
+  program
       { init = init
       , view = view
       , update = update
@@ -3055,7 +3055,7 @@ For f = 1 To tamano
 Next f
 
 Color 15, 0
-Do 
+Do
     n += 1
     tablero(x,y) = n
     Locate 17-y, 3*x: Print Using "###"; n;
@@ -3088,14 +3088,14 @@ Posicion inicial: c3
 
 
   a  b  c  d  e  f  g  h
-  
+
  24 11 22 19 26  9 38 47  8
  21 18 25 10 39 48 27  8  7
  12 23 20 53 28 37 46 49  6
  17 52 29 40 59 50  7 36  5
  30 13 58 51 54 41 62 45  4
  57 16  1 42 63 60 35  6  3
-  2 31 14 55  4 33 44 61  2 
+  2 31 14 55  4 33 44 61  2
  15 56  3 32 43 64  5 34  1
 
 
@@ -3243,20 +3243,20 @@ func knightTour() bool {
 /* Adapted from "Enumerating Knight's Tours using an Ant Colony Algorithm"
 by Philip Hingston and Graham Kendal,
 PDF at http://www.cs.nott.ac.uk/~gxk/papers/cec05knights.pdf. */
-    
+
 package main
 
 import (
     "fmt"
     "math/rand"
-    "sync" 
+    "sync"
     "time"
 )
-    
-const boardSize = 8 
+
+const boardSize = 8
 const nSquares = boardSize * boardSize
 const completeTour = nSquares - 1
-    
+
 // task input: starting square.  These are 1 based, but otherwise 0 based
 // row and column numbers are used througout the program.
 const rStart = 2
@@ -3287,7 +3287,7 @@ func main() {
     // initialize board
     for r := 0; r < boardSize; r++ {
         for c := 0; c < boardSize; c++ {
-            for k := 0; k < 8; k++ { 
+            for k := 0; k < 8; k++ {
                 if _, _, ok := dest(r, c, k); ok {
                     tNet[(r*boardSize+c)*8+k] = 1e-6
                 }
@@ -3352,14 +3352,14 @@ func main() {
                 tNew[(move.r*boardSize+move.c)*8+move.k] += move.t
             }
         }
-    
+
         // update pheromone amounts on network, reset accumulator
         for i, tn := range tNew {
             tNet[i] += tn
             tNew[i] = 0
         }
     }
-}   
+}
 
 type square struct {
     r, c int
@@ -3529,86 +3529,86 @@ This implements Warnsdorff's algorithm using unordered sets.
 * Tie breaking is selectable with 3 variants supplied (first in list, random, and Roth's distance heuristic).
 * A debug log can be generated showing the moves and choices considered for tie breaking.
 
-The algorithm doesn't always generate a complete tour. 
+The algorithm doesn't always generate a complete tour.
 
 ```Icon
 link printf
 
 procedure main(A)
 ShowTour(KnightsTour(Board(8)))
-end 
+end
 
 procedure KnightsTour(B,sq,tbrk,debug)  #: Warnsdorff’s algorithm
 
 /B := Board(8)                          # create 8x8 board if none given
 /sq := ?B.files || ?B.ranks             # random initial position (default)
 sq2fr(sq,B)                             # validate initial sq
-if type(tbrk) == "procedure" then  
+if type(tbrk) == "procedure" then
    B.tiebreak := tbrk                   # override tie-breaker
 if \debug then write("Debug log : move#, move : (accessibility) choices")
 
 choices := []                           # setup to track moves and choices
-every (movesto := table())[k := key(B.movesto)] := copy(B.movesto[k])  
+every (movesto := table())[k := key(B.movesto)] := copy(B.movesto[k])
 
 B.tour := []                            # new tour
 repeat {
    put(B.tour,sq)                       # record move
-    
+
    ac := 9                              # accessibility counter > maximum
    while get(choices)                   # empty choices for tiebreak
    every delete(movesto[nextsq := !movesto[sq]],sq) do {  # make sq unavailable
       if ac >:= *movesto[nextsq] then   # reset to lower accessibility count
-         while get(choices)             # . re-empty choices      
+         while get(choices)             # . re-empty choices
       if ac = *movesto[nextsq] then
          put(choices,nextsq)            # keep least accessible sq and any ties
-      } 
-   
+      }
+
    if \debug then {                     # move#, move, (accessibility), choices
-      writes(sprintf("%d. %s : (%d) ",*B.tour,sq,ac)) 
-      every writes(" ",!choices|"\n")                 
+      writes(sprintf("%d. %s : (%d) ",*B.tour,sq,ac))
+      every writes(" ",!choices|"\n")
       }
    sq := B.tiebreak(choices,B) | break  # choose next sq until out of choices
    }
-return B  
+return B
 end
 
 procedure RandomTieBreaker(S,B)                   # random choice
-return ?S                   
+return ?S
 end
 
 procedure FirstTieBreaker(S,B)                    # first one in the list
-return !S                   
+return !S
 end
 
 procedure RothTieBreaker(S,B)                    # furthest from the center
 if *S = 0 then fail                              # must fail if []
 every fr := sq2fr(s := !S,B) do {
    d := sqrt(abs(fr[1]-1 - (B.N-1)*0.5)^2 + abs(fr[2]-1 - (B.N-1)*0.5)^2)
-   if (/md := d) | ( md >:= d) then msq := s     # save sq 
+   if (/md := d) | ( md >:= d) then msq := s     # save sq
    }
-return msq  
+return msq
 end
 
 record board(N,ranks,files,movesto,tiebreak,tour)  # structure for board
 
-procedure Board(N)                      #: create board 
+procedure Board(N)                      #: create board
 N := *&lcase >=( 0 < integer(N)) | stop("N=",image(N)," is out of range.")
-B := board(N,[],&lcase[1+:N],table(),RandomTieBreaker)       # setup           
+B := board(N,[],&lcase[1+:N],table(),RandomTieBreaker)       # setup
 every put(B.ranks,N to 1 by -1)                              # add rank #s
 every sq := !B.files || !B.ranks do                          # for each sq add
    every insert(B.movesto[sq] := set(), KnightMoves(sq,B))   # moves to next sq
 return B
 end
 
-procedure sq2fr(sq,B)                   #: return numeric file & rank 
+procedure sq2fr(sq,B)                   #: return numeric file & rank
 f := find(sq[1],B.files)                | runerr(205,sq)
 r := integer(B.ranks[sq[2:0]])          | runerr(205,sq)
 return [f,r]
 end
 
 procedure KnightMoves(sq,B)         #: generate all Kn accessible moves from sq
-fr := sq2fr(sq,B) 
-every ( i := -2|-1|1|2 ) & ( j := -2|-1|1|2 ) do 
+fr := sq2fr(sq,B)
+every ( i := -2|-1|1|2 ) & ( j := -2|-1|1|2 ) do
    if (abs(i)~=abs(j)) & (0<(ri:=fr[2]+i)<=B.N) & (0<(fj:=fr[1]+j)<=B.N) then
       suspend B.files[fj]||B.ranks[ri]
 end
@@ -3619,7 +3619,7 @@ write("Tour length = ",*B.tour)
 write("Tie Breaker = ",image(B.tiebreak))
 
 every !(squares := list(B.N)) := list(B.N,"-")
-every fr := sq2fr(B.tour[m := 1 to *B.tour],B) do 
+every fr := sq2fr(B.tour[m := 1 to *B.tour],B) do
    squares[fr[2],fr[1]] := m
 
 every (hdr1 := "     ") ||:= right(!B.files,3)
@@ -3636,7 +3636,7 @@ end
 ```
 
 
-The following can be used when debugging to validate the board structure and to image the available moves on the board. 
+The following can be used when debugging to validate the board structure and to image the available moves on the board.
 
 ```Icon
 procedure DumpBoard(B)  #: Dump Board internals
@@ -3644,9 +3644,9 @@ write("Board size=",B.N)
 write("Available Moves at start of tour:", ImageMovesTo(B.movesto))
 end
 
-procedure ImageMovesTo(movesto)  #: image of available moves 
+procedure ImageMovesTo(movesto)  #: image of available moves
 every put(K := [],key(movesto))
-every (s := "\n") ||:= (k := !sort(K)) || " : " do 
+every (s := "\n") ||:= (k := !sort(K)) || " : " do
    every s ||:= " " || (!sort(movesto[k])|"\n")
 return s
 end
@@ -3728,7 +3728,7 @@ ktourw=: monad define
  b=. 1 $~ *:y
  for. i.<:*:y do.
   b=. 0 k}b
-  p=. p,k=. ((i.<./) +/"1 b{~j{M){j=. ({&b # ]) k{M 
+  p=. p,k=. ((i.<./) +/"1 b{~j{M){j=. ({&b # ]) k{M
  end.
  assert. ~:p
  (,~y)$/:p
@@ -3872,14 +3872,14 @@ public class KnightsTour {
 
 
 ```txt
-34 17 20  3 36  7 22  5 
-19  2 35 40 21  4 37  8 
-16 33 18 51 44 39  6 23 
- 1 50 43 46 41 56  9 38 
-32 15 54 61 52 45 24 57 
-49 62 47 42 55 60 27 10 
-14 31 64 53 12 29 58 25 
-63 48 13 30 59 26 11 28 
+34 17 20  3 36  7 22  5
+19  2 35 40 21  4 37  8
+16 33 18 51 44 39  6 23
+ 1 50 43 46 41 56  9 38
+32 15 54 61 52 45 24 57
+49 62 47 42 55 60 27 10
+14 31 64 53 12 29 58 25
+63 48 13 30 59 26 11 28
 ```
 
 ===More efficient non-trackback solution===
@@ -3893,7 +3893,7 @@ import java.util.List;
 
 public class KT {
 
-	private int baseSize = 12; // virtual board size including unreachable out-of-board nodes. i.e. base 12 = 8X8 board	
+	private int baseSize = 12; // virtual board size including unreachable out-of-board nodes. i.e. base 12 = 8X8 board
 	int actualBoardSize = baseSize - 4;
 	private static final int[][] moves = { { 1, -2 }, { 2, -1 }, { 2, 1 }, { 1, 2 }, { -1, 2 }, { -2, 1 }, { -2, -1 },
 			{ -1, -2 } };
@@ -4673,7 +4673,7 @@ A composition of values, drawing on generic abstractions:
 ```txt
 (Board size 8*8)
 
-Route: 
+Route:
 
 e5 -> d7 -> b8 -> a6 -> b4 -> a2 -> c1 -> b3
 a1 -> c2 -> a3 -> b1 -> d2 -> f1 -> h2 -> g4
@@ -4684,7 +4684,7 @@ b6 -> a8 -> c7 -> b5 -> c3 -> d5 -> e3 -> c4
 d6 -> e4 -> c5 -> d3 -> e1 -> g2 -> h4 -> f5
 d4 -> e2 -> f4 -> e6 -> g5 -> f3 -> g1 -> h3
 
-Coverage and order: 
+Coverage and order:
 
   9  6 11 40 23  4 21 42
  12 39  8  5 44 41 24  3
@@ -4735,7 +4735,7 @@ printboard(board)
  0 0 0 0 0 0 0 0
  0 0 0 0 0 0 0 0
  0 0 0 0 0 0 0 0
- 
+
   1 12  9  6  3 14 17 20
  10  7  2 13 18 21  4 15
  31 28 11  8  5 16 19 22
@@ -4875,13 +4875,13 @@ moves = { {1,-2},{2,-1},{2,1},{1,2},{-1,2},{-2,1},{-2,-1},{-1,-2} }
 function Move_Allowed( board, x, y )
     if board[x][y] >= 8 then return false end
 
-    local new_x, new_y = x + moves[board[x][y]+1][1], y + moves[board[x][y]+1][2]    
+    local new_x, new_y = x + moves[board[x][y]+1][1], y + moves[board[x][y]+1][2]
     if new_x >= 1 and new_x <= N and new_y >= 1 and new_y <= N and board[new_x][new_y] == 0 then return true end
-    
+
     return false
 end
 
-		  
+
 board = {}
 for i = 1, N do
     board[i] = {}
@@ -4910,7 +4910,7 @@ repeat
             end
             x, y = lst[#lst][1], lst[#lst][2]
         end
-        board[x][y] = board[x][y] + 1    
+        board[x][y] = board[x][y] + 1
     end
 until #lst == N^2
 
@@ -4932,8 +4932,8 @@ end
 
 knightsTourMoves[start_] :=
   Module[{
-    vertexLabels = (# -> ToString@c[[Quotient[# - 1, 8] + 1]] <>  ToString[Mod[# - 1, 8] + 1]) & /@ Range[64], knightsGraph, 
-       hamiltonianCycle, end}, 
+    vertexLabels = (# -> ToString@c[[Quotient[# - 1, 8] + 1]] <>  ToString[Mod[# - 1, 8] + 1]) & /@ Range[64], knightsGraph,
+       hamiltonianCycle, end},
     knightsGraph = KnightTourGraph[i, i, VertexLabels -> vertexLabels,  ImagePadding -> 15];
     hamiltonianCycle = ((FindHamiltonianCycle[knightsGraph] /. UndirectedEdge -> DirectedEdge) /. labels)[[1]];
     end = Cases[hamiltonianCycle, (x_ \[DirectedEdge] start) :> x][[1]];
@@ -4965,13 +4965,13 @@ knightsTourMoves[start_] :=
   vertexLabels = (# -> ToString@c[[Quotient[# - 1, 8] + 1]] <>  ToString[Mod[# - 1, 8] + 1]) & /@ Range[64]
 
 (* out *)
- {1 -> "a1", 2 -> "a2", 3 -> "a3", 4 -> "a4", 5 -> "a5", 6 -> "a6", 7 -> "a7", 8 -> "a8", 
-  9 -> "b1", 10 -> "b2", 11 -> "b3", 12 -> "b4", 13 -> "b5", 14 -> "b6", 15 -> "b7", 16 -> "b8", 
- 17 -> "c1", 18 -> "c2", 19 -> "c3", 20 -> "c4", 21 -> "c5", 22 -> "c6", 23 -> "c7", 24 -> "c8", 
- 25 -> "d1", 26 -> "d2", 27 -> "d3",  28 -> "d4", 29 -> "d5", 30 -> "d6", 31 -> "d7", 32 -> "d8",  
- 33 -> "e1", 34 -> "e2", 35 -> "e3", 36 -> "e4", 37 -> "e5", 38 -> "e6", 39 -> "e7", 40 -> "e8", 
- 41 -> "f1", 42 -> "f2", 43 -> "f3", 44 -> "f4", 45 -> "f5", 46 -> "f6", 47 -> "f7", 48 -> "f8", 
- 49 -> "g1", 50 -> "g2", 51 -> "g3", 52 -> "g4", 53 -> "g5", 54 -> "g6",55 -> "g7", 56 -> "g8", 
+ {1 -> "a1", 2 -> "a2", 3 -> "a3", 4 -> "a4", 5 -> "a5", 6 -> "a6", 7 -> "a7", 8 -> "a8",
+  9 -> "b1", 10 -> "b2", 11 -> "b3", 12 -> "b4", 13 -> "b5", 14 -> "b6", 15 -> "b7", 16 -> "b8",
+ 17 -> "c1", 18 -> "c2", 19 -> "c3", 20 -> "c4", 21 -> "c5", 22 -> "c6", 23 -> "c7", 24 -> "c8",
+ 25 -> "d1", 26 -> "d2", 27 -> "d3",  28 -> "d4", 29 -> "d5", 30 -> "d6", 31 -> "d7", 32 -> "d8",
+ 33 -> "e1", 34 -> "e2", 35 -> "e3", 36 -> "e4", 37 -> "e5", 38 -> "e6", 39 -> "e7", 40 -> "e8",
+ 41 -> "f1", 42 -> "f2", 43 -> "f3", 44 -> "f4", 45 -> "f5", 46 -> "f6", 47 -> "f7", 48 -> "f8",
+ 49 -> "g1", 50 -> "g2", 51 -> "g3", 52 -> "g4", 53 -> "g5", 54 -> "g6",55 -> "g7", 56 -> "g8",
  57 -> "h1", 58 -> "h2", 59 -> "h3", 60 -> "h4", 61 -> "h5", 62 -> "h6",  63 -> "h7", 64 -> "h8"}
 
 
@@ -5029,7 +5029,7 @@ While a little slower than using Warnsdorff this solution is interesting:
 
 <lang>
 /*Knights.mathprog
-    
+
   Find a Knights Tour
 
   Nigel_Galloway
@@ -5071,7 +5071,7 @@ solve;
 for {r in ROWSR} {
     for {c in COLSR} {
         printf " %2d", sum{z in ZBLSR} BR[r,c,z]*z;
-    }                                                                     
+    }
     printf "\n";
 }
 data;
@@ -5083,11 +5083,11 @@ param
 Iz: 1   2   3   4  5 :=
  1  .   .   .   .  .
  2  .  19   2   .  .
- 3  .   .   .   .  . 
+ 3  .   .   .   .  .
  4  .   .   .   .  .
  5  .   .   .   .  .
  ;
- 
+
  end;
 
 ```
@@ -5157,7 +5157,7 @@ and
 
 <lang>
 /*Knights.mathprog
-    
+
   Find a Knights Tour
 
   Nigel_Galloway
@@ -5199,7 +5199,7 @@ solve;
 for {r in ROWSR} {
     for {c in COLSR} {
         printf " %2d", sum{z in ZBLSR} BR[r,c,z]*z;
-    }                                                                     
+    }
     printf "\n";
 }
 data;
@@ -5218,7 +5218,7 @@ Iz: 1   2   3   4  5  6  7  8 :=
  7  .  58   .   .  .  .  .  .
  8  .   .   .   .  .  .  .  .
  ;
- 
+
  end;
 
 ```
@@ -5311,7 +5311,7 @@ Knight's tour using [[wp:Knight's_tour#Warnsdorff.27s_algorithm|Warnsdorffs algo
 ```perl
 use strict;
 use warnings;
-# Find a knight's tour 
+# Find a knight's tour
 
 my @board;
 
@@ -5361,9 +5361,9 @@ print "\n";
 # And the board, with move numbers
 for (my $i=0; $i<8; ++$i) {
   for (my $j=0; $j<8; ++$j) {
-    # Assumes (1) ANSI sequences work, and (2) output 
+    # Assumes (1) ANSI sequences work, and (2) output
     # is light text on a dark background.
-    print "\e[7m" if ($i%2==$j%2); 
+    print "\e[7m" if ($i%2==$j%2);
     printf " %2d", $board[$i][$j];
     print "\e[0m";
   }
@@ -5374,8 +5374,8 @@ for (my $i=0; $i<8; ++$i) {
 sub possible_moves
 {
   my ($i, $j) = @_;
-  return grep { $_->[0] >= 0 && $_->[0] < 8 
-                    && $_->[1] >= 0 && $_->[1] < 8 
+  return grep { $_->[0] >= 0 && $_->[0] < 8
+                    && $_->[1] >= 0 && $_->[1] < 8
                     && !$board[$_->[0]][$_->[1]] } (
                     [$i-2,$j-1], [$i-2,$j+1], [$i-1,$j-2], [$i-1,$j+2],
                     [$i+1,$j-2], [$i+1,$j+2], [$i+2,$j-1], [$i+2,$j+1]);
@@ -5399,7 +5399,7 @@ sub from_algebraic
 ```
 
 
-Sample output (start square c3): 
+Sample output (start square c3):
 
 [[File:perl_knights_tour.png]]
 
@@ -5415,7 +5415,7 @@ my @board;
 my $I = 8;
 my $J = 8;
 my $F = $I*$J > 99 ?? "%3d" !! "%2d";
- 
+
 # Choose starting position - may be passed in on command line; if
 # not, choose random square.
 my ($i, $j);
@@ -5426,16 +5426,16 @@ if my $sq = shift @*ARGS {
 else {
   ($i, $j) = (^$I).pick, (^$J).pick;
 }
- 
+
 # Move sequence
 my @moves = ();
- 
+
 for 1 .. $I * $J -> $move {
   # Record current move
   push @moves, to_algebraic($i,$j);
   # @board[$i] //= [];	 # (uncomment if autoviv is broken)
   @board[$i][$j] = $move;
- 
+
   # Find move with the smallest degree
   my @min = (9);
   for possible_moves($i,$j) -> @target {
@@ -5443,43 +5443,43 @@ for 1 .. $I * $J -> $move {
       my $next = possible_moves($ni,$nj);
       @min = $next, $ni, $nj if $next < @min[0];
   }
- 
+
   # And make it
   ($i, $j) = @min[1,2];
 }
- 
+
 # Print the move list
 for @moves.kv -> $i, $m {
     print ',', $i %% 16 ?? "\n" !! " " if $i;
     print $m;
 }
 say "\n";
- 
+
 # And the board, with move numbers
 for ^$I -> $i {
   for ^$J -> $j {
-    # Assumes (1) ANSI sequences work, and (2) output 
+    # Assumes (1) ANSI sequences work, and (2) output
     # is light text on a dark background.
-    print "\e[7m" if $i % 2 == $j % 2; 
+    print "\e[7m" if $i % 2 == $j % 2;
     printf $F, @board[$i][$j];
     print "\e[0m";
   }
   print "\n";
 }
- 
+
 # Find the list of positions the knight can move to from the given square
 sub possible_moves($i,$j) {
-  grep -> [$ni, $nj] { $ni ~~ ^$I and $nj ~~ ^$J and !@board[$ni][$nj] }, 
+  grep -> [$ni, $nj] { $ni ~~ ^$I and $nj ~~ ^$J and !@board[$ni][$nj] },
     [$i-2,$j-1], [$i-2,$j+1], [$i-1,$j-2], [$i-1,$j+2],
     [$i+1,$j-2], [$i+1,$j+2], [$i+2,$j-1], [$i+2,$j+1];
 }
- 
+
 # Return the algebraic name of the square identified by the coordinates
 # i=rank, 0=black's home row; j=file, 0=white's queen's rook
 sub to_algebraic($i,$j) {
     chr(ord('a') + $j) ~ ($I - $i);
 }
- 
+
 # Return the coordinates matching the given algebraic name
 sub from_algebraic($square where /^ (<[a..z]>) (\d+) $/) {
    $I - $1, ord(~$0) - ord('a');
@@ -5528,7 +5528,7 @@ integer nrow,ncol
 end procedure
 
 atom t0 = time()
-integer tries = 0 
+integer tries = 0
 atom t1 = time()+1
 function solve(integer row, integer col, integer n)
 integer nrow, ncol
@@ -5578,7 +5578,7 @@ if solve(1,nchars,2) then
 else
     puts(1,"no solutions found\n")
 end if
- 
+
 {} = wait_key()
 ```
 
@@ -5909,7 +5909,7 @@ board_size(8).
 in_board(X*Y) :- board_size(N), between(1,N,Y), between(1,N,X).
 
 
-% express jump-graph in dynamic "move"-rules 
+% express jump-graph in dynamic "move"-rules
 make_graph :-
     findall(_, (in_board(P), assert_moves(P)), _).
 
@@ -5939,7 +5939,7 @@ hamiltonian(P,N,Ps,Res) :-
     N =:= 1 -> Res = [P|Ps]
   ; warnsdorff(Ps,P,Q), succ(M,N)
   , hamiltonian(Q,M,[P|Ps],Res)
-  .    
+  .
     % where
     warnsdorff(Ps,P,Q) :-
         moves(Ps,P,Qs), maplist(next_moves(Ps), Qs, Xs)
@@ -5949,8 +5949,8 @@ hamiltonian(P,N,Ps,Res) :-
 
     moves(Ps,P,Qs) :-
         findall(Q, (move(P,Q), \+ member(Q,Ps)), Qs).
-        
-        
+
+
 
 show_path(Pn)  :- findall(_, (in_board(P), show_cell(Pn,P)), _).
     % where
@@ -5985,7 +5985,7 @@ Knights tour using [[wp:Knight's_tour#Warnsdorff.27s_algorithm|Warnsdorffs algor
 import copy
 
 boardsize=6
-_kmoves = ((2,1), (1,2), (-1,2), (-2,1), (-2,-1), (-1,-2), (1,-2), (2,-1)) 
+_kmoves = ((2,1), (1,2), (-1,2), (-2,1), (-2,-1), (-1,-2), (1,-2), (2,-1))
 
 
 def chess2index(chess, boardsize=boardsize):
@@ -5994,7 +5994,7 @@ def chess2index(chess, boardsize=boardsize):
     x = ord(chess[0]) - ord('a')
     y = boardsize - int(chess[1:])
     return (x, y)
-    
+
 def boardstring(board, boardsize=boardsize):
     r = range(boardsize)
     lines = ''
@@ -6002,7 +6002,7 @@ def boardstring(board, boardsize=boardsize):
         lines += '\n' + ','.join('%2i' % board[(x,y)] if board[(x,y)] else '  '
                                  for x in r)
     return lines
-    
+
 def knightmoves(board, P, boardsize=boardsize):
     Px, Py = P
     kmoves = set((Px+x, Py+y) for x,y in _kmoves)
@@ -6021,7 +6021,7 @@ def accessibility(board, P, boardsize=boardsize):
         access.append( (len(knightmoves(brd, pos, boardsize=boardsize)), pos) )
         brd[pos] = 0
     return access
-    
+
 def knights_tour(start, boardsize=boardsize, _debug=False):
     board = {(x,y):0 for x in range(boardsize) for y in range(boardsize)}
     move = 1
@@ -6138,55 +6138,55 @@ Based on a slight modification of [[wp:Knight%27s_tour#Warnsdorff.27s_rule|Warns
 
 ```r
 #!/usr/bin/Rscript
- 
+
 # M x N Chess Board.
 M = 8; N = 8; board = matrix(0, nrow = M, ncol = N)
- 
+
 # Get/Set value on a board position.
 getboard = function (position)    { board[position[1], position[2]] }
 setboard = function (position, x) { board[position[1], position[2]] <<- x }
- 
+
 # (Relative) Hops of a Knight.
 hops = cbind(c(-2, -1), c(-1, -2), c(+1, -2), c(+2, -1),
              c(+2, +1), c(+1, +2), c(-1, +2), c(-2, +1))
- 
+
 # Validate a move.
 valid = function (move) {
     all(1 <= move & move <= c(M, N)) && (getboard(move) == 0)
 }
- 
+
 # Moves possible from a given position.
 explore = function (position) {
     moves = position + hops
     cbind(moves[, apply(moves, 2, valid)])
 }
- 
+
 # Possible moves sorted according to their Wornsdorff cost.
 candidates = function (position) {
     moves = explore(position)
- 
+
     # No candidate moves available.
     if (ncol(moves) == 0) { return(moves) }
- 
+
     wcosts = apply(moves, 2, function (position) { ncol(explore(position)) })
     cbind(moves[, order(wcosts)])
 }
- 
+
 # Recursive function for touring the chess board.
 knightTour = function (position, moveN) {
- 
+
     # Tour Complete.
     if (moveN > (M * N)) {
         print(board)
         quit()
     }
- 
+
     # Available moves.
-    moves = candidates(position) 
- 
+    moves = candidates(position)
+
     # None possible. Backtrack.
     if (ncol(moves) == 0) { return() }
- 
+
     # Make a move, and continue the tour.
     apply(moves, 2, function (position) {
                         setboard(position, moveN)
@@ -6194,16 +6194,16 @@ knightTour = function (position, moveN) {
                         setboard(position, 0)
                     })
 }
- 
+
 # User Input: Starting position (in algebraic notation).
 square = commandArgs(trailingOnly = TRUE)
- 
+
 # Convert into board co-ordinates.
 row      = M + 1 - as.integer(substr(square, 2, 2))
 ascii    = function (ch) { as.integer(charToRaw(ch)) }
 col      = 1 + ascii(substr(square, 1, 1)) - ascii('a')
 position = c(row, col)
- 
+
 # Begin tour.
 setboard(position, 1); knightTour(position, 2)
 ```
@@ -6213,7 +6213,7 @@ Output:
 
 ```txt
 
-./knight.R e3 
+./knight.R e3
 
      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
 [1,]    6    9   24   55   62   11   26   29
@@ -6284,7 +6284,7 @@ This REXX version is modeled after the XPL0 example.
 
 The size of the chessboard may be specified as well as the knight's starting position.
 
-This is an   ''open tour''   solution.   (See this task's   ''discussion''   page for an explanation, the section is   ''The 7x7 problem''.) 
+This is an   ''open tour''   solution.   (See this task's   ''discussion''   page for an explanation, the section is   ''The 7x7 problem''.)
 
 ```rexx
 /*REXX program solves the  knight's tour  problem   for a  (general)   NxN   chessboard.*/
@@ -6327,7 +6327,7 @@ move: procedure expose @. Kr. Kf. NN;    parse arg #,rank,file  /*obtain move,ra
       return 0                                                  /*tour is not possible. */
 ```
 
-'''output'''   when using the default input: 
+'''output'''   when using the default input:
 
 ```txt
 
@@ -6365,7 +6365,7 @@ class Board
     def self.end=(end_val)
       @@end = end_val
     end
-    
+
     def try(seq_num)
       self.value = seq_num
       return true  if seq_num==@@end
@@ -6377,12 +6377,12 @@ class Board
       self.value = 0
       false
     end
-    
+
     def wdof(adj)
       adj.count {|cell| cell.value.zero?}
     end
   end
-  
+
   def initialize(rows, cols)
     @rows, @cols = rows, cols
     unless defined? ADJACENT                      # default move (Knight)
@@ -6402,7 +6402,7 @@ class Board
     Cell.end = rows * cols
     @format = " %#{(rows * cols).to_s.size}d"
   end
-  
+
   def solve(sx, sy)
     if (@rows*@cols).odd? and (sx+sy).odd?
       puts "No solution"
@@ -6410,7 +6410,7 @@ class Board
       puts (@board[sx][sy].try(1) ? to_s : "No solution")
     end
   end
-  
+
   def to_s
     (0...@rows).map do |x|
       (0...@cols).map{|y| @format % @board[x][y].value}.join
@@ -6606,14 +6606,14 @@ fn main() {
 
 Board size: 8
 Starting position: (3, 1)
- 23  20   3  32  25  10   5   8 
-  2  33  24  21   4   7  26  11 
- 19  22  51  34  31  28   9   6 
- 50   1  40  29  54  35  12  27 
- 41  18  55  52  61  30  57  36 
- 46  49  44  39  56  53  62  13 
- 17  42  47  60  15  64  37  58 
- 48  45  16  43  38  59  14  63 
+ 23  20   3  32  25  10   5   8
+  2  33  24  21   4   7  26  11
+ 19  22  51  34  31  28   9   6
+ 50   1  40  29  54  35  12  27
+ 41  18  55  52  61  30  57  36
+ 46  49  44  39  56  53  62  13
+ 17  42  47  60  15  64  37  58
+ 48  45  16  43  38  59  14  63
 
 ```
 
@@ -6664,7 +6664,7 @@ a1b3a5b7c5a4b2c4a3b1c3a2b4a6b8c6a7b5c7a8b6c8d6e4d2f1e3c2d4e2c1d3e1g2f4d5e7g8h6f5
  ;;renew when havn't conquered the world.
  (define (renew position)
   (define possible
-   (let ((rules (list (+ (* 2 Y) 1 position) 
+   (let ((rules (list (+ (* 2 Y) 1 position)
                       (+ (* 2 Y) -1 position)
                       (+ (* -2 Y) 1 position)
                       (+ (* -2 Y) -1 position)
@@ -6679,16 +6679,16 @@ a1b3a5b7c5a4b2c4a3b1c3a2b4a6b8c6a7b5c7a8b6c8d6e4d2f1e3c2d4e2c1d3e1g2f4d5e7g8h6f5
           (set! counter (- counter 1))
           (car dictionary))
    (begin (set! dictionary (cons (car possible) dictionary))
-          (set! forbiddened dictionary) 
+          (set! forbiddened dictionary)
           (set! counter (+ counter 1))
           (car possible))))
 ;;go to search
 (define (go position)
  (if (= counter (* X Y))
-  (begin 
+  (begin
   (set! result (reverse dictionary))
   (display (map (lambda(x) (decode x)) result)))
-  (go (renew position)))) 
+  (go (renew position))))
 
 ```
 
@@ -6697,7 +6697,7 @@ a1b3a5b7c5a4b2c4a3b1c3a2b4a6b8c6a7b5c7a8b6c8d6e4d2f1e3c2d4e2c1d3e1g2f4d5e7g8h6f5
 ```txt
 
  (go 35)
-((6 . 4) (4 . 5) (6 . 6) (4 . 7) (7 . 0) (5 . 1) (7 . 2) (5 . 3) (7 . 4) (5 . 5) (7 . 6) (5 . 7) (4 . 0) (6 . 1) (4 . 2) (6 . 3) (4 . 4) (6 . 5) (4 . 6) (6 . 7) (5 . 0) (7 . 1) (5 . 2) (7 . 3) (5 . 4) (7 . 5) (5 . 6) (7 . 7) (6 . 0) (4 . 1) (6 . 2) (4 . 3) (2 . 4) (0 . 5) (2 . 6) (0 . 7) (3 . 0) (1 . 1) (3 . 2) (1 . 3) (3 . 4) (1 . 5) (3 . 6) (1 . 7) (0 . 0) (2 . 1) (0 . 2) (2 . 3) (0 . 4) (2 . 5) (0 . 6) (2 . 7) (1 . 0) (3 . 1) (1 . 2) (3 . 3) (1 . 4) (3 . 5) (1 . 6) (3 . 7) (2 . 0) (0 . 1) (2 . 2)) 
+((6 . 4) (4 . 5) (6 . 6) (4 . 7) (7 . 0) (5 . 1) (7 . 2) (5 . 3) (7 . 4) (5 . 5) (7 . 6) (5 . 7) (4 . 0) (6 . 1) (4 . 2) (6 . 3) (4 . 4) (6 . 5) (4 . 6) (6 . 7) (5 . 0) (7 . 1) (5 . 2) (7 . 3) (5 . 4) (7 . 5) (5 . 6) (7 . 7) (6 . 0) (4 . 1) (6 . 2) (4 . 3) (2 . 4) (0 . 5) (2 . 6) (0 . 7) (3 . 0) (1 . 1) (3 . 2) (1 . 3) (3 . 4) (1 . 5) (3 . 6) (1 . 7) (0 . 0) (2 . 1) (0 . 2) (2 . 3) (0 . 4) (2 . 5) (0 . 6) (2 . 7) (1 . 0) (3 . 1) (1 . 2) (3 . 3) (1 . 4) (3 . 5) (1 . 6) (3 . 7) (2 . 0) (0 . 1) (2 . 2))
 
 ```
 
@@ -6712,7 +6712,7 @@ Knights tour using [[wp:Knight's_tour#Warnsdorff.27s_rule|Warnsdorffs rule]] (No
 import <Utilities/Sequence.sl>;
 import <Utilities/Conversion.sl>;
 
-main(args(2)) := 
+main(args(2)) :=
 	let
 		N := stringToInt(args[1]) when size(args) > 0 else 8;
 		M := stringToInt(args[2]) when size(args) > 1 else N;
@@ -6729,7 +6729,7 @@ potentialMoves := [[2,1], [2,-1], [1,2], [1,-2], [-1,2], [-1,-2], [-2,1], [-2,-1
 
 printRow(row(1), spacing) := join(printSquare(row, spacing)) ++ "\n";
 
-printSquare(val, spacing) := 
+printSquare(val, spacing) :=
 	let
 		str := toString(val);
 	in
@@ -6749,7 +6749,7 @@ tour(board(2), current(1), move) :=
 validMove(board(2), position(1)) :=
 	(position when board[position[1], position[2]] = 0)
 		when position[1] >= 1 and position[1] <= size(board) and position[2] >= 1 and position[2] <= size(board);
-		
+
 minPosition(x(1)) := minPositionHelper(x, 2, 1, x[1]);
 minPositionHelper(x(1), i, minPos, minVal) :=
 	minPos when i > size(x) else
@@ -7021,13 +7021,13 @@ b.printBoard()
 
 ```txt
 Completed tour
-23 20 3 32 25 10 5 8 
-2 33 24 21 4 7 26 11 
-19 22 51 34 31 28 9 6 
-50 1 40 29 54 35 12 27 
-41 18 55 52 61 30 57 36 
-46 49 44 39 56 53 62 13 
-17 42 47 60 15 64 37 58 
+23 20 3 32 25 10 5 8
+2 33 24 21 4 7 26 11
+19 22 51 34 31 28 9 6
+50 1 40 29 54 35 12 27
+41 18 55 52 61 30 57 36
+46 49 44 39 56 53 62 13
+17 42 47 60 15 64 37 58
 48 45 16 43 38 59 14 63
 ```
 
@@ -7264,14 +7264,14 @@ Example output:
 ```txt
 
 Starting square (1-8,1-8): 1 1
- 1 38 59 36 43 48 57 52 
-60 35  2 49 58 51 44 47 
-39 32 37 42  3 46 53 56 
-34 61 40 27 50 55  4 45 
-31 10 33 62 41 26 23 54 
-18 63 28 11 24 21 14  5 
- 9 30 19 16  7 12 25 22 
-64 17  8 29 20 15  6 13 
+ 1 38 59 36 43 48 57 52
+60 35  2 49 58 51 44 47
+39 32 37 42  3 46 53 56
+34 61 40 27 50 55  4 45
+31 10 33 62 41 26 23 54
+18 63 28 11 24 21 14  5
+ 9 30 19 16  7 12 25 22
+64 17  8 29 20 15  6 13
 
 ```
 
@@ -7289,21 +7289,21 @@ First we build a generic package for solving any kind of tour over the chess boa
   xmlns:fn="http://www.w3.org/2005/xpath-functions"
   xmlns:tour="http://www.seanbdurkin.id.au/tour"
   name="tour:tours">
-<xsl:stylesheet>  
+<xsl:stylesheet>
   <xsl:function name="tour:manufacture-square"
        as="element(square)" visibility="public">
     <xsl:param name="rank" as="xs:integer" />
     <xsl:param name="file" as="xs:integer" />
     <square file="$file" rank="$rank" />
   </xsl:function>
- 
+
   <xsl:function name="tour:on-board" as="xs:boolean" visibility="public">
     <xsl:param name="rank" as="xs:integer" />
     <xsl:param name="file" as="xs:integer" />
     <xsl:copy-of select="($rank ge 1) and ($rank le 8) and
                          ($file ge 1) and ($file le 8)" />
   </xsl:function>
- 
+
   <xsl:function name="tour:solve-tour" as="item()*" visibility="public">
     <!-- Solves the tour for any specified piece. -->
     <!-- Outputs either a full solution of 64 squares, of if fail,
@@ -7330,14 +7330,14 @@ First we build a generic package for solving any kind of tour over the chess boa
           return if empty( $possible-moves) then $state
                      else fn:fold-left( $try-move, $state, $possible-moves)" />
       </xsl:otherwise>
-    </xsl:choose> 
+    </xsl:choose>
   </xsl:variable></xsl:function>
 </xsl:stylesheet>
- 
+
 <xsl:expose component="function"
   names="tour:manufacture-square tour:on-board tour:solve-tour"
   visibility="public" />
- 
+
 </xsl:package>
 
 ```
@@ -7352,10 +7352,10 @@ And now for the style-sheet to solve the Knight’s tour…
   xmlns:fn="http://www.w3.org/2005/xpath-functions"
   xmlns:tour="http://www.seanbdurkin.id.au/tour"
   exclude-result-prefixes="xsl fn xs tour">
-<xsl:use-package name="tour:tours" />  
-<xsl:output indent="yes" encoding="UTF-8" omit-xml-declaration="yes" />  
+<xsl:use-package name="tour:tours" />
+<xsl:output indent="yes" encoding="UTF-8" omit-xml-declaration="yes" />
 <xsl:mode on-no-match="shallow-copy" streamable="yes"/>
-    
+
 <xsl:template match="knight[square]">
   <xsl:variable name="error">
     <error>Failed to find solution to Knight's Tour.</error>
@@ -7363,26 +7363,26 @@ And now for the style-sheet to solve the Knight’s tour…
   <xsl:copy>
     <xsl:copy-of select="
     let $final-state := tour:solve-tour((
-    function( $piece-position as element(square)) as element(square)*  
-      { (: This function defines a knight's move. :) 
+    function( $piece-position as element(square)) as element(square)*
+      { (: This function defines a knight's move. :)
         let $r0 := number( $piece-position/@rank),
         let $f0 := number( $piece-position/@file),
         for $r in -2..2, $f in -2..2 return
           if (abs($r) + abs($f) eq 3) and
              tour:on-board($r+$r0, $f+$f0) then
             tour:manufacture-square($r+$r0, $f+$f0)
-          else ()       
+          else ()
       }
       , current()/square)),
-     $solution := $final-state/self::square 
+     $solution := $final-state/self::square
     return if count($solution) eq 64 then $solution
            else $error/*" />
   </xsl:copy>
 </xsl:template>
- 
+
 <!-- Add templates for other piece types if you want to solve
      their tours too. Solve by calling tour:solve-tour() .    -->
-      
+
 </xsl:stylesheet>
 
 ```
@@ -7420,9 +7420,9 @@ So an input like this…
 
 
 ```zkl
-   // Use Warnsdorff's rule to perform a knights tour of a 8x8 board in 
+   // Use Warnsdorff's rule to perform a knights tour of a 8x8 board in
    // linear time.
-   // See Pohl, Ira (July 1967), 
+   // See Pohl, Ira (July 1967),
    //   "A method for finding Hamilton paths and Knight's tours"
    //   http://portal.acm.org/citation.cfm?id=363463
    // Uses back tracking as a tie breaker (for the few cases in a 8x8 tour)
@@ -7437,13 +7437,13 @@ class Board{
    fcn isMoveOK(x,y){ (0<=x<8) and (0<=y<8) and Void==board[idx(x,y)] }
    fcn gyrate(x,y,f){   // walk all legal moves from (a,b)
       deltas.pump(List,'wrap([(dx,dy)]){
-         x+=dx; y+=dy; if(isMoveOK(x,y)) f(x,y); else Void.Skip 
+         x+=dx; y+=dy; if(isMoveOK(x,y)) f(x,y); else Void.Skip
       });
    }
    fcn count(x,y){ n:=Ref(0); gyrate(x,y,n.inc); n.value }
    fcn moves(x,y){ gyrate(x,y,fcn(x,y){ T(x,y,count(x,y)) })}
    fcn knightsTour(x=0,y=0,n=1){  // using Warnsdorff's rule
-      board[idx(x,y)]=n; 
+      board[idx(x,y)]=n;
       while(m:=moves(x,y)){
          min:=m.reduce('wrap(pc,[(_,_,c)]){ (pc<c) and pc or c },9);
 	 m=m.filter('wrap([(_,_,c)]){ c==min });  // moves with same min moves
@@ -7459,7 +7459,7 @@ class Board{
          }
 	 else{
 	    x,y=m[0]; n+=1;
-	    board[idx(x,y)]=n; 
+	    board[idx(x,y)]=n;
 	 }
       } //while
       return(n);
@@ -7495,7 +7495,7 @@ b.println();
 Check that a solution for all squares is found:
 
 ```zkl
-[[(x,y); [0..7]; [0..7]; 
+[[(x,y); [0..7]; [0..7];
    { b:=Board(); n:=b.knightsTour(x,y); if(n!=64) b.println(">>>",x,",",y) } ]];
 ```
 

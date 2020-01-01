@@ -66,7 +66,7 @@ BEGIN {
     print("P3\n", s, s, "\n", s - 1)
     # and now we generate pixels as a RGB pair in a relaxed
     # form "R G B\n"
-    for (x = 0; x < s; x++) { 
+    for (x = 0; x < s; x++) {
         for (y = 0; y < s; y++) {
             p = xor(x, y)
             print(0, p, p)
@@ -165,8 +165,8 @@ Must be converted to an image with a seperate program.
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
@@ -242,7 +242,7 @@ public:
 	DeleteDC( hdc );
 	DeleteObject( bmp );
     }
- 
+
     bool create( int w, int h )
     {
 	BITMAPINFO    bi;
@@ -253,49 +253,49 @@ public:
 	bi.bmiHeader.biPlanes      = 1;
 	bi.bmiHeader.biWidth       =  w;
 	bi.bmiHeader.biHeight      = -h;
- 
+
 	HDC dc = GetDC( GetConsoleWindow() );
 	bmp = CreateDIBSection( dc, &bi, DIB_RGB_COLORS, &pBits, NULL, 0 );
 	if( !bmp ) return false;
- 
+
 	hdc = CreateCompatibleDC( dc );
 	SelectObject( hdc, bmp );
 	ReleaseDC( GetConsoleWindow(), dc );
- 
+
 	width = w; height = h;
 	return true;
     }
- 
+
     void clear( BYTE clr = 0 )
     {
 	memset( pBits, clr, width * height * sizeof( DWORD ) );
     }
- 
+
     void setBrushColor( DWORD bClr )
     {
 	if( brush ) DeleteObject( brush );
 	brush = CreateSolidBrush( bClr );
 	SelectObject( hdc, brush );
     }
- 
+
     void setPenColor( DWORD c ) { clr = c; createPen(); }
- 
+
     void setPenWidth( int w )   { wid = w; createPen(); }
- 
+
     void saveBitmap( string path )
     {
 	BITMAPFILEHEADER fileheader;
 	BITMAPINFO       infoheader;
 	BITMAP           bitmap;
 	DWORD            wb;
- 
+
 	GetObject( bmp, sizeof( bitmap ), &bitmap );
 	DWORD* dwpBits = new DWORD[bitmap.bmWidth * bitmap.bmHeight];
- 
+
 	ZeroMemory( dwpBits, bitmap.bmWidth * bitmap.bmHeight * sizeof( DWORD ) );
 	ZeroMemory( &infoheader, sizeof( BITMAPINFO ) );
 	ZeroMemory( &fileheader, sizeof( BITMAPFILEHEADER ) );
- 
+
 	infoheader.bmiHeader.biBitCount = sizeof( DWORD ) * 8;
 	infoheader.bmiHeader.biCompression = BI_RGB;
 	infoheader.bmiHeader.biPlanes = 1;
@@ -303,26 +303,26 @@ public:
 	infoheader.bmiHeader.biHeight = bitmap.bmHeight;
 	infoheader.bmiHeader.biWidth = bitmap.bmWidth;
 	infoheader.bmiHeader.biSizeImage = bitmap.bmWidth * bitmap.bmHeight * sizeof( DWORD );
- 
+
 	fileheader.bfType    = 0x4D42;
 	fileheader.bfOffBits = sizeof( infoheader.bmiHeader ) + sizeof( BITMAPFILEHEADER );
 	fileheader.bfSize    = fileheader.bfOffBits + infoheader.bmiHeader.biSizeImage;
- 
+
 	GetDIBits( hdc, bmp, 0, height, ( LPVOID )dwpBits, &infoheader, DIB_RGB_COLORS );
- 
+
 	HANDLE file = CreateFile( path.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL );
 	WriteFile( file, &fileheader, sizeof( BITMAPFILEHEADER ), &wb, NULL );
 	WriteFile( file, &infoheader.bmiHeader, sizeof( infoheader.bmiHeader ), &wb, NULL );
 	WriteFile( file, dwpBits, bitmap.bmWidth * bitmap.bmHeight * 4, &wb, NULL );
 	CloseHandle( file );
- 
+
 	delete [] dwpBits;
     }
- 
+
     HDC getDC() const     { return hdc; }
     int getWidth() const  { return width; }
     int getHeight() const { return height; }
- 
+
 private:
     void createPen()
     {
@@ -330,7 +330,7 @@ private:
 	pen = CreatePen( PS_SOLID, wid, clr );
 	SelectObject( hdc, pen );
     }
- 
+
     HBITMAP bmp;
     HDC     hdc;
     HPEN    pen;
@@ -484,14 +484,14 @@ IN: rosetta-code.munching-squares
 
 : munching ( -- seq )
     img-data [ (munching) ] map-index B{ } concat-as ;
-    
+
 : <munching-img> ( -- img )
     <image>
     { 256 256 }      >>dim
     BGRA             >>component-order
     ubyte-components >>component-type
     munching         >>bitmap ;
-    
+
 : main ( -- ) <munching-img> "munching.png" save-graphic-image ;
 
 MAIN: main
@@ -554,11 +554,11 @@ void main(void)
 	float scale = iResolution.x / iResolution.y;
 	uv = uv-0.5;
 	uv.y/=scale;
-	
+
 	b    = uv*256.0+256.0;
 	c = 0.0;
-	
-	
+
+
 	for(float i=16.0;i>=1.0;i-=1.0)
 	{
 		p = pow(2.0,i);
@@ -568,23 +568,23 @@ void main(void)
 		{
 			c += p;
 		}
-		
+
 		if(p < b.x)
 		{
 			b.x -= p;
 		}
-		
+
 		if(p < b.y)
 		{
 			b.y -= p;
 		}
-		
+
 	}
-	
+
 	c=mod(c/128.0,1.0);
-	
+
 	color = vec3(sin(c+uv.x*cos(uv.y*1.2)), tan(c+uv.y-0.3)*1.1, cos(c-uv.y+0.9));
-	
+
 	gl_FragColor = vec4(color,1.0);
 }
 ```
@@ -620,7 +620,7 @@ main =
     (BY.pack
        (fmap (fromIntegral . fromEnum) "P5\n256 256\n256\n" ++
         [ x `xor` y
-        | x <- [0 .. 255] 
+        | x <- [0 .. 255]
         , y <- [0 .. 255] ]))
 ```
 
@@ -661,21 +661,21 @@ procedure main(A)   #: XOR graphic
    cmax  := 32768
    wparms := ["Xmas Xor Graphic","g",sprintf("size=%d,%d",wsize),"bg=black"]
    &window := open!wparms | stop("Unable to open window")
- 
+
    every y := 0 to wsize - 1 do
       every x := 0 to wsize - 1 do {
          c := cmax/wsize * iand(wsize-1,ixor(x,y))
          Fg(sprintf("%d,%d,%d",c,cmax-c,0))
          DrawPoint(x,y)
          }
- 
+
   until Event() == &lpress     # wait for left button to quit
   close(&window)
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 
 
@@ -775,7 +775,7 @@ def rgb2rgb:
   def p: (. + 0.5) | floor;  # to nearest integer
   "rgb(\(.red|p),\(.green|p),\(.blue|p))";
 
-def svg(width; height): 
+def svg(width; height):
   "<svg width='\(width // "100%")' height='\(height // "100%")'
            xmlns='http://www.w3.org/2000/svg'>";
 
@@ -791,11 +791,11 @@ def pixel(x; y; color):
 
 def xor_pattern(width; height; rgb1; rgb2):
     # create colour table
-    256 as $size 
+    256 as $size
     | (reduce range(0;$size) as $i
-        ([]; . + [ 
-        {"red":   (rgb1.red + (rgb2.red - rgb1.red) * $i / $size), 
-         "green": (rgb1.green + (rgb2.green - rgb1.green) * $i / $size), 
+        ([]; . + [
+        {"red":   (rgb1.red + (rgb2.red - rgb1.red) * $i / $size),
+         "green": (rgb1.green + (rgb2.green - rgb1.green) * $i / $size),
          "blue":  (rgb1.blue + (rgb2.blue - rgb1.blue) * $i / $size) }])
       )  as $colours
     # create the image
@@ -824,7 +824,7 @@ xor_pattern(384; 384; red; yellow)
 
 ```julia
 using Gtk, Colors, PerceptualColourMaps
- 
+
 function munchingsquares(ctx, w, h)
     extent = min(max(w, h), 256)
     colors = cmap("R1", N=extent)
@@ -835,17 +835,17 @@ function munchingsquares(ctx, w, h)
         fill(ctx)
     end
 end
- 
+
 const can = @GtkCanvas()
 const win = GtkWindow(can, "Munching Squares", 720, 360)
- 
+
 @guarded draw(can) do widget
     ctx = getgc(can)
     h = height(can)
     w = width(can)
     munchingsquares(ctx, w, h)
 end
- 
+
 show(can)
 const cond = Condition()
 endit(w) = notify(cond)
@@ -882,7 +882,7 @@ class XorPattern : JPanel() {
     override fun paint(gg: Graphics) {
         super.paintComponent(gg)
         val g = gg as Graphics2D
-        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, 
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                            RenderingHints.VALUE_ANTIALIAS_ON)
         for (y in 0 until width) {
             for (x in 0 until height) {
@@ -980,7 +980,7 @@ function love.load()
     canvas = love.graphics.newCanvas( wid, hei )
     love.graphics.setCanvas( canvas ); love.graphics.clear()
     love.graphics.setColor( 255, 255, 255 )
-    createPalette(); drawMSquares(); 
+    createPalette(); drawMSquares();
     love.graphics.setCanvas()
 end
 function love.draw()
@@ -996,7 +996,7 @@ end
 ```Mathematica
 ListDensityPlot[
  Table[Table[
-   FromDigits[BitXor[IntegerDigits[x, 2, 8], IntegerDigits[y, 2, 8]], 
+   FromDigits[BitXor[IntegerDigits[x, 2, 8], IntegerDigits[y, 2, 8]],
     2], {x, 0, 255}], {y, 0, 255}]]
 ```
 
@@ -1065,7 +1065,7 @@ Sub BitXor '(i,j)->color
     EndIf
     color=2*color+kk
   EndFor
-EndSub 
+EndSub
 
 Sub Int2Bit 'n->ret
   x=n
@@ -1076,7 +1076,7 @@ Sub Int2Bit 'n->ret
     ret=Text.Append(r,ret)
     x=t
   EndFor
-EndSub 
+EndSub
 ```
 
 {{out}}
@@ -1222,7 +1222,7 @@ my $PPM = open "munching1.ppm", :w orelse .die;
 $PPM.print: qq:to/EOH/;
     P6
     # munching.pgm
-    256 256 
+    256 256
     255
     EOH
 
@@ -1272,7 +1272,7 @@ end function
 
 procedure main()
     IupOpen()
-    
+
     canvas = IupCanvas(NULL)
     IupSetAttribute(canvas, "RASTERSIZE", "250x250")
     IupSetCallback(canvas, "MAP_CB", Icallback("map_cb"))
@@ -1394,9 +1394,9 @@ Procedure drawPattern()
     DrawingMode(#PB_2DDrawing_Gradient)
     CustomGradient(@XorPattern())
     ;specify a gradient pallette from which only specific indexes will be used
-    For i = 1 To #palletteSize 
+    For i = 1 To #palletteSize
       GradientColor(1 / i, i * $BACE9B) ; or alternatively use $BEEFDEAD
-    Next 
+    Next
     Box(0, 0, ImageWidth(0), ImageHeight(0))
   StopDrawing()
 EndProcedure
@@ -1482,7 +1482,7 @@ cols=50                                          /* "     "    " cols  "  "    "
                                                  /*stick a fork in it,  we're all done. */
 ```
 
-Must be converted to an image with a separate program. 
+Must be converted to an image with a separate program.
 
 
 
@@ -1498,7 +1498,7 @@ load "guilib.ring"
 
 paint = null
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("Archimedean spiral")
@@ -1536,8 +1536,8 @@ func draw
                    b = (x ^ y)
                    color = new qcolor()
                    color.setrgb(255 -b,b /2,b,255)
-                   pen.setcolor(color) 
-                   setpen(pen)    
+                   pen.setcolor(color)
+                   setpen(pen)
                    drawpoint(x,w -y -1)
              next
          next
@@ -1568,9 +1568,9 @@ class Pixmap
     size = 256
     colours = Array.new(size) do |i|
       RGBColour.new(
-        (rgb1.red + (rgb2.red - rgb1.red) * i / size), 
-        (rgb1.green + (rgb2.green - rgb1.green) * i / size), 
-        (rgb1.blue + (rgb2.blue - rgb1.blue) * i / size), 
+        (rgb1.red + (rgb2.red - rgb1.red) * i / size),
+        (rgb1.green + (rgb2.green - rgb1.green) * i / size),
+        (rgb1.blue + (rgb2.blue - rgb1.blue) * i / size),
       )
     end
 
@@ -1602,7 +1602,7 @@ for x = 0 to w
     #g "set "; x; " "; w -y -1
   next y
 next x
-render #g 
+render #g
 #g "flush"
 ```
 
@@ -1836,7 +1836,7 @@ Public Class MunchingSquares
         Next i
     End Sub 'Paint
 
-End Class 
+End Class
 ```
 
 {{out}}
@@ -1873,9 +1873,9 @@ SetVid(3);                      \restore normal text mode
 
 ```Yabasic
 w = 256
- 
+
 open window w, w
- 
+
 For x = 0 To w-1
     For y = 0 To w-1
         r =and(xor(x, y), 255)
@@ -1916,5 +1916,5 @@ while(1){ muncher(); Atomic.sleep(3); }
 
 run ImageViewer on foo.ppm and watch it [auto] update as the image changes.
 {{out}}
-Same as the ADA image: 
+Same as the ADA image:
 [[Image:AdaXorPattern.png|Ada Output|200px]]

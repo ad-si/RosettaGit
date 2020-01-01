@@ -14,15 +14,15 @@ tags = []
 
 [[wp:Quaternion|Quaternions]]   are an extension of the idea of   [[Arithmetic/Complex|complex numbers]].
 
-A complex number has a real and complex part,   sometimes written as   <big> <code> a + bi, </code> </big> 
+A complex number has a real and complex part,   sometimes written as   <big> <code> a + bi, </code> </big>
 
 where   <big> <code> a </code> </big>   and   <big> <code> b </code> </big>   stand for real numbers, and   <big> <code> i </code> </big>   stands for the square root of minus 1.
 
-An example of a complex number might be   <big> <code> -3 + 2i, </code> </big>   
+An example of a complex number might be   <big> <code> -3 + 2i, </code> </big>
 
-where the real part,   <big> <code> a </code> </big>   is   <big> <code> '''-3.0''' </code> </big>   and the complex part,   <big> <code> b </code> </big>   is   <big> <code> '''+2.0'''. </code> </big> 
+where the real part,   <big> <code> a </code> </big>   is   <big> <code> '''-3.0''' </code> </big>   and the complex part,   <big> <code> b </code> </big>   is   <big> <code> '''+2.0'''. </code> </big>
 
-A quaternion has one real part and ''three'' imaginary parts,   <big> <code> i, </code> </big>   <big> <code> j, </code> </big>   and   <big> <code> k. </code> </big> 
+A quaternion has one real part and ''three'' imaginary parts,   <big> <code> i, </code> </big>   <big> <code> j, </code> </big>   and   <big> <code> k. </code> </big>
 
 A quaternion might be written as   <big> <code> a + bi + cj + dk. </code> </big>
 
@@ -35,13 +35,13 @@ The order of multiplication is important, as, in general, for two quaternions:
 
 An example of a quaternion might be   <big> <code> 1 +2i +3j +4k </code> </big>
 
-There is a list form of notation where just the numbers are shown and the imaginary multipliers   <big> <code>i, </code> </big>   <big> <code> j, </code> </big>   and   <big> <code> k </code> </big>   are assumed by position. 
+There is a list form of notation where just the numbers are shown and the imaginary multipliers   <big> <code>i, </code> </big>   <big> <code> j, </code> </big>   and   <big> <code> k </code> </big>   are assumed by position.
 
-So the example above would be written as   <big> <code> (1, 2, 3, 4) </code> </big> 
+So the example above would be written as   <big> <code> (1, 2, 3, 4) </code> </big>
 
 
 ;Task:
-Given the three quaternions and their components: <big> 
+Given the three quaternions and their components: <big>
     q  = (1, 2, 3, 4) = (a,<sub> </sub> b,<sub> </sub> c,<sub> </sub> d)
     q<sub>1</sub> = (2, 3, 4, 5) = (a<sub>1</sub>, b<sub>1</sub>, c<sub>1</sub>, d<sub>1</sub>)
     q<sub>2</sub> = (3, 4, 5, 6) = (a<sub>2</sub>, b<sub>2</sub>, c<sub>2</sub>, d<sub>2</sub>) </big>
@@ -49,24 +49,24 @@ And a wholly real number   <big> <code> r = 7. </code> </big>
 
 
 Create functions   (or classes)   to perform simple maths with quaternions including computing:
-# The norm of a quaternion: 
-<big><code><math>= \sqrt{a^2 + b^2 + c^2 + d^2}</math></code></big>  
-# The negative of a quaternion: 
- <big> <code> = (-a, -b, -c, -d)</code> </big> 
-# The conjugate of a quaternion: 
- <big> <code> = ( a, -b, -c, -d)</code> </big> 
-# Addition of a real number   <big> <code> r </code> </big>   and a quaternion   <big> <code> q: </code> </big> 
+# The norm of a quaternion:
+<big><code><math>= \sqrt{a^2 + b^2 + c^2 + d^2}</math></code></big>
+# The negative of a quaternion:
+ <big> <code> = (-a, -b, -c, -d)</code> </big>
+# The conjugate of a quaternion:
+ <big> <code> = ( a, -b, -c, -d)</code> </big>
+# Addition of a real number   <big> <code> r </code> </big>   and a quaternion   <big> <code> q: </code> </big>
  <big> <code> r + q = q + r = (a+r, b, c, d) </code> </big>
-# Addition of two quaternions: 
+# Addition of two quaternions:
  <big> <code> q<sub>1</sub> + q<sub>2</sub> = (a<sub>1</sub>+a<sub>2</sub>, b<sub>1</sub>+b<sub>2</sub>, c<sub>1</sub>+c<sub>2</sub>, d<sub>1</sub>+d<sub>2</sub>) </code> </big>
-# Multiplication of a real number and a quaternion: 
+# Multiplication of a real number and a quaternion:
  <big> <code> qr = rq = (ar, br, cr, dr) </code> </big>
-# Multiplication of two quaternions   <big> <code> q<sub>1</sub> </code> </big>   and   <big><code>q<sub>2</sub> </code> </big>   is given by: 
- <big> <code> ( a<sub>1</sub>a<sub>2</sub> − b<sub>1</sub>b<sub>2</sub> − c<sub>1</sub>c<sub>2</sub> − d<sub>1</sub>d<sub>2</sub>, </code> 
- <code>   a<sub>1</sub>b<sub>2</sub> + b<sub>1</sub>a<sub>2</sub> + c<sub>1</sub>d<sub>2</sub> − d<sub>1</sub>c<sub>2</sub>, </code> 
- <code>   a<sub>1</sub>c<sub>2</sub> − b<sub>1</sub>d<sub>2</sub> + c<sub>1</sub>a<sub>2</sub> + d<sub>1</sub>b<sub>2</sub>, </code> 
+# Multiplication of two quaternions   <big> <code> q<sub>1</sub> </code> </big>   and   <big><code>q<sub>2</sub> </code> </big>   is given by:
+ <big> <code> ( a<sub>1</sub>a<sub>2</sub> − b<sub>1</sub>b<sub>2</sub> − c<sub>1</sub>c<sub>2</sub> − d<sub>1</sub>d<sub>2</sub>, </code>
+ <code>   a<sub>1</sub>b<sub>2</sub> + b<sub>1</sub>a<sub>2</sub> + c<sub>1</sub>d<sub>2</sub> − d<sub>1</sub>c<sub>2</sub>, </code>
+ <code>   a<sub>1</sub>c<sub>2</sub> − b<sub>1</sub>d<sub>2</sub> + c<sub>1</sub>a<sub>2</sub> + d<sub>1</sub>b<sub>2</sub>, </code>
  <code>   a<sub>1</sub>d<sub>2</sub> + b<sub>1</sub>c<sub>2</sub> − c<sub>1</sub>b<sub>2</sub> + d<sub>1</sub>a<sub>2</sub> ) </code> </big>
-# Show that, for the two quaternions   <big> <code> q<sub>1</sub> </code> </big>   and   <big> <code> q<sub>2</sub>: 
+# Show that, for the two quaternions   <big> <code> q<sub>1</sub> </code> </big>   and   <big> <code> q<sub>2</sub>:
  q<sub>1</sub>q<sub>2</sub> &ne; q<sub>2</sub>q<sub>1</sub> </code> </big>
 
 
@@ -128,21 +128,21 @@ package body Quaternions is
    function "+" (Left, Right : Quaternion) return Quaternion is
    begin
       return
-      (  A => Left.A + Right.A, B => Left.B + Right.B, 
+      (  A => Left.A + Right.A, B => Left.B + Right.B,
          C => Left.C + Right.C, D => Left.D + Right.D
       );
    end "+";
    function "-" (Left, Right : Quaternion) return Quaternion is
    begin
       return
-      (  A => Left.A - Right.A, B => Left.B - Right.B, 
+      (  A => Left.A - Right.A, B => Left.B - Right.B,
          C => Left.C - Right.C, D => Left.D - Right.D
       );
    end "-";
    function "*" (Left : Quaternion; Right : Real) return Quaternion is
    begin
       return
-      (  A => Left.A * Right, B => Left.B * Right, 
+      (  A => Left.A * Right, B => Left.B * Right,
          C => Left.C * Right, D => Left.D * Right
       );
    end "*";
@@ -252,7 +252,7 @@ QUAT i=(0, 1, 0, 0),
      j=(0, 0, 1, 0),
      k=(0, 0, 0, 1);
 
-MODE QUATCOSCAL = UNION(INT, SHORT REAL, SHORT INT); 
+MODE QUATCOSCAL = UNION(INT, SHORT REAL, SHORT INT);
 MODE QUATSUBSCAL = UNION(QUATCOSCAL, QUATSCAL);
 
 MODE COMPLSCAL = STRUCT(QUATSCAL r, im);
@@ -269,14 +269,14 @@ PROC quat fix type error = (QUAT quat, []STRING msg)BOOL: (
 );
 
 COMMENT
-For a list of coercions expected in A68 c.f. 
+For a list of coercions expected in A68 c.f.
 * http://rosettacode.org/wiki/ALGOL_68#Coercion_.28casting.29 # ...
 
 Pre-Strong context: Deproceduring, dereferencing & uniting. e.g. OP arguments
-  * soft(deproceduring for assignment), 
-  * weak(dereferencing for slicing and OF selection), 
+  * soft(deproceduring for assignment),
+  * weak(dereferencing for slicing and OF selection),
   * meek(dereferencing for indexing, enquiries and PROC calls),
-  * firm(uniting of OPerators), 
+  * firm(uniting of OPerators),
 Strong context only: widening (INT=>REAL=>COMPL), rowing (REAL=>[]REAL) & voiding
   * strong(widening,rowing,voiding for identities/initialisations, arguments and casts et al)
 Key points:
@@ -291,8 +291,8 @@ There are 4 principle scenerios for most operators:
 +---------------+-------------------------------+-------------------------------+
 |  QUATernion   |  QUAT * SCAL                  |  QUAT * QUAT                  |
 +---------------+-------------------------------+-------------------------------+
-However this is compounded with SUBtypes of the SCALar & isomorphs the QUATernion, 
-e.g. 
+However this is compounded with SUBtypes of the SCALar & isomorphs the QUATernion,
+e.g.
 * SCAL may be a superset of SHORT REAL or INT - a widening coercion is required
 * QUAT may be a superset eg of COMPL or [4]INT
 * QUAT may be a structural isomorph eg of [4]REAL
@@ -423,7 +423,7 @@ CLASSQUAT class quat = (
 );
 
 PRIO INIT = 1;
-OP QUATSCALINIT = (QUATSUBSCAL scal)QUATSCAL: 
+OP QUATSCALINIT = (QUATSUBSCAL scal)QUATSCAL:
   CASE scal IN
     (INT scal): scal,
     (SHORT INT scal): scal,
@@ -432,7 +432,7 @@ OP QUATSCALINIT = (QUATSUBSCAL scal)QUATSCAL:
   ESAC;
 
 OP INIT = (REF QUAT new, SUBQUAT from)REF QUAT:
-  new := 
+  new :=
     CASE from IN
       (QUATSUBSCAL scal):(QUATSCALINIT scal, 0, 0, 0)
       #(COQUAT rijk):(new OF class quat)(LOC QUAT := new, rijk[1], rijk[2], rijk[3], rijk[4]),#
@@ -475,18 +475,18 @@ OP /:= = (REF QUAT a, QUAT b)QUAT: a:=( div OF class quat)(a, b),
 OP + = (QUAT a, b)QUAT:      ( add OF class quat)(LOC QUAT := a, b),
    + = (QUAT a, COQUAT b)QUAT: ( add OF class quat)(LOC QUAT := a, b),
    + = (COQUAT a, QUAT b)QUAT: (radd OF class quat)(LOC QUAT := b, a);
- 
+
 OP - = (QUAT a, b)QUAT:      ( sub OF class quat)(LOC QUAT := a, b),
    - = (QUAT a, COQUAT b)QUAT: ( sub OF class quat)(LOC QUAT := a, b),
    - = (COQUAT a, QUAT b)QUAT:-( sub OF class quat)(LOC QUAT := b, a);
- 
+
 OP * = (QUAT a, b)QUAT:      ( mul OF class quat)(LOC QUAT := a, b),
    * = (QUAT a, COQUAT b)QUAT: ( mul OF class quat)(LOC QUAT := a, b),
    * = (COQUAT a, QUAT b)QUAT: (rmul OF class quat)(LOC QUAT := b, a);
- 
+
 OP / = (QUAT a, b)QUAT:      ( div OF class quat)(LOC QUAT := a, b),
    / = (QUAT a, COQUAT b)QUAT: ( div OF class quat)(LOC QUAT := a, b),
-   / = (COQUAT a, QUAT b)QUAT: 
+   / = (COQUAT a, QUAT b)QUAT:
          ( div OF class quat)(LOC QUAT := QUATINIT 1, a);
 
 PROC quat exp = (QUAT q)QUAT:   (exp OF class quat)(LOC QUAT := q);
@@ -599,7 +599,7 @@ begin
 
     % returns the norm of the specified quaternion                           %
     real procedure normQ ( reference(Quaternion) value q ) ;
-        sqrt( (a(q) * a(q)) + (b(q) * b(q)) + (c(q) * c(q)) + (d(q) * d(q)) ); 
+        sqrt( (a(q) * a(q)) + (b(q) * b(q)) + (c(q) * c(q)) + (d(q) * d(q)) );
 
     % returns the negative of the specified quaternion                       %
     reference(Quaternion) procedure negQ ( reference(Quaternion) value q ) ;
@@ -766,7 +766,7 @@ Conjugate(q) {
 
 AddR(q, r) {
 	a := []
-	for k, v in q 
+	for k, v in q
 		a[A_Index] := v + (A_Index = 1 ? r : 0)
 	return a
 }
@@ -887,7 +887,7 @@ Although BBC BASIC doesn't have native support for quaternions its array arithme
       q1() = 2, 3, 4, 5
       q2() = 3, 4, 5, 6
       r = 7
-      
+
       PRINT "q = " FNq_show(q())
       PRINT "q1 = " FNq_show(q1())
       PRINT "q2 = " FNq_show(q2())
@@ -902,25 +902,25 @@ Although BBC BASIC doesn't have native support for quaternions its array arithme
       t() = q1() : PROCq_mul(t(),q2()) : PRINT "q1q2 = " FNq_show(t())
       t() = q2() : PROCq_mul(t(),q1()) : PRINT "q2q1 = " FNq_show(t())
       END
-      
+
       DEF FNq_norm(q()) = MOD(q())
-      
+
       DEF PROCq_neg(q()) : q() *= -1 : ENDPROC
-      
+
       DEF PROCq_conj(q()) : q() *= -1 : q(0) *= -1 : ENDPROC
-      
+
       DEF PROCq_addreal(q(), r) : q(0) += r : ENDPROC
-      
+
       DEF PROCq_add(q(), r()) : q() += r() : ENDPROC
-      
+
       DEF PROCq_mulreal(q(), r) : q() *= r : ENDPROC
-      
+
       DEF PROCq_mul(q(), r()) : LOCAL s() : DIM s(3,3)
       s() = r(0), -r(1), -r(2), -r(3), r(1), r(0),  r(3), -r(2), \
       \     r(2), -r(3),  r(0),  r(1), r(3), r(2), -r(1),  r(0)
       q() = s() . q()
       ENDPROC
-      
+
       DEF FNq_show(q()) : LOCAL i%, a$ : a$ = "("
       FOR i% = 0 TO 3 : a$ += STR$(q(i%)) + ", " : NEXT
       = LEFT$(LEFT$(a$)) + ")"
@@ -951,8 +951,8 @@ q2q1 = (-56, 18, 20, 28)
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
@@ -994,7 +994,7 @@ double quaternion_norm(quaternion_t *q)
 {
   size_t i;
   double r = 0.0;
-  
+
   if (q == NULL) {
     fprintf(stderr, "NULL quaternion in norm\n");
     return 0.0;
@@ -1052,7 +1052,7 @@ void quaternion_mul_d(quaternion_t *r, quaternion_t *q, double d)
 bool quaternion_equal(quaternion_t *a, quaternion_t *b)
 {
   size_t i;
-  
+
   for(i = 0; i < 4; i++) if (a->q[i] != b->q[i]) return false;
   return true;
 }
@@ -1080,7 +1080,7 @@ void quaternion_mul(quaternion_t *r, quaternion_t *a, quaternion_t *b)
 void quaternion_print(quaternion_t *q)
 {
   if (q == NULL) return;
-  printf("(%lf, %lf, %lf, %lf)\n", 
+  printf("(%lf, %lf, %lf, %lf)\n",
 	 q->q[0], q->q[1], q->q[2], q->q[3]);
 }
 ```
@@ -1101,7 +1101,7 @@ int main()
   q[2] = quaternion_new_set(3.0, 4.0, 5.0, 6.0);
 
   printf("r = %lf\n", d);
-  
+
   for(i = 0; i < 3; i++) {
     printf("q[%u] = ", i);
     quaternion_print(q[i]);
@@ -1123,7 +1123,7 @@ int main()
   printf("q[2] + q[1] = ");
   quaternion_add(r, q[2], q[1]);
   quaternion_print(r);
-  
+
 
   printf("q[0] * r = ");
   quaternion_mul_d(r, q[0], d);
@@ -1132,7 +1132,7 @@ int main()
   printf("q[0] * (r, 0, 0, 0) = ");
   quaternion_mul(r, q[0], qd);
   quaternion_print(r);
-  
+
 
   printf("q[1] * q[2] = ");
   quaternion_mul(r, q[1], q[2]);
@@ -1140,7 +1140,7 @@ int main()
 
   printf("q[2] * q[1] = ");
   quaternion_mul(r, q[2], q[1]);
-  quaternion_print(r);  
+  quaternion_print(r);
 
 
   free(q[0]); free(q[1]); free(q[2]); free(r);
@@ -1156,8 +1156,8 @@ int main()
 This example uses templates to provide the underlying data-type, and includes several extra functions and constructors that often come up when using quaternions.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 using namespace std;
 
 template<class T = double>
@@ -1184,20 +1184,20 @@ public:
   T normSquared() const { return w*w + x*x + y*y + z*z; }
 
   // In-place operators
-  Quaternion& operator+=(const T &r) 
+  Quaternion& operator+=(const T &r)
     { w += r; return *this; }
-  Quaternion& operator+=(const Quaternion &q) 
+  Quaternion& operator+=(const Quaternion &q)
     { w += q.w; x += q.x; y += q.y; z += q.z; return *this; }
 
-  Quaternion& operator-=(const T &r) 
+  Quaternion& operator-=(const T &r)
     { w -= r; return *this; }
-  Quaternion& operator-=(const Quaternion &q) 
+  Quaternion& operator-=(const Quaternion &q)
     { w -= q.w; x -= q.x; y -= q.y; z -= q.z; return *this; }
 
-  Quaternion& operator*=(const T &r) 
+  Quaternion& operator*=(const T &r)
     { w *= r; x *= r; y *= r; z *= r; return *this; }
-  Quaternion& operator*=(const Quaternion &q) 
-  { 
+  Quaternion& operator*=(const Quaternion &q)
+  {
     T oldW(w), oldX(x), oldY(y), oldZ(z);
     w = oldW*q.w - oldX*q.x - oldY*q.y - oldZ*q.z;
     x = oldW*q.x + oldX*q.w + oldY*q.z - oldZ*q.y;
@@ -1205,11 +1205,11 @@ public:
     z = oldW*q.z + oldZ*q.w + oldX*q.y - oldY*q.x;
     return *this;
   }
-    
-  Quaternion& operator/=(const T &r) 
+
+  Quaternion& operator/=(const T &r)
     { w /= r; x /= r; y /= r; z /= r; return *this; }
-  Quaternion& operator/=(const Quaternion &q) 
-  { 
+  Quaternion& operator/=(const Quaternion &q)
+  {
     T oldW(w), oldX(x), oldY(y), oldZ(z), n(q.normSquared());
     w = (oldW*q.w + oldX*q.x + oldY*q.y + oldZ*q.z) / n;
     x = (oldX*q.w - oldW*q.x + oldY*q.z - oldZ*q.y) / n;
@@ -1229,7 +1229,7 @@ public:
   Quaternion operator/(const Quaternion &q) const { return Quaternion(*this) /= q; }
 
   // Comparison operators, as much as they make sense
-  bool operator==(const Quaternion &q) const 
+  bool operator==(const Quaternion &q) const
     { return (w == q.w) && (x == q.x) && (y == q.y) && (z == q.z); }
   bool operator!=(const Quaternion &q) const { return !operator==(q); }
 
@@ -1239,14 +1239,14 @@ public:
   template<class T> friend Quaternion<T> operator-(const T &r, const Quaternion<T> &q);
   template<class T> friend Quaternion<T> operator*(const T &r, const Quaternion<T> &q);
   template<class T> friend Quaternion<T> operator/(const T &r, const Quaternion<T> &q);
-  
-  // Allows cout << q 
+
+  // Allows cout << q
   template<class T> friend ostream& operator<<(ostream &io, const Quaternion<T> &q);
 };
 
 // Friend functions need to be outside the actual class definition
 template<class T>
-Quaternion<T> operator+(const T &r, const Quaternion<T> &q) 
+Quaternion<T> operator+(const T &r, const Quaternion<T> &q)
   { return q+r; }
 
 template<class T>
@@ -1254,7 +1254,7 @@ Quaternion<T> operator-(const T &r, const Quaternion<T> &q)
   { return Quaternion<T>(r-q.w, q.x, q.y, q.z); }
 
 template<class T>
-Quaternion<T> operator*(const T &r, const Quaternion<T> &q) 
+Quaternion<T> operator*(const T &r, const Quaternion<T> &q)
   { return q*r; }
 
 template<class T>
@@ -1266,7 +1266,7 @@ Quaternion<T> operator/(const T &r, const Quaternion<T> &q)
 
 template<class T>
 ostream& operator<<(ostream &io, const Quaternion<T> &q)
-{ 
+{
   io << q.w;
   (q.x < T()) ? (io << " - " << (-q.x) << "i") : (io << " + " << q.x << "i");
   (q.y < T()) ? (io << " - " << (-q.y) << "j") : (io << " + " << q.y << "j");
@@ -1530,7 +1530,7 @@ q1*q2 != q2*q1
                          (b :accessor q-b :initarg :b :type real)
                          (c :accessor q-c :initarg :c :type real)
                          (d :accessor q-d :initarg :d :type real))
-  (:default-initargs :a 0 :b 0 :c 0 :d 0)) 
+  (:default-initargs :a 0 :b 0 :c 0 :d 0))
 
 (defun make-q (&optional (a 0) (b 0) (c 0) (d 0))
   (make-instance 'quaternion :a a :b b :c c :d d))
@@ -2098,7 +2098,7 @@ q2 * q1 = -56.00 + 18.00i + 20.00j + 28.00k
 interface Quaternion guards QS {}
 def makeQuaternion(a, b, c, d) {
     return def quaternion implements QS {
-    
+
         to __printOn(out) {
             out.print("(", a, " + ", b, "i + ")
             out.print(c, "j + ", d, "k)")
@@ -2113,7 +2113,7 @@ def makeQuaternion(a, b, c, d) {
         to negate() {
             return makeQuaternion(-a, -b, -c, -d)
         }
-        
+
         # Task requirement 3
         to conjugate() {
             return makeQuaternion(a, -b, -c, -d)
@@ -2149,7 +2149,7 @@ def makeQuaternion(a, b, c, d) {
                 }
             }
         }
-        
+
         to a() { return a }
         to b() { return b }
         to c() { return c }
@@ -2204,7 +2204,7 @@ implementation Quaternion
   +new: double real, ..., return instancetype
     va_list args
     va_start(args, real)
-    object := Quaternion.alloc.initWithReal: real, 
+    object := Quaternion.alloc.initWithReal: real,
                                           i: va_arg(args, double),
                                           j: va_arg(args, double),
                                           k: va_arg(args, double)
@@ -2232,7 +2232,7 @@ implementation Quaternion
       real += q.real; i += q.i; j += q.j; k += q.k
     else
       real += (double)operand
-    return Quaternion.new: real, i, j, k 
+    return Quaternion.new: real, i, j, k
 
   // Overload "*" operator (left operand is Quaternion)
   multipliedBy: Number operand, return Quaternion
@@ -2321,17 +2321,17 @@ ELENA 4.x :
 import system'math;
 import extensions;
 import extensions'text;
- 
+
 struct Quaternion : BaseValue
 {
     rprop real A;
     rprop real B;
     rprop real C;
     rprop real D;
- 
+
     constructor new(a, b, c, d)
         <= new(cast real(a), cast real(b), cast real(c), cast real(d));
- 
+
     constructor new(real a, real b, real c, real d)
     {
         A := a;
@@ -2339,7 +2339,7 @@ struct Quaternion : BaseValue
         C := c;
         D := d
     }
- 
+
     constructor(real r)
     {
         A := r;
@@ -2347,63 +2347,63 @@ struct Quaternion : BaseValue
         C := 0.0r;
         D := 0.0r
     }
- 
+
     real Norm = (A*A + B*B + C*C + D*D).sqrt();
- 
+
     Quaternion Negative = Quaternion.new(A.Negative,B.Negative,C.Negative,D.Negative);
- 
+
     Quaternion Conjugate = Quaternion.new(A,B.Negative,C.Negative,D.Negative);
- 
+
     Quaternion add(Quaternion q)
         = Quaternion.new(A + q.A, B + q.B, C + q.C, D + q.D);
- 
+
     Quaternion multiply(Quaternion q)
         = Quaternion.new(
             A * q.A - B * q.B - C * q.C - D * q.D,
             A * q.B + B * q.A + C * q.D - D * q.C,
             A * q.C - B * q.D + C * q.A + D * q.B,
             A * q.D + B * q.C - C * q.B + D * q.A);
- 
+
     Quaternion add(real r)
         <= add(Quaternion.new(r,0,0,0));
- 
+
     Quaternion multiply(real r)
         <= multiply(Quaternion.new(r,0,0,0));
- 
+
     bool equal(Quaternion q)
         = (A == q.A) && (B == q.B) && (C == q.C) && (D == q.D);
- 
+
     string Printable
         = new StringWriter().printFormatted("Q({0}, {1}, {2}, {3})",A,B,C,D);
 }
- 
+
 public program()
 {
     auto q := Quaternion.new(1,2,3,4);
     auto q1 := Quaternion.new(2,3,4,5);
     auto q2 := Quaternion.new(3,4,5,6);
     real r := 7;
- 
+
     console.printLine("q = ", q);
     console.printLine("q1 = ", q1);
     console.printLine("q2 = ", q2);
     console.printLine("r = ", r);
- 
+
     console.printLine("q.Norm() = ", q.Norm);
     console.printLine("q1.Norm() = ", q1.Norm);
     console.printLine("q2.Norm() = ", q2.Norm);
- 
+
     console.printLine("-q = ", q.Negative);
     console.printLine("q.Conjugate() = ", q.Conjugate);
- 
+
     console.printLine("q + r = ", q + r);
     console.printLine("q1 + q2 = ", q1 + q2);
     console.printLine("q2 + q1 = ", q2 + q1);
- 
+
     console.printLine("q * r = ", q * r);
     console.printLine("q1 * q2 = ", q1 * q2);
     console.printLine("q2 * q1 = ", q2 * q1);
- 
+
     console.printLineFormatted("q1*q2 {0} q2*q1", ((q1 * q2) == (q2 * q1)).iif("==","!="))
 }
 ```
@@ -2616,7 +2616,7 @@ q2 * q1 = -76 + 30i + 28j + 44k
 
 
 =={{header|F_Sharp|F#}}==
-Mainly a {{trans|C#}} On the minus side we have no way to define a conversion to Quaternion from any suitable (numeric) type. 
+Mainly a {{trans|C#}} On the minus side we have no way to define a conversion to Quaternion from any suitable (numeric) type.
 On the plus side we can avoid the stuff to make the equality structual (from the referential equality default) by just declaring it as an attribute to the type and let the compiler handle the details.
 
 ```fsharp
@@ -2632,12 +2632,12 @@ type Quaternion(r : float, i : float, j : float, k : float) =
     new (f : float) = Quaternion(f, 0., 0., 0.)
 
     static member (~-) (q : Quaternion) = Quaternion(-q.A, -q.B, -q.C, -q.D)
- 
+
     static member (+) (q1 : Quaternion, q2 : Quaternion) =
         Quaternion(q1.A + q2.A, q1.B + q2.B, q1.C + q2.C, q1.D + q2.D)
     static member (+) (q : Quaternion, r : float) = q + Quaternion(r)
     static member (+) (r : float, q: Quaternion) = Quaternion(r) + q
- 
+
     static member (*) (q1 : Quaternion, q2 : Quaternion) =
         Quaternion(
             q1.A * q2.A - q1.B * q2.B - q1.C * q2.C - q1.D * q2.D,
@@ -2646,11 +2646,11 @@ type Quaternion(r : float, i : float, j : float, k : float) =
             q1.A * q2.D + q1.B * q2.C - q1.C * q2.B + q1.D * q2.A)
     static member (*) (q : Quaternion, r : float) = q * Quaternion(r)
     static member (*) (r : float, q: Quaternion) = Quaternion(r) * q
- 
+
     member this.Norm = Math.Sqrt(r * r + i * i + j * j + k * k)
- 
+
     member this.Conjugate = Quaternion(r, -i, -j, -k)
- 
+
     override this.ToString() = sprintf "Q(%f, %f, %f, %f)" r i j k
 
 [<EntryPoint>]
@@ -2659,27 +2659,27 @@ let main argv =
     let q1 = Quaternion(2., 3., 4., 5.)
     let q2 = Quaternion(3., 4., 5., 6.)
     let r = 7.
- 
+
     printfn "q = %A" q
     printfn "q1 = %A" q1
     printfn "q2 = %A" q2
     printfn "r = %A" r
- 
+
     printfn "q.Norm = %A" q.Norm
     printfn "q1.Norm = %A" q1.Norm
     printfn "q2.Norm = %A" q2.Norm
- 
+
     printfn "-q = %A" -q
     printfn "q.Conjugate = %A" q.Conjugate
- 
+
     printfn "q + r = %A" (q + (Quaternion r))
     printfn "q1 + q2 = %A" (q1 + q2)
     printfn "q2 + q1 = %A" (q2 + q1)
- 
+
     printfn "q * r = %A" (q * r)
     printfn "q1 * q2 = %A" (q1 * q2)
     printfn "q2 * q1 = %A" (q2 * q1)
- 
+
     printfn "q1*q2 %s q2*q1" (if (q1 * q2) = (q2 * q1) then "=" else "<>")
     printfn "q %s Q(1.,2.,3.,4.)" (if q = Quaternion(1., 2., 3., 4.) then "=" else "<>")
     0
@@ -2860,7 +2860,7 @@ module Q_mod
   public :: norm, neg, conj
   public :: operator (+)
   public :: operator (*)
-  
+
   private ::  q_plus_q, q_plus_r, r_plus_q, &
               q_mult_q, q_mult_r, r_mult_q, &
               norm_q, neg_q, conj_q
@@ -2892,7 +2892,7 @@ function norm_q(x) result(res)
   type (quaternion), intent (in) :: x
 
   res = sqrt(x%a*x%a + x%b*x%b + x%c*x%c + x%d*x%d)
-  
+
 end function norm_q
 
 function neg_q(x) result(res)
@@ -2903,7 +2903,7 @@ function neg_q(x) result(res)
   res%b = -x%b
   res%c = -x%c
   res%d = -x%d
-  
+
 end function neg_q
 
 function conj_q(x) result(res)
@@ -2914,73 +2914,73 @@ function conj_q(x) result(res)
   res%b = -x%b
   res%c = -x%c
   res%d = -x%d
-  
+
 end function conj_q
 
 function q_plus_q(x, y) result (res)
   type (quaternion) :: res
   type (quaternion), intent (in) :: x, y
-   
+
   res%a = x%a + y%a
   res%b = x%b + y%b
   res%c = x%c + y%c
   res%d = x%d + y%d
-   
+
 end function q_plus_q
 
 function q_plus_r(x, r) result (res)
-  type (quaternion) :: res 
+  type (quaternion) :: res
   type (quaternion), intent (in) :: x
   real, intent(in) :: r
-   
+
    res = x
    res%a = x%a + r
-   
+
 end function q_plus_r
 
 function r_plus_q(r, x) result (res)
-  type (quaternion) :: res 
+  type (quaternion) :: res
   type (quaternion), intent (in) :: x
   real, intent(in) :: r
-   
+
    res = x
    res%a = x%a + r
-   
+
 end function r_plus_q
 
 function q_mult_q(x, y) result (res)
-  type (quaternion) :: res 
+  type (quaternion) :: res
   type (quaternion), intent (in) :: x, y
-   
+
    res%a = x%a*y%a - x%b*y%b - x%c*y%c - x%d*y%d
    res%b = x%a*y%b + x%b*y%a + x%c*y%d - x%d*y%c
    res%c = x%a*y%c - x%b*y%d + x%c*y%a + x%d*y%b
    res%d = x%a*y%d + x%b*y%c - x%c*y%b + x%d*y%a
-   
+
 end function q_mult_q
 
 function q_mult_r(x, r) result (res)
-  type (quaternion) :: res 
+  type (quaternion) :: res
   type (quaternion), intent (in) :: x
   real, intent(in) ::  r
-   
+
    res%a = x%a*r
    res%b = x%b*r
-   res%c = x%c*r  
-   res%d = x%d*r 
-   
+   res%c = x%c*r
+   res%d = x%d*r
+
 end function q_mult_r
 
 function r_mult_q(r, x) result (res)
-  type (quaternion) :: res 
+  type (quaternion) :: res
   type (quaternion), intent (in) :: x
   real, intent(in) ::  r
-   
+
    res%a = x%a*r
    res%b = x%b*r
-   res%c = x%c*r  
-   res%d = x%d*r 
-   
+   res%c = x%c*r
+   res%d = x%d*r
+
 end function r_mult_q
 end module Q_mod
 
@@ -2999,16 +2999,16 @@ program Quaternions
   write(*, "(a, 4f8.3)") "            q1 = ", q1
   write(*, "(a, 4f8.3)") "            q2 = ", q2
   write(*, "(a, f8.3)")  "             r = ", r
-  write(*, "(a, f8.3)")  "     Norm of q = ", norm(q) 
+  write(*, "(a, f8.3)")  "     Norm of q = ", norm(q)
   write(*, "(a, 4f8.3)") " Negative of q = ", neg(q)
-  write(*, "(a, 4f8.3)") "Conjugate of q = ", conj(q) 
+  write(*, "(a, 4f8.3)") "Conjugate of q = ", conj(q)
   write(*, "(a, 4f8.3)") "         q + r = ", q + r
   write(*, "(a, 4f8.3)") "         r + q = ", r + q
   write(*, "(a, 4f8.3)") "       q1 + q2 = ", q1 + q2
-  write(*, "(a, 4f8.3)") "         q * r = ", q * r  
-  write(*, "(a, 4f8.3)") "         r * q = ", r * q 
-  write(*, "(a, 4f8.3)") "       q1 * q2 = ", q1 * q2 
-  write(*, "(a, 4f8.3)") "       q2 * q1 = ", q2 * q1 
+  write(*, "(a, 4f8.3)") "         q * r = ", q * r
+  write(*, "(a, 4f8.3)") "         r * q = ", r * q
+  write(*, "(a, 4f8.3)") "       q1 * q2 = ", q1 * q2
+  write(*, "(a, 4f8.3)") "       q2 * q1 = ", q2 * q1
 
 end program
 ```
@@ -3047,38 +3047,38 @@ Dim Shared As Integer i, r = 7, t(3)
 Function q_norm(q() As Integer) As Double
     ' medida o valor absoluto de un cuaternión
     Dim As Double a = 0
-    For i = 0 To 3 
+    For i = 0 To 3
         a += q(i)^2
     Next i
     Return Sqr(a)
 End Function
 
-Sub q_neg(q() As Integer) 
-    For i = 0 To 3 
+Sub q_neg(q() As Integer)
+    For i = 0 To 3
         q(i) *= -1
     Next i
 End Sub
 
 Sub q_conj(q() As Integer)
     ' conjugado de un cuaternión
-    For i = 1 To 3 
+    For i = 1 To 3
         q(i) *= -1
     Next i
 End Sub
 
 Sub q_addreal(q() As Integer, r As Integer)
-    q(0) += r 
+    q(0) += r
 End Sub
 
 Sub q_add(q() As Integer, r() As Integer)
     ' adición entre cuaternios
-    For i = 0 To 3 
+    For i = 0 To 3
         q(i) += r(i)
     Next i
 End Sub
 
 Sub q_mulreal(q() As Integer, r As Integer)
-    For i = 0 To 3 
+    For i = 0 To 3
         q(i) *= r
     Next i
 End Sub
@@ -3086,17 +3086,17 @@ End Sub
 Sub q_mul(q() As Integer, r() As Integer)
     ' producto entre cuaternios
     Dim As Integer m(3)
-    m(0) = q(0)*r(0) - q(1)*r(1) - q(2)*r(2) - q(3)*r(3) 
-    m(1) = q(0)*r(1) + q(1)*r(0) + q(2)*r(3) - q(3)*r(2) 
-    m(2) = q(0)*r(2) - q(1)*r(3) + q(2)*r(0) + q(3)*r(1) 
-    m(3) = q(0)*r(3) + q(1)*r(2) - q(2)*r(1) + q(3)*r(0) 
+    m(0) = q(0)*r(0) - q(1)*r(1) - q(2)*r(2) - q(3)*r(3)
+    m(1) = q(0)*r(1) + q(1)*r(0) + q(2)*r(3) - q(3)*r(2)
+    m(2) = q(0)*r(2) - q(1)*r(3) + q(2)*r(0) + q(3)*r(1)
+    m(3) = q(0)*r(3) + q(1)*r(2) - q(2)*r(1) + q(3)*r(0)
     For i = 0 To 3 : q(i) = m(i) : Next i
 End Sub
 
 Function q_show(q() As Integer) As String
     Dim As String a = "("
-    For i = 0 To 3 
-        a += Str(q(i)) + ", " 
+    For i = 0 To 3
+        a += Str(q(i)) + ", "
     Next i
     Return Mid(a,1,Len(a)-2) + ")"
 End Function
@@ -3261,10 +3261,10 @@ ComplexConjugate(q);
 
 ## Go
 
-Conventions for method receiver, parameter, and return values modeled after Go's big number package.  
-It provides flexibility without requiring unnecessary object creation.  
-The test program creates only four quaternion objects, the three inputs and one more for an output.  
-The three inputs are reused repeatedly without being modified.  
+Conventions for method receiver, parameter, and return values modeled after Go's big number package.
+It provides flexibility without requiring unnecessary object creation.
+The test program creates only four quaternion objects, the three inputs and one more for an output.
+The three inputs are reused repeatedly without being modified.
 The output is also reused repeatedly, being overwritten for each operation.
 
 ```go
@@ -3454,14 +3454,14 @@ class Quaternion(a, b, c, d)
     return Quaternion(a, -b, -c, -d)
   end
 
-  method add (n) 
-    if type(n) == "Quaternion__state" 
+  method add (n)
+    if type(n) == "Quaternion__state"
       then return Quaternion(a+n.a, b+n.b, c+n.c, d+n.d)
       else return Quaternion(a+n, b, c, d)
   end
 
-  method multiply (n) 
-    if type(n) == "Quaternion__state" 
+  method multiply (n)
+    if type(n) == "Quaternion__state"
       then return Quaternion(a*n.a - b*n.b - c*n.c - d*n.d,
                              a*n.b + b*n.a + c*n.d - d*n.c,
                              a*n.c - b*n.d + c*n.a + d*n.b,
@@ -3473,7 +3473,7 @@ class Quaternion(a, b, c, d)
     return if n >= 0 then "+" else "-"
   end
 
-  method string () 
+  method string ()
     return ("" || a || sign(b) || abs(b) || "i" || sign(c) || abs(c) || "j" || sign(d) || abs(d) || "k");
   end
 
@@ -3586,7 +3586,7 @@ Example use:
    q1=: 2 3 4 5
    q2=: 3 4 5 6
    r=: 7
-   
+
    norm q
 5.47723
    neg q
@@ -3606,7 +3606,7 @@ _56 18 20 28
 ```
 
 
-Finally, note that when quaternions are used to represent [[wp:Quaternions_and_spatial_rotation|orientation or rotation]], we are typically only interested in unit length quaternions. As this is the typical application for quaternions, you will sometimes see quaternion multiplication expressed using "simplifications" which are only valid for unit length quaternions. But note also that in many of those contexts you also need to normalize the quaternion length after multiplication. 
+Finally, note that when quaternions are used to represent [[wp:Quaternions_and_spatial_rotation|orientation or rotation]], we are typically only interested in unit length quaternions. As this is the typical application for quaternions, you will sometimes see quaternion multiplication expressed using "simplifications" which are only valid for unit length quaternions. But note also that in many of those contexts you also need to normalize the quaternion length after multiplication.
 
 (An exception to this need to normalize unit length quaternions after multiplication might be when quaternions are represented as an index into a [[wp:Geodesic_grid|geodesic grid]]. For example, a grid with 16x20 faces would have a total of 15 vertices for each face (5+4+3+2+1), 3 of those vertices would be from the original 20 vertices of the icosahedron, and 9 of those vertices (5+4+3-3) would be on the edge of the original face (and, thus, used for two faces), the remaining 3 vertices would be interior. This means we would have 170 vertices (20+(20*9%2)+20*3, which would allow a quaternion to be represented in a single byte index into a list of 170 quaternions, and would allow quaternion multiplication to be represented as a 29kbyte lookup table. In some contexts - where quaternion multiplication is needed in high volume for secondary or tertiary issues (where precision isn't vital), such low accuracy quaternions might be adequate or even an advantage...)
 
@@ -3861,7 +3861,7 @@ Program file: quaternion.jq
 ```jq
 def Quaternion(q0;q1;q2;q3): { "q0": q0, "q1": q1, "q2": q2, "q3": q3, "type": "Quaternion" };
 
-# promotion of a real number to a quaternion 
+# promotion of a real number to a quaternion
 def Quaternion(r): if (r|type) == "number" then Quaternion(r;0;0;0) else r end;
 
 # thoroughly recursive pretty-print
@@ -3875,7 +3875,7 @@ def pp:
      else with_entries( {key, "value" : (.value|pp)} )
      end
   elif type == "array" then map(pp)
-  else . 
+  else .
   end ;
 
 def real(z): Quaternion(z).q0;
@@ -3928,7 +3928,7 @@ def say(msg; e): "\(msg) => \(e|pp)";
 
 def demo:
   say( "Quaternion(1;0;0;0)"; Quaternion(1;0;0;0)),
-  (Quaternion (1; 2; 3; 4) as $q 
+  (Quaternion (1; 2; 3; 4) as $q
   | Quaternion(2; 3; 4; 5) as $q1
   | Quaternion(3; 4; 5; 6) as $q2
   | 7 as $r
@@ -3953,7 +3953,7 @@ def demo:
 demo
 ```
 
-Example usage and output: 
+Example usage and output:
 
 ```sh
 # jq -c -n -R -f quaternion.jq
@@ -4027,7 +4027,7 @@ abs(z::Quaternion) = sqrt(z.q0*z.q0 + z.q1*z.q1 + z.q2*z.q2 + z.q3*z.q3)
 ```
 
 
-Example usage and output: 
+Example usage and output:
 
 ```julia>julia
  q = Quaternion(1,0,0,0)
@@ -4167,7 +4167,7 @@ real = 7
 
 print "q = "  ;  q$
 print "q1 = " ; q1$
-print "q2 = " ; q2$ 
+print "q2 = " ; q2$
 
 print "real = " ; real
 
@@ -4270,7 +4270,7 @@ function add2$( q$ , b$ )
   bk = val( word$( b$ , 4 ) )
   add2$ =q$( ar +br, ai +bi, aj +bj, ak +bk)
 end function
- 
+
 ```
 
 
@@ -4391,7 +4391,7 @@ Module CheckIt {
             a,b,c,d
             Property ToString$ {
                   Value {
-                      link parent a,b,c, d to a,b,c,d  
+                      link parent a,b,c, d to a,b,c,d
                        value$=format$("{0} + {1}i + {2}j + {3}k",a,b,c,d)
                   }
             }
@@ -4407,7 +4407,7 @@ Module CheckIt {
                   .a-! : .b-! : .c-! :.d-!
             }
             Function Conj {
-                  q=this 
+                  q=this
                   for q {
                          .b-! : .c-! :.d-!
                   }
@@ -4428,7 +4428,7 @@ Module CheckIt {
                   }
             }
             Function Mul(r)  {
-                  q=this 
+                  q=this
                   for q {
                         .a*=r:.b*=r:.c*=r:.d*=r:.CalcNorm
                   }
@@ -4442,9 +4442,9 @@ Module CheckIt {
                         Push .a*..c-.b*..d+.c*..a+.d*..b
                         .d<=.a*..d+.b*..c-.c*..b+.d*..a
                         Read .c, .b, .a
-                        .CalcNorm 
+                        .CalcNorm
                   }
-            }      
+            }
             class:
             module Quaternion {
                   if match("NNNN") then {
@@ -4458,7 +4458,7 @@ Module CheckIt {
       q=Quaternion(1,2,3,4)
       q1=Quaternion(2,3,4,5)
       q2=Quaternion(3,4,5,6)
-      
+
       \\ perform negate, conjugate, multiply by real, add a real, multiply quanterions, multiply in reverse order
       qneg=-q
       qconj=q.conj()
@@ -4466,7 +4466,7 @@ Module CheckIt {
       qadd=q.Add(r)
       q1q2=q1*q2
       q2q1=q2*q1
-      
+
       Print "q = ";q.ToString$
       Print "Normal q = ";q.Norm
       Print "Neg q = ";qneg.ToString$
@@ -4481,7 +4481,7 @@ Module CheckIt {
       Print q1q2==q2q1 ' false
       \\ multiplication and equality in one expression
       Print (q1 * q2 == q2 * q1)=false
-      Print (q1 * q2 == q1 * q2)=True    
+      Print (q1 * q2 == q1 * q2)=True
 }
 CheckIt
 
@@ -4494,7 +4494,7 @@ CheckIt
 q = 1 + 2i + 3j + 4k
 Normal q = 5.47722557505166
 Neg q = -1 + -2i + -3j + -4k
-Conj q = 1 + -2i + -3j + -4k            
+Conj q = 1 + -2i + -3j + -4k
 Mul q 7 = 7 + 14i + 21j + 28k
 Add q 7 = 8 + 2i + 3j + 4k
 q1 = 2 + 3i + 4j + 5k
@@ -4681,36 +4681,36 @@ to_string(q(I, J, K, W)) = string.format("q(%f, %f, %f, %f)",
 
 The output of the above code follows:
 
- % ./test_quaternion 
+ % ./test_quaternion
  Q = q(1.000000, 2.000000, 3.000000, 4.000000)
  Q1 = q(2.000000, 3.000000, 4.000000, 5.000000)
  Q2 = q(3.000000, 4.000000, 5.000000, 6.000000)
  R = 7.0
- 
+
  1. The norm of a quaternion.
  norm(Q) = 5.477225575051661
- 
+
  2. The negative of a quaternion.
  -Q = q(-1.000000, -2.000000, -3.000000, -4.000000)
- 
+
  3. The conjugate of a quaternion.
  conjugate(Q) = q(1.000000, -2.000000, -3.000000, -4.000000)
- 
+
  4. Addition of a real number and a quaternion.
  Addition is commutative.
  Q + R = q(8.000000, 2.000000, 3.000000, 4.000000)
  R + Q = q(8.000000, 2.000000, 3.000000, 4.000000)
- 
+
  5. Addition of two quaternions.
  Addition is commutative.
  Q1 + Q2 = q(5.000000, 7.000000, 9.000000, 11.000000)
  Q2 + Q1 = q(5.000000, 7.000000, 9.000000, 11.000000)
- 
+
  6. Multiplication of a real number and a quaternion.
  Multiplication is commutative.
  Q * R = q(7.000000, 14.000000, 21.000000, 28.000000)
  R * Q = q(7.000000, 14.000000, 21.000000, 28.000000)
- 
+
  7. Multiplication of two quaternions.
  Multiplication is not commutative.
  Q1 * Q2 = q(-56.000000, 16.000000, 24.000000, 26.000000)
@@ -4734,13 +4734,13 @@ let norm q = sqrt (q.a**2.0 +.
 let floatneg r = ~-. r  (* readability *)
 
 let negative q =
-  {a = floatneg q.a; 
+  {a = floatneg q.a;
    b = floatneg q.b;
    c = floatneg q.c;
    d = floatneg q.d }
 
 let conjugate q =
-  {a = q.a; 
+  {a = q.a;
    b = floatneg q.b;
    c = floatneg q.c;
    d = floatneg q.d }
@@ -4758,19 +4758,19 @@ let multrq r q =
    b = q.b *. r;
    c = q.c *. r;
    d = q.d *. r  }
-   
-let multq q1 q2 =  
+
+let multq q1 q2 =
         {a = q1.a*.q2.a -. q1.b*.q2.b -. q1.c*.q2.c -. q1.d*.q2.d;
          b = q1.a*.q2.b +. q1.b*.q2.a +. q1.c*.q2.d -. q1.d*.q2.c;
          c = q1.a*.q2.c -. q1.b*.q2.d +. q1.c*.q2.a +. q1.d*.q2.b;
          d = q1.a*.q2.d +. q1.b*.q2.c -. q1.c*.q2.b +. q1.d*.q2.a  }
-   
+
 let qmake a b c d = {a;b;c;d} (* readability omitting a= b=... *)
 
 let qstring q =
   Printf.sprintf "(%g, %g, %g, %g)" q.a q.b q.c q.d ;;
 
-(* test data *)  
+(* test data *)
 let q  = qmake 1.0  2.0  3.0  4.0
 let q1 = qmake 2.0  3.0  4.0  5.0
 let q2 = qmake 3.0  4.0  5.0  6.0
@@ -4796,16 +4796,16 @@ using this file on the command line will produce:
 
 ```txt
 
-$ ocaml quaternion.ml 
+$ ocaml quaternion.ml
 starting with data q=(1, 2, 3, 4), q1=(2, 3, 4, 5),  q2=(3, 4, 5, 6), r=7
-1. norm of      q     = 5.47723 
-2. negative of  q     = (-1, -2, -3, -4) 
-3. conjugate of q     = (1, -2, -3, -4) 
-4. adding r to q      = (8, 2, 3, 4) 
-5. adding q1 and q2   = (5, 7, 9, 11) 
-6. multiply r and q   = (7, 14, 21, 28) 
-7. multiply q1 and q2 = (-56, 16, 24, 26) 
-8. instead q2 * q1    = (-56, 18, 20, 28) 
+1. norm of      q     = 5.47723
+2. negative of  q     = (-1, -2, -3, -4)
+3. conjugate of q     = (1, -2, -3, -4)
+4. adding r to q      = (8, 2, 3, 4)
+5. adding q1 and q2   = (5, 7, 9, 11)
+6. multiply r and q   = (7, 14, 21, 28)
+7. multiply q1 and q2 = (-56, 16, 24, 26)
+8. instead q2 * q1    = (-56, 18, 20, 28)
 
 ```
 
@@ -4896,7 +4896,7 @@ Quaternion method: conj   @a  @b neg  @c neg  @d neg Quaternion new ;
 Quaternion method: +(q)   Quaternion new(q _a @a +, q _b @b +, q _c @c +, q _d @d +) ;
 Quaternion method: -(q)   Quaternion new(q _a @a -, q _b @b -, q _c @c -, q _d @d -) ;
 
-Quaternion method: *(q) 
+Quaternion method: *(q)
    Quaternion new(q _a @a * q _b @b * - q _c @c * - q _d @d * -,
                   q _a @b * q _b @a * + q _c @d * + q _d @c * -,
                   q _a @c * q _b @d * - q _c @a * + q _d @b * +,
@@ -4904,7 +4904,7 @@ Quaternion method: *(q)
 ```
 
 
-Usage : 
+Usage :
 
 
 ```Oforth
@@ -4920,8 +4920,8 @@ Usage :
    System.Out "q1      = " << q1 << cr
    System.Out "q2      = " << q2 << cr
 
-   System.Out "norm q  = " << q norm << cr 
-   System.Out "neg q   = " << q neg << cr 
+   System.Out "norm q  = " << q norm << cr
+   System.Out "neg q   = " << q neg << cr
    System.Out "conj q  = " << q conj << cr
    System.Out "q +r    = " << q r + << cr
    System.Out "q1 + q2 = " << q1 q2 + << cr
@@ -4953,10 +4953,10 @@ q1q2 and q2q1 are different quaternions
 
 ## ooRexx
 
-Note, this example uses operator overloads to perform the math operation.  The operator overloads only work if the left-hand-side of the operation is a quaterion instance.  Thus something like "7 + q1" would not work because this would get passed to the "+" of the string class.  For those situations, the best solution would be an addition method on the .Quaternion class itself that took the appropriate action.  I've chosen not to implement those to keep the example shorter. 
+Note, this example uses operator overloads to perform the math operation.  The operator overloads only work if the left-hand-side of the operation is a quaterion instance.  Thus something like "7 + q1" would not work because this would get passed to the "+" of the string class.  For those situations, the best solution would be an addition method on the .Quaternion class itself that took the appropriate action.  I've chosen not to implement those to keep the example shorter.
 
 ```ooRexx
- 
+
 q = .quaternion~new(1, 2, 3, 4)
 q1 = .quaternion~new(2, 3, 4, 5)
 q2 = .quaternion~new(3, 4, 5, 6)
@@ -5283,34 +5283,34 @@ print "b * a = ", $b * $a, "\n";
 ```perl6
 class Quaternion {
     has Real ( $.r, $.i, $.j, $.k );
- 
+
     multi method new ( Real $r, Real $i, Real $j, Real $k ) {
         self.bless: :$r, :$i, :$j, :$k;
     }
     multi qu(*@r) is export { Quaternion.new: |@r }
     sub postfix:<j>(Real $x) is export { qu 0, 0, $x, 0 }
     sub postfix:<k>(Real $x) is export { qu 0, 0, 0, $x }
- 
+
     method Str   () { "$.r + {$.i}i + {$.j}j + {$.k}k" }
     method reals () { $.r, $.i, $.j, $.k }
     method conj  () { qu $.r, -$.i, -$.j, -$.k }
     method norm  () { sqrt [+] self.reals X** 2 }
- 
+
     multi infix:<eqv> ( Quaternion $a, Quaternion $b ) is export { $a.reals eqv $b.reals }
- 
+
     multi infix:<+> ( Quaternion $a,       Real $b ) is export { qu $b+$a.r, $a.i, $a.j, $a.k }
     multi infix:<+> (       Real $a, Quaternion $b ) is export { qu $a+$b.r, $b.i, $b.j, $b.k }
     multi infix:<+> ( Quaternion $a,    Complex $b ) is export { qu $b.re + $a.r, $b.im + $a.i, $a.j, $a.k }
     multi infix:<+> (    Complex $a, Quaternion $b ) is export { qu $a.re + $b.r, $a.im + $b.i, $b.j, $b.k }
     multi infix:<+> ( Quaternion $a, Quaternion $b ) is export { qu $a.reals Z+ $b.reals }
- 
+
     multi prefix:<-> ( Quaternion $a ) is export { qu $a.reals X* -1 }
- 
+
     multi infix:<*> ( Quaternion $a,       Real $b ) is export { qu $a.reals X* $b }
     multi infix:<*> (       Real $a, Quaternion $b ) is export { qu $b.reals X* $a }
     multi infix:<*> ( Quaternion $a,    Complex $b ) is export { $a * qu $b.reals, 0, 0 }
     multi infix:<*> ( Complex $a,    Quaternion $b ) is export { $b R* qu $a.reals, 0, 0 }
- 
+
     multi infix:<*> ( Quaternion $a, Quaternion $b ) is export {
 	my @a_rijk            = $a.reals;
 	my ( $r, $i, $j, $k ) = $b.reals;
@@ -5321,12 +5321,12 @@ class Quaternion {
     }
 }
 import Quaternion;
- 
+
 my $q  = 1 + 2i + 3j + 4k;
 my $q1 = 2 + 3i + 4j + 5k;
 my $q2 = 3 + 4i + 5j + 6k;
 my $r  = 7;
- 
+
 say "1) q norm  = {$q.norm}";
 say "2) -q      = {-$q}";
 say "3) q conj  = {$q.conj}";
@@ -5360,12 +5360,12 @@ say "8) q1q2 { $q1 * $q2 eqv $q2 * $q1 ?? '==' !! '!=' } q2q1";
 function norm(sequence q)
     return sqrt(sum(sq_power(q,2)))
 end function
- 
+
 function conj(sequence q)
     q[2..4] = sq_uminus(q[2..4])
     return q
 end function
- 
+
 function add(object q1, object q2)
     if atom(q1)!=atom(q2) then
         if atom(q1) then
@@ -5376,7 +5376,7 @@ function add(object q1, object q2)
     end if
     return sq_add(q1,q2)
 end function
- 
+
 function mul(object q1, object q2)
     if sequence(q1) and sequence(q2) then
         return { q1[1]*q2[1] - q1[2]*q2[2] - q1[3]*q2[3] - q1[4]*q2[4],
@@ -5387,17 +5387,17 @@ function mul(object q1, object q2)
         return sq_mul(q1,q2)
     end if
 end function
- 
+
 function quats(sequence q)
     return sprintf("%g + %gi + %gj + %gk",q)
 end function
- 
+
 constant
     q  = {1, 2, 3, 4},
     q1 = {2, 3, 4, 5},
     q2 = {3, 4, 5, 6},
     r  = 7
- 
+
 printf(1, "q = %s\n", {quats(q)})
 printf(1, "r = %g\n", r)
 printf(1, "norm(q) = %g\n", norm(q))
@@ -5686,7 +5686,7 @@ task 8:    multiplication q2*q1  --> -56+18i+20j+28k
 task 9:           quatsub q1-q1  --> 0
 task A:          addition q1+q3  --> 6i
 task B:                   equal  --> not equal
-task C:                   q1=q1  --> equal                    
+task C:                   q1=q1  --> equal
 
 ```
 
@@ -5734,7 +5734,7 @@ class Quaternion {
   [Quaternion]mul([Double]$r) {return [Quaternion]::new($r*$this.w, $r*$this.x, $r*$this.y, $r*$this.z)}
   [Quaternion]negate() {return $this.mul(-1)}
   [Quaternion]conjugate() {return [Quaternion]::new($this.w, -$this.x, -$this.y, -$this.z)}
-  static [String]st([Double]$r) { 
+  static [String]st([Double]$r) {
         if(0 -le $r) {return "+$r"} else {return "$r"}
   }
   [String]show() {return "$($this.w)$([Quaternion]::st($this.x))i$([Quaternion]::st($this.y))j$([Quaternion]::st($this.z))k"}
@@ -5784,7 +5784,7 @@ $q2 * $q1: -56+18i+20j+28k
 ```PowerShell
 
 function show([System.Numerics.Quaternion]$c) {
-    function st([Double]$r) { 
+    function st([Double]$r) {
             if(0 -le $r) {return "+$r"} else {return "$r"}
     }
     return "$($c.w)$(st $c.y)i$(st $c.y)j$(st $c.z)k"
@@ -5906,17 +5906,17 @@ q2*q1 is qx(-56,18,20,28)
 
 
 ```PureBasic
-Structure Quaternion  
+Structure Quaternion
   a.f
   b.f
   c.f
   d.f
 EndStructure
- 
+
 Procedure.f QNorm(*x.Quaternion)
   ProcedureReturn Sqr(Pow(*x\a, 2) + Pow(*x\b, 2) + Pow(*x\c, 2) + Pow(*x\d, 2))
 EndProcedure
- 
+
 ;If supplied, the result is returned in the quaternion structure *res,
 ;otherwise a new quaternion is created.  A pointer to the result is returned.
 Procedure QNeg(*x.Quaternion, *res.Quaternion = 0)
@@ -5929,7 +5929,7 @@ Procedure QNeg(*x.Quaternion, *res.Quaternion = 0)
   EndIf
   ProcedureReturn *res
 EndProcedure
- 
+
 Procedure QConj(*x.Quaternion, *res.Quaternion = 0)
   If *res = 0: *res.Quaternion = AllocateMemory(SizeOf(Quaternion)): EndIf
   If *res
@@ -5940,7 +5940,7 @@ Procedure QConj(*x.Quaternion, *res.Quaternion = 0)
   EndIf
   ProcedureReturn *res
 EndProcedure
- 
+
 Procedure QAddReal(r.f, *x.Quaternion, *res.Quaternion = 0)
   If *res = 0: *res.Quaternion = AllocateMemory(SizeOf(Quaternion)): EndIf
   If *res
@@ -5951,7 +5951,7 @@ Procedure QAddReal(r.f, *x.Quaternion, *res.Quaternion = 0)
   EndIf
   ProcedureReturn *res
 EndProcedure
- 
+
 Procedure QAddQuaternion(*x.Quaternion, *y.Quaternion, *res.Quaternion = 0)
   If *res = 0: *res.Quaternion = AllocateMemory(SizeOf(Quaternion)): EndIf
   If *res
@@ -5962,7 +5962,7 @@ Procedure QAddQuaternion(*x.Quaternion, *y.Quaternion, *res.Quaternion = 0)
   EndIf
   ProcedureReturn *res
 EndProcedure
- 
+
 Procedure QMulReal_and_Quaternion(r.f, *x.Quaternion, *res.Quaternion = 0)
   If *res = 0: *res.Quaternion = AllocateMemory(SizeOf(Quaternion)): EndIf
   If *res
@@ -5973,7 +5973,7 @@ Procedure QMulReal_and_Quaternion(r.f, *x.Quaternion, *res.Quaternion = 0)
   EndIf
   ProcedureReturn *res
 EndProcedure
- 
+
 Procedure QMulQuaternion(*x.Quaternion, *y.Quaternion, *res.Quaternion = 0)
   If *res = 0: *res.Quaternion = AllocateMemory(SizeOf(Quaternion)): EndIf
   If *res
@@ -5999,19 +5999,19 @@ Implementation & test
 Procedure.s ShowQ(*x.Quaternion, NN = 0)
   ProcedureReturn "{" + StrF(*x\a, NN) + "," + StrF(*x\b, NN) + "," + StrF(*x\c, NN) + "," + StrF(*x\d, NN) + "}"
 EndProcedure
- 
+
 If OpenConsole()
   Define.Quaternion Q0, Q1, Q2, res, res2
   Define.f          r = 7
-  
+
   Q0\a = 1: Q0\b = 2: Q0\c = 3: Q0\d = 4
   Q1\a = 2: Q1\b = 3: Q1\c = 4: Q1\d = 5
   Q2\a = 3: Q2\b = 4: Q2\c = 5: Q2\d = 6
-  
+
   PrintN("Q0 = " + ShowQ(Q0, 0))
   PrintN("Q1 = " + ShowQ(Q1, 0))
   PrintN("Q2 = " + ShowQ(Q2, 0))
-  
+
   PrintN("Normal of Q0 = " + StrF(QNorm(Q0)))
   PrintN("Neg(Q0)  = " + ShowQ(QNeg(Q0, res)))
   PrintN("Conj(Q0) = " + ShowQ(QConj(Q0, res)))
@@ -6021,7 +6021,7 @@ If OpenConsole()
   PrintN("Q1 * Q2  = " + ShowQ(QMulQuaternion(Q1, Q2, res)))
   PrintN("Q2 * Q1  = " + ShowQ(QMulQuaternion(Q2, Q1, res2)))
   Print( "Q1 * Q2"): If Q_areEqual(res, res2): Print(" = "): Else: Print(" <> "): EndIf: Print( "Q2 * Q1")
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -6055,9 +6055,9 @@ from collections import namedtuple
 import math
 
 class Q(namedtuple('Quaternion', 'real, i, j, k')):
-    'Quaternion type: Q(real=0.0, i=0.0, j=0.0, k=0.0)' 
+    'Quaternion type: Q(real=0.0, i=0.0, j=0.0, k=0.0)'
 
-    __slots__ = () 
+    __slots__ = ()
 
     def __new__(_cls, real=0.0, i=0.0, j=0.0, k=0.0):
         'Defaults all parts of quaternion to zero'
@@ -6074,7 +6074,7 @@ class Q(namedtuple('Quaternion', 'real, i, j, k')):
 
     def reciprocal(self):
         n2 = self._norm2()
-        return Q(*(x / n2 for x in self.conjugate())) 
+        return Q(*(x / n2 for x in self.conjugate()))
 
     def __str__(self):
         'Shorter form of Quaternion as string'
@@ -6127,7 +6127,7 @@ class Q(namedtuple('Quaternion', 'real, i, j, k')):
 
     __div__, __rdiv__ = __truediv__, __rtruediv__
 
-Quaternion = Q       
+Quaternion = Q
 
 q  = Q(1, 2, 3, 4)
 q1 = Q(2, 3, 4, 5)
@@ -6175,7 +6175,7 @@ Quaternion(real=-56.0, i=16.0, j=24.0, k=26.0)
 >>> q2 * q1
 Quaternion(real=-56.0, i=18.0, j=20.0, k=28.0)
 >>> assert q1 * q2 != q2 * q1
->>> 
+>>>
 >>> i, j, k = Q(0,1,0,0), Q(0,0,1,0), Q(0,0,0,1)
 >>> i*i
 Quaternion(real=-1.0, i=0.0, j=0.0, k=0.0)
@@ -6195,7 +6195,7 @@ Quaternion(real=2.0, i=3.465116279069768, j=3.906976744186047, k=4.7674418604651
 Quaternion(real=0.9999999999999999, i=0.0, j=0.0, k=0.0)
 >>> q1 * q1.reciprocal()
 Quaternion(real=0.9999999999999999, i=0.0, j=0.0, k=0.0)
->>> 
+>>>
 ```
 
 
@@ -6254,32 +6254,32 @@ if(display(q1*q2) == display(q2*q1)) cat("q1*q2 == q2*q1\n") else cat("q1*q2 != 
 
 ```Racket
 #lang racket
- 
+
 (struct quaternion (a b c d)
   #:transparent)
- 
-(define-match-expander quaternion: 
+
+(define-match-expander quaternion:
   (λ (stx)
     (syntax-case stx ()
-      [(_ a b c d) 
+      [(_ a b c d)
        #'(or (quaternion a b c d)
              (and a (app (λ(_) 0) b) (app (λ(_) 0) c) (app (λ(_) 0) d)))])))
- 
+
 (define (norm q)
   (match q
     [(quaternion: a b c d)
      (sqrt (+ (sqr a) (sqr b) (sqr c) (sqr d)))]))
- 
+
 (define (negate q)
   (match q
     [(quaternion: a b c d)
      (quaternion (- a) (- b) (- c) (- d))]))
- 
+
 (define (conjugate q)
   (match q
     [(quaternion: a b c d)
      (quaternion a (- b) (- c) (- d))]))
- 
+
 (define (add q1 q2 . q-rest)
   (let ((ans (match* (q1 q2)
                [((quaternion: a1 b1 c1 d1) (quaternion: a2 b2 c2 d2))
@@ -6298,7 +6298,7 @@ if(display(q1*q2) == display(q2*q1)) cat("q1*q2 == q2*q1\n") else cat("q1*q2 != 
     (if (empty? q-rest)
         ans
         (apply multiply (cons ans q-rest)))))
- 
+
 ;; Tests
 (module+ main
   (define i (quaternion 0 1 0 0))
@@ -6306,23 +6306,23 @@ if(display(q1*q2) == display(q2*q1)) cat("q1*q2 == q2*q1\n") else cat("q1*q2 != 
   (define k (quaternion 0 0 0 1))
   (displayln (multiply i j k))
   (newline)
-  
+
   (define q (quaternion 1 2 3 4))
   (define q1 (quaternion 2 3 4 5))
   (define q2 (quaternion 3 4 5 6))
   (define r 7)
- 
+
   (for ([quat (list q q1 q2)])
     (displayln quat)
     (displayln (norm quat))
     (displayln (negate quat))
     (displayln (conjugate quat))
     (newline))
-  
+
   (add r q)
   (add q1 q2)
   (multiply r q)
-  
+
   (newline)
   (multiply q1 q2)
   (multiply q2 q1)
@@ -6402,10 +6402,10 @@ quaternion: context [
 set [q q1 q2 r] [[1 2 3 4] [2 3 4 5] [3 4 5 6] 7]
 
 print [{
-1. The norm of a quaternion: 
+1. The norm of a quaternion:
 `quaternion/norm q` =>} quaternion/norm q {
 
-2. The negative of a quaternion: 
+2. The negative of a quaternion:
 `quaternion/negate q` =>} mold quaternion/negate q {
 
 3. The conjugate of a quaternion:
@@ -6415,10 +6415,10 @@ print [{
 `quaternion/add r q` =>} mold quaternion/add r q {
 `quaternion/add q r` =>} mold quaternion/add q r {
 
-5. Addition of two quaternions: 
+5. Addition of two quaternions:
 `quaternion/add q1 q2` =>} mold quaternion/add q1 q2 {
 
-6. Multiplication of a real number and a quaternion: 
+6. Multiplication of a real number and a quaternion:
 `quaternion/multiply q r` =>} mold quaternion/multiply q r {
 `quaternion/multiply r q` =>} mold quaternion/multiply r q {
 
@@ -6426,45 +6426,45 @@ print [{
 `quaternion/multiply q1 q2` =>} mold quaternion/multiply q1 q2 {
 
 8. Show that, for the two quaternions `q1` and `q2`:
-`equal? quaternion/multiply q1 q2 mold quaternion/multiply q2 q1` =>} 
+`equal? quaternion/multiply q1 q2 mold quaternion/multiply q2 q1` =>}
 equal? quaternion/multiply q1 q2 quaternion/multiply q2 q1]
 
 ```
 
 
-Output: 
+Output:
 
-1. The norm of a quaternion: 
+1. The norm of a quaternion:
 
-<code>quaternion/norm q</code> => <code>5.477225575051661</code> 
+<code>quaternion/norm q</code> => <code>5.477225575051661</code>
 
-2. The negative of a quaternion: 
+2. The negative of a quaternion:
 
-<code>quaternion/negate q</code> => <code>[-1 -2 -3 -4]</code> 
+<code>quaternion/negate q</code> => <code>[-1 -2 -3 -4]</code>
 
 3. The conjugate of a quaternion:
 
-<code>quaternion/conjugate q</code> => <code>[1 -2 -3 -4]</code> 
+<code>quaternion/conjugate q</code> => <code>[1 -2 -3 -4]</code>
 
 4. Addition of a real number <code>r</code> and a quaternion <code>q</code>:
 
-<code>quaternion/add r q</code> => <code>[8 2 3 4]</code> 
+<code>quaternion/add r q</code> => <code>[8 2 3 4]</code>
 
-<code>quaternion/add q r</code> => <code>[8 2 3 4]</code> 
+<code>quaternion/add q r</code> => <code>[8 2 3 4]</code>
 
-5. Addition of two quaternions: 
+5. Addition of two quaternions:
 
-<code>quaternion/add q1 q2</code> => <code>[5 7 9 11]</code> 
+<code>quaternion/add q1 q2</code> => <code>[5 7 9 11]</code>
 
-6. Multiplication of a real number and a quaternion: 
+6. Multiplication of a real number and a quaternion:
 
-<code>quaternion/multiply q r</code> => <code>[7 14 21 28]</code> 
+<code>quaternion/multiply q r</code> => <code>[7 14 21 28]</code>
 
 <code>quaternion/multiply r q</code> => <code>[7 14 21 28]</code>
 
 7. Multiplication of two quaternions <code>q1</code> and <code>q2</code> is given by:
 
-<code>quaternion/multiply q1 q2</code> => <code>[-56 16 24 26]</code> 
+<code>quaternion/multiply q1 q2</code> => <code>[-56 16 24 26]</code>
 
 8. Show that, for the two quaternions <code>q1</code> and <code>q2</code>:
 
@@ -6554,17 +6554,17 @@ class Quaternion
     raise ArgumentError, "invalid value of quaternion parts #{parts}" unless parts.all? {|x| x.is_a?(Numeric)}
     @parts = parts
   end
-  
+
   def to_a;          @parts;                                       end
   def to_s;          "Quaternion#{@parts.to_s}"                    end
   alias inspect to_s
   def complex_parts; [Complex(*to_a[0..1]), Complex(*to_a[2..3])]; end
-  
+
   def real;          @parts.first;                                 end
   def imag;          @parts[1..3];                                 end
   def conj;          Quaternion.new(real, *imag.map(&:-@));        end
   def norm;          Math.sqrt(to_a.reduce(0){|sum,e| sum + e**2}) end # In Rails: Math.sqrt(to_a.sum { e**2 })
-  
+
   def ==(other)
     case other
     when Quaternion; to_a == other.to_a
@@ -6574,7 +6574,7 @@ class Quaternion
   end
   def -@;            Quaternion.new(*to_a.map(&:-@));              end
   def -(other);      self + -other;                                end
-  
+
   def +(other)
     case other
     when Numeric
@@ -6583,7 +6583,7 @@ class Quaternion
       Quaternion.new(*to_a.zip(other.to_a).map { |x,y| x + y }) # In Rails: zip(other).map(&:sum)
     end
   end
-  
+
   def *(other)
     case other
     when Numeric
@@ -6595,7 +6595,7 @@ class Quaternion
       Quaternion.new(x.real, x.imag, y.real, y.imag)
     end
   end
-  
+
   # Coerce is called by Ruby to return a compatible type/receiver when the called method/operation does not accept a Quaternion
   def coerce(other)
     case other
@@ -6603,7 +6603,7 @@ class Quaternion
     else raise TypeError, "#{other.class} can't be coerced into #{self.class}"
     end
   end
-  
+
   class Scalar
     def initialize(val); @val = val;                            end
     def +(other);        other + @val;                          end
@@ -6877,24 +6877,24 @@ case class Quaternion(re: Double = 0.0, i: Double = 0.0, j: Double = 0.0, k: Dou
   lazy val im = (i, j, k)
   private lazy val norm2 = re*re + i*i + j*j + k*k
   lazy val norm = math.sqrt(norm2)
- 
+
   def negative = Quaternion(-re, -i, -j, -k)
   def conjugate = Quaternion(re, -i, -j, -k)
   def reciprocal = Quaternion(re/norm2, -i/norm2, -j/norm2, -k/norm2)
- 
+
   def +(q: Quaternion) = Quaternion(re+q.re, i+q.i, j+q.j, k+q.k)
   def -(q: Quaternion) = Quaternion(re-q.re, i-q.i, j-q.j, k-q.k)
   def *(q: Quaternion) = Quaternion(
 	 re*q.re - i*q.i - j*q.j - k*q.k,
 	 re*q.i + i*q.re + j*q.k - k*q.j,
 	 re*q.j - i*q.k + j*q.re + k*q.i,
-	 re*q.k + i*q.j - j*q.i + k*q.re	 
+	 re*q.k + i*q.j - j*q.i + k*q.re
   )
   def /(q: Quaternion) = this * q.reciprocal
- 
+
   def unary_- = negative
   def unary_~ = conjugate
- 
+
   override def toString = "Q(%.2f, %.2fi, %.2fj, %.2fk)".formatLocal(java.util.Locale.ENGLISH, re, i, j, k)
 }
 
@@ -6913,13 +6913,13 @@ val q0=Quaternion(1.0, 2.0, 3.0, 4.0);
 val q1=Quaternion(2.0, 3.0, 4.0, 5.0);
 val q2=Quaternion(3.0, 4.0, 5.0, 6.0);
 val r=7;
-	 
+
 println("q0 = "+ q0)
 println("q1 = "+ q1)
 println("q2 = "+ q2)
 println("r  = "+ r)
 println()
-	 
+
 println("q0.re            = "+ q0.re)
 println("q0.im            = "+ q0.im)
 println("q0.norm          = "+ q0.norm)
@@ -7053,7 +7053,7 @@ import Foundation
 
 struct Quaternion {
   var a, b, c, d: Double
-  
+
   static let i = Quaternion(a: 0, b: 1, c: 0, d: 0)
   static let j = Quaternion(a: 0, b: 0, c: 1, d: 0)
   static let k = Quaternion(a: 0, b: 0, c: 0, d: 1)
@@ -7448,8 +7448,8 @@ End Sub
 q            =  1  + 2i + 3j + 4k
 q1           =  2  + 3i + 4j + 5k
 q2           =  3  + 4i + 5j + 6k
-r            =  7 
-norm(q)      =  5,47722557505166 
+r            =  7
+norm(q)      =  5,47722557505166
 negative(q)  = -1  - 2i - 3j - 4k
 conjugate(q) =  1  - 2i - 3j - 4k
 r + q        =  8  + 2i + 3j + 4k
@@ -7646,7 +7646,7 @@ class Quat{
       versor =fcn{ self / abs; }, 		// Unit versor
       iversor=fcn{ pureim / pureim.abs; },	// Unit versor of imagery part
    ;
- 
+
    fcn __opEQ(z) { r == z.r and i == z.i and j == z.j and k == z.k }
    fcn __opNEQ(z){ (not (self==z)) }
 
@@ -7672,7 +7672,7 @@ class Quat{
       if (Quat.isInstanceOf(z)) self*z.recip;
       else			Quat(r/z,i/z,j/z,k/z);
    }
- 
+
    fcn pow(r){ exp(r*iversor*arg)*abs.pow(r) }	// Power function
    fcn log{ iversor*(r / abs).acos() + abs.log() }
    fcn exp{					// e^q
@@ -7681,13 +7681,13 @@ class Quat{
    }
 }
 ```
- 
+
 
 ```zkl
     // Demo code
 r:=7;
 q:=Quat(2,3,4,5); q1:=Quat(2,3,4,5); q2:=Quat(3,4,5,6);
- 
+
 println("1.          norm: q.abs: ", q.abs);
 println("2.                   -q: ", -q);
 println("3.    conjugate: q.conj: ", q.conj);

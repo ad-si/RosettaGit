@@ -13,14 +13,14 @@ tags = []
 {{task|Prime Numbers}}
 
 ;Task:
-Write a boolean function that tells whether a given integer is prime. 
+Write a boolean function that tells whether a given integer is prime.
 
 
 Remember that   '''1'''   and all non-positive numbers are not prime.
 
-Use trial division. 
+Use trial division.
 
-Even numbers over two may be eliminated right away. 
+Even numbers over two may be eliminated right away.
 
 A loop from   '''3'''   to   '''&radic;{{overline| n }}  ''' will suffice,   but other loops are allowed.
 
@@ -287,16 +287,16 @@ end Is_Prime;
 As an alternative, one can use the generic function Prime_Numbers.Is_Prime, as specified in [[Prime decomposition#Ada]], which also implements trial division.
 
 ```Ada
-with Prime_Numbers; 
+with Prime_Numbers;
 
 procedure Test_Prime is
 
-   package Integer_Numbers is new 
-     Prime_Numbers (Natural, 0, 1, 2); 
+   package Integer_Numbers is new
+     Prime_Numbers (Natural, 0, 1, 2);
    use Integer_Numbers;
 
 begin
-   if Is_Prime(12) or (not Is_Prime(13)) then 
+   if Is_Prime(12) or (not Is_Prime(13)) then
       raise Program_Error with "Test_Prime failed!";
    end if;
 end Test_Prime;
@@ -312,10 +312,10 @@ end Test_Prime;
 {{prelude/is_prime.a68}};
 
 ```algol68
-main:( 
+main:(
   INT upb=100;
   printf(($" The primes up to "g(-3)" are:"l$,upb));
-  FOR i TO upb DO 
+  FOR i TO upb DO
     IF is prime(i) THEN
       printf(($g(-4)$,i))
     FI
@@ -406,13 +406,13 @@ else (
 [http://www.autohotkey.com/forum/topic44657.html Discussion]
 
 ```autohotkey
-MsgBox % IsPrime(1995937) 
-Loop 
-   MsgBox % A_Index-3 . " is " . (IsPrime(A_Index-3) ? "" : "not ") . "prime." 
+MsgBox % IsPrime(1995937)
+Loop
+   MsgBox % A_Index-3 . " is " . (IsPrime(A_Index-3) ? "" : "not ") . "prime."
 
-IsPrime(n,k=2) { ; testing primality with trial divisors not multiple of 2,3,5, up to sqrt(n) 
-   d := k+(k<7 ? 1+(k>2) : SubStr("6-----4---2-4---2-4---6-----2",Mod(k,30),1)) 
-   Return n < 3 ? n>1 : Mod(n,k) ? (d*d <= n ? IsPrime(n,d) : 1) : 0 
+IsPrime(n,k=2) { ; testing primality with trial divisors not multiple of 2,3,5, up to sqrt(n)
+   d := k+(k<7 ? 1+(k>2) : SubStr("6-----4---2-4---2-4---6-----2",Mod(k,30),1))
+   Return n < 3 ? n>1 : Mod(n,k) ? (d*d <= n ? IsPrime(n,d) : 1) : 0
 }
 ```
 
@@ -570,12 +570,12 @@ NEXT n
 1001 REM * PRIME CHECK *
 1002 REM ***************
 1010 LET p=0
-1020 IF n/2=INT (n/2) THEN RETURN 
+1020 IF n/2=INT (n/2) THEN RETURN
 1030 LET p=1
 1040 FOR i=3 TO SQR (n) STEP 2
-1050 IF n/i=INT (n/i) THEN LET p=0: LET i= SQR (n) 
+1050 IF n/i=INT (n/i) THEN LET p=0: LET i= SQR (n)
 1060 NEXT i
-1070 RETURN 
+1070 RETURN
 
 ```
 
@@ -599,7 +599,7 @@ NEXT n
         IF FNisprime(i%) PRINT ; i% " is prime"
       NEXT
       END
-      
+
       DEF FNisprime(n%)
       IF n% <= 1 THEN = FALSE
       IF n% <= 3 THEN = TRUE
@@ -719,7 +719,7 @@ Yes
   ' ( !p+1:<100000000100:?p
     & (   prime$!p
         & out$!p
-      | 
+      |
       )
     )
 & ;
@@ -745,7 +745,7 @@ Yes
 ```burlesque>fcL[2==</lang
 
 
-Implicit trial division is done by the ''fc'' function. It checks if the number has exactly two divisors. 
+Implicit trial division is done by the ''fc'' function. It checks if the number has exactly two divisors.
 
 Version not using the ''fc'' function:
 
@@ -760,7 +760,7 @@ blsq ) 13^^2\/?dr@.%{0==}ayn!
 ```
 
 Explanation. Given ''n'' generates a block containing ''2..n-1''. Calculates a block of modolus and check if it contains ''0''. If it contains ''0''
-it is not a prime. 
+it is not a prime.
 
 
 ## C
@@ -784,8 +784,8 @@ int is_prime(unsigned int n)
 ## C++
 
 
-```cpp>#include <cmath
-
+```cpp
+#include <cmath>
 
 bool is_prime(unsigned int n)
 {
@@ -807,8 +807,8 @@ bool is_prime(unsigned int n)
 static bool isPrime(int n)
         {
             if (n <= 1) return false;
-            for (int i = 2; i * i <= n; i++)            
-                if (n % i == 0) return false;            
+            for (int i = 2; i * i <= n; i++)
+                if (n % i == 0) return false;
             return true;
         }
 ```
@@ -986,7 +986,7 @@ is_prime = (n) ->
     return false if n % p == 0
     p += 1
   true
-  
+
 for i in [-1..100]
   console.log i if is_prime i
 ```
@@ -999,7 +999,7 @@ for i in [-1..100]
 ```Lisp
 (defun primep (n)
   "Is N prime?"
-  (and (> n 1) 
+  (and (> n 1)
        (or (= n 2) (oddp n))
        (loop for i from 3 to (isqrt n) by 2
 	  never (zerop (rem n i)))))
@@ -1122,7 +1122,7 @@ void main() {
 ## Delphi
 
 
-###  First 
+###  First
 
 
 ```Delphi
@@ -1148,7 +1148,7 @@ end;
 
 
 
-###  Second 
+###  Second
 
 
 ```Delphi
@@ -1207,7 +1207,7 @@ def isPrime(n :int) {
 	(cond
 	[(< p 2) #f]
 	[(zero? (modulo p 2)) (= p 2)]
-	[else 
+	[else
 	(for/and ((d [3 5 .. (1+ (sqrt p))] ))  (!zero? (modulo p d)))]))
 
 (filter is-prime? (range 1 100))
@@ -1221,11 +1221,11 @@ def isPrime(n :int) {
 	[(zero? (modulo p 3)) (= p 3)]
 	[(zero? (modulo p 5)) (= p 5)]
 	[else  ;; step 6 : try divisors 6n+1 or 6n+5
-		(for ((d [7 13 .. (1+ (sqrt p))] ))  
+		(for ((d [7 13 .. (1+ (sqrt p))] ))
 			#:break (zero? (modulo p d)) => #f
 			#:break (zero? (modulo p (+ d 4))) => #f
 			#t )]))
-	
+
 (filter is-prime? (range 1 100))
     → (2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97)
 ```
@@ -1315,7 +1315,7 @@ defmodule RC do
   def is_prime(2), do: true
   def is_prime(n) when n<2 or rem(n,2)==0, do: false
   def is_prime(n), do: is_prime(n,3)
-  
+
   def is_prime(n,k) when n<k*k, do: true
   def is_prime(n,k) when rem(n,k)==0, do: false
   def is_prime(n,k), do: is_prime(n,k+2)
@@ -1575,7 +1575,7 @@ PAUSE
    LOGICAL :: isPrime
    INTEGER, INTENT(IN) :: number
    INTEGER :: i
- 
+
    IF(number==2) THEN
       isPrime = .TRUE.
    ELSE IF(number < 2 .OR. MOD(number,2) == 0) THEN
@@ -1613,8 +1613,8 @@ End Function
 
 ' To test this works, print all primes under 100
 For i As Integer = 1 To 99
-  If isPrime(i) Then 
-    Print Str(i); " "; 
+  If isPrime(i) Then
+    Print Str(i); " ";
   End If
 Next
 
@@ -1636,23 +1636,23 @@ let inline isPrime n = not ({uint64 2..uint64 (sqrt (double n))} |> Seq.exists (
 [<Test>]
 let ``Validate that 2 is prime`` () =
   isPrime 2 |> should equal true
- 
+
 [<Test>]
 let ``Validate that 4 is not prime`` () =
   isPrime 4 |> should equal false
- 
+
 [<Test>]
 let ``Validate that 3 is prime`` () =
   isPrime 3 |> should equal true
- 
+
 [<Test>]
 let ``Validate that 9 is not prime`` () =
   isPrime 9 |> should equal false
- 
+
 [<Test>]
 let ``Validate that 5 is prime`` () =
   isPrime 5 |> should equal true
- 
+
 [<Test>]
 let ``Validate that 277 is prime`` () =
   isPrime 277 |> should equal true
@@ -1680,7 +1680,7 @@ If you have a lot of prime numbers to test, caching a sequence of primes can spe
 
 ```fsharp
 let rec primes = Seq.cache(Seq.append (seq[ 2; 3; 5 ]) (Seq.unfold (fun state -> Some(state, state + 2)) 7 |> Seq.filter (fun x -> IsPrime x)))
-    
+
 and IsPrime number =
     let rec IsPrimeCore number current limit =
         let cprime = primes |> Seq.nth current
@@ -1755,22 +1755,22 @@ next
 
 Output:
  Prime numbers between 0 and 1000:
- 2     3     5     7     11    13    17    19    23    29   
- 31    37    41    43    47    53    59    61    67    71   
- 73    79    83    89    97    101   103   107   109   113  
- 127   131   137   139   149   151   157   163   167   173  
- 179   181   191   193   197   199   211   223   227   229  
- 233   239   241   251   257   263   269   271   277   281  
- 283   293   307   311   313   317   331   337   347   349  
- 353   359   367   373   379   383   389   397   401   409  
- 419   421   431   433   439   443   449   457   461   463  
- 467   479   487   491   499   503   509   521   523   541  
- 547   557   563   569   571   577   587   593   599   601  
- 607   613   617   619   631   641   643   647   653   659  
- 661   673   677   683   691   701   709   719   727   733  
- 739   743   751   757   761   769   773   787   797   809  
- 811   821   823   827   829   839   853   857   859   863  
- 877   881   883   887   907   911   919   929   937   941  
+ 2     3     5     7     11    13    17    19    23    29
+ 31    37    41    43    47    53    59    61    67    71
+ 73    79    83    89    97    101   103   107   109   113
+ 127   131   137   139   149   151   157   163   167   173
+ 179   181   191   193   197   199   211   223   227   229
+ 233   239   241   251   257   263   269   271   277   281
+ 283   293   307   311   313   317   331   337   347   349
+ 353   359   367   373   379   383   389   397   401   409
+ 419   421   431   433   439   443   449   457   461   463
+ 467   479   487   491   499   503   509   521   523   541
+ 547   557   563   569   571   577   587   593   599   601
+ 607   613   617   619   631   641   643   647   653   659
+ 661   673   677   683   691   701   709   719   727   733
+ 739   743   751   757   761   769   773   787   797   809
+ 811   821   823   827   829   839   853   857   859   863
+ 877   881   883   887   907   911   919   929   937   941
  947   953   967   971   977   983   991   997
 
 
@@ -1848,7 +1848,7 @@ IsPrimeTrial := function(n)
    return true;
 end;
 
-Filtered([1 .. 100], IsPrimeTrial);                              
+Filtered([1 .. 100], IsPrimeTrial);
 # [ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97 ]
 ```
 
@@ -1865,7 +1865,7 @@ func IsPrime(n int) bool {
 		return true
 	case n < 2 || n % 2 == 0:
 		return false
-	
+
 	default:
 		for i = 3; i*i <= n; i += 2 {
 			if n % i == 0 { return false }
@@ -1882,8 +1882,8 @@ Or, using recursion:
 ```go
 func IsPrime(n int) bool {
 	if n < 0 { n = -n }
-	if n <= 2 { 
-		return n == 2 
+	if n <= 2 {
+		return n == 2
 	}
 	return n % 2 != 0 && isPrime_r(n, 3)
 }
@@ -1903,7 +1903,7 @@ func isPrime_r(n, i int) bool {
 
 ```groovy
 def isPrime = {
-    it == 2 || 
+    it == 2 ||
     it > 1 &&
     (2..Math.max(2, (int) Math.sqrt(it))).every{ k -> it % k != 0 }
 }
@@ -1927,10 +1927,10 @@ isPrime n = n==2 || n>2 && all ((> 0).rem n) (2:[3,5..floor.sqrt.fromIntegral $ 
 Testing by prime numbers only is faster. Primes list is saved for reuse. Precalculation of primes pays off if testing more than just a few numbers, and/or primes are generated efficiently enough:
 
 ```haskell
-noDivsBy factors n = foldr (\f r-> f*f>n || ((rem n f /= 0) && r)) True factors 
+noDivsBy factors n = foldr (\f r-> f*f>n || ((rem n f /= 0) && r)) True factors
 
 -- primeNums = filter (noDivsBy [2..]) [2..]
---           = 2 : filter (noDivsBy [3,5..]) [3,5..] 
+--           = 2 : filter (noDivsBy [3,5..]) [3,5..]
 primeNums = 2 : 3 : filter (noDivsBy $ tail primeNums) [5,7..]
 
 isPrime n = n > 1 && noDivsBy primeNums n
@@ -1940,14 +1940,14 @@ Any increasing ''unbounded'' sequence of numbers that includes all primes (above
 
 A less efficient, more basic variant:
 
-```haskell>isPrime n = n 
+```haskell>isPrime n = n
  1 && []==[i | i <- [2..n-1], rem n i == 0]
 ```
 
 
 The following is an attempt at improving it, resulting in absolutely worst performing prime testing code I've ever seen, ever. A curious oddity.
 
-```haskell>isPrime n = n 
+```haskell>isPrime n = n
  1 && []==[i | i <- [2..n-1], isPrime i && rem n i == 0]
 ```
 
@@ -2161,7 +2161,7 @@ fun main(args: Array<String>) {
 ## Langur
 
 
-###  Recursive 
+###  Recursive
 
 {{trans|Go}}
 
@@ -2187,12 +2187,12 @@ writeln where .isPrime, series 100
 
 
 
-###  Functional 
+###  Functional
 
 {{trans|Perl 6}}
 Following the Perl 6 example, which states, "Integer $i is prime if it is greater than one and is divisible by none of 2, 3, up to the square root of $i" (plus an adjustment for the prime number 2).
 
-```Langur>val .isPrime = f .i == 2 or .i 
+```Langur>val .isPrime = f .i == 2 or .i
  2 and not any f(.x) .i rem .x == 0, pseries 2 to .i ^/ 2
 
 writeln where .isPrime, series 100
@@ -2294,13 +2294,13 @@ end
 over : 2 pick
  2dup : over over
  even? : 1 & 0 =
- 
+
  # trial n d yields "n d 0/1 false" or "n d+2 true"
  trial : 2 +                 true
  trial : 2dup % 0 =   then 0 false
  trial : 2dup dup * < then 1 false
  trial-loop : trial &repeat
- 
+
  # prime? n yields flag
  prime? : 3 trial-loop >flag drop drop
  prime? : dup even? then drop false
@@ -2351,10 +2351,10 @@ Type of number Decimal.
                   d += 4: if d<= x1 else Append Known1, x :  =1=1: exit
              loop}
       }
-      
+
       i=2
       While Len(Known1)<20 {
-            dummy=Isprime(i)            
+            dummy=Isprime(i)
             i++
       }
       Print "first ";len(known1);" primes"
@@ -2461,7 +2461,7 @@ function isPrime = primalityByTrialDivision(n)
         isPrime = false;
         return
     end
-    
+
     %First n mod (3 to sqrt(n)) is taken. This will be a vector where the
     %first element is equal to n mod 3 and the last element is equal to n
     %mod sqrt(n). Then the all function is applied to that vector. If all
@@ -2469,7 +2469,7 @@ function isPrime = primalityByTrialDivision(n)
     %all() returns true. Otherwise, n is composite, so it returns false.
     %This return value is then assigned to the variable isPrime.
     isPrime = all(mod(n, (3:round(sqrt(n))) ));
-    
+
 end
 ```
 
@@ -2636,7 +2636,7 @@ method isFalse public static returns boolean
 {{out}}
 
 ```txt
-$ java -cp . RCPrimality 
+$ java -cp . RCPrimality
 List of prime numbers from 1 to 100:
   2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97
   Total number of primes: 25
@@ -2659,7 +2659,7 @@ List of prime numbers from 9900 to 10010:
 
 $ java -cp . RCPrimality . -57 1
 List of prime numbers from -57 to 1:
-  
+
   Total number of primes: 0
 
 $ java -cp . RCPrimality . 100 -57
@@ -2753,13 +2753,13 @@ function : IsPrime(n : Int) ~ Bool {
   if(n <= 1) {
     return false;
   };
-  
-  for(i := 2; i * i <= n; i += 1;) {           
+
+  for(i := 2; i * i <= n; i += 1;) {
     if(n % i = 0) {
       return false;
     };
   };
-  
+
   return true;
 }
 ```
@@ -2923,7 +2923,7 @@ begin
 end;
 
 { Test and display primes 0 .. 50 }
-var 
+var
   n: integer;
 begin
   for n := 0 to 50 do
@@ -2937,7 +2937,7 @@ end.
 
 ### improved using number wheel
 
-{{libheader|primTrial}}{{works with|Free Pascal}} 
+{{libheader|primTrial}}{{works with|Free Pascal}}
 
 ```pascal
 program TestTrialDiv;
@@ -2995,7 +2995,7 @@ $s += !!isprime($_) for 1..100000;
 print "Pi(100,000) = $s\n";
 ```
 
-  
+
 
 ### By Regular Expression
 
@@ -3137,7 +3137,7 @@ end is_prime;
 ```PowerShell
 
 function isPrime ($n) {
-    if ($n -eq 1) {$false} 
+    if ($n -eq 1) {$false}
     elseif ($n -eq 2) {$true}
     elseif ($n -eq 3) {$true}
     else{
@@ -3176,10 +3176,10 @@ The following predicate showcases Prolog's support for writing predicates suitab
 
 ```Prolog
 prime(2).
-prime(N) :- 
+prime(N) :-
   between(3, inf, N),
   1 is N mod 2,             % odd
-  M is floor(sqrt(N+1)),    % round-off paranoia 
+  M is floor(sqrt(N+1)),    % round-off paranoia
   Max is (M-1) // 2,        % integer division
   forall( between(1, Max, I), N mod (2*I+1) > 0 ).
 ```
@@ -3215,12 +3215,12 @@ Procedure.i IsPrime(n)
 
    If n = 2
       ProcedureReturn #True
-   EndIf   
+   EndIf
 
    If n <= 1 Or n % 2 = 0
       ProcedureReturn #False
    EndIf
-   
+
    For k = 3 To Int(Sqr(n)) Step 2
       If n % k = 0
          ProcedureReturn #False
@@ -3258,14 +3258,14 @@ Yet another test. Exclude multiples of 2 and 3, see http://www.devx.com/vb2thema
 ```python
 def prime3(a):
     if a < 2: return False
-    if a == 2 or a == 3: return True # manually test 2 and 3   
+    if a == 2 or a == 3: return True # manually test 2 and 3
     if a % 2 == 0 or a % 3 == 0: return False # exclude multiples of 2 and 3
 
     maxDivisor = a**0.5
     d, i = 5, 2
     while d <= maxDivisor:
         if a % d == 0: return False
-        d += i 
+        d += i
         i = 6 - i # this modifies 2 into 4 and viceversa
 
     return True
@@ -3383,11 +3383,11 @@ Programming note:   all the REXX programs below show all primes up and including
 :::   If the number is negative, the absolute value of it is used for the upper limit, but no primes are shown.
 :::   The   ''number''   of primes found is always shown.
 
-Also, it was determined that computing the (integer) square root of the number to be tested in the   '''isPrime'''   
+Also, it was determined that computing the (integer) square root of the number to be tested in the   '''isPrime'''
 
 function slowed up the function   (for all three REXX versions),   however, for larger numbers of   '''N''',   it would
 
-be faster.  
+be faster.
 
 ```rexx
 /*REXX program tests for  primality by using  (kinda smartish)  trial division.         */
@@ -3484,7 +3484,7 @@ isPrime: procedure;  parse arg x                       /*get integer to be inves
 
 ### unrolled version
 
-This version uses an ''unrolled'' version (of the 2<sup>nd</sup> version) of some multiple-clause   '''if'''   statements, and 
+This version uses an ''unrolled'' version (of the 2<sup>nd</sup> version) of some multiple-clause   '''if'''   statements, and
 
 also an optimized version of the testing of low primes is used, making it about 22% faster.
 
@@ -3552,9 +3552,9 @@ isPrime: procedure;    parse arg x               /*get the integer to be investi
 
 
 ```ring
-give n 
+give n
 flag = isPrime(n)
-if flag = 1 see n + " is a prime number" 
+if flag = 1 see n + " is a prime number"
 else see n + " is not a prime number" ok
 
 func isPrime num
@@ -3707,7 +3707,7 @@ fn main() {
    if ((n & 1) == 0) return(0);
 
    variable mx = int(sqrt(n)), i;
-   
+
    _for i (3, mx, 1) {
      if ((n mod i) == 0)
        return(0);
@@ -3715,7 +3715,7 @@ fn main() {
    return(1);
 }
 
-define ptest() 
+define ptest()
 {
    variable lst = {};
 
@@ -3960,7 +3960,7 @@ end_rprime
 *       # Test and display primes 0 .. 50
 loop    rprimes = rprimes rprime(n)  ' '
         n = lt(n,50) n + 1 :s(loop)
-        output = rprimes 
+        output = rprimes
 end
 ```
 
@@ -3976,7 +3976,7 @@ end
 declare @number int
 set @number = 514229 -- number to check
 
-;with cte(number) as 
+;with cte(number) as
 (
  select 2
  union all
@@ -3986,17 +3986,17 @@ set @number = 514229 -- number to check
 )
 select
       cast(@number as varchar(100)) +
-      case 
+      case
           when exists
 				  (
-					select * 
-					from 
+					select *
+					from
 					(
 						select number, @number % number modNumber
 						from cte
 					) tmp
-					where tmp.modNumber = 0 
-				  ) 
+					where tmp.modNumber = 0
+				  )
 				          then ' is composite'
 		  else
 						 ' is prime'
@@ -4032,7 +4032,7 @@ import Foundation
 
 extension Int {
   func isPrime() -> Bool {
-    
+
     switch self {
     case let x where x < 2:
       return false
@@ -4071,12 +4071,12 @@ proc is_prime n {
  Disp "PRIME"
  Stop
  End
- 
+
  If (fPart(A/2)=0 and A>0) or A<2:Then
  Disp "NOT PRIME"
  Stop
  End
- 
+
  1→P
  For(B,3,int(√(A)))
  If FPart(A/B)=0:Then
@@ -4085,7 +4085,7 @@ proc is_prime n {
  End
  B+1→B
  End
- 
+
  If P=1:Then
  Disp "PRIME"
  Else
@@ -4324,7 +4324,7 @@ The Method filter1 stops at the first non False result, which, if there is one, 
 
 ```zkl
 fcn isPrime(n){
-   if(n.isEven or n<2) return(n==2); 
+   if(n.isEven or n<2) return(n==2);
    (not [3..n.toFloat().sqrt().toInt(),2].filter1('wrap(m){n%m==0}))
 }
 ```

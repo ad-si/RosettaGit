@@ -47,7 +47,7 @@ s1 + s2 = 70 which ends in zero which means that 49927398716 passes the Luhn tes
 
 
 ;Task:
-Write a function/method/procedure/subroutine that will validate a number with the Luhn test, and 
+Write a function/method/procedure/subroutine that will validate a number with the Luhn test, and
 
 use it to validate the following numbers:
     49927398716
@@ -68,8 +68,8 @@ use it to validate the following numbers:
 ## 360 Assembly
 
 {{trans|VBScript}}
-For maximum compatibility, this program uses only the basic instruction set (S/360) 
-and an ASSIST macro (XPRNT) to keep the code as short as possible. 
+For maximum compatibility, this program uses only the basic instruction set (S/360)
+and an ASSIST macro (XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Luhn test of credit card numbers        22/05/2016
@@ -106,7 +106,7 @@ ELOOPI1  EQU    *                  out of loop i
          BCTR   R5,0               is=s+l-1
          L      R6,L               i=l
          LA     R7,1               to 1
-LOOPI2   CR     R6,R7              for i=l to 1 by -1 
+LOOPI2   CR     R6,R7              for i=l to 1 by -1
          BL     ELOOPI2            leave i
          MVC    0(1,R4),0(R5)        mid(w,iw,1)=mid(s,is,1)
          LA     R4,1(R4)             iw=iw+1
@@ -186,7 +186,7 @@ W        DS     CL(M)
 BLANK    DC     CL(M)' '
 L        DS     F
 Z        DS     F
-PL8      DS     PL8 
+PL8      DS     PL8
 CL16     DS     CL16
 CI       DS     C
 X        DS     C
@@ -226,7 +226,7 @@ PG       DC     CL80' '            buffer
     '0 n:-
     swap 2 n:mod if remap then
     n:+
-  ) s:each 
+  ) s:each
   10 n:mod not ;
 
 : test-luhn \ s --
@@ -234,7 +234,7 @@ PG       DC     CL80' '            buffer
   luhn if "OK" else "FAIL" then . cr ;
 
 "49927398716" test-luhn
-"49927398717" test-luhn 
+"49927398717" test-luhn
 "1234567812345678" test-luhn
 "1234567812345670" test-luhn
 
@@ -365,7 +365,7 @@ function isValid(numString:String):Boolean
 		else evenSum += digit/5 + (2*digit) % 10;
 		isOdd = !isOdd;
 	}
-	if((oddSum + evenSum) % 10 == 0) return true; 
+	if((oddSum + evenSum) % 10 == 0) return true;
 	return false;
 }
 
@@ -404,7 +404,7 @@ procedure Luhn is
     end loop;
     return (Sum mod 10) = 0;
   end Luhn_Test;
- 
+
 begin
 
   Put_Line (Boolean'Image (Luhn_Test ("49927398716")));
@@ -439,18 +439,18 @@ TRUE
 ```algol68
 PROC to int = (CHAR c)INT:
     ABS c - ABS "0";
- 
+
 PROC confirm = (STRING id)BOOL:
 (
     BOOL is odd digit := TRUE;
     INT s := 0;
     STRING cp;
- 
+
     FOR cp key FROM UPB id BY -1 TO LWB id DO
         INT k := to int(id[cp key]);
-        s +:= 
+        s +:=
             IF is odd digit THEN k
-            ELIF k /= 9 THEN 2*k MOD 9 
+            ELIF k /= 9 THEN 2*k MOD 9
             ELSE 9
             FI;
         is odd digit := NOT is odd digit
@@ -573,7 +573,7 @@ r←'0'=⊃¯1↑⍕(+/odd)+(SumEven even)
 
 ```txt
 
- 1 0 0 1   
+ 1 0 0 1
 
 ```
 
@@ -611,12 +611,12 @@ _start:
     bl length
     add r0, r1, r0
     bl test_number
-    
+
     add r1, r0, #1
     bl length
     add r0, r1, r0
     bl test_number
-    
+
     add r1, r0, #1
     bl length
     add r0, r1, r0
@@ -659,12 +659,12 @@ luhn_test:
     bl isNumerical            @ check if string is a number
     cmp r0, #1
     bne .luhn_test_end        @ exit if not number
-    mov r0, r1 
+    mov r0, r1
     ldr r1, =reversed_string  @ address to store reversed string
     bl reverse                @ reverse string
     push {r0}
     bl length   @ get length of string
-    mov r4, r0  @ store string length in r4 
+    mov r4, r0  @ store string length in r4
     pop {r0}
     mov r2, #0  @ string index
     mov r6, #0  @ sum of odd digits
@@ -685,8 +685,8 @@ luhn_test:
             subge r3, #10           @ get digit in 1s place
             addge r3, #1            @ add 1 for the 10s place
             add r7, r3              @ add digit sum to the total
-            
-        .continue: 
+
+        .continue:
         add r2, #1                @ increment digit index
         cmp r2, r4                @ check if at end of string
         blt .loadNext
@@ -704,7 +704,7 @@ luhn_test:
     moveq r0, #1                  @ return true if valid card number
     pop {r1-r7, lr}
     mov pc, lr
-    
+
 length:
     push {r1-r2, lr}
     mov r2, r0              @ start of string address
@@ -774,7 +774,7 @@ example_numbers:
     .asciz "49927398716"
     .asciz "49927398717"
     .asciz "1234567812345678"
-    .asciz "1234567812345670" 
+    .asciz "1234567812345670"
 ```
 
 
@@ -839,7 +839,7 @@ EndFunc   ;==>checkLuhn
 ```
 
 
-{{out}} 
+{{out}}
 
 ```txt
 Luhn-Check (49927398716) : True
@@ -863,7 +863,7 @@ BEGIN {
     A[5] = "01234567897";
     A[6] = "01234567890";
     A[7] = "00000000000";
-    for (k in A) print "isLuhn("A[k]"): ",isLuhn(A[k]);	
+    for (k in A) print "isLuhn("A[k]"): ",isLuhn(A[k]);
 }
 
 function isLuhn(cardno) {
@@ -876,7 +876,7 @@ function isLuhn(cardno) {
     for (k = n-1; 0 < k; k -= 2) {
 	s += substr(m, substr(cardno, k, 1)+1, 1);
     }
-    return ((s%10)==0);	
+    return ((s%10)==0);
 }
 ```
 
@@ -1020,9 +1020,9 @@ set s1=0&set s2=0
         ENDIF
       NEXT card%
       END
-      
+
       DATA 49927398716, 49927398717, 1234567812345678, 1234567812345670
-      
+
       DEF FNluhn(card$)
       LOCAL I%, L%, N%, S%
       L% = LEN(card$)
@@ -1088,7 +1088,7 @@ l(1234567812345670)
 
 
 
-```befunge>v  1   
+```befunge>v  1
 $0 v   v                                    <
 >&:19+`|v  <            >v      5      6   7      8
 ^  \   <>09p19p>09g+09p:|>2*:19+%19g+19p19+/19g+19p:|
@@ -1120,8 +1120,8 @@ The code requires input be separated by spaces and ended with a number greater t
 
 ```txt
 
-4 9 9 2 7 3 9 8 7 1 6 99        
-4 9 9 2 7 3 9 8 7 1 7 99            
+4 9 9 2 7 3 9 8 7 1 6 99
+4 9 9 2 7 3 9 8 7 1 7 99
 1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 8 99
 1 2 3 4 5 6 7 8 1 2 3 4 5 6 7 0 99
 
@@ -1161,7 +1161,7 @@ valid
       & mod$(!sum.10):0
   )
 & ( test
-  =   
+  =
     .   out
       $ (!arg ":" (luhn$!arg&true|false))
   )
@@ -1186,8 +1186,8 @@ valid
 ## C
 
 
-```c>#include <string.h
-
+```c
+#include <string.h>
 #include <stdio.h>
 
 int luhn(const char* cc)
@@ -1230,8 +1230,8 @@ int main()
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 using namespace std;
 
 int toInt(const char c)
@@ -1281,8 +1281,8 @@ int main( )
 ### C++11
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 #include <algorithm>
 using namespace std;
@@ -1310,8 +1310,8 @@ int main( )
 It is also possible to achieve a compile-time version using metaprogramming.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <type_traits>
 
 template<size_t I, int... Args>
@@ -1480,10 +1480,10 @@ namespace Luhn
     {
         public static bool luhn(long n)
         {
-            long nextdigit, sum = 0;            
-            bool alt = false;            
+            long nextdigit, sum = 0;
+            bool alt = false;
             while (n != 0)
-            {                
+            {
                 nextdigit = n % 10;
                 if (alt)
                 {
@@ -1504,14 +1504,14 @@ namespace Luhn
         }
 
         static void Main(string[] args)
-        {            
+        {
             long[] given = new long[] {49927398716, 49927398717, 1234567812345678, 1234567812345670};
             foreach (long num in given)
             {
                 string valid = (luhn(num)) ? " is valid" : " is not valid";
                 Console.WriteLine(num + valid);
             }
-            
+
         }
     }
 }
@@ -1535,7 +1535,7 @@ A solution without using LINQ, works for all versions of .NET.
 using System;
 namespace Luhn_Test
 {
-	public static class Extensions 
+	public static class Extensions
 	{
 		public static string Reverse(this string s )
 		{
@@ -1555,7 +1555,7 @@ namespace Luhn_Test
 			while (x!=0)
 			{
 				s1+=STATE?x%10:0;
-				s2+=STATE?0:((x%10)*2>9)?(((x%10)*2/10)+((x%10)*2)%10):((x%10)*2); 
+				s2+=STATE?0:((x%10)*2>9)?(((x%10)*2/10)+((x%10)*2)%10):((x%10)*2);
 				STATE=!STATE; //Switch state
 				x/=10; //Cut the last digit and continue
 			}
@@ -1566,10 +1566,10 @@ namespace Luhn_Test
 			long[] ks = {1234567812345670, 49927398717, 1234567812345678 ,1234567812345670 };
 			foreach (long k in ks)
 			{
-			Console.WriteLine("{0} is {1} Valid.",k,Luhn(k)?"":"Not");	
+			Console.WriteLine("{0} is {1} Valid.",k,Luhn(k)?"":"Not");
 			}
 		Start:
-			try { 
+			try {
 			Console.WriteLine("Enter your credit:");
 			long x=long.Parse(Console.ReadLine());
 			Console.WriteLine("{0} Valid.",Luhn(x)?"":"Not");
@@ -1578,7 +1578,7 @@ namespace Luhn_Test
 			catch (FormatException)
 			{
 				goto Start;
-			}			
+			}
 		}
 	}
 }
@@ -1867,10 +1867,10 @@ shared Boolean luhn(String number) {
 
 ```txt
 
-input=49927398716         pass 
-input=49927398717         fail 
-input=1234567812345678    fail 
-input=1234567812345670    pass 
+input=49927398716         pass
+input=49927398717         fail
+input=1234567812345678    fail
+input=1234567812345670    pass
 
 ```
 
@@ -2039,10 +2039,10 @@ void main() {
 ;;Luhn test
 ;; input : a string of decimal digits
 ;; output #t or #f
-(define (valid nums (odd #f )) 
+(define (valid nums (odd #f ))
     (let ((nums (map string->number (reverse (string->list nums)))))
-    (= 0 (modulo 
-       (for/sum ((n nums)) (set! odd (not odd)) (if odd n (even-val n))) 
+    (= 0 (modulo
+       (for/sum ((n nums)) (set! odd (not odd)) (if odd n (even-val n)))
        10))))
 
 (valid "49927398716") → #t
@@ -2122,7 +2122,7 @@ for n <- numbers, do: IO.puts "#{n}: #{Luhn.valid?(n)}"
 {{out}}
 
 ```txt
- (t nil nil t) 
+ (t nil nil t)
 ```
 
 
@@ -2430,12 +2430,12 @@ test card nr:
 ```funl
 def luhn_checksum( card_number ) =
   def digits_of( n ) = [int(d) | d <- n.toString()]
-  
+
   digits = digits_of( card_number ).reverse()
   odd_digits = digits(0:digits.length():2)
   even_digits = digits(1:digits.length():2)
   (sum( odd_digits ) + sum( sum(digits_of(d*2)) | d <- even_digits )) mod 10
- 
+
 def is_luhn_valid( card_number ) = luhn_checksum( card_number ) == 0
 
 for n <- [49927398716, 49927398717, 1234567812345678, 1234567812345670]
@@ -2481,7 +2481,7 @@ For siQty = 0 To sTrial.Max
     If Odd(siCount) Then siOdd += Val(Mid(sRev, siCount, 1))
     If Even(siCount) Then
       siHold = Val(Mid(sRev, siCount, 1)) * 2
-      If siHold > 9 Then 
+      If siHold > 9 Then
         siEven += Val(Mid(Str(siHold), 1, 1)) + Val(Mid(Str(siHold), 2, 1))
       Else
         siEven += Val(Mid(sRev, siCount, 1)) * 2
@@ -2490,7 +2490,7 @@ For siQty = 0 To sTrial.Max
   Next
 
   sRev = Str(siOdd + siEven)
-  If sRev Ends "0" Then 
+  If sRev Ends "0" Then
     Print sTrial[siQty] & " is a valid number"
   Else
     Print sTrial[siQty] & " is NOT a valid number"
@@ -2732,13 +2732,13 @@ procedure main(aL)
 every write(i := !aL ," - ", ((\isluhn10(i),"valid")|"invalid") \ 1)
 end
 
-procedure isluhn10(i)  #: isluhn10(i) returns i (if i passes luhn10) or fails 
+procedure isluhn10(i)  #: isluhn10(i) returns i (if i passes luhn10) or fails
 local sum
 
 sum :=0
-reverse(integer(i)) ? while not pos(0) do {  
+reverse(integer(i)) ? while not pos(0) do {
       sum +:= move(1)
-      sum +:= map(move(1),"0123456789","0246813579")  
+      sum +:= map(move(1),"0123456789","0246813579")
    }
 
 return (sum % 10 = 0,i)
@@ -2818,8 +2818,8 @@ Card number is valid.
 ## J
 
 
-We can treat the odd digits the same as even digits, 
-except that they are not doubled.  
+We can treat the odd digits the same as even digits,
+except that they are not doubled.
 Also, we do not need the intermediate sums.
 
 
@@ -2850,7 +2850,7 @@ public class Luhn {
         System.out.println(luhnTest("1234567812345678"));
         System.out.println(luhnTest("1234567812345670"));
     }
-    
+
     public static boolean luhnTest(String number){
         int s1 = 0, s2 = 0;
         String reverse = new StringBuffer(number).reverse().toString();
@@ -2930,10 +2930,10 @@ var luhn10 = function(a,b,c,d,e) {
 };
 
 // returns true
-luhn10('4111111111111111') 
+luhn10('4111111111111111')
 
 // returns false
-luhn10('4111111111111112') 
+luhn10('4111111111111112')
 
 ```
 
@@ -3310,7 +3310,7 @@ function luhn(n)
     return true
   end
   return false
-end 
+end
 
 -- Note that this function takes strings, not numbers.
 -- 16-digit numbers tend to be problematic
@@ -3331,13 +3331,13 @@ print(luhn'1234567812345670')
 
 Module Checkit {
       Function luhntest(cardnr$) {
-       
+
             cardnr$ = Trim$(cardnr$) ' we don't want spaces
             if len(cardnr$)=0 then exit
             Dim Base 0,  reverse_nr$(Len(cardnr$))
             Def integer  i, j, s1, s2, l , l2
             Let l=Len(cardnr$)-1, l2=l+1
-               
+
             ' reverse string
             For i = 0 To l
                 reverse_nr$(i) = mid$(cardnr$,l2-i,1)
@@ -3353,12 +3353,12 @@ Module Checkit {
                 If j > 9 Then j = j Mod 10 + 1
                 s2 = s2 + j
             Next i
-               
+
             If (s1 + s2) Mod 10 = 0 Then
                 = 1=1
             Else
                 = 1=0
-            End If       
+            End If
       }
       Flush
       Data "49927398716",  "49927398717", "1234567812345678", "1234567812345670"
@@ -3401,7 +3401,7 @@ Eliminates conversion of numbers to strings and back
 ```Mathematica
 LuhnQ[n_Integer] :=
  Block[{digits = Reverse@IntegerDigits@n},
-  Mod[Total[{digits[[;; ;; 2]], 
+  Mod[Total[{digits[[;; ;; 2]],
       IntegerDigits[2 #] & /@ digits[[2 ;; ;; 2]]}, -1], 10] == 0]
 
 LuhnQ /@ {49927398716, 49927398717, 1234567812345678, 1234567812345670}
@@ -3416,7 +3416,7 @@ LuhnQ /@ {49927398716, 49927398717, 1234567812345678, 1234567812345670}
 
 ## MATLAB
 
-The solution is basically the same as for [[#Octave|Octave]]. 
+The solution is basically the same as for [[#Octave|Octave]].
 
 ```MATLAB
 function passed = luhn(num)
@@ -3425,12 +3425,12 @@ if nargin == 0 % evaluate test cases
   for num = testnum
     disp([int2str(num) ': ' int2str(luhn(num))])
   end
-  return  
+  return
 end
 % luhn function starts here
 d = int2str(num) - '0';	% convert number into vector of digits
 m = [2:2:8,1:2:9];	% rule 3: maps 1:9 to [2 4 6 8 1 3 5 7 9]
-passed = ~mod(sum(d(end:-2:1)) + sum(m(d(end-1:-2:1))), 10);  
+passed = ~mod(sum(d(end:-2:1)) + sum(m(d(end-1:-2:1))), 10);
 end
 ```
 
@@ -3526,16 +3526,16 @@ LUHN(C)
 
 ```txt
 USER>W !,$S($$LUHN^ROSETTA("49927398716")=0:"INVALID",1:"VALID")
- 
+
 VALID
 USER>W !,$S($$LUHN^ROSETTA("49927398717")=0:"INVALID",1:"VALID")
- 
+
 INVALID
 USER>W !,$S($$LUHN^ROSETTA("1234567812345678")=0:"INVALID",1:"VALID")
- 
+
 INVALID
 USER>W !,$S($$LUHN^ROSETTA("1234567812345670")=0:"INVALID",1:"VALID")
- 
+
 VALID
 ```
 
@@ -3549,18 +3549,18 @@ VALID
 class LuhnTest
 
   method main(args=String[]) static
-    cc	  = 0 
+    cc	  = 0
     cc[1] = '49927398716'
     cc[2] = '49927398717'
     cc[3] = '1234567812345678'
     cc[4] = '1234567812345670'
- 
+
     loop k=1 while cc[k] <> 0
       r = checksum(cc[k])
       if r==0 then say cc[k].right(20) 'passed'
       else say cc[k].right(20) 'failed'
     end
-    
+
     -- Luhn algorithm checksum for credit card numbers
   method checksum(t) static
     if t.length()//2 then t = '0't  --pad # on left with 0
@@ -3616,21 +3616,21 @@ bundle Default {
       isOdd := true;
       oddSum := 0;
       evenSum := 0;
-      
+
       for(i := cc->Size() - 1; i >= 0; i -= 1;) {
         digit : Int := cc->Get(i) - '0';
         if(isOdd) {
           oddSum += digit;
-        } 
+        }
         else {
           evenSum += digit / 5 + (2 * digit) % 10;
         };
         isOdd := isOdd <> true;
       };
-       
+
       return (oddSum + evenSum) % 10 = 0;
     }
-    
+
     function : Main(args : String[]) ~ Nil {
       IsValid("49927398716")->PrintLine();
       IsValid("49927398717")->PrintLine();
@@ -3646,42 +3646,42 @@ bundle Default {
 
 ```objc
 - (NSArray *) toCharArray {
-	
+
 	NSMutableArray *characters = [[NSMutableArray alloc] initWithCapacity:[self length]];
 	for (int i=0; i < [self length]; i++) {
 		NSString *ichar  = [NSString stringWithFormat:@"%C", [self characterAtIndex:i]];
 		[characters addObject:ichar];
 	}
-	
+
 	return characters;
 }
 
 + (BOOL) luhnCheck:(NSString *)stringToTest {
-	
+
 	NSArray *stringAsChars = [stringToTest toCharArray];
-	
+
 	BOOL isOdd = YES;
 	int oddSum = 0;
 	int evenSum = 0;
-	
+
 	for (int i = [stringToTest length] - 1; i >= 0; i--) {
-		
+
 		int digit = [(NSString *)stringAsChars[i] intValue];
-		
-		if (isOdd) 
+
+		if (isOdd)
 			oddSum += digit;
-		else 
+		else
 			evenSum += digit/5 + (2*digit) % 10;
-			
-		isOdd = !isOdd;				 
+
+		isOdd = !isOdd;
 	}
-	
+
 	return ((oddSum + evenSum) % 10 == 0);
 }
 
 BOOL test0 = [self luhnCheck:@"49927398716"]; //Result = YES
 BOOL test1 = [self luhnCheck:@"49927398717"]; //Result = NO
-BOOL test2 = [self luhnCheck:@"1234567812345678"]; //Result = NO				   
+BOOL test2 = [self luhnCheck:@"1234567812345678"]; //Result = NO
 BOOL test3 = [self luhnCheck:@"1234567812345670"]; //Result = YES
 ```
 
@@ -3695,7 +3695,7 @@ let luhn s =
   let rec g r c = function
   | 0 -> r
   | i ->
-      let d = c * ((int_of_char s.[i-1]) - 48) in 
+      let d = c * ((int_of_char s.[i-1]) - 48) in
       g (r + (d/10) + (d mod 10)) (3-c) (i-1)
   in
   (g 0 1 (String.length s)) mod 10 = 0
@@ -3722,7 +3722,7 @@ let luhn s =
 	d = s-'0';	% convert string into vector of digits
 	m = [2:2:8,1:2:9];	% rule 3: maps [1:9] -> i
 	y = ~mod(sum(d(end:-2:1)) + sum(m(d(end-1:-2:1))),10);
-   end; 
+   end;
 ```
 
 
@@ -3750,11 +3750,11 @@ let luhn s =
 : luhnTest(n)
 | s i |
    n asString reverse ->s
-   0 s size loop: i [ 
-      i s at asDigit 
+   0 s size loop: i [
+      i s at asDigit
       i isEven ifTrue: [ 2 * dup 10 >= ifTrue: [ 9 - ] ] +
       ]
-   10 mod ==0 ; 
+   10 mod ==0 ;
 ```
 
 
@@ -3776,7 +3776,7 @@ let luhn s =
 FUNCTION fnLuhnAlgorithm RETURNS LOGICAL
   (INPUT pcNumber AS CHARACTER):
 /*------------------------------------------------------------------------------
-  Purpose:  Applies Luhn Algorithm to check a Number 
+  Purpose:  Applies Luhn Algorithm to check a Number
     Notes:  Returns True/False Validation based on check digit
 ------------------------------------------------------------------------------*/
     DEFINE VARIABLE cNum        AS CHARACTER NO-UNDO.
@@ -3788,13 +3788,13 @@ FUNCTION fnLuhnAlgorithm RETURNS LOGICAL
     DEFINE VARIABLE iNum2       AS INTEGER   NO-UNDO.
     DEFINE VARIABLE iTestLength AS INTEGER   NO-UNDO.
 
-    ASSIGN 
+    ASSIGN
       iLength     = LENGTH(pcNumber)
       iTestLength = iLength - 1
         iCheck = 1. /* 1 for the check digit we skip */
 
     DO iLoopCnt = iTestLength TO 1 BY -1:
-      ASSIGN 
+      ASSIGN
           iNum = INTEGER(SUBSTR(pcNumber,iLoopCnt,1))
           iCheck = iCheck + 1.
 
@@ -3808,14 +3808,14 @@ FUNCTION fnLuhnAlgorithm RETURNS LOGICAL
           ELSE
               ASSIGN
                 cNum  = STRING(iNum2)
-                iNum1 = iNum1 + INTEGER(SUBSTR(cNum,1,1)) + INTEGER(SUBSTR(cNum,2,1)).   
+                iNum1 = iNum1 + INTEGER(SUBSTR(cNum,1,1)) + INTEGER(SUBSTR(cNum,2,1)).
       END.
     END.
 
-    ASSIGN 
+    ASSIGN
         iNum2 = iNum1 * 9
         iNum = iNum2 MODULO 10.
-    
+
     IF iNum = INTEGER(SUBSTR(pcNumber,iLength,1)) THEN
       RETURN TRUE.
     ELSE
@@ -3838,12 +3838,12 @@ END FUNCTION. /* fnLuhnAlgorithm  */
 
 ## Order
 
-This example highlights Order's unusual treatment of numbers. 
-Numbers larger than 100 are not recognized by the interpreter in literal form and must instead be entered as "native" numbers (i.e. listing the separate digits as arguments to <code>8nat</code>). 
+This example highlights Order's unusual treatment of numbers.
+Numbers larger than 100 are not recognized by the interpreter in literal form and must instead be entered as "native" numbers (i.e. listing the separate digits as arguments to <code>8nat</code>).
 Since internally, a native number is just a sequence of the digits in reverse order with an end digit marker, converting the number into a reversed list of digits mainly involves removing this terminator, so that we can immediately treat the digits as number elements.
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8luhn ORDER_PP_FN( \
 8fn(8N, 8if(8is_seq(8N), 8luhn_wk(8num_to_seq(8N)), 8false)) )
@@ -4015,7 +4015,7 @@ map {print luhn($_), ": $_\n"}
 ## Perl 6
 
 {{Works with|rakudo|2015-11-29}}
-Here we make use of <tt>comb</tt>, which splits into individual characters, 
+Here we make use of <tt>comb</tt>, which splits into individual characters,
 and the sequence operator <tt>...</tt>, which can intuit an even or odd sequence from the first two values.
 <tt>%%</tt> is the divisible-by operator.
 
@@ -4118,7 +4118,7 @@ function luhnTest($num) {
         } else {
             $sum += $ord / 5 + (2 * $ord) % 10;
         }
-    }       
+    }
     return $sum % 10 == 0;
 }
 ```
@@ -4221,17 +4221,17 @@ end test;
 ```txt
 
 49927398716 passes the Luhn test
-       70 
+       70
 49927398717 does not pass the Luhn test
-       71 
+       71
 1234567812345678 does not pass the Luhn test
-       68 
+       68
 1234567812345670 passes the Luhn test
        60
 
 ```
 
-Comment: it isn't necessary to reverse the string 
+Comment: it isn't necessary to reverse the string
 in order to perform the test.
 
 
@@ -4247,30 +4247,30 @@ FUNCTION algoLuhn ( p_numeroVerif VARCHAR2 )
     v_retour  SMALLINT;
     v_somme   NUMBER := 0;
     v_nbCar   NUMBER;
-    
-  BEGIN  
-    v_nbCar := LENGTH(p_numeroVerif);    
-    
+
+  BEGIN
+    v_nbCar := LENGTH(p_numeroVerif);
+
     FOR i IN 1..v_nbCar
     LOOP
         v_NBi := TO_NUMBER(SUBSTR(p_numeroVerif,v_nbCar+1-i,1));
-        
+
         v_somme := v_somme
                   + MOD(i,2)   * v_NBi
                   + MOD(i+1,2) * SIGN(-SIGN(v_Nbi-4)+1) * (2*v_NBi)
                   + MOD(i+1,2) * SIGN( SIGN(v_Nbi-5)+1) * (2*v_NBi-9);
-     
+
     END LOOP;
-        
+
     v_retour := SIGN(MOD(v_somme,10));
-    
+
     RETURN v_retour;
-  
+
   EXCEPTION
     WHEN OTHERS
       THEN
         RETURN 1;
-        
+
   END algoLuhn;
 ```
 
@@ -4359,7 +4359,7 @@ function Test-LuhnNumber
     )
 
     $digits = ([Regex]::Matches($Number,'.','RightToLeft')).Value
-    
+
     $digits |
         ForEach-Object `
                -Begin   {$i = 1} `
@@ -4444,12 +4444,12 @@ EndDataSection
 
 Procedure isValid(cardNumber.s)
   Protected i, length, s1, s2, s2a
-  
+
   cardNumber = ReverseString(cardNumber)
   length = Len(cardNumber)
   For i = 1 To length Step 2
     s1 + Val(Mid(cardNumber, i, 1))
-  Next 
+  Next
 
   For i = 2 To length Step 2
     s2a = Val(Mid(cardNumber, i, 1)) * 2
@@ -4457,22 +4457,22 @@ Procedure isValid(cardNumber.s)
       s2 + s2a
     Else
       s2 + 1 + Val(Right(Str(s2a), 1))
-    EndIf 
-  Next 
-  
+    EndIf
+  Next
+
   If Right(Str(s1 + s2), 1) = "0"
     ProcedureReturn #True
   Else
     ProcedureReturn #False
-  EndIf 
+  EndIf
 EndProcedure
 
 
 If OpenConsole()
   Define cardNumber.s
-  
+
   Restore Sample
-  Repeat 
+  Repeat
     Read.s cardNumber
     If cardNumber <> ""
       Print(cardNumber + " is ")
@@ -4483,7 +4483,7 @@ If OpenConsole()
       EndIf
     EndIf
   Until cardNumber = ""
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -4534,12 +4534,12 @@ or without sum() and divmod() functions:
   for i in range (len(ch)-1, -1, -1):
     j = int(ch[i])
       if ((i + 1) % 2 != chParity):
-        j = j * 2 
+        j = j * 2
         if (j > 9):
-          j = j - 9 
+          j = j - 9
       sum = sum + j
-  return sum % 10 == 0, “somme calculée obtenue = “ + str(sum)           
-   
+  return sum % 10 == 0, “somme calculée obtenue = “ + str(sum)
+
 for n in (49927398716, 49927398717, 1234567812345678, 1234567812345670):
         print (str(n)+" =>", vérifLuhn(str(n)))
 
@@ -4586,8 +4586,8 @@ is.luhn <- function(cc){
 
 ```txt
 sapply(c("49927398716","49927398717","1234567812345678","1234567812345670"),is.luhn)
-     49927398716      49927398717 1234567812345678 1234567812345670 
-            TRUE            FALSE            FALSE             TRUE 
+     49927398716      49927398717 1234567812345678 1234567812345670
+            TRUE            FALSE            FALSE             TRUE
 ```
 
 
@@ -4692,7 +4692,7 @@ Do i=length(ccn) To 1 By -1  /* process all digits       */
   even=\even                 /* flip even indicator      */
   sum=sum+c                  /* add into test sum        */
   End
-Return right(sum,1)=0        /* ok if last digit is 0    */ 
+Return right(sum,1)=0        /* ok if last digit is 0    */
 ```
 
 {{out}}
@@ -4745,7 +4745,7 @@ func revodd(str)
         sumodd = 0
         for p = 1 to len(strnew)
               sumodd = sumodd + number(strnew[p])
-        next     
+        next
         return sumodd
 
 func reveven(str)
@@ -4756,7 +4756,7 @@ func reveven(str)
         lsteven = []
         for p = 1 to len(strnew)
              add(lsteven, string(2*number(strnew[p])))
-        next  
+        next
         arreven = list(len(lsteven))
         for q = 1 to len(lsteven)
               sum = 0
@@ -4769,7 +4769,7 @@ func reveven(str)
         for x = 1 to len(arreven)
              sumarr = sumarr + arreven[x]
         next
-        return sumarr                    
+        return sumarr
 
 ```
 
@@ -5379,7 +5379,7 @@ CREATE OR REPLACE FUNCTION LUHN_TEST (
    -- CALL DBMS_OUTPUT.PUT_LINE('I ' || I || ', S1 ' || S1 || ', val ' || REVERSE[I]);
    SET I = I + 1;
   END WHILE;
- 
+
   -- Taking the second, fourth ... and every other even digit in the reversed digits:
   SET S2 = 0;
   SET TEMP = 0;
@@ -5426,9 +5426,9 @@ db2 => CREATE OR REPLACE FUNCTION VALIDATE_CREDIT_CARD_NUMBER (
 ...
 db2 (cont.) => END @
 DB20000I  The SQL command completed successfully.
-db2 => values VALIDATE_CREDIT_CARD_NUMBER(49927398716)@                      
+db2 => values VALIDATE_CREDIT_CARD_NUMBER(49927398716)@
 
-1     
+1
 ------
      0
 
@@ -5437,7 +5437,7 @@ db2 => values VALIDATE_CREDIT_CARD_NUMBER(49927398716)@
 It is a valid number 42+28=70
 db2 => VALUES VALIDATE_CREDIT_CARD_NUMBER(49927398717)@
 
-1     
+1
 ------
      1
 
@@ -5446,7 +5446,7 @@ db2 => VALUES VALIDATE_CREDIT_CARD_NUMBER(49927398717)@
 It is NOT a valid number 43+28=71
 db2 => VALUES VALIDATE_CREDIT_CARD_NUMBER(1234567812345678)@
 
-1     
+1
 ------
      1
 
@@ -5455,7 +5455,7 @@ db2 => VALUES VALIDATE_CREDIT_CARD_NUMBER(1234567812345678)@
 It is NOT a valid number 40+28=68
 db2 => VALUES VALIDATE_CREDIT_CARD_NUMBER(1234567812345670)@
 
-1     
+1
 ------
      0
 
@@ -5674,7 +5674,7 @@ ENDLOOP
 49927398716       true
 49927398717       false
 1234567812345678  false
-1234567812345670  true 
+1234567812345670  true
 
 ```
 
@@ -5730,7 +5730,7 @@ function luhn {
 }
 
 for c in 49927398716 49927398717 1234567812345678 1234567812345670; do
-    if luhn $c; then 
+    if luhn $c; then
         echo $c is invalid
     else
         echo $c is valid
@@ -5858,7 +5858,7 @@ Function Luhn_Test(cc)
 			Else
 				s2 = s2 + CInt(Right(CStr(tmp),1)) + 1
 			End If
-		End If 
+		End If
 	Next
 	If Right(CStr(s1 + s2),1) = "0" Then
 		Luhn_Test = "Valid"
@@ -5874,7 +5874,7 @@ Function RevString(s)
 End Function
 
 WScript.Echo "49927398716 is " & Luhn_Test("49927398716")
-WScript.Echo "49927398717 is " & Luhn_Test("49927398717")			 
+WScript.Echo "49927398717 is " & Luhn_Test("49927398717")
 WScript.Echo "1234567812345678 is " & Luhn_Test("1234567812345678")
 WScript.Echo "1234567812345670 is " & Luhn_Test("1234567812345670")
 ```
@@ -5967,7 +5967,7 @@ Public Function Modulus10(digits As String) as String
   //
   // Confirm the digits are really, well, digits
   //
-  
+
   dim validator as new RegEx
   validator.SearchPattern = "\A\d+\z"
   if validator.Search( digits ) is nil then
@@ -5975,19 +5975,19 @@ Public Function Modulus10(digits As String) as String
     // Raise an exception or something
     //
   end if
-  
+
   static doublingTable() as string = array( "0", "2", "4", "6", "8", "1", "3", "5", "7", "9" )
-  
+
   dim digitArr() as string = digits.Split( "" )
   for i as integer = digitArr.Ubound downto 0 step 2
     digitArr( i ) = doublingTable( digitArr( i ).Val )
   next
-  
+
   dim sum as integer
   for each digit as string in digitArr
     sum = sum + digit.Val
   next
-  
+
   dim check as integer = ( sum * 9 ) mod 10
   return str( check )
 End Function
@@ -5995,7 +5995,7 @@ End Function
 Public Function ValidateMod10(digits As String) as Boolean
   dim checkDigit as string = digits.Right( 1 )
   digits = digits.Left( digits.Len - 1 )
-  
+
   return Modulus10( digits ) = checkDigit
 End Function
 
@@ -6048,7 +6048,7 @@ L(True,False,False,True)
 20 LET c$="49927398717": GO SUB 1000
 30 LET c$="1234567812345678": GO SUB 1000
 40 LET c$="1234567812345670": GO SUB 1000
-999 STOP 
+999 STOP
 1000 REM *************
 1001 REM * LUHN TEST *
 1002 REM *************
@@ -6066,8 +6066,8 @@ L(True,False,False,True)
 1120 LET s2=s2+s2sub
 1130 NEXT i
 1140 LET s$=STR$ (s1+s2)
-1150 IF s$(LEN s$)="0" THEN PRINT c$;" VALID!": LET retval=1: RETURN 
-1160 PRINT c$;" INVALID!": LET retval=0: RETURN 
+1150 IF s$(LEN s$)="0" THEN PRINT c$;" VALID!": LET retval=1: RETURN
+1160 PRINT c$;" INVALID!": LET retval=0: RETURN
 
 ```
 

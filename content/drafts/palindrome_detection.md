@@ -10,8 +10,8 @@ categories = []
 tags = []
 +++
 
-{{task|Text processing}} 
-[[Category:Recursion]] 
+{{task|Text processing}}
+[[Category:Recursion]]
 [[Category:String manipulation]]
 [[Category:Classic CS problems and programs]]
 [[Category:Palindromes]]
@@ -20,7 +20,7 @@ A [[wp:Palindrome|palindrome]] is a phrase which reads the same backward and for
 
 {{task heading}}
 
-Write a function or program that checks whether a given sequence of characters (or, if you prefer, bytes) 
+Write a function or program that checks whether a given sequence of characters (or, if you prefer, bytes)
 is a palindrome.
 
 '''''For extra credit:'''''
@@ -54,17 +54,17 @@ PALINDRO CSECT
          LA     R8,BB              @b[1]
          LA     R9,AA+L'AA-1       @a[n-1]
          LA     R6,1               i=1
-LOOPI    C      R6,=A(L'AA)        do i=1 to length(a) 
+LOOPI    C      R6,=A(L'AA)        do i=1 to length(a)
          BH     ELOOPI             leave i
          MVC    0(1,R8),0(R9)        substr(b,i,1)=substr(a,n-i+1,1)
          LA     R8,1(R8)             @b=@b+1
          BCTR   R9,0                 @a=@a-1
          LA     R6,1(R6)             i=i+1
          B      LOOPI              end do
-ELOOPI   XPRNT  AA,L'AA            print a 
-         CLC    BB,AA              if b=a 
+ELOOPI   XPRNT  AA,L'AA            print a
+         CLC    BB,AA              if b=a
          BNE    SKIP
-         XPRNT  MSG,L'MSG          then print msg 
+         XPRNT  MSG,L'MSG          then print msg
 SKIP     L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
@@ -143,7 +143,7 @@ end Palindrome;
 
 
 ----
-Ada 2012 version: 
+Ada 2012 version:
 
 ```ada
 
@@ -185,7 +185,7 @@ main:
 (
    STRING t = "ingirumimusnocteetconsumimurigni";
    FORMAT template = $"sequence """g""" "b("is","isnt")" a palindrome"l$;
- 
+
    printf((template, t, palindrome(t)));
    printf((template, t, palindrome r(t)))
 )
@@ -255,18 +255,18 @@ on spaceFreeToLower(s)
             s is not space
         end |λ|
     end script
-    
+
     intercalate("", filter(notSpace, characters of toLower(s)))
 end spaceFreeToLower
 
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     isPalindrome(spaceFreeToLower("In girum imus nocte et consumimur igni"))
-    
+
     --> true
-    
+
 end run
 
 
@@ -293,7 +293,7 @@ on intercalate(strText, lstText)
     return strJoined
 end intercalate
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -677,16 +677,16 @@ Add the following lines to convert the program into an inexact-palindrome checke
         PRINT " is not a palindrome"
       ENDIF
       END
-      
+
       DEF FNpalindrome(A$) = (A$ = FNreverse(A$))
-      
+
       DEF FNreverse(A$)
       LOCAL B$, P%
       FOR P% = LEN(A$) TO 1 STEP -1
         B$ += MID$(A$,P%,1)
       NEXT
       = B$
-      
+
       DEF FNletters(A$)
       LOCAL B$, C%, P%
       FOR P% = 1 TO LEN(A$)
@@ -773,7 +773,7 @@ Or, recursive (and without setlocal enabledelayedexpansion) (compatible with Rea
 
 ```dos
 @echo off
-set /p testString=Your string (all same case please) : 
+set /p testString=Your string (all same case please) :
 call :isPalindrome result %testString: =%
 if %result%==1 echo %testString% is a palindrome
 if %result%==0 echo %testString% isn't a palindrome
@@ -805,7 +805,7 @@ The following code reads a line from stdin and prints "True" if it is a palindro
 ```befunge
 v_$0:8p>:#v_:18p08g1-08p >:08g`!v
 ~->p5p ^  0v1p80-1g80vj!-g5g80g5_0'ev
-:a^80+1:g8<>8g1+:18pv>0"eslaF">:#,_@ 
+:a^80+1:g8<>8g1+:18pv>0"eslaF">:#,_@
 [[relet]]-2010------>003-x   -^"Tru"<
 ```
 
@@ -924,8 +924,8 @@ You only need to go up to (the length) / 2 because the second half just re-check
 and if the length is odd, the middle doesn't need to be checked (so it's okay to do integer division by 2, which rounds down).
 
 
-```c>#include <string.h
-
+```c
+#include <string.h>
 
 int palindrome(const char *s)
 {
@@ -933,7 +933,7 @@ int palindrome(const char *s)
    l = strlen(s);
    for(i=0; i<l/2; i++)
    {
-     if ( s[i] != s[l-i-1] ) return 0; 
+     if ( s[i] != s[l-i-1] ) return 0;
    }
    return 1;
 }
@@ -948,7 +948,7 @@ int palindrome(const char *s)
    for (t = s; *t != '\0'; t++) ; t--; /* set t to point to last character */
    while (s < t)
    {
-     if ( *s++ != *t-- ) return 0; 
+     if ( *s++ != *t-- ) return 0;
    }
    return 1;
 }
@@ -974,8 +974,8 @@ int palindrome_r(const char *s, int b, int e)
 '''Testing'''
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 /* testing */
 int main()
@@ -983,7 +983,7 @@ int main()
    const char *t = "ingirumimusnocteetconsumimurigni";
    const char *template = "sequence \"%s\" is%s palindrome\n";
    int l = strlen(t);
-   
+
    printf(template,
           t, palindrome(t) ? "" : "n't");
    printf(template,
@@ -998,8 +998,8 @@ int main()
 
 The C solutions also work in C++, but C++ allows a simpler one:
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <algorithm>
 
 bool is_palindrome(std::string const& s)
@@ -1011,8 +1011,8 @@ bool is_palindrome(std::string const& s)
 
 Or, checking half is sufficient (on odd-length strings, this will ignore the middle element):
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <algorithm>
 
 bool is_palindrome(std::string const& s)
@@ -1210,7 +1210,7 @@ I use [https://franz.com/downloads/clp/survey Allegro CL 10.1]
 (defun palindrome(x)
           (if (string= x (reverse x))
           (format t "~d" ": palindrome" (format t x))
-          (format t "~d" ": not palindrome" (format t x))))         
+          (format t "~d" ": not palindrome" (format t x))))
 (terpri)
 (setq x "radar")
 (palindrome x)
@@ -1507,12 +1507,12 @@ void main() {
 
 ```dartlang
 
-bool isPalindrome(String s){  
+bool isPalindrome(String s){
   for(int i = 0; i < s.length/2;i++){
     if(s[i] != s[(s.length-1) -i])
-      return false;        
-  }  
-  return true;  
+      return false;
+  }
+  return true;
 }
 
 ```
@@ -1570,7 +1570,7 @@ The for loop syntax is <code>for <var>key pattern</var> => <var>value pattern</v
 def isPalindrome(string :String) {
   def upper := string.toUpperCase()
   def last := upper.size() - 1
-  for i => c ? (upper[last - i] != c) in upper(0, upper.size() // 2) { 
+  for i => c ? (upper[last - i] != c) in upper(0, upper.size() // 2) {
     return false
   }
   return true
@@ -1680,17 +1680,17 @@ true
 
 
 ```elm
-import String exposing (reverse, length) 
+import String exposing (reverse, length)
 import Html exposing (Html, Attribute, text, div, input)
 import Html.Attributes exposing (placeholder, value, style)
 import Html.Events exposing (on, targetValue)
 import Html.App exposing (beginnerProgram)
 
--- The following function (copied from Haskell) satisfies the 
+-- The following function (copied from Haskell) satisfies the
 -- rosettacode task description.
 is_palindrome x = x == reverse x
 
--- The remainder of the code demonstrates the use of the function 
+-- The remainder of the code demonstrates the use of the function
 -- in a complete Elm program.
 main = beginnerProgram { model = "" , view = view , update = update }
 
@@ -1702,15 +1702,15 @@ view candidate =
     ([ input
         [ placeholder "Enter a string to check."
         , value candidate
-        , on "input" targetValue 
+        , on "input" targetValue
         , myStyle
         ]
         []
-     ] ++ 
-     [ let testResult = 
+     ] ++
+     [ let testResult =
              is_palindrome candidate
 
-           statement = 
+           statement =
              if testResult then "PALINDROME!" else "not a palindrome"
 
        in div [ myStyle] [text statement]
@@ -1880,7 +1880,7 @@ Is a palindrome
 class Palindrome
 {
   // Function to test if given string is a palindrome
-  public static Bool isPalindrome (Str str) 
+  public static Bool isPalindrome (Str str)
   {
     str == str.reverse
   }
@@ -1925,7 +1925,7 @@ FUNCTION IsPalindrome(BYVAL s AS STRING) AS INTEGER
 	FOR DIM i = 1 TO STRLEN(s) \ 2 ' only check half of the string, as scanning from both ends
 		IF s{i} <> s{STRLEN - (i - 1)} THEN RETURN FALSE 'comparison is not case sensitive
 	NEXT
-	
+
 	RETURN TRUE
 END FUNCTION
 
@@ -1941,7 +1941,7 @@ PAUSE
 
 ```txt
 
- 1 
+ 1
  1
  0
 
@@ -1965,9 +1965,9 @@ PAUSE
 ```
 
 
-FIRST and LAST are once-off words that could be beheaded immediately afterwards. 
-The version taking advantage of Tail Call Optimization or a properly tail-recursive variant of RECURSE (easily added to any Forth) is very similar. 
-The horizontal formatting highlights the parallel code - and potential factor; 
+FIRST and LAST are once-off words that could be beheaded immediately afterwards.
+The version taking advantage of Tail Call Optimization or a properly tail-recursive variant of RECURSE (easily added to any Forth) is very similar.
+The horizontal formatting highlights the parallel code - and potential factor;
 a library of many string tests like this could have ?SUCCESS and ?FAIL .
 
 
@@ -2030,7 +2030,7 @@ program palindro
   implicit none
 
   character(len=*), parameter :: p = "ingirumimusnocteetconsumimurigni"
-  
+
   print *, is_palindro_r(p)
   print *, is_palindro_r("anothertest")
   print *, is_palindro2(p)
@@ -2190,7 +2190,7 @@ reverse(cleanup(test,"PLS")) = TRUE
 
 ## Frink
 
-This version will even work with upper-plane Unicode characters.  Many languages will not work correctly with upper-plane Unicode characters because they are represented as Unicode "surrogate pairs" which are represented as two characters in a UTF-16 stream.  In addition, Frink uses a ''grapheme''-based reverse, which allows the algorithm below to operate on combined sequences of Unicode characters.  
+This version will even work with upper-plane Unicode characters.  Many languages will not work correctly with upper-plane Unicode characters because they are represented as Unicode "surrogate pairs" which are represented as two characters in a UTF-16 stream.  In addition, Frink uses a ''grapheme''-based reverse, which allows the algorithm below to operate on combined sequences of Unicode characters.
 
 For example, the string "og\u0308o" represents an o, a g with combining diaeresis, followed by the letter o. Or, in other words, "og̈o". Note that while there are four Unicode codepoints, only three "graphemes" are displayed.  Using Frink's smart "reverse" function preserves these combined graphemes and detects them correctly as palindromes.
 
@@ -2399,7 +2399,7 @@ def isPalindrome = { String s ->
 ```
 
 
-Test program and output are the same. 
+Test program and output are the same.
 This solution does not handle nulls.
 
 
@@ -2417,7 +2417,7 @@ isPalindrome = { String s ->
 ```
 
 
-Test program and output are the same. 
+Test program and output are the same.
 This solution does not handle nulls.
 
 
@@ -2497,7 +2497,7 @@ FUNCTION Palindrome(string)
    CopyOfString = string
    EDIT(Text=CopyOfString, UpperCase=L)
    L = L - EDIT(Text=CopyOfString, End, Left=' ', Delete, DO=L) ! EDIT returns number of deleted spaces
-   
+
    DO i = 1, L/2
      Palindrome = CopyOfString(i) == CopyOfString(L - i + 1)
      IF( Palindrome == 0 ) RETURN
@@ -2515,7 +2515,7 @@ end
 ```
 
 
-The following simple procedure uses the built-in reverse.  Reverse creates a transient string which will get garbage collected. 
+The following simple procedure uses the built-in reverse.  Reverse creates a transient string which will get garbage collected.
 
 ```Icon
 procedure palindrome(s)  #: return s if s is a palindrome
@@ -2523,7 +2523,7 @@ return s == reverse(s)
 end
 ```
 
-{{libheader|Icon Programming Library}} 
+{{libheader|Icon Programming Library}}
 
 Note: The IPL procedure [http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings] contains a palindrome tester called '''ispal''' that uses reverse and is equivalent to the version of '''palindrome''' above.
 
@@ -3037,13 +3037,13 @@ end function
 This implementation defaults to exact match, but has an optional parameter to do inexact.
 ```LiveCode
 function palindrome txt exact
-    if exact is empty or exact is not false then 
+    if exact is empty or exact is not false then
         set caseSensitive to true  --default is false
     else
         replace space with empty in txt
         put lower(txt) into txt
     end if
-    return txt is reverse(txt) 
+    return txt is reverse(txt)
 end palindrome
 
 function reverse str
@@ -3160,10 +3160,10 @@ PalindromeQ["TNT"]
 PalindromeRecQ["TNT"]
 PalindromeQ["test"]
 PalindromeRecQ["test"]
-PalindromeQ["deified"] 
-PalindromeRecQ["deified"] 
-PalindromeQ["sal&agrave;las"]  
-PalindromeRecQ["sal&agrave;las"]   
+PalindromeQ["deified"]
+PalindromeRecQ["deified"]
+PalindromeQ["sal&agrave;las"]
+PalindromeRecQ["sal&agrave;las"]
 PalindromeQ["ingirumimusnocteetconsumimurigni"]
 PalindromeRecQ["ingirumimusnocteetconsumimurigni"]
 ```
@@ -3192,19 +3192,19 @@ True
 
 ```MATLAB
 function trueFalse = isPalindrome(string)
-    
+
     trueFalse = all(string == fliplr(string)); %See if flipping the string produces the original string
 
     if not(trueFalse) %If not a palindrome
         string = lower(string); %Lower case everything
         trueFalse = all(string == fliplr(string)); %Test again
     end
-    
+
     if not(trueFalse) %If still not a palindrome
         string(isspace(string)) = []; %Strip all space characters out
         trueFalse = all(string == fliplr(string)); %Test one last time
     end
-    
+
 end
 ```
 
@@ -3349,11 +3349,11 @@ Madam, I'm Adam is a palindrome
 
 
 ```mirah
-def reverse(s:string) 
+def reverse(s:string)
     StringBuilder.new(s).reverse.toString()
 end
 
-def palindrome?(s:string) 
+def palindrome?(s:string)
     s.equals(reverse(s))
 end
 
@@ -3486,7 +3486,7 @@ DetectPalindrome LOC @
          JMP  6B
 5H       XOR  $255,$255,$255
          GO   $4,$4,0        % return false
-PaliOk   NEG  $255,0,1       
+PaliOk   NEG  $255,0,1
          GO   $4,$4,0        % return true
 
 % The Main for testing the function
@@ -3590,7 +3590,7 @@ module Palindrome
     {
         Implode(Explode(text).Reverse()) == text;
     }
-    
+
     Main() : void
     {
         WriteLine("radar is a palindrome: {0}", IsPalindrome("radar"));
@@ -3623,12 +3623,12 @@ y='In girum imus nocte et consumimur igni'
 say
 say 'string = 'y
 say
- 
+
 pal=isPal(y)
- 
+
 if pal==0 then say "The string isn't palindromic."
           else say 'The string is palindromic.'
- 
+
 method isPal(x) static
   x=x.upper().space(0)          /* removes all blanks (spaces)          */
                                 /*   and translate to uppercase.        */
@@ -3694,7 +3694,7 @@ bundle Default {
           return false;
         };
       };
-       
+
       return true;
     }
   }
@@ -3932,10 +3932,10 @@ There is more than one way to do this.
 * '''palindrome_r''' uses recursion.
 * '''palindrome_e''' uses a recursive regular expression.
 
-All of these functions take a parameter, 
-or default to <tt>$_</tt> if there is no parameter. 
-None of these functions ignore case or strip characters; 
-if you want do that, you can use <tt>($s = lc $s) =~ s/[\W_]//g</tt> 
+All of these functions take a parameter,
+or default to <tt>$_</tt> if there is no parameter.
+None of these functions ignore case or strip characters;
+if you want do that, you can use <tt>($s = lc $s) =~ s/[\W_]//g</tt>
 before you call these functions.
 
 
@@ -4035,8 +4035,8 @@ palindrome   1666667/s        3167%        1533%         867%           --
 ```
 
 
-With this machine, palindrome() ran far faster than the alternatives 
-(and too fast for a reliable count). 
+With this machine, palindrome() ran far faster than the alternatives
+(and too fast for a reliable count).
 The Perl regular expression engine recursed twice as fast as the Perl interpreter.
 
 
@@ -4047,7 +4047,7 @@ The Perl regular expression engine recursed twice as fast as the Perl interprete
 subset Palindrom of Str where {
     .flip eq $_ given .comb(/\w+/).join.lc
 }
- 
+
 my @tests = q:to/END/.lines;
     A man, a plan, a canal: Panama.
     My dog has fleas
@@ -4055,7 +4055,7 @@ my @tests = q:to/END/.lines;
     1 on 1
     In girum imus nocte et consumimur igni
     END
- 
+
 for @tests { say $_ ~~ Palindrom, "\t", $_ }
 ```
 
@@ -4079,7 +4079,7 @@ True	In girum imus nocte et consumimur igni
 function is_palindrome(sequence s)
     return s==reverse(s)
 end function
- 
+
 ?is_palindrome("rotator") -- prints 1
 ?is_palindrome("tractor") -- prints 0
 
@@ -4383,12 +4383,12 @@ process {
         # Normalize Unicode combining characters,
         # so character á compares the same as (a+combining accent)
         $T = $T.Normalize([Text.NormalizationForm]::FormC)
-        
+
         # Remove anything from outside the Unicode category
         # "Letter from any language"
         $T = $T -replace '\P{L}', ''
 
-        # Walk from each end of the string inwards, 
+        # Walk from each end of the string inwards,
         # comparing a char at a time.
         # Avoids string copy / reverse overheads.
         $Left, $Right = 0, [math]::Max(0, ($T.Length - 1))
@@ -4415,7 +4415,7 @@ process {
             Text = $T
             IsPalindrome = $True
         }
-                
+
     }
 }
 }
@@ -4456,7 +4456,7 @@ boolean isPalindrome(string check){
 	for(int i = letters.length-1; i >= 0; i--){
 		invert = invert + letters[i];
 	}
-	
+
 	if(invert == modCheck){
 		return true;
 	} else {
@@ -4512,7 +4512,7 @@ pali(Str) :- atom_length(Str, Len), Len < 2.
 
 ## PureBasic
 
-{{works with|PureBasic|4.41}} 
+{{works with|PureBasic|4.41}}
 
 ```PureBasic
 Procedure IsPalindrome(StringToTest.s)
@@ -4527,13 +4527,13 @@ EndProcedure
 
 
 ## Python
-  
+
 Now that Python 2.7 and Python 3.4 are quite different, We should include the version IMHO.
 
 '''Non-recursive'''
 
-This one uses the ''reversing the string'' technique 
-(to reverse a string Python can use the odd 
+This one uses the ''reversing the string'' technique
+(to reverse a string Python can use the odd
 but right syntax <tt>string[::-1]</tt>)
 
 
@@ -4581,7 +4581,7 @@ def is_palindrome_r(s):
 ```
 
 
-Python has short-circuit evaluation of Boolean operations 
+Python has short-circuit evaluation of Boolean operations
 so a shorter and still easy to understand recursive function is
 
 
@@ -4622,11 +4622,11 @@ def p_loop():
   if pal == "" :
     return -1
   c=len(pd)   # Count of chars.
-  loops = (c+1)/2 
+  loops = (c+1)/2
   for x in range(loops):
     re1 = re1 + "(\w)"
     if (c%2 == 1 and x == 0):
-       continue 
+       continue
     p = loops - x
     re2 = re2 + "\\" + str(p)
   regex= re1+re2+"$"   # regex is like "(\w)(\w)(\w)\2\1$"
@@ -4647,8 +4647,8 @@ def p_loop():
 
 '''Recursive'''
 
-Note that the recursive method will fail if the string length is too long. 
-R will assume an infinite recursion if a recursion nests deeper than 5,000.  
+Note that the recursive method will fail if the string length is too long.
+R will assume an infinite recursion if a recursion nests deeper than 5,000.
 Options may be set in the environment to increase this to 500,000.
 
 ```R
@@ -4674,7 +4674,7 @@ palindro <- function(p) {
 palindroi <- function(p) {
   for(i in 1:floor(nchar(p)/2) ) {
     r <- nchar(p) - i + 1
-    if ( substr(p, i, i) != substr(p, r, r) ) return(FALSE) 
+    if ( substr(p, i, i) != substr(p, r, r) ) return(FALSE)
   }
   TRUE
 }
@@ -4685,7 +4685,7 @@ palindroi <- function(p) {
 
 This method is somewhat faster than the other two.
 
-Note that this method incorrectly regards an empty string as not a palindrome. 
+Note that this method incorrectly regards an empty string as not a palindrome.
 Please leave this bug in the code, and take a look a the [[Testing_a_Function]] page.
 
 ```R
@@ -4709,14 +4709,14 @@ tester <- paste(rep(test,38),collapse="")
 > test <- "ingirumimusnocteetconsumimurigni"
 > tester <- paste(rep(test,38),collapse="")
 > system.time(palindro(tester))
-   user  system elapsed 
-   0.04    0.00    0.04 
+   user  system elapsed
+   0.04    0.00    0.04
 > system.time(palindroi(tester))
-   user  system elapsed 
-   0.01    0.00    0.02 
+   user  system elapsed
+   0.01    0.00    0.02
 > system.time(palindroc(tester))
-   user  system elapsed 
-      0       0       0 
+   user  system elapsed
+      0       0       0
 
 ```
 
@@ -4741,7 +4741,7 @@ tester <- paste(rep(test,38),collapse="")
 #f
 > (palindromb "In girum imus nocte et consumimur igni")
 #t
-> 
+>
 
 ```
 
@@ -4818,7 +4818,7 @@ assert [palindrome? "In girum imus nocte et consumimur igni"] ; Spaces not remov
 ```
 
 
-{{out}} 
+{{out}}
 
 ```txt
 Simple palindromes, with an exception for variety:
@@ -4885,7 +4885,7 @@ The string is an inexact palindrome.
 
 {{works with|ARexx}}
 {{works with|Regina}} (3.8 and later, with options: AREXX_BIFS and AREXX_SEMANTICS)
-It should be noted that the   '''COMPRESS'''   function is not a Classic REXX BIF and isn't present in many REXXes. 
+It should be noted that the   '''COMPRESS'''   function is not a Classic REXX BIF and isn't present in many REXXes.
 
 The   '''SPACE(string,0)'''   BIF can be used instead.
 
@@ -5002,12 +5002,12 @@ recursive 16.516000   0.000000  16.516000 ( 16.562000)
 
 ```runbasic
 data "My dog has fleas", "Madam, I'm Adam.", "1 on 1", "In girum imus nocte et consumimur igni"
- 
+
 for i = 1 to 4
   read w$
   print w$;" is ";isPalindrome$(w$);" Palindrome"
 next
- 
+
 FUNCTION isPalindrome$(str$)
 for i = 1 to len(str$)
   a$ = upper$(mid$(str$,i,1))
@@ -5016,7 +5016,7 @@ next i
 if b$ <> c$ then isPalindrome$ = "not"
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 My dog has fleas is not Palindrome
@@ -5092,7 +5092,7 @@ Description
 The macro "palindro" has two parameters: string and ignorewhitespace.
   string is the expression to be checked.
   ignorewhitespace, (Y/N), determines whether or not to ignore blanks and punctuation.
-This macro was written in SAS 9.2.  If you use a version before SAS 9.1.3, 
+This macro was written in SAS 9.2.  If you use a version before SAS 9.1.3,
 the compress function options will not work.
 
 ```
@@ -5100,13 +5100,13 @@ the compress function options will not work.
 Code
 
 ```SAS
- 
+
 %MACRO palindro(string, ignorewhitespace);
   DATA _NULL_;
     %IF %UPCASE(&ignorewhitespace)=Y %THEN %DO;
 /* The arguments of COMPRESS (sp) ignore blanks and puncutation */
 /* We take the string and record it in reverse order using the REVERSE function. */
-      %LET rev=%SYSFUNC(REVERSE(%SYSFUNC(COMPRESS(&string,,sp)))); 
+      %LET rev=%SYSFUNC(REVERSE(%SYSFUNC(COMPRESS(&string,,sp))));
       %LET string=%SYSFUNC(COMPRESS(&string.,,sp));
     %END;
 
@@ -5121,7 +5121,7 @@ Code
       %PUT TRUE;
     %END;
     %ELSE %DO;
-      %PUT FALSE; 
+      %PUT FALSE;
     %END;
   RUN;
 %MEND;
@@ -5468,7 +5468,7 @@ String extend [
           i := o removeFirst.
           f := o removeLast.
           i = f ifTrue: [ ^ (o asString) palindroR ]
-                ifFalse: [ ^false ] 
+                ifFalse: [ ^false ]
       ]
   ]
 ].
@@ -5508,10 +5508,10 @@ pal     str notany(&ucase &lcase) = :s(pal)
 pal_end
 
         define('palchk(str)tf') :(palchk_end)
-palchk  output = str; 
+palchk  output = str;
         tf = 'False'; tf = pal(str) 'True'
         output = 'Palindrome: ' tf :(return)
-palchk_end        
+palchk_end
 
 *       # Test and display
         palchk('Able was I ere I saw Elba')
@@ -5692,10 +5692,10 @@ fi
 ## Ursala
 
 
-The algorithm is to convert to lower case, and then compare 
-the intersection of the argument and the set of letters 
-(declared in the standard library) with its reversal. 
-This is done using the built in operator suffixes 
+The algorithm is to convert to lower case, and then compare
+the intersection of the argument and the set of letters
+(declared in the standard library) with its reversal.
+This is done using the built in operator suffixes
 for intersection (c), identity (i), reversal (x) and equality (E).
 
 ```Ursala
@@ -5704,7 +5704,7 @@ for intersection (c), identity (i), reversal (x) and equality (E).
 palindrome = ~&cixE\letters+ * -:~& ~=`A-~rlp letters
 ```
 
-This test programs applies the function to each member of a list of three strings, 
+This test programs applies the function to each member of a list of three strings,
 of which only the first two are palindromes.
 
 ```Ursala
@@ -5713,7 +5713,7 @@ of which only the first two are palindromes.
 examples = palindrome* <'abccba','foo ba rra bo of','notone'>
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 <true,true,false>
@@ -5741,8 +5741,8 @@ int main (string[] args) {
 
 ## VBA
 
-This function uses function Reverse() (or Rreverse()) from [[Reverse a string]], 
-after first stripping spaces from the string using the built-in function Replace 
+This function uses function Reverse() (or Rreverse()) from [[Reverse a string]],
+after first stripping spaces from the string using the built-in function Replace
 and converting it to lower case. It can't handle punctuation (yet). Just like the VBScript
 version it could also work using StrReverse.
 
@@ -5788,7 +5788,7 @@ function Squish( s1 )
 	next
 	Squish = sRes
 end function
-		
+
 function isPalindrome( s1 )
 	dim squished
 	squished = Squish( s1 )
@@ -5896,7 +5896,7 @@ True
 }
 ```
 
-Returns: 
+Returns:
 ```txt
 [true false true]
 ```
@@ -5996,9 +5996,9 @@ yes
 
 ## Yorick
 
-Function ''is_palindrome'' meets the task description. 
-Function ''prep_palindrome'' demonstrates how to convert 
-an English sentence into a form that can be tested with 
+Function ''is_palindrome'' meets the task description.
+Function ''prep_palindrome'' demonstrates how to convert
+an English sentence into a form that can be tested with
 is_palindrome (by changing case and stripping non-alphabetical characters).
 
 

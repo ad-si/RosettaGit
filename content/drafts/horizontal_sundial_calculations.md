@@ -14,7 +14,7 @@ tags = []
 [[Category:Mathematics]]
 
 ;Task:
-Create a program that calculates the hour, sun hour angle, dial hour line angle from 6am to 6pm for an ''operator'' entered location. 
+Create a program that calculates the hour, sun hour angle, dial hour line angle from 6am to 6pm for an ''operator'' entered location.
 
 
 For example, the user is prompted for a location and inputs the latitude and longitude 4°57′S 150°30′W (4.95°S 150.5°W of [[wp:Jules Verne|Jules Verne]]'s ''[[wp:The Mysterious Island|Lincoln Island]]'', aka ''[[wp:Ernest Legouve Reef|Ernest Legouve Reef]])'', with a legal meridian of 150°W.
@@ -117,9 +117,9 @@ Example extracted - with permission for a GPL - from Simon Wheaton-Smith's [http
 <!-- So... can I have your permission to cut and paste your hdial program as GPLed open-source on RosettaCode.Org?
 On Wed, 2010-06-23 at 19:00 -0700, Simon [illustratingshadows wrote:
 > Thanks for the email.
-> 
+>
 > Go for it. Everything I did was open source, you have my blessing.
-> 
+>
 > Simon
 -->
 
@@ -156,7 +156,7 @@ END
 
 Enter latitude       => -4.95
 Enter longitude      => -150.5
-Enter legal meridian => -150  
+Enter legal meridian => -150
 
     sine of latitude:   -86.3e-3
     diff longitude:     -.500
@@ -306,13 +306,13 @@ hour  sun hour angle  dial hour line angle
 
 ```bbcbasic
       INSTALL @lib$+"FNUSING"
-      
+
       INPUT "Enter latitude (degrees)      : " latitude
       INPUT "Enter longitude (degrees)     : " longitude
       INPUT "Enter legal meridian (degrees): " meridian
-      
+
       PRINT '" Time", "Sun hour angle", "Dial hour line angle"
-      
+
       FOR hour = 6 TO 18
         hra = 15*hour - longitude + meridian - 180
         hla = DEG(ATN(SIN(RAD(latitude)) * TAN(RAD(hra))))
@@ -351,8 +351,8 @@ Enter legal meridian (degrees): -150.0
 
 {{trans|ALGOL 68}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 #define PICKVALUE(TXT, VM) do {			\
@@ -371,7 +371,7 @@ int main()
 {
   double lat, slat, lng, ref;
   int h;
-  
+
   PICKVALUE("Enter latitude", lat);
   PICKVALUE("Enter longitude", lng);
   PICKVALUE("Enter legal meridian", ref);
@@ -380,9 +380,9 @@ int main()
   slat = sin(DR(lat));
   printf("sine of latitude: %.3f\n", slat);
   printf("diff longitude: %.3f\n\n", lng - ref);
-  
+
   printf("Hour, sun hour angle, dial hour line angle from 6am to 6pm\n");
-  
+
   for(h = -6; h <= 6; h++)
   {
     double hla, hra;
@@ -451,14 +451,14 @@ WORKING-STORAGE SECTION.
 01  legal-meridian                 PIC S9(3)V9(5) COMP.
 
 01  lat-sine                       PIC S9(3)V9(5) COMP.
-01  diff-longitude                 PIC S9(3)V9(5) COMP. 
+01  diff-longitude                 PIC S9(3)V9(5) COMP.
 
 01  lat-sine-disp                  PIC -(3)9.9(5).
 01  diff-longitude-disp            PIC -(3)9.9(5).
 
 01  hour                           PIC S9 COMP.
 01  sun-hour-angle                 PIC S9(3)V9(5) COMP.
-01  dial-hour-line-angle           PIC S9(3)V9(5) COMP. 
+01  dial-hour-line-angle           PIC S9(3)V9(5) COMP.
 
 01  hour-disp                      PIC 99.
 01  sun-hour-angle-disp            PIC -(3)9.9(5).
@@ -472,7 +472,7 @@ PROCEDURE DIVISION.
     DISPLAY "Enter legal meridian: " NO ADVANCING
     ACCEPT legal-meridian
     DISPLAY SPACE
-    
+
     COMPUTE lat-sine, lat-sine-disp ROUNDED =
         FUNCTION SIN(latitude * 2 * FUNCTION PI / 360)
     DISPLAY "Sine of latitude: " FUNCTION TRIM(lat-sine-disp)
@@ -506,10 +506,10 @@ PROCEDURE DIVISION.
 Enter latitude: -4.95
 Enter longitude: -150.5
 Enter legal meridian: -150
- 
+
 Sine of latitude: -0.08629
 Diff longitude: -0.50000
- 
+
 Time   Sun hour angle  Dial hour line angle
 06:00  -89.50000        84.22441
 07:00  -74.50000        17.28173
@@ -941,7 +941,7 @@ HR=   6;  	  HRA= 90.500;  	  HLA= -95.775
   faccept
   cr ." Enter legal meridian: "
   faccept f- fnegate   ( sin[latitude] -longitude )
-  
+
   cr ." Hour : HourAngle , DialAngle"
   7 -6 do
     cr i 4 .r ." : "
@@ -1102,7 +1102,7 @@ if hour > 12 then time = hour - 12 : ap = " a.m." else time = hour : ap = " p.m.
 print using "##"; time; ap, using "####.##"; hra, using "####.###"; hla
 next hour
 end fn
- 
+
 fn SolarHourAngle( -4.95, -150.5, -150.0 )
 
 ```
@@ -1226,7 +1226,7 @@ Hour, sun hour angle, dial hour line angle from 6am to 6pm
 120 PRINT "    diff longitude:     "; USING "####.###"; LNG - REF
 130 PRINT
 140 PRINT "Hour, sun hour angle, dial hour line angle from 6am to 6pm"
-150 FOR H% = -6 TO 6 
+150 FOR H% = -6 TO 6
 160  LET HRA = 15 * H%
 170  LET HRA = HRA - (LNG - REF): ' correct for longitude difference
 180  LET HLA = ATN(SLAT * TAN(HRA * PI / 180)) * 180 / PI
@@ -1242,30 +1242,30 @@ Hour, sun hour angle, dial hour line angle from 6am to 6pm
 
 ```txt
 
-Enter latitude       => ? -4.95                                                 
-Enter longitude      => ? -150.5                                                
-Enter legal meridian => ? -150                                                  
-                                                                                
-    sine of latitude:   -.86E-01                                                
-    diff longitude:       -0.500                                                
-                                                                                
-Hour, sun hour angle, dial hour line angle from 6am to 6pm                      
-HR= -6; HRA= -89.500; HLA= +84.225                                           
-HR= -5; HRA= -74.500; HLA= +17.283                                           
-HR= -4; HRA= -59.500; HLA=  +8.334                                           
-HR= -3; HRA= -44.500; HLA=  +4.847                                           
-HR= -2; HRA= -29.500; HLA=  +2.795                                           
-HR= -1; HRA= -14.500; HLA=  +1.278                                           
-HR= +0; HRA=  +0.500; HLA=  -0.043                                           
-HR= +1; HRA= +15.500; HLA=  -1.371                                           
-HR= +2; HRA= +30.500; HLA=  -2.910                                           
-HR= +3; HRA= +45.500; HLA=  -5.018                                           
-HR= +4; HRA= +60.500; HLA=  -8.671                                           
-HR= +5; HRA= +75.500; HLA= -18.451                                           
-HR= +6; HRA= +90.500; HLA= +84.225   
+Enter latitude       => ? -4.95
+Enter longitude      => ? -150.5
+Enter legal meridian => ? -150
+
+    sine of latitude:   -.86E-01
+    diff longitude:       -0.500
+
+Hour, sun hour angle, dial hour line angle from 6am to 6pm
+HR= -6; HRA= -89.500; HLA= +84.225
+HR= -5; HRA= -74.500; HLA= +17.283
+HR= -4; HRA= -59.500; HLA=  +8.334
+HR= -3; HRA= -44.500; HLA=  +4.847
+HR= -2; HRA= -29.500; HLA=  +2.795
+HR= -1; HRA= -14.500; HLA=  +1.278
+HR= +0; HRA=  +0.500; HLA=  -0.043
+HR= +1; HRA= +15.500; HLA=  -1.371
+HR= +2; HRA= +30.500; HLA=  -2.910
+HR= +3; HRA= +45.500; HLA=  -5.018
+HR= +4; HRA= +60.500; HLA=  -8.671
+HR= +5; HRA= +75.500; HLA= -18.451
+HR= +6; HRA= +90.500; HLA= +84.225
 
 ```
-  
+
 
 
 ## Haskell
@@ -1341,9 +1341,9 @@ procedure PrintSundial(lat, lng, mer )
    write("latitude:        ", lat,
          "\nlongitude:       ", lng,
          "\nlegal meridian:  ", mer)
- 
+
    slat := sin(dtor(lat))
- 
+
    write("sine of latitude: ",slat,
          "\ndiff longitude:   ", lng-mer)
    write("\nHour, sun hour angle, dial hour line angle from 6am to 6pm")
@@ -1412,7 +1412,7 @@ HR= 6pm HRA=90.5, HLA=-95.77516739863968
 ```j
 require 'trig'
 atan2=: {:@*.@j. NB. arc tangent of y divided by x
- 
+
 horiz=: verb define
   'lat lng ref'=. y
   out=. smoutput@,&":
@@ -1560,7 +1560,7 @@ end
 
 Enter latitude       => -4.95
 Enter longitude      => -150.5
-Enter legal meridian => -150   
+Enter legal meridian => -150
 
     sine of latitude:   -0.086
     diff longitude:     -0.500
@@ -1730,7 +1730,7 @@ on mouseUp
     put item 1 of it into longitude
     put item 2 of it into latitude
     put item 3 of it into meridian
-    
+
     repeat with hour = 6 TO 18
         put 15 *hour - longitude + meridian - 180 into hra
         put rad2deg(atan(sin(deg2rad(latitude)) * tan(deg2rad(hra)))) into hla
@@ -1743,11 +1743,11 @@ end mouseUp
 function rad2deg theta
     return theta * (180 / pi)
 end rad2deg
- 
+
 function deg2rad theta
     return theta * (pi / 180)
 end deg2rad
- 
+
 function sgn x
     if x >0 then return 1 else return -1
 end sgn
@@ -1792,21 +1792,21 @@ ref = TextWindow.ReadNumber()
 sLat = Math.Sin(Math.GetRadians(lat))
 TextWindow.WriteLine("")
 TextWindow.Write("    sine of latitude:   ")
-TextWindow.WriteLine(Math.Round(sLat * 10000) / 10000) 
+TextWindow.WriteLine(Math.Round(sLat * 10000) / 10000)
 TextWindow.Write("    diff longitude:     ")
-TextWindow.WriteLine(lng - ref) 
+TextWindow.WriteLine(lng - ref)
 TextWindow.WriteLine("")
 TextWindow.WriteLine("Hour, sun hour angle, dial hour line angle from 6am to 6pm")
-For hour = -6 To 6 
+For hour = -6 To 6
   hourAngle = 15 * hour
-  hourAngle = hourAngle - (lng - ref) ' correct for longitude difference 
+  hourAngle = hourAngle - (lng - ref) ' correct for longitude difference
   hourLineAngle = math.GetDegrees(Math.ArcTan(sLat * Math.Tan(Math.GetRadians(hourAngle))))
   TextWindow.Write("HR=")
   TextWindow.CursorLeft = 3 + (3 - Text.GetLength(hour))
-  TextWindow.Write(hour) 
+  TextWindow.Write(hour)
   TextWindow.Write("; HRA=")
-  TextWindow.CursorLeft = 12 + (6 - Text.GetLength(hourAngle)) 
-  TextWindow.Write(hourAngle) 
+  TextWindow.CursorLeft = 12 + (6 - Text.GetLength(hourAngle))
+  TextWindow.Write(hourAngle)
   TextWindow.Write("; HLA=")
   TextWindow.CursorLeft = 24 + (4 - Text.GetLength(Math.Floor(hourLineAngle)))
   TextWindow.Write(Math.Round(hourLineAngle * 1000) / 1000)
@@ -1820,10 +1820,10 @@ EndFor
  Enter latitude       => -4.95
  Enter longitude      => -150.5
  Enter legal meridian => -150
- 
+
      sine of latitude:   -0.0863
      diff longitude:     -0.5
- 
+
  Hour, sun hour angle, dial hour line angle from 6am to 6pm
  HR= -6; HRA= -89.5; HLA=  84.225
  HR= -5; HRA= -74.5; HLA=  17.283
@@ -1917,10 +1917,10 @@ END SunDial.
  Enter latitude       => -4.95
  Enter longitude      => -150.5
  Enter legal meridian => -150
- 
+
      sine of latitude:   -8.6E-02
      diff longitude:     -0.500
- 
+
  Hour, sun hour angle, dial hour line angle from 6am to 6pm
  HR= -6; HRA= -89.500; HLA=  84.225
  HR= -5; HRA= -74.500; HLA=  17.283
@@ -2001,15 +2001,15 @@ HR=  6; HRA= 90.500; HLA= 84.225
 class Sundial {
   function : Main(args : String[]) ~ Nil {
     "Enter latitude: "->Print();
-    lat := System.IO.Console->ReadString()->ToFloat();    
+    lat := System.IO.Console->ReadString()->ToFloat();
     "Enter longitude: "->Print();
     lng := System.IO.Console->ReadString()->ToFloat();
     "Enter legal meridian: "->Print();
     ref := System.IO.Console->ReadString()->ToFloat();
     '\n'->PrintLine();
-        
+
     slat := lat->ToRadians()->Sin();
-    "sine of latitude: {$slat}"->PrintLine();    
+    "sine of latitude: {$slat}"->PrintLine();
     value := lng - ref;
     "diff longitude: {$value}"->PrintLine();
     '\n'->PrintLine();
@@ -2042,14 +2042,14 @@ let () =
   print_endline "Enter legal meridian	=> ";
   let ref = read_float () in
   print_newline ();
-  
+
   let slat = sin (lat *. 2. *. pi /. 360.) in
   Printf.printf "    sine of latitude:   %.3f\n" slat;
   Printf.printf "    diff longitude:     %.3f\n" (lng -. ref);
   print_newline ();
-  
+
   print_endline "Hour, sun hour angle, dial hour line angle from 6am to 6pm";
-  
+
   for h = -6 to 6 do
     let hra = 15. *. float h in
     let hra = hra -. (lng -. ref) in
@@ -2063,11 +2063,11 @@ let () =
 
 ```txt
 
-Enter latitude		=> 
+Enter latitude		=>
 -4.95
-Enter longitude	=> 
+Enter longitude	=>
 -150.5
-Enter legal meridian	=> 
+Enter legal meridian	=>
 -150.
 
     sine of latitude:   -0.086
@@ -2106,7 +2106,7 @@ printf("Hour, sun hour angle, dial hour line angle from 6am to 6pm\n");
 
 hras = [-6:6] .* 15.0 .- lng .+ ref;
 hlas = atand( tand(hras) .* slat );
-printf("HR= %3d;  \t  HRA=%7.3f;  \t  HLA= %7.3f\n", 
+printf("HR= %3d;  \t  HRA=%7.3f;  \t  HLA= %7.3f\n",
        [ [-6:6]; hras; hlas] );
 ```
 
@@ -2279,10 +2279,10 @@ my $longitude = prompt 'Enter longitude      => ';
 my $meridian  = prompt 'Enter legal meridian => ';
 
 my $lat_sin = sin( $latitude° );
-say 'Sine of latitude: ', $lat_sin.fmt("%.4f"); 
+say 'Sine of latitude: ', $lat_sin.fmt("%.4f");
 say 'Longitude offset: ', my $offset = $meridian - $longitude;
 say '=' x 48;
-say ' Hour  : Sun hour angle° : Dial hour line angle°'; 
+say ' Hour  : Sun hour angle° : Dial hour line angle°';
 
 for -6 .. 6 -> $hour {
     my $sun_deg  = $hour * 15 + $offset;
@@ -2332,25 +2332,25 @@ atom lat = prompt_number("Enter Latitude: ",{})
 atom lng = prompt_number("Enter Longitude: ",{})
 atom lm = prompt_number("Enter Legal Meridian: ",{})
 puts(1,'\n')
- 
+
 atom ha, hla
- 
+
 function Deg2Rad(atom degrees)
     return degrees * PI / 180
 end function
- 
+
 function Rad2Deg(atom radians)
     return radians * 180 / PI
 end function
- 
+
 function atan2(atom y, atom x)
     return 2*arctan((sqrt(power(x,2)+power(y,2)) - x)/y)
 end function
- 
+
 atom s_lat = sin(Deg2Rad(lat))
- 
+
 puts(1,"Hour,  Sun Hour Angle, Dial Hour Line Angle\n")
- 
+
 for hour = -6 to 6 do
     ha = hour * 15 - lng + lm
     atom s = sin(Deg2Rad(ha))
@@ -2358,7 +2358,7 @@ for hour = -6 to 6 do
     hla = Rad2Deg(atan2(s_lat*s,c))
     printf(1,"%3d       %7.3f          %7.3f\n",{hour+12,ha,hla})
 end for
- 
+
 {} = wait_key()
 ```
 
@@ -2485,7 +2485,7 @@ function Get-Sundial
         "Sine of Latitude"     = [Math]::Round($sinLat,3)
         "Longitude Difference" = $Longitude - $Meridian
     }
-    
+
     [int[]]$hours = -6..6
 
     $hoursArray = foreach ($hour in $hours)
@@ -2552,12 +2552,12 @@ If OpenConsole()
   Print("Enter longitude      => "): lng=ValF(Input())
   Print("Enter legal meridian => "): ref=ValF(Input())
   PrintN("")
-  
+
   slat=Sin(lat*2*#PI/360)
   PrintN("    sine of latitude:   "+StrF(slat,3))
   PrintN("    diff longitude:     "+StrF((lng-ref),3)+#CRLF$)
   PrintN("Hour, sun hour angle, dial hour line angle from 6am to 6pm")
-  
+
   For h=-6 To 6
     Define.f hra, hla
     hra=15*h
@@ -2565,7 +2565,7 @@ If OpenConsole()
     hla=ATan(slat*Tan(hra*2*#PI/360))*360/(2*#PI)
     PrintN("HR="+RSet(Str(h),3)+"; HRA="+RSet(StrF(hra,3),7)+"; HLA="+RSet(StrF(hla,3),7))
   Next
-  
+
 EndIf
 ```
 
@@ -2660,7 +2660,7 @@ HR=  6; HRA= 90.500; HLA= 84.225
 
 {{trans|ALGOL 68}}
 
-I must say, I'm a bit astonished by the fact that no one is bothered by the atan problem (HLA=84.225) that appears in the ALGOL 68 solution and all of the ones derived from it. Composing tan & atan produces the identity only in the range [-90,90], and you have to correct for angles outside of this. 
+I must say, I'm a bit astonished by the fact that no one is bothered by the atan problem (HLA=84.225) that appears in the ALGOL 68 solution and all of the ones derived from it. Composing tan & atan produces the identity only in the range [-90,90], and you have to correct for angles outside of this.
 
 Also, I apologize for the length; I added quite a bit of commenting, and I peeled things out into functions so I could test them. Hopefully, the result--though longer--is also more readable.
 
@@ -2672,14 +2672,14 @@ Also, I apologize for the length; I added quite a bit of commenting, and I peele
 ;; given in degrees
 (define (print-table lat long-offset)
   ;; print the table header
-  (display 
+  (display
    (~a "    sine of latitude: "
        (~r (sin (deg->rad lat)) #:precision '(= 3))
        "\n"
        "    diff longitude:   "
        (~r long-offset #:precision '(= 3))
        "\n\nHour, sun hour angle, dial hour line angle "
-       "from 6am to 6pm\n"))  
+       "from 6am to 6pm\n"))
   ;; print the table
   (for ([h (in-range -6 7)])
     (define hra (- (* 15 h) long-offset))
@@ -2693,7 +2693,7 @@ Also, I apologize for the length; I added quite a bit of commenting, and I peele
 ;; given angle of the sun (angles given and returned in degrees)
 (define (to-hla lat ang)
   (define lat-sign (cond [(< lat 0) -1] [else 1]))
-  ;; move to the right quadrant for 
+  ;; move to the right quadrant for
   ;; angles outside [-90,90]
   (define correction (* (cond [(< ang -90) -180]
                               [(> ang 90) 180]
@@ -2717,7 +2717,7 @@ Also, I apologize for the length; I added quite a bit of commenting, and I peele
 ;; add spaces to reach given length
 (define (pad-to cols str)
   (define spaces-needed (max 0 (- cols (string-length str))))
-  (string-append 
+  (string-append
    (list->string (for/list ([i spaces-needed]) #\space))
    str))
 
@@ -2771,7 +2771,7 @@ HR=  3; HRA= 45.500; HLA= -5.018
 HR=  4; HRA= 60.500; HLA= -8.671
 HR=  5; HRA= 75.500; HLA=-18.451
 HR=  6; HRA= 90.500; HLA=-95.775
-> 
+>
 
 ```
 
@@ -2779,7 +2779,7 @@ HR=  6; HRA= 90.500; HLA=-95.775
 
 ## REXX
 
-The REXX language doesn't have the usual trigonometric functions, nor for that matter, a   '''sqrt'''   (square root) function, 
+The REXX language doesn't have the usual trigonometric functions, nor for that matter, a   '''sqrt'''   (square root) function,
 
 so these as well as   '''pi'''   were added to this program.
 
@@ -2906,13 +2906,13 @@ meridian = -150.0
 see "enter latitude (degrees): " + latitude + nl
 see "enter longitude (degrees): " + longitude + nl
 see "enter legal meridian (degrees): " + meridian + nl
- 
+
 see "time   " + "   sun hour angle" + "      dial hour line angle" + nl
- 
+
 for hour = 6 to 18
     hra = 15*hour - longitude + meridian - 180
     hla = 180/pi*(atan(sin(pi/180*latitude) * tan(pi/180*hra)))
-    if fabs(hra) > 90 
+    if fabs(hra) > 90
        hla = hla + 180 * sign(hra * latitude)
     ok
     see "" + hour + "           " + hra + "                  " + hla + nl
@@ -2972,7 +2972,7 @@ puts 'Hour, sun hour angle, dial hour line angle from 6am to 6pm'
 -6.upto(6) do |h|
   hra = 15 * h
   hra -= lng - ref
-  hla =  atan( slat * tan( hra * DtoR ))/ DtoR 
+  hla =  atan( slat * tan( hra * DtoR ))/ DtoR
   puts "HR =%3d; HRA =%7.3f; HLA =%7.3f" % [h, hra, hla]
 end
 ```
@@ -3013,29 +3013,29 @@ HR =  6; HRA = 90.500; HLA = 84.225
 ```runbasic
 global pi
 pi = 22 / 7
- 
+
 print "Enter latitude  (degrees)     : "; :input latitude      '    -4.95
 print "Enter longitude (degrees)     : "; :input longitude     '   -150.5
 print "Enter legal meridian (degrees): "; :input meridian      '   -150.0
 
 print
 print "Time     Sun hour angle   Dial hour line angle"
- 
+
 for hour = 6 TO 18
    hra = (15 * hour) - longitude + meridian -180
    hla =rad2deg( atn( sin( deg2rad( latitude)) *tan( deg2rad( hra))))
    if abs( hra) >90 then hla =hla +180 *sgn( hra *latitude)
    print using( "##", hour);"         ";using("####.##", hra);"         ";using("####.###", hla)
 next hour
- 
+
 function rad2deg( theta)
     rad2deg =theta *180 /pi
 end function
- 
+
 function deg2rad( theta)
     deg2rad =theta *pi /180
 end function
- 
+
 function sgn( x)
     if x >0 then sgn =1 else sgn =-1
 end function
@@ -3383,8 +3383,8 @@ st0dr:
 	fmul
 	ret
 
-	
-main:	
+
+main:
 	lea	eax, [lat_t]
 	lea	edx, [lat]
 	call    getvalue
@@ -3424,7 +3424,7 @@ main:
 	add	esp, 4
 
 	mov	ecx, -6
-.loop:	
+.loop:
 	cmp	ecx, 6
 	jg	.endloop
 
@@ -3441,7 +3441,7 @@ main:
 	sub	esp, 20
 	mov	dword [esp], ecx
 	fst	qword [esp+4]
-	
+
 	call	st0dr
 
 	fptan
@@ -3453,9 +3453,9 @@ main:
 
 	fld	qword [rdinv]
 	fmul
-	
+
 	fstp	qword [esp+12]
-	
+
 	push	o_ft
 	call	printf
 	mov	ecx, [esp+4]
@@ -3464,13 +3464,13 @@ main:
 	inc	ecx
 	jmp	.loop
 .endloop:
-	
+
 	xor	eax, eax
 	ret
-	
+
 
 	section .data
-	
+
 lat:	dq	0.0
 lng:	dq	0.0
 ref:	dq	0.0
@@ -3486,19 +3486,19 @@ lat_t:	db "Enter latitude: ", 0
 lng_t:	db "Enter longitude: ", 0
 ref_t:	db "Enter legal meridian: ", 0
 
-in_ft:	db "%lf", 0	
-newline:	
+in_ft:	db "%lf", 0
+newline:
 	db 10, 0
 
-sin_ft:	
+sin_ft:
 	db "sine of latitude: %.3f", 10, 0
-diff_ft:	
+diff_ft:
 	db "diff longitude: %.3f", 10, 10, 0
 
-tab_t:	
+tab_t:
 	db "Hour, sun hour angle, dial hour line angle from 6am to 6pm", 10, 0
 
-o_ft:	
+o_ft:
 	db "HR= %3d;  ",9,"  HRA=%7.3f;  ",9,"  HLA= %7.3f", 10, 0
 ```
 
@@ -3639,7 +3639,7 @@ Hour  Sun hour angle   Dial hour line angle
 //(degree measure)*Degrees => Radian measure
 //(radian measure)/Degrees => Degree measure
 const pi=(0.0).pi, toDeg=(0.0).pi/180;
- 
+
 latitude :=ask(0,"Enter latitude: ").toFloat();
 longitude:=ask(1,"Enter longitude: ").toFloat();
 meridian :=ask(2,"Enter legal meridian: ").toFloat();
@@ -3649,10 +3649,10 @@ Console.writeln();
 Console.writeln("Sine of latitude: ",sineLatitude);
 Console.writeln("Difference of Longitudes (given longitude - meridian): ",longitude-meridian);
 Console.writeln();
- 
+
 println("Numbers from 6 AM to 6 PM: ");
 println("Hour\t\tSun hour angle\t Dial hour line angle");
- 
+
 foreach hour in ([-6..6]){
    clockHour:=( if(hour < 0) "%sAM".fmt(hour.abs()) else "%sPM".fmt(hour) );
    shr      :=15.0*hour - (longitude - meridian);
@@ -3670,7 +3670,7 @@ $ zkl bbb -4.95 -150.5 -150
 Sine of latitude: -0.0862864
 Difference of Longitudes (given longitude - meridian): -0.5
 
-Numbers from 6 AM to 6 PM: 
+Numbers from 6 AM to 6 PM:
 Hour		Sun hour angle	 Dial hour line angle
 6AM		-89.5		+84.225
 5AM		-74.5		+17.283
@@ -3691,7 +3691,7 @@ Hour		Sun hour angle	 Dial hour line angle
 {{out}}
 
 ```txt
-$ zkl bbb -4.95 
+$ zkl bbb -4.95
 Enter longitude: -150.5
 Enter legal meridian: -150
 <as above>

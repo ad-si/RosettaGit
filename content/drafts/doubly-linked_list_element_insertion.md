@@ -39,7 +39,7 @@ Create links and form the list.
 
 
 ```ada
-procedure Make_List is 
+procedure Make_List is
    A, B, C : Link_Access;
 begin
    A := new Link;
@@ -60,7 +60,7 @@ Element insertion using the generic doubly linked list defined in the standard A
 ```ada
 with Ada.Containers.Doubly_Linked_Lists;
 with Ada.Text_Io; use Ada.Text_Io;
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;  
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 procedure List_Insertion is
    package String_List is new Ada.Containers.Doubly_Linked_Lists(Unbounded_String);
@@ -145,7 +145,7 @@ Output:
 
 ```txt
 
-1993: Clinton; 2001: Bush; 2004: Cheney; 2008: Obama; 
+1993: Clinton; 2001: Bush; 2004: Cheney; 2008: Obama;
 
 ```
 
@@ -178,16 +178,16 @@ Return
 ```bbcbasic
       DIM node{pPrev%, pNext%, iData%}
       DIM a{} = node{}, b{} = node{}, c{} = node{}
-      
+
       a.pNext% = b{}
       a.iData% = 123
       b.pPrev% = a{}
       b.iData% = 456
       c.iData% = 789
-      
+
       PROCinsert(a{}, c{})
       END
-      
+
       DEF PROCinsert(here{}, new{})
       LOCAL temp{} : DIM temp{} = node{}
       new.pNext% = here.pNext%
@@ -251,7 +251,8 @@ This function call changes the list from {a,b} to {a,b,c}.
 
 C++ already has own linked list structure. If we were to roll our own linked list, we could implement function inserting new value after specific node like that:
 
-```cpp>template <typename T
+```cpp
+template <typename T>
 
 void insert_after(Node<T>* N, T&& data)
 {
@@ -379,9 +380,9 @@ void main() {
 {{out}}
 
 ```txt
-A 
-A B 
-A C B 
+A
+A B
+A C B
 ```
 
 
@@ -431,33 +432,33 @@ In ISO Fortran 95 or later:
 ```fortran
 module dlList
     public :: node, insertAfter, getNext
-    
+
     type node
         real :: data
         type( node ), pointer :: next => null()
         type( node ), pointer :: previous => null()
     end type node
-    
+
 contains
     subroutine insertAfter(nodeBefore, value)
         type( node ), intent(inout), target :: nodeBefore
         type( node ), pointer :: newNode
         real, intent(in) :: value
-        
+
         allocate( newNode )
         newNode%data = value
         newNode%next => nodeBefore%next
         newNode%previous => nodeBefore
-        
+
         if (associated( newNode%next )) then
             newNode%next%previous => newNode
         end if
         newNode%previous%next => newNode
     end subroutine insertAfter
-   
+
     subroutine delete(current)
         type( node ), intent(inout), pointer :: current
-        
+
         if (associated( current%next )) current%next%previous => current%previous
         if (associated( current%previous )) current%previous%next => current%next
         deallocate(current)
@@ -468,14 +469,14 @@ program dlListTest
     use dlList
     type( node ), target :: head
     type( node ), pointer :: current, next
-    
+
     head%data = 1.0
     current => head
     do i = 1, 20
        call insertAfter(current, 2.0**i)
        current => current%next
     end do
-    
+
     current => head
     do while (associated(current))
         print *, current%data
@@ -598,7 +599,7 @@ insert _  Leaf            = Leaf
 insert nv l@(Node pl v r) = (\(Node c _ _) -> c) new
     where new   = updateLeft left . updateRight right $ Node l nv r
           left  = Node pl v new
-          right = case r of 
+          right = case r of
                       Leaf       -> Leaf
                       Node _ v r -> Node new v r
 
@@ -655,7 +656,7 @@ DoublyLinkedList.prototype.insertAfter = function(searchValue, nodeToInsert) {
         nodeToInsert.next(after);
         after.prev(nodeToInsert);
     }
-    else if (this.next() == null) 
+    else if (this.next() == null)
         throw new Error(0, "value '" + searchValue + "' not found in linked list.")
     else
         this.next().insertAfter(searchValue, nodeToInsert);
@@ -708,7 +709,7 @@ insertpost(node1, node3)
 printfromroot(node1)
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 1
@@ -790,12 +791,12 @@ proc insertAfter[T](l: var List[T], r, n: Node[T]) =
 	BEGIN
 		n := NewNode(o);
 		n.prev := p;
-		n.next := p.next;		
+		n.next := p.next;
 		IF p.next # NIL THEN p.next.prev := n END;
 		p.next := n;
 		IF p = dll.last THEN dll.last := n END;
-		INC(dll.size)	
-	END InsertAfter; 
+		INC(dll.size)
+	END InsertAfter;
 
 ```
 
@@ -813,7 +814,7 @@ method : public : native : AddBack(value : Base) ~ Nil {
   }
   else {
     @tail->SetNext(node);
-    node->SetPrevious(@tail);  
+    node->SetPrevious(@tail);
     @tail := node;
   };
 }
@@ -895,7 +896,7 @@ Complete definition is here : [[../Definition#Oforth]]
 : test      // ( -- aDList )
 | dl |
    DList new ->dl
-   dl insertFront("A") 
+   dl insertFront("A")
    dl insertBack("B")
    dl head insertAfter(DNode new("C", null , null))
    dl ;
@@ -1205,18 +1206,18 @@ Structure node
   *next.node
   value.c ;use character type for elements in this example
 EndStructure
- 
+
 Procedure insertAfter(element.c, *c.node)
   ;insert new node *n after node *c and set it's value to element
   Protected *n.node = AllocateMemory(SizeOf(node))
   If *n
     *n\value = element
-    *n\prev = *c 
+    *n\prev = *c
     If *c
       *n\next = *c\next
       *c\next = *n
     EndIf
-  EndIf 
+  EndIf
   ProcedureReturn *n
 EndProcedure
 
@@ -1230,13 +1231,13 @@ EndProcedure
 
 If OpenConsole()
   Define dl.node, *n.node
-  
+
   *n = insertAfter('A',dl)
   insertAfter('B',*n)
   insertAfter('C',*n)
-  
+
   displayList(dl)
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -1429,7 +1430,7 @@ head.insert_after(:a, :c)
 ## Rust
 
 
-###  Simply using the standard library 
+###  Simply using the standard library
 
 
 ```rust
@@ -1577,7 +1578,7 @@ class Node{
 
 
 ```zkl
-a:=Node("a"); 
+a:=Node("a");
 a.append("b").append("c");
 println(a,"  ",a.next,"  ",a.next.next);
 ```

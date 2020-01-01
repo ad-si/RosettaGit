@@ -10,9 +10,9 @@ categories = []
 tags = []
 +++
 
-{{draft task}} 
-[[Category:Hardware]] 
-[[Category:Terminal control]] 
+{{draft task}}
+[[Category:Hardware]]
+[[Category:Terminal control]]
 [[Category:Initialization]]
 {{omit from|TI-83 BASIC|Output device is always either a terminal or created by the program}}
 
@@ -53,7 +53,7 @@ end Test_tty;
 
 ```txt
 
-$ ./test_tty 
+$ ./test_tty
 stdout is a tty.
 $ ./test_tty > /dev/null
 stdout is not a tty.
@@ -67,8 +67,8 @@ stdout is not a tty.
 Use <code>isatty()</code> on file descriptor to determine if it's a TTY.  To get the file descriptor from a <code>FILE*</code> pointer, use <code>fileno</code>:
 
 
-```c>#include <unistd.h
-   // for isatty()
+```c
+#include <unistd.h>   // for isatty()
 #include <stdio.h>    // for fileno()
 
 int main()
@@ -151,7 +151,7 @@ namespace CheckTerminal {
 
 ```lisp
 (with-open-stream (s *standard-output*)
-  (format T "stdout is~:[ not~;~] a terminal~%" 
+  (format T "stdout is~:[ not~;~] a terminal~%"
           (interactive-stream-p s)))
 ```
 
@@ -178,7 +178,7 @@ We use the interface to C library functions <code>isatty()</code> and <code>file
     #include <sys/ioctl.h>
     #include <unistd.h>
     int ttyPredicate() {
-      return isatty(fileno(stdout)); 
+      return isatty(fileno(stdout));
      }")
 
 (ffi:def-function
@@ -195,7 +195,7 @@ We use the interface to C library functions <code>isatty()</code> and <code>file
 ```
 
 
-Compilation can be done with the following commands : 
+Compilation can be done with the following commands :
 
 <code>ecl --eval '(compile-file "file.lisp" :system-p t)' --eval '(quit)'</code>
 
@@ -204,7 +204,7 @@ Compilation can be done with the following commands :
 {{Out}}
 
 ```txt
-$ ./is-tty 
+$ ./is-tty
 stdout is a terminal
 $ ./is-tty  | cat -
 stdout is not a terminal
@@ -404,7 +404,7 @@ fun main(args: Array<String>) {
     if (isatty(STDOUT_FILENO) != 0)
         println("stdout is a terminal")
     else
-        println("stdout is not a terminal") 
+        println("stdout is not a terminal")
 }
 ```
 
@@ -534,7 +534,7 @@ else:
 {{works with|Regina in a DOS window under MS Windows}}
 Programming note:   The comment about the REXX statements have to be on one line isn't quite true,
 
-but because the REXX special variable '''SIGL''' is defined where it's executed, it makes coding simpler. 
+but because the REXX special variable '''SIGL''' is defined where it's executed, it makes coding simpler.
 
 
 '''SIGL'''   is set to the REXX statment number where:
@@ -543,14 +543,14 @@ but because the REXX special variable '''SIGL''' is defined where it's executed,
 :::*   a '''SIGNAL''' statement is used
 Method used:   since REXX has no direct way of determining if the STDIN is a terminal or not, the REXX code (below)
 
-actually ''raises'' (which is no way to run a railroad) a syntax error when attempting to read the 2<sup>nd</sup> line from   STDIN, 
+actually ''raises'' (which is no way to run a railroad) a syntax error when attempting to read the 2<sup>nd</sup> line from   STDIN,
 
 which causes a routine (named '''syntax:''') to get control, determines where the syntax error occurred, and returns an
 
 appropriate string indicating if STDIN is a '''terminal''' (or '''other''').
 
 
-Note that under VM/CMS, this can be accomplished with a (host) command within REXX and then examining the results. 
+Note that under VM/CMS, this can be accomplished with a (host) command within REXX and then examining the results.
 
 On IBM mainframes, a user can have STDIN defined, but the terminal can be ''disconnected''.
 
@@ -655,7 +655,7 @@ At the system call level, when Tcl is setting up the channels that correspond to
 Assuming that the above script is stored in the file <tt>istty.tcl</tt>:
 
 ```txt
-$ tclsh8.5 istty.tcl 
+$ tclsh8.5 istty.tcl
 Output goes to tty
 $ tclsh8.5 istty.tcl | cat
 Output doesn't go to tty

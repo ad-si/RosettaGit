@@ -10,10 +10,10 @@ categories = []
 tags = []
 +++
 
-{{task|Keyboard input}} 
+{{task|Keyboard input}}
 [[user input::task| ]]
 
-Determine if a key has been pressed and store this in a variable. 
+Determine if a key has been pressed and store this in a variable.
 
 If no key has been pressed, the program should continue without waiting.
 
@@ -47,7 +47,7 @@ If not, Available is set to False.
 /* Assembleur ARM Raspberry  : Vincent Leboulou */
 /* Blog : http://assembleurarmpi.blogspot.fr/  */
 /* modèle B 512MO   */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -69,7 +69,7 @@ If not, Available is set to False.
 .equ SIGINT,   2    @ Issued if the user sends an interrupt signal (Ctrl + C)
 .equ SIGQUIT,  3    @ Issued if the user sends a quit signal (Ctrl + D)
 .equ SIGTERM, 15    @ Software termination signal (sent by kill by default)
-.equ SIGTTOU, 22    @ 
+.equ SIGTTOU, 22    @
 
 .equ TAILLEBUFFER,   10
 
@@ -80,37 +80,37 @@ If not, Available is set to False.
 /* structure termios see doc linux*/
     .struct  0
 term_c_iflag:                    @ input modes
-    .struct  term_c_iflag + 4 
+    .struct  term_c_iflag + 4
 term_c_oflag:                    @ output modes
-    .struct  term_c_oflag + 4 
+    .struct  term_c_oflag + 4
 term_c_cflag:                    @ control modes
-    .struct  term_c_cflag + 4 
+    .struct  term_c_cflag + 4
 term_c_lflag:                    @ local modes
-    .struct  term_c_lflag + 4 
+    .struct  term_c_lflag + 4
 term_c_cc:                       @ special characters
-    .struct  term_c_cc + 20      @ see length if necessary 
+    .struct  term_c_cc + 20      @ see length if necessary
 term_fin:
 
 /* structure sigaction see doc linux */
     .struct  0
 sa_handler:
-    .struct  sa_handler + 4 
+    .struct  sa_handler + 4
 sa_mask:
-    .struct  sa_mask + 4 
+    .struct  sa_mask + 4
 sa_flags:
-    .struct  sa_flags + 4 
+    .struct  sa_flags + 4
 sa_sigaction:
-    .struct  sa_sigaction + 4 
+    .struct  sa_sigaction + 4
 sa_fin:
 
 /* structure poll see doc linux */
     .struct  0
 poll_fd:                            @   File Descriptor
-    .struct  poll_fd + 4 
+    .struct  poll_fd + 4
 poll_events:                        @  events mask
-    .struct  poll_events + 4 
+    .struct  poll_events + 4
 poll_revents:                       @ events returned
-    .struct  poll_revents + 4 
+    .struct  poll_revents + 4
 poll_fin:
 
 /*********************************/
@@ -136,7 +136,7 @@ sHexaKey: .space 9,' '
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 .align 4
 iEnd:           .skip 4                        @ 0 loop  1 = end loop
 iTouche:        .skip 4                        @ value key pressed
@@ -151,15 +151,15 @@ stPoll2:        .skip poll_fin
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                            @ entry of program 
- 
+.global main
+main:                                            @ entry of program
+
     /* read terminal state */
     mov r0,#STDIN                                @ input console
     mov r1,#TCGETS
     ldr r2,iAdrstOldtio
     mov r7, #IOCTL                               @ call system Linux
-    svc #0 
+    svc #0
     cmp r0,#0                                    @ error ?
     beq 1f
     ldr r1,iAdrszMessErreur                      @ error message
@@ -173,21 +173,21 @@ main:                                            @ entry of program
     ldr r1,iAdrstSigAction
     mov r2,#0                                    @ NULL
     mov r7, #SIGACTION                           @ call system
-    svc #0 
+    svc #0
     cmp r0,#0                                    @ error ?
     bne 98f
     mov r0,#SIGQUIT
     ldr r1,iAdrstSigAction
     mov r2,#0                                    @ NULL
-    mov r7, #SIGACTION                           @ call system 
-    svc #0 
+    mov r7, #SIGACTION                           @ call system
+    svc #0
     cmp r0,#0                                    @ error ?
     bne 98f
     mov r0,#SIGTERM
     ldr r1,iAdrstSigAction
     mov r2,#0                                    @ NULL
-    mov r7, #SIGACTION                           @ appel systeme 
-    svc #0 
+    mov r7, #SIGACTION                           @ appel systeme
+    svc #0
     cmp r0,#0
     bne 98f
     @
@@ -197,8 +197,8 @@ main:                                            @ entry of program
     mov r0,#SIGTTOU                              @invalidate other process signal
     ldr r1,iAdrstSigAction1
     mov r2,#0                                    @ NULL
-    mov r7,#SIGACTION                            @ call system 
-    svc #0 
+    mov r7,#SIGACTION                            @ call system
+    svc #0
     cmp r0,#0
     bne 98f
     @
@@ -206,21 +206,21 @@ main:                                            @ entry of program
     mov r0,#STDIN
     mov r1,#TCGETS
     ldr r2,iAdrstCurtio                          @ address current termio
-    mov r7,#IOCTL                                @ call systeme 
-    svc #0 
+    mov r7,#IOCTL                                @ call systeme
+    svc #0
     cmp r0,#0                                    @ error ?
     bne 98f
     mov r2,#ICANON | ECHO                        @ no key pressed echo on display
-    mvn r2,r2                                    @ and one key 
+    mvn r2,r2                                    @ and one key
     ldr r1,iAdrstCurtio
     ldr r3,[r1,#term_c_lflag]
-    and r3,r2                                    @ add flags 
+    and r3,r2                                    @ add flags
     str r3,[r1,#term_c_lflag]                    @ and store
-    mov r0,#STDIN                                @ maj terminal current state 
+    mov r0,#STDIN                                @ maj terminal current state
     mov r1,#TCSETS
     ldr r2,iAdrstCurtio
     mov r7, #IOCTL                               @ call system
-    svc #0 
+    svc #0
     cmp r0,#0
     bne 98f
     @
@@ -235,9 +235,9 @@ main:                                            @ entry of program
     mov r1,#POLLIN                                @ action code
     str r1,[r0,#poll_events]
     mov r1,#1                                     @ items number structure poll
-    mov r2,#0                                     @ timeout = 0 
+    mov r2,#0                                     @ timeout = 0
     mov r7,#SYSPOLL                               @ call system POLL
-    svc #0 
+    svc #0
     cmp r0,#0                                     @ key pressed ?
     ble 2b                                        @ no key pressed -> loop
                                                   @ read key
@@ -274,18 +274,18 @@ main:                                            @ entry of program
     mov r0,#STDIN
     mov r1,#TCSETS
     ldr r2,iAdrstOldtio
-    mov r7,#IOCTL                                 @ call system  
+    mov r7,#IOCTL                                 @ call system
     svc #0
     cmp r0,#0
     beq 100f
     ldr r1,iAdrszMessErreur                       @ error message
     bl   displayError
 
-100:                                              @ standard end of the program 
+100:                                              @ standard end of the program
     mov r0, #0                                    @ return code
     mov r7, #EXIT                                 @ request to exit program
     svc #0                                        @ perform the system call
- 
+
 iAdrsMessValeur:          .int sMessValeur
 iAdrszMessErreur:         .int szMessErreur
 iAdrszCarriageReturn:     .int szCarriageReturn
@@ -302,7 +302,7 @@ iAdriTouche:              .int iTouche
 iAdrszMessKey:            .int szMessKey
 iAdrsHexaKey:             .int sHexaKey
 /******************************************************************/
-/*     traitement du signal                                       */ 
+/*     traitement du signal                                       */
 /******************************************************************/
 /* r0 contains  */
 sighandler:
@@ -331,46 +331,46 @@ displayError:
     bl affichageMess
 100:
     pop {r0-r2,lr}                             @ restaur registers
-    bx lr                                   @ return 
+    bx lr                                   @ return
 iAdrszMessErr:                 .int szMessErr
 iAdrsHexa:                     .int sHexa
 iAdrsDeci:                     .int sDeci
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
     pop {r0,r1,r2,r7,lr}                           @ restaur registers
-    bx lr                                          @ return  
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
- 
+
 1:                                                  @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b                                          @ and loop
                                                     @ and move digit from left of area
@@ -383,23 +383,23 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -407,15 +407,15 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 /******************************************************************/
-/*     Converting a register to hexadecimal                      */ 
+/*     Converting a register to hexadecimal                      */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 conversion16:
@@ -425,9 +425,9 @@ conversion16:
     mov r3,r0                                          @ save entry value
 1:                                                     @ start loop
     and r0,r3,r4                                       @value register and mask
-    lsr r0,r2                                          @ move right 
+    lsr r0,r2                                          @ move right
     cmp r0,#10                                         @ compare value
-    addlt r0,#48                                       @ <10  ->digit	
+    addlt r0,#48                                       @ <10  ->digit
     addge r0,#55                                       @ >10  ->letter A-F
     strb r0,[r1],#1                                    @ store digit on area and + 1 in area address
     lsr r4,#4                                          @ shift mask 4 positions
@@ -435,7 +435,7 @@ conversion16:
     bge 1b                                             @  no -> loop
 
 100:
-    pop {r1-r4,lr}                                     @ restaur registers 
+    pop {r1-r4,lr}                                     @ restaur registers
     bx lr                                              @return
 
 
@@ -550,8 +550,8 @@ If there was no keypress an empty string is returned.  Alternatively a numeric k
 ## C
 
 For POSIX systems. Ctrl-C to stop:
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <termios.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -778,7 +778,7 @@ variable last-key
 ```freebasic
 ' FB 1.05.0 Win64
 
-Dim k As String 
+Dim k As String
 Do
   k = Inkey
 Loop Until k <> ""
@@ -887,7 +887,7 @@ import Data.Maybe
 import System.IO
 
 main = do
-    c <- newEmptyMVar 
+    c <- newEmptyMVar
     hSetBuffering stdin NoBuffering
     forkIO $ do
       a <- getChar
@@ -1057,7 +1057,7 @@ Example
 ```LiveCode
 repeat 100 times
 -- exit loop if "." or the escapeKey is pressed
-    if 46 is in the keysDown or 65307 is in the keysdown then 
+    if 46 is in the keysDown or 65307 is in the keysdown then
         answer "exiting"
         exit repeat
     else
@@ -1107,7 +1107,7 @@ k$=inkey$
 
 ```M2000 Interpreter
 
-K$="" 
+K$=""
 If Inkey(2000)<>-1 then k$=Key$
 Print k$
 
@@ -1132,15 +1132,15 @@ If keypress(32) then k$=" "
 ```Oforth
 import: console
 
-: checkKey 
+: checkKey
 | key |
    System.Console receiveTimeout(2000000) ->key   // Wait a key pressed for 2 seconds
    key ifNotNull: [ System.Out "Key pressed : " << key << cr ]
-   "Done" println ; 
+   "Done" println ;
 ```
 
 
-Other options : 
+Other options :
 
 ```Oforth
 System.Console receive ->key                 // Wait until a key is pressed ( = receiveTimeout(null) )
@@ -1340,9 +1340,9 @@ if __name__ == "__main__":
 
 ## PureBasic
 
-Returns a character string if a key is pressed during the call of Inkey(). It doesn't interrupt (halt) the program flow. 
+Returns a character string if a key is pressed during the call of Inkey(). It doesn't interrupt (halt) the program flow.
 
-If special keys (non-ASCII) have to be handled, RawKey() should be called after Inkey(). 
+If special keys (non-ASCII) have to be handled, RawKey() should be called after Inkey().
 
 ```PureBasic
 k$ = Inkey()

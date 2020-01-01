@@ -17,30 +17,30 @@ Create a password generation program which will generate passwords containing ra
           upper-case letters:  A ──► Z
                       digits:  0 ──► 9
   other printable characters: <big><big> !"#$%&'()*+,-./:;<=>?@[]^_{|}~ </big></big>
-  (the above character list excludes white-space, backslash and grave) 
+  (the above character list excludes white-space, backslash and grave)
 
 
 The generated password(s) must include   ''at least one''   (of each of the four groups):
-    lower-case letter, 
+    lower-case letter,
     upper-case letter,
-    digit  (numeral),   and 
-    one  "other"  character. 
+    digit  (numeral),   and
+    one  "other"  character.
 
 
 
-The user must be able to specify the password length and the number of passwords to generate. 
+The user must be able to specify the password length and the number of passwords to generate.
 
 The passwords should be displayed or written to a file, one per line.
 
-The randomness should be from a system source or library. 
+The randomness should be from a system source or library.
 
-The program should implement a help option or button which should describe the program and options when invoked. 
+The program should implement a help option or button which should describe the program and options when invoked.
 
 You may also allow the user to specify a seed value, and give the option of excluding visually similar characters.
 
-For example:           <big><big> Il1     O0     5S     2Z </big></big>           where the characters are: 
+For example:           <big><big> Il1     O0     5S     2Z </big></big>           where the characters are:
 ::::*   capital eye, lowercase ell, the digit one
-::::*   capital oh, the digit zero 
+::::*   capital oh, the digit zero
 ::::*   the digit five, capital ess
 ::::*   the digit two, capital zee
 <!-- or zed, on the other side of the pond. -->
@@ -188,17 +188,17 @@ unsigned seed;
 char exSymbols = 0;
 
 void GetPassword () {
-    //create an array of values that determine the number of characters from each category 
+    //create an array of values that determine the number of characters from each category
     int lengths[4] = {1, 1, 1, 1};
     int count = 4;
     while (count < length) {
         lengths[rand()%4]++;
         count++;
-    } 
+    }
 
     //loop through the array of lengths and set the characters in password
     char password[length + 1];
-    for (int i = 0; i < length; ) { 
+    for (int i = 0; i < length; ) {
         //pick which string to read from
         int str = rand()%4;
         if (!lengths[str])continue;   //if the number of characters for that string have been reached, continue to the next interation
@@ -221,7 +221,7 @@ void GetPassword () {
 
             default:
                 c = symbols[str][rand()%26];
-                while (exSymbols && (c == 'I' || c == 'l' || c == '1' || c == 'O' || c == '0' || c == '5' || c == 'S' || c == '2' || c == 'Z'))  
+                while (exSymbols && (c == 'I' || c == 'l' || c == '1' || c == 'O' || c == '0' || c == '5' || c == 'S' || c == '2' || c == 'Z'))
                     c = symbols[str][rand()%26];
                 password[i] = c;
             break;
@@ -246,12 +246,12 @@ int main (int argc, char* argv[]) {
                     puts ("Unrecognized input. Syntax: -l [integer]");
                     return -1;
                 }
-                
+
                 if (length < 4) {
                     puts ("Password length must be at least 4 characters.");
                     return -1;
                 }
-                i++;                
+                i++;
             break;
 
             case 'c':
@@ -290,14 +290,14 @@ int main (int argc, char* argv[]) {
                    "Display help: -h");
                 return 0;
             break;
-        }    
+        }
     }
 
     srand (seed);
 
     for (int i = 0; i < count; i++)
         GetPassword();
-    
+
     return 0;
 }
 
@@ -416,13 +416,13 @@ W{3*hdk&0p?R
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <algorithm>
 #include <ctime>
 
-const std::string CHR[] = { "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz", 
+const std::string CHR[] = { "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz",
                             "0123456789", "!\"#$%&'()*+,-./:;<=>?@[]^_{|}~" };
 const std::string UNS = "O0l1I5S2Z";
 
@@ -457,7 +457,7 @@ int main( int argc, char* argv[] ){
     } else {
         int l = atoi( argv[1] ),
             c = atoi( argv[2] ),
-            e = atoi( argv[3] ), 
+            e = atoi( argv[3] ),
             s = atoi( argv[4] );
         if( l < 4 ) {
             std::cout << "Passwords must be at least 4 characters long.\n\n";
@@ -470,7 +470,7 @@ int main( int argc, char* argv[] ){
             generate( l, c, e != 0 );
         }
     }
-    return 0;   
+    return 0;
 }
 ```
 
@@ -851,19 +851,19 @@ count = 1
 
 def show_usage
   puts <<-USAGE
-  
+
        Passwords generator
        Usage: pass2 [count] [-l<length>] [-s{0|1|2}] [-ng] [-ns]
 
          count: number of passwords to be generated (default: 1)
          -l<length>: length of passwords (default: 20)
-         -s{0|1|2}: exclude visually similar characters. 
+         -s{0|1|2}: exclude visually similar characters.
                       0 - don't exclude (default)
                       1 - exclude 0, O, 1, I, l, |
                       2 - also exclude 2, Z, 5, S
         -ng: don''t require password to include character from every group
         -ns: don''t include special chars in password
-        
+
         Default value of switches is choosen to match the task in page header, but I suggest to use the "-s1 -ng -ns".
        USAGE
 end
@@ -977,7 +977,7 @@ defmodule Password do
 !"#$%&'()*+,-./:;<=>?@[]^_{|}~
 """ |> String.codepoints |> List.delete_at(-1)
   @all @lower ++ @upper ++ @digit ++ @other
-  
+
   def generator do
     {len, num} = get_argv
     Enum.each(1..num, fn _ ->
@@ -985,10 +985,10 @@ defmodule Password do
       IO.puts generator(len-4, pswd)
     end)
   end
-  
+
   def generator(0, pswd), do: Enum.shuffle(pswd) |> Enum.join
   def generator(len, pswd), do: generator(len-1, [Enum.random(@all) | pswd])
-  
+
   def get_argv do
     {len,num} = case System.argv do
       ["?"]     -> usage
@@ -999,7 +999,7 @@ defmodule Password do
     end
     if len<4 or num<1, do: usage, else: {len,num}
   end
-  
+
   defp usage do
     IO.puts ["Password generator\n",
              "Usage: [password length(=8)] [number of passwords to generate(=1)]"]
@@ -1092,7 +1092,7 @@ Dim sLower As String = "abcdefghijklmnopqrstuvwxyz"                     'Lower c
 Dim sUpper As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"                     'Upper case characters
 Dim sNumber As String = "1234567890"                                    'Numbers
 Dim sOther As String = "'!#$%&'()*+,-./:;<=>?@[]^_{|}~" & Chr(34)       'Other characters + quote
-Dim sNoGo As String[] = ["I1", "1I", "l1", "1l", "Il", 
+Dim sNoGo As String[] = ["I1", "1I", "l1", "1l", "Il",
                         "lI", "O0", "0O", "S5", "5S", "Z2", "2Z"]       'Undesirable string combinations (can be added to if required)
 Dim sData As String = sLower & sUpper & sNumber & sOther                'Create 1 string to pick the password characters from
 Dim sToCheck, sPassword As String                                       'To hold a possible password for checking, to hold the passwords
@@ -1115,7 +1115,7 @@ For siCount = 1 To siPasswordQuantity                                   'Loop th
       If InStr(sUpper, Mid(sToCheck, siCounter, 1)) Then bPass = True   'If an UPPER CASE letter is included set bPass to True
     Next
   End If
-  
+
   If bPass Then                                                         'If bPass is True then
     bPass = False                                                       'bPass is False
     For siCounter = 1 To Len(sToCheck)                                  'Loop through each character in the generated password
@@ -1185,7 +1185,7 @@ import (
 	"strings"
 	"flag"
 	"math"
-        "fmt" 
+        "fmt"
 )
 
 var lowercase = "abcdefghijklmnopqrstuvwxyz"
@@ -1276,7 +1276,7 @@ func main() {
 
 ```txt
 
-Generating passwords with an average entropy of 65.2 bits 
+Generating passwords with an average entropy of 65.2 bits
 .JJ%z({4,x
 .[n9d7,f8U
 1Y:)pL7&R6
@@ -1291,7 +1291,7 @@ jOU8z^f_1J
 ## Haskell
 
 
-The password generation process. 
+The password generation process.
 
 The function <code>password</code> for given length and a list of char sets which should be included, generates random password.
 
@@ -1357,9 +1357,9 @@ main = runCommand $ \opts args -> do
   res <- replicateM n (password s (max 4 l))
   mapM_ putStrLn res
   where
-    charSets = [ ['a'..'z'] 
-               , ['A'..'Z'] 
-               , ['0'..'9'] 
+    charSets = [ ['a'..'z']
+               , ['A'..'Z']
+               , ['0'..'9']
                , "!\"#$%&'()*+,-./:;<=>?@[]^_{|}~" ]
 
     visualySimilar = ["l","IOSZ","012","!|.,"]
@@ -1445,7 +1445,7 @@ pwhelp =:echo bind (noun define)
   [x] pwgen y - generates passwords of length y
   optional x says how many to generate (if you want more than 1)
 
-  y must be at least 4 because 
+  y must be at least 4 because
   passwords must contain four different kinds of characters.
 )
 ```
@@ -1459,7 +1459,7 @@ Example use (from J command line):
   [x] pwgen y - generates passwords of length y
   optional x says how many to generate (if you want more than 1)
 
-  y must be at least 4 because 
+  y must be at least 4 because
   passwords must contain four different kinds of characters.
 
    pwgen 10
@@ -1632,7 +1632,7 @@ import java.io.File
 
 val r = Random()
 val rr = Random()  // use a separate generator for shuffles
-val ls = System.getProperty("line.separator") 
+val ls = System.getProperty("line.separator")
 
 var lower = "abcdefghijklmnopqrstuvwxyz"
 var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -1640,7 +1640,7 @@ var digit = "0123456789"
 var other = """!"#$%&'()*+,-./:;<=>?@[]^_{|}~"""
 
 val exclChars = arrayOf(
-    "'I', 'l' and '1'", 
+    "'I', 'l' and '1'",
     "'O' and '0'     ",
     "'5' and 'S'     ",
     "'2' and 'Z'     "
@@ -1664,9 +1664,9 @@ fun generatePasswords(pwdLen: Int, pwdNum: Int, toConsole: Boolean, toFile: Bool
     val ul = upper.length
     val dl = digit.length
     val ol = other.length
-    val tl = ll + ul + dl + ol 
+    val tl = ll + ul + dl + ol
     var fw = if (toFile) File("pwds.txt").writer() else null
-  
+
     if (toConsole) println("\nThe generated passwords are:")
     for (i in 0 until pwdNum) {
         sb.setLength(0)
@@ -1674,7 +1674,7 @@ fun generatePasswords(pwdLen: Int, pwdNum: Int, toConsole: Boolean, toFile: Bool
         sb.append(upper[r.nextInt(ul)])
         sb.append(digit[r.nextInt(dl)])
         sb.append(other[r.nextInt(ol)])
-       
+
         for (j in 0 until pwdLen - 4) {
             val k = r.nextInt(tl)
             sb.append(when (k) {
@@ -1693,20 +1693,20 @@ fun generatePasswords(pwdLen: Int, pwdNum: Int, toConsole: Boolean, toFile: Bool
         }
     }
     if (toFile) {
-       println("\nThe generated passwords have been written to the file pwds.txt") 
+       println("\nThe generated passwords have been written to the file pwds.txt")
        fw!!.close()
-    } 
+    }
 }
 
 fun printHelp() {
-    println(""" 
-        |This program generates up to 99 passwords of between 5 and 20 characters in 
+    println("""
+        |This program generates up to 99 passwords of between 5 and 20 characters in
         |length.
         |
-        |You will be prompted for the values of all parameters when the program is run 
+        |You will be prompted for the values of all parameters when the program is run
         |- there are no command line options to memorize.
         |
-        |The passwords can either be written to the console or to a file (pwds.txt), 
+        |The passwords can either be written to the console or to a file (pwds.txt),
         |or both.
         |
         |The passwords must contain at least one each of the following character types:
@@ -1715,14 +1715,14 @@ fun printHelp() {
         |   digits             :  0 -> 9
         |   other characters   :  !"#$%&'()*+,-./:;<=>?@[]^_{|}~
         |
-        |Optionally, a seed can be set for the random generator 
-        |(any non-zero Long integer) otherwise the default seed will be used. 
+        |Optionally, a seed can be set for the random generator
+        |(any non-zero Long integer) otherwise the default seed will be used.
         |Even if the same seed is set, the passwords won't necessarily be exactly
         |the same on each run as additional random shuffles are always performed.
         |
         |You can also specify that various sets of visually similar characters
         |will be excluded (or not) from the passwords, namely: Il1  O0  5S  2Z
-        | 
+        |
         |Finally, the only command line options permitted are -h and -help which
         |will display this page and then exit.
         |
@@ -1730,34 +1730,34 @@ fun printHelp() {
         |will be run normally.
         |
     """.trimMargin())
-}   
-               
+}
+
 fun main(args: Array<String>) {
     if (args.size == 1 && (args[0] == "-h" || args[0] == "-help")) {
        printHelp()
        return
     }
-        
+
     println("Please enter the following and press return after each one")
-   
+
     var pwdLen: Int?
     do {
        print("  Password length (5 to 20)     : ")
-       pwdLen = readLine()!!.toIntOrNull() ?: 0       
+       pwdLen = readLine()!!.toIntOrNull() ?: 0
     }
     while (pwdLen !in 5..20)
 
     var pwdNum: Int?
     do {
        print("  Number to generate (1 to 99)  : ")
-       pwdNum = readLine()!!.toIntOrNull() ?: 0       
+       pwdNum = readLine()!!.toIntOrNull() ?: 0
     }
     while (pwdNum !in 1..99)
-    
+
     var seed: Long?
     do {
        print("  Seed value (0 to use default) : ")
-       seed = readLine()!!.toLongOrNull()       
+       seed = readLine()!!.toLongOrNull()
     }
     while (seed == null)
     if (seed != 0L) r.setSeed(seed)
@@ -1795,7 +1795,7 @@ fun main(args: Array<String>) {
             }
         }
     }
-   
+
     var toConsole: Boolean?
     do {
         print("  Write to console   y/n : ")
@@ -1813,7 +1813,7 @@ fun main(args: Array<String>) {
         }
         while (toFile == null)
     }
- 
+
     generatePasswords(pwdLen!!, pwdNum!!, toConsole, toFile!!)
 }
 ```
@@ -1920,13 +1920,13 @@ Usage:  lua pwgen.lua [password length] [number of passwords to generate]
 
 
 ```Mathematica
- 
+
 (* Length is the Length of the password, num is the number you want, \
 and similar=1 if you want similar characters, 0 if not. True and \
 False, should work in place of 1/0 *)
-pwgen[length_Integer: 5, num_Integer: 1, similars_Boolean: 1] := 
- pwgenerator[length, num, similars] = 
-  Module[{list, valid, validchars, similar, k, j, password, pwlist, 
+pwgen[length_Integer: 5, num_Integer: 1, similars_Boolean: 1] :=
+ pwgenerator[length, num, similars] =
+  Module[{list, valid, validchars, similar, k, j, password, pwlist,
     lcase, ucase, digits, spec, s}, lcase = Alphabet[];
    ucase = Capitalize[lcase];
    digits = Range[0, 9];
@@ -1934,23 +1934,23 @@ pwgen[length_Integer: 5, num_Integer: 1, similars_Boolean: 1] :=
    validchars = Flatten[Union[lcase, ucase, digits, spec]];
    similar = StringPartition["Il10O5S2Z", 1];
    list = {};
-   
+
    Table[valid = 0;
     While[valid == 0,
-     For[j = 0; k = {};, j < length, j++, 
+     For[j = 0; k = {};, j < length, j++,
       AppendTo[k, RandomInteger[{1, Length[validchars]}]]];
      k = Flatten[k];
      password = validchars[[k]];
-     Which[(Intersection[password, similar] >= 1 && similars == 0 ), 
-      valid = 0;, (Intersection[password, similar] == 0 && 
-        similars == 1), 
-      valid = 0;, (Intersection[password, similar] == 0 && 
-        similars == 0 ), valid = 1; 
-      Return[password], (Intersection[password, similar] >= 1 && 
+     Which[(Intersection[password, similar] >= 1 && similars == 0 ),
+      valid = 0;, (Intersection[password, similar] == 0 &&
+        similars == 1),
+      valid = 0;, (Intersection[password, similar] == 0 &&
+        similars == 0 ), valid = 1;
+      Return[password], (Intersection[password, similar] >= 1 &&
         similars == 1), valid = 1; Return[password]];
      ], {num}];
-   
-   
+
+
    ]
 
 ```
@@ -2013,7 +2013,7 @@ let () =
     "-c", Arg.Set_int len, "number of characters";
     "--readable", Arg.Set readable, "readable";
     "--rand-init", Arg.String (fun s ->
-        Random.full_init 
+        Random.full_init
           (Array.map int_of_char (Array.of_seq (String.to_seq s)))
       ), "initialise the random generator with a string";
   ] in
@@ -2036,7 +2036,7 @@ Password generator
   --rand-init initialise the random generator with a string
   --help  Display this list of options
 
-$ ocaml mkpwd.ml 
+$ ocaml mkpwd.ml
 Zz&tJ[40
 
 $ ocaml mkpwd.ml -n 3 -c 16 --readable --rand-init rosettacode.org
@@ -2173,7 +2173,7 @@ spec='!"#$%&()+,-./:;<=>?@[]^{|}~
 1 password is:  e4)XnD4jq"xb 6 2 2 2 enjqxb XD 44 )"
 2 password is:  9r3H:a97HyW8 3 3 5 1 ray HHW 93978 :
 3 password is:  y76-^r^M{8JQ 2 3 3 4 yr MJQ 768 -^^{
-4 password is:  C$W@aMHBjc8g 4 5 1 2 ajcg CWMHB 8 $@ 
+4 password is:  C$W@aMHBjc8g 4 5 1 2 ajcg CWMHB 8 $@
 ```
 
 
@@ -2194,7 +2194,7 @@ passwd(len=8, count=1, seed=0) =
     for (l=1, len, K[j = random(#C)+1]++;
       P = concat(P, Strchr(Vecsmall(C[j])[random(#C[j])+1]))
     );
-    if (prod(z=1, #K, K[z]), print(P), i--)    \\ if password contains all char classes print else redo  
+    if (prod(z=1, #K, K[z]), print(P), i--)    \\ if password contains all char classes print else redo
   );
 }
 
@@ -2406,7 +2406,7 @@ begin
              if (chr(i) in [':'..'@']) then strength := strength or $08;
              if (chr(i) in ['['..'`']) then strength := strength or $08;
              if (chr(i) in ['{'..'~']) then strength := strength or $08;
-         end;	 
+         end;
        until strength = $0f;
     writeln(password);
     end;
@@ -2795,23 +2795,23 @@ function New-RandomPassword
     (
         [Parameter(Mandatory=$false)]
         [ValidateRange(1,[Int]::MaxValue)]
-        [Alias("l")] 
+        [Alias("l")]
         [int]
         $Length = 8,
 
         [Parameter(Mandatory=$false)]
         [ValidateRange(1,[Int]::MaxValue)]
-        [Alias("n","c")] 
+        [Alias("n","c")]
         [int]
         $Count = 1,
-        
+
         [Parameter(Mandatory=$false)]
-        [Alias("s")] 
+        [Alias("s")]
         [string[]]
         $Source = @("abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "0123456789", "!\`"#$%&'()*+,-./:;<=>?@[]^_{|}~"),
 
         [Parameter(Mandatory=$false)]
-        [Alias("x")] 
+        [Alias("x")]
         [switch]
         $ExcludeSimilar
     )
@@ -2837,7 +2837,7 @@ function New-RandomPassword
 
             while ($password.ContainsKey($key))
             {
-                $key = Get-Seed                        
+                $key = Get-Seed
             }
 
             $index = (Get-Seed) % $From.Count
@@ -2872,7 +2872,7 @@ function New-RandomPassword
                 Add-PasswordCharacter -From $allChars  # Append to $password
             }
 
-            ($password.GetEnumerator() | Select-Object -ExpandProperty Value) -join "" 
+            ($password.GetEnumerator() | Select-Object -ExpandProperty Value) -join ""
         }
     }
 }
@@ -2931,37 +2931,37 @@ Procedure.b CheckPW(pw.s)
          tmp.b=#False,
          c.c,
          s.s,
-         i.i  
+         i.i
   For c='a' To 'z'
     tmp=Bool(FindString(pw,Chr(c)))
     If tmp : Break : EndIf
-  Next  
+  Next
   flag & tmp
-  tmp=#False  
+  tmp=#False
   For c='A' To 'Z'
     tmp=Bool(FindString(pw,Chr(c)))
     If tmp : Break : EndIf
-  Next  
+  Next
   flag & tmp
-  tmp=#False  
+  tmp=#False
   For c='0' To '9'
     tmp=Bool(FindString(pw,Chr(c)))
     If tmp : Break : EndIf
-  Next  
+  Next
   flag & tmp
-  tmp=#False  
+  tmp=#False
   For c='!' To '/'
     s+Chr(c)
-  Next  
+  Next
   For c=':' To '@'
     s+Chr(c)
-  Next  
-  s+"[]^_{|}~"  
+  Next
+  s+"[]^_{|}~"
   For i=1 To Len(pw)
     tmp=Bool(FindString(s,Mid(pw,i,1)))
     If tmp : Break : EndIf
-  Next    
-  flag & tmp  
+  Next
+  flag & tmp
   ProcedureReturn flag
 EndProcedure
 
@@ -2969,12 +2969,12 @@ Procedure.s InputHdl(prompt.s="")
   Define txt.s,
          s.s,
          r.i,
-         hlp.s  
+         hlp.s
   Restore Help_01
-  Read.s hlp  
-  Print(prompt)       
+  Read.s hlp
+  Print(prompt)
   Repeat
-    s=Inkey()    
+    s=Inkey()
     If s<>""
       If FindString("0123456789",s)
         txt+s
@@ -2983,31 +2983,31 @@ Procedure.s InputHdl(prompt.s="")
       If s=Chr(27)
         txt="0"
         Break
-      EndIf            
+      EndIf
     ElseIf RawKey()
-      r=RawKey()      
+      r=RawKey()
       If r=112
         PrintN("")
-        PrintN(hlp)  
+        PrintN(hlp)
         Print(~"\n"+prompt)
       EndIf
     EndIf
     Delay(20)
   Until s=Chr(13)
-  PrintN("")  
+  PrintN("")
   ProcedureReturn txt
 EndProcedure
 
 NewList PasswordChar.c()
 Define c.c,
        pwlen.i,
-       n_of_pw.i, 
+       n_of_pw.i,
        pwstr.s,
        i.i
 For c='!' To '~'
   If c<>'\' And c<>'`'
     AddElement(PasswordChar()) : PasswordChar()=c
-  EndIf  
+  EndIf
 Next
 OpenConsole("Password generator: F1=Help; Esc=End")
 Repeat
@@ -3015,14 +3015,14 @@ Repeat
   If pwlen=0 : Break : EndIf
   If pwlen<4 : Continue : EndIf
   n_of_pw=Abs(Val(InputHdl("Number of passwords (n>=1): ")))
-  If n_of_pw=0 : Break : EndIf  
-  For i=1 To n_of_pw    
-    Repeat      
+  If n_of_pw=0 : Break : EndIf
+  For i=1 To n_of_pw
+    Repeat
       pwstr=Mid(pwstr,2)
       RandomizeList(PasswordChar())
-      ResetList(PasswordChar())      
+      ResetList(PasswordChar())
       While NextElement(PasswordChar())
-        pwstr+Chr(PasswordChar())      
+        pwstr+Chr(PasswordChar())
         If Len(pwstr)>=pwlen : Break : EndIf
       Wend
     Until CheckPW(pwstr)
@@ -3101,7 +3101,7 @@ def new_password(length:int, readable=True) -> str:
             choice(digits),
             choice(punctuation)
             ] + random.sample(allowed, length-4)
-        if (not readable or 
+        if (not readable or
                 all(c not in visually_similar for c in password_chars)):
             random.SystemRandom().shuffle(password_chars)
             return ''.join(password_chars)
@@ -3215,7 +3215,7 @@ Wh,(o*c_/Bf99K4
 
 ## REXX
 
-This REXX code was written as generically and idiomatically as possible so that the   ''special characters''   and  
+This REXX code was written as generically and idiomatically as possible so that the   ''special characters''   and
 
 the lowercase and uppercase alphabets may be extended with letters from other alphabets.
 
@@ -3227,7 +3227,7 @@ This version isn't restricted to '''ASCII''' characters,   it also supports '''E
 
 It has a REXX statement   (as a comment)   to support the writing of the generated passwords to a file.
 
-The documentation (help) could be expanded greatly, but only an abridged version is included here to keep  
+The documentation (help) could be expanded greatly, but only an abridged version is included here to keep
 
 this REXX example relatively small for this Rosetta Code task.
 
@@ -3235,9 +3235,9 @@ Also, much more error checking should be added;   not the least of it would be:
 :::*   if too many arguments specified   (on the command line)
 :::*   checking if the (random) seed is valid
 :::*   better (informative) error messages   (more verbose)
-:::*   don't let the user generate a gazillion passwords 
-:::*   checking if the hexadecimal literal   ('''yyy''')   is valid 
-:::*   checking (for instance) if all digits were excluded via the   <b>'''xxx'''</b>   and/or   '''yyy'''   option 
+:::*   don't let the user generate a gazillion passwords
+:::*   checking if the hexadecimal literal   ('''yyy''')   is valid
+:::*   checking (for instance) if all digits were excluded via the   <b>'''xxx'''</b>   and/or   '''yyy'''   option
 
 ```rexx
 /*REXX program generates a  random password  according to the Rosetta Code task's rules.*/
@@ -3397,7 +3397,7 @@ password = c4\Nc2_J
 
 ```Ruby
 ARRS = [("a".."z").to_a,
-        ("A".."Z").to_a, 
+        ("A".."Z").to_a,
         ("0".."9").to_a,
         %q(!"#$%&'()*+,-./:;<=>?@[]^_{|}~).chars] # " quote to reset clumsy code colorizer
 ALL  = ARRS.flatten
@@ -3426,12 +3426,12 @@ a$(2) = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 a$(3) = "abcdefghijklmnopqrstuvwxyz"
 a$(4) = "!""#$%&'()*+,-./:;<=>?@[]^_{|}~"
 a$(0) = a$(1) + a$(2) + a$(3) + a$(4)
- 
+
 [main]
 print "----------- Password Generator -----------"
 input "Number of Characters:";howBig
 if howBig < 1 then goto [exit]
- 
+
 input "How many to generate:";howMany
 if howMany < 1 then goto [main]
 
@@ -3490,7 +3490,7 @@ object makepwd extends App {
   def newPassword( salt:String = "", length:Int = 13, strong:Boolean = true ) = {
 
     val saltHash = salt.hashCode & ~(1 << 31)
-    
+
     import java.util.Calendar._
 
     val cal = java.util.Calendar.getInstance()
@@ -3500,14 +3500,14 @@ object makepwd extends App {
     val nums = ('0' to '9').mkString
     val strongs = "!\"#$%&'()*+,-./:;<=>?@[]^_{|}~"
     val unwanted = if( strong ) "" else "0Ol"
-    
+
     val pool = (lower + upper + nums + (if( strong ) strongs else "")).
                filterNot( c => unwanted.contains(c) )
-    
+
     val pwdStream = Stream.continually( (for( n <- 1 to length; c = pool(rand.nextInt(pool.length) ) ) yield c).mkString )
 
     // Drop passwords that don't have at least one of each required character
-    pwdStream.filter( pwd => 
+    pwdStream.filter( pwd =>
       pwd.exists(_.isUpper) &&
       pwd.exists(_.isLower) &&
       pwd.exists(_.isDigit) &&
@@ -3520,11 +3520,11 @@ object makepwd extends App {
   val help = """^\-\-(help)$""".r
   val pwdSalt = """^\-s(.*)""".r
   val strongOption = """(?i)(strong)""".r
-  
-  
+
+
   var (salt,length,strong,helpWanted,count,unknown) = ("",13,false,false,1,false)
-  
-  args.foreach{ 
+
+  args.foreach{
     case pwdLength(l) =>    length = math.min(math.max(l.toInt,6),4000)
     case strongOption(s) => strong = true
     case pwdSalt(s) =>      salt = s
@@ -3534,24 +3534,24 @@ object makepwd extends App {
   }
 
   if( count > 1 ) println
-  
+
   if( helpWanted || unknown ) {
     println( """
   makepwd <length> "strong" -s<salt> -n<how-many> --help
 
     <length>     = how long should the password be
     "strong"     = strong password, omit if special characters not wanted
-    -s<salt>     = "-s" followed by any non-blank characters 
+    -s<salt>     = "-s" followed by any non-blank characters
                      (increases password randomness)
     -n<how-many> = "-n" followed by the number of passwords wanted
     --help       = displays this
-    
+
   For example: makepwd 13 strong -n20 -sABCDEFG
 """.stripMargin )
   }
   else for( i <- 1 to count ) println( newPassword( i + salt, length, strong ) )
 
-  if( count > 1 ) println  
+  if( count > 1 ) println
 }
 ```
 
@@ -3629,7 +3629,7 @@ const proc: main is func
     var integer: count is 0;
   begin
     if length(argv(PROGRAM)) <> 2 or not isDigitString(argv(PROGRAM)[1]) or
-       not isDigitString(argv(PROGRAM)[2]) then 
+       not isDigitString(argv(PROGRAM)[2]) then
       writeln("Usage: pwgen length count");
       writeln("       pwgen -?");
       writeln("length: The length of the password (min 4)");
@@ -3675,8 +3675,8 @@ Swift uses arc4random() to generate fast and high quality random numbers. Howeve
 
 '''C file to generate random numbers'''
 
-```C>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <time.h>
 
 void initRandom(const unsigned int seed){
@@ -3770,9 +3770,9 @@ for i in 1..<CommandLine.arguments.count{
 
 /* Generate password of given length */
 func generatePassword(length len:Int, exclude xcl:Bool) -> String{
-    
+
     var ret:String = "", loopCount:Int = 0
-    
+
     while(loopCount < len){
         if ret.characters.count < len {
             if xcl {
@@ -3782,7 +3782,7 @@ func generatePassword(length len:Int, exclude xcl:Bool) -> String{
                 ret += String(upper[Int(getRand(Int32(upper.count)))])
             }
         }
-        
+
         if ret.characters.count < len {
             if xcl {
                 ret += String(lowerWithoutSimilar[Int(getRand(Int32(lowerWithoutSimilar.count-1)))])
@@ -3791,7 +3791,7 @@ func generatePassword(length len:Int, exclude xcl:Bool) -> String{
                 ret += String(lower[Int(getRand(Int32(lower.count-1)))])
             }
         }
-        
+
         if ret.characters.count < len {
             if xcl {
                 ret += String(numberWithoutSimilar[Int(getRand(Int32(numberWithoutSimilar.count-1)))])
@@ -3800,13 +3800,13 @@ func generatePassword(length len:Int, exclude xcl:Bool) -> String{
                 ret += String(number[Int(getRand(Int32(number.count-1)))])
             }
         }
-        
+
         if ret.characters.count < len {
             ret += String(other[Int(getRand(Int32(other.count-1)))])
         }
         loopCount += 4
     }
-    
+
     // Shuffle the array with an internal shuffle function
     let shuffled = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: Array(ret.characters))
     ret = ""
@@ -4062,7 +4062,7 @@ End Function
 Function Gp :
 
 ```txt
-list of 10 passwords : 
+list of 10 passwords :
 1- with password's lenght = 21 and visually similar = False :
 ;OK6^D26"S1^ih77<pR~v
 EH9csF8+hC"pw70dL5},A

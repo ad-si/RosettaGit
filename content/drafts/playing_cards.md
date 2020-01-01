@@ -10,19 +10,19 @@ categories = []
 tags = []
 +++
 
-{{task|Games}} 
+{{task|Games}}
 [[Category:Cards]]
 
 ;Task:
-Create a data structure and the associated methods to define and manipulate a deck of   [[wp:Playing-cards#Anglo-American-French|playing cards]]. 
+Create a data structure and the associated methods to define and manipulate a deck of   [[wp:Playing-cards#Anglo-American-French|playing cards]].
 
-The deck should contain 52 unique cards. 
+The deck should contain 52 unique cards.
 
 The methods must include the ability to:
 :::*   make a new deck
 :::*   shuffle (randomize) the deck
 :::*   deal from the deck
-:::*   print the current contents of a deck 
+:::*   print the current contents of a deck
 
 Each card must have a pip value and a suit value which constitute the unique value of the card.
 
@@ -111,9 +111,9 @@ See [[Playing Cards/Ada]]
 
 ## ALGOL 68
 
-The scoping rules of ALGOL 68 tend to make object oriented coding in ALGOL 68 difficult.  
-Also as invoking PROC is done before members of a STRUCT are extracted the programmer 
-one quickly finds it is necessary to use numerous brackets.  
+The scoping rules of ALGOL 68 tend to make object oriented coding in ALGOL 68 difficult.
+Also as invoking PROC is done before members of a STRUCT are extracted the programmer
+one quickly finds it is necessary to use numerous brackets.
 
 e.g. compare "<tt>(shuffle OF deck class)(deck)</tt>" with python's simple "<tt>deck.shuffle()</tt>"
 
@@ -127,7 +127,7 @@ MODE CARD = STRUCT(STRING pip, suit); # instance attributes #
 
 # class members & attributes #
 STRUCT(
-  PROC(REF CARD, STRING, STRING)VOID init, 
+  PROC(REF CARD, STRING, STRING)VOID init,
   FORMAT format,
   PROC(REF CARD)STRING repr,
   []STRING suits, pips
@@ -137,22 +137,22 @@ STRUCT(
     suit OF self :=suit
   ),
 # format = # $"("g" OF "g")"$,
-# PROC repr = # (REF CARD self)STRING: ( 
+# PROC repr = # (REF CARD self)STRING: (
     HEAP STRING out; putf(BOOK out,(format OF class card,self)); out
   ),
 # suits = # ("Clubs","Hearts","Spades","Diamonds"),
 # pips = # ("2","3","4","5","6","7","8","9","10","Jack","Queen","King","Ace")
 );
- 
+
 MODE DECK = STRUCT(REF[]CARD deck); # instance attributes #
 
 # class members & attributes #
-STRUCT( 
-  PROC(REF DECK)VOID init, shuffle, 
-  PROC(REF DECK)STRING repr, 
+STRUCT(
+  PROC(REF DECK)VOID init, shuffle,
+  PROC(REF DECK)STRING repr,
   PROC(REF DECK)CARD deal
 ) class deck = (
- 
+
 # PROC init = # (REF DECK self)VOID:(
     HEAP[ UPB suits OF class card * UPB pips OF class card ]CARD new;
     FOR suit TO UPB suits OF class card DO
@@ -163,7 +163,7 @@ STRUCT(
     OD;
     deck OF self := new
   ),
- 
+
 # PROC shuffle = # (REF DECK self)VOID:
     FOR card TO UPB deck OF self DO
       CARD this card = (deck OF self)[card];
@@ -171,29 +171,29 @@ STRUCT(
       (deck OF self)[card] := (deck OF self)[random card];
       (deck OF self)[random card] := this card
     OD,
- 
+
 # PROC repr = # (REF DECK self)STRING: (
     FORMAT format = $"("n(UPB deck OF self-1)(f(format OF class card)", ")f(format OF class card)")"$;
     HEAP STRING out; putf(BOOK out,(format, deck OF self)); out
   ),
- 
+
 # PROC deal = # (REF DECK self)CARD: (
     (shuffle OF class deck)(self);
     (deck OF self)[UPB deck OF self]
   )
 );
- 
+
 # associate a STRING with a FILE for easy text manipulation #
 OP BOOK = (REF STRING string)REF FILE:(
   HEAP FILE book;
   associate(book, string);
   book
 );
- 
+
 # Pick a random integer between from [lwb..upb] #
-PROC random int = (INT lwb, upb)INT: 
+PROC random int = (INT lwb, upb)INT:
   ENTIER(random * (upb - lwb + 1) + lwb);
- 
+
 DECK deck;
 (init OF class deck)(deck);
 (shuffle OF class deck)(deck);
@@ -273,7 +273,7 @@ overload .value with suit_get_value
 (*
   | Two | Three | Four | Five
   | Six | Seven | Eight | Nine
-  | Ten | Jack | Queen | King | Ace 
+  | Ten | Jack | Queen | King | Ace
 *)
 //
 (*
@@ -543,7 +543,7 @@ val cards =
 list_vt_mapfree_fun<natLt(52)><card>(xys, lam xy => card_make(xy))
 //
 in
-  Deck(52, cards)  
+  Deck(52, cards)
 end // end of [deck_make_full]
 
 (* ****** ****** *)
@@ -724,7 +724,7 @@ loop, 52 {
 }
 for each, card in shuffled
 {
-	deck .= card (mod(A_Index, 13) ? " " : "`n")	
+	deck .= card (mod(A_Index, 13) ? " " : "`n")
 	cards.Insert(card)
 }
 GuiControl,, Deck, % deck
@@ -833,20 +833,20 @@ The data structure is a simple string with 3 characters per card, one char for t
 @echo off
 setlocal enabledelayedexpansion
 
-call:newdeck deck 
+call:newdeck deck
 echo new deck:
 echo.
-call:showcards deck 
+call:showcards deck
 echo.
 echo shuffling:
 echo.
-call:shuffle deck 
-call:showcards deck 
+call:shuffle deck
+call:showcards deck
 echo.
 echo dealing 5 cards to 4 players
 call:deal deck 5 hand1 hand2 hand3 hand4
 echo.
-echo player 1 & call:showcards hand1 
+echo player 1 & call:showcards hand1
 echo.
 echo player 2 & call:showcards hand2
 echo.
@@ -855,11 +855,11 @@ echo.
 echo player 4 & call:showcards hand4
 echo.
 call:count %deck% cnt
-echo %cnt% cards remaining in the deck 
+echo %cnt% cards remaining in the deck
 echo.
  call:showcards deck
 echo.
- 
+
 exit /b
 
 :getcard deck hand  :: deals 1 card to a player
@@ -868,38 +868,38 @@ exit /b
    set "%~1=!loc1:~3!"
 exit /b
 
-:deal deck n player1 player2...up to 7 
- set "loc=!%~1!" 
+:deal deck n player1 player2...up to 7
+ set "loc=!%~1!"
  set "cards=%~2"
- set players=%3 %4 %5 %6 %7 %8 %9 
+ set players=%3 %4 %5 %6 %7 %8 %9
  for /L %%j in (1,1,!cards!) do (
      for %%k in (!players!) do call:getcard loc %%k)
- set "%~1=!loc!" 
+ set "%~1=!loc!"
  exit /b
 
-:newdeck  [deck]   ::creates a deck of cards 
+:newdeck  [deck]   ::creates a deck of cards
  :: in the parentheses below there are ascii chars 3,4,5 and 6 representing the suits
- for %%i in ( ♠ ♦ ♥ ♣ ) do ( 
+ for %%i in ( ♠ ♦ ♥ ♣ ) do (
    for %%j in (20 31 42 53 64 75 86 97 T8 J9 QA KB AC) do set loc=!loc!%%i%%j
    )
  set "%~1=!loc!"
-exit /b 
+exit /b
 
 :showcards  [deck]  :: prints a deck or a hand
- set "loc=!%~1!" 
-  for /L %%j in (0,39,117) do ( 
-     set s= 
-     for /L %%i in (0,3,36) do ( 
+ set "loc=!%~1!"
+  for /L %%j in (0,39,117) do (
+     set s=
+     for /L %%i in (0,3,36) do (
         set /a n=%%i+%%j
-        call set  s=%%s%% %%loc:~!n!,2%% 
-      ) 
+        call set  s=%%s%% %%loc:~!n!,2%%
+      )
   if "!s: =!" neq "" echo(!s!
   set /a n+=1
   if "%loc:~!n!,!%" equ "" goto endloop
   )
  :endloop
  exit /b
- 
+
 :count deck count
 set "loc1=%1"
 set /a cnt1=0
@@ -917,10 +917,10 @@ exit /b
 	call:swap loc from to
   )
   set "%~1=!loc!"
- exit /b 
- 
+ exit /b
+
  :swap deck from to   :: swaps two cards
-    set "arr=!%~1!" 
+    set "arr=!%~1!"
     set /a "from=!%~2!*3,to=!%~3!*3"
 	set temp1=!arr:~%from%,3!
     set temp2=!arr:~%to%,3!
@@ -1069,7 +1069,7 @@ Sample output:
       Suit$() = "Clubs", "Diamonds", "Hearts", "Spades"
       Rank$() = "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", \
       \         "Eight", "Nine", "Ten", "Jack", "Queen", "King"
-      
+
       PRINT "Creating a new deck..."
       PROCnewdeck(deck1{})
       PRINT "Shuffling the deck..."
@@ -1084,7 +1084,7 @@ Sample output:
       NEXT
       PRINT "Number of cards remaining in the deck = " ; deck1.ncards%
       END
-      
+
       REM Make a new deck:
       DEF PROCnewdeck(RETURN deck{})
       LOCAL N%
@@ -1094,7 +1094,7 @@ Sample output:
         deck.ncards% += 1
       NEXT
       ENDPROC
-      
+
       REM Shuffle a deck:
       DEF PROCshuffle(deck{})
       LOCAL N%
@@ -1102,13 +1102,13 @@ Sample output:
         SWAP deck.card&(N%-1), deck.card&(RND(N%)-1)
       NEXT
       ENDPROC
-      
+
       REM Deal from the 'bottom' of the deck:
       DEF FNdeal(deck{})
       IF deck.ncards% = 0 THEN ERROR 100, "Deck is empty"
       deck.ncards% -= 1
       = deck.card&(deck.ncards%)
-      
+
       REM Return the name of a card:
       DEF FNcardname(card&)
       = Rank$(card& >> 2) + " of " + Suit$(card& AND 3)
@@ -1140,8 +1140,8 @@ Number of cards remaining in the deck = 49
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
 
@@ -1256,8 +1256,8 @@ See also [[Playing Cards/C]]
 ## C++
 
 
-```cpp>#include <deque
-
+```cpp
+#include <deque>
 #include <algorithm>
 #include <ostream>
 #include <iterator>
@@ -1365,7 +1365,7 @@ public class Deck : IEnumerable<Card>
         "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace" };
     static readonly string[] suits = { "Clubs", "Diamonds", "Hearts", "Spades" };
     readonly List<Card> cards;
- 
+
     public Deck() {
         cards = (from suit in suits
                 from rank in ranks
@@ -1416,21 +1416,21 @@ shared void run() {
     variable value deck = Deck();
     print("New deck (``deck.size`` cards): ``deck``
            ");
-    
+
     deck = deck.shuffle();
     print("Shuffeled deck (``deck.size`` cards): ``deck``
            ");
-    
+
     print("Deal three hands: ");
     for (i in 1..3) {
         value [hand, _deck] = deck.deal();
         print("- Dealt ``hand.size`` cards to hand ``i`` : ``join(hand)``");
         deck = _deck;
     }
-    
+
     print("
            Deck (``deck.size`` cards) after dealing three hands: ``deck``");
-    
+
 }
 
 abstract class Suit() of clubs | hearts | spades | diamonds {}
@@ -1455,7 +1455,7 @@ object queen extends Pip() { string =  "Q"; }
 object king  extends Pip() { string =  "K"; }
 object ace   extends Pip() { string =  "A"; }
 
-class Card(shared Pip pip, shared Suit suit) { 
+class Card(shared Pip pip, shared Suit suit) {
     string = "``pip`` of ``suit``";
 }
 
@@ -1464,20 +1464,20 @@ String join(Card[] cards) => ", ".join { *cards };
 
 class Deck (cards = [ for (suit in `Suit`.caseValues) for (pip in `Pip`.caseValues) Card(pip, suit) ]) {
     shared Card[] cards;
-    
-    shared Deck shuffle(Random rnd = platformRandom()) 
+
+    shared Deck shuffle(Random rnd = platformRandom())
             => if (nonempty cards)
                then Deck( [*randomize(cards, rnd)] )
                else this;
-    
+
     shared Integer size => cards.size;
-    
+
     shared Boolean empty => cards.empty;
-    
-    string => if (size > 13) 
+
+    string => if (size > 13)
               then "\n  " + "\n  ". join { *cards.partition(13).map((cards) => join(cards)) }
               else join(cards);
-    
+
     shared [Card[], Deck] deal(Integer handSize = 5) {
         if (handSize >= cards.size) {
             return [cards, Deck([])];
@@ -1496,24 +1496,24 @@ class Deck (cards = [ for (suit in `Suit`.caseValues) for (pip in `Pip`.caseValu
 Output:
 
 ```txt
-New deck (52 cards): 
+New deck (52 cards):
   2 of ♣, 3 of ♣, 4 of ♣, 5 of ♣, 6 of ♣, 7 of ♣, 8 of ♣, 9 of ♣, 10 of ♣, J of ♣, Q of ♣, K of ♣, A of ♣
   2 of ♥, 3 of ♥, 4 of ♥, 5 of ♥, 6 of ♥, 7 of ♥, 8 of ♥, 9 of ♥, 10 of ♥, J of ♥, Q of ♥, K of ♥, A of ♥
   2 of ♠, 3 of ♠, 4 of ♠, 5 of ♠, 6 of ♠, 7 of ♠, 8 of ♠, 9 of ♠, 10 of ♠, J of ♠, Q of ♠, K of ♠, A of ♠
   2 of ♦, 3 of ♦, 4 of ♦, 5 of ♦, 6 of ♦, 7 of ♦, 8 of ♦, 9 of ♦, 10 of ♦, J of ♦, Q of ♦, K of ♦, A of ♦
 
-Shuffeled deck (52 cards): 
+Shuffeled deck (52 cards):
   4 of ♠, 2 of ♦, 5 of ♣, 9 of ♠, 4 of ♥, 7 of ♥, 10 of ♦, 5 of ♠, 3 of ♥, K of ♥, 6 of ♣, 9 of ♦, 6 of ♦
   4 of ♣, 8 of ♣, 4 of ♦, Q of ♥, 6 of ♥, J of ♥, 8 of ♦, 5 of ♥, 5 of ♦, J of ♣, A of ♥, J of ♦, 2 of ♣
   7 of ♠, Q of ♦, A of ♣, Q of ♣, 6 of ♠, Q of ♠, K of ♠, 7 of ♦, 7 of ♣, 3 of ♦, 2 of ♠, 8 of ♥, A of ♦
   2 of ♥, 9 of ♣, 8 of ♠, 10 of ♥, 3 of ♠, 10 of ♣, 9 of ♥, 10 of ♠, 3 of ♣, J of ♠, K of ♣, K of ♦, A of ♠
 
-Deal three hands: 
+Deal three hands:
 - Dealt 5 cards to hand 1 : 4 of ♠, 2 of ♦, 5 of ♣, 9 of ♠, 4 of ♥
 - Dealt 5 cards to hand 2 : 7 of ♥, 10 of ♦, 5 of ♠, 3 of ♥, K of ♥
 - Dealt 5 cards to hand 3 : 6 of ♣, 9 of ♦, 6 of ♦, 4 of ♣, 8 of ♣
 
-Deck (37 cards) after dealing three hands: 
+Deck (37 cards) after dealing three hands:
   4 of ♦, Q of ♥, 6 of ♥, J of ♥, 8 of ♦, 5 of ♥, 5 of ♦, J of ♣, A of ♥, J of ♦, 2 of ♣, 7 of ♠, Q of ♦
   A of ♣, Q of ♣, 6 of ♠, Q of ♠, K of ♠, 7 of ♦, 7 of ♣, 3 of ♦, 2 of ♠, 8 of ♥, A of ♦, 2 of ♥, 9 of ♣
   8 of ♠, 10 of ♥, 3 of ♠, 10 of ♣, 9 of ♥, 10 of ♠, 3 of ♣, J of ♠, K of ♣, K of ♦, A of ♠
@@ -1593,7 +1593,7 @@ Deck (37 cards) after dealing three hands:
        01 show-tally       pic zz.
        01 show-rank        pic z(5).
        01 arg              pic 9(10).
-       
+
        procedure division.
        cards-main.
        perform seed
@@ -1602,7 +1602,7 @@ Deck (37 cards) after dealing three hands:
        perform deal-deck
        perform display-hands
        goback.
-      
+
       *> ********
        seed.
            accept arg from command-line
@@ -1664,7 +1664,7 @@ Deck (37 cards) after dealing three hands:
        display-card.
        >>IF ENGLISH IS DEFINED
                move rank(tally) to show-rank
-               evaluate rank(tally) 
+               evaluate rank(tally)
                    when 1 display "  ace" with no advancing
                    when 2 thru 10 display show-rank with no advancing
                    when 11 display " jack" with no advancing
@@ -1785,7 +1785,7 @@ queen of hearts
 ```
 
 
-GnuCOBOL pseudo-random number sequences are reproducible.  A command line argument can be used to pass an initial seed value. 
+GnuCOBOL pseudo-random number sequences are reproducible.  A command line argument can be used to pass an initial seed value.
 
 =={{Header|CoffeeScript}}==
 
@@ -1794,7 +1794,7 @@ GnuCOBOL pseudo-random number sequences are reproducible.  A command line argume
 #translated from JavaScript example
 class Card
   constructor: (@pip, @suit) ->
- 
+
   toString: => "#{@pip}#{@suit}"
 
 class Deck
@@ -1807,14 +1807,14 @@ class Deck
       for suit in suits
         for pip in pips
           @cards.push new Card(pip, suit)
- 
+
   toString: => "[#{@cards.join(', ')}]"
- 
+
   shuffle: =>
     for card, i in @cards
       randomCard = parseInt @cards.length * Math.random()
       @cards[i] = @cards.splice(randomCard, 1, card)[0]
- 
+
   deal: -> @cards.shift()
 ```
 
@@ -2124,39 +2124,39 @@ void main() {
 
 ```txt
 Host
-   6 of Heart     Q of Club    Ace of Club      9 of Spade  
-   8 of Club      K of Diamond   Q of Heart     6 of Spade  
-   7 of Diamond   5 of Heart     6 of Diamond   8 of Heart  
-   4 of Club      J of Club     10 of Diamond   2 of Club   
-   9 of Diamond   K of Club      4 of Spade     8 of Spade  
+   6 of Heart     Q of Club    Ace of Club      9 of Spade
+   8 of Club      K of Diamond   Q of Heart     6 of Spade
+   7 of Diamond   5 of Heart     6 of Diamond   8 of Heart
+   4 of Club      J of Club     10 of Diamond   2 of Club
+   9 of Diamond   K of Club      4 of Spade     8 of Spade
    5 of Club      3 of Club      9 of Club      3 of Diamond
-   2 of Diamond   9 of Heart     7 of Heart    10 of Club   
+   2 of Diamond   9 of Heart     7 of Heart    10 of Club
  Ace of Heart     2 of Spade     J of Spade     5 of Diamond
-   2 of Heart     4 of Heart   Ace of Diamond   J of Heart  
-   3 of Spade     K of Spade     7 of Spade     5 of Spade  
- Ace of Spade    10 of Heart     K of Heart     3 of Heart  
+   2 of Heart     4 of Heart   Ace of Diamond   J of Heart
+   3 of Spade     K of Spade     7 of Spade     5 of Spade
+ Ace of Spade    10 of Heart     K of Heart     3 of Heart
    6 of Club      Q of Spade     J of Diamond   8 of Diamond
   10 of Spade     7 of Club      Q of Diamond   4 of Diamond
 Player #1
-   J of Heart    10 of Club      9 of Spade     8 of Spade  
-   8 of Diamond   8 of Heart     6 of Spade     5 of Spade  
-   5 of Diamond   4 of Diamond   3 of Diamond   3 of Heart  
-   2 of Club   
+   J of Heart    10 of Club      9 of Spade     8 of Spade
+   8 of Diamond   8 of Heart     6 of Spade     5 of Spade
+   5 of Diamond   4 of Diamond   3 of Diamond   3 of Heart
+   2 of Club
 Player #2
  Ace of Diamond Ace of Club      K of Heart     Q of Diamond
    Q of Heart     J of Spade     J of Diamond  10 of Diamond
    9 of Club      7 of Spade     7 of Heart     6 of Diamond
-   4 of Spade  
+   4 of Spade
 Player #3
-   K of Spade     K of Diamond   K of Club      Q of Spade  
-   Q of Club      J of Club     10 of Heart     9 of Heart  
-   7 of Club      5 of Heart     4 of Heart     3 of Club   
-   2 of Spade  
+   K of Spade     K of Diamond   K of Club      Q of Spade
+   Q of Club      J of Club     10 of Heart     9 of Heart
+   7 of Club      5 of Heart     4 of Heart     3 of Club
+   2 of Spade
 Player #4
  Ace of Spade   Ace of Heart    10 of Spade     9 of Diamond
-   8 of Club      7 of Diamond   6 of Heart     6 of Club   
+   8 of Club      7 of Diamond   6 of Heart     6 of Club
    5 of Club      4 of Club      3 of Spade     2 of Diamond
-   2 of Heart  
+   2 of Heart
 ```
 
 
@@ -2313,26 +2313,26 @@ defmodule Playing_cards do
   @suits  ~w[Clubs Hearts Spades Diamonds]a
   @pip_value   Enum.with_index(@pips)
   @suit_value  Enum.with_index(@suits)
-  
+
   def deal( n_cards, deck ), do: Enum.split( deck, n_cards )
-  
+
   def deal( n_hands, n_cards, deck ) do
     Enum.reduce(1..n_hands, {[], deck}, fn _,{acc,d} ->
       {hand, new_d} = deal(n_cards, d)
       {[hand | acc], new_d}
     end)
   end
-  
+
   def deck, do: (for x <- @suits, y <- @pips, do: %Card{suit: x, pip: y})
-  
+
   def print( cards ), do: IO.puts (for x <- cards, do: "\t#{inspect x}")
-  
+
   def shuffle( deck ), do: Enum.shuffle( deck )
-  
+
   def sort_pips( cards ), do: Enum.sort_by( cards, &@pip_value[&1.pip] )
-  
+
   def sort_suits( cards ), do: Enum.sort_by( cards, &(@suit_value[&1.suit]) )
-  
+
   def task do
     shuffled = shuffle( deck )
     {hand, new_deck} = deal( 3, shuffled )
@@ -2442,10 +2442,10 @@ CONSTANT: suits qw{ ♥ ♣ ♦ ♠ }
 
 : card>str ( n -- str )
     13 /mod [ suits nth ] [ pips nth ] bi* prepend ;
-    
+
 : print-deck ( seq -- )
     13 group [ [ card>str "%-4s" printf ] each nl ] each ;
-    
+
 <deck>       ! make new deck
 randomize    ! shuffle the deck
 dup pop drop ! deal from the deck (and discard)
@@ -2456,10 +2456,10 @@ print-deck   ! print the deck
 
 ```txt
 
-J♣  10♥ 3♥  10♠ 7♥  7♦  4♦  4♥  K♣  9♠  8♠  A♠  6♥  
-K♠  10♣ 8♦  10♦ 3♦  Q♥  9♥  5♦  7♣  6♦  3♣  4♣  J♥  
-5♣  6♣  7♠  J♠  3♠  2♣  2♥  5♠  Q♠  6♠  4♠  2♠  5♥  
-K♥  2♦  8♣  A♥  9♦  9♣  8♥  J♦  K♦  A♣  Q♦  A♦  
+J♣  10♥ 3♥  10♠ 7♥  7♦  4♦  4♥  K♣  9♠  8♠  A♠  6♥
+K♠  10♣ 8♦  10♦ 3♦  Q♥  9♥  5♦  7♣  6♦  3♣  4♣  J♥
+5♣  6♣  7♠  J♠  3♠  2♣  2♥  5♠  Q♠  6♠  4♠  2♠  5♥
+K♥  2♦  8♣  A♥  9♦  9♣  8♥  J♦  K♦  A♣  Q♦  A♦
 
 ```
 
@@ -2471,7 +2471,7 @@ K♥  2♦  8♣  A♥  9♦  9♣  8♥  J♦  K♦  A♣  Q♦  A♦
 ```fantom
 
 enum class Suit { clubs, diamonds, hearts, spades }
-enum class Pips { ace, two, three, four, five, 
+enum class Pips { ace, two, three, four, five,
   six, seven, eight, nine, ten, jack, queen, king
 }
 
@@ -2486,7 +2486,7 @@ class Card
     this.pips = pips
   }
 
-  override Str toStr () 
+  override Str toStr ()
   {
     "card: $pips of $suit"
   }
@@ -2606,7 +2606,7 @@ IMPLICIT NONE
   REAL :: x
 
 CONTAINS
- 
+
   SUBROUTINE Init_deck
   ! Create deck
     DO i = 1, 4
@@ -2615,7 +2615,7 @@ CONTAINS
       END DO
     END DO
   END SUBROUTINE Init_deck
- 
+
   SUBROUTINE Shuffle_deck
   ! Shuffle deck using Fisher-Yates algorithm
     DO i = 52-dealt, 1, -1
@@ -2643,7 +2643,7 @@ CONTAINS
     END DO
     WRITE(*,*)
   END SUBROUTINE Print_hand
- 
+
   SUBROUTINE Print_deck
   ! Print cards in deck
     DO i = dealt+1, 52
@@ -2659,15 +2659,15 @@ Example use:
 
 ```fortran
 PROGRAM Playing_Cards
- 
+
   USE Cards
- 
+
   CALL Init_deck
   CALL Shuffle_deck
   CALL Deal_hand(5)
   CALL Print_hand
   CALL Print_deck
-  
+
 END PROGRAM
 ```
 
@@ -3023,8 +3023,8 @@ Straightforward implementation with explicit names for pips and suits. A deck is
 ```haskell
 import System.Random
 
-data Pip = Two | Three | Four | Five | Six | Seven | Eight | Nine | Ten | 
-           Jack | Queen | King | Ace 
+data Pip = Two | Three | Four | Five | Six | Seven | Eight | Nine | Ten |
+           Jack | Queen | King | Ace
   deriving (Ord, Enum, Bounded, Eq, Show)
 
 data Suit = Diamonds | Spades | Hearts | Clubs
@@ -3056,7 +3056,7 @@ shuffle g xs = shuffle' g xs 0 [] where
 
 {{works with|Hy|0.17.0+}}
 
-A simple program that deals out two five card hands. 
+A simple program that deals out two five card hands.
 
 
 ```Hy
@@ -3111,12 +3111,12 @@ procedure main(arglist)
    players := 5                                             # players to deal to
 
    write("New deck : ", showcards(D := newcarddeck()))      # create and show a new deck
-   write("Shuffled : ", showcards(D := shufflecards(D)))    # shuffle it 
+   write("Shuffled : ", showcards(D := shufflecards(D)))    # shuffle it
 
-   H := list(players) 
+   H := list(players)
    every H[1 to players] := []                              # hands for each player
 
-   every ( c := 1 to cards 	) & ( p := 1 to players ) do    
+   every ( c := 1 to cards 	) & ( p := 1 to players ) do
       put(H[p], dealcard(D))                                # deal #players hands of #cards
 
    every write("Player #",p := 1 to players,"'s hand : ",showcards(H[p]))
@@ -3151,7 +3151,7 @@ end
 
 procedure showcards(D)			                    #: return a string of all cards in the given list (deck/hand/etc.)
 local s
-   every (s := "") ||:= card2string(!D) || " " 
+   every (s := "") ||:= card2string(!D) || " "
    return s
 end
 
@@ -3262,7 +3262,7 @@ newDeck_z_=: conew&'rcpc'
 
 
 ```java
-public enum Pip { Two, Three, Four, Five, Six, Seven, 
+public enum Pip { Two, Three, Four, Five, Six, Seven,
     Eight, Nine, Ten, Jack, Queen, King, Ace }
 ```
 
@@ -3327,13 +3327,13 @@ public class Deck {
 ```javascript
 function Card(pip, suit) {
     this.pip = pip;
-    this.suit = suit; 
+    this.suit = suit;
 
     this.toString = function () {
         return this.pip + ' ' + this.suit;
     };
 }
- 
+
 function Deck() {
     var pips = '2 3 4 5 6 7 8 9 10 Jack Queen King Ace'.split(' ');
     var suits = 'Clubs Hearts Spades Diamonds'.split(' ');
@@ -3345,7 +3345,7 @@ function Deck() {
     this.toString = function () {
         return '[' + this.deck.join(', ') + ']';
     };
- 
+
     this.shuffle = function () {
         for (var i = 0; i < this.deck.length; i++)
             this.deck[i] = this.deck.splice(
@@ -3401,7 +3401,7 @@ end
 '''Define a Few of the Standard Methods'''
 
 Many of these definitions are simply passed through to the card array component of the deck.  But note that <tt>size</tt> returns parameters appropriate to a complete deck.  This behavior is helpful when assigning meaning to any list of cards.
- 
+
 
 ```Julia
 
@@ -3540,7 +3540,7 @@ Show the deck.
    show:{`0:$,/-3$$deck}
 
    show()
-SA S2 S3 S4 S5 S6 S7 S8 S9 ST SJ SQ SK HA H2 H3 H4 H5 H6 H7 H8 H9 HT HJ HQ HK CA C2 C3 C4 C5 C6 C7 C8 C9 CT CJ CQ CK DA D2 D3 D4 D5 D6 D7 D8 D9 DT DJ DQ DK 
+SA S2 S3 S4 S5 S6 S7 S8 S9 ST SJ SQ SK HA H2 H3 H4 H5 H6 H7 H8 H9 HT HJ HQ HK CA C2 C3 C4 C5 C6 C7 C8 C9 CT CJ CQ CK DA D2 D3 D4 D5 D6 D7 D8 D9 DT DJ DQ DK
 ```
 
 
@@ -3550,7 +3550,7 @@ Shuffle the deck.
    shuffle:{deck::(-#deck)?deck}
 
    shuffle();show()
-S8 CA D5 D2 SJ D6 DJ H7 S4 S9 SQ SK S5 D8 C4 HT DA H3 S6 S2 DT HA C2 C5 D9 ST C7 DK S3 HQ D7 DQ C8 D3 SA CJ CQ CT H4 H2 CK H9 H5 C3 C6 H6 D4 HJ C9 S7 HK H8 
+S8 CA D5 D2 SJ D6 DJ H7 S4 S9 SQ SK S5 D8 C4 HT DA H3 S6 S2 DT HA C2 C5 D9 ST C7 DK S3 HQ D7 DQ C8 D3 SA CJ CQ CT H4 H2 CK H9 H5 C3 C6 H6 D4 HJ C9 S7 HK H8
 ```
 
 
@@ -3654,22 +3654,22 @@ Sample output:
 ```txt
 
 After creation, deck consists of:
-2s  3s  4s  5s  6s  7s  8s  9s  Ts  Js  Qs  Ks  As  
-2h  3h  4h  5h  6h  7h  8h  9h  Th  Jh  Qh  Kh  Ah  
-2d  3d  4d  5d  6d  7d  8d  9d  Td  Jd  Qd  Kd  Ad  
-2c  3c  4c  5c  6c  7c  8c  9c  Tc  Jc  Qc  Kc  Ac  
+2s  3s  4s  5s  6s  7s  8s  9s  Ts  Js  Qs  Ks  As
+2h  3h  4h  5h  6h  7h  8h  9h  Th  Jh  Qh  Kh  Ah
+2d  3d  4d  5d  6d  7d  8d  9d  Td  Jd  Qd  Kd  Ad
+2c  3c  4c  5c  6c  7c  8c  9c  Tc  Jc  Qc  Kc  Ac
 
 After shuffling, deck consists of:
-2h  6h  5s  9s  Td  Kh  Jc  4s  Ac  Tc  7s  8s  9c  
-Js  3s  Th  Kd  2d  Qd  8h  3c  6d  Qc  2c  Ks  Ad  
-9d  5c  6s  4h  Qh  4d  Ah  3d  As  5h  Ts  7d  Jh  
-Jd  4c  8d  7h  6c  2s  Qs  7c  Kc  9h  8c  3h  5d  
+2h  6h  5s  9s  Td  Kh  Jc  4s  Ac  Tc  7s  8s  9c
+Js  3s  Th  Kd  2d  Qd  8h  3c  6d  Qc  2c  Ks  Ad
+9d  5c  6s  4h  Qh  4d  Ah  3d  As  5h  Ts  7d  Jh
+Jd  4c  8d  7h  6c  2s  Qs  7c  Kc  9h  8c  3h  5d
 
 The 10 cards dealt from the top of the deck are:
-2h  6h  5s  9s  Td  Kh  Jc  4s  Ac  Tc  
+2h  6h  5s  9s  Td  Kh  Jc  4s  Ac  Tc
 
 The 10 cards dealt from the bottom of the deck are:
-5d  3h  8c  9h  Kc  7c  Qs  2s  6c  7h   
+5d  3h  8c  9h  Kc  7c  Qs  2s  6c  7h
 
 ```
 
@@ -3963,14 +3963,14 @@ print('ALL CARDS IN THE DECK\n', table.concat(tDeck, ' '), '\n')
 Output:
 
 ```Lua
-FRESH DECK 
-2d 3d 4d 5d 6d 7d 8d 9d Td Jd Qd Kd Ad 2s 3s 4s 5s 6s 7s 8s 9s Ts Js Qs Ks As 2h 3h 4h 5h 6h 7h 8h 9h Th Jh Qh Kh Ah 2c 3c 4c 5c 6c 7c 8c 9c Tc Jc Qc Kc Ac	
+FRESH DECK
+2d 3d 4d 5d 6d 7d 8d 9d Td Jd Qd Kd Ad 2s 3s 4s 5s 6s 7s 8s 9s Ts Js Qs Ks As 2h 3h 4h 5h 6h 7h 8h 9h Th Jh Qh Kh Ah 2c 3c 4c 5c 6c 7c 8c 9c Tc Jc Qc Kc Ac
 
-SHUFFLED DECK 
-7c 3d 8h 7h 7s 9c 8c Ks 8s 2s 5s 8d 2h 3h Jc 6h Td Ts Jh Tc 6s Kd 7d 4h 4d 5d Qd 5h 5c Kh 9d 2d Ah 6d 3c Js 9h Qh 4c 3s As Kc Qs Ad Th 4s Jd Ac Qc 2c 9s 6c	
+SHUFFLED DECK
+7c 3d 8h 7h 7s 9c 8c Ks 8s 2s 5s 8d 2h 3h Jc 6h Td Ts Jh Tc 6s Kd 7d 4h 4d 5d Qd 5h 5c Kh 9d 2d Ah 6d 3c Js 9h Qh 4c 3s As Kc Qs Ad Th 4s Jd Ac Qc 2c 9s 6c
 
 BOARD
-Kc As 3s 4c Qh	
+Kc As 3s 4c Qh
 
 PLAYER #1: 6c 9s
 PLAYER #2: 2c Qc
@@ -3979,10 +3979,10 @@ PLAYER #4: 4s Th
 PLAYER #5: Ad Qs
 
 REMAINING
-7c 3d 8h 7h 7s 9c 8c Ks 8s 2s 5s 8d 2h 3h Jc 6h Td Ts Jh Tc 6s Kd 7d 4h 4d 5d Qd 5h 5c Kh 9d 2d Ah 6d 3c Js 9h	
+7c 3d 8h 7h 7s 9c 8c Ks 8s 2s 5s 8d 2h 3h Jc 6h Td Ts Jh Tc 6s Kd 7d 4h 4d 5d Qd 5h 5c Kh 9d 2d Ah 6d 3c Js 9h
 
 ALL CARDS IN THE DECK
-7c 3d 8h 7h 7s 9c 8c Ks 8s 2s 5s 8d 2h 3h Jc 6h Td Ts Jh Tc 6s Kd 7d 4h 4d 5d Qd 5h 5c Kh 9d 2d Ah 6d 3c Js 9h 9s 6c Qc 2c Jd Ac Th 4s Qs Ad Qh 4c 3s As Kc	
+7c 3d 8h 7h 7s 9c 8c Ks 8s 2s 5s 8d 2h 3h Jc 6h Td Ts Jh Tc 6s Kd 7d 4h 4d 5d Qd 5h 5c Kh 9d 2d Ah 6d 3c Js 9h 9s 6c Qc 2c Jd Ac Th 4s Qs Ad Qh 4c 3s As Kc
 
 ```
 
@@ -4026,7 +4026,7 @@ Module PlayCards {
            }
       }
       Decks=1
-      Dim Pack(Len(Cards)*Len(Suits)*Decks) 
+      Dim Pack(Len(Cards)*Len(Suits)*Decks)
       k=0
       \\ fill cards to Pack()
       For times=1 To Decks {
@@ -4037,7 +4037,7 @@ Module PlayCards {
                         Pack(k)=OneCard(N^, M^)
                         k++
                   }
-            }     
+            }
       }
       DisplayAll() ' in order
       Suffle()
@@ -4054,7 +4054,7 @@ Module PlayCards {
             DisplayDeck()
             Print
       }
-      
+
       Sub Suffle()
             Print
             Local N=Len(Pack())-1, N2, i, j, total=N*4+4, cur=1
@@ -4215,7 +4215,7 @@ for s in suits.indexes
         deck.push card
     end for
 end for
- 
+
 draw = function(count=7)
     hand = []
     for i in range(1, count)
@@ -4223,18 +4223,18 @@ draw = function(count=7)
     end for
     return hand
 end function
- 
+
 display = function(stack)
     for card in stack
         print card.str
     end for
 end function
- 
+
 print "Deck created. Cards in Deck: " + deck.len
- 
+
 deck.shuffle
 print "Deck Shuffled"
- 
+
 hand = draw
 print "First hand: "
 display hand
@@ -4249,7 +4249,7 @@ display deck
 ```txt
 Deck created. Cards in Deck: 52
 Deck Shuffled
-First hand: 
+First hand:
 Nine of Diamonds (value: 308)
 Queen of Spades (value: 11)
 Seven of Clubs (value: 106)
@@ -4257,7 +4257,7 @@ Ten of Diamonds (value: 309)
 Seven of Hearts (value: 206)
 Eight of Spades (value: 7)
 King of Diamonds (value: 312)
- 
+
 45 cards left in deck:
 Nine of Spades (value: 8)
 Four of Spades (value: 3)
@@ -4325,11 +4325,11 @@ Output:
 
 ```txt
 40 cards from a deck:
-c10♦ c06♥ cKi♠ c09♥ c06♣ c02♦ c10♣ c08♣ 
-c03♥ cQu♠ c07♠ c02♣ c04♦ c09♠ c07♦ c09♦ 
-c02♠ c06♠ cKi♥ cAs♦ cAs♥ c04♥ c05♣ c02♥ 
-cQu♥ c03♠ cQu♣ c05♦ c08♥ c04♠ c10♥ cQu♦ 
-c04♣ c03♣ c03♦ cAs♠ c10♠ cKi♣ cKi♦ c05♠ 
+c10♦ c06♥ cKi♠ c09♥ c06♣ c02♦ c10♣ c08♣
+c03♥ cQu♠ c07♠ c02♣ c04♦ c09♠ c07♦ c09♦
+c02♠ c06♠ cKi♥ cAs♦ cAs♥ c04♥ c05♣ c02♥
+cQu♥ c03♠ cQu♣ c05♦ c08♥ c04♠ c10♥ cQu♦
+c04♣ c03♣ c03♦ cAs♠ c10♠ cKi♣ cKi♦ c05♠
 The remaining cards are: @[c07♣, cAs♣, c05♥, c06♦, c08♦, c08♠, c09♣, c07♥]
 ```
 
@@ -4340,8 +4340,8 @@ The remaining cards are: @[c07♣, cAs♣, c05♥, c06♦, c08♦, c08♠, c09�
 Straightforward implementation with algebraic types for the pips and suits, and lists of their values. A deck is an array of cards.
 
 ```ocaml
-type pip = Two | Three | Four | Five | Six | Seven | Eight | Nine | Ten | 
-           Jack | Queen | King | Ace 
+type pip = Two | Three | Four | Five | Six | Seven | Eight | Nine | Ten |
+           Jack | Queen | King | Ace
 let pips = [Two; Three; Four; Five; Six; Seven; Eight; Nine; Ten;
             Jack; Queen; King; Ace]
 type suit = Diamonds | Spades | Hearts | Clubs
@@ -4461,22 +4461,22 @@ This creates a new deck, shuffles it, removes the top card, prints out that card
 ```perl6>enum Pip <A 2 3 4 5 6 7 8 9 10 J Q K
 ;
 enum Suit <♦ ♣ ♥ ♠>;
- 
+
 class Card {
     has Pip $.pip;
     has Suit $.suit;
- 
+
     method Str { $!pip ~ $!suit }
 }
- 
+
 class Deck {
     has Card @.cards = pick *,
             map { Card.new(:$^pip, :$^suit) }, flat (Pip.pick(*) X Suit.pick(*));
- 
+
     method shuffle { @!cards .= pick: * }
- 
+
     method deal { shift @!cards }
- 
+
     method Str  { ~@!cards }
     method gist { ~@!cards }
 }
@@ -4852,16 +4852,16 @@ echo PHP_EOL . count( $deck ) . ' cards remaining in the deck: ' . PHP_EOL . $de
 This will output something like:
 
 ```txt
-52 cards in the new deck: 
+52 cards in the new deck:
 ♠2 ♠3 ♠4 ♠5 ♠6 ♠7 ♠8 ♠9 ♠T ♠J ♠Q ♠K ♠A ♥2 ♥3 ♥4 ♥5 ♥6 ♥7 ♥8 ♥9 ♥T ♥J ♥Q ♥K ♥A ♦2 ♦3 ♦4 ♦5 ♦6 ♦7 ♦8 ♦9 ♦T ♦J ♦Q ♦K ♦A ♣2 ♣3 ♣4 ♣5 ♣6 ♣7 ♣8 ♣9 ♣T ♣J ♣Q ♣K ♣A
 
-52 cards in the new deck, default sort: 
+52 cards in the new deck, default sort:
 ♠2 ♥2 ♦2 ♣2 ♠3 ♥3 ♦3 ♣3 ♠4 ♥4 ♦4 ♣4 ♠5 ♥5 ♦5 ♣5 ♠6 ♥6 ♦6 ♣6 ♠7 ♥7 ♦7 ♣7 ♠8 ♥8 ♦8 ♣8 ♠9 ♥9 ♦9 ♣9 ♠T ♥T ♦T ♣T ♠J ♥J ♦J ♣J ♠Q ♥Q ♦Q ♣Q ♠K ♥K ♦K ♣K ♠A ♥A ♦A ♣A
 
-52 cards in the new deck, custom sort: 
+52 cards in the new deck, custom sort:
 ♠2 ♠3 ♠4 ♠5 ♠6 ♠7 ♠8 ♠9 ♠T ♠J ♠Q ♠K ♠A ♥2 ♥3 ♥4 ♥5 ♥6 ♥7 ♥8 ♥9 ♥T ♥J ♥Q ♥K ♥A ♦2 ♦3 ♦4 ♦5 ♦6 ♦7 ♦8 ♦9 ♦T ♦J ♦Q ♦K ♦A ♣2 ♣3 ♣4 ♣5 ♣6 ♣7 ♣8 ♣9 ♣T ♣J ♣Q ♣K ♣A
 
-52 cards in the new deck, shuffled: 
+52 cards in the new deck, shuffled:
 ♣7 ♠Q ♥9 ♠7 ♠J ♠9 ♣J ♣4 ♠8 ♥Q ♥2 ♦J ♠T ♣Q ♦A ♠K ♠2 ♣K ♦K ♦Q ♠3 ♣5 ♥5 ♠4 ♥3 ♦9 ♣2 ♦8 ♥A ♥6 ♦2 ♦5 ♥J ♣T ♦3 ♠5 ♠A ♣8 ♥8 ♥7 ♥K ♦7 ♥T ♦6 ♦T ♣6 ♣3 ♣A ♦4 ♥4 ♠6 ♣9
 
 Player 1 got dealt the following 7 cards (sorted): ♠2 ♣7 ♠8 ♠Q ♥Q ♦K ♣K
@@ -4869,7 +4869,7 @@ Player 2 got dealt the following 7 cards (sorted): ♥2 ♠3 ♣5 ♠7 ♥9 ♦J
 Player 3 got dealt the following 7 cards (sorted): ♥3 ♠4 ♥5 ♠9 ♠T ♠J ♣Q
 Player 4 got dealt the following 7 cards (sorted): ♣2 ♣4 ♦8 ♦9 ♣J ♠K ♦A
 
-24 cards remaining in the deck: 
+24 cards remaining in the deck:
 ♥A ♥6 ♦2 ♦5 ♥J ♣T ♦3 ♠5 ♠A ♣8 ♥8 ♥7 ♥K ♦7 ♥T ♦6 ♦T ♣6 ♣3 ♣A ♦4 ♥4 ♠6 ♣9
 ```
 
@@ -5066,9 +5066,9 @@ Structure card
 EndStructure
 
 Structure _membersDeckClass
-  *vtable.i 
+  *vtable.i
   size.i ;zero based count of cards present
-  cards.card[#MaxCards] ;deck content 
+  cards.card[#MaxCards] ;deck content
 EndStructure
 
 Interface deckObject
@@ -5076,26 +5076,26 @@ Interface deckObject
   shuffle()
   deal.s(isAbbr = #True)
   show(isAbbr = #True)
-EndInterface 
+EndInterface
 
 Procedure.s _formatCardInfo(*card.card, isAbbr = #True)
   ;isAbbr determines if the card information is abbrieviated to 2 characters
   Static pips.s = "2 3 4 5 6 7 8 9 10 Jack Queen King Ace"
   Static suits.s = "Diamonds Clubs Hearts Spades"
   Protected c.s
-  
+
   If isAbbr
     c = *card\pip + *card\suit
   Else
     c = StringField(pips,FindString("23456789TJQKA", *card\pip, 1), " ") + " of "
     c + StringField(suits,FindString("DCHS", *card\suit, 1)," ")
-  EndIf 
+  EndIf
   ProcedureReturn c
 EndProcedure
 
 Procedure setInitialValues(*this._membersDeckClass)
   Protected i, c.s
-  
+
   Restore cardDat
   For i = 0 To #MaxCards - 1
     Read.s c
@@ -5114,16 +5114,16 @@ Procedure.s dealCard(*this._membersDeckClass, isAbbr)
     c = *this\cards[*this\size]
     *this\size - 1
     ProcedureReturn _formatCardInfo(@c, isAbbr)
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure showDeck(*this._membersDeckClass, isAbbr)
   ;isAbbr determines if cards are shown with 2 character abbrieviations
   Protected i
-  
+
   For i = 0 To *this\size
     Print(_formatCardInfo(@*this\cards[i], isAbbr))
-    If i <> *this\size: Print(", "): EndIf 
+    If i <> *this\size: Print(", "): EndIf
   Next
   PrintN("")
 EndProcedure
@@ -5132,16 +5132,16 @@ Procedure shuffle(*this._membersDeckClass)
   ;works with decks of any size
   Protected w, i
   Dim shuffled.card(*this\size)
-  
+
   For i = *this\size To 0 Step -1
     w = Random(i)
     shuffled(i) = *this\cards[w]
     If w <> i
       *this\cards[w] = *this\cards[i]
     EndIf
-    
+
   Next
-  
+
   For i = 0 To *this\size
     *this\cards[i] = shuffled(i)
   Next
@@ -5163,7 +5163,7 @@ DataSection
   Data.i @shuffle()
   Data.i @dealCard()
   Data.i @showDeck()
-  
+
   cardDat:
   Data.s "2D", "3D", "4D", "5D", "6D", "7D", "8D", "9D", "TD", "JD", "QD", "KD", "AD"
   Data.s "2C", "3C", "4C", "5C", "6C", "7C", "8C", "9C", "TC", "JC", "QC", "KC", "AC"
@@ -5257,13 +5257,13 @@ from random import randrange
 class Deck():
     def __init__(self):
         self.__deck = [Card(f, s) for f,s in product(face, suit)]
-    
+
     def __repr__(self):
         return 'Deck of ' + ' '.join(repr(card) for card in self.__deck)
-    
+
     def shuffle(self):
         pass
-    
+
     def deal(self):
         return self.__deck.pop(randrange(len(self.__deck)))
 
@@ -5283,11 +5283,11 @@ if __name__ == '__main__':
 ```txt
 40 cards from a deck:
 
-7♥ k♥ 2♣ 3♦ 10♥ 10♠ 6♥ 9♠ 
-9♣ k♦ 3♥ k♠ q♥ q♠ a♣ a♥ 
-10♣ 5♣ 8♥ 4♣ 9♥ 8♠ a♠ 5♠ 
-9♦ 4♥ j♦ j♣ 3♣ 7♠ 5♥ 2♥ 
-6♠ q♣ 7♦ 3♠ 7♣ k♣ 10♦ 6♣ 
+7♥ k♥ 2♣ 3♦ 10♥ 10♠ 6♥ 9♠
+9♣ k♦ 3♥ k♠ q♥ q♠ a♣ a♥
+10♣ 5♣ 8♥ 4♣ 9♥ 8♠ a♠ 5♠
+9♦ 4♥ j♦ j♣ 3♣ 7♠ 5♥ 2♥
+6♠ q♣ 7♦ 3♠ 7♣ k♣ 10♦ 6♣
 
 The remaining cards are a Deck of 2♦ 2♠ 4♦ 4♠ 5♦ 6♦ 8♦ 8♣ j♥ j♠ q♦ a♦
 ```
@@ -5314,7 +5314,7 @@ deal <- function(deck, fromtop=TRUE)
 {
    index <- ifelse(fromtop, 1, nrow(deck))
    print(paste("Dealt the", deck[index, "pips"], "of", deck[index, "suit"]))
-   deck[-index,]   
+   deck[-index,]
 }
 
 # Usage
@@ -5340,7 +5340,7 @@ deck <- deal(deck, FALSE)
 ;; ranks
 (define ranks '(1 2 3 4 5 6 7 8 9 10 jack queen king))
 
-;; cards 
+;; cards
 (define cards
   (for*/list ([suit suits] [rank ranks])
     (list suit rank)))
@@ -5377,7 +5377,7 @@ Language: racket; memory limit: 512 MB.
 '(heart 8)
 '(diamond king)
 50
-> 
+>
 ```
 
 
@@ -5793,22 +5793,22 @@ class Card
   # class constants
   SUITS = %i[ Clubs Hearts Spades Diamonds ]
   PIPS  = %i[ 2 3 4 5 6 7 8 9 10 Jack Queen King Ace ]
-  
+
   # class variables (private)
   @@suit_value = Hash[ SUITS.each_with_index.to_a ]
   @@pip_value  = Hash[ PIPS.each_with_index.to_a ]
-  
+
   attr_reader :pip, :suit
-  
+
   def initialize(pip,suit)
     @pip = pip
     @suit = suit
   end
-  
+
   def to_s
     "#{@pip} #{@suit}"
   end
-  
+
   # allow sorting an array of Cards: first by suit, then by value
   def <=>(other)
     (@@suit_value[@suit] <=> @@suit_value[other.suit]).nonzero? or
@@ -5820,16 +5820,16 @@ class Deck
   def initialize
     @deck = Card::SUITS.product(Card::PIPS).map{|suit,pip| Card.new(pip,suit)}
   end
-  
+
   def to_s
     @deck.inspect
   end
-  
+
   def shuffle!
     @deck.shuffle!
     self
   end
-  
+
   def deal(*args)
     @deck.shift(*args)
   end
@@ -5860,11 +5860,11 @@ puts hand.sort.join(", ")
 suite$ = "C,D,H,S"                      ' Club,Diamond,Hart,Spaces
 card$  = "A,2,3,4,5,6,7,8,9,T,J,Q,K"    ' Cards Ace to King
 
-dim n(55)                               ' make ordered deck 
+dim n(55)                               ' make ordered deck
 for i = 1 to 52                         '  of 52 cards
  n(i) 	= i
 next i
- 
+
 for i = 1 to 52 * 3                     ' shuffle deck 3 times
   i1    = int(rnd(1)*52) + 1
   i2    = int(rnd(1)*52) + 1
@@ -5873,7 +5873,7 @@ for i = 1 to 52 * 3                     ' shuffle deck 3 times
   n(i2) = h2
 next i
 
-for hand = 1 to 4                       ' 4 hands 
+for hand = 1 to 4                       ' 4 hands
 for deal = 1 to 13			' deal each 13 cards
  card = card + 1                        ' next card in deck
     s    = (n(card) mod 4)  + 1         ' determine suite
@@ -5886,9 +5886,9 @@ next hand
 
 
 ```txt
-TD 7S JD 7C 3H AS 6D QD KH 5H 2C QH 8C 
-8H 5S 7D 2D 2H 4D KS JS 7H QC KC 9S TH 
-JH 4H TS 3D AH 4C 6H 6C 6S 2S JC 5C AD 
+TD 7S JD 7C 3H AS 6D QD KH 5H 2C QH 8C
+8H 5S 7D 2D 2H 4D KS JS 7H QC KC 9S TH
+JH 4H TS 3D AH 4C 6H 6C 6S 2S JC 5C AD
 KD QS 9D 9C 4S 9H 8D TC 8S 5D 3C 3S AC
 ```
 
@@ -6002,7 +6002,7 @@ case class Card(suit:Suit, value:Pip){
 class Deck private(val cards:List[Card]) {
   def this()=this(for {s <- Suit.values.toList; v <- Pip.values} yield Card(s,v))
   def shuffle:Deck=new Deck(Random.shuffle(cards))
-		
+
   def deal(n:Int=1):(Seq[Card], Deck)={
     @tailrec def loop(count:Int, c:Seq[Card], d:Deck):(Seq[Card], Deck)={
       if(count==0 || d.cards==Nil) (c,d)
@@ -6055,7 +6055,7 @@ Deck: Queen of Hearts, Six of Spades, Ace of Hearts, Jack of Diamonds, Jack of H
 
 {{Works with|Scheme|R<math>^5</math>RS}}
 
-The procedure <code>shuffle</code> requires an appropriate procedure <code>random</code> to be 
+The procedure <code>shuffle</code> requires an appropriate procedure <code>random</code> to be
 defined. Some Scheme implementations provide this as an extension.
 
 ```scheme
@@ -6189,7 +6189,7 @@ new
   | o |
   o := super new.
   ^o
-!  
+!
 new: card
   | o |
   o := self new.
@@ -6262,7 +6262,7 @@ shuffle
      r2 := Random between: 1 and: self deck size.
      o := self deck at: i.
      self deck at: i put: (self deck at: r2).
-     self deck at: r2 put: o 
+     self deck at: r2 put: o
   ].
   ^self
 !
@@ -6376,7 +6376,7 @@ extension MutableCollectionType where Index == Int {
     mutating func shuffleInPlace() {
         // empty and single-element collections don't shuffle
         if count < 2 { return }
-        
+
         for i in 0..<count - 1 {
             let j = Int(arc4random_uniform(UInt32(count - i))) + i
             guard i != j else { continue }
@@ -6406,7 +6406,7 @@ enum Suit : Int {
     case Diamonds
     case Spades
     case Clubs
-    
+
     var color : CardColor {
         switch self {
         case .Hearts, .Diamonds:
@@ -6436,11 +6436,11 @@ enum Pip : Int {
 struct Card {
     let pip : Pip
     let suit : Suit
-    
+
     var isFaceCard : Bool {
         return pip.rawValue > 10
     }
-    
+
     var color : CardColor {
         return suit.color
     }
@@ -6459,11 +6459,11 @@ extension Card : CustomStringConvertible {
 
 struct Deck {
     var cards : [Card]
-    
+
     var count : Int {
         return cards.count
     }
-    
+
     init(shuffling:Bool=true) {
         var startcards = [Card]()
         for suit in (Suit.Hearts.rawValue...Suit.Clubs.rawValue) {
@@ -6472,21 +6472,21 @@ struct Deck {
             }
         }
         cards = startcards
-        
+
         if shuffling {
             shuffle()
         }
     }
-    
+
     mutating func shuffle() {
         cards.shuffleInPlace()
     }
-    
+
     mutating func deal() -> Card {
         let out = cards.removeFirst()
         return out
     }
-    
+
 }
 extension Deck : CustomStringConvertible {
     var description : String {
@@ -6559,7 +6559,7 @@ namespace eval playing_cards {
     #variable suits {C D H S}
     variable suits {\u2663 \u2662 \u2661 \u2660}
     variable pips {2 3 4 5 6 7 8 9 10 J Q K A}
-    
+
     proc new_deck {} {
         variable deck
         set deck [list]
@@ -6567,7 +6567,7 @@ namespace eval playing_cards {
             lappend deck $i
         }
     }
-    
+
     proc shuffle {} {
         variable deck
         # shuffle in place
@@ -6578,7 +6578,7 @@ namespace eval playing_cards {
             lset deck $i $card
         }
     }
-    
+
     proc deal {{num 1}} {
         variable deck
         incr num -1
@@ -6586,7 +6586,7 @@ namespace eval playing_cards {
         set deck [lreplace $deck 0 $num]
         return $cards
     }
-    
+
     proc card2string {card} {
         variable suits
         variable pips
@@ -6594,7 +6594,7 @@ namespace eval playing_cards {
         set pip [expr {$card % 13}]
         return [format "%2s %s" [lindex $pips $pip] [lindex $suits $suit]]
     }
-    
+
     proc print {cards args} {
         array set opts [concat -sort false $args]
         if {$opts(-sort)} {
@@ -6604,7 +6604,7 @@ namespace eval playing_cards {
             puts [card2string $card]
         }
     }
-    
+
     proc print_deck {} {
         variable deck
         print $deck
@@ -6641,7 +6641,7 @@ class carddeck
 	private cardno
 	private deck(52)
 	private nTop
-	
+
 	sub class_initialize
 		dim suit
 		dim pips
@@ -6659,21 +6659,21 @@ class carddeck
 		next
 		nTop = 0
 	end sub
-	
+
 	public sub showdeck
 		dim a
 		redim a(51-nTop)
 		for i = nTop to 51
-			a(i) = deck(i).pips & deck(i).suit  
+			a(i) = deck(i).pips & deck(i).suit
 		next
 		wscript.echo join( a, ", ")
 	end sub
-	
+
 	public sub shuffle
 		dim r
 		randomize timer
 		for i = nTop to 51
-			r = int( rnd * ( 52 - nTop ) ) 
+			r = int( rnd * ( 52 - nTop ) )
 			if r <> i then
 				objswap deck(i),deck(r)
 			end if
@@ -6688,7 +6688,7 @@ class carddeck
 	public property get cardsRemaining
 		cardsRemaining = 52 - nTop
 	end property
-	
+
 	private sub objswap(   a,   b )
 		dim tmp
 		set tmp = a
@@ -6718,7 +6718,7 @@ dim card
 for i = 1 to 52
 	set card = pack.deal
 next
-wscript.echo "--dealt a card, it's the", card.pips, "of", card.suit 
+wscript.echo "--dealt a card, it's the", card.pips, "of", card.suit
 wscript.echo "--", pack.cardsRemaining, "cards remaining"
 if pack.cardsRemaining <> 0 then
 	pack.showdeck

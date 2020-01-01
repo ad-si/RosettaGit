@@ -14,7 +14,7 @@ tags = []
 
 The   [[wp:Farey sequence|Farey sequence]]   ''' ''F''<sub>n</sub>'''   of order   '''n'''   is the sequence of completely reduced fractions between   '''0'''   and   '''1'''   which, when in lowest terms, have denominators less than or equal to   '''n''',   arranged in order of increasing size.
 
-The   ''Farey sequence''   is sometimes incorrectly called a   ''Farey series''. 
+The   ''Farey sequence''   is sometimes incorrectly called a   ''Farey series''.
 
 
 Each Farey sequence:
@@ -41,13 +41,13 @@ The Farey sequences of orders   '''1'''   to   '''5'''   are:
 ;Task
 *   Compute and show the Farey sequence for orders   '''1'''   through   '''11'''   (inclusive).
 *   Compute and display the   ''number''   of fractions in the Farey sequence for order   '''100'''   through   '''1,000'''   (inclusive)   by hundreds.
-*   Show the fractions as   <big> '''n/d''' </big>   (using the solidus [or slash] to separate the numerator from the denominator).   
+*   Show the fractions as   <big> '''n/d''' </big>   (using the solidus [or slash] to separate the numerator from the denominator).
 
 
 ;See also
-*    OEIS sequence    [http://oeis.org/A006842 A006842 numerators   of Farey series of order 1, 2, ···] 
-*    OEIS sequence    [http://oeis.org/A006843 A006843 denominators of Farey series of order 1, 2, ···] 
-*    OEIS sequence    [http://oeis.org/A005728 A005728 number of fractions in Farey series of order n.] 
+*    OEIS sequence    [http://oeis.org/A006842 A006842 numerators   of Farey series of order 1, 2, ···]
+*    OEIS sequence    [http://oeis.org/A006843 A006843 denominators of Farey series of order 1, 2, ···]
+*    OEIS sequence    [http://oeis.org/A005728 A005728 number of fractions in Farey series of order n.]
 *   MathWorld entry   [http://mathworld.wolfram.com/FareySequence.html Farey sequence]
 
 
@@ -145,51 +145,51 @@ Basically, given n this one generates and then sorts the set
 ```txt
 
       {⍵⍪(⊂'¯¯¯¯¯')⍪⍉↑print¨⍵}⍳11    ⍝ Sequences
-     1      2      3      4      5      6      7      8      9     10      11 
- ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯   ¯¯¯¯¯ 
-  0/1    0/1    0/1    0/1    0/1    0/1    0/1    0/1    0/1    0/1     0/1  
-  1/1    1/2    1/3    1/4    1/5    1/6    1/7    1/8    1/9   1/10    1/11  
-         1/1    1/2    1/3    1/4    1/5    1/6    1/7    1/8    1/9    1/10  
-                2/3    1/2    1/3    1/4    1/5    1/6    1/7    1/8     1/9  
-                1/1    2/3    2/5    1/3    1/4    1/5    1/6    1/7     1/8  
-                       3/4    1/2    2/5    2/7    1/4    1/5    1/6     1/7  
-                       1/1    3/5    1/2    1/3    2/7    2/9    1/5     1/6  
-                              2/3    3/5    2/5    1/3    1/4    2/9    2/11  
-                              3/4    2/3    3/7    3/8    2/7    1/4     1/5  
-                              4/5    3/4    1/2    2/5    1/3    2/7     2/9  
-                              1/1    4/5    4/7    3/7    3/8   3/10     1/4  
-                                     5/6    3/5    1/2    2/5    1/3    3/11  
-                                     1/1    2/3    4/7    3/7    3/8     2/7  
-                                            5/7    3/5    4/9    2/5    3/10  
-                                            3/4    5/8    1/2    3/7     1/3  
-                                            4/5    2/3    5/9    4/9    4/11  
-                                            5/6    5/7    4/7    1/2     3/8  
-                                            6/7    3/4    3/5    5/9     2/5  
-                                            1/1    4/5    5/8    4/7     3/7  
-                                                   5/6    2/3    3/5     4/9  
-                                                   6/7    5/7    5/8    5/11  
-                                                   7/8    3/4    2/3     1/2  
-                                                   1/1    7/9   7/10    6/11  
-                                                          4/5    5/7     5/9  
-                                                          5/6    3/4     4/7  
-                                                          6/7    7/9     3/5  
-                                                          7/8    4/5     5/8  
-                                                          8/9    5/6    7/11  
-                                                          1/1    6/7     2/3  
-                                                                 7/8    7/10  
-                                                                 8/9     5/7  
-                                                                9/10    8/11  
-                                                                 1/1     3/4  
-                                                                         7/9  
-                                                                         4/5  
-                                                                        9/11  
-                                                                         5/6  
-                                                                         6/7  
-                                                                         7/8  
-                                                                         8/9  
-                                                                        9/10  
-                                                                       10/11  
-                                                                         1/1  
+     1      2      3      4      5      6      7      8      9     10      11
+ ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯  ¯¯¯¯¯   ¯¯¯¯¯
+  0/1    0/1    0/1    0/1    0/1    0/1    0/1    0/1    0/1    0/1     0/1
+  1/1    1/2    1/3    1/4    1/5    1/6    1/7    1/8    1/9   1/10    1/11
+         1/1    1/2    1/3    1/4    1/5    1/6    1/7    1/8    1/9    1/10
+                2/3    1/2    1/3    1/4    1/5    1/6    1/7    1/8     1/9
+                1/1    2/3    2/5    1/3    1/4    1/5    1/6    1/7     1/8
+                       3/4    1/2    2/5    2/7    1/4    1/5    1/6     1/7
+                       1/1    3/5    1/2    1/3    2/7    2/9    1/5     1/6
+                              2/3    3/5    2/5    1/3    1/4    2/9    2/11
+                              3/4    2/3    3/7    3/8    2/7    1/4     1/5
+                              4/5    3/4    1/2    2/5    1/3    2/7     2/9
+                              1/1    4/5    4/7    3/7    3/8   3/10     1/4
+                                     5/6    3/5    1/2    2/5    1/3    3/11
+                                     1/1    2/3    4/7    3/7    3/8     2/7
+                                            5/7    3/5    4/9    2/5    3/10
+                                            3/4    5/8    1/2    3/7     1/3
+                                            4/5    2/3    5/9    4/9    4/11
+                                            5/6    5/7    4/7    1/2     3/8
+                                            6/7    3/4    3/5    5/9     2/5
+                                            1/1    4/5    5/8    4/7     3/7
+                                                   5/6    2/3    3/5     4/9
+                                                   6/7    5/7    5/8    5/11
+                                                   7/8    3/4    2/3     1/2
+                                                   1/1    7/9   7/10    6/11
+                                                          4/5    5/7     5/9
+                                                          5/6    3/4     4/7
+                                                          6/7    7/9     3/5
+                                                          7/8    4/5     5/8
+                                                          8/9    5/6    7/11
+                                                          1/1    6/7     2/3
+                                                                 7/8    7/10
+                                                                 8/9     5/7
+                                                                9/10    8/11
+                                                                 1/1     3/4
+                                                                         7/9
+                                                                         4/5
+                                                                        9/11
+                                                                         5/6
+                                                                         6/7
+                                                                         7/8
+                                                                         8/9
+                                                                        9/10
+                                                                       10/11
+                                                                         1/1
 
       {⍵,'|',[1.5]≢∘farey¨⍵}100×⍳10    ⍝ Sequence lengths
  100 |   3045
@@ -210,8 +210,8 @@ Basically, given n this one generates and then sorts the set
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -371,13 +371,13 @@ F1000 has 304193 terms.
 ## Common Lisp
 
 
-{{improve|Common Lisp| 
+{{improve|Common Lisp|
 
- The output for the first and last term   (as per the task's requirement) 
-  
- is to show the first term as   <big>'''0/1'''</big>, 
-  
- and to show the last term as   <big>'''1/1'''</big>.   
+ The output for the first and last term   (as per the task's requirement)
+
+ is to show the first term as   <big>'''0/1'''</big>,
+
+ and to show the last term as   <big>'''1/1'''</big>.
 
  }}
 
@@ -406,17 +406,17 @@ The common lisp version of the code is taken from the scala version with some mo
 {{out}}
 
 ```txt
-1: 0 1 
-2: 0 1/2 1 
-3: 0 1/3 1/2 2/3 1 
-4: 0 1/4 1/3 1/2 2/3 3/4 1 
-5: 0 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 1 
-6: 0 1/6 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 5/6 1 
-7: 0 1/7 1/6 1/5 1/4 2/7 1/3 2/5 3/7 1/2 4/7 3/5 2/3 5/7 3/4 4/5 5/6 6/7 1 
-8: 0 1/8 1/7 1/6 1/5 1/4 2/7 1/3 3/8 2/5 3/7 1/2 4/7 3/5 5/8 2/3 5/7 3/4 4/5 5/6 6/7 7/8 1 
-9: 0 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 1 
-10: 0 1/10 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 3/10 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 7/10 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 9/10 1 
-11: 0 1/11 1/10 1/9 1/8 1/7 1/6 2/11 1/5 2/9 1/4 3/11 2/7 3/10 1/3 4/11 3/8 2/5 3/7 4/9 5/11 1/2 6/11 5/9 4/7 3/5 5/8 7/11 2/3 7/10 5/7 8/11 3/4 7/9 4/5 9/11 5/6 6/7 7/8 8/9 9/10 10/11 1 
+1: 0 1
+2: 0 1/2 1
+3: 0 1/3 1/2 2/3 1
+4: 0 1/4 1/3 1/2 2/3 3/4 1
+5: 0 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 1
+6: 0 1/6 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 5/6 1
+7: 0 1/7 1/6 1/5 1/4 2/7 1/3 2/5 3/7 1/2 4/7 3/5 2/3 5/7 3/4 4/5 5/6 6/7 1
+8: 0 1/8 1/7 1/6 1/5 1/4 2/7 1/3 3/8 2/5 3/7 1/2 4/7 3/5 5/8 2/3 5/7 3/4 4/5 5/6 6/7 7/8 1
+9: 0 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 1
+10: 0 1/10 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 3/10 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 7/10 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 9/10 1
+11: 0 1/11 1/10 1/9 1/8 1/7 1/6 2/11 1/5 2/9 1/4 3/11 2/7 3/10 1/3 4/11 3/8 2/5 3/7 4/9 5/11 1/2 6/11 5/9 4/7 3/5 5/8 7/11 2/3 7/10 5/7 8/11 3/4 7/9 4/5 9/11 5/6 6/7 7/8 8/9 9/10 10/11 1
 
 NIL
 
@@ -442,15 +442,15 @@ NIL
 
 
 
-{{incorrect|Crystal| 
+{{incorrect|Crystal|
 
- The output for the first and last term   (as per the task's requirement) 
-  
- is to show the first term as   <big>'''0/1'''</big>, 
-  
- and to show the last term as   <big>'''1/1'''</big>. 
-  
- Also, the first term is missing. 
+ The output for the first and last term   (as per the task's requirement)
+
+ is to show the first term as   <big>'''0/1'''</big>,
+
+ and to show the last term as   <big>'''1/1'''</big>.
+
+ Also, the first term is missing.
 
  }}
 
@@ -518,13 +518,13 @@ F(1000) = 304192
 
 
 
-{{improve|D| 
+{{improve|D|
 
- The output for the first and last term   (as per the task's requirement) 
-  
- is to show the first term as   <big>'''0/1'''</big>, 
-  
- and to show the last term as   <big>'''1/1'''</big>.   
+ The output for the first and last term   (as per the task's requirement)
+
+ is to show the first term as   <big>'''0/1'''</big>,
+
+ and to show the last term as   <big>'''1/1'''</big>.
 
  }}
 
@@ -666,13 +666,13 @@ void main() nothrow {
 
 
 
-{{improve|EchoLisp| 
+{{improve|EchoLisp|
 
- The output for the first and last term   (as per the task's requirement) 
-  
- is to show the first term as   <big>'''0/1'''</big>, 
-  
- and to show the last term as   <big>'''1/1'''</big>.   
+ The output for the first and last term   (as per the task's requirement)
+
+ is to show the first term as   <big>'''0/1'''</big>,
+
+ and to show the last term as   <big>'''1/1'''</big>.
 
  }}
 
@@ -680,16 +680,16 @@ void main() nothrow {
 
 ```scheme
 
-(define distinct-divisors 
+(define distinct-divisors
 	(compose make-set prime-factors))
-	
+
 ;; euler totient :  Φ :  n / product(p_i) * product (p_i - 1)
 ;; # of divisors <= n
 
 (define (Φ n)
 	(let ((pdiv (distinct-divisors n)))
 	(/ (* n  (for/product ((p pdiv)) (1- p))) (for/product ((p pdiv)) p))))
-	
+
 ;; farey-sequence length |Fn|  = 1 + sigma (m=1..) Φ(m)
 
 (define ( F-length n) (1+ (for/sum ((m (1+ n))) (Φ m))))
@@ -754,25 +754,25 @@ IN: rosetta-code.farey-sequence
 :: p/q ( n a/b c/d -- p/q )
     a/b c/d [ >fraction ] bi@ :> ( a b c d )
     n b + d / >integer [ c * a - ] [ d * b - ] bi / ;
-    
+
 : print-farey ( order -- )
     [ "F(%-2d): " printf ] [ 0 1 pick / ] bi "0/1 " write
     [ dup 1 = ] [ dup pprint bl 3dup p/q [ nip ] dip ] until
     3drop "1/1" print ;
-    
+
 : φ ( n -- m ) ! Euler's totient function
     [ factors members [ 1 swap recip - ] map-product ] [ * ] bi ;
-    
+
 : farey-length ( order -- length )
    dup 1 = [ drop 2 ]
    [ [ 1 - farey-length ] [ φ ] bi + ] if ;
-   
+
 : part1 ( -- ) 11 [1,b] [ print-farey ] each nl ;
 
 : part2 ( -- )
     100 1,000 100 <range>
     [ dup farey-length "F(%-4d): %-6d members.\n" printf ] each ;
-    
+
 : main ( -- ) [ part1 part2 nl ] time ;
 
 MAIN: main
@@ -883,17 +883,17 @@ End
 {{out}}
 
 ```txt
-F1 = 0/1 1/1 
-F2 = 0/1 1/2 1/1 
-F3 = 0/1 1/3 1/2 2/3 1/1 
-F4 = 0/1 1/4 1/3 1/2 2/3 3/4 1/1 
-F5 = 0/1 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 1/1 
-F6 = 0/1 1/6 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 5/6 1/1 
-F7 = 0/1 1/7 1/6 1/5 1/4 2/7 1/3 2/5 3/7 1/2 4/7 3/5 2/3 5/7 3/4 4/5 5/6 6/7 1/1 
-F8 = 0/1 1/8 1/7 1/6 1/5 1/4 2/7 1/3 3/8 2/5 3/7 1/2 4/7 3/5 5/8 2/3 5/7 3/4 4/5 5/6 6/7 7/8 1/1 
-F9 = 0/1 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 1/1 
-F10 = 0/1 1/10 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 3/10 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 7/10 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 9/10 1/1 
-F11 = 0/1 1/11 1/10 1/9 1/8 1/7 1/6 2/11 1/5 2/9 1/4 3/11 2/7 3/10 1/3 4/11 3/8 2/5 3/7 4/9 5/11 1/2 6/11 5/9 4/7 3/5 5/8 7/11 2/3 7/10 5/7 8/11 3/4 7/9 4/5 9/11 5/6 6/7 7/8 8/9 9/10 10/11 1/1 
+F1 = 0/1 1/1
+F2 = 0/1 1/2 1/1
+F3 = 0/1 1/3 1/2 2/3 1/1
+F4 = 0/1 1/4 1/3 1/2 2/3 3/4 1/1
+F5 = 0/1 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 1/1
+F6 = 0/1 1/6 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 5/6 1/1
+F7 = 0/1 1/7 1/6 1/5 1/4 2/7 1/3 2/5 3/7 1/2 4/7 3/5 2/3 5/7 3/4 4/5 5/6 6/7 1/1
+F8 = 0/1 1/8 1/7 1/6 1/5 1/4 2/7 1/3 3/8 2/5 3/7 1/2 4/7 3/5 5/8 2/3 5/7 3/4 4/5 5/6 6/7 7/8 1/1
+F9 = 0/1 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 1/1
+F10 = 0/1 1/10 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 3/10 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 7/10 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 9/10 1/1
+F11 = 0/1 1/11 1/10 1/9 1/8 1/7 1/6 2/11 1/5 2/9 1/4 3/11 2/7 3/10 1/3 4/11 3/8 2/5 3/7 4/9 5/11 1/2 6/11 5/9 4/7 3/5 5/8 7/11 2/3 7/10 5/7 8/11 3/4 7/9 4/5 9/11 5/6 6/7 7/8 8/9 9/10 10/11 1/1
 
 F100  =   3045
 F200  =  12233
@@ -918,7 +918,7 @@ def farey( n ) =
   res = seq()
   a, b, c, d = 0, 1, 1, n
   res += "$a/$b"
-  
+
   while c <= n
     k = (n + b)\d
     a, b, c, d = c, d, k*c - a, k*d - b
@@ -1146,15 +1146,15 @@ Sequence Lengths
 
 
 
-{{improve|J| 
+{{improve|J|
 
- The output for the first and last term   (as per the task's requirement) 
-  
- is to show the first term as   <big>'''0/1'''</big>, 
-  
- and to show the last term as   <big>'''1/1'''</big>.  
-  
- Also, please ''translate'' the    '''r'''   character to a solidus if possible. 
+ The output for the first and last term   (as per the task's requirement)
+
+ is to show the first term as   <big>'''0/1'''</big>,
+
+ and to show the last term as   <big>'''1/1'''</big>.
+
+ Also, please ''translate'' the    '''r'''   character to a solidus if possible.
 
  }}
 
@@ -1214,7 +1214,7 @@ Required examples:
 
 
 
-###  Optimized 
+###  Optimized
 
 
 A small change in the 'Farey' function makes the last request, faster.
@@ -1298,7 +1298,7 @@ public class Farey{
 	private static class Frac implements Comparable<Frac>{
 		int num;
 		int den;
-		
+
 		public Frac(int num, int den){
 			this.num = num;
 			this.den = den;
@@ -1314,7 +1314,7 @@ public class Farey{
 			return Double.compare((double)num / den, (double)o.num / o.den);
 		}
 	}
-	
+
 	public static TreeSet<Frac> genFarey(int i){
 		TreeSet<Frac> farey = new TreeSet<Frac>();
 		for(int den = 1; den <= i; den++){
@@ -1324,12 +1324,12 @@ public class Farey{
 		}
 		return farey;
 	}
-	
+
 	public static void main(String[] args){
 		for(int i = 1; i <= 11; i++){
 			System.out.println("F" + i + ": " + genFarey(i));
 		}
-		
+
 		for(int i = 100; i <= 1000; i += 100){
 			System.out.println("F" + i + ": " + genFarey(i).size() + " members");
 		}
@@ -1397,17 +1397,17 @@ end
 {{out}}
 
 ```txt
-F_1: 0/1 1/1 
-F_2: 0/1 1/2 1/1 
-F_3: 0/1 1/2 1/3 2/3 1/1 
-F_4: 0/1 1/2 1/3 2/3 1/4 3/4 1/1 
-F_5: 0/1 1/2 1/3 2/3 1/4 3/4 1/5 2/5 3/5 4/5 1/1 
-F_6: 0/1 1/2 1/3 2/3 1/4 3/4 1/5 2/5 3/5 4/5 1/6 5/6 1/1 
-F_7: 0/1 1/2 1/3 2/3 1/4 3/4 1/5 2/5 3/5 4/5 1/6 5/6 1/7 2/7 3/7 4/7 5/7 6/7 1/1 
-F_8: 0/1 1/2 1/3 2/3 1/4 3/4 1/5 2/5 3/5 4/5 1/6 5/6 1/7 2/7 3/7 4/7 5/7 6/7 1/8 3/8 5/8 7/8 1/1 
-F_9: 0/1 1/2 1/3 2/3 1/4 3/4 1/5 2/5 3/5 4/5 1/6 5/6 1/7 2/7 3/7 4/7 5/7 6/7 1/8 3/8 5/8 7/8 1/9 2/9 4/9 5/9 7/9 8/9 1/1 
-F_10: 0/1 1/2 1/3 2/3 1/4 3/4 1/5 2/5 3/5 4/5 1/6 5/6 1/7 2/7 3/7 4/7 5/7 6/7 1/8 3/8 5/8 7/8 1/9 2/9 4/9 5/9 7/9 8/9 1/10 3/10 7/10 9/10 1/1 
-F_11: 0/1 1/2 1/3 2/3 1/4 3/4 1/5 2/5 3/5 4/5 1/6 5/6 1/7 2/7 3/7 4/7 5/7 6/7 1/8 3/8 5/8 7/8 1/9 2/9 4/9 5/9 7/9 8/9 1/10 3/10 7/10 9/10 1/11 2/11 3/11 4/11 5/11 6/11 7/11 8/11 9/11 10/11 1/1 
+F_1: 0/1 1/1
+F_2: 0/1 1/2 1/1
+F_3: 0/1 1/2 1/3 2/3 1/1
+F_4: 0/1 1/2 1/3 2/3 1/4 3/4 1/1
+F_5: 0/1 1/2 1/3 2/3 1/4 3/4 1/5 2/5 3/5 4/5 1/1
+F_6: 0/1 1/2 1/3 2/3 1/4 3/4 1/5 2/5 3/5 4/5 1/6 5/6 1/1
+F_7: 0/1 1/2 1/3 2/3 1/4 3/4 1/5 2/5 3/5 4/5 1/6 5/6 1/7 2/7 3/7 4/7 5/7 6/7 1/1
+F_8: 0/1 1/2 1/3 2/3 1/4 3/4 1/5 2/5 3/5 4/5 1/6 5/6 1/7 2/7 3/7 4/7 5/7 6/7 1/8 3/8 5/8 7/8 1/1
+F_9: 0/1 1/2 1/3 2/3 1/4 3/4 1/5 2/5 3/5 4/5 1/6 5/6 1/7 2/7 3/7 4/7 5/7 6/7 1/8 3/8 5/8 7/8 1/9 2/9 4/9 5/9 7/9 8/9 1/1
+F_10: 0/1 1/2 1/3 2/3 1/4 3/4 1/5 2/5 3/5 4/5 1/6 5/6 1/7 2/7 3/7 4/7 5/7 6/7 1/8 3/8 5/8 7/8 1/9 2/9 4/9 5/9 7/9 8/9 1/10 3/10 7/10 9/10 1/1
+F_11: 0/1 1/2 1/3 2/3 1/4 3/4 1/5 2/5 3/5 4/5 1/6 5/6 1/7 2/7 3/7 4/7 5/7 6/7 1/8 3/8 5/8 7/8 1/9 2/9 4/9 5/9 7/9 8/9 1/10 3/10 7/10 9/10 1/11 2/11 3/11 4/11 5/11 6/11 7/11 8/11 9/11 10/11 1/1
 F_100 has 3045 fractions
 F_200 has 12233 fractions
 F_300 has 27399 fractions
@@ -1607,13 +1607,13 @@ end do;
 
 
 
-{{improve|Mathematica| 
+{{improve|Mathematica|
 
- The output for the first and last term   (as per the task's requirement) 
-  
- is to show the first term as   <big>'''0/1'''</big>, 
-  
- and to show the last term as   <big>'''1/1'''</big>.   
+ The output for the first and last term   (as per the task's requirement)
+
+ is to show the first term as   <big>'''0/1'''</big>,
+
+ and to show the last term as   <big>'''1/1'''</big>.
 
  }}
 
@@ -1628,13 +1628,13 @@ Table[Length[FareySequence[n]], {n, 100, 1000, 100}]
 {{out}}
 
 ```txt
-{{0, 1}, {0, 1/2, 1}, {0, 1/3, 1/2, 2/3, 1}, {0, 1/4, 1/3, 1/2, 2/3, 3/4, 1}, 
-   {0, 1/5, 1/4, 1/3, 2/5, 1/2, 3/5, 2/3, 3/4, 4/5, 1}, 
-   {0, 1/6, 1/5, 1/4, 1/3, 2/5, 1/2, 3/5, 2/3, 3/4, 4/5, 5/6, 1}, 
-   {0, 1/7, 1/6, 1/5, 1/4, 2/7, 1/3, 2/5, 3/7, 1/2, 4/7, 3/5, 2/3, 5/7, 3/4, 4/5, 5/6, 6/7, 1}, 
-   {0, 1/8, 1/7, 1/6, 1/5, 1/4, 2/7, 1/3, 3/8, 2/5, 3/7, 1/2, 4/7, 3/5, 5/8, 2/3, 5/7, 3/4, 4/5, 5/6, 6/7, 7/8, 1}, 
-   {0, 1/9,1/8, 1/7, 1/6, 1/5, 2/9, 1/4, 2/7, 1/3, 3/8, 2/5, 3/7, 4/9, 1/2, 5/9, 4/7, 3/5, 5/8, 2/3, 5/7, 3/4, 7/9, 4/5, 5/6, 6/7, 7/8, 8/9, 1}, 
-  {0, 1/10, 1/9, 1/8, 1/7, 1/6, 1/5, 2/9, 1/4, 2/7, 3/10, 1/3, 3/8, 2/5, 3/7, 4/9, 1/2, 5/9, 4/7, 3/5, 5/8, 2/3, 7/10, 5/7, 3/4, 7/9, 4/5, 5/6, 6/7, 7/8, 8/9, 9/10, 1}, 
+{{0, 1}, {0, 1/2, 1}, {0, 1/3, 1/2, 2/3, 1}, {0, 1/4, 1/3, 1/2, 2/3, 3/4, 1},
+   {0, 1/5, 1/4, 1/3, 2/5, 1/2, 3/5, 2/3, 3/4, 4/5, 1},
+   {0, 1/6, 1/5, 1/4, 1/3, 2/5, 1/2, 3/5, 2/3, 3/4, 4/5, 5/6, 1},
+   {0, 1/7, 1/6, 1/5, 1/4, 2/7, 1/3, 2/5, 3/7, 1/2, 4/7, 3/5, 2/3, 5/7, 3/4, 4/5, 5/6, 6/7, 1},
+   {0, 1/8, 1/7, 1/6, 1/5, 1/4, 2/7, 1/3, 3/8, 2/5, 3/7, 1/2, 4/7, 3/5, 5/8, 2/3, 5/7, 3/4, 4/5, 5/6, 6/7, 7/8, 1},
+   {0, 1/9,1/8, 1/7, 1/6, 1/5, 2/9, 1/4, 2/7, 1/3, 3/8, 2/5, 3/7, 4/9, 1/2, 5/9, 4/7, 3/5, 5/8, 2/3, 5/7, 3/4, 7/9, 4/5, 5/6, 6/7, 7/8, 8/9, 1},
+  {0, 1/10, 1/9, 1/8, 1/7, 1/6, 1/5, 2/9, 1/4, 2/7, 3/10, 1/3, 3/8, 2/5, 3/7, 4/9, 1/2, 5/9, 4/7, 3/5, 5/8, 2/3, 7/10, 5/7, 3/4, 7/9, 4/5, 5/6, 6/7, 7/8, 8/9, 9/10, 1},
   {0, 1/11, 1/10, 1/9, 1/8, 1/7, 1/6, 2/11, 1/5, 2/9, 1/4, 3/11, 2/7, 3/10, 1/3, 4/11, 3/8, 2/5, 3/7, 4/9, 5/11, 1/2, 6/11, 5/9, 4/7, 3/5, 5/8, 7/11, 2/3, 7/10, 5/7, 8/11, 3/4, 7/9, 4/5, 9/11, 5/6, 6/7, 7/8, 8/9, 9/10, 10/11,1}}
 
 
@@ -1686,7 +1686,7 @@ proc fareyLength(n: int, cache: var seq[int]): int =
 for n in 1..11:
   write(stdout, fmt"{n:>8}: ")
   farey(n)
-  
+
 var cache: seq[int] = @[]
 for n in countup(100, 1000, step=100):
   echo fmt"{n:>8}: {fareyLength(n, cache):14} items"
@@ -1759,21 +1759,21 @@ apply(countFarey, 100*[1..10])
 ## Pascal
 
 
-{{incorrect|Pascal| 
+{{incorrect|Pascal|
 
- Some of the output is missing  (as per the task's requirements. 
-                    
+ Some of the output is missing  (as per the task's requirements.
+
 
  Compute and show the Farey sequence for orders   1   through   11   (inclusive).
-                        
- Compute and display the   number   of fractions in the Farey sequence for 
-                             order   100   through   1,000   (inclusive)   by hundreds. 
+
+ Compute and display the   number   of fractions in the Farey sequence for
+                             order   100   through   1,000   (inclusive)   by hundreds.
 
  }}
 
 
 Using a function, to get next in Farey sequence. calculated as stated in wikipedia article, see Lua [[http://rosettacode.org/wiki/Farey_sequence#Lua]].
-So there is no need to store them in a big array.. 
+So there is no need to store them in a big array..
 
 ```pascal
 program Farey;
@@ -1781,11 +1781,11 @@ program Farey;
 uses
    sysutils;
 type
-   tNextFarey= record 
+   tNextFarey= record
                  nom,dom,n,c,d: longInt;
-               end;  
-               
-function  InitFarey(maxdom:longINt):tNextFarey;               
+               end;
+
+function  InitFarey(maxdom:longINt):tNextFarey;
 Begin
   with result do
   Begin
@@ -1797,11 +1797,11 @@ end;
 function NextFarey(var fn:tNextFarey):boolean;
 var
   k,tmp: longInt;
-Begin      
+Begin
   with fn do
   Begin
     k := trunc((n + dom)/d);
-    tmp := c;c:= k*c-nom;nom:= tmp; 
+    tmp := c;c:= k*c-nom;nom:= tmp;
     tmp := d;d:= k*d-dom;dom:= tmp;
     result := nom <> dom;
   end;
@@ -1812,12 +1812,12 @@ var
   cnt: NativeInt;
 Begin
   TestF:= InitFarey(10);
-  cnt := 1;// out of InitFarey 
+  cnt := 1;// out of InitFarey
   repeat
     write(TestF.nom,'/',TestF.dom,',');
     inc(cnt);
   until NOT(NextFarey(TestF));
-  writeln(TestF.nom,'/',TestF.dom);  
+  writeln(TestF.nom,'/',TestF.dom);
   writeln(cnt);
 
   TestF:= InitFarey(10000);
@@ -1846,7 +1846,7 @@ real    0m0.331s
 
 
 
-###  Recurrence 
+###  Recurrence
 
 This uses the recurrence from Concrete Mathematics exercise 4.61 to create them quickly (this is also on the Wikipedia page).  It also uses the totient sum to quickly get the counts.
 {{libheader|ntheory}}
@@ -1914,7 +1914,7 @@ F10000000: 30396356427243 members
 
 
 
-###  Mapped Rationals 
+###  Mapped Rationals
 
 Similar to Pari and Perl6.  Same output, quite slow.  Using the recursive formula for the count, utilizing the Memoize module, would be a big help.
 
@@ -1971,7 +1971,7 @@ say "Farey sequence order ";
 {{out}}
 
 ```txt
-Farey sequence order 
+Farey sequence order
 1: 0/1 1/1
 2: 0/1 1/2 1/1
 3: 0/1 1/3 1/2 2/3 1/1
@@ -2057,7 +2057,7 @@ Farey sequence fractions, 100 to 1000 by hundreds:
 
 ## Prolog
 
-The following uses SWI-Prolog's rationals (rdiv(p,q)) and assumes the availability of predsort/3.  
+The following uses SWI-Prolog's rationals (rdiv(p,q)) and assumes the availability of predsort/3.
 The presentation is top-down.
 
 ```Prolog
@@ -2151,35 +2151,35 @@ Procedure farey(order)
   Define quotient.d,
          divisor.i,
          dividend.i
-  
+
   For divisor=1 To order
     For dividend=0 To divisor
       quotient.d=dividend/divisor
       AddElement(sequence())
       sequence()\complex\x=dividend
       sequence()\complex\y=divisor
-      sequence()\quotient=quotient      
+      sequence()\quotient=quotient
     Next
   Next
-  
+
   SortStructuredList(sequence(),#PB_Sort_Ascending,
                      OffsetOf(farey_struc\quotient),
                      TypeOf(farey_struc\quotient))
-  
+
   FirstElement(sequence())
-  quotient=sequence()\quotient  
+  quotient=sequence()\quotient
   AddElement(fareylist())
   fareylist()\complex\x=sequence()\complex\x
   fareylist()\complex\y=sequence()\complex\y
   fareylist()\quotient=sequence()\quotient
-  
+
   ForEach sequence()
     If quotient=sequence()\quotient : Continue : EndIf
-    quotient=sequence()\quotient  
+    quotient=sequence()\quotient
     AddElement(fareylist())
     fareylist()\complex\x=sequence()\complex\x
     fareylist()\complex\y=sequence()\complex\y
-    fareylist()\quotient=sequence()\quotient    
+    fareylist()\quotient=sequence()\quotient
   Next
   FreeList(sequence())
 EndProcedure
@@ -2399,10 +2399,10 @@ def farey(n, length=False):
     else:
         #return 1         +    len({Fr(m, k) for k in range(1, n+1) for m in range(1, k+1)})
         return  (n*(n+3))//2 - sum(farey(n//k, True) for k in range(2, n+1))
-        
+
 if __name__ == '__main__':
     print('Farey sequence for order 1 through 11 (inclusive):')
-    for n in range(1, 12): 
+    for n in range(1, 12):
         print(farey(n))
     print('Number of fractions in the Farey sequence for order 100 through 1,000 (inclusive) by hundreds:')
     print([farey(i, length=True) for i in range(100, 1001, 100)])
@@ -2691,7 +2691,7 @@ Once again, racket's ''math/number-theory'' package comes to the rescue!
 ;  1   through   11   (inclusive).
 (for ((order (in-range 1 (add1 11)))) (display-farey-sequence order #t))
 ; compute and display the number of fractions in the Farey sequence for order:
-;  100   through   1,000   (inclusive)   by hundreds. 
+;  100   through   1,000   (inclusive)   by hundreds.
 (for ((order (in-range 100 (add1 1000) 100))) (display-farey-sequence order #f))
 ```
 
@@ -2833,13 +2833,13 @@ fareyF: procedure; parse arg x;  n.1=0;  d.1=1;  n.2=1;  d.2=x         /*some ki
 # Project : Farey sequence
 
 for i = 1 to 11
-     count = 0 
-     see "F" + string(i) + " = " 
+     count = 0
+     see "F" + string(i) + " = "
      farey(i, false)
 next
 see nl
 for x = 100 to 1000 step 100
-      count = 0 
+      count = 0
       see "F" + string(x) + " = "
       see farey(x, false)
       see nl
@@ -2849,14 +2849,14 @@ func farey(n, descending)
         a = 0
         b = 1
         c = 1
-        d = n 
+        d = n
         if descending = true
            a = 1
            c = n -1
-        ok 
+        ok
         count = count + 1
         if n < 12
-           see string(a) + "/" + string(b) + " " 
+           see string(a) + "/" + string(b) + " "
         ok
         while ((c <= n) and not descending) or ((a > 0) and descending)
                   aa = a
@@ -2864,15 +2864,15 @@ func farey(n, descending)
                   cc = c
                   dd = d
                   k = floor((n + b) / d)
-                  a = cc 
+                  a = cc
                   b = dd
-                  c = k * cc - aa 
+                  c = k * cc - aa
                   d = k * dd - bb
                   count = count + 1
                   if n < 12
                      see string(a) + "/" + string(b) + " "
                   ok
-        end 
+        end
         if n < 12
            see nl
         ok
@@ -2884,17 +2884,17 @@ Output:
 
 ```txt
 
-F1 = 0/1 1/1 
-F2 = 0/1 1/2 1/1 
-F3 = 0/1 1/3 1/2 2/3 1/1 
-F4 = 0/1 1/4 1/3 1/2 2/3 3/4 1/1 
-F5 = 0/1 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 1/1 
-F6 = 0/1 1/6 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 5/6 1/1 
-F7 = 0/1 1/7 1/6 1/5 1/4 2/7 1/3 2/5 3/7 1/2 4/7 3/5 2/3 5/7 3/4 4/5 5/6 6/7 1/1 
-F8 = 0/1 1/8 1/7 1/6 1/5 1/4 2/7 1/3 3/8 2/5 3/7 1/2 4/7 3/5 5/8 2/3 5/7 3/4 4/5 5/6 6/7 7/8 1/1 
-F9 = 0/1 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 1/1 
-F10 = 0/1 1/10 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 3/10 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 7/10 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 9/10 1/1 
-F11 = 0/1 1/11 1/10 1/9 1/8 1/7 1/6 2/11 1/5 2/9 1/4 3/11 2/7 3/10 1/3 4/11 3/8 2/5 3/7 4/9 5/11 1/2 6/11 5/9 4/7 3/5 5/8 7/11 2/3 7/10 5/7 8/11 3/4 7/9 4/5 9/11 5/6 6/7 7/8 8/9 9/10 10/11 1/1 
+F1 = 0/1 1/1
+F2 = 0/1 1/2 1/1
+F3 = 0/1 1/3 1/2 2/3 1/1
+F4 = 0/1 1/4 1/3 1/2 2/3 3/4 1/1
+F5 = 0/1 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 1/1
+F6 = 0/1 1/6 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 5/6 1/1
+F7 = 0/1 1/7 1/6 1/5 1/4 2/7 1/3 2/5 3/7 1/2 4/7 3/5 2/3 5/7 3/4 4/5 5/6 6/7 1/1
+F8 = 0/1 1/8 1/7 1/6 1/5 1/4 2/7 1/3 3/8 2/5 3/7 1/2 4/7 3/5 5/8 2/3 5/7 3/4 4/5 5/6 6/7 7/8 1/1
+F9 = 0/1 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 1/1
+F10 = 0/1 1/10 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 3/10 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 7/10 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 9/10 1/1
+F11 = 0/1 1/11 1/10 1/9 1/8 1/7 1/6 2/11 1/5 2/9 1/4 3/11 2/7 3/10 1/3 4/11 3/8 2/5 3/7 4/9 5/11 1/2 6/11 5/9 4/7 3/5 5/8 7/11 2/3 7/10 5/7 8/11 3/4 7/9 4/5 9/11 5/6 6/7 7/8 8/9 9/10 10/11 1/1
 
 F100  =   3045
 F200  =  12233
@@ -3055,8 +3055,8 @@ object Farey {
              (set! c 1)
              (/ c d))
             ((= c d)    ; return #f when finished sequence
-             #f) 
-            (else       ; compute next term 
+             #f)
+            (else       ; compute next term
               (let* ((f (floor (/ (+ n b) d)))
                      (p (- (* f c) a))
                      (q (- (* f d) b)))
@@ -3076,11 +3076,11 @@ object Farey {
   (let ((gen (farey-generator n)))
     (do ((res (gen) (gen))
          (count 0 (+ 1 count)))
-      ((not res) (when display? (newline)) 
+      ((not res) (when display? (newline))
                  count)
       (when display? (display-rat res)))))
 
-;; 
+;;
 
 (display "Farey sequence for order 1 through 11 (inclusive):\n")
 (do ((i 1 (+ i 1)))
@@ -3091,7 +3091,7 @@ object Farey {
 (display "\nNumber of fractions in the Farey sequence:\n")
 (do ((i 100 (+ i 100)))
   ((> i 1000) )
-  (display 
+  (display
     (string-append "F(" (number->string i) ") = "
                    (number->string (farey-sequence i #f))))
   (newline))
@@ -3104,17 +3104,17 @@ object Farey {
 ```txt
 
 Farey sequence for order 1 through 11 (inclusive):
-F(1): 0/1 1/1 
-F(2): 0/1 1/2 1/1 
-F(3): 0/1 1/3 1/2 2/3 1/1 
-F(4): 0/1 1/4 1/3 1/2 2/3 3/4 1/1 
-F(5): 0/1 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 1/1 
-F(6): 0/1 1/6 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 5/6 1/1 
-F(7): 0/1 1/7 1/6 1/5 1/4 2/7 1/3 2/5 3/7 1/2 4/7 3/5 2/3 5/7 3/4 4/5 5/6 6/7 1/1 
-F(8): 0/1 1/8 1/7 1/6 1/5 1/4 2/7 1/3 3/8 2/5 3/7 1/2 4/7 3/5 5/8 2/3 5/7 3/4 4/5 5/6 6/7 7/8 1/1 
-F(9): 0/1 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 1/1 
-F(10): 0/1 1/10 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 3/10 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 7/10 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 9/10 1/1 
-F(11): 0/1 1/11 1/10 1/9 1/8 1/7 1/6 2/11 1/5 2/9 1/4 3/11 2/7 3/10 1/3 4/11 3/8 2/5 3/7 4/9 5/11 1/2 6/11 5/9 4/7 3/5 5/8 7/11 2/3 7/10 5/7 8/11 3/4 7/9 4/5 9/11 5/6 6/7 7/8 8/9 9/10 10/11 1/1 
+F(1): 0/1 1/1
+F(2): 0/1 1/2 1/1
+F(3): 0/1 1/3 1/2 2/3 1/1
+F(4): 0/1 1/4 1/3 1/2 2/3 3/4 1/1
+F(5): 0/1 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 1/1
+F(6): 0/1 1/6 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 5/6 1/1
+F(7): 0/1 1/7 1/6 1/5 1/4 2/7 1/3 2/5 3/7 1/2 4/7 3/5 2/3 5/7 3/4 4/5 5/6 6/7 1/1
+F(8): 0/1 1/8 1/7 1/6 1/5 1/4 2/7 1/3 3/8 2/5 3/7 1/2 4/7 3/5 5/8 2/3 5/7 3/4 4/5 5/6 6/7 7/8 1/1
+F(9): 0/1 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 1/1
+F(10): 0/1 1/10 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 3/10 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 7/10 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 9/10 1/1
+F(11): 0/1 1/11 1/10 1/9 1/8 1/7 1/6 2/11 1/5 2/9 1/4 3/11 2/7 3/10 1/3 4/11 3/8 2/5 3/7 4/9 5/11 1/2 6/11 5/9 4/7 3/5 5/8 7/11 2/3 7/10 5/7 8/11 3/4 7/9 4/5 9/11 5/6 6/7 7/8 8/9 9/10 10/11 1/1
 
 Number of fractions in the Farey sequence:
 F(100) = 3045
@@ -3287,16 +3287,16 @@ end
 
 
 ```txt
-0/1 1/1 
-0/1 1/2 1/1 
-0/1 1/3 1/2 2/3 1/1 
-0/1 1/4 1/3 1/2 2/3 3/4 1/1 
-0/1 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 1/1 
-0/1 1/6 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 5/6 1/1 
-0/1 1/7 1/6 1/5 1/4 2/7 1/3 2/5 3/7 1/2 4/7 3/5 2/3 5/7 3/4 4/5 5/6 6/7 1/1 
-0/1 1/8 1/7 1/6 1/5 1/4 2/7 1/3 3/8 2/5 3/7 1/2 4/7 3/5 5/8 2/3 5/7 3/4 4/5 5/6 6/7 7/8 1/1 
-0/1 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 1/1 
-0/1 1/10 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 3/10 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 7/10 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 9/10 1/1 
+0/1 1/1
+0/1 1/2 1/1
+0/1 1/3 1/2 2/3 1/1
+0/1 1/4 1/3 1/2 2/3 3/4 1/1
+0/1 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 1/1
+0/1 1/6 1/5 1/4 1/3 2/5 1/2 3/5 2/3 3/4 4/5 5/6 1/1
+0/1 1/7 1/6 1/5 1/4 2/7 1/3 2/5 3/7 1/2 4/7 3/5 2/3 5/7 3/4 4/5 5/6 6/7 1/1
+0/1 1/8 1/7 1/6 1/5 1/4 2/7 1/3 3/8 2/5 3/7 1/2 4/7 3/5 5/8 2/3 5/7 3/4 4/5 5/6 6/7 7/8 1/1
+0/1 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 1/1
+0/1 1/10 1/9 1/8 1/7 1/6 1/5 2/9 1/4 2/7 3/10 1/3 3/8 2/5 3/7 4/9 1/2 5/9 4/7 3/5 5/8 2/3 7/10 5/7 3/4 7/9 4/5 5/6 6/7 7/8 8/9 9/10 1/1
 0/1 1/11 1/10 1/9 1/8 1/7 1/6 2/11 1/5 2/9 1/4 3/11 2/7 3/10 1/3 4/11 3/8 2/5 3/7 4/9 5/11 1/2 6/11 5/9 4/7 3/5 5/8 7/11 2/3 7/10 5/7 8/11 3/4 7/9 4/5 9/11 5/6 6/7 7/8 8/9 9/10 10/11 1/1
 
             1        2        3        4        5        6        7        8        9       10
@@ -3507,7 +3507,7 @@ foreach n in ([1..11]){ print("%2d: ".fmt(n)); farey(n); }
 fcn farey_len(n){
    var cache=Dictionary();	// 107 keys to 1,000; 6323@10,000,000
    if(z:=cache.find(n)) return(z);
- 
+
    len,p,q := n*(n + 3)/2, 2,0;
    while(p<=n){
       q=n/(n/p) + 1;
@@ -3520,7 +3520,7 @@ fcn farey_len(n){
 
 
 ```zkl
-foreach n in ([100..1000,100]){ 
+foreach n in ([100..1000,100]){
    println("%4d: %7,d items".fmt(n,farey_len(n)));
 }
 n:=0d10_000_000;

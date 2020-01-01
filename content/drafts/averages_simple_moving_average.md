@@ -20,7 +20,7 @@ Create a [[wp:Stateful|stateful]] function/class/instance that takes a period an
 
 {{task heading|Description}}
 
-A simple moving average is a method for computing an average of a stream of numbers by only averaging the last   P   numbers from the stream,   where   P   is known as the period. 
+A simple moving average is a method for computing an average of a stream of numbers by only averaging the last   P   numbers from the stream,   where   P   is known as the period.
 
 It can be implemented by calling an initialing routine with   P   as its argument,   I(P),   which should then return a routine that when called with individual, successive members of a stream of numbers, computes the mean of (up to), the last   P   of them, lets call this   SMA().
 
@@ -47,7 +47,7 @@ function SMA(number: N):
         stream.delete_first()
     if stream.length() == 0:
         average = 0
-    else:    
+    else:
         average = sum( stream.values() ) / stream.length()
     return average
 
@@ -348,7 +348,7 @@ Inserting 1 into max-5:  3.00000E+00
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}} 
+{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 
 <!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8.8d.fc9.i386]}} -->
 Note: This following code is a direct translation of the [[Average/Simple_moving_average#C|C]] code sample.  It mimics C's var_list implementation, and so it probably isn't the most natural way of dong this actual task in '''ALGOL 68'''.
@@ -361,13 +361,13 @@ MODE SMAOBJ  = STRUCT(
   REF[]LONG REAL values,
   INT lv
 );
- 
+
 MODE SMARESULT = UNION (
   REF SMAOBJ # handle #,
   LONG REAL # sma #,
   REF[]LONG REAL # values #
 );
- 
+
 MODE SMANEW = INT,
      SMAFREE = STRUCT(REF SMAOBJ free obj),
      SMAVALUES = STRUCT(REF SMAOBJ values obj),
@@ -425,19 +425,19 @@ PROC sma = ([]ACTION action)SMARESULT:
 );
 
 []LONG REAL v = ( 1, 2, 3, 4, 5, 5, 4, 3, 2, 1 );
- 
+
 main: (
   INT i;
- 
+
   REF SMAOBJ h3 := ( sma(SMANEW(3)) | (REF SMAOBJ obj):obj );
   REF SMAOBJ h5 := ( sma(SMANEW(5)) | (REF SMAOBJ obj):obj );
- 
+
   FOR i FROM LWB v TO UPB v DO
     printf(($"next number "g(0,6)", SMA_3 = "g(0,6)", SMA_5 = "g(0,6)l$,
            v[i], (sma(SMAADD(h3, v[i]))|(LONG REAL r):r), ( sma(SMAADD(h5, v[i])) | (LONG REAL r):r )
     ))
   OD#;
- 
+
   sma(SMAFREE(h3));
   sma(SMAFREE(h5))
 #
@@ -512,17 +512,17 @@ MovingAverage(x,len="") {    ; for floating point numbers
 
 ```awk
 #!/usr/bin/awk -f
-# Moving average over the first column of a data file 
+# Moving average over the first column of a data file
 BEGIN {
-    P = 5; 
+    P = 5;
 }
 
-{ 
-    x = $1;	
-    i = NR % P; 
-    MA += (x - Z[i]) / P; 
-    Z[i] = x; 
-    print MA;	
+{
+    x = $1;
+    i = NR % P;
+    MA += (x - Z[i]) / P;
+    Z[i] = x;
+    print MA;
 }
 ```
 
@@ -541,7 +541,7 @@ BEGIN {
         PRINT "Number = ";n TAB(12) " SMA3 = ";FNsma(n,3) TAB(30) " SMA5 = ";FNsma(n,5)
       NEXT
       END
-      
+
       DEF FNsma(number, period%)
       PRIVATE nums(), accum(), index%(), window%()
       DIM nums(MAXPERIOD,MAXPERIOD), accum(MAXPERIOD)
@@ -707,8 +707,8 @@ sma5 = sma 5
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 
@@ -974,7 +974,7 @@ namespace SMA {
 
 ## Clojure
 
-This version uses a persistent queue to hold the most recent ''p'' values. 
+This version uses a persistent queue to hold the most recent ''p'' values.
 Each function returned from ''init-moving-average'' has its state in an atom holding a queue value.
 
 ```clojure
@@ -1007,7 +1007,7 @@ I = (P) ->
   cq = circular_queue(P)
   num_elems = 0
   sum = 0
-  
+
   SMA = (n) ->
     sum += n
     if num_elems < P
@@ -1018,14 +1018,14 @@ I = (P) ->
       old = cq.replace(n)
       sum -= old
       sum / P
- 
+
 circular_queue = (n) ->
   # queue that only ever stores up to n values;
   # Caller shouldn't call replace until n values
   # have been added.
   i = 0
   arr = []
-  
+
   add: (elem) ->
     arr.push elem
   replace: (elem) ->
@@ -1037,7 +1037,7 @@ circular_queue = (n) ->
 
 # The output of the code below should convince you that
 # calling I multiple times returns functions with independent
-# state. 
+# state.
 sma3 = I(3)
 sma7 = I(7)
 sma11 = I(11)
@@ -1050,7 +1050,7 @@ for i in [1..10]
 
 ```txt
 
-> coffee moving_average.coffee 
+> coffee moving_average.coffee
 1 1 1 1
 2 1.5 1.5 1.5
 3 2 2 2
@@ -1140,8 +1140,8 @@ Added 1, sma(3) = 2.000000, sma(5) = 3.000000
 
 ### Using a Struct
 
-This version avoids the heap allocation of the closure 
-keeping the data in the stack frame of the main function. 
+This version avoids the heap allocation of the closure
+keeping the data in the stack frame of the main function.
 Same output:
 
 ```d
@@ -1215,8 +1215,8 @@ for n in nums {
 ## E
 
 
-This implementation produces two (function) objects sharing state. 
-It is idiomatic in E to separate input from output (read from write) 
+This implementation produces two (function) objects sharing state.
+It is idiomatic in E to separate input from output (read from write)
 rather than combining them into one object.
 
 The structure is the same as the implementation of [[Standard Deviation#E]].
@@ -1228,13 +1228,13 @@ def makeMovingAverage(period) {
     def values := ([null] * period).diverge()
     var index := 0
     var count := 0
-    
+
     def insert(v) {
         values[index] := v
         index := (index + 1) %% period
         count += 1
     }
-    
+
     /** Returns the simple moving average of the inputs so far, or null if there
         have been no inputs. */
     def average() {
@@ -1242,7 +1242,7 @@ def makeMovingAverage(period) {
             return accum 0 for x :notNull in values { _ + x } / count.min(period)
         }
     }
-    
+
     return [insert, average]
 }
 ```
@@ -1301,7 +1301,7 @@ Period 5:
 		(q-push Q item)
 		(when (> (queue-length Q) p) (q-pop Q))
 		(// (for/sum ((x (queue->list Q))) x)  (queue-length Q))))
-		
+
 
 ```
 
@@ -1343,13 +1343,13 @@ class SMA
 {
     object thePeriod;
     object theList;
-    
+
     constructor new(period)
     {
         thePeriod := period;
         theList :=new List();
     }
-    
+
     append(n)
     {
         theList.append(n);
@@ -1361,12 +1361,12 @@ class SMA
                 if (count > thePeriod)
                 {
                     theList.removeAt:0;
-                    
+
                     count := thePeriod
                 };
-        
+
                 var sum := theList.summarize(new Real());
-                
+
                 ^ sum / count
             }
     }
@@ -1386,7 +1386,7 @@ public program()
         console.printPaddingRight(30, "sma3 + ", i, " = ", SMA3.append:i);
         console.printLine("sma5 + ", i, " = ", SMA5.append:i)
     };
-    
+
     console.readChar()
 }
 ```
@@ -1724,18 +1724,18 @@ After 9 numbers Sequence is V{ 70 80 96 84 7 } Mean is 67+2/5
 
 ```fantom
 
-class MovingAverage 
+class MovingAverage
 {
   Int period
   Int[] stream
- 
+
   new make (Int period)
   {
     this.period = period
     stream = [,]
   }
 
-  // add number to end of stream and remove numbers from start if 
+  // add number to end of stream and remove numbers from start if
   // stream is larger than period
   public Void addNumber (Int number)
   {
@@ -1836,7 +1836,7 @@ program Movavg
   implicit none
 
   integer :: i
-	
+
   write (*, "(a)") "SIMPLE MOVING AVERAGE: PERIOD = 3"
 
   do i = 1, 5
@@ -1844,8 +1844,8 @@ program Movavg
   end do
   do i = 5, 1, -1
     write (*, "(a, i2, a, f8.6)") "Next number:", i, "   sma = ", sma(real(i))
-  end do 
- 
+  end do
+
 contains
 
 function sma(n)
@@ -1875,28 +1875,28 @@ end program Movavg
 ```freebasic
 ' FB 1.05.0 Win64
 
-Type FuncType As Function(As Double) As Double 
+Type FuncType As Function(As Double) As Double
 
 ' These 'shared' variables are available to all functions defined below
-Dim Shared p As UInteger 
+Dim Shared p As UInteger
 Dim Shared list() As Double
 
 Function sma(n As Double) As Double
-  Redim Preserve list(0 To UBound(list) + 1) 
-  list(UBound(list)) = n 
+  Redim Preserve list(0 To UBound(list) + 1)
+  list(UBound(list)) = n
   Dim start As Integer = 0
   Dim length As Integer = UBound(list) + 1
-  If length > p Then 
+  If length > p Then
     start = UBound(list) - p + 1
     length = p
-  End If 
-  Dim sum As Double = 0.0  
+  End If
+  Dim sum As Double = 0.0
   For i As Integer = start To UBound(list)
     sum += list(i)
   Next
   Return sum / length
 End Function
-  
+
 Function initSma(period As Uinteger) As FuncType
   p = period
   Erase list '' ensure the array is empty on each initialization
@@ -2075,7 +2075,7 @@ ma5 = simple_moving_average(5)
 {{out}}
 
 ```txt
-1.0 1.5 2.0 2.5 3.0 3.8 4.2 4.2 3.8 3.0 
+1.0 1.5 2.0 2.5 3.0 3.8 4.2 4.2 3.8 3.0
 ```
 
 
@@ -2133,7 +2133,7 @@ Next number = 1.0, SMA_3 = 2.0, SMA_5 = 3.0
 {{works with|GHC|6.10.4}}
 
 ```Haskell
-import Data.List 
+import Data.List
 import Control.Arrow
 import Control.Monad
 
@@ -2167,7 +2167,7 @@ computeSMA x = do
   let newAverage = if length values <= period then (sum values) / (fromIntegral $ length remainingValues :: Float)
                    else (sum remainingValues) / (fromIntegral $ length remainingValues :: Float)
                      where remainingValues = dropIf period values
-  put $ dropIf period values 
+  put $ dropIf period values
   return newAverage
 
 dropIf :: Int -> [a] -> [a]
@@ -2506,16 +2506,16 @@ Next number = 1, SMA_3 = 2, SMA_5 = 3
 // single-sided
 Array.prototype.simpleSMA=function(N) {
 return this.map(
-  function(el,index, _arr) { 
+  function(el,index, _arr) {
       return _arr.filter(
-      function(x2,i2) { 
+      function(x2,i2) {
         return i2 <= index && i2 > index - N;
         })
       .reduce(
-      function(current, last, index, arr){ 
-        return (current + last); 
+      function(current, last, index, arr){
+        return (current + last);
         })/index || 1;
-      }); 
+      });
 };
 
 g=[0,1,2,3,4,5,6,7,8,9,10];
@@ -2589,10 +2589,10 @@ Non-stateful:
   v:v,|v:1+!5
   v
 1 2 3 4 5 5 4 3 2 1
-  
+
   avg:{(+/x)%#x}
   sma:{avg'x@(,\!y),(1+!y)+\:!y}
-  
+
   sma[v;5]
 1 1.5 2 2.5 3 3.8 4.2 4.2 3.8 3
 
@@ -2604,7 +2604,7 @@ Stateful:
 ```K
 
   sma:{n::x#_n; {n::1_ n,x; {avg x@&~_n~'x} n}}
-  
+
   sma[5]' v
 1 1.5 2 2.5 3 3.8 4.2 4.2 3.8 3
 
@@ -2621,7 +2621,7 @@ Stateful:
 fun initMovingAverage(p: Int): (Double) -> Double {
     if (p < 1) throw IllegalArgumentException("Period must be a positive integer")
     val list = mutableListOf<Double>()
-    return { 
+    return {
         list.add(it)
         if (list.size > p) list.removeAt(0)
         list.average()
@@ -2633,7 +2633,7 @@ fun main(args: Array<String>) {
     val sma5 = initMovingAverage(5)
     val numbers = listOf(1.0, 2.0, 3.0, 4.0, 5.0, 5.0, 4.0, 3.0, 2.0, 1.0)
     println("num\tsma4\tsma5\n")
-    for (number in numbers) println("${number}\t${sma4(number)}\t${sma5(number)}")   
+    for (number in numbers) println("${number}\t${sma4(number)}\t${sma5(number)}")
 }
 ```
 
@@ -2705,7 +2705,7 @@ loop(10) => {^
 SMA 3 on array(1,2,3,4,5,5,4,3,2,1): 2.000000
 SMA 5 on array(1,2,3,4,5,5,4,3,2,1): 3.000000
 
-Further example: 
+Further example:
 1 numbers: array(91) SMA3 is: 91.000000, SMA5 is: 91.000000
 2 numbers: array(91, 30) SMA3 is: 60.500000, SMA5 is: 60.500000
 3 numbers: array(91, 30, 99) SMA3 is: 73.333333, SMA5 is: 73.333333
@@ -2798,8 +2798,8 @@ end function
 
 ```
 
- 
- 
+
+
 
 ## Logo
 
@@ -2892,9 +2892,9 @@ This version is stateful instead.
 
 ```Mathematica
 MAData = {{}, 0};
-MAS[x_, t_: Null] := 
- With[{r = If[t === Null, MAData[[2]], t]}, 
-  Mean[MAData[[1]] = 
+MAS[x_, t_: Null] :=
+ With[{r = If[t === Null, MAData[[2]], t]},
+  Mean[MAData[[1]] =
     If[Length[#] > (MAData[[2]] = r), #[[-r ;; -1]], #] &@
      Append[MAData[[1]], x]]]
 ```
@@ -2921,18 +2921,18 @@ MAS[1]     => 3
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 Matlab and Octave provide very efficient and fast functions, that can be applied to vectors (i.e. series of data samples)
 
 ```Matlab
- [m,z] = filter(ones(1,P),P,x); 
+ [m,z] = filter(ones(1,P),P,x);
 ```
 
 m is the moving average, z returns the state at the end of the data series, which can be used to continue the moving average.
 
 ```Matlab
- [m,z] = filter(ones(1,P),P,x,z); 
+ [m,z] = filter(ones(1,P),P,x,z);
 ```
 
 
@@ -3192,19 +3192,19 @@ class MovingAverage {
       @sum -= @window->Remove();
     };
   }
-  
+
   method : GetAvg() ~ Float {
     if(@window->IsEmpty()) {
       return 0; # technically the average is undefined
     };
-  
+
     return @sum / @window->Size();
   }
 
   function : Main(args : String[]) ~ Nil {
     testData := [1.0, 2.0, 3.0, 4.0, 5.0, 5.0, 4.0, 3.0, 2.0, 1.0];
     windowSizes := [3.0, 5.0];
-  
+
     each(i : windowSizes) {
       windSize := windowSizes[i];
       ma := MovingAverage->New(windSize);
@@ -3389,7 +3389,7 @@ Next number = 1.000000, SMA = 3.000000
 let sma (n, s, q) x =
   let l = Queue.length q and s = s +. x in
   Queue.push x q;
-  if l < n then 
+  if l < n then
     (n, s, q), s /. float (l + 1)
   else (
     let s = s -. Queue.pop q in
@@ -3399,8 +3399,8 @@ let sma (n, s, q) x =
 let _ =
   let periodLst = [ 3; 5 ] in
   let series = [ 1.; 2.; 3.; 4.; 5.; 5.; 4.; 3.; 2.; 1. ] in
-  
-  List.iter (fun d -> 
+
+  List.iter (fun d ->
     Printf.printf "SIMPLE MOVING AVERAGE: PERIOD = %d\n" d;
     ignore (
       List.fold_left (fun o x ->
@@ -3461,8 +3461,8 @@ let sma_create period =
 let () =
   let periodLst = [ 3; 5 ] in
   let series = [ 1.; 2.; 3.; 4.; 5.; 5.; 4.; 3.; 2.; 1. ] in
-  
-  List.iter (fun d -> 
+
+  List.iter (fun d ->
     Printf.printf "SIMPLE MOVING AVERAGE: PERIOD = %d\n" d;
     let sma = sma_create d in
     List.iter (fun x ->
@@ -3521,7 +3521,7 @@ SMA5
 
 ## ooRexx
 
-ooRexx does not have stateful functions, but the same effect can be achieved by using object instances. 
+ooRexx does not have stateful functions, but the same effect can be achieved by using object instances.
 
 ```ooRexx
 
@@ -3668,7 +3668,7 @@ declare
   in
      fun {$ X}
         Xs := {List.take X|@Xs Period}
-        
+
         {FoldL @Xs Number.'+' 0.0}
         /
         {Int.toFloat {Min Period {Length @Xs}}}
@@ -4110,7 +4110,7 @@ end SMA;
 ```
 
  {{out}}
- 
+
 ```txt
             SMA with   SMA with
   number    period 3   period 5
@@ -4149,7 +4149,7 @@ Procedure.d SMA(Number, Period=0)
   Wend
   ForEach L()
     sum+L()
-  Next 
+  Next
   ProcedureReturn sum/ListSize(L())
 EndProcedure
 ```
@@ -4170,13 +4170,13 @@ from collections import deque
 
 def simplemovingaverage(period):
     assert period == int(period) and period > 0, "Period must be an integer >0"
-    
+
     summ = n = 0.0
     values = deque([0.0] * period)     # old value queue
 
     def sma(x):
         nonlocal summ, n
-        
+
         values.append(x)
         summ += x - values.popleft()
         n = min(n+1, period)
@@ -4198,7 +4198,7 @@ class Simplemovingaverage():
         assert period == int(period) and period > 0, "Period must be an integer >0"
         self.period = period
         self.stream = deque()
-        
+
     def __call__(self, n):
         stream = self.stream
         stream.append(n)    # appends on the right
@@ -4240,52 +4240,52 @@ if __name__ == '__main__':
 
 ```txt
 SIMPLE MOVING AVERAGE (procedural): PERIOD = 3
-  Next number = 1 , SMA = 1 
-  Next number = 2 , SMA = 1.5 
-  Next number = 3 , SMA = 2 
-  Next number = 4 , SMA = 3 
-  Next number = 5 , SMA = 4 
-  Next number = 5 , SMA = 4.66667 
-  Next number = 4 , SMA = 4.66667 
-  Next number = 3 , SMA = 4 
-  Next number = 2 , SMA = 3 
-  Next number = 1 , SMA = 2 
+  Next number = 1 , SMA = 1
+  Next number = 2 , SMA = 1.5
+  Next number = 3 , SMA = 2
+  Next number = 4 , SMA = 3
+  Next number = 5 , SMA = 4
+  Next number = 5 , SMA = 4.66667
+  Next number = 4 , SMA = 4.66667
+  Next number = 3 , SMA = 4
+  Next number = 2 , SMA = 3
+  Next number = 1 , SMA = 2
 
 SIMPLE MOVING AVERAGE (procedural): PERIOD = 5
-  Next number = 1 , SMA = 1 
-  Next number = 2 , SMA = 1.5 
-  Next number = 3 , SMA = 2 
-  Next number = 4 , SMA = 2.5 
-  Next number = 5 , SMA = 3 
-  Next number = 5 , SMA = 3.8 
-  Next number = 4 , SMA = 4.2 
-  Next number = 3 , SMA = 4.2 
-  Next number = 2 , SMA = 3.8 
-  Next number = 1 , SMA = 3 
+  Next number = 1 , SMA = 1
+  Next number = 2 , SMA = 1.5
+  Next number = 3 , SMA = 2
+  Next number = 4 , SMA = 2.5
+  Next number = 5 , SMA = 3
+  Next number = 5 , SMA = 3.8
+  Next number = 4 , SMA = 4.2
+  Next number = 3 , SMA = 4.2
+  Next number = 2 , SMA = 3.8
+  Next number = 1 , SMA = 3
 
 SIMPLE MOVING AVERAGE (class based): PERIOD = 3
-  Next number = 1 , SMA = 1 
-  Next number = 2 , SMA = 1.5 
-  Next number = 3 , SMA = 2 
-  Next number = 4 , SMA = 3 
-  Next number = 5 , SMA = 4 
-  Next number = 5 , SMA = 4.66667 
-  Next number = 4 , SMA = 4.66667 
-  Next number = 3 , SMA = 4 
-  Next number = 2 , SMA = 3 
-  Next number = 1 , SMA = 2 
+  Next number = 1 , SMA = 1
+  Next number = 2 , SMA = 1.5
+  Next number = 3 , SMA = 2
+  Next number = 4 , SMA = 3
+  Next number = 5 , SMA = 4
+  Next number = 5 , SMA = 4.66667
+  Next number = 4 , SMA = 4.66667
+  Next number = 3 , SMA = 4
+  Next number = 2 , SMA = 3
+  Next number = 1 , SMA = 2
 
 SIMPLE MOVING AVERAGE (class based): PERIOD = 5
-  Next number = 1 , SMA = 1 
-  Next number = 2 , SMA = 1.5 
-  Next number = 3 , SMA = 2 
-  Next number = 4 , SMA = 2.5 
-  Next number = 5 , SMA = 3 
-  Next number = 5 , SMA = 3.8 
-  Next number = 4 , SMA = 4.2 
-  Next number = 3 , SMA = 4.2 
-  Next number = 2 , SMA = 3.8 
-  Next number = 1 , SMA = 3 
+  Next number = 1 , SMA = 1
+  Next number = 2 , SMA = 1.5
+  Next number = 3 , SMA = 2
+  Next number = 4 , SMA = 2.5
+  Next number = 5 , SMA = 3
+  Next number = 5 , SMA = 3.8
+  Next number = 4 , SMA = 4.2
+  Next number = 3 , SMA = 4.2
+  Next number = 2 , SMA = 3.8
+  Next number = 1 , SMA = 3
 ```
 
 
@@ -4298,11 +4298,11 @@ This is easiest done with two functions: one to handle the state (i.e. the numbe
 #concat concatenates the new values to the existing vector of values, then discards any values that are too old.
 lastvalues <- local(
 {
-   values <- c(); 
+   values <- c();
    function(x, len)
    {
-      values <<- c(values, x); 
-      lenv <- length(values); 
+      values <<- c(values, x);
+      lenv <- length(values);
       if(lenv > len) values <<- values[(len-lenv):-1]
       values
    }
@@ -4317,8 +4317,8 @@ moving.average <- function(latestvalue, len=3)
    {
       stop("all arguments must be numeric scalars")
    }
-   
-   #Calculate mean of variables so far  
+
+   #Calculate mean of variables so far
    mean(lastvalues(latestvalue, len))
 }
 moving.average(5)  # 5
@@ -4445,7 +4445,7 @@ for n = 5 to 1 step -1
     see "number = " + n + "  sma3 = " + left((string(sma(n,3)) + "        "),9) + "  sma5 = " + sma(n,5) + nl
 next
 see nl
- 
+
 func sma number, period
      accum[period] += number - nums[period][index[period]]
      nums[period][index[period]] = number
@@ -4503,7 +4503,7 @@ for n = 5 to 1 step -1
     see "number = " + n + "  sma3 = " + left((string(sma(n,3)) + "        "),9) + "  sma5 = " + sma(n,5) + nl
 next
 see nl
- 
+
 func sma number, period
 accum[period] += number - nums[period][index[period]]
 nums[period][index[period]] = number
@@ -4560,34 +4560,34 @@ aGOOGMvgAvg = MovingAverage( aGOOGPrices, 10 )
 aGOOGMvgAvg = MovingAverage( aGOOGPrices, 30 )
 
 ###-------------------------------------------------------------
-### FUNCTION: MovingAverage 
+### FUNCTION: MovingAverage
 
 Func MovingAverage arrayPrices, timePeriod
 
     arrayMvgAvg  = []             ### Output Results to this array
-    z = len(arrayPrices)          ### array data length                         
+    z = len(arrayPrices)          ### array data length
     sumPrices  = 0
-  
+
     ###--------------------------------
     ### First MAvg Sum 1 to timePeriod
     ###--------------------------------
-    
-    for i = 1 to  timePeriod                        
+
+    for i = 1 to  timePeriod
         sumPrices = sumPrices + arrayPrices[i]
         mvgAvg    = sumPrices / i
-        Add( arrayMvgAvg, mvgAvg)   
-    next   
-    
+        Add( arrayMvgAvg, mvgAvg)
+    next
+
     ###-----------------------------------------------
     ### Second MAvg Sum  timePeriod +1 to End of Data
     ###-----------------------------------------------
-    
-    for i = timePeriod + 1 to z 
-        sumPrices = sumPrices - arrayPrices[i-timePeriod] + arrayPrices[i] 
-        mvgAvg    = sumPrices / timePeriod                                  
+
+    for i = timePeriod + 1 to z
+        sumPrices = sumPrices - arrayPrices[i-timePeriod] + arrayPrices[i]
+        mvgAvg    = sumPrices / timePeriod
         Add (arrayMvgAvg, mvgAvg
     next
-          
+
 return arrayMvgAvg
 
 ###-------------------------------------------------------------
@@ -4633,7 +4633,7 @@ ma3 = simple_moving_average(3)
 ma5 = simple_moving_average(5)
 
 (1.upto(5).to_a + 5.downto(1).to_a).each do |num|
-  printf "Next number = %d, SMA_3 = %.3f, SMA_5 = %.1f\n", 
+  printf "Next number = %d, SMA_3 = %.3f, SMA_5 = %.1f\n",
     num, ma3.call(num), ma5.call(num)
 end
 ```
@@ -4667,7 +4667,7 @@ ma3 = MovingAverager.new(3)
 ma5 = MovingAverager.new(5)
 
 (1.upto(5).to_a + 5.downto(1).to_a).each do |num|
-  printf "Next number = %d, SMA_3 = %.3f, SMA_5 = %.1f\n", 
+  printf "Next number = %d, SMA_3 = %.3f, SMA_5 = %.1f\n",
     num, ma3 << num, ma5 <<num
 end
 ```
@@ -4695,11 +4695,11 @@ impl SimpleMovingAverage {
 
     fn add_number(&mut self, number: usize) -> f64 {
         self.numbers.push(number);
-        
+
         if self.numbers.len() > self.period {
             self.numbers.remove(0);
         }
-        
+
         if self.numbers.is_empty() {
             return 0f64;
         }else {
@@ -4742,11 +4742,11 @@ impl SimpleMovingAverage {
 
     fn add_number(&mut self, number: usize) -> f64 {
         self.numbers.push_back(number);
-        
+
         if self.numbers.len() > self.period {
             self.numbers.pop_front();
         }
-        
+
         if self.numbers.is_empty() {
             return 0f64;
         }else {
@@ -4803,7 +4803,7 @@ Number: 1 | Average: 3
 
 ```runbasic
 data 1,2,3,4,5,5,4,3,2,1
-dim sd(10)                          ' series data 
+dim sd(10)                          ' series data
 global sd                           ' make it global so we all see it
 for i = 1 to 10:read sd(i): next i
 
@@ -4814,11 +4814,11 @@ function sma(p)                     ' the simple moving average function
 print "----- SMA:";p;" -----"
   for i = 1 to 10
     sumSd = 0
-    for j = max((i - p) + 1,1) to i 
+    for j = max((i - p) + 1,1) to i
       sumSd = sumSd + sd(j)         ' sum series data for the period
     next j
   if p > i then p1 = i else p1 = p
-  print  sd(i);" sma:";p;" ";sumSd / p1 
+  print  sd(i);" sma:";p;" ";sumSd / p1
   next i
 end function
 ```
@@ -5135,7 +5135,7 @@ Function that returns a list containing the averaged data of the supplied argume
 movinavg(list,p)
 Func
   Local r, i, z
-  
+
   For i,1,dim(list)
     max(i-p,0)→z
     sum(mid(list,z+1,i-z))/(i-z)→r[i]
@@ -5157,7 +5157,7 @@ Prgm
     v_→p
     Return
   EndIf
-  
+
   right(augment(list,{x_}),p)→list
   sum(list)/dim(list)→#v_
 EndPrgm
@@ -5203,7 +5203,7 @@ variable z - an helper variable
 
 The function uses variable i to determine which values of the list will be considered in the next average calculation.
 
-At every iteration, variable i points to the last value in the list that will be used in the average calculation. 
+At every iteration, variable i points to the last value in the list that will be used in the average calculation.
 
 So we only need to figure out which will be the first value in the list.
 

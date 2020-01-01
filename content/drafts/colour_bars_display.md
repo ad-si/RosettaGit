@@ -13,11 +13,11 @@ tags = []
 {{task}}
 
 ;Task:
-Display a series of vertical color bars across the width of the display. 
+Display a series of vertical color bars across the width of the display.
 
 The color bars should either use:
-:::*   the system palette,   or 
-:::*   the sequence of colors: 
+:::*   the system palette,   or
+:::*   the sequence of colors:
 ::::::*   black
 ::::::*   red
 ::::::*   green
@@ -35,33 +35,33 @@ The color bars should either use:
 ```ActionScript3
 
 package {
-    
+
     import flash.display.Sprite;
     import flash.events.Event;
 
     public class ColourBars extends Sprite {
-        
+
         public function ColourBars():void {
             if (stage) init();
             else addEventListener(Event.ADDED_TO_STAGE, init);
         }
-        
+
         private function init(e:Event = null):void {
-            
+
             var colours:Array = [ 0x000000, 0xFF0000, 0x00FF00, 0x0000FF, 0xFF00FF, 0x00FFFF, 0xFFFF00, 0xFFFFFF ];
             var w:Number = stage.stageWidth / 8, h:Number = stage.stageHeight;
             var x:Number = 0, i:uint, c:uint;
-            
+
             for ( i = 0; i < 8; i++ ) {
                 c = colours[i];
                 graphics.beginFill(c);
                 graphics.drawRect(w * i, 0, w, h);
             }
-            
+
         }
-        
+
     }
-    
+
 }
 
 ```
@@ -76,10 +76,10 @@ package {
 #SingleInstance, Force
 #NoEnv
 SetBatchLines, -1
- 
+
 ; Uncomment if Gdip.ahk is not in your standard library
 ;#Include, Gdip.ahk
- 
+
 ; Start gdi+
 If !pToken := Gdip_Startup()
 {
@@ -96,31 +96,31 @@ OnExit, Exit
 ; Set the width and height we want as our drawing area, to draw everything in.
 ; This will be the dimensions of our bitmap
 Width := A_ScreenWidth, Height := A_ScreenHeight
- 
+
 ; Create a layered window
 ; (+E0x80000 : must be used for UpdateLayeredWindow to work!)
 ; that is always on top (+AlwaysOnTop), has no taskbar entry or caption
 Gui, 1: -Caption +E0x80000 +LastFound +OwnDialogs +Owner +AlwaysOnTop
- 
+
 ; Show the window
 Gui, 1: Show, NA
- 
+
 ; Get a handle to this window we have created in order to update it later
 hwnd1 := WinExist()
- 
+
 ; Create a gdi bitmap with width and height of what we are going to
 ; draw into it. This is the entire drawing area for everything
 hbm := CreateDIBSection(Width, Height)
- 
+
 ; Get a device context compatible with the screen
 hdc := CreateCompatibleDC()
- 
+
 ; Select the bitmap into the device context
 obm := SelectObject(hdc, hbm)
- 
+
 ; Get a pointer to the graphics of the bitmap, for use with drawing functions
 G := Gdip_GraphicsFromHDC(hdc)
- 
+
 ; ARGB = Transparency, Red, Green, Blue
 Colors := "0xFF000000,0xFFFF0000,0xFF00FF00,0xFF0000FF"
 Colors .= ",0xFFFF00FF,0xFF00FFFF,0xFFFFFF00,0xFFFFFFFF"
@@ -131,10 +131,10 @@ Loop % Colors0
 {
    ; Create a brush to draw a rectangle
    pBrush := Gdip_BrushCreateSolid(Colors%A_Index%)
- 
+
    ; Fill the graphics of the bitmap with a rectangle using the brush created
    Gdip_FillRectangle(G, pBrush, w*(A_Index-1), 0, w, height)
- 
+
    ; Delete the brush as it is no longer needed and wastes memory
    Gdip_DeleteBrush(pBrush)
 }
@@ -143,23 +143,23 @@ Loop % Colors0
 ; So this will position our gui at (0,0) with the Width and
 ; Height specified earlier
 UpdateLayeredWindow(hwnd1, hdc, 0, 0, Width, Height)
- 
- 
+
+
 ; Select the object back into the hdc
 SelectObject(hdc, obm)
- 
+
 ; Now the bitmap may be deleted
 DeleteObject(hbm)
- 
+
 ; Also the device context related to the bitmap may be deleted
 DeleteDC(hdc)
- 
+
 ; The graphics may now be deleted
 Gdip_DeleteGraphics(G)
 Return
- 
+
 ;#######################################################################
- 
+
 GuiEscape:
 Exit:
 ; gdi+ may now be shutdown on exiting the program
@@ -196,10 +196,10 @@ Return
       SW_MAXIMIZE = 3
       SYS "ShowWindow", @hwnd%, SW_MAXIMIZE
       VDU 26
-      
+
       W% = @vdu%!208 / 4
       H% = @vdu%!212 * 2
-      
+
       COLOUR 1,9
       COLOUR 2,10
       COLOUR 3,12
@@ -207,7 +207,7 @@ Return
       COLOUR 5,14
       COLOUR 6,11
       COLOUR 7,15
-      
+
       FOR C% = 0 TO 7
         GCOL C%
         RECTANGLE FILL C%*W%, 0, W%, H%
@@ -228,7 +228,7 @@ This task achieved only on Commodore computers with color capabilities. The exam
 * Commodore SX-64
 
 
-It will also work well on the VIC-20 if you either omit line 310 or comment (REM) it out as the VIC-20 has only an eight-color palette. 
+It will also work well on the VIC-20 if you either omit line 310 or comment (REM) it out as the VIC-20 has only an eight-color palette.
 
 This cross-compatibility is achieved by using the PETSCII control codes (CHR$(x)) for changing color, which are generally the same across all platforms, although the system palettes themselves may differ. This is combined with printing a "reverse video" space (solid block) character in the color selected.
 
@@ -243,7 +243,7 @@ This cross-compatibility is achieved by using the PETSCII control codes (CHR$(x)
 50 FOR B=R TO (R+INT(C/2))-1
 60 PRINT CHR$(18);CHR$(CO(B));SP$;
 70 NEXT B
-75 REM CHECK IF PALETTE IS ONLY 8 (VIC-20). 
+75 REM CHECK IF PALETTE IS ONLY 8 (VIC-20).
 76 REM IF SO, WE NEED TO FILL THE LAST TWO SPACES.
 80 IF C<=8 THEN PRINT "  ";
 90 NEXT H:NEXT R
@@ -282,8 +282,8 @@ for x = barWidth/2 to DisplayWidth step barWidth
     #main.g "color ";col$;"; line ";x;" 0 ";x;" ";DisplayHeight
 next
 wait
-[quit] close #main:end 
- 
+[quit] close #main:end
+
 ```
 
 
@@ -321,7 +321,7 @@ color(3) = RGB($00, $00, $FF) ;blue
 color(4) = RGB($FF, $00, $FF) ;magenta
 color(5) = RGB($00, $FF, $FF) ;cyan
 color(6) = RGB($FF, $FF, $00) ;yellow
-color(7) = RGB($FF, $FF, $FF) ;white 
+color(7) = RGB($FF, $FF, $FF) ;white
 
 If Not InitKeyboard(): End: EndIf    ;can't init keyboard
 If Not InitSprite(): End: EndIf      ;can't init sprite/screen library
@@ -359,19 +359,19 @@ EndDataSection
 Dim colors(7)
 For c = 0 To 7
   Read.i colors(c)
-Next 
+Next
 
 If OpenConsole()
   ;The console display is 80 columns wide by 25 rows
   For r = 0 To 24
-    For c = 0 To 7 
+    For c = 0 To 7
       ConsoleColor(colors(c), colors(c))
       Print(Space(80 / 8))
     Next
   Next
   EnableGraphicalConsole(1)
   ConsoleLocate(0, 0)
-  
+
   ConsoleTitle("Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -503,7 +503,7 @@ int main()
 	MAXCOL = tInfo.screenwidth;
 	textbackground(BLACK);     //8 colour constants are defined
 	clrscr();
-	
+
 	for(colour=0;colour<COLOURS;colour++)
 	{
 		getch();                              //waits for a key hit
@@ -552,7 +552,7 @@ int main()
 
 	getch();
 	closegraph();
-	
+
 	return 0;
 }
 
@@ -592,8 +592,8 @@ private :
 file <code>colorbars.cpp</code>:
 
 
-```cpp>#include <QtGui
-
+```cpp
+#include <QtGui>
 #include "colorbars.h"
 
 MyWidget::MyWidget( ) :
@@ -604,9 +604,9 @@ MyWidget::MyWidget( ) :
 }
 
 void MyWidget::paintEvent ( QPaintEvent * ) {
-   int rgbtriplets[ ] = { 0 , 0 , 0 , 255 , 0 , 0 , 0 , 255 , 0 , 
+   int rgbtriplets[ ] = { 0 , 0 , 0 , 255 , 0 , 0 , 0 , 255 , 0 ,
       0 , 0 , 255 , 255 , 0 , 255 , 0 , 255 , 255 , 255 , 255 , 0 ,
-      255 , 255 , 255 } ; 
+      255 , 255 , 255 } ;
    QPainter myPaint( this ) ;
    int rectwidth = width / colornumber ; //width of one rectangle
    int xstart = 1 ; //x coordinate of the first rectangle
@@ -626,8 +626,8 @@ void MyWidget::paintEvent ( QPaintEvent * ) {
 file <code>main.cpp</code>:
 
 
-```cpp>#include <QApplication
-
+```cpp
+#include <QApplication>
 #include "colorbars.h"
 
 int main( int argc, char * argv[ ] ) {
@@ -681,7 +681,7 @@ int main( int argc, char * argv[ ] ) {
            PERFORM VARYING i FROM 1 BY 1 UNTIL height < i
                PERFORM VARYING j FROM 1 BY 1 UNTIL width < j
                   COMPUTE colour-index = (j / interval) + 1
-                  
+
                   IF 8 < colour-index
                       SET colour-index TO 8
                   END-IF
@@ -808,7 +808,7 @@ DECIMAL
    144 SET#  BLK  CLR COLOR ;
 
 \ restore characters and colors
-: DEFAULTS   
+: DEFAULTS
    8 SCREEN
    4 19 BLK CLR COLORS
    CLEAR
@@ -841,7 +841,7 @@ Locate ,, 0  '' turn cursor off
 For clr As UInteger = 0 To 15
   Color 0, clr
   For row As Integer = 1 to 25
-    Locate row, clr * 5 + 1 
+    Locate row, clr * 5 + 1
     Print Space(5);
   Next row
 Next clr
@@ -1040,16 +1040,16 @@ The procedure below is generalized to take a description of a ''test card'' and 
 
 ```Icon
 link graphics,printf
-                     
-procedure main()  # generalized colour bars 
+
+procedure main()  # generalized colour bars
    DrawTestCard(Simple_TestCard())
    WDone()
-end   
-   
+end
+
 procedure DrawTestCard(TC)
    size := sprintf("size=%d,%d",TC.width,TC.height)
-   &window := TC.window := open(TC.id,"g","bg=black",size) | 
-               stop("Unable to open window")   
+   &window := TC.window := open(TC.id,"g","bg=black",size) |
+               stop("Unable to open window")
 
    every R := TC.bands[r := 1 to *TC.bands -1] do
       every C := R.bars[c := 1 to *R.bars - 1] do {
@@ -1061,11 +1061,11 @@ procedure DrawTestCard(TC)
 end
 
 record testcard(window,id,width,height,bands)
-record band(top,bars)    
-record bar(left,colour)   
+record band(top,bars)
+record bar(left,colour)
 
 procedure Simple_TestCard()  #: return structure simple testcard
-   return testcard(,"Simple Test Card",width := 800,height := 600, 
+   return testcard(,"Simple Test Card",width := 800,height := 600,
 		   [   band( 1, [ bar(  1, "black"),
 				  bar(114, "red"),
 				  bar(228, "green"),
@@ -1077,14 +1077,14 @@ procedure Simple_TestCard()  #: return structure simple testcard
 		       band(height) ])
 end
 ```
- 
 
-The following example is a wee tiny bit more interesting.  
+
+The following example is a wee tiny bit more interesting.
 [[File:Colourbars_SMPTE_Unicon.png|thumb|right]]
 
 ```Icon
 procedure SMPTE_TestCard()  #: return structure with 480i(ish) testcard
-   return testcard(,"SMPTE TV Test Card",width := 672,height := 504, 
+   return testcard(,"SMPTE TV Test Card",width := 672,height := 504,
 		   [   band(  1, [ bar(  1, "#c0c0c0"),
 				   bar( 95, "#c0c000"),
    	    		           bar(191, "#00c0c0"),
@@ -1101,22 +1101,22 @@ procedure SMPTE_TestCard()  #: return structure with 480i(ish) testcard
 				   bar(480, "#131313"),
 				   bar(575, "#c0c0c0"),
 			           bar(width) ] ),
-		       band(378, [ bar(  1, "#00214c"), 
+		       band(378, [ bar(  1, "#00214c"),
 				   bar(120, "#ffffff"),
-				   bar(240, "#32006a"), 
-				   bar(360, "#131313"), 
-				   bar(480, "#090909"), 
-				   bar(512, "#131313"), 
-				   bar(544, "#1d1d1d"), 
-				   bar(576, "#131313"),    
+				   bar(240, "#32006a"),
+				   bar(360, "#131313"),
+				   bar(480, "#090909"),
+				   bar(512, "#131313"),
+				   bar(544, "#1d1d1d"),
+				   bar(576, "#131313"),
 				   bar(width) ] ),
 			band(height) ])
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics]
 [http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides sprintf]
 
 
@@ -1280,7 +1280,7 @@ plots:-display([rectangle([0, 0], [.3, 2.1], color = black), rectangle([.3, 0], 
 
 ```mathematica
 ArrayPlot[
- ConstantArray[{Black, Red, Green, Blue, Magenta, Cyan, Yellow, 
+ ConstantArray[{Black, Red, Green, Blue, Magenta, Cyan, Yellow,
    White}, 5]]
 ```
 
@@ -1329,15 +1329,15 @@ use strict ;
 use GD ;
 
 my %colors = ( white => [ 255 , 255 , 255 ] , red => [255 , 0 , 0 ] ,
-      green => [ 0 , 255 , 0 ] , blue => [ 0 , 0 , 255 ] , 
+      green => [ 0 , 255 , 0 ] , blue => [ 0 , 0 , 255 ] ,
       magenta => [ 255 , 0 , 255 ] , yellow => [ 255 , 255 , 0 ] ,
       cyan => [ 0 , 255 , 255 ] , black => [ 0 , 0 , 0 ] ) ;
 my $barwidth = 160 / 8 ;
 my $image = new GD::Image( 160 , 100 ) ;
 my $start = 0 ;
 foreach my $rgb ( values %colors ) {
-   my $paintcolor = $image->colorAllocate( @$rgb ) ; 
-   $image->filledRectangle( $start * $barwidth , 0 , $start * $barwidth + 
+   my $paintcolor = $image->colorAllocate( @$rgb ) ;
+   $image->filledRectangle( $start * $barwidth , 0 , $start * $barwidth +
 	 $barwidth - 1 , 99 , $paintcolor ) ;
    $start++ ;
 }
@@ -1549,9 +1549,9 @@ echo '</tr></table>';
                     "Red"     , "Magenta"    , "Yellow"    , "White"
 
 for ($i = 0; $i -lt 64; $i++)
-{ 
+{
     for ($j = 0; $j -lt $colors.Count; $j++)
-    { 
+    {
         Write-Host (" " * 12) -BackgroundColor $colors[$j] -NoNewline
     }
 
@@ -1599,7 +1599,7 @@ Create the color palette, set margins to zero so the image will fill the display
 ```R
 
 pal <- c("black", "red", "green", "blue", "magenta", "cyan", "yellow", "white")
-par(mar = rep(0, 4)) 
+par(mar = rep(0, 4))
 image(matrix(1:8), col = pal, axes = FALSE)
 
 ```
@@ -1682,9 +1682,9 @@ $=$ || tail                                           /*append the epilogue (tra
                                                       /*stick a fork in it, we're done. */
 ```
 
-This REXX program makes use of   '''scrsize'''   REXX program (or BIF) which is used to determine the screen size of the terminal (console). 
+This REXX program makes use of   '''scrsize'''   REXX program (or BIF) which is used to determine the screen size of the terminal (console).
 
-The   '''SCRSIZE.REX'''   REXX program is included here   ──►   [[SCRSIZE.REX]]. 
+The   '''SCRSIZE.REX'''   REXX program is included here   ──►   [[SCRSIZE.REX]].
 
 
 
@@ -1698,7 +1698,7 @@ The   '''SCRSIZE.REX'''   REXX program is included here   ──►   [[SCRSIZE.
 
 load "guilib.ring"
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                setwindowtitle("drawing using qpainter")
@@ -1732,7 +1732,7 @@ func draw
          setpen(pen)
 
      //Black, Red, Green, Blue, Magenta, Cyan, Yellow, White
-          
+
      for n = 1 to 8
          color2 = new qcolor(){
          switch n

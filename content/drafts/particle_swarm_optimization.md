@@ -17,12 +17,12 @@ tags = []
 <p>
 The goal of parameter selection is to ensure that the global minimum is discriminated from any local minima, and that the minimum is accurately determined, and that convergence is achieved with acceptable resource usage.  To provide a common basis for comparing implementations, the following test cases are recommended:
 <ul>
-  <li> McCormick function - bowl-shaped, with a single minimum 
-    <ul> function parameters and bounds (recommended): 
+  <li> McCormick function - bowl-shaped, with a single minimum
+    <ul> function parameters and bounds (recommended):
       <li> -1.5 < x1 < 4 </li>
       <li> -3   < x2 < 4 </li>
     </ul>
-    <ul> search parameters (suggested): 
+    <ul> search parameters (suggested):
       <li> omega = 0 </li>
       <li> phi p = 0.6 </li>
       <li> phi g = 0.3 </li>
@@ -30,11 +30,11 @@ The goal of parameter selection is to ensure that the global minimum is discrimi
       <li> number of iterations = 40 </li>
     </ul>
   <li> Michalewicz function - steep ridges and valleys, with multiple minima
-    <ul> function parameters and bounds (recommended): 
+    <ul> function parameters and bounds (recommended):
       <li> 0 < x1 < pi </li>
       <li> 0 < x2 < pi </li>
     </ul>
-    <ul> search parameters (suggested): 
+    <ul> search parameters (suggested):
       <li> omega = 0.3 </li>
       <li> phi p = 0.3 </li>
       <li> phi g = 0.3 </li>
@@ -59,8 +59,8 @@ The goal of parameter selection is to ensure that the global minimum is discrimi
 
 {{trans|D}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <functional>
 #include <iostream>
 #include <random>
@@ -977,7 +977,7 @@ pso_init =: verb define
 
 pso =: adverb define
    NB. previous state
-   'iter gbpos gbval Min Max parameters pos vel bpos0 bval' =. y 
+   'iter gbpos gbval Min Max parameters pos vel bpos0 bval' =. y
 
    NB. evaluate
    val    =. u"1 pos
@@ -1032,13 +1032,13 @@ Apply to Michalewicz Function:
 ```J
    michalewicz =: 3 : '- +/ (sin y) * 20 ^~ sin (>: i. #y) * (*:y) % pi'
    michalewicz =: [: -@(+/) sin * 20 ^~ sin@(pi %~ >:@i.@# * *:)  NB. tacit equivalent
-    
+
    state =: pso_init 0 0 ; (pi,pi) ; 0.3 0.3 0.3; 1000
 Min: 0 0
 Max: 3.14159 3.14159
 omega, phip, phig: 0.3 0.3 0.3
 nParticles: 1000
-    
+
    state =: (michalewicz pso)^:30 state
    reportState state
 Iteration: 30
@@ -1756,7 +1756,7 @@ function psoInit(sequence mins, maxs, params, integer nParticles)
              bval = repeat(inf,nParticles)
     return {iter,gbpos,gbval,mins,maxs,params,pos,vel,bpos,bval,nParticles,nDims}
 end function
- 
+
 function pso(integer fn, sequence state)
     integer particles = state[NPARTICLES],
             dims = state[NDIMS]
@@ -1808,7 +1808,7 @@ function pso(integer fn, sequence state)
     return {iter, gbpos, gbval, state[MIN], state[MAX], state[PARAMS],
             pos, vel, bpos, bval, particles, dims}
 end function
- 
+
 function iterate(integer fn, n, sequence state)
     sequence r = state,
              old = state
@@ -1825,13 +1825,13 @@ function iterate(integer fn, n, sequence state)
     end if
     return r
 end function
- 
+
 function mccormick(sequence x)
     atom {a, b} = x
     return sin(a + b) + (a - b) * (a - b) + 1.0 + 2.5 * b - 1.5 * a
 end function
 constant r_mccormick = routine_id("mccormick")
- 
+
 function michalewicz(sequence x)
     integer m = 10,
             d = length(x)
@@ -1844,7 +1844,7 @@ function michalewicz(sequence x)
     return -total
 end function
 constant r_michalewicz = routine_id("michalewicz")
- 
+
 procedure main()
     sequence mins = {-1.5, -3.0},
              maxs = {4.0, 4.0},
@@ -2061,7 +2061,7 @@ f(2.20, 1.57)        : -0.8011663878202856
   (define dimensions (procedure-arity f))
   (unless (exact-nonnegative-integer? dimensions)
     (raise-argument-error 'PSO "function of fixed arity" 1 f))
-  
+
   (define-values (x v)
     (for/lists (x v)
       ((_ particles))
@@ -2071,7 +2071,7 @@ f(2.20, 1.57)        : -0.8011663878202856
          (l (unbox-into-cycle lo)))
         (define h-l (- h l))
         (values (+ l (* (random) h-l)) (+ (- h-l) (* 2 (random) h-l))))))
-  
+
   (define (particle-step x_i v_i p_i g)
     (for/lists (x_i+ v_i+)
       ((x_id (in-list x_i))
@@ -2082,7 +2082,7 @@ f(2.20, 1.57)        : -0.8011663878202856
                        (* φ_p (random) (- p_id x_id))
                        (* φ_g (random) (- g_d x_id))))
       (values (+ x_id v_id+) v_id+)))
-  
+
   (define (call-f args) (apply f args))
   (define g0 (argmax call-f x))
   (define-values (_X _V _P _P. G G.)
@@ -2090,12 +2090,12 @@ f(2.20, 1.57)        : -0.8011663878202856
      ((X x) (V v) (P x) (P. (map call-f x)) (g g0) (g. (apply f g0)))
      ((_ iterations))
       (for/fold
-       ((x+ null) (v+ null) (p+ null) (p.+ null) (g+ g) (g.+ g.))                
+       ((x+ null) (v+ null) (p+ null) (p.+ null) (g+ g) (g.+ g.))
        ((x_i (in-list X))
         (v_i (in-list V))
         (p_i (in-list P))
-        (p._i (in-list P.)))        
-        (define-values (x_i+ v_i+) (particle-step x_i v_i p_i g+))        
+        (p._i (in-list P.)))
+        (define-values (x_i+ v_i+) (particle-step x_i v_i p_i g+))
         (let* ((x._i+ (apply f x_i+))
                (new-p_i? (>? x._i+ p._i))
                (new-g? (>? x._i+ g.+)))
@@ -2178,7 +2178,7 @@ Classic REXX doesn't have a   '''sine'''   function,   so a RYO version is inclu
 
 The numeric precision is only limited to the number of decimal digits defined in the   <big> '''pi''' </big>   variable   (in this case,   '''110''').
 
-This REXX version supports the specifying of   '''X''',   '''Y''',   and   '''D''',   as well as the number of particles,   and the number of 
+This REXX version supports the specifying of   '''X''',   '''Y''',   and   '''D''',   as well as the number of particles,   and the number of
 
 decimal digits to be displayed.   A little extra code was added to show a title and align the output columns.
 
@@ -2297,7 +2297,7 @@ sin: procedure; arg x; x= r2r(x);  z= x;  xx=x*x;   do k=2  by 2  until p=z;  p=
 
 ```
 
-Output note:   the published global minimum (referenced above, as well as the function's arguments) can be found at: 
+Output note:   the published global minimum (referenced above, as well as the function's arguments) can be found at:
 :::::   <u>[http://www.sfu.ca/~ssurjano/mccorm.html http://www.sfu.ca/~ssurjano/mccorm.html]</u>
 
 

@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task|Basic language learning}}
-[[Category:Text processing]] 
+[[Category:Text processing]]
 [[Category:Simple]]
 
 ;Task:
@@ -57,7 +57,7 @@ procedure Zero_Fill is
    type Money is delta 0.01 digits 8;
    package Money_Output is new Decimal_Output(Money);
    use Money_Output;
-   
+
    Value : Money := 37.25;
 begin
    Put(Item => Value, Pic => Pic);
@@ -87,8 +87,8 @@ o_form("/w12d6p6/\n", 7.125);
 
 ```txt
 00007.125
-  -12.0625  
-    7.125   
+  -12.0625
+    7.125
 ```
 
 
@@ -147,8 +147,8 @@ main:(
 
 ## AmigaE
 
-The function RealF can be used to convert a floating point value into a string, with a specified number of decimal digits. 
-But to fit the string into a greater container prepending 0 we must write our own function. 
+The function RealF can be used to convert a floating point value into a string, with a specified number of decimal digits.
+But to fit the string into a greater container prepending 0 we must write our own function.
 (The one here proposed has no a flag for the alignment of the result inside the containing string)
 
 ```amigae
@@ -205,12 +205,12 @@ sfNumber:          .double  0f-7125E-3
 sfNumber1:         .double  0f7125E-3
 
 /* UnInitialized data */
-.bss 
+.bss
 .align 4
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                                   @ entry of program
     push {fp,lr}                        @ saves registers
 
@@ -276,7 +276,7 @@ pad(x,len) { ; pad with 0's from left to len chars
    Return SubStr(p x,1-len)
 }
 ```
- 
+
 
 
 ## BaCon
@@ -307,7 +307,7 @@ prompt$ ./formatted
       PRINT FNformat(PI, 9, 3)
       PRINT FNformat(-PI, 9, 3)
       END
-      
+
       DEF FNformat(n, sl%, dp%)
       LOCAL @%
       @% = &1020000 OR dp% << 8
@@ -431,7 +431,7 @@ quit
 ```
 
 
-{{out}} 
+{{out}}
 
 ```txt
 Decimal: 00007.125
@@ -452,17 +452,17 @@ class Program
         {
 
             float myNumbers = 7.125F;
-            
+
             string strnumber = Convert.ToString(myNumbers);
-                       
+
             Console.WriteLine(strnumber.PadLeft(9, '0'));
-           
+
             Console.ReadLine();
         }
-        
 
-             
-       
+
+
+
     }
 
 ```
@@ -472,8 +472,8 @@ class Program
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 main(){
   float r=7.125;
   printf(" %9.3f\n",-r);
@@ -489,17 +489,17 @@ main(){
 {{out}}
     -7.125
      7.125
- 7.125    
+ 7.125
  -0007.125
  00007.125
- 7.125  
+ 7.125
 
 
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iomanip>
 
 int main()
@@ -585,10 +585,10 @@ void main() {
 ```txt
     -7.125
      7.125
- 7.125    
+ 7.125
  -0007.125
  00007.125
- 7.125    
+ 7.125
 ```
 
 
@@ -623,7 +623,7 @@ First define a custom function for numeric output.
   0 ln - sn      [Negate n.]sz
  ]sI 0 ln <I
 
- [* 
+ [*
   * Array D[] takes digits before the radix point.
   *]sz
  0 k            [scale = 0]sz
@@ -819,7 +819,7 @@ feature {NONE} -- Initialization
 	--|--------------------------------------------------------------
 
 	print_formatted_std (v: REAL_64)
-			-- Print the value 'v' as a zero-padded string in a fixed 
+			-- Print the value 'v' as a zero-padded string in a fixed
 			-- overall width of 9 places and, with a precision of
 			-- to 3 places to the right of the decimal point.
 			-- Use the FORMAT_DOUBLE class from the standard library
@@ -834,22 +834,22 @@ feature {NONE} -- Initialization
 	--|--------------------------------------------------------------
 
 	print_formatted_ael (v: REAL_64)
-			-- Print the value 'v' as a zero-padded string in a fixed 
+			-- Print the value 'v' as a zero-padded string in a fixed
 			-- overall width of 9 places and, with a precision of
 			-- to 3 places to the right of the decimal point.
 			-- Use the AEL_PRINTF class from the Amalasoft Eiffel Library
 			-- freely available from www.amalasoft.com
 		do
 			-- printf accepts a format string and an argument list
-			-- The argument list is a container (often a manifest 
-			-- array) of values corresponding to the type of the format 
+			-- The argument list is a container (often a manifest
+			-- array) of values corresponding to the type of the format
 			-- specified in the format string argument.
-			-- When only one argument is needed, then there is also the 
+			-- When only one argument is needed, then there is also the
 			-- option to use just the value, without the container.
 			-- In this example, the line would be:
 			--   printf ("%%09.3f%N", v)
-			-- The more deliberate form is used in the actual example, 
-			-- as it is more representative of common usage, when there 
+			-- The more deliberate form is used in the actual example,
+			-- as it is more representative of common usage, when there
 			-- are multiple value arguments.
 
 			printf ("%%09.3f%N", << v >>)
@@ -1109,12 +1109,12 @@ The option to show Fōrmulæ programs and their results is showing images. Unfor
 
 ## Forth
 
-Forth has a rather rich set of number formatting words, 
+Forth has a rather rich set of number formatting words,
 which makes formatted output very flexible but sometime cumbersome.
 
-Here one way to generate the required output.  
-Note that the number generated is NOT truncated to the field width.  
-If you wish to truncate the number, remove #s and 1- from the definition.  
+Here one way to generate the required output.
+Note that the number generated is NOT truncated to the field width.
+If you wish to truncate the number, remove #s and 1- from the definition.
 (The 1- is necessary because #s always generates at least one digit, even if it's zero.)
 
 
@@ -1152,7 +1152,7 @@ To replicate the example for this task we could write:
 
 ```txt
 : '.'   [CHAR] . HOLD ; \ HOLD inserts a character into the number string
-\                                    right side .  left side 
+\                                    right side .  left side
 : 0000#.###  ( d -- addr len) DABS <#    # # # '.' # # # # #    #> ;
 ```
 
@@ -1192,7 +1192,7 @@ One can engage in trickery via FORMAT statements, in particular the T format opt
 
 ```
 
-Output is 
+Output is
  00007.125
 This would need adjustment for other sizes, but works as follows: The value part is printed (in the format system's working area) as "bbbb7.125" (b's standing for spaces), then the T1 moves the finger back to column one, and the I5.5 writes out "00007", the .5 addendum to I5 meaning print leading zeroes rather than leading spaces. It does not overwrite the subsequent ".125", and as no further output items appear the deed is done. Only later Fortran offers the addendum feature, but the Tab feature is much older.
 
@@ -1309,7 +1309,7 @@ format 7.125 9
 
 
 ```hicest
-WRITE(ClipBoard, Format='i5.5, F4.3') INT(7.125), MOD(7.125, 1)    ! 00007.125 
+WRITE(ClipBoard, Format='i5.5, F4.3') INT(7.125), MOD(7.125, 1)    ! 00007.125
 ```
 
 
@@ -1323,15 +1323,15 @@ concept FixedLengthFormat(value, length) {
 	string = text(abs(value))
 	prefix = ""
 	sign = ""
-	
+
 	if value < 0
 		sign = "-"
 	end
-	
+
 	if #string < length
 		prefix = "0"*(length-#sign-#string-#prefix)
 	end
-	
+
 	return sign+prefix+string
 }
 
@@ -1366,14 +1366,14 @@ procedure main()
 
 every  r := &pi | -r | 100-r do {
   write(r," <=== no printf")
-  every p := "|%r|" | "|%9.3r|" | "|%-9.3r|" | "|%0.3r|" | "|%e|" | "|%d|" do 
+  every p := "|%r|" | "|%9.3r|" | "|%-9.3r|" | "|%0.3r|" | "|%e|" | "|%d|" do
      write(sprintf(p,r)," <=== sprintf ",p)
-} 
+}
 end
 ```
 
 
-{{out}} Abbreviated 
+{{out}} Abbreviated
 
 ```txt
 3.141592653589793 <=== no printf
@@ -1440,7 +1440,7 @@ public class Format {
 		//Maximum also available for Integer digits and Fraction digits
 		numForm.setGroupingUsed(false);//stops it from inserting commas
 		System.out.println(numForm.format(7.125));
-		
+
 		//example of Fraction digit options
 		numForm.setMinimumIntegerDigits(5);
 		numForm.setMinimumFractionDigits(5);
@@ -1633,7 +1633,7 @@ fun main(args: Array<String>) {
 
 Custom function builds on the supplied 'print using( "###.###", n)'.
 
-NB no check that this does not truncate high-order digits... 
+NB no check that this does not truncate high-order digits...
 and remember LB calculates with more figures than its normal 'print' displays.
 
 ```lb
@@ -1682,7 +1682,7 @@ Raw number =81.460946       Using custom function =0000000081.46095
 
 ## Logo
 
-Various collection functions, such as MAP and FILTER, 
+Various collection functions, such as MAP and FILTER,
 will work on individual characters of a string when given a word instead of a list.
 
 ```logo
@@ -1910,10 +1910,10 @@ VIEW-AS ALERT-BOX.
 
 ## Oz
 
-It is possible to set the precision used for float printing 
+It is possible to set the precision used for float printing
 (where "precision" means the total number of digits used).
 
-It doesn't seem to be possible to use leading zeros for printing, 
+It doesn't seem to be possible to use leading zeros for printing,
 so we implement this manually:
 
 ```oz
@@ -1926,7 +1926,7 @@ declare
       for I in 1..Prec-{Length S}+1 collect:C do {C &0} end
       S}
   end
-in 
+in
   {System.showInfo {PrintFloat 7.125 8}}
 ```
 
@@ -1963,19 +1963,19 @@ begin
 		write(negative);
 		n := abs(n);
 	end;
-	
+
 	// determine number of leading zeros
 	i := wholeNumberPlaces;
 	if n > 0 then
 	begin
 		i := i - trunc(ln(n) / ln(10));
 	end;
-	
+
 	for i := i - 1 downto succ(ord(signPresent)) do
 	begin
 		write(zeroDigit);
 	end;
-	
+
 	// writes n with
 	// - at least 0 characters in total
 	// - exactly fractionalPlaces post-radix digits
@@ -2066,7 +2066,7 @@ put edit (X) (p'999999,V999'); /* In European format. */
  * another would be using a Picture of 'S(9)9.V(3)9' or '-(9)9.V(3)9'
  *********************************************************************/
  Call z2lz(1.2);
- Call z2lz(-1.32);   
+ Call z2lz(-1.32);
  Call z2lz(123456789.012);
  Call z2lz(-23456789.012);
  Call z2lz(-123456789.012);
@@ -2092,10 +2092,10 @@ put edit (X) (p'999999,V999'); /* In European format. */
 ```txt
 
              1.200      000000001.200
-            -1.320      -00000001.320    
+            -1.320      -00000001.320
      123456789.012      123456789.012
      -23456789.012      -23456789.012
-    -123456789.012      can't be formatted that way        
+    -123456789.012      can't be formatted that way
 
 ```
 
@@ -2159,8 +2159,8 @@ RSet(StrF(7.125,3),8,"0")    ; Will be 0007.125
 ## Python
 
 {{works with|Python|2.5}}
-Python has 3 different floating point formatting methods: "%e","%f" & "%g". 
-The "%g" format is a beautified hybrid of "%e" and "%f".  There is no way of 
+Python has 3 different floating point formatting methods: "%e","%f" & "%g".
+The "%g" format is a beautified hybrid of "%e" and "%f".  There is no way of
 specifying how many digits appear in the exponent when printed with a format.
 
 
@@ -2297,9 +2297,9 @@ REBOL [
 	URL: http://rosettacode.org/wiki/Formatted_Numeric_Output
 ]
 
-; REBOL has no built-in facilities for printing pictured output. 
+; REBOL has no built-in facilities for printing pictured output.
 ; However, it's not too hard to cook something up using the
-; string manipulation facilities. 
+; string manipulation facilities.
 
 zeropad: func [
 	"Pad number with zeros or spaces. Works on entire number."
@@ -2311,13 +2311,13 @@ zeropad: func [
 	n: to-string n  c: " "  s: ""
 
 	if not space [
-		c: "0"  
+		c: "0"
 		if #"-" = n/1 [pad: pad - 1  n: copy skip n 1  s: "-"]
 	]
 
         insert/dup n c (pad - length? n)
 	insert n s
-    n 
+    n
 ]
 
 ; These tests replicate the C example output.
@@ -2358,8 +2358,8 @@ print 7.125
 ```raven
 define PI
    -1 acos
-   
-PI exp PI - as r 
+
+PI exp PI - as r
 r print "\n" print
 r "" prefer "s=%s!\n" print
 r dup dup dup dup "e=%e f=%f g=%g G=%G!\n" print
@@ -2500,7 +2500,7 @@ func fixedprint num, digs
      for i = 1 to digs - len(string(floor(num)))
          see "0"
      next
-     see num + nl 
+     see num + nl
 
 ```
 
@@ -2596,10 +2596,10 @@ object FormattedNumeric {
   val r = 7.125                                   //> r  : Double = 7.125
   println(f" ${-r}%9.3f");                        //>     -7,125
   println(f" $r%9.3f");                           //>      7,125
-  println(f" $r%-9.3f");                          //>  7,125    
+  println(f" $r%-9.3f");                          //>  7,125
   println(f" ${-r}%09.3f");                       //>  -0007,125
   println(f" $r%09.3f");                          //>  00007,125
-  println(f" $r%-9.3f");                          //>  7,125    
+  println(f" $r%-9.3f");                          //>  7,125
   println(f" $r%+09.3f");                         //>  +0007,125
 }
 ```
@@ -2711,7 +2711,7 @@ Transcript show: (7.125 printPaddedWith: $0 to: 3.6); cr.
 {{works with|Smalltalk/X}}
 
 ```smalltalk
-(7.123 asFixedPoint:3)  printOn: Transcript leftPaddedTo: 9 with: $0 
+(7.123 asFixedPoint:3)  printOn: Transcript leftPaddedTo: 9 with: $0
 "output: 00007.125"
 ```
 
@@ -2913,7 +2913,7 @@ WScript.Echo Right("00000000" & Int(a), 8)
 
 Vedit only supports integers, but fixed point calculations can be used for decimal values.
 
-The following example uses 3 decimal places (value scaled by 1000). 
+The following example uses 3 decimal places (value scaled by 1000).
 The output is inserted at current edit position.
 
 ```vedit
@@ -2978,12 +2978,12 @@ Output (the decimal separator used depends on the system's language settings):
 20 LET width=9
 30 GO SUB 1000
 40 PRINT AT 10,10;n$
-50 STOP 
+50 STOP
 1000 REM Formatted fixed-length
 1010 LET n$=STR$ n
 1020 FOR i=1 TO width-LEN n$
 1030 LET n$="0"+n$
 1040 NEXT i
-1050 RETURN 
+1050 RETURN
 ```
 

@@ -10,19 +10,19 @@ categories = []
 tags = []
 +++
 
-{{task|Basic language learning}} 
+{{task|Basic language learning}}
 {{basic data operation}}
-[[Category:String manipulation]] 
-[[Category: String manipulation]] 
-[[Category:Simple]] 
+[[Category:String manipulation]]
+[[Category: String manipulation]]
+[[Category:Simple]]
 {{omit from|bc|No string operations in bc}}
 {{omit from|dc|No string operations in dc}}
 
 ;Task:
-Create a string variable equal to any text value. 
+Create a string variable equal to any text value.
 
 Prepend the string variable with another string literal.
- 
+
 If your language supports any idiomatic ways to do this without referring to the variable twice in one expression, include such solutions.
 
 
@@ -35,16 +35,16 @@ To illustrate the operation, show the content of the variable.
 ## Ada
 
 
-In Ada, a variable of type String cannot change its length. So the variable S which we will change, need to be of the type Unbounded_String. Thus the need for conversions from String literal to Unbounded_String for initialization, and from Unbounded_String to String for printing. 
+In Ada, a variable of type String cannot change its length. So the variable S which we will change, need to be of the type Unbounded_String. Thus the need for conversions from String literal to Unbounded_String for initialization, and from Unbounded_String to String for printing.
 
 
 ```Ada
 with Ada.Text_IO; with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
-procedure Prepend_String is   
-   S: Unbounded_String := To_Unbounded_String("World!"); 
+procedure Prepend_String is
+   S: Unbounded_String := To_Unbounded_String("World!");
 begin
-   S := "Hello " & S;-- this is the operation to prepend "Hello " to S. 
+   S := "Hello " & S;-- this is the operation to prepend "Hello " to S.
    Ada.Text_IO.Put_Line(To_String(S));
 end Prepend_String;
 ```
@@ -182,10 +182,10 @@ Hello World!
 ## C
 
 
-```c>#include<stdio.h
-
-#include<string.h>
-#include<stdlib.h>
+```c
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 int main()
 {
@@ -210,16 +210,16 @@ Changed my String
 ## C++
 
 
-```cpp>include <vector
-
+```cpp
+#include <vector>
 #include <algorithm>
 #include <string>
 #include <iostream>
 
 int main( ) {
    std::vector<std::string> myStrings { "prepended to" , "my string" } ;
-   std::string prepended = std::accumulate( myStrings.begin( ) , 
-	 myStrings.end( ) , std::string( "" ) , []( std::string a , 
+   std::string prepended = std::accumulate( myStrings.begin( ) ,
+	 myStrings.end( ) , std::string( "" ) , []( std::string a ,
 	    std::string b ) { return a + b ; } ) ;
    std::cout << prepended << std::endl ;
    return 0 ;
@@ -333,7 +333,7 @@ END PROGRAM prepend.
 ## ColdFusion
 
 
-###  Classic tag based CFML 
+###  Classic tag based CFML
 
 
 ```cfm
@@ -349,13 +349,13 @@ END PROGRAM prepend.
 
 ```txt
 
-Hello World! 
+Hello World!
 
 ```
 
 
 
-###  Script Based CFML 
+###  Script Based CFML
 
 
 ```cfm><cfscript
@@ -370,7 +370,7 @@ Hello World!
 
 ```txt
 
-Hello World! 
+Hello World!
 
 ```
 
@@ -406,7 +406,7 @@ import std.stdio;
 
 void main() {
     string s = "world!";
-    s = "Hello " ~ s; 
+    s = "Hello " ~ s;
     writeln(s);
 }
 ```
@@ -451,8 +451,8 @@ print(s)
 
 ```scheme
 
-define-syntax-rule 
-    (set!-string-prepend a before) 
+define-syntax-rule
+    (set!-string-prepend a before)
     (set! a (string-append before a)))
    → #syntax:set!-string-prepend
 
@@ -473,13 +473,13 @@ ELENA 4.x:
 ```elena
 import extensions;
 import extensions'text;
- 
+
 public program()
 {
     var s := "World";
     s := "Hello " + s;
     console.writeLine:s;
- 
+
     // Alternative way
     var s2 := StringWriter.load("World");
     s2.insert(0, "Hello ");
@@ -663,9 +663,9 @@ Forth has no string prepend word, but adding it is not difficult. This demonstra
 Test our language extensions interactively at the console
 
 ```txt
-256 buffer: string1 ok                                     
-s" needs no introduction!" string1 place  ok                
-string1 writeln 
+256 buffer: string1 ok
+s" needs no introduction!" string1 place  ok
+string1 writeln
 needs no introduction! ok
 
 s" This string "  string1 prepend writeln
@@ -679,7 +679,7 @@ This string needs no introduction! ok
 
 ### Early inability
 
-Early Fortran had almost no ability to manipulate text except via overwriting text literals in a FORMAT statement used in a READ, that would then appear when the same FORMAT statement was used in a WRITE (!) perhaps as a heading. 
+Early Fortran had almost no ability to manipulate text except via overwriting text literals in a FORMAT statement used in a READ, that would then appear when the same FORMAT statement was used in a WRITE (!) perhaps as a heading.
 
 
 ### Initial difficulty
@@ -709,11 +709,11 @@ The first output (to standard output: unit 6) thus prepends the text "Hello " vi
 
 Some versions of Fortran offered the ability to write to a variable such as an array rather than to a nominated output unit, via a statement like <code>WRITE (TEXT,1) (TEXT(I),I = 1,3)</code>, which array could then itself be written to the actual output via normal statements. This would involve a working variable within the routines for formatted I/O to hold the output, and thus provides one of the reasons that Fortran I/O implementations seldom enable re-entrancy - as with a WRITE statement whose output expression list includes a function evaluation, which function itself attempts to WRITE something, say to a log file, with both WRITE statements employing formatting statements. More modern compilers now require the recipient for this sort of WRITE statement to be of type CHARACTER, so the older style is blocked - and re-entrancy is still a problem.
 
-Still another variant involved writing to unit number zero, which did not actually send anything to an output recipient. Instead, the scratchpad used by the formatted I/O system would retain whatever was produced, which could then be read back via unit number zero. Indeed, reading from unit zero would reveal whatever had been the last line of the previous I/O statement. This would be of interest if a format error had been reported on a READ during some mass data acquisition, so that the error message could show the problematic input that had been obtained rather than just complain. But this facility was not common, and did not become a part of the F90 standard. Perhaps a BACKSPACE and re-read to a text variable will work instead... 
+Still another variant involved writing to unit number zero, which did not actually send anything to an output recipient. Instead, the scratchpad used by the formatted I/O system would retain whatever was produced, which could then be read back via unit number zero. Indeed, reading from unit zero would reveal whatever had been the last line of the previous I/O statement. This would be of interest if a format error had been reported on a READ during some mass data acquisition, so that the error message could show the problematic input that had been obtained rather than just complain. But this facility was not common, and did not become a part of the F90 standard. Perhaps a BACKSPACE and re-read to a text variable will work instead...
 
 Retreating from FORMAT usage to the case of manipulating a "string" variable so as to prepend a given text to the working variable, first the existing content must be moved right to make room (again, an even number of characters is involved) which is achieved via the DO-loop, using certain constants. If on the other hand, text were to be removed from the front, then a loop would be needed to shift the surviving content leftwards. In doing this, one must pay attention to any overlaps and the direction of the loop! By chance, this exercise starts the placement after the end of the existing text but if instead the shift were to be two units, then the first-placed unit would land atop the tail end of the existing text. Thus, for rightwards shifts, one should start with the end of the surviving text and work back to its start.
 
-Having made space, the next statements merely assign some bit patterns to elements of TEXT, and then the result is revealed, again using known constants instead of the associated variables of the more general approach. The result from the two WRITE statements is of course 
+Having made space, the next statements merely assign some bit patterns to elements of TEXT, and then the result is revealed, again using known constants instead of the associated variables of the more general approach. The result from the two WRITE statements is of course
 ```txt
 Hello world!
 Hello world!
@@ -723,15 +723,15 @@ Hello world!
 
 ### Character facility
 
-With F77 came the CHARACTER type... 
+With F77 came the CHARACTER type...
 ```Fortran
       CHARACTER*66 TEXT
       TEXT = "World!"
       TEXT = "Hello "//TEXT
       WRITE (6,*) TEXT
-      END 
+      END
 ```
- 
+
 This means that variable TEXT has space for 66 characters, addressed as TEXT(''first'':''last'') starting with one. There is no associated string length facility, so the first assignment places the six characters of the supplied literal, followed by spaces all the way to the end of TEXT. Alternatively, <code>TEXT(1:6) = "World!"</code> would place only six characters, leaving the rest of TEXT to hold whatever it may. This would probably be unsuitable for the next statement, which prepends "Hello " to the content of TEXT (including positions past six) and assigns the result to TEXT, overwriting its previous content - with the aid of a temporary working area. Although in principle there could be cunning schemes that update the recipient "in place" with a minimum of character copying to and fro, this doesn't happen. Only characters up to the capacity of the recipient will be transferred from the expression's result, and if the result is shorter than the capacity of the recipient, trailing spaces will be added. All of this is extra effort! And when TEXT is written out, all 66 characters will be sent forth. It is useful to have a function that locates the last non-blank character!
 
 
@@ -748,7 +748,7 @@ With F90, and standardised in F2003, came extensions that enable a variable to b
 
 Var s = "prepend"
 s = "String " + s
-Print s 
+Print s
 Sleep
 ```
 
@@ -1374,7 +1374,7 @@ s[^] = 'micro';
 .say;
 
 # reversed append assignment
-$_ = 'cooper'; 
+$_ = 'cooper';
 $_ [R~]= 'mini';
 .say;
 ```
@@ -1499,13 +1499,13 @@ Hello, World!
 
 {{works with|SWI-Prolog}}
 
-In its admirable wisdom, Prolog is generally unfriendly 
+In its admirable wisdom, Prolog is generally unfriendly
 to state mutations and destructive assignment. However, it
 is also very flexible. Using the traditional representation
 of strings as lists of character codes, and the non-logical
-predicate `setarg/3`, we can destructively set the head and 
+predicate `setarg/3`, we can destructively set the head and
 tail of the list to achieve a mutation of the variable holding
-the string. I define an operator for the purpose: 
+the string. I define an operator for the purpose:
 
 
 ```prolog
@@ -1725,7 +1725,7 @@ const proc: main is func
   local
     var string: s is "world!";
   begin
-    s := "Hello " & s; 
+    s := "Hello " & s;
     writeln(s);
   end func;
 ```

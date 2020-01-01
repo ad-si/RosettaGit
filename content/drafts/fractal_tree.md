@@ -113,7 +113,7 @@ ExitApp
 graphsize 300,300
 
 level = 12 : len =63		# initial values
-x = 230: y = 285			
+x = 230: y = 285
 rotation = pi/2
 
 A1 = pi/27 : A2 = pi/8		# constants which determine shape
@@ -163,24 +163,24 @@ putline:
 =
 
 ```Run BASIC
- 'Fractal Tree - for Run Basic - 29 Apr 2018 
+ 'Fractal Tree - for Run Basic - 29 Apr 2018
  'from BASIC256 - http://rosettacode.org/wiki/Fractal_tree#BASIC256
  'copy this text and go to http://www.runbasic.com
- 
+
 WindowWidth  = 500  'Run Basic max size 800 x 600
 WindowHeight = 350
-c = 255  '255 for white '0 for black 
+c = 255  '255 for white '0 for black
 
  graphic #w, WindowWidth, WindowHeight
  #w cls("black")  'black background color
  #w color(c,c,c)  'changes color to white
- 
+
 level = 10             ' initial values
-leng = 50		
+leng = 50
 x = 230: y = 325       ' initial values x = 230: y = 285
-pi = 3.1415			
+pi = 3.1415
 rotation = 3.1415/2
- 
+
 'A1 = pi/27 : A2 = pi/8	    ' constants which determine shape
 'C1 = 0.7 : C2 = 0.85       ' tree is drifted left
 
@@ -188,7 +188,7 @@ A1 = pi/9 : A2 = pi/9	' constants which determine shape
 C1 = 0.85 : C2 = 0.85   ' Symmetrical Tree
 
 dim xs(level+1) : dim ys(level+1)	' stacks
- 
+
 print : print "Welcome to the Run BASIC Fractal Tree Program"
 #w color("green") 'color green
 gosub [tree]
@@ -196,7 +196,7 @@ gosub [tree]
 ' imgsave "Fractal_tree_BASIC-256.png", "PNG"
 Print "Thank you and goodbye"
 end
- 
+
 [tree]
 	xs(level) = x : ys(level) = y
 	gosub [putline]
@@ -214,7 +214,7 @@ end
 	end if
 	x = xs(level) : y = ys(level)
 	return
- 
+
 [putline]
 	yn = -1*sin(rotation)*leng + y
 	xn = cos(rotation)*leng + x
@@ -258,9 +258,9 @@ End
 ```
 
 ```bbcbasic
-      
+
       VDU 23,22,SizeX%;SizeY%;8,16,16,128
-      
+
       PROCbranch(SizeX%, 0, SizeY%/2, 90, Depth%)
       END
 
@@ -303,8 +303,8 @@ End
 
 {{libheader|SGE}} or {{libheader|cairo}}
 
-```c>#include <SDL/SDL.h
-
+```c
+#include <SDL/SDL.h>
 #ifdef WITH_CAIRO
 #include <cairo.h>
 #else
@@ -318,17 +318,17 @@ End
 #ifdef WITH_CAIRO
 #define PI 3.1415926535
 #endif
- 
+
 #define SIZE           800   // determines size of window
 #define SCALE          5     // determines how quickly branches shrink (higher value means faster shrinking)
 #define BRANCHES       14    // number of branches
 #define ROTATION_SCALE 0.75  // determines how slowly the angle between branches shrinks (higher value means slower shrinking)
 #define INITIAL_LENGTH 50    // length of first branch
- 
+
 double rand_fl(){
   return (double)rand() / (double)RAND_MAX;
 }
- 
+
 void draw_tree(SDL_Surface * surface, double offsetx, double offsety,
                double directionx, double directiony, double size,
                double rotation, int depth) {
@@ -360,7 +360,7 @@ void draw_tree(SDL_Surface * surface, double offsetx, double offsety,
         size * rand_fl() / SCALE + size * (SCALE - 1) / SCALE,
         rotation * ROTATION_SCALE,
         depth - 1);
- 
+
     // draw right branch
     draw_tree(surface,
         offsetx + directionx * size,
@@ -372,7 +372,7 @@ void draw_tree(SDL_Surface * surface, double offsetx, double offsety,
         depth - 1);
   }
 }
- 
+
 void render(SDL_Surface * surface){
   SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 255, 255, 255));
   draw_tree(surface,
@@ -384,17 +384,17 @@ void render(SDL_Surface * surface){
       BRANCHES);
   SDL_UpdateRect(surface, 0, 0, 0, 0);
 }
- 
+
 int main(){
   SDL_Surface * screen;
   SDL_Event evt;
- 
+
   SDL_Init(SDL_INIT_VIDEO);
- 
+
   srand((unsigned)time(NULL));
- 
+
   screen = SDL_SetVideoMode(SIZE, SIZE, 32, SDL_HWSURFACE);
- 
+
   render(screen);
   while(1){
     if (SDL_PollEvent(&evt)){
@@ -456,7 +456,7 @@ public:
 
 	hdc = CreateCompatibleDC( dc );
 	SelectObject( hdc, bmp );
-	ReleaseDC( GetConsoleWindow(), dc ); 
+	ReleaseDC( GetConsoleWindow(), dc );
 
 	width = w; height = h;
 
@@ -530,12 +530,12 @@ public:
     {
 	float _x = static_cast<float>( x ),
 	      _y = static_cast<float>( y ),
-	       s = sinf( angle_r ), 
+	       s = sinf( angle_r ),
 	       c = cosf( angle_r ),
-	       a = _x * c - _y * s, 
+	       a = _x * c - _y * s,
 	       b = _x * s + _y * c;
 
-	x = static_cast<int>( a ); 
+	x = static_cast<int>( a );
 	y = static_cast<int>( b );
     }
 
@@ -572,7 +572,7 @@ private:
 	vector2 r( 0, static_cast<int>( line_len ) );
 
         if( rg ) a -= _ang;
-        else a += _ang; 
+        else a += _ang;
 
 	r.rotate( a );
 	r.x += sp->x; r.y = sp->y - r.y;
@@ -597,13 +597,13 @@ int main( int argc, char* argv[] )
 
     fractalTree tree;
     tree.create( &bmp );
-	
+
     BitBlt( GetDC( GetConsoleWindow() ), 0, 20, 648, 512, bmp.getDC(), 0, 0, SRCCOPY );
 
     bmp.saveBitmap( "f://rc//fracTree.bmp" );
-	
+
     system( "pause" );
-	
+
     return 0;
 }
 //--------------------------------------------------------------------------------------------------
@@ -636,14 +636,14 @@ import ceylon.numeric.float {
 }
 
 shared void run() {
-	
+
     value fractalTree = object extends JFrame("fractal tree") {
-        
+
         background = black;
         setBounds(100, 100, 800, 600);
         resizable = false;
         defaultCloseOperation = exitOnClose;
-        
+
         shared actual void paint(Graphics g) {
 
             void drawTree(Integer x1, Integer y1, Float angle, Integer depth) {
@@ -656,12 +656,12 @@ shared void run() {
                 drawTree(x2, y2, angle - 20, depth - 1);
                 drawTree(x2, y2, angle + 20, depth - 1);
             }
-            
+
             g.color = white;
             drawTree(400, 500, -90.0, 9);
         }
     };
-    
+
     fractalTree.visible = true;
 }
 ```
@@ -744,7 +744,7 @@ shared void run() {
 			   (sdl:update-display))
       (:quit-event ()
 		   t))))
-  
+
 (fractal-tree 9)
 
 ```
@@ -846,7 +846,7 @@ class FractalTree: Form {
         drawTree(g, p, x2, y2, angle - 20, depth - 1);
         drawTree(g, p, x2, y2, angle + 20, depth - 1);
     }
-    
+
     protected override void onPaint(PaintEventArgs ea){
         super.onPaint(ea);
         Pen p = new Pen(Color(0, 0xAA, 0));
@@ -855,13 +855,13 @@ class FractalTree: Form {
 }
 
 int main() {
-    int result = 0; 
+    int result = 0;
     try {
         Application.run(new FractalTree);
     } catch(Exception e) {
-        msgBox(e.msg, "Fatal Error", MsgBoxButtons.OK, MsgBoxIcon.ERROR);        
+        msgBox(e.msg, "Fatal Error", MsgBoxButtons.OK, MsgBoxIcon.ERROR);
         result = 1;
-    }   
+    }
     return result;
 }
 ```
@@ -907,7 +907,7 @@ let rec tree x y length angle =
         tree x2 y2 (length*scale) (angle - pi/5.)
 
 printfn "<?xml version='1.0' encoding='utf-8' standalone='no'?>
-<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
 <svg width='100%%' height='100%%' version='1.1'
 xmlns='http://www.w3.org/2000/svg'>"
@@ -925,7 +925,7 @@ printfn "</svg>"
 using fwt
 using gfx
 
-class FractalCanvas : Canvas 
+class FractalCanvas : Canvas
 {
   new make () : super() {}
 
@@ -1157,12 +1157,12 @@ An elegant yet universal monoidal solution.
 import Graphics.Gloss
 
 type Model = [Picture -> Picture]
-       
+
 fractal :: Int -> Model -> Picture -> Picture
 fractal n model pict = pictures $ take n $ iterate (mconcat model) pict
 
 tree1 _ = fractal 10 branches $ Line [(0,0),(0,100)]
-  where branches = [ Translate 0 100 . Scale 0.75 0.75 . Rotate 30 
+  where branches = [ Translate 0 100 . Scale 0.75 0.75 . Rotate 30
                    , Translate 0 100 . Scale 0.5 0.5 . Rotate (-30) ]
 
 main = animate (InWindow "Tree" (800, 800) (0, 0)) white $ tree1 . (* 60)
@@ -1222,8 +1222,8 @@ toInt :: Double -> Int
 toInt = fromIntegral.round
 
 intPoint = toInt *** toInt
-  
-pts n = 
+
+pts n =
   map (map (intPoint.psPlus (100,0)). ((0,300):). scanl1 psPlus. ((r,300):). zipWith (\h a -> (h*cos a, h*sin a)) rs) hs
   where
     [r,h,sr,sh] = [50, pi/5, 0.9, 0.75]
@@ -1256,7 +1256,7 @@ procedure drawtree(x,y,angle,depth)
 if depth > 0 then {
    x2 := integer(x + cos(dtor(angle)) * depth * 10)
    y2 := integer(y + sin(dtor(angle)) * depth * 10)
-   DrawLine(x,y,x2,y2)   
+   DrawLine(x,y,x2,y2)
    drawtree(x2,y2,angle-20, depth-1)
    drawtree(x2,y2,angle+20, depth-1)
    }
@@ -1265,7 +1265,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/gprocs/WOpen.icn WOpen provides graphics I/O]
 
 {{trans|Java}}
@@ -1408,7 +1408,7 @@ def main(width; height; len; scale):
   def precision(n):
     def pow(k): . as $in | reduce range(0;k) as $i (1; .*$in);
     if . < 0 then - (-. | precision(n))
-    else 
+    else
       (10|pow(n)) as $power
     | (. * 10 * $power) | floor as $x | ($x % 10) as $r
     | ((if $r < 5 then $x else $x + 5 end) / 10 | floor) / $power
@@ -1419,7 +1419,7 @@ def main(width; height; len; scale):
   def tree(x; y; len; angle):
     if len < 1 then empty
     else
-      (x + len * (angle|cos)) as $x2 
+      (x + len * (angle|cos)) as $x2
     | (y + len * (angle|sin)) as $y2
     | (if len < 10 then 1 else 2 end) as $swidth
     | (if len < 10 then "blue" else "black" end) as $stroke
@@ -1428,7 +1428,7 @@ def main(width; height; len; scale):
       tree($x2; $y2; len * scale; angle - PI / 5)
     end
   ;
- 
+
   "<svg width='100%' height='100%' version='1.1'
         xmlns='http://www.w3.org/2000/svg'>",
         tree(width / 2; height; len; 3 * PI / 2),
@@ -1467,7 +1467,7 @@ function tree(fh, x, y, len, theta)
 end
 
 outsvg = open("tree.svg", "w")
-write(outsvg, 
+write(outsvg,
     """<?xml version='1.0' encoding='utf-8' standalone='no'?>
     <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
     'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
@@ -1564,7 +1564,7 @@ Sub tree h$, x, y, initAngle, theta, length, depth
         Call tree h$, newX, newY, initAngle-theta, theta, length, depth
         Call tree h$, newX, newY, initAngle+theta, theta, length, depth
     End If
-End Sub 
+End Sub
 
 ```
 
@@ -1655,7 +1655,7 @@ function branches( a, b, len, ang, dir )
   if len < 5 then return end
   g.setColor( len * 16, 255 - 2 * len , 0 )
   if dir > 0 then ang = ang - angle
-  else ang = ang + angle 
+  else ang = ang + angle
   end
   local vx, vy = rotate( 0, len, ang )
   vx = a + vx; vy = b - vy
@@ -1668,7 +1668,7 @@ function createTree()
   local a, b = wid / 2, hei - lineLen
   g.setColor( 160, 40 , 0 )
   g.line( wid / 2, hei, a, b )
-  branches( a, b, lineLen, 0, 1 ) 
+  branches( a, b, lineLen, 0, 1 )
   branches( a, b, lineLen, 0, 0 )
 end
 function love.load()
@@ -1688,16 +1688,16 @@ end
 
 ```Mathematica
 fractalTree[
-  pt : {_, _}, \[Theta]orient_: \[Pi]/2, \[Theta]sep_: \[Pi]/9, 
+  pt : {_, _}, \[Theta]orient_: \[Pi]/2, \[Theta]sep_: \[Pi]/9,
   depth_Integer: 9] := Module[{pt2},
   If[depth == 0, Return[]];
   pt2 = pt + {Cos[\[Theta]orient], Sin[\[Theta]orient]}*depth;
   DeleteCases[
    Flatten@{
      Line[{pt, pt2}],
-     fractalTree[pt2, \[Theta]orient - \[Theta]sep, \[Theta]sep, 
+     fractalTree[pt2, \[Theta]orient - \[Theta]sep, \[Theta]sep,
       depth - 1],
-     fractalTree[pt2, \[Theta]orient + \[Theta]sep, \[Theta]sep, 
+     fractalTree[pt2, \[Theta]orient + \[Theta]sep, \[Theta]sep,
       depth - 1]
      },
    Null
@@ -1713,7 +1713,7 @@ Graphics[fractalTree[{0, 0}, \[Pi]/2, \[Pi]/9]]
 ## NetRexx
 
 {{trans|Java}}
-{{libheader|Swing}} 
+{{libheader|Swing}}
 {{libheader|AWT}}
 
 ```NetRexx
@@ -1884,7 +1884,7 @@ my(dx=1,dy=0,ttlb="Fractal Tree, depth ",ttl=Str(ttlb,depth));
 print1(" *** ",ttl); print(", size ",size);
 plotinit(0);
 plotcolor(0,6); \\green
-plotscale(0, -size,size, 0,size); 
+plotscale(0, -size,size, 0,size);
 plotmove(0, 0,0);
 plottree(0,0,90,depth);
 plotdraw([0,size,size]);
@@ -1897,7 +1897,7 @@ FractalTree(15,1500);   \\FracTree3.png
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -1909,7 +1909,7 @@ FractalTree(15,1500);   \\FracTree3.png
  ***   last result computed in 140 ms.
 
  *** Fractal Tree, depth 12, size 1100
- ***   last result computed in 236 ms. 
+ ***   last result computed in 236 ms.
 
  *** Fractal Tree, depth 15, size 1500
  ***   last result computed in 1,095 ms
@@ -1969,7 +1969,7 @@ my $scale = 6/10; # branch scale relative to trunk
 my $length = 400; # trunk size
 
 say "<?xml version='1.0' encoding='utf-8' standalone='no'?>
-<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
 <svg width='100%' height='100%' version='1.1'
 xmlns='http://www.w3.org/2000/svg'>";
@@ -2017,7 +2017,7 @@ integer grn = level*12+100
         drawTree(level+1, angle+0.1, len*0.8, xn, yn)   --right
     end if
 end procedure
- 
+
 function redraw_cb(Ihandle /*ih*/, integer /*posx*/, integer /*posy*/)
     cdCanvasActivate(cddbuffer)
     cdCanvasClear(cddbuffer)
@@ -2077,15 +2077,15 @@ imagefilledrectangle($img, 0, 0, $width, $width, $bg);
 
 $depth = 8;
 function drawTree($x1, $y1, $angle, $depth){
-    
+
     global $img;
-    
+
     if ($depth != 0){
         $x2 = $x1 + (int)(cos(deg2rad($angle)) * $depth * 10.0);
         $y2 = $y1 + (int)(sin(deg2rad($angle)) * $depth * 10.0);
-        
+
         imageline($img, $x1, $y1, $x2, $y2, imagecolorallocate($img,0,0,0));
-        
+
         drawTree($x2, $y2, $angle - 20, $depth - 1);
         drawTree($x2, $y2, $angle + 20, $depth - 1);
     }
@@ -2185,7 +2185,7 @@ Shorter version:
 %%BoundingBox: 0 0 300 300
 /!0 { dup 1 sub dup 0 gt } def
 /trunk { 0 0 moveto 0 60 translate 0 0 lineto stroke } def
- 
+
 /branch { gsave scale rotate dup d exch sub d div setgray tree grestore } def
 /L { 30 .8 .8 branch } def
 /M {-10 .7 .7 branch } def
@@ -2224,7 +2224,7 @@ light_source
 #declare Scaling_Factor = 0.75;
 
 #macro Stick(P0, P1)
-  cylinder { 
+  cylinder {
     P0, P1, 0.02
     texture { pigment { Green } }
   }
@@ -2296,18 +2296,18 @@ Procedure drawTree(x1, y1, Size, theta, depth)
   drawTree(x2, y2, Size * #Scaling_Factor, theta - #Spread_Ang, depth - 1)
   ;draw right branch
   drawTree(x2, y2, Size * #Scaling_Factor, theta + #Spread_Ang, depth - 1)
-EndProcedure 
+EndProcedure
 
 
 OpenWindow(0, 0, 0, #SizeH, #SizeV, "Fractal Tree", #PB_Window_SystemMenu)
 Define fractal = CreateImage(#PB_Any, #SizeH, #SizeV, 32)
 ImageGadget(0, 0, 0, 0, 0, ImageID(fractal))
-  
+
 If StartDrawing(ImageOutput(fractal))
     drawTree(#SizeH / 2, #SizeV, #Init_Size, -90, 9)
   StopDrawing()
   SetGadgetState(0, ImageID(fractal))
-EndIf 
+EndIf
 
 Repeat: Until WaitWindowEvent(10) = #PB_Event_CloseWindow
 ```
@@ -2400,18 +2400,18 @@ pFractalTree(15,0.35,600);
 ```txt
 
 > pFractalTree(9);
- *** START FRT: Tue Mar 28 16:49:49 2017 
- *** Plot file - FRTR9.png title: Fractal tree, order - 9 
- *** END FRT: Tue Mar 28 16:49:50 2017 
+ *** START FRT: Tue Mar 28 16:49:49 2017
+ *** Plot file - FRTR9.png title: Fractal tree, order - 9
+ *** END FRT: Tue Mar 28 16:49:50 2017
 > pFractalTree(12,0.6,210);
- *** START FRT: Tue Mar 28 17:32:15 2017 
- *** Plot file - FRTR12.png title: Fractal tree, order - 12 
- *** END FRT: Tue Mar 28 17:32:16 2017 
+ *** START FRT: Tue Mar 28 17:32:15 2017
+ *** Plot file - FRTR12.png title: Fractal tree, order - 12
+ *** END FRT: Tue Mar 28 17:32:16 2017
 > pFractalTree(15,0.35,600);
- *** START FRT: Tue Mar 28 17:38:34 2017 
- *** Plot file - FRTR15.png title: Fractal tree, order - 15 
- *** END FRT: Tue Mar 28 17:38:41 2017 
- 
+ *** START FRT: Tue Mar 28 17:38:34 2017
+ *** Plot file - FRTR15.png title: Fractal tree, order - 15
+ *** END FRT: Tue Mar 28 17:38:41 2017
+
 ```
 
 
@@ -2435,7 +2435,7 @@ pFractalTree(15,0.35,600);
     (tree (- n 1))))
 
 (turtles #t) (move 100) (turn 90) (move -200)
-(tree 35)    
+(tree 35)
 (save-turtle-bitmap "tree.png" 'png)
 
 ```
@@ -2449,7 +2449,7 @@ pFractalTree(15,0.35,600);
 
 load "guilib.ring"
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                setwindowtitle("drawing using qpainter")
@@ -2480,7 +2480,7 @@ func draw
         sizex = 400
         sizey = 200
         depth = 10
- 
+
         tree(self, sizex, 0, sizey/2, 90, depth)
 
         endpaint()
@@ -2494,7 +2494,7 @@ func draw
              x2 = x1 + size * cos(angle)
              y2 = y1 + size * sin(angle)
              drawline(x1, y1, x2, y2)
-             if depth > 0 
+             if depth > 0
              tree(self, x2, y2, size * scale, angle - spread, depth - 1)
              tree(self, x2, y2, size * scale, angle + spread, depth - 1) ok}
 
@@ -2514,19 +2514,19 @@ Shoes.app(:title => "Fractal Tree", :width => 600, :height => 600) do
   background "#fff"
   stroke "#000"
   @deg_to_rad = Math::PI / 180.0
-  
+
   def drawTree(x1, y1, angle, depth)
     if depth != 0
       x2 = x1 + (Math.cos(angle * @deg_to_rad) * depth * 10.0).to_i
       y2 = y1 + (Math.sin(angle * @deg_to_rad) * depth * 10.0).to_i
-      
+
       line x1, y1, x2, y2
-      
+
       drawTree(x2, y2, angle - 20, depth - 1)
-      drawTree(x2, y2, angle + 20, depth - 1)      
+      drawTree(x2, y2, angle + 20, depth - 1)
     end
   end
-  
+
   drawTree(300,550,-90,9)
 end
 ```
@@ -2680,7 +2680,7 @@ The tree is created as a list of line segments, which can then be drawn on a req
   (with-output-to-file
     filename
     (lambda ()
-      (display "%!PS-Adobe-3.0 EPSF-3.0\n%%BoundingBox: 0 0 800 800\n") 
+      (display "%!PS-Adobe-3.0 EPSF-3.0\n%%BoundingBox: 0 0 800 800\n")
 
       ;; add each line - sets linewidth based on depth in tree
       (for-each (lambda (line)
@@ -2719,7 +2719,7 @@ angle = 45*%pi/180;         //angle between two branches [rad]
 trunk_angle = 90*%pi/180;   //angle between trunk and X-axis [rad]
 
 right_angle = angle/2;      //angles to the right or to the left
-left_angle = 0.8*angle;     //can be set independently or 
+left_angle = 0.8*angle;     //can be set independently or
                             //as function of 'angle'
 
 //L-system definition:
@@ -2752,31 +2752,31 @@ curr_pos = 1;
 
 for ind = 1:size(sentence,'c')
     charac = sentence(ind);
-    
+
     select charac
         case 'F' then //Draw line forward
             tree(curr_pos+1) = tree(curr_pos)...
                                + trunk * ratio^branch_level * exp(curr_angle*%i);
             curr_pos = curr_pos + 1;
-            
+
         case 'B' then //Draw line backwards
             tree(curr_pos+1) = tree(curr_pos)...
                                + trunk * ratio^branch_level * exp((%pi+curr_angle)*%i);
             curr_pos = curr_pos + 1;
-            
+
         case '[' then //New branch
             branch_level = branch_level + 1;
-            
+
         case '+' then //Turn right
             curr_angle = curr_angle - right_angle;
-            
+
         case '-' then //Turn left
             curr_angle = curr_angle + right_angle + left_angle;
-            
+
         case ']' then //End of branch
             branch_level = branch_level - 1;
             curr_angle = curr_angle - left_angle;
-            
+
         case 'D' then //Double line
             tree(curr_pos+1) = tree(curr_pos)...
                                + trunk * ratio^branch_level * exp(curr_angle*%i);
@@ -2802,7 +2802,7 @@ set(gca(),'axes_visible',['off','off','off']);
 height = 512;
 img=scf();
 set(img,'figure_size',[width,height]);
- 
+
 function drawTree(x1, y1, angle, depth)
     if depth ~= 0 then
         x2 = x1 + cos(angle * %pi/180) * depth * 10;
@@ -2812,7 +2812,7 @@ function drawTree(x1, y1, angle, depth)
         drawTree(x2, y2, angle + 20, depth - 1);
     end
 endfunction
- 
+
 drawTree(width/2,height,90,10);
 set(gca(),'isoview','on');
 ```
@@ -2844,7 +2844,7 @@ const proc: drawTree (in integer: x1, in integer: y1, in float: angle, in intege
       drawTree(x2, y2, angle + 20.0, depth - 1);
     end if;
   end func;
- 
+
 const proc: main is func
   begin
     screen(600, 500);
@@ -2915,7 +2915,7 @@ Methods for FractalTree class:
 
 tree: aPoint length: aLength angle: anAngle
     | p a |
-        
+
     (aLength > 10) ifTrue: [
         p := Pen new.
         p up.
@@ -2935,7 +2935,7 @@ tree: aPoint length: aLength angle: anAngle
 
 draw
     Display restoreAfter: [
-        Display fillWhite.      
+        Display fillWhite.
         self tree: 700@700 length: 200 angle: 0.
     ]
 
@@ -2966,17 +2966,17 @@ In the same style as [[Dragon curve#SVG]]. SVG has no parameterized definitions,
 <?xml version="1.0" standalone="yes"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
  "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" 
+<svg xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink"
      width="400" height="320">
   <style type="text/css"><![CDATA[
     line { stroke: black; stroke-width: .05; }
     circle { fill: black; }
   ]]></style>
- 
+
 <defs>
   <g id="stem"> <line x1="0" y1="0" x2="0" y2="-1"/> </g>
- 
+
   <g id="l0"><use xlink:href="#stem"/></g>
   <!-- These are identical except for the id and href. -->
   <g id="l1"> <use xlink:href="#l0" transform="translate(0, -1) rotate(-35) scale(.7)"/>
@@ -3007,11 +3007,11 @@ In the same style as [[Dragon curve#SVG]]. SVG has no parameterized definitions,
               <use xlink:href="#l8" transform="translate(0, -1) rotate(+35) scale(.7)"/>
               <use xlink:href="#stem"/></g>
 </defs>
- 
+
 <g transform="translate(200, 320) scale(100)">
   <use xlink:href="#l9"/>
 </g>
- 
+
 </svg>
 ```
 
@@ -3036,8 +3036,8 @@ extension Double {
 
 
 class Tree: UIView {
-  
-  
+
+
   func drawTree(x1: CGFloat, y1: CGFloat, angle: CGFloat, depth:Int){
     if depth == 0 {
       return
@@ -3045,26 +3045,26 @@ class Tree: UIView {
     let ang = angle.degrees_to_radians()
     let x2:CGFloat = x1 + ( cos(ang) as CGFloat) * CGFloat(depth) * (self.frame.width / 60)
     let y2:CGFloat = y1 + ( sin(ang) as CGFloat) * CGFloat(depth) * (self.frame.width / 60)
-    
+
     let line = drawLine(x1, y1: y1, x2: x2, y2: y2)
-  
+
     line.stroke()
     drawTree(x2, y1: y2, angle: angle - 20, depth: depth - 1)
     drawTree(x2, y1: y2, angle: angle + 20, depth: depth - 1)
   }
-  
+
   func drawLine(x1:CGFloat, y1:CGFloat, x2:CGFloat, y2:CGFloat) -> UIBezierPath
   {
-    
+
     let path = UIBezierPath()
     path.moveToPoint(CGPoint(x: x1,y: y1))
     path.addLineToPoint(CGPoint(x: x2,y: y2))
     path.lineWidth = 1
     return path
   }
-  
+
   override func drawRect(rect: CGRect) {
-    
+
     let color = UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
     color.set()
     drawTree(self.frame.width / 2 , y1: self.frame.height * 0.8, angle: -90 , depth: 9 )
@@ -3134,14 +3134,14 @@ $$ header=*
 <?xml version="1.0" standalone="yes"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
  "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" 
+<svg xmlns="http://www.w3.org/2000/svg"
  xmlns:xlink="http://www.w3.org/1999/xlink"
  width="400" height="320">
   <style type="text/css"><![CDATA[
   line { stroke: brown; stroke-width: .05; }
   ]]></style>
 $$ WRITE/NEXT d header
-$$ defsbeg=* 
+$$ defsbeg=*
 <defs>
   <g id="stem"> <line x1="0" y1="0" x2="0" y2="-1"/> </g>
   <g id="l"><use xlink:href="#stem"/></g>
@@ -3284,9 +3284,9 @@ The funkyness (pasteArgs) in the recursion (self.fcn) is due to the closure ('wr
 40 LET a1=PI/9: LET a2=PI/9
 50 LET c1=0.75: LET c2=0.75
 60 DIM x(level): DIM y(level)
-70 BORDER 0: PAPER 0: INK 4: CLS 
+70 BORDER 0: PAPER 0: INK 4: CLS
 80 GO SUB 100
-90 STOP 
+90 STOP
 100 REM Tree
 110 LET x(level)=x: LET y(level)=y
 120 GO SUB 1000
@@ -3302,13 +3302,13 @@ The funkyness (pasteArgs) in the recursion (self.fcn) is due to the closure ('wr
 220 LET long=long/c2
 230 LET level=level+1
 240 LET x=x(level): LET y=y(level)
-250 RETURN 
+250 RETURN
 1000 REM Draw
 1010 LET yn=-SIN rotation*long+y
 1020 LET xn=COS rotation*long+x
 1030 PLOT x,y: DRAW xn-x,y-yn
 1040 LET x=xn: LET y=yn
-1050 RETURN 
+1050 RETURN
 ```
 
 

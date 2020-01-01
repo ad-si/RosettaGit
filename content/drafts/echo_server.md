@@ -105,7 +105,7 @@ procedure echo_server_multi is
       begin -- guarded against underflow.
          Get_Task_Index := Task_Stack(Stack_Pointer);
          Stack_Pointer := Stack_Pointer -  1;
-      end;         
+      end;
 
       procedure Initialize_Stack is
       begin
@@ -116,7 +116,7 @@ procedure echo_server_multi is
    end Info;
 
    Task_Info : Info;
-     
+
 -------------------------------------------------------------------------------
    task type SocketTask is
       -- Rendezvous the setup, which sets the parameters for entry Echo.
@@ -136,8 +136,8 @@ procedure echo_server_multi is
       my_Index      : Index;
    begin
       loop -- Infinitely reusable
-         accept Setup (Connection : GNAT.Sockets.Socket_Type; 
-                       Client  : GNAT.Sockets.Sock_Addr_Type; 
+         accept Setup (Connection : GNAT.Sockets.Socket_Type;
+                       Client  : GNAT.Sockets.Sock_Addr_Type;
                        Channel : GNAT.Sockets.Stream_Access;
                        Task_Index   : Index) do
             -- Store parameters and mark task busy.
@@ -146,7 +146,7 @@ procedure echo_server_multi is
             my_Channel    := Channel;
             my_Index      := Task_Index;
          end;
-   
+
          accept Echo; -- Do the echo communications.
          begin
             Ada.Text_IO.Put_Line ("Task " & integer'image(my_Index));
@@ -156,7 +156,7 @@ procedure echo_server_multi is
          exception
             when Ada.IO_Exceptions.End_Error =>
               Ada.Text_IO.Put_Line ("Echo " & integer'image(my_Index) & " end");
-            when others => 
+            when others =>
               Ada.Text_IO.Put_Line ("Echo " & integer'image(my_Index) & " err");
          end;
          GNAT.Sockets.Close_Socket (my_Connection);
@@ -282,8 +282,8 @@ main(void)
 
 ## AutoHotkey
 
-<tt>echoserver.ahk</tt>, modified from 
-[http://www.autohotkey.com/forum/topic13829.html script] by zed gecko. 
+<tt>echoserver.ahk</tt>, modified from
+[http://www.autohotkey.com/forum/topic13829.html script] by zed gecko.
 
 ```AutoHotkey
 #SingleInstance Force
@@ -316,19 +316,19 @@ FD_READ = 1
 FD_CLOSE = 32
 FD_CONNECT = 20
 
-if DllCall("Ws2_32\WSAAsyncSelect", "UInt", socket, 
+if DllCall("Ws2_32\WSAAsyncSelect", "UInt", socket,
       "UInt", ScriptMainWindowId, "UInt", ExitMsg, "Int", FD_CLOSE)
 {
     msgbox, closed
 }
 
-if DllCall("Ws2_32\WSAAsyncSelect", "UInt", socket, 
+if DllCall("Ws2_32\WSAAsyncSelect", "UInt", socket,
         "UInt", ScriptMainWindowId, "UInt", NotificationMsg, "Int",
-        FD_READ|FD_CONNECT) 
+        FD_READ|FD_CONNECT)
 {
     MsgBox % "WSAAsyncSelect() indicated Winsock error "
           . DllCall("Ws2_32\WSAGetLastError")
-    DllCall("Ws2_32\WSAAsyncSelect", "UInt", socket, 
+    DllCall("Ws2_32\WSAAsyncSelect", "UInt", socket,
           "UInt", ScriptMainWindowId, "UInt", ExitMsg, "Int", FD_CLOSE)
     ExitApp
 }
@@ -355,7 +355,7 @@ PrepareForIncomingConnection(IPAddress, Port)
     AF_INET = 2
     SOCK_STREAM = 1
     IPPROTO_TCP = 6
-    socket := DllCall("Ws2_32\socket", "Int", AF_INET, 
+    socket := DllCall("Ws2_32\socket", "Int", AF_INET,
           "Int", SOCK_STREAM, "Int", IPPROTO_TCP)
     if socket = -1
     {
@@ -369,7 +369,7 @@ PrepareForIncomingConnection(IPAddress, Port)
     InsertInteger(DllCall("Ws2_32\htons", "UShort", Port), SocketAddress, 2, 2)
     InsertInteger(DllCall("Ws2_32\inet_addr", "Str", IPAddress),
             SocketAddress, 4, 4)
-    if DllCall("Ws2_32\bind", "UInt", socket, 
+    if DllCall("Ws2_32\bind", "UInt", socket,
             "UInt", &SocketAddress, "Int", SizeOfSocketAddress)
     {
         MsgBox % "bind() indicated Winsock error "
@@ -396,13 +396,13 @@ ReceiveData(wParam, lParam)
     Loop
     {
         VarSetCapacity(ReceivedData, ReceivedDataSize, 0)
-        ReceivedDataLength := DllCall("Ws2_32\recv", "UInt", 
+        ReceivedDataLength := DllCall("Ws2_32\recv", "UInt",
               socket, "Str", ReceivedData, "Int", ReceivedDataSize, "Int", 0)
 	if ReceivedDataLength = 0
-        {   
+        {
             StringReplace, ConnectionList, ConnectionList, %socket%`n
             DllCall("Ws2_32\closesocket", "UInt", socket)
-        } 
+        }
         if ReceivedDataLength = -1
         {
             WinsockError := DllCall("Ws2_32\WSAGetLastError")
@@ -434,7 +434,7 @@ ExitData(wParam, lParam)
     socket := wParam
     ReceivedDataSize = 16
     VarSetCapacity(ReceivedData, ReceivedDataSize, 0)
-    ReceivedDataLength := DllCall("Ws2_32\recv", "UInt", socket, 
+    ReceivedDataLength := DllCall("Ws2_32\recv", "UInt", socket,
           "Str", ReceivedData, "Int", ReceivedDataSize, "Int", 0)
     StringReplace, ConnectionList, ConnectionList, %socket%`n
     DllCall("Ws2_32\closesocket", "UInt", socket)
@@ -450,7 +450,7 @@ SendData(wParam,SendData)
         If A_LoopField =
            Continue
         socket := A_LoopField
-        sendret := DllCall("Ws2_32\send", "UInt", socket, 
+        sendret := DllCall("Ws2_32\send", "UInt", socket,
               "Str", SendData, "Int", SendDatasize, "Int", 0)
     }
 }
@@ -459,12 +459,12 @@ SendData(wParam,SendData)
 InsertInteger(pInteger, ByRef pDest, pOffset = 0, pSize = 4)
 {
     Loop %pSize%
-        DllCall("RtlFillMemory", "UInt", &pDest + pOffset + A_Index-1, 
+        DllCall("RtlFillMemory", "UInt", &pDest + pOffset + A_Index-1,
                 "UInt", 1, "UChar", pInteger >> 8*(A_Index-1) & 0xFF)
 }
 
 NewConnectionCheck:
-ConnectionCheck := DllCall("Ws2_32\accept", "UInt", socket, 
+ConnectionCheck := DllCall("Ws2_32\accept", "UInt", socket,
       "UInt", &SocketAddress, "Int", SizeOfSocketAddress)
 if ConnectionCheck > 1
     ConnectionList = %ConnectionList%%ConnectionCheck%`n
@@ -498,21 +498,21 @@ A [[/AutoHotkey Client|client]] is also available for testing this code.
 ```bbcbasic
       INSTALL @lib$+"SOCKLIB"
       PROC_initsockets
-      
+
       maxSess% = 8
       DIM sock%(maxSess%-1), rcvd$(maxSess%-1), Buffer% 255
-      
+
       ON ERROR PRINT REPORT$ : PROC_exitsockets : END
       ON CLOSE PROC_exitsockets : QUIT
-      
+
       crlf$ = CHR$13 + CHR$10
       port$ = "12321"
       host$ = FN_gethostname
       PRINT "Host name is " host$
-      
+
       listen% = FN_tcplisten(host$, port$)
       PRINT "Listening on port ";port$
-      
+
       REPEAT
         socket% = FN_check_connection(listen%)
         IF socket% THEN
@@ -526,7 +526,7 @@ A [[/AutoHotkey Client|client]] is also available for testing this code.
           NEXT i%
           listen% = FN_tcplisten(host$, port$)
         ENDIF
-        
+
         FOR i% = 0 TO maxSess%-1
           IF sock%(i%) THEN
             res% = FN_readsocket(sock%(i%), Buffer%, 256)
@@ -546,7 +546,7 @@ A [[/AutoHotkey Client|client]] is also available for testing this code.
             ENDIF
           ENDIF
         NEXT i%
-        
+
         WAIT 0
       UNTIL FALSE
       END
@@ -575,8 +575,8 @@ Connection on socket 1012 closed
 This is a rather standard code (details apart); the reference guide for such a code is the [http://beej.us/guide/bgnet Beej's Guide to Network programming]. The dependency from POSIX is mainly in the use of the <tt>read</tt> and <tt>write</tt> functions, (using the socket as a file descriptor sometimes make things simpler).
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
@@ -744,7 +744,7 @@ namespace ConsoleApplication1
             do
             {
                 if (!tClient.Connected)
-                { 
+                {
                     tClient.Close();
                     Thread.CurrentThread.Abort();       // Kill thread.
                 }
@@ -883,9 +883,9 @@ any existing client connections"
             (socket:socket-server-host server)
             (socket:socket-server-port server))
         (unwind-protect
-            (loop 
+            (loop
                 (when (socket:socket-status server 0 1)
-                    (echo-accept-client (socket:socket-accept server 
+                    (echo-accept-client (socket:socket-accept server
                                             :external-format :dos
                                             :buffered t)))
                 (when *clients*
@@ -899,11 +899,11 @@ any existing client connections"
 
 (defun echo-accept-client (socket)
     "Accept a new client connection and add it to the watch list."
-    (multiple-value-bind 
+    (multiple-value-bind
         (host port) (socket:socket-stream-peer socket)
         (format t "Connect from ~a:~d~%" host port))
     (push (list socket :input nil) *clients*))
-    
+
 (defun echo-service-client (socket)
     (let ((line (read-line socket nil nil)))
         (princ line socket)
@@ -911,7 +911,7 @@ any existing client connections"
 
 (defun echo-close-client (socket)
     "Close a client connection and remove it from the watch list."
-    (multiple-value-bind 
+    (multiple-value-bind
         (host port) (socket:socket-stream-peer socket)
         (format t "Closing connection from ~a:~d~%" host port))
     (close socket)
@@ -1180,7 +1180,7 @@ let service (client:TcpClient) =
     printfn "closed %A" client.Client.RemoteEndPoint
     client.Close |> ignore
 
-let EchoService = 
+let EchoService =
     let socket = new TcpListener(IPAddress.Loopback, 12321)
     do socket.Start()
     printfn "echo service listening on %A" socket.Server.LocalEndPoint
@@ -1376,11 +1376,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class EchoServer {
-	ServerSocket serverSocket;	
-	public EchoServer(){		
+	ServerSocket serverSocket;
+	public EchoServer(){
 	}
-	
-	public void start() {		
+
+	public void start() {
 		try {
 			serverSocket = new ServerSocket(12321);
 			while(true){
@@ -1397,9 +1397,9 @@ public class EchoServer {
 				e.printStackTrace();
 			}
 		}
-		
+
 	}
-	
+
 	public static void main(String[] args) {
 		EchoServer es = new EchoServer();
 		es.start();
@@ -1410,7 +1410,7 @@ class ClientHandler implements Runnable {
 	private static int numConnections;
 	private int connectionId = 0;
 	Socket clientSocket;
-	
+
 	public ClientHandler(Socket s) {
 		connectionId = numConnections++;
 		System.out.println("handling connection, #" + connectionId);
@@ -1494,7 +1494,7 @@ try
         sock = accept(server)
         instance += 1
         socklabel = "$(getsockname(sock)) number $instance"
-        @async begin 
+        @async begin
             println("Server connected to socket $socklabel")
             write(sock, "Connected to echo server.\r\n")
             while isopen(sock)
@@ -2010,10 +2010,10 @@ CreateNetworkServer(1, 12321)
 Repeat
    Event = NetworkServerEvent()
    ClientID = EventClient()
- 
+
    If Event = #PB_NetworkEvent_Connect    ; When a new client has been connected...
       AddMapElement(RecData(), Str(ClientID))
-      
+
    ElseIf Event = #PB_NetworkEvent_Data
       *Buffer = AllocateMemory(20000)
       count = ReceiveNetworkData(ClientID, *Buffer, 20000)
@@ -2022,11 +2022,11 @@ Repeat
          If Right( RecData(Str(ClientID)), 2) = #CRLF$
             SendNetworkString (ClientID, RecData(Str(ClientID)))
             Debug  IPString(GetClientIP(ClientID)) + ":" + Str(GetClientPort(ClientID)) + "  " + RecData(Str(ClientID))
-            RecData(Str(ClientID)) = ""   
+            RecData(Str(ClientID)) = ""
          EndIf
       Next
       FreeMemory(*Buffer)
-      
+
    ElseIf Event = #PB_NetworkEvent_Disconnect  ; When a client has closed the connection...
       DeleteMapElement(RecData(), Str(ClientID))
    EndIf
@@ -2340,7 +2340,7 @@ use std::thread;
 fn main() {
     let listener = TcpListener::bind("127.0.0.1:12321").unwrap();
     println!("server is running on 127.0.0.1:12321 ...");
-    
+
     for stream in listener.incoming() {
         let stream = stream.unwrap();
         thread::spawn(move || handle_client(stream));
@@ -2530,7 +2530,7 @@ vwait forever
 A more succinct version (though one harder to adapt to other kinds of services, but closer to the standard unix echo daemon since it has no line-buffering) is to use an asynchronous binary copy.
 
 ```tcl
-# How to handle an incoming new connection 
+# How to handle an incoming new connection
 proc acceptEcho {chan host port} {
     puts "opened connection from $host:$port"
     fconfigure $chan -translation binary -buffering none
@@ -2680,7 +2680,7 @@ echo:
   syscall
 
   pop rdi
-  mov rdx, rax 
+  mov rdx, rax
   lea rsi, [rsp - 112]
   mov rax, 1
   syscall
@@ -2714,7 +2714,7 @@ accept_connection:
   mov rdi, r15
   syscall
   jmp accept_connection
-    
+
 handle_connection:
 
   mov rdi, r15
@@ -2745,7 +2745,7 @@ handle_connection:
 ```zkl
 const PORT=12321;
 pipe:=Thread.Pipe(); // how server tells thread to connect to user
- 
+
 fcn echo(socket){		// a thread, one per connection
    text:=Data();
    while(t:=socket.read()){
@@ -2754,7 +2754,7 @@ fcn echo(socket){		// a thread, one per connection
    }
    // socket was closed
 }
- 
+
    // Set up the server socket.
 server:=Network.TCPServerSocket.open(PORT);
 println("Listening on %s:%s".fmt(server.hostname,server.port));
@@ -2786,7 +2786,7 @@ zkl: s.write("hoho")
 4
 zkl: s.write("this is a test\n")
 15
-zkl: 
+zkl:
 
 ```
 
@@ -2799,7 +2799,7 @@ zkl: var s=Network.TCPClientSocket.connectTo("localhost",12321);
 TCPClientSocket
 zkl: s.write("a different terminal\n")
 21
-zkl: 
+zkl:
 
 ```
 

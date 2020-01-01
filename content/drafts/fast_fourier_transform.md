@@ -16,12 +16,12 @@ tags = []
 ;Task:
 Calculate the   FFT   (<u>F</u>ast <u>F</u>ourier <u>T</u>ransform)   of an input sequence.
 
-The most general case allows for complex numbers at the input 
-and results in a sequence of equal length, again of complex numbers. 
-If you need to restrict yourself to real numbers, the output should 
-be the magnitude (i.e. sqrt(re²+im²)) of the complex result. 
+The most general case allows for complex numbers at the input
+and results in a sequence of equal length, again of complex numbers.
+If you need to restrict yourself to real numbers, the output should
+be the magnitude (i.e. sqrt(re²+im²)) of the complex result.
 
-The classic version is the recursive Cooley–Tukey FFT. [http://en.wikipedia.org/wiki/Cooley–Tukey_FFT_algorithm Wikipedia] has pseudo-code for that. 
+The classic version is the recursive Cooley–Tukey FFT. [http://en.wikipedia.org/wiki/Cooley–Tukey_FFT_algorithm Wikipedia] has pseudo-code for that.
 Further optimizations are possible but not required.
 
 
@@ -31,20 +31,20 @@ Further optimizations are possible but not required.
 ## Ada
 
 
-The FFT function is defined as a generic function, instantiated upon 
+The FFT function is defined as a generic function, instantiated upon
 a user instance of Ada.Numerics.Generic_Complex_Arrays.
 
 
 ```Ada
 
 with Ada.Numerics.Generic_Complex_Arrays;
- 
+
 generic
    with package Complex_Arrays is
       new Ada.Numerics.Generic_Complex_Arrays (<>);
    use Complex_Arrays;
 function Generic_FFT (X : Complex_Vector) return Complex_Vector;
- 
+
 ```
 
 
@@ -53,7 +53,7 @@ function Generic_FFT (X : Complex_Vector) return Complex_Vector;
 
 with Ada.Numerics;
 with Ada.Numerics.Generic_Complex_Elementary_Functions;
- 
+
 function Generic_FFT (X : Complex_Vector) return Complex_Vector is
 
    package Complex_Elementary_Functions is
@@ -63,7 +63,7 @@ function Generic_FFT (X : Complex_Vector) return Complex_Vector is
    use Ada.Numerics;
    use Complex_Elementary_Functions;
    use Complex_Arrays.Complex_Types;
-   
+
    function FFT (X : Complex_Vector; N, S : Positive)
       return Complex_Vector is
    begin
@@ -102,10 +102,10 @@ Example:
 with Ada.Numerics.Complex_Arrays;  use Ada.Numerics.Complex_Arrays;
 with Ada.Complex_Text_IO;          use Ada.Complex_Text_IO;
 with Ada.Text_IO;                  use Ada.Text_IO;
- 
+
 with Ada.Numerics.Complex_Elementary_Functions;
 with Generic_FFT;
- 
+
 procedure Example is
    function FFT is new Generic_FFT (Ada.Numerics.Complex_Arrays);
    X : Complex_Vector := (1..4 => (1.0, 0.0), 5..8 => (0.0, 0.0));
@@ -127,7 +127,7 @@ end;
 
 ```txt
 
-       X              FFT X 
+       X              FFT X
 ( 1.000, 0.000) ( 4.000, 0.000)
 ( 1.000, 0.000) ( 1.000,-2.414)
 ( 1.000, 0.000) ( 0.000, 0.000)
@@ -203,8 +203,8 @@ FORMAT compl fmt := $f(real fmt)"⊥"f(real fmt)$;
 FORMAT compl array fmt := $f(compl fmt)", "$;
 
 test:(
-  []COMPL 
-    tooth wave ft = fft((1, 1, 1, 1, 0, 0, 0, 0)), 
+  []COMPL
+    tooth wave ft = fft((1, 1, 1, 1, 0, 0, 0, 0)),
     one and a quarter wave ft = fft((0, 0.924, 0.707,-0.383,-1,-0.383, 0.707, 0.924,
                                      0,-0.924,-0.707, 0.383, 1, 0.383,-0.707,-0.924));
   printf((
@@ -218,8 +218,8 @@ test:(
 
 ```txt
 
-Tooth wave: 4.000⊥.000, 1.000⊥-2.414, .000⊥.000, 1.000⊥-.414, .000⊥.000, 1.000⊥.414, .000⊥.000, 1.000⊥2.414, 
-1¼ cycle wave: .000⊥.000, .000⊥.001, .000⊥.000, .000⊥-8.001, .000⊥.000, -.000⊥-.001, .000⊥.000, .000⊥.001, .000⊥.000, .000⊥-.001, .000⊥.000, -.000⊥.001, .000⊥.000, -.000⊥8.001, .000⊥.000, -.000⊥-.001, 
+Tooth wave: 4.000⊥.000, 1.000⊥-2.414, .000⊥.000, 1.000⊥-.414, .000⊥.000, 1.000⊥.414, .000⊥.000, 1.000⊥2.414,
+1¼ cycle wave: .000⊥.000, .000⊥.001, .000⊥.000, .000⊥-8.001, .000⊥.000, -.000⊥-.001, .000⊥.000, .000⊥.001, .000⊥.000, .000⊥-.001, .000⊥.000, -.000⊥.001, .000⊥.000, -.000⊥8.001, .000⊥.000, -.000⊥-.001,
 
 ```
 
@@ -258,7 +258,7 @@ fft←{
 {{out}}
 
 ```txt
- 
+
 4 1J¯2.414213562 0 1J¯0.4142135624 0 1J0.4142135624
       0 1J2.414213562
 
@@ -272,25 +272,25 @@ fft←{
 
 ```bbcbasic
       @% = &60A
-      
+
       DIM Complex{r#, i#}
       DIM in{(7)} = Complex{}, out{(7)} = Complex{}
       DATA 1, 1, 1, 1, 0, 0, 0, 0
-      
+
       PRINT "Input (real, imag):"
       FOR I% = 0 TO 7
         READ in{(I%)}.r#
         PRINT in{(I%)}.r# "," in{(I%)}.i#
       NEXT
-      
+
       PROCfft(out{()}, in{()}, 0, 1, DIM(in{()},1)+1)
-      
+
       PRINT "Output (real, imag):"
       FOR I% = 0 TO 7
         PRINT out{(I%)}.r# "," out{(I%)}.i#
       NEXT
       END
-      
+
       DEF PROCfft(b{()}, o{()}, B%, S%, N%)
       LOCAL I%, t{} : DIM t{} = Complex{}
       IF S% < N% THEN
@@ -307,7 +307,7 @@ fft←{
         NEXT
       ENDIF
       ENDPROC
-      
+
       DEF PROCcmul(c{},d{})
       LOCAL r#, i#
       r# = c.r#*d.r# - c.i#*d.i#
@@ -345,9 +345,9 @@ Output (real, imag):
 
 ## C
 
-Inplace FFT with O(n) memory usage. 
-Note: array size is assumed to be power of 2 and not checked by code; 
-you can just pad it with 0 otherwise.  
+Inplace FFT with O(n) memory usage.
+Note: array size is assumed to be power of 2 and not checked by code;
+you can just pad it with 0 otherwise.
 Also, <code>complex</code> is C99 standard.
 ```C
 
@@ -355,16 +355,16 @@ Also, <code>complex</code> is C99 standard.
 #include <stdio.h>
 #include <math.h>
 #include <complex.h>
- 
+
 double PI;
 typedef double complex cplx;
- 
+
 void _fft(cplx buf[], cplx out[], int n, int step)
 {
 	if (step < n) {
 		_fft(out, buf, n, step * 2);
 		_fft(out + step, buf + step, n, step * 2);
- 
+
 		for (int i = 0; i < n; i += 2 * step) {
 			cplx t = cexp(-I * PI * i / n) * out[i + step];
 			buf[i / 2]     = out[i] + t;
@@ -372,16 +372,16 @@ void _fft(cplx buf[], cplx out[], int n, int step)
 		}
 	}
 }
- 
+
 void fft(cplx buf[], int n)
 {
 	cplx out[n];
 	for (int i = 0; i < n; i++) out[i] = buf[i];
- 
+
 	_fft(buf, out, n, 1);
 }
- 
- 
+
+
 void show(const char * s, cplx buf[]) {
 	printf("%s", s);
 	for (int i = 0; i < 8; i++)
@@ -395,11 +395,11 @@ int main()
 {
 	PI = atan2(1, 1) * 4;
 	cplx buf[] = {1, 1, 1, 1, 0, 0, 0, 0};
- 
+
 	show("Data: ", buf);
 	fft(buf, 8);
 	show("\nFFT : ", buf);
- 
+
 	return 0;
 }
 
@@ -409,7 +409,7 @@ int main()
 {{out}}
 
 ```txt
-Data: 1 1 1 1 0 0 0 0 
+Data: 1 1 1 1 0 0 0 0
 FFT : 4 (1, -2.41421) 0 (1, -0.414214) 0 (1, 0.414214) 0 (1, 2.41421)
 ```
 
@@ -419,8 +419,8 @@ FFT : 4 (1, -2.41421) 0 (1, -0.414214) 0 (1, 0.414214) 0 (1, 2.41421)
 
 OS X 10.7+ / iOS 4+
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <Accelerate/Accelerate.h>
 
 void fft(DSPComplex buf[], int n) {
@@ -429,15 +429,15 @@ void fft(DSPComplex buf[], int n) {
   // half for real and half for complex
   DSPSplitComplex inputSplit = {inputMemory, inputMemory + n};
   DSPSplitComplex outputSplit = {outputMemory, outputMemory + n};
-  
+
   vDSP_ctoz(buf, 2, &inputSplit, 1, n);
-  
+
   vDSP_DFT_Setup setup = vDSP_DFT_zop_CreateSetup(NULL, n, vDSP_DFT_FORWARD);
-  
+
   vDSP_DFT_Execute(setup,
                    inputSplit.realp, inputSplit.imagp,
                    outputSplit.realp, outputSplit.imagp);
-  
+
   vDSP_ztoc(&outputSplit, 1, buf, 2, n);
 }
 
@@ -454,11 +454,11 @@ void show(const char *s, DSPComplex buf[], int n) {
 
 int main() {
   DSPComplex buf[] = {{1,0}, {1,0}, {1,0}, {1,0}, {0,0}, {0,0}, {0,0}, {0,0}};
-  
+
   show("Data: ", buf, 8);
   fft(buf, 8);
   show("FFT : ", buf, 8);
-  
+
   return 0;
 }
 ```
@@ -466,8 +466,8 @@ int main() {
 {{out}}
 
 ```txt
-Data: 1 1 1 1 0 0 0 0 
-FFT : 4 (1, -2.41421) 0 (1, -0.414214) 0 (1, 0.414214) 0 (1, 2.41421) 
+Data: 1 1 1 1 0 0 0 0
+FFT : 4 (1, -2.41421) 0 (1, -0.414214) 0 (1, 0.414214) 0 (1, 2.41421)
 ```
 
 
@@ -475,8 +475,8 @@ FFT : 4 (1, -2.41421) 0 (1, -0.414214) 0 (1, 0.414214) 0 (1, 2.41421)
 ## C++
 
 
-```cpp>#include <complex
-
+```cpp
+#include <complex>
 #include <iostream>
 #include <valarray>
 
@@ -512,7 +512,7 @@ void fft(CArray& x)
 // Cooley-Tukey FFT (in-place, breadth-first, decimation-in-frequency)
 // Better optimized but less intuitive
 // !!! Warning : in some cases this code make result different from not optimased version above (need to fix bug)
-// The bug is now fixed @2017/05/30 
+// The bug is now fixed @2017/05/30
 void fft(CArray &x)
 {
 	// DFT
@@ -641,7 +641,7 @@ using System.Diagnostics;
 // Fast Fourier Transform in C#
 public class Program {
 
-    /* Performs a Bit Reversal Algorithm on a postive integer 
+    /* Performs a Bit Reversal Algorithm on a postive integer
      * for given number of bits
      * e.g. 011 with 3 bits is reversed to 110 */
     public static int BitReverse(int n, int bits) {
@@ -677,15 +677,15 @@ public class Program {
 // Ex. binary value n = 0010 and Bits = 4 as input to BitReverse routine and  returns 4. The code section above //     swaps it. Cells 2 and 4 are swapped. just fine.
 //     now binary value n = 0010 and Bits = 4 as input to BitReverse routine and returns 2. The code Section
 //     swap it. Cells 4 and 2 are swapped.     WROOOOONG
-// 
+//
 // Bug 2
 // The code works on the half section of the cells. In the case of Bits = 4 it means that we are having 16 cells
 // The code works on half the cells        for (int j = 1; j < buffer.Length / 2; j++) buffer.Length returns 16
 // and divide by 2 makes 8, so j goes from 1 to 7. This covers almost everything but what happened to 1011 value
 // which must be swap with 1101. and this is the second bug.
-// 
+//
 // use the following corrected section of the code. I have seen this bug in other languages that uses bit
-// reversal routine. 
+// reversal routine.
 
 #else
             for (int j = 1; j < buffer.Length; j++)
@@ -726,14 +726,14 @@ public class Program {
     }
 
     public static void Main(string[] args) {
-        Complex[] input = {1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0};       
-        
-        FFT(input);       
-                  
+        Complex[] input = {1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0};
+
+        FFT(input);
+
         Console.WriteLine("Results:");
         foreach (Complex c in input) {
-            Console.WriteLine(c);   
-        }   
+            Console.WriteLine(c);
+        }
     }
 }
 ```
@@ -821,7 +821,7 @@ def fft(x : Array(Int32 | Float64)) #: Array(Complex)
   codd = Array.new(x.size / 2) { |k| c[k] * odd[k] }
   return Array.new(x.size / 2) { |k| even[k] + codd[k] } + Array.new(x.size / 2) { |k| even[k] - codd[k] }
 end
- 
+
 fft([1,1,1,1,0,0,0,0]).each{ |c| puts c }
 
 ```
@@ -941,11 +941,11 @@ void main() {
 		]
 	(for ((k N/2)) (vector*= odd k  (exp (/ (* -∏*2 k) N ))))
 	(vector-append (vector-map + even odd) (vector-map - even odd)))))
-	
+
 (define data #( 1 1 1 1  0 0 0 0 ))
 
 (fft data 8)
-    → #( 4+0i 1-2.414213562373095i 0+0i 1-0.4142135623730949i 
+    → #( 4+0i 1-2.414213562373095i 0+0i 1-0.4142135623730949i
        0+0i 1+0.4142135623730949i 0+0i 1+2.414213562373095i)
 
 ```
@@ -1155,7 +1155,7 @@ end module fft_mod
 program test
   use fft_mod
   implicit none
-  complex(kind=dp), dimension(8) :: data = (/1.0, 1.0, 1.0, 1.0, 0.0, 
+  complex(kind=dp), dimension(8) :: data = (/1.0, 1.0, 1.0, 1.0, 0.0,
 
 0.0, 0.0, 0.0/)
   integer :: i
@@ -1280,14 +1280,14 @@ fft [x] = [x]
 fft xs = zipWith (+) ys ts ++ zipWith (-) ys ts
     where n = length xs
           ys = fft evens
-          zs = fft odds 
+          zs = fft odds
           (evens, odds) = split xs
           split [] = ([], [])
           split [x] = ([x], [])
           split (x:y:xs) = (x:xt, y:yt) where (xt, yt) = split xs
           ts = zipWith (\z k -> exp' k n * z) zs [0..]
           exp' k n = cis $ -2 * pi * (fromIntegral k) / (fromIntegral n)
-          
+
 main = mapM_ print $ fft [1,1,1,1,0,0,0,0]
 ```
 
@@ -1317,26 +1317,26 @@ import Data.Complex
 
 concatPair : List (a, a) -> List (a)
 concatPair xs with (unzip xs)
-  | (xs1, xs2) = xs1 ++ xs2 
+  | (xs1, xs2) = xs1 ++ xs2
 
 fft' : List (Complex Double) -> Nat -> Nat -> List (Complex Double)
 fft' (x::xs) (S Z) _ = [x]
-fft' xs n s = concatPair $ map (\(x1,x2,k) => 
+fft' xs n s = concatPair $ map (\(x1,x2,k) =>
                 let eTerm = ((cis (-2 * pi * ((cast k) - 1) / (cast n))) * x2) in
                   (x1 + eTerm, x1 - eTerm)) $ zip3 left right [1..n `div` 2]
-             
+
              where
-                  left : List (Complex Double)  
+                  left : List (Complex Double)
                   right : List (Complex Double)
-                  left  = fft' (xs) (n `div` 2) (2 * s) 
+                  left  = fft' (xs) (n `div` 2) (2 * s)
                   right = fft' (drop s xs) (n `div` 2) (2 * s)
-                
+
 
 -- Recursive Cooley-Tukey with radix-2 DIT case
 -- assumes no of points provided are a power of 2
 fft : List (Complex Double) -> List (Complex Double)
 fft [] = []
-fft xs = fft' xs (length xs) 1 
+fft xs = fft' xs (length xs) 1
 
 
 main : IO()
@@ -1368,7 +1368,7 @@ Based on [[j:Essays/FFT]], with some simplifications -- sacrificing accuracy, op
 
 ```j
 cube  =: ($~ q:@#) :. ,
-rou   =: ^@j.@o.@(% #)@i.@-:  NB. roots of unity 
+rou   =: ^@j.@o.@(% #)@i.@-:  NB. roots of unity
 floop =: 4 : 'for_r. i.#$x do. (y=.{."1 y) ] x=.(+/x) ,&,:"r (-/x)*y end.'
 fft   =: ] floop&.cube rou@#
 ```
@@ -1537,15 +1537,15 @@ function icfft(amplitudes)
 {
 	var N = amplitudes.length;
 	var iN = 1 / N;
-	
+
 	//conjugate if imaginary part is not 0
 	for(var i = 0 ; i < N; ++i)
 		if(amplitudes[i] instanceof Complex)
 			amplitudes[i].im = -amplitudes[i].im;
-			
+
 	//apply fourier transform
 	amplitudes = cfft(amplitudes)
-	
+
 	for(var i = 0 ; i < N; ++i)
 	{
 		//conjugate again
@@ -1562,7 +1562,7 @@ function cfft(amplitudes)
 	var N = amplitudes.length;
 	if( N <= 1 )
 		return amplitudes;
-	
+
 	var hN = N / 2;
 	var even = [];
 	var odd = [];
@@ -1575,7 +1575,7 @@ function cfft(amplitudes)
 	}
 	even = cfft(even);
 	odd = cfft(odd);
-	
+
 	var a = -2*Math.PI;
 	for(var k = 0; k < hN; ++k)
 	{
@@ -1602,10 +1602,10 @@ required by the code above.
 
 ```javascript
 /*
-basic complex number arithmetic from 
+basic complex number arithmetic from
 http://rosettacode.org/wiki/Fast_Fourier_transform#Scala
 */
-function Complex(re, im) 
+function Complex(re, im)
 {
 	this.re = re;
 	this.im = im || 0.0;
@@ -1691,7 +1691,7 @@ def expi(x): [ (x|cos), (x|sin) ];
 
 
 ### =FFT=
- 
+
 
 ```jq
 def fft:
@@ -1701,7 +1701,7 @@ def fft:
          | ( [ .[ range(1; $N; 2) ] ] | fft) as $odd
          | (1|atan * 4) as $pi
          | [ range(0; $N/2) | cplus($even[.];  cmult( expi(-2*$pi*./$N); $odd[.] )) ] +
-           [ range(0; $N/2) | cminus($even[.]; cmult( expi(-2*$pi*./$N); $odd[.] )) ] 
+           [ range(0; $N/2) | cminus($even[.]; cmult( expi(-2*$pi*./$N); $odd[.] )) ]
     end;
 ```
 
@@ -1743,7 +1743,7 @@ fft([1,1,1,1,0,0,0,0])
 ```
 
 
-An implementation of the radix-2 algorithm, which works for any vector for length that is a power of 2: 
+An implementation of the radix-2 algorithm, which works for any vector for length that is a power of 2:
 
 ```julia
 
@@ -1860,7 +1860,7 @@ fun main(args: Array<String>) {
 
 1) the function fft
 
-{def fft   
+{def fft
  {lambda {:s :x}
   {if {= {list.length :x} 1}
    then :x
@@ -1871,7 +1871,7 @@ fun main(args: Array<String>) {
         {list.append {list.map Cadd :ev :t}
                      {list.map Csub :ev :t}} }}}}}
 
-{def rotate 
+{def rotate
  {lambda {:s :f :k :N}
   {if {list.null? :f}
    then nil
@@ -1895,11 +1895,11 @@ We add to the existing {lambda talk}'s list primitives a small set of functions 
    else {cons {car {cdr :l}} {odds {cdr {cdr :l}}}}}}}
 
 {def list.map
- {def list.map.r 
+ {def list.map.r
   {lambda {:f :a :b :c}
    {if {list.null? :a}
     then :c
-    else {list.map.r :f {cdr :a} {cdr :b} 
+    else {list.map.r :f {cdr :a} {cdr :b}
                         {cons {:f {car :a} {car :b}} :c}} }}}
  {lambda {:f :a :b}
   {list.map.r :f {list.reverse :a} {list.reverse :b} nil}}}
@@ -1919,7 +1919,7 @@ We add to the existing {lambda talk}'s list primitives a small set of functions 
 
 {def Cnew
  {lambda {:x :y}
-  {cons :x :y} }} 
+  {cons :x :y} }}
 
 {def Cnorm
  {lambda {:c}
@@ -1956,13 +1956,13 @@ Applying the fft function on such a sample (1 1 1 1 0 0 0 0) where numbers have 
 
 {list.disp {fft -1 {Clist 1 1 1 1 0 0 0 0}}} ->
 
-(4 0) 
-(1 -2.414213562373095) 
-(0 0) 
-(1 -0.4142135623730949) 
-(0 0) 
-(0.9999999999999999 0.4142135623730949) 
-(0 0) 
+(4 0)
+(1 -2.414213562373095)
+(0 0)
+(1 -0.4142135623730949)
+(0 0)
+(0.9999999999999999 0.4142135623730949)
+(0 0)
 (0.9999999999999997 2.414213562373095)
 
 A more usefull example can be seen in http://lambdaway.free.fr/lambdaspeech/?view=zorg
@@ -2085,7 +2085,7 @@ A more usefull example can be seen in http://lambdaway.free.fr/lambdaspeech/?vie
 
 ```
 
- 
+
     M          Re( M)       Im( M)
    0          4             0
    1          1.0           -2.41421356
@@ -2103,9 +2103,9 @@ A more usefull example can be seen in http://lambdaway.free.fr/lambdaspeech/?vie
 ```Lua
 -- operations on complex number
 complex = {__mt={} }
-   
-function complex.new (r, i) 
-  local new={r=r, i=i or 0} 
+
+function complex.new (r, i)
+  local new={r=r, i=i or 0}
   setmetatable(new,complex.__mt)
   return new
 end
@@ -2130,14 +2130,14 @@ end
 function complex.__mt.__tostring(c)
   return "("..c.r..","..c.i..")"
 end
-    
+
 
 -- Cooley–Tukey FFT (in-place, divide-and-conquer)
 -- Higher memory requirements and redundancy although more intuitive
 function fft(vect)
   local n=#vect
   if n<=1 then return vect end
--- divide  
+-- divide
   local odd,even={},{}
   for i=1,n,2 do
     odd[#odd+1]=vect[i]
@@ -2275,10 +2275,10 @@ v;
 
 
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
-Mathematica has a built-in FFT function which uses a proprietary algorithm developed at Wolfram Research. 
-It also has an option to tune the algorithm for specific applications. 
-The options shown below, while not default, 
-produce output that is consistent with most other FFT routines. 
+Mathematica has a built-in FFT function which uses a proprietary algorithm developed at Wolfram Research.
+It also has an option to tune the algorithm for specific applications.
+The options shown below, while not default,
+produce output that is consistent with most other FFT routines.
 
 
 ```Mathematica
@@ -2297,7 +2297,7 @@ Fourier[{1,1,1,1,0,0,0,0}, FourierParameters->{1,-1}]
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
-Matlab/Octave have a builtin FFT function. 
+Matlab/Octave have a builtin FFT function.
 
 
 ```MATLAB
@@ -2346,7 +2346,7 @@ proc fft[T: float | Complex[float]](x: openarray[T]): seq[Complex[float]] =
   if n == 0: return
 
   result.newSeq(n)
-  
+
   if n == 1:
     result[0] = (when T is float: complex(x[0]) else: x[0])
     return
@@ -2420,8 +2420,8 @@ show (fft indata)
 
 ```txt
 
-(1.000000 0.000000) (1.000000 0.000000) (1.000000 0.000000) (1.000000 0.000000) (0.000000 0.000000) (0.000000 0.000000) (0.000000 0.000000) (0.000000 0.000000) 
-(4.000000 0.000000) (1.000000 -2.414214) (0.000000 0.000000) (1.000000 -0.414214) (0.000000 0.000000) (1.000000 0.414214) (0.000000 0.000000) (1.000000 2.414214) 
+(1.000000 0.000000) (1.000000 0.000000) (1.000000 0.000000) (1.000000 0.000000) (0.000000 0.000000) (0.000000 0.000000) (0.000000 0.000000) (0.000000 0.000000)
+(4.000000 0.000000) (1.000000 -2.414214) (0.000000 0.000000) (1.000000 -0.414214) (0.000000 0.000000) (1.000000 0.414214) (0.000000 0.000000) (1.000000 2.414214)
 
 ```
 
@@ -2647,7 +2647,7 @@ sub fft {
     map &cis, (0, -tau / @_ ... *);
     return flat @evn »+« @odd, @evn »-« @odd;
 }
- 
+
 .say for fft <1 1 1 1 0 0 0 0>;
 ```
 
@@ -2697,7 +2697,7 @@ sub fft {
 ```Phix
 --
 -- demo\rosetta\FastFourierTransform.exw
--- 
+--
 ### ===============================
 
 --
@@ -2752,7 +2752,7 @@ integer j=1, n = length(a)
 end function
 
 function cmult(complex arg1, complex arg2)
--- complex multiply 
+-- complex multiply
     return {arg1[REAL]*arg2[REAL]-arg1[IMAG]*arg2[IMAG],
             arg1[REAL]*arg2[IMAG]+arg1[IMAG]*arg2[REAL]}
 end function
@@ -2787,7 +2787,7 @@ integer n = length(a)
     if log2(n)=-1 then
         puts(1, "input vector length is not a power of two, padded with 0's\n\n")
         n = p2round(n)
-         -- pad with 0's 
+         -- pad with 0's
         for j=length(a)+1 to n do
             a = append(a,{0, 0})
         end for
@@ -2877,20 +2877,20 @@ class Complex
         $this->real = $real;
         $this->imaginary = $imaginary;
     }
-    
+
     function Add($other, $dst){
         $dst->real = $this->real + $other->real;
         $dst->imaginary = $this->imaginary + $other->imaginary;
         return $dst;
     }
-    
+
     function Subtract($other, $dst){
 
         $dst->real = $this->real - $other->real;
         $dst->imaginary = $this->imaginary - $other->imaginary;
         return $dst;
     }
-        
+
     function Multiply($other, $dst){
         //cache real in case dst === this
         $r = $this->real * $other->real - $this->imaginary * $other->imaginary;
@@ -2907,7 +2907,7 @@ class Complex
     }
 }
 
- 
+
 ```
 
 
@@ -2923,17 +2923,17 @@ function IFFT($amplitudes)
 {
     $N = count($amplitudes);
     $iN = 1 / $N;
- 
+
     // Conjugate if imaginary part is not 0
     for($i = 0; $i < $N; ++$i){
         if($amplitudes[$i] instanceof Complex){
             $amplitudes[$i]->imaginary = -$amplitudes[$i]->imaginary;
         }
     }
- 
+
     // Apply Fourier Transform
     $amplitudes = FFT($amplitudes);
- 
+
     for($i = 0; $i < $N; ++$i){
         //Conjugate again
         $amplitudes[$i]->imaginary = -$amplitudes[$i]->imaginary;
@@ -2944,16 +2944,16 @@ function IFFT($amplitudes)
     return $amplitudes;
 }
 
- 
+
 function FFT($amplitudes)
 {
     $N = count($amplitudes);
     if($N <= 1){
         return $amplitudes;
     }
- 
+
     $hN = $N / 2;
-    
+
     $even =  array_pad(array() , $hN, 0);
     $odd =  array_pad(array() , $hN, 0);
     for($i = 0; $i < $hN; ++$i){
@@ -2962,23 +2962,23 @@ function FFT($amplitudes)
     }
     $even = FFT($even);
     $odd = FFT($odd);
- 
+
     $a = -2*PI();
     for($k = 0; $k < $hN; ++$k){
         if(!($even[$k] instanceof Complex)){
             $even[$k] = new Complex($even[$k], 0);
         }
-        
+
         if(!($odd[$k] instanceof Complex)){
             $odd[$k] = new Complex($odd[$k], 0);
         }
         $p = $k/$N;
         $t = new Complex(0, $a * $p);
-        
+
         $t->ComplexExponential($t);
         $t->Multiply($odd[$k], $t);
-        
-        
+
+
         $amplitudes[$k] = $even[$k]->Add($t, $odd[$k]);
         $amplitudes[$k + $hN] = $even[$k]->Subtract($t, $even[$k]);
     }
@@ -3172,13 +3172,13 @@ END test;
 {{out}}
 
 ```txt
-    4.000000000000+0.000000000000I    
-    1.000000000000-2.414213562373I    
-    0.000000000000+0.000000000000I    
-    1.000000000000-0.414213562373I    
-    0.000000000000+0.000000000000I    
-    0.999999999999+0.414213562373I    
-    0.000000000000+0.000000000000I    
+    4.000000000000+0.000000000000I
+    1.000000000000-2.414213562373I
+    0.000000000000+0.000000000000I
+    1.000000000000-0.414213562373I
+    0.000000000000+0.000000000000I
+    0.999999999999+0.414213562373I
+    0.000000000000+0.000000000000I
     0.999999999999+2.414213562373I
 ```
 
@@ -3201,7 +3201,7 @@ polar_cx(Mag, Theta, cx(R, I)) :-     % Euler
 %___________________________________________________
 % FFT Implementation. Note: K rdiv N is a rational number,
 % making the lookup in dynamic database predicate twiddles/2 very
-% efficient.  Also, polar_cx/2 gets called only when necessary- in 
+% efficient.  Also, polar_cx/2 gets called only when necessary- in
 % this case (N=8), exactly 3 times: (where Tf=1/4, 1/8, or 3/8).
 tw(0,cx(1,0)) :- !.                    % Calculate e^(-2*pi*k/N)
 tw(Tf, Cx) :- twiddles(Tf, Cx), !.     % dynamic match?
@@ -3260,7 +3260,7 @@ def fft(x):
     return [even[k] + T[k] for k in range(N//2)] + \
            [even[k] - T[k] for k in range(N//2)]
 
-print( ' '.join("%5.3f" % abs(f) 
+print( ' '.join("%5.3f" % abs(f)
                 for f in fft([1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0])) )
 ```
 
@@ -3332,19 +3332,19 @@ fft(c(1,1,1,1,0,0,0,0))
 
 ## REXX
 
-This REXX program is modeled after the   '''Run BASIC'''   version and is a   '''radix-2 DIC'''   (decimation-in-time) 
+This REXX program is modeled after the   '''Run BASIC'''   version and is a   '''radix-2 DIC'''   (decimation-in-time)
 
-form of the   '''Cooley-Turkey FFT'''    algorithm,   and as such, this simplified form assumes that the number of 
+form of the   '''Cooley-Turkey FFT'''    algorithm,   and as such, this simplified form assumes that the number of
 
 data points is equal to an exact power of two.
 
-Note that the REXX language doesn't have any higher math functions, such as the functions   '''COS'''   and   '''R2R''' 
+Note that the REXX language doesn't have any higher math functions, such as the functions   '''COS'''   and   '''R2R'''
 
 ('''cos'''ine   and   reduce radians to a unit circle).
 
-A normalization of radians function   ('''r2r''')   has been included here, as well as the constant   '''pi'''. 
+A normalization of radians function   ('''r2r''')   has been included here, as well as the constant   '''pi'''.
 
-This REXX program also adds zero values   if   the number of data points in the list doesn't exactly equal to a 
+This REXX program also adds zero values   if   the number of data points in the list doesn't exactly equal to a
 
 power of two.   This is known as   ''zero-padding''.
 
@@ -3419,9 +3419,9 @@ pi:  return 3.141592653589793238462643383279502884197169399375105820974944592307
 r2r: return arg(1)  //  ( pi() * 2 )             /*reduce the radians to a unit circle. */
 ```
 
-Programming note:   the numeric precision (decimal digits) is only restricted by the number of decimal digits in the  
+Programming note:   the numeric precision (decimal digits) is only restricted by the number of decimal digits in the
 
-'''pi'''   variable   (which is defined in the penultimate assignment statement in the REXX program. 
+'''pi'''   variable   (which is defined in the penultimate assignment statement in the REXX program.
 
 
 {{out|output|text=  when using the default inputs of:     <tt> 1   1   1   1   0 </tt>}}
@@ -3462,12 +3462,12 @@ Programming note:   the numeric precision (decimal digits) is only restricted by
 def fft(vec)
   return vec if vec.size <= 1
   evens_odds = vec.partition.with_index{|_,i| i.even?}
-  evens, odds = evens_odds.map{|even_odd| fft(even_odd)*2} 
+  evens, odds = evens_odds.map{|even_odd| fft(even_odd)*2}
   evens.zip(odds).map.with_index do |(even, odd),i|
     even + odd * Math::E ** Complex(0, -2 * Math::PI * i / vec.size)
   end
 end
- 
+
 fft([1,1,1,1,0,0,0,0]).each{|c| puts "%9.6f %+9.6fi" % c.rect}
 ```
 
@@ -3549,7 +3549,7 @@ for i = 0 to cnt1 -1
     for j = 0 to cnt2 -1
         h = ip +j
         g = v(j) *cnt2 +v(i)
-        if g >h then 
+        if g >h then
                 temp   = rel(g)
                 rel(g) = rel(h)
                 rel(h) = temp
@@ -3733,7 +3733,7 @@ def _fft(cSeq: Seq[Complex], direction: Complex, scalar: Int): Seq[Complex] = {
     }
     val n = cSeq.length
     assume(n % 2 == 0, "The Cooley-Tukey FFT algorithm only works when the length of the input is even.")
-        
+
     val evenOddPairs = cSeq.grouped(2).toSeq
     val evens = _fft(evenOddPairs map (_(0)), direction, scalar)
     val odds  = _fft(evenOddPairs map (_(1)), direction, scalar)
@@ -3758,7 +3758,7 @@ def rfft(cSeq: Seq[Complex]): Seq[Complex] = _fft(cSeq, Complex(0, -2), 2)
 Usage:
 
 ```Scala
-val data = Seq(Complex(1,0), Complex(1,0), Complex(1,0), Complex(1,0), 
+val data = Seq(Complex(1,0), Complex(1,0), Complex(1,0), Complex(1,0),
                Complex(0,0), Complex(0,2), Complex(0,0), Complex(0,0))
 
 println(fft(data))
@@ -3778,7 +3778,7 @@ Vector(1.000, 1.000, 1.000, 1.000, 0.000, 2.000i, 0.000, 0.000)
 ## Scilab
 
 
-Scilab has a builtin FFT function. 
+Scilab has a builtin FFT function.
 
 
 ```Scilab
@@ -3832,12 +3832,12 @@ import <Utilities/Sequence.sl>;
 fft(x(1)) :=
     let
         n := size(x);
-        
+
         top := fft(x[range(1,n-1,2)]);
         bottom := fft(x[range(2,n,2)]);
-        
+
         d[i] := makeComplex(cos(2.0*pi*i/n), -sin(2.0*pi*i/n)) foreach i within 0...(n / 2 - 1);
-        
+
         z := complexMultiply(d, bottom);
     in
         x when n <= 1
@@ -3859,7 +3859,7 @@ cmd:>fft(makeComplex([1,1,1,1,0,0,0,0],0))
 
 
 
-###  Mata 
+###  Mata
 
 See the '''[https://www.stata.com/help.cgi?mf_fft fft function]''' in Mata help, and in the FAQ: [https://www.stata.com/support/faqs/mata/discrete-fast-fourier-transform/ How can I calculate the Fourier coefficients of a discretely sampled function in Stata?].
 
@@ -3875,7 +3875,7 @@ See the '''[https://www.stata.com/help.cgi?mf_fft fft function]''' in Mata help,
 
 
 
-###  fft command 
+###  fft command
 
 Stata can also compute FFT using the undocumented '''fft''' command. Here is an example showing its syntax. A time variable must have been set prior to calling this command. Notice that in order to get the same result as Mata's fft() function, in both the input and the output variables the imaginary part must be passed '''first'''.
 
@@ -3939,7 +3939,7 @@ class fft_fp #(
   parameter NS = 1<<LOG2_NS
 );
 
-  
+
   static function void bit_reverse_order(input real buffer_in[0:NS-1][1:0], output real buffer[0:NS-1][1:0]);
   begin
     for(reg [LOG2_NS:0] j = 0; j < NS; j = j + 1) begin
@@ -3947,7 +3947,7 @@ class fft_fp #(
       ij = {<<{j[LOG2_NS-1:0]}}; // Right to left streaming
       buffer[j][0] = buffer_in[ij][0];
       buffer[j][1] = buffer_in[ij][1];
-    end    
+    end
   end
   endfunction
   // SystemVerilog FFT implementation translated from Java
@@ -3966,15 +3966,15 @@ class fft_fp #(
           evenIndex = i + k;
           oddIndex  = i + k + (N/2);
           theta     = (-2.0*pi*k/real'(N));
-          // Call to the DPI C functions 
+          // Call to the DPI C functions
           // (it could be memorized to save some calls but I dont think it worthes)
           // w = exp(-2j*pi*k/N);
-          wr = math_pkg::cos(theta); 
+          wr = math_pkg::cos(theta);
           wi = math_pkg::sin(theta);
           // x = w * buffer[oddIndex]
           zr = buffer[oddIndex][0] * wr - buffer[oddIndex][1] * wi;
           zi = buffer[oddIndex][0] * wi + buffer[oddIndex][1] * wr;
-          // update oddIndex before evenIndex 
+          // update oddIndex before evenIndex
           buffer[ oddIndex][0] = buffer[evenIndex][0] - zr;
           buffer[ oddIndex][1] = buffer[evenIndex][1] - zi;
           // because evenIndex is in the rhs
@@ -4098,10 +4098,10 @@ class fft_definition_checker #(
         x[i][0] = x_bits[i][0];
         x[i][1] = x_bits[i][1];
       end
-      
+
       ////               START THE MAGIC HERE           ////
       fft_fp #(.LOG2_NS(LOG2_NS), .NS(NS))::transform(x, X);
-      ////                 END OF THE MAGIC            //// 
+      ////                 END OF THE MAGIC            ////
 
 
       /// Calculate X_ref, the discrete Fourier transform by the definition ///
@@ -4112,7 +4112,7 @@ class fft_definition_checker #(
           X_ref[k][1] = X_ref[k][1] + x[i][0] * w[(i*k) % NS][1] + x[i][1] * w[(i*k) % NS][0];
         end
       end
-      
+
       // Measure the error
       errorEnergy = 0.0;
       foreach(X[k]) begin

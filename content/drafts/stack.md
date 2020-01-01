@@ -14,9 +14,9 @@ tags = []
 [[Category:Encyclopedia]]
 {{data structure}}[[Category:Classic CS problems and programs]]
 
-A '''stack''' is a container of elements with   <big><u>l</u>ast <u>i</u>n, <u>f</u>irst <u>o</u>ut</big>    access policy.   Sometimes it also called '''LIFO'''. 
+A '''stack''' is a container of elements with   <big><u>l</u>ast <u>i</u>n, <u>f</u>irst <u>o</u>ut</big>    access policy.   Sometimes it also called '''LIFO'''.
 
-The stack is accessed through its '''top'''. 
+The stack is accessed through its '''top'''.
 
 The basic stack operations are:
 
@@ -33,16 +33,16 @@ Sometimes the last pushed stack element is made accessible for immutable access 
 
 
 Stacks allow a very simple hardware implementation.
- 
+
 They are common in almost all processors.
- 
-In programming, stacks are also very popular for their way ('''LIFO''') of resource management, usually memory. 
 
-Nested scopes of language objects are naturally implemented by a stack (sometimes by multiple stacks). 
+In programming, stacks are also very popular for their way ('''LIFO''') of resource management, usually memory.
 
-This is a classical way to implement local variables of a re-entrant or recursive subprogram. Stacks are also used to describe a formal computational framework. 
+Nested scopes of language objects are naturally implemented by a stack (sometimes by multiple stacks).
 
-See [[wp:Stack_automaton|stack machine]]. 
+This is a classical way to implement local variables of a re-entrant or recursive subprogram. Stacks are also used to describe a formal computational framework.
+
+See [[wp:Stack_automaton|stack machine]].
 
 Many algorithms in pattern matching, compiler construction (e.g. [[wp:Recursive_descent|recursive descent parsers]]), and machine learning (e.g. based on [[wp:Tree_traversal|tree traversal]]) have a natural representation in terms of stacks.
 
@@ -320,20 +320,20 @@ This is a generic stack implementation.
 
 ```ada
 generic
-   type Element_Type is private; 
+   type Element_Type is private;
 package Generic_Stack is
-   type Stack is private; 
-   procedure Push (Item : Element_Type; Onto : in out Stack); 
-   procedure Pop (Item : out Element_Type; From : in out Stack); 
+   type Stack is private;
+   procedure Push (Item : Element_Type; Onto : in out Stack);
+   procedure Pop (Item : out Element_Type; From : in out Stack);
    function Create return Stack;
    Stack_Empty_Error : exception;
 private
-   type Node; 
-   type Stack is access Node; 
-   type Node is record 
-      Element : Element_Type;  
-      Next    : Stack        := null;  
-   end record; 
+   type Node;
+   type Stack is access Node;
+   type Node is record
+      Element : Element_Type;
+      Next    : Stack        := null;
+   end record;
 end Generic_Stack;
 ```
 
@@ -342,11 +342,11 @@ end Generic_Stack;
 with Ada.Unchecked_Deallocation;
 
 package body Generic_Stack is
-   
+
    ------------
    -- Create --
    ------------
-   
+
    function Create return Stack is
    begin
       return (null);
@@ -361,7 +361,7 @@ package body Generic_Stack is
    begin
       Temp.Element := Item;
       Temp.Next := Onto;
-      Onto := Temp; 
+      Onto := Temp;
    end Push;
 
    ---------
@@ -390,7 +390,7 @@ end Generic_Stack;
 
 ### ALGOL 68: Using linked list
 
-ALGOL 68 uses "HEAP" variables for new LINKs in a linked list.  Generally ALGOL 68's 
+ALGOL 68 uses "HEAP" variables for new LINKs in a linked list.  Generally ALGOL 68's
 [[garbage collection|garbage collector]] should recover the LINK memory some time after a value is popped.
 {{works with|ALGOL 68|Revision 1 - one extension to language used - PRAGMA READ - a non standard feature similar to C's #include directive.}}
 {{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-2.7 algol68g-2.7].}}
@@ -426,7 +426,7 @@ CO REQUIRES:
 END CO
 
 # actually a pointer to the last LINK, there ITEMs are ADDED, pushed & popped #
-MODE OBJSTACK = REF OBJNEXTLINK; 
+MODE OBJSTACK = REF OBJNEXTLINK;
 
 OBJSTACK obj stack empty = NIL;
 
@@ -540,7 +540,7 @@ An alternative to using a linked list is to use a FLEX array.
 MODE DIETITEM = STRUCT (
   STRING food, annual quantity, units, REAL cost
 );
- 
+
 MODE OBJVALUE = DIETITEM;
 
 # PUSH element to stack #
@@ -558,7 +558,7 @@ OP POP = (REF FLEX[]OBJVALUE stack) OBJVALUE:
       stack := stack[2:UPB stack];
       result
    ELSE
-      # raise index error; # SKIP 
+      # raise index error; # SKIP
    FI;
 
 # Stigler's 1939 Diet ... #
@@ -573,11 +573,11 @@ FORMAT diet item fmt = $g": "g" "g" = $"zd.dd$;
 );
 
 FLEX[0]DIETITEM example stack;
- 
+
 FOR i TO UPB stigler diet DO
    example stack +:= stigler diet[i]
 OD;
- 
+
 printf($"Items popped in reverse:"l$);
 WHILE UPB example stack > 0 DO
   printf((diet item fmt, POP example stack, $l$))
@@ -642,7 +642,7 @@ begin
     end popStringStack ;
     % returns true if the StringStack s is empty, false otherwise %
     logical procedure isEmptyStringStack ( reference(StringStack) value s ) ; top(s) = null;
- 
+
     begin % test the StringStack operations %
         reference(StringStack) s;
         s := StringStack( null );
@@ -680,38 +680,38 @@ up      (empty)
 120  FOR I = 1 TO 5
 130  READ ELEMENT$
 140  GOSUB 500_PUSH
-150  NEXT 
-200  GOSUB 400 POP  AND  PRINT 
-210  GOSUB 300_EMPTY AND  PRINT 
+150  NEXT
+200  GOSUB 400 POP  AND  PRINT
+210  GOSUB 300_EMPTY AND  PRINT
 220  FOR I = 1 TO 4
-230  GOSUB 400 POP  AND  PRINT 
-240  NEXT 
-250  GOSUB 300_EMPTY AND  PRINT 
-260  END 
+230  GOSUB 400 POP  AND  PRINT
+240  NEXT
+250  GOSUB 300_EMPTY AND  PRINT
+260  END
 300  GOSUB 700_EMPTY
 310  PRINT "STACK IS ";
 320  IF  NOT EMPTY THEN  PRINT "NOT ";
 330  PRINT "EMPTY"
-340  RETURN 
-400  GOSUB 600 POP 
+340  RETURN
+400  GOSUB 600 POP
 410  PRINT ELEMENT$
-420  RETURN 
-500  REM 
+420  RETURN
+500  REM
 510  REM PUSH
-520  REM 
+520  REM
 530  LET STACK$(SP) = ELEMENT$
 540  LET SP = SP + 1
-550  RETURN 
-600  REM 
+550  RETURN
+600  REM
 610  REM POP
-620  REM 
+620  REM
 630  IF SP THEN SP = SP - 1
 640  LET ELEMENT$ = STACK$(SP)
 650  LET STACK$(SP) = ""
-660  RETURN 
-700  REM 
+660  RETURN
+700  REM
 710  REM EMPTY
-720  REM 
+720  REM
 730  LET EMPTY = SP = 0
 740  RETURN
 
@@ -745,17 +745,17 @@ msgbox % stack("peek")
 msgbox % stack("empty")
 msgbox % stack("pop")
 msgbox % stack("empty")
-return 
+return
 
 stack(command, value = 0)
 {
-  static 
-if !pointer 
+  static
+if !pointer
 pointer = 10000
   if (command = "push")
   {
   _p%pointer% := value
-  pointer -= 1 
+  pointer -= 1
   return value
   }
   if (command = "pop")
@@ -765,7 +765,7 @@ pointer = 10000
   }
   if (command = "peek")
 {
-next := pointer + 1    
+next := pointer + 1
 return _p%next%
 }
   if (command = "empty")
@@ -807,7 +807,7 @@ Return
 
 
 ```babel
-main : 
+main :
     { (1 2 3) foo set     -- foo = (1 2 3)
     4 foo push            -- foo = (1 2 3 4)
     0 foo unshift         -- foo = (0 1 2 3 4)
@@ -819,10 +819,10 @@ main :
 
 empty? : nil?   -- just aliases 'empty?' to the built-in operator 'nil?'
 
-check_foo! : 
-    { "foo is " 
-    {foo empty?) {nil} {"not " .} ifte 
-    "empty" . 
+check_foo! :
+    { "foo is "
+    {foo empty?) {nil} {"not " .} ifte
+    "empty" .
     cr << }
 
 ```
@@ -921,7 +921,7 @@ exit /b 0
 
 ```bbcbasic
       STACKSIZE = 1000
-      
+
       FOR n = 3 TO 5
         PRINT "Push ";n : PROCpush(n)
       NEXT
@@ -932,7 +932,7 @@ exit /b 0
       UNTIL FNisempty
       PRINT "Pop " ; FNpop
       END
-      
+
       DEF PROCpush(n) : LOCAL f%
       DEF FNpop : LOCAL f% : f% = 1
       DEF FNisempty : LOCAL f% : f% = 2
@@ -1074,7 +1074,7 @@ A stack is easiest implemented as a dotted list <code>top.top-1.top-2.<i>[...]</
         " empty"
       )
     )
-& 
+&
 );
 ```
 
@@ -1123,8 +1123,8 @@ until { stack.empty? } { p stack.pop }
 
 Macro expanding to type flexible stack routines.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 /* to read expanded code, run through cpp | indent -st */
@@ -1192,8 +1192,8 @@ int main(void)
 ### Or
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
 #include <stdbool.h>
@@ -1292,13 +1292,16 @@ top = stack.Pop();
 {{libheader|STL}}
 The C++ standard library already provides a ready-made stack class. You get it by writing
 
-```cpp>#include <stack></lang
+```cpp
+#include <stack>
+```
 
 and then using the <tt>std::stack</tt> class.
 
 An example of an explicit implementation of a stack class (which actually implements the standard stack class, except that the standard one is in namespace std):
 
-```cpp>#include <deque
+```cpp
+#include <deque>
 
 template <class T, class Sequence = std::deque<T> >
 class stack {
@@ -1371,7 +1374,7 @@ As is mentioned in the Common Lisp example below, built in cons-based lists work
 
 (defn pop-stack
   "Pops an item from the top of the stack."
-  [] (let [fst (first (deref (:elements stack)))] 
+  [] (let [fst (first (deref (:elements stack)))]
        (dosync (alter (:elements stack) rest)) fst))
 
 (defn top-stack
@@ -1832,11 +1835,11 @@ IMPORT StdLog;
 TYPE
 	(* some pointers to records *)
 	Object* = POINTER TO ABSTRACT RECORD END;
-	
+
 	Integer = POINTER TO RECORD (Object)
 		i: INTEGER
 	END;
-	
+
 	Point = POINTER TO RECORD (Object)
 		x,y: REAL
 	END;
@@ -1847,32 +1850,32 @@ TYPE
 	END;
 
 	(* Stack *)
-	Stack* = POINTER TO RECORD  
+	Stack* = POINTER TO RECORD
 		top- : Node;
 	END;
-	
+
 	PROCEDURE (dn: Object) Show*, NEW, ABSTRACT;
-	
+
 	PROCEDURE (i: Integer) Show*;
 	BEGIN
 		StdLog.String("Integer(");StdLog.Int(i.i);StdLog.String(");");StdLog.Ln
 	END Show;
-	
+
 	PROCEDURE (p: Point) Show*;
 	BEGIN
 		StdLog.String("Point(");StdLog.Real(p.x);StdLog.Char(',');
 		StdLog.Real(p.y);StdLog.String(");");StdLog.Ln
 	END Show;
-	
+
 	PROCEDURE (s: Stack) Init, NEW;
 	BEGIN
 		s.top := NIL;
 	END Init;
-	
+
 	PROCEDURE (s: Stack) Push*(data: ANYPTR), NEW;
 	VAR
 		n: Node;
-	BEGIN 
+	BEGIN
 		NEW(n);n.next := NIL;n.data := data;
 		IF s.top = NIL THEN
 			s.top := n
@@ -1881,7 +1884,7 @@ TYPE
 			s.top := n
 		END
 	END Push;
-	
+
 	PROCEDURE (s: Stack) Pop*(): ANYPTR, NEW;
 	VAR
 		x: ANYPTR;
@@ -1894,12 +1897,12 @@ TYPE
 		END;
 		RETURN x
 	END Pop;
-	
+
 	PROCEDURE (s: Stack) Empty*(): BOOLEAN, NEW;
 	BEGIN
 		RETURN s.top = NIL
 	END Empty;
-	
+
 	PROCEDURE NewStack*(): Stack;
 	VAR
 		s: Stack;
@@ -1907,7 +1910,7 @@ TYPE
 		NEW(s);s.Init;
 		RETURN s
 	END NewStack;
-	
+
 	PROCEDURE NewInteger*(data: INTEGER): Integer;
 	VAR
 		i: Integer;
@@ -1915,7 +1918,7 @@ TYPE
 		NEW(i);i.i := data;
 		RETURN i
 	END NewInteger;
-	
+
 	PROCEDURE NewPoint*(x,y: REAL): Point;
 	VAR
 		p: Point;
@@ -1923,18 +1926,18 @@ TYPE
 		NEW(p);p.x := x;p.y := y;
 		RETURN p
 	END NewPoint;
-	
+
 	PROCEDURE TestStack*;
 	VAR
 		s: Stack;
-	BEGIN 
+	BEGIN
 		s := NewStack();
 		s.Push(NewInteger(1));
 		s.Push(NewPoint(2.0,3.4));
 		s.Pop()(Object).Show();
 		s.Pop()(Object).Show();
 	END TestStack;
-	
+
 END Stacks.
 
 ```
@@ -2089,7 +2092,7 @@ func Stack.pop() {
 func Stack.push(item) {
     valueof(this).add(item)
 }
- 
+
 var stack = Stack()
 stack.push(1)
 stack.push(2)
@@ -2192,7 +2195,7 @@ Named stacks are native objects. The following demonstrates the available operat
 (stack-empty? 'my-stack) → #f
 (stack->list 'my-stack) ; convert stack to list
     → (0 1 2 3 4 5 6 7 8 🐸)
-(stack-swap 'my-stack) ; swaps two last items 
+(stack-swap 'my-stack) ; swaps two last items
     → 8 ; new top
 (stack->list 'my-stack)
      → (0 1 2 3 4 5 6 7 🐸 8) ; swapped
@@ -2267,13 +2270,13 @@ end
 public program()
 {
     var stack := new system'collections'Stack();
- 
+
     stack.push:2;
- 
+
     var isEmpty := stack.Length == 0;
- 
+
     var item := stack.peek(); // Peek without Popping.
- 
+
     item := stack.pop()
 }
 ```
@@ -2282,7 +2285,7 @@ public program()
 
 ## Elisa
 
-This is a generic Stack component based on arrays. See how in Elisa [http://jklunder.home.xs4all.nl/elisa/part01/doc120.html generic components] are defined. 
+This is a generic Stack component based on arrays. See how in Elisa [http://jklunder.home.xs4all.nl/elisa/part01/doc120.html generic components] are defined.
 
 ```Elisa
  component GenericStack ( Stack, Element );
@@ -2297,18 +2300,18 @@ begin
              Stack:[ MaxSize; index:=0; area=array (Element, MaxSize) ];
       Empty( stack ) = (stack.index <= 0);
       Full ( stack ) = (stack.index >= stack.MaxSize);
-      Push ( stack, element ) = 
+      Push ( stack, element ) =
                    [ exception (Full (stack), "Stack Overflow");
-                     stack.index:=stack.index + 1; 
+                     stack.index:=stack.index + 1;
                      stack.area[stack.index]:=element ];
-      Pull ( stack ) = 
+      Pull ( stack ) =
                    [ exception (Empty (stack), "Stack Underflow");
-                     stack.index:=stack.index - 1; 
+                     stack.index:=stack.index - 1;
                      stack.area[stack.index + 1] ];
 end component GenericStack;
 ```
 
-Another example of a generic Stack component is based on an unlimited sequence. A sequence is a uni-directional list. See how Elisa defines [http://jklunder.home.xs4all.nl/elisa/part02/doc010.html sequences]. The component has the same interface as the array based version. 
+Another example of a generic Stack component is based on an unlimited sequence. A sequence is a uni-directional list. See how Elisa defines [http://jklunder.home.xs4all.nl/elisa/part02/doc010.html sequences]. The component has the same interface as the array based version.
 
 ```Elisa
 component GenericStack ( Stack, ElementType );
@@ -2367,14 +2370,14 @@ Pull (BookStack)?
 ```elixir
 defmodule Stack do
   def new, do: []
-  
+
   def empty?([]), do: true
   def empty?(_), do: false
-  
+
   def pop([h|t]), do: {h,t}
-  
+
   def push(h,t), do: [h|t]
-  
+
   def top([h|_]), do: h
 end
 ```
@@ -2629,19 +2632,19 @@ Type Stack(T)
     Declare Constructor()
     Declare Destructor()
     Declare Property capacity As Integer
-    Declare Property count As Integer 
+    Declare Property count As Integer
     Declare Property empty As Boolean
-    Declare Property top As T 
-    Declare Function pop() As T   
+    Declare Property top As T
+    Declare Function pop() As T
     Declare Sub push(item As T)
   Private:
-    a(any) As T 
-    count_ As Integer = 0  
-    Declare Function resize(size As Integer) As Integer    
+    a(any) As T
+    count_ As Integer = 0
+    Declare Function resize(size As Integer) As Integer
 End Type
 
 Constructor Stack(T)()
-  Redim a(0 To 0) '' create a default T instance for various purposes 
+  Redim a(0 To 0) '' create a default T instance for various purposes
 End Constructor
 
 Destructor Stack(T)()
@@ -2651,7 +2654,7 @@ End Destructor
 Property Stack(T).capacity As Integer
   Return UBound(a)
 End Property
- 
+
 Property Stack(T).count As Integer
   Return count_
 End Property
@@ -2665,7 +2668,7 @@ Property Stack(T).top As T
     Return a(count_)
   End If
   Print "Error: Attempted to access 'top' element of an empty stack"
-  Return a(0)  '' return default element 
+  Return a(0)  '' return default element
 End Property
 
 Function Stack(T).pop() As T
@@ -2686,7 +2689,7 @@ Sub Stack(T).push(item As T)
     size = resize(size)
     Redim Preserve a(0 to size)
   End If
-  a(count_) = item   
+  a(count_) = item
 End Sub
 
 Function Stack(T).resize(size As Integer) As Integer
@@ -2699,7 +2702,7 @@ Function Stack(T).resize(size As Integer) As Integer
   End If
   Return size
 End Function
-  
+
 #EndMacro
 ```
 
@@ -2782,10 +2785,10 @@ Example taken and adapted from the Delphi entry.
 
 ```pascal
 program Stack;
- {$IFDEF FPC}{$MODE DELPHI}{$IFDEF WINDOWS}{$APPTYPE CONSOLE}{$ENDIF}{$ENDIF} 
- {$ASSERTIONS ON} 
+ {$IFDEF FPC}{$MODE DELPHI}{$IFDEF WINDOWS}{$APPTYPE CONSOLE}{$ENDIF}{$ENDIF}
+ {$ASSERTIONS ON}
 uses Generics.Collections;
- 
+
 var
   lStack: TStack<Integer>;
 begin
@@ -2795,7 +2798,7 @@ begin
     lStack.Push(2);
     lStack.Push(3);
     Assert(lStack.Peek = 3); // 3 should be at the top of the stack
- 
+
     Write(lStack.Pop:2);   // 3
     Write(lStack.Pop:2);   // 2
     Writeln(lStack.Pop:2); // 1
@@ -2978,7 +2981,7 @@ stack.push('kittens')
 assert stack.last() == 'kittens'
 assert stack.size() == 3
 assert ! stack.empty
- 
+
 println stack
 
 assert stack.pop() == "kittens"
@@ -3077,9 +3080,9 @@ nonEmpty = empty >>= flip when (fail "Stack empty")
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-Stacks (and double ended queues) are built into Icon and Unicon as part of normal list access. In addition to 'push' and 'pop', there are the functions 'put', 'get' (alias for pop), 'pull', list element addressing, and list sectioning (like sub-strings).  
-Unicon extended 'insert' and 'delete' to work with lists.  
-The programmer is free to use any or all of the list processing functions on any problem.  
+Stacks (and double ended queues) are built into Icon and Unicon as part of normal list access. In addition to 'push' and 'pop', there are the functions 'put', 'get' (alias for pop), 'pull', list element addressing, and list sectioning (like sub-strings).
+Unicon extended 'insert' and 'delete' to work with lists.
+The programmer is free to use any or all of the list processing functions on any problem.
 The following illustrates typical stack usage:
 
 ```Icon
@@ -3115,13 +3118,13 @@ Node := Object clone do(
 
 Stack := Object clone do(
     node := nil
-    
+
     pop := method(
         obj := node obj
         node = node next
         obj
     )
-    
+
     push := method(obj,
         nn := Node clone
         nn obj = obj
@@ -3152,21 +3155,21 @@ Stack = Origin mimic do(
 120 LET PTR=1
 130 DEF PUSH(X)
 140   IF PTR>N THEN
-150     PRINT "Stack is full.":STOP 
-160   ELSE 
+150     PRINT "Stack is full.":STOP
+160   ELSE
 170     LET STACK(PTR)=X:LET PTR=PTR+1
-180   END IF 
-190 END DEF 
+180   END IF
+190 END DEF
 200 DEF POP
 210   IF PTR=1 THEN
-220     PRINT "Stack is empty.":STOP 
-230   ELSE 
+220     PRINT "Stack is empty.":STOP
+230   ELSE
 240     LET PTR=PTR-1:LET POP=STACK(PTR)
-250   END IF 
-260 END DEF 
+250   END IF
+260 END DEF
 270 DEF EMPTY
 280   LET PTR=1
-290 END DEF 
+290 END DEF
 300 DEF TOP=STACK(PTR-1)
 310 CALL PUSH(3):CALL PUSH(5)
 320 PRINT POP+POP
@@ -3249,7 +3252,7 @@ public class Stack{
         return first == null;
     }
     public Object Pop(){
-        if(isEmpty()) 
+        if(isEmpty())
             throw new Exception("Can't Pop from an empty Stack.");
         else{
             Object temp = first.value;
@@ -3264,7 +3267,7 @@ public class Stack{
         public Node next;
         public Object value;
         public Node(Object value){
-            this(value, null); 
+            this(value, null);
         }
         public Node(Object value, Node next){
             this.next = next;
@@ -3283,7 +3286,7 @@ public class Stack{
         return first == null;
     }
     public T Pop(){
-        if(isEmpty()) 
+        if(isEmpty())
             throw new Exception("Can't Pop from an empty Stack.");
         else{
             T temp = first.value;
@@ -3298,7 +3301,7 @@ public class Stack{
         public Node next;
         public T value;
         public Node(T value){
-            this(value, null); 
+            this(value, null);
         }
         public Node(T value, Node next){
             this.next = next;
@@ -3354,7 +3357,7 @@ function makeStack() {
   var peekStack = function () {
     return stack[stack.length-1];
   };
-    
+
   return {
     pop: popStack,
     push: pushStack,
@@ -3559,8 +3562,8 @@ Lasso Arrays natively supports push and pop.
 ```Lasso
 local(a) = array
 
-#a->push('a') 
-#a->push('b') 
+#a->push('a')
+#a->push('b')
 #a->push('c')
 
 #a->pop // c
@@ -3808,7 +3811,7 @@ empty(s);
 ```Mathematica
 EmptyQ[a_] := If[Length[a] == 0, True, False]
 SetAttributes[Push, HoldAll];[a_, elem_] := AppendTo[a, elem]
-SetAttributes[Pop, HoldAllComplete]; 
+SetAttributes[Pop, HoldAllComplete];
 Pop[a_] := If[EmptyQ[a], False, b = Last[a]; Set[a, Most[a]]; b]
 Peek[a_] := If[EmptyQ[a], False, Last[a]]
 
@@ -3816,7 +3819,7 @@ Example use:
 stack = {};Push[stack, 1]; Push[stack, 2]; Push[stack, 3]; Push[stack, 4];
 Peek[stack]
 ->4
-Pop[stack] 
+Pop[stack]
 ->4
 Peek[stack]
 ->3
@@ -3824,13 +3827,13 @@ Peek[stack]
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-Here is a simple implementation of a stack, that works in Matlab and Octave. It is closely related to the queue/fifo example. 
+Here is a simple implementation of a stack, that works in Matlab and Octave. It is closely related to the queue/fifo example.
 
 ```matlab
 mystack = {};
-   
-% push 
-mystack{end+1} = x; 
+
+% push
+mystack{end+1} = x;
 
 %pop
 x = mystack{end};  mystack{end} = [];
@@ -3838,95 +3841,95 @@ x = mystack{end};  mystack{end} = [];
 %peek,top
 x = mystack{end};
 
-% empty 
+% empty
 isempty(mystack)
 ```
 
-Below is another solution, that encapsulates the fifo within the object-orientated "class" elements supported by Matlab. The given implementation is exactly the same as the MATLAB FIFO example, except that the "push()" function is modified to add stuff to the end of the queue instead of the beginning. This is a naive implementation, for rigorous applications this should be modified to initialize the LIFO to a buffered size, so that the "pop()" and "push()" functions don't resize the cell array that stores the LIFO's elements, every time they are called. 
+Below is another solution, that encapsulates the fifo within the object-orientated "class" elements supported by Matlab. The given implementation is exactly the same as the MATLAB FIFO example, except that the "push()" function is modified to add stuff to the end of the queue instead of the beginning. This is a naive implementation, for rigorous applications this should be modified to initialize the LIFO to a buffered size, so that the "pop()" and "push()" functions don't resize the cell array that stores the LIFO's elements, every time they are called.
 
 To use this implementation you must save this code in a MATLAB script file named "LIFOQueue.m" which must be saved in a folder named @LIFOQueue in your MATLAB directory.
 
 ```MATLAB
 %This class impliments a standard LIFO queue.
 classdef LIFOQueue
-    
-    properties  
+
+    properties
         queue
     end
-    
+
     methods
-         
+
         %Class constructor
         function theQueue = LIFOQueue(varargin)
-            
+
             if isempty(varargin) %No input arguments
-                
+
                 %Initialize the queue state as empty
                 theQueue.queue = {};
             elseif (numel(varargin) > 1) %More than 1 input arg
-                
+
                 %Make the queue the list of input args
                 theQueue.queue = varargin;
             elseif iscell(varargin{:}) %If the only input is a cell array
-                
-                %Make the contents of the cell array the elements in the queue 
+
+                %Make the contents of the cell array the elements in the queue
                 theQueue.queue = varargin{:};
             else %There is one input argument that is not a cell
-                
+
                 %Make that one arg the only element in the queue
                 theQueue.queue = varargin;
             end
-            
-        end        
-        
+
+        end
+
         %push() - pushes a new element to the end of the queue
         function push(theQueue,varargin)
-            
+
             if isempty(varargin)
                 theQueue.queue(end+1) = {[]};
             elseif (numel(varargin) > 1) %More than 1 input arg
-                
+
                 %Make the queue the list of input args
                 theQueue.queue( end+1:end+numel(varargin) ) = varargin;
             elseif iscell(varargin{:}) %If the only input is a cell array
-                
-                %Make the contents of the cell array the elements in the queue 
+
+                %Make the contents of the cell array the elements in the queue
                 theQueue.queue( end+1:end+numel(varargin{:}) ) = varargin{:};
             else %There is one input argument that is not a cell
-                
+
                 %Make that one arg the only element in the queue
-                theQueue.queue{end+1} = varargin{:};                
+                theQueue.queue{end+1} = varargin{:};
             end
-            
+
             %Makes changes to the queue permanent
-            assignin('caller',inputname(1),theQueue);  
-            
+            assignin('caller',inputname(1),theQueue);
+
         end
-        
+
         %pop() - pops the first element off the queue
         function element = pop(theQueue)
-           
+
             if empty(theQueue)
                 error 'The queue is empty'
             else
                 %Returns the first element in the queue
                 element = theQueue.queue{end};
-                
+
                 %Removes the first element from the queue
                 theQueue.queue(end) = [];
-                
+
                 %Makes changes to the queue permanent
                 assignin('caller',inputname(1),theQueue);
             end
         end
-        
+
         %empty() - Returns true if the queue is empty
         function trueFalse = empty(theQueue)
-           
+
             trueFalse = isempty(theQueue.queue);
-            
+
         end
-        
+
     end %methods
 end
 ```
@@ -3935,9 +3938,9 @@ Sample Usage:
 
 ```MATLAB>>
  myLIFO = LIFOQueue(1,'fish',2,'fish','red fish','blue fish')
- 
+
 myLIFO =
- 
+
 	LIFOQueue
 
 >> myLIFO.pop()
@@ -4030,12 +4033,12 @@ sstack.pop(Elem, !Stack) :-
 ```
 
 
-It should be noted that this is purely an illustrative example of a very simple stack.  
+It should be noted that this is purely an illustrative example of a very simple stack.
 A real implementation would have predicate (:- pred) versions of the functions (:- func), for example, for consistency's sake with either the functions implemented in terms of the predicates or vice versa.  [http://www.mercurylang.org/information/doc-release/mercury_library/stack.html#stack The real library implementation] also features more functionality including both semi-deterministic and deterministic versions of some functions/predicates as well as the ability to push a list of values in one operation.
 
-Some of the implementation decisions above need an explanation.  
-new/0 and push/2 were implemented as functions both for pedagogical reasons (a desire to show function syntax) and because they are a natural fit for functional thought: 0 or more inputs, one output, deterministic.  
-is_empty/1 was implemented as a predicate because it's a single, simple succeed/fail test which is precisely what a predicate is in logic.  
+Some of the implementation decisions above need an explanation.
+new/0 and push/2 were implemented as functions both for pedagogical reasons (a desire to show function syntax) and because they are a natural fit for functional thought: 0 or more inputs, one output, deterministic.
+is_empty/1 was implemented as a predicate because it's a single, simple succeed/fail test which is precisely what a predicate is in logic.
 pop/3 was implemented as a predicate because it has two outputs (the element and the new stack) ''and'' because it is semi-deterministic (it will fail if the stack is empty).
 
 Note also that while pop/3 has three parameters, the function implementation looks like it has two.  This is because the !Stack "parameter" is actually a ''pair'' of parameters using Mercury's state variable notation.  !Stack is, in effect, two variables: !.Stack and !:Stack, input and output respectively.  Using state variable notation here is a bit of overkill but again was brought in for pedagogical reasons to show the syntax.
@@ -4114,32 +4117,32 @@ Mutable stacks are available in <tt>System.Collections</tt>, <tt>System.Collecti
 public class Stack[T]
 {
     private stack : list[T];
-    
+
     public this()
     {
         stack = [];
     }
-    
+
     public this(init : list[T])
     {
         stack = init;
     }
-    
+
     public Push(item : T) : Stack[T]
     {
         Stack(item::stack)
     }
-    
+
     public Pop() : T * Stack[T]
     {
         (stack.Head, Stack(stack.Tail))
     }
-    
+
     public Peek() : T
     {
         stack.Head
     }
-    
+
     public IsEmpty() : bool
     {
         stack.Length == 0
@@ -4161,10 +4164,10 @@ options replace format comments java crossref savelog symbols nobinary
 stk = create_stk
 
 say push(stk,123) 'from push'
-say empty(stk) 
+say empty(stk)
 say peek(stk)     'from peek'
 say pull(stk)     'from pull'
-say empty(stk) 
+say empty(stk)
 Say pull(stk)     'from pull'
 
 method create_stk static returns Rexx
@@ -4222,7 +4225,7 @@ import math
 type
   EStackEmpty = object of E_Base
 
-  TStack* [A] = object 
+  TStack* [A] = object
     data: seq[A]
     count: int
 
@@ -4237,8 +4240,8 @@ proc cap*[A] (s: TStack[A]): int =
 proc len*[A](stack: TStack[A]): int =
   result = stack.count
 
-proc push*[A](s: var TStack[A], item: A) = 
-  if s.count == s.data.len: 
+proc push*[A](s: var TStack[A], item: A) =
+  if s.count == s.data.len:
     # not enough room, make container bigger
     var d: Seq[A]
     newSeq(d,s.len * 2)
@@ -4248,16 +4251,16 @@ proc push*[A](s: var TStack[A], item: A) =
   s.data[s.count] = item
   inc(s.count)
 
-proc pop*[A](s: var TStack[A]): A {.raises: [EStackEmpty].}= 
+proc pop*[A](s: var TStack[A]): A {.raises: [EStackEmpty].}=
   if s.count == 0:
     raise newException(EStackEmpty,"the stack is empty")
   dec(s.count)
   result = s.data[s.count]
 
-proc top*[A](s: TStack[A]): A = 
+proc top*[A](s: TStack[A]): A =
   result = s.data[s.count - 1]
 
-proc isEmpty*[A](s: var TStack[A]): bool = 
+proc isEmpty*[A](s: var TStack[A]): bool =
   return s.count == 0
 
 #Tests
@@ -4267,14 +4270,14 @@ when isMainModule:
   stk.push('b')
   stk.push('c')
   stk.push('d')
-  
+
   assert(stk.count == 4)
   assert(stk.data.len == 4)
   stk.push('e')
   assert(stk.cap == 8)
   assert(stk.top == 'e')
 
-  
+
   discard stk.pop
   discard stk.pop
   discard stk.pop
@@ -4286,13 +4289,13 @@ when isMainModule:
   try:
     discard stk.pop
   except:
-    let 
+    let
       e = getCurrentException()
       msg = getCurrentExceptionMsg()
     echo "Exception: [[", repr(e), "]] msg: ", msg
 
-  
-  
+
+
 
 ```
 
@@ -4303,7 +4306,7 @@ when isMainModule:
 ```oberon2
 
 MODULE Stacks;
-IMPORT 
+IMPORT
   Object,
   Object:Boxed,
   Out := NPCT:Console;
@@ -4364,8 +4367,8 @@ TYPE
     Out.String("top: ");Out.Object(s.Top());Out.Ln;
     Out.String("size: ");Out.Int(s.Size(),0);Out.Ln
   END Test;
- 
-BEGIN 
+
+BEGIN
   Test
 END Stacks.
 
@@ -4391,29 +4394,29 @@ MODULE Stacks; (** AUTHOR ""; PURPOSE ""; *)
 IMPORT
 	Out := KernelLog;
 
-TYPE	
+TYPE
 	Object = OBJECT
 	END Object;
-	
+
 	Stack* = OBJECT
 	VAR
 		top-,capacity-: LONGINT;
 		pool: POINTER TO ARRAY OF Object;
-		
+
 		PROCEDURE & InitStack*(capacity: LONGINT);
 		BEGIN
 			SELF.capacity := capacity;
 			SELF.top := -1;
 			NEW(SELF.pool,capacity)
 		END InitStack;
-		
+
 		PROCEDURE Push*(a:Object);
 		BEGIN
 			INC(SELF.top);
 			ASSERT(SELF.top < SELF.capacity,100);
 			SELF.pool[SELF.top] := a
 		END Push;
-		
+
 		PROCEDURE Pop*(): Object;
 		VAR
 			r: Object;
@@ -4422,27 +4425,27 @@ TYPE
 			r := SELF.pool[SELF.top];
 			DEC(SELF.top);RETURN r
 		END Pop;
-		
+
 		PROCEDURE Top*(): Object;
 		BEGIN
 			ASSERT(SELF.top >= 0);
 			RETURN SELF.pool[SELF.top]
 		END Top;
-		
+
 		PROCEDURE IsEmpty*(): BOOLEAN;
 		BEGIN
 			RETURN SELF.top < 0
 		END IsEmpty;
-		
+
 	END Stack;
-	
+
 	BoxedInt = OBJECT
 	(Object)
 	VAR
 		val-: LONGINT;
 
 	PROCEDURE & InitBoxedInt*(CONST val: LONGINT);
-	BEGIN	
+	BEGIN
 		SELF.val := val
 	END InitBoxedInt;
 
@@ -4456,13 +4459,13 @@ TYPE
 	BEGIN
 		NEW(s,10); (* A new stack of ten objects *)
 		NEW(bi,100);s.Push(bi);
-		NEW(bi,102);s.Push(bi);		
+		NEW(bi,102);s.Push(bi);
 		NEW(bi,104);s.Push(bi);
 		Out.Ln;
 		Out.String("Capacity:> ");Out.Int(s.capacity,0);Out.Ln;
 		Out.String("Size:> ");Out.Int(s.top + 1,0);Out.Ln;
 		obj := s.Pop(); obj := s.Pop();
-		WITH obj: BoxedInt DO 
+		WITH obj: BoxedInt DO
 			Out.String("obj:> ");Out.Int(obj.val,0);Out.Ln
 		ELSE
 			Out.String("Unknown object...");Out.Ln;
@@ -4553,7 +4556,7 @@ Stack method: top   self last ;
 ```
 
 
-Usage : 
+Usage :
 
 ```Oforth
 : testStack
@@ -4586,7 +4589,7 @@ Stack is empty
 
 ## ooRexx
 
-The ooRexx queue class functions as a stack as well (it is a dequeue really).  
+The ooRexx queue class functions as a stack as well (it is a dequeue really).
 
 ```ooRexx
 
@@ -4643,7 +4646,7 @@ export
    Push
    Pop
    Empty
-define   
+define
    fun {New}
       {NewCell nil}
    end
@@ -4663,7 +4666,7 @@ define
    in
       Result|NewStack = OldStack
    end
-   
+
    fun {Empty Stack}
       @Stack == nil
    end
@@ -4775,7 +4778,7 @@ sub empty{ not @_ }
 
 ## Perl 6
 
-Perl 6 still has the stack functions from Perl 5, but now they also can be accessed by object notation: 
+Perl 6 still has the stack functions from Perl 5, but now they also can be accessed by object notation:
 
 ```perl6
 my @stack;          # just a array
@@ -4889,7 +4892,7 @@ end function
 
 integer sid = new_stack()
 ?empty(sid)                 -- 1
-push(sid,5) 
+push(sid,5)
 ?empty(sid)                 -- 0
 push(sid,6)
 ?pop(sid)                   -- 6
@@ -5207,7 +5210,7 @@ Wend
 ## Python
 
 {{works with|Python|2.5}}
-The faster and Pythonic way is using a deque (available from 2.4). 
+The faster and Pythonic way is using a deque (available from 2.4).
 A regular list is a little slower.
 
 ```python
@@ -5241,7 +5244,7 @@ class Stack:
     def __init__(self):
         self._first = None
     def __nonzero__(self):
-        return self._first is not None 
+        return self._first is not None
     def append(self, value):
         self._first = (value, self._first)
     def pop(self):
@@ -5253,7 +5256,7 @@ class Stack:
 
 Notes:
 
-Using list interface - append, __nonzero__ make it easier to use, cleanup the client code, and allow changing the implementation later without affecting the client code. 
+Using list interface - append, __nonzero__ make it easier to use, cleanup the client code, and allow changing the implementation later without affecting the client code.
 For example, instead of:
 
 ```python
@@ -5278,13 +5281,13 @@ library(proto)
 stack <- proto(expr = {
    l <- list()
    empty <- function(.) length(.$l) == 0
-   push <- function(., x) 
+   push <- function(., x)
    {
       .$l <- c(list(x), .$l)
       print(.$l)
       invisible()
    }
-   pop <- function(.) 
+   pop <- function(.)
    {
       if(.$empty()) stop("can't pop from an empty list")
       .$l[[1]] <- NULL
@@ -5325,7 +5328,7 @@ stack$pop()
 stack$pop()
 # list()
 stack$pop()
-# Error in get("pop", env = stack, inherits = TRUE)(stack, ...) : 
+# Error in get("pop", env = stack, inherits = TRUE)(stack, ...) :
 #   can't pop from an empty list
 ```
 
@@ -5404,7 +5407,7 @@ stack: make object! [
 ]
 
 ; Teeny Tiny Test Suite
- 
+
 assert: func [code][print [either do code ["  ok"]["FAIL"]  mold code]]
 
 print "Simple integers:"
@@ -5559,7 +5562,7 @@ load "stdlib.ring"
 ostack = new stack
 for n = 5 to 7
      see "Push: " + n + nl
-     ostack.push(n) 
+     ostack.push(n)
 next
 see "Pop:" + ostack.pop() + nl
 see "Push: " + "8" + nl
@@ -5612,30 +5615,30 @@ require 'forwardable'
 # Stack#pop removes elements from the top.
 class Stack
   extend Forwardable
-  
+
   # Creates a Stack containing _objects_.
   def self.[](*objects)
     new.push(*objects)
   end
-  
+
   # Creates an empty Stack.
   def initialize
     @ary = []
   end
-  
+
   # Duplicates a Stack.
   def initialize_copy(obj)
     super
     @ary = @ary.dup
   end
-  
+
   # Adds each object to the top of this Stack. Returns self.
   def push(*objects)
     @ary.push(*objects)
     self
   end
   alias << push
-  
+
   ##
   # :method: pop
   # :call-seq:
@@ -5649,7 +5652,7 @@ class Stack
   # an Array of them. If this Stack contains fewer than _n_ elements,
   # returns them all. If this Stack is empty, returns an empty Array.
   def_delegator :@ary, :pop
-  
+
   ##
   # :method: top
   # :call-seq:
@@ -5657,18 +5660,18 @@ class Stack
   #   top(n) -> ary
   # Returns the topmost element without modifying the stack.
   def_delegator :@ary, :last, :top
-  
+
   ##
   # :method: empty?
   # Returns true if this Stack contains no elements.
   def_delegator :@ary, :empty?
-  
+
   ##
   # :method: size
   # Returns the number of elements in this Stack.
   def_delegator :@ary, :size
   alias length size
-  
+
   # Converts this Stack to a String.
   def to_s
     "#{self.class}#{@ary.inspect}"
@@ -5755,7 +5758,7 @@ END FUNCTION
 
 ' ------ POP the stack -----
 FUNCTION pop$()
-if stackEnd = 0 then 
+if stackEnd = 0 then
    pop$     = "Stack is MT"
   else
    pop$     = stack$(stackEnd)                        ' pop last in
@@ -5820,13 +5823,13 @@ Simply uses a singly-linked list.
 pub struct Stack<T> {
     head: Link<T>,
 }
-struct Frame<T> { 
+struct Frame<T> {
     elem: T,
     next: Link<T>,
 }
 
 /// Iterate by value (consumes list)
-pub struct IntoIter<T>(Stack<T>); 
+pub struct IntoIter<T>(Stack<T>);
 impl<T> Iterator for IntoIter<T> {
     type Item = T;
     fn next(&mut self) -> Option<Self::Item> {
@@ -5835,7 +5838,7 @@ impl<T> Iterator for IntoIter<T> {
 }
 
 /// Iterate by immutable reference
-pub struct Iter<'a, T: 'a> { 
+pub struct Iter<'a, T: 'a> {
     next: Option<&'a Frame<T>>,
 }
 impl<'a, T> Iterator for Iter<'a, T> { // Iterate by immutable reference
@@ -5880,7 +5883,7 @@ impl<T> Stack<T> {
 
     /// Remove element from top of stack, returning the value
     pub fn pop(&mut self) -> Option<T> {
-        self.head.take().map(|frame| { 
+        self.head.take().map(|frame| {
             let frame = *frame;
             self.head = frame.next;
             frame.elem
@@ -5913,7 +5916,7 @@ impl<T> Stack<T> {
     }
 }
 
-// The Drop trait tells the compiler how to free an object after it goes out of scope. 
+// The Drop trait tells the compiler how to free an object after it goes out of scope.
 // By default, the compiler would do this recursively which *could* blow the stack for
 // extraordinarily long lists. This simply tells it to do it iteratively.
 impl<T> Drop for Stack<T> {
@@ -5936,14 +5939,14 @@ This one uses a builtin linked list to keep the values pushed onto the stack.
 class STACK{T} is
   private attr stack :LLIST{T};
 
-  create:SAME is 
+  create:SAME is
     res ::= new;
     res.stack := #LLIST{T};
     return res;
   end;
 
   push(elt: T) is
-    stack.insert_front(elt);    
+    stack.insert_front(elt);
   end;
 
   pop: T is
@@ -6014,7 +6017,7 @@ class Stack[T] {
 }
 ```
 
-Or use the standard Scala library. 
+Or use the standard Scala library.
 Slightly modified to meet to requirements of this task.
 
 ```scala
@@ -6267,15 +6270,15 @@ Generic stack.
     var empty:Bool {
         return items.count == 0
     }
-    
+
     func peek() -> T {
         return items[items.count - 1]
     }
-    
+
     mutating func pop() -> T {
         return items.removeLast()
     }
-    
+
     mutating func push(obj:T) {
         items.append(obj)
     }
@@ -6524,11 +6527,11 @@ End Sub
 ```txt
 
 stacktest
-stack size is  3 
-pop:  0,731688868873821 
+stack size is  3
+pop:  0,731688868873821
 pop: a string
-pop:  45 
-stack size is  0 
+pop:  45
+stack size is  0
 
 ```
 
@@ -6546,7 +6549,7 @@ class stack
 	dim tos
 	dim stack()
 	dim stacksize
-	
+
 	private sub class_initialize
 		stacksize = 100
 		redim stack( stacksize )
@@ -6557,19 +6560,19 @@ class stack
 		stack(tos) = x
 		tos = tos + 1
 	end sub
-	
+
 	public property get stackempty
 		stackempty = ( tos = 0 )
 	end property
-	
+
 	public property get stackfull
 		stackfull = ( tos > stacksize )
 	end property
-	
+
 	public property get stackroom
 		stackroom = stacksize - tos
 	end property
-	
+
 	public function pop()
 		pop = stack( tos - 1 )
 		tos = tos - 1
@@ -6632,7 +6635,7 @@ next
 
 ```vb
 ' Stack Definition - VBScript
- 
+
 Option Explicit
 
 Dim stack, i, x
@@ -6655,7 +6658,7 @@ Next 'i
 Sub push(s, what)
     s.Add what
 End Sub 'push
- 
+
 Function pop(s)
 	Dim what
     If s.Count > 0 Then
@@ -6666,10 +6669,10 @@ Function pop(s)
     End If
     pop = what
 End Function 'pop
- 
+
 Function empty_(s)
     empty_ = s.Count = 0
-End Function 'empty_ 
+End Function 'empty_
 ```
 
 {{out}}
@@ -6877,7 +6880,7 @@ ST
 [7] (st 'emptyp)
 
 #T
-[8] 
+[8]
 ```
 
 
@@ -6923,7 +6926,7 @@ CrLf(0);
 ```txt
 
 100
-100 81 64 49 36 25 16 9 4 1 0 
+100 81 64 49 36 25 16 9 4 1 0
 
 ```
 
@@ -6958,7 +6961,7 @@ sub empty()
     return not top
 end sub
 
-// 
+//
 ### ===== test =====
 
 

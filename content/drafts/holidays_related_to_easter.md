@@ -21,8 +21,8 @@ Calculate the dates of:
 :::*   [[wp:Corpus Christi (feast)|Corpus Christi feast]]
 
 
-As an example, calculate for the first year of each century from; 
-:::*   years     400   to   2100 [[wp:Common Era|CE]]   and for 
+As an example, calculate for the first year of each century from;
+:::*   years     400   to   2100 [[wp:Common Era|CE]]   and for
 :::*   years         2010   to   2020 CE.
 
 
@@ -38,8 +38,8 @@ From year 325 CE on,   [[wp:Easter Sunday|Easter Sunday]]   is the Sunday follow
 ## 360 Assembly
 
 {{trans|C sharp}}
-For maximum compatibility, this program uses only the basic instruction set (S/360) 
-and two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible. 
+For maximum compatibility, this program uses only the basic instruction set (S/360)
+and two ASSIST macros (XDECO, XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Holidays related to Easter    29/05/2016
@@ -193,7 +193,7 @@ WEND     ST     R4,XD              xd=wd
          A      R6,I3              y=y+i3
          B      LOOPY              next y
 ELOOPY   BCT    R9,LOOPNN          next nn
-         L      R13,4(0,R13)       epilog 
+         L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
@@ -354,9 +354,9 @@ Christian holidays, related to Easter, for years from 2010 to 2020 CE:
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d] - due to extensive use of FORMATted transput}}
 Note: Base code specimen extracted from [http://www.xs4all.nl/~jmvdveer/a68g-doc.pdf Algol 68 Genie Documentation] Part III - ''Example a68g programs.''
 <!--
-Part I, II, III and V are distributed under the conditions of the GNU Free Documentation 
-License: Permission is granted to copy, distribute and / or modify the text under the terms of 
-the GNU Free Documentation License, Version 1.2 or any later version published by the Free 
+Part I, II, III and V are distributed under the conditions of the GNU Free Documentation
+License: Permission is granted to copy, distribute and / or modify the text under the terms of
+the GNU Free Documentation License, Version 1.2 or any later version published by the Free
 Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
 -->
 
@@ -529,11 +529,11 @@ Christian holidays, related to Easter, for years from 2010 to 2020 CE:
 ## BBC BASIC
 
 {{works with|BBC BASIC for Windows}}
-As discussed on the Talk page, the task is not well defined for historical dates because the change from the Julian to the Gregorian calendar happened on different dates in different regions.  Therefore only dates from 1800 onwards are output, by which time most countries (particularly those likely to celebrate the Christian Easter) had adopted the Gregorian calendar.  
+As discussed on the Talk page, the task is not well defined for historical dates because the change from the Julian to the Gregorian calendar happened on different dates in different regions.  Therefore only dates from 1800 onwards are output, by which time most countries (particularly those likely to celebrate the Christian Easter) had adopted the Gregorian calendar.
 
 ```bbcbasic
       INSTALL @lib$+"DATELIB"
-      
+
       PRINT "Year      Easter    Ascension Pentecost Trinity   Corpus"
       FOR year% = 1800 TO 2100 STEP 100
         e% = FNeaster(year%) : f$ = "dd MMM"
@@ -547,7 +547,7 @@ As discussed on the Talk page, the task is not well defined for historical dates
         \     FN_date$(e%+49,f$), FN_date$(e%+56,f$), FN_date$(e%+60,f$)
       NEXT
       END
-      
+
       DEF FNeaster(year%)
       LOCAL a%, b%, c%, d%, e%
       a% = year% MOD 19
@@ -829,34 +829,34 @@ v  \+55\7\4\0+/2","-\+g01g00*7/+<5
 
 ```txt
 Year	Easter	Ascensn	Pentcst	Trinity	Corpus
-400 	Apr 2 	May 11 	May 21 	May 28 	Jun 1 
-500 	Apr 4 	May 13 	May 23 	May 30 	Jun 3 
-600 	Apr 13 	May 22 	Jun 1 	Jun 8 	Jun 12 
-700 	Apr 15 	May 24 	Jun 3 	Jun 10 	Jun 14 
-800 	Apr 23 	Jun 1 	Jun 11 	Jun 18 	Jun 22 
-900 	Mar 28 	May 6 	May 16 	May 23 	May 27 
-1000 	Mar 30 	May 8 	May 18 	May 25 	May 29 
-1100 	Apr 8 	May 17 	May 27 	Jun 3 	Jun 7 
-1200 	Apr 9 	May 18 	May 28 	Jun 4 	Jun 8 
-1300 	Apr 18 	May 27 	Jun 6 	Jun 13 	Jun 17 
-1400 	Apr 20 	May 29 	Jun 8 	Jun 15 	Jun 19 
-1500 	Apr 1 	May 10 	May 20 	May 27 	May 31 
-1600 	Apr 2 	May 11 	May 21 	May 28 	Jun 1 
-1700 	Apr 11 	May 20 	May 30 	Jun 6 	Jun 10 
-1800 	Apr 13 	May 22 	Jun 1 	Jun 8 	Jun 12 
-1900 	Apr 15 	May 24 	Jun 3 	Jun 10 	Jun 14 
-2000 	Apr 23 	Jun 1 	Jun 11 	Jun 18 	Jun 22 
-2100 	Mar 28 	May 6 	May 16 	May 23 	May 27 
-2010 	Apr 4 	May 13 	May 23 	May 30 	Jun 3 
-2011 	Apr 24 	Jun 2 	Jun 12 	Jun 19 	Jun 23 
-2012 	Apr 8 	May 17 	May 27 	Jun 3 	Jun 7 
-2013 	Mar 31 	May 9 	May 19 	May 26 	May 30 
-2014 	Apr 20 	May 29 	Jun 8 	Jun 15 	Jun 19 
-2015 	Apr 5 	May 14 	May 24 	May 31 	Jun 4 
-2016 	Mar 27 	May 5 	May 15 	May 22 	May 26 
-2017 	Apr 16 	May 25 	Jun 4 	Jun 11 	Jun 15 
-2018 	Apr 1 	May 10 	May 20 	May 27 	May 31 
-2019 	Apr 21 	May 30 	Jun 9 	Jun 16 	Jun 20 
+400 	Apr 2 	May 11 	May 21 	May 28 	Jun 1
+500 	Apr 4 	May 13 	May 23 	May 30 	Jun 3
+600 	Apr 13 	May 22 	Jun 1 	Jun 8 	Jun 12
+700 	Apr 15 	May 24 	Jun 3 	Jun 10 	Jun 14
+800 	Apr 23 	Jun 1 	Jun 11 	Jun 18 	Jun 22
+900 	Mar 28 	May 6 	May 16 	May 23 	May 27
+1000 	Mar 30 	May 8 	May 18 	May 25 	May 29
+1100 	Apr 8 	May 17 	May 27 	Jun 3 	Jun 7
+1200 	Apr 9 	May 18 	May 28 	Jun 4 	Jun 8
+1300 	Apr 18 	May 27 	Jun 6 	Jun 13 	Jun 17
+1400 	Apr 20 	May 29 	Jun 8 	Jun 15 	Jun 19
+1500 	Apr 1 	May 10 	May 20 	May 27 	May 31
+1600 	Apr 2 	May 11 	May 21 	May 28 	Jun 1
+1700 	Apr 11 	May 20 	May 30 	Jun 6 	Jun 10
+1800 	Apr 13 	May 22 	Jun 1 	Jun 8 	Jun 12
+1900 	Apr 15 	May 24 	Jun 3 	Jun 10 	Jun 14
+2000 	Apr 23 	Jun 1 	Jun 11 	Jun 18 	Jun 22
+2100 	Mar 28 	May 6 	May 16 	May 23 	May 27
+2010 	Apr 4 	May 13 	May 23 	May 30 	Jun 3
+2011 	Apr 24 	Jun 2 	Jun 12 	Jun 19 	Jun 23
+2012 	Apr 8 	May 17 	May 27 	Jun 3 	Jun 7
+2013 	Mar 31 	May 9 	May 19 	May 26 	May 30
+2014 	Apr 20 	May 29 	Jun 8 	Jun 15 	Jun 19
+2015 	Apr 5 	May 14 	May 24 	May 31 	Jun 4
+2016 	Mar 27 	May 5 	May 15 	May 22 	May 26
+2017 	Apr 16 	May 25 	Jun 4 	Jun 11 	Jun 15
+2018 	Apr 1 	May 10 	May 20 	May 27 	May 31
+2019 	Apr 21 	May 30 	Jun 9 	Jun 16 	Jun 20
 2020 	Apr 12 	May 21 	May 31 	Jun 7 	Jun 11
 ```
 
@@ -867,8 +867,8 @@ Year	Easter	Ascensn	Pentcst	Trinity	Corpus
 {{trans|ALGOL 68|Note: This specimen retains the original [[Holidays related to Easter#ALGOL 68|ALGOL 68]] coding style -
 [http://rosettacode.org/mw/index.php?title=Holidays_related_to_Easter&diff=85840&oldid=85839 diff].}}
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef int year_t, month_t, week_t, day_t;
 
@@ -948,7 +948,7 @@ day_t week_day (date_t date)
 
 #define wdmdm_fmt "%s %2d %s"
 
-typedef struct{date_t easter, ascension, pentecost, trinity, corpus_christi;}easter_related_t; 
+typedef struct{date_t easter, ascension, pentecost, trinity, corpus_christi;}easter_related_t;
 
 easter_related_t easter_related_init (year_t year)
 {
@@ -1148,39 +1148,39 @@ Christian holidays, related to Easter, for years from 2010 to 2020 CE:
 
        identification division.
        program-id. Easter.
- 
+
        environment division.
        configuration section.
        repository.
            function date-of-integer intrinsic
            function integer-of-date intrinsic
            function mod intrinsic.
- 
+
        data division.
        working-storage section.
        77  days                   pic 9(2).
-       77  a                      pic 9(2).  
-       77  b                      pic 9(2).  
-       77  c                      pic 9(2).  
-       77  d                      pic 9(2).  
-       77  e                      pic 9(2).  
-       77  f                      pic 9(2).  
-       77  g                      pic 9(2).  
-       77  h                      pic 9(2).  
-       77  i                      pic 9(2).  
-       77  k                      pic 9(2).  
-       77  l                      pic 9(2).  
-       77  m                      pic 9(2).  
+       77  a                      pic 9(2).
+       77  b                      pic 9(2).
+       77  c                      pic 9(2).
+       77  d                      pic 9(2).
+       77  e                      pic 9(2).
+       77  f                      pic 9(2).
+       77  g                      pic 9(2).
+       77  h                      pic 9(2).
+       77  i                      pic 9(2).
+       77  k                      pic 9(2).
+       77  l                      pic 9(2).
+       77  m                      pic 9(2).
        77  week-day               pic 9(1).
        77  numerator              pic 9(4).
        77  integer-date           pic 9(18).
-       
+
        01  month-tab              value "JanFebMarAprMayJunJulAugSepOctNovDec".
            05 month-abreviated    pic x(3) occurs 12.
-           
+
        01  week-day-tab           value "SunMonTueWedThuFriSat".
            05 week-day-abreviated pic x(3) occurs 7.
-       
+
        01  easter-date            pic 9(8).
        01  filler redefines easter-date.
            05 easter-year         pic 9(4).
@@ -1238,7 +1238,7 @@ Christian holidays, related to Easter, for years from 2010 to 2020 CE:
 
            move 60 to days
            perform add-days
-           display " Corpus: " edt-date 
+           display " Corpus: " edt-date
            .
        calculate-easter.
            compute a = mod(easter-year, 19)
@@ -1435,7 +1435,7 @@ Christian holidays, related to Easter, for years from 2010 to 2020 CE:
 defmodule Holiday do
   @offsets  [ Easter: 0, Ascension: 39, Pentecost: 49, Trinity: 56, Corpus: 60 ]
   @mon  { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }
-  
+
   def easter_date(year) do
     a = rem(year, 19)
     b = div(year, 100)
@@ -1454,7 +1454,7 @@ defmodule Holiday do
     day = rem(numerator, 31) + 1
     {year, month, day}
   end
-  
+
   defp holidays(year) do
     IO.write String.rjust("#{year}:", 5)
     gday = :calendar.date_to_gregorian_days(easter_date(year))
@@ -1463,7 +1463,7 @@ defmodule Holiday do
       String.rjust("#{day}  #{elem(@mon, month-1)}", 11)
     end)
   end
-  
+
   def task do
     IO.puts "Year:" <> Enum.map_join(Keyword.keys(@offsets), &String.rjust("#{&1}",11))
     Enum.each(Enum.take_every(400..2100, 100), fn year -> IO.puts holidays(year) end)
@@ -1883,7 +1883,7 @@ Christian holidays, related to Easter, for years from 2010 to 2020 CE:
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-{{trans|C#}} 
+{{trans|C#}}
 This is a modified translation of the C# code with specialized (limited) date calculation procedures added.
 
 Aside from the already noted issues and inconsistencies with extending these calculations back centuries, the calculation of the correct and proper date of Easter has historically been responsible for massive conflict in Western history including excommunications, near wars, and contributing to the splitting of the Catholic Church.  For more see [http://mangsbatpage.433rd.com/2008/03/calculating-easter.html Calculating Easter @ Mang's Bat Page].
@@ -1896,7 +1896,7 @@ procedure main()
    printf("Christian holidays, related to Easter, for each centennial from 400 to 2100 CE:\n")
    every year := 400 to 2100 by 100 do
       OutputHolidays(year)
- 
+
    printf("\nChristian holidays, related to Easter, for years from 2010 to 2020 CE:\n")
       every year := 2010 to 2020 do
           OutputHolidays(year)
@@ -1913,14 +1913,14 @@ initial {
    ho["Corpus"] := 60
    hoo := ["Easter","Ascension","Pentecost","Trinity","Corpus"] # order
    monL := ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]   
-   dayL := ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri","Sat"]     
+             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+   dayL := ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri","Sat"]
    }
 
-   easter := CalculateEaster(year) 
+   easter := CalculateEaster(year)
    printf("%d ",year)
-   every d := Add2Easter(easter,ho[k := !hoo]) do 
-      printf("%d: %s %d %s ", k, dayL[d.wday], d.day, monL[d.month])  
+   every d := Add2Easter(easter,ho[k := !hoo]) do
+      printf("%d: %s %d %s ", k, dayL[d.wday], d.day, monL[d.month])
    printf("\n")
 end
 
@@ -1944,7 +1944,7 @@ procedure CalculateEaster(year)  #: Calculates Gregorian Easter
 end
 
 procedure Add2Easter(dr,days)    #: very limited date addition
-static dom 
+static dom
 initial dom := [,,31,30,31,30,]  # limited days per month
    dr := copy(dr)
    dr.day +:= days
@@ -1961,36 +1961,36 @@ end
 Output:
 ```txt
 Christian holidays, related to Easter, for each centennial from 400 to 2100 CE:
-400 Easter: Sun 2 Apr Ascension: Thu 11 May Pentecost: Sun 21 May Trinity: Sun 28 May Corpus: Thu 1 Jun 
-500 Easter: Sun 4 Apr Ascension: Thu 13 May Pentecost: Sun 23 May Trinity: Sun 30 May Corpus: Thu 3 Jun 
-600 Easter: Sun 13 Apr Ascension: Thu 22 May Pentecost: Sun 1 Jun Trinity: Sun 8 Jun Corpus: Thu 12 Jun 
-700 Easter: Sun 15 Apr Ascension: Thu 24 May Pentecost: Sun 3 Jun Trinity: Sun 10 Jun Corpus: Thu 14 Jun 
-800 Easter: Sun 23 Apr Ascension: Thu 1 Jun Pentecost: Sun 11 Jun Trinity: Sun 18 Jun Corpus: Thu 22 Jun 
-900 Easter: Sun 28 Mar Ascension: Thu 6 May Pentecost: Sun 16 May Trinity: Sun 23 May Corpus: Thu 27 May 
-1000 Easter: Sun 30 Mar Ascension: Thu 8 May Pentecost: Sun 18 May Trinity: Sun 25 May Corpus: Thu 29 May 
-1100 Easter: Sun 8 Apr Ascension: Thu 17 May Pentecost: Sun 27 May Trinity: Sun 3 Jun Corpus: Thu 7 Jun 
-1200 Easter: Sun 9 Apr Ascension: Thu 18 May Pentecost: Sun 28 May Trinity: Sun 4 Jun Corpus: Thu 8 Jun 
-1300 Easter: Sun 18 Apr Ascension: Thu 27 May Pentecost: Sun 6 Jun Trinity: Sun 13 Jun Corpus: Thu 17 Jun 
-1400 Easter: Sun 20 Apr Ascension: Thu 29 May Pentecost: Sun 8 Jun Trinity: Sun 15 Jun Corpus: Thu 19 Jun 
-1500 Easter: Sun 1 Apr Ascension: Thu 10 May Pentecost: Sun 20 May Trinity: Sun 27 May Corpus: Thu 31 May 
-1600 Easter: Sun 2 Apr Ascension: Thu 11 May Pentecost: Sun 21 May Trinity: Sun 28 May Corpus: Thu 1 Jun 
-1700 Easter: Sun 11 Apr Ascension: Thu 20 May Pentecost: Sun 30 May Trinity: Sun 6 Jun Corpus: Thu 10 Jun 
-1800 Easter: Sun 13 Apr Ascension: Thu 22 May Pentecost: Sun 1 Jun Trinity: Sun 8 Jun Corpus: Thu 12 Jun 
-1900 Easter: Sun 15 Apr Ascension: Thu 24 May Pentecost: Sun 3 Jun Trinity: Sun 10 Jun Corpus: Thu 14 Jun 
-2000 Easter: Sun 23 Apr Ascension: Thu 1 Jun Pentecost: Sun 11 Jun Trinity: Sun 18 Jun Corpus: Thu 22 Jun 
-2100 Easter: Sun 28 Mar Ascension: Thu 6 May Pentecost: Sun 16 May Trinity: Sun 23 May Corpus: Thu 27 May 
+400 Easter: Sun 2 Apr Ascension: Thu 11 May Pentecost: Sun 21 May Trinity: Sun 28 May Corpus: Thu 1 Jun
+500 Easter: Sun 4 Apr Ascension: Thu 13 May Pentecost: Sun 23 May Trinity: Sun 30 May Corpus: Thu 3 Jun
+600 Easter: Sun 13 Apr Ascension: Thu 22 May Pentecost: Sun 1 Jun Trinity: Sun 8 Jun Corpus: Thu 12 Jun
+700 Easter: Sun 15 Apr Ascension: Thu 24 May Pentecost: Sun 3 Jun Trinity: Sun 10 Jun Corpus: Thu 14 Jun
+800 Easter: Sun 23 Apr Ascension: Thu 1 Jun Pentecost: Sun 11 Jun Trinity: Sun 18 Jun Corpus: Thu 22 Jun
+900 Easter: Sun 28 Mar Ascension: Thu 6 May Pentecost: Sun 16 May Trinity: Sun 23 May Corpus: Thu 27 May
+1000 Easter: Sun 30 Mar Ascension: Thu 8 May Pentecost: Sun 18 May Trinity: Sun 25 May Corpus: Thu 29 May
+1100 Easter: Sun 8 Apr Ascension: Thu 17 May Pentecost: Sun 27 May Trinity: Sun 3 Jun Corpus: Thu 7 Jun
+1200 Easter: Sun 9 Apr Ascension: Thu 18 May Pentecost: Sun 28 May Trinity: Sun 4 Jun Corpus: Thu 8 Jun
+1300 Easter: Sun 18 Apr Ascension: Thu 27 May Pentecost: Sun 6 Jun Trinity: Sun 13 Jun Corpus: Thu 17 Jun
+1400 Easter: Sun 20 Apr Ascension: Thu 29 May Pentecost: Sun 8 Jun Trinity: Sun 15 Jun Corpus: Thu 19 Jun
+1500 Easter: Sun 1 Apr Ascension: Thu 10 May Pentecost: Sun 20 May Trinity: Sun 27 May Corpus: Thu 31 May
+1600 Easter: Sun 2 Apr Ascension: Thu 11 May Pentecost: Sun 21 May Trinity: Sun 28 May Corpus: Thu 1 Jun
+1700 Easter: Sun 11 Apr Ascension: Thu 20 May Pentecost: Sun 30 May Trinity: Sun 6 Jun Corpus: Thu 10 Jun
+1800 Easter: Sun 13 Apr Ascension: Thu 22 May Pentecost: Sun 1 Jun Trinity: Sun 8 Jun Corpus: Thu 12 Jun
+1900 Easter: Sun 15 Apr Ascension: Thu 24 May Pentecost: Sun 3 Jun Trinity: Sun 10 Jun Corpus: Thu 14 Jun
+2000 Easter: Sun 23 Apr Ascension: Thu 1 Jun Pentecost: Sun 11 Jun Trinity: Sun 18 Jun Corpus: Thu 22 Jun
+2100 Easter: Sun 28 Mar Ascension: Thu 6 May Pentecost: Sun 16 May Trinity: Sun 23 May Corpus: Thu 27 May
 
 Christian holidays, related to Easter, for years from 2010 to 2020 CE:
-2010 Easter: Sun 4 Apr Ascension: Thu 13 May Pentecost: Sun 23 May Trinity: Sun 30 May Corpus: Thu 3 Jun 
-2011 Easter: Sun 24 Apr Ascension: Thu 2 Jun Pentecost: Sun 12 Jun Trinity: Sun 19 Jun Corpus: Thu 23 Jun 
-2012 Easter: Sun 8 Apr Ascension: Thu 17 May Pentecost: Sun 27 May Trinity: Sun 3 Jun Corpus: Thu 7 Jun 
-2013 Easter: Sun 31 Mar Ascension: Thu 9 May Pentecost: Sun 19 May Trinity: Sun 26 May Corpus: Thu 30 May 
-2014 Easter: Sun 20 Apr Ascension: Thu 29 May Pentecost: Sun 8 Jun Trinity: Sun 15 Jun Corpus: Thu 19 Jun 
-2015 Easter: Sun 5 Apr Ascension: Thu 14 May Pentecost: Sun 24 May Trinity: Sun 31 May Corpus: Thu 4 Jun 
-2016 Easter: Sun 27 Mar Ascension: Thu 5 May Pentecost: Sun 15 May Trinity: Sun 22 May Corpus: Thu 26 May 
-2017 Easter: Sun 16 Apr Ascension: Thu 25 May Pentecost: Sun 4 Jun Trinity: Sun 11 Jun Corpus: Thu 15 Jun 
-2018 Easter: Sun 1 Apr Ascension: Thu 10 May Pentecost: Sun 20 May Trinity: Sun 27 May Corpus: Thu 31 May 
-2019 Easter: Sun 21 Apr Ascension: Thu 30 May Pentecost: Sun 9 Jun Trinity: Sun 16 Jun Corpus: Thu 20 Jun 
+2010 Easter: Sun 4 Apr Ascension: Thu 13 May Pentecost: Sun 23 May Trinity: Sun 30 May Corpus: Thu 3 Jun
+2011 Easter: Sun 24 Apr Ascension: Thu 2 Jun Pentecost: Sun 12 Jun Trinity: Sun 19 Jun Corpus: Thu 23 Jun
+2012 Easter: Sun 8 Apr Ascension: Thu 17 May Pentecost: Sun 27 May Trinity: Sun 3 Jun Corpus: Thu 7 Jun
+2013 Easter: Sun 31 Mar Ascension: Thu 9 May Pentecost: Sun 19 May Trinity: Sun 26 May Corpus: Thu 30 May
+2014 Easter: Sun 20 Apr Ascension: Thu 29 May Pentecost: Sun 8 Jun Trinity: Sun 15 Jun Corpus: Thu 19 Jun
+2015 Easter: Sun 5 Apr Ascension: Thu 14 May Pentecost: Sun 24 May Trinity: Sun 31 May Corpus: Thu 4 Jun
+2016 Easter: Sun 27 Mar Ascension: Thu 5 May Pentecost: Sun 15 May Trinity: Sun 22 May Corpus: Thu 26 May
+2017 Easter: Sun 16 Apr Ascension: Thu 25 May Pentecost: Sun 4 Jun Trinity: Sun 11 Jun Corpus: Thu 15 Jun
+2018 Easter: Sun 1 Apr Ascension: Thu 10 May Pentecost: Sun 20 May Trinity: Sun 27 May Corpus: Thu 31 May
+2019 Easter: Sun 21 Apr Ascension: Thu 30 May Pentecost: Sun 9 Jun Trinity: Sun 16 Jun Corpus: Thu 20 Jun
 2020 Easter: Sun 12 Apr Ascension: Thu 21 May Pentecost: Sun 31 May Trinity: Sun 7 Jun Corpus: Thu 11 Jun
 ```
 
@@ -2005,14 +2005,14 @@ Christian holidays, related to Easter, for years from 2010 to 2020 CE:
 
 Caution: This task is currently self-contradictory, thus consistent results are impossible.  See the talk page for some further discussion of this issue.
 
-That said, the only calendar where the specified date range can be meaningful is the Julian calendar, which is currently used by Eastern Christianity for determining when to celebrate easter.  
+That said, the only calendar where the specified date range can be meaningful is the Julian calendar, which is currently used by Eastern Christianity for determining when to celebrate easter.
 
 However, Corpus Christi is a Western Catholic holiday.  Then again, Corpus Christi was not celebrated anywhere prior to the 13th century and in some countries it is celebrated on a Thursday and in other countries it is celebrated on a Sunday.  So I have chosen to ignore this holiday for now.
 
 In Eastern Christianity, Trinity Sunday is the same day as Pentecost.
 
 
-###  Julian Easters 
+###  Julian Easters
 
 
 This code is based on the above rationale, and http://www.merlyn.demon.co.uk/estr-bcp.htm and the wikipedia pages referenced in the task description:
@@ -2184,7 +2184,7 @@ output:
 
 
 
-###  Gregorian Easters 
+###  Gregorian Easters
 
 
 Other entries on this page are showing gregorian easter results despite the nonsensical character of those results (for example, no country celebrated easter using the Gregorian calendar before 1583).
@@ -2194,7 +2194,7 @@ Nevertheless, here is an implementation which reproduces those numbers, based on
 
 ```j
 ged=:3 :0
-  ce =. <. y%100 
+  ce =. <. y%100
   GN =.  1 + 19 | y
   CY =.      30 | 23 + (<.4 %~ 3 * ce+1) - <. 25 %~ 13 + ce*8
   YR =.     400 | y
@@ -2464,37 +2464,37 @@ Output:
 
 ```txt
 Christian holidays, related to Easter, for each centennial from 400 to 2100 CE:
- 400 Easter:  2 Apr  Ascension: 11 May  Pentecost: 21 May  Trinity: 28 May  Corpus:  1 Jun  
- 500 Easter:  4 Apr  Ascension: 13 May  Pentecost: 23 May  Trinity: 30 May  Corpus:  3 Jun  
- 600 Easter: 13 Apr  Ascension: 22 May  Pentecost:  1 Jun  Trinity:  8 Jun  Corpus: 12 Jun  
- 700 Easter: 15 Apr  Ascension: 24 May  Pentecost:  3 Jun  Trinity: 10 Jun  Corpus: 14 Jun  
- 800 Easter: 23 Apr  Ascension:  1 Jun  Pentecost: 11 Jun  Trinity: 18 Jun  Corpus: 22 Jun  
- 900 Easter: 28 Mar  Ascension:  6 May  Pentecost: 16 May  Trinity: 23 May  Corpus: 27 May  
-1000 Easter: 30 Mar  Ascension:  8 May  Pentecost: 18 May  Trinity: 25 May  Corpus: 29 May  
-1100 Easter:  8 Apr  Ascension: 17 May  Pentecost: 27 May  Trinity:  3 Jun  Corpus:  7 Jun  
-1200 Easter:  9 Apr  Ascension: 18 May  Pentecost: 28 May  Trinity:  4 Jun  Corpus:  8 Jun  
-1300 Easter: 18 Apr  Ascension: 27 May  Pentecost:  6 Jun  Trinity: 13 Jun  Corpus: 17 Jun  
-1400 Easter: 20 Apr  Ascension: 29 May  Pentecost:  8 Jun  Trinity: 15 Jun  Corpus: 19 Jun  
-1500 Easter:  1 Apr  Ascension: 10 May  Pentecost: 20 May  Trinity: 27 May  Corpus: 31 May  
-1600 Easter:  2 Apr  Ascension: 11 May  Pentecost: 21 May  Trinity: 28 May  Corpus:  1 Jun  
-1700 Easter: 11 Apr  Ascension: 20 May  Pentecost: 30 May  Trinity:  6 Jun  Corpus: 10 Jun  
-1800 Easter: 13 Apr  Ascension: 22 May  Pentecost:  1 Jun  Trinity:  8 Jun  Corpus: 12 Jun  
-1900 Easter: 15 Apr  Ascension: 24 May  Pentecost:  3 Jun  Trinity: 10 Jun  Corpus: 14 Jun  
-2000 Easter: 23 Apr  Ascension:  1 Jun  Pentecost: 11 Jun  Trinity: 18 Jun  Corpus: 22 Jun  
-2100 Easter: 28 Mar  Ascension:  6 May  Pentecost: 16 May  Trinity: 23 May  Corpus: 27 May  
+ 400 Easter:  2 Apr  Ascension: 11 May  Pentecost: 21 May  Trinity: 28 May  Corpus:  1 Jun
+ 500 Easter:  4 Apr  Ascension: 13 May  Pentecost: 23 May  Trinity: 30 May  Corpus:  3 Jun
+ 600 Easter: 13 Apr  Ascension: 22 May  Pentecost:  1 Jun  Trinity:  8 Jun  Corpus: 12 Jun
+ 700 Easter: 15 Apr  Ascension: 24 May  Pentecost:  3 Jun  Trinity: 10 Jun  Corpus: 14 Jun
+ 800 Easter: 23 Apr  Ascension:  1 Jun  Pentecost: 11 Jun  Trinity: 18 Jun  Corpus: 22 Jun
+ 900 Easter: 28 Mar  Ascension:  6 May  Pentecost: 16 May  Trinity: 23 May  Corpus: 27 May
+1000 Easter: 30 Mar  Ascension:  8 May  Pentecost: 18 May  Trinity: 25 May  Corpus: 29 May
+1100 Easter:  8 Apr  Ascension: 17 May  Pentecost: 27 May  Trinity:  3 Jun  Corpus:  7 Jun
+1200 Easter:  9 Apr  Ascension: 18 May  Pentecost: 28 May  Trinity:  4 Jun  Corpus:  8 Jun
+1300 Easter: 18 Apr  Ascension: 27 May  Pentecost:  6 Jun  Trinity: 13 Jun  Corpus: 17 Jun
+1400 Easter: 20 Apr  Ascension: 29 May  Pentecost:  8 Jun  Trinity: 15 Jun  Corpus: 19 Jun
+1500 Easter:  1 Apr  Ascension: 10 May  Pentecost: 20 May  Trinity: 27 May  Corpus: 31 May
+1600 Easter:  2 Apr  Ascension: 11 May  Pentecost: 21 May  Trinity: 28 May  Corpus:  1 Jun
+1700 Easter: 11 Apr  Ascension: 20 May  Pentecost: 30 May  Trinity:  6 Jun  Corpus: 10 Jun
+1800 Easter: 13 Apr  Ascension: 22 May  Pentecost:  1 Jun  Trinity:  8 Jun  Corpus: 12 Jun
+1900 Easter: 15 Apr  Ascension: 24 May  Pentecost:  3 Jun  Trinity: 10 Jun  Corpus: 14 Jun
+2000 Easter: 23 Apr  Ascension:  1 Jun  Pentecost: 11 Jun  Trinity: 18 Jun  Corpus: 22 Jun
+2100 Easter: 28 Mar  Ascension:  6 May  Pentecost: 16 May  Trinity: 23 May  Corpus: 27 May
 
 Christian holidays, related to Easter, for years from 2010 to 2020 CE:
-2010 Easter:  4 Apr  Ascension: 13 May  Pentecost: 23 May  Trinity: 30 May  Corpus:  3 Jun  
-2011 Easter: 24 Apr  Ascension:  2 Jun  Pentecost: 12 Jun  Trinity: 19 Jun  Corpus: 23 Jun  
-2012 Easter:  8 Apr  Ascension: 17 May  Pentecost: 27 May  Trinity:  3 Jun  Corpus:  7 Jun  
-2013 Easter: 31 Mar  Ascension:  9 May  Pentecost: 19 May  Trinity: 26 May  Corpus: 30 May  
-2014 Easter: 20 Apr  Ascension: 29 May  Pentecost:  8 Jun  Trinity: 15 Jun  Corpus: 19 Jun  
-2015 Easter:  5 Apr  Ascension: 14 May  Pentecost: 24 May  Trinity: 31 May  Corpus:  4 Jun  
-2016 Easter: 27 Mar  Ascension:  5 May  Pentecost: 15 May  Trinity: 22 May  Corpus: 26 May  
-2017 Easter: 16 Apr  Ascension: 25 May  Pentecost:  4 Jun  Trinity: 11 Jun  Corpus: 15 Jun  
-2018 Easter:  1 Apr  Ascension: 10 May  Pentecost: 20 May  Trinity: 27 May  Corpus: 31 May  
-2019 Easter: 21 Apr  Ascension: 30 May  Pentecost:  9 Jun  Trinity: 16 Jun  Corpus: 20 Jun  
-2020 Easter: 12 Apr  Ascension: 21 May  Pentecost: 31 May  Trinity:  7 Jun  Corpus: 11 Jun  
+2010 Easter:  4 Apr  Ascension: 13 May  Pentecost: 23 May  Trinity: 30 May  Corpus:  3 Jun
+2011 Easter: 24 Apr  Ascension:  2 Jun  Pentecost: 12 Jun  Trinity: 19 Jun  Corpus: 23 Jun
+2012 Easter:  8 Apr  Ascension: 17 May  Pentecost: 27 May  Trinity:  3 Jun  Corpus:  7 Jun
+2013 Easter: 31 Mar  Ascension:  9 May  Pentecost: 19 May  Trinity: 26 May  Corpus: 30 May
+2014 Easter: 20 Apr  Ascension: 29 May  Pentecost:  8 Jun  Trinity: 15 Jun  Corpus: 19 Jun
+2015 Easter:  5 Apr  Ascension: 14 May  Pentecost: 24 May  Trinity: 31 May  Corpus:  4 Jun
+2016 Easter: 27 Mar  Ascension:  5 May  Pentecost: 15 May  Trinity: 22 May  Corpus: 26 May
+2017 Easter: 16 Apr  Ascension: 25 May  Pentecost:  4 Jun  Trinity: 11 Jun  Corpus: 15 Jun
+2018 Easter:  1 Apr  Ascension: 10 May  Pentecost: 20 May  Trinity: 27 May  Corpus: 31 May
+2019 Easter: 21 Apr  Ascension: 30 May  Pentecost:  9 Jun  Trinity: 16 Jun  Corpus: 20 Jun
+2020 Easter: 12 Apr  Ascension: 21 May  Pentecost: 31 May  Trinity:  7 Jun  Corpus: 11 Jun
 ```
 
 
@@ -2604,7 +2604,7 @@ val holidayOffsets = listOf(
     "Easter" to 0,
     "Ascension" to 39,
     "Pentecost" to 49,
-    "Trinity" to 56,   
+    "Trinity" to 56,
     "C/Christi" to 60
 )
 
@@ -2628,7 +2628,7 @@ fun calculateEaster(year: Int): GregorianCalendar {
     val l = (32 + 2 * e + 2 * i - h - k) % 7
     val m = (a + 11 * h + 22 * l) / 451
     val n = h + l - 7 * m + 114
-    val month = n / 31 - 1  // months indexed from 0 
+    val month = n / 31 - 1  // months indexed from 0
     val day = (n % 31) + 1
     return GregorianCalendar(year, month, day)
 }
@@ -2647,8 +2647,8 @@ fun outputHolidays(year: Int) {
 
 fun main(args: Array<String>) {
     println("Year  Easter  Ascension  Pentecost  Trinity  C/Christi")
-    println(" CE   Sunday  Thursday    Sunday    Sunday   Thursday ") 
-    println("----  ------  ---------  ---------  -------  ---------")  
+    println(" CE   Sunday  Thursday    Sunday    Sunday   Thursday ")
+    println("----  ------  ---------  ---------  -------  ---------")
     for (year in 400..2100 step 100) outputHolidays(year)
     println()
     for (year in 2010..2020) outputHolidays(year)
@@ -2661,38 +2661,38 @@ fun main(args: Array<String>) {
 ```txt
 
 Year  Easter  Ascension  Pentecost  Trinity  C/Christi
- CE   Sunday  Thursday    Sunday    Sunday   Thursday 
+ CE   Sunday  Thursday    Sunday    Sunday   Thursday
 ----  ------  ---------  ---------  -------  ---------
- 400  02 Apr   11 May     21 May    28 May    01 Jun    
- 500  04 Apr   13 May     23 May    30 May    03 Jun    
- 600  13 Apr   22 May     01 Jun    08 Jun    12 Jun    
- 700  15 Apr   24 May     03 Jun    10 Jun    14 Jun    
- 800  23 Apr   01 Jun     11 Jun    18 Jun    22 Jun    
- 900  28 Mar   06 May     16 May    23 May    27 May    
-1000  30 Mar   08 May     18 May    25 May    29 May    
-1100  08 Apr   17 May     27 May    03 Jun    07 Jun    
-1200  09 Apr   18 May     28 May    04 Jun    08 Jun    
-1300  18 Apr   27 May     06 Jun    13 Jun    17 Jun    
-1400  20 Apr   29 May     08 Jun    15 Jun    19 Jun    
-1500  01 Apr   10 May     20 May    27 May    31 May    
-1600  02 Apr   11 May     21 May    28 May    01 Jun    
-1700  11 Apr   20 May     30 May    06 Jun    10 Jun    
-1800  13 Apr   22 May     01 Jun    08 Jun    12 Jun    
-1900  15 Apr   24 May     03 Jun    10 Jun    14 Jun    
-2000  23 Apr   01 Jun     11 Jun    18 Jun    22 Jun    
-2100  28 Mar   06 May     16 May    23 May    27 May    
+ 400  02 Apr   11 May     21 May    28 May    01 Jun
+ 500  04 Apr   13 May     23 May    30 May    03 Jun
+ 600  13 Apr   22 May     01 Jun    08 Jun    12 Jun
+ 700  15 Apr   24 May     03 Jun    10 Jun    14 Jun
+ 800  23 Apr   01 Jun     11 Jun    18 Jun    22 Jun
+ 900  28 Mar   06 May     16 May    23 May    27 May
+1000  30 Mar   08 May     18 May    25 May    29 May
+1100  08 Apr   17 May     27 May    03 Jun    07 Jun
+1200  09 Apr   18 May     28 May    04 Jun    08 Jun
+1300  18 Apr   27 May     06 Jun    13 Jun    17 Jun
+1400  20 Apr   29 May     08 Jun    15 Jun    19 Jun
+1500  01 Apr   10 May     20 May    27 May    31 May
+1600  02 Apr   11 May     21 May    28 May    01 Jun
+1700  11 Apr   20 May     30 May    06 Jun    10 Jun
+1800  13 Apr   22 May     01 Jun    08 Jun    12 Jun
+1900  15 Apr   24 May     03 Jun    10 Jun    14 Jun
+2000  23 Apr   01 Jun     11 Jun    18 Jun    22 Jun
+2100  28 Mar   06 May     16 May    23 May    27 May
 
-2010  04 Apr   13 May     23 May    30 May    03 Jun    
-2011  24 Apr   02 Jun     12 Jun    19 Jun    23 Jun    
-2012  08 Apr   17 May     27 May    03 Jun    07 Jun    
-2013  31 Mar   09 May     19 May    26 May    30 May    
-2014  20 Apr   29 May     08 Jun    15 Jun    19 Jun    
-2015  05 Apr   14 May     24 May    31 May    04 Jun    
-2016  27 Mar   05 May     15 May    22 May    26 May    
-2017  16 Apr   25 May     04 Jun    11 Jun    15 Jun    
-2018  01 Apr   10 May     20 May    27 May    31 May    
-2019  21 Apr   30 May     09 Jun    16 Jun    20 Jun    
-2020  12 Apr   21 May     31 May    07 Jun    11 Jun    
+2010  04 Apr   13 May     23 May    30 May    03 Jun
+2011  24 Apr   02 Jun     12 Jun    19 Jun    23 Jun
+2012  08 Apr   17 May     27 May    03 Jun    07 Jun
+2013  31 Mar   09 May     19 May    26 May    30 May
+2014  20 Apr   29 May     08 Jun    15 Jun    19 Jun
+2015  05 Apr   14 May     24 May    31 May    04 Jun
+2016  27 Mar   05 May     15 May    22 May    26 May
+2017  16 Apr   25 May     04 Jun    11 Jun    15 Jun
+2018  01 Apr   10 May     20 May    27 May    31 May
+2019  21 Apr   30 May     09 Jun    16 Jun    20 Jun
+2020  12 Apr   21 May     31 May    07 Jun    11 Jun
 
 ```
 
@@ -2782,7 +2782,7 @@ Map[StringJoin[ToString[#]," Easter: ",DateFormat[EasterSunday[#]],
 
 Output
 {400 Easter: Sun 2 April, Ascension: Thu 11 May, Pentecost: Sun 21 May, Trinity: Sun 28 May, Corpus: Thu 1 June,
- 500 Easter: Sun 4 April, Ascension: Thu 13 May, Pentecost: Sun 23 May, Trinity: Sun 30 May, Corpus: Thu 3 June, 
+ 500 Easter: Sun 4 April, Ascension: Thu 13 May, Pentecost: Sun 23 May, Trinity: Sun 30 May, Corpus: Thu 3 June,
  600 Easter: Sun 13 April, Ascension: Thu 22 May, Pentecost: Sun 1 June, Trinity: Sun 8 June, Corpus: Thu 12 June,
  700 Easter: Sun 15 April, Ascension: Thu 24 May, Pentecost: Sun 3 June, Trinity: Sun 10 June, Corpus: Thu 14 June,
  800 Easter: Sun 23 April, Ascension: Thu 1 June, Pentecost: Sun 11 June, Trinity: Sun 18 June, Corpus: Thu 22 June,
@@ -3019,7 +3019,7 @@ my %c_hols = (
 
 sub easter {
 	my $year=shift;
-	
+
 	my $ay=$year % 19;
 	my $by=int($year / 100);
 	my $cy=$year % 100;
@@ -3032,10 +3032,10 @@ sub easter {
 	my $ky=$cy % 4;
 	my $ly=(32+2*$ey+2*$iy-$hy-$ky) % 7;
 	my $m_y=int(($ay+11*$hy+22*$ly)/451);
-	
+
 	my $month=int(($hy+$ly-7*$m_y+114)/31);
 	my $day=(($hy+$ly-7*$m_y+114) % 31)+1;
-	
+
 	return ($month, $day, $year);
 }
 
@@ -3044,7 +3044,7 @@ sub cholidays {
 	my ($emon, $eday)=easter($year);
 	my @fields;
 	printf("%4s: ", $year);
-	
+
 	foreach my $hol (sort { $c_hols{$a}<=>$c_hols{$b} } keys %c_hols) {
 		my ($ye,$mo,$da)=Add_Delta_Days($year,$emon,$eday,$c_hols{$hol});
 		my $month=$abbr[$mo];
@@ -3114,16 +3114,16 @@ Christian holidays, related to Easter, for years from 2010 to 2020 CE:
 
 {{trans|Perl}}
 
-```perl6>my @abbr = < Nil Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec 
+```perl6>my @abbr = < Nil Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 ;
- 
+
 my @holidays =
     Easter    => 0,
     Ascension => 39,
     Pentecost => 49,
     Trinity   => 56,
     Corpus    => 60;
- 
+
 sub easter($year) {
     my \ay = $year % 19;
     my \by = $year div 100;
@@ -3142,7 +3142,7 @@ sub easter($year) {
 
     return month, day;
 }
- 
+
 sub cholidays($year) {
     my ($emon, $eday) = easter($year);
     printf "%4s: ", $year;
@@ -3151,7 +3151,7 @@ sub cholidays($year) {
 	take "{$holiday.key}: $d.day-of-month.fmt('%02s') @abbr[$d.month]";
     }
 }
- 
+
 for flat (400,500 ... 2000), (2010 ... 2020), 2100 -> $year {
     cholidays($year);
 }
@@ -3200,7 +3200,7 @@ The Phix timedate routines make no attempt to support pre-1752 dates, but the al
 ```Phix
 --
 -- demo\rosetta\Easter.exw
--- 
+--
 ### =================
 
 --
@@ -3532,43 +3532,43 @@ $years2010to2020 | Format-Table
 
 Christian holidays, related to Easter, for each centennial from 400 to 2100 AD:
 
-Year Easter           Ascension        Pentecost        Trinity          Corpus          
----- ------           ---------        ---------        -------          ------          
- 400 Sun 02 Apr       Thu 11 May       Sun 21 May       Sun 28 May       Thu 01 Jun      
- 500 Sun 04 Apr       Thu 13 May       Sun 23 May       Sun 30 May       Thu 03 Jun      
- 600 Sun 13 Apr       Thu 22 May       Sun 01 Jun       Sun 08 Jun       Thu 12 Jun      
- 700 Sun 15 Apr       Thu 24 May       Sun 03 Jun       Sun 10 Jun       Thu 14 Jun      
- 800 Sun 23 Apr       Thu 01 Jun       Sun 11 Jun       Sun 18 Jun       Thu 22 Jun      
- 900 Sun 28 Mar       Thu 06 May       Sun 16 May       Sun 23 May       Thu 27 May      
-1000 Sun 30 Mar       Thu 08 May       Sun 18 May       Sun 25 May       Thu 29 May      
-1100 Sun 08 Apr       Thu 17 May       Sun 27 May       Sun 03 Jun       Thu 07 Jun      
-1200 Sun 09 Apr       Thu 18 May       Sun 28 May       Sun 04 Jun       Thu 08 Jun      
-1300 Sun 18 Apr       Thu 27 May       Sun 06 Jun       Sun 13 Jun       Thu 17 Jun      
-1400 Sun 20 Apr       Thu 29 May       Sun 08 Jun       Sun 15 Jun       Thu 19 Jun      
-1500 Sun 01 Apr       Thu 10 May       Sun 20 May       Sun 27 May       Thu 31 May      
-1600 Sun 02 Apr       Thu 11 May       Sun 21 May       Sun 28 May       Thu 01 Jun      
-1700 Sun 11 Apr       Thu 20 May       Sun 30 May       Sun 06 Jun       Thu 10 Jun      
-1800 Sun 13 Apr       Thu 22 May       Sun 01 Jun       Sun 08 Jun       Thu 12 Jun      
-1900 Sun 15 Apr       Thu 24 May       Sun 03 Jun       Sun 10 Jun       Thu 14 Jun      
-2000 Sun 23 Apr       Thu 01 Jun       Sun 11 Jun       Sun 18 Jun       Thu 22 Jun      
-2100 Sun 28 Mar       Thu 06 May       Sun 16 May       Sun 23 May       Thu 27 May      
+Year Easter           Ascension        Pentecost        Trinity          Corpus
+---- ------           ---------        ---------        -------          ------
+ 400 Sun 02 Apr       Thu 11 May       Sun 21 May       Sun 28 May       Thu 01 Jun
+ 500 Sun 04 Apr       Thu 13 May       Sun 23 May       Sun 30 May       Thu 03 Jun
+ 600 Sun 13 Apr       Thu 22 May       Sun 01 Jun       Sun 08 Jun       Thu 12 Jun
+ 700 Sun 15 Apr       Thu 24 May       Sun 03 Jun       Sun 10 Jun       Thu 14 Jun
+ 800 Sun 23 Apr       Thu 01 Jun       Sun 11 Jun       Sun 18 Jun       Thu 22 Jun
+ 900 Sun 28 Mar       Thu 06 May       Sun 16 May       Sun 23 May       Thu 27 May
+1000 Sun 30 Mar       Thu 08 May       Sun 18 May       Sun 25 May       Thu 29 May
+1100 Sun 08 Apr       Thu 17 May       Sun 27 May       Sun 03 Jun       Thu 07 Jun
+1200 Sun 09 Apr       Thu 18 May       Sun 28 May       Sun 04 Jun       Thu 08 Jun
+1300 Sun 18 Apr       Thu 27 May       Sun 06 Jun       Sun 13 Jun       Thu 17 Jun
+1400 Sun 20 Apr       Thu 29 May       Sun 08 Jun       Sun 15 Jun       Thu 19 Jun
+1500 Sun 01 Apr       Thu 10 May       Sun 20 May       Sun 27 May       Thu 31 May
+1600 Sun 02 Apr       Thu 11 May       Sun 21 May       Sun 28 May       Thu 01 Jun
+1700 Sun 11 Apr       Thu 20 May       Sun 30 May       Sun 06 Jun       Thu 10 Jun
+1800 Sun 13 Apr       Thu 22 May       Sun 01 Jun       Sun 08 Jun       Thu 12 Jun
+1900 Sun 15 Apr       Thu 24 May       Sun 03 Jun       Sun 10 Jun       Thu 14 Jun
+2000 Sun 23 Apr       Thu 01 Jun       Sun 11 Jun       Sun 18 Jun       Thu 22 Jun
+2100 Sun 28 Mar       Thu 06 May       Sun 16 May       Sun 23 May       Thu 27 May
 
 
 Christian holidays, related to Easter, for years from 2010 to 2020 AD:
 
-Year Easter           Ascension        Pentecost        Trinity          Corpus          
----- ------           ---------        ---------        -------          ------          
-2010 Sun 04 Apr       Thu 13 May       Sun 23 May       Sun 30 May       Thu 03 Jun      
-2011 Sun 24 Apr       Thu 02 Jun       Sun 12 Jun       Sun 19 Jun       Thu 23 Jun      
-2012 Sun 08 Apr       Thu 17 May       Sun 27 May       Sun 03 Jun       Thu 07 Jun      
-2013 Sun 31 Mar       Thu 09 May       Sun 19 May       Sun 26 May       Thu 30 May      
-2014 Sun 20 Apr       Thu 29 May       Sun 08 Jun       Sun 15 Jun       Thu 19 Jun      
-2015 Sun 05 Apr       Thu 14 May       Sun 24 May       Sun 31 May       Thu 04 Jun      
-2016 Sun 27 Mar       Thu 05 May       Sun 15 May       Sun 22 May       Thu 26 May      
-2017 Sun 16 Apr       Thu 25 May       Sun 04 Jun       Sun 11 Jun       Thu 15 Jun      
-2018 Sun 01 Apr       Thu 10 May       Sun 20 May       Sun 27 May       Thu 31 May      
-2019 Sun 21 Apr       Thu 30 May       Sun 09 Jun       Sun 16 Jun       Thu 20 Jun      
-2020 Sun 12 Apr       Thu 21 May       Sun 31 May       Sun 07 Jun       Thu 11 Jun      
+Year Easter           Ascension        Pentecost        Trinity          Corpus
+---- ------           ---------        ---------        -------          ------
+2010 Sun 04 Apr       Thu 13 May       Sun 23 May       Sun 30 May       Thu 03 Jun
+2011 Sun 24 Apr       Thu 02 Jun       Sun 12 Jun       Sun 19 Jun       Thu 23 Jun
+2012 Sun 08 Apr       Thu 17 May       Sun 27 May       Sun 03 Jun       Thu 07 Jun
+2013 Sun 31 Mar       Thu 09 May       Sun 19 May       Sun 26 May       Thu 30 May
+2014 Sun 20 Apr       Thu 29 May       Sun 08 Jun       Sun 15 Jun       Thu 19 Jun
+2015 Sun 05 Apr       Thu 14 May       Sun 24 May       Sun 31 May       Thu 04 Jun
+2016 Sun 27 Mar       Thu 05 May       Sun 15 May       Sun 22 May       Thu 26 May
+2017 Sun 16 Apr       Thu 25 May       Sun 04 Jun       Sun 11 Jun       Thu 15 Jun
+2018 Sun 01 Apr       Thu 10 May       Sun 20 May       Sun 27 May       Thu 31 May
+2019 Sun 21 Apr       Thu 30 May       Sun 09 Jun       Sun 16 Jun       Thu 20 Jun
+2020 Sun 12 Apr       Thu 21 May       Sun 31 May       Sun 07 Jun       Thu 11 Jun
 
 ```
 
@@ -3598,16 +3598,16 @@ class Holiday(object):
 def get_holiday_values(year):
     holidays = {'year': year}
     easterDate = easter(year)
-    holidays['easter'] = Holiday(easterDate) 
+    holidays['easter'] = Holiday(easterDate)
     holidays['ascension'] = Holiday(easterDate, 39)
     holidays['pentecost'] = Holiday(easterDate, 49)
     holidays['trinity'] = Holiday(easterDate, 56)
     holidays['corpus'] = Holiday(easterDate, 60)
     return holidays
-    
+
 def print_holidays(holidays):
     print '{year:4d} Easter: {easter}, Ascension: {ascension}, Pentecost: {pentecost}, Trinity: {trinity}, Corpus: {corpus}'.format(**holidays)
-    
+
 if __name__ == "__main__":
     print "Christian holidays, related to Easter, for each centennial from 400 to 2100 CE:"
     for year in range(400, 2200, 100):
@@ -3798,8 +3798,8 @@ require 'date'
 
 def easter_date(year)
   # Anonymous Gregorian algorithm
-  # http://en.wikipedia.org/wiki/Computus#Algorithms 
-  
+  # http://en.wikipedia.org/wiki/Computus#Algorithms
+
   a    = year % 19
   b, c = year.divmod(100)
   d, e = b.divmod(4)
@@ -3980,7 +3980,7 @@ new MainFrame {
 $ include "seed7_05.s7i";
   include "time.s7i";
   include "duration.s7i";
-  
+
 const func time: easterDate (in integer: year) is func
   result
     var time: result is time.value;
@@ -4033,7 +4033,7 @@ const array integer: delta is [] (0, 39, 49, 56, 60);
 
 const func string: usDate (in time: aTime) is
   return weekday[dayOfWeek(aTime)] <& aTime.day lpad 3 <& " " <& month[aTime.month];
-  
+
 const func string: holiday (in integer: index, in time: easter) is
   return holiday[index] <& ": " <& usDate(easter + delta[index] . DAYS);
 
@@ -4305,7 +4305,7 @@ Private Function easter(year_ As Integer) As Date
     day_ = n Mod 31 + 1
     easter = DateSerial(year_, month_, day_)
 End Function
- 
+
 Private Sub show(year_ As Integer)
     If year_ = 0 Then
         Debug.Print , "Easter", "Ascension", "Pentecost", "Trinity", "Corpus"
@@ -4338,42 +4338,42 @@ End Sub
 
 ```txt
               Easter        Ascension     Pentecost     Trinity       Corpus
- 400          zo 02 apr     do 11 mei     zo 21 mei     zo 28 mei     do 01 jun     
- 500          zo 04 apr     do 13 mei     zo 23 mei     zo 30 mei     do 03 jun     
- 600          zo 13 apr     do 22 mei     zo 01 jun     zo 08 jun     do 12 jun     
- 700          zo 15 apr     do 24 mei     zo 03 jun     zo 10 jun     do 14 jun     
- 800          zo 23 apr     do 01 jun     zo 11 jun     zo 18 jun     do 22 jun     
- 900          zo 28 mrt     do 06 mei     zo 16 mei     zo 23 mei     do 27 mei     
-1000          zo 30 mrt     do 08 mei     zo 18 mei     zo 25 mei     do 29 mei     
-1100          zo 08 apr     do 17 mei     zo 27 mei     zo 03 jun     do 07 jun     
-1200          zo 09 apr     do 18 mei     zo 28 mei     zo 04 jun     do 08 jun     
-1300          zo 18 apr     do 27 mei     zo 06 jun     zo 13 jun     do 17 jun     
-1400          zo 20 apr     do 29 mei     zo 08 jun     zo 15 jun     do 19 jun     
-1500          zo 01 apr     do 10 mei     zo 20 mei     zo 27 mei     do 31 mei     
-1600          zo 02 apr     do 11 mei     zo 21 mei     zo 28 mei     do 01 jun     
-1700          zo 11 apr     do 20 mei     zo 30 mei     zo 06 jun     do 10 jun     
-1800          zo 13 apr     do 22 mei     zo 01 jun     zo 08 jun     do 12 jun     
-1900          zo 15 apr     do 24 mei     zo 03 jun     zo 10 jun     do 14 jun     
-2000          zo 23 apr     do 01 jun     zo 11 jun     zo 18 jun     do 22 jun     
+ 400          zo 02 apr     do 11 mei     zo 21 mei     zo 28 mei     do 01 jun
+ 500          zo 04 apr     do 13 mei     zo 23 mei     zo 30 mei     do 03 jun
+ 600          zo 13 apr     do 22 mei     zo 01 jun     zo 08 jun     do 12 jun
+ 700          zo 15 apr     do 24 mei     zo 03 jun     zo 10 jun     do 14 jun
+ 800          zo 23 apr     do 01 jun     zo 11 jun     zo 18 jun     do 22 jun
+ 900          zo 28 mrt     do 06 mei     zo 16 mei     zo 23 mei     do 27 mei
+1000          zo 30 mrt     do 08 mei     zo 18 mei     zo 25 mei     do 29 mei
+1100          zo 08 apr     do 17 mei     zo 27 mei     zo 03 jun     do 07 jun
+1200          zo 09 apr     do 18 mei     zo 28 mei     zo 04 jun     do 08 jun
+1300          zo 18 apr     do 27 mei     zo 06 jun     zo 13 jun     do 17 jun
+1400          zo 20 apr     do 29 mei     zo 08 jun     zo 15 jun     do 19 jun
+1500          zo 01 apr     do 10 mei     zo 20 mei     zo 27 mei     do 31 mei
+1600          zo 02 apr     do 11 mei     zo 21 mei     zo 28 mei     do 01 jun
+1700          zo 11 apr     do 20 mei     zo 30 mei     zo 06 jun     do 10 jun
+1800          zo 13 apr     do 22 mei     zo 01 jun     zo 08 jun     do 12 jun
+1900          zo 15 apr     do 24 mei     zo 03 jun     zo 10 jun     do 14 jun
+2000          zo 23 apr     do 01 jun     zo 11 jun     zo 18 jun     do 22 jun
 
               Easter        Ascension     Pentecost     Trinity       Corpus
-2010          zo 04 apr     do 13 mei     zo 23 mei     zo 30 mei     do 03 jun     
-2011          zo 24 apr     do 02 jun     zo 12 jun     zo 19 jun     do 23 jun     
-2012          zo 08 apr     do 17 mei     zo 27 mei     zo 03 jun     do 07 jun     
-2013          zo 31 mrt     do 09 mei     zo 19 mei     zo 26 mei     do 30 mei     
-2014          zo 20 apr     do 29 mei     zo 08 jun     zo 15 jun     do 19 jun     
-2015          zo 05 apr     do 14 mei     zo 24 mei     zo 31 mei     do 04 jun     
-2016          zo 27 mrt     do 05 mei     zo 15 mei     zo 22 mei     do 26 mei     
-2017          zo 16 apr     do 25 mei     zo 04 jun     zo 11 jun     do 15 jun     
-2018          zo 01 apr     do 10 mei     zo 20 mei     zo 27 mei     do 31 mei     
-2019          zo 21 apr     do 30 mei     zo 09 jun     zo 16 jun     do 20 jun     
-2020          zo 12 apr     do 21 mei     zo 31 mei     zo 07 jun     do 11 jun 
+2010          zo 04 apr     do 13 mei     zo 23 mei     zo 30 mei     do 03 jun
+2011          zo 24 apr     do 02 jun     zo 12 jun     zo 19 jun     do 23 jun
+2012          zo 08 apr     do 17 mei     zo 27 mei     zo 03 jun     do 07 jun
+2013          zo 31 mrt     do 09 mei     zo 19 mei     zo 26 mei     do 30 mei
+2014          zo 20 apr     do 29 mei     zo 08 jun     zo 15 jun     do 19 jun
+2015          zo 05 apr     do 14 mei     zo 24 mei     zo 31 mei     do 04 jun
+2016          zo 27 mrt     do 05 mei     zo 15 mei     zo 22 mei     do 26 mei
+2017          zo 16 apr     do 25 mei     zo 04 jun     zo 11 jun     do 15 jun
+2018          zo 01 apr     do 10 mei     zo 20 mei     zo 27 mei     do 31 mei
+2019          zo 21 apr     do 30 mei     zo 09 jun     zo 16 jun     do 20 jun
+2020          zo 12 apr     do 21 mei     zo 31 mei     zo 07 jun     do 11 jun
 ```
 
 
 ## TUSCRIPT
 
-For dates before October 15, 1582 the Julian Calendar is taken as basis. 
+For dates before October 15, 1582 the Julian Calendar is taken as basis.
 
 ```tuscript
 

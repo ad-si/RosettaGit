@@ -14,7 +14,7 @@ tags = []
 [[Category:Memoization]]
 [[Category:Classic CS problems and programs]]
 
-The '''[[wp:Ackermann function|Ackermann function]]''' is a classic example of a recursive function, notable especially because it is not a [[wp:Primitive_recursive_function|primitive recursive function]]. It grows very quickly in value, as does the size of its call tree. 
+The '''[[wp:Ackermann function|Ackermann function]]''' is a classic example of a recursive function, notable especially because it is not a [[wp:Primitive_recursive_function|primitive recursive function]]. It grows very quickly in value, as does the size of its call tree.
 
 
 The Ackermann function is usually defined as follows:
@@ -44,7 +44,7 @@ Its arguments are never negative and it always terminates. Write a function whic
 ## 360 Assembly
 
 {{trans|AWK}}
-The OS/360 linkage is a bit tricky with the S/360 basic instruction set. 
+The OS/360 linkage is a bit tricky with the S/360 basic instruction set.
 To simplify, the program is recursive not reentrant.
 
 ```360asm
@@ -79,7 +79,7 @@ ACKERMAN CSECT
 LOOPM    CH     R4,=H'3'           do m=0 to 3
          BH     ELOOPM
          LA     R5,0               n=0
-LOOPN    CH     R5,=H'8'           do n=0 to 8         
+LOOPN    CH     R5,=H'8'           do n=0 to 8
          BH     ELOOPN
          LR     R1,R4              m
          LR     R2,R5              n
@@ -127,7 +127,7 @@ IF3      BCTR   R2,0               n=n-1
          BAL    R14,ACKER          r1=acker(m,n-1)
          LR     R2,R1              acker(m,n-1)
          L      R1,M               m
-         BCTR   R1,0               m=m-1         
+         BCTR   R1,0               m=m-1
          BAL    R14,ACKER          r1=acker(m-1,acker(m,n-1))
          LR     R11,R1             return acker(m-1,1)
 EXIT     L      R14,SAVER14B       restore r14
@@ -145,7 +145,7 @@ SAVER10B DS     F                  saved r10
 M        DS     F                  m
 N        DS     F                  n
 STACKLEN EQU    *-STACK
-         YREGS  
+         YREGS
          END    ACKERMAN
 ```
 
@@ -360,7 +360,7 @@ defer: ack1
 	then ;
 
 : ack \ m n -- A
-	over not 
+	over not
 	if
 		nip n:1+
 	else
@@ -485,7 +485,7 @@ public function ackermann(m:uint, n:uint):uint
     if (n == 0)
     {
         return ackermann(m - 1, 1);
-    }		
+    }
 
     return ackermann(m - 1, ackermann(m, n - 1));
 }
@@ -520,7 +520,7 @@ begin
 end Test_Ackermann;
 ```
 
-The implementation does not care about arbitrary precision numbers because the Ackermann function does not only grow, but also slow quickly, when computed recursively. 
+The implementation does not care about arbitrary precision numbers because the Ackermann function does not only grow, but also slow quickly, when computed recursively.
 {{out}} the first 4x7 Ackermann's numbers:
 
 ```txt
@@ -542,14 +542,14 @@ The implementation does not care about arbitrary precision numbers because the A
 open import Data.Nat
 open import Data.Nat.Show
 open import IO
-  
+
 module Ackermann where
 
 ack : ℕ -> ℕ -> ℕ
 ack zero n = n + 1
 ack (suc m) zero = ack m 1
 ack (suc m) (suc n) = ack m (ack (suc m) n)
-      
+
 main = run (putStrLn (show (ack 3 9)))
 
 ```
@@ -580,11 +580,11 @@ agda --compile Ackermann.agda
 
 {{trans|Ada}}
 {{works with|ALGOL 68|Standard - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}} 
+{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}}
 
 ```algol68
-PROC test ackermann = VOID: 
+PROC test ackermann = VOID:
 BEGIN
    PROC ackermann = (INT m, n)INT:
    BEGIN
@@ -705,7 +705,7 @@ MsgBox, % "A(1,2) = " A(1,2)
 ## AutoIt
 
 
-###  Classical version 
+###  Classical version
 
 
 ```autoit
@@ -724,7 +724,7 @@ EndFunc
 
 
 
-###  Classical + cache implementation 
+###  Classical + cache implementation
 
 
 This version works way faster than the classical one: Ackermann(3, 5) runs in 12,7 ms, while the classical version takes 402,2 ms.
@@ -757,12 +757,12 @@ EndFunc   ;==>Ackermann
 
 
 ```awk
-function ackermann(m, n) 
+function ackermann(m, n)
 {
-  if ( m == 0 ) { 
+  if ( m == 0 ) {
     return n+1
   }
-  if ( n == 0 ) { 
+  if ( n == 0 ) {
     return ackermann(m-1, 1)
   }
   return ackermann(m-1, ackermann(m, n-1))
@@ -783,32 +783,32 @@ BEGIN {
 
 
 ```babel
-main: 
+main:
         {((0 0) (0 1) (0 2)
         (0 3) (0 4) (1 0)
         (1 1) (1 2) (1 3)
         (1 4) (2 0) (2 1)
         (2 2) (2 3) (3 0)
-        (3 1) (3 2) (4 0)) 
-    
+        (3 1) (3 2) (4 0))
+
         { dup
         "A(" << { %d " " . << } ... ") = " <<
-    reverse give 
-    ack 
+    reverse give
+    ack
     %d cr << } ... }
 
-ack!: 
+ack!:
     { dup zero?
         { <-> dup zero?
-            { <-> 
+            { <->
                 cp
                 1 -
                 <- <- 1 - ->
-                ack -> 
+                ack ->
                 ack }
             { <->
-                1 - 
-                <- 1 -> 
+                1 -
+                <- 1 ->
                 ack }
         if }
         { zap 1 + }
@@ -857,7 +857,7 @@ A(4 0 ) = 13
 130         GOSUB 200"ACKERMANN
 140         PRINT "ACK("M","N") = "ACK
 150 NEXT N, M
-160 END 
+160 END
 
 200 M(SP) = M
 210 N(SP) = N
@@ -886,7 +886,7 @@ REM RETURN
 dim stack(5000, 3)	# BASIC-256 lacks functions (as of ver. 0.9.6.66)
 stack[0,0] = 3		# M
 stack[0,1] = 7		# N
-lev = 0 
+lev = 0
 
 gosub ackermann
 print "A("+stack[0,0]+","+stack[0,1]+") = "+stack[0,2]
@@ -897,7 +897,7 @@ ackermann:
 		stack[lev,2] = stack[lev,1]+1
 		return
 	end if
-	if stack[lev,1]=0 then 
+	if stack[lev,1]=0 then
 		lev = lev+1
 		stack[lev,0] = stack[lev-1,0]-1
 		stack[lev,1] = 1
@@ -985,7 +985,7 @@ end function
 ```bbcbasic
       PRINT FNackermann(3, 7)
       END
-      
+
       DEF FNackermann(M%, N%)
       IF M% = 0 THEN = N% + 1
       IF N% = 0 THEN = FNackermann(M% - 1, 1)
@@ -997,7 +997,7 @@ end function
 ## QuickBasic
 =
 {{works with|QuickBasic|4.5}}
-BASIC runs out of stack space very quickly. 
+BASIC runs out of stack space very quickly.
 The call <tt>ack(3, 4)</tt> gives a stack error.
 
 ```qbasic
@@ -1097,7 +1097,7 @@ define ack(m, n) {
 
 for (n=0; n<7; n++) {
   for (m=0; m<4; m++) {
-     print "A(", m, ",", n, ") = ", ack(m,n), "\n"; 
+     print "A(", m, ",", n, ") = ", ack(m,n), "\n";
   }
 }
 quit
@@ -1162,7 +1162,7 @@ Highly optimized and fast version, returns A(4,1)/A(5,0) almost instantaneously:
 
 ```beeswax
 
-                             >Mf@Ph?@g@2h@Mf@Php     if m>4 and n>0 => replace m,n with m-1,m,n-1  
+                             >Mf@Ph?@g@2h@Mf@Php     if m>4 and n>0 => replace m,n with m-1,m,n-1
                  >~4~L#1~2hg'd?1f@hgM?f2h      p     if m>4 and n=0 => replace m,n with m-1,1
                 #            q      <                                                   /n+3 times  \
                 #X~4K#?2Fg?PPP>@B@M"pb               if m=4         => replace m,n with 2^(2^(....)))-3
@@ -1201,22 +1201,22 @@ Since Befunge-93 doesn't have recursive capabilities we need to use an iterative
 r[1&&{0
 >v
  j
-u>.@ 
+u>.@
 1>  \:v
 ^  v:\_$1+
 \^v_$1\1-
 u^>1-0fp:1-\0fg101-
 ```
 
-The program reads two integers (first m, then n) from command line, idles around funge space, then outputs the result of the Ackerman function. 
+The program reads two integers (first m, then n) from command line, idles around funge space, then outputs the result of the Ackerman function.
 Since the latter is calculated truly recursively, the execution time becomes unwieldy for most m>3.
 
 
 ## Bracmat
 
-Three solutions are presented here. 
-The first one is a purely recursive version, only using the formulas at the top of the page. 
-The value of A(4,1) cannot be computed due to stack overflow. 
+Three solutions are presented here.
+The first one is a purely recursive version, only using the formulas at the top of the page.
+The value of A(4,1) cannot be computed due to stack overflow.
 It can compute A(3,9) (4093), but probably not A(3,10)
 
 ```bracmat
@@ -1230,10 +1230,10 @@ It can compute A(3,9) (4093), but probably not A(3,10)
 );
 ```
 
-The second version is a purely non-recursive solution that easily can compute A(4,1). 
-The program uses a stack for Ackermann function calls that are to be evaluated, but that cannot be computed given the currently known function values - the "known unknowns". 
-The currently known values are stored in a hash table. 
-The Hash table also contains incomplete Ackermann function calls, namely those for which the second argument is not known yet - "the unknown unknowns". 
+The second version is a purely non-recursive solution that easily can compute A(4,1).
+The program uses a stack for Ackermann function calls that are to be evaluated, but that cannot be computed given the currently known function values - the "known unknowns".
+The currently known values are stored in a hash table.
+The Hash table also contains incomplete Ackermann function calls, namely those for which the second argument is not known yet - "the unknown unknowns".
 These function calls are associated with "known unknowns" that are going to provide the value of the second argument. As soon as such an associated known unknown becomes known, the unknown unknown becomes a known unknown and is pushed onto the stack.
 
 Although all known values are stored in the hash table, the converse is not true: an element in the hash table is either a "known known" or an "unknown unknown" associated with an "known unknown".
@@ -1247,7 +1247,7 @@ Although all known values are stored in the hash table, the converse is not true
           .   !arg:(?key.?future)
             & str$!key:?skey
             & (cache..insert)$(!skey..!future)
-            & 
+            &
         )
       & (find=.(cache..find)$(str$!arg))
       & ( insert
@@ -1259,7 +1259,7 @@ Although all known values are stored in the hash table, the converse is not true
                 & (cache..insert)$(!skey.!value.)
                 & (   !future:(?futurem.?futureeq)
                     & (!futurem,!value.!futureeq)
-                  | 
+                  |
                   )
               | (cache..insert)$(!skey.!value.)&
               )
@@ -1288,7 +1288,7 @@ Although all known values are stored in the hash table, the converse is not true
                         |   (!m+-1,!val.!eq)
                             (!m,!n.!eq)
                         )
-                    | 
+                    |
                     )
                 |   chain$(!m,!n+-1.!m+-1.!key)
                   &   (!m,!n+-1.)
@@ -1359,8 +1359,8 @@ p ackermann 3, 4  #Prints 125
 
 Straightforward implementation per Ackermann definition:
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int ackermann(int m, int n)
 {
@@ -1407,8 +1407,8 @@ A(4, 1) = 65533
 
 Ackermann function makes <i>a lot</i> of recursive calls, so the above program is a bit naive.  We need to be slightly less naive, by doing some simple caching:
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -1502,13 +1502,13 @@ class Program
         }
         else if(m == 0)
         {
-            if(n >= 0) 
+            if(n >= 0)
                 return n + 1;
         }
 
         throw new System.ArgumentOutOfRangeException();
     }
-    
+
     static void Main()
     {
         for (long m = 0; m <= 3; ++m)
@@ -1696,8 +1696,8 @@ Possibly the most efficient implementation of Ackermann in C#. It successfully r
 ### Basic version
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 unsigned int ackermann(unsigned int m, unsigned int n) {
   if (m == 0) {
@@ -1727,8 +1727,8 @@ int main() {
 C++11 with boost's big integer type. Compile with:
  g++ -std=c++11 -I /path/to/boost ackermann.cpp.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <sstream>
 #include <string>
 #include <boost/multiprecision/cpp_int.hpp>
@@ -2011,7 +2011,7 @@ CLIPS>
 
 
 ```clojure
-(defn ackermann [m n] 
+(defn ackermann [m n]
   (cond (zero? m) (inc n)
         (zero? n) (ackermann (dec m) 1)
         :else (ackermann (dec m) (ackermann m (dec n)))))
@@ -2047,7 +2047,7 @@ CLIPS>
                    SUBTRACT 1 FROM N
                    CALL "Ackermann" USING BY CONTENT M BY CONTENT N
                        BY REFERENCE Return-Val
-                       
+
                    SUBTRACT 1 FROM M
                    CALL "Ackermann" USING BY CONTENT M
                        BY CONTENT Return-Val BY REFERENCE Return-Val
@@ -2155,14 +2155,14 @@ BlackBox Component Builder
 ```oberon2
 
 MODULE NpctAckerman;
- 
+
 IMPORT  StdLog;
- 
-VAR     
+
+VAR
 	m,n: INTEGER;
- 
+
 PROCEDURE Ackerman (x,y: INTEGER):INTEGER;
- 
+
 BEGIN
   IF    x = 0  THEN  RETURN  y + 1
   ELSIF y = 0  THEN  RETURN  Ackerman (x - 1 , 1)
@@ -2170,7 +2170,7 @@ BEGIN
     RETURN  Ackerman (x - 1 , Ackerman (x , y - 1))
   END
 END Ackerman;
- 
+
 PROCEDURE Do*;
 BEGIN
   FOR  m := 0  TO  3  DO
@@ -2193,10 +2193,10 @@ Execute: ^Q NpctAckerman.Do<br/>
 
 ```txt
 
- 1  2  3  4  5  6  7 
- 2  3  4  5  6  7  8 
- 3  5  7  9  11  13  15 
- 5  13  29  61  125  253  509 
+ 1  2  3  4  5  6  7
+ 2  3  4  5  6  7  8
+ 3  5  7  9  11  13  15
+ 5  13  29  61  125  253  509
 
 ```
 
@@ -2584,11 +2584,11 @@ ackermann(m,n)
     {
         InvalidArgumentException.raise()
     };
-    
+
     m =>
        0 { ^n + 1 }
        : {
-              n => 
+              n =>
                 0 { ^ackermann(m - 1,1) }
                 : { ^ackermann(m - 1,ackermann(m,n-1)) }
            }
@@ -2646,7 +2646,7 @@ A(3,5)=253
 
 ```elixir
 defmodule Ackermann do
-  def ack(0, n), do: n + 1 
+  def ack(0, n), do: n + 1
   def ack(m, 0), do: ack(m - 1, 1)
   def ack(m, n), do: ack(m - 1, ack(m, n - 1))
 end
@@ -2692,9 +2692,9 @@ end)
 -module(ackermann).
 -export([ackermann/2]).
 
-ackermann(0, N) -> 
+ackermann(0, N) ->
   N+1;
-ackermann(M, 0) -> 
+ackermann(M, 0) ->
   ackermann(M-1, 1);
 ackermann(M, N) when M > 0 andalso N > 0 ->
   ackermann(M-1, ackermann(M, N-1)).
@@ -2726,7 +2726,7 @@ DIM STACK[10000]
 
 PROCEDURE ACK(M,N->N)
   LOOP
-    CURSOR_SAVE(->CURX%,CURY%) 
+    CURSOR_SAVE(->CURX%,CURY%)
     LOCATE(8,1)
     PRINT("Livello Stack:";S;"  ")
     LOCATE(CURY%,CURX%)
@@ -2771,7 +2771,7 @@ END PROGRAM
 
 Prints a list of Ackermann function values: from A(0,0) to A(3,9). Uses a stack to avoid
 overflow.
-Formating options to make this pretty are available, 
+Formating options to make this pretty are available,
 but for this example only basic output is used.
 
 ```txt
@@ -2794,7 +2794,7 @@ This is based on the [[VBScript]] example.
 
 ```Euphoria
 function ack(atom m, atom n)
-    if m = 0 then 
+    if m = 0 then
         return n + 1
     elsif m > 0 and n = 0 then
         return ack(m - 1, 1)
@@ -2831,10 +2831,10 @@ $  else return A(m-1,A(m,n-1));
 $  endif;
 $endfunction
 >shortestformat; A((0:3)',0:5)
-         1         2         3         4         5         6 
-         2         3         4         5         6         7 
-         3         5         7         9        11        13 
-         5        13        29        61       125       253 
+         1         2         3         4         5         6
+         2         3         4         5         6         7
+         3         5         7         9        11        13
+         5        13        29        61       125       253
 
 ```
 
@@ -2891,7 +2891,7 @@ $endfunction
 The following program implements the Ackermann function in F# but is not tail-recursive and so runs out of stack space quite fast.
 
 ```fsharp
-let rec ackermann m n = 
+let rec ackermann m n =
     match m, n with
     | 0, n -> n + 1
     | m, 0 -> ackermann (m - 1) 1
@@ -2922,11 +2922,11 @@ let ackermann M N =
 USING: kernel math locals combinators ;
 IN: ackermann
 
-:: ackermann ( m n -- u ) 
-    { 
-        { [ m 0 = ] [ n 1 + ] } 
-        { [ n 0 = ] [ m 1 - 1 ackermann ] } 
-        [ m 1 - m n 1 - ackermann ackermann ] 
+:: ackermann ( m n -- u )
+    {
+        { [ m 0 = ] [ n 1 + ] }
+        { [ n 0 = ] [ m 1 - 1 ackermann ] }
+        [ m 1 - m n 1 - ackermann ackermann ]
     } cond ;
 ```
 
@@ -2950,16 +2950,16 @@ for M in [ 0:4 ]
 end
 ```
 
-The above will output the below.  
-Formating options to make this pretty are available, 
+The above will output the below.
+Formating options to make this pretty are available,
 but for this example only basic output is used.
 
 ```txt
 
-1 2 3 4 5 6 7 
-2 3 4 5 6 7 8 
-3 5 7 9 11 13 15 
-5 13 29 61 125 253 509 
+1 2 3 4 5 6 7
+2 3 4 5 6 7 8
+3 5 7 9 11 13 15
+5 13 29 61 125 253 509
 
 ```
 
@@ -3088,7 +3088,7 @@ DYNC AckermannC(m AS INTEGER, n AS INTEGER) AS INTEGER
 		if (!n) return Ackermann(m - 1, 1);
 		return Ackermann(m - 1, Ackermann(m, n - 1));
 	}
-	
+
 	int main(int m, int n)
 	{
 		return Ackermann(m, n);
@@ -3108,7 +3108,7 @@ DYNASM AckermannA(m AS INTEGER, n AS INTEGER) AS INTEGER
 	INVOKE Ackermann, m, n
 	LEAVE
 	RET
-	
+
 	@Ackermann
 	ENTER 0, 0
 
@@ -3135,7 +3135,7 @@ DYNASM AckermannA(m AS INTEGER, n AS INTEGER) AS INTEGER
 	MOV ECX, m
 	DEC ECX
 	INVOKE Ackermann, ECX, EAX
-	
+
 	@xit
 	LEAVE
 	RET 8
@@ -3181,8 +3181,8 @@ FORTH> 3 4 acker . 125  ok
 An optimized version:
 
 ```forth
-: ackermann                            ( m n -- u ) 
-  over                                 ( case statement) 
+: ackermann                            ( m n -- u )
+  over                                 ( case statement)
   0 over = if drop nip 1+     else
   1 over = if drop nip 2 +    else
   2 over = if drop nip 2* 3 + else
@@ -3204,20 +3204,20 @@ An optimized version:
 {{works with|Fortran|90 and later}}
 
 ```fortran
-PROGRAM EXAMPLE  
+PROGRAM EXAMPLE
   IMPLICIT NONE
- 
+
   INTEGER :: i, j
- 
+
   DO i = 0, 3
     DO j = 0, 6
        WRITE(*, "(I10)", ADVANCE="NO") Ackermann(i, j)
     END DO
     WRITE(*,*)
   END DO
- 
+
 CONTAINS
- 
+
   RECURSIVE FUNCTION Ackermann(m, n) RESULT(ack)
     INTEGER :: ack, m, n
 
@@ -3273,7 +3273,7 @@ For m = 0 To 4
     For n = 0 To 10
         ' A(4, 1) or higher will run out of stack memory (default 1M)
         ' change n = 1 to n = 2 to calculate A(4, 2), increase stack!
-        If m = 4 And n = 1 Then Exit For 
+        If m = 4 And n = 1 Then Exit For
         Print Using "######"; ackerman(m, n);
     Next
     Print
@@ -3371,12 +3371,12 @@ dim as container gC
 end globals
 
 def fn Ackerman( m as long, n as long ) as long
- 
+
 local fn Ackerman( m as long, n as long ) as long
 dim as long result
 
 if m == 0 then result = n + 1 : exit fn
- 
+
 if ( n == 0 )
    result = fn Ackerman( m - 1, 1 )
    exit fn
@@ -3508,7 +3508,7 @@ def A (m n)
    cond
       (equal? m 0)
           + n 1
-      (equal? n 0) 
+      (equal? n 0)
           A (- m 1) 1
       else
           A (- m 1)
@@ -3825,7 +3825,7 @@ class RosettaDemo
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-{{libheader|Icon Programming Library}} 
+{{libheader|Icon Programming Library}}
 Taken from the public domain Icon Programming Library's [http://www.cs.arizona.edu/icon/library/procs/memrfncs.htm acker in memrfncs],
 written by Ralph E. Griswold.
 
@@ -3861,9 +3861,9 @@ end
 
 ```txt
 
-1 2 3 4 5 6 7 8 9 
-2 3 4 5 6 7 8 9 10 
-3 5 7 9 11 13 15 17 19 
+1 2 3 4 5 6 7 8 9
+2 3 4 5 6 7 8 9 10
+3 5 7 9 11 13 15 17 19
 5 13 29 61 125 253 509 1021 2045
 ```
 
@@ -3940,14 +3940,14 @@ The Ackermann function derived in this fashion is primitive recursive.  This is 
 2  3  4  5   6   7   8    9
 3  5  7  9  11  13  15   17
 5 13 29 61 125 253 509 1021
-   
+
    3 4 Ack 0 1 2
  5    13                                                                                                                                                                                                                                                        ...
 13 65533 2003529930406846464979072351560255750447825475569751419265016973710894059556311453089506130880933348101038234342907263181822949382118812668869506364761547029165041871916351587966347219442930927982084309104855990570159318959639524863372367203002916...
-   
+
    4 # @: ": @: Ack 2 NB. Number of digits of 4 Ack 2
 19729
-   
+
    5 Ack 0
 65533
 
@@ -3958,31 +3958,31 @@ A structured derivation of Ack follows:
 
 
 ```j
-   o=. @: NB. Composition of verbs (functions) 
+   o=. @: NB. Composition of verbs (functions)
    x=. o[ NB. Composing the left noun (argument)
-   
-   (rows2up=. ,&'&1'&'2x&*') o i. 4 
-2x&*      
-2x&*&1    
-2x&*&1&1  
+
+   (rows2up=. ,&'&1'&'2x&*') o i. 4
+2x&*
+2x&*&1
+2x&*&1&1
 2x&*&1&1&1
    NB. 2's multiplication, exponentiation, tetration, pentation, etc.
-    
+
    0 1 2 (BuckTruncated=. (rows2up  x apply ]) f.) 0 1 2 3 4 5
 0 2 4  6     8                                                                                                                                                                                                                                                  ...
 1 2 4  8    16                                                                                                                                                                                                                                                  ...
 1 2 4 16 65536 2003529930406846464979072351560255750447825475569751419265016973710894059556311453089506130880933348101038234342907263181822949382118812668869506364761547029165041871916351587966347219442930927982084309104855990570159318959639524863372367203...
    NB. Buck truncated function (missing the first two rows)
-   
+
    BuckTruncated NB. Buck truncated function-level code
 ,&'&1'&'2x&*'@:[ 128!:2 ]
-   
+
    (rows01=. {&('>:',:'2x&+')) 0 1 NB. The missing first two rows
->:  
+>:
 2x&+
-   
+
    Buck=. (rows01 :: (rows2up o (-&2)))"0 x apply ]
-   
+
    (Ack=. (3 -~ [ Buck 3 + ])f.)  NB. Ackermann function-level code
 3 -~ [ ({&(2 4$'>:  2x&+') ::(,&'&1'&'2x&*'@:(-&2))"0@:[ 128!:2 ]) 3 + ]
 ```
@@ -4116,7 +4116,7 @@ public interface Ackermann {
       };
     }
 
-    private static final BinaryOperator<BigInteger> ACKERMANN = 
+    private static final BinaryOperator<BigInteger> ACKERMANN =
       TailRecursive.new_(
         (BigInteger number1, BigInteger number2) ->
           new_(
@@ -4313,27 +4313,27 @@ public class IterativeAckermann extends Thread {
    * Adjust parameters conveniently
    */
   /**
-   * 
+   *
    */
   private static final int HASH_SIZE_LIMIT = 636;
 
   /**
-   * 
+   *
    */
   private BigInteger m;
 
   /**
-   * 
+   *
    */
   private BigInteger n;
 
   /**
-   * 
+   *
    */
   private Integer hash_size;
 
   /**
-   * 
+   *
    */
   private Long consumed_heap;
 
@@ -4352,7 +4352,7 @@ public class IterativeAckermann extends Thread {
   }
 
   /**
-   * 
+   *
    */
   public IterativeAckermann() {
     // TODO Auto-generated constructor stub
@@ -4385,18 +4385,18 @@ public class IterativeAckermann extends Thread {
   static class Pair<T1, T2> {
 
     /**
-     * 
+     *
      */
     /**
-     * 
+     *
      */
     T1 x;
 
     /**
-     * 
+     *
      */
     /**
-     * 
+     *
      */
     T2 y;
 
@@ -4445,7 +4445,7 @@ public class IterativeAckermann extends Thread {
   }
 
   /**
-   * 
+   *
    */
   private static final BigInteger LIMIT = new BigInteger("6");
 
@@ -4687,18 +4687,18 @@ function ack(m, n) {
 From [http://www.latrobe.edu.au/phimvt/joy/jp-nestrec.html here]
 
 ```joy
-DEFINE ack == [ [ [pop null]  popd succ ] 
-                [ [null]  pop pred 1 ack ] 
-                [ [dup pred swap] dip pred ack ack ] ] 
+DEFINE ack == [ [ [pop null]  popd succ ]
+                [ [null]  pop pred 1 ack ]
+                [ [dup pred swap] dip pred ack ack ] ]
               cond.
 ```
 
 another using a combinator
 
 ```joy
-DEFINE ack == [ [ [pop null]  [popd succ] ] 
-		[ [null]  [pop pred 1]  [] ] 
-		[ [[dup pred swap] dip pred] [] [] ] ] 
+DEFINE ack == [ [ [pop null]  [popd succ] ]
+		[ [null]  [pop pred 1]  [] ]
+		[ [[dup pred swap] dip pred] [] [] ] ]
               condnestrec.
 ```
 
@@ -4772,9 +4772,9 @@ def ack:
 
   # input: [value,cache]; output: [value, updatedCache]
   def cache(key): .[1] += { (key): .[0] };
-  
+
   def pow2: reduce range(0; .) as $i (1; .*2);
- 
+
   .[0] as $m | .[1] as $n | .[2] as $cache
   | if   $m == 0 then [$n + 1, $cache]
     elif $m == 1 then [$n + 2, $cache]
@@ -4788,7 +4788,7 @@ def ack:
         ([$m-1, 1, $cache] | ack)
         | cache($key)
       else
-        ([$m, $n-1, $cache ] | ack) 
+        ([$m, $n-1, $cache ] | ack)
         | [$m-1, .[0], .[1]] | ack
         | cache($key)
       end
@@ -5037,7 +5037,7 @@ A(4, 0..20) =     13      ?      ?      ?      ?      ?      ?      ?      ?    
 
 ```lasso
 #!/usr/bin/lasso9
- 
+
 define ackermann(m::integer, n::integer) => {
   if(#m == 0) => {
     return ++#n
@@ -5249,7 +5249,7 @@ Checkit
 
 Module Checkit {
       Module Inner (ack) {
-            For m = 0 to 3 {For n = 0 to 4 {Print m;" ";n;" ";ack(m,n)}} 
+            For m = 0 to 3 {For n = 0 to 4 {Print m;" ";n;" ";ack(m,n)}}
       }
       Inner lambda (m,n) ->If(m=0-> n+1, If(n=0-> lambda(m-1,1),lambda(m-1,lambda(m,n-1))))
 }
@@ -5270,7 +5270,7 @@ ack(3,3)
 {{out}}
 
 ```txt
-61 
+61
 ```
 
 
@@ -5294,7 +5294,7 @@ end proc:
 
 ```
 
-In Maple, the keyword 
+In Maple, the keyword
 ```Maple>thisproc</lang
  refers to the currently executing procedure (closure) and is used when writing recursive procedures.  (You could also use the name of the procedure, Ackermann in this case, but then a concurrently executing task or thread could re-assign that name while the recursive procedure is executing, resulting in an incorrect result.)
 
@@ -5433,7 +5433,7 @@ gives back:
 2003529930406846464979072351560255750447825475569751419265016973710894059556311453089506130880........699146577530041384717124577965048175856395072895337539755822087777506072339445587895905719156733
 ```
 </div>
-Ackermann[4,2] has 19729 digits, several thousands of digits omitted in the result above for obvious reasons. Ackermann[5,0] can be computed also quite fast, and is equal to 65533. 
+Ackermann[4,2] has 19729 digits, several thousands of digits omitted in the result above for obvious reasons. Ackermann[5,0] can be computed also quite fast, and is equal to 65533.
 Summarizing Ackermann[0,n_], Ackermann[1,n_], Ackermann[2,n_], and Ackermann[3,n_] can all be calculated for n>>1000. Ackermann[4,0], Ackermann[4,1], Ackermann[4,2] and Ackermann[5,0]  are only possible now. Maybe in the future we can calculate higher Ackermann numbers efficiently and fast. Although showing the results will always be a problem.
 
 
@@ -5528,7 +5528,7 @@ ackermann = function(m, n)
     if n == 0 then return ackermann(m - 1, 1)
     return ackermann(m - 1, ackermann(m, n - 1))
 end function
- 
+
 for m in range(0, 3)
     for n in range(0, 4)
         print "(" + m + ", " + n + "): " + ackermann(m, n)
@@ -5550,7 +5550,7 @@ end for
 
 
 ```haskell
-fun ackermann( 0, n ) = n + 1 
+fun ackermann( 0, n ) = n + 1
 	| ( m, 0 ) = ackermann( m - 1, 1 )
 	| ( m, n ) = ackermann( m - 1, ackermann(m, n - 1) )
 ```
@@ -5652,7 +5652,7 @@ ack(M, N) = R :- ack(M, N, R).
 
 :- pred ack(integer::in, integer::in, integer::out) is det.
 ack(M, N, R) :-
-	( ( M < integer(0)  
+	( ( M < integer(0)
 	  ; N < integer(0) ) -> throw(bounds_error)
 	; M = integer(0)     -> R = N + integer(1)
 	; N = integer(0)     -> ack(M - integer(1), integer(1), R)
@@ -5719,7 +5719,7 @@ FROM Fmt IMPORT Int;
 
 PROCEDURE Ackermann(m, n: CARDINAL): CARDINAL =
   BEGIN
-    IF m = 0 THEN 
+    IF m = 0 THEN
       RETURN n + 1;
     ELSIF n = 0 THEN
       RETURN Ackermann(m - 1, 1);
@@ -5741,10 +5741,10 @@ END Ack.
 {{out}}
 
 ```txt
-1 2 3 4 5 6 7 
-2 3 4 5 6 7 8 
-3 5 7 9 11 13 15 
-5 13 29 61 125 253 509 
+1 2 3 4 5 6 7
+2 3 4 5 6 7 8
+3 5 7 9 11 13 15
+5 13 29 61 125 253 509
 ```
 
 
@@ -6004,7 +6004,7 @@ class Ackermann {
       };
     };
   }
-  
+
   function : Ackermann(m : Int, n : Int) ~ Int {
     if(m > 0) {
       if (n > 0) {
@@ -6015,11 +6015,11 @@ class Ackermann {
       };
     }
     else if(m = 0) {
-      if(n >= 0) { 
+      if(n >= 0) {
         return n + 1;
       };
     };
-    
+
     return -1;
   }
 }
@@ -6098,7 +6098,7 @@ let a m n =
 ```
 
 
-###  Arbitrary precision 
+###  Arbitrary precision
 
 With arbitrary-precision integers ([http://caml.inria.fr/pub/docs/manual-ocaml/libref/Big_int.html Big_int module]):
 
@@ -6200,11 +6200,11 @@ let rec a bounds caller todo m n =
   | m, n when eq m zero ->
       let r = (succ n) in
       may_tail r
- 
+
   | m, n when eq n zero ->
       let caller = (m,n)::caller in
       a bounds caller todo (pred m) one
- 
+
   | m, n when eq m three ->
       let r = sub (power 2 (add n three)) three in
       may_tail r
@@ -6218,7 +6218,7 @@ let rec a bounds caller todo m n =
           let todo = (m,n)::todo in
           let caller = [(m, pred n)] in
           a bounds caller todo m (pred n)
- 
+
 let a = a (H.create 42 (* arbitrary *)) [] [] ;;
 
 let () =
@@ -6312,11 +6312,11 @@ endfor
 
 ack: func (m: Int, n: Int) -> Int {
   if (m == 0) {
-    n + 1 
+    n + 1
   } else if (n == 0) {
     ack(m - 1, 1)
   } else {
-    ack(m - 1, ack(m, n - 1)) 
+    ack(m - 1, ack(m, n - 1))
   }
 }
 
@@ -6324,7 +6324,7 @@ main: func {
   for (m in 0..4) {
     for (n in 0..10) {
       "ack(#{m}, #{n}) = #{ack(m, n)}" println()
-    }   
+    }
   }
 }
 
@@ -6393,7 +6393,8 @@ Ackermann(3, 6) = 509
 ## Order
 
 
-```c>#include <order/interpreter.h
+```c
+#include <order/interpreter.h>
 
 
 #define ORDER_PP_DEF_8ack ORDER_PP_FN(    \
@@ -6509,7 +6510,7 @@ sub A {
 ```
 
 
-An implementation using ternary chaining: 
+An implementation using ternary chaining:
 
 ```perl
 sub A {
@@ -6584,7 +6585,7 @@ sub ack {
 	}
 	$n;
 }
- 
+
 print "ack(3,4) is ", ack(3,4), "\n";
 print "ack(4,1) is ", ack(4,1), "\n";
 print "ack(4,2) has ", length(ack(4,2)), " digits\n";
@@ -6601,7 +6602,7 @@ print "ack(4,2) has ", length(ack(4,2)), " digits\n";
 
 ```perl6
 sub A(Int $m, Int $n) {
-    if    $m == 0 { $n + 1 } 
+    if    $m == 0 { $n + 1 }
     elsif $n == 0 { A($m - 1, 1) }
     else          { A($m - 1, A($m, $n - 1)) }
 }
@@ -6647,7 +6648,7 @@ say .chars, " digits starting with ", .substr(0,50), "..." given A(4,2);
 ## Phix
 
 
-###  native version 
+###  native version
 
 
 ```Phix
@@ -6669,7 +6670,7 @@ end function
 
 constant limit = 23,
          fmtlens = {1,2,2,2,3,3,3,4,4,4,4,5,5,5,6,6,6,7,7,7,7,8,8,8}
- 
+
 atom t0 = time()
 printf(1,"   0")
 for j=1 to limit do
@@ -6704,7 +6705,7 @@ end for
 ack(4,2) and above fail with power function overflow. ack(3,100) will get you an answer, but only accurate to 16 or so digits.
 
 
-###  gmp version 
+###  gmp version
 
 {{trans|Go}}
 {{libheader|mpfr}}
@@ -6714,7 +6715,7 @@ ack(4,2) and above fail with power function overflow. ack(3,100) will get you an
 include mpfr.e
 
 procedure ack(integer m, mpz n)
-    if m=0 then                 
+    if m=0 then
         mpz_add_ui(n, n, 1)                     -- return n+1
     elsif m=1 then
         mpz_add_ui(n, n, 2)                     -- return n+2
@@ -6724,7 +6725,7 @@ procedure ack(integer m, mpz n)
     elsif m=3 then
         if not mpz_fits_integer(n) then
             -- As per Go: 2^MAXINT would most certainly run out of memory.
-            -- (think about it: a million digits is fine but pretty daft; 
+            -- (think about it: a million digits is fine but pretty daft;
             --  however a billion digits requires > addressable memory.)
             integer bn = mpz_sizeinbase(n, 2)
             throw(sprintf("A(m,n) had n of %d bits; too large",bn))
@@ -6785,7 +6786,7 @@ procedure ackermann_tests()
             res = "***ERROR***: "&e[E_USER]
         end try
         printf(1,"ack(%d,%d) %s\n",{em,en,res})
-    end for     
+    end for
     n = mpz_free(n)
     printf(1,"\n")
     printf(1,"ackermann_tests completed (%s)\n\n",{elapsed(time()-t0)})
@@ -7228,7 +7229,7 @@ Example output:
 int main(){
    write(ackermann(3,4) + "\n");
 }
- 
+
 int ackermann(int m, int n){
    if(m == 0){
       return n + 1;
@@ -7412,11 +7413,11 @@ function ackermann ([long] $m, [long] $n) {
     if ($m -eq 0) {
         return $n + 1
     }
-    
+
     if ($n -eq 0) {
         return (ackermann ($m - 1) 1)
     }
-    
+
     return (ackermann ($m - 1) (ackermann $m ($n - 1)))
 }
 ```
@@ -7452,12 +7453,12 @@ function Get-Ackermann ([int64]$m, [int64]$n)
     {
         return $n + 1
     }
- 
+
     if ($n -eq 0)
     {
         return Get-Ackermann ($m - 1) 1
     }
- 
+
     return (Get-Ackermann ($m - 1) (Get-Ackermann $m ($n - 1)))
 }
 
@@ -7477,10 +7478,10 @@ $ackermann | Format-Wide {"{0,3}" -f $_} -Column 7 -Force
 
 ```txt
 
-  1                   2                  3                  4                  5                  6                  7               
-  2                   3                  4                  5                  6                  7                  8               
-  3                   5                  7                  9                 11                 13                 15               
-  5                  13                 29                 61                125                253                509               
+  1                   2                  3                  4                  5                  6                  7
+  2                   3                  4                  5                  6                  7                  8
+  3                   5                  7                  9                 11                 13                 15
+  5                  13                 29                 61                125                253                509
 
 ```
 
@@ -7605,7 +7606,7 @@ Debug Ackermann(3,4)
 
 
 ```Purity>data Iter = f =
- FoldNat <const $f One, $f> 
+ FoldNat <const $f One, $f>
 data Ackermann = FoldNat <const Succ, Iter>
 ```
 
@@ -7945,9 +7946,9 @@ Ackermann(3, 8)=                    2045              calls=        18
 This REXX version takes advantage that some of the lower numbers for the Ackermann function have direct formulas.
 
 
-If the   '''numeric digits 100'''   were to be increased to   '''20000''',   then the value of   '''Ackermann(4,2)'''   
+If the   '''numeric digits 100'''   were to be increased to   '''20000''',   then the value of   '''Ackermann(4,2)'''
 
-(the last line of output)   would be presented with the full   '''19,729'''   decimal digits. 
+(the last line of output)   would be presented with the full   '''19,729'''   decimal digits.
 
 ```rexx
 /*REXX program  calculates and displays  some values for the  Ackermann function.       */
@@ -8093,13 +8094,13 @@ func Ackermann m, n
                 return Ackermann(m - 1, Ackermann(m, n - 1))
             but n = 0
                 return Ackermann(m - 1, 1)
-            ok 
+            ok
         but m = 0
-            if n >= 0 
+            if n >= 0
                 return n + 1
             ok
         ok
-Raise("Incorrect Numerical input !!!") 
+Raise("Incorrect Numerical input !!!")
 ```
 
 {{out}}
@@ -8188,9 +8189,9 @@ end
 {{out}}
 
 ```txt
- 1 2 3 4 5 6 7 
- 2 3 4 5 6 7 8 
- 3 5 7 9 11 13 15 
+ 1 2 3 4 5 6 7
+ 2 3 4 5 6 7 8
+ 3 5 7 9 11 13 15
  5 13 29 61 125 253 509
 ```
 
@@ -8201,7 +8202,7 @@ end
 
 ```runbasic
 print ackermann(1, 2)
- 
+
 function ackermann(m, n)
    if (m = 0)             then ackermann = (n + 1)
    if (m > 0) and (n = 0) then ackermann = ackermann((m - 1), 1)
@@ -8233,7 +8234,7 @@ fn main() {
 ```
 
 
-Or: 
+Or:
 
 
 ```rust
@@ -8270,7 +8271,7 @@ class MAIN is
       loop m := 0.upto!(3);
         #OUT + "A(" + m + ", " + n + ") = " + ackermann(m, n) + "\n";
       end;
-    end; 
+    end;
   end;
 end;
 ```
@@ -8294,7 +8295,7 @@ class MAIN is
       loop m := 0.upto!(3);
         #OUT + "A(" + m + ", " + n + ") = " + ackermann(m.inti, n.inti) + "\n";
       end;
-    end; 
+    end;
   end;
 end;
 ```
@@ -8633,7 +8634,7 @@ L1      str = str ack(m,n) ' '
         n = 0; m = lt(m,3) m + 1 :s(L1)
 end
 ```
-       
+
 {{out}}
 
 ```txt
@@ -8658,7 +8659,7 @@ $,@/>,@/==ack=!\?\<+#    |   |     |   A(0,j) -> j+1
  j   i           \<?\+>-@/#  |     |   A(i,0) -> A(i-1,1)
                     \@\>@\->@/@\<-@/#  A(i,j) -> A(i-1,A(i,j-1))
                       |  |     |
-            #      #  |  |     |             /+<<<-\  
+            #      #  |  |     |             /+<<<-\
             /-<<+>>\!=/  \=====|==!/
 ### ==
 ?\>>>=?/<<#
@@ -8686,8 +8687,8 @@ A(m,n) ==
   m=0 => n+1
   m>0 and n=0 => A(m-1,1)
   m>0 and n>0 => A(m-1,A(m,n-1))
-  
--- Example  
+
+-- Example
 matrix [[A(i,j) for i in 0..3] for j in 0..3]
 
 ```
@@ -8741,7 +8742,7 @@ CREATE OR REPLACE FUNCTION ACKERMANN(
   END IF;
   RETURN RET;
  END @
- 
+
 BEGIN
  DECLARE M SMALLINT DEFAULT 0;
  DECLARE N SMALLINT DEFAULT 0;
@@ -9056,7 +9057,7 @@ function ackermann(%m,%n)
 ## TXR
 
 
-{{trans|Scheme}} 
+{{trans|Scheme}}
 with memoization.
 
 
@@ -9163,7 +9164,7 @@ Anonymous recursion is the usual way of doing things like this.
 #import std
 #import nat
 
-ackermann = 
+ackermann =
 
 ~&al^?\successor@ar ~&ar?(
    ^R/~&f ^/predecessor@al ^|R/~& ^|/~& predecessor,
@@ -9252,11 +9253,11 @@ End Sub
 {{out}}
 
 ```txt
-           n=  0             1             2             3             4             5             6             7            
-m=0            1             2             3             4             5             6             7             8            
-m=1            2             3             4             5             6             7             8             9            
-m=2            3             5             7             9             11            13            15            17           
-m=3            5             13            29            61            125           253           509           1021   
+           n=  0             1             2             3             4             5             6             7
+m=0            1             2             3             4             5             6             7             8
+m=1            2             3             4             5             6             7             8             9
+m=2            3             5             7             9             11            13            15            17
+m=3            5             13            29            61            125           253           509           1021
 ```
 
 
@@ -9270,7 +9271,7 @@ option explicit
 '~ dim depth
 function ack(m, n)
 	'~ wscript.stdout.write depth & " "
-	if m = 0 then 
+	if m = 0 then
 		'~ depth = depth + 1
 		ack = n + 1
 		'~ depth = depth - 1
@@ -9284,7 +9285,7 @@ function ack(m, n)
 		ack = ack(m - 1, ack(m, n - 1))
 		'~ depth = depth - 1
 	end if
-	
+
 end function
 ```
 
@@ -9349,47 +9350,47 @@ End Function 'ackermann
 ```
 
 {{Out}}
-<pre style="height:20ex">ackermann( 0 , 0 )= 1       calls= 1 
-ackermann( 0 , 1 )= 2       calls= 1 
-ackermann( 0 , 2 )= 3       calls= 1 
-ackermann( 0 , 3 )= 4       calls= 1 
-ackermann( 0 , 4 )= 5       calls= 1 
-ackermann( 0 , 5 )= 6       calls= 1 
-ackermann( 0 , 6 )= 7       calls= 1 
-ackermann( 0 , 7 )= 8       calls= 1 
-ackermann( 0 , 8 )= 9       calls= 1 
-ackermann( 0 , 9 )= 10      calls= 1 
-ackermann( 1 , 0 )= 2       calls= 2 
-ackermann( 1 , 1 )= 3       calls= 4 
-ackermann( 1 , 2 )= 4       calls= 6 
-ackermann( 1 , 3 )= 5       calls= 8 
-ackermann( 1 , 4 )= 6       calls= 10 
-ackermann( 1 , 5 )= 7       calls= 12 
-ackermann( 1 , 6 )= 8       calls= 14 
-ackermann( 1 , 7 )= 9       calls= 16 
-ackermann( 1 , 8 )= 10      calls= 18 
-ackermann( 1 , 9 )= 11      calls= 20 
-ackermann( 2 , 0 )= 3       calls= 5 
-ackermann( 2 , 1 )= 5       calls= 14 
-ackermann( 2 , 2 )= 7       calls= 27 
-ackermann( 2 , 3 )= 9       calls= 44 
-ackermann( 2 , 4 )= 11      calls= 65 
-ackermann( 2 , 5 )= 13      calls= 90 
-ackermann( 2 , 6 )= 15      calls= 119 
-ackermann( 2 , 7 )= 17      calls= 152 
-ackermann( 2 , 8 )= 19      calls= 189 
-ackermann( 2 , 9 )= 21      calls= 230 
-ackermann( 3 , 0 )= 5       calls= 15 
-ackermann( 3 , 1 )= 13      calls= 106 
-ackermann( 3 , 2 )= 29      calls= 541 
-ackermann( 3 , 3 )= 61      calls= 2432 
-ackermann( 3 , 4 )= 125     calls= 10307 
-ackermann( 3 , 5 )= 253     calls= 42438 
-ackermann( 3 , 6 )= 509     calls= 172233 
-ackermann( 3 , 7 )= 1021    calls= 693964 
-ackermann( 3 , 8 )= 2045    calls= 2785999 
-ackermann( 3 , 9 )= 4093    calls= 11164370 
-ackermann( 4 , 0 )= 13      calls= 107 
+<pre style="height:20ex">ackermann( 0 , 0 )= 1       calls= 1
+ackermann( 0 , 1 )= 2       calls= 1
+ackermann( 0 , 2 )= 3       calls= 1
+ackermann( 0 , 3 )= 4       calls= 1
+ackermann( 0 , 4 )= 5       calls= 1
+ackermann( 0 , 5 )= 6       calls= 1
+ackermann( 0 , 6 )= 7       calls= 1
+ackermann( 0 , 7 )= 8       calls= 1
+ackermann( 0 , 8 )= 9       calls= 1
+ackermann( 0 , 9 )= 10      calls= 1
+ackermann( 1 , 0 )= 2       calls= 2
+ackermann( 1 , 1 )= 3       calls= 4
+ackermann( 1 , 2 )= 4       calls= 6
+ackermann( 1 , 3 )= 5       calls= 8
+ackermann( 1 , 4 )= 6       calls= 10
+ackermann( 1 , 5 )= 7       calls= 12
+ackermann( 1 , 6 )= 8       calls= 14
+ackermann( 1 , 7 )= 9       calls= 16
+ackermann( 1 , 8 )= 10      calls= 18
+ackermann( 1 , 9 )= 11      calls= 20
+ackermann( 2 , 0 )= 3       calls= 5
+ackermann( 2 , 1 )= 5       calls= 14
+ackermann( 2 , 2 )= 7       calls= 27
+ackermann( 2 , 3 )= 9       calls= 44
+ackermann( 2 , 4 )= 11      calls= 65
+ackermann( 2 , 5 )= 13      calls= 90
+ackermann( 2 , 6 )= 15      calls= 119
+ackermann( 2 , 7 )= 17      calls= 152
+ackermann( 2 , 8 )= 19      calls= 189
+ackermann( 2 , 9 )= 21      calls= 230
+ackermann( 3 , 0 )= 5       calls= 15
+ackermann( 3 , 1 )= 13      calls= 106
+ackermann( 3 , 2 )= 29      calls= 541
+ackermann( 3 , 3 )= 61      calls= 2432
+ackermann( 3 , 4 )= 125     calls= 10307
+ackermann( 3 , 5 )= 253     calls= 42438
+ackermann( 3 , 6 )= 509     calls= 172233
+ackermann( 3 , 7 )= 1021    calls= 693964
+ackermann( 3 , 8 )= 2045    calls= 2785999
+ackermann( 3 , 9 )= 4093    calls= 11164370
+ackermann( 4 , 0 )= 13      calls= 107
 ackermann( 4 , 1 )= out of stack space
 ```
 
@@ -9403,7 +9404,7 @@ fn ackermann(m int, n int) int {
   switch 0 {
     case m:
       return n + 1
-    
+
     case n:
       return ackermann(m - 1, 1)
   }
@@ -9448,7 +9449,7 @@ def (ackermann m n)
 ```wren
 
 // To use recursion definition and declaration must be on separate lines
-var Ackermann 
+var Ackermann
 Ackermann = Fn.new {|m, n|
     if (m == 0) return n + 1
     if (n == 0) return Ackermann.call(m - 1, 1)
@@ -9525,10 +9526,10 @@ Recursion overflows the stack if either M or N is extended by a single count.
 
 ```txt
 
-1       2       3       4       5       6       7       8       
-2       3       4       5       6       7       8       9       
-3       5       7       9       11      13      15      17      
-5       13      29      61      125     253     509     1021    
+1       2       3       4       5       6       7       8
+2       3       4       5       6       7       8       9
+3       5       7       9       11      13      15      17
+5       13      29      61      125     253     509     1021
 
 ```
 
@@ -9873,7 +9874,7 @@ sub Ackermann()
     next
     print "ack(4,1) ";: print ack(4,1) using "#####"
 end sub
- 
+
 Ackermann()
 ```
 
@@ -9906,9 +9907,9 @@ for(m = 0; m <= 3; m++) {
 {{out}}
 
 ```txt
-1 2 3 4 5 6 7  
-2 3 4 5 6 7 8  
-3 5 7 9 11 13 15  
+1 2 3 4 5 6 7
+2 3 4 5 6 7 8
+3 5 7 9 11 13 15
 5 13 29 61 125 253 509
 ```
 
@@ -9968,9 +9969,9 @@ comment:
 40 LET lev=1
 50 GO SUB 100
 60 PRINT "A(";s(1,1);",";s(1,2);") = ";s(1,3)
-70 STOP 
-100 IF s(lev,1)=0 THEN LET s(lev,3)=s(lev,2)+1: RETURN 
-110 IF s(lev,2)=0 THEN LET lev=lev+1: LET s(lev,1)=s(lev-1,1)-1: LET s(lev,2)=1: GO SUB 100: LET s(lev-1,3)=s(lev,3): LET lev=lev-1: RETURN 
+70 STOP
+100 IF s(lev,1)=0 THEN LET s(lev,3)=s(lev,2)+1: RETURN
+110 IF s(lev,2)=0 THEN LET lev=lev+1: LET s(lev,1)=s(lev-1,1)-1: LET s(lev,2)=1: GO SUB 100: LET s(lev-1,3)=s(lev,3): LET lev=lev-1: RETURN
 120 LET lev=lev+1
 130 LET s(lev,1)=s(lev-1,1)
 140 LET s(lev,2)=s(lev-1,2)-1
@@ -9980,7 +9981,7 @@ comment:
 180 GO SUB 100
 190 LET s(lev-1,3)=s(lev,3)
 200 LET lev=lev-1
-210 RETURN 
+210 RETURN
 ```
 
 {{out}}

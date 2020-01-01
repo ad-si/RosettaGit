@@ -18,7 +18,7 @@ Create a compound data type:
   <big> Point(x,y) </big>
 
 
-A compound data type is one that holds multiple independent values. 
+A compound data type is one that holds multiple independent values.
 
 
 ;Related task:
@@ -83,7 +83,7 @@ package
     {
         public var x:Number;
         public var y:Number;
-        
+
         public function Point(x:Number, y:Number)
         {
             this.x = x;
@@ -198,7 +198,7 @@ MODE POINT = STRUCT(
 
 An ALGOL 68 record type can contain a tagged-union/discriminant. The
 tagged-union/discriminant is used to choose between internal structural
-representations. 
+representations.
 
 ```algol68
 MODE PERSON = STRUCT(
@@ -246,7 +246,7 @@ PROC main()
   DEF pt:PTR TO point,
 
   NEW pt
-  -> Floats are also stored as integer types making 
+  -> Floats are also stored as integer types making
   -> the float conversion operator necessary.
   pt.x := !10.4
   pt.y := !3.14
@@ -265,7 +265,7 @@ ENDPROC
 
 /* ARM assembly Raspberry PI  */
 /*  program structure.s   */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -278,7 +278,7 @@ ENDPROC
 /********************************************/
     .struct  0
 point_x:                                        @ x coordinate
-    .struct  point_x + 4 
+    .struct  point_x + 4
 point_y:                                        @ y coordinate
     .struct  point_y + 4
 point_end:                                      @ end structure point
@@ -294,16 +294,16 @@ szCarriageReturn:   .asciz "\n"
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 stPoint:           .skip point_end               @ reservation place in memory
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                             @ entry of program 
+.global main
+main:                                             @ entry of program
     ldr r1,iAdrstPoint
-    mov r0,#5                                     @ x value 
+    mov r0,#5                                     @ x value
     str r0,[r1,#point_x]
     mov r0,#10                                    @ y value
     str r0,[r1,#point_y]
@@ -316,52 +316,52 @@ main:                                             @ entry of program
     bl affichageMess                              @ display message
 
 
-100:                                              @ standard end of the program 
+100:                                              @ standard end of the program
     mov r0, #0                                    @ return code
     mov r7, #EXIT                                 @ request to exit program
     svc #0                                        @ perform the system call
- 
+
 iAdrsMessValeur:          .int sMessValeur
 iAdrszCarriageReturn:     .int szCarriageReturn
 iAdrsMessResult:          .int sMessResult
 iAdrstPoint:              .int stPoint
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
- 
+
 1:                                                  @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b                                          @ and loop
                                                     @ and move digit from left of area
@@ -374,18 +374,18 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
@@ -396,12 +396,12 @@ divisionpar10U:
     push {r2,r3,r4, lr}
     mov r4,r0                                          @ save value
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 
@@ -473,7 +473,7 @@ print point
 
 ```AutoHotkey
 point := Object()
-point.x := 1  
+point.x := 1
 point.y := 0
 
 ```
@@ -495,12 +495,12 @@ BEGIN {
 	p[ z ]=999
 
 	p[ 4 ]=5
-	
+
 	for (i in p) print( i, ":", p[i] )
 }
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 
@@ -594,7 +594,7 @@ Bracmat does not have other typing systems than duck typing. The variable <code>
 
 
 In brlcad, the datatypes are geometric primitives or combinations. Here we create a lamp using a combination of previously created components:
- 
+
  c lamp base stem bulb shade chord plug
 
 
@@ -653,8 +653,10 @@ struct Point
 
 Point can also be parametrized on the coordinate type:
 
-```cpp>template<typename Coordinate
- struct point
+```cpp
+template<typename Coordinate>
+
+struct point
 {
   Coordinate x, y;
 };
@@ -746,7 +748,7 @@ class Point
     dx = p2.x - @x
     dy = p2.y - @y
     Math.sqrt dx*dx + dy*dy
-    
+
 p1 = new Point(1, 6)
 p2 = new Point(6, 18)
 console.log p1 # { x: 1, y: 6 }
@@ -775,11 +777,11 @@ CL-USER> (setf b (make-point :x 5.5 :y #C(0 1)))  ;Dynamic datatypes are the def
 #S(POINT :X 5.5 :Y #C(0 1))                       ;y has been set to the imaginary number i (using the Common Lisp complex number data type)
 CL-USER> (point-x b)                    ;The default name for the accessor functions is structname-slotname
 5.5
-CL-USER> (point-y b)  
+CL-USER> (point-y b)
 #C(0 1)
 CL-USER> (setf (point-y b) 3)           ;The accessor is setfable
 3
-CL-USER> (point-y b)                    
+CL-USER> (point-y b)
 3
 ```
 
@@ -923,9 +925,9 @@ data Several = Four
 struct Point
 {
     prop int X;
- 
+
     prop int Y;
- 
+
     constructor new(int x, int y)
     {
         X := x;
@@ -980,7 +982,7 @@ point = (3,4)
 point1 = ("x","y")
 point2 = (3,4.5)
 --The order of addressing matters
---Using a Record is the best option 
+--Using a Record is the best option
 point = {x=3,y=4}
 --To access
 point.x
@@ -1058,7 +1060,7 @@ type Point = { x : int; y : int }
 let points = [
     {x = 1; y = 1};
     {x = 5; y = 5} ]
-    
+
 Seq.iter (fun p -> printfn "%d,%d" p.x p.y) points
 ```
 
@@ -1151,22 +1153,22 @@ program typedemo
         integer :: numerator
         integer :: denominator
     end type rational
-    
-    type( rational ), parameter :: zero = rational( 0, 1 )  ! Variables initialized 
+
+    type( rational ), parameter :: zero = rational( 0, 1 )  ! Variables initialized
     type( rational ), parameter :: one  = rational( 1, 1 )  ! by constructor syntax
     type( rational ), parameter :: half = rational( 1, 2 )
     integer :: n, halfd, halfn
     type( rational ) :: &
-        one_over_n(20) = (/ (rational( 1, n ), n = 1, 20) /) ! Array initialized with 
+        one_over_n(20) = (/ (rational( 1, n ), n = 1, 20) /) ! Array initialized with
                                                              ! constructor inside
-                                                             ! implied-do array initializer 
-    integer :: oon_denoms(20)                                
-    
+                                                             ! implied-do array initializer
+    integer :: oon_denoms(20)
+
     halfd = half%denominator                       ! field access with "%" delimiter
     halfn = half%numerator
-    
-    oon_denoms = one_over_n%denominator            ! Access denominator field in every 
-                                                   ! rational array element & store 
+
+    oon_denoms = one_over_n%denominator            ! Access denominator field in every
+                                                   ! rational array element & store
 end program typedemo                               ! as integer array
 ```
 
@@ -1231,10 +1233,10 @@ func main() {
 class Point {
     int x
     int y
-    
+
     // Default values make this a 0-, 1-, and 2-argument constructor
     Point(int x = 0, int y = 0) { this.x = x; this.y = y }
-    String toString() { "{x:${x}, y:${y}}" } 
+    String toString() { "{x:${x}, y:${y}}" }
 }
 ```
 
@@ -1344,7 +1346,7 @@ See [[wp:Algebraic_data_type|algebraic data type]]. The different options ("Empt
             | Leaf Int
             | Node Tree Tree
   deriving (Eq, Show)
-  
+
   t1 = Node (Leaf 1) (Node (Leaf 2) (Leaf 3))
 
 
@@ -1360,7 +1362,7 @@ This is a special case of the algebraic data type above with only one constructo
 ### Record Type
 
 Entries in an algebraic data type constructor can be given field names.
- data Point = Point { x :: Integer, y :: Integer } 
+ data Point = Point { x :: Integer, y :: Integer }
  deriving (Eq, Show)
 
 The ''deriving'' clause here provides default instances for equality and conversion to string.
@@ -1392,7 +1394,7 @@ The type of <code>p</code> is <code>(Int, Int)</code>, using the same comma-deli
 
 Just an algebraic data type with multiple constructors being records
  data Person =
-     Male   { name :: String, age :: Integer, weight :: Double, 
+     Male   { name :: String, age :: Integer, weight :: Double,
               beard_length :: Double }
    | Female { name :: String, age :: Integer, weight :: Double }
    deriving (Eq, Show)
@@ -1412,7 +1414,7 @@ record Point(x,y)
 
 
 ```idl
-point = {x: 6 , y: 0 } 
+point = {x: 6 , y: 0 }
 point.y = 7
 print, point
 ;=> {       6       7}
@@ -2101,35 +2103,35 @@ class Point {
   @x : Int;
   @y : Int;
 
-  New() { 
+  New() {
     @x := 0;
     @y := 0;
   }
 
-  New(x : Int, y : Int) { 
+  New(x : Int, y : Int) {
     @x := x;
     @y := y;
   }
 
-  New(p : Point) { 
+  New(p : Point) {
     @x := p->GetX();
     @y := p->GetY();
   }
 
-  method : public : GetX() ~ Int { 
-    return @x; 
+  method : public : GetX() ~ Int {
+    return @x;
   }
 
-  method : public : GetY() ~ Int { 
-    return @y; 
+  method : public : GetY() ~ Int {
+    return @y;
   }
 
-  method : public : SetX(x : Int) ~ Nil { 
-    @x := x; 
+  method : public : SetX(x : Int) ~ Nil {
+    @x := x;
   }
 
-  method : public : SetY(y : Int) ~ Nil { 
-    @y := y; 
+  method : public : SetY(y : Int) ~ Nil {
+    @y := y;
   }
 }
 
@@ -2216,7 +2218,7 @@ The type of <code>p</code> is a product (indicated by <code>*</code>) of the typ
 ## Oforth
 
 
-Using a class : 
+Using a class :
 
 
 ```oforth
@@ -2227,7 +2229,7 @@ Object Class new: Point(x, y)
 
 ## ooRexx
 
-ooRexx uses class for compound data types. 
+ooRexx uses class for compound data types.
 
 ```ooRexx
 
@@ -2451,7 +2453,7 @@ type check failure, p is {0,"string"}
 
 
 ```php
-# Using pack/unpack 
+# Using pack/unpack
 $point = pack("ii", 1, 2);
 
 $u = unpack("ix/iy", $point);
@@ -2480,7 +2482,7 @@ echo $point['x'], ' ', $point['y'], "\n";
 
 ```php
 # Using class
-class Point { 
+class Point {
   function __construct($x, $y) { $this->x = $x; $this->y = $y; }
   function __tostring() { return $this->x . ' ' . $this->y . "\n"; }
 }
@@ -2663,7 +2665,7 @@ point.x, point.y = 0, 1
 
 
 
-###  Dictionary 
+###  Dictionary
 
 Mutable. Can add keys (attributes)
 
@@ -2674,7 +2676,7 @@ pseudo_object = {'x': 1, 'y': 2}
 
 
 
-###  Named Tuples 
+###  Named Tuples
 
 
 As of Python 2.6 one can use the ''collections.namedtuple'' factory to create classes which associate field names with elements of a tuple.  This allows one to perform all normal operations on the contained tuples (access by indices or slices, packing and unpacking) while also allowing elements to be accessed by name.
@@ -2687,7 +2689,7 @@ Help on function namedtuple in module collections:
 
 namedtuple(typename, field_names, verbose=False)
     Returns a new subclass of tuple with named fields.
-    
+
     >>> Point = namedtuple('Point', 'x y')
     >>> Point.__doc__                   # docstring for the new class
     'Point(x, y)'
@@ -2856,7 +2858,7 @@ struct Point<T> {
 fn main() {
     let p = Point { x: 1.0, y: 2.5 }; // p is of type Point<f64>
     println!("{}, {}", p.x, p.y);
-} 
+}
 ```
 
 
@@ -2930,7 +2932,7 @@ const type: Point is new struct
 ```shen
 (datatype point
   X : number; Y : number;
-  
+
 ### ==============
 
   [point X Y] : point;)
@@ -3110,7 +3112,7 @@ typealias PointTuple = (Int, Int)
 class PointClass {
     var x:Int!
     var y:Int!
-    
+
     init(x:Int, y:Int) {
         self.x = x
         self.y = y
@@ -3330,7 +3332,7 @@ echon "Point 2: x = " p2.x ", y = " p2.y "\n"
 {{Out}}
 
 ```txt
-Point 1: x = 3, y = 2                                                           
+Point 1: x = 3, y = 2
 Point 2: x = -1, y = -4
 ```
 
@@ -3340,7 +3342,7 @@ Point 2: x = -1, y = -4
 
 
 
-###  Structures 
+###  Structures
 
 
 A simple structure with two public, mutable fields:
@@ -3353,7 +3355,7 @@ End Structure
 
 
 
-###  Immutable Structures 
+###  Immutable Structures
 
 
 It is generally recommended in .NET that mutable structures only be used in niche cases where they provide needed performance, e.g. when the creation of massive numbers of class instances would cause excessive garbage collection pressure, as high-performance code dealing with structs generally is of a paradigm considered "impure" from an object-oriented perspective that relies on passing by reference and directly exposing fields.
@@ -3454,7 +3456,7 @@ More complex, multivariate, and nested data structures can be represented using 
 The OO solution:
 
 ```zkl
-class Point{ var x,y; 
+class Point{ var x,y;
    fcn init(x,y){self.x=x.toFloat(); self.y=y.toFloat(); }
    fcn toString{ "P(%f,%f)".fmt(x,y) }
    fcn __opADD(P){} //+: add Point, constant or whatever

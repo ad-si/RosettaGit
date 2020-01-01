@@ -29,9 +29,9 @@ they are problematic to display clearly).   The same applies
 to commas.
 
 
-For instance, the string: 
+For instance, the string:
  <big><big> gHHH5YY++///\ </big></big>
-should be split and show:  
+should be split and show:
  <big><big> g, HHH, 5, YY, ++, ///, \ </big></big>
 
 
@@ -44,7 +44,7 @@ should be split and show:
 ```ada
 
 with Ada.Text_IO;
-procedure Split is 
+procedure Split is
   procedure Print_Tokens (s : String) is
     i, j : Integer := s'First;
   begin
@@ -114,7 +114,7 @@ g, HHH, 5, YY, ++, ///, \
 ## ANSI BASIC
 
 
-```ansibasic>REM 
+```ansibasic>REM
 split
 DECLARE EXTERNAL FUNCTION FN_split$
 
@@ -189,14 +189,14 @@ on group(xs)
             a = b
         end |λ|
     end script
-    
+
     groupBy(eq, xs)
 end group
 
 -- groupBy :: (a -> a -> Bool) -> [a] -> [[a]]
 on groupBy(f, xs)
     set mf to mReturn(f)
-    
+
     script enGroup
         on |λ|(a, x)
             if length of (active of a) > 0 then
@@ -204,7 +204,7 @@ on groupBy(f, xs)
             else
                 set h to missing value
             end if
-            
+
             if h is not missing value and mf's |λ|(h, x) then
                 {active:(active of a) & x, sofar:sofar of a}
             else
@@ -212,7 +212,7 @@ on groupBy(f, xs)
             end if
         end |λ|
     end script
-    
+
     if length of xs > 0 then
         tell foldl(enGroup, {active:{item 1 of xs}, sofar:{}}, tail(xs))
             if length of (its active) > 0 then
@@ -246,7 +246,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -285,7 +285,7 @@ g, HHH, 5, YY, ++, ///, \
 
 /* ARM assembly Raspberry PI  */
 /*  program splitcar.s   */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -299,7 +299,7 @@ g, HHH, 5, YY, ++, ///, \
 .data
 szCarriageReturn:   .asciz "\n"
 szString1:          .asciz "gHHH5YY++///\\"
-/*   IMPORTANT REMARK for compiler as 
+/*   IMPORTANT REMARK for compiler as
 The way to get special characters into a string is to escape these characters: precede them
 with a backslash ‘\’ character. For example ‘\\’ represents one backslash: the first \ is
 an escape which tells as to interpret the second character literally as a backslash (which
@@ -309,37 +309,37 @@ prevents as from recognizing the second \ as an escape character).
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 sBuffer:               .skip  100
 
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                             @ entry of program 
+.global main
+main:                                             @ entry of program
 
     ldr r0,iAdrszString1                          @ input string address
     ldr r1,iAdrsBuffer                            @ output buffer address
-    bl split 
+    bl split
 
     ldr r0,iAdrsBuffer
     bl affichageMess                              @ display message
     ldr r0,iAdrszCarriageReturn
-    bl affichageMess 
+    bl affichageMess
 
 
-100:                                              @ standard end of the program 
+100:                                              @ standard end of the program
     mov r0, #0                                    @ return code
     mov r7, #EXIT                                 @ request to exit program
     svc #0                                        @ perform the system call
- 
+
 iAdrszString1:            .int szString1
 iAdrszCarriageReturn:     .int szCarriageReturn
 iAdrsBuffer:              .int sBuffer
 
 /******************************************************************/
-/*     generate value                                  */ 
+/*     generate value                                  */
 /******************************************************************/
 /* r0 contains the address of input string  */
 /* r1 contains the address of output buffer  */
@@ -358,7 +358,7 @@ split:
     cmp r3,#0                                 @ if null  end
     beq 3f
     cmp r2,r3                                 @ compare two characters
-    streqb r3,[r1,r5]                         @ = -> store char in buffer   
+    streqb r3,[r1,r5]                         @ = -> store char in buffer
     beq 2f                                    @ loop
 
     mov r2,#','                               @ else store comma in buffer
@@ -377,27 +377,27 @@ split:
     strb r3,[r1,r5]                           @ store zero final in buffer
 100:
     pop {r1-r5,lr}
-    bx lr                                     @ return 
+    bx lr                                     @ return
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 
 output : gg, HHH, 5, YY, ++, ///, \
 
@@ -476,7 +476,7 @@ g, HHH, 5, YY, ++, ///, \
 ## BBC BASIC
 
 
-```bbcbasic>REM 
+```bbcbasic>REM
 split
 PRINT FN_split( "gHHH5YY++///\" )
 END
@@ -507,8 +507,8 @@ g, HHH, 5, YY, ++, ///, \
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 char *split(char *str);
@@ -631,7 +631,7 @@ g, HHH, 5,   , )), YY, ++, ,,,, ///, \
 (defn print-cchanges [s]
   (println (clojure.string/join ", " (map first (re-seq #"(.)\1*" s)))))
 
-(print-cchanges "gHHH5YY++///\\") 
+(print-cchanges "gHHH5YY++///\\")
 
 ```
 
@@ -936,11 +936,11 @@ aaa, bb, cccc, d, ee, ff
 {{works with|Gforth|0.7.3}}
 
 ```Forth
-CREATE A 0 ,               
+CREATE A 0 ,
 : C@A+   A @ C@  [ 1 CHARS ]L A +! ;
 : SPLIT. ( c-addr u --) SWAP A !  A @ C@
    BEGIN OVER WHILE
-     C@A+  TUCK  <> IF ." , " THEN   
+     C@A+  TUCK  <> IF ." , " THEN
      DUP EMIT  SWAP 1- SWAP
    REPEAT  DROP ;
 : TEST   OVER OVER
@@ -966,11 +966,11 @@ split: g, HHH, 5,   , )), YY, ++, ,,,, ///, \
 
 This is F77 style, except for the <code>END SUBROUTINE SPLATTER</code> which would be just <code>END</code>, which for F90 is also allowable outside of the MODULE protocol. Linking the start/stop markers by giving the same name is helpful, especially when the compiler checks for this. The $ symbol at the end of a FORMAT code sequence is a common F77 extension, meaning "do not finish the line" so that a later output will follow on. This is acceptable to F90 and is less blather than adding the term <code>,ADVANCE = "NO"</code> inside a WRITE statement that would otherwise be required. Output is to I/O unit <code>6</code> which is the modern default for "standard output". The format code is <code>A</code> meaning "any number of characters" rather than <code>A1</code> for "one character" so as to accommodate not just the single character from TEXT but also the two characters of ", " for the splitter between sequences. Alas, there is no provision to change fount or colour for this, to facilitate the reader's attempts to parse the resulting list especially when the text includes commas or spaces of its own. By contrast, with quoted strings, the standard protocol is to double contained quotes.
 
-An alternative method would be to prepare the entire output in a CHARACTER variable then write that, but this means answering the maddening question "how long is a piece of string?" for that variable, though later Fortran has arrangements whereby a text variable is resized to suit on every assignment, as in <code>TEMP = TEMP // more</code> - but this means repeatedly copying the text to the new manifestation of the variable. Still another approach would be to prepare an array of fingers to each split point (as in [[Phrase_reversals#Fortran]]) so that the final output would be a single WRITE using that array, and again, how big must the array be? At most, as big as the number of characters in TEXT. With F90, subroutines can declare arrays of a size determined on entry, with something like <code>INTEGER A(LEN(TEXT))</code> 
+An alternative method would be to prepare the entire output in a CHARACTER variable then write that, but this means answering the maddening question "how long is a piece of string?" for that variable, though later Fortran has arrangements whereby a text variable is resized to suit on every assignment, as in <code>TEMP = TEMP // more</code> - but this means repeatedly copying the text to the new manifestation of the variable. Still another approach would be to prepare an array of fingers to each split point (as in [[Phrase_reversals#Fortran]]) so that the final output would be a single WRITE using that array, and again, how big must the array be? At most, as big as the number of characters in TEXT. With F90, subroutines can declare arrays of a size determined on entry, with something like <code>INTEGER A(LEN(TEXT))</code>
 
 If the problem were to be solved by writing a "main line" only, there would have to be a declaration of the text variable there but since a subroutine can receive a CHARACTER variable of any size (the actual size is passed as a secret parameter), this can be dodged.
 
-For this example a DO-loop stepping along the text is convenient, but in a larger context it would probably be most useful to work along the text with fingers L1 and L2 marking the start and finish positions of each sequence. 
+For this example a DO-loop stepping along the text is convenient, but in a larger context it would probably be most useful to work along the text with fingers L1 and L2 marking the start and finish positions of each sequence.
 ```Fortran
       SUBROUTINE SPLATTER(TEXT)	!Print a comma-separated list. Repeated characters constitute one item.
 Can't display the inserted commas in a different colour so as not to look like any commas in TEXT.
@@ -1118,55 +1118,55 @@ import java.util.List;
  * and then it will output them all separated by a comma and a space.
  */
 public class SplitStringByCharacterChange {
-    
+
     public static void main(String... args){
         for (String string : args){
-            
+
             List<String> resultStrings = splitStringByCharacter(string);
             String output = formatList(resultStrings);
             System.out.println(output);
         }
     }
-    
+
     /**
      * @param string String - String to split
      * @return List<\String> - substrings of contiguous characters
      */
     public static List<String> splitStringByCharacter(String string){
-        
+
         List<String> resultStrings = new ArrayList<>();
         StringBuilder currentString = new StringBuilder();
-        
+
         for (int pointer = 0; pointer < string.length(); pointer++){
-            
+
             currentString.append(string.charAt(pointer));
-            
-            if (pointer == string.length() - 1 
+
+            if (pointer == string.length() - 1
                     || currentString.charAt(0) != string.charAt(pointer + 1)) {
                 resultStrings.add(currentString.toString());
                 currentString = new StringBuilder();
             }
         }
-        
+
         return resultStrings;
     }
-    
+
     /**
      * @param list List<\String> - list of strings to format as a comma+space-delimited string
      * @return String
      */
     public static String formatList(List<String> list){
-        
+
         StringBuilder output = new StringBuilder();
-        
+
         for (int pointer = 0; pointer < list.size(); pointer++){
             output.append(list.get(pointer));
-            
+
             if (pointer != list.size() - 1){
                 output.append(", ");
             }
         }
-        
+
         return output.toString();
     }
 }
@@ -1419,10 +1419,10 @@ separated: g, HHH, 5, YY, ++, ///, \
 
 fun splitOnChange(s: String): String {
     if (s.length < 2) return s
-    var t = s.take(1)  
+    var t = s.take(1)
     for (i in 1 until s.length)
         if (t.last() == s[i]) t += s[i]
-        else t += ", " + s[i] 
+        else t += ", " + s[i]
     return t
 }
 
@@ -1551,7 +1551,7 @@ g, HHH, 5, YY, ++, ///, \
 ## Mathematica
 
 
-The backslash (\) must be escaped with another backslash when defining the string.	
+The backslash (\) must be escaped with another backslash when defining the string.
 
 ```Mathematica
 StringJoin@@Riffle[StringCases["gHHH5YY++///\\", p : (x_) .. -> p], ", "]
@@ -1699,7 +1699,7 @@ g, HHH, 5, YY, ++, ///, \
 
 ```perl
 my $str = 'gHHH5YY++///\\';
-$str =~ s/((.)\g{-1}*)/$1, /g; 
+$str =~ s/((.)\g{-1}*)/$1, /g;
 $str =~ s/, $//; # remove trailing ,
 print "$str\n";
 
@@ -1744,7 +1744,7 @@ Original: fff﻿﻿﻿n⃗n⃗n⃗»»»  ℵℵ☄☄☃☃̂☃🤔🇺🇸�
 ```
 
 
-The second test-case is to show that Perl 6 works with strings on the Unicode grapheme level, handles whitespace, combiners, and zero width characters up to Unicode Version 9.0, and multi-byte Emoji characters up to Version 4.0 correctly. (Perl 6 provisionally handles Unicode Versions 10.0 and Emoji Version 5.0 but they aren't released yet so aren't officially supported.) For those of you with browsers unable to display the second string, it consists of: 
+The second test-case is to show that Perl 6 works with strings on the Unicode grapheme level, handles whitespace, combiners, and zero width characters up to Unicode Version 9.0, and multi-byte Emoji characters up to Version 4.0 correctly. (Perl 6 provisionally handles Unicode Versions 10.0 and Emoji Version 5.0 but they aren't released yet so aren't officially supported.) For those of you with browsers unable to display the second string, it consists of:
 * {LATIN SMALL LETTER F} x 3
 * {ZERO WIDTH NO-BREAK SPACE} x 3
 * {LATIN SMALL LETTER N, COMBINING RIGHT ARROW ABOVE} x 3
@@ -1806,7 +1806,7 @@ function Split-String ([string]$String)
     [string]$splitString = $c
 
     for ($i = 1; $i -lt $String.Length; $i++)
-    { 
+    {
         [string]$d = $String.Substring($i,1)
 
         if ($d -ne $c)
@@ -1846,9 +1846,9 @@ g, HHH, 5, YY, ++, ///, \
 ```purebasic
 Procedure splitstring(s$)
   Define *p.Character = @s$,
-         c_buf.c = *p\c  
+         c_buf.c = *p\c
   While *p\c
-    If *p\c = c_buf      
+    If *p\c = c_buf
       Print(Chr(c_buf))
     Else
       Print(", ")
@@ -1907,7 +1907,7 @@ Split: g, HHH, 5, YY, ++, ///, \
 
 ```python
 def splitterz(text):
-    return (''.join(x + ('' if x == nxt else ', ') 
+    return (''.join(x + ('' if x == nxt else ', ')
             for x, nxt in zip(txt, txt[1:] + txt[-1])))
 
 if __name__ == '__main__':
@@ -2031,7 +2031,7 @@ Do While str<>''
   End
 result=result||x
 say '      input string: '    input
-say '     output string: '    result 
+say '     output string: '    result
 ```
 
 {{out]]
@@ -2057,11 +2057,11 @@ func split(s )
          d = substr(s, i, 1)
          if d != c
             split = split + ", "
-            c = d 
+            c = d
          ok
-         split = split + d 
+         split = split + d
      next
-     return split 
+     return split
 
 ```
 
@@ -2148,8 +2148,8 @@ fn main() {
 
 input string: g
 output string: g
-input string: 
-output string: 
+input string:
+output string:
 input string: gHHH5YY++///\
 output string: g, HHH, 5, YY, ++, ///, \
 
@@ -2326,7 +2326,7 @@ Dim myArr() As String, T As String
 
 Const STRINPUT As String = "gHHH5YY++///\"
 Const SEP As String = ", "
-    
+
     myArr = Split_Special(STRINPUT)
     T = Join(myArr, SEP)
     Debug.Print Left(T, Len(T) - Len(SEP))

@@ -14,7 +14,7 @@ tags = []
 {{omit from|GUISS}}
 
 ;Task
-Solve [https://web.archive.org/web/20170325033240/http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%_sec_4.3.2 Dinesman's multiple dwelling problem] but in a way that most naturally follows the problem statement given below. 
+Solve [https://web.archive.org/web/20170325033240/http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-28.html#%_sec_4.3.2 Dinesman's multiple dwelling problem] but in a way that most naturally follows the problem statement given below.
 
 Solutions are allowed (but not required) to parse and interpret the problem text, but should remain flexible and should state what changes to the problem text are allowed. Flexibility and ease of expression are valued.
 
@@ -27,10 +27,10 @@ Example output should be shown here, as well as any comments on the examples fle
 Baker, Cooper, Fletcher, Miller, and Smith live on different floors of an apartment house that contains only five floors.
 
 * Baker does not live on the top floor.
-* Cooper does not live on the bottom floor. 
+* Cooper does not live on the bottom floor.
 * Fletcher does not live on either the top or the bottom floor.
 * Miller lives on a higher floor than does Cooper.
-* Smith does not live on a floor adjacent to Fletcher's. 
+* Smith does not live on a floor adjacent to Fletcher's.
 * Fletcher does not live on a floor adjacent to Cooper's.
 
 
@@ -43,8 +43,8 @@ Baker, Cooper, Fletcher, Miller, and Smith live on different floors of an apartm
 
 ## Ada
 
-Uses an enum type People to attempt to be naturally reading. 
-Problem is easily changed by altering subtype Floor, type people and the somewhat naturally reading constraints in the Constrained function. 
+Uses an enum type People to attempt to be naturally reading.
+Problem is easily changed by altering subtype Floor, type people and the somewhat naturally reading constraints in the Constrained function.
 If for example you change the floor range to 1..6 and add Superman to people, all possible solutions will be printed.
 
 ```Ada
@@ -54,18 +54,18 @@ procedure Dinesman is
    type People is (Baker, Cooper, Fletcher, Miller, Smith);
    type Floors is array (People'Range) of Floor;
    type PtFloors is access all Floors;
-   
+
    function Constrained (f : PtFloors) return Boolean is begin
       if f (Baker) /= Floor'Last and
          f (Cooper) /= Floor'First and
          Floor'First < f (Fletcher) and f (Fletcher) < Floor'Last and
          f (Miller) > f (Cooper) and
          abs (f (Smith) - f (Fletcher)) /= 1 and
-         abs (f (Fletcher) - f (Cooper)) /= 1 
+         abs (f (Fletcher) - f (Cooper)) /= 1
       then return True; end if;
       return False;
    end Constrained;
-   
+
    procedure Solve (list : PtFloors; n : Natural) is
       procedure Swap (I : People; J : Natural) is
          temp : constant Floor := list (People'Val (J));
@@ -83,10 +83,10 @@ procedure Dinesman is
       for i in People'First .. People'Val (n - 1) loop
          Solve (list, n - 1);
          if n mod 2 = 1 then Swap (People'First, n - 1);
-         else Swap (i, n - 1); end if;         
+         else Swap (i, n - 1); end if;
       end loop;
    end Solve;
-   
+
    thefloors : aliased Floors;
 begin
    for person in People'Range loop
@@ -275,31 +275,31 @@ Each of the statements is represented by an equivalent conditional expression ('
 
 ```bbcbasic
       REM Floors are numbered 0 (ground) to 4 (top)
-      
+
       REM "Baker, Cooper, Fletcher, Miller, and Smith live on different floors":
       stmt1$ = "Baker<>Cooper AND Baker<>Fletcher AND Baker<>Miller AND " + \
       \        "Baker<>Smith AND Cooper<>Fletcher AND Cooper<>Miller AND " + \
       \        "Cooper<>Smith AND Fletcher<>Miller AND Fletcher<>Smith AND " + \
       \        "Miller<>Smith"
-      
+
       REM "Baker does not live on the top floor":
       stmt2$ = "Baker<>4"
-      
+
       REM "Cooper does not live on the bottom floor":
       stmt3$ = "Cooper<>0"
-      
+
       REM "Fletcher does not live on either the top or the bottom floor":
       stmt4$ = "Fletcher<>0 AND Fletcher<>4"
-      
+
       REM "Miller lives on a higher floor than does Cooper":
       stmt5$ = "Miller>Cooper"
-      
+
       REM "Smith does not live on a floor adjacent to Fletcher's":
       stmt6$ = "ABS(Smith-Fletcher)<>1"
-      
+
       REM "Fletcher does not live on a floor adjacent to Cooper's":
       stmt7$ = "ABS(Fletcher-Cooper)<>1"
-      
+
       FOR Baker = 0 TO 4
         FOR Cooper = 0 TO 4
           FOR Fletcher = 0 TO 4
@@ -340,33 +340,33 @@ Smith lives on floor 0
 
 ## Bracmat
 
-The rules constitute the body of the 'constraints' function. 
+The rules constitute the body of the 'constraints' function.
 Each statement of the problem is translated into a pattern.
 Patterns are the rhs of the ':' operator.
-Constraints can be added or deleted as you like. 
-If the problem is underspecified, for example by deleting one or more patterns, 
-all solutions are output, because the line following the output statement forces Bracmat to backtrack. 
+Constraints can be added or deleted as you like.
+If the problem is underspecified, for example by deleting one or more patterns,
+all solutions are output, because the line following the output statement forces Bracmat to backtrack.
 Patterns are read as follows: the '~' means negation, a '?' is a wildcard that can span zero or more floors, a '|' means alternation.
-If in a pattern there is no wildcard to the left of a person's name, 
-the pattern states that the person must live in the bottom floor. 
-If in a pattern there is no wildcard to the right of a person's name, 
-the pattern states that the person must live in the top floor. 
+If in a pattern there is no wildcard to the left of a person's name,
+the pattern states that the person must live in the bottom floor.
+If in a pattern there is no wildcard to the right of a person's name,
+the pattern states that the person must live in the top floor.
 If in a pattern name A is left of name B, the pattern states that person A is living in a lower floor than person B.
-Patterns can be alternated with the '|' (OR) operator. 
+Patterns can be alternated with the '|' (OR) operator.
 The match operator ':', when standing between two patterns,
-functions as an AND operation, because both sides must match the subject argument 'arg'. 
+functions as an AND operation, because both sides must match the subject argument 'arg'.
 The names of the people can be changed to anything, except empty strings.
-Bracmat supports UTF-8 encoded Unicode characters, 
+Bracmat supports UTF-8 encoded Unicode characters,
 but falls back to ISO 8859-1 if a string cannot be parsed as UTF-8.
-If a name contains characters that can be misinterpreted as operators, 
-such as '.' or ' ', the name must be enclosed in double quotes. 
+If a name contains characters that can be misinterpreted as operators,
+such as '.' or ' ', the name must be enclosed in double quotes.
 If there are no reserved characters in a name, double quotes are optional.
 
 
 ```Bracmat
 (   Baker Cooper Fletcher Miller Smith:?people
   & ( constraints
-    =   
+    =
       .   !arg
         : ~(? Baker)
         : ~(Cooper ?)
@@ -403,8 +403,8 @@ Inhabitants, from bottom to top: Smith Cooper Baker Fletcher Miller
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int verbose = 0;
@@ -499,9 +499,9 @@ Found arrangement:
 ```
 
 
-C, being its compiled self, is not terribly flexible in dynamically changing runtime code content.  
-Parsing some external problem specification would be one way, but for a small problem, it might as well just recompile with conditions hard coded.  
-For this program, to change conditions, one needs to edit content between BEGIN and END of problem specific setup.  
+C, being its compiled self, is not terribly flexible in dynamically changing runtime code content.
+Parsing some external problem specification would be one way, but for a small problem, it might as well just recompile with conditions hard coded.
+For this program, to change conditions, one needs to edit content between BEGIN and END of problem specific setup.
 Those could even be setup in an external file and gets <code>#include</code>d if need be.
 
 
@@ -524,7 +524,7 @@ public class Program
         const int count = 5;
         const int Baker = 0, Cooper = 1, Fletcher = 2, Miller = 3, Smith = 4;
         string[] names = { nameof(Baker), nameof(Cooper), nameof(Fletcher), nameof(Miller), nameof(Smith) };
-    
+
         Func<int[], bool>[] constraints = {
             floorOf => floorOf[Baker] != count-1,
             floorOf => floorOf[Cooper] != 0,
@@ -533,7 +533,7 @@ public class Program
             floorOf => Math.Abs(floorOf[Smith] - floorOf[Fletcher]) > 1,
             floorOf => Math.Abs(floorOf[Fletcher] - floorOf[Cooper]) > 1,
         };
-        
+
         var solver = new DinesmanSolver();
         foreach (var tenants in solver.Solve(count, constraints)) {
             Console.WriteLine(string.Join(" ", tenants.Select(t => names[t])));
@@ -573,7 +573,7 @@ static class Extensions
         if (position < 0) throw new ArgumentOutOfRangeException(nameof(position));
         return InsertAtIterator(source, position, newElement);
     }
-    
+
     private static IEnumerable<T> InsertAtIterator<T>(IEnumerable<T> source, int position, T newElement) {
         int index = 0;
         foreach (T element in source) {
@@ -630,7 +630,7 @@ static class Program
         Console.WriteLine(String.Join(" ", output));
         Console.Read();
     }
-    
+
     public static IEnumerable<IEnumerable<T>> Permutations<T>(this IEnumerable<T> values)
     {
         if (values.Count() == 1)
@@ -657,27 +657,27 @@ Smith Cooper Baker Fletcher Miller
 
 ```ceylon
 shared void run() {
-	
+
 	function notAdjacent(Integer a, Integer b) => (a - b).magnitude >= 2;
 	function allDifferent(Integer* ints) => ints.distinct.size == ints.size;
-	
+
 	value solutions = [
 		for (baker in 1..4)
 		for (cooper in 2..5)
 		for (fletcher in 2..4)
 		for (miller in 2..5)
 		for (smith in 1..5)
-		if (miller > cooper && 
-			notAdjacent(smith, fletcher) && 
-			notAdjacent(fletcher, cooper) && 
+		if (miller > cooper &&
+			notAdjacent(smith, fletcher) &&
+			notAdjacent(fletcher, cooper) &&
 			allDifferent(baker, cooper, fletcher, miller, smith))
-		"baker lives on ``baker`` 
-		 cooper lives on ``cooper`` 
-		 fletcher lives on ``fletcher`` 
-		 miller lives on ``miller`` 
+		"baker lives on ``baker``
+		 cooper lives on ``cooper``
+		 fletcher lives on ``fletcher``
+		 miller lives on ``miller``
 		 smith lives on ``smith``"
 	];
-	
+
 	print(solutions.first else "No solution!");
 }
 ```
@@ -685,10 +685,10 @@ shared void run() {
 {{out}}
 
 ```txt
-baker lives on 3 
-cooper lives on 2 
-fletcher lives on 4 
-miller lives on 5 
+baker lives on 3
+cooper lives on 2
+fletcher lives on 4
+miller lives on 5
 smith lives on 1
 ```
 
@@ -696,12 +696,12 @@ smith lives on 1
 
 ## Clojure
 
-This solution uses the contributed package ''clojure.core.logic'', a miniKanren-based logic solver (and contributed ''clojure.tools.macro'' as well). 
-The "setup" part of this code defines relational functions (or constraints) for testing "immediately above", "higher", and "on nonadjacent floors". 
-These are used (along with the package's "permuteo" constraint) to define a constraint ''dinesmano'' which searches for all the resident orders that satisfy the criteria. 
-The criteria are listed in one-to-one correspondence with the problem statement. 
-The problem statement could be changed to any mixture of these constraint types, 
-and additional constraint functions could be defined as necessary. 
+This solution uses the contributed package ''clojure.core.logic'', a miniKanren-based logic solver (and contributed ''clojure.tools.macro'' as well).
+The "setup" part of this code defines relational functions (or constraints) for testing "immediately above", "higher", and "on nonadjacent floors".
+These are used (along with the package's "permuteo" constraint) to define a constraint ''dinesmano'' which searches for all the resident orders that satisfy the criteria.
+The criteria are listed in one-to-one correspondence with the problem statement.
+The problem statement could be changed to any mixture of these constraint types,
+and additional constraint functions could be defined as necessary.
 The final part of the code searches for all solutions and prints them out.
 
 ```clojure
@@ -788,16 +788,16 @@ puts residents.permutations.find { |p| predicates.all? &.call p }
 
 
 
-{{incorrect|D| 
+{{incorrect|D|
 
- The output is incorrect: 
+ The output is incorrect:
 
 
-it has Fletcher on the bottom floor, 
+it has Fletcher on the bottom floor,
 
-Baker on the top, 
+Baker on the top,
 
-and Cooper and Fletcher adjacent. 
+and Cooper and Fletcher adjacent.
 
 }}
 
@@ -884,9 +884,9 @@ The problem is solved using the '''amb''' library. The solution separates the co
 )
 
 (define (task names)
-	(amb-run dwelling-puzzle 
-	(amb-make-context) 
-	 names 
+	(amb-run dwelling-puzzle
+	(amb-make-context)
+	 names
 	(iota (length names)) ;; list of floors : 0,1, ....
 	(make-hash)) ;; hash table : "name" -> floor
 	)
@@ -897,7 +897,7 @@ The problem is solved using the '''amb''' library. The solution separates the co
 
 ```scheme
 
-(define names '("baker" "cooper" "fletcher" "miller" "smith" )) 
+(define names '("baker" "cooper" "fletcher" "miller" "smith" ))
 
 (define-syntax-rule (floor name) (hash-ref H name))
 (define-syntax-rule (touch a b) (= (abs (- (hash-ref H a) (hash-ref H b))) 1))
@@ -939,7 +939,7 @@ The problem is solved using the '''amb''' library. The solution separates the co
 
 (define (constraints floors H)
 ;; ... same as above, add the following
-     
+
      ;; Antoinette does not like 💔 Smith
      (amb-require (not (touch "smith" "antoinette")))
     ;; Antoinette is very close  ❤️ to Cooper
@@ -978,7 +978,7 @@ defmodule Dinesman do
                   fn(c)-> floor(c, :Miller) > floor(c, :Cooper) end,
                   fn(c)-> abs(floor(c, :Smith) - floor(c, :Fletcher)) != 1 end,
                   fn(c)-> abs(floor(c, :Cooper) - floor(c, :Fletcher)) != 1 end]
-    
+
     permutation(names)
     |> Enum.filter(fn candidate ->
          Enum.all?(predicates, fn predicate -> predicate.(candidate) end)
@@ -988,9 +988,9 @@ defmodule Dinesman do
          |> Enum.each(fn {name,i} -> IO.puts "#{name} lives on #{i+1}" end)
        end)
   end
-  
+
   defp floor(c, name), do: Enum.find_index(c, fn x -> x == name end)
-  
+
   defp permutation([]), do: [[]]
   defp permutation(list), do: (for x <- list, y <- permutation(list -- [x]), do: [x|y])
 end
@@ -1015,10 +1015,10 @@ Miller lives on 5
 
 ## Erlang
 
-The people is an argument list. 
-The rules is an argument list of options. 
-Only rules that have a function in the program can be in the options. 
-The design of the rules can be argued. 
+The people is an argument list.
+The rules is an argument list of options.
+Only rules that have a function in the program can be in the options.
+The design of the rules can be argued.
 Perhaps {cooper,  does_not_live_on, 0}, etc, would be better for people unfamiliar with lisp.
 
 ```Erlang
@@ -1092,28 +1092,28 @@ PROGRAM DINESMAN
 
 BEGIN
       ! Floors are numbered 0 (ground) to 4 (top)
- 
+
       ! "Baker, Cooper, Fletcher, Miller, and Smith live on different floors":
       stmt1$="Baker<>Cooper AND Baker<>Fletcher AND Baker<>Miller AND "+"Baker<>Smith AND Cooper<>Fletcher AND Cooper<>Miller AND "+"Cooper<>Smith AND Fletcher<>Miller AND Fletcher<>Smith AND "+"Miller<>Smith"
- 
+
       ! "Baker does not live on the top floor":
       stmt2$="Baker<>4"
- 
+
       ! "Cooper does not live on the bottom floor":
       stmt3$="Cooper<>0"
- 
+
       ! "Fletcher does not live on either the top or the bottom floor":
       stmt4$="Fletcher<>0 AND Fletcher<>4"
- 
+
       ! "Miller lives on a higher floor than does Cooper":
       stmt5$="Miller>Cooper"
- 
+
       ! "Smith does not live on a floor adjacent to Fletcher's":
       stmt6$="ABS(Smith-Fletcher)<>1"
- 
+
       ! "Fletcher does not live on a floor adjacent to Cooper's":
       stmt7$="ABS(Fletcher-Cooper)<>1"
- 
+
       FOR Baker=0 TO 4 DO
         FOR Cooper=0 TO 4 DO
           FOR Fletcher=0 TO 4 DO
@@ -1159,27 +1159,27 @@ All rules are encoded in the ``meets-constraints?`` word. Any variations to the 
 ```factor
 USING: kernel
     combinators.short-circuit
-    math math.combinatorics math.ranges 
+    math math.combinatorics math.ranges
     sequences
     qw prettyprint ;
 IN: rosetta.dinesman
- 
+
 : /= ( x y -- ? ) = not ;
 : fifth ( seq -- elt ) 4 swap nth ;
-  
+
 : meets-constraints? ( seq -- ? )
-    {  
-        [ first 5 /= ]                          ! Baker does not live on the top floor.   
+    {
+        [ first 5 /= ]                          ! Baker does not live on the top floor.
         [ second 1 /= ]                         ! Cooper does not live on the bottom floor.
         [ third { 1 5 } member? not ]           ! Fletcher does not live on either the top or bottom floor.
         [ [ fourth ] [ second ] bi > ]          ! Miller lives on a higher floor than does Cooper.
         [ [ fifth ] [ third ] bi - abs 1 /= ]   ! Smith does not live on a floor adjacent to Fletcher's.
         [ [ third ] [ second ] bi - abs 1 /= ]  ! Fletcher does not live on a floor adjacent to Cooper's.
     } 1&& ;
- 
+
 : solutions ( -- seq )
     5 [1,b] all-permutations [ meets-constraints? ] filter ;
-    
+
 : >names ( seq -- seq )
     [ 1 - qw{ baker cooper fletcher miller smith } nth ] map ;
 
@@ -1431,29 +1431,29 @@ dinesman :: [(Int,Int,Int,Int,Int)]
 dinesman = do
   -- baker, cooper, fletcher, miller, smith are integers representing
   -- the floor that each person lives on, from 1 to 5
-  
-  -- Baker, Cooper, Fletcher, Miller, and Smith live on different floors 
+
+  -- Baker, Cooper, Fletcher, Miller, and Smith live on different floors
   -- of an apartment house that contains only five floors.
   [baker, cooper, fletcher, miller, smith] <- permutations [1..5]
-  
+
   -- Baker does not live on the top floor.
   guard $ baker /= 5
-  
+
   -- Cooper does not live on the bottom floor.
   guard $ cooper /= 1
-  
+
   -- Fletcher does not live on either the top or the bottom floor.
   guard $ fletcher /= 5 && fletcher /= 1
-  
+
   -- Miller lives on a higher floor than does Cooper.
   guard $ miller > cooper
-  
+
   -- Smith does not live on a floor adjacent to Fletcher's.
   guard $ abs (smith - fletcher) /= 1
-  
+
   -- Fletcher does not live on a floor adjacent to Cooper's.
   guard $ abs (fletcher - cooper) /= 1
-  
+
   -- Where does everyone live?
   return (baker, cooper, fletcher, miller, smith)
 
@@ -1477,13 +1477,13 @@ main =
       , "Fletcher lives on " ++ show f
       , "Miller lives on " ++ show m
       , "Smith lives on " ++ show s)
-    | [b, c, f, m, s] <- permutations [1 .. 5] 
-    , b /= 5 
-    , c /= 1 
-    , f /= 1 
-    , f /= 5 
-    , m > c 
-    , abs (s - f) > 1 
+    | [b, c, f, m, s] <- permutations [1 .. 5]
+    , b /= 5
+    , c /= 1
+    , f /= 1
+    , f /= 5
+    , m > c
+    , abs (s - f) > 1
     , abs (c - f) > 1 ]
 ```
 
@@ -1497,7 +1497,7 @@ main =
 =={{header|Icon}} and {{header|Unicon}}==
 This solution uses string invocation to call operators and the fact the Icon/Unicon procedures are first class values.  The procedure names could also be given as strings and it would be fairly simple to read the names and all the rules directly from a file. Each name and rule recurses and relies on the inherent backtracking in the language to achieve the goal.
 
-The rules explicitly call stop() after showing the solution.  Removing the ''stop'' would cause the solver to try all possible cases and report all possible solutions (if there were multiple ones). 
+The rules explicitly call stop() after showing the solution.  Removing the ''stop'' would cause the solver to try all possible cases and report all possible solutions (if there were multiple ones).
 
 
 ```Icon
@@ -1511,7 +1511,7 @@ nameL := ["Baker", "Cooper", "Fletcher", "Miller", "Smith"]
 rules := [ [ distinct ],
            [ "~=",        "Baker",    top()      ],
            [ "~=",        "Cooper",   bottom()   ],
-           [ "~=",        "Fletcher", top()      ],  
+           [ "~=",        "Fletcher", top()      ],
            [ "~=",        "Fletcher", bottom()   ],
            [ ">",         "Miller",   "Cooper"   ],
            [ notadjacent, "Smith",    "Fletcher" ],
@@ -1519,8 +1519,8 @@ rules := [ [ distinct ],
            [ showsolution ],
            [ stop ] ]
 
-if not solve(1) then 
-   write("No solution found.")   
+if not solve(1) then
+   write("No solution found.")
 end
 
 procedure dontstop()           # use if you want to search for all solutions
@@ -1530,7 +1530,7 @@ procedure showsolution()       # show the soluton
    write("The solution is:")
    every write("   ",n := !nameL, " lives in ", nameT[n])
    return
-end 
+end
 
 procedure eval(n)              # evaluate a rule
    r := copy(rules[n-top()])
@@ -1544,8 +1544,8 @@ end
 
 procedure solve(n)             # recursive solver
    if n > top() then {         # apply rules
-      if n <= top() + *rules then 
-         ( eval(n) & solve(n+1) ) | fail   
+      if n <= top() + *rules then
+         ( eval(n) & solve(n+1) ) | fail
       }
    else                        # setup locations
       (( nameT[nameL[n]] := bottom() to top() ) & solve(n + 1)) | fail
@@ -1565,7 +1565,7 @@ procedure adjacent(n1,n2)      # ensure n1,2 are adjacent
    if abs(n1 - n2) = 1 then suspend
 end
 
-procedure bottom()             # return bottom 
+procedure bottom()             # return bottom
    return if *nameL > 0 then 1 else 0
 end
 
@@ -1591,7 +1591,7 @@ The solution is:
 ## J
 
 
-This problem asks us to pick from one of several possibilities.  
+This problem asks us to pick from one of several possibilities.
 We can represent these possibilities as permutations of the residents' initials, arranged in order from lowest floor to top floor:
 
 
@@ -1671,8 +1671,8 @@ class DinesmanMultipleDwelling {
         /*
          What this does should be obvious...proper explaination can be given if needed
          Conditions here Switching any of these to ! or reverse will change what is given as a result
-        
-         example 
+
+         example
          if(topFloor(s, "B"){
          }
          to
@@ -1700,7 +1700,7 @@ class DinesmanMultipleDwelling {
         if (adjacent(s, "S", "F")) { //S lives adjacent to F
             return false;
         }
-        return !adjacent(s, "F", "C"); //F does not live adjacent to C 
+        return !adjacent(s, "F", "C"); //F does not live adjacent to C
     }
 
     public static void main(String[] args) {
@@ -1821,8 +1821,8 @@ The predicates here can be varied, and the depth of concatMap nestings can be ad
 
 For a different trade-off between efficiency and generality, we can take full occupancy and no cohabitation out of the predicate, and assume them in the shape of the search space.
 
-In the version above, with nested applications of concatMap, the requirement that all apartments are occupied by one person only is included in the test conditions. 
-Alternatively, we can remove any flexibility about such civic virtues from the predicate, and restrict the universe of conceivable living arrangements, by using concatMap just once, and applying it only to the various permutations of full and distinct occupancy. 
+In the version above, with nested applications of concatMap, the requirement that all apartments are occupied by one person only is included in the test conditions.
+Alternatively, we can remove any flexibility about such civic virtues from the predicate, and restrict the universe of conceivable living arrangements, by using concatMap just once, and applying it only to the various permutations of full and distinct occupancy.
 
 ES6 splat assignment allows us to bind all five names in a single application of concatMap. We now also need a '''permutations''' function of some kind.
 
@@ -2047,12 +2047,12 @@ fun <T> permute(input: List<T>): List<List<T>> {
 }
 
 /* looks for for all possible solutions, not just the first */
-fun dinesman(occupants: List<String>, predicates: List<Predicate>) = 
+fun dinesman(occupants: List<String>, predicates: List<Predicate>) =
     permute(occupants).filter { perm -> predicates.all { pred -> pred(perm) } }
 
 fun main(args: Array<String>) {
     val occupants = listOf("Baker", "Cooper", "Fletcher", "Miller", "Smith")
-    
+
     val predicates = listOf<Predicate>(
         { it.last() != "Baker" },
         { it.first() != "Cooper" },
@@ -2060,7 +2060,7 @@ fun main(args: Array<String>) {
         { it.indexOf("Miller") > it.indexOf("Cooper") },
         { Math.abs(it.indexOf("Smith") - it.indexOf("Fletcher")) > 1 },
         { Math.abs(it.indexOf("Fletcher") - it.indexOf("Cooper")) > 1 }
-    ) 
+    )
 
     val solutions = dinesman(occupants, predicates)
     val size = solutions.size
@@ -2104,17 +2104,17 @@ Floor 5 -> Miller
 local wrap, yield = coroutine.wrap, coroutine.yield
 local function perm(n)
     local r = {}
-    for i=1,n do r[i]=i end    
+    for i=1,n do r[i]=i end
   return wrap(function()
-    local function swap(m)      
-      if m==0 then  
+    local function swap(m)
+      if m==0 then
         yield(r)
       else
         for i=m,1,-1 do
           r[i],r[m]=r[m],r[i]
           swap(m-1)
           r[i],r[m]=r[m],r[i]
-        end    
+        end
       end
     end
     swap(n)
@@ -2143,7 +2143,7 @@ local function makePredicate(conds, tenants)
   return load('return function('..imap(tenants):c','..
     ') return ' ..
     imap(conds,function(c)
-      return string.format("(%s)",c) 
+      return string.format("(%s)",c)
     end):c"and "..
     " end ",'-',nil,{TOP=5, BOTTOM=1})()
 end
@@ -2154,13 +2154,13 @@ local function solve (conds, tenants)
   while answer and not pred(upk(answer)) do answer = try()end
   if answer then
     local floor = 0
-    return imap(answer, function(person) 
-        floor=floor+1; 
-        return string.format(" %s lives on floor %d",tenants[floor],person) 
+    return imap(answer, function(person)
+        floor=floor+1;
+        return string.format(" %s lives on floor %d",tenants[floor],person)
     end):c"\n"
   else
     return nil, 'no solution'
-  end  
+  end
 end
 
 print(solve (conds, tenants))
@@ -2182,8 +2182,8 @@ Loads all names into memory as variables, then asserts various restrictions on t
 
 ```Mathematica
 
-{Baker, Cooper, Fletcher, Miller, Smith}; 
-(Unequal @@ %) && (And @@ (0 < # < 6 & /@ %)) && 
+{Baker, Cooper, Fletcher, Miller, Smith};
+(Unequal @@ %) && (And @@ (0 < # < 6 & /@ %)) &&
   Baker < 5 &&
   Cooper > 1 &&
   1 < Fletcher < 5 &&
@@ -2264,28 +2264,28 @@ our %nouns = (
 
 sub parse_and_solve {
     my @facts = @_;
-    
+
     state $parser = qr/^(?<subj>$nouns{person}) (?<not>not )?(?|@{[
                             join '|', pairmap {
                                 "(?<pred>$a)" .
                                 ($b->[0] ? " (?<obj>$nouns{$b->[0]})" : '')
                             } %predicates
                         ]})$/;
-    
+
     my (@expressions, %ids, $i);
     my $id = sub { defined $_[0] ? $ids{$_[0]} //= $i++ : () };
-    
+
     foreach (@facts) {
         /$parser/ or die "Cannot parse '$_'\n";
-        
+
         my $pred = $predicates{$+{pred}};
         my $expr = '(' . sprintf($pred->[1], $id->($+{subj}),
                          $pred->[0] eq 'person' ? $id->($+{obj}) : $+{obj}). ')';
         $expr = '!' . $expr if $+{not};
-        
+
         push @expressions, $expr;
     }
-    
+
     my @f = 1..$i;
     eval 'no warnings "numeric";
           permute {
@@ -2341,7 +2341,7 @@ Fletcher not adjacent to Cooper
 ```
 
 
-When there are multiple matching configurations, 
+When there are multiple matching configurations,
 it lists them all (on separate lines).
 
 
@@ -2362,7 +2362,7 @@ sub parse_and_solve ($text) {
     my $expr = (grammar {
         state $c = 0;
         rule TOP { <fact>+ { make join ' && ', $<fact>>>.made } }
-        
+
         rule fact { <name> (not)? <position>
                     { make sprintf $<position>.made.fmt($0 ??  "!(%s)" !! "%s"),
                                    $<name>.made }
@@ -2378,11 +2378,11 @@ sub parse_and_solve ($text) {
             || on <ordinal>          { make "\@f[%s] == {$<ordinal>.made}"            }
             || { note "Failed to parse line " ~ +$/.prematch.comb(/^^/); exit 1; }
         }
-        
+
         token name    { :i <[a..z]>+              { make %ids{~$/} //= $c++ } }
         token ordinal { [1st | 2nd | 3rd | \d+th] { make +$/.match(/(\d+)/)[0]     } }
     }).parse($text).made;
-    
+
     EVAL 'for [1..%ids.elems].permutations -> @f {
               say %ids.kv.map({ "$^a=@f[$^b]" }) if (' ~ $expr ~ ');
           }'
@@ -2431,7 +2431,7 @@ for (flat (1..5).permutations) -> $b, $c, $f, $m, $s {
 ```
 
 
-Adding more people and floors requires changing the list that's being used for the permutations, adding a variable for the new person, a piece of output in the string and finally to adjust all mentions of the "top" floor. 
+Adding more people and floors requires changing the list that's being used for the permutations, adding a variable for the new person, a piece of output in the string and finally to adjust all mentions of the "top" floor.
 Adjusting to different rules requires changing the multi-line if statement in the loop.
 
 {{out}}
@@ -2480,7 +2480,7 @@ end for
 
 ```
 
-Something more flexible. The nested rules worked just as well, and 
+Something more flexible. The nested rules worked just as well, and
 of course the code will cope with various content in names/rules.
 
 ```Phix
@@ -2610,15 +2610,15 @@ $statement6 = '[Math]::Abs($smith - $fletcher) -ne 1'
 $statement7 = '[Math]::Abs($fletcher - $cooper) -ne 1'
 
 for ($baker = 1; $baker -lt 6; $baker++)
-{ 
+{
     for ($cooper = 1; $cooper -lt 6; $cooper++)
-    { 
+    {
         for ($fletcher = 1; $fletcher -lt 6; $fletcher++)
-        { 
+        {
             for ($miller = 1; $miller -lt 6; $miller++)
-            { 
+            {
                 for ($smith = 1; $smith -lt 6; $smith++)
-                { 
+                {
                     if (Invoke-Expression $statement2)
                     {
                         if (Invoke-Expression $statement3)
@@ -2810,9 +2810,9 @@ false.
 
 ```
 
-true ==> predicate succeeded. 
- 
-false ==> no other solution. 
+true ==> predicate succeeded.
+
+false ==> no other solution.
 
 
 <B>About flexibility :</b> each name is associated with a floor, (contiguous floors differs from 1).
@@ -2827,14 +2827,14 @@ To solve the problem, library clpfd does the job.
 
 ```Prolog
 select([A|As],S):- select(A,S,S1),select(As,S1).
-select([],_). 
+select([],_).
 
 dinesmans(X) :-
-    %% Baker, Cooper, Fletcher, Miller, and Smith live on different floors 
-    %% of an apartment house that contains only five floors. 
+    %% Baker, Cooper, Fletcher, Miller, and Smith live on different floors
+    %% of an apartment house that contains only five floors.
     select([Baker,Cooper,Fletcher,Miller,Smith],[1,2,3,4,5]),
 
-    %% Baker does not live on the top floor. 
+    %% Baker does not live on the top floor.
     Baker =\= 5,
 
     %% Cooper does not live on the bottom floor.
@@ -2843,7 +2843,7 @@ dinesmans(X) :-
     %% Fletcher does not live on either the top or the bottom floor.
     Fletcher =\= 1, Fletcher =\= 5,
 
-    %% Miller lives on a higher floor than does Cooper. 
+    %% Miller lives on a higher floor than does Cooper.
     Miller > Cooper,
 
     %% Smith does not live on a floor adjacent to Fletcher's.
@@ -2853,11 +2853,11 @@ dinesmans(X) :-
     1 =\= abs(Fletcher - Cooper),
 
     %% Where does everyone live?
-    X = ['Baker'(Baker), 'Cooper'(Cooper), 'Fletcher'(Fletcher), 
+    X = ['Baker'(Baker), 'Cooper'(Cooper), 'Fletcher'(Fletcher),
          'Miller'(Miller), 'Smith'(Smith)].
 
-main :-  bagof( X, dinesmans(X), L ) 
-         -> maplist( writeln, L), nl, write('No more solutions.') 
+main :-  bagof( X, dinesmans(X), L )
+         -> maplist( writeln, L), nl, write('No more solutions.')
          ;  write('No solutions.').
 
 ```
@@ -2880,11 +2880,11 @@ No more solutions.
 
 ```Prolog
 dinesmans(X) :-
-    %% 1. Baker, Cooper, Fletcher, Miller, and Smith live on different floors 
-    %%    of an apartment house that contains only five floors. 
+    %% 1. Baker, Cooper, Fletcher, Miller, and Smith live on different floors
+    %%    of an apartment house that contains only five floors.
     Domain = [1,2,3,4,5],
 
-    %% 2. Baker does not live on the top floor. 
+    %% 2. Baker does not live on the top floor.
     select(Baker,Domain,D1), Baker =\= 5,
 
     %% 3. Cooper does not live on the bottom floor.
@@ -2893,7 +2893,7 @@ dinesmans(X) :-
     %% 4. Fletcher does not live on either the top or the bottom floor.
     select(Fletcher,D2,D3), Fletcher =\= 1, Fletcher =\= 5,
 
-    %% 5. Miller lives on a higher floor than does Cooper. 
+    %% 5. Miller lives on a higher floor than does Cooper.
     select(Miller,D3,D4), Miller > Cooper,
 
     %% 6. Smith does not live on a floor adjacent to Fletcher's.
@@ -2903,7 +2903,7 @@ dinesmans(X) :-
     1 =\= abs(Fletcher - Cooper),
 
     %% Where does everyone live?
-    X = ['Baker'(Baker), 'Cooper'(Cooper), 'Fletcher'(Fletcher), 
+    X = ['Baker'(Baker), 'Cooper'(Cooper), 'Fletcher'(Fletcher),
          'Miller'(Miller), 'Smith'(Smith)].
 
 ```
@@ -2924,18 +2924,18 @@ Enumeration #Null
   #Cooper
   #Fletcher
   #Miller
-  #Smith 
+  #Smith
 EndEnumeration
 
 Procedure checkTenands(Array tenants(1), Array Condions.cond(1))
   Protected i, j
-  Protected.cond *f 
+  Protected.cond *f
   j=ArraySize(Condions())
   For i=0 To j
     *f=Condions(i)              ; load the function pointer to the current condition
     If *f(tenants()) = #False
       ProcedureReturn  #False
-    EndIf 
+    EndIf
   Next
   ProcedureReturn #True
 EndProcedure
@@ -2943,37 +2943,37 @@ EndProcedure
 Procedure C1(Array t(1))
   If Int(Abs(t(#Fletcher)-t(#Cooper)))<>1
     ProcedureReturn #True
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure C2(Array t(1))
   If t(#Baker)<>5
     ProcedureReturn #True
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure C3(Array t(1))
   If t(#Cooper)<>1
     ProcedureReturn #True
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure C4(Array t(1))
   If t(#Miller) >= t(#Cooper)
     ProcedureReturn #True
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure C5(Array t(1))
   If t(#Fletcher)<>1 And t(#Fletcher)<>5
     ProcedureReturn #True
-  EndIf 
+  EndIf
 EndProcedure
 
 Procedure C6(Array t(1))
   If Int(Abs(t(#Smith)-t(#Fletcher)))<>1
     ProcedureReturn #True
-  EndIf 
+  EndIf
 EndProcedure
 
 
@@ -2998,7 +2998,7 @@ If OpenConsole()
         If a=c Or b=c: Continue: EndIf
         For d=1 To 5
           If d=a Or d=b Or d=c : Continue: EndIf
-          For e=1 To 5 
+          For e=1 To 5
             If e=a Or e=b Or e=c Or e=d: Continue: EndIf
             People(#Baker)=a
             People(#Cooper)=b
@@ -3008,7 +3008,7 @@ If OpenConsole()
             If checkTenands(People(), Conditions())
               PrintN("Solution found;")
               PrintN("Baker="+Str(a)+#CRLF$+"Cooper="+Str(b)+#CRLF$+"Fletcher="+Str(c))
-              PrintN("Miller="+Str(d)+#CRLF$+"Smith="+Str(e)+#CRLF$) 
+              PrintN("Miller="+Str(d)+#CRLF$+"Smith="+Str(e)+#CRLF$)
             EndIf
           Next
         Next
@@ -3174,13 +3174,13 @@ problem_re = re.compile(r"""(?msx)(?:
 | (?:  .* house \s+ that \s+ contains \s+ only \s+
   (?P<floorcount> two|three|four|five|six|seven|eight|nine|ten ) \s+ floors \s* \.)
 
-# Constraint: "does not live on the n'th floor" 
+# Constraint: "does not live on the n'th floor"
 |(?: (?P<not_live>  \b [a-zA-Z]+ \s+ does \s+ not \s+ live \s+ on \s+ the \s+
   (?: top|bottom|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth) \s+ floor \s* \. ))
 
 # Constraint: "does not live on either the I'th or the J'th [ or the K'th ...] floor
 |(?P<not_either> \b [a-zA-Z]+ \s+ does \s+ not \s+ live \s+ on \s+ either
-  (?: \s+ (?: or \s+)? the \s+       
+  (?: \s+ (?: or \s+)? the \s+
     (?: top|bottom|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth))+ \s+ floor \s* \. )
 
 # Constraint: "P1 lives on a higher/lower floor than P2 does"
@@ -3224,7 +3224,7 @@ def do_not_live(txt):
     if f == 11: f = floors
     if f == 12: f = 1
     constraint_expr += ' and alloc[%i] != %i' % (w, f)
-    
+
 def do_not_either(txt):
     " E.g. 'Fletcher does not live on either the top or the bottom floor.'"
     global constraint_expr
@@ -3239,7 +3239,7 @@ def do_not_either(txt):
         if f == 11: f = floors
         if f == 12: f = 1
         constraint_expr += ' and alloc[%i] != %i' % (w, f)
-    
+
 
 def do_hi_lower(txt):
     " E.g. 'Miller lives on a higher floor than does Cooper.'"
@@ -3249,14 +3249,14 @@ def do_hi_lower(txt):
     if 'lower' in t:
         name_indices = name_indices[::-1]
     constraint_expr += ' and alloc[%i] > alloc[%i]' % tuple(name_indices)
-    
+
 def do_adjacency(txt):
     ''' E.g. "Smith does not live on a floor adjacent to Fletcher's."'''
     global constraint_expr
     t = txt.replace('.', '').replace("'s", '').strip().split()
     name_indices = [names.index(who) for who in (t[0], t[-1])]
     constraint_expr += ' and abs(alloc[%i] - alloc[%i]) > 1' % tuple(name_indices)
-    
+
 def do_question(txt):
     global constraint_expr, names, lennames
 
@@ -3302,7 +3302,7 @@ def parse_and_solve(problem):
 This is not much more than calling a function on the text of the problem!
 
 ```python
-if __name__ == '__main__':  
+if __name__ == '__main__':
     parse_and_solve("""
         Baker, Cooper, Fletcher, Miller, and Smith
         live on different floors of an apartment house that contains
@@ -3372,7 +3372,7 @@ adjacent to Cooper's. Where does everyone live
 
 ```python
 from amb import Amb
- 
+
 if __name__ == '__main__':
     amb = Amb()
 
@@ -3399,10 +3399,10 @@ if __name__ == '__main__':
         print 'No solution found.'
     print
 
-                       
+
     print '# Add another person with more constraints and more floors:'
     # The order that Guinan is added to any list of people must stay consistant
-    
+
     amb = Amb()
 
     maxfloors = 7
@@ -3665,7 +3665,7 @@ This is a direct translation of the problem constraints using an <tt>amb</tt> op
 (define-syntax-rule (with: all (name ...) #:in choices body ...)
   (let* ([cs choices] [name (amb cs)] ... [all `([,name name] ...)]) body ...))
 
-;; 
+;;
 ### == problem translation starts here ==
 
 
@@ -3716,7 +3716,7 @@ Solution:
 
 ## REXX
 
-This REXX version tries to keep the rules as simple as possible, 
+This REXX version tries to keep the rules as simple as possible,
 with easy-to-read   '''if'''   statements.
 
 Names of the tenants can be easily listed, and the floors are numbered according to the American system,
@@ -3736,7 +3736,7 @@ Note that the   '''TH'''   function has extra boilerplate to handle larger numbe
 
 With one more REXX statement, the tenants could be listed by the order of the floors they live on;
 
-(currently, the tenants are listed in the order they are listed in the   '''names'''   variable). 
+(currently, the tenants are listed in the order they are listed in the   '''names'''   variable).
 
 The "rules" that contain   '''=='''   could be simplified to   '''='''   for readability.
 
@@ -3795,9 +3795,9 @@ found 1 solution.
 
 ```ring
 
-floor1 = "return baker!=cooper and baker!=fletcher and baker!=miller and  
-          baker!=smith and cooper!=fletcher and cooper!=miller and 
-          cooper!=smith and fletcher!=miller and fletcher!=smith and  
+floor1 = "return baker!=cooper and baker!=fletcher and baker!=miller and
+          baker!=smith and cooper!=fletcher and cooper!=miller and
+          cooper!=smith and fletcher!=miller and fletcher!=smith and
           miller!=smith"
 floor2 = "return baker!=4"
 floor3 = "return cooper!=0"
@@ -3810,19 +3810,19 @@ for baker = 0 to 4
         for fletcher = 0 to 4
             for miller = 0 to 4
                 for smith = 0 to 4
-                    if eval(floor2) if eval(floor3) if eval(floor5) 
-                       if eval(floor4) if eval(floor6) if eval(floor7) 
-                          if eval(floor1) 
+                    if eval(floor2) if eval(floor3) if eval(floor5)
+                       if eval(floor4) if eval(floor6) if eval(floor7)
+                          if eval(floor1)
                              see "baker lives on floor " + baker + nl
                              see "cooper lives on floor " + cooper + nl
                              see "fletcher lives on floor " + fletcher + nl
                              see "miller lives on floor " + miller + nl
                              see "smith lives on floor " + smith + nl ok ok ok ok ok ok ok
-                next 
-            next 
-        next 
-    next 
-next 
+                next
+            next
+        next
+    next
+next
 
 ```
 
@@ -3853,7 +3853,7 @@ def solve( problem )
   names = lines.first.scan( /[A-Z]\w*/ )
   re_names = Regexp.union( names )
   # Later on, search for these keywords (the word "not" is handled separately).
-  words = %w(first second third fourth fifth sixth seventh eighth ninth tenth 
+  words = %w(first second third fourth fifth sixth seventh eighth ninth tenth
   bottom top higher lower adjacent)
   re_keywords = Regexp.union( words )
 
@@ -3861,7 +3861,7 @@ def solve( problem )
     keywords = line.scan( re_keywords )
     name1, name2 = line.scan( re_names )
     keywords.map do |keyword|
-      l = case keyword 
+      l = case keyword
         when "bottom"   then ->(c){ c.first == name1 }
         when "top"      then ->(c){ c.last == name1 }
         when "higher"   then ->(c){ c.index( name1 ) > c.index( name2 ) }
@@ -3872,7 +3872,7 @@ def solve( problem )
       line =~ /\bnot\b/ ? ->(c){not l.call(c) } : l  # handle "not"
     end
   end
-  
+
   names.permutation.detect{|candidate| predicates.all?{|predicate| predicate.(candidate)}}
 end
 ```
@@ -3955,7 +3955,7 @@ names = %i( Baker Cooper Fletcher Miller Smith )
 
 predicates = [->(c){ :Baker != c.last },
               ->(c){ :Cooper != c.first },
-              ->(c){ :Fletcher != c.first && :Fletcher != c.last }, 
+              ->(c){ :Fletcher != c.first && :Fletcher != c.last },
               ->(c){ c.index(:Miller) > c.index(:Cooper) },
               ->(c){ (c.index(:Smith) - c.index(:Fletcher)).abs != 1 },
               ->(c){ (c.index(:Cooper) - c.index(:Fletcher)).abs != 1 }]
@@ -4021,10 +4021,10 @@ for baler          = 1 to 4                                    ' can not be in r
      if baler <> cooper and fletcher <> miller and miller > cooper and abs(smith - fletcher) > 1 and abs(fletcher - cooper) > 1 then
       if baler + cooper + fletcher + miller + smith = 15 then  ' that is 1 + 2 + 3 + 4 + 5
         rooms$ = baler;cooper;fletcher;miller;smith
-        print "baler: ";baler;" copper: ";cooper;" fletcher: ";fletcher;" miller: ";miller;" smith: ";smith    
+        print "baler: ";baler;" copper: ";cooper;" fletcher: ";fletcher;" miller: ";miller;" smith: ";smith
       end
       end if
-     end if 
+     end if
     next smith
    next miller
   next fletcher
@@ -4130,7 +4130,7 @@ object Dinesman3 extends App {
      Rollo5 lives on floor number 5
       Smith lives on floor number 6
 
-### Enhanced Solution 
+### Enhanced Solution
 
 Combine the rules with the person names and separated the original task with an extension.
 
@@ -4329,8 +4329,8 @@ Miller
 
 ## Tcl
 
-It's trivial to extend this problem to deal with more floors and people and more constraints; the main internally-generated constraint is that the names of people should begin with an upper case character so that they are distinct from internal variables. 
-This code also relies on the caller encoding the conditions as expressions 
+It's trivial to extend this problem to deal with more floors and people and more constraints; the main internally-generated constraint is that the names of people should begin with an upper case character so that they are distinct from internal variables.
+This code also relies on the caller encoding the conditions as expressions
 that produce a value that is/can be interpreted as a boolean.
 {{tcllib|struct::list}}
 
@@ -4585,7 +4585,7 @@ import java.util.HashSet
 
 ■ Dinesman
   § static
-  
+
     houses⦂ HashSet⟨String⟩°
 
     ▶ main
@@ -4730,7 +4730,7 @@ L(L("Baker",3),L("Cooper",2),L("Fletcher",4),L("Miller",5),L("Smith",1))
 70 REM "Smith does not live on a floor adjacent to Fletcher's"
 80 REM "Fletcher does not live on a floor adjacent to Cooper's"
 90 FOR b=0 TO 4: FOR c=0 TO 4: FOR f=0 TO 4: FOR m=0 TO 4: FOR s=0 TO 4
-100 IF B<>C AND B<>F AND B<>M AND B<>S AND C<>F AND C<>M AND C<>S AND F<>M AND F<>S AND M<>S AND B<>4 AND C<>0 AND F<>0 AND F<>4 AND M>C AND ABS (S-F)<>1 AND ABS (F-C)<>1 THEN PRINT "Baker lives on floor ";b: PRINT "Cooper lives on floor ";c: PRINT "Fletcher lives on floor ";f: PRINT "Miller lives on floor ";m: PRINT "Smith lives on floor ";s: STOP 
+100 IF B<>C AND B<>F AND B<>M AND B<>S AND C<>F AND C<>M AND C<>S AND F<>M AND F<>S AND M<>S AND B<>4 AND C<>0 AND F<>0 AND F<>4 AND M>C AND ABS (S-F)<>1 AND ABS (F-C)<>1 THEN PRINT "Baker lives on floor ";b: PRINT "Cooper lives on floor ";c: PRINT "Fletcher lives on floor ";f: PRINT "Miller lives on floor ";m: PRINT "Smith lives on floor ";s: STOP
 110 NEXT s: NEXT m: NEXT f: NEXT c: NEXT b
 ```
 

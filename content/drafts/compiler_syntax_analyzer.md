@@ -306,7 +306,7 @@ In flattened form:
     (12) Identifier    c
     (13) Integer       33
 
-;Pseudo-code for the parser.  
+;Pseudo-code for the parser.
 
 Uses [https://www.engr.mun.ca/~theo/Misc/exp_parsing.htm Precedence Climbing] for expression parsing, and
 [https://en.wikipedia.org/wiki/Recursive_descent_parser Recursive Descent] for statement parsing. The AST is also built:
@@ -1000,7 +1000,7 @@ begin % syntax analyser %
         else if have( tKeyword_while ) then begin
             stmtExpr := parseParenExpr;
             stmtNode := opNode( nWhile, stmtExpr, parseStatement )
-            end        
+            end
         else if have( tkeyword_if ) then begin
             stmtExpr := parseParenExpr;
             stmtNode := opNode( nIf, stmtExpr, opNode( nIf, parseStatement, null ) );
@@ -1108,99 +1108,99 @@ Output from parsing the Prime Numbers example program.
 
 ```txt
 
-Sequence      
-Sequence      
-Sequence      
-Sequence      
-Sequence      
+Sequence
+Sequence
+Sequence
+Sequence
+Sequence
 ;
-Assign        
+Assign
 Identifier    count
-Integer                    1  
-Assign        
+Integer                    1
+Assign
 Identifier    n
-Integer                    1  
-Assign        
+Integer                    1
+Assign
 Identifier    limit
-Integer                  100  
-While         
-Less          
+Integer                  100
+While
+Less
 Identifier    n
 Identifier    limit
-Sequence      
-Sequence      
-Sequence      
-Sequence      
-Sequence      
+Sequence
+Sequence
+Sequence
+Sequence
+Sequence
 ;
-Assign        
+Assign
 Identifier    k
-Integer                    3  
-Assign        
+Integer                    3
+Assign
 Identifier    p
-Integer                    1  
-Assign        
+Integer                    1
+Assign
 Identifier    n
-Add           
+Add
 Identifier    n
-Integer                    2  
-While         
-And           
-LessEqual     
-Multiply      
+Integer                    2
+While
+And
+LessEqual
+Multiply
 Identifier    k
 Identifier    k
 Identifier    n
 Identifier    p
-Sequence      
-Sequence      
+Sequence
+Sequence
 ;
-Assign        
+Assign
 Identifier    p
-NotEqual      
-Multiply      
-Divide        
+NotEqual
+Multiply
+Divide
 Identifier    n
 Identifier    k
 Identifier    k
 Identifier    n
-Assign        
+Assign
 Identifier    k
-Add           
+Add
 Identifier    k
-Integer                    2  
-If            
+Integer                    2
+If
 Identifier    p
-If            
-Sequence      
-Sequence      
+If
+Sequence
+Sequence
 ;
-Sequence      
-Sequence      
+Sequence
+Sequence
 ;
-Prti          
+Prti
 Identifier    n
 ;
-Prts          
+Prts
 String        " is prime\n"
 ;
-Assign        
+Assign
 Identifier    count
-Add           
+Add
 Identifier    count
-Integer                    1  
+Integer                    1
 ;
-Sequence      
-Sequence      
-Sequence      
+Sequence
+Sequence
+Sequence
 ;
-Prts          
+Prts
 String        "Total primes found: "
 ;
-Prti          
+Prti
 Identifier    count
 ;
-Prts          
+Prts
 String        "\n"
 ;
 
@@ -1508,7 +1508,7 @@ BEGIN {
     input_file = ARGV[1]
   t = parse()
   prt_ast(t)
-}                                          
+}
 
 ```
 
@@ -1518,35 +1518,35 @@ BEGIN {
 
 ```txt
 
-Sequence      
-Sequence      
+Sequence
+Sequence
 ;
-Assign        
+Assign
 Identifier    count
 Integer       1
-While         
-Less          
+While
+Less
 Identifier    count
 Integer       10
-Sequence      
-Sequence      
+Sequence
+Sequence
 ;
-Sequence      
-Sequence      
-Sequence      
+Sequence
+Sequence
+Sequence
 ;
-Prts          
+Prts
 String        "count is: "
 ;
-Prti          
+Prti
 Identifier    count
 ;
-Prts          
+Prts
 String        "\n"
 ;
-Assign        
+Assign
 Identifier    count
-Add           
+Add
 Identifier    count
 Integer       1
 
@@ -1559,8 +1559,8 @@ Integer       1
 
 Tested with gcc 4.81 and later, compiles warning free with -Wall -Wextra
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
@@ -2121,7 +2121,7 @@ dump-ast.
             display t1 space trim(leaf-type(t1)) space trim(leaf-value(t1)) upon syserr
         else
             display t1 space node-left(t1) space node-right(t1) space trim(node-type(t1))
-                upon syserr 
+                upon syserr
         end-if
     end-perform
     .
@@ -2216,7 +2216,7 @@ start-stmt.
         perform until token-type = 'RightBrace' or 'End_of_input'
             call 'stmt'
             move return-code to parse-right(p)
-            call 'makenode' using 'Sequence' parse-left(p) parse-right(p)  
+            call 'makenode' using 'Sequence' parse-left(p) parse-right(p)
             move return-code to parse-left(p)
         end-perform
         if token-type <> 'End_of_input'
@@ -2467,7 +2467,7 @@ start-primary.
         call 'makenode' using 'Not' parse-left(p) p-zero
     when other
         move 0 to return-code
-    end-evaluate  
+    end-evaluate
     call 'pop'
     .
 end program primary.
@@ -3320,99 +3320,99 @@ Prime Numbers example:
 
 ```txt
 
-Sequence       
-Sequence       
-Sequence       
-Sequence       
-Sequence       
+Sequence
+Sequence
+Sequence
+Sequence
+Sequence
 ;
-Assign         
+Assign
 Identifier     count
 Integer        1
-Assign         
+Assign
 Identifier     n
 Integer        1
-Assign         
+Assign
 Identifier     limit
 Integer        100
-While          
-Less           
+While
+Less
 Identifier     n
 Identifier     limit
-Sequence       
-Sequence       
-Sequence       
-Sequence       
-Sequence       
+Sequence
+Sequence
+Sequence
+Sequence
+Sequence
 ;
-Assign         
+Assign
 Identifier     k
 Integer        3
-Assign         
+Assign
 Identifier     p
 Integer        1
-Assign         
+Assign
 Identifier     n
-Add            
+Add
 Identifier     n
 Integer        2
-While          
-And            
-LessEqual      
-Multiply       
+While
+And
+LessEqual
+Multiply
 Identifier     k
 Identifier     k
 Identifier     n
 Identifier     p
-Sequence       
-Sequence       
+Sequence
+Sequence
 ;
-Assign         
+Assign
 Identifier     p
-NotEqual       
-Multiply       
-Divide         
+NotEqual
+Multiply
+Divide
 Identifier     n
 Identifier     k
 Identifier     k
 Identifier     n
-Assign         
+Assign
 Identifier     k
-Add            
+Add
 Identifier     k
 Integer        2
-If             
+If
 Identifier     p
-If             
-Sequence       
-Sequence       
+If
+Sequence
+Sequence
 ;
-Sequence       
-Sequence       
+Sequence
+Sequence
 ;
-Prti           
+Prti
 Identifier     n
 ;
-Prts           
+Prts
 String         " is prime\n"
 ;
-Assign         
+Assign
 Identifier     count
-Add            
+Add
 Identifier     count
 Integer        1
 ;
-Sequence       
-Sequence       
-Sequence       
+Sequence
+Sequence
+Sequence
 ;
-Prts           
+Prts
 String         "Total primes found: "
 ;
-Prti           
+Prti
 Identifier     count
 ;
-Prts           
+Prts
 String         "\n"
 ;
 
@@ -3851,14 +3851,14 @@ function syntaxanalyzer(inputfile)
         "Identifier" => tkIdent, "Integer" => tkInteger, "String" => tkString)
 
     displaynodes = ["Identifier", "String", "Integer", "Sequence", "If", "Prtc", "Prts", "Prti", "While",
-                     "Assign", "Negate", "Not", "Multiply", "Divide", "Mod", "Add", "Subtract", "Less", 
+                     "Assign", "Negate", "Not", "Multiply", "Divide", "Mod", "Add", "Subtract", "Less",
                      "LessEqual", "Greater", "GreaterEqual", "Equal", "NotEqual", "And", "Or"]
 
-    errline, errcol, tok, toktext = fill("", 4)  
+    errline, errcol, tok, toktext = fill("", 4)
     error(msg) = throw("Error in syntax: $msg.")
     nilnode = ASTnode(0, nothing, nothing, nothing)
-    tokother = "" 
-   
+    tokother = ""
+
     function gettok()
         s = readline(inputfile)
         if length(s) == 0
@@ -3873,11 +3873,11 @@ function syntaxanalyzer(inputfile)
         end
         tok = allsyms[toktext]
         tokother = (tok in [tkInteger, tkIdent, tkString]) ? linelist[4] : ""
-     end   
+     end
 
     makenode(oper, left, right = nilnode) = ASTnode(oper, left, right, nothing)
-    makeleaf(oper, n::Int) = ASTnode(oper, nothing, nothing, n) 
-    makeleaf(oper, n) = ASTnode(oper, nothing, nothing, string(n)) 
+    makeleaf(oper, n::Int) = ASTnode(oper, nothing, nothing, n)
+    makeleaf(oper, n) = ASTnode(oper, nothing, nothing, string(n))
     expect(msg, s) = if tok != s error("msg: Expecting $(Tokens[s][TK_NAME]), found $(Tokens[tok][TK_NAME])") else gettok() end
 
     function expr(p)
@@ -3988,11 +3988,11 @@ function syntaxanalyzer(inputfile)
         end
         t
     end
-    
+
     function prtASTnode(t)
         if t == nothing
             return
-        elseif t == nilnode 
+        elseif t == nilnode
             println(";")
         elseif t.nodetype in [ndIdent, ndInteger, ndString]
             println(rpad(displaynodes[t.nodetype], 14), t.value)
@@ -4057,27 +4057,27 @@ A (1,2,3) is an auto array or tuple. We can assign a tuple in a variable, in a i
 
 Module syntax_analyzer(b$){
 	enum tokens {
-		Op_add, Op_subtract, Op_not=5, Op_multiply=10, Op_divide, Op_mod, 
+		Op_add, Op_subtract, Op_not=5, Op_multiply=10, Op_divide, Op_mod,
 		Op_negate,  Op_less, Op_lessequal, Op_greater, Op_greaterequal,
 		Op_equal, Op_notequal, Op_and, Op_or, Op_assign=100, Keyword_if=110,
 		Keyword_else, Keyword_while, Keyword_print, Keyword_putc, LeftParen, RightParen,
 		LeftBrace, RightBrace, Semicolon, Comma, Identifier, Integer, String, End_of_input
 	}
-	
+
 	Inventory precedence=Op_multiply:=13, Op_divide:=13, Op_mod:=13, Op_add:=12, Op_subtract:=12
-	Append  precedence, Op_negate:=14, Op_not:=14, Op_less:=10, Op_lessequal:=10, Op_greater:=10 
+	Append  precedence, Op_negate:=14, Op_not:=14, Op_less:=10, Op_lessequal:=10, Op_greater:=10
 	Append  precedence, Op_greaterequal:=10, Op_equal:=9, Op_notequal:=9, Op_assign:=-1, Op_and:=5
 	Append  precedence, Op_or:=4
-	
+
 	Inventory symbols=Op_multiply:="Multiply", Op_divide:="Divide", Op_mod:="Mod", Op_add:="Add"
 	Append  symbols, Op_negate:="Negate", Op_not:="Not", Op_less:="Less", Op_subtract:="Subtract"
 	Append  symbols, Op_lessequal:="LessEqual", Op_greater:="Greater", Op_greaterequal:="GreaterEqual"
-	Append  symbols, Op_equal:="Equal", Op_notequal:="NotEqual",  Op_and:="And", Op_or:="Or" 
-	
+	Append  symbols, Op_equal:="Equal", Op_notequal:="NotEqual",  Op_and:="And", Op_or:="Or"
+
 	def lineNo, ColumnNo, m, line$, a, lim, cur=-1
 	const nl$=chr$(13)+chr$(10), Ansi=3
 	Dim lex$()
-	lex$()=piece$(b$,chr$(13)+chr$(10)) 
+	lex$()=piece$(b$,chr$(13)+chr$(10))
 	lim=dimension(lex$(),1)-1
 	op=End_of_input
 	flush
@@ -4102,7 +4102,7 @@ Module syntax_analyzer(b$){
 	document parse$
 	Load.Doc parse$,"parse.t", Ansi
 	Report parse$
-	
+
 	sub prt_ast(t)
 		if len(t)<1 then
 			Output$=";"+nl$
@@ -4157,7 +4157,7 @@ Module syntax_analyzer(b$){
 			t=(line$)
 			getone(&op)
 			expected(Op_assign)
-			getone(&op) 
+			getone(&op)
 			expr(0)
 			read local rightnode
 			Push ("Assign",t,rightnode)
@@ -4212,7 +4212,7 @@ Module syntax_analyzer(b$){
 		else.if op=LeftBrace then
 			Brace()
 		else
-			error "Unkown Op"	
+			error "Unkown Op"
 		end if
 	end sub
 	Sub Brace()
@@ -4730,7 +4730,7 @@ Reusing lex.e (and core.e) from the [[Compiler/lexical_analyzer#Phix|Lexical Ana
 ```Phix
 --
 -- demo\\rosetta\\Compiler\\parse.e
--- 
+--
 ### ==========================
 
 --
@@ -4765,14 +4765,14 @@ end procedure
 
 function expr(integer p)
 object x = NULL, node
-integer op = tok[3] 
+integer op = tok[3]
 
     switch op do
         case tk_LeftParen:
             tok = get_tok()
             x = expr(0)
             expect("expr",tk_RightParen)
-        case tk_sub: 
+        case tk_sub:
         case tk_add:
             tok = get_tok()
             node = expr(precedences[tk_neg]);
@@ -4789,9 +4789,9 @@ integer op = tok[3]
         default:
             errd("Expecting a primary, found: %s\n", tkNames[op])
     end switch
- 
+
     op = tok[3]
-    while narys[op]=BINARY 
+    while narys[op]=BINARY
       and precedences[op]>=p do
         tok = get_tok()
         x = {op, x, expr(precedences[op]+1)}
@@ -4809,7 +4809,7 @@ end function
 
 function stmt()
 object t = NULL, e, s
- 
+
     switch tok[3] do
         case tk_if:
             tok = get_tok();
@@ -4866,7 +4866,7 @@ object t = NULL, e, s
             break;
         case tk_EOI:
             break;
-        default: 
+        default:
             errd("expecting start of statement, found '%s'\n", tkNames[tok[3]]);
     end switch
     return t
@@ -4889,7 +4889,7 @@ And a simple test driver for the specific task:
 ```Phix
 --
 -- demo\\rosetta\\Compiler\\parse.exw
--- 
+--
 ### ============================
 
 --
@@ -5397,7 +5397,7 @@ Code implements a recursive descent parser based on the given grammar.  Tested a
          (let ((v (read-expr)))
            (match 'RightParen)
            v))
-        ((Op_add) ; + sign is ignored 
+        ((Op_add) ; + sign is ignored
          (read-primary))
         ((Op_not)
          (list 'Not (read-primary) '()))
@@ -5413,7 +5413,7 @@ Code implements a recursive descent parser based on the given grammar.  Tested a
     (read-one-or-more read-multiplication-expr '(Op_add Op_subtract)))
   ;
   (define (read-relational-expr) ; ?
-    (read-one-or-two read-addition-expr 
+    (read-one-or-two read-addition-expr
                      '(Op_less Op_lessequal Op_greater Op_greaterequal)))
   ;
   (define (read-equality-expr) ; ?
@@ -5479,7 +5479,7 @@ Code implements a recursive descent parser based on the given grammar.  Tested a
        (let ((v (read-paren-expr)))
          (match 'Semicolon)
          (list 'Putc v '())))
-      ((LeftBrace) 
+      ((LeftBrace)
        (match 'LeftBrace)
        (let ((v (read-stmts)))
          (match 'RightBrace)
@@ -5488,7 +5488,7 @@ Code implements a recursive descent parser based on the given grammar.  Tested a
         (error "Unknown token type for statement" (type (peek-token))))))
   ;
   (define (read-stmts)
-    (do ((sequence (list 'Sequence '() (read-stmt)) 
+    (do ((sequence (list 'Sequence '() (read-stmt))
                    (list 'Sequence sequence (read-stmt))))
       ((memq (type (peek-token)) '(End_of_input RightBrace))
        sequence)))
@@ -5509,15 +5509,15 @@ Code implements a recursive descent parser based on the given grammar.  Tested a
           (list type)
           (list type val)))))
   ;
-  (with-input-from-file 
+  (with-input-from-file
     filename
-    (lambda () 
+    (lambda ()
       (do ((line (read-line) (read-line))
            (toks '() (cons (tokenise line) toks)))
-        ((eof-object? line) 
+        ((eof-object? line)
          (parse (list->vector (reverse toks))))))))
 
-;; Output the AST in flattened format 
+;; Output the AST in flattened format
 (define (display-ast ast)
   (cond ((null? ast)
          (display ";\n"))

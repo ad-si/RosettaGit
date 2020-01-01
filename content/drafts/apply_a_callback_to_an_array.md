@@ -85,11 +85,11 @@ package
         {
             var nums:Array = new Array(1, 2, 3);
             nums.map(function(n:Number, index:int, arr:Array):void { trace(n * n * n); });
-            
+
             // You can also pass a function reference
             nums.map(cube);
         }
-        
+
         private function cube(n:Number, index:int, arr:Array):void
         {
             trace(n * n * n);
@@ -107,11 +107,11 @@ package
 ```ada
 with Ada.Text_Io;
  with Ada.Integer_text_IO;
- 
+
  procedure Call_Back_Example is
     -- Purpose: Apply a callback to an array
     -- Output: Prints the squares of an integer array to the console
-   
+
     -- Define the callback procedure
     procedure Display(Location : Positive; Value : Integer) is
     begin
@@ -121,13 +121,13 @@ with Ada.Text_Io;
        Ada.Integer_Text_Io.Put(Item => Value * Value, Width => 1);
        Ada.Text_Io.New_Line;
     end Display;
-   
+
     -- Define an access type matching the signature of the callback procedure
     type Call_Back_Access is access procedure(L : Positive; V : Integer);
-   
+
     -- Define an unconstrained array type
     type Value_Array is array(Positive range <>) of Integer;
-   
+
     -- Define the procedure performing the callback
     procedure Map(Values : Value_Array; Worker : Call_Back_Access) is
     begin
@@ -135,12 +135,12 @@ with Ada.Text_Io;
           Worker(I, Values(I));
        end loop;
     end Map;
-   
+
     -- Define and initialize the actual array
     Sample : Value_Array := (5,4,3,2,1);
-   
+
  begin
-    Map(Sample, Display'access);   
+    Map(Sample, Display'access);
  end Call_Back_Example;
 ```
 
@@ -192,7 +192,7 @@ main(void)
       call back(i, array[i])
    OD
  );
- 
+
  main:
  (
    [4]INT array := ( 1, 4, 9, 16 );
@@ -261,15 +261,15 @@ For a more general implementation of '''map(function, list)''', '''foldl(functio
 
 ```applescript
 on run
-    
+
     set xs to {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-    
+
     {map(square, xs), ¬
         filter(even, xs), ¬
         foldl(add, 0, xs)}
-    
-    --> {{1, 4, 9, 16, 25, 36, 49, 64, 81, 100}, {2, 4, 6, 8, 10}, 55}  
-    
+
+    --> {{1, 4, 9, 16, 25, 36, 49, 64, 81, 100}, {2, 4, 6, 8, 10}, 55}
+
 end run
 
 -- square :: Num -> Num -> Num
@@ -315,7 +315,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -378,7 +378,7 @@ callback(array){
   Loop, Parse, array, `,
     MsgBox % (2 * A_LoopField)
 }
- 
+
 map(callback, array){
   %callback%(array)
 }
@@ -439,9 +439,9 @@ Now, we apply the sq operator over a list and display the result using the lsnum
         PRINT a(i)
       NEXT
       END
-      
+
       DEF FNsqrt(n) = SQR(n)
-      
+
       DEF PROCmap(array(), RETURN func%)
       LOCAL I%
       FOR I% = 0 TO DIM(array(),1)
@@ -563,8 +563,8 @@ void map(int* array, int len, void(*callback)(int,int));
 
 '''callback.c'''
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include "callback.h"
 
 /*
@@ -574,7 +574,7 @@ void map(int* array, int len, void(*callback)(int,int));
 static void callbackFunction(int location, int value)
 {
   printf("array[%d] = %d\n", location, value);
-} 
+}
 
 void map(int* array, int len, void(*callback)(int,int))
 {
@@ -583,7 +583,7 @@ void map(int* array, int len, void(*callback)(int,int))
   {
      callback(i, array[i]);
   }
-} 
+}
 
 int main()
 {
@@ -610,7 +610,7 @@ int main()
 ## C sharp
 
 {{works with|C sharp|C#|3.0+}}
-This version uses the C# 3 lambda notation. 
+This version uses the C# 3 lambda notation.
 
 
 ```csharp
@@ -633,7 +633,7 @@ foreach (var i in intArray)
 {{works with|Visual C sharp|Visual C#|2005}}
 
 ```csharp
-using System; 
+using System;
 
 static class Program
 {
@@ -641,9 +641,9 @@ static class Program
   // Output: Prints the squares of an int array to the console.
   // Compiler: Visual Studio 2005
   // Framework: .net 2
-   
+
   [STAThread]
-  public static void Main() 
+  public static void Main()
   {
     int[] intArray = { 1, 2, 3, 4, 5 };
 
@@ -656,14 +656,14 @@ static class Program
     Array.ForEach<int>
     (
       intArray,
-      delegate(int value) 
+      delegate(int value)
       {
-        Console.WriteLine(value * value);    
+        Console.WriteLine(value * value);
       });
   }
 
-  public static void PrintSquare(int value) 
-  { 
+  public static void PrintSquare(int value)
+  {
     Console.WriteLine(value * value);
   }
 }
@@ -674,11 +674,11 @@ static class Program
 ## C++
 
 
-{{works with|g++|4.1.1}}    
+{{works with|g++|4.1.1}}
 ===C-Style Array===
 
-```cpp>#include <iostream
- //cout for printing
+```cpp
+#include <iostream> //cout for printing
 #include <algorithm> //for_each defined here
 
 //create the function (print the square)
@@ -702,8 +702,8 @@ int main() {
 
 {{libheader|STL}}
 
-```cpp>#include <iostream
-  // cout for printing
+```cpp
+#include <iostream>  // cout for printing
 #include <algorithm> // for_each defined here
 #include <vector>    // stl vector class
 
@@ -730,8 +730,8 @@ int main() {
 
 More tricky with binary function
 
-```cpp>#include <iostream
-   // cout for printing
+```cpp
+#include <iostream>   // cout for printing
 #include <algorithm>  // for_each defined here
 #include <vector>     // stl vector class
 #include <functional> // bind and ptr_fun
@@ -777,8 +777,8 @@ transform(ary.begin(), ary.end(), ostream_iterator<int>(cout, " "), _1 * _1); //
 ### C++11
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <iostream>
 #include <algorithm>
 #include <iterator>
@@ -976,7 +976,7 @@ IMPORT StdLog;
 TYPE
 	Callback = PROCEDURE (x: INTEGER;OUT doubled: INTEGER);
 	Callback2 = PROCEDURE (x: INTEGER): INTEGER;
-	
+
 	PROCEDURE Apply(proc: Callback; VAR x: ARRAY OF INTEGER);
 	VAR
 		i: INTEGER;
@@ -985,7 +985,7 @@ TYPE
 			proc(x[i],x[i]);
 		END
 	END Apply;
-	
+
 	PROCEDURE Apply2(func: Callback2; VAR x: ARRAY OF INTEGER);
 	VAR
 		i: INTEGER;
@@ -994,23 +994,23 @@ TYPE
 			x[i] := func(x[i]);
 		END
 	END Apply2;
-	
+
 	PROCEDURE Double(x: INTEGER; OUT y: INTEGER);
-	BEGIN	
+	BEGIN
 		y := x * x;
 	END Double;
-	
+
 	PROCEDURE Double2(x: INTEGER): INTEGER;
 	BEGIN
 		RETURN x * x
 	END Double2;
-	
+
 	PROCEDURE Do*;
 	VAR
 		i: INTEGER;
 		ary: ARRAY 10 OF INTEGER;
-		
-		
+
+
 	BEGIN
 		FOR i := 0 TO LEN(ary) - 1 DO ary[i] := i END;
 		Apply(Double,ary);
@@ -1139,7 +1139,7 @@ func Array.select(pred) {
 
 var arr = [1, 2, 3, 4, 5]
 var squares = arr.select(x => x * x)
- 
+
 print(squares)
 ```
 
@@ -1151,7 +1151,7 @@ print(squares)
 
 ```e
 def array := [1,2,3,4,5]
-def square(value) { 
+def square(value) {
     return value * value
 }
 ```
@@ -1161,15 +1161,15 @@ Example of builtin iteration:
 
 
 ```e
-def callback(index, value) { 
+def callback(index, value) {
     println(`Item $index is $value.`)
 }
 array.iterate(callback)
 ```
 
 
-There is no built-in map function '''yet'''. 
-The following is one of the ways one could be implemented, 
+There is no built-in map function '''yet'''.
+The following is one of the ways one could be implemented,
 returning a plain list (which is usually an array in implementation).
 
 
@@ -1263,12 +1263,12 @@ program ApplyCallbackToArray
 		for ( i int to values.getSize() )
 			values[ i ] = func( values[ i ] );
 		end
-		
+
 		for ( i int to values.getSize() )
 			SysLib.writeStdout( values[ i ] );
 		end
 	end
-	
+
 	function square( i int ) returns( int )
 		return( i * i );
 	end
@@ -1461,7 +1461,7 @@ class Main
   {
     [1,2,3,4,5].each |Int i| { echo (i) }
     Int[] result := [1,2,3,4,5].map |Int i->Int| { return i * i }
-    echo (result) 
+    echo (result)
   }
 }
 
@@ -1623,11 +1623,11 @@ program testAC
     integer :: i, j
     real, dimension(3,4) :: b, &
         a = reshape( (/ ((10 * i + j, i = 1, 3), j = 1, 4) /), (/ 3,4 /) )
-     
+
     do i = 1, 3
         write(*,*) a(i,:)
     end do
-     
+
     b = cube( a )  ! Applies CUBE to every member of a,
                    ! and stores each result in the equivalent element of b
     do i = 1, 3
@@ -2043,7 +2043,7 @@ list(1,2,3,4,5) map(squared)
 ```j
    callback =:  *:
    array    =:  1 2 3 4 5
-   
+
    callback"_1 array
 1 4 9 16 25
 ```
@@ -2173,7 +2173,7 @@ map([1, 2, 3, 4, 5], function(v) { return v * v; });
 ```
 
 
-The result is always: 
+The result is always:
 
 
 ```txt
@@ -2207,7 +2207,7 @@ map( sqrt|floor )     # the floor of the sqrt
 # Array comprehension
 reduce .[] as $n ([]; . + [ exp ])
 
-# Elementwise operation 
+# Elementwise operation
  [.[] + 1 ]   # add 1 to each element of the input array
 
 ```
@@ -2392,14 +2392,14 @@ so pairs() is not guaranteed to return the elements in the same order as ipairs(
 
 a=(1,2,3,4,5)
 b=lambda->{
-	push number**2	
+	push number**2
 }
 Print a#map(b) ' 1 4 9 16 25
 Print a#map(b, b)  ' 1 16 81 256 625
 b=lambda (z) ->{
 	=lambda z ->{
-		push number**z	
-	}	
+		push number**z
+	}
 }
 Print a#map(b(2)) ' 1 4 9 16 25
 Print a#map(b(3)) ' 1 8 27 64 125
@@ -2450,7 +2450,7 @@ apply(`(1,2,3)',`z')
 
 ## Maple
 
-For lists and sets, which in Maple are immutable, a new object is returned.  
+For lists and sets, which in Maple are immutable, a new object is returned.
 Either the built-in procedure map, or the short syntax of a trailing tilde (~) on the applied operator may be used.
 
 ```Maple
@@ -2569,7 +2569,7 @@ ans =
 
 >> cellarray = {1,2,3,4,5}
 
-cellarray = 
+cellarray =
 
     [1]    [2]    [3]    [4]    [5]
 
@@ -2754,11 +2754,11 @@ VAR
   BEGIN
     RETURN x + 3;
   END Fun3;
-  
+
   PROCEDURE Map(F: Fun; VAR x: ARRAY OF LONGINT);
   VAR
     i: LONGINT;
-  BEGIN 
+  BEGIN
     FOR i := 0 TO LEN(x) - 1 DO
       x[i] := F(x[i])
     END
@@ -2769,7 +2769,7 @@ VAR
     i,l: LONGINT;
   BEGIN
     l := Min(LEN(a),LEN(x));
-    FOR i := 0 TO l - 1 DO 
+    FOR i := 0 TO l - 1 DO
       r[i] := F(a[i])
     END
   END Map2;
@@ -2795,7 +2795,7 @@ VAR
     END;
     Out.Ln
   END Show;
-  
+
 BEGIN
   Init(a);Map(Fun1,a);Show(a);
   Init(a);Map2(Fun2,a,x);Show(x);
@@ -2836,7 +2836,7 @@ bundle Default {
         squares->Get(i)->PrintLine();
       };
     }
-    
+
     function : Square(value : Int) ~ Int {
       return value * value;
     }
@@ -2921,14 +2921,14 @@ arrayfun(@f, [2, 3], [1,4])
 
 ## Oforth
 
-apply allows to perform a function on all elements of a list : 
+apply allows to perform a function on all elements of a list :
 
 ```Oforth
 0 #+ [ 1, 2, 3, 4, 5 ] apply
 ```
 
 
-map regroups all results into a new list : 
+map regroups all results into a new list :
 
 ```Oforth
 #sq [ 1, 2, 3, 4, 5 ] map
@@ -2954,7 +2954,7 @@ Apply custom callback (lambda) to every element of list.
 
 ## ooRexx
 
-ooRexx doesn't directly support callbacks on array items, but this is pretty easy to implement using Routine objects. 
+ooRexx doesn't directly support callbacks on array items, but this is pretty easy to implement using Routine objects.
 
 ```ooRexx
 start = .array~of("Rick", "Mike", "David", "Mark")
@@ -2998,8 +2998,8 @@ kraM
 
 Both sequences and tuples support the usual map operation seen in many functional languages. Sequences also support <code>8seq_for_each</code>, and a few variations, which returns <code>8nil</code>.
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 ORDER_PP( 8tuple_map(8fn(8X, 8times(8X, 8X)), 8tuple(1, 2, 3, 4, 5)) )
 // -> (1,4,9,16,25)
@@ -3023,7 +3023,7 @@ declare
   end
 
   Lst = [1 2 3 4 5]
-  
+
   %% apply a PROCEDURE to every element
   {ForAll Lst Show}
 
@@ -3090,7 +3090,7 @@ my @c = map { $_ * 2 } @a;                     # @c is now (2, 4, 6, 8, 10)
 my $func = \&mycallback;
 my @d = map $func->($_), @a;                  # @d is now (2, 4, 6, 8, 10)
 
-# filter an array 
+# filter an array
 my @e = grep { $_ % 2 == 0 } @a;               # @e is now (2, 4)
 ```
 
@@ -3255,20 +3255,20 @@ END;
 /
 
 -- And a package to hold our test
-CREATE OR REPLACE 
-PACKAGE PKG_CALLBACK AS 
+CREATE OR REPLACE
+PACKAGE PKG_CALLBACK AS
     myCallback cb_square;
     TYPE intTable IS TABLE OF NUMBER INDEX BY BINARY_INTEGER;
     ints intTable;
     i PLS_INTEGER;
-    
+
     procedure test_callback;
 END PKG_CALLBACK;
 /
 
 CREATE OR REPLACE PACKAGE BODY PKG_CALLBACK AS
     -- Our generic mapping function that takes a "method" and a collection
-    -- Note that it takes the generic callback type 
+    -- Note that it takes the generic callback type
     -- that doesn't know anything about squaring
     procedure do_callback(myCallback IN callback, ints IN OUT intTable) IS
         i PLS_INTEGER;
@@ -3287,9 +3287,9 @@ CREATE OR REPLACE PACKAGE BODY PKG_CALLBACK AS
         FOR i IN 1..5 LOOP
             ints(i) := i;
         END LOOP;
-    
+
         do_callback(myCallback, ints);
-    
+
         i := ints.FIRST;
         WHILE i IS NOT NULL LOOP
             DBMS_OUTPUT.put_line(ints(i));
@@ -3376,7 +3376,7 @@ map (1..5) { $_ * $_ }
 
 ## Prolog
 
-Prolog doesn't have arrays, but we can do it with lists. This can be done in the console mode. 
+Prolog doesn't have arrays, but we can do it with lists. This can be done in the console mode.
 
 ```Prolog
  ?- assert((fun(X, Y) :- Y is 2 * X)).
@@ -3397,16 +3397,16 @@ Procedure Cube(Array param.i(1))
     Protected n.i
     For n = 0 To ArraySize(param())
         Debug Str(param(n)) + "^3 = " + Str(param(n) * param(n) * param(n))
-    Next 
-EndProcedure 
+    Next
+EndProcedure
 
 Dim AnArray.i(4)
 
-For n = 0 To ArraySize(AnArray()) 
+For n = 0 To ArraySize(AnArray())
     AnArray(n) = Random(99)
-Next 
+Next
 
-Cube(AnArray()) 
+Cube(AnArray())
 ```
 
 
@@ -3417,7 +3417,7 @@ Cube(AnArray())
 ```python
 def square(n):
     return n * n
-  
+
 numbers = [1, 3, 5, 7]
 
 squares1 = [square(n) for n in numbers]     # list comprehension
@@ -3480,7 +3480,7 @@ elements2 <- list(1,2,3,4,5)
 cubes <- sapply(elements2, cube)
 ```
 
-In each case above, the value of 'cubes' is 
+In each case above, the value of 'cubes' is
  1   8  27  64 125
 
 
@@ -3706,7 +3706,7 @@ for (i in 1:2)
 
 
 The functions can take lists as arguments, but then it has to be specified within the body
-of the function what to do with the list elements. Given a list call it 'x' there is a RLaB 
+of the function what to do with the list elements. Given a list call it 'x' there is a RLaB
 function 'members' which returns a string vector with the names of the elements of the list.
 
 
@@ -4095,7 +4095,7 @@ db2 => BEGIN
 db2 (cont.) => END @
 DB20000I  The SQL command completed successfully.
 
-1 4 9 16 25 
+1 4 9 16 25
 
 ```
 
@@ -4618,7 +4618,7 @@ Dim arr, i
 
     'Loop and apply a function (Fibonacci) to each element
     For i = LBound(arr) To UBound(arr): arr(i) = Fibonacci(arr(i)): Next
-    
+
     'return
     Debug.Print Join(arr, ", ")
 End Sub
@@ -4642,7 +4642,7 @@ End Function
 
 ## VBScript
 
-I really have my doubts as to whether this really counts as a callback. 
+I really have my doubts as to whether this really counts as a callback.
 I used the same thing in the solution to Amb.
 
 
@@ -4657,7 +4657,7 @@ class callback
 	public property let rule( x )
 		sRule = x
 	end property
-	
+
 	public default function applyTo(a)
 		dim p1
 		for i = lbound( a ) to ubound( a )
@@ -4707,9 +4707,9 @@ MY DOG HAS FLEAS
 
 ## Vim Script
 
-<code>map()</code> works with lists and dictionaries. 
-The second argument is an expression string where <code>v:val</code> is replaced by the current value and <code>v:key</code> by the current key (for lists the key is the index). 
-The result of evaluating the string will be the new value. 
+<code>map()</code> works with lists and dictionaries.
+The second argument is an expression string where <code>v:val</code> is replaced by the current value and <code>v:key</code> by the current key (for lists the key is the index).
+The result of evaluating the string will be the new value.
 The list/dictionary is modified in place.
 
 ```vim
@@ -4723,9 +4723,9 @@ echo map({"a": "foo", "b": "Bar", "c": "BaZ"}, 'toupper(v:key)')
 {{Out}}
 
 ```txt
-[100, 400, 900]                                                                 
-['Element 0 = 10', 'Element 1 = 20', 'Element 2 = 30']                          
-{'a': 'FOO', 'b': 'BAR', 'c': 'BAZ'}                                            
+[100, 400, 900]
+['Element 0 = 10', 'Element 1 = 20', 'Element 2 = 30']
+{'a': 'FOO', 'b': 'BAR', 'c': 'BAZ'}
 {'a': 'A', 'b': 'B', 'c': 'C'}
 ```
 
@@ -4736,7 +4736,7 @@ echo map({"a": "foo", "b": "Bar", "c": "BaZ"}, 'toupper(v:key)')
 '''Compiler:''' >= Visual Studio 2008
 
 The .NET framework has got us covered.
- 
+
 System.Array.ForEach(T(), Action(Of T)) maps a non-value-returning callback,
 
 System.Linq.Enumerable.Select(Of TSource,TResult)(IEnumerable(Of TSource), Func(Of TSource, TResult)) provides a way to lazily map a function, resulting in an IEnumerable(Of T),
@@ -4762,7 +4762,7 @@ Module Program
         ' Or use an anonymous delegate.
         Dim resultEnumerable2 = source.Select(Function(i) i + 1)
 
-        ' The sequences are the same. 
+        ' The sequences are the same.
         Console.WriteLine(Enumerable.SequenceEqual(resultEnumerable1, resultEnumerable2))
 
         Dim resultArr As Integer() = resultEnumerable1.ToArray()
@@ -4792,7 +4792,7 @@ Given and array, A, and a function, F, mapping F over the elements of A is simpl
 A.map(F)
 ```
 
-If F takes 2 arguments, x and , then simply pass them to map.  
+If F takes 2 arguments, x and , then simply pass them to map.
 They will be passed to F when as it is applied to each element of A.
 
 ```vorpal
@@ -4944,7 +4944,7 @@ var
 	r: Vector;
 begin
 	r := new Vector(len(x));
-	for i := 0 to len(x) - 1 do	
+	for i := 0 to len(x) - 1 do
 		r[i] := p(i);
 	end;
 	return r
@@ -4992,7 +4992,7 @@ end Main.
 160 READ x
 170 PRINT x;" = ";VAL f$
 180 NEXT i
-190 STOP 
+190 STOP
 200 DATA 2,5,6,10,100
 
 ```

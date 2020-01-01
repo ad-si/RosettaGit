@@ -63,7 +63,7 @@ Very compact version.
 *        Evaluate binomial coefficients - 29/09/2015
 BINOMIAL CSECT
          USING  BINOMIAL,R15       set base register
-         SR     R4,R4              clear for mult and div 
+         SR     R4,R4              clear for mult and div
          LA     R5,1               r=1
          LA     R7,1               i=1
          L      R8,N               m=n
@@ -222,7 +222,7 @@ end Test_Binomial;
 ## ALGOL 68
 
 ===Iterative - unoptimised ===
-{{trans|C}} - note: This specimen retains the original [[Evaluate binomial coefficients#C|C]] coding style. 
+{{trans|C}} - note: This specimen retains the original [[Evaluate binomial coefficients#C|C]] coding style.
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 
@@ -235,22 +235,22 @@ end Test_Binomial;
 PROC factorial = (INT n)INT:
 (
         INT result;
- 
+
         result := 1;
         FOR i  TO n DO
                 result *:= i
         OD;
- 
+
         result
 );
- 
+
 PROC choose = (INT n, INT k)INT:
 (
         INT result;
 
 # Note: code can be optimised here as k < n #
         result := factorial(n) OVER (factorial(k) * factorial(n - k));
- 
+
         result
 );
 
@@ -366,9 +366,9 @@ end binomialCoefficient2
 
 -- TEST -----------------------------------------------------
 on run
-    
+
     {binomialCoefficient(5, 3), binomialCoefficient2(5, 3)}
-    
+
     --> {10, 10}
 end run
 
@@ -401,7 +401,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if script is class of f then
@@ -420,7 +420,7 @@ on product(xs)
             a * b
         end |λ|
     end script
-    
+
     foldl(multiply, 1, xs)
 end product
 ```
@@ -552,12 +552,12 @@ The Windows cmd console only handles 32-bit integers.  If a factoral exceeds 214
 
 ```bbcbasic
       @%=&1010
-      
+
       PRINT "Binomial (5,3) = "; FNbinomial(5, 3)
       PRINT "Binomial (100,2) = "; FNbinomial(100, 2)
       PRINT "Binomial (33,17) = "; FNbinomial(33, 17)
       END
-      
+
       DEF FNbinomial(N%, K%)
       LOCAL R%, D%
       R% = 1 : D% = N% - K%
@@ -625,8 +625,8 @@ blsq ) 5 3nr
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <limits.h>
 
 /* We go to some effort to handle overflow situations */
@@ -793,7 +793,7 @@ binomial_coefficient = (n, k) ->
   for i in [0...k]
     result *= (n - i) / (i + 1)
   result
-  
+
 n = 5
 for k in [0..n]
   console.log "binomial_coefficient(#{n}, #{k}) = #{binomial_coefficient(n,k)}"
@@ -804,7 +804,7 @@ for k in [0..n]
 {{Out}}
 ```txt
 
-> coffee binomial.coffee 
+> coffee binomial.coffee
 binomial_coefficient(5, 0) = 1
 binomial_coefficient(5, 1) = 5
 binomial_coefficient(5, 2) = 10
@@ -922,7 +922,7 @@ Annotated version:
 [sx     [ x is our dump register; get rid of extraneous copy of n we no longer need]sx
  1      [ return value is 1 ]sx
  q]     [ abort processing of calling macro ]sx
-sz      
+sz
 
 [ macro f: factorial ]sx [
   d       [ duplicate the input (n) ]sx
@@ -931,14 +931,14 @@ sz
   1 -     [ subtract 1 ]sx
   lfx     [ take the factorial ]sx
   *       [ we have (n-1)!; multiply it by the copy of n to get n! ]sx
-] sf    
+] sf
 
-[ macro b(n,k): binomial function (n choose k). 
+[ macro b(n,k): binomial function (n choose k).
   straightforward RPN version of formula.]sx [
   sk      [ remember k. stack:              n       ]sx
   d       [ duplicate:             n        n       ]sx
   lfx     [ call factorial:        n        n!      ]sx
-  r       [ swap:                  n!       n       ]sx 
+  r       [ swap:                  n!       n       ]sx
   lk      [ load k:           n!   n        k       ]sx
   -       [ subtract:              n!      n-k      ]sx
   lfx     [ call factorial:        n!     (n-k)!    ]sx
@@ -946,7 +946,7 @@ sz
   lfx     [ call factorial;   n! (n-k)!     k!      ]sx
   *       [ multiply:              n!    (n-k)!k!   ]sx
   /       [ divide:                     n!/(n-k)!k! ]sx
-] sb      
+] sb
 
 5 3 lb x p  [print(5 choose 3)]sx
 ```
@@ -999,7 +999,7 @@ defmodule RC do
   def choose(n,k) when is_integer(n) and is_integer(k) and n>=0 and k>=0 and n>=k do
     if k==0, do: 1, else: choose(n,k,1,1)
   end
-  
+
   def choose(n,k,k,acc), do: div(acc * (n-k+1), k)
   def choose(n,k,i,acc), do: choose(n, k, i+1, div(acc * (n-i+1), i))
 end
@@ -1196,9 +1196,9 @@ Function binomial(n As Integer, k As Integer) As Integer
   Return product \ factorial(k)
 End Function
 
-For n As Integer =  0 To 14 
+For n As Integer =  0 To 14
   For k As Integer = 0 To n
-    Print Using "####"; binomial(n, k); 
+    Print Using "####"; binomial(n, k);
     Print" ";
   Next k
   Print
@@ -1236,7 +1236,7 @@ Sleep
 
 ## Frink
 
-Frink has a built-in efficient function to find binomial coefficients.  
+Frink has a built-in efficient function to find binomial coefficients.
 It produces arbitrarily-large integers.
 
 ```frink
@@ -1411,7 +1411,7 @@ Or using "caching":
 
 
 ```haskell
-coeffs = iterate next [1] 
+coeffs = iterate next [1]
   where
     next ns = zipWith (+) (0:ns) $ ns ++ [0]
 
@@ -1442,7 +1442,7 @@ END
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-link math, factors 
+link math, factors
 
 procedure main()
 write("choose(5,3)=",binocoef(5,3))
@@ -1456,9 +1456,9 @@ choose(5,3)=10
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/math.icn math provides binocoef] and
-[http://www.cs.arizona.edu/icon/library/src/procs/factors.icn factors provides factorial]. 
+[http://www.cs.arizona.edu/icon/library/src/procs/factors.icn factors provides factorial].
 
 
 ```Icon
@@ -1469,7 +1469,7 @@ procedure binocoef(n, k)	#: binomial coefficient
 
    if (k = 0) | (n = k) then return 1
 
-   if 0 <= k <= n then 
+   if 0 <= k <= n then
       return factorial(n) / (factorial(k) * factorial(n - k))
    else fail
 
@@ -1654,7 +1654,7 @@ function binom(n, k) {
     for (i = 0; i < k; i++) {
         coeff = coeff * (n - i) / (i + 1);
     }
-  
+
     return coeff;
 }
 
@@ -1672,9 +1672,9 @@ console.log(binom(5, 3));
 ## jq
 
 
-```jq># nCk assuming n 
+```jq># nCk assuming n
 = k
-def binomial(n; k): 
+def binomial(n; k):
   if k > n / 2 then binomial(n; n-k)
   else reduce range(1; k+1) as $i (1; . * (n - $i + 1) / $i)
   end;
@@ -1872,7 +1872,7 @@ show choose 60 30 ; 1.18264581564861e+17
 function Binomial( n, k )
     if k > n then return nil end
     if k > n/2 then k = n - k end       --   (n k) = (n n-k)
-    
+
     numer, denom = 1, 1
     for i = 1, k do
         numer = numer * ( n - i + 1 )
@@ -1891,19 +1891,19 @@ local Binomial = setmetatable({},{
  __call = function(self,n,k)
    local hash = (n<<32) | (k & 0xffffffff)
    local ans = self[hash]
-   if not ans then 
+   if not ans then
     if n<0 or k>n then
       return 0 -- not save
-    elseif n<=1 or k==0 or k==n then 
+    elseif n<=1 or k==0 or k==n then
       ans = 1
     else
-      if 2*k > n then 
-        ans = self(n, n - k) 
+      if 2*k > n then
+        ans = self(n, n - k)
       else
         local lhs = self(n-1,k)
-        local rhs = self(n-1,k-1)        
+        local rhs = self(n-1,k-1)
         local sum = lhs + rhs
-        if sum<0 or not math.tointeger(sum)then 
+        if sum<0 or not math.tointeger(sum)then
           -- switch to double
           ans = lhs/1.0 + rhs/1.0 -- approximate
         else
@@ -1914,7 +1914,7 @@ local Binomial = setmetatable({},{
     rawset(self,hash,ans)
    end
    return ans
- end 
+ end
 })
 print( Binomial(100,50)) -- 1.0089134454556e+029
 
@@ -1948,8 +1948,8 @@ print( Binomial(100,50)) -- 1.0089134454556e+029
         end if
     factorial =f
     end function
- 
- 
+
+
 ```
 
 
@@ -1967,7 +1967,7 @@ binomial(5,3);
 {{Out}}
 
 ```txt
-                         factorial(n)         
+                         factorial(n)
                  -----------------------------
                  factorial(k) factorial(n - k)
 
@@ -1995,14 +1995,14 @@ ans =
 ```
 
 
-Alternative implementations are: 
+Alternative implementations are:
 
 
 ```MATLAB
 function r = binomcoeff1(n,k)
     r = diag(rot90(pascal(n+1))); % vector of all binomial coefficients for order n
-    r = r(k); 
-end; 
+    r = r(k);
+end;
 ```
 
 
@@ -2010,16 +2010,16 @@ end;
 ```MATLAB
 function r = binomcoeff2(n,k)
    prod((n-k+1:n)./(1:k))
-end; 
+end;
 ```
 
 
 
 ```MATLAB
 function r = binomcoeff3(n,k)
-   m = pascal(max(n-k,k)+1); 
+   m = pascal(max(n-k,k)+1);
    r = m(n-k+1,k+1);
-end; 
+end;
 ```
 
 
@@ -2033,7 +2033,7 @@ function coefficients = binomialCoeff(n,k)
 
     columns = (1:numel(k)); %Preallocate row and column counters
     rows = (1:numel(n));
-    
+
     %Iterate over every row and column. The rows represent the n number,
     %and the columns represent the k number. If n is ever greater than k,
     %the nchoosek function will throw an error. So, we test to make sure
@@ -2046,7 +2046,7 @@ function coefficients = binomialCoeff(n,k)
             end
         end
     end
-    
+
 end %binomialCoeff
 ```
 
@@ -2230,7 +2230,7 @@ IMPORT
 PROCEDURE For*(n,k: LONGINT): LONGINT;
 VAR
   i,m,r: LONGINT;
- 
+
 BEGIN
   ASSERT(n > k);
   r := 1;
@@ -2274,7 +2274,7 @@ let binomialCoeff n p =
 ```
 
 
-###  Alternate version using big integers 
+###  Alternate version using big integers
 
 
 ```ocaml
@@ -2293,7 +2293,7 @@ let binomial n p =
 
 
 
-###  Simple recursive version 
+###  Simple recursive version
 
 
 ```OCaml
@@ -2367,7 +2367,7 @@ sub binomial {
     for (1 .. $k) { $r *= $n--; $r /= $_ }
     $r;
 }
- 
+
 print binomial(5, 3);
 ```
 
@@ -2475,7 +2475,7 @@ However errors will creep in should any result or interim value exceed 9,007,199
 
 ```Phix
 include builtins\mpfr.e
- 
+
 function mpz_binom(integer n, k)
 mpz r = mpz_init(1)
     for i=1 to k do
@@ -2485,7 +2485,7 @@ mpz r = mpz_init(1)
     end for
     return mpz_get_str(r)
 end function
- 
+
 ?mpz_binom(5,3)
 ?mpz_binom(100,50)
 ?mpz_binom(60,30)
@@ -2661,7 +2661,7 @@ If OpenConsole()
   Print("Enter value n: "): n=Val(Input())
   Print("Enter value k: "): k=Val(Input())
   PrintN("C(n,k)= "+str(C(n,k)))
-  
+
   Print("Press ENTER to quit"): Input()
   CloseConsole()
 EndIf
@@ -2717,7 +2717,7 @@ def comb(n,r):
     >>> comb(20,14)
     38760
     '''
- 
+
     if r > n-r:
         # r = n-r   for smaller intermediate values during computation
         return ( reduce( mul, range((n - (n-r) + 1), n + 1), 1)
@@ -2804,7 +2804,7 @@ if __name__ == '__main__':
 ```
 
 
-Compare the use of Python comments, (above); with the use of Python type hints, (below). 
+Compare the use of Python comments, (above); with the use of Python type hints, (below).
 
 
 ```python
@@ -2914,7 +2914,7 @@ combinations(1200,120)= 10045765817930849164753531193183319665072994142583706676
 
 This REXX version takes advantage of reducing the size (product) of the numerator, and also,
 
-only two (factorial) products need be calculated. 
+only two (factorial) products need be calculated.
 
 ```rexx
 /*REXX program calculates   binomial coefficients  (also known as  combinations).       */
@@ -2932,7 +2932,7 @@ pfact: procedure;  !=1;        do j=arg(1)  to arg(2);  !=!*j;  end  /*j*/;     
 
 It is (around average) about ten times faster than the 1<sup>st</sup> version for   <code> 200,20 </code>   and   <code> 100,10</code>.
 
-For   <code>100,80 </code>   it is about 30% faster. 
+For   <code>100,80 </code>   it is about 30% faster.
 
 
 
@@ -2945,13 +2945,13 @@ numer = 0
 binomial(5,3)
 see "(5,3) binomial = " + numer + nl
 
-func binomial n, k 
+func binomial n, k
      if k > n return nil ok
      if k > n/2 k = n - k ok
      numer = 1
-     for i = 1 to k  
+     for i = 1 to k
          numer = numer * ( n - i + 1 ) / i
-     next 
+     next
      return numer
 
 ```
@@ -2969,7 +2969,7 @@ class Integer
   # binomial coefficient: n C k
   def choose(k)
     # n!/(n-k)!
-    pTop = (self-k+1 .. self).inject(1, &:*) 
+    pTop = (self-k+1 .. self).inject(1, &:*)
     # k!
     pBottom = (2 .. k).inject(1, &:*)
     pTop / pBottom
@@ -3016,13 +3016,13 @@ print "binomial (5,3) = "; binomial(5, 3)
 print "binomial (5,4) = "; binomial(5,4)
 print "binomial (5,5) = "; binomial(5,5)
 end
- 
+
 function binomial(n,k)
  coeff = 1
  for i = n - k + 1 to n
    coeff = coeff * i
  next i
- for i = 1 to k 
+ for i = 1 to k
    coeff = coeff / i
  next i
 binomial = coeff
@@ -3114,8 +3114,8 @@ Another (more flexible and efficient) implementation. n and k are taken from com
 
 ```scala
 object Binomial extends App {
-  def binomialCoefficient(n: Int, k: Int) = 
-    (BigInt(n - k + 1) to n).product / 
+  def binomialCoefficient(n: Int, k: Int) =
+    (BigInt(n - k + 1) to n).product /
     (BigInt(1) to k).product
 
   val Array(n, k) = args.map(_.toInt)
@@ -3232,27 +3232,27 @@ const proc: main is func
 
 ```txt
 
-1 
-1 1 
-1 2 1 
-1 3 3 1 
-1 4 6 4 1 
-1 5 10 10 5 1 
-1 6 15 20 15 6 1 
-1 7 21 35 35 21 7 1 
-1 8 28 56 70 56 28 8 1 
-1 9 36 84 126 126 84 36 9 1 
-1 10 45 120 210 252 210 120 45 10 1 
-1 11 55 165 330 462 462 330 165 55 11 1 
-1 12 66 220 495 792 924 792 495 220 66 12 1 
-1 13 78 286 715 1287 1716 1716 1287 715 286 78 13 1 
-1 14 91 364 1001 2002 3003 3432 3003 2002 1001 364 91 14 1 
-1 15 105 455 1365 3003 5005 6435 6435 5005 3003 1365 455 105 15 1 
-1 16 120 560 1820 4368 8008 11440 12870 11440 8008 4368 1820 560 120 16 1 
-1 17 136 680 2380 6188 12376 19448 24310 24310 19448 12376 6188 2380 680 136 17 1 
-1 18 153 816 3060 8568 18564 31824 43758 48620 43758 31824 18564 8568 3060 816 153 18 1 
-1 19 171 969 3876 11628 27132 50388 75582 92378 92378 75582 50388 27132 11628 3876 969 171 19 1 
-1 20 190 1140 4845 15504 38760 77520 125970 167960 184756 167960 125970 77520 38760 15504 4845 1140 190 20 1 
+1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1
+1 5 10 10 5 1
+1 6 15 20 15 6 1
+1 7 21 35 35 21 7 1
+1 8 28 56 70 56 28 8 1
+1 9 36 84 126 126 84 36 9 1
+1 10 45 120 210 252 210 120 45 10 1
+1 11 55 165 330 462 462 330 165 55 11 1
+1 12 66 220 495 792 924 792 495 220 66 12 1
+1 13 78 286 715 1287 1716 1716 1287 715 286 78 13 1
+1 14 91 364 1001 2002 3003 3432 3003 2002 1001 364 91 14 1
+1 15 105 455 1365 3003 5005 6435 6435 5005 3003 1365 455 105 15 1
+1 16 120 560 1820 4368 8008 11440 12870 11440 8008 4368 1820 560 120 16 1
+1 17 136 680 2380 6188 12376 19448 24310 24310 19448 12376 6188 2380 680 136 17 1
+1 18 153 816 3060 8568 18564 31824 43758 48620 43758 31824 18564 8568 3060 816 153 18 1
+1 19 171 969 3876 11628 27132 50388 75582 92378 92378 75582 50388 27132 11628 3876 969 171 19 1
+1 20 190 1140 4845 15504 38760 77520 125970 167960 184756 167960 125970 77520 38760 15504 4845 1140 190 20 1
 ...
 
 ```
@@ -3446,7 +3446,7 @@ $ txr -p '(n-perm-k 20 15)'
 
 
 ```sh
-#!/bin/sh                                                                                                                                             
+#!/bin/sh
 n=5;
 k=3;
 calculate_factorial(){
@@ -3594,16 +3594,16 @@ int N, K;
 
 ```txt
 
-1                                                                               
-1       1                                                                       
-1       2       1                                                               
-1       3       3       1                                                       
-1       4       6       4       1                                               
-1       5       10      10      5       1                                       
-1       6       15      20      15      6       1                               
-1       7       21      35      35      21      7       1                       
-1       8       28      56      70      56      28      8       1               
-1       9       36      84      126     126     84      36      9       1       
+1
+1       1
+1       2       1
+1       3       3       1
+1       4       6       4       1
+1       5       10      10      5       1
+1       6       15      20      15      6       1
+1       7       21      35      35      21      7       1
+1       8       28      56      70      56      28      8       1
+1       9       36      84      126     126     84      36      9       1
 
 ```
 

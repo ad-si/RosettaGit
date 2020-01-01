@@ -12,10 +12,10 @@ tags = []
 
 {{task}}
 
-;Task: 
-Choose popular date libraries used by your language and show the   [[wp:Epoch_(reference_date)#Computing|epoch]]   those libraries use. 
+;Task:
+Choose popular date libraries used by your language and show the   [[wp:Epoch_(reference_date)#Computing|epoch]]   those libraries use.
 
-A demonstration is preferable   (e.g. setting the internal representation of the date to 0 ms/ns/etc.,   or another way that will still show the epoch even if it is changed behind the scenes by the implementers),   but text from (with links to) documentation is also acceptable where a demonstration is impossible/impractical. 
+A demonstration is preferable   (e.g. setting the internal representation of the date to 0 ms/ns/etc.,   or another way that will still show the epoch even if it is changed behind the scenes by the implementers),   but text from (with links to) documentation is also acceptable where a demonstration is impossible/impractical.
 
 For consistency's sake, show the date in UTC time where possible.
 
@@ -138,8 +138,8 @@ BEGIN {
 ## C
 
 
-```c>#include <time.h
-
+```c
+#include <time.h>
 #include <stdio.h>
 
 int main() {
@@ -156,13 +156,13 @@ Thu Jan  1 00:00:00 1970
 ```
 
 
-###  Windows 
+###  Windows
 
 FileTime, from the Win32 API, uses a different epoch.
 {{libheader|Win32}}
 
-```c>#include <windows.h
-
+```c
+#include <windows.h>
 #include <stdio.h>
 #include <wchar.h>
 
@@ -233,8 +233,8 @@ class Program
 {{works with|gcc|4.5.3}}
 Doesn't work with MSVC 10 SP1
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <chrono>
 #include <ctime>
 int main()
@@ -254,8 +254,8 @@ Thu Jan  1 00:00:00 1970
 
 {{libheader|boost}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <boost/date_time.hpp>
 int main()
 {
@@ -535,7 +535,7 @@ Output:
 09/03/16
 3 Sep 2016
 Sat, Sep 3, 2016
-September 3, 2016 
+September 3, 2016
 September 3, 2016 AD
 This is day 247 of the year
 
@@ -635,11 +635,11 @@ Date and Time can be accessed via a number of keywords and functions
 * The following are available in both Icon and Unicon
 ** &clock, &date, &dateline, and &time deal with current times and dates
 * The following are specific to Unicon
-** &now provides the number of seconds since the epoch, Jan 1, 1970 00:00:00 
+** &now provides the number of seconds since the epoch, Jan 1, 1970 00:00:00
 ** ctime(integer) takes the number of seconds since the epoch and returns the date and time as a string in the local timezone
 ** gtime(integer) takes the number of seconds since the epoch and returns the date and time as a string in UTC
-** gettimeofday() returns a record with the current time since the epoch in seconds and microseconds 
-{{libheader|Icon Programming Library}}  
+** gettimeofday() returns a record with the current time since the epoch in seconds and microseconds
+{{libheader|Icon Programming Library}}
 * [http://www.cs.arizona.edu/icon/library/src/procs/datetime.icn datetime routines] use a global variable 'DateBaseYear' which defaults to Jan 1, 1970 00:00:00 but can be set if desired.
 * The example below uses only a couple of the datetime procedures
 
@@ -649,12 +649,12 @@ link printf,datetime
 procedure main()
   # Unicon
   now := gettimeofday().sec
-  if now = &now then printf("&now and gettimeofday().sec are equal\n") 
+  if now = &now then printf("&now and gettimeofday().sec are equal\n")
   printf("Now (UTC) %s, (local) %s\n",gtime(now),ctime(now))
   printf("Epoch %s\n",gtime(0))
   # Icon and Unicon
   now := DateToSec(&date) + ClockToSec(&clock)
-  printf("Now is also %s and %s\n",SecToDate(now),SecToDateLine(now))  
+  printf("Now is also %s and %s\n",SecToDate(now),SecToDateLine(now))
 end
 ```
 
@@ -878,7 +878,7 @@ init(nil: ref Draw->Context, nil: list of string)
 	sys->pctl(Sys->FORKNS, nil);
 	# Bind that file over /dev/time:
 	sys->bind("/tmp/0", "/dev/time", Sys->MREPL);
-	
+
 	# Print the "current" date, now the epoch:
 	sys->print("%s\n", daytime->text(daytime->gmt(daytime->now())));
 }
@@ -950,7 +950,7 @@ Sub Click(Source As Button)
   'Calculate time difference between both dates
   Dim epochSeconds As Long
   epochSeconds = timeStamp.TimeDifference ( epochTime )
-  
+
   'Print result
   Print epochSeconds
 
@@ -994,7 +994,7 @@ DateString[0]
 ->Mon 1 Jan 1900 00:00:00
 
 =={{header|MATLAB}} / {{header|Octave}}==
-Matlab and Octave store date/time number in a floating point number counting the days. 	
+Matlab and Octave store date/time number in a floating point number counting the days.
 
 ```matlab
 d = [0,1,2,3.5,-3.5,1000*365,1000*366,now+[-1,0,1]];
@@ -1190,7 +1190,7 @@ Program ShowEpoch;
 
 uses
   SysUtils;
- 
+
 begin
   Writeln(FormatDateTime('yyyy-mm-dd hh:nn:ss.zzz', Now));
   Writeln(FormatDateTime('yyyy-mm-dd hh:nn:ss.zzz', 0));
@@ -1419,7 +1419,7 @@ DateTime    : Monday, January 01, 0001 12:00:00 AM
 ```purebasic
 If OpenConsole()
   PrintN(FormatDate("Y = %yyyy  M = %mm  D = %dd, %hh:%ii:%ss", 0))
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -1521,7 +1521,7 @@ New qApp {
                 setwindowtitle("Using QDateEdit")
                 setGeometry(100,100,250,100)
                 oDate = new qdateedit(win1) {
-                        setGeometry(20,40,220,30) 
+                        setGeometry(20,40,220,30)
 	                oDate.minimumDate()
                 }
                 show()
@@ -1555,7 +1555,7 @@ extern crate time;
 use time::{at_utc, Timespec};
 
 fn main() {
-    let epoch = at_utc(Timespec::new(0, 0));  
+    let epoch = at_utc(Timespec::new(0, 0));
     println!("{}", epoch.asctime());
 }
 ```
@@ -1697,7 +1697,7 @@ PRINT "today's date: ", date," (daynumber ", number,")"
 ```txt
 
 epoch: 1-1-1 (daynumber 1)
-today's date: 2011-12-14 (daynumber 734487) 
+today's date: 2011-12-14 (daynumber 734487)
 
 ```
 

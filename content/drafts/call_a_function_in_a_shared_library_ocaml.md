@@ -62,8 +62,8 @@ external fficall: func:func_handle -> args:arg_type array -> return:return_type 
 Here is the file '''"dlffi_stubs.c"''':
 
 
-```c>#include <dlfcn.h
-
+```c
+#include <dlfcn.h>
 #include <ffi.h>
 
 #include <caml/mlvalues.h>
@@ -88,7 +88,7 @@ static const int rtld_flags_table[] = {
 static inline int
 rtld_flags_val( value mask_list )
 {
-  int c_mask = 0; 
+  int c_mask = 0;
   while (mask_list != Val_emptylist) {
     value head = Field(mask_list, 0);
     c_mask |= rtld_flags_table[Long_val(head)];
@@ -450,8 +450,8 @@ let () =
 Here is a test library '''"fakelib.c"''':
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 

@@ -107,7 +107,7 @@ The largest non McNugget number is: 43
 
 ## AppleScript
 
-Generalised for other set sizes, and for other triples of natural numbers. 
+Generalised for other set sizes, and for other triples of natural numbers.
 Uses NSMutableSet, through the AppleScript ObjC interface:
 
 ```applescript
@@ -118,14 +118,14 @@ use scripting additions
 
 on run
     set setNuggets to mcNuggetSet(100, 6, 9, 20)
-    
+
     script isMcNugget
         on |λ|(x)
             setMember(x, setNuggets)
         end |λ|
     end script
     set xs to dropWhile(isMcNugget, enumFromThenTo(100, 99, 1))
-    
+
     set setNuggets to missing value -- Clear ObjC pointer value
     if 0 < length of xs then
         item 1 of xs
@@ -251,7 +251,7 @@ on foldl(f, startValue, xs)
     end tell
 end foldl
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -270,7 +270,7 @@ on sum(xs)
             a + b
         end |λ|
     end script
-    
+
     foldl(add, 0, xs)
 end sum
 
@@ -338,8 +338,8 @@ BEGIN {
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int
 main() {
@@ -469,7 +469,7 @@ func mcnugget(limit) {
         }
     }
 }
- 
+
 mcnugget(100)
 ```
 
@@ -679,10 +679,10 @@ mcNuggets =
   let size n = [0 .. quot 100 n]
   in fromList
        [ v
-       | x <- size 6 
-       , y <- size 9 
-       , z <- size 20 
-       , let v = sum [6 * x, 9 * y, 20 * z] 
+       | x <- size 6
+       , y <- size 9
+       , z <- size 20
+       , let v = sum [6 * x, 9 * y, 20 * z]
        , 101 > v ]
 
 main :: IO ()
@@ -722,7 +722,7 @@ public class McNuggets {
                 found[total] = true;
                 numFound++;
             }
-            
+
             // Advance state
             advancedState = false;
             for (int i = 0; i < numSizes; i++) {
@@ -740,9 +740,9 @@ public class McNuggets {
                     break;
                 }
             }
-            
+
         } while ((numFound < maxFound) && advancedState);
-        
+
         if (numFound < maxFound) {
             // Did not find all counts within the search space
             for (int i = MAX_TOTAL; i >= 0; i--) {
@@ -755,7 +755,7 @@ public class McNuggets {
         else {
             System.out.println("All numbers in the search space are McNugget numbers");
         }
-        
+
         return;
     }
 }
@@ -869,8 +869,8 @@ Largest non-McNugget number in the search space is 43
 Brute force solution: calculate all pure (just one kind of box) McNugget numbers which do not exceed 100, then compute all possible sums, and then remove those from the list of numbers up to 100 (which is obviously a McNugget number), then find the largest number remaining:
 
 
-```J>   
-./(i.100)-.,+/&>{(* i.@>.@%~&101)&.>6 9 20 
+```J>
+./(i.100)-.,+/&>{(* i.@>.@%~&101)&.>6 9 20
 43
 ```
 
@@ -920,7 +920,7 @@ end
 println(mcnuggets(100))
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 43
@@ -1001,8 +1001,8 @@ The largest non McNugget number is: 43
 
 
 ```mathematica
-Complement[Range[100], 
-  Select[6 #[[1]] + 9 #[[2]] + 20 #[[3]] & /@ 
+Complement[Range[100],
+  Select[6 #[[1]] + 9 #[[2]] + 20 #[[3]] & /@
     Tuples[Range[0, 17], 3], # < 101 &]][[-1]]
 ```
 
@@ -1213,13 +1213,13 @@ Also, since it is a bit more interesting, a
 
 ```Phix
 function Mcnugget_number(sequence counts)
- 
+
     if gcd(counts)>1 then return "No maximum" end if
 
     atom cmin = min(counts)
     sequence meals = {}
     sequence smin = {}
- 
+
     integer a = -1
     while true do
         a += 1
@@ -1248,7 +1248,7 @@ function Mcnugget_number(sequence counts)
     end while
     return sprintf("%d",iff(smin[1]?smin[1]-1:0))
 end function
- 
+
 constant tests = {{6,9,20}, {6,7,20}, {1,3,20}, {10,5,18}, {5,17,44}, {2,4,6}, {3,6,15}}
 for i=1 to length(tests) do
     sequence ti = tests[i]
@@ -1284,7 +1284,7 @@ For ($i=0; $i -lt 18; $i++) {
     }
   }
 }
- 
+
 For ( $n=100; $n -gt 0; $n-- ) {
   If ($possible[$n]) {
     Continue
@@ -1327,7 +1327,7 @@ Generator from fiber:
             (for C (range B M 20)
                (yield (inc C)) ) ) ) ) )
 (de nuggets2 (M)
-   (let Lst (range 0 M) 
+   (let Lst (range 0 M)
       (while (nugg 100)
          (set (nth Lst @)) )
       (apply max Lst) ) )
@@ -1359,10 +1359,10 @@ It's a simple solution done on the command line:
 >>> for s, n, t in product(range(100//6+1), range(100//9+1), range(100//20+1)):
 	nuggets.discard(6*s + 9*n + 20*t)
 
-	
+
 >>> max(nuggets)
 43
->>> 
+>>>
 ```
 
 
@@ -1374,7 +1374,7 @@ Single expression version (expect to be slower, however no noticeable difference
 ...   (6*s + 9*n + 20*t for s, n, t in
 ...     product(range(100//6+1), range(100//9+1), range(100//20+1))))
 43
->>> 
+>>>
 ```
 
 
@@ -1404,7 +1404,7 @@ print(max(g.difference(n)))
 
 ### List monad
 
-A composition of pure functions, including dropwhile, which shows a more verbose and unwieldy (de-sugared) route to list comprehension, and reveals the underlying mechanics of what the (compact and elegant) built-in syntax expresses. May help to build intuition for confident use of the latter. 
+A composition of pure functions, including dropwhile, which shows a more verbose and unwieldy (de-sugared) route to list comprehension, and reveals the underlying mechanics of what the (compact and elegant) built-in syntax expresses. May help to build intuition for confident use of the latter.
 
 Note that the innermost function wraps its results in a (potentially empty) list. The resulting list of lists, some empty, is then flattened by the concatenation component of '''bind'''.
 
@@ -1567,11 +1567,11 @@ mcNuggetsByComprehension -> 43
 ## REXX
 
 This REXX version generalizes the problem (does not depend on fixed meal sizes),   and also checks for:
-:*   a meal that doesn't include McNuggets    (in other words, zero nuggets) 
+:*   a meal that doesn't include McNuggets    (in other words, zero nuggets)
 :*   a meal size that includes a double order of nuggets
 :*   a meal size that includes a single nugget   (which means, no largest McNugget number)
 :*   excludes meals that have a multiple order of nuggets
-:*   automatically computes the '''high''' value algebraically instead of using   '''100'''. 
+:*   automatically computes the '''high''' value algebraically instead of using   '''100'''.
 
 ```rexx
 /*REXX pgm solves the  McNuggets problem:  the largest McNugget number for given meals. */
@@ -1869,7 +1869,7 @@ templates largestNonMcNuggetNumber
   <?($@.mcNuggetNumbers($) <0>)> @.largest: $;
   <> @.mcNuggetNumbers([$ + 6, $ + 9, $ + 20]): 1..3 -> 1;
 end largestNonMcNuggetNumber
- 
+
 100 -> largestNonMcNuggetNumber -> !OUT::write
 
 ```

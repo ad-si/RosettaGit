@@ -111,8 +111,8 @@ Z             50
 
 {{trans|Kotlin}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <limits.h>
 
 #define TRUE 1
@@ -243,17 +243,17 @@ If the program is changed to this (to accomodate the second Ruby example):
 ```go>#include <stdio.h
 
 #include <limits.h>
- 
+
 #define TRUE 1
 #define FALSE 0
 #define N_ROWS 5
 #define N_COLS 5
- 
+
 typedef int bool;
- 
+
 int supply[N_ROWS] = { 461, 277, 356, 488,  393 };
 int demand[N_COLS] = { 278,  60, 461, 116, 1060 };
- 
+
 int costs[N_ROWS][N_COLS] = {
     { 46,  74,  9, 28, 99 },
     { 12,  75,  6, 36, 48 },
@@ -263,7 +263,7 @@ int costs[N_ROWS][N_COLS] = {
 };
 
 // etc
- 
+
 int main() {
     // etc
 
@@ -388,10 +388,10 @@ void main() {
 
 ```txt
     A   B   C   D   E
-W           50          
-X           20      40  
-Y   30  20              
-Z               30  20  
+W           50
+X           20      40
+Y   30  20
+Z               30  20
 
 Total Cost = 3130
 ```
@@ -810,7 +810,7 @@ This solution does not impose the requirement that the problem be balanced.  <co
 
 '''Types'''
 
-The immutable type <code>TProblem</code> stores the problem's parameters.  It includes permutation matrices that allow the rows and columns of the total opportunity cost matrix to be sorted as needed.  
+The immutable type <code>TProblem</code> stores the problem's parameters.  It includes permutation matrices that allow the rows and columns of the total opportunity cost matrix to be sorted as needed.
 
 <code>Resource</code> stores the currently available quantity of a given supply or demand as well as its penalty, cost, and some meta-data.  <code>isavailable</code> indicates whether any of the given resource remains.  <code>isless</code> is designed to make the currently most usable resource appear as a maximum compared to other resources.
 
@@ -916,7 +916,7 @@ function vogel{T<:Integer,U<:String}(tp::TProblem{T,U})
         if a.dim == 2 # swap to make a supply and b demand
             a, b = b, a
         end
-        expend = min(a.quant, b.quant)        
+        expend = min(a.quant, b.quant)
         sol[a.i, b.i] = expend
         a.quant -= expend
         b.quant -= expend
@@ -1005,11 +1005,11 @@ val results = Array(nRows) { IntArray(nCols) }
 fun nextCell(): IntArray {
     val res1 = maxPenalty(nRows, nCols, true)
     val res2 = maxPenalty(nCols, nRows, false)
-    if (res1[3] == res2[3]) 
+    if (res1[3] == res2[3])
         return if (res1[2] < res2[2]) res1 else res2
     return if (res1[3] > res2[3]) res2 else res1
 }
- 
+
 fun diff(j: Int, len: Int, isRow: Boolean): IntArray {
     var min1 = Int.MAX_VALUE
     var min2 = min1
@@ -1047,7 +1047,7 @@ fun maxPenalty(len1: Int, len2: Int, isRow: Boolean): IntArray {
     return if (isRow) intArrayOf(pm, pc, mc, md) else
                       intArrayOf(pc, pm, mc, md)
 }
-         
+
 fun main(args: Array<String>) {
     var supplyLeft = supply.sum()
     var totalCost = 0
@@ -1166,10 +1166,10 @@ say "\nTotal cost: $total";
 
 ```txt
 	A	B	C	D	E
-W	-	-	50	-	-	
-X	30	-	20	-	10	
-Y	-	20	-	30	-	
-Z	-	-	-	-	50	
+W	-	-	50	-	-
+X	30	-	20	-	10
+Y	-	20	-	30	-
+Z	-	-	-	-	50
 
 Total cost: 3100
 ```
@@ -1209,7 +1209,7 @@ integer min1 = #3FFFFFFF, min2 = min1, min_p = -1
     end for
     return {min2-min1,min1,min_p,j}
 end function
- 
+
 function max_penalty(integer len1, len2, bool is_row)
 integer pc = -1, pm = -1, mc = -1, md = -#3FFFFFFF
     for i=1 to len1 do
@@ -1222,17 +1222,17 @@ integer pc = -1, pm = -1, mc = -1, md = -#3FFFFFFF
     end for
     return {md,mc}&iff(is_row?{pm,pc}:{pc,pm})
 end function
- 
+
 integer supply_left = sum(supply),
         total_cost = 0
 
 sequence results = repeat(repeat(0,length(demand)),length(supply))
- 
+
 while supply_left>0 do
     sequence cell = min(max_penalty(length(supply), length(demand), true),
                         max_penalty(length(demand), length(supply), false))
     integer {{},{},r,c} = cell,
-            q = min(demand[c], supply[r]) 
+            q = min(demand[c], supply[r])
     demand[c] -= q
     col_done[c] = (demand[c]==0)
     supply[r] -= q
@@ -1241,7 +1241,7 @@ while supply_left>0 do
     supply_left -= q
     total_cost += q * costs[r, c]
 end while
- 
+
 printf(1,"     A   B   C   D   E\n")
 for i=1 to length(supply) do
     printf(1,"%c ",'Z'-length(supply)+i)
@@ -1364,10 +1364,10 @@ print "\n\nTotal Cost = ", cost
 
 ```txt
     A   B   C   D   E
-W           50          
-X   30      20      10  
-Y       20      30      
-Z                   50  
+W           50
+X   30      20      10
+Y       20      30
+Z                   50
 
 
 Total Cost =  3100
@@ -1401,11 +1401,11 @@ somehow at the same total cost!
     (for/fold ((rv (?: x-v g/x (hash-remove g/x x))))
       (#:when (zero? y-v) ((k n) (in-hash x#--)) #:unless (zero? n))
       (hash-update rv k (curry remove y))))
-  
+
   (define (cheapest-candidate/tie-break candidates)
     (define cand-max3 (3rd (argmax 3rd candidates)))
     (argmin 2nd (for/list ((cand candidates) #:when (= (3rd cand) cand-max3)) cand)))
-  
+
   (let vam-loop
     ((res (hash))
      (supply all-supply)
@@ -1432,7 +1432,7 @@ somehow at the same total cost!
                     [(list _ g#x.1 _ ...) (list x z (- (hash-ref2 costs g#x.1 x) z))]
                     [(list _) (list x z z)]))))
            (cheapest-candidate/tie-break candidates)))
-       
+
        (define S
          (let ((candidates
                 (for/list ((x (in-hash-keys supply)))
@@ -1442,20 +1442,20 @@ somehow at the same total cost!
                     [(list _ g#x.1 _ ...) (list x z (- (hash-ref2 costs x g#x.1) z))]
                     [(list _) (list x z z)]))))
            (cheapest-candidate/tie-break candidates)))
-       
+
        (define-values (d s)
          (let ((t>f? (if (= (3rd D) (3rd S)) (> (2nd S) (2nd D)) (> (3rd D) (3rd S)))))
            (if t>f? (values (1st D) (1st (hash-ref g/demand (1st D))))
                (values (1st (hash-ref g/supply (1st S))) (1st S)))))
-       
+
        (define v (min (hash-ref supply s) (hash-ref demand d)))
-       
+
        (define d-v (- (hash-ref demand d) v))
        (define s-v (- (hash-ref supply s) v))
-       
+
        (define demand-- (?: d-v (hash-set demand d d-v) (hash-remove demand d)))
        (define supply-- (?: s-v (hash-set supply s s-v) (hash-remove supply s)))
-       
+
        (vam-loop
         (hash-update res s (λ (h) (hash-update h d (λ (x) (+ v x)) 0)) hash)
         supply-- (reduce-g/x g/supply supply-- s s-v d d-v)
@@ -1484,9 +1484,9 @@ somehow at the same total cost!
 (let ((COSTS (hash 'W (hash 'A 16 'B 16 'C 13 'D 22 'E 17)
                    'X (hash 'A 14 'B 14 'C 13 'D 19 'E 15)
                    'Y (hash 'A 19 'B 19 'C 20 'D 23 'E 50)
-                   'Z (hash 'A 50 'B 12 'C 50 'D 15 'E 11)))      
+                   'Z (hash 'A 50 'B 12 'C 50 'D 15 'E 11)))
       (DEMAND (hash 'A 30 'B 20 'C 70 'D 30 'E 60))
-      (SUPPLY (hash 'W 50 'X 60 'Y 50 'Z 50)))  
+      (SUPPLY (hash 'W 50 'X 60 'Y 50 'Z 50)))
   (displayln (describe-VAM-solution COSTS DEMAND (VAM COSTS SUPPLY DEMAND))))
 ```
 
@@ -1529,14 +1529,14 @@ res = {}; COSTS.each_key{|k| res[k] = Hash.new(0)}
 g = {}; supply.each_key{|x| g[x] = COSTS[x].keys.sort_by{|g| COSTS[x][g]}}
         demand.each_key{|x| g[x] = COSTS.keys.sort_by{|g| COSTS[g][x]}}
 
-until g.empty? 
+until g.empty?
   d = demand.collect{|x,y| [x, z = COSTS[g[x][0]][x], g[x][1] ? COSTS[g[x][1]][x] - z : z]}
   dmax = d.max_by{|n| n[2]}
   d = d.select{|x| x[2] == dmax[2]}.min_by{|n| n[1]}
   s = supply.collect{|x,y| [x, z = COSTS[x][g[x][0]], g[x][1] ? COSTS[x][g[x][1]] - z : z]}
   dmax = s.max_by{|n| n[2]}
   s = s.select{|x| x[2] == dmax[2]}.min_by{|n| n[1]}
-  t,f = d[2]==s[2] ? [s[1], d[1]] : [d[2],s[2]] 
+  t,f = d[2]==s[2] ? [s[1], d[1]] : [d[2],s[2]]
   d,s = t > f ? [d[0],g[d[0]][0]] : [g[s[0]][0],s[0]]
   v = [supply[s], demand[d]].min
   res[s][d] += v
@@ -1698,10 +1698,10 @@ say "\n\nTotal Cost = #{cost}"
 ```txt
 
 	A	B	C	D	E
-W			50			
-X	30		20		10	
-Y		20		30		
-Z					50	
+W			50
+X	30		20		10
+Y		20		30
+Z					50
 
 
 Total Cost = 3100
@@ -1852,9 +1852,9 @@ puts "\nTotal Cost = $cost"
 ```txt
 
         A       B       C       D       E
-W                       50              
+W                       50
 X       10      20      20              10
-Y       20                      30      
+Y       20                      30
 Z                                       50
 
 Total Cost = 3100
@@ -1870,7 +1870,7 @@ Total Cost = 3100
 ```Yabasic
 
 N_ROWS = 4 : N_COLS = 5
- 
+
 dim supply(N_ROWS)
 dim demand(N_COLS)
 
@@ -1907,12 +1907,12 @@ next i
 
 dim row_done(N_ROWS)
 dim col_done(N_COLS)
- 
+
 sub diff(j, leng, is_row, res())
     local i, c, min1, min2, min_p, test
-    
+
     min1 = 10e300 : min2 = min1 : min_p = -1
-    
+
     for i = 0 to leng - 1
     	if is_row then
     		test = col_done(i)
@@ -1937,12 +1937,12 @@ sub diff(j, leng, is_row, res())
     res(1) = min1
     res(2) = min_p
 end sub
- 
+
 sub max_penalty(len1, len2, is_row, res())
     local i, pc, pm, mc, md, res2(3), test
-    
+
     pc = -1 : pm = -1 : mc = -1 : md = -10e300
-    
+
     for i = 0 to len1 - 1
         if is_row then
     		test = row_done(i)
@@ -1958,7 +1958,7 @@ sub max_penalty(len1, len2, is_row, res())
             pc = res2(2)  //* pos of min cost */
         end if
     next i
- 
+
     if is_row then
         res(0) = pm : res(1) = pc
     else
@@ -1966,13 +1966,13 @@ sub max_penalty(len1, len2, is_row, res())
     end if
     res(2) = mc : res(3) = md
 end sub
- 
+
 sub next_cell(res())
     local i, res1(4), res2(4)
-    
+
     max_penalty(N_ROWS, N_COLS, TRUE, res1())
     max_penalty(N_COLS, N_ROWS, FALSE, res2())
- 
+
     if res1(3) = res2(3) then
         if res1(2) < res2(2) then
             for i = 0 to 3 : res(i) = res1(i) : next i
@@ -1987,18 +1987,18 @@ sub next_cell(res())
         for i = 0 to 3 : res(i) = res1(i) : next i
     end if
 end sub
- 
+
 supply_left = 0 : total_cost = 0 : dim cell(4)
 
 dim results(N_ROWS, N_COLS)
- 
+
 for i = 0 to N_ROWS - 1 : supply_left = supply_left + supply(i) : next i
 
 while(supply_left > 0)
     next_cell(cell())
     r = cell(0)
     c = cell(1)
-    q = min(demand(c), supply(r)) 
+    q = min(demand(c), supply(r))
     demand(c) = demand(c) - q
     if not demand(c) col_done(c) = TRUE
     supply(r) = supply(r) - q
@@ -2007,7 +2007,7 @@ while(supply_left > 0)
     supply_left = supply_left - q
     total_cost = total_cost + q * costs(r, c)
 wend
- 
+
 print "    A   B   C   D   E\n"
 for i = 0 to N_ROWS - 1
     print chr$(asc("W") + i), " ";
@@ -2059,9 +2059,9 @@ fcn vogel(costs,supply,demand){
    // a Dictionary can be created via a list of (k,v) pairs
    res:= Dictionary(costs.pump(List,fcn([(k,_)]){ return(k,D()) }));
    g  := Dictionary(); // cross index costs and make writable
-   supply.pump(Void,'wrap([(k,_)]){ g[k] = 
+   supply.pump(Void,'wrap([(k,_)]){ g[k] =
       costs[k].keys.sort('wrap(a,b){ costs[k][a]<costs[k][b] }).copy() });
-   demand.pump(Void,'wrap([(k,_)]){ g[k] = 
+   demand.pump(Void,'wrap([(k,_)]){ g[k] =
       costs.keys.sort('wrap(a,b){ costs[a][k]<costs[b][k] }).copy() });
 
    while(g){
@@ -2092,10 +2092,10 @@ fcn vogel(costs,supply,demand){
 ```txt
 
 	A	B	C	D	E
-W			50			
-X	10	20	20		10	
-Y	20			30		
-Z					50	
+W			50
+X	10	20	20		10
+Y	20			30
+Z					50
 
 Total Cost = 3100
 

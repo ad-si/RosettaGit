@@ -22,7 +22,7 @@ Using this method, insert an element C into a list comprised of elements A->B, f
 
 ## 360 Assembly
 
-The program uses one ASSIST macro (XPRNT) to keep the code as short as possible. 
+The program uses one ASSIST macro (XPRNT) to keep the code as short as possible.
 
 ```360asm
 *        Singly-linked list - Insert after  01/02/2017
@@ -82,7 +82,7 @@ ENDLIST  DROP   R11
          FREEMAIN A=A,LV=12        free A
          FREEMAIN A=B,LV=12        free B
          FREEMAIN A=C,LV=12        free C
-RETURN   L      R13,4(0,R13)       epilog 
+RETURN   L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    " restore
          XR     R15,R15            " rc=0
          BR     R14                exit
@@ -97,13 +97,13 @@ INSERTAF CNOP   0,4
          L      R2,0(R1)           @A
          L      R3,4(R1)           @B
          USING  NODE,R2            ->A
-         L      R4,NEXT            @C          
+         L      R4,NEXT            @C
          DROP   R2
-         USING  NODE,R3            ->B            
-         ST     R4,NEXT            B.NEXT=@C         
+         USING  NODE,R3            ->B
+         ST     R4,NEXT            B.NEXT=@C
          DROP   R3
          USING  NODE,R2            ->A
-         ST     R3,NEXT            A.NEXT=@B          
+         ST     R3,NEXT            A.NEXT=@B
          DROP   R2
          BR     R14                return
          LTORG                     all literals
@@ -161,7 +161,7 @@ package
 	{
 		public var data:Object = null;
 		public var link:Node = null;
-		
+
 		public function insert(node:Node):void
 		{
 			node.link = link;
@@ -193,7 +193,7 @@ We must create a context clause making the predefined generic procedure Ada.Unch
 with Ada.Unchecked_Deallocation;
 -- Define the link type
 procedure Singly_Linked is
-   
+
    type Link;
    type Link_Access is access Link;
    type Link is record
@@ -215,7 +215,7 @@ procedure Singly_Linked is
    -- Create the link elements
    A : Link_Access := new Link'(1, null);
    B : Link_Access := new Link'(2, null);
-   C : Link_Access := new Link'(3, null);  
+   C : Link_Access := new Link'(3, null);
 -- Execute the program
 begin
    Insert_Append(A, B);
@@ -229,8 +229,8 @@ end Singly_Linked;
 
 ## ALGOL 68
 
-Linked lists are not built into ALGOL 68 ''per se'', nor any available 
-standard library.  However Linked lists are presented in standard text 
+Linked lists are not built into ALGOL 68 ''per se'', nor any available
+standard library.  However Linked lists are presented in standard text
 book examples.  Or can be manually constructed, eg:
 
 ```algol68
@@ -263,7 +263,7 @@ print((newline))
 
 Output:
 ```txt
-Big fjords vex VERY quick waltz nymph 
+Big fjords vex VERY quick waltz nymph
 ```
 
 
@@ -313,9 +313,9 @@ Big fjords vex VERY quick waltz nymph
 /* structure linkedlist*/
     .struct  0
 llist_next:                               @ next element
-    .struct  llist_next + 4 
+    .struct  llist_next + 4
 llist_value:                              @ element value
-    .struct  llist_value + 4 
+    .struct  llist_value + 4
 llist_fin:
 /* Initialized data */
 .data
@@ -331,12 +331,12 @@ sValue:                  .space 12,' '
                          .asciz "\n"
 
 /* UnInitialized data */
-.bss 
-lList1:              .skip llist_fin * NBELEMENTS    @ list memory place 
+.bss
+lList1:              .skip llist_fin * NBELEMENTS    @ list memory place
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
     ldr r0,iAdrlList1
     mov r1,#0                           @ list init
     str r1,[r0,#llist_next]
@@ -377,22 +377,22 @@ iAdrsNumElement:           .int sNumElement
 iAdrsValue:                .int sValue
 
 /******************************************************************/
-/*     insert element at end of list                          */ 
+/*     insert element at end of list                          */
 /******************************************************************/
 /* r0 contains the address of the list */
 /* r1 contains the value of element  */
 /* r0 returns address of element or - 1 if error */
 insertElement:
-    push {r1-r3,lr}                       @ save  registers 
+    push {r1-r3,lr}                       @ save  registers
     mov r2,#llist_fin * NBELEMENTS
     add r2,r0                             @ compute address end list
-1:                                        @ start loop 
+1:                                        @ start loop
     ldr r3,[r0,#llist_next]               @ load next pointer
     cmp r3,#0                             @ = zero
     movne r0,r3                           @ no -> loop with pointer
     bne 1b
     add r3,r0,#llist_fin                  @ yes -> compute next free address
-    cmp r3,r2                             @ > list end 
+    cmp r3,r2                             @ > list end
     movge r0,#-1                          @ yes -> error
     bge 100f
     str r3,[r0,#llist_next]               @ store next address in current pointer
@@ -404,21 +404,21 @@ insertElement:
     pop {r1-r3,lr}                        @ restaur registers
     bx lr                                 @ return
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -430,7 +430,7 @@ conversion10S:
     push {r0-r4,lr}       @ save registers
     mov r2,r1             @ debut zone stockage
     mov r3,#'+'           @ par defaut le signe est +
-    cmp r0,#0             @ negative number ? 
+    cmp r0,#0             @ negative number ?
     movlt r3,#'-'         @ yes
     mvnlt r0,r0           @ number inversion
     addlt r0,#1
@@ -441,9 +441,9 @@ conversion10S:
     strb r1,[r2,r4]       @ store digit on area
     sub r4,r4,#1          @ previous position
     cmp r0,#0             @ stop if quotient = 0
-    bne 1b	
+    bne 1b
 
-    strb r3,[r2,r4]       @ store signe 
+    strb r3,[r2,r4]       @ store signe
     subs r4,r4,#1         @ previous position
     blt  100f             @ if r4 < 0 -> end
 
@@ -452,9 +452,9 @@ conversion10S:
     strb r1,[r2,r4]       @store byte space
     subs r4,r4,#1         @ previous position
     bge 2b                @ loop if r4 > 0
-100: 
+100:
     pop {r0-r4,lr}        @ restaur registers
-    bx lr  
+    bx lr
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
@@ -467,12 +467,12 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 ```
@@ -490,7 +490,7 @@ b_next = 0
 c = 3
 insert_after("c", "a")
 Listvars
-msgbox 
+msgbox
 return
 
 insert_after(new, old)
@@ -524,15 +524,15 @@ Return
 ```bbcbasic
       DIM node{pNext%, iData%}
       DIM a{} = node{}, b{} = node{}, c{} = node{}
-      
+
       a.pNext% = b{}
       a.iData% = 123
       b.iData% = 789
       c.iData% = 456
-      
+
       PROCinsert(a{}, c{})
       END
-      
+
       DEF PROCinsert(here{}, new{})
       new.pNext% = here.pNext%
       here.pNext% = new{}
@@ -602,8 +602,10 @@ Remember to free the memory once we're done.
 This uses the generic version of the link node. Of course, normally this would be just some implementation detail inside some list class, not to be used directly by client code.
 
 
-```cpp>template<typename T
- void insert_after(link<T>* list_node, link<T>* new_node)
+```cpp
+template<typename T>
+
+void insert_after(link<T>* list_node, link<T>* new_node)
 {
   new_node->next = list_node->next;
   list_node->next = new_node;
@@ -615,7 +617,8 @@ Here's the example code using that method:
 
 The following code creates the links. As numeric values I've just taken the corresponding character values.
 
-```cpp>link<int
+```cpp
+link<int>
 * a = new link<int>('A', new link<int>('B'));
 link<int>* c = new link<int>('C');
 ```
@@ -737,7 +740,7 @@ Lastly, here is a recursive version. Case 3 could be optimized by only doing the
 is not present. The default comparison test function is EQL. This
 function destroys the original list and returns the new list."
   (cond
-    ;; case 1: list is empty: just return list of new 
+    ;; case 1: list is empty: just return list of new
     ((endp list)
      (list new))
     ;; case 2: existing element is first element of list
@@ -800,7 +803,7 @@ Type
                  Next  : pOneWayList ;
                end;
 
-// I will illustrate a simple function that will return a pointer to the 
+// I will illustrate a simple function that will return a pointer to the
 // new node or it will return NIL.  In this example I will always insert
 // right, to keep the code clear.  Since I am using a function all operations
 // for the new node will be conducted on the functions result.  This seems
@@ -813,7 +816,7 @@ begin
     // example to just the code required.  in this case it is important to use
     // a try/except block.  In any OS that is multi-threaded and has many apps
     // running at the same time, you cannot rely on a call to check memory available
-    // and then attempting to allocate.  In the time between the two, another 
+    // and then attempting to allocate.  In the time between the two, another
     // program may have grabbed the memory you were trying to get.
 
     Try
@@ -882,16 +885,16 @@ Lists are mutable, and we use the destructive - and dangerous - set-cdr! operato
 
 ```lisp
 
-(define (insert-after lst target item) 
-    (when (null? lst) (error "cannot insert in" null)) 
-    (let [(sub-list (member target lst))] 
+(define (insert-after lst target item)
+    (when (null? lst) (error "cannot insert in" null))
+    (let [(sub-list (member target lst))]
         (if sub-list (set-cdr! sub-list (cons item (cdr sub-list))) ; make chirurgy if found
         (nconc lst item)))) ; else append item
 
 (define L '(a b))
 (insert-after L 'a 'c)
     L  → (a c b)
-(insert-after L 'x 'y) 
+(insert-after L 'x 'y)
     L → (a c b y)
 
 ```
@@ -939,7 +942,7 @@ task() ->
     C = new( c ),
     insert( C, A, A ),
     foreach( fun(Data) -> io:fwrite("~p~n", [Data]) end, A ).
-  
+
 
 
 loop( Data, Next ) ->
@@ -979,7 +982,7 @@ loop_foreach( Fun, Next ) -> Next ! {foreach, Fun}.
 4> singly_linked_list:task().
 a
 c
-b  
+b
 
 ```
 
@@ -1114,7 +1117,7 @@ elemental subroutine addAfter(nodeBefore,value)
    type (node), intent(inout) :: nodeBefore
    real, intent(in)           :: value
    type (node), pointer       :: newNode
-   
+
    allocate(newNode)
    newNode%data = value
    newNode%next => nodeBefore%next
@@ -1295,7 +1298,7 @@ B=:1  NB. reference into list
 insertAfter=: monad define
    'localListName localListNode localNewValue'=. y
    localListValue=: ".localListName
-   localOldLinkRef=: <localListNode,0 
+   localOldLinkRef=: <localListNode,0
    localNewLinkRef=: #localListValue
    localNewNode=: (localOldLinkRef { localListValue), localNewValue
    (localListName)=: (localNewLinkRef localOldLinkRef} localListValue), localNewNode
@@ -1338,7 +1341,7 @@ LinkedList.prototype.insertAfter = function(searchValue, nodeToInsert) {
         nodeToInsert.next(this.next());
         this.next(nodeToInsert);
     }
-    else if (this.next() == null) 
+    else if (this.next() == null)
         throw new Error(0, "value '" + searchValue + "' not found in linked list.")
     else
         this.next().insertAfter(searchValue, nodeToInsert);
@@ -1462,7 +1465,7 @@ TYPE
     Next: Link;
     Data: INTEGER
   END;
-  
+
   PROCEDURE InsertAppend(anchor, next: Link) =
   BEGIN
     IF anchor # NIL AND next # NIL THEN
@@ -1470,7 +1473,7 @@ TYPE
       anchor.Next := next
     END
   END InsertAppend;
-  
+
 VAR
   a: Link := NEW(Link, Next := NIL, Data := 1);
   b: Link := NEW(Link, Next := NIL, Data := 2);
@@ -1561,7 +1564,7 @@ testLink println
 
 ## ooRexx
 
-See [[Singly-linked_list/Element_definition#ooRexx|Single-linked list/Element definition]] for full class definition. 
+See [[Singly-linked_list/Element_definition#ooRexx|Single-linked list/Element definition]] for full class definition.
 
 ```ooRexx
 
@@ -1860,9 +1863,9 @@ Procedure insertAfter(Value, *node.MyData = #Null)
     If *node
       *newNode\next = *node\next
       *node\next = *newNode
-    EndIf 
+    EndIf
     *newNode\Value = Value
-  EndIf 
+  EndIf
   ProcedureReturn *newNode ;return pointer to newnode
 EndProcedure
 
@@ -2050,7 +2053,7 @@ list.insert_after(:a, :c)
 ## Rust
 
 
-Extending [[Singly-Linked List (element)#Rust]]. Please see that page for the Linked List struct declarations. 
+Extending [[Singly-Linked List (element)#Rust]]. Please see that page for the Linked List struct declarations.
 
 ```rust>impl<T> List<T
  {
@@ -2165,7 +2168,7 @@ No error checking is included.
 proc insertIntoList {existingList predecessor newElement} {
   upvar $existingList exList
   set exList [linsert $exList [expr [lsearch -exact $exList $predecessor] + 1] $newElement]
-}  
+}
 
 set list {A B}
 insertIntoList list A C
@@ -2234,7 +2237,7 @@ a:=L("a","b","c"); a.insert(a.find("b"),"foo") //-->L("a","foo","b","c")
 Create a new list:
 
 ```zkl
-a:=ROList("a","b","c"); 
+a:=ROList("a","b","c");
 n:=a.index("b"); a[0,n].append("foo").extend(a[n,*]) //-->ROList("a","foo","b","c")
 ```
 

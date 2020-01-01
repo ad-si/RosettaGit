@@ -12,9 +12,9 @@ tags = []
 
 {{task}}
 
-A tree structure   (i.e. a rooted, connected acyclic graph)   is often used in programming.  
+A tree structure   (i.e. a rooted, connected acyclic graph)   is often used in programming.
 
-It's often helpful to visually examine such a structure. 
+It's often helpful to visually examine such a structure.
 
 There are many ways to represent trees to a reader, such as:
 :::*   indented text   (à la unix <code> tree </code> command)
@@ -24,9 +24,9 @@ There are many ways to represent trees to a reader, such as:
 :::*   etc.
 
 ;Task:
-Write a program to produce a visual representation of some tree.  
+Write a program to produce a visual representation of some tree.
 
-The content of the tree doesn't matter, nor does the output format, the only requirement being that the output is human friendly. 
+The content of the tree doesn't matter, nor does the output format, the only requirement being that the output is human friendly.
 
 Make do with the vague term "friendly" the best you can.
 
@@ -65,19 +65,19 @@ print(tree.tree_indent().join("\n"))
 Prints a tree of the current directory.
 
 ```Ada
-with Ada.Text_IO, Ada.Directories; 
+with Ada.Text_IO, Ada.Directories;
 
 procedure Directory_Tree is
-   
+
    procedure Print_Tree(Current: String; Indention: Natural := 0) is
-      
+
       function Spaces(N: Natural) return String is
 	 (if N= 0 then "" else " " & Spaces(N-1));
-      
+
       use Ada.Directories;
       Search: Search_Type;
       Found: Directory_Entry_Type;
-      
+
    begin
       Start_Search(Search, Current, "");
       while More_Entries(Search) loop
@@ -88,16 +88,16 @@ procedure Directory_Tree is
 	 begin
 	    if Name(Name'First) /= '.' then
                -- skip all files who's names start with ".", namely "." and ".."
-	       Ada.Text_IO.Put_Line(Spaces(2*Indention) & Simple_Name(Found) 
+	       Ada.Text_IO.Put_Line(Spaces(2*Indention) & Simple_Name(Found)
 		  & (if Dir then " (dir)" else ""));
 	       if Dir then
 		  Print_Tree(Full_Name(Found), Indention + 1);
 	       end if;
 	    end if;
-	 end;	  
+	 end;
      end loop;
    end Print_Tree;
-   
+
 begin
    Print_Tree(Ada.Directories.Current_Directory);
 end Directory_Tree;
@@ -179,7 +179,7 @@ OP  TOHTML = ( REF NODE tree )STRING:
             INT mid child     = ( child count + 1 ) OVER 2;
             child   := child OF tree;
             result +:= tr + nl;
-            WHILE child ISNT nil node 
+            WHILE child ISNT nil node
             DO
                 result +:= td + ">" + nl
                          + IF CHILDCOUNT child < 1 THEN nbsp + value OF child + nbsp ELSE TOHTML child FI
@@ -318,13 +318,13 @@ Using UTF8 box-drawing characters in a monospaced font, with options for (1.) co
 -- box-drawing characters, with options for compacting
 -- and pruning.
 
---               ┌── Gamma 
---       ┌─ Beta ┼── Delta 
---       │       └ Epsilon 
--- Alpha ┼─ Zeta ───── Eta 
---       │       ┌─── Iota 
---       └ Theta ┼── Kappa 
---               └─ Lambda 
+--               ┌── Gamma
+--       ┌─ Beta ┼── Delta
+--       │       └ Epsilon
+-- Alpha ┼─ Zeta ───── Eta
+--       │       ┌─── Iota
+--       └ Theta ┼── Kappa
+--               └─ Lambda
 
 -- TESTS --------------------------------------------------
 on run
@@ -335,7 +335,7 @@ on run
             Node(3, ¬
                 {Node(6, ¬
                     {Node(8, {}), Node(9, {})})})})
-    
+
     set tree2 to Node("Alpha", ¬
         {Node("Beta", ¬
             {Node("Gamma", {}), ¬
@@ -345,7 +345,7 @@ on run
             Node("Theta", ¬
                 {Node("Iota", {}), Node("Kappa", {}), ¬
                     Node("Lambda", {})})})
-    
+
     set strTrees to unlines({"(NB – view in mono-spaced font)\n\n", ¬
         "Compacted (not all parents vertically centered):\n", ¬
         drawTree2(true, false, tree), ¬
@@ -374,7 +374,7 @@ on drawTree2(blnCompressed, blnPruned, tree)
         end |λ|
     end script
     set measuredTree to |λ|(tree) of measured
-    
+
     script levelMax
         on |λ|(a, level)
             a & maximum(map(my fst, level))
@@ -382,7 +382,7 @@ on drawTree2(blnCompressed, blnPruned, tree)
     end script
     set levelWidths to foldl(levelMax, {}, ¬
         init(levels(measuredTree)))
-    
+
     -- Lefts, Mid, Rights
     script lmrFromStrings
         on |λ|(xs)
@@ -391,7 +391,7 @@ on drawTree2(blnCompressed, blnPruned, tree)
             Tuple3(ls, item 1 of rs, rest of rs)
         end |λ|
     end script
-    
+
     script stringsFromLMR
         on |λ|(lmr)
             script add
@@ -402,7 +402,7 @@ on drawTree2(blnCompressed, blnPruned, tree)
             foldl(add, {}, items 2 thru -2 of (lmr as list))
         end |λ|
     end script
-    
+
     script fghOverLMR
         on |λ|(f, g, h)
             script
@@ -414,7 +414,7 @@ on drawTree2(blnCompressed, blnPruned, tree)
             end script
         end |λ|
     end script
-    
+
     script lmrBuild
         on leftPad(n)
             script
@@ -423,7 +423,7 @@ on drawTree2(blnCompressed, blnPruned, tree)
                 end |λ|
             end script
         end leftPad
-        
+
         -- lmrBuild main
         on |λ|(w, f)
             script
@@ -434,11 +434,11 @@ on drawTree2(blnCompressed, blnPruned, tree)
                     set {nChars, x} to items 2 thru -2 of ¬
                         ((root of wsTree) as list)
                     set _x to replicateString(w - nChars, "─") & x
-                    
+
                     -- LEAF NODE ------------------------------------
                     if 0 = lng then
                         Tuple3({}, _x, {})
-                        
+
                     else if 1 = lng then
                         -- NODE WITH SINGLE CHILD ---------------------
                         set indented to leftPad(1 + w)
@@ -460,14 +460,14 @@ on drawTree2(blnCompressed, blnPruned, tree)
                                     end |λ|
                                 end script
                             end cFix
-                            
+
                             on |λ|(l, m, r)
                                 compose(stringsFromLMR, ¬
                                     |λ|(cFix(l), cFix(m), cFix(r)) of ¬
                                     fghOverLMR)
                             end |λ|
                         end script
-                        
+
                         script linked
                             on |λ|(s)
                                 set c to text 1 of s
@@ -483,7 +483,7 @@ on drawTree2(blnCompressed, blnPruned, tree)
                                 end if
                             end |λ|
                         end script
-                        
+
                         set indented to leftPad(w)
                         set lmrs to map(f, xs)
                         if blnCompressed then
@@ -491,7 +491,7 @@ on drawTree2(blnCompressed, blnPruned, tree)
                         else
                             set sep to {"│"}
                         end if
-                        
+
                         tell lmrFromStrings
                             set tupleLMR to |λ|(intercalate(sep, ¬
                                 {|λ|(item 1 of lmrs) of ¬
@@ -501,7 +501,7 @@ on drawTree2(blnCompressed, blnPruned, tree)
                                 {|λ|(item -1 of lmrs) of ¬
                                     (|λ|("│", "└", " ") of treeFix)}))
                         end tell
-                        
+
                         |λ|(tupleLMR) of ¬
                             (|λ|(indented, linked, indented) of fghOverLMR)
                     end if
@@ -509,7 +509,7 @@ on drawTree2(blnCompressed, blnPruned, tree)
             end script
         end |λ|
     end script
-    
+
     set treeLines to |λ|(|λ|(measuredTree) of ¬
         foldr(lmrBuild, 0, levelWidths)) of stringsFromLMR
     if blnPruned then
@@ -549,8 +549,8 @@ on Tuple3(x, y, z)
     {type:"Tuple3", |1|:x, |2|:y, |3|:z, length:3}
 end Tuple3
 
--- Applied to a predicate and a list, 
--- |any| returns true if at least one element of the 
+-- Applied to a predicate and a list,
+-- |any| returns true if at least one element of the
 -- list satisfies the predicate.
 -- any :: (a -> Bool) -> [a] -> Bool
 on any(f, xs)
@@ -675,7 +675,7 @@ end identity
 on init(xs)
     set blnString to class of xs = string
     set lng to length of xs
-    
+
     if lng > 1 then
         if blnString then
             text 1 thru -2 of xs
@@ -758,7 +758,7 @@ on levels(tree)
             concatMap(result, xs)
         end |λ|
     end script
-    
+
     script roots
         on |λ|(xs)
             script
@@ -769,7 +769,7 @@ on levels(tree)
             map(result, xs)
         end |λ|
     end script
-    
+
     map(roots, iterateUntil(my isNull, nextLayer, {tree}))
 end levels
 
@@ -803,7 +803,7 @@ end maximum
 
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
-    -- 2nd class handler function lifted into 1st class script wrapper. 
+    -- 2nd class handler function lifted into 1st class script wrapper.
     if script is class of f then
         f
     else
@@ -818,7 +818,7 @@ on replicateString(n, s)
     set out to ""
     if n < 1 then return out
     set dbl to s
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -895,36 +895,36 @@ end unlines
 
 Compacted (not all parents vertically centered):
 
-       ┌ 4 ─ 7 
-   ┌ 2 ┴ 5 
- 1 ┤       ┌ 8 
-   └ 3 ─ 6 ┴ 9 
+       ┌ 4 ─ 7
+   ┌ 2 ┴ 5
+ 1 ┤       ┌ 8
+   └ 3 ─ 6 ┴ 9
 
 Fully expanded and vertically centered:
 
-               ┌── Gamma 
+               ┌── Gamma
                │
-       ┌─ Beta ┼── Delta 
+       ┌─ Beta ┼── Delta
        │       │
-       │       └ Epsilon 
+       │       └ Epsilon
        │
- Alpha ┼─ Zeta ───── Eta 
+ Alpha ┼─ Zeta ───── Eta
        │
-       │       ┌─── Iota 
+       │       ┌─── Iota
        │       │
-       └ Theta ┼── Kappa 
+       └ Theta ┼── Kappa
                │
-               └─ Lambda 
+               └─ Lambda
 
 Vertically centered, with nodeless lines pruned out:
 
-               ┌── Gamma 
-       ┌─ Beta ┼── Delta 
-       │       └ Epsilon 
- Alpha ┼─ Zeta ───── Eta 
-       │       ┌─── Iota 
-       └ Theta ┼── Kappa 
-               └─ Lambda 
+               ┌── Gamma
+       ┌─ Beta ┼── Delta
+       │       └ Epsilon
+ Alpha ┼─ Zeta ───── Eta
+       │       ┌─── Iota
+       └ Theta ┼── Kappa
+               └─ Lambda
 ```
 
 
@@ -948,7 +948,7 @@ This creates a native Windows Tree View control:
 ```bbcbasic
       INSTALL @lib$+"WINLIB5"
       ON ERROR SYS "MessageBox", @hwnd%, REPORT$, 0, 0 : QUIT
-      
+
       REM!WC Windows constants:
       TVI_SORT = -65533
       TVIF_TEXT = 1
@@ -956,7 +956,7 @@ This creates a native Windows Tree View control:
       TVS_HASBUTTONS = 1
       TVS_HASLINES = 2
       TVS_LINESATROOT = 4
-      
+
       REM. TV_INSERTSTRUCT
       DIM tvi{hParent%,       \
       \       hInsertAfter%,  \
@@ -971,7 +971,7 @@ This creates a native Windows Tree View control:
       \       cChildren%,     \
       \       lParam%         \
       \      }
-      
+
       SYS "InitCommonControls"
       hTree% = FN_createwindow("SysTreeView32", "", 0, 0, @vdu.tr%, @vdu.tb%, 0, \
       \                        TVS_HASLINES OR TVS_HASBUTTONS OR TVS_LINESATROOT, 0)
@@ -982,21 +982,21 @@ This creates a native Windows Tree View control:
       hchild12% = FNinsertnode(hchild1%, "Grandchild 2")
       hchild21% = FNinsertnode(hchild2%, "Grandchild 3")
       hchild22% = FNinsertnode(hchild2%, "Grandchild 4")
-      
+
       REPEAT
         WAIT 1
       UNTIL FALSE
       END
-      
+
       DEF FNinsertnode(hparent%, text$)
       LOCAL hnode%
       text$ += CHR$0
-      
+
       tvi.hParent% = hparent%
       tvi.hInsertAfter% = TVI_SORT
       tvi.mask% = TVIF_TEXT
       tvi.pszText% = !^text$
-      
+
       SYS "SendMessage", hTree%, TVM_INSERTITEM, 0, tvi{} TO hnode%
       IF hnode% = 0 ERROR 100, "TVM_INSERTITEM failed"
       SYS "InvalidateRect", hTree%, 0, 0
@@ -1010,8 +1010,8 @@ This creates a native Windows Tree View control:
 
 Print a simple tree to standard output:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct stem_t *stem;
@@ -1160,35 +1160,35 @@ int main(int c, char**v)
 ```lisp
 CL-USER> (visualize '(a b c ((d (e ((() ()))) f)) (g)))
 A
-|   
+|
 B
-|   
+|
 C
-|   
+|
 +---+
-|   |   
+|   |
 |   +---+
-|       |   
+|       |
 |       D
-|       |   
+|       |
 |       +---+
-|       |   |   
+|       |   |
 |       |   E
-|       |   |   
+|       |   |
 |       |   +---+
-|       |       |   
+|       |       |
 |       |       +---+
-|       |           |   
+|       |           |
 |       |           +---+
-|       |           |   
+|       |           |
 |       |           +---+
-|       |               
+|       |
 |       F
-|       
+|
 +---+
-    |   
+    |
     G
-    
+
 NIL
 ```
 
@@ -1251,7 +1251,7 @@ void main () {
 ELENA 4.1 :
 
 ```elena
-/// a program to produce a visual representation of some tree. 
+/// a program to produce a visual representation of some tree.
 
 import system'routines;
 import extensions;
@@ -1260,22 +1260,22 @@ class Node
 {
     string theValue;
     Node[] theChildren;
-    
+
     constructor new(string value, Node[] children)
     {
         theValue := value;
-                
+
         theChildren := children;
     }
-    
+
     constructor new(string value)
         <= new(value, new Node[](0));
-        
+
     constructor new(Node[] children)
         <= new(emptyString, children);
-        
+
     get() = theValue;
-    
+
     Children = theChildren;
 }
 
@@ -1285,20 +1285,20 @@ extension treeOp
     {
         var children := node.Children;
         var length := children.Length;
-        
+
         children.zipForEach(new Range(1, length), (child,index)
         {
             self.printLine(prefix,"|");
-            self.printLine(prefix,"+---",child.get());                
-            
+            self.printLine(prefix,"+---",child.get());
+
             var nodeLine := prefix + (index==length).iif("    ","|   ");
-            
+
             self.writeTree(child,nodeLine);
         });
-        
+
         ^ self
     }
-    
+
     writeTree(node)
         = self.writeTree(node,"");
 }
@@ -1314,7 +1314,7 @@ public program()
                     )),
                     Node.new("e")
                  ));
-                 
+
     console.writeTree(tree).readChar()
 }
 ```
@@ -1380,9 +1380,9 @@ let rec visualize (T(label, children)) pre =
                 else yield! visualize e (c2 preRest prefMid)
     }
 
-let example = 
+let example =
     T ("root",
-            [T ("a", 
+            [T ("a",
                     [T ("a1",
                             [T ("a11", []);
                             T ("a12", []) ]) ]);
@@ -1886,7 +1886,7 @@ EW  =: {: BOXC    NB. east-west
 
 showtree=: 4 : 0
  NB. y is parent index for each node (non-indices for root nodes)
- NB. x is label for each node 
+ NB. x is label for each node
  t=. (<EW,' ') ,@<@,:@,&":&.> x        NB. tree fragments
  c=. |:(#~ e./@|:);(~.,"0&.>(</. i.@#)) y
  while. +./ b=. ({.c)*.//.-.e.~/c do.
@@ -1937,7 +1937,7 @@ Example use:
      ┌─ 1 ─── 3 ─┴─ 7
      │           ┌─ 8
 ─ 0 ─┤     ┌─ 4 ─┴─ 9
-     └─ 2 ─┴─ 5    
+     └─ 2 ─┴─ 5
 ```
 
 
@@ -2031,14 +2031,14 @@ class BinarySearchTree {
 
 
 ```txt
-                             100                              
-                /                              \               
-               49                              106             
-        /              \                /              \       
-       44              94              105             152     
-    /      \        /                               /      \   
-   26      47      61                              109     178 
-  /  \            /  \                               \    /    
+                             100
+                /                              \
+               49                              106
+        /              \                /              \
+       44              94              105             152
+    /      \        /                               /      \
+   26      47      61                              109     178
+  /  \            /  \                               \    /
  12  33          51  88                              119 159
 ```
 
@@ -2454,35 +2454,35 @@ Javascript wrapped in HTML5 document. ''Should'' work in modern browsers.
 ```txt
 Compacted (parents not all vertically centered):
 
-       ┌ 4 
-   ┌ 2 ┴ 5 ─ 7 
- 1 ┤       ┌ 8 
-   └ 3 ─ 6 ┴ 9 
+       ┌ 4
+   ┌ 2 ┴ 5 ─ 7
+ 1 ┤       ┌ 8
+   └ 3 ─ 6 ┴ 9
 
 Fully expanded, with vertical centering:
 
-               ┌ Epsilon 
+               ┌ Epsilon
                │
-       ┌─ Beta ┼─── Zeta 
+       ┌─ Beta ┼─── Zeta
        │       │
-       │       └──── Eta 
+       │       └──── Eta
        │
- Alpha ┼ Gamma ─── Theta 
+ Alpha ┼ Gamma ─── Theta
        │
-       │       ┌─── Iota 
+       │       ┌─── Iota
        │       │
-       └ Delta ┼── Kappa 
+       └ Delta ┼── Kappa
                │
-               └─ Lambda 
+               └─ Lambda
 
 Vertically centered, with nodeless lines pruned out:
 
-               ┌ Epsilon 
-       ┌─ Beta ┼─── Zeta 
-       │       └──── Eta 
- Alpha ┼ Gamma ─── Theta 
-       │       ┌─── Iota 
-       └ Delta ┼── Kappa 
+               ┌ Epsilon
+       ┌─ Beta ┼─── Zeta
+       │       └──── Eta
+ Alpha ┼ Gamma ─── Theta
+       │       ┌─── Iota
+       └ Delta ┼── Kappa
                └─ Lambda
 ```
 
@@ -2840,13 +2840,13 @@ GraphTheory:-DrawGraph(T, style = tree);
 
 
 
-###  Tree graph 
+###  Tree graph
 
 Make a tree graph.  In Mathematica, '''\[DirectedEdge]''' will appear as an arrow in the code.
 
 
 ```Mathematica
-edges = {1 \[DirectedEdge] 2, 1 \[DirectedEdge] 3, 2 \[DirectedEdge] 4, 2 \[DirectedEdge] 5, 
+edges = {1 \[DirectedEdge] 2, 1 \[DirectedEdge] 3, 2 \[DirectedEdge] 4, 2 \[DirectedEdge] 5,
               3 \[DirectedEdge] 6, 4 \[DirectedEdge] 7};
 t = TreeGraph[edges, GraphStyle -> "VintageDiagram"]
 ```
@@ -2859,7 +2859,7 @@ Show the syntactical structure of the above code.  '''Defer''' is added to imped
 
 ```Mathematica
 TreeForm[Defer@
-  TreeGraph[{1 \[DirectedEdge] 2, 1 \[DirectedEdge] 3, 2 \[DirectedEdge] 4, 2 \[DirectedEdge] 5, 
+  TreeGraph[{1 \[DirectedEdge] 2, 1 \[DirectedEdge] 3, 2 \[DirectedEdge] 4, 2 \[DirectedEdge] 5,
    3 \[DirectedEdge] 6,  4 \[DirectedEdge] 7}, VertexLabels -> "Name"]]
 ```
 
@@ -2867,7 +2867,7 @@ TreeForm[Defer@
 [[File:syntax.jpg]]
 
 
-###  Opener view 
+###  Opener view
 
 
 Here's another way to display a tree. The triangles open/close when clicked on.
@@ -2875,7 +2875,7 @@ Here's another way to display a tree. The triangles open/close when clicked on.
 
 ```Mathematica
 OpenerView[{1, Column@{OpenerView[{2, Column@{OpenerView[{4, 7}, True], 5}}, True],
-     OpenerView[{3,  OpenerView[{TraditionalForm[Cos[x]], Plot[Cos[x], {x, 0, 10}, ImageSize -> 150]}, 
+     OpenerView[{3,  OpenerView[{TraditionalForm[Cos[x]], Plot[Cos[x], {x, 0, 10}, ImageSize -> 150]},
      True]}, True]}}, True]
 ```
 
@@ -3237,19 +3237,19 @@ display_tree(Direction) :-
 
 ```
 
-[[File:display_tree.png|900px]] 
+[[File:display_tree.png|900px]]
 
 ## Python
 
 
 ### Library module
 
-Python has the [http://www.doughellmann.com/PyMOTW/pprint/ pprint] [http://docs.python.org/py3k/library/pprint.html module] for pretty-printing data. 
+Python has the [http://www.doughellmann.com/PyMOTW/pprint/ pprint] [http://docs.python.org/py3k/library/pprint.html module] for pretty-printing data.
 
 If you set the presumed width of the output to 1 then pprint will print each level of a nested tuple (which is Pythons obvious method of creating a tree), on a separate line:
 
 ```python
-Python 3.2.3 (default, May  3 2012, 15:54:42) 
+Python 3.2.3 (default, May  3 2012, 15:54:42)
 [GCC 4.6.3] on linux2
 Type "copyright", "credits" or "license()" for more information.
 >>> help('pprint.pprint')
@@ -3265,7 +3265,7 @@ pprint.pprint = pprint(object, stream=None, indent=1, width=80, depth=None)
 	print("\nTree %r can be pprint'd as:" % (tree, ))
 	pprint(tree, indent=1, width=1)
 
-	
+
 
 Tree (1, 2, 3, 4, 5, 6, 7, 8) can be pprint'd as:
 (1,
@@ -3296,7 +3296,7 @@ Tree ((((1, 2), 3), 4), 5, 6, 7, 8) can be pprint'd as:
  6,
  7,
  8)
->>> 
+>>>
 ```
 
 
@@ -3353,7 +3353,7 @@ pprint (and print), prints Pythons standard container types in a format that is 
 ...    'C3')))
 >>> tree == copypasteoutput
 True
->>> 
+>>>
 ```
 
 
@@ -3370,15 +3370,15 @@ pprints width parameter allows it to fold some structure to better fit the page:
    ('i1', 'i2', 'i3', 'jj', 'i4', ('kk', 'm'))),
   'b1',
   ('C1', 'C2', ('D1', 'E', 'D2', 'D3'), 'C3')))
->>> 
+>>>
 ```
 
 
 pprint works with with a mix of nested container types. Here we create a tree from both lists and tuples:
 
 ```python>>>
- mixedtree = ['a', ('b0', ('c1', 'c2', ['d', ('ef', 'gh')], 'c3', ('i1', 'i2', 
-...              'i3', 'jj', 'i4', ['kk', 'm'])), 'b1', ('C1', 'C2', ('D1', 'E', 
+ mixedtree = ['a', ('b0', ('c1', 'c2', ['d', ('ef', 'gh')], 'c3', ('i1', 'i2',
+...              'i3', 'jj', 'i4', ['kk', 'm'])), 'b1', ('C1', 'C2', ('D1', 'E',
 ...              'D2', 'D3'), 'C3'))]
 >>> pprint(mixedtree, width=1)
 ['a',
@@ -3414,7 +3414,7 @@ pprint works with with a mix of nested container types. Here we create a tree fr
    ('i1', 'i2', 'i3', 'jj', 'i4', ['kk', 'm'])),
   'b1',
   ('C1', 'C2', ('D1', 'E', 'D2', 'D3'), 'C3'))]
->>> 
+>>>
 ```
 
 
@@ -3768,43 +3768,43 @@ if __name__ == '__main__':
 ```txt
 Fully compacted (parents not all centered):
 
-       ┌ 4 ─ 7 
-   ┌ 2 ┴ 5 
- 1 ┤       ┌ 8 
-   └ 3 ─ 6 ┴ 9 
+       ┌ 4 ─ 7
+   ┌ 2 ┴ 5
+ 1 ┤       ┌ 8
+   └ 3 ─ 6 ┴ 9
 
 Expanded with vertically centered parents:
 
-               ┌ Epsilon 
+               ┌ Epsilon
                │
-               ├─── Zeta 
+               ├─── Zeta
                │
-       ┌─ Beta ┼──── Eta 
+       ┌─ Beta ┼──── Eta
        │       │
-       │       │         ┌───── Mu 
+       │       │         ┌───── Mu
        │       └── Theta ┤
- Alpha ┤                 └───── Nu 
+ Alpha ┤                 └───── Nu
        │
-       ├ Gamma ────── Xi ─ Omicron 
+       ├ Gamma ────── Xi ─ Omicron
        │
-       │       ┌─── Iota 
+       │       ┌─── Iota
        │       │
-       └ Delta ┼── Kappa 
+       └ Delta ┼── Kappa
                │
-               └─ Lambda 
+               └─ Lambda
 
 Centered parents with nodeless lines pruned out:
 
-               ┌ Epsilon 
-               ├─── Zeta 
-       ┌─ Beta ┼──── Eta 
-       │       │         ┌───── Mu 
+               ┌ Epsilon
+               ├─── Zeta
+       ┌─ Beta ┼──── Eta
+       │       │         ┌───── Mu
        │       └── Theta ┤
- Alpha ┤                 └───── Nu 
-       ├ Gamma ────── Xi ─ Omicron 
-       │       ┌─── Iota 
-       └ Delta ┼── Kappa 
-               └─ Lambda 
+ Alpha ┤                 └───── Nu
+       ├ Gamma ────── Xi ─ Omicron
+       │       ┌─── Iota
+       └ Delta ┼── Kappa
+               └─ Lambda
 ```
 
 
@@ -4141,7 +4141,7 @@ def ptree(tree,indent="  ")
     head,*tail=tree
     ptree(head,indent)
     s=tail.size-1
-    tail.each_with_index { |tree1,i| ptree(tree1,"#{indent}#{((i==s) ? ' ':'|')}  ") } 
+    tail.each_with_index { |tree1,i| ptree(tree1,"#{indent}#{((i==s) ? ' ':'|')}  ") }
   else
      puts(indent.gsub(/\s\s$/,"--").gsub(/ --$/,"\\--")+tree.to_s)
   end
@@ -4467,15 +4467,15 @@ maxCol = token("white yellow cyan green red", colore$())
 showTree(0, "[1[2[3][4[5][6]][7]][8[9]]]")
 print "\n\n\n"
 showTree(0, "[1[2[3[4]]][5[6][7[8][9]]]]")
- 
+
 sub showTree(n, A$)
     local i, c$
     static co
-    
+
     c$ = left$(A$, 1)
-    
+
     if c$ = "" return
-    
+
     switch c$
     case "[":   co = co + 1 : showTree(n + 1, right$(A$, len(A$) - 1))
                 break

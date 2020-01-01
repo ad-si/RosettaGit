@@ -16,8 +16,8 @@ Implement some operations on [[wp:Variable-length quantity|variable-length quant
 
 
 ;Task:
-With above operations, 
-*convert these two numbers 0x200000 (2097152 in decimal) and 0x1fffff (2097151 in decimal) into sequences of octets (an eight-bit byte); 
+With above operations,
+*convert these two numbers 0x200000 (2097152 in decimal) and 0x1fffff (2097151 in decimal) into sequences of octets (an eight-bit byte);
 *display these sequences of octets;
 *convert these sequences of octets back to numbers, and check that they are equal to original numbers.
 
@@ -151,11 +151,11 @@ FOR i = 1 TO LEN(s$)
    IF k > 0 THEN LET v = v*16 + k - 1
 NEXT i
 PRINT "S= ";s$, "V=";v
- 
+
 ! Convert back to hex
 LET hex$ ="0123456789abcdef"
 LET hs$="                    "
- 
+
 FOR i = LEN(hs$) TO 1 STEP -1
    IF v = 0 THEN EXIT FOR
    LET d = MOD(v, 16) + 1
@@ -171,9 +171,9 @@ OUTPUT:
 ```txt
 
 S= 200000              V= 2097152
-              200000 
+              200000
 S= 1fffff              V= 2097151
-              1fffff 
+              1fffff
 
 ```
 
@@ -284,8 +284,8 @@ back : 894E410E0A
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdint.h>
 
 void to_seq(uint64_t x, uint8_t *out)
@@ -753,7 +753,7 @@ Solution:
 ```groovy
 final RADIX = 7
 final MASK = 2**RADIX - 1
- 
+
 def octetify = { n ->
     def octets = []
     for (def i = n; i != 0; i >>>= RADIX) {
@@ -761,7 +761,7 @@ def octetify = { n ->
     }
     octets.reverse()
 }
- 
+
 def deoctetify = { octets ->
     octets.inject(0) { long n, octet ->
         (n << RADIX) + ((int)(octet) & MASK)
@@ -774,7 +774,7 @@ Test (samples borrowed from [[Java]] example):
 
 ```groovy
 def testNumbers = [ 0x200000, 0x1fffff, 1, 127, 128, 589723405834L ]
- 
+
 testNumbers.each { a ->
     def octets = octetify(a)
     octets.each { printf "0x%02x ", it }; println ()
@@ -787,11 +787,11 @@ testNumbers.each { a ->
 Output:
 
 ```txt
-0x81 0x80 0x80 0x00 
-0xff 0xff 0x7f 
-0x01 
-0x7f 
-0x81 0x00 
+0x81 0x80 0x80 0x00
+0xff 0xff 0x7f
+0x01
+0x7f
+0x81 0x00
 0x91 0x94 0xf2 0x84 0x9c 0x0a
 ```
 
@@ -857,11 +857,11 @@ main =
 
 ```Icon
 procedure main()
-every i := 2097152 | 2097151 | 1 | 127 | 128 | 589723405834 | 165 | 256 do 
+every i := 2097152 | 2097151 | 1 | 127 | 128 | 589723405834 | 165 | 256 do
    write(image(i)," = ",string2hex(v := uint2vlq(i))," = ",vlq2uint(v))
 end
 
-procedure vlq2uint(s)    #: decode a variable length quantity 
+procedure vlq2uint(s)    #: decode a variable length quantity
    if *s > 0 then {
       i := 0
       s ? while h := ord(move(1)) do {
@@ -873,16 +873,16 @@ procedure vlq2uint(s)    #: decode a variable length quantity
 end
 
 procedure uint2vlq(i,c)  #: encode a whole number as a variable length quantity
-   if "integer" == type(-1 < i) then 
-      return if i = 0 then 
+   if "integer" == type(-1 < i) then
+      return if i = 0 then
          char((/c := 0)) | ""
-      else          
+      else
          uint2vlq(i/128,1) || char((i % 128) + ((/c := 0) | 128) )
 end
 
 procedure string2hex(s)  #: convert a string to hex
    h := ""
-   every i := ord(!s) do 
+   every i := ord(!s) do
       h ||:= "0123456789abcdef"[i/16+1] || "0123456789abcdef"[i%16+1]
    return h
 end
@@ -922,7 +922,7 @@ Example use:
 
 
 ```j
-   require'convert' 
+   require'convert'
    numbers=: 16b7f 16b4000 0 16b3ffffe 16b1fffff 200000
    av vlq=: vfi numbers
 127 129 128 0 0 129 255 255 126 255 255 127 140 154 64
@@ -956,7 +956,7 @@ public class VLQCode
     }
     return output;
   }
-  
+
   public static long decode(byte[] b)
   {
     long n = 0;
@@ -969,7 +969,7 @@ public class VLQCode
     }
     return n;
   }
-  
+
   public static String byteArrayToString(byte[] b)
   {
     StringBuilder sb = new StringBuilder();
@@ -984,7 +984,7 @@ public class VLQCode
     }
     return sb.toString();
   }
-  
+
   public static void main(String[] args)
   {
     long[] testNumbers = { 2097152, 2097151, 1, 127, 128, 589723405834L };
@@ -1140,15 +1140,15 @@ on DecToVLQ
          end if
          if theString>4294967295 then
             answer "This function fails with whole numbers over 4294967295!"&cr\
-            & "4294967295 is the maximum allowed value for 32bits (4 bytes)" 
+            & "4294967295 is the maximum allowed value for 32bits (4 bytes)"
             exit DecToVLQ
          end if
          if theString>268435455 then
             answer "This function is not accurate with whole numbers over 268435455!"&cr\
-            & "268435455 is the maximum allowed value for 28bit (7bits per byte) MIDI delta-time VLQ" 
+            & "268435455 is the maximum allowed value for 28bit (7bits per byte) MIDI delta-time VLQ"
          end if
          put "Original Whole Number="& theString & cr & \
-               "Original Whole Number in Hex="& baseConvert(theString,10,16) & cr & \ --- LC's built in baseConvert function 
+               "Original Whole Number in Hex="& baseConvert(theString,10,16) & cr & \ --- LC's built in baseConvert function
                "Variable Length Quantity in Hex=" & wholeNumToVLQ(theString) into fld "Output"
       else
          answer "Only Whole Decimal Numbers Are Allowed!"
@@ -1169,7 +1169,7 @@ function wholeNumToVLQ theWholeNum
    put 0 into bitCounter
    put empty into the7bitBytes
    repeat
-      if char x of theBits is not empty then 
+      if char x of theBits is not empty then
          put char x theBits before the7bitBytes
          delete char x of theBits
          if theBits is empty then exit repeat
@@ -1193,9 +1193,9 @@ function wholeNumToVLQ theWholeNum
    end if
    put the number of items in the7bitBytes into y
    repeat with x = 1 to y
-      if x is not y then 
+      if x is not y then
          put "1" before item x of the7bitBytes
-      else 
+      else
          put "0" before item x of the7bitBytes
       end if
       put baseConvert(item x of the7bitBytes,2,16) into item x of the7bitBytes
@@ -1209,11 +1209,11 @@ function isWholeNumString theString
    put the number of chars in theString into y
    repeat with x = 1 to y
       if char x of theString is not in "0123456789" then
-         return false 
+         return false
          exit isWholeNumString
       end if
    end repeat
-   return true 
+   return true
 end isWholeNumString
 
 ```
@@ -1241,7 +1241,7 @@ function VLQtoWholeNum theHexVLQ
    put 0 into bitCounter
    put empty into the8bitBytes
    repeat
-      if char 1 of theBits is not empty then 
+      if char 1 of theBits is not empty then
          put char 1 theBits after the8bitBytes
          delete char 1 of theBits
          if theBits is empty then exit repeat
@@ -1259,7 +1259,7 @@ function VLQtoWholeNum theHexVLQ
    repeat with x = 1 to y
       put char 1 of item x of the8bitBytes into lengthCntrlBit
       delete char 1 of item x of the8bitBytes
-      if the number of chars in item x of the8bitBytes < 7 then 
+      if the number of chars in item x of the8bitBytes < 7 then
          repeat 7 - (the number of chars in item x of the8bitBytes)
             put "0" before item x of the8bitBytes
          end repeat
@@ -1283,7 +1283,7 @@ function isHexString theString
    put the number of chars in theString into y
    repeat with x = 1 to y
       if char x of theString is not in "abcdefABCDEF0123456789" then
-         return false 
+         return false
       end if
    end repeat
 end isHexString
@@ -1293,7 +1293,7 @@ on VLQHexToWholeNum
    if it is not empty then
       if char 1 to 2 of it is "0x" then delete char 1 to 2 of it
       put it into hexString
-      if isHexString(hexString) is false then 
+      if isHexString(hexString) is false then
          answer "Only Valid Hex Digits Are Allowed!"
          exit VLQHexToWholeNum
       else
@@ -1321,15 +1321,15 @@ Whole Number=2097151
 
 
 ```Mathematica
-toOctets[n_Integer] := 
- StringJoin @@@ 
+toOctets[n_Integer] :=
+ StringJoin @@@
   Partition[
-   PadLeft[Characters@IntegerString[n, 16], 
+   PadLeft[Characters@IntegerString[n, 16],
     2 Ceiling[Plus @@ DigitCount[n, 16]/2], {"0"}], 2]
 
 fromOctets[octets_List] := FromDigits[StringJoin @@ octets, 16]
-    
-Grid[{#, toOctets@#, fromOctets[toOctets@#]} & /@ {16^^3ffffe, 
+
+Grid[{#, toOctets@#, fromOctets[toOctets@#]} & /@ {16^^3ffffe,
    16^^1fffff, 16^^200000}]
 ```
 
@@ -1402,9 +1402,9 @@ let to_vlq n =
     else x::acc
   in
   aux a [b]
- 
+
 let to_num = List.fold_left (fun n x -> n lsl 7 + (x land 0x7F)) 0
- 
+
 let v_rep n =
   Printf.printf "%d ->" n;
   let seq = to_vlq n in
@@ -1412,7 +1412,7 @@ let v_rep n =
   let num = to_num seq in
   Printf.printf "-> %d\n%!" num;
   assert (n = num)
- 
+
 let _ =
   v_rep 0x200000;
   v_rep 0x1FFFFF
@@ -1531,7 +1531,7 @@ sub vlq_encode ($number is copy) {
     while ($number) {
        $t = 0x7F +& $number;
        $string = (0x80 +| $t).chr ~ $string;
-       $number +>= 7; 
+       $number +>= 7;
     }
     return $string;
 }
@@ -1601,7 +1601,7 @@ integer n, msb
     end for
     return res
 end function
- 
+
 function vlq_decode(sequence s)
 sequence res = {}
 integer n = 0, byte
@@ -1615,7 +1615,7 @@ integer n = 0, byte
     end for
     return res
 end function
- 
+
 function svlg(sequence s)
 string res = ""
     for i=1 to length(s) do
@@ -1623,7 +1623,7 @@ string res = ""
     end for
     return res[1..$-1]
 end function
- 
+
 constant testNumbers = { #200000, #1FFFFF, 1, 127, 128 }
 sequence s = vlq_encode(testNumbers)
 sequence decoded = vlq_decode(s)
@@ -1717,9 +1717,9 @@ OUTPUT:
 ```txt
 
 S='200000'              V=       2097152;
-              200000 
+              200000
 S='1fffff'              V=       2097151;
-              1fffff 
+              1fffff
 
 ```
 
@@ -1751,7 +1751,7 @@ def tovlq(n):
     return tobits(n, _group=7, _sep='1_', _pad=True)
 
 def toint(vlq):
-    return int(''.join(vlq.split('_1')), 2)    
+    return int(''.join(vlq.split('_1')), 2)
 
 def vlqsend(vlq):
     for i, byte in enumerate(vlq.split('_')[::-1]):
@@ -1767,7 +1767,7 @@ The underscore separates groups of eight bits (octets), for readability
  for n in (254, 255, 256, 257, -2+(1<<16), -1+(1<<16), 1<<16, 1+(1<<16), 0x200000, 0x1fffff ):
     print('int: %7i bin: %26s vlq: %35s vlq->int: %7i' % (n, tobits(n,_pad=True), tovlq(n), toint(tovlq(n))))
 
-    
+
 int:     254 bin:                   11111110 vlq:                   00000001_11111110 vlq->int:     254
 int:     255 bin:                   11111111 vlq:                   00000001_11111111 vlq->int:     255
 int:     256 bin:          00000001_00000000 vlq:                   00000010_10000000 vlq->int:     256
@@ -1787,7 +1787,7 @@ Sent byte   3: 0x01
 Sent byte   0: 0xff
 Sent byte   1: 0xff
 Sent byte   2: 0x7f
->>> 
+>>>
 ```
 
 
@@ -1922,16 +1922,16 @@ object VlqCode {
     }
     result.toArray
   }
-  
+
   def decode(a:Array[Byte])=a.foldLeft(0L)((r, b) => r<<7|b&0x7f)
-  
-  def toString(a:Array[Byte])=a map("%02x".format(_)) mkString("[", ", ", "]")  
-  
+
+  def toString(a:Array[Byte])=a map("%02x".format(_)) mkString("[", ", ", "]")
+
   def test(x:Long)={
     val enc=encode(x)
     println("0x%x => %s => 0x%x".format(x, toString(enc), decode(enc)))
   }
-  
+
   def main(args: Array[String]): Unit = {
     val xs=Seq(0, 0x7f, 0x80, 0x2000, 0x3fff, 0x4000, 0x1FFFFF, 0x200000, 0x8000000,
                0xFFFFFFF, 0xFFFFFFFFL, 0x842FFFFFFFFL, 0x0FFFFFFFFFFFFFFFL)
@@ -1968,7 +1968,7 @@ since variable-length quantities are able to represent integer numbers of unlimi
 ```seed7
 $ include "seed7_05.s7i";
   include "bigint.s7i";
- 
+
 const func string: toSequence (in var bigInteger: number) is func
   result
     var string: sequence is "";
@@ -1995,7 +1995,7 @@ const func bigInteger: fromSequence (in string: sequence) is func
     number <<:= 7;
     number +:= bigInteger conv ord(sequence[index]);
   end func;
- 
+
 const proc: main is func
   local
     const array bigInteger: testValues is [] (
@@ -2230,7 +2230,7 @@ fcn from_seq(in){ in.reduce(fcn(p,n){ p.shiftLeft(7).bitOr(n.bitAnd(0x7f)) },0) 
 
 ```zkl
 ns:=T(0x7f, 0x4000, 0, 0x3ffffe, 0x1fffff, 0x200000, 0x3311a1234df31413);
-ms:=ns.apply(to_seq); 
+ms:=ns.apply(to_seq);
 ns.zipWith(fcn{"%8,x --> %s --> %,x".fmt(vm.arglist.xplode()).println()},
    ms.apply("apply","%,x".fmt),
    ms.apply(from_seq));

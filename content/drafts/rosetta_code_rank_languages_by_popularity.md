@@ -1006,8 +1006,8 @@ Output:
 {{improve|C|This solution uses an external program '''wget''' for networking, but it could use '''Library: libcurl''' (see [[Web scraping#C]]) for example. Also this solution scrapes Special:Categories &limit 5000 which will break if the HTML style changes or the number of languages exceeds 5000. It could use the MediWiki API to get the language names and pages in a single call, in blocks of 500 until complete with no upper limit. See the Awk example. If you make an API-based version please retain the web-scrapping version in its own sub-section (following the lead of [[Rosetta_Code/Rank_languages_by_popularity#Tcl|TCL on this page]]). }}
 
 Ghetto parser
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -1409,8 +1409,8 @@ class Program {
 {{libheader|Boost}}
 using g++ under Linux with <tt>g++ -lboost_thread -lboost_system -lboost_regex</tt>:
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <boost/regex.hpp>
 #include <boost/asio.hpp>
 #include <vector>

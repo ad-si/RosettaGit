@@ -20,8 +20,8 @@ Implement a function/procedure/method/subroutine that takes a set/array/list/str
 This set of weighted words, one solution would be the set of words:
 :::*   {elysee,   efferent,   deploy,   departure,   centipede,   bonnet,   balm,   archbishop}
 because their respective weights of:
-:::*   -326,   54,   44,   952,   -658,   452,   397,   and   -915 
-sum to zero. 
+:::*   -326,   54,   44,   952,   -658,   452,   397,   and   -915
+sum to zero.
 
 :::::: {| style="text-align: left; width: 40%;" border="5" cellpadding="2" cellspacing="2"
 |+              Table of weighted words
@@ -94,11 +94,11 @@ sum to zero.
 
 Another solution would be the set of words {flatworm, gestapo, infra, isis, lindholm, plugging, smokescreen, speakeasy}, because their respective weights of 503, 915, -847, -982, 999, -266, 423, and -745 also sum to zero.
 
-You may assume the weights range from -1000 to 1000. 
+You may assume the weights range from -1000 to 1000.
 
-If there are multiple solutions, only one needs to be found. 
+If there are multiple solutions, only one needs to be found.
 
-Use any algorithm you want and demonstrate it on a set of at least 30 weighted words with the results shown in a human readable form. 
+Use any algorithm you want and demonstrate it on a set of at least 30 weighted words with the results shown in a human readable form.
 
 Note that an implementation that depends on enumerating all possible subsets is likely to be infeasible.
 
@@ -204,8 +204,8 @@ end SubsetSum;
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct {
@@ -285,8 +285,8 @@ alliance archbishop balm bonnet brute centipede cobol covariate departure deploy
 
 {{trans|C#}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 
 std::ostream& operator<<(std::ostream& out, const std::string& str) {
@@ -632,7 +632,7 @@ Zero sums: 349167
 ### Dynamic programming
 
 We use the Pseudo-polynomial time dynamic programming solution, found in the [[wp:Subset sum problem|Subset sum problem]] Wikipedia article. If A and B are the min and max possible sums, the time and memory needed are '''O((B-A)*N)'''. '''Q''' is an array such as Q(i,s) = true if there is a nonempty subset of x0, ..., xi which sums to s.
-  
+
 
 ```scheme
 
@@ -651,34 +651,34 @@ We use the Pseudo-polynomial time dynamic programming solution, found in the [[w
     (define -A (abs A))
     (define Q (make-vector (* N (- B A))))
     (set! xs (list->vector xs))
-    
+
     (printf "Q[%d] allocated." (vector-length Q))
-    (for ((s (in-range A B))) 
+    (for ((s (in-range A B)))
             (vector-set! Q (qidx 0 s ) (= [xs 0] s)))
-            
+
     (for*   ([i (in-range 1 N)]
              [s (in-range A B)])
-             
+
         (set! ds (- s [xs i]))
         (vector-set! Q (qidx i s)
             (or
                 [Q (qidx (1- i) s)]
                 (= [xs i] s)
                 (and (>= ds A) (< ds B) [Q (qidx (1- i) ds )])))
-                
-        ;; stop on first zero-sum found    
+
+        ;; stop on first zero-sum found
          #:break (and (zero? s) [Q (qidx i s)]) => (solQ Q xs i s -A N)
         ))
-    
-;; backtracking to get the list of i's such as sum([xs i]) = 0
-;; start from q[i,0] === true 
 
-(define  (solQ Q xs i s -A N  (sol null)) 
+;; backtracking to get the list of i's such as sum([xs i]) = 0
+;; start from q[i,0] === true
+
+(define  (solQ Q xs i s -A N  (sol null))
     (cond
         (( = s [xs i]) (cons  i  sol))
         ([Q (qidx (1- i ) s)] (solQ Q xs (1- i) s -A N sol))
         (else  (solQ Q xs (1- i) (- s [xs i]) -A N (cons i sol)))))
-    
+
 (define (task input)
     (map  (lambda(i)  (first (list-ref input i))) (fillQ (map rest input))))
 
@@ -688,8 +688,8 @@ We use the Pseudo-polynomial time dynamic programming solution, found in the [[w
 {{out}}
 
 ```txt
-    
-(define input 
+
+(define input
     '({"alliance" . -624}
     {"archbishop" . -915}
     {"balm" . 397}
@@ -721,18 +721,18 @@ We use the Pseudo-polynomial time dynamic programming solution, found in the [[w
     {"smokescreen" . 423}
     {"speakeasy" . -745}
     {"vein" . 813}))
-    
+
 (task input)
 Q[587016] allocated.
-    → ("archbishop" "balm" "bonnet" "centipede" "cobol" "covariate" 
+    → ("archbishop" "balm" "bonnet" "centipede" "cobol" "covariate"
 "deploy" "efferent" "elysee")
 
 ;; using Haskell test data
-(define items 
+(define items
     '[-61 1 32 373 311 249 311 32 -92 -185 -433
     -402 -247 156 125 249 32 -464 -278 218 32 -123
     -216 373 -185 -402 156 -402 -61 -31 902 ])
-    
+
 (map (lambda(i) (list-ref items i)) (fillQ items))
 
 Q[221185] allocated.
@@ -753,27 +753,27 @@ We use the '''powerset''' procrastinator which gives in sequence all subsets of 
 (define (sum0? xs)
 	(zero? (apply + (map rest xs))))
 
-;; filter the powerset and 
+;; filter the powerset and
 ;; take first 5 solutions
 (for-each writeln (take (filter sum0? (powerset input)) 5))
 
-()  ;; empty   
+()  ;; empty
 
-(("archbishop" . -915) ("balm" . 397) ("bonnet" . 452) 
-("centipede" . -658) ("cobol" . 362) ("covariate" . 590) 
-("deploy" . 44) ("efferent" . 54) ("elysee" . -326))   
- 
-(("archbishop" . -915) ("balm" . 397) ("bonnet" . 452) 
-("centipede" . -658) ("departure" . 952) ("deploy" . 44) 
-("efferent" . 54) ("elysee" . -326))    
+(("archbishop" . -915) ("balm" . 397) ("bonnet" . 452)
+("centipede" . -658) ("cobol" . 362) ("covariate" . 590)
+("deploy" . 44) ("efferent" . 54) ("elysee" . -326))
 
-(("alliance" . -624) ("brute" . 870) ("centipede" . -658) 
-("cobol" . 362) ("elysee" . -326) ("eradicate" . 376))   
- 
-(("alliance" . -624) ("archbishop" . -915) ("bonnet" . 452) 
-("centipede" . -658) ("cobol" . 362) ("covariate" . 590) 
-("deploy" . 44) ("diophantine" . 645) ("efferent" . 54) 
-("elysee" . -326) ("eradicate" . 376))    
+(("archbishop" . -915) ("balm" . 397) ("bonnet" . 452)
+("centipede" . -658) ("departure" . 952) ("deploy" . 44)
+("efferent" . 54) ("elysee" . -326))
+
+(("alliance" . -624) ("brute" . 870) ("centipede" . -658)
+("cobol" . 362) ("elysee" . -326) ("eradicate" . 376))
+
+(("alliance" . -624) ("archbishop" . -915) ("bonnet" . 452)
+("centipede" . -658) ("cobol" . 362) ("covariate" . 590)
+("deploy" . 44) ("diophantine" . 645) ("efferent" . 54)
+("elysee" . -326) ("eradicate" . 376))
 
 ```
 
@@ -785,11 +785,11 @@ We use the '''powerset''' procrastinator which gives in sequence all subsets of 
 ```funl
 def subsetSum( s, w, v ) =
   def sumset( a ) = foldl1( (+), map(w, a) )
-    
+
   for i <- s.subsets() if i != {}
     if sumset( i ) == v
       return Some( i )
-      
+
   None
 
 s = {
@@ -994,7 +994,7 @@ subsum w =
     s a x = merge a $ map f a
       where
         f (a, l) = (a + x, l ++ [x])
-        
+
     -- Keep list of sums sorted and unique.
     merge [] a = a
     merge a [] = a
@@ -1002,7 +1002,7 @@ subsum w =
       | av < bv = (av, al) : merge as b
       | av == bv = (bv, bl) : merge as bs
       | otherwise = (bv, bl) : merge a bs
- 
+
 items :: [Int]
 items = [-61, 1, 32, 373, 311, 249, 311, 32, -92, -185, -433,
  -402, -247, 156, 125, 249, 32, -464, -278, 218, 32, -123,
@@ -1023,7 +1023,7 @@ main = print $ subsum 0 items
 {{trans|Ruby}}
 
 ```Icon
-link printf,lists                       
+link printf,lists
 
 procedure main()
    BruteZeroSubset(string2table(
@@ -1032,13 +1032,13 @@ procedure main()
          diophantine/645/efferent/54/elysee/-326/eradicate/376/escritoire/856/_
          exorcism/-983/fiat/170/filmy/-874/flatworm/503/gestapo/915/infra/-847/_
          isis/-982/lindholm/999/markham/475/mincemeat/-880/moresby/756/_
-         mycenae/183/plugging/-266/smokescreen/423/speakeasy/-745/vein/813/"))         
+         mycenae/183/plugging/-266/smokescreen/423/speakeasy/-745/vein/813/"))
 end
 
-procedure BruteZeroSubset(words)                # brute force 1 of each length  
+procedure BruteZeroSubset(words)                # brute force 1 of each length
    every n := 1 to *words do {
-      every t := tcomb(words,n) do {            # generate combination   
-         every (sum := 0) +:= words[!t]         # sum combination 
+      every t := tcomb(words,n) do {            # generate combination
+         every (sum := 0) +:= words[!t]         # sum combination
          if sum = 0 then {
             printf("A zero-sum subset of length %d : %s\n",n,list2string(sort(t)))
             break next                          # found one
@@ -1046,14 +1046,14 @@ procedure BruteZeroSubset(words)                # brute force 1 of each length
          }
          printf("No zero-sum subsets of length %d\n",n)
       }
-end  
+end
 
 # helper procedures
 
-procedure tcomb(T, i)		    #: Table (key) combinations 
+procedure tcomb(T, i)		    #: Table (key) combinations
    local K
    every put(K := [],key(T))        # list of keys
-   every suspend lcomb(K,i)         # return list combs 
+   every suspend lcomb(K,i)         # return list combs
 end
 
 procedure list2string(L)            #: format list as a string
@@ -1061,10 +1061,10 @@ procedure list2string(L)            #: format list as a string
    return s || "]"
 end
 
-procedure string2table(s,d)         #: format string "k1/v1/.../kn/vn" as table 
+procedure string2table(s,d)         #: format string "k1/v1/.../kn/vn" as table
    T := table()
    /d := "/"
-   s ? until pos(0) do 
+   s ? until pos(0) do
       T[1(tab(find(d)),=d)] := numeric(1(tab(find(d)),=d))
 
    return T
@@ -1072,8 +1072,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides formatting]
 [http://www.cs.arizona.edu/icon/library/src/procs/lists.icn lists.icn provides lcomb for list combinations]
 
 {{Out}}
@@ -1289,13 +1289,13 @@ public class SubsetSum {
 ```txt
 The weights of the following 5 subsets add up to zero:
 
-(alliance, -624) (archbishop, -915) (balm, 397) (bonnet, 452) (brute, 870) (centipede, -658) (cobol, 362) (covariate, 590) (departure, 952) (deploy, 44) (diophantine, 645) (efferent, 54) (elysee, -326) (eradicate, 376) (escritoire, 856) (exorcism, -983) (fiat, 170) (filmy, -874) (flatworm, 503) (mincemeat, -880) (plugging, -266) (speakeasy, -745) 
+(alliance, -624) (archbishop, -915) (balm, 397) (bonnet, 452) (brute, 870) (centipede, -658) (cobol, 362) (covariate, 590) (departure, 952) (deploy, 44) (diophantine, 645) (efferent, 54) (elysee, -326) (eradicate, 376) (escritoire, 856) (exorcism, -983) (fiat, 170) (filmy, -874) (flatworm, 503) (mincemeat, -880) (plugging, -266) (speakeasy, -745)
 
-(alliance, -624) (archbishop, -915) (balm, 397) (bonnet, 452) (brute, 870) (centipede, -658) (cobol, 362) (covariate, 590) (departure, 952) (deploy, 44) (diophantine, 645) (efferent, 54) (elysee, -326) (eradicate, 376) (escritoire, 856) (exorcism, -983) (infra, -847) (isis, -982) (mincemeat, -880) (moresby, 756) (mycenae, 183) (smokescreen, 423) (speakeasy, -745) 
+(alliance, -624) (archbishop, -915) (balm, 397) (bonnet, 452) (brute, 870) (centipede, -658) (cobol, 362) (covariate, 590) (departure, 952) (deploy, 44) (diophantine, 645) (efferent, 54) (elysee, -326) (eradicate, 376) (escritoire, 856) (exorcism, -983) (infra, -847) (isis, -982) (mincemeat, -880) (moresby, 756) (mycenae, 183) (smokescreen, 423) (speakeasy, -745)
 
-(alliance, -624) (archbishop, -915) (balm, 397) (bonnet, 452) (brute, 870) (centipede, -658) (cobol, 362) (covariate, 590) (departure, 952) (deploy, 44) (diophantine, 645) (efferent, 54) (elysee, -326) (eradicate, 376) (escritoire, 856) (fiat, 170) (infra, -847) (isis, -982) (markham, 475) (mincemeat, -880) (plugging, -266) (speakeasy, -745) 
+(alliance, -624) (archbishop, -915) (balm, 397) (bonnet, 452) (brute, 870) (centipede, -658) (cobol, 362) (covariate, 590) (departure, 952) (deploy, 44) (diophantine, 645) (efferent, 54) (elysee, -326) (eradicate, 376) (escritoire, 856) (fiat, 170) (infra, -847) (isis, -982) (markham, 475) (mincemeat, -880) (plugging, -266) (speakeasy, -745)
 
-(alliance, -624) (archbishop, -915) (balm, 397) (bonnet, 452) (brute, 870) (centipede, -658) (cobol, 362) (covariate, 590) (departure, 952) (deploy, 44) (diophantine, 645) (efferent, 54) (elysee, -326) (eradicate, 376) (exorcism, -983) (fiat, 170) (infra, -847) (isis, -982) (mincemeat, -880) (moresby, 756) (plugging, -266) (vein, 813) 
+(alliance, -624) (archbishop, -915) (balm, 397) (bonnet, 452) (brute, 870) (centipede, -658) (cobol, 362) (covariate, 590) (departure, 952) (deploy, 44) (diophantine, 645) (efferent, 54) (elysee, -326) (eradicate, 376) (exorcism, -983) (fiat, 170) (infra, -847) (isis, -982) (mincemeat, -880) (moresby, 756) (plugging, -266) (vein, 813)
 
 (alliance, -624) (archbishop, -915) (balm, 397) (bonnet, 452) (brute, 870) (centipede, -658) (cobol, 362) (covariate, 590) (departure, 952) (deploy, 44) (diophantine, 645) (efferent, 54) (elysee, -326) (eradicate, 376) (exorcism, -983) (fiat, 170) (infra, -847) (isis, -982) (smokescreen, 423)
 ```
@@ -1392,7 +1392,7 @@ class Item(val word: String, val weight: Int) {
     override fun toString() = "($word $weight)"
 }
 
-val items = arrayOf( 
+val items = arrayOf(
     Item("alliance",   -624),
     Item("archbishop", -915),
     Item("balm",        397),
@@ -1442,7 +1442,7 @@ fun zeroSum(i: Int, w: Int) {
     for (j in k until n) {
         indices[i] = j
         zeroSum(i + 1, w + items[j].weight)
-        if (count == LIMIT) return 
+        if (count == LIMIT) return
     }
 }
 
@@ -1459,15 +1459,15 @@ fun main(args: Array<String>) {
 
 The weights of the following 5 subsets add up to zero:
 
-(alliance -624) (archbishop -915) (balm 397) (bonnet 452) (brute 870) (centipede -658) (cobol 362) (covariate 590) (departure 952) (deploy 44) (diophantine 645) (efferent 54) (elysee -326) (eradicate 376) (escritoire 856) (exorcism -983) (fiat 170) (filmy -874) (flatworm 503) (mincemeat -880) (plugging -266) (speakeasy -745) 
+(alliance -624) (archbishop -915) (balm 397) (bonnet 452) (brute 870) (centipede -658) (cobol 362) (covariate 590) (departure 952) (deploy 44) (diophantine 645) (efferent 54) (elysee -326) (eradicate 376) (escritoire 856) (exorcism -983) (fiat 170) (filmy -874) (flatworm 503) (mincemeat -880) (plugging -266) (speakeasy -745)
 
-(alliance -624) (archbishop -915) (balm 397) (bonnet 452) (brute 870) (centipede -658) (cobol 362) (covariate 590) (departure 952) (deploy 44) (diophantine 645) (efferent 54) (elysee -326) (eradicate 376) (escritoire 856) (exorcism -983) (infra -847) (isis -982) (mincemeat -880) (moresby 756) (mycenae 183) (smokescreen 423) (speakeasy -745) 
+(alliance -624) (archbishop -915) (balm 397) (bonnet 452) (brute 870) (centipede -658) (cobol 362) (covariate 590) (departure 952) (deploy 44) (diophantine 645) (efferent 54) (elysee -326) (eradicate 376) (escritoire 856) (exorcism -983) (infra -847) (isis -982) (mincemeat -880) (moresby 756) (mycenae 183) (smokescreen 423) (speakeasy -745)
 
-(alliance -624) (archbishop -915) (balm 397) (bonnet 452) (brute 870) (centipede -658) (cobol 362) (covariate 590) (departure 952) (deploy 44) (diophantine 645) (efferent 54) (elysee -326) (eradicate 376) (escritoire 856) (fiat 170) (infra -847) (isis -982) (markham 475) (mincemeat -880) (plugging -266) (speakeasy -745) 
+(alliance -624) (archbishop -915) (balm 397) (bonnet 452) (brute 870) (centipede -658) (cobol 362) (covariate 590) (departure 952) (deploy 44) (diophantine 645) (efferent 54) (elysee -326) (eradicate 376) (escritoire 856) (fiat 170) (infra -847) (isis -982) (markham 475) (mincemeat -880) (plugging -266) (speakeasy -745)
 
-(alliance -624) (archbishop -915) (balm 397) (bonnet 452) (brute 870) (centipede -658) (cobol 362) (covariate 590) (departure 952) (deploy 44) (diophantine 645) (efferent 54) (elysee -326) (eradicate 376) (exorcism -983) (fiat 170) (infra -847) (isis -982) (mincemeat -880) (moresby 756) (plugging -266) (vein 813) 
+(alliance -624) (archbishop -915) (balm 397) (bonnet 452) (brute 870) (centipede -658) (cobol 362) (covariate 590) (departure 952) (deploy 44) (diophantine 645) (efferent 54) (elysee -326) (eradicate 376) (exorcism -983) (fiat 170) (infra -847) (isis -982) (mincemeat -880) (moresby 756) (plugging -266) (vein 813)
 
-(alliance -624) (archbishop -915) (balm 397) (bonnet 452) (brute 870) (centipede -658) (cobol 362) (covariate 590) (departure 952) (deploy 44) (diophantine 645) (efferent 54) (elysee -326) (eradicate 376) (exorcism -983) (fiat 170) (infra -847) (isis -982) (smokescreen 423) 
+(alliance -624) (archbishop -915) (balm 397) (bonnet 452) (brute 870) (centipede -658) (cobol 362) (covariate 590) (departure 952) (deploy 44) (diophantine 645) (efferent 54) (elysee -326) (eradicate 376) (exorcism -983) (fiat 170) (infra -847) (isis -982) (smokescreen 423)
 
 ```
 
@@ -1477,15 +1477,15 @@ The weights of the following 5 subsets add up to zero:
 
 
 ```Mathematica
-a = {{"alliance", -624}, {"archbishop", -915}, {"balm", 397}, {"bonnet", 452}, 
-{"brute", 870}, {"centipede", -658}, {"cobol", 362}, {"covariate",  590},{"departure", 952}, 
-{"deploy", 44}, {"diophantine", 645}, {"efferent", 54}, {"elysee", -326}, {"eradicate", 376}, 
-{"escritoire", 856}, {"exorcism", -983}, {"fiat", 170}, {"filmy", -874}, {"flatworm", 503}, 
-{"gestapo", 915}, {"infra", -847}, {"isis", -982}, {"lindholm", 999}, {"markham", 475}, 
-{"mincemeat", -880}, {"moresby", 756}, {"mycenae", 183}, {"plugging", -266}, {"smokescreen", 423}, 
+a = {{"alliance", -624}, {"archbishop", -915}, {"balm", 397}, {"bonnet", 452},
+{"brute", 870}, {"centipede", -658}, {"cobol", 362}, {"covariate",  590},{"departure", 952},
+{"deploy", 44}, {"diophantine", 645}, {"efferent", 54}, {"elysee", -326}, {"eradicate", 376},
+{"escritoire", 856}, {"exorcism", -983}, {"fiat", 170}, {"filmy", -874}, {"flatworm", 503},
+{"gestapo", 915}, {"infra", -847}, {"isis", -982}, {"lindholm", 999}, {"markham", 475},
+{"mincemeat", -880}, {"moresby", 756}, {"mycenae", 183}, {"plugging", -266}, {"smokescreen", 423},
 {"speakeasy", -745}, {"vein", 813}};
 
-result = Rest@Select[ Subsets[a, 7], (Total[#[[;; , 2]]] == 0) &]; 
+result = Rest@Select[ Subsets[a, 7], (Total[#[[;; , 2]]] == 0) &];
 Map[ (Print["A zero-sum subset of length ", Length[#],  " : ", #[[;; , 1]]])& , result ]
 ```
 
@@ -1507,12 +1507,12 @@ The above code uses a brute-force approach, but Mathematica includes several sol
 
 
 ```Mathematica
-a = {{"alliance", -624}, {"archbishop", -915}, {"balm", 397}, {"bonnet", 452}, 
-{"brute", 870}, {"centipede", -658}, {"cobol", 362}, {"covariate",  590},{"departure", 952}, 
-{"deploy", 44}, {"diophantine", 645}, {"efferent", 54}, {"elysee", -326}, {"eradicate", 376}, 
-{"escritoire", 856}, {"exorcism", -983}, {"fiat", 170}, {"filmy", -874}, {"flatworm", 503}, 
-{"gestapo", 915}, {"infra", -847}, {"isis", -982}, {"lindholm", 999}, {"markham", 475}, 
-{"mincemeat", -880}, {"moresby", 756}, {"mycenae", 183}, {"plugging", -266}, {"smokescreen", 423}, 
+a = {{"alliance", -624}, {"archbishop", -915}, {"balm", 397}, {"bonnet", 452},
+{"brute", 870}, {"centipede", -658}, {"cobol", 362}, {"covariate",  590},{"departure", 952},
+{"deploy", 44}, {"diophantine", 645}, {"efferent", 54}, {"elysee", -326}, {"eradicate", 376},
+{"escritoire", 856}, {"exorcism", -983}, {"fiat", 170}, {"filmy", -874}, {"flatworm", 503},
+{"gestapo", 915}, {"infra", -847}, {"isis", -982}, {"lindholm", 999}, {"markham", 475},
+{"mincemeat", -880}, {"moresby", 756}, {"mycenae", 183}, {"plugging", -266}, {"smokescreen", 423},
 {"speakeasy", -745}, {"vein", 813}};
 
 desiredValue = 0;
@@ -1522,21 +1522,21 @@ aOnes = ConstantArray[1, Length[a]];
 aZeroOnes = ConstantArray[{0, 1}, Length[a]];
 Off[LinearProgramming::lpip];
 
-maxSoln = 
+maxSoln =
  LinearProgramming[-aOnes, {aValues}, {{desiredValue, 0}}, aZeroOnes, Integers];
 
 Print["Maximal solution: ", Select[Transpose[{maxSoln*aValues, aNames}], #[[1]] != 0 &]];
 
-minSoln = 
+minSoln =
  LinearProgramming[
   aOnes, {aValues, aOnes}, {{desiredValue, 0}, {1, 1}}, aZeroOnes, Integers];
 
 Print["Minimal solution: ", Select[Transpose[{minSoln*aValues, aNames}], #[[1]] != 0 &]];
 
-threeNineSoln = 
+threeNineSoln =
  LinearProgramming[
   aOnes, {aValues,
-          Boole[# < 0] & /@ aValues, 
+          Boole[# < 0] & /@ aValues,
           Boole[# > 0] & /@ aValues},
   {{desiredValue, 0}, {3, 0}, {9, 0}}, aZeroOnes, Integers];
 
@@ -1547,19 +1547,19 @@ Print["3 -ves, 9 +ves: ", Select[Transpose[{threeNineSoln*aValues, aNames}], #[[
 
 
 ```txt
-Maximal solution: {{-624, alliance}, {-915, archbishop}, {397, balm}, 
-    {870, brute}, {-658, centipede}, {362, cobol}, {590, covariate}, 
-    {44, deploy}, {645, diophantine}, {54, efferent}, {-326, elysee}, 
-    {376, eradicate}, {-983, exorcism}, {170, fiat}, {-874, filmy}, 
-    {503, flatworm}, {915, gestapo}, {-847, infra}, {-982, isis}, 
-    {999, lindholm}, {-880, mincemeat}, {756, moresby}, {183, mycenae}, 
+Maximal solution: {{-624, alliance}, {-915, archbishop}, {397, balm},
+    {870, brute}, {-658, centipede}, {362, cobol}, {590, covariate},
+    {44, deploy}, {645, diophantine}, {54, efferent}, {-326, elysee},
+    {376, eradicate}, {-983, exorcism}, {170, fiat}, {-874, filmy},
+    {503, flatworm}, {915, gestapo}, {-847, infra}, {-982, isis},
+    {999, lindholm}, {-880, mincemeat}, {756, moresby}, {183, mycenae},
     {-266, plugging}, {423, smokescreen}, {-745, speakeasy}, {813, vein}}
 
 Minimal solution: {{-915, archbishop}, {915, gestapo}}
 
-3 -ves, 9 +ves: {{-915, archbishop}, {397, balm}, {452, bonnet}, 
-    {362, cobol}, {44, deploy}, {54, efferent}, {-983, exorcism}, 
-    {170, fiat}, {503, flatworm}, {-982, isis}, {475, markham}, 
+3 -ves, 9 +ves: {{-915, archbishop}, {397, balm}, {452, bonnet},
+    {362, cobol}, {44, deploy}, {54, efferent}, {-983, exorcism},
+    {170, fiat}, {503, flatworm}, {-982, isis}, {475, markham},
     {423, smokescreen}}.
 ```
 
@@ -1888,7 +1888,7 @@ function comb(sequence pool, integer needed, done=0, sequence chosen={})
                 chosen[i] = words[chosen[i]]
             end for
             printf(1,"%d: %s\n",{length(chosen),sprint(chosen)})
-            return 1 
+            return 1
         end if
     elsif done+needed<=length(pool) then
         -- get all combinations with and without the next item:
@@ -1899,7 +1899,7 @@ function comb(sequence pool, integer needed, done=0, sequence chosen={})
         end if
     end if
     return 0
-end function       
+end function
 
 integer n = length(weights)
 for i=1 to n do
@@ -1961,7 +1961,7 @@ Shows the first zero-sum subset found, only.
 
 ```Phix
 constant weights = {-61, 1, 32, 373, 311, 249, 311, 32, -92, -185, -433,
-                    -402, -247, 156, 125, 249, 32, -464, -278, 218, 32, 
+                    -402, -247, 156, 125, 249, 32, -464, -278, 218, 32,
                     -123, -216, 373, -185, -402, 156, -402, -61, -31, 902 }
 
 integer sums = new_dict()
@@ -1973,7 +1973,7 @@ for w=1 to length(weights) do
     integer s = new_dict(sums)
     atom v = weights[w]
     if getd_index(v,s)=NULL then setd(v,{w},s) end if
- 
+
     sequence sk = getd_all_keys(s)
     for i=1 to length(sk) do
         integer node = getd_index(sk[i],sums)
@@ -2107,7 +2107,7 @@ for (w,v) in words.iteritems():
 
 ```python>>>
  from itertools import combinations
->>> 
+>>>
 >>> word2weight = {"alliance": -624, "archbishop": -915, "balm": 397, "bonnet": 452,
   "brute": 870, "centipede": -658, "cobol": 362, "covariate": 590,
   "departure": 952, "deploy": 44, "diophantine": 645, "efferent": 54,
@@ -2124,7 +2124,7 @@ for (w,v) in words.iteritems():
 				answer = [(w, word2weight[w]) for w in comb]
 				break
 
-			
+
 >>> answer
 [('archbishop', -915), ('gestapo', 915)]
 ```
@@ -2194,13 +2194,13 @@ This REXX solution isn't limited to integers for the weights.     This isn't a b
 
 While optimizing the original program, it was found that sorting the names by weight could yield a vastly
 
-improved algorithm (by an order of magnitude), so the extra code to sort the list was included, as well as 
+improved algorithm (by an order of magnitude), so the extra code to sort the list was included, as well as
 
-another sort to show the solutions in alphabetical order.   Support was also added to allow specification of 
+another sort to show the solutions in alphabetical order.   Support was also added to allow specification of
 
 which "chunk" to search for solutions   (that is, out of the 31 names, take a "chunk" at a time).
 
-Added was "que pasa" informational messages.   The sum   (which is zero for this task)   can be any number, 
+Added was "que pasa" informational messages.   The sum   (which is zero for this task)   can be any number,
 
 and can be specifiable on the command line.
 
@@ -2301,7 +2301,7 @@ tellz:             do j=1  for N                 /*show a list of names and weig
        call tello;                  return
 ```
 
-Output note:   this program also writes the displayed output to file(s):   SUBSET.nnn 
+Output note:   this program also writes the displayed output to file(s):   SUBSET.nnn
 
  ──────── where   nnn   is the ''chunk'' number.
 
@@ -2414,7 +2414,7 @@ knapsack = createDimList([pow(2, len(knap)),len(knap)+2])
 knapweight = createDimList([pow(2, len(knap)),len(knap)+2])
 lenknap = list(pow(2, len(knap)))
 
-powerset(knap) 
+powerset(knap)
 
 func powerset(list)
         n1 = 0
@@ -2423,17 +2423,17 @@ func powerset(list)
              n2 = 0
              n1 = n1 + 1
              weight = 0
-             for j = 1 to len(list) 
+             for j = 1 to len(list)
                   if i & (1 << j)
                      n2 = n2 + 1
                      knapsack[n1][n2] = list[j][1]
-                     weight = weight + list[j][2] 
+                     weight = weight + list[j][2]
                      knapweight[n1][n2] = list[j][2]
                   ok
              next
              lenknap[n1] = n2+1
-             if weight = 0  
-             see "" + num + ": "               
+             if weight = 0
+             see "" + num + ": "
                 for p = 1 to lenknap[n1]-1
                       see "{" + knapsack[n1][p] + " " + knapweight[n1][p]+ "}"
                 next
@@ -2446,15 +2446,15 @@ func createDimList(dimArray)
         sizeList = len(dimArray)
         newParms = []
         for i = 2 to sizeList
-            Add(newParms, dimArray[i]) 
-        next      
+            Add(newParms, dimArray[i])
+        next
         alist = list(dimArray[1])
         if sizeList = 1
            return aList
         ok
         for t in alist
               t = createDimList(newParms)
-        next       
+        next
         return alist
 
 ```
@@ -2495,7 +2495,7 @@ words = weights.keys
   zerosum = words.combination(n).find do |subset|
     subset.reduce(0) {|sum, word| sum + weights[word]} == 0
   end
-  
+
   if zerosum
     puts "a subset of length #{n} that sums to zero: #{zerosum}"
   else
@@ -2774,7 +2774,7 @@ Found zero-summing subset: archbishop, gestapo
 
 ## Ursala
 
-This solution scans the set sequentially while maintaining a record of all distinct sums obtainable by words encountered thus far, and stops when a zero sum is found. 
+This solution scans the set sequentially while maintaining a record of all distinct sums obtainable by words encountered thus far, and stops when a zero sum is found.
 
 ```Ursala
 #import std
@@ -2866,7 +2866,7 @@ T("isis",      -982),  T("lindholm",     999),  T("markham",     475),
 T("mincemeat", -880),  T("moresby",      756),  T("mycenae",     183),
 T("plugging",  -266),  T("smokescreen",  423),  T("speakeasy",  -745),
 T("vein",       813));
- 
+
 fcn subSum(set,i,weight){
    if(i and not weight){
       itms:=i.pump(List,'wrap(n){ items[set[n]][0] });

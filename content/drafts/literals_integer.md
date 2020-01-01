@@ -116,8 +116,8 @@ _exit:
 
 ## Ada
 
-In [[Ada]] integer literals may have the form <base>#<numeral>#. 
-Here <base> can be from the range 2..16. 
+In [[Ada]] integer literals may have the form <base>#<numeral>#.
+Here <base> can be from the range 2..16.
 For example:
 
 ```ada
@@ -162,12 +162,12 @@ if ((727 == 0x2d7) && (727 == 01327)) {
 
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release [http://sourceforge.net/projects/algol68/files/algol68toc/algol68toc-1.8.8d/algol68toc-1.8-8d.fc9.i386.rpm/download 1.8-8d]}}
 
-Binary literals are of type BITS, and need to be converted 
+Binary literals are of type BITS, and need to be converted
 to INT using the operator ABS.
 
 ```algol68
 main:(
- 
+
   SHORT SHORT INT ssdec = SHORT SHORT 727,
             sshex = ABS SHORT SHORT 16r2d7,
             ssoct = ABS SHORT SHORT 8r1327,
@@ -182,7 +182,7 @@ main:(
       hex = ABS 16r2d7,
       oct = ABS 8r1327,
       bin = ABS 2r1011010111;
- 
+
   LONG INT ldec = LONG 727,
            lhex = ABS LONG 16r2d7,
            loct = ABS LONG 8r1327,
@@ -303,40 +303,40 @@ sMessValeur:   .fill 12, 1, ' '
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                @ entry of program 
-    push {fp,lr}      @ saves 2 registers 
-    ldr r0,iAdriNumberBinaire   @ number address 
+.global main
+main:                @ entry of program
+    push {fp,lr}      @ saves 2 registers
+    ldr r0,iAdriNumberBinaire   @ number address
     ldr r0,[r0]                     @ load number
-    ldr r1,iAdrsMessValeur                
+    ldr r1,iAdrsMessValeur
     bl conversion10       @ call function with 2 parameter (r0,r1)
     ldr r0,iAdrszMessResult
     bl affichageMess            @ display message
     ldr r0,iAdriNumberOctal
     ldr r0,[r0]
-    ldr r1,iAdrsMessValeur                
+    ldr r1,iAdrsMessValeur
     bl conversion10       @ call function with 2 parameter (r0,r1)
     ldr r0,iAdrszMessResult
     bl affichageMess            @ display message
    ldr r0,iAdriNumberDecimal
     ldr r0,[r0]
-    ldr r1,iAdrsMessValeur                
+    ldr r1,iAdrsMessValeur
     bl conversion10       @ call function with 2 parameter (r0,r1)
     ldr r0,iAdrszMessResult
     bl affichageMess            @ display message
     ldr r0,iAdriNumberHexa
     ldr r0,[r0]
-    ldr r1,iAdrsMessValeur                
+    ldr r1,iAdrsMessValeur
     bl conversion10       @ call function with 2 parameter (r0,r1)
     ldr r0,iAdrszMessResult
     bl affichageMess            @ display message
 
-100:   @ standard end of the program 
+100:   @ standard end of the program
     mov r0, #0                  @ return code
     pop {fp,lr}                 @restaur 2 registers
     mov r7, #EXIT              @ request to exit program
@@ -349,11 +349,11 @@ iAdrsMessValeur:		.int sMessValeur
 iAdrszMessResult:		.int szMessResult
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}    			/* save  registres */ 
+    push {r0,r1,r2,r7,lr}    			/* save  registres */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
     ldrb r1,[r0,r2]  			/* read octet start position + index */
@@ -365,46 +365,46 @@ affichageMess:
     mov r0,#STDOUT      		/* code to write to the standard output Linux */
     mov r7, #WRITE             /* code call system "write" */
     svc #0                      /* call systeme */
-    pop {r0,r1,r2,r7,lr}    				/* restaur des  2 registres */ 
+    pop {r0,r1,r2,r7,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 conversion10:
-    push {r1-r4,lr}    /* save registers */ 
+    push {r1-r4,lr}    /* save registers */
     mov r3,r1
     mov r2,#10
 
 1:	   @ start loop
     bl divisionpar10 @ r0 <- dividende. quotient ->r0 reste -> r1
-    add r1,#48        @ digit	
+    add r1,#48        @ digit
     strb r1,[r3,r2]  @ store digit on area
     sub r2,#1         @ previous position
     cmp r0,#0         @ stop if quotient = 0 */
     bne 1b	          @ else loop
     @ and move spaves in first on area
-    mov r1,#' '   @ space	
-2:	
+    mov r1,#' '   @ space
+2:
     strb r1,[r3,r2]  @ store space in area
     subs r2,#1       @ @ previous position
-    bge 2b           @ loop if r2 >= zéro 
+    bge 2b           @ loop if r2 >= zéro
 
-100:	
-    pop {r1-r4,lr}    @ restaur registres 
+100:
+    pop {r1-r4,lr}    @ restaur registres
     bx lr	          @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
-divisionpar10:	
+divisionpar10:
   /* r0 contains the argument to be divided by 10 */
    push {r2-r4}   /* save registers  */
-   mov r4,r0 
+   mov r4,r0
    ldr r3, .Ls_magic_number_10 /* r1 <- magic_number */
    smull r1, r2, r3, r0   /* r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) */
    mov r2, r2, ASR #2     /* r2 <- r2 >> 2 */
@@ -627,13 +627,13 @@ Bracmat only supports specification of numbers in base ten.
 Leading 0 means octal, 0x or 0X means hexadecimal. Otherwise, it is just decimal.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main(void)
 {
   printf("%s\n",
-         ( (727 == 0x2d7) && 
+         ( (727 == 0x2d7) &&
            (727 == 01327)    ) ? "true" : "false");
 
   return 0;
@@ -674,15 +674,15 @@ int x = 0b1100_1001_1111_0000;
 The same comments apply as to the [[#C|C example]].
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main()
 {
-  std::cout << ( (727 == 0x2d7) && 
+  std::cout << ( (727 == 0x2d7) &&
                  (727 == 01327)     ? "true" : "false")
             << std::endl;
- 
+
   return 0;
 }
 ```
@@ -919,7 +919,7 @@ var b = 0x2a
 
 
 ```efene
-@public 
+@public
 run = fn () {
     io.format("0xff  : ~B~n", [0xff])
     io.format("0xFF  : ~B~n", [0xFF])
@@ -1123,7 +1123,7 @@ Most type suffixes can be preceded with a 'u', which indicates the type is unisg
 
 ```
 
-Factor also supports the arbitrary use of commas in integer literals:  
+Factor also supports the arbitrary use of commas in integer literals:
 
 ```factor
 1,234,567 .
@@ -1191,7 +1191,7 @@ program IntegerLiteral
   integer, parameter   :: dec = 727
   integer, parameter   :: hex = Z'2d7'
   integer, parameter   :: oct = O'1327'
-  integer, parameter   :: bin = B'1011010111' 
+  integer, parameter   :: bin = B'1011010111'
 
   print *, dec, hex, oct, bin
 
@@ -1216,7 +1216,7 @@ Outputs:
 ```freebasic
 ' FB 1.05.0 Win64
 
-' The following all print 64 to the console 
+' The following all print 64 to the console
 
 ' integer literals of unspecified type - actual type is inferred from size or context (8, 16, 32 or 64 bit signed/unsigned)
 Print 64        '' Decimal literal
@@ -1224,9 +1224,9 @@ Print &H40      '' Hexadecimal literal
 Print &O100     '' Octal Literal
 Print &B1000000 '' Binary literal
 
-' integer literals of specific types 
+' integer literals of specific types
 ' Integer type is 4 bytes on 32 bit and 8 bytes on 64 bit platform
-Print 64%       '' Decimal signed 4/8 byte integer (Integer) 
+Print 64%       '' Decimal signed 4/8 byte integer (Integer)
 Print 64L       '' Decimal signed 4 byte integer   (Long)
 Print 64&       '' Decimal signed 4 byte integer   (Long) - alternative suffix
 Print 64LL      '' Decimal unsigned 4 byte integer (ULong)
@@ -1258,7 +1258,7 @@ FrinkRulesYou\\36                // (a number in base 36)
 0x845FED                         // (Common hexadecimal notation)
 0xFEED_FACE                      // (Hexadecimal with underscores for readability)
 0b100001000101111111101101       // (Common binary notation)
-0b1000_0100_0101_1111_1110_1101  // (Binary with underscores for readability) 
+0b1000_0100_0101_1111_1110_1101  // (Binary with underscores for readability)
 
 ```
 
@@ -1430,7 +1430,7 @@ Icon/Unicon supports digit literals of the form <base>r<value> with base being f
 
 ```Icon
 procedure main()
-L := [1, 2r10, 3r10, 4r10, 5r10, 6r10, 7r10, 8r10, 9r10, 10r10, 11r10, 12r10, 13r10, 14r10, 
+L := [1, 2r10, 3r10, 4r10, 5r10, 6r10, 7r10, 8r10, 9r10, 10r10, 11r10, 12r10, 13r10, 14r10,
       15r10, 16r10, 17r10, 18r10,19r10, 20r10, 21r10, 22r10, 23r10, 24r10, 25r10, 26r10, 27r10,
       28r10, 29r10, 30r10, 31r10, 32r10, 33r10, 34r10, 35r10, 36r10]
 
@@ -1478,7 +1478,7 @@ J also allows integers to be entered using other notations, such as scientific o
 
 
 ```j
-   1e2 100r5   
+   1e2 100r5
 100 20
 ```
 
@@ -1499,7 +1499,7 @@ A leading 0 means octal, 0x or 0X means hexadecimal. Otherwise, it is just decim
 ```java5
 public class IntegerLiterals {
     public static void main(String[] args) {
-        System.out.println( 727 == 0x2d7 && 
+        System.out.println( 727 == 0x2d7 &&
                             727 == 01327   );
     }
 }
@@ -1526,7 +1526,7 @@ public class BinaryLiteral {
 
 
 ```javascript
-if ( 727 == 0x2d7 && 
+if ( 727 == 0x2d7 &&
      727 == 01327 )
     window.alert("true");
 ```
@@ -1551,7 +1551,7 @@ true
 
 ## Kotlin
 
-Kotlin supports 3 types of integer literal (signed 4 byte), namely : decimal, hexadecimal and binary. 
+Kotlin supports 3 types of integer literal (signed 4 byte), namely : decimal, hexadecimal and binary.
 
 These can be converted to long integer literals (signed 8 byte) by appending the suffix 'L' (lower case 'l' is not allowed as it is easily confused with the digit '1').
 
@@ -1573,7 +1573,7 @@ fun main(args: Array<String>) {
     val sh : Short = 0x7f        // hexadecimal integer literal automatically converted to Short
     val bd : Byte  = 0b01111111  // binary integer literal automatically converted to Byte
 
-    println("$d $h $b $ld $lh $lb $sd $sh $bd")   
+    println("$d $h $b $ld $lh $lb $sd $sh $bd")
 }
 ```
 
@@ -1714,7 +1714,7 @@ eval(0x10)      # base 16
 ```
 
 
-Output: 
+Output:
 ```txt
 10        # base 10
 8       # base 8
@@ -1735,7 +1735,7 @@ eval(`0r36:10') # base 36
 ```
 
 
-Output: 
+Output:
 ```txt
 2      # base 2
 2  # base 2
@@ -1749,7 +1749,7 @@ Output:
 
 
 ```Mathematica
-b^^nnnn is a valid number in base b (with b ranging from 2 to 36) : 
+b^^nnnn is a valid number in base b (with b ranging from 2 to 36) :
 2^^1011
 -> 11
 
@@ -1775,7 +1775,7 @@ ans =  17
 ```
 
 
-Other representation of other bases need to be converted by functions 
+Other representation of other bases need to be converted by functions
 
 ```MATLAB
 hex2dec(s)
@@ -1977,38 +1977,38 @@ return
 
 ```txt
 
-                   8 ==        8 
-                  -8 ==       -8 
-                 1x8 ==       -8 
-                 2x8 ==        8 
-                2x08 ==        8 
-                0x08 ==        8 
-                0x10 ==       16 
-                0x81 ==      129 
-                2x81 ==     -127 
-                3x81 ==      129 
-                4x81 ==      129 
-               04x81 ==      129 
-               16x81 ==      129 
-              4xF081 ==    -3967 
-              8xF081 ==    61569 
-              0Xf081 ==    61569 
-              0xffff ==    65535 
-              4xffff ==       -1 
-              8xffff ==    65535 
-                 1b0 ==        0 
-                 1b1 ==       -1 
-                 2b1 ==        1 
-                0b10 ==        2 
-                2b10 ==       -2 
-                3b10 ==        2 
-               0b100 ==        4 
-               3b100 ==       -4 
-               4b100 ==        4 
-              4b1000 ==       -8 
-              8B1000 ==        8 
- 00B1111111111111111 ==    65535 
- 16B1111111111111111 ==       -1 
+                   8 ==        8
+                  -8 ==       -8
+                 1x8 ==       -8
+                 2x8 ==        8
+                2x08 ==        8
+                0x08 ==        8
+                0x10 ==       16
+                0x81 ==      129
+                2x81 ==     -127
+                3x81 ==      129
+                4x81 ==      129
+               04x81 ==      129
+               16x81 ==      129
+              4xF081 ==    -3967
+              8xF081 ==    61569
+              0Xf081 ==    61569
+              0xffff ==    65535
+              4xffff ==       -1
+              8xffff ==    65535
+                 1b0 ==        0
+                 1b1 ==       -1
+                 2b1 ==        1
+                0b10 ==        2
+                2b10 ==       -2
+                3b10 ==        2
+               0b100 ==        4
+               3b100 ==       -4
+               4b100 ==        4
+              4b1000 ==       -8
+              8B1000 ==        8
+ 00B1111111111111111 ==    65535
+ 16B1111111111111111 ==       -1
  32B1111111111111111 ==    65535
 
 ```
@@ -2092,7 +2092,7 @@ Literals for the other built-in integer types:
 Integers can be expressed into base 10 (default), base 16 (using 0x prefix) or base 2 (using 0b prefix).
 
 
-Those prefixes can be used for arbitrary precision integers : 
+Those prefixes can be used for arbitrary precision integers :
 
 {{out}}
 
@@ -2158,7 +2158,7 @@ const
 
 
 ```perl
-print "true\n" if ( 727 == 0x2d7 && 
+print "true\n" if ( 727 == 0x2d7 &&
                     727 == 01327 &&
                     727 == 0b1011010111 &&
                     12345 == 12_345   # underscores are ignored; useful for keeping track of places
@@ -2200,7 +2200,7 @@ Phix also supports 0b01, 0o07, (0t07,) 0d09, and 0x0F for binary, octal, (octal,
 (The only difference between 0o07 and 0t07 is personal preference.) There is no difference whatsoever between 1 and 1.0.
 
 Given the need for 2, 8, 10, and 16, rather than four routines I wrote one that could handle all of them, and trivially
-extended it to cope up to base 36. Thus Phix (also) allows any base between 2 and 36, using the notation o(<base>)digits, 
+extended it to cope up to base 36. Thus Phix (also) allows any base between 2 and 36, using the notation o(<base>)digits,
 eg o(7)16 is the base 7 representation of the decimal 13 (ie 1*7^1 + 6*7^0).
 Phix does not however support "leading 0 is octal", or "trailing h is hex" or any other trailing qualifiers.
 There is also a specialist "bytewise octal" that I personally wanted for x86 opcodes/listing files, eg 0ob377377377377==#FFFFFFFF.
@@ -2209,7 +2209,7 @@ An integer literal representing a character code can also be expressed by surrou
 
 Elements (8-bit characters) of an ansi string can likewise be treated as integers. Strings representing a number can/must be converted using eg scanf().
 
-In the 32-bit version, integers outside -1,073,741,824 to +1,073,741,823 must be stored as atoms, which [ie a 64-bit float] can (accurately) store integers up to 9,007,199,254,740,992: 
+In the 32-bit version, integers outside -1,073,741,824 to +1,073,741,823 must be stored as atoms, which [ie a 64-bit float] can (accurately) store integers up to 9,007,199,254,740,992:
 between 9,007,199,254,740,992 and 18,014,398,509,481,984 you can only store even numbers, and between 18,014,398,509,481,984 and 36,028,797,018,963,968, you can only store numbers divisible by 4, and so on. (ie as you need more and more bits on the front, eventually bits must start falling off the end)
 
 In the 64-bit version the limits of integers are -4,611,686,018,427,387,904 to +4,611,686,018,427,387,903. Offhand I don't know
@@ -2237,7 +2237,7 @@ The included bigatom library allows working with extremely large integers with a
 
 ```php
 <?php
-if ( 727 == 0x2d7 && 
+if ( 727 == 0x2d7 &&
      727 == 01327 )
     echo "true\n";
 ?>
@@ -2253,7 +2253,7 @@ In the strict sense of this task, PicoLisp reads only integers at bases which ar
 : (setq *Scl 4)
 -> 4
 
-: 123.456789   
+: 123.456789
 -> 1234568
 ```
 
@@ -2352,7 +2352,7 @@ x = 'a'     ;129
 ## Python
 
 {{works with|Python|3.0}}
-Python 3.0 brought in the binary literal and uses 0o or 0O exclusively for octal. 
+Python 3.0 brought in the binary literal and uses 0o or 0O exclusively for octal.
 
 ```python>>>
  # Bin(leading 0b or 0B), Oct(leading 0o or 0O), Dec, Hex(leading 0x or 0X), in order:
@@ -2506,13 +2506,13 @@ With thing=c2d('A') I see:
 
 ```txt
 
-base  10= 193        
-base   2= 11000001   
-base  16= C1         
-base 256= A 
+base  10= 193
+base   2= 11000001
+base  16= C1
+base 256= A
 
 ```
- 
+
 The first three lines are platform-independent.
 
 
@@ -2532,11 +2532,11 @@ func bintodec(bin)
          binsum = binsum + number(bin[n]) *pow(2, len(bin)-n)
      next
      return binsum
- 
+
 func octal m
      output = ""
      w = m
-     while fabs(w) > 0    
+     while fabs(w) > 0
            oct = w & 7
            w = floor(w / 8)
            output = string(oct) + output
@@ -2593,7 +2593,7 @@ Binary literal = 1234
 
 Scala has signed integers of 8, 16, 32 and 64 bits. They can be represented in decimal, octal by prefixing
 <code>0</code>, or hexadecimal by prefixing <code>0x</code> or <code>0X</code>. Without any other type hint,
-it defaults to 32 bits integers, or an <code>Int</code>. An <code>l</code> or <code>L</code> suffix will 
+it defaults to 32 bits integers, or an <code>Int</code>. An <code>l</code> or <code>L</code> suffix will
 indicate a 64 bits integer, or a <code>Long</code>. The other two types, <code>Byte</code> and <code>Short</code>,
 can be represented using type ascription, as shown below.
 
@@ -2698,7 +2698,7 @@ say 0b1111_1111;
 
 ## Slate
 
- 
+
 
 ```slate>2r1011010111 + 8r1327 + 10r727 + 16r2d7 / 4</lang
 
@@ -2706,7 +2706,7 @@ say 0b1111_1111;
 
 ## Smalltalk
 
- 
+
 
 ```smalltalk>2r1011010111 + 5r100 + 8r1327 + 10r727 + 16r2d7 / 4</lang
 
@@ -2767,11 +2767,11 @@ let oct = 0o57 // Octal
 ```tcl
 % expr 727 == 0x2d7
 1
-% expr 727 == 0o1327 
+% expr 727 == 0o1327
 1
-% expr 727 == 01327 
+% expr 727 == 01327
 1
-% expr 727 == 0b1011010111 
+% expr 727 == 0b1011010111
 1
 ```
 
@@ -2803,7 +2803,7 @@ Some shells have arithmetic expansion. These shells may accept literals in other
 Quoting the manual page of [[pdksh]]:
 
  Integer constants may be specified with arbitrary bases using the
- notation <u>base</u>#<u>number</u>, where <u>base</u> is a decimal integer specifying the 
+ notation <u>base</u>#<u>number</u>, where <u>base</u> is a decimal integer specifying the
  base, and <u>number</u> is a number in the specified base.  Additionally,
  integers may be prefixed with `0X' or `0x' (specifying base 16) or `0'
  (base 8) in all forms of arithmetic expressions, except as numeric
@@ -2885,9 +2885,9 @@ is used for numbers stored in binary converted decimal format, also with unlimit
 
 
 ```verbexx
-//    Integer Literals: 
+//    Integer Literals:
 //
-//    If present, base prefix must be:    0b 0B (binary) 0o 0O (octal) 
+//    If present, base prefix must be:    0b 0B (binary) 0o 0O (octal)
 //                                        0x 0X (hex)
 //
 //    If present, length suffix must be:  i I i64 I64 (INT64_T)
@@ -2895,34 +2895,34 @@ is used for numbers stored in binary converted decimal format, also with unlimit
 //                                        i32 I32 (INT32_T) u32 U32 (UINT32_T)
 //                                        i16 I16 (INT16_T) u16 U16 (UINT16_T)
 //                                        i8  I8  (INT8_T)  u8  U8  (UINT8_T)
-//                                        u1  U1  (BOOL_T)  u0  U0  (UNIT_T) 
-//                                        iV  iv  Iv IV             (INTV_T)     
+//                                        u1  U1  (BOOL_T)  u0  U0  (UNIT_T)
+//                                        iV  iv  Iv IV             (INTV_T)
 
 //     Binary       Octal         Decimal       Hexadecimal
 //     ------------ ----------    ------------  --------------
-@SAY  0b1101        0o016         19999999      0xFfBBcC0088   ; // INT64_T 
-@SAY  0B0101        0O777        -12345678      0X0a2B4c6D8eA  ; // INT64_T 
-@SAY  0b1101I64     0o707I64      12345678i64   0xFfBBcC00i64  ; // INT64_T 
-@SAY  0b1101I       0o57707i     -2345678I      0xfafbbCc99i   ; // INT64_T 
-@SAY  0b1001U64     0o555u64      33345678u64   0xFfaBcC00U64  ; // UINT64_T 
-@SAY  0b10010100U   0o1234567u    3338u         0x99faBcC0EU   ; // UINT64_T 
-@SAY  0B0101i32     0O753I32      987654i32     0XAAb4cCeeI32  ; // INT32_T  
-@SAY  0B0101u32     0O573u32      987654U32     0X0BAb4cCeeU32 ; // UINT32_T 
-@SAY  0B0101i16     0O753i16     -017654I16     0X000cCffi16   ; // INT16_T  
-@SAY  0B0101u16     0O633U16      27654U16      0X000dDbBu16   ; // UINT16_T   
-@SAY  0B0101i8      0O153i8      -000114I8      0X000ffi8      ; // INT8_T  
-@SAY  0B0101u8      0O132U8       00094U8       0X0000bu8      ; // UINT8_T  
+@SAY  0b1101        0o016         19999999      0xFfBBcC0088   ; // INT64_T
+@SAY  0B0101        0O777        -12345678      0X0a2B4c6D8eA  ; // INT64_T
+@SAY  0b1101I64     0o707I64      12345678i64   0xFfBBcC00i64  ; // INT64_T
+@SAY  0b1101I       0o57707i     -2345678I      0xfafbbCc99i   ; // INT64_T
+@SAY  0b1001U64     0o555u64      33345678u64   0xFfaBcC00U64  ; // UINT64_T
+@SAY  0b10010100U   0o1234567u    3338u         0x99faBcC0EU   ; // UINT64_T
+@SAY  0B0101i32     0O753I32      987654i32     0XAAb4cCeeI32  ; // INT32_T
+@SAY  0B0101u32     0O573u32      987654U32     0X0BAb4cCeeU32 ; // UINT32_T
+@SAY  0B0101i16     0O753i16     -017654I16     0X000cCffi16   ; // INT16_T
+@SAY  0B0101u16     0O633U16      27654U16      0X000dDbBu16   ; // UINT16_T
+@SAY  0B0101i8      0O153i8      -000114I8      0X000ffi8      ; // INT8_T
+@SAY  0B0101u8      0O132U8       00094U8       0X0000bu8      ; // UINT8_T
 @SAY  0b0u1         0o0u1         00u1 0U1      0x000u1        ; // BOOL_T (FALSE)
-@SAY  0B001u1       0O1u1         1u1 01U1      0X1u1 0x001U1  ; // BOOL_T (TRUE ) 
-@SAY  0b0u0         0o000u0       00u0 0U0      0x0u0 0X000U0  ; // UNIT_T 
-@SAY                             -1234iV                       ; // INTV_T (cpp_int) 
-@SAY                              56781234Iv                   ; // INTV_T (cpp_int) 
+@SAY  0B001u1       0O1u1         1u1 01U1      0X1u1 0x001U1  ; // BOOL_T (TRUE )
+@SAY  0b0u0         0o000u0       00u0 0U0      0x0u0 0X000U0  ; // UNIT_T
+@SAY                             -1234iV                       ; // INTV_T (cpp_int)
+@SAY                              56781234Iv                   ; // INTV_T (cpp_int)
 
-//  note: _ (underscores) can appear in the main numeric part of the literal, 
+//  note: _ (underscores) can appear in the main numeric part of the literal,
 //        after any base prefix, and before any length suffix.  If there is
-//        no prefix, the numeric literal cannot begin with underscore: 
+//        no prefix, the numeric literal cannot begin with underscore:
 
-@SAY 100_000  1_u1  0x_FFFF_u16  1__0__  0x__7890_ABCD_EFAB_CDEF__u64;   
+@SAY 100_000  1_u1  0x_FFFF_u16  1__0__  0x__7890_ABCD_EFAB_CDEF__u64;
 ```
 
 
@@ -2945,25 +2945,25 @@ Dim l1 As Long, l2 As Long, l3 As Long
 Dim i1 As Integer, i2 As Integer, i3 As Integer
 'Byte:    1 Byte (unsigned), no type specifier
 Dim b1 As Byte, b2 As Byte, b3 As Byte
-  
+
   l1 = 1024&
   l2 = &H400&
   l3 = &O2000&
   Debug.Assert l1 = l2
   Debug.Assert l2 = l3
-  
+
   i1 = 1024
   i2 = &H400
   i3 = &O2000
   Debug.Assert i1 = i2
   Debug.Assert i2 = i3
-  
+
   b1 = 255
   b2 = &O377
   b3 = &HFF
   Debug.Assert b1 = b2
   Debug.Assert b2 = b3
-  
+
 End Sub
 ```
 

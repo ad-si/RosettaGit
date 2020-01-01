@@ -10,15 +10,15 @@ categories = []
 tags = []
 +++
 
-{{task|Arithmetic operations}} 
+{{task|Arithmetic operations}}
 
 ;Task:
-Provide code that produces a list of numbers which is the   <big>n<sup>th</sup></big>  order forward difference, given a non-negative integer (specifying the order) and a list of numbers. 
+Provide code that produces a list of numbers which is the   <big>n<sup>th</sup></big>  order forward difference, given a non-negative integer (specifying the order) and a list of numbers.
 
 
-The first-order forward difference of a list of numbers   <big>'''A'''</big>   is a new list   <big>'''B'''</big>,   where   <big><b>B</b><sub>n</sub> = <b>A</b><sub>n+1</sub> - <b>A</b><sub>n</sub></big>. 
+The first-order forward difference of a list of numbers   <big>'''A'''</big>   is a new list   <big>'''B'''</big>,   where   <big><b>B</b><sub>n</sub> = <b>A</b><sub>n+1</sub> - <b>A</b><sub>n</sub></big>.
 
-List   <big>'''B'''</big>   should have one fewer element as a result. 
+List   <big>'''B'''</big>   should have one fewer element as a result.
 
 The second-order forward difference of   <big>'''A'''</big>   will be:
 
@@ -32,21 +32,21 @@ tdefmodule Diff do
 	def forward([_|[]],diffs,i) do
 		if i == 1 do
 			IO.inspect diffs
-		else 
+		else
 			forward(diffs,[],i-1)
 		end
 	end
 
 	def forward([val1|[val2|vals]],diffs,i) do
-		forward([val2|vals],diffs++[val2-val1],i) 
+		forward([val2|vals],diffs++[val2-val1],i)
 	end
-end 
+end
 
 ```
 
-The same as the first-order forward difference of   <big>'''B'''</big>. 
+The same as the first-order forward difference of   <big>'''B'''</big>.
 
-That new list will have two fewer elements than   <big>'''A'''</big>   and one less than   <big>'''B'''</big>. 
+That new list will have two fewer elements than   <big>'''A'''</big>   and one less than   <big>'''B'''</big>.
 
 The goal of this task is to repeat this process up to the desired order.
 
@@ -90,9 +90,9 @@ procedure Forward_Difference is
       else
          Ada.Text_IO.Put_Line("Empty List");
       end if;
-      
+
    end Print;
-   
+
   function Diff(Item : Vector; Num_Passes : Natural) return Vector is
       A : Vector := Item;
       B : Vector := Empty_Vector;
@@ -204,7 +204,7 @@ begin
     integer array diff( 1 ::  9 );
     integer vPos, length;
 
-    % construct the initial values array                              %    
+    % construct the initial values array                              %
     vPos := 1;
     for i := 90, 47, 58, 29, 22, 32, 55, 5, 55, 73 do begin
         v( vPos ) := i;
@@ -247,13 +247,13 @@ end.
 
 ```apl
       list ←  90 47 58 29 22 32 55 5 55 73
-      
-      fd   ←  {⍺=0:⍵⋄(⍺-1)∇(1↓⍵)-(¯1↓⍵)} 
-      
-      1 fd list 
+
+      fd   ←  {⍺=0:⍵⋄(⍺-1)∇(1↓⍵)-(¯1↓⍵)}
+
+      1 fd list
 ¯43 11 ¯29 ¯7 10 23 ¯50 50 18
-      
-      2 fd list 
+
+      2 fd list
 54 ¯40 22 17 13 ¯73 100 ¯32
 ```
 
@@ -270,17 +270,17 @@ end.
 -- forwardDifference :: Int -> [Int] -> [Int]
 on forwardDifference(n, xs)
     set lng to length of xs
-    
+
     -- atLength :: [Int] -> Bool
     script atLength
         property fullLength : lng
         property ndx : n
-        
+
         on |λ|(ds)
             (atLength's fullLength) - (length of ds) ≥ atLength's ndx
         end |λ|
     end script
-    
+
     -- fd :: [Int] -> [Int]
     script fd
         on |λ|(xs)
@@ -289,11 +289,11 @@ on forwardDifference(n, xs)
                     a - b
                 end |λ|
             end script
-            
+
             zipWith(minus, tail(xs), xs)
         end |λ|
     end script
-    
+
     |until|(atLength, fd, xs)
 end forwardDifference
 
@@ -301,14 +301,14 @@ end forwardDifference
 -- TEST ----------------------------------------------------------------------
 on run
     set xs to {90, 47, 58, 29, 22, 32, 55, 5, 55, 73}
-    
+
     script test
         on |λ|(n)
             intercalate("  ->  [", ¬
                 {{n}} & intercalate(", ", forwardDifference(n, xs))) & "]"
         end |λ|
     end script
-    
+
     intercalate(linefeed, map(test, enumFromTo(1, 9)))
 end run
 
@@ -358,7 +358,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -383,7 +383,7 @@ end tail
 on |until|(p, f, x)
     set mp to mReturn(p)
     set v to x
-    
+
     tell mReturn(f)
         repeat until mp's |λ|(v)
             set v to |λ|(v)
@@ -444,7 +444,7 @@ diff(list,ord) { ; high order forward differences of a list
    Return list
 }
 ```
- 
+
 
 
 ## AWK
@@ -452,59 +452,59 @@ diff(list,ord) { ; high order forward differences of a list
 
 
 ```awk
-#!/usr/bin/awk -f 
+#!/usr/bin/awk -f
 BEGIN {
-   if (p<1) {p = 1}; 
+   if (p<1) {p = 1};
 }
 
 function diff(s, p) {
    n = split(s, a, " ");
    for (j = 1; j <= p; j++) {
       for(i = 1; i <= n-j; i++) {
-         a[i] = a[i+1] - a[i]; 
+         a[i] = a[i+1] - a[i];
       }
-   } 
+   }
    s = "";
    for (i = 1; i <= n-p; i++) s = s" "a[i];
-   return s;	
+   return s;
 }
 
 {
-   print diff($0, p); 
+   print diff($0, p);
 }
 ```
 
 
-Using Pascal's triangle: 
- 
+Using Pascal's triangle:
+
 
 ```awk
-#!/usr/bin/awk -f 
+#!/usr/bin/awk -f
 BEGIN {
-   if (p<1) {p = 1}; 
+   if (p<1) {p = 1};
 }
 
 function diff(s, p) {
-    # pascal triangled with sign changes	
+    # pascal triangled with sign changes
     b[1] = (p%2) ? 1 : -1;
-    for (j=1; j < p; j++) { 
+    for (j=1; j < p; j++) {
         b[j+1] = -b[j]*(p-j)/j;
     };
 
     n = split(s, a, " ");
     s = "";
     for (j = 1; j <= n-p+1; j++) {
-        c = 0; 
+        c = 0;
         for(i = 1; i <= p; i++) {
-            c += b[i]*a[j+i-1]; 
+            c += b[i]*a[j+i-1];
         }
         s = s" "c;
-    } 
-    return s;	
+    }
+    return s;
 }
- 
+
 {
-   print diff($0, p); 
+   print diff($0, p);
 }
 ```
 
@@ -549,7 +549,7 @@ $ echo '0 1 2 4 7 4 2 1 0' | ./diff.awk -v p=9
       PROCforward_difference(9, A(), D())
       PRINT "Forward diff 9: " FNshowarray(D())
       END
-      
+
       DEF PROCforward_difference(n%, a(), RETURN b())
       LOCAL c%, i%, j%
       DIM b(DIM(a(),1) - n%)
@@ -562,7 +562,7 @@ $ echo '0 1 2 4 7 4 2 1 0' | ./diff.awk -v p=9
         NEXT
       NEXT
       ENDPROC
-      
+
       DEF FNshowarray(a())
       LOCAL i%, a$
       FOR i% = 0 TO DIM(a(),1)
@@ -587,8 +587,8 @@ Forward diff 9: -2921
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <string.h>
 #include <stdio.h>
 
@@ -633,37 +633,37 @@ int main(void)
 Use method with Pascal triangle, binomial coefficients are pre-computed
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int* binomCoeff(int n) {
-     int *b = calloc(n+1,sizeof(int)); 
-     int j; 
-     b[0] = n%2 ? -1 : 1; 
-     for (j=1 ; j<=n; j++) 
+     int *b = calloc(n+1,sizeof(int));
+     int j;
+     b[0] = n%2 ? -1 : 1;
+     for (j=1 ; j<=n; j++)
            b[j] = -b[j-1]*(n+1-j)/j;
 
-     return(b); 
-};  
+     return(b);
+};
 
 main () {
     double array[] = { 90, 47, 58, 29, 22, 32, 55, 5, 55, 73 };
-    size_t lenArray = sizeof(array)/sizeof(array[0]);	
+    size_t lenArray = sizeof(array)/sizeof(array[0]);
 
-    int p = 4;  // order 
+    int p = 4;  // order
     int *b = binomCoeff(p);   // pre-compute binomial coefficients for order p
 
-    int j, k; 
-    
-    // compute p-th difference 
+    int j, k;
+
+    // compute p-th difference
     for (k=0 ; k < lenArray; k++)
-        for (array[k] *= b[0], j=1 ; j<=p; j++) 
+        for (array[k] *= b[0], j=1 ; j<=p; j++)
             array[k] += b[j] * array[k+j];
 
-    free(b);     
+    free(b);
 
     // resulting series is shorter by p elements
-    lenArray -= p; 	
+    lenArray -= p;
     for (k=0 ; k < lenArray; k++)  printf("%f ",array[k]);
     printf("\n");
 }
@@ -727,12 +727,12 @@ class Program
 
 {{works with|g++|4.1.2 20061115 (prerelease) (SUSE Linux)}}
 
-This code uses a separate function to do a first-order forward difference, 
-which is then called several times for calculating n-th order forward difference. 
+This code uses a separate function to do a first-order forward difference,
+which is then called several times for calculating n-th order forward difference.
 No error checking is implemented.
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <iterator>
 #include <algorithm>
 
@@ -850,12 +850,12 @@ int main()
 
 ```txt
 
- -43 11 -29 -7 10 23 -50 50 18 
- 54 -40 22 17 13 -73 100 -32 
- -2921 
- 
- 90 47 58 29 22 32 55 5 55 73 
- -94 62 -5 -4 -86 173 -132 
+ -43 11 -29 -7 10 23 -50 50 18
+ 54 -40 22 17 13 -73 100 -32
+ -2921
+
+ 90 47 58 29 22 32 55 5 55 73
+ -94 62 -5 -4 -86 173 -132
 
 ```
 
@@ -902,7 +902,7 @@ int main() {
 ```
 
 
-Usually one will not want the intermediate results, 
+Usually one will not want the intermediate results,
 in which case the following is sufficient:
 
 ```cpp
@@ -940,7 +940,7 @@ int main() {
 #include <algorithm>
 // Calculate the Forward Difference of a series if integers using Pascal's Triangle
 // For this example the 9th line of Pascal's Triangle is stored in P.
-// 
+//
 // Nigel Galloway. August 20th., 2012
 //
 int main() {
@@ -985,7 +985,7 @@ forward_difference = (arr, n) ->
   return arr if n == 0
   arr = forward_difference(arr, n-1)
   (arr[i+1] - arr[i] for i in [0...arr.length - 1])
-  
+
 arr = [-1, 0, 1, 8, 27, 64, 125, 216]
 for n in [0..arr.length]
   console.log n, forward_difference arr, n
@@ -995,7 +995,7 @@ for n in [0..arr.length]
 {{out}}
 
 ```txt
-> coffee forward_difference.coffee 
+> coffee forward_difference.coffee
 0 [ -1, 0, 1, 8, 27, 64, 125, 216 ]
 1 [ 1, 1, 7, 19, 37, 61, 91 ]
 2 [ 0, 6, 12, 18, 24, 30 ]
@@ -1245,7 +1245,7 @@ defmodule Diff do
   def forward(list,i\\1) do
     forward(list,[],i)
   end
-  
+
   def forward([_],diffs,1), do: IO.inspect diffs
   def forward([_],diffs,i), do: forward(diffs,[],i-1)
   def forward([val1,val2|vals],diffs,i) do
@@ -1374,12 +1374,12 @@ MODULE DIFFERENCE
   IMPLICIT NONE
 
   CONTAINS
- 
+
   SUBROUTINE Fdiff(a, n)
     INTEGER, INTENT(IN) :: a(:), n
-    INTEGER :: b(SIZE(a))  
+    INTEGER :: b(SIZE(a))
     INTEGER :: i, j, arraysize
-  
+
     b = a
     arraysize = SIZE(b)
     DO i = arraysize-1, arraysize-n, -1
@@ -1392,7 +1392,7 @@ MODULE DIFFERENCE
 END MODULE DIFFERENCE
 ```
 
- 
+
 
 ```fortran
 PROGRAM TEST
@@ -1402,7 +1402,7 @@ PROGRAM TEST
 
   INTEGER :: array(10) = (/ 90, 47, 58, 29, 22, 32, 55, 5, 55, 73 /)
   INTEGER :: i
-  
+
   DO i = 1, 9
     CALL Fdiff(array, i)
   END DO
@@ -1511,7 +1511,7 @@ REAL :: n=10, list(n)
 
 list = ( 90, 47, 58, 29, 22, 32, 55, 5, 55, 73 )
 WRITE(Format='i1, (i6)') 0, list
-    
+
 DO i = 1, n-1
   ALIAS(list,1,  diff,n-i) ! rename list(1 ... n-i) with diff
   diff = list($+1) - diff  ! $ is the running left hand array index
@@ -1565,14 +1565,14 @@ end
 ```txt
 
 ->fdiff 3 1 4 1 5 9 2 6 3
-  1: -2 3 -3 4 4 -7 4 -3 
-  2: 5 -6 7 0 -11 11 -7 
-  3: -11 13 -7 -11 22 -18 
-  4: 24 -20 -4 33 -40 
-  5: -44 16 37 -73 
-  6: 60 21 -110 
-  7: -39 -131 
-  8: -92 
+  1: -2 3 -3 4 4 -7 4 -3
+  2: 5 -6 7 0 -11 11 -7
+  3: -11 13 -7 -11 22 -18
+  4: 24 -20 -4 33 -40
+  5: -44 16 37 -73
+  6: 60 21 -110
+  7: -39 -131
+  8: -92
 ->
 
 ```
@@ -1623,7 +1623,7 @@ For example:
 
    1 fd list
 _43 11 _29 _7 10 23 _50 50 18
-   
+
    2 fd list
 54 _40 22 17 13 _73 100 _32
 ```
@@ -1636,7 +1636,7 @@ J is array oriented, so you can even ask for more than one forward difference at
 43 _11 29  7 _10  _23  50 _50 _18
 54 _40 22 17  13  _73 100 _32   0
 94 _62  5  4  86 _173 132   0   0
-   
+
    a: fd list                             NB.  All forward differences
   90    47   58   29  22   32  55   5  55 73
   43   _11   29    7 _10  _23  50 _50 _18  0
@@ -1956,7 +1956,7 @@ fun main(args: Array<String>) {
 
 ```lasso
 #!/usr/bin/lasso9
- 
+
 define forwardDiff(values, order::integer=1) => {
   !#order ? return #values->asArray
   local(result = array)
@@ -2055,15 +2055,15 @@ Forward_difference
 
 {{out}}
 <pre style="height:30ex;overflow:scroll">
-Original:             90    47    58    29    22    32    55    5    55    73 
-Difference 1:        -43    11   -29    -7    10    23   -50   50    18 
-Difference 2:         54   -40    22    17    13   -73   100  -32 
-Difference 3:        -94    62    -5    -4   -86   173  -132 
-Difference 4:        156   -67     1   -82   259  -305 
-Difference 5:       -223    68   -83   341  -564 
-Difference 6:        291  -151   424  -905 
-Difference 7:       -442   575 -1329 
-Difference 8:       1017 -1904 
+Original:             90    47    58    29    22    32    55    5    55    73
+Difference 1:        -43    11   -29    -7    10    23   -50   50    18
+Difference 2:         54   -40    22    17    13   -73   100  -32
+Difference 3:        -94    62    -5    -4   -86   173  -132
+Difference 4:        156   -67     1   -82   259  -305
+Difference 5:       -223    68   -83   341  -564
+Difference 6:        291  -151   424  -905
+Difference 7:       -442   575 -1329
+Difference 8:       1017 -1904
 Difference 9:      -2921
 </pre >
 
@@ -2091,8 +2091,8 @@ Differences[i,n]
 
 =={{header|MATLAB}} / {{header|Octave}}==
 
-This is a built-in function. 
-X is the list of numbers, 
+This is a built-in function.
+X is the list of numbers,
 n is the order of the forward difference.
 
 ```MATLAB
@@ -2127,7 +2127,7 @@ ldiff(u, n) := block([m: length(u)], for j thru n do u: makelist(u[i + 1] - u[i]
 ```NetRexx
 /* NetRexx*************************************************************
 * Forward differences
-* 18.08.2012 Walter Pachl derived from Rexx 
+* 18.08.2012 Walter Pachl derived from Rexx
 **********************************************************************/
   Loop n=-1 To 11
     differences('90 47 58 29 22 32 55 5 55 73',n)
@@ -2176,7 +2176,7 @@ fd is - [rest, front]
 {{out}} forward difference of 4th order
 
 ```nial
-b := 90 47 58 29 22 32 55 5 55 73 
+b := 90 47 58 29 22 32 55 5 55 73
 4 fold fd b
 = 156 -67 1 -82 259 -305
 ```
@@ -2468,7 +2468,7 @@ end for
 
 function forwardDiff($anArray, $times = 1) {
   if ($times <= 0) { return $anArray; }
-  for ($accumilation = array(), $i = 1, $j = count($anArray); $i < $j; ++$i) { 
+  for ($accumilation = array(), $i = 1, $j = count($anArray); $i < $j; ++$i) {
     $accumilation[] = $anArray[$i] - $anArray[$i - 1];
   }
   if ($times === 1) { return $accumilation; }
@@ -2476,24 +2476,24 @@ function forwardDiff($anArray, $times = 1) {
 }
 
 class ForwardDiffExample extends PweExample {
-  
+
   function _should_run_empty_array_for_single_elem() {
     $expected = array($this->rand()->int());
     $this->spec(forwardDiff($expected))->shouldEqual(array());
   }
-  
+
   function _should_give_diff_of_two_elem_as_single_elem() {
     $twoNums = array($this->rand()->int(), $this->rand()->int());
     $expected = array($twoNums[1] - $twoNums[0]);
     $this->spec(forwardDiff($twoNums))->shouldEqual($expected);
   }
-  
+
   function _should_compute_correct_forward_diff_for_longer_arrays() {
     $diffInput = array(10, 2, 9, 6, 5);
     $expected  = array(-8, 7, -3, -1);
     $this->spec(forwardDiff($diffInput))->shouldEqual($expected);
   }
-  
+
   function _should_apply_more_than_once_if_specified() {
     $diffInput = array(4, 6, 9, 3, 4);
     $expectedAfter1 = array(2, 3, -6, 1);
@@ -2501,11 +2501,11 @@ class ForwardDiffExample extends PweExample {
     $this->spec(forwardDiff($diffInput, 1))->shouldEqual($expectedAfter1);
     $this->spec(forwardDiff($diffInput, 2))->shouldEqual($expectedAfter2);
   }
-  
+
   function _should_return_array_unaltered_if_no_times() {
     $this->spec(forwardDiff($expected = array(1,2,3), 0))->shouldEqual($expected);
   }
-  
+
 }
 ```
 
@@ -2643,15 +2643,15 @@ Procedure forward_difference(List a())
   SelectElement(b(), 1)
   ForEach a()
     a() - b(): NextElement(b())
-  Next 
+  Next
 EndProcedure
-  
+
 Procedure nth_difference(List a(), List b(), n)
   Protected i
   CopyList(a(), b())
   For i = 1 To n
     forward_difference(b())
-  Next 
+  Next
 EndProcedure
 
 Procedure.s display(List a())
@@ -2682,10 +2682,10 @@ If OpenConsole()
     nth_difference(a(), b(), i)
     PrintN(Str(i) + "   [" + display(b()) + "]")
   Next
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
-EndIf 
+EndIf
 
 
 ```
@@ -2797,7 +2797,7 @@ print(fdiff(v, 9))
 
 The REXX version uses the same (input) numbers (for the default) as the   '''Ada'''   example.
 
-This version allows a specification of the list of numbers and/or which   ''order''   to process. 
+This version allows a specification of the list of numbers and/or which   ''order''   to process.
 
 ```rexx
 /*REXX program  computes the   forward difference   of a  list of numbers.              */
@@ -2825,7 +2825,7 @@ exit                                             /*stick a fork in it,  we're al
 th: procedure; x=abs(arg(1)); return word('th st nd rd',1+x//10*(x//100%10\==1)*(x//10<4))
 ```
 
-'''output'''   when using the default input: 
+'''output'''   when using the default input:
 
 ```txt
 
@@ -2845,7 +2845,7 @@ th: procedure; x=abs(arg(1)); return word('th st nd rd',1+x//10*(x//100%10\==1)*
 
 ```
 
-'''output'''   when the '''Tcl''''s input was used:   <tt> 90.5 47 58 29 22 32 55 5 55 73.5 </tt> 
+'''output'''   when the '''Tcl''''s input was used:   <tt> 90.5 47 58 29 22 32 55 5 55 73.5 </tt>
 
 ```txt
 
@@ -3007,7 +3007,7 @@ differences: Procedure
   Return
 ```
 
-{{out}} for Java's input 
+{{out}} for Java's input
 
 ```txt
 
@@ -3023,7 +3023,7 @@ n is negative: -1 < 0
 8  1017 -1904
 9  -2921
 10
-n is too large: 11 > 10 
+n is too large: 11 > 10
 
 ```
 
@@ -3037,9 +3037,9 @@ n is too large: 11 > 10
 # Project : Forward difference
 
 s = [90, 47, 58, 29, 22, 32, 55, 5, 55, 73]
-for p = 1 to 9 
+for p = 1 to 9
       s = fwddiff(s)
-      showarray(s) 
+      showarray(s)
 next
 
 func fwddiff(s)
@@ -3351,7 +3351,7 @@ WITH RECURSIVE
 T0 (N, ITEM, LIST, NEW_LIST) AS
 (
     SELECT 1,
-           NULL, 
+           NULL,
            '90,47,58,29,22,32,55,5,55,73' || ',',
            NULL
      UNION ALL
@@ -3530,7 +3530,7 @@ for {set order 0} {$order <= 10} {incr order} {
 7	-442.5 575 -1328.5
 8	1017.5 -1903.5
 9	-2921.0
-10	
+10
 ```
 
 
@@ -3555,7 +3555,7 @@ test_data = <90.,47.,58.,29.,22.,32.,55.,5.,55.,73.>
 
 #show+
 
-examples = 
+examples =
 
 printf/*=*' %0.0f' <
    nth_diff6 test_data,
@@ -3649,7 +3649,7 @@ FOR i = 1 TO n - 1
 ENDFOR
 DIMENSION a[n-1]
 ACOPY(b, a)
-ENDPROC 
+ENDPROC
 
 PROCEDURE ShowOutput(lcLabel, zz)
 LOCAL i As Integer, n As Integer, lcTxt As String
@@ -3660,7 +3660,7 @@ FOR i = 1 TO n
 ENDFOR
 lcTxt = LEFT(lcTxt, LEN(lcTxt) - 1)
 ? lcTxt
-ENDPROC	
+ENDPROC
 
 ```
 
@@ -3668,15 +3668,15 @@ ENDPROC
 
 ```txt
 
-Original:       90      47      58      29      22      32      55      5       55      73 
-Difference 1:   -43     11      -29     -7      10      23      -50     50      18 
-Difference 2:   54      -40     22      17      13      -73     100     -32 
-Difference 3:   -94     62      -5      -4      -86     173     -132 
-Difference 4:   156     -67     1       -82     259     -305 
-Difference 5:   -223    68      -83     341     -564 
-Difference 6:   291     -151    424     -905 
-Difference 7:   -442    575     -1329 
-Difference 8:   1017    -1904 
+Original:       90      47      58      29      22      32      55      5       55      73
+Difference 1:   -43     11      -29     -7      10      23      -50     50      18
+Difference 2:   54      -40     22      17      13      -73     100     -32
+Difference 3:   -94     62      -5      -4      -86     173     -132
+Difference 4:   156     -67     1       -82     259     -305
+Difference 5:   -223    68      -83     341     -564
+Difference 6:   291     -151    424     -905
+Difference 7:   -442    575     -1329
+Difference 8:   1017    -1904
 Difference 9:   -2921
 
 ```

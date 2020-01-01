@@ -13,7 +13,7 @@ tags = []
 {{task}}
 [[File:Pythagoras_tree_java.png|600px||right]]
 
-The [[wp:Pythagoras_tree_%28fractal%29|Pythagoras tree]] is a fractal tree constructed from squares.  It is named after Pythagoras because each triple of touching squares encloses a right triangle, in a configuration traditionally used to represent the Pythagorean theorem. 
+The [[wp:Pythagoras_tree_%28fractal%29|Pythagoras tree]] is a fractal tree constructed from squares.  It is named after Pythagoras because each triple of touching squares encloses a right triangle, in a configuration traditionally used to represent the Pythagorean theorem.
 
 
 
@@ -84,60 +84,60 @@ typedef struct{
 }point;
 
 void pythagorasTree(point a,point b,int times){
-	
+
 	point c,d,e;
-	
+
 	c.x = b.x - (a.y -  b.y);
 	c.y = b.y - (b.x - a.x);
-	
+
 	d.x = a.x - (a.y -  b.y);
 	d.y = a.y - (b.x - a.x);
-	
+
 	e.x = d.x +  ( b.x - a.x - (a.y -  b.y) ) / 2;
 	e.y = d.y -  ( b.x - a.x + a.y -  b.y ) / 2;
-	
+
 	if(times>0){
 		setcolor(rand()%15 + 1);
-		
+
 		line(a.x,a.y,b.x,b.y);
 		line(c.x,c.y,b.x,b.y);
 		line(c.x,c.y,d.x,d.y);
 		line(a.x,a.y,d.x,d.y);
-		
+
 		pythagorasTree(d,e,times-1);
 		pythagorasTree(e,c,times-1);
 	}
 }
 
 int main(){
-	
+
 	point a,b;
 	double side;
 	int iter;
-	
+
 	time_t t;
-	
+
 	printf("Enter initial side length : ");
 	scanf("%lf",&side);
-	
+
 	printf("Enter number of iterations : ");
 	scanf("%d",&iter);
-	
+
 	a.x = 6*side/2 - side/2;
 	a.y = 4*side;
 	b.x = 6*side/2 + side/2;
 	b.y = 4*side;
-	
+
 	initwindow(6*side,4*side,"Pythagoras Tree ?");
-	
+
 	srand((unsigned)time(&t));
-	
+
 	pythagorasTree(a,b,iter);
-	
+
 	getch();
-	
+
 	closegraph();
-	
+
 	return 0;
 
 }
@@ -151,11 +151,11 @@ int main(){
 Windows version
 {{trans|Java}}
 
-```cpp>#include <windows.h
-
+```cpp
+#include <windows.h>
 #include <string>
 #include <iostream>
- 
+
 const int BMP_SIZE = 720, LINE_LEN = 120, BORDER = 100;
 
 class myBitmap {
@@ -218,7 +218,7 @@ public:
         fileheader.bfOffBits = sizeof( infoheader.bmiHeader ) + sizeof( BITMAPFILEHEADER );
         fileheader.bfSize    = fileheader.bfOffBits + infoheader.bmiHeader.biSizeImage;
         GetDIBits( hdc, bmp, 0, height, ( LPVOID )dwpBits, &infoheader, DIB_RGB_COLORS );
-        HANDLE file = CreateFile( path.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 
+        HANDLE file = CreateFile( path.c_str(), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS,
                                   FILE_ATTRIBUTE_NORMAL, NULL );
         WriteFile( file, &fileheader, sizeof( BITMAPFILEHEADER ), &wb, NULL );
         WriteFile( file, &infoheader.bmiHeader, sizeof( infoheader.bmiHeader ), &wb, NULL );
@@ -273,7 +273,7 @@ int main( int argc, char* argv[] ) {
     POINT ptA = { ( BMP_SIZE >> 1 ) - ( LINE_LEN >> 1 ), BMP_SIZE - BORDER },
           ptB = { ptA.x + LINE_LEN, ptA.y };
     tree t; t.draw( 12, ptA, ptB );
-    // change this path 
+    // change this path
     t.save( "?:/pt.bmp" );
     return 0;
 }
@@ -347,7 +347,7 @@ let sprout line =
         { left = line2.left; right = triangleTop }
         { left = triangleTop; right = line2.right }
     ]
-    
+
 let draw_square line =
     let dx = line.right.x - line.left.x
     let dy = line.left.y - line.right.y
@@ -382,7 +382,7 @@ let main argv =
 
 ```freebasic
 ' version 03-12-2016
-' compile with: fbc -s gui 
+' compile with: fbc -s gui
 ' or fbc -s console
 
 Sub pythagoras_tree(x1 As Double, y1 As Double, x2 As Double, y2 As Double, depth As ULong)
@@ -656,7 +656,7 @@ pt=: dyad define
  NB. c.x = b.x - (a.y -  b.y);
  NB. c.y = b.y - (b.x - a.x);
  c=. (b X , a append but_first why b) ,&(-/) (b Y , b ,&ex a)
- 
+
  NB. d.x = a.x - (a.y -  b.y);
  NB. d.y = a.y - (b.x - a.x);
  d=. (a X , a append but_first why b) ,&(-/) (a Y , b ,&ex a)
@@ -901,7 +901,7 @@ const maxdepth = zeros(Int32, 1)
 
 
 function addpoints(x1, y1, x2, y2)
-    xarray[arraypos[1]] = x1 
+    xarray[arraypos[1]] = x1
     xarray[arraypos[1]+1] = x2
     yarray[arraypos[1]] = y1
     yarray[arraypos[1]+1] = y2
@@ -1044,11 +1044,11 @@ MODULE Pythagoras_tree {
 	LET w2 = w div 2, diff = w div 12
 	LET TreeOrder = 6
 	pythagoras_tree(w2 - diff, h -10, w2 + diff, h -10, 0)
-	
+
 	SUB pythagoras_tree(x1, y1, x2, y2, depth)
-	 
+
 	    IF depth > TreeOrder THEN EXIT SUB
-	 
+
 	    LOCAL dx = x2 - x1, dy = y1 - y2
 	    LOCAL x3 = x2 - dy, y3 = y2 - dx
 	    LOCAL x4 = x1 - dy, y4 = y1 - dx
@@ -1061,7 +1061,7 @@ MODULE Pythagoras_tree {
 	    DRAW TO x1, y1
 	    pythagoras_tree(x4, y4, x5, y5, depth +1)
 	    pythagoras_tree(x5, y5, x3, y3, depth +1)
-	 
+
 	END SUB
 }
 Pythagoras_tree
@@ -1075,7 +1075,7 @@ Pythagoras_tree
 ```M2000 Interpreter
 
 MODULE Pythagoras_Example{
-	CLS 5, 0  ' MAGENTA, split line = 0  
+	CLS 5, 0  ' MAGENTA, split line = 0
 	PEN 14  ' YELLOW
 	\\ Linux smoothing not work (we can use the statement but without effect)
 	IF ISWINE ELSE SMOOTH ON
@@ -1098,9 +1098,9 @@ MODULE Pythagoras_Example{
 			STEP ANGLE r, s3
 			STEP ANGLE r+p4, -s3
 			CALL pythagoras_tree r+p4,  s3, depth
-			STEP ANGLE r-p4, s3		
-		}	
-		MOVE SCALE.X/2, SCALE.Y/2	
+			STEP ANGLE r-p4, s3
+		}
+		MOVE SCALE.X/2, SCALE.Y/2
 		STEP ANGLE PI-p4+r, t*s2
 		CALL pythagoras_tree r, t, 1
 	}
@@ -1109,7 +1109,7 @@ MODULE Pythagoras_Example{
 	center_p r, 100*TWIPSX
 	center_p r+PI, 100*TWIPSX
 	CopyImageToClipboard()
-	
+
 	Sub CopyImageToClipboard()
 		LOCAL Scr$=""
 		MOVE 0,0
@@ -1162,7 +1162,7 @@ print1(" *** ",ttl); print(", size ",size);
 print(" *** Start: ",x1,",",y1,",",x2,",",y2);
 plotinit(0);
 plotcolor(0,6); \\green
-plotscale(0, -size,size, size,0 ); 
+plotscale(0, -size,size, size,0 );
 plotmove(0, 0,0);
 pythtree(x1,y1, x2,y2);
 plotdraw([0,size,size]);
@@ -1172,7 +1172,7 @@ plotdraw([0,size,size]);
 PythagorTree(275,500,375,500,9,640);    \\PythTree1.png
 }
 ```
- 
+
 {{Output}}
 
 ```txt
@@ -1305,7 +1305,7 @@ atom x4 = x1 - dy
 atom y4 = y1 - dx
 atom x5 = x4 + 0.5 * (dx - dy)
 atom y5 = y4 - 0.5 * (dx + dy)
- 
+
 integer r = 250-depth*20
 
     cdCanvasSetForeground(cddbuffer, rgb(r,#FF,0))
@@ -1315,7 +1315,7 @@ integer r = 250-depth*20
     cdCanvasVertex(cddbuffer, x3, 640-y3)
     cdCanvasVertex(cddbuffer, x4, 640-y4)
     cdCanvasEnd(cddbuffer)
- 
+
     cdCanvasSetForeground(cddbuffer, CD_GRAY)
     cdCanvasBegin(cddbuffer,CD_CLOSED_LINES)
     cdCanvasVertex(cddbuffer, x1, 640-y1)
@@ -1323,7 +1323,7 @@ integer r = 250-depth*20
     cdCanvasVertex(cddbuffer, x3, 640-y3)
     cdCanvasVertex(cddbuffer, x4, 640-y4)
     cdCanvasEnd(cddbuffer)
- 
+
     cdCanvasSetForeground(cddbuffer, rgb(r-depth*10,#FF,0))
     cdCanvasBegin(cddbuffer,CD_FILL)
     cdCanvasVertex(cddbuffer, x3, 640-y3)
@@ -1428,7 +1428,7 @@ void tree(float x1, float y1, float x2, float y2, int depth) {
 
   tree(x4, y4, x5, y5, depth-1);
   tree(x5, y5, x3, y3, depth-1);
-}  
+}
 
 void setup() {
   size(1920, 1080);
@@ -1451,20 +1451,20 @@ DisableDebugger
 Procedure.d maxXY(a.d,b.d,c.d,d.d)
   If a<b : Swap a,b : EndIf
   If a<c : Swap a,c : EndIf
-  If a<d : Swap a,d : EndIf  
+  If a<d : Swap a,d : EndIf
   ProcedureReturn a
 EndProcedure
 
 Procedure.d minXY(a.d,b.d,c.d,d.d)
   If a>b : Swap a,b : EndIf
   If a>c : Swap a,c : EndIf
-  If a>d : Swap a,d : EndIf  
+  If a>d : Swap a,d : EndIf
   ProcedureReturn a
 EndProcedure
 
 Procedure Ptree(x1.d, y1.d, x2.d, y2.d, d.i=0)
   If d>10 : ProcedureReturn : EndIf
-  
+
   Define dx.d=x2-x1,
          dy.d=y1-y2,
          x3.d=x2-dy,
@@ -1475,19 +1475,19 @@ Procedure Ptree(x1.d, y1.d, x2.d, y2.d, d.i=0)
          y5.d=y4-(dx+dy)/2.0,
          p1.d=(maxXY(x1,x2,x3,x4)+minXY(x1,x2,x3,x4))/2.0,
          p2.d=(maxXY(y1,y2,y3,y4)+minXY(y1,y2,y3,y4))/2.0,
-         p3.d=(maxXY(x1,x2,x3,x4)-minXY(x1,x2,x3,x4))        
-    
-  FrontColor(RGB(Random(125,1),Random(255,125),Random(125,1)))    
+         p3.d=(maxXY(x1,x2,x3,x4)-minXY(x1,x2,x3,x4))
+
+  FrontColor(RGB(Random(125,1),Random(255,125),Random(125,1)))
   LineXY(x1,y1,x2,y2)
   LineXY(x2,y2,x3,y3)
   LineXY(x3,y3,x4,y4)
   LineXY(x4,y4,x1,y1)
   BoxedGradient(minXY(x1,x2,x3,x4),minXY(y1,y2,y3,y4),p3,p3)
   FillArea(p1,p2,-1)
-  
+
   Ptree(x4,y4,x5,y5,d+1)
   Ptree(x5,y5,x3,y3,d+1)
-  
+
 EndProcedure
 
 Define w1.i=800,
@@ -1499,10 +1499,10 @@ If OpenWindow(0,#PB_Ignore,#PB_Ignore,w1,h1,"Pythagoras tree")
   If CreateImage(0,w1,h1,24,0) And StartDrawing(ImageOutput(0))
     DrawingMode(#PB_2DDrawing_Gradient)
     BackColor($000000)
-    Ptree(w2-di,h1-10,w2+di,h1-10)    
+    Ptree(w2-di,h1-10,w2+di,h1-10)
     StopDrawing()
   EndIf
-  ImageGadget(0,0,0,0,0,ImageID(0))  
+  ImageGadget(0,0,0,0,0,ImageID(0))
   Repeat : Until WaitWindowEvent(50)=#PB_Event_CloseWindow
 EndIf
 End
@@ -1577,20 +1577,20 @@ pPythagorasT <- function(x1, y1,x2, y2, ord, fn="", ttl="") {
   cat(" *** END PYTHT:",date(),"\n");
 }
 ## Executing:
-pPythagorasT(275,500,375,500,9) 
+pPythagorasT(275,500,375,500,9)
 pPythagorasT(275,500,375,500,7)
 ```
 
 {{Output}}
 
 ```txt
-> pPythagorasT(275,500,375,500,9) 
- *** START PYTHT: Tue Mar 28 15:57:19 2017 
- *** Plot file - PYTHTR9.png title: Pythagoras tree, order - 9 
- *** END PYTHT: Tue Mar 28 15:57:20 2017 
-> pPythagorasT(275,500,375,500,7) 
- *** START PYTHT: Tue Mar 28 15:59:25 2017 
- *** Plot file - PYTHTR7.png title: Pythagoras tree, order - 7 
+> pPythagorasT(275,500,375,500,9)
+ *** START PYTHT: Tue Mar 28 15:57:19 2017
+ *** Plot file - PYTHTR9.png title: Pythagoras tree, order - 9
+ *** END PYTHT: Tue Mar 28 15:57:20 2017
+> pPythagorasT(275,500,375,500,7)
+ *** START PYTHT: Tue Mar 28 15:59:25 2017
+ *** Plot file - PYTHTR7.png title: Pythagoras tree, order - 7
  *** END PYTHT: Tue Mar 28 15:59:25 2017
 ```
 
@@ -1622,7 +1622,7 @@ pPythagorasT(275,500,375,500,7)
           (send the-dc draw-path path dx dy)
           (inr (sub1 order) x3 y3 x4 y4)
           (inr (sub1 order) x4 y4 x2 y2))))
-    
+
     (define old-brush (send the-dc get-brush))
     (define old-pen (send the-dc get-pen))
     (send the-dc set-pen (new pen% [width 1] [color "black"]))
@@ -1645,7 +1645,7 @@ load "guilib.ring"
 
 paint = null
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("Pythagoras tree")
@@ -1681,7 +1681,7 @@ func draw
         h = floor(w*11/16)
         w2 = floor(w/2)
         diff = floor(w/12)
- 
+
         pythagorastree(w2 - diff,h -10,w2 + diff ,h -10 ,0)
 
         endpaint()
@@ -1690,10 +1690,10 @@ func draw
         return
 
 
-func pythagorastree(x1,y1,x2,y2,depth) 
-        if depth > 10 
+func pythagorastree(x1,y1,x2,y2,depth)
+        if depth > 10
            return
-        ok 
+        ok
         dx = x2 - x1
         dy = y1 - y2
         x3 = x2 - dy
@@ -1704,7 +1704,7 @@ func pythagorastree(x1,y1,x2,y2,depth)
         y5 = y4 - floor((dx + dy) / 2)
         paint.drawline(x1,y1,x2,y2)
         paint.drawline(x2,y2,x3,y3)
-        paint.drawline(x4,y4,x1,y1) 
+        paint.drawline(x4,y4,x1,y1)
         pythagorastree(x4, y4, x5, y5, depth +1)
         pythagorastree(x5, y5, x3, y3, depth +1)
 ```
@@ -1815,44 +1815,44 @@ tree=zeros(tree_size,1);
 //Vectorial operation to calculate a new point in the tree
 deff('z = new_point(origin,rho,theta)',...
      'z = origin + rho * exp(%i*theta)');
-     
+
 //Drawing the tree
 curr_angle = %pi/2;
 curr_pos = 1;
 ratio = 1/sqrt(2);
 for ind = 1:size(sentence,'c')
     charac = sentence(ind);
-    
+
     select charac
     case 'U' then //Draw line upwards
         tree(curr_pos+1) = new_point(tree(curr_pos),side,curr_angle);
         curr_pos = curr_pos + 1;
-        
+
     case 'T' then //Draw top of the square
         curr_angle = curr_angle - %pi/2;
         tree(curr_pos+1) = new_point(tree(curr_pos),side,curr_angle);
         curr_pos = curr_pos + 1;
-        
+
     case 'D' then //Draw line downwards
         curr_angle = curr_angle - %pi/2;
         tree(curr_pos+1) = new_point(tree(curr_pos),side,curr_angle);
         curr_pos = curr_pos + 1;
-        
+
     case 'B' then //Draw the bottom
         curr_angle = curr_angle - %pi/2;
         tree(curr_pos+1) = new_point(tree(curr_pos),side,curr_angle);
         curr_pos = curr_pos + 1;
-        
+
     case '[' then //Start branch
         side = side * ratio;
-        
+
     case '+' then //Start going to the left
         curr_angle = curr_angle - %pi/4;
 //        tree(curr_pos+1) = new_point(tree(curr_pos),side,curr_angle);
 //        tree(curr_pos+2) = new_point(tree(curr_pos+1),side,%pi+curr_angle);
 //        curr_pos = curr_pos + 2;
         curr_angle = curr_angle + %pi/2;
-        
+
     case '-' then //Start going to the left
 //        tree(curr_pos+1) = new_point(tree(curr_pos),side,curr_angle);
 //        tree(curr_pos+2) = new_point(tree(curr_pos+1),side,%pi+curr_angle);
@@ -1865,7 +1865,7 @@ for ind = 1:size(sentence,'c')
 //        tree(curr_pos+2) = new_point(tree(curr_pos+1),side,%pi+curr_angle);
 //        curr_pos = curr_pos + 2;
         curr_angle = curr_angle + %pi;
-        
+
     else
         error('L-system sentence error');
     end
@@ -1887,17 +1887,17 @@ A minor change was made so that the final depth of the tree is an argument of <c
     if depth < 0 then
         return
     end
-    
+
     dx = bx - ax; dy = ay - by;
     x3 = bx + dy; y3 = by + dx;
     x4 = ax + dy; y4 = ay + dx;
     x5 = x4 + (dx + dy)/2; y5 = y4 + (dx - dy)/2;
-    
+
     scf(bitmap);
     plot2d([x3 x4 x5],[y3 y4 y5],-2)
     plot2d([ax bx],[ay by]); plot2d([bx x3],[by y3]);
     plot2d([x3 x4],[y3 y4]); plot2d([x4 ax],[y4 ay]);
-    
+
     fcn(bitmap,x4,y4,x5,y5,depth-1);
     fcn(bitmap,x5,y5,x3,y3,depth-1);
 endfunction
@@ -1979,9 +1979,9 @@ Output image: [https://github.com/trizen/rc/blob/master/img/pythagoras-tree-side
 ```Yabasic
 Sub pythagoras_tree(x1, y1, x2, y2, depth)
     local dx, dy, x3, y3, x4, y4, x5, y5
- 
+
     If depth > limit Return
- 
+
     dx = x2 - x1 : dy = y1 - y2
     x3 = x2 - dy : y3 = y2 - dx
     x4 = x1 - dy : y4 = y1 - dx
@@ -1992,17 +1992,17 @@ Sub pythagoras_tree(x1, y1, x2, y2, depth)
     fill triangle x1, y1, x2, y2, x3, y3
     fill triangle x3, y3, x4, y4, x1, y1
     fill triangle x4, y4, x5, y5, x3, y3
- 
+
     pythagoras_tree(x4, y4, x5, y5, depth +1)
     pythagoras_tree(x5, y5, x3, y3, depth +1)
- 
+
 End Sub
- 
+
 // ------=< MAIN >=------
 w = 800 : h = int(w * 11 / 16)
 w2 = int(w / 2) : diff = int(w / 12)
 limit = 12
- 
+
 open window w, h
 //backcolor 0, 0, 0
 clear window

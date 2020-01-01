@@ -17,7 +17,7 @@ Display the current CPU utilization, as a percentage, calculated from <code> /pr
 
 
 ;Background:
-Most Linux kernels provide a virtual   <code>[https://www.kernel.org/doc/Documentation/filesystems/proc.txt /proc]</code>   filesystem, providing an interface to various internal data structures.   
+Most Linux kernels provide a virtual   <code>[https://www.kernel.org/doc/Documentation/filesystems/proc.txt /proc]</code>   filesystem, providing an interface to various internal data structures.
 
 One of these internal structures (<code>/proc/stat</code>) includes information on the amount of time (in <code>USER_HZ</code>) spent in various states.   From this information, we can, with a little effort, determine the current level of CPU utilization, as a percent of time spent in any states other than ''idle''.
 
@@ -105,42 +105,42 @@ int main(int argC,char* argV[])
 	int i = 0,times,lag;
 	long int sum = 0, idle, lastSum = 0,lastIdle = 0;
 	long double idleFraction;
-	
+
 	if(argC!=3)
 		printf("Usage : %s <number of times /proc/stat should be polled followed by delay in seconds.>",argV[0]);
-	
+
 	else{
 		times = atoi(argV[1]);
 		lag = atoi(argV[2]);
-		
+
 		while(times>0){
 			FILE* fp = fopen("/proc/stat","r");
 	        i = 0;
 			fgets(str,100,fp);
 			fclose(fp);
 			token = strtok(str,d);
-	
+
 			while(token!=NULL){
 				token = strtok(NULL,d);
 				if(token!=NULL){
 					sum += atoi(token);
-			
+
 				if(i==3)
 					idle = atoi(token);
-		
+
 				i++;
 			}
 		}
-	
+
 		printf("\nIdle for : %lf %% of the time.",(1.0 - (idle-lastIdle)*1.0/(sum-lastSum))*100);
-	
+
 		lastIdle = idle;
 		lastSum = sum;
-	
-		
+
+
 		times--;
 		sleep(lag);
-		}	
+		}
 	}
 	return 0;
 }
@@ -163,8 +163,8 @@ Idle for : 99.999971 % of the time.
 ## C++
 
 
-```cpp>#include <fstream
-
+```cpp
+#include <fstream>
 #include <iostream>
 #include <numeric>
 #include <unistd.h>
@@ -505,23 +505,23 @@ CPU usage % at 1 second intervals:
 
 
 ```Haskell
-import Data.List ( (!!) ) 
+import Data.List ( (!!) )
 
 splitString :: Char -> String -> [String]
 splitString c [] = []
 splitString c s = let ( item , rest ) = break ( == c ) s
                       ( _ , next ) = break ( /= c ) rest
-		  in item : splitString c next    
-		  
+		  in item : splitString c next
+
 computeUsage :: String -> Double
 computeUsage s = (1.0 - ((lineElements !! 3 ) /  sum times)) * 100
    where
       lineElements = map (fromInteger . read ) $ tail $ splitString ' ' s
       times = tail lineElements
 
-main :: IO ( )      
-main = do 
-   theTimes <- fmap lines $ readFile "/proc/stat" 
+main :: IO ( )
+main = do
+   theTimes <- fmap lines $ readFile "/proc/stat"
    putStr $ show $ computeUsage $ head theTimes
    putStrLn " %"
 ```
@@ -666,7 +666,7 @@ fun main(args: Array<String>) {
         val firstLine = br.readLine().drop(5)  // get rid of cpu plus 2 spaces
         br.close()
         val split = firstLine.split(' ')
-        val idleTime = split[3].toLong()    
+        val idleTime = split[3].toLong()
         val totalTime = split.map { it.toLong() }.sum()
         if (it > 0) {
             val deltaIdleTime  = idleTime  - prevIdleTime
@@ -965,7 +965,7 @@ proc stat {} {
         set frac [expr {$idle * 1.0 / $total}]
         # subtract the previous fraction from 1.0 to get the time spent being not idle
         set frac [expr {1 - $frac}]
-        # multiply by 100 to get a percentage 
+        # multiply by 100 to get a percentage
         set frac [expr {round($frac*100)}]
 
         if {[info coroutine] eq ""} {
@@ -1084,7 +1084,7 @@ while true
 
 	# output percentage
 	out utilization "%\r" console
-	
+
 	# close f, it will be reopened at the top of the loop
 	f.close
 

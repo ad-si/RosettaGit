@@ -14,9 +14,9 @@ tags = []
 {{basic data operation}}
 
 ;Task:
-Write a routine to perform a bitwise AND, OR, and XOR on two integers, a bitwise NOT on the first integer, a left shift, right shift, right arithmetic shift, left rotate, and right rotate. 
+Write a routine to perform a bitwise AND, OR, and XOR on two integers, a bitwise NOT on the first integer, a left shift, right shift, right arithmetic shift, left rotate, and right rotate.
 
-All shifts and rotates should be done on the first integer with a shift/rotate amount of the second integer. 
+All shifts and rotates should be done on the first integer with a shift/rotate amount of the second integer.
 
 If any operation is not available in your language, note it.
 
@@ -236,7 +236,7 @@ djnz b, loop
 
 ## ABAP
 
-This works in ABAP 7.40 and above. The missing arithmetic shift operations have been implemented with arithmetic, whereas the logical shift and the rotate operations have been implemented using the built in string functions shift_left and shift_right. 
+This works in ABAP 7.40 and above. The missing arithmetic shift operations have been implemented with arithmetic, whereas the logical shift and the rotate operations have been implemented using the built in string functions shift_left and shift_right.
 
 
 ```ABAP
@@ -633,7 +633,7 @@ function bitwise(a, b){
 ## ALGOL 68
 
 {{works with|ALGOL 68|Standard - no extensions to language used}}
-{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}} 
+{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
 <!-- {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}} not tested -->
 Aside from decimal, [[ALGOL 68]] has 5 different alternative was of representing the number 170:
 * 2r00000000000000000000000010101010, 4r0000000000002222, 8r00000000252, 16r000000aa
@@ -804,7 +804,7 @@ If we really do need to use Applescript for bitwise operations, two immediate po
 
 This is feasible, (see below) subject to the limitations that:
 
-* Javascript lacks bit rotation operators, and 
+* Javascript lacks bit rotation operators, and
 * in the case of the JS left shift operator '''(<<)''' the right operand needs to be masked with '''0x1F''' (31), which is its maximum effective value.
 
 
@@ -861,7 +861,7 @@ end |>>|
 -- TEST ----------------------------------------------------------
 on run
     -- Using an ObjC interface to Javascript for Automation
-    
+
     set strClip to bitWise(255, 170)
     set the clipboard to strClip
     strClip
@@ -873,7 +873,7 @@ on bitWise(a, b)
         "a << b", "a >>> b", "a >> b"}
     set xs to {bitAND(a, b), bitOR(a, b), bitXOR(a, b), bitNOT(a), ¬
         |<<|(a, b), |>>>|(a, b), |>>|(a, b)}
-    
+
     script asBin
         property arrow : " -> "
         on |λ|(x, y)
@@ -881,7 +881,7 @@ on bitWise(a, b)
                 justifyRight(14, space, y as text) & arrow & showBinary(y)
         end |λ|
     end script
-    
+
     unlines({"32 bit signed integers   (in two's complement binary encoding)", "", ¬
         unlines(zipWith(asBin, ¬
             {"a = " & a as text, "b = " & b as text}, {a, b})), "", ¬
@@ -902,7 +902,7 @@ on bitsFromIntLR(x)
             end if
         end |λ|
     end script
-    
+
     set a to abs(x)
     if (2.147483647E+9) < a then
         |Left|("Integer overflow – maximum is (2 ^ 31) - 1")
@@ -935,7 +935,7 @@ on binSucc(bs)
             end if
         end |λ|
     end script
-    
+
     set tpl to mapAccumR(succ, true, bs)
     if |1| of tpl then
         {true} & |2| of tpl
@@ -957,7 +957,7 @@ on showBinary(x)
                     end if
                 end |λ|
             end script
-            
+
             map(bChar, xs)
         end |λ|
     end script
@@ -979,7 +979,7 @@ end jsOp1
 
 -- evalJSLR :: String -> Either String a
 on evalJSLR(strJS)
-    try -- NB if gJSC is global it must be released 
+    try -- NB if gJSC is global it must be released
         -- (e.g. set to null) at end of script
         gJSC's evaluateScript
     on error
@@ -1068,9 +1068,9 @@ on map(f, xs)
     end tell
 end map
 
--- 'The mapAccumR function behaves like a combination of map and foldr; 
---  it applies a function to each element of a list, passing an accumulating 
---  parameter from |Right| to |Left|, and returning a final value of this 
+-- 'The mapAccumR function behaves like a combination of map and foldr;
+--  it applies a function to each element of a list, passing an accumulating
+--  parameter from |Right| to |Left|, and returning a final value of this
 --  accumulator together with the new list.' (see Hoogle)
 -- mapAccumR :: (acc -> x -> (acc, y)) -> acc -> [x] -> (acc, [y])
 on mapAccumR(f, acc, xs)
@@ -1092,7 +1092,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -1110,14 +1110,14 @@ on |not|(p)
 end |not|
 
 -- Egyptian multiplication - progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for binary 
+-- stages of doubling to an accumulator where needed for binary
 -- assembly of a target length
 -- replicate :: Int -> a -> [a]
 on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -1255,7 +1255,7 @@ on |>>|(a, b)
         end |λ|
     end script
     bindLR(bitsFromIntLR(a), arithRShift)
-    
+
 end |>>|
 
 -- bitRotL :: Int -> Int -> Int
@@ -1286,7 +1286,7 @@ on bitWise(a, b)
         "a << b", "a >>> b", "a >> b", "ROTL a b", "ROTR a b"}
     set xs to {bitAND(a, b), bitOR(a, b), bitXOR(a, b), bitNOT(a), ¬
         |<<|(a, b), |>>>|(a, b), |>>|(a, b), bitRotL(a, b), bitRotR(a, b)}
-    
+
     script asBin
         property arrow : " -> "
         on |λ|(x, y)
@@ -1294,7 +1294,7 @@ on bitWise(a, b)
                 justifyRight(14, space, y as text) & arrow & showBinary(y)
         end |λ|
     end script
-    
+
     unlines({"32 bit signed integers   (in two's complement binary encoding)", "", ¬
         unlines(zipWith(asBin, ¬
             {"a = " & a as text, "b = " & b as text}, {a, b})), "", ¬
@@ -1303,7 +1303,7 @@ end bitWise
 
 on run
     -- Assuming 32 bit signed integers (in two's complement binary encoding)
-    
+
     set strClip to bitWise(255, 170)
     set the clipboard to strClip
     strClip
@@ -1323,7 +1323,7 @@ on bitsFromIntLR(x)
             end if
         end |λ|
     end script
-    
+
     set a to abs(x)
     if (2.147483647E+9) < a then
         |Left|("Integer overflow – maximum is (2 ^ 31) - 1")
@@ -1350,7 +1350,7 @@ on intFromBitsLR(xs)
             end if
         end |λ|
     end script
-    
+
     set lngBits to length of xs
     if 32 < lngBits then
         |Left|("Applescript limited to signed 32 bit integers")
@@ -1379,7 +1379,7 @@ on showBinary(x)
                     end if
                 end |λ|
             end script
-            
+
             map(bChar, xs)
         end |λ|
     end script
@@ -1442,7 +1442,7 @@ on binSucc(bs)
             end if
         end |λ|
     end script
-    
+
     set tpl to mapAccumR(succ, true, bs)
     if |1| of tpl then
         {true} & |2| of tpl
@@ -1565,9 +1565,9 @@ on map(f, xs)
     end tell
 end map
 
--- 'The mapAccumR function behaves like a combination of map and foldr; 
---  it applies a function to each element of a list, passing an accumulating 
---  parameter from |Right| to |Left|, and returning a final value of this 
+-- 'The mapAccumR function behaves like a combination of map and foldr;
+--  it applies a function to each element of a list, passing an accumulating
+--  parameter from |Right| to |Left|, and returning a final value of this
 --  accumulator together with the new list.' (see Hoogle)
 -- mapAccumR :: (acc -> x -> (acc, y)) -> acc -> [x] -> (acc, [y])
 on mapAccumR(f, acc, xs)
@@ -1598,7 +1598,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -1611,14 +1611,14 @@ on mReturn(f)
 end mReturn
 
 -- Egyptian multiplication - progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for binary 
+-- stages of doubling to an accumulator where needed for binary
 -- assembly of a target length
 -- replicate :: Int -> a -> [a]
 on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -1732,7 +1732,7 @@ sZoneBin: .space 36,' '
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* save des  2 registres */
     ldr r0,iAdrszMessResultAnd
@@ -1807,17 +1807,17 @@ iAdrszMessResultRor:  .int szMessResultRor
 iAdrszMessResultRrx:  .int szMessResultRrx
 iAdrszMessResultClear:  .int szMessResultClear
 /******************************************************************/
-/*     register display in binary                              */ 
+/*     register display in binary                              */
 /******************************************************************/
 /* r0 contains the register */
 affichage2:
-    push {r0,lr}     /* save  registers */  
+    push {r0,lr}     /* save  registers */
     push {r1-r5} /* save others registers */
     mrs r5,cpsr  /* saves state register in r5 */
     ldr r1,iAdrsZoneBin
     mov r2,#0    @ read bit position counter
     mov r3,#0    @ position counter of the written character
-1:               @ loop 
+1:               @ loop
     lsls r0,#1    @ left shift  with flags
     movcc r4,#48  @ flag carry off   character '0'
     movcs r4,#49  @ flag carry on    character '1'
@@ -1835,21 +1835,21 @@ affichage2:
 
     ldr r0,iAdrsZoneMessBin   @ address of message result
     bl affichageMess           @ display result
-    
+
 100:
     msr cpsr,r5    /*restaur state register */
     pop {r1-r5}  /* restaur others registers */
     pop {r0,lr}
-    bx lr	
-iAdrsZoneBin: .int sZoneBin	   
+    bx lr
+iAdrsZoneBin: .int sZoneBin
 iAdrsZoneMessBin: .int sMessAffBin
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registres */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -1863,9 +1863,9 @@ affichageMess:
     mov r7, #WRITE             /* code call system write */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registres */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
-    bx lr	        			/* return  */	
-    
+    pop {fp,lr}    				/* restaur des  2 registres */
+    bx lr	        			/* return  */
+
 
 
 ```
@@ -1910,9 +1910,9 @@ NOT 255 = -256
 bitwise(3, 4)
 bitwise(a, b)
 {
-  MsgBox % "a and b: " . a & b 
-  MsgBox % "a or b: " . a | b 
-  MsgBox % "a xor b: " . a ^ b 
+  MsgBox % "a and b: " . a & b
+  MsgBox % "a or b: " . a | b
+  MsgBox % "a xor b: " . a ^ b
   MsgBox % "not a: " . ~a       ; treated as unsigned integer
   MsgBox % "a << b: " . a << b  ; left shift
   MsgBox % "a >> b: " . a >> b  ; arithmetic right shift
@@ -2316,7 +2316,7 @@ NOT -2147483394 = 2147483393
 ```bbcbasic
       number1% = &89ABCDEF
       number2% = 8
-      
+
       PRINT ~ number1% AND number2% : REM bitwise AND
       PRINT ~ number1% OR number2%  : REM bitwise OR
       PRINT ~ number1% EOR number2% : REM bitwise exclusive-OR
@@ -2411,7 +2411,7 @@ A ROR B = A>>>(B%64)+A<<(64-B%64)
 ## Befunge
 
 
-```befunge>> v   MCR                                        
+```befunge>> v   MCR
 v
     1    2       3   4       5            6>61g-:|        8       9
   >&&\481p >88*61p371p >:61g\`!:68*+71g81gp|    7 >61g2/61p71g1+71pv
@@ -2520,8 +2520,8 @@ rotr:
 
 {{trans|C}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 void bitwise(int a, int b)
 {
@@ -2547,10 +2547,10 @@ static void bitwise(int a, int b)
             Console.WriteLine("a xor b is {0}", a ^ b);
             Console.WriteLine("not a is {0}", ~a);
             Console.WriteLine("a lshift b is {0}", a << b);
-            Console.WriteLine("a arshift b is {0}", a >> b); // When the left operand of the >> operator is of a signed integral type, 
+            Console.WriteLine("a arshift b is {0}", a >> b); // When the left operand of the >> operator is of a signed integral type,
                                                              // the operator performs an arithmetic shift right
             uint c = (uint)a;
-            Console.WriteLine("c rshift b is {0}", c >> b); // When the left operand of the >> operator is of an unsigned integral type, 
+            Console.WriteLine("c rshift b is {0}", c >> b); // When the left operand of the >> operator is of an unsigned integral type,
                                                             // the operator performs a logical shift right
             // there are no rotation operators in C#
         }
@@ -2621,39 +2621,39 @@ Results are displayed in decimal.
 ```cobol
        IDENTIFICATION DIVISION.
        PROGRAM-ID. mf-bitwise-ops.
-       
+
        DATA DIVISION.
        LOCAL-STORAGE SECTION.
        01  result                  USAGE BINARY-LONG.
 
        78  arg-len                 VALUE LENGTH OF result.
-         
+
        LINKAGE SECTION.
        01  a                       USAGE BINARY-LONG.
        01  b                       USAGE BINARY-LONG.
-       
+
        PROCEDURE DIVISION USING a, b.
        main-line.
            MOVE b TO result
            CALL "CBL_AND" USING a, result, VALUE arg-len
            DISPLAY "a and b is " result
-       
+
            MOVE b TO result
            CALL "CBL_OR" USING a, result, VALUE arg-len
            DISPLAY "a or b is " result
-       
+
            MOVE a TO result
            CALL "CBL_NOT" USING result, VALUE arg-len
            DISPLAY "Not a is " result
-       
+
            MOVE b TO result
            CALL "CBL_XOR" USING a, result, VALUE arg-len
            DISPLAY "a exclusive-or b is " result
-       
+
            MOVE b TO result
            CALL "CBL_EQ" USING a, result, VALUE arg-len
            DISPLAY "Logical equivalence of a and b is " result
-       
+
            MOVE b TO result
            CALL "CBL_IMP" USING a, result, VALUE arg-len
            DISPLAY "Logical implication of a and b is " result
@@ -2679,7 +2679,7 @@ f = (a, b) ->
   p "<<", a << b
   p ">>", a >> b
   # no rotation shifts that I know of
-  
+
 p = (label, n) -> console.log label, n
 
 f(10,2)
@@ -2689,7 +2689,7 @@ f(10,2)
 
 output
 <lang>
-> coffee foo.coffee 
+> coffee foo.coffee
 and 2
 or 10
 xor 8
@@ -2870,7 +2870,7 @@ BitwiseOperations(INTEGER A, INTEGER B) := FUNCTION
   BitOR  := A | B;
   BitXOR := A ^ B;
   BitNOT := BNOT A;
-  BitSL  := A << B; 
+  BitSL  := A << B;
   BitSR  := A >> B;
   DS     := DATASET([{A,B,'Bitwise AND:',BitAND},
 	             {A,B,'Bitwise OR:',BitOR},
@@ -2884,7 +2884,7 @@ END;
 
 BitwiseOperations(255,5);
 //right arithmetic shift, left and right rotate not implemented
-/* 
+/*
    OUTPUT:
    255	5	Bitwise AND:   	5
    255	5	Bitwise OR:    	255
@@ -2892,7 +2892,7 @@ BitwiseOperations(255,5);
    255	5	Bitwise NOT A: 	-256
    255	5	ShiftLeft A:   	8160
    255	5	ShiftRight A:  	7
-   
+
 */
 
 ```
@@ -2946,7 +2946,7 @@ not 255 = -256
 ```elixir
 defmodule Bitwise_operation do
   use Bitwise
-  
+
   def test(a \\ 255, b \\ 170, c \\ 2) do
     IO.puts "Bitwise function:"
     IO.puts "band(#{a}, #{b}) = #{band(a, b)}"
@@ -2995,7 +2995,7 @@ Bitwise as operator:
 
 ## Erlang
 
-All these operations are built-in functions except right arithmetic shift, left rotate, and right rotate. 
+All these operations are built-in functions except right arithmetic shift, left rotate, and right rotate.
 
 
 ```erlang
@@ -3055,7 +3055,7 @@ let bitwise a b =
 "a=" "b=" [ write readln string>number ] bi@
 {
     [ bitand "a AND b: " write . ]
-    [ bitor "a OR b: " write . ] 
+    [ bitor "a OR b: " write . ]
     [ bitxor "a XOR b: " write . ]
     [ drop bitnot "NOT a: " write . ]
     [ abs shift "a asl b: " write . ]
@@ -3105,7 +3105,7 @@ a | b  = "|."
   cr ." a and b = " 2dup and .
   cr ." a  or b = " 2dup  or .
   cr ." a xor b = " 2dup xor .
-  cr ." not a = " over invert . 
+  cr ." not a = " over invert .
   cr ." a shl b = " 2dup lshift .
   cr ." a shr b = " 2dup rshift .
   cr ." a ashr b = " 2dup arshift .
@@ -3122,20 +3122,20 @@ In ISO Fortran 90 and later the following BIT INTRINSIC functions are defined:
 ```fortran
 integer :: i, j = -1, k = 42
 logical :: a
-    
+
 i = bit_size(j)       ! returns the number of bits in the given INTEGER variable
-    
+
 ! bitwise boolean operations on integers
 i = iand(k, j)        ! returns bitwise AND of K and J
 i = ior(k, j)         ! returns bitwise OR of K and J
 i = ieor(k, j)        ! returns bitwise EXCLUSIVE OR of K and J
 i = not(j)            ! returns bitwise NOT of J
-    
+
 ! single-bit integer/logical operations (bit positions are zero-based)
 a = btest(i, 4)       ! returns logical .TRUE. if bit position 4 of I is 1, .FALSE. if 0
 i = ibclr(k, 8)       ! returns value of K with 8th bit position "cleared" (set to 0)
 i = ibset(k, 13)      ! returns value of K with 13th bit position "set" (set to 1)
-    
+
 ! multi-bit integer operations
 i = ishft(k, j)       ! returns value of K shifted by J bit positions, with ZERO fill
                       !    (right shift if J < 0 and left shift if J > 0).
@@ -3158,7 +3158,7 @@ The following INTRINSIC ELEMENTAL SUBROUTINE is also defined:
 
 
 ```fortran
- 
+
 program    bits_rosetta
 implicit none
 
@@ -3216,7 +3216,7 @@ Function lsr(x As Const Integer, y As Const Integer) As Integer
   Dim As UInteger z = x
   Return z Shr y
 End Function
- 
+
 Function rol(x As Const Integer, y As Const UInteger) As Integer
   Dim z As Integer = x
   Dim high As Integer
@@ -3243,7 +3243,7 @@ Function ror(x As Const Integer, y As Const UInteger) As Integer
   Dim low As Integer
   For i As Integer = 1 To y
     low = Bit(z, 0)
-    For j As Integer = 1 To 63 
+    For j As Integer = 1 To 63
       If Bit(z, j) Then
         z = BitSet(z, j - 1)
       Else
@@ -3257,7 +3257,7 @@ Function ror(x As Const Integer, y As Const UInteger) As Integer
     End If
   Next i
   Return z
-End Function  
+End Function
 
 Sub bitwise(x As Integer, y As Integer)
   Print "x       = "; x
@@ -3329,7 +3329,7 @@ end.
 
 ## FutureBasic
 
-FB does not have a bitwise symbol for not, but rather uses the "not" expression. It does not support predefined bitwise symbols for rotate left and rotate right, but functions in this demo provide that capability. 
+FB does not have a bitwise symbol for not, but rather uses the "not" expression. It does not support predefined bitwise symbols for rotate left and rotate right, but functions in this demo provide that capability.
 
 ```futurebasic
 
@@ -3360,7 +3360,7 @@ print
 print "Rotate left  :", "fn rotl( a, b ) = ", bin$(fn rotl( a, b)), ": "; fn rotl( a, b )
 print "Rotate right :", "fn rotr( a, b ) = ", bin$(fn rotr( a, b )),": "; fn rotr( a, b )
 end fn
- 
+
 fn bitwise( 255, 2 )
 
 ```
@@ -3589,7 +3589,7 @@ procedure bitdemo(i,i2)
    write()
    demowrite("i",i)
    demowrite("i2",i2)
-   demowrite("complement i",icom(i))     
+   demowrite("complement i",icom(i))
    demowrite("i or i2",ior(i,i2))
    demowrite("i and i2",iand(i,i2))
    demowrite("i xor i2",ixor(i,i2))
@@ -3856,7 +3856,7 @@ x ROR y = -2147483646
 ## LFE
 
 
-All these operations are built-in functions except right arithmetic shift, left rotate, and right rotate. 
+All these operations are built-in functions except right arithmetic shift, left rotate, and right rotate.
 
 ```lisp
 (defun bitwise (a b)
@@ -4014,7 +4014,7 @@ LiveCode does not provide built-in bit-shift operations.
 ;f for floats
 ;a for aggregate types
 ;s for stack objects
-;n: {size:size:size...}, best integer sizes 
+;n: {size:size:size...}, best integer sizes
 target datalayout = "e-p:32:32:32-i1:8:8-i8:8:8-i16:16:16-i32:32:32-i64:64:64-f32:32:32-f64:64:64-v64:64:64-v128:128:128-a0:0:64-f80:32:32-n8:16:32"
 ;this was compiled with mingw32; thus it must be linked to an ABI compatible c library
 target triple = "i386-mingw32"
@@ -4059,7 +4059,7 @@ entry:
   %11 = lshr i32 %a, %b                           ; <i32> [#uses=1]
   ;print the results
   %12 = tail call i32 (i8*, ...)* @printf(i8* getelementptr inbounds ([12 x i8]* @.str6, i32 0, i32 0), i32 %11) nounwind ; <i32> [#uses=0]
-  
+
   ;terminator instruction
   ret void
 }
@@ -4092,7 +4092,7 @@ The output of this program is:
 
 ```logo
 a and b: 5
-a or b: 255 
+a or b: 255
 a xor b: 250
 not a: -256
 a lshift b: 8160
@@ -4191,14 +4191,14 @@ and a unary operation ~ (negate).
 ```lse64
 over : 2 pick
 2dup : over over
- 
+
 bitwise : \
   " A=" ,t over ,h sp " B=" ,t dup ,h nl \
   " A and B=" ,t 2dup & ,h nl \
   " A  or B=" ,t 2dup | ,h nl \
   " A xor B=" ,t over ^ ,h nl \
   " not A="  ,t      ~ ,h nl
- 
+
 \ a \ 7 bitwise   # hex literals
 ```
 
@@ -4277,7 +4277,7 @@ function bitwiseOps(a,b)
     disp(sprintf('%d or %d = %d', [a b bitor(a,b)]));
     disp(sprintf('%d xor %d = %d', [a b bitxor(a,b)]));
     disp(sprintf('%d << %d = %d', [a b bitshift(a,b)]));
-    disp(sprintf('%d >> %d = %d', [a b bitshift(a,-b)]));   
+    disp(sprintf('%d >> %d = %d', [a b bitshift(a,-b)]));
 
 end
 ```
@@ -4427,9 +4427,9 @@ c RightRotate b: f8000007
  <doc>
    <h2>bitwise operations</h2>
    <p>Tectonics:
-     
+
   nekoc bitwise.neko
-     
+
   neko bitwise</p>
  </doc>
 */
@@ -4527,9 +4527,9 @@ WriteLine($"$i or $j is $(i | j)");
 WriteLine($"$i xor $j is $(i ^ j)");
 WriteLine($"not $i is $(~i)");
 WriteLine($"$i lshift $j is $(i << j)");
-WriteLine($"$i arshift $j is $(i >> j)");          // When the left operand of the >> operator is of a signed integral type, 
+WriteLine($"$i arshift $j is $(i >> j)");          // When the left operand of the >> operator is of a signed integral type,
                                                    // the operator performs an arithmetic shift right
-WriteLine($"$(i :> uint) rshift $j is $(c >> j)"); // When the left operand of the >> operator is of an unsigned integral type, 
+WriteLine($"$(i :> uint) rshift $j is $(c >> j)"); // When the left operand of the >> operator is of an unsigned integral type,
                                                    // the operator performs a logical shift right
 // there are no rotation operators in Nemerle, but you could define your own w/ a macro if you really wanted it
 ```
@@ -4562,7 +4562,7 @@ Function Bitwise
 	Push $2
 	StrCpy $0 7
 	StrCpy $1 2
-	
+
 	IntOp $2 $0 & $1
 	DetailPrint "Bitwise AND: $0 & $1 = $2"
 	IntOp $2 $0 | $1
@@ -4572,13 +4572,13 @@ Function Bitwise
 	IntOp $2 $0 ~
 	DetailPrint "Bitwise NOT (negate in NSIS docs): ~$0 = $2"
 	DetailPrint "There are no Arithmetic shifts in NSIS"
-	IntOp $2 $0 >> $1 
+	IntOp $2 $0 >> $1
 	DetailPrint "Right Shift: $0 >> 1 = $2"
 	IntOp $2 $0 << $1
 	DetailPrint "Left Shift: $0 << $1 = $2"
 	DetailPrint "There are no Rotates in NSIS"
-	
-	
+
+
 	Pop $2
 	Pop $1
 	Pop $0
@@ -4656,7 +4656,7 @@ bundle Default {
         Console->GetInstance()->Print("a and b: ")->PrintLine(a and b);
       Console->GetInstance()->Print("a or b: ")->PrintLine(a or b);
       Console->GetInstance()->Print("a xor b: ")->PrintLine(a xor b);
-      # shift left & right are supported by the compiler and VM but not 
+      # shift left & right are supported by the compiler and VM but not
       # exposed to end-users; those instructions are used for optimizations
     }
   }
@@ -4809,7 +4809,7 @@ end.
 
 ```perl
 use integer;
- 
+
 sub bitwise($$) {
    ($a, $b) = @_;
    print 'a and b: '. ($a & $b) ."\n";
@@ -4894,8 +4894,8 @@ sub say_bit ($message, $value) {
 
 ## Phix
 
-Phix has four builtin bitwise operations (and/or/xor/not), all of which have sequence variants. There are no builtin shift or rotate operations, 
-but it would be easy to devise one using / or * powers of 2 [which the compiler often optimises to single machine instructions] and the builtins, 
+Phix has four builtin bitwise operations (and/or/xor/not), all of which have sequence variants. There are no builtin shift or rotate operations,
+but it would be easy to devise one using / or * powers of 2 [which the compiler often optimises to single machine instructions] and the builtins,
 see [[Bitwise_operations#C|C]] for an example, or use inline assembly as shown below.
 
 ```Phix
@@ -5013,16 +5013,16 @@ not_bits(10000000000000000000000011111110)     = 0111111111111111111111110000000
 ```php
 function bitwise($a, $b)
 {
-    function zerofill($a,$b) { 
+    function zerofill($a,$b) {
         if($a>=0) return $a>>$b;
         if($b==0) return (($a>>1)&0x7fffffff)*2+(($a>>$b)&1); // this line shifts a 0 into the sign bit for compatibility, replace with "if($b==0) return $a;" if you need $b=0 to mean that nothing happens
-        return ((~$a)>>$b)^(0x7fffffff>>($b-1)); 
+        return ((~$a)>>$b)^(0x7fffffff>>($b-1));
 
     echo '$a AND $b: ' . $a & $b . '\n';
     echo '$a OR $b: ' . $a | $b . '\n';
     echo '$a XOR $b: ' . $a ^ $b . '\n';
     echo 'NOT $a: ' . ~$a . '\n';
-    echo '$a << $b: ' . $a << $b . '\n'; // left shift  
+    echo '$a << $b: ' . $a << $b . '\n'; // left shift
     echo '$a >> $b: ' . $a >> $b . '\n'; // arithmetic right shift
     echo 'zerofill($a, $b): ' . zerofill($a, $b) . '\n'; // logical right shift
 }
@@ -5202,7 +5202,7 @@ $X -bxor $Y
 -bnot $X
 ```
 
- 
+
 {{works with|PowerShell|3.0}}
 
 ```PowerShell
@@ -5302,7 +5302,7 @@ In this example we show a relatively straightforward function for converting int
 
 
 
-###  Native functions in R 3.x 
+###  Native functions in R 3.x
 
 
 ```r
@@ -5338,11 +5338,11 @@ The logical operators in R, namely &, | and !, are designed to work on logical v
 ```R
 intToLogicalBits <- function(intx) as.logical(intToBits(intx))
 logicalBitsToInt <- function(lb) as.integer(sum((2^(0:31))[lb]))
-"%AND%" <- function(x, y) 
+"%AND%" <- function(x, y)
 {
    logicalBitsToInt(intToLogicalBits(x) & intToLogicalBits(y))
 }
-"%OR%" <- function(x, y) 
+"%OR%" <- function(x, y)
 {
    logicalBitsToInt(intToLogicalBits(x) | intToLogicalBits(y))
 }
@@ -5479,7 +5479,7 @@ bXor:    return c2d( bitxor( d2c( arg(1) ), d2c( arg(2) ) ) )
 bShiftR: $=substr(reverse(d2b(arg(1))),arg(2)+1); if $='' then $=0; return b2d(reverse($))
 ```
 
-{{out|output}} 
+{{out|output}}
 
 ```txt
 
@@ -5506,7 +5506,7 @@ bShiftR: $=substr(reverse(d2b(arg(1))),arg(2)+1); if $='' then $=0; return b2d(r
 x = 8
 y = 2
 
-see "x & y - Binary AND : " + (x & y) + nl 
+see "x & y - Binary AND : " + (x & y) + nl
 see "x | y - Binary OR : " + (x | y) + nl
 see "x ^ y - Binary XOR : " + (x ^ y) +nl
 see "~x - Binary Ones Complement : " + (~x) + nl
@@ -5683,7 +5683,7 @@ def bitwise(a: Int, b: Int) {
 
 ## Scheme
 
-{{Works with|Scheme|R<math>^6</math>RS}} 
+{{Works with|Scheme|R<math>^6</math>RS}}
 
 ```scheme
 (import (rnrs arithmetic bitwise (6)))
@@ -5794,7 +5794,7 @@ func bitwise(a, b) {
    say ('a << b  : ', a << b)  # left shift
    say ('a >> b  : ', a >> b)  # arithmetic right shift
 }
- 
+
 bitwise(14,3)
 ```
 
@@ -5914,7 +5914,7 @@ BEGIN
         OUTTEXT("A ROTL B  : "); OUTINT(BITROTL(A,B),0); OUTIMAGE;  ! ROTATE LEFT ;
         OUTTEXT("A ROTR B  : "); OUTINT(BITROTR(A,B),0); OUTIMAGE;  ! ROTATE RIGHT ;
       END BITWISE;
-      
+
       BITWISE(14,3);
    END;
 END
@@ -5939,7 +5939,7 @@ A ROTR B  : -1073741823
 
 ## Slate
 
- 
+
 ```slate
 [ |:a :b |
 
@@ -5961,7 +5961,7 @@ A ROTR B  : -1073741823
 {{works with|GNU Smalltalk}}
 {{works with|Smalltalk/X}}
 {{works with|VisualWorks Smalltalk}}
-Since [[GNU Smalltalk]] by default runs without a graphical user interface, I wrote the program in that dialect.  The actual methods for bitwise operations (''bitAnd:'', etc.) are the same in all implementations. 
+Since [[GNU Smalltalk]] by default runs without a graphical user interface, I wrote the program in that dialect.  The actual methods for bitwise operations (''bitAnd:'', etc.) are the same in all implementations.
 
 ```smalltalk
 | testBitFunc |
@@ -6340,14 +6340,14 @@ It must be linked with the libc and "start" code; lazyly a <tt>gcc bitops.o</tt>
 ```asm
 	extern printf
 	global main
-	
+
 	section .text
 main
 	mov	eax, dword [_a]
 	mov	ecx, dword [_b]
 	push	ecx
 	push	eax
-	
+
 	and 	eax, ecx
 	mov	ebx, _opand
 	call	out_ops
@@ -6402,7 +6402,7 @@ main
 	push	_testn
 	call	printf
 	add	esp, 20
-	
+
 	add	esp, 8
 	ret
 
@@ -6422,13 +6422,13 @@ get_nums
 	ret
 
 	section .data
-	
+
 _a	dd	11
 _b	dd	3
 
 	section .rodata
 _test	db	'%08x %s %08x = %08x', 10, 0
-_testn	db	'%08s %s %08x = %08x', 10, 0 
+_testn	db	'%08s %s %08x = %08x', 10, 0
 _opand	db	'and', 0
 _opor	db	'or ', 0
 _opxor	db	'xor', 0

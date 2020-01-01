@@ -30,14 +30,14 @@ Show each of these set operations:
 
 As an option, show some other set operations.
 
-(If A &sube; B, but A &ne; B, then A is called a true or proper subset of B, written A &sub; B or A &#x228a; B.) 
+(If A &sube; B, but A &ne; B, then A is called a true or proper subset of B, written A &sub; B or A &#x228a; B.)
 
 As another option, show how to modify a mutable set.
 
 
-One might implement a set using an [[associative array]] (with set elements as array keys and some dummy value as the values). 
+One might implement a set using an [[associative array]] (with set elements as array keys and some dummy value as the values).
 
-One might also implement a set with a binary search tree, or with a hash table, or with an ordered array of binary bits (operated on with bit-wise binary operators). 
+One might also implement a set with a binary search tree, or with a hash table, or with an ordered array of binary bits (operated on with bit-wise binary operators).
 
 The basic test, m &isin; S, is [[O]](n) with a sequential list of elements, O(''log'' n) with a balanced binary search tree, or (O(1) average-case, O(n) worst case) with a hash table.
 
@@ -50,8 +50,8 @@ The basic test, m &isin; S, is [[O]](n) with a sequential list of elements, O(''
 ## Ada
 
 
-This solution uses the generic Ordered_Sets package from the Ada.Containers standard library, which internally is based on red-black trees. 
-An alternative hash-based solution could use the Hashed_Maps package from Ada.Containers. 
+This solution uses the generic Ordered_Sets package from the Ada.Containers standard library, which internally is based on red-black trees.
+An alternative hash-based solution could use the Hashed_Maps package from Ada.Containers.
 
 
 ```Ada
@@ -70,7 +70,7 @@ procedure set_demo is
 begin
 	loop
 		put ("s1= ");
-		s1 := + get_line;		
+		s1 := + get_line;
 		exit when s1 = +"Quit!";
 		put ("s2= ");
 		s2 := + get_line;
@@ -83,7 +83,7 @@ begin
   		Put_Line("Subset: "  & Boolean'Image(s1.Is_Subset(s2))
               & ", Equal: " & Boolean'Image(s1 = s2) & ".");
 	end loop;
-end set_demo; 
+end set_demo;
 
 ```
 
@@ -216,11 +216,11 @@ In Apex, Sets are unordered collections of elements.  Although elements can be a
 public class MySetController{
     public Set<String> strSet {get; private set; }
     public Set<Id> idSet {get; private set; }
-    
+
     public MySetController(){
         //Initialize to an already known collection.  Results in a set of abc,def.
         this.strSet = new Set<String>{'abc','abc','def'};
-        
+
         //Initialize to empty set and add in entries.
         this.strSet = new Set<String>();
         this.strSet.add('abc');
@@ -316,7 +316,7 @@ D:= ["apple", "cherry", "elderberry", "grape"]
 E:= ["apple", "cherry", "elderberry"]
 M:= "banana"
 
-Res = 
+Res =
 (
 A:= ["apple", "cherry", "elderberry", "grape"]
 B:= ["banana", "cherry", "date", "elderberry", "fig"]
@@ -332,15 +332,15 @@ Res .= "`nM is " (test(B,M)?"":"not ") "an element of Set B"
 
 Res .= "`nUnion(A,B) = "
 for i, val in Union(A,B)
-	Res.= (A_Index=1?"`t":", ") val 
+	Res.= (A_Index=1?"`t":", ") val
 
 Res .= "`nintersection(A,B) = "
 for i, val in intersection(A,B)
-	Res.= (A_Index=1?"`t":", ") val 
+	Res.= (A_Index=1?"`t":", ") val
 
 Res .= "`ndifference(A,B) = "
 for i, val in difference(A,B)
-	Res.= (A_Index=1?"`t":", ") val 
+	Res.= (A_Index=1?"`t":", ") val
 
 Res .= "`n`nA is " (subset(A,C)?"":"not ") "a subset of Set C"
 Res .= "`nA is " (subset(A,D)?"":"not ") "a subset of Set D"
@@ -387,14 +387,14 @@ The sets are represented as 32-bit integers, which means that the maximum number
 ```bbcbasic
       DIM list$(6)
       list$() = "apple", "banana", "cherry", "date", "elderberry", "fig", "grape"
-      
+
       setA% = %1010101
       PRINT "Set A: " FNlistset(list$(), setA%)
       setB% = %0111110
       PRINT "Set B: " FNlistset(list$(), setB%)
       elementM% = %0000010
       PRINT "Element M: " FNlistset(list$(), elementM%) '
-      
+
       IF elementM% AND setA% THEN
         PRINT "M is an element of set A"
       ELSE
@@ -405,11 +405,11 @@ The sets are represented as 32-bit integers, which means that the maximum number
       ELSE
         PRINT "M is not an element of set B"
       ENDIF
-      
+
       PRINT '"The union of A and B is " FNlistset(list$(), setA% OR setB%)
       PRINT "The intersection of A and B is " FNlistset(list$(), setA% AND setB%)
       PRINT "The difference of A and B is " FNlistset(list$(), setA% AND NOT setB%)
-      
+
       IF (setA% AND setB%) = setA% THEN
         PRINT '"Set A is a subset of set B"
       ELSE
@@ -421,7 +421,7 @@ The sets are represented as 32-bit integers, which means that the maximum number
         PRINT "Set A is not equal to set B"
       ENDIF
       END
-      
+
       DEF FNlistset(list$(), set%)
       LOCAL i%, o$
       FOR i% = 0 TO 31
@@ -458,8 +458,8 @@ Building a set highly depends on the datatype and use case.  For example, a set 
 
 A frequent use of set is that of small, non-negative integers, implemented as a bit field as shown below.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef unsigned int set_t; /* probably 32 bits; change according to need */
 
@@ -477,7 +477,7 @@ int main(void)
 {
 	int i;
 	set_t a, b, c;
-	
+
 	a = 0; /* empty set */
 	for (i = 0; i < 10; i += 3) /* add 0 3 6 9 to set a */
 		a |= (1U << i);
@@ -748,8 +748,8 @@ This implements functions from the task, along with an iteration helper called "
 
 # For ad-hoc set features, it sometimes makes sense to use hashes directly,
 # rather than abstract to this level, but I'm showing a somewhat heavy
-# solution to show off CoffeeScript class syntax. 
-class Set    
+# solution to show off CoffeeScript class syntax.
+class Set
   constructor: (elems...) ->
     @hash = {}
     for elem in elems
@@ -757,13 +757,13 @@ class Set
 
   add: (elem) ->
     @hash[elem] = true
-    
+
   remove: (elem) ->
     delete @hash[elem]
-    
+
   has: (elem) ->
     @hash[elem]?
-    
+
   union: (set2) ->
     set = new Set()
     for elem of @hash
@@ -771,37 +771,37 @@ class Set
     for elem in set2.to_array()
       set.add elem
     set
-    
+
   intersection: (set2) ->
     set = new Set()
     for elem of @hash
       set.add elem if set2.has elem
     set
-    
+
   minus: (set2) ->
     set = new Set()
     for elem of @hash
       set.add elem if !set2.has elem
     set
-    
+
   is_subset_of: (set2) ->
     for elem of @hash
       return false if !set2.has elem
     true
-    
+
   equals: (set2) ->
     this.is_subset_of(set2) and set2.is_subset_of this
-    
+
   to_array: ->
     (elem for elem of @hash)
-    
+
   each: (f) ->
     for elem of @hash
       f(elem)
-    
+
   to_string: ->
     @to_array()
-  
+
 run_tests = ->
   set1 = new Set("apple", "banana") # creation
   console.log set1.has "apple" # true (membership)
@@ -1023,7 +1023,7 @@ auto pow(T, uint n : 2)(const Set!T s) {                                        
 	return sqr!T(s);
 }
 
-auto pow(T, uint n)(const Set!T s) if(n % 2) {                                             // if n Odd,  A^n = A * (A^(n/2))²	
+auto pow(T, uint n)(const Set!T s) if(n % 2) {                                             // if n Odd,  A^n = A * (A^(n/2))²
         return s * sqr!T(pow!(T, n/2)(s));
 }
 
@@ -1033,7 +1033,7 @@ auto pow(T, uint n)(const Set!T s) if(!(n % 2)) {                               
 
 size_t Card(T)(const Set!T s) {return s.length; }                                           // Card(A)
 
-Set!(Set!T) power(T)(Set!T s) {                                                             // ∀B ∈ P(A) ⇒ B ⊂ A 
+Set!(Set!T) power(T)(Set!T s) {                                                             // ∀B ∈ P(A) ⇒ B ⊂ A
 	Set!(Set!T) ret;
 	foreach(e; s.array) {
 		Set!(Set!T) rs;
@@ -1068,7 +1068,7 @@ void main(){
   Set A = new Set.from([1,2,3]);
   Set B = new Set.from([1,2,3,4,5]);
   Set C = new Set.from([1,2,4,5]);
-	
+
   print('Set A = $A');
   print('Set B = $B');
   print('Set C = $C');
@@ -1133,7 +1133,7 @@ B is equal to AC = true
 
 ## EchoLisp
 
-EchoLisp sets are lists, i.e the set of all sets is a proper subset of the set of all lists. Sets elements may be any object, including sets. 
+EchoLisp sets are lists, i.e the set of all sets is a proper subset of the set of all lists. Sets elements may be any object, including sets.
 
 The set operations are: ∩ ∪ ⊆ / ∈ = ∆ ×
 
@@ -1234,7 +1234,7 @@ true
 10> Subtract = sets:subtract(Sab, Sa).
 11> sets:to_list(Subtract).
 [b]
-12> sets:is_subset(Sa, Sab). 
+12> sets:is_subset(Sa, Sab).
 true
 13> Sa =:= Sab.
 false
@@ -1341,39 +1341,39 @@ include FMS-SILib.f
   while dup
     a indexOf: if 2drop else a add: then
   repeat b <free a dup sort: ; ok
- 
+
 i{ 2 5 4 3 } i{ 5 6 7 } union p: i{ 2 3 4 5 6 7 } ok
 
 
-: free2 ( a b -- ) <free <free ; 
+: free2 ( a b -- ) <free <free ;
 : intersect {: a b | c -- c :}
-  heap> 1-array2 to c 
+  heap> 1-array2 to c
   begin
     b each:
   while dup
     a indexOf: if drop c add: else drop then
-  repeat a b free2 c dup sort: ; 
- 
+  repeat a b free2 c dup sort: ;
+
 i{ 2 5 4 3 } i{ 5 6 7 } intersect p: i{ 5 } ok
 
 
 : diff {: a b | c -- c :}
-  heap> 1-array2 to c 
+  heap> 1-array2 to c
   begin
     a each:
   while dup
     b indexOf: if 2drop else c add: then
-  repeat a b free2 c dup sort: ; 
+  repeat a b free2 c dup sort: ;
 
 i{ 2 5 4 3 } i{ 5 6 7 } diff p: i{ 2 3 4 } ok
 
 : subset {: a b -- flag :}
   begin
     a each:
-  while 
+  while
     b indexOf: if drop else false exit then
-  repeat a b free2 true ; 
- 
+  repeat a b free2 true ;
+
 i{ 2 5 4 3 } i{ 5 6 7 } subset . 0 ok
 i{ 5 6 } i{ 5 6 7 } subset .  -1 ok
 
@@ -1382,11 +1382,11 @@ i{ 5 6 } i{ 5 6 7 } subset .  -1 ok
   a size: b size: <> if a b free2 false exit then
   a sort: b sort:
   begin
-    a each: drop b each: 
-  while 
+    a each: drop b each:
+  while
     <> if a b free2 false exit then
-  repeat a b free2 true ; 
- 
+  repeat a b free2 true ;
+
 i{ 5 6 } i{ 5 6 7 } set= .  0 ok
 i{ 6 5 7 } i{ 5 6 7 } set= .  -1 ok
 
@@ -1403,7 +1403,7 @@ a = new set[1, 2]
 b = toSet[[2,3]]   // Construct a set from an array
 
 a.contains[2]  // Element test (returns true)
-union[a,b] 
+union[a,b]
 intersection[a,b]
 setDifference[a,b]
 isSubset[a,b]  // Returns true if a is a subset of b
@@ -1448,18 +1448,18 @@ println( 'S after 1 removed: ' + S )
 
 ```txt
 
-2 is in A: true                                                                                                                                                                             
-4 is in A: false                                                                                                                                                                            
-A union B: {4, 5, 1, 2, 3}                                                                                                                                                                  
-A intersect B: {3}                                                                                                                                                                          
-A difference B: {1, 2}                                                                                                                                                                      
-A subset of B: false                                                                                                                                                                        
-A subset of B: true                                                                                                                                                                         
-A equal B: false                                                                                                                                                                            
-A equal D: true                                                                                                                                                                             
-S (mutable version of A): {1, 2, 3}                                                                                                                                                         
-S with 4 added: {1, 2, 3, 4}                                                                                                                                                                
-S subset of C: true                                                                                                                                                                         
+2 is in A: true
+4 is in A: false
+A union B: {4, 5, 1, 2, 3}
+A intersect B: {3}
+A difference B: {1, 2}
+A subset of B: false
+A subset of B: true
+A equal B: false
+A equal D: true
+S (mutable version of A): {1, 2, 3}
+S with 4 added: {1, 2, 3, 4}
+S subset of C: true
 S after 1 removed: {2, 3, 4}
 
 ```
@@ -1930,7 +1930,7 @@ fromList []
 Prelude Data.Set> let s1 = fromList [1,2,3,4,3] -- Convert list into set
 Prelude Data.Set> s1
 fromList [1,2,3,4]
-Prelude Data.Set> let s2 = fromList [3,4,5,6] 
+Prelude Data.Set> let s2 = fromList [3,4,5,6]
 Prelude Data.Set> union s1 s2 -- Union
 fromList [1,2,3,4,5,6]
 Prelude Data.Set> intersection s1 s2 -- Intersection
@@ -2233,7 +2233,7 @@ public class Sets {
         Set<Integer> b = new TreeSet<>();
         Set<Integer> c = new TreeSet<>();
         Set<Integer> d = new TreeSet<>();
-        
+
         a.addAll(Arrays.asList(1, 2, 3, 4, 5));
         b.addAll(Arrays.asList(2, 3, 4, 5, 6, 8));
         c.addAll(Arrays.asList(2, 3, 4));
@@ -2242,34 +2242,34 @@ public class Sets {
         System.out.println("b: " + b);
         System.out.println("c: " + c);
         System.out.println("d: " + d);
-        
+
         System.out.println("2 in a: " + a.contains(2));
         System.out.println("6 in a: " + a.contains(6));
-        
+
         Set<Integer> ab = new TreeSet<>();
         ab.addAll(a);
         ab.addAll(b);
         System.out.println("a union b: " + ab);
-        
+
         Set<Integer> a_b = new TreeSet<>();
         a_b.addAll(a);
         a_b.removeAll(b);
         System.out.println("a - b: " + a_b);
-        
+
         System.out.println("c subset of a: " + a.containsAll(c));
         //use a.conatins() for single elements
-        
+
         System.out.println("c = d: " + c.equals(d));
         System.out.println("d = c: " + d.equals(c));
-        
+
         Set<Integer> aib = new TreeSet<>();
         aib.addAll(a);
         aib.retainAll(b);
         System.out.println("a intersect b: " + aib);
-        
+
         System.out.println("add 7 to a: " + a.add(7));
         System.out.println("add 2 to a again: " + a.add(2));
-        
+
         //other noteworthy things related to sets:
         Set<Integer> empty = Collections.EMPTY_SET; //immutable empty set
         //empty.add(2);  would fail
@@ -2304,7 +2304,7 @@ add 2 to a again: false
 
 ## JavaScript
 
-JavaScript does not support native sets before ECMAScript 6. 
+JavaScript does not support native sets before ECMAScript 6.
 
 
 ```javascript
@@ -2382,7 +2382,7 @@ def is_stringset:
 '''String-set membership''':
 
 The test for set membership, m ∈ S, where m is a string and S is a
-set of strings, corresponds exactly to the jq test: 
+set of strings, corresponds exactly to the jq test:
 
 ```jq
 T | has(m)
@@ -2421,7 +2421,7 @@ def stringset_subset(A;B):
 
 
 
-###  Finite Sets of JSON Entities 
+###  Finite Sets of JSON Entities
 
 Finite sets of arbitrary JSON entities can be represented by sets of
 strings using an invertible serialization of JSON entities, but in
@@ -2465,7 +2465,7 @@ equivalent to that given in [[Binary search]] is available.
 
 '''m ∈ S'''
 
-If m is a JSON entity and S a set, then the jq expression S[m] can be used to test 
+If m is a JSON entity and S a set, then the jq expression S[m] can be used to test
 whether m is an element of S, but for large sets, this is inefficient. A generally more efficient test membership of m in S would use
 bsearch as defined at [[Binary search]] or as provided in recent versions of jq:
 
@@ -2498,7 +2498,7 @@ def difference(A;B):
   (A|length) as $al
   | (B|length) as $bl
   | if $al == 0 then [] elif $bl == 0 then A
-    else 
+    else
       reduce range(0; $al + $bl) as $k
         ( [0, 0, []];
           .[0] as $i | .[1] as $j
@@ -2529,7 +2529,7 @@ def merge(x):
   | (x|length) as $xl
   | if $length == 0 then x
     elif $xl == 0 then .
-    else 
+    else
       . as $in
       | reduce range(0; $xl + $length) as $z
          # state [ix, xix, ans]
@@ -2710,7 +2710,7 @@ local(set1) = set('j','k','l','m','n')
 local(set2) = set('m','n','o','p','q')
 
 //Test m ∈ S -- "m is an element in set S"
-#set1 >> 'm' 
+#set1 >> 'm'
 
 // A ∪ B -- union; a set of all elements either in set A or in set B.
 #set1->union(#set2)
@@ -2895,8 +2895,8 @@ function intersectionOf$( a$, b$)
     do
         el$ =word$( a$, i, " ")
         if el$ ="" then exit do
-        if ( isAnElementOf$( el$, b$) ="True") and ( o$ ="")  then o$ =el$ 
-        if ( isAnElementOf$( el$, b$) ="True") and ( o$ <>el$) then o$ =o$ +" " +el$ 
+        if ( isAnElementOf$( el$, b$) ="True") and ( o$ ="")  then o$ =el$
+        if ( isAnElementOf$( el$, b$) ="True") and ( o$ <>el$) then o$ =o$ +" " +el$
         i =i +1
     loop until el$ =""
     intersectionOf$ =o$
@@ -2919,8 +2919,8 @@ function differenceOf$( a$, b$)
     do
         el$ =word$( a$, i, " ")
         if el$ ="" then exit do
-        if ( isAnElementOf$( el$, b$) ="False") and ( o$ ="")   then o$ =el$ 
-        if ( isAnElementOf$( el$, b$) ="False") and ( o$ <>el$) then o$ =o$ +" " +el$ 
+        if ( isAnElementOf$( el$, b$) ="False") and ( o$ ="")   then o$ =el$
+        if ( isAnElementOf$( el$, b$) ="False") and ( o$ <>el$) then o$ =o$ +" " +el$
         i =i +1
     loop until el$ =""
     differenceOf$ =o$
@@ -2936,12 +2936,12 @@ function isSubsetOf$( a$, b$)
         i =i +1
     loop until el$ =""
 end function
- 
+
 
 ```
 
- 
- 
+
+
  New set, in space-separated form. Extra spaces and duplicates will be removed.
  ? now is the the time for all good all men
  Set stored as the string 'all for good is men now the time'
@@ -3168,15 +3168,15 @@ For search in a tuple we have O(N).
 Module Sets {
 	setA=("apple", "cherry", "grape")
 	setB=("banana","cherry", "date")
-	
+
 	Print Len(setA)=3 'true
 	Print setA#pos("apple")>=0=true   ' exist
 	Print setA#pos("banana")>=0=False  ' not exist
-	
+
 	intersection=lambda  SetB (x$)-> SetB#pos(x$)>=0
 	SetC=SetA#filter(intersection,(,))
 	Print SetC
-	
+
 	Difference= lambda (aSet)->{
 		=lambda  aSet (x$)-> aSet#pos(x$)<0
 	}
@@ -3184,7 +3184,7 @@ Module Sets {
 	Print SetC
 	SetC=SetA#filter(Difference(setB),(,))
 	Print SetC
-	
+
 	k=each(setB)
 	SetC=cons(setA)
 	while k
@@ -3212,7 +3212,7 @@ Module Sets {
 	return SetC, 0:="banana"
 	print SetC#Fold(fold1(SetA), True)  ' False
 	print SetC#Fold(fold1(SetB), True)  ' True
-	
+
 	\\ equality
 	SetC=Cons(SetA)  ' we get a copy of one or more tuple
 	\\ SetC is subset of SetA and SetA is subset of  SetC
@@ -3235,7 +3235,7 @@ Module Sets {
 	Print SetC#map(mapU)#fold$(fold2, "") ' ("APPLE", "CHERRY", "GRAPE", "BANANA", "CHERRY", "DATE")
 	Print SetC#map(mapU)  ' APPLE CHERRY GRAPE BANANA CHERRY DATE
 	Print SetC#fold$(fold2, "")  ' ("apple", "cherry", "grape", "banana", "cherry", "date")
-	
+
 }
 Sets
 
@@ -3325,7 +3325,7 @@ True
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 
 There are two types of sets supported, sets with numeric values are stored in a vector, sets with string elements are stored in a cell-array.
 
@@ -3345,7 +3345,7 @@ There are two types of sets supported, sets with numeric values are stored in a 
 	setdiff(A, B)
     % A ⊆ B -- subset; true if every element in set A is also in set B.
         all(ismember(A, B))
-    % A = B -- equality; true if every element of set A is in set B and vice-versa. 
+    % A = B -- equality; true if every element of set A is in set B and vice-versa.
         isempty(setxor(A, B))
 
 ```
@@ -3450,7 +3450,7 @@ module RCSet
     {
         super.ForAll(x => sub.Contains(x))
     }
-    
+
     Main() : void
     {
         def names1 = Set(["Bob", "Billy", "Tom", "Dick", "Harry"]);
@@ -3463,7 +3463,7 @@ module RCSet
         def names1i2 = names1.Intersect(names2);   // intersection
         def same = names1.Equals(names2);          // equality
         def sub12 = names1.HasSubset(names2);      // subset
-        
+
         WriteLine($"$names1u2\n$names1d2\n$names1i2");
         WriteLine($"$same\t$sub12");
     }
@@ -3505,7 +3505,7 @@ s.excl(5) # remove 5 from set
 
 int main (int argc, const char *argv[]) {
   @autoreleasepool {
-  
+
     NSSet *s1 = [NSSet setWithObjects:@"a", @"b", @"c", @"d", @"e", nil];
     NSSet *s2 = [NSSet setWithObjects:@"b", @"c", @"d", @"e", @"f", @"h", nil];
     NSSet *s3 = [NSSet setWithObjects:@"b", @"c", @"d", nil];
@@ -3514,38 +3514,38 @@ int main (int argc, const char *argv[]) {
     NSLog(@"s2: %@", s2);
     NSLog(@"s3: %@", s3);
     NSLog(@"s4: %@", s4);
-  
+
     // Membership
     NSLog(@"b in s1: %d", [s1 containsObject:@"b"]);
     NSLog(@"f in s1: %d", [s1 containsObject:@"f"]);
-  
+
     // Union
     NSMutableSet *s12 = [NSMutableSet setWithSet:s1];
     [s12 unionSet:s2];
     NSLog(@"s1 union s2: %@", s12);
-  
+
     // Intersection
     NSMutableSet *s1i2 = [NSMutableSet setWithSet:s1];
     [s1i2 intersectSet:s2];
     NSLog(@"s1 intersect s2: %@", s1i2);
-  
+
     // Difference
     NSMutableSet *s1_2 = [NSMutableSet setWithSet:s1];
     [s1_2 minusSet:s2];
     NSLog(@"s1 - s2: %@", s1_2);
-  
+
     // Subset of
     NSLog(@"s3 subset of s1: %d", [s3 isSubsetOfSet:s1]);
-  
+
     // Equality
     NSLog(@"s3 = s4: %d", [s3 isEqualToSet:s4]);
-  
+
     // Cardinality
     NSLog(@"size of s1: %lu", [s1 count]);
-  
+
     // Has intersection (not disjoint)
     NSLog(@"does s1 intersect s2? %d", [s1 intersectsSet:s2]);
-  
+
     // Adding and removing elements from a mutable set
     NSMutableSet *mut_s1 = [NSMutableSet setWithSet:s1];
     [mut_s1 addObject:@"g"];
@@ -3554,7 +3554,7 @@ int main (int argc, const char *argv[]) {
     NSLog(@"mut_s1 after adding b again: %@", mut_s1);
     [mut_s1 removeObject:@"c"];
     NSLog(@"mut_s1 after removing c: %@", mut_s1);
-  
+
   }
   return 0;
 }
@@ -4557,7 +4557,7 @@ true.
 
 SWI-Prolog provides a standard [http://www.swi-prolog.org/pldoc/man?section=ordsets:Link library(ordsets)].
 It is loaded by default. I demonstrate almost all of these predicates in the interactive top-level (`?-` is the prompt).
-Variables prefixed with `$` refer back to the value of the last instantiation. 
+Variables prefixed with `$` refer back to the value of the last instantiation.
 It treats sets as ordered lists of unique elements:
 
 
@@ -4597,7 +4597,7 @@ false.
 ?- ord_subset([2,4], $B).
 true.
 
-%% A = B -- equality; true if every element of set A is in set B and vice-versa. 
+%% A = B -- equality; true if every element of set A is in set B and vice-versa.
 
 ?- $A == $B.
 false.
@@ -4635,26 +4635,26 @@ EndProcedure
 
 Procedure.s listSetElements(Map a(), delimeter.s = " ") ;format elements for display
   Protected output$
-  
+
   ForEach a()
     output$ + MapKey(a()) + delimeter
   Next
-  
+
   ProcedureReturn "(" + RTrim(output$, delimeter) + ")"
 EndProcedure
 
 Procedure.s listSortedSetElements(Map a(), delimeter.s = " ") ;format elements for display as sorted for easy comparison
   Protected output$
   NewList b.s()
-  
+
   ForEach a()
     AddElement(b()): b() = MapKey(a())
-  Next 
+  Next
   SortList(b(), #PB_Sort_Ascending | #PB_Sort_NoCase)
   ForEach b()
     output$ + b() + delimeter
   Next
-  
+
   ProcedureReturn "(" + RTrim(output$, delimeter) + ")"
 EndProcedure
 
@@ -4664,13 +4664,13 @@ EndProcedure
 
 Procedure createSet(elements.s, Map o(), delimeter.s = " ", clearSet = 1)
   Protected i, elementCount
-  
-  If clearSet: ClearMap(o()): EndIf 
+
+  If clearSet: ClearMap(o()): EndIf
   elementCount = CountString(elements, delimeter) + 1 ;add one for the last element which won't have a delimeter
   For i = 1 To elementCount
     AddMapElement(o(), StringField(elements, i, delimeter))
   Next
-  
+
   ProcedureReturn MapSize(o())
 EndProcedure
 
@@ -4680,12 +4680,12 @@ EndProcedure
 
 Procedure disjoinFrom(elements.s, Map o(), delimeter.s = " ")
   Protected i, elementCount
-  
+
   elementCount = CountString(elements, delimeter) + 1 ;add one for the last element which won't have a delimeter
   For i = 1 To elementCount
     DeleteMapElement(o(), StringField(elements, i, delimeter))
   Next
-  
+
   ProcedureReturn MapSize(o())
 EndProcedure
 
@@ -4700,7 +4700,7 @@ Procedure unionOf(Map a(), Map b(), Map o())
   ForEach b()
     AddMapElement(o(), MapKey(b()))
   Next
-  
+
   ProcedureReturn MapSize(o())
 EndProcedure
 
@@ -4711,7 +4711,7 @@ Procedure intersectionOf(Map a(), Map b(), Map o())
       AddMapElement(o(), MapKey(a()))
     EndIf
   Next
-  
+
   ProcedureReturn MapSize(o())
 EndProcedure
 
@@ -4722,9 +4722,9 @@ Procedure differenceOf(Map a(), Map b(), Map o())
       DeleteMapElement(o())
     Else
       AddMapElement(o(), MapKey(b()))
-    EndIf 
+    EndIf
   Next
-  
+
   ProcedureReturn MapSize(o())
 EndProcedure
 
@@ -4732,7 +4732,7 @@ Procedure isSubsetOf(Map a(), Map b()) ;boolean
   ForEach a()
     If Not FindMapElement(b(), MapKey(a()))
       ProcedureReturn 0
-    EndIf 
+    EndIf
   Next
   ProcedureReturn 1
 EndProcedure
@@ -4741,14 +4741,14 @@ Procedure isProperSubsetOf(Map a(), Map b()) ;boolean
   If MapSize(a()) = MapSize(b())
     ProcedureReturn 0
   EndIf
-  ProcedureReturn isSubsetOf(a(), b()) 
+  ProcedureReturn isSubsetOf(a(), b())
 EndProcedure
 
 Procedure isEqualTo(Map a(), Map b())
   If MapSize(a()) = MapSize(b())
     ProcedureReturn isSubsetOf(a(), b())
   EndIf
-  ProcedureReturn 0 
+  ProcedureReturn 0
 EndProcedure
 
 Procedure isEmpty(Map a()) ;boolean
@@ -4763,7 +4763,7 @@ If OpenConsole()
   NewMap b()
   NewMap o() ;for output sets
   NewMap c()
-  
+
   createSet("red blue green orange yellow", a())
   PrintN("Set A = " + listSortedSetElements(a()) + " of cardinality " + Str(cardinalityOf(a())) + ".")
   createSet("lady green red", b())
@@ -4771,30 +4771,30 @@ If OpenConsole()
   PrintN("'red' is an element of A is " + booleanText(isElementOf("red", a())) + ".")
   PrintN("'red' is an element of B is " + booleanText(isElementOf("red", b())) + ".")
   PrintN("'blue' is an element of B is " + booleanText(isElementOf("blue", b())) + ".")
-  
+
   unionOf(a(), b(), o())
   PrintN(#crlf$ + "Union of A & B is " + listSortedSetElements(o()) + ".")
   intersectionOf(a(), b(), o())
   PrintN("Intersection of  A & B is " + listSortedSetElements(o()) + ".")
   differenceOf(a(), b(), o())
   PrintN("Difference of  A & B is " + listSortedSetElements(o()) + ".")
-  
+
   PrintN(listSortedSetElements(a()) + " equals " + listSortedSetElements(a()) + " is " + booleanText(isEqualTo(a(), a())) + ".")
   PrintN(listSortedSetElements(a()) + " equals " + listSortedSetElements(b()) + " is " + booleanText(isEqualTo(a(), b())) + ".")
-  
+
   createSet("red green", c())
   PrintN(#crlf$ + listSortedSetElements(c()) + " is a subset of " + listSortedSetElements(a()) + " is "+ booleanText(isSubsetOf(c(), a())) + ".")
   PrintN(listSortedSetElements(c()) + " is a proper subset of " + listSortedSetElements(b()) + " is "+ booleanText(isProperSubsetOf(c(), b())) + ".")
   PrintN(listSortedSetElements(c()) + " is a proper subset of " + listSortedSetElements(a()) + " is "+ booleanText(isProperSubsetOf(c(), a())) + ".")
   PrintN(listSortedSetElements(b()) + " is a proper subset of " + listSortedSetElements(b()) + " is "+ booleanText(isProperSubsetOf(b(), b())) + ".")
-  
+
   PrintN(#crlf$ + "Set C = " + listSortedSetElements(c()) + " of cardinality " + Str(cardinalityOf(c())) + ".")
   adjoinTo("dog cat mouse", c())
   PrintN("Add 'dog cat mouse' to C to get " + listSortedSetElements(c()) + " of cardinality " + Str(cardinalityOf(c())) + ".")
   disjoinFrom("red green dog", c())
   PrintN("Take away 'red green dog' from C to get " + listSortedSetElements(c()) + " of cardinality " + Str(cardinalityOf(c())) + ".")
-  
-  
+
+
   Print(#crlf$ + #crlf$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -4829,10 +4829,10 @@ Take away 'red green dog' from C to get (cat mouse) of cardinality 2.
 
 ## Python
 
-In Python, <code>[http://docs.python.org/py3k/library/stdtypes.html#set-types-set-frozenset set]</code> is a standard type since Python 2.4. 
+In Python, <code>[http://docs.python.org/py3k/library/stdtypes.html#set-types-set-frozenset set]</code> is a standard type since Python 2.4.
 There is also <code>frozenset</code> which is an immutable version of <code>set</code>. (In Python 2.3, they were provided as <code>Set</code> and <code>ImmutableSet</code> types in the module <code>sets</code>.)
 
-Language syntax for set literals is supported starting in Python 3.0 and 2.7. 
+Language syntax for set literals is supported starting in Python 3.0 and 2.7.
 (For versions prior to 2.7, use <code>set([1, 2, 3, 4])</code> instead of <code>{1, 2, 3, 4}</code>. Even in Python 2.7+ and 3.0+, it is necessary to write <code>set()</code> to express the empty set.)
 {{works with|Python|2.7+ and 3.0+}}
 
@@ -4885,7 +4885,7 @@ True
 >>> s1 ^= s2 # Mutability
 >>> s1
 {1, 2, 3, 4, 5, 6}
->>> 
+>>>
 ```
 
 
@@ -5012,36 +5012,36 @@ set$: procedure expose set.;   arg $,_1,_2,_3;   set_=set._1;   t=_3;   s=t;   !
 arr = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape"]
 for n = 1 to 25
      add(arr,"")
-next 
+next
 seta = "1010101"
 see "Set A: " + arrset(arr,seta) + nl
 setb = "0111110"
 see "Set B: " + arrset(arr,setb) + nl
 elementm = "0000010"
 see "Element M: " + arrset(arr,elementm) + nl
- 
+
 temp = arrsetinsec(elementm,seta)
-if len(temp) > 0 
+if len(temp) > 0
    see "M is an element of set A" + nl
 else
    see "M is not an element of set A" + nl
 ok
 temp = arrsetinsec(elementm,setb)
-if len(temp) > 0 
+if len(temp) > 0
    see "M is an element of set B" + nl
 else
    see "M is not an element of set B" + nl
 ok
- 
-see "The union of A and B is: " 
+
+see "The union of A and B is: "
 see arrsetunion(seta,setb) + nl
 see "The intersection of A and B is: "
 see  arrsetinsec(seta,setb) + nl
-see "The difference of A and B is: " 
+see "The difference of A and B is: "
 see arrsetnot(seta,setb) + nl
 
 flag = arrsetsub(seta,setb)
-if flag = 1 
+if flag = 1
    see "Set A is a subset of set B" + nl
 else
    see "Set A is not a subset of set B" + nl
@@ -5051,7 +5051,7 @@ if seta = setb
 else
    see "Set A is not equal to set B" + nl
 ok
- 
+
 func arrset(arr,set)
        o = ""
        for i = 1 to 7
@@ -5132,9 +5132,9 @@ Set B: banana, cherry, date, elderberry, fig
 Element M: fig
 M is not an element of set A
 M is an element of set B
-The union of A and B is: apple, banana, cherry, date, elderberry, fig, grape, 
-The intersection of A and B is: cherry, elderberry, 
-The difference of A and B is: apple, grape, 
+The union of A and B is: apple, banana, cherry, date, elderberry, fig, grape,
+The intersection of A and B is: cherry, elderberry,
+The difference of A and B is: apple, grape,
 Set A is not a subset of set B
 Set A is not equal to set B
 
@@ -5189,7 +5189,7 @@ Ruby's standard library contains a "set" package, which provides <code>Set</code
 => #<Set: {5, 6, 1, 2, 3, 4}>
 >> s1.subtract(s2) # Mutability
 => #<Set: {1, 2}>
->> 
+>>
 ```
 
 
@@ -5198,7 +5198,7 @@ Ruby's standard library contains a "set" package, which provides <code>Set</code
 
 ```Runbasic
 
-A$	= "apple cherry elderberry grape" 
+A$	= "apple cherry elderberry grape"
 B$	= "banana cherry date elderberry fig"
 C$	= "apple cherry elderberry grape orange"
 D$	= "apple cherry elderberry grape"
@@ -5234,12 +5234,12 @@ for i = 1 to 5
 next i
 print "Difference(A,B) = ";dif$
 
-a = subs(A$,B$,"AB") 
+a = subs(A$,B$,"AB")
 a = subs(A$,C$,"AC")
 a = subs(A$,D$,"AD")
 a = subs(A$,E$,"AE")
 
-a = eqs(A$,B$,"AB") 
+a = eqs(A$,B$,"AB")
 a = eqs(A$,C$,"AC")
 a = eqs(A$,D$,"AD")
 a = eqs(A$,E$,"AE")
@@ -5249,7 +5249,7 @@ function subs(a$,b$,sets$)
  for i = 1 to 5
    if instr(b$,word$(a$,i)) <> 0 then subs = subs + 1
  next i
-if subs = 4 then 
+if subs = 4 then
   print left$(sets$,1);" is a subset of ";right$(sets$,1)
 else
   print left$(sets$,1);" is not a subset of ";right$(sets$,1)
@@ -5262,7 +5262,7 @@ for i = 1 to 5
  if word$(b$,i) <> "" then b = b + 1
  if instr(b$,word$(a$,i)) <> 0 then c = c + 1
 next i
-if (a = b) and (a = c) then 
+if (a = b) and (a = c) then
   print left$(sets$,1);" is equal ";right$(sets$,1)
 else
   print left$(sets$,1);" is not equal ";right$(sets$,1)
@@ -5280,9 +5280,9 @@ E = apple cherry elderberry
 M = banana
 M is not an element of Set A
 M is an element of Set B
-union(A,B) = apple cherry elderberry grape banana date fig 
-Intersection(A,B) = cherry elderberry 
-Difference(A,B) = apple grape  
+union(A,B) = apple cherry elderberry grape banana date fig
+Intersection(A,B) = cherry elderberry
+Difference(A,B) = apple grape
 A is not a subset of B
 A is a subset of C
 A is a subset of D
@@ -5714,7 +5714,7 @@ BEGIN
     END**OF**OUTSET;
 
 
-    COMMENT 
+    COMMENT
 ### =========== EXAMPLE USING SETS OF NUMBERS ===========
  ;
 
@@ -5828,25 +5828,25 @@ END.
 
 ```smalltalk
 
-#(1 2 3) asSet union: #(2 3 4) asSet.  
+#(1 2 3) asSet union: #(2 3 4) asSet.
 "a Set(1 2 3 4)"
 
-#(1 2 3) asSet intersection: #(2 3 4) asSet.  
+#(1 2 3) asSet intersection: #(2 3 4) asSet.
 "a Set(2 3)"
 
-#(1 2 3) asSet difference: #(2 3 4) asSet.  
+#(1 2 3) asSet difference: #(2 3 4) asSet.
 "a Set(1)"
 
-#(1 2 3) asSet includesAllOf: #(1 3) asSet.  
+#(1 2 3) asSet includesAllOf: #(1 3) asSet.
 "true"
 
-#(1 2 3) asSet includesAllOf: #(1 3 4) asSet.  
+#(1 2 3) asSet includesAllOf: #(1 3 4) asSet.
 "false"
 
-#(1 2 3) asSet = #(2 1 3) asSet.  
+#(1 2 3) asSet = #(2 1 3) asSet.
 "true"
 
-#(1 2 3) asSet = #(1 2 4) asSet.  
+#(1 2 3) asSet = #(1 2 4) asSet.
 "false"
 
 ```
@@ -5867,13 +5867,13 @@ create table myset1 (element number);
 insert into myset1 values (1);
 insert into myset1 values (2);
 insert into myset1 values (3);
-        
+
 commit;
 
 -- check if 1 is an element
 
 select 'TRUE' BOOL from dual
-where 1 in 
+where 1 in
 (select element from myset1);
 
 -- create second set with 3 elements
@@ -5883,7 +5883,7 @@ create table myset2 (element number);
 insert into myset2 values (1);
 insert into myset2 values (5);
 insert into myset2 values (6);
-        
+
 commit;
 
 -- union sets
@@ -5915,7 +5915,7 @@ commit;
 -- check if myset2 subset of myset1
 
 select 'TRUE' BOOL from dual
-where 0 =  (select count(*) from 
+where 0 =  (select count(*) from
 (select element from myset2
 minus
 select element from myset1));
@@ -5930,15 +5930,15 @@ commit;
 
  -- check if myset2 subset of myset1 and
  -- check if myset1 subset of myset2 and
- 
+
 select 'TRUE' BOOL from dual
-where 
-0 =  (select count(*) from 
+where
+0 =  (select count(*) from
 (select element from myset2
 minus
 select element from myset1)) and
 0 =
-(select count(*) from 
+(select count(*) from
 (select element from myset1
 minus
 select element from myset2));
@@ -5949,15 +5949,15 @@ select element from myset2));
 
 ```txt
 
-SQL> 
+SQL>
 SQL> -- set of numbers is a table
 SQL> -- create one set with 3 elements
-SQL> 
+SQL>
 SQL> create table myset1 (element number);
 
 Table created.
 
-SQL> 
+SQL>
 SQL> insert into myset1 values (1);
 
 1 row created.
@@ -5970,30 +5970,30 @@ SQL> insert into myset1 values (3);
 
 1 row created.
 
-SQL> 
+SQL>
 SQL> commit;
 
 Commit complete.
 
-SQL> 
+SQL>
 SQL> -- check if 1 is an element
-SQL> 
+SQL>
 SQL> select 'TRUE' BOOL from dual
   2  where 1 in
   3  (select element from myset1);
 
-BOOL                                                                            
-----                                                                            
-TRUE                                                                            
+BOOL
+----
+TRUE
 
-SQL> 
+SQL>
 SQL> -- create second set with 3 elements
-SQL> 
+SQL>
 SQL> create table myset2 (element number);
 
 Table created.
 
-SQL> 
+SQL>
 SQL> insert into myset2 values (1);
 
 1 row created.
@@ -6006,94 +6006,94 @@ SQL> insert into myset2 values (6);
 
 1 row created.
 
-SQL> 
+SQL>
 SQL> commit;
 
 Commit complete.
 
-SQL> 
+SQL>
 SQL> -- union sets
-SQL> 
+SQL>
 SQL> select element from myset1
   2  union
   3  select element from myset2;
 
-   ELEMENT                                                                      
-----------                                                                      
-         1                                                                      
-         2                                                                      
-         3                                                                      
-         5                                                                      
-         6                                                                      
+   ELEMENT
+----------
+         1
+         2
+         3
+         5
+         6
 
-SQL> 
+SQL>
 SQL> -- intersection
-SQL> 
+SQL>
 SQL> select element from myset1
   2  intersect
   3  select element from myset2;
 
-   ELEMENT                                                                      
-----------                                                                      
-         1                                                                      
+   ELEMENT
+----------
+         1
 
-SQL> 
+SQL>
 SQL> -- difference
-SQL> 
+SQL>
 SQL> select element from myset1
   2  minus
   3  select element from myset2;
 
-   ELEMENT                                                                      
-----------                                                                      
-         2                                                                      
-         3                                                                      
+   ELEMENT
+----------
+         2
+         3
 
-SQL> 
+SQL>
 SQL> -- subset
-SQL> 
+SQL>
 SQL> -- change myset2 to only have 1 as element
-SQL> 
+SQL>
 SQL> delete from myset2 where not element = 1;
 
 2 rows deleted.
 
-SQL> 
+SQL>
 SQL> commit;
 
 Commit complete.
 
-SQL> 
+SQL>
 SQL> -- check if myset2 subset of myset1
-SQL> 
+SQL>
 SQL> select 'TRUE' BOOL from dual
   2  where 0 =  (select count(*) from
   3  (select element from myset2
   4  minus
   5  select element from myset1));
 
-BOOL                                                                            
-----                                                                            
-TRUE                                                                            
+BOOL
+----
+TRUE
 
-SQL> 
+SQL>
 SQL> -- equality
-SQL> 
+SQL>
 SQL> -- change myset1 to only have 1 as element
-SQL> 
+SQL>
 SQL> delete from myset1 where not element = 1;
 
 2 rows deleted.
 
-SQL> 
+SQL>
 SQL> commit;
 
 Commit complete.
 
-SQL> 
+SQL>
 SQL>  -- check if myset2 subset of myset1 and
 SQL>  -- check if myset1 subset of myset2 and
-SQL> 
+SQL>
 SQL> select 'TRUE' BOOL from dual
   2  where
   3  0 =  (select count(*) from
@@ -6106,9 +6106,9 @@ SQL> select 'TRUE' BOOL from dual
  10  minus
  11  select element from myset2));
 
-BOOL                                                                            
-----                                                                            
-TRUE            
+BOOL
+----
+TRUE
 
 ```
 
@@ -6324,7 +6324,7 @@ class Set {
    fcn union(setB) { self(set.xplode(),setB.set.xplode()) }
    fcn intersection(setB){ sb:=setB.set;
       C:=self(); sc:=C.set;
-      foreach x in (set){ if (sb.holds(x)) sc.append(x) } 
+      foreach x in (set){ if (sb.holds(x)) sc.append(x) }
       C
    }
    fcn diff(setB){ C:=self(); C.set.extend(set);

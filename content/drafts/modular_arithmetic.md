@@ -11,25 +11,25 @@ tags = []
 +++
 
 {{draft task}} [[Category:Mathematics]]
-'''[[wp:Modular arithmetic|Modular arithmetic]]''' is a form of arithmetic (a calculation technique involving the concepts of addition and multiplication) which is done on numbers with a defined [[wp:equivalence relation|equivalence relation]] called ''congruence''.  
+'''[[wp:Modular arithmetic|Modular arithmetic]]''' is a form of arithmetic (a calculation technique involving the concepts of addition and multiplication) which is done on numbers with a defined [[wp:equivalence relation|equivalence relation]] called ''congruence''.
 
-For any positive integer <math>p</math> called the ''congruence modulus'', 
+For any positive integer <math>p</math> called the ''congruence modulus'',
 two numbers <math>a</math> and <math>b</math> are said to be ''congruent modulo p'' whenever there exists an integer <math>k</math> such that:
 :<math>a = b + k\,p</math>
 
-The corresponding set of [[wp:equivalence class|equivalence class]]es forms a [[wp:ring (mathematics)|ring]] denoted <math>\frac{\Z}{p\Z}</math>.  
+The corresponding set of [[wp:equivalence class|equivalence class]]es forms a [[wp:ring (mathematics)|ring]] denoted <math>\frac{\Z}{p\Z}</math>.
 
 Addition and multiplication on this ring have the same algebraic structure as in usual arithmetics, so that a function such as a polynomial expression could receive a ring element as argument and give a consistent result.
 
-The purpose of this task is to show, if your programming language allows it, 
-how to redefine operators so that they can be used transparently on modular integers.  
+The purpose of this task is to show, if your programming language allows it,
+how to redefine operators so that they can be used transparently on modular integers.
 You can do it either by using a dedicated library, or by implementing your own class.
 
 You will use the following function for demonstration:
 :<math>f(x) = x^{100} + x + 1</math>
 You will use <math>13</math> as the congruence modulus and you will compute <math>f(10)</math>.
 
-It is important that the function <math>f</math> is agnostic about whether or not its argument is modular; it should behave the same way with normal and modular integers.  
+It is important that the function <math>f</math> is agnostic about whether or not its argument is modular; it should behave the same way with normal and modular integers.
 In other words, the function is an algebraic expression that could be used with any ring, not just integers.
 
 
@@ -49,8 +49,8 @@ MODE MODULARINT = STRUCT( LONG LONG INT v, INT modulus );
 
 # modular integer + and * operators #
 # where both operands are modular, they must have the same modulus #
-OP +  = ( MODULARINT a,     b )MODULARINT: ( ( v OF a + v OF b ) MOD modulus OF a, modulus OF a ); 
-OP +  = ( MODULARINT a, INT b )MODULARINT: ( ( v OF a + b      ) MOD modulus OF a, modulus OF a ); 
+OP +  = ( MODULARINT a,     b )MODULARINT: ( ( v OF a + v OF b ) MOD modulus OF a, modulus OF a );
+OP +  = ( MODULARINT a, INT b )MODULARINT: ( ( v OF a + b      ) MOD modulus OF a, modulus OF a );
 OP *  = ( MODULARINT a,     b )MODULARINT: ( ( v OF a * v OF b ) MOD modulus OF a, modulus OF a );
 OP ** = ( MODULARINT a, INT b )MODULARINT: ( ( v OF a ** b     ) MOD modulus OF a, modulus OF a );
 
@@ -79,8 +79,8 @@ print( ( whole( f( MODULARINT( 10, 13 ) ), 0 ), newline ) )
 
 {{trans|C++}}
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 struct ModularArithmetic {
     int value;
@@ -146,8 +146,8 @@ f(ModularInteger(10, 13)) = ModularInteger(1, 13)
 
 {{trans|D}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <ostream>
 
 template<typename T>
@@ -508,7 +508,7 @@ C: <mod-int> mod-int
 
 ERROR: non-equal-modulus m1 m2 ;
 
-! Define a literal syntax for mod-int. 
+! Define a literal syntax for mod-int.
 << SYNTAX: MI{ \ } [ first2 <mod-int> ] parse-literal ; >>
 
 ! Implement prettyprinting for mod-int custom syntax.
@@ -707,7 +707,7 @@ main = print (f 10)
 
 ```txt
 
-./modarith 
+./modarith
 1
 
 ```
@@ -883,12 +883,12 @@ fun <T> Ring<T>.pow(p: Int): Ring<T> {
 }
 
 class ModInt(override val value: Int, val modulo: Int): Ring<ModInt> {
- 
+
     override operator fun plus(other: Ring<ModInt>): ModInt {
         require(other is ModInt &&  modulo == other.modulo)
         return ModInt((value + other.value) % modulo, modulo)
     }
-    
+
     override operator fun times(other: Ring<ModInt>): ModInt {
         require(other is ModInt && modulo == other.modulo)
         return ModInt((value * other.value) % modulo, modulo)
@@ -1154,7 +1154,7 @@ R = [0,0,0,0,0].
 
 {{works with|Python|3.x}}
 
-We need to implement a Modulo type first, then give one of its instances to the "f" function. 
+We need to implement a Modulo type first, then give one of its instances to the "f" function.
 
 Thanks to duck typing, the function doesn't need to care about the actual type it's given. We also use the dynamic nature of Python to dynamically build the operator overload methods and avoid repeating very similar code.
 
@@ -1288,7 +1288,7 @@ class Modulo
   def to_i
     @n
   end
- 
+
   def <=>(other_n)
     @n <=> other_n.to_i
   end
@@ -1410,10 +1410,10 @@ say f(Modulo(10, 13))
 
 ## Tcl
 
-Tcl does not permit overriding of operators, but does not force an expression 
-to be evaluated as a ''standard'' expression. 
+Tcl does not permit overriding of operators, but does not force an expression
+to be evaluated as a ''standard'' expression.
 
-Creating a parser and custom evaluation engine is relatively straight-forward, 
+Creating a parser and custom evaluation engine is relatively straight-forward,
 as is shown here.
 {{tcllib|pt::pgen}}
 
@@ -1493,7 +1493,7 @@ oo::class create CompileAST {
 }
 ```
 
-None of the code above knows about modular arithmetic at all, or indeed about actual expression evaluation. 
+None of the code above knows about modular arithmetic at all, or indeed about actual expression evaluation.
 Now we define the semantics that we want to actually use.
 
 ```tcl
@@ -1593,7 +1593,7 @@ Private Function mi_mul(ByVal a As Variant, b As Variant) As Variant
         End If
     End If
 End Function
- 
+
 Private Function mi_power(x As Variant, p As Integer) As Variant
     res = mi_one(x)
     For i = 1 To p
@@ -1601,7 +1601,7 @@ Private Function mi_power(x As Variant, p As Integer) As Variant
     Next i
     mi_power = res
 End Function
- 
+
 Private Function mi_print(m As Variant) As Variant
     If IsArray(m) Then
         s = "modint(" & m(1) & "," & m(2) & ")"
@@ -1610,11 +1610,11 @@ Private Function mi_print(m As Variant) As Variant
     End If
     mi_print = s
 End Function
- 
+
 Private Function f(x As Variant) As Variant
     f = mi_add(mi_power(x, 100), mi_add(x, mi_one(x)))
 End Function
- 
+
 Private Sub test(x As Variant)
     Debug.Print "x^100 + x + 1 for x == " & mi_print(x) & " is " & mi_print(f(x))
 End Sub
@@ -1641,9 +1641,9 @@ class MC{
    fcn init(n,mod){ var N=n,M=mod; }
    fcn toString   { String(N.divr(M)[1],"M",M) }
    fcn pow(p)     { self( N.pow(p).divr(M)[1], M ) }
-   fcn __opAdd(mc){ 
+   fcn __opAdd(mc){
       if(mc.isType(Int)) z:=N+mc; else z:=N*M + mc.N*mc.M;
-      self(z.divr(M)[1],M) 
+      self(z.divr(M)[1],M)
    }
 }
 ```

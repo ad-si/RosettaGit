@@ -122,7 +122,7 @@ EXITJ    MVI    0(R8),C'}'           s2=s2||"}"
          LA     R1,S2B-1               @s2b-1
          A      R1,I2                  +i2
          MVC    0(5,R1),=C' and '      s2b||" and "
-         LA     R1,5(R1)               +5 
+         LA     R1,5(R1)               +5
          LA     R2,S2+1                @s2+1
          A      R2,I2                  +i2
          LR     R3,R8                  s2ins
@@ -174,12 +174,12 @@ CJ       DS     CL1
 with Ada.Text_IO, Ada.Command_Line; use Ada.Command_Line;
 
 procedure Comma_Quibble is
-   
+
 begin
    case Argument_Count is
       when 0 => Ada.Text_IO.Put_Line("{}");
       when 1 => Ada.Text_IO.Put_Line("{" & Argument(1) & "}");
-      when others => 
+      when others =>
 	 Ada.Text_IO.Put("{");
 	 for I in 1 .. Argument_Count-2 loop
 	    Ada.Text_IO.Put(Argument(I) & ", ");
@@ -338,7 +338,7 @@ begin
             for strPos := 0 until len - 1 do addChar( str( strPos // 1 ) );
 
         % count the number of words                                           %
-        
+
         wordCount := 0;
         inWord    := false;
         for charPos := 0 until 255
@@ -354,7 +354,7 @@ begin
                     wordCount := wordCount + 1;
                     inWord    := true
                 end if_not_inWord
-            end 
+            end
         end for_charPos;
 
         % format the result                                                   %
@@ -439,7 +439,7 @@ on quibble(xs)
     if length of xs > 1 then
         set applyCommas to ¬
             compose([curry(my intercalate)'s |λ|(", "), my |reverse|, my tail])
-        
+
         intercalate(" and ", ap({applyCommas, my head}, {|reverse|(xs)}))
     else
         concat(xs)
@@ -453,7 +453,7 @@ on run
             "{" & x & "}"
         end |λ|
     end script
-    
+
     unlines(map(compose({braces, quibble}), ¬
         append({{}, {"ABC"}, {"ABC", "DEF"}, {"ABC", "DEF", "G", "H"}}, ¬
             map(|words|, ¬
@@ -492,7 +492,7 @@ on compose(fs)
                     mReturn(f)'s |λ|(a)
                 end |λ|
             end script
-            
+
             foldr(result, x, fs)
         end |λ|
     end script
@@ -505,7 +505,7 @@ on concat(xs)
             a & b
         end |λ|
     end script
-    
+
     if length of xs > 0 and class of (item 1 of xs) is string then
         set unit to ""
     else
@@ -580,7 +580,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -849,8 +849,8 @@ L4 {ABC, DEF, G and H}
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -885,7 +885,7 @@ char *quib(const char **strs, size_t size)
                  }
                  strcat(s, strs[i]);
                  break;
-    }  
+    }
     strcat(s, "}");
     return s;
 }
@@ -970,8 +970,8 @@ namespace CommaQuibbling
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 template<class T>
 void quibble(std::ostream& o, T i, T e) {
@@ -1083,7 +1083,7 @@ PROCEDURE DIVISION.
     .
 END PROGRAM comma-quibbling-test.
 
- 
+
 IDENTIFICATION DIVISION.
 FUNCTION-ID. comma-quibbling.
 
@@ -1125,7 +1125,7 @@ PROCEDURE DIVISION USING strs-area RETURNING str.
                 TO str
         END-PERFORM
     END-IF
-    
+
     MOVE FUNCTION CONCATENATE("{", str) TO str
     .
 END FUNCTION comma-quibbling.
@@ -1150,14 +1150,14 @@ END FUNCTION comma-quibbling.
 
 
 ```coffeescript
-quibble = ([most..., last]) -> 
-  '{' + 
+quibble = ([most..., last]) ->
+  '{' +
     (most.join ', ') +
-    (if most.length then ' and ' else '')  + 
-    (last or '') + 
+    (if most.length then ' and ' else '')  +
+    (last or '') +
   '}'
 
-console.log quibble(s) for s in [ [], ["ABC"], ["ABC", "DEF"], 
+console.log quibble(s) for s in [ [], ["ABC"], ["ABC", "DEF"],
                                   ["ABC", "DEF", "G", "H" ]   ]
 
 ```
@@ -1354,17 +1354,17 @@ comma-quibble lst:
          [ (a b) (format "{ %a and %a }" a b)]
          [( a ... b c) (format "{ %a %a and %a }" (for/string ([w a]) (string-append w ", "))  b c)]
          [else 'bad-input]))
- 
+
 
 ;; output
 
  (for ([t '(() ("ABC") ("ABC" "DEF") ("ABC" "DEF" "G" "H"))])
     (writeln t '----> (quibble t)))
 
-null     ---->     "{}"    
-("ABC")     ---->     "{ ABC }"    
-("ABC" "DEF")     ---->     "{ ABC and DEF }"    
-("ABC" "DEF" "G" "H")     ---->     "{ ABC, DEF, G and H }"    
+null     ---->     "{}"
+("ABC")     ---->     "{ ABC }"
+("ABC" "DEF")     ---->     "{ ABC and DEF }"
+("ABC" "DEF" "G" "H")     ---->     "{ ABC, DEF, G and H }"
 
 ```
 
@@ -1442,11 +1442,11 @@ end
 ## Elixir
 
 {{trans|Erlang}}
- 
+
 ```elixir
 defmodule RC do
   def generate( list ), do: "{#{ generate_content(list) }}"
-   
+
   defp generate_content( [] ), do: ""
   defp generate_content( [x] ), do: x
   defp generate_content( [x1, x2] ), do: "#{x1} and #{x2}"
@@ -1517,7 +1517,7 @@ generate_content( Xs ) ->
 
 
 ```fsharp
-let quibble list = 
+let quibble list =
     let rec inner = function
         | [] -> ""
         | [x] -> x
@@ -1526,7 +1526,7 @@ let quibble list =
     sprintf "{%s}" (inner list)
 
 // test interactively
-quibble []            
+quibble []
 quibble ["ABC"]
 quibble ["ABC"; "DEF"]
 quibble ["ABC"; "DEF"; "G"]
@@ -1595,7 +1595,7 @@ This example uses the <code>inverse</code> vocabulary, which builds on the conce
 
 ```factor
 USING: inverse qw sequences ;
- 
+
 : (quibble) ( seq -- seq' )
     {
         { [ { } ] [ "" ] }
@@ -1655,7 +1655,7 @@ HEX
 \ build a string stack/array to hold input strings
 100 constant ss-width                                                     \ string stack width
 variable $DEPTH                                                           \ the string stack pointer
-                                                                          
+
 create $stack ( -- addr) 20 ss-width * allot
 
 DECIMAL
@@ -1756,23 +1756,23 @@ include FMS-SILib.f
     0 ?do
     i l at: p:
     s i - 1 >
-     if ." , " 
+     if ." , "
      else s i <> if ."  and " then
      then
     loop
-  ." }" l <free ; 
+  ." }" l <free ;
 
-${ } foo            
+${ } foo
 \ {}
-${ ABC } foo            
+${ ABC } foo
 \ {ABC}
-${ ABC DEF } foo          
+${ ABC DEF } foo
 \ {ABC and DEF}
-${ ABC DEF G } foo       
+${ ABC DEF G } foo
 \ {ABC, DEF and G}
-${ ABC DEF G H } foo      
+${ ABC DEF G H } foo
 \ {ABC, DEF, G and H}
-${ ABC DEF G H I } foo     
+${ ABC DEF G H I } foo
 \ {ABC, DEF, G, H and I}
 
 ```
@@ -1889,15 +1889,15 @@ Sub Split(s As String, sep As String, result() As String)
   position(0) = 0
   For i = 0 To Len(s) - 1
     For j = 0 To Len(sep) - 1
-      If s[i] = sep[j] Then 
+      If s[i] = sep[j] Then
         count += 1
-        position(count) = i + 1 
+        position(count) = i + 1
       End If
     Next j
   Next i
   position(count + 1) = Len(s) + 1
   Redim result(count)
-  For i = 1 To count + 1    
+  For i = 1 To count + 1
     result(i - 1) = Mid(s, position(i - 1) + 1, position(i) - position(i - 1) - 1)
   Next
 End Sub
@@ -1905,8 +1905,8 @@ End Sub
 Function CommaQuibble(s As String) As String
   Dim i As Integer
   Dim As String result
-  Dim As String words() 
-  s = Trim(s, Any "[]""") 
+  Dim As String words()
+  s = Trim(s, Any "[]""")
   ' Now remove internal quotes
   Split s, """", words()
   s = ""
@@ -1914,18 +1914,18 @@ Function CommaQuibble(s As String) As String
      s &= words(i)
   Next
   ' Now split 's' using the comma as separator
-  Erase words  
+  Erase words
   Split s, ",", words()
   ' And re-assemble the string in the desired format
   result = "{"
-  For i = 0 To UBound(words) 
+  For i = 0 To UBound(words)
     If i = 0 Then
       result &= words(i)
-    ElseIf i = UBound(words) Then 
-      result &= " and " & words(i)       
+    ElseIf i = UBound(words) Then
+      result &= " and " & words(i)
     Else
       result &= ", " + words(i)
-    EndIf   
+    EndIf
   Next
   Return result & "}"
 End Function
@@ -1967,7 +1967,7 @@ Dim sTemp As String
 For Each sTemp In sInput
   Print sTemp & " = ";
   sTemp = Replace(sTemp, " ", ",")
-  If RInStr(sTemp, ",") > 0 Then 
+  If RInStr(sTemp, ",") > 0 Then
     sTemp = Mid(sTemp, 1, RInStr(sTemp, ",") - 1) & " and " & Mid(sTemp, RInStr(sTemp, ",") + 1)
   End If
   sTemp = "{" & sTemp & "}"
@@ -2078,7 +2078,7 @@ quibble ws = "{" ++ quibbles ws ++ "}"
         quibbles (a:bs) = a ++ ", " ++ quibbles bs
 
 main = mapM_ (putStrLn . quibble) $
-  [[], ["ABC"], ["ABC", "DEF"], ["ABC", "DEF", "G", "H"]] ++ 
+  [[], ["ABC"], ["ABC", "DEF"], ["ABC", "DEF", "G", "H"]] ++
   (map words ["One two three four", "Me myself I", "Jack Jill", "Loner" ])
 
 ```
@@ -2182,9 +2182,9 @@ quibble=: '{', '}' ,~ ', ' joinstring withoutLast2 , <@quibLast2
 ```j
    Tests=: (<'');(<'ABC');('ABC';'DEF');<('ABC';'DEF';'G';'H')
    quibble every Tests
-{}                 
-{ABC}              
-{ABC and DEF}      
+{}
+{ABC}
+{ABC and DEF}
 {ABC, DEF, G and H}
 ```
 
@@ -2210,14 +2210,14 @@ public class Quibbler {
 	public static String quibble(String[] words) {
 		String qText = "{";
 		for(int wIndex = 0; wIndex < words.length; wIndex++) {
-			qText += words[wIndex] + (wIndex == words.length-1 ? "" : 
+			qText += words[wIndex] + (wIndex == words.length-1 ? "" :
 						  wIndex == words.length-2 ? " and " :
 						  ", ";
 		}
 		qText += "}";
 		return qText;
 	}
-	
+
 	public static void main(String[] args) {
 		System.out.println(quibble(new String[]{}));
 		System.out.println(quibble(new String[]{"ABC"}));
@@ -2249,7 +2249,7 @@ public class Quibbler {
 
 ```javascript
 function quibble(words) {
-  return "{" + 
+  return "{" +
     words.slice(0, words.length-1).join(",") +
    (words.length > 1 ? " and " : "") +
    (words[words.length-1] || '') +
@@ -2397,7 +2397,7 @@ Composing from a set of generic functions:
 
 ```jq
 def quibble:
-  if length == 0 then "" 
+  if length == 0 then ""
   elif length == 1 then .[0]
   else (.[0:length-1] | join(", ")) + " and " + .[length-1]
   end
@@ -2459,14 +2459,14 @@ quibble(["ABC", "DEF", "G", "H"]) = "{ABC, DEF, G and H}"
 // version 1.0.6
 
 fun commaQuibble(s: String): String {
-    val t = s.trim('[', ']').replace(" ", "").replace("\"", "") 
+    val t = s.trim('[', ']').replace(" ", "").replace("\"", "")
     val words = t.split(',')
     val sb = StringBuilder("{")
     for (i in 0 until words.size) {
         sb.append(when (i) {
             0                -> ""
             words.lastIndex  -> " and "
-            else             -> ", "    
+            else             -> ", "
         })
         sb.append(words[i])
     }
@@ -2613,7 +2613,7 @@ to join :delimiter :list [:result []]
   output cond [
     [ [empty? :list]   :result ]
     [ [empty? :result] (join :delimiter butfirst :list first :list) ]
-    [ else             (join :delimiter butfirst :list 
+    [ else             (join :delimiter butfirst :list
                                         (word :result :delimiter first :list)) ]
   ]
 end
@@ -2624,7 +2624,7 @@ to quibble :list
   make "text (
     ifelse [:length <= 2] [
       (join "\ and\  :list)
-    ] [ 
+    ] [
       (join "\ and\  (sentence join ",\  butlast :list last :list))
     ])
   output ifelse [empty? :text] "\{\} [(word "\{ :text "\})]
@@ -2659,7 +2659,7 @@ function quibble (strTab)
         if strNum == #strTab then
             join = ""
         elseif strNum == #strTab - 1 then
-            join = " and " 
+            join = " and "
         else
             join = ", "
         end
@@ -2704,7 +2704,7 @@ Module Checkit {
             flush ' erase any argument from stack
             Data param$(what$)
             m=stack.size
-            document resp$="{" 
+            document resp$="{"
              if m>2 then {
                   shift m-1, 2    ' get last two as first two
                   push letter$+" and "+letter$
@@ -2714,8 +2714,8 @@ Module Checkit {
             while not empty {
                    resp$=letter$+if$(not empty->", ", "")
              }
-            =resp$+"}"   
-       
+            =resp$+"}"
+
       }
       \\ we use ? for Print
       ? f$({[]})
@@ -2737,10 +2737,10 @@ Checkit
 
 Module Checkit {
       function f$ {
-            what$=filter$(trim$(letter$), chr$(34)) 
+            what$=filter$(trim$(letter$), chr$(34))
             what$=Mid$(what$, 2, len(what$)-2)
             count=Len(what$)-Len(filter$(what$,","))
-            if count>2 then m=rinstr(what$, ", ")  :  insert m, 2 what$=" and " 
+            if count>2 then m=rinstr(what$, ", ")  :  insert m, 2 what$=" and "
             ="{"+what$+"}"
       }
       ? f$({[]})
@@ -2764,7 +2764,7 @@ Module Checkit {
             flush
             Data ! ar
             m=stack.size
-            document resp$="{" 
+            document resp$="{"
              if m>2 then {
                   shift m-1, 2    ' get last two as first two
                   push letter$+" and "+letter$
@@ -2774,7 +2774,7 @@ Module Checkit {
             while not empty {
                    resp$=letter$+if$(not empty->", ", "")
              }
-            =resp$+"}"   
+            =resp$+"}"
       }
       ? f$((,))
       ? f$(("ABC",))
@@ -2876,7 +2876,7 @@ fn separate words: =
 			(
 				if pos == 1 then (append toReturn words[pos]; pos+=1)
 				else
-				(	
+				(
 					if pos <= words.count-1 then (append toReturn (", "+words[pos]); pos+=1)
 						else
 						(
@@ -2976,11 +2976,11 @@ for i in s:
 ```oberon2
 
 MODULE CommaQuibbling;
-IMPORT 
+IMPORT
   NPCT:Args,
   Strings,
   Out;
-  
+
 VAR
   str: ARRAY 256 OF CHAR;
 
@@ -2991,31 +2991,31 @@ VAR
   BEGIN
     params := Args.Number() - 1;
     CASE params OF
-       0: 
+       0:
         COPY("{}",s)
       |1:
         Args.At(1,aux);
         Strings.Append("{",s);
         Strings.Append(aux,s);
-        Strings.Append("}",s); 
+        Strings.Append("}",s);
       ELSE
         Strings.Append("{",s);
         FOR i := 1 TO params - 1 DO
           Args.At(i,aux);
           Strings.Append(aux,s);
-          IF i # params - 1 THEN 
+          IF i # params - 1 THEN
             Strings.Append(", ",s)
-          ELSE 
-            Strings.Append(" and ", s) 
+          ELSE
+            Strings.Append(" and ", s)
           END
         END;
         Args.At(params,aux);
         Strings.Append(aux,s);
         Strings.Append("}",s)
     END;
-    
+
   END Do;
-  
+
 BEGIN
   Do(str);
   Out.String(":> ");Out.String(str);Out.Ln
@@ -3027,7 +3027,7 @@ END CommaQuibbling.
 
 ```txt
 
-$ bin/CommaQuibbling 
+$ bin/CommaQuibbling
 :> {}
 $ bin/CommaQuibbling ABC
 :> {ABC}
@@ -3050,7 +3050,7 @@ $ bin/CommaQuibbling ABC DEF G H
 class Quibbler {
   function : Quibble(words : String[]) ~ String {
     text := "{";
-    
+
     each(i : words) {
       text += words[i];
       if(i < words->Size() - 2) {
@@ -3064,7 +3064,7 @@ class Quibbler {
 
     return text;
   }
- 
+
   function : Main(args : String[]) ~ Nil {
     words := String->New[0];
     Quibble(words)->PrintLine();
@@ -3162,12 +3162,12 @@ let test () =
 : quibbing(l) -- string
 | i s |
    StringBuffer new "{" <<
-   l size dup 1- ->s loop: i [ 
+   l size dup 1- ->s loop: i [
       l at(i) <<
       i s < ifTrue: [ ", " << continue ]
       i s == ifTrue: [ " and " << ]
       ]
-   "}" << dup freeze ; 
+   "}" << dup freeze ;
 ```
 
 
@@ -3467,7 +3467,7 @@ $tests = [
   [],
   ["ABC"],
   ["ABC", "DEF"],
-  ["ABC", "DEF", "G", "H"] 
+  ["ABC", "DEF", "G", "H"]
 ];
 
 foreach ($tests as $test) {
@@ -3571,7 +3571,7 @@ Output:
 {}
 {ABC}
 {ABC and DEF}
-{ABC, DEF, G and H}      
+{ABC, DEF, G and H}
 
 ```
 
@@ -3608,7 +3608,7 @@ function Out-Quibble
     # Build a format string.
     $outStr = ""
     for ($i = 0; $i -lt $text.Count; $i++)
-    { 
+    {
         $outStr += "{$i}, "
     }
     $outStr = $outStr.TrimEnd(", ")
@@ -3692,8 +3692,8 @@ words_series(Words, Bracketed) :-
 words_serialized([], "").
 words_serialized([Word], Word) :- !.
 words_serialized(Words, Serialized) :-
-    append(Rest, [Last], Words),                                  %% Splits the list of *Words* into the *Last* word and the *Rest* 
-    atomics_to_string(Rest, ", ", WithCommas),                     
+    append(Rest, [Last], Words),                                  %% Splits the list of *Words* into the *Last* word and the *Rest*
+    atomics_to_string(Rest, ", ", WithCommas),
     atomics_to_string([WithCommas, " and ", Last], Serialized).
 
 
@@ -3739,7 +3739,7 @@ Procedure.s CommaQuibble(Input$)
     If i = 1
       result$ + word$
     ElseIf Count = i
-      result$ + " and " + word$      
+      result$ + " and " + word$
     Else
       result$ + ", " + word$
     EndIf
@@ -3789,12 +3789,12 @@ then reversed back.
 >>> for seq in ([], ["ABC"], ["ABC", "DEF"], ["ABC", "DEF", "G", "H"]):
     print('Input: %-24r -> Output: %r' % (seq, strcat(seq)))
 
-	
+
 Input: []                       -> Output: '{}'
 Input: ['ABC']                  -> Output: '{ABC}'
 Input: ['ABC', 'DEF']           -> Output: '{ABC and DEF}'
 Input: ['ABC', 'DEF', 'G', 'H'] -> Output: '{ABC, DEF, G and H}'
->>> 
+>>>
 ```
 
 
@@ -3838,12 +3838,12 @@ Input: ['ABC', 'DEF', 'G', 'H'] -> Output: '{ABC, DEF, G and H}'
 >>> for seq in ([], ["ABC"], ["ABC", "DEF"], ["ABC", "DEF", "G", "H"]):
 	print('Input: %-24r -> Output: %r' % (seq, quibble(seq)))
 
-	
+
 Input: []                       -> Output: '{}'
 Input: ['ABC']                  -> Output: '{ABC}'
 Input: ['ABC', 'DEF']           -> Output: '{ABC and DEF}'
 Input: ['ABC', 'DEF', 'G', 'H'] -> Output: '{ABC, DEF, G and H}'
->>> 
+>>>
 ```
 
 
@@ -4004,7 +4004,7 @@ say quibbling('ABC')
 say quibbling('ABC DEF')
 say quibbling('ABC DEF G H')
 exit
-quibbling: 
+quibbling:
   parse arg list
   If list='' Then result=''
   Else Do
@@ -4021,7 +4021,7 @@ quibbling:
     End
   Return '{'result'}'
 ```
-     
+
 {{output}}
 
 ```txt
@@ -4029,7 +4029,7 @@ quibbling:
 {}
 {ABC}
 {ABC and DEF}
-{ABC, DEF, G and H}    
+{ABC, DEF, G and H}
 
 ```
 
@@ -4182,8 +4182,8 @@ while  word$(wrds$,j+1,chr$(13)) <> ""
   a$ = "{"+mid$(a$,2,len(a$)-2)+"}"
   j = j + 1
   for i = len(a$) to 1 step -1
-    if mid$(a$,i,1) = "," then 
-       a$ =  left$(a$,i-1) + " and " + mid$(a$,i+2) 
+    if mid$(a$,i,1) = "," then
+       a$ =  left$(a$,i-1) + " and " + mid$(a$,i+2)
        exit for
     end if
   next i
@@ -4335,7 +4335,7 @@ sed -f script-file test.txt
 {{out}}
 
 ```txt
-{} 
+{}
 {ABC}
 {ABC and DEF}
 {ABC, DEF, G and H}
@@ -4449,7 +4449,7 @@ func quibbling(var words:[String]) {
             output += words.removeAtIndex(0) + ", "
         }
         output += "\(words.removeAtIndex(0)) and \(words.removeAtIndex(0))}"
-        
+
         println(output)
     }
 }
@@ -4583,7 +4583,7 @@ End Function
 Function Quibble(s)
 	arr = Split(s,",")
 	If s = "" Then
-		Quibble = "{}" 
+		Quibble = "{}"
 	ElseIf UBound(arr) = 0 Then
 		Quibble = "{" & arr(0) & "}"
 	Else
@@ -4726,14 +4726,14 @@ I like the Oxford comma; but specifications are specifications. So this implemen
 {{out}}
 
 ```txt
-"{}" 
-"{ABC}" 
-"{ABC and DEF}" 
-"{ABC, DEF, G and H}" 
+"{}"
+"{ABC}"
+"{ABC and DEF}"
+"{ABC, DEF, G and H}"
 
-"{}" 
-"{ABC}" 
-"{ABC and DEF}" 
+"{}"
+"{ABC}"
+"{ABC and DEF}"
 "{ABC, DEF, G, and H}"
 ```
 
@@ -4785,7 +4785,7 @@ This is a cheese ball solution that replies on no commas in the inputs
 fcn quib(list){ text:=("{"+list.toString(*)[2,-1]+"}").replace("\"","");
    if(list.len()<2) text;
    else{
-      z:=(text=text.replace(",",", ")).rfind(","); 
+      z:=(text=text.replace(",",", ")).rfind(",");
       String(text[0,z]," and ",text[z+2,*])
    }
 }
@@ -4816,7 +4816,7 @@ quib(L("ABC", "DEF", "G", "H")) //-->"{ABC, DEF, G and H}"
 50 FOR n=10 TO 40 STEP 10
 60 RESTORE n: GO SUB 1000
 70 NEXT n
-80 STOP 
+80 STOP
 1000 REM quibble
 1010 LET s$=""
 1020 READ j

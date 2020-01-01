@@ -15,9 +15,9 @@ tags = []
 
 This task is inspired by [http://drdobbs.com/windows/198701685 Mark Nelson's DDJ Column "Wordplay"] and one of the weekly puzzle challenges from Will Shortz on NPR Weekend Edition [http://www.npr.org/templates/story/story.php?storyId=9264290] and originally attributed to David Edelheit.
 
-The challenge was to take the names of two U.S. States, mix them all together, then rearrange the letters to form the names of two ''different'' U.S. States (so that all four state names differ from one another). 
+The challenge was to take the names of two U.S. States, mix them all together, then rearrange the letters to form the names of two ''different'' U.S. States (so that all four state names differ from one another).
 
-What states are these? 
+What states are these?
 
 
 The problem was reissued on  [https://tapestry.tucson.az.us/twiki/bin/view/Main/StateNamesPuzzle the Unicon Discussion Web] which includes several solutions with analysis.  Several techniques may be helpful and you may wish to refer to [[wp:Goedel_numbering|Gödel numbering]], [[wp:Equivalence_relation|equivalence relations]], and [[wp:Equivalence_classes|equivalence classes]].  The basic merits of these were discussed in the Unicon Discussion Web.
@@ -26,7 +26,7 @@ A second challenge in the form of a set of fictitious new states was also presen
 
 '''Task:'''
 
-Write a program to solve the challenge using both the original list of states and the fictitious list.  
+Write a program to solve the challenge using both the original list of states and the fictitious list.
 
 Caveats:
 * case and spacing aren't significant - just letters (harmonize case)
@@ -39,7 +39,7 @@ Comma separated list of state names used in the original puzzle:
 
     "Alabama", "Alaska", "Arizona", "Arkansas",
     "California", "Colorado", "Connecticut",
-    "Delaware",    
+    "Delaware",
     "Florida", "Georgia", "Hawaii",
     "Idaho", "Illinois", "Indiana", "Iowa",
     "Kansas", "Kentucky", "Louisiana",
@@ -192,8 +192,8 @@ No more solutions
 
 Sort by letter occurence and deal with dupes.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -205,7 +205,7 @@ const char *states[] = {
 #endif
 	"Alabama", "Alaska", "Arizona", "Arkansas",
 	"California", "Colorado", "Connecticut",
-	"Delaware",    
+	"Delaware",
 	"Florida", "Georgia", "Hawaii",
 	"Idaho", "Illinois", "Indiana", "Iowa",
 	"Kansas", "Kentucky", "Louisiana",
@@ -307,8 +307,8 @@ int main(void)
 
 Ported from C solution.
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <string>
 #include <array>
@@ -575,64 +575,64 @@ import Data.List (sort, sortBy, nub, groupBy)
 import Data.Function (on)
 
 stateNames :: [String]
-stateNames= 
+stateNames=
     ["Alabama",
-     "Alaska", 
-     "Arizona", 
-     "Arkansas", 
-     "California", 
-     "Colorado", 
-     "Connecticut", 
-     "Delaware",    
-     "Florida", 
-     "Georgia", 
-     "Hawaii", 
-     "Idaho", 
-     "Illinois", 
-     "Indiana", 
-     "Iowa", 
-     "Kansas", 
-     "Kentucky", 
-     "Louisiana", 
-     "Maine", 
-     "Maryland", 
-     "Massachusetts", 
-     "Michigan", 
-     "Minnesota", 
-     "Mississippi", 
-     "Missouri", 
-     "Montana", 
-     "Nebraska", 
-     "Nevada", 
-     "New Hampshire", 
-     "New Jersey", 
-     "New Mexico", 
-     "New York", 
-     "North Carolina", 
-     "North Dakota", 
-     "Ohio", 
-     "Oklahoma", 
-     "Oregon", 
-     "Pennsylvania", 
-     "Rhode Island", 
-     "South Carolina", 
-     "South Dakota", 
-     "Tennessee", 
-     "Texas", 
-     "Utah", 
-     "Vermont", 
-     "Virginia", 
-     "Washington", 
-     "West Virginia", 
-     "Wisconsin", 
-     "Wyoming"] 
- 
+     "Alaska",
+     "Arizona",
+     "Arkansas",
+     "California",
+     "Colorado",
+     "Connecticut",
+     "Delaware",
+     "Florida",
+     "Georgia",
+     "Hawaii",
+     "Idaho",
+     "Illinois",
+     "Indiana",
+     "Iowa",
+     "Kansas",
+     "Kentucky",
+     "Louisiana",
+     "Maine",
+     "Maryland",
+     "Massachusetts",
+     "Michigan",
+     "Minnesota",
+     "Mississippi",
+     "Missouri",
+     "Montana",
+     "Nebraska",
+     "Nevada",
+     "New Hampshire",
+     "New Jersey",
+     "New Mexico",
+     "New York",
+     "North Carolina",
+     "North Dakota",
+     "Ohio",
+     "Oklahoma",
+     "Oregon",
+     "Pennsylvania",
+     "Rhode Island",
+     "South Carolina",
+     "South Dakota",
+     "Tennessee",
+     "Texas",
+     "Utah",
+     "Vermont",
+     "Virginia",
+     "Washington",
+     "West Virginia",
+     "Wisconsin",
+     "Wyoming"]
+
 fakeStateNames :: [String]
-fakeStateNames = 
-    ["New Kory", 
-     "Wen Kory", 
-     "York New", 
-     "Kory New", 
+fakeStateNames =
+    ["New Kory",
+     "Wen Kory",
+     "York New",
+     "Kory New",
      "New Kory"]
 
 pairs :: [a] -> [(a,a)]
@@ -640,19 +640,19 @@ pairs [] = []
 pairs (y:ys) = map (y,) ys ++ pairs ys
 
 puzzle :: [String] -> [((String,String), (String, String))]
-puzzle states = 
-    concatMap (filter isValid.pairs) $ 
-    map (map snd) $ 
-    filter ((>1) . length ) $ 
-    groupBy ((==) `on` fst) $  
+puzzle states =
+    concatMap (filter isValid.pairs) $
+    map (map snd) $
+    filter ((>1) . length ) $
+    groupBy ((==) `on` fst) $
     sortBy (compare `on` fst) [(pkey (a++b), (a,b)) | (a,b) <- pairs (nub $ sort states)] where
         pkey = sort . filter isLetter . map toLower
         isValid ((a0, a1),(b0, b1)) = (a0 /= b0) && (a0 /= b1) && (a1 /= b0) && (a1 /= b1)
 
 main :: IO ()
 main = do
-    putStrLn $ "Matching pairs generated from " 
-               ++ show (length stateNames) ++ " state names and " 
+    putStrLn $ "Matching pairs generated from "
+               ++ show (length stateNames) ++ " state names and "
                ++ show (length fakeStateNames) ++ " fake state names:"
     mapM_ print $ puzzle $ stateNames ++ fakeStateNames
 ```
@@ -682,7 +682,7 @@ main = do
 
 =={{header|Icon}} and {{header|Unicon}}==
 
-###  Equivalence Class Solution 
+###  Equivalence Class Solution
 
 
 ```Icon
@@ -690,7 +690,7 @@ link strings                 # for csort and deletec
 
 procedure main(arglist)
     ECsolve(S1 := getStates())     # original state names puzzle
-    ECsolve(S2 := getStates2())    # modified fictious names puzzle 
+    ECsolve(S2 := getStates2())    # modified fictious names puzzle
     GNsolve(S1)
     GNsolve(S2)
 end
@@ -700,22 +700,22 @@ procedure ECsolve(S)         # Solve challenge using equivalence classes
     st := &time              # mark runtime
     /S := getStates()        # default
     every insert(states := set(),deletec(map(!S),' \t'))  # ignore case & space
-    
-    # Build a table containing sets of state name pairs 
+
+    # Build a table containing sets of state name pairs
     # keyed off of canonical form of the pair
     # Use csort(s) rather than cset(s) to preserve the numbers of each letter
     # Since we care not of X&Y .vs. Y&X keep only X&Y
-    
+
     T := table()
     every (x := !states ) & ( y := !states ) do
     if z := csort(x || (x << y)) then {
         /T[z] := []
         put(T[z],set(x,y))
     }
-    
+
     # For each unique key (canonical pair) find intersection of all pairs
     # Output is <current key matched> <key> <pairs>
-    
+
     i := m := 0       # keys (i) and pairs (m) matched
     every z := key(T) do {
         s := &null
@@ -743,7 +743,7 @@ The following are common routines:
 procedure getStates()   # return list of state names
 return ["Alabama", "Alaska", "Arizona", "Arkansas",
        "California", "Colorado", "Connecticut",
-       "Delaware",    
+       "Delaware",
        "Florida", "Georgia", "Hawaii",
        "Idaho", "Illinois", "Indiana", "Iowa",
        "Kansas", "Kentucky", "Louisiana",
@@ -765,7 +765,7 @@ end
 
 
 
-###  Godel Number Solution 
+###  Godel Number Solution
 
 
 ```Icon
@@ -780,11 +780,11 @@ procedure GNsolve(S)
     every put(states := [], map(!S)) # Make case insignificant
     min := proc("min",0)             # Link "factors" loses max/min functions
     max := proc("max",0)             # ... these statements get them back
-    
+
     # Build a table of equivalence classes (all state pairs in the
     #   same equivalence class have the same characters in them)
     #   Output new pair couples *before* adding each state pair to class.
-    
+
     every (state1 := |get(states)) & (state2 := !states) do {
         if state1 ~== state2 then {
             statePair := min(state1, state2)||":"||max(state1,state2)
@@ -799,7 +799,7 @@ procedure GNsolve(S)
             }
         }
     }
-    
+
     write(&errout, "Time: ", (&time-st)/1000.0)
 end
 
@@ -830,8 +830,8 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec, csort] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides deletec, csort]
 [http://www.cs.arizona.edu/icon/library/src/procs/factors.icn factors.icn provides prime]
 
 Sample Output (ECsolve):
@@ -1109,22 +1109,22 @@ Output:
 
 
 ```txt
-Wen Kory + Kory New = York New + New Kory 
-Wen Kory + Kory New = York New + New York 
-Wen Kory + Kory New = New Kory + New York 
-Wen Kory + York New = Kory New + New Kory 
-Wen Kory + York New = Kory New + New York 
-Wen Kory + York New = New Kory + New York 
-Wen Kory + New Kory = Kory New + York New 
-Wen Kory + New Kory = Kory New + New York 
-Wen Kory + New Kory = York New + New York 
-Wen Kory + New York = Kory New + York New 
-Wen Kory + New York = Kory New + New Kory 
-Wen Kory + New York = York New + New Kory 
-Kory New + York New = New Kory + New York 
-Kory New + New Kory = York New + New York 
-Kory New + New York = York New + New Kory 
-South Dakota + North Carolina  = North Dakota + South Carolina 
+Wen Kory + Kory New = York New + New Kory
+Wen Kory + Kory New = York New + New York
+Wen Kory + Kory New = New Kory + New York
+Wen Kory + York New = Kory New + New Kory
+Wen Kory + York New = Kory New + New York
+Wen Kory + York New = New Kory + New York
+Wen Kory + New Kory = Kory New + York New
+Wen Kory + New Kory = Kory New + New York
+Wen Kory + New Kory = York New + New York
+Wen Kory + New York = Kory New + York New
+Wen Kory + New York = Kory New + New Kory
+Wen Kory + New York = York New + New Kory
+Kory New + York New = New Kory + New York
+Kory New + New Kory = York New + New York
+Kory New + New York = York New + New Kory
+South Dakota + North Carolina  = North Dakota + South Carolina
 ```
 
 
@@ -1367,7 +1367,7 @@ fun solve(states: List<String>) {
                     if (combined == combined2) {
                         val f1 = "${dict[keys[i]]} + ${dict[keys[j]]}"
                         val f2 = "${dict[keys[k]]} + ${dict[keys[l]]}"
-                        val f3 = "$f1 = $f2"              
+                        val f3 = "$f1 = $f2"
                         if (f3 in duplicates) continue
                         solutions.add(f3)
                         val f4 = "$f2 = $f1"
@@ -1505,13 +1505,13 @@ groupSameQ[g1_, g2_] := Sort /@ Partition[g1, 2] === Sort /@ Partition[g2, 2];
 permutations[{a_, b_, c_, d_}] = Union[Permutations[{a, b, c, d}], SameTest -> groupSameQ];
 
 Select[Flatten[
-  permutations /@ 
-   Subsets[Union[ToLowerCase/@{"Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", 
-      "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", 
-      "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", 
-      "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", 
-      "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", 
-      "West Virginia", "Wisconsin", "Wyoming"}], {4}], 1], 
+  permutations /@
+   Subsets[Union[ToLowerCase/@{"Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida",
+      "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
+      "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
+      "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania",
+      "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington",
+      "West Virginia", "Wisconsin", "Wyoming"}], {4}], 1],
  letters[#, 2] === letters[#, -2] &]
 ```
 
@@ -1607,19 +1607,19 @@ my @states = <
 
 say "50 states:";
 .say for anastates @states;
- 
+
 say "\n54 states:";
 .say for sort anastates @states, < New_Kory Wen_Kory York_New Kory_New New_Kory >;
 
 sub anastates (*@states) {
     my @s = @states.unique».subst('_', ' ');
-     
+
     my @pairs = gather for ^@s -> $i {
 	for $i ^..^ @s -> $j {
 	    take [ @s[$i], @s[$j] ];
 	}
     }
-     
+
     my $equivs = hash @pairs.classify: *.lc.comb.sort.join;
 
     gather for $equivs.values -> @c {
@@ -1665,16 +1665,16 @@ North Carolina, South Dakota = North Dakota, South Carolina
 
 
 ```Phix
-constant states = {"Alabama", "Alaska", "Arizona", "Arkansas", 
-                   "California", "Colorado", "Connecticut", "Delaware", 
-                   "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", 
+constant states = {"Alabama", "Alaska", "Arizona", "Arkansas",
+                   "California", "Colorado", "Connecticut", "Delaware",
+                   "Florida", "Georgia", "Hawaii", "Idaho", "Illinois",
                    "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana",
-                   "Maine", "Maryland", "Massachusetts", "Michigan", 
-                   "Minnesota", "Mississippi", "Missouri", "Montana", 
-                   "Nebraska", "Nevada", "New Hampshire", "New Jersey", 
-                   "New Mexico", "New York", "North Carolina", "North Dakota", 
-                   "Ohio", "Oklahoma", "Oregon", "Pennsylvania", 
-                   "Rhode Island", "South Carolina", "South Dakota", 
+                   "Maine", "Maryland", "Massachusetts", "Michigan",
+                   "Minnesota", "Mississippi", "Missouri", "Montana",
+                   "Nebraska", "Nevada", "New Hampshire", "New Jersey",
+                   "New Mexico", "New York", "North Carolina", "North Dakota",
+                   "Ohio", "Oklahoma", "Oregon", "Pennsylvania",
+                   "Rhode Island", "South Carolina", "South Dakota",
                    "Tennessee", "Texas", "Utah", "Vermont", "Virginia",
                    "Washington", "West Virginia", "Wisconsin", "Wyoming"},
 --       extras = {"New Kory", "Wen Kory", "York New", "Kory New", "New Kory"}
@@ -1937,9 +1937,9 @@ for pairs in sorted(smap.itervalues()):
 (define states
   (list->set
    (map string-downcase
-        '("Alabama" "Alaska" "Arizona" "Arkansas"          
+        '("Alabama" "Alaska" "Arizona" "Arkansas"
           "California" "Colorado" "Connecticut"
-          "Delaware"    
+          "Delaware"
           "Florida" "Georgia" "Hawaii"
           "Idaho" "Illinois" "Indiana" "Iowa"
           "Kansas" "Kentucky" "Louisiana"
@@ -1955,11 +1955,11 @@ for pairs in sorted(smap.itervalues()):
           ; "New Kory" "Wen Kory" "York New" "Kory New" "New Kory"
           ))))
 
-(define (canon s t) 
+(define (canon s t)
   (sort (append (string->list s) (string->list t)) char<? ))
 
 (define seen (make-hash))
-(for* ([s1 states] [s2 states] #:when (string<? s1 s2))  
+(for* ([s1 states] [s2 states] #:when (string<? s1 s2))
   (define c (canon s1 s2))
   (cond [(hash-ref seen c (λ() (hash-set! seen c (list s1 s2)) #f))
          => (λ(states) (displayln (~v states (list s1 s2))))]))
@@ -1978,9 +1978,9 @@ Output:
 
 ## REXX
 
-Code was added to the REXX program to remove dead-end words (state names) that can't possibly be part of 
+Code was added to the REXX program to remove dead-end words (state names) that can't possibly be part of
 
-a solution, in particular, words that contain a unique letter (among all the state names). 
+a solution, in particular, words that contain a unique letter (among all the state names).
 
 ```rexx
 /*REXX program  (state name puzzle)  rearranges two state's names ──► two new states.   */
@@ -2061,7 +2061,7 @@ list:   say;   do i=1  for z;   say right(i, 9)   ##.i;   end;            say;  
 s:      if arg(1)==1  then return arg(3);    return word(arg(2) 's', 1)    /*pluralizer.*/
 ```
 
-{{out|output|text=  when using the default input:}} 
+{{out|output|text=  when using the default input:}}
 <pre style="height:60ex">
 removing dead─end state  [which has the letter  Z]:  Arizona
 removing dead─end state  [which has the letter  J]:  New Jersey
@@ -2218,7 +2218,7 @@ found:  New Kory, Kory New   ───►   Wen Kory, York New
 require 'set'
 
 # 26 prime numbers
-Primes = [ 2,  3,  5,  7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 
+Primes = [ 2,  3,  5,  7, 11, 13, 17, 19, 23, 29, 31, 37, 41,
           43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101]
 States = [
     "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
@@ -2250,7 +2250,7 @@ def print_answer(states)
   end
 
   # output the results
-  result.each_with_index do |(pair1, pair2), i| 
+  result.each_with_index do |(pair1, pair2), i|
     puts "%d\t%s\t%s" % [i+1, pair1.join(', '), pair2.join(', ')]
   end
 end
@@ -2501,7 +2501,7 @@ Utils.Helpers.pickNFrom(2,states).apply2('wrap(ss){ // 1225 combinations
    key:=(ss.concat()).toLower().sort()-" ";
    smap[key]=smap.find(key,List()).append(ss.concat(" + "));
 });
- 
+
 foreach pairs in (smap.values){ // 1224 keys
 //    pairs=Utils.Helpers.listUnique(pairs);  // eliminate dups
     if(pairs.len()>1)

@@ -12,9 +12,9 @@ tags = []
 
 {{draft task|Sorting Algorithms}}{{Sorting Algorithm}}
 
-Sort an array of integers (of any convenient size) into ascending order using Circlesort. 
+Sort an array of integers (of any convenient size) into ascending order using Circlesort.
 
-In short, compare the first element to the last element, then the second element to the second last element, etc. 
+In short, compare the first element to the last element, then the second element to the second last element, etc.
 
 Then split the array in two and recurse until there is only one single element in the array, like this:
  Before:
@@ -24,9 +24,9 @@ Then split the array in two and recurse until there is only one single element i
 
 Repeat this procedure until quiescence (i.e. until there are no swaps).
 
-Show both the initial, unsorted list and the final sorted list. (Intermediate steps during sorting are optional.) 
+Show both the initial, unsorted list and the final sorted list. (Intermediate steps during sorting are optional.)
 
-Optimizations (like doing ''0.5 log2(n)'' iterations and then continue with an [[Insertion sort]]) are optional. 
+Optimizations (like doing ''0.5 log2(n)'' iterations and then continue with an [[Insertion sort]]) are optional.
 
 
 Pseudo code:
@@ -67,8 +67,8 @@ Pseudo code:
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int circle_sort_inner(int *start, int *end)
 {
@@ -108,8 +108,8 @@ int main(void)
 
 ```txt
 
-5 -1 101 -4 0 1 8 6 2 3 
--4 -1 0 3 6 1 2 8 5 101 
+5 -1 101 -4 0 1 8 6 2 3
+-4 -1 0 3 6 1 2 8 5 101
 -4 -1 0 1 2 3 5 6 8 101
 
 ```
@@ -119,8 +119,8 @@ int main(void)
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int circlesort(int* arr, int lo, int hi, int swaps) {
     if(lo == hi) {
@@ -300,14 +300,14 @@ defmodule Sort do
     |> circle_sort(0, length(data)-1)
     |> Tuple.to_list
   end
-  
+
   defp circle_sort(data, lo, hi) do
     case circle_sort(data, lo, hi, 0) do
       {result, 0} -> result
       {result, _} -> circle_sort(result, lo, hi)
     end
   end
-  
+
   defp circle_sort(data, lo, lo, swaps), do: {data, swaps}
   defp circle_sort(data, lo, hi, swaps) do
     mid = div(lo + hi, 2)
@@ -315,7 +315,7 @@ defmodule Sort do
     {data, swaps} = circle_sort(data, lo, mid, swaps)
     circle_sort(data, mid+1, hi, swaps)
   end
-  
+
   def do_circle_sort(data, lo, hi, swaps) when lo>=hi do
     if lo==hi and elem(data, lo) > elem(data, hi+1),
       do:   {swap(data, lo, hi+1), swaps+1},
@@ -326,7 +326,7 @@ defmodule Sort do
       do:   do_circle_sort(swap(data, lo, hi), lo+1, hi-1, swaps+1),
       else: do_circle_sort(data, lo+1, hi-1, swaps)
   end
-  
+
   defp swap(data, i, j) do
     vi = elem(data, i)
     vj = elem(data, j)
@@ -380,12 +380,12 @@ variable (sorted?)                     \ is the array sorted?
 ;
 
 :noname < ; is precedes
- 
+
 10 constant /sample
 create sample 5 , -1 , 101 , -4 , 0 , 1 , 8 , 6 , 2 , 3 ,
- 
+
 : .sample sample /sample cells bounds do i ? 1 cells +loop ;
- 
+
 sample /sample sort .sample
 ```
 
@@ -406,9 +406,9 @@ module circlesort
   implicit none
   logical, private :: csr
   public :: circle_sort
- 
+
 contains
- 
+
   recursive logical function csr(a, left, right,n) result(swapped)
     implicit none
     integer, intent(in) :: left, right,n
@@ -447,7 +447,7 @@ contains
     righthalf = csr(a, mid + 1, right,n)
     swapped = swapped .or. lefthalf .or. righthalf
   end function csr
-! 
+!
   subroutine circle_sort(a, n)
     use iso_c_binding, only: c_ptr, c_loc
     implicit none
@@ -460,7 +460,7 @@ contains
 ! 0.5*ln(n) iterations, perform a binary insertion sort then exit the loop.
     end do
   end subroutine circle_sort
- 
+
 end module circlesort
 program sort
   use circlesort
@@ -490,7 +490,7 @@ Dim Shared As Long cs(-7 To 7)
 
 Function circlesort(lo As Long, hi As Long, swaps As ULong) As ULong
 
-    ' array is declared shared 
+    ' array is declared shared
     ' sort from lower bound to the highter bound
     ' array's can have subscript range from -2147483648 to +2147483647
 
@@ -647,7 +647,7 @@ Examples:
 ┌───────────────┬────────────────────────────┐
 │0 1 2 3 4 5 6 7│0 1 2 3 4 5 6 7 8 9 10 11 12│
 └───────────────┴────────────────────────────┘
-   
+
    8 ([: circle_sort&.>@show ;&(1 }. 2 # ?~)) 13  NB. data has repetition
 ┌─────────────────────────────┬──────────────────────────────────────────────────────┐
 │2 3 3 5 5 1 1 7 7 6 6 4 4 0 0│12 11 11 4 4 3 3 9 9 7 7 10 10 6 6 2 2 1 1 5 5 8 8 0 0│
@@ -735,7 +735,7 @@ With kudos to [[#Perl 6]].
 "circlesort" as defined in this section can be used to sort any JSON array.  In case your jq does not have "until" as a builtin, here is its definition:
 
 ```jq
-def until(cond; next): 
+def until(cond; next):
      def _until: if cond then . else (next|_until) end;
      _until;
 ```
@@ -765,7 +765,7 @@ def circlesort:
                 end
 	      | next)
         | .[0] as $lo | .[1] as $hi
-        | [$start, $hi, .[2], .[3]] | cs 
+        | [$start, $hi, .[2], .[3]] | cs
 	| [$lo, $stop,  .[2], .[3]] | cs
       else .
       end ;
@@ -857,7 +857,7 @@ fun<T: Comparable<T>> circleSort(array: Array<T>, lo: Int, hi: Int, nSwaps: Int)
         array[i]  = array[j]
         array[j]  = temp
     }
- 
+
     var high  = hi
     var low   = lo
     val mid   = (hi - lo) / 2
@@ -889,7 +889,7 @@ fun main(args: Array<String>) {
     val array2 = arrayOf("the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog")
     println("Original: ${array2.asList()}")
     while (circleSort(array2, 0, array2.size - 1, 0) != 0) ;
-    println("Sorted  : ${array2.asList()}")    
+    println("Sorted  : ${array2.asList()}")
 }
 ```
 
@@ -964,7 +964,7 @@ proc innerCircleSort[T](a: var openArray[T], lo, hi, swaps: int): int =
   var localLo: int = lo
   if localLo == localHi:
     return swaps
-  
+
   var `high` = localHi
   var `low` = localLo
   var mid = (localHi - localLo) div 2
@@ -988,7 +988,7 @@ proc circleSort[T](a: var openArray[T]) =
   while a.innerCircleSort(0, a.high, 0) != 0:
     discard
 
-var arr = @[@[6, 7, 8, 9, 2, 5, 3, 4, 1], 
+var arr = @[@[6, 7, 8, 9, 2, 5, 3, 4, 1],
             @[2, 14, 4, 6, 8, 1, 3, 5, 7, 11, 0, 13, 12, -1]]
 
 for i in 0..arr.high:
@@ -1019,16 +1019,16 @@ class CircleSort {
   function : Main(args : String[]) ~ Nil {
     circleSort([2, 14, 4, 6, 8, 1, 3, 5, 7, 11, 0, 13, 12, -1]);
   }
-  
+
   function : circleSort(arr : Int[]) ~ Nil {
     if(arr->Size() > 0) {
       do {
         arr->ToString()->PrintLine();
-      } 
+      }
       while(CircleSort(arr, 0, arr->Size() - 1, 0) <> 0);
     };
   }
- 
+
   function : CircleSort( arr : Int[], lo : Int, hi : Int, num_swaps : Int) ~ Int {
     if(lo = hi) {
       return num_swaps;
@@ -1038,7 +1038,7 @@ class CircleSort {
     high := hi;
     low := lo;
     mid := (hi - lo) / 2;
- 
+
     while (lo < hi) {
       if(arr[lo] > arr[hi]) {
         Swap(arr, lo, hi);
@@ -1047,18 +1047,18 @@ class CircleSort {
       lo++;
       hi--;
     };
-     
+
     if(lo = hi & arr[lo] > arr[hi + 1]) {
       Swap(arr, lo, hi + 1);
       num_swaps++;
     };
- 
+
     num_swaps := CircleSort(arr, low, low + mid, num_swaps);
     num_swaps := CircleSort(arr, low + mid + 1, high, num_swaps);
- 
+
     return num_swaps;
   }
-   
+
   function : Swap(arr : Int[], idx1 : Int, idx2 : Int) ~ Nil {
     tmp := arr[idx1];
     arr[idx1] := arr[idx2];
@@ -1143,7 +1143,7 @@ print(circlesort(example));
    Linking p
    /usr/bin/ld.bfd: warning: link.res contains output sections; did you forget -T?
    56 lines compiled, 0.0 sec
-   1 2 3 4 5 6 7 8 9 
+   1 2 3 4 5 6 7 8 9
 
    Compilation finished at Sat Mar 11 23:55:25
 }
@@ -1584,7 +1584,7 @@ before sort: 2 3 44 44 5.77 +1 -12345 -3 -3.9 1e7 0
 
 ```
 
-{{out|output|text=  when using the using the input of:   <tt> assinine donkey bovine cattle canine dog corvine crow equine horse feline cat hircine goat leporine hare lupine wolf murine rodent piscine fish porcine pig ursine bear vulpine fox </tt>}} 
+{{out|output|text=  when using the using the input of:   <tt> assinine donkey bovine cattle canine dog corvine crow equine horse feline cat hircine goat leporine hare lupine wolf murine rodent piscine fish porcine pig ursine bear vulpine fox </tt>}}
 
 ```txt
 
@@ -1624,9 +1624,9 @@ func circlesort(lo, hi, swaps)
            hi = hi - 1
      end
      if lo = hi
-        if test[lo] > test[hi+1] 
+        if test[lo] > test[hi+1]
            temp = test[lo]
-           test[lo] = test[hi+1] 
+           test[lo] = test[hi+1]
            test[hi + 1] = temp
            swaps = swaps + 1
         ok
@@ -1667,7 +1667,7 @@ class Array
     end
     self
   end
-  
+
   private
   def _circle_sort!(lo, hi, swaps=0)
     return swaps if lo == hi

@@ -15,17 +15,17 @@ tags = []
 {{Sorting Algorithm}}
 
 ;Task:
-Implement a   ''comb sort''. 
+Implement a   ''comb sort''.
 
 
-The '''Comb Sort''' is a variant of the [[Bubble Sort]]. 
+The '''Comb Sort''' is a variant of the [[Bubble Sort]].
 
 Like the [[Shell sort]], the Comb Sort increases the gap used in comparisons and exchanges.
 
-Dividing the gap by   <big><math>(1-e^{-\varphi})^{-1} \approx 1.247330950103979</math> </big>   works best, but   <big> 1.3</big>   may be more practical. 
+Dividing the gap by   <big><math>(1-e^{-\varphi})^{-1} \approx 1.247330950103979</math> </big>   works best, but   <big> 1.3</big>   may be more practical.
 
 
-Some implementations use the insertion sort once the gap is less than a certain amount. 
+Some implementations use the insertion sort once the gap is less than a certain amount.
 
 
 ;Also see:
@@ -70,7 +70,7 @@ Pseudocode:
 
 Translation from prototype.
 
-The program uses ASM structured macros and two ASSIST macros to keep the code as short as possible. 
+The program uses ASM structured macros and two ASSIST macros to keep the code as short as possible.
 
 ```360asm
 *        Comb sort                 23/06/2016
@@ -80,7 +80,7 @@ COMBSORT CSECT
          DC     17F'0'             savearea
          STM    R14,R12,12(R13)    prolog
          ST     R13,4(R15)         "
-         ST     R15,8(R13)         " 
+         ST     R15,8(R13)         "
          LR     R13,R15            "
          L      R2,N               n
          BCTR   R2,0               n-1
@@ -127,7 +127,7 @@ COMBSORT CSECT
          LA     RI,1(RI)             i=i+1             |
          ENDDO  ,                  end do  <-----------+
          XPRNT  PG,L'PG            print buffer
-         L      R13,4(0,R13)       epilog 
+         L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    "
          XR     R15,R15            "
          BR     R14                exit
@@ -323,7 +323,7 @@ function combsort( a, len,    gap, igap, swap, swaps, i )
 {
 	gap = len
 	swaps = 1
-	
+
 	while( gap > 1 || swaps )
 	{
 		gap /= 1.2473;
@@ -340,7 +340,7 @@ function combsort( a, len,    gap, igap, swap, swaps, i )
 				swaps = 1
 			}
 			i++;
-		}		
+		}
 	}
 }
 
@@ -351,9 +351,9 @@ BEGIN {
 	a[3] = -11
 	a[4] = 6
 	a[5] = 1
-	
+
 	combsort( a, length(a) )
-	
+
 	for( i=0; i<length(a); i++ )
 		print a[i]
 }
@@ -426,7 +426,8 @@ void Combsort11(double a[], int nElements)
 
 This is copied from [[wp:Comb sort|the Wikipedia article]].
 
-```cpp>template<class ForwardIterator
+```cpp
+template<class ForwardIterator>
 
 void combsort ( ForwardIterator first, ForwardIterator last )
 {
@@ -434,15 +435,15 @@ void combsort ( ForwardIterator first, ForwardIterator last )
     typedef typename std::iterator_traits<ForwardIterator>::difference_type difference_type;
     difference_type gap = std::distance(first, last);
     bool swaps = true;
- 
+
     while ( (gap > 1) || (swaps == true) ){
         if (gap > 1)
             gap = static_cast<difference_type>(gap/shrink_factor);
- 
+
         swaps = false;
         ForwardIterator itLeft(first);
         ForwardIterator itRight(first); std::advance(itRight, gap);
- 
+
         for ( ; itRight!=last; ++itLeft, ++itRight ){
             if ( (*itRight) < (*itLeft) ){
                 std::iter_swap(itLeft, itRight);
@@ -749,20 +750,20 @@ ELENA 4.1 :
 import extensions;
 import system'math;
 import system'routines;
- 
+
 extension op
 {
     combSort()
     {
         var list := self.clone();
- 
+
         real gap := list.Length;
         bool swaps := true;
         while (gap > 1 || swaps)
         {
             gap /= 1.247330950103979r;
             if (gap<1) { gap := 1 };
- 
+
             int i := 0;
             swaps := false;
             while (i + gap.RoundedInt < list.Length)
@@ -776,15 +777,15 @@ extension op
                 i += 1
             }
         };
- 
-        ^ list        
+
+        ^ list
     }
 }
- 
+
 public program()
 {
     var list := new int[]::(3, 5, 1, 9, 7, 6, 8, 2, 4 );
- 
+
     console.printLine("before:", list.asEnumerable());
     console.printLine("after :", list.combSort().asEnumerable())
 }
@@ -810,7 +811,7 @@ defmodule Sort do
   def comb_sort(input) do
     comb_sort(List.to_tuple(input), length(input), 0) |> Tuple.to_list
   end
-  
+
   defp comb_sort(output, 1, 0), do: output
   defp comb_sort(input, gap, _) do
     gap = max(trunc(gap / 1.25), 1)
@@ -847,7 +848,7 @@ This is an implementation of Comb sort with a different ending. Here [[Gnome sor
 ```forth
 defer precedes
 defer exchange
- 
+
 : gnomesort                            ( a n)
   swap >r 1                            ( n c)
   begin                                ( n c)
@@ -873,7 +874,7 @@ defer exchange
     dup 9 <                            ( a n g f)
   until drop gnomesort                 ( --)
 ;
- 
+
 create example
   8 93 69 52 50 79 33 52 19 77 , , , , , , , , , ,
  72 85 11 61 64 80 64 76 47 65 , , , , , , , , , ,
@@ -888,9 +889,9 @@ create example
 
 :noname >r cells r@ + @ swap cells r> + @ swap < ; is precedes
 :noname >r cells r@ + swap cells r> + over @ over @ swap rot ! swap ! ; is exchange
- 
+
 : .array 100 0 do example i cells + ? loop cr ;
- 
+
 .array example 100 combsort .array
 ```
 
@@ -948,23 +949,23 @@ CREATE Q   SIZE CELLS ALLOT
          THEN
       LOOP
       SORTED @  GAP @ 0=  AND  \ test for complete
-   UNTIL 
-   R> DROP ;                   \ remove 'n' from return stack 
+   UNTIL
+   R> DROP ;                   \ remove 'n' from return stack
 ```
 
 
 
 ## Fortran
 
-{{works with|Fortran|90 and later}} 
+{{works with|Fortran|90 and later}}
 
 ```fortran
 program Combsort_Demo
   implicit none
- 
+
   integer, parameter :: num = 20
   real :: array(num)
- 
+
   call random_seed
   call random_number(array)
   write(*,*) "Unsorted array:-"
@@ -973,16 +974,16 @@ program Combsort_Demo
   call combsort(array)
   write(*,*) "Sorted array:-"
   write(*,*) array
-  
+
 contains
- 
+
   subroutine combsort(a)
- 
+
     real, intent(in out) :: a(:)
     real :: temp
     integer :: i, gap
     logical :: swapped = .true.
- 
+
     gap = size(a)
     do while (gap > 1 .or. swapped)
       gap = gap / 1.3
@@ -997,9 +998,9 @@ contains
         end if
       end do
     end do
- 
+
   end subroutine combsort
- 
+
 end program Combsort_Demo
 ```
 
@@ -1118,23 +1119,23 @@ unsorted    4  -7  -1   1   2   3  -3   7   0  -2   6  -5   5  -6  -4
 
 ```gambas
 Public Sub Main()
-Dim siToSort As Short[] = [249, 28, 111, 36, 171, 98, 29, 448, 44, 147, 154, 46, 102, 183, 24, 
+Dim siToSort As Short[] = [249, 28, 111, 36, 171, 98, 29, 448, 44, 147, 154, 46, 102, 183, 24,
                           120, 19, 123, 2, 17, 226, 11, 211, 25, 191, 205, 77]
 Dim siStart As Short
 Dim siGap As Short = siToSort.Max
 Dim bSorting, bGap1 As Boolean
- 
+
 Print "To sort: -"
 ShowWorking(siToSort)
 Print
- 
+
 Repeat
   bSorting = False
   siStart = 0
   If siGap = 1 Then bGap1 = True
 
   Repeat
-    If siToSort[siStart] > siToSort[siStart + siGap] Then 
+    If siToSort[siStart] > siToSort[siStart + siGap] Then
       Swap siToSort[siStart], siToSort[siStart + siGap]
       bSorting = True
     End If
@@ -1144,9 +1145,9 @@ Repeat
   If bSorting Then ShowWorking(siToSort)
   siGap /= 1.3
   If siGap < 1 Then siGap = 1
-  
+
 Until bSorting = False And bGap1 = True
- 
+
 End
 '-----------------------------------------
 Public Sub ShowWorking(siToSort As Short[])
@@ -1343,7 +1344,7 @@ Output:
 import Data.List
 import Control.Arrow
 import Control.Monad
- 
+
 flgInsert x xs = ((x:xs==) &&& id)$ insert x xs
 
 gapSwapping k = (and *** concat. transpose). unzip
@@ -1395,7 +1396,7 @@ lst combSortInPlace println # ==> list(12, 14, 23, 24, 24, 31, 35, 38, 46, 51, 5
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main()                     #: demonstrate various ways to sort a list and string 
+procedure main()                     #: demonstrate various ways to sort a list and string
    demosort(combsort,[3, 14, 1, 5, 9, 2, 6, 3],"qwerty")
 end
 
@@ -1412,7 +1413,7 @@ local gap,swapped,i
 
        i := 0
        until (i +:= 1) + gap > *X do      # a single "comb" over the input list
-         if op(X[i+gap],X[i]) then 
+         if op(X[i+gap],X[i]) then
             X[i+1] :=: X[swapped := i]    # swap and flag as unsorted
       }
    return X
@@ -1615,7 +1616,7 @@ def combsort:
     #   swaps is a boolean flag indicating a swap has occurred,
     #         implying that the array might not be sorted;
     #   array is the current state of the array being sorted
-  | [ $length, false, $in ] 
+  | [ $length, false, $in ]
   | do_until( .[0] == 1 and .[1] == false;
       # update the gap value for the next "comb":
       ([1, ((.[0] / 1.25) | floor)] | max) as $gap   # minimum gap is 1
@@ -1692,23 +1693,23 @@ fun <T : Comparable<T>> combSort(input: Array<T>) {
                 val tmp = input[i]
                 input[i] = input[i + gap]
                 input[i + gap] = tmp
-                swaps = true 
+                swaps = true
             }
             i++
         }
     }
-}  
- 
+}
+
 fun main(args: Array<String>) {
     val ia = arrayOf(28, 44, 46, 24, 19, 2, 17, 11, 25, 4)
-    println("Unsorted : ${ia.contentToString()}") 
+    println("Unsorted : ${ia.contentToString()}")
     combSort(ia)
-    println("Sorted   : ${ia.contentToString()}") 
+    println("Sorted   : ${ia.contentToString()}")
     println()
     val ca = arrayOf('X', 'B', 'E', 'A', 'Z', 'M', 'S', 'L', 'Y', 'C')
-    println("Unsorted : ${ca.contentToString()}") 
+    println("Unsorted : ${ca.contentToString()}")
     combSort(ca)
-    println("Sorted   : ${ca.contentToString()}") 
+    println("Sorted   : ${ca.contentToString()}")
 }
 ```
 
@@ -1849,20 +1850,20 @@ arr;
 
 
 ```Mathematica
-combSort[list_] := Module[{ gap = 0, listSize = 0, swaps = True},  
+combSort[list_] := Module[{ gap = 0, listSize = 0, swaps = True},
         gap = listSize = Length[list];
         While[ !((gap <= 1) && (swaps == False)),
-    
+
             gap = Floor@Divide[gap, 1.25];
             If[ gap < 1, gap = 1]; i = 1; swaps = False;
-            
-            While[ ! ((i + gap - 1) >= listSize), 
+
+            While[ ! ((i + gap - 1) >= listSize),
                 If[ list[[i]] > list[[i + gap]], swaps = True;
-                list[[i ;; i + gap]] = list[[i + gap ;; i ;; -1]];  
+                list[[i ;; i + gap]] = list[[i + gap ;; i ;; -1]];
                 ];
-            i++; 
+            i++;
             ]
-        ]   
+        ]
 ]
 ```
 
@@ -1879,33 +1880,33 @@ combSort@{2, 1, 3, 7, 6}
 
 ```MATLAB
 function list = combSort(list)
-    
+
     listSize = numel(list);
     gap = int32(listSize); %Coerce gap to an int so we can use the idivide function
     swaps = true; %Swap flag
-    
+
     while not((gap <= 1) && (swaps == false))
-        
+
         gap = idivide(gap,1.25,'floor'); %Int divide, floor the resulting operation
-        
+
         if gap < 1
             gap = 1;
         end
-        
+
         i = 1; %i equals 1 because all arrays are 1 based in MATLAB
         swaps = false;
-        
+
         %i + gap must be subtracted by 1 because the pseudo-code was writen
         %for 0 based arrays
         while not((i + gap - 1) >= listSize)
-            
+
             if (list(i) > list(i+gap))
                 list([i i+gap]) = list([i+gap i]); %swap
                 swaps = true;
             end
         i = i + 1;
-        
-        end %while      
+
+        end %while
     end %while
 end %combSort
 ```
@@ -1948,10 +1949,10 @@ fn combSort arr =
 				swaps = 1
 			)
 			i += 1
-			
+
 		)
-		
-		
+
+
 	)
 	return arr
 )
@@ -2101,7 +2102,7 @@ bundle Default {
       };
       IO.Console->PrintLine();
     }
-   
+
     function : CombSort(input : Int[]) ~ Nil {
       gap : Float := input->Size();
       swaps := true;
@@ -2117,11 +2118,11 @@ bundle Default {
             input[i] := input[igap];
             input[igap] := swap;
             swaps := true;
-          };          
+          };
           i += 1;
         };
       };
-    }  
+    }
   }
 }
 
@@ -2228,11 +2229,11 @@ program CombSortDemo;
 //       If you want to use this code on a 0-based array, see below
 type
   TIntArray = array[1..40] of integer;
- 
+
 var
   data: TIntArray;
   i: integer;
-  
+
 procedure combSort(var a: TIntArray);
   var
     i, gap, temp: integer;
@@ -2243,7 +2244,7 @@ procedure combSort(var a: TIntArray);
     while (gap > 1) or swapped do
     begin
       gap := trunc(gap / 1.3);
-      if (gap < 1) then 
+      if (gap < 1) then
         gap := 1;
       swapped := false;
       for i := 1 to length(a) - gap do
@@ -2297,11 +2298,11 @@ program CombSortDemo;
 //       If you want to use this code on a 1-based array, see above
 type
   TIntArray = array[0..39] of integer;
- 
+
 var
   data: TIntArray;
   i: integer;
-  
+
 procedure combSort(var a: TIntArray);
   var
     i, gap, temp: integer;
@@ -2312,7 +2313,7 @@ procedure combSort(var a: TIntArray);
     while (gap > 1) or swapped do
     begin
       gap := trunc(gap / 1.3);
-      if (gap < 1) then 
+      if (gap < 1) then
         gap := 1;
       swapped := false;
       for i := 0 to length(a) - gap - 1 do
@@ -2435,7 +2436,7 @@ function combSort($arr){
         $swap = true;
 	while ($gap > 1 || $swap){
 		if($gap > 1) $gap /= 1.25;
-		
+
 		$swap = false;
 		$i = 0;
 		while($i+$gap < count($arr)){
@@ -2563,23 +2564,23 @@ Implementation of CombSort11.
 Procedure combSort11(Array a(1))
   Protected i, gap, swaps = 1
   Protected nElements = ArraySize(a())
- 
+
   gap = nElements
   While (gap > 1) Or (swapped = 1)
     gap * 10 / 13
-    If gap = 9 Or gap = 10: gap = 11:  EndIf 
-    If gap < 1: gap = 1: EndIf 
-      
+    If gap = 9 Or gap = 10: gap = 11:  EndIf
+    If gap < 1: gap = 1: EndIf
+
     i = 0
-    swaps = 0 
+    swaps = 0
     While (i + gap) <= nElements
       If a(i) > a(i + gap)
         Swap a(i), a(i + gap)
         swaps = 1
       EndIf
       i + 1
-    Wend 
-  Wend 
+    Wend
+  Wend
 EndProcedure
 ```
 
@@ -2590,21 +2591,21 @@ Implementation of CombSort.
 Procedure combSort(Array a(1))
   Protected i, gap, swaps = 1
   Protected nElements = ArraySize(a())
-  
+
   gap = nElements
   While (gap > 1) Or (swaps = 1)
     gap = Int(gap / 1.25)
-    
+
     i = 0
-    swaps = 0 
+    swaps = 0
     While (i + gap) <= nElements
       If a(i) > a(i + gap)
         Swap a(i), a(i + gap)
         swaps = 1
       EndIf
       i + 1
-    Wend 
-  Wend 
+    Wend
+  Wend
 EndProcedure
 ```
 
@@ -2626,13 +2627,13 @@ EndProcedure
                 input[i], input[j] = input[j], input[i]
                 swaps = True
 
-                
+
 >>> y = [88, 18, 31, 44, 4, 0, 8, 81, 14, 78, 20, 76, 84, 33, 73, 75, 82, 5, 62, 70]
 >>> combsort(y)
 >>> assert y == sorted(y)
 >>> y
 [0, 4, 5, 8, 14, 18, 20, 31, 33, 44, 62, 70, 73, 75, 76, 78, 81, 82, 84, 88]
->>> 
+>>>
 ```
 
 
@@ -2659,8 +2660,8 @@ comb.sort<-function(a){
         }
         i<-i+1
       }
-  }  
-  return(a) 
+  }
+  return(a)
 }
 
 
@@ -2681,7 +2682,7 @@ comb.sort<-function(a){
   (define (ref i) (vector-ref xs i))
   (define (swap i j) (vector-swap! xs i j))
   (define (new gap) (max 1 (exact-floor (/ gap 1.25))))
-  (define size (vector-length xs))  
+  (define size (vector-length xs))
   (let loop ([gap size] [swaps 0])
     (unless (and (= gap 1) (= swaps 0))
       (loop (new gap)
@@ -2741,14 +2742,14 @@ show:     do k=1  for #; say right('element',15) right(k,w)  arg(1)":"  @.k;  en
 ```
 
 Data trivia:   A   ''hendecagon''   (also known as an   ''undecagon''
-  or   ''unidecagon'')   is from the Greek word  
-''hendeka''   [eleven]   and   ''gon─''   [corner]. 
+  or   ''unidecagon'')   is from the Greek word
+''hendeka''   [eleven]   and   ''gon─''   [corner].
 
 
 {{out|output|:}}
 <pre style="height:80ex">
         element  1 before sort: ----polygon---  sides
-        element  2 before sort: 
+        element  2 before sort:
 ### =========== ====
 
         element  3 before sort: triangle           3
@@ -2774,7 +2775,7 @@ Data trivia:   A   ''hendecagon''   (also known as an   ''undecagon''
         element 23 before sort: myriagon       10000
 ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
         element  1  after sort: ----polygon---  sides
-        element  2  after sort: 
+        element  2  after sort:
 ### =========== ====
 
         element  3  after sort: chiliagon       1000
@@ -2815,12 +2816,12 @@ func combsort t
      gapd = 1.2473
      gap =  len(t)
      swaps = 0
-     while gap + swaps > 1 
+     while gap + swaps > 1
            k = 0
            swaps = 0
            if gap > 1 gap = floor(gap / gapd) ok
-           for k = 1 to len(t) - gap 
-               if t[k] > t[k + gap] 
+           for k = 1 to len(t) - gap
+               if t[k] > t[k + gap]
                   temp = t[k]
                   t[k] = t[k + gap]
                   t[k + gap] = temp
@@ -2980,18 +2981,18 @@ func comb_sort(arr) {
 func combSort(inout list:[Int]) {
     var swapped = true
     var gap = list.count
-    
+
     while gap > 1 || swapped {
         gap = gap * 10 / 13
-        
+
         if gap == 9 || gap == 10 {
             gap = 11
         } else if gap < 1 {
             gap = 1
         }
-        
+
         swapped = false
-        
+
         for var i = 0, j = gap; j < list.count; i++, j++ {
             if list[i] > list[j] {
                 (list[i], list[j]) = (list[j], list[i])
@@ -3078,7 +3079,7 @@ Requires [[Insertion sort#TI-83 BASIC|prgmSORTINS]]. Gap division of 1.3. Switch
   PROC _Combsort (n)
   PROC _ShowArray (n)
 PRINT
- 
+
 END
 
 
@@ -3105,30 +3106,30 @@ _Combsort PARAM (1)                    ' Combsort subroutine
     LOOP
   LOOP
 RETURN
- 
- 
+
+
 _Swap PARAM(2)                         ' Swap two array elements
   PUSH @(a@)
   @(a@) = @(b@)
   @(b@) = POP()
 RETURN
 
- 
+
 _InitArray                             ' Init example array
   PUSH 4, 65, 2, -31, 0, 99, 2, 83, 782, 1
- 
+
   FOR i = 0 TO 9
     @(i) = POP()
   NEXT
- 
+
 RETURN (i)
- 
- 
+
+
 _ShowArray PARAM (1)                   ' Show array subroutine
   FOR i = 0 TO a@-1
     PRINT @(i),
   NEXT
- 
+
   PRINT
 RETURN
 ```

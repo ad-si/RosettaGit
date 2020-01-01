@@ -13,8 +13,8 @@ tags = []
 {{task}}
 [[Category:Prime Numbers]]
 
-The [https://youtu.be/2JM2oImb9Qg anti-primes] 
-(or [https://en.wikipedia.org/wiki/Highly_composite_number highly composite numbers], sequence [https://oeis.org/A002182 A002182] in the [https://oeis.org/ OEIS]) 
+The [https://youtu.be/2JM2oImb9Qg anti-primes]
+(or [https://en.wikipedia.org/wiki/Highly_composite_number highly composite numbers], sequence [https://oeis.org/A002182 A002182] in the [https://oeis.org/ OEIS])
 are the natural numbers with more factors than any smaller than itself.
 
 ;Task:
@@ -23,7 +23,7 @@ Generate and show here, the first twenty anti-primes.
 ;Related tasks:
 # [[Factors of an integer]]
 # [[Sieve of Eratosthenes]]
- 
+
 
 ## 11l
 
@@ -199,8 +199,8 @@ Los primeros 20 anti-primos son:
 
 {{trans|Go}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int countDivisors(int n) {
     int i, count;
@@ -216,14 +216,14 @@ int main() {
     int n, d, maxDiv = 0, count = 0;
     printf("The first 20 anti-primes are:\n");
     for (n = 1; count < 20; ++n) {
-        d = countDivisors(n); 
+        d = countDivisors(n);
         if (d > maxDiv) {
             printf("%d ", n);
             maxDiv = d;
             count++;
         }
     }
-    printf("\n"); 
+    printf("\n");
     return 0;
 }
 ```
@@ -233,7 +233,7 @@ int main() {
 ```txt
 
 The first 20 anti-primes are:
-1 2 4 6 12 24 36 48 60 120 180 240 360 720 840 1260 1680 2520 5040 7560 
+1 2 4 6 12 24 36 48 60 120 180 240 360 720 840 1260 1680 2520 5040 7560
 
 ```
 
@@ -244,8 +244,8 @@ The first 20 anti-primes are:
 
 {{trans|C}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int countDivisors(int n) {
     if (n < 2) return 1;
@@ -278,7 +278,7 @@ int main() {
 ```txt
 
 The first 20 anti-primes are:
-1 2 4 6 12 24 36 48 60 120 180 240 360 720 840 1260 1680 2520 5040 7560 
+1 2 4 6 12 24 36 48 60 120 180 240 360 720 840 1260 1680 2520 5040 7560
 
 ```
 
@@ -292,12 +292,12 @@ The first 20 anti-primes are:
 using System;
 using System.Linq;
 using System.Collections.Generic;
-					
+
 public static class Program
 {
     public static void Main() =>
         Console.WriteLine(string.Join(" ", FindAntiPrimes().Take(20)));
-	
+
     static IEnumerable<int> FindAntiPrimes() {
         int max = 0;
         for (int i = 1; ; i++) {
@@ -307,7 +307,7 @@ public static class Program
                 yield return i;
             }
         }
-	
+
         int CountDivisors(int n) => Enumerable.Range(1, n / 2).Count(i => n % i == 0) + 1;
     }
 }
@@ -867,7 +867,7 @@ func main() {
 ```txt
 
 The first 20 anti-primes are:
-1 2 4 6 12 24 36 48 60 120 180 240 360 720 840 1260 1680 2520 5040 7560 
+1 2 4 6 12 24 36 48 60 120 180 240 360 720 840 1260 1680 2520 5040 7560
 
 ```
 
@@ -1016,7 +1016,7 @@ public class Antiprime {
 ```txt
 
 The first 20 anti-primes are:
-1 2 4 6 12 24 36 48 60 120 180 240 360 720 840 1260 1680 2520 5040 7560 
+1 2 4 6 12 24 36 48 60 120 180 240 360 720 840 1260 1680 2520 5040 7560
 
 ```
 
@@ -1129,7 +1129,7 @@ function antiprimes(N, maxn = 2000000)
         end
     end
     antip
-end  
+end
 
 println("The first 20 anti-primes are:\n", antiprimes(20))
 println("The first 40 anti-primes are:\n", antiprimes(40))
@@ -1141,8 +1141,8 @@ println("The first 40 anti-primes are:\n", antiprimes(40))
  The first 20 anti-primes are:
  [1, 2, 4, 6, 12, 24, 36, 48, 60, 120, 180, 240, 360, 720, 840, 1260, 1680, 2520, 5040, 7560]
  The first 40 anti-primes are:
- [1, 2, 4, 6, 12, 24, 36, 48, 60, 120, 180, 240, 360, 720, 840, 1260, 1680, 2520, 5040, 7560, 
- 10080, 15120, 20160, 25200, 27720, 45360, 50400, 55440, 83160, 110880, 166320, 221760, 277200, 
+ [1, 2, 4, 6, 12, 24, 36, 48, 60, 120, 180, 240, 360, 720, 840, 1260, 1680, 2520, 5040, 7560,
+ 10080, 15120, 20160, 25200, 27720, 45360, 50400, 55440, 83160, 110880, 166320, 221760, 277200,
  332640, 498960, 554400, 665280, 720720, 1081080, 1441440]
 
 ```
@@ -1189,7 +1189,7 @@ fun main(args: Array<String>) {
 ```txt
 
 The first 20 anti-primes are:
-1 2 4 6 12 24 36 48 60 120 180 240 360 720 840 1260 1680 2520 5040 7560 
+1 2 4 6 12 24 36 48 60 120 180 240 360 720 840 1260 1680 2520 5040 7560
 
 ```
 
@@ -1312,7 +1312,7 @@ proc countDivisors(n: int): int =
             count += 1
     return count
 
-proc antiPrimes(n: int) = 
+proc antiPrimes(n: int) =
     echo("The first ", n, " anti-primes:")
     var maxDiv = 0
     var count = 0
@@ -1649,7 +1649,7 @@ Uses the fast prime function from [[Factors of an integer#Python]]
 
 ```python
 from itertools import chain, count, cycle, islice, accumulate
- 
+
 def factors(n):
     def prime_powers(n):
         for c in accumulate(chain([2, 1, 2], cycle([2,4]))):
@@ -1660,19 +1660,19 @@ def factors(n):
                 n,p,d = n//c, p*c, d + (p,)
             yield(d)
         if n > 1: yield((n,))
- 
+
     r = [1]
     for e in prime_powers(n):
         r += [a*b for a in r for b in e]
     return r
-    
+
 def antiprimes():
     mx = 0
     for c in count(1):
         ln = len(factors(c))
         if ln > mx:
             yield c
-            mx = ln        
+            mx = ln
 
 if __name__ == '__main__':
     print(list(islice(antiprimes(), 20)))
@@ -1767,7 +1767,7 @@ antiprimes
 
 <!-- This REXX version does what the Rosetta Code task requires.  Note that the first DO loop is fixed at 59, but the second DO loop if open-ended.  Please read/observe the entire REXX program before flagging as incorrect.   --- Gerard Schildberger.  ~-->
 
-This REXX version is using a modified version of a highly optimized   ''proper divisors''   function. 
+This REXX version is using a modified version of a highly optimized   ''proper divisors''   function.
 
 Programming note:   although the solution to this Rosetta Code task is trivial, a fair amount of optimization was incorporated into the REXX program to find larger anti─primes (also known as   ''highly─composite numbers'').
 
@@ -1903,7 +1903,7 @@ exit                                             /*stick a fork in it,  we're al
   52      32432400
   53      36756720
   54      43243200
-  55      61261200 
+  55      61261200
 
 ```
 
@@ -1954,7 +1954,7 @@ exit                                             /*stick a fork in it,  we're al
        return $+1                                /*bump "proper divisors" to "divisors".*/
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -2030,7 +2030,7 @@ done...
 require 'prime'
 
 def num_divisors(n)
-  n.prime_division.inject(1){|prod, (_p,n)| prod *= (n + 1) } 
+  n.prime_division.inject(1){|prod, (_p,n)| prod *= (n + 1) }
 end
 
 anti_primes = Enumerator.new do |y| # y is the yielder
@@ -2094,7 +2094,7 @@ fn main() {
 
 ```txt
 The first 20 anti-primes are:
-1 2 4 6 12 24 36 48 60 120 180 240 360 720 840 1260 1680 2520 5040 7560 
+1 2 4 6 12 24 36 48 60 120 180 240 360 720 840 1260 1680 2520 5040 7560
 ```
 
 
@@ -2162,7 +2162,7 @@ const proc: main is func
 
 ```txt
 The first 20 anti-primes are:
-1 2 4 6 12 24 36 48 60 120 180 240 360 720 840 1260 1680 2520 5040 7560 
+1 2 4 6 12 24 36 48 60 120 180 240 360 720 840 1260 1680 2520 5040 7560
 
 ```
 
@@ -2227,7 +2227,7 @@ End Sub
 {{out}}
 
 ```txt
-The first 20 anti-primes are: 1  2  4  6  12  24  36  48  60  120  180  240  360  720  840  1260  1680  2520  5040  7560 
+The first 20 anti-primes are: 1  2  4  6  12  24  36  48  60  120  180  240  360  720  840  1260  1680  2520  5040  7560
 
 ```
 
@@ -2367,9 +2367,9 @@ print
 
 sub count_divisors(n)
     local count, i
-    
+
     if n < 2 return 1
-    
+
     count = 2
     for i = 2 to n/2
       if not(mod(n,  i)) count = count + 1
@@ -2383,21 +2383,21 @@ end sub
 
 ```Yabasic
 // First 20 antiprimes.
- 
+
 sub count_factors(number)
     local count, attempt
-    
+
     for attempt = 1 to number
         if not mod(number, attempt) count = count + 1
     next
     return count
 end sub
- 
+
 sub antiprimes$(goal)
     local factors, list$, number, mostFactors, nitems
-    
+
     number = 1
-    
+
     while nitems < goal
         factors = count_factors(number)
         if factors > mostFactors then

@@ -208,8 +208,8 @@ int main() {
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -470,7 +470,7 @@ fun main(args: Array<String>) {
     println("Those earthquakes with a magnitude > 6.0 are:\n")
     File("data.txt").forEachLine {
         if (it.split(r)[2].toDouble() > 6.0) println(it)
-    }    
+    }
 }
 ```
 
@@ -563,7 +563,7 @@ df = CSV.File("kernighansproblem.txt", delim=" ", ignorerepeated=true,
 println(filter(row -> row[:Magnitude] > 6, df))
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 2×3 DataFrame
@@ -790,7 +790,7 @@ Or, defining a list -> list function in terms of '''filter''':
      6
      (lines (readFile "~/quakes.txt"))))))
 
-     
+
 ; GENERIC ---------------------------------------------
 
 ; lines :: String -> [String]
@@ -803,7 +803,7 @@ Or, defining a list -> list function in terms of '''filter''':
    (expand-user-path fp)))
 
 ; unlines :: [String] -> String
-(define (unlines xs) 
+(define (unlines xs)
   (string-join xs "\n"))
 ```
 
@@ -843,7 +843,7 @@ To combine filtering with more pre-processing, we can use '''concatMap''' in pla
               (list (list (parse-date dte "M/d/y") k m))
               '()))))
      xs)))
-     
+
 ; GENERIC ---------------------------------------------
 
 ; concatMap :: (a -> [b]) -> [a] -> [b]
@@ -875,9 +875,9 @@ To combine filtering with more pre-processing, we can use '''concatMap''' in pla
 A little extra coding was added to provide:
 :::*   an output title   (with centering and better alignment)
 :::*   an error message for when the input file wasn't found   (or is empty)
-:::*   the number of records read  
-:::*   the number of records that met the qualifying magnitude 
-:::*   the qualifying magnitude 
+:::*   the number of records read
+:::*   the number of records that met the qualifying magnitude
+:::*   the qualifying magnitude
 
 ```rexx
 /*REXX program to read a file containing a list of earthquakes:   date, site, magnitude.*/
@@ -928,15 +928,15 @@ Reading from file:  earthquakes.dat
 # Project  : Kernighans large earthquake problem
 
 load "stdlib.ring"
-nr = 0 
+nr = 0
 equake = list(3)
 fn = "equake.txt"
 fp = fopen(fn,"r")
 
 while not feof(fp)
-         nr = nr + 1 
+         nr = nr + 1
          equake[nr] = readline(fp)
-end 
+end
 fclose(fp)
 for n = 1 to len(equake)
      for m = 1 to len(equake[n])
@@ -1073,7 +1073,7 @@ while {[gets $fh line]>=0} { 		;# gets returns length of line, -1 means eof
 
     if {$f3 > 6} { puts "$line" }
 }
-close $fh 
+close $fh
 ```
 
 
@@ -1091,7 +1091,7 @@ end if
 dim tok$(1)
 a = open(filename$)
 if not a error "Could not open '" + filename$ + "' for reading"
-while(not eof(a)) 
+while(not eof(a))
   line input #a a$
   void = token(a$, tok$())
   if val(tok$(3)) > 6 print a$
@@ -1108,7 +1108,7 @@ is bad practice so I don't do it (written so text is automatically
 converted to float).
 
 ```zkl
-fcn equake(data,out=Console){ 
+fcn equake(data,out=Console){
    data.pump(out,fcn(line){ 6.0line.split()[-1] },Void.Filter)
 }
 ```

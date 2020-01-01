@@ -10,11 +10,11 @@ categories = []
 tags = []
 +++
 
-{{task|String manipulation}} 
+{{task|String manipulation}}
 [[Category:Simple]]
-Separate the string "Hello,How,Are,You,Today" by commas into an array (or list) so that each element of it stores a different word. 
-Display the words to the 'user', in the simplest manner possible, 
-separated by a period. 
+Separate the string "Hello,How,Are,You,Today" by commas into an array (or list) so that each element of it stores a different word.
+Display the words to the 'user', in the simplest manner possible,
+separated by a period.
 To simplify, you may display a trailing period.
 
 '''''Related tasks:'''''
@@ -54,7 +54,7 @@ TOKSTR   CSECT
          LA     R2,1(R2)             n+1
          ST     R2,N                 n=n+1
          LA     R7,1(R6)             i1=i+1
-       ENDIF    ,                    endif 
+       ENDIF    ,                    endif
          LA     R6,1(R6)             i++
        ENDDO    ,                  enddo i
          BAL    R14,TOK            call tok
@@ -77,10 +77,10 @@ TOKSTR   CSECT
          BCTR   R2,0                 ~
          EX     R2,MVCX              output table(i) length(l)
          AR     R11,R10              pgi=pgi+l
-       IF C,R6,NE,N THEN             if i^=n then 
+       IF C,R6,NE,N THEN             if i^=n then
          MVC    0(1,R11),=C'.'         output '.'
          LA     R11,1(R11)             pgi=pgi+1
-       ENDIF    ,                    endif 
+       ENDIF    ,                    endif
          LA     R6,1(R6)             i++
        ENDDO    ,                  enddo i
          XPRNT  PG,L'PG            print
@@ -103,7 +103,7 @@ MVCX     MVC    0(0,R11),0(R4)     output table(i)
 S        DC     CL80'Hello,How,Are,You,Today'  <== input string ==
 LENS     DC     F'23'              length(s)   <==
 TABLE    DC     8CL8' '            table(8)
-TALEN    DC     8H'0'              talen(8) 
+TALEN    DC     8H'0'              talen(8)
 C        DS     CL1                char
 N        DS     F                  number of tokens
 PG       DC     CL80' '            buffer
@@ -187,15 +187,15 @@ trace("Hello,How,Are,You,Today".split(",").join("."));
 
 with Ada.Text_IO, Ada.Containers.Indefinite_Vectors;
 use  Ada.Text_IO, Ada.Containers;
- 
+
 procedure tokenize is
   package String_Vector is new Indefinite_Vectors (Natural,String); use String_Vector;
   s       : String   := "Hello,How,Are,You,Today" & ",";
-  current : Positive := s'First;      
+  current : Positive := s'First;
   v       : Vector;
 begin
-  for i in s'range loop 
-    if s (i) = ',' or i = s'last then 
+  for i in s'range loop
+    if s (i) = ',' or i = s'last then
       v.append (s (current .. i-1));
       current := i + 1;
     end if;
@@ -239,7 +239,7 @@ main:(
     FLEX[1:0]STRING out;
     FILE beetlef;
     associate(beetlef, beetles); # associate a FILE handle with a STRING   #
-    make term(beetlef, chars);   # make term: assign CSV string terminator # 
+    make term(beetlef, chars);   # make term: assign CSV string terminator #
 
     PROC raise logical file end = (REF FILE f)BOOL: except logical file end;
     on logical file end(beetlef, raise logical file end);
@@ -335,13 +335,13 @@ szMessError:         .asciz "Error tokenize !!\n"
 szCarriageReturn:   .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
-main: 
-    ldr r0,iAdrszString                           @ string address 
+.global main
+main:
+    ldr r0,iAdrszString                           @ string address
     mov r1,#','                                   @ separator
     bl stTokenize
     cmp r0,#-1                                    @ error ?
@@ -352,7 +352,7 @@ main:
     ldr r4,[r2]                                   @ number of areas
     add r2,#4                                     @ first area
     mov r3,#0                                     @ loop counter
-1:                                                @ display loop 
+1:                                                @ display loop
     ldr r0,[r2,r3, lsl #2]                        @ address area
     bl affichageMess
     ldr r0,iAdrszCarriageReturn                   @ display carriage return
@@ -376,28 +376,28 @@ iAdrszMessFinal:          .int szMessFinal
 iAdrszMessError:          .int szMessError
 iAdrszCarriageReturn:    .int szCarriageReturn
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call systeme
     pop {r0,r1,r2,r7,lr}                        @ restaur des  2 registres
     bx lr                                       @ return
-/*******************************************************************/	   
+/*******************************************************************/
 /* Separate string by separator into an array                     */
 /* areas are store on the heap Linux                               */
-/*******************************************************************/	  
+/*******************************************************************/
 /* r0 contains string address */
 /* r1 contains separator character (, or . or : )    */
 /* r0 returns table address with first item = number areas */
@@ -412,7 +412,7 @@ stTokenize:
     add r5,r0
     and r5,#0xFFFFFFFC
     add r5,#4                                       @ align word on the heap
-                                                    @ place reservation on the heap 
+                                                    @ place reservation on the heap
     mov r0,#0                                       @ heap address
     mov r7, #0x2D                                   @ call system linux 'brk'
     svc #0                                          @ call system
@@ -431,19 +431,19 @@ stTokenize:
     ldrb r2,[r0],#1                                 @ read one byte and increment pointer one byte
     strb r2,[r1],#1                                 @ store one byte and increment pointer one byte
     cmp r2,#0                                       @ end of string ?
-    bne 1b                                          @ no -> loop 
+    bne 1b                                          @ no -> loop
 
     add r4,r3                                        @ r4 contains address table begin
     mov r0,#0
     str r0,[r4]
     str r3,[r4,#4]
     mov r2,#1                                       @ areas counter
-2:                                                  @ loop load string character 
+2:                                                  @ loop load string character
     ldrb r0,[r3]
     cmp r0,#0
-    beq 3f                                          @ end string 
+    beq 3f                                          @ end string
     cmp r0,r8                                       @ separator ?
-    addne r3,#1                                     @ no -> next location 
+    addne r3,#1                                     @ no -> next location
     bne 2b                                          @ and loop
     mov r0,#0                                       @ store zero final of string
     strb r0,[r3]
@@ -451,7 +451,7 @@ stTokenize:
     add r2,#1                                       @ areas counter + 1
     str r3,[r4,r2, lsl #2]                          @ store address area in the table at index r2
     b 2b                                            @ and loop
- 
+
 3:
     str r2,[r4]                                     @ returns number areas
     mov r0,r4
@@ -477,7 +477,7 @@ strLength:
     mov r0,r1
     pop {r1,r2,lr}
     bx lr
-  
+
 
 ```
 
@@ -628,7 +628,7 @@ Hello.How.Are.You.Today
 
 ```bbcbasic
       INSTALL @lib$+"STRINGLIB"
-      
+
       text$ = "Hello,How,Are,You,Today"
       n% = FN_split(text$, ",", array$())
       FOR i% = 0 TO n%-1
@@ -913,10 +913,10 @@ Solution that starts by evaluating the input and employs the circumstance that t
 This example uses the ''strtok()'' function to separate the tokens. This function is destructive (replacing token separators with '\0'), so we have to make a copy of the string (using ''strdup()'') before tokenizing. ''strdup()'' is not part of [[ANSI C]], but is available on most platforms. It can easily be implemented with a combination of ''strlen()'', ''malloc()'', and ''strcpy()''.
 
 
-```c>#include<string.h
-
-#include<stdio.h>
-#include<stdlib.h>
+```c
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int main(void)
 {
@@ -941,8 +941,8 @@ int main(void)
 
 Another way to accomplish the task without the built-in string functions is to temporarily modify the separator character. This method does not need any additional memory, but requires the input string to be writeable.
 
-```c>#include<stdio.h
-
+```c
+#include <stdio.h>
 
 typedef void (*callbackfunc)(const char *);
 
@@ -974,7 +974,7 @@ int main(void)
 =={{header|C sharp|C#}}==
 
 ```csharp
-string str = "Hello,How,Are,You,Today"; 
+string str = "Hello,How,Are,You,Today";
 // or Regex.Split ( "Hello,How,Are,You,Today", "," );
 // (Regex is in System.Text.RegularExpressions namespace)
 string[] strings = str.Split(',');
@@ -991,8 +991,8 @@ Console.WriteLine(String.Join(".", strings));
 std::getline() is typically used to tokenize strings on a single-character delimiter
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <sstream>
 #include <vector>
 #include <iterator>
@@ -1015,8 +1015,8 @@ int main()
 C++ allows the user to redefine what is considered whitespace. If the delimiter is whitespace, tokenization becomes effortless.
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <locale>
 #include <sstream>
 #include <vector>
@@ -1049,8 +1049,8 @@ int main()
 The boost library has multiple options for easy tokenization.
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <vector>
 #include <iterator>
 #include <algorithm>
@@ -1150,7 +1150,7 @@ console.log arr.join "."
 ## ColdFusion
 
 
-###  Classic tag based CFML 
+###  Classic tag based CFML
 
 
 ```cfm
@@ -1172,7 +1172,7 @@ console.log arr.join "."
 
 
 
-###  Script Based CFML 
+###  Script Based CFML
 
 
 ```cfm><cfscript
@@ -1354,11 +1354,11 @@ ELENA 4.x:
 ```elena
 import system'routines;
 import extensions;
- 
+
 public program()
 {
     var string := "Hello,How,Are,You,Today";
- 
+
     string.splitBy:",".forEach:(s)
     {
         console.print(s,".")
@@ -1555,7 +1555,7 @@ PROGRAM Example
  DO i = 1, n
    WRITE(*,"(2A)", ADVANCE="NO") TRIM(word(i)), "."
  END DO
- 
+
 END PROGRAM Example
 ```
 
@@ -1903,7 +1903,7 @@ split(",") | join(".")
 Example:
 ```sh
 $ jq -r 'split(",") | join(".")'
-"Hello,How,Are,You,Today" 
+"Hello,How,Are,You,Today"
 Hello.How.Are.You.Today
 ```
 
@@ -2013,7 +2013,7 @@ explode/current-token is text
 explode/char is text
 explode/separator is text
 i is number
-    
+
 PROCEDURE:
 # Ask for a sentence
 display "Enter a sentence: "
@@ -2278,16 +2278,16 @@ StringRiffle[StringSplit["Hello,How,Are,You,Today", ","], "."]
 function tokenizeString(string,delimeter)
 
     tokens = {};
-    
-    while not(isempty(string))        
-        [tokens{end+1},string] = strtok(string,delimeter);        
+
+    while not(isempty(string))
+        [tokens{end+1},string] = strtok(string,delimeter);
     end
-    
-    for i = (1:numel(tokens)-1)        
+
+    for i = (1:numel(tokens)-1)
         fprintf([tokens{i} '.'])
     end
-    
-    fprintf([tokens{end} '\n'])        
+
+    fprintf([tokens{end} '\n'])
 end
 ```
 
@@ -2338,7 +2338,7 @@ format "%\n" output
 :- import_module list, string.
 
 main(!IO) :-
-    Tokens = string.split_at_char((','), "Hello,How,Are,You,Today"),   
+    Tokens = string.split_at_char((','), "Hello,How,Are,You,Today"),
     io.write_list(Tokens, ".", io.write_string, !IO),
     io.nl(!IO).
 ```
@@ -2728,8 +2728,8 @@ FUNCTION tokenizeString RETURNS CHAR (
 
 END FUNCTION. /* tokenizeString */
 
-MESSAGE 
-   tokenizeString( "Hello,How,Are,You,Today" ) 
+MESSAGE
+   tokenizeString( "Hello,How,Are,You,Today" )
 VIEW-AS ALERT-BOX.
 ```
 
@@ -2742,7 +2742,7 @@ VIEW-AS ALERT-BOX.
  ---------------------------
  Hello.How.Are.You.Today
  ---------------------------
- OK   
+ OK
  ---------------------------
 
 ```
@@ -2779,12 +2779,12 @@ are not allowed too.
 \\ tokenize() 3/5/16 aev
 tokenize(str,d)={
 my(str=Str(str,d),vt=Vecsmall(str),d1=sasc(d),Lr=List(),sn=#str,v1,p1=1);
-for(i=p1,sn, v1=vt[i]; if(v1==d1, listput(Lr,ssubstr(str,p1,i-p1)); p1=i+1)); 
+for(i=p1,sn, v1=vt[i]; if(v1==d1, listput(Lr,ssubstr(str,p1,i-p1)); p1=i+1));
 return(Lr);
 }
 
 {
-\\ TEST 
+\\ TEST
 print(" *** Testing tokenize from Version #1:");
 print("1.", tokenize("Hello,How,Are,You,Today",","));
 \\ BOTH 2 & 3 are NOT OK!!
@@ -2793,7 +2793,7 @@ print("3.",tokenize(",Hello,,How,Are,You,Today",","));
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -2812,7 +2812,7 @@ e", "You", "Today"])
 ### Version #2.
 
 Advanced version. Delimiter is allowed in any place. In addition, multiple delimiters are allowed too.
-This is really useful for considering omitted data. 
+This is really useful for considering omitted data.
 This version can be used for positional parameters processing, or for processing data from tables with string rows.
 
 {{Works with|PARI/GP|2.7.4 and above}}
@@ -2832,12 +2832,12 @@ for(i=1,sn, v1=vt[i];
     if(vo==d1||i==1, listput(Lr,""); p1=i+1; vo=v1; next);
     if(i-p1>0, listput(Lr,ssubstr(str,p1,i-p1)); p1=i+1);
     vo=v1;
-   ); 
+   );
 return(Lr);
 }
 
 {
-\\ TEST 
+\\ TEST
 print(" *** Testing stok from Version #2:");
 \\ pp - positional parameter(s)
 print("1. 5 pp: ", stok("Hello,How,Are,You,Today",","));
@@ -2850,7 +2850,7 @@ print("7. 0 pp: ", stok("",","));
 }
 
 ```
- 
+
 
 {{Output}}
 
@@ -3111,7 +3111,7 @@ strings =>
 ** {'Hello' 'How' 'Are' 'You' 'Today'}
 ```
 
- 
+
 It is also possible to give sys_parse_string a 'conversion' procedure, which is applied to each of the tokens.
 E.g. it could be used to produce a vector of numbers, using the conversion procedure 'strnumber', which converts a string to a number:
 
@@ -3199,7 +3199,7 @@ $words -join '.'
 
 
 {{works with|PowerShell|2}}
-The StringSplitOptions enumeration weeds out the return of empty elements. 
+The StringSplitOptions enumeration weeds out the return of empty elements.
 
 ```PowerShell
 
@@ -3371,7 +3371,7 @@ str: "Hello,How,Are,You,Today"
 >> probe tokens
 ["Hello" "How" "Are" "You" "Today"]
 
->> periods: replace/all form tokens " " "."        ;The word FORM converts the list series to a string removing quotes. 
+>> periods: replace/all form tokens " " "."        ;The word FORM converts the list series to a string removing quotes.
 >> print periods                                            ;then REPLACE/ALL spaces with period
 Hello.How.Are.You.Today
 ```
@@ -3448,7 +3448,7 @@ say 'End-of-list.'                     /*display a trailer for the list.*/
 ```txt
 
 input string = Hello,How,Are,You,Today
- 
+
 Words in the string:
 Hello.
 How.
@@ -3569,7 +3569,7 @@ println("Hello,How,Are,You,Today" split "," mkString ".")
 (print
   (string-join
     (string-split "Hello,How,Are,You,Today" #\,)
-    ".")) 
+    "."))
 ```
 
 {{output}}
@@ -3770,7 +3770,7 @@ join $list "."
 ```
 
 
-Thus the whole thing would look like this: 
+Thus the whole thing would look like this:
 
 ```tcl
 puts [join [split "Hello,How,Are,You,Today" ","] "."]
@@ -3873,60 +3873,60 @@ string='Hello,How,Are,You,Today'
 #! /bin/bash
 stripchar-l ()
 #removes the specified character from the left side of the string
-#USAGE: stripchar "stuff" "s" --> tuff 
-{ 
+#USAGE: stripchar "stuff" "s" --> tuff
+{
     string="$1";
     string=${string#"$2"};
-    
+
   echo "$string"
 }
 
 join ()
 #join a string of characters on a specified delimiter
 #USAGE: join "1;2;3;4" ";" "," --> 1,2,3,4
-{ 
+{
     local result="";
     local list="$1";
     OLDIFS="$IFS";
-    local IFS=${2-" "}; 
+    local IFS=${2-" "};
     local output_field_seperator=${3-" "};
-    
+
     for element in $list;
     do
         result="$result$output_field_seperator$element";
     done;
-    
+
     result="`stripchar-l "$result" "$output_field_seperator"`";
     echo "$result";
     IFS="$OLDIFS"
 }
 
-split () 
-{ 
+split ()
+{
 #split a string of characters on a specified delimiter
-#USAGE: split "1;2;3;4" ";" --> 1 2 3 4	
+#USAGE: split "1;2;3;4" ";" --> 1 2 3 4
     local list="$1";
-    local input_field_seperator=${2-" "}; 
+    local input_field_seperator=${2-" "};
     local output_field_seperator=" ";
-    
+
   #defined in terms of join
   join "$list" "$input_field_seperator" "$output_field_seperator"
 }
 
-strtokenize () 
+strtokenize ()
 {
 #splits up a string of characters into tokens,
 #based on a user supplied delimiter
 #USAGE:strtokenize "1;2;3;4" ";" ":" --> 1:2:3:4
     local list="$1";
-	local input_delimiter=${2-" "}; 
+	local input_delimiter=${2-" "};
 	local output_delimiter=${3-" "};
 	local contains_a_space=" "; #added to highlight the use
-                                    #of " " as an argument to join	
-  
+                                    #of " " as an argument to join
+
   #splits it input then joins it with a user supplied delimiter
   join "$( split "$list" "$input_delimiter" )" \
-    "$contains_a_space" "$output_delimiter"; 
+    "$contains_a_space" "$output_delimiter";
 }
 ```
 
@@ -3935,8 +3935,8 @@ strtokenize ()
 
 
 ```bash
- strtokenize "Hello,How,Are,You,Today" "," "." 
-            Hello.How.Are.You.Today 
+ strtokenize "Hello,How,Are,You,Today" "," "."
+            Hello.How.Are.You.Today
 ```
 
 
@@ -4108,7 +4108,7 @@ Reg_Copy_Block(#1, #2, EOB_Pos)
 
 // Display the list
 for (#3 = 10; #3 <= #1; #3++) {
-    Reg_Type(#3) Message(".") 
+    Reg_Type(#3) Message(".")
 }
 
 Buf_Quit(OK)
@@ -4241,7 +4241,7 @@ print ${(j:.:)tokens}
 ```
 
 
-Or, using SH_SPLIT_WORD: 
+Or, using SH_SPLIT_WORD:
 
 
 ```zsh

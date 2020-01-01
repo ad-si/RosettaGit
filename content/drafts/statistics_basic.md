@@ -12,17 +12,17 @@ tags = []
 
 {{task|Mathematics}}
 
-[[Statistics|Statistics]] is all about large groups of numbers.  
-When talking about a set of sampled data, most frequently used is their [[wp:Mean|mean value]] and [[wp:Standard_deviation|standard deviation (stddev)]].  
+[[Statistics|Statistics]] is all about large groups of numbers.
+When talking about a set of sampled data, most frequently used is their [[wp:Mean|mean value]] and [[wp:Standard_deviation|standard deviation (stddev)]].
 If you have set of data <math>x_i</math> where <math>i = 1, 2, \ldots, n\,\!</math>, the mean is <math>\bar{x}\equiv {1\over n}\sum_i x_i</math>, while the stddev is <math>\sigma\equiv\sqrt{{1\over n}\sum_i \left(x_i - \bar x \right)^2}</math>.
 
-When examining a large quantity of data, one often uses a [[wp:Histogram|histogram]], which shows the counts of data samples falling into a prechosen set of intervals (or bins).  
+When examining a large quantity of data, one often uses a [[wp:Histogram|histogram]], which shows the counts of data samples falling into a prechosen set of intervals (or bins).
 When plotted, often as bar graphs, it visually indicates how often each data value occurs.
 
-'''Task''' Using your language's random number routine, generate real numbers in the range of [0, 1].  It doesn't matter if you chose to use open or closed range.  
-Create 100 of such numbers (i.e. sample size 100) and calculate their mean and stddev.  
-Do so for sample size of 1,000 and 10,000, maybe even higher if you feel like.  
-Show a histogram of any of these sets.  
+'''Task''' Using your language's random number routine, generate real numbers in the range of [0, 1].  It doesn't matter if you chose to use open or closed range.
+Create 100 of such numbers (i.e. sample size 100) and calculate their mean and stddev.
+Do so for sample size of 1,000 and 10,000, maybe even higher if you feel like.
+Show a histogram of any of these sets.
 Do you notice some patterns about the standard deviation?
 
 '''Extra''' Sometimes so much data need to be processed that it's impossible to keep all of them at once.  Can you calculate the mean, stddev and histogram of a trillion numbers? (You don't really need to do a trillion numbers, just show how it can be done.)
@@ -123,11 +123,11 @@ end Basic_Stat;
 ```
 
 
-{{out}} from a few sample runs: 
+{{out}} from a few sample runs:
 
 ```txt
 > ./basic_stat 1000
-After sampling 1000 random numnbers: 
+After sampling 1000 random numnbers:
 0.00..0.05: XXXXXXXXXXXXXXXXXXXXXXX
 0.05..0.15: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 0.15..0.25: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -145,7 +145,7 @@ Mean: 0.48727,  Standard Deviation: 0.28502
 
 
 > ./basic_stat 10_000
-After sampling 10000 random numnbers: 
+After sampling 10000 random numnbers:
 0.00..0.05: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 0.05..0.15: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 0.15..0.25: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -163,7 +163,7 @@ Mean: 0.50096,  Standard Deviation: 0.28869
 
 
 > ./basic_stat 100_000
-After sampling 100000 random numnbers: 
+After sampling 100000 random numnbers:
 0.00..0.05: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 0.05..0.15: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 0.15..0.25: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -189,15 +189,15 @@ Below, I'll assume 10^12, which implies a number of operations I can still perfo
 
 The above program will fail with such large inputs for two reasons:
 
-1. The type Counter cannot hold such large numbers. 
+1. The type Counter cannot hold such large numbers.
 
-2. The variables Val_Sum and Squ_Sum will numerically fail, because the type Float only provides about six decimal digits of accuracy. I.e., at some point, Val_Sum and (a little bit later) Squ_Sum are so large that adding a value below 1 has no effect, any more. 
+2. The variables Val_Sum and Squ_Sum will numerically fail, because the type Float only provides about six decimal digits of accuracy. I.e., at some point, Val_Sum and (a little bit later) Squ_Sum are so large that adding a value below 1 has no effect, any more.
 
 To make the program ready for sample size 10^12, we modify it as follows.
 
 1. Change the type Counter to hold such large numbers.
 
-2. Define a type High_Precision, that will hold (at least) 15 decimal digits. Define Val_Sum and Squ_Sum as being from that type. Include the neccessary type conversions. 
+2. Define a type High_Precision, that will hold (at least) 15 decimal digits. Define Val_Sum and Squ_Sum as being from that type. Include the neccessary type conversions.
 
 3. Provide some progress report, during the running time.
 
@@ -352,7 +352,7 @@ Mean: 0.50000,  Standard Deviation: 0.28868
 
 
 
-After sampling 1000000000000 random numnbers: 
+After sampling 1000000000000 random numnbers:
 0.00..0.05: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 0.05..0.15: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 0.15..0.25: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -376,8 +376,8 @@ The same program should still work fine for sample size 10^18, but I'll need my 
 
 Sample code.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <stdint.h>
@@ -435,7 +435,7 @@ typedef struct {
 void moving_avg(moving_rec *rec, double *data, int count)
 {
 	double sum = 0, x2 = 0;
-	/* not adding data directly to the sum in case both recorded sum and 
+	/* not adding data directly to the sum in case both recorded sum and
 	 * count of this batch are large; slightly less likely to lose precision*/
 	for (int i = 0; i < count; i++) {
 		sum += data[i];
@@ -571,8 +571,8 @@ StdDev: 0.287103198996064
 ## C++
 
 
-```Cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <random>
 #include <vector>
 #include <cstdlib>
@@ -580,8 +580,8 @@ StdDev: 0.287103198996064
 #include <cmath>
 
 void printStars ( int number ) {
-   if ( number > 0 ) { 
-      for ( int i = 0 ; i < number + 1 ; i++ ) 
+   if ( number > 0 ) {
+      for ( int i = 0 ; i < number + 1 ; i++ )
 	 std::cout << '*' ;
    }
    std::cout << '\n' ;
@@ -593,18 +593,18 @@ int main( int argc , char *argv[] ) {
    std::mt19937 gen( rd( ) ) ;
    std::uniform_real_distribution<> distri( 0.0 , 1.0 ) ;
    std::vector<double> randoms ;
-   for ( int i = 0 ; i < numberOfRandoms + 1 ; i++ ) 
+   for ( int i = 0 ; i < numberOfRandoms + 1 ; i++ )
       randoms.push_back ( distri( gen ) ) ;
    std::sort ( randoms.begin( ) , randoms.end( ) ) ;
    double start = 0.0 ;
    for ( int i = 0 ;  i < 9 ; i++ ) {
       double to = start + 0.1 ;
       int howmany =  std::count_if ( randoms.begin( ) , randoms.end( ),
-	        [&start , &to] ( double c ) { return c >= start 
+	        [&start , &to] ( double c ) { return c >= start
 		  && c < to ; } ) ;
       if ( start == 0.0 ) //double 0.0 output as 0
 	 std::cout << "0.0" << " - " << to << ": " ;
-      else 
+      else
 	 std::cout << start << " - " << to << ": " ;
       if ( howmany > 50 ) //scales big interval numbers to printable length
 	 howmany = howmany / ( howmany / 50 ) ;
@@ -613,7 +613,7 @@ int main( int argc , char *argv[] ) {
    }
    double mean = std::accumulate( randoms.begin( ) , randoms.end( ) , 0.0 ) / randoms.size( ) ;
    double sum = 0.0 ;
-   for ( double num : randoms ) 
+   for ( double num : randoms )
       sum += std::pow( num - mean , 2 ) ;
    double stddev = std::pow( sum / randoms.size( ) , 0.5 ) ;
    std::cout << "The mean is " << mean << " !" << std::endl ;
@@ -665,20 +665,20 @@ generate_statistics = (n) ->
   stddev = Math.sqrt((sum_squares / n) - mean*mean)
 
   [n, mean, stddev, hist]
-  
+
 display_statistics = (n, mean, stddev, hist) ->
   console.log "-- Stats for sample size #{n}"
   console.log "mean: #{mean}"
   console.log "sdev: #{stddev}"
   for x, cnt of hist
-    bars = repeat "=", Math.floor(cnt*300/n) 
+    bars = repeat "=", Math.floor(cnt*300/n)
     console.log "#{x/10}: #{bars} #{cnt}"
 
 repeat = (c, n) ->
   s = ''
   s += c for i in [1..n]
   s
- 
+
 for n in [100, 1000, 10000, 1000000]
   [n, mean, stddev, hist] = generate_statistics n
   display_statistics n, mean, stddev, hist
@@ -691,137 +691,137 @@ for n in [100, 1000, 10000, 1000000]
 
 ```txt
 
-> coffee stats.coffee 
+> coffee stats.coffee
 -- Stats for sample size 100
 mean: 0.5058459933893755
 sdev: 0.2752669422150894
-0: 
+0:
 ### ============
  6
-0.1: 
+0.1:
 ### =======================================
  15
-0.2: 
+0.2:
 ### =====================
  9
-0.3: 
+0.3:
 ### ===============
  7
-0.4: 
+0.4:
 ### =======================================
  15
-0.5: 
+0.5:
 ### ==================
  8
-0.6: 
+0.6:
 ### ===========================
  11
-0.7: 
+0.7:
 ### ====================================
  14
-0.8: 
+0.8:
 ### ===============
  7
-0.9: 
+0.9:
 ### ==================
  8
 -- Stats for sample size 1000
 mean: 0.49664502244861797
 sdev: 0.2942483939245344
-0: 
+0:
 ### ====================
  89
-0.1: 
+0.1:
 ### ===============================
  126
-0.2: 
+0.2:
 ### =====================
  93
-0.3: 
+0.3:
 ### ==============================
  121
-0.4: 
+0.4:
 ### =====================
  93
-0.5: 
+0.5:
 ### ================
  75
-0.6: 
+0.6:
 ### ==========================
  108
-0.7: 
+0.7:
 ### ==================
  82
-0.8: 
+0.8:
 ### ========================
  101
-0.9: 
+0.9:
 ### ===========================
  112
 -- Stats for sample size 10000
 mean: 0.4985696110446239
 sdev: 0.29007446138438986
-0: 
+0:
 ### ========================
  1005
-0.1: 
+0.1:
 ### ========================
  1016
-0.2: 
+0.2:
 ### ========================
  1022
-0.3: 
+0.3:
 ### ========================
  1012
-0.4: 
+0.4:
 ### ======================
  958
-0.5: 
+0.5:
 ### =========================
  1035
-0.6: 
+0.6:
 ### =======================
  974
-0.7: 
+0.7:
 ### =======================
  968
-0.8: 
+0.8:
 ### =======================
  973
-0.9: 
+0.9:
 ### =========================
  1037
 -- Stats for sample size 1000000
 mean: 0.5001718024678293
 sdev: 0.2887130780006248
-0: 
+0:
 ### ========================
  100113
-0.1: 
+0.1:
 ### =======================
  99830
-0.2: 
+0.2:
 ### ========================
  100029
-0.3: 
+0.3:
 ### =======================
  99732
-0.4: 
+0.4:
 ### =======================
  99911
-0.5: 
+0.5:
 ### =======================
  99722
-0.6: 
+0.6:
 ### ========================
  100780
-0.7: 
+0.7:
 ### =======================
  99812
-0.8: 
+0.8:
 ### =======================
  99875
-0.9: 
+0.9:
 ### ========================
  100196
 
@@ -889,9 +889,9 @@ Compile with "-version=statistics_basic_main" to run the main function.
  Mean: 0.651336, SD: 0.220208
  0.0: *************************
  0.1: **************************************************
- 0.2: 
+ 0.2:
  0.3: **************************************************
- 0.4: 
+ 0.4:
  0.5: *************************
  0.6: *************************
  0.7: *************************
@@ -974,7 +974,7 @@ Compile with "-version=statistics_basic_main" to run the main function.
  *     	1) Square root function 	        : Math.sqrt(x)
  *	2) Power function 		: Math.pow(base, exponent)
  *	3) Random number generator 	: Math.Random()
- */		
+ */
 import 'dart:math' as Math show sqrt, pow, Random;
 
 // Returns average/mean of a list of numbers
@@ -1003,7 +1003,7 @@ List<num> randomsample(num n){
   num random = new Math.Random();
   for (int i = 0; i < n; i++){
     l[i] = random.nextDouble();
-    histogram[conv(l[i])] += 1; 
+    histogram[conv(l[i])] += 1;
   }
   return l;
 }
@@ -1024,7 +1024,7 @@ String stars(num n){
  * 1) Get to total for all the values in the histogram
  * 2) For every field in the histogram:
  * 		a) Compute the frequency for every field in the histogram
- * 		b) Print the frequency as asterixes 
+ * 		b) Print the frequency as asterixes
  */
 void drawhistogram(){
   int total = histogram.reduce((num element,num value)=>element+value);
@@ -1035,15 +1035,15 @@ void drawhistogram(){
   }
 }
 
-/* HELPER METHOD: 
+/* HELPER METHOD:
  * 	converts values between 0-1 to integers between 0-9 inclusive
- * 	useful to figure out which random value generated 
+ * 	useful to figure out which random value generated
  *	corresponds to which field in the histogram
  */
 int conv(num i) => (10*i).floor();
 
 
-/* MAIN FUNCTION 
+/* MAIN FUNCTION
  *
  * Create 5 histograms and print the mean and standard deviation for each:
  * 	1) Sample Size = 100
@@ -1051,7 +1051,7 @@ int conv(num i) => (10*i).floor();
  *	3) Sample Size = 10000
  *	4) Sample Size = 100000
  *	5) Sample Size = 1000000
- *  
+ *
  */
 void main(){
   List<num> l;
@@ -1160,7 +1160,7 @@ defmodule Statistics do
     {sum, sum2, hist} = generate(n)
     mean = sum / n
     stddev = :math.sqrt(sum2 / n - mean*mean)
-    
+
     IO.puts "size:   #{n}"
     IO.puts "mean:   #{mean}"
     IO.puts "stddev: #{stddev}"
@@ -1169,7 +1169,7 @@ defmodule Statistics do
     end)
     IO.puts ""
   end
-  
+
   defp generate(n) do
     hist = for i <- 0..9, into: %{}, do: {i,0}
     Enum.reduce(1..n, {0, 0, hist}, fn _,{sum, sum2, h} ->
@@ -1312,29 +1312,29 @@ CONSTANT: granularity
 
 : .mean/std ( seq -- )
     mean/std [ "Mean: " write . ] [ "STD:  " write . ] bi* ;
-    
+
 : count-between ( seq a b -- n )
     [ between? ] 2curry count ;
-    
+
 : histo ( seq -- seq )
     granularity [ first2 count-between ] with map ;
-    
+
 : bar ( n -- str )
     [ dup 50 < ] [ 10 / ] until 2 * >integer "*" swap repeat ;
-    
+
 : (.histo) ( seq -- seq' )
     [ bar ] map granularity swap zip flatten 3 group ;
-    
+
 : .histo ( seq -- )
     (.histo) [ "%.1f - %.1f %s\n" vprintf ] each ;
-    
+
 : stats ( n -- )
     dup "Statistics %d:\n" printf
     random-units [ histo .histo ] [ .mean/std nl ] bi ;
-    
+
 : main ( -- )
     { 100 1,000 10,000 } [ stats ] each ;
-    
+
 MAIN: main
 ```
 
@@ -1396,18 +1396,18 @@ This version will handle numbers as large as 1 trillion or more if you are prepa
 ```fortran
 program basic_stats
   implicit none
-  
+
   integer, parameter :: i64 = selected_int_kind(18)
   integer, parameter :: r64 = selected_real_kind(15)
   integer(i64), parameter :: samples = 1000000000_i64
-     
+
   real(r64) :: r
   real(r64) :: mean, stddev
   real(r64) :: sumn = 0, sumnsq = 0
-  integer(i64) :: n = 0 
+  integer(i64) :: n = 0
   integer(i64) :: bin(10) = 0
   integer :: i, ind
-  
+
   call random_seed
 
   n = 0
@@ -1424,11 +1424,11 @@ program basic_stats
   stddev = sqrt(sumnsq/n - mean*mean)
   write(*, "(a, i0)") "sample size = ", samples
   write(*, "(a, f17.15)") "Mean :   ", mean,
-  write(*, "(a, f17.15)") "Stddev : ", stddev  
+  write(*, "(a, f17.15)") "Stddev : ", stddev
   do i = 1, 10
     write(*, "(f3.1, a, a)") real(i)/10.0, ": ", repeat("=", int(bin(i)*500/samples))
   end do
- 
+
 end program
 ```
 
@@ -1439,136 +1439,136 @@ end program
 sample size = 100
 Mean :   0.507952672404959
 Stddev : 0.290452178516586
-0.1: 
+0.1:
 ### =======================================
 
-0.2: 
+0.2:
 ### ======================================================
 
-0.3: 
+0.3:
 ### ========================
 
-0.4: 
+0.4:
 ### ===========================================================
 
-0.5: 
+0.5:
 ### =======================================
 
-0.6: 
+0.6:
 ### =================================================
 
-0.7: 
+0.7:
 ### ===========================================================
 
-0.8: 
+0.8:
 ### ============================================
 
-0.9: 
+0.9:
 ### ===================
 
-1.0: 
+1.0:
 ### ===========================================================
 
 
 sample size = 1000
 Mean :   0.505018948813265
 Stddev : 0.287904987339785
-0.1: 
+0.1:
 ### ========================================
 
-0.2: 
+0.2:
 ### ==========================================
 
-0.3: 
+0.3:
 ### ==================================================
 
-0.4: 
+0.4:
 ### =========================================
 
-0.5: 
+0.5:
 ### ============================================
 
-0.6: 
+0.6:
 ### =====================================
 
-0.7: 
+0.7:
 ### ==================================================
 
-0.8: 
+0.8:
 ### ============================================
 
-0.9: 
+0.9:
 ### =============================================
 
-1.0: 
+1.0:
 ### =============================================
 
 
 sample size = 10000
 Mean :   0.508929669066967
 Stddev : 0.287243609812712
-0.1: 
+0.1:
 ### ========================================
 
-0.2: 
+0.2:
 ### ==========================================
 
-0.3: 
+0.3:
 ### ===========================================
 
-0.4: 
+0.4:
 ### ============================================
 
-0.5: 
+0.5:
 ### ==========================================
 
-0.6: 
+0.6:
 ### =============================================
 
-0.7: 
+0.7:
 ### ============================================
 
-0.8: 
+0.8:
 ### ============================================
 
-0.9: 
+0.9:
 ### ==============================================
 
-1.0: 
+1.0:
 ### =============================================
 
 
 sample size = 1000000000
 Mean :   0.500005969962249
 Stddev : 0.288673875345505
-0.1: 
+0.1:
 ### ===========================================
 
-0.2: 
+0.2:
 ### ===========================================
 
-0.3: 
+0.3:
 ### ===========================================
 
-0.4: 
+0.4:
 ### ===========================================
 
-0.5: 
+0.5:
 ### ============================================
 
-0.6: 
+0.6:
 ### ===========================================
 
-0.7: 
+0.7:
 ### ============================================
 
-0.8: 
+0.8:
 ### ===========================================
 
-0.9: 
+0.9:
 ### ============================================
 
-1.0: 
+1.0:
 ### ===========================================
 
 
@@ -1585,7 +1585,7 @@ Stddev : 0.288673875345505
 Randomize
 
 Sub basicStats(sampleSize As Integer)
-  If sampleSize < 1 Then Return 
+  If sampleSize < 1 Then Return
   Dim r(1 To sampleSize) As Double
   Dim h(0 To 9) As Integer '' all zero by default
   Dim sum As Double = 0.0
@@ -1604,13 +1604,13 @@ Sub basicStats(sampleSize As Integer)
   ' adjust one of the h() values if necessary to ensure hSum = sampleSize
   Dim adj As Integer = sampleSize - hSum
   If adj <> 0 Then
-    For i As Integer = 0 To 9 
+    For i As Integer = 0 To 9
       h(i) += adj
       If h(i) >= 0 Then Exit For
       h(i) -= adj
     Next
   End If
- 
+
   Dim mean As Double = sum / sampleSize
 
   Dim sd As Double
@@ -1621,11 +1621,11 @@ Sub basicStats(sampleSize As Integer)
   Next
   sd  = Sqr(sum/sampleSize)
 
-  ' Draw a histogram of the data with interval 0.1 
+  ' Draw a histogram of the data with interval 0.1
   Dim numStars As Integer
   ' If sample size > 500 then normalize histogram to 500
   Dim scale As Double = 1.0
-  If sampleSize > 500 Then scale = 500.0 / sampleSize 
+  If sampleSize > 500 Then scale = 500.0 / sampleSize
   Print "Sample size "; sampleSize
   Print
   Print Using "  Mean #.######"; mean;
@@ -1636,16 +1636,16 @@ Sub basicStats(sampleSize As Integer)
     Print Using "##### " ; h(i);
     numStars = Int(h(i) * scale + 0.5)
     Print String(numStars, "*")
-  Next 
+  Next
 End Sub
-    
+
 basicStats 100
 Print
 basicStats 1000
 Print
 basicStats 10000
 Print
-basicStats 100000 
+basicStats 100000
 Print
 Print "Press any key to quit"
 Sleep
@@ -2041,34 +2041,34 @@ The standard deviation is 0.28782134281196275 !
 =={{header|Icon}} and {{header|Unicon}}==
 
 The following uses the ''stddev'' procedure from the [[Standard_deviation]] task.
-In this example, 
+In this example,
 
 
 ```Icon
-procedure main(A) 
+procedure main(A)
 
 W := 50                         # avg width for histogram bar
 B := 10                         # histogram bins
-if *A = 0 then put(A,100)       # 100 if none specified 
+if *A = 0 then put(A,100)       # 100 if none specified
 
 while N := get(A) do {          # once per argument
    write("\nN=",N)
 
-   N := 0 < integer(N) | next   # skip if invalid 
-   
+   N := 0 < integer(N) | next   # skip if invalid
+
    stddev() # reset
    m := 0.
-   H := list(B,0)               # Histogram of 
+   H := list(B,0)               # Histogram of
    every i := 1 to N do {       # calc running ...
-      s := stddev(r := ?0)      # ... std dev 
+      s := stddev(r := ?0)      # ... std dev
       m +:= r/N                 # ... mean
       H[integer(*H*r)+1] +:= 1  # ... histogram
       }
 
    write("mean=",m)
    write("stddev=",s)
-   every i := 1 to *H do        # show histogram 
-      write(right(real(i)/*H,5)," : ",repl("*",integer(*H*50./N*H[i]))) 
+   every i := 1 to *H do        # show histogram
+      write(right(real(i)/*H,5)," : ",repl("*",integer(*H*50./N*H[i])))
    }
 end
 ```
@@ -2158,7 +2158,7 @@ Instead:
 histogram=: <: @ (#/.~) @ (i.@#@[ , I.)
 
 meanstddevP=: 3 :0
-  NB. compute mean and std dev of y random numbers 
+  NB. compute mean and std dev of y random numbers
   NB. picked from even distribution between 0 and 1
   NB. and display a normalized ascii histogram for this sample
   NB. note: uses population mean (0.5), not sample mean, for stddev
@@ -2187,40 +2187,40 @@ Example use:
 
 ```j
    meanstddevP 1000
-#############################       
+#############################
 ####################################
-###########################         
-##############################      
-################################### 
-########################            
-###########################         
-############################        
-################################    
-##########################          
+###########################
+##############################
+###################################
+########################
+###########################
+############################
+################################
+##########################
 0.488441 0.289744
    meanstddevP 10000
-############################## 
-############################## 
-#############################  
-#############################  
+##############################
+##############################
+#############################
+#############################
 ###############################
-############################## 
-############################   
-############################## 
-#############################  
-#############################  
+##############################
+############################
+##############################
+#############################
+#############################
 0.49697 0.289433
    meanstddevP 100000
-############################# 
+#############################
 ##############################
-############################# 
-############################# 
-############################# 
-##############################
-##############################
+#############################
+#############################
+#############################
 ##############################
 ##############################
-############################# 
+##############################
+##############################
+#############################
 0.500872 0.288241
 ```
 
@@ -2412,7 +2412,7 @@ function statisticsBasic(args:array|string=void, conf:object=void) {
         }
         return;
     }
-    
+
     function main() {
         LogTest('Starting', args);
         switch (typeof(args)) {
@@ -2425,14 +2425,14 @@ function statisticsBasic(args:array|string=void, conf:object=void) {
 
         Math.srand(0);
         if (self.samples > 0) reportStats(generateStats(self.samples));
-        else if (args[0] && parseInt(args[0])) reportStats(generateStats(parseInt(args[0])));  
+        else if (args[0] && parseInt(args[0])) reportStats(generateStats(parseInt(args[0])));
         else for (var n of [100, 1000, 10000]) reportStats(generateStats(n));
 
         debugger;
         LogDebug('Done');
         return 0;
     }
-    
+
     return main();
 }
 
@@ -2441,7 +2441,7 @@ provide(statisticsBasic, 1);
 if (isMain()) {
     if (!Interp.conf('unitTest'))
         return runModule(statisticsBasic);
-    
+
 ;'  statisticsBasic unit-test';
 ;   statisticsBasic();
 
@@ -2533,16 +2533,16 @@ end
 ##
 ## 10 numbers
 μ: 0.513345; σ: 0.261532
-0.1: 
+0.1:
 0.2: ++++++++++++++++++++++++++++++++++++++++++++++++++
-0.3: 
+0.3:
 0.4: ++++++++++++++++++++++++++++++++++++++++++++++++++
 0.5: ++++++++++++++++++++++++++++++++++++++++++++++++++
-0.6: 
+0.6:
 0.7: +++++++++++++++++++++++++
 0.8: +++++++++++++++++++++++++
 0.9: ++++++++++++++++++++++++++++++++++++++++++++++++++
-1.0: 
+1.0:
 
 ##
 ## 100 numbers
@@ -2630,8 +2630,8 @@ hist10::{[s];#'=s@<s::_x*10}
 plot::{[s];.p("");.p("n = ",$x);
        (!10){.d(x%10);.d(" ");bar(y)}'_(100%x)*(hist10(s::{x;.rn()}'!x));
        .p("mean = ",$mu(s));.p("sd   = ",$sd(s))}
-plot(100)  
-plot(1000) 
+plot(100)
+plot(1000)
 plot(10000)
 
 ```
@@ -2720,13 +2720,13 @@ fun basicStats(sampleSize: Int) {
 
     val mean = r.average()
     val sd = Math.sqrt(r.map { (it - mean) * (it - mean) }.average())
-  
-    // Draw a histogram of the data with interval 0.1 
+
+    // Draw a histogram of the data with interval 0.1
     var numStars: Int
-    // If sample size > 500 then normalize histogram to 500 
-    val scale = if (sampleSize <= 500) 1.0 else 500.0 / sampleSize 
+    // If sample size > 500 then normalize histogram to 500
+    val scale = if (sampleSize <= 500) 1.0 else 500.0 / sampleSize
     println("Sample size $sampleSize\n")
-    println("  Mean ${"%1.6f".format(mean)}  SD ${"%1.6f".format(sd)}\n") 
+    println("  Mean ${"%1.6f".format(mean)}  SD ${"%1.6f".format(sd)}\n")
     for (i in 0..9) {
         print("  %1.2f : ".format(i / 10.0))
         print("%5d ".format(h[i]))
@@ -2737,7 +2737,7 @@ fun basicStats(sampleSize: Int) {
 }
 
 fun main(args: Array<String>) {
-    val sampleSizes = intArrayOf(100, 1_000, 10_000, 100_000) 
+    val sampleSizes = intArrayOf(100, 1_000, 10_000, 100_000)
     for (sampleSize in sampleSizes) basicStats(sampleSize)
 }
 ```
@@ -3092,7 +3092,7 @@ It is also possible to make a procedure that outputs the mean, standard deviatio
 sample := proc( n )
     local data;
     data := Sample( Uniform(0,1), n );
-    printf( "Mean: %.4f\nStandard Deviation: %.4f", 
+    printf( "Mean: %.4f\nStandard Deviation: %.4f",
              Statistics:-Mean( data ),
              Statistics:-StandardDeviation( data ) );
     return Statistics:-Histogram( data );
@@ -3109,7 +3109,7 @@ sample( 1000 );
 Sample[n_]:= (Print[#//Length," numbers, Mean : ",#//Mean,", StandardDeviation : ",#//StandardDeviation ];
         BarChart[BinCounts[#,{0,1,.1}], Axes->False, BarOrigin->Left])&[(RandomReal[1,#])&[ n ]]
 
-Sample/@{100,1 000,10 000,1 000 000} 
+Sample/@{100,1 000,10 000,1 000 000}
 ```
 
 {{out}}
@@ -3127,24 +3127,24 @@ Sample/@{100,1 000,10 000,1 000 000}
 
 ```Matlab
   % Initialize
-  N = 0; S=0; S2 = 0; 
-  binlist = 0:.1:1;	
+  N = 0; S=0; S2 = 0;
+  binlist = 0:.1:1;
   h = zeros(1,length(binlist));  % initialize histogram
 
   % read data and perform computation
   while (1)
 	% read next sample x
-        if (no_data_available) break; end; 
+        if (no_data_available) break; end;
         N = N + 1;
         S = S + x;
         S2= S2+ x*x;
         ix= sum(x < binlist);
-        h(ix) = h(ix)+1; 
-  end 	
+        h(ix) = h(ix)+1;
+  end
 
   % generate output
-  m  = S/N;   % mean  
-  sd = sqrt(S2/N-mean*mean);  % standard deviation 
+  m  = S/N;   % mean
+  sd = sqrt(S2/N-mean*mean);  % standard deviation
   bar(binlist,h)
 ```
 
@@ -3198,13 +3198,13 @@ sd: 0.2738118959385979, mean: 0.4717111448227304
 
 0.0: +++++++++++++++++++++++++
 0.1: +++++++++++++++++++++++++
-0.2: 
+0.2:
 0.3: ++++++++++++++++++++++++++++++++++++++++++++++++++
 0.4: ++++++++++++++++++++++++++++++++++++++++++++++++++
-0.5: 
+0.5:
 0.6: ++++++++++++++++++++++++++++++++++++++++++++++++++
 0.7: +++++++++++++++++++++++++
-0.8: 
+0.8:
 0.9: +++++++++++++++++++++++++
 
 [...]
@@ -3242,9 +3242,9 @@ sd: 0.2884329643843962, mean: 0.4997598571602153
    System.Out "n = " << n << ", avg = " << m << ", std = " << std << cr
 
    // Histo
-   0.0 0.9 0.1 step: i [ 
+   0.0 0.9 0.1 step: i [
       l count(#[ between(i, i 0.1 +) ]) 400 * n / asInteger ->nb
-      System.Out i <<wjp(3, JUSTIFY_RIGHT, 2) " - " << 
+      System.Out i <<wjp(3, JUSTIFY_RIGHT, 2) " - " <<
                  i 0.1 + <<wjp(3, JUSTIFY_RIGHT, 2) " - " <<
                  StringBuffer new "*" <<n(nb) << cr
       ] ;
@@ -3376,7 +3376,7 @@ my $sum = 0;
 my $sum_squares = 0;
 my $n = $ARGV[0];
 
-for (1..$n) { 
+for (1..$n) {
   my $current = rand();
   $sum+= $current;
   $sum_squares+= $current ** 2;
@@ -3385,7 +3385,7 @@ for (1..$n) {
 
 my $mean = $sum / $n;
 
-print "$n numbers\n", 
+print "$n numbers\n",
       "Mean:   $mean\n",
       "Stddev: ", sqrt(($sum_squares / $n) - ($mean ** 2)), "\n";
 
@@ -3398,7 +3398,7 @@ for my $i (0..$#histogram) {
 ```
 
 
-Usage: 
+Usage:
 ```txt
 perl rand_statistics.pl (number of values)
 ```
@@ -3492,102 +3492,102 @@ for 100, 1_000, 10_000 -> $N {
 size: 100
 mean: 0.52518699464629726
 stddev: 0.28484207464779548
-0.0	
+0.0
 ### ========================
 
-0.1	
+0.1
 ### ================================================================
 
-0.2	
+0.2
 ### =============================
 
-0.3	
+0.3
 ### ============================================
 
-0.4	
+0.4
 ### ======================================================
 
-0.5	
+0.5
 ### =======================================
 
-0.6	
+0.6
 ### ==============
 
-0.7	
+0.7
 ### =====================================================================
 
-0.8	
+0.8
 ### ================================================================
 
-0.9	
+0.9
 ### =======================================
 
 
 size: 1000
 mean: 0.51043974182914975
 stddev: 0.29146336553431618
-0.0	
+0.0
 ### ========================================
 
-0.1	
+0.1
 ### ============================================
 
-0.2	
+0.2
 ### =====================================
 
-0.3	
+0.3
 ### ==================================================
 
-0.4	
+0.4
 ### =============================================
 
-0.5	
+0.5
 ### =================================
 
-0.6	
+0.6
 ### =====================================================
 
-0.7	
+0.7
 ### ==============================================
 
-0.8	
+0.8
 ### ========================================
 
-0.9	
+0.9
 ### ==================================================
 
 
 size: 10000
 mean: 0.50371817503544458
 stddev: 0.2900716333092252
-0.0	
+0.0
 ### =============================================
 
-0.1	
+0.1
 ### ===========================================
 
-0.2	
+0.2
 ### =======================================
 
-0.3	
+0.3
 ### ==============================================
 
-0.4	
+0.4
 ### ========================================
 
-0.5	
+0.5
 ### ==============================================
 
-0.6	
+0.6
 ### ==========================================
 
-0.7	
+0.7
 ### =============================================
 
-0.8	
+0.8
 ### ==============================================
 
-0.9	
+0.9
 ### ============================================
 
 ```
@@ -3604,7 +3604,7 @@ function generate_statistics(integer n)
 sequence hist = repeat(0,10)
 atom sum_r = 0,
      sum_squares = 0.0
- 
+
     for i=1 to n do
         atom r = rnd()
         sum_r += r
@@ -3613,10 +3613,10 @@ atom sum_r = 0,
     end for
     atom mean = sum_r / n
     atom stddev = sqrt((sum_squares / n) - mean*mean)
- 
+
      return {n, mean, stddev, hist}
 end function
- 
+
 procedure display_statistics(sequence x)
 atom n, mean, stddev
 sequence hist
@@ -3630,7 +3630,7 @@ sequence hist
         printf(1,"%.1f: %s %d\n",{i/10,bars,cnt})
     end for
 end procedure
- 
+
 for n=2 to 5 do
     display_statistics(generate_statistics(power(10,n+(n=5))))
 end for
@@ -3641,34 +3641,34 @@ end for
 -- Stats for sample size 100
 mean: 0.530925
 sdev: 0.303564
-0.1: 
+0.1:
 ### ==================
  8
-0.2: 
+0.2:
 ### =================================
  13
-0.3: 
+0.3:
 ### ========================
  10
-0.4: 
+0.4:
 ### ============
  6
-0.5: 
+0.5:
 ### ===============
  7
-0.6: 
+0.6:
 ### ===========================
  11
-0.7: 
+0.7:
 ### ===========================
  11
-0.8: 
+0.8:
 ### ===============
  7
-0.9: 
+0.9:
 ### =================================
  13
-1.0: 
+1.0:
 ### ====================================
  14
 
@@ -3678,34 +3678,34 @@ sdev: 0.303564
 -- Stats for sample size 1000
 mean: 0.50576
 sdev: 0.288862
-0.1: 
+0.1:
 ### ======================
  95
-0.2: 
+0.2:
 ### ========================
  103
-0.3: 
+0.3:
 ### =======================
  98
-0.4: 
+0.4:
 ### =====================
  93
-0.5: 
+0.5:
 ### ========================
  101
-0.6: 
+0.6:
 ### =======================
  99
-0.7: 
+0.7:
 ### =========================
  105
-0.8: 
+0.8:
 ### =======================
  97
-0.9: 
+0.9:
 ### ==========================
  108
-1.0: 
+1.0:
 ### ========================
  101
 
@@ -3715,34 +3715,34 @@ sdev: 0.288862
 -- Stats for sample size 10000
 mean: 0.498831
 sdev: 0.28841
-0.1: 
+0.1:
 ### =======================
  987
-0.2: 
+0.2:
 ### =========================
  1060
-0.3: 
+0.3:
 ### ======================
  953
-0.4: 
+0.4:
 ### =======================
  980
-0.5: 
+0.5:
 ### ========================
  1013
-0.6: 
+0.6:
 ### =======================
  997
-0.7: 
+0.7:
 ### ==========================
  1089
-0.8: 
+0.8:
 ### ======================
  948
-0.9: 
+0.9:
 ### =======================
  974
-1.0: 
+1.0:
 ### =======================
  999
 
@@ -3752,34 +3752,34 @@ sdev: 0.28841
 -- Stats for sample size 1000000
 mean: 0.499937
 sdev: 0.288898
-0.1: 
+0.1:
 ### ========================
  100071
-0.2: 
+0.2:
 ### ========================
  100943
-0.3: 
+0.3:
 ### =======================
  99594
-0.4: 
+0.4:
 ### =======================
  99436
-0.5: 
+0.5:
 ### =======================
  99806
-0.6: 
+0.6:
 ### =======================
  99723
-0.7: 
+0.7:
 ### ========================
  100040
-0.8: 
+0.8:
 ### ========================
  100280
-0.9: 
+0.9:
 ### ========================
  100264
-1.0: 
+1.0:
 ### =======================
  99843
 
@@ -3796,7 +3796,7 @@ The following has no limit on the number of samples. The 'statistics' function a
 (seed (time))
 
 (scl 8)
- 
+
 (de statistics (Cnt . Prg)
    (prinl Cnt " numbers")
    (let (Sum 0  Sqr 0  Hist (need 10 NIL 0))
@@ -3830,102 +3830,102 @@ The following has no limit on the number of samples. The 'statistics' function a
 100 numbers
 Mean:   0.501
 StdDev: 0.284
-0.1 
+0.1
 ### ==================================
 
-0.2 
+0.2
 ### ==============================
 
-0.3 
+0.3
 ### ==============================================
 
-0.4 
+0.4
 ### ==================
 
-0.5 
+0.5
 ### ==================
 
-0.6 
+0.6
 ### ==========================================================
 
-0.7 
+0.7
 ### ==================================================
 
-0.8 
+0.8
 ### ==============================
 
-0.9 
+0.9
 ### ==================
 
-1.0 
+1.0
 ### ======================================
 
 
 10000 numbers
 Mean:   0.501
 StdDev: 0.288
-0.1 
+0.1
 ### =================================
 
-0.2 
+0.2
 ### ==================================
 
-0.3 
+0.3
 ### =================================
 
-0.4 
+0.4
 ### ===================================
 
-0.5 
+0.5
 ### ===================================
 
-0.6 
+0.6
 ### ==================================
 
-0.7 
+0.7
 ### ===================================
 
-0.8 
+0.8
 ### ==================================
 
-0.9 
+0.9
 ### ==================================
 
-1.0 
+1.0
 ### ==================================
 
 
 1000000 numbers
 Mean:   0.500
 StdDev: 0.289
-0.1 
+0.1
 ### ==================================
 
-0.2 
+0.2
 ### ==================================
 
-0.3 
+0.3
 ### ==================================
 
-0.4 
+0.4
 ### ==================================
 
-0.5 
+0.5
 ### ==================================
 
-0.6 
+0.6
 ### ==================================
 
-0.7 
+0.7
 ### ==================================
 
-0.8 
+0.8
 ### ==================================
 
-0.9 
+0.9
 ### ==================================
 
-1.0 
+1.0
 ### ==================================
 
 ```
@@ -3981,21 +3981,21 @@ end stat;
 
 ```txt
 
-Histogram for 100 values: 
-....... 
-.............. 
-.............. 
-........... 
-............... 
-........ 
-........... 
-......... 
-....... 
-.............. 
-           100 values: mean= 4.89708E-0001      stddev= 1.64285E-0007 
-          1000 values: mean= 4.97079E-0001      stddev= 1.07871E-0005 
-         10000 values: mean= 4.99119E-0001      stddev= 8.35870E-0005 
-        100000 values: mean= 5.00280E-0001      stddev= 7.88976E-0004 
+Histogram for 100 values:
+.......
+..............
+..............
+...........
+...............
+........
+...........
+.........
+.......
+..............
+           100 values: mean= 4.89708E-0001      stddev= 1.64285E-0007
+          1000 values: mean= 4.97079E-0001      stddev= 1.07871E-0005
+         10000 values: mean= 4.99119E-0001      stddev= 8.35870E-0005
+        100000 values: mean= 5.00280E-0001      stddev= 7.88976E-0004
 
 ```
 
@@ -4015,23 +4015,23 @@ EndProcedure
 Procedure sample(n)
   Protected i, nBins, binNumber, tickMarks, maxBinValue
   Protected.f sum, sumSq, mean
-  
+
   Dim dat.f(n)
   For i = 1 To n
     dat(i) = randomf()
   Next
-  
+
   ;show mean, standard deviation
   For i = 1 To n
     sum + dat(i)
     sumSq + dat(i) * dat(i)
   Next i
-  
+
   PrintN(Str(n) + " data terms used.")
   mean = sum / n
   PrintN("Mean =" + StrF(mean))
   PrintN("Stddev =" + StrF((sumSq / n) - Sqr(mean * mean)))
-  
+
   ;show histogram
   nBins = 10
   Dim bins(nBins)
@@ -4039,14 +4039,14 @@ Procedure sample(n)
     binNumber = Int(nBins * dat(i))
     bins(binNumber) + 1
   Next
-  
+
   maxBinValue = 1
   For i = 0 To nBins
     If bins(i) > maxBinValue
       maxBinValue = bins(i)
     EndIf
   Next
-  
+
   #normalizedMaxValue = 70
   For binNumber = 0 To nBins
     tickMarks = Int(bins(binNumber) * #normalizedMaxValue / maxBinValue)
@@ -4059,7 +4059,7 @@ If OpenConsole()
   sample(100)
   sample(1000)
   sample(10000)
-   
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -4163,7 +4163,7 @@ if __name__ == '__main__':
 
 
 {{out}}
-for larger sets of random numbers, 
+for larger sets of random numbers,
 the distribution of numbers between the bins of the histogram evens out.
 
 ```txt
@@ -4247,7 +4247,7 @@ Output
 ```txt
 
 
-a =  0.3884718 0.6324655 0.9288667 0.1948398 0.5636742 0.2746207 0.4712035 0.2624648 0.45492 0.3328236> 
+a =  0.3884718 0.6324655 0.9288667 0.1948398 0.5636742 0.2746207 0.4712035 0.2624648 0.45492 0.3328236>
 
 Mean of a :  0.4504351
 Standard Deviation of a :  0.2171919
@@ -4278,7 +4278,7 @@ Error: cannot allocate vector of size 7450.6 Gb
   (define (r x) (~r x #:precision 1 #:min-width 3))
   (define (len count) (exact-floor (/ (* count 200) n)))
   (for ([b (bin-samples (range 0 1 Δx) <= xs)])
-    (displayln (~a (r (sample-bin-min b)) "-" (r (sample-bin-max b)) ": " 
+    (displayln (~a (r (sample-bin-min b)) "-" (r (sample-bin-max b)) ": "
                    (make-string (len (length (sample-bin-values b))) #\*)))))
 
 (define (task n)
@@ -4347,7 +4347,7 @@ Standard deviance: 0.2892924816935072
 
 ## REXX
 
-Twenty decimal digits are used for the calculations, but only half that (ten digits) are displayed in the output. 
+Twenty decimal digits are used for the calculations, but only half that (ten digits) are displayed in the output.
 
 ```rexx
 /*REXX program generates some random numbers, shows bin histogram, finds mean & stdDev. */
@@ -4507,21 +4507,21 @@ decimals(9)
 sample(100)
 sample(1000)
 sample(10000)
- 
+
 func sample(n)
        samp = list(n)
        for i =1 to n
            samp[i] =random(9)/10
-       next 
+       next
        sum = 0
        sumSq = 0
        for i = 1 to n
             sum = sum + samp[i]
             sumSq	= sumSq +pow(samp[i],2)
        next
-       see n + " Samples used." + nl 
+       see n + " Samples used." + nl
        mean = sum / n
-       see "Mean    = " + mean + nl 
+       see "Mean    = " + mean + nl
        see "Std Dev = " + pow((sumSq /n -pow(mean,2)),0.5) + nl
        bins2 = 10
        bins = list(bins2)
@@ -4531,7 +4531,7 @@ func sample(n)
                bins[z] = bins[z] +1
             ok
        next
-       for b = 1 to bins2 
+       for b = 1 to bins2
             see b + " " + nl
             for j = 1 to floor(bins2 *bins[b]) /n *70
                 see "*"
@@ -4631,7 +4631,7 @@ def generate_statistics(n)
   end
   mean = sum / n
   stddev = Math::sqrt((sum2 / n) - mean**2)
-  
+
   puts "size: #{n}"
   puts "mean:   #{mean}"
   puts "stddev: #{stddev}"
@@ -4759,15 +4759,15 @@ stddev: 0.28754747617166443
 call sample    100
 call sample   1000
 call sample  10000
- 
+
 end
- 
+
 sub sample n
     dim samp(n)
     for i =1 to n
         samp(i) =rnd(1)
     next i
- 
+
     ' calculate mean, standard deviation
     sum		= 0
     sumSq	= 0
@@ -4776,12 +4776,12 @@ sub sample n
         sumSq	= sumSq + samp(i)^2
     next i
     print n; " Samples used."
- 
+
     mean	= sum / n
     print "Mean    = "; mean
- 
+
     print "Std Dev = "; (sumSq /n -mean^2)^0.5
- 
+
     '------- Show histogram
     bins = 10
     dim bins(bins)
@@ -5330,7 +5330,7 @@ End Sub
 {{out}}
 
 ```txt
-sample size 100             mean 0,472405961751938      standard deviation 0,260463885857138 
+sample size 100             mean 0,472405961751938      standard deviation 0,260463885857138
 0,00-0,10     XXXXXX
 0,10-0,20     XXXXXXXXX
 0,20-0,30     XXXXXXXXXXXXXXX
@@ -5342,7 +5342,7 @@ sample size 100             mean 0,472405961751938      standard deviation 0,260
 0,80-0,90     XXXXXXXXXX
 0,90-1,00     XXXXX
 
-sample size 1000            mean 0,500459910154343      standard deviation 0,278991757028358 
+sample size 1000            mean 0,500459910154343      standard deviation 0,278991757028358
 0,00-0,10     XXXXXXXX
 0,10-0,20     XXXXXXXXXX
 0,20-0,30     XXXXXXXXXX
@@ -5354,7 +5354,7 @@ sample size 1000            mean 0,500459910154343      standard deviation 0,278
 0,80-0,90     XXXXXXXXX
 0,90-1,00     XXXXXXXXXX
 
-sample size 10000           mean 0,496753623914719      standard deviation 0,28740805585887 
+sample size 10000           mean 0,496753623914719      standard deviation 0,28740805585887
 0,00-0,10     XXXXXXXXXX
 0,10-0,20     XXXXXXXXXX
 0,20-0,30     XXXXXXXXXX
@@ -5373,8 +5373,8 @@ sample size 10000           mean 0,496753623914719      standard deviation 0,287
 
 ```zkl
 fcn mean(ns)  { ns.sum(0.0)/ns.len() }
-fcn stdDev(ns){ 
-   m:=mean(ns); (ns.reduce('wrap(p,n){ x:=(n-m); p+x*x },0.0)/ns.len()).sqrt() 
+fcn stdDev(ns){
+   m:=mean(ns); (ns.reduce('wrap(p,n){ x:=(n-m); p+x*x },0.0)/ns.len()).sqrt()
 }
 ```
 
@@ -5412,17 +5412,17 @@ N:10,000  mean:0.49899 std dev:0.28813
 
 ```
 
-For the extra credit, pretend we have a device that spews random numbers in the range [0..1) forever. We connect this device to a measuring device that calculates mean and std deviation, printing results on a regular basis. 
+For the extra credit, pretend we have a device that spews random numbers in the range [0..1) forever. We connect this device to a measuring device that calculates mean and std deviation, printing results on a regular basis.
 
 ```zkl
 var pipe=Thread.Pipe(); // used to connect the two threads
 fcn{ while(1){ pipe.write((0.0).random(1.0)) } }.launch();  // generator
 fcn{    // consumer/calculator
-   N:=0; M:=SD:=sum:=ssum:=0.0; 
+   N:=0; M:=SD:=sum:=ssum:=0.0;
    while(1){
-      x:=pipe.read(); N+=1; sum+=x; ssum+=x*x; 
+      x:=pipe.read(); N+=1; sum+=x; ssum+=x*x;
       M=sum/N; SD=(ssum/N - M*M).sqrt();
-      if(0==N%100000) 
+      if(0==N%100000)
 	 println("N:%,10d  mean:%.5f std dev:%.5f".fmt(N,M,SD));
    }
 }.launch();

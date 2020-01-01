@@ -35,8 +35,8 @@ The [[wp:Normal distribution|Normal]] (or Gaussian) distribution is a frequently
  *
  * The random number generator rand() of the standard C library is obsolete
  * and should not be used in more demanding applications. There are plenty
- * libraries with advanced features (eg. GSL) with functions to calculate 
- * the mean, the standard deviation, generating random numbers etc. 
+ * libraries with advanced features (eg. GSL) with functions to calculate
+ * the mean, the standard deviation, generating random numbers etc.
  * However, these features are not the core of the standard C library.
  */
 #include <stdio.h>
@@ -102,7 +102,7 @@ double* generate(int n)
 
 void printHistogram(double* values, int n)
 {
-    const int width = 50;    
+    const int width = 50;
     int max = 0;
 
     const double low   = -3.05;
@@ -319,8 +319,8 @@ StdDev: 1.00046328880424
 
 showing features of C++11 here
 
-```cpp>#include <random
-
+```cpp
+#include <random>
 #include <map>
 #include <string>
 #include <iostream>
@@ -335,7 +335,7 @@ int main( ) {
    int sum = 0 ; //holds the sum of the randomly created numbers
    double mean = 0.0 ;
    double stddev = 0.0 ;
-   for ( int i = 1 ; i < 10001 ; i++ ) 
+   for ( int i = 1 ; i < 10001 ; i++ )
       ++normalFreq[ normDistri ( engine ) ] ;
    for ( auto MapIt : normalFreq ) {
       sum += MapIt.first * MapIt.second ;
@@ -346,7 +346,7 @@ int main( ) {
    std::cout << "standard deviation " << stddev << " !\n" ;
    std::cout << "And now the histogram:\n" ;
    for ( auto MapIt : normalFreq ) {
-      std::cout << std::left << std::setw( 4 ) << MapIt.first << 
+      std::cout << std::left << std::setw( 4 ) << MapIt.first <<
 	 std::string( MapIt.second / 100 , '*' ) << std::endl ;
    }
    return 0 ;
@@ -358,12 +358,12 @@ Output:
 ```txt
 The mean of the distribution is 1 , the standard deviation 1 !
 And now the histogram:
--10 
--9  
--8  
--7  
--6  
--5  
+-10
+-9
+-8
+-7
+-6
+-5
 -4  *
 -3  **
 -2  ****
@@ -377,11 +377,11 @@ And now the histogram:
 6   ****
 7   **
 8   *
-9   
-10  
-11  
-12  
-13  
+9
+10
+11
+12
+13
 
 ```
 
@@ -449,7 +449,7 @@ defmodule Statistics do
     {sum, sum2, hist} = generate(n, w)
     mean = sum / n
     stddev = :math.sqrt(sum2 / n - mean*mean)
-    
+
     IO.puts "size:   #{n}"
     IO.puts "mean:   #{mean}"
     IO.puts "stddev: #{stddev}"
@@ -462,7 +462,7 @@ defmodule Statistics do
     end)
     IO.puts ""
   end
-  
+
   defp generate(n, w) do
     Enum.reduce(1..n, {0, 0, %{}}, fn _,{sum, sum2, hist} ->
       z = :rand.normal
@@ -482,65 +482,65 @@ end)
 size:   100
 mean:   0.027742416007234007
 stddev: 1.0209597927405403
--2.6: 
+-2.6:
 ### ======
 
--2.4: 
--2.2: 
+-2.4:
+-2.2:
 ### ======
 
 -2.0: ======
--1.8: 
--1.6: 
--1.4: 
+-1.8:
+-1.6:
+-1.4:
 ### ========================
 
 -1.2: ======
--1.0: 
+-1.0:
 ### ========================
 
--0.8: 
+-0.8:
 ### ====================================
 
--0.6: 
+-0.6:
 ### ====================================
 
--0.4: 
+-0.4:
 ### ==========================================
 
--0.2: 
+-0.2:
 ### ==========================================
 
- 0.0: 
+ 0.0:
 ### ========================
 
- 0.2: 
+ 0.2:
 ### ==============================
 
- 0.4: 
+ 0.4:
 ### ====================================
 
- 0.6: 
+ 0.6:
 ### ================================================
 
- 0.8: 
+ 0.8:
 ### ====================================
 
- 1.0: 
+ 1.0:
 ### ==========================================
 
- 1.2: 
+ 1.2:
 ### ========================
 
  1.4: ======
- 1.6: 
+ 1.6:
 ### ======
 
- 1.8: 
+ 1.8:
 ### ======
 
- 2.0: 
- 2.2: 
+ 2.0:
+ 2.2:
  2.4: ======
  2.6: ======
 
@@ -548,68 +548,68 @@ size:   1000
 mean:   -0.025562168667763084
 stddev: 1.0338288521306742
 -3.2: =
--3.0: 
+-3.0:
 -2.8: =
 -2.6: ===
 -2.4: ==
 -2.2: ======
 -2.0: ==
--1.8: 
+-1.8:
 ### =======
 
--1.6: 
+-1.6:
 ### =========
 
--1.4: 
+-1.4:
 ### ===========
 
--1.2: 
+-1.2:
 ### ===========
 
--1.0: 
+-1.0:
 ### ==============================
 
--0.8: 
+-0.8:
 ### =============================
 
--0.6: 
+-0.6:
 ### ======================================
 
--0.4: 
+-0.4:
 ### ======================================
 
--0.2: 
+-0.2:
 ### =========================================
 
- 0.0: 
+ 0.0:
 ### ===================================
 
- 0.2: 
+ 0.2:
 ### =====================================
 
- 0.4: 
+ 0.4:
 ### =======================================
 
- 0.6: 
+ 0.6:
 ### =================================
 
- 0.8: 
+ 0.8:
 ### ==========================
 
- 1.0: 
+ 1.0:
 ### ======================
 
- 1.2: 
+ 1.2:
 ### ==================
 
- 1.4: 
+ 1.4:
 ### ============
 
- 1.6: 
+ 1.6:
 ### ====
 
  1.8: =====
- 2.0: 
+ 2.0:
 ### ==
 
  2.2: ====
@@ -624,61 +624,61 @@ stddev: 0.9979508347451509
 -2.4: ===
 -2.2: ====
 -2.0: =====
--1.8: 
+-1.8:
 ### ===
 
--1.6: 
+-1.6:
 ### ========
 
--1.4: 
+-1.4:
 ### ==========
 
--1.2: 
+-1.2:
 ### =================
 
--1.0: 
+-1.0:
 ### ======================
 
--0.8: 
+-0.8:
 ### ===========================
 
--0.6: 
+-0.6:
 ### ======================================
 
--0.4: 
+-0.4:
 ### =====================================
 
--0.2: 
+-0.2:
 ### ========================================
 
- 0.0: 
+ 0.0:
 ### ============================================
 
- 0.2: 
+ 0.2:
 ### ======================================
 
- 0.4: 
+ 0.4:
 ### =====================================
 
- 0.6: 
+ 0.6:
 ### =================================
 
- 0.8: 
+ 0.8:
 ### ===============================
 
- 1.0: 
+ 1.0:
 ### ======================
 
- 1.2: 
+ 1.2:
 ### =================
 
- 1.4: 
+ 1.4:
 ### ==========
 
- 1.6: 
+ 1.6:
 ### ========
 
- 1.8: 
+ 1.8:
 ### ===
 
  2.0: ======
@@ -704,27 +704,27 @@ program Normal_Distribution
   integer(i64), parameter :: samples = 1000000_i64
   real(r64) :: mean, stddev
   real(r64) :: sumn = 0, sumnsq = 0
-  integer(i64) :: n = 0 
+  integer(i64) :: n = 0
   integer(i64) :: bin(-50:50) = 0
   integer :: i, ind
   real(r64) :: ur1, ur2, nr1, nr2, s
-  
+
   n = 0
   do while(n <= samples)
     call random_number(ur1)
     call random_number(ur2)
     ur1 = ur1 * 2.0 - 1.0
     ur2 = ur2 * 2.0 - 1.0
-    
-    s = ur1*ur1 + ur2*ur2  
+
+    s = ur1*ur1 + ur2*ur2
     if(s >= 1.0_r64) cycle
-      
+
     nr1 = ur1 * sqrt(-2.0*log(s)/s)
     ind = floor(5.0*nr1)
     bin(ind) = bin(ind) + 1_i64
     sumn = sumn + nr1
     sumnsq = sumnsq + nr1*nr1
-    
+
     nr2 = ur2 * sqrt(-2.0*log(s)/s)
     ind = floor(5.0*nr2)
     bin(ind) = bin(ind) + 1_i64
@@ -732,18 +732,18 @@ program Normal_Distribution
     sumnsq = sumnsq + nr2*nr2
     n = n + 2_i64
   end do
- 
+
   mean = sumn / n
   stddev = sqrt(sumnsq/n - mean*mean)
-  
+
   write(*, "(a, i0)") "sample size = ", samples
   write(*, "(a, f17.15)") "Mean :   ", mean,
   write(*, "(a, f17.15)") "Stddev : ", stddev
-  
-  do i = -15, 15 
+
+  do i = -15, 15
     write(*, "(f4.1, a, a)") real(i)/5.0, ": ", repeat("=", int(bin(i)*500/samples))
   end do
-       
+
 end program
 ```
 
@@ -760,58 +760,58 @@ Stddev : 0.981532585231540
 -2.4: ==
 -2.2: ====
 -2.0: ======
--1.8: 
+-1.8:
 ### =
 
--1.6: 
+-1.6:
 ### ======
 
--1.4: 
+-1.4:
 ### ==========
 
--1.2: 
+-1.2:
 ### ===============
 
--1.0: 
+-1.0:
 ### =====================
 
--0.8: 
+-0.8:
 ### =================
 
--0.6: 
+-0.6:
 ### ============================
 
--0.4: 
+-0.4:
 ### ===============================
 
--0.2: 
+-0.2:
 ### ====================================
 
- 0.0: 
+ 0.0:
 ### =========================================
 
- 0.2: 
+ 0.2:
 ### ==============================
 
- 0.4: 
+ 0.4:
 ### ===========================
 
- 0.6: 
+ 0.6:
 ### ============================
 
- 0.8: 
+ 0.8:
 ### =======================
 
- 1.0: 
+ 1.0:
 ### ==============
 
- 1.2: 
+ 1.2:
 ### ====================
 
- 1.4: 
+ 1.4:
 ### =====
 
- 1.6: 
+ 1.6:
 ### ===
 
  1.8: ====
@@ -831,58 +831,58 @@ Stddev : 1.000025612171690
 -2.4: ==
 -2.2: ====
 -2.0: ======
--1.8: 
+-1.8:
 ### ===
 
--1.6: 
+-1.6:
 ### ======
 
--1.4: 
+-1.4:
 ### ===========
 
--1.2: 
+-1.2:
 ### ===============
 
--1.0: 
+-1.0:
 ### ====================
 
--0.8: 
+-0.8:
 ### =========================
 
--0.6: 
+-0.6:
 ### =============================
 
--0.4: 
+-0.4:
 ### ================================
 
--0.2: 
+-0.2:
 ### =================================
 
- 0.0: 
+ 0.0:
 ### =================================
 
- 0.2: 
+ 0.2:
 ### ================================
 
- 0.4: 
+ 0.4:
 ### ============================
 
- 0.6: 
+ 0.6:
 ### =========================
 
- 0.8: 
+ 0.8:
 ### ====================
 
- 1.0: 
+ 1.0:
 ### ===============
 
- 1.2: 
+ 1.2:
 ### ===========
 
- 1.4: 
+ 1.4:
 ### ======
 
- 1.6: 
+ 1.6:
 ### ===
 
  1.8: ======
@@ -907,12 +907,12 @@ Const pi As Double = 3.141592653589793
 Randomize
 
 ' Generates normally distributed random numbers with mean 0 and standard deviation 1
-Function randomNormal() As Double 
+Function randomNormal() As Double
   Return Cos(2.0 * pi * Rnd) * Sqr(-2.0 * Log(Rnd))
 End Function
 
 Sub normalStats(sampleSize As Integer)
-  If sampleSize < 1 Then Return 
+  If sampleSize < 1 Then Return
   Dim r(1 To sampleSize) As Double
   Dim h(-1 To 10) As Integer '' all zero by default
   Dim sum As Double = 0.0
@@ -937,13 +937,13 @@ Sub normalStats(sampleSize As Integer)
   ' adjust one of the h() values if necessary to ensure hSum = sampleSize
   Dim adj As Integer = sampleSize - hSum
   If adj <> 0 Then
-    For i As Integer = -1 To 10 
+    For i As Integer = -1 To 10
       h(i) += adj
       If h(i) >= 0 Then Exit For
       h(i) -= adj
     Next
   End If
- 
+
   Dim mean As Double = sum / sampleSize
 
   Dim sd As Double
@@ -954,11 +954,11 @@ Sub normalStats(sampleSize As Integer)
   Next
   sd  = Sqr(sum/sampleSize)
 
-  ' Draw a histogram of the data with interval 0.1 
+  ' Draw a histogram of the data with interval 0.1
   Dim numStars As Integer
   ' If sample size > 300 then normalize histogram to 300
   Dim scale As Double = 1.0
-  If sampleSize > 300 Then scale = 300.0 / sampleSize 
+  If sampleSize > 300 Then scale = 300.0 / sampleSize
   Print "Sample size "; sampleSize
   Print
   Print Using "  Mean #.######"; mean;
@@ -975,16 +975,16 @@ Sub normalStats(sampleSize As Integer)
     Print Using "##### " ; h(i);
     numStars = Int(h(i) * scale + 0.5)
     Print String(numStars, "*")
-  Next 
+  Next
 End Sub
-    
+
 normalStats 100
 Print
 normalStats 1000
 Print
 normalStats 10000
 Print
-normalStats 100000 
+normalStats 100000
 Print
 Print "Press any key to quit"
 Sleep
@@ -1154,21 +1154,21 @@ import Control.Monad (replicateM)
 -- Box-Muller
 getNorm :: RandomGen g => Rand g Double
 getNorm = do
-    u0 <- getRandomR (0.0, 1.0) 
-    u1 <- getRandomR (0.0, 1.0) 
+    u0 <- getRandomR (0.0, 1.0)
+    u1 <- getRandomR (0.0, 1.0)
     let r = sqrt $ (-2.0) * log u0
         theta = 2.0 * pi * u1
     return $ r * sin theta
 
 putInBin :: Double -> Map Int Int -> Double -> Map Int Int
-putInBin binWidth t v = 
+putInBin binWidth t v =
     let bin = round (v / binWidth)
-        count = findWithDefault 0 bin t 
+        count = findWithDefault 0 bin t
     in insert bin (count+1) t
 
 runTest :: Int -> IO ()
 runTest n = do
-    rs <- evalRandIO $ replicateM n getNorm 
+    rs <- evalRandIO $ replicateM n getNorm
     let binWidth = 0.1
 
         tally v (sv, sv2, t) = (sv+v, sv2 + v*v, putInBin binWidth t v)
@@ -1177,12 +1177,12 @@ runTest n = do
 
         tallyList = sort $ toList tallies
 
-        printStars tallies binWidth maxCount selection = 
-            let count = findWithDefault 0 selection tallies 
+        printStars tallies binWidth maxCount selection =
+            let count = findWithDefault 0 selection tallies
                 bin = binWidth * fromIntegral selection
                 maxStars = 100
                 starCount = if maxCount <= maxStars
-                            then count 
+                            then count
                             else maxStars * count `div` maxCount
                 stars = replicate  starCount '*'
             in printf "%5.2f: %s  %d\n" bin stars count
@@ -1555,10 +1555,10 @@ fun normalStats(sampleSize: Int) {
         r[i] = 0.5 + rand.nextGaussian() / 4.0
         when {
             r[i] <  0.0 -> h[0]++
-            r[i] >= 1.0 -> h[11]++    
+            r[i] >= 1.0 -> h[11]++
             else        -> h[1 + (r[i] * 10).toInt()]++
         }
-    }  
+    }
 
     // adjust one of the h[] values if necessary to ensure they sum to sampleSize
     val adj = sampleSize - h.sum()
@@ -1572,19 +1572,19 @@ fun normalStats(sampleSize: Int) {
 
     val mean = r.average()
     val sd = Math.sqrt(r.map { (it - mean) * (it - mean) }.average())
-  
-    // Draw a histogram of the data with interval 0.1 
+
+    // Draw a histogram of the data with interval 0.1
     var numStars: Int
-    // If sample size > 300 then normalize histogram to 300 
-    val scale = if (sampleSize <= 300) 1.0 else 300.0 / sampleSize 
+    // If sample size > 300 then normalize histogram to 300
+    val scale = if (sampleSize <= 300) 1.0 else 300.0 / sampleSize
     println("Sample size $sampleSize\n")
-    println("  Mean ${"%1.6f".format(mean)}  SD ${"%1.6f".format(sd)}\n") 
+    println("  Mean ${"%1.6f".format(mean)}  SD ${"%1.6f".format(sd)}\n")
     for (i in 0..11) {
-        when (i) { 
+        when (i) {
             0    -> print("< 0.00 : ")
             11   -> print(">=1.00 : ")
             else -> print("  %1.2f : ".format(i / 10.0))
-        }      
+        }
         print("%5d ".format(h[i]))
         numStars = (h[i] * scale + 0.5).toInt()
         println("*".repeat(numStars))
@@ -1593,7 +1593,7 @@ fun normalStats(sampleSize: Int) {
 }
 
 fun main(args: Array<String>) {
-    val sampleSizes = intArrayOf(100, 1_000, 10_000, 100_000) 
+    val sampleSizes = intArrayOf(100, 1_000, 10_000, 100_000)
     for (sampleSize in sampleSizes) normalStats(sampleSize)
 }
 ```
@@ -1715,8 +1715,8 @@ define histogram(a) => {
 			#h->get(#h->size) += 1
 		else
 			#h->get(integer(decimal(#n)*10)+1) += 1
-		} 
-	
+		}
+
 	}
 	local(mx = decimal(with n in #h max #n))
 	with i in #h do => {
@@ -1912,7 +1912,7 @@ function gaussian (mean, variance)
     return  math.sqrt(-2 * variance * math.log(math.random())) *
             math.cos(2 * math.pi * math.random()) + mean
 end
- 
+
 function mean (t)
     local sum = 0
     for k, v in pairs(t) do
@@ -1920,7 +1920,7 @@ function mean (t)
     end
     return sum / #t
 end
- 
+
 function std (t)
     local squares, avg = 0, mean(t)
     for k, v in pairs(t) do
@@ -1929,8 +1929,8 @@ function std (t)
     local variance = squares / #t
     return math.sqrt(variance)
 end
- 
-function showHistogram (t) 
+
+function showHistogram (t)
     local lo = math.ceil(math.min(unpack(t)))
     local hi = math.floor(math.max(unpack(t)))
     local hist, barScale = {}, 200
@@ -1945,12 +1945,12 @@ function showHistogram (t)
         print(" " .. hist[i])
     end
 end
- 
+
 math.randomseed(os.time())
 local t, average, variance = {}, 50, 10
 for i = 1, 1000 do
     table.insert(t, gaussian(average, variance))
-end 
+end
 print("Mean:", mean(t) .. ", expected " .. average)
 print("StdDev:", std(t) .. ", expected " .. math.sqrt(variance) .. "\n")
 showHistogram(t)
@@ -1966,37 +1966,37 @@ StdDev: 3.2374717425824, expected 3.1622776601684
 42      = 8
 43      == 11
 44      ==== 22
-45      
+45
 ### =
  38
-46      
+46
 ### ======
  60
-47      
+47
 ### ========
  73
-48      
+48
 ### ============
  92
-49      
+49
 ### =================
  118
-50      
+50
 ### =====================
  136
-51      
+51
 ### ===================
  128
-52      
+52
 ### ===========
  89
-53      
+53
 ### ===========
  89
-54      
+54
 ### =====
  56
-55      
+55
 ### =
  37
 56      === 18
@@ -2042,10 +2042,10 @@ SampleNormal[ 10000 ]
 =={{header|MATLAB}} / {{header|Octave}}==
 
 ```Matlab
-  N = 100000;	
+  N = 100000;
   x = randn(N,1);
   mean(x)
-  std(x) 
+  std(x)
   [nn,xx] = hist(x,100);
   bar(xx,nn);
 ```
@@ -2490,7 +2490,7 @@ sequence dat = repeat(0,n)
         dat[i] = sqrt(-2*log(rnd()))*cos(2*PI*rnd())
     end for
     printf(1,"%d data terms used.\n",{n})
- 
+
     atom mean = sum(dat)/n,
          mx = max(dat),
          mn = min(dat),
@@ -2498,7 +2498,7 @@ sequence dat = repeat(0,n)
     printf(1,"Largest term was %g & smallest was %g\n",{mx,mn})
     printf(1,"Mean = %g\n",{mean})
     printf(1,"Stddev = %g\n",sqrt(sum(sq_mul(dat,dat))/n-mean*mean))
- 
+
     -- show histogram
     integer nBins = 50
     sequence bins = repeat(0,nBins+1)
@@ -2509,7 +2509,7 @@ sequence dat = repeat(0,n)
         puts(1,repeat('#',floor(nBins*bins[b]/n*30))&"\n")
     end for
 end procedure
- 
+
 sample(100000)
 ```
 
@@ -2571,7 +2571,7 @@ end function
 function mean(sequence t)
     return sum(t)/length(t)
 end function
- 
+
 function std(sequence t)
     atom squares = 0,
          avg = mean(t)
@@ -2581,8 +2581,8 @@ function std(sequence t)
     atom variance = squares/length(t)
     return sqrt(variance)
 end function
- 
-procedure showHistogram(sequence t) 
+
+procedure showHistogram(sequence t)
     for i=ceil(min(t)) to floor(max(t)) do
         integer n = 0
         for k=1 to length(t) do
@@ -2592,7 +2592,7 @@ procedure showHistogram(sequence t)
         printf(1,"%d %s %d\n",{i,repeat('=',l),n})
     end for
 end procedure
- 
+
 sequence t = repeat(0,100000)
 integer avg = 50, variance = 10
 for i=1 to length(t) do
@@ -2617,37 +2617,37 @@ StdDev: 3.1673, expected 3.16228
 42 = 523
 43 == 1098
 44 ==== 2140
-45 
+45
 ### =
  3690
-46 
+46
 ### =====
  5753
-47 
+47
 ### =========
  7906
-48 
+48
 ### ==============
  10299
-49 
+49
 ### =================
  11813
-50 
+50
 ### ===================
  12555
-51 
+51
 ### =================
  11934
-52 
+52
 ### ==============
  10327
-53 
+53
 ### ==========
  8099
-54 
+54
 ### =====
  5733
-55 
+55
 ### =
  3684
 56 ==== 2126
@@ -2678,12 +2678,12 @@ EndProcedure
 Procedure sample(n, nBins = 50)
   Protected i, maxBinValue, binNumber
   Protected.f d, mean, sum, sumSq, mx, mn, range
-  
+
   Dim dat.f(n)
   For i = 1 To n
     dat(i) = normalDist()
   Next
-  
+
   ;show mean, standard deviation, find max & min.
   mx  = -1000
   mn  =  1000
@@ -2696,13 +2696,13 @@ Procedure sample(n, nBins = 50)
     sum + d
     sumSq + d * d
   Next
-  
+
   PrintN(Str(n) + " data terms used.")
   PrintN("Largest term was " + StrF(mx) + " & smallest was " + StrF(mn))
   mean = sum / n
   PrintN("Mean = " + StrF(mean))
   PrintN("Stddev = " + StrF((sumSq / n) - Sqr(mean * mean)))
-  
+
   ;show histogram
   range = mx - mn
   Dim bins(nBins)
@@ -2710,14 +2710,14 @@ Procedure sample(n, nBins = 50)
     binNumber = Int(nBins * (dat(i) - mn) / range)
     bins(binNumber) + 1
   Next
-   
+
   maxBinValue = 1
   For i = 0 To nBins
     If bins(i) > maxBinValue
       maxBinValue = bins(i)
     EndIf
   Next
-  
+
   #normalizedMaxValue = 70
   For binNumber = 0 To nBins
     tickMarks = Round(bins(binNumber) * #normalizedMaxValue / maxBinValue, #PB_Round_Nearest)
@@ -2725,10 +2725,10 @@ Procedure sample(n, nBins = 50)
   Next
   PrintN("")
 EndProcedure
- 
+
 If OpenConsole()
   sample(100000)
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2781,17 +2781,17 @@ This uses the external [http://matplotlib.org/ matplotlib] package as well as th
 
 ```python
 from __future__ import division
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 import random
 
 mean, stddev, size = 50, 4, 100000
 data = [random.gauss(mean, stddev) for c in range(size)]
 
 mn = sum(data) / size
-sd = (sum(x*x for x in data) / size 
+sd = (sum(x*x for x in data) / size
       - (sum(data) / size) ** 2) ** 0.5
 
-print("Sample mean = %g; Stddev = %g; max = %g; min = %g for %i values" 
+print("Sample mean = %g; Stddev = %g; max = %g; min = %g for %i values"
       % (mn, sd, max(data), min(data), size))
 
 plt.hist(data,bins=50)
@@ -2832,7 +2832,7 @@ compute statistics and plot a histogram.
 
 #lang racket
 (require math (planet williams/science/histogram-with-graphics))
- 
+
 (define data (sample (normal-dist 50 4) 100000))
 
 (displayln (~a "Mean:\t"   (mean data)))
@@ -2849,7 +2849,7 @@ compute statistics and plot a histogram.
 
 The other part of the task was to produce normal distributed numbers from a unit distribution.
 The following code is an implementation of the polar method. It is a slightly modified
-version of [http://planet.plt-scheme.org/package-source/schematics/random.plt/1/0/random.ss code] 
+version of [http://planet.plt-scheme.org/package-source/schematics/random.plt/1/0/random.ss code]
 originally written by Sebastian Egner.
 
 ```racket
@@ -2857,7 +2857,7 @@ originally written by Sebastian Egner.
 #lang racket
 (require math)
 
-(define random-normal 
+(define random-normal
   (let ([unit (uniform-dist)]
         [next #f])
     (λ (μ σ)
@@ -2882,7 +2882,7 @@ originally written by Sebastian Egner.
 
 The REXX language doesn't have any "higher math" BIF functions like   SIN, COS, LN, LOG, SQRT, EXP, POW, etc,
 
-so we hoi polloi programmers have to roll our own. 
+so we hoi polloi programmers have to roll our own.
 
 ```rexx
 /*REXX program generates  10,000  normally distributed numbers  (Gaussian distribution).*/
@@ -2939,9 +2939,9 @@ sqrt:    procedure; parse arg x;  if x=0  then return 0;  d= digits();   m.= 9; 
            do k=j+5  to 0  by -1;  numeric digits m.k;  g=(g+x/g)*.5;  end  /*k*/;          numeric digits d;   return g/1
 ```
 
-This REXX program makes use of   '''scrsize'''   REXX program (or BIF) which is used to determine the screen size of the terminal (console);   this is to aid in maximizing the width of the horizontal histogram. 
+This REXX program makes use of   '''scrsize'''   REXX program (or BIF) which is used to determine the screen size of the terminal (console);   this is to aid in maximizing the width of the horizontal histogram.
 
-The   '''SCRSIZE.REX'''   REXX program is included here   ──►   [[SCRSIZE.REX]]. 
+The   '''SCRSIZE.REX'''   REXX program is included here   ──►   [[SCRSIZE.REX]].
 
 {{out|output|text=  when using the default input:}}
 
@@ -3051,7 +3051,7 @@ nBins	= 50
 dim bins(nBins)
 for i = 1 to s
 	z	= int((ndis(i) -mn) /range *nBins)
-	bins(z)	= bins(z) + 1 
+	bins(z)	= bins(z) + 1
 	mb	= max(bins(z),mb)
 next i
 for b = 0 to nBins -1
@@ -3480,13 +3480,13 @@ End Sub
 {{out}}
 
 ```txt
-sample size 20000           mean-5,26306310478751E-03   standard deviation 1,00355037427319 
--3,60--3,50   
--3,50--3,40   
--3,40--3,30   
--3,30--3,20   
--3,20--3,10   
--3,10--3,00   
+sample size 20000           mean-5,26306310478751E-03   standard deviation 1,00355037427319
+-3,60--3,50
+-3,50--3,40
+-3,40--3,30
+-3,30--3,20
+-3,20--3,10
+-3,10--3,00
 -3,00--2,90   XX
 -2,90--2,80   X
 -2,80--2,70   XX
@@ -3549,9 +3549,9 @@ sample size 20000           mean-5,26306310478751E-03   standard deviation 1,003
 2,90-3,00     X
 3,00-3,10     X
 3,10-3,20     X
-3,20-3,30     
-3,30-3,40     
-3,40-3,50  
+3,20-3,30
+3,30-3,40
+3,40-3,50
 ```
 
 

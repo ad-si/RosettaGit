@@ -42,8 +42,8 @@ Nb.  The leading '1' is not significant as 1 is zero in base-58.  It is however 
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <openssl/sha.h>
@@ -365,7 +365,7 @@ import Crypto.Hash.RIPEMD160 as R (hash)
 import Data.ByteString (unpack, pack)
 
 publicPointToAddress :: Integer -> Integer -> String
-publicPointToAddress x y = 
+publicPointToAddress x y =
   let toBytes x = reverse $ unfoldr (\b -> if b == 0 then Nothing else Just (fromIntegral $ b `mod` 256, b `div` 256)) x
       ripe = 0 : unpack (R.hash $ S.hash $ pack $ 4 : toBytes x ++ toBytes y)
       ripe_checksum = take 4 $ unpack $ S.hash $ S.hash $ pack ripe
@@ -374,7 +374,7 @@ publicPointToAddress x y =
       base58Digits = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
   in showIntAtBase 58 (base58Digits !!) address ""
 
-main = print $ publicPointToAddress 
+main = print $ publicPointToAddress
   0x50863AD64A87AE8A2FE83C1AF1A8403CB53F53E486D8511DAD8A04887E5B2352
   0x2CD470243453A299FA9E77237716103ABC11A1DF38855ED6F2EE187E9C582BA6
 
@@ -556,7 +556,7 @@ sub public_point_to_address( UInt $x, UInt $y ) {
     );
     my $hash = rmd160 sha256 Blob.new: 4, @bytes.reverse;
     my $checksum = sha256(sha256 Blob.new: 0, $hash.list).subbuf: 0, 4;
-    encode reduce * * 256 + * , flat 0, ($hash, $checksum)».list 
+    encode reduce * * 256 + * , flat 0, ($hash, $checksum)».list
 }
 
 say public_point_to_address
@@ -603,7 +603,7 @@ string out = ""
     end if
     return reverse(out)
 end function
- 
+
 function coin_encode(string x, y)
     if length(x)!=32
     or length(y)!=32 then
@@ -615,7 +615,7 @@ function coin_encode(string x, y)
     string res = base58(rmd)
     return res
 end function
- 
+
 ?coin_encode(x"50863AD64A87AE8A2FE83C1AF1A8403CB53F53E486D8511DAD8A04887E5B2352",
              x"2CD470243453A299FA9E77237716103ABC11A1DF38855ED6F2EE187E9C582BA6")
 ```
@@ -761,25 +761,25 @@ Uses code from [[SHA-256#Racket]] (which is isolated in a submodule).
 
 ;; 1 - Take the corresponding public key generated with it
 ;; (65 bytes, 1 byte 0x04, 32 bytes corresponding to X coordinate,
-;;  32 bytes corresponding to Y coordinate) 
+;;  32 bytes corresponding to Y coordinate)
 (define (stage-1 X Y)
   (define (integer->bytes! i B)
     (define l (bytes-length B))
     (for ((b (in-range 0 l))) (bytes-set! B (- l b 1) (bitwise-bit-field i (* b 8) (* (+ b 1) 8)))) B)
   (integer->bytes! (+ (<< 4 (* 32 8 2)) (<< X (* 32 8)) Y) (make-bytes 65)))
 
-;; 2 - Perform SHA-256 hashing on the public key 
+;; 2 - Perform SHA-256 hashing on the public key
 (define stage-2 sha256)
 
-;; 3 - Perform RIPEMD-160 hashing on the result of SHA-256 
+;; 3 - Perform RIPEMD-160 hashing on the result of SHA-256
 (define stage-3 ripemd160-bytes)
 
-;; 4 - Add version byte in front of RIPEMD-160 hash (0x00 for Main Network) 
+;; 4 - Add version byte in front of RIPEMD-160 hash (0x00 for Main Network)
 (define (stage-4 s3)
   (bytes-append #"\0" s3))
 
-;; 5 - Perform SHA-256 hash on the extended RIPEMD-160 result 
-;; 6 - Perform SHA-256 hash on the result of the previous SHA-256 hash 
+;; 5 - Perform SHA-256 hash on the extended RIPEMD-160 result
+;; 6 - Perform SHA-256 hash on the result of the previous SHA-256 hash
 (define (stage-5+6 s4)
   (values s4 (sha256 (sha256 s4))))
 
@@ -788,12 +788,12 @@ Uses code from [[SHA-256#Racket]] (which is isolated in a submodule).
   (values s4 (subbytes s6 0 4)))
 
 ;; 8 - Add the 4 checksum bytes from stage 7 at the end of extended RIPEMD-160 hash from stage 4.
-;;     This is the 25-byte binary Bitcoin Address. 
+;;     This is the 25-byte binary Bitcoin Address.
 (define (stage-8 s4 s7)
   (bytes-append s4 s7))
 
 ;; 9 - Convert the result from a byte string into a base58 string using Base58Check encoding.
-;;     This is the most commonly used Bitcoin Address format 
+;;     This is the most commonly used Bitcoin Address format
 (define stage-9 (base58-encode 33))
 
 (define ((base58-encode l) B)
@@ -825,7 +825,7 @@ Uses code from [[SHA-256#Racket]] (which is isolated in a submodule).
                   #"\x9E\x5E\x39\xF8\x6A\x0D\x27\x3B\xEE\xD6\x19\x67\xF6"))
    =>
    #"16UwLL9Risc3QfPqBUvKofHmBQ7wMtjvM")
-  
+
   (define-values (test-X test-Y)
     (values #x50863AD64A87AE8A2FE83C1AF1A8403CB53F53E486D8511DAD8A04887E5B2352
             #x2CD470243453A299FA9E77237716103ABC11A1DF38855ED6F2EE187E9C582BA6))
@@ -837,7 +837,7 @@ Uses code from [[SHA-256#Racket]] (which is isolated in a submodule).
   (define-values (s4_2 s7) (stage-7 s4 s6))
   (define s8 (stage-8 s4 s7))
   (define s9 (stage-9 s8))
-  
+
   (test
    (bytes->HEX-STRING s1)
    => (string-append "0450863AD64A87AE8A2FE83C1AF1A8403CB53F53E486D8511DAD8A04887E5B23522CD470243453"

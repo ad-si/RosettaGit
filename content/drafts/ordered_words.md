@@ -12,15 +12,15 @@ tags = []
 
 {{task|text processing}}
 
-An   ''ordered word''   is a word in which the letters appear in alphabetic order. 
+An   ''ordered word''   is a word in which the letters appear in alphabetic order.
 
-Examples include   '''abbey'''   and   '''dirt'''. 
+Examples include   '''abbey'''   and   '''dirt'''.
 
 {{task heading}}
 
-Find ''and display'' all the ordered words in the dictionary   [https://web.archive.org/web/20180611003215/http://www.puzzlers.org/pub/wordlists/unixdict.txt unixdict.txt]   that have the longest word length. 
+Find ''and display'' all the ordered words in the dictionary   [https://web.archive.org/web/20180611003215/http://www.puzzlers.org/pub/wordlists/unixdict.txt unixdict.txt]   that have the longest word length.
 
-(Examples that access the dictionary file locally assume that you have downloaded this file yourself.)  
+(Examples that access the dictionary file locally assume that you have downloaded this file yourself.)
 
 The display needs to be shown on this page.
 
@@ -37,7 +37,7 @@ The display needs to be shown on this page.
 
 ```Ada
 
-with Ada.Text_IO, Ada.Containers.Indefinite_Vectors; 
+with Ada.Text_IO, Ada.Containers.Indefinite_Vectors;
 use Ada.Text_IO;
 
 procedure Ordered_Words is
@@ -189,7 +189,7 @@ PROC char sort = ( STRING text )STRING:
              BOOL swapped := FALSE;
              FOR pos FROM LWB sorted TO end pos DO
                  IF sorted[ pos ] > sorted[ pos + 1 ]
-                 THEN              
+                 THEN
                      CHAR  t           := sorted[ pos     ];
                      sorted[ pos     ] := sorted[ pos + 1 ];
                      sorted[ pos + 1 ] := t;
@@ -303,9 +303,9 @@ result←ordered_words/⍨lengths=⍨⌈/lengths←≢¨ordered_words
 
 ```
 
-The ordered character filter is a train which uses gradeup to say which order you would have to pick the characters, to put them in order. e.g. ⍋ 'zxy' is 2 3 1 because you'd have to pick the second character, then the third, then the first, to put them in order. If they are in order then the result is the integers 1 2 3 .. to the length of the word. 
+The ordered character filter is a train which uses gradeup to say which order you would have to pick the characters, to put them in order. e.g. ⍋ 'zxy' is 2 3 1 because you'd have to pick the second character, then the third, then the first, to put them in order. If they are in order then the result is the integers 1 2 3 .. to the length of the word.
 
-And it generates the integers up to the length of the word, e.g. 1 2 3. and compares if those two arrays are the same. 
+And it generates the integers up to the length of the word, e.g. 1 2 3. and compares if those two arrays are the same.
 
 Then uses that information as a filter against the original word list.
 
@@ -315,7 +315,7 @@ The result is: lengths of each ordered word, which equal the max-reduce of the l
 ```txt
 
       longest_ordered_words 'd:\unixdict.txt'
-abbott accent accept access accost almost bellow billow biopsy chilly choosy choppy effort floppy glossy knotty 
+abbott accent accept access accost almost bellow billow biopsy chilly choosy choppy effort floppy glossy knotty
 
 ```
 
@@ -419,7 +419,7 @@ You must provide <tt>unixdict.txt</tt> as input.
 
 
 ```txt
-$ awk -f ordered-words.awk unixdict.txt                                        
+$ awk -f ordered-words.awk unixdict.txt
 abbott
 accent
 accept
@@ -504,7 +504,7 @@ An optimisation is that the word isn't checked for being ordered unless it is at
 ```bbcbasic
       dict% = OPENIN("unixdict.txt")
       IF dict%=0 ERROR 100, "Failed to open dictionary file"
-      
+
       max% = 2
       REPEAT
         A$ = GET$#dict%
@@ -604,7 +604,7 @@ knotty
                           & !word !result:?result
                         |   [>!longestLength:[?longestLength
                           & !word:?result
-                        | 
+                        |
                         )
                     )
                   )
@@ -649,7 +649,7 @@ ln{so}f[^^{L[}>mL[bx(==)[+(L[)+]f[uN
 {{Out}}
 
 ```txt
-$ ./burlesque --file ordered_words.brl < unixdict.txt 
+$ ./burlesque --file ordered_words.brl < unixdict.txt
 abbott
 accent
 accept
@@ -673,8 +673,8 @@ knotty
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
@@ -782,8 +782,8 @@ knotty
 
 Alternative version with dynamic array:
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <string.h>
 #include <stdio.h>
 #include <assert.h>
@@ -877,8 +877,8 @@ int main() {
 
 Shorter and potentially much faster version with <code>mmap (2)</code>.  No stinky <code>malloc</code> or <code>scanf</code> calls.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <sys/mman.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -940,8 +940,8 @@ int main()
 
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -968,7 +968,7 @@ int main()
     while (std::getline(infile, word)) {
         int length = word.length();
         if (length < longest) continue; // don't test short words
-        
+
         if (ordered(word)) {
             if (longest < length) {
                 longest = length; // set new minimum length
@@ -1112,7 +1112,7 @@ show_longest_ordered_words dict_words, dict_file_name
 
 output
 <lang>
-> coffee ordered_words.coffee 
+> coffee ordered_words.coffee
 Longest Ordered Words (source=unixdict.txt):
 abbott
 accent
@@ -1425,7 +1425,7 @@ println(" ".rjoin(best.snapshot()))
 ```
 
 
-Output: <code>abbott accent accept access accost almost bellow billow biopsy chilly choosy 
+Output: <code>abbott accent accept access accost almost bellow billow biopsy chilly choosy
  choppy effort floppy glossy knotty</code>
 
 
@@ -1449,7 +1449,7 @@ Output: <code>abbott accent accept access accost almost bellow billow biopsy chi
 		(push (stack s) w) ;; start a new list of length wl
 		wl)
 	(stack->list s))
-	
+
 ;; output
 (load 'unixdict)
 (ordre (text-parse unixdict))
@@ -1620,7 +1620,7 @@ Output:
 ```fsharp
 open System
 open System.IO
- 
+
 let longestOrderedWords() =
     let isOrdered = Seq.pairwise >> Seq.forall (fun (a,b) -> a <= b)
 
@@ -1684,7 +1684,7 @@ MEMO: word-list ( -- seq )
 ```
 
 
-Output: 
+Output:
 ```txt
 ( scratchpad ) USING: ordered-words-main ;
 ( scratchpad ) main
@@ -1734,7 +1734,7 @@ class Main
         if (words.isEmpty || words.first.size < word.size)
         { // reset the list
           words = [word]
-        } 
+        }
         else if (words.size >= 1 && words.first.size == word.size)
         { // add word to existing ones
           words.add (word)
@@ -1851,7 +1851,7 @@ include lib/stmstack.4th               \ include string stack library
 : read-back                            ( --)
   s> dup >r type cr                    \ longest string is on top of stack
   begin s> dup r@ >= while type cr repeat
-  2drop r> drop                        \ keep printing until shorter word 
+  2drop r> drop                        \ keep printing until shorter word
 ;                                      \ has been found
 
 : ordered                              ( --)
@@ -1895,7 +1895,7 @@ abbott
 !***************************************************************************************
  module ordered_module
 !***************************************************************************************
- implicit none 
+ implicit none
 
 	!the dictionary file:
 	integer,parameter :: file_unit = 1000
@@ -1904,42 +1904,42 @@ abbott
 	!maximum number of characters in a word:
 	integer,parameter :: max_chars = 50
 
-	type word 
+	type word
 	  character(len=max_chars) :: str    !the word from the dictionary
 	  integer	:: n = 0    !length of this word
 	  logical	:: ordered = .false.    !if it is an ordered word
 	end type word
- 
+
 	!the dictionary structure:
 	type(word),dimension(:),allocatable :: dict
- 
+
 	contains
 !***************************************************************************************
- 
+
 	!******************************************************************************
 		function count_lines_in_file(fid) result(n_lines)
 	!******************************************************************************
 		implicit none
- 
+
 		integer             :: n_lines
-		integer,intent(in)  :: fid		
+		integer,intent(in)  :: fid
 		character(len=1)    :: tmp
 		integer             :: i
 		integer             :: ios
- 
+
 		!the file is assumed to be open already.
- 
+
 		rewind(fid)	  !rewind to beginning of the file
- 
+
 		n_lines = 0
 		do !read each line until the end of the file.
 			read(fid,'(A1)',iostat=ios) tmp
 			if (ios < 0) exit      !End of file
 			n_lines = n_lines + 1  !row counter
 		end do
- 
-		rewind(fid)   !rewind to beginning of the file	
- 
+
+		rewind(fid)   !rewind to beginning of the file
+
 	!******************************************************************************
 		end function count_lines_in_file
 	!******************************************************************************
@@ -1949,13 +1949,13 @@ abbott
 	!******************************************************************************
 	! turns true if word is an ordered word, false if it is not.
 	!******************************************************************************
-	 
+
 	 implicit none
 	 character(len=*),intent(in) :: word
 	 logical :: yn
-	 
+
 	 integer :: i
-	 
+
 	 yn = .true.
 	 do i=1,len_trim(word)-1
 	 	if (ichar(word(i+1:i+1))<ichar(word(i:i))) then
@@ -1963,11 +1963,11 @@ abbott
 	 		exit
 	 	end if
 	 end do
-	 
+
 	!******************************************************************************
 	 end function ordered_word
 	!******************************************************************************
- 
+
 !***************************************************************************************
  end module ordered_module
 !***************************************************************************************
@@ -1979,7 +1979,7 @@ abbott
  implicit none
 
 	integer :: i,n,n_max
- 
+
 	!open the dictionary and read in all the words:
 	open(unit=file_unit,file=filename)     		!open the file
 	n = count_lines_in_file(file_unit)      !count lines in the file
@@ -1987,15 +1987,15 @@ abbott
 	do i=1,n                                !
 		read(file_unit,'(A)') dict(i)%str   !each line is a word in the dictionary
 		dict(i)%n = len_trim(dict(i)%str)   !save word length
-	end do		
+	end do
 	close(file_unit)                        !close the file
 
 	!use elemental procedure to get ordered words:
-	dict%ordered = ordered_word(dict%str)	
+	dict%ordered = ordered_word(dict%str)
 
 	!max length of an ordered word:
 	n_max = maxval(dict%n, mask=dict%ordered)
-		
+
 	!write the output:
 	do i=1,n
 		if (dict(i)%ordered .and. dict(i)%n==n_max) write(*,'(A,A)',advance='NO') trim(dict(i)%str),' '
@@ -2012,7 +2012,7 @@ abbott
 '''Output'''
 
 ```txt
-abbott accent accept access accost almost bellow billow biopsy chilly choosy choppy effort floppy glossy knotty  
+abbott accent accept access accost almost bellow billow biopsy chilly choosy choppy effort floppy glossy knotty
 ```
 
 
@@ -2027,14 +2027,14 @@ Function isOrdered(s As Const String) As Boolean
   If Len(s) <= 1 Then Return True
   For i As Integer = 1 To Len(s) - 1
     If s[i] < s[i - 1] Then Return False
-  Next 
+  Next
   Return True
 End Function
 
 Dim words() As String
 Dim word As String
 Dim maxLength As Integer = 0
-Dim count As Integer = 0 
+Dim count As Integer = 0
 Open "undict.txt" For Input As #1
 While Not Eof(1)
   Line Input #1, word
@@ -2126,7 +2126,7 @@ Next
 sHold.Sort()                                                  'Sort sHold
 Print sHold.Join(gb.NewLine)                                  'Display the result
 
-End 
+End
 ```
 
 Output:
@@ -2290,14 +2290,14 @@ knotty
 
 -- Words are read from the standard input.  We keep in memory only the current
 -- set of longest, ordered words.
--- 
+--
 -- Limitation: the locale's collation order is not take into consideration.
 
 isOrdered wws@(_:ws) = and $ zipWith (<=) wws ws
 
 longestOrderedWords = reverse . snd . foldl f (0,[]) . filter isOrdered
   where f (max, acc) w =
-          let len = length w in 
+          let len = length w in
           case compare len max of
             LT -> (max, acc)
             EQ -> (max, w:acc)
@@ -2392,7 +2392,7 @@ link strings
 procedure main(A)
    f := open(\A[1]) | stop("Give dictionary file name on command line")
    every (maxLen := 0, maxLen <= *(w := !f), w == csort(w)) do {
-      if maxLen <:= *w then maxList := []  #discard any shorter sorted words 
+      if maxLen <:= *w then maxList := []  #discard any shorter sorted words
       put(maxList, w)
       }
    every write(!\maxList)
@@ -2400,7 +2400,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings provides csort] which sorts the letters within a string
 
 Output:
@@ -2503,7 +2503,7 @@ public class Ordered {
 		Arrays.sort(sortedWord);
 		return word.equals(new String(sortedWord));
 	}
-	
+
 	public static void main(String[] args) throws IOException{
 		List<String> orderedWords = new LinkedList<String>();
 		BufferedReader in = new BufferedReader(new FileReader(args[0]));
@@ -2512,14 +2512,14 @@ public class Ordered {
 			if(isOrderedWord(word)) orderedWords.add(word);
 		}
 		in.close();
-		
+
 		Collections.<String>sort(orderedWords, new Comparator<String>() {
 			@Override
 			public int compare(String o1, String o2) {
 				return new Integer(o2.length()).compareTo(o1.length());
 			}
 		});
-		
+
 		int maxLen = orderedWords.get(0).length();
 		for(String word: orderedWords){
 			if(word.length() == maxLen){
@@ -2742,7 +2742,7 @@ fun main(args: Array<String>) {
 ## Lang5
 
 
-```lang5>: 
+```lang5>:
 string-index
     "" split
     "&'0123456789abcdefghijklmnopqrstuvwxyz" "" split
@@ -2755,7 +2755,7 @@ string-index
 
 : filtering
     [] '_ set
-    0 do read 
+    0 do read
         2dup chars
         <=
         if  dup >string-index ordered?
@@ -2868,22 +2868,22 @@ print wordList$
 Output:
 
 ```txt
-abbott 
-accent 
-accept 
-access 
-accost 
-almost 
-bellow 
-billow 
-biopsy 
-chilly 
-choosy 
-choppy 
-effort 
-floppy 
-glossy 
-knotty 
+abbott
+accent
+accept
+access
+accost
+almost
+bellow
+billow
+biopsy
+chilly
+choosy
+choppy
+effort
+floppy
+glossy
+knotty
 ```
 
 
@@ -3041,8 +3041,8 @@ for word in words do print(word); end do;
 
 
 ```mathematica
-Module[{max, 
-   data = Select[Import["http://www.puzzlers.org/pub/wordlists/unixdict.txt", "List"], 
+Module[{max,
+   data = Select[Import["http://www.puzzlers.org/pub/wordlists/unixdict.txt", "List"],
      OrderedQ[Characters[#]] &]},
   max = Max[StringLength /@ data];
   Select[data, StringLength[#] == max &]]
@@ -3080,22 +3080,22 @@ findLargestOrderedWord["Spanish"]
 
 
 ```Matlab
-maxlen = 0; 
-listlen= 0; 
+maxlen = 0;
+listlen= 0;
 fid = fopen('unixdict.txt','r');
 while ~feof(fid)
     str = fgetl(fid);
-    if any(diff(abs(str))<0) continue; end; 
-    
-    if length(str)>maxlen, 
+    if any(diff(abs(str))<0) continue; end;
+
+    if length(str)>maxlen,
 	list = {str};
-	maxlen = length(str); 
-    elseif length(str)==maxlen, 
+	maxlen = length(str);
+    elseif length(str)==maxlen,
 	list{end+1} = str;
     end;
 end
 fclose(fid);
-printf('%s\n',list{:}); 
+printf('%s\n',list{:});
 ```
 
 
@@ -3277,7 +3277,7 @@ Output:
 
 
 ```txt
-$ ocaml ordered_words.ml 
+$ ocaml ordered_words.ml
 abbott
 accent
 accept
@@ -3311,7 +3311,7 @@ knotty
       w sort w == ifFalse: [ continue ]
       s longest > ifTrue: [ s ->longest ListBuffer new ->l ]
       l add(w)
-      ] l ; 
+      ] l ;
 ```
 
 
@@ -3362,7 +3362,7 @@ s: Return left('s',arg(1)>1)
 ```
 
 {{out}}
-Same as REXX'               
+Same as REXX'
 
 
 ## PARI/GP
@@ -3448,13 +3448,13 @@ type ordered(sequence s)
     end for
     return 1
 end type
- 
+
 integer maxlen
 sequence words
 object word
 constant fn = open("demo\\unixdict.txt","r")
 maxlen = -1
- 
+
 while 1 do
     word = gets(fn)
     if atom(word) then
@@ -3469,9 +3469,9 @@ while 1 do
         words = append(words,word)
     end if
 end while
- 
+
 close(fn)
- 
+
 ?words
 ```
 
@@ -3587,22 +3587,22 @@ OUTPUT:
 
 ```txt
 
-There are 16 eligible words of length 6: 
-knotty 
-glossy 
-floppy 
-effort 
-choppy 
-choosy 
-chilly 
-biopsy 
-billow 
-bellow 
-almost 
-accost 
-access 
-accept 
-accent 
+There are 16 eligible words of length 6:
+knotty
+glossy
+floppy
+effort
+choppy
+choosy
+chilly
+biopsy
+billow
+bellow
+almost
+accost
+access
+accept
+accent
 abbott
 
 ```
@@ -3732,19 +3732,19 @@ true.
 Procedure.s sortLetters(*word.Character, wordLength) ;returns a string with the letters of a word sorted
   Protected Dim letters.c(wordLength)
   Protected *letAdr = @letters()
- 
+
   CopyMemoryString(*word, @*letAdr)
   SortArray(letters(), #PB_Sort_Ascending, 0, wordLength - 1)
   ProcedureReturn PeekS(@letters(), wordLength)
 EndProcedure
- 
+
 Structure orderedWord
   word.s
   length.i
 EndStructure
- 
+
 Define filename.s = "unixdict.txt", fileNum = 0,  word.s
- 
+
 If OpenConsole()
   NewList orderedWords.orderedWord()
   If ReadFile(fileNum, filename)
@@ -3760,7 +3760,7 @@ If OpenConsole()
     MessageRequester("Error", "Unable to find dictionary '" + filename + "'")
     End
   EndIf
- 
+
   SortStructuredList(orderedWords(), #PB_Sort_Ascending, OffsetOf(orderedWord\word), #PB_String)
   SortStructuredList(orderedWords(), #PB_Sort_Descending, OffsetOf(orderedWord\length), #PB_Integer)
   Define maxLength
@@ -3770,8 +3770,8 @@ If OpenConsole()
     If orderedWords()\length = maxLength
       Print(orderedWords()\word + "  ")
     EndIf
-  Next 
- 
+  Next
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -3974,16 +3974,16 @@ knotty
 ```Red
 Red []
 ;; code to read url and save to local file:
-;;data: read/binary http://www.puzzlers.org/pub/wordlists/unixdict.txt 
+;;data: read/binary http://www.puzzlers.org/pub/wordlists/unixdict.txt
 ;;write %unixdict.txt data
 
-max: [ "" ] ;; init array with one empty string (length 0 ) 
+max: [ "" ] ;; init array with one empty string (length 0 )
 
 foreach word read/lines %unixdict.txt [   ;; read local file
   len: either  word = sort copy word [ length? word ] [  -1 ]   ;; check if ordered and get length
   case [
     len  > length?  first max [    max:  reduce [ word ]]       ;; init new block
-    len = length? first max   [ append max word   ]     
+    len = length? first max   [ append max word   ]
   ]
 ]
 probe max
@@ -3999,19 +3999,19 @@ probe max
 
 ## REXX
 
-This problem assumes (or implies) an order of letter case, but fortunately, there're no uppercase letters 
+This problem assumes (or implies) an order of letter case, but fortunately, there're no uppercase letters
 
 in the (default) dictionary to see which programs would fail when not recognizing this distinction.
 
 
 In <code> ASCII</code>,   '''A'''   is less than   '''a''',   while in <code>EBCDIC</code>,   it's the other way around.
 
-The problem can be avoided by first converting the word to a specific case, and then test for ordered 
+The problem can be avoided by first converting the word to a specific case, and then test for ordered
 
 letters in that word (as indeed, this REXX entry does).
 
 
-Output could be improved by sorting the words in the dictionary, but adding a sort would   ''bulk up''   the program; 
+Output could be improved by sorting the words in the dictionary, but adding a sort would   ''bulk up''   the program;
 
 but since the word list   (in this case)   is already in alphabetical order, this would-be improvement is
 
@@ -4088,12 +4088,12 @@ dlist = []
 for m = 1 to len(clist)
     flag = 1
     for n = 1 to len(clist[m])-1
-        if ascii(clist[m][n+1]) < ascii(clist[m][n]) 
-           flag=0 exit ok 
+        if ascii(clist[m][n+1]) < ascii(clist[m][n])
+           flag=0 exit ok
     next
-    if flag = 1  
+    if flag = 1
        add(dlist, clist[m]) ok
-next  
+next
 
 nr = 0
 for m = 1 to len(dlist)
@@ -4146,7 +4146,7 @@ knotty
 
 ```ruby
 require 'open-uri'
-ordered_words = open('http://www.puzzlers.org/pub/wordlists/unixdict.txt', 'r').select do |word| 
+ordered_words = open('http://www.puzzlers.org/pub/wordlists/unixdict.txt', 'r').select do |word|
   word.strip!
   word.chars.sort.join == word
 end
@@ -4292,14 +4292,14 @@ fn main() {
 ```scala
 val wordsAll = scala.io.Source.fromURL("http://www.puzzlers.org/pub/wordlists/unixdict.txt").getLines.toSeq
 
-/** 
- * Given a sequence of words return a sub-sequence of the 
+/**
+ * Given a sequence of words return a sub-sequence of the
  * words that have characters in sorted order.
- */  
+ */
 def orderedWords( words:Seq[String] ) : Seq[(String)] = {
 
-  def isOrdered( s:String ) : Boolean = 
-    (s.foldLeft( (true,'@') ){ 
+  def isOrdered( s:String ) : Boolean =
+    (s.foldLeft( (true,'@') ){
       case ((false,_),_) => return false
       case ((true,prev),c) => ((prev <= c),c)
     })._1
@@ -4602,7 +4602,7 @@ dict := Set new.
   dict add: (file upTo: Character nl) ].
 
 "find those with the sorted letters, and sort them by length"
-r := ((dict 
+r := ((dict
        select: [ :w | (w asOrderedCollection sort) = (w asOrderedCollection) ] )
      asSortedCollection: [:a :b| (a size) > (b size) ] ).
 
@@ -4841,7 +4841,7 @@ Output:
 13. effort
 14. floppy
 15. glossy
-16. knotty 
+16. knotty
 
 ```
 
@@ -4902,7 +4902,7 @@ Public Sub orderedwords(fname As String)
  ' fname is the name of the input file
  ' the words are printed in the immediate window
  ' this subroutine uses boolean function IsOrdered
- 
+
 Dim word As String          'word to be tested
 Dim l As Integer            'length of word
 Dim wordlength As Integer   'current longest word length
@@ -4982,7 +4982,7 @@ Results:
 ```txt
 
 OrderedWords("unixdict.txt")
-Found 16 ordered words of length 6 
+Found 16 ordered words of length 6
 abbott
 accent
 accept
@@ -5033,7 +5033,7 @@ Repeat (ALL) {
     Line(1,ERRBREAK)                    // next word
 }
 Buf_Quit(OK)                            // close file
-Reg_Type(10)                            // display results 
+Reg_Type(10)                            // display results
 ```
 
 
@@ -5054,7 +5054,7 @@ choppy
 effort
 floppy
 glossy
-knotty 
+knotty
 ```
 
 
@@ -5133,8 +5133,8 @@ var words=L(), sz=0;  // some state
 fcn isLex(word){ word.reduce(fcn(p,c){ (p<=c) and c or T(Void.Stop,False) }) }
 File("dict.txt").pump(Void,fcn(w){
    w=w.strip();   // get rid of newline
-   if(isLex(w)){ n:=w.len(); 
-      if(n>sz){ words.clear(w); sz=n } 
+   if(isLex(w)){ n:=w.len();
+      if(n>sz){ words.clear(w); sz=n }
       else if(n==sz) words.append(w)
    }
 })

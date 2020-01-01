@@ -33,7 +33,7 @@ The following scores are accrued for all competitors of a competition (in best-f
 For each of the following ranking methods, create a function/method/procedure/subroutine... that applies the ranking method to an ordered list of scores with scorers:
 # Standard. (Ties share what would have been their first ordinal number).
 # Modified. (Ties share what would have been their last ordinal number).
-# Dense. (Ties share the next available integer). 
+# Dense. (Ties share the next available integer).
 # Ordinal. ((Competitors take the next available integer. Ties are not treated otherwise).
 # Fractional. (Ties share the mean of what would have been their ordinal numbers).
 
@@ -88,7 +88,7 @@ data =
 39 Stephen
 )
 
-MsgBox, 262144, ,% "" 
+MsgBox, 262144, ,% ""
 . "Standard Ranking:`n"		Rank(data)
 . "`nModified Ranking:`n"	Rank(data, 2)
 . "`nDense Ranking:`n" 		Rank(data, 3)
@@ -338,21 +338,21 @@ typedef struct{
 }entry;
 
 void ordinalRanking(entry* list,int len){
-	
+
 	int i;
-	
+
 	printf("\n\nOrdinal Ranking\n---------------");
-	
+
 	for(i=0;i<len;i++)
 		printf("\n%d\t%d\t%s",i+1,list[i].score,list[i].name);
 }
 
 void standardRanking(entry* list,int len){
-	
+
 	int i,j=1;
-	
+
 	printf("\n\nStandard Ranking\n----------------");
-	
+
 	for(i=0;i<len;i++){
 		printf("\n%d\t%d\t%s",j,list[i].score,list[i].name);
 		if(list[i+1].score<list[i].score)
@@ -361,11 +361,11 @@ void standardRanking(entry* list,int len){
 }
 
 void denseRanking(entry* list,int len){
-	
+
 	int i,j=1;
-	
+
 	printf("\n\nDense Ranking\n-------------");
-	
+
 	for(i=0;i<len;i++){
 		printf("\n%d\t%d\t%s",j,list[i].score,list[i].name);
 		if(list[i+1].score<list[i].score)
@@ -374,11 +374,11 @@ void denseRanking(entry* list,int len){
 }
 
 void modifiedRanking(entry* list,int len){
-	
+
 	int i,j,count;
-	
+
 	printf("\n\nModified Ranking\n----------------");
-	
+
 	for(i=0;i<len-1;i++){
 		if(list[i].score!=list[i+1].score){
 			printf("\n%d\t%d\t%s",i+1,list[i].score,list[i].name);
@@ -394,12 +394,12 @@ void modifiedRanking(entry* list,int len){
 }
 
 void fractionalRanking(entry* list,int len){
-	
+
 	int i,j,count;
 	float sum = 0;
-	
+
 	printf("\n\nFractional Ranking\n------------------");
-	
+
 	for(i=0;i<len;i++){
 		if(i==len-1 || list[i].score!=list[i+1].score)
 			printf("\n%.1f\t%d\t%s",(float)(i+1),list[i].score,list[i].name);
@@ -421,16 +421,16 @@ void processFile(char* fileName){
 	FILE* fp = fopen(fileName,"r");
 	entry* list;
 	int i,num;
-	
+
 	fscanf(fp,"%d",&num);
-	
+
 	list = (entry*)malloc(num*sizeof(entry));
-	
+
 	for(i=0;i<num;i++)
 		fscanf(fp,"%d%s",&list[i].score,list[i].name);
-	
+
 	fclose(fp);
-	
+
 	ordinalRanking(list,num);
 	standardRanking(list,num);
 	denseRanking(list,num);
@@ -529,8 +529,8 @@ Fractional Ranking
 
 {{trans|C#}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iomanip>
 #include <iostream>
 #include <map>
@@ -1915,27 +1915,27 @@ The task formulation doesn't seem to directly explain or determine the order of 
 
 ```JavaScript
 (function () {
- 
+
     var xs = 'Solomon Jason Errol Garry Bernard Barry Stephen'.split(' '),
         ns = [44, 42, 42, 41, 41, 41, 39],
- 
+
         sorted = xs.map(function (x, i) {
             return { name: x, score: ns[i] };
         }).sort(function (a, b) {
             var c = b.score - a.score;
             return c ? c : a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
         }),
- 
+
         names = sorted.map(function (x) { return x.name; }),
         scores = sorted.map(function (x) { return x.score; }),
- 
+
         reversed = scores.slice(0).reverse(),
         unique = scores.filter(function (x, i) {
             return scores.indexOf(x) === i;
         });
- 
+
     // RANKINGS AS FUNCTIONS OF SCORES: SORTED, REVERSED AND UNIQUE
- 
+
     var rankings = function (score, index) {
             return {
                 name: names[index],
@@ -1963,7 +1963,7 @@ The task formulation doesn't seem to directly explain or determine the order of 
                 }(score)
             };
         },
- 
+
         tbl = [
             'Name Score Standard Modified Dense Ordinal Fractional'.split(' ')
         ].concat(scores.map(rankings).reduce(function (a, x) {
@@ -1973,22 +1973,22 @@ The task formulation doesn't seem to directly explain or determine the order of 
                 ]
             ]);
         }, [])),
- 
+
         //[[a]] -> bool -> s -> s
         wikiTable = function (lstRows, blnHeaderRow, strStyle) {
             return '{| class="wikitable" ' + (
                 strStyle ? 'style="' + strStyle + '"' : ''
             ) + lstRows.map(function (lstRow, iRow) {
                 var strDelim = ((blnHeaderRow && !iRow) ? '!' : '|');
- 
+
                 return '\n|-\n' + strDelim + ' ' + lstRow.map(function (v) {
                     return typeof v === 'undefined' ? ' ' : v;
                 }).join(' ' + strDelim + strDelim + ' ');
             }).join('') + '\n|}';
         };
- 
+
     return wikiTable(tbl, true, 'text-align:center');
- 
+
 })();
 ```
 
@@ -2083,7 +2083,7 @@ The task formulation doesn't seem to directly explain or determine the order of 
 
 
 {| class="wikitable" style="text-align:center"
-      
+
 |-
 ! Name !! Score !! Standard !! Modified !! Dense !! Ordinal !! Fractional
 |-
@@ -2123,7 +2123,7 @@ def standard_ranking:
             else . + [$i + 1]
             end) ;
 
-def modified_ranking: 
+def modified_ranking:
   # The helper function resolves [ranks, tentative]
   # by appending the ranks of the ties to "ranks"
   def resolve:
@@ -2153,7 +2153,7 @@ def dense_ranking: # next available
 def ordinal_ranking: # unfair to some!
   [ range(1; 1 + length/2) ] ;
 
-def fractional_ranking: 
+def fractional_ranking:
   # The helper function resolves [ranks, tentative]
   # by appending the averages of the tentative ranks to "ranks"
   def resolve:
@@ -2191,7 +2191,7 @@ def task:
  "dense:      \( raw | dense_ranking)",
  "ordinal:    \( raw | ordinal_ranking)",
  "fractional: \( raw | fractional_ranking)" ;
-  
+
 task
 
 ```
@@ -2340,28 +2340,28 @@ end
    and then, if the scores are equal, by reverse alphabetic order of names
 */
 
-fun standardRanking(scores: Array<Pair<Int, String>>): IntArray {   
+fun standardRanking(scores: Array<Pair<Int, String>>): IntArray {
     val rankings = IntArray(scores.size)
     rankings[0] = 1
     for (i in 1 until scores.size) rankings[i] = if (scores[i].first == scores[i - 1].first) rankings[i - 1] else i + 1
     return rankings
 }
 
-fun modifiedRanking(scores: Array<Pair<Int, String>>): IntArray {   
+fun modifiedRanking(scores: Array<Pair<Int, String>>): IntArray {
     val rankings = IntArray(scores.size)
-    rankings[0] = 1 
+    rankings[0] = 1
     for (i in 1 until scores.size) {
-        rankings[i] = i + 1 
-        val currScore = scores[i].first         
+        rankings[i] = i + 1
+        val currScore = scores[i].first
         for (j in i - 1 downTo 0) {
             if (currScore != scores[j].first) break
             rankings[j] = i + 1
-        }       
+        }
     }
     return rankings
 }
 
-fun denseRanking(scores: Array<Pair<Int, String>>): IntArray {   
+fun denseRanking(scores: Array<Pair<Int, String>>): IntArray {
     val rankings = IntArray(scores.size)
     rankings[0] = 1
     var prevRanking = 1
@@ -2369,28 +2369,28 @@ fun denseRanking(scores: Array<Pair<Int, String>>): IntArray {
     return rankings
 }
 
-fun ordinalRanking(scores: Array<Pair<Int, String>>) = IntArray(scores.size) { it + 1 }  
+fun ordinalRanking(scores: Array<Pair<Int, String>>) = IntArray(scores.size) { it + 1 }
 
 fun fractionalRanking(scores: Array<Pair<Int, String>>): DoubleArray {
     val rankings = DoubleArray(scores.size)
-    rankings[0] = 1.0 
+    rankings[0] = 1.0
     for (i in 1 until scores.size) {
-        var k = i 
-        val currScore = scores[i].first         
+        var k = i
+        val currScore = scores[i].first
         for (j in i - 1 downTo 0) {
             if (currScore != scores[j].first) break
             k = j
         }
         val avg = (k..i).average() + 1.0
-        for (m in k..i) rankings[m] = avg       
+        for (m in k..i) rankings[m] = avg
     }
     return rankings
-}    
+}
 
 fun printRankings(title: String, rankings: IntArray, scores: Array<Pair<Int, String>>) {
     println(title + ":")
-    for (i in 0 until rankings.size) { 
-        print ("${rankings[i]}  ")  
+    for (i in 0 until rankings.size) {
+        print ("${rankings[i]}  ")
         println(scores[i].toString().removeSurrounding("(", ")").replace(",", ""))
     }
     println()
@@ -2398,8 +2398,8 @@ fun printRankings(title: String, rankings: IntArray, scores: Array<Pair<Int, Str
 
 fun printFractionalRankings(title: String, rankings: DoubleArray, scores: Array<Pair<Int, String>>) {
     println(title + ":")
-    for (i in 0 until rankings.size) { 
-        print ("${"%3.2f".format(rankings[i])}  ")  
+    for (i in 0 until rankings.size) {
+        print ("${"%3.2f".format(rankings[i])}  ")
         println(scores[i].toString().removeSurrounding("(", ")").replace(",", ""))
     }
     println()
@@ -2475,7 +2475,7 @@ Fractional ranking:
 
 ```Mathematica
 
-data = Transpose@{{44, 42, 42, 41, 41, 41, 39}, {"Solomon", "Jason", 
+data = Transpose@{{44, 42, 42, 41, 41, 41, 39}, {"Solomon", "Jason",
      "Errol", "Garry", "Bernard", "Barry", "Stephen"}};
 
 rank[data_, type_] :=
@@ -2487,12 +2487,12 @@ rank[data_, type_] :=
    "ordinal", Reverse@Ordering[data],
    "fractional", data/.Rule@@@(Mean[#]/.{a_Rational:>N[a]}&)/@ SplitBy[t, First]]]
 
-fmtRankedData[data_, type_] := 
+fmtRankedData[data_, type_] :=
  Labeled[Grid[
-   SortBy[ArrayFlatten@{{Transpose@{rank[data[[All, 1]], type]}, 
+   SortBy[ArrayFlatten@{{Transpose@{rank[data[[All, 1]], type]},
        data}}, First], Alignment->Left], type<>" ranking:", Top]
 
-Grid@{fmtRankedData[data, #] & /@ {"standard", "modified", "dense", 
+Grid@{fmtRankedData[data, #] & /@ {"standard", "modified", "dense",
     "ordinal", "fractional"}}
 
 
@@ -3156,7 +3156,7 @@ function Get-Ranking
         function Get-OrdinalRank ([PSCustomObject[]]$Values)
         {
             for ($i = 0; $i -lt $Values.Count; $i++)
-            { 
+            {
                 $Values[$i].Rank = $i + 1
             }
 
@@ -3203,7 +3203,7 @@ function Get-Ranking
                 $rank = 1
 
                 for ($i = 0; $i -lt $scores.Count; $i++)
-                { 
+                {
                     $scores[$i].Rank = $rank
                     $rank += $scores[$i].Count
                 }
@@ -3225,7 +3225,7 @@ function Get-Ranking
             "Dense"
             {
                 for ($i = 0; $i -lt $scores.Count; $i++)
-                { 
+                {
                     $scores[$i].Rank = $i + 1
                 }
 
@@ -3554,14 +3554,14 @@ Fractional ranking:
        (loop (+ ranks-added rank-0) unranked (append acc ranked-tied))])))
 
 ;; Ties share what would have been their first ordinal number
-(define (rank-function:Standard l) 
+(define (rank-function:Standard l)
   (values l (thunk* 1)))
 
 ;; Ties share what would have been their last ordinal number
 (define (rank-function:Modified l)
   (values l (thunk* l)))
 
-;; Ties share the next available integer  
+;; Ties share the next available integer
 (define (rank-function:Dense l)
   (values 1 (thunk* 1)))
 
@@ -4145,8 +4145,8 @@ nn = ScoreGroup(@a)
 n = 1
 FOR i = 1 TO nn
     REPLACE sc_rank WITH n FOR score = a[i,1]
-    n = n + a[i,2] 
-ENDFOR	
+    n = n + a[i,2]
+ENDFOR
 ENDPROC
 
 PROCEDURE Modified
@@ -4159,7 +4159,7 @@ n = 0
 FOR i = 1 TO nn
     n = n + a[i,2]
     REPLACE mod_rank WITH n FOR score = a[i,1]
-ENDFOR	
+ENDFOR
 ENDPROC
 
 PROCEDURE Dense
@@ -4173,7 +4173,7 @@ n = 0
 FOR i = 1 TO nn
     n = n + a[i,2]
     REPLACE dense WITH i FOR score = a[i,1]
-ENDFOR	
+ENDFOR
 ENDPROC
 
 PROCEDURE Ordinal
@@ -4192,8 +4192,8 @@ GROUP BY score ORDER BY score DESC INTO ARRAY a
 nn = _TALLY
 FOR i = 1 TO nn
     REPLACE fractional WITH a[i,1] FOR score = a[i,2]
-ENDFOR	
-ENDPROC 
+ENDFOR
+ENDPROC
 
 ```
 

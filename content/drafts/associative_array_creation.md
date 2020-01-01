@@ -845,9 +845,9 @@ h2[:b][2]  #Returns 3
 
 The C++ standard defines std::map as a means of creating an association between a key of one arbitrary type and a value of another arbitrary type.  This requires the inclusion of the standard header '''map'''.
 
-
-```cpp>#include <map></lang
-
+```cpp
+#include <map>
+```
 
 
 ### Creation
@@ -937,8 +937,8 @@ This code assigns a 0 to myValue if the map contained a value.
 
 This simple program creates a map, assigns a value to that map, retrieves a value from that map, and prints the value to STDOUT.
 
-```cpp>#include <map
-
+```cpp
+#include <map>
 #include <iostreams>
 
 int main()

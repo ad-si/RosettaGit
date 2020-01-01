@@ -10,8 +10,8 @@ categories = []
 tags = []
 +++
 
-{{task}} 
-[[Category:Hardware]] 
+{{task}}
+[[Category:Hardware]]
 [[Category:Printer]]
 {{omit from|PARI/GP}}
 {{omit from|ML/I|Does not have printer-related functions}}
@@ -22,9 +22,9 @@ Cause a line printer attached to the computer to print a line containing the mes
 
 
 ;Note:
-A line printer is not the same as standard output. 
+A line printer is not the same as standard output.
 
-A   [[wp:line printer|line printer]]   was an older-style printer which prints one line at a time to a continuous ream of paper. 
+A   [[wp:line printer|line printer]]   was an older-style printer which prints one line at a time to a continuous ream of paper.
 
 With some systems, a line printer can be any device attached to an appropriate port (such as a parallel port).
 
@@ -145,7 +145,7 @@ PRINT "HELLO WORLD!"
 ```AutoHotkey
 
 Fileappend, Hello World!, print.txt
-Run, print "print.txt" 
+Run, print "print.txt"
 
 ```
 
@@ -228,8 +228,8 @@ ECHO Hello world!>PRN
 ===[[Unix]]===
 Assuming that the line printer is attached to /dev/lp0
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -246,8 +246,8 @@ int main()
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <fstream>
 
 int main(){
@@ -262,8 +262,8 @@ int main(){
 
 ## C sharp
 
-"My Printer" should be replaced with the friendly name of the printer. 
-This is to avoid the extra step of locating the default printer, 
+"My Printer" should be replaced with the friendly name of the printer.
+This is to avoid the extra step of locating the default printer,
 which is out of scope of this example.
 
 
@@ -470,7 +470,7 @@ This program uses self-modifying code to loop through an array of characters. Si
 
 ```edsac
 [ Hello world
-  
+
 ### =====
 
 
@@ -578,21 +578,21 @@ Forth systems currently run on everything from bare metal to modern multi-user o
 ```Forth
 \ No operating system, embedded device, printer output example
 
-defer emit                                   \ deferred words in Forth are a place holder for an 
+defer emit                                   \ deferred words in Forth are a place holder for an
                                              \ execution token (XT) that is assigned later.
-                                             \ When executed the deferred word simply runs that assigned routine 
+                                             \ When executed the deferred word simply runs that assigned routine
 
 : type ( addr count -- )                     \ type a string uses emit
        bounds ?do  i c@ emit   loop ;        \ type is used by all other text output words in the system
 
-HEX 
+HEX
 : CR   ( -- )  0A emit 0D emit ;             \ send a carriage return, linefeed pair with emit
 
 \ memory mapped I/O addresses for the printer port
-B02E   constant scsr                         \ serial control status register 
+B02E   constant scsr                         \ serial control status register
 B02F   constant scdr                         \ serial control data register
 
-: printer-emit ( char -- )                   \ output 'char' to the printer serial port  
+: printer-emit ( char -- )                   \ output 'char' to the printer serial port
          begin   scsr C@ 80 and  until       \ loop until the port shows a ready bit
          scdr C!                             \ C! (char store) writes a byte to an address
          20 ms ;                             \ 32 mS delay to prevent over-runs
@@ -611,7 +611,7 @@ Usage Examples:
 
 S" Hello Console World!" TYPE CR              \ default output goes to console
 S" Hello Printer World!" >PRINTER TYPE CR     \ re-direct to printer
->CONSOLE                                      \ return output to console  
+>CONSOLE                                      \ return output to console
 
 ```
 
@@ -630,14 +630,14 @@ The protocol was to act on the carriage control, then print the line. The charac
  1 Page throw.
 The page-throw was actually a "skip to control column 1"; that is, the lineprinter has an associated paper tape in a loop with holes punched in certain columns of the tape and the tape would be advanced one position for each line advance. The length of the loop matches the number of lines to a page of printout, or was twice that number, etc. A hole in column one of the loop would be aligned (by the human operator during setup) with the top-of-form paper position and when a carriage control of "1" was acted on, the lineprinter would skip forwards until the "1" hole was detected. A carriage control character of "2" would thus skip onwards until a hole in column two was detected - and if there was no such hole, the skip wouldn't stop until the human operator noticed. Thus, many control tapes had all columns punched across, not just one. However, this ability was more properly used in producing vast outputs with subsections to a page suitably marked by suitable holes. The benefit was firstly that the printer skipped to a hole mark more rapidly than via a sequence of "advance one" or "advance two" commands, and secondly, the program did not need to generate such sequences nor have then saved via output spooling. But all relied on the right output being matched to the right tape. This was more typical at COBOL installations.
 
-It is because of the first character disappearing as carriage control that the "list" style output (as in <code>WRITE (6,*) "Hello World!"</code>) always starts a line of output with a space. This form does not require a FORMAT statement. 
+It is because of the first character disappearing as carriage control that the "list" style output (as in <code>WRITE (6,*) "Hello World!"</code>) always starts a line of output with a space. This form does not require a FORMAT statement.
 
 Since for a new job, output would commence with the lineprinter already at the top of a new page, an overprint (no carriage advance) thus means writing to the very first line. If however, top-of-page placement was not assured at your installation, then "1HELLO WORLD!" would do.
 
 ```Fortran
       WRITE (6,1)
     1 FORMAT ("+HELLO WORLD!")
-      END 
+      END
 ```
 
 
@@ -763,7 +763,7 @@ print'Hello world!'
 ```java
 import java.io.FileWriter;
 import java.io.IOException;
- 
+
 public class LinePrinter {
   public static void main(String[] args) {
     try {
@@ -874,7 +874,7 @@ Or we can use ANSI output using a file for export in Lpt1
 ```M2000 Interpreter
 
 Try ok {
-      Open "Lpt1" For OutPut As N '' prints to Lpt1 if exist a printer 
+      Open "Lpt1" For OutPut As N '' prints to Lpt1 if exist a printer
       Print #N, "Hello World!"
       Close #N
 }
@@ -903,14 +903,14 @@ Dos "command" [, sleep time after call] [;]
 
 
 ## Maple
- 
+
 
 ```Maple
 lprint("Hello World!")
 ```
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
 commandstring = "echo Hello World!  | lpr -P Printer01"
@@ -918,12 +918,12 @@ Run[commandstring]
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 ===[[Unix]]===
 Assuming that the line printer is attached to /dev/lp0
 
 ```Matlab
-  fid = fopen('/dev/lp0'); 
+  fid = fopen('/dev/lp0');
   fprintf(fid,'Hello World!\n');
   fclose(fid);
 ```
@@ -1149,7 +1149,7 @@ end hello;
 
 ## PostScript
 
-Technically not really correct, as this has to be sent to the printer directly. 
+Technically not really correct, as this has to be sent to the printer directly.
 It will output Hello world, then, though.
 
 ```postscript
@@ -1175,7 +1175,7 @@ If LPRINT_OpenPrinter(MyPrinter$)
     LPRINT_NewPage()
     LPRINT_EndDoc()
   EndIf
-  LPRINT_ClosePrinter()  
+  LPRINT_ClosePrinter()
 EndIf
 ```
 
@@ -1226,7 +1226,7 @@ lp.close()
 
 ## REXX
 
-There is no direct way for REXX programs to write to the printer, 
+There is no direct way for REXX programs to write to the printer,
 but a shell command could be used.
 
 
@@ -1246,11 +1246,11 @@ $= 'Hello World!'                                /*define a string to be used fo
 
 ```RPG
 
-      Fqsysprt   O    F   80        printer                                 
-      C                   except                                            
-      C                   seton                                        LR   
-      Oqsysprt   E                                                          
-      O                                           11 'Hello world'          
+      Fqsysprt   O    F   80        printer
+      C                   except
+      C                   seton                                        LR
+      Oqsysprt   E
+      O                                           11 'Hello world'
 
 ```
 
@@ -1384,7 +1384,7 @@ Assuming that the line printer is attached to /dev/lp0:
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const proc: main is func
   local
     var file: lp is STD_NULL;
@@ -1424,8 +1424,8 @@ END
 ## SNOBOL4
 
 
-In SNOBOL4, variables can be associated with input and output files.  
-Assigning a value to an output-associated variable also writes it to the associated output file.  (Likewise, accessing a variable associated with an input file returns as its value the next record from the associated input file.)  
+In SNOBOL4, variables can be associated with input and output files.
+Assigning a value to an output-associated variable also writes it to the associated output file.  (Likewise, accessing a variable associated with an input file returns as its value the next record from the associated input file.)
 By default, the variable "input" is associated with standard input, and the variable "output" is associated with standard output.
 
 
@@ -1527,12 +1527,12 @@ Text(2, "Hello World!
 ```
 
 
-The 2 directs the output to the printer (LPT1). 
+The 2 directs the output to the printer (LPT1).
 Output is usually directed to the console using device code 0 instead.
 
-A carriage return and line feed are normally required to make a line printer actually print. 
-(A laser or inkjet printer may require a form feed.) 
+A carriage return and line feed are normally required to make a line printer actually print.
+(A laser or inkjet printer may require a form feed.)
 However, some printers, or printer drivers, have a timeout feature
-that print even without the CR+LF (or FF). 
-The CR+LF can simply be included in the string as shown. 
+that print even without the CR+LF (or FF).
+The CR+LF can simply be included in the string as shown.
 Another method is to include the CR+LF control characters as ^M^J.

@@ -10,20 +10,20 @@ categories = []
 tags = []
 +++
 
-{{task}} 
+{{task}}
 {{wikipedia}}
 
 
 
-[[wp:Mad Libs|Mad Libs]] is a phrasal template word game where one player prompts another for a list of words to substitute for blanks in a story, usually with funny results. 
+[[wp:Mad Libs|Mad Libs]] is a phrasal template word game where one player prompts another for a list of words to substitute for blanks in a story, usually with funny results.
 
 
 ;Task;
-Write a program to create a Mad Libs like story. 
+Write a program to create a Mad Libs like story.
 
 The program should read an arbitrary multiline story from input.
 
-The story will be terminated with a blank line. 
+The story will be terminated with a blank line.
 
 Then, find each replacement to be made within the story, ask the user for a word to replace it with, and make all the replacements.
 
@@ -51,7 +51,7 @@ Given this example, it should then ask for a <tt>name</tt>, a <tt>he or she</tt>
 
 == {{header|Ada}} ==
 
-The fun of Mad Libs is not knowing the story ahead of time, so the program reads the story template from a text file. The name of the text file is given as a command line argument. 
+The fun of Mad Libs is not knowing the story ahead of time, so the program reads the story template from a text file. The name of the text file is given as a command line argument.
 
 
 ```Ada
@@ -399,7 +399,7 @@ found a NOTETY STYLE pack. Al decided to take it home.
 ----
 
 ```AppleScript
- 
+
 
 set theNoun to the text returned of (display dialog "What is your noun?" default answer "")
 
@@ -689,8 +689,8 @@ int main(int argc, char *argv[])
 
 ```txt
 
-./a.out madlibs.txt 
-Enter value for field <name>: John    
+./a.out madlibs.txt
+Enter value for field <name>: John
 Enter value for field <he or she>: he
 Enter value for field <noun>: Flamingo
 
@@ -702,8 +702,8 @@ found a Flamingo. John decided to take it home.
 
 == {{header|C++}} ==
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 using namespace std;
 
@@ -737,7 +737,7 @@ int main()
     cout << "Give me a " << cat << ": ";
     cin >> input;
 
-    //While there's a matching category 
+    //While there's a matching category
     //in the story
     while((begin = story.find("<" + cat + ">")) != string::npos)
     {
@@ -770,17 +770,17 @@ namespace MadLibs_RosettaCode
 	{
 		static void Main(string[] args)
 		{
-			string madLibs = 
+			string madLibs =
 @"Write a program to create a Mad Libs like story.
 The program should read an arbitrary multiline story from input.
 The story will be terminated with a blank line.
-Then, find each replacement to be made within the story, 
+Then, find each replacement to be made within the story,
 ask the user for a word to replace it with, and make all the replacements.
 Stop when there are none left and print the final story.
 The input should be an arbitrary story in the form:
 <name> went for a walk in the park. <he or she>
 found a <noun>. <name> decided to take it home.
-Given this example, it should then ask for a name, 
+Given this example, it should then ask for a name,
 a he or she and a noun (<name> gets replaced both times with the same value).";
 
 			StringBuilder sb = new StringBuilder();
@@ -841,38 +841,38 @@ a he or she and a noun (<name> gets replaced both times with the same value).";
 (ns magic.rosetta
     (:require [clojure.string :as str]))
 
-(defn mad-libs 
+(defn mad-libs
     "Write a program to create a Mad Libs like story.
      The program should read an arbitrary multiline story from input.
      The story will be terminated with a blank line.
-     Then, find each replacement to be made within the story, 
+     Then, find each replacement to be made within the story,
      ask the user for a word to replace it with, and make all the replacements.
      Stop when there are none left and print the final story.
      The input should be an arbitrary story in the form:
      <name> went for a walk in the park. <he or she>
      found a <noun>. <name> decided to take it home.
-     Given this example, it should then ask for a name, 
+     Given this example, it should then ask for a name,
      a he or she and a noun (<name> gets replaced both times with the same value). "
     []
-    (let 
-        [story (do 
-            (println "Please enter story:") 
-            (loop [story []] 
-                (let [line (read-line)] 
-                    (if (empty? line) 
+    (let
+        [story (do
+            (println "Please enter story:")
+            (loop [story []]
+                (let [line (read-line)]
+                    (if (empty? line)
                         (str/join "\n" story)
                         (recur (conj story line))))))
          tokens (set (re-seq #"<[^<>]+>" story))
-         story-completed (reduce 
-            (fn [s t] 
-                (str/replace s t (do 
-                    (println (str "Substitute " t ":")) 
-                    (read-line)))) 
-            story 
+         story-completed (reduce
+            (fn [s t]
+                (str/replace s t (do
+                    (println (str "Substitute " t ":"))
+                    (read-line))))
+            story
             tokens)]
-        (println (str 
-            "Here is your story:\n" 
-            "------------------------------------\n" 
+        (println (str
+            "Here is your story:\n"
+            "------------------------------------\n"
             story-completed))))
 ; Sample run at REPL:
 ;
@@ -1007,8 +1007,8 @@ parse_line(Dict, Line) ->
 ```
 
 
-This version can be called via either madlib:main() or madlib:main(File) to read from standard_in or from a file. 
-It utilizes the re module to both collect and substitute the words to substitute. 
+This version can be called via either madlib:main() or madlib:main(File) to read from standard_in or from a file.
+It utilizes the re module to both collect and substitute the words to substitute.
 The dict module is used as a mapping between variables and the players desired replacement. dict acts as an immutable hash, dict:store/3 returns a new dictionary with a new or updated key.
 
 {{out}}
@@ -1020,7 +1020,7 @@ Please name a <name>: Jack
 Please name a <he or she>: She
 Jack went for a walk in the park. She
 found a banana. Jack decided to take it home.ok
-69> 
+69>
 ```
 
 
@@ -1060,7 +1060,7 @@ MAIN: mad-libs
 Enter a mad lib. A blank line signals end of input.
 > <name> went for a walk in the park. <he or she>
 > found a <noun>. <name> decided to take it home.
-> 
+>
 Enter a(n) name: William
 Enter a(n) he or she: he
 Enter a(n) noun: crystal
@@ -1585,18 +1585,18 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class MadLibs 
+public class MadLibs
 {
 	public static void main(String[] args)
 	{
 		Scanner s=new Scanner(System.in);
 		String line;
 		StringBuffer storybuffer=new StringBuffer();
-		
+
 		//Accept lines until empty line is entered
 		while(!(line=s.nextLine()).isEmpty())
 			storybuffer.append(" "+line);
-		
+
 		//Remove first space
 		storybuffer.delete(0, 1);
 		String story=storybuffer.toString();
@@ -1604,7 +1604,7 @@ public class MadLibs
 		StringTokenizer str=new StringTokenizer(story);
 		String word;
 		StringBuffer finalstory=new StringBuffer();
-		
+
 		//Store added elements
 		Map<String,String> hash=new HashMap<String,String>();
 		while(str.hasMoreTokens())
@@ -1626,11 +1626,11 @@ public class MadLibs
 				//Account for element placeholder being immediately followed by . or , or whatever.
 				if(word.charAt(word.length()-1)!='>')
 					add=word.substring(word.lastIndexOf('>')+1);
-				
+
 				//Store id of element in hash table
 				String id=word.substring(0,word.lastIndexOf('>')+1);
 				String value;
-				
+
 				if(!hash.containsKey(id))
 				{
 					//New element
@@ -1656,7 +1656,7 @@ public class MadLibs
 
 ```txt
 
-<name> went for a walk in the park. <he or she> 
+<name> went for a walk in the park. <he or she>
 found a <noun>. <name> decided to take it home.
 
 Enter a <name>
@@ -1666,7 +1666,7 @@ He
 Enter a <noun>
 hippo
 
-Champak went for a walk in the park. He found a hippo. Champak decided to take it home. 
+Champak went for a walk in the park. He found a hippo. Champak decided to take it home.
 
 
 ```
@@ -1688,15 +1688,15 @@ procedure MadLib(story)
    write("Please provide words for the following:")
    V := []
    story ? while ( tab(upto('<')), put(V,tab(upto('>')+1)) )
-   every writes(v := !set(V)," : ") do 
+   every writes(v := !set(V)," : ") do
       story := replace(story,v,read())
    write("\nYour MadLib follows:\n",story)
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides replace] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings.icn provides replace]
 
 {{out}}
 
@@ -1783,7 +1783,7 @@ fun main(args: Array<String>) {
         print("${blank.drop(1).dropLast(1)} : ")
         val repl = readLine()!!
         story = story.replace(blank, repl)
-    }           
+    }
     println("\n$story")
 }
 ```
@@ -1826,7 +1826,7 @@ while k
 k = instr(temp$,"<")
 wend
 print temp$
-wait 
+wait
 
 ```
 
@@ -1837,13 +1837,13 @@ Like some other examples, this prompts the user for a filename for a story templ
 ```Mathematica
 text = Import[
    InputString["Enter the filename of the story template:"]];
-answers = 
+answers =
   AssociationMap[
    InputString[
-     "Enter a" <> 
-      If[StringMatchQ[#, 
+     "Enter a" <>
+      If[StringMatchQ[#,
         "<" ~~ Alternatives @@ Characters["aeiou"] ~~ ___], "n", ""] <>
-       " " <> StringTrim[#, "<" | ">"] <> ":"] &, 
+       " " <> StringTrim[#, "<" | ">"] <> ":"] &,
    Union[StringCases[text, RegularExpression["<[^>]+>"]]]];
 Print[StringReplace[text, Normal[answers]]];
 ```
@@ -1905,14 +1905,14 @@ found a cockerel. Monica L. decided to take it home.
 ```Oforth
 : madlibs
 | story i word |
- 
+
    "" while(System.Console askln dup notEmpty) [ + ] drop ->story
- 
+
    while(story indexOf('<') dup ->i notNull) [
       story extract(i, story indexOfFrom('>', i)) ->word
       story replaceAll(word, "Word for" . word . System.Console askln) ->story
-      ]	
- 
+      ]
+
    "Your story :" . story println ;
 ```
 
@@ -2146,18 +2146,18 @@ this solution uses readline to make editing more convenient.
 
 ```Pike
 #!/usr/bin/pike
- 
+
 Stdio.Readline readln = Stdio.Readline();
- 
+
 void print_help()
 {
     write(#"Write a Story.
 
-Names or objects in the story can be made variable by 
+Names or objects in the story can be made variable by
 referencing them as <person> <object>, etc.
 End the story with an empty line.
 
-Type show to read the story. You will be asked to fill the variables, 
+Type show to read the story. You will be asked to fill the variables,
 and the the story will be shown.
 
 Type help to see this message again.
@@ -2171,7 +2171,7 @@ void add_line(string input)
     array variables = parse_for_variables(input);
     write("Found variables: %{\"%s\" %}\n", variables);
     story += input+"\n";
-} 
+}
 
 array parse_for_variables(string input)
 {
@@ -2202,20 +2202,20 @@ void do_exit()
 {
     exit(0);
 }
- 
+
 mapping functions = ([ "help":print_help,
                        "show":show_story,
                        "exit":do_exit,
                      ]);
 string story = "";
- 
+
 void main()
 {
     Stdio.Readline.History readline_history = Stdio.Readline.History(512);
     readln->enable_history(readline_history);
- 
+
     string prompt="> ";
- 
+
     print_help();
     while(1)
     {
@@ -2234,33 +2234,33 @@ void main()
 
 {{out}}
  Write a Story.
- 
- Names or objects in the story can be made variable by 
+
+ Names or objects in the story can be made variable by
  referencing them as <person> <object>, etc.
  End the story with an empty line.
- 
- Type show to read the story. You will be asked to fill the variables, 
+
+ Type show to read the story. You will be asked to fill the variables,
  and the the story will be shown.
- 
+
  Type help to see this message again.
  Type exit to quit.
- 
+
  > <person> is a programmer.
- Found variables: "person" 
+ Found variables: "person"
  > <he or she> created <website> for all of us to enjoy.
- Found variables: "he or she" "website" 
- > 
+ Found variables: "he or she" "website"
+ >
  Please name a person: Michael
  Please name a he or she: he
  Please name a website: RosettaCode
- 
+
  Michael is a programmer.
  he created RosettaCode for all of us to enjoy.
- > 
+ >
  Please name a person: Guilaumme
  Please name a he or she: he
  Please name a website: PLEAC
- 
+
  Guilaumme is a programmer.
  he created PLEAC for all of us to enjoy.
  > exit
@@ -2299,7 +2299,7 @@ This runs the example:
 found a <noun>. <name> decided to take it home." )
 
 Gimme a(n) name: Mr. T
-Gimme a(n) he or she: he   
+Gimme a(n) he or she: he
 Gimme a(n) noun: fool
 ------------------------------
 Mr. T went for a walk in the park. he
@@ -2319,12 +2319,12 @@ On <4:his or her> way home, <2> found a <5:noun (singular)>,
 two <7:noun (plural)> and a <8:noun (singular)>." )
 
 Gimme a(n) name: MC Hammer
-Gimme a(n) he or she: he       
-Gimme a(n) noun (singular): pair of baggy pants 
-Gimme a(n) his or her: his                
+Gimme a(n) he or she: he
+Gimme a(n) noun (singular): pair of baggy pants
+Gimme a(n) his or her: his
 Gimme a(n) noun (singular): hammer
 Gimme a(n) noun (plural): STOP signs
-Gimme a(n) noun (singular): clock     
+Gimme a(n) noun (singular): clock
 ------------------------------
 MC Hammer went for a walk in the park. he
 found a pair of baggy pants. MC Hammer decided to take it home.
@@ -2417,12 +2417,12 @@ end Mad_Libs;
 
 ```txt
 
-Please type a name: 
-Please type a pronoun (he or she): 
-Please type a noun: 
+Please type a name:
+Please type a pronoun (he or she):
+Please type a noun:
 
-John went for a walk in the park. he 
-found a dog. John decided to take it home. 
+John went for a walk in the park. he
+found a dog. John decided to take it home.
 
 ```
 
@@ -2482,7 +2482,7 @@ function New-MadLibs
         $_male   = New-Object System.Management.Automation.Host.ChoiceDescription "&Male", "Selects male gender."
         $_female = New-Object System.Management.Automation.Host.ChoiceDescription "&Female", "Selects female gender."
         $options = [System.Management.Automation.Host.ChoiceDescription[]]($_male, $_female)
-        $result  = $host.UI.PromptForChoice($title, $message, $options, 0) 
+        $result  = $host.UI.PromptForChoice($title, $message, $options, 0)
 
         switch ($result)
         {
@@ -2636,7 +2636,7 @@ Instead of writing the story in the console, it reads from a file given by the p
 (define (replace-context mad-libs)
   (define matches
     (regexp-match* #rx"<[a-zA-Z0-9 ]*>" mad-libs))
-  (map 
+  (map
    (lambda (context)
      (display (format "~a?" context))
      (cons context (read-line)))
@@ -2646,7 +2646,7 @@ Instead of writing the story in the console, it reads from a file given by the p
   (display "Tell me a file to play Mad Libs: ")
   (define text (get-mad-libs (read-line)))
   (define matches (replace-context text))
-  
+
   (display
    (for/fold ((mad-story text))
      ((change (in-list matches)))
@@ -2758,12 +2758,12 @@ temp="<name> went for a walk in the park. <he or she> found a <noun>. <name> dec
 k = substr(temp,"<")
 while k
       replace   = substr(temp,k,substr(temp,">")-k + 1)
-      see "replace:" + replace + " with: " 
+      see "replace:" + replace + " with: "
       give with
       while k
             temp  = left(temp,k-1) + with + substr(temp,k + len(replace))
             k = substr(temp,replace)
-      end 
+      end
       k = substr(temp,"<")
 end
 see temp + nl
@@ -2821,7 +2821,7 @@ while k
     while k
         temp$  = left$(temp$,k-1) + with$ + mid$(temp$,k + len(replace$))
         k      = instr(temp$,replace$,k)
-    wend 
+    wend
 k = instr(temp$,"<")
 wend
 print temp$
@@ -3314,7 +3314,7 @@ qux>>
 ```zkl
 story,line,re:=Data(),"",RegExp("(<[^>]+>)");
 do{ line=ask("Story: "); story.write(line,"\n") }while(line);
-while(re.search(story,True)){ 
+while(re.search(story,True)){
    z,ml,N:=re.matched,z[1],z[0][1]; // z=( (0,6),"<name>" )
    s:=ask("Text to replace ",ml," with: ");
    while(Void!=(n:=story.find(ml))){ story[n,N]=s } // replace all <names>s

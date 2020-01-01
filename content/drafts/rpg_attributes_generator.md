@@ -49,7 +49,7 @@ Write a program that:
 
 /* ARM assembly Raspberry PI  */
 /*  program rpg.s   */
- 
+
 /************************************/
 /* Constantes                       */
 /************************************/
@@ -81,22 +81,22 @@ sMessValeurT:       .fill 11, 1, ' '            @ size => 11
 sMessResultQ:       .ascii "Values above 15  = "
 sMessValeurQ:       .fill 11, 1, ' '            @ size => 11
                     .asciz "\n"
- 
+
 .align 4
 iGraine:  .int 123456
 
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 tiTirages:               .skip  4 * NBTIRAGES
 tiValues:                .skip  4 * NBVALUES
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                             @ entry of program 
+.global main
+main:                                             @ entry of program
 
 1:                                                @ begin loop 1
     mov r2,#0                                     @ counter value >15
@@ -104,7 +104,7 @@ main:                                             @ entry of program
     mov r5,#0                                     @ total
     ldr r3,iAdrtiValues                           @ table values address
 2:
-    bl genValue                                   @ call generate value 
+    bl genValue                                   @ call generate value
     str r0,[r3,r4,lsl #2]                         @ store in table
     add r5,r0                                     @ compute total
     cmp r0,#MAXVALUE                                    @ count value > 15
@@ -130,11 +130,11 @@ main:                                             @ entry of program
     ldr r0,iAdrsMessResultQ
     bl affichageMess                              @ display message
 
-100:                                              @ standard end of the program 
+100:                                              @ standard end of the program
     mov r0, #0                                    @ return code
     mov r7, #EXIT                                 @ request to exit program
     svc #0                                        @ perform the system call
- 
+
 iAdrsMessValeur:          .int sMessValeur
 iAdrszCarriageReturn:     .int szCarriageReturn
 iAdrsMessResult:          .int sMessResult
@@ -144,7 +144,7 @@ iAdrsMessValeurQ:         .int sMessValeurQ
 iAdrsMessResultQ:         .int sMessResultQ
 iAdrtiValues:             .int tiValues
 /******************************************************************/
-/*     generate value                                  */ 
+/*     generate value                                  */
 /******************************************************************/
 /* r0 returns the value             */
 genValue:
@@ -174,7 +174,7 @@ genValue:
     blt 2b
 100:
     pop {r1-r4,lr}
-    bx lr                                     @ return 
+    bx lr                                     @ return
 iAdrtiTirages:           .int tiTirages
 /***************************************************/
 /*   shell Sort  decreasing                                  */
@@ -191,7 +191,7 @@ shellSort:
 1:                               @ start loop 1
     lsrs r1,#1                   @ gap = gap / 2
     beq 100f                     @ if gap = 0 -> end
-    mov r3,r1                    @ init loop indice 1 
+    mov r3,r1                    @ init loop indice 1
 2:                               @ start loop 2
     ldr r4,[r0,r3,lsl #2]        @ load first value
     mov r5,r3                    @ init loop indice 2
@@ -210,14 +210,14 @@ shellSort:
     cmp r3,r2                    @ end ?
     ble 2b                       @ no -> loop 2
     b 1b                         @ yes loop for new gap
- 
+
 100:                             @ end function
     pop {r0-r7,lr}               @ restaur registers
-    bx lr                        @ return 
+    bx lr                        @ return
 
 
 /******************************************************************/
-/*      Display table elements                                */ 
+/*      Display table elements                                */
 /******************************************************************/
 /* r0 contains the address of table */
 displayTable:
@@ -239,41 +239,41 @@ displayTable:
     pop {r0-r3,lr}
     bx lr
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
- 
+
 1:                                                  @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b                                          @ and loop
                                                     @ and move digit from left of area
@@ -286,23 +286,23 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -310,40 +310,40 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 /***************************************************/
 /*   Generation random number                  */
 /***************************************************/
 /* r0 contains limit  */
 genereraleas:
-    push {r1-r4,lr}                                    @ save registers 
+    push {r1-r4,lr}                                    @ save registers
     ldr r4,iAdriGraine
     ldr r2,[r4]
     ldr r3,iNbDep1
     mul r2,r3,r2
     ldr r3,iNbDep1
     add r2,r2,r3
-    str r2,[r4]                                        @ maj de la graine pour appel suivant 
+    str r2,[r4]                                        @ maj de la graine pour appel suivant
     cmp r0,#0
     beq 100f
     mov r1,r0                                          @ divisor
     mov r0,r2                                          @ dividende
     bl division
     mov r0,r3                                          @ résult = remainder
-  
+
 100:                                                   @ end function
     pop {r1-r4,lr}                                     @ restaur registers
     bx lr                                              @ return
 /*****************************************************/
 iAdriGraine: .int iGraine
 iNbDep1: .int 0x343FD
-iNbDep2: .int 0x269EC3 
+iNbDep2: .int 0x269EC3
 /***************************************************/
 /* integer division unsigned                       */
 /***************************************************/
@@ -357,14 +357,14 @@ division:
     mov r3, #0                                         @ init remainder
     mov r4, #32                                        @ init counter bits
     b 2f
-1:                                                     @ loop 
+1:                                                     @ loop
     movs r0, r0, LSL #1                                @ r0 <- r0 << 1 updating cpsr (sets C if 31st bit of r0 was 1)
-    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C 
-    cmp r3, r1                                         @ compute r3 - r1 and update cpsr 
-    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1 
-    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C 
+    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C
+    cmp r3, r1                                         @ compute r3 - r1 and update cpsr
+    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1
+    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C
 2:
-    subs r4, r4, #1                                    @ r4 <- r4 - 1 
+    subs r4, r4, #1                                    @ r4 <- r4 - 1
     bpl 1b                                             @ if r4 >= 0 (N=0) then loop
     pop {r4, lr}
     bx lr
@@ -378,8 +378,8 @@ division:
 
 {{trans|Go}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -442,8 +442,8 @@ Their sum is 77 and 3 of them are >= 15
 
 GCC 4.9.2, unoptimised.
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <ctime>
 #include <iostream>
 #include <cstdlib>
@@ -454,34 +454,34 @@ using namespace std;
 int main()
 {
     srand(time(0));
-    
+
     unsigned int attributes_total = 0;
     unsigned int count = 0;
     int attributes[6] = {};
     int rolls[4] = {};
-    
+
     while(attributes_total < 75 || count < 2)
     {
         attributes_total = 0;
         count = 0;
-        
+
         for(int attrib = 0; attrib < 6; attrib++)
-        {            
+        {
             for(int roll = 0; roll < 4; roll++)
             {
                 rolls[roll] = 1 + (rand() % 6);
             }
-            
+
             sort(rolls, rolls + 4);
-            int roll_total = rolls[1] + rolls[2] + rolls[3];            
-                        
+            int roll_total = rolls[1] + rolls[2] + rolls[3];
+
             attributes[attrib] = roll_total;
             attributes_total += roll_total;
-            
+
             if(roll_total >= 15) count++;
         }
     }
-    
+
     cout << "Attributes generated : [";
     cout << attributes[0] << ", ";
     cout << attributes[1] << ", ";
@@ -489,10 +489,10 @@ int main()
     cout << attributes[3] << ", ";
     cout << attributes[4] << ", ";
     cout << attributes[5];
-    
+
     cout << "]\nTotal: " << attributes_total;
     cout << ", Values above 15 : " << count;
-    
+
     return 0;
 }
 ```
@@ -564,38 +564,38 @@ attribs: 16, 8, 9, 15, 16, 12, sum=76, (good sum, high vals=3) - success
 <lang Caché ObjectScript>RPGGEN
     set attr = $lb("")    ; empty list to start
     write "Rules:",!,"1.) Total of 6 attributes must be at least 75.",!,"2.) At least two scores must be 15 or more.",!
-    
+
     ; loop until valid result
     do {
         ; loop through 6 attributes
         for i = 1:1:6 {
             set (low, dice, keep) = ""
-            
+
             ; roll 4 dice each time
             for j = 1:1:4 {
                 set roll = $r(6) + 1
                 set dice = dice + roll
-                
+
                 if (roll < low) || (low = "") {
                     set low = roll
                 }
             }    ; 4 dice rolls per attribute
-            
+
             set keep = (dice - low)
             set $list(attr,i) = keep
         }    ; 6 attributes
-        
+
         ; loop the ending list
         set (tot,bigs) = 0
         for i = 1:1:$listlength(attr) {
             set cur = $listget(attr,i)
             set tot = tot + cur
-            
+
             if (cur >= 15) {
                 set bigs = bigs + 1
             }
         }
-        
+
         ; analyze results
         write !,"Scores: "_$lts(attr)
         set result = $select((tot < 75) && (bigs < 2):0,tot < 75:1,bigs < 2:2,1:3)
@@ -603,13 +603,13 @@ attribs: 16, 8, 9, 15, 16, 12, sum=76, (good sum, high vals=3) - success
                     0:"Total "_tot_" too small and not enough attributes ("_bigs_") >= 15.",
                     1:"Total "_tot_" too small.",
                     2:"Need 2 or more attributes >= 15, only have "_bigs_".",
-                    3:"Total "_tot_" and "_bigs_ " attributes >=15 are sufficient.")    
+                    3:"Total "_tot_" and "_bigs_ " attributes >=15 are sufficient.")
     } while (result '= 3)
-    
+
     quit
 ```
 
-	
+
 {{out}}
 ```txt
 
@@ -703,7 +703,7 @@ func Array.findAll(pred) {
         yield x
     }
 }
- 
+
 var good = false
 
 while !good {
@@ -781,23 +781,23 @@ CONSTANT: stat-names qw{ Str Dex Con Int Wis Cha }
 
 : attribute ( -- n )
     4 [ ROLL: 1d6 ] replicate 3 <iota> kth-largests sum ;
-    
+
 : stats ( -- seq ) 6 [ attribute ] replicate ;
 
 : valid-stats? ( seq -- ? )
     { [ [ 15 >= ] count 2 >= ] [ sum 75 >= ] } 1&& ;
-    
+
 : generate-valid-stats ( -- seq )
     f [ dup valid-stats? ] [ drop stats ] do until ;
-    
+
 : stats-info ( seq -- )
     [ sum ] [ [ 15 >= ] count ] bi
     "Total: %d\n# of attributes >= 15: %d\n" printf ;
-    
+
 : main ( -- )
     generate-valid-stats dup stat-names swap
     [ "%s: %d\n" printf ] 2each nl stats-info ;
-    
+
 MAIN: main
 ```
 
@@ -986,7 +986,7 @@ generate_character=: (; (+/ ; ])@:([: generate_attributes@:show Until accept 0:)
 ├──────┼──┼─────────────────┤
 │Judas │83│16 11 12 15 17 12│
 └──────┴──┴─────────────────┘
-   
+
 
 ```
 
@@ -998,30 +998,30 @@ generate_character=: (; (+/ ; ])@:([: generate_attributes@:show Until accept 0:)
 ```Java
 
     static boolean goodRoll = false;
-    
+
     public static int genAttribute(){
         // Create a new Random object to populate our array with. We use nextInt(6)+1 because 6 is exclusive and 0 is inclusive
         Random dice = new Random();
         int[] sumArray = {dice.nextInt(6)+1, dice.nextInt(6)+1, dice.nextInt(6)+1, dice.nextInt(6)+1};
-        
+
         // Sort the array ascending, last 3 dice will always be the highest, return sum.
         java.util.Arrays.sort(sumArray);
         return (sumArray[1] + sumArray[2] + sumArray[3]);
     }
-    
+
     public static boolean checkFinalArray(int[] checkArray){
         int fifteenCount = 0;
-        
+
         // First check for how many 15+'s
         for (int z : checkArray){
             if (z >= 15){
                 fifteenCount++;
             }
         }
-        
+
         return (fifteenCount >= 2 && Arrays.stream(checkArray).sum() >= 75);
     }
-    
+
     public static void main(String[] args) {
         // Here we use a while loop to make sure that while the conditions aren't met, we reroll.
         while (!goodRoll){
@@ -1040,7 +1040,7 @@ generate_character=: (; (+/ ; ])@:([: generate_attributes@:show Until accept 0:)
                     System.out.println(x);
                 }
                 goodRoll = true; // Exit the loop if conditions are met.
-            }      
+            }
         }
     }
 
@@ -1081,20 +1081,20 @@ function roll() {
 
     for(let j=0;j<=3;j++) {
       d6s.push(Math.ceil(Math.random() * 6))
-    }    
+    }
 
     d6s.sort().splice(0, 1);
     rollTotal = d6s.reduce((a, b) => a+b, 0);
 
     stats.rolls.push(rollTotal);
-    stats.total += rollTotal; 
+    stats.total += rollTotal;
   }
-  
+
   return stats;
 }
 
 let rolledCharacter = roll();
-  
+
 while(rolledCharacter.total < 75 || rolledCharacter.rolls.filter(a => a >= 15).length < 2){
   rolledCharacter = roll();
 }
@@ -1363,7 +1363,7 @@ roll = function()
     results.remove 0
     return results.sum
 end function
- 
+
 while true
     attributes = []
     gt15 = 0    // (how many attributes > 15)
@@ -1371,10 +1371,10 @@ while true
         attributes.push roll
         if attributes[i] > 15 then gt15 = gt15 + 1
     end for
- 
+
     print "Attribute values: " + attributes.join(", ")
     print "Attributes total:  " + attributes.sum
- 
+
     if attributes.sum >= 75 and gt15 >= 2 then break
     print "Attributes failed, rerolling"
     print
@@ -1389,15 +1389,15 @@ print "Success!"
 Attribute values: 11, 13, 8, 10, 8, 10
 Attributes total:  60
 Attributes failed, rerolling
- 
+
 Attribute values: 11, 13, 14, 13, 15, 14
 Attributes total:  80
 Attributes failed, rerolling
- 
+
 Attribute values: 13, 11, 12, 9, 13, 12
 Attributes total:  70
 Attributes failed, rerolling
- 
+
 Attribute values: 18, 17, 12, 10, 17, 12
 Attributes total:  86
 Success!
@@ -1415,7 +1415,7 @@ var
    total, roll,score, count: integer;
    atribs : array [1..6] of integer;
 
-begin 
+begin
     randomize; {Initalise the random number genertor}
     repeat
         count:=0;
@@ -1423,14 +1423,14 @@ begin
         for score :=1 to 6 do begin
            {roll:=random(18)+1;   produce a number up to 18, pretty much the same results}
            for diceroll:=1 to 4 do dice[diceroll]:=random(6)+1; {roll 4 six sided die}
-   
+
            {find lowest rolled dice. If we roll two or more equal low rolls then we
 	    eliminate the first of them, change '<' to '<=' to eliminate last low die}
            lowroll:=7;
 	   lowdie:=0;
 	   for diceroll:=1 to 4 do if (dice[diceroll] < lowroll) then begin
 	       lowroll := dice[diceroll];
-	       lowdie := diceroll; 
+	       lowdie := diceroll;
 	   end;
            {add up higest three dice}
 	   roll:=0;
@@ -1610,26 +1610,26 @@ $count = 0;
 
 while($attributesTotal < 75 || $count < 2) {
     $attributes = [];
-    
+
     foreach(range(0, 5) as $attribute) {
         $rolls = [];
-        
+
         foreach(range(0, 3) as $roll) {
             $rolls[] = rand(1, 6);
         }
-        
+
         sort($rolls);
         array_shift($rolls);
-        
+
         $total = array_sum($rolls);
-        
+
         if($total >= 15) {
             $count += 1;
         }
-        
+
         $attributes[] = $total;
     }
-    
+
     $attributesTotal = array_sum($attributes);
 }
 
@@ -1649,7 +1649,7 @@ print_r($attributes);
 Procedure roll_attribute()
   Protected i, sum
   Dim rolls(3)
-  
+
   For i = 0 To 3
     rolls(i) = Random(6, 1)
   Next i
@@ -1664,7 +1664,7 @@ EndProcedure
 
 Procedure displayAttributes(List attributes(), sum, heroicCount)
   Protected output$
-  
+
   output$ = "Attributes generated: ["
   ForEach attributes()
     output$ + attributes()
@@ -1677,7 +1677,7 @@ EndProcedure
 
 Procedure Gen_attributes()
   Protected i, attributesSum, heroicAttributesCount
-  
+
   NewList attributes()
   Repeat
     ClearList(attributes())
@@ -1689,7 +1689,7 @@ Procedure Gen_attributes()
       heroicAttributesCount + Bool(attributes() >= #heroicAttributeMinimum)
     Next
   Until attributesSum >= #attributeSumMinimum And heroicAttributesCount >= #heroicAttributeCountMinimum
-  
+
   displayAttributes(attributes(), attributesSum, heroicAttributesCount)
 EndProcedure
 
@@ -1726,22 +1726,22 @@ while attributes_total < 75 or count < 2:
 
     for attribute in range(0, 6):
         rolls = []
-        
+
         for roll in range(0, 4):
             result = random.randint(1, 6)
             rolls.append(result)
-        
+
         sorted_rolls = sorted(rolls)
         largest_3 = sorted_rolls[1:]
         rolls_total = sum(largest_3)
-        
+
         if rolls_total >= 15:
             count += 1
-        
+
         attributes.append(rolls_total)
 
     attributes_total = sum(attributes)
-    
+
 print(attributes_total, attributes)
 ```
 
@@ -1765,14 +1765,14 @@ total = 0
 count = 0
 
 while total < 75 or count < 2:
-    attributes = [(sum(sorted([random.randint(1, 6) for roll in range(0, 4)])[1:])) for attribute in range(0, 6)]    
-   
+    attributes = [(sum(sorted([random.randint(1, 6) for roll in range(0, 4)])[1:])) for attribute in range(0, 6)]
+
     for attribute in attributes:
         if attribute >= 15:
             count += 1
-   
+
     total = sum(attributes)
-    
+
 print(total, attributes)
 ```
 
@@ -2159,28 +2159,28 @@ load "stdlib.ring"
 attributestotal = 0
 count = 0
 while attributestotal < 75 or count < 2
-        attributes = [] 
+        attributes = []
         for attribute = 0 to 6
-             rolls = [] 
-             largest3 = [] 
+             rolls = []
+             largest3 = []
              for roll = 0 to 4
                   result = random(5)+1
                   add(rolls,result)
-             next 
+             next
              sortedrolls = sort(rolls)
              sortedrolls = reverse(sortedrolls)
              for n = 1 to 3
                   add(largest3,sortedrolls[n])
              next
-             rollstotal = sum(largest3) 
+             rollstotal = sum(largest3)
              if rollstotal >= 15
                 count = count + 1
-             ok 
+             ok
              add(attributes,rollstotal)
         next
         attributestotal = sum(attributes)
 end
-showline() 
+showline()
 
 func sum(aList)
        num = 0
@@ -2295,7 +2295,7 @@ fn attributes_finalizer() -> (Vec<i32>, i32, bool) {
     for _ in 0..6 {
         attributes.push(die.attribute_out())
     }
-    
+
     let attributes_total: i32 = attributes.iter().sum();
 
     let numerical_condition: bool = attributes
@@ -2402,7 +2402,7 @@ const proc: main is func
     var integer: sumOfRolls is 0;
     var array integer: attribute is 6 times 0;
     var array integer: dice is 4 times 0;
-  begin 
+  begin
     repeat
       count := 0;
       total := 0;

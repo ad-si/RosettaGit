@@ -14,12 +14,12 @@ tags = []
 [[Category:Iteration]]
 
 ;Task:
-Select certain elements from an Array into a new Array in a generic way. 
+Select certain elements from an Array into a new Array in a generic way.
 
 
 To demonstrate, select all even numbers from an Array.
 
-As an option, give a second solution which filters destructively, 
+As an option, give a second solution which filters destructively,
 by modifying the original Array rather than creating a new Array.
 
 
@@ -70,11 +70,11 @@ arr = arr.filter(function(item:int, index:int, array:Array) {
 ```ada
 with Ada.Integer_Text_Io; use Ada.Integer_Text_Io;
 with Ada.Text_Io; use Ada.Text_Io;
- 
+
 procedure Array_Selection is
    type Array_Type is array (Positive range <>) of Integer;
    Null_Array : Array_Type(1..0);
-   
+
    function Evens (Item : Array_Type) return Array_Type is
    begin
       if Item'Length > 0 then
@@ -87,7 +87,7 @@ procedure Array_Selection is
          return Null_Array;
       end if;
    end Evens;
-   
+
    procedure Print(Item : Array_Type) is
    begin
       for I in Item'range loop
@@ -95,7 +95,7 @@ procedure Array_Selection is
          New_Line;
       end loop;
    end Print;
-    
+
    Foo : Array_Type := (1,2,3,4,5,6,7,8,9,10);
 begin
    Print(Evens(Foo));
@@ -109,7 +109,7 @@ with Ada.Text_IO;  use Ada.Text_IO;
 
 procedure Array_Selection is
    type Array_Type is array (Positive range <>) of Integer;
-  
+
    function Evens (Item : Array_Type) return Array_Type is
       Result : Array_Type (1..Item'Length);
       Index  : Positive := 1;
@@ -122,7 +122,7 @@ procedure Array_Selection is
       end loop;
       return Result (1..Index - 1);
    end Evens;
-  
+
    procedure Put (Item : Array_Type) is
    begin
       for I in Item'range loop
@@ -211,7 +211,7 @@ main(void)
 ```algol68
 MODE TYPE = INT;
 
-PROC select = ([]TYPE from, PROC(TYPE)BOOL where)[]TYPE: 
+PROC select = ([]TYPE from, PROC(TYPE)BOOL where)[]TYPE:
 BEGIN
   FLEX[0]TYPE result;
   FOR key FROM LWB from TO UPB from DO
@@ -377,15 +377,15 @@ on isEven(x)
 end isEven
 
 on run
-    
+
     filter(isEven, {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    
+
     -- {0, 2, 4, 6, 8, 10}
 end run
 
 -- GENERIC FUNCTION -----------------------------------------------------------
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -448,8 +448,8 @@ IsEven(number)
 array = 1,2,3,4,5,6,7
 
 even(s) {
-	loop, parse, s, `, 
-		if !mod(A_LoopField, 2) 
+	loop, parse, s, `,
+		if !mod(A_LoopField, 2)
 			r .= "," A_LoopField
 	return SubStr(r, 2)
 }
@@ -463,7 +463,7 @@ array2 := [1,2,3,4,5,6,7]
 even2(a) {
 	r := []
 	For k, v in a
-		if !mod(v, 2) 
+		if !mod(v, 2)
 			r.Insert(v)
 	return r
 }
@@ -471,7 +471,7 @@ even2(a) {
 ; Add "join" method to string object (just like python)
 s_join(o, a) {
 	Loop, % a.MaxIndex()
-		r .= o a[A_Index] 
+		r .= o a[A_Index]
 	return SubStr(r, StrLen(o) + 1)
 }
 "".base.join := Func("s_join")
@@ -486,8 +486,8 @@ MsgBox % "Array => " ",".join(array2) "`n"  "Result => " ",".join(even2(array2))
 
 ## AWK
 
-In this example, an array is filled with the numbers 1..9. 
-In a loop, even elements are collected into the string ''r''. 
+In this example, an array is filled with the numbers 1..9.
+In a loop, even elements are collected into the string ''r''.
 Note that sequence is not necessarily maintained.
 
 '''One-liner:'''
@@ -509,7 +509,7 @@ $ awk 'BEGIN{split("1 2 3 4 5 6 7 8 9",a);for(i in a)if(!(a[i]%2))r=r" "a[i];pri
 
 BEGIN {
   split("1 2 3 4 5 6 7 8 9",a);
-  for(i in a)  if( !(a[i]%2) )  r = r" "a[i]; 
+  for(i in a)  if( !(a[i]%2) )  r = r" "a[i];
   print r
 }
 
@@ -610,13 +610,13 @@ numberarray - 2 4 6 8 10
       FOR index% = 1 TO items%
         array%(index%) = RND
       NEXT
-      
+
       REM Count the number of filtered items:
       filtered% = 0
       FOR index% = 1 TO items%
         IF FNfilter(array%(index%)) filtered% += 1
       NEXT
-      
+
       REM Create a new array containing the filtered items:
       DIM new%(filtered%)
       filtered% = 0
@@ -626,7 +626,7 @@ numberarray - 2 4 6 8 10
           new%(filtered%) = array%(index%)
         ENDIF
       NEXT
-      
+
       REM Alternatively modify the original array:
       filtered% = 0
       FOR index% = 1 TO items%
@@ -636,7 +636,7 @@ numberarray - 2 4 6 8 10
         ENDIF
       NEXT
       END
-      
+
       DEF FNfilter(A%) = ((A% AND 1) = 0)
 ```
 
@@ -689,8 +689,8 @@ blsq ) 1 13r@{2.%n!}f[
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int even_sel(int x) { return !(x & 1); }
@@ -792,8 +792,8 @@ foreach (int i in evens)
 
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <algorithm>
 #include <functional>
 #include <iterator>
@@ -817,8 +817,8 @@ int main() {
 
 {{works with|C++11}}
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <algorithm>
 #include <iterator>
 #include <iostream>
@@ -861,7 +861,7 @@ array = {x \\ x <- [1 .. 10]}
 
 
 Create (and print) a strict array where each element (coming from another array) is even.
- 
+
 
 ```clean
 Start :: {!Int}
@@ -905,7 +905,7 @@ Start = {x \\ x <-: array | isEven x}
 
 ## Common Lisp
 
-Common Lisp has many ways of accomplishing this task. Most of them involve higher-order sequence functions that take a predicate as the first argument and a list as the second argument. A predicate is a function that returns a boolean. The higher-order functions call the predicate for each element in list, testing the element. 
+Common Lisp has many ways of accomplishing this task. Most of them involve higher-order sequence functions that take a predicate as the first argument and a list as the second argument. A predicate is a function that returns a boolean. The higher-order functions call the predicate for each element in list, testing the element.
 
 In this example, the goal is to find the even numbers. The most straight-forward function is to use remove-if-not, which removes elements from the list that does ''not'' pass the predicate. The predicate, in this case, tests to see if an element is even. Therefore, the remove-if-not acts like a filter:
 
@@ -919,7 +919,7 @@ In this example, the goal is to find the even numbers. The most straight-forward
 However, this function is non-destructive, meaning the function creates a brand new list. This might be too prohibitive for very large lists.
 
 
-###  Destructive 
+###  Destructive
 
 There is a destructive version that modifies the list in-place:
 
@@ -1242,13 +1242,13 @@ import system'routines;
 import system'math;
 import extensions;
 import extensions'routines;
- 
+
 public program()
 {
     auto array := new int[]::(1,2,3,4,5);
- 
+
     var evens := array.filterBy:(n => n.mod:2 == 0).toArray();
- 
+
     evens.forEach:printingLn
 }
 ```
@@ -1260,13 +1260,13 @@ import system'collections;
 import system'routines'stex;
 import system'math;
 import extensions;
- 
+
 public program()
 {
     int[] array := new int[]::(1,2,3,4,5);
- 
-    array 
-        .filterBy:(int n => n.mod:2 == 0) 
+
+    array
+        .filterBy:(int n => n.mod:2 == 0)
         .forEach:(int i){ console.printLine(i) }
 }
 ```
@@ -1355,7 +1355,7 @@ val it : int list = [2; 4; 6]
 This code uses ''filter'' on an array.
 
 
-```factor>10 <iota> 
+```factor>10 <iota>
 array [ even? ] filter .
 ! prints { 0 2 4 6 8 }
 ```
@@ -1371,7 +1371,7 @@ array [ even? ] filter .
 
 
 
-###  Destructive 
+###  Destructive
 
 This uses ''filter!'' to modify the original vector.
 
@@ -1483,7 +1483,7 @@ program Filter
   print *, filtered
 
 contains
-  
+
   function filterwith(ar, testfunc)
     integer, dimension(:), pointer        :: filterwith
     integer, dimension(:), intent(in)     :: ar
@@ -1523,7 +1523,7 @@ end program Filter
 Type FilterType As Function(As Integer) As Boolean
 
 Function isEven(n As Integer) As Boolean
-  Return n Mod 2  = 0 
+  Return n Mod 2  = 0
 End Function
 
 Sub filterArray(a() As Integer, b() As Integer, filter As FilterType)
@@ -1536,7 +1536,7 @@ Sub filterArray(a() As Integer, b() As Integer, filter As FilterType)
       count += 1
     End If
   Next
-  
+
   If count > 0 Then Redim Preserve b(0 To count - 1) '' trim excess elements
 End Sub
 
@@ -1552,14 +1552,14 @@ Sub filterDestructArray(da() As Integer, filter As FilterType)
       Next j
       count += 1
       i -= 1
-    End If  
+    End If
   Next i
 
-  If count > 0 Then 
+  If count > 0 Then
     Redim Preserve da(LBound(da) To UBound(da) - count) '' trim excess elements
   End If
 End Sub
-  
+
 Dim n As Integer = 12
 Dim a(1 To n) As Integer '' creates dynamic array as upper bound is a variable
 For i As Integer = 1 To n : Read a(i) : Next
@@ -1690,13 +1690,13 @@ Output:
 ```gap
 # Built-in
 
-Filtered([1 .. 100], IsPrime);            
+Filtered([1 .. 100], IsPrime);
 # [ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97 ]
 
-Filtered([1 .. 10], IsEvenInt); 
+Filtered([1 .. 10], IsEvenInt);
 # [ 2, 4, 6, 8, 10 ]
 
-Filtered([1 .. 10], IsOddInt); 
+Filtered([1 .. 10], IsOddInt);
 # [ 1, 3, 5, 7, 9 ]
 ```
 
@@ -1993,7 +1993,7 @@ Functional.select("+1&1", [1,2,3,4])   // [2, 4]
 
 
     // TEST
-    
+
     return [1,2,3,4,5,6,7,8,9]
         .filter(isEven);
 
@@ -2066,7 +2066,7 @@ filter(iseven, 1:10) = [2, 4, 6, 8, 10]
 
    / as a function
    evens:{x@&even'x}
-   a:10?100 
+   a:10?100
 45 5 79 77 44 15 83 88 33 99
    evens a
 44 88
@@ -2306,13 +2306,13 @@ Module CheckIt {
             \\ [] return a stack object, leave an empty stack as current stack
             =Array([])
       }
-      
+
       Dim A(5), B()
       A(0)=10,3,6,7,11
       B()=GetEvenNumbers(A())
       Print B()  ' print 10,6
       Print GetEvenNumbers((1,2,3,4,5,6,7,8))  ' 2 4 6 8
-      
+
       Module Filter2EvenNumbers (&A()) {
             If len(A())=0 then  exit
             Stack New {
@@ -2341,7 +2341,7 @@ Module CheckIt {
       Dim A(5)
       A(0)=10,3,6,7,11
       Filter2EvenNumbers &A()
-      Print A()  ' 10 6    
+      Print A()  ' 10 6
 }
 CheckIt
 }
@@ -2551,7 +2551,7 @@ Filter[T] (a : array[T], f : T -> bool) : array[T]
 options replace format comments java crossref symbols nobinary
 numeric digits 5000
 
--- 
+--
 ### =======================================================================
 
 class RFilter public
@@ -2566,7 +2566,7 @@ class RFilter public
   method runSample(arg) public
     sd1 = Rexx[]
     sd2 = Rexx[]
-  
+
     say 'Test data:'
     sd1 = makeSampleData(100)
     display(sd1)
@@ -2596,7 +2596,7 @@ class RFilter public
       end e_
     return sd
 
--- 
+--
 ### =======================================================================
 
 class RFilter.ArrayFilter abstract
@@ -2623,11 +2623,11 @@ class RFilter.EvenNumberOnlyArrayFilter extends RFilter.ArrayFilter
 
 Test data:
 --------------------------------------------------------------------------------
--24.5 -24 -23.5 -23 -22.5 -22 -21.5 -21 -20.5 -20 -19.5 -19 -18.5 -18 -17.5 -17 -16.5 -16 -15.5 -15 -14.5 -14 -13.5 -13 -12.5 -12 -11.5 -11 -10.5 -10 -9.5 -9 -8.5 -8 -7.5 -7 -6.5 -6 -5.5 -5 -4.5 -4 -3.5 -3 -2.5 -2 -1.5 -1 -0.5 0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 10.5 11 11.5 12 12.5 13 13.5 14 14.5 15 15.5 16 16.5 17 17.5 18 18.5 19 19.5 20 20.5 21 21.5 22 22.5 23 23.5 24 24.5 25 
+-24.5 -24 -23.5 -23 -22.5 -22 -21.5 -21 -20.5 -20 -19.5 -19 -18.5 -18 -17.5 -17 -16.5 -16 -15.5 -15 -14.5 -14 -13.5 -13 -12.5 -12 -11.5 -11 -10.5 -10 -9.5 -9 -8.5 -8 -7.5 -7 -6.5 -6 -5.5 -5 -4.5 -4 -3.5 -3 -2.5 -2 -1.5 -1 -0.5 0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10 10.5 11 11.5 12 12.5 13 13.5 14 14.5 15 15.5 16 16.5 17 17.5 18 18.5 19 19.5 20 20.5 21 21.5 22 22.5 23 23.5 24 24.5 25
 
 Option 1 (copy to a new array):
 --------------------------------------------------------------------------------
--24 -22 -20 -18 -16 -14 -12 -10 -8 -6 -4 -2 0 2 4 6 8 10 12 14 16 18 20 22 24 
+-24 -22 -20 -18 -16 -14 -12 -10 -8 -6 -4 -2 0 2 4 6 8 10 12 14 16 18 20 22 24
 
 Option 2 (replace the original array):
 --------------------------------------------------------------------------------
@@ -2756,7 +2756,7 @@ int main()
 
   NSPredicate *isEven = [NSPredicate predicateWithFormat:@"modulo2 == 0"];
   NSArray *evens = [numbers filteredArrayUsingPredicate:isEven];
-  
+
   NSLog(@"%@", evens);
 
 
@@ -2948,7 +2948,7 @@ my @even = @a.grep(* %% 2);
 ```
 
 
-Destructive: 
+Destructive:
 
 
 ```perl6
@@ -3001,7 +3001,7 @@ sequence s = tagset(10), t
     t = filterd(s,r_even)
     ?s
     ?t
-    -- automatic pass by reference occurs here for s: 
+    -- automatic pass by reference occurs here for s:
     s = filterd(s,r_even)
     ?s
 end procedure
@@ -3020,19 +3020,19 @@ main()
 
 
 In the t=f(s) call, s is preserved because
-of copy-on-write semantics. Modifying a does not modify s. In the s=f(s) call, 
-s is automatically passed by reference, ie the local s is <no value> over the 
-duration of the call whereas parameter a of filterd() contains the only reference to the previous content of s, 
+of copy-on-write semantics. Modifying a does not modify s. In the s=f(s) call,
+s is automatically passed by reference, ie the local s is <no value> over the
+duration of the call whereas parameter a of filterd() contains the only reference to the previous content of s,
 and no copy-on-write occurs. Technically modifying a is still not modifying
 s, but since it has a reference count of 1 it modifies the data that used to be referenced by s, in situ.
-Note: adding t=s before the s=f(s) call would make it non-destructive again, 
+Note: adding t=s before the s=f(s) call would make it non-destructive again,
 as t must be preserved and there is now a reference count >1 on that data.
 
 There is one case in the interpreter (pEmit2.e/rebuild_callback()) where it
 has to circumvent this behaviour. For performance reasons it does not populate
-the symbol table with actual names until a fatal error or trace event occurs. 
-At that time, the symbol table may have a reference count>1, so it deliberately 
-patches it to 1 over the name population call to switch off the copy-on-write 
+the symbol table with actual names until a fatal error or trace event occurs.
+At that time, the symbol table may have a reference count>1, so it deliberately
+patches it to 1 over the name population call to switch off the copy-on-write
 semantics, and later restores the reference count before carrying on.
 
 
@@ -3049,7 +3049,7 @@ extern printf;
 	var arr = 1..9;
 	var evens = arr.filter(#(i) i % 2 == 0);
 	printf("%s\n", evens::str);
-	
+
 	return 0;
 ]
 ```
@@ -3135,10 +3135,10 @@ Results:
 
 ```txt
 
-Unfiltered values: 
+Unfiltered values:
  44270  6008 80477 17004 91587 48669 29623 74640 29841 20019 77833 59865 49647  2272 54781
  36154 40114 71893 25960 76863
-Filtered values: 
+Filtered values:
  44270  6008 17004 74640  2272 36154 40114 25960
 
 ```
@@ -3291,7 +3291,7 @@ Next
 {{out}}
  List of Randoms
  32 35 89 91 11 33 12 22 42 43
- 
+
  List of Even(s)
  32 12 22 42
 
@@ -3526,9 +3526,9 @@ print mold evens
 {{out}}
 
 ```txt
-[2 4 6 8 10 12 14 16 18 20 22 24 
-26 28 30 32 34 36 38 40 42 44 46 48 50 
-52 54 56 58 60 62 64 66 68 70 72 74 76 
+[2 4 6 8 10 12 14 16 18 20 22 24
+26 28 30 32 34 36 38 40 42 44 46 48 50
+52 54 56 58 60 62 64 66 68 70 72 74 76
 78 80 82 84 86 88 90 92 94 96 98 100]
 ```
 
@@ -3555,7 +3555,7 @@ remove-each ele orig [odd? ele]    ;; destructive
 orig: [1 2 3 4 5 6 7 8 9 10]
 cpy: [2 4 6 8 10]
 orig: [2 4 6 8 10]
->> 
+>>
 
 ```
 
@@ -3659,14 +3659,14 @@ if datatype(seed,'W')  then call random ,,seed   /*use the RANDOM seed for repea
       end   /*k*/                                /*stick a fork in it,  we're all done. */
 ```
 
-For the following input:   <tt> , 1234567 </tt> 
+For the following input:   <tt> , 1234567 </tt>
 
 the output is the same as the 1<sup>st</sup> REXX version   (using two arrays).
 
 ===using one array, destructive===
-This version just uses one array to perform the filtering instead of creating a   ''new''   array. 
+This version just uses one array to perform the filtering instead of creating a   ''new''   array.
 
-This method doesn't need as much memory to hold the sparse array. 
+This method doesn't need as much memory to hold the sparse array.
 
 ```rexx
 /*REXX program finds all  even  numbers from an array, and marks the  not even  numbers.*/
@@ -3688,9 +3688,9 @@ if datatype(seed,'W')  then call random ,,seed   /*use the RANDOM seed for repea
       end   /*k*/                                /*stick a fork in it,  we're all done. */
 ```
 
-'''output'''   when the following is used for input:   <tt> ,   1234567 </tt> 
+'''output'''   when the following is used for input:   <tt> ,   1234567 </tt>
 
-Output is the same as the 1<sup>st</sup> REXX version   (using two arrays). 
+Output is the same as the 1<sup>st</sup> REXX version   (using two arrays).
 
 
 
@@ -3703,8 +3703,8 @@ bArray = list(3)
 see evenSelect(aList)
 
 func evenSelect aArray
-i = 0 
-for n = 1 to len(aArray) 
+i = 0
+for n = 1 to len(aArray)
     if (aArray[n] % 2) = 0
        i = i + 1
        bArray[i] = aArray[n] ok
@@ -3717,7 +3717,7 @@ return bArray
 
 ## Ruby
 
-Enumerable#select is the filter that returns a new Array. 
+Enumerable#select is the filter that returns a new Array.
 
 
 ```ruby
@@ -3734,9 +3734,9 @@ p even_ary # => [2, 4, 6]
 
 
 
-###  Destructive 
+###  Destructive
 
-Array#select! is the destructive version which modifies the original Array. 
+Array#select! is the destructive version which modifies the original Array.
 
 
 ```ruby
@@ -3757,7 +3757,7 @@ for i = 1 to 100
     a1(i) = int(rnd(0)*100)+1
     count = count - (a1(i) mod 2)
 next
- 
+
 'dim the extract and fill it
 dim a2(count)
 for i = 1 to 100
@@ -3766,7 +3766,7 @@ for i = 1 to 100
         a2(n)	= a1(i)
     end if
 next
- 
+
 for i = 1 to count
     print a2(i)
 next
@@ -3976,7 +3976,7 @@ cmd:>evens(1...5)
 
 ## SQL
 
-Task: Select certain elements from an Array into a new Array in a generic way. To demonstrate, select all even numbers from an Array. 
+Task: Select certain elements from an Array into a new Array in a generic way. To demonstrate, select all even numbers from an Array.
 
 {{works with|MS SQL}}
 
@@ -4011,7 +4011,7 @@ drop table evens;
 ```
 
 
-Or to be shorter, you could create the table evens directly from the query result : 
+Or to be shorter, you could create the table evens directly from the query result :
 
 ```sql
 create temporary table evens select * from nos where v%2=0;
@@ -4095,7 +4095,7 @@ println(even_numbers)
   variable source
   [ swap source ! >r reset r> 0
     [ i source @ array.get
-      dup 2 mod 0 <> [ drop ] ifTrue 
+      dup 2 mod 0 <> [ drop ] ifTrue
     ] countedLoop
     depth 0 swap [ i even array.put ] countedLoop
   ]
@@ -4185,12 +4185,12 @@ yes \ | cat -n | while read a; do ; expr $a % 2 >/dev/null && echo $a ; done
 
 
 Ursala doesn't have arrays, except when the run time system
-transparently converts a list to an array 
-as needed for an external math library function call. 
+transparently converts a list to an array
+as needed for an external math library function call.
 However, selection can be done on lists.
 
 
-###  Unary predicates 
+###  Unary predicates
 
 
 The most common way to select items from a list according to a unary
@@ -4219,7 +4219,7 @@ y = (not remainder\2)*~ x
 
 
 
-###  Binary predicates 
+###  Binary predicates
 
 
 Selection is so frequently useful that the language has a couple
@@ -4243,7 +4243,7 @@ above that it allows the 36 to be part of the argument rather than
 being hard coded into the function.
 
 
-###  Operator suffixes 
+###  Operator suffixes
 
 
 Many operators in Ursala allow suffixes that modify their semantics.
@@ -4271,7 +4271,7 @@ There are also suffixes corresponding to the <code>~|</code> operator.
 ## V
 
 
-```v>[even? dup 2 / 
+```v>[even? dup 2 /
 int 2 * - zero?].
 
 [1 2 3 4 5 6 7 8 9] [even?] filter
@@ -4290,19 +4290,19 @@ Option Explicit
 Sub Main()
 Dim evens() As Long, i As Long
 Dim numbers() As Long
-    
+
     For i = 1 To 100000
         ReDim Preserve numbers(1 To i)
         numbers(i) = i
     Next i
-    
+
     evens = FilterInNewArray(numbers)
-    
+
     Debug.Print "Count of initial array : " & UBound(numbers) & ", first item : " & numbers(LBound(numbers)) & ", last item : " & numbers(UBound(numbers))
     Debug.Print "Count of new array : " & UBound(evens) & ", first item : " & evens(LBound(evens)) & ", last item : " & evens(UBound(evens))
-    
+
     FilterInPlace numbers
-    
+
     Debug.Print "Count of initial array (filtered): " & UBound(numbers) & ", first item : " & numbers(LBound(numbers)) & ", last item : " & numbers(UBound(numbers))
 End Sub
 
@@ -4582,8 +4582,8 @@ CrLf(0);
 
 ```txt
 
-4 2 6 4 
-4 2 6 4 
+4 2 6 4
+4 2 6 4
 
 ```
 

@@ -587,8 +587,8 @@ blsq ) "ha"5.*\[
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -633,8 +633,8 @@ char *string_repeat(const char *str, int n)
 
 To repeat a single character
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -700,8 +700,8 @@ string s = new String('*', 5);
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 
 std::string repeat( const std::string &word, int times ) {
@@ -721,8 +721,8 @@ int main( ) {
 
 To repeat a single character:
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 
 int main( ) {

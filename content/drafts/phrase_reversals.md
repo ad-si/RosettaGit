@@ -22,9 +22,9 @@ Given a string of space separated words containing the following phrase:
 
 
 Show your output here.
- 
 
-;See also: 
+
+;See also:
 * [[Reverse a string]]
 * [[Reverse words in a string]]
 
@@ -78,9 +78,9 @@ esc::ExitApp
 
 ```txt
 Rosetta Code Phrase Reversal
-lasreveR esarhP edoC attesoR  
-Reversal Phrase Code Rosetta 
-attesoR edoC esarhP lasreveR 
+lasreveR esarhP edoC attesoR
+Reversal Phrase Code Rosetta
+attesoR edoC esarhP lasreveR
 
 ```
 
@@ -89,7 +89,7 @@ attesoR edoC esarhP lasreveR
 ## Ada
 
 
-To split a string into words, the package "Simple_Parse" from another task 
+To split a string into words, the package "Simple_Parse" from another task
 [[http://rosettacode.org/wiki/Reverse_words_in_a_string#Ada]] is used.
 
 
@@ -97,7 +97,7 @@ To split a string into words, the package "Simple_Parse" from another task
 <with Ada.Text_IO, Simple_Parse;
 
 procedure Phrase_Reversal is
-   
+
    function Reverse_String (Item : String) return String is
       Result : String (Item'Range);
    begin
@@ -106,29 +106,29 @@ procedure Phrase_Reversal is
       end loop;
       return Result;
    end Reverse_String;
-   
+
    function Reverse_Words(S: String) return String is
       Cursor: Positive := S'First;
       Word: String := Simple_Parse.Next_Word(S, Cursor);
    begin
-      if Cursor > S'Last then -- Word holds the last word 
+      if Cursor > S'Last then -- Word holds the last word
 	 return Reverse_String(Word);
       else
 	 return Reverse_String(Word) & " " & Reverse_Words(S(Cursor .. S'Last));
       end if;
    end Reverse_Words;
-   
+
    function Reverse_Order(S: String) return String is
       Cursor: Positive := S'First;
       Word: String := Simple_Parse.Next_Word(S, Cursor);
    begin
-      if Cursor > S'Last then -- Word holds the last word 
+      if Cursor > S'Last then -- Word holds the last word
 	 return Word;
       else
 	 return Reverse_Order(S(Cursor .. S'Last)) & " " & Word;
       end if;
    end Reverse_Order;
-   
+
    Phrase: String := "rosetta code phrase reversal";
    use Ada.Text_IO;
 begin
@@ -230,7 +230,7 @@ rosetta code phrase reversal: order reversed -> reversal phrase code rosetta
 ## AppleScript
 
 
-AppleScript has a very small and patchy library of primitive functions. To accumulate a larger and more coherent library, which includes some higher order functions, we can try to overcome two architectural weaknesses: 1. Built-in functions have a different type from user functions, and 2. user functions are second class properties of (first class) script objects. 
+AppleScript has a very small and patchy library of primitive functions. To accumulate a larger and more coherent library, which includes some higher order functions, we can try to overcome two architectural weaknesses: 1. Built-in functions have a different type from user functions, and 2. user functions are second class properties of (first class) script objects.
 
 Here is a simple illustration of unifying (and elevating) the function type by wrapping the built-in functions in user handlers (perhaps making some of them polymorphic where needed), and also obtaining first class status for ordinary user handler functions by 'lifting' them (for use as arguments in higher order functions) into a first class script object. (This process can be inlined, or abstracted out to an '''mReturn''' or '''mInject''' function).
 
@@ -266,12 +266,12 @@ end wordLevel
 on run
     unlines(|<*>|({stringReverse, reverseEachWord, reverseWordOrder}, ¬
         {"rosetta code phrase reversal"}))
-    
+
     -->
-    
+
     --     "lasrever esarhp edoc attesor
     --      attesor edoc esarhp lasrever
-    --      reversal phrase code rosetta"    
+    --      reversal phrase code rosetta"
 end run
 
 
@@ -325,7 +325,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -380,7 +380,7 @@ reversal phrase code rosetta"
 function rev(s, del,   n,i,a,r) {
    n = split(s, a, del)
    r = a[1]
-   for(i=2; i <= n; i++) {r = a[i] del r }    
+   for(i=2; i <= n; i++) {r = a[i] del r }
    return r
 }
 
@@ -441,7 +441,7 @@ reversal phrase code rosetta
 @echo off
 setlocal enabledelayedexpansion
 	%
-###  The Main Thing... 
+###  The Main Thing...
 %
 set "inp=Rosetta Code phrase reversal"
 call :reverse_string "!inp!" rev1
@@ -455,11 +455,11 @@ echo.Reversed Words: !rev3!
 pause>nul
 exit /b 0
 	%
-###  /The Main Thing... 
+###  /The Main Thing...
 %
 
 	%
-###  Reverse the Order Function 
+###  Reverse the Order Function
 %
 :reverse_order
 set var1=%2
@@ -470,11 +470,11 @@ set %var1%=!word! !%var1%!&set str1="!str1!"
 if not !str1!=="" goto process1
 goto :EOF
 	%
-###  /Reverse the Order Function 
+###  /Reverse the Order Function
 %
 
 	%
-###  Reverse the Whole String Function 
+###  Reverse the Whole String Function
 %
 :reverse_string
 set var2=%2
@@ -484,11 +484,11 @@ set char=!str2:~%cnt%,1!&set %var2%=!char!!%var2%!
 if not "!char!"=="" set /a cnt+=1&goto process2
 goto :EOF
 	%
-###  /Reverse the Whole String Function 
+###  /Reverse the Whole String Function
 %
 
 	%
-###  Reverse each Words Function 
+###  Reverse each Words Function
 %
 :reverse_words
 set var3=%2
@@ -501,7 +501,7 @@ if not !str3!=="" goto process3
 set %var3%=!%var3%:~1,1000000!
 goto :EOF
 	%
-###  /Reverse each Words Function 
+###  /Reverse each Words Function
 %
 ```
 
@@ -645,8 +645,8 @@ Reversed order: "reversal phrase code rosetta"
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -676,8 +676,8 @@ int main() {
 ```txt
 Input : rosetta code phrase reversal
 Input reversed : lasrever esarhp edoc attesor
-Each word reversed : attesor edoc esarhp lasrever 
-Original word order reversed : reversal phrase code rosetta 
+Each word reversed : attesor edoc esarhp lasrever
+Original word order reversed : reversal phrase code rosetta
 
 ```
 
@@ -725,7 +725,7 @@ namespace ConsoleApplication
 ; Reverse string
 (str-reverse phrase)
 ; Words reversed
-(join " " (map str-reverse (split phrase #" "))) 
+(join " " (map str-reverse (split phrase #" ")))
 ; Word order reversed
 (apply str (interpose " " (reverse (split phrase #" "))))
 
@@ -826,9 +826,9 @@ reversal phrase code rosetta
 ```txt
 (task "rosetta code phrase reversal")
 
-"lasrever esarhp edoc attesor" 
-"attesor edoc esarhp lasrever" 
-"reversal phrase code rosetta" 
+"lasrever esarhp edoc attesor"
+"attesor edoc esarhp lasrever"
+"reversal phrase code rosetta"
 nil
 
 ```
@@ -876,9 +876,9 @@ reversal phrase code rosetta
 
 
 (task "rosetta code phrase reversal")
-    "lasrever esarhp edoc attesor"    
-    "attesor edoc esarhp lasrever"    
-    "reversal phrase code rosetta"    
+    "lasrever esarhp edoc attesor"
+    "attesor edoc esarhp lasrever"
+    "reversal phrase code rosetta"
 
 ```
 
@@ -891,14 +891,14 @@ ELENA 4.x :
 import extensions;
 import extensions'text;
 import system'routines;
- 
+
 public program()
 {
     var reverse := (s => s.toArray().sequenceReverse().summarize(new StringWriter()));
- 
+
     var phrase := "rosetta code phrase reversal";
     console.printLine(phrase);
- 
+
     //Reverse the string
     console.printLine(reverse(phrase));
     //Reverse each individual word in the string, maintaining original string order.
@@ -914,8 +914,8 @@ public program()
 
 rosetta code phrase reversal
 lasrever esarhp edoc attesor
-attesor edoc esarhp lasrever 
-reversal phrase code rosetta 
+attesor edoc esarhp lasrever
+reversal phrase code rosetta
 
 ```
 
@@ -961,15 +961,15 @@ reversal phrase code rosetta
 
 (progn
   (setq line "rosetta code phrase reversal")
-  
+
   (insert (format "%s\n" (reverse-chars line) ))
-  
-    (insert (format "%s\n" 
-        (mapconcat 'identity (mapcar #'reverse-chars 
+
+    (insert (format "%s\n"
+        (mapconcat 'identity (mapcar #'reverse-chars
                                      (split-string line) ) " ") ))
-    
+
     (insert (format "%s\n" (reverse-words line) )))
- 
+
 ```
 
 <b>Output:</b>
@@ -978,7 +978,7 @@ reversal phrase code rosetta
 
 lasrever esarhp edoc attesor
 attesor edoc esarhp lasrever
-reversal phrase code rosetta                                                                                
+reversal phrase code rosetta
 
 ```
 
@@ -1017,9 +1017,9 @@ reversal phrase code rosetta
 
 The key here is the ability via F90 to specify an array span, as A(''first'':''last'':''step'') where the ''step'' can be negative... This facility is not available for CHARACTER variables where only TEXT(''first'':''last'') is available - no ''step'' is accommodated and TEXT(''last'':''first'') evokes nothing rather than a backwards order as in Python. However, one can have an array of CHARACTER*1 variables, and as an array they can be rolled bidirectionally. For convenience in initialising such an array, EQUIVALENCE(TEXT,ATXT) means that a normal multi-character text literal can be assigned to TEXT via the DATA statement, rather than having to specify the ATXT elements one at a time.
 
-By identifying the first and last character position of each word in TEXT (or equivalently, their indices in ATXT) and storing them in arrays IST and LST, the i'th word can be fingered via IST(i) to LST(i) and of course a DO-loop can step in either direction. 
+By identifying the first and last character position of each word in TEXT (or equivalently, their indices in ATXT) and storing them in arrays IST and LST, the i'th word can be fingered via IST(i) to LST(i) and of course a DO-loop can step in either direction.
 
-F90 allows a WHILE-loop, and writing something like 
+F90 allows a WHILE-loop, and writing something like
 ```Fortran
       DO WHILE (L1.LE.L .AND. ATXT(L1).LE." ")
         L1 = L1 + 1
@@ -1028,7 +1028,7 @@ F90 allows a WHILE-loop, and writing something like
 
 Would be rather more structured and involve fewer GO TOs and their labels, but alas, modern Fortran specifies that there is no specification as to whether or not both terms of an expression such as (A '''and''' B) will always be evaluated or instead there will be a shortcut: if A is ''false'' then the B term is ignored. And here, the A term checks whether or not L1 is within bounds and if it is not, then the B term should not be evaluated, not just because of the waste of effort but because to do so might involve accessing outside the definition of ATXT. As when the scan chases through the trailing spaces. One could make the array one longer, or rather, <code>L = LEN(TEXT) - 1</code> for this case but that would be messy, require explanation, be easily forgotten, and, typical ad-hoc testing would be unlikely to detect the mistake.
 
-Alternatively, a GO TO can be removed from view by using EXIT in its place: 
+Alternatively, a GO TO can be removed from view by using EXIT in its place:
 ```Fortran
       DO L1 = L1,L
         IF (ATXT(L1).GT." ") EXIT
@@ -1081,7 +1081,7 @@ Chuck the words around.
       END
 ```
 
-With F77 such array spans can't be used, but all that is necessary is to supply a second implied DO-loop in the WRITE statement, for example 
+With F77 such array spans can't be used, but all that is necessary is to supply a second implied DO-loop in the WRITE statement, for example
 ```Fortran
       WRITE (6,22) RW//RO,(" ",(ATXT(J), J = LST(I),IST(I),-1), I = 1,N,+1)
 ```
@@ -1109,7 +1109,7 @@ And the output is...
 ' FB 1.05.0 Win64
 
 Sub split (s As Const String, sepList As Const String, result() As String)
-  If s = "" OrElse sepList = "" Then 
+  If s = "" OrElse sepList = "" Then
      Redim result(0)
      result(0) = s
      Return
@@ -1117,26 +1117,26 @@ Sub split (s As Const String, sepList As Const String, result() As String)
   Dim As Integer i, j, count = 0, empty = 0, length
   Dim As Integer position(Len(s) + 1)
   position(0) = 0
- 
+
   For i = 0 To len(s) - 1
     For j = 0 to Len(sepList) - 1
-      If s[i] = sepList[j] Then 
+      If s[i] = sepList[j] Then
         count += 1
-        position(count) = i + 1       
+        position(count) = i + 1
       End If
     Next j
   Next i
- 
+
   Redim result(count)
   If count  = 0 Then
     result(0) = s
     Return
   End If
- 
+
   position(count + 1) = len(s) + 1
- 
-  For i = 1 To count + 1  
-    length = position(i) - position(i - 1) - 1 
+
+  For i = 1 To count + 1
+    length = position(i) - position(i - 1) - 1
     result(i - 1) = Mid(s, position(i - 1) + 1, length)
   Next
 End Sub
@@ -1149,7 +1149,7 @@ Function reverse(s As Const String) As String
     Swap t[i], t[length - 1 - i]
   Next
   Return t
-End Function 
+End Function
 
 Dim s As String = "rosetta code phrase reversal"
 Dim a() As String
@@ -1235,8 +1235,8 @@ Output:
 
 Original string =       rosetta code phrase reversal
 Reversed string =       lasrever esarhp edoc attesor
-Reversed word order =   reversal phrase code rosetta 
-Words reversed =        attesor edoc esarhp lasrever 
+Reversed word order =   reversal phrase code rosetta
+Words reversed =        attesor edoc esarhp lasrever
 
 ```
 
@@ -1489,7 +1489,7 @@ public class PhraseRev{
 	private static String reverse(String x){
 		return new StringBuilder(x).reverse().toString();
 	}
-	
+
 	private static <T> T[] reverse(T[] x){
 		T[] rev = Arrays.copyOf(x, x.length);
 		for(int i = x.length - 1; i >= 0; i--){
@@ -1497,7 +1497,7 @@ public class PhraseRev{
 		}
 		return rev;
 	}
-	
+
 	private static String join(String[] arr, String joinStr){
 		StringBuilder joined = new StringBuilder();
 		for(int i = 0; i < arr.length; i++){
@@ -1506,10 +1506,10 @@ public class PhraseRev{
 		}
 		return joined.toString();
 	}
-	
+
 	public static void main(String[] args){
 		String str = "rosetta code phrase reversal";
-		
+
 		System.out.println("Straight-up reversed: " + reverse(str));
 		String[] words = str.split(" ");
 		for(int i = 0; i < words.length; i++){
@@ -1651,7 +1651,7 @@ reversal phrase code rosetta
 ```jq
 def reverse_string: explode | reverse | implode;
 
-"rosetta code phrase reversal" 
+"rosetta code phrase reversal"
 | split(" ") as $words
 | "0. input:               \(.)",
   "1. string reversed:     \(reverse_string)",
@@ -1849,21 +1849,21 @@ print(StringTools:-Join(ListTools:-Reverse(StringTools:-Split(str," ")), " ")):
 
 
 
-=={{header|Mathematica}} / {{header|Wolfram Language}}== 
+=={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
 phrase = "Rosetta Code Phrase Reversal";
 
-reverseWords[phrase_String] := 
+reverseWords[phrase_String] :=
  StringJoin @@ Riffle[Reverse@StringSplit@phrase, " "]
 
 reverseLetters[phrase_String] :=
- 
- StringJoin @@ 
-  Riffle[Map[StringJoin @@ Reverse[Characters@#] &, 
+
+ StringJoin @@
+  Riffle[Map[StringJoin @@ Reverse[Characters@#] &,
     StringSplit@phrase], " "]
 
-{phrase, reverseWords@phrase, reverseLetters@phrase, 
+{phrase, reverseWords@phrase, reverseLetters@phrase,
   reverseWords@reverseLetters@phrase} // TableForm
 ```
 
@@ -2093,7 +2093,7 @@ echo "Word order reversed: ".$str_word_order_reversed."\n";
 ```txt
 Input: rosetta code phrase reversal
 Reversed: lasrever esarhp edoc attesor
-Words reversed: attesor edoc esarhp lasrever 
+Words reversed: attesor edoc esarhp lasrever
 Word order reversed: reversal phrase code rosetta
 ```
 
@@ -2152,10 +2152,10 @@ Output:
 
 ```txt
 
-The original phrase is: rosetta code phrase reversal 
-1. lasrever esarhp edoc attesor 
-2. attesor edoc esarhp lasrever 
-3. reversal phrase code rosetta  
+The original phrase is: rosetta code phrase reversal
+1. lasrever esarhp edoc attesor
+2. attesor edoc esarhp lasrever
+3. reversal phrase code rosetta
 
 ```
 
@@ -2237,7 +2237,7 @@ $task3 = reverse ($line -split " ") " "
 $task1
 $task2
 $task3
- 
+
 ```
 
 <b>Output:</b>
@@ -2246,7 +2246,7 @@ $task3
 
 lasrever esarhp edoc attesor
 attesor edoc esarhp lasrever
-reversal phrase code rosetta                                                                             
+reversal phrase code rosetta
 
 ```
 
@@ -2260,14 +2260,14 @@ reversal phrase code rosetta
 
 If OpenConsole("rosetta code phrase reversal")
   Define idx.i=1, txt.s=""
-  
+
   Print(~"Original:\t\t")
   PrintN(#TEXT)
-  
+
   Print(~"Reversed:\t\t")
-  PrintN(ReverseString(#TEXT))  
-  
-  Print(~"Reversed words:\t\t")  
+  PrintN(ReverseString(#TEXT))
+
+  Print(~"Reversed words:\t\t")
   txt=StringField(#TEXT,idx," ")
   While Len(txt)
     Print(ReverseString(txt)+" ")
@@ -2275,7 +2275,7 @@ If OpenConsole("rosetta code phrase reversal")
     txt=StringField(#TEXT,idx," ")
   Wend
   PrintN("")
-  
+
   Print(~"Reversed order:\t\t")
   idx-1
   txt=StringField(#TEXT,idx," ")
@@ -2284,7 +2284,7 @@ If OpenConsole("rosetta code phrase reversal")
     If idx>1 : idx-1 : Else : Break : EndIf
     txt=StringField(#TEXT,idx," ")
   Wend
-  
+
   Input()
 EndIf
 ```
@@ -2312,7 +2312,7 @@ These examples use the [https://docs.python.org/2/whatsnew/2.3.html#extended-sli
 'attesor edoc esarhp lasrever'
 >>> ' '.join(phrase.split()[::-1])	                  # Word order reversed.
 'reversal phrase code rosetta'
->>> 
+>>>
 ```
 
 
@@ -2459,7 +2459,7 @@ reversal phrase code rosetta
 
 ### version 1
 
-Working with REXX (strings and words) is trivial. 
+Working with REXX (strings and words) is trivial.
 
 ```rexx
 s='rosetta code phrase reversal'
@@ -2674,7 +2674,7 @@ func reverseString(s:String)->String{
         j-=1
     }
     return String(temp)
-} 
+}
 
 func reverseWord(s:String)->String{
     var temp = [Character]()
@@ -2909,7 +2909,7 @@ Function RevPhrase(s)
 	arr = Split(s," ")
 	For i = UBound(arr) To LBound(arr) Step -1
 		RevPhrase = RevPhrase & arr(i)
-		If i > LBound(arr) Then 
+		If i > LBound(arr) Then
 			RevPhrase = RevPhrase & " "
 		End If
 	Next
@@ -2963,11 +2963,11 @@ print
 
 sub reverse$(w$)
     local i, rw$
-    
+
     for i = len(w$) to 1 step -1
         rw$ = rw$ + mid$(w$, i, 1)
     next
-    
+
     return rw$
 end sub
 ```

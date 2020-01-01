@@ -117,27 +117,27 @@ Only ppm6 files supported.
 
 
 ```AutoHotkey
-img := ppm_read("lena50.ppm") ;   
+img := ppm_read("lena50.ppm") ;
 x := img[4,4] ; get pixel(4,4)
 y := img[24,24] ; get pixel(24,24)
 msgbox % x.rgb() " " y.rgb()
 img.write("lena50copy.ppm")
 return
- 
-ppm_read(filename, ppmo=0) ; only ppm6 files supported 
+
+ppm_read(filename, ppmo=0) ; only ppm6 files supported
 {
 if !ppmo  ; if image not already in memory, read from filename
-  fileread, ppmo, % filename 
+  fileread, ppmo, % filename
 
-  index := 1  
+  index := 1
   pos := 1
 
   loop, parse, ppmo, `n, `r
   {
     if (substr(A_LoopField, 1, 1) == "#")
       continue
-loop, 
-{ 
+loop,
+{
  if !pos := regexmatch(ppmo, "\d+", pixel, pos)
 break
     bitmap%A_Index% := pixel
@@ -147,7 +147,7 @@ break
     index ++
 }
   }
- 
+
   type := bitmap1
   width := bitmap2
   height := bitmap3
@@ -156,8 +156,8 @@ break
   index := 1
   i := 1
   j := 1
- bits := pos 
-loop % width * height 
+ bits := pos
+loop % width * height
   {
       bitmap[i, j, "r"]  := numget(ppmo, 3 * A_Index + bits, "uchar")
       bitmap[i, j, "g"]  := numget(ppmo, 3 * A_Index + bits + 1, "uchar")
@@ -171,7 +171,7 @@ loop % width * height
       else
 	j++
 }
- return bitmap  
+ return bitmap
   }
 #include bitmap_storage.ahk ; from http://rosettacode.org/wiki/Basic_bitmap_storage/AutoHotkey
 ```
@@ -185,20 +185,20 @@ loop % width * height
 ```bbcbasic
       f% = OPENIN("c:\lena.ppm")
       IF f%=0 ERROR 100, "Failed to open input file"
-      
+
       IF GET$#f% <> "P6" ERROR 101, "File is not in P6 format"
       REPEAT
         in$ = GET$#f%
       UNTIL LEFT$(in$,1) <> "#"
       size$ = in$
       max$ = GET$#f%
-      
+
       Width% = VAL(size$)
       space% = INSTR(size$, " ")
       Height% = VALMID$(size$, space%)
-      
+
       VDU 23,22,Width%;Height%;8,16,16,128
-      
+
       FOR y% = Height%-1 TO 0 STEP -1
         FOR x% = 0 TO Width%-1
           r% = BGET#f% : g% = BGET#f% : b% = BGET#f%
@@ -207,7 +207,7 @@ loop % width * height
         NEXT
       NEXT y%
       END
-      
+
       DEF PROCsetpixel(x%,y%,r%,g%,b%)
       COLOUR 1,r%,g%,b%
       GCOL 1
@@ -243,7 +243,7 @@ image get_ppm(FILE *pf)
         image img;
         unsigned int w, h, d;
         int r;
-        
+
         if (pf == NULL) return NULL;
         t = fgets(buf, PPMREADBUFLEN, pf);
         /* the code fails if the white space following "P6" is not '\n' */
@@ -278,15 +278,15 @@ image get_ppm(FILE *pf)
 The following acts as a filter to convert a PPM file read from standard input into a PPM gray image, and it outputs the converted image to standard output (see [[Grayscale image]], [[Write ppm file]], and [[Raster graphics operations]] in general):
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include "imglib.h"
 
 int main()
 {
    image source;
    grayimage idest;
-   
+
    source = get_ppm(stdin);
    idest = tograyscale(source);
    free_img(source);
@@ -343,7 +343,7 @@ class PPMReader
 ## Common Lisp
 
 
-The function read-ppm-image reads either a P6 or P3 file depending on the file contents. The package description assumes that you have the [[Basic bitmap storage#Common Lisp]] package. 
+The function read-ppm-image reads either a P6 or P3 file depending on the file contents. The package description assumes that you have the [[Basic bitmap storage#Common Lisp]] package.
 
 
 ```lisp
@@ -448,7 +448,7 @@ def readPPM(inputStream) {
   # Proper native-to-E stream IO facilities have not been designed and
   # implemented yet, so we are borrowing Java's. Poorly. This *will* be
   # improved eventually.
-  
+
   # Reads one header token, skipping comments and whitespace, and exactly
   # one trailing whitespace character
   def readToken() {
@@ -783,13 +783,13 @@ test dup bsize  test2 dup bsize  compare .    \ 0 if identical
 
 
 ```fortran
-subroutine read_ppm(u, img) 
+subroutine read_ppm(u, img)
   integer, intent(in) :: u
   type(rgbimage), intent(out) :: img
   integer :: i, j, ncol, cc
   character(2) :: sign
   character :: ccode
-  
+
   img%width = 0
   img%height = 0
   nullify(img%red)
@@ -955,7 +955,7 @@ import Bitmap.Netpbm
 import Control.Monad
 import Control.Monad.ST
 
-main = 
+main =
     (readNetpbm "original.ppm" :: IO (Image RealWorld RGB)) >>=
     stToIO . toGrayImage >>=
     writeNetpbm "new.pgm"
@@ -1186,11 +1186,11 @@ Module Checkit {
                                           Line Input #f, P255$
                                     } until left$(P255$, 1)<>"#"
                                     If not P255$="255" then Error "Not proper ppm format"
-                              }                  
+                              }
                   }
             } else Error "No proper arguments"
-            
-            
+
+
             if x<1 or y<1 then  Error "Wrong dimensions"
             structure rgb {
                   red as byte
@@ -1201,13 +1201,13 @@ Module Checkit {
             if m>0 then m=4-m  ' add some bytes to raster line
             m+=len(rgb) *x
             Structure rasterline {
-                  { 
+                  {
                         pad as byte*m
-                  }   
+                  }
                   \\ union pad+hline
                   hline as rgb*x
             }
-      
+
             Structure Raster {
                   magic as integer*4
                   w as integer*4
@@ -1227,7 +1227,7 @@ Module Checkit {
                   c-!
                   Return Pad, 0:=c as long
                   Return Image1, 0!where:=Eval(Pad, 2) as byte, 0!where+1:=Eval(Pad, 1) as byte, 0!where+2:=Eval(Pad, 0) as byte
-            
+
             }
             GetPixel=Lambda Image1,aLines=Len(Raster)-Len(Rasterline), blines=-Len(Rasterline) (x,y) ->{
                   where=alines+3*x+blines*y
@@ -1242,7 +1242,7 @@ Module Checkit {
                   } Else Error "Can't Copy Image"
             }
             Export2File=Lambda Image1, x, y (f) -> {
-                  \\ use this between open and close 
+                  \\ use this between open and close
                   Print #f, "P3"
                   Print #f,"# Created using M2000 Interpreter"
                   Print #f, x;" ";y
@@ -1261,7 +1261,7 @@ Module Checkit {
                         Print #f
                         m=where mod 4
                         if m<>0 then where+=4-m
-                  }            
+                  }
             }
             if valid(F) then {
                   'load  RGB values form file
@@ -1272,14 +1272,14 @@ Module Checkit {
                                           Line Input #f, aline$
                               } until left$(aline$,1)<>"#"
                               flush   ' empty stack
-                              Stack aline$  ' place all values to stack as FIFO         
+                              Stack aline$  ' place all values to stack as FIFO
                               For x1=0 to x0 {
                                     \\ now read from stack using Number
                                     Return Image1, 0!where+2:=Number as byte, 0!where+1:=Number as byte, 0!where:=Number as byte
                                     where+=3
                               }
                               m=where mod 4
-                              if m<>0 then where+=4-m                                   
+                              if m<>0 then where+=4-m
                         }
             }
             Group Bitmap {
@@ -1298,7 +1298,7 @@ Module Checkit {
       Close #f
       Open "A.PPM" for Input as #F
       Try {
-            C=Bitmap(f)     
+            C=Bitmap(f)
             Copy 400*twipsx,200*twipsy use C.Image$()
       }
       Close #f
@@ -1323,7 +1323,7 @@ Module Checkit {
                                     Line Input #f, aline$
                         } until left$(aline$,1)<>"#"
                         flush   ' empty stack
-                        Stack aline$  ' place all values to stack as FIFO         
+                        Stack aline$  ' place all values to stack as FIFO
                         For x1=0 to x0 {
                               \\ now read from stack
                               Read red, green, blue
@@ -1354,19 +1354,19 @@ Import["file.ppm","PPM"]
 
 ```lua
 function Read_PPM( filename )
-    local fp = io.open( filename, "rb" )    
+    local fp = io.open( filename, "rb" )
     if fp == nil then return nil end
 
     local data = fp:read( "*line" )
     if data ~= "P6" then return nil end
- 
+
     repeat
         data = fp:read( "*line" )
     until string.find( data, "#" ) == nil
 
     local image = {}
     local size_x, size_y
-    
+
     size_x = string.match( data, "%d+" )
     size_y = string.match( data, "%s%d+" )
 
@@ -1376,15 +1376,15 @@ function Read_PPM( filename )
     for i = 1, size_x do
         image[i] = {}
     end
- 
+
     for j = 1, size_y do
         for i = 1, size_x do
             image[i][j] = { string.byte( fp:read(1) ), string.byte( fp:read(1) ), string.byte( fp:read(1) ) }
         end
     end
- 
+
     fp:close()
- 
+
     return image
 end
 ```
@@ -1568,7 +1568,7 @@ define
    in
       if C \= &\n andthen  C \= &\r then {SkipLine F} end
    end
-   
+
    fun {PairUp Xs}
       case Xs of X1|X2|Xr then [X1 X2]|{PairUp Xr}
       [] nil then nil
@@ -1702,7 +1702,7 @@ atom fn = open(filename, "rb")
     close(fn)
     return image
 end function
- 
+
 sequence img = read_ppm("Lena.ppm")
     img = to_gray(img)
     write_ppm("LenaGray.ppm",img)
@@ -1873,14 +1873,14 @@ Procedure LoadImagePPM(Image, file$)
       EndSelect
       StopDrawing()
       ; Return 1 if successfully loaded to behave as other PureBasic functions
-      ProcedureReturn 1 
+      ProcedureReturn 1
     EndIf
   EndIf
 EndProcedure
 ```
 
 
-To complete the task, the following code should be added to the above fragment and to the PureBasic solutions for [[Grayscale_image#PureBasic|Grayscale image]] and [[Bitmap/Write_a_PPM_file#PureBasic|Write a PPM file]] 
+To complete the task, the following code should be added to the above fragment and to the PureBasic solutions for [[Grayscale_image#PureBasic|Grayscale image]] and [[Bitmap/Write_a_PPM_file#PureBasic|Write a PPM file]]
 
 ```PureBasic
 Define file.s, file2.s, image = 3
@@ -1935,7 +1935,7 @@ def ppmp3tobitmap(f):
             bitmap.set(w, h, Colour( *(int(nexttoken()) for i in range(3))))
 
     return bitmap
-    
+
 print('Original Colour PPM file')
 print(ppmtxt)
 ppmfile = io.StringIO(ppmtxt)
@@ -2123,7 +2123,7 @@ import javax.swing.ImageIcon
 
 object Pixmap {
    private case class PpmHeader(format:String, width:Int, height:Int, maxColor:Int)
-	
+
    def load(filename:String):Option[RgbBitmap]={
       implicit val in=new BufferedInputStream(new FileInputStream(filename))
       val header=readHeader
@@ -2139,7 +2139,7 @@ object Pixmap {
 
    private def readHeader(implicit in:InputStream)={
       var format=readLine
-		
+
       var line=readLine
       while(line.startsWith("#"))   //skip comments
          line=readLine
@@ -2148,7 +2148,7 @@ object Pixmap {
       val width=parts(0).toInt
       val height=parts(1).toInt
       val maxColor=readLine.toInt
-		
+
       new PpmHeader(format, width, height, maxColor)
    }
 
@@ -2347,8 +2347,8 @@ Add the following function to the <tt>Bitmap_t</tt> type
                         print -u2 "error: invalid color ($r $g $b), max=$maxval"
                         return 1
                     fi
-                    _.data[y][x]="$r $g $b" 
-                done 
+                    _.data[y][x]="$r $g $b"
+                done
             done
         fi
         exec 4<&-
@@ -2499,19 +2499,19 @@ sub readPPM(f$)
 
 	if t$ = "P6" then
 		open window wid, hei
-	
+
 		for x = 0 to hei - 1
 		 	for y = 0 to wid - 1
 		 		color peek(#ff), peek(#ff), peek(#ff)
 		 		dot y, x
 		 	next y
 		next x
-		
+
 		close #ff
 	else
 		print "File is NOT PPM P6 type." : return false
 	end if
-	
+
 	return true
 end sub
 ```
@@ -2530,7 +2530,7 @@ I used a slightly different image from what is shown, but the results are the sa
 //24-bpp P6 PPM solution:
 image:=File("lena.ppm","rb").read();
 start:=image.find("\n255\n")+5;   // Get sizeof PPM header
- 
+
 foreach n in ([start..image.len()-1,3]){  //  Transform color triplets
    r,g,b:=image[n,3];  // Read colors stored in RGB order
    l:=(0.2126*r + 0.7152*g + 0.0722*b).toInt(); // Derive luminance

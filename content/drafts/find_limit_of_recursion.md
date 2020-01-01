@@ -13,7 +13,7 @@ tags = []
 {{task}}
 {{selection|Short Circuit|Console Program Basics}}
 [[Category:Basic language learning]]
-[[Category:Programming environment operations]] 
+[[Category:Programming environment operations]]
 [[Category:Simple]]
 
 ;Task:
@@ -109,30 +109,30 @@ as shown by the following output.  From this we can deduce that Genie does not i
 pcl@anubis ~/a68/Rosetta $ a68g --trace Recurse.a68 | head
 genie: frame stack 6144k, expression stack 2048k, heap 49152k, handles 8192k
       BEGIN MODE DOUBLE = LONG REAL, QUAD = LONG LONG REAL;
-      -                                                    
+      -
 1     PROC recurse = VOID : recurse; recurse
-      -                                     
+      -
 genie_unit
 1     PROC recurse = VOID : recurse; recurse
-                                     -      
+                                     -
 genie_unit
 1     PROC recurse = VOID : recurse; recurse
 pcl@anubis ~/a68/Rosetta $ a68g --trace Recurse.a68 | tail
 1     PROC recurse = VOID : recurse; recurse
-                            -               
+                            -
 genie_unit
 1     PROC recurse = VOID : recurse; recurse
-                            -               
+                            -
 genie_unit
 1     PROC recurse = VOID : recurse; recurse
-                     1                      
+                     1
 a68g: runtime error: 1: stack overflow (detected in particular-program).
 Genie finished in 0.19 seconds
 pcl@anubis ~/a68/Rosetta $ a68g --trace Recurse.a68 |  grep recurse | wc
    3535   28280  159075
 pcl@anubis ~/a68/Rosetta $ prlimit --stack=67108864 a68g --trace Recurse.a68 | grep recurse | wc
   28672  229376 1290240
-pcl@anubis ~/a68/Rosetta $ 
+pcl@anubis ~/a68/Rosetta $
 
 ```
 
@@ -154,14 +154,14 @@ on recursionDepth()
             end try
         end |λ|
     end script
-    
+
     go's |λ|(0)
 end recursionDepth
 
 on run
-    
+
     recursionDepth()
-    
+
 end run
 ```
 
@@ -191,7 +191,7 @@ on run
             x > 10
         end |λ|
     end script
-    
+
     "The highest Church-encoded integer representable in Applescript is " & ¬
         (|until|(unrepresentable, my succ, 0) - 1)
 end run
@@ -253,7 +253,7 @@ on |until|(p, f, x)
     end repeat
 end |until|
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -495,7 +495,7 @@ Result (abbreviated):
 ```
 
 
-If one uses <code>call</code> rather than <code>CMD/C</code>, the call depth is much deeper but ends abruptly and can't be trapped. 
+If one uses <code>call</code> rather than <code>CMD/C</code>, the call depth is much deeper but ends abruptly and can't be trapped.
 
 
 ```dos
@@ -560,7 +560,7 @@ echo [Level %c%] No good
 ```bbcbasic
       PROCrecurse(1)
       END
-      
+
       DEF PROCrecurse(depth%)
       IF depth% MOD 100 = 0 PRINT TAB(0,0) depth%;
       PROCrecurse(depth% + 1)
@@ -583,7 +583,7 @@ No room
 
 In Befunge, the limit of recursion is essentially the depth of the stack. The program below calculates that limit by repeatedly pushing values until the stack overflows. After every iteration, it writes out the count of values pushed so far, so once the stack eventually does overflow, the last value output should tell you the depth that was reached.
 
-Most interpreters allocate their stack on the global heap, so the size of the stack will depend on available memory, and on a modern system you're likely to run out of patience long before you run out of memory. That said, there have been some interpreters with a fixed stack depth - as low as 199 even - but that isn't a common implementation choice. 
+Most interpreters allocate their stack on the global heap, so the size of the stack will depend on available memory, and on a modern system you're likely to run out of patience long before you run out of memory. That said, there have been some interpreters with a fixed stack depth - as low as 199 even - but that isn't a common implementation choice.
 
 
 ```befunge>1
@@ -610,8 +610,8 @@ Bracmat crashes when it tries to exceed the maximum recursion depth.
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void recurse(unsigned int i)
 {
@@ -627,18 +627,18 @@ int main()
 ```
 
 
-Segmentation fault occurs when i is 523756. 
-(This was checked debugging with gdb rather than waiting the output: 
-the printf line for the test was commented). 
-It must be noted that the recursion limit depends on how many parameters are passed onto the stack. 
-E.g. adding a fake double argument to <code>recurse</code>, the limit is reached at <code>i == 261803</code>. 
-The limit depends on the stack size and usage in the function. 
+Segmentation fault occurs when i is 523756.
+(This was checked debugging with gdb rather than waiting the output:
+the printf line for the test was commented).
+It must be noted that the recursion limit depends on how many parameters are passed onto the stack.
+E.g. adding a fake double argument to <code>recurse</code>, the limit is reached at <code>i == 261803</code>.
+The limit depends on the stack size and usage in the function.
 Even if there are no arguments, the return address for a call to a subroutine is stored on the stack (at least on x86 and many more processors), so this is consumed even if we put arguments into registers.
 
 The following code may have some effect unexpected by the unwary:
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 char * base;
 void get_diff()
@@ -672,13 +672,13 @@ With GCC 4.5, if compiled without -O2, it segfaults quickly; if <code>gcc -O2</c
 ```cpp
 
 #include <iostream>
- 
+
 void recurse(unsigned int i)
 {
   std::cout<<i<<"\n";
   recurse(i+1);
 }
- 
+
 int main()
 {
   recurse(0);
@@ -698,8 +698,8 @@ class RecursionLimit
   {
     Recur(0);
   }
- 
-  private static void Recur(int i) 
+
+  private static void Recur(int i)
   {
     Console.WriteLine(i);
     Recur(i + 1);
@@ -751,7 +751,7 @@ procedure division.
 100-main.
 
 	set install-address to entry "300-err".
-	
+
 	call "CBL_ERROR_PROC" using install-flag
 		install-address
 		returning status-code.
@@ -781,15 +781,15 @@ procedure division.
 	display err-msg(1:ind).
 
 *> room for a better-than-abrupt death here.
-	
+
 	exit program.
 ```
 
-Compiled with 
+Compiled with
 ```txt
 cobc -free -x -g recurse.cbl
 ```
- gives, after a while, 
+ gives, after a while,
 
 ```txt
 ...
@@ -854,11 +854,11 @@ from Richard Plinston on [http://groups.google.com/group/comp.lang.cobol/browse_
 
            EXIT PROGRAM.
        END PROGRAM recurse-sub.
-       END PROGRAM recurse. 
+       END PROGRAM recurse.
 ```
 
 
-Compiled with 
+Compiled with
 ```txt
 cobc -x -g recurse.cbl
 ```
@@ -925,13 +925,13 @@ console.log "Recursion depth on this system is #{ do recurse }"
  3057. Trace: (RECURSE)
  3058. Trace: (RECURSE)
  3059. Trace: (RECURSE)
- 
+
  *** - Lisp stack overflow. RESET
 
 ```
 
 
-However, for an implementation of Lisp that supports proper tail recursion, 
+However, for an implementation of Lisp that supports proper tail recursion,
 this function will not cause a stack overflow, so this method will not work.
 
 
@@ -968,8 +968,8 @@ rec-fun n:
 rec-fun 0
 ```
 
-This continues until the memory is full, so I didn't wait for it to finish. 
-Currently, it should to to almost 3 million levels of recursion on a machine with 1 GB free. 
+This continues until the memory is full, so I didn't wait for it to finish.
+Currently, it should to to almost 3 million levels of recursion on a machine with 1 GB free.
 Eliminating the <code>n</code> should give over 10 million levels on the same machine.
 
 
@@ -1098,18 +1098,18 @@ A tail-recursive function will run indefinitely without problems (the integer wi
 
 
 ```fsharp
-let rec recurse n = 
+let rec recurse n =
   recurse (n+1)
 
 recurse 0
 ```
 
- 
+
 The non-tail recursive function of the following example crashed with a <code>StackOverflowException</code> after 39958 recursive calls:
 
 
 ```fsharp
-let rec recurse n = 
+let rec recurse n =
    printfn "%d" n
    1 + recurse (n+1)
 
@@ -1614,7 +1614,7 @@ software {
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-procedure main() 
+procedure main()
 envar := "MSTKSIZE"
 write(&errout,"Program to test recursion depth - dependant on the environment variable ",envar," = ",\getenv(envar)|&null)
 deepdive()
@@ -1622,7 +1622,7 @@ end
 
 procedure deepdive()
 static d
-initial d := 0 
+initial d := 0
 write( d +:= 1)
 deepdive()
 end
@@ -1654,7 +1654,7 @@ Testing stack depth can be risky because the OS may shut down J in the limiting 
 
 Note also that task assumes that all stack frames must be the same size, which is probably not the case.
 
-  
+
 ```J
 (recur=: verb def 'recur smoutput N=:N+1')N=:0
 ```
@@ -1671,7 +1671,7 @@ Note also, that ^: can be used for induction, and does not have stack size limit
 ```Java
 
 public class RecursionTest {
-	
+
     private static void recurse(int i) {
         try {
 	    recurse(i+1);
@@ -1679,7 +1679,7 @@ public class RecursionTest {
 	    System.out.print("Recursion depth on this system is " + i + ".");
 	}
     }
-	
+
     public static void main(String[] args) {
         recurse(0);
     }
@@ -1905,7 +1905,7 @@ A dirty dive reaches a depth of 174454.
 
 ## Kotlin
 
-The result is a typical figure for Oracle's JVM 1.8.0_121 running on Ubuntu version 14.04, 64 bit using the default stack size. 
+The result is a typical figure for Oracle's JVM 1.8.0_121 running on Ubuntu version 14.04, 64 bit using the default stack size.
 
 One might have expected that the result would be the same (or only vary over a small range) for a given configuration but in fact the results are all over the place - running the program a number of times I obtained figures as high as 26400 and as low as 9099! I have no idea why.
 
@@ -1951,7 +1951,7 @@ sub test n
 end sub
 
 ```
- 
+
 
 
 ```lb
@@ -2075,7 +2075,7 @@ function Tail(proper)
     if c < 9999999 then return Tail(proper) else return c end
   else
     return 1/c+Tail(proper) -- make the recursive call must keep previous stack
-  end  
+  end
 end
 
 local ok,check = pcall(Tail,true)
@@ -2113,7 +2113,7 @@ Module checkit {
             m=a()
       }
       Print z
-      
+
       z<=0
       Function a {
             z++
@@ -2123,7 +2123,7 @@ Module checkit {
             call a()
       }
       Print z
-      
+
       z<=0
       Module m {
             z++
@@ -2133,7 +2133,7 @@ Module checkit {
             call m
       }
       Print z
-      
+
       z<=0
       \\ without Call a module can't call itself
       \\ but can call something global, and that global can call back
@@ -2158,7 +2158,7 @@ In Wine give these:
 
 ```txt
 
-4030  
+4030
 8473  (plus 2 because we have Checkit inside a Z so these are two calls)
 8473 (the same as above)
 11225 (the same as above)
@@ -2196,7 +2196,7 @@ Module Checkit {
                   z--
                    CallmeAgain(x+1)
                   z++
-            End Sub     
+            End Sub
       }
       z=FindZ()
       Print "Calls:"; z
@@ -2364,8 +2364,8 @@ catch with $print("recurse limit exception: ", counter, " ", with, "\n")
 {{out}}
 
 ```txt
-prompt$ nekoc recursion-limit.neko 
-prompt$ neko recursion-limit.n     
+prompt$ nekoc recursion-limit.neko
+prompt$ neko recursion-limit.n
 Tail call recursion: 10000001 sum: 50000015000001
 recurse limit exception: 52426 Stack Overflow
 ```
@@ -2421,13 +2421,13 @@ method memoryInfo() private static
 
 ```txt
 
-JVM Memory Information: 
-      Heap: init = 0(0K) used = 2096040(2046K) committed = 85000192(83008K) max = 129957888(126912K) 
-  Non-Heap: init = 24317952(23748K) used = 5375328(5249K) committed = 24317952(23748K) max = 136314880(133120K) 
------------------------------------------------------------------------------------------------------------------------- 
- 
-Recursion got 9673 levels deep on this system. 
-Recursion stopped by java.lang.StackOverflowError 
+JVM Memory Information:
+      Heap: init = 0(0K) used = 2096040(2046K) committed = 85000192(83008K) max = 129957888(126912K)
+  Non-Heap: init = 24317952(23748K) used = 5375328(5249K) committed = 24317952(23748K) max = 136314880(133120K)
+------------------------------------------------------------------------------------------------------------------------
+
+Recursion got 9673 levels deep on this system.
+Recursion stopped by java.lang.StackOverflowError
 
 ```
 
@@ -2621,7 +2621,7 @@ recurse;
 
 sub recurse () {
    ++$x;
-   say $x if $x %% 1_000_000;   
+   say $x if $x %% 1_000_000;
    recurse;
 }
 ```
@@ -2651,7 +2651,7 @@ When manually terminated memory use was on the order of 4Gb:
 
 ## Phix
 
-On a 32-bit version the limit is an impressive 34 million. Of course on real word apps with more parameters etc it will be smaller. Unfortunately other problems are stopping me from testing this on a 64-bit version right now. 
+On a 32-bit version the limit is an impressive 34 million. Of course on real word apps with more parameters etc it will be smaller. Unfortunately other problems are stopping me from testing this on a 64-bit version right now.
 
 ```Phix
 atom t1 = time()+1
@@ -2748,7 +2748,7 @@ a();
  597356
  597357
  597358
- 
+
  Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 261904 bytes) in [script-location.php] on line 5
 
 ```
@@ -2810,7 +2810,7 @@ dcl mod      builtin;
 
 dcl ri       fixed bin(31) init (0);
 
-recursive: proc recursive;            
+recursive: proc recursive;
   ri += 1;
   if mod(ri, 1024) = 1 then
     put data(ri);
@@ -2857,7 +2857,7 @@ function TestDepth ( $N )
     $N
     TestDepth ( $N + 1 )
     }
-   
+
 try
     {
     TestDepth 1 | ForEach { $Depth = $_ }
@@ -2994,8 +2994,8 @@ options("expressions")
 options(expressions = 10000)
 
 #Test it
-recurse <- function(x) 
-{ 
+recurse <- function(x)
+{
   print(x)
   recurse(x+1)
 
@@ -3081,9 +3081,9 @@ For Regina 3.5,      "  "  164,560
 For Regina 3.6,      "  "  164,407
 For Regina 3.7,      "  "     "
 For Regina 3.8,      "  "     "
-For Regina 3.8.2,    "  "     "   
+For Regina 3.8.2,    "  "     "
 For Regina 3.9.0,    "  "  164,527
-For Regina 3.9.1,    "  "     " 
+For Regina 3.9.1,    "  "     "
 
 ```
 
@@ -3097,7 +3097,7 @@ either the CMD.EXE or COMMAND.COM) shell).
 
 
 
-'''output'''   when using Personal REXX under Windows/XP Pro: 
+'''output'''   when using Personal REXX under Windows/XP Pro:
 
 The recursion level wasn't captured, but the last number shown was 240.
 
@@ -3110,7 +3110,7 @@ REXX/Personal 4.00 21 Mar 1992
     10 +++ call self
     10 +++ call self
     10 +++ call self
-     4 +++ call SELF 
+     4 +++ call SELF
 Error 5 on line 10 of D:\SELF.REX: Machine resources exhausted
 
 ```
@@ -3182,9 +3182,9 @@ For Regina 3.5,      "  "  164,560
 For Regina 3.6,      "  "  164,407
 For Regina 3.7,      "  "     "
 For Regina 3.8,      "  "     "
-For Regina 3.8.2,    "  "     "   
+For Regina 3.8.2,    "  "     "
 For Regina 3.9.0,    "  "  164,527
-For Regina 3.9.1,    "  "     " 
+For Regina 3.9.1,    "  "     "
 For Personal REXX,  it was     240  (the same)
 For R4,             it was     507  (the same)
 For ROO,            it was     382  (the same)
@@ -3256,7 +3256,7 @@ puts recurse(0)
 
 ```runbasic
 a = recurTest(1)
- 
+
 function recurTest(n)
 if n mod 100000 then cls:print n
 if n > 327000 then [ext]
@@ -3332,7 +3332,7 @@ Segmentation fault is reached when r is 130560.
 def recurseTest(i:Int):Unit={
    try{
       recurseTest(i+1)
-   } catch { case e:java.lang.StackOverflowError => 
+   } catch { case e:java.lang.StackOverflowError =>
       println("Recursion depth on this system is " + i + ".")
    }
 }
@@ -3596,7 +3596,7 @@ recurse()
   # if-elif avoid unuseful output; the elif was
   # added after a first run ended with a segmentation
   # fault after printing "10000"
-  if [[ $(($1 % 5000)) -eq 0 ]]; then 
+  if [[ $(($1 % 5000)) -eq 0 ]]; then
       echo $1;
   elif [[ $1 -gt 10000 ]]; then
       echo $1
@@ -3650,7 +3650,7 @@ End Function
 
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 The limit is : 6442
@@ -3733,7 +3733,7 @@ main
 	ret
 
 recurse
-	add	eax, 1  
+	add	eax, 1
 	call 	recurse
 	ret
 ```
@@ -3758,7 +3758,7 @@ Stack trace for VM#1 ():
    <repeats 2096 times>
    Cmd.__constructor addr:3  args(0) reg(0) R
    startup.__constructor addr:2242  args(0) reg(1) ER
-   startup.__constructor addr:2178  args(0) reg(22) 
+   startup.__constructor addr:2178  args(0) reg(22)
 Exception thrown: AssertionError(That is one big stack, infinite recursion?)
 
 ```

@@ -47,29 +47,29 @@ PROCEDURE Main IS
    TYPE Point IS ARRAY (0 .. 1) OF Float;
    TYPE Triangle IS ARRAY (Vertex) OF Point;
    TYPE Triangle_Vertices IS ARRAY (0 .. 5) OF Float;
-   
+
    FUNCTION Same_Side (A, B, M, N : Point) RETURN Boolean IS
       FUNCTION Aff (U : Point) RETURN Float IS
         ((B (1) - A (1)) * (U (0) - A (0)) + (A (0) - B (0)) * (U (1) - A (1)));
    BEGIN
       RETURN Aff (M) * Aff (N) >= 0.0;
    END Same_Side;
-   
+
    FUNCTION In_Side (T1 , T2 : Triangle) RETURN Boolean IS
      (FOR ALL V IN Vertex  =>
         (FOR Some P OF T2 => Same_Side (T1 (V + 1), T1 (V + 2), T1 (V), P)));
-   
+
    FUNCTION Overlap (T1, T2 : Triangle) RETURN Boolean IS
      (In_Side (T1, T2) AND THEN  In_Side (T2, T1));
-   
+
    FUNCTION "+" (T : Triangle_Vertices) RETURN Triangle IS
      ((T (0), T (1)), (T (2), T (3)), (T (4), T (5)));
-   
+
    PROCEDURE Put (T1, T2 : Triangle_Vertices) IS
    BEGIN
       Put_Line (Overlap (+T1, +T2)'Img);
    END Put;
-   
+
 BEGIN
    Put ((0.0, 0.0, 5.0, 0.0, 0.0, 5.0), (0.0, 0.0, 5.0, 0.0, 0.0, 6.0));
    Put ((0.0, 0.0, 0.0, 5.0, 5.0, 0.0), (0.0, 0.0, 0.0, 5.0, 5.0, 0.0));
@@ -101,8 +101,8 @@ true
 
 {{trans|C++}}
 
-```c>#include <errno.h
-
+```c
+#include <errno.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -266,15 +266,15 @@ int main() {
 ## C++
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <iostream>
 #include <stdexcept>
 using namespace std;
 
 typedef std::pair<double, double> TriPoint;
 
-inline double Det2D(TriPoint &p1, TriPoint &p2, TriPoint &p3) 
+inline double Det2D(TriPoint &p1, TriPoint &p2, TriPoint &p3)
 {
 	return +p1.first*(p2.second-p3.second)
 		+p2.first*(p3.second-p1.second)
@@ -881,15 +881,15 @@ let main _ =
     let t8 = ((0.0, 0.0), (1.0, 1.0), (0.0, 2.0))
     let t9 = ((2.0, 1.0), (3.0, 0.0), (3.0, 2.0))
     Print t8 t9
- 
+
     let t10 = ((2.0, 1.0), (3.0, -2.0), (3.0, 4.0))
     Print t8 t10
- 
+
     let t11 = ((0.0, 0.0), (1.0, 0.0), (0.0, 1.0))
     let t12 = ((1.0, 0.0), (2.0, 0.0), (1.0, 1.1))
     printfn "The following triangles which have only a single corner in contact, if boundary points collide"
     Print t11 t12
- 
+
     Console.WriteLine("{0} and\n{1}\nwhich have only a single corner in contact, if boundary points do not collide\n{2}", t11, t12, if TriTri2D 0.0 false false t11 t12 then "overlap" else "do not overlap")
 
     0 // return an integer exit code
@@ -963,7 +963,7 @@ func (t *triangle) String() string {
 func (t *triangle) det2D() float64 {
     return t.p1.x * (t.p2.y - t.p3.y) +
            t.p2.x * (t.p3.y - t.p1.y) +
-           t.p3.x * (t.p1.y - t.p2.y) 
+           t.p3.x * (t.p1.y - t.p2.y)
 }
 
 func (t *triangle) checkTriWinding(allowReversed bool) {
@@ -2525,7 +2525,7 @@ Return
   Do i=n-1 to 1 By -1
     res=res word(list,i)
     End
-  Return res 
+  Return res
 ```
 
 {{out}}
@@ -3346,12 +3346,12 @@ function overlap(sequence t1, t2, atom epsilon=0.0, bool allowReversed=false, on
     bReversed = false
     t1 = checkWinding(t1, allowReversed)
     t2 = checkWinding(t2, allowReversed)
- 
+
     for t=1 to 2 do                     -- check t1 then t2
         for edge=1 to 3 do              -- check each edge
             sequence p1 = t1[edge],
                      p2 = t1[mod(edge,3)+1]
-            -- Check all points of trangle 2 lay on the external side 
+            -- Check all points of trangle 2 lay on the external side
             -- of the edge E. If they do, the triangles do not collide.
             integer onside = 0
             for k=1 to 3 do
@@ -3380,7 +3380,7 @@ function redraw_cb(Ihandle /*ih*/, integer /*posx*/, integer /*posy*/)
     for i=1 to length(triangles) do
         sequence {t1,t2} = triangles[i]
         draw_triangle(t1,cx,cy,CD_RED)
-        integer s = (i<=2)  -- (smudge tests[1..2] by one 
+        integer s = (i<=2)  -- (smudge tests[1..2] by one
                             --  pixel to show them better)
         draw_triangle(t2,cx+s,cy+s,CD_BLUE)
         cdCanvasSetForeground(cddbuffer, CD_BLACK)
@@ -3405,7 +3405,7 @@ end function
 
 procedure main()
     IupOpen()
-    
+
     canvas = IupCanvas(NULL)
     IupSetAttribute(canvas, "RASTERSIZE", "1250x300")
     IupSetCallback(canvas, "MAP_CB", Icallback("map_cb"))
@@ -3467,7 +3467,7 @@ def TriTri2D(t1, t2, eps = 0.0, allowReversed = False, onBoundary = True):
 		#Check all points of trangle 2 lay on the external side of the edge E. If
 		#they do, the triangles do not collide.
 		if (chkEdge(np.vstack((edge, t2s[0]))) and
-			chkEdge(np.vstack((edge, t2s[1]))) and  
+			chkEdge(np.vstack((edge, t2s[1]))) and
 			chkEdge(np.vstack((edge, t2s[2])))):
 			return False
 
@@ -3478,7 +3478,7 @@ def TriTri2D(t1, t2, eps = 0.0, allowReversed = False, onBoundary = True):
 		#Check all points of trangle 1 lay on the external side of the edge E. If
 		#they do, the triangles do not collide.
 		if (chkEdge(np.vstack((edge, t1s[0]))) and
-			chkEdge(np.vstack((edge, t1s[1]))) and  
+			chkEdge(np.vstack((edge, t1s[1]))) and
 			chkEdge(np.vstack((edge, t1s[2])))):
 			return False
 
@@ -3552,27 +3552,27 @@ if __name__=="__main__":
 	t1 = [[0,0],[5,0],[0,5]]
 	t2 = [[0,0],[5,0],[0,6]]
 	print (PolyOverlaps(t1, t2), True)
- 
+
 	t1 = [[0,0],[0,5],[5,0]]
 	t2 = [[0,0],[0,6],[5,0]]
 	print (PolyOverlaps(t1, t2), True)
- 
+
 	t1 = [[0,0],[5,0],[0,5]]
 	t2 = [[-10,0],[-5,0],[-1,6]]
 	print (PolyOverlaps(t1, t2), False)
- 
+
 	t1 = [[0,0],[5,0],[2.5,5]]
 	t2 = [[0,4],[2.5,-1],[5,4]]
 	print (PolyOverlaps(t1, t2), True)
- 
+
 	t1 = [[0,0],[1,1],[0,2]]
 	t2 = [[2,1],[3,0],[3,2]]
 	print (PolyOverlaps(t1, t2), False)
- 
+
 	t1 = [[0,0],[1,1],[0,2]]
 	t2 = [[2,1],[3,-2],[3,4]]
 	print (PolyOverlaps(t1, t2), False)
- 
+
 	#Barely touching
 	t1 = [[0,0],[1,0],[0,1]]
 	t2 = [[1,0],[2,0],[1,1]]
@@ -3691,7 +3691,7 @@ END SUB
 
 ;; A triangle is a list of three pairs of points: '((x . y) (x . y) (x . y))
 (define (to-tri x1 y1 x2 y2 x3 y3) `((,x1 . ,y1) (,x2 . ,y2) (,x3 . ,y3)))
- 
+
 (define det-2D
   (match-lambda
     [`((,x1 . ,y1) (,x2 . ,y2) (,x3 . ,y3)) (+ (* x1 (- y2 y3)) (* x2 (- y3 y1)) (* x3 (- y1 y2)))]))
@@ -3710,15 +3710,15 @@ END SUB
     (if on-boundary? ; Points on the boundary are considered as colliding
         (λ (triangle) (< (det-2D triangle) ϵ))
         (λ (triangle) (<= (det-2D triangle) ϵ))))
-  
+
   (define (inr t1 t2)
     (for*/and ((i (in-range 3)))
-      ;; Check all points of trangle 2 lay on the external side 
+      ;; Check all points of trangle 2 lay on the external side
       ;; of the edge E. If they do, the triangles do not collide.
       (define t1.i (list-ref t1 i))
       (define t1.j (list-ref t1 (modulo (add1 i) 3)))
       (not (for/and ((k (in-range 3))) (check-edge (list (list-ref t2 k) t1.i t1.j))))))
-  
+
   (let (;; Trangles must be expressed anti-clockwise
         (tri1 (assert-triangle-winding triangle1 allow-reversed?))
         (tri2 (assert-triangle-winding triangle2 allow-reversed?)))
@@ -3727,7 +3727,7 @@ END SUB
 ;; ---------------------------------------------------------------------------------------------------
 (module+ test
   (require rackunit)
-  
+
   (define triangleses ; pairs of triangles
     (for/list ((a.b (in-list '(((0 0  5 0  0   5) (  0 0   5    0   0 6))
                                ((0 0  0 5  5   0) (  0 0   0    5   5 0))
@@ -4790,7 +4790,7 @@ fcn triTri2D(triangle1,triangle2, eps=0.0, allowReversed=False, onBoundary=True)
    // Trangles must be expressed anti-clockwise
    triangle1=checkTriWinding(triangle1, allowReversed);
    triangle2=checkTriWinding(triangle2, allowReversed);
- 
+
    chkEdge:=
       if(onBoundary) // Points on the boundary are considered as colliding
 	 fcn(triangle,eps){ det2D(triangle)<eps }
@@ -4801,7 +4801,7 @@ fcn triTri2D(triangle1,triangle2, eps=0.0, allowReversed=False, onBoundary=True)
    do(2){				// check triangle1 and then triangle2
       foreach i in (3){	//For edge E of trangle 1,
 	 j:=(i+1)%3;	// 1,2,0
-	 // Check all points of trangle 2 lay on the external side 
+	 // Check all points of trangle 2 lay on the external side
 	 // of the edge E. If they do, the triangles do not collide.
 	 if(chkEdge(T(t1[i],t1[j],t2[0]), eps) and
 	    chkEdge(T(t1[i],t1[j],t2[1]), eps) and

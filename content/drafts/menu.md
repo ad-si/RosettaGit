@@ -21,7 +21,7 @@ Given a prompt and a list containing a number of strings of which one is to be s
 
 
 
-The function should reject input that is not an integer or is out of range by redisplaying the whole menu before asking again for a number. The function should return an empty string if called with an empty list. 
+The function should reject input that is not an integer or is out of range by redisplaying the whole menu before asking again for a number. The function should return an empty string if called with an empty list.
 
 For test purposes use the following four phrases in a list:
     fee fie
@@ -37,14 +37,14 @@ This task is fashioned after the action of the [http://www.softpanorama.org/Scri
 ```Ada
 with ada.text_io,Ada.Strings.Unbounded; use  ada.text_io, Ada.Strings.Unbounded;
 
-procedure menu is 
+procedure menu is
 	type menu_strings is array (positive range <>) of Unbounded_String ;
 	function "+" (s : string) return Unbounded_String is (To_Unbounded_String (s));
 
 	function choice (m : menu_strings; prompt : string) return string is
 	begin
 		if m'length > 0 then
-			loop 
+			loop
 				put_line (prompt);
 				for i in m'range loop
 					put_line (i'img &") " & To_String (m(i)));
@@ -59,7 +59,7 @@ procedure menu is
 	end choice;
 
 begin
-	put_line ("You chose " & 
+	put_line ("You chose " &
 		choice ((+"fee fie",+"huff and puff",+"mirror mirror",+"tick tock"),"Enter your choice "));
 end menu;
 ```
@@ -79,7 +79,7 @@ end menu;
 PROC menu select := (FLEX[]STRING items, UNION(STRING, VOID) prompt)STRING:
 (
         INT choice;
-       
+
         IF LWB items <= UPB items THEN
                 WHILE
                         FOR i FROM LWB items TO UPB items DO
@@ -322,7 +322,7 @@ goto:eof
       selected$ = FNmenu(list$(), "Please make a selection: ")
       PRINT selected$
       END
-      
+
       DEF FNmenu(list$(), prompt$)
       LOCAL index%, select$
       IF SUM(list$()) = "" THEN = ""
@@ -375,8 +375,8 @@ p menu "Selection: " ["fee fie" "huff and puff" "mirror mirror" "tick tock"]
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -427,8 +427,8 @@ menu_select(const char *const *items, const char *prompt)
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -560,7 +560,7 @@ String menu(String* strings) {
 
 ```clojure
 (defn menu [prompt choices]
-  (if (empty? choices) 
+  (if (empty? choices)
     ""
     (let [menutxt (apply str (interleave
                               (iterate inc 1)
@@ -781,7 +781,7 @@ end
 # test empty list
 response = Menu.select("Which is empty", [])
 IO.puts "empty list returns: #{inspect response}"
- 
+
 # "real" test
 items = ["fee fie", "huff and puff", "mirror mirror", "tick tock"]
 response = Menu.select("Which is from the three pigs", items)
@@ -818,9 +818,9 @@ you chose: "tick tock"
 ```ERRE
 
 PROCEDURE Selection(choices$[],prompt$->sel$)
-   IF UBOUND(choices$,1)-LBOUND(choices$,1)=0 THEN 
+   IF UBOUND(choices$,1)-LBOUND(choices$,1)=0 THEN
       sel$=""
-      EXIT PROCEDURE 
+      EXIT PROCEDURE
    END IF
    ret$=""
    REPEAT
@@ -851,11 +851,11 @@ function menu_select(sequence items, object prompt)
         for i = 1 to length(items) do
             printf(1,"%d) %s\n",{i,items[i]})
         end for
-        
+
         if atom(prompt) then
             prompt = "Choice?"
         end if
-        
+
         return items[prompt_number(prompt,{1,length(items)})]
     end if
 end function
@@ -979,7 +979,7 @@ CHAR 4 CONSTANT '4'
 : BETWEEN ( n low hi -- ?)  1+ WITHIN ;
 
 : MENU ( addr len -- addr len )
-       DUP 0= 
+       DUP 0=
        IF
           2DROP  NIL  EXIT
        ELSE
@@ -997,7 +997,7 @@ CHAR 4 CONSTANT '4'
           REPEAT
           -ROT 2DROP    \ drop input string
           CR [CHAR] 0 -  SELECT
-       THEN 
+       THEN
 ;
 ```
 
@@ -1035,7 +1035,7 @@ Here we extend Forth to support simple lists and complete the task using the lan
 : {""}   ( $ -- )  '"' SPACE {TYPE} '"' SPACE ;
 : }PRINT ( n array -- ) {NTH} {TYPE} ;
 
-\ 
+\
 ### == TASK BEGINS ==
 
 CREATE GOODLIST
@@ -1072,7 +1072,7 @@ CHAR 0 CONSTANT '0'
           REPEAT
          [CHAR] 0 -
          CR SWAP {NTH}
-       THEN 
+       THEN
 ;
 ```
 
@@ -1112,7 +1112,7 @@ Please find the build instructions in the comments at the start of the FORTRAN 2
 ```FORTRAN
 
 !a=./f && make $a && OMP_NUM_THREADS=2 $a
-!gfortran -std=f2008 -Wall -fopenmp -ffree-form -fall-intrinsics -fimplicit-none f.f08 -o f 
+!gfortran -std=f2008 -Wall -fopenmp -ffree-form -fall-intrinsics -fimplicit-none f.f08 -o f
 
       module menu
       public :: selector
@@ -1480,11 +1480,11 @@ def choice:
           else __read__
           end);
     __read__;
-      
+
   if length == 0 then ""
   else
   . as $in
-  | ("Enter your choice:\n" + 
+  | ("Enter your choice:\n" +
      (reduce range(0; length) as $i (""; . + "\($i + 1): \($in[$i])\n")) ) as $prompt
   | read($prompt; length) as $read
   | if ($read|type) == "string" then $read
@@ -1741,7 +1741,7 @@ In[1]:= (*! ELIDED !*)
 
 In[2]:= textMenu[{}]
 
-Out[2]= 
+Out[2]=
 
 In[3]:= textMenu[{"fee fie", "huff and puff", "mirror mirror", "tick tock"}]
 1) fee fie
@@ -1780,24 +1780,24 @@ Out[3]= mirror mirror
 
 ```MATLAB
 function sucess = menu(list)
-    
+
     if numel(list) == 0
         sucess = '';
         return
     end
 
     while(true)
-        
+
         disp('Please select one of these options:');
-        
+
         for i = (1:numel(list))
-        
+
             disp([num2str(i) ') ' list{i}]);
-            
+
         end
-        
+
         disp([num2str(numel(list)+1) ') exit']);
-        
+
         try
             key = input(':: ');
             if key == numel(list)+1
@@ -1810,12 +1810,12 @@ function sucess = menu(list)
         catch
             continue
         end
-        
-        
+
+
     end
-    
+
     sucess = true;
-    
+
 end
 
 ```
@@ -1882,7 +1882,7 @@ BEGIN
     menu[2] := "huff and puff";
     menu[3] := "mirror mirror";
     menu[4] := "tick tock";
-    
+
     FOR index := 1 TO HIGH(menu) DO
         WriteString("[");
         WriteCard(    index,1);
@@ -1890,10 +1890,10 @@ BEGIN
         WriteString(            menu[index]);
         WriteLn;
     END;(*of FOR*)
-    
+
     WriteString("Choose what you want : ");
     ReadCard(selection);
-    
+
     IF (selection <= HIGH(menu)) AND (selection > 0) THEN
         WriteString("You have chosen: ");
         WriteString(                  menu[selection]);
@@ -1920,7 +1920,7 @@ MENU(STRINGS,SEP)
  ;SET STRINGS="fee fie^huff and puff^mirror mirror^tick tock"
  SET MAX=$LENGTH(STRINGS,SEP)
  QUIT:MAX=0 ""
-WRITEMENU 
+WRITEMENU
  FOR I=1:1:MAX WRITE I,": ",$PIECE(STRINGS,SEP,I),!
  READ:30 !,"Choose a string by its index: ",A,!
  IF (A<1)!(A>MAX)!(A\1'=A) GOTO WRITEMENU
@@ -1932,39 +1932,39 @@ Usage:
 ```txt
 
 USER>W !,$$MENU^ROSETTA("fee fie^huff and puff^mirror mirror^tick tock","^")
- 
+
 1: fee fie
 2: huff and puff
 3: mirror mirror
 4: tick tock
- 
+
 Choose a string by its index: 3
 mirror mirror
 USER>W !,$$MENU^ROSETTA("fee fie^huff and puff^mirror mirror^tick tock","^")
- 
+
 1: fee fie
 2: huff and puff
 3: mirror mirror
 4: tick tock
- 
+
 Choose a string by its index: 5
 1: fee fie
 2: huff and puff
 3: mirror mirror
 4: tick tock
- 
+
 Choose a string by its index: A
 1: fee fie
 2: huff and puff
 3: mirror mirror
 4: tick tock
- 
+
 Choose a string by its index: 0
 1: fee fie
 2: huff and puff
 3: mirror mirror
 4: tick tock
- 
+
 Choose a string by its index: 1
 fee fie
 
@@ -2065,7 +2065,7 @@ Choice? 2
 FUNCTION bashMenu RETURNS CHAR(
    i_c AS CHAR
 ):
-   
+
    DEF VAR ii        AS INT.
    DEF VAR hfr       AS HANDLE.
    DEF VAR hmenu     AS HANDLE EXTENT.
@@ -2090,7 +2090,7 @@ FUNCTION bashMenu RETURNS CHAR(
          ROW            =  ii
          VISIBLE        =  TRUE
          .
-      
+
    END.
 
    IF i_c = "" THEN
@@ -2103,13 +2103,13 @@ FUNCTION bashMenu RETURNS CHAR(
       IF ikey >= 1 AND ikey <= NUM-ENTRIES( i_c ) THEN
          ireturn = ikey.
 
-   END. 
+   END.
 
    RETURN ENTRY( ireturn, i_c ).
 
 END FUNCTION.
 
-MESSAGE 
+MESSAGE
    bashMenu( "fee fie,huff and puff,mirror mirror,tick tock" )
 VIEW-AS ALERT-BOX.
 ```
@@ -2145,10 +2145,10 @@ declare
   in
      {String.toInt {StdIo getS($)}}
   end
-  
+
   Item = {Select "Which is from the three pigs: "
 	  ["fee fie" "huff and puff" "mirror mirror" "tick tock"]}
-	  
+
 in
   {System.showInfo "You chose: "#Item}
 ```
@@ -2240,7 +2240,7 @@ end.
 
 ```txt
 
-$ bin/menu 
+$ bin/menu
  1) fee fie
  2) huff and puff
  3) mirror mirror
@@ -2369,7 +2369,7 @@ sequence res = ""
     end if
     return res
 end function
- 
+
 constant items = {"fee fie", "huff and puff", "mirror mirror", "tick tock"}
 constant prompt = "Which is from the three pigs? "
 string res = menu_select(items,prompt)
@@ -2495,25 +2495,25 @@ function Select-TextItem
     {
         do
         {
-            [int]$optionNumber = 1 
+            [int]$optionNumber = 1
 
-            foreach ($option in $menuOptions) 
-            { 
+            foreach ($option in $menuOptions)
+            {
                 Write-Host ("{0,3}: {1}" -f $optionNumber,$option)
 
-                $optionNumber++ 
-            } 
+                $optionNumber++
+            }
 
-            Write-Host ("{0,3}: {1}" -f 0,"To cancel")  
+            Write-Host ("{0,3}: {1}" -f 0,"To cancel")
 
-            [int]$choice = Read-Host $Prompt 
+            [int]$choice = Read-Host $Prompt
 
-            $selectedValue = "" 
+            $selectedValue = ""
 
-            if ($choice -gt 0 -and $choice -le $menuOptions.Count) 
-            { 
-                $selectedValue = $menuOptions[$choice - 1] 
-            } 
+            if ($choice -gt 0 -and $choice -le $menuOptions.Count)
+            {
+                $selectedValue = $menuOptions[$choice - 1]
+            }
         }
         until ($choice -eq 0 -or $choice -le $menuOptions.Count)
 
@@ -2547,21 +2547,21 @@ mirror mirror
 {{incorrect|ProDOS|The function should return an empty string if called with an empty list. Please also check if this could really used as a [https://en.wikipedia.org/wiki/Subroutine function aka subroutine.]}}
 <lang>
 :a
-printline 
+printline
 ### =======MENU=======
 
 printline 1. Fee Fie
 printline 2. Huff Puff
 printline 3. Mirror, Mirror
 printline 4. Tick, Tock
-editvar /newvar /value=a /userinput=1 /title=What page do you want to go to? 
+editvar /newvar /value=a /userinput=1 /title=What page do you want to go to?
 if -a- /hasvalue 1 printline You chose a line from the book Jack and the Beanstalk. & exitcurrentprogram 1
 if -a- /hasvalue 2 printline You chose a line from the book The Three Little Pigs. & exitcurrentprogram 1
 if -a- /hasvalue 3 printline You chose a line from the book Snow White. & exitcurrentprogram 1
 if -a- /hasvalue 4 printline You chose a line from the book Beauty and the Beast. & exitcurrentprogram 1
-printline You either chose an invalid choice or didn't chose. 
+printline You either chose an invalid choice or didn't chose.
 editvar /newvar /value=goback /userinput=1 /title=Do you want to chose something else?
-if -goback- /hasvalue y goto :a else exitcurrentprogram 1 
+if -goback- /hasvalue y goto :a else exitcurrentprogram 1
 ```
 
 
@@ -2572,17 +2572,17 @@ if -goback- /hasvalue y goto :a else exitcurrentprogram 1
 
 ```prolog
 
-rosetta_menu([], "") :- !.              %% Incase of an empty list.    
+rosetta_menu([], "") :- !.              %% Incase of an empty list.
 rosetta_menu(Items, SelectedItem) :-
     repeat,                             %% Repeat until everything that follows is true.
         display_menu(Items),            %% IO
         get_choice(Choice),             %% IO
     number(Choice),                     %% True if Choice is a number.
     nth1(Choice, Items, SelectedItem),  %% True if SelectedItem is the 1-based nth member of Items, (fails if Choice is out of range)
-    !.                                  
+    !.
 
 display_menu(Items) :-
-    nl, 
+    nl,
     foreach( nth1(Index, Items, Item),
              format('~w) ~s~n', [Index, Item]) ).
 
@@ -2673,7 +2673,7 @@ def _ok(reply, itemcount):
         return 0 <= n < itemcount
     except:
         return False
-    
+
 def selector(items, prompt):
     'Prompt to select an item from the items'
     if not items: return ''
@@ -2706,10 +2706,10 @@ Which is from the three pigs:  -1
    3) tick tock
 Which is from the three pigs:      0
 You chose: fee fie
->>> 
+>>>
 ### ============================= RESTART =============================
 
->>> 
+>>>
    0) fee fie
    1) huff and puff
    2) mirror mirror
@@ -2920,7 +2920,7 @@ you chose item 2:  huff and puff
 aList = ["fee fie", "huff and puff", "mirror mirror", "tick tock"]
 selected = menu(aList, "please make a selection: ")
 see "" + selected + nl
- 
+
 func menu aList, prompt
      ndex = 1
      while index>0 and index<=len(aList)
@@ -2982,11 +2982,11 @@ def select(prompt, items = [])
     items[answer]
   end
 end
- 
+
 # test empty list
 response = select('Which is empty')
 puts "empty list returns: >#{response}<\n"
- 
+
 # "real" test
 items = ['fee fie', 'huff and puff', 'mirror mirror', 'tick tock']
 response = select('Which is from the three pigs', items)
@@ -3237,7 +3237,7 @@ Which is from the three pigs: skdfjhgz
   2: huff and puff
   3: mirror mirror
   4: tick tock
-Which is from the three pigs: 
+Which is from the three pigs:
   1: fee fie
   2: huff and puff
   3: mirror mirror
@@ -3348,7 +3348,7 @@ choose 'fee fie' 'huff and puff' 'mirror mirror' 'tick tock'
 
 
 ```txt
-$ bash menu.sh                                                              
+$ bash menu.sh
 1) fee fie
 2) huff and puff
 3) mirror mirror
@@ -3363,8 +3363,8 @@ $
 
 
 ```txt
-$ zsh menu.sh                                                               
-1) fee fie         2) huff and puff   3) mirror mirror   4) tick tock       
+$ zsh menu.sh
+1) fee fie         2) huff and puff   3) mirror mirror   4) tick tock
 Which is from the three pigs: 2
 You chose: huff and puff
 ```
@@ -3439,7 +3439,7 @@ let (choice = <={
 
 
 ```txt
-$ es menu.es 
+$ es menu.es
 1) fee fie
 2) huff and puff
 3) mirror mirror

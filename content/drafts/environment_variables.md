@@ -10,16 +10,16 @@ categories = []
 tags = []
 +++
 
-{{task|Programming environment operations}} 
-[[Category:Environment variables]] 
-[[Category:Initialization]] 
+{{task|Programming environment operations}}
+[[Category:Environment variables]]
+[[Category:Initialization]]
 [[Category:Simple]]
 {{omit from|M4}}
 {{omit from|TI-83 BASIC}} {{omit from|TI-89 BASIC}} <!-- Does not have an environment other than regular global variables. -->
 {{omit from|Unlambda|Does not provide access to environment variables.}}
 
 ;Task:
-Show how to get one of your process's [[wp:Environment variable|environment variables]]. 
+Show how to get one of your process's [[wp:Environment variable|environment variables]].
 
 The available variables vary by system;   some of the common ones available on Unix include:
 :::*   PATH
@@ -72,7 +72,7 @@ end Env_Vars;
 
 
 
-###  Alternative version using Matreshka 
+###  Alternative version using Matreshka
 
 
 Uses [http://forge.ada-ru.org/matreshka Matreshka].
@@ -150,7 +150,7 @@ USERNAME     : HaJo
 The ENVIRON array contains the values of the current environment:
 
 ```awk
-$ awk 'BEGIN{print "HOME:"ENVIRON["HOME"],"USER:"ENVIRON["USER"]}' 
+$ awk 'BEGIN{print "HOME:"ENVIRON["HOME"],"USER:"ENVIRON["USER"]}'
 ```
 
 {{out}}
@@ -164,7 +164,7 @@ HOME:/home/suchrich USER:SuchRich
 Environment variables can also be assigned to awk variables before execution, with (-v) options:
 
 ```awk
-$ awk -v h=$HOME -v u=$USER 'BEGIN{print "HOME:"h,"USER:"u}' 
+$ awk -v h=$HOME -v u=$USER 'BEGIN{print "HOME:"h,"USER:"u}'
 ```
 
 {{out}}
@@ -181,7 +181,7 @@ Listing all the environment variables:
 BEGIN { print "# Environment:"
         for (e in ENVIRON) { printf( "%10s = %s\n", e, ENVIRON[e] ) }
 }
-END   { print "# Done." } 
+END   { print "# Done." }
 ```
 
 {{out}}
@@ -297,7 +297,7 @@ set Foo
       PRINT FNenvironment("PATH")
       PRINT FNenvironment("USERNAME")
       END
-      
+
       DEF FNenvironment(envar$)
       LOCAL buffer%, size%
       SYS "GetEnvironmentVariable", envar$, 0, 0 TO size%
@@ -311,8 +311,8 @@ set Foo
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 
 int main() {
@@ -342,8 +342,8 @@ namespace RosettaCode {
 ## C++
 
 
-```cpp>#include <cstdlib
-
+```cpp
+#include <cstdlib>
 #include <cstdio>
 
 int main()
@@ -376,7 +376,7 @@ int main()
        01  home PIC X(75).
 
        PROCEDURE DIVISION.
-*          *> Method 1.      
+*          *> Method 1.
            ACCEPT home FROM ENVIRONMENT "HOME"
            DISPLAY home
 
@@ -482,9 +482,9 @@ end.
 
 ## Eiffel
 
-The feature <code lang="eiffel">get</code> returns the value of an environment variable. <code lang="eiffel">get</code> is defined in the library class EXECUTION_ENVIRONMENT. So the class APPLICATION inherits from EXECUTION_ENVIRONMENT in order to make <code lang="eiffel">get</code> available. 
+The feature <code lang="eiffel">get</code> returns the value of an environment variable. <code lang="eiffel">get</code> is defined in the library class EXECUTION_ENVIRONMENT. So the class APPLICATION inherits from EXECUTION_ENVIRONMENT in order to make <code lang="eiffel">get</code> available.
 
-```eiffel 
+```eiffel
 class
     APPLICATION
 inherit
@@ -654,8 +654,8 @@ func main() {
 ```
 
 ;Alternatively:
-Library function os.Environ returns all environment variables.  
-You're on your own then to parse out the one you want.  
+Library function os.Environ returns all environment variables.
+You're on your own then to parse out the one you want.
 Example:
 
 ```go
@@ -769,9 +769,9 @@ software {
 ```Icon
 procedure main(arglist)
 
-if *envars = 0 then envars := ["HOME", "TRACE", "BLKSIZE","STRSIZE","COEXPSIZE","MSTKSIZE", "IPATH","LPATH","NOERRBUF"] 
+if *envars = 0 then envars := ["HOME", "TRACE", "BLKSIZE","STRSIZE","COEXPSIZE","MSTKSIZE", "IPATH","LPATH","NOERRBUF"]
 
-every v := !sort(envars) do 
+every v := !sort(envars) do
    write(v," = ",image(getenv(v))|"* not set *")
 end
 ```
@@ -927,7 +927,7 @@ print DefaultDir$
 ```
 
 
-###  Other variables 
+###  Other variables
 
 
 ```lb
@@ -1554,7 +1554,7 @@ If OpenConsole()
   PrintN(#CRLF$+#CRLF$+"NUMBER_OF_PROCESSORS= "+ GetEnvironmentVariable("NUMBER_OF_PROCESSORS"))
 
   PrintN(#CRLF$+#CRLF$+"Press Enter to quit.")
-  Input() 
+  Input()
   CloseConsole()
 EndIf
 ```
@@ -1616,10 +1616,10 @@ here puts
 
 Each REXX interpreter sets its own rules by what identifies the pool in which the environmental variables are named. In addition, each operation system (OS) has their own definition as well. This makes it problematic in the accessing/acquiring of environmental variables. Most programmers know what REXX interpreter they are using, and furthermore, they also know what operating system they are writing the REXX program for, so most programmers hard-wire (explicitly code) the "access-name" of the system environmental variables into the program.
 
-The following will work for 
+The following will work for
 ::* '''Regina'''
 ::* '''R4'''
-::* '''ROO''' 
+::* '''ROO'''
 for the DOS shell under Microsoft Windows (any version).<br />
 (Also successfully tested with Regina under the bash shell in UNIX.)
 {{works with|Regina}}
@@ -1632,10 +1632,10 @@ for the DOS shell under Microsoft Windows (any version).<br />
 x=value('TEMP',,'SYSTEM')
 ```
 
-The following will work for 
+The following will work for
 ::* '''PC/REXX'''
 ::* '''Personal REXX'''
-::* '''Regina''' 
+::* '''Regina'''
 ::* '''Open Object Rexx'''
 for the DOS shell under Microsoft Windows (any version).<br />
 (Also successfully tested with Regina and ooRexx under the bash shell in UNIX.)
@@ -1659,7 +1659,7 @@ x=getenv("PATH") /* Get the contents of the path environment variable */
 ```
 
 
-Other REXX interpreters have their own requirements to identify the SYSTEM environment. 
+Other REXX interpreters have their own requirements to identify the SYSTEM environment.
 
 VM/CMS has something called GLOBALV (global variables) and are of three types:
 ::* temporary,   lasting only for execution of the REXX program
@@ -1781,7 +1781,7 @@ to get the home directory and the search path in an operating system independent
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const proc: main is func
   begin
     writeln(getenv("HOME"));
@@ -1802,7 +1802,7 @@ say ENV{'HOME'};
 
 ## Slate
 
- 
+
 ```slate
 Environment variables at: 'PATH'.
 "==> '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games'"
@@ -1934,7 +1934,7 @@ An ordinary variable can be marked as an environment variable with the <code>exp
 
 Now child processes launched by the shell will have an environment variable called <code>VAR</code>.
 
-The Unix command "env" will print out all of the environment variables 
+The Unix command "env" will print out all of the environment variables
 as key=value pairs on standard output.
 
 
@@ -1960,7 +1960,7 @@ The argument to the main program is a record initialized by the run-time system 
 showenv = <.file$[contents: --<''>]>+ %smP+ ~&n-={'TERM','SHELL','X11BROWSER'}*~+ ~environs
 ```
 
-The rest of this application searches for the three variables named 
+The rest of this application searches for the three variables named
 and displays them on standard output.
 
 {{out|Here is a bash session}}

@@ -210,9 +210,9 @@ data = %A_scriptdir%\readings.txt
 
 Loop, Read, %data%
 	{
-	Lines := A_Index	
+	Lines := A_Index
     StringReplace, dummy, A_LoopReadLine, %A_Tab%,, All UseErrorLevel
-		
+
     Loop, parse, A_LoopReadLine, %A_Tab%
 		{
 		wrong := 0
@@ -228,7 +228,7 @@ Loop, Read, %data%
 				}
 			}
 		else
-			{		
+			{
 			if (A_loopfield/1 < 0)
 				{
 				Wrong := 1
@@ -242,20 +242,20 @@ Loop, Read, %data%
 		totwrong++
 	else
 		valid++
-	
+
 	if (errorlevel <> 48)
 		{
 		if (wrong == 0)
-			{	
+			{
 			totwrong++
 			valid--
 			}
 		unvalidformat++
-		}	
-		
+		}
+
 	olddate := date
 	}
-	
+
 msgbox, Duplicate Dates:`n%wrongDates%`nRead Lines: %lines%`nValid Lines: %valid%`nwrong lines: %totwrong%`nDuplicates: %TotWrongDates%`nWrong Formatted: %unvalidformat%`n
 
 ```
@@ -287,7 +287,7 @@ Wrong Formatted: 0
 
 A series of AWK one-liners are shown as this is often what is done. If this information were needed repeatedly, (and this is not known), a more permanent shell script might be created that combined multi-line versions of the scripts below.
 
-'''Gradually tie down the format.''' 
+'''Gradually tie down the format.'''
 
 (In each case offending lines will be printed)
 
@@ -353,8 +353,8 @@ bash$
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -461,8 +461,8 @@ dup line 1911: 1995-03-26
 
 {{libheader|Boost}}
 
-```cpp>#include <boost/regex.hpp
-
+```cpp
+#include <boost/regex.hpp>
 #include <fstream>
 #include <iostream>
 #include <vector>
@@ -472,19 +472,19 @@ dup line 1911: 1995-03-26
 #include <algorithm>
 using namespace std ;
 
-boost::regex e ( "\\s+" ) ; 
+boost::regex e ( "\\s+" ) ;
 
-int main( int argc , char *argv[ ] ) { 
-   ifstream infile( argv[ 1 ] ) ; 
+int main( int argc , char *argv[ ] ) {
+   ifstream infile( argv[ 1 ] ) ;
    vector<string> duplicates ;
    set<string> datestamps ; //for the datestamps
-   if ( ! infile.is_open( ) ) { 
+   if ( ! infile.is_open( ) ) {
       cerr << "Can't open file " << argv[ 1 ] << '\n' ;
-      return 1 ; 
-   }   
+      return 1 ;
+   }
    int all_ok = 0  ;//all_ok for lines in the given pattern e
    int pattern_ok = 0 ; //overall field pattern of record is ok
-   while ( infile ) { 
+   while ( infile ) {
       string eingabe ;
       getline( infile , eingabe ) ;
       boost::sregex_token_iterator i ( eingabe.begin( ), eingabe.end( ) , e , -1 ), j  ;//we tokenize on empty fields
@@ -551,7 +551,7 @@ namespace TextProc2
             Regex dateEx = new Regex(@"^\d{4}-\d{2}-\d{2}$");
             Regex valEx = new Regex(@"^\d+\.{1}\d{3}$");
             Regex flagEx = new Regex(@"^[1-9]{1}$");
-            
+
             int missformcount = 0, totalcount = 0;
             Dictionary<int, string> dates = new Dictionary<int, string>();
 
@@ -560,31 +560,31 @@ namespace TextProc2
                 string line = sr.ReadLine();
                 while (line != null)
                 {
-                    line = multiWhite.Replace(line, @" ");                    
+                    line = multiWhite.Replace(line, @" ");
                     string[] splitLine = line.Split(' ');
                     if (splitLine.Length != 49)
                         missformcount++;
-                    if (!dateEx.IsMatch(splitLine[0]))                        
-                        missformcount++;                    
+                    if (!dateEx.IsMatch(splitLine[0]))
+                        missformcount++;
                     else
                         dates.Add(totalcount + 1, dateEx.Match(splitLine[0]).ToString());
-                    int err = 0;                    
+                    int err = 0;
                     for (int i = 1; i < splitLine.Length; i++)
                     {
                         if (i%2 != 0)
                         {
-                            if (!valEx.IsMatch(splitLine[i]))                          
+                            if (!valEx.IsMatch(splitLine[i]))
                                 err++;
                         }
                         else
                         {
                             if (!flagEx.IsMatch(splitLine[i]))
-                                err++;                                                        
-                        }                        
+                                err++;
+                        }
                     }
                     if (err != 0) missformcount++;
                     line = sr.ReadLine();
-                    totalcount++;                    
+                    totalcount++;
                 }
             }
 
@@ -603,7 +603,7 @@ namespace TextProc2
             foreach (KeyValuePair<string, List<int>> kvp in dateReverse)
             {
                 if (kvp.Value.Count > 1)
-                    Console.WriteLine("{0} is duplicated at Lines : {1}", kvp.Key, string.Join(",", kvp.Value));                    
+                    Console.WriteLine("{0} is duplicated at Lines : {1}", kvp.Key, string.Join(",", kvp.Value));
             }
         }
     }
@@ -639,7 +639,7 @@ namespace TextProc2
            SELECT readings ASSIGN Input-File-Path
                ORGANIZATION LINE SEQUENTIAL
                FILE STATUS file-status.
-       
+
        DATA DIVISION.
        FILE SECTION.
        FD  readings.
@@ -805,7 +805,7 @@ Date 1991-03-31 is duplicated at line 00455.
 Date 1992-03-29 is duplicated at line 00819.
 Date 1993-03-28 is duplicated at line 01183.
 Date 1995-03-26 is duplicated at line 01910.
- 
+
 05470 lines read.
 05016 have good readings for all instruments.
 
@@ -1293,17 +1293,17 @@ Data format valid.
 import Data.List (nub, (\\))
 
 data Record = Record {date :: String, recs :: [(Double, Int)]}
- 
+
 duplicatedDates rs = rs \\ nub rs
 
 goodRecords = filter ((== 24) . length . filter ((>= 1) . snd) . recs)
 
 parseLine l = let ws = words l in Record (head ws) (mapRecords (tail ws))
- 
+
 mapRecords [] = []
 mapRecords [_] = error "invalid data"
 mapRecords (value:flag:tail) = (read value, read flag) : mapRecords tail
- 
+
 main = do
   inputs <- (map parseLine . lines) `fmap` readFile "readings.txt"
   putStr (unlines ("duplicated dates:": duplicatedDates (map date inputs)))
@@ -1334,7 +1334,7 @@ procedure main(A)
     lastDate := badFile := &null
     f := A[1] | "readings.txt"
     fin := open(f) | stop("Cannot open file '",f,"'")
- 
+
     while (fields := 0, badReading := &null, line := read(fin)) do {
         line ? {
             ldate := tab(many(&digits ++ '-')) | (badFile := "yes", next)
@@ -1359,7 +1359,7 @@ procedure main(A)
         every writes(" ",!sort(dups))
         write()
         }
- 
+
 end
 ```
 
@@ -1396,7 +1396,7 @@ The following dates have multiple records:
    +/ _99 e."1 Vals,.Flags      NB. # lines with invalid value or flag formats
 0
    +/ *./"1   [0 < Flags        NB. # lines with only valid flags
-5017  
+5017
    ~. (#~ (i.~ ~: i:~)) Dates   NB. Duplicate dates
 1990 3 25
 1991 3 31
@@ -1429,7 +1429,7 @@ public class DataMunging2 {
 
             String eingabe;
             int all_ok = 0;//all_ok for lines in the given pattern e
-            while ((eingabe = infile.readLine()) != null) { 
+            while ((eingabe = infile.readLine()) != null) {
                 String[] fields = e.split(eingabe); //we tokenize on empty fields
                 if (fields.length != 49) //we expect 49 fields in a record
                     System.out.println("Format not ok!");
@@ -1499,7 +1499,7 @@ function analyze_func(filename) {
             }
 
             var date = fields.shift();
-            if (has_property(dates_seen, date)) 
+            if (has_property(dates_seen, date))
                 WScript.echo("duplicate date: " + date);
             else
                 dates_seen[date] = 1;
@@ -1553,7 +1553,7 @@ The second part of the pipeline performs the task requirements. The following pr
 def runs:
   reduce .[] as $item
     ( [];
-      if . == [] then [ [ $item, 1] ] 
+      if . == [] then [ [ $item, 1] ]
       else  .[length-1] as $last
             | if $last[0] == $item then (.[0:length-1] + [ [$item, $last[1] + 1] ] )
               else . + [[$item, 1]]
@@ -1582,7 +1582,7 @@ def validate_line(nr):
       | if ($n | is_float) then empty else "field \(2*i + 2) in line \(nr) is not a float: \($n)" end),
     ( .[2*i + 2] as $n
       | if ($n | is_integral) then empty else "field \(2*i + 3) in line \(nr) is not an integer: \($n)" end);
-      
+
   (.[0] | validate_date),
   (validate_length(49)),
   (range(0; (length-1) / 2) as $i | validate_pair($i)) ;
@@ -1609,9 +1609,9 @@ def duplicate_timestamps:
 def number_of_valid_readings:
   def check:
     . as $in
-    | (.[0] | is_date) 
-      and length == 49 
-      and all(range(0; 24) | $in[2*. + 1] | is_float) 
+    | (.[0] | is_date)
+      and length == 49
+      and all(range(0; 24) | $in[2*. + 1] | is_float)
       and all(range(0; 24) | $in[2*. + 2] | (is_integral and tonumber >= 1) );
 
    map(select(check)) | length ;
@@ -1830,23 +1830,23 @@ num_good_records, lines_total = 0, 0
 while true do
     line = io.read( "*line" )
     if line == nil then break end
-    
+
     lines_total = lines_total + 1
 
     date = string.match( line, "%d+%-%d+%-%d+" )
     if dates[date] ~= nil then
         duplicated[#duplicated+1] = date
-    end    
-    dates[date] = 1
-    
-    count_pairs, bad_values = 0, false
-    for v, w in string.gmatch( line, "%s(%d+[%.%d+]*)%s(%-?%d)" ) do        
-        count_pairs = count_pairs + 1        
-        if tonumber(w) <= 0 then 
-            bad_values = true 
-        end        
     end
-    if count_pairs ~= 24 then 
+    dates[date] = 1
+
+    count_pairs, bad_values = 0, false
+    for v, w in string.gmatch( line, "%s(%d+[%.%d+]*)%s(%-?%d)" ) do
+        count_pairs = count_pairs + 1
+        if tonumber(w) <= 0 then
+            bad_values = true
+        end
+    end
+    if count_pairs ~= 24 then
         bad_format[#bad_format+1] = date
     end
     if not bad_values then
@@ -1897,7 +1897,7 @@ Print["number of good records: ", Count[(Times@@#[[3;;All;;2]])& /@ data, 1],
 
 
 ```txt
-duplicated dates: 
+duplicated dates:
 1990-03-25
 1991-03-31
 1992-03-29
@@ -1913,19 +1913,19 @@ number of good records: 5017 (out of a total of 5471)
 
 ```MATLAB
 function [val,count] = readdat(configfile)
-% READDAT reads readings.txt file 
+% READDAT reads readings.txt file
 %
-% The value of boolean parameters can be tested with 
+% The value of boolean parameters can be tested with
 %    exist(parameter,'var')
 
-if nargin<1, 
+if nargin<1,
    filename = 'readings.txt';
 end;
 
-fid = fopen(filename); 
-if fid<0, error('cannot open file %s\n',a); end; 
+fid = fopen(filename);
+if fid<0, error('cannot open file %s\n',a); end;
 [val,count] = fscanf(fid,'%04d-%02d-%02d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d %f %d \n');
-fclose(fid); 
+fclose(fid);
 
 count = count/51;
 
@@ -1933,9 +1933,9 @@ if (count<1) || count~=floor(count),
      error('file has incorrect format\n')
 end;
 
-val = reshape(val,51,count)';   % make matrix with 51 rows and count columns, then transpose it. 
+val = reshape(val,51,count)';   % make matrix with 51 rows and count columns, then transpose it.
 
-d = datenum(val(:,1:3));	% compute timestamps 
+d = datenum(val(:,1:3));	% compute timestamps
 
 printf('The following records are followed by a duplicate:');
 dix = find(diff(d)==0)		% check for to consequtive timestamps with zero difference
@@ -1959,7 +1959,7 @@ number of valid records: 5017
 
 ```
 
-	
+
 
 ## Nim
 
@@ -2007,12 +2007,12 @@ for line in lines.splitLines:
   currentLine.inc
   #empty lines don't count as records
   if line.len == 0: continue
-  
+
   var tokens = line.split({' ','\t'})
 
   totalRecords.inc
 
-  if tokens.len != NumFields: 
+  if tokens.len != NumFields:
     badRecords.inc
     continue
 
@@ -2232,9 +2232,9 @@ Repeated timestamps (with line numbers):
 
 ```Phix
 sequence lines = read_lines("demo\\rosetta\\readings.txt")
- 
+
 include builtins\timedate.e
- 
+
 integer all_good = 0
 
 string fmt = "%d-%d-%d\t"&join(repeat("%f",48),'\t')
@@ -2262,7 +2262,7 @@ for i=1 to length(lines) do
         all_good += sum(sq_le(extract(r[1][4..$],extset),0))=0
     end if
 end for
- 
+
 printf(1,"Valid records %d of %d total\n",{all_good, length(lines)})
 ```
 
@@ -2296,11 +2296,11 @@ while (!feof($handle)) {
 	$datepattern = '/^\d{4}-\d{2}-\d{2}$/';
 	$valpattern = '/^\d+\.{1}\d{3}$/';
 	$flagpattern = '/^[1-9]{1}$/';
-	
+
 	if(count($line) != 49) $missformcount++;
 	if(!preg_match($datepattern,$line[0],$check)) $missformcount++;
 	else $dates[$totalcount+1] = $check[0];
-	
+
 	$errcount = 0;
 	for($i=1;$i<count($line);$i++){
 		if($i%2!=0){
@@ -2317,7 +2317,7 @@ $good = $totalcount - $missformcount;
 $duplicates = array_diff_key( $dates , array_unique( $dates ));
 echo 'Valid records ' . $good . ' of ' . $totalcount . ' total
 ';
-echo 'Duplicates : 
+echo 'Duplicates :
 ';
 foreach ($duplicates as $key => $val){
 	echo $val . ' at Line : ' . $key . '
@@ -2455,13 +2455,13 @@ get-content c:\temp\readings.txt |
         $goodLine = $true
         if ($readings.count -ne 48) { $goodLine = $false; "incorrect line length : $line[0]"  }
         for ($i=0; $i -lt $readings.count; $i++) {
-            if ($i % 2 -ne 0) {                                
+            if ($i % 2 -ne 0) {
                 if ([int]$readings[$i] -lt 1) {
                     $goodLine = $false
                 }
             }
         }
-        if ($goodLine) { $goodLineCount++ } 
+        if ($goodLine) { $goodLineCount++ }
     }
 [string]$goodLineCount + " good lines"
 
@@ -2497,8 +2497,8 @@ ForEach ($rawLine in ( get-content c:\temp\readings.txt) ){
     if ($readings.count -ne 24) { "incorrect number of readings for date " + $line[0] }
     $goodLine = $true
     foreach ($flagMatch in [regex]::matches($line[1],"\d\.\d*\s(?<flag>-?\d)")) {
-        if ([int][string]$flagMatch.groups["flag"].value -lt 1) { 
-            $goodLine = $false 
+        if ([int][string]$flagMatch.groups["flag"].value -lt 1) {
+            $goodLine = $false
         }
     }
     if ($goodLine) { $goodLineCount++}
@@ -2548,7 +2548,7 @@ NewList syntaxError()
 Define goodRecordCount, totalLines, line.s, i
 Dim inputDate.s(0)
 Dim instruments.s(0)
-  
+
 If ReadFile(0, filename)
   CreateRegularExpression(#exp_date, "\d+-\d+-\d+")
   CreateRegularExpression(#exp_instruments, "(\t|\x20)+(\d+\.\d+)(\t|\x20)+\-?\d")
@@ -2557,7 +2557,7 @@ If ReadFile(0, filename)
     line = ReadString(0, #PB_Ascii)
     If line = "": Break: EndIf
     totalLines + 1
-  
+
     ExtractRegularExpression(#exp_date, line, inputDate())
     If FindMapElement(dates(), inputDate(0))
       AddElement(duplicated())
@@ -2567,7 +2567,7 @@ If ReadFile(0, filename)
     Else
       dates(inputDate(0)) = totalLines
     EndIf
-    
+
     ExtractRegularExpression(#exp_instruments, Mid(line, Len(inputDate(0)) + 1), instruments())
     Define pairsCount = ArraySize(instruments()), containsBadValues = #False
     For i =  0 To pairsCount
@@ -2576,7 +2576,7 @@ If ReadFile(0, filename)
         Break
       EndIf
     Next
-    
+
     If pairsCount <> #instrumentCount - 1
       AddElement(syntaxError()): syntaxError() = totalLines
     EndIf
@@ -2585,7 +2585,7 @@ If ReadFile(0, filename)
     EndIf
   ForEver
   CloseFile(0)
-  
+
   If OpenConsole()
     ForEach duplicated()
       PrintN("Duplicate date: " + duplicated()\date + " occurs on lines " + Str(duplicated()\line) + " and " + Str(duplicated()\firstLine) + ".")
@@ -2594,7 +2594,7 @@ If ReadFile(0, filename)
       PrintN( "Syntax error in line " + Str(syntaxError()))
     Next
     PrintN(#CRLF$ + Str(goodRecordCount) + " of " + Str(totalLines) + " lines read were valid records.")
-    
+
     Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
     CloseConsole()
   EndIf
@@ -2642,7 +2642,7 @@ def munge2(readings):
       if not lineFormatOk:
          print 'Bad formatting', line
          continue
-		
+
       if len(pairs)!=24 or any( int(p[1]) < 1 for p in pairs ):
          print 'Missing values', line
          continue
@@ -2687,9 +2687,9 @@ Modification of the version above to:
 import re
 import zipfile
 import StringIO
- 
+
 def munge2(readings, debug=False):
- 
+
    datePat = re.compile(r'\d{4}-\d{2}-\d{2}')
    valuPat = re.compile(r'[-+]?\d+\.\d+')
    statPat = re.compile(r'-?\d+')
@@ -2701,39 +2701,39 @@ def munge2(readings, debug=False):
       fields = line.split('\t')
       date = fields[0]
       pairs = [(fields[i],fields[i+1]) for i in range(1,len(fields),2)]
- 
+
       lineFormatOk = datePat.match(date) and \
          all( valuPat.match(p[0]) for p in pairs ) and \
          all( statPat.match(p[1]) for p in pairs )
       if not lineFormatOk:
          if debug: print 'Bad formatting', line
          badform.add(date)
-         
+
       if len(pairs)!=24 or any( int(p[1]) < 1 for p in pairs ):
          if debug: print 'Missing values', line
       if len(pairs)!=24: badlen.add(date)
       if any( int(p[1]) < 1 for p in pairs ): badreading += 1
- 
+
       if date in datestamps:
          if debug: print 'Duplicate datestamp', line
          dupdate.add(date)
 
       datestamps.add(date)
 
-   print 'Duplicate dates:\n ', '\n  '.join(sorted(dupdate)) 
-   print 'Bad format:\n ', '\n  '.join(sorted(badform)) 
-   print 'Bad number of fields:\n ', '\n  '.join(sorted(badlen)) 
+   print 'Duplicate dates:\n ', '\n  '.join(sorted(dupdate))
+   print 'Bad format:\n ', '\n  '.join(sorted(badform))
+   print 'Bad number of fields:\n ', '\n  '.join(sorted(badlen))
    print 'Records with good readings: %i = %5.2f%%\n' % (
       totalLines-badreading, (totalLines-badreading)/float(totalLines)*100 )
    print 'Total records: ', totalLines
- 
+
 readings = open('readings.txt','r')
 munge2(readings)
 ```
 
 
 ```txt
-bash$  /cygdrive/c/Python26/python  munge2.py 
+bash$  /cygdrive/c/Python26/python  munge2.py
 Duplicate dates:
   1990-03-25
   1991-03-31
@@ -2741,13 +2741,13 @@ Duplicate dates:
   1993-03-28
   1995-03-26
 Bad format:
-  
+
 Bad number of fields:
-  
+
 Records with good readings: 5017 = 91.70%
 
 Total records:  5471
-bash$ 
+bash$
 ```
 
 
@@ -2784,27 +2784,27 @@ sum(apply(flags, 1, all))
   (define seen-datestamps (make-hash))
   (define (datestamp-seen? ds) (hash-ref seen-datestamps ds #f))
   (define (datestamp-seen! ds pos) (hash-set! seen-datestamps ds pos))
-  
+
   (define (fold-into-pairs l (acc null))
     (match l ['() (reverse acc)]
       [(list _) (reverse (cons l acc))]
       [(list-rest a b tl) (fold-into-pairs tl (cons (list a b) acc))]))
-  
+
   (define (match-valid-field line pos)
     (match (string-split line)
       ;; if we don't hit an error, then the file is valid
       ((list-rest (not (pregexp #px"[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}")) _)
        (error 'match-valid-field "invalid format non-datestamp at head: ~a~%" line))
-      
+
       ;; check for duplicates
       ((list-rest (? datestamp-seen? ds) _)
        (printf "duplicate datestamp: ~a at line: ~a (first seen at: ~a)~%"
                ds pos (datestamp-seen? ds))
        #f)
-      
+
       ;; register the datestamp as seen, then move on to rest of match
       ((list-rest ds _) (=> next-match-rule) (datestamp-seen! ds pos) (next-match-rule))
-      
+
       ((list-rest
         _
         (app fold-into-pairs
@@ -2814,14 +2814,14 @@ sum(apply(flags, 1, all))
        (=> next-match-rule)
        (unless (= (length vs) 24) (next-match-rule))
        (not (for/first ((s statuss) #:unless (positive? s)) #t)))
-      
+
       ;; if we don't hit an error, then the file is valid
       (else (error 'match-valid-field "bad field format: ~a~%" line))))
-  
+
   (define (sub-t-p/1)
     (for/sum ((line (in-lines))
               (line-number (in-naturals 1)))
-      (if (match-valid-field line line-number) 1 0)))  
+      (if (match-valid-field line line-number) 1 0)))
   (for/sum ((file-name files-to-read))
     (with-input-from-file file-name sub-t-p/1)))
 
@@ -3011,7 +3011,7 @@ return y//100\==0 | y//400==0          /*apply the 100  and the 400 year rule.*/
 sy:     say arg(1);               call lineout ofid,arg(1);             return
 ```
 
-'''output'''   when using the default input file: 
+'''output'''   when using the default input file:
 <pre style="height:35ex">
   ∙
   ∙
@@ -3064,14 +3064,14 @@ def munge2(readings, debug=false)
       fields = line.split(/\t/)
       date = fields.shift
       pairs = fields.enum_slice(2).to_a
- 
+
       lineFormatOk = date =~ datePat &&
         pairs.all? { |x,y| x =~ valuPat && y =~ statPat }
       if !lineFormatOk
          puts 'Bad formatting ' + line if debug
          badform << date
       end
-         
+
       if pairs.length != 24 ||
            pairs.any? { |x,y| y.to_i < 1 }
          puts 'Missing values ' + line if debug
@@ -3082,7 +3082,7 @@ def munge2(readings, debug=false)
       if pairs.any? { |x,y| y.to_i < 1 }
          badreading += 1
       end
- 
+
       if datestamps.include?(date)
          puts 'Duplicate datestamp ' + line if debug
          dupdate << date
@@ -3236,7 +3236,7 @@ foreach line $data {
         if {$flag < 1} { set hasAllMeasurements false }
 
         if {![regexp -- {[-+]?\d+\.\d+} $value] || ![regexp -- {-?\d+} $flag]} {set formatOk false}
-    }   
+    }
     if {!$hasAllMeasurements} { incr correct -1 }
     if {!$formatOk} { puts "line \"$line\" has wrong format" }
 }
@@ -3247,7 +3247,7 @@ puts "Total records: $total"
 
 
 ```txt
-$ tclsh munge2.tcl 
+$ tclsh munge2.tcl
 Duplicate datestamp: 1990-03-25
 Duplicate datestamp: 1991-03-31
 Duplicate datestamp: 1992-03-29
@@ -3284,7 +3284,7 @@ while {[gets $fh line] != -1} {
         puts "duplicate date on line $total: $date"
     }
     incr seen($date)
-    
+
     set line_format_ok true
     set readings_ignored 0
     foreach {value flag} [lrange $fields 1 end] {
@@ -3329,7 +3329,7 @@ pre-declared in readings_dot_txt
 #import std
 #import nat
 
-readings        = (*F ~&c/;digits+ rlc ==+ ~~ -={` ,9%cOi&,13%cOi&}) readings_dot_txt 
+readings        = (*F ~&c/;digits+ rlc ==+ ~~ -={` ,9%cOi&,13%cOi&}) readings_dot_txt
 
 valid_format    = all -&length==49,@tK27 all ~&w/`.&& ~&jZ\digits--'-.',@tK28 all ~&jZ\digits--'-'&-
 
@@ -3383,7 +3383,7 @@ Do Until objFile.AtEndOfStream
 			Duplicate_TimeStamps = Duplicate_TimeStamps & token(0) & vbCrLf
 			Total_Records = Total_Records + 1
 		End If
-	End If 	
+	End If
 Loop
 
 Function IsValid(arr)
@@ -3393,8 +3393,8 @@ Function IsValid(arr)
 	Do While n <= UBound(arr)
 		If n + 1 <= UBound(arr) Then
 			If CInt(arr(n+1)) < 1 Then
-				Bad_Readings = Bad_Readings + 1	
-			End If 
+				Bad_Readings = Bad_Readings + 1
+			End If
 		End If
 		n = n + 2
 	Loop

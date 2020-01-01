@@ -238,7 +238,7 @@ AWK has no multidimensional array; but AWK arrays (which are [[Associative array
 
 ```bbcbasic
       INPUT "Enter array dimensions separated by a comma: " a%, b%
-      
+
       DIM array(a%, b%)
       array(1, 1) = PI
       PRINT array(1, 1)
@@ -364,10 +364,10 @@ If OpenConsole()
   y = Val(Input())
 
   Dim a(x,y)   ; Should really check if x & y are larger then 1, but that would be less fun....
-  
+
   a(1,1)=Random(1000)
   PrintN("a(1,1)= " + Str(a(1,1)) )
-  
+
   PrintN("Press ENTER to exit"):Input()
   End          ; Close down and let PureBasic delete the Console and all variables.
 EndIf
@@ -396,7 +396,7 @@ EndIf
 ```RunBasic
 print "Enter array 1 greater than 0"; : input a1
 print "Enter array 2 greater than 0"; : input a2
- 
+
 dim chrArray$(max(a1,1),max(a2,1))
 dim numArray(max(a1,1),max(a2,1))
 
@@ -501,12 +501,12 @@ Enter two space-delimited integers:
 ## C
 
 
-###  C99 
+###  C99
 
 {{works with|C99}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main(int argc, char **argv) {
 
@@ -523,7 +523,7 @@ int main(int argc, char **argv) {
 
 
 
-###  Traditional Style 
+###  Traditional Style
 
 Allocate multi-dimensional arrays with a single call to malloc.  The demonstration code builds a rank 3 array.
 
@@ -651,8 +651,8 @@ int main() {			/* character cell 3D graphics.  Whoot */
 
 This style is supported by all 'C' compilers.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 int main(int argc, char **argv)
 {
@@ -677,8 +677,8 @@ int main(int argc, char **argv)
 This style also supports more efficient memory utilization if you're only using a portion of the
 array.  If you only need the upper right half of a square array, you can do something like the following.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 int main(int argc, char **argv)
 {
@@ -698,7 +698,7 @@ int main(int argc, char **argv)
       for (col=row; col<user1; col++)
           array[row][col] = 1+col-row;
    }
-   for (row=0; row<user1; row++) 
+   for (row=0; row<user1; row++)
       printf("%d ", array[row][user1-1]);
    printf("\n");
 
@@ -712,8 +712,8 @@ int main(int argc, char **argv)
 This approach most closely matches the C99 example, as '''alloca''' allocates on the [[stack]], rather than the [[heap]], as '''malloc''' does.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <alloca.h>
 int main(int argc, char **argv)
 {
@@ -740,8 +740,8 @@ int main(int argc, char **argv)
 === With language built-in facilities ===
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main()
 {
@@ -771,12 +771,12 @@ int main()
 
 
 
-###  Using std::vector from the standard library 
+###  Using std::vector from the standard library
 
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <vector>
 
 int main()
@@ -803,8 +803,8 @@ int main()
 === Using boost::multi_array ===
 {{libheader|Boost}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <boost/multi_array.hpp>
 
 typedef boost::multi_array<double, 2> two_d_array_type;
@@ -830,13 +830,13 @@ int main()
 
 
 
-###  Using boost::uBLAS 
+###  Using boost::uBLAS
 
 {{libheader|Boost|from 1.29}}
-{{works with|Boost|1.54}} 
+{{works with|Boost|1.54}}
 
-```cpp>#include <cstdlib
-
+```cpp
+#include <cstdlib>
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/io.hpp>
 
@@ -867,7 +867,7 @@ class Program
         {
             Console.WriteLine("Enter two integers. Space delimited please: ");
             string s = Console.ReadLine();
-            
+
             int[,] myArray=new int[(int)s[0],(int)s[2]];
             myArray[0, 0] = 2;
             Console.WriteLine(myArray[0, 0]);
@@ -915,8 +915,8 @@ Start world
 ```lisp
 (let ((d1 (read))
       (d2 (read)))
-  (assert (and (typep d1 '(integer 1)) 
-               (typep d2 '(integer 1))) 
+  (assert (and (typep d1 '(integer 1))
+               (typep d2 '(integer 1)))
           (d1 d2))
   (let ((array (make-array (list d1 d2) :initial-element nil))
         (p1 0)
@@ -943,7 +943,7 @@ MODULE TestArray;
 	IMPORT Out;
 
 	(* Open array *)
-	
+
 	PROCEDURE DoTwoDim*;
 		VAR d: POINTER TO ARRAY OF ARRAY OF INTEGER;
 	BEGIN
@@ -992,8 +992,8 @@ void main() {
 {{out}}
 
 ```txt
-Give me the numer of rows: 
-Give me the numer of columns: 
+Give me the numer of rows:
+Give me the numer of columns:
 The number at place [0, 0] is 3.5
 ```
 
@@ -1062,19 +1062,19 @@ Typified array
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     var n := new Integer();
     var m := new Integer();
- 
+
     console.write:"Enter two space delimited integers:";
     console.loadLine(n,m);
- 
+
     var myArray := new Matrix<int>(n,m);
- 
+
     myArray.setAt(0,0,2);
- 
+
     console.printLine(myArray.at(0, 0))
 }
 ```
@@ -1084,21 +1084,21 @@ Jagged array
 ```elena
 import system'routines;
 import extensions;
- 
+
 public program()
 {
     auto n := new Integer();
     auto m := new Integer();
- 
+
     console.write:"Enter two space delimited integers:";
     console.loadLine(n,m);
- 
+
     auto myArray2 := new object[][](n.Value).populate:(int i => (new object[](m.Value)) );
     myArray2[0][0] := 2;
     myArray2[1][0] := "Hello";
- 
-    console.printLine(myArray2[0][0]);                
-    console.printLine(myArray2[1][0]);                
+
+    console.printLine(myArray2[0][0]);
+    console.printLine(myArray2[1][0]);
 }
 ```
 
@@ -1115,13 +1115,13 @@ defmodule TwoDimArray do
     List.duplicate(0, w)
       |> List.duplicate(h)
   end
-  
+
   def set(arr, x, y, value) do
-    List.replace_at(arr, x, 
+    List.replace_at(arr, x,
       List.replace_at(Enum.at(arr, x), y, value)
     )
   end
-  
+
   def get(arr, x, y) do
     arr |> Enum.at(x) |> Enum.at(y)
   end
@@ -1134,7 +1134,7 @@ w = width |> String.trim() |> String.to_integer()
 height = IO.gets "Enter Array Height: "
 h = height |> String.trim() |> String.to_integer()
 
-arr = TwoDimArray.create(w, h) 
+arr = TwoDimArray.create(w, h)
 arr = TwoDimArray.set(arr,2,0,42)
 
 IO.puts(TwoDimArray.get(arr,2,0))
@@ -1200,7 +1200,7 @@ END PROGRAM
 ```
 
 You can redimension A% using pragmas:
-!$ERASE A%     with a subsequent 
+!$ERASE A%     with a subsequent
 !$DIM A%[.,.]
 
 
@@ -1238,10 +1238,10 @@ IN: rosettacode.runtime2darray
 
 : set-Mi,j ( elt {i,j} matrix -- )
 [ first2 swap ] dip nth set-nth ;
-: Mi,j ( {i,j} matrix -- elt ) 
+: Mi,j ( {i,j} matrix -- elt )
 [ first2 swap ] dip nth nth ;
 
-: example ( -- ) 
+: example ( -- )
 readln readln [ string>number ] bi@ zero-matrix ! create the array
 [ [ 42 { 0 0 } ] dip set-Mi,j ] ! set the { 0 0 } element to 42
 [ [ { 0 0 } ] dip Mi,j . ] ! read the { 0 0 } element
@@ -1294,13 +1294,13 @@ PROGRAM Example
   READ(*,*) rows
   WRITE(*,*) "Enter number of columns"
   READ(*,*) columns
- 
+
   ALLOCATE (array(rows,columns), STAT=errcheck) ! STAT is optional and is used for error checking
- 
+
   array(1,1) = 42
- 
+
   WRITE(*,*) array(1,1)
- 
+
   DEALLOCATE (array, STAT=errcheck)
 
 END PROGRAM Example
@@ -1339,7 +1339,7 @@ printfn "%d" arr.[0,0]
 
 ```gap
 # Creating an array of 0
-a := NullMat(2, 2); 
+a := NullMat(2, 2);
 # [ [ 0, 0 ], [ 0, 0 ] ]
 
 # Some assignments
@@ -1433,17 +1433,17 @@ def r = new Random()
 System.in.splitEachLine(/,\s*/) { dim ->
     def nrows = dim[0] as int
     def ncols = dim[1] as int
-    
+
     def a2d = make2d(nrows, ncols)
-    
+
     def row = r.nextInt(nrows)
     def col = r.nextInt(ncols)
     def val = r.nextInt(nrows*ncols)
-    
+
     a2d[row][col] = val
-    
+
     println "a2d[${row}][${col}] == ${a2d[row][col]}"
-    
+
     a2d.each { println it }
     println()
 }
@@ -1497,7 +1497,7 @@ DLG(NameEdit=rows, NameEdit=cols, Button='OK', TItle='Enter array dimensions')
 
 ALLOCATE(array, cols, rows)
 array(1,1) = 1.234
-WRITE(Messagebox, Name) array(1,1) 
+WRITE(Messagebox, Name) array(1,1)
 ```
 
 
@@ -1536,12 +1536,12 @@ A[37][1] -> 3.141592654
 ## IDL
 
 The following is only for demonstration. No real program should just assume that the user input is valid, integer, large enough etc.
- 
+
 
 ```idl
 read, x, prompt='Enter x size:'
 read, y, prompt='Enter y size:'
-d = fltarr(x,y) 
+d = fltarr(x,y)
 
 d[3,4] = 5.6
 print,d[3,4]
@@ -1640,10 +1640,10 @@ import java.util.Scanner;
 public class twoDimArray {
   public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        
+
         int nbr1 = in.nextInt();
         int nbr2 = in.nextInt();
-        
+
         double[][] array = new double[nbr1][nbr2];
         array[0][0] = 42.0;
         System.out.println("The number at place [0 0] is " + array[0][0]);
@@ -1680,7 +1680,7 @@ arr = void(0);
 
 ## jq
 
-jq data types are exactly those of JSON, so there are various alternatives for representing matrices. 
+jq data types are exactly those of JSON, so there are various alternatives for representing matrices.
 
 One way to represent an m by n matrix is as an array of m arrays, one of which is of length n, and all of which have length less than or equal to n.
 
@@ -1696,7 +1696,7 @@ idiom:
 Here's a simple example.
 
 ```jq
-# A function to create an m x n matrix 
+# A function to create an m x n matrix
 # filled with the input element
 def matrix(m;n):
   . as $init
@@ -1704,17 +1704,17 @@ def matrix(m;n):
   | ( [ range(0; m + 1) ] | map($row))
  ;
 
-# Task: create a matrix with dimensions specified by the user 
+# Task: create a matrix with dimensions specified by the user
 # and set the [1,2] element:
 (0 | matrix($m|tonumber; $n|tonumber)) | setpath([1,2]; 99)
 ```
- 
+
 
 If the above is in a file, say 2d.jq, the invocation:
 
 <tt>jq -n -c --arg m 2 --arg n 3 -f 2d.jq </tt>
 
-would produce: 
+would produce:
 ```jq
 [[0,0,0,0],[0,0,99,0],[0,0,0,0]]
 ```
@@ -1820,7 +1820,7 @@ Module CheckArray {
       Do {
             Input "A, B=", A% ,B%
       } Until A%>0 and B%>0
-      
+
       \\ 1@ is 1 Decimal
       addone=lambda N=1@ ->{=N : N++}
       Dim Base 1, Arr(A%,B%)<<addone()
@@ -1882,7 +1882,7 @@ array(1,1) = 12;
 
 disp(['Array element (1,1) = ' num2str(array(1,1))]);
 
-clear array;  % de-allocate (remove) array from workspace 
+clear array;  % de-allocate (remove) array from workspace
 
 ```
 
@@ -2018,19 +2018,19 @@ bundle Default {
     function : Main(args : System.String[]) ~ Nil {
       DoIt();
     }
-	
+
     function : native : DoIt() ~ Nil {
       Console->GetInstance()->Print("Enter x: ");
       x := Console->GetInstance()->ReadString()->ToInt();
-      
+
       Console->GetInstance()->Print("Enter y: ");
       y := Console->GetInstance()->ReadString()->ToInt();
-      
+
       if(x > 0 & y > 0) {
         array : Int[,] := Int->New[x, y];
         array[0, 0] := 2;
         array[0, 0]->PrintLine();
-      };	
+      };
     }
   }
 }
@@ -2057,7 +2057,7 @@ int main()
     scanf("%d %d", &num1, &num2);
 
     NSLog(@"%d %d", num1, num2);
-  
+
     NSMutableArray *arr = [NSMutableArray arrayWithCapacity: (num1*num2)];
     // initialize it with 0s
     for(int i=0; i < (num1*num2); i++) [arr addObject: @0];
@@ -2106,7 +2106,7 @@ print_float arr.{0,0}; print_newline ();;
 
 ## ooRexx
 
-ooRexx arrays can be created with up to 999,999,999 dimensions...assuming you have enough memory to do so. 
+ooRexx arrays can be created with up to 999,999,999 dimensions...assuming you have enough memory to do so.
 Actually it's the 'size' of the array that's limited (the product of the dimensions).
 
 ```ooRexx
@@ -2117,10 +2117,10 @@ pull d2
 a = .array~new(d1, d2)
 a[1, 1] = "Abc"
 say a[1, 1]
-say d1 d2 a[d1,d2] 
+say d1 d2 a[d1,d2]
 say a[10,10]
 max=1000000000
-b = .array~new(max,max)  
+b = .array~new(max,max)
 ```
 
 {{out}}
@@ -2144,7 +2144,7 @@ Error 93.959:  An array cannot contain more than 99,999,999 elements
 
 ## Oz
 
-Oz does not have multi-dimensional arrays. But we can create an array of arrays (similarly to most examples on this page): 
+Oz does not have multi-dimensional arrays. But we can create an array of arrays (similarly to most examples on this page):
 
 ```oz
 declare
@@ -2164,7 +2164,7 @@ in
   {Show Arr.1.1}
 ```
 
-  
+
 
 ## PARI/GP
 
@@ -2221,7 +2221,7 @@ end.
 
 {{works with|Perl|5.x}}
 
-Predefining an array (or multi-dimension array) size is unnecessary, Perl dynamically resizes the array to meet the requirements. Of course I'm assuming that the user is entering array size 0 based.  
+Predefining an array (or multi-dimension array) size is unnecessary, Perl dynamically resizes the array to meet the requirements. Of course I'm assuming that the user is entering array size 0 based.
 
 
 ```perl
@@ -2229,13 +2229,13 @@ sub make_array($ $){
   # get array sizes from provided params, but force numeric value
   my $x = ($_[0] =~ /^\d+$/) ? shift : 0;
   my $y = ($_[0] =~ /^\d+$/) ? shift : 0;
-  
+
   # define array, then add multi-dimensional elements
   my @array;
   $array[0][0] = 'X '; # first by first element
   $array[5][7] = 'X ' if (5 <= $y and 7 <= $x); # sixth by eighth element, if the max size is big enough
   $array[12][15] = 'X ' if (12 <= $y and 15 <= $x); # thirteenth by sixteenth element, if the max size is big enough
-  
+
   # loop through the elements expected to exist base on input, and display the elements contents in a grid
   foreach my $dy (0 .. $y){
     foreach my $dx (0 .. $x){
@@ -2330,16 +2330,16 @@ Copy of [[Create_a_two-dimensional_array_at_runtime#Euphoria|Euphoria]]
 ```Phix
 sequence array
 integer height,width,i,j
- 
+
 height = floor(prompt_number("Enter height: "))
 width = floor(prompt_number("Enter width: "))
- 
+
 array = repeat(repeat(0,width),height)
- 
+
 i = floor(height/2+0.5)
 j = floor(width/2+0.5)
 array[i][j] = height + width
- 
+
 printf(1,"array[%d][%d] is %d\n", {i,j,array[i][j]})
 ```
 
@@ -2392,8 +2392,8 @@ free A;
 
 
 ```PL/I
- 6.00000E+0000           5.00000E+0000           4.00000E+0000           3.00000E+0000           2.00000E+0000          
- 1.00000E+0000 
+ 6.00000E+0000           5.00000E+0000           4.00000E+0000           3.00000E+0000           2.00000E+0000
+ 1.00000E+0000
 
 ```
 
@@ -2417,8 +2417,8 @@ end;
 
 
 ```PL/I
- 1.00000E+0000           2.00000E+0000           3.00000E+0000           4.00000E+0000           5.00000E+0000          
- 6.00000E+0000           7.00000E+0000           8.00000E+0000           9.00000E+0000           1.00000E+0001          
+ 1.00000E+0000           2.00000E+0000           3.00000E+0000           4.00000E+0000           5.00000E+0000
+ 6.00000E+0000           7.00000E+0000           8.00000E+0000           9.00000E+0000           1.00000E+0001
  1.10000E+0001           1.20000E+0002
 
 ```
@@ -2445,10 +2445,10 @@ end S;
 
 ```PL/I
 
- 1.00000E+0000           2.00000E+0000           3.00000E+0000           4.00000E+0000           5.00000E+0000          
- 6.00000E+0000           7.00000E+0000           8.00000E+0000           9.00000E+0000           1.00000E+0001          
- 1.10000E+0001           1.20000E+0001           1.30000E+0001           1.40000E+0001           1.50000E+0001          
- 1.60000E+0001           1.70000E+0001           1.80000E+0001           1.90000E+0001           2.00000E+0001 
+ 1.00000E+0000           2.00000E+0000           3.00000E+0000           4.00000E+0000           5.00000E+0000
+ 6.00000E+0000           7.00000E+0000           8.00000E+0000           9.00000E+0000           1.00000E+0001
+ 1.10000E+0001           1.20000E+0001           1.30000E+0001           1.40000E+0001           1.50000E+0001
+ 1.60000E+0001           1.70000E+0001           1.80000E+0001           1.90000E+0001           2.00000E+0001
 
 ```
 
@@ -2524,7 +2524,7 @@ Populate the array:
 [int]$k = 1
 
 for ($i = 0; $i -lt 6; $i++)
-{ 
+{
     0..5 | ForEach-Object -Begin {$k += 10} -Process {$array2d[$i,$_] = $k + $_}
 }
 
@@ -2535,7 +2535,7 @@ This is the entire array:
 ```PowerShell
 
 for ($i = 0; $i -lt 6; $i++)
-{ 
+{
     "{0}`t{1}`t{2}`t{3}`t{4}`t{5}" -f (0..5 | ForEach-Object {$array2d[$i,$_]})
 }
 
@@ -2805,7 +2805,7 @@ object Array2D{
 
 
 
-###  Pure R7RS 
+###  Pure R7RS
 
 
 There is no two-dimensional array-type built in to Scheme, but there is a vector.
@@ -2854,7 +2854,7 @@ Retrieved: 3
 
 
 
-###  Using a standard library 
+###  Using a standard library
 
 
 {{libheader|Scheme/SRFIs}}
@@ -2913,7 +2913,7 @@ const proc: main is func
     var array array integer: anArray is 0 times 0 times 0;
   begin
     write("Give me the numer of rows: ");
-    readln(numRows); 
+    readln(numRows);
     write("Give me the numer of columns: ");
     readln(numCols);
     anArray := numRows times numCols times 0;
@@ -2956,7 +2956,7 @@ say matrix;                       # display the matrix
 ```txt
 
 rows: 3
-cols: 4  
+cols: 4
 [[0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]]
 
 ```
@@ -2972,12 +2972,12 @@ cols: 4
 m := (FillInTheBlankMorph request: 'Number of rows?') asNumber.
 n := (FillInTheBlankMorph request: 'Number of columns?') asNumber.
 aMatrix := Matrix rows: m columns: n.
-aMatrix 
-	at: (aMatrix rowCount // 2) 
-	at: (aMatrix columnCount // 2) 
+aMatrix
+	at: (aMatrix rowCount // 2)
+	at: (aMatrix columnCount // 2)
 	put: 3.4.
-e := aMatrix 
-	at: (aMatrix rowCount // 2) 
+e := aMatrix
+	at: (aMatrix rowCount // 2)
 	at: (aMatrix columnCount // 2).
 Transcript show: 'Entry is', e printString.
 
@@ -3090,15 +3090,15 @@ Note: trim(input) is needed for Snobol4+.
 
 *       # Display array prototype
         output = 'Prototype: ' prototype(arr)
-        
+
 *       # Assign elements, angle or square brackets
 *       # Same array can hold ints, strings, etc.
         arr<x,y> = 99; arr[1,1] = 'dog'
-        
+
 *       # Display elements
         output = 'arr[' xy '] = ' arr[x,y]
         output = 'arr[1,1] = ' arr[1,1]
-        
+
 *       # Release array for garbage collection
         arr =
 end
@@ -3248,7 +3248,7 @@ r> r> nip
 
 
 And a short test:
- 
+
 
 ```toka
 5 5 2D-array >r             #! Create an array and save the pointer to it
@@ -3296,7 +3296,7 @@ Option Explicit
 
 Sub Main_Create_Array()
 Dim NbColumns As Integer, NbRows As Integer
-    
+
     'Get two integers from the user,
     Do
         NbColumns = Application.InputBox("Enter number of columns : ", "Numeric only", 3, Type:=1)
@@ -3331,7 +3331,7 @@ function MakeArray(r, c, ...)
     endif
 
     let temp = []
-    for c in range(a:c) 
+    for c in range(a:c)
         call add(temp, init)
     endfor
 

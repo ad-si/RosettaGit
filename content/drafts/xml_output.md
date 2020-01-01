@@ -11,10 +11,10 @@ tags = []
 +++
 
 {{task|XML}}
-Create a function that takes a list of character names and a list of corresponding remarks and returns an XML document of <code><Character></code> elements each with a name attributes and each enclosing its remarks. 
-All <code><Character></code> elements are to be enclosed in turn, in an outer <code><CharacterRemarks></code> element. 
+Create a function that takes a list of character names and a list of corresponding remarks and returns an XML document of <code><Character></code> elements each with a name attributes and each enclosing its remarks.
+All <code><Character></code> elements are to be enclosed in turn, in an outer <code><CharacterRemarks></code> element.
 
-As an example, calling the function with the three names of: 
+As an example, calling the function with the three names of:
 
 ```txt
 
@@ -48,7 +48,7 @@ The document may include an <tt><?xml?></tt> declaration and document type decla
 Note: the example is chosen to show correct escaping of XML strings.
 Note too that although the task is written to take two lists of corresponding data, a single mapping/hash/dictionary of names to remarks is also acceptable.
 
-'''Note to editors:''' Program output with escaped characters will be viewed as the character on the page so you need to 'escape-the-escapes' to make the RC entry display what would be shown in a plain text viewer (See [[Talk:XML_Creation#Escaping_Escapes|this]]). 
+'''Note to editors:''' Program output with escaped characters will be viewed as the character on the page so you need to 'escape-the-escapes' to make the RC entry display what would be shown in a plain text viewer (See [[Talk:XML_Creation#Escaping_Escapes|this]]).
 Alternately, output can be placed in <nowiki>
 ```xml>
 ```
@@ -109,7 +109,7 @@ end Character_Remarks;
 
 
 
-###  Alternative version using Matreshka 
+###  Alternative version using Matreshka
 
 
 Uses [http://forge.ada-ru.org/matreshka Matreshka SAX API for XML].
@@ -142,7 +142,7 @@ procedure Main is
    procedure Output (Remarks : Remarks_Array) is
       Writer     : XML.SAX.Pretty_Writers.SAX_Pretty_Writer;
       Attributes : XML.SAX.Attributes.SAX_Attributes;
-      
+
    begin
       Writer.Set_Offset (2);
       Writer.Start_Document;
@@ -156,10 +156,10 @@ procedure Main is
          Writer.Characters (Remarks (J).Remark);
          Writer.End_Element (Qualified_Name => +"Character");
       end loop;
-      
+
       Writer.End_Element (Qualified_Name => +"CharacterRemarks");
       Writer.End_Document;
-      
+
       Ada.Wide_Wide_Text_IO.Put_Line (Writer.Text.To_Wide_Wide_String);
    end Output;
 
@@ -255,8 +255,8 @@ print( ( generate character remarks document( ( "April", "Tam O'Shanter", "Emily
 /* Initialized data              */
 /*********************************/
 .data
-szMessEndpgm:      .asciz "Normal end of program.\n" 
-szFileName:        .asciz "file2.xml" 
+szMessEndpgm:      .asciz "Normal end of program.\n"
+szFileName:        .asciz "file2.xml"
 szFileMode:        .asciz "w"
 szMessError:       .asciz "Error detected !!!!. \n"
 szName1:           .asciz "April"
@@ -284,15 +284,15 @@ tbRemarks:         .int szRemark1            @ area of pointer string remark
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 .align 4
 
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                     @ entry of program 
+.global main
+main:                                     @ entry of program
     ldr r0,iAdrszVersDoc
     bl xmlNewDoc                          @ create doc
     mov r9,r0                             @ doc address
@@ -328,7 +328,7 @@ main:                                     @ entry of program
     cmp r2,#0                              @ = zero ?
     bne 1b                                 @ no -> loop
 
-    ldr r0,iAdrszFileName 
+    ldr r0,iAdrszFileName
     ldr r1,iAdrszFileMode
     bl fopen                               @ file open
     cmp r0,#0
@@ -349,8 +349,8 @@ main:                                     @ entry of program
 99:
     @ error
     ldr r0,iAdrszMessError
-    bl affichageMess       
-100:                                       @ standard end of the program 
+    bl affichageMess
+100:                                       @ standard end of the program
     mov r0, #0                             @ return code
     mov r7, #EXIT                          @ request to exit program
     svc #0                                 @ perform the system call
@@ -368,44 +368,44 @@ iStdout:                  .int STDOUT
 iAdrszFileName:           .int szFileName
 iAdrszFileMode:           .int szFileMode
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                   @ save  registres
-    mov r2,#0                               @ counter length 
-1:                                          @ loop length calculation 
-    ldrb r1,[r0,r2]                         @ read octet start position + index 
-    cmp r1,#0                               @ if 0 its over 
-    addne r2,r2,#1                          @ else add 1 in the length 
-    bne 1b                                  @ and loop 
-                                            @ so here r2 contains the length of the message 
-    mov r1,r0                               @ address message in r1 
-    mov r0,#STDOUT                          @ code to write to the standard output Linux 
-    mov r7, #WRITE                          @ code call system "write" 
-    svc #0                                  @ call systeme 
-    pop {r0,r1,r2,r7,lr}                    @ restaur registers */ 
-    bx lr                                   @ return  
+    mov r2,#0                               @ counter length
+1:                                          @ loop length calculation
+    ldrb r1,[r0,r2]                         @ read octet start position + index
+    cmp r1,#0                               @ if 0 its over
+    addne r2,r2,#1                          @ else add 1 in the length
+    bne 1b                                  @ and loop
+                                            @ so here r2 contains the length of the message
+    mov r1,r0                               @ address message in r1
+    mov r0,#STDOUT                          @ code to write to the standard output Linux
+    mov r7, #WRITE                          @ code call system "write"
+    svc #0                                  @ call systeme
+    pop {r0,r1,r2,r7,lr}                    @ restaur registers */
+    bx lr                                   @ return
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                         @ save registers 
+    push {r1-r4,lr}                         @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 1:                                          @ start loop
     bl divisionpar10                        @ r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                              @ digit
     strb r1,[r3,r2]                         @ store digit on area
-    cmp r0,#0                               @ stop if quotient = 0 
-    subne r2,#1                               @ previous position    
+    cmp r0,#0                               @ stop if quotient = 0
+    subne r2,#1                               @ previous position
     bne 1b                                  @ else loop
                                             @ end replaces digit in front of area
     mov r4,#0
 2:
-    ldrb r1,[r3,r2] 
+    ldrb r1,[r3,r2]
     strb r1,[r3,r4]                         @ store in area begin
     add r4,#1
     add r2,#1                               @ previous position
@@ -418,11 +418,11 @@ conversion10:
     cmp r4,#LGZONECAL                       @ end
     ble 3b
 100:
-    pop {r1-r4,lr}                          @ restaur registres 
+    pop {r1-r4,lr}                          @ restaur registres
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
@@ -431,14 +431,14 @@ conversion10:
 divisionpar10:
   /* r0 contains the argument to be divided by 10 */
     push {r2-r4}                           @ save registers  */
-    mov r4,r0  
+    mov r4,r0
     mov r3,#0x6667                         @ r3 <- magic_number  lower
     movt r3,#0x6666                        @ r3 <- magic_number  upper
-    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) 
+    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0)
     mov r2, r2, ASR #2                     @ r2 <- r2 >> 2
     mov r1, r0, LSR #31                    @ r1 <- r0 >> 31
-    add r0, r2, r1                         @ r0 <- r2 + r1 
-    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5 
+    add r0, r2, r1                         @ r0 <- r2 + r1
+    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                   @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2-r4}
     bx lr                                  @ return
@@ -476,10 +476,10 @@ loop, parse, names, `n
   . "</Character>`n"
 
 xml .= "</CharacterRemarks>"
- 
+
 msgbox % xml
 return
- 
+
 xmlescape(string)
 {
   static
@@ -498,16 +498,16 @@ xmlescape(string)
   Return escaped
 }
 
-constants: 
-#LTrim  
-names = 
+constants:
+#LTrim
+names =
 (
   April
   Tam O'Shanter
   Emily
 )
 
-remarks = 
+remarks =
 (
   Bubbly: I'm > Tam and <= Emily
   Burns: "When chapman billies leave the street ..."
@@ -577,12 +577,12 @@ End Function
 140 RE$(1) = "Burns: " + Q$ + "When chapman billies leave the street ..." + Q$
 150 DE$(2) = "Emily"
 160 RE$(2) = "Short & shrift"
- 
+
 200 Print "<CharacterRemarks>"
 210 For I = 0 to 2
-220    Print "    <Character name="Q$; 
+220    Print "    <Character name="Q$;
 230    X$=DE$(I) : GOSUB 300xmlquote
-240    PRINT Q$">"; 
+240    PRINT Q$">";
 250    X$=RE$(I) : GOSUB 300xmlquote
 260    PRINT "</Character>"
 270 Next
@@ -653,7 +653,7 @@ End Function
                   attributeValueEntities$!v
                   \"
                   doAttributes$!arg
-            | 
+            |
         )
       & ( doAll
         =   xml first A B C att XML
@@ -737,8 +737,8 @@ End Function
 
 {{libheader|libXML}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <libxml/parser.h>
@@ -775,7 +775,7 @@ int main()
 
   xmlFreeDoc(doc);
   xmlCleanupParser();
-  
+
   return EXIT_SUCCESS;
 }
 ```
@@ -786,8 +786,8 @@ int main()
 
 Library: Boost
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <utility>
 #include <iostream>
 #include <boost/algorithm/string.hpp>
@@ -1086,7 +1086,7 @@ contents() -> [{"April", "Bubbly: I'm > Tam and <= Emily"}, {"Tam O'Shanter", "B
 
 ```txt
 
-4> xml_output:task().                
+4> xml_output:task().
 "<?xml version=\"1.0\"?><CharacterRemarks><Character name=\"April\">Bubbly: I'm &gt; Tam and &lt;= Emily</Character><Character name=\"Tam O'Shanter\">Burns: \"When chapman billies leave the street ...\"</Character><Character name=\"Emily\">Short &amp; shrift</Character></CharacterRemarks>"
 
 ```
@@ -1167,7 +1167,7 @@ let doxml (characters : Character list) =
     Seq.iter (fun who ->
              let node = doc.CreateElement("Character")
              node.SetAttribute("name", who.name)
-             doc.CreateTextNode(who.comment) 
+             doc.CreateTextNode(who.comment)
              |> node.AppendChild |> ignore
              root.AppendChild node |> ignore
              ) characters
@@ -1293,7 +1293,7 @@ tos-create xml
 : create-xml ( c-addr1 c-addr2 -- )
   0 s" CharacterRemarks" xml xos-write-start-tag
   3 0 DO
-    swap s++ s" name" 2swap 1 
+    swap s++ s" name" 2swap 1
     s" Character" xml xos-write-start-tag
     swap s++      xml xos-write-text
     s" Character" xml xos-write-end-tag
@@ -1367,7 +1367,7 @@ Using the text/template package to generate text:
 
 ```go
 package main
-  
+
 import (
     "encoding/xml"
     "fmt"
@@ -1427,7 +1427,7 @@ def names = ["April", "Tam O'Shanter", "Emily"]
 def remarks = ["Bubbly: I'm > Tam and <= Emily", 'Burns: "When chapman billies leave the street ..."', "Short & shrift"]
 
 builder.CharacterRemarks() {
-    names.eachWithIndex() { n, i -> Character(name:n, remarks[i]) };    
+    names.eachWithIndex() { n, i -> Character(name:n, remarks[i]) };
 }
 
 println writer.toString()
@@ -1559,16 +1559,16 @@ public class XmlCreation {
   private static final String[] remarks = {"Bubbly: I'm > Tam and <= Emily",
     "Burns: \"When chapman billies leave the street ...\"",
       "Short & shrift"};
-  
+
   public static void main(String[] args) {
     try {
       // Create a new XML document
       final Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
-      
+
       // Append the root element
       final Element root = doc.createElement("CharacterRemarks");
       doc.appendChild(root);
-      
+
       // Read input data and create a new <Character> element for each name.
       for(int i = 0; i < names.length; i++) {
         final Element character = doc.createElement("Character");
@@ -1576,30 +1576,30 @@ public class XmlCreation {
         character.setAttribute("name", names[i]);
         character.appendChild(doc.createTextNode(remarks[i]));
       }
-      
+
       // Serializing XML in Java is unnecessary complicated
       // Create a Source from the document.
       final Source source = new DOMSource(doc);
-      
+
       // This StringWriter acts as a buffer
       final StringWriter buffer = new StringWriter();
-      
+
       // Create a Result as a transformer target.
       final Result result = new StreamResult(buffer);
-      
-      // The Transformer is used to copy the Source to the Result object. 
+
+      // The Transformer is used to copy the Source to the Result object.
       final Transformer transformer = TransformerFactory.newInstance().newTransformer();
       transformer.setOutputProperty("indent", "yes");
       transformer.transform(source, result);
-      
-      // Now the buffer is filled with the serialized XML and we can print it 
+
+      // Now the buffer is filled with the serialized XML and we can print it
       // to the console.
       System.out.println(buffer.toString());
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
-  
+
 }
 ```
 
@@ -1629,27 +1629,27 @@ public class XmlCreationStax {
   private static final String[] remarks = {"Bubbly: I'm > Tam and <= Emily",
     "Burns: \"When chapman billies leave the street ...\"",
       "Short & shrift"};
-  
+
   public static void main(String[] args) {
     try {
       final StringWriter buffer = new StringWriter();
-      
+
       final XMLStreamWriter out = XMLOutputFactory.newInstance()
           .createXMLStreamWriter(buffer);
 
       out.writeStartDocument("UTF-8", "1.0");
       out.writeStartElement("CharacterRemarks");
-      
+
       for(int i = 0; i < names.length; i++) {
         out.writeStartElement("Character");
         out.writeAttribute("name", names[i]);
         out.writeCharacters(remarks[i]);
         out.writeEndElement();
       }
-      
+
       out.writeEndElement();
       out.writeEndDocument();
-      
+
       System.out.println(buffer);
     } catch (Exception e) {
       e.printStackTrace();
@@ -1772,10 +1772,10 @@ fun main(args: Array<String>) {
     tFactory.newTransformer().apply {
         setOutputProperty("omit-xml-declaration", "yes")
         setOutputProperty("indent", "yes")
-        setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4") 
+        setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4")
         transform(source, result)
     }
-    println(sw)            
+    println(sw)
 }
 
 ```
@@ -1908,13 +1908,13 @@ print(xmlStr)
 Some tricky input with the second remark
 
 ```Mathematica
-c = {"April", "Tam O'Shanter","Emily"}; 
-r = {"Bubbly:I'm > Tam and <= Emily" , 
+c = {"April", "Tam O'Shanter","Emily"};
+r = {"Bubbly:I'm > Tam and <= Emily" ,
 StringReplace["Burns:\"When chapman billies leave the street ...\"", "\"" -> ""], "Short & shrift"};
 
-ExportString[ XMLElement[  "CharacterRemarks", {}, 
-{XMLElement["Character", {"name" -> c[[1]]}, {r[[1]]}], 
- XMLElement["Character", {"name" -> c[[2]]}, {r[[2]]}], 
+ExportString[ XMLElement[  "CharacterRemarks", {},
+{XMLElement["Character", {"name" -> c[[1]]}, {r[[1]]}],
+ XMLElement["Character", {"name" -> c[[2]]}, {r[[2]]}],
  XMLElement["Character", {"name" -> c[[3]]}, {r[[3]]}]
 }], "XML", "AttributeQuoting" -> "\""]
 ```
@@ -2070,7 +2070,7 @@ return
 options replace format comments java crossref savelog symbols nobinary
 
 import java.io.StringWriter
- 
+
 import javax.xml.stream.XMLOutputFactory
 import javax.xml.stream.XMLStreamWriter
 
@@ -2185,12 +2185,12 @@ bundle Default {
       root := builder->GetRoot();
       if(names->Size() = comments->Size()) {
         each(i : names) {
-          element := XMLElement->New(XMLElementType->ELEMENT, 
-            names->Get(i)->As(String), 
+          element := XMLElement->New(XMLElementType->ELEMENT,
+            names->Get(i)->As(String),
             comments->Get(i)->As(String));
           root->AddChild(element);
         };
-      };      
+      };
       XMLElement->DecodeString(builder->ToString())->PrintLine();
     }
   }
@@ -2283,7 +2283,7 @@ declare
 		   fun {$ N R}
 		      'Character'(name:N R)
 		   end}
-     
+
      DOM = {List.toTuple 'CharacterRemarks' Characters}
   in
      {System.showInfo {Serialize DOM}}
@@ -2354,7 +2354,7 @@ declare
   end
 
   fun {When Cond X}
-     if Cond then X else nil end 
+     if Cond then X else nil end
   end
 in
   {Main}
@@ -2383,7 +2383,7 @@ Output:
 use strict;
 use XML::Mini::Document;
 
-my @students = ( [ "April", "Bubbly: I'm > Tam and <= Emily" ], 
+my @students = ( [ "April", "Bubbly: I'm > Tam and <= Emily" ],
                  [ "Tam O'Shanter", "Burns: \"When chapman billies leave the street ...\"" ],
 		 [ "Emily", "Short & shrift" ]
                 );
@@ -2446,7 +2446,7 @@ function xmlquote_all(sequence s)
     end for
     return s
 end function
- 
+
 function xml_CharacterRemarks(sequence data)
 string res = "<CharacterRemarks>\n"
     for i=1 to length(data) do
@@ -2462,7 +2462,7 @@ constant testset = {
 }
 printf(1,xml_CharacterRemarks(testset))
 
--- Sample output: 
+-- Sample output:
 --  <CharacterRemarks>
 --    <CharacterName="April">Bubbly: I&apos;m &amp;gt; Tam and &amp;lt;= Emily</Character>
 --    <CharacterName="Tam O&apos;Shanter">Burns: &quot;When chapman billies leave the street ...&quot;</Character>
@@ -2516,10 +2516,10 @@ Output:
 DataSection
   dataItemCount:
   Data.i 3
-  
+
   names:
   Data.s "April", "Tam O'Shanter", "Emily"
-  
+
   remarks:
   Data.s "Bubbly: I'm > Tam and <= Emily",
          ~"Burns: \"When chapman billies leave the street ...\"",
@@ -2529,7 +2529,7 @@ EndDataSection
 Structure characteristic
   name.s
   remark.s
-EndStructure  
+EndStructure
 
 NewList didel.characteristic()
 Define item.s, numberOfItems, i
@@ -2558,12 +2558,12 @@ Next
 Define xml, mainNode, itemNode
 ResetList(didel())
 FirstElement(didel())
-xml = CreateXML(#PB_Any) 
-mainNode = CreateXMLNode(RootXMLNode(xml), "CharacterRemarks") 
+xml = CreateXML(#PB_Any)
+mainNode = CreateXMLNode(RootXMLNode(xml), "CharacterRemarks")
 ForEach didel()
   itemNode = CreateXMLNode(mainNode, "Character")
-  SetXMLAttribute(itemNode, "name", didel()\name) 
-  SetXMLNodeText(itemNode, didel()\remark) 
+  SetXMLAttribute(itemNode, "name", didel()\name)
+  SetXMLNodeText(itemNode, didel()\remark)
 Next
 FormatXML(xml, #PB_XML_ReFormat |  #PB_XML_WindowsNewline | #PB_XML_ReIndent)
 
@@ -2637,7 +2637,7 @@ char2xml <- function(names, remarks){
 	}
 	return(tt)
 }
-output <- char2xml( names=c("April","Tam O'Shanter","Emily"), 
+output <- char2xml( names=c("April","Tam O'Shanter","Emily"),
 remarks=c("Bubbly: I'm > Tam and <= Emily", 'Burns: "When chapman billies leave the street ..."', "Short & shrift") )
 ```
 
@@ -3019,7 +3019,7 @@ Result:
 
 ```xml><CharacterRemarks
 
-  <Character name="April">Bubbly: I'm &gt; Tam and &lt;= Emily</Character><Character name="Tam O'Shanter">Burns: 
+  <Character name="April">Bubbly: I'm &gt; Tam and &lt;= Emily</Character><Character name="Tam O'Shanter">Burns:
 &quot;When chapman billies leave the street ...&quot;</Character><Character name="Emily">Short &amp; shrift</Character>
 </CharacterRemarks>
 ```
@@ -3107,7 +3107,7 @@ proc < {name attl args} {
         foreach a $args {
             append res $sep $a
             set sep \n
-        } 
+        }
         append res </$name>
     } else {append res />}
     return $res
@@ -3229,7 +3229,7 @@ Output in file "dest":
   <Character name="April">Bubbly: I'm &gt; Tam and &lt;= Emily</Character>
   <Character name="Tam O'Shanter">Burns: "When chapman billies leave the street ..."</Character>
   <Character name="Emily">Short &amp; shrift</Character>
-</CharacterRemarks>  
+</CharacterRemarks>
 
 ```
 
@@ -3252,7 +3252,7 @@ objXMLDoc.save("C:\Temp\Test.xml")
 
 Function CreateNode(attrib_value,node_value)
 	Set objNode = objXMLDoc.createElement("Character")
-	objNode.setAttribute "name", attrib_value 
+	objNode.setAttribute "name", attrib_value
 	objNode.text = node_value
 	objRoot.appendChild objNode
 End Function
@@ -3292,7 +3292,7 @@ Example input:
 ```txt
 
 April	Bubbly: I'm > Tam and <= Emily
-Tam O'Shanter	Burns: "When chapman billies leave the street ..." 
+Tam O'Shanter	Burns: "When chapman billies leave the street ..."
 Emily	Short & shrift
 
 ```
@@ -3350,7 +3350,7 @@ Output:
 ## XQuery
 
 
-First, we create two string sequences (ordered lists), $names and $remarks, through which we then will loop, using a counter, $count, to keep the current iteration index, which we then will apply as XPath predicate to select an item at this index from the second sequence. 
+First, we create two string sequences (ordered lists), $names and $remarks, through which we then will loop, using a counter, $count, to keep the current iteration index, which we then will apply as XPath predicate to select an item at this index from the second sequence.
 
 In the second variant we use a function 'fn:for-each-pair#3', instead of the FLOWR, to accomplish the same task. XML construction is being encapsulated within a callback function here.
 
@@ -3381,7 +3381,7 @@ Variant #1-2: using a FLOWR expression and literal XML
 
 let $names := ("April","Tam O'Shanter","Emily")
 let $remarks := ("Bubbly: I'm > Tam and <= Emily", 'Burns: "When chapman billies leave the street ..."',"Short &amp; shrift")
-return <CharacterRemarks> 
+return <CharacterRemarks>
        {
          for $name at $count in $names
          return <Character name='{$name}'> {$remarks[$count]} </Character>
@@ -3508,7 +3508,7 @@ long = token(sign$, sign$(), ",")
 
 sub substitute_all$(s$)
     local i
-    
+
     for i = 1 to long step 2
         if s$ = sign$(i) return sign$(i + 1)
     next i
@@ -3517,20 +3517,20 @@ end sub
 
 sub xmlquote_all$(s$)
     local i, res$
-    
+
     for i = 1 to len(s$)
         res$ = res$ + substitute_all$(mid$(s$, i, 1))
     next i
     return res$
 end sub
- 
+
 sub xml_CharacterRemarks$(datos$())
     local res$, i, long
-    
+
     long = arraysize(datos$(), 1)
-    
+
     res$ = "<CharacterRemarks>\n"
-    
+
     for i = 1 to long
         res$ = res$ + "  <CharacterName=\"" + xmlquote_all$(datos$(i, 1)) + "\">" + xmlquote_all$(datos$(i, 2)) + "</Character>\n"
     next i
@@ -3557,7 +3557,7 @@ print xml_CharacterRemarks$(testset$())
 
 ```zkl
 fcn xmlEscape(text){
-   text.replace(" &"," &amp;")  .replace(" \""," &quot;") 
+   text.replace(" &"," &amp;")  .replace(" \""," &quot;")
        .replace(" '"," &apos;") .replace(" <"," &lt;") .replace(" >"," &gt;")
 }
 fcn toXML(as,bs){
@@ -3570,7 +3570,7 @@ fcn toXML(as,bs){
 }
 
 toXML(T("April", "Tam O'Shanter", "Emily"),
-       T("Bubbly: I'm > Tam and <= Emily", 
+       T("Bubbly: I'm > Tam and <= Emily",
          0'|Burns: "When chapman billies leave the street ..."|,
 	 "Short & shrift"))
 .print();

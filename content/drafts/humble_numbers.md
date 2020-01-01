@@ -15,7 +15,7 @@ tags = []
 Humble numbers are positive integers which have   no   prime factors <big>&gt;</big> '''7'''.
 
 
-Humble numbers are also called   ''7-smooth numbers'',   and sometimes called ''highly composite'', 
+Humble numbers are also called   ''7-smooth numbers'',   and sometimes called ''highly composite'',
 
 although this conflicts with another meaning of   ''highly composite numbers''.
 
@@ -52,8 +52,8 @@ Another way to express the above is:
 
 {{trans|Kotlin}}
 
-```cpp>#include <iomanip
-
+```cpp
+#include <iomanip>
 #include <iostream>
 #include <map>
 #include <sstream>
@@ -142,10 +142,10 @@ USING: accessors assocs combinators deques dlists formatting fry
 generalizations io kernel make math math.functions math.order
 prettyprint sequences tools.memory.private ;
 IN: rosetta-code.humble-numbers
- 
+
 TUPLE: humble-iterator 2s 3s 5s 7s digits
     { #digits initial: 1 } { target initial: 10 } ;
- 
+
 : <humble-iterator> ( -- humble-iterator )
     humble-iterator new
     1 1dlist >>2s
@@ -204,7 +204,7 @@ MAIN: humble-numbers
 ```txt
 
 First 50 humble numbers:
-1 2 3 4 5 6 7 8 9 10 12 14 15 16 18 20 21 24 25 27 28 30 32 35 36 40 42 45 48 49 50 54 56 60 63 64 70 72 75 80 81 84 90 96 98 100 105 108 112 120 
+1 2 3 4 5 6 7 8 9 10 12 14 15 16 18 20 21 24 25 27 28 30 32 35 36 40 42 45 48 49 50 54 56 60 63 64 70 72 75 80 81 84 90 96 98 100 105 108 112 120
 
 The digit counts of humble numbers:
         9 have  1 digit
@@ -377,7 +377,7 @@ func commatize(n int) string {
 
 func main() {
     const n = 13 * 1e6  // calculate the first 13 million humble numbers, say
-    h := humble(n) 
+    h := humble(n)
     fmt.Println("The first 50 humble numbers are:")
     fmt.Println(h[0:50])
 
@@ -394,7 +394,7 @@ func main() {
             } else {
                 break
             }
-        }  
+        }
         if digits > maxDigits {
             maxUsed = i
             break
@@ -408,7 +408,7 @@ func main() {
             s = ""
         }
         fmt.Printf("%9s have %2d digit%s\n", commatize(counts[i]), i, s)
-    }       
+    }
 }
 ```
 
@@ -712,7 +712,7 @@ fun main() {
 {{out}}
 
 ```txt
-1 2 3 4 5 6 7 8 9 10 12 14 15 16 18 20 21 24 25 27 28 30 32 35 36 40 42 45 48 49 50 54 56 60 63 64 70 72 75 80 81 84 90 96 98 100 105 108 112 120 
+1 2 3 4 5 6 7 8 9 10 12 14 15 16 18 20 21 24 25 27 28 30 32 35 36 40 42 45 48 49 50 54 56 60 63 64 70 72 75 80 81 84 90 96 98 100 105 108 112 120
 
 Of the first 32767 humble numbers:
     9 have  1 digits
@@ -940,7 +940,7 @@ I also tried a log version (similar to [[Hamming_numbers#A_much_faster_logarithm
 ```Phix
 -- demo/rosetta/humble.exw
 include mpfr.e
- 
+
 procedure humble(integer n, bool countdigits=false)
 -- if countdigits is false: show first n humble numbers,
 -- if countdigits is true: count them up to n digits.
@@ -1345,9 +1345,9 @@ The digit counts of humble numbers
 
 ```zkl
 var [const] BI=Import("zklBigNum");  // libGMP
-var one   = BI(1), two   = BI(2), three = BI(3), 
+var one   = BI(1), two   = BI(2), three = BI(3),
     five  = BI(5), seven = BI(7);
- 
+
 fcn humble(n){	// --> List of BigInt Humble numbers
    h:=List.createLong(n);  h.append(one);
    next2,next3 := two.copy(),  three.copy();
@@ -1370,7 +1370,7 @@ fcn __main__{
    const N = 5 * 1e6;  // calculate the first 1 million humble numbers, say
    h:=humble(N);
    println("The first 50 humble numbers are:\n  ",h[0,50].concat(" "));
- 
+
    counts:=Dictionary();	// tally the number of digits in each number
    h.apply2('wrap(n){ counts.incV(n.numDigits) });
 
@@ -1378,7 +1378,7 @@ fcn __main__{
    println("Digits   Count");
    foreach n in (counts.keys.apply("toInt").sort()){
       println("%2d  %,9d".fmt(n,counts[n], n));
-   }       
+   }
 }
 ```
 

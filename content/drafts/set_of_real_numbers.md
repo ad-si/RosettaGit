@@ -42,7 +42,7 @@ Note that if ''a'' = ''b'', of the four only [''a'', ''a''] would be non-empty.
 
 '''Optional work'''
 * Create a function to determine if a given set is empty (contains no element).
-* Define ''[http://www.wolframalpha.com/input/?i=%7Csin%28pi+x2%29%7C%3E1%2F2%2C+0+%3C+x+%3C+10 A]'' = {''x'' | 0 < ''x'' < 10 and |sin(π ''x''²)| > 1/2 }, ''[http://www.wolframalpha.com/input/?i=%7Csin%28pi+x%29%7C%3E1%2F2%2C+0+%3C+x+%3C+10 B]'' = {''x'' | 0 < ''x'' < 10 and |sin(π ''x'')| > 1/2}, calculate the length of the real axis covered by the set ''A'' − ''B''.  Note that 
+* Define ''[http://www.wolframalpha.com/input/?i=%7Csin%28pi+x2%29%7C%3E1%2F2%2C+0+%3C+x+%3C+10 A]'' = {''x'' | 0 < ''x'' < 10 and |sin(π ''x''²)| > 1/2 }, ''[http://www.wolframalpha.com/input/?i=%7Csin%28pi+x%29%7C%3E1%2F2%2C+0+%3C+x+%3C+10 B]'' = {''x'' | 0 < ''x'' < 10 and |sin(π ''x'')| > 1/2}, calculate the length of the real axis covered by the set ''A'' − ''B''.  Note that
 |sin(π ''x'')| > 1/2 is the same as ''n'' + 1/6 < ''x'' < ''n'' + 5/6 for all integers ''n''; your program does not need to derive this by itself.
 
 
@@ -253,8 +253,8 @@ int main() {
 
 {{trans|Java}}
 
-```cpp>#include <cassert
-
+```cpp
+#include <cassert>
 #include <functional>
 #include <iostream>
 
@@ -519,7 +519,7 @@ namespace RosettaCode.SetOfRealNumbersTest
 
 (defn >=|<= [lo hi] #(<= lo % hi))
 
-(defn >|< [lo hi] #(< lo % hi)) 
+(defn >|< [lo hi] #(< lo % hi))
 
 (defn >=|< [lo hi] #(and (<= lo %) (< % hi)))
 
@@ -528,7 +528,7 @@ namespace RosettaCode.SetOfRealNumbersTest
 (def ⋃ some-fn)
 (def ⋂ every-pred)
 (defn ∖
-  ([s1] s1)  
+  ([s1] s1)
   ([s1 s2]
      #(and (s1 %) (not (s2 %))))
   ([s1 s2 s3]
@@ -676,7 +676,7 @@ Implementation of sets operations, which apply to '''any''' subsets of ℜ defin
 (reader-infix '∩ )
 (reader-infix '∪ )
 (reader-infix '⊖ ) ;; set difference
- 
+
 (define-syntax-rule (∈ x a) (a x))
 (define-syntax-rule (∩ a b) (lambda(x) (and ( a x) (b x))))
 (define-syntax-rule (∪ a b) (lambda(x) (or ( a x) (b x))))
@@ -731,7 +731,7 @@ Implementation of sets operations, which apply to '''any''' subsets of ℜ defin
  (2 ∈ ((⟦...⟦ 0 2)  ∩  (⟧...⟧ 1 2))) → #f
  (2 ∈ ((⟦...⟦ 0 3)  ⊖  (⟧...⟦ 0 1))) → #t
  (2 ∈ ((⟦...⟦ 0 3)  ⊖  (⟦...⟧ 0 1))) → #t
- 
+
 ```
 
 
@@ -740,20 +740,20 @@ Implementation of sets operations, which apply to '''any''' subsets of ℜ defin
 
 ```scheme
 
-;; The following applies to convex sets ⟧...⟦ Cx, 
+;; The following applies to convex sets ⟧...⟦ Cx,
 ;; and families F of disjoint convex sets.
 ;; Cx are implemented as vectors [lo, hi]
 
  (define-syntax-id _.lo [_ 0])
  (define-syntax-id _.hi [_ 1])
- 
+
  ;; Cx-ops
  (define (Cx-new lo hi) (if (< lo hi) (vector lo hi) Cx-empty))
- (define (Cx-empty? A) (>= A.lo A.hi))  
- (define  Cx-empty #(+Infinity -Infinity)) 
- (define (Cx-inter A B) (Cx-new (max A.lo B.lo) (min A.hi B.hi))) 
+ (define (Cx-empty? A) (>= A.lo A.hi))
+ (define  Cx-empty #(+Infinity -Infinity))
+ (define (Cx-inter A B) (Cx-new (max A.lo B.lo) (min A.hi B.hi)))
  (define (Cx-measure A)  (if (< A.lo A.hi) (- A.hi A.lo) 0))
- 
+
  ;; Families ops
  (define (CF-measure FA) (for/sum ((A FA)) (Cx-measure A))) ;; because disjoint
  ;; intersection of two families
@@ -761,22 +761,22 @@ Implementation of sets operations, which apply to '''any''' subsets of ℜ defin
  ;; measure of FA/FB = m(FA) - m (FA ∩ FB)
  (define (CF-measure-FA/FB FA FB)
  	(- (CF-measure FA) (CF-measure (CF-inter FA FB))))
- 
+
 ;; Application :
 ;; FA  = {x | 0 < x < 10 and |sin(π x²)| > 1/2 }
  (define FA
- 	(for/list ((n 100)) 
+ 	(for/list ((n 100))
           (Cx-new (sqrt (+ n (// 6))) (sqrt (+ n (// 5 6))))))
 
 ;; FB  = {x | 0 < x < 10 and |sin(π x)| > 1/2 }
- (define FB 
- 	(for/list ((n 10)) 
+ (define FB
+ 	(for/list ((n 10))
           (Cx-new (+ n (// 6)) (+ n (// 5 6)))))
 
 → (#(0.1667 0.8333) #(1.1667 1.8333) #(2.1667 2.8333)
- #(3.1667 3.8333) #(4.1667 4.8333) #(5.1667 5.8333) 
+ #(3.1667 3.8333) #(4.1667 4.8333) #(5.1667 5.8333)
  #(6.1667 6.8333) #(7.1667 7.8333) #(8.1667 8.8333) #(9.1667 9.8333))
- 	
+
  (CF-measure-FA/FB FA FB)
       → 2.075864841184666
 
@@ -791,38 +791,38 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 extension setOp
 {
     union(func)
         = (val => self(val) || func(val) );
- 
+
     intersection(func)
         = (val => self(val) && func(val) );
- 
+
     difference(func)
         = (val => self(val) && (func(val)).Inverted );
 }
- 
+
 public program()
 {
     // union
     var set := (x => x >= 0.0r && x <= 1.0r ).union:(x => x >= 0.0r && x < 2.0r );
- 
+
     set(0.0r).assertTrue();
     set(1.0r).assertTrue();
     set(2.0r).assertFalse();
- 
+
     // intersection
     var set2 := (x => x >= 0.0r && x < 2.0r ).intersection:(x => x >= 1.0r && x <= 2.0r );
- 
+
     set2(0.0r).assertFalse();
     set2(1.0r).assertTrue();
     set2(2.0r).assertFalse();
- 
+
     // difference
     var set3 := (x => x >= 0.0r && x < 3.0r ).difference:(x => x >= 0.0r && x <= 1.0r );
- 
+
     set3(0.0r).assertFalse();
     set3(1.0r).assertFalse();
     set3(2.0r).assertTrue();
@@ -845,7 +845,7 @@ let intersection s1 s2 =
     fun x -> (s1 x) && (s2 x)
 
 [<EntryPoint>]
-let main _ = 
+let main _ =
     //test set union
     let u1 = union (fun x -> 0.0 < x && x <= 1.0) (fun x -> 0.0 <= x && x < 2.0)
     assert (u1 0.0)
@@ -967,7 +967,7 @@ import Data.Maybe
 data BracketType = OpenSub | ClosedSub
     deriving (Show, Enum, Eq, Ord)
 
-data RealInterval = RealInterval {left :: BracketType, right :: BracketType, 
+data RealInterval = RealInterval {left :: BracketType, right :: BracketType,
     lowerBound :: Double, upperBound :: Double}
     deriving (Eq)
 
@@ -988,10 +988,10 @@ instance Show RealInterval where
     showList [] =  (++ "(/)") -- empty set
 
 construct_interval :: Char -> Double -> Double -> Char -> RealInterval
-construct_interval '(' x y ')' = RealInterval OpenSub OpenSub x y 
-construct_interval '(' x y ']' = RealInterval OpenSub ClosedSub x y 
-construct_interval '[' x y ')' = RealInterval ClosedSub OpenSub x y 
-construct_interval _ x y _ = RealInterval ClosedSub ClosedSub x y 
+construct_interval '(' x y ')' = RealInterval OpenSub OpenSub x y
+construct_interval '(' x y ']' = RealInterval OpenSub ClosedSub x y
+construct_interval '[' x y ')' = RealInterval ClosedSub OpenSub x y
+construct_interval _ x y _ = RealInterval ClosedSub ClosedSub x y
 
 set_is_empty :: RealSet -> Bool
 set_is_empty rs = (rs == emptySet)
@@ -1043,7 +1043,7 @@ simple_complement ri1@(RealInterval l_ri1 r_ri1 x1 y1) =
         inv OpenSub = ClosedSub
         inv ClosedSub = OpenSub
 
-set_sort :: RealSet -> RealSet 
+set_sort :: RealSet -> RealSet
 set_sort rs =
     sortBy
         (\s1 s2 ->
@@ -1089,7 +1089,7 @@ test = map (\x -> [x]) [construct_interval '(' 0 1 ']', construct_interval '[' 0
     construct_interval '[' 0 3 ')', construct_interval '[' 0 1 ']']
 restest = [set_union (test!!0) (test!!1), set_intersection (test!!2) (test!!3),
     set_difference (test!!4) (test!!5), set_difference (test!!6) (test!!7)]
-isintest s = 
+isintest s =
     mapM_
         (\x -> putStrLn ((show x) ++ " is in " ++ (show s) ++ " : " ++ (show (set_in x s))))
         [0, 1, 2]
@@ -1278,7 +1278,7 @@ In essence, this looks like building a restricted set of statements.  So we buil
 ```j
 has=: 1 :'(interval m)`:6'
 ing=: `''
- 
+
 interval=: 3 :0
   if.0<L.y do.y return.end.
   assert. 5=#words=. ;:y
@@ -1325,7 +1325,7 @@ Note that without the arguments these wind up being expressions.  For example:
 In other words, this is a statement built up from inequality terminals (where each inequality is bound to a constant) and the terminals are combined with logical operations.
 
 
-###  Optional Work 
+###  Optional Work
 
 
 
@@ -1342,7 +1342,7 @@ ing=: `''
 edge=: 1&{::&interval
 edges=: /:~@~.@,&edge
 contour=: (, 2 (+/%#)\ ])@edge
- 
+
 interval=: 3 :0
   if.0<L.y do.y return.end.
   assert. 5=#words=. ;:y
@@ -1394,7 +1394,7 @@ The optional work centers around expressions where the absolute value of sin pi 
 ```
 
 
-(Note on notation:  1 o. is sine in J, and 2 o. is cosine -- the mnemonic is that sine is an odd function and cosine is an even function, the practical value is that sine, cosine and sine/cosine pairs can all be generated from the same "real" valued function.  
+(Note on notation:  1 o. is sine in J, and 2 o. is cosine -- the mnemonic is that sine is an odd function and cosine is an even function, the practical value is that sine, cosine and sine/cosine pairs can all be generated from the same "real" valued function.
 Similarly, _1 o. is arcsine and _2 o. is arcsine.  Also 1p_1 is the reciprocal of pi.  So the above tells us that the principal value for arc sine 0.5 is one sixth.)
 
 
@@ -1449,7 +1449,7 @@ Alternatively, if we use the set implementation with empty set detection, and th
 
 
 ```j
-intervalSet=: interval@('[',[,',',],')'"_)&": 
+intervalSet=: interval@('[',[,',',],')'"_)&":
 A=: union/_2 intervalSet/\ zA
 B=: union/_2 intervalSet/\ zB
 diff=: A without B
@@ -1665,7 +1665,7 @@ end
 
 -(aset, bset, x) = (∈(aset, x) && !∈(bset, x))
 
-isempty(s::ConvexRealSet) = (s.lower > s.upper) || 
+isempty(s::ConvexRealSet) = (s.lower > s.upper) ||
                            ((s.lower == s.upper) && !s.includeupper && !s.includelower)
 
 
@@ -1730,7 +1730,7 @@ The set sempty is empty.
 
 The RealSet class has two constructors - a primary one which creates an object for an arbitrary predicate and a secondary one which creates an object for a simple range by generating the appropriate predicate and then invoking the primary one.
 
-As far as the optional work is concerned, I decided to add a length property which gives only an approximate result. Basically, it works by keeping track of the low and high values of the set and then counting points at successive small intervals between these limits which satisfy the predicate. An isEmpty() function has also been added but as this depends, to some extent, on the length property it is not 100% reliable. 
+As far as the optional work is concerned, I decided to add a length property which gives only an approximate result. Basically, it works by keeping track of the low and high values of the set and then counting points at successive small intervals between these limits which satisfy the predicate. An isEmpty() function has also been added but as this depends, to some extent, on the length property it is not 100% reliable.
 
 Clearly, the above approach is only suitable for sets with narrow ranges (as we have here) but does have the merit of not over-complicating the basic class.
 
@@ -1747,7 +1747,7 @@ class RealSet(val low: Double, val high: Double, val predicate: RealPredicate) {
         when (rangeType) {
             RangeType.CLOSED     -> fun(d: Double) = d in start..end
             RangeType.BOTH_OPEN  -> fun(d: Double) = start < d && d < end
-            RangeType.LEFT_OPEN  -> fun(d: Double) = start < d && d <= end       
+            RangeType.LEFT_OPEN  -> fun(d: Double) = start < d && d <= end
             RangeType.RIGHT_OPEN -> fun(d: Double) = start <= d && d < end
         }
     )
@@ -1759,11 +1759,11 @@ class RealSet(val low: Double, val high: Double, val predicate: RealPredicate) {
         val high2 = maxOf(high, other.high)
         return RealSet(low2, high2) { predicate(it) || other.predicate(it) }
     }
-        
+
     infix fun intersect(other: RealSet): RealSet {
         val low2 = maxOf(low, other.low)
         val high2 = minOf(high, other.high)
-        return RealSet(low2, high2) { predicate(it) && other.predicate(it) } 
+        return RealSet(low2, high2) { predicate(it) && other.predicate(it) }
     }
 
     infix fun subtract(other: RealSet) = RealSet(low, high) { predicate(it) && !other.predicate(it) }
@@ -1803,9 +1803,9 @@ fun main(args: Array<String>) {
         println("[0, 3) − [0, 1] contains $i is ${(d subtract f).contains(dd)}\n")
     }
 
-    println("[0, 0] is empty is ${g.isEmpty()}\n")  
+    println("[0, 0] is empty is ${g.isEmpty()}\n")
 
-    val aa = RealSet(0.0, 10.0) { x -> (0.0 < x && x < 10.0) && 
+    val aa = RealSet(0.0, 10.0) { x -> (0.0 < x && x < 10.0) &&
                                         Math.abs(Math.sin(Math.PI * x * x)) > 0.5  }
     val bb = RealSet(0.0, 10.0) { x -> (0.0 < x && x < 10.0) &&
                                         Math.abs(Math.sin(Math.PI * x)) > 0.5  }
@@ -1987,7 +1987,7 @@ set1 = setoc[0, 1]  || setco[0, 2]  (* union built in as || shortcut (OR) *);
 Print[set1]
 Print["First trial set, (0, 1] ∪ [0, 2) , testing for {0,1,2}:"]
 Print[inSetQ[#, set1] & /@ {0, 1, 2}]
-set2 = setco[0, 2] && setoc[1, 2];  (* intersection built in as && shortcut (AND) *) 
+set2 = setco[0, 2] && setoc[1, 2];  (* intersection built in as && shortcut (AND) *)
 Print[]
 Print[set2]
 Print["Second trial set, [0, 2) ∩ (1, 2], testing for {0,1,2}:"]
@@ -2028,7 +2028,7 @@ Fourth trial set, [0,3)\[Minus][0,1], testing for {0,1,2}:
 
 ## PARI/GP
 
-Define some sets and use built-in functions: 
+Define some sets and use built-in functions:
 
 ```parigp
 set11(x,a,b)=select(x -> a <= x && x <= b, x);
@@ -2044,7 +2044,7 @@ setintersect(set10(V, 0, 2), set01(V, 1, 2))
     setminus(set10(V, 0, 3), set11(V, 0, 1))
 ```
 
-   
+
 Output:
 ```txt
 
@@ -2240,10 +2240,10 @@ my $z = $x - $y;
 print "A - B\t= ", brev($z), "\n\tlength = ", $z->len, "\n";
 print $z ? "not empty\n" : "empty\n";
 ```
-output<lang>Set 0 = [0.00, 2.00): has 0; has 1; 
-Set 1 = (0.00, 2.00): has 1; 
-Set 2 = [0.00, 0.00] ∪ [1.00, 3.00): has 0; has 1; has 2; 
-Set 3 = (1.00, 3.00): has 2; 
+output<lang>Set 0 = [0.00, 2.00): has 0; has 1;
+Set 1 = (0.00, 2.00): has 1;
+Set 2 = [0.00, 0.00] ∪ [1.00, 3.00): has 0; has 1; has 2;
+Set 3 = (1.00, 3.00): has 2;
 
 ####
 A       = {x | 0 < x < 10 and |sin(π x²)| > 1/2 }
@@ -2484,14 +2484,14 @@ function OpOp(atom a, b, x)           return a <  x and x <  b       end functio
 function ClCl(atom a, b, x)           return a <= x and x <= b       end function  constant r_ClCl  = routine_id("ClCl")
 function OpCl(atom a, b, x)           return a <  x and x <= b       end function  constant r_OpCl  = routine_id("OpCl")
 function ClOp(atom a, b, x)           return a <= x and x <  b       end function  constant r_ClOp  = routine_id("ClOp")
- 
+
 --                              expected
 --              ---- desc ----,  0 1 2,  --------------- set method ---------------
 constant s = {{"(0,1] u [0,2)", {1,1,0}, {r_Union,{{r_OpCl,{0,1}},{r_ClOp,{0,2}}}}},
               {"[0,2) n (1,2]", {0,0,0}, {r_Inter,{{r_ClOp,{0,2}},{r_OpCl,{1,2}}}}},
               {"[0,3) - (0,1)", {1,1,1}, {r_Diffr,{{r_ClOp,{0,3}},{r_OpOp,{0,1}}}}},
               {"[0,3) - [0,1]", {0,0,1}, {r_Diffr,{{r_ClOp,{0,3}},{r_ClCl,{0,1}}}}}},
-         tf = {"True","False"} 
+         tf = {"True","False"}
 
 for i=1 to length(s) do
     sequence {desc, expect, method} = s[i]
@@ -2867,7 +2867,7 @@ class Rset
       "#{inc_lo ? '[' : '('}#{lo},#{hi}#{inc_hi ? ']' : ')'}"
     end
   end
-  
+
   def initialize(lo=nil, hi=nil, inc_lo=false, inc_hi=false)
     if lo.nil? and hi.nil?
       @sets = []            # empty set
@@ -2877,11 +2877,11 @@ class Rset
       @sets = [Set[lo, hi, !!inc_lo, !!inc_hi]]         # !! -> Boolean values
     end
   end
-  
+
   def self.[](lo, hi, inc_hi=true)
     self.new(lo, hi, true, inc_hi)
   end
-  
+
   def self.parse(str)
     raise ArgumentError  unless str =~ /(\[|\()(.+),(.+)(\]|\))/
     b0, lo, hi, b1 = $~.captures        # $~ : Regexp.last_match
@@ -2891,20 +2891,20 @@ class Rset
     hi = hi.numerator  if hi.denominator == 1
     self.new(lo, hi, b0=='[', b1==']')
   end
-  
+
   def initialize_copy(obj)
     super
     @sets = @sets.map(&:dup)
   end
-  
+
   def include?(x)
     @sets.any?{|set| set.include?(x)}
   end
-  
+
   def empty?
     @sets.empty?
   end
-  
+
   def union(other)
     sets = (@sets+other.sets).map(&:dup).sort_by{|set| [set.lo, set.hi]}
     work = []
@@ -2927,7 +2927,7 @@ class Rset
     new_Rset(work)
   end
   alias | union
-  
+
   def intersection(other)
     sets = @sets.map(&:dup)
     work = []
@@ -2957,7 +2957,7 @@ class Rset
     new_Rset(work)
   end
   alias & intersection
-  
+
   def difference(other)
     sets = @sets.map(&:dup)
     other.sets.each do |oset|
@@ -2987,37 +2987,37 @@ class Rset
     new_Rset(sets)
   end
   alias - difference
-  
+
   # symmetric difference
   def ^(other)
     (self - other) | (other - self)
   end
-  
+
   def ==(other)
     self.class == other.class and @sets == other.sets
   end
-  
+
   def length
     @sets.inject(0){|len, set| len + set.length}
   end
-  
+
   def to_s
     "#{self.class}#{@sets.join}"
   end
   alias inspect to_s
-  
+
   protected
-  
+
   attr_accessor :sets
-  
+
   private
-  
+
   def new_Rset(sets)
     rset = self.class.new          # empty set
     rset.sets = sets
     rset
   end
-  
+
   def valid?(lo, hi, inc_lo, inc_hi)
     lo < hi or (lo==hi and inc_lo and inc_hi)
   end
@@ -3056,7 +3056,7 @@ puts "\nTest :"
 test_set = [["(0, 1]", "|", "[0, 2)"],
             ["[0, 2)", "&", "(1, 2]"],
             ["[0, 3)", "-", "(0, 1)"],
-            ["[0, 3)", "-", "[0, 1]"] ] 
+            ["[0, 3)", "-", "[0, 1]"] ]
 test_set.each do |sa,ope,sb|
   str = "#{sa} #{ope} #{sb}"
   e = eval("Rset.parse(sa) #{ope} Rset.parse(sb)")
@@ -3437,7 +3437,7 @@ The method used is a bit inefficient because it closes the contains function of 
 tester := TheVault.Test.UnitTester.UnitTester();
 
     // test union
-s:=RealSet(fcn(x){ 0.0 <  x <= 1.0 }) + 
+s:=RealSet(fcn(x){ 0.0 <  x <= 1.0 }) +
    RealSet(fcn(x){ 0.0 <= x <  1.0 });
 tester.testRun(s.holds(0.0),Void,True,__LINE__);
 tester.testRun(s.holds(1.0),Void,True,__LINE__);

@@ -13,7 +13,7 @@ tags = []
 {{task}}
 
 ;Task:
-Write a function to flatten the nesting in an arbitrary [[wp:List (computing)|list]] of values. 
+Write a function to flatten the nesting in an arbitrary [[wp:List (computing)|list]] of values.
 
 Your program should work on the equivalent of this list:
    [[1], 2, [[3, 4], 5], [[[]]], [[[6]]], 7, 8, []]
@@ -46,14 +46,14 @@ Where the correct result would be the list:
 		then
 		drop
 	) a:each drop ;
-	
+
 : flatten \ a -- a
 	[] >r (flatten) r> ;
 
 [[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8, []]
 dup . cr
-flatten 
-. cr 
+flatten
+. cr
 bye
 
 ```
@@ -110,11 +110,11 @@ generic
 package Nestable_Lists is
 
    type Node_Kind is (Data_Node, List_Node);
-   
+
    type Node (Kind : Node_Kind);
-   
+
    type List is access Node;
-   
+
    type Node (Kind : Node_Kind) is record
       Next : List;
       case Kind is
@@ -124,17 +124,17 @@ package Nestable_Lists is
             Sublist : List;
       end case;
    end record;
-   
+
    procedure Append (L : in out List; E : Element_Type);
    procedure Append (L : in out List; N : List);
-   
+
    function Flatten (L : List) return List;
 
    function New_List (E : Element_Type) return List;
    function New_List (N : List) return List;
-   
+
    function To_String (L : List) return String;
-   
+
 end Nestable_Lists;
 ```
 
@@ -185,7 +185,7 @@ package body Nestable_Lists is
       end loop;
       return Result;
    end Flatten;
-   
+
    function New_List (E : Element_Type) return List is
    begin
       return  new Node'(Kind => Data_Node, Data => E, Next => null);
@@ -246,7 +246,7 @@ begin
    Int_List.Append (List, 7);
    Int_List.Append (List, 8);
    Int_List.Append (List, null);
-   
+
    declare
       Flattened : constant Int_List.List := Int_List.Flatten (List);
    begin
@@ -461,9 +461,9 @@ end flatten
 
 -- TEST -----------------------------------------------------------------------
 on run
-    
+
     flatten([[1], 2, [[3, 4], 5], [[[]]], [[[6]]], 7, 8, []])
-    
+
     --> {1, 2, 3, 4, 5, 6, 7, 8}
 end run
 
@@ -482,7 +482,7 @@ on concatMap(f, xs)
     return lst
 end concatMap
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -507,8 +507,8 @@ end mReturn
 
 {{works with | AutoHotkey_L}}
 
-AutoHotkey doesn't have built in list data type.  
-This examples simulates a list in a tree type object and flattens that tree.  
+AutoHotkey doesn't have built in list data type.
+This examples simulates a list in a tree type object and flattens that tree.
 
 ```AutoHotkey
 list := object(1, object(1, 1), 2, 2, 3, object(1, object(1, 3, 2, 4)
@@ -525,10 +525,10 @@ objPrint(ast, reserved=0)
 {
   if !isobject(ast)
     return " " ast " "
-  
+
   if !reserved
     reserved := object("seen" . &ast, 1)  ; to keep track of unique objects within top object
-  
+
   enum := ast._newenum()
   while enum[key, value]
   {
@@ -545,9 +545,9 @@ objFlatten(ast)
 {
   if !isobject(ast)
     return ast
-  
+
   flat := object() ; flat object
-  
+
   enum := ast._newenum()
   while enum[key, value]
   {
@@ -558,7 +558,7 @@ objFlatten(ast)
       next := objFlatten(value)
       loop % next._MaxIndex()
       flat._Insert(next[A_Index])
-      
+
     }
   }
   return flat
@@ -645,7 +645,7 @@ p "Flattened: #{list.flatten}"
 
 
 Usually flattening Blocks is done with the Concat command but it only removes one level of nesting therefore it is required to chain Concat calls
-until the Block does not contain Blocks anymore. 
+until the Block does not contain Blocks anymore.
 
 
 ```burlesque
@@ -660,8 +660,8 @@ blsq ) {{1} 2 {{3 4} 5} {{{}}} {{{6}}} 7 8 {}}{\[}{)to{"Block"==}ay}w!
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -793,8 +793,8 @@ Flattened: [1, 2, 3, 4, 5, 6, 7, 8]
 ## C++
 
 
-```cpp>#include <list
-
+```cpp
+#include <list>
 #include <boost/any.hpp>
 
 typedef std::list<boost::any> anylist;
@@ -822,13 +822,13 @@ void flatten(std::list<boost::any>& list)
 
 Use example:
 
-Since C++ currently doesn't have nice syntax for initializing lists, 
-this includes a simple parser to create lists of integers and sublists. 
-Also, there's no standard way to output this type of list, 
+Since C++ currently doesn't have nice syntax for initializing lists,
+this includes a simple parser to create lists of integers and sublists.
+Also, there's no standard way to output this type of list,
 so some output code is added as well.
 
-```cpp>#include <cctype
-
+```cpp
+#include <cctype>
 #include <iostream>
 
 // *******************
@@ -973,7 +973,7 @@ namespace RosettaCodeTasks
 				NewList.RemoveAt ( index );
 				NewList.InsertRange ( index, Temp );
 			}
-			
+
 			return NewList;
 		}
 	}
@@ -1081,7 +1081,7 @@ shared void run() {
                 else [element]);
 
     value list = [[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8, []];
-    
+
     print(list);
     print(flatten(list).sequence());
 }
@@ -1144,7 +1144,7 @@ console.log flatten list
 
 Ouput:
 <lang>
-> coffee foo.coffee 
+> coffee foo.coffee
 [ 1, 2, 3, 4, 5, 6, 7, 8 ]
 
 ```
@@ -1421,7 +1421,7 @@ The built-in '''(flatten list)''' is defined as follows:
  → (1 2 3 4 5 6 7 8)
 
 ;; Remarks
-;; null is the same as () - the empty list - 
+;; null is the same as () - the empty list -
 (flatten '(null null null))
    → null
 (flatten '[ () () () ])
@@ -1446,10 +1446,10 @@ This implementation can flattern any given list:
 
 ```Ela
 xs =  [[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8, []]
- 
+
 flat = flat' []
        where flat' n [] = n
-             flat' n (x::xs) 
+             flat' n (x::xs)
                | x is List = flat' (flat' n xs) x
                | else = x :: flat' n xs
 
@@ -1468,8 +1468,8 @@ An alternative solution:
 
 
 ```Ela
-flat [] = [] 
-flat (x::xs) 
+flat [] = []
+flat (x::xs)
   | x is List = flat x ++ flat xs
   | else = x :: flat xs
 ```
@@ -1484,10 +1484,10 @@ flat (x::xs)
 defmodule RC do
   def flatten([]), do: []
   def flatten([h|t]), do: flatten(h) ++ flatten(t)
-  def flatten(h), do: [h] 
+  def flatten(h), do: [h]
 end
 
-list = [[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8, []] 
+list = [[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8, []]
 
 # Our own implementation
 IO.inspect RC.flatten(list)
@@ -1586,12 +1586,12 @@ function flatten( object s )
 		for i = 1 to length( s ) do
 			sequence c = flatten( s[ i ] )
 			if length( c ) > 0 then
-				res &= c 
+				res &= c
 			end if
 		end for
 	else
-		if length( s ) > 0 then 
-			res = { s }  
+		if length( s ) > 0 then
+			res = { s }
 		end if
 	end if
 	return res
@@ -1679,7 +1679,7 @@ printfn "%A" (flatten (L [L([I(1)]); I(2); L([L([I(3);I(4)]); I(5)]); L([L([L([]
 ```fantom
 
 class Main
-{ 
+{
   // uses recursion to flatten a list
   static List myflatten (List items)
   {
@@ -1693,7 +1693,7 @@ class Main
     }
     return result
   }
-  
+
   public static Void main ()
   {
     List sample := [[1], 2, [[3,4], 5], [[[,]]], [[[6]]], 7, 8, [,]]
@@ -1720,12 +1720,12 @@ include FMS-SI.f
 include FMS-SILib.f
 
 : flatten {: list1 list2 --  :}
-  list1 size: 0 ?do i list1 at: 
+  list1 size: 0 ?do i list1 at:
                   dup is-a object-list2
                   if list2 recurse else list2 add: then  loop ;
 
-object-list2 list 
-o{ o{ 1 } 2 o{ o{ 3 4 } 5 } o{ o{ o{ } } } o{ o{ o{ 6 } } } 7 8 o{ } } 
+object-list2 list
+o{ o{ 1 } 2 o{ o{ 3 4 } 5 } o{ o{ o{ } } } o{ o{ o{ 6 } } } 7 8 o{ } }
 list flatten
 list p: \ o{ 1 2 3 4 5 6 7 8 } ok
 ```
@@ -1776,7 +1776,7 @@ contains
   end if
   end function
 
-  recursive subroutine flatten1(x,r) 
+  recursive subroutine flatten1(x,r)
   integer, dimension (:), allocatable, intent(inout) :: r
   type(n), intent(in)                                :: x
   integer, dimension (:), allocatable                :: tmp
@@ -1803,7 +1803,7 @@ contains
   recursive subroutine show(x)
   type(n)   :: x
   integer   :: i
-  if (x%empty) then 
+  if (x%empty) then
     write (*, "(a)", advance="no") "[]"
   elseif (associated(x%p)) then
     write (*, "(a)", advance="no") "["
@@ -1826,7 +1826,7 @@ contains
   integer, dimension(:), allocatable    :: stack, stack1
   integer                               :: sp,i0,i,j, a, cur, start
   character                             :: c
- 
+
   if (.not. allocated(buffer)) then
     allocate (buffer(5)) ! will be re-allocated if more is needed
   end if
@@ -1839,7 +1839,7 @@ contains
     if ( i > len_trim(line) ) exit
     c = line(i:i)
     if (c=="[") then
-      if (sp>size(stack)) then 
+      if (sp>size(stack)) then
         allocate(stack1(2*size(stack)))
         stack1(1:size(stack)) = stack
         call move_alloc(stack1, stack)
@@ -1856,7 +1856,7 @@ contains
       i = i + 1; continue
     elseif (index("-123456789",c)>0) then
       i0 = i
-      do 
+      do
         if ((i>len_trim(line)).or. &
             index("1234567890",line(i:i))==0) then
           read(line(i0:i-1),*) a
@@ -1932,7 +1932,7 @@ Completed the crush. At least one ] must have followed the last character of the
       END
 ```
 
-Output is 
+Output is
  Original: [[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8, []]
   Crushed: [1,2,3,4,5,6,7,8]
 Note that if you insist on the rather flabby style of having spaces after commas, then there would be trouble. Instead of placing just a comma, a ", " would be required, which is ''two'' symbols going out when ''one'' symbol has come in: overwriting yet-to-be-scanned input is a bad idea. Either a more complex set of scan states would be required to squeeze in the extra or a separate work area would be needed to hold such output and the issue of "long enough" would arise.
@@ -1965,7 +1965,7 @@ Dim siCount As Short
 
 sString = "[[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8 []]"
 For siCount = 1 To Len(sString)
- If InStr("[] ,", Mid$(sString, siCount, 1)) = 0 Then 
+ If InStr("[] ,", Mid$(sString, siCount, 1)) = 0 Then
   sFlatter = sFlatter & sComma & Mid(sString, siCount, 1)
   sComma = ","
  End If
@@ -2042,7 +2042,7 @@ func flatten(s []interface{}) (r []int) {
 
 ```
 
-In the code above, flatten uses an easy-to-read type switch to extract ints and return an int slice.  The version below is generalized to return a flattened slice of interface{} type, which can of course refer to objects of any type, and not just int.  
+In the code above, flatten uses an easy-to-read type switch to extract ints and return an int slice.  The version below is generalized to return a flattened slice of interface{} type, which can of course refer to objects of any type, and not just int.
 Also, just to show a variation in programming style, a type assertion is used rather than a type switch.
 
 ```go
@@ -2120,11 +2120,11 @@ Alternately:
 data Tree a
   = Leaf a
   | Node [Tree a]
- 
+
 flatten :: Tree a -> [a]
 flatten (Leaf x) = [x]
 flatten (Node xs) = xs >>= flatten
- 
+
 main :: IO ()
 main =
   (print . flatten) $
@@ -2138,7 +2138,7 @@ main =
     , Leaf 8
     , Node []
     ]
-    
+
 -- [1,2,3,4,5,6,7,8]
 ```
 
@@ -2199,17 +2199,17 @@ main = print $ flatten example
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-The following procedure solves the task using a string representation of nested lists and cares not if the list is well formed or not.  
+The following procedure solves the task using a string representation of nested lists and cares not if the list is well formed or not.
 
 ```Icon
 link strings           # for compress,deletec,pretrim
 
 procedure sflatten(s)  # uninteresting string solution
-return pretrim(trim(compress(deletec(s,'[ ]'),',') ,','),',')       
+return pretrim(trim(compress(deletec(s,'[ ]'),',') ,','),',')
 end
 ```
 
-{{libheader|Icon Programming Library}} 
+{{libheader|Icon Programming Library}}
 The solution uses several procedures from [http://www.cs.arizona.edu/icon/library/src/procs/strings.icn strings in the IPL]
 
 This procedure is more in the spirit of the task handling actual lists rather than representations.  It uses a recursive approach using some of the built-in list manipulation functions and operators.
@@ -2235,7 +2235,7 @@ write(sflatten(" [[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8, []]"))
 writelist(flatten( [[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8, []]))
 end
 
-procedure writelist(L)         
+procedure writelist(L)
 writes("[")
 every writes(" ",image(!L))
 write(" ]")
@@ -2259,7 +2259,7 @@ end
 ## J
 
 
-'''Solution''':  
+'''Solution''':
 
 ```j>flatten =: [: ; <S:0</lang
 
@@ -2378,7 +2378,7 @@ public final class FlattenTestMain {
 		System.out.println(treeList);
 		System.out.println("flatten: " + flatList);
 	}
-	
+
 	private static List<Object> a(Object... a) {
 		return asList(a);
 	}
@@ -2560,7 +2560,7 @@ const flatten = t => {
 ```
 
 
-Result is always: 
+Result is always:
 
 ```txt
 [1, 2, 3, 4, 5, 6, 7, 8]
@@ -2720,9 +2720,9 @@ fun flattenList(nestList: List<Any>, flatList: MutableList<Int>) {
             flatList.add(e)
         else
             // using unchecked cast here as can't check for instance of 'erased' generic type
-            flattenList(e as List<Any>, flatList) 
+            flattenList(e as List<Any>, flatList)
 }
-            
+
 fun main(args: Array<String>) {
     val nestList : List<Any> = listOf(
         listOf(1),
@@ -2737,7 +2737,7 @@ fun main(args: Array<String>) {
     println("Nested    : " + nestList)
     val flatList = mutableListOf<Int>()
     flattenList(nestList, flatList)
-    println("Flattened : " + flatList)    
+    println("Flattened : " + flatList)
 }
 ```
 
@@ -2995,18 +2995,18 @@ import java.util.ArrayList
 import java.util.List
 import java.util.Collection
 
-def flatten(list: Collection) 
+def flatten(list: Collection)
     flatten(list, ArrayList.new)
 end
 def flatten(source: Collection, result: List)
 
     source.each do |x|
-        if x.kind_of?(Collection) 
-            flatten(Collection(x), result)  
+        if x.kind_of?(Collection)
+            flatten(Collection(x), result)
         else
             result.add(x)
             result  # if branches must return same type
-        end 
+        end
     end
     result
 end
@@ -3119,14 +3119,14 @@ echo flatten(x)
 @implementation NSArray (FlattenExt)
 -(NSArray *) flattened {
     NSMutableArray *flattened = [[NSMutableArray alloc] initWithCapacity:self.count];
-    
+
     for (id object in self) {
         if ([object isKindOfClass:[NSArray class]])
             [flattened addObjectsFromArray:((NSArray *)object).flattened];
         else
             [flattened addObject:object];
     }
-    
+
     return [flattened autorelease];
 }
 @end
@@ -3142,12 +3142,12 @@ int main() {
 		         @7,
 		         @8,
 		         @[ ] ];
-    
+
         for (id object in unflattened.flattened)
             NSLog(@"%@", object);
-    
+
     }
-    
+
     return 0;
 }
 ```
@@ -3478,12 +3478,12 @@ There's a built-in function called <code>Array.flatten()</code> which does this,
 ```pike
 array flatten(array a) {
 	array r = ({ });
-	
+
 	foreach (a, mixed n) {
 		if (arrayp(n)) r += flatten(n);
 		else r += ({ n });
 	}
-	
+
 	return r;
 }
 ```
@@ -3548,7 +3548,7 @@ $a = @(@(1), 2, @(@(3,4), 5), @(@(@())), @(@(@(6))), 7, 8, @())
 <b>Output:</b>
 
 ```txt
- 
+
 1 2 3 4 5 6 7 8
 
 ```
@@ -3667,7 +3667,7 @@ Flatten: [1, 2, 4, 5, 6, 7, 8]
 
 
 
-And, as [[Rosetta_Code|the idea of Rosetta Code]] is to demonstrate how languages are '''similar''' as well as different, and to thus to 'aid a person with a grounding in one approach to a problem in learning another', here it is in terms of '''concatMap''', which can be defined in any language, including mathematics, and which can be variously expressed in Python. (The fastest Python implementation of the '''concat''' component of the (concat . map) composition seems to be in terms of ''itertools.chain''). 
+And, as [[Rosetta_Code|the idea of Rosetta Code]] is to demonstrate how languages are '''similar''' as well as different, and to thus to 'aid a person with a grounding in one approach to a problem in learning another', here it is in terms of '''concatMap''', which can be defined in any language, including mathematics, and which can be variously expressed in Python. (The fastest Python implementation of the '''concat''' component of the (concat . map) composition seems to be in terms of ''itertools.chain'').
 
 {{Works with|Python|3.7}}
 
@@ -3770,7 +3770,7 @@ Function flat is iterative and flattens the list in-place. It follows the Python
             except (TypeError, IndexError):
                 break
         i += 1
-        
+
 >>> lst = [[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8, []]
 >>> flat(lst)
 >>> lst
@@ -3781,8 +3781,8 @@ Function flat is iterative and flattens the list in-place. It follows the Python
 
 And, in contexts where it may be desirable to avoid not just recursion, but also:
 
-# mutation of the original list, and 
-# dependence on error-events for evaluation control, 
+# mutation of the original list, and
+# dependence on error-events for evaluation control,
 
 
 we can again use the universal '''concat . map''' composition (see the second recursive example above) by embedding it in a fold / reduction, and using it with a pure, but iteratively-implemented, '''until''' function.
@@ -3898,10 +3898,10 @@ In this case, the generator is converted back to a list before printing.
                  yield x
          else:
              yield x
- 
- 
+
+
 >>> lst = [[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8, []]
->>> print list(flatten(lst)) 
+>>> print list(flatten(lst))
 [1, 2, 3, 4, 5, 6, 7, 8]
 ```
 
@@ -3982,7 +3982,7 @@ flatten: func [
 ```
 
 
-Sample: 
+Sample:
 ```txt
 
 >> flatten [[1] 2 [[3 4] 5] [[[]]] [[[6]]] 7 8 []]
@@ -4100,7 +4100,7 @@ p flatten_once = [[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8, []].flatten(1)
 ```runbasic
 n$ = "[[1], 2, [[3,4], 5], [[[]]], [[[6]]], 7, 8 []]"
 for i = 1 to len(n$)
- if instr("[] ,",mid$(n$,i,1)) = 0 then 
+ if instr("[] ,",mid$(n$,i,1)) = 0 then
   flatten$ = flatten$ + c$ + mid$(n$,i,1)
   c$ = ","
  end if
@@ -4251,8 +4251,8 @@ Sample:
 ```txt
 
 slsh> variable data = {{1}, 2, {{3,4}, 5}, {{{}}}, {{{6}}}, 7, 8, {}},
-           result = flatten(data);                                    
-slsh> print(result);              
+           result = flatten(data);
+slsh> print(result);
 {
 1
 2
@@ -4397,7 +4397,7 @@ OrderedCollection extend [
 
 
 |list|
-list := OrderedCollection 
+list := OrderedCollection
           withAll: { {1} . 2 . { {3 . 4} . 5 } .
                      {{{}}} . {{{6}}} . 7 . 8 . {} }.
 
@@ -4410,7 +4410,7 @@ Here is a non-OOP (but functional) version, which uses a block-closure as functi
 
 ```smalltalk
 
-flatDo := 
+flatDo :=
     [:element :action |
         element isCollection ifTrue:[
             element do:[:el | flatDo value:el value:action]
@@ -4418,14 +4418,14 @@ flatDo :=
             action value:element
         ].
     ].
-    
-collection := { 
+
+collection := {
                 {1} . 2 . { {3 . 4} . 5 } .
-                {{{}}} . {{{6}}} . 7 . 8 . {} 
+                {{{}}} . {{{6}}} . 7 . 8 . {}
               }.
 
-newColl := OrderedCollection new.                         
-flatDo 
+newColl := OrderedCollection new.
+flatDo
     value:collection
     value:[:el | newColl add: el]
 ```
@@ -4525,7 +4525,7 @@ f.([[1], 2, [[3, 4], 5], [[[]]], [[[6]]], 7, 8, []]);
 ## Swift
 
 
-== Recursive == 
+== Recursive ==
 
 
 ```swift
@@ -4617,7 +4617,7 @@ println(result)
 ```
 
 
-== Non-recursive == 
+== Non-recursive ==
 
 {{works with|Swift|2.0+}}
 
@@ -4632,26 +4632,26 @@ func flatten<T>(array: [Any]) -> [T]
 {
     var result: [T] = []
     var workstack: [(array: [Any], lastIndex: Int)] = [(array, 0)]
-    
+
     workstackLoop: while !workstack.isEmpty
     {
         for element in workstack.last!.array.suffixFrom(workstack.last!.lastIndex)
         {
             workstack[workstack.endIndex - 1].lastIndex++
-            
+
             if let element = element as? [Any]
             {
                 workstack.append((element, 0))
-                
+
                 continue workstackLoop
             }
-            
+
             result.append(element as! T)
         }
-        
+
         workstack.removeLast()
     }
-    
+
     return result
 }
 
@@ -4695,7 +4695,7 @@ templates flatten
   <>
     $ !
 end flatten
- 
+
 [[1], 2, [[3, 4], 5], [[[]]], [[[6]]], 7, 8, []] -> flatten -> !OUT::write
 
 ```
@@ -4804,16 +4804,16 @@ Working on embedded arrays as that's about the closest we get to lists.
 ```vb
 
 class flattener
-	dim separator 
-	
+	dim separator
+
 	sub class_initialize
 		separator = ","
 	end sub
-	
+
 	private function makeflat( a )
 		dim i
 		dim res
-		for i = lbound( a ) to ubound( a ) 
+		for i = lbound( a ) to ubound( a )
 			if isarray( a( i ) ) then
 				res = res & makeflat( a( i ) )
 			else
@@ -4830,7 +4830,7 @@ class flattener
 		res = split( res, separator )
 		flatten = res
 	end function
-	
+
 	public property let itemSeparator( c )
 		separator = c
 	end property

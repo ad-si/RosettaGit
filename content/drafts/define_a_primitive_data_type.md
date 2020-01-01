@@ -48,37 +48,37 @@ Bounded data types are not part of standard '''ALGOL 68''', but can be implement
 ```algol68
  # assume max int <= ABS - max negative int #
  INT max bounded = ( LENG max int * max int > long max int | ENTIER sqrt(max int) | max int );
- 
+
  MODE RANGE = STRUCT(INT lwb, upb);
  MODE BOUNDED = STRUCT(INT value, RANGE range);
  FORMAT bounded repr = $g"["g(-0)":"g(-0)"]"$;
- 
+
  # Define some useful operators for looping over ranges #
  OP LWB = (RANGE range)INT: lwb OF range,
     UPB = (RANGE range)INT: upb OF range,
     LWB = (BOUNDED bounded)INT: lwb OF range OF bounded,
     UPB = (BOUNDED bounded)INT: upb OF range OF bounded;
- 
+
  PROC raise exception = ([]STRING args)VOID: (
    put(stand error, ("exception: ",args, newline));
    stop
  );
- 
+
  PROC raise not implemented error := ([]STRING args)VOID: raise exception(args);
  PROC raise bounds error := ([]STRING args)VOID: raise exception(args);
- 
+
  PRIO MIN=9, MAX=9;
- OP MIN = ([]INT list)INT: ( 
+ OP MIN = ([]INT list)INT: (
    INT out:= list[LWB list];
    FOR index FROM LWB list+1 TO UPB list DO IF list[index]<out THEN out :=list[index] FI OD;
    out
  );
- OP MAX = ([]INT list)INT: ( 
+ OP MAX = ([]INT list)INT: (
    INT out:= list[LWB list];
    FOR index FROM LWB list+1 TO UPB list DO IF list[index]>out THEN out :=list[index] FI OD;
    out
  );
- 
+
  PRIO ASSERTIN = 6;
  OP ASSERTIN = (INT result, []RANGE range)BOUNDED: (
      BOUNDED out = (result, (MAX lwb OF range, MIN upb OF range));
@@ -100,18 +100,18 @@ Bounded data types are not part of standard '''ALGOL 68''', but can be implement
    ),
    ASSERTIN = (INT result, []BOUNDED bounds)BOUNDED: result ASSERTIN range OF bounds,
    ASSERTIN = (LONG INT result, []BOUNDED bounds)BOUNDED: result ASSERTIN range OF bounds;
- 
+
  INT half max int = max int OVER 2;
  INT sqrt max int = ENTIER sqrt (max int);
- 
- OP + = (BOUNDED a, b)BOUNDED: 
+
+ OP + = (BOUNDED a, b)BOUNDED:
           IF ABS value OF a < half max int AND ABS value OF b < half max int THEN
             value OF a + value OF b ASSERTIN []BOUNDED(a,b)
           ELSE
             LENG value OF a + value OF b ASSERTIN []BOUNDED(a,b)
           FI,
     - = (BOUNDED a, b)BOUNDED: value OF a + -value OF b ASSERTIN []BOUNDED(a,b),
-    * = (BOUNDED a, b)BOUNDED: 
+    * = (BOUNDED a, b)BOUNDED:
           IF ABS value OF a < sqrt max int AND ABS value OF b < sqrt max int THEN
             value OF a * value OF b ASSERTIN []BOUNDED(a,b)
           ELSE
@@ -121,7 +121,7 @@ Bounded data types are not part of standard '''ALGOL 68''', but can be implement
     %  = (BOUNDED a, b)BOUNDED: value OF a % value OF b ASSERTIN []BOUNDED(a,b),
     %* = (BOUNDED a, b)BOUNDED: value OF a %* value OF b ASSERTIN []BOUNDED(a,b),
     ** = (BOUNDED a, INT exponent)BOUNDED: value OF a ** exponent ASSERTIN []BOUNDED(a);
- 
+
  OP OVER = (INT value, RANGE range)BOUNDED:
    IF ABS lwb OF range > max bounded THEN
      raise bounds error(("out of bounds, ABS", whole(lwb OF range, int width)," > [:",whole(max bounded, int width),"]"));
@@ -132,20 +132,20 @@ Bounded data types are not part of standard '''ALGOL 68''', but can be implement
    ELSE
      value ASSERTIN []RANGE(range)
    FI;
- 
+
  OP INTINIT = (BOUNDED range)REAL: value OF range;
- 
+
  OP <  = (BOUNDED a, b)BOOL: value OF a < value OF b,
     >  = (BOUNDED a, b)BOOL: value OF a > value OF b,
     <= = (BOUNDED a, b)BOOL: NOT ( value OF a > value OF b ),
     >= = (BOUNDED a, b)BOOL: NOT ( value OF a < value OF b ),
     =  = (BOUNDED a, b)BOOL: value OF a = value OF b,
     /= = (BOUNDED a, b)BOOL: NOT (a = b);
- 
+
  # Monadic operators #
  OP - = (BOUNDED range)BOUNDED: -value OF range ASSERTIN []BOUNDED(range),
     ABS = (BOUNDED range)BOUNDED: ABS value OF range ASSERTIN []BOUNDED(range);
- 
+
  COMMENT Operators for extended characters set, and increment/decrement:
  OP +:= = (REF BOUNDED a, BOUNDED b)REF BOUNDED: ( a := a + b ),
     +=: = (BOUNDED a, REF BOUNDED b)REF BOUNDED: ( b := a + b ),
@@ -153,7 +153,7 @@ Bounded data types are not part of standard '''ALGOL 68''', but can be implement
     *:= = (REF BOUNDED a, BOUNDED b)REF BOUNDED: ( a := a * b ),
     %:= = (REF BOUNDED a, BOUNDED b)REF BOUNDED: ( a := a % b ),
     %*:= = (REF BOUNDED a, BOUNDED b)REF BOUNDED: ( a := a %* b );
- 
+
  # OP aliases for extended character sets (eg: Unicode, APL, ALCOR and GOST 10859) #
  OP ×  = (BOUNDED a, b)BOUNDED: a * b,
     ÷  = (BOUNDED a, b)INT: a OVER b,
@@ -164,11 +164,11 @@ Bounded data types are not part of standard '''ALGOL 68''', but can be implement
     ≥  = (BOUNDED a, b)BOUNDED: a >= b,
     ≠  = (BOUNDED a, b)BOOL: a /= b,
     ↑  = (BOUNDED range, INT exponent)BOUNDED: value OF range ** exponent,
- 
+
     ÷×:= = (REF BOUNDED a, BOUNDED b)REF BOUNDED: ( a := a MOD b ),
     %×:= = (REF BOUNDED a, BOUNDED b)REF BOUNDED: ( a := a MOD b ),
     ÷*:= = (REF BOUNDED a, BOUNDED b)REF BOUNDED: ( a := a MOD b );
- 
+
  # BOLD aliases for CPU that only support uppercase for 6-bit bytes  - wrist watches #
  OP OVER = (BOUNDED a, b)INT: a % b,
     MOD = (BOUNDED a, b)BOUNDED: a %*b,
@@ -179,7 +179,7 @@ Bounded data types are not part of standard '''ALGOL 68''', but can be implement
     EQ = (BOUNDED a, b)BOOL: a =  b,
     NE = (BOUNDED a, b)BOOL: a /= b,
     UP = (BOUNDED range, INT exponent)BOUNDED: range**exponent;
- 
+
  # the required standard assignment operators #
  OP PLUSAB  = (REF BOUNDED a, BOUNDED b)REF BOUNDED: ( a +:= b ), # PLUS #
     PLUSTO  = (BOUNDED a, REF BOUNDED b)REF BOUNDED: ( a +=: b ), # PRUS #
@@ -190,14 +190,14 @@ Bounded data types are not part of standard '''ALGOL 68''', but can be implement
 
 END COMMENT
 Test:
- RANGE range = RANGE(0, 10000); 
- 
+ RANGE range = RANGE(0, 10000);
+
  # override the default exception #
- raise bounds error := ([]STRING args)VOID: ( 
-     putf(stand error, ($g$, args, $"- exiting to except bounds error"l$)); 
+ raise bounds error := ([]STRING args)VOID: (
+     putf(stand error, ($g$, args, $"- exiting to except bounds error"l$));
      except bounds error
    );
- 
+
  BOUNDED a, b := 0 OVER range;
  FOR step FROM 4 BY 4 TO UPB range DO # something for pythagoras #
    b := b + step OVER range;
@@ -205,7 +205,7 @@ Test:
    printf(($"Sum of "$, bounded repr, a * a, b * b,
            $" is "$,    bounded repr, a * a + b * b, $l$))
  OD;
- except bounds error: 
+ except bounds error:
    SKIP
 ```
 
@@ -366,8 +366,8 @@ struct LimitedInt : IComparable, IComparable<LimitedInt>, IConvertible, IEquatab
 This class relies on implicit conversions to do most int operations; however the combined operations with assignment have to be coded explicitly.
 
 
-```cpp>#include <stdexcept
-
+```cpp
+#include <stdexcept>
 
 class tiny_int
 {
@@ -461,7 +461,7 @@ user=> (* 4 (tinyint 6.0))
 user=> (/ (tinyint 3) (tinyint 5))
 3/5
 user=> (tinyint 11)
-ArithmeticException integer overflow 
+ArithmeticException integer overflow
 user=> (.doubleValue (tinyint 9.4))
 9.0
 ```
@@ -537,7 +537,7 @@ struct BoundedInt(alias min, alias max, I = int)
     static assert(min < max);
     static assert(cast(I) max == max, "Type " ~ I.stringof
         ~ " cannot hold values up to " ~ max.stringof);
-    
+
     /// The actual value stored in this struct
     private I _value;
 
@@ -546,29 +546,29 @@ struct BoundedInt(alias min, alias max, I = int)
     {
         return _value;
     }
-    
+
     /// 'alias this' to make this struct look like a built-in integer
     alias internalValue this;
-    
+
     /// Constructor
     this(T)(T value)
     {
         opAssign(value);
     }
-    
+
     /// Assignment operator
     void opAssign(T)(T value)
         if (isIntegral!T)
     {
         _value = checked(value);
     }
-    
+
     /// Unary operators
     auto opUnary(string op)() const
     {
         return checked(mixin(op ~ "_value"));
     }
-    
+
     /// Binary operators
     auto opBinary(string op, T)(T other) const
     {
@@ -581,7 +581,7 @@ struct BoundedInt(alias min, alias max, I = int)
     {
         return checked(mixin("_value" ~ op ~ "other"));
     }
-    
+
     // Bounds enforcement
     private I checked(T)(T value) const
     {
@@ -722,7 +722,7 @@ Types are native objects (Boolean, ..) , or defined by predicates and/or combina
 
 ;; OR by an enumeration
 (type One-ten [ 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 ])
- 
+
 ;; EXPLICIT type checking
 ;; type-of? returns a Boolean
 
@@ -731,7 +731,7 @@ Types are native objects (Boolean, ..) , or defined by predicates and/or combina
 
 ;; type-check raises an error
 (type-check 6 One-ten)  → #t
-(type-check 88 One-ten) 
+(type-check 88 One-ten)
 ⛔ error: One-ten : type-check failure : 88 → 'one-ten?'
 
 
@@ -754,57 +754,57 @@ ELENA 4.x:
 
 ```elena
 import extensions;
- 
+
 sealed struct TinyInt : BaseNumber
 {
     int value;
- 
+
     int cast() = value;
- 
+
     constructor(int n)
     {
         if (n <= 1 || n >= 10)
         {
             InvalidArgumentException.raise()
         };
- 
+
         value := n
     }
- 
+
     cast t(string s)
     {
         value := s.toInt();
- 
+
         if (value <= 1 || value >= 10)
         {
             InvalidArgumentException.raise()
         }
     }
-    
+
     TinyInt add(TinyInt t)
         = value + (cast int(t));
- 
+
     TinyInt subtract(TinyInt t)
         = value - (cast int(t));
- 
+
     TinyInt multiply(TinyInt t)
         = value * (cast int(t));
- 
+
     TinyInt divide(TinyInt t)
         = value / (cast int(t));
- 
-    bool equal(TinyInt t)        
+
+    bool equal(TinyInt t)
        = value == (cast int(t));
- 
-    bool less(TinyInt t)        
+
+    bool less(TinyInt t)
        = value == (cast int(t));
 }
- 
+
 public program()
 {
     TinyInt i := 4t;
     TinyInt j := i + i;
- 
+
     try
     {
       i + j
@@ -876,8 +876,8 @@ Forth is a fetch and store based virtual machine. If we create a safe version of
 
 \ programmer chooses CLIPPED or SAFE integer assignment
 : CLIP! ( n addr -- ) SWAP 1 10 CLIP SWAP  ! ;
-: SAFE!   ( n addr -- ) 
-          OVER 1 10 BETWEEN 0= ABORT" out of range!"   
+: SAFE!   ( n addr -- )
+          OVER 1 10 BETWEEN 0= ABORT" out of range!"
           ! ;</LANG>
 Testing
 <LANG>VARIABLE X
@@ -896,15 +896,15 @@ Using the code in Method 1, we can re-define the store (!) operator to be switch
 <LANG>DECIMAL
 : FAST!   ( n addr -- )  ! ;   ( alias the standard version)
 
-DEFER !  
+DEFER !
 
-\ commands to change the action of '!' 
-: LIMITS-ON   ( -- ) ['] SAFE! IS ! ;  
+\ commands to change the action of '!'
+: LIMITS-ON   ( -- ) ['] SAFE! IS ! ;
 : LIMITS-OFF  ( -- ) ['] FAST! IS ! ;
 : CLIPPING-ON ( -- ) ['] CLIP! IS ! ; </LANG>
 
 Testing
-<LANG>VARIABLE Y 
+<LANG>VARIABLE Y
 
 LIMITS-OFF  ok
   1  Y !   Y ? 1  ok
@@ -1025,7 +1025,7 @@ contains
     else
        write(0,*) "BoundedInteger: out of bound assignment"
        if ( a%critical ) then
-          stop 
+          stop
        else
           if ( b < a%from ) then
              a%v = a%from
@@ -1109,18 +1109,18 @@ Type MyInteger
   Private:
     Dim i_ As Integer
   Public:
-    Declare Constructor(i_ As Integer) 
-    Declare Property I() As Integer 
+    Declare Constructor(i_ As Integer)
+    Declare Property I() As Integer
     Declare Operator Cast() As Integer
-    Declare Operator Cast() As String        
+    Declare Operator Cast() As String
 End Type
 
 Constructor MyInteger(i_ As Integer)
-  If i_ < 1 Then 
+  If i_ < 1 Then
     i_ = 1
   ElseIf i_ > 10 Then
     i_ = 10
-  End If 
+  End If
   This.i_ = i_
 End Constructor
 
@@ -1318,7 +1318,7 @@ instance (Integral b, Checked a b) => Integral (Check a b) where
   quot = lift2c quot
   rem  = lift2c rem
   div  = lift2c div
-  mod  = lift2c mod       
+  mod  = lift2c mod
   quotRem = lift2p quotRem
   divMod  = lift2p divMod
   toInteger = lift toInteger
@@ -1467,7 +1467,7 @@ var z = new Num(11); //TypeError
 ## jq
 
 In the following, we define a new type named "smallint", with arithmetic operations that either return the "smallint" one would expect from ordinary arithmetic, or else return nothing (an empty stream), as opposed to returning null or raising an error.  The choice of an empty stream is made to highlight this alternative.
- 
+
 By design, jq's types are constrained to be JSON types, so jq's type system cannot be used to create a new type, but we can create a parallel type system based on JSON objects.  We shall do so using the convention that if an object has a key named "type", then the type of the object will be the given value:
 ```jq
 def typeof:
@@ -1493,7 +1493,7 @@ To generate instances of smallint, we define a function, smallint(i), that will 
 ```jq
 def smallint(i): i as $i
   | if (i|type) == "number" and i == (i|floor) and i > 0 and i < 11 then {"type": "smallint", "value": i}
-     else empty 
+     else empty
      end ;
 
 # A convenience function to save typing:
@@ -1506,7 +1506,7 @@ def tosmallint:
   else empty
   end ;
 ```
-That leaves just basic arithmetic operations: add minus times mod div 
+That leaves just basic arithmetic operations: add minus times mod div
 ```jq
 def add(a;b): smallint(a.value + b.value);
 def minus(a;b): smallint(a.value - b.value);
@@ -1574,7 +1574,7 @@ ERROR: LoadError: ArgumentError: LittleInt number must be in [1, 10]
 
 There are limits to what can be done to create a 'work-alike' primitive type in Kotlin as the language doesn't support either user-defined literals or implicit conversions between types.
 
-However, subject to that, the following code creates a new primitive type called TinyInt whose values lie between 1 and 10 inclusive. Instead of throwing an exception, attempting to create such a type with an out of bounds value results in a value which is within bounds i.e. 1 if the value is less than 1 or 10 if the value is greater than 10. 
+However, subject to that, the following code creates a new primitive type called TinyInt whose values lie between 1 and 10 inclusive. Instead of throwing an exception, attempting to create such a type with an out of bounds value results in a value which is within bounds i.e. 1 if the value is less than 1 or 10 if the value is greater than 10.
 
 Rather than attempt to reproduce all functions or operators which the Int type supports, only the basic arithmetic operators and the increment and decrement operators are catered for below:
 
@@ -1643,7 +1643,7 @@ t2 - 1  = 2
 ```Lasso>define dint =
  type {
    data private value
-      
+
    public oncreate(value::integer) => {
 	fail_if(#value < 1,#value+' less than 1 ')
 	fail_if(#value > 10,#value+' greater than 10')
@@ -1689,11 +1689,11 @@ We can use Currency, Decimal, Double, Single, Long, Integer for primitive data t
 
 ```M2000 Interpreter
 
-Module CheckDataType { 
+Module CheckDataType {
       Module CheckThis {
             Class typeA {
             Private:
-                  mval as currency 
+                  mval as currency
             Public:
                   Property min {value}=-1
                   Property max {value}=0
@@ -1762,7 +1762,7 @@ Module CheckDataType {
       Dim A(4)=Group
       \\ We have one more group in stack, so we read it to new variable What
       \\ What isn't a pointer to object, is the object (internal is a pointer to objet but isn't usable for M2000)
-      Read What 
+      Read What
       What++
       Print What.Max=10, What.Min=1, What=9  ' True True True
       Print A(2).Max=10, A(2).Min=1, A(2)=8 ' True True True
@@ -1782,40 +1782,40 @@ RingInt.m:
 
 ```MATLAB
 classdef RingInt
-    
+
     properties
         value
     end
-    
+
     methods
-        
-        %RingInt constructor        
+
+        %RingInt constructor
         function theInt = RingInt(varargin)
             if numel(varargin) == 0
                 theInt.value = 1;
             elseif numel(varargin) > 1
                 error 'The RingInt constructor can''''t take more than 1 argument.';
             else
-                
+
                 %Makes sure any doubles are coerced to ints
                 if not(isinteger(varargin{1}))
                     varargin{1} = int32(varargin{1});
                 end
-                
+
                 %Maps out of bound values to the proper range
                 if varargin{1} > 10
                     theInt.value = varargin{1} - (10 * (idivide(varargin{1},10,'ceil') - 1));
-                elseif varargin{1} < 1  
+                elseif varargin{1} < 1
                     theInt.value = varargin{1} + (10 * (idivide(abs(varargin{1}),10,'floor') + 1));
                 else
                     theInt.value = varargin{1};
                 end
             end
         end %constructor
-        
-        %Overload the "+" operator 
+
+        %Overload the "+" operator
         function sum = plus(firstNumber,secondNumber)
-            
+
             if isa(firstNumber,'RingInt') && isa(secondNumber,'RingInt')
                 sum = firstNumber.value + secondNumber.value;
             elseif isa(firstNumber,'RingInt') && not(isa(secondNumber,'RingInt'))
@@ -1823,14 +1823,14 @@ classdef RingInt
             else
                 sum = secondNumber.value + firstNumber;
             end
-            
+
             sum = RingInt(sum);
-            
+
         end %+
-        
-        %Overload the "-" operator 
+
+        %Overload the "-" operator
         function difference = minus(firstNumber,secondNumber)
-            
+
             if isa(firstNumber,'RingInt') && isa(secondNumber,'RingInt')
                 difference = firstNumber.value - secondNumber.value;
             elseif isa(firstNumber,'RingInt') && not(isa(secondNumber,'RingInt'))
@@ -1838,14 +1838,14 @@ classdef RingInt
             else
                 difference = firstNumber - secondNumber.value;
             end
-            
+
             difference = RingInt(difference);
-            
+
         end %-
-        
+
         %Overload the "==" operator
         function trueFalse = eq(firstNumber,secondNumber)
-            
+
             if isa(firstNumber,'RingInt') && isa(secondNumber,'RingInt')
                 trueFalse = firstNumber.value == secondNumber.value;
             else
@@ -1853,22 +1853,22 @@ classdef RingInt
             end
 
         end %==
-        
-        
+
+
         %Overload the display() function
         function display(ringInt)
             disp(ringInt);
         end
-        
+
         %Overload the disp() function
         function disp(ringInt)
             disp(sprintf('\nans =\n\n\t %d\n',ringInt.value));
         end
-        
+
     end %methods
 end %classdef
-        
-        
+
+
 ```
 
 
@@ -1957,7 +1957,7 @@ let op f a b =
   let res = f a.value b.value in
   check_bounds res a.bounds;
   (mk_bounded res a.bounds)
-  ;;            
+  ;;
 (** val op : ('a -> 'a -> 'a) -> 'a bounded -> 'a bounded -> 'a bounded *)
 ```
 
@@ -1988,7 +1988,7 @@ which can be used with floats in the same way:
 # let rf = mk_bounds 1.0 10.0 ;;
 val rf : float bounds = {min = 1.; max = 10.}
 
-# let a = mk_bounded 2.2 rf   
+# let a = mk_bounded 2.2 rf
   and b = mk_bounded 5.6 rf in
   op ( +. ) a b ;;
 - : float bounded = {value = 7.8; bounds = {min = 1.; max = 10.}}
@@ -2052,7 +2052,7 @@ Say '2*b='||(2*b)
 
 ```
 
-'''output''' 
+'''output'''
 
 ```txt
 a=1
@@ -2270,7 +2270,7 @@ This doesn't really apply as Python names don't have a type, but something can b
         else:
             raise ValueError,"Value %s should be >=0 and <= 10" % b
 
-        
+
 >>> x = num(3)
 >>> x = num(11)
 
@@ -2366,11 +2366,11 @@ ref http://codeidol.com/other/rubyckbk/Numbers/Simulating-a-Subclass-of-Fixnum/
  can subclass them, no questions asked. Ruby implements numbers as classes
  (Integer, with its concrete subclasses Fixnum and Bignum), and you can subclass
  those classes. If you try, though, you'll quickly discover that your subclasses
- are useless: they don't have constructors.  
- 
+ are useless: they don't have constructors.
+
  Ruby jealously guards the creation of new Integer objects. This way it ensures
  that, for instance, there can be only one Fixnum instance for a given number
- 
+
  The easiest way to delegate all methods is to create a class that's nearly empty
  and define a method_missing method.
 
@@ -2382,24 +2382,24 @@ include Test::Unit::Assertions
 class MyInt
   @@min = 1
   @@max = 10
-  
+
   attr_reader :value
   private :value
-  
+
   def initialize(val)
     begin
       v = Integer(val)
     rescue ArgumentError
       raise ArgumentError, "invalid value '#{val}', must be an integer"
     end
-    
+
     unless v.between?(@@min, @@max)
       raise ArgumentError, "invalid value '#{v}', must be between #{@@min} and #{@@max}"
     end
-    
+
     @value = v
   end
-  
+
   def method_missing(m, *args)
     super unless @value.respond_to?(m)
     myint_args = args.collect do |arg|
@@ -2418,11 +2418,11 @@ class MyInt
       result
     end
   end
-  
+
   def respond_to?(method)
     super or @value.respond_to? method
   end
-  
+
   def to_int
     @value
   end
@@ -2536,7 +2536,7 @@ However, there exist crates such as [https://lib.rs/crates/derive_more derive_mo
   class TinyInt(val int: Byte) {
     import TinyInt._
     require(int >= lower && int <= upper, "TinyInt out of bounds.")
-    
+
     override def toString = int.toString
   }
 
@@ -2664,7 +2664,7 @@ can't set "foo": cannot set foo to 4.5: must be a integer between 1 and 10
 % set foo
 3
 % unset foo
-% 
+%
 ```
 
 
@@ -2724,7 +2724,7 @@ value out of bounds
 value out of bounds
 5
 ```
- 
+
 
 
 ## Ursala
@@ -2745,7 +2745,7 @@ checking required.
 ```Ursala
 #import nat
 
-my_number :: 
+my_number ::
 
 the_number %n  -|~bounds.&BZ,~&B+ nleq~~lrlXPrX@G+ ~/the_number bounds|-?(~the_number,<'out of bounds'>!%)
 bounds     %nW ~bounds.&B?(~bounds,(1,10)!)
@@ -2793,8 +2793,8 @@ Note that restricted types are not idiomatic in Ursala if all we really want is 
 
 #library+
 
-#import 
-   ^|A(~&,//+ nrange(1,10)?</~& <'out of bounds'>!%)* 
+#import
+   ^|A(~&,//+ nrange(1,10)?</~& <'out of bounds'>!%)*
    ~&n-=<'sum','difference','product','quotient','remainder'>*~ %QI nat
 ```
 
@@ -3150,7 +3150,7 @@ lHasError = .F.
 
 PROCEDURE nValue_Assign(tnValue)
 *!* This method will check the parameter and if
-*!* it is out of bounds, the value will remain unchanged 
+*!* it is out of bounds, the value will remain unchanged
 *!* and an error generated.
 tnValue = CAST(tnValue As I)
 IF BETWEEN(tnValue, 1, 10)
@@ -3165,7 +3165,7 @@ IF nError = 1098
     MESSAGEBOX(MESSAGE(), 0, "Error")
 ELSE
     DODEFAULT()
-ENDIF 		
+ENDIF
 THIS.lHasError = .T.
 ENDDEFINE
 ```

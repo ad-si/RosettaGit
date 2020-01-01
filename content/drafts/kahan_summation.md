@@ -24,7 +24,7 @@ The [[wp:Kahan summation algorithm|Kahan summation algorithm]] is a method of su
 # Create the three numbers <code>a, b, c</code> equal to <code>10000.0, 3.14159, 2.71828</code> respectively.
 # Show that the simple left-to-right summation, equivalent to <code>(a + b) + c</code> gives an answer of 10005.8
 # Show that the Kahan function applied to the sequence of values <code>a, b, c</code> results in the more precise answer of 10005.9
- 
+
 
 '''If your language does not have six digit decimal point''', but does have some fixed precision floating point number system then '''state this''' and try this alternative task using floating point numbers:
 * Follow the same steps as for the main task description above but for the numbers <code>a, b, c</code> use the floating-point values <code>1.0, epsilon, -epsilon</code> respectively where epsilon is determined by its final value after the following:
@@ -35,10 +35,10 @@ while 1.0 + epsilon != 1.0:
     epsilon = epsilon / 2.0
 ```
 
-The above should ensure that <code>(a + b) + c != 1.0</code> whilst their Kahan sum does equal 1.0 . ''Only'' if this is not the case are you then free to find three values with this property of your own. 
+The above should ensure that <code>(a + b) + c != 1.0</code> whilst their Kahan sum does equal 1.0 . ''Only'' if this is not the case are you then free to find three values with this property of your own.
 
 '''If your language has decimals, but not six digits of precision''' then you may follow the outline given in [[Kahan_summation#Python:_Arbitrary_precision_Decimal]] which uses ideas from the floating point case above.
- 
+
 
 ;In general:
 * Show all output on this page.
@@ -187,7 +187,7 @@ OP KAHANSUM = ( []DEC a )DEC:
         sum
     END # KAHANSUM #
 ;
-    
+
 # test the Kahan summation and 6 digit decimal floating point                 #
 main:
 (
@@ -270,8 +270,8 @@ Kahan sum = 1.0000000000000000
 
 {{trans|C++}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 float epsilon() {
@@ -325,8 +325,8 @@ Kahan sum   = 1.000000000000
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 float epsilon() {
     float eps = 1.0f;
@@ -458,7 +458,7 @@ Kahan sum    = 1.00000000
 
 ## EchoLisp
 
-No fixed point addition. EchoLisp  floating point numbers are always stored as double precision floating point numbers, following the international IEEE 754 standard. 
+No fixed point addition. EchoLisp  floating point numbers are always stored as double precision floating point numbers, following the international IEEE 754 standard.
 
 ```scheme
 ;; using floating point arithmetic
@@ -467,7 +467,7 @@ No fixed point addition. EchoLisp  floating point numbers are always stored as d
 
 (+ 0.2 0.1 0.3)  → 0.6000000000000001 ;; (1)
 
-;; 👀 Will Kahan method do better ?? 
+;; 👀 Will Kahan method do better ??
 ;; Kahan procedure :
 
 (define  ( K+ nums ( sum 0.0) (c 0.0) (y) (t))
@@ -496,8 +496,8 @@ eps → 1.1102230246251565e-16
 (writeln 'standard-add= (+ a b c))
 (writeln 'Kahan-add= (K+ (list a b c)))
 
-    → standard-add= 0.9999999999999999 
-    → Kahan-add= 1  
+    → standard-add= 0.9999999999999999
+    → Kahan-add= 1
 
 ;;NB. The 17-nth decimal we gain using Kahan method will probably be lost in subsequent calculations.
 ;;Kahan algorithm will be useful for fixed-point decimal calculations, which EchoLisp does not have.
@@ -506,21 +506,21 @@ eps → 1.1102230246251565e-16
 
 =={{header|F sharp|F#}}==
 {{incomplete|F sharp|Slight deviations from the task description should be explained and the the subsequent difference in output explained. All examples should have constants chosen to clearly show the benefit of Kahan summing! - The J-language example for example explains its differences well.}}
-Solving the alternative task with an recursive algorithm and IEEE 754 double precision datatype. 
+Solving the alternative task with an recursive algorithm and IEEE 754 double precision datatype.
 
 ```fsharp
-let ε = 
-    let rec δ λ = 
-        match λ+1.0 with 
+let ε =
+    let rec δ λ =
+        match λ+1.0 with
         | 1.0 -> λ
         | _ -> δ(λ/2.0)
     δ(1.0)
 
-let Σ numbers = 
-    let rec Σ numbers σ c = 
+let Σ numbers =
+    let rec Σ numbers σ c =
         match numbers with
         | [] -> σ
-        | number :: rest -> 
+        | number :: rest ->
             let y = number + c
             let t = σ + y
             let z = ((t - σ) - y)
@@ -528,7 +528,7 @@ let Σ numbers =
     Σ numbers 0.0 0.0
 
 [<EntryPoint>]
-let main argv = 
+let main argv =
     let (a, b, c) = ( 1.0, ε, -ε )
     let input = [ a; b; c ]
     printfn "ε:     %e" ε
@@ -659,7 +659,7 @@ Compensated summation. C will not stay zero, despite mathematics.
 
 ```
 
-Output is 
+Output is
 
 ```txt
 SSum =      10005.8
@@ -900,7 +900,7 @@ Dec. cal:  10011100010101.110111000010000001110000101110001101
 The key point is that twenty-four bits are employed for the mantissa of a single-precision floating-point number, and this is using the implicit leading-one bit of normalised numbers - that bit is not stored so that 23 bits of storage deliver 24 bits... When 10,000 is represented in binary that requires fourteen bits so a further ten bits below the fractional point are yet available. So, placing a | after the tenth fractional bit,
  3.14159:  11.0010010000 | 11111101
  2.71828: +10.1011011111 | 100001001101
-        = 101.1101101111 |1100000011101  There should be a carry from the unseen lower bits... 
+        = 101.1101101111 |1100000011101  There should be a carry from the unseen lower bits...
         = 101.1101110000 | 100000011101  This should be the result in the lower bits, the carry made.
           101.1101110001   ^             This is the calculated result in the lower bits.
 Because ''both'' values round up one (because the eleventh bit is a 1) in the actual calculation, the result is one bit high. But this is entirely proper, because the eleventh bit of the sum, by sheer chance, is a 1 (as seen above: below it is a ^), and so the plain summation is as accurate as it can be and the compensated addition can't do any better despite all its juggling. The double-precision result (from the 80-bit calculation) confirms this as the difference X4E - X8E of 4.813671112060547D-004 is 0.0000000000011111100011 in binary or | 011111100011, exactly the last value of C. It is calculated back-to-front compared to the hand calculation (above the ^) where the discrepancy is | 100000011101: subtract one from the other and zero results, except for the last bit.
@@ -1659,7 +1659,7 @@ Kahan sum:  1.0000000000000000
 
 Phix does not have fixed precision decimals, just the usual IEEE 754 floating point numbers.
 
-Using enforced rounding. From the manual: "For the %f format, precision specifies how many digits follow  
+Using enforced rounding. From the manual: "For the %f format, precision specifies how many digits follow
 
 the decimal point character, whereas for %g, the precision specifies how many significant digits to print",
 
@@ -1680,7 +1680,7 @@ atom res = 0
     end for
     return res
 end function
- 
+
 function kahanroundsum(sequence s)
     atom tot = 0, c = 0
     for i=1 to length(s) do
@@ -1725,7 +1725,7 @@ function kahansum(sequence s)
     end for
     return tot
 end function
- 
+
 function epsilon()
     atom e=1
     while 1+e!=1 do
@@ -1910,9 +1910,9 @@ Difference between the operations: 1.1102230246252E-16
 
 ```python>>>
  from decimal import *
->>> 
+>>>
 >>> getcontext().prec = 6
->>> 
+>>>
 >>> def kahansum(input):
     summ = c = 0
     for num in input:
@@ -1925,27 +1925,27 @@ Difference between the operations: 1.1102230246252E-16
 >>> a, b, c = [Decimal(n) for n in '10000.0 3.14159 2.71828'.split()]
 >>> a, b, c
 (Decimal('10000.0'), Decimal('3.14159'), Decimal('2.71828'))
->>> 
+>>>
 >>> (a + b) + c
 Decimal('10005.8')
 >>> kahansum([a, b, c])
 Decimal('10005.9')
->>> 
->>> 
+>>>
+>>>
 >>> sum([a, b, c])
 Decimal('10005.8')
 >>> # it seems Python's sum() doesn't make use of this technique.
->>> 
+>>>
 >>> # More info on the current Decimal context:
 >>> getcontext()
 Context(prec=6, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999, capitals=1, clamp=0, flags=[Inexact, Rounded], traps=[InvalidOperation, DivisionByZero, Overflow])
->>> 
->>> 
+>>>
+>>>
 >>> ## Lets try the simple summation with more precision for comparison
 >>> getcontext().prec = 20
 >>> (a + b) + c
 Decimal('10005.85987')
->>> 
+>>>
 ```
 
 
@@ -1959,20 +1959,20 @@ This was written as proof that the floating-point sub-task could work and is bet
 >>> while 1.0 + eps != 1.0:
 	eps = eps / 2.0
 
-	
+
 >>> eps
 1.1102230246251565e-16
 >>> (1.0 + eps) - eps
 0.9999999999999999
 >>> kahansum([1, eps, -eps])
 1.0
->>> 
->>> 
+>>>
+>>>
 >>> # Info on this implementation of floats
 >>> import sys
 >>> sys.float_info
 sys.float_info(max=1.7976931348623157e+308, max_exp=1024, max_10_exp=308, min=2.2250738585072014e-308, min_exp=-1021, min_10_exp=-307, dig=15, mant_dig=53, epsilon=2.220446049250313e-16, radix=2, rounds=1)
->>> 
+>>>
 ```
 
 Note that the kahansum function from the decimal example is [[wp:Duck typing|duck typed]] and adjusts to work with the number type used in its argument list.
@@ -1986,7 +1986,7 @@ Some languages have a decimal type, but cannot alter its precision to six digits
 
 ```python>>>
  from decimal import localcontext, Decimal
->>> 
+>>>
 >>> with localcontext() as ctx:
 	one, ten = Decimal('1.0'), Decimal('10')
 	eps = one
@@ -1996,11 +1996,11 @@ Some languages have a decimal type, but cannot alter its precision to six digits
 	print('Simple sum is:', (one + eps) - eps)
 	print('Kahan sum is:', kahansum([one, eps, -eps]))
 
-	
+
 eps is: 1E-28
 Simple sum is: 0.9999999999999999999999999999
 Kahan sum is: 1.000000000000000000000000000
->>> 
+>>>
 ```
 
 
@@ -2041,7 +2041,7 @@ sapply(c(a, b, c), FUN=Class)
 
 # The Kahan summation applied to the values a, b, c
 input <- c(a, b, c)
-kahansum(input) 
+kahansum(input)
 # [1] 10005.86
 
 ```
@@ -2106,7 +2106,7 @@ mepsilon <- function(divisor) {
 # let's try from 2 to 1000
 epsilons <- sapply(2:1000, FUN=mepsilon)
 summary(epsilons)
-#      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+#      Min.   1st Qu.    Median      Mean   3rd Qu.      Max.
 # 2.439e-19 1.905e-18 5.939e-18 1.774e-17 2.238e-17 1.110e-16
 
 ```
@@ -2117,30 +2117,30 @@ It would seem that it makes a differences what divisor we are using, let's look 
 library(txtplot)
 
 txtboxplot(epsilons)
-#     0         1e-17      2e-17       3e-17       4e-17       5e-17               
-# |---+-----------+----------+-----------+-----------+-----------+--------|        
-#       +----+------------------+                                                  
-#     --|    |                  |-------------------------------------             
+#     0         1e-17      2e-17       3e-17       4e-17       5e-17
+# |---+-----------+----------+-----------+-----------+-----------+--------|
+#       +----+------------------+
+#     --|    |                  |-------------------------------------
 #       +----+------------------+
 
 txtdensity(epsilons)
-# 6e+16 +--+---------+----------+----------+---------+----------+----------+    
-#       |   **                                                             |    
-#       |  ***                                                             |    
-# 5e+16 +  * **                                                            +    
-#       |     *                                                            |    
-# 4e+16 +     *                                                            +    
-#       |      *                                                           |    
-#       |      *                                                           |    
-# 3e+16 +      **                                                          +    
-#       |       *                                                          |    
-# 2e+16 +       **                                                         +    
-#       |        **                                                        |    
-#       |         ***                                                      |    
-# 1e+16 +           ****                                                   +    
-#       |              *************                                       |    
-#     0 +                          ************************************    +    
-#       +--+---------+----------+----------+---------+----------+----------+    
+# 6e+16 +--+---------+----------+----------+---------+----------+----------+
+#       |   **                                                             |
+#       |  ***                                                             |
+# 5e+16 +  * **                                                            +
+#       |     *                                                            |
+# 4e+16 +     *                                                            +
+#       |      *                                                           |
+#       |      *                                                           |
+# 3e+16 +      **                                                          +
+#       |       *                                                          |
+# 2e+16 +       **                                                         +
+#       |        **                                                        |
+#       |         ***                                                      |
+# 1e+16 +           ****                                                   +
+#       |              *************                                       |
+#     0 +                          ************************************    +
+#       +--+---------+----------+----------+---------+----------+----------+
 #          0       2e-17      4e-17      6e-17     8e-17      1e-16
 
 ```
@@ -2175,7 +2175,7 @@ kahansum(c(a, b, c))
 
 ## Racket
 
-Racket doesn't have arbitrary fixed precision numbers, but we can use single precision float point numbers that have approximately 8 decimal places. To reproduce the original task we have to replace the <code>10000.0</code> with <code>1000000.0</code>.  
+Racket doesn't have arbitrary fixed precision numbers, but we can use single precision float point numbers that have approximately 8 decimal places. To reproduce the original task we have to replace the <code>10000.0</code> with <code>1000000.0</code>.
 
 We then compare this result to the double precision result of the same numbers. The double precision numbers have almost 16 decimal places, so with <code>1000000.0</code> the usual summation nd the Kahan summation give the same result.
 
@@ -2216,7 +2216,7 @@ Double presition flonum
 Alternative task version
 
 ```Racket
-(define epsilon.f0 
+(define epsilon.f0
   (let loop ([epsilon 1.f0])
     (if (= (+ 1.f0 epsilon) 1.f0)
         epsilon
@@ -2462,7 +2462,7 @@ c = -b
 
 puts "epsilon    : #{epsilon}"
 puts "(a+b)+c    : #{(a+b)+c}"
-puts "[a,b,c].sum: #{[a,b,c].sum}" 
+puts "[a,b,c].sum: #{[a,b,c].sum}"
 
 ```
 
@@ -2666,7 +2666,7 @@ fcn epsilon{
 
 
 ```zkl
-a,b,c,sum:=1.0,epsilon(),-b,a + b + c; 
+a,b,c,sum:=1.0,epsilon(),-b,a + b + c;
 sum             :"%.20f".fmt(_).println("\tLeft associative. Delta from 1: ",1.0 - sum);
 kahanSum(a,b,c) :"%.20f".fmt(_).println("\tKahan summation");
 b.println("\t\tEpsilon");

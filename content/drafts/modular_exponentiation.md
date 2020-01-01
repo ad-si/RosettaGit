@@ -18,11 +18,11 @@ Find the last 40 decimal digits of <math>a^b</math>, where
 
 
 
-A computer is too slow to find the entire value of <math>a^b</math>. 
+A computer is too slow to find the entire value of <math>a^b</math>.
 
 Instead, the program must use a fast algorithm for [[wp:Modular exponentiation|modular exponentiation]]: <math>a^b \mod m</math>.
 
-The algorithm must work for any integers <math>a, b, m</math> 
+The algorithm must work for any integers <math>a, b, m</math>
 where <math>b \ge 0</math> and <math>m > 0</math>.
 
 
@@ -89,7 +89,7 @@ BEGIN
       THEN
 	 put (stand error, (("Negative exponent", exponent, newline)))
       ELSE
-	 WHILE e > 0 
+	 WHILE e > 0
 	 DO
 	    (ODD e | result := (result * b) MOD modulus);
 	    e OVERAB 2; b := (b * b) MOD modulus
@@ -207,7 +207,7 @@ Uses the Huge Integer Math & Encryption library.
 ```bbcbasic
       INSTALL @lib$+"HIMELIB"
       PROC_himeinit("")
-      
+
       PROC_hiputdec(1, "2988348162058574136915891421498819466320163312926952423791023078876139")
       PROC_hiputdec(2, "2351399303373464486466122544523690094744975233415544072992656881240319")
       PROC_hiputdec(3, "10000000000000000000000000000000000000000")
@@ -231,8 +231,8 @@ Uses the Huge Integer Math & Encryption library.
 Given numbers are too big for even 64 bit integers, so might as well take the lazy route and use GMP:
 {{libheader|GMP}}
 
-```c>#include <gmp.h
-
+```c
+#include <gmp.h>
 
 int main()
 {
@@ -315,7 +315,7 @@ class Program
 ```clojure
 
 (defn modpow
-  " b^e mod m (using Java which solves some cases the pure clojure method has to be modified to tackle--i.e. with large b & e and 
+  " b^e mod m (using Java which solves some cases the pure clojure method has to be modified to tackle--i.e. with large b & e and
     calculation simplications when gcd(b, m) == 1 and gcd(e, m) == 1) "
   [b e m]
   (.modPow (biginteger b) (biginteger e) (biginteger m)))
@@ -341,7 +341,7 @@ class Program
 	    power (ash power -1)))
     (setq product (mod (* product base) divisor)
 	  power (1- power))))
- 
+
 (let ((a 2988348162058574136915891421498819466320163312926952423791023078876139)
       (b 2351399303373464486466122544523690094744975233415544072992656881240319))
   (format t "~A~%" (rosetta-mod-expt a b (expt 10 40))))
@@ -518,14 +518,14 @@ let main argv =
 
 ```FreeBASIC
 
- 
+
 'From first principles (No external library)
 Function _divide(n1 As String,n2 As String,decimal_places As Integer=10,dpflag As String="s") As String
     Dim As String number=n1,divisor=n2
     dpflag=Lcase(dpflag)
     'For MOD
     Dim As Integer modstop
-    If dpflag="mod" Then 
+    If dpflag="mod" Then
         If Len(n1)<Len(n2) Then Return n1
         If Len(n1)=Len(n2) Then
             If n1<n2 Then Return n1
@@ -533,7 +533,7 @@ Function _divide(n1 As String,n2 As String,decimal_places As Integer=10,dpflag A
         modstop=Len(n1)-Len(n2)+1
     End If
     If dpflag<>"mod" Then
-        If dpflag<>"s"  Then dpflag="raw" 
+        If dpflag<>"s"  Then dpflag="raw"
     End If
     Dim runcount As Integer
     '_______  LOOK UP TABLES ______________
@@ -543,8 +543,8 @@ Function _divide(n1 As String,n2 As String,decimal_places As Integer=10,dpflag A
         Qmod(z)=(z Mod 10+48)
         bool(z)=(-(10>z))
     Next z
-    Dim answer As String   'THE ANSWER STRING  
-    
+    Dim answer As String   'THE ANSWER STRING
+
     '_______ SET THE DECIMAL WHERE IT SHOULD BE AT _______
     Dim As String part1,part2
     #macro set(decimal)
@@ -575,7 +575,7 @@ Function _divide(n1 As String,n2 As String,decimal_places As Integer=10,dpflag A
         var1=stri
     End If
     #endmacro
-    
+
     #macro Removepoint(s)
     split(s,".",var1,var2)
     #endmacro
@@ -584,19 +584,19 @@ Function _divide(n1 As String,n2 As String,decimal_places As Integer=10,dpflag A
     If Left(number,1)="-" Xor Left (divisor,1)="-" Then sign="-"
     If Left(number,1)="-" Then  number=Ltrim(number,"-")
     If Left (divisor,1)="-" Then divisor=Ltrim(divisor,"-")
-    
+
     'DETERMINE THE DECIMAL POSITION BEFORE THE DIVISION
     Dim As Integer lennint,lenddec,lend,lenn,difflen
     split(number,".",var1,var2)
     lennint=Len(var1)
     split(divisor,".",var1,var2)
     lenddec=Len(var2)
-    
-    If Instr(number,".") Then 
+
+    If Instr(number,".") Then
         Removepoint(number)
         number=var1+var2
     End If
-    If Instr(divisor,".") Then 
+    If Instr(divisor,".") Then
         Removepoint(divisor)
         divisor=var1+var2
     End If
@@ -615,10 +615,10 @@ Function _divide(n1 As String,n2 As String,decimal_places As Integer=10,dpflag A
         If Len(zeros) =0 Then dpflag="s"
     End If
     Dim As Integer runlength
-    If Len(zeros) Then 
+    If Len(zeros) Then
         runlength=decimal_places
         answer=String(Len(zeros)+runlength+10,"0")
-        If dpflag="raw" Then 
+        If dpflag="raw" Then
             runlength=1
             answer=String(Len(zeros)+runlength+10,"0")
             If decimal_places>Len(zeros) Then
@@ -626,14 +626,14 @@ Function _divide(n1 As String,n2 As String,decimal_places As Integer=10,dpflag A
                 answer=String(Len(zeros)+runlength+10,"0")
             End If
         End If
-        
+
     Else
         decimal_places=decimal_places+decpos
         runlength=decimal_places
         answer=String(Len(zeros)+runlength+10,"0")
     End If
     '___________DECIMAL POSITION DETERMINED  _____________
-    
+
     'SET UP THE VARIABLES AND START UP CONDITIONS
     number=number+String(difflen+decimal_places,"0")
     Dim count As Integer
@@ -644,7 +644,7 @@ Function _divide(n1 As String,n2 As String,decimal_places As Integer=10,dpflag A
     Dim As Integer lenf,lens
     Dim As Ubyte takeaway,subtractcarry
     Dim As Integer n3,diff
-    If Ltrim(divisor,"0")="" Then Return "Error :division by zero"   
+    If Ltrim(divisor,"0")="" Then Return "Error :division by zero"
     lens=Len(divisor)
     topstring=Left(number,lend)
     copytopstring=topstring
@@ -653,47 +653,47 @@ Function _divide(n1 As String,n2 As String,decimal_places As Integer=10,dpflag A
         Do
             count=count+1
             copytemp=temp
-            
+
             Do
-                '___________________ QUICK SUBTRACTION loop _________________              
-                
+                '___________________ QUICK SUBTRACTION loop _________________
+
                 lenf=Len(topstring)
                 If  lens<lenf=0 Then 'not
                     If Lens>lenf Then
                         temp= "done"
                         Exit Do
                     End If
-                    If divisor>topstring Then 
+                    If divisor>topstring Then
                         temp= "done"
                         Exit Do
                     End If
                 End If
-                
+
                 diff=lenf-lens
                 temp=topstring
                 subtractcarry=0
-                
+
                 For n3=lenf-1 To diff Step -1
                     takeaway= topstring[n3]-divisor[n3-diff]+10-subtractcarry
                     temp[n3]=Qmod(takeaway)
                     subtractcarry=bool(takeaway)
-                Next n3 
+                Next n3
                 If subtractcarry=0 Then Exit Do
                 If n3=-1 Then Exit Do
-                For n3=n3 To 0 Step -1 
+                For n3=n3 To 0 Step -1
                     takeaway= topstring[n3]-38-subtractcarry
                     temp[n3]=Qmod(takeaway)
                     subtractcarry=bool(takeaway)
                     If subtractcarry=0 Then Exit Do
                 Next n3
                 Exit Do
-                
+
             Loop 'single run
             temp=Ltrim(temp,"0")
             If temp="" Then temp= "0"
             topstring=temp
         Loop Until temp="done"
-        ' INDIVIDUAL CHARACTERS CARVED OFF ________________       
+        ' INDIVIDUAL CHARACTERS CARVED OFF ________________
         runcount=runcount+1
         If count=1 Then
             topstring=copytopstring+Mid(number,lend+runcount,1)
@@ -703,7 +703,7 @@ Function _divide(n1 As String,n2 As String,decimal_places As Integer=10,dpflag A
         copytopstring=topstring
         topstring=Ltrim(topstring,"0")
         If dpflag="mod" Then
-            If runcount=modstop Then 
+            If runcount=modstop Then
                 If topstring="" Then Return "0"
                 Return Mid(topstring,1,Len(topstring)-1)
             End If
@@ -713,7 +713,7 @@ Function _divide(n1 As String,n2 As String,decimal_places As Integer=10,dpflag A
             Exit Do
         End If
     Loop Until runcount=runlength+1
-    
+
     ' END OF RUN TO REQUIRED DECIMAL PLACES
     set(decimal) 'PUT IN THE DECIMAL POINT
     'THERE IS ALWAYS A DECIMAL POINT SOMEWHERE IN THE ANSWER
@@ -727,7 +727,7 @@ End Function
 
 Dim Shared As Integer _Mod(0 To 99),_Div(0 To 99)
 For z As Integer=0 To 99:_Mod(z)=(z Mod 10+48):_Div(z)=z\10:Next
-    
+
     Function Qmult(a As String,b As String) As String
         Var flag=0,la = Len(a),lb = Len(b)
         If Len(b)>Len(a) Then flag=1:Swap a,b:Swap la,lb
@@ -749,7 +749,7 @@ For z As Integer=0 To 99:_Mod(z)=(z Mod 10+48):_Div(z)=z\10:Next
 
     #define mod_(a,b) _divide((a),(b),,"mod")
     #define div_(a,b) iif(len((a))<len((b)),"0",_divide((a),(b),-2))
-    
+
     Function Modular_Exponentiation(base_num As String, exponent As String, modulus As String) As String
         Dim b1 As String = base_num
         Dim e1 As String = exponent
@@ -765,10 +765,10 @@ For z As Integer=0 To 99:_Mod(z)=(z Mod 10+48):_Div(z)=z\10:Next
         Loop
         Return result
     End Function
-    
-  
-   
-    
+
+
+
+
     var base_num="2988348162058574136915891421498819466320163312926952423791023078876139"
     var exponent="2351399303373464486466122544523690094744975233415544072992656881240319"
     var modulus="10000000000000000000000000000000000000000"
@@ -779,8 +779,8 @@ For z As Integer=0 To 99:_Mod(z)=(z Mod 10+48):_Div(z)=z\10:Next
     print "time taken  ";(timer-t)*1000;" milliseconds"
     Print "Done"
     Sleep
-     
- 
+
+
 
 
 ```
@@ -929,19 +929,19 @@ This uses the exponentiation procedure from [[RSA_code#Icon_and_Unicon|RSA Code]
 ```Icon
 procedure main()
     a := 2988348162058574136915891421498819466320163312926952423791023078876139
-    b := 2351399303373464486466122544523690094744975233415544072992656881240319 
-    write("last 40 digits = ",mod_power(a,b,(10^40))   
+    b := 2351399303373464486466122544523690094744975233415544072992656881240319
+    write("last 40 digits = ",mod_power(a,b,(10^40))
 end
 
-procedure mod_power(base, exponent, modulus)   # fast modular exponentation 
+procedure mod_power(base, exponent, modulus)   # fast modular exponentation
    if exponent < 0 then runerr(205,m)          # added for this task
    result := 1
    while exponent > 0 do {
-      if exponent % 2 = 1 then 
+      if exponent % 2 = 1 then
          result := (result * base) % modulus
-      exponent /:= 2   
+      exponent /:= 2
       base := base ^ 2 % modulus
-      }  
+      }
    return result
 end
 ```
@@ -990,7 +990,7 @@ public class PowMod {
         BigInteger b = new BigInteger(
       "2351399303373464486466122544523690094744975233415544072992656881240319");
         BigInteger m = new BigInteger("10000000000000000000000000000000000000000");
-        
+
         System.out.println(a.modPow(b, m));
     }
 }
@@ -1137,8 +1137,8 @@ Usage : a b mod powmod
 ```Oforth
 : powmod(base, exponent, modulus)
    1 exponent dup ifZero: [ return ]
-    while ( dup 0 > ) [ 
-      dup isEven ifFalse: [ swap base * modulus mod swap ] 
+    while ( dup 0 > ) [
+      dup isEven ifFalse: [ swap base * modulus mod swap ]
       2 / base sq modulus mod ->base
       ] drop ;
 ```
@@ -1222,7 +1222,7 @@ Program ModularExponentiation(output);
 
 uses
   gmp;
-  
+
 var
   a, b, m, r: mpz_t;
   fmt: pchar;
@@ -1238,7 +1238,7 @@ begin
 
   fmt := '%Zd' + chr(13) + chr(10);
   mp_printf(fmt, @r); (* ...16808958343740453059 *)
-  
+
   mpz_clear(a);
   mpz_clear(b);
   mpz_clear(m);
@@ -1344,7 +1344,7 @@ procedure mpz_mod_exp(mpz base, exponent, modulus, result)
     end if
     mpz_mod(result,result,modulus)
 end procedure
- 
+
 mpz base     = mpz_init("2988348162058574136915891421498819466320163312926952423791023078876139"),
     exponent = mpz_init("2351399303373464486466122544523690094744975233415544072992656881240319"),
     modulus  = mpz_init("1"&repeat('0',40)),
@@ -1488,13 +1488,13 @@ Z.powm a b m
 
 This REXX program attempts to handle   ''any''   '''a''', '''b''', or '''m''',   but there are limits for any computer language.
 
-For some REXXes, it's around eight million digits for any arithmetic expression or value, which puts limitations on the 
+For some REXXes, it's around eight million digits for any arithmetic expression or value, which puts limitations on the
 
 values of   <big>a<sup>2</sup></big>   or   <big>10<sup>m</sup></big>.
 
-There is REXX code (below) to automatically adjust the number of digits to accommodate huge numbers which are 
+There is REXX code (below) to automatically adjust the number of digits to accommodate huge numbers which are
 
-computed when raising large numbers to some arbitrary power.  
+computed when raising large numbers to some arbitrary power.
 
 ```rexx
 /*REXX program  displays  modular exponentiation of:             a**b  mod  M           */
@@ -1525,7 +1525,7 @@ powerMod: procedure;  parse arg x,p,n                 /*fast modular exponentiat
           return $
 ```
 
-This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console). 
+This REXX program makes use of   '''LINESIZE'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console).
 
 The   '''LINESIZE.REX'''   REXX program is included here   ──►   [[LINESIZE.REX]].
 
@@ -1559,25 +1559,25 @@ a**b (mod 10**888)= 261284964380836515397030706363442226571397237057488951313684
 This REXX version handles only up to 100 decimal digits.
 
 ```rexx
-/* Modular exponentiation */ 
+/* Modular exponentiation */
 
 numeric digits 100
-say powerMod(, 
- 2988348162058574136915891421498819466320163312926952423791023078876139,, 
- 2351399303373464486466122544523690094744975233415544072992656881240319,, 
+say powerMod(,
+ 2988348162058574136915891421498819466320163312926952423791023078876139,,
+ 2351399303373464486466122544523690094744975233415544072992656881240319,,
  1e40)
-exit 
+exit
 
 powerMod: procedure
 
-parse arg base, exponent, modulus 
+parse arg base, exponent, modulus
 
 exponent = strip(x2b(d2x(exponent)), 'L', '0')
 result = 1
 base = base // modulus
-do exponentPos=length(exponent) to 1 by -1  
-  if substr(exponent, exponentPos, 1) = '1'    
-    then result = (result * base) // modulus  
+do exponentPos=length(exponent) to 1 by -1
+  if substr(exponent, exponentPos, 1) = '1'
+    then result = (result * base) // modulus
   base = (base * base) // modulus
 end
 return result
@@ -1762,15 +1762,15 @@ println(a.modPow(b, BigInt(10).pow(40)))
 
 (define (mod-exp a n mod)
   (cond ((= n 0) 1)
-        ((even? n) 
-         (remainder (square (mod-exp a (/ n 2) mod)) 
+        ((even? n)
+         (remainder (square (mod-exp a (/ n 2) mod))
                     mod))
-        (else (remainder (* a (mod-exp a (- n 1) mod)) 
+        (else (remainder (* a (mod-exp a (- n 1) mod))
                          mod))))
 
 (define result
-  (mod-exp 2988348162058574136915891421498819466320163312926952423791023078876139 
-           2351399303373464486466122544523690094744975233415544072992656881240319 
+  (mod-exp 2988348162058574136915891421498819466320163312926952423791023078876139
+           2351399303373464486466122544523690094744975233415544072992656881240319
            (expt 10 40)))
 ```
 
@@ -1877,8 +1877,8 @@ func expmod(a, b, n) {
 
 ## Tcl
 
-While Tcl does have arbitrary-precision arithmetic (from 8.5 onwards), 
-it doesn't expose a modular exponentiation function. 
+While Tcl does have arbitrary-precision arithmetic (from 8.5 onwards),
+it doesn't expose a modular exponentiation function.
 Thus we implement one ourselves.
 
 
@@ -1932,7 +1932,7 @@ proc modexp {a b n} {
 	}
 	set b [expr {$b >> 1}]
     }
-    return $c 
+    return $c
 }
 ```
 

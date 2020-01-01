@@ -51,18 +51,18 @@ Use the new type '''frac''' to find all [[Perfect Numbers|perfect numbers]] less
 ```algol68
  MODE FRAC = STRUCT( INT num #erator#,  den #ominator#);
  FORMAT frac repr = $g(-0)"//"g(-0)$;
- 
+
  PROC gcd = (INT a, b) INT: # greatest common divisor #
    (a = 0 | b |: b = 0 | a |: ABS a > ABS b  | gcd(b, a MOD b) | gcd(a, b MOD a));
- 
+
  PROC lcm = (INT a, b)INT: # least common multiple #
    a OVER gcd(a, b) * b;
- 
+
  PROC raise not implemented error = ([]STRING args)VOID: (
    put(stand error, ("Not implemented error: ",args, newline));
    stop
  );
- 
+
  PRIO // = 9; # higher then the ** operator #
  OP // = (INT num, den)FRAC: ( # initialise and normalise #
    INT common = gcd(num, den);
@@ -72,13 +72,13 @@ Use the new type '''frac''' to find all [[Perfect Numbers|perfect numbers]] less
      ( num OVER common, den OVER common)
    FI
  );
- 
+
  OP + = (FRAC a, b)FRAC: (
    INT common = lcm(den OF a, den OF b);
    FRAC result := ( common OVER den OF a * num OF a + common OVER den OF b * num OF b, common );
    num OF result//den OF result
  );
- 
+
  OP - = (FRAC a, b)FRAC: a + -b,
     * = (FRAC a, b)FRAC: (
    INT num = num OF a * num OF b,
@@ -86,17 +86,17 @@ Use the new type '''frac''' to find all [[Perfect Numbers|perfect numbers]] less
    INT common = gcd(num, den);
    (num OVER common) // (den OVER common)
  );
- 
+
  OP /  = (FRAC a, b)FRAC: a * FRAC(den OF b, num OF b),# real division #
     %  = (FRAC a, b)INT: ENTIER (a / b),               # integer divison #
     %* = (FRAC a, b)FRAC: a/b - FRACINIT ENTIER (a/b), # modulo division #
-    ** = (FRAC a, INT exponent)FRAC: 
+    ** = (FRAC a, INT exponent)FRAC:
      IF exponent >= 0 THEN
        (num OF a ** exponent, den OF a ** exponent )
      ELSE
        (den OF a ** exponent, num OF a ** exponent )
      FI;
- 
+
  OP REALINIT = (FRAC frac)REAL: num OF frac / den OF frac,
     FRACINIT = (INT num)FRAC: num // 1,
     FRACINIT = (REAL num)FRAC: (
@@ -104,19 +104,19 @@ Use the new type '''frac''' to find all [[Perfect Numbers|perfect numbers]] less
       raise not implemented error(("Convert a REAL to a FRAC","!"));
       SKIP
     );
- 
+
  OP <  = (FRAC a, b)BOOL: num OF (a - b) <  0,
     >  = (FRAC a, b)BOOL: num OF (a - b) >  0,
     <= = (FRAC a, b)BOOL: NOT ( a > b ),
     >= = (FRAC a, b)BOOL: NOT ( a < b ),
     =  = (FRAC a, b)BOOL: (num OF a, den OF a) = (num OF b, den OF b),
     /= = (FRAC a, b)BOOL: (num OF a, den OF a) /= (num OF b, den OF b);
- 
+
  # Unary operators #
  OP - = (FRAC frac)FRAC: (-num OF frac, den OF frac),
     ABS = (FRAC frac)FRAC: (ABS num OF frac, ABS den OF frac),
     ENTIER = (FRAC frac)INT: (num OF frac OVER den OF frac) * den OF frac;
- 
+
  COMMENT Operators for extended characters set, and increment/decrement:
  OP +:= = (REF FRAC a, FRAC b)REF FRAC: ( a := a + b ),
     +=: = (FRAC a, REF FRAC b)REF FRAC: ( b := a + b ),
@@ -125,7 +125,7 @@ Use the new type '''frac''' to find all [[Perfect Numbers|perfect numbers]] less
     /:= = (REF FRAC a, FRAC b)REF FRAC: ( a := a / b ),
     %:= = (REF FRAC a, FRAC b)REF FRAC: ( a := FRACINIT (a % b) ),
     %*:= = (REF FRAC a, FRAC b)REF FRAC: ( a := a %* b );
- 
+
  # OP aliases for extended character sets (eg: Unicode, APL, ALCOR and GOST 10859) #
  OP ×  = (FRAC a, b)FRAC: a * b,
     ÷  = (FRAC a, b)INT: a OVER b,
@@ -136,11 +136,11 @@ Use the new type '''frac''' to find all [[Perfect Numbers|perfect numbers]] less
     ≥  = (FRAC a, b)FRAC: a >= b,
     ≠  = (FRAC a, b)BOOL: a /= b,
     ↑  = (FRAC frac, INT exponent)FRAC: frac ** exponent,
- 
+
     ÷×:= = (REF FRAC a, FRAC b)REF FRAC: ( a := a MOD b ),
     %×:= = (REF FRAC a, FRAC b)REF FRAC: ( a := a MOD b ),
     ÷*:= = (REF FRAC a, FRAC b)REF FRAC: ( a := a MOD b );
- 
+
  # BOLD aliases for CPU that only support uppercase for 6-bit bytes  - wrist watches #
  OP OVER = (FRAC a, b)INT: a % b,
     MOD = (FRAC a, b)FRAC: a %*b,
@@ -151,7 +151,7 @@ Use the new type '''frac''' to find all [[Perfect Numbers|perfect numbers]] less
     EQ = (FRAC a, b)BOOL: a =  b,
     NE = (FRAC a, b)BOOL: a /= b,
     UP = (FRAC frac, INT exponent)FRAC: frac**exponent;
- 
+
  # the required standard assignment operators #
  OP PLUSAB  = (REF FRAC a, FRAC b)REF FRAC: ( a +:= b ), # PLUS #
     PLUSTO  = (FRAC a, REF FRAC b)REF FRAC: ( a +=: b ), # PRUS #
@@ -159,13 +159,13 @@ Use the new type '''frac''' to find all [[Perfect Numbers|perfect numbers]] less
     DIVAB   = (REF FRAC a, FRAC b)REF FRAC: ( a /:= b ),
     OVERAB  = (REF FRAC a, FRAC b)REF FRAC: ( a %:= b ),
     MODAB   = (REF FRAC a, FRAC b)REF FRAC: ( a %*:= b );
- 
+
 END COMMENT
 Example: searching for Perfect Numbers.
- FRAC sum:= FRACINIT 0; 
+ FRAC sum:= FRACINIT 0;
  FORMAT perfect = $b(" perfect!","")$;
- 
- FOR i FROM 2 TO 2**19 DO 
+
+ FOR i FROM 2 TO 2**19 DO
    INT candidate := i;
    FRAC sum := 1 // candidate;
    REAL real sum := 1 / candidate;
@@ -176,7 +176,7 @@ Example: searching for Perfect Numbers.
      FI
    OD;
    IF den OF sum  = 1 THEN
-     printf(($"Sum of reciprocal factors of "g(-0)" = "g(-0)" exactly, about "g(0,real width) f(perfect)l$, 
+     printf(($"Sum of reciprocal factors of "g(-0)" = "g(-0)" exactly, about "g(0,real width) f(perfect)l$,
              candidate, ENTIER sum, real sum, ENTIER sum = 1))
    FI
  OD
@@ -209,7 +209,7 @@ Sum of reciprocal factors of 523776 = 2 exactly, about 2.00000000000000000000000
       DIM frac{num, den}
       DIM Sum{} = frac{}, Kf{} = frac{}, One{} = frac{}
       One.num = 1 : One.den = 1
-      
+
       FOR n% = 2 TO 2^19-1
         Sum.num = 1 : Sum.den = n%
         FOR k% = 2 TO SQR(n%)
@@ -225,37 +225,37 @@ Sum of reciprocal factors of 523776 = 2 exactly, about 2.00000000000000000000000
         IF FNeq(Sum{}, One{}) PRINT n% " is perfect"
       NEXT n%
       END
-      
+
       DEF PROCabs(a{}) : a.num = ABS(a.num) : ENDPROC
       DEF PROCneg(a{}) : a.num = -a.num : ENDPROC
-      
+
       DEF PROCadd(a{}, b{})
       LOCAL t : t = a.den * b.den
       a.num = a.num * b.den + b.num * a.den
       a.den = t
       ENDPROC
-      
+
       DEF PROCsub(a{}, b{})
       LOCAL t : t = a.den * b.den
       a.num = a.num * b.den - b.num * a.den
       a.den = t
       ENDPROC
-      
+
       DEF PROCmul(a{}, b{})
       a.num *= b.num : a.den *= b.den
       ENDPROC
-      
+
       DEF PROCdiv(a{}, b{})
       a.num *= b.den : a.den *= b.num
       ENDPROC
-      
+
       DEF FNeq(a{}, b{}) = a.num * b.den = b.num * a.den
       DEF FNlt(a{}, b{}) = a.num * b.den < b.num * a.den
       DEF FNgt(a{}, b{}) = a.num * b.den > b.num * a.den
       DEF FNne(a{}, b{}) = a.num * b.den <> b.num * a.den
       DEF FNle(a{}, b{}) = a.num * b.den <= b.num * a.den
       DEF FNge(a{}, b{}) = a.num * b.den >= b.num * a.den
-      
+
       DEF PROCnormalise(a{})
       LOCAL a, b, t
       a = a.num : b = a.den
@@ -286,8 +286,8 @@ Output:
 
 C does not have overloadable operators. The following implementation <u>''does not define all operations''</u> so as to keep the example short. Note that the code passes around struct values instead of pointers to keep it simple, a practice normally avoided for efficiency reasons.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #define FMT "%lld"
 typedef long long int fr_int_t;
@@ -372,8 +372,8 @@ See [[Rational Arithmetic/C]]
 {{libheader|Boost}}
 Boost provides a rational number template.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include "math.h"
 #include "boost/rational.hpp"
 
@@ -395,7 +395,7 @@ bool is_perfect(int c)
 int main()
 {
     for (int candidate = 2; candidate < 0x80000; ++candidate){
-        if (is_perfect(candidate)) 
+        if (is_perfect(candidate))
 	        std::cout << candidate << " is perfect" << std::endl;
     }
     return 0;
@@ -653,7 +653,7 @@ EchoLisp supports rational numbers as native type. "Big" rational i.e bigint/big
 (define (sum/inv n) ;; look for div's in [2..sqrt(n)] and add 1/n
 	(for/fold (acc (/ n)) [(i (in-range 2 (sqrt n)))]
 		#:break (> acc 1) ; no hope
-		(when (zero? (modulo n i )) 
+		(when (zero? (modulo n i ))
 			(set! acc (+ acc (/ i) (/ i n))))))
 
 ```
@@ -672,7 +672,7 @@ EchoLisp supports rational numbers as native type. "Big" rational i.e bigint/big
 
 ;; even perfect numbers (up to 100000)
 (for [(i (in-range 4 100000 2))] ;; 8 seconds
-	(when (= (sum/inv i) 1) 
+	(when (= (sum/inv i) 1)
 		(printf "🍏 🍒 🍓 %d is perfect." i)))
 
 🍏 🍒 🍓 6 is perfect.
@@ -692,22 +692,22 @@ component RationalNumbers;
   type Rational;
        Rational(Numerator = integer, Denominater = integer) -> Rational;
 
-       Rational + Rational -> Rational; 
+       Rational + Rational -> Rational;
        Rational - Rational -> Rational;
-       Rational * Rational -> Rational; 
+       Rational * Rational -> Rational;
        Rational / Rational -> Rational;
- 
-       Rational == Rational -> boolean; 
-       Rational <> Rational -> boolean; 
-       Rational >= Rational -> boolean; 
+
+       Rational == Rational -> boolean;
+       Rational <> Rational -> boolean;
+       Rational >= Rational -> boolean;
        Rational <= Rational -> boolean;
-       Rational >  Rational -> boolean; 
+       Rational >  Rational -> boolean;
        Rational <  Rational -> boolean;
- 
+
        + Rational -> Rational;
        - Rational -> Rational;
        abs(Rational) -> Rational;
-      
+
        Rational(integer) -> Rational;
        Numerator(Rational) -> integer;
        Denominator(Rational) -> integer;
@@ -719,7 +719,7 @@ component RationalNumbers;
        R1 * R2 = Normalize( R1.A * R2.A, R1.B * R2.B);
        R1 / R2 = Normalize( R1.A * R2.B, R1.B * R2.A);
 
-       R1 == R2 = [ R = (R1 - R2); R.A == 0]; 
+       R1 == R2 = [ R = (R1 - R2); R.A == 0];
        R1 <> R2 = [ R = (R1 - R2); R.A <> 0];
        R1 >= R2 = [ R = (R1 - R2); R.A >= 0];
        R1 <= R2 = [ R = (R1 - R2); R.A <= 0];
@@ -729,7 +729,7 @@ component RationalNumbers;
        + R = R;
        - R = Rational(-R.A, R.B);
 
-       abs(R) = Rational(abs(R.A), abs(R.B)); 
+       abs(R) = Rational(abs(R.A), abs(R.B));
        Rational(I) = Rational (I, 1);
        Numerator(R) = R.A;
        Denominator(R) = R.B;
@@ -738,15 +738,15 @@ component RationalNumbers;
 
        Normalize (A = integer, B = integer) -> Rational;
        Normalize (A, B) = [ exception( B == 0, "Illegal Rational Number");
-	                    Common = GCD(abs(A), abs(B)); 
+	                    Common = GCD(abs(A), abs(B));
 			    if B < 0 then Rational(-A / Common, -B / Common)
 			             else Rational( A / Common,  B / Common) ];
 
        GCD (A = integer, B = integer) -> integer;
-       GCD (A, B) = [ if A == 0 then return(B);   
-	              if B == 0 then return(A); 
+       GCD (A, B) = [ if A == 0 then return(B);
+	              if B == 0 then return(A);
 		      if A > B  then GCD (B, mod(A,B))
- 		                else GCD (A, mod(B,A)) ]; 
+ 		                else GCD (A, mod(B,A)) ];
 
 end component RationalNumbers;
 ```
@@ -758,10 +758,10 @@ use RationalNumbers;
 
 PerfectNumbers( Limit = integer) -> multi(integer);
 PerfectNumbers( Limit) =
-  	      [ Candidate = 2 .. Limit; 
+  	      [ Candidate = 2 .. Limit;
 		Sum:= Rational(1,Candidate);
 		[ Divisor = 2 .. integer(sqrt(real(Candidate)));
-		  if mod(Candidate, Divisor) == 0 then 
+		  if mod(Candidate, Divisor) == 0 then
 			Sum := Sum + Rational(1, Divisor) + Rational(Divisor, Candidate);
 		];
 		if Sum == Rational(1,1) then Candidate
@@ -789,11 +789,11 @@ PerfectNumbers(10000)?
 ```elixir
 defmodule Rational do
   import Kernel, except: [div: 2]
-  
+
   defstruct numerator: 0, denominator: 1
-  
+
   def new(numerator), do: %Rational{numerator: numerator, denominator: 1}
-  
+
   def new(numerator, denominator) do
     sign = if numerator * denominator < 0, do: -1, else: 1
     {numerator, denominator} = {abs(numerator), abs(denominator)}
@@ -801,33 +801,33 @@ defmodule Rational do
     %Rational{numerator: sign * Kernel.div(numerator, gcd),
               denominator: Kernel.div(denominator, gcd)}
   end
-  
+
   def add(a, b) do
     {a, b} = convert(a, b)
     new(a.numerator * b.denominator + b.numerator * a.denominator,
         a.denominator * b.denominator)
   end
-  
+
   def sub(a, b) do
     {a, b} = convert(a, b)
     new(a.numerator * b.denominator - b.numerator * a.denominator,
         a.denominator * b.denominator)
   end
-  
+
   def mult(a, b) do
     {a, b} = convert(a, b)
     new(a.numerator * b.numerator, a.denominator * b.denominator)
   end
-  
+
   def div(a, b) do
     {a, b} = convert(a, b)
     new(a.numerator * b.denominator, a.denominator * b.numerator)
   end
-  
+
   defp convert(a), do: if is_integer(a), do: new(a), else: a
-  
+
   defp convert(a, b), do: {convert(a), convert(b)}
-  
+
   defp gcd(a, 0), do: a
   defp gcd(a, b), do: gcd(b, rem(a, b))
 end
@@ -1374,7 +1374,7 @@ end program perfect_numbers
 
 ## Frink
 
-Rational numbers are built into Frink and the numerator and denominator can be arbitrarily-sized.  They are automatically simplified and collapsed into integers if necessary.  All functions in the language can work with rational numbers.  Rational numbers are treated as exact.  Rational numbers can exist in complex numbers or intervals.  
+Rational numbers are built into Frink and the numerator and denominator can be arbitrarily-sized.  They are automatically simplified and collapsed into integers if necessary.  All functions in the language can work with rational numbers.  Rational numbers are treated as exact.  Rational numbers can exist in complex numbers or intervals.
 
 ```frink
 
@@ -1463,13 +1463,13 @@ func main() {
 
 Sum of recipr. factors of 6 = 1 exactly perfect!
 Sum of recipr. factors of 28 = 1 exactly perfect!
-Sum of recipr. factors of 120 = 2 exactly 
+Sum of recipr. factors of 120 = 2 exactly
 Sum of recipr. factors of 496 = 1 exactly perfect!
-Sum of recipr. factors of 672 = 2 exactly 
+Sum of recipr. factors of 672 = 2 exactly
 Sum of recipr. factors of 8128 = 1 exactly perfect!
-Sum of recipr. factors of 30240 = 3 exactly 
-Sum of recipr. factors of 32760 = 3 exactly 
-Sum of recipr. factors of 523776 = 2 exactly 
+Sum of recipr. factors of 30240 = 3 exactly
+Sum of recipr. factors of 32760 = 3 exactly
+Sum of recipr. factors of 523776 = 2 exactly
 
 ```
 
@@ -1830,14 +1830,14 @@ main = do
     take
       n
       [ candidate
-      | candidate <- [2 .. 2 ^ 19] 
+      | candidate <- [2 .. 2 ^ 19]
       , getSum candidate == 1 ]
   where
     getSum candidate =
       1 % candidate +
       sum
         [ 1 % factor + 1 % (candidate `div` factor)
-        | factor <- [2 .. floor (sqrt (fromIntegral candidate))] 
+        | factor <- [2 .. floor (sqrt (fromIntegral candidate))]
         , candidate `mod` factor == 0 ]
 
 ```
@@ -1846,7 +1846,7 @@ main = do
 For a sample implementation of <code>Ratio</code>, see [http://www.haskell.org/onlinereport/ratio.html the Haskell 98 Report].
 
 =={{header|Icon}} and {{header|Unicon}}==
-The IPL provides support for rational arithmetic  
+The IPL provides support for rational arithmetic
 *  The data type is called 'rational' not 'frac'.
 *  Use the record constructor 'rational' to create a rational.  Sign must be 1 or -1.
 *  Neither Icon nor Unicon supports operator overloading.  Augmented assignments make little sense w/o this.
@@ -1883,10 +1883,10 @@ end
 
 procedure is_perfect(c)       #: test for perfect numbers using rational arithmetic
    rsum := rational(1, c, 1)
-   every f := 2 to sqrt(c) do 
-      if 0 = c % f then 
-         rsum := addrat(rsum,addrat(rational(1,f,1),rational(1,integer(c/f),1)))   
-   if rsum.numer = rsum.denom = 1 then 
+   every f := 2 to sqrt(c) do
+      if 0 = c % f then
+         rsum := addrat(rsum,addrat(rational(1,f,1),rational(1,integer(c/f),1)))
+   if rsum.numer = rsum.denom = 1 then
       return c
 end
 ```
@@ -1910,11 +1910,11 @@ Testing nerat( (0/1), (0/1) ) ==> failed
 Testing absrat( (-1/1),  ) ==> returned (1/1)
 ```
 
-The following task functions are missing from the IPL: 
+The following task functions are missing from the IPL:
 
 ```Icon
 procedure verifyrat(p,r1,r2)  #: verification tests for rational procedures
-return write("Testing ",p,"( ",rat2str(r1),", ",rat2str(\r2) | &null," ) ==> ","returned " || rat2str(p(r1,r2)) | "failed")  
+return write("Testing ",p,"( ",rat2str(r1),", ",rat2str(\r2) | &null," ) ==> ","returned " || rat2str(p(r1,r2)) | "failed")
 end
 
 procedure makerat(x)          #: make rational (from integer, real, or strings)
@@ -1925,10 +1925,10 @@ initial c := &digits++'+-'
    return case type(x) of {
              "real"    : real2rat(x)
              "integer" : ratred(rational(x,1,1))
-             "string"  : if x ? ( n := integer(tab(many(c))), ="/", d := integer(tab(many(c))), pos(0)) then  
-                            ratred(rational(n,d,1)) 
-                         else 
-                            makerat(numeric(x))  
+             "string"  : if x ? ( n := integer(tab(many(c))), ="/", d := integer(tab(many(c))), pos(0)) then
+                            ratred(rational(n,d,1))
+                         else
+                            makerat(numeric(x))
           }
 end
 
@@ -2059,7 +2059,7 @@ You can also coerce numbers directly to rational using x: (or to integer or floa
 Increment and decrement are also included in the language, but you could just as easily add or subtract 1:
 
 
-```J>   
+```J>
 : 3r4
 7r4
    <: 3r4
@@ -2209,7 +2209,7 @@ Perfect numbers between 2 and 524288: [6, 28, 496, 8128]
 
 ## Kotlin
 
-As it's not possible to define arbitrary symbols such as // to be operators in Kotlin, we instead use infix functions idiv (for Ints) and ldiv (for Longs) as a shortcut to generate Frac instances. 
+As it's not possible to define arbitrary symbols such as // to be operators in Kotlin, we instead use infix functions idiv (for Ints) and ldiv (for Longs) as a shortcut to generate Frac instances.
 
 ```scala
 // version 1.1.2
@@ -2232,7 +2232,7 @@ class Frac : Comparable<Frac> {
         val ZERO = Frac(0, 1)
         val ONE  = Frac(1, 1)
     }
- 
+
     constructor(n: Long, d: Long) {
         require(d != 0L)
         var nn = n
@@ -2243,7 +2243,7 @@ class Frac : Comparable<Frac> {
         else if (dd < 0) {
             nn = -nn
             dd = -dd
-        } 
+        }
         val g = Math.abs(gcd(nn, dd))
         if (g > 1) {
             nn /= g
@@ -2254,8 +2254,8 @@ class Frac : Comparable<Frac> {
     }
 
     constructor(n: Int, d: Int) : this(n.toLong(), d.toLong())
- 
-    operator fun plus(other: Frac) = 
+
+    operator fun plus(other: Frac) =
         Frac(num * other.denom + denom * other.num, other.denom * denom)
 
     operator fun unaryPlus() = this
@@ -2277,7 +2277,7 @@ class Frac : Comparable<Frac> {
     }
 
     operator fun div(other: Frac) = this * other.inverse()
-    
+
     fun abs() = if (num >= 0) this else -this
 
     override fun compareTo(other: Frac): Int {
@@ -2286,18 +2286,18 @@ class Frac : Comparable<Frac> {
             diff < 0.0  -> -1
             diff > 0.0  -> +1
             else        ->  0
-        } 
+        }
     }
 
     override fun equals(other: Any?): Boolean {
-       if (other == null || other !is Frac) return false 
+       if (other == null || other !is Frac) return false
        return this.compareTo(other) == 0
     }
 
-    override fun hashCode() = num.hashCode() xor denom.hashCode()                       
+    override fun hashCode() = num.hashCode() xor denom.hashCode()
 
     override fun toString() = if (denom == 1L) "$num" else "$num/$denom"
- 
+
     fun toDouble() = num.toDouble() / denom
 
     fun toLong() = num / denom
@@ -2307,15 +2307,15 @@ fun isPerfect(n: Long): Boolean {
     var sum = Frac(1, n)
     val limit = Math.sqrt(n.toDouble()).toLong()
     for (i in 2L..limit) {
-        if (n % i == 0L) sum += Frac(1, i) + Frac(1, n / i) 
+        if (n % i == 0L) sum += Frac(1, i) + Frac(1, n / i)
     }
     return sum == Frac.ONE
-} 
+}
 
 fun main(args: Array<String>) {
     var frac1 = Frac(12, 3)
     println ("frac1 = $frac1")
-    var frac2 = 15 idiv 2 
+    var frac2 = 15 idiv 2
     println("frac2 = $frac2")
     println("frac1 <= frac2 is ${frac1 <= frac2}")
     println("frac1 >= frac2 is ${frac1 >= frac2}")
@@ -2333,11 +2333,11 @@ fun main(args: Array<String>) {
     println("dbl(frac2)    = ${frac2.toDouble()}")
     println("lng(frac2)    = ${frac2.toLong()}")
     println("\nThe Perfect numbers less than 2^19 are:")
-    // We can skip odd numbers as no known perfect numbers are odd 
-    for (i in 2 until (1 shl 19) step 2) { 
+    // We can skip odd numbers as no known perfect numbers are odd
+    for (i in 2 until (1 shl 19) step 2) {
         if (isPerfect(i.toLong())) print("  $i")
-    } 
-    println() 
+    }
+    println()
 }
 ```
 
@@ -2788,7 +2788,7 @@ Class Rational {
            value {
                   link parent numerator, denominator to n, d
                   =Str$(n)+"/"+Str$(d,"")
-            }      
+            }
       }
       class:
       Module Rational (.numerator, .denominator) {
@@ -2901,7 +2901,7 @@ Mathematica has full support for fractions built-in. If one divides two exact nu
 
 ```Mathematica
 4/16
-3/8  
+3/8
 8/4
 4Pi/2
 16!/10!
@@ -3160,13 +3160,13 @@ Output:
 ```txt
 Sum of recipr. factors of 6 = 1 exactly perfect!
 Sum of recipr. factors of 28 = 1 exactly perfect!
-Sum of recipr. factors of 120 = 2 exactly 
+Sum of recipr. factors of 120 = 2 exactly
 Sum of recipr. factors of 496 = 1 exactly perfect!
-Sum of recipr. factors of 672 = 2 exactly 
+Sum of recipr. factors of 672 = 2 exactly
 Sum of recipr. factors of 8128 = 1 exactly perfect!
-Sum of recipr. factors of 30240 = 3 exactly 
-Sum of recipr. factors of 32760 = 3 exactly 
-Sum of recipr. factors of 523776 = 2 exactly 
+Sum of recipr. factors of 30240 = 3 exactly
+Sum of recipr. factors of 32760 = 3 exactly
+Sum of recipr. factors of 523776 = 2 exactly
 ```
 
 
@@ -3251,12 +3251,12 @@ module Frac : RATIO =
       open Big_int
 
       type t = { num : big_int; den : big_int }
-      
+
       (* short aliases for big_int values and functions *)
       let zero, one = zero_big_int, unit_big_int
       let big, to_int, eq = big_int_of_int, int_of_big_int, eq_big_int
       let (+~), (-~), ( *~) = add_big_int, sub_big_int, mult_big_int
-      
+
       (* helper function *)
       let rec norm ({num=n;den=d} as k) =
          if lt_big_int d zero then
@@ -3269,16 +3269,16 @@ module Frac : RATIO =
          if eq f one then k else
             let div = div_big_int in
             { num=div n f; den = div d f } (* inefficient *)
-      
+
       (* public functions *)
       let frac a b = norm { num=big a; den=big b }
-      
+
       let from_int a = norm { num=big a; den=one }
 
       let is_int {num=n; den=d} =
          eq d one ||
          eq (mod_big_int n d) zero
-      
+
       let to_string ({num=n; den=d} as r) =
          let r1 = norm r in
          let str = string_of_big_int in
@@ -3286,7 +3286,7 @@ module Frac : RATIO =
             str (r1.num)
          else
             str (r1.num) ^ "/" ^ str (r1.den)
-      
+
       let cmp a b =
          let a1 = norm a and b1 = norm b in
          compare_big_int (a1.num*~b1.den) (b1.num*~a1.den)
@@ -3296,10 +3296,10 @@ module Frac : RATIO =
 
       let ( // ) {num=n1; den=d1} {num=n2; den=d2} =
          norm { num = n1*~d2; den = d1*~n2 }
-      
+
       let ( +/ ) {num=n1; den=d1} {num=n2; den=d2} =
          norm { num = n1*~d2 +~ n2*~d1; den = d1*~d2 }
-      
+
       let ( -/ ) {num=n1; den=d1} {num=n2; den=d2} =
          norm { num = n1*~d2 -~ n2*~d1; den = d1*~d2 }
    end
@@ -3630,7 +3630,7 @@ integer {an,ad} = a,
         {bn,bd} = b
     return normalise(an*bd+bn*ad,ad*bd)
 end function
- 
+
 function frac_sub(frac a, frac b)
 integer {an,ad} = a,
         {bn,bd} = b
@@ -3681,7 +3681,7 @@ sequence f = factors(num,1)
     end for
     return frac_eq(sum,frac_new(2))
 end function
- 
+
 procedure get_perfect_numbers()
 atom t0 = time()
     for i=2 to power(2,19) do
@@ -3690,13 +3690,13 @@ atom t0 = time()
         end if
     end for
     printf(1,"elapsed: %3.2f seconds\n",time()-t0)
- 
+
     integer pn5 = power(2,12)*(power(2,13)-1) -- 5th perfect number
     if is_perfect(pn5) then
         printf(1,"perfect: %d\n",pn5)
     end if
 end procedure
- 
+
 get_perfect_numbers()
 ```
 
@@ -3714,7 +3714,7 @@ perfect: 33550336
 ```
 
 
-###  mpq 
+###  mpq
 
 {{libheader|mpfr}}
 Turned out to be slightly slower than native, but worth it for large number support.
@@ -3733,7 +3733,7 @@ sequence f = factors(num,1)
     end for
     return mpq_cmp_si(tot,2,1)=0
 end function
- 
+
 procedure get_perfect_numbers()
 atom t0 = time()
     for i=2 to power(2,19) do
@@ -3742,13 +3742,13 @@ atom t0 = time()
         end if
     end for
     printf(1,"elapsed: %3.2f seconds\n",time()-t0)
- 
+
     integer pn5 = power(2,12)*(power(2,13)-1) -- 5th perfect number
     if is_perfect(pn5) then
         printf(1,"perfect: %d\n",pn5)
     end if
 end procedure
- 
+
 get_perfect_numbers()
 ```
 
@@ -4080,7 +4080,7 @@ b/a=1/0
 9/2>-3/7
 -3/7=-3/7
 ```
-       
+
 
 
 ## Python
@@ -4250,9 +4250,9 @@ lcm:   procedure; parse arg x,y; if y=0  then return 0; x=x*y/gcd(x, y);        
 p:     return word( arg(1), 1)
 ```
 
-Programming note:   the   '''eDivs, gcd, lcm'''   functions are optimized functions for this program only. 
+Programming note:   the   '''eDivs, gcd, lcm'''   functions are optimized functions for this program only.
 
-'''output''' 
+'''output'''
 
 ```txt
 
@@ -4292,13 +4292,13 @@ end
 
 Sum of recipr. factors of 6 = 1 exactly perfect!
 Sum of recipr. factors of 28 = 1 exactly perfect!
-Sum of recipr. factors of 120 = 2 exactly 
+Sum of recipr. factors of 120 = 2 exactly
 Sum of recipr. factors of 496 = 1 exactly perfect!
-Sum of recipr. factors of 672 = 2 exactly 
+Sum of recipr. factors of 672 = 2 exactly
 Sum of recipr. factors of 8128 = 1 exactly perfect!
-Sum of recipr. factors of 30240 = 3 exactly 
-Sum of recipr. factors of 32760 = 3 exactly 
-Sum of recipr. factors of 523776 = 2 exactly 
+Sum of recipr. factors of 30240 = 3 exactly
+Sum of recipr. factors of 32760 = 3 exactly
+Sum of recipr. factors of 523776 = 2 exactly
 
 ```
 
@@ -4619,16 +4619,16 @@ for n in (1 .. 2**19) {
 
 ```txt
 
-Sum of reciprocal divisors of 1 = 1 exactly 
+Sum of reciprocal divisors of 1 = 1 exactly
 Sum of reciprocal divisors of 6 = 2 exactly - perfect!
 Sum of reciprocal divisors of 28 = 2 exactly - perfect!
-Sum of reciprocal divisors of 120 = 3 exactly 
+Sum of reciprocal divisors of 120 = 3 exactly
 Sum of reciprocal divisors of 496 = 2 exactly - perfect!
-Sum of reciprocal divisors of 672 = 3 exactly 
+Sum of reciprocal divisors of 672 = 3 exactly
 Sum of reciprocal divisors of 8128 = 2 exactly - perfect!
-Sum of reciprocal divisors of 30240 = 4 exactly 
-Sum of reciprocal divisors of 32760 = 4 exactly 
-Sum of reciprocal divisors of 523776 = 3 exactly 
+Sum of reciprocal divisors of 30240 = 4 exactly
+Sum of reciprocal divisors of 32760 = 4 exactly
+Sum of reciprocal divisors of 523776 = 3 exactly
 
 ```
 
@@ -4682,8 +4682,8 @@ st> (5/6) asFloat
   ( (sum denominator) = 1 )
       ifTrue: [
            ('Sum of recipr. factors of %1 = %2 exactly %3' %
-                     { candidate printString . 
-                       (sum asInteger) printString . 
+                     { candidate printString .
+                       (sum asInteger) printString .
                        ( sum = 1 ) ifTrue: [ 'perfect!' ]
                                    ifFalse: [ ' ' ] }) displayNl
       ]
@@ -4711,7 +4711,7 @@ class Rational{  // Weenie Rational class, can handle BigInts
    fcn init(_a,_b){ var a=_a, b=_b; normalize(); }
    fcn toString{
       if(b==1) a.toString()
-      else     "%d//%d".fmt(a,b) 
+      else     "%d//%d".fmt(a,b)
    }
    var [proxy] isZero=fcn{ a==0 };
    fcn normalize{  // divide a and b by gcd

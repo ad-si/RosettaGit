@@ -202,8 +202,8 @@ Convex Hull: [(-9, -3), (-3, -9), (19, -8), (17, 5), (12, 17), (5, 19), (-3, 15)
 
 {{trans|D}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <ostream>
 #include <vector>
@@ -1448,11 +1448,11 @@ function ccw(sequence a, b, c)
     return (b[x] - a[x]) * (c[y] - a[y])
          > (b[y] - a[y]) * (c[x] - a[x])
 end function
- 
+
 function convex_hull(sequence points)
     sequence h = {}
     points = sort(points)
- 
+
     /* lower hull */
     for i=1 to length(points) do
         while length(h)>=2
@@ -1461,7 +1461,7 @@ function convex_hull(sequence points)
         end while
         h = append(h, points[i])
     end for
- 
+
     /* upper hull */
     for i=length(points) to 1 by -1 do
         while length(h)>=2
@@ -1470,11 +1470,11 @@ function convex_hull(sequence points)
         end while
         h = append(h, points[i])
     end for
- 
+
     h = h[1..$-1]
     return h
 end function
- 
+
 constant points = {{16,  3}, {12, 17}, { 0,  6}, {-4, -6}, {16,  6},
                    {16, -7}, {16, -3}, {17, -4}, { 5, 19}, {19, -8},
                    { 3, 16}, {12, 13}, { 3, -4}, {17,   5}, {-3, 15},
@@ -1544,7 +1544,7 @@ Also an implementation of https://en.wikibooks.org/wiki/Algorithm_Implementation
   ;;             of L and the point P[i] does not make a counter-clockwise turn:
   ;;        remove the last point from L
   ;;     append P[i] to L
-  ;; TB: U is identical with (reverse P) 
+  ;; TB: U is identical with (reverse P)
   (define (upper/lower-hull [P : Points])
     (reverse
      (for/fold ((rev : Points null))
@@ -2397,7 +2397,7 @@ fn calculate_convex_hull(points: &Vec<Point>) -> Vec<Point> {
         .min_by(|lhs, rhs| lhs.1.x.partial_cmp(&rhs.1.x).unwrap())
         .expect("No left most point");
 
-    
+
     let mut p = left_most_idx;
     let mut q = 0_usize;
 
@@ -2437,7 +2437,7 @@ fn orientation(p: &Point, q: &Point, r: &Point) -> usize {
 fn main(){
     let points = vec![pt(16,3), pt(12,17), pt(0,6), pt(-4,-6), pt(16,6), pt(16,-7), pt(16,-3), pt(17,-4), pt(5,19), pt(19,-8), pt(3,16), pt(12,13), pt(3,-4), pt(17,5), pt(-3,15), pt(-3,-9), pt(0,11), pt(-9,-3), pt(-4,-2), pt(12,10)];
     let hull = calculate_convex_hull(&points);
-    
+
     hull.iter()
         .for_each(|pt| println!("{:?}", pt));
 }
@@ -2492,10 +2492,10 @@ object convex_hull{
         else if(p2._1 == p1._1 && p1._2<p2._2)  -90
         else if(p1._1<p2._1)                    180 - Math.toDegrees(Math.atan(-(p1._2 - p2._2)/(p1._1 - p2._1)))
         else                                    Math.toDegrees(Math.atan((p1._2 - p2._2)/(p1._1 - p2._1)))
-    }   
+    }
     def join_tail(hull:List[(Double,Double)],len:Int):List[(Double,Double)] = {
         if(m(hull(len),hull(0)) > m(hull(len-1),hull(0)))   join_tail(hull.slice(0,len),len-1)
-        else                                                hull    
+        else                                                hull
     }
     def main(args:Array[String]){
         val points = List[(Double,Double)]((16,3), (12,17), (0,6), (-4,-6), (16,6), (16,-7), (16,-3), (17,-4), (5,19), (19,-8), (3,16), (12,13), (3,-4), (17,5), (-3,15), (-3,-9), (0,11), (-9,-3), (-4,-2), (12,10))

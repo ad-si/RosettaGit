@@ -13,14 +13,14 @@ tags = []
 {{task|Concurrency}}{{requires|Concurrency}}{{omit from|BBC BASIC}}
 The goal of this task is to create two concurrent activities ("[[Thread|Threads]]" or "Tasks", not [[Process|processes]].) that share data synchronously. Your language may provide syntax or libraries to perform concurrency. Different languages provide different implementations of concurrency, often with different names. Some languages use the term threads, others use the term tasks, while others use co-processes. This task should not be implemented using fork, spawn, or the [[Linux]]/[[UNIX]]/[[Windows|Win32]] pipe command, as communication should be between threads, not processes.
 
-One of the concurrent units will read from a file named "input.txt" and send the contents of that file, one line at a time, to the other concurrent unit, which will print the line it receives to standard output. The printing unit must count the number of lines it prints. After the concurrent unit reading the file sends its last line to the printing unit, the reading unit will request the number of lines printed by the printing unit. The reading unit will then print the number of lines printed by the printing unit. 
+One of the concurrent units will read from a file named "input.txt" and send the contents of that file, one line at a time, to the other concurrent unit, which will print the line it receives to standard output. The printing unit must count the number of lines it prints. After the concurrent unit reading the file sends its last line to the printing unit, the reading unit will request the number of lines printed by the printing unit. The reading unit will then print the number of lines printed by the printing unit.
 
 This task requires two-way communication between the concurrent units. All concurrent units must cleanly terminate at the end of the program.
 
 
 ## Ada
 
-This Ada example starts by creating a package defining a single instance of a printing task. Ada requires packages to be separated into two parts. The package specification defines the interface to all public members of the package. 
+This Ada example starts by creating a package defining a single instance of a printing task. Ada requires packages to be separated into two parts. The package specification defines the interface to all public members of the package.
 
 ```Ada
 package Synchronous_Concurrent is
@@ -35,10 +35,10 @@ The package body contains the implementation of all the subprograms and tasks de
 
 ```Ada
 with Ada.Text_Io; use Ada.Text_Io;
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded; 
- 
-package body Synchronous_Concurrent is 
- 
+with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
+
+package body Synchronous_Concurrent is
+
    task body Printer is
       Num_Iter : Natural := 0;
       Line     : Unbounded_String;
@@ -58,11 +58,11 @@ package body Synchronous_Concurrent is
          end select;
       end loop;
    end Printer;
- 
+
 end Synchronous_Concurrent;
 ```
 
-Note that the task body contains an ''accept'' block for each ''entry'' defined in the task specification. When some other task calls an entry in the Printer task the communication between the tasks is synchronized. 
+Note that the task body contains an ''accept'' block for each ''entry'' defined in the task specification. When some other task calls an entry in the Printer task the communication between the tasks is synchronized.
 
 This example uses an infinite loop in the printer task. There is no way to know ahead of time how many lines the printer task will need to print. Each iteration through the loop causes the task to execute a selective ''accept''. That means that it can either ''accept'' a call on the Put entry, or it can ''accept'' a call on the Get_Count entry. The terminate option is execute only when the program contains no more tasks that can call the entries in the Printer task. If no task has called either entry the Printer task will wait for a task to call one of the entries, or for the terminate option to apply.
 
@@ -71,7 +71,7 @@ The next file contains the ''main'' procedure for this program. The main or entr
 ```Ada
 with Synchronous_Concurrent; use Synchronous_Concurrent;
 with Ada.Text_Io; use Ada.Text_Io;
- 
+
 procedure Synchronous_Concurrent_Main is
    Num_Strings : Natural;
    The_File : File_Type;
@@ -274,15 +274,15 @@ AND infn(args) BE
     UNLESS ok BREAK
     IF tracing DO
       writef("inco:  Sending a line to outco*n")
-    cowrite(channelptr, line) 
+    cowrite(channelptr, line)
   } REPEAT
 
   IF tracing DO
     writef("inco:  Sending zero to outco*n")
 
-  writef("*nNumber of lines written was %n*n", cowrite(channelptr, 0)) 
+  writef("*nNumber of lines written was %n*n", cowrite(channelptr, 0))
 
-  endstream(instream) 
+  endstream(instream)
 }
 
 AND outfn(args) BE
@@ -343,8 +343,8 @@ AND cowrite(ptr, val) BE
 
 {{libheader|libco}}
 
-```c>#include <stdlib.h
-	/* malloc(), realloc(), free() */
+```cpp
+#include <iostream>	/* malloc(), realloc(), free() */
 #include <stdio.h>	/* fopen(), fgetc(), fwrite(), printf() */
 
 #include <libco.h>	/* co_create(), co_switch() */
@@ -464,8 +464,8 @@ main()
 
 {{works with|C++11}}
 
-```cpp>#include <future
-
+```cpp
+#include <future>
 #include <iostream>
 #include <fstream>
 #include <mutex>
@@ -532,14 +532,14 @@ int main()
 
 ```txt
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, 
-quis nostrud exercitation ullamco laboris 
-nisi ut aliquip ex ea commodo consequat. 
-Duis aute irure dolor in reprehenderit in voluptate velit 
-esse cillum dolore eu fugiat nulla pariatur. 
-Excepteur sint occaecat cupidatat non proident, 
+Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris
+nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit
+esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident,
 sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 Printed 9 lines
@@ -656,7 +656,7 @@ First, implement message-passing:
 
 (defclass queue ()
   ((condition :initform (make-condition-variable)
-              :reader condition-of) 
+              :reader condition-of)
    (mailbox :initform '()
             :accessor mailbox-of)
    (lock :initform (make-lock)
@@ -686,9 +686,9 @@ First, implement message-passing:
                (pop (mailbox-of *self*))))))
 
 (defmacro receive-message (&body cases)
-  (let ((msg-name (gensym "MESSAGE")) 
+  (let ((msg-name (gensym "MESSAGE"))
         (block-name (gensym "BLOCK")))
-    `(let ((,msg-name (slurp-message))) 
+    `(let ((,msg-name (slurp-message)))
        (block ,block-name
          ,@(loop for i in cases
                  for ((name . case) . body) = (cons (mklist (car i))
@@ -722,7 +722,7 @@ Should be easy from now on:
   (with-open-file (stream pathname)
     (loop for line = (read-line stream nil)
           while line
-          do (message writer '|here's a line for you| line) 
+          do (message writer '|here's a line for you| line)
           finally
        (message writer '|how many lines?|)
        (receive-one-message (|line count| count)
@@ -793,7 +793,7 @@ void main() {
 
 void printTask(Tid reader) {
     int n = 0;
-    for (bool eof = false; !eof;) 
+    for (bool eof = false; !eof;)
         receive(
             (string line) {stdout.write(line); n++;},
             (bool) {send(reader, n); eof = true;}
@@ -994,7 +994,7 @@ def printer := {
             println(item)
         }
         to getCount() {
-            return count 
+            return count
         }
     }
 }
@@ -1028,7 +1028,7 @@ This task uses two processes, reader/writer, synchronized by a semaphore S and i
 
 (require 'sequences)
 (require 'tasks)
- 
+
 ;; inter-tasks message : (op-code . data)
 (define (is-message? op message)
 	(and message (equal? op (first message))))
@@ -1038,23 +1038,23 @@ This task uses two processes, reader/writer, synchronized by a semaphore S and i
 	(wait S)
 	(define message (semaphore-pop S))
 	(when (is-message? 'count message ) (writeln 'reader-> message) (task-stop-all))
-	
+
 	(if (first infile) ;; not EOF
 	(set! message (cons 'write (next infile)))
 	(set! message (list 'reader-count-please)))
-	
+
 	(semaphore-push S message)
 	(signal S)
 	infile)
-	
+
 (define (writer count)
 	(wait S)
 	(define message (semaphore-pop S))
-	(when  (is-message? 'write message ) 
-			(writeln (rest message)) 
+	(when  (is-message? 'write message )
+			(writeln (rest message))
 			(set! count (1+ count))
 			(set! message (cons 'ack count)))
-	
+
 	(when  (is-message? 'reader-count-please message )
 		 (set! message (cons 'count count)))
 	(semaphore-push S message)
@@ -1079,23 +1079,23 @@ This task uses two processes, reader/writer, synchronized by a semaphore S and i
 
     #task:id:165:running
     #task:id:166:running
-    Well, it's one for the money    
-    Two for the show    
-    Three to get ready    
-    Now go, cat, go    
-    But don't you    
-    Step on my blue suede shoes    
-    You can do anything    
-    But stay off of my blue suede shoes    
-    Well, you can knock me down    
+    Well, it's one for the money
+    Two for the show
+    Three to get ready
+    Now go, cat, go
+    But don't you
+    Step on my blue suede shoes
+    You can do anything
+    But stay off of my blue suede shoes
+    Well, you can knock me down
  [lines skipped ...]
-    Blue, suede shoes, baby    
-    Blue, blue    
-    Blue suede shoes    
-    Well, you can do anything    
-    But stay off of my blue suede shoes!    
-        
-    reader->     (count . 53)    
+    Blue, suede shoes, baby
+    Blue, blue
+    Blue suede shoes
+    Well, you can do anything
+    But stay off of my blue suede shoes!
+
+    reader->     (count . 53)
 
 ```
 
@@ -1114,7 +1114,7 @@ defmodule RC do
        process( IO.gets(io, ""), io, pid )
      end )
   end
-  
+
   defp process( :eof, _io, pid ) do
     send( pid, :count )
     receive do
@@ -1125,7 +1125,7 @@ defmodule RC do
     send( pid, any )
     process( IO.gets(io, ""), io, pid )
   end
-  
+
   defp reader( pid, c ) do
     receive do
       :count -> send( pid, c )
@@ -1197,12 +1197,12 @@ procedure read(integer fn)
             task_yield()
         end if
     end while
-    
+
     lines = append(lines,0)
     while length(count) = 0 do
         task_yield()
     end while
-    
+
     printf(1,"Count: %d\n",count[1])
 end procedure
 
@@ -1214,7 +1214,7 @@ procedure write(integer fn)
         while length(lines) = 0 do
             task_yield()
         end while
-        
+
         line = lines[1]
         lines = lines[2..$]
         if atom(line) then
@@ -1260,7 +1260,7 @@ result of the command-line: 'cat synco.fs | gforth synco.fs'.
 	HERE DUP
 		CQ# 1- INVERT AND CQ# +
 	SWAP - ALLOT
-\	
+\
 	HERE CQ# ALLOT CONSTANT START
 \
 : ADJUST   (  -- )   [ CQ# 1- ]L AND START + ;
@@ -1295,7 +1295,7 @@ include co.fs
 
 \
 \ * READER LEXEME
-\ 
+\
 	4096 CONSTANT L#
 	CREATE Line 0 , L# ALLOT
 : READER
@@ -1305,7 +1305,7 @@ include co.fs
 	WHILE
 		Line !
 		0 Line CHAN 2!
-		CO		
+		CO
 	REPEAT	DROP
 	Line DUP CHAN 2!
 
@@ -1334,7 +1334,7 @@ include co.fs
 	CO
 
 	\ -- First of writers reports back
-	\ -- the shared global counter 
+	\ -- the shared global counter
 	CHAN CHAN? 0=
 	IF
 		0 X CHAN 2!
@@ -1347,7 +1347,7 @@ include co.fs
 0 X ! READER WRITER ( WRITER WRITER :-) GO CR BYE
 
 -------
-LINES: 59 
+LINES: 59
 
 ```
 
@@ -1488,7 +1488,7 @@ The writer gets the lines in a loop with takeLine until it receives Nothing, at 
 ```haskell
 writer takeLine putCount = loop 0
   where loop n = do l <- takeLine
-                    case l of 
+                    case l of
                        Just x  -> do putStrLn x
                                      loop (n+1)
                        Nothing -> putCount n
@@ -1591,7 +1591,7 @@ class SynchronousConcurrency
     final AtomicLong lineCount = new AtomicLong(0);
     final BlockingQueue<String> queue = new LinkedBlockingQueue<String>();
     final String EOF = new String();
-    
+
     final Thread writerThread = new Thread(new Runnable() {
         public void run()
         {
@@ -1615,7 +1615,7 @@ class SynchronousConcurrency
       }
     );
     writerThread.start();
-    
+
     // No need to start a third thread for the reader, just use this thread
     BufferedReader br = new BufferedReader(new FileReader("input.txt"));
     String line;
@@ -1858,7 +1858,7 @@ while true do
     local status, val = coroutine.resume( co )
     if coroutine.status( co ) == "dead" then break end
     print( val )
-end  
+end
 
 ```
 
@@ -1996,7 +1996,7 @@ let reader count_source lines_dest =
   let rec aux () =
     let line = try  Some (input_line file)
                with End_of_file -> None    in
-      sync (send lines_dest line); 
+      sync (send lines_dest line);
       match line with
 	| Some _ -> aux ()
 	| None   -> let printed = sync (receive count_source) in
@@ -2178,7 +2178,7 @@ declare
      {Finalize.register F proc {$ F} {F close} end}
      {ReadNext}
   end
- 
+
   Count %% Will receive the number of lines
   PrinterPort
 in
@@ -2197,7 +2197,7 @@ in
         end
      end
   end
- 
+
   %% Send all lines to printer thread; make sure that eof is sent.
   try
      for Line in {ReadLines "input.txt"} do
@@ -2206,7 +2206,7 @@ in
   finally
      {Send PrinterPort eof}
   end
- 
+
   %% Sync on Count and print its value.
   {Wait Count}
   {Show Count}
@@ -2220,35 +2220,35 @@ in
 ```perl
 use threads;
 use Thread::Queue qw();
- 
+
 my $q1 = Thread::Queue->new;
 my $q2 = Thread::Queue->new;
- 
+
 my $reader = threads->create(sub {
      my $q1 = shift;
      my $q2 = shift;
- 
+
      open my $fh, '<', 'input.txt';
      $q1->enqueue($_) while <$fh>;
      close $fh;
      $q1->enqueue(undef);
- 
+
      print $q2->dequeue;
 }, $q1, $q2);
- 
+
 my $printer = threads->create(sub {
      my $q1 = shift;
      my $q2 = shift;
- 
+
      my $count;
      while (my $line = $q1->dequeue) {
          print $line;
          $count++;
      };
- 
+
      $q2->enqueue($count);
 }, $q1, $q2);
- 
+
 $reader->join;
 $printer->join;
 ```
@@ -2411,7 +2411,7 @@ Pony has concurrency baked into the language in the form of the actor model:
 
 ```Pony
 use "files"
-		
+
 actor Main
   let _env: Env // The environment contains stdout, so we save it here
 
@@ -2421,7 +2421,7 @@ actor Main
     try
       let path = FilePath(env.root as AmbientAuth, "input.txt")? // this may fail, hence the ?
       let file = File.open(path)
-      for line in FileLines(file) do 
+      for line in FileLines(file) do
         printer(line) // sugar for "printer.apply(line)"
       end
     end
@@ -2430,7 +2430,7 @@ actor Main
   be finish(count: USize) =>
     _env.out.print("Printed: " + count.string() + " lines")
 
-		
+
 actor Printer
   let _env: Env
   var _count: USize = 0
@@ -2453,7 +2453,7 @@ Actors are scheduled asynchronously, but messages (implemented via the behaviour
 PureBasic uses Semaphores and Mutex's to coordinate threads.
 
 ```PureBasic
-Enumeration 
+Enumeration
   #Write
   #Done
 EndEnumeration
@@ -2468,12 +2468,12 @@ Global LineWritten=CreateSemaphore()
 Global LinesWritten, com.commblock
 
 Procedure Writer(arg)
-  Repeat 
+  Repeat
     WaitSemaphore(MessageSent)
     If com\Order=#Write
       PrintN(com\txtline)
       LinesWritten+1
-    EndIf 
+    EndIf
     SignalSemaphore(LineWritten)
   Until com\Order=#Done
 EndProcedure
@@ -2555,7 +2555,7 @@ def reader():
         yield line.rstrip()
     print('Printed %d lines.' % count)
 
-r = reader() 
+r = reader()
 # printer
 for line in r:
     print(line)
@@ -2572,17 +2572,17 @@ def reader():
         yield line.rstrip()
     count = yield None
     print('Printed %d lines.' % count)
- 
-r = reader() 
+
+r = reader()
 
 # printer
 for count, line in enumerate(r):
     if line is None:
         break
     print(line)
-try: 
+try:
     r.send(count)
-except StopIteration: 
+except StopIteration:
     pass
 ```
 
@@ -2627,7 +2627,7 @@ Using synchronous channels for communication between threads:
   (channel-put out-ch eof)
   (printf "Number of lines: ~a\n" (channel-get result-ch)))
 
-(define (printer in-ch result-ch)    
+(define (printer in-ch result-ch)
   (channel-put result-ch
                (for/sum ([line (in-producer channel-get eof in-ch)])
                  (displayln line)
@@ -2900,17 +2900,17 @@ import Foundation
 class Reader: NSObject {
     let inputPath = "~/Desktop/input.txt".stringByExpandingTildeInPath
     var gotNumberOfLines = false
-    
+
     override init() {
         super.init()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "linesPrinted:",
             name: "LinesPrinted", object: nil)
     }
-    
+
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-    
+
     // Selector for the number of lines printed
     func linesPrinted(not:NSNotification) {
         println(not.object!)
@@ -2922,13 +2922,13 @@ class Reader: NSObject {
         var err:NSError?
         let fileString = NSString(contentsOfFile: self.inputPath,
             encoding: NSUTF8StringEncoding, error: &err)
-        
+
         if let lines = fileString?.componentsSeparatedByString("\n") {
             for line in lines {
                 NSNotificationCenter.defaultCenter().postNotificationName("Line", object: line)
             }
             NSNotificationCenter.defaultCenter().postNotificationName("LineNumberRequest", object: nil)
-            
+
             while !self.gotNumberOfLines {
                 sleep(1 as UInt32)
             }
@@ -2949,7 +2949,7 @@ import Foundation
 class Printer: NSObject {
     var numberOfLines = 0
     var gotRequestLineNumber = false
-    
+
     override init() {
         super.init()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotLine:",
@@ -2957,21 +2957,21 @@ class Printer: NSObject {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "lineNumberRequest:",
             name: "LineNumberRequest", object: nil)
     }
-    
+
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-    
+
     func gotLine(not:NSNotification) {
         println(not.object!)
         self.numberOfLines++
     }
-    
+
     func lineNumberRequest(not:NSNotification) {
         self.gotRequestLineNumber = true
         NSNotificationCenter.defaultCenter().postNotificationName("LinesPrinted", object: self.numberOfLines)
     }
-    
+
     func waitForLines() {
         while !self.gotRequestLineNumber {
             sleep(1 as UInt32)
@@ -3260,7 +3260,7 @@ input.txt is just a code file
   2: a:=fcn(to,from){
  ...
  15: }.launch(to,from);
- 16: 
+ 16:
  17: a.noop();
 Other thread read 17 lines
 

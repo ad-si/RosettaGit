@@ -15,7 +15,7 @@ Clear the terminal window.
 [[Terminal Control::task| ]]
 
 ## 6502 Assembly
- 
+
 {{works with|http://vice-emu.sourceforge.net/ VICE}}
 This example has been written for the C64 and uses the CHROUT KERNEL routine.
 Compile with the [http://turbo.style64.org/ Turbo Macro Pro cross assembler]:
@@ -45,12 +45,12 @@ chrout          = $ffd2
 ; *** main ***
 
                 *=$02a8         ; sys 680
-                
+
                 lda clr         ; A = {CLR}
                 jsr chrout      ; Output a character in A to the current
                                 ; output device (default: screen).
-                rts    
-                
+                rts
+
 ; *** data ***
 
 clr             .byte $93       ; the CLR control code
@@ -70,9 +70,9 @@ The 6502asm.com emulator has a 32x32 pixel screen. First we fill this screen wit
                 sta $00         ; at $00 and $01 (high byte in $01)
                 lda #$02
                 sta $01
-                
+
                 ldy #$00        ; Y = 0
-fillscreen:                
+fillscreen:
                 lda $fe         ; A = random number from $fe
                 sta ($00),y     ; put pixel (random color) to the screen
                 iny             ; Y++
@@ -81,11 +81,11 @@ fillscreen:
                 lda $01
                 cmp #$06        ; A==6? (screen ends at $05ff)
                 bne fillscreen  ; no -> loop
-                
-waitforkeypress:                
+
+waitforkeypress:
                 lda $ff         ; $ff is 0 if no key has been pressed
                 beq waitforkeypress
-                
+
                 ldx #$00
                 lda #$00        ; black
 clearscreen:
@@ -138,18 +138,18 @@ end CLS;
 szMessStartPgm:            .asciz "Program start \n"
 szMessEndPgm:              .asciz "Program normal end.\n"
 szClear:                   .asciz "\33[2J"     @ console clear (id language C)
-szClear1:                  .byte 0x1B 
+szClear1:                  .byte 0x1B
                            .byte 'c'           @ other console clear
                            .byte 0
 szCarriageReturn:          .asciz "\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 
 /*  code section */
 .text
-.global main 
-main: 
+.global main
+main:
 
     ldr r0,iAdrszMessStartPgm                   @ display start message
     bl affichageMess
@@ -170,21 +170,21 @@ iAdrszClear1:             .int szClear1
 iAdrszCarriageReturn:     .int szCarriageReturn
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}                       @ save  registers 
+    push {r0,r1,r2,r7,lr}                       @ save  registers
     mov r2,#0                                   @ counter length */
 1:                                              @ loop length calculation
-    ldrb r1,[r0,r2]                             @ read octet start position + index 
+    ldrb r1,[r0,r2]                             @ read octet start position + index
     cmp r1,#0                                   @ if 0 its over
     addne r2,r2,#1                              @ else add 1 in the length
-    bne 1b                                      @ and loop 
-                                                @ so here r2 contains the length of the message 
-    mov r1,r0                                   @ address message in r1 
+    bne 1b                                      @ and loop
+                                                @ so here r2 contains the length of the message
+    mov r1,r0                                   @ address message in r1
     mov r0,#STDOUT                              @ code to write to the standard output Linux
-    mov r7, #WRITE                              @ code call system "write" 
+    mov r7, #WRITE                              @ code call system "write"
     svc #0                                      @ call system
     pop {r0,r1,r2,r7,lr}                        @ restaur registers
     bx lr                                       @ return
@@ -366,8 +366,8 @@ void cls(void) {
 Here is the cheaty way no one likes, only works on Windows.
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 void main() {
@@ -394,11 +394,11 @@ Works on all .NET Core platforms. Throws an exception if output has been redirec
 
 ```cobol
        PROGRAM-ID. blank-terminal.
-       
+
        DATA DIVISION.
        SCREEN SECTION.
        01  blank-screen BLANK SCREEN.
-       
+
        PROCEDURE DIVISION.
            DISPLAY blank-screen
 
@@ -550,7 +550,7 @@ end program
 
 
 
-###  Intel Fortran on Windows 
+###  Intel Fortran on Windows
 
 Using console functions, one can also clear the screen without using a system command. See also ''[https://msdn.microsoft.com/en-us/library/ms682022.aspx Clearing the Screen]'' on MSDN.
 
@@ -569,18 +569,18 @@ contains
         integer(DWORD) :: cCharsWritten
         type(T_CONSOLE_SCREEN_BUFFER_INFO) :: csbi
         integer(DWORD) :: dwConSize
-        
+
         if (GetConsoleScreenBufferInfo(hConsole, csbi) == 0) return
         dwConSize = csbi%dwSize%X * csbi%dwSize%Y
-        
+
         if (FillConsoleOutputCharacter(hConsole, SCHAR_" ", dwConSize, &
             coordScreen, loc(cCharsWritten)) == 0) return
 
         if (GetConsoleScreenBufferInfo(hConsole, csbi) == 0) return
-        
+
         if (FillConsoleOutputAttribute(hConsole, csbi%wAttributes, &
             dwConSize, coordScreen, loc(cCharsWritten)) == 0) return
-            
+
         if (SetConsoleCursorPosition(hConsole, coordScreen) == 0) return
     end subroutine
 end program
@@ -588,7 +588,7 @@ end program
 
 
 
-###  GNU Fortran on Windows 
+###  GNU Fortran on Windows
 
 The preceding program can be compiled with GNU Fortran, with the following interface module for Windows API.
 
@@ -612,7 +612,7 @@ module kernel32
     type, bind(C) :: T_COORD
         integer(SHORT) :: X, Y
     end type
-    
+
     type, bind(C) :: T_SMALL_RECT
         integer(SHORT) :: Left
         integer(SHORT) :: Top
@@ -657,7 +657,7 @@ module kernel32
             integer(LPDWORD), value :: lpNumberOfAttrsWritten
         end function
     end interface
-    
+
     interface
         function GetConsoleScreenBufferInfo(hConsoleOutput, &
                 lpConsoleScreenBufferInfo) &
@@ -669,7 +669,7 @@ module kernel32
             type(T_CONSOLE_SCREEN_BUFFER_INFO) :: lpConsoleScreenBufferInfo
         end function
     end interface
-    
+
     interface
         function SetConsoleCursorPosition(hConsoleOutput, dwCursorPosition) &
                 bind(C, name="SetConsoleCursorPosition")
@@ -680,7 +680,7 @@ module kernel32
             type(T_COORD), value :: dwCursorPosition
         end function
     end interface
-    
+
     interface
         function GetStdHandle(nStdHandle) bind(C, name="GetStdHandle")
             import HANDLE, DWORD
@@ -986,7 +986,7 @@ Module Checkit {
       Print "wait... half second"
       Wait 500
       \\ clear using background color
-      Cls 
+      Cls
       \\ set the background (using html number for color), and set 4th line as top
       \\ for scrolling
       Cls #11bb22, 3
@@ -1004,7 +1004,7 @@ Module Checkit {
       Window 16, 0
       Cls 5   ' magenta
       Back {
-            Cls 15 ' white border      
+            Cls 15 ' white border
       }
 }
 checkit
@@ -1132,7 +1132,7 @@ print $clear;
 ```
 
 
-We can also obtain the sequence using the Term::Cap module: 
+We can also obtain the sequence using the Term::Cap module:
 
 
 ```perl
@@ -1221,12 +1221,12 @@ STD_OUTPUT_HANDLE = -11
 
 class COORD(Structure):
     pass
-    
+
 COORD._fields_ = [("X", c_short), ("Y", c_short)]
-    
+
 class SMALL_RECT(Structure):
     pass
-    
+
 SMALL_RECT._fields_ = [("Left", c_short), ("Top", c_short), ("Right", c_short), ("Bottom", c_short)]
 
 class CONSOLE_SCREEN_BUFFER_INFO(Structure):
@@ -1283,7 +1283,7 @@ clear_console()
 
 ### generic
 
-The [[REXX]] programming language does not include a facility to clear the screen natively. 
+The [[REXX]] programming language does not include a facility to clear the screen natively.
 
 However, it is possile to execute an external [[system command]] to achieve this task.
 
@@ -1297,7 +1297,7 @@ Also, not germane to this Rosetta Code task, the boilerplate code also possibly 
 ::::* if a particular documentation is to be shown
 ::::* which system pool name is to be used for system environmental variables
 ::::* which version of REXX is being used
-::::* if the program is being invoked as a function, command, or subroutine 
+::::* if the program is being invoked as a function, command, or subroutine
 
 
 The following code works for:
@@ -1458,7 +1458,7 @@ print "\e[3J\e[H\e[2J";
 
 ## SmileBASIC
 
-SmileBASIC's text screen is mixed in with its graphics screen, background screen, and sprites screen. 
+SmileBASIC's text screen is mixed in with its graphics screen, background screen, and sprites screen.
 
 ### Text screen only
 

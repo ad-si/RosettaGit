@@ -14,12 +14,12 @@ tags = []
 
 ;Task:
 "''Simulate''" a four-bit adder.
- 
-This design can be realized using four [[wp:Adder_(electronics)#Full_adder|1-bit full adder]]s. 
-Each of these 1-bit full adders can be built with two [[wp:Adder_(electronics)#Half_adder|half adder]]s and an ''or'' [[wp:Logic gate|gate]]. Finally a half adder can be made using a ''xor'' gate and an ''and'' gate. 
+
+This design can be realized using four [[wp:Adder_(electronics)#Full_adder|1-bit full adder]]s.
+Each of these 1-bit full adders can be built with two [[wp:Adder_(electronics)#Half_adder|half adder]]s and an ''or'' [[wp:Logic gate|gate]]. Finally a half adder can be made using a ''xor'' gate and an ''and'' gate.
 The ''xor'' gate can be made using two ''not''s, two ''and''s and one ''or''.
 
-'''Not''', '''or''' and '''and''', the only allowed "gates" for the task, can be "imitated" by using the [[Bitwise operations|bitwise operators]] of your language. 
+'''Not''', '''or''' and '''and''', the only allowed "gates" for the task, can be "imitated" by using the [[Bitwise operations|bitwise operators]] of your language.
 If there is not a ''bit type'' in your language, to be sure that the ''not'' does not "invert" all the other bits of the basic type (e.g. a byte) we are not interested in, you can use an extra ''nand'' (''and'' then ''not'') with the constant 1 on one input.
 
 Instead of optimizing and reducing the number of gates used for the final 4-bit adder, build it in the most straightforward way, ''connecting'' the other "constructive blocks", in turn made of "simpler" and "smaller" ones.
@@ -37,7 +37,7 @@ Instead of optimizing and reducing the number of gates used for the final 4-bit 
 |[[File:4bitsadder.png|frameless|A 4-bit adder]]
 |}
 
-Solutions should try to be as descriptive as possible, making it as easy as possible to identify "connections" between higher-order "blocks". 
+Solutions should try to be as descriptive as possible, making it as easy as possible to identify "connections" between higher-order "blocks".
 It is not mandatory to replicate the syntax of higher-order blocks in the atomic "gate" blocks, i.e. basic "gate" operations can be performed as usual bitwise operations, or they can be "wrapped" in a ''block'' in order to expose the same syntax of higher-order blocks, at implementers' choice.
 
 To test the implementation, show the sum of two four-bit numbers (in binary).
@@ -53,7 +53,7 @@ To test the implementation, show the sum of two four-bit numbers (in binary).
 ```Ada
 
 type Four_Bits is array (1..4) of Boolean;
-   
+
 procedure Half_Adder (Input_1, Input_2 : Boolean; Output, Carry : out Boolean) is
 begin
    Output := Input_1 xor Input_2;
@@ -792,7 +792,7 @@ REM  RESULT IN C
       PRINT "1101 + 0011 = ";
       PROC4bitadd(1,1,0,1, 0,0,1,1, e,d,c,b,a) : PRINT e,d,c,b,a
       END
-      
+
       DEF PROC4bitadd(a3&, a2&, a1&, a0&, b3&, b2&, b1&, b0&, \
       \   RETURN c3&, RETURN s3&, RETURN s2&, RETURN s1&, RETURN s0&)
       LOCAL c0&, c1&, c2&
@@ -801,19 +801,19 @@ REM  RESULT IN C
       PROCfulladder(a2&, b2&, c1&, s2&, c2&)
       PROCfulladder(a3&, b3&, c2&, s3&, c3&)
       ENDPROC
-      
+
       DEF PROCfulladder(a&, b&, c&, RETURN s&, RETURN c1&)
       LOCAL x&, y&, z&
       PROChalfadder(a&, c&, x&, y&)
       PROChalfadder(x&, b&, s&, z&)
       c1& = y& OR z&
       ENDPROC
-      
+
       DEF PROChalfadder(a&, b&, RETURN s&, RETURN c&)
       s& = FNxorgate(a&, b&)
       c& = a& AND b&
       ENDPROC
-      
+
       DEF FNxorgate(a&, b&)
       LOCAL c&, d&
       c& = a& AND NOT b&
@@ -841,8 +841,8 @@ REM  RESULT IN C
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef char pin_t;
 #define IN const pin_t *
@@ -909,7 +909,7 @@ int main()
 	 V(b3), V(b2), V(b1), V(b0),
 	 V(s3), V(s2), V(s1), V(s0),
 	 V(overflow));
-  
+
   return 0;
 }
 ```
@@ -1349,31 +1349,31 @@ This code models gates as functions.  The connection of gates is done via custom
 # ATOMIC GATES
 not_gate = (bit) ->
   [1, 0][bit]
-  
+
 and_gate = (bit1, bit2) ->
   bit1 and bit2
-  
+
 or_gate = (bit1, bit2) ->
   bit1 or bit2
-  
+
 # COMPOSED GATES
 xor_gate = (A, B) ->
   X = and_gate A, not_gate(B)
   Y = and_gate not_gate(A), B
   or_gate X, Y
-  
+
 half_adder = (A, B) ->
   S = xor_gate A, B
   C = and_gate A, B
   [S, C]
-  
+
 full_adder = (C0, A, B) ->
   [SA, CA] = half_adder C0, A
   [SB, CB] = half_adder SA, B
   S = SB
   C = or_gate CA, CB
   [S, C]
-  
+
 n_bit_adder = (n) ->
   (A_bits, B_bits) ->
     s = []
@@ -1383,7 +1383,7 @@ n_bit_adder = (n) ->
       s.push S
     [s, C]
 
-adder = n_bit_adder(4)  
+adder = n_bit_adder(4)
 console.log adder [1, 0, 1, 0], [0, 1, 1, 0]
 
 ```
@@ -1684,7 +1684,7 @@ fourBitsAdder:
 defmodule RC do
   use Bitwise
   @bit_size 4
-  
+
   def four_bit_adder(a, b) do           # returns pair {sum, carry}
     a_bits = binary_string_to_bits(a)
     b_bits = binary_string_to_bits(b)
@@ -1694,27 +1694,27 @@ defmodule RC do
          {[s | acc], c}
        end)
   end
-  
+
   defp full_adder(a, b, c0) do
     {s, c} = half_adder(c0, a)
     {s, c1} = half_adder(s, b)
     {s, bor(c, c1)}                     # returns pair {sum, carry}
   end
-  
+
   defp half_adder(a, b) do
     {bxor(a, b), band(a, b)}            # returns pair {sum, carry}
   end
-  
+
   def int_to_binary_string(n) do
     Integer.to_string(n,2) |> String.rjust(@bit_size, ?0)
   end
-  
+
   defp binary_string_to_bits(s) do
     String.codepoints(s) |> Enum.map(fn bit -> String.to_integer(bit) end)
   end
-  
+
   def task do
-    IO.puts " A    B      A      B   C    S  sum" 
+    IO.puts " A    B      A      B   C    S  sum"
     Enum.each(0..15, fn a ->
       bin_a = int_to_binary_string(a)
       Enum.each(0..15, fn b ->
@@ -1916,7 +1916,7 @@ subroutine fourbitadder(a, b, s)
   logical, intent(out) :: s(0:4)
   logical :: c0, c1, c2
 
-  s(0) = fulladder(a(0), b(0), .false., c0)  
+  s(0) = fulladder(a(0), b(0), .false., c0)
   s(1) = fulladder(a(1), b(1), c0, c1)
   s(2) = fulladder(a(2), b(2), c1, c2)
   s(3) = fulladder(a(3), b(3), c2, s(4))
@@ -1926,7 +1926,7 @@ end module
 program Four_bit_adder
   use logic
   implicit none
-  
+
   logical, dimension(0:3) :: a, b
   logical, dimension(0:4) :: s
   integer, dimension(0:3) :: ai, bi
@@ -1955,7 +1955,7 @@ program Four_bit_adder
       end where
       write(*, "(4i1,a,4i1,a,5i1)") ai(3:0:-1), " + ", bi(3:0:-1), " = ", si(4:0:-1)
     end do
-  end do  
+  end do
 end program
 ```
 
@@ -2023,7 +2023,7 @@ b4A (Zero, Zero, Zero, One) (Zero, One, One, One) |> printfn "%A"
 ```txt
 
 0001 + 0111 =
-(Zero, One, Zero, Zero, 
+(Zero, One, Zero, Zero,
 
 ```
 
@@ -2034,7 +2034,7 @@ b4A (Zero, Zero, Zero, One) (Zero, One, One, One) |> printfn "%A"
 
 ### Bytes
 
-Go does not have a bit type, so byte is used.  
+Go does not have a bit type, so byte is used.
 This is the straightforward solution using bytes and functions.
 
 ```go
@@ -2248,7 +2248,7 @@ xor a b = uncurry nand. (nand a &&& nand b) $ nand a b
 Adder circuits:
 
 ```haskell
-halfAdder = uncurry band &&& uncurry xor 
+halfAdder = uncurry band &&& uncurry xor
 fullAdder (c, a, b) =  (\(cy,s) ->  first (bor cy) $ halfAdder (b, s)) $ halfAdder (c, a)
 
 adder4 as = mapAccumR (\cy (f,a,b) -> f (cy,a,b)) 0 . zip3 (replicate 4 fullAdder) as
@@ -2536,31 +2536,31 @@ public class GateLogic
   // Basic gate interfaces
   public interface OneInputGate
   {  boolean eval(boolean input);  }
-  
+
   public interface TwoInputGate
   {  boolean eval(boolean input1, boolean input2);  }
-  
+
   public interface MultiGate
   {  boolean[] eval(boolean... inputs);  }
-  
+
   // Create NOT
   public static OneInputGate NOT = new OneInputGate() {
     public boolean eval(boolean input)
     {  return !input;  }
   };
-  
+
   // Create AND
   public static TwoInputGate AND = new TwoInputGate() {
     public boolean eval(boolean input1, boolean input2)
     {  return input1 && input2;  }
   };
-  
+
   // Create OR
   public static TwoInputGate OR = new TwoInputGate() {
     public boolean eval(boolean input1, boolean input2)
     {  return input1 || input2;  }
   };
-  
+
   // Create XOR
   public static TwoInputGate XOR = new TwoInputGate() {
     public boolean eval(boolean input1, boolean input2)
@@ -2571,7 +2571,7 @@ public class GateLogic
              );
     }
   };
-  
+
   // Create HALF_ADDER
   public static MultiGate HALF_ADDER = new MultiGate() {
     public boolean[] eval(boolean... inputs)
@@ -2584,7 +2584,7 @@ public class GateLogic
       };
     }
   };
-  
+
   // Create FULL_ADDER
   public static MultiGate FULL_ADDER = new MultiGate() {
     public boolean[] eval(boolean... inputs)
@@ -2601,7 +2601,7 @@ public class GateLogic
       };
     }
   };
-  
+
   public static MultiGate buildAdder(final int numBits)
   {
     return new MultiGate() {
@@ -2627,7 +2627,7 @@ public class GateLogic
       }
     };
   }
-  
+
   public static void main(String[] args)
   {
     int numBits = Integer.parseInt(args[0]);
@@ -2644,7 +2644,7 @@ public class GateLogic
       System.out.println("Second number is out of range");
       return;
     }
-    
+
     MultiGate multiBitAdder = buildAdder(numBits);
     // Convert input numbers into array of bits
     boolean[] inputs = new boolean[numBits << 1];
@@ -2659,7 +2659,7 @@ public class GateLogic
       firstNumDisplay = (firstBit ? "1" : "0") + firstNumDisplay;
       secondNumDisplay = (secondBit ? "1" : "0") + secondNumDisplay;
     }
-    
+
     boolean[] outputs = multiBitAdder.eval(inputs);
     int outputNum = 0;
     String outputNumDisplay = "";
@@ -2676,7 +2676,7 @@ public class GateLogic
     System.out.println("A=" + firstNumDisplay + " (" + firstNum + "), B=" + secondNumDisplay + " (" + secondNum + "), S=" + outputCarryDisplay + " " + outputNumDisplay + " (" + outputNum + ")");
     return;
   }
-  
+
 }
 ```
 
@@ -2701,7 +2701,7 @@ A=1100100000100111 (51239), B=0011101101101010 (15210), S=1 0000001110010001 (66
 
 ### Error Handling
 
-In order to keep the binary-ness obvious, all operations will occur on 
+In order to keep the binary-ness obvious, all operations will occur on
 0s and 1s. To enforce this, we'll first create a couple of helper functions.
 
 
@@ -2736,7 +2736,7 @@ and, finally, the four bit adder.
 ```JavaScript
 
 // basic building blocks allowed by the rules are ~, &, and |, we'll fake these
-// in a way that makes what they do (at least when you use them) more obvious 
+// in a way that makes what they do (at least when you use them) more obvious
 // than the other available options do.
 
 function not(a) {
@@ -2771,7 +2771,7 @@ function halfAdder(a, b) {
 
 function fullAdder(a, b, c) {
     if (arePseudoBin(a, b, c)) {
-        var h0 = halfAdder(a, b), 
+        var h0 = halfAdder(a, b),
             h1 = halfAdder(h0.sum, c);
         return {carry: or(h0.carry, h1.carry), sum: h1.sum };
     }
@@ -2780,23 +2780,23 @@ function fullAdder(a, b, c) {
 function fourBitAdder(a, b) {
     if (typeof a.length == 'undefined' || typeof b.length == 'undefined')
         throw new Error('bad values');
-    // not sure if the rules allow this, but we need to pad the values 
+    // not sure if the rules allow this, but we need to pad the values
     // if they're too short and trim them if they're too long
-    var inA = Array(4), 
-        inB = Array(4), 
-        out = Array(4), 
-        i = 4, 
+    var inA = Array(4),
+        inB = Array(4),
+        out = Array(4),
+        i = 4,
         pass;
-    
+
     while (i--) {
         inA[i] = a[i] != 1 ? 0 : 1;
         inB[i] = b[i] != 1 ? 0 : 1;
     }
 
-    // now we can start adding... I'd prefer to do this in a loop, 
-    // but that wouldn't be "connecting the other 'constructive blocks', 
+    // now we can start adding... I'd prefer to do this in a loop,
+    // but that wouldn't be "connecting the other 'constructive blocks',
     // in turn made of 'simpler' and 'smaller' ones"
-    
+
     pass = halfAdder(inA[3], inB[3]);
     out[3] = pass.sum;
     pass = fullAdder(inA[2], inB[2], pass.carry);
@@ -2862,14 +2862,14 @@ def bit_nand(a; b): bit_and(a; b) | bit_not;
 def bit_or(a; b): bit_nand(bit_nand(a;a); bit_nand(b;b));
 
 def bit_xor(a; b):
-  bit_nand(bit_nand(bit_nand(a;b); a); 
+  bit_nand(bit_nand(bit_nand(a;b); a);
            bit_nand(bit_nand(a;b); b));
 
-def halfAdder(a; b): 
+def halfAdder(a; b):
   { "carry": bit_and(a; b), "sum": bit_xor(a; b) };
 
 def fullAdder(a; b; c):
-  halfAdder(a; b) as $h0 
+  halfAdder(a; b) as $h0
   | halfAdder($h0.sum; c) as $h1
   | {"carry": bit_or($h0.carry; $h1.carry), "sum": $h1.sum };
 
@@ -2879,7 +2879,7 @@ def fourBitAdder(a; b):
   # pad on the left with 0s, and convert the string
   # representation ("101") to an array of integers ([1,0,1]).
   def pad: (4-length) * "0" + . | explode | map(. - 48);
-  
+
   (a|pad) as $inA | (b|pad) as $inB
   | [][3] = null                                # an array for storing the four results
   | halfAdder($inA[3]; $inB[3]) as $pass
@@ -2888,7 +2888,7 @@ def fourBitAdder(a; b):
   | .[2] = $pass.sum
   | fullAdder($inA[1]; $inB[1]; $pass.carry) as $pass
   | .[1] = $pass.sum
-  | fullAdder($inA[0]; $inB[0]; $pass.carry) as $pass 
+  | fullAdder($inA[0]; $inB[0]; $pass.carry) as $pass
   | .[0] = $pass.sum
   | map(tostring) | join("") ;
 ```
@@ -2919,19 +2919,19 @@ function xor(a, b) { return nand(nand(nand(a,b), a), nand(nand(a,b), b)); }
 
 function halfAdder(a, b) { return { carry: and(a, b), sum: xor(a, b) }; }
 function fullAdder(a, b, c) {
-    var h0 = halfAdder(a, b), 
+    var h0 = halfAdder(a, b),
         h1 = halfAdder(h0.sum, c);
     return {carry: or(h0.carry, h1.carry), sum: h1.sum };
 }
- 
+
 function fourBitAdder(a, b) {
     // set to width 4, pad with 0 if too short and truncate right if too long
-    var inA = Array(4), 
-        inB = Array(4), 
-        out = Array(4), 
-        i = 4, 
+    var inA = Array(4),
+        inB = Array(4),
+        out = Array(4),
+        i = 4,
         pass;
- 
+
     if (a.length < 4) a = '0'.repeat(4 - a.length) + a;
     a = a.slice(-4);
     if (b.length < 4) b = '0'.repeat(4 - b.length) + b;
@@ -2945,7 +2945,7 @@ function fourBitAdder(a, b) {
     }
 
     printf('%s + %s = ', a, b);
- 
+
     // now we can start adding... connecting the constructive blocks
     pass = halfAdder(inA[3], inB[3]);
     out[3] = pass.sum;
@@ -3228,10 +3228,10 @@ LabVIEW's G language is a kind of circuit diagram based programming. Thus, a cir
 ```Lua
 -- Build XOR from AND, OR and NOT
 function xor (a, b) return (a and not b) or (b and not a) end
- 
+
 -- Can make half adder now XOR exists
 function halfAdder (a, b) return xor(a, b), a and b end
- 
+
 -- Full adder is two half adders with carry outputs OR'd
 function fullAdder (a, b, cIn)
     local ha0s, ha0c = halfAdder(cIn, a)
@@ -3239,7 +3239,7 @@ function fullAdder (a, b, cIn)
     local cOut, s = ha0c or ha1c, ha1s
     return cOut, s
 end
- 
+
 -- Carry bits 'ripple' through adders, first returned value is overflow
 function fourBitAdder (a3, a2, a1, a0, b3, b2, b1, b0) -- LSB-first
     local fa0c, fa0s = fullAdder(a0, b0, false)
@@ -3248,7 +3248,7 @@ function fourBitAdder (a3, a2, a1, a0, b3, b2, b1, b0) -- LSB-first
     local fa3c, fa3s = fullAdder(a3, b3, fa2c)
     return fa3c, fa3s, fa2s, fa1s, fa0s -- Return as MSB-first
 end
- 
+
 -- Take string of noughts and ones, convert to native boolean type
 function toBool (bitString)
     local boolList, bit = {}
@@ -3259,7 +3259,7 @@ function toBool (bitString)
     end
     return boolList
 end
- 
+
 -- Take list of booleans, convert to string of binary digits (variadic)
 function toBits (...)
     local bStr = ""
@@ -3268,7 +3268,7 @@ function toBits (...)
     end
     return bStr
 end
- 
+
 -- Little driver function to neaten use of the adder
 function add (n1, n2)
     local A, B = toBool(n1), toBool(n2)
@@ -3276,7 +3276,7 @@ function add (n1, n2)
                                             B[1], B[2], B[3], B[4] )
     return toBits(s0, s1, s2, s3), v
 end
- 
+
 -- Main procedure (usage examples)
 print("SUM", "OVERFLOW\n")
 print(add(0001, 0001)) -- 1 + 1 = 2
@@ -3376,7 +3376,7 @@ fulladder[a_, b_, c0_] := Module[{s, c, c1},
    {s, c} = halfadder[c0, a];
    {s, c1} = halfadder[s, b];
    {s, or[c, c1]}];
-fourbitadder[{a3_, a2_, a1_, a0_}, {b3_, b2_, b1_, b0_}] := 
+fourbitadder[{a3_, a2_, a1_, a0_}, {b3_, b2_, b1_, b0_}] :=
   Module[{s0, s1, s2, s3, c0, c1, c2, c3},
    {s0, c0} = fulladder[a0, b0, 0];
    {s1, c1} = fulladder[a1, b1, c0];
@@ -3397,7 +3397,7 @@ Output:
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-The four bit adder presented can work on matricies of 1's and 0's, which are stored as characters, doubles, or booleans. MATLAB has functions to convert decimal numbers to binary, but these functions convert a decimal number not to binary but a string data type of 1's and 0's. So, this four bit adder is written to be compatible with MATLAB's representation of binary. Also, because this is MATLAB, and you might want to add arrays of 4-bit binary numbers together, this implementation will add two column vectors of 4-bit binary numbers together. 
+The four bit adder presented can work on matricies of 1's and 0's, which are stored as characters, doubles, or booleans. MATLAB has functions to convert decimal numbers to binary, but these functions convert a decimal number not to binary but a string data type of 1's and 0's. So, this four bit adder is written to be compatible with MATLAB's representation of binary. Also, because this is MATLAB, and you might want to add arrays of 4-bit binary numbers together, this implementation will add two column vectors of 4-bit binary numbers together.
 
 
 ```MATLAB
@@ -3407,18 +3407,18 @@ function [S,v] = fourBitAdder(input1,input2)
     %if input1 and input2 are a vector of multiple decimal numbers, then
     %the binary form of these vectors are an n by 4 matrix.
     assert((size(input1,2) == 4) && (size(input2,2) == 4),'This will only work on 4-Bit Numbers');
-    
+
     %Converts MATLAB binary strings to matricies of 1 and 0
     function mat = binStr2Mat(binStr)
-        mat = zeros(size(binStr));      
+        mat = zeros(size(binStr));
         for i = (1:numel(binStr))
             mat(i) = str2double(binStr(i));
         end
     end
-    
+
     %XOR decleration
-    function AxorB = xor(A,B)        
-        AxorB = or(and(A,not(B)),and(B,not(A)));    
+    function AxorB = xor(A,B)
+        AxorB = or(and(A,not(B)),and(B,not(A)));
     end
 
     %Half-Adder decleration
@@ -3435,9 +3435,9 @@ function [S,v] = fourBitAdder(input1,input2)
     end
 
     %The rest of this code is the 4-bit adder
-    
+
     binStrFlag = false; %A flag to determine if the original input was a binary string
-    
+
     %If either of the inputs was a binary string, convert it to a matrix of
     %1's and 0's.
     if ischar(input1)
@@ -3456,7 +3456,7 @@ function [S,v] = fourBitAdder(input1,input2)
     [S(:,3),Co] = fullAdder(input1(:,3),input2(:,3),Co);
     [S(:,2),Co] = fullAdder(input1(:,2),input2(:,2),Co);
     [S(:,1),v] = fullAdder(input1(:,1),input2(:,1),Co);
-    
+
     %If the original inputs were binary strings, convert the output of the
     %4-bit adder to a binary string with the same formatting as the
     %original binary strings.
@@ -3552,11 +3552,11 @@ FOUR(Y,Z,C4)
 Usage:
 ```txt
 USER>S N1="0110",N2="0010",C=0,T=$$FOUR^ADDER(N1,N2,C)
- 
+
 USER>W N1_" + "_N2_" + "_C_" = "_$P(T,"^")_" Carry "_$P(T,"^",2)
 0110 + 0010 + 0 = 1000 Carry 0
 USER>S N1="0110",N2="1110",C=0,T=$$FOUR^ADDER(N1,N2,C)
- 
+
 USER>W T
 0100^1
 USER>W N1_" + "_N2_" + "_C_" = "_$P(T,"^")_" Carry "_$P(T,"^",2)
@@ -3567,7 +3567,7 @@ USER>W N1_" + "_N2_" + "_C_" = "_$P(T,"^")_" Carry "_$P(T,"^",2)
 
 ## MyHDL
 
-To interpret and run this code you will need a recent copy of Python, and the MyHDL library from myhdl.org.  Both examples integrate test code, and export Verilog and VHDL for hardware synthesis. 
+To interpret and run this code you will need a recent copy of Python, and the MyHDL library from myhdl.org.  Both examples integrate test code, and export Verilog and VHDL for hardware synthesis.
 
 Verbose Code - With integrated Test & Demo
 
@@ -3578,14 +3578,14 @@ Verbose Code - With integrated Test & Demo
 """     http://rosettacode.org/wiki/Four_bit_adder
         Demonstrate theoretical four bit adder simulation
         using And, Or & Invert primitives
-        
+
         2011-05-10  jc
 """
 
 from myhdl import always_comb, ConcatSignal, delay, intbv, Signal, \
                   Simulation, toVerilog, toVHDL
-                  
-from random import randrange 
+
+from random import randrange
 
 
 """   define set of primitives
@@ -3599,14 +3599,14 @@ def inverter(z, a):   # define component name & interface
 
 def and2(z, a, b):
    """ z <- a and b """
-   @always_comb 
+   @always_comb
    def logic():
       z.next = a and b
    return logic
 
 def or2(z, a, b):
-   """ z <- a or b """   
-   @always_comb  
+   """ z <- a or b """
+   @always_comb
    def logic():
       z.next = a or b
    return logic
@@ -3615,10 +3615,10 @@ def or2(z, a, b):
 """   build components using defined primitive set
       --------------------------------------------   """
 def xor2 (z, a, b):
-   """ z <- a xor b """   
+   """ z <- a xor b """
    # define interconnect signals
    nota, notb, annotb, bnnota = [Signal(bool(0)) for i in range(4)]
-   # name sub-components, and their interconnect 
+   # name sub-components, and their interconnect
    inv0 = inverter(nota,  a)
    inv1 = inverter(notb,  b)
    and2a = and2(annotb,  a, notb)
@@ -3627,7 +3627,7 @@ def xor2 (z, a, b):
    return inv0, inv1, and2a, and2b, or2a
 
 def halfAdder(carry, summ,  in_a, in_b):
-   """ carry,sum is the sum of in_a, in_b """ 
+   """ carry,sum is the sum of in_a, in_b """
    and2a = and2(carry,  in_a, in_b)
    xor2a  =  xor2(summ,   in_a, in_b)
    return and2a, xor2a
@@ -3641,13 +3641,13 @@ def fullAdder(fa_c1, fa_s,  fa_c0, fa_a, fa_b):
    return halfAdder01, halfAdder02, or2a
 
 def Adder4b_ST(co,sum4, ina,inb):
-   ''' assemble 4 full adders ''' 
+   ''' assemble 4 full adders '''
    c = [Signal(bool()) for i in range(0,4)]
    sl = [Signal(bool()) for i in range(4)]  # sum list
    halfAdder_0 = halfAdder(c[1],sl[0],      ina(0),inb(0))
-   fullAdder_1 = fullAdder(c[2],sl[1], c[1],ina(1),inb(1)) 
-   fullAdder_2 = fullAdder(c[3],sl[2], c[2],ina(2),inb(2)) 
-   fullAdder_3 = fullAdder(co,  sl[3], c[3],ina(3),inb(3)) 
+   fullAdder_1 = fullAdder(c[2],sl[1], c[1],ina(1),inb(1))
+   fullAdder_2 = fullAdder(c[3],sl[2], c[2],ina(2),inb(2))
+   fullAdder_3 = fullAdder(co,  sl[3], c[3],ina(3),inb(3))
    # create an internal bus for the output list
    sc = ConcatSignal(*reversed(sl))  # create internal bus for output list
    @always_comb
@@ -3669,7 +3669,7 @@ def test():
       yield delay(5)
       print "     %2d  %2d   |  %2d   %2d     " \
              % (ina4,inb4, t_co,sum4)
-      assert t_co * 16 + sum4 == ina4 + inb4 
+      assert t_co * 16 + sum4 == ina4 + inb4
    print
 
 
@@ -3680,10 +3680,10 @@ test_1 = test()
 
 def main():
    sim = Simulation(Adder4b_01, test_1)
-   sim.run()    
+   sim.run()
    toVHDL(Adder4b_ST, t_co,sum4, ina4,inb4)
    toVerilog(Adder4b_ST, t_co,sum4, ina4,inb4)
-    
+
 if __name__ == '__main__':
    main()
 
@@ -3739,7 +3739,7 @@ def Multibit_Adder(a, b, s):
     @always_comb
     def assign():
         s.next = sc
-    
+
     # create a list of adders
     add = [None] * N
     for i in range(N):
@@ -3756,8 +3756,8 @@ s = Signal(intbv(0)[N+1:])
 
 # convert to Verilog and VHDL
 toVerilog(Multibit_Adder, a, b, s)
-toVHDL(Multibit_Adder, a, b, s)    
-    
+toVHDL(Multibit_Adder, a, b, s)
+
 # set up a test bench
 from random import randrange
 def tb():
@@ -3864,7 +3864,7 @@ let input nbits v =
 		Array.blit (bits_of_int nbits x) 0 w (i*nbits) nbits
 	) v;
 	w;;
-	
+
 let output nbits v =
 	let nv = Array.length v in
 	let r = nv mod nbits and n = nv/nbits in
@@ -3929,7 +3929,7 @@ let perm v =
 	let n = Array.length v in
 	{ nin=n; nout=n; apply=function
 		bits -> Array.init n (function k -> bits.(v.(k))) };;
-		
+
 let forget n = { nin=n; nout=0; apply=function
 	bits -> [| |] };;
 
@@ -4000,7 +4000,7 @@ let bxor = block_array serial [|
 	perm [| 0; 3; 1; 2 |];
 	assoc band band;
 	bor |];;
-	
+
 let half_adder = parallel bxor band;;
 
 (* bits C0,A,B -> S,C1 *)
@@ -4232,7 +4232,7 @@ function full_adder(bool a, bool b, bool c)
 end function
 
 function four_bit_adder(bool a0, a1, a2, a3, b0, b1, b2, b3)
-bool s0,s1,s2,s3,c  
+bool s0,s1,s2,s3,c
     {s0,c} = full_adder(a0,b0,0)
     {s1,c} = full_adder(a1,b1,c)
     {s2,c} = full_adder(a2,b2,c)
@@ -4492,7 +4492,7 @@ namespace RosettaCodeTasks.FourBitAdder
 		public static bool Not ( bool A ) { return !A; }
 		public static bool And ( bool A, bool B ) { return A && B; }
 		public static bool Or ( bool A, bool B ) { return A || B; }
- 
+
 		// Composite Gates
 		public static bool Xor ( bool A, bool B ) {	return Or ( And ( A, Not ( B ) ), ( And ( Not ( A ), B ) ) ); }
 	}
@@ -4503,18 +4503,18 @@ namespace RosettaCodeTasks.FourBitAdder
 		{
 			return new BitAdderOutput ( ) { S = LogicGates.Xor ( A, B ), C = LogicGates.And ( A, B ) };
 		}
- 
+
 		public static BitAdderOutput FullAdder ( bool A, bool B, bool CI )
 		{
 			BitAdderOutput HA1 = HalfAdder ( CI, A );
 			BitAdderOutput HA2 = HalfAdder ( HA1.S, B );
- 
+
 			return new BitAdderOutput ( ) { S = HA2.S, C = LogicGates.Or ( HA1.C, HA2.C ) };
 		}
- 
+
 		public static FourBitAdderOutput FourBitAdder ( Nibble A, Nibble B, bool CI )
 		{
- 
+
 			BitAdderOutput FA1 = FullAdder ( A._1, B._1, CI );
 			BitAdderOutput FA2 = FullAdder ( A._2, B._2, FA1.C );
 			BitAdderOutput FA3 = FullAdder ( A._3, B._3, FA2.C );
@@ -4526,7 +4526,7 @@ namespace RosettaCodeTasks.FourBitAdder
 		public static void Test ( )
 		{
 			Console.WriteLine ( "Four Bit Adder" );
- 
+
 			for ( int i = 0; i < 256; i++ )
 			{
 				Nibble A = new Nibble ( ) { _1 = false, _2 = false, _3 = false, _4 = false };
@@ -4563,7 +4563,7 @@ namespace RosettaCodeTasks.FourBitAdder
 				{
 					B._4 = true;
 				}
- 
+
 				Console.WriteLine ( "{0} + {1} = {2}", A.ToString ( ), B.ToString ( ), FourBitAdder( A, B, false ).ToString ( ) );
 
 			}
@@ -4621,7 +4621,7 @@ b_or(in(hi,_), out(hi)) :- !.     % or(1,any) = 1
 b_or(in(_,hi), out(hi)) :- !.     % or(any,1) = 1
 b_or(in(_,_), out(lo)).           % or(anything else) = 0
 
-b_xor(in(A,B), out(O)) :- 
+b_xor(in(A,B), out(O)) :-
     b_not(in(A), out(NotA)), b_not(in(B), out(NotB)),
     b_and(in(A,NotB), out(P)), b_and(in(NotA,B), out(Q)),
     b_or(in(P,Q), out(O)).
@@ -4632,8 +4632,8 @@ b_half_adder(in(A,B), s(S), c(C)) :-
 b_full_adder(in(A,B,Ci), s(S), c(C1)) :-
   b_half_adder(in(Ci, A), s(S0), c(C0)),
   b_half_adder(in(S0, B), s(S), c(C)),
-  b_or(in(C0,C), out(C1)). 
-  
+  b_or(in(C0,C), out(C1)).
+
 b_4_bit_adder(in(A0,A1,A2,A3), in(B0,B1,B2,B3), out(S0,S1,S2,S3), c(V)) :-
   b_full_adder(in(A0,B0,lo), s(S0), c(C0)),
   b_full_adder(in(A1,B1,C0), s(S1), c(C1)),
@@ -4645,10 +4645,10 @@ test_add(A,B,T) :-
   writef('%w + %w is %w %w  \t(%w)\n', [A,B,R,C,T]).
 
 go :-
-  test_add(in(hi,lo,lo,lo), in(hi,lo,lo,lo), '1 + 1 = 2'), 
+  test_add(in(hi,lo,lo,lo), in(hi,lo,lo,lo), '1 + 1 = 2'),
   test_add(in(lo,hi,lo,lo), in(lo,hi,lo,lo), '2 + 2 = 4'),
-  test_add(in(hi,lo,hi,lo), in(hi,lo,lo,hi), '5 + 9 = 14'), 
-  test_add(in(hi,hi,lo,hi), in(hi,lo,lo,hi), '11 + 9 = 20'), 
+  test_add(in(hi,lo,hi,lo), in(hi,lo,lo,hi), '5 + 9 = 14'),
+  test_add(in(hi,hi,lo,hi), in(hi,lo,lo,hi), '11 + 9 = 20'),
   test_add(in(lo,lo,lo,hi), in(lo,lo,lo,hi), '8 + 8 = 16'),
   test_add(in(hi,hi,hi,hi), in(hi,lo,lo,lo), '15 + 1 = 16').
 ```
@@ -4681,15 +4681,15 @@ EndProcedure
 Procedure.b xorGate(x,y)
   ProcedureReturn  (x & notGate(y)) | (notGate(x) & y)
 EndProcedure
- 
+
 Procedure halfadder(a, b, *sum.Byte, *carry.Byte)
   *sum\b = xorGate(a, b)
   *carry\b = a & b
 EndProcedure
- 
+
 Procedure fulladder(a, b, c0, *sum.Byte, *c1.Byte)
   Protected sum_ac.b, carry_ac.b, carry_sb.b
-  
+
   halfadder(c0, a, @sum_ac, @carry_ac)
   halfadder(sum_ac, b, *sum, @carry_sb)
   *c1\b = carry_ac | carry_sb
@@ -4697,7 +4697,7 @@ EndProcedure
 
 Procedure fourbitsadder(a0, a1, a2, a3, b0, b1, b2, b3 , *s0.Byte, *s1.Byte, *s2.Byte, *s3.Byte, *v.Byte)
   Protected.b c1, c2, c3
-  
+
   fulladder(a0, b0, 0,   *s0, @c1)
   fulladder(a1, b1, c1,  *s1, @c2)
   fulladder(a2, b2, c2,  *s2, @c3)
@@ -4720,7 +4720,7 @@ EndProcedure
 
 If OpenConsole()
   PrintN(test_4_bit_adder("0110","1110"))
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -4737,23 +4737,23 @@ EndIf
 
 ## Python
 
-Individual boolean bits are represented by either 1, 0, True (interchangeable with 1), 
+Individual boolean bits are represented by either 1, 0, True (interchangeable with 1),
 and False (same as zero). a bit of value None is sometimes used as a place-holder.
 
-Python functions represent the building blocks of the circuit: a function parameter for each block input and individual block outputs are either a return of a single value 
-or a return of a tuple of values - one for each block output. 
+Python functions represent the building blocks of the circuit: a function parameter for each block input and individual block outputs are either a return of a single value
+or a return of a tuple of values - one for each block output.
 A single element tuple is ''not'' returned for a block with one output.
 
-Python lists are used to represent bus's of multiple bits, and in this circuit, 
-bit zero - the least significant bit of bus's, is at index zero of the list, 
+Python lists are used to represent bus's of multiple bits, and in this circuit,
+bit zero - the least significant bit of bus's, is at index zero of the list,
 (which will be printed as the ''left-most'' member of a list).
 
 The repetitive connections of the full adder block, fa4, are achieved by using a for loop which could easily be modified to generate adders of any width. fa4's arguments are interpreted as indexable, ordered collections of values - usually lists but tuples would work too. fa4's outputs are the sum, s, as a list and the single bit carry.
 
-Functions are provided to convert between integers and bus's and back; 
-and the test routine shows how they can be used to translate 
+Functions are provided to convert between integers and bus's and back;
+and the test routine shows how they can be used to translate
 between the normal Python values and those of the simulation.
-  
+
 
 ```python
 def xor(a, b): return (a and not b) or (b and not a)
@@ -4846,12 +4846,12 @@ if __name__ == '__main__':
 
 (n-bit-adder '(1 0 1 0) '(0 1 1 1)) ;-> '(1 0 0 0 1)
 ```
- 
+
 
 
 ## REXX
 
-Programming note:   REXX subroutines/functions are call by ''value'', not call by ''name'', so REXX has to '''expose''' a variable to make it global. 
+Programming note:   REXX subroutines/functions are call by ''value'', not call by ''name'', so REXX has to '''expose''' a variable to make it global.
 
 REXX programming syntax:
 ::::* the   ''' &amp;&amp;'''   symbol is an e'''X'''clusive '''OR''' function ('''XOR''').
@@ -4904,10 +4904,10 @@ aaaa + bbbb = c, sum     [c=carry]
 0000 + 0110 = 0,0110
 0000 + 0111 = 0,0111
 0000 + 1000 = 0,1000
-0000 + 1001 = 0,1001 
+0000 + 1001 = 0,1001
  ∙
  ∙
- ∙ 
+ ∙
 0101 + 0100 = 0,1001
 0101 + 0101 = 0,1010
 0101 + 0110 = 0,1011
@@ -4936,7 +4936,7 @@ aaaa + bbbb = c, sum     [c=carry]
 0110 + 1101 = 1,0011
  ∙
  ∙
- ∙ 
+ ∙
 1110 + 1110 = 1,1100
 1110 + 1111 = 1,1101
 1111 + 0000 = 0,1111
@@ -4975,7 +4975,7 @@ aaaa + bbbb = c, sum     [c=carry]
 # Program: 4 Bit Adder - Ring
 # Author:  Bert Mariani
 # Date:    2018-02-28
-# 
+#
 # Bit Adder: Input  A B Cin
 #            Output S   Cout
 #
@@ -4985,16 +4985,16 @@ aaaa + bbbb = c, sum     [c=carry]
 #
 # A & B => anb                AND gate
 #          anb | d => Cout     OR gate
-# 
+#
 # Call Adder for number of bit in input fields
 ###-------------------------------------------
 ### 4 Bits
 
-Cout     = "0" 
+Cout     = "0"
 OutputS  = "0000"
 InputA   = "0101"
 InputB   = "1101"
- 
+
    See "InputA:.. "+ InputA +nl
    See "InputB:.. "+ InputB +nl
 BitsAdd(InputA, InputB)
@@ -5003,11 +5003,11 @@ BitsAdd(InputA, InputB)
 ###-------------------------------------------
 ### 32 Bits
 
-Cout     = "0" 
+Cout     = "0"
 OutputS  = "00000000000000000000000000000000"
 InputA   = "01010101010101010101010101010101"
 InputB   = "11011101110111011101110111011101"
- 
+
    See "InputA:.. "+ InputA +nl
    See "InputB:.. "+ InputB +nl
 BitsAdd(InputA, InputB)
@@ -5017,27 +5017,27 @@ BitsAdd(InputA, InputB)
 
 Func BitsAdd(InputA, InputB)
 	nbrBits = len(InputA)
-	 
+
 	for i = nbrBits to 1 step -1
 	      A = InputA[i]
 	      B = InputB[i]
 	      C = Cout
-  
+
               S = Adder(A,B,C)
 	      OutputS[i] = "" + S
 	next
 return
-  
+
 ###------------------------
 Func Adder(A,B,C)
- 
+
     axb  =   A ^ B
     Sout = axb ^ C
     d    = axb & C
- 
+
     anb  =   A & B
     Cout = anb | d    ### Cout is global
- 
+
 return(Sout)
 ###------------------------
 
@@ -5070,12 +5070,12 @@ Sum...: 1 00110011001100110011001100110010
 def four_bit_adder(a, b)
   a_bits = binary_string_to_bits(a,4)
   b_bits = binary_string_to_bits(b,4)
-  
+
   s0, c0 = full_adder(a_bits[0], b_bits[0],  0)
   s1, c1 = full_adder(a_bits[1], b_bits[1], c0)
   s2, c2 = full_adder(a_bits[2], b_bits[2], c1)
   s3, c3 = full_adder(a_bits[3], b_bits[3], c2)
-  
+
   [bits_to_binary_string([s0, s1, s2, s3]), c3.to_s]
 end
 
@@ -5112,7 +5112,7 @@ def bits_to_binary_string(bits)
   bits.map(&:to_s).reverse.join
 end
 
-puts " A    B      A      B   C    S  sum" 
+puts " A    B      A      B   C    S  sum"
 0.upto(15) do |a|
   0.upto(15) do |b|
     bin_a = int_to_binary_string(a, 4)
@@ -5245,7 +5245,7 @@ class PIN is
     res.connected := false;
     return res;
   end;
-  
+
   val:INT is
     if self.connected.not then
        #ERR + "pin " + self.name + " is undefined\n";
@@ -5319,7 +5319,7 @@ end;
 -- FOUR BITS ADDER "block"
 class FOURBITSADDER is
   readonly attr s0, s1, s2, s3, v :PIN;
-  
+
   create(a0, a1, a2, a3, b0, b1, b2, b3:PIN):SAME is
     res ::= new;
     res.s0  := #PIN("4-bits-adder sum outbut line 0");
@@ -5359,10 +5359,10 @@ class MAIN is
 
     fba ::= #FOURBITSADDER(a0,a1,a2,a3,b0,b1,b2,b3);
     #OUT + #FMT("%d%d%d%d", a3.val, a2.val, a1.val, a0.val) +
-    	   " + " + 
+    	   " + " +
            #FMT("%d%d%d%d", b3.val, b2.val, b1.val, b0.val) +
            " = " +
-           #FMT("%d%d%d%d", fba.s3.val, fba.s2.val, fba.s1.val, fba.s0.val) + 
+           #FMT("%d%d%d%d", fba.s3.val, fba.s2.val, fba.s1.val, fba.s0.val) +
            ", overflow = " + fba.v.val + "\n";
   end;
 end;
@@ -5560,7 +5560,7 @@ object FourBitAdderTest {
           (cadr add-4))))
 
 (define (show-eg a b)
-  (display a) (display " + ") (display b) (display " = ") 
+  (display a) (display " + ") (display b) (display " = ")
   (display (four-bit-adder a b)) (newline))
 
 (show-eg (list 0 0 0 0) (list 0 0 0 0))
@@ -5995,7 +5995,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
 entity four_bit_adder is
-   port( 
+   port(
       a : in     std_logic_vector (3 downto 0);
       b : in     std_logic_vector (3 downto 0);
       s : out    std_logic_vector (3 downto 0);
@@ -6007,7 +6007,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
 entity fa is
-   port( 
+   port(
       a  : in     std_logic;
       b  : in     std_logic;
       ci : in     std_logic;
@@ -6020,7 +6020,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
 entity ha is
-   port( 
+   port(
       a : in     std_logic;
       b : in     std_logic;
       c : out    std_logic;
@@ -6032,7 +6032,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
 entity xor_gate is
-   port( 
+   port(
       a : in     std_logic;
       b : in     std_logic;
       x : out    std_logic
@@ -6053,7 +6053,7 @@ architecture struct of four_bit_adder is
       b  : in     std_logic ;
       ci : in     std_logic ;
       co : out    std_logic ;
-      s  : out    std_logic 
+      s  : out    std_logic
    );
    end component;
 begin
@@ -6105,7 +6105,7 @@ architecture struct of fa is
       a : in     std_logic ;
       b : in     std_logic ;
       c : out    std_logic ;
-      s : out    std_logic 
+      s : out    std_logic
    );
    end component;
 begin
@@ -6178,7 +6178,7 @@ architecture struct of tb is
       a : in     std_logic_vector (3 downto 0);
       b : in     std_logic_vector (3 downto 0);
       s : out    std_logic_vector (3 downto 0);
-      v : out    std_logic 
+      v : out    std_logic
    );
    end component;
 begin
@@ -6192,7 +6192,7 @@ begin
          wait for 100 ns;
        end loop;
      end loop;
-     wait; 
+     wait;
    end process;
 
    i_four_bit_adder : four_bit_adder
@@ -6292,17 +6292,17 @@ int S0, S1, S2, S3, C;
 ```zkl
 fcn xor(a,b) // a,b are 1|0 -->a^b(1|0)
    { a.bitAnd(b.bitNot()).bitOr(b.bitAnd(a.bitNot())) }
- 
+
 fcn halfAdder(a,b) // -->(carry, a+b) (1|0)
    { return(a.bitAnd(b), xor(a,b)) }
- 
+
 fcn fullBitAdder(c, a,b){ //-->(carry, a+b+c), a,b,c are 1|0
    c1,s := halfAdder(a,c);
    c2,s := halfAdder(s,b);
    c3   := c1.bitOr(c2);
    return(c3,s);
 }
- 
+
    // big endian
 fcn fourBitAdder(a3,a2,a1,a0, b3,b2,b1,b0){ //-->(carry, s3,s2,s1,s0)
    c,s0 := fullBitAdder(0, a0,b0);

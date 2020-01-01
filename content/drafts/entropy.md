@@ -18,33 +18,33 @@ Calculate the Shannon entropy   H   of a given input string.
 Given the discrete random variable <math>X</math> that is a string of <math>N</math> "symbols" (total characters) consisting of <math>n</math> different characters (n=2 for binary), the Shannon entropy of X in '''bits/symbol''' is :
 :<math>H_2(X) = -\sum_{i=1}^n \frac{count_i}{N} \log_2 \left(\frac{count_i}{N}\right)</math>
 
-where <math>count_i</math> is the count of character <math>n_i</math>. 
+where <math>count_i</math> is the count of character <math>n_i</math>.
 
 For this task, use X="<tt>1223334444</tt>" as an example. The result should be 1.84644... bits/symbol.  This assumes X was a random variable, which may not be the case, or it may depend on the observer.
 
-This coding problem calculates the "specific" or "[[wp:Intensive_and_extensive_properties|intensive]]" entropy that finds its parallel in physics with "specific entropy" S<sup>0</sup> which is entropy per kg or per mole, not like physical entropy S and therefore not the "information" content of a file. It comes from Boltzmann's H-theorem where <math>S=k_B  N  H</math> where N=number of molecules. Boltzmann's H is the same equation as Shannon's H, and it gives the specific entropy H on a "per molecule" basis. 
+This coding problem calculates the "specific" or "[[wp:Intensive_and_extensive_properties|intensive]]" entropy that finds its parallel in physics with "specific entropy" S<sup>0</sup> which is entropy per kg or per mole, not like physical entropy S and therefore not the "information" content of a file. It comes from Boltzmann's H-theorem where <math>S=k_B  N  H</math> where N=number of molecules. Boltzmann's H is the same equation as Shannon's H, and it gives the specific entropy H on a "per molecule" basis.
 
 The "total", "absolute", or "[[wp:Intensive_and_extensive_properties|extensive]]" information entropy is
 :<math>S=H_2 N</math> bits
-This is not the entropy being coded here, but it is the closest to physical entropy and a measure of the information content of a string. But it does not look for any patterns that might be available for compression, so it is a very restricted, basic, and certain measure of "information". Every binary file with an equal number of 1's and 0's will have S=N bits. All hex files with equal symbol frequencies will have <math>S=N \log_2(16)</math> bits of entropy. The total entropy in bits of the example above is S= 10*18.4644 = 18.4644  bits. 
+This is not the entropy being coded here, but it is the closest to physical entropy and a measure of the information content of a string. But it does not look for any patterns that might be available for compression, so it is a very restricted, basic, and certain measure of "information". Every binary file with an equal number of 1's and 0's will have S=N bits. All hex files with equal symbol frequencies will have <math>S=N \log_2(16)</math> bits of entropy. The total entropy in bits of the example above is S= 10*18.4644 = 18.4644  bits.
 
-The H function does not look for any patterns in data or check if X was a random variable.  For example, X=000000111111 gives the same calculated entropy in all senses as Y=010011100101. For most purposes it is usually more relevant to divide the gzip length by the length of the original data to get an informal measure of how much "order" was in the data. 
+The H function does not look for any patterns in data or check if X was a random variable.  For example, X=000000111111 gives the same calculated entropy in all senses as Y=010011100101. For most purposes it is usually more relevant to divide the gzip length by the length of the original data to get an informal measure of how much "order" was in the data.
 
-Two other "entropies" are useful: 
+Two other "entropies" are useful:
 
-Normalized specific entropy: 
-:<math>H_n=\frac{H_2 * \log(2)}{\log(n)}</math> 
+Normalized specific entropy:
+:<math>H_n=\frac{H_2 * \log(2)}{\log(n)}</math>
 which varies from 0 to 1 and it has units of "entropy/symbol" or just 1/symbol. For this example, H<sub>n<\sub>= 0.923.
 
-Normalized total (extensive) entropy: 
+Normalized total (extensive) entropy:
 :<math>S_n = \frac{H_2 N * \log(2)}{\log(n)}</math>
 which varies from 0 to N and does not have units. It is simply the "entropy", but it needs to be called "total normalized extensive entropy" so that it is not confused with Shannon's (specific) entropy or physical entropy. For this example, S<sub>n<\sub>= 9.23.
 
 Shannon himself is the reason his "entropy/symbol" H function is very confusingly called "entropy". That's like calling a function that returns a speed a "meter". See section 1.7 of his classic [http://worrydream.com/refs/Shannon%20-%20A%20Mathematical%20Theory%20of%20Communication.pdf  A Mathematical Theory of Communication] and search on "per symbol" and "units" to see he always stated his entropy H has units of "bits/symbol" or "entropy/symbol" or "information/symbol".  So it is legitimate to say entropy NH is "information".
 
-In keeping with Landauer's limit, the physics entropy generated from erasing N bits is <math>S = H_2 N k_B \ln(2)</math> if the bit storage device is perfectly efficient.  This can be solved for H<sub>2</sub>*N to (arguably) get the number of bits of information that a physical entropy represents. 
+In keeping with Landauer's limit, the physics entropy generated from erasing N bits is <math>S = H_2 N k_B \ln(2)</math> if the bit storage device is perfectly efficient.  This can be solved for H<sub>2</sub>*N to (arguably) get the number of bits of information that a physical entropy represents.
 
-;Related tasks: 
+;Related tasks:
 :* [[Fibonacci_word]]
 :* [[Entropy/Narcissist]]
 
@@ -244,7 +244,7 @@ begin
                     % have a character that occurs in the string          %
                     probability := charCount( charPos ) / stringLength;
                     entropy     := entropy - ( probability * log( probability ) )
-                end 
+                end
             end charPos
 
         end;
@@ -348,7 +348,7 @@ Entropy(n)
 
 
 ```awk
-#!/usr/bin/awk -f 
+#!/usr/bin/awk -f
 {
 	for (i=1; i<= length($0); i++) {
 		H[substr($0,i,1)]++;
@@ -369,7 +369,7 @@ END {
 
 ```bash
  echo 1223334444 |./entropy.awk
-1.84644 
+1.84644
 ```
 
 
@@ -453,7 +453,7 @@ Works with 1k of RAM.
 
 {{trans|APL}}
 
-```bbcbasic>REM 
+```bbcbasic>REM
 entropy
 PRINT FNentropy("1223334444")
 END
@@ -502,8 +502,8 @@ blsq ) "1223334444"F:u[vv^^{1\/?/2\/LG}m[?*++
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
@@ -565,8 +565,8 @@ Rosetta Code is the best site in the world!
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <map>
 #include <iostream>
 #include <algorithm>
@@ -587,8 +587,8 @@ int main( int argc , char *argv[ ] ) {
       double freq = static_cast<double>( p.second ) / numlen ;
       infocontent -= freq * log2( freq ) ;
    }
-  
-   std::cout << "The information content of " << teststring 
+
+   std::cout << "The information content of " << teststring
       << " is " << infocontent << std::endl ;
    return 0 ;
 }
@@ -647,14 +647,14 @@ namespace Entropy
 			double infoC=0;
 			Dictionary<char,double> table = new Dictionary<char, double>();
 
-			
+
 			foreach (char c in input)
 			{
 				if (table.ContainsKey(c))
 					table[c]++;
 				    else
 				    	table.Add(c,1);
-	
+
 			}
 			double freq;
 			foreach (KeyValuePair<char,double> letter in table)
@@ -665,7 +665,7 @@ namespace Entropy
 			infoC*=-1;
 			Console.WriteLine("The Entropy of {0} is {1}",input,infoC);
 			goto label1;
-		
+
 		}
 	}
 }
@@ -720,7 +720,7 @@ namespace Entropy
 			infoC/=-1;
 			Console.WriteLine("The Entropy of {0} is {1}",input,infoC);
 			goto label1;
- 
+
 		}
 	}
 }
@@ -834,16 +834,16 @@ void main() {
 (define (hi count n )
 	(define pi (// count n))
 	(- (* pi (log2 pi))))
-	
+
 ;; (H [string|list]) → entropy (bits)
-(define (H info) 
+(define (H info)
 	(define S (if(string? info) (string->list info) info))
 	(define ht (make-hash))
 	(define n (length S))
-	
+
 	(for ((s S)) (count++ ht s))
 	(for/sum ((s (make-set S)))  (hi (hash-ref ht s) n)))
-	
+
 
 ```
 
@@ -878,19 +878,19 @@ import system'math;
 import system'collections;
 import system'routines;
 import extensions;
- 
+
 extension op
 {
     logTwo()
         = self.ln() / 2.ln();
 }
- 
+
 public program()
 {
     var input := console.readLine();
     var infoC := 0.0r;
     var table := new Dictionary();
- 
+
     input.forEach:(ch)
     {
         var n := table[ch];
@@ -903,17 +903,17 @@ public program()
             table[ch] := n + 1
         }
     };
- 
+
     var freq := 0;
     table.forEach:(letter)
     {
         freq := letter.toInt().realDiv(input.Length);
- 
+
         infoC += (freq * freq.logTwo())
     };
- 
+
     infoC *= -1;
- 
+
     console.printLine("The Entropy of ", input, " is ", infoC)
 }
 ```
@@ -984,9 +984,9 @@ IO.inspect RC.entropy("1223334444")
 
 
 {{out}}
-After adding the above to the emacs runtime, you can run 
-the function interactively in the scratch buffer 
-as shown below (type ctrl-j at the end of the first line 
+After adding the above to the emacs runtime, you can run
+the function interactively in the scratch buffer
+as shown below (type ctrl-j at the end of the first line
 and the output will be placed by emacs on the second line).
 
 ```lisp
@@ -1062,7 +1062,7 @@ let entropy (s : string) =
     let n = float s.Length
     Seq.groupBy id s
     |> Seq.map (fun (_, vals) -> float (Seq.length vals) / n)
-    |> Seq.fold (fun e p -> e - p * ld p) 0. 
+    |> Seq.fold (fun e p -> e - p * ld p) 0.
 
 printfn "%f" (entropy "1223334444")
 ```
@@ -1087,7 +1087,7 @@ IN: rosetta-code.entropy
     [ length ] [ histogram >alist [ second ] map ] bi
     [ swap / ] with map
     [ dup log 2 log / * ] map-sum neg ;
-    
+
 "1223334444" shannon-entropy .
 "Factor is my favorite programming language." shannon-entropy .
 ```
@@ -1153,7 +1153,7 @@ Please find the GNU/linux compilation instructions along with sample run among t
 !
 !a=./f && make $a && OMP_NUM_THREADS=2 $a 1223334444
 !gfortran -std=f2008 -Wall -ffree-form -fall-intrinsics f.f08 -o f
-! Shannon entropy of 1223334444 is    1.84643936    
+! Shannon entropy of 1223334444 is    1.84643936
 !
 !Compilation finished at Tue May 21 21:43:12
 
@@ -1180,7 +1180,7 @@ contains
   !   entropy=:  +/@:-@(* 2&^.)@(#/.~ % #)
   !   entropy '1223334444'
   !1.84644
-  
+
   real function se(s)
     implicit none
     character(len=*), intent(in) :: s
@@ -1361,7 +1361,7 @@ func main() {
     for _, r := range s {
         m[r]++
     }
-    var fm float64 
+    var fm float64
     for _, c := range m {
         hm += c * math.Log2(c)
     }
@@ -1430,8 +1430,8 @@ import Data.List
 
 main = print $ entropy "1223334444"
 
-entropy :: (Ord a, Floating c) => [a] -> c  
-entropy = sum . map lg . fq . map genericLength . group . sort 
+entropy :: (Ord a, Floating c) => [a] -> c
+entropy = sum . map lg . fq . map genericLength . group . sort
   where lg c = -c * logBase 2 c
         fq c = let sc = sum c in map (/ sc) c
 ```
@@ -1550,8 +1550,8 @@ public class REntropy {
   public static void main(String[] args) {
     String[] sstr = {
       "1223334444",
-      "1223334444555555555", 
-      "122333", 
+      "1223334444555555555",
+      "122333",
       "1227774444",
       "aaBBcccDDDD",
       "1234567890abcdefghijklmnopqrstuvwxyz",
@@ -1654,10 +1654,10 @@ console.log(entropy("1223334444")); // 1.8464393446710154
 
 ## jq
 
-For efficiency with long strings, we use a hash (a JSON object) 
-to compute the frequencies.  
+For efficiency with long strings, we use a hash (a JSON object)
+to compute the frequencies.
 
-The helper function, ''counter'', could be defined as an inner function of ''entropy'', but for the sake of clarity and because it is independently useful, 
+The helper function, ''counter'', could be defined as an inner function of ''entropy'', but for the sake of clarity and because it is independently useful,
 it is defined separately.
 
 ```jq
@@ -1761,14 +1761,14 @@ entropy([1, 2, 3, 1, 2, 1, 2, 3, 1, 2, 3, 4, 5]) = 2.103909910282364
 fun log2(d: Double) = Math.log(d) / Math.log(2.0)
 
 fun shannon(s: String): Double {
-    val counters = mutableMapOf<Char, Int>() 
+    val counters = mutableMapOf<Char, Int>()
     for (c in s) {
         if (counters.containsKey(c)) counters[c] = counters[c]!! + 1
         else counters.put(c, 1)
     }
     val nn = s.length.toDouble()
     var sum = 0.0
-    for (key in counters.keys) {      
+    for (key in counters.keys) {
        val term = counters[key]!! / nn
        sum += term * log2(term)
     }
@@ -1778,8 +1778,8 @@ fun shannon(s: String): Double {
 fun main(args: Array<String>) {
     val samples = arrayOf(
         "1223334444",
-        "1223334444555555555", 
-        "122333", 
+        "1223334444555555555",
+        "122333",
         "1227774444",
         "aaBBcccDDDD",
         "1234567890abcdefghijklmnopqrstuvwxyz",
@@ -1934,17 +1934,17 @@ shE["Rosetta Code"]
 
 
 =={{header|MATLAB}} / {{header|Octave}}==
-This version allows for any input vectors, 
+This version allows for any input vectors,
 including strings, floats, negative integers, etc.
 
 ```MATLAB
 function E = entropy(d)
 	if ischar(d), d=abs(d); end;
-        [Y,I,J] = unique(d); 	
+        [Y,I,J] = unique(d);
 	H = sparse(J,1,1);
 	p = full(H(H>0))/length(d);
 	E = -sum(p.*log2(p));
-end; 
+end;
 ```
 
 {{out|Usage}}
@@ -2139,7 +2139,7 @@ class Entropy {
     length := result->Size();
     entropy := 0.0;
 
-    counts := frequencies->GetValues(); 
+    counts := frequencies->GetValues();
     each(i : counts) {
       count := counts->Get(i)->As(IntHolder)->Get();
       freq := count->As(Float) / length;
@@ -2152,8 +2152,8 @@ class Entropy {
   function : Main(args : String[]) ~ Nil {
     inputs := [
       "1223334444",
-      "1223334444555555555", 
-      "122333", 
+      "1223334444555555555",
+      "122333",
       "1227774444",
       "aaBBcccDDDD",
       "1234567890abcdefghijklmnopqrstuvwxyz",
@@ -2164,7 +2164,7 @@ class Entropy {
       "Shannon entropy of '{$input}': "->Print();
       GetShannonEntropy(inputs[i])->PrintLine();
     };
-  }  
+  }
 }
 ```
 
@@ -2194,12 +2194,12 @@ Shannon entropy of 'Rosetta Code': 3.08496
 (* pre-bake & return an inner-loop function to bin & assemble a character frequency map *)
 let get_fproc (m: (char, int) Hashtbl.t) :(char -> unit)  =
   (fun (c:char) -> try
-                     Hashtbl.replace m c ( (Hashtbl.find m c) + 1) 
+                     Hashtbl.replace m c ( (Hashtbl.find m c) + 1)
                    with Not_found -> Hashtbl.add m c 1)
 
 
 (* pre-bake and return an inner-loop function to do the actual entropy calculation *)
-let get_calc (slen:int) :(float -> float) = 
+let get_calc (slen:int) :(float -> float) =
   let slen_float = float_of_int slen in
   let log_2 = log 2.0 in
 
@@ -2208,10 +2208,10 @@ let get_calc (slen:int) :(float -> float) =
 
 
 (* main function, given a string argument it:
-       builds a (mutable) frequency map (initial alphabet size of 255, but it's auto-expanding), 
-       extracts the relative probability values into a list, 
+       builds a (mutable) frequency map (initial alphabet size of 255, but it's auto-expanding),
+       extracts the relative probability values into a list,
        folds-in the basic entropy calculation and returns the result. *)
-let shannon (s:string) :float  = 
+let shannon (s:string) :float  =
   let freq_hash = Hashtbl.create 255 in
   String.iter (get_fproc freq_hash) s;
 
@@ -2239,7 +2239,7 @@ let shannon (s:string) :float  =
    ListBuffer initValue(255, 0) ->freq
    s apply( #[ dup freq at 1+ freq put ] )
    0.0 freq applyIf( #[ 0 <> ], #[ sz / dup ln * - ] ) Ln2 / ;
- 
+
 entropy("1223334444") .
 ```
 
@@ -2288,15 +2288,15 @@ Do ci=1 To cn
 Say s 'Entropy' format(-e,,12)
 Exit
 
-::requires 'rxmath' LIBRARY 
+::requires 'rxmath' LIBRARY
 ```
-     
+
 {{out}}
 
 ```txt
 1223334444 Entropy 1.846439344671
 ```
- 
+
 
 ## Pascal
 
@@ -2313,18 +2313,18 @@ USES StrUtils, Math;
 TYPE FArray = ARRAY of CARDINAL;
 
 VAR	 strng: STRING = '1223334444';
-	
+
 // list unique characters in a string
 FUNCTION uniquechars(str: STRING): STRING;
 	VAR n: CARDINAL;
 	BEGIN
 		uniquechars := '';
 		FOR n := 1 TO length(str) DO
-			IF (PosEx(str[n],str,n)>0) 
-				AND (PosEx(str[n],uniquechars,1)=0) 
+			IF (PosEx(str[n],str,n)>0)
+				AND (PosEx(str[n],uniquechars,1)=0)
 					THEN uniquechars += str[n];
 	END;
-	
+
 // obtain a list of character-frequencies for a string
 //  given a string containing its unique characters
 FUNCTION frequencies(str,ustr: STRING): FArray;
@@ -2399,7 +2399,7 @@ sub entropy {
     }
     $entropy / log 2
 }
- 
+
 print entropy split //, "1223334444";
 ```
 
@@ -2565,7 +2565,7 @@ entropy "1223334444"
 
 {{works with|Swi-Prolog|7.3.3}}
 
-This solution calculates the run-length encoding of the input string to get the relative frequencies of its characters. 
+This solution calculates the run-length encoding of the input string to get the relative frequencies of its characters.
 
 
 ```Prolog
@@ -2735,8 +2735,8 @@ EndProcedure
 
 countchar(#TESTSTR,uchar())
 
-ForEach uchar()  
-  e-uchar()/Len(#TESTSTR)*nlog2(uchar()/Len(#TESTSTR))  
+ForEach uchar()
+  e-uchar()/Len(#TESTSTR)*nlog2(uchar()/Len(#TESTSTR))
 Next
 
 OpenConsole()
@@ -2784,8 +2784,8 @@ def printHist(h):
     print 'Sym\thi\tfi\tInf'
     for (k,v) in h:
         print '%s\t%f\t%f\t%f'%(k,v,v/l,-math.log(v/l, 2))
-    
-    
+
+
 
 source = "1223334444"
 (l,h) = hist(source);
@@ -2822,14 +2822,14 @@ The <tt>Counter</tt> module is only available in Python >= 2.7.
 ```python>>>
  import math
 >>> from collections import Counter
->>> 
+>>>
 >>> def entropy(s):
 ...     p, lns = Counter(s), float(len(s))
 ...     return -sum( count/lns * math.log(count/lns, 2) for count in p.values())
-... 
+...
 >>> entropy("1223334444")
 1.8464393446710154
->>> 
+>>>
 ```
 
 
@@ -3018,7 +3018,7 @@ log: Procedure
     r=r/log(b,prec)
   Numeric Digits (prec)
   r=r+0
-  Return r 
+  Return r
 ```
 
 
@@ -3034,7 +3034,7 @@ log: Procedure
 *            'my' log routine is apparently incorrect
 * 25.05.2013 problem identified & corrected
 *********************************************************************/
-Call both '1223334444'    
+Call both '1223334444'
 Call both '1223334444555555555'
 Call both '122333'
 Call both '1227774444'
@@ -3075,7 +3075,7 @@ Version 2: 1234567890abcdefghijklmnopqrstuvwxyz Entropy 5.169925001442
 
 REXX doesn't have a BIF for   '''LOG'''   or   '''LN''',   so the subroutine (function)   '''LOG2'''   is included herein.
 
-The   '''LOG2'''   subroutine is only included here for functionality, not to document how to calculate   LOG<sub>2</sub>   using REXX. 
+The   '''LOG2'''   subroutine is only included here for functionality, not to document how to calculate   LOG<sub>2</sub>   using REXX.
 
 ```rexx
 /*REXX program calculates the   information entropy   for a given character string.     */
@@ -3143,34 +3143,34 @@ the information entropy of the string ──►  3.084962500721  bits.
 
 decimals(8)
 entropy = 0
-countOfChar = list(255) 
- 
+countOfChar = list(255)
+
 source="1223334444"
 charCount  =len( source)
 usedChar  =""
- 
-for i =1 to len( source)  
+
+for i =1 to len( source)
      ch =substr(source, i, 1)
      if not(substr( usedChar, ch)) usedChar =usedChar +ch ok
      j  =substr( usedChar, ch)
     countOfChar[j] =countOfChar[j] +1
-next 
- 
+next
+
 l =len(usedChar)
 for i =1 to l
      probability =countOfChar[i] /charCount
      entropy =entropy - (probability *logBase(probability, 2))
-next 
- 
+next
+
 see "Characters used and the number of occurrences of each " + nl
 for i =1 to l
       see "'" + substr(usedChar, i, 1) + "' " + countOfChar[i] + nl
-next 
- 
+next
+
 see " Entropy of " + source + " is  " + entropy + " bits." + nl
 see " The result should be around 1.84644 bits." + nl
- 
-func logBase (x, b) 
+
+func logBase (x, b)
         logBase =log( x) /log( 2)
         return logBase
 
@@ -3180,7 +3180,7 @@ Output:
 
 ```txt
 
-Characters used and the number of occurrences of each 
+Characters used and the number of occurrences of each
 '1' 1
 '2' 2
 '3' 3
@@ -3201,7 +3201,7 @@ def entropy(s)
   counts = Hash.new(0.0)
   s.each_char { |c| counts[c] += 1 }
   leng = s.length
-  
+
   counts.values.reduce(0) do |entropy, count|
     freq = count / leng
     entropy - freq * Math.log2(freq)
@@ -3263,7 +3263,7 @@ end
 
 ```txt
 
-Characters used and times used of each 
+Characters used and times used of each
  '1'	1
  '2'	2
  '3'	3
@@ -3332,11 +3332,11 @@ assert( math.round( entropy("1223334444") * 100000 ) * 0.00001 == 1.84644 )
 
 ## scheme
 
-A version capable of calculating multidimensional entropy.   
+A version capable of calculating multidimensional entropy.
 
 ```scheme
 
-(define (entropy input) 
+(define (entropy input)
   (define (close? a b)
     (define (norm x y)
       (define (infinite_norm m n)
@@ -3364,7 +3364,7 @@ A version capable of calculating multidimensional entropy.
               ((close? a (car b)) (filter a (cdr b)))
               (else (cons (car b) (filter a (cdr b))))))
       (let ((t (car x)) (tt (cdr x)))
-        (filter t tt)))  
+        (filter t tt)))
     (cond ((null? x) '())
           (else (cons (f x) (freq-list (g x))))))
   (define (scale x)
@@ -3376,11 +3376,11 @@ A version capable of calculating multidimensional entropy.
     (if (null? x) 0 (+ (* (car x) (/ (log (car x)) (log 2))) (cal (cdr x)))))
   (- (cal (scale (freq-list input)))))
 
-(entropy (list 1 2 2 3 3 3 4 4 4 4)) 
+(entropy (list 1 2 2 3 3 3 4 4 4 4))
 (entropy (list (list 1 1) (list 1.1 1.1) (list 1.2 1.2) (list 1.3 1.3) (list 1.5 1.5) (list 1.6 1.6)))
 
 ```
-   
+
 
 {{out}}
 
@@ -3400,13 +3400,13 @@ A version capable of calculating multidimensional entropy.
     d=strsplit(d);
     n=unique(string(d));
     N=size(d,'r');
-    
+
     count=zeros(n);
     n_size = size(n,'r');
     for i = 1:n_size
        count(i) = sum ( d == n(i) );
     end
-    
+
     E=0;
     for i=1:length(count)
         E = E - count(i)/N * log(count(i)/N) / log(2);

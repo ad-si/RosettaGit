@@ -13,7 +13,7 @@ tags = []
 {{task|Text processing}}
 
 ;Task:
-Display an extended (non ASCII) character onto the terminal. 
+Display an extended (non ASCII) character onto the terminal.
 
 Specifically, display a   <big> £ </big>   (GBP currency sign).
 
@@ -202,8 +202,8 @@ put$£
 
 {{trans|AWK}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int
 main()
@@ -241,8 +241,8 @@ Output:
 
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main()
 {
@@ -477,7 +477,7 @@ stdout(' £ ')
 Result:
 
 ```txt
- £ 
+ £
 ```
 
 
@@ -527,7 +527,7 @@ method runSample(arg) private static
   say GBP
   GBP = '£' -- if the editor's up to it
   say GBP
-  GBP = 16x00a3 -- yet another way 
+  GBP = 16x00a3 -- yet another way
   say (Rexx GBP).d2c
   return
 
@@ -640,7 +640,7 @@ Output:
 
 
 ```PicoLisp
-(prinl (char 26413) (char 24140))  # Sapporo 
+(prinl (char 26413) (char 24140))  # Sapporo
 ```
 
 Output:

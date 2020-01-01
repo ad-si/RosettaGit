@@ -43,13 +43,13 @@ Show that <big><math>A(x_1,\ldots,x_n) \geq G(x_1,\ldots,x_n) \geq H(x_1,\ldots,
 ```11l
 F amean(num)
    R sum(num)/Float(num.len)
- 
+
 F gmean(num)
    R product(num) ^ (1.0/num.len)
- 
+
 F hmean(num)
    return num.len / sum(num.map(n -> 1.0/n))
- 
+
 V numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 print(amean(numbers))
 print(gmean(numbers))
@@ -180,7 +180,7 @@ end Main;
 
 {{trans|C}}
 {{wont work with|ALGOL 68|Standard - argc and argv implementation dependent}}
-{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}} 
+{{works with|ALGOL 68G|Any - tested with release [http://sourceforge.net/projects/algol68/files/algol68g/algol68g-1.18.0/algol68g-1.18.0-9h.tiny.el5.centos.fc11.i386.rpm/download 1.18.0-9h.tiny]}}
 {{wont work with|ELLA ALGOL 68|Any (with appropriate job cards) - argc and argv implementation dependent}}
 
 ```algol68
@@ -313,40 +313,40 @@ Harmonic   mean:    3.41417
 ```AppleScript
 -- arithmetic_mean :: [Number] -> Number
 on arithmetic_mean(xs)
-    
+
     -- sum :: Number -> Number -> Number
     script sum
         on |λ|(accumulator, x)
             accumulator + x
         end |λ|
     end script
-    
+
     foldl(sum, 0, xs) / (length of xs)
 end arithmetic_mean
 
 -- geometric_mean :: [Number] -> Number
 on geometric_mean(xs)
-    
+
     -- product :: Number -> Number -> Number
     script product
         on |λ|(accumulator, x)
             accumulator * x
         end |λ|
     end script
-    
+
     foldl(product, 1, xs) ^ (1 / (length of xs))
 end geometric_mean
 
 -- harmonic_mean :: [Number] -> Number
 on harmonic_mean(xs)
-    
+
     -- addInverse :: Number -> Number -> Number
     script addInverse
         on |λ|(accumulator, x)
             accumulator + (1 / x)
         end |λ|
     end script
-    
+
     (length of xs) / (foldl(addInverse, 0, xs))
 end harmonic_mean
 
@@ -354,7 +354,7 @@ end harmonic_mean
 on run
     set {A, G, H} to ap({arithmetic_mean, geometric_mean, harmonic_mean}, ¬
         {{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}})
-    
+
     {values:{arithmetic:A, geometric:G, harmonic:H}, inequalities:¬
         {|A >= G|:A ≥ G}, |G >= H|:G ≥ H}
 end run
@@ -401,7 +401,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -417,7 +417,7 @@ end mReturn
 {{Out}}
 
 ```AppleScript
-{values:{arithmetic:5.5, geometric:4.528728688117, harmonic:3.414171521474}, 
+{values:{arithmetic:5.5, geometric:4.528728688117, harmonic:3.414171521474},
 inequalities:{|A >= G|:true}, |G >= H|:true}
 ```
 
@@ -490,10 +490,10 @@ True
 #!/usr/bin/awk -f
 {
     x  = $1;   # value of 1st column
-    A += x;  
-    G += log(x);  
+    A += x;
+    G += log(x);
     H += 1/x;
-    N++;	
+    N++;
 }
 
 END {
@@ -516,10 +516,10 @@ The arithmetic and harmonic means use BBC BASIC's built-in array operations; onl
       PRINT "Geometric mean =  " ; FNgeometricmean(a())
       PRINT "Harmonic mean =  " ; FNharmonicmean(a())
       END
-      
+
       DEF FNarithmeticmean(a())
       = SUM(a()) / (DIM(a(),1)+1)
-      
+
       DEF FNgeometricmean(a())
       LOCAL a, I%
       a = 1
@@ -527,7 +527,7 @@ The arithmetic and harmonic means use BBC BASIC's built-in array operations; onl
         a *= a(I%)
       NEXT
       = a ^ (1/(DIM(a(),1)+1))
-      
+
       DEF FNharmonicmean(a())
       LOCAL b()
       DIM b(DIM(a(),1))
@@ -549,8 +549,8 @@ Harmonic mean =  3.41417152
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h> // atoi()
 #include <math.h> // pow()
 
@@ -580,8 +580,8 @@ int main(int argc, char* argv[])
 ## C++
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <iostream>
 #include <numeric>
 #include <cmath>
@@ -593,16 +593,16 @@ double toInverse ( int i ) {
 
 int main( ) {
    std::vector<int> numbers ;
-   for ( int i = 1 ; i < 11 ; i++ ) 
+   for ( int i = 1 ; i < 11 ; i++ )
       numbers.push_back( i ) ;
    double arithmetic_mean = std::accumulate( numbers.begin( ) , numbers.end( ) , 0 ) / 10.0 ;
    double geometric_mean =
       pow( std::accumulate( numbers.begin( ) , numbers.end( ) , 1 , std::multiplies<int>( ) ), 0.1 ) ;
    std::vector<double> inverses ;
    inverses.resize( numbers.size( ) ) ;
-   std::transform( numbers.begin( ) , numbers.end( ) , inverses.begin( ) , toInverse ) ;  
+   std::transform( numbers.begin( ) , numbers.end( ) , inverses.begin( ) , toInverse ) ;
    double harmonic_mean = 10 / std::accumulate( inverses.begin( ) , inverses.end( ) , 0.0 ); //initial value of accumulate must be a double!
-   std::cout << "The arithmetic mean is " << arithmetic_mean << " , the geometric mean " 
+   std::cout << "The arithmetic mean is " << arithmetic_mean << " , the geometric mean "
       << geometric_mean << " and the harmonic mean " << harmonic_mean << " !\n" ;
    return 0 ;
 }
@@ -709,7 +709,7 @@ A >= G :  true  G >= H :  true
   (generic-mean nums #'* (lambda (x) (expt x (/ 1 (length nums))))))
 
 (defun h-mean (nums)
-  (generic-mean nums 
+  (generic-mean nums
                 (lambda (x y) (+ x
                                  (/ 1 y)))
                 (lambda (x) (/ (length nums) x))))
@@ -731,16 +731,16 @@ A >= G :  true  G >= H :  true
 
 ```Clojure
 (use '[clojure.contrib.math :only (expt)])
- 
+
 (defn a-mean [coll]
   (/ (apply + coll) (count coll)))
- 
+
 (defn g-mean [coll]
   (expt (apply * coll) (/ (count coll))))
- 
+
 (defn h-mean [coll]
   (/ (count coll) (apply + (map / coll))))
- 
+
 (let [numbers (range 1 11)
       a (a-mean numbers) g (g-mean numbers) h (h-mean numbers)]
   (println a ">=" g ">=" h)
@@ -906,13 +906,13 @@ def H := makeMean(0, fn b,x { b+1/x }, fn acc,n { n / acc      })
 defmodule Means do
   def arithmetic(list) do
     Enum.sum(list) / length(list)
-  end 
+  end
   def geometric(list) do
     :math.pow(Enum.reduce(list, &(*/2)), 1 / length(list))
-  end 
+  end
   def harmonic(list) do
     1 / arithmetic(Enum.map(list, &(1 / &1)))
-  end 
+  end
 end
 
 list = Enum.to_list(1..10)
@@ -967,14 +967,14 @@ geometric_mean(Number, Product) when Number > 10 ->
 geometric_mean(Number, Product) ->
 	NewProd = Product * Number,
 	geometric_mean(Number+1, NewProd).
-	
+
 %% Function to calculate Harmonic Mean
 harmonic_mean(Number, Sum) when Number > 10 ->
 	HM = 10 / Sum,
 	io:format("Harmonic Mean ~p~n", [HM]);
 harmonic_mean(Number, Sum) ->
 	NewSum = Sum + (1/Number),
-	harmonic_mean(Number+1, NewSum). 
+	harmonic_mean(Number+1, NewSum).
 ```
 
 
@@ -983,7 +983,7 @@ harmonic_mean(Number, Sum) ->
 ```txt
 Arithmetic Mean 5.5
 Geometric Mean 4.528728688116765
-Harmonic Mean 3.414171521474055 
+Harmonic Mean 3.414171521474055
 ```
 
 
@@ -1077,7 +1077,7 @@ function arithmetic_mean(sequence s)
         return 0
     else
         sum = 0
-        for i = 1 to length(s) do   
+        for i = 1 to length(s) do
             sum += s[i]
         end for
         return sum/length(s)
@@ -1169,14 +1169,14 @@ Use the functions : AVERAGE, GEOMEAN and HARMEAN
 ```fsharp
 let P = [1.0; 2.0; 3.0; 4.0; 5.0; 6.0; 7.0; 8.0; 9.0; 10.0]
 
-let arithmeticMean (x : float list) = 
+let arithmeticMean (x : float list) =
     x |> List.sum
       |> (fun acc -> acc / float (List.length(x)))
 
 let geometricMean (x: float list) =
     x |> List.reduce (*)
       |> (fun acc -> Math.Pow(acc, 1.0 / (float (List.length(x)))))
-        
+
 let harmonicMean (x: float list) =
     x |> List.map (fun a -> 1.0 / a)
       |> List.sum
@@ -1235,7 +1235,7 @@ class Main
 
   static Float harmonicMean (Int[] nums)
   {
-    if (nums.size == 0) return 0.0f 
+    if (nums.size == 0) return 0.0f
     reciprocals := 0f
     nums.each |n| { reciprocals += 1f / n }
     return nums.size.toFloat / reciprocals
@@ -1311,7 +1311,7 @@ program Mean
   hmean = size(a) / sum(1.0/a)
 
   if ((amean < gmean) .or. (gmean < hmean)) then
-    print*, "Error!" 
+    print*, "Error!"
   else
     print*, amean, gmean, hmean
   end if
@@ -1343,7 +1343,7 @@ Function GeometricMean(array() As Double) As Double
   For i As Integer = LBound(array) To UBound(array)
     product *= array(i)
   Next
-  Return product ^ (1.0 / length) 
+  Return product ^ (1.0 / length)
 End Function
 
 Function HarmonicMean(array() As Double) As Double
@@ -1354,7 +1354,7 @@ Function HarmonicMean(array() As Double) As Double
   Next
   Return length / sum
 End Function
-  
+
 Dim vector(1 To 10) As Double
 For i As Integer = 1 To 10
   vector(i) = i
@@ -1395,7 +1395,7 @@ def
 def
   monotone( [_], _ ) = true
   monotone( a1:a2:as, p ) = p( a1, a2 ) and monotone( a2:as, p )
-  
+
 means = [mean( 1..10, m ) | m <- [1, 0, -1]]
 
 for (m, l) <- zip( means, ['Arithmetic', 'Geometric', 'Harmonic'] )
@@ -1455,13 +1455,13 @@ geomean := v -> EXP_FLOAT(Sum(v, LOG_FLOAT) / Length(v));
 
 mean([1 .. 10]);
 # 11/2
-harmean([1 .. 10]); 
+harmean([1 .. 10]);
 # 25200/7381
 
 v := List([1..10], FLOAT_INT);;
 mean(v);
 # 5.5
-harmean(v); 
+harmean(v);
 # 3.41417
 geomean(v);
 # 4.52873
@@ -1589,7 +1589,7 @@ main = do
 
 ### =Three applicatively defined functions=
 
-These three functions (each combining the length of a list with some kind of fold over the elements of that same list), all share the same applicative structure. 
+These three functions (each combining the length of a list with some kind of fold over the elements of that same list), all share the same applicative structure.
 
 
 ```haskell
@@ -1662,7 +1662,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers:amean, numbers:gmean, and numbers:hmean] are shown below:
 
 ```Icon
@@ -1685,7 +1685,7 @@ procedure gmean(L[])		#: geometric mean
    else
       fail
 end
-   
+
 procedure hmean(L[])		#: harmonic mean
    local m, r
    if *L = 0 then fail
@@ -1724,21 +1724,21 @@ Harmonic mean:3.414171521474055
 190   LET T=0
 200   FOR I=LBOUND(A) TO UBOUND(A)
 210     LET T=T+A(I)
-220   NEXT 
+220   NEXT
 230   LET ARITHM=T/SIZE(A)
 240 END DEF
 250 DEF GEOMETRIC(REF A)
 260   LET T=1
 270   FOR I=LBOUND(A) TO UBOUND(A)
 280     LET T=T*A(I)
-290   NEXT 
+290   NEXT
 300   LET GEOMETRIC=T^(1/SIZE(A))
 310 END DEF
 320 DEF HARMONIC(REF A)
 330   LET T=0
 340   FOR I=LBOUND(A) TO UBOUND(A)
 350     LET T=T+(1/A(I))
-360   NEXT 
+360   NEXT
 370   LET HARMONIC=SIZE(A)/T
 380 END DEF
 ```
@@ -1872,7 +1872,7 @@ We can rewrite the 3 methods using the new JAVA Stream API:
          return   array.length / aver ;
       }
    }
-  
+
 ```
 
 
@@ -2094,9 +2094,9 @@ hmean(A) = length(A)/sum(1./A)
 {{Out}}
 
 ```txt
-julia> map(f-> f(1:10), [amean, gmean, hmean]) 
+julia> map(f-> f(1:10), [amean, gmean, hmean])
 3-element Array{Float64,1}:
- 5.5    
+ 5.5
  4.52873
  3.41417
 julia> ans[1] > ans[2] > ans[3]
@@ -2113,7 +2113,7 @@ true
   am:{(+/x)%#x}
   gm:{(*/x)^(%#x)}
   hm:{(#x)%+/%:'x}
-  
+
   {(am x;gm x;hm x)} 1+!10
 5.5 4.528729 3.414172
 
@@ -2217,7 +2217,7 @@ print "True"
 else
 print "False"
 end if
- 
+
 ```
 
 
@@ -2273,7 +2273,7 @@ assert(a >= g and g >= h)
 
 ## M2000 Interpreter
 
-Dimension(m,0) is the base (lower bound) for each dimension in an array, and can be 0 or 1. 
+Dimension(m,0) is the base (lower bound) for each dimension in an array, and can be 0 or 1.
 Len(a) or len(M()) return length of a pointer to array and an array, as number of array elements.
 For one dimension arrays len() is equal to Dimension(m(),1) where 1 is the first dimension
 Dim A(10,10) : Print Len(A())=100
@@ -2288,7 +2288,7 @@ Module CheckIt {
               Read m as array
               if len(m)=0 then =0 : exit
               sum=Array(m, Dimension(m,0))
-              If len(m)=1 then =sum : exit 
+              If len(m)=1 then =sum : exit
               k=each(m,2,-1)
               While k {
                   sum+=Array(k)
@@ -2302,7 +2302,7 @@ Module CheckIt {
               m=array
               if len(m)=0 then =0 : exit
               prod=Array(m, Dimension(m,0))
-              If len(m)=1 then =prod : exit 
+              If len(m)=1 then =prod : exit
               k=each(m,2,-1)
               While k {
                   prod*=Array(k)
@@ -2315,12 +2315,12 @@ Module CheckIt {
       harmomean=lambda (a as array) -> {
               if len(a)=0 then =0 : exit
               sum=1/Array(a, Dimension(a,0))
-              If len(a)=1 then =1/sum : exit 
+              If len(a)=1 then =1/sum : exit
               k=each(a,2,-1)
               While k {
                   sum+=1/Array(k)
             }
-            =len(a)/sum      
+            =len(a)/sum
       }
       Print sum((1,2,3,4,5))=15
       Print prod((1,2,3,4,5))=120
@@ -2369,7 +2369,7 @@ true
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-Print["{Arithmetic Mean, Geometric Mean, Harmonic Mean} = ", 
+Print["{Arithmetic Mean, Geometric Mean, Harmonic Mean} = ",
  N@Through[{Mean, GeometricMean, HarmonicMean}[Range@10]]]
 ```
 
@@ -2386,11 +2386,11 @@ Print["{Arithmetic Mean, Geometric Mean, Harmonic Mean} = ",
 
 ```MATLAB
 function [A,G,H] = pythagoreanMeans(list)
-    
+
     A = mean(list);
     G = geomean(list);
     H = harmmean(list);
-    
+
 end
 ```
 
@@ -2552,7 +2552,7 @@ Pyth(n)	New a,ii,g,h,x
 	Write "Average = ",a," >= Geometric ",g," >= harmonic ",h,!
 	Quit
 Do Pyth(10)
- 
+
 Pythagorean means for 1..10:
 Average = 5.5 >= Geometric 4.528728688116178495 >= harmonic 3.414171521474055006
 ```
@@ -2630,28 +2630,28 @@ Arithmetic = 5.5, Geometric = 4.528728688116765, Harmonic = 3.414171521474055006
 
 ```nim
 import math, sequtils, future
- 
+
 proc amean(num: seq[float]): float =
   sum(num) / float(len(num))
- 
+
 proc gmean(num: seq[float]): float =
   result = 1
   for n in num: result *= n
   result = pow(result, 1.0 / float(num.len))
- 
+
 proc hmean(num: seq[float]): float =
   for n in num: result += 1.0 / n
   result = float(num.len) / result
- 
+
 proc ameanFunctional(num: seq[float]): float =
   sum(num) / float(num.len)
- 
+
 proc gmeanFunctional(num: seq[float]): float =
   num.foldl(a * b).pow(1.0 / float(num.len))
- 
+
 proc hmeanFunctional(num: seq[float]): float =
   float(num.len) / sum(num.mapIt(float, 1.0 / it))
- 
+
 let numbers = toSeq(1..10).map((x: int) => float(x))
 echo amean(numbers), " ", gmean(numbers), " ", hmean(numbers)
 ```
@@ -2684,7 +2684,7 @@ BEGIN
 END Triplets;
 
 PROCEDURE Means*(a: ARRAY OF INTEGER);
-VAR 
+VAR
 	triplet: ARRAY 3 OF LONGREAL;
 BEGIN
 	Triplets(a,triplet);
@@ -2754,7 +2754,7 @@ class PythagMeans {
     each(i : numbers) {
       mean *= numbers[i];
     };
-    
+
     return mean->Power(1.0 / numbers->Size());
   }
 
@@ -2765,7 +2765,7 @@ class PythagMeans {
     each(i : numbers) {
       mean += (1.0 / numbers[i]);
     };
-    
+
     return numbers->Size() / mean;
   }
 }
@@ -2854,7 +2854,7 @@ See also Matlab implementation [[#MATLAB]]
 import: mapping
 
 : A ( x )
-   x sum 
+   x sum
    x size dup ifZero: [ 2drop null ] else: [ >float / ]
 ;
 
@@ -3096,7 +3096,7 @@ H(1,...,10) = 3.41417152147406
 function arithmetic_mean(sequence s)
     return sum(s)/length(s)
 end function
- 
+
 function geometric_mean(sequence s)
 atom p = 1
     for i=1 to length(s) do
@@ -3104,7 +3104,7 @@ atom p = 1
     end for
     return power(p,1/length(s))
 end function
- 
+
 function harmonic_mean(sequence s)
 atom rsum = 0
     for i=1 to length(s) do
@@ -3112,7 +3112,7 @@ atom rsum = 0
     end for
     return length(s)/rsum
 end function
- 
+
 function iff(integer condition, object Tval, object Fval)
     if condition then return Tval else return Fval end if
 end function
@@ -3307,7 +3307,7 @@ Harmonic Mean : 3.41417
 /numbers {[1 10] 1 range}.
 /recip {1 exch div}.
 
-% Arithmetic mean 
+% Arithmetic mean
 numbers dup 0 {+} fold exch length div
 % Geometric mean
 numbers dup 1 {*} fold exch length recip exp
@@ -3512,15 +3512,15 @@ give both
 ```racket
 
 #lang racket
- 
+
 (define (arithmetic xs)
   (/ (for/sum ([x xs]) x)
      (length xs)))
- 
+
 (define (geometric xs)
   (expt (for/product ([x xs]) x)
         (/ (length xs))))
- 
+
 (define (harmonic xs)
   (/ (length xs)
      (for/sum ([x xs]) (/ x))))
@@ -3550,7 +3550,7 @@ give both
 
 REXX doesn't have a   '''POW'''   function, so an   '''IROOT'''   ('''i'''nteger '''root''')   function is included here;   it includes an
 
-extra error check if used as a general purpose function that would otherwise yield a complex result. 
+extra error check if used as a general purpose function that would otherwise yield a complex result.
 
 ```rexx
 /*REXX program  computes and displays the   Pythagorean means  [Amean,  Gmean,  Hmean]. */
@@ -3617,29 +3617,29 @@ array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 see "arithmetic mean = "  + arithmeticMean(array) + nl
 see "geometric mean =  "  + geometricMean(array) + nl
 see "harmonic mean =  "  + harmonicMean(array) + nl
- 
+
 func arithmeticMean a
      return summary(a) / len(a)
- 
+
 func geometricMean a
      b = 1
      for i = 1 to len(a)
          b *= a[i]
      next
      return pow(b, (1/len(a)))
- 
+
 func harmonicMean a
      b = list(len(a))
      for nr = 1 to len(a)
          b[nr] = 1/a[nr]
-     next 
+     next
      return len(a) / summary(b)
 
 func summary s
      sum = 0
      for n = 1 to len(s)
          sum += s[n]
-     next  
+     next
      return sum
 
 ```
@@ -3665,11 +3665,11 @@ class Array
   def arithmetic_mean
     inject(0.0, :+) / length
   end
-  
+
   def geometric_mean
     inject(:*) ** (1.0 / length)
   end
-  
+
   def harmonic_mean
     length / inject(0.0) {|s, m| s + 1.0/m}
   end
@@ -3719,11 +3719,11 @@ next
 average   = sum / 10
 geometric = bXsum ^ (1/10)
 harmonic  = 10/sum1i
-  
+
  print "ArithmeticMean:";average
  print "Geometric Mean:";geometric
  print " Harmonic Mean:";harmonic
-  
+
  if (average >= geometric) and (geometric >= harmonic) then print "True" else print "False"
 ```
 
@@ -3751,7 +3751,7 @@ fn main() {
         sum += i as f32;
         prod *= i;
         recsum += 1.0/(i as f32);
-    } 
+    }
     let avg = sum/10.0;
     let gmean = (prod as f32).powf(0.1);
     let hmean = 10.0/recsum;
@@ -4015,9 +4015,9 @@ ameans x
 
     Variable |    Type             Obs        Mean       [95% Conf. Interval]
 -------------+---------------------------------------------------------------
-           x | Arithmetic           10         5.5        3.334149   7.665851 
-             |  Geometric           10    4.528729        2.680672   7.650836 
-             |   Harmonic           10    3.414172        2.035664   10.57602 
+           x | Arithmetic           10         5.5        3.334149   7.665851
+             |  Geometric           10    4.528729        2.680672   7.650836
+             |   Harmonic           10    3.414172        2.035664   10.57602
 -----------------------------------------------------------------------------
 ```
 
@@ -4106,9 +4106,9 @@ double arithmetic(int[] list){
 	foreach(int number in list){
 		sum += number;
 	} // foreach
-	
+
 	mean = sum / list.length;
-	
+
 	return mean;
 } // end arithmetic mean
 
@@ -4120,7 +4120,7 @@ double geometric(int[] list){
 	} // foreach
 
 	mean = Math.pow(product, (1 / (double) list.length));
-	
+
 	return mean;
 } // end geometric mean
 
@@ -4130,25 +4130,25 @@ double harmonic(int[] list){
 	foreach(int number in list){
 		sum_inverse += (1 / (double) number);
 	} // foreach
-	
+
 	mean = (double) list.length / sum_inverse;
-	
+
 	return mean;
 } // end harmonic mean
 
 public static void main(){
 	int[] list = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	
+
 	double arithmetic_mean = arithmetic(list);
 	double geometric_mean = geometric(list);
 	double harmonic_mean = harmonic(list);
-	
+
 	// should be 5.5
 	stdout.printf("Arithmetic mean: %s\n", arithmetic_mean.to_string());
-	
+
 	// should be 4.528728688116765
 	stdout.printf("Geometric mean: %s\n", geometric_mean.to_string());
-	
+
 	// should be 4.528728688116765
 	stdout.printf("Harmonic mean: %s\n", harmonic_mean.to_string());
 }
@@ -4193,9 +4193,9 @@ End Sub
 {{out}}
 
 ```txt
-A = 5,5 
-G = 4,52872868811677 
-H = 3,41417152147406 
+A = 5,5
+G = 4,52872868811677
+H = 3,41417152147406
 ```
 
 
@@ -4321,7 +4321,7 @@ for N:= 1 to 10 do
 RlOut(0, A); CrLf(0);
 RlOut(0, G); CrLf(0);
 RlOut(0, H); CrLf(0);
-if not Order then Text(0, "NOT "); 
+if not Order then Text(0, "NOT ");
 Text(0, "ALWAYS DECREASING ORDER
 ");
 ]

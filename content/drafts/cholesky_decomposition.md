@@ -26,7 +26,7 @@ A &=
    a_{21} & a_{22} & a_{32}\\
    a_{31} & a_{32} & a_{33}\\
 \end{pmatrix}\\
-& = 
+& =
 \begin{pmatrix}
    l_{11} & 0 & 0 \\
    l_{21} & l_{22} & 0 \\
@@ -95,8 +95,8 @@ Example 2:
 
 
 ;Note:
-# The Cholesky decomposition of a [[Pascal matrix generation‎|Pascal]] upper-triangle matrix is the [[wp:Identity matrix|Identity matrix]] of the same size. 
-# The Cholesky decomposition of a Pascal symmetric matrix is the Pascal lower-triangle matrix of the same size. 
+# The Cholesky decomposition of a [[Pascal matrix generation‎|Pascal]] upper-triangle matrix is the [[wp:Identity matrix|Identity matrix]] of the same size.
+# The Cholesky decomposition of a Pascal symmetric matrix is the Pascal lower-triangle matrix of the same size.
 
 
 
@@ -254,18 +254,18 @@ MODE MAT = [0,0]FIELD;
 
 PROC cholesky = (MAT a) MAT:(
     [UPB a, 2 UPB a]FIELD l;
- 
+
     FOR i FROM LWB a TO UPB a DO
         FOR j FROM 2 LWB a TO i DO
             FIELD s := 0;
             FOR k FROM 2 LWB a TO j-1 DO
                 s +:= l[i,k] * l[j,k]
             OD;
-            l[i,j] := IF i = j 
-                      THEN field sqrt(a[i,i] - s) 
+            l[i,j] := IF i = j
+                      THEN field sqrt(a[i,i] - s)
                       ELSE 1.0 / l[j,j] * (a[i,j] - s) FI
         OD;
-        FOR j FROM i+1 TO 2 UPB a DO 
+        FOR j FROM i+1 TO 2 UPB a DO
             l[i,j]:=0 # Not required if matrix is declared as triangular #
         OD
     OD;
@@ -286,7 +286,7 @@ PROC print matrix =(MAT a)VOID:(
     FORMAT matrix fmt = $"("f(vector fmt)n(  UPB a-  LWB a)(","lxf(vector fmt))")"$;
     printf((matrix fmt, a))
 );
- 
+
 main: (
     MAT m1 = ((25, 15, -5),
               (15, 18,  0),
@@ -294,7 +294,7 @@ main: (
     MAT c1 = cholesky(m1);
     print matrix(c1);
     printf($l$);
- 
+
     MAT m2 = ((18, 22,  54,  42),
               (22, 70,  86,  62),
               (54, 86, 174, 134),
@@ -332,7 +332,7 @@ main: (
       PROCcholesky(m1())
       PROCprint(m1())
       PRINT
-      
+
       @% = &2050A
       DIM m2(3,3)
       m2() = 18, 22,  54,  42, \
@@ -342,7 +342,7 @@ main: (
       PROCcholesky(m2())
       PROCprint(m2())
       END
-      
+
       DEF PROCcholesky(a())
       LOCAL i%, j%, k%, l(), s
       DIM l(DIM(a(),1),DIM(a(),2))
@@ -361,7 +361,7 @@ main: (
       NEXT i%
       a() = l()
       ENDPROC
-      
+
       DEF PROCprint(a())
       LOCAL row%, col%
       FOR row% = 0 TO DIM(a(),1)
@@ -393,8 +393,8 @@ main: (
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -529,10 +529,10 @@ namespace Cholesky
         }
 
         /// <summary>
-        /// Returns the lower Cholesky Factor, L, of input matrix A. 
+        /// Returns the lower Cholesky Factor, L, of input matrix A.
         /// Satisfies the equation: L*L^T = A.
         /// </summary>
-        /// <param name="a">Input matrix must be square, symmetric, 
+        /// <param name="a">Input matrix must be square, symmetric,
         /// and positive definite. This method does not check for these properties,
         /// and may produce unexpected results of those properties are not met.</param>
         /// <returns></returns>
@@ -571,26 +571,26 @@ namespace Cholesky
 ```
 
 {{out}}
-Test 1: 
+Test 1:
  25.00000, 15.00000, -5.00000,
  15.00000, 18.00000,  0.00000,
  -5.00000,  0.00000, 11.00000,
 
 
-Lower Cholesky 1: 
+Lower Cholesky 1:
   5.00000,  0.00000,  0.00000,
   3.00000,  3.00000,  0.00000,
  -1.00000,  1.00000,  3.00000,
 
 
-Test 2: 
+Test 2:
  18.00000, 22.00000, 54.00000, 42.00000,
  22.00000, 70.00000, 86.00000, 62.00000,
  54.00000, 86.00000,174.00000,134.00000,
  42.00000, 62.00000,134.00000,106.00000,
 
 
-Lower Cholesky 2: 
+Lower Cholesky 2:
   4.24264,  0.00000,  0.00000,  0.00000,
   5.18545,  6.56591,  0.00000,  0.00000,
  12.72792,  3.04604,  1.64974,  0.00000,
@@ -637,7 +637,7 @@ Example:
 
 
 ```lisp
-;; Calculates the Cholesky decomposition matrix L 
+;; Calculates the Cholesky decomposition matrix L
 ;; for a positive-definite, symmetric nxn matrix A.
 (defun chol (A)
   (let* ((n (car (array-dimensions A)))
@@ -648,7 +648,7 @@ Example:
         (setf (aref L k k)
               (sqrt (- (aref A k k)
                        (do* ((j 0 (incf j))
-                             (sum (expt (aref L k j) 2) 
+                             (sum (expt (aref L k j) 2)
                                   (incf sum (expt (aref L k j) 2))))
                             ((> j (- k 1)) sum)))))
 
@@ -700,7 +700,7 @@ Example:
   (let ((l (list (list (sqrt (caar m))))) x (j 0) i)
     (dolist (cm (cdr m) (mapcar #'(lambda (x) (nconc x (make-list (- (length m) (length x)) :initial-element 0))) l))
       (setq x (list (/ (car cm) (caar l))) i 0)
-      (dolist (cl (cdr l)) 
+      (dolist (cl (cdr l))
         (setf (cdr (last x)) (list (/ (- (elt cm (incf i)) (*v x cl)) (car (last cl))))))
       (setf (cdr (last l)) (list (nconc x (list (sqrt (- (elt cm (incf j)) (*v x x))))))))))
 ;; where *v is the scalar product defined as
@@ -825,8 +825,8 @@ begin
 end;
 
 var m1 := new Float[9];
-m1 := [ 25.0, 15.0, -5.0, 
-        15.0, 18.0,  0.0, 
+m1 := [ 25.0, 15.0, -5.0,
+        15.0, 18.0,  0.0,
         -5.0,  0.0, 11.0 ];
 var c1 := Cholesky(m1);
 ShowMatrix(c1);
@@ -861,7 +861,7 @@ class Main
     i.times |Int x|
     {
       j.times
-      { 
+      {
         result[x].add(0f)
       }
     }
@@ -877,9 +877,9 @@ class Main
     {
       (i+1).times |Int k|
       {
-        Float sum := (0..<k).toList.reduce (0f) |Float a, Int j -> Float| 
-        { 
-          a + l[i][j] * l[k][j] 
+        Float sum := (0..<k).toList.reduce (0f) |Float a, Int j -> Float|
+        {
+          a + l[i][j] * l[k][j]
         }
         if (i == k)
           l[i][k] = (array[i][i]-sum).sqrt
@@ -895,7 +895,7 @@ class Main
     echo (array)
     echo (cholesky (array))
   }
- 
+
   Void main ()
   {
     runTest ([[25f,15f,-5f],[15f,18f,0f],[-5f,0f,11f]])
@@ -926,29 +926,29 @@ Program Cholesky_decomp
 ! *************************************************!
 ! LBH @ ULPGC 06/03/2014
 ! Compute the Cholesky decomposition for a matrix A
-! after the attached 
+! after the attached
 ! http://rosettacode.org/wiki/Cholesky_decomposition
 ! note that the matrix A is complex since there might
 ! be values, where the sqrt has complex solutions.
 ! Here, only the real values are taken into account
-!*************************************************! 
+!*************************************************!
 implicit none
 
 INTEGER, PARAMETER :: m=3 !rows
 INTEGER, PARAMETER :: n=3 !cols
-COMPLEX, DIMENSION(m,n) :: A 
+COMPLEX, DIMENSION(m,n) :: A
 REAL, DIMENSION(m,n) :: L
 REAL :: sum1, sum2
 INTEGER i,j,k
 
 ! Assign values to the matrix
-A(1,:)=(/ 25,  15,  -5 /)   
-A(2,:)=(/ 15,  18,   0 /)  
+A(1,:)=(/ 25,  15,  -5 /)
+A(2,:)=(/ 15,  18,   0 /)
 A(3,:)=(/ -5,   0,  11 /)
 ! !!!!!!!!!!!another example!!!!!!!
-! A(1,:) = (/ 18,  22,   54,   42 /) 
-! A(2,:) = (/ 22,  70,   86,   62 /) 
-! A(3,:) = (/ 54,  86,  174,  134 /) 
+! A(1,:) = (/ 18,  22,   54,   42 /)
+! A(2,:) = (/ 22,  70,   86,   62 /)
+! A(3,:) = (/ 54,  86,  174,  134 /)
 ! A(4,:) = (/ 42,  62,  134,  106 /)
 
 
@@ -975,7 +975,7 @@ do i=1,n
         do j=1,k-1
         if (i==k) then
             sum1=sum1+(L(k,j)*L(k,j))
-            L(k,k)=real(sqrt(A(k,k)-sum1))  
+            L(k,k)=real(sqrt(A(k,k)-sum1))
         elseif (i > k) then
             sum2=sum2+(L(i,j)*L(k,j))
             L(i,k)=(1/L(k,k))*(A(i,k)-sum2)
@@ -1103,7 +1103,7 @@ let cholesky a =
         let c1 j =
             let sum = List.sumBy (fun k -> l.[j, k] ** 2.0) [0..j - 1]
             sqrt (a.[j, j] - sum)
-        let c2 i j = 
+        let c2 i j =
             let sum = List.sumBy (fun k -> l.[i, k] * l.[j, k]) [0..j - 1]
             (1.0 / l.[j, j]) * (a.[i, j] - sum)
         if j > i then 0.0 else
@@ -1148,14 +1148,14 @@ printMat ex2
 
 ```txt
 ex1:
-25.00000,	15.00000,	-5.00000,		5.00000,	0.00000,	0.00000,	
-15.00000,	18.00000,	0.00000,	--> 	3.00000,	3.00000,	0.00000,	
--5.00000,	0.00000,	11.00000,		-1.00000,	1.00000,	3.00000,	
+25.00000,	15.00000,	-5.00000,		5.00000,	0.00000,	0.00000,
+15.00000,	18.00000,	0.00000,	--> 	3.00000,	3.00000,	0.00000,
+-5.00000,	0.00000,	11.00000,		-1.00000,	1.00000,	3.00000,
 ex2:
-18.00000,	22.00000,	54.00000,	42.00000,		4.24264,	0.00000,	0.00000,	0.00000,	
-22.00000,	70.00000,	86.00000,	62.00000,		5.18545,	6.56591,	0.00000,	0.00000,	
-54.00000,	86.00000,	174.00000,	134.00000,	--> 	12.72792,	3.04604,	1.64974,	0.00000,	
-42.00000,	62.00000,	134.00000,	106.00000,		9.89949,	1.62455,	1.84971,	1.39262,	
+18.00000,	22.00000,	54.00000,	42.00000,		4.24264,	0.00000,	0.00000,	0.00000,
+22.00000,	70.00000,	86.00000,	62.00000,		5.18545,	6.56591,	0.00000,	0.00000,
+54.00000,	86.00000,	174.00000,	134.00000,	--> 	12.72792,	3.04604,	1.64974,	0.00000,
+42.00000,	62.00000,	134.00000,	106.00000,		9.89949,	1.62455,	1.84971,	1.39262,
 
 ```
 
@@ -1281,23 +1281,23 @@ func demo(a *symmetric) {
 ```txt
 
 A:
-  25.00000   15.00000   -5.00000 
-  15.00000   18.00000    0.00000 
-  -5.00000    0.00000   11.00000 
+  25.00000   15.00000   -5.00000
+  15.00000   18.00000    0.00000
+  -5.00000    0.00000   11.00000
 L:
-   5.00000    0.00000    0.00000 
-   3.00000    3.00000    0.00000 
-  -1.00000    1.00000    3.00000 
+   5.00000    0.00000    0.00000
+   3.00000    3.00000    0.00000
+  -1.00000    1.00000    3.00000
 A:
-  18.00000   22.00000   54.00000   42.00000 
-  22.00000   70.00000   86.00000   62.00000 
-  54.00000   86.00000  174.00000  134.00000 
-  42.00000   62.00000  134.00000  106.00000 
+  18.00000   22.00000   54.00000   42.00000
+  22.00000   70.00000   86.00000   62.00000
+  54.00000   86.00000  174.00000  134.00000
+  42.00000   62.00000  134.00000  106.00000
 L:
-   4.24264    0.00000    0.00000    0.00000 
-   5.18545    6.56591    0.00000    0.00000 
-  12.72792    3.04604    1.64974    0.00000 
-   9.89949    1.62455    1.84971    1.39262 
+   4.24264    0.00000    0.00000    0.00000
+   5.18545    6.56591    0.00000    0.00000
+  12.72792    3.04604    1.64974    0.00000
+   9.89949    1.62455    1.84971    1.39262
 
 ```
 
@@ -1389,34 +1389,34 @@ func demo(heading string, a *matrix) {
 ```txt
 
 A:
-[(  25.00  +0.00i) (  15.00  +0.00i) (  -5.00  +0.00i)] 
-[(  15.00  +0.00i) (  18.00  +0.00i) (   0.00  +0.00i)] 
-[(  -5.00  +0.00i) (   0.00  +0.00i) (  11.00  +0.00i)] 
+[(  25.00  +0.00i) (  15.00  +0.00i) (  -5.00  +0.00i)]
+[(  15.00  +0.00i) (  18.00  +0.00i) (   0.00  +0.00i)]
+[(  -5.00  +0.00i) (   0.00  +0.00i) (  11.00  +0.00i)]
 
 Cholesky factor L:
-[(   5.00  +0.00i) (   0.00  +0.00i) (   0.00  +0.00i)] 
-[(   3.00  +0.00i) (   3.00  +0.00i) (   0.00  +0.00i)] 
-[(  -1.00  +0.00i) (   1.00  +0.00i) (   3.00  +0.00i)] 
+[(   5.00  +0.00i) (   0.00  +0.00i) (   0.00  +0.00i)]
+[(   3.00  +0.00i) (   3.00  +0.00i) (   0.00  +0.00i)]
+[(  -1.00  +0.00i) (   1.00  +0.00i) (   3.00  +0.00i)]
 
 A:
-[(  18.00  +0.00i) (  22.00  +0.00i) (  54.00  +0.00i) (  42.00  +0.00i)] 
-[(  22.00  +0.00i) (  70.00  +0.00i) (  86.00  +0.00i) (  62.00  +0.00i)] 
-[(  54.00  +0.00i) (  86.00  +0.00i) ( 174.00  +0.00i) ( 134.00  +0.00i)] 
-[(  42.00  +0.00i) (  62.00  +0.00i) ( 134.00  +0.00i) ( 106.00  +0.00i)] 
+[(  18.00  +0.00i) (  22.00  +0.00i) (  54.00  +0.00i) (  42.00  +0.00i)]
+[(  22.00  +0.00i) (  70.00  +0.00i) (  86.00  +0.00i) (  62.00  +0.00i)]
+[(  54.00  +0.00i) (  86.00  +0.00i) ( 174.00  +0.00i) ( 134.00  +0.00i)]
+[(  42.00  +0.00i) (  62.00  +0.00i) ( 134.00  +0.00i) ( 106.00  +0.00i)]
 
 Cholesky factor L:
-[(   4.24  +0.00i) (   0.00  +0.00i) (   0.00  +0.00i) (   0.00  +0.00i)] 
-[(   5.19  +0.00i) (   6.57  +0.00i) (   0.00  +0.00i) (   0.00  +0.00i)] 
-[(  12.73  +0.00i) (   3.05  +0.00i) (   1.65  +0.00i) (   0.00  +0.00i)] 
-[(   9.90  +0.00i) (   1.62  +0.00i) (   1.85  +0.00i) (   1.39  +0.00i)] 
+[(   4.24  +0.00i) (   0.00  +0.00i) (   0.00  +0.00i) (   0.00  +0.00i)]
+[(   5.19  +0.00i) (   6.57  +0.00i) (   0.00  +0.00i) (   0.00  +0.00i)]
+[(  12.73  +0.00i) (   3.05  +0.00i) (   1.65  +0.00i) (   0.00  +0.00i)]
+[(   9.90  +0.00i) (   1.62  +0.00i) (   1.85  +0.00i) (   1.39  +0.00i)]
 
 A:
-[(   1.00  +0.00i) (   0.00  -2.00i)] 
-[(   0.00  +2.00i) (   5.00  +0.00i)] 
+[(   1.00  +0.00i) (   0.00  -2.00i)]
+[(   0.00  +2.00i) (   5.00  +0.00i)]
 
 Cholesky factor L:
-[(   1.00  +0.00i) (   0.00  +0.00i)] 
-[(   0.00  +2.00i) (   1.00  +0.00i)] 
+[(   1.00  +0.00i) (   0.00  +0.00i)]
+[(   0.00  +2.00i) (   1.00  +0.00i)]
 
 ```
 
@@ -1585,7 +1585,7 @@ import Data.Array.IArray
 import Data.List
 import Cholesky
 
-fm _ [] = "" 
+fm _ [] = ""
 fm _ [x] = fst x
 fm width ((a,b):xs) = a ++ (take (width - b) $ cycle " ") ++ (fm width xs)
 
@@ -1598,13 +1598,13 @@ showMatrice row xs   = ys where
   ys = fmt width row (splitAt row vs)
 
 ex1, ex2 :: Arr
-ex1 = listArray ((0,0),(2,2)) [25, 15, -5, 
-                               15, 18,  0, 
+ex1 = listArray ((0,0),(2,2)) [25, 15, -5,
+                               15, 18,  0,
                                -5,  0, 11]
 
-ex2 = listArray ((0,0),(3,3)) [18, 22,  54,  42, 
-                               22, 70,  86,  62, 
-                               54, 86, 174, 134, 
+ex2 = listArray ((0,0),(3,3)) [18, 22,  54,  42,
+                               22, 70,  86,  62,
+                               54, 86, 174, 134,
                                42, 62, 134, 106]
 
 main :: IO ()
@@ -1634,12 +1634,12 @@ main = do
 procedure cholesky (array)
   result := make_square_array (*array)
   every (i := 1 to *array) do {
-    every (k := 1 to i) do { 
+    every (k := 1 to i) do {
       sum := 0
       every (j := 1 to (k-1)) do {
         sum +:= result[i][j] * result[k][j]
       }
-      if (i = k) 
+      if (i = k)
         then result[i][k] := sqrt(array[i][i] - sum)
         else result[i][k] := 1.0 / result[k][k] * (array[i][k] - sum)
     }
@@ -1679,22 +1679,22 @@ end
 ```txt
 
 Input:
-25 15 -5 
-15 18 0 
--5 0 11 
+25 15 -5
+15 18 0
+-5 0 11
 Result:
-5.0 0 0 
-3.0 3.0 0 
--1.0 1.0 3.0 
+5.0 0 0
+3.0 3.0 0
+-1.0 1.0 3.0
 Input:
-18 22 54 42 
-22 70 86 62 
-54 86 174 134 
-42 62 134 106 
+18 22 54 42
+22 70 86 62
+54 86 174 134
+42 62 134 106
 Result:
-4.242640687 0 0 0 
-5.185449729 6.565905201 0 0 
-12.72792206 3.046038495 1.649742248 0 
+4.242640687 0 0 0
+5.185449729 6.565905201 0 0
+12.72792206 3.046038495 1.649742248 0
 9.899494937 1.624553864 1.849711005 1.392621248
 
 ```
@@ -1730,16 +1730,16 @@ replaceAtM (i, j) e a = replaceAt i (replaceAt j e (index i a)) a
 
 get : Matrix m m Double -> Matrix m m Double -> (Fin m, Fin m) -> Double
 get a l (i, j) {m} =  if i == j then sqrt $ indexM (j, j) a - dot
-             else if i > j  then (indexM (i, j) a - dot) / indexM (j, j) l 
+             else if i > j  then (indexM (i, j) a - dot) / indexM (j, j) l
              else 0.0
-  
-  where        
-        -- Obtain indicies 0 to j -1 
+
+  where
+        -- Obtain indicies 0 to j -1
         ks : List (Fin m)
         ks = case (findIndices (\_ => True) a) of
           [] => []
-          (x::xs) => init (x::xs) 
-        
+          (x::xs) => init (x::xs)
+
         dot : Double
         dot = sum [(indexM (i, k) l) * (indexM (j, k) l) | k <- ks]
 
@@ -1749,13 +1749,13 @@ updateL a l idx = replaceAtM idx (get a l idx) l
 
 
 cholesky : Matrix m m Double -> Matrix m m Double
-cholesky a {m} = 
-    foldl (\l',i => 
-        foldl (\l'',j => updateL a l'' (i, j)) l' (js i)) 
+cholesky a {m} =
+    foldl (\l',i =>
+        foldl (\l'',j => updateL a l'' (i, j)) l' (js i))
           l is
   where  l = zeros m m
-         
-         is : List (Fin m) 
+
+         is : List (Fin m)
          is = findIndices (\_ => True) a
 
          js : Fin m -> List (Fin m)
@@ -1763,13 +1763,13 @@ cholesky a {m} =
 
 
 ex1 : Matrix 3 3 Double
-ex1 = cholesky [[25.0, 15.0, -5.0], [15.0, 18.0, 0.0], [-5.0, 0.0, 11.0]] 
+ex1 = cholesky [[25.0, 15.0, -5.0], [15.0, 18.0, 0.0], [-5.0, 0.0, 11.0]]
 
 ex2 : Matrix 4 4 Double
 ex2 = cholesky [[18.0, 22.0, 54.0, 42.0], [22.0, 70.0, 86.0, 62.0],
-                [54.0, 86.0, 174.0, 134.0], [42.0, 62.0, 134.0, 106.0]] 
+                [54.0, 86.0, 174.0, 134.0], [42.0, 62.0, 134.0, 106.0]]
 
-main : IO () 
+main : IO ()
 main = do
   print ex1
   putStrLn "\n"
@@ -1871,7 +1871,7 @@ public class Cholesky {
 		}
 		return l;
 	}
-	
+
 	public static void main(String[] args){
 		double[][] test1 = {{25, 15, -5},
 							{15, 18, 0},
@@ -1936,7 +1936,7 @@ def is_symmetric:
          then [ .[0], .[1], .[2]+1, .[3]] | test
       else false
       end;
-    if is_square|not then false 
+    if is_square|not then false
     else [ ., 0, 0, length ] | test
     end ;
 
@@ -1968,7 +1968,7 @@ def cholesky_factor:
 ```
 
 '''Task 1''':
- [[25,15,-5],[15,18,0],[-5,0,11]] | cholesky_factor 
+ [[25,15,-5],[15,18,0],[-5,0,11]] | cholesky_factor
 {{Out}}
  [[5,0,0],[3,3,0],[-1,1,3]]
 '''Task 2''':
@@ -2009,7 +2009,7 @@ println(b, "\n => \n", chol(b, :L))
 [25 15 5
  15 18 0
  -5 0 11]
- => 
+ =>
 [5.0 0.0 0.0
  3.0 3.0 0.0
  -1.0 1.0 3.0]
@@ -2017,7 +2017,7 @@ println(b, "\n => \n", chol(b, :L))
  22 70 86 62
  54 86 174 134
  42 62 134 106]
- => 
+ =>
 [4.242640687119285 0.0 0.0 0.0
  5.185449728701349 6.565905201197403 0.0 0.0
  12.727922061357857 3.0460384954008553 1.6497422479090704 0.0
@@ -2036,9 +2036,9 @@ println(b, "\n => \n", chol(b, :L))
 
 fun cholesky(a: DoubleArray): DoubleArray {
     val n = Math.sqrt(a.size.toDouble()).toInt()
-    val l = DoubleArray(a.size) 
+    val l = DoubleArray(a.size)
     var s: Double
-    for (i in 0 until n) 
+    for (i in 0 until n)
         for (j in 0 .. i) {
             s = 0.0
             for (k in 0 until j) s += l[i * n + k] * l[j * n + k]
@@ -2056,7 +2056,7 @@ fun showMatrix(a: DoubleArray) {
         for (j in 0 until n) print("%8.5f ".format(a[i * n + j]))
         println()
     }
-} 
+}
 
 fun main(args: Array<String>) {
     val m1 = doubleArrayOf(25.0, 15.0, -5.0,
@@ -2070,7 +2070,7 @@ fun main(args: Array<String>) {
                            54.0, 86.0, 174.0, 134.0,
                            42.0, 62.0, 134.0, 106.0)
     val c2 = cholesky(m2)
-    showMatrix(c2) 
+    showMatrix(c2)
 }
 ```
 
@@ -2171,7 +2171,7 @@ chol[A_] :=
 ```
 
 
-=={{header|MATLAB}} / {{header|Octave}}== 
+=={{header|MATLAB}} / {{header|Octave}}==
 The cholesky decomposition chol() is an internal function
 
 ```Matlab
@@ -2180,13 +2180,13 @@ The cholesky decomposition chol() is an internal function
   15  18   0
   -5   0  11 ];
 
-  B  = [ 
+  B  = [
   18  22   54   42
   22  70   86   62
   54  86  174  134
   42  62  134  106   ];
 
-  [L] = chol(A,'lower')  
+  [L] = chol(A,'lower')
   [L] = chol(B,'lower')
 
 ```
@@ -2194,7 +2194,7 @@ The cholesky decomposition chol() is an internal function
 {{out}}
 
 ```txt
-   >   [L] = chol(A,'lower')  
+   >   [L] = chol(A,'lower')
   L =
 
    5   0   0
@@ -2225,7 +2225,7 @@ b: cholesky(a);
           [1/2, 1/(2*sqrt(3)), 0,             0             ],
           [1/3, 1/(2*sqrt(3)), 1/(6*sqrt(5)), 0             ],
           [1/4, 3^(3/2)/20,    1/(4*sqrt(5)), 1/(20*sqrt(7))]) */
-          
+
 b . transpose(b) - a;
 matrix([0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0])
 ```
@@ -2270,13 +2270,13 @@ echo cholesky(m2)
 Output:
 
 ```txt
-5.00000 0.00000 0.00000 
-3.00000 3.00000 0.00000 
--1.00000 1.00000 3.00000 
+5.00000 0.00000 0.00000
+3.00000 3.00000 0.00000
+-1.00000 1.00000 3.00000
 
-4.24264 0.00000 0.00000 0.00000 
-5.18545 6.56591 0.00000 0.00000 
-12.72792 3.04604 1.64974 0.00000 
+4.24264 0.00000 0.00000 0.00000
+5.18545 6.56591 0.00000 0.00000
+12.72792 3.04604 1.64974 0.00000
 9.89949 1.62455 1.84971 1.39262
 ```
 
@@ -2295,16 +2295,16 @@ class Cholesky {
     m1 := [25.0, 15.0, -5.0, 15.0, 18.0, 0.0, -5.0, 0.0, 11.0];
     c1 := Cholesky(m1, n);
     ShowMatrix(c1, n);
-    
+
     IO.Console->PrintLine();
-    
+
     n := 4;
     m2 := [18.0, 22.0,  54.0,  42.0, 22.0, 70.0, 86.0, 62.0,
       54.0, 86.0, 174.0, 134.0, 42.0, 62.0, 134.0, 106.0];
     c2 := Cholesky(m2, n);
     ShowMatrix(c2, n);
   }
-  
+
   function : ShowMatrix(A : Float[], n : Int) ~ Nil {
     for (i := 0; i < n; i+=1;) {
       for (j := 0; j < n; j+=1;) {
@@ -2313,10 +2313,10 @@ class Cholesky {
       IO.Console->PrintLine();
     };
   }
-  
+
   function : Cholesky(A : Float[], n : Int) ~ Float[] {
     L := Float->New[n * n];
-    
+
     for (i := 0; i < n; i+=1;) {
       for (j := 0; j < (i+1); j+=1;) {
         s := 0.0;
@@ -2328,7 +2328,7 @@ class Cholesky {
           (1.0 / L[j * n + j] * (A[i * n + j] - s));
       };
     };
-    
+
     return L;
   }
 }
@@ -2530,7 +2530,7 @@ Program Cholesky;
 
 type
   D2Array = array of array of double;
-  
+
 function cholesky(const A: D2Array): D2Array;
   var
     i, j, k: integer;
@@ -2548,7 +2548,7 @@ function cholesky(const A: D2Array): D2Array;
 	else
           cholesky[i][j] := (A[i][j] - s) / cholesky[j][j];  // save one multiplication compared to the original
       end;
-  end;  
+  end;
 
 procedure printM(const A: D2Array);
   var
@@ -2582,7 +2582,7 @@ begin
   printM(cOut);
 
   writeln;
-  
+
   setlength(cIn, length(m2), length(m2));
   for index := low(m2) to high(m2) do
     cIn[index] := m2[index];
@@ -2613,30 +2613,30 @@ end.
 
 
 ```perl
-sub cholesky { 
-  my $matrix = shift; 
-  my $chol = [ map { [(0) x @$matrix ] } @$matrix ]; 
-  for my $row (0..@$matrix-1) { 
-    for my $col (0..$row) { 
-      my $x = $$matrix[$row][$col]; 
-      $x -= $$chol[$row][$_]*$$chol[$col][$_] for 0..$col; 
-      $$chol[$row][$col] = $row == $col ? sqrt $x : $x/$$chol[$col][$col]; 
-    } 
-  } 
-  return $chol; 
-} 
+sub cholesky {
+  my $matrix = shift;
+  my $chol = [ map { [(0) x @$matrix ] } @$matrix ];
+  for my $row (0..@$matrix-1) {
+    for my $col (0..$row) {
+      my $x = $$matrix[$row][$col];
+      $x -= $$chol[$row][$_]*$$chol[$col][$_] for 0..$col;
+      $$chol[$row][$col] = $row == $col ? sqrt $x : $x/$$chol[$col][$col];
+    }
+  }
+  return $chol;
+}
 
-my $example1 = [ [ 25, 15, -5 ], 
-		 [ 15, 18,  0 ], 
-		 [ -5,  0, 11 ] ]; 
-print "Example 1:\n"; 
-print +(map { sprintf "%7.4f\t", $_ } @$_), "\n" for @{ cholesky $example1 }; 
+my $example1 = [ [ 25, 15, -5 ],
+		 [ 15, 18,  0 ],
+		 [ -5,  0, 11 ] ];
+print "Example 1:\n";
+print +(map { sprintf "%7.4f\t", $_ } @$_), "\n" for @{ cholesky $example1 };
 
-my $example2 = [ [ 18, 22,  54,  42], 
-		 [ 22, 70,  86,  62], 
-		 [ 54, 86, 174, 134], 
-		 [ 42, 62, 134, 106] ]; 
-print "\nExample 2:\n"; 
+my $example2 = [ [ 18, 22,  54,  42],
+		 [ 22, 70,  86,  62],
+		 [ 54, 86, 174, 134],
+		 [ 42, 62, 134, 106] ];
+print "\nExample 2:\n";
 print +(map { sprintf "%7.4f\t", $_ } @$_), "\n" for @{ cholesky $example2 };
 
 ```
@@ -2646,15 +2646,15 @@ print +(map { sprintf "%7.4f\t", $_ } @$_), "\n" for @{ cholesky $example2 };
 ```txt
 
 Example 1:
- 5.0000	 0.0000	 0.0000	
- 3.0000	 3.0000	 0.0000	
--1.0000	 1.0000	 3.0000	
+ 5.0000	 0.0000	 0.0000
+ 3.0000	 3.0000	 0.0000
+-1.0000	 1.0000	 3.0000
 
 Example 2:
- 4.2426	 0.0000	 0.0000	 0.0000	
- 5.1854	 6.5659	 0.0000	 0.0000	
-12.7279	 3.0460	 1.6497	 0.0000	
- 9.8995	 1.6246	 1.8497	 1.3926	
+ 4.2426	 0.0000	 0.0000	 0.0000
+ 5.1854	 6.5659	 0.0000	 0.0000
+12.7279	 3.0460	 1.6497	 0.0000
+ 9.8995	 1.6246	 1.8497	 1.3926
 
 ```
 
@@ -2682,9 +2682,9 @@ sub cholesky(@A) {
 ];
 
 .say for cholesky [
-    [18, 22,  54,  42],       
+    [18, 22,  54,  42],
     [22, 70,  86,  62],
-    [54, 86, 174, 134],       
+    [54, 86, 174, 134],
     [42, 62, 134, 106],
 ];
 ```
@@ -2847,20 +2847,20 @@ end decompose;
 ACTUAL RESULTS:-
 
 ```txt
-Original matrix: 
+Original matrix:
   25  15  -5
   15  18   0
   -5   0  11
-Decomposed matrix 
+Decomposed matrix
    5   0   0
    3   3   0
   -1   1   3
-Original matrix: 
+Original matrix:
           18          22          54          42
           22          70          86          62
           54          86         174         134
           42          62         134         106
-Decomposed matrix 
+Decomposed matrix
      4.24264     0.00000     0.00000     0.00000
      5.18545     6.56591     0.00000     0.00000
     12.72792     3.04604     1.64974     0.00000
@@ -2891,7 +2891,7 @@ function cholesky ($a) {
             if ($k -lt $end) {
                 foreach ($i in ($k+1)..$end) {
                     $sum = 0
-                    if (0 -lt $k) { 
+                    if (0 -lt $k) {
                         foreach ($j in 0..$m) {$sum += $l[$i][$j]*$l[$k][$j]}
                     }
                     $l[$i][$k] = ($a[$i][$k] - $sum)/$l[$k][$k]
@@ -2901,9 +2901,9 @@ function cholesky ($a) {
     }
     $l
 }
- 
+
 function show($a) {$a | foreach {"$_"}}
- 
+
 $a1 = @(
 @(25, 15, -5),
 @(15, 18, 0),
@@ -2987,7 +2987,7 @@ if __name__ == "__main__":
           [-5,  0, 11]]
     pprint(cholesky(m1))
     print()
-    
+
     m2 = [[18, 22,  54,  42],
           [22, 70,  86,  62],
           [54, 86, 174, 134],
@@ -3012,7 +3012,7 @@ if __name__ == "__main__":
 
 ### Python3.X version using extra Python idioms
 
-Factors out accesses to <code>A[i], L[i], and L[j]</code> by creating <code>Ai, Li and Lj</code> respectively as well as using <code>enumerate</code> instead of <code>range(len(some_array))</code>. 
+Factors out accesses to <code>A[i], L[i], and L[j]</code> by creating <code>Ai, Li and Lj</code> respectively as well as using <code>enumerate</code> instead of <code>range(len(some_array))</code>.
 
 
 ```python
@@ -3040,7 +3040,7 @@ solve:{[A;B] $[0h>type A;B%A;inv[A] mmu B]}
 ak:{[m;k] (),/:m[;k]til k:k-1}
 akk:{[m;k] m[k;k:k-1]}
 transpose:{$[0h=type x;flip x;enlist each x]}
-mult:{[A;B]$[0h=type A;A mmu B;A*B]}		
+mult:{[A;B]$[0h=type A;A mmu B;A*B]}
 cholesky:{[A]
 	{[A;L;n]
 		l_k:solve[L;ak[A;n]];
@@ -3053,7 +3053,7 @@ show cholesky (25 15 -5f;15 18 0f;-5 0 11f)
 -1"";
 show cholesky (18 22 54 42f;22 70 86 62f;54 86 174 134f;42 62 134 106f)
 ```
-	
+
 
 {{out}}
 
@@ -3107,10 +3107,10 @@ t(chol(matrix(c(18, 22, 54, 42, 22, 70, 86, 62, 54, 86, 174, 134, 42, 62, 134, 1
   (define (ref L i j) (vector-ref (vector-ref L i) j))
   (for* ([i n] [k n])
     (set L i k
-         (cond 
-           [(= i k) 
+         (cond
+           [(= i k)
             (sqrt (- (mref A i i) (for/sum ([j k]) (sqr (ref L k j)))))]
-           [(> i k) 
+           [(> i k)
             (/ (- (mref A i k) (for/sum ([j k]) (* (ref L i j) (ref L k j))))
                (ref L k k))]
            [else 0])))
@@ -3131,7 +3131,7 @@ Output:
 
 ```racket
 
-'#(#(5 0 0) 
+'#(#(5 0 0)
    #(3 3 0)
    #(-1 1 3))
 '#(#(4.242640687119285 0 0 0)
@@ -3146,9 +3146,9 @@ Output:
 
 ## REXX
 
-If trailing zeros are wanted after the decimal point for values of zero (0),   the     <big><big>'''/ 1'''</big></big>     (a division by unity performs 
+If trailing zeros are wanted after the decimal point for values of zero (0),   the     <big><big>'''/ 1'''</big></big>     (a division by unity performs
 
-REXX number normalization)   can be removed from the line   (number 40)   which contains the source statement: 
+REXX number normalization)   can be removed from the line   (number 40)   which contains the source statement:
 :::::   <b> z=z   right( format(@.row.col, ,   dPlaces) / 1,     width) </b>
 
 ```rexx
@@ -3248,20 +3248,20 @@ sqrt:  procedure; parse arg x;  if x=0  then return 0;  d=digits(); numeric digi
 
 load "stdlib.ring"
 decimals(5)
-m1 = [[25, 15, -5], 
-          [15, 18,  0], 
+m1 = [[25, 15, -5],
+          [15, 18,  0],
           [-5,  0, 11]]
 cholesky(m1)
 printarray(m1)
 see nl
- 
-m2 = [[18, 22,  54,  42], 
-          [22, 70,  86,  62], 
-          [54, 86, 174, 134], 
+
+m2 = [[18, 22,  54,  42],
+          [22, 70,  86,  62],
+          [54, 86, 174, 134],
           [42, 62, 134, 106]]
 cholesky(m2)
 printarray(m2)
- 
+
 func cholesky(a)
 l = newlist(len(a), len(a))
 for i = 1 to len(a)
@@ -3270,15 +3270,15 @@ for i = 1 to len(a)
          for k = 1 to j
              s = s + l[i][k] * l[j][k]
          next
-         if i = j 
+         if i = j
             l[i][j] = sqrt(a[i][i] - s)
          else
             l[i][j] = (a[i][j] - s) / l[j][j]
          ok
-    next 
-next 
+    next
+next
 a = l
- 
+
 func printarray(a)
        for row = 1 to len(a)
             for col = 1 to len(a)
@@ -3293,14 +3293,14 @@ Output:
 
 ```txt
 
-5  0  0  
-3  3  0  
--1  1  3  
+5  0  0
+3  3  0
+-1  1  3
 
-4.24264  0  0  0  
-5.18545  6.56591  0  0  
-12.72792  3.04604  1.64974  0  
-9.89949  1.62455  1.84971  1.39262 
+4.24264  0  0  0
+5.18545  6.56591  0  0
+12.72792  3.04604  1.64974  0
+9.89949  1.62455  1.84971  1.39262
 
 ```
 
@@ -3418,14 +3418,14 @@ fn main(){
 
 ```txt
 
-5.0000	0.0000	0.0000	
-3.0000	3.0000	0.0000	
--1.0000	1.0000	3.0000	
+5.0000	0.0000	0.0000
+3.0000	3.0000	0.0000
+-1.0000	1.0000	3.0000
 
-4.2426	0.0000	0.0000	0.0000	
-5.1854	6.5659	0.0000	0.0000	
-12.7279	3.0460	1.6497	0.0000	
-9.8995	1.6246	1.8497	1.3926	
+4.2426	0.0000	0.0000	0.0000
+5.1854	6.5659	0.0000	0.0000
+12.7279	3.0460	1.6497	0.0000
+9.8995	1.6246	1.8497	1.3926
 
 ```
 
@@ -3449,7 +3449,7 @@ case class Matrix( val matrix:Array[Array[Double]] ) {
   def isLowerTriangle( r:Int, c:Int ) : Boolean = { c <= r }
   def isDiagonal( r:Int, c:Int ) : Boolean = { r == c}
 
-  override def toString = matrix.map(_.mkString(", ")).mkString("\n")  
+  override def toString = matrix.map(_.mkString(", ")).mkString("\n")
 
   /**
    * Perform Cholesky Decomposition of this matrix
@@ -3458,10 +3458,10 @@ case class Matrix( val matrix:Array[Array[Double]] ) {
 
     val l = Array.ofDim[Double](rows*cols)
 
-    for( i <- (0 until rows); j <- (0 until cols) ) yield { 
-	
+    for( i <- (0 until rows); j <- (0 until cols) ) yield {
+
       val s = (for( k <- (0 until j) ) yield { l(i*rows+k) * l(j*rows+k) }).sum
-	  
+
       l(i*rows+j) = (i,j) match {
         case (r,c) if isDiagonal(r,c) => scala.math.sqrt(matrix(i)(i) - s)
         case (r,c) if isLowerTriangle(r,c) => (1.0 / l(j*rows+j) * (matrix(i)(j) - s))
@@ -3488,13 +3488,13 @@ val r1 = Array[Double](5,0,0,3,3,0,-1,1,3)
 val r2 = Array[Double](4.24264,0.00000,0.00000,0.00000,5.18545,6.56591,0.00000,0.00000,
                         12.72792,3.04604,1.64974,0.00000,9.89949,1.62455,1.84971,1.39262)
 
-// Verify assertions						
-(l1.matrix.flatten.zip(r1)).foreach{ case (result,test) => 
-  assert(math.round( result * 100000 ) * 0.00001 == math.round( test * 100000 ) * 0.00001) 
+// Verify assertions
+(l1.matrix.flatten.zip(r1)).foreach{ case (result,test) =>
+  assert(math.round( result * 100000 ) * 0.00001 == math.round( test * 100000 ) * 0.00001)
 }
 
-(l2.matrix.flatten.zip(r2)).foreach{ case (result,test) => 
-  assert(math.round( result * 100000 ) * 0.00001 == math.round( test * 100000 ) * 0.00001) 
+(l2.matrix.flatten.zip(r2)).foreach{ case (result,test) =>
+  assert(math.round( result * 100000 ) * 0.00001 == math.round( test * 100000 ) * 0.00001)
 }
 ```
 
@@ -3524,7 +3524,7 @@ chol(a)
 
    4.2426407   5.1854497   12.727922   9.8994949
    0.          6.5659052   3.0460385   1.6245539
-   0.          0.          1.6497422   1.849711 
+   0.          0.          1.6497422   1.849711
    0.          0.          0.          1.3926212
 ```
 
@@ -3563,7 +3563,7 @@ const func matrix: cholesky (in matrix: a) is func
         end if;
       end for;
     end for;
-  end func;  
+  end func;
 
 const proc: writeMat (in matrix: a) is func
   local
@@ -3681,11 +3681,11 @@ Example 2:
 
 
 ```Smalltalk
- 
+
 FloatMatrix>>#cholesky
 	| l |
 	l := FloatMatrix zero: numRows.
-	1 to: numRows do: [:i | 
+	1 to: numRows do: [:i |
 		1 to: i do: [:k | | rowSum lkk factor aki partialSum |
 			i = k
 				ifTrue: [
@@ -3820,13 +3820,13 @@ printMatrix(res2, n: 4)
 {{out}}
 
 ```txt
-5.0 0.0 0.0 
-3.0 3.0 0.0 
--1.0 1.0 3.0 
+5.0 0.0 0.0
+3.0 3.0 0.0
+-1.0 1.0 3.0
 
-4.242640687119285 0.0 0.0 0.0 
-5.185449728701349 6.565905201197403 0.0 0.0 
-12.727922061357857 3.0460384954008553 1.6497422479090704 0.0 
+4.242640687119285 0.0 0.0 0.0
+5.185449728701349 6.565905201197403 0.0 0.0
+12.727922061357857 3.0460384954008553 1.6497422479090704 0.0
 9.899494936611667 1.624553864213788 1.8497110052313648 1.3926212476456026
 ```
 
@@ -3903,7 +3903,7 @@ Dim m As Byte, i As Byte, j As Byte, k As Byte
         MsgBox ("Correlation matrix is not square")
         Exit Function
     End If
-    
+
     m = Mat.Rows.Count
 
 'Initialize and populate matrix A of values and matrix L which will be the lower Cholesky
@@ -3920,12 +3920,12 @@ Dim m As Byte, i As Byte, j As Byte, k As Byte
     Select Case m
         Case Is = 1
             L(0, 0) = Sqr(A(0, 0))
-        
+
         Case Is = 2
             L(0, 0) = Sqr(A(0, 0))
             L(1, 0) = A(1, 0) / L(0, 0)
             L(1, 1) = Sqr(A(1, 1) - L(1, 0) * L(1, 0))
-        
+
         Case Else
             L(0, 0) = Sqr(A(0, 0))
             L(1, 0) = A(1, 0) / L(0, 0)
@@ -3959,7 +3959,7 @@ var [const] GSL=Import("zklGSL");	// libGSL (GNU Scientific Library)
 fcn lowerCholesky(m){  // trans: C
    rows:=m.rows;
    lcm:=GSL.Matrix(rows,rows);	// zero filled
-   foreach i,j in (rows,i+1){ 
+   foreach i,j in (rows,i+1){
       s:=(0).reduce(j,'wrap(s,k){ s + lcm[i,k]*lcm[j,k] },0.0);
       lcm[i,j]=( if(i==j)(m[i,i] - s).sqrt()
 	         else     1.0/lcm[j,j]*(m[i,j] - s) );
@@ -3973,7 +3973,7 @@ fcn lowerCholesky(m){  // trans: C
 ```txt
 
 lowerCholesky(GSL.Matrix(3,3).set(25, 15, -5, 	// example 1
-				  15, 18,  0, 
+				  15, 18,  0,
 				  -5,  0, 11))
 .format(6).println();
   5.00,  0.00,  0.00
@@ -3987,7 +3987,7 @@ lowerCholesky(GSL.Matrix(3,3).set(25, 15, -5, 	// example 1
 ```txt
 
 lowerCholesky(GSL.Matrix(4,4).set(	// example 2
-      18, 22,  54,  42, 
+      18, 22,  54,  42,
       22, 70,  86,  62,
       54, 86, 174, 134,
       42, 62, 134, 106) )
@@ -4006,7 +4006,7 @@ Or, using lists:
 fcn cholesky(mat){
    rows:=mat.len();
    r:=(0).pump(rows,List().write, (0).pump(rows,List,0.0).copy); // matrix of zeros
-   foreach i,j in (rows,i+1){ 
+   foreach i,j in (rows,i+1){
       s:=(0).reduce(j,'wrap(s,k){ s + r[i][k]*r[j][k] },0.0);
       r[i][j]=( if(i==j)(mat[i][i] - s).sqrt()
 	        else    1.0/r[j][j]*(mat[i][j] - s) );
@@ -4020,9 +4020,9 @@ fcn cholesky(mat){
 ex1:=L( L(25.0,15.0,-5.0), L(15.0,18.0,0.0), L(-5.0,0.0,11.0) );
 printM(cholesky(ex1));
 println("-----------------");
-ex2:=L( L(18.0, 22.0,  54.0,  42.0,), 
-        L(22.0, 70.0,  86.0,  62.0,), 
-	L(54.0, 86.0, 174.0, 134.0,), 
+ex2:=L( L(18.0, 22.0,  54.0,  42.0,),
+        L(22.0, 70.0,  86.0,  62.0,),
+	L(54.0, 86.0, 174.0, 134.0,),
 	L(42.0, 62.0, 134.0, 106.0,) );
 printM(cholesky(ex2));
 ```
@@ -4037,14 +4037,14 @@ fcn rowFmt(row){ ("%9.5f "*row.len()).fmt(row.xplode()) }
 
 ```txt
 
-  5.00000   0.00000   0.00000 
-  3.00000   3.00000   0.00000 
- -1.00000   1.00000   3.00000 
+  5.00000   0.00000   0.00000
+  3.00000   3.00000   0.00000
+ -1.00000   1.00000   3.00000
 -----------------
-  4.24264   0.00000   0.00000   0.00000 
-  5.18545   6.56591   0.00000   0.00000 
- 12.72792   3.04604   1.64974   0.00000 
-  9.89949   1.62455   1.84971   1.39262 
+  4.24264   0.00000   0.00000   0.00000
+  5.18545   6.56591   0.00000   0.00000
+ 12.72792   3.04604   1.64974   0.00000
+  9.89949   1.62455   1.84971   1.39262
 
 ```
 
@@ -4057,7 +4057,7 @@ fcn rowFmt(row){ ("%9.5f "*row.len()).fmt(row.xplode()) }
 ```zxbasic
 10 LET d=2000: GO SUB 1000: GO SUB 4000: GO SUB 5000
 20 LET d=3000: GO SUB 1000: GO SUB 4000: GO SUB 5000
-30 STOP 
+30 STOP
 1000 RESTORE d
 1010 READ a,b
 1020 DIM m(a,b)
@@ -4066,7 +4066,7 @@ fcn rowFmt(row){ ("%9.5f "*row.len()).fmt(row.xplode()) }
 1060 READ m(i,j)
 1070 NEXT j
 1080 NEXT i
-1090 RETURN 
+1090 RETURN
 2000 DATA 3,3,25,15,-5,15,18,0,-5,0,11
 3000 DATA 4,4,18,22,54,42,22,70,86,62,54,86,174,134,42,62,134,106
 4000 REM Cholesky decomposition
@@ -4081,13 +4081,13 @@ fcn rowFmt(row){ ("%9.5f "*row.len()).fmt(row.xplode()) }
 4090 LET l(i,j)=(m(i,j)-s)/l(j,j)
 4100 NEXT j
 4110 NEXT i
-4120 RETURN 
+4120 RETURN
 5000 REM Print
 5010 FOR r=1 TO a
 5020 FOR c=1 TO b
 5030 PRINT l(r,c);" ";
 5040 NEXT c
-5050 PRINT 
+5050 PRINT
 5060 NEXT r
 5070 RETURN
 ```

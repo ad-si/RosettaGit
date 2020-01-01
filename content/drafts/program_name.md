@@ -123,7 +123,7 @@ END
 
 $ a68g Program_name.a68
 Program_name.a68
-$ 
+$
 
 ```
 
@@ -213,13 +213,13 @@ $
 .equ EXIT,   1
 /* Initialized data */
 .data
-szMessage: .asciz "Program : "       @ 
+szMessage: .asciz "Program : "       @
 szRetourLigne: .asciz "\n"
 
 
 .text
-.global main 
-main:	
+.global main
+main:
     push {fp,lr}    /* save des  2 registres */
     add fp,sp,#8    /* fp <- adresse début */
     ldr r0, iAdrszMessage         @ adresse of message
@@ -228,20 +228,20 @@ main:
     bl affichageMess            @ call function
     ldr r0, iAdrszRetourLigne         @ adresse of message
     bl affichageMess            @ call function
- 
+
  /* fin standard du programme */
     mov r0, #0                  @ return code
-    pop {fp,lr}                 @restaur des  2 registres 
+    pop {fp,lr}                 @restaur des  2 registres
     mov r7, #EXIT              @ request to exit program
     swi 0                       @ perform the system call
 iAdrszMessage: .int szMessage
-iAdrszRetourLigne: .int szRetourLigne	
+iAdrszRetourLigne: .int szRetourLigne
 /******************************************************************/
-/*     affichage des messages   avec calcul longueur              */ 
+/*     affichage des messages   avec calcul longueur              */
 /******************************************************************/
 /* r0 contient l adresse du message */
 affichageMess:
-	push {fp,lr}    /* save des  2 registres */ 
+	push {fp,lr}    /* save des  2 registres */
 	push {r0,r1,r2,r7}    /* save des autres registres */
 	mov r2,#0   /* compteur longueur */
 1:	      /*calcul de la longueur */
@@ -256,9 +256,9 @@ affichageMess:
         mov r7, #WRITE                  /* code de l appel systeme "write" */
         swi #0                      /* appel systeme */
 	pop {r0,r1,r2,r7}     /* restaur des autres registres */
-	pop {fp,lr}    /* restaur des  2 registres */ 
-        bx lr	        /* retour procedure */	
-	
+	pop {fp,lr}    /* restaur des  2 registres */
+        bx lr	        /* retour procedure */
+
 
 ```
 
@@ -372,8 +372,8 @@ It might not be very useful for a C program to access source filenames, because 
 * <code>argv[0]</code> might be the name of an executable in the PATH, or it might be an absolute or relative path to the executable. At least with [[Unix]], the parent process can set <code>argv[0]</code> to any string, so <code>argv[0]</code> might not be the real name. It is best to pretend that <code>argv[0]</code> has the correct value, but mind that <code>argv[0]</code> might not be an actual file.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main(int argc, char **argv) {
 	printf("Executable: %s\n", argv[0]);
@@ -385,9 +385,9 @@ int main(int argc, char **argv) {
 
 To get the source information about some part of code, use compiler defined macros.  Most compilers support them or some variation of.
 
-```c>#include <stdio.h
+```c
+#include <stdio.h>
 
- 
 int main()
 {
 	printf("This code was in file %s in function %s, at line %d\n",\
@@ -398,7 +398,7 @@ int main()
 
 
 
-###  BSD 
+###  BSD
 
 [[BSD]] provides two more ways to get the program's name.
 
@@ -456,7 +456,7 @@ The program can have three different names!
 
 
 ```txt
-$ perl -e 'exec {"./myname"} "/nobin/fakename"' 
+$ perl -e 'exec {"./myname"} "/nobin/fakename"'
 argv[0]: /nobin/fakename
 __progname: fakename
 ucomm: myname
@@ -464,14 +464,14 @@ ucomm: myname
 
 
 
-###  Windows 
+###  Windows
 
 [http://msdn.microsoft.com/en-us/library/ms683197%28v=VS.85%29.aspx GetModuleFileName], from the Win32 API, provides the correct path to the current executable file.
 
 {{libheader|Win32}}
 
-```c>#include <windows.h
-
+```c
+#include <windows.h>
 #include <stdlib.h>
 #include <wchar.h>
 
@@ -543,8 +543,8 @@ Path to executable: C:\Users\kernigh\Documents\field\scratch.exe
 C++ has difficulty accessing source code filenames, because C code must be compiled into an executable. However, C++ can access the executable's filename.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 using namespace std;
 
@@ -586,7 +586,7 @@ namespace ProgramName
 			// Extracts the filename from the full path
 			System.IO.FileInfo exeInfo = new System.IO.FileInfo(System.Windows.Forms.Application.ExecutablePath);
 			Console.Write(exeInfo.Name);
-			
+
 			// Writes all arguments to the console
 			foreach (string argument in args)
 			{
@@ -650,7 +650,7 @@ COBOL has an internal PROGRAM-ID name, and then the external invocation name.
 {{out}}
 
 ```txt
-prompt$ cobc -xj progname.cob 
+prompt$ cobc -xj progname.cob
 argument-value zero :./progname      :
 function module-id  :sample:
 ```
@@ -777,7 +777,7 @@ void main(string[] args)
 }
 ```
 
-{{out}} 
+{{out}}
 ```txt
 Z:\rosettacode>program_name.exe
 Program: Z:\rosettacode\program_name.exe
@@ -840,11 +840,11 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     console.printLine(program_arguments.asEnumerable());  // the whole command line
- 
+
     console.printLine(program_arguments[0]); // the program name
 }
 ```
@@ -944,12 +944,12 @@ let main =
 
 ```factor
 #! /usr/bin/env factor
- 
+
 USING: namespaces io command-line ;
 IN: scriptname
- 
+
 : main ( -- ) script get print ;
- 
+
 MAIN: main
 ```
 
@@ -985,7 +985,7 @@ Please find example runs in the comments at the beginning of the FORTRAN2003 sou
 
 
 ! program run with valid name path/rcname
-! 
+!
 !-*- mode: compilation; default-directory: "/tmp/" -*-
 !Compilation started at Sun Jun  2 00:19:01
 !
@@ -1382,7 +1382,7 @@ This program file is "program_name.jl".
 
 fun main(args: Array<String>) {
     println(System.getProperty("sun.java.command"))  // may not exist on all JVMs
-    println(System.getProperty("java.vm.name")) 
+    println(System.getProperty("java.vm.name"))
 }
 ```
 
@@ -1410,7 +1410,7 @@ stdoutnl("Program: " + $argv->first)
 Output:
 
 ```shell
-$ lasso9 script_name.lasso 
+$ lasso9 script_name.lasso
 Program: script_name.lasso
 ```
 
@@ -1572,7 +1572,7 @@ Module Checkit {
       namelen=GetModuleFileName(0, &a$, 260)
       a$=left$(a$, namelen)
       \\ normally m2000.exe is the caller of m2000.dll, the activeX script language
-      Print Mid$(a$, Rinstr(a$, "\")+1)="m2000.exe" 
+      Print Mid$(a$, Rinstr(a$, "\")+1)="m2000.exe"
 }
 Checkit
 \\ command$ return the file's path plus name of script
@@ -1732,7 +1732,7 @@ When bundled inside a JAR file and referenced as the application entry point via
 
 ```txt
 
-$ java -jar pn.jar 
+$ java -jar pn.jar
 Source:  Java method RProgramName.nrx
 Program: pn.jar
 
@@ -1771,7 +1771,7 @@ Works with oo2c Version 2
 ```oberon2
 
 MODULE ProgramName;
-IMPORT 
+IMPORT
   NPCT:Args,
   Out;
 BEGIN
@@ -1816,7 +1816,7 @@ int main(int argc, char **argv) {
 
 ```sh
 $ gcc -o scriptname -framework foundation scriptname.m
-$ ./scriptname 
+$ ./scriptname
 Program: ./scriptname
 ```
 
@@ -2022,7 +2022,7 @@ appname = EXE.NAMEX$
 ```PowerShell
 
 # write this in file <program.ps1>
-$MyInvocation.MyCommand.Name 
+$MyInvocation.MyCommand.Name
 # launch with <.\program>
 
 ```
@@ -2067,7 +2067,7 @@ PureBasic provides a way to retrieve the filename of the program being executed.
 ```PureBasic
 If OpenConsole()
   PrintN(ProgramFilename())
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2174,7 +2174,7 @@ The [[REXX|Rexx]] <code>PARSE SOURCE</code> instruction parses data describing t
 The language processor returns a string that does not change while the program is running.
 The source string contains operating system name, followed by either <code>COMMAND</code>, <code>FUNCTION</code>, or
 <code>SUBROUTINE</code>, depending on whether the program was called as a host command or from a
-function call in an expression or using the <code>CALL</code> instruction. 
+function call in an expression or using the <code>CALL</code> instruction.
 These two tokens are followed by the complete path specification of the program file.
 
 
@@ -2219,20 +2219,20 @@ say "The program is called " arg(1)
 On TSO, this program
 
 ```rexx
-/*REXX program RANG1 in PDS N561985.PRIV.CLIST W. Pachl */             
-Parse Source a b c   
-Say 'a='a            
-Say 'b='!!b          
-Say 'c='c 
+/*REXX program RANG1 in PDS N561985.PRIV.CLIST W. Pachl */
+Parse Source a b c
+Say 'a='a
+Say 'b='!!b
+Say 'c='c
 ```
-           
+
 yields
 
 ```txt
 
-a=TSO                                              
-b=COMMAND                                          
-c=RANG1 SYS00056 N561985.PRIV.CLIST ? TSO ISPF ?   
+a=TSO
+b=COMMAND
+c=RANG1 SYS00056 N561985.PRIV.CLIST ? TSO ISPF ?
 
 ```
 
@@ -2384,7 +2384,7 @@ Output note (above):   note that the wrap-around of the output is an artifact of
 ---------------------------REXX-ooRexx_4.1.2(MT) 6.03 28 Aug 2012 ?--? function
      REXX's name of system being used: WindowsNT
      how the REXX program was invoked: FUNCTION
-    name of the REXX program and path: E:\PROG_NAM.REX                
+    name of the REXX program and path: E:\PROG_NAM.REX
 
 ```
 
@@ -2439,7 +2439,7 @@ For example,
 
 
 ```txt
-$ ruby script.rb                                                               
+$ ruby script.rb
 Path: script.rb
 Name: script.rb
 $ ruby ../rc/script.rb
@@ -2517,7 +2517,7 @@ Example:
 ```sh
 $ make
 sac2c -o scriptname scriptname.sac
-$ ./scriptname 
+$ ./scriptname
 Program: ./scriptname
 ```
 
@@ -2685,7 +2685,7 @@ proc main {args} {
     set program $::argv0
     puts "Program: $program"
 }
- 
+
 if {$::argv0 eq [info script]} {
     main {*}$::argv
 }
@@ -2763,7 +2763,7 @@ Get name of program and print to console:
 
 public static void main(string[] args){
 	string command_name = args[0];
-	
+
 	stdout.printf("%s\n", command_name);
 }
 
@@ -3250,9 +3250,9 @@ On Unix, zkl is actually a shell script:
 
 ```bash
 #!/bin/sh
-# A bash script to run zkl if you haven't jumped 
+# A bash script to run zkl if you haven't jumped
 #   through all the Unix hoops to put the bits in the "right" places
-# You can change zklRoot to your build directory, 
+# You can change zklRoot to your build directory,
 #   change the script name to "zkl" and put it in your bin path.
 # You may need to chmod a+x <this script>
 if [ -z $zklRoot ]; then

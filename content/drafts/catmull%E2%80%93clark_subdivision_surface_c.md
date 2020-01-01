@@ -13,8 +13,8 @@ tags = []
 {{libheader|GLUT}}
 Full C code, OpenGL program.  Looooong.  Keybindings of interest: '<' and '>' for subdivision steps; 'w' toggles wireframe mode; arrow keys and space for rotation; 'm' for switching models; misc keys: p, l, a, z, s, p, q.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>

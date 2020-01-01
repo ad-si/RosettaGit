@@ -95,7 +95,7 @@ PROC print twosum = ( []INT a, INT sum )VOID:
              # have a pair #
              print( ( "[", whole( pair[ LWB pair ], 0 ), ", ", whole( pair[ UPB pair ], 0 ), "]", newline ) )
          FI
-     END # print twosum # ; 
+     END # print twosum # ;
 print twosum( (  0, 2, 11, 19, 90 ),         21 ); # should be [1, 3]             #
 print twosum( ( -8, -2,  0,  1,  5, 8, 11 ),  3 ); # should be [0, 6] (or [1, 4]) #
 print twosum( ( -3, -2,  0,  1,  5, 8, 11 ), 17 ); # should be []                 #
@@ -121,22 +121,22 @@ print twosum( ( -8, -2, -1,  1,  5, 9, 11 ),  0 )  # should be [2, 3]           
 {{Trans|Haskell}}
 
 
-Nesting concatMap or (>>=) (flip concatMap) yields the cartesian product of the list with itself. Skipping products where the y index is lower than the x index (see the use of 'drop' below) ignores the 'lower triangle' of the cartesian grid, excluding mirror-image and duplicate number pairs. 
+Nesting concatMap or (>>=) (flip concatMap) yields the cartesian product of the list with itself. Skipping products where the y index is lower than the x index (see the use of 'drop' below) ignores the 'lower triangle' of the cartesian grid, excluding mirror-image and duplicate number pairs.
 
 
 ```AppleScript
 -- sumTo :: Int -> [Int] -> [(Int, Int)]
 on sumTwo(n, xs)
     set ixs to zip(enumFromTo(0, |length|(xs) - 1), xs)
- 
+
     script ijIndices
         on |λ|(ix)
             set {i, x} to ix
- 
+
             script jIndices
                 on |λ|(jy)
                     set {j, y} to jy
- 
+
                     if (x + y) = n then
                         {{i, j}}
                     else
@@ -144,29 +144,29 @@ on sumTwo(n, xs)
                     end if
                 end |λ|
             end script
- 
+
             |>>=|(drop(i + 1, ixs), jIndices)
         end |λ|
     end script
- 
+
     |>>=|(ixs, ijIndices)
 end sumTwo
- 
+
 -- TEST ----------------------------------------------------------------------
 on run
     sumTwo(21, [0, 2, 11, 19, 90, 10])
- 
+
     --> {{1, 3}, {2, 5}}
 end run
- 
- 
+
+
 -- GENERIC FUNCTIONS ---------------------------------------------------------
- 
+
 -- (>>=) :: Monad m => m a -> (a -> m b) -> m b
 on |>>=|(xs, f)
     concat(map(f, xs))
 end |>>=|
- 
+
 -- concat :: [[a]] -> [a] | [String] -> String
 on concat(xs)
     script append
@@ -174,7 +174,7 @@ on concat(xs)
             a & b
         end |λ|
     end script
- 
+
     if length of xs > 0 and class of (item 1 of xs) is string then
         set empty to ""
     else
@@ -182,7 +182,7 @@ on concat(xs)
     end if
     foldl(append, empty, xs)
 end concat
- 
+
 --  drop :: Int -> a -> a
 on drop(n, a)
     if n < length of a then
@@ -195,7 +195,7 @@ on drop(n, a)
         {}
     end if
 end drop
- 
+
 -- enumFromTo :: Int -> Int -> [Int]
 on enumFromTo(m, n)
     if m > n then
@@ -209,7 +209,7 @@ on enumFromTo(m, n)
     end repeat
     return lst
 end enumFromTo
- 
+
 -- foldl :: (a -> b -> a) -> a -> [b] -> a
 on foldl(f, startValue, xs)
     tell mReturn(f)
@@ -221,12 +221,12 @@ on foldl(f, startValue, xs)
         return v
     end tell
 end foldl
- 
+
 -- length :: [a] -> Int
 on |length|(xs)
     length of xs
 end |length|
- 
+
 -- map :: (a -> b) -> [a] -> [b]
 on map(f, xs)
     tell mReturn(f)
@@ -238,7 +238,7 @@ on map(f, xs)
         return lst
     end tell
 end map
- 
+
 -- min :: Ord a => a -> a -> a
 on min(x, y)
     if y < x then
@@ -247,8 +247,8 @@ on min(x, y)
         x
     end if
 end min
- 
--- Lift 2nd class handler function into 1st class script wrapper 
+
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -259,7 +259,7 @@ on mReturn(f)
         end script
     end if
 end mReturn
- 
+
 -- zip :: [a] -> [b] -> [(a, b)]
 on zip(xs, ys)
     set lng to min(length of xs, length of ys)
@@ -401,7 +401,7 @@ There are a couple of caveats due to limitations of the language. The target can
 int main()
 {
 	int arr[5] = {0, 2, 11, 19, 90},sum = 21,i,j,check = 0;
-	
+
 	for(i=0;i<4;i++){
 		for(j=i+1;j<5;j++){
 			if(arr[i]+arr[j]==sum){
@@ -411,10 +411,10 @@ int main()
 			}
 		}
 	}
-	
+
 	if(check==0)
 		printf("[]");
-	
+
 	return 0;
 }
 
@@ -434,8 +434,8 @@ Output :
 
 {{trans|C#}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <map>
 #include <tuple>
 #include <vector>
@@ -597,13 +597,13 @@ main() {
       }
       else
       {
-       c++; 
+       c++;
       }
     }
  }
 if(c==z)
 {
- print("such pair doesn't exist");   
+ print("such pair doesn't exist");
 }
 }
 
@@ -689,7 +689,7 @@ IN: rosetta-code.two-sum
         } cond
     ] loop
     x y = { } { x y } ? ;
-    
+
 { 21 55 11 } [ '[ { 0 2 11 19 90 } _ two-sum . ] call ] each
 ```
 
@@ -717,16 +717,16 @@ CREATE A CELL ALLOT
 :NONAME   SWAP 1+ SWAP ;
 CREATE VTABLE , , ,
 : CMP ( n n' -- -1|0|1)  - DUP IF DUP ABS / THEN ;
-: (TWOSUM) ( addr n n' -- u1 u2 t | f) 
+: (TWOSUM) ( addr n n' -- u1 u2 t | f)
    >R SWAP A !  0 SWAP 1-  ( lo hi) ( R: n')
-   BEGIN OVER OVER < WHILE 
+   BEGIN OVER OVER < WHILE
      OVER A[]  OVER A[]  + R@
      CMP  1+ CELLS VTABLE + @ EXECUTE
    REPEAT
    DROP DROP R> DROP FALSE ;
-: TWOSUM ( addr n n' --)  [CHAR] [ EMIT 
+: TWOSUM ( addr n n' --)  [CHAR] [ EMIT
    (TWOSUM) IF SWAP 0 .R [CHAR] , EMIT SPACE 0 .R THEN
-   [CHAR] ] EMIT ;   
+   [CHAR] ] EMIT ;
 CREATE TEST0  0 ,  2 , 11 , 19 , 90 ,            DOES> 5 ;
 CREATE TEST1 -8 , -2 ,  0 ,  1 ,  5 ,  8 , 11 ,  DOES> 7 ;
 TEST0 21 TWOSUM CR
@@ -796,7 +796,7 @@ end program twosum
 
 ' "a" is the array of sorted non-negative integers
 ' "b" is the array to contain the result and is assumed to be empty initially
- 
+
 Sub twoSum (a() As UInteger, b() As Integer, targetSum As UInteger)
   Dim lb As Integer = LBound(a)
   Dim ub As Integer = UBound(a)
@@ -816,7 +816,7 @@ Sub twoSum (a() As UInteger, b() As Integer, targetSum As UInteger)
         End If
       Next j
     Else
-      Exit For 
+      Exit For
     End If
   Next i
 End Sub
@@ -960,7 +960,7 @@ sumTo :: Int -> [Int] -> [(Int, Int)]
 sumTo n ns =
   let ixs = zip [0 ..] ns
   in [ (i, j)
-     | (i, x) <- ixs 
+     | (i, x) <- ixs
      , (j, y) <- drop (i + 1) ixs
      , (x + y) == n ]
 
@@ -1267,9 +1267,9 @@ public class TwoSum {
 
 Nesting concatMap yields the cartesian product of the list with itself, and
 functions passed to Array.map() have access to the array index in their second argument.
-Returning [] where the y index is lower than or equal to the x index ignores the 'lower triangle' 
+Returning [] where the y index is lower than or equal to the x index ignores the 'lower triangle'
 of the cartesian grid, skipping mirror-image and duplicate number pairs.
-Returning [] where a sum condition is not met similarly acts as a filter – all of the empty lists 
+Returning [] where a sum condition is not met similarly acts as a filter – all of the empty lists
 in the map result are eliminated by the concat.
 
 
@@ -1639,7 +1639,7 @@ END TwoSum.
 
 ```nim
 proc twoSum (src : openarray[int], target : int ) : array[2, int] =
-  if src.len < 2: 
+  if src.len < 2:
     return
 
   for base in 0 .. (src.len - 2):
@@ -1708,7 +1708,7 @@ class TwoSum {
         j--;
       };
     };
-    
+
     return Nil;
   }
 
@@ -1797,7 +1797,7 @@ do i=1 To a~items
     End
   End
 If n=0 Then
-  Say '[] - no items found'      
+  Say '[] - no items found'
 ```
 
 {{out}}
@@ -1822,7 +1822,7 @@ type
   tSolRec = record
               SolRecI,
               SolRecJ : NativeInt;
-            end;  
+            end;
   tMyArray = array of NativeInt;
 const
 // just a gag using unusual index limits
@@ -1834,7 +1834,7 @@ function Check2SumUnSorted(const A  :tMyArray;
 //Check every possible sum A[max] + A[max-1..0]
 //than A[max-1] + A[max-2..0] etc pp.
 //quadratic runtime: maximal  (max-1)*max/ 2 checks
-//High(A) always checked for dynamic array, even const 
+//High(A) always checked for dynamic array, even const
 //therefore run High(A) to low(A), which is always 0 for dynamic array
 label
   SolFound;
@@ -1846,24 +1846,24 @@ Begin
   i := High(A);
   while i > low(A) do
   Begin
-    tmpSum := sum-A[i]; 
+    tmpSum := sum-A[i];
     j := i-1;
     while j >= low(A) do
     begin
       //Goto is bad, but fast...
-      if tmpSum = a[j] Then  
+      if tmpSum = a[j] Then
         GOTO SolFound;
       dec(j);
-    end;  
+    end;
     dec(i);
   end;
   result := false;
   exit;
 SolFound:
   Sol.SolRecI:=j;Sol.SolRecJ:=i;
-  result := true;      
+  result := true;
 end;
-  
+
 function Check2SumSorted(const  A  :tMyArray;
                                 sum:NativeInt;
                          var    Sol:tSolRec):boolean;
@@ -1877,21 +1877,21 @@ Begin
   while(i < j) do
   Begin
     tmpSum := a[i] + a[j];
-    if tmpSum = sum then  
+    if tmpSum = sum then
     Begin
       Sol.SolRecI:=i;Sol.SolRecJ:=j;
-      result := true;      
+      result := true;
       EXIT;
-    end;   
-    if tmpSum < sum then 
+    end;
+    if tmpSum < sum then
     begin
       inc(i);
       continue;
     end;
-    //if tmpSum > sum then     
+    //if tmpSum > sum then
     dec(j);
   end;
-  writeln(i:10,j:10);  
+  writeln(i:10,j:10);
   result := false;
 end;
 
@@ -1899,23 +1899,23 @@ var
   Sol :tSolRec;
   CheckArr : tMyArray;
   MySum,i : NativeInt;
-  
+
 Begin
   randomize;
   setlength(CheckArr,High(ConstArray)-Low(ConstArray)+1);
   For i := High(CheckArr) downto low(CheckArr) do
-    CheckArr[i] := ConstArray[i+low(ConstArray)];  
+    CheckArr[i] := ConstArray[i+low(ConstArray)];
 
-  MySum  := 21;  
+  MySum  := 21;
   IF Check2SumSorted(CheckArr,MySum,Sol) then
     writeln('[',Sol.SolRecI,',',Sol.SolRecJ,'] sum to ',MySum)
   else
-    writeln('No solution found'); 
-     
+    writeln('No solution found');
+
   //now test a bigger sorted array..
   setlength(CheckArr,83667);
   For i := High(CheckArr) downto 0 do
-    CheckArr[i] := i;  
+    CheckArr[i] := i;
   MySum := CheckArr[Low(CheckArr)]+CheckArr[Low(CheckArr)+1];
   writeln(#13#10,'Now checking array of ',length(CheckArr),
           ' elements',#13#10);
@@ -1923,12 +1923,12 @@ Begin
   IF Check2SumUnSorted(CheckArr,MySum,Sol) then
     writeln('[',Sol.SolRecI,',',Sol.SolRecJ,'] sum to ',MySum)
   else
-    writeln('No solution found');  
+    writeln('No solution found');
   //runtime not measurable
   IF Check2SumSorted(CheckArr,MySum,Sol) then
     writeln('[',Sol.SolRecI,',',Sol.SolRecJ,'] sum to ',MySum)
   else
-    writeln('No solution found');    
+    writeln('No solution found');
 end.
 ```
 
@@ -2147,9 +2147,9 @@ $numbers = @(0, 2, 11, 19, 90)
 $sum = 21
 
 $totals = for ($i = 0; $i -lt $numbers.Count; $i++)
-{ 
+{
     for ($j = $numbers.Count-1; $j -ge 0; $j--)
-    { 
+    {
         [PSCustomObject]@{
             FirstIndex  = $i
             SecondIndex = $j
@@ -2177,7 +2177,7 @@ $totals | Where-Object TargetSum -EQ $sum |
 
 Sum Indices
 --- -------
- 21 {1, 3} 
+ 21 {1, 3}
 
 ```
 
@@ -2461,7 +2461,7 @@ All solutions are listed  (if any),   along with a count of the number of soluti
 
 Also, it's mentioned that the indices are zero─based,   and formatted solutions are shown.
 
-The list of numbers can be in any format,   not just integers.   Also, they need not be unique. 
+The list of numbers can be in any format,   not just integers.   Also, they need not be unique.
 
 The list of integers need   ''not''   be sorted.
 
@@ -2561,9 +2561,9 @@ number of solutions found:  26
 numbers = [0, 2, 11, 19, 90]
 sum = 21
 
-see "order list: "          
+see "order list: "
 for n=1 to len(numbers)
-    see " " + numbers[n] 
+    see " " + numbers[n]
 next
 see " (using a zero index.)" + nl
 for n=1 to len(numbers)
@@ -2574,7 +2574,7 @@ for n=1 to len(numbers)
            see  "" + (n-1) + " " + (m-1) + "]" + nl
         ok
     next
-next 
+next
 
 ```
 

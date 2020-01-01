@@ -13,9 +13,9 @@ tags = []
 {{Task|Programming environment operations}}
 
 ;Task:
-Create a temporary file, '''securely and exclusively''' (opening it such that there are no possible [[race condition|race conditions]]). 
+Create a temporary file, '''securely and exclusively''' (opening it such that there are no possible [[race condition|race conditions]]).
 
-It's fine assuming local filesystem semantics (NFS or other networking filesystems can have signficantly more complicated semantics for satisfying the "no race conditions" criteria). 
+It's fine assuming local filesystem semantics (NFS or other networking filesystems can have signficantly more complicated semantics for satisfying the "no race conditions" criteria).
 
 The function should automatically resolve name collisions and should only fail in cases where permission is denied, the filesystem is read-only or full, or similar conditions exist (returning an error or raising an exception as appropriate to the language/environment).
 
@@ -43,7 +43,7 @@ begin
    Put_Line(File => Temp, Item => "Hello World");
    Reset(File => Temp, Mode => In_File);
    Get_Line(File => Temp, Item => Contents, Last => Length);
-   Put_Line(Contents(1..Length));  
+   Put_Line(Contents(1..Length));
 end Temp_File;
 ```
 
@@ -63,7 +63,7 @@ The file is automatically deleted when closed.
       CLOSE #file%
       PRINT message$
       END
-      
+
       DEF FNopentempfile
       LOCAL pname%, hfile%, chan%
       OPEN_EXISTING = 3
@@ -97,8 +97,8 @@ Hello world!
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 
 int main(void)
@@ -117,8 +117,8 @@ int main(void)
 
 The following {{works with|POSIX}}
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 
 int main(void)
@@ -147,7 +147,7 @@ Console.WriteLine(Path.GetTempFileName());
 
 ## Clojure
 
-It is good practice to explicitly delete temp files immediately once they've been used. 
+It is good practice to explicitly delete temp files immediately once they've been used.
 
 ```clojure
 (let [temp-file (java.io.File/createTempFile "pre" ".suff")]
@@ -166,16 +166,16 @@ module tempfile ;
 import tango.io.TempFile, tango.io.Stdout ;
 
 void main(char[][] args) {
-  
+
   // create a temporary file that will be deleted automatically when out of scope
   auto tempTransient = new TempFile(TempFile.Transient) ;
   Stdout(tempTransient.path()).newline ;
 
   // create a temporary file, still persist after the TempFile object has been destroyed
   auto tempPermanent = new TempFile(TempFile.Permanent) ;
-  Stdout(tempPermanent.path()).newline ;  
+  Stdout(tempPermanent.path()).newline ;
 
-  // both can only be accessed by the current user (the program?). 
+  // both can only be accessed by the current user (the program?).
 }
 ```
 
@@ -198,7 +198,7 @@ void main(char[][] args) {
 
 ## Fortran
 
-Supposing F is an integer variable, whose value might be 10. This is the I/O unit number, and would be used in READ(F,''etc.'' and WRITE(F,''etc.'' statements. 
+Supposing F is an integer variable, whose value might be 10. This is the I/O unit number, and would be used in READ(F,''etc.'' and WRITE(F,''etc.'' statements.
 ```Fortran
         OPEN (F,STATUS = 'SCRATCH')   !Temporary disc storage.
 ```
@@ -416,7 +416,7 @@ fun main(args: Array<String>) {
     }
     catch (ex: Exception) {
         println(ex.message)
-    }   
+    }
 }
 ```
 
@@ -461,7 +461,7 @@ Module Checkit {
             Open a$ for wide output exclusive as #f
                   wait 10
                   \\ Notepad can't open, because we open it for exclusive use
-                  Win "Notepad", a$     
+                  Win "Notepad", a$
                   Print  #f, "something"
                   Print "Press a key";Key$
             Close #f
@@ -538,12 +538,12 @@ From the module Filename, one can use the functions [http://caml.inria.fr/pub/do
 
 
 ## Octave
- 
+
 
 Octave has several related functions
 
 ```Matlab
-  [FID, MSG] = tmpfile();    % Return the file ID corresponding to a new temporary 
+  [FID, MSG] = tmpfile();    % Return the file ID corresponding to a new temporary
   filename = tmpnam (...);   % generates temporary file name, but does not open file
   [FID, NAME, MSG] = mkstemp (TEMPLATE, DELETE);    % Return the file ID corresponding to a new temporary file with a unique name created from TEMPLATE.
 ```
@@ -652,7 +652,7 @@ close(fn)
 
 ```
 
-If you don't provide an open mode (one of "w", "wb", "a", or "ab") then there is a 1-in-a-million 
+If you don't provide an open mode (one of "w", "wb", "a", or "ab") then there is a 1-in-a-million
 chance someone else will beat you to the punch; if you do provide one, it will open/loop for you.
 
 
@@ -691,7 +691,7 @@ locks with the 'ctl' functions are possible.
 
 : (let F (tmp "foo")
    (ctl F                                 # Get exclusive lock
-      (in F 
+      (in F
          (let N (read)                    # Atomic increment
             (out F (println (inc N))) ) ) ) )
 -> 124

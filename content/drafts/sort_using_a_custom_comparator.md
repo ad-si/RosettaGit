@@ -14,7 +14,7 @@ tags = []
 {{omit from|BBC BASIC}}
 
 ;Task:
-Sort an array (or list) of strings in order of descending length, and in ascending lexicographic order for strings of equal length. 
+Sort an array (or list) of strings in order of descending length, and in ascending lexicographic order for strings of equal length.
 
 Use a sorting facility provided by the language/library, combined with your own callback comparison function.
 
@@ -27,7 +27,7 @@ Use a sorting facility provided by the language/library, combined with your own 
 
 ## Ada
 
- {{incorrect}} 
+ {{incorrect}}
 {{works with|GNAT|}}
 
 ```ada
@@ -37,9 +37,9 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Gnat.Heap_Sort_G;
 
 procedure Custom_Compare is
-   
+
    type StringArrayType is array (Natural range <>) of Unbounded_String;
-   
+
    Strings : StringArrayType := (Null_Unbounded_String,
                                  To_Unbounded_String("this"),
                                  To_Unbounded_String("is"),
@@ -57,27 +57,27 @@ procedure Custom_Compare is
                                  To_Unbounded_String("Strings"),
                                  To_Unbounded_String("To"),
                                  To_Unbounded_String("Sort"));
-   
+
    procedure Move (From, To : in Natural) is
-      
+
    begin
       Strings(To) := Strings(From);
    end Move;
-   
+
    function UpCase (Char : in Character) return Character is
       Temp : Character;
    begin
       if Char >= 'a' and Char <= 'z' then
          Temp := Character'Val(Character'Pos(Char)
-                                 - Character'Pos('a') 
+                                 - Character'Pos('a')
                                  + Character'Pos('A'));
       else
          Temp := Char;
       end if;
       return Temp;
    end UpCase;
-   
-   function Lt (Op1, Op2 : Natural) 
+
+   function Lt (Op1, Op2 : Natural)
                return Boolean is
       Temp, Len : Natural;
    begin
@@ -117,7 +117,7 @@ procedure Custom_Compare is
       return False;
       end;
    end Lt;
-   
+
    procedure Put (Arr : in StringArrayType) is
    begin
       for I in 1..Arr'Length-1 loop
@@ -125,12 +125,12 @@ procedure Custom_Compare is
          New_Line;
       end loop;
    end Put;
-   
+
    package Heap is new Gnat.Heap_Sort_G(Move,
                                         Lt);
    use Heap;
-   
-   
+
+
 begin
    Put_Line("Unsorted list:");
    Put(Strings);
@@ -202,25 +202,25 @@ PROC swap = (REF[]SITEM array, INT first, INT second) VOID:
 #--- Quick sort partition arg function with custom comparision function ---#
 PROC quick = (REF[]SITEM array, INT first, INT last, PROC(SITEM,SITEM)INT compare) VOID:
 (
-    INT   smaller := first + 1,  
+    INT   smaller := first + 1,
           larger  := last;
     SITEM pivot   := array[first];
     WHILE smaller <= larger DO
-        WHILE compare(array[smaller], pivot) < 0 AND smaller < last DO   
-            smaller +:= 1        
+        WHILE compare(array[smaller], pivot) < 0 AND smaller < last DO
+            smaller +:= 1
         OD;
-        WHILE compare( array[larger], pivot) > 0 AND larger > first DO   
-            larger  -:= 1       
-        OD; 
-        IF smaller < larger THEN 
-            swap(array, smaller, larger); 
+        WHILE compare( array[larger], pivot) > 0 AND larger > first DO
+            larger  -:= 1
+        OD;
+        IF smaller < larger THEN
+            swap(array, smaller, larger);
             smaller +:= 1;
             larger  -:= 1
         ELSE
             smaller +:= 1
         FI
     OD;
-    swap(array, first, larger);    
+    swap(array, first, larger);
     IF first < larger-1 THEN
         quick(array, first, larger-1, compare)
     FI;
@@ -253,7 +253,7 @@ main:
     PROC compare = (SITEM a, b)INT:
          IF   INT a length = LENGTH a;
               INT b length = LENGTH b;
-              a length < b length 
+              a length < b length
          THEN
              # a is shorter than b #  1
          ELIF a length > b length
@@ -278,7 +278,7 @@ main:
          ELSE
              # the strings are equal                   #  0
          FI # compare # ;
-    []SITEM orig = ("Here", "are", "some", "sample", "strings", "to", "be", "sorted"); 
+    []SITEM orig = ("Here", "are", "some", "sample", "strings", "to", "be", "sorted");
     [LWB orig : UPB orig]SITEM a := orig;
     print(("Before:"));FOR i FROM LWB a TO UPB a DO print((" ",a[i])) OD; print((newline));
     quicksort(a, compare);
@@ -332,21 +332,21 @@ end sortBy
 -- sortByComparing :: [(String, Bool)] -> [Records] -> [Records]
 on sortByComparing(keyDirections, xs)
     set ca to current application
-    
+
     script recDict
         on |λ|(x)
             ca's NSDictionary's dictionaryWithDictionary:x
         end |λ|
     end script
     set dcts to map(recDict, xs)
-    
+
     script asDescriptor
         on |λ|(kd)
             set {k, d} to kd
             ca's NSSortDescriptor's sortDescriptorWithKey:k ascending:d selector:dcts
         end |λ|
     end script
-    
+
     ((ca's NSArray's arrayWithArray:dcts)'s ¬
         sortedArrayUsingDescriptors:map(asDescriptor, keyDirections)) as list
 end sortByComparing
@@ -365,7 +365,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -381,12 +381,12 @@ end mReturn
 -- TEST ----------------------------------------------------------------------
 on run
     set xs to ["Shanghai", "Karachi", "Beijing", "Sao Paulo", "Dhaka", "Delhi", "Lagos"]
-    
+
     -- Custom comparator:
-    
+
     -- Returns a lifting function and a sequence of {key, bool} pairs
-    
-    -- Strings in order of descending length, 
+
+    -- Strings in order of descending length,
     -- and ascending lexicographic order
     script lengthDownAZup
         on |λ|()
@@ -398,7 +398,7 @@ on run
             {result, {{"n", false}, {"value", true}}}
         end |λ|
     end script
-    
+
     sortBy(lengthDownAZup, xs)
 end run
 ```
@@ -415,14 +415,14 @@ end run
 
 
 ```AutoHotkey
-numbers = 5,3,7,9,1,13,999,-4 
+numbers = 5,3,7,9,1,13,999,-4
 strings = Here,are,some,sample,strings,to,be,sorted
 Sort, numbers, F IntegerSort D,
 Sort, strings, F StringLengthSort D,
-msgbox % numbers 
+msgbox % numbers
 msgbox % strings
 
-IntegerSort(a1, a2) { 
+IntegerSort(a1, a2) {
 return a2 - a1
 }
 
@@ -618,8 +618,8 @@ blsq ) {"acb"  "Abc" "Acb" "acc" "ADD"}(zz)CMsb
 {{works with|POSIX|.1-2001}}
 
 
-```c>#include <stdlib.h
-  /* for qsort */
+```cpp
+#include <iostream>  /* for qsort */
 #include <string.h>  /* for strlen */
 #include <strings.h> /* for strcasecmp */
 
@@ -647,7 +647,7 @@ int main()
 =={{header|C sharp|C#}}==
 
 {{incorrect}}
-Wrong compare. Because can't find "a" < "A" 
+Wrong compare. Because can't find "a" < "A"
 
 
 C# allows you to specify a custom compare to the built in sort method on a list
@@ -665,7 +665,7 @@ namespace RosettaCode {
             List<String> list = new List<string>(items);
 
             DisplayList("Unsorted", list);
-            
+
             list.Sort(CustomCompare);
             DisplayList("Descending Length", list);
 
@@ -759,7 +759,7 @@ namespace RosettaCode
 			DisplayList("Unsorted", list);
 
 			var descOrdered = from l in list
-					  orderby l.Length descending 
+					  orderby l.Length descending
 					  select l;
 			DisplayList("Descending Length", descOrdered);
 
@@ -791,8 +791,8 @@ namespace RosettaCode
 
 {{works with|g++|4.1.2}}
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <string>
 #include <cctype>
 
@@ -832,15 +832,15 @@ int main() {
 shared void run() {
 
 	value strings = [
-		"Cat", "apple", "Adam", "zero", "Xmas", "quit", 
+		"Cat", "apple", "Adam", "zero", "Xmas", "quit",
 		"Level", "add", "Actor", "base", "butter"
 	];
-    
+
 	value sorted = strings.sort((String x, String y) =>
 			if(x.size == y.size)
 			then increasing(x.lowercased, y.lowercased)
 			else decreasing(x.size, y.size));
-	
+
 	sorted.each(print);
 }
 ```
@@ -956,7 +956,7 @@ void main() {
 
 ### Alternative Version
 
-The more natural and efficient way to solve this problem is to use <code>std.algorith.multiSort</code>. 
+The more natural and efficient way to solve this problem is to use <code>std.algorith.multiSort</code>.
 But currently it's less convenient because it can't be used with the UFCSyntax (same output):
 
 ```d
@@ -1008,9 +1008,9 @@ end.
 def nonzeroOr(a, b) { return if (a.isZero()) { b() } else { a } }
 
 ["Here", "are", "some", "sample", "strings", "to", "be", "sorted"] \
-    .sort(fn a, b { 
+    .sort(fn a, b {
               nonzeroOr(b.size().op__cmp(a.size()),
-                        fn { a.compareToIgnoreCase(b) }) 
+                        fn { a.compareToIgnoreCase(b) })
           })
 ```
 
@@ -1023,7 +1023,7 @@ def nonzeroOr(a, b) { return if (a.isZero()) { b() } else { a } }
 
 ```EGL
 program SortExample
-	
+
     function main()
        	test1 string[] = ["Here", "are", "some", "sample", "strings", "to", "be", "sorted"];
 	test1.sort(sortFunction);
@@ -1035,13 +1035,13 @@ program SortExample
 
 	test2 string[] = ["Cat", "apple", "Adam", "zero", "Xmas", "quit", "Level", "add", "Actor", "base", "butter"];
 	test2.sort(sortFunction);
-		
+
 	SysLib.writeStdout("Test 2:");
 	for(i int from 1 to test2.getSize())
 	    SysLib.writeStdout(test2[i]);
 	end
     end
-    
+
     function sortFunction(a any in, b any in) returns (int)
 	result int = (b as string).length() - (a as string).length();
 	if (result == 0)
@@ -1054,10 +1054,10 @@ program SortExample
 		    result = 0;
 	    end
 	end
-    	
+
     	return result;
     end
-	
+
 end
 ```
 
@@ -1098,18 +1098,18 @@ ELENA 4.1 :
 import extensions;
 import system'routines;
 import system'culture;
- 
+
 public program()
 {
     var items := new string[]::( "Here", "are", "some", "sample", "strings", "to", "be", "sorted" );
- 
+
     console.printLine("Unsorted:          ", items.asEnumerable());
- 
-    console.printLine("Descending length: ", items.clone() 
+
+    console.printLine("Descending length: ", items.clone()
         .sort:(p,n => p.Length > n.Length).asEnumerable());
- 
-    console.printLine("Ascending order:   ", items.clone() 
-        .sort:(p,n => p.toUpper(invariantLocale) < n.toUpper(invariantLocale)).asEnumerable())    
+
+    console.printLine("Ascending order:   ", items.clone()
+        .sort:(p,n => p.toUpper(invariantLocale) < n.toUpper(invariantLocale)).asEnumerable())
 }
 ```
 
@@ -1290,10 +1290,10 @@ class Main
   public static Void main ()
   {
     // sample strings from Lisp example
-    strs := ["Cat", "apple", "Adam", "zero", "Xmas", "quit", 
+    strs := ["Cat", "apple", "Adam", "zero", "Xmas", "quit",
              "Level", "add", "Actor", "base", "butter"]
 
-    sorted := strs.dup // make a copy of original list 
+    sorted := strs.dup // make a copy of original list
     sorted.sort |Str a, Str b -> Int|  // sort using custom comparator
     {
       if (b.size == a.size)           // if size is same
@@ -1313,7 +1313,7 @@ class Main
 
 ```txt
 
-$ fan comparator-sort.fan 
+$ fan comparator-sort.fan
 Started with : Cat apple Adam zero Xmas quit Level add Actor base butter
 Finished with: butter Actor apple Level Adam base quit Xmas zero add Cat
 
@@ -1338,10 +1338,10 @@ contains
          character(len=*), intent(in) :: a, b
        end function cc
     end interface
-    
+
     integer :: i, j, increment
     character(len=max(len(a), 10)) :: temp
-    
+
     increment = size(a) / 2
     do while ( increment > 0 )
        do i = increment+1, size(a)
@@ -1380,7 +1380,7 @@ contains
     b1 = b
     call to_lower(b1)
     call to_lower(a1)
-    
+
     if ( len(trim(a)) > len(trim(b)) ) then
        my_compare = -1
     elseif ( len(trim(a)) == len(trim(b)) ) then
@@ -1447,7 +1447,7 @@ Function mycmp Cdecl (s1 As Any Pointer, s2 As Any Pointer) As Long
     Else
         If UCase(str1) > UCase(str2) Then Return 1
     End If
-    
+
     Return 0
 
 End Function
@@ -1629,10 +1629,10 @@ procedure main()                     #: demonstrate various ways to sort a list 
    write("Sorting Demo for custom comparator")
    L := ["Here", "are", "some", "sample", "strings", "to", "be", "sorted"]
    write("  Unsorted Input : ")
-   every write("    ",image(!L)) 
+   every write("    ",image(!L))
    shellsort(L,cmptask)                # most of the RC sorts will work here
    write("  Sorted Output : ")
-   every write("    ",image(!L)) 
+   every write("    ",image(!L))
 end
 
 procedure cmptask(a,b)   # sort by descending length and ascending lexicographic order for strings of equal length
@@ -1641,7 +1641,7 @@ end
 ```
 
 
-Note(1): This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'sortop', and 'demosort' in Bubble Sort]]. 
+Note(1): This example relies on [[Sorting_algorithms/Bubble_sort#Icon| the supporting procedures 'sortop', and 'demosort' in Bubble Sort]].
 
 Note(2): This example can utilize any of the sorting algorithms that share the same base code including: [[Sorting_algorithms/Bubble_sort#Icon_and_Unicon|Bubble]], [[Sorting_algorithms/Cocktail_sort#CocktailIcon_and_Unicon|Cocktail]], [[Sorting_algorithms/Comb_sort#Icon_and_Unicon|Comb]], [[Sorting_algorithms/Gnome_sort#Icon_and_Unicon|Gnome]], and [[Sorting_algorithms/Shell_sort#Icon_and_Unicon|Shell]].
 
@@ -1651,7 +1651,7 @@ Note(3): Using 'map' in the 'cmptask' procedure would not be efficient on large 
 
 ```txt
 Sorting Demo for custom comparator
-  Unsorted Input : 
+  Unsorted Input :
     "Here"
     "are"
     "some"
@@ -1660,7 +1660,7 @@ Sorting Demo for custom comparator
     "to"
     "be"
     "sorted"
-  Sorted Output : 
+  Sorted Output :
     "strings"
     "sample"
     "sorted"
@@ -1675,7 +1675,7 @@ Sorting Demo for custom comparator
 
 ## J
 
-Case-insensitivity is obtained using <tt>lower</tt>, a verb taken from [[Change string case]]. 
+Case-insensitivity is obtained using <tt>lower</tt>, a verb taken from [[Change string case]].
 Standard utilities <tt>tolower</tt> or <tt>toupper</tt> may be substituted.
 
 
@@ -2209,7 +2209,7 @@ Module Checkit {
          partition=lambda-> {
                Read &A(), p, r : i = p-1 : x=A(r)
                For j=p to r-1 {If .LE(A(j), x) Then i++:Swap A(i),A(j)
-               } : Swap A(i+1), A(r) :  Push  i+2, i 
+               } : Swap A(i+1), A(r) :  Push  i+2, i
          }
             Public:
          LE=Lambda->Number<=Number
@@ -2224,12 +2224,12 @@ Module Checkit {
               Read ref$
               {
                       loop : If Stackitem() >= Stackitem(2) Then Drop 2 : if  empty then {Break} else continue
-                      over 2,2 : call .partition(ref$) :shift 3 
+                      over 2,2 : call .partition(ref$) :shift 3
               }
          }
       }
       Quick=Quick()
-      
+
       ToSort$="this is a set of strings to sort This Is A Set Of Strings To Sort"
       Dim a$()
       a$()=Piece$(ToSort$, " ")
@@ -2244,11 +2244,11 @@ Module Checkit {
                               select case compare(m, k)
                               case 0
                               {
-                                   aj$=lcase$(a$(j))                              
+                                   aj$=lcase$(a$(j))
                                    if aj$>lx$ then exit
                                    if aj$=lx$ then if a$(j)<=x$ then exit
-                                   i++ 
-                                   Swap a$(i),a$(j) 
+                                   i++
+                                   Swap a$(i),a$(j)
                               }
                               case 1
                               {
@@ -2260,7 +2260,7 @@ Module Checkit {
          }
       }
       Document doc$={Unsorted List:
-      } 
+      }
       k=each(a$())
       While k {
             doc$="   "+array$(k)+{
@@ -2308,7 +2308,7 @@ Group Quick {
                                    if a$(j)>x$ then break
                               Case 1
                                    swapit()
-                             End Select 
+                             End Select
                         }
                         case 1
                              swapit()
@@ -2370,11 +2370,11 @@ Sorted List:
 
 ## Mathematica
 
-We define a new function to give true or false if two elements are in order. 
+We define a new function to give true or false if two elements are in order.
 After that we can simply use the built-in Sort with an ordering function:
 
 ```Mathematica
-StringOrderQ[x_String, y_String] := 
+StringOrderQ[x_String, y_String] :=
  If[StringLength[x] == StringLength[y],
        OrderedQ[{x, y}],
        StringLength[x] >StringLength[y]
@@ -2429,7 +2429,7 @@ fn myCmp str1 str2 =
                 )
                 )
     )
-)	
+)
 
 strList = #("Here", "are", "some", "sample", "strings", "to", "be", "sorted")
 qSort strList myCmp
@@ -2469,7 +2469,7 @@ module CustomSort
     {
         def strings1 = ["these", "are", "strings", "of", "different", "length"];
         def strings2 = ["apple", "House", "chewy", "Salty", "rises", "Later"];
-        
+
         WriteLine(strings1.Sort((x, y) => y.Length.CompareTo(x.Length)));
         WriteLine(strings2.Sort((x, y) => x.CompareTo(y)))
     }
@@ -2493,11 +2493,11 @@ module CustomSort
 /* NetRexx */
 options replace format comments java crossref symbols nobinary
 
--- 
+--
 ### =======================================================================
 
 class RSortCustomComparator public
-  
+
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 method main(args = String[]) public static
   sample = [String 'Here', 'are', 'some', 'sample', 'strings', 'to', 'be', 'sorted']
@@ -2513,7 +2513,7 @@ method displayArray(harry = String[]) constant
     end elmt
   return '['disp.substr(2)']' -- trim leading comma
 
--- 
+--
 ### =======================================================================
 
 class RSortCustomComparator.LengthComparator implements Comparator
@@ -2584,16 +2584,16 @@ class Test {
     v->Sort();
     "sorted: "->Print(); Show(v);
   }
-  
+
   function : CreateHolders(strings : String[]) ~ CompareVector {
     vector := CompareVector->New();
     each(i : strings) {
       vector->AddBack(StringHolder->New(strings[i]));
     };
-    
+
     return vector;
   }
-  
+
   function : Show(v : CompareVector) ~ Nil {
     each(i : v) {
       s := v->Get(i)->As(StringHolder);
@@ -2608,11 +2608,11 @@ class Test {
 
 class StringHolder implements Compare {
   @s : String;
-  
+
   New(s : String) {
     @s := s;
   }
-  
+
   method : public : Compare(c : Compare) ~ Int {
     h := c->As(StringHolder);
     r := h->ToString();
@@ -2620,14 +2620,14 @@ class StringHolder implements Compare {
     if(size = 0) {
       size := @s->ToUpper()->Compare(r->ToUpper());
     };
-    
+
     return size;
   }
-  
+
   method : public : HashID() ~ Int {
     return @s->HashID();
   }
-  
+
   method : public : ToString() ~ String {
     return @s;
   }
@@ -2801,7 +2801,7 @@ String method: customCmp(s)
    s size self size < ifTrue: [ false return ]
    s toUpper self toUpper <= ;
 
-["this", "is", "a", "set", "of", "strings", "to", "sort", "This", "Is", "A", "Set", "Of", "Strings", "To", "Sort"] 
+["this", "is", "a", "set", "of", "strings", "to", "sort", "This", "Is", "A", "Set", "Of", "Strings", "To", "Sort"]
 sortWith(#customCmp) println
 ```
 
@@ -2823,7 +2823,7 @@ sortWith(#customCmp) println
 A=.array~of('The seven deadly sins','Pride','avarice','Wrath','envy','gluttony','sloth','Lust')
 say 'Sorted in order of descending length, and in ascending lexicographic order'
 say A~sortWith(.DescLengthAscLexical~new)~makeString
- 
+
 ::class DescLengthAscLexical mixinclass Comparator
 ::method compare
 use strict arg left, right
@@ -2865,13 +2865,13 @@ declare
         if X < Y then {Return true} end
      end
   end
- 
+
   fun {LessThan Xs Ys}
      {Length Xs} > {Length Ys}
      orelse
      {Length Xs} == {Length Ys} andthen {LexicographicLessThan Xs Ys}
   end
- 
+
   Strings = ["Here" "are" "some" "sample" "strings" "to" "be" "sorted"]
 in
   {ForAll {Sort Strings LessThan} System.showInfo}
@@ -2993,7 +2993,7 @@ PicoLisp returns an ascending list (of any type). To get a result in descending
 order, the "greater than" function can be supplied
 
 ```PicoLisp
-: (sort '("def" "abc" "ghi") >)    
+: (sort '("def" "abc" "ghi") >)
 -> ("ghi" "def" "abc")
 ```
 
@@ -3025,7 +3025,7 @@ MERGE: PROCEDURE (A,LA,B,LB,C,CMPFN);
           NONASGN CHAR(*) VAR,
           NONASGN CHAR(*) VAR)
           RETURNS (FIXED bin(31));
-   
+
    I=1; J=1; K=1;
    DO WHILE ((I <= LA) & (J <= LB));
       IF CMPFN(A(I),B(J)) <= 0 THEN
@@ -3053,7 +3053,7 @@ MERGESORT: PROCEDURE (A,N,CMPFN) RECURSIVE ;
    IF (N=1) THEN RETURN;
    M = trunc((N+1)/2);
    IF M > 1 THEN CALL MERGESORT(A,M,CMPFN);
-   P=ADDR(A(M+1)); 
+   P=ADDR(A(M+1));
    IF (N-M > 1) THEN CALL MERGESORT(AMP1,N-M,CMPFN);
    IF CMPFN(A(M),AMP1(1)) <= 0 THEN RETURN;
    DO I=1 to M; T(I)=A(I); END;
@@ -3197,10 +3197,10 @@ my_write(W) :-
 ```txt
  ?- rosetta_sort.
 Input list :
-Here are some sample strings to be sorted 
+Here are some sample strings to be sorted
 
 Sorted list :
-strings sample sorted Here some are be to 
+strings sample sorted Here some are be to
 true.
 
 ```
@@ -3422,7 +3422,7 @@ mycmp: Procedure
 ```txt
 
 element 1 before sort: ---The seven deadly sins---
-element 2 before sort: 
+element 2 before sort:
 ### =====================
 
 element 3 before sort: pride
@@ -3434,7 +3434,7 @@ element 8 before sort: sloth
 element 9 before sort: lust
 ------------------------------------------------------------
 element 1  after sort: ---The seven deadly sins---
-element 2  after sort: 
+element 2  after sort:
 ### =====================
 
 element 3  after sort: gluttony
@@ -3558,7 +3558,7 @@ class MAIN is
 
   main is
     s:ARRAY{STR} := |"this", "is", "an", "array", "of", "strings", "to", "sort"|;
-    
+
     s.insertion_sort_by(bind(custom_comp(_,_)));
     loop #OUT + s.elt! + "\n"; end;
   end;
@@ -3571,7 +3571,7 @@ end;
 
 
 ```scala
-List("Here", "are", "some", "sample", "strings", "to", "be", "sorted").sortWith{(a,b) => 
+List("Here", "are", "some", "sample", "strings", "to", "be", "sorted").sortWith{(a,b) =>
   val cmp=a.size-b.size
   (if (cmp==0) -a.compareTo(b) else cmp) > 0
 }
@@ -3589,7 +3589,7 @@ List(strings, sample, sorted, Here, some, are, be, to)
 
 
 ```scheme
-(use srfi-13);;Syntax for module inclusion depends on implementation, 
+(use srfi-13);;Syntax for module inclusion depends on implementation,
 ;;a sort function may be predefined, or available through srfi 95
 (define (mypred? a b)
   (let ((len-a (string-length a))
@@ -3598,7 +3598,7 @@ List(strings, sample, sorted, Here, some, are, be, to)
 	(string>? (string-downcase b) (string-downcase a))
         (> len-a len-b))))
 
-(sort '("sorted" "here" "strings" "sample" "Some" "are" "be" "to") mypred?) 
+(sort '("sorted" "here" "strings" "sample" "Some" "are" "be" "to") mypred?)
 ```
 
 {{out}}
@@ -3610,7 +3610,7 @@ List(strings, sample, sorted, Here, some, are, be, to)
 
 
 
-###  An alternative solution: 
+###  An alternative solution:
 
 {{works with|Gauche Scheme}}
 
@@ -3620,7 +3620,7 @@ List(strings, sample, sorted, Here, some, are, be, to)
   "This" "Is" "A" "Set" "Of" "Strings" "To" "Sort" "duplicated"
   "this" "is" "a" "set" "of" "strings" "to" "sort" "duplicated"))
 
-(print 
+(print
   (sort strings
     (lambda two
       (define sizes (map string-length two))
@@ -3754,11 +3754,11 @@ list.sortInPlace {lhs, rhs in
   let lhsCount = lhs.characters.count
   let rhsCount = rhs.characters.count
   let result = rhsCount - lhsCount
-  
+
   if result == 0 {
     return lhs.lowercaseString > rhs.lowercaseString
   }
-  
+
   return lhsCount > rhsCount
 }
 ```
@@ -3789,11 +3789,11 @@ sort(&list) {lhs, rhs in
     let lhsCount = count(lhs)
     let rhsCount = count(rhs)
     let result = rhsCount - lhsCount
-    
+
     if result == 0 {
         return lhs.lowercaseString > rhs.lowercaseString
     }
-    
+
     return lhsCount > rhsCount
 }
 ```
@@ -3877,7 +3877,7 @@ sort
 This
 Sort
 strings
-Strings 
+Strings
 
 ```
 
@@ -3885,7 +3885,7 @@ Strings
 
 ## Ursala
 
-A standard library function, psort, takes a list of binary relational predicates and returns a function that uses them in order of decreasing priority to perform a sort. 
+A standard library function, psort, takes a list of binary relational predicates and returns a function that uses them in order of decreasing priority to perform a sort.
 The less or equal length predicate (leql) and lexically less or equal predicate (lleq) are also standard library functions. This task is therefore easily dispatched as shown.
 
 
@@ -3944,8 +3944,8 @@ End Module
 
 ```zkl
 s:=T("Cat","apple","Adam","zero","Xmas","quit","Level","add","Actor","base","butter");
-r:=s.sort(fcn(a,b){ 
-	    an,bn := a.len(),b.len(); 
+r:=s.sort(fcn(a,b){
+	    an,bn := a.len(),b.len();
             if(an==bn)(a.toLower() < b.toLower()) else (an > bn)
 	  });
 r.pump(Console.println);

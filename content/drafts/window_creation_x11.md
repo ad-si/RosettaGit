@@ -13,7 +13,7 @@ tags = []
 {{task|GUI}}{{requires|Graphics}}
 
 ;Task:
-Create a simple '''X11''' application,   using an '''X11''' protocol library such as Xlib or XCB,   that draws a box and   "Hello World"   in a window. 
+Create a simple '''X11''' application,   using an '''X11''' protocol library such as Xlib or XCB,   that draws a box and   "Hello World"   in a window.
 
 Implementations of this task should   ''avoid using a toolkit''   as much as possible.
 
@@ -37,7 +37,7 @@ open (window, "Hello, World!", stand draw channel);
   draw colour (window, 1, 0, 0);
   draw text (window, "c", "c", "hello world");
   draw show (window);
-  VOID (read char); 
+  VOID (read char);
 close (window)
 ```
 
@@ -75,12 +75,12 @@ close (window)
 .equ ExposureMask,        1<<15
 .equ StructureNotifyMask, 1<<17
 .equ EnterWindowMask,     1<<4
-.equ LeaveWindowMask,     1<<5 
+.equ LeaveWindowMask,     1<<5
 .equ ConfigureNotify,     22
 
 /*******************************************/
 /* DONNEES INITIALISEES                    */
-/*******************************************/ 
+/*******************************************/
 .data
 szWindowName:            .asciz "Windows Raspberry"
 szRetourligne:           .asciz  "\n"
@@ -89,7 +89,7 @@ szMessErreur:            .asciz "Server X not found.\n"
 szMessErrfen:            .asciz "Can not create window.\n"
 szMessErreurX11:         .asciz "Error call function X11. \n"
 szMessErrGc:             .asciz "Can not create graphics context.\n"
-szTitreFenRed:           .asciz "Pi"    
+szTitreFenRed:           .asciz "Pi"
 szTexte1:                .asciz "Hello world."
 .equ LGTEXTE1, . - szTexte1
 szTexte2:                .asciz "Press q for close window or clic X in system menu."
@@ -105,7 +105,7 @@ sDeci: .space 15,' '
 
 /*******************************************/
 /* DONNEES NON INITIALISEES                    */
-/*******************************************/ 
+/*******************************************/
 .bss
 .align 4
 ptDisplay:          .skip 4      @ pointer display
@@ -116,7 +116,7 @@ key:                .skip 4      @ key code
 wmDeleteMessage:    .skip 8      @ ident close message
 event:              .skip 400    @ TODO event size ??
 PrpNomFenetre:      .skip 100    @ window name proprety
-buffer:             .skip 500 
+buffer:             .skip 500
 iWhite:             .skip 4      @ rgb code for white pixel
 iBlack:             .skip 4      @ rgb code for black pixel
 /**********************************************/
@@ -125,7 +125,7 @@ iBlack:             .skip 4      @ rgb code for black pixel
 .text
 .global main
 
-main:                               @ entry of program 
+main:                               @ entry of program
     ldr r0,iAdrszMessDebutPgm   @
     bl affichageMess            @ display start message on console linux
     /* attention r6  pointer display*/
@@ -139,7 +139,7 @@ main:                               @ entry of program
     cmp r0,#0                   @ error ?
     beq erreurServeur
     ldr r1,iAdrptDisplay
-    str r0,[r1]                 @ store display address 
+    str r0,[r1]                 @ store display address
     mov r6,r0                   @ and in register r6
     ldr r2,[r0,#+132]           @ load default_screen
     ldr r1,iAdrptEcranDef
@@ -168,8 +168,8 @@ main:                               @ entry of program
     push {r8}
     mov r8,#400                 @ hauteur
     push {r8}
-    mov r8,#600                 @ largeur 
-    push {r8}   
+    mov r8,#600                 @ largeur
+    push {r8}
     bl XCreateSimpleWindow
     add sp,#24                  @ stack alignement  6 push (4 bytes * 6)
     cmp r0,#0                   @ error ?
@@ -229,7 +229,7 @@ main:                               @ entry of program
     mov r0,r6                   @ display address
     mov r1,r9                   @ window address
     ldr r2,iGris1               @ background color
-    bl XSetWindowBackground   
+    bl XSetWindowBackground
     cmp r0,#0                   @ error ?
     ble erreurX11
     /***************************/
@@ -244,13 +244,13 @@ main:                               @ entry of program
     mov r0,r6                   @ display address
     mov r1,r9                   @ window address
     mov r2,r8                   @ address graphic context
-    mov r3,#50                  @ position x 
+    mov r3,#50                  @ position x
     sub sp,#4                   @ stack alignement
-    mov r4,#LGTEXTE1  - 1       @ size string 
+    mov r4,#LGTEXTE1  - 1       @ size string
     push {r4}                   @ on the stack
     ldr r4,iAdrszTexte1            @ string address
     push {r4}
-    mov r4,#100                 @ position y 
+    mov r4,#100                 @ position y
     push {r4}
     bl XDrawString
     add sp,sp,#16               @ stack alignement 3 push and 1 stack alignement
@@ -260,13 +260,13 @@ main:                               @ entry of program
     mov r0,r6                   @ display address
     mov r1,r9                   @ window address
     mov r2,r8                   @ address graphic context
-    mov r3,#10                  @ position x 
+    mov r3,#10                  @ position x
     sub sp,#4                   @ stack alignement
-    mov r4,#LGTEXTE2  - 1       @ size string 
+    mov r4,#LGTEXTE2  - 1       @ size string
     push {r4}                   @ on the stack
     ldr r4,iAdrszTexte2            @ string address
     push {r4}
-    mov r4,#350                 @ position y 
+    mov r4,#350                 @ position y
     push {r4}
     bl XDrawString
     add sp,sp,#16               @ stack alignement 3 push and 1 stack alignement
@@ -299,7 +299,7 @@ main:                               @ entry of program
     mov r4,#0
     push {r4}                   @ stack alignement
     push {r4}
-    bl XLookupString 
+    bl XLookupString
     add sp,#8                   @ stack alignement 2 push
     cmp r0,#1                   @ is character key ?
     bne 2f
@@ -323,11 +323,11 @@ main:                               @ entry of program
     cmp r0,#ClientMessage       @ code for close window within error
     bne 4f
     ldr r0,iAdrevent
-    ldr r1,[r0,#+28]            @ code message address 
+    ldr r1,[r0,#+28]            @ code message address
     ldr r2,iAdrwmDeleteMessage  @ equal code window créate ???
     ldr r2,[r2]
     cmp r1,r2
-    beq 5f                      @ yes -> end window 
+    beq 5f                      @ yes -> end window
 
 4:  @ loop for other event
     b 1b
@@ -337,11 +337,11 @@ main:                               @ entry of program
 5:
     mov r0,r6                  @ display address
     ldr r1,iAdrptGC
-    ldr r1,[r1]                @ load context graphic address 
+    ldr r1,[r1]                @ load context graphic address
     bl XFreeGC
     cmp r0,#0
     blt erreurX11
-    mov r0,r6                  @ display address 
+    mov r0,r6                  @ display address
     mov r1,r9                  @ window address
     bl XDestroyWindow
     cmp r0,#0
@@ -373,9 +373,9 @@ erreurServeur:                 @ error no found X11 server see doc putty and Xmi
     mov r0,#1
     b 100f
 
-100:                           @ standard end of the program 
+100:                           @ standard end of the program
     mov r7, #EXIT
-    svc 0 
+    svc 0
 iFenetreMask:        .int  KeyPressMask|ButtonPressMask|StructureNotifyMask
 iGris1:              .int 0xFFA0A0A0
 iAdrWhite:           .int iWhite
@@ -400,23 +400,23 @@ iAdrszTexte2:        .int szTexte2
 iAdrPrpNomFenetre:   .int PrpNomFenetre
 iAdrwmDeleteMessage: .int wmDeleteMessage
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                   @ save  registres
-    mov r2,#0                               @ counter length 
-1:                                          @ loop length calculation 
-    ldrb r1,[r0,r2]                         @ read octet start position + index 
-    cmp r1,#0                               @ if 0 its over 
-    addne r2,r2,#1                          @ else add 1 in the length 
-    bne 1b                                  @ and loop 
-                                            @ so here r2 contains the length of the message 
-    mov r1,r0                               @ address message in r1 
-    mov r0,#STDOUT                          @ code to write to the standard output Linux 
-    mov r7, #WRITE                          @ code call system "write" 
-    svc #0                                  @ call systeme 
-    pop {r0,r1,r2,r7,lr}                    @ restaur registers */ 
+    mov r2,#0                               @ counter length
+1:                                          @ loop length calculation
+    ldrb r1,[r0,r2]                         @ read octet start position + index
+    cmp r1,#0                               @ if 0 its over
+    addne r2,r2,#1                          @ else add 1 in the length
+    bne 1b                                  @ and loop
+                                            @ so here r2 contains the length of the message
+    mov r1,r0                               @ address message in r1
+    mov r0,#STDOUT                          @ code to write to the standard output Linux
+    mov r7, #WRITE                          @ code call system "write"
+    svc #0                                  @ call systeme
+    pop {r0,r1,r2,r7,lr}                    @ restaur registers */
     bx lr                                   @ return
 /***************************************************/
 /*   affichage message d erreur              */
@@ -437,12 +437,12 @@ displayError:
     bl affichageMess
 100:
     pop {r0-r2,lr}                          @ restaur registers
-    bx lr                                   @ return 
+    bx lr                                   @ return
 iAdrszMessErr:                 .int szMessErr
 iAdrsHexa:                     .int sHexa
 iAdrsDeci:                     .int sDeci
 /******************************************************************/
-/*     Converting a register to hexadecimal                      */ 
+/*     Converting a register to hexadecimal                      */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 conversion16:
@@ -452,9 +452,9 @@ conversion16:
     mov r3,r0                                          @ save entry value
 1:                                                     @ start loop
     and r0,r3,r4                                       @value register and mask
-    lsr r0,r2                                          @ move right 
+    lsr r0,r2                                          @ move right
     cmp r0,#10                                         @ compare value
-    addlt r0,#48                                       @ <10  ->digit	
+    addlt r0,#48                                       @ <10  ->digit
     addge r0,#55                                       @ >10  ->letter A-F
     strb r0,[r1],#1                                    @ store digit on area and + 1 in area address
     lsr r4,#4                                          @ shift mask 4 positions
@@ -462,24 +462,24 @@ conversion16:
     bge 1b                                             @  no -> loop
 
 100:
-    pop {r1-r4,lr}                                     @ restaur registers 
+    pop {r1-r4,lr}                                     @ restaur registers
     bx lr                                              @return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 1:                                                  @ start loop
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b                                          @ and loop
                                                     @ and move digit from left of area
@@ -492,18 +492,18 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
     add r4,#1                                         @ next position
     cmp r4,#LGZONECAL
     ble 3b                                            @ loop if r4 <= area size
- 
+
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
- 
+
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
@@ -514,12 +514,12 @@ divisionpar10U:
     push {r2,r3,r4, lr}
     mov r4,r0                                          @ save value
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 
 ```
@@ -529,7 +529,7 @@ iMagicNumber:  	.int 0xCCCCCCCD
 ## C
 
 
-###  Xlib 
+###  Xlib
 
 {{libheader|Xlib}}
 
@@ -537,8 +537,8 @@ Compile with:
 * gcc hello-x.c -L/usr/X11R6/lib -lX11 -o hello-x
 
 
-```c>#include <X11/Xlib.h
-
+```c
+#include <X11/Xlib.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -579,7 +579,7 @@ int main(void) {
 
 
 
-###  XCB 
+###  XCB
 
 {{libheader|XCB}}
 
@@ -587,8 +587,8 @@ Compile with:
 * gcc -o helloxcb helloxcb.c -lxcb
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <string.h>
 
@@ -983,7 +983,7 @@ Screen capture:
 
 ## Groovy
 
-Run: 
+Run:
  groovy WindowCreation.groovy
 
 
@@ -1048,8 +1048,8 @@ link graphics
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn provides graphics]
 
 Additionally, the '''WOpen''' procedure and Window.App methods are available.
 
@@ -1107,7 +1107,7 @@ public class WindowExample {
     };
     SwingUtilities.invokeLater(runnable);
   }
-	
+
   static void createAndShow() {
     JFrame frame = new JFrame("Hello World");
     frame.setSize(640,480);
@@ -1225,7 +1225,7 @@ fun main(args: Array<String>) {
     XSelectInput(d, w, ExposureMask or KeyPressMask)
     XMapWindow(d, w)
     val e = nativeHeap.alloc<XEvent>()
-    
+
     while (true) {
         XNextEvent(d, e.ptr)
         if (e.type == Expose) {
@@ -1256,14 +1256,14 @@ Ao for this task we use the M2000 way to make a form and do something on it.
 Module SquareAndText2Window {
 	Const black=0, white=15
 	Declare form1 form
-	\\ defaultwindow  title is the name of variable,here is: form1 
+	\\ defaultwindow  title is the name of variable,here is: form1
 	Rem With form1, "Title",  "A title for this window"
 	Method form1,"move", 2000,3000,10000,8000  ' in twips
 	layer form1 {
 		Cls white
 		Font "Verdana"
 		Rem Window 12 , 10000,8000;  ' hide modr 13 using a REM before
-		Rem 
+		Rem
 		Mode 12    ' 12 in pt
 		Cls white,  2      ' fill white, set third raw for top of scrolling frame
 		Pen  black
@@ -1277,8 +1277,8 @@ Module SquareAndText2Window {
 		\\ 9120  7920 if we use window 12,10000, 8000 (cut exactly for console use)
 		\\ 10000 8000 if we use Mode 12
 		\\ scale.y include window height (including header)
-		\\ the layer extend bellow 
-		Print scale.x, scale.y 
+		\\ the layer extend bellow
+		Print scale.x, scale.y
 	}
 	\\ show form1 modal (continue to next line when we close the window)
 	Method form1,"Show", 1
@@ -1303,8 +1303,8 @@ Note that GUIKit is a high-level wrapper for Swing.
  Needs["GUIKit`"]
  ref = GUIRun[Widget["Panel", {
     Widget[
-     "ImageLabel", {"data" -> 
-       Script[ExportString[Graphics[Rectangle[{0, 0}, {1, 1}]], 
+     "ImageLabel", {"data" ->
+       Script[ExportString[Graphics[Rectangle[{0, 0}, {1, 1}]],
          "GIF"]]}],
     Widget["Label", { "text" -> "Hello World!"}]}
    ]]
@@ -1372,7 +1372,7 @@ program xshowwindow;
 
 uses
   xlib, x, ctypes;
- 
+
 procedure ModalShowX11Window(AMsg: string);
 var
   d: PDisplay;
@@ -1382,7 +1382,7 @@ var
   s: cint;
 begin
   msg := PChar(AMsg);
- 
+
   { open connection with the server }
   d := XOpenDisplay(nil);
   if (d = nil) then
@@ -1391,17 +1391,17 @@ begin
     exit;
   end;
   s := DefaultScreen(d);
- 
+
   { create window }
   w := XCreateSimpleWindow(d, RootWindow(d, s), 10, 10, 100, 50, 1,
                            BlackPixel(d, s), WhitePixel(d, s));
- 
+
   { select kind of events we are interested in }
   XSelectInput(d, w, ExposureMask or KeyPressMask);
- 
+
   { map (show) the window }
   XMapWindow(d, w);
- 
+
   { event loop }
   while (True) do
   begin
@@ -1410,17 +1410,17 @@ begin
     if (e._type = Expose) then
     begin
       XFillRectangle(d, w, DefaultGC(d, s), 0, 10, 100, 3);
-      XFillRectangle(d, w, DefaultGC(d, s), 0, 30, 100, 3);      
+      XFillRectangle(d, w, DefaultGC(d, s), 0, 30, 100, 3);
       XDrawString   (d, w, DefaultGC(d, s), 5, 25, msg, strlen(msg));
     end;
     { exit on key press }
     if (e._type = KeyPress) then Break;
   end;
- 
+
   { close connection to server }
   XCloseDisplay(d);
 end;
- 
+
 begin
   ModalShowX11Window('Hello, World!');
 end.
@@ -1432,7 +1432,7 @@ end.
 ## Perl
 
 
-###  X11::Protocol 
+###  X11::Protocol
 
 
 ```perl
@@ -1626,7 +1626,7 @@ any simpleWin(any ex) {
 
 
 
-###  Xlib 
+###  Xlib
 
 {{field attention|Python|X11|Note (stolen from CLX example): This example was written in near-total ignorance of X11 by consulting the python-xlib's examples (included in its distribution) to find equivalents for the parts of the C example.}}
 
@@ -1647,7 +1647,7 @@ class Window:
     def __init__(self, display, msg):
         self.display = display
         self.msg = msg
-        
+
         self.screen = self.display.screen()
         self.window = self.screen.root.create_window(
             10, 10, 100, 100, 1,
@@ -1665,21 +1665,21 @@ class Window:
     def loop(self):
         while True:
             e = self.display.next_event()
-                
+
             if e.type == X.Expose:
                 self.window.fill_rectangle(self.gc, 20, 20, 10, 10)
                 self.window.draw_text(self.gc, 10, 50, self.msg)
             elif e.type == X.KeyPress:
                 raise SystemExit
 
-                
+
 if __name__ == "__main__":
     Window(display.Display(), "Hello, World!").loop()
 ```
 
 
 
-###  XCB 
+###  XCB
 
 {{libheader|python-xcb}}
 

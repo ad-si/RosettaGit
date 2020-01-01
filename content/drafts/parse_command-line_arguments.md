@@ -12,7 +12,7 @@ tags = []
 
 {{draft task|Basic language learning}}
 
-[[Command-line arguments]] can be quite complicated, as in: 
+[[Command-line arguments]] can be quite complicated, as in:
 
 :::: <big> '''nc   -v   -n   -z   -w   1   192.168.1.2   1-1000''' </big>
 
@@ -89,9 +89,9 @@ BEGIN {
       usage()
       exit
     }
-    if(C == "t") 
+    if(C == "t")
       tval = Optarg
-    if(C == "u") 
+    if(C == "u")
       uval = Optarg
   }
   print "There are " opti " arguments."
@@ -122,18 +122,18 @@ Output:
 
 The man page for getopt (man 3 getopt) provides better option handling with examples. But if you just want to parse one argument... (adapted from simple database task):
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 int main(int argc, char **argv){
     int i;
     const char *commands[]={"-c", "-p", "-t", "-d", "-a", NULL};
     enum {CREATE,PRINT,TITLE,DATE,AUTH};
     if (argc<2) {
-usage:   printf ("Usage: %s [commands]\n" 
-            "-c  Create new entry.\n" 
-            "-p  Print the latest entry.\n" 
-            "-t  Sort by title.\n" 
-            "-d  Sort by date.\n" 
+usage:   printf ("Usage: %s [commands]\n"
+            "-c  Create new entry.\n"
+            "-p  Print the latest entry.\n"
+            "-t  Sort by title.\n"
+            "-d  Sort by date.\n"
             "-a  Sort by author.\n",argv[0]);
         return 0;
     }
@@ -159,7 +159,7 @@ usage:   printf ("Usage: %s [commands]\n"
 
 ## Clojure
 
-See [https://github.com/clojure-cookbook/clojure-cookbook/blob/master/03_general-computing/3-07_parse-command-line-arguments.asciidoc Parsing Command-Line Arguments] from O'Reilly's Clojure Cookbook github. 
+See [https://github.com/clojure-cookbook/clojure-cookbook/blob/master/03_general-computing/3-07_parse-command-line-arguments.asciidoc Parsing Command-Line Arguments] from O'Reilly's Clojure Cookbook github.
 
 
 ## D
@@ -228,7 +228,7 @@ Arguments:
 ```freebasic
 ' FB 1.05.0 Win64
 
-' Program (commandline.exe) invoked like this: 
+' Program (commandline.exe) invoked like this:
 ' commandline nc   -v   -n   -z   -w   1   192.168.1.2   1-1000
 
 Dim argc As Integer = __FB_ARGC__
@@ -237,9 +237,9 @@ Dim argv As ZString Ptr Ptr = __FB_ARGV__
 Print "The program was invoked with the following command line arguments:"
 Print
 
-For i As Integer = 0 To argc - 1 
+For i As Integer = 0 To argc - 1
    Print "Arg"; i + 1; " = "; *argv[i]
-Next  
+Next
 
 Print
 Print "Press any key to quit"
@@ -296,7 +296,7 @@ Example runs:
 
 > parse
 b: false
-s: 
+s:
 n: 0
 
 > parse -s bye -b
@@ -334,7 +334,7 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/src/procs/options.icn options.icn supports getting command-line options]
 
 
@@ -451,8 +451,8 @@ $CommandLine
 
 GP exists in a REPL and so it doesn't make sense to parse command-line arguments. But PARI can parse them just like [[#C|C]]:
 
-```c>#include <pari/pari.h
-
+```c
+#include <pari/pari.h>
 #include <stdio.h>
 
 int main(int argc, char **argv){
@@ -488,7 +488,7 @@ proc main =
     of cmdArgument:
       echo "Got arg ", argCtr, ": \"", key, "\""
       argCtr.inc
-      
+
     of cmdLongOption, cmdShortOption:
       case key
       of "v", "n", "z", "w":
@@ -666,46 +666,46 @@ Works in SWI-Prolog.
 
 main(Argv) :-
 	opt_spec(Spec),
-	opt_parse(Spec, Argv, Opts, _),	
+	opt_parse(Spec, Argv, Opts, _),
 	(
 		member(help(true), Opts) -> show_help
 		; maplist(format('~w~n'), Opts)
 	).
-		
+
 show_help :-
-	opt_spec(Spec),		
+	opt_spec(Spec),
 	opt_help(Spec, HelpText),
 	write('Usage: swipl opts.pl <options>\n\n'),
 	write(HelpText).
-	
+
 opt_spec([
-	[opt(help), 
-		type(boolean), 
-		default(false), 
-		shortflags([h]), 
-		longflags([help]), 
+	[opt(help),
+		type(boolean),
+		default(false),
+		shortflags([h]),
+		longflags([help]),
 		help('Show Help')],
-		
-	[opt(noconnect), 
-		type(boolean), 
-		default(false), 
-		shortflags([n]), 
-		longflags([noconnect]), 
+
+	[opt(noconnect),
+		type(boolean),
+		default(false),
+		shortflags([n]),
+		longflags([noconnect]),
 		help('do not connect, just check server status')],
-		
-	[opt(server), 
-		type(atom), 
-		default('www.google.com'), 
-		shortflags([s]), 
-		longflags([server]), 
+
+	[opt(server),
+		type(atom),
+		default('www.google.com'),
+		shortflags([s]),
+		longflags([server]),
 		help('The server address.')],
-		
-	[opt(port), 
-		type(integer), 
-		default(5000), 
-		shortflags([p]), 
-		longflags([port]), 
-		help('The server port.')]	
+
+	[opt(port),
+		type(integer),
+		default(5000),
+		shortflags([p]),
+		longflags([port]),
+		help('The server port.')]
 ]).
 ```
 
@@ -799,12 +799,12 @@ $options = @{
     }
 $help = @"
     FUNCTION usage: FUNCTION [-p] [-w] [-h] [-c] <int><float><string>PARAMETERS...
-    
+
     Lorem Ipsum blah blah blah
-    
+
     NOTE something yada yada
-    
-    Options:         
+
+    Options:
         -p,--pxx    Name    Some option that has significance with the letter 'p'
         -w,--wxx    Name    Some option that has significance with the letter 'w'
         -c,--cxx    Name    Some option that has significance with the letter 'c'
@@ -816,7 +816,7 @@ $help = @"
         if (!$argv) { return $null }
         foreach ($arg in $argv) {
             # Make sure the argument is something you are expecting
-            $test = ($arg -is [int]) -or 
+            $test = ($arg -is [int]) -or
                     ($arg -is [string]) -or
                     ($arg -is [float])
             if (!$test) {
@@ -826,21 +826,21 @@ $help = @"
             if ($arg -like '-*') { $opts += $arg }
         }
         $argv = [Collections.ArrayList]$argv
-        if ($opts) { 
-            foreach ($opt in $opts) { 
+        if ($opts) {
+            foreach ($opt in $opts) {
                 switch ($opt) {
                     {'-p' -or '--pxx'}   { $options.opt1 = [bool] 1 }
-                    {'-w' -or '--wxx'}   { $options.opt2 = [bool] 1 }                    
+                    {'-w' -or '--wxx'}   { $options.opt2 = [bool] 1 }
                     {'-c' -or '--cxx'}   { $options.opt3 = [bool] 1 }
                     {'-h' -or '--help'}  { Write-Host $help -ForegroundColor Cyan; break 1 }
-                    default { 
+                    default {
                         Write-Host "Bad option: $opt is not a valid option." -ForegroundColor Red
                         throw "Error: Bad Option"
                     }
                 }
             $argv.Remove($opt)
             }
-        }            
+        }
         return [array]$argv,$options
     }#fn
 
@@ -854,7 +854,7 @@ Usage (in some function or script):
    $argv,$options = parseOptions $args $options
 
     if ($options.opt3) {
-        $foo = $blah - ($yada * $options.opt1) + ($yada * $options.opt2)        
+        $foo = $blah - ($yada * $options.opt1) + ($yada * $options.opt2)
         $bar = $argv | SomeOtherFilter | Baz
     }
 
@@ -1233,14 +1233,14 @@ This demo prints the results of parsing the options.
     -c, --count                      Add 1 to count
     -p, --percent PERCENT            Percent [50%]
     -f, --fruit FRUIT                Fruit (apple, banana, orange, pear)
-$ ruby takeopts.rb -v 
+$ ruby takeopts.rb -v
 takeopts 0.0.1
 $ ruby takeopts.rb -b -c
 Short flag: true
 Long flag: true
 Count: 1
 Percent: 50%
-Fruit: 
+Fruit:
 Arguments: []
 $ ruby takeopts.rb -ccccp90% -f oran -- -arg
 Short flag: false
@@ -1288,7 +1288,7 @@ Examples:
 
 > parse
 b: false
-s: 
+s:
 n: 0
 
 > parse -s bye -b
@@ -1310,7 +1310,7 @@ n: 99
 {{libheader|Scala}}
 
 ```Scala
-object CommandLineArguments extends App { 
+object CommandLineArguments extends App {
     println(s"Received the following arguments: + ${args.mkString("", ", ", ".")}")
 }
 ```
@@ -1360,7 +1360,7 @@ val _ = Test.main (CommandLine.name(), CommandLine.arguments())
 
 
 
-###  SML/NJ 
+###  SML/NJ
 
 [[SML/NJ]] can compile source code to a "heap file", witch can than be executed by the interpreter with arguments given (see [http://stackoverflow.com/questions/5053149/sml-nj-how-to-compile-standalone-executable this entry on stackowerflow.com] for more information).
 The <code>source.cm</code> file should lock like this:
@@ -1374,7 +1374,7 @@ To compile the program, use <code>ml-build sources.cm</code>. This should create
 The heap file can be executed with <code>sml @SMLload=sources.x86-linux ARGUMENTS</code>, or the script [http://www.smlnj.org/doc/heap2exec/index.html <code>heap2exec</code>] can be used to make a single executable.
 
 
-###  MLton 
+###  MLton
 
 [[MLton]] compiles the source file directly to a executable by invoking <code>mlton SOURCE_FILE.sml</code>.
 

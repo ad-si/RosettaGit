@@ -393,8 +393,8 @@ file.read file_name
 
 It is not possible to specify encodings: the file is read as binary data (on some system, the <tt>b</tt> flag is ignored and there's no difference between <tt>"r"</tt> and <tt>"rb"</tt>; on others, it changes the way the "new lines" are treated, but this should not affect <tt>fread</tt>)
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int main()
@@ -433,8 +433,8 @@ int main()
 We can memory-map the file.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <sys/mman.h>
 #include <sys/types.h>
@@ -471,8 +471,8 @@ int main()
 Memory map on Windows. See MSDN, starting with '''[https://msdn.microsoft.com/en-us/library/windows/desktop/aa366556.aspx File Mapping]'''. In practice, it would be necessary to check for errors, and to take care of large files. Also, this example is using a view on the whole file, but it's possible to create a smaller view.
 
 
-```c>#include <windows.h
-
+```c
+#include <windows.h>
 #include <stdio.h>
 
 int main() {
@@ -498,8 +498,8 @@ int main() {
 ## C++
 
 
-```Cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <iterator>

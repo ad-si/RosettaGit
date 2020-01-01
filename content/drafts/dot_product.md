@@ -13,14 +13,14 @@ tags = []
 {{task}}
 
 ;Task:
-Create a function/use an in-built function, to compute the   '''[[wp:Dot product|dot product]]''',   also known as the   '''scalar product'''   of two vectors. 
+Create a function/use an in-built function, to compute the   '''[[wp:Dot product|dot product]]''',   also known as the   '''scalar product'''   of two vectors.
 
 If possible, make the vectors of arbitrary length.
 
 
 As an example, compute the dot product of the vectors:
-::::   <big> <code> [1,  3, -5] </code> </big>     and 
-::::   <big> <code> [4,      -2, -1] </code> </big> 
+::::   <big> <code> [1,  3, -5] </code> </big>     and
+::::   <big> <code> [4,      -2, -1] </code> </big>
 
 
 
@@ -199,7 +199,7 @@ procedure dot_product is
 		end loop;
 		return sum;
 	end dotprod;
-	
+
 begin
 put_line(Integer'Image(dotprod(v1,v2)));
 end dot_product;
@@ -250,7 +250,7 @@ main(void)
 
 {{trans|C++}}
 {{works with|ALGOL 68|Standard - with prelude inserted manually}}
-{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}} 
+{{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}}
 
 ```algol68
@@ -258,7 +258,7 @@ MODE DOTFIELD = REAL;
 MODE DOTVEC = [1:0]DOTFIELD;
 
 # The "Spread Sheet" way of doing a dot product:
-  o Assume bounds are equal, and start at 1 
+  o Assume bounds are equal, and start at 1
   o Ignore round off error
 #
 PRIO SSDOT = 7;
@@ -278,7 +278,7 @@ OP * = (DOTVEC a,b)DOTFIELD: (
   FOR i
 # Assume bounds may not be equal, empty members are zero (sparse) #
     FROM LWB (LWB a > LWB b | a | b )
-    TO UPB (UPB a < UPB b | a | b ) 
+    TO UPB (UPB a < UPB b | a | b )
   DO
     DOTFIELD org = sum, prod = a[i]*b[i];
     sum +:= prod;
@@ -340,7 +340,7 @@ end.
 ```APL
 1 3 ¯5 +.× 4 ¯2 ¯1
 ```
- 
+
 <b>Output:</b>
 
 ```txt
@@ -363,7 +363,7 @@ on dotProduct(xs, ys)
             a * b
         end |λ|
     end script
-    
+
     if length of xs = length of ys then
         sum(zipWith(product, xs, ys))
     else
@@ -374,9 +374,9 @@ end dotProduct
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     dotProduct([1, 3, -5], [4, -2, -1])
-    
+
     --> 3
 end run
 
@@ -404,7 +404,7 @@ on min(x, y)
     end if
 end min
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -423,7 +423,7 @@ on sum(xs)
             a + b
         end |λ|
     end script
-    
+
     foldl(add, 0, xs)
 end sum
 
@@ -552,10 +552,10 @@ BBC BASIC has a built-in dot-product operator:
 
 ```bbcbasic
       DIM vec1(2), vec2(2), dot(0)
-      
+
       vec1() = 1, 3, -5
       vec2() = 4, -2, -1
-      
+
       dot() = vec1() . vec2()
       PRINT "Result is "; dot(0)
 ```
@@ -581,7 +581,7 @@ define d(a[], b[], n) {
         d += a[i] * b[i]
     }
     return(d)
-}    
+}
 
 a[0] = 1
 a[1] = 3
@@ -611,10 +611,10 @@ v Space for vector1
 v Space for vector2
 v http://rosettacode.org/wiki/Dot_product
                                             >00pv
->>55+":htgneL",,,,,,,,&:0`                  | 
+>>55+":htgneL",,,,,,,,&:0`                  |
 v,,,,,,,"Length can't be negative."+55<
 >,,,,,,,,,,,,,,,,,,,@                 |!`-10<
-                                      >0.@                             
+                                      >0.@
 v,")".g00,,,,,,,,,,,,,,"Vector a(size "         <
 0v01g00,")".g00,,,,,,,,,,,,,,"Vector b"<
 0pvp2g01&p01-1g01<                     "
@@ -623,9 +623,9 @@ g>>         10g0`|               @.g30<(
 0      vp00-1g00p30+g30*g2-1g00g1-1g00<i
 p      >        v         #            z
 vp1g01&p01-1g01<>         ^            e
->      10g0`   |        vp01-1g01.g1<  
+>      10g0`   |        vp01-1g01.g1<
                >00g1-10p>10g:01-`   |  "
-                                    >  ^                                              
+                                    >  ^
 
 ```
 
@@ -667,8 +667,8 @@ Vector a(size 3 )1
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int dot_product(int *, int *, size_t);
@@ -713,7 +713,7 @@ static void Main(string[] args)
 	Console.Read();
 }
 
-private static decimal DotProduct(decimal[] vec1, decimal[] vec2) 
+private static decimal DotProduct(decimal[] vec1, decimal[] vec2)
 {
 	if (vec1 == null)
 		return 0;
@@ -754,8 +754,8 @@ public static decimal DotProduct(decimal[] a, decimal[] b) {
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <numeric>
 
 int main()
@@ -792,7 +792,7 @@ int main()
     double result = (xs * ys).sum();
 
     std::cout << result << '\n';
-    
+
     return 0;
 }
 ```
@@ -856,7 +856,7 @@ catch e
 
 {{out}}
 ```txt
-> coffee foo.coffee 
+> coffee foo.coffee
 3
 can't find dot product: arrays have different lengths
 ```
@@ -889,7 +889,7 @@ Maybe it is better to do it without coercing. Then we got a cleaner code.
 
 MODULE DotProduct;
 IMPORT StdLog;
-	
+
 PROCEDURE Calculate*(x,y: ARRAY OF INTEGER): INTEGER;
 VAR
 	i,sum: INTEGER;
@@ -908,7 +908,7 @@ VAR
 BEGIN
 	v1[0] := 1;v1[1] := 3;v1[2] := -5;
 	v2[0] := 4;v2[1] := -2;v2[2] := -1;
-	
+
 	StdLog.Int(Calculate(v1,v2));StdLog.Ln
 END Test;
 
@@ -1180,13 +1180,13 @@ ELENA 4.1 :
 ```elena
 import extensions;
 import system'routines;
- 
+
 extension op
 {
     method dotProduct(int[] array)
         = self.zipBy(array, (x,y => x * y)).summarize();
 }
- 
+
 public program()
 {
     console.printLine(new int[]::(1, 3, -5).dotProduct(new int[]::(4, -2, -1)))
@@ -1213,7 +1213,7 @@ defmodule Vector do
   def dot_product(_,_) do
     raise ArgumentError, message: "Vectors must have the same length."
   end
-  
+
   defp dot_product([],[],product), do: product
   defp dot_product([h1|t1], [h2|t2], product), do: dot_product(t1, t2, product+h1*h2)
 end
@@ -1252,7 +1252,7 @@ IO.puts Vector.dot_product([1,3,-5],[4,-2,-1])
 <b>Output:</b>
 
 ```txt
- 
+
 14
 14
 
@@ -1597,10 +1597,10 @@ println dotProduct([1, 3, -5], [4, -2, -1])
 
 
 ```haskell>dotp :: Num a =
- [a] -> [a] -> a 
+ [a] -> [a] -> a
 dotp a b | length a == length b = sum (zipWith (*) a b)
          | otherwise = error "Vector sizes must match"
- 
+
 main = print $ dotp [1, 3, -5] [4, -2, -1] -- prints 3
 ```
 
@@ -1710,14 +1710,14 @@ Spelling issue: The conjunction <code> .</code> needs to be preceded by a space.
 
 ```java
 public class DotProduct {
-	
+
 	public static void main(String[] args) {
 		double[] a = {1, 3, -5};
 		double[] b = {4, -2, -1};
-		
+
 		System.out.println(dotProd(a,b));
 	}
-	
+
 	public static double dotProd(double[] a, double[] b){
 		if(a.length != b.length){
 			throw new IllegalArgumentException("The dimensions have to be equal!");
@@ -1827,7 +1827,7 @@ def dot(x; y):
 
 Suppose however that we are given an array of objects, each of which has an "x" field and a "y" field,
 and that we wish to compute SIGMA( x * y ) where the sum is taken over the array, and where x and y denote the
-values in the "x" and "y" fields respectively.  
+values in the "x" and "y" fields respectively.
 
 This can most usefully be accomplished in jq with the aid of SIGMA(f) defined as follows:
 ```jq
@@ -1972,7 +1972,7 @@ function DotProduct(a$, b$)
         DotProduct = DotProduct + val(x$)*val(y$)
         i = i+1
     wend
-end function 
+end function
 ```
 
 
@@ -2309,9 +2309,9 @@ module DotProduct
 {
     DotProduct(x : array[int], y : array[int]) : int
     {
-        $[(a * b)|(a, b) in ZipLazy(x, y)].FoldLeft(0, _+_);    
+        $[(a * b)|(a, b) in ZipLazy(x, y)].FoldLeft(0, _+_);
     }
-    
+
     Main() : void
     {
         def arr1 = array[1, 3, -5]; def arr2 = array[4, -2, -1];
@@ -2355,7 +2355,7 @@ method dotProduct(vecs = double[,]) public constant returns double signals Illeg
 
 
 ```newLISP
-(define (dot-product x y) 
+(define (dot-product x y)
   (apply + (map * x y)))
 
 (println (dot-product '(1 3 -5) '(4 -2 -1)))
@@ -2392,7 +2392,7 @@ VAR
   x,y: ARRAY 3 OF LONGINT;
 
 PROCEDURE DotProduct(a,b: ARRAY OF LONGINT): LONGINT;
-VAR 
+VAR
   resp, i: LONGINT;
 BEGIN
   ASSERT(LEN(a) = LEN(b));
@@ -2406,7 +2406,7 @@ END DotProduct;
 BEGIN
   x[0] := 1;y[0] := 4;
   x[1] := 3;y[1] := -2;
-  x[2] := -5;y[2] := -1; 
+  x[2] := -5;y[2] := -1;
   Out.Int(DotProduct(x,y),0);Out.Ln
 END DotProduct.
 
@@ -2469,7 +2469,7 @@ END DotProduct.
   double *vec;
   uint32_t size;
 }
-+(instancetype)newWithArray: (double *)v ofLength: (uint32_t)l; 
++(instancetype)newWithArray: (double *)v ofLength: (uint32_t)l;
 -(instancetype)initWithArray: (double *)v ofLength: (uint32_t)l;
 -(VResult *)dotProductWith: (RCVector *)v;
 -(uint32_t)size;
@@ -2515,7 +2515,7 @@ END DotProduct.
 @end
 
 double val1[] = { 1, 3, -5 };
-double val2[] = { 4,-2, -1 }; 
+double val2[] = { 4,-2, -1 };
 
 int main()
 {
@@ -2544,25 +2544,25 @@ bundle Default {
     function : Main(args : String[]) ~ Nil {
       DotProduct([1, 3, -5], [4, -2, -1])->PrintLine();
     }
-    
+
     function : DotProduct(array_a : Int[], array_b : Int[]) ~ Int {
       if(array_a = Nil) {
         return 0;
       };
-     
+
       if(array_b = Nil) {
         return 0;
       };
-     
+
       if(array_a->Size() <> array_b->Size()) {
         return 0;
       };
-      
+
       val := 0;
       for(x := 0; x < array_a->Size(); x += 1;) {
         val += (array_a[x] * array_b[x]);
       };
-     
+
       return val;
     }
   }
@@ -2642,7 +2642,7 @@ disp( a * b' )  % ' means transpose
 
 (define (dot-product a b)
   (apply + (map * a b)))
- 
+
 (print (dot-product '(1 3 -5) '(4 -2 -1)))
 ; ==> 3
 
@@ -2815,8 +2815,8 @@ sum ==
 
 function dotproduct( $a, $b) {
     $a | foreach -Begin {$i = $res = 0} -Process { $res += $_*$b[$i++] } -End{$res}
-} 
-dotproduct (1..2) (1..2) 
+}
+dotproduct (1..2) (1..2)
 dotproduct (1..10) (11..20)
 
 ```
@@ -2824,8 +2824,8 @@ dotproduct (1..10) (11..20)
 <b>Output:</b>
 
 ```txt
- 
-5 
+
+5
 935
 
 ```
@@ -2873,12 +2873,12 @@ EndProcedure
 If OpenConsole()
   Dim a(2)
   Dim b(2)
-  
+
   a(0) = 1 : a(1) = 3 : a(2) = -5
   b(0) = 4 : b(1) = -2 : b(2) = -1
-  
+
   PrintN(Str(dotProduct(a(),b())))
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2901,7 +2901,7 @@ if __name__ == '__main__':
 
 
 
-Option types can provide a composable alternative to assertions and error-handling. 
+Option types can provide a composable alternative to assertions and error-handling.
 Here is an example of an '''Either''' type, which returns either a computed value (in a '''Right''' wrapping), or an explanatory string (in a '''Left''' wrapping).
 
 A higher order '''either''' function can apply one of two supplied functions to an Either value - one for Left Either values, and one for Right Either values:
@@ -3072,7 +3072,7 @@ public int dotProduct(list[int] L, list[int] M){
 		    L = tail(L);
 		    M = tail(M);
 	        }
-	        return result; 
+	        return result;
 	}
 	else {
 		throw "vector sizes must match";
@@ -3084,7 +3084,7 @@ public int dotProduct(list[int] L, list[int] M){
 
 ### Alternative solution
 
-If a matrix is represented by a relation of <x-coordinate, y-coordinate, value>, then function below can be used to find the Dot product. 
+If a matrix is represented by a relation of <x-coordinate, y-coordinate, value>, then function below can be used to find the Dot product.
 
 ```Rascal
 import Prelude;
@@ -3095,8 +3095,8 @@ public real matrixDotproduct(rel[real x, real y, real v] column1, rel[real x, re
 
 //a matrix, given by a relation of x-coordinate, y-coordinate, value.
 public rel[real x, real y, real v] matrixA = {
-<0.0,0.0,12.0>, <0.0,1.0, 6.0>, <0.0,2.0,-4.0>, 
-<1.0,0.0,-51.0>, <1.0,1.0,167.0>, <1.0,2.0,24.0>, 
+<0.0,0.0,12.0>, <0.0,1.0, 6.0>, <0.0,2.0,-4.0>,
+<1.0,0.0,-51.0>, <1.0,1.0,167.0>, <1.0,2.0,24.0>,
 <2.0,0.0,4.0>, <2.0,1.0,-68.0>, <2.0,2.0,-41.0>
 };
 ```
@@ -3119,7 +3119,7 @@ dot-product: function [v1 v2] [sum] [
     ]
     sum: 0
     repeat i length? v1 [
-        sum: sum + ((pick v1 i) * (pick v2 i)) 
+        sum: sum + ((pick v1 i) * (pick v2 i))
     ]
 ]
 
@@ -3202,7 +3202,7 @@ exit                                             /*stick a fork in it,  we're al
        return $                                  /*return the sum to function's invoker.*/
 ```
 
-'''output'''   is the same as the 1<sup>st</sup> REXX version. 
+'''output'''   is the same as the 1<sup>st</sup> REXX version.
 
 
 
@@ -3229,7 +3229,7 @@ func dotProduct cVector, dVector
 
 ## RLaB
 
-In its simplest form dot product is a composition of two functions: element-by-element 
+In its simplest form dot product is a composition of two functions: element-by-element
 multiplication '.*' followed by sumation of an array. Consider an example:
 
 ```RLaB
@@ -3294,7 +3294,7 @@ v2$ = "4, -2, -1"
 
 print "DotProduct of ";v1$;" and "; v2$;" is ";dotProduct(v1$,v2$)
 end
- 
+
 function dotProduct(a$, b$)
     while word$(a$,i + 1,",") <> ""
        i = i + 1
@@ -3447,7 +3447,7 @@ const func integer: (in array integer: a) dot (in array integer: b) is func
       end for;
     end if;
   end func;
- 
+
 const proc: main is func
   begin
     writeln([](1, 3, -5) dot [](4, -2, -1));
@@ -3538,13 +3538,13 @@ Array extend
 
 ```snobol4
         define("dotp(a,b)sum,i")        :(dotp_end)
-dotp    i = 1; sum = 0      
+dotp    i = 1; sum = 0
 loop    sum = sum + (a<i> * b<i>)
         i = i + 1 ?a<i> :s(loop)
         dotp = sum      :(return)
 dotp_end
 
-        a = array(3); a<1> = 1; a<2> = 3; a<3> = -5; 
+        a = array(3); a<1> = 1; a<2> = 3; a<3> = -5;
         b = array(3); b<1> = 4; b<2> = -2; b<3> = -1;
         output = dotp(a,b)
 end
@@ -3684,7 +3684,7 @@ di el("c",1,1)
 
 
 
-###  Mata 
+###  Mata
 
 With row vectors:
 
@@ -3740,7 +3740,7 @@ println(dot([1, 3, -5], [4, -2, -1]))
 {{tcllib|math::linearalgebra}}
 
 ```tcl
-package require math::linearalgebra 
+package require math::linearalgebra
 
 set a {1 3 -5}
 set b {4 -2 -1}
@@ -3756,7 +3756,7 @@ puts "[pp $a] \u2219 [pp $b] = $dotp"
 
 
 =={{header|TI-83 BASIC}}==
-To perform a matrix dot product on TI-83, the trick is to use lists (and not to use matrices). 
+To perform a matrix dot product on TI-83, the trick is to use lists (and not to use matrices).
 
 ```ti83b
 sum({1,3,–5}*{4,–2,–1})
@@ -3970,21 +3970,21 @@ section '.text' code readable executable
     start:
         stdcall dotProduct, vA, vB
         invoke printf, msg_num, rax
-        
+
         stdcall dotProduct, vA, vC
         invoke printf, msg_num, rax
-        
+
         invoke ExitProcess, 0
-        
+
     proc dotProduct vectorA, vectorB
         mov rax, [rcx]
         cmp rax, [rdx]
         je .calculate
-        
+
         invoke printf, msg_sizeMismatch
         mov rax, 0
         ret
-        
+
         .calculate:
         mov r8, rcx
         add r8, 8
@@ -3993,7 +3993,7 @@ section '.text' code readable executable
         mov rcx, rax
         mov rax, 0
         mov rdx, 0
-        
+
         .next:
             mov rbx, [r9]
             imul rbx, [r8]
@@ -4001,7 +4001,7 @@ section '.text' code readable executable
             add r8, 8
             add r9, 8
             loop .next
-        
+
         ret
     endp
 
@@ -4009,18 +4009,18 @@ section '.data' data readable
 
     msg_num db "%d", 0x0D, 0x0A, 0
     msg_sizeMismatch db "Size mismatch; can't calculate.", 0x0D, 0x0A, 0
-    
+
     struc Vector [symbols] {
         common
         .length dq (.end - .symbols) / 8
         .symbols dq symbols
         .end:
     }
-    
+
     vA Vector 1, 3, -5
     vB Vector 4, -2, -1
     vC Vector 7, 2, 9, 0
-    
+
 section '.idata' import data readable writeable
 
     library kernel32, 'KERNEL32.DLL',\
@@ -4072,9 +4072,9 @@ CrLf(0);
 
 sub sq_mul(a(), b(), c())
 	local n, i
-	
+
 	n = arraysize(a(), 1)
-	
+
 	for i = 1 to n
 		c(i) = a(i) * b(i)
 	next i
@@ -4082,9 +4082,9 @@ end sub
 
 sub sq_sum(a())
 	local n, i, r
-	
+
 	n = arraysize(a(), 1)
-	
+
 	for i = 1 to n
 		r = r + a(i)
 	next i

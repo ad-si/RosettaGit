@@ -16,12 +16,12 @@ A [http://mathworld.wolfram.com/Derangement.html derangement] is a permutation o
 
 For example, the only two derangements of the three items (0, 1, 2) are (1, 2, 0), and (2, 0, 1).
 
-The number of derangements of ''n'' distinct items is known as the subfactorial of ''n'', sometimes written as !''n''. 
+The number of derangements of ''n'' distinct items is known as the subfactorial of ''n'', sometimes written as !''n''.
 There are various ways to [[wp:Derangement#Counting_derangements|calculate]] !''n''.
 
 
 ;Task:
-# Create a named function/method/subroutine/... to generate derangements of the integers ''0..n-1'', (or ''1..n'' if you prefer). 
+# Create a named function/method/subroutine/... to generate derangements of the integers ''0..n-1'', (or ''1..n'' if you prefer).
 # Generate ''and show'' all the derangements of 4 integers using the above routine.
 # Create a function that calculates the subfactorial of ''n'', !''n''.
 # Print and show a table of the ''counted'' number of derangements of ''n'' vs. the calculated !''n'' for n from 0..9 inclusive.
@@ -80,7 +80,7 @@ DERANGE  CSECT
          STH    R4,II                i=i+1
        ENDDO    ,                  enddo i
          LA     R0,12              12
-         STH    R0,II              ii=12 
+         STH    R0,II              ii=12
          MVC    PG,=CL16'!xx='     init buffer
          XDECO  R0,XDEC            edit ii
          MVC    PG+1(2),XDEC+10    output
@@ -168,12 +168,12 @@ NEXTPER  EQU    *                  nextper(nk)
        ENDIF    ,                  endif
          L      R8,NELEM           nelem
          BCTR   R8,0               pos=nelem-1
-LOOPW1   EQU    *                  while a(pos+1)>=a(pos+2) 
+LOOPW1   EQU    *                  while a(pos+1)>=a(pos+2)
          LR     R1,R8                pos
          SLA    R1,1
          LH     R2,A(R1)             a(pos+1)
          CH     R2,A+2(R1)           if a(pos+1)<a(pos+2)
-         BL     ELOOPW1              then exit while 
+         BL     ELOOPW1              then exit while
          BCTR   R8,0                 pos=pos-1
        IF LTR,R8,M,R8 THEN           if pos<0 then
          LA     R1,0                   0
@@ -191,7 +191,7 @@ LOOPW2   EQU    *                  do while a(last+1)<=a(pos+1)
          LR     R1,R8                pos
          SLA    R1,1
          CH     R2,A(R1)             if a(last+1)>a(pos+1)
-         BH     ELOOPW2              then exit while 
+         BH     ELOOPW2              then exit while
          BCTR   R9,0                 last=last-1
          B      LOOPW2             endwhile
 ELOOPW2  LR     R1,R8              pos
@@ -346,7 +346,7 @@ procedure DePermute is
    type PtNumList is access all NumList;
    package IO is new Ada.Text_IO.Integer_IO (Num);
    package UIO is new Ada.Text_IO.Modular_IO (U64);
-   
+
    function deranged (depth : Natural; list : PtNumList;
       show : Boolean) return U64 is
       tmp : Num;  count : U64 := 0;
@@ -564,18 +564,18 @@ Approximation of !20: 895014631192902144
 ```BBC BASIC
       PRINT"Derangements for the numbers 0,1,2,3 are:"
       Count% = FN_Derangement_Generate(4,TRUE)
-      
+
       PRINT'"Table of n, counted derangements, calculated derangements :"
-      
+
       FOR I% = 0 TO 9
         PRINT I%, FN_Derangement_Generate(I%,FALSE), FN_SubFactorial(I%)
       NEXT
-      
+
       PRINT'"There is no long int in BBC BASIC!"
       PRINT"!20 = ";FN_SubFactorial(20)
-      
+
       END
-      
+
       DEF FN_Derangement_Generate(N%, fPrintOut)
       LOCAL A%(), O%(), C%, D%, I%, J%
       IF N% = 0 THEN = 1
@@ -599,7 +599,7 @@ Approximation of !20: 895014631192902144
         ENDIF
       NEXT
       = C%
-      
+
       DEF PROC_NextPermutation(A%())
       LOCAL first, last, elementcount, pos
       elementcount = DIM(A%(),1)
@@ -619,7 +619,7 @@ Approximation of !20: 895014631192902144
       SWAP A%(pos), A%(last)
       PROC_Permutation_Reverse(A%(), pos+1, elementcount)
       ENDPROC
-      
+
       DEF PROC_Permutation_Reverse(A%(), firstindex, lastindex)
       LOCAL first, last
       first = firstindex
@@ -630,11 +630,11 @@ Approximation of !20: 895014631192902144
         last -= 1
       ENDWHILE
       ENDPROC
-      
+
       DEF FN_Factorial(N) : IF (N = 1) OR (N = 0) THEN =1 ELSE = N * FN_Factorial(N-1)
-      
+
       DEF FN_SubFactorial(N) : IF N=0 THEN =1 ELSE =N*FN_SubFactorial(N-1)+-1^N
-      
+
       REM Or you could use:
       REM DEF FN_SubFactorial(N) : IF N<1 THEN =1 ELSE =(N-1)*(FN_SubFactorial(N-1)+FN_SubFactorial(N-2))
 ```
@@ -675,14 +675,14 @@ There is no long int in BBC BASIC!
 
 ## Bracmat
 
-The function <code>calculated-!n</code> has a local variable <code>mem</code> that memoizes already found counts. 
-This is done by actually updating the function's definition. 
+The function <code>calculated-!n</code> has a local variable <code>mem</code> that memoizes already found counts.
+This is done by actually updating the function's definition.
 The output of the expression <code>lst$calculated-!n</code> demonstrates this.
 
-The function <code>counted-!n</code> is also special: it is designed to always fail, forcing the match operation on the subject <code>!H</code> to assign each element in <code>!H</code> in turn to the sub-pattern <code>(%@?h:~!p)</code>, except the element that is equal to <code>!p</code>. 
-The derangements are built up in the last argument and accumulated in the global variable <code>D</code>. 
+The function <code>counted-!n</code> is also special: it is designed to always fail, forcing the match operation on the subject <code>!H</code> to assign each element in <code>!H</code> in turn to the sub-pattern <code>(%@?h:~!p)</code>, except the element that is equal to <code>!p</code>.
+The derangements are built up in the last argument and accumulated in the global variable <code>D</code>.
 Also the counter <code>count</code> is a global variable.
-   
+
 
 ```bracmat
 ( ( calculated-!n
@@ -804,8 +804,8 @@ N   List   Calc
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 typedef unsigned long long LONG;
 
 LONG deranged(int depth, int len, int *d, int show)
@@ -982,7 +982,7 @@ Generating functions with no fixed point
   {:pre [(= (count xs) (count (set xs)))]}
   (map (fn [f] (mapv f xs))
        (no-fixed-point (into {} (map vector xs xs)))))
-        
+
 (defn -main []
   (do
     (doall (map println (derangements [0,1,2,3])))
@@ -1108,16 +1108,16 @@ Derangements for n = 4:
 [3, 2, 1, 0]
 
 Table of n vs counted vs calculated derangements:
-0  1      1      
-1  0      0      
-2  1      1      
-3  2      2      
-4  9      9      
-5  44     44     
-6  265    265    
-7  1854   1854   
-8  14833  14833  
-9  133496 133496 
+0  1      1
+1  0      0
+2  1      1
+3  2      2
+4  9      9
+5  44     44
+6  265    265
+7  1854   1854
+8  14833  14833
+9  133496 133496
 
 !20 = 895014631192902121
 ```
@@ -1126,7 +1126,7 @@ Table of n vs counted vs calculated derangements:
 
 ### Recursive Version
 
-Slightly slower but more compact recursive version of the derangements function, based on the [[Permutations#D|D entry]] of the permutations task. 
+Slightly slower but more compact recursive version of the derangements function, based on the [[Permutations#D|D entry]] of the permutations task.
 Same output.
 
 ```d
@@ -1200,9 +1200,9 @@ void main() {
     (for/sum ((p (in-permutations n))) #:when (derangement? p) 1))
 
 ;;
-;;  !n = (n - 1) (!(n-1) + !(n-2)) 
+;;  !n = (n - 1) (!(n-1) + !(n-2))
 
-(define (!n n)   
+(define (!n n)
 	(* (1- n) (+ (!n (1- n)) (!n (- n 2)))))
 (remember '!n #(1 0))
 
@@ -1220,16 +1220,16 @@ void main() {
 
 (for ((i 10)) (writeln i '| (count-derangements i) (!n i)))
 
-0     |     1     1    
-1     |     0     0    
-2     |     1     1    
-3     |     2     2    
-4     |     9     9    
-5     |     44     44    
-6     |     265     265    
-7     |     1854     1854    
-8     |     14833     14833    
-9     |     133496     133496    
+0     |     1     1
+1     |     0     0
+2     |     1     1
+3     |     2     2
+4     |     9     9
+5     |     44     44
+6     |     265     265
+7     |     1854     1854
+8     |     14833     14833
+9     |     133496     133496
 
 (!n 20)
     → 895014631192902121
@@ -1250,11 +1250,11 @@ defmodule Permutation do
       Enum.zip(list, perm) |> Enum.all?(fn {a,b} -> a != b end)
     end)
   end
-  
+
   def subfact(0), do: 1
   def subfact(1), do: 0
   def subfact(n), do: (n-1) * (subfact(n-1) + subfact(n-2))
-  
+
   def permutation([]), do: [[]]
   def permutation(list) do
     for x <- list, y <- permutation(list -- [x]), do: [x|y]
@@ -1410,7 +1410,7 @@ IN: rosetta-code.derangements
     filter-permutations ;
 
 "4 derangements" print 4 derangements . nl
-"n   count    calc\n=  
+"n   count    calc\n=
 ### ===  ===
 " print
 10 <iota> [
@@ -1438,7 +1438,7 @@ V{
 }
 
 n   count    calc
-=  
+=
 ### ===  ===
 
 0       1       1
@@ -1562,7 +1562,7 @@ End
 
 ```txt
 permutations derangements for n = 4
-1302 3012 1032 2031 2301 3201 3210 2310 1230 
+1302 3012 1032 2031 2301 3201 3210 2310 1230
 count returned = 9 , !4 calculated = 9
 
 count  counted subfactorial
@@ -1597,13 +1597,13 @@ count  counted subfactorial
 
 ```gap
 # All of this is built-in
-Derangements([1 .. 4]);  
-# [ [ 2, 1, 4, 3 ], [ 2, 3, 4, 1 ], [ 2, 4, 1, 3 ], [ 3, 1, 4, 2 ], [ 3, 4, 1, 2 ], [ 3, 4, 2, 1 ], 
+Derangements([1 .. 4]);
+# [ [ 2, 1, 4, 3 ], [ 2, 3, 4, 1 ], [ 2, 4, 1, 3 ], [ 3, 1, 4, 2 ], [ 3, 4, 1, 2 ], [ 3, 4, 2, 1 ],
 #   [ 4, 1, 2, 3 ], [ 4, 3, 1, 2 ], [ 4, 3, 2, 1 ] ]
-Size(last);              
+Size(last);
 # 9
 
-NrDerangements([1 .. 4]);                                        
+NrDerangements([1 .. 4]);
 # 9
 
 # An implementation using formula D(n + 1) = n*(D(n) + D(n - 1))
@@ -1771,7 +1771,7 @@ d.each { println it }
 
 println """
 n   # derangements   subfactorial
-=   
+=
 ### ===========   =========
 """
 (0..9). each { n ->
@@ -1800,7 +1800,7 @@ println """
 [4, 3, 2, 1]
 
 n   # derangements   subfactorial
-=   
+=
 ### ===========   =========
 
 0                1              1
@@ -1932,7 +1932,7 @@ Requested examples:
    subfactorial 20x NB. using extended precision
 895014631192902121
 ```
-   
+
 
 Note that derangement 10 was painfully slow (almost 3 seconds, about 10 times slower than derangement 9 and 100 times slower than derangement 8) -- this is a brute force approach.  But brute force seems like an appropriate solution here, since factorial divided by subfactorial asymptotically approaches a value near  0.367879 (the reciprocal of e).
 
@@ -1953,13 +1953,13 @@ public class Derangement {
         for (Object d  : (ArrayList)(derangements(4, false)[0])) {
             System.out.println(Arrays.toString((int[])d));
         }
-        
+
         System.out.println("\ntable of n vs counted vs calculated derangements\n");
         for (int i = 0; i < 10; i++) {
             int d = ((Integer)derangements(i, true)[1]).intValue();
             System.out.printf("%d  %-7d %-7d\n", i, d, subfact(i));
         }
-        
+
         System.out.printf ("\n!20 = %20d\n", subfact(20L));
     }
 
@@ -2056,16 +2056,16 @@ derangements for n = 4
 
 table of n vs counted vs calculated derangements
 
-0  1       1      
-1  0       0      
-2  1       1      
-3  2       2      
-4  9       9      
-5  44      44     
-6  265     265    
-7  1854    1854   
-8  14833   14833  
-9  133496  133496 
+0  1       1
+1  0       0
+2  1       1
+3  2       2
+4  9       9
+5  44      44
+6  265     265
+7  1854    1854
+8  14833   14833
+9  133496  133496
 
 !20 =   895014631192902121
 ```
@@ -2083,13 +2083,13 @@ def derangements:
   # In order to reference the original array conveniently, define _derangements(ary):
   def _derangements(ary):
     # We cannot put the i-th element in the i-th place:
-    def deranged:  # state: [i, available]  
+    def deranged:  # state: [i, available]
       .[0] as $i | .[1] as $in
       | if $i == (ary|length) then []
         else
         ($in[] | select (. != ary[$i])) as $j
         |  [$j] + ([$i+1, ($in - [$j])] | deranged)
-        end 
+        end
       ;
     [0,ary]|deranged;
     . as $in | _derangements($in);
@@ -2439,7 +2439,7 @@ Subfactorial[20]
 
 {{2, 1, 4, 3}, {2, 3, 4, 1}, {2, 4, 1, 3}, {3, 1, 4, 2}, {3, 4, 1, 2},
  {3, 4, 2, 1}, {4, 1, 2, 3}, {4, 3, 1, 2}, {4, 3, 2, 1}}
- 
+
 0	0
 1	1
 2	2
@@ -2827,11 +2827,11 @@ Should you instead of string results want an array of mpz for further calculatio
 
 ```Phix
 include mpfr.e
- 
+
 function subfactorial(integer n)
-    sequence res = repeat(0,n) 
+    sequence res = repeat(0,n)
     mpz num = mpz_init(1)
- 
+
     for i=1 to n do
         mpz_mul_si(num,num,i)
         if mpz_odd(num) then
@@ -2915,16 +2915,16 @@ If n=0:ProcedureReturn 1:EndIf
 If n=1:ProcedureReturn 0:EndIf
 ProcedureReturn (Subfactoral(n-1)+Subfactoral(n-2))*(n-1)
 EndProcedure
- 
+
 factFile.s="factorials.txt"
 tempFile.s="temp.txt"
 drngFile.s="derangements.txt"
 DeleteFile(factFile.s)
 DeleteFile(tempFile.s)
 DeleteFile(drngFile.s)
- 
+
 n=4
- 
+
 ; create our storage file
 f.s=factFile.s
 If CreateFile(0,f.s)
@@ -2934,33 +2934,33 @@ CloseFile(0)
 Else
 Debug "not createfile :"+f.s
 EndIf
- 
+
 showfactorial=#False
- 
+
 If showfactorial
 ; cw("nfactorial n ="+str(n))
 Debug "nfactorial n ="+Str(n)
 EndIf
- 
+
 ; build up the factorial combinations
 For l=1 To n-2
 Gosub nfactorial
 Next
- 
+
 ; extract the derangements
 ; cw("derangements["+str(perm(n))+"] for n="+str(n))
 Debug "derangements["+Str(Subfactoral(n))+"] for n="+Str(n)
 Gosub derangements
 ; cw("")
 Debug ""
- 
+
 ; show the first 20 derangements
 For i=0 To 20
 Debug "derangements["+Str(Subfactoral(i))+"] for n="+Str(i)
 Next
- 
+
 End
- 
+
 derangements:
 x=0
 If ReadFile(0,factFile.s) And CreateFile(1,drngFile.s)
@@ -2995,7 +2995,7 @@ EndIf
 ; cw("")
 Debug ""
 Return
- 
+
 nfactorial:
 x=0
 If ReadFile(0,factFile.s) And CreateFile(1,tempFile.s)
@@ -3089,15 +3089,15 @@ Procedure.i deranged(depth, lenn, Array d(1), show)
     EndIf
     ProcedureReturn  1
   EndIf
-  
+
   For i = lenn - 1 To depth Step -1
     If i = d(depth): Continue: EndIf
-    
+
     tmp = d(i): d(i) = d(depth): d(depth) = tmp
     count + deranged(depth + 1, lenn, d(), show)
     tmp = d(i): d(i) = d(depth): d(depth) = tmp
   Next
-  
+
   ProcedureReturn count
 EndProcedure
 
@@ -3117,12 +3117,12 @@ EndProcedure
 If OpenConsole()
   PrintN("Deranged Four:")
   gen_n(4, 1)
-  
+
   PrintN(#CRLF$ + "Compare list vs calc:")
   For i = 0 To 9
     PrintN(Str(i) + ":" + #TAB$ + Str(gen_n(i, 0)) + #TAB$ + Str(sub_fact(i)))
   Next
-  
+
   PrintN(#CRLF$ + "further calc:")
   For i = 10 To 20
     PrintN(Str(i) + ": " + Str(sub_fact(i)))
@@ -3240,14 +3240,14 @@ Derangements of (0, 1, 2, 3)
   (3, 2, 1, 0)
 
 Table of n vs counted vs calculated derangements
- 0 1     1    
- 1 0     0    
- 2 1     1    
- 3 2     2    
- 4 9     9    
- 5 44    44   
- 6 265   265  
- 7 1854  1854 
+ 0 1     1
+ 1 0     0
+ 2 1     1
+ 3 2     2
+ 4 9     9
+ 5 44    44
+ 6 265   265
+ 7 1854  1854
  8 14833 14833
  9 133496 133496
 
@@ -3741,20 +3741,20 @@ n:=20; println("\n!%d = %d".fmt(n, subFact(n)));
 
 ```txt
 
-Derangements of 0,1,2,3: 
+Derangements of 0,1,2,3:
 L(L(3,0,1,2),L(2,0,3,1),L(2,3,0,1),L(3,2,0,1),L(3,2,1,0),
 L(2,3,1,0),L(1,2,3,0),L(1,3,0,2),L(1,0,3,2))
 
 Table of n vs counted vs calculated derangements:
- 0 1      1     
- 1 0      0     
- 2 1      1     
- 3 2      2     
- 4 9      9     
- 5 44     44    
- 6 265    265   
- 7 1854   1854  
- 8 14833  14833 
+ 0 1      1
+ 1 0      0
+ 2 1      1
+ 3 2      2
+ 4 9      9
+ 5 44     44
+ 6 265    265
+ 7 1854   1854
+ 8 14833  14833
  9 133496 133496
 
 !20 = 895014631192902121

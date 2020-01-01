@@ -24,7 +24,7 @@ Or alternatively (also recursive):
 
 
 ;Task:
-Implement at least one of these algorithms and print out the first 15 Catalan numbers with each. 
+Implement at least one of these algorithms and print out the first 15 Catalan numbers with each.
 
 [[Memoization]]   is not required, but may be worth the effort when using the second method above.
 
@@ -73,14 +73,14 @@ L(n) 1..15
 
 ## 360 Assembly
 
-Very compact version. 
+Very compact version.
 
 ```360asm
 CATALAN  CSECT        08/09/2015
          USING  CATALAN,R15
          LA     R7,1               c=1
          LA     R6,1               i=1
-LOOPI    CH     R6,=H'15'          do i=1 to 15 
+LOOPI    CH     R6,=H'15'          do i=1 to 15
          BH     ELOOPI
          XDECO  R6,PG              edit i
          LR     R5,R6              i
@@ -96,7 +96,7 @@ LOOPI    CH     R6,=H'15'          do i=1 to 15
          B      LOOPI              next i
 ELOOPI   BR     R14
 PG       DS     CL24
-         YREGS 
+         YREGS
          END    CATALAN
 ```
 
@@ -269,7 +269,7 @@ PROC factorial = ( INT n )LONG INT:
 # note:     Cn = 1/(n+1)(2n n)                                            #
 #              = (2n)!/((n+1)!n!)                                         #
 #              = factorial over factorial( 2n, n+1 )/n!                   #
-PROC catalan = ( INT n )LONG INT: IF n < 2 THEN 1 ELSE factorial over factorial( n + n, n + 1 ) OVER factorial( n ) FI; 
+PROC catalan = ( INT n )LONG INT: IF n < 2 THEN 1 ELSE factorial over factorial( n + n, n + 1 ) OVER factorial( n ) FI;
 
 # show the first few catalan numbers                                      #
 FOR i FROM 0 TO 15 DO
@@ -364,8 +364,8 @@ end.
 
 ```arturo
 Catalan [n]{
-	if n=0 { 
-		return 1 
+	if n=0 {
+		return 1
 	} {
 		return ((4*n-2)*$(Catalan n-1))/(n+1)
 	}
@@ -381,21 +381,21 @@ loop $(range 0 15) {
 
 
 ```txt
-    0  1                   
-    1  1                   
-    2  2                   
-    3  5                   
-    4  14                  
-    5  42                  
-    6  132                 
-    7  429                 
-    8  1430                
-    9  4862                
-   10  16796               
-   11  58786               
-   12  208012              
-   13  742900              
-   14  2674440             
+    0  1
+    1  1
+    2  2
+    3  5
+    4  14
+    5  42
+    6  132
+    7  429
+    8  1430
+    9  4862
+   10  16796
+   11  58786
+   12  208012
+   13  742900
+   14  2674440
    15  9694845
 ```
 
@@ -671,7 +671,7 @@ _^#<`*53:+1>#,.#+5< @
 ```bracmat
 ( out$straight
 & ( C
-  =   
+  =
     .   ( F
         =   i prod
           .   !arg:0&1
@@ -713,7 +713,7 @@ _^#<`*53:+1>#,.#+5< @
     )
 & out$"recursive, without memoization, with fractions"
 & ( C
-  =   
+  =
     .   !arg:0&1
       | 2*(2*!arg+-1)*(!arg+1)^-1*C$(!arg+-1)
   )
@@ -847,8 +847,8 @@ catalan = { n |
 
 All three methods mentioned in the task:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 typedef unsigned long long ull;
 
@@ -1010,7 +1010,7 @@ namespace CatalanNumbers
                 }
                 final = DateTime.Now;
                 ts = final - initial;
-                Console.WriteLine("It took {0}.{1} to execute\n", ts.Seconds, ts.Milliseconds);   
+                Console.WriteLine("It took {0}.{1} to execute\n", ts.Seconds, ts.Milliseconds);
 
                 i = 0;
                 initial = DateTime.Now;
@@ -1168,8 +1168,8 @@ namespace rosetta
 
 Here is the implementation of the algorithms. The c'tor of each class tells us the algorithm which will be used. (algorithms.cpp)
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 using std::cout;
 using std::endl;
 #include <cmath>
@@ -1261,7 +1261,7 @@ unsigned long long detail::BinomialCoefficient::operator()(unsigned n, unsigned 
   {
   if(k == 0)
     return 1;
-  
+
   if(n == 0)
     return 0;
 
@@ -1544,7 +1544,7 @@ for i range 15
 ;; function definition
 (define (C1 n) (/ (factorial (* n 2)) (factorial (1+ n)) (factorial n)))
 (for ((i [1 .. 16])) (write (C1 i)))
-    → 1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845 
+    → 1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845
 
 ;; using a recursive procedure with memoization
 (define (C2 n) ;; ( Σ  ...)is the same as (sigma ..)
@@ -1552,7 +1552,7 @@ for i range 15
 (remember 'C2 #(1)) ;; first term defined here
 
 (for ((i [1 .. 16])) (write (C2 i)))
-    → 1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845 
+    → 1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845
 
 
 ;; using procrastinators = infinite sequence
@@ -1560,7 +1560,7 @@ for i range 15
 (define C3 (scanl catalan 1 [1 ..]))
 (take C3 15)
     → (1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845)
- 
+
 
 ;; the same, using infix notation
 (lib 'match)
@@ -1573,7 +1573,7 @@ for i range 15
     → (1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845)
 ;; or
 (for ((c C3) (i 15)) (write c))
-    → 1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845 
+    → 1 2 5 14 42 132 429 1430 4862 16796 58786 208012 742900 2674440 9694845
 
 ```
 
@@ -1628,20 +1628,20 @@ end
 
 ```txt
 
-1 
-1 
-2 
-5 
-14 
-42 
-132 
-429 
-1430 
-4862 
-16796 
-58786 
-208012 
-742900 
+1
+1
+2
+5
+14
+42
+132
+429
+1430
+4862
+16796
+58786
+208012
+742900
 2674440
 
 ```
@@ -1655,18 +1655,18 @@ end
 ```elixir
 defmodule Catalan do
   def cat(n), do: div( factorial(2*n), factorial(n+1) * factorial(n) )
-  
+
   defp factorial(n), do: fac1(n,1)
-  
+
   defp fac1(0, acc), do: acc
   defp fac1(n, acc), do: fac1(n-1, n*acc)
-  
+
   def cat_r1(0), do: 1
   def cat_r1(n), do: Enum.sum(for i <- 0..n-1, do: cat_r1(i) * cat_r1(n-1-i))
-  
+
   def cat_r2(0), do: 1
   def cat_r2(n), do: div(cat_r2(n-1) * 2 * (2*n - 1), n + 1)
-  
+
   def test do
     range = 0..14
     :io.format "Directly:~n~p~n",            [(for n <- range, do: cat(n))]
@@ -1702,28 +1702,28 @@ Directly:
 
 -export([test/0]).
 
-cat(N) -> 
+cat(N) ->
    factorial(2 * N) div (factorial(N+1) * factorial(N)).
 
-factorial(N) -> 
+factorial(N) ->
    fac1(N,1).
 
-fac1(0,Acc) -> 
-   Acc; 
-fac1(N,Acc) -> 
+fac1(0,Acc) ->
+   Acc;
+fac1(N,Acc) ->
    fac1(N-1, N * Acc).
- 
+
 cat_r1(0) ->
    1;
 cat_r1(N) ->
    lists:sum([cat_r1(I)*cat_r1(N-1-I) || I <- lists:seq(0,N-1)]).
-   
+
 cat_r2(0) ->
    1;
 cat_r2(N) ->
    cat_r2(N - 1) * (2 * ((2 * N) - 1)) div (N + 1).
 
-test() -> 
+test() ->
     TestList = lists:seq(0,14),
     io:format("Directly:\n~p\n",[[cat(N) || N <- TestList]]),
     io:format("1st recusive method:\n~p\n",[[cat_r1(N) || N <- TestList]]),
@@ -1758,7 +1758,7 @@ END PROCEDURE
 
 BEGIN
    FOR N=0 TO 15 DO
-      CATALAN(N->RES)    
+      CATALAN(N->RES)
       PRINT(N;"=";RES)
    END FOR
 END PROGRAM
@@ -1809,12 +1809,12 @@ end while
 return f
 end function
 
-function catalan(integer n)  
+function catalan(integer n)
 atom numerator = factorial(2 * n)
 atom denominator = factorial(n+1)*factorial(n)
 return numerator/denominator
 end function
-  
+
 for i = 0 to 15 do
         ? catalan(i)
 end for
@@ -1824,8 +1824,8 @@ end for
 
 ```txt
 
-1                                                                                                                                                                             
-1                                                                                                                                                                             
+1
+1
 2
 5
 14
@@ -1903,7 +1903,7 @@ class Main
   }
 
   static Int catalanA (Int n)
-  { 
+  {
     return factorial(2*n)/(factorial(n+1) * factorial(n))
   }
 
@@ -1916,7 +1916,7 @@ class Main
     else
     {
       sum := 0
-      n.times |i| { sum += catalanB(i) * catalanB(n-1-i) } 
+      n.times |i| { sum += catalanB(i) * catalanB(n-1-i) }
       return sum
     }
   }
@@ -1937,7 +1937,7 @@ class Main
   {
     (1..15).each |n|
     {
-      echo (n.toStr.padl(4) + 
+      echo (n.toStr.padl(4) +
             catalanA(n).toStr.padl(10) +
             catalanB(n).toStr.padl(10) +
             catalanC(n).toStr.padl(10))
@@ -1994,8 +1994,8 @@ program main
   integer                      :: n
 
   !=== External procedures
-  double precision, external   :: catalan_numbers         
-  
+  double precision, external   :: catalan_numbers
+
   !
 ###  Execution ======================================================================
 
@@ -2036,7 +2036,7 @@ double precision recursive function catalan_numbers(n) result(value)
 
   if ( n .eq. 0 ) then
     value = 1
-  else 
+  else
     value = ( 2.0d0 * dfloat(2 * n - 1) / dfloat( n + 1 ) ) * catalan_numbers(n-1)
   endif
 
@@ -2050,7 +2050,7 @@ end function catalan_numbers
 
 ```txt
 
- 
+
 ### =========
 
      n      c(n)
@@ -2070,7 +2070,7 @@ end function catalan_numbers
     12    208012
     13    742900
     14   2674440
- 
+
 ### =========
 
 
@@ -2109,7 +2109,7 @@ End Function
 Function catalan3(n As UInteger) As UInteger
   If n = 0 Then Return 1
   Return catalan3(n - 1) * 2 * (2 * n - 1) \ (n + 1)
-End Function 
+End Function
 
 Print "n", "First", "Second", "Third"
 Print "-", "-----", "------", "-----"
@@ -2187,7 +2187,7 @@ for i <- 1..4
 
 for i <- 0..15
   t.row( i, catalan(i), catalan2(i), catalan3(i) )
-  
+
 println( t )
 ```
 
@@ -2326,11 +2326,11 @@ class Catalan
                  {
                     num = num*(n+k);
                     den = den*k;
-                    catalan = num/den; 
+                    catalan = num/den;
                  }
             println(catalan);
           }
-    
+
   }
 }
 
@@ -2376,7 +2376,7 @@ PROCEDURE Main()
 STATIC FUNCTION Catalan( n )
    LOCAL i, nCatalan := 1
 
-   FOR i := 1 TO n 
+   FOR i := 1 TO n
       nCatalan := nCatalan * 2 * (2 * i - 1) / (i + 1)
    NEXT
 
@@ -2388,22 +2388,22 @@ STATIC FUNCTION Catalan( n )
 
 ```txt
 
-0: 1       
-1: 1       
-2: 2       
-3: 5       
-4: 14      
-5: 42      
-6: 132     
-7: 429     
-8: 1430    
-9: 4862    
-0: 16796   
-1: 58786   
-2: 208012  
-3: 742900  
-4: 2674440 
-5: 9694845 
+0: 1
+1: 1
+2: 2
+3: 5
+4: 14
+5: 42
+6: 132
+7: 429
+8: 1430
+9: 4862
+0: 16796
+1: 58786
+2: 208012
+3: 742900
+4: 2674440
+5: 9694845
 
 ```
 
@@ -2450,7 +2450,7 @@ procedure catalan(n) # return catalan(n) or fail
 static M
 initial M := table()
 
-if n > 0 then 
+if n > 0 then
    return (n = 1) | \M[n] | ( M[n] := (2*(2*n-1)*catalan(n-1))/(n+1))
 end
 ```
@@ -2486,12 +2486,12 @@ public class Catalan {
 	private static final Map<Long, Double> catsI = new HashMap<Long, Double>();
 	private static final Map<Long, Double> catsR1 = new HashMap<Long, Double>();
 	private static final Map<Long, Double> catsR2 = new HashMap<Long, Double>();
-	
-	static{//pre-load the memoization maps with some answers 
+
+	static{//pre-load the memoization maps with some answers
 		facts.put(0L, 1D);
 		facts.put(1L, 1D);
 		facts.put(2L, 2D);
-		
+
 		catsI.put(0L, 1D);
 		catsR1.put(0L, 1D);
 		catsR2.put(0L, 1D);
@@ -2515,7 +2515,7 @@ public class Catalan {
 		}
 		return catsI.get(n);
 	}
-	
+
 	private static double catR1(long n){
 		if(catsR1.containsKey(n)){
 			return catsR1.get(n);
@@ -2527,14 +2527,14 @@ public class Catalan {
 		catsR1.put(n, sum);
 		return sum;
 	}
-	
+
 	private static double catR2(long n){
 		if(!catsR2.containsKey(n)){
 			catsR2.put(n, ((2.0*(2*(n-1) + 1))/(n + 1)) * catR2(n-1));
 		}
 		return catsR2.get(n);
 	}
-	
+
 	public static void main(String[] args){
 		for(int i = 0; i <= 15; i++){
 			System.out.println(catI(i));
@@ -2718,7 +2718,7 @@ $ jq -M -n -c -f Catalan_numbers.jq
 ```jq
 def catalan_series(max):
   def _catalan: # state: [n, catalan(n)]
-    if .[0] > max then empty 
+    if .[0] > max then empty
     else .,
       ((.[0] + 1) as $n | .[1] as $cp
        | [$n,  (2 * (2*$n - 1) * $cp) / ($n + 1) ] | _catalan)
@@ -2743,7 +2743,7 @@ catalan_series(15)
 
   [0,1]
   | recurse( if .[0] == 15 then empty
-             else .[1] as $c | (.[0] + 1) | [ ., (2 * (2*. - 1) * $c) / (. + 1) ] 
+             else .[1] as $c | (.[0] + 1) | [ ., (2 * (2*. - 1) * $c) / (. + 1) ]
              end )
 ```
 
@@ -3105,7 +3105,7 @@ CatalanN[n_Integer /; n >= 0] := (2 n)!/((n + 1)! n!)
 
 ```Mathematica
 TableForm[CatalanN/@Range[0,15]]
-//TableForm= 
+//TableForm=
 1
 1
 2
@@ -3432,7 +3432,7 @@ memoized (10000000 runs) : 0.167
 
 
 ```Oforth
-: catalan( n -- m ) 
+: catalan( n -- m )
     n ifZero: [ 1 ] else: [ catalan( n 1- ) 2 n * 1- * 2 * n 1+ / ] ;
 ```
 
@@ -3451,7 +3451,7 @@ seqFrom(0, 15) map( #catalan ) .
 
 ## ooRexx
 
-Three versions of this. 
+Three versions of this.
 
 ```ooRexx
 loop i = 0 to 15
@@ -3641,10 +3641,10 @@ function catalanNumber1(n: integer): double;
   begin
     if n = 0 then
       catalanNumber1 := 1.0
-    else 
+    else
       catalanNumber1 := double(4 * n - 2) / double(n + 1) * catalanNumber1(n-1);
   end;
- 
+
 var
   number: integer;
 
@@ -3700,7 +3700,7 @@ For computing up to 20 ish, memoization is not needed.  For much bigger numbers,
 
 ```perl
 my @c = (1);
-sub catalan { 
+sub catalan {
         use bigint;
         $c[$_[0]] //= catalan($_[0]-1) * (4 * $_[0]-2) / ($_[0]+1)
 }
@@ -3777,7 +3777,7 @@ See also [[Catalan_numbers/Pascal%27s_triangle#Phix]] which may be faster.
 function catalan1(integer n)
     return floor(factorial(2*n)/(factorial(n+1)*factorial(n))+0.5)
 end function
- 
+
 -- returns inf for n>519, accurate to n=30:
 function catalan2(integer n) -- NB: very slow!
 atom res = not n
@@ -3787,13 +3787,13 @@ atom res = not n
     end for
     return res
 end function
- 
+
 -- returns inf for n>514, accurate to n=30:
 function catalan3(integer n)
     if n=0 then return 1 end if
     return 2*(2*n-1)/(1+n)*catalan3(n-1)
-end function 
- 
+end function
+
 sequence res = repeat(repeat(0,4),16),
          times = repeat(0,3)
 for t=1 to 4 do
@@ -3812,7 +3812,7 @@ end for
 printf(1,"times:%8s %10s %10s\n",times)
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 
@@ -3839,15 +3839,15 @@ times:      0s       1.6s         0s
 As expected, catalan2() is by far the slowest, so let's memoise that one!
 
 
-###  memoized recursive gmp version 
+###  memoized recursive gmp version
 
 {{libheader|mpfr}}
 
 ```Phix
 include builtins\mpfr.e
- 
+
 sequence c2cache = {}
- 
+
 function catalan2m(integer n)   -- very fast!
 object r -- result (a [cached/shared] mpz)
          -- (nb: modifying result will mess up cache)
@@ -3868,7 +3868,7 @@ object r -- result (a [cached/shared] mpz)
     c2cache[n] = r
     return r
 end function
- 
+
 sequence s = {}
 for i=0 to 15 do s = append(s,mpz_get_str(catalan2m(i))) end for
 printf(1,"0..15: %s\n",join(s,","))
@@ -3895,7 +3895,7 @@ printf(1,"100: %s\n",{mpz_get_str(catalan2m(100))})
 class CatalanNumbersSerie
 {
   private static $cache = array(0 => 1);
-   
+
   private function fill_cache($i)
   {
     $accum = 0;
@@ -3903,7 +3903,7 @@ class CatalanNumbersSerie
     for($k = 0; $k <= $n; $k++)
     {
       $accum += $this->item($k)*$this->item($n-$k);
-    } 
+    }
     self::$cache[$i] = $accum;
   }
   function item($i)
@@ -3930,28 +3930,28 @@ for($i = 0; $i <= 15;$i++)
 ```txt
 
 0 = 1
-1 = 1                                                                                                                                         
-2 = 2                                                                                                                                         
-3 = 5                                                                                                                                         
-4 = 14                                                                                                                                        
-5 = 42                                                                                                                                        
-6 = 132                                                                                                                                       
-7 = 429                                                                                                                                       
-8 = 1430                                                                                                                                      
-9 = 4862                                                                                                                                      
-10 = 16796                                                                                                                                    
-11 = 58786                                                                                                                                    
-12 = 208012                                                                                                                                   
-13 = 742900                                                                                                                                   
-14 = 2674440                                                                                                                                  
-15 = 9694845 
+1 = 1
+2 = 2
+3 = 5
+4 = 14
+5 = 42
+6 = 132
+7 = 429
+8 = 1430
+9 = 4862
+10 = 16796
+11 = 58786
+12 = 208012
+13 = 742900
+14 = 2674440
+15 = 9694845
 
 ```
 
 
 ```php
 
-<?php 
+<?php
 $n = 15;
 $t[1] = 1;
 foreach (range(1, $n+1) as $i) {
@@ -4067,29 +4067,29 @@ end catalan;
 
 ```txt
 
-How many catalan numbers do you want? 
+How many catalan numbers do you want?
 
-                 1 
-                 1 
-                 2 
-                 5 
-                14 
-                42 
-               132 
-               429 
-              1430 
-              4862 
-             16796 
-             58786 
-            208012 
-            742900 
-           2674440 
-           9694845 
-          35357670 
-         129644790 
-         477638700 
-        1767263190 
-        6564120420 
+                 1
+                 1
+                 2
+                 5
+                14
+                42
+               132
+               429
+              1430
+              4862
+             16796
+             58786
+            208012
+            742900
+           2674440
+           9694845
+          35357670
+         129644790
+         477638700
+        1767263190
+        6564120420
 
 ```
 
@@ -4202,7 +4202,7 @@ function Get-CatalanNumber
             1..$Number | ForEach-Object {$factorial *= $_}
 
             $factorial
-        }    
+        }
 
         function Get-Catalan ([int]$Number)
         {
@@ -4364,7 +4364,7 @@ a.s+LSet(RSet("n",rs),ls)+"CatalanNumber(n)"
 ; cw(a.s)
 Debug a.s
 
-For n=0 to 33 ;33 largest correct quad for n 
+For n=0 to 33 ;33 largest correct quad for n
 a.s=""
 a.s+LSet(RSet(Str(n),rs),ls)+Str(CatalanNumber(n))
 ; cw(a.s)
@@ -4479,24 +4479,24 @@ if __name__ == '__main__':
 {{out|Sample Output}}
 
 ```txt
-CAT_DIRECT CATR1      CATR2     
+CAT_DIRECT CATR1      CATR2
 
 ### ======= ========== =======
 
-1          1          1         
-1          1          1         
-2          2          2         
-5          5          5         
-14         14         14        
-42         42         42        
-132        132        132       
-429        429        429       
-1430       1430       1430      
-4862       4862       4862      
-16796      16796      16796     
-58786      58786      58786     
-208012     208012     208012    
-742900     742900     742900    
+1          1          1
+1          1          1
+2          2          2
+5          5          5
+14         14         14
+42         42         42
+132        132        132
+429        429        429
+1430       1430       1430
+4862       4862       4862
+16796      16796      16796
+58786      58786      58786
+208012     208012     208012
+742900     742900     742900
 2674440    2674440    2674440
 ```
 
@@ -4524,11 +4524,11 @@ catalan(0:15)
 (require memoize/memo)
 
 (define/memo* (catalan m)
-  (if (= m 0) 
+  (if (= m 0)
       1
-      (for/sum ([i m]) 
+      (for/sum ([i m])
         (* (catalan i) (catalan (- m i 1))))))
-      
+
 (map catalan (range 1 15))
 ```
 
@@ -4601,10 +4601,10 @@ Cat2:  procedure expose c.;  parse arg n;  $=0;         if c.n\==.  then return 
      Catalan 12:  208012
      Catalan 13:  742900
      Catalan 14:  2674440
-     Catalan 15:  9694845 
+     Catalan 15:  9694845
 
 ───────────────────────── Catalan numbers, method 1B ──────────────────────────
-···  (elided, same as first method) ··· 
+···  (elided, same as first method) ···
 
 ───────────────────────── Catalan numbers, method 2  ──────────────────────────
 ···  (elided, same as first method) ···
@@ -4621,7 +4621,7 @@ Cat2:  procedure expose c.;  parse arg n;  $=0;         if c.n\==.  then return 
 ::::* method   '''1B'''   is about 100 times slower than method   '''3'''
 ::::* method   '''2'''     is about   85 times slower than method   '''3'''
 
-::* For Catalan numbers   1 ──► 300: 
+::* For Catalan numbers   1 ──► 300:
 ::::* method   '''1A'''   is about 100 times slower than method   '''3'''
 ::::* method   '''1B'''   is about 200 times slower than method   '''3'''
 ::::* method   '''2'''     is about 200 times slower than method   '''3'''
@@ -4724,7 +4724,7 @@ Return f
 for n = 1 to 15
     see catalan(n) + nl
 next
- 
+
 func catalan n
      if n = 0 return 1 ok
      cat = 2 * (2 * n - 1) * catalan(n - 1) / (n + 1)
@@ -4793,7 +4793,7 @@ Benchmark.bm(17) do |b|
   b.report('catalan_direct')    {16.times {|n| catalan_direct(n)} }
   b.report('catalan_rec1')      {16.times {|n| catalan_rec1(n)} }
   b.report('catalan_rec2')      {16.times {|n| catalan_rec2(n)} }
-  
+
   memoize :catalan_rec1
   b.report('catalan_rec1(memo)'){16.times {|n| catalan_rec1(n)} }
 end
@@ -4841,8 +4841,8 @@ catalan_rec1(memo)  0.000000   0.000000   0.000000 (  0.000641)
 FOR i = 1 TO 15
     PRINT i;" ";catalan(i)
 NEXT
- 
-FUNCTION catalan(n) 
+
+FUNCTION catalan(n)
  catalan = 1
  if n <> 0 then catalan = ((2 * ((2 * n) - 1)) / (n + 1)) * catalan(n - 1)
 END FUNCTION
@@ -5098,11 +5098,11 @@ FOR n = 0 TO 15
 NEXT n
 
 END
- 
+
 DEF catrec(x)
     IF x = 0 THEN
         temp = 1
-    ELSE 
+    ELSE
         n = x
         temp = ((2*((2*n)-1))/(n+1))*catrec(n-1)
     END IF
@@ -5428,22 +5428,22 @@ End Sub
 
 Catalan1 15
 
- 0             1 
- 1             1 
- 2             2 
- 3             5 
- 4             14 
- 5             42 
- 6             132 
- 7             429 
- 8             1430 
- 9             4862 
- 10            16796 
- 11            58786 
- 12            208012 
- 13            742900 
- 14            2674440 
- 15            9694845 
+ 0             1
+ 1             1
+ 2             2
+ 3             5
+ 4             14
+ 5             42
+ 6             132
+ 7             429
+ 8             1430
+ 9             4862
+ 10            16796
+ 11            58786
+ 12            208012
+ 13            742900
+ 14            2674440
+ 15            9694845
 
 ```
 
@@ -5788,7 +5788,7 @@ fcn catalan(n){ (1).reduce(n,fcn(p,n){ 2*(2*n-1)*p/(n+1) },1) }
 80 GO TO 50
 90 PRINT i;TAB 4;r/(1+n)
 100 NEXT i
-110 STOP 
+110 STOP
 120 DEF FN m(a,b)=a-INT (a/b)*b: REM Modulus function
 
 ```

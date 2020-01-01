@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task}}[[Category:Test card]]
-The task is to display a series of vertical greyscale bars (contrast bars) with a sufficient number of bars to span the entire width of the display. 
+The task is to display a series of vertical greyscale bars (contrast bars) with a sufficient number of bars to span the entire width of the display.
 
 For the top quarter of the display, the left hand bar should be black, and we then incrementally step through six shades of grey until we have a white bar on the right hand side of the display. (This gives a total of 8 bars)
 
@@ -26,11 +26,11 @@ Halfway down the display, we start with black, and produce 32 bars, ending in wh
 package
 {
 	import flash.display.Sprite;
-	
+
 	[SWF(width="640", height="480")]
 	public class GreyscaleBars extends Sprite
 	{
-		
+
 		public function GreyscaleBars()
 		{
 			_drawRow(8, 0);
@@ -38,9 +38,9 @@ package
 			_drawRow(32, stage.stageHeight/2);
 			_drawRow(64, stage.stageHeight/4 * 3, true);
 		}
-		
+
 		private function _drawRow(nbSteps : uint, startingY : uint, reverse : Boolean = false) : void {
-			
+
 			for (var i : int = 0; i < nbSteps; i++) {
 				graphics.beginFill(0x00, reverse ? 1 - (i/nbSteps) : (i/nbSteps));
 				graphics.drawRect(i * stage.stageWidth / nbSteps, startingY, stage.stageWidth/nbSteps, stage.stageHeight/4);
@@ -283,7 +283,8 @@ NEXT row%
 
 {{libheader|GTK}}
 
-```c>#include <gtk/gtk.h
+```c
+#include <gtk/gtk.h>
 
 /* do some greyscale plotting */
 void gsplot (cairo_t *cr,int x,int y,double s) {
@@ -318,7 +319,7 @@ int main (int argc, char *argv[]) {
     gtk_widget_show_all (window);
     gtk_main ();
     return 0;
-} 
+}
 ```
 
 
@@ -365,7 +366,7 @@ public sealed class FullScreen : Form
 
 ## C++
 
-using Qt 4.6 
+using Qt 4.6
 <PRE>
 file greytones.h
 </PRE>
@@ -393,8 +394,8 @@ file greytones.cpp
 ```
 
 
-```cpp>#include <QtGui
-
+```cpp
+#include <QtGui>
 #include "greytones.h"
 
 MyWidget::MyWidget( ) {
@@ -410,12 +411,12 @@ void MyWidget::paintEvent ( QPaintEvent * ) {
       int colorgap = 255 / columncount ;
       int columnwidth = 640 / columncount ; // 640 being the window width
       int columnheight = 480 / 4 ; //we're looking at quarters
-      if ( run % 2 == 0 ) { //we start with black columns 
+      if ( run % 2 == 0 ) { //we start with black columns
 	 colorcomp = 0 ;
       }
-      else { //we start with white columns 
+      else { //we start with white columns
 	 colorcomp = 255 ;
-	 colorgap *= -1 ; //we keep subtracting color values 
+	 colorgap *= -1 ; //we keep subtracting color values
       }
       int ystart = 0 + columnheight * run ; //determines the y coordinate of the first column per row
       int xstart = 0 ;
@@ -423,7 +424,7 @@ void MyWidget::paintEvent ( QPaintEvent * ) {
 	 myBrush.setColor( QColor( colorcomp, colorcomp , colorcomp ) ) ;
 	 myPaint.fillRect( xstart , ystart , columnwidth , columnheight , myBrush ) ;
 	 xstart += columnwidth ;
-	 colorcomp += colorgap ; //we choose the next color 
+	 colorcomp += colorgap ; //we choose the next color
       }
       run++ ;
    }
@@ -434,8 +435,8 @@ void MyWidget::paintEvent ( QPaintEvent * ) {
 file main.cpp
 </PRE>
 
-```cpp>#include <QApplication
-
+```cpp
+#include <QApplication>
 #include "greytones.h"
 
 int main( int argc, char * argv[ ] ) {
@@ -463,12 +464,12 @@ CONST
 	(* orient values *)
 	left = 1;
 	right = 0;
-	
+
 TYPE
 	View = POINTER TO RECORD
 		(Views.View)
 	END;
-	
+
 	PROCEDURE LoadGreyPalette(VAR colors: ARRAY OF Ports.Color);
 	VAR
 		i, step, hue: INTEGER;
@@ -479,12 +480,12 @@ TYPE
 			colors[i - 1] := Ports.RGBColor(hue,hue,hue)
 		END
 	END LoadGreyPalette;
-	
+
 	PROCEDURE (v: View) Restore(f: Views.Frame; l, t, r, b: INTEGER);
 	VAR
 		i, w, h: INTEGER;
 		colors: POINTER TO ARRAY OF Ports.Color;
-		
+
 		PROCEDURE Draw(row, cols: INTEGER; orient: INTEGER);
 		VAR
 			w: INTEGER;
@@ -504,7 +505,7 @@ TYPE
 		Draw(3,32,right);
 		Draw(4,64,left);
 	END Restore;
-	
+
 	PROCEDURE (v: View) HandlePropMsg(VAR msg: Properties.Message);
 	CONST
 		min = 5 * Ports.mm;
@@ -521,7 +522,7 @@ TYPE
 		ELSE (* ignore other messages *)
 		END
 	END HandlePropMsg;
-	
+
 	PROCEDURE Deposit*;
 	VAR
 		v: View;
@@ -577,8 +578,8 @@ $  endif;
 $  end;
 $endfunction
 >function grayscales () ...
-$  aspect(2); barstyle("#"); 
-$  window(0,0,1023,1023); margin(0); setplot(0,1,0,1); 
+$  aspect(2); barstyle("#");
+$  window(0,0,1023,1023); margin(0); setplot(0,1,0,1);
 $  clg;
 $  hold on;
 $  grayscale(3/4,1,8,1);
@@ -778,11 +779,11 @@ import Control.Monad.Trans (liftIO)
 
 main = do
     initGUI
-    
+
     window <- windowNew
-    
+
     buf <- pixbufNewFromXPMData bars
-    
+
     widgetAddEvents window [ButtonPressMask]
     on window objectDestroy mainQuit
     on window exposeEvent (paint buf)
@@ -791,7 +792,7 @@ main = do
 
     windowFullscreen window
     widgetShowAll window
-    
+
     mainGUI
 
 paint :: Pixbuf -> EventM EExpose Bool
@@ -839,32 +840,32 @@ records which are used to build structures that can be easily transcribed into i
 
 ```Icon
 link graphics,printf,numbers
-                     
-procedure main()  
+
+procedure main()
    DrawTestCard(GreyScale_TestCard())
    WDone()
-end 
+end
 
-procedure greyscale(l,h,s)               #: generate s greys over range l:h 
-	every i := round(l to h+1 by ((h-l)/(s-1.))) do  
+procedure greyscale(l,h,s)               #: generate s greys over range l:h
+	every i := round(l to h+1 by ((h-l)/(s-1.))) do
 	   suspend sprintf("%d,%d,%d",i,i,i)  # return rgb black-grey-white
 end
 
 procedure GreyScale_TestCard()           #: return greyscale testcard
    TC := testcard(,"GreyScale Test Card",
-                  width := 800, height := 600, 
+                  width := 800, height := 600,
                   list(numbands := 4) )
    maxv := 2^16-1                                      # largest colour value
-   every (iv := [], i := 1 to numbands) do {           # for each band       
+   every (iv := [], i := 1 to numbands) do {           # for each band
       every put(v := [], greyscale(0,maxv,2^(2+i)))    # compute greyscale
 	  put(iv, if i%2 = 0 then v else reverse(v))   # switch directions
 	  }
 
    every r := height/numbands * ((i := 1 to numbands)-1) + 1 do {
       TC.bands[i] := band(r,[])
-      every c := width/(*iv[i]) * ((j := 1 to *iv[i])-1) + 1 do 
+      every c := width/(*iv[i]) * ((j := 1 to *iv[i])-1) + 1 do
          put(TC.bands[i].bars, bar( c, iv[i,j]))
-      put((TC.bands[i]).bars, bar(width))              # right sentinal 
+      put((TC.bands[i]).bars, bar(width))              # right sentinal
       }
    put(TC.bands,band(height))                          # bottom sentinal
    return TC
@@ -872,9 +873,9 @@ end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn supports graphics] 
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides sprintf, etc.] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/graphics.icn graphics.icn supports graphics]
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides sprintf, etc.]
 [http://www.cs.arizona.edu/icon/library/src/procs/numbers.icn numbers.icn provides round]
 
 
@@ -961,27 +962,27 @@ Live Demo: http://jsfiddle.net/gcN9g/embedded/result/
 <script type="text/javascript">
 var width = 640; var height = 400;
 var c = document.createElement("canvas");
-c.setAttribute('id',    'myCanvas'); 
-c.setAttribute('style', 'border:1px solid black;'); 
+c.setAttribute('id',    'myCanvas');
+c.setAttribute('style', 'border:1px solid black;');
 c.setAttribute('width',  width);
-c.setAttribute('height', height); 
+c.setAttribute('height', height);
 document.body.appendChild(c);
 var ctx = document.getElementById('myCanvas').getContext("2d");
 
-var columnCount = 8;    // number of columns 
+var columnCount = 8;    // number of columns
 var rowCount    = 4;    // number of rows
 var direction   = 1;    // 1 = from left to right, 0 = from right to left
 var blackLeft   = 1;    // black is left: 1 = true, 0 = false
-for(var j = 0; j < rowCount; j++){  
+for(var j = 0; j < rowCount; j++){
     for(var i = 0; i < columnCount; i++){
-        ctx.fillStyle = 'rgba(0,0,0,'+ (blackLeft-(1/(columnCount-1)*i))*direction +')';  
+        ctx.fillStyle = 'rgba(0,0,0,'+ (blackLeft-(1/(columnCount-1)*i))*direction +')';
         ctx.fillRect(
             (width/columnCount)*i,(height/rowCount)*j,
             (width/columnCount),(height/rowCount)
-            ); 
+            );
         }
-    columnCount *= 2; 
-    direction *= -1; 
+    columnCount *= 2;
+    direction *= -1;
     blackLeft = blackLeft ? 0 : 1;
     }
 </script>
@@ -1162,9 +1163,9 @@ Resulting [http://www.diga.me.uk/greyscale.gif GreyScale image] without the outl
 
 
 ```mathematica
-CreateDocument[ Graphics[ Flatten@Table[ 
-{ If[EvenQ[#3], GrayLevel[ 1. - j/#1 ], GrayLevel[ j/#1 ]], 
-   Rectangle[{j #2, 7*#3}, {#2 (j + 1), (#3 + 1) 7}]}, {j, 0, #1}] & @@@ 
+CreateDocument[ Graphics[ Flatten@Table[
+{ If[EvenQ[#3], GrayLevel[ 1. - j/#1 ], GrayLevel[ j/#1 ]],
+   Rectangle[{j #2, 7*#3}, {#2 (j + 1), (#3 + 1) 7}]}, {j, 0, #1}] & @@@
    {{7, 8, 3}, {15, 4, 2}, {31, 2, 1}, {63, 1, 0} }
 ,ImageSize -> Full], WindowFrame -> "Frameless", WindowSize -> Full]
 ```
@@ -1204,7 +1205,7 @@ fn drawBarRow _bmp _row _width _number _inverse=
 			)
 			return _bmp
 		)
-	
+
 )
 
 fn bitmap_verticalBars =
@@ -1212,7 +1213,7 @@ fn bitmap_verticalBars =
 	local width = (sysinfo.desktopsize).x
 	local height = (sysinfo.desktopsize).y
 	local theBitmap = bitmap width height color:white
-	
+
 	local row = 0
 	while row <= (height-1) do
 	(
@@ -1342,36 +1343,36 @@ print $pgm
 
 ```perl6
 my ($width,$height) = 1280,768;
- 
+
 my $PGM = open "Greyscale-bars-perl6.pgm", :w orelse die "Can't create Greyscale-bars-perl6.pgm: $_";
- 
+
 $PGM.print: qq:to/EOH/;
     P2
     # Greyscale-bars-perl6.pgm
     $width $height
     65535
     EOH
- 
+
 my ($h1,$h2,$h3,$h4) = divvy($height,4);
- 
+
 my @nums = ((0/7,1/7...7/7) X* 65535)».floor;
 my $line = ~(@nums Zxx divvy($width,8));
 $PGM.say: $line for ^$h1;
- 
+
 @nums = ((15/15,14/15...0/15) X* 65535)».floor;
 $line = ~(@nums Zxx divvy($width,16));
 $PGM.say: $line for ^$h2;
- 
+
 @nums = ((0/31,1/31...31/31) X* 65535)».floor;
 $line = ~(@nums Zxx divvy($width,32));
 $PGM.say: $line for ^$h3;
- 
+
 @nums = ((63/63,62/63...0/63) X* 65535)».floor;
 $line = ~(@nums Zxx divvy($width,64));
 $PGM.say: $line for ^$h4;
- 
+
 $PGM.close;
- 
+
 sub divvy($all, $div) {
     my @marks = ((1/$div,2/$div ... 1) X* $all)».round;
     @marks Z- 0,|@marks;
@@ -1513,12 +1514,12 @@ If OpenScreen(width, height, depth, "Press ENTER to exit")
           shade = 256 / columns * (h + 1)
         Else
           shade = 256 / columns * (columns - (h + 1))
-        EndIf 
+        EndIf
         Box((width * h) / columns, (height * v) / vsCount, columnWidth, height / vsCount, RGB(shade, shade, shade))
       Next
-      
+
       Box((width * (columns - 1)) / columns, (height * v) / vsCount, columnWidth, height / vsCount, $FFFFFF - endColor)
-    Next 
+    Next
   StopDrawing()
   FlipBuffers()
 
@@ -1631,7 +1632,7 @@ This solution uses the built-in pict library for graphics.
   (apply hc-append
          ((if (eq? direction 'right) identity reverse)
           (for/list ([c colors])
-            (colorize (filled-rectangle 
+            (colorize (filled-rectangle
                        (/ *width* (length colors)) *height*)
                       (make-color c c c))))))
 
@@ -1664,15 +1665,15 @@ Sub PaintCanvas
         Bars = 2^(curbar+3)
         for x = 0 to (Bars -1)
             x1=Canv.Width/Bars*x
-            y1=Canv.Height/NumRows*CurBar 
+            y1=Canv.Height/NumRows*CurBar
             x2=Canv.Width/Bars*(x+1)
-            y2=Canv.Height/NumRows*(CurBar+1) 
+            y2=Canv.Height/NumRows*(CurBar+1)
             c=(255/(Bars-1))*x
             c=iif(curbar mod 2, 255-c, c)
             Canv.FillRect(x1, y1, x2, y2, rgb(c, c, c))
         next x
-    next curbar 
-end sub    
+    next curbar
+end sub
 
 Form.showmodal
 
@@ -1691,7 +1692,7 @@ load "guilib.ring"
 
 paint = null
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                   setwindowtitle("Greyscale bars/Display")
@@ -1729,7 +1730,7 @@ func draw
               py=256*(4-row)
               for b=0 to n-1
                    g=floor(255*b/(n-1))
-                   if n=16 or n=64 
+                   if n=16 or n=64
                       g=255-g
                    ok
                    color2 = new qcolor()
@@ -1737,8 +1738,8 @@ func draw
                    mybrush = new qbrush() {setstyle(1) setcolor(color2)}
                    paint.setbrush(mybrush)
                    paint.drawrect(w*b,py,w,256)
-              next 
-        next 
+              next
+        next
 
         endpaint()
         }
@@ -1763,7 +1764,7 @@ for i = 1 to 4
 		c = c - incr
 	next j
         html "</tr>"
-next i        
+next i
 html "</table>"
 end
 ```
@@ -1790,13 +1791,13 @@ class GreyscaleBars extends Component {
       for(x <- 0 until colCount){
         val col=(colBase+(255.0/(colCount-1)*x).toInt).abs
         g.setColor(new Color(col,col,col))
-		  
+
         val startX=(deltaX*x).toInt
         val endX=(deltaX*(x+1)).toInt
         g.fillRect(startX, barHeight*run, endX-startX, barHeight)
       }
     }
-  }  
+  }
 }
 ```
 
@@ -1860,7 +1861,7 @@ const proc: main is func
 ```tcl
 package require Tcl 8.5
 package require Tk 8.5
- 
+
 wm attributes . -fullscreen 1
 pack [canvas .c -highlightthick 0] -fill both -expand 1
 

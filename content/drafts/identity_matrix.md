@@ -14,12 +14,12 @@ tags = []
 [[Category:Matrices]]
 
 ;Task:
-Build an   [[wp:identity matrix|identity matrix]]   of a size known at run-time. 
+Build an   [[wp:identity matrix|identity matrix]]   of a size known at run-time.
 
 
-An ''identity matrix'' is a square matrix of size '''''n'' &times; ''n''''', 
+An ''identity matrix'' is a square matrix of size '''''n'' &times; ''n''''',
 
-where the diagonal elements are all '''1'''s (ones), 
+where the diagonal elements are all '''1'''s (ones),
 
 and all the other elements are all '''0'''s (zeroes).
 
@@ -35,7 +35,7 @@ and all the other elements are all '''0'''s (zeroes).
 
 ;Related tasks:
 *   [[Spiral matrix]]
-*   [[Zig-zag matrix]] 
+*   [[Zig-zag matrix]]
 *   [[Ulam_spiral_(for_primes)]]
 
 
@@ -193,7 +193,7 @@ OP INIT = (VEC self, SCAL scal)VEC: (
 );
 
 # ZEROINIT: defines the additive identity #
-OP ZEROINIT = (VEC self)VEC: 
+OP ZEROINIT = (VEC self)VEC:
   self INIT SCAL(0);
 
 OP REPR = (VEC self)STRING: (
@@ -230,7 +230,7 @@ OP INIT = (MAT self, SCAL scal)MAT: (
 );
 
 # ZEROINIT: defines the additive identity #
-OP ZEROINIT = (MAT self)MAT: 
+OP ZEROINIT = (MAT self)MAT:
   self INIT SCAL(0);
 
 OP REPR = (MATNEW self)STRING: (
@@ -345,7 +345,7 @@ end.
 
 Making an identity matrix in APL involves the outer product of the equality function.
 
-For a square matrix of 3: 
+For a square matrix of 3:
 
 ```apl
 
@@ -401,7 +401,7 @@ There is a more idomatic way however:
 -- idMatrix :: Int -> [(0|1)]
 on idMatrix(n)
     set xs to enumFromTo(1, n)
-    
+
     script row
         on |λ|(x)
             script
@@ -413,20 +413,20 @@ on idMatrix(n)
                     end if
                 end |λ|
             end script
-            
+
             map(result, xs)
         end |λ|
     end script
-    
+
     map(row, xs)
 end idMatrix
 
 
 -- TEST ----------------------------------------------------------------------
 on run
-    
+
     idMatrix(5)
-    
+
 end run
 
 
@@ -458,7 +458,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -474,10 +474,10 @@ end mReturn
 {{Out}}
 
 ```txt
-{{1, 0, 0, 0, 0}, 
-{0, 1, 0, 0, 0}, 
-{0, 0, 1, 0, 0}, 
-{0, 0, 0, 1, 0}, 
+{{1, 0, 0, 0, 0},
+{0, 1, 0, 0, 0},
+{0, 0, 1, 0, 0},
+{0, 0, 0, 1, 0},
 {0, 0, 0, 0, 1}}
 ```
 
@@ -667,7 +667,7 @@ for i in `seq $1`;do printf '%*s\n' $1|tr ' ' '0'|sed "s/0/1/$i";done
         PRINT
       NEXT r%
       END
-      
+
       DEF PROCidentitymatrix(s%, RETURN m())
       LOCAL i%
       DIM m(s%-1, s%-1)
@@ -771,12 +771,13 @@ int main(int argc, char** argv) {
 
 {{libheader|STL}}
 
-```cpp>template<class T
+```cpp
+template<class T>
 
 class matrix
 {
 public:
-    matrix( unsigned int nSize ) : 
+    matrix( unsigned int nSize ) :
       m_oData(nSize * nSize, 0), m_nSize(nSize) {}
 
       inline T& operator()(unsigned int x, unsigned int y)
@@ -788,7 +789,7 @@ public:
       {
           int nCount = 0;
           int nStride = m_nSize + 1;
-          std::generate( m_oData.begin(), m_oData.end(), 
+          std::generate( m_oData.begin(), m_oData.end(),
               [&]() { return !(nCount++%nStride); } );
       }
 
@@ -831,7 +832,7 @@ int main()
 int main()
 {
     using namespace boost::numeric::ublas;
-    
+
     int nSize;
     std::cout << "Enter matrix size (N): ";
     std::cin >> nSize;
@@ -943,21 +944,21 @@ fn identity-matrix n:
 
 {{trans|PicoLisp}}
 
-The (vec ) function in the following solution is with respect to vector matrices. If dealing with normal lists matrices (e.g. 
+The (vec ) function in the following solution is with respect to vector matrices. If dealing with normal lists matrices (e.g.
 
 ```clojure
- '( (0 1) (2 3) ) 
+ '( (0 1) (2 3) )
 
 ```
 
-, then care to remove the vec function. 
+, then care to remove the vec function.
 
 ```clojure
 (defn identity-matrix [n]
   (let [row (conj (repeat (dec n) 0) 1)]
     (vec
       (for [i (range 1 (inc n))]
-        (vec 
+        (vec
           (reduce conj (drop i row ) (take i row)))))))
 
 ```
@@ -971,13 +972,13 @@ The (vec ) function in the following solution is with respect to vector matrices
 ```
 
 
-The following is a more idomatic definition that utilizes infinite lists and cycling. 
+The following is a more idomatic definition that utilizes infinite lists and cycling.
 
 ```clojure
 
 (defn identity-matrix [n]
-  (take n 
-    (partition n (dec n) 
+  (take n
+    (partition n (dec n)
                          (cycle (conj (repeat (dec n) 0) 1)))))
 
 ```
@@ -1007,7 +1008,7 @@ Common Lisp provides multi-dimensional arrays.
 ```lisp
 (defun identity-matrix (n)
   (loop for a from 1 to n
-        collect (loop for e from 1 to n 
+        collect (loop for e from 1 to n
                       if (= a e) collect 1
                       else collect 0)))
 
@@ -1036,7 +1037,7 @@ IMPORT StdLog,Strings;
 
 TYPE
 	Matrix = POINTER TO ARRAY OF ARRAY OF INTEGER;
-	
+
 PROCEDURE NewIdentityMatrix(n: INTEGER): Matrix;
 VAR
 	m: Matrix;
@@ -1149,7 +1150,7 @@ program IdentityMatrix;
 var
   matrix: array of array of integer;
   n, i, j: integer;
-  
+
 begin
   write('Size of matrix: ');
   readln(n);
@@ -1157,7 +1158,7 @@ begin
 
   for i := 0 to n - 1 do
     matrix[i,i] := 1;
-    
+
   for i := 0 to n - 1 do
   begin
     for j := 0 to n - 1 do
@@ -1172,11 +1173,11 @@ end.
 ```txt
 
 Size of matrix: 5
-1 0 0 0 0 
-0 1 0 0 0 
-0 0 1 0 0 
-0 0 0 1 0 
-0 0 0 0 1 
+1 0 0 0 0
+0 1 0 0 0
+0 0 1 0 0
+0 0 0 1 0
+0 0 0 0 1
 
 ```
 
@@ -1279,14 +1280,14 @@ ELENA 4.x :
 import extensions;
 import system'routines;
 import system'collections;
- 
+
 public program()
 {
     var n := console.write:"Enter the matrix size:".readLine().toInt();
- 
-    var identity := new Range(0, n).selectBy:(i => new Range(0,n).selectBy:(j => (i == j).iif(1,0) ).summarize(new ArrayList())) 
+
+    var identity := new Range(0, n).selectBy:(i => new Range(0,n).selectBy:(j => (i == j).iif(1,0) ).summarize(new ArrayList()))
                          .summarize(new ArrayList());
- 
+
     identity.forEach:
         (row) { console.printLine(row.asEnumerable()) }
 }
@@ -1389,7 +1390,7 @@ END PROGRAM
 
 function IdentityMatrix(n)
   $  X:=zeros(n,n);
-  $  for i=1 to n 
+  $  for i=1 to n
   $    X[i,i]:=1;
   $  end;
   $  return X;
@@ -1565,9 +1566,9 @@ program identitymatrix
   ! I is the identity matrix, let's show it:
 
   write (fmt, '(A,I2,A)') '(', ms, 'F6.2)'
-  ! if you consider to have used the (row, col) convention, 
+  ! if you consider to have used the (row, col) convention,
   ! the following will print the transposed matrix (col, row)
-  ! but I' = I, so it's not important here  
+  ! but I' = I, so it's not important here
   write (*, fmt) I(:,:)
 
   deallocate(I)
@@ -1580,7 +1581,7 @@ end program identitymatrix
 
 ### Notorious trick
 
-The objective is to do the assignment in one fell swoop, rather than separately setting the 0 values and the 1 values. It works because, with integer arithmetic, the only way that both i/j and j/i are one is when they are equal - thus one on the diagonal elements, and zero elsewhere because either i < j so that i/j = 0, or i > j so that j/i = 0. While this means two divides and a multiply per element instead of simply transferring a constant, the constraint on speed is likely to be the limited bandwidth from cpu to memory. The expression's code would surely fit in the cpu's internal memory, and registers would be used for the variables. 
+The objective is to do the assignment in one fell swoop, rather than separately setting the 0 values and the 1 values. It works because, with integer arithmetic, the only way that both i/j and j/i are one is when they are equal - thus one on the diagonal elements, and zero elsewhere because either i < j so that i/j = 0, or i > j so that j/i = 0. While this means two divides and a multiply per element instead of simply transferring a constant, the constraint on speed is likely to be the limited bandwidth from cpu to memory. The expression's code would surely fit in the cpu's internal memory, and registers would be used for the variables.
 
 ```Fortran
       Program Identity
@@ -1590,7 +1591,7 @@ The objective is to do the assignment in one fell swoop, rather than separately 
       Integer i,j
 
       ForAll(i = 1:N, j = 1:N) A(i,j) = (i/j)*(j/i)
-      
+
       END
 ```
 
@@ -1618,7 +1619,7 @@ Dim As Integer n
 
 Do
   Input "Enter size of matrix "; n
-Loop Until n > 0 
+Loop Until n > 0
 
 Dim identity(1 To n, 1 To n) As Integer '' all zero by default
 
@@ -1627,17 +1628,17 @@ For i As Integer =  1 To n
   identity(i, i) = 1
 Next
 
-' print identity matrix if n < 40 
+' print identity matrix if n < 40
 Print
 
 If n < 40 Then
   For i As Integer = 1 To n
     For j As Integer = 1 To n
-      Print identity(i, j); 
+      Print identity(i, j);
     Next j
     Print
   Next i
-Else 
+Else
   Print "Matrix is too big to display on 80 column console"
 End If
 
@@ -1872,9 +1873,9 @@ func I(n int) matrix {
 ```txt
 
 [1 0 0 0 1 0 0 0 1]
-1 0 0 
-0 1 0 
-0 0 1 
+1 0 0
+0 1 0
+0 0 1
 
 ```
 
@@ -2019,11 +2020,11 @@ end
 ```txt
 
 ->im 6
-1 0 0 0 0 0 
-0 1 0 0 0 0 
-0 0 1 0 0 0 
-0 0 0 1 0 0 
-0 0 0 0 1 0 
+1 0 0 0 0 0
+0 1 0 0 0 0
+0 0 1 0 0 0
+0 0 0 1 0 0
+0 0 0 0 1 0
 0 0 0 0 0 1
 ->
 
@@ -2192,7 +2193,7 @@ produces:
 Using the definition of matrix/2 at [[Create_a_two-dimensional_array_at_runtime#jq]]:
 
 ```jq
-def identity(n): 
+def identity(n):
   reduce range(0;n) as $i
     (0 | matrix(n;n); .[$i][$i] = 1);
 
@@ -2338,9 +2339,9 @@ fun main(args: Array<String>) {
     for(i in 0 until n) identity[i][i] = 1
 
     // print identity matrix if n <= 40
-    if (n <= 40) 
+    if (n <= 40)
         for (i in 0 until n) println(identity[i].joinToString(" "))
-    else 
+    else
         println("Matrix is too big to display on 80 column console")
 }
 ```
@@ -2626,7 +2627,7 @@ Loop i=0 To n-1 -- Like Java, arrays in NetRexx start at 0
     ol=ol m[i,j]
     End
   Say ol
-  End     
+  End
 
 ```
 
@@ -2651,7 +2652,7 @@ method createIdMatrix(n) public static
     m[i, i] = 1   -- set this diagonal element to 1
     end i
   return m
-  
+
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 method displayIdMatrix(m) public static
   DIM_ = 'DIMENSION'
@@ -2698,7 +2699,7 @@ proc identityMatrix(n): auto =
 class IdentityMatrix {
   function : Matrix(n : Int) ~ Int[,] {
     array := Int->New[n,n];
-    
+
     for(row:=0; row<n; row+=1;){
       for(col:=0; col<n; col+=1;){
         if(row = col){
@@ -2711,7 +2712,7 @@ class IdentityMatrix {
     };
     return array;
   }
-  
+
   function : PrintMatrix(array : Int[,]) ~ Nil {
     sizes := array->Size();
     for(row:=0; row<sizes[0]; row+=1;){
@@ -2722,7 +2723,7 @@ class IdentityMatrix {
       '\n'->PrintLine();
     };
   }
-  
+
   function : Main(args : String[]) ~ Nil {
     PrintMatrix(Matrix(5));
   }
@@ -2795,7 +2796,7 @@ I = eye(10)
 
 ## ooRexx
 
-ooRexx doesn't have a proper matrix class, but it does have multidimensional arrays. 
+ooRexx doesn't have a proper matrix class, but it does have multidimensional arrays.
 
 ```ooRexx
 
@@ -2902,7 +2903,7 @@ program IdentityMatrix(input, output);
 var
   matrix: array of array of integer;
   n, i, j: integer;
-  
+
 begin
   write('Size of matrix: ');
   readln(n);
@@ -2910,7 +2911,7 @@ begin
 
   for i := 0 to n - 1 do
     matrix[i,i] := 1;
-    
+
   for i := 0 to n - 1 do
   begin
     for j := 0 to n - 1 do
@@ -2926,11 +2927,11 @@ end.
 
 % ./IdentityMatrix
 Size of matrix: 5
-1 0 0 0 0 
-0 1 0 0 0 
-0 0 1 0 0 
-0 0 0 1 0 
-0 0 0 0 1 
+1 0 0 0 0
+0 1 0 0 0
+0 0 1 0 0
+0 0 0 1 0
+0 0 0 0 1
 
 ```
 
@@ -2982,25 +2983,25 @@ for (@ARGV) {
 
 ```txt
 4:
-1 0 0 0 
-0 1 0 0 
-0 0 1 0 
-0 0 0 1 
+1 0 0 0
+0 1 0 0
+0 0 1 0
+0 0 0 1
 
 5:
-1 0 0 0 0 
-0 1 0 0 0 
-0 0 1 0 0 
-0 0 0 1 0 
-0 0 0 0 1 
+1 0 0 0 0
+0 1 0 0 0
+0 0 1 0 0
+0 0 0 1 0
+0 0 0 0 1
 
 6:
-1 0 0 0 0 0 
-0 1 0 0 0 0 
-0 0 1 0 0 0 
-0 0 0 1 0 0 
-0 0 0 0 1 0 
-0 0 0 0 0 1 
+1 0 0 0 0 0
+0 1 0 0 0 0
+0 0 1 0 0 0
+0 0 0 1 0 0
+0 0 0 0 1 0
+0 0 0 0 0 1
 
 ```
 
@@ -3154,11 +3155,11 @@ printMatrix(createMatrix(5));
 
 ```txt
 
-1 0 0 0 0 
-0 1 0 0 0 
-0 0 1 0 0 
-0 0 0 1 0 
-0 0 0 0 1 
+1 0 0 0 0
+0 1 0 0 0
+0 0 1 0 0
+0 0 0 1 0
+0 0 0 0 1
 
 ```
 
@@ -3250,7 +3251,7 @@ show $array
 <b>Output:</b>
 
 ```txt
- 
+
 1 0 0 0
 0 1 0 0
 0 0 1 0
@@ -3269,7 +3270,7 @@ $array[0][1]
 <b>Output:</b>
 
 ```txt
- 
+
 1
 0
 
@@ -3288,14 +3289,14 @@ Procedure identityMatrix(Array i(2), size) ;valid only for size >= 0
   Protected j
   For j = 0 To size - 1
     i(j, j) = 1
-  Next 
+  Next
 EndProcedure
 
 
 Procedure displayMatrix(Array a(2))
   Protected rows = ArraySize(a(), 2), columns = ArraySize(a(), 1)
   Protected i, j
-  
+
   For i = 0 To rows
     For j = 0 To columns
       Print(RSet(Str(a(i, j)), 3, " "))
@@ -3307,14 +3308,14 @@ EndProcedure
 If OpenConsole()
   Dim i3(0, 0)
   Dim i4(0, 0)
-  
+
   identityMatrix(i3(), 3)
   identityMatrix(i4(), 4)
-  
+
   displayMatrix(i3())
   PrintN("")
   displayMatrix(i4())
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -3349,7 +3350,7 @@ def identity(size):
 
     for i in range(size):
         matrix[i][i] = 1
-    
+
     for rows in matrix:
         for elements in rows:
             print elements,
@@ -3429,7 +3430,7 @@ if __name__ == '__main__':
 {{Out}}
 
 ```txt
-idMatrix: 
+idMatrix:
 
 [1, 0, 0, 0, 0]
 [0, 1, 0, 0, 0]
@@ -3437,7 +3438,7 @@ idMatrix:
 [0, 0, 0, 1, 0]
 [0, 0, 0, 0, 1]
 
-idMatrix2: 
+idMatrix2:
 
 [1, 0, 0, 0, 0]
 [0, 1, 0, 0, 0]
@@ -3455,7 +3456,7 @@ A dict of tuples of two ints (x, y) are used to represent the matrix.
 ```python>>>
  def identity(size):
 ...     return {(x, y):int(x == y) for x in range(size) for y in range(size)}
-... 
+...
 >>> size = 4
 >>> matrix = identity(size)
 >>> print('\n'.join(' '.join(str(matrix[(x, y)]) for x in range(size)) for y in range(size)))
@@ -3463,7 +3464,7 @@ A dict of tuples of two ints (x, y) are used to represent the matrix.
 0 1 0 0
 0 0 1 0
 0 0 0 1
->>> 
+>>>
 ```
 
 
@@ -3529,7 +3530,7 @@ Identity_matrix=function(size){
 
 ```txt
 
-(array #[#[1 0 0 0 0] 
+(array #[#[1 0 0 0 0]
          #[0 1 0 0 0]
          #[0 0 1 0 0]
          #[0 0 0 1 0]
@@ -3546,17 +3547,17 @@ Identity_matrix=function(size){
 
 The REXX language doesn't have matrices as such, so the problem is largely how to display the "matrix".
 
-The code to display the matrices was kept as a stand-alone general-purpose (square) matrix display 
+The code to display the matrices was kept as a stand-alone general-purpose (square) matrix display
 
-subroutine,   which, in part,   determines if the square matrix is indeed a square matrix based on the 
+subroutine,   which, in part,   determines if the square matrix is indeed a square matrix based on the
 
-number of elements given. 
+number of elements given.
 
-It also finds the maximum widths of the integer and decimal fraction parts   (if any)   and uses those widths  
+It also finds the maximum widths of the integer and decimal fraction parts   (if any)   and uses those widths
 
 to align   (right-justify according to the [possibly implied] decimal point)   the columns of the square matrix.
 
-It also tries to display a centered (and easier to read) matrix,   along with a title. 
+It also tries to display a centered (and easier to read) matrix,   along with a title.
 
 ```rexx
 /*REXX program  creates and displays any sized  identity matrix  (centered, with title).*/
@@ -3650,7 +3651,7 @@ Do i=1 To n
     ol=ol''format(m.i.j,2) /* or ol=ol (i=j)                         */
     End
   Say ol
-  End 
+  End
 
 ```
 
@@ -3661,7 +3662,7 @@ Do i=1 To n
 Identity Matrix of size 3  (m.i.j IS the Matrix)
  1 0 0
  0 1 0
- 0 0 1    
+ 0 0 1
 
 ```
 
@@ -3690,8 +3691,8 @@ for r = 1 to size
         see im[r][c]
     next
     see nl
-next 
- 
+next
+
 func identityMatrix s, m
      m = newlist(s, s)
      for i = 1 to s
@@ -3775,7 +3776,7 @@ end
 ```ruby
 
 2.1.1 :001 > require "matrix"
- => true 
+ => true
 2.1.1 :002 > Matrix.identity(5)
  => Matrix[[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]]
 
@@ -3795,7 +3796,7 @@ print :print "--- Size: ";ims;" ---"
 
  For i = 1 To ims
    im(i,i) = 1
- next 
+ next
 
  For row = 1 To ims
    print "[";
@@ -3920,7 +3921,7 @@ When representing a matrix as a collection of nested lists:
 
 (define (identity n)
   (letrec
-      ((uvec 
+      ((uvec
 	(lambda (m i acc)
 	  (if (= i n)
 	      acc
@@ -4140,7 +4141,7 @@ function unitMatrix(n) {
 ## Stata
 
 
-###  Stata matrix 
+###  Stata matrix
 
 
 ```stata
@@ -4156,7 +4157,7 @@ r3   0   0   1
 
 
 
-###  Mata 
+###  Mata
 
 
 ```stata
@@ -4295,7 +4296,7 @@ function identity(n) {
             for (var j: number = 0; j < n; j++) {
                 if (i != j) idMatrix[i][j] = 0;
                 else idMatrix[i][j] = 1;
-            }            
+            }
         }
         return idMatrix;
     }
@@ -4371,7 +4372,7 @@ Sub build_matrix(n)
 				matrix(row,col) = 1
 			Else
 				matrix(row,col) = 0
-			End If	
+			End If
 		Next
 		i = i + 1
 	Next
@@ -4407,7 +4408,7 @@ End Sub
 
 
 
-'''Alternate version''' 
+'''Alternate version'''
 
 
 ```vbscript
@@ -4466,7 +4467,7 @@ Dim b() As Byte
     b(i, i) = 1   'set diagonal elements to 1
   Next i
   BuildIdentityMatrix = b
-  
+
 End Function
 '------------
 Sub IdentityMatrixDemo(ByVal Size As Long)
@@ -4567,11 +4568,11 @@ for J:= 0 to Size-1 do                  \display the result
 ```txt
 
 Size: 5
-1 0 0 0 0 
-0 1 0 0 0 
-0 0 1 0 0 
-0 0 0 1 0 
-0 0 0 0 1 
+1 0 0 0 0
+0 1 0 0 0
+0 0 1 0 0
+0 0 0 1 0
+0 0 0 0 1
 
 ```
 
@@ -4620,7 +4621,7 @@ L(0,0,0,0,1)
 70 PRINT i(r,c);s$;
 80 NEXT c
 90 NEXT r
-100 STOP 
+100 STOP
 200 REM Identity matrix size
 220 DIM i(size,size)
 230 FOR i=1 TO size

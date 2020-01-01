@@ -479,23 +479,23 @@ this is an example for huffman encoding
       INSTALL @lib$+"SORTSALIB"
       SortUp% = FN_sortSAinit(0,0) : REM Ascending
       SortDn% = FN_sortSAinit(1,0) : REM Descending
-      
+
       Text$ = "this is an example for huffman encoding"
-      
+
       DIM tree{(127) ch&, num%, lkl%, lkr%}
       FOR i% = 1 TO LEN(Text$)
         c% = ASCMID$(Text$,i%)
         tree{(c%)}.ch& = c%
         tree{(c%)}.num% += 1
       NEXT
-      
+
       C% = DIM(tree{()},1) + 1
       CALL SortDn%, tree{()}, tree{(0)}.num%
       FOR i% = 0 TO DIM(tree{()},1)
         IF tree{(i%)}.num% = 0 EXIT FOR
       NEXT
       size% = i%
-      
+
       linked% = 0
       REPEAT
         C% = size%
@@ -508,7 +508,7 @@ this is an example for huffman encoding
         tree{(size%)}.num% = tree{(i%)}.num% + tree{(j%)}.num%
         size% += 1
       UNTIL linked% = (size% - 1)
-      
+
       FOR i% = size% - 1 TO 0 STEP -1
         IF tree{(i%)}.ch& THEN
           h$ = ""
@@ -572,7 +572,7 @@ t  11010
          & ~
          )
      )
-  | 
+  |
   )
 & 0:?prioritized
 &   whl
@@ -655,8 +655,8 @@ decoded: this is an example for huffman encoding
 This code lacks a lot of needed checkings, especially for memory allocation.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -837,8 +837,8 @@ int main()
 
 Using a simple heap-based priority queue.  Heap is an array, while ndoe tree is done by binary links.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 
 typedef struct node_t {
@@ -915,7 +915,7 @@ void init(const char *s)
 	for (i = 0; i < 128; i++)
 		if (freq[i]) qinsert(new_node(freq[i], i, 0, 0));
 
-	while (qend > 2) 
+	while (qend > 2)
 		qinsert(new_node(0, 0, qremove(), qremove()));
 
 	build_code(q[1], c, 0);
@@ -1311,7 +1311,7 @@ namespace Huffman_Encoding
 }
 ```
 
-[[File:CSharpHuffman.jpg]] 
+[[File:CSharpHuffman.jpg]]
 
 
 ## C++
@@ -1320,8 +1320,8 @@ namespace Huffman_Encoding
 This code builds a tree to generate huffman codes, then prints the codes.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <queue>
 #include <map>
 #include <climits> // for CHAR_BIT
@@ -1422,7 +1422,7 @@ int main()
         ++frequencies[*ptr++];
 
     INode* root = BuildTree(frequencies);
-    
+
     HuffCodeMap codes;
     GenerateCodes(root, HuffCode(), codes);
     delete root;
@@ -1617,7 +1617,7 @@ huffman_encoding_table = (counts) ->
   # values are frequencies;
   # return a hash where keys are codes and values
   # are characters
-  
+
   build_huffman_tree = ->
     # returns a Huffman tree.  Each node has
     #   cnt: total frequency of all chars in subtree
@@ -1632,14 +1632,14 @@ huffman_encoding_table = (counts) ->
       a = q.dequeue()
       b = q.dequeue()
       cnt = a.cnt + b.cnt
-      node = 
+      node =
         cnt: cnt
         children: [a, b]
       q.enqueue cnt, node
     root = q.dequeue()
-    
+
   root = build_huffman_tree()
-  
+
   codes = {}
   encode = (node, code) ->
     if node.c?
@@ -1647,7 +1647,7 @@ huffman_encoding_table = (counts) ->
     else
       encode node.children[0], code + "0"
       encode node.children[1], code + "1"
-  
+
   encode(root, "")
   codes
 
@@ -1660,7 +1660,7 @@ min_queue = ->
     while i < arr.length
       if priority < arr[i].priority
         break
-      i += 1  
+      i += 1
     arr.splice i, 0,
       priority: priority
       data: data
@@ -1676,7 +1676,7 @@ freq_count = (s) ->
     cnts[c] ?= 0
     cnts[c] += 1
   cnts
-  
+
 rpad = (s, n) ->
   while s.length < n
     s += ' '
@@ -1697,7 +1697,7 @@ for s in examples
     c = huffman_table[code]
     console.log "#{rpad(code, 5)}: #{c} (#{counts[c]})"
   console.log()
- 
+
 ```
 
 
@@ -1705,7 +1705,7 @@ for s in examples
 
 ```txt
 
-> coffee huffman.coffee 
+> coffee huffman.coffee
 ---- this is an example for huffman encoding
 000  : n (4)
 0010 : s (2)
@@ -1741,15 +1741,15 @@ for s in examples
 11   : d (8)
 
 ```
-  
+
 
 
 ## Common Lisp
 
 
-This implementation uses a tree built of <code>huffman-node</code>s, 
-and a hash table mapping from elements of the input sequence to <code>huffman-node</code>s.  
-The priority queue is implemented as a sorted list.  
+This implementation uses a tree built of <code>huffman-node</code>s,
+and a hash table mapping from elements of the input sequence to <code>huffman-node</code>s.
+The priority queue is implemented as a sorted list.
 (For a more efficient implementation of a priority queue, see the [[Heapsort]] task.)
 
 
@@ -1820,7 +1820,7 @@ Example:
 
 
 ```txt
-> (print-huffman-code-table 
+> (print-huffman-code-table
    (huffman-codes "this is an example for huffman encoding"))
 Element   Weight    Code
 #\t       1/39      #*10010
@@ -2125,11 +2125,11 @@ x: 01010
 
 ## Erlang
 
-The main part of the code used here is extracted from [https://gist.github.com/rmies/2828351 Michel Rijnders' GitHubGist]. See also [http://codingpraxis.com/erlang/2012/10/23/huffman-coding-in-erlang.html his blog], for a complete description of the original module. 
+The main part of the code used here is extracted from [https://gist.github.com/rmies/2828351 Michel Rijnders' GitHubGist]. See also [http://codingpraxis.com/erlang/2012/10/23/huffman-coding-in-erlang.html his blog], for a complete description of the original module.
 
 ```erlang
 -module(huffman).
- 
+
 -export([encode/1, decode/2, main/0]).
 
 encode(Text)  ->
@@ -2137,13 +2137,13 @@ encode(Text)  ->
     Dict = dict:from_list(codewords(Tree)),
     Code = << <<(dict:fetch(Char, Dict))/bitstring>> || Char <- Text >>,
     {Code, Tree, Dict}.
- 
+
 decode(Code, Tree) ->
     decode(Code, Tree, Tree, []).
 
-main() -> 
+main() ->
     {Code, Tree, Dict} = encode("this is an example for huffman encoding"),
-    [begin 
+    [begin
         io:format("~s: ",[[Key]]),
         print_bits(Value)
      end || {Key, Value} <- lists:sort(dict:to_list(Dict))],
@@ -2151,7 +2151,7 @@ main() ->
     print_bits(Code),
     io:format("decoded: "),
     io:format("~s\n",[decode(Code, Tree)]).
- 
+
 decode(<<>>, _, _, Result) ->
     lists:reverse(Result);
 decode(<<0:1, Rest/bits>>, Tree, {L = {_, _}, _R}, Result) ->
@@ -2162,24 +2162,24 @@ decode(<<1:1, Rest/bits>>, Tree, {_L, R = {_, _}}, Result) ->
     decode(<<Rest/bits>>, Tree, R, Result);
 decode(<<1:1, Rest/bits>>, Tree, {_L, R}, Result) ->
     decode(<<Rest/bits>>, Tree, Tree, [R | Result]).
- 
+
 codewords({L, R}) ->
     codewords(L, <<0:1>>) ++ codewords(R, <<1:1>>).
- 
+
 codewords({L, R}, <<Bits/bits>>) ->
     codewords(L, <<Bits/bits, 0:1>>) ++ codewords(R, <<Bits/bits, 1:1>>);
 codewords(Symbol, <<Bits/bitstring>>) ->
     [{Symbol, Bits}].
- 
+
 tree([{N, _} | []]) ->
     N;
 tree(Ns) ->
     [{N1, C1}, {N2, C2} | Rest] = lists:keysort(2, Ns),
     tree([{{N1, N2}, C1 + C2} | Rest]).
- 
+
 freq_table(Text) ->
     freq_table(lists:sort(Text), []).
- 
+
 freq_table([], Acc) ->
     Acc;
 freq_table([S | Rest], Acc) ->
@@ -2227,10 +2227,10 @@ decoded: this is an example for huffman encoding
 type 'a HuffmanTree =
     | Leaf of int * 'a
     | Node of int * 'a HuffmanTree * 'a HuffmanTree
- 
+
 let freq = function Leaf (f, _) | Node (f, _, _) -> f
 let freqCompare a b = compare (freq a) (freq b)
- 
+
 let buildTree charFreqs =
     let leaves = List.map (fun (c,f) -> Leaf (f,c)) charFreqs
     let freqSort = List.sortWith freqCompare
@@ -2241,21 +2241,21 @@ let buildTree charFreqs =
             let node = Node(freq a + freq b, a, b)
             aux (freqSort(node::tl))
     aux (freqSort leaves)
- 
+
 let rec printTree = function
   | code, Leaf (f, c) ->
       printfn "%c\t%d\t%s" c f (String.concat "" (List.rev code));
   | code, Node (_, l, r) ->
       printTree ("0"::code, l);
       printTree ("1"::code, r)
- 
+
 let () =
   let str = "this is an example for huffman encoding"
   let charFreqs =
     str |> Seq.groupBy id
         |> Seq.map (fun (c, vals) -> (c, Seq.length vals))
         |> Map.ofSeq
-         
+
   let tree = charFreqs |> Map.toList |> buildTree
   printfn "Symbol\tWeight\tHuffman code";
   printTree ([], tree)
@@ -2334,9 +2334,9 @@ class Huffman
     uniqueItems.each |Int item|
     {
       num := items.findAll { it == item }.size
-      queue.add (Leaf(item, num.toFloat / items.size)) 
+      queue.add (Leaf(item, num.toFloat / items.size))
     }
-    createTree 
+    createTree
     createTable
   }
 
@@ -2431,10 +2431,10 @@ x -> 01011
 
 ```fortran
 ! output:
-! d-> 00000, t-> 00001, h-> 0001, s-> 0010, 
-! c-> 00110, x-> 00111, m-> 0100, o-> 0101, 
-! n-> 011, u-> 10000, l-> 10001, a-> 1001, 
-! r-> 10100, g-> 101010, p-> 101011, 
+! d-> 00000, t-> 00001, h-> 0001, s-> 0010,
+! c-> 00110, x-> 00111, m-> 0100, o-> 0101,
+! n-> 011, u-> 10000, l-> 10001, a-> 1001,
+! r-> 10100, g-> 101010, p-> 101011,
 ! e-> 1011, i-> 1100, f-> 1101,  -> 111
 !
 ! 00001|0001|1100|0010|111|1100|0010|111|1001|011|
@@ -2446,7 +2446,7 @@ module huffman
 implicit none
 type node
   character (len=1 ), allocatable :: sym(:)
-  character (len=10), allocatable :: code(:) 
+  character (len=10), allocatable :: code(:)
   integer                         :: freq
 contains
   procedure                       :: show => show_node
@@ -2470,9 +2470,9 @@ subroutine siftdown(this, a)
   parent = a
   do while(parent*2 <= this%n)
     child = parent*2
-    if (child + 1 <= this%n) then 
+    if (child + 1 <= this%n) then
       if (x(child+1)%freq < x(child)%freq ) then
-        child = child +1 
+        child = child +1
       end if
     end if
     if (x(parent)%freq > x(child)%freq) then
@@ -2480,8 +2480,8 @@ subroutine siftdown(this, a)
       parent = child
     else
       exit
-    end if  
-  end do      
+    end if
+  end do
   end associate
 end subroutine
 
@@ -2499,7 +2499,7 @@ subroutine append(this, x)
   type(node)                  :: x
   type(node), allocatable     :: tmp(:)
   integer                     :: i
-  this%n = this%n +1  
+  this%n = this%n +1
   if (.not.allocated(this%buf)) allocate(this%buf(1))
   if (size(this%buf)<this%n) then
     allocate(tmp(2*size(this%buf)))
@@ -2508,7 +2508,7 @@ subroutine append(this, x)
   end if
   this%buf(this%n) = x
   i = this%n
-  do 
+  do
     i = i / 2
     if (i==0) exit
     call this%siftdown(i)
@@ -2519,7 +2519,7 @@ function join(a, b) result(c)
   type(node)             :: a, b, c
   integer                :: i, n, n1
   n1 = size(a%sym)
-  n = n1 + size(b%sym)  
+  n = n1 + size(b%sym)
   c%freq = a%freq + b%freq
   allocate (c%sym(n), c%code(n))
   do i = 1, n1
@@ -2548,7 +2548,7 @@ function create(letter, freq) result (this)
   this%sym(1) = letter ; this%code(1) = ""
   this%freq = freq
 end function
-end module 
+end module
 
 program main
   use huffman
@@ -2558,7 +2558,7 @@ program main
   type(queue)                    :: Q
   type(node)                     :: x
   do i = 1, len(txt)
-    freq(ichar(txt(i:i))) = freq(ichar(txt(i:i))) + 1 
+    freq(ichar(txt(i:i))) = freq(ichar(txt(i:i))) + 1
   end do
   do i = 0, 255
     if (freq(i)>0) then
@@ -2570,7 +2570,7 @@ program main
   end do
   x = Q%extractmin()
   call x%show()
-  do i = 1, len(txt) 
+  do i = 1, len(txt)
     do k = 1, size(x%sym)
       if (x%sym(k)==txt(i:i)) exit
      end do
@@ -2803,7 +2803,7 @@ class Node {
     int freq
     Node left
     Node right
-    boolean isLeaf() { left == null && right == null }    
+    boolean isLeaf() { left == null && right == null }
 }
 
 Map correspondance(Node n, Map corresp = [:], String prefix = '') {
@@ -2819,19 +2819,19 @@ Map correspondance(Node n, Map corresp = [:], String prefix = '') {
 Map huffmanCode(String message) {
     def queue = message.toList().countBy { it } // char frequencies
         .collect { String letter, int freq ->   // transformed into tree nodes
-            new Node(letter, freq) 
+            new Node(letter, freq)
         } as TreeSet // put in a queue that maintains ordering
-    
+
     while(queue.size() > 1) {
         def (nodeLeft, nodeRight)  = [queue.pollFirst(), queue.pollFirst()]
-        
+
         queue << new Node(
             freq:   nodeLeft.freq   + nodeRight.freq,
             letter: nodeLeft.letter + nodeRight.letter,
             left: nodeLeft, right: nodeRight
         )
     }
-    
+
     return correspondance(queue.pollFirst())
 }
 
@@ -2842,7 +2842,7 @@ String encode(CharSequence msg, Map codeTable) {
 String decode(String codedMsg, Map codeTable, String decoded = '') {
     def pair = codeTable.find { k, v -> codedMsg.startsWith(v) }
     pair ? pair.key + decode(codedMsg.substring(pair.value.size()), codeTable)
-         : decoded   
+         : decoded
 }
 
 ```
@@ -2970,7 +2970,7 @@ main = test "this is an example for huffman encoding"
 
 ### Using <code>Set</code> as a priority queue
 
-(might be worth it for bigger alphabets): 
+(might be worth it for bigger alphabets):
 
 ```haskell
 import qualified Data.Set as S
@@ -2982,14 +2982,14 @@ htree ts | S.null ts_1 = t1
              ((w1,t1), ts_1) = S.deleteFindMin ts
              ((w2,t2), ts_2) = S.deleteFindMin ts_1
              ts_3 = S.insert (w1 + w2, Branch t1 t2) ts_2
- 
+
 huffmanTree :: (Ord w, Num w, Ord a) => [(w, a)] -> HTree a
 huffmanTree =  htree . S.fromList . map (second Leaf)
 ```
 
 
 ===A non-tree version===
-This produces the output required without building the Huffman tree at all, 
+This produces the output required without building the Huffman tree at all,
 by building all the trace strings directly while reducing the histogram:
 
 ```haskell
@@ -3016,26 +3016,26 @@ main = do
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-record huffnode(l,r,n,c)                        # internal and leaf nodes 
+record huffnode(l,r,n,c)                        # internal and leaf nodes
 record huffcode(c,n,b,i)                        # encoding table char, freq, bitstring, bits (int)
 
 procedure main()
 
-s := "this is an example for huffman encoding"  
+s := "this is an example for huffman encoding"
 
 Count := huffcount(s)                           # frequency count
 Tree := huffTree(Count)                         # heap and tree
 
 Code := []                                      # extract encodings
 CodeT := table()
-every x := huffBits(Tree) do 
+every x := huffBits(Tree) do
    put( Code, CodeT[c] := huffcode( c := x[-1], Count[c].n, b := x[1:-1], integer("2r"||b) ) )
 
 
 Code := sortf( Code, 1 )                        # show table in char order
-write("Input String : ",image(s))               
-write(right("char",5), right("freq",5), " encoding" ) 
-every write(right(image((x := !Code).c),5), right(x.n,5), " ", x.b ) 
+write("Input String : ",image(s))
+write(right("char",5), right("freq",5), " encoding" )
+every write(right(image((x := !Code).c),5), right(x.n,5), " ", x.b )
 
 end
 
@@ -3054,7 +3054,7 @@ every x := !T do                                # ensure all are huffnodes
    if type(x) == "huffnode" then put(Q1,x) else runerr(205,x)
 Q1 := sortf(Q1,3)                               # sort by weight ( 3 means by .n  )
 
-if *Q1 > 1 then Q2 := []   
+if *Q1 > 1 then Q2 := []
 while *Q1+*\Q2 > 1 do {                         # While there is more than one node ...
 
    n1 := if Q1[1] & ( ( Q1[1].n <= Q2[1].n ) | not Q2[1] ) then get(Q1) else get(Q2)  # lowest weight from Q1 or Q2
@@ -3071,8 +3071,8 @@ local c,T
 
 T := table()
 every c := !s do {
-   /T[c] := huffnode(,,0,c) 
-   T[c].n +:= 1	  
+   /T[c] := huffnode(,,0,c)
+   T[c].n +:= 1
    }
 return T
 end
@@ -3186,7 +3186,7 @@ Huffman encoding:
 ->
 ```
 
-{{libheader|Icon Programming Library}}  
+{{libheader|Icon Programming Library}}
 [http://www.cs.arizona.edu/icon/library/progs/huffstuf.htm HuffStuff provides huffman encoding routines]
 
 
@@ -3197,11 +3197,11 @@ Huffman encoding:
 
 
 ```j
-hc=: 4 : 0  
+hc=: 4 : 0
  if. 1=#x do. y
  else. ((i{x),+/j{x) hc (i{y),<j{y [ i=. (i.#x) -. j=. 2{./:x end.
 )
-   
+
 hcodes=: 4 : 0
  assert. x -:&$ y           NB. weights and words have same shape
  assert. (0<:x) *. 1=#$x    NB. weights are non-negative
@@ -3219,18 +3219,18 @@ hcodes=: 4 : 0
    ;"1":L:0(#/.~ (],.(<'    '),.hcodes) ,&.>@~.)'this is an example for huffman encoding'
  t    0 1 0 1 0
  h    1 1 1 1 1
- i    1 0 0 1  
- s    0 0 1 0  
-      1 0 1    
- a    1 1 0 0  
- n    0 0 0    
- e    1 1 0 1  
+ i    1 0 0 1
+ s    0 0 1 0
+      1 0 1
+ a    1 1 0 0
+ n    0 0 0
+ e    1 1 0 1
  x    0 1 0 1 1
- m    0 0 1 1  
+ m    0 0 1 1
  p    0 1 1 0 0
  l    0 1 1 0 1
- f    1 1 1 0  
- o    0 1 0 0  
+ f    1 1 1 0
+ o    0 1 0 0
  r    0 1 1 1 0
  u    0 1 1 1 1
  c    1 0 0 0 0
@@ -3259,7 +3259,7 @@ abstract class HuffmanTree implements Comparable<HuffmanTree> {
 
 class HuffmanLeaf extends HuffmanTree {
     public final char value; // the character this leaf represents
-   
+
     public HuffmanLeaf(int freq, char val) {
         super(freq);
         value = val;
@@ -3268,7 +3268,7 @@ class HuffmanLeaf extends HuffmanTree {
 
 class HuffmanNode extends HuffmanTree {
     public final HuffmanTree left, right; // subtrees
-   
+
     public HuffmanNode(HuffmanTree l, HuffmanTree r) {
         super(l.frequency + r.frequency);
         left = l;
@@ -3388,14 +3388,14 @@ function HuffmanEncoding(str) {
     this.str = str;
 
     var count_chars = {};
-    for (var i = 0; i < str.length; i++) 
-        if (str[i] in count_chars) 
+    for (var i = 0; i < str.length; i++)
+        if (str[i] in count_chars)
             count_chars[str[i]] ++;
-        else 
+        else
             count_chars[str[i]] = 1;
 
     var pq = new BinaryHeap(function(x){return x[0];});
-    for (var ch in count_chars) 
+    for (var ch in count_chars)
         pq.push([count_chars[ch], ch]);
 
     while (pq.size() > 1) {
@@ -3432,7 +3432,7 @@ HuffmanEncoding.prototype.inspect_encoding = function() {
 
 HuffmanEncoding.prototype.decode = function(encoded) {
     var rev_enc = {};
-    for (var ch in this.encoding) 
+    for (var ch in this.encoding)
         rev_enc[this.encoding[ch]] = ch;
 
     var decoded = "";
@@ -3807,7 +3807,7 @@ Module Huffman {
                    While t<=b {
                          t1=m
                         m=(b+t) div 2
-                        if m=0 then  m=t1 : exit 
+                        if m=0 then  m=t1 : exit
                         If comp(stackitem(m),n) then t=m+1:  continue
                         b=m-1
                         m=b
@@ -3815,9 +3815,9 @@ Module Huffman {
                   if m>1 then shiftback m
             }
       }
-      
+
       a$="this is an example for huffman encoding"
-      
+
       inventory queue freq
       For i=1 to len(a$)   {
             b$=mid$(a$,i,1)
@@ -3862,15 +3862,15 @@ Module Huffman {
       Next i
       Print
       Print len(message$);" bits ", if$(a$=check$->"Encoding/decoding worked", "Encoding/Decoding failed")
-      
-      
+
+
       Sub Traverse(a, a$)
-            local b=array(a,1)      
+            local b=array(a,1)
             if type$(b)="mArray"  Else {
                   Print  @(10); quote$(array$(a, 1));" "; a$,@(20),array(a)
                   Append decode, a$ :=array$(a, 1)
                   Append encode, array$(a, 1):=a$
-                  Exit Sub   
+                  Exit Sub
             }
             traverse(array(b), a$+"0")
             traverse(array(b,1), a$+"1")
@@ -3904,7 +3904,7 @@ Huffman
 " " 111        0,1538
 0001010001100001111111000011111101101111110100010010110101000000000110101111101010000011111100000101110111010101101101111110100111001001001001111100011100110
 this is an example for huffman encoding
-      
+
 157 bits    Encoding/decoding worked
 
 </pre >
@@ -3915,14 +3915,14 @@ this is an example for huffman encoding
 ```mathematica
 huffman[s_String] := huffman[Characters[s]];
 huffman[l_List] := Module[{merge, structure, rules},
-       
+
    (*merge front two branches. list is assumed to be sorted*)
    merge[k_] := Replace[k, {{a_, aC_}, {b_, bC_}, rest___} :> {{{a, b}, aC + bC}, rest}];
-       
+
    structure = FixedPoint[
       Composition[merge, SortBy[#, Last] &],
       Tally[l]][[1, 1]];
-       
+
    rules = (# -> Flatten[Position[structure, #] - 1]) & /@ DeleteDuplicates[l];
 
    {Flatten[l /. rules], rules}];
@@ -4004,7 +4004,7 @@ proc buildTree(frequencies: CountTable[char]): seq[Node] =
 var sampleFrequencies = initCountTable[char]()
 for c in sampleString:
     sampleFrequencies.inc(c)
-let 
+let
     tree = buildTree(sampleFrequencies)
     root = tree.freeChildList[0]
 var huffCodes = newTable[char, HuffCode]()
@@ -4026,7 +4026,7 @@ echo huffCodes
 ```oberon2
 
 MODULE HuffmanEncoding;
-IMPORT 
+IMPORT
   Object,
   PriorityQueue,
   Strings,
@@ -4043,17 +4043,17 @@ TYPE
     (Object.ObjectDesc)
     left,right: Object.Object;
   END;
-  
+
 VAR
   str: ARRAY 128 OF CHAR;
-  i: INTEGER; 
+  i: INTEGER;
   f: ARRAY 96 OF INTEGER;
   q: PriorityQueue.Queue;
   a: PriorityQueue.Node;
   b: PriorityQueue.Node;
   c: PriorityQueue.Node;
   h: ARRAY 64 OF CHAR;
-  
+
 PROCEDURE NewLeaf(c: CHAR): Leaf;
 VAR
   x: Leaf;
@@ -4074,12 +4074,12 @@ BEGIN
   IF n IS Leaf THEN
     Out.Char(n(Leaf).c);Out.String(": ");Out.String(h);Out.Ln
   ELSE
-    IF n(Inner).left # NIL THEN 
+    IF n(Inner).left # NIL THEN
       Strings.Append("0",x);
       Preorder(n(Inner).left,x);
       Strings.Delete(x,(Strings.Length(x) - 1),1)
     END;
-    IF n(Inner).right # NIL THEN 
+    IF n(Inner).right # NIL THEN
       Strings.Append("1",x);
       Preorder(n(Inner).right,x);
       Strings.Delete(x,(Strings.Length(x) - 1),1)
@@ -4089,25 +4089,25 @@ END Preorder;
 
 BEGIN
   str := "this is an example for huffman encoding";
-  
+
   (* Collect letter frecuencies *)
   i := 0;
   WHILE str[i] # 0X DO INC(f[ORD(CAP(str[i])) - ORD(' ')]);INC(i) END;
- 
+
   (* Create Priority Queue *)
   NEW(q);q.Clear();
-  
+
   (* Insert into the queue *)
   i := 0;
   WHILE (i < LEN(f)) DO
-    IF f[i] # 0 THEN 
-      q.Insert(f[i]/Strings.Length(str),NewLeaf(CHR(i + ORD(' ')))) 
+    IF f[i] # 0 THEN
+      q.Insert(f[i]/Strings.Length(str),NewLeaf(CHR(i + ORD(' '))))
     END;
     INC(i)
   END;
-  
+
   (* create tree *)
-  WHILE q.Length() > 1 DO 
+  WHILE q.Length() > 1 DO
     q.Remove(a);q.Remove(b);
     q.Insert(a.w + b.w,NewInner(a.d,b.d));
   END;
@@ -4229,7 +4229,7 @@ CFComparisonResult HuffmanCompare(const void *ptr1, const void *ptr2, void *unus
 
 
 HuffmanTree *buildTree(NSCountedSet *chars) {
-	
+
 	CFBinaryHeapCallBacks callBacks = {0, HuffmanRetain, HuffmanRelease, NULL, HuffmanCompare};
 	CFBinaryHeapRef trees = CFBinaryHeapCreate(NULL, 0, &callBacks, NULL);
 
@@ -4240,7 +4240,7 @@ HuffmanTree *buildTree(NSCountedSet *chars) {
 		if (freq > 0)
 			CFBinaryHeapAddValue(trees, (__bridge const void *)[[HuffmanLeaf alloc] initWithFreq:freq character:(char)[ch intValue]]);
 	}
-	
+
 	NSCAssert(CFBinaryHeapGetCount(trees) > 0, @"String must have at least one character");
 	// loop until there is only one tree left
 	while (CFBinaryHeapGetCount(trees) > 1) {
@@ -4249,7 +4249,7 @@ HuffmanTree *buildTree(NSCountedSet *chars) {
 		CFBinaryHeapRemoveMinimumValue(trees);
 		HuffmanTree *b = (__bridge HuffmanTree *)CFBinaryHeapGetMinimum(trees);
 		CFBinaryHeapRemoveMinimumValue(trees);
-		
+
 		// put into new node and re-insert into queue
 		CFBinaryHeapAddValue(trees, (__bridge const void *)[[HuffmanNode alloc] initWithLeft:a right:b]);
 	}
@@ -4262,18 +4262,18 @@ void printCodes(HuffmanTree *tree, NSMutableString *prefix) {
 	NSCAssert(tree != nil, @"tree must not be nil");
 	if ([tree isKindOfClass:[HuffmanLeaf class]]) {
 		HuffmanLeaf *leaf = (HuffmanLeaf *)tree;
-		
+
 		// print out character, frequency, and code for this leaf (which is just the prefix)
 		NSLog(@"%c\t%d\t%@", leaf.value, leaf.freq, prefix);
-		
+
 	} else if ([tree isKindOfClass:[HuffmanNode class]]) {
 		HuffmanNode *node = (HuffmanNode *)tree;
-		
+
 		// traverse left
 		[prefix appendString:@"0"];
 		printCodes(node.left, prefix);
 		[prefix deleteCharactersInRange:NSMakeRange([prefix length]-1, 1)];
-		
+
 		// traverse right
 		[prefix appendString:@"1"];
 		printCodes(node.right, prefix);
@@ -4285,20 +4285,20 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
 
 	NSString *test = @"this is an example for huffman encoding";
-	
+
 	// read each character and record the frequencies
 	NSCountedSet *chars = [[NSCountedSet alloc] init];
 	int n = [test length];
 	for (int i = 0; i < n; i++)
 		[chars addObject:@([test characterAtIndex:i])];
-	
+
 	// build tree
 	HuffmanTree *tree = buildTree(chars);
-	
+
 	// print out results
 	NSLog(@"SYMBOL\tWEIGHT\tHUFFMAN CODE");
 	printCodes(tree, [NSMutableString string]);
-	
+
     }
     return 0;
 }
@@ -4345,7 +4345,7 @@ We use a Set (which is automatically sorted) as a priority queue.
 type 'a huffman_tree =
   | Leaf of 'a
   | Node of 'a huffman_tree * 'a huffman_tree
- 
+
 module HSet = Set.Make
   (struct
      type t = int * char huffman_tree (* pair of frequency and the tree *)
@@ -4377,7 +4377,7 @@ let rec print_tree code = function
   | Node (l, r) ->
       print_tree ("0"::code) l;
       print_tree ("1"::code) r
- 
+
 let () =
   let str = "this is an example for huffman encoding" in
   let charFreqs = Hashtbl.create 42 in
@@ -4612,7 +4612,7 @@ integer freq = new_dict(),
     destroy_dict(freq)
     return nodes
 end function
- 
+
 function build_hufftree(integer nodes)
 sequence lkey, rkey, node
 integer lfreq, rfreq
@@ -4623,17 +4623,17 @@ integer lfreq, rfreq
         rkey = getd_partial_key({0,0},nodes)
         rfreq = rkey[1]
         deld(rkey,nodes)
- 
+
         node = {lfreq+rfreq,{lkey,rkey}}
 
         if dict_size(nodes)=0 then exit end if
- 
+
         setd(node,0,nodes)
     end while
     destroy_dict(nodes)
     return node
 end function
- 
+
 procedure build_huffcodes(object node, string bits, integer d)
     {integer freq, object data} = node
     if sequence(data) then
@@ -4673,7 +4673,7 @@ procedure main(string data)
         encoded &= getd(data[i],d)[2]
     end for
     ?encoded
- 
+
     integer rd = new_dict()
     traverse_dict(r_invert_huffcode, rd, d)
     string decoded = ""
@@ -4684,14 +4684,14 @@ procedure main(string data)
         while node=0 do
             done += 1
             key &= encoded[done]
-            node = getd_index(key, rd) 
+            node = getd_index(key, rd)
         end while
         decoded &= getd_by_index(node,rd)
     end while
     ?decoded
 
 end procedure
- 
+
 main("this is an example for huffman encoding")
 ```
 
@@ -5198,13 +5198,13 @@ function Get-HuffmanEncodingTable ( $String )
                 @{ Label = 'ID'      ; Expression = { $ID      } },
                 @{ Label = 'Parent'  ; Expression = { 0        } },
                 @{ Label = 'Code'    ; Expression = { ''       } }
- 
+
     #  Grow stems under leafs
     ForEach ( $Branch in 2..($Nodes.Count) )
         {
         #  Get the two nodes with the lowest count
         $LowNodes = $Nodes | Where Parent -eq 0 | Sort Count | Select -First 2
- 
+
         #  Create a new stem node
         $ID++
         $Nodes += '' |
@@ -5213,33 +5213,33 @@ function Get-HuffmanEncodingTable ( $String )
                     @{ Label = 'ID'      ; Expression = { $ID      } },
                     @{ Label = 'Parent'  ; Expression = { 0        } },
                     @{ Label = 'Code'    ; Expression = { ''       } }
- 
+
         #  Put the two nodes in the new stem node
         $LowNodes[0].Parent = $ID
         $LowNodes[1].Parent = $ID
- 
+
         #  Assign 0 and 1 to the left and right nodes
         $LowNodes[0].Code = '0'
         $LowNodes[1].Code = '1'
         }
-   
+
     #  Assign coding to nodes
     ForEach ( $Node in $Nodes[($Nodes.Count-2)..0] )
         {
         $Node.Code = ( $Nodes | Where ID -eq $Node.Parent ).Code + $Node.Code
         }
- 
+
     $EncodingTable = $Nodes | Where { $_.Symbol } | Select Symbol, Code | Sort Symbol
     return $EncodingTable
     }
- 
+
 #  Get table for given string
 $String = "this is an example for huffman encoding"
 $HuffmanEncodingTable = Get-HuffmanEncodingTable $String
- 
+
 #  Display table
 $HuffmanEncodingTable | Format-Table -AutoSize
- 
+
 #  Encode string
 $EncodedString = $String
 ForEach ( $Node in $HuffmanEncodingTable )
@@ -5254,24 +5254,24 @@ $EncodedString
 
 ```txt
 
-Symbol Code 
------- ---- 
-       101  
-a      1100 
+Symbol Code
+------ ----
+       101
+a      1100
 c      01011
 d      01100
-e      1101 
-f      1110 
+e      1101
+f      1110
 g      01110
 h      11111
-i      1001 
+i      1001
 l      11110
-m      0011 
-n      000  
-o      0100 
+m      0011
+n      000
+o      0100
 p      10001
 r      01111
-s      0010 
+s      0010
 t      01010
 u      01101
 x      10000
@@ -5300,8 +5300,8 @@ huffman :-
 	format('Symbol~t   Weight~t~30|Code~n'),
 	maplist(print_code, SC).
 
-build_tree([[V1|R1], [V2|R2]|T], AF) :- 
-	V is V1 + V2, 
+build_tree([[V1|R1], [V2|R2]|T], AF) :-
+	V is V1 + V2,
 	A = [V, [V1|R1], [V2|R2]],
 	(   T=[] -> AF=A ;  sort([A|T], NT), build_tree(NT, AF) ).
 
@@ -5373,10 +5373,10 @@ n :             4             000
 ```PureBasic
 
 OpenConsole()
- 
+
 SampleString.s="this is an example for huffman encoding"
 datalen=Len(SampleString)
- 
+
 Structure ztree
   linked.c
   ischar.c
@@ -5388,24 +5388,24 @@ EndStructure
 
 Dim memc.c(datalen)
 CopyMemory(@SampleString, @memc(0), datalen * SizeOf(Character))
- 
+
 Dim tree.ztree(255)
- 
+
 For i=0 To datalen-1
   tree(memc(i))\char=memc(i)
   tree(memc(i))\number+1
   tree(memc(i))\ischar=1
 Next
- 
+
 SortStructuredArray(tree(),#PB_Sort_Descending,OffsetOf(ztree\number),#PB_Integer)
- 
+
 For i=0 To 255
   If tree(i)\number=0
     ReDim tree(i-1)
     Break
   EndIf
 Next
- 
+
 dimsize=ArraySize(tree())
 Repeat
   min1.l=0
@@ -5421,11 +5421,11 @@ Repeat
       EndIf
     EndIf
   Next
- 
+
   If min1=0 Or min2=0
     Break
   EndIf
- 
+
   dimsize+1
   ReDim tree(dimsize)
   tree(dimsize)\number=tree(hmin1)\number+tree(hmin2)\number
@@ -5434,7 +5434,7 @@ Repeat
   tree(hmin1)\linked=1
   tree(hmin2)\linked=1
 ForEver
- 
+
 i=0
 While tree(i)\ischar=1
   str.s=""
@@ -5453,7 +5453,7 @@ While tree(i)\ischar=1
   i+1
 Wend
 Input()
- 
+
 CloseConsole()
 
 ```
@@ -5559,21 +5559,21 @@ An extension to the method outlined above is given [http://paddy3118.blogspot.co
 ```racket
 
 #lang racket
- 
+
 (require data/heap
          data/bit-vector)
- 
+
 ;; A node is either an interior, or a leaf.
 ;; In either case, they record an item with an associated frequency.
 (struct node (freq) #:transparent)
 (struct interior node (left right) #:transparent)
 (struct leaf node (val) #:transparent)
- 
+
 ;; node<=?: node node -> boolean
 ;; Compares two nodes by frequency.
 (define (node<=? x y)
   (<= (node-freq x) (node-freq y)))
- 
+
 ;; make-huffman-tree: (listof leaf) -> interior-node
 (define (make-huffman-tree leaves)
   (define a-heap (make-heap node<=?))
@@ -5586,7 +5586,7 @@ An extension to the method outlined above is given [http://paddy3118.blogspot.co
     (heap-add! a-heap (interior (+ (node-freq min-1) (node-freq min-2))
                                 min-1 min-2)))
   (heap-min a-heap))
- 
+
 ;; string->huffman-tree: string -> node
 ;; Given a string, produces its huffman tree.  The leaves hold the characters
 ;; and their relative frequencies.
@@ -5598,14 +5598,14 @@ An extension to the method outlined above is given [http://paddy3118.blogspot.co
   (make-huffman-tree
    (for/list ([(k v) (in-hash ht)])
      (leaf (/ v n) k))))
- 
+
 ;; make-encoder: node -> (string -> bit-vector)
 ;; Given a huffman tree, generates the encoder function.
-(define (make-encoder a-tree) 
+(define (make-encoder a-tree)
   (define dict (huffman-tree->dictionary a-tree))
   (lambda (a-str)
     (list->bit-vector (apply append (for/list ([ch a-str]) (hash-ref dict ch))))))
- 
+
 ;; huffman-tree->dictionary: node -> (hashof val (listof boolean))
 ;; A helper for the encoder: maps characters to their code sequences.
 (define (huffman-tree->dictionary a-node)
@@ -5621,7 +5621,7 @@ An extension to the method outlined above is given [http://paddy3118.blogspot.co
 
   (for/hash ([(k v) ht])
     (values v k)))
- 
+
 ;; make-decoder: interior-node -> (bit-vector -> string)
 ;; Generates the decoder function from the tree.
 (define (make-decoder a-tree)
@@ -5630,36 +5630,36 @@ An extension to the method outlined above is given [http://paddy3118.blogspot.co
       (for/fold ([decoded/rev '()]
                  [a-node a-tree])
                 ([bit a-bitvector])
-        (define next-node 
+        (define next-node
           (cond
             [(not bit)
              (interior-left a-node)]
             [else
              (interior-right a-node)]))
         (cond [(leaf? next-node)
-               (values (cons (leaf-val next-node) decoded/rev) 
+               (values (cons (leaf-val next-node) decoded/rev)
                        a-tree)]
               [else
                (values decoded/rev next-node)])))
     (apply string (reverse decoded/rev))))
- 
- 
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Example application:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define msg "this is an example for huffman encoding")
- 
+
 (define tree (string->huffman-tree msg))
 
 ;; We can print out the mapping for inspection:
 (huffman-tree->dictionary tree)
- 
+
 (define encode (make-encoder tree))
 (define encoded (encode msg))
 
 ;; Here's what the encoded message looks like:
 (bit-vector->string encoded)
- 
+
 (define decode (make-decoder tree))
 ;; Here's what the decoded message looks like:
 (decode encoded)
@@ -5677,7 +5677,7 @@ Red [file: %huffy.red]
 msg: "this is an example for huffman encoding"
 
 ;;map to collect leave knots  per uniq character of message
-m: make map! []	
+m: make map! []
 
 knot: make object! [
 	left: right: none    ;; pointer to left/right sibling
@@ -5687,11 +5687,11 @@ knot: make object! [
 
 ;;-----------------------------------------
 set-code: func  ["recursive function to generate binary code sequence"
-			wknot  
+			wknot
 			wcode [string!]] [
 ;;-----------------------------------------
 	either wknot/left = none [
-		wknot/code:  wcode 
+		wknot/code:  wcode
 	] [
 		set-code wknot/left rejoin [wcode "1"]
 		set-code wknot/right rejoin [wcode "0"]
@@ -5711,11 +5711,11 @@ merge-2knots: func ["function to merge 2 knots into 1 new"
 	insert t nknot  ;; insert new generated knot
 ]	;;-- end func
 
-;; count occurence of characters, save in map: m 
+;; count occurence of characters, save in map: m
 foreach chr msg [
 	either k:  select/case m chr [
-			k/count: k/count + 1	
-	][  
+			k/count: k/count + 1
+	][
 		put/case m chr nknot: copy knot
 		nknot/code: chr
 	]
@@ -5724,10 +5724,10 @@ foreach chr msg [
 ;; create sortable block (=tab) for use as prio queue
 foreach k  keys-of m [	append tab: []  :m/:k ]
 
-;; build tree 
+;; build tree
 while [ 1 <  length? tab][
 	sort/compare tab function [a b] [
-					a/count  <  b/count 
+					a/count  <  b/count
 		  or (   a/count = b/count and ( a/depth > b/depth ) )
 	]
 	merge-2knots tab	;; merge 2 knots with lowest count / max depth
@@ -5737,8 +5737,8 @@ set-code tab/1 ""		;; generate binary codes, save at leave knot
 
 ;;  display codes
 foreach k sort keys-of m [
-	print [k " = " m/:k/code]	
-	append codes: "" m/:k/code	
+	print [k " = " m/:k/code]
+	append codes: "" m/:k/code
 ]
 
 ;; encode orig message string
@@ -5789,8 +5789,8 @@ u  =  100110
 x  =  00110
 length of encoded msg  157
 length of (binary) codes  85
-orig. message:  this is an example for huffman encoding 
-encoded message:  
+orig. message:  this is an example for huffman encoding
+encoded message:
 1001111000101001001111010010011111010111111011001101101000100001000001011111110001010011111110001001101100110000011101011111101101100101010100100101001110010
 decoded: this is an example for huffman encoding
 
@@ -6144,17 +6144,17 @@ require 'priority_queue'
 def huffman_encoding(str)
   char_count = Hash.new(0)
   str.each_char {|c| char_count[c] += 1}
-  
+
   pq = CPriorityQueue.new
   # chars with fewest count have highest priority
   char_count.each {|char, count| pq.push(char, count)}
-  
+
   while pq.length > 1
     key1, prio1 = pq.delete_min
     key2, prio2 = pq.delete_min
     pq.push([key1, key2], prio1 + prio2)
   end
-  
+
   Hash[*generate_encoding(pq.min_key)]
 end
 
@@ -6355,17 +6355,17 @@ x: 10000
 ```scala
 object Huffman {
   import scala.collection.mutable.{Map, PriorityQueue}
-  
+
   sealed abstract class Tree
   case class Node(left: Tree, right: Tree) extends Tree
   case class Leaf(c: Char) extends Tree
-  
-  def treeOrdering(m: Map[Tree, Int]) = new Ordering[Tree] { 
+
+  def treeOrdering(m: Map[Tree, Int]) = new Ordering[Tree] {
      def compare(x: Tree, y: Tree) = m(y).compare(m(x))
   }
 
   def stringMap(text: String) = text groupBy (x => Leaf(x) : Tree) mapValues (_.length)
-  
+
   def buildNode(queue: PriorityQueue[Tree], map: Map[Tree,Int]) {
     val right = queue.dequeue
     val left = queue.dequeue
@@ -6385,20 +6385,20 @@ object Huffman {
   def encode(text: String) = {
     val map = Map.empty[Tree,Int] ++= stringMap(text)
     val queue = new PriorityQueue[Tree]()(treeOrdering(map)) ++= map.keysIterator
-    
+
     while(queue.size > 1) {
       buildNode(queue, map)
     }
     codify(queue.dequeue, map)
   }
-  
-  
+
+
   def main(args: Array[String]) {
     val text = "this is an example for huffman encoding"
     val code = encode(text)
     println("Char\tWeight\t\tEncoding")
-    code sortBy (_._2._1) foreach { 
-      case (c, (weight, encoding)) => println("%c:\t%3d/%-3d\t\t%s" format (c, weight, text.length, encoding)) 
+    code sortBy (_._2._1) foreach {
+      case (c, (weight, encoding)) => println("%c:\t%3d/%-3d\t\t%s" format (c, weight, text.length, encoding))
     }
   }
 }
@@ -6809,7 +6809,7 @@ Rather than a priority queue of subtrees, we use the strategy of two sorted list
  {
   case Leaf(T)
   indirect case Node(HuffmanTree<T>, HuffmanTree<T>)
-  
+
   func printCodes(prefix: String) {
     switch(self) {
     case let .Leaf(c):
@@ -6839,12 +6839,12 @@ func buildTree<T>(freqs: [(T, Int)]) -> HuffmanTree<T> {
       e1 = nodes[j]
       j++
     }
-    
+
     // if there's no subtrees left, then that one was the answer
     if i == leaves.count && j == nodes.count {
       return e1.1
     }
-    
+
     // get next subtree of least frequency
     var e2 : (Int, HuffmanTree<T>)
     if j == nodes.count || i < leaves.count && leaves[i].0 < nodes[j].0 {
@@ -6913,31 +6913,31 @@ package require struct::prioqueue
 
 proc huffmanEncode {str args} {
     array set opts [concat -dump false $args]
-    
+
     set charcount [dict create]
     foreach char [split $str ""] {
         dict incr charcount $char
     }
-    
+
     set pq [struct::prioqueue -dictionary] ;# want lower values to have higher priority
     dict for {char count} $charcount {
         $pq put $char $count
     }
-    
+
     while {[$pq size] > 1} {
         lassign [$pq peekpriority 2] p1 p2
         $pq put [$pq get 2] [expr {$p1 + $p2}]
     }
-    
+
     set encoding [walkTree [$pq get]]
-    
+
     if {$opts(-dump)} {
         foreach {char huffCode} [lsort -index 1 -stride 2 -command compare $encoding] {
             puts "$char\t[dict get $charcount $char]\t$huffCode"
         }
     }
     $pq destroy
-    
+
     return $encoding
 }
 

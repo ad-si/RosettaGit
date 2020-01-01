@@ -14,14 +14,14 @@ tags = []
 {{Sorting Algorithm}}
 
 ;Task:
-[[wp:Bogosort|Bogosort]] a list of numbers. 
+[[wp:Bogosort|Bogosort]] a list of numbers.
 
 
 Bogosort simply shuffles a collection randomly until it is sorted.
 
-"Bogosort" is a perversely inefficient algorithm only used as an in-joke.  
+"Bogosort" is a perversely inefficient algorithm only used as an in-joke.
 
-Its average run-time is   O(n!)   because the chance that any given shuffle of a set will end up in sorted order is about one in   ''n''   factorial,   and the worst case is infinite since there's no guarantee that a random shuffling will ever produce a sorted sequence. 
+Its average run-time is   O(n!)   because the chance that any given shuffle of a set will end up in sorted order is about one in   ''n''   factorial,   and the worst case is infinite since there's no guarantee that a random shuffling will ever produce a sorted sequence.
 
 Its best case is   O(n)   since a single pass through the elements may suffice to order them.
 
@@ -49,7 +49,7 @@ public function bogoSort(arr:Array):Array
     {
         shuffle(arr);
     }
-	    
+
     return arr;
 }
 
@@ -140,10 +140,10 @@ begin
 end Test_Bogosort;
 ```
 
-The solution is generic. 
-The procedure Bogosort can be instantiated 
-with any copyable comparable type. 
-In the example given it is the standard Integer type. 
+The solution is generic.
+The procedure Bogosort can be instantiated
+with any copyable comparable type.
+In the example given it is the standard Integer type.
 {{out}}
 
 ```txt
@@ -199,7 +199,7 @@ PROC bogo sort = (REF[]TYPE l)REF[]TYPE: (
     OD;
     l
 );
- 
+
 [6]TYPE sample := (61, 52, 63, 94, 46, 18);
 print((bogo sort(sample), new line))
 ```
@@ -240,19 +240,19 @@ TableNumber:	     .int   1,2,3,4,5,6,7,8,9,10
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss  
+.bss
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                           @ entry of program 
+.global main
+main:                                           @ entry of program
 
 1:
     ldr r0,iAdrTableNumber                      @ address number table
-    mov r1,#NBELEMENTS                          @ number of élements 
+    mov r1,#NBELEMENTS                          @ number of élements
     bl knuthShuffle
-    
+
     @ table  display elements
     ldr r2,iAdrTableNumber
     mov r3,#0
@@ -267,15 +267,15 @@ main:                                           @ entry of program
     ble 2b
     ldr r0,iAdrszCarriageReturn
     bl affichageMess
-    
+
     ldr r0,iAdrTableNumber                      @ address number table
-    mov r1,#NBELEMENTS                          @ number of élements 
+    mov r1,#NBELEMENTS                          @ number of élements
     bl isSorted                                 @ control sort
     cmp r0,#1                                   @ sorted ?
     bne 1b                                      @ no -> loop
 
 
-100:                                            @ standard end of the program 
+100:                                            @ standard end of the program
     mov r0, #0                                  @ return code
     mov r7, #EXIT                               @ request to exit program
     svc #0                                      @ perform the system call
@@ -285,7 +285,7 @@ iAdrszCarriageReturn:    .int szCarriageReturn
 iAdrsMessResult:          .int sMessResult
 iAdrTableNumber:          .int TableNumber
 /******************************************************************/
-/*     control sorted table                                   */ 
+/*     control sorted table                                   */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the number of elements  > 0  */
@@ -307,9 +307,9 @@ isSorted:
 	b 1b
 100:
     pop {r2-r4,lr}
-    bx lr                                              @ return 
+    bx lr                                              @ return
 /******************************************************************/
-/*     knuthShuffle Shuffle                                  */ 
+/*     knuthShuffle Shuffle                                  */
 /******************************************************************/
 /* r0 contains the address of table */
 /* r1 contains the number of elements */
@@ -330,36 +330,36 @@ knuthShuffle:
 
 100:
     pop {r2-r5,lr}
-    bx lr                                              @ return 
+    bx lr                                              @ return
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                          @ save  registres
-    mov r2,#0                                      @ counter length 
-1:                                                 @ loop length calculation 
-    ldrb r1,[r0,r2]                                @ read octet start position + index 
-    cmp r1,#0                                      @ if 0 its over 
-    addne r2,r2,#1                                 @ else add 1 in the length 
-    bne 1b                                         @ and loop 
-                                                   @ so here r2 contains the length of the message 
-    mov r1,r0                                      @ address message in r1 
-    mov r0,#STDOUT                                 @ code to write to the standard output Linux 
-    mov r7, #WRITE                                 @ code call system "write" 
-    svc #0                                         @ call systeme 
-    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */ 
-    bx lr                                          @ return  
+    mov r2,#0                                      @ counter length
+1:                                                 @ loop length calculation
+    ldrb r1,[r0,r2]                                @ read octet start position + index
+    cmp r1,#0                                      @ if 0 its over
+    addne r2,r2,#1                                 @ else add 1 in the length
+    bne 1b                                         @ and loop
+                                                   @ so here r2 contains the length of the message
+    mov r1,r0                                      @ address message in r1
+    mov r0,#STDOUT                                 @ code to write to the standard output Linux
+    mov r7, #WRITE                                 @ code call system "write"
+    svc #0                                         @ call systeme
+    pop {r0,r1,r2,r7,lr}                           @ restaur des  2 registres */
+    bx lr                                          @ return
 /******************************************************************/
-/*     Converting a register to a decimal unsigned                */ 
+/*     Converting a register to a decimal unsigned                */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 /* r0 return size of result (no zero final in area) */
 /* area size => 11 bytes          */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                                 @ save registers 
+    push {r1-r4,lr}                                 @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 
@@ -367,7 +367,7 @@ conversion10:
     bl divisionpar10U                               @ unsigned  r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                                      @ digit
     strb r1,[r3,r2]                                 @ store digit on area
-    cmp r0,#0                                       @ stop if quotient = 0 
+    cmp r0,#0                                       @ stop if quotient = 0
     subne r2,#1                                     @ else previous position
     bne 1b	                                    @ and loop
                                                     @ and move digit from left of area
@@ -380,7 +380,7 @@ conversion10:
     cmp r2,#LGZONECAL
     ble 2b
                                                       @ and move spaces in end on area
-    mov r0,r4                                         @ result length 
+    mov r0,r4                                         @ result length
     mov r1,#' '                                       @ space
 3:
     strb r1,[r3,r4]                                   @ store space in area
@@ -389,14 +389,14 @@ conversion10:
     ble 3b                                            @ loop if r4 <= area size
 
 100:
-    pop {r1-r4,lr}                                    @ restaur registres 
+    pop {r1-r4,lr}                                    @ restaur registres
     bx lr                                             @return
 
 /***************************************************/
 /*   division par 10   unsigned                    */
 /***************************************************/
 /* r0 dividende   */
-/* r0 quotient */	
+/* r0 quotient */
 /* r1 remainder  */
 divisionpar10U:
     push {r2,r3,r4, lr}
@@ -404,40 +404,40 @@ divisionpar10U:
     //mov r3,#0xCCCD                                   @ r3 <- magic_number lower  raspberry 3
     //movt r3,#0xCCCC                                  @ r3 <- magic_number higter raspberry 3
     ldr r3,iMagicNumber                                @ r3 <- magic_number    raspberry 1 2
-    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0) 
+    umull r1, r2, r3, r0                               @ r1<- Lower32Bits(r1*r0) r2<- Upper32Bits(r1*r0)
     mov r0, r2, LSR #3                                 @ r2 <- r2 >> shift 3
-    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5 
+    add r2,r0,r0, lsl #2                               @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                               @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2,r3,r4,lr}
-    bx lr                                              @ leave function 
+    bx lr                                              @ leave function
 iMagicNumber:  	.int 0xCCCCCCCD
 /***************************************************/
 /*   Generation random number                  */
 /***************************************************/
 /* r0 contains limit  */
 genereraleas:
-    push {r1-r4,lr}                                    @ save registers 
+    push {r1-r4,lr}                                    @ save registers
     ldr r4,iAdriGraine
     ldr r2,[r4]
     ldr r3,iNbDep1
     mul r2,r3,r2
     ldr r3,iNbDep1
     add r2,r2,r3
-    str r2,[r4]                                        @ maj de la graine pour l appel suivant 
+    str r2,[r4]                                        @ maj de la graine pour l appel suivant
     cmp r0,#0
     beq 100f
     mov r1,r0                                          @ divisor
     mov r0,r2                                          @ dividende
     bl division
     mov r0,r3                                          @ résult = remainder
-  
+
 100:                                                   @ end function
     pop {r1-r4,lr}                                     @ restaur registers
     bx lr                                              @ return
 /*****************************************************/
-iAdriGraine: .int iGraine	
+iAdriGraine: .int iGraine
 iNbDep1: .int 0x343FD
-iNbDep2: .int 0x269EC3 
+iNbDep2: .int 0x269EC3
 /***************************************************/
 /* integer division unsigned                       */
 /***************************************************/
@@ -451,14 +451,14 @@ division:
     mov r3, #0                                         @ init remainder
     mov r4, #32                                        @ init counter bits
     b 2f
-1:                                                     @ loop 
+1:                                                     @ loop
     movs r0, r0, LSL #1                                @ r0 <- r0 << 1 updating cpsr (sets C if 31st bit of r0 was 1)
-    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C 
-    cmp r3, r1                                         @ compute r3 - r1 and update cpsr 
-    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1 
-    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C 
+    adc r3, r3, r3                                     @ r3 <- r3 + r3 + C. This is equivalent to r3 ? (r3 << 1) + C
+    cmp r3, r1                                         @ compute r3 - r1 and update cpsr
+    subhs r3, r3, r1                                   @ if r3 >= r1 (C=1) then r3 <- r3 - r1
+    adc r2, r2, r2                                     @ r2 <- r2 + r2 + C. This is equivalent to r2 <- (r2 << 1) + C
 2:
-    subs r4, r4, #1                                    @ r4 <- r4 - 1 
+    subs r4, r4, #1                                    @ r4 <- r4 - 1
     bpl 1b                                             @ if r4 >= 0 (N=0) then loop
     pop {r4, lr}
     bx lr
@@ -557,7 +557,7 @@ END { # sort it with bogo sort
 ```bbcbasic
       DIM test(9)
       test() = 4, 65, 2, 31, 0, 99, 2, 83, 782, 1
-      
+
       shuffles% = 0
       WHILE NOT FNsorted(test())
         shuffles% += 1
@@ -565,14 +565,14 @@ END { # sort it with bogo sort
       ENDWHILE
       PRINT ;shuffles% " shuffles required to sort "; DIM(test(),1)+1 " items."
       END
-      
+
       DEF PROCshuffle(d())
       LOCAL I%
       FOR I% = DIM(d(),1)+1 TO 2 STEP -1
         SWAP d(I%-1), d(RND(I%)-1)
       NEXT
       ENDPROC
-      
+
       DEF FNsorted(d())
       LOCAL I%
       FOR I% = 1 TO DIM(d(),1)
@@ -609,8 +609,8 @@ p bogosort [15 6 2 9 1 3 41 19]
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
@@ -656,8 +656,8 @@ int main()
 Uses C++11. Compile with
  g++ -std=c++11 bogo.cpp
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 #include <random>
@@ -759,13 +759,13 @@ namespace RosettaCode.BogoSort
 
 ```clojure
 (defn in-order? [order xs]
-  (or (empty? xs) 
+  (or (empty? xs)
       (apply order xs)))
- 
+
 (defn bogosort [order xs]
   (if (in-order? order xs) xs
     (recur order (shuffle xs))))
- 
+
 (println (bogosort < [7 5 12 1 4 2 23 18]))
 ```
 
@@ -1037,7 +1037,7 @@ feature {NONE}
 
 end
 </lang >
-TEST: 
+TEST:
 
 ```Eiffel
 
@@ -1093,26 +1093,26 @@ ELENA 4.1 :
 ```elena
 import extensions;
 import system'routines;
- 
+
 extension op
 {
     bogoSorter()
     {
         var list := self;
- 
+
         until (list.isAscendant())
         {
             list := list.randomize(list.Length)
         };
- 
+
         ^ list
     }
 }
- 
+
 public program()
 {
     var list := new int[]::(3, 4, 1, 8, 7, -2, 0);
- 
+
     console.printLine("before:", list.asEnumerable());
     console.printLine("after :", list.bogoSorter().asEnumerable())
 }
@@ -1141,7 +1141,7 @@ defmodule Sort do
       bogo_sort(Enum.shuffle(list))
     end
   end
-  
+
   defp sorted?(list) when length(list)<=1, do: true
   defp sorted?([x, y | _]) when x>y, do: false
   defp sorted?([_, y | rest]), do: sorted?([y | rest])
@@ -1275,7 +1275,7 @@ CONTAINS
     INTEGER, INTENT(IN) :: a(:)
     INTEGER :: i
 
-    Sorted = .TRUE.  
+    Sorted = .TRUE.
     DO i = 1, SIZE(a)-1
       IF(a(i) > a(i+1)) THEN
         Sorted = .FALSE.
@@ -1306,7 +1306,7 @@ PROGRAM BOGOSORT
   INTEGER :: iter = 0
   INTEGER :: array(8) = (/2, 7, 5, 3, 4, 8, 6, 1/)
   LOGICAL :: s
- 
+
   DO
     s = Sorted(array)
     IF (s) EXIT
@@ -1314,7 +1314,7 @@ PROGRAM BOGOSORT
     iter = iter + 1
   END DO
   WRITE (*,*) "Array required", iter, " shuffles to sort"
- 
+
 END PROGRAM BOGOSORT
 ```
 
@@ -1332,7 +1332,7 @@ Dim iCounter As Integer                                   'Loop counter
 
 Do
   Inc iCounter                                            'Increase counter value
-  Repeat                                                  'Repeat 
+  Repeat                                                  'Repeat
     sChr = Chr(Rand(49, 57))                              'Get a random number and convert it to a character e.g. 49="1"
     If Not InStr(sTest, sChr) Then sTest &= sChr          'If the random character is not in sTest then add it
   Until Len(sTest) = 9                                    'Loop until sTest has 9 characters
@@ -1446,12 +1446,12 @@ println (bogosort([3,1,2]))
 import System.Random
 import Data.Array.IO
 import Control.Monad
- 
+
 isSortedBy :: (a -> a -> Bool) -> [a] -> Bool
 isSortedBy _ [] = True
 isSortedBy f xs = all (uncurry f) . (zip <*> tail) $ xs
 
- 
+
 -- from http://www.haskell.org/haskellwiki/Random_shuffle
 shuffle :: [a] -> IO [a]
 shuffle xs = do
@@ -1466,9 +1466,9 @@ shuffle xs = do
     n = length xs
     newArray :: Int -> [a] -> IO (IOArray Int a)
     newArray n xs =  newListArray (1,n) xs
- 
+
 bogosortBy :: (a -> a -> Bool) -> [a] -> IO [a]
-bogosortBy f xs | isSortedBy f xs = return xs 
+bogosortBy f xs | isSortedBy f xs = return xs
                 | otherwise       = shuffle xs >>= bogosortBy f
 
 bogosort :: Ord a => [a] -> IO [a]
@@ -1586,19 +1586,19 @@ Without Collections, Lists or Iterators. With a counter.
 ```java
 
 
-public class BogoSort 
+public class BogoSort
 {
 	public static void main(String[] args)
 	{
 		//Enter array to be sorted here
 		int[] arr={4,5,6,0,7,8,9,1,2,3};
-		
+
 		BogoSort now=new BogoSort();
 		System.out.print("Unsorted: ");
 		now.display1D(arr);
-		
+
 		now.bogo(arr);
-		
+
 		System.out.print("Sorted: ");
 		now.display1D(arr);
 	}
@@ -1647,9 +1647,9 @@ public class BogoSort
 {{out}}
 
 ```txt
-Unsorted: 4 5 6 0 7 8 9 1 2 3 
+Unsorted: 4 5 6 0 7 8 9 1 2 3
 This took 23104714 shuffles.
-Sorted: 0 1 2 3 4 5 6 7 8 9 
+Sorted: 0 1 2 3 4 5 6 7 8 9
 ```
 
 
@@ -1701,7 +1701,7 @@ isSorted = function(v){
     }
     return true;
 }
-		
+
 bogosort = function(v){
     var sorted = false;
     while(sorted == false){
@@ -1923,7 +1923,7 @@ Bogosort[{1, 2, 6, 4, 0, -1, Pi, 3, 5}]
 
 
 ```MATLAB
-function list = bogoSort(list)  
+function list = bogoSort(list)
     while( ~issorted(list) ) %Check to see if it is sorted
         list = list( randperm(numel(list)) ); %Randomly sort the list
     end
@@ -1971,7 +1971,7 @@ fn randSort x y =
 )
 
 fn shuffle arr =
-(			
+(
     qsort arr randSort
     arr
 )
@@ -2060,7 +2060,7 @@ module Bogosort
             foreach (i in [0 .. (a.Length - 2)])
             a[i] <-> a[(rnd.Next(i, a.Length))];
         }
-        
+
         def isSorted(b)
         {
             when (b.Length <= 1) return true;
@@ -2068,7 +2068,7 @@ module Bogosort
                 when (b[i].CompareTo(b[i - 1]) < 0) return false;
             true;
         }
-        
+
         def loop()
         {
             unless (isSorted(x)) {shuffle(x); loop();};
@@ -2076,7 +2076,7 @@ module Bogosort
 
         loop()
     }
-    
+
     Main() : void
     {
         def sortme = array[1, 5, 3, 6, 7, 3, 8, -2];
@@ -2208,12 +2208,12 @@ MODULE Bogo;
 
    PROCEDURE Sorted(VAR a: ARRAY OF INTEGER): BOOLEAN;
       VAR i: INTEGER;
-   BEGIN 
+   BEGIN
       IF LEN(a) <= 1 THEN
          RETURN TRUE;
       END;
       FOR i := 1 TO LEN(a) - 1 DO
-         IF (a[i] < a[i - 1]) THEN 
+         IF (a[i] < a[i - 1]) THEN
             RETURN FALSE;
          END;
       END;
@@ -2481,7 +2481,7 @@ function bogosort(sequence s)
     end while
     return s
 end function
- 
+
 ? bogosort(shuffle({1,2,3,4,5,6}))
 ```
 
@@ -2622,7 +2622,7 @@ number of bogo sorts performed =   8
    0.0
    1.0
  333.0
- 444.4 
+ 444.4
 ```
 
 
@@ -2632,7 +2632,7 @@ number of bogo sorts performed =   8
 Shuffle taken from [[Knuth Shuffle]]
 
 ```PowerShell
-function shuffle ($a) { 
+function shuffle ($a) {
     $c = $a.Clone()  # make copy to avoid clobbering $a
     1..($c.Length - 1) | ForEach-Object {
         $i = Get-Random -Minimum $_ -Maximum $c.Length
@@ -2671,9 +2671,9 @@ $l = 7; BogoSort ( 1..$l | ForEach-Object { $Rand = New-Object Random }{ $Rand.N
 ```PureBasic
 Procedure KnuthShuffle (Array a(1))
   Protected i, Size = ArraySize(a())
-  For i = 0 To Size             
-    Swap a(i), a(Random(Size)) 
-  Next 
+  For i = 0 To Size
+    Swap a(i), a(Random(Size))
+  Next
 EndProcedure
 
 Procedure isSorted(Array a(1))
@@ -2688,7 +2688,7 @@ EndProcedure
 
 Procedure BogoSort(Array a(1))
   Protected Size = ArraySize(a()) + 1, iter
-   
+
   While Not isSorted(a())
     iter + 1
     KnuthShuffle(a())
@@ -2920,11 +2920,11 @@ number of bogo sorts performed = 6
 
 
 ### modified bogo sort
- 
 
-When a number is found out of order, two random numbers between the first number's position and 
 
-the position of the last number checked are swapped (in other words, swap two numbers within what 
+When a number is found out of order, two random numbers between the first number's position and
+
+the position of the last number checked are swapped (in other words, swap two numbers within what
 
 has already been sorted and including the number out-of-order.   The search then starts over.
 
@@ -3098,7 +3098,7 @@ number of bogo sorts performed = 4071
 
 # Project : Sorting algorithms/Bogosort
 
-test = [4, 65, 2, 31, 0, 99, 2, 83, 782, 1] 
+test = [4, 65, 2, 31, 0, 99, 2, 83, 782, 1]
 shuffles = 0
 while ! sorted(test)
         shuffles = shuffles + 1
@@ -3106,7 +3106,7 @@ while ! sorted(test)
 end
 see "" + shuffles + " shuffles required to sort " + len(test)  + " items:" + nl
 showarray(test)
- 
+
 func shuffle(d)
         for i = len(d) to 2 step -1
              item = random(i) + 1
@@ -3118,7 +3118,7 @@ func shuffle(d)
                 i = i -1
              ok
 next
- 
+
 func sorted(d)
         for j = 2 to len(d)
              if d[j] < d[j-1]
@@ -3225,7 +3225,7 @@ fn is_sorted_by<T,F>(order: F, coll: &[T]) -> bool
     coll[..].iter().zip(&coll[1..]).all(|(x,y)| order(x,y))
 }
 
- 
+
 fn main() {
     let mut testlist = [1,55,88,24,990876,312,67,0,854,13,4,7];
     bogosort_by(|x,y| x < y, &mut testlist);
@@ -3368,7 +3368,7 @@ end
 
 ```txt
 1: 5 4 3 2 1
-2: 2 1 4 3 5 
+2: 2 1 4 3 5
 . . . . . .
 117: 3 2 1 5 4
 118: 1 2 3 4 5
@@ -3504,7 +3504,7 @@ shuffle = @iNX ~&l->r ^jrX/~&l ~&lK8PrC
 
 bogosort = (not ordered nleq)-> shuffle
 
-#cast %nL 
+#cast %nL
 
 example = bogosort <8,50,0,12,47,51>
 ```
@@ -3545,7 +3545,7 @@ Private Function inOrder(s As Variant)
     Loop
     inOrder = True
 End Function
- 
+
 Private Function bogosort(ByVal s As Variant) As Variant
     Do While Not inOrder(s)
         Debug.Print Join(s, ", ")
@@ -3553,7 +3553,7 @@ Private Function bogosort(ByVal s As Variant) As Variant
     Loop
     bogosort = s
 End Function
- 
+
 Public Sub main()
     Debug.Print Join(bogosort(Knuth([{1,2,3,4,5,6}])), ", ")
 End Sub
@@ -3580,7 +3580,7 @@ End Sub
 sub swap( byref a, byref b )
 	dim tmp
 	tmp = a
-	a = b 
+	a = b
 	b = tmp
 end sub
 
@@ -3600,7 +3600,7 @@ end function
 
 function inOrder( a )
 	dim res
-	dim i 
+	dim i
 	for i = 0 to ubound( a ) - 1
 		res = ( a(i) <= a(i+1) )
 		if res = false then exit for
@@ -3676,7 +3676,7 @@ for I:= 0 to 10-1 do [IntOut(0, A(I));  ChOut(0, ^ )];
 
 ```txt
 
--5 1 1 2 3 4 4 5 6 9 
+-5 1 1 2 3 4 4 5 6 9
 
 ```
 

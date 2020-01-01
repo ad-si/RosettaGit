@@ -12,12 +12,12 @@ tags = []
 
 {{task}}
 
-Given two [[wp:Interval (mathematics)|ranges]]: 
-:::*   <big><math>[a_1,a_2]</math></big>   and 
-:::*   <big><math>[b_1,b_2]</math></big>;  
+Given two [[wp:Interval (mathematics)|ranges]]:
+:::*   <big><math>[a_1,a_2]</math></big>   and
+:::*   <big><math>[b_1,b_2]</math></big>;
 :::*   then a value   <big><math>s</math></big>   in range   <big><math>[a_1,a_2]</math></big>
 :::*   is linearly mapped to a value   <big><math>t</math></big>   in range   <big><math>[b_1,b_2]</math>
-</big>   where: 
+</big>   where:
 
 
 
@@ -25,7 +25,7 @@ Given two [[wp:Interval (mathematics)|ranges]]:
 
 
 ;Task:
-Write a function/subroutine/... that takes two ranges and a real number, and returns the mapping of the real number from the first to the second range. 
+Write a function/subroutine/... that takes two ranges and a real number, and returns the mapping of the real number from the first to the second range.
 
 Use this function to map values from the range   <big><code> [0, 10] </code></big>   to the range   <big><code> [-1, 0]. </code></big>
 
@@ -175,11 +175,11 @@ end rangeMap
 -- TEST ---------------------------------------------------
 on run
     set mapping to rangeMap({0, 10}, {-1, 0})
-    
+
     set xs to enumFromTo(0, 10)
     set ys to map(mapping, xs)
     set zs to map(approxRatio(0), ys)
-    
+
     unlines(zipWith3(formatted, xs, ys, zs))
 end run
 
@@ -190,7 +190,7 @@ end run
 on formatted(x, m, r)
     set fract to showRatio(r)
     set {n, d} to splitOn("/", fract)
-    
+
     (justifyRight(2, space, x as string) & "   ->   " & ¬
         justifyRight(4, space, m as string)) & "   =   " & ¬
         justifyRight(2, space, n) & "/" & d
@@ -220,7 +220,7 @@ on approxRatio(epsilon)
             else
                 set e to 1 / 10000
             end if
-            
+
             script gcde
                 on |λ|(e, x, y)
                     script _gcd
@@ -235,7 +235,7 @@ on approxRatio(epsilon)
                     |λ|(abs(x), abs(y)) of _gcd
                 end |λ|
             end script
-            
+
             set c to |λ|(e, 1, n) of gcde
             ratio((n div c), (1 div c))
         end |λ|
@@ -297,7 +297,7 @@ on |length|(xs)
     end if
 end |length|
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -353,14 +353,14 @@ on ratio(x, y)
 end ratio
 
 -- Egyptian multiplication - progressively doubling a list, appending
--- stages of doubling to an accumulator where needed for binary 
+-- stages of doubling to an accumulator where needed for binary
 -- assembly of a target length
 -- replicate :: Int -> a -> [a]
 on replicate(n, a)
     set out to {}
     if n < 1 then return out
     set dbl to {a}
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -472,7 +472,7 @@ end zipWith3
 {{trans|C}}
 
 ```AutoHotkey
- 
+
 mapRange(a1, a2, b1, b2, s)
 {
 	return b1 + (s-a1)*(b2-b1)/(a2-a1)
@@ -495,16 +495,16 @@ Axiom provides a Segment domain for intervals. The following uses a closure for 
 ```Axiom
 )abbrev package TESTP TestPackage
 TestPackage(R:Field) : with
-    mapRange: (Segment(R), Segment(R)) -> (R->R) 
+    mapRange: (Segment(R), Segment(R)) -> (R->R)
   == add
-    mapRange(fromRange, toRange) == 
+    mapRange(fromRange, toRange) ==
       (a1,a2,b1,b2) := (lo fromRange,hi fromRange,lo toRange,hi toRange)
       (x:R):R +-> b1+(x-a1)*(b2-b1)/(a2-a1)
 ```
 
 Use:
 ```Axiom
-f := mapRange(1..10,a..b)  
+f := mapRange(1..10,a..b)
 [(xi,f xi) for xi in 1..10]
 ```
 
@@ -582,7 +582,7 @@ function map_range(a1,a2,b1,b2,num) {
         PRINT n " maps to " FNmaprange(A{}, B{}, n)
       NEXT
       END
-      
+
       DEF FNmaprange(a{}, b{}, s)
       = b.l + (s - a.l) * (b.h - b.l) / (a.h - a.l)
 ```
@@ -613,7 +613,7 @@ function map_range(a1,a2,b1,b2,num) {
 ```commodorebasic
 10 REM MAP RANGE
 20 REM COMMODORE BASIC 2.0
-30 REM 
+30 REM
 ### ==========================
 
 40 A1 = 0 : A2 = 10
@@ -741,8 +741,8 @@ f( 10 ) =  0
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 double mapRange(double a1,double a2,double b1,double b2,double s)
 {
@@ -753,12 +753,12 @@ int main()
 {
 	int i;
 	puts("Mapping [0,10] to [-1,0] at intervals of 1:");
-	
+
 	for(i=0;i<=10;i++)
 	{
 		printf("f(%d) = %g\n",i,mapRange(0,10,-1,0,i));
 	}
-	
+
 	return 0;
 }
 
@@ -797,7 +797,7 @@ public class MapRange
         foreach (int i in Enumerable.Range(0, 11))
             Console.WriteLine($"{i} maps to {Map(0, 10, -1, 0, i)}");
     }
-    
+
     static double Map(double a1, double a2, double b1, double b2, double s) => b1 + (s - a1) * (b2 - b1) / (a2 - a1);
 }
 ```
@@ -828,8 +828,8 @@ This example defines a template function to handle the mapping, using two '''std
 It's not written efficiently; certainly, there can be fewer explicit temporary variables. The use of the template offers a choice in types for precision and accuracy considerations, though one area for improvement might be to allow a different type for intermediate calculations.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <utility>
 
 template<typename tVal>
@@ -887,7 +887,7 @@ map_value(10) = 0
 
 (defn maprange [[a1 a2] [b1 b2] s]
 	(+ b1 (/ (* (- s a1) (- b2 b1)) (- a2 a1))))
- 
+
 > (doseq [s (range 11)]
        (printf "%2s maps to %s\n" s (maprange [0 10] [-1 0] s)))
 
@@ -960,7 +960,7 @@ map_value(10) = 0
 
        PROCEDURE DIVISION USING a-begin, a-end, b-begin, b-end,
                val-to-map, ret.
-           COMPUTE ret = 
+           COMPUTE ret =
                b-begin + ((val-to-map - a-begin) * (b-end - b-begin)
                    / (a-end - a-begin))
            .
@@ -975,7 +975,7 @@ The output is identical to the output of the Common Lisp example.
 
 
 
-```CoffeeScript 
+```CoffeeScript
 
 mapRange = (a1,a2,b1,b2,s) ->
     t = b1 + ((s-a1)*(b2 - b1)/(a2-a1))
@@ -1105,16 +1105,16 @@ EchoLisp provides several native interpolation functions: smoothstep, s-curve, .
 
 (for [(x (in-range 0 10))] (writeln x (q-map-range x 0 10 -1 0) (map-range x 0 10 -1 0)))
 
-0     -1     -1    
-1     -9/10     -0.9    
-2     -4/5     -0.8    
-3     -7/10     -0.7    
-4     -3/5     -0.6    
-5     -1/2     -0.5    
-6     -2/5     -0.4    
-7     -3/10     -0.3    
-8     -1/5     -0.2    
-9     -1/10     -0.1    
+0     -1     -1
+1     -9/10     -0.9
+2     -4/5     -0.8
+3     -7/10     -0.7
+4     -3/5     -0.6
+5     -1/2     -0.5
+6     -2/5     -0.4
+7     -3/10     -0.3
+8     -1/5     -0.2
+9     -1/10     -0.1
 
 ```
 
@@ -1162,7 +1162,7 @@ end)
 ```lisp
 (defun maprange (a1 a2 b1 b2 s)
    (+ b1 (/ (* (- s a1) (- b2 b1)) (- a2 a1))))
-  
+
 (dotimes (i 10)
   (princ (maprange 0.0 10.0 -1.0 0.0 i))
   (terpri))
@@ -1266,7 +1266,7 @@ Or:
 
 ```factor
 USING: locals infix ;
-:: map-range ( a1 a2 b1 b2 x -- y ) 
+:: map-range ( a1 a2 b1 b2 x -- y )
    [infix
      b1 + (x - a1) * (b2 - b1) / (a2 - a1)
    infix] ;
@@ -1299,7 +1299,7 @@ class FRange
 
   // return range as a string
   override Str toStr () { "[$low,$high]" }
-  
+
   // return a point in given range interpolated into this range
   Float remap (Float point, FRange given)
   {
@@ -1353,7 +1353,7 @@ Value 10 in [0.0,10.0] maps to 0.0 in [-1.0,0.0]
 : lerp ( b2 b1 a2 a1 s -- t )
   fover f-
   frot frot f- f/
-  frot frot fswap fover f- frot f*  
+  frot frot fswap fover f- frot f*
   f+ ;
 
 : test   11 0 do  0e -1e 10e 0e i s>f lerp f.  loop ;
@@ -1378,22 +1378,22 @@ There is less stack shuffling if you use origin and range instead of endpoints f
 ```fortran
 program Map
   implicit none
-  
+
   real :: t
   integer :: i
 
   do i = 0, 10
-    t = Maprange((/0.0, 10.0/), (/-1.0, 0.0/), real(i)) 
+    t = Maprange((/0.0, 10.0/), (/-1.0, 0.0/), real(i))
     write(*,*) i, " maps to ", t
-  end do 
+  end do
 
 contains
 
 function Maprange(a, b, s)
   real :: Maprange
   real, intent(in) :: a(2), b(2), s
- 
-  Maprange = (s-a(1)) * (b(2)-b(1)) / (a(2)-a(1)) + b(1) 
+
+  Maprange = (s-a(1)) * (b(2)-b(1)) / (a(2)-a(1)) + b(1)
 
 end function Maprange
 end program Map
@@ -1441,13 +1441,13 @@ func main() {
 
 '''Extra credit'''
 
-First, a function literal replaces the mapping function specified by the basic task.  
-This allows a simpler parameter signature and also allows things to be precomputed for efficiency.  newMapRange checks the direction of the first range and if it is decreasing, reverses both ranges.  
-This simplifies an out-of-range check in the function literal.  
-Also, the slope and intercept of the linear function are computed.  
-This allows the range mapping to use the slope intercept formula which is computationally more efficient that the two point formula.  
+First, a function literal replaces the mapping function specified by the basic task.
+This allows a simpler parameter signature and also allows things to be precomputed for efficiency.  newMapRange checks the direction of the first range and if it is decreasing, reverses both ranges.
+This simplifies an out-of-range check in the function literal.
+Also, the slope and intercept of the linear function are computed.
+This allows the range mapping to use the slope intercept formula which is computationally more efficient that the two point formula.
 
-Second, ", ok" is a Go idiom.  It takes advantage of Go's multiple return values and multiple assignment to return a success/failure disposition.  
+Second, ", ok" is a Go idiom.  It takes advantage of Go's multiple return values and multiple assignment to return a success/failure disposition.
 In the case of this task, the result t is undefined if the input s is out of range.
 
 ```go
@@ -1613,13 +1613,13 @@ main
 
 record Range(a, b)
 
-# note, we force 'n' to be real, which means recalculation will 
+# note, we force 'n' to be real, which means recalculation will
 # be using real numbers, not integers
 procedure remap (range1, range2, n : real)
   if n < range2.a | n > range2.b then fail # n out of given range
   return range1.a + (n - range2.a) * (range1.b - range1.a) / (range2.b - range2.a)
 end
-  
+
 procedure range_string (range)
   return "[" || range.a || ", " || range.b || "]"
 end
@@ -1630,7 +1630,7 @@ procedure main ()
   # if i is out of range1, then 'remap' fails, so only valid changes are written
   every i := -2 to 12 do {
     if m := remap (range2, range1, i)
-      then write ("Value " || i || " in " || range_string (range1) || 
+      then write ("Value " || i || " in " || range_string (range1) ||
                   " maps to " || m || " in " || range_string (range2))
   }
 end
@@ -1734,11 +1734,11 @@ _1 _0.9 _0.8 _0.7 _0.6 _0.5 _0.4 _0.3 _0.2 _0.1 0
 public class Range {
 	public static void main(String[] args){
 		for(float s = 0;s <= 10; s++){
-			System.out.println(s + " in [0, 10] maps to "+ 
+			System.out.println(s + " in [0, 10] maps to "+
 					mapRange(0, 10, -1, 0, s)+" in [-1, 0].");
 		}
 	}
-	
+
 	public static double mapRange(double a1, double a2, double b1, double b2, double s){
 		return b1 + ((s - a1)*(b2 - b1))/(a2 - a1);
 	}
@@ -1985,7 +1985,7 @@ Composing a solution from generic abstractions:
 ## jq
 
 In jq, it is generally preferable to define functions as parameterized filters.  In the present case,
-since the task calls for defining a map, the signature maprange(a;b), where a and b are the two ranges, is appropriate.  
+since the task calls for defining a map, the signature maprange(a;b), where a and b are the two ranges, is appropriate.
 
 ```jq
 # The input is the value to be mapped.
@@ -2031,7 +2031,7 @@ def maprange_array(a; b):
   | map(_helper( $a; $b; $factor) );
 ```
 
-'''Example''':  
+'''Example''':
  [range(0;11)] | maprange_array([0,10]; [-1, 0])
 
 
@@ -2096,7 +2096,7 @@ fun mapRange(range1: FloatRange, range2: FloatRange, value: Float): Float {
     if (range1.endInclusive == range1.start) throw IllegalArgumentException("first range cannot be single-valued")
     return range2.start + (value - range1.start) * (range2.endInclusive - range2.start) / (range1.endInclusive - range1.start)
 }
-        
+
 fun main(args: Array<String>) {
     for (i in 0..10) {
         val mappedValue = mapRange(FloatRange(0.0f, 10.0f), FloatRange(-1.0f, 0.0f), i.toFloat())
@@ -2251,13 +2251,13 @@ module Maprange
     Maprange(a : double * double, b : double * double, s : double) : double
     {
         def (a1, a2) = a; def (b1, b2) = b;
-        
+
         b1 + (((s - a1) * (b2 - b1))/(a2 - a1))
     }
-    
+
     Main() : void
     {
-        foreach (i in [0 .. 10]) 
+        foreach (i in [0 .. 10])
             WriteLine("{0, 2:f0} maps to {1:f1}", i, Maprange((0.0, 10.0), (-1.0, 0.0), i));
     }
 }
@@ -2296,17 +2296,17 @@ method mapRange(a1, a2, b1, b2, s_) public static
 
 ```txt
 
-Mapping [0.0, 10.0] to [-1.0, 0.0] in increments of 1.0: 
-  f(  0.000) =   -1.000 
-  f(  1.000) =   -0.900 
-  f(  2.000) =   -0.800 
-  f(  3.000) =   -0.700 
-  f(  4.000) =   -0.600 
-  f(  5.000) =   -0.500 
-  f(  6.000) =   -0.400 
-  f(  7.000) =   -0.300 
-  f(  8.000) =   -0.200 
-  f(  9.000) =   -0.100 
+Mapping [0.0, 10.0] to [-1.0, 0.0] in increments of 1.0:
+  f(  0.000) =   -1.000
+  f(  1.000) =   -0.900
+  f(  2.000) =   -0.800
+  f(  3.000) =   -0.700
+  f(  4.000) =   -0.600
+  f(  5.000) =   -0.500
+  f(  6.000) =   -0.400
+  f(  7.000) =   -0.300
+  f(  8.000) =   -0.200
+  f(  9.000) =   -0.100
   f( 10.000) =    0.000
 
 ```
@@ -2402,7 +2402,7 @@ f(10) = 0
 ```ocaml
 let map_range (a1, a2) (b1, b2) s =
   b1 +. ((s -. a1) *. (b2 -. b1) /. (a2 -. a1))
- 
+
 let () =
   print_endline "Mapping [0,10] to [-1,0] at intervals of 1:";
   for i = 0 to 10 do
@@ -2437,7 +2437,7 @@ let map_range (a1, a2) (b1, b2) =
   let v = (b2 -. b1) /. (a2 -. a1) in
   function s ->
     b1 +. ((s -. a1) *. v)
- 
+
 let () =
   print_endline "Mapping [0,10] to [-1,0] at intervals of 1:";
   let p = (map_range (0.0, 10.0) (-1.0, 0.0)) in
@@ -2454,8 +2454,8 @@ let () =
 
 
 ```Oforth
-: mapRange(p1, p2, s) 
-   s p1 first - p2 second p2 first - * p1 second p1 first - asFloat / 
+: mapRange(p1, p2, s)
+   s p1 first - p2 second p2 first - * p1 second p1 first - asFloat /
    p2 first + ;
 ```
 
@@ -2606,7 +2606,7 @@ use strict ;
 sub mapValue {
    my ( $range1 , $range2 , $number ) = @_ ;
    return ( $range2->[ 0 ] +
-      (( $number - $range1->[ 0 ] ) * ( $range2->[ 1 ] - $range2->[ 0 ] ) ) / ( $range1->[ -1 ] 
+      (( $number - $range1->[ 0 ] ) * ( $range2->[ 1 ] - $range2->[ 0 ] ) ) / ( $range1->[ -1 ]
       - $range1->[ 0 ] ) ) ;
 }
 my @numbers = 0..10 ;
@@ -2863,7 +2863,7 @@ Structure RR
 EndStructure
 
 Procedure.f MapRange(*a.RR, *b.RR, s)
-  Protected.f a1, a2, b1, b2 
+  Protected.f a1, a2, b1, b2
   a1=*a\a:  a2=*a\b
   b1=*b\a:  b2=*b\b
   ProcedureReturn b1 + ((s - a1) * (b2 - b1) / (a2 - a1))
@@ -2910,7 +2910,7 @@ EndIf
 >>> for s in range(11):
 	print("%2g maps to %g" % (s, maprange( (0, 10), (-1, 0), s)))
 
-	
+
  0 maps to -1
  1 maps to -0.9
  2 maps to -0.8
@@ -2932,7 +2932,7 @@ Because of Pythons  strict, dynamic, typing rules for numbers the same function 
 >>> for s in range(11):
 	print("%2g maps to %s" % (s, maprange( (0, 10), (-1, 0), Fraction(s))))
 
-	
+
  0 maps to -1
  1 maps to -9/10
  2 maps to -4/5
@@ -2944,7 +2944,7 @@ Because of Pythons  strict, dynamic, typing rules for numbers the same function 
  8 maps to -1/5
  9 maps to -1/10
 10 maps to 0
->>> 
+>>>
 ```
 
 
@@ -2997,8 +2997,8 @@ The first three versions support different increments   (the   '''inc'''   varia
 
 (that is, the 2nd number [usually the high] in the range is less than the first number in the range [usually the low]).   Also,
 
-the   '''BY'''   (increment)   is automatically adjusted   (either   ''upwards''   or   ''downwards'').   Also, 
-both sets of numbers in the 
+the   '''BY'''   (increment)   is automatically adjusted   (either   ''upwards''   or   ''downwards'').   Also,
+both sets of numbers in the
 
 output are aligned  (vertically).
 
@@ -3092,7 +3092,7 @@ mapR: procedure; parse arg a1 a2,b1 b2,s;$=b1+(s-a1)*(b2-b1)/(a2-a1);return left
 
 ### version 3
 
-This REXX version used a function that calculates and also displays the range mapping. 
+This REXX version used a function that calculates and also displays the range mapping.
 
 ```rexx
 /*REXX program maps and displays a  range of numbers from  one range  to  another range.*/
@@ -3110,7 +3110,7 @@ mapR: procedure;  parse arg a1 a2, b1 b2, inc    /* [↓]  BY  is  either   +inc
       return                                     /* [↑]  LEFT··· aligns non─negative #'s*/
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -3125,13 +3125,13 @@ mapR: procedure;  parse arg a1 a2, b1 b2, inc    /* [↓]  BY  is  either   +inc
   do j=0  to 10
     say right(j,3)   ' maps to '   mapRange(0,10,-1,0,j)
     end
-exit                                   
+exit
 /*──────────────────────────────────MAPRANGE subroutine─────────────────*/
 mapRange: return arg(3)+(arg(5)-arg(1))*(arg(4)-arg(3))/(arg(2)-arg(1))
 /* Arguments are arg a1,a2,b1,b2,x */
 ```
 
-{{out}} 
+{{out}}
 
 ```txt
 
@@ -3159,16 +3159,16 @@ mapRange: return arg(3)+(arg(5)-arg(1))*(arg(4)-arg(3))/(arg(2)-arg(1))
 # Project : Map range
 
 decimals(1)
-al = 0 
+al = 0
 ah = 10
-bl = -1 
+bl = -1
 bh = 0
 for n = 0 to 10
      see "" + n + " maps to " + maprange(al, bl, n) + nl
 next
- 
+
 func maprange(al, bl, s)
-       return bl + (s - al) * (bh - bl) / (ah - al) 
+       return bl + (s - al) * (bh - bl) / (ah - al)
 
 ```
 
@@ -3468,7 +3468,7 @@ import Foundation
 func mapRanges(_ r1: ClosedRange<Double>, _ r2: ClosedRange<Double>, to: Double) -> Double {
   let num = (to - r1.lowerBound) * (r2.upperBound - r2.lowerBound)
   let denom = r1.upperBound - r1.lowerBound
-  
+
   return r2.lowerBound + num / denom
 }
 
@@ -3680,7 +3680,7 @@ int I;
 sub MapRange(s, a1, a2, b1, b2)
     return b1+(s-a1)*(b2-b1)/(a2-a1)
 end sub
- 
+
 for i = 0 to 10 step 2
     print i, " : ", MapRange(i,0,10,-1,0)
 next

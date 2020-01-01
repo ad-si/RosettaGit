@@ -10,9 +10,9 @@ categories = []
 tags = []
 +++
 
-{{task|Prime Numbers}} 
+{{task|Prime Numbers}}
 
-Semiprime numbers are natural numbers that are products of exactly two (possibly equal) [[prime_number|prime numbers]]. 
+Semiprime numbers are natural numbers that are products of exactly two (possibly equal) [[prime_number|prime numbers]].
 
 
 '''Semiprimes'''   are also known as:
@@ -24,10 +24,10 @@ Semiprime numbers are natural numbers that are products of exactly two (possibly
 
 
 
-;Example: 
-   <big> 1679  =  23 &times; 73 </big> 
+;Example:
+   <big> 1679  =  23 &times; 73 </big>
 
-(This particular number was chosen as the length of the [http://en.wikipedia.org/wiki/Arecibo_message Arecibo message]). 
+(This particular number was chosen as the length of the [http://en.wikipedia.org/wiki/Arecibo_message Arecibo message]).
 
 
 ;Task;
@@ -58,7 +58,7 @@ SEMIPRIM CSECT
          ST     R15,8(R13)         link forward
          LR     R13,R15            set addressability
          LA     R10,PG             pgi=0
-         LA     R8,0               m=0         
+         LA     R8,0               m=0
          L      R6,=F'2'           i=2
        DO WHILE=(C,R6,LE,=F'100')  do i=2 to 100
          ST     R6,N                 n=i
@@ -71,7 +71,7 @@ LOOPJ    EQU    *                    do j=2 while f<2 and j*j<=n
          MR     R4,R7                  *j
          C      R5,N                   if j*j<=n
          BH     EXITJ                  then exit do j
-LOOPK    EQU    *                      do while n mod j=0 
+LOOPK    EQU    *                      do while n mod j=0
          L      R4,N                     n
          SRDA   R4,32                    ~
          DR     R4,R7                    /j
@@ -138,18 +138,18 @@ XDEC     DS     CL12               temp
 ## Ada
 
 
-This imports the package '''Prime_Numbers''' from [[Prime decomposition#Ada]]. 
+This imports the package '''Prime_Numbers''' from [[Prime decomposition#Ada]].
 
 
 ```ada
-with Prime_Numbers, Ada.Text_IO; 
- 
+with Prime_Numbers, Ada.Text_IO;
+
 procedure Test_Semiprime is
-   
-   package Integer_Numbers is new 
-     Prime_Numbers (Natural, 0, 1, 2); 
+
+   package Integer_Numbers is new
+     Prime_Numbers (Natural, 0, 1, 2);
    use Integer_Numbers;
-   
+
 begin
    for N in 1 .. 100 loop
       if Decompose(N)'Length = 2 then -- N is a semiprime;
@@ -161,7 +161,7 @@ begin
       if Decompose(N)'Length = 2 then -- N is a semiprime;
 	 Ada.Text_IO.Put(Integer'Image(Integer(N)));
       end if;
-   end loop; 
+   end loop;
 end Test_Semiprime;
 ```
 
@@ -169,11 +169,11 @@ end Test_Semiprime;
 It outputs all semiprimes below 100 and all semiprimes between 1675 and 1680:
 {{output}}
  4 6 9 10 14 15 21 22 25 26 33 34 35 38 39 46 49 51 55 57 58 62 65 69 74 77 82 85 86 87 91 93 94 95
- 1678 1679 
+ 1678 1679
 
-Note that  
- 1675 = 5 * 5 * 67, 
- 1676 = 2 * 2 * 419, 
+Note that
+ 1675 = 5 * 5 * 67,
+ 1676 = 2 * 2 * 419,
  1677 = 3 * 13 * 43,
  1678 = 2 * 839,
  1679 = 23 * 73,
@@ -285,9 +285,9 @@ semiprime(k)
 								new .= floor(start) . "*" . floor(k//start) . ","
 						start--
 					}
-		
+
 		StringSplit, index, new, `,
-		
+
 			if ( index0 = 2 )
 				{
 					StringTrimRight, new, new, 1
@@ -365,7 +365,7 @@ function is_semiprime(n,  i,nf) {
 
 ## Bracmat
 
-When Bracmat is asked to take the square (or any other) root of a number, it does so by first finding the number's prime factors. It can do that for numbers up to 2^32 or 2^64 (depending on compiler and processor). 
+When Bracmat is asked to take the square (or any other) root of a number, it does so by first finding the number's prime factors. It can do that for numbers up to 2^32 or 2^64 (depending on compiler and processor).
 
 ```bracmat
 semiprime=
@@ -385,7 +385,7 @@ Test with numbers < 2^63:
 &   whl
   ' ( -1+!u:>2:?u
     & ( semiprime$!u:?R&out$(!u ":" !R)
-      | 
+      |
       )
     );
 ```
@@ -447,8 +447,8 @@ Output:
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int semiprime(int n)
 {
@@ -491,7 +491,7 @@ bool isSemiPrime( int c )
     int a = 2, b = 0;
     while( b < 3 && c != 1 )
     {
-	if( !( c % a ) ) 
+	if( !( c % a ) )
 	{ c /= a; b++; }
 	else a++;
     }
@@ -512,7 +512,7 @@ int main( int argc, char* argv[] )
 
 ```txt
 
-4 6 9 10 14 15 21 22 25 26 33 34 35 38 39 46 49 51 55 57 58 62 65 69 74 77 82 85 86 87 91 93 94 95 
+4 6 9 10 14 15 21 22 25 26 33 34 35 38 39 46 49 51 55 57 58 62 65 69 74 77 82 85 86 87 91 93 94 95
 
 ```
 
@@ -789,10 +789,10 @@ $ @factor 2147483646
 ```scheme
 
 (lib 'math)
-(define (semi-prime? n) 
+(define (semi-prime? n)
    (= (length (prime-factors n)) 2))
 
-(for ((i 100)) 
+(for ((i 100))
     (when (semi-prime? i) (write i)))
 
 4 6 9 10 14 15 21 22 25 26 33 34 35 38 39 46 49 51 55 57 58 62 65 69 74 77 82 85 86 87 91 93 94 95
@@ -819,9 +819,9 @@ $ @factor 2147483646
 ```elixir
 defmodule Prime do
   def semiprime?(n), do: length(decomposition(n)) == 2
-  
+
   def decomposition(n), do: decomposition(n, 2, [])
-  
+
   defp decomposition(n, k, acc) when n < k*k, do: Enum.reverse(acc, [n])
   defp decomposition(n, k, acc) when rem(n, k) == 0, do: decomposition(div(n, k), k, [k | acc])
   defp decomposition(n, k, acc), do: decomposition(n, k+1, acc)
@@ -872,11 +872,11 @@ factors(N,K,Acc) ->
 
 
 % is integer N factorable into M primes?
-kthfactor(N,M) ->             
+kthfactor(N,M) ->
     case length(factors(N)) of M ->
       factors(N);
       _ ->
-      false end.                      
+      false end.
 
 ```
 
@@ -888,7 +888,7 @@ kthfactor(N,M) ->
 [73,23]
 18> factors:kthfactor(1679,4).
 false
-23> FS = [{X,factors:kthfactor(X,2)} || X <- lists:seq(50,500), factors:kthfactor(X,2) =/= false]. 
+23> FS = [{X,factors:kthfactor(X,2)} || X <- lists:seq(50,500), factors:kthfactor(X,2) =/= false].
 [{51,[17,3]},
  {55,[11,5]},
  {57,[19,3]},
@@ -1133,7 +1133,7 @@ end
 ## J
 
 
-Implementation: 
+Implementation:
 
 
 ```J
@@ -1167,20 +1167,20 @@ import java.util.List;
 
 public class SemiPrime{
 	private static final BigInteger TWO = BigInteger.valueOf(2);
-	 
+
 	public static List<BigInteger> primeDecomp(BigInteger a){
 	    // impossible for values lower than 2
 	    if(a.compareTo(TWO) < 0){
-	        return null; 
+	        return null;
 	    }
-	 
+
 	    //quickly handle even values
 	    List<BigInteger> result = new ArrayList<BigInteger>();
 	    while(a.and(BigInteger.ONE).equals(BigInteger.ZERO)){
 	        a = a.shiftRight(1);
 	        result.add(TWO);
 	    }
-	 
+
 	    //left with odd values
 	    if(!a.equals(BigInteger.ONE)){
 	        BigInteger b = BigInteger.valueOf(3);
@@ -1198,12 +1198,12 @@ public class SemiPrime{
 	    }
 	    return result;
 	}
-	
+
 	public static boolean isSemi(BigInteger x){
 		List<BigInteger> decomp = primeDecomp(x);
 		return decomp != null && decomp.size() == 2;
 	}
-	
+
 	public static void main(String[] args){
 		for(int i = 2; i <= 100; i++){
 			if(isSemi(BigInteger.valueOf(i))){
@@ -1223,7 +1223,7 @@ public class SemiPrime{
 {{out}}
 
 ```txt
-4 6 9 10 14 15 21 22 25 26 27 33 34 35 38 39 46 49 51 55 57 58 62 65 69 74 77 81 82 85 86 87 91 93 94 95 
+4 6 9 10 14 15 21 22 25 26 27 33 34 35 38 39 46 49 51 55 57 58 62 65 69 74 77 81 82 85 86 87 91 93 94 95
 1678 1679
 ```
 
@@ -1417,7 +1417,7 @@ Position[%, True] // Flatten
 {{output}}
 
 ```txt
-{4, 6, 9, 10, 14, 15, 21, 22, 25, 26, 33, 34, 35, 38, 39, 46, 49, 51, 
+{4, 6, 9, 10, 14, 15, 21, 22, 25, 26, 33, 34, 35, 38, 39, 46, 49, 51,
 55, 57, 58, 62, 65, 69, 74, 77, 82, 85, 86, 87, 91, 93, 94, 95}
 ```
 
@@ -1454,7 +1454,7 @@ print results
 
 ```txt
 Semiprimes up to 100:
-[4, 6, 9, 10, 14, 15, 21, 22, 25, 26, 33, 34, 35, 38, 39, 46, 49, 51, 
+[4, 6, 9, 10, 14, 15, 21, 22, 25, 26, 33, 34, 35, 38, 39, 46, 49, 51,
 55, 57, 58, 62, 65, 69, 74, 77, 82, 85, 86, 87, 91, 93, 94, 95]
 ```
 
@@ -1479,7 +1479,7 @@ proc isSemiPrime(k: int): string =
   result = "is semi-prime"
  else:
   result = "isn't semi-prime"
-  
+
 for k in 1675..1680:
  echo k," ",isSemiPrime(k)
 ```
@@ -1513,7 +1513,7 @@ class SemiPrime {
     };
     IO.Console->PrintLine();
   }
-  
+
   function : native : SemiPrime(n : Int) ~ Bool {
     nf := 0;
     for(i := 2; i <= n; i+=1;) {
@@ -1525,7 +1525,7 @@ class SemiPrime {
         n /= i;
       };
     };
-    
+
     return nf = 2;
   }
 }
@@ -1548,7 +1548,7 @@ Output:
 func: semiprime(n)
 | i |
    0 2 n sqrt asInteger for: i [ while(n i /mod swap 0 &=) [ ->n 1+ ] drop ]
-   n 1 > ifTrue: [ 1+ ] 2 == ; 
+   n 1 > ifTrue: [ 1+ ] 2 == ;
 ```
 
 
@@ -1668,7 +1668,7 @@ issemiprime(GEN n)
 
 ## Pascal
 
-{{libheader|primTrial}}{{works with|Free Pascal}} 
+{{libheader|primTrial}}{{works with|Free Pascal}}
 
 
 ```pascal
@@ -1719,7 +1719,7 @@ END.
 
 ```txt
 
- 4  6  9 10 14 15 21 22 25 26 33 34 35 38 39 46 49 51 55 57 58 62 65 69 
+ 4  6  9 10 14 15 21 22 25 26 33 34 35 38 39 46 49 51 55 57 58 62 65 69
  74 77 82 85 86 87 91 93 94 95
 
         71*   56338027 = 3999999917
@@ -1789,7 +1789,7 @@ Here is a naive, grossly inefficient implementation.
 ```perl6
 sub is-semiprime (Int $n --> Bool) {
     not $n.is-prime and
-        .is-prime given 
+        .is-prime given
         $n div first $n %% *, flat grep &is-prime, 2 .. *;
 }
 
@@ -1968,18 +1968,18 @@ test(1675,1680)
             M (sqrt N) )
          (while (>= M D)
             (if (=0 (% N D))
-               (setq M 
+               (setq M
                   (sqrt (setq N (/ N (link D)))) )
                (inc 'D (pop 'L)) ) )
          (link N) ) ) )
 
-(println         
+(println
    (filter
-      '((X) 
+      '((X)
          (let L (factor X)
             (and (cdr L) (not (cddr L))) ) )
       (conc (range 1 100) (range 1675 1680)) ) )
-      
+
 (bye)
 ```
 
@@ -2110,7 +2110,7 @@ test(1675,1680)
 ```PowerShell
 
 function isPrime ($n) {
-    if ($n -le 1) {$false} 
+    if ($n -le 1) {$false}
     elseif (($n -eq 2) -or ($n -eq 3)) {$true}
     else{
         $m = [Math]::Floor([Math]::Sqrt($n))
@@ -2145,7 +2145,7 @@ $OFS = " "
 1679: 23 x 73
 87: 3 x 29
 25: 5 x 5
-12: 
+12:
 6: 2 x 3
 semiprime form 1 to 100: 4 6 9 10 14 15 21 22 25 26 33 34 35 38 39 46 49 51 55 57 58 62 65 69 74 77 82 85 86 87 91 93 94 95
 
@@ -2177,7 +2177,7 @@ From Idle:
 True
 >>> [n for n in range(1,101) if semiprime(n)]
 [4, 6, 9, 10, 14, 15, 21, 22, 25, 26, 33, 34, 35, 38, 39, 46, 49, 51, 55, 57, 58, 62, 65, 69, 74, 77, 82, 85, 86, 87, 91, 93, 94, 95]
->>> 
+>>>
 ```
 
 
@@ -2258,7 +2258,7 @@ is_semiprime:
     End
   Else
     fl=factr(z)
-  Return words(fl)=2    
+  Return words(fl)=2
 
 /*----------------------------------FACTR subroutine-----------------*/
 factr: procedure; parse arg x 1 z,list /*sets X&Z to arg1, LIST=''.  */
@@ -2303,9 +2303,9 @@ return                              /*finished, now return to invoker*/
 
 ### version 2
 
-The method used is to examine integers, skipping primes. 
+The method used is to examine integers, skipping primes.
 
-If it's composite (the 1<sup>st</sup> factor is prime), then check if the 2<sup>nd</sup> factor is prime.   If so, the number is a   ''semiprime''. 
+If it's composite (the 1<sup>st</sup> factor is prime), then check if the 2<sup>nd</sup> factor is prime.   If so, the number is a   ''semiprime''.
 
 The   '''isPrime'''   function could be optimized by utilizing an integer square root function instead of testing if   '''j*j>x'''   for every divisor.
 
@@ -2521,11 +2521,11 @@ found  7  semiprimes.
 
 
 ===version 3, with memoization===
-This REXX version is overt 20% faster than version 2   (when in the   ''millions''   range). 
+This REXX version is overt 20% faster than version 2   (when in the   ''millions''   range).
 
 If the 2<sup>nd</sup> argument   ('''top''')   is negative   (it's absolute value is used),   individual numbers in the range aren't shown, but the   ''count''   of semiprimes found is shown.
 
-It gets its speed increase by the use of memoization of the prime numbers found, an unrolled primality (division) check, and other speed improvements. 
+It gets its speed increase by the use of memoization of the prime numbers found, an unrolled primality (division) check, and other speed improvements.
 
 ```rexx
 /*REXX program determines if any integer  (or a range of integers)  is/are  semiprime.  */
@@ -2571,7 +2571,7 @@ isSemiPrime: procedure expose !.;  parse arg x;          if x<4  then return 0
          return 0
 ```
 
-{{out|output|text=  is identical to the previous REXX version.}} 
+{{out|output|text=  is identical to the previous REXX version.}}
 
 
 
@@ -2593,7 +2593,7 @@ for i = 1 to nr
        x = x + string(i) + " * " ok
     if i = nr and sum = 2
        x2 = substr(x,1,(len(x)-2))
-       see string(nr) + " = " + x2 + "is semiprime" + nl 
+       see string(nr) + " = " + x2 + "is semiprime" + nl
     but i = nr and sum != 2 see string(nr) + " is not semiprime" + nl ok
 next
 
@@ -2601,9 +2601,9 @@ func isPrime n
      if n < 2 return false ok
      if n < 4 return true ok
      if n % 2 = 0 and n != 2 return false ok
-     for d = 3 to sqrt(n) step 2 
+     for d = 3 to sqrt(n) step 2
          if n % d = 0 return false ok
-     next	
+     next
      return true
 
 ```
@@ -2724,7 +2724,7 @@ object Semiprime extends App {
       while (l % i == 0) {
         if (nf == 2) return false
         nf +=1
-        l /= i 
+        l /= i
       }
     }
     nf == 2
@@ -2733,14 +2733,14 @@ object Semiprime extends App {
   (2 to 100) filter {isSP(_) == true} foreach {i => print("%d ".format(i))}
   println
   1675 to 1681 foreach {i => println(i+" -> "+isSP(i))}
-  
+
 }
 ```
 
 {{out}}
 
 ```txt
-4 6 9 10 14 15 21 22 25 26 33 34 35 38 39 46 49 51 55 57 58 62 65 69 74 77 82 85 86 87 91 93 94 95 
+4 6 9 10 14 15 21 22 25 26 33 34 35 38 39 46 49 51 55 57 58 62 65 69 74 77 82 85 86 87 91 93 94 95
 1675 -> false
 1676 -> false
 1677 -> false
@@ -2790,11 +2790,11 @@ const proc: main is func
 
 ```txt
 
-1675 -> FALSE                                                                                                                                                   
-1676 -> FALSE                                                                                                                                                   
-1677 -> FALSE                                                                                                                                                   
-1678 -> TRUE                                                                                                                                                    
-1679 -> TRUE                                                                                                                                                    
+1675 -> FALSE
+1676 -> FALSE
+1677 -> FALSE
+1678 -> TRUE
+1679 -> TRUE
 1680 -> FALSE
 
 ```
@@ -2845,10 +2845,10 @@ say [2,4,99,100,1679,32768,1234567,9876543,900660121].grep(is_semiprime)
 import Foundation
 
 func primes(n: Int) -> AnyGenerator<Int> {
-  
+
   var (seive, i) = ([Int](0..<n), 1)
   let lim = Int(sqrt(Double(n)))
-  
+
   return anyGenerator {
     while ++i < n {
       if seive[i] != 0 {

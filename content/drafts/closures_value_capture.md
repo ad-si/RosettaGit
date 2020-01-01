@@ -13,15 +13,15 @@ tags = []
 {{task}}
 
 ;Task:
-Create a list of ten functions, in the simplest manner possible   (anonymous functions are encouraged),   such that the function at index  <big> ''<b> i </b>'' </big>   (you may choose to start   <big> ''<b> i </b>'' </big>   from either   <big> '''0''' </big>   or   <big> '''1'''), </big>    when run, should return the square of the index,   that is,   <big> ''<b> i </b>'' <sup>2</sup>.</big> 
+Create a list of ten functions, in the simplest manner possible   (anonymous functions are encouraged),   such that the function at index  <big> ''<b> i </b>'' </big>   (you may choose to start   <big> ''<b> i </b>'' </big>   from either   <big> '''0''' </big>   or   <big> '''1'''), </big>    when run, should return the square of the index,   that is,   <big> ''<b> i </b>'' <sup>2</sup>.</big>
 
 Display the result of running any but the last function, to demonstrate that the function indeed remembers its value.
 
 
 ;Goal:
-Demonstrate how to create a series of independent closures based on the same template but maintain separate copies of the variable closed over. 
+Demonstrate how to create a series of independent closures based on the same template but maintain separate copies of the variable closed over.
 
-In imperative languages, one would generally use a loop with a mutable counter variable. 
+In imperative languages, one would generally use a loop with a mutable counter variable.
 
 For each function to maintain the correct number, it has to capture the ''value'' of the variable at the time it was created, rather than just a reference to the variable, which would have a different value by the time the function was run.
 
@@ -31,21 +31,21 @@ See also: [[Multiple distinct objects]]
 ## Ada
 
 
-One way to realize closures in Ada is the usage of protected objects. 
+One way to realize closures in Ada is the usage of protected objects.
 
 
 ```Ada
 with Ada.Text_IO;
 
 procedure Value_Capture is
-   
+
    protected type Fun is -- declaration of the type of a protected object
       entry Init(Index: Natural);
       function Result return Natural;
    private
       N: Natural := 0;
    end Fun;
-   
+
    protected body Fun is -- the implementation of a protected object
       entry Init(Index: Natural) when N=0 is
       begin -- after N has been set to a nonzero value, it cannot be changed any more
@@ -53,14 +53,14 @@ procedure Value_Capture is
       end Init;
       function Result return Natural is (N*N);
    end Fun;
-   
+
    A: array (1 .. 10) of Fun; -- an array holding 10 protected objects
-   
+
 begin
    for I in A'Range loop -- initialize the protected objects
       A(I).Init(I);
    end loop;
-   
+
    for I in A'First .. A'Last-1 loop -- evaluate the functions, except for the last
       Ada.Text_IO.Put(Integer'Image(A(I).Result));
    end loop;
@@ -78,7 +78,7 @@ end Value_Capture;
 
 ## ALGOL 68
 
-{{works with|ALGOL 68G|2.8}} 
+{{works with|ALGOL 68G|2.8}}
 
 
 ```algol68
@@ -128,11 +128,11 @@ fns: {n: x; {n expt 2}} map range[10]
 ```AppleScript
 on run
     set fns to {}
-    
+
     repeat with i from 1 to 10
         set end of fns to closure(i)
     end repeat
-    
+
     |λ|() of item 3 of fns
 end run
 
@@ -199,7 +199,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -254,12 +254,12 @@ This can be called from the interpreter using:
 
 
 ```babel
-((main { 
-    { iter 
+((main {
+    { iter
         1 take bons 1 take
-        dup cp 
-        {*} cp 
-        3 take 
+        dup cp
+        {*} cp
+        3 take
         append }
     10 times
     collect !
@@ -283,7 +283,7 @@ This can be called from the interpreter using:
 ```
 
 
-Essentially, a function has been constructed for each value to be squared (10 down to 1). The cp operator ensures that we generate a fresh copy of the number to be squared, as well as the code for multiplying, {*}. 
+Essentially, a function has been constructed for each value to be squared (10 down to 1). The cp operator ensures that we generate a fresh copy of the number to be squared, as well as the code for multiplying, {*}.
 In the final each loop, we eval each of the constructed functions and output the result.
 
 
@@ -328,22 +328,22 @@ In the final each loop, we eval each of the constructed functions and output the
 Non-portable. Copying a function body depends on implementation-specific semantics of volatile, if the replacement target still exists after optimization, if the dest memory is suitably aligned, if the memory is executable, if it makes any function calls to a relative offset, if it refers to any memory location with an absolute address, etc.  It only very occasionally works.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <sys/mman.h>
 
 typedef int (*f_int)();
- 
+
 #define TAG 0xdeadbeef
-int _tmpl() { 
+int _tmpl() {
 	volatile int x = TAG;
 	return x * x;
 }
 
 #define PROT (PROT_EXEC | PROT_WRITE)
-#define FLAGS (MAP_PRIVATE | MAP_ANONYMOUS) 
+#define FLAGS (MAP_PRIVATE | MAP_ANONYMOUS)
 f_int dupf(int v)
 {
 	size_t len = (void*)dupf - (void*)_tmpl;
@@ -358,16 +358,16 @@ f_int dupf(int v)
 		if (*(int *)p == TAG) *(int *)p = v;
 	return ret;
 }
- 
+
 int main()
 {
 	f_int funcs[10];
 	int i;
 	for (i = 0; i < 10; i++) funcs[i] = dupf(i);
- 
+
 	for (i = 0; i < 9; i++)
 		printf("func[%d]: %d\n", i, funcs[i]());
- 
+
 	return 0;
 }
 ```
@@ -429,9 +429,9 @@ int main(void)
 ```
 
 
-Here, we create an environment explicitly as an association list 
-which we can search with the <code>assoc</code> function. 
-The environment contains a binding for the symbol <code>x</code>. 
+Here, we create an environment explicitly as an association list
+which we can search with the <code>assoc</code> function.
+The environment contains a binding for the symbol <code>x</code>.
 The <code>square</code> function retrieves the value and returns its square.
 
 {{out}}
@@ -457,8 +457,8 @@ $ ./a.out
 
 {{works with|C++11}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <functional>
 #include <vector>
 
@@ -466,8 +466,8 @@ int main() {
   std::vector<std::function<int()> > funcs;
   for (int i = 0; i < 10; i++)
     funcs.push_back([=]() { return i * i; });
-  for ( std::function<int( )> f : funcs ) 
-    std::cout << f( ) << std::endl ; 
+  for ( std::function<int( )> f : funcs )
+    std::cout << f( ) << std::endl ;
   return 0;
 }
 ```
@@ -543,9 +543,9 @@ class Program
         for ( int i = 0; i < 10; ++i )
         {
             // This is key to avoiding the closure trap, because
-            // the anonymous delegate captures a reference to 
+            // the anonymous delegate captures a reference to
             // outer variables, not their value.  So we create 10
-            // variables, and each created anonymous delegate 
+            // variables, and each created anonymous delegate
             // has references to that variable, not the loop variable
             var captured_val = i;
             l.Add( delegate() { return captured_val * captured_val; } );
@@ -576,10 +576,10 @@ class Program
 
 ```ceylon
 shared void run() {
-	
+
 	//create a list of closures with a list comprehension
 	value closures = [for(i in 0:10) () => i ^ 2];
-	
+
 	for(i->closure in closures.indexed) {
 		print("closure number ``i`` returns: ``closure()``");
 	}
@@ -797,11 +797,11 @@ ELENA 4.1 :
 ```elena
 import system'routines;
 import extensions;
- 
+
 public program()
 {
     var functions := Array.allocate(10).populate:(int i => {^ i * i} );
- 
+
     functions.forEach:(func) { console.printLine(func()) }
 }
 ```
@@ -924,7 +924,7 @@ Type Closure
     index As Integer
   Public:
     Declare Constructor(index As Integer = 0)
-    Declare Function Square As Integer 
+    Declare Function Square As Integer
 End Type
 
 Constructor Closure(index As Integer = 0)
@@ -977,7 +977,7 @@ Nearly identical to OCaml
 
 ```fsharp>[<EntryPoint
 ]
-let main argv = 
+let main argv =
     let fs = List.init 10 (fun i -> fun () -> i*i)
     do List.iter (fun f -> printfn "%d" <| f()) fs
     0
@@ -988,7 +988,7 @@ With List.map
 
 ```fsharp>[<EntryPoint
 ]
-let main argv = 
+let main argv =
     let fs = List.map (fun i -> fun () -> i*i) [0..9]
     do List.iter (fun f -> printfn "%d" <| f()) fs
     0
@@ -999,8 +999,8 @@ With List.mapi
 
 ```fsharp>[<EntryPoint
 ]
-let main argv = 
-    let fs = List.mapi (fun i x -> fun () -> i*i) (List.replicate 10 None) 
+let main argv =
+    let fs = List.mapi (fun i x -> fun () -> i*i) (List.replicate 10 None)
     do List.iter (fun f -> printfn "%d" <| f()) fs
     0
 ```
@@ -1010,7 +1010,7 @@ With an infinite sequence
 
 ```fsharp>[<EntryPoint
 ]
-let main argv = 
+let main argv =
     let fs = Seq.initInfinite (fun i -> fun () -> i*i)
     do Seq.iter (fun f -> printfn "%d" <| f()) (Seq.take 10 fs)
     0
@@ -1262,12 +1262,12 @@ procedure main(args)                                      # Closure/Variable Cap
     every put(L := [], vcapture(1 to 10))                 # build list of index closures
     write("Randomly selecting L[",i := ?*L,"] = ",L[i]()) # L[i]() calls the closure
 end
-    
-# The anonymous 'function', as a co-expression.  Most of the code is standard 
+
+# The anonymous 'function', as a co-expression.  Most of the code is standard
 # boilerplate needed to use a co-expression as an anonymous function.
 
-procedure vcapture(x)             # vcapture closes over its argument 
-   return makeProc { repeat { (x[1]^2) @ &source } }  
+procedure vcapture(x)             # vcapture closes over its argument
+   return makeProc { repeat { (x[1]^2) @ &source } }
 end
 
 procedure makeProc(A)             # the makeProc PDCO from the UniLib Utils package
@@ -1365,7 +1365,7 @@ In J only adverbs and conjunctions (functionals) can produce verbs (functions)..
 ┌───┬───┬───┬───┬────┬────┬────┬────┬────┬────┐
 │0"_│1"_│4"_│9"_│16"_│25"_│36"_│49"_│64"_│81"_│
 └───┴───┴───┴───┴────┴────┴────┴────┴────┴────┘
-   
+
    {::&VL 5                                           NB. Evoking the 6th verb (function)
 25"_
    {::&VL 5 ''                                        NB. Invoking the 6th verb with a dummy argument ('')
@@ -1468,7 +1468,7 @@ console.log(funcs[3]());
 
 
 
-### Functional 
+### Functional
 
 
 {{works with|JavaScript|ES5}}
@@ -1492,7 +1492,7 @@ console.log(funcs[3]());
                 return i * i;
             };
         })
-        
+
     return lstFns[3]();
 
 })();
@@ -1553,7 +1553,7 @@ fun main(args: Array<String>) {
     // create an array of 10 anonymous functions which return the square of their index
     val funcs = Array(10){ fun(): Int = it * it }
     // call all but the last
-    (0 .. 8).forEach { println(funcs[it]()) } 
+    (0 .. 8).forEach { println(funcs[it]()) }
 }
 ```
 
@@ -1638,7 +1638,7 @@ on new (me, code)
 end
 
 on call (me)
-  ----------------------------------------  
+  ----------------------------------------
   -- If custom arguments were passed, evaluate them in the current context.
   -- Note: in the code passed to the constructor they have to be referenced
   -- as arg[1], arg[2], ...
@@ -1774,7 +1774,7 @@ For i=0 to 9 {
 
 ```
 
-Print 
+Print
                    0
                    1
                    4
@@ -1843,7 +1843,7 @@ Stack Beta {
 
 ```Maple>
  L := map( i -> (() -> i^2), [seq](1..10) ):
-> seq( L[i](),i=1..10);                      
+> seq( L[i](),i=1..10);
                   1, 4, 9, 16, 25, 36, 49, 64, 81, 100
 > L[4]();
                                    16
@@ -1872,10 +1872,10 @@ using System.Console;
 module Closures
 {
     Main() : void
-    { 
+    {
         def f(x) { fun() { x ** 2 } }
         def funcs = $[f(x) | x in $[0 .. 10]].ToArray(); // using array for easy indexing
-        
+
         WriteLine($"$(funcs[4]())");
         WriteLine($"$(funcs[2]())");
     }
@@ -1917,7 +1917,7 @@ use Collection.Generic;
 class Capture {
   function : Main(args : String[]) ~ Nil {
      funcs := Vector->New()<FuncHolder<IntHolder> >;
-     
+
      for(i := 0; i < 10; i += 1;) {
        funcs->AddBack(FuncHolder->New(\() ~ IntHolder : () => i * i)<IntHolder>);
      };
@@ -2131,7 +2131,7 @@ for i=1 to 10 do
 --for i=11 to 20 do -- alternative test
     cids &= add_closure(routine_id("square"),{i})
 end for
--- And finally call em (this loop is blissfully unaware what function 
+-- And finally call em (this loop is blissfully unaware what function
 -- it is actually calling, and what partial_arguments it is passing)
 for i=1 to 10 do
     printf(1," %d",call_closure(cids[i],{}))
@@ -2237,16 +2237,16 @@ Test:
 ```Pike
 array funcs = ({});
 foreach(enumerate(10);; int i)
-{ 
-  funcs+= ({ 
+{
+  funcs+= ({
               lambda(int j)
               {
                   return lambda()
-                         { 
-                             return j*j; 
-                         }; 
-              }(i) 
-          }); 
+                         {
+                             return j*j;
+                         };
+              }(i)
+          });
 }
 ```
 
@@ -2269,7 +2269,7 @@ function Get-Closure ([double]$Number)
 ```PowerShell
 
 for ($i = 1; $i -lt 11; $i++)
-{ 
+{
     $total = Get-Closure -Number $i
 
     [PSCustomObject]@{
@@ -2339,7 +2339,7 @@ Function Sum
 
 ## Prolog
 
-Works with SWI-Prolog and module '''lambda.pl''' from '''Ulrich Neumerkel'''. 
+Works with SWI-Prolog and module '''lambda.pl''' from '''Ulrich Neumerkel'''.
 
 '''lambda.pl''' can be found there : http://www.complang.tuwien.ac.at/ulrich/Prolog-inedit/lambda.pl
 
@@ -2448,59 +2448,59 @@ print funcs[3]() # prints 9
 ## R
 
 
-R is a natural language for this task, but you need to understand the nuances of delayed evaluation.  
-Arguments in R are referred to as ''promises'' because they aren't evaluated until first use.  
-If you're not careful, you can bind to a promise that hasn't yet been evaluated, and you won't get 
-what you expect.   
+R is a natural language for this task, but you need to understand the nuances of delayed evaluation.
+Arguments in R are referred to as ''promises'' because they aren't evaluated until first use.
+If you're not careful, you can bind to a promise that hasn't yet been evaluated, and you won't get
+what you expect.
 
 
 ```R
 
-# assign 's' a list of ten functions 
-s <- sapply (1:10,  # integers 1..10 become argument 'x' below 
+# assign 's' a list of ten functions
+s <- sapply (1:10,  # integers 1..10 become argument 'x' below
     function (x) {
         x  # force evaluation of promise x
 	function (i=x) i*i   # this *function* is the return value
     })
 
-s[[5]]()  # call the fifth function in the list of returned functions 
+s[[5]]()  # call the fifth function in the list of returned functions
 [1] 25    # returns vector of length 1 with the value 25
 
 ```
 
 
-Note that I bound the captured variable as the default argument on a unary function.  
-If you supply your own argument, as below, it squares the supplied argument and 
-ignores the default argument. 
+Note that I bound the captured variable as the default argument on a unary function.
+If you supply your own argument, as below, it squares the supplied argument and
+ignores the default argument.
 
 
 ```R
 
-s[[5]](10) 
-[1] 100 
+s[[5]](10)
+[1] 100
 
 ```
 
 
-As a further technicality, note that you need some extra voodoo to '''modify''' the bound argument 
-with persistence across calls.  This example increments the bound variable after each call.  
+As a further technicality, note that you need some extra voodoo to '''modify''' the bound argument
+with persistence across calls.  This example increments the bound variable after each call.
 
 
 ```R
 
-s <- sapply (1:10,  
+s <- sapply (1:10,
     function (x) {
         x  # force evaluation of promise x
-	function () {   
-            R <- x*x 
-            # evaluate the language expression "x <- x + 1" in the persistent parent environment 
+	function () {
+            R <- x*x
+            # evaluate the language expression "x <- x + 1" in the persistent parent environment
             evalq (x <- x + 1, parent.env(environment()))
-            R  # return squared value 
+            R  # return squared value
     }})
 
-s[[5]]() 
+s[[5]]()
 [1] 25     # 5^2
-s[[5]]() 
+s[[5]]()
 [1] 36     # now 6^2
 s[[1]]()
 [1] 1      # 1^2
@@ -2652,10 +2652,10 @@ see x + nl
 
 func funcs n
      fn = list(n)
-     for i = 1 to n    
+     for i = 1 to n
          fn[i] =i*i
-     next 
-     return fn      
+     next
+     return fn
 
 ```
 
@@ -2689,7 +2689,7 @@ In Ruby, lambdas (and procs) are closures.
 
 ## Rust
 
-One note here about referencing values and capturing values: 
+One note here about referencing values and capturing values:
 
 Rust employs strong ownership rules that do not allow mutating a value that is referenced (pointed to without allowing mutation) from elsewhere. It also doesn't allow referencing a value that may be dropped before the reference is released. The proof that we really did capture the value is therefore unnecessary. Either we did or it wouldn't have compiled.
 

@@ -40,34 +40,34 @@ Requires the debug Flash Player 9.0.115.0 or higher.
 ```ActionScript
 
 package  {
-    
+
     import flash.display.Sprite;
     import flash.events.Event;
     import flash.sampler.getSize;
-    
+
     public class VariableSizeGet extends Sprite {
-        
+
         public function VariableSizeGet() {
             if ( stage ) _init();
             else addEventListener(Event.ADDED_TO_STAGE, _init);
         }
-        
+
         private function _init(e:Event = null):void {
-            
+
             var i:int = 1;
             var n:Number = 0.5;
             var s:String = "abc";
             var b:Boolean = true;
             var date:Date = new Date();
-            
+
             trace("An int contains " + getSize(i) + " bytes.");  // 4
             trace("A Number contains " + getSize(n) + " bytes.");  // 8
             trace("The string 'abc' contains " + getSize(s) + " bytes.");  // 24
             trace("A Boolean contains " + getSize(b) + " bytes.");  // 4
             trace("A Date object contains " + getSize(date) + " bytes.");  // 48
-            
+
         }
-        
+
     }
 
 }
@@ -137,13 +137,13 @@ In Babel, you can get the raw size with the mu operator and you can also
 break this down into its components:
 
 ```babel
-main: 
-    { (1 2 (3 4) 5 6) 
-    dup mu  disp 
-    dup nva disp 
-    dup npt disp 
-    dup nlf disp 
-    dup nin disp 
+main:
+    { (1 2 (3 4) 5 6)
+    dup mu  disp
+    dup nva disp
+    dup npt disp
+    dup nlf disp
+    dup nin disp
     dup nhref disp
     dup nhword disp }
 
@@ -201,7 +201,7 @@ main : { (1 2 (3 4) 5 6) unload size %d << }
 
 {{works with|QBasic}}
 
-Many BASICs, especially those compatible with [[QBasic]], 
+Many BASICs, especially those compatible with [[QBasic]],
 can use <code>LEN</code> to find the size of any variable:
 
 ```qbasic
@@ -213,7 +213,7 @@ PRINT LEN(a), LEN(b), LEN(c), LEN(d), LEN(e)
 {{out}}
  2             4             4             8             0
 
-Note that when used with a string, <code>LEN</code> reports the length of the string, not its size in memory. 
+Note that when used with a string, <code>LEN</code> reports the length of the string, not its size in memory.
 BASIC typically stores information about the string separately from the string itself, usually immediately before the string itself in memory (but some implementations may store such information elsewhere).
 
 
@@ -228,7 +228,7 @@ A variable's size is implied by its type suffix.  The easiest way to determine t
       DIM fstruct{f}
       DIM dstruct{d#}
       DIM sstruct{s$}
-      
+
       PRINT "Size of b& is ";DIM(bstruct{})
       PRINT "Size of i% is ";DIM(istruct{})
       PRINT "Size of f  is ";DIM(fstruct{})
@@ -271,7 +271,7 @@ class Program
         int i = sizeof(int);
         Console.WriteLine(i);
         Console.ReadLine();
-    }       
+    }
 }
 
 ```
@@ -283,8 +283,8 @@ class Program
 Store the size of an int in bytes:
 
 
-```cpp>#include <cstdlib
-
+```cpp
+#include <cstdlib>
 std::size_t intsize = sizeof(int);
 ```
 
@@ -293,9 +293,10 @@ Note: sizeof can be used without the header <cstdlib>; the latter is only needed
 
 Output the number of bits of an int:
 
-```cpp>#include <climits
-
+```cpp
+#include <climits>
 #include <cstdlib>
+
 std::size_t intbits = CHAR_BITS*sizeof(int);
 ```
 
@@ -305,8 +306,8 @@ Note: the type char is always 1 byte (which, however, need not be 8 bits).
 Get the size of a variable in bytes:
 
 
-```cpp>#include <cstdlib
-
+```cpp
+#include <cstdlib>
 int a = 1;
 std::size_t a_size = sizeof a;
 ```
@@ -317,8 +318,8 @@ Note: Parentheses are needed around types, but not around variables.
 Get the size of an expression's type:
 
 
-```cpp>#include <cstdlib
-
+```cpp
+#include <cstdlib>
 std::size_t size = sizeof (3*6 + 7.5);
 ```
 
@@ -330,7 +331,7 @@ COBOL is by and large a fixed length system, most data types have a size
 determined by standard.
 
 Some native architecture sizing can be controlled by configuration or will be
-bound by implementation constraint.   
+bound by implementation constraint.
 
 Group items are mostly determined by the data definition, with some variance
 due to binary sizing and programmer controlled OCCURS DEPENDING ON run time
@@ -362,7 +363,7 @@ Directing Facility <code>>>IF P64 IS SET</code>, shown here.
        working-storage section.
        01 bc-len           constant as length of binary-char.
        01 fd-34-len        constant as length of float-decimal-34.
-      
+
        77 fixed-character  pic x(13).
        77 fixed-national   pic n(13).
        77 fixed-nine       pic s9(5).
@@ -377,15 +378,15 @@ Directing Facility <code>>>IF P64 IS SET</code>, shown here.
           05 first-inner   pic x occurs 0 to 3 times depending on odo.
           05 second-inner  pic x occurs 0 to 5 times depending on odo-2.
        01 odo              usage index value 2.
-       01 odo-2            usage index value 4.       
+       01 odo-2            usage index value 4.
 
        procedure division.
        sample-main.
        display "Size of:"
        display "BINARY-CHAR             : " bc-len
-       display "  bc-len constant       : " byte-length(bc-len) 
+       display "  bc-len constant       : " byte-length(bc-len)
        display "FLOAT-DECIMAL-34        : " fd-34-len
-       display "  fd-34-len constant    : " byte-length(fd-34-len) 
+       display "  fd-34-len constant    : " byte-length(fd-34-len)
 
        display "PIC X(13) field         : " length of fixed-character
        display "PIC N(13) field         : " length of fixed-national
@@ -493,7 +494,7 @@ As with some of the other dynamic languages, we're not concerned with variable s
         (hcl:find-object-size c)))
 ```
 
-returns 
+returns
 
 
 ```lisp
@@ -524,7 +525,7 @@ Every type and variable in D has a property <tt>sizeof</tt>, which give the size
 
 ```d
 int i ;
-writefln(i.sizeof) ;        // print 4 
+writefln(i.sizeof) ;        // print 4
 int[13] ints1 ;             // static integer array of length 13
 writefln(ints1.sizeof) ;    // print 52
 int[] ints2 = new int[13] ; // dynamic integer array, variable length, currently 13
@@ -581,9 +582,9 @@ IO.puts map_size(map)                   #=> 2
 
 24> erlang:tuple_size( {1,2,3} ).
 3
-25> erlang:length( [1,2,3] ).    
+25> erlang:length( [1,2,3] ).
 3
-29> erlang:bit_size( <<1:11>> ).    
+29> erlang:bit_size( <<1:11>> ).
 11
 30> erlang:byte_size( <<1:11>> ).
 2
@@ -607,7 +608,7 @@ Test at the GNU Forth (32bit) console
 ```forth
 .CELLSIZE
 4 Bytes ok
--1 X !  ok                                                                     
+-1 X !  ok
 HEX X @ U. FFFFFFFF  ok</Lang>
 
 
@@ -802,7 +803,7 @@ sizeOf (undefined :: Ptr a) -- size of Ptr in bytes (4 on mine)
 Icon and Unicon fall into the category of high level languages that don't get close to the machine.  As much as possible is done to provide high level and portable interfaces.  Two methods are available, one returns the high level size of a value and the other gives information about actual size.
 
 * The unary operator ''*'' returns the size of most data types and structures
-** integer and real numbers will be coerced to strings 
+** integer and real numbers will be coerced to strings
 ** not defined for files and I/O objects
 ** for coexpressions it returns the number of results produced
 * The keyword &allocated provides information about the actual storage allocated for the data and overhead of each type
@@ -818,11 +819,11 @@ procedure main() # get size
 every i := seq(1) do {
    a0 := &allocated
       x := case i of {
-            1 : "ABCDEFGH"   
+            1 : "ABCDEFGH"
             2 : reverse(x)
             10 : &digits
             11 : x--x
-            20 : []            
+            20 : []
             21 : [1,2]
             22 : [1,2,3]
             30 : set()
@@ -861,7 +862,7 @@ type=rec4 *x=4 bytes allocated=48
 type=co-expression *x=0 bytes allocated=96
 ```
 
-The results above illustrate both measurements.  
+The results above illustrate both measurements.
 I believe that an empty list is allocated with growth room for 8 elements which explains why it would require more storage than a list of 1 or 2 elements.
 
 
@@ -884,7 +885,7 @@ The result means: 2 dimensions in the array, the first dimension has extent 3, t
 ## J
 
 
-In J, the function <code>7!:5</code> is analogous to <code>sizeof</code> in C.  
+In J, the function <code>7!:5</code> is analogous to <code>sizeof</code> in C.
 
 For example:
 
@@ -992,7 +993,7 @@ string(#myinteger) -> size
 
 
 ## Mathematica
- 
+
 
 ```Mathematica
 ByteCount["somerandomstring"]
@@ -1259,8 +1260,8 @@ structure in far less memory than expected. Plus (as per Icon) sequences and str
 some room (up to 50%) for expansion. The builtin length() function gives no indication of
 the latter or the size of individual elements, unless used in a recursive routine, and as
 said even then may grossly overstate actual memory use due to shared references.
-You may also wish to examine builtins\VM\pMemChk.e for some ideas about how to perform a 
-detailed heap analysis - in that specific case for post-run memory leak checking, done from 
+You may also wish to examine builtins\VM\pMemChk.e for some ideas about how to perform a
+detailed heap analysis - in that specific case for post-run memory leak checking, done from
 the safety of a secondary heap, so that the one it is examining does not suddenly change.
 
 
@@ -1339,7 +1340,7 @@ This information is only easily available for the array type:
 	print a, '\tSize =', a.buffer_info()[1] * a.itemsize
 	del a
 
-	
+
 array('l') 	Size = 0
 array('c', 'hello world') 	Size = 11
 array('u', u'hello \u2641') 	Size = 14
@@ -1398,7 +1399,7 @@ object.size(l2)   # e.g. 128 bytes
 
 ## REXX
 
-In REXX, you simply set a variable to a value (it could be an expression);  
+In REXX, you simply set a variable to a value (it could be an expression);
 
 the value's length is the size of the variable's value.
 
@@ -1526,7 +1527,7 @@ use std::mem;
 fn main() {
     // Specify type
     assert_eq!(4, mem::size_of::<i32>());
-    
+
     // Provide a value
     let arr: [u16; 3] = [1, 2, 3];
     assert_eq!(6, mem::size_of_val(&arr));
@@ -1797,17 +1798,17 @@ echo "The greeting is $greetinglength characters in length"
 ## Ursala
 
 The virtual machine represents all code and data as binary trees of
-cells.  
+cells.
 The number of cells required for any object can be computed by the built in <code>weight</code> function (or by an equivalent user-defined function), which takes an argument of any type and returns a natural number.
 Host memory usage for any given object is worst case linear in the
 weight, but may be considerably less due to sharing (i.e., copying
 something by copying only a reference to it, which is done
 automatically and invisibly to the programmer with correct semantics).
 
-An additional facility exists for arbitrary precision floating point numbers, 
+An additional facility exists for arbitrary precision floating point numbers,
 which are based on the [http://www.mpfr.org mpfr] library.
-The library function <code>mpfr..prec</code> applies to a number in mpfr format 
-and returns the number of bits of precision in the mantissa. 
+The library function <code>mpfr..prec</code> applies to a number in mpfr format
+and returns the number of bits of precision in the mantissa.
 Host memory usage is linear plus a small constant.
 
 ```Ursala
@@ -1845,15 +1846,15 @@ void main(){
 
 ## XPL0
 
-This ugly piece of code may be required because there is currently 
-no 'sizeof' operator (at least not in the DOS version, 
-but it is in the Windows version). 
-This is not a big problem since there are only two data types, integer and real; thus there are only two sizes to keep track of, 4 and 8 bytes. 
-However, there are 16-bit versions of the compilers that have 2-byte integers, 
-and a program that runs in both the 16- and 32-bit versions 
+This ugly piece of code may be required because there is currently
+no 'sizeof' operator (at least not in the DOS version,
+but it is in the Windows version).
+This is not a big problem since there are only two data types, integer and real; thus there are only two sizes to keep track of, 4 and 8 bytes.
+However, there are 16-bit versions of the compilers that have 2-byte integers,
+and a program that runs in both the 16- and 32-bit versions
 usually defines a constant (typically called "IntSize" = 2 or 4)
-at the beginning of the program to deal with the different sizes. 
-A common situation where this arises is when allocating memory 
+at the beginning of the program to deal with the different sizes.
+A common situation where this arises is when allocating memory
 for dynamic integer arrays using the Reserve intrinsic.
 
 

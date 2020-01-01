@@ -492,8 +492,8 @@ printf ("%d %d %d\n", c.red, c.green, c.blue);
 {{works with|Windows}}
 (Linux users, see [http://www.muquit.com/muquit/software/grabc/grabc.html grabc].)
 
-```c>#include <Windows.h
-
+```c
+#include <Windows.h>
 
 COLORREF getColorAtCursor(void) {
     POINT p;

@@ -212,7 +212,7 @@ a+b+c is hello world
 
 
 ```AWK
-#!/usr/bin/awk -f 
+#!/usr/bin/awk -f
 
 BEGIN {
 	# string creation
@@ -237,11 +237,11 @@ BEGIN {
 		printf("string a is not empty\n");
 	}
 
-	# append a byte to a string 
+	# append a byte to a string
 	a=a"\x40";
 	printf("abc=<%s><%s><%s>\n",a,b,c);
 
-	# substring 
+	# substring
 	e = substr(a,1,6);
 	printf("substr(a,1,6)=<%s>\n",e);
 
@@ -339,7 +339,7 @@ J$ = A$ + STR$(42) + " PUDDLES " + B$ + CHR$(255) : REM USE +
       A$ += CHR$(128)                                : REM Append a byte
       S$ = MID$(A$, S%, L%)                          : REM Extract a substring
       C$ = A$ + B$                                   : REM Join strings
-      
+
       REM To replace every occurrence of a byte:
       old$ = CHR$(1)
       new$ = CHR$(5)
@@ -355,8 +355,8 @@ J$ = A$ + STR$(42) + " PUDDLES " + B$ + CHR$(255) : REM USE +
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -528,7 +528,7 @@ class Program
         if (x.CompareTo("bc") == -1)
             Console.WriteLine("x is lexicographically less than 'bc'");
 
-        //# string cloning 
+        //# string cloning
         var c = new char[3];
         x.CopyTo(0, c, 0, 3);
         object objecty = new string(c);
@@ -543,7 +543,7 @@ class Program
         var empty = "";
         string nullString = null;
         var whitespace = "   ";
-        if (nullString == null && empty == string.Empty && 
+        if (nullString == null && empty == string.Empty &&
             string.IsNullOrEmpty(nullString) && string.IsNullOrEmpty(empty) &&
             string.IsNullOrWhiteSpace(nullString) && string.IsNullOrWhiteSpace(empty) &&
             string.IsNullOrWhiteSpace(whitespace))
@@ -661,19 +661,19 @@ BEGIN
 	(* String creation, on heap *)
 	NEW(pStr,256); (* Garbage collectable *)
 	NEW(pAux,256);
-	
+
 	(* String assingment *)
 	pStr^ := "This is a string on a heap";
 	pAux^ := "This is a string on a heap";
 	str := "This is other string";
-	
+
 	(* String comparision *)
 	StdLog.String("pStr = str:> ");StdLog.Bool(pStr$ = str$);StdLog.Ln;
 	StdLog.String("pStr = pAux:> ");StdLog.Bool(pStr$ = pAux$);StdLog.Ln;
-	
+
 	(* String cloning and copying *)
 	NEW(pAux,LEN(pStr$) + 1);pAux^ := pStr$;
-	
+
 	(* Check if a string is empty *)
 	(* version 1 *)
 	pAux^ := "";
@@ -687,16 +687,16 @@ BEGIN
 	(* version 4 *)
 	pAux^ := "";
 	StdLog.String("is empty pAux?(4):> ");StdLog.Bool(pAux[0] = 0X);StdLog.Ln;
-	
+
 	(* Append a byte to a string *)
 	NEW(pAux,256);pAux^ := "BBBBBBBBBBBBBBBBBBBBB";
 	b := 65;pAux[LEN(pAux$)] := CHR(b);
 	StdLog.String("pAux:> ");StdLog.String(pAux);StdLog.Ln;
-	
+
 	(* Extract a substring from a string *)
 	Strings.Extract(pStr,0,16,pAux);
 	StdLog.String("pAux:> ");StdLog.String(pAux);StdLog.Ln;
-	
+
 	(* Replace a every ocurrence of a string with another string *)
 	pAux^ := "a"; (* Pattern *)
 	Strings.Find(pStr,pAux,0,pIni);
@@ -705,7 +705,7 @@ BEGIN
 		Strings.Find(pStr,pAux,pIni + 1,pIni);
 	END;
 	StdLog.String("pStr:> ");StdLog.String(pStr);StdLog.Ln;
-	
+
 	(* Join strings *)
 	pStr^ := "First string";pAux^ := "Second String";
 	str := pStr$ + "." + pAux$;
@@ -922,7 +922,7 @@ if x < y do
   IO.puts "#{x} is lexicographically less than #{y}"  #=> a b is lexicographically less than bc
 end
 
-# string cloning 
+# string cloning
 xx = x
 IO.puts x == xx               #=> true  （same length and content)
 
@@ -1065,16 +1065,16 @@ B{ 147 250 150 123 } shift-jis decode .
 
 ## Forth
 
-In Forth, as in Assembler, all strings are binary ie: they are simply bytes in memory. 
+In Forth, as in Assembler, all strings are binary ie: they are simply bytes in memory.
 
-Using primitive memory operations the programmer can quickly build a string word set. 
+Using primitive memory operations the programmer can quickly build a string word set.
 This code is an example of how to create string functions from low-level operations.
 
 
 Using an Indirect Threaded Forth, this code compiles to only 304 bytes on a 16 bit controller! (with labels stripped out)
 Adding the 256 byte buffer it takes only 560 bytes; useable in small embedded environments.
 
- 
+
 
 ```forth
 \ Rosetta Code Binary Strings Demo in Forth
@@ -1152,8 +1152,8 @@ Adding the 256 byte buffer it takes only 560 bytes; useable in small embedded en
 
 : substr  ( string1 start length -- strpad) \ Extract a substring of string and return an output string
           >r >r                             \ push start,length
-          count                             \ compute addr,len 
-          r> 1- /string                     \ pop start, subtract 1, cut string 
+          count                             \ compute addr,len
+          r> 1- /string                     \ pop start, subtract 1, cut string
           drop r>                           \ drop existing length, pop new length
           strpad place                      \ place new stack string in strpad
           strpad ;                          \ return address of strpad
@@ -1178,7 +1178,7 @@ Adding the 256 byte buffer it takes only 560 bytes; useable in small embedded en
 ```
 
 
-With the above code compiled into our system, we can test interactively 
+With the above code compiled into our system, we can test interactively
 at the Forth console to see if we have satisfied the Rosetta code requirements
 
 
@@ -1193,7 +1193,7 @@ at the Forth console to see if we have satisfied the Rosetta code requirements
 \ 'binary_string'  drops it's address on the stack. Nothing more. (ie: pointer to the string)
 
 HEX ok
-    create binary_string   9 c,  1 c, 2 c, 3 c, 4 c, 5 c, 
+    create binary_string   9 c,  1 c, 2 c, 3 c, 4 c, 5 c,
                            0A c, 0B c, 0C c, 0FF c,        \ 1st byte is length
 ok
 
@@ -1204,13 +1204,13 @@ ok
  ok
 
 
-\ Alternatively we can create static string variables using our constructor 
+\ Alternatively we can create static string variables using our constructor
     string: buffer1  ok
     string: buffer2  ok
-  
+
 DECIMAL  ok
-  
-\ 2. String assignment 
+
+\ 2. String assignment
 
 \ create string constants with assignments(static, counted strings)  ok
      create string1  ," Now is the time for all good men to come to the aid"
@@ -1222,8 +1222,8 @@ DECIMAL  ok
 
 \ or use S" and PLACE
      S" The rain in Spain..." buffer2 PLACE ok
- 
-\ Test the assignments  
+
+\ Test the assignments
      string2 writestr Right now!
  ok
      string1 writestr Now is the time for all good men to come to the aid
@@ -1245,7 +1245,7 @@ DECIMAL  ok
 \ 3. String comparison. ( the '.'  prints the top of the stack in these examples)
      buffer1 =" ABCDEFG"  ok
      buffer2 =" ABCDEFG"  ok
-   
+
      buffer1 buffer2 STR= .  ( should be -1, TRUE flag) -1  ok
 
      string1 buffer1 str> .  ( should be  0) 0  ok
@@ -1480,7 +1480,7 @@ strIsEmpty x =
 ```haskell
 {- This is the most obvious way to
 append strings, using the built-in
-(++) concatenation operator 
+(++) concatenation operator
 Note the same would work to join
 any two strings (as 'variables' or
 as typed strings -}
@@ -1532,8 +1532,8 @@ v := s                 # strings are immutable, no copying or cloning are needed
 s == ""                # equal empty string
 *s = 0                 # string length is zero
 s ||:= "a"             # append a byte "a" to s via concatenation
-t := s[2+:3]           # t is set to position 2 for 3 characters 
-s := replace(s,s2,s3)  # IPL replace function 
+t := s[2+:3]           # t is set to position 2 for 3 characters
+s := replace(s,s2,s3)  # IPL replace function
 s := s1 || s2          # concatenation (joining) of strings
 ```
 
@@ -1854,7 +1854,7 @@ JavaScript has native support for binary strings.  All strings are "binary" and 
 ```JavaScript
 //String creation
 var str='';
-//or 
+//or
 str2=new String();
 
 
@@ -1879,7 +1879,7 @@ string=str;//Strings are immutable therefore when you assign a string to a varia
 Boolean(''); //returns false
 ''[0]; //returns undefined
 ''.charCodeAt(); //returns NaN
-''==0; //returns true 
+''==0; //returns true
 ''===0; //returns false
 ''==false; //returns true
 
@@ -1897,14 +1897,14 @@ str.substring(7,9); //returns "He" that is, whatever is between index 7 and inde
 
 //Replace every occurence of x byte with another string
 str3="url,url,url,url,url";
-str3.replace(/,/g,'\n') //Regex ,returns the same string with the , replaced by \n 
+str3.replace(/,/g,'\n') //Regex ,returns the same string with the , replaced by \n
 str4=str3.replace(/./g,function(index){//it also supports callback functions, the function will be called when a match has been found..
 return index==','?'\n':index;//returns replacement
 })
 
 //Join Strings
 [str," ",str3].join(" "/*this is the character that will glue the strings*/)//we can join an array of strings
-str3+str4; 
+str3+str4;
 str.concat('\n',str4); //concantenate them
 ```
 
@@ -1913,7 +1913,7 @@ str.concat('\n',str4); //concantenate them
 ## jq
 
 
-jq's strings are JSON strings and so cannot be safely used as "binary strings" in the sense of this article.  The most convenient way to store a string of bytes in jq is as a jq array of integers, it being understood that jq itself does **not** provide a mechanism for guaranteeing that all the elements of a particular array are integers in the expected range. 
+jq's strings are JSON strings and so cannot be safely used as "binary strings" in the sense of this article.  The most convenient way to store a string of bytes in jq is as a jq array of integers, it being understood that jq itself does **not** provide a mechanism for guaranteeing that all the elements of a particular array are integers in the expected range.
 
 It is appropriate therefore to introduce a filter for verifying that an entity is an array of integers in the appropriate range:
 ```jq
@@ -1922,8 +1922,8 @@ It is appropriate therefore to introduce a filter for verifying that an entity i
 def check_binary:
   . as $a
   | reduce .[] as $x
-    ($a; 
-     if $x | (type == "number" and . == floor 
+    ($a;
+     if $x | (type == "number" and . == floor
               and 0 <= . and . <= 255) then $a
      else error("\(.) is an invalid representation of a byte")
      end );
@@ -1975,7 +1975,7 @@ str+str2
 # evaluates to [1] but does not alter $s.  The value of
 # $s can be changed by assignment, e.g.
 
-[0] as $s | $s[0] = 1 | . as $s  
+[0] as $s | $s[0] = 1 | . as $s
 
 ## Check if an entity represents the empty binary string
 
@@ -1990,7 +1990,7 @@ s + ([b]|check_binary)  # if b is suspect
 
 ## Extract a substring from a string
 
-# jq uses an index origin of 0 for both JSON arrays strings, 
+# jq uses an index origin of 0 for both JSON arrays strings,
 # so to extract the substring with indices from m to (n-1)
 # inclusive, the expression s[m:n] can be used.
 
@@ -2023,7 +2023,7 @@ println(c)
 
 # string comparison
 println("(a == b) is $(a == b)")
- 
+
 # String copying.
 A = a
 B = b
@@ -2031,7 +2031,7 @@ C = c
 println(A)
 println(B)
 println(C)
- 
+
 # check if string is empty
 if length(a) == 0
 println("string a is empty")
@@ -2039,18 +2039,18 @@ else
 println("string a is not empty")
 end
 
-# append a byte (actually this is a Char in Julia, and may also be up to 32 bit Unicode) to a string 
+# append a byte (actually this is a Char in Julia, and may also be up to 32 bit Unicode) to a string
 a= a * '\x64'
 println(a)
- 
+
 # extract a substring from string
 e = a[1:6]
 println(e)
-      
+
 # repeat strings with ^
 b4 = b ^ 4
 println(b4)
-    
+
 # Replace every occurrence of a string in another string with third string
 r = replace(b4, "456" => "xyz")
 println(r)
@@ -2362,7 +2362,7 @@ str = foo .. bar -- Strings concatenate with .. operator
 
 ```Mathematica
 (* String creation and destruction *)  BinaryString = {}; BinaryString = . ;
-(* String assignment *)   BinaryString1 = {12,56,82,65} ,  BinaryString2 = {83,12,56,65} 
+(* String assignment *)   BinaryString1 = {12,56,82,65} ,  BinaryString2 = {83,12,56,65}
 -> {12,56,82,65}
 -> {83,12,56,65}
 (* String comparison *)   BinaryString1 === BinaryString2
@@ -2370,12 +2370,12 @@ str = foo .. bar -- Strings concatenate with .. operator
 (* String cloning and copying *)  BinaryString3 = BinaryString1
 -> {12,56,82,65}
 (* Check if a string is empty *)  BinaryString3 === {}
--> False 
+-> False
 (* Append a byte to a string *)   AppendTo[BinaryString3, 22]
 -> {12,56,82,65,22}
 (* Extract a substring from a string *)  Take[BinaryString3, {2, 5}]
 -> {56,82,65,22}
-(* Replace every occurrence of a byte (or a string) in a string with another string *) 
+(* Replace every occurrence of a byte (or a string) in a string with another string *)
 BinaryString3 /. {22 -> Sequence[33, 44]}
 -> {12,56,82,65,33,44}
 (* Join strings *)  BinaryString4 = Join[BinaryString1 , BinaryString2]
@@ -2386,7 +2386,7 @@ BinaryString3 /. {22 -> Sequence[33, 44]}
 =={{header|MATLAB}} / {{header|Octave}}==
 
 ```Matlab
-	
+
 	a=['123',0,' abc '];
 	b=['456',9];
 	c='789';
@@ -2412,11 +2412,11 @@ BinaryString3 /. {22 -> Sequence[33, 44]}
 		printf('\nstring a is not empty\n');
 	end
 
-	% append a byte to a string 
+	% append a byte to a string
 	a=[a,64];
         disp(a);
 
-	% substring 
+	% substring
 	e = a(1:6);
         disp(e);
 
@@ -2430,12 +2430,12 @@ Output:
 
 ```txt
 
-123 abc 
-456	
+123 abc
+456
 789
 (a==b) is 0
-123 abc 
-456	
+123 abc
+456
 789
 
 string a is not empty
@@ -2542,9 +2542,9 @@ val string_is_empty : string -> bool = <fun>
 
 * Append a byte to a string
 
-it is not possible to append a byte to a string, 
+it is not possible to append a byte to a string,
 in the sens modifying the length of a given string,
-but we can use the concatenation operator to append 
+but we can use the concatenation operator to append
 a byte and return the result as a new string
 
 
@@ -3067,10 +3067,10 @@ Join strings [3] (display an integer array using the -join operater):
 More string madness... display an integer array in a tablular format:
 1..12 | Format-Wide {$_.ToString().PadLeft(2)}-Column 3 -Force
 
- 1                                                            2                                                            3                                                         
- 4                                                            5                                                            6                                                         
- 7                                                            8                                                            9                                                         
-10                                                           11                                                           12                                                         
+ 1                                                            2                                                            3
+ 4                                                            5                                                            6
+ 7                                                            8                                                            9
+10                                                           11                                                           12
 
 ```
 
@@ -3142,28 +3142,28 @@ Z = "a test string with extra!".
 
 ;string creation
 x$ = "hello world"
- 
+
 ;string destruction
 x$ = ""
- 
+
 ;string comparison
-If x$ = "hello world" : PrintN("String is equal") : EndIf  
- 
+If x$ = "hello world" : PrintN("String is equal") : EndIf
+
 ;string copying;
 y$ = x$
- 
+
 ; check If empty
 If x$ = "" : PrintN("String is empty") : EndIf
- 
+
 ; append a byte
 x$ = x$ + Chr(41)
- 
+
 ; extract a substring
-x$ = Mid(x$, 1, 5) 
- 
+x$ = Mid(x$, 1, 5)
+
 ; replace bytes
-x$ = ReplaceString(x$, "world", "earth") 
- 
+x$ = ReplaceString(x$, "world", "earth")
+
 ; join strings
 x$ = "hel" + "lo w" + "orld"
 
@@ -3184,7 +3184,7 @@ Python 2.x's string type (<code>str</code>) is a native byte string type. They c
 ```python
 s1 = "A 'string' literal \n"
 s2 = 'You may use any of \' or " as delimiter'
-s3 = """This text 
+s3 = """This text
    goes over several lines
        up to the closing triple quote"""
 ```
@@ -3281,7 +3281,7 @@ If they're separate variables, use the + operator:
 
 
 ```python
-v1 = "hello" 
+v1 = "hello"
 v2 = "world"
 msg = v1 + " " + v2
 ```
@@ -3321,7 +3321,7 @@ To specify a literal immutable byte string (<code>bytes</code>), prefix a string
 ```python
 s1 = b"A 'byte string' literal \n"
 s2 = b'You may use any of \' or " as delimiter'
-s3 = b"""This text 
+s3 = b"""This text
    goes over several lines
        up to the closing triple quote"""
 ```
@@ -3417,7 +3417,7 @@ t: "Abc"
 if t == "abc" [print "equal case"]              ;; comparison , case sensitive
 if t = "abc" [print "equal (case insensitive)"]  ;; comparison , case insensitive
 s: copy ""                                        ;; copying string
-if empty? s [print "string is empty "]          ;; check if string is empty 
+if empty? s [print "string is empty "]          ;; check if string is empty
 append s #"a"                                    ;; append byte
 substr: copy/part at "1234" 3 2               ;; ~ substr ("1234" ,3,2) , red has 1 based indices !
 ?? substr
@@ -3434,12 +3434,12 @@ s: rejoin ["hello " "world" " !"]                   ;; join multiple strings
 
 ```txt
 equal (case insensitive)
-string is empty 
+string is empty
 substr: "34"
 s: "axaxax"
 s: "hello world"
 s: "hello world !"
->> 
+>>
 
 ```
 
@@ -3478,20 +3478,20 @@ Some older REXXes don't have a   '''changestr'''   BIF,   so one is included her
 
 ## Ring
 
-The String in the Ring programming language holds and manipulates an arbitrary sequence of bytes. 
+The String in the Ring programming language holds and manipulates an arbitrary sequence of bytes.
 
 
 ```ring
 # string creation
 x = "hello world"
- 
+
 # string destruction
 x = NULL
- 
+
 # string assignment with a null byte
 x = "a"+char(0)+"b"
 see len(x)  # ==> 3
- 
+
 # string comparison
 if x = "hello"
   See "equal"
@@ -3502,8 +3502,8 @@ y = 'bc'
 if strcmp(x,y) < 0
   See x + " is lexicographically less than " + y
 ok
- 
-# string cloning 
+
+# string cloning
 xx = x
 See x = xx       # true, same length and content
 
@@ -3511,15 +3511,15 @@ See x = xx       # true, same length and content
 if x = NULL
   See "is empty"
 ok
- 
+
 # append a byte
 x += char(7)
- 
+
 # substring
 x = "hello"
 x[1] = "H"
 See x + nl
- 
+
 # join strings
 a = "hel"
 b = "lo w"
@@ -3537,14 +3537,14 @@ A String object holds and manipulates an arbitrary sequence of bytes.  There are
 ```ruby
 # string creation
 x = "hello world"
- 
+
 # string destruction
 x = nil
- 
+
 # string assignment with a null byte
 x = "a\0b"
 x.length  # ==> 3
- 
+
 # string comparison
 if x == "hello"
   puts "equal"
@@ -3555,28 +3555,28 @@ y = 'bc'
 if x < y
   puts "#{x} is lexicographically less than #{y}"
 end
- 
-# string cloning 
+
+# string cloning
 xx = x.dup
 x == xx       # true, same length and content
 x.equal?(xx)  # false, different objects
- 
+
 # check if empty
 if x.empty?
   puts "is empty"
 end
- 
+
 # append a byte
 p x << "\07"
- 
+
 # substring
 p xx = x[0..-2]
 x[1,2] = "XYZ"
 p x
- 
+
 # replace bytes
 p y = "hello world".tr("l", "L")
- 
+
 # join strings
 a = "hel"
 b = "lo w"
@@ -3591,26 +3591,26 @@ p d = a + b + c
 
 ```runbasic
 ' Create string
-s$ = "Hello, world"  
- 
+s$ = "Hello, world"
+
 ' String destruction
-s$ = ""             
- 
+s$ = ""
+
 ' String comparison
 If s$ = "Hello, world" then print "Equal String"
- 
+
 ' Copying string
 a$ = s$
 
 ' Check If empty
 If s$ = "" then print "String is MT"
- 
+
 ' Append a byte
 s$ = s$ + Chr$(65)
- 
+
 ' Extract a substring
 a$ = Mid$(s$, 1, 5)   ' bytes 1 -> 5
- 
+
 'substitute string "world" with "universe"
 a$ = "Hello, world"
 for i = 1 to len(a$)
@@ -3619,7 +3619,7 @@ for i = 1 to len(a$)
     end if
 next
 print a$
- 
+
 'join strings
 s$ = "See " + "you " + "later."
 print s$
@@ -3794,7 +3794,7 @@ replace(stri,"la","al");
 ```
 
 
-Join strings 
+Join strings
 
 ```txt
 
@@ -3912,7 +3912,7 @@ String creation and destruction :
 Sub Creation_String_FirstWay()
 Dim myString As String
     'Here, myString is created and equal ""
-    
+
 End Sub '==> Here the string is destructed !
 ```
 
@@ -3922,7 +3922,7 @@ String assignment :
 Sub String_Assignment()
 Dim myString$
     'Here, myString is created and equal ""
-    
+
     'assignments :
     myString = vbNullString     'return : ""
     myString = "Hello World"    'return : "Hello World"
@@ -3937,9 +3937,9 @@ Sub String_Comparison_FirstWay()
 Dim A$, B$, C$
 
     If A = B Then Debug.Print "A = B"
-    
+
     A = "creation": B = "destruction": C = "CREATION"
-    
+
     'test equality : (operator =)
     If A = B Then
          Debug.Print A & " = " & B
@@ -3949,16 +3949,16 @@ Dim A$, B$, C$
     Else 'here : A < B
          Debug.Print A & " < " & B
     End If
-    
+
     'test if A is different from C
     If A <> C Then Debug.Print A & " and " & B & " are differents."
     'same test without case-sensitive
     If UCase(A) = UCase(C) Then Debug.Print A & " = " & C & " (no case-sensitive)"
-    
+
     'operator Like :
     If A Like "*ation" Then Debug.Print A & " Like *ation"
     If Not B Like "*ation" Then Debug.Print B & " Not Like *ation"
-    'See Also : 
+    'See Also :
 'https://docs.microsoft.com/en-us/dotnet/visual-basic/language-reference/operators/like-operator
 End Sub
 ```
@@ -3986,13 +3986,13 @@ Dim A As String, B As Variant
 
     Debug.Print A = vbNullString    'return True
     Debug.Print StrPtr(A)           'return 0 (zero)
-    
+
     'Press the OK button without enter a data in the InputBox :
     A = InputBox("Enter your own String : ")
     Debug.Print A = ""              'return True
     Debug.Print IsEmpty(A)          'return False
     Debug.Print StrPtr(A) = 0       'return False
-    
+
     'Press the cancel button (with or without enter a data in the InputBox)
     A = InputBox("Enter your own String : ")
     Debug.Print StrPtr(A) = 0       'return True
@@ -4073,7 +4073,7 @@ d.readString(4)    //-->"bar"
 d.readNthString(2) //-->"1"
 d[2,4]             //-->"o", really "o\0ba" but String sees the null
 
-while(Void!=(n:=d.findString("bar"))){ d[n,4]="hoho" } 
+while(Void!=(n:=d.findString("bar"))){ d[n,4]="hoho" }
 d.bytes() //-->L(102,111,111,0,104,111,104,111,0,49,0)
 
 d2:=Data(0,Int,"sam");

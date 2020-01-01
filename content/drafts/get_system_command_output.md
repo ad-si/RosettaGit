@@ -13,7 +13,7 @@ tags = []
 {{task}}
 
 ;Task
-Execute a system command and get its output into the program. The output may be stored in any kind of collection (array, list, etc.). 
+Execute a system command and get its output into the program. The output may be stored in any kind of collection (array, list, etc.).
 
 
 
@@ -41,7 +41,7 @@ procedure System_Command is
    Status     : aliased Integer;
    Separators : constant String := LF & CR;
    Reply_List : Slice_Set;
-   
+
 begin
    Args := Argument_String_To_List (Command);
    -- execute the system command and get the output in a single string
@@ -241,8 +241,8 @@ int main(int argc, char **argv)
 ## C++
 
 
-```cpp>#include <fstream
-
+```cpp
+#include <fstream>
 #include <iostream>
 
 std::string execute(const std::string& command) {
@@ -428,7 +428,7 @@ Public Sub Main()
 Dim sStore As String
 
 Shell "ls" To sStore
-Print sStore 
+Print sStore
 
 End
 ```
@@ -535,7 +535,7 @@ main :: IO ()
 main = do
     -- get the output of the process as a list of lines
     results <- lines <$> readProcess "hexdump" ["-C", "/etc/passwd"] ""
-    
+
     -- print each line in reverse
     mapM_ (putStrLn . reverse) results
 ```
@@ -640,7 +640,7 @@ Output:
 
 
 ```txt
-Output of the command: cmd /c dir 
+Output of the command: cmd /c dir
 
  Het volume in station C heeft geen naam.
  Het volumenummer is 10CE-30C3
@@ -704,7 +704,7 @@ The fifth element of the sample capture (''ls -gocart'') being:
 # commandOutput.data.split('\n')[4];
 -rw-rw-r--. 1   155 Feb  8 07:52 JSON.jsi
 ```
- 
+
 
 
 ## Julia
@@ -1016,7 +1016,7 @@ echo "Output: " & lsStr
 ```objeck
 class Test {
   function : Main(args : String[]) ~ Nil {
-    output := System.Runtime->CommandOutput("ls -l"); 
+    output := System.Runtime->CommandOutput("ls -l");
     each(i : output) {
       output[i]->PrintLine();
     };
@@ -1075,7 +1075,7 @@ Say
 Do While queued()>0
   parse pull text
   Say text
-  End 
+  End
 ```
 
 {{out}}
@@ -1091,9 +1091,9 @@ Output of "dir tu*.rex /od"
 31.08.2016  19:36             1.358 turing.rex
 31.08.2016  19:49             1.398 turing2.rex
                2 Datei(en),          2.756 Bytes
-               0 Verzeichnis(se),  3.357.933.568 Bytes frei 
+               0 Verzeichnis(se),  3.357.933.568 Bytes frei
 ```
-       
+
 
 ### version 3
 
@@ -1306,7 +1306,7 @@ system("wc -l /etc/passwd /etc/group", intern = TRUE)
 
 ```txt
 
-[1] "  49 /etc/passwd" "  80 /etc/group"  " 129 total"   
+[1] "  49 /etc/passwd" "  80 /etc/group"  " 129 total"
 
 ```
 
@@ -1333,7 +1333,7 @@ See [http://docs.racket-lang.org/reference/subprocess.html?q=system#%28def._%28%
  (system "ls /etc/motd") => #t
  ;; it throws an error on non-zero exit code (so I need to catch it in this error handler)
  (system "false") => #f       ; nothing printed to stdout/stderr
- (system "ls /etc/mosh") => #f ; error report printed to stderr 
+ (system "ls /etc/mosh") => #f ; error report printed to stderr
  ;; output can be captured by redirecting stdout/stderr (which are known as current-output-port and
  ;; current-error-port in racket parlance).
  ;; the command printed a \n, so there is a newline captured by the system command
@@ -1428,7 +1428,7 @@ exit 0                                           /*stick a fork in it,  we're al
 
 ```ring
 
-system("dir C:\Ring\doc") 
+system("dir C:\Ring\doc")
 
 ```
 
@@ -1468,7 +1468,7 @@ print a$    ' prints the directory
 Many options, google exec or system or %x. Demonstrating backticks:
 
 ```ruby
-str = `ls`   
+str = `ls`
 arr = `ls`.lines
 ```
 
@@ -1663,35 +1663,35 @@ This program reads the output of the ifconfig command into the string stream 'ou
 ..end for
 lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384
 	options=3<RXCSUM,TXCSUM>
-	inet6 ::1 prefixlen 128 
-	inet 127.0.0.1 netmask 0xff000000 
-	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1 
+	inet6 ::1 prefixlen 128
+	inet 127.0.0.1 netmask 0xff000000
+	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x1
 	nd6 options=1<PERFORMNUD>
 gif0: flags=8010<POINTOPOINT,MULTICAST> mtu 1280
 stf0: flags=0<> mtu 1280
 en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
 	options=27<RXCSUM,TXCSUM,VLAN_MTU,TSO4>
-	ether d4:9a:20:b8:8d:2c 
+	ether d4:9a:20:b8:8d:2c
 	nd6 options=1<PERFORMNUD>
 	media: autoselect
 	status: inactive
 en1: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
-	ether 00:26:08:e0:67:cc 
-	inet6 fe80::226:8ff:fee0:67cc%en1 prefixlen 64 scopeid 0x5 
+	ether 00:26:08:e0:67:cc
+	inet6 fe80::226:8ff:fee0:67cc%en1 prefixlen 64 scopeid 0x5
 	inet 172.20.30.66 netmask 0xffffff00 broadcast 172.20.30.255
 	nd6 options=1<PERFORMNUD>
 	media: autoselect
 	status: active
 fw0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 4078
-	lladdr d4:9a:20:ff:fe:b8:8d:2c 
+	lladdr d4:9a:20:ff:fe:b8:8d:2c
 	nd6 options=1<PERFORMNUD>
 	media: autoselect <full-duplex>
 	status: inactive
 p2p0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> mtu 2304
-	ether 02:26:08:e0:67:cc 
+	ether 02:26:08:e0:67:cc
 	media: autoselect
 	status: inactive
-> 
+>
 ```
 
 

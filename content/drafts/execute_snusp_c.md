@@ -18,8 +18,8 @@ The enhanced mode actives the interpretation of &, different from the one of the
 The source code to be interpreted is specified on the command line after the keyword '''snusp''', while the keyword '''enhanced''' activates the enhanced non standard mode, and the keyword '''debug''' activates debugging mode. Normally the read instruction reads from the stdin and the write instruction writes to stdout.
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -96,7 +96,7 @@ int main(int argc, char **argv)
   char *filename = NULL, *pc;
   FILE *srch;
   bool ok = TRUE;
-  
+
      for(i=1; i < argc ; i++ )
      {
        if ( strcmp(argv[i], "enhanced") == 0 )
@@ -120,20 +120,20 @@ int main(int argc, char **argv)
        }
        fprintf(stderr, "unrecognized option '%s'\n", argv[i]);
      }
-     
+
      if ( filename == NULL )
      {
         fprintf(stderr, "no source file specified\n");
         exit(1);
      }
-  
+
      /* load program */
      if ( (srch = fopen(filename, "r") ) == NULL )
      {
         fprintf(stderr, "cannot locate file '%s'\n", filename);
         exit(1);
      }
-     
+
      for (i=0; (fgets(buffer, LINESIZE, srch) != NULL) && i < MAXHEIGHT; i++ )
      {
         field[i].l = strlen(buffer);
@@ -155,14 +155,14 @@ int main(int argc, char **argv)
          fprintf(stderr, "bottom universal limit reached! Continuing anyway\n");
      }
      fclose(srch);
-     
+
      maxi = i;
-     
+
      /* interpreter */
      while( ok )
      {
          char cmd;
-         
+
          if ( (y >= i) || (y<0) )
          {
            fprintf(stderr, in_the_space);
@@ -285,7 +285,7 @@ int main(int argc, char **argv)
          }
          x += dx; y += dy;
      }
-     
+
      for(i=0; i < maxi; i++)
         free(field[i].s);
 }

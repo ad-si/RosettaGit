@@ -188,9 +188,9 @@ procedure Set_Consolidation is
             --   (List(I) union List(J)) followed by List(K), K not in {I, J}
             if Nonempty_Intersection(List(I), List(J)) then
                return Consolidate
-                 (Union(List(I), List(J)) 
-                    & List(List'First .. I-1) 
-                    & List(I+1        .. J-1) 
+                 (Union(List(I), List(J))
+                    & List(List'First .. I-1)
+                    & List(I+1        .. J-1)
                     & List(J+1        .. List'Last));
             end if;
          end loop;
@@ -350,8 +350,8 @@ A+B C+D B+D ==> A+B+C+D
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define s(x) (1U << ((x) - 'A'))
 
@@ -393,8 +393,8 @@ int main(void)
 
 The above is O(N<sup>2</sup>) in terms of number of input sets. If input is large (many sets or huge number of elements), here's an O(N) method, where N is the sum of the sizes of all input sets:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -518,7 +518,7 @@ public class SetConsolidation
         var setCollection4 = new[] {new[] {"H", "I", "K"}, new[] {"A", "B"}, new[] {"C", "D"},
             new[] {"D", "B"}, new[] {"F", "G", "H"}};
         var input = new[] {setCollection1, setCollection2, setCollection3, setCollection4};
-        
+
         foreach (var sets in input) {
             Console.WriteLine("Start sets:");
             Console.WriteLine(string.Join(", ", sets.Select(s => "{" + string.Join(", ", s) + "}")));
@@ -529,7 +529,7 @@ public class SetConsolidation
             Console.WriteLine();
         }
     }
-    
+
     /// <summary>
     /// Consolidates sets using a connected-component-finding-algorithm involving Nodes with parent pointers.
     /// The more efficient solution, but more elaborate code.
@@ -562,17 +562,17 @@ public class SetConsolidation
         foreach (var g in elements.Values.GroupBy(element => element.FindTop().Value))
             yield return g.Select(e => e.Value);
     }
-    
+
     private class Node<T>
     {
         public Node(T value, Node<T> parent = null) {
             Value = value;
             Parent = parent ?? this;
         }
-        
+
         public T Value { get; }
         public Node<T> Parent { get; set; }
-        
+
         public Node<T> FindTop() {
             var top = this;
             while (top != top.Parent) top = top.Parent;
@@ -586,7 +586,7 @@ public class SetConsolidation
             return top;
         }
     }
-    
+
     /// <summary>
     /// Consolidates sets using operations on the HashSet&lt;T&gt; class.
     /// Less efficient than the other method, but easier to write.
@@ -725,7 +725,7 @@ void main() @safe {
 ```
 
 
-'''Recursive version''', as described on talk page. 
+'''Recursive version''', as described on talk page.
 
 ```d
 import std.stdio, std.algorithm, std.array;
@@ -780,19 +780,19 @@ void main() @safe {
 ;; utility : make a set of sets from a list
 (define (make-set* s)
 		(or (when (list? s) (make-set (map make-set* s))) s))
-		
+
 ;; union of all sets which intersect - O(n^2)
 (define (make-big ss)
 (make-set
 	(for/list ((u ss))
 	(for/fold (big u) ((v ss)) #:when (set-intersect? big v)  (set-union big v)))))
-	
+
 ;; remove sets which are subset of another one - O(n^2)
 (define (remove-small ss)
 	(for/list ((keep ss))
 	#:when (for/and ((v ss))  #:continue (set-equal? keep v) (not (set-subset? v keep)))
 	keep))
-	
+
 (define (consolidate ss) (make-set (remove-small (make-big ss))))
 
 (define S (make-set* ' ((h i k) ( a b) ( b c) (c d) ( f g h))))
@@ -800,11 +800,11 @@ void main() @safe {
 
 (consolidate S)
     → { { a b c d } { f g h i k } }
-	
+
 
 ```
 
-		
+
 
 
 ## Egison
@@ -932,7 +932,7 @@ let (|SeqNode|SeqEmpty|) s =
 
 let SetDisjunct x y = Set.isEmpty (Set.intersect x y)
 
-let rec consolidate s = seq {        
+let rec consolidate s = seq {
     match s with
     | SeqEmpty -> ()
     | SeqNode (this, rest) ->
@@ -1192,9 +1192,9 @@ public class SetConsolidation {
 
 
 ```txt
-[A, B] [D, C] 
-[D, A, B] 
-[D, A, B, C] 
+[A, B] [D, C]
+[D, A, B]
+[D, A, B, C]
 [F, G, H, I, K] [D, A, B, C]
 ```
 
@@ -1373,16 +1373,16 @@ def combinable:
 
 # Given an array of arrays, remove the i-th and j-th elements,
 # and add their union:
-def update(i;j): 
+def update(i;j):
   if i > j then update(j;i)
   elif i == j then del(.[i])
-  else 
+  else
     union(.[i]; .[j]) as $c
     | union(del(.[j]) | del(.[i]); [$c])
   end;
 
 # Input: a set of sets
-def consolidate: 
+def consolidate:
    if length <= 1 then .
    else
      ([0, 1, .] | combinable) as $c
@@ -1403,7 +1403,7 @@ def tests:
   [["H","I","K"], ["A","B"], ["C","D"], ["D","B"], ["F","G","H"]]
 ;
 
-def test: 
+def test:
   tests | to_set | consolidate;
 
 test
@@ -1513,7 +1513,7 @@ fun<T : Comparable<T>> consolidateSets(sets: Array<Set<T>>): Set<Set<T>> {
             while (true) {
                 var intersects = 0
                 for (j in (i + 1) until size) {
-                    if (consolidated[j]) continue 
+                    if (consolidated[j]) continue
                     if (sets[i].intersect(sets[j]).isNotEmpty()) {
                         sets[i] = sets[i].union(sets[j])
                         consolidated[j] = true
@@ -1525,15 +1525,15 @@ fun<T : Comparable<T>> consolidateSets(sets: Array<Set<T>>): Set<Set<T>> {
         }
         i++
     }
-    return (0 until size).filter { !consolidated[it] }.map { sets[it].toSortedSet() }.toSet()                    
-}              
-        
+    return (0 until size).filter { !consolidated[it] }.map { sets[it].toSortedSet() }.toSet()
+}
+
 fun main(args: Array<String>) {
     val unconsolidatedSets = arrayOf(
         arrayOf(setOf('A', 'B'), setOf('C', 'D')),
         arrayOf(setOf('A', 'B'), setOf('B', 'D')),
         arrayOf(setOf('A', 'B'), setOf('C', 'D'), setOf('D', 'B')),
-        arrayOf(setOf('H', 'I', 'K'), setOf('A', 'B'), setOf('C', 'D'), setOf('D', 'B'), setOf('F', 'G', 'H')) 
+        arrayOf(setOf('H', 'I', 'K'), setOf('A', 'B'), setOf('C', 'D'), setOf('D', 'B'), setOf('F', 'G', 'H'))
     )
     for (sets in unconsolidatedSets) println(consolidateSets(sets))
 }
@@ -1559,7 +1559,7 @@ fun main(args: Array<String>) {
 ```Mathematica
 reduce[x_] :=
  Block[{pairs, unique},
-  pairs = 
+  pairs =
    DeleteCases[
     Subsets[Range@
       Length@x, {2}], _?(Intersection @@ x[[#]] == {} &)];
@@ -2115,21 +2115,21 @@ end Set;
 
 ```txt
 
-The original sets: {A,B} 
+The original sets: {A,B}
 
 Results: {A,B}
 
-The original sets: {A,B} {C,D} 
+The original sets: {A,B} {C,D}
 
 Results: {A,B} {C,D}
 
-The original sets: {A,B} {B,C} 
+The original sets: {A,B} {B,C}
 
 Results: {A,B,C}
 
-The original sets: {A,B} {C,D} {E,B,F,G,H} 
+The original sets: {A,B} {C,D} {E,B,F,G,H}
 
-Results: {A,B,E,F,G,H} {C,D} 
+Results: {A,B,E,F,G,H} {C,D}
 
 ```
 
@@ -2163,7 +2163,7 @@ def consolidate(sets):
 ```python
 def conso(s):
 	if len(s) < 2: return s
- 
+
 	r, b = [s[0]], conso(s[1:])
 	for x in b:
 		if r[0].intersection(x): r[0].update(x)
@@ -2179,11 +2179,11 @@ The <code>_test</code> function contains solutions to all the examples as well a
 
 ```python
 def _test(consolidate=consolidate):
-    
+
     def freze(list_of_sets):
         'return a set of frozensets from the list of sets to allow comparison'
         return set(frozenset(s) for s in list_of_sets)
-        
+
     # Define some variables
     A,B,C,D,E,F,G,H,I,J,K = 'A,B,C,D,E,F,G,H,I,J,K'.split(',')
     # Consolidate some lists of sets
@@ -2203,10 +2203,10 @@ def _test(consolidate=consolidate):
     answer = consolidate(deepcopy(sets))
     for perm in itertools.permutations(sets):
             assert consolidate(deepcopy(perm)) == answer
- 
+
     assert (answer == [{'A', 'C', 'B', 'D', 'G', 'F', 'I', 'H', 'K'}])
     assert (len(list(itertools.permutations(sets))) == 720)
-    
+
     print('_test(%s) complete' % consolidate.__name__)
 
 if __name__ == '__main__':
@@ -2457,18 +2457,18 @@ func consolidate(s)
 	     p = i
              ts = ""
 	     for j = i to 1 step -1
-		 if ts = "" 
+		 if ts = ""
 		    p = j
 		 ok
 		 ts = ""
 		 for k = 1 to len(sets[p])
                       if j > 1
-		         if substring(sets[j-1],substr(sets[p],k,1),1) = 0 
+		         if substring(sets[j-1],substr(sets[p],k,1),1) = 0
 			     ts = ts + substr(sets[p],k,1)
 		         ok
                       ok
 		 next
-		 if len(ts) < len(sets[p]) 
+		 if len(ts) < len(sets[p])
                     if j > 1
 		       sets[j-1] = sets[j-1] + ts
 		       sets[p] = "-"
@@ -2477,7 +2477,7 @@ func consolidate(s)
 		 else
 		    p = i
 		 ok
-	     next	
+	     next
 	next
 	consolidate = s + " = " + substr(list2str(sets),nl,",")
         return consolidate
@@ -2691,8 +2691,8 @@ Original solution:
       (each ((e s))
         (mkset p e)
         (uni p e (car s))))
-    (hash-values 
-      [group-by (op fnd p) (hash-keys 
+    (hash-values
+      [group-by (op fnd p) (hash-keys
                              [group-by identity (flatten sets)])])))
 
 ;; tests
@@ -2847,7 +2847,7 @@ Function consolidate(s)
 		p = i
 		ts = ""
 		For j = i To 1 Step -1
-			If ts = "" Then 
+			If ts = "" Then
 				p = j
 			End If
 			ts = ""
@@ -2863,7 +2863,7 @@ Function consolidate(s)
 			Else
 				p = i
 			End If
-		Next	
+		Next
 	Next
 	consolidate = s & " = " & Join(sets," , ")
 End Function
@@ -2914,9 +2914,9 @@ fcn prettize(sets){
    sets.apply("concat"," ").pump(String,"(%s),".fmt)[0,-1]
 }
 
-foreach sets in (T( 
-  T(L("A","B")), 
-  T(L("A","B"),L("C","D")), 
+foreach sets in (T(
+  T(L("A","B")),
+  T(L("A","B"),L("C","D")),
   T(L("A","B"),L("B","D")),
   T(L("A","B"),L("C","D"),L("D","B")),
   T(L("H","I","K"),L("A","B"),L("C","D"),L("D","B"),L("F","G","H")),

@@ -13,7 +13,7 @@ tags = []
 {{task|Basic language learning}}[[Category:Functions and subroutines]]
 
 ;Task:
-Create a function which takes in a variable number of arguments and prints each one on its own line. 
+Create a function which takes in a variable number of arguments and prints each one on its own line.
 
 Also show, if possible in your language, how to call the function on a list of arguments constructed at runtime.
 
@@ -31,7 +31,7 @@ Functions of this type are also known as [[wp:Variadic_function|Variadic Functio
 ## Ada
 
 
-Ada doesn't have variadic functions. But you can mimic the behavior by defining a function with an unconstrained array as its parameter, i.e., an array whose length is determined at run time. 
+Ada doesn't have variadic functions. But you can mimic the behavior by defining a function with an unconstrained array as its parameter, i.e., an array whose length is determined at run time.
 
 
 ```Ada
@@ -173,7 +173,7 @@ main(void)
 
 ## ALGOL 68
 
-Variable arguments of arbitrarily typed values are not permitted in '''ALGOL 68'''.  
+Variable arguments of arbitrarily typed values are not permitted in '''ALGOL 68'''.
 ''However'' a flexible array of tagged types (union) <u>is</u> permitted.  This effectively
 allows the passing of strongly typed variable arguments to procedures.
 
@@ -229,7 +229,7 @@ use framework "Foundation"
 
 -- positionalArgs :: [a] -> String
 on positionalArgs(xs)
-    
+
     -- follow each argument with a line feed
     map(my putStrLn, xs) as string
 end positionalArgs
@@ -241,8 +241,8 @@ on namedArgs(rec)
             my putStrLn(k & " -> " & keyValue(rec, k))
         end |λ|
     end script
-    
-    -- follow each argument name and value with line feed    
+
+    -- follow each argument name and value with line feed
     map(showKVpair, allKeys(rec)) as string
 end namedArgs
 
@@ -251,12 +251,12 @@ on run
     intercalate(linefeed, ¬
         {positionalArgs(["alpha", "beta", "gamma", "delta"]), ¬
             namedArgs({epsilon:27, zeta:48, eta:81, theta:8, iota:1})})
-    
+
     --> "alpha
     --   beta
     --   gamma
     --   delta
-    -- 
+    --
     --   epsilon -> 27
     --   eta -> 81
     --   iota -> 1
@@ -309,7 +309,7 @@ on keyValue(rec, strKey)
     end if
 end keyValue
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -582,7 +582,7 @@ C calling convention has to be used (with keyword cdecl).
 
 ```freebasic
 SUB printAll cdecl (count As Integer, ... )
-    DIM arg AS Any Ptr 
+    DIM arg AS Any Ptr
     DIM i   AS Integer
 
     arg = va_first()
@@ -636,7 +636,7 @@ Print : Print
 printAll_string (4, a, b, c)
 Print
 
-' empty keyboard buffer 
+' empty keyboard buffer
 While InKey <> "" : Wend
 Print : Print "hit any key to end program"
 Sleep
@@ -734,14 +734,14 @@ define f(a[], l) {
 
 /* Version b */
 define g(a[]) {
-    auto i    
+    auto i
     for (i = 0; a[i] != -1; i++) a[i]
 }
 
 /* Version c */
 define h(a[]) {
     auto i
-    
+
     for (i = 1; i <= a[0]; i++) a[i]
 }
 ```
@@ -752,8 +752,8 @@ define h(a[]) {
 
 The ANSI C standard header <tt>stdarg.h</tt> defines macros for low-level access to the parameter stack. It does not know the number or types of these parameters; this is specified by the required initial parameter(s). For example, it could be a simple count, a terminating <tt>NULL</tt>, or a more complicated parameter specification like a printf() format string.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdarg.h>
 
 void varstrings(int count, ...)   /* the ellipsis indicates variable arguments */
@@ -789,8 +789,8 @@ The C++ varargs are basically the same as in C (therefore you can just take the 
 {{works with|g++|4.3.0}} using option -std=c++0x
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 template<typename T>
  void print(T const& t)
@@ -990,8 +990,8 @@ Definition nat_twobools (n: nat) := Arity nat (Arity bool nat (2*n)) n.
 
 
 There is no equivalent to printf in Coq, because this function has border effects. We will then instead of printing each arguments build a list from it. <br \>
-Our function has type Arity A (list A) n and we obviously want to use induction on n. 
-To build the heritance, we will have the hypothesis of Arity A (list A) n and will have to build a term of Arity A (list A) (S n). 
+Our function has type Arity A (list A) n and we obviously want to use induction on n.
+To build the heritance, we will have the hypothesis of Arity A (list A) n and will have to build a term of Arity A (list A) (S n).
 Forall A and B, Arity A B (S n)  is but <math>A \rightarrow \text{Arity A B n}</math>, aka a function that takes A and returns an Arity A B n <br \>
 Hence to introduce a new value, we simply create a function that takes one parameter and uses it. <br \>
 Finally, for the function to work, we need an accumulator of some sort
@@ -1012,7 +1012,7 @@ Our function is then just an application of this one:
 
 ```coq
 
-Definition build_list {A: Set} := build_list_aux (@nil A). 
+Definition build_list {A: Set} := build_list_aux (@nil A).
 
 ```
 
@@ -1261,18 +1261,18 @@ ELENA 4.1 :
 ```elena
 import system'routines;
 import extensions;
- 
+
 extension variadicOp
 {
     printAll(params object[] list)
     {
-        for(int i := 0, i < list.Length, i+=1) 
+        for(int i := 0, i < list.Length, i+=1)
         {
             self.printLine(list[i])
         }
-    }    
+    }
 }
- 
+
 public program()
 {
     console.printAll("test", "rosetta code", 123, 5.6r)
@@ -1523,7 +1523,7 @@ var
 begin
 	// inside the body `array of const` is equivalent to `array of TVarRec`
 	for argument in arguments do
-	begin	
+	begin
 		with argument do
 		begin
 			case vType of
@@ -1840,7 +1840,7 @@ let
   fix = // Variant of the applicative order Y combinator
     f => (f => f(f))(g => f((...a) => g(g)(...a))),
   forAll =
-    f => 
+    f =>
       fix(
         z => (a,...b) => (
           (a === void 0)
@@ -1994,7 +1994,7 @@ Conversely, when <code>...</code> is appended to an array (or other iterable obj
 
 julia> args = [ "first", (1,2,17), "last" ]
 3-element Array{Any,1}:
- "first" 
+ "first"
  (1,2,17)
  "last
 
@@ -2291,7 +2291,7 @@ function variadicFunction(varargin)
     for i = (1:numel(varargin))
         disp(varargin{i});
     end
-    
+
 end
 ```
 
@@ -2371,7 +2371,7 @@ PROCEDURE Variable(VAR arr: ARRAY OF TEXT) =
       IO.Put(arr[i] & "\n");
     END;
   END Variable;
-  
+
 BEGIN
   Variable(strings);
 END Varargs.
@@ -2396,7 +2396,7 @@ MODULE Varargs EXPORTS Main;
 
 IMPORT IO, Fmt;
 
-VAR 
+VAR
   strings := NEW(REF TEXT);
   ints := NEW(REF INTEGER);
   reals := NEW(REF REAL);
@@ -2413,7 +2413,7 @@ PROCEDURE Variable(VAR arr: ARRAY OF REFANY) =
       END;
     END;
   END Variable;
-  
+
 BEGIN
   strings^ := "Rosetta"; ints^ := 1; reals^ := 3.1415;
   Variable(refarr);
@@ -2447,7 +2447,7 @@ module Variadic
     {
         foreach (arg in args) WriteLine(arg);
     }
-    
+
     Main() : void
     {
         PrintAll("test", "rosetta code", 123, 5.6, DateTime.Now);
@@ -2482,8 +2482,8 @@ print(args)
 Objective-C uses the same varargs functionality as C. Like C, it has no way of knowing the number or types of the arguments. When the arguments are all objects, the convention is that, if the number of arguments is undetermined, then the list must be "terminated" with <code>nil</code>. Functions that follow this convention include the constructors of data structures that take an undetermined number of elements, like <code>[NSArray arrayWithObjects:...]</code>.
 
 
-```objc>#include <stdarg.h
-
+```objc
+#include <stdarg.h>
 
 void logObjects(id firstObject, ...) // <-- there is always at least one arg, "nil", so this is valid, even for "empty" list
 {
@@ -2507,7 +2507,7 @@ logObjects(@4, @3, @"foo", nil);
 
 As Oforth uses a data stack, the only way to have a function using a variable number of parameters is to define one of its parameters as the number of parameters to use on the stack.
 
-For instance : 
+For instance :
 
 ```Oforth
 : sumNum(n)  | i | 0 n loop: i [ + ] ;
@@ -2898,7 +2898,7 @@ To handle more esoteric situations, we could define a higher-order predicate to 
 
 ```prolog
 
-execute( Term ) :- 
+execute( Term ) :-
   Term =.. [F | Args],
   forall( member(X,Args), (G =.. [F,X], G, nl) ).
 
@@ -2945,7 +2945,7 @@ print_all(*args)
 
 
 
-### Keyword arguments 
+### Keyword arguments
 
 Python also has keyword arguments were you can add arbitrary ''func('''''keyword1=value1, keyword2=value2 ...''''')'' keyword-value pairs when calling a function.
 This example shows both keyword arguments and positional arguments. The two calls to the function are equivalent. '''*alist''' spreads the members of the list to create positional arguments, and '''**adict''' does similar for the keyword/value pairs from the dictionary.
@@ -2956,7 +2956,7 @@ This example shows both keyword arguments and positional arguments. The two call
 	print "KEYWORD ARGS:\n  " + '\n  '.join(
 		"%r = %r" % (k,v) for k,v in keywordargs.iteritems())
 
-	
+
 >>> printargs(1,'a',1+0j, fee='fi', fo='fum')
 POSITIONAL ARGS:
   1
@@ -3013,10 +3013,10 @@ This first function, almost completes the task, but the formatting isn't quite a
  printallargs1(1:5, "abc", TRUE)
 # [[1]]
 # [1] 1 2 3 4 5
-# 
+#
 # [[2]]
 # [1] "abc"
-# 
+#
 # [[3]]
 # [1] TRUE
 ```
@@ -3024,8 +3024,8 @@ This first function, almost completes the task, but the formatting isn't quite a
 This function is corrrect, though a little longer.
 
 ```rsplus
- printallargs2 <- function(...) 
- {  
+ printallargs2 <- function(...)
+ {
    args <- list(...)
    lapply(args, print)
    invisible()
@@ -3136,7 +3136,7 @@ SUBI printAll (...)
 	PRINT ParamStr$(i)
     NEXT i
 END SUBI
- 
+
 printAll 4, 3, 5, 6, 4, 3
 printAll 4, 3, 5
 printAll "Rosetta", "Code", "Is", "Awesome!"
@@ -3175,7 +3175,7 @@ return
 
 ### invocations
 
-The function can be called with any number of arguments (including no arguments and/or omitted arguments), 
+The function can be called with any number of arguments (including no arguments and/or omitted arguments),
 
 although some REXX implementations impose a limit and the number of arguments.
 
@@ -3213,7 +3213,7 @@ func sum(nums)
        next
        showarray(nums)
        see " " + total + nl
-        
+
 func showarray(vect)
        see "["
        svect = ""
@@ -3606,24 +3606,24 @@ Dim v As Variant
 
     Debug.Print "call 1"
     varargs 1, 2, 3
-    
+
     Debug.Print "call 2"
     varargs 4, 5, 6, 7, 8
-    
+
     v = Array(9, 10, 11)
     Debug.Print "call 3"
     varargs v
-    
+
     ReDim v(0 To 2)
     v(0) = 12
     v(1) = 13
     v(2) = 14
     Debug.Print "call 4"
     varargs 11, v
-    
+
     Debug.Print "call 5"
     varargs v(2), v(1), v(0), 11
-    
+
 End Sub
 ```
 
@@ -3631,28 +3631,28 @@ End Sub
 
 ```txt
 call 1
- 1 
- 2 
- 3 
+ 1
+ 2
+ 3
 call 2
- 4 
- 5 
- 6 
- 7 
- 8 
+ 4
+ 5
+ 6
+ 7
+ 8
 call 3
- 9 
- 10 
- 11 
+ 9
+ 10
+ 11
 call 4
- 11 
- 12 
- 13 
- 14 
+ 11
+ 12
+ 13
+ 14
 call 5
- 14 
- 13 
- 12 
+ 14
+ 13
+ 12
  11
 ```
 
@@ -3703,31 +3703,31 @@ self.f(1, 2)
 {{out}}
 
 ```txt
-I 
-AM 
-DOING 
-A 
-GREAT 
-WORK 
-SO 
-THAT 
-I 
-CANNOT 
-COME 
-DOWN 
-WHY 
-SHOULD 
-THE 
-WORK 
-CEASE 
-WHILST 
-I 
-LEAVE 
-IT 
-AND 
-COME 
-DOWN 
-TO 
+I
+AM
+DOING
+A
+GREAT
+WORK
+SO
+THAT
+I
+CANNOT
+COME
+DOWN
+WHY
+SHOULD
+THE
+WORK
+CEASE
+WHILST
+I
+LEAVE
+IT
+AND
+COME
+DOWN
+TO
 YOU
 ```
 

@@ -13,7 +13,7 @@ tags = []
 {{task|Probability and statistics}}
 Create a well-formatted [[wp:Stem-and-leaf_plot|stem-and-leaf plot]] from the following data set, where the leaves are the last digits:
 
-<blockquote style="font-family: monospace; white-space: pre-wrap;">12  127 28  42  39  113 42  18  44  118 44  37  113 124 37  48  127 36  29  31  125 139 131 115 105 132 104 123 35  113 122 42  117 119 58  109 23  105 63  27  44  105 99  41  128 121 116 125 32  61  37  127 29  113 121 58  114 126 53  114 96  25  109 7   31  141 46  13  27  43  117 116 27  7   68  40  31  115 124 42  128 52  71  118 117 38  27  106 33  117 116 111 40  119 47  105 57  122 109 124 115 43  120 43  27  27  18  28  48  125 107 114 34  133 45  120 30  127 31  116 146</blockquote> 
+<blockquote style="font-family: monospace; white-space: pre-wrap;">12  127 28  42  39  113 42  18  44  118 44  37  113 124 37  48  127 36  29  31  125 139 131 115 105 132 104 123 35  113 122 42  117 119 58  109 23  105 63  27  44  105 99  41  128 121 116 125 32  61  37  127 29  113 121 58  114 126 53  114 96  25  109 7   31  141 46  13  27  43  117 116 27  7   68  40  31  115 124 42  128 52  71  118 117 38  27  106 33  117 116 111 40  119 47  105 57  122 109 124 115 43  120 43  27  27  18  28  48  125 107 114 34  133 45  120 30  127 31  116 146</blockquote>
 <!-- The data set generation parameters: humps at 0 and 80 of width 80, 60 elements, slopes 3 and 6. -->
 
 The primary intent of this task is the presentation of information. It is acceptable to hardcode the data set or characteristics of it (such as what the stems are) in the example, insofar as it is impractical to make the example generic to any data set. For example, in a computation-less language like HTML the data set may be entirely prearranged within the example; the interesting characteristics are how the proper visual formatting is arranged.
@@ -99,16 +99,16 @@ procedure stemleaf is
 	procedure Move (from, to : in Natural) is
 	begin data(to) := data(from);
 	end Move;
-	
+
 	function Cmp (p1, p2 : Natural) return Boolean is
 	begin return data(p1)<data(p2);
 	end Cmp;
-	
+
 	package Sorty is new GNAT.Heap_Sort_G(Move,Cmp);
 	min,max,p,stemw: Integer;
 begin
 	Sorty.Sort(data'Last);
-	min := data(1); 
+	min := data(1);
 	max := data(data'Last);
 	stemw := Integer'Image(max)'Length;
 	p := 1;
@@ -170,7 +170,7 @@ Loop, parse, Data,%A_Space%
     NewStem := SubStr(A_LoopField,1,StrLen(A_LoopField)-1)     ; AutoHotkey doesn't have a Left() function, so this does the trick.
     If ( NewStem <> OldStem  and StrLen(A_LoopField) <> 1)
     {
-        While(OldStem+1<>NewStem)                              ; account for all stems which don't appear (in this example, 8) but are between the lowest and highest stems 
+        While(OldStem+1<>NewStem)                              ; account for all stems which don't appear (in this example, 8) but are between the lowest and highest stems
             OldStem++,ToPrint .= "`n" PadStem(oldStem)
         ToPrint .= "`n" PadStem(NewStem)
         OldStem := NewStem
@@ -200,21 +200,21 @@ Output:
 
 ```txt
 
-  0 | 7 7 
-  1 | 2 3 8 8 
-  2 | 3 5 7 7 7 7 7 7 8 8 9 9 
-  3 | 0 1 1 1 1 2 3 4 5 6 7 7 7 8 9 
-  4 | 0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8 
-  5 | 2 3 7 8 8 
-  6 | 1 3 8 
-  7 | 1 
-  8 | 
-  9 | 6 9 
- 10 | 4 5 5 5 5 6 7 9 9 9 
- 11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9 
- 12 | 0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8 
- 13 | 1 2 3 9 
- 14 | 1 6 
+  0 | 7 7
+  1 | 2 3 8 8
+  2 | 3 5 7 7 7 7 7 7 8 8 9 9
+  3 | 0 1 1 1 1 2 3 4 5 6 7 7 7 8 9
+  4 | 0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8
+  5 | 2 3 7 8 8
+  6 | 1 3 8
+  7 | 1
+  8 |
+  9 | 6 9
+ 10 | 4 5 5 5 5 6 7 9 9 9
+ 11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
+ 12 | 0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8
+ 13 | 1 2 3 9
+ 14 | 1 6
 ```
 
 
@@ -305,7 +305,7 @@ function min(x,y) { return((x < y) ? x : y) }
 ```bbcbasic
       INSTALL @lib$+"SORTLIB"
       Sort% = FN_sortinit(0, 0)
-      
+
       DIM Data%(120)
       Data%() = \
       \  12, 127,  28,  42,  39, 113,  42,  18,  44, 118,  44,  37, 113, 124, \
@@ -317,17 +317,17 @@ function min(x,y) { return((x < y) ? x : y) }
       \ 117,  38,  27, 106,  33, 117, 116, 111,  40, 119,  47, 105,  57, 122, \
       \ 109, 124, 115,  43, 120,  43,  27,  27,  18,  28,  48, 125, 107, 114, \
       \  34, 133,  45, 120,  30, 127,  31, 116, 146
-      
+
       PROCleafplot(Data%(), DIM(Data%(),1) + 1)
       END
-      
+
       DEF PROCleafplot(x%(), n%)
       LOCAL @%, C%, i%, j%, d%
       @% = 2
-      
+
       C% = n%
       CALL Sort%, x%(0)
-      
+
       i% = x%(0) DIV 10 - 1
       FOR j% = 0 TO n% - 1
         d% = x%(j%) DIV 10
@@ -369,8 +369,8 @@ Output:
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 int icmp(const void *a, const void *b)
@@ -432,8 +432,8 @@ output<lang>  0 | 7 7
 ## C++
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <iomanip>
 #include <iostream>
 #include <vector>
@@ -479,7 +479,7 @@ int main()
 }
 ```
 
-Output: 
+Output:
 
 ```txt
  0 | 7 7
@@ -579,11 +579,11 @@ class Program
 ```ceylon
 "Run the module `thestemandleafplot`."
 shared void run() {
-	
+
 	value data ="12 127 28 42 39 113 42 18 44 118 44 37 113 124 37 48 127 36 29 31 125 139 131 115 105 132 104 123 35
-	             113 122 42 117 119 58 109 23 105 63 27 44 105 99 41 128 121 116 125 32 61 37 127 29 113 121 58 114 
-	             126 53 114 96 25 109 7 31 141 46 13 27 43 117 116 27 7 68 40 31 115 124 42 128 52 71 118 117 38 27 
-	             106 33 117 116 111 40 119 47 105 57 122 109 124 115 43 120 43 27 27 18 28 48 125 107 114 34 133 45 
+	             113 122 42 117 119 58 109 23 105 63 27 44 105 99 41 128 121 116 125 32 61 37 127 29 113 121 58 114
+	             126 53 114 96 25 109 7 31 141 46 13 27 43 117 116 27 7 68 40 31 115 124 42 128 52 71 118 117 38 27
+	             106 33 117 116 111 40 119 47 105 57 122 109 124 115 43 120 43 27 27 18 28 48 125 107 114 34 133 45
 	             120 30 127 31 116 146";
 
 	value numbers = data
@@ -595,7 +595,7 @@ shared void run() {
 			.group((Integer element) => element / 10)
 			.mapItems((Integer key, [Integer+] item) => item.map((Integer element) => element % 10))
 			.mapItems((Integer key, {Integer+} item) => sort(item));
-	
+
 	value lastStem = stemsToLeaves.keys.last else 0;
 	for(i in 0..lastStem) {
 		print("``formatInteger(i).padLeading(2)``| ``" ".join(stemsToLeaves[i] else [])``");
@@ -667,7 +667,7 @@ shared void run() {
  5 | 2 3 7 8 8
  6 | 1 3 8
  7 | 1
- 8 | 
+ 8 |
  9 | 6 9
 10 | 4 5 5 5 5 6 7 9 9 9
 11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
@@ -714,7 +714,7 @@ Output:
  5 | 2 3 7 8 8
  6 | 1 3 8
  7 | 1
- 8 | 
+ 8 |
  9 | 6 9
 10 | 4 5 5 5 5 6 7 9 9 9
 11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
@@ -738,7 +738,7 @@ defmodule Stem_and_leaf do
     |> Map.new(fn {k,v} -> {k, Enum.map(v, &rem(&1, multiplier)) |> Enum.sort} end)
     |> print(leaf_digits)
   end
-  
+
   defp print(plot_data, leaf_digits) do
     {min, max} = Map.keys(plot_data) |> Enum.min_max
     stem_width = length(to_charlist(max))
@@ -844,7 +844,7 @@ Output:
 ```fsharp
 open System
 
-let data =  
+let data =
     [ 12; 127; 28; 42; 39; 113; 42; 18; 44; 118; 44; 37; 113; 124; 37; 48;
       127; 36; 29; 31; 125; 139; 131; 115; 105; 132; 104; 123; 35; 113; 122;
       42; 117; 119; 58; 109; 23; 105; 63; 27; 44; 105; 99; 41; 128; 121; 116;
@@ -853,16 +853,16 @@ let data =
       128; 52; 71; 118; 117; 38; 27; 106; 33; 117; 116; 111; 40; 119; 47; 105;
       57; 122; 109; 124; 115; 43; 120; 43; 27; 27; 18; 28; 48; 125; 107; 114;
       34; 133; 45; 120; 30; 127; 31; 116; 146 ]
- 
+
 let plotStemAndLeafs items =
     let groupedItems = items |> Seq.sort
                              |> Seq.map (fun i -> i / 10, i % 10)
                              |> Seq.groupBy fst
- 
+
     let maxStem = groupedItems |> Seq.maxBy fst |> fst
     let stemLeafMap = Map.ofSeq groupedItems
- 
-    [0..maxStem] |> List.iter (fun stm -> printf " %2d | " stm                                   
+
+    [0..maxStem] |> List.iter (fun stm -> printf " %2d | " stm
                                           match stemLeafMap.TryFind stm with
                                           | None -> ()
                                           | Some items -> items |> Seq.iter (snd >> printf "%d ")
@@ -875,21 +875,21 @@ Output:
 
 ```txt
 
-  0 | 7 7 
-  1 | 2 3 8 8 
-  2 | 3 5 7 7 7 7 7 7 8 8 9 9 
-  3 | 0 1 1 1 1 2 3 4 5 6 7 7 7 8 9 
-  4 | 0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8 
-  5 | 2 3 7 8 8 
-  6 | 1 3 8 
-  7 | 1 
-  8 | 
-  9 | 6 9 
- 10 | 4 5 5 5 5 6 7 9 9 9 
- 11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9 
- 12 | 0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8 
- 13 | 1 2 3 9 
- 14 | 1 6 
+  0 | 7 7
+  1 | 2 3 8 8
+  2 | 3 5 7 7 7 7 7 7 8 8 9 9
+  3 | 0 1 1 1 1 2 3 4 5 6 7 7 7 8 9
+  4 | 0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8
+  5 | 2 3 7 8 8
+  6 | 1 3 8
+  7 | 1
+  8 |
+  9 | 6 9
+ 10 | 4 5 5 5 5 6 7 9 9 9
+ 11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
+ 12 | 0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8
+ 13 | 1 2 3 9
+ 14 | 1 6
 ```
 
 
@@ -922,21 +922,21 @@ prettyprint sequences sorting ;
 
 ```txt
 
- 0 | 7 7 
- 1 | 2 3 8 8 
- 2 | 3 5 7 7 7 7 7 7 8 8 9 9 
- 3 | 0 1 1 1 1 2 3 4 5 6 7 7 7 8 9 
- 4 | 0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8 
- 5 | 2 3 7 8 8 
- 6 | 1 3 8 
- 7 | 1 
- 8 | 
- 9 | 6 9 
-10 | 4 5 5 5 5 6 7 9 9 9 
-11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9 
-12 | 0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8 
-13 | 1 2 3 9 
-14 | 1 6 
+ 0 | 7 7
+ 1 | 2 3 8 8
+ 2 | 3 5 7 7 7 7 7 7 8 8 9 9
+ 3 | 0 1 1 1 1 2 3 4 5 6 7 7 7 8 9
+ 4 | 0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8
+ 5 | 2 3 7 8 8
+ 6 | 1 3 8
+ 7 | 1
+ 8 |
+ 9 | 6 9
+10 | 4 5 5 5 5 6 7 9 9 9
+11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
+12 | 0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8
+13 | 1 2 3 9
+14 | 1 6
 
 ```
 
@@ -987,21 +987,21 @@ Output:
 
 ```txt
 
- 0 | 7 7 
- 1 | 2 3 8 8 
- 2 | 3 5 7 7 7 7 7 7 8 8 9 9 
- 3 | 0 1 1 1 1 2 3 4 5 6 7 7 7 8 9 
- 4 | 0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8 
- 5 | 2 3 7 8 8 
- 6 | 1 3 8 
- 7 | 1 
- 8 | 
- 9 | 6 9 
-10 | 4 5 5 5 5 6 7 9 9 9 
-11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9 
-12 | 0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8 
-13 | 1 2 3 9 
-14 | 1 6 
+ 0 | 7 7
+ 1 | 2 3 8 8
+ 2 | 3 5 7 7 7 7 7 7 8 8 9 9
+ 3 | 0 1 1 1 1 2 3 4 5 6 7 7 7 8 9
+ 4 | 0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8
+ 5 | 2 3 7 8 8
+ 6 | 1 3 8
+ 7 | 1
+ 8 |
+ 9 | 6 9
+10 | 4 5 5 5 5 6 7 9 9 9
+11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
+12 | 0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8
+13 | 1 2 3 9
+14 | 1 6
 
 ```
 
@@ -1014,7 +1014,7 @@ Because the fancy "structured" options such as DO-WHILE also involve the maddeni
 Layout is easily obtained, once the span of elements belonging to each stem value is ascertained. The output loop uses the later-form array specification of A(start:stop), but in earlier Fortran an implicit DO-loop would be in order: <code>WRITE (6,12) STEM,(ABS(MOD(A(I),CLIP)), I = I1,I2 - 1)</code>
 
 Note that the MOD function can produce unexpected values for negative numbers, and, different computer/compiler/language combinations may produce different surprises. In this case, negative values produce negative remainder values, but the ABS function suppresses the surprise.
- 
+
 
 ```Fortran
 
@@ -1169,7 +1169,7 @@ Loop
 ReDim Preserve d(count)            ' trim the data array
 shellsort(d())                     ' sort data array
 
-i = 0 
+i = 0
 For y =  d(0) \ 10 To d(UBound(d)) \ 10
     Print Using "#### |"; y;
     Do
@@ -1272,7 +1272,7 @@ Output:
  5 | 2 3 7 8 8
  6 | 1 3 8
  7 | 1
- 8 | 
+ 8 |
  9 | 6 9
 10 | 4 5 5 5 5 6 7 9 9 9
 11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
@@ -1425,7 +1425,7 @@ main = putStrLn $ unlines plotLines
  5 |  2 3 7 8 8
  6 |  1 3 8
  7 |  1
- 8 |  
+ 8 |
  9 |  6 9
 10 |  4 5 5 5 5 6 7 9 9 9
 11 |  1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
@@ -1575,12 +1575,12 @@ showStemLeafX=: monad define
 
 ```j
    nls =: ; <@(_&".);._2 noun define
-12 127 28 42 39 113 42 18 44 118 44 37 113 124 37 48 127 36 29 31 125       
+12 127 28 42 39 113 42 18 44 118 44 37 113 124 37 48 127 36 29 31 125
 139 131 115 105 132 104 123 35 113 122 42 117 119 58 109 23 105 63 27 44 105
-99 41 128 121 116 125 32 61 37 127 29 113 121 58 114 126 53 114 96 25 109   
-7 31 141 46 13 27 43 117 116 27 7 68 40 31 115 124 42 128 52 71 118         
-117 38 27 106 33 117 116 111 40 119 47 105 57 122 109 124 115 43 120 43 27  
-27 18 28 48 125 107 114 34 133 45 120 30 127 31 116 146                     
+99 41 128 121 116 125 32 61 37 127 29 113 121 58 114 126 53 114 96 25 109
+7 31 141 46 13 27 43 117 116 27 7 68 40 31 115 124 42 128 52 71 118
+117 38 27 106 33 117 116 111 40 119 47 105 57 122 109 124 115 43 120 43 27
+27 18 28 48 125 107 114 34 133 45 120 30 127 31 116 146
 )
 
    stemleaf nls        NB. display has been abbreviated
@@ -1637,7 +1637,7 @@ public class StemAndLeaf {
 			117, 38, 27, 106, 33, 117, 116, 111, 40, 119, 47, 105, 57, 122,
 			109, 124, 115, 43, 120, 43, 27, 27, 18, 28, 48, 125, 107, 114, 34,
 			133, 45, 120, 30, 127, 31, 116, 146 };
-	
+
 	public static Map<Integer, List<Integer>> createPlot(int... data){
 		Map<Integer, List<Integer>> plot = new TreeMap<Integer, List<Integer>>();
 		int highestStem = -1; //for filling in stems with no leaves
@@ -1665,14 +1665,14 @@ public class StemAndLeaf {
 		}
 		return plot;
 	}
-	
+
 	public static void printPlot(Map<Integer, List<Integer>> plot){
 		for(Map.Entry<Integer, List<Integer>> line : plot.entrySet()){
 			Collections.sort(line.getValue());
 			System.out.println(line.getKey() + " | " + line.getValue());
 		}
 	}
-	
+
 	public static void main(String[] args){
 		Map<Integer, List<Integer>> plot = createPlot(data);
 		printPlot(plot);
@@ -1806,13 +1806,13 @@ It turns out that HTML+CSS renders the plot quite attractively.
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 <title>stem and leaf plot</title>
 <script type='text/javascript'>
- 
+
     function has_property(obj, propname) {
         return typeof(obj[propname]) === "undefined" ? false : true;
     }
- 
+
     function compare_numbers(a, b) {return a-b;}
- 
+
     function stemplot(data, target) {
         var stem_data = {};
         var all_stems = [];
@@ -1827,10 +1827,10 @@ It turns out that HTML+CSS renders the plot quite attractively.
             }
         }
         all_stems.sort(compare_numbers);
- 
+
         var min_stem = all_stems[0];
         var max_stem = all_stems[all_stems.length - 1];
- 
+
         var table = document.createElement('table');
         for (var stem = min_stem; stem <= max_stem; stem++) {
             var row = document.createElement('tr');
@@ -1849,7 +1849,7 @@ It turns out that HTML+CSS renders the plot quite attractively.
         }
         target.appendChild(table);
     }
- 
+
 </script>
 <style type='text/css'>
     body {font-family: monospace;}
@@ -1863,7 +1863,7 @@ It turns out that HTML+CSS renders the plot quite attractively.
 <div id="target"></div>
 
 <script type='text/javascript'>
- 
+
     var data = [
         12,127,28,42,39,113,42,18,44,118,44,37,113,124,37,48,127,36,29,31,125,139,131,
         115,105,132,104,123,35,113,122,42,117,119,58,109,23,105,63,27,44,105,99,41,128,
@@ -1873,7 +1873,7 @@ It turns out that HTML+CSS renders the plot quite attractively.
         133,45,120,30,127,31,116,146
     ];
     stemplot(data, document.getElementById('target'));
- 
+
 </script>
 
 </body>
@@ -1881,7 +1881,7 @@ It turns out that HTML+CSS renders the plot quite attractively.
 ```
 
 
-The output looks like: 
+The output looks like:
 
 [[File:Stemplot.png]]
 
@@ -2114,7 +2114,7 @@ The output looks like:
  5 |  2 3 7 8 8
  6 |  1 3 8
  7 |  1
- 8 |  
+ 8 |
  9 |  6 9
 10 |  4 5 5 5 5 6 7 9 9 9
 11 |  1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
@@ -2145,7 +2145,7 @@ def stem_and_leaf:
         | if ($d/10) | floor == $stem
           then [ $stem,     (.[1] +                      "\($d % 10)" )]
           else [ $stem + 1, (.[1] + "\n\($stem+1|right) | \($d % 10)" )]
-          end ) 
+          end )
   | .[1] ;
 ```
 
@@ -2161,7 +2161,7 @@ def data:
    124,115,43,120,43,27,27,18,28,48,125,107,114,34,133,45,120, 30,127,
    31,116,146
  ];
- 
+
 data | stem_and_leaf
 
 ```
@@ -2267,7 +2267,7 @@ Using the Task's Test Data
          5 | 2 3 7 8 8
          6 | 1 3 8
          7 | 1
-         8 | 
+         8 |
          9 | 6 9
         10 | 4 5 5 5 5 6 7 9 9 9
         11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
@@ -2283,8 +2283,8 @@ Test with Reals and Negative Zero Stem
          0 | 4 6 6
          1 | 7
          2 | 5
-         3 | 
-         4 | 
+         3 |
+         4 |
          5 | 7
  Leaf Unit = 1.0
 
@@ -2294,20 +2294,20 @@ Using:  [318,1163,-35,-611,-436,-127,-374,-150,119,541,-670,-558,3,592,604,1181,
         -5 | 6
         -4 | 4
         -3 | 7 6
-        -2 | 
+        -2 |
         -1 | 8 5 3
         -0 | 4
          0 | 0
          1 | 2
-         2 | 
+         2 |
          3 | 2
          4 | 2
          5 | 4 9
          6 | 0
-         7 | 
+         7 |
          8 | 3
-         9 | 
-        10 | 
+         9 |
+        10 |
         11 | 6 8
  Leaf Unit = 10
 
@@ -2386,7 +2386,7 @@ data = { 12,127,28,42,39,113, 42,18,44,118,44,37,113,124,37,48,127,36,29,31,
 	     124,115,43,120,43,27,27,18,28,48,125,107,114,34,133,45,120, 30,127,
 	     31,116,146
        }
-       
+
 table.sort( data )
 
 min, max = data[1], data[#data]
@@ -2399,7 +2399,7 @@ for stem = math.floor(min/10), math.floor(max/10) do
         io.write( string.format( "%2d ", data[p] % 10 ) )
         p = p + 1
     end
-    
+
     print ""
 end
 ```
@@ -2407,20 +2407,20 @@ end
 Output:
 
 ```txt
- 0 |  7  7 
- 1 |  2  3  8  8 
- 2 |  3  5  7  7  7  7  7  7  8  8  9  9 
- 3 |  0  1  1  1  1  2  3  4  5  6  7  7  7  8  9 
- 4 |  0  0  1  2  2  2  2  3  3  3  4  4  4  5  6  7  8  8 
- 5 |  2  3  7  8  8 
- 6 |  1  3  8 
- 7 |  1 
- 8 | 
- 9 |  6  9 
-10 |  4  5  5  5  5  6  7  9  9  9 
-11 |  1  3  3  3  3  4  4  4  5  5  5  6  6  6  6  7  7  7  7  8  8  9  9 
-12 |  0  0  1  1  2  2  3  4  4  4  5  5  5  6  7  7  7  7  8  8 
-13 |  1  2  3  9 
+ 0 |  7  7
+ 1 |  2  3  8  8
+ 2 |  3  5  7  7  7  7  7  7  8  8  9  9
+ 3 |  0  1  1  1  1  2  3  4  5  6  7  7  7  8  9
+ 4 |  0  0  1  2  2  2  2  3  3  3  4  4  4  5  6  7  8  8
+ 5 |  2  3  7  8  8
+ 6 |  1  3  8
+ 7 |  1
+ 8 |
+ 9 |  6  9
+10 |  4  5  5  5  5  6  7  9  9  9
+11 |  1  3  3  3  3  4  4  4  5  5  5  6  6  6  6  7  7  7  7  8  8  9  9
+12 |  0  0  1  1  2  2  3  4  4  4  5  5  5  6  7  7  7  7  8  8
+13 |  1  2  3  9
 14 |  1  6
 ```
 
@@ -2431,7 +2431,7 @@ Output:
 
 
 ```Maple
-StemPlot := proc( datatable::{rtable,list,algebraic} ) 		
+StemPlot := proc( datatable::{rtable,list,algebraic} )
     local i, j, k, tf, LeafStemTable, LeafStemIndices;
     k:=0;
 
@@ -2439,14 +2439,14 @@ StemPlot := proc( datatable::{rtable,list,algebraic} )
 
     if LeafStemTable = NULL then
         error "Empty List";
-    elif nops( [ LeafStemTable ] ) = 1 or not( type( LeafStemTable[2], list) ) then 
+    elif nops( [ LeafStemTable ] ) = 1 or not( type( LeafStemTable[2], list) ) then
 	LeafStemTable := [ LeafStemTable ];
     end if;
-		
+
     LeafStemIndices := { seq( iquo( LeafStemTable[i][1], 10 ), i = 1..nops( [ LeafStemTable ] ) ) };
- 
+
     for i from min( LeafStemIndices ) to max( LeafStemIndices ) do
-			
+
         if i in LeafStemIndices then
             k := k + 1;
 
@@ -2454,7 +2454,7 @@ StemPlot := proc( datatable::{rtable,list,algebraic} )
 
 		if min( datatable ) >=0 then
 		    printf( "%-4a%s%-s\n", i,  "  |  ", StringTools:-Remove( "[],", convert( [seq( abs( irem( LeafStemTable[k][j], 10 ) ), j = 1..nops( LeafStemTable[k] ) )], string ) ) );
-	        else 
+	        else
 	            tf := ListTools:-Occurrences( true, (x->type(x,negative))~(LeafStemTable[k]));
 		    printf( "%s%-4a%s%-s\n", "-", i,  " |  ", StringTools:-Remove( "[],", convert( [seq( abs( irem( LeafStemTable[k][j], 10 ) ), j = 1 .. tf )], string ) ) );
 	            printf( "%-4a%s%-s\n", i,  "  |  ", StringTools:-Remove( "[],", convert( [seq( abs( irem( LeafStemTable[k][j], 10 ) ), j = tf + 1 .. nops( LeafStemTable[k] ) )], string ) ) );
@@ -2463,15 +2463,15 @@ StemPlot := proc( datatable::{rtable,list,algebraic} )
             else
 
                	printf( "%-4a%s%-s\n", i,  "  |  ", StringTools:-Remove( "[],", convert( [seq( abs( irem( LeafStemTable[k][j], 10 ) ), j = 1..nops( LeafStemTable[k] ) )], string ) ) );
-			     
+
 	    end if;
 
         else
 
 	    printf( "%-4a%s\n", i, "  |  " );
-			
+
 	end if;
-		
+
     end do;
 
     return NULL;
@@ -2493,7 +2493,7 @@ StemPlot(Y);
 5     |  2 3 7 8 8
 6     |  1 3 8
 7     |  1
-8     |  
+8     |
 9     |  6 9
 10    |  4 5 5 5 5 6 7 9 9 9
 11    |  1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
@@ -2543,27 +2543,27 @@ For[i = Min@ Quotient[inputdata, 10],i <= Max@ Quotient[inputdata, 10], i++,
 ```Matlab
 function stem_and_leaf_plot(x,stem_unit,leaf_unit)
   if nargin < 2, stem_unit = 10; end;
-  if nargin < 3, 
-    leaf_unit = 1; 
-  else 
-    x = leaf_unit*round(x/leaf_unit); 
+  if nargin < 3,
+    leaf_unit = 1;
+  else
+    x = leaf_unit*round(x/leaf_unit);
   end;
 
-  stem = floor(x/stem_unit); 
-  leaf = mod(x,stem_unit); 
+  stem = floor(x/stem_unit);
+  leaf = mod(x,stem_unit);
 
   for k = min(stem):max(stem)
     printf('\n%d |',k)
-    printf(' %d' ,sort(leaf(k==stem)))	
-  end; 
+    printf(' %d' ,sort(leaf(k==stem)))
+  end;
   printf('\nkey:6|3=63\n');
   printf('leaf unit: %.1f\n',leaf_unit);
   printf('stem unit: %.1f\n',stem_unit);
-end; 
+end;
 
-x = [12 127 28 42 39 113 42 18 44 118 44 37 113 124 37 48 127 36 29 31 125 139 131 115 105 132 104 123 35 113 122 42 117 119 58 109 23 105 63 27 44 105 99 41 128 121 116 125 32 61 37 127 29 113 121 58 114 126 53 114 96 25 109 7 31 141 46 13 27 43 117 116 27 7 68 40 31 115 124 42 128 52 71 118 117 38 27 106 33 117 116 111 40 119 47 105 57 122 109 124 115 43 120 43 27 27 18 28 48 125 107 114 34 133 45 120 30 127 31 116 146]; 
+x = [12 127 28 42 39 113 42 18 44 118 44 37 113 124 37 48 127 36 29 31 125 139 131 115 105 132 104 123 35 113 122 42 117 119 58 109 23 105 63 27 44 105 99 41 128 121 116 125 32 61 37 127 29 113 121 58 114 126 53 114 96 25 109 7 31 141 46 13 27 43 117 116 27 7 68 40 31 115 124 42 128 52 71 118 117 38 27 106 33 117 116 111 40 119 47 105 57 122 109 124 115 43 120 43 27 27 18 28 48 125 107 114 34 133 45 120 30 127 31 116 146];
 
-stem_and_leaf_plot(x); 
+stem_and_leaf_plot(x);
 ```
 
 Output:
@@ -2578,7 +2578,7 @@ Output:
 5 | 2 3 7 8 8
 6 | 1 3 8
 7 | 1
-8 | 
+8 |
 9 | 6 9
 10 | 4 5 5 5 5 6 7 9 9 9
 11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
@@ -2605,7 +2605,7 @@ data: [12, 127, 28, 42, 39, 113, 42, 18, 44, 118, 44, 37, 113, 124, 37, 48, 127,
    117, 116, 27, 7, 68, 40, 31, 115, 124, 42, 128, 52, 71, 118, 117, 38, 27, 106,
    33, 117, 116, 111, 40, 119, 47, 105, 57, 122, 109, 124, 115, 43, 120, 43, 27,
    27, 18, 28, 48, 125, 107, 114, 34, 133, 45, 120, 30, 127, 31, 116, 146]$
-   
+
 stemplot(data);
  0|77
  1|2388
@@ -2669,16 +2669,16 @@ proc init[T](self: StemLeafPlot, leafDigits: int, data: openArray[T]) =
     if stem notin self.plot:
       self.plot[stem] = @[leaf]
     else:
-      self.plot[stem].add(leaf) 
+      self.plot[stem].add(leaf)
 
-var taskData = @[12, 127,  28,  42,  39, 113,  42,  18,  44, 118,  44,  37, 113, 124, 
-                 37,  48, 127,  36,  29,  31, 125, 139, 131, 115, 105, 132, 104, 123, 
-                 35, 113, 122,  42, 117, 119,  58, 109,  23, 105,  63,  27,  44, 105, 
-                 99,  41, 128, 121, 116, 125,  32,  61,  37, 127,  29, 113, 121,  58, 
-                 114, 126,  53, 114,  96,  25, 109,   7,  31, 141,  46,  13,  27,  43, 
-                 117, 116,  27,   7,  68,  40,  31, 115, 124,  42, 128,  52,  71, 118, 
-                 117,  38,  27, 106,  33, 117, 116, 111,  40, 119,  47, 105,  57, 122, 
-                 109, 124, 115,  43, 120,  43,  27,  27,  18,  28,  48, 125, 107, 114, 
+var taskData = @[12, 127,  28,  42,  39, 113,  42,  18,  44, 118,  44,  37, 113, 124,
+                 37,  48, 127,  36,  29,  31, 125, 139, 131, 115, 105, 132, 104, 123,
+                 35, 113, 122,  42, 117, 119,  58, 109,  23, 105,  63,  27,  44, 105,
+                 99,  41, 128, 121, 116, 125,  32,  61,  37, 127,  29, 113, 121,  58,
+                 114, 126,  53, 114,  96,  25, 109,   7,  31, 141,  46,  13,  27,  43,
+                 117, 116,  27,   7,  68,  40,  31, 115, 124,  42, 128,  52,  71, 118,
+                 117,  38,  27, 106,  33, 117, 116, 111,  40, 119,  47, 105,  57, 122,
+                 109, 124, 115,  43, 120,  43,  27,  27,  18,  28,  48, 125, 107, 114,
                  34, 133,  45, 120,  30, 127,  31, 116, 146]
 
 var negativeData = @[-24, -12, -3, 4, 6, 6, 17, 25, 57]
@@ -2699,30 +2699,30 @@ echo $negativePlot
 
 ```txt
 Using the Task's Test Data
-  0 | 7 7 
-  1 | 2 3 8 8 
-  2 | 3 5 7 7 7 7 7 7 8 8 9 9 
-  3 | 0 1 1 1 1 2 3 4 5 6 7 7 7 8 9 
-  4 | 0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8 
-  5 | 2 3 7 8 8 
-  6 | 1 3 8 
-  7 | 1 
-  8 | 
-  9 | 6 9 
- 10 | 4 5 5 5 5 6 7 9 9 9 
- 11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9 
- 12 | 0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8 
- 13 | 1 2 3 9 
- 14 | 1 6 
+  0 | 7 7
+  1 | 2 3 8 8
+  2 | 3 5 7 7 7 7 7 7 8 8 9 9
+  3 | 0 1 1 1 1 2 3 4 5 6 7 7 7 8 9
+  4 | 0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8
+  5 | 2 3 7 8 8
+  6 | 1 3 8
+  7 | 1
+  8 |
+  9 | 6 9
+ 10 | 4 5 5 5 5 6 7 9 9 9
+ 11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
+ 12 | 0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8
+ 13 | 1 2 3 9
+ 14 | 1 6
 
 Test with Reals and Negative Zero Stem
--2 | 4 
--1 | 2 
- 0 | 3 4 6 6 
- 1 | 7 
- 2 | 5 
- 3 | 
- 4 | 
+-2 | 4
+-1 | 2
+ 0 | 3 4 6 6
+ 1 | 7
+ 2 | 5
+ 3 |
+ 4 |
  5 | 7
 ```
 
@@ -2806,12 +2806,12 @@ let () =
 
 
 ```perl
-my @data = sort {$a <=> $b} qw( 12  127 28  42  39  113 42  18  44  118 44  
-37  113 124 37  48  127 36  29  31  125 139 131 115 105 132 104 123 35  113 
-122 42  117 119 58  109 23  105 63  27  44  105 99  41  128 121 116 125 32  
-61  37  127 29  113 121 58  114 126 53  114 96  25  109 7   31  141 46  13  
-27  43  117 116 27  7   68  40  31  115 124 42  128 52  71  118 117 38  27  
-106 33  117 116 111 40  119 47  105 57  122 109 124 115 43  120 43  27  27  
+my @data = sort {$a <=> $b} qw( 12  127 28  42  39  113 42  18  44  118 44
+37  113 124 37  48  127 36  29  31  125 139 131 115 105 132 104 123 35  113
+122 42  117 119 58  109 23  105 63  27  44  105 99  41  128 121 116 125 32
+61  37  127 29  113 121 58  114 126 53  114 96  25  109 7   31  141 46  13
+27  43  117 116 27  7   68  40  31  115 124 42  128 52  71  118 117 38  27
+106 33  117 116 111 40  119 47  105 57  122 109 124 115 43  120 43  27  27
 18  28  48  125 107 114 34  133 45  120 30  127 31  116 );
 my $columns = @data;
 
@@ -2856,19 +2856,19 @@ for my $value (@data) {
 
 
 
-###  LaTeX output 
+###  LaTeX output
 
 generating {{header|LaTeX}}
 
 ```perl
 #!/usr/bin/perl -w
 
-my @data = sort {$a <=> $b} qw( 12  127 28  42  39  113 42  18  44  118 44  
-37  113 124 37  48  127 36  29  31  125 139 131 115 105 132 104 123 35  113 
-122 42  117 119 58  109 23  105 63  27  44  105 99  41  128 121 116 125 32  
-61  37  127 29  113 121 58  114 126 53  114 96  25  109 7   31  141 46  13  
-27  43  117 116 27  7   68  40  31  115 124 42  128 52  71  118 117 38  27  
-106 33  117 116 111 40  119 47  105 57  122 109 124 115 43  120 43  27  27  
+my @data = sort {$a <=> $b} qw( 12  127 28  42  39  113 42  18  44  118 44
+37  113 124 37  48  127 36  29  31  125 139 131 115 105 132 104 123 35  113
+122 42  117 119 58  109 23  105 63  27  44  105 99  41  128 121 116 125 32
+61  37  127 29  113 121 58  114 126 53  114 96  25  109 7   31  141 46  13
+27  43  117 116 27  7   68  40  31  115 124 42  128 52  71  118 117 38  27
+106 33  117 116 111 40  119 47  105 57  122 109 124 115 43  120 43  27  27
 18  28  48  125 107 114 34  133 45  120 30  127 31  116 );
 
 # FIXME: This should count the maximum number of leaves in any one stem;
@@ -2955,13 +2955,13 @@ my @data = <
     124 115  43 120  43  27  27  18  28  48 125
     107 114  34 133  45 120  30 127  31 116 146
 >».Int.sort;
- 
+
 my Int $stem_unit = 10;
 my %h = @data.classify: * div $stem_unit;
- 
+
 my $range = [minmax] %h.keys».Int;
 my $stem_format =  "%{$range.min.chars max $range.max.chars}d";
- 
+
 for $range.list -> $stem {
     my $leafs = %h{$stem} // [];
     say $stem.fmt($stem_format), ' | ', ~$leafs.map: * % $stem_unit;
@@ -2979,7 +2979,7 @@ Output:
  5 | 2 3 7 8 8
  6 | 1 3 8
  7 | 1
- 8 | 
+ 8 |
  9 | 6 9
 10 | 4 5 5 5 5 6 7 9 9 9
 11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
@@ -3010,7 +3010,7 @@ sequence stem
         puts(1,'\n')
     end for
 end procedure
- 
+
 constant data = { 12, 127, 28, 42, 39, 113, 42, 18, 44, 118, 44, 37, 113, 124,
     37, 48, 127, 36, 29, 31, 125, 139, 131, 115, 105, 132, 104, 123, 35, 113,
     122, 42, 117, 119, 58, 109, 23, 105, 63, 27, 44, 105, 99, 41, 128, 121,
@@ -3019,7 +3019,7 @@ constant data = { 12, 127, 28, 42, 39, 113, 42, 18, 44, 118, 44, 37, 113, 124,
     42, 128, 52, 71, 118, 117, 38, 27, 106, 33, 117, 116, 111, 40, 119, 47,
     105, 57, 122, 109, 124, 115, 43, 120, 43, 27, 27, 18, 28, 48, 125, 107,
     114, 34, 133, 45, 120, 30, 127, 31, 116, 146 }
- 
+
 leaf_plot(data)
 ```
 
@@ -3098,11 +3098,11 @@ Output:
 ```powershell
 
 $Set = -split '12 127 28 42 39 113 42 18 44 118 44 37 113 124 37 48 127 36 29 31 125 139 131 115 105 132 104 123 35 113 122 42 117 119 58 109 23 105 63 27 44 105 99 41 128 121 116 125 32 61 37 127 29 113 121 58 114 126 53 114 96 25 109 7 31 141 46 13 27 43 117 116 27 7 68 40 31 115 124 42 128 52 71 118 117 38 27 106 33 117 116 111 40 119 47 105 57 122 109 124 115 43 120 43 27 27 18 28 48 125 107 114 34 133 45 120 30 127 31 116 146'
- 
+
 $Data = $Set | Select @{ Label = 'Stem'; Expression = { [string][int]$_.Substring( 0, $_.Length - 1 ) } }, @{ Label = 'Leaf'; Expression = { [string]$_[-1] } }
- 
+
 $StemStats = $Data | Measure-Object -Property Stem -Minimum -Maximum
- 
+
 ForEach ( $Stem in $StemStats.Minimum..$StemStats.Maximum )
     {
     @( $Stem.ToString().PadLeft( 2, " " ), '|' ) + ( ( $Data | Where Stem -eq $Stem ).Leaf | Sort ) -join " "
@@ -3136,7 +3136,7 @@ ForEach ( $Stem in $StemStats.Minimum..$StemStats.Maximum )
 
 ## PureBasic
 
-{{works with|PureBasic|4.41}} 
+{{works with|PureBasic|4.41}}
 
 '''PureBasic Code'''
 
@@ -3149,14 +3149,14 @@ If OpenConsole()
     Read.i MyList(a)      ; Read the data into the used Array
     If MyList(a)>StemMax
       StemMax=MyList(a)   ; Find the largest Stem layer at the same time
-    EndIf    
+    EndIf
     If MyList(a)<StemMin
       StemMin=MyList(a)   ; Find the smallest Stem layer at the same time
     EndIf
-  Next 
+  Next
   StemMax/10: StemMin/10  ; Remove the leafs from the Stem limits
   SortArray(MyList(),#PB_Sort_Ascending)  ; Sort the data
- 
+
   For i=StemMin To StemMax
     Print(RSet(Str(i),3)+" | ")           ; Print the Stem
     For j=0 To 120
@@ -3170,12 +3170,12 @@ If OpenConsole()
     Next j
     PrintN("")
   Next i
- 
+
   Print(#CRLF$+#CRLF$+"Press ENTER to exit")
   Input()
   CloseConsole()
 EndIf
- 
+
 DataSection
 MyData:
   Data.i  12,127, 28, 42, 39,113, 42, 18, 44,118, 44, 37,113,124, 37, 48,127, 36, 29, 31,125,139,131,115
@@ -3374,20 +3374,20 @@ main()
 
 
 ```txt
- 0 | 7 7 
- 1 | 2 3 8 8 
- 2 | 3 5 7 7 7 7 7 7 8 8 9 9 
- 3 | 0 1 1 1 1 2 3 4 5 6 7 7 7 8 9 
- 4 | 0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8 
- 5 | 2 3 7 8 8 
- 6 | 1 3 8 
- 7 | 1 
- 9 | 6 9 
-10 | 4 5 5 5 5 6 7 9 9 9 
-11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9 
-12 | 0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8 
-13 | 1 2 3 9 
-14 | 1 6 
+ 0 | 7 7
+ 1 | 2 3 8 8
+ 2 | 3 5 7 7 7 7 7 7 8 8 9 9
+ 3 | 0 1 1 1 1 2 3 4 5 6 7 7 7 8 9
+ 4 | 0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8
+ 5 | 2 3 7 8 8
+ 6 | 1 3 8
+ 7 | 1
+ 9 | 6 9
+10 | 4 5 5 5 5 6 7 9 9 9
+11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
+12 | 0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8
+13 | 1 2 3 9
+14 | 1 6
 ```
 
 
@@ -3398,12 +3398,12 @@ main()
 
 ```R
 
-x <- c(12, 127, 28, 42, 39, 113, 42, 18, 44, 118, 44, 37, 113, 124, 37, 48, 127, 36, 
-29, 31, 125, 139, 131, 115, 105, 132, 104, 123, 35, 113, 122, 42, 117, 119, 58, 109, 
-23, 105, 63, 27, 44, 105, 99, 41, 128, 121, 116, 125, 32, 61, 37, 127, 29, 113, 
-121, 58, 114, 126, 53, 114, 96, 25, 109, 7, 31, 141, 46, 13, 27, 43, 117, 116, 
-27, 7, 68, 40, 31, 115, 124, 42, 128, 52, 71, 118, 117, 38, 27, 106, 33, 117, 
-116, 111, 40, 119, 47, 105, 57, 122, 109, 124, 115, 43, 120, 43, 27, 27, 18, 28, 
+x <- c(12, 127, 28, 42, 39, 113, 42, 18, 44, 118, 44, 37, 113, 124, 37, 48, 127, 36,
+29, 31, 125, 139, 131, 115, 105, 132, 104, 123, 35, 113, 122, 42, 117, 119, 58, 109,
+23, 105, 63, 27, 44, 105, 99, 41, 128, 121, 116, 125, 32, 61, 37, 127, 29, 113,
+121, 58, 114, 126, 53, 114, 96, 25, 109, 7, 31, 141, 46, 13, 27, 43, 117, 116,
+27, 7, 68, 40, 31, 115, 124, 42, 128, 52, 71, 118, 117, 38, 27, 106, 33, 117,
+116, 111, 40, 119, 47, 105, 57, 122, 109, 124, 115, 43, 120, 43, 27, 27, 18, 28,
 48, 125, 107, 114, 34, 133, 45, 120, 30, 127, 31, 116, 146)
 
 stem(x)
@@ -3424,7 +3424,7 @@ Output :
    5 | 23788
    6 | 138
    7 | 1
-   8 | 
+   8 |
    9 | 69
   10 | 4555567999
   11 | 13333444555666677778899
@@ -3487,7 +3487,7 @@ $ racket sl.rkt < the-data
 
 A check is performed to verify that all input is numeric (decimal fractions are allowed as well as exponential format).
 
-Also, a check is made if any of the numbers are negative (and an error message is issued).   Negative numbers are handled by the 2<sup>nd</sup> REXX version. 
+Also, a check is made if any of the numbers are negative (and an error message is issued).   Negative numbers are handled by the 2<sup>nd</sup> REXX version.
 
 Also, all numbers that are processed are normalized.   Using a   ''sparse array''   bypasses the need for sorting.
 
@@ -3601,30 +3601,30 @@ w=max(length(min), length(max) )  + 1            /*W:  used to right─justify t
 # Project : Stem-and-leaf plot
 
 data = list(120)
-data = [12, 127,  28,  42,  39, 113,  42,  18,  44, 118,  44,  37, 113, 124, 
-            37,  48, 127,  36,  29,  31, 125, 139, 131, 115, 105, 132, 104, 123, 
-            35, 113, 122,  42, 117, 119,  58, 109,  23, 105,  63,  27,  44, 105, 
-            99,  41, 128, 121, 116, 125,  32,  61,  37, 127,  29, 113, 121,  58, 
-            114, 126,  53, 114,  96,  25, 109,   7,  31, 141,  46,  13,  27,  43, 
-            117, 116,  27,   7,  68,  40,  31, 115, 124,  42, 128,  52,  71, 118, 
-            117,  38,  27, 106,  33, 117, 116, 111,  40, 119,  47, 105,  57, 122, 
-            109, 124, 115,  43, 120,  43,  27,  27,  18,  28,  48, 125, 107, 114, 
+data = [12, 127,  28,  42,  39, 113,  42,  18,  44, 118,  44,  37, 113, 124,
+            37,  48, 127,  36,  29,  31, 125, 139, 131, 115, 105, 132, 104, 123,
+            35, 113, 122,  42, 117, 119,  58, 109,  23, 105,  63,  27,  44, 105,
+            99,  41, 128, 121, 116, 125,  32,  61,  37, 127,  29, 113, 121,  58,
+            114, 126,  53, 114,  96,  25, 109,   7,  31, 141,  46,  13,  27,  43,
+            117, 116,  27,   7,  68,  40,  31, 115, 124,  42, 128,  52,  71, 118,
+            117,  38,  27, 106,  33, 117, 116, 111,  40, 119,  47, 105,  57, 122,
+            109, 124, 115,  43, 120,  43,  27,  27,  18,  28,  48, 125, 107, 114,
             34, 133,  45, 120,  30, 127,  31, 116, 146]
- 
+
 leafplot(data, len(data))
- 
+
 func leafplot(x,n)
        c = n
-       x = sort(x) 
+       x = sort(x)
        i = floor(x[1] / 10 ) - 1
-       for j = 1 to n 
+       for j = 1 to n
             d = floor(x[j] / 10)
             while d > i
                      i = i + 1
                      if j > 0
                         see nl
                      ok
-                     see "" + i + " |" 
+                     see "" + i + " |"
             end
             see "" + (x[j] % 10) + " "
        next
@@ -3637,21 +3637,21 @@ Output:
 ```txt
 
 
-0 |7 7 
-1 |2 3 8 8 
-2 |3 5 7 7 7 7 7 7 8 8 9 9 
-3 |0 1 1 1 1 2 3 4 5 6 7 7 7 8 9 
-4 |0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8 
-5 |2 3 7 8 8 
-6 |1 3 8 
-7 |1 
+0 |7 7
+1 |2 3 8 8
+2 |3 5 7 7 7 7 7 7 8 8 9 9
+3 |0 1 1 1 1 2 3 4 5 6 7 7 7 8 9
+4 |0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8
+5 |2 3 7 8 8
+6 |1 3 8
+7 |1
 8 |
-9 |6 9 
-10 |4 5 5 5 5 6 7 9 9 9 
-11 |1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9 
-12 |0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8 
-13 |1 2 3 9 
-14 |1 6 
+9 |6 9
+10 |4 5 5 5 5 6 7 9 9 9
+11 |1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
+12 |0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8
+13 |1 2 3 9
+14 |1 6
 
 ```
 
@@ -3674,7 +3674,7 @@ class StemLeafPlot
 
   def generate_structure(data)
     plot = Hash.new {|h,k| h[k] = []}
-    data.sort.each do |value| 
+    data.sort.each do |value|
       stem, leaf = parse(value)
       plot[stem] << leaf
     end
@@ -3708,25 +3708,25 @@ class Stem
     sign = datum < 0 ? :- : :+
     cache(stem_value, sign)
   end
-  
+
   private
-  
+
   def self.cache(value, sign)
     if @@cache[[value, sign]].nil?
       @@cache[[value, sign]] = self.new(value, sign)
     end
-    @@cache[[value, sign]] 
+    @@cache[[value, sign]]
   end
 
   def initialize(value, sign)
     @value = value
     @sign = sign
   end
-  
-  public 
-  
+
+  public
+
   attr_accessor :value, :sign
-  
+
   def negative?
     @sign == :-
   end
@@ -3750,7 +3750,7 @@ class Stem
   def to_s
     "%s%d" % [(self.negative? ? '-' : ' '), @value]
   end
-  
+
   def self.get_range(array_of_stems)
     min, max = array_of_stems.minmax
     if min.negative?
@@ -3815,7 +3815,7 @@ class StemLeafPlot
     @plot.default = []
     @plot.each{|k,v| @plot[k] = v.map{|val| val % multiplier}}
   end
-  
+
   def print
     min, max = @plot.keys.minmax
     stem_width = max.to_s.size
@@ -3828,7 +3828,7 @@ end
 
 data = DATA.read.split.map {|s| Integer(s)}
 StemLeafPlot.new(data).print
- 
+
 __END__
 12 127 28 42 39 113 42 18 44 118 44 37 113 124 37 48 127 36 29 31 125 139 131
 115 105 132 104 123 35 113 122 42 117 119 58 109 23 105 63 27 44 105 99 41 128
@@ -3842,21 +3842,21 @@ __END__
 
 ```txt
 
- 0 | 7 7 
- 1 | 2 3 8 8 
- 2 | 3 5 7 7 7 7 7 7 8 8 9 9 
- 3 | 0 1 1 1 1 2 3 4 5 6 7 7 7 8 9 
- 4 | 0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8 
- 5 | 2 3 7 8 8 
- 6 | 1 3 8 
- 7 | 1 
- 8 | 
- 9 | 6 9 
-10 | 4 5 5 5 5 6 7 9 9 9 
-11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9 
-12 | 0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8 
-13 | 1 2 3 9 
-14 | 1 6 
+ 0 | 7 7
+ 1 | 2 3 8 8
+ 2 | 3 5 7 7 7 7 7 7 8 8 9 9
+ 3 | 0 1 1 1 1 2 3 4 5 6 7 7 7 8 9
+ 4 | 0 0 1 2 2 2 2 3 3 3 4 4 4 5 6 7 8 8
+ 5 | 2 3 7 8 8
+ 6 | 1 3 8
+ 7 | 1
+ 8 |
+ 9 | 6 9
+10 | 4 5 5 5 5 6 7 9 9 9
+11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
+12 | 0 0 1 1 2 2 3 4 4 4 5 5 5 6 7 7 7 7 8 8
+13 | 1 2 3 9
+14 | 1 6
 
 ```
 
@@ -4024,7 +4024,7 @@ rng.each { |stem|
  5 | 2 3 7 8 8
  6 | 1 3 8
  7 | 1
- 8 | 
+ 8 |
  9 | 6 9
 10 | 4 5 5 5 5 6 7 9 9 9
 11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
@@ -4064,7 +4064,7 @@ Stem-and-leaf plot for x
    5* | 23788
    6* | 138
    7* | 1
-   8* | 
+   8* |
    9* | 69
   10* | 4555567999
   11* | 13333444555666677778899
@@ -4219,7 +4219,7 @@ Output:
  11  1'3'3'3'3'4'4'4'5'5'5'6'6'6'6'7'7'7'7'8'8'9'9
  12  0'0'1'1'2'2'3'4'4'4'5'5'5'6'7'7'7'7'8'8
  13  1'2'3'9
- 14  1'6 
+ 14  1'6
 
 ```
 
@@ -4324,7 +4324,7 @@ Output:
 #import std
 #import nat
 
-data = 
+data =
 
 <
    12,127,28,42,39,113,42,18,44,118,44,37,113,124,37,48,127,36,29,31,125,139,131,
@@ -4334,7 +4334,7 @@ data =
    111,40,119,47,105,57,122,109,124,115,43,120,43,27,27,18,28,48,125,107,114,34,
    133,45,120,30,127,31,116,146>
 
-stemleaf_plot = 
+stemleaf_plot =
 
 ^|T(~&,' | '--)*+ -+
    ^p(pad` @hS; * ==` ~-rlT,mat` *tS)@hSS+ (%nP*)^|*H/~& ^lrNCT/iota ~&,
@@ -4370,7 +4370,7 @@ output:
  5 | 2 3 7 8 8
  6 | 1 3 8
  7 | 1
- 8 | 
+ 8 |
  9 | 6 9
 10 | 4 5 5 5 5 6 7 9 9 9
 11 | 1 3 3 3 3 4 4 4 5 5 5 6 6 6 6 7 7 7 7 8 8 9 9
@@ -4397,7 +4397,7 @@ fcn leaf_plot(xs){
    }
    println();
 }
- 
+
 data := T(
    12, 127,  28,  42,  39, 113,  42,  18,  44, 118,  44,  37, 113, 124,
    37,  48, 127,  36,  29,  31, 125, 139, 131, 115, 105, 132, 104, 123,
@@ -4408,7 +4408,7 @@ data := T(
    117,  38,  27, 106,  33, 117, 116, 111,  40, 119,  47, 105,  57, 122,
    109, 124, 115,  43, 120,  43,  27,  27,  18,  28,  48, 125, 107, 114,
    34, 133,  45, 120,  30, 127,  31, 116, 146 );
- 
+
 leaf_plot(data);
 ```
 

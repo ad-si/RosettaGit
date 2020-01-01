@@ -16,9 +16,9 @@ tags = []
 The task is to remove text that follow any of a set of comment markers, (in these examples either a hash or a semicolon) from a string or input line.
 
 
-'''Whitespace debacle:'''   There is some confusion about whether to remove any whitespace from the input line. 
+'''Whitespace debacle:'''   There is some confusion about whether to remove any whitespace from the input line.
 
-As of [http://rosettacode.org/mw/index.php?title=Strip_comments_from_a_string&oldid=119409 2 September 2011], at least 8 languages (C, C++, Java, Perl, Python, Ruby, sed, UNIX Shell) were incorrect, out of 36 total languages, because they did not trim whitespace by 29 March 2011 rules. Some other languages might be incorrect for the same reason. 
+As of [http://rosettacode.org/mw/index.php?title=Strip_comments_from_a_string&oldid=119409 2 September 2011], at least 8 languages (C, C++, Java, Perl, Python, Ruby, sed, UNIX Shell) were incorrect, out of 36 total languages, because they did not trim whitespace by 29 March 2011 rules. Some other languages might be incorrect for the same reason.
 
 '''Please discuss this issue at [[{{TALKPAGENAME}}]].'''
 
@@ -28,7 +28,7 @@ As of [http://rosettacode.org/mw/index.php?title=Strip_comments_from_a_string&ol
 
 
 
-The following examples will be truncated to either "apples, pears " or "apples, pears". 
+The following examples will be truncated to either "apples, pears " or "apples, pears".
 
 (This example has flipped between "apples, pears " and "apples, pears" in the past.)
 
@@ -273,8 +273,8 @@ Output:
 
 ```txt
 
-apples, pears 
-apples, pears, 
+apples, pears
+apples, pears,
 
 ```
 
@@ -422,7 +422,7 @@ Output:
 #!/usr/local/bin/awk -f
 {
    sub("[ \t]*[#;].*$","",$0);
-   print;  
+   print;
 }
 ```
 
@@ -437,7 +437,7 @@ Output:
       PRINT FNstripcomment("apples, pears ; and bananas", marker$)
       PRINT FNstripcomment("   apples, pears   ", marker$)
       END
-      
+
       DEF FNstripcomment(text$, delim$)
       LOCAL I%, D%
       FOR I% = 1 TO LEN(delim$)
@@ -498,7 +498,7 @@ int main()
 {
 	char ch, str[100];
 	int i;
-	
+
 	do{
 		printf("\nEnter the string :");
 		fgets(str,100,stdin);
@@ -515,7 +515,7 @@ int main()
 		scanf("%c",&ch);
 		fflush(stdin);
 	}while(ch=='y'||ch=='Y');
-	
+
 	return 0;
 }
 ```
@@ -541,8 +541,8 @@ Do you want to repeat (y/n): n
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 
 std::string strip_white(const std::string& input)
@@ -556,7 +556,7 @@ std::string strip_comments(const std::string& input, const std::string& delimite
 {
    return strip_white(input.substr(0, input.find_first_of(delimiters)));
 }
- 
+
 int main( ) {
    std::string input;
    std::string delimiters("#;");
@@ -588,7 +588,7 @@ using System.Text.RegularExpressions;
 
 string RemoveComments(string str, string delimiter)
         {
-            //regular expression to find a character (delimiter) and 
+            //regular expression to find a character (delimiter) and
             //      replace it and everything following it with an empty string.
             //.Trim() will remove all beginning and ending white space.
             return Regex.Replace(str, delimiter + ".+", string.Empty).Trim();
@@ -672,10 +672,10 @@ apples, pears ; and bananas ";
 
 ```txt
 apples, pears # and bananas
-apples, pears ; and bananas 
+apples, pears ; and bananas
 ====>
-apples, pears 
-apples, pears 
+apples, pears
+apples, pears
 ```
 
 
@@ -754,8 +754,8 @@ not_comment( _ ) -> true.
 
 17> strip_comments_from_string:task().
 apples, pears and bananas
-apples, pears 
-apples, pears 
+apples, pears
+apples, pears
 
 ```
 
@@ -792,7 +792,7 @@ class Main
 {
   static Str removeComment (Str str)
   {
-    regex := Regex <|(;|#)|> 
+    regex := Regex <|(;|#)|>
     matcher := regex.matcher (str)
     if (matcher.find)
       return str[0..<matcher.start]
@@ -813,13 +813,13 @@ class Main
 
 ## Forth
 
-Modern Forth advocates the use of stack strings. Stack strings are manipulated as an address and a length on the Forth DATA stack. As such they do not require memory copying for many forms of string functions making them fast.  Using stack strings and concatenating functions means Forth does this task with no REGEX required.  
+Modern Forth advocates the use of stack strings. Stack strings are manipulated as an address and a length on the Forth DATA stack. As such they do not require memory copying for many forms of string functions making them fast.  Using stack strings and concatenating functions means Forth does this task with no REGEX required.
 
-NOTES: 
+NOTES:
 
 1. SCAN is not a standard function but is common in most Forth systems as either a library function or resident.
 
-2. FORTH style factoring means you can strip the comments and strip trailing spaces or not, as you see fit. 
+2. FORTH style factoring means you can strip the comments and strip trailing spaces or not, as you see fit.
 Or Concatenate the functions together as we did here.
 
 Tested with Swift Forth on OS/X
@@ -831,23 +831,23 @@ Tested with Swift Forth on OS/X
 : COMMENT? ( char -- ? )  S" #;"  ROT SCAN NIP ; \ is char '#' or ';'
 
 : -COMMENT   ( addr len -- addr len') \ removes # or ; comments
-            BEGIN  
-              LASTCHAR COMMENT? 0= 
-             WHILE                    \ while not a comment char...            
+            BEGIN
+              LASTCHAR COMMENT? 0=
+             WHILE                    \ while not a comment char...
                 1-                    \ reduce length by 1
-            REPEAT 
+            REPEAT
             1-  ;                     \ remove 1 more (the comment char)
-            
+
 \ -TRAILING is resident in desktop Forth systems like Swift Forth
 \ shown here for demonstration
 : -TRAILING  ( adr len -- adr len')    \ remove trailing spaces
-             BEGIN  
-               LASTCHAR BL =  
+             BEGIN
+               LASTCHAR BL =
              WHILE                     \ while lastchar = blank char
                1-                      \ reduce length by 1
              REPEAT  ;
-             
-: COMMENT-STRIP ( addr len -- addr 'len)  -COMMENT  -TRAILING ;</LANG>  
+
+: COMMENT-STRIP ( addr len -- addr 'len)  -COMMENT  -TRAILING ;</LANG>
 
 Tested at the Forth console
 
@@ -871,24 +871,24 @@ S" apples, pears ; and bananas"  COMMENT-STRIP TYPE apples, pears ok
  public :: strip_comments
  contains
 !****************************************************
- 
+
 	 function strip_comments(str,c) result(str2)
 	 implicit none
 	 character(len=*),intent(in) :: str
 	 character(len=1),intent(in) :: c !comment character
 	 character(len=len(str)) :: str2
-	 
+
 	 integer :: i
-	 
+
 	 i = index(str,c)
 	 if (i>0) then
 		str2 = str(1:i-1)
 	 else
 		str2 = str
 	 end if
-	 
+
 	 end function strip_comments
- 
+
 !****************************************************
  end module string_routines
 !****************************************************
@@ -900,10 +900,10 @@ S" apples, pears ; and bananas"  COMMENT-STRIP TYPE apples, pears ok
 !****************************************************
  use string_routines, only: strip_comments
  implicit none
- 
+
  write(*,*) strip_comments('apples, pears # and bananas', '#')
  write(*,*) strip_comments('apples, pears ; and bananas', ';')
- 
+
 !****************************************************
  end program main
 !****************************************************
@@ -929,13 +929,13 @@ apples, pears
 Sub stripComment(s As String, commentMarkers As String)
   If s = "" Then Return
   Dim i As Integer = Instr(s, Any commentMarkers)
-  If i > 0 Then 
+  If i > 0 Then
     s = Left(s, i - 1)
     s = Trim(s) '' removes both leading and trailing whitespace
   End If
 End Sub
 
-Dim s(1 To 4) As String = _ 
+Dim s(1 To 4) As String = _
 { _
   "apples, pears # and bananas", _
   "apples, pears ; and bananas", _
@@ -1045,8 +1045,8 @@ main = getContents >>=
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-# strip_comments: 
-# return part of string up to first character in 'markers', 
+# strip_comments:
+# return part of string up to first character in 'markers',
 # or else the whole string if no comment marker is present
 procedure strip_comments (str, markers)
   return str ? tab(upto(markers) | 0)
@@ -1065,8 +1065,8 @@ Output:
 ```txt
 
 apples, pears   and bananas
-apples, pears 
-apples, pears 
+apples, pears
+apples, pears
 
 ```
 
@@ -1095,12 +1095,12 @@ Since square brackets have a special meaning in strings, Inform's regular expres
 
 ## J
 
-'''Solution 1''' (mask & filter): 
+'''Solution 1''' (mask & filter):
 ```j
 strip=: dltb@(#~  *./\@:-.@e.&';#')
 ```
 
-'''Solution 2''' (index & cut): 
+'''Solution 2''' (index & cut):
 ```j
 strip=: dltb@({.~  <./@i.&';#')
 ```
@@ -1109,7 +1109,7 @@ strip=: dltb@({.~  <./@i.&';#')
 '''Example''':
 ```j
    dquote strip '  apples, pears # and bananas'  NB. quote result to show stripped whitespace
-"apples, pears" 
+"apples, pears"
    strip '  apples, pears ; and bananas'
 "apples, pears"
 ```
@@ -1298,7 +1298,7 @@ def strip_comment:
   | if $ix then .[0:$ix] else . end
   | trim;
 ```
- 
+
 
 '''Example''':
 
@@ -1386,7 +1386,7 @@ fun main(args: Array<String>) {
         "apples, pears // and bananas",
         "   apples, pears /* and bananas */",
         "/* oranges */ apples // pears and bananas  ",
-        " \toranges /*apples/*, pears*/*/and bananas" 
+        " \toranges /*apples/*, pears*/*/and bananas"
     )
     for (string in strings) println(stripComments(string))
 }
@@ -1449,7 +1449,7 @@ print ( string.match( s2, "[^"..comment_symbols.."]+" ) )
 
 
 ```Maple>
- use StringTools in map( Trim@Take, [ "\t\t   apples, pears \t# and bananas", " apples, pears ; and bananas  \t" ], "#;" ) end; 
+ use StringTools in map( Trim@Take, [ "\t\t   apples, pears \t# and bananas", " apples, pears ; and bananas  \t" ], "#;" ) end;
                             ["apples, pears", "apples, pears"]
 ```
 
@@ -1477,13 +1477,13 @@ Output:
 =={{header|MATLAB}} / {{header|Octave}}==
 
 ```Matlab
-function line = stripcomment(line) 
-   e = min([find(line=='#',1),find(line==';',1)]);    
+function line = stripcomment(line)
+   e = min([find(line=='#',1),find(line==';',1)]);
    if ~isempty(e)
       e = e-1;
-      while isspace(line(e)) e = e - 1; end; 		
+      while isspace(line(e)) e = e - 1; end;
       line = line(1:e);
-   end; 	
+   end;
 end;
 
 ```
@@ -1732,8 +1732,8 @@ Output:
 
 ```txt
 
-apples, pears 
-apples, pears 
+apples, pears
+apples, pears
 
 ```
 
@@ -1774,8 +1774,8 @@ Output:
 ```txt
 
 ?- start.
-apples, pears 
-apples, pears 
+apples, pears
+apples, pears
 
 ```
 
@@ -1790,10 +1790,10 @@ At the query console:
 ```txt
 
 ?- strip_1comment("apples, pears ; and bananas",O1),format("~s~n",[O1]).
-apples, pears 
+apples, pears
 O1 = [97, 112, 112, 108, 101, 115, 44, 32, 112|...] .
 ?- strip_1comment("apples, pears # and bananas",O1),format("~s~n",[O1]).
-apples, pears 
+apples, pears
 O1 = [97, 112, 112, 108, 101, 115, 44, 32, 112|...] .
 
 ```
@@ -1818,7 +1818,7 @@ Procedure.s Strip_comments(Str$)
   l-1
   If l>0
     result$=Left(Str$,l)
-  EndIf 
+  EndIf
   ProcedureReturn result$
 EndProcedure
 ```
@@ -2027,10 +2027,10 @@ trim head clear find s dlms
 
 ### version 1
 
-The first REXX subroutine takes advantage of the fact that there are only two single-character delimiters:  
+The first REXX subroutine takes advantage of the fact that there are only two single-character delimiters:
 ::*   <big>#</big>   (hash or pound sign),
 ::*   <big>;</big>     (a semicolon).
-The second and third subroutines take a general approach to the (number of) delimiters, 
+The second and third subroutines take a general approach to the (number of) delimiters,
 
 the third subroutine is more straightforward and reads better.
 
@@ -2137,12 +2137,12 @@ aList = 'apples, pears // and bananas'
 see aList + nl
 see stripComment(aList) + nl
 
-func stripComment bList 
+func stripComment bList
      nr = substr(bList,"#")
      if nr > 0 cList = substr(bList,1,nr-1) ok
      nr = substr(bList,"//")
      if nr > 0 cList = substr(bList,1,nr-1) ok
-     return cList 
+     return cList
 
 ```
 
@@ -2225,7 +2225,7 @@ fn main() {
 ```scala
 object StripComments {
   def stripComments1(s:String, markers:String =";#")=s takeWhile (!markers.contains(_)) trim
-  
+
   // using regex and pattern matching
   def stripComments2(s:String, markers:String =";#")={
     val R=("(.*?)[" + markers + "].*").r
@@ -2234,13 +2234,13 @@ object StripComments {
       case _ => s
     }) trim
   }
-  
+
   def print(s:String)={
     println("'"+s+"' =>")
     println("   '"+stripComments1(s)+"'")
     println("   '"+stripComments2(s)+"'")
   }
-  
+
   def main(args: Array[String]): Unit = {
     print("apples, pears # and bananas")
     print("apples, pears ; and bananas")
@@ -2340,8 +2340,8 @@ Output:
 apples, pears # and bananas
 apples, pears ; and bananas
 ====>
-apples, pears 
-apples, pears 
+apples, pears
+apples, pears
 
 ```
 
@@ -2453,7 +2453,7 @@ apples, pears
 
 {{works with|bash}}
 {{works with|pdksh}}
-Adapted from the Advanced Bash-Scripting Guide, section 10.1 [http://tldp.org/LDP/abs/html/string-manipulation.html Manipulating Strings]. 
+Adapted from the Advanced Bash-Scripting Guide, section 10.1 [http://tldp.org/LDP/abs/html/string-manipulation.html Manipulating Strings].
 
 ```bash
 bash$ a='apples, pears ; and bananas'
@@ -2506,7 +2506,7 @@ Or, if you want the all-in-one stripper:
 
 ```zkl
 fcn stripper(text,a,b,c,etc){
-   vm.arglist[1,*].reduce('wrap(text,c){ 
+   vm.arglist[1,*].reduce('wrap(text,c){
       if (Void!=(n:=text.find(c))) text[0,n] else text
    },text)
    .strip()

@@ -13,12 +13,12 @@ tags = []
 {{task|Discrete math}}
 {{omit from|GUISS}}
 
-A   [[set]]   is a collection (container) of certain values, 
-without any particular order, and no repeated values. 
+A   [[set]]   is a collection (container) of certain values,
+without any particular order, and no repeated values.
 
-It corresponds with a finite set in mathematics. 
+It corresponds with a finite set in mathematics.
 
-A set can be implemented as an associative array (partial mapping) 
+A set can be implemented as an associative array (partial mapping)
 in which the value of each key-value pair is ignored.
 
 Given a set S, the [[wp:Power_set|power set]] (or powerset) of S, written P(S), or 2<sup>S</sup>, is the set of all subsets of S.
@@ -28,7 +28,7 @@ Given a set S, the [[wp:Power_set|power set]] (or powerset) of S, written P(S), 
 By using a library or built-in set type, or by defining a set type with necessary operations, write a function with a set S as input that yields the power set 2<sup>S</sup> of S.
 
 
-For example, the power set of     {1,2,3,4}     is 
+For example, the power set of     {1,2,3,4}     is
 ::: {{}, {1}, {2}, {1,2}, {3}, {1,3}, {2,3}, {1,2,3}, {4}, {1,4}, {2,4}, {1,2,4}, {3,4}, {1,3,4}, {2,3,4}, {1,2,3,4}}.
 
 For a set which contains n elements, the corresponding power set has 2<sup>n</sup> elements, including the edge cases of [[wp:Empty_set|empty set]].<br />
@@ -264,11 +264,11 @@ A solution (without recursion) that prints the power set of the n arguments pass
 
 with Ada.Text_IO, Ada.Command_Line;
 use Ada.Text_IO, Ada.Command_Line;
- 
+
 procedure powerset is
 begin
 	for set in 0..2**Argument_Count-1 loop
-		Put ("{");			
+		Put ("{");
 		declare
 			k : natural := set;
 			first : boolean := true;
@@ -340,7 +340,7 @@ PROC power set = ([]MEMBER s)[][]MEMBER:(
     OD
   OD;
   r[upb r] := s;
-  r    
+  r
 );
 # Example: #
 test:(
@@ -388,11 +388,11 @@ on powerset(xs)
                     {x} & y
                 end |λ|
             end script
-            
+
             acc & map(cons, acc)
         end |λ|
     end script
-    
+
     foldr(subSet, {{}}, xs)
 end powerset
 
@@ -405,14 +405,14 @@ on run
             {setName, powerset(setMembers)}
         end |λ|
     end script
-    
+
     map(test, [¬
         ["Set [1,2,3]", {1, 2, 3}], ¬
         ["Empty set", {}], ¬
         ["Set containing only empty set", {{}}]])
-    
-    --> {{"Set [1,2,3]", {{}, {3}, {2}, {2, 3}, {1}, {1, 3}, {1, 2}, {1, 2, 3}}}, 
-    -->  {"Empty set", {{}}}, 
+
+    --> {{"Set [1,2,3]", {{}, {3}, {2}, {2, 3}, {1}, {1, 3}, {1, 2}, {1, 2, 3}}},
+    -->  {"Empty set", {{}}},
     -->  {"Set containing only empty set", {{}, {{}}}}}
 end run
 
@@ -442,7 +442,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -458,8 +458,8 @@ end mReturn
 {{Out}}
 
 ```AppleScript
-{{"Set [1,2,3]", {{}, {3}, {2}, {2, 3}, {1}, {1, 3}, {1, 2}, {1, 2, 3}}}, 
- {"Empty set", {{}}}, 
+{{"Set [1,2,3]", {{}, {3}, {2}, {2, 3}, {1}, {1, 3}, {1, 2}, {1, 2, 3}}},
+ {"Empty set", {{}}},
  {"Set containing only empty set", {{}, {{}}}}}
 ```
 
@@ -598,7 +598,7 @@ function tochar(l,n,	r) {
 
 ```txt
 
-$ gawk -f power_set.awk 
+$ gawk -f power_set.awk
 1 2 3 4
 empty
 ( 4 )
@@ -629,7 +629,7 @@ The elements of a set are represented as the bits in an integer (hence the maxim
       DIM list$(3) : list$() = "1", "2", "3", "4"
       PRINT FNpowerset(list$())
       END
-      
+
       DEF FNpowerset(list$())
       IF DIM(list$(),1) > 31 ERROR 100, "Set too large to represent as integer"
       LOCAL i%, j%, s$
@@ -710,8 +710,8 @@ blsq ) {1 2 3 4}R@
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 struct node {
 	char *s;
@@ -768,8 +768,8 @@ int main(int argc, char **argv)
 === Non-recursive version ===
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <set>
 #include <vector>
 #include <iterator>
@@ -922,12 +922,12 @@ int main()
 
 
 
-###  Recursive version 
+###  Recursive version
 
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <set>
 
 template<typename Set> std::set<Set> powerset(const Set& s, size_t n)
@@ -971,13 +971,13 @@ public IEnumerable<IEnumerable<T>> GetPowerSet<T>(List<T> list)
 
 public void PowerSetofColors()
 {
-    var colors = new List<KnownColor> { KnownColor.Red, KnownColor.Green, 
+    var colors = new List<KnownColor> { KnownColor.Red, KnownColor.Green,
         KnownColor.Blue, KnownColor.Yellow };
-    
+
     var result = GetPowerSet(colors);
-    
-    Console.Write( string.Join( Environment.NewLine, 
-        result.Select(subset => 
+
+    Console.Write( string.Join( Environment.NewLine,
+        result.Select(subset =>
             string.Join(",", subset.Select(clr => clr.ToString()).ToArray())).ToArray()));
 }
 
@@ -1035,7 +1035,7 @@ Non-recursive version
   {
     static int count = 0, n = 4;
     static int [] buf = new int [n];
-  
+
     static void Main()
     {
   	int ind = 0;
@@ -1045,7 +1045,7 @@ Non-recursive version
   	  for (int i = 0; i <= ind; ++i) Console.Write("{0, 2}", buf [i]);
   	  Console.WriteLine();
   	  count++;
-  
+
   	  if (buf [ind] < n_1) { ind++; buf [ind] = buf [ind - 1] + 1; }
   	  else if (ind > 0) { ind--; buf [ind]++; }
   	  else break;
@@ -1106,7 +1106,7 @@ user> (subsets S)
 '''Alternate solution''', with no dependency on third-party library:
 
 ```Clojure
-(defn powerset [coll] 
+(defn powerset [coll]
   (reduce (fn [a x]
             (into a (map #(conj % x)) a))
           #{#{}} coll))
@@ -1130,8 +1130,8 @@ print_power_set = (arr) ->
   console.log "POWER SET of #{arr}"
   for subset in power_set(arr)
     console.log subset
-    
-power_set = (arr) ->  
+
+power_set = (arr) ->
   result = []
   binary = (false for elem in arr)
   n = arr.length
@@ -1152,15 +1152,15 @@ bin_to_arr = (binary, arr) ->
   (arr[i] for i of binary when binary[arr.length - i  - 1])
 
 print_power_set []
-print_power_set [4, 2, 1] 
+print_power_set [4, 2, 1]
 print_power_set ['dog', 'c', 'b', 'a']
 
 ```
 
 {{out}}
 <lang>
-> coffee power_set.coffee 
-POWER SET of 
+> coffee power_set.coffee
+POWER SET of
 []
 POWER SET of 4,2,1
 []
@@ -1196,7 +1196,7 @@ POWER SET of dog,c,b,a
 ## ColdFusion
 
 
-Port from the [[#JavaScript|JavaScript]] version, 
+Port from the [[#JavaScript|JavaScript]] version,
 compatible with ColdFusion 8+ or Railo 3+
 
 ```javascript
@@ -1233,9 +1233,9 @@ var res = powerset([1,2,3,4]);
 
 
 ```lisp
-(defun powerset (s) 
-  (if s (mapcan (lambda (x) (list (cons (car s) x) x)) 
-                (powerset (cdr s))) 
+(defun powerset (s)
+  (if s (mapcan (lambda (x) (list (cons (car s) x) x))
+                (powerset (cdr s)))
       '(())))
 ```
 
@@ -1402,14 +1402,14 @@ $ rdmd powerset a b c
 
 
 
-###  Alternative: using folds 
+###  Alternative: using folds
 
 
 An almost verbatim translation of the Haskell code in D.
 
 Since D doesn't foldr, I've also copied Haskell's foldr implementation here.
 
-Main difference from the Haskell:  
+Main difference from the Haskell:
 #It isn't lazy (but it could be made so by implementing this as a generator)
 
 Main differences from the version above:
@@ -1431,7 +1431,7 @@ S foldr(T, S)(S function(T, S) f, S z, T[] rest) {
 T[][] powerset(T)(T[] set) {
     import std.algorithm;
     import std.array;
-    // Note: The types before x and acc aren't needed, so this could be made even more concise, but I think it helps 
+    // Note: The types before x and acc aren't needed, so this could be made even more concise, but I think it helps
     // to make the algorithm slightly clearer.
     return foldr( (T x, T[][] acc) => acc ~ acc.map!(accx => x ~ accx).array , [[]], set );
 }
@@ -1491,7 +1491,7 @@ It would also be possible to define an object which is the powerset of a provide
 
 ```scheme
 
-(define (set-cons a A) 
+(define (set-cons a A)
     (make-set (cons a A)))
 
 (define (power-set e)
@@ -1539,19 +1539,19 @@ defmodule RC do
     max = round(:math.pow(2,n))
     for i <- 0..max-1, do: (for pos <- 0..n-1, band(i, bsl(1, pos)) != 0, do: Enum.at(list, pos) )
   end
-  
+
   def powerset2([]), do: [[]]
   def powerset2([h|t]) do
     pt = powerset2(t)
     (for x <- pt, do: [h|x]) ++ pt
   end
-  
+
   def powerset3([]), do: [[]]
   def powerset3([h|t]) do
     pt = powerset3(t)
     powerset3(h, pt, pt)
   end
-  
+
   defp powerset3(_, [], acc), do: acc
   defp powerset3(x, [h|t], acc), do: powerset3(x, t, [[x|h] | acc])
 end
@@ -1647,7 +1647,7 @@ alternatively with list comprehension
 
 ```fsharp
 
-let rec pow = 
+let rec pow =
     function
     | [] -> [[]]
     | x::xs -> [for i in pow xs do yield! [i;x::i]]
@@ -1750,7 +1750,7 @@ Frink's set and array classes have built-in subsets[] methods that return all su
 
 ```frink
 
-a = new set[1,2,3,4]  
+a = new set[1,2,3,4]
 a.subsets[]
 
 ```
@@ -1806,12 +1806,12 @@ println( powerset({1, 2, 3, 4}) )
 
 ```gap
 # Built-in
-Combinations([1, 2, 3]);                                           
+Combinations([1, 2, 3]);
 # [ [  ], [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 3 ], [ 2 ], [ 2, 3 ], [ 3 ] ]
 
 # Note that it handles duplicates
 Combinations([1, 2, 3, 1]);
-# [ [  ], [ 1 ], [ 1, 1 ], [ 1, 1, 2 ], [ 1, 1, 2, 3 ], [ 1, 1, 3 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 3 ], 
+# [ [  ], [ 1 ], [ 1, 1 ], [ 1, 1, 2 ], [ 1, 1, 2, 3 ], [ 1, 1, 3 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 3 ],
 #   [ 2 ], [ 2, 3 ], [ 3 ] ]
 ```
 
@@ -2001,7 +2001,7 @@ comb = { m, List list ->
     m == 0 ?
         [[]] :
         (0..(n-m)).inject([]) { newlist, k ->
-            def sublist = (k+1 == n) ? [] : list[(k+1)..<n] 
+            def sublist = (k+1 == n) ? [] : list[(k+1)..<n]
             newlist += comb(m-1, sublist).collect { [list[k]] + it }
         }
 }
@@ -2116,7 +2116,7 @@ fromList [fromList [], fromList [1], fromList [1,2], fromList [1,2,3], fromList 
 
 =={{header|Icon}} and {{header|Unicon}}==
 
-The two examples below show the similarities and differences between constructing an explicit representation of the solution, i.e. a set containing the powerset, and one using generators.  The basic recursive algorithm is the same in each case, but wherever the first stores part of the result away, the second uses 'suspend' to immediately pass the result back to the caller.  The caller may then decide to store the results in a set, a list, or dispose of each one as it appears.  
+The two examples below show the similarities and differences between constructing an explicit representation of the solution, i.e. a set containing the powerset, and one using generators.  The basic recursive algorithm is the same in each case, but wherever the first stores part of the result away, the second uses 'suspend' to immediately pass the result back to the caller.  The caller may then decide to store the results in a set, a list, or dispose of each one as it appears.
 
 
 ### Set building
@@ -2129,7 +2129,7 @@ The following version returns a set containing the powerset:
 
 procedure power_set (s)
   result := set ()
-  if *s = 0 
+  if *s = 0
     then insert (result, set ()) # empty set
     else {
       head := set(?s) # take a random element
@@ -2195,7 +2195,7 @@ An alternative version, which generates each item in the power set in turn:
 ```Icon
 
 procedure power_set (s)
-  if *s = 0 
+  if *s = 0
     then suspend set ()
     else {
       head := set(?s)
@@ -2231,13 +2231,13 @@ For example:
 
 ```j
    ps 'ACE'
-   
-E  
-C  
-CE 
-A  
-AE 
-AC 
+
+E
+C
+CE
+A
+AE
+AC
 ACE
 ```
 
@@ -2299,7 +2299,7 @@ This implementation sorts each subset, but not the whole list of subsets (which 
 
 ### Iterative
 
-The iterative implementation of the above idea. Each subset is in the order that the element appears in the input list. This implementation preserves the input. 
+The iterative implementation of the above idea. Each subset is in the order that the element appears in the input list. This implementation preserves the input.
 
 ```java5
 
@@ -2470,8 +2470,8 @@ print(JSON.stringify(res));
 {{Out}}
 
 ```JavaScript
-{"[1,2,3] ->":[[], [3], [2], [2, 3], [1], [1, 3], [1, 2], [1, 2, 3]], 
-"empty set ->":[[]], 
+{"[1,2,3] ->":[[], [3], [2], [2, 3], [1], [1, 3], [1, 2], [1, 2, 3]],
+"empty set ->":[[]],
 "set which contains only the empty set ->":[[], [[]]]}
 ```
 
@@ -2511,7 +2511,7 @@ Extra credit:
 def powerset:
   if length == 0 then [[]]
   else .[0] as $first
-    | (.[1:] | powerset) 
+    | (.[1:] | powerset)
     | map([$first] + . ) + .
   end;
 ```
@@ -2582,20 +2582,20 @@ Usage:
 
 class PowerSet<T>(val items: List<T>) {
     private lateinit var combination: IntArray
- 
+
     init {
         println("Power set of $items comprises:")
         for (m in 0..items.size) {
             combination = IntArray(m)
             generate(0, m)
-        }     
+        }
     }
- 
+
     private fun generate(k: Int, m: Int) {
         if (k >= m) {
             println(combination.map { items[it] })
         }
-        else { 
+        else {
             for (j in 0 until items.size)
                 if (k == 0 || j > combination[k - 1]) {
                     combination[k] = j
@@ -2604,17 +2604,17 @@ class PowerSet<T>(val items: List<T>) {
         }
     }
 }
- 
+
 fun main(args: Array<String>) {
     val itemsList = listOf(
-        listOf(1, 2, 3, 4), 
+        listOf(1, 2, 3, 4),
         emptyList<Int>(),
         listOf(emptyList<Int>())
     )
     for (items in itemsList) {
         PowerSet(items)
         println()
-    } 
+    }
 }
 ```
 
@@ -2806,7 +2806,7 @@ combinat:-powerset({1,2,3,4});
 
 ```txt
 
-{{}, {1}, {2}, {3}, {4}, {1, 2}, {1, 3}, {1, 4}, {2, 3}, {2, 4}, {3, 4}, 
+{{}, {1}, {2}, {3}, {4}, {1, 2}, {1, 3}, {1, 4}, {2, 3}, {2, 4}, {3, 4},
 
     {1, 2, 3}, {1, 2, 4}, {1, 3, 4}, {2, 3, 4}, {1, 2, 3, 4}}
 
@@ -2816,9 +2816,9 @@ combinat:-powerset({1,2,3,4});
 
 ## Mathematica
 
-Built-in function that either gives all possible subsets, 
-subsets with at most n elements, subsets with exactly n elements 
-or subsets containing between n and m elements. 
+Built-in function that either gives all possible subsets,
+subsets with at most n elements, subsets with exactly n elements
+or subsets containing between n and m elements.
 Example of all subsets:
 
 ```Mathematica
@@ -2853,17 +2853,17 @@ function pset = powerset(theSet)
 
     %Generate all numbers from 0 to 2^(num elements of the set)-1
     for i = ( 0:(2^numel(theSet))-1 )
-       
+
         %Convert i into binary, convert each digit in binary to a boolean
         %and store that array of booleans
-        indicies = logical(bitget( i,(1:numel(theSet)) )); 
-        
+        indicies = logical(bitget( i,(1:numel(theSet)) ));
+
         %Use the array of booleans to extract the members of the original
         %set, and store the set containing these members in the powerset
         pset(i+1) = {theSet(indicies)};
-       
+
     end
-    
+
 end
 ```
 
@@ -2874,7 +2874,7 @@ Powerset of the set of the empty set.
 ```MATLAB
 powerset({{}})
 
-ans = 
+ans =
 
      {}    {1x1 cell} %This is the same as { {},{{}} }
 ```
@@ -2885,7 +2885,7 @@ Powerset of { {1,2},3 }.
 ```MATLAB
 powerset({{1,2},3})
 
-ans = 
+ans =
 
     {1x0 cell}    {1x1 cell}    {1x1 cell}    {1x2 cell} %This is the same as { {},{{1,2}},{3},{{1,2},3} }
 ```
@@ -2943,7 +2943,7 @@ echo powerset(toSet([1,2,3,4]))
 			if((subsetIndex >> itemIndex) & 0x1) {
 				[subset addObject:array[itemIndex]];
 			}
-		}		
+		}
 		[subsets addObject:subset];
 	}
 	return subsets;
@@ -2969,9 +2969,9 @@ struct
     fold work s empty
   ;;
 
-  let powerset s = 
+  let powerset s =
     let base = singleton (S.empty) in
-    let work x r = union r (map (S.add x) r) in 
+    let work x r = union r (map (S.add x) r) in
     S.fold work s base
   ;;
 
@@ -3001,7 +3001,7 @@ range r=1.. ftoi(pow(2,card(s)));
 execute
 {
  writeln(s2);
-} 
+}
 
 ```
 
@@ -3014,7 +3014,7 @@ which gives
 
 [{} {"A"} {"B"} {"A" "B"} {"C"} {"A" "C"} {"B" "C"} {"A" "B" "C"} {"D"} {"A"
          "D"} {"B" "D"} {"A" "B" "D"} {"C" "D"} {"A" "C" "D"} {"B" "C" "D"}
-         {"A" "B" "C" "D"}]   
+         {"A" "B" "C" "D"}]
 
 ```
 
@@ -3148,7 +3148,7 @@ print "\n";
 {{out}}
 
 ```txt
-[]  [a]  [b]  [c]  [a b]  [a c]  [b c]  [a b c]  
+[]  [a]  [b]  [c]  [a b]  [a c]  [b c]  [a b c]
 ```
 
 
@@ -3200,7 +3200,7 @@ Set::Object(Set::Object() Set::Object(1 2 3) Set::Object(1 2) Set::Object(1 3) S
 
 === Simple custom hash-based set type ===
 
-It's also easy to define a custom type for sets of strings or numbers, 
+It's also easy to define a custom type for sets of strings or numbers,
 using a hash as the underlying representation (like the task description suggests):
 
 
@@ -3253,7 +3253,7 @@ Set(1 2 3)
 
 
 
-###  Arrays 
+###  Arrays
 
 
 If you don't actually need a proper set data-type that guarantees uniqueness of its elements, the simplest approach is to use arrays to store "sets" of items, in which case the implementation of the powerset function becomes quite short.
@@ -3302,7 +3302,7 @@ print set_to_string(@powerset), "\n";
 
 
 
-###  Lazy evaluation 
+###  Lazy evaluation
 
 If the initial set is quite large, constructing it's powerset all at once can consume lots of memory.
 
@@ -3357,7 +3357,7 @@ powerset of set {1,2,3,4}:
 [3 4]
 [1 3 4]
 [2 3 4]
-[1 2 3 4]  
+[1 2 3 4]
 The powerset of a nine element set contains 512 elements.
 
 
@@ -3388,7 +3388,7 @@ If you don't care about the actual <tt>Set</tt> type, the <tt>.combinations</tt>
 {{out}}
 
 ```txt
- 
+
 a
 b
 c
@@ -3472,7 +3472,7 @@ function get_subset($binary, $arr) {
   foreach (range(0, count($arr)-1) as $i) {
     if ($binary[$i]) {
       $subset[] = $arr[count($arr) - $i - 1];
-    } 
+    }
   }
   return $subset;
 }
@@ -3494,15 +3494,15 @@ function print_power_sets($arr) {
     print_array($subset);
   }
 }
-  
-function power_set($arr) {  
+
+function power_set($arr) {
   $binary = array();
   foreach (range(1, count($arr)) as $i) {
     $binary[] = false;
   }
   $n = count($arr);
   $powerset = array();
-  
+
   while (count($binary) <= count($arr)) {
     $powerset[] = get_subset($binary, $arr);
     $i = 0;
@@ -3517,10 +3517,10 @@ function power_set($arr) {
     }
     $binary[$i] = true;
   }
-  
+
   return $powerset;
 }
- 
+
 print_power_sets(array());
 print_power_sets(array('singleton'));
 print_power_sets(array('dog', 'c', 'b', 'a'));
@@ -3675,10 +3675,10 @@ a b c dog
 function power-set ($array) {
     if($array) {
         $n = $array.Count
-        function state($set, $i){  
+        function state($set, $i){
             if($i -gt -1) {
                 state $set ($i-1)
-                state ($set+@($array[$i])) ($i-1)   
+                state ($set+@($array[$i])) ($i-1)
             } else {
                 "$($set | sort)"
             }
@@ -3696,15 +3696,15 @@ $setA = power-set  @(1,2,3,4)
 "number of sets in setA: $($setA.Count)"
 "sets in setA:"
 $OFS = ", "
-$setA | foreach{"{"+"$_"+"}"} 
+$setA | foreach{"{"+"$_"+"}"}
 $setB = @()
 "number of sets in setB: $($setB.Count)"
 "sets in setB:"
-$setB | foreach{"{"+"$_"+"}"} 
+$setB | foreach{"{"+"$_"+"}"}
 $setC = @(@(), @(@()))
 "number of sets in setC: $($setC.Count)"
 "sets in setC:"
-$setC | foreach{"{"+"$_"+"}"} 
+$setC | foreach{"{"+"$_"+"}"}
 $OFS = " "
 
 ```
@@ -3751,7 +3751,7 @@ powerset of X", it being understood that lists are used to represent sets.
 
 The predicate subseq(X,Y) is true if and only if the list X is a subsequence of the list Y.
 
-The definitions here are elementary, logical (cut-free), 
+The definitions here are elementary, logical (cut-free),
 and efficient (within the class of comparably generic implementations).
 
 ```Prolog
@@ -3828,7 +3828,7 @@ creation @ chr_power_set([H | T], A) <=>
 empty_element @ chr_power_set([], _) <=> chr_power_set([]).
 
 ```
- 
+
 {{out}}
 
 ```txt
@@ -3858,10 +3858,10 @@ If OpenConsole()
       Else    : text$=", {"
       EndIf
       k=0
-      For j=0 To argc-1  ; step through each bit   
+      For j=0 To argc-1  ; step through each bit
         If i&(1<<j)
-          If k: text$+", ": EndIf         ; pad the output 
-          text$+ProgramParameter(j): k+1  ; append each matching bit 
+          If k: text$+", ": EndIf         ; pad the output
+          text$+ProgramParameter(j): k+1  ; append each matching bit
         EndIf
       Next j
       Print(text$+"}")
@@ -3936,7 +3936,7 @@ def powersetlist(s):
         r += [x+[e] for x in r]
     return r
 
-s= [0,1,2,3]    
+s= [0,1,2,3]
 print "\npowersetlist(%r) =\n  %r" % (s, powersetlist(s))
 ```
 
@@ -3956,9 +3956,9 @@ powersetlist([0, 1, 2, 3]) =
 
 
 
-###  Binary Count method 
+###  Binary Count method
 
-If you list the members of the set and include them according to if the corresponding bit position of a binary count is true then you generate the powerset. 
+If you list the members of the set and include them according to if the corresponding bit position of a binary count is true then you generate the powerset.
 (Note that only frozensets can be members of a set in the second function)
 
 ```python
@@ -3973,7 +3973,7 @@ def powersequence(val):
             [[], [0], [1], [0, 1], [2], [0, 2], [1, 2], [0, 1, 2]]
             >>> powersequence((3,4,5)) # Tuple
             [(), (3,), (4,), (3, 4), (5,), (3, 5), (4, 5), (3, 4, 5)]
-            >>> 
+            >>>
     '''
     vtype = type(val); vlen = len(val); vrange = range(vlen)
     return [ reduce( lambda x,y: x+y, (val[i:i+1] for i in vrange if 2**i & n), vtype())
@@ -3991,7 +3991,7 @@ def powerset(s):
 
 
 
-###  Recursive Alternative 
+###  Recursive Alternative
 
 This is an (inefficient) recursive version that almost reflects the recursive definition of a power set as explained in http://en.wikipedia.org/wiki/Power_set#Algorithms. It does not create a sorted output.
 
@@ -4014,7 +4014,7 @@ Pythons [http://docs.python.org/3/library/itertools.html?highlight=powerset#iter
 ```python>>>
  from pprint import pprint as pp
 >>> from itertools import chain, combinations
->>> 
+>>>
 >>> def powerset(iterable):
     "powerset([1,2,3]) --> () (1,) (2,) (3,) (1,2) (1,3) (2,3) (1,2,3)"
     s = list(iterable)
@@ -4037,7 +4037,7 @@ Pythons [http://docs.python.org/3/library/itertools.html?highlight=powerset#iter
  (3,),
  (3, 4),
  (4,)}
->>> 
+>>>
 ```
 
 
@@ -4090,17 +4090,17 @@ powerset(1:4)
 ```
 
 
-The list "temp" is a compromise between the speed costs of doing 
-arithmetic and of creating new lists (since R lists are immutable, 
-appending to a list means actually creating a new list object). 
-Thus, "temp" collects new subsets that are later added to the power set. 
+The list "temp" is a compromise between the speed costs of doing
+arithmetic and of creating new lists (since R lists are immutable,
+appending to a list means actually creating a new list object).
+Thus, "temp" collects new subsets that are later added to the power set.
 This improves the speed by 4x compared to extending the list "ps" at every step.
 
 
 ### Recursive version
 
 {{libheader|sets}}
-The sets package includes a recursive method to calculate the power set. 
+The sets package includes a recursive method to calculate the power set.
 However, this method takes ~100 times longer than the non-recursive method above.
 
 ```R
@@ -4136,7 +4136,7 @@ sl <- as.set(l)
 ;;; Direct translation of 'functional' ruby method
 (define (powerset s)
   (for/fold ([outer-set (set(set))]) ([element s])
-    (set-union outer-set 
+    (set-union outer-set
                (list->set (set-map outer-set
                                    (λ(inner-set) (set-add inner-set element)))))))
 
@@ -4257,12 +4257,12 @@ combN:  procedure expose S;  parse arg x,y;    base= x + 1;            bbase= ba
 
 list = ["1", "2", "3", "4"]
 see powerset(list)
- 
+
 func powerset(list)
         s = "{"
         for i = 1 to (2 << len(list)) - 1 step 2
              s = s + "{"
-             for j = 1 to len(list) 
+             for j = 1 to len(list)
                   if i & (1 << j)
                      s = s + list[j] + ","
                   ok
@@ -4290,13 +4290,13 @@ Output:
 
 
 ```ruby
-# Based on http://johncarrino.net/blog/2006/08/11/powerset-in-ruby/ 
-# See the link if you want a shorter version. 
-# This was intended to show the reader how the method works. 
+# Based on http://johncarrino.net/blog/2006/08/11/powerset-in-ruby/
+# See the link if you want a shorter version.
+# This was intended to show the reader how the method works.
 class Array
   # Adds a power_set method to every array, i.e.: [1, 2].power_set
   def power_set
-    
+
     # Injects into a blank array of arrays.
     # acc is what we're injecting into
     # you is each element of the array
@@ -4308,9 +4308,9 @@ class Array
       end
       ret       # Return the array we're looking at to inject more.
     end
-    
+
   end
-  
+
   # A more functional and even clearer variant.
   def func_power_set
     inject([[]]) { |ps,item|    # for each item in the Array
@@ -4323,8 +4323,8 @@ end
 #A direct translation of the "power array" version above
 require 'set'
 class Set
-  def powerset 
-    inject(Set[Set[]]) do |ps, item| 
+  def powerset
+    inject(Set[Set[]]) do |ps, item|
       ps.union ps.map {|e| e.union (Set.new [item])}
     end
   end
@@ -4402,7 +4402,7 @@ proc sql noprint;
 	select max(RowCount) into :SetCount
 	from SubSets;
 quit;
-run; 
+run;
 
 %end;
 %Mend SubSets;
@@ -4414,14 +4414,14 @@ You can then call the macro as:
 
 ```SAS
 
-%SubSets(FieldCount = 5);	
+%SubSets(FieldCount = 5);
 
 ```
 
 
-The output will be the dataset SUBSETS 
-and will have a 5 columns F1, F2, F3, F4, F5 and 32 columns, 
-one with each combination of 1 and missing values.  
+The output will be the dataset SUBSETS
+and will have a 5 columns F1, F2, F3, F4, F5 and 32 columns,
+one with each combination of 1 and missing values.
 
 {{out}}
 
@@ -4624,7 +4624,7 @@ Iterative:
 
 ```seed7
 $ include "seed7_05.s7i";
- 
+
 const func array bitset: powerSet (in bitset: baseSet) is func
   result
     var array bitset: pwrSet is [] (bitset.value);
@@ -5061,7 +5061,7 @@ $ txr rosetta/power-set.txr  1 2 3
 ```
 
 
-The above <code>power-set</code> function 
+The above <code>power-set</code> function
 generalizes to strings and vectors.
 
 
@@ -5129,7 +5129,7 @@ p() { [ $# -eq 0 ] && echo || (shift; p "$@") | while read r ; do echo -e "$1 $r
 Usage
 
 ```bash
-|p `cat` | sort | uniq                                                                        
+|p `cat` | sort | uniq
 A
 C
 E
@@ -5142,8 +5142,8 @@ E
 
 
 Sets are a built in type constructor in Ursala, represented as
-lexically sorted lists with duplicates removed. 
-The powerset function is a standard library function, 
+lexically sorted lists with duplicates removed.
+The powerset function is a standard library function,
 but could be defined as shown below.
 
 ```Ursala
@@ -5293,7 +5293,7 @@ Function PowerSet(s)
 			c = 0
 			For j = Len(binS) To 1 Step -1
 				If CInt(Mid(binS,j,1)) = 1 Then
-					PowerSet = PowerSet & arrS(c) & ","	
+					PowerSet = PowerSet & arrS(c) & ","
 				End If
 				c = c + 1
 			Next

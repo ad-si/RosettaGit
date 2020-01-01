@@ -13,7 +13,7 @@ tags = []
 {{task|Fractals}}
 
 ;Task
-Produce a graphical or ASCII-art representation of a [[wp:Sierpinski carpet|Sierpinski carpet]] of order   '''N'''. 
+Produce a graphical or ASCII-art representation of a [[wp:Sierpinski carpet|Sierpinski carpet]] of order   '''N'''.
 
 
 For example, the Sierpinski carpet of order   '''3'''   should look like this:
@@ -51,7 +51,7 @@ For example, the Sierpinski carpet of order   '''3'''   should look like this:
 ```
 
 
-The use of the   #   character is not rigidly required for ASCII art. 
+The use of the   #   character is not rigidly required for ASCII art.
 
 The important requirement is the placement of whitespace and non-whitespace characters.
 
@@ -93,7 +93,7 @@ procedure Sierpinski_Carpet is
          end loop;
       end loop;
    end Clear_Center;
-   
+
    procedure Print(P : Pattern_Array) is
    begin
       for I in P'range(1) loop
@@ -107,7 +107,7 @@ procedure Sierpinski_Carpet is
          New_Line;
       end loop;
    end Print;
-   
+
    procedure Divide_Square(P : in out Pattern_Array; Order : Positive) is
       Factor : Natural := 0;
       X1, X2 : Index_Type;
@@ -138,7 +138,7 @@ procedure Sierpinski_Carpet is
          end loop;
       end loop;
    end Divide_Square;
-   
+
 begin
    Divide_Square(Pattern, 3);
    Print(Pattern);
@@ -164,13 +164,13 @@ PROC in carpet = (INT in x, in y)BOOL: (
         ELIF x MOD 3 = 1 AND y MOD 3 = 1 THEN
             out := FALSE; GO TO stop iteration
         FI;
- 
+
         x %:= 3;
         y %:= 3
     OD;
     stop iteration: out
 );
- 
+
 PROC carpet = (INT n)VOID:
     FOR i TO 3 ** n DO
         FOR j TO 3 ** n DO
@@ -201,14 +201,14 @@ carpet(3)
 
 -- sierpinskiCarpet :: Int -> [[Bool]]
 on sierpinskiCarpet(n)
-    
+
     -- rowStates :: Int -> [Bool]
     script rowStates
         on |λ|(x, _, xs)
-            
+
             -- cellState :: Int -> Bool
             script cellState
-                
+
                 -- inCarpet :: Int -> Int -> Bool
                 on inCarpet(x, y)
                     if (x = 0 or y = 0) then
@@ -219,16 +219,16 @@ on sierpinskiCarpet(n)
                             inCarpet(x div 3, y div 3)
                     end if
                 end inCarpet
-                
+
                 on |λ|(y)
                     inCarpet(x, y)
                 end |λ|
             end script
-            
+
             map(cellState, xs)
         end |λ|
     end script
-    
+
     map(rowStates, enumFromTo(0, (3 ^ n) - 1))
 end sierpinskiCarpet
 
@@ -236,13 +236,13 @@ end sierpinskiCarpet
 -- TEST ----------------------------------------------------------------------
 on run
     -- Carpets of orders 1, 2, 3
-    
+
     set strCarpets to ¬
         intercalate(linefeed & linefeed, ¬
             map(showCarpet, enumFromTo(1, 3)))
-    
+
     set the clipboard to strCarpets
-    
+
     return strCarpets
 end run
 
@@ -263,12 +263,12 @@ on showCarpet(n)
                 end if
             end |λ|
         end script
-        
+
         on |λ|(xs)
             intercalate("", map(my showBool, xs))
         end |λ|
     end script
-    
+
     intercalate(linefeed, map(showRow, sierpinskiCarpet(n)))
 end showCarpet
 
@@ -309,7 +309,7 @@ on intercalate(strText, lstText)
     return strJoined
 end intercalate
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -382,13 +382,13 @@ on weave(xs)
             f's |λ|(f's |λ|(xs, x), xs)
         end |λ|
     end script
-    
+
     script blank
         on |λ|(x)
             replicate(length of x, space)
         end |λ|
     end script
-    
+
     concatMap(thread, {xs, map(blank, xs), xs})
 end weave
 
@@ -403,7 +403,7 @@ on run
                 iterate(weave, {character id 9608})))
         end |λ|
     end script
-    
+
     sierpinski's |λ|(3)
 end run
 
@@ -456,7 +456,7 @@ on |length|(xs)
     end if
 end |length|
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: First-class m => (a -> b) -> m (a -> b)
 on mReturn(f)
     if class of f is script then
@@ -494,7 +494,7 @@ on replicate(n, s)
     set out to ""
     if n < 1 then return out
     set dbl to s
-    
+
     repeat while (n > 1)
         if (n mod 2) > 0 then set out to out & dbl
         set n to (n div 2)
@@ -806,7 +806,7 @@ XXXXXXXXX
       NEXT Y%
       REPEAT WAIT 1 : UNTIL FALSE
       END
-      
+
       DEF FNincarpet(X%,Y%)
       REPEAT
         IF X% MOD 3 = 1 IF Y% MOD 3 = 1 THEN = FALSE
@@ -839,8 +839,8 @@ The order, N, is specified by the first number on the stack. The upper limit is 
 
 If you write coordinates of any point on the carpet in base 3, the pixel if blank if and only if any matching pair of digits are (1, 1).
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -865,8 +865,8 @@ int main()
 
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -925,7 +925,7 @@ Carpet Sierpinski( int n )
        rb = row+2*subCarpet->dim;
        carpet->rows[rb] = carpet->data + row*carpet->dim;
    }
- 
+
     for (col=0; col < 3; col++) {
       /* 2 rows of tiles to copy - third group points to same data a first */
       for (row=0; row < 2; row++)
@@ -962,8 +962,8 @@ int main(int argc, char *argv[])
 
 Recursive version:
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct _PartialGrid{
@@ -977,7 +977,7 @@ void sierpinski_hollow(PartialGrid G){
         for(int i = G.xbegin+unit; i <G.xbegin+2*unit;i++){
         for(int j = G.ybegin+unit; j <G.ybegin+2*unit;j++){
                 G.base[j][i] = ' ';
-        }}  
+        }}
 }
 
 void sierpinski(PartialGrid G, int iterations){
@@ -986,23 +986,23 @@ void sierpinski(PartialGrid G, int iterations){
         if((iterations)==1){
                 sierpinski_hollow(G);
                 sierpinski(G,0);
-        }   
+        }
         sierpinski_hollow(G);
         for(int i=0;i<3;i++){
                 for(int j=0;j<3;j++){
                         int length = G.xend-G.xbegin+1;
                         int unit = length/3;
-                        PartialGrid q = {G.base, G.xbegin + i*unit, G.xbegin+(i+1)*unit-1, 
+                        PartialGrid q = {G.base, G.xbegin + i*unit, G.xbegin+(i+1)*unit-1,
                                 G.ybegin+j*unit, G.ybegin+(j+1)*unit-1};
                         sierpinski(q, iterations-1);
-                }   
-        }   
+                }
+        }
 }
 
 int intpow(int base, int expo){
         if(expo==0){
                 return 1;
-        }   
+        }
         return base*intpow(base,expo-1);
 }
 
@@ -1015,7 +1015,7 @@ int allocate_grid(char*** g, int n, const char sep){
         for(int i = 0; i < size; ++i){
                 (*g)[i] = (char*)calloc(size, sizeof(char));
                 if((*g)[i] == NULL)
-                        return -1; 
+                        return -1;
                 for(int j = 0; j < size; j++){
                         (*g)[i][j] = sep;
                 }
@@ -1081,7 +1081,7 @@ private:
 	RECT rc;
 	SetRect( &rc, x + w, y + h, x + w + w, y + h + h );
 	FillRect( _wdc, &rc, static_cast<HBRUSH>( GetStockObject( BLACK_BRUSH ) ) );
-		
+
 	for( int a = 0; a < 3; a++ )
 	    for( int b = 0; b < 3; b++ )
 	    {
@@ -1133,9 +1133,9 @@ private:
 	    {
 		PAINTSTRUCT ps;
 		HDC dc = BeginPaint( hWnd, &ps );
-		_inst->doPaint( dc ); 
+		_inst->doPaint( dc );
 		EndPaint( hWnd, &ps );
-	    }		
+	    }
 	    default:
 	        return DefWindowProc( hWnd, msg, wParam, lParam );
 	}
@@ -1181,7 +1181,7 @@ int APIENTRY _tWinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpC
 
 
 =={{header|C sharp|C#}}==
-{{trans|Ruby}} 
+{{trans|Ruby}}
 {{works with|C sharp|C#|3.0+}}
 
 ```csharp
@@ -1254,8 +1254,8 @@ This solution works by printing a square of # except where both of the coordinat
       (loop for i below size do
         (fresh-line)
         (loop for j below size do
-          (princ (if (some #'ones (trinary i) (trinary j)) 
-                   " " 
+          (princ (if (some #'ones (trinary i) (trinary j))
+                   " "
                    "#")))))))
 ```
 
@@ -1564,7 +1564,7 @@ def carpet(order) {
 ```elixir
 defmodule RC do
   def sierpinski_carpet(n), do: sierpinski_carpet(n, ["#"])
-  
+
   def sierpinski_carpet(0, carpet), do: carpet
   def sierpinski_carpet(n, carpet) do
     new_carpet = Enum.map(carpet, fn x -> x <> x <> x end) ++
@@ -1647,16 +1647,16 @@ main() ->
 	sierpinski_carpet(3).
 
 sierpinski_carpet(N) ->
-	lists: foreach(fun(X) -> lists: foreach(fun(Y) -> carpet(X,Y) end,lists:seq(0,trunc(math:pow(3,N))-1)), io:format("\n") end, lists:seq(0,trunc(math:pow(3,N))-1)).	
+	lists: foreach(fun(X) -> lists: foreach(fun(Y) -> carpet(X,Y) end,lists:seq(0,trunc(math:pow(3,N))-1)), io:format("\n") end, lists:seq(0,trunc(math:pow(3,N))-1)).
 
 carpet(X,Y) ->
-	if 
-		X=:=0 ; Y=:=0 -> 
+	if
+		X=:=0 ; Y=:=0 ->
 			io:format("*");
-		(X rem 3)=:=1, (Y rem 3) =:=1 ->	
+		(X rem 3)=:=1, (Y rem 3) =:=1 ->
 			io:format(" ");
 		true ->
-			carpet(X div 3, Y div 3)	
+			carpet(X div 3, Y div 3)
 	end.
 
 ```
@@ -1817,17 +1817,17 @@ open System
 
 let blank x = new String(' ', String.length x)
 
-let nextCarpet carpet = 
+let nextCarpet carpet =
   List.map (fun x -> x + x + x) carpet @
   List.map (fun x -> x + (blank x) + x) carpet @
   List.map (fun x -> x + x + x) carpet
- 
+
 let rec sierpinskiCarpet n =
   let rec aux n carpet =
     if n = 0 then carpet
              else aux (n-1) (nextCarpet carpet)
   aux n ["#"]
- 
+
 List.iter (printfn "%s") (sierpinskiCarpet 3)
 ```
 
@@ -1914,7 +1914,7 @@ cr 4 carpet
 ```fortran
 program Sierpinski_carpet
   implicit none
-  
+
   call carpet(4)
 
 contains
@@ -1925,7 +1925,7 @@ function In_carpet(a, b)
   integer :: x, y
 
   x = a ; y = b
-  do 
+  do
     if(x == 0 .or. y == 0) then
       In_carpet = .true.
       return
@@ -1941,8 +1941,8 @@ end function
 subroutine Carpet(n)
   integer, intent(in) :: n
   integer :: i, j
- 
-  do i = 0, 3**n - 1 
+
+  do i = 0, 3**n - 1
     do j = 0, 3**n - 1
       if(In_carpet(i, j)) then
         write(*, "(a)", advance="no") "#"
@@ -1965,8 +1965,8 @@ end program Sierpinski_carpet
 ### Version #1.
 
 ;Note:
-* Find '''plotff.gp''' file-function for load command here on RC [[Brownian_tree#gnuplot| Brownian tree page]]. 
-* dat-files are PARI/GP generated output files. See [[Sierpinski_carpet#PARI.2FGP| this page]] below. 
+* Find '''plotff.gp''' file-function for load command here on RC [[Brownian_tree#gnuplot| Brownian tree page]].
+* dat-files are PARI/GP generated output files. See [[Sierpinski_carpet#PARI.2FGP| this page]] below.
 [[File:SC5gp1.png|right|thumb|Output SC5gp1.png]]
 
 
@@ -1974,10 +1974,10 @@ end program Sierpinski_carpet
 
 ## SCff.gp 1/14/17 aev
 ## Plotting Sierpinski carpet fractal.
-## dat-files are PARI/GP generated output files: 
+## dat-files are PARI/GP generated output files:
 ## http://rosettacode.org/wiki/Sierpinski_carpet#PARI.2FGP
 #cd 'C:\gnupData'
- 
+
 ##SC5
 clr = '"green"'
 filename = "SC5gp1"
@@ -1985,7 +1985,7 @@ ttl = "Sierpinski carpet fractal, v.#1"
 load "plotff.gp"
 
 ```
- 
+
 {{Output}}
 
 ```txt
@@ -2011,7 +2011,7 @@ load "plotff.gp"
 ```gnuplot
 
 ## plotscf.gp 12/7/16 aev
-## Plotting a Sierpinski carpet fractal to the png-file. 
+## Plotting a Sierpinski carpet fractal to the png-file.
 ## Note: assign variables: ord (order), clr (color), filename and ttl (before using load command).
 ## ord (order)  # a.k.a. level - defines size of fractal (also number of dots).
 reset
@@ -2039,7 +2039,7 @@ set output
 ```gnuplot
 
 ## plotscf1.gp 12/7/16 aev
-## Plotting a Sierpinski carpet fractal to the png-file. 
+## Plotting a Sierpinski carpet fractal to the png-file.
 ## Note: assign variables: ord (order, just for title), clr (color), filename and ttl (before using load command).
 ## In this version order is always 5.
 reset
@@ -2058,7 +2058,7 @@ c3(x,y) = c2(o*x,f(y)) * c2(f(x),o*y) * c2(f(x),f(y))
 c4(x,y) = c3(o*x,f(y)) * c3(f(x),o*y) * c3(f(x),f(y))
 sc(x,y) = sqr(x,y)>0 || c0(x,y)*c1(x,y)*c2(x,y)*c3(x,y)*c4(x,y)<0 ? 0:1
 set xrange [-1.5:1.5]; set yrange [-1.5:1.5];
-set pm3d map; 
+set pm3d map;
 set palette model RGB defined (0 "white", 1 @clr);
 set size ratio -1
 smp=640; set samples smp; set isosamples smp;
@@ -2178,131 +2178,131 @@ Test Program:
 
 {{out}}
 <pre style="height:30ex;overflow:scroll;">
-0 
+0
 
-1 1 1 
-1   1 
-1 1 1 
+1 1 1
+1   1
+1 1 1
 
-2 2 2 2 2 2 2 2 2 
-2   2 2   2 2   2 
-2 2 2 2 2 2 2 2 2 
-2 2 2       2 2 2 
-2   2       2   2 
-2 2 2       2 2 2 
-2 2 2 2 2 2 2 2 2 
-2   2 2   2 2   2 
-2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2
+2   2 2   2 2   2
+2 2 2 2 2 2 2 2 2
+2 2 2       2 2 2
+2   2       2   2
+2 2 2       2 2 2
+2 2 2 2 2 2 2 2 2
+2   2 2   2 2   2
+2 2 2 2 2 2 2 2 2
 
-3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3 
-3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-3 3 3       3 3 3 3 3 3       3 3 3 3 3 3       3 3 3 
-3   3       3   3 3   3       3   3 3   3       3   3 
-3 3 3       3 3 3 3 3 3       3 3 3 3 3 3       3 3 3 
-3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3 
-3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-3 3 3 3 3 3 3 3 3                   3 3 3 3 3 3 3 3 3 
-3   3 3   3 3   3                   3   3 3   3 3   3 
-3 3 3 3 3 3 3 3 3                   3 3 3 3 3 3 3 3 3 
-3 3 3       3 3 3                   3 3 3       3 3 3 
-3   3       3   3                   3   3       3   3 
-3 3 3       3 3 3                   3 3 3       3 3 3 
-3 3 3 3 3 3 3 3 3                   3 3 3 3 3 3 3 3 3 
-3   3 3   3 3   3                   3   3 3   3 3   3 
-3 3 3 3 3 3 3 3 3                   3 3 3 3 3 3 3 3 3 
-3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3 
-3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-3 3 3       3 3 3 3 3 3       3 3 3 3 3 3       3 3 3 
-3   3       3   3 3   3       3   3 3   3       3   3 
-3 3 3       3 3 3 3 3 3       3 3 3 3 3 3       3 3 3 
-3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
-3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3 
-3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+3 3 3       3 3 3 3 3 3       3 3 3 3 3 3       3 3 3
+3   3       3   3 3   3       3   3 3   3       3   3
+3 3 3       3 3 3 3 3 3       3 3 3 3 3 3       3 3 3
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+3 3 3 3 3 3 3 3 3                   3 3 3 3 3 3 3 3 3
+3   3 3   3 3   3                   3   3 3   3 3   3
+3 3 3 3 3 3 3 3 3                   3 3 3 3 3 3 3 3 3
+3 3 3       3 3 3                   3 3 3       3 3 3
+3   3       3   3                   3   3       3   3
+3 3 3       3 3 3                   3 3 3       3 3 3
+3 3 3 3 3 3 3 3 3                   3 3 3 3 3 3 3 3 3
+3   3 3   3 3   3                   3   3 3   3 3   3
+3 3 3 3 3 3 3 3 3                   3 3 3 3 3 3 3 3 3
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+3 3 3       3 3 3 3 3 3       3 3 3 3 3 3       3 3 3
+3   3       3   3 3   3       3   3 3   3       3   3
+3 3 3       3 3 3 3 3 3       3 3 3 3 3 3       3 3 3
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
+3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3 3   3
+3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3
 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 
-4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 
-4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 
-4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4 
-4   4       4   4                   4   4       4   4 4   4       4   4                   4   4       4   4 4   4       4   4                   4   4       4   4 
-4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4 
-4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 
-4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 
-4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4                                                       4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4                                                       4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 
-4   4       4   4 4   4       4   4 4   4       4   4                                                       4   4       4   4 4   4       4   4 4   4       4   4 
-4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4                                                       4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4                                                       4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4                   4   4 4   4 4   4                                                       4   4 4   4 4   4                   4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 
-4 4 4       4 4 4                   4 4 4       4 4 4                                                       4 4 4       4 4 4                   4 4 4       4 4 4 
-4   4       4   4                   4   4       4   4                                                       4   4       4   4                   4   4       4   4 
-4 4 4       4 4 4                   4 4 4       4 4 4                                                       4 4 4       4 4 4                   4 4 4       4 4 4 
-4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4                   4   4 4   4 4   4                                                       4   4 4   4 4   4                   4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4                                                       4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4                                                       4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 
-4   4       4   4 4   4       4   4 4   4       4   4                                                       4   4       4   4 4   4       4   4 4   4       4   4 
-4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4                                                       4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4                                                       4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 
-4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 
-4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 
-4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4 
-4   4       4   4                   4   4       4   4 4   4       4   4                   4   4       4   4 4   4       4   4                   4   4       4   4 
-4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4 
-4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 
-4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 
-4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 
-4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4
+4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4
+4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4
+4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4
+4   4       4   4                   4   4       4   4 4   4       4   4                   4   4       4   4 4   4       4   4                   4   4       4   4
+4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4
+4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4
+4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4
+4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4                                                       4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4                                                       4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4
+4   4       4   4 4   4       4   4 4   4       4   4                                                       4   4       4   4 4   4       4   4 4   4       4   4
+4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4                                                       4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4                                                       4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4                   4   4 4   4 4   4                                                       4   4 4   4 4   4                   4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4
+4 4 4       4 4 4                   4 4 4       4 4 4                                                       4 4 4       4 4 4                   4 4 4       4 4 4
+4   4       4   4                   4   4       4   4                                                       4   4       4   4                   4   4       4   4
+4 4 4       4 4 4                   4 4 4       4 4 4                                                       4 4 4       4 4 4                   4 4 4       4 4 4
+4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4                   4   4 4   4 4   4                                                       4   4 4   4 4   4                   4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4                                                       4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4                                                       4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4
+4   4       4   4 4   4       4   4 4   4       4   4                                                       4   4       4   4 4   4       4   4 4   4       4   4
+4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4                                                       4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4                                                       4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                                                       4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4
+4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4
+4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4
+4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4
+4   4       4   4                   4   4       4   4 4   4       4   4                   4   4       4   4 4   4       4   4                   4   4       4   4
+4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4 4 4 4       4 4 4                   4 4 4       4 4 4
+4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4 4   4 4   4 4   4                   4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4                   4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4
+4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4 4   4       4   4
+4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4 4 4 4       4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4 4   4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
 ```
 
 
@@ -2337,10 +2337,10 @@ nextCarpet :: [String] -> [String]
 nextCarpet carpet = border ++ map f carpet ++ border
   where border = map (concat . replicate 3) carpet
         f x = x ++ map (const ' ') x ++ x
- 
+
 sierpinskiCarpet :: Int -> [String]
 sierpinskiCarpet n = iterate nextCarpet ["#"] !! n
- 
+
 main :: IO ()
 main = mapM_ putStrLn $ sierpinskiCarpet 3
 ```
@@ -2353,7 +2353,7 @@ main :: IO ()
 main = putStr . unlines . (!!3) $ iterate next ["#"]
 
 next :: [String] -> [String]
-next block = 
+next block =
     block ! block  ! block
               ++
     block ! center ! block
@@ -2412,35 +2412,35 @@ Via high-level vector graphics (diagrams -> cairo -> gtk), very slow.
 {-# LANGUAGE DoRec #-}
 import Control.Monad.Trans (lift)
 import Data.Colour (Colour)
- 
+
 import Diagrams.Prelude hiding (after)
 import Diagrams.Backend.Cairo (Cairo)
 import Diagrams.Backend.Cairo.Gtk (defaultRender)
- 
+
 import Graphics.Rendering.Diagrams.Points ()
 import Graphics.UI.Gtk
 import Graphics.UI.Gtk.Gdk.GC (gcNew)
- 
- 
+
+
 main :: IO ()
 main = do
   _ <- initGUI
   window <- windowNew
   _ <- window `onDestroy` mainQuit
   window `windowSetResizable` False
- 
+
   area <- drawingAreaNew
   _ <- area `on` sizeRequest $ return (Requisition 500 500)
   _ <- window `containerAdd` area
   widgetShowAll window
- 
+
   rec con <- area `on` exposeEvent $ do
                 lift $ signalDisconnect con
                 lift $ area `defaultRender` carpet 5
                 switchToPixBuf area
   mainGUI
- 
- 
+
+
 -- just workaround for slow redrawing
 switchToPixBuf :: DrawingArea -> EventM EExpose Bool
 switchToPixBuf area =
@@ -2452,7 +2452,7 @@ switchToPixBuf area =
         _ <- area `on` exposeEvent $ lift $
               False <$ drawPixbuf dw gc pb 0 0 0 0 w h RgbDitherNone 0 0
         return False
- 
+
 
 carpet :: Int -> Diagram Cairo R2
 carpet = (iterate next (cell white) !!)
@@ -2469,7 +2469,7 @@ next block =
     	(block ||| block ||| block)
     where
       centr = cell black
- 
+
 cell :: Colour Float -> Diagram Cairo R2
 cell color = square 1 # lineWidth 0 # fillColor color
 
@@ -2486,13 +2486,13 @@ procedure main(A)
 
    width := 3 ^ ( order := (0 < \A[1]) | 3 )
    write("Carpet order= ",order)
- 
+
    every !(canvas := list(width)) := list(width," ")        # prime the canvas
-   
+
    every y := 1 to width & x := 1 to width do               # traverse it
       if IsFilled(x-1,y-1) then canvas[x,y] := FILLER       # fill
 
-   every x := 1 to width & y := 1 to width do 
+   every x := 1 to width & y := 1 to width do
       writes((y=1,"\n")|"",canvas[x,y]," ")                 # print
 end
 
@@ -2649,7 +2649,7 @@ But N=:3 is big, so let's use N=:2
 └─────────────┴─────────────┴─────────────┘
 ```
 
-    
+
 or another way of getting the same image starts with the boolean array
 
 
@@ -2755,7 +2755,7 @@ public static boolean inCarpet(long x, long y) {
     }
     return true;
 }
- 
+
 public static void carpet(final int n) {
     final double power = Math.pow(3,n);
     for(long i = 0; i < power; i++) {
@@ -2846,7 +2846,7 @@ public class SierpinskiCarpet extends JPanel {
 
 In-browser JavaScript (HTML output)
 {{trans|Ruby}}
-{{works with|JavaScript|1.6}} 
+{{works with|JavaScript|1.6}}
 {{works with|Firefox|1.5+}}
 This version also produces a "graphic" via HTML and CSS.
 
@@ -2916,7 +2916,7 @@ SierpinskiCarpet.prototype.to_html = function(target) {
 ```
 
 <div id='to_html'></div>
-    
+
 <script type='text/javascript'>
     var sc = new SierpinskiCarpet(3);
     document.getElementById('to_string').appendChild(document.createTextNode(sc.to_string()));
@@ -3412,18 +3412,18 @@ def inCarpet(x; y):
   else inCarpet($x/3 | floor; $y/3 | floor)
   end;
 
-def ipow(n): 
+def ipow(n):
   . as $in | reduce range(0;n) as $i (1; . * $in);
-  
+
 def carpet(n):
-  (3|ipow(n)) as $power 
-  | [ inCarpet( range(0; $power) ; range(0; $power), -1 )] 
-  | join("") ; 
+  (3|ipow(n)) as $power
+  | [ inCarpet( range(0; $power) ; range(0; $power), -1 )]
+  | join("") ;
 
 
 carpet(3)
 ```
-The following command produces the required pattern, and so the output is not repeated here: 
+The following command produces the required pattern, and so the output is not repeated here:
 
 ```sh
 jq -n -r -c -f sierpinski.jq
@@ -3683,32 +3683,32 @@ carpet(3)
 Output:
 
 ```txt
-* * * * * * * * * * * * * * * * * * * * * * * * * * * 
-*   * *   * *   * *   * *   * *   * *   * *   * *   * 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * 
-* * *       * * * * * *       * * * * * *       * * * 
-*   *       *   * *   *       *   * *   *       *   * 
-* * *       * * * * * *       * * * * * *       * * * 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * 
-*   * *   * *   * *   * *   * *   * *   * *   * *   * 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * 
-* * * * * * * * *                   * * * * * * * * * 
-*   * *   * *   *                   *   * *   * *   * 
-* * * * * * * * *                   * * * * * * * * * 
-* * *       * * *                   * * *       * * * 
-*   *       *   *                   *   *       *   * 
-* * *       * * *                   * * *       * * * 
-* * * * * * * * *                   * * * * * * * * * 
-*   * *   * *   *                   *   * *   * *   * 
-* * * * * * * * *                   * * * * * * * * * 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * 
-*   * *   * *   * *   * *   * *   * *   * *   * *   * 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * 
-* * *       * * * * * *       * * * * * *       * * * 
-*   *       *   * *   *       *   * *   *       *   * 
-* * *       * * * * * *       * * * * * *       * * * 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * 
-*   * *   * *   * *   * *   * *   * *   * *   * *   * 
+* * * * * * * * * * * * * * * * * * * * * * * * * * *
+*   * *   * *   * *   * *   * *   * *   * *   * *   *
+* * * * * * * * * * * * * * * * * * * * * * * * * * *
+* * *       * * * * * *       * * * * * *       * * *
+*   *       *   * *   *       *   * *   *       *   *
+* * *       * * * * * *       * * * * * *       * * *
+* * * * * * * * * * * * * * * * * * * * * * * * * * *
+*   * *   * *   * *   * *   * *   * *   * *   * *   *
+* * * * * * * * * * * * * * * * * * * * * * * * * * *
+* * * * * * * * *                   * * * * * * * * *
+*   * *   * *   *                   *   * *   * *   *
+* * * * * * * * *                   * * * * * * * * *
+* * *       * * *                   * * *       * * *
+*   *       *   *                   *   *       *   *
+* * *       * * *                   * * *       * * *
+* * * * * * * * *                   * * * * * * * * *
+*   * *   * *   *                   *   * *   * *   *
+* * * * * * * * *                   * * * * * * * * *
+* * * * * * * * * * * * * * * * * * * * * * * * * * *
+*   * *   * *   * *   * *   * *   * *   * *   * *   *
+* * * * * * * * * * * * * * * * * * * * * * * * * * *
+* * *       * * * * * *       * * * * * *       * * *
+*   *       *   * *   *       *   * *   *       *   *
+* * *       * * * * * *       * * * * * *       * * *
+* * * * * * * * * * * * * * * * * * * * * * * * * * *
+*   * *   * *   * *   * *   * *   * *   * *   * *   *
 * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ```
 
@@ -3723,7 +3723,7 @@ class SierpinskiCarpet {
   function : Main(args : String[]) ~ Nil {
     Carpet(3);
   }
-  
+
   function : InCarpet(x : Int, y : Int) ~ Bool {
     while(x<>0 & y<>0) {
       if(x % 3 = 1 & y % 3 = 1) {
@@ -3736,7 +3736,7 @@ class SierpinskiCarpet {
 
     return true;
   }
-  
+
   function : Carpet(n : Int) ~ Nil {
     power := 3.0->Power(n->As(Float));
     for(i := 0; i < power; i+=1;) {
@@ -3802,14 +3802,14 @@ let () =
 
 
 ```Oforth
-: carpet(n) 
+: carpet(n)
 | dim i j k |
    3 n pow ->dim
 
    0 dim 1 - for: i [
       0 dim 1 - for: j [
           dim 3 / ->k
-          while(k) [ 
+          while(k) [
              i k 3 * mod k / 1 == j k 3 * mod k / 1 == and ifTrue: [ break ]
              k 3 / ->k
              ]
@@ -3825,8 +3825,8 @@ let () =
 
 Since the C Preprocessor cannot print newlines, this Order program produces a string for a simple C program to print:
 
-```c>#include <order/interpreter.h
-
+```c
+#include <order/interpreter.h>
 
 #define ORDER_PP_DEF_8in_carpet ORDER_PP_FN( \
 8fn(8X, 8Y, \
@@ -3892,7 +3892,7 @@ declare
   fun {XXX X} X#X#X end
   fun {X_X X} X#{Spaces {VirtualString.length X}}#X end
   fun {Spaces N} if N == 0 then nil else & |{Spaces N-1} end end
-  
+
   fun lazy {Iterate F X}
      X|{Iterate F {F X}}
   end
@@ -3919,7 +3919,7 @@ Note: wrtmat() can be found here on RC [[Brownian_tree#PARI.2FGP| Brownian tree 
 
 ```parigp
 
-\\ Improved simple plotting using matrix mat (color and scaling added). 
+\\ Improved simple plotting using matrix mat (color and scaling added).
 \\ Matrix should be filled with 0/1. 7/6/16 aev
 iPlotmat(mat,clr)={
   my(xz=#mat[1,],yz=#mat[,1],vx=List(),vy=vx,xmin,xmax,ymin,ymax,c=0.625);
@@ -3940,13 +3940,13 @@ iPlotV2(fn, clr)={
   for(i=1,nf, Vr=stok(F[i]," "); listput(vx,eval(Vr[1])); listput(vy,eval(Vr[2])));
   xmin=listmin(vx); xmax=listmax(vx); ymin=listmin(vy); ymax=listmax(vy);
   plotinit(0); plotcolor(0,clr);
-  plotscale(0, xmin,xmax,ymin,ymax);  
+  plotscale(0, xmin,xmax,ymin,ymax);
   plotpoints(0, Vec(vx)*c,Vec(vy));
   plotdraw([0,xmin,ymin]);
 }
-\\ Are x,y inside Sierpinski carpet? (1-yes, 0-no) 6/10/16 aev  
+\\ Are x,y inside Sierpinski carpet? (1-yes, 0-no) 6/10/16 aev
 inSC(x,y)={
-  while(1, if(!x||!y,return(1)); 
+  while(1, if(!x||!y,return(1));
     if(x%3==1&&y%3==1, return(0));
     x\=3; y\=3;);\\wend
 }
@@ -3961,12 +3961,12 @@ inSC(x,y)={
 ```parigp
 
 \\ Sierpinski carpet fractal (n - order, clr - color, dfn - data file name)
-\\ 6/10/16, upgraded 11/29/16 aev 
+\\ 6/10/16, upgraded 11/29/16 aev
 pSierpinskiC(n, clr=5, dfn="")={
   my(n3=3^n-1,M,pf=n>=5);
   if(pf, M=matrix(n3+1,n3+1));
   for(i=0,n3, for(j=0,n3,
-    if(inSC(i,j), 
+    if(inSC(i,j),
       if(pf, M[i+1,j+1]=1, print1("* ")), if(!pf, print1("  ")));
     ); if(!pf, print(""));
   );\\fend i
@@ -3981,8 +3981,8 @@ pSierpinskiC(5,14); \\ SierpC5.png, color - navy
 iPlotV2("c:\\pariData\\SC5.dat",10);} \\ SierpC5a.png, color - dark-green
 
 ```
- 
-  
+
+
 {{Output}}
 
 
@@ -4035,13 +4035,13 @@ Program SierpinskiCarpet;
 
 uses
   Math;
- 
+
 function In_carpet(a, b: longint): boolean;
 
   var
     x, y: longint;
-    
-  begin 
+
+  begin
     x := a;
     y := b;
     while true do
@@ -4051,7 +4051,7 @@ function In_carpet(a, b: longint): boolean;
         In_carpet := true;
         break;
       end
-      else 
+      else
         if ( (x mod 3) = 1 ) and ((y mod 3) = 1) then
         begin
           In_carpet := false;
@@ -4061,7 +4061,7 @@ function In_carpet(a, b: longint): boolean;
       y := y div 3;
     end;
   end;
- 
+
 procedure Carpet(n: integer);
 
   var
@@ -4124,8 +4124,8 @@ end.
 
 
 ```perl
-my @c = '##'; 
-@c = (map($_ x 3, @c), map($_.(' ' x length).$_, @c), map($_ x 3, @c)) 
+my @c = '##';
+@c = (map($_ x 3, @c), map($_.(' ' x length).$_, @c), map($_ x 3, @c))
         for 1 .. 3;
 print join("\n", @c), "\n";
 ```
@@ -4140,10 +4140,10 @@ print join("\n", @c), "\n";
 sub carpet
 {
     (['#'], -> @c {
-       [ 
-        |@c.map({$_ x 3}), 
+       [
+        |@c.map({$_ x 3}),
         |@c.map({ $_ ~ $_.trans('#'=>' ') ~ $_}),
-        |@c.map({$_ x 3}) 
+        |@c.map({$_ x 3})
        ]
     } ... *).map: { .join("\n") };
 }
@@ -4311,7 +4311,7 @@ end for
 /* Sierpinski carpet */
 
 Sierpinski_carpet: procedure options (main); /* 28 January 2013 */
-  
+
   call carpet(3);
 
 In_carpet: procedure (a, b) returns (bit(1));
@@ -4320,7 +4320,7 @@ In_carpet: procedure (a, b) returns (bit(1));
   declare (true value ('1'b), false value ('0'b)) bit (1);
 
    x = a ; y = b;
-   do forever; 
+   do forever;
       if x = 0 | y = 0 then
          return (true);
       else if mod(x, 3) = 1 & mod(y, 3) = 1 then
@@ -4333,7 +4333,7 @@ end in_carpet;
 Carpet: procedure (n);
   declare n fixed binary nonassignable;
   declare (i, j) fixed binary;
- 
+
   do i = 0 to 3**n - 1;
      do j = 0 to 3**n - 1;
         if In_carpet(i, j) then
@@ -4434,7 +4434,7 @@ function Draw-SierpinskiCarpet ( [int]$N )
         }
     $Carpet
     }
- 
+
 Draw-SierpinskiCarpet 3
 ```
 
@@ -4479,54 +4479,54 @@ Function Draw-SierpinskiCarpet ( [int]$N )
     #  Define form
     $Form = [System.Windows.Forms.Form]@{ Size = '300, 300' }
     $Form.Controls.Add(( $PictureBox = [System.Windows.Forms.PictureBox]@{ Size = $Form.ClientSize; Anchor = 'Top, Bottom, Left, Right' } ))
- 
+
     #  Main code to draw Sierpinski carpet
     $Draw = {
- 
+
         #  Create graphics objects to use
         $PictureBox.Image = ( $Canvas = New-Object System.Drawing.Bitmap ( $PictureBox.Size.Width, $PictureBox.Size.Height ) )
         $Graphics = [System.Drawing.Graphics]::FromImage( $Canvas )
- 
+
         #  Draw single pixel
         $Graphics.FillRectangle( [System.Drawing.Brushes]::Black, 0, 0, 1, 1 )
- 
+
         #  If N was not specified, use an N that will fill the form
         If ( -not $N ) { $N = [math]::Ceiling( [math]::Log( [math]::Max( $PictureBox.Size.Height, $PictureBox.Size.Width ) ) / [math]::Log( 3 ) ) }
- 
+
         #  Define the shape of the fractal
         $P  = @( @( 0, 0 ), @( 0, 1 ), @( 0, 2 ) )
         $P += @( @( 1, 0 ),            @( 1, 2 ) )
         $P += @( @( 2, 0 ), @( 2, 1 ), @( 2, 2 ) )
- 
+
         #  For each iteration
         ForEach ( $i in 0..$N )
             {
             #  Copy the result of the previous iteration
             $Copy = New-Object System.Drawing.TextureBrush ( $Canvas )
- 
+
             #  Calulate the size of the copy
             $S = [math]::Pow( 3, $i )
- 
+
             #  For each position in the next layer of the fractal
             ForEach ( $i in 1..7 )
                 {
                 #  Adjust the copy for the new location
                 $Copy.TranslateTransform( - $P[$i-1][0] * $S + $P[$i][0] * $S, - $P[$i-1][1] * $S + $P[$i][1] * $S )
- 
+
                 #  Paste the copy of the previous iteration into the new location
                 $Graphics.FillRectangle( $Copy, $P[$i][0] * $S, $P[$i][1] * $S, $S, $S )
                 }
             }
         }
- 
+
     #  Add the main drawing code to the appropriate events to be drawn when the form is first shown and redrawn when the form size is changed
     $Form.Add_Shown(  $Draw )
     $Form.Add_Resize( $Draw )
- 
+
     #  Launch the form
     $Null = $Form.ShowDialog()
     }
- 
+
 Draw-SierpinskiCarpet 4
 ```
 
@@ -4545,7 +4545,7 @@ Procedure in_carpet(x,y)
       ProcedureReturn #False
     EndIf
     y/3: x/3
-  Wend 
+  Wend
   ProcedureReturn #True
 EndProcedure
 
@@ -4577,7 +4577,7 @@ def in_carpet(x, y):
             return True
         elif x % 3 == 1 and y % 3 == 1:
             return False
-        
+
         x /= 3
         y /= 3
 
@@ -4846,7 +4846,7 @@ pSierpinskiC <- function(ord, fn="", ttl="", clr="navy") {
   }}
   plotmat(M, pf, clr, ttl);
   cat(" *** END", abbr, date(), "\n");
-}  
+}
 ## Executing:
 pSierpinskiC(5);
 
@@ -4857,10 +4857,10 @@ pSierpinskiC(5);
 ```txt
 
 > pSierpinskiC(5);
- *** START SCR Sun Apr 02 12:39:21 2017 
- *** Plot file: SCRo5 .png title: Sierpinski carpet fractal, order 5 
+ *** START SCR Sun Apr 02 12:39:21 2017
+ *** Plot file: SCRo5 .png title: Sierpinski carpet fractal, order 5
  *** Matrix( 242 x 242 ) 32283 DOTS
- *** END SCR Sun Apr 02 12:39:28 2017 
+ *** END SCR Sun Apr 02 12:39:28 2017
 
 ```
 
@@ -4887,7 +4887,7 @@ pSierpinskiC2 <- function(ord, fn="", ttl="", clr="brown") {
   }
   plotmat(S, pf, clr, ttl);
   cat(" *** END", abbr, date(), "\n");
-}  
+}
 ## Executing:
 pSierpinskiC2(5);
 
@@ -4898,10 +4898,10 @@ pSierpinskiC2(5);
 ```txt
 
 > pSierpinskiC2(5);
- *** START SCR2 Sun Apr 02 14:44:17 2017 
- *** Plot file: SCR2o5 .png title: Sierpinski carpet fractal v.2, order 5 
+ *** START SCR2 Sun Apr 02 14:44:17 2017
+ *** Plot file: SCR2o5 .png title: Sierpinski carpet fractal v.2, order 5
  *** Matrix( 243 x 243 ) 32768 DOTS
- *** END SCR2 Sun Apr 02 14:44:24 2017 
+ *** END SCR2 Sun Apr 02 14:44:24 2017
 
 ```
 
@@ -4939,10 +4939,10 @@ nnn= 3**N                                        /* [↓]  NNN  is the  cube of 
   end       /*j*/                                /*stick a fork in it,  we're all done. */
 ```
 
-This REXX program makes use of   '''linesize'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console). 
+This REXX program makes use of   '''linesize'''   REXX program (or BIF) which is used to determine the screen width (or linesize) of the terminal (console).
 
-Some REXXes don't have this BIF, so the   '''linesize.rex'''   REXX program is included here   ──►   [[LINESIZE.REX]]. 
- 
+Some REXXes don't have this BIF, so the   '''linesize.rex'''   REXX program is included here   ──►   [[LINESIZE.REX]].
+
 
 {{out|output|text=  when using the default input:}}
 
@@ -5023,7 +5023,7 @@ Some REXXes don't have this BIF, so the   '''linesize.rex'''   REXX program is i
 
 load "guilib.ring"
 
-new qapp 
+new qapp
         {
         win1 = new qwidget() {
                    etwindowtitle("drawing using qpainter")
@@ -5060,7 +5060,7 @@ func draw
          for y = 0 to side-1
              for x = 0 to side-1
                  if carpet(self,x,y)
-                    drawpoint(x*16,y*16+15) 
+                    drawpoint(x*16,y*16+15)
                     drawpoint(x*16+1,y*16+16)
                     drawpoint(x*16+2,y*16+17) ok
              next
@@ -5075,7 +5075,7 @@ func draw
                          if x % 3 = 1 if y % 3 = 1 return false ok ok
                          x = floor(x/3)
                          y = floor(y/3)
-                   end 
+                   end
                    return true}
 
 ```
@@ -5248,7 +5248,7 @@ const func boolean: inCarpet (in var integer: x, in var integer: y) is func
       end if;
     end while;
   end func;
- 
+
 const proc: carpet (in integer: n) is func
   local
     var integer: i is 0;
@@ -5328,7 +5328,7 @@ func sierpinski_carpet(n:Int) -> String {
         let spacer = str.stringByReplacingOccurrencesOfString("#", withString:" ", options:nil, range:nil)
         return str + spacer + str
     }
-    
+
     var carpet = ["#"]
     for i in 1...n {
         let a = carpet.map{$0 + $0 + $0}
@@ -5410,7 +5410,7 @@ End
 ## UNIX Shell
 
 {{works with|Bash}}
-Doesn't pretend to be efficient.  
+Doesn't pretend to be efficient.
 
 Note that this code inserts a space between characters; some versions of  [http://en.wikipedia.org/wiki/Paste_(Unix) paste(1)] (notably the one that ships with OS X) won't allow an empty delimiter.  If yours does, you can replace the <tt>-d ' '</tt> in the function body with <tt>-d </tt>' '<tt> </tt>for more compact output.
 
@@ -5548,7 +5548,7 @@ Function InCarpet(ByVal x As Integer, ByVal y As Integer)
     Loop
     InCarpet = "#"
 End Function
- 
+
 Public Sub sierpinski_carpet()
     Dim i As Integer, j As Integer
     For i = 0 To 3 ^ Order - 1
@@ -5729,7 +5729,7 @@ Uses magic number division to avoid repeatedly using the div instruction in a lo
 ;x86-64 assembly code for Microsoft Windows
 ;Tested in windows 7 Enterprise Service Pack 1 64 bit
 ;With the AMD FX(tm)-6300 processor
-;Assembled with NASM version 2.11.06 
+;Assembled with NASM version 2.11.06
 ;Linked to C library with gcc version 4.9.2 (x86_64-win32-seh-rev1, Built by MinGW-W64 project)
 
 ;Assembled and linked with the following commands:
@@ -5774,7 +5774,7 @@ call atoi
 mov rbx,rax
 
 cmp rbx,0
-jz magnitude_zero 
+jz magnitude_zero
 
 
 ;determine dimensions of square
@@ -5984,7 +5984,7 @@ SetVid($3);                     \restore normal text mode
 ```Yabasic
 sub sp$(n)
 	local i, s$
-	
+
 	for i = 1 to n
 		s$ = s$ + " "
 	next i
@@ -5993,7 +5993,7 @@ end sub
 
 sub replace$(s$, cf$, cr$)
 	local i, p
-	
+
 	do
 		i = instr(s$, cf$, p)
 		if not i break
@@ -6005,9 +6005,9 @@ end sub
 
 sub foreach$(carpet$, p$, m)
 	local n, i, t$(1)
-	
+
 	n = token(carpet$, t$(), ",")
-	
+
 	for i = 1 to n
 		switch(m)
 		case 0:	p$ = p$ + "," + t$(i) + t$(i) + t$(i) : break
@@ -6020,7 +6020,7 @@ end sub
 
 sub sierpinskiCarpet$(n)
     local carpet$, next$, i
-	
+
     carpet$ = "@"
     for i = 1 to n
         next$ = foreach$(carpet$, "")

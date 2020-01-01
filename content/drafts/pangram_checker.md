@@ -45,18 +45,18 @@ LOOPK    MVC    BUFFER+1(1),0(R10) loop in sentence
          BNE    NEXTK
          LA     R5,1               found
 NEXTK    LA     R11,1(R11)         next character
-         BCT    R8,LOOPK 
+         BCT    R8,LOOPK
          LTR    R5,R5              if found
          BNZ    NEXTJ
          MVI    BUFFER,C'?'        not found
          B      PRINT
 NEXTJ    LA     R10,1(R10)         next letter
-         BCT    R7,LOOPJ 
+         BCT    R7,LOOPJ
          MVC    BUFFER(2),=CL2'OK'
 PRINT    MVC    BUFFER+3(60),0(R9)
          XPRNT  BUFFER,80
 NEXTI    LA     R9,60(R9)          next sentence
-         BCT    R6,LOOPI 
+         BCT    R6,LOOPI
 RETURN   XR     R15,R15
          BR     R14
 ALPHABET DC     CL26'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -65,7 +65,7 @@ SENTENCE DC     CL60'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG.'
          DC     CL60'HEAVY BOXES PERFORM WALTZES AND JIGS.'
          DC     CL60'PACK MY BOX WITH FIVE DOZEN LIQUOR JUGS.'
 BUFFER   DC     CL80' '
-         YREGS  
+         YREGS
          END    PANGRAM
 ```
 
@@ -105,17 +105,17 @@ OK PACK MY BOX WITH FIVE DOZEN LIQUOR JUGS.
 function pangram(k:string):Boolean {
   var lowerK:String = k.toLowerCase();
   var has:Object = {}
- 
+
   for (var i:Number=0; i<=k.length-1; i++) {
     has[lowerK.charAt(i)] = true;
   }
- 
+
   var result:Boolean = true;
- 
+
   for (var ch:String='a'; ch <= 'z'; ch=String.fromCharCode(ch.charCodeAt(0)+1)) {
       result = result && has[ch]
   }
- 
+
   return result || false;
 }
 ```
@@ -125,7 +125,7 @@ function pangram(k:string):Boolean {
 ## Ada
 
 
-###  Using character sets 
+###  Using character sets
 
 
 ```Ada
@@ -133,10 +133,10 @@ with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Strings.Maps; use Ada.Strings.Maps;
 with Ada.Characters.Handling; use Ada.Characters.Handling;
 procedure pangram is
- 
+
    function ispangram(txt: String) return Boolean is
      (Is_Subset(To_Set(Span => ('a','z')), To_Set(To_Lower(txt))));
- 
+
 begin
    put_line(Boolean'Image(ispangram("This is a test")));
    put_line(Boolean'Image(ispangram("The quick brown fox jumps over the lazy dog")));
@@ -147,14 +147,14 @@ end pangram;
 ```
 
 
-###  Using quantified expressions 
+###  Using quantified expressions
 
 
 ```Ada
 with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Characters.Handling; use Ada.Characters.Handling;
 procedure pangram is
- 
+
   function ispangram(txt : in String) return Boolean is
      (for all Letter in Character range 'a'..'z' =>
          (for some Char of txt => To_Lower(Char) = Letter));
@@ -246,7 +246,7 @@ main:(
 
     a←'abcdefghijklmnopqrstuvwxyz'
     A←'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    
+
     Panagram←{∧/ ∨⌿ 2 26⍴(a,A) ∊ ⍵}
     Panagram 'This should fail'
 0
@@ -279,7 +279,7 @@ on isPangram(s)
             lowerCaseString does not contain c
         end |λ|
     end script
-    
+
     length of filter(charUnUsed, "abcdefghijklmnopqrstuvwxyz") = 0
 end isPangram
 
@@ -289,7 +289,7 @@ on run
     map(isPangram, {¬
         "is this a pangram", ¬
         "The quick brown fox jumps over the lazy dog"})
-    
+
     --> {false, true}
 end run
 
@@ -320,7 +320,7 @@ on map(f, xs)
     end tell
 end map
 
--- Lift 2nd class handler function into 1st class script wrapper 
+-- Lift 2nd class handler function into 1st class script wrapper
 -- mReturn :: Handler -> Script
 on mReturn(f)
     if class of f is script then
@@ -496,7 +496,7 @@ function isPangram(string) {
     }
     for (k=1; k<=length(allChars); k++) {
         if (!X[substr(allChars,k,1)]) return 0;
-    }	
+    }
     return 1;
 }
 ```
@@ -543,7 +543,7 @@ function testPangram(str,   c,i,S,H,hit,miss) {
       if (H[c]) { hit=hit c } else { miss=miss c }
     }
     print "# hit:",hit, "# miss:",miss, "."		##
-    if (miss) return 0 
+    if (miss) return 0
     return 1
 }
 ```
@@ -753,10 +753,10 @@ Press any key to continue . . .
         ENDIF
       NEXT test%
       END
-      
+
       DATA "The quick brown fox jumped over the lazy dog"
       DATA "The five boxing wizards jump quickly"
-      
+
       DEF FNpangram(A$)
       LOCAL C%
       A$ = FNlower(A$)
@@ -764,7 +764,7 @@ Press any key to continue . . .
         IF INSTR(A$, CHR$(C%)) = 0 THEN = FALSE
       NEXT
       = TRUE
-      
+
       DEF FNlower(A$)
       LOCAL A%, C%
       FOR A% = 1 TO LEN(A$)
@@ -825,7 +825,7 @@ That is a pangram.
       & chr$(1+asc$!k):?k:~>z
       )
   & !k:>z
-  & 
+  &
 );
 ```
 
@@ -886,8 +886,8 @@ pangram? = { sentence |
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int is_pangram(const char *s)
 {
@@ -936,8 +936,8 @@ int main(void)
 Assumes an execution environment using the ASCII character set (will invoke undefined behavior on other systems).
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int pangram(const char *s)
 {
@@ -1044,8 +1044,8 @@ namespace PangrammChecker
 ## C++
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <cctype>
 #include <string>
 #include <iostream>
@@ -1079,7 +1079,7 @@ int main()
 
 ```ceylon
 shared void run() {
- 
+
 	function pangram(String sentence) =>
  		let(alphabet = set('a'..'z'),
 			letters = set(sentence.lowercased.filter(alphabet.contains)))
@@ -1183,7 +1183,7 @@ is_pangram = (s) ->
   required_letters = {}
   for i in [a_code...a_code+26]
     required_letters[String.fromCharCode(i)] = true
-    
+
   cnt = 0
   for c in s
     c = c.toLowerCase()
@@ -1236,20 +1236,20 @@ MODULE BbtPangramChecker;
 IMPORT StdLog,DevCommanders,TextMappers;
 
 PROCEDURE Check(str: ARRAY OF CHAR): BOOLEAN;
-CONST 
+CONST
 	letters = 26;
 VAR
 	i,j: INTEGER;
-	status: ARRAY letters OF BOOLEAN; 
+	status: ARRAY letters OF BOOLEAN;
 	resp : BOOLEAN;
 BEGIN
 	FOR i := 0 TO LEN(status) -1 DO status[i] := FALSE END;
-	
+
 	FOR i := 0 TO LEN(str) -  1 DO
 		j := ORD(CAP(str[i])) - ORD('A');
-		IF (0 <= j) & (25 >= j) & ~status[j] THEN status[j] := TRUE END 
+		IF (0 <= j) & (25 >= j) & ~status[j] THEN status[j] := TRUE END
 	END;
-	
+
 	resp := TRUE;
 	FOR i := 0 TO LEN(status) - 1 DO;
 		resp := resp & status[i]
@@ -1597,10 +1597,10 @@ Dim s(1 To 3) As String = _
  "The quick brown fox jumps over the lazy dog", _
  "abbdefghijklmnopqrstuVwxYz", _ '' no c!
  "How vexingly quick daft zebras jump!" _
-} 
+}
 
 For i As Integer = 1 To 3:
-  Print "'"; s(i); "' is "; IIf(isPangram(s(i)), "a", "not a"); " pangram" 
+  Print "'"; s(i); "' is "; IIf(isPangram(s(i)), "a", "not a"); " pangram"
   Print
 Next
 
@@ -1711,7 +1711,7 @@ END
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-A panagram procedure: 
+A panagram procedure:
 
 ```Icon
 procedure panagram(s)     #: return s if s is a panagram and fail otherwise
@@ -1726,13 +1726,13 @@ And a main  to drive it:
 procedure main(arglist)
 
 if *arglist > 0 then
-   every ( s := "" ) ||:= !arglist || " " 
-else 
+   every ( s := "" ) ||:= !arglist || " "
+else
    s := "The quick brown fox jumps over the lazy dog."
 
 writes(image(s), " -- is")
 writes(if not panagram(s) then "n't")
-write(" a panagram.") 
+write(" a panagram.")
 end
 ```
 
@@ -2010,7 +2010,7 @@ fun isPangram(s: String): Boolean {
     for (c in 'a' .. 'z')
         if (c !in t) return false
     return true
-} 
+}
 
 fun main(args: Array<String>) {
    val candidates = arrayOf(
@@ -2019,7 +2019,7 @@ fun main(args: Array<String>) {
        "A very bad quack might jinx zippy fowls",
        "A very mad quack might jinx zippy fowls"   // no 'b' now!
    )
-   for (candidate in candidates) 
+   for (candidate in candidates)
        println("'$candidate' is ${if (isPangram(candidate)) "a" else "not a"} pangram")
 }
 ```
@@ -2141,9 +2141,9 @@ True
 Or a slightly more verbose version that outputs the missing characters if the string is not a pangram:
 
 ```Mathematica
-pangramQ[msg_] := 
- Function[If[# === {}, Print["The string is a pangram!"], 
-    Print["The string is not a pangram. It's missing the letters " <> 
+pangramQ[msg_] :=
+ Function[If[# === {}, Print["The string is a pangram!"],
+    Print["The string is not a pangram. It's missing the letters " <>
       ToString[#]]]][
   Complement[CharacterRange["a", "z"], Characters[ToLowerCase[msg]]]]
 ```
@@ -2201,9 +2201,9 @@ ans =
 sentences = ["The quick brown fox jumps over the lazy dog.",
     "Peter Piper picked a peck of pickled peppers.",
     "Waltz job vexed quick frog nymphs."]
- 
+
 alphabet = "abcdefghijklmnopqrstuvwxyz"
- 
+
 pangram = function (toCheck)
     sentence = toCheck.lower
     fail = false
@@ -2212,11 +2212,11 @@ pangram = function (toCheck)
     end for
     return true
 end function
- 
+
 for sentence in sentences
     if pangram(sentence) then
         print """" + sentence + """ is a Pangram"
-    else 
+    else
         print """" + sentence + """ is not a Pangram"
     end if
 end for
@@ -2400,7 +2400,7 @@ let () =
  true -- The quick brown fox jumps over the lazy dog.
 
 =={{header|MATLAB}} / {{header|Octave}}==
- 	
+
 
 ```matlab
 function trueFalse = isPangram(string)
@@ -2443,9 +2443,9 @@ ans = 1
 ```ocaml
 fun to_locase s = implode ` map (c_downcase) ` explode s
 
-fun is_pangram 
-	(h :: t, T) = 				 
-		let 
+fun is_pangram
+	(h :: t, T) =
+		let
 			val flen = len (filter (fn c = c eql h) T)
 		in
 			if (flen = 0) then
@@ -2453,12 +2453,12 @@ fun is_pangram
 			else
 				is_pangram (t, T)
 		end
-|	([], T) = true 
+|	([], T) = true
 | 	S = is_pangram (explode "abcdefghijklmnopqrstuvwxyz", explode ` to_locase S)
-		
-fun is_pangram_i 
-	(h :: t, T) = 				 
-		let 
+
+fun is_pangram_i
+	(h :: t, T) =
+		let
 			val flen = len (filter (fn c = c eql h) T)
 		in
 			if (flen = 0) then
@@ -2466,18 +2466,18 @@ fun is_pangram_i
 			else
 				is_pangram (t, T)
 		end
-|	([], T) = true 
+|	([], T) = true
 | 	(A,S) = is_pangram (explode A, explode ` to_locase S)
 
 fun test (f, arg, res, ok, notok) = if (f arg eql res) then ("'" @ arg @ "' " @ ok) else ("'" @ arg @ "' " @ notok)
 fun test2 (f, arg, res, ok, notok) = if (f arg eql res) then ("'" @ ref (arg,1) @ "' " @ ok) else ("'" @ ref (arg,1) @ "' " @ notok)
-	
+
 ;
-println ` test (is_pangram, "The quick brown fox jumps over the lazy dog", true, "is a pangram", "is not a pangram"); 
-println ` test (is_pangram, "abcdefghijklopqrstuvwxyz", true, "is a pangram", "is not a pangram"); 
+println ` test (is_pangram, "The quick brown fox jumps over the lazy dog", true, "is a pangram", "is not a pangram");
+println ` test (is_pangram, "abcdefghijklopqrstuvwxyz", true, "is a pangram", "is not a pangram");
 val SValphabet = "abcdefghijklmnopqrstuvwxyzåäö";
 val SVsentence = "Yxskaftbud, ge vår wczonmö iq hjälp";
-println ` test2 (is_pangram_i, (SValphabet, SVsentence), true, "is a Swedish pangram", "is not a Swedish pangram"); 
+println ` test2 (is_pangram_i, (SValphabet, SVsentence), true, "is a Swedish pangram", "is not a Swedish pangram");
 
 ```
 
@@ -2820,10 +2820,10 @@ end test_pangram;
 
 ```txt
 
-Please type a sentence 
+Please type a sentence
 
 the quick brown fox jumps over the lazy dog
-The sentence is a pangram. 
+The sentence is a pangram.
 
 ```
 
@@ -2840,12 +2840,12 @@ function Test-Pangram ( [string]$Text, [string]$Alphabet = 'abcdefghijklmnopqrst
     {
     $Text = $Text.ToLower()
     $Alphabet = $Alphabet.ToLower()
- 
+
     $IsPangram = @( $Alphabet.ToCharArray() | Where-Object { $Text.Contains( $_ ) } ).Count -eq $Alphabet.Length
- 
+
     return $IsPangram
     }
- 
+
 Test-Pangram 'The quick brown fox jumped over the lazy dog.'
 Test-Pangram 'The quick brown fox jumps over the lazy dog.'
 Test-Pangram 'Съешь же ещё этих мягких французских булок, да выпей чаю' 'абвгдежзийклмнопрстуфхцчшщъыьэюяё'
@@ -2905,8 +2905,8 @@ pangram_example :-
 
 ```txt
 ?- pangram_example.
-the quick brown fox jumps over the lazy dog --> ok 
-the quick brown fox jumped over the lazy dog --> ko 
+the quick brown fox jumps over the lazy dog --> ok
+the quick brown fox jumped over the lazy dog --> ko
 true.
 ```
 
@@ -2985,14 +2985,14 @@ Using the built-in R vector "letters":
 checkPangram <- function(sentence){
   my.letters <- tolower(unlist(strsplit(sentence, "")))
   is.pangram <- all(letters %in% my.letters)
-  
+
   if (is.pangram){
     cat("\"", sentence, "\" is a pangram! \n", sep="")
   } else {
     cat("\"", sentence, "\" is not a pangram! \n", sep="")
   }
 }
- 
+
 ```
 
 
@@ -3074,7 +3074,7 @@ The quick brown fox JUMPS over the lazy dog!!!     ◄■■■■■■■■�
 
 
 ──────── Please enter a pangramic sentence   (or a blank to quit):
-                                                   ◄■■■■■■■■■■ user input   (null  or  some blanks). 
+                                                   ◄■■■■■■■■■■ user input   (null  or  some blanks).
 
 ──────── PANGRAM program ended. ────────
 
@@ -3090,16 +3090,16 @@ The quick brown fox JUMPS over the lazy dog!!!     ◄■■■■■■■■�
 pangram = 0
 s = "The quick brown fox jumps over the lazy dog."
 see "" + pangram(s) + " " + s + nl
- 
+
 s = "My dog has fleas."
 see "" + pangram(s) + " " + s + nl
- 
+
 func pangram str
      str  = lower(str)
      for i = ascii("a") to ascii("z")
              bool = substr(str, char(i)) > 0
              pangram = pangram + bool
-     next 
+     next
      pan = (pangram = 26)
      return pan
 
@@ -3130,7 +3130,7 @@ Print pangram(s$);" ";s$
 
 s$ = "My dog has fleas."
 Print pangram(s$);" ";s$
- 
+
 function pangram(str$)
   str$  = lower$(str$)
   for i = asc("a") to asc("z")
@@ -3362,7 +3362,7 @@ pgr_1   alfa len(1) . c = :f(return)
 pangram_end
 
         define('panchk(str)tf') :(panchk_end)
-panchk  output = str 
+panchk  output = str
         tf = 'False'; tf = pangram(str) 'True'
         output = 'Pangram: ' tf :(return)
 panchk_end
@@ -3547,7 +3547,7 @@ example usage:
 
 #cast %bL
 
-test = 
+test =
 
 is_pangram* <
    'The quick brown fox jumps over the lazy dog',
@@ -3578,7 +3578,7 @@ Function pangram2(s As String) As Boolean
     Const sKey As String = "abcdefghijklmnopqrstuvwxyz"
     Dim sLow As String
     Dim i As Integer
- 
+
     sLow = LCase(s)
     For i = 1 To 26
       If InStr(sLow, Mid(sKey, i, 1)) = 0 Then
@@ -3631,7 +3631,7 @@ function pangram( s )
 	next
 	pangram = ( ltrim(sKey) = vbnullstring )
 end function
-		
+
 function eef( bCond, exp1, exp2 )
 	if bCond then
 		eef = exp1
@@ -3709,11 +3709,11 @@ no
 ```Yabasic
 sub isPangram$(t$, l1$)
 	local lt, ll, r$, i, cc, ic
-	
+
 	if numparams = 1 then
 		l1$ = "abcdefghijklmnopqrstuvwxyz"
 	end if
-	
+
 	t$ = lower$(t$)
 	ll = len(l1$)
 	for i = 1 to ll
@@ -3721,7 +3721,7 @@ sub isPangram$(t$, l1$)
 	next
 	lt = len(t$)
 	cc = asc("a")
-	
+
 	for i = 1 to lt
 		ic = asc(mid$(t$, i, 1)) - cc + 1
 		if ic > 0 and ic <= ll then

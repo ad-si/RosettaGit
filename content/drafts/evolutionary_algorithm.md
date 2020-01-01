@@ -66,29 +66,29 @@ To ensure that the new parent is never less fit than the prior parent, both the 
 \ RosettaCode challenge http://rosettacode.org/wiki/Evolutionary_algorithm
 \ Responding to the criticism that the implementation was too directed, this
 \ version does a completely random selection of chars to mutate
- 
+
 var gen
 \ Convert a string of valid chars into an array of char-strings:
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ " null s:/ var, valid-chars
- 
+
 \ How many mutations each generation will handle; the larger, the slower each
 \ generation but the fewer generations required:
 300 var, #mutations
 23 var, mutability
- 
+
 : get-random-char
   valid-chars @
   27 rand-pcg n:abs swap n:mod
   a:@ nip ;
- 
+
 : mutate-string \ s -- s'
-  ( 
+  (
     rand-pcg mutability @ n:mod not if
      drop get-random-char
     then
   ) s:map ;
- 
-: mutate \ s n -- a 
+
+: mutate \ s n -- a
   \ iterate 'n' times over the initial string, mutating it each time
   \ save the original string, as the best of the previous generation:
   >r [] over a:push swap
@@ -96,7 +96,7 @@ var gen
   tuck mutate-string
   a:push swap
   ) r> times drop ;
- 
+
 \ compute Hamming distance of two strings:
 : hamming \ s1 s2 -- n
   0 >r
@@ -107,15 +107,15 @@ var gen
    n:- n:abs r> n:+ >r
   ) 0 rot loop
   2drop r> ;
- 
+
 var best
 : fitness-check \ s a -- s t
   10000 >r
   -1 best !
   (
    \ ix s ix s'
-    2 pick hamming 
-   r@ 
+    2 pick hamming
+   r@
    over n:> if
       rdrop >r
       best !
@@ -125,37 +125,37 @@ var best
   )
   a:each
   rdrop best @  a:@ nip  ;
- 
- 
+
+
 : add-random-char \ s -- s'
   get-random-char s:+ ;
- 
+
 \ take the target and make a random string of the same length
 : initial-string \ s -- s
-  s:len "" swap  
+  s:len "" swap
   ' add-random-char
   swap times ;
- 
+
 : done? \ s1 s2 -- s1 s2 | bye
-  2dup s:= if 
+  2dup s:= if
    "Done in " . gen @ . " generations" . cr ;;;
   then ;
- 
+
 : setup-random
   rand rand rand-pcg-seed ;
- 
-: evolve 
+
+: evolve
   1 gen n:+!
   \ create an array of #mutations strings mutated from the random string, drop the random
-  #mutations @ mutate  
+  #mutations @ mutate
   \ iterate over the array and pick the closest fit:
-  fitness-check 
+  fitness-check
   \ show this generation's best match:
-  dup . cr 
+  dup . cr
   \ check for end condition and continue if not done:
   done? evolve ;
- 
-"METHINKS IT IS LIKE A WEASEL"  
+
+"METHINKS IT IS LIKE A WEASEL"
 setup-random initial-string evolve bye
 ```
 
@@ -459,7 +459,7 @@ main(void)
 
 ```algol68
 STRING target := "METHINKS IT IS LIKE A WEASEL";
- 
+
 PROC fitness = (STRING tstrg)REAL:
 (
    INT sum := 0;
@@ -468,25 +468,25 @@ PROC fitness = (STRING tstrg)REAL:
    OD;
    # fitness := # 100.0*exp(-sum/10.0)
 );
- 
+
 PROC rand char = CHAR:
 (
    #STATIC# []CHAR ucchars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
    # rand char := # ucchars[ENTIER (random*UPB ucchars)+1]
 );
- 
+
 PROC mutate = (REF STRING kid, parent, REAL mutate rate)VOID:
 (
    FOR i FROM LWB parent TO UPB parent DO
       kid[i] := IF random < mutate rate THEN rand char ELSE parent[i] FI
    OD
 );
- 
+
 PROC kewe = ( STRING parent, INT iters, REAL fits, REAL mrate)VOID:
 (
    printf(($"#"4d" fitness: "g(-6,2)"% "g(-6,4)" '"g"'"l$, iters, fits, mrate, parent))
 );
- 
+
 PROC evolve = VOID:
 (
    FLEX[UPB target]CHAR parent;
@@ -495,8 +495,8 @@ PROC evolve = VOID:
    INT iters := 0;
    kid[LWB kid] := LOC[UPB target]CHAR;
    REAL mutate rate;
- 
-   #  initialize  #   
+
+   #  initialize  #
    FOR i FROM LWB parent TO UPB parent DO
       parent[i] := rand char
    OD;
@@ -859,9 +859,9 @@ Done.
       parent$ = "IU RFSGJABGOLYWF XSMFXNIABKT"
       mutation_rate = 0.5
       children% = 10
-      
+
       DIM child$(children%)
-      
+
       REPEAT
         bestfitness = 0
         bestindex% = 0
@@ -873,19 +873,19 @@ Done.
             bestindex% = index%
           ENDIF
         NEXT index%
-        
+
         parent$ = child$(bestindex%)
         PRINT parent$
       UNTIL parent$ = target$
       END
-      
+
       DEF FNfitness(text$, ref$)
       LOCAL I%, F%
       FOR I% = 1 TO LEN(text$)
         IF MID$(text$, I%, 1) = MID$(ref$, I%, 1) THEN F% += 1
       NEXT
       = F% / LEN(text$)
-      
+
       DEF FNmutate(text$, rate)
       LOCAL C%
       IF rate > RND(1) THEN
@@ -901,8 +901,8 @@ Done.
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -985,8 +985,8 @@ iter 223, score 0: METHINKS IT IS LIKE A WEASEL
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <cstdlib>
 #include <iostream>
 #include <cassert>
@@ -1191,7 +1191,7 @@ static class Program {
         // Start with a random string the same length as the target.
         string parent = Rng.NextString(target.Length);
 
-        Console.WriteLine("START:       {0,20} fitness: {1}", 
+        Console.WriteLine("START:       {0,20} fitness: {1}",
             parent, Fitness(target, parent));
         int i = 0;
 
@@ -1204,7 +1204,7 @@ static class Program {
             parent = candidates.OrderByDescending(c => Fitness(target, c)).First();
 
             ++i;
-            Console.WriteLine("     #{0,6} {1,20} fitness: {2}", 
+            Console.WriteLine("     #{0,6} {1,20} fitness: {2}",
                 i, parent, Fitness(target, parent));
         }
 
@@ -1292,53 +1292,53 @@ END: #    62 METHINKS IT IS LIKE A WEASEL
 
 ```ceylon
 import ceylon.random {
-	
+
 	DefaultRandom
 }
 
 shared void run() {
-	
+
 	value mutationRate = 0.05;
 	value childrenPerGeneration = 100;
 	value target = "METHINKS IT IS LIKE A WEASEL";
 	value alphabet = {' ', *('A'..'Z')};
 	value random = DefaultRandom();
-	
+
 	value randomLetter => random.nextElement(alphabet);
-	
+
 	function fitness(String a, String b) =>
 			count {for([c1, c2] in zipPairs(a, b)) c1 == c2};
-	
+
 	function mutate(String string) =>
 			String {
-				for(letter in string) 
-				if(random.nextFloat() < mutationRate) 
-				then randomLetter 
+				for(letter in string)
+				if(random.nextFloat() < mutationRate)
+				then randomLetter
 				else letter
 			};
-	
+
 	function makeCopies(String string) =>
 			{for(i in 1..childrenPerGeneration) mutate(string)};
-	
+
 	function chooseFittest(String+ children) =>
 			children
 			.map((String element) => element->fitness(element, target))
 			.max(increasingItem)
 			.key;
-	
+
 	variable value parent = String {for(i in 1..target.size) randomLetter};
 	variable value generationCount = 0;
 	function display() => print("``generationCount``: ``parent``");
-	
+
 	display();
 	while(parent != target) {
 		parent = chooseFittest(parent, *makeCopies(parent));
 		generationCount++;
 		display();
 	}
-	
+
 	print("mutated into target in ``generationCount`` generations!");
-	
+
 }
 ```
 
@@ -1703,32 +1703,32 @@ fittest-paragraph.
 
   <cfloop from="1" to="#children#" index="child">
     <Cfset thischild = ''>
-  
+
     <Cfloop from="1" to="#len(theString)#" index="i">
       <cfset Mutate = Mid(theAlphabet, RandRange(1, 28), 1)>
       <cfif fitness eq 0>
         <Cfset thischild = thischild & mutate>
       <Cfelse>
-      
+
         <Cfif Mid(theString, i, 1) eq Mid(variables["child" & child], i, 1)>
           <Cfset thischild = thischild & Mid(variables["child" & child], i, 1)>
-        <Cfelse>      
+        <Cfelse>
           <cfset MutateChance = 1/fitness>
           <Cfset MutateChanceRand = rand()>
-          <Cfif MutateChanceRand lte MutateChance> 
+          <Cfif MutateChanceRand lte MutateChance>
             <Cfset thischild = thischild & mutate>
           <Cfelse>
             <Cfset thischild = thischild & Mid(variables["child" & child], i, 1)>
           </Cfif>
         </Cfif>
-        
-      </cfif> 
+
+      </cfif>
     </Cfloop>
-    
+
     <Cfset variables["child" & child] = thischild>
-    
+
 </cfloop>
-  
+
   <cfloop from="1" to="#children#" index="child">
     <Cfset thisChildFitness = 0>
     <Cfloop from="1" to="#len(theString)#" index="i">
@@ -1736,16 +1736,16 @@ fittest-paragraph.
         <Cfset thisChildFitness = thisChildFitness + 1>
       </Cfif>
     </Cfloop>
-    
+
     <Cfset variables["fitness" & child] = (thisChildFitness)/len(theString)>
-    
+
     <Cfif variables["fitness" & child] gt fitness>
       <Cfset fitness = variables["fitness" & child]>
       <Cfset parent = variables["child" & child]>
     </Cfif>
 
   </cfloop>
-    
+
   <Cfif parent neq oldparent>
     <Cfoutput>###counter# #numberformat(fitness*100, 99)#% fit: #parent#
 </Cfoutput><cfflush>
@@ -2060,11 +2060,11 @@ weasel()
 (define (fitness source target) ;; score >=0, best is 0
 	(for/sum  [(s source)(t target)]
 		(if (= s t) 0 1)))
-		
+
 (define (mutate source rate)
 	(for/string [(s source)]
 		(if (< (random) rate) [ALPHABET (random 27)] s)))
-		
+
 (define (select parent target rate copies (copy) (score))
 	(define best (fitness parent target))
 	(define selected parent)
@@ -2075,16 +2075,16 @@ weasel()
 			(set! selected copy)
 			(set! best  score)))
 	selected )
-	
+
 (define MUTATION_RATE 0.05) ;; 5% chances to change
 (define COPIES 100)
 (define TARGET "METHINKS IT IS LIKE A WEASEL")
 
 (define (task (rate MUTATION_RATE) (copies COPIES) (target TARGET) (score))
 	(define parent ;; random source
-		(for/string 
+		(for/string
                 [(i (string-length target))] [ALPHABET (random 27)]))
-		
+
 	(for [(i (in-naturals))]
 		(set! score (fitness parent target))
 		(writeln i parent 'score score)
@@ -2099,35 +2099,35 @@ weasel()
 ```txt
 
 (task)
-0     "TNCEKMNVYOW NSMSZ BZDODMMAXE"     score     26    
-1     "TNCEKBNVYOW NSMSZ AZDODMMAEE"     score     25    
-2     "TNCEKINVYOW NSMSZKEZDODMMAEE"     score     23    
-3     "TNCEKIKVYOW NSMSZKEZDODMMAEE"     score     22    
-4     "TNCEKIKVYOW NSMSZKEZDOWMMAEE"     score     21    
-5     "TNCEKIKVYOW NSMSZKEZDOWMMAEE"     score     21    
-6     "MNCEKIKVYOW NSMSZKEZSOWMMAEE"     score     20    
-7     "MNCEKIKAYOE NSMLZKEZSOWMMAEE"     score     19    
-8     "MNCEKIKAYOE NSMLZKEZS WMMAEE"     score     18    
-9     "MNCEKIKAYOE ISMLZKEZS WMMAEE"     score     17    
-10     "MECEKIKAYBE ISMLZKEZS WMMAEE"     score     16    
-11     "MECEKLKAYBE ISMLZKE S WMMAEE"     score     15    
-12     "METEKZKAYBE ISMLZKE S WMMAEE"     score     14    
-13     "METEKZKAYBE ISMLZKE S WMMSEE"     score     13    
-14     "METEIZKAYBE ISMLZKE S WMMSEH"     score     12    
-15     "METEIZKAYBE ISMLZKE S WMMSEH"     score     12    
-16     "METHIZKAYBE ISMLZKE S WMMSEH"     score     11    
-17     "METHIZKAYBE ISMLZKE S WMASEH"     score     10    
-18     "METHIZKAYBE ISMLZKE S WMASEH"     score     10    
-[...]   
-67     "METHINKS RT ISMLIKE A WEASEL"     score     2    
-68     "METHINKS RT ISMLIKE A WEASEL"     score     2    
-69     "METHINKS RT ISMLIKE A WEASEL"     score     2    
-70     "METHINKS RT ISMLIKE A WEASEL"     score     2    
-71     "METHINKS RT ISMLIKE A WEASEL"     score     2    
-72     "METHINKS RT IS LIKE A WEASEL"     score     1    
-73     "METHINKS RT IS LIKE A WEASEL"     score     1    
-74     "METHINKS RT IS LIKE A WEASEL"     score     1    
-75     "METHINKS IT IS LIKE A WEASEL"     score     0    
+0     "TNCEKMNVYOW NSMSZ BZDODMMAXE"     score     26
+1     "TNCEKBNVYOW NSMSZ AZDODMMAEE"     score     25
+2     "TNCEKINVYOW NSMSZKEZDODMMAEE"     score     23
+3     "TNCEKIKVYOW NSMSZKEZDODMMAEE"     score     22
+4     "TNCEKIKVYOW NSMSZKEZDOWMMAEE"     score     21
+5     "TNCEKIKVYOW NSMSZKEZDOWMMAEE"     score     21
+6     "MNCEKIKVYOW NSMSZKEZSOWMMAEE"     score     20
+7     "MNCEKIKAYOE NSMLZKEZSOWMMAEE"     score     19
+8     "MNCEKIKAYOE NSMLZKEZS WMMAEE"     score     18
+9     "MNCEKIKAYOE ISMLZKEZS WMMAEE"     score     17
+10     "MECEKIKAYBE ISMLZKEZS WMMAEE"     score     16
+11     "MECEKLKAYBE ISMLZKE S WMMAEE"     score     15
+12     "METEKZKAYBE ISMLZKE S WMMAEE"     score     14
+13     "METEKZKAYBE ISMLZKE S WMMSEE"     score     13
+14     "METEIZKAYBE ISMLZKE S WMMSEH"     score     12
+15     "METEIZKAYBE ISMLZKE S WMMSEH"     score     12
+16     "METHIZKAYBE ISMLZKE S WMMSEH"     score     11
+17     "METHIZKAYBE ISMLZKE S WMASEH"     score     10
+18     "METHIZKAYBE ISMLZKE S WMASEH"     score     10
+[...]
+67     "METHINKS RT ISMLIKE A WEASEL"     score     2
+68     "METHINKS RT ISMLIKE A WEASEL"     score     2
+69     "METHINKS RT ISMLIKE A WEASEL"     score     2
+70     "METHINKS RT ISMLIKE A WEASEL"     score     2
+71     "METHINKS RT ISMLIKE A WEASEL"     score     2
+72     "METHINKS RT IS LIKE A WEASEL"     score     1
+73     "METHINKS RT IS LIKE A WEASEL"     score     1
+74     "METHINKS RT IS LIKE A WEASEL"     score     1
+75     "METHINKS IT IS LIKE A WEASEL"     score     0
 
 ```
 
@@ -2150,17 +2150,17 @@ const real P = 0.05r;
 
 rnd = randomGenerator;
 
-randomChar 
+randomChar
     = AllowedCharacters[rnd.nextInt(AllowedCharacters.Length)];
 
 extension evoHelper
 {
     randomString()
         = 0.repeatTill(self).selectBy:(x => randomChar).summarize(new StringWriter());
-        
+
     fitnessOf(s)
         = self.zipBy(s, (a,b => a==b ? 1 : 0)).summarize(new Integer()).toInt();
-        
+
     mutate(p)
         = self.selectBy:(ch => rnd.nextReal() <= p ? randomChar : ch).summarize(new StringWriter());
 }
@@ -2183,23 +2183,23 @@ class EvoAlgorithm : Enumerator
     {
         if (nil == theCurrent)
             { theCurrent := theTarget.Length.randomString(); ^ true };
-            
+
         if (theTarget == theCurrent)
             { ^ false };
-            
+
         auto variants := Array.allocate(theVariantCount).populate:(x => theCurrent.mutate:P );
-        
+
         theCurrent := variants.sort:(a,b => a.fitnessOf:Target > b.fitnessOf:Target ).at:0;
-        
+
         ^ true
-    } 
-    
+    }
+
     reset()
     {
         theCurrent := nil
     }
-    
-    enumerable() => theTarget;                          
+
+    enumerable() => theTarget;
 }
 
 public program()
@@ -2207,11 +2207,11 @@ public program()
     var attempt := new Integer();
     EvoAlgorithm.new:Target &of:C.forEach:(current)
     {
-        console 
+        console
             .printPaddingLeft(10,"#",attempt.append(1))
             .printLine(" ",current," fitness: ",current.fitnessOf(Target))
     };
-    
+
     console.readChar()
 }
 ```
@@ -2284,7 +2284,7 @@ defmodule Log do
   def show(offspring,i) do
     IO.puts "Generation: #{i}, Offspring: #{offspring}"
   end
-  
+
   def found({target,i}) do
     IO.puts "#{target} found in #{i} iterations"
   end
@@ -2293,21 +2293,21 @@ end
 defmodule Evolution do
   # char list from A to Z; 32 is the ord value for space.
   @chars  [32 | Enum.to_list(?A..?Z)]
-  
-  def select(target) do 
+
+  def select(target) do
     (1..String.length(target)) # Creates parent for generation 0.
-      |> Enum.map(fn _-> Enum.random(@chars) end) 
+      |> Enum.map(fn _-> Enum.random(@chars) end)
       |> mutate(to_charlist(target),0)
       |> Log.found
   end
-  
+
   # w is used to denote fitness in population genetics.
-  
+
   defp mutate(parent,target,i) when target == parent, do: {parent,i}
   defp mutate(parent,target,i) do
-    w = fitness(parent,target) 
+    w = fitness(parent,target)
     prev = reproduce(target,parent,mu_rate(w))
-    
+
     # Check if the most fit member of the new gen has a greater fitness than the parent.
     if w < fitness(prev,target) do
       Log.show(prev,i)
@@ -2316,29 +2316,29 @@ defmodule Evolution do
       mutate(parent,target,i+1)
     end
   end
-  
+
   # Generate 100 offspring and select the one with the greatest fitness.
-  
+
   defp reproduce(target,parent,rate) do
     [parent | (for _ <- 1..100, do: mutation(parent,rate))]
       |> Enum.max_by(fn n -> fitness(n,target) end)
   end
-  
+
   # Calculate fitness by checking difference between parent and offspring chars.
-  
+
   defp fitness(t,r) do
     Enum.zip(t,r)
-      |> Enum.reduce(0, fn {tn,rn},sum -> abs(tn - rn) + sum end) 
+      |> Enum.reduce(0, fn {tn,rn},sum -> abs(tn - rn) + sum end)
       |> calc
   end
-  
+
   # Generate offspring based on parent.
-  
+
   defp mutation(p,r) do
     # Copy the parent chars, then check each val against the random mutation rate
     Enum.map(p, fn n -> if :rand.uniform <= r, do: Enum.random(@chars), else: n end)
   end
-  
+
   defp calc(sum),  do: 100 * :math.exp(sum/-10)
   defp mu_rate(n), do: 1   - :math.exp(-(100-n)/400)
 end
@@ -2643,32 +2643,32 @@ CONSTANT: mutation-rate 0.1
 CONSTANT: num-children 25
 CONSTANT: valid-chars
     $[ CHAR: A ... CHAR: Z >array { 32 } append ]
-    
+
 : rand-char ( -- n )
     valid-chars random ;
 
 : new-parent ( -- str )
     target length [ rand-char ] replicate >string ;
-    
+
 : fitness ( str -- n )
     target [ = ] { } 2map-as sift length ;
-    
+
 : mutate ( str rate -- str/str' )
     [ random-unit > [ drop rand-char ] when ] curry map ;
-    
+
 : next-parent ( str -- str/str' )
     dup [ mutation-rate mutate ] curry num-children 1 - swap
     replicate [ 1array ] dip append [ fitness ] supremum-by ;
-    
+
 : print-parent ( str -- )
     [ fitness pprint bl ] [ print ] bi ;
-    
+
 : main ( -- )
     0 new-parent
     [ dup target = ]
     [ next-parent dup print-parent [ 1 + ] dip ] until drop
     "Finished in %d generations." printf ;
-    
+
 MAIN: main
 ```
 
@@ -2700,7 +2700,7 @@ class Main
   static const Str target := "METHINKS IT IS LIKE A WEASEL"
   static const Int C := 100     // size of population
   static const Float p := 0.1f  // chance any char is mutated
- 
+
   // compute distance of str from target
   static Int fitness (Str str)
   {
@@ -2716,7 +2716,7 @@ class Main
   static Str mutate (Str str)
   {
     Str result := ""
-    str.size.times |Int index| 
+    str.size.times |Int index|
     {
       result += ((Float.random < p) ? randomChar() : str[index]).toChar
     }
@@ -2733,7 +2733,7 @@ class Main
   static Str[] makePopulation (Str parent)
   {
     Str[] result := [,]
-    C.times { result.add (mutate(parent)) }    
+    C.times { result.add (mutate(parent)) }
     result.sort |Str a, Str b -> Int| { fitness(a) <=> fitness(b) }
     return result
   }
@@ -2787,13 +2787,13 @@ s" METHINKS IT IS LIKE A WEASEL" sconstant target
                                        \ print the current candidate
 : .candidate                           ( n1 n2 -- n1 f)
   ." Generation " over 2 .r ." : " this-generation count type cr /target -1 [+] =
-;                                      \ test a candidate on 
+;                                      \ test a candidate on
                                        \ THE NUMBER of correct genes
-: test-candidate                       ( a -- a n) 
+: test-candidate                       ( a -- a n)
   dup target 0 >r >r                   ( a1 a2)
   begin                                ( a1 a2)
     r@                                 ( a1 a2 n)
-  while                                ( a1 a2)               
+  while                                ( a1 a2)
     over c@ over c@ =                  ( a1 a2 n)
     r> r> rot if 1+ then >r 1- >r      ( a1 a2)
     char+ swap char+ swap              ( a1+1 a2+1)
@@ -2877,62 +2877,62 @@ Generation 13: METHINKS IT IS LIKE A WEASEL
  	module evolve_routines
  !***************************************************************************************************
  	implicit none
- 	
+
  	!the target string:
  	character(len=*),parameter :: targ = 'METHINKS IT IS LIKE A WEASEL'
- 	
+
  	contains
  !***************************************************************************************************
- 	
+
  !********************************************************************
  	pure elemental function fitness(member) result(n)
  !********************************************************************
  ! The fitness function.  The lower the value, the better the match.
  ! It is zero if they are identical.
  !********************************************************************
- 	
+
  	implicit none
  	integer :: n
  	character(len=*),intent(in) :: member
- 	
+
  	integer :: i
- 	
+
  	n=0
  	do i=1,len(targ)
  		n = n + abs( ichar(targ(i:i)) - ichar(member(i:i))  )
  	end do
- 	
+
  !********************************************************************
  	end function fitness
  !********************************************************************
- 	
+
  !********************************************************************
  	pure elemental subroutine mutate(member,factor)
  !********************************************************************
  ! mutate a member of the population.
  !********************************************************************
- 	
+
  	implicit none
  	character(len=*),intent(inout) :: member   !population member
  	real,intent(in) :: factor                  !mutation factor
- 	
+
  	integer,parameter :: n_chars = 27	!number of characters in set
  	character(len=n_chars),parameter :: chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ '
- 	
+
  	real    :: rnd_val
  	integer :: i,j,n
- 	
+
  	n = len(member)
- 		
+
  	do i=1,n
  		rnd_val = rand()
- 		if (rnd_val<=factor) then   !mutate this element			
+ 		if (rnd_val<=factor) then   !mutate this element
  			rnd_val = rand()
  			j = int(rnd_val*n_chars)+1   !an integer between 1 and n_chars
  			member(i:i) = chars(j:j)
  		end if
  	end do
- 	
+
  !********************************************************************
 	end subroutine mutate
  !********************************************************************
@@ -2940,71 +2940,71 @@ Generation 13: METHINKS IT IS LIKE A WEASEL
  !***************************************************************************************************
  	end module evolve_routines
  !***************************************************************************************************
- 
+
  !***************************************************************************************************
  	program evolve
  !***************************************************************************************************
  ! The main program
  !***************************************************************************************************
  	use evolve_routines
- 	
+
  	implicit none
- 	
+
  	!Tuning parameters:
  	integer,parameter :: seed = 12345             !random number generator seed
  	integer,parameter :: max_iter = 10000         !maximum number of iterations
  	integer,parameter :: population_size = 200    !size of the population
  	real,parameter    :: factor = 0.04            ![0,1] mutation factor
  	integer,parameter :: iprint = 5               !print every iprint iterations
- 	
+
  	!local variables:
  	integer :: i,iter
  	integer,dimension(1) :: i_best
  	character(len=len(targ)),dimension(population_size) :: population
- 	
+
  	!initialize random number generator:
  	call srand(seed)
- 	
+
  	!create initial population:
  	! [the first element of the population will hold the best member]
  	population(1) = 'PACQXJB CQPWEYKSVDCIOUPKUOJY'  !initial guess
  	iter=0
- 		
+
  	write(*,'(A10,A30,A10)') 'iter','best','fitness'
  	write(*,'(I10,A30,I10)') iter,population(1),fitness(population(1))
- 		
- 	do 
- 	
+
+ 	do
+
  		iter = iter + 1 !iteration counter
- 		
+
   		!write the iteration:
  		if (mod(iter,iprint)==0) write(*,'(I10,A30,I10)') iter,population(1),fitness(population(1))
-		
+
  		!check exit conditions:
  		if ( iter>max_iter .or. fitness(population(1))==0 ) exit
- 	
+
  		!copy best member and mutate:
- 		population = population(1)	
+ 		population = population(1)
  		do i=2,population_size
- 			call mutate(population(i),factor)	
+ 			call mutate(population(i),factor)
  		end do
- 	
+
  		!select the new best population member:
  		! [the best has the lowest value]
  		i_best = minloc(fitness(population))
  		population(1) = population(i_best(1))
- 		 	
+
  	end do
- 	
+
  	!write the last iteration:
  	if (mod(iter,iprint)/=0) write(*,'(I10,A30,I10)') iter,population(1),fitness(population(1))
- 	 	
+
  	if (iter>max_iter) then
  		write(*,*) 'No solution found.'
  	else
  		write(*,*) 'Solution found.'
  	end if
- 	
+
  !***************************************************************************************************
  	end program evolve
  !***************************************************************************************************
@@ -3284,7 +3284,7 @@ import Data.Ord
 import Data.Array
 
 showNum :: (Num a, Show a) => Int -> a -> String
-showNum w = until ((>w-1).length) (' ':) . show 
+showNum w = until ((>w-1).length) (' ':) . show
 
 replace :: Int -> a -> [a] -> [a]
 replace n c ls = take (n-1) ls ++ [c] ++ drop n ls
@@ -3413,7 +3413,7 @@ procedure fitness(s)
 end
 
 procedure mutate(s)
-	#If a random number between 0 and 1 is inside the bounds of mutation randomly alter a character in the string 
+	#If a random number between 0 and 1 is inside the bounds of mutation randomly alter a character in the string
 	if (?0 <= M) then ?s := ?chars
 	return s
 end
@@ -3430,9 +3430,9 @@ procedure generation()
 		next_parent := x
 		next_fitness := xf
 	}
-	
+
 	parent := next_parent
-	
+
 	return next_fitness
 end
 
@@ -3445,13 +3445,13 @@ procedure main()
 
 	C := 50		#Population size in each generation
 	M := 0.5	#Mutation rate per individual in a generation
-	
+
 	gen := 1
 	#Until current fitness reaches a score of perfect match with the target string keep generating new populations
 	until ((current_fitness := generation()) = *target) do {
                 write(gen || " " || current_fitness || " " || parent)
                 gen +:= 1
-	} 	
+	}
 	write("At generation " || gen || " we found a string with perfect fitness at " || current_fitness || " reading: " || parent)
 end
 
@@ -3470,16 +3470,16 @@ Using sum of differences from the target for fitness, i.e. <code>0</code> is opt
 CHARSET=: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ '
 NPROG=:   100                            NB. number of progeny (C)
 MRATE=:   0.05                           NB. mutation rate
- 
+
 create  =: (?@$&$ { ])&CHARSET           NB. creates random list from charset of same shape as y
 fitness =: +/@:~:"1
 copy    =: # ,:
 mutate  =: &(>: $ ?@$ 0:)(`(,: create))} NB. adverb
 select  =: ] {~ (i. <./)@:fitness        NB. select fittest member of population
- 
+
 nextgen =: select ] , [: MRATE mutate NPROG copy ]
 while   =: conjunction def '(] , (u {:))^:(v {:)^:_ ,:'
- 
+
 evolve=: nextgen while (0 < fitness) create
 ```
 
@@ -3585,7 +3585,7 @@ public class EvoAlgo {
     }
     return retVal;
   }
-  
+
   public static void main(String[] args){
     parent = mutate(target, 1);
     int iter = 0;
@@ -3701,8 +3701,8 @@ if (!Array.prototype.map) {
 /* ------------------------------------- Generator -------------------------------------
  * Generates a fixed length gene sequence via a gene strategy object.
  * The gene strategy object must have two functions:
- *	- "create": returns create a new gene 
- *	- "mutate(existingGene)": returns mutation of an existing gene  
+ *	- "create": returns create a new gene
+ *	- "mutate(existingGene)": returns mutation of an existing gene
  */
 function Generator(length, mutationRate, geneStrategy) {
     this.size = length;
@@ -3751,10 +3751,10 @@ Population.prototype.spawn = function (parent) {
 
 /* ------------------------------------- Evolver -------------------------------------
  * Attempts to converge a population based a fitness strategy object.
- * The fitness strategy object must have three function  
+ * The fitness strategy object must have three function
  *	- "score(individual)": returns a score for an individual.
  *	- "compare(scoreA, scoreB)": return true if scoreA is better (ie more fit) then scoreB
- *	- "done( score )": return true if score is acceptable (ie we have successfully converged). 
+ *	- "done( score )": return true if score is acceptable (ie we have successfully converged).
  */
 function Evolver(size, generator, fitness) {
     this.done = false;
@@ -3815,9 +3815,9 @@ Array.prototype.zip = function (b, func) {
 };
 
 var target = "METHINKS IT IS LIKE A WEASEL", geneStrategy, fitness, target, generator, evolver, result;
-    
+
 geneStrategy = {
-    // The allowed character set (as an array) 
+    // The allowed character set (as an array)
     characterSet: "ABCDEFGHIJKLMNOPQRSTUVWXYZ ".split(""),
 
     /*
@@ -3843,7 +3843,7 @@ fitness = {
         We give one point to for each corect letter
     */
     score: function (genes) {
-        var diff = genes.zip(this.target, this.equal); // create an array of ones and zeros 
+        var diff = genes.zip(this.target, this.equal); // create an array of ones and zeros
         return diff.reduce(this.sum, 0); // Sum the array values together.
     },
     compare: function (scoreA, scoreB) {
@@ -4174,7 +4174,7 @@ end
 Module WeaselAlgorithm {
       Print "Evolutionary Algorithm"
       \\ Weasel Algorithm
-      \\ Using dynamic array, which expand if no fitness change, 
+      \\ Using dynamic array, which expand if no fitness change,
       \\ and reduce to minimum when fitness changed
       \\ Abandon strings when fitness change
       \\ Also lambda function Mutate$ change when topscore=10, to change only one character
@@ -4220,8 +4220,8 @@ Module WeaselAlgorithm {
             Print Over $(3,8), str$(topscore/28,"##0.0%"), "",$(0),f$, mut : refresh
             count+=min(gen,i)
             If topscore<28 Then loop
-      } 
-      Print 
+      }
+      Print
       Print "Results"
       Print "I found this:"; a$(i)
       Print "Total strings which evalute fitness:"; count
@@ -4283,7 +4283,7 @@ Also here we have one Mutate function which change letters using 5% probability 
 Module WeaselAlgorithm2 {
       Print "Evolutionary Algorithm"
       \\ Weasel Algorithm
-      \\ Using dynamic array, which expand if no fitness change, 
+      \\ Using dynamic array, which expand if no fitness change,
       \\ and reduce to minimum when fitness changed
       l$="ABCDEFGHIJKLMNOPQRSTUVWXYZ "
       randomstring$=lambda$ l$ ->{
@@ -4320,13 +4320,13 @@ Module WeaselAlgorithm2 {
                   If oldscore<topscore Then last=i: oldscore=topscore
             }
             If last>0 Then {
-                  f$=a$(last) : gen=30 
+                  f$=a$(last) : gen=30
             } Else gen+=50
             Print Over $(3,8), str$(topscore/28,"##0.0%"), "",$(0),f$, mut : refresh
             count+=min(gen,i)
             If topscore<28 Then loop
-      } 
-      Print 
+      }
+      Print
       Print "Results"
       Print "I found this:"; a$(last)
       Print "Total strings which evalute fitness:"; count
@@ -4399,26 +4399,26 @@ To use this code, create a folder in your MATLAB directory titled "@Evolutionary
 ```MATLAB
 %This class impliments a string that mutates to a target
 classdef EvolutionaryAlgorithm
-    
+
     properties
-        
+
         target;
         parent;
         children = {};
         validAlphabet;
-        
+
         %Constants
         numChildrenPerIteration;
         maxIterations;
         mutationRate;
-        
+
     end
-    
+
     methods
-         
+
         %Class constructor
         function family = EvolutionaryAlgorithm(target,mutationRate,numChildren,maxIterations)
-            
+
             family.validAlphabet = char([32 (65:90)]); %Space char and A-Z
             family.target = target;
             family.children = cell(numChildren,1);
@@ -4426,73 +4426,73 @@ classdef EvolutionaryAlgorithm
             family.maxIterations = maxIterations;
             family.mutationRate = mutationRate;
             initialize(family);
-            
+
         end %class constructor
-        
+
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %Helper functions and class get/set functions
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
+
         %setAlphabet() - sets the valid alphabet for the current instance
         %of the EvolutionaryAlgorithm class.
         function setAlphabet(family,alphabet)
-           
+
             if(ischar(alphabet))
                 family.validAlphabet = alphabet;
-                
+
                 %Makes change permanent
-                assignin('caller',inputname(1),family); 
+                assignin('caller',inputname(1),family);
             else
                 error 'New alphabet must be a string or character array';
-            end            
-            
+            end
+
         end
-        
+
         %setTarget() - sets the target for the current instance
         %of the EvolutionaryAlgorithm class.
         function setTarget(family,target)
-           
+
             if(ischar(target))
                 family.target = target;
-                
+
                 %Makes change permanent
-                assignin('caller',inputname(1),family); 
+                assignin('caller',inputname(1),family);
             else
                 error 'New target must be a string or character array';
-            end            
-            
+            end
+
         end
-        
+
         %setMutationRate() - sets the mutation rate for the current instance
         %of the EvolutionaryAlgorithm class.
         function setMutationRate(family,mutationRate)
-           
+
             if(isnumeric(mutationRate))
                 family.mutationRate = mutationRate;
-                
+
                 %Makes change permanent
-                assignin('caller',inputname(1),family); 
+                assignin('caller',inputname(1),family);
             else
                 error 'New mutation rate must be a double precision number';
-            end            
-            
+            end
+
         end
-        
+
         %setMaxIterations() - sets the maximum number of iterations during
         %evolution for the current instance of the EvolutionaryAlgorithm class.
         function setMaxIterations(family,maxIterations)
-           
+
             if(isnumeric(maxIterations))
                 family.maxIterations = maxIterations;
-                
+
                 %Makes change permanent
-                assignin('caller',inputname(1),family); 
+                assignin('caller',inputname(1),family);
             else
                 error 'New maximum amount of iterations must be a double precision number';
-            end            
-            
+            end
+
         end
-        
+
         %display() - overrides the built-in MATLAB display() function, to
         %display the important class variables
         function display(family)
@@ -4501,26 +4501,26 @@ classdef EvolutionaryAlgorithm
                   sprintf('Valid Alphabet: %s\n',family.validAlphabet)...
                   sprintf('Number of Children: %d\n',family.numChildrenPerIteration)...
                   sprintf('Mutation Rate [0,1]: %d\n',family.mutationRate)...
-                  sprintf('Maximum Iterations: %d\n',family.maxIterations)]);                 
+                  sprintf('Maximum Iterations: %d\n',family.maxIterations)]);
         end
-        
+
         %disp() - overrides the built-in MATLAB disp() function, to
         %display the important class variables
         function disp(family)
             display(family);
         end
-        
+
         %randAlphabetElement() - Generates a random character from the
         %valid alphabet for the current instance of the class.
         function elements = randAlphabetElements(family,numChars)
-        
+
             %Sample the valid alphabet randomly from the uniform
             %distribution
             N = length(family.validAlphabet);
             choices = ceil(N*rand(1,numChars));
-            
+
             elements = family.validAlphabet(choices);
-            
+
         end
 
         %initialize() - Sets the parent to a random string of length equal
@@ -4529,82 +4529,82 @@ classdef EvolutionaryAlgorithm
 
             family.parent = randAlphabetElements(family,length(family.target));
             parent = family.parent;
-            
+
             %Makes changes to the instance of EvolutionaryAlgorithm permanent
-            assignin('caller',inputname(1),family); 
-                        
+            assignin('caller',inputname(1),family);
+
         end %initialize
-        
+
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %Functions required by task specification
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
+
         %mutate() - generates children from the parent and mutates them
         function mutate(family)
-            
+
             sizeParent = length(family.parent);
-            
+
             %Generate mutatant children sequentially
             for child = (1:family.numChildrenPerIteration)
-                
+
                 parentCopy = family.parent;
-                
-                for charIndex = (1:sizeParent) 
+
+                for charIndex = (1:sizeParent)
                     if (rand(1) < family.mutationRate)
                         parentCopy(charIndex) = randAlphabetElements(family,1);
                     end
                 end
-                        
+
                 family.children{child} = parentCopy;
-                
+
             end
-            
+
             %Makes changes to the instance of EvolutionaryAlgorithm permanent
-            assignin('caller',inputname(1),family);  
-            
+            assignin('caller',inputname(1),family);
+
         end %mutate
-        
+
         %fitness() - Computes the Hamming distance between the target
         %string and the string input as the familyMember argument
         function theFitness = fitness(family,familyMember)
-            
+
             if not(ischar(familyMember))
                 error 'The second argument must be a string';
             end
-            
+
             theFitness = sum(family.target == familyMember);
         end
-                
-        %evolve() - evolves the family until the target is reached or it 
-        %exceeds the maximum amount of iterations        
+
+        %evolve() - evolves the family until the target is reached or it
+        %exceeds the maximum amount of iterations
         function [iteration,mostFitFitness] = evolve(family)
-            
+
             iteration = 0;
             mostFitFitness = 0;
             targetFitness = fitness(family,family.target);
-            
+
             disp(['Target fitness is ' num2str(targetFitness)]);
-            
+
             while (mostFitFitness < targetFitness) && (iteration < family.maxIterations)
-                
+
                 iteration = iteration + 1;
-                
+
                 mutate(family);
-                
-                parentFitness = fitness(family,family.parent);                
+
+                parentFitness = fitness(family,family.parent);
                 mostFit = family.parent;
                 mostFitFitness = parentFitness;
-                
+
                 for child = (1:family.numChildrenPerIteration)
-                   
+
                     childFitness = fitness(family,family.children{child});
                     if childFitness > mostFitFitness
                         mostFit = family.children{child};
                         mostFitFitness = childFitness;
                     end
-                    
-                end               
-                
+
+                end
+
                 family.parent = mostFit;
                 disp([num2str(iteration) ': ' mostFit ' - Fitness: ' num2str(mostFitFitness)]);
 
@@ -4612,9 +4612,9 @@ classdef EvolutionaryAlgorithm
 
             %Makes changes to the instance of EvolutionaryAlgorithm permanent
             assignin('caller',inputname(1),family);
-            
+
         end %evolve
-        
+
     end %methods
 end %classdef
 ```
@@ -4654,7 +4654,7 @@ Target fitness is 28
 
 
 
-###  Genetic Algorithm Example 
+###  Genetic Algorithm Example
 
 This solution uses a subset of evolutionary programming called the Genetic Algorithm. It is very similar to the basic evolutionary algorithm, but instead of just using mutations it also makes use of other genetic operators. The algorithm begins by importing the target text (in this case 'METHINKS IT IS LIKE A WEASEL') and then the algorithm performs genetic operations until the target string is obtained or the maximum number of iterations is reached (which will never happen with the given target string). The algorithm first measures how fit each potential answer is, and then selects strings to perform operations on. The selected answers go through the crossover stage where their data is split and recombined into new potential answers. Then a chance for the answer to mutate slightly occurs and the algorithm repeats itself.
 
@@ -4675,7 +4675,7 @@ target  = 'METHINKS IT IS LIKE A WEASEL';
 % *Can Be Any String With Any Values and Any Length!*
 % but for this example we use 'METHINKS IT IS LIKE A WEASEL'
 
-%% Parameters                    
+%% Parameters
 popSize = 1000;                                 % Population Size (100-10000 generally produce good results)
 genome  = length(target);                       % Genome Size
 mutRate = .01;                                  % Mutation Rate (5%-25% produce good results)
@@ -4694,27 +4694,27 @@ crossover = 1;                                  % 0: Uniform crossover
 Pop = round(rand(popSize,genome)*(MaxVal-1)+1); % Creates Population With Corrected Genome Length
 
 for Gen = 1:1e6                                 % A Very Large Number Was Chosen, But Shouldn't Be Needed
-    
+
     %% Fitness
-    
+
     % The fitness function starts by converting the characters into integers and then
-    % subtracting each element of each member of the population from each element of 
-    % the target string. The function then takes the absolute value of 
+    % subtracting each element of each member of the population from each element of
+    % the target string. The function then takes the absolute value of
     % the differences and sums each row and stores the function as a mx1 matrix.
-    
-    F = sum(abs(bsxfun(@minus,Pop,ideal)),2);       
-    
-     
-    
+
+    F = sum(abs(bsxfun(@minus,Pop,ideal)),2);
+
+
+
     % Finding Best Members for Score Keeping and Printing Reasons
     [current,currentGenome] = min(F);   % current is the minimum value of the fitness array F
                                         % currentGenome is the index of that value in the F array
-    
+
     % Stores New Best Values and Prints New Best Scores
     if current < best
         best = current;
         bestGenome = Pop(currentGenome,:); % Uses that index to find best value
-        
+
         fprintf('Gen: %d  |  Fitness: %d  |  ',Gen, best);  % Formatted printing of generation and fitness
         disp(char(bestGenome));                             % Best genome so far
     elseif best == 0
@@ -4722,29 +4722,29 @@ for Gen = 1:1e6                                 % A Very Large Number Was Chosen
     end
 
     %% Selection
-    
+
     % TOURNAMENT
     if selection == 0
     T = round(rand(2*popSize,S)*(popSize-1)+1);                     % Tournaments
-    [~,idx] = min(F(T),[],2);                                       % Index to Determine Winners         
+    [~,idx] = min(F(T),[],2);                                       % Index to Determine Winners
     W = T(sub2ind(size(T),(1:2*popSize)',idx));                     % Winners
-    
+
     % 50% TRUNCATION
     elseif selection == 1
     [~,V] = sort(F,'descend');                                      % Sort Fitness in Ascending Order
     V = V(popSize/2+1:end);                                         % Winner Pool
-    W = V(round(rand(2*popSize,1)*(popSize/2-1)+1))';               % Winners    
+    W = V(round(rand(2*popSize,1)*(popSize/2-1)+1))';               % Winners
     end
-    
+
     %% Crossover
-    
+
     % UNIFORM CROSSOVER
     if crossover == 0
     idx = logical(round(rand(size(Pop))));                          % Index of Genome from Winner 2
     Pop2 = Pop(W(1:2:end),:);                                       % Set Pop2 = Pop Winners 1
     P2A = Pop(W(2:2:end),:);                                        % Assemble Pop2 Winners 2
     Pop2(idx) = P2A(idx);                                           % Combine Winners 1 and 2
-    
+
     % 1-POINT CROSSOVER
     elseif crossover == 1
     Pop2 = Pop(W(1:2:end),:);                                       % New Population From Pop 1 Winners
@@ -4752,7 +4752,7 @@ for Gen = 1:1e6                                 % A Very Large Number Was Chosen
     Ref = ones(popSize,1)*(1:genome);                               % The Reference Matrix
     idx = (round(rand(popSize,1)*(genome-1)+1)*ones(1,genome))>Ref; % Logical Indexing
     Pop2(idx) = P2A(idx);                                           % Recombine Both Parts of Winners
-    
+
     % 2-POINT CROSSOVER
     elseif crossover == 2
     Pop2 = Pop(W(1:2:end),:);                                       % New Pop is Winners of old Pop
@@ -4762,13 +4762,13 @@ for Gen = 1:1e6                                 % A Very Large Number Was Chosen
     idx = CP(:,1)*ones(1,genome)<Ref&CP(:,2)*ones(1,genome)>Ref;    % Index
     Pop2(idx)=P2A(idx);                                             % Recombine Winners
     end
-    %% Mutation 
+    %% Mutation
     idx = rand(size(Pop2))<mutRate;                                 % Index of Mutations
     Pop2(idx) = round(rand([1,sum(sum(idx))])*(MaxVal-1)+1);        % Mutated Value
-    
+
     %% Reset Poplulations
-    Pop = Pop2;                                                   
-   
+    Pop = Pop2;
+
 end
 
 toc % Ends timer and prints elapsed time
@@ -4898,7 +4898,7 @@ bundle Default {
     perfectFitness : static : Int;
     parent : static : String ;
     rand : static : Float;
-      
+
     function : Init() ~ Nil {
       target := "METHINKS IT IS LIKE A WEASEL";
       possibilities := "ABCDEFGHIJKLMNOPQRSTUVWXYZ "->ToCharArray();
@@ -4906,7 +4906,7 @@ bundle Default {
       minMutateRate := 0.09;
       perfectFitness := target->Size();
     }
-    
+
     function : fitness(trial : String) ~ Int {
         retVal := 0;
 
@@ -4915,68 +4915,68 @@ bundle Default {
             retVal += 1;
           };
         };
-          
+
         return retVal;
       }
-      
+
       function : newMutateRate() ~ Float {
         x : Float := perfectFitness - fitness(parent);
         y : Float := perfectFitness->As(Float) * (1.01 - minMutateRate);
-        
+
          return x / y;
       }
-      
+
       function : mutate(parent : String, rate : Float) ~ String {
         retVal := "";
-        
+
         each(i : parent) {
           rand := Float->Random();
-          if(rand <= rate) {        
+          if(rand <= rate) {
             rand *= 1000.0;
             intRand := rand->As(Int);
             index : Int := intRand % possibilities->Size();
             retVal->Append(possibilities[index]);
           }
-          else {    
+          else {
             retVal->Append(parent->Get(i));
           };
       };
-      
+
         return retVal;
       }
-      
+
       function : Main(args : String[]) ~ Nil {
         Init();
         parent := mutate(target, 1.0);
-        
+
         iter := 0;
         while(target->Equals(parent) <> true) {
           rate := newMutateRate();
           iter += 1;
-          
+
           if(iter % 100 = 0){
             IO.Console->Instance()->Print(iter)->Print(": ")->PrintLine(parent);
           };
-          
+
           bestSpawn : String;
           bestFit := 0;
-  
+
           for(i := 0; i < C; i += 1;) {
             spawn := mutate(parent, rate);
             fitness := fitness(spawn);
-          
+
             if(fitness > bestFit) {
               bestSpawn := spawn;
               bestFit := fitness;
             };
           };
-  
+
           if(bestFit > fitness(parent)) {
             parent := bestSpawn;
-          };  
+          };
         };
         parent->PrintLine();
-      }  
+      }
     }
   }
 }
@@ -5114,7 +5114,7 @@ while( !all(parent == target) )
     printgen(parent, target, i);
   endif
 endwhile
-disp(parent'); 
+disp(parent');
 
 ```
 
@@ -5127,21 +5127,21 @@ disp(parent');
 ```oforth
 200 Constant new: C
   5 Constant new: RATE
- 
+
 : randChar  // -- c
    27 rand dup 27 == ifTrue: [ drop ' ' ] else: [ 'A' + 1- ] ;
 
-: fitness(a b -- n) 
+: fitness(a b -- n)
    a b zipWith(#==) sum ;
 
-: mutate(s -- s')  
+: mutate(s -- s')
    s map(#[ 100 rand RATE <= ifTrue: [ drop randChar ] ]) charsAsString ;
 
  : evolve(target)
 | parent |
    ListBuffer init(target size, #randChar) charsAsString ->parent
- 
-   1 while ( parent target <> ) [ 
+
+   1 while ( parent target <> ) [
       ListBuffer init(C, #[ parent mutate ]) dup add(parent)
       maxFor(#[ target fitness ]) dup ->parent . dup println 1+
       ] drop ;
@@ -5197,7 +5197,7 @@ ok
 
 ## OoRexx
 
-Run with Open Object Rexx 4.1.0 by IBM Corporation 1995,2004 Rexx LA 2005-2010. Host OS: Microsoft Windows 7. 
+Run with Open Object Rexx 4.1.0 by IBM Corporation 1995,2004 Rexx LA 2005-2010. Host OS: Microsoft Windows 7.
 
 ```oorexx
 
@@ -5357,7 +5357,7 @@ declare
   Target = "METHINKS IT IS LIKE A WEASEL"
   C = 100
   MutateRate = 5 %% percent
- 
+
   proc {Main}
      X0 = {MakeN {Length Target} RandomChar}
   in
@@ -5366,13 +5366,13 @@ declare
         if Xi == Target then {Break} end
      end
   end
- 
+
   fun {Evolve Xi}
      Copies = {MakeN C fun {$} {Mutate Xi} end}
   in
      {FoldL Copies MaxByFitness Xi}
   end
- 
+
   fun {Mutate Xs}
      {Map Xs
       fun {$ X}
@@ -5381,33 +5381,33 @@ declare
          end
       end}
   end
- 
+
   fun {MaxByFitness A B}
-     if {Fitness B} > {Fitness A} then B else A end 
+     if {Fitness B} > {Fitness A} then B else A end
   end
- 
+
   fun {Fitness Candidate}
      {Length {Filter {List.zip Candidate Target Value.'=='} Id}}
   end
- 
+
   Alphabet = & |{List.number &A &Z 1}
   fun {RandomChar}
      I = {OS.rand} mod {Length Alphabet} + 1
   in
      {Nth Alphabet I}
   end
- 
+
   %% General purpose helpers
- 
+
   fun {Id X} X end
- 
+
   fun {MakeN N F}
      Xs = {List.make N}
   in
      {ForAll Xs F}
      Xs
   end
- 
+
   fun lazy {Iterate F X}
      X|{Iterate F {F X}}
   end
@@ -5680,11 +5680,11 @@ constant target = "METHINKS IT IS LIKE A WEASEL",
          AZS    = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ",
          C = 5000,  -- children in each generation
          P = 15     -- probability of mutation (1 in 15)
- 
+
 function fitness(string sample, string target)
     return sum(sq_eq(sample,target))
 end function
- 
+
 function mutate(string s, integer n)
     for i=1 to length(s) do
         if rand(n)=1 then
@@ -5693,7 +5693,7 @@ function mutate(string s, integer n)
     end for
     return s
 end function
- 
+
 string parent = mutate(target,1) -- (mutate with 100% probability)
 sequence samples = repeat(0,C)
 integer gen = 0, best, fit, best_fit = fitness(parent,target)
@@ -5883,7 +5883,7 @@ string mutate(string data, int rate)
     array(int) alphabet=(array(int))chars;
     multiset index = (multiset)enumerate(sizeof(data));
     while(rate)
-    {  
+    {
         int pos = random(index);
         data[pos]=random(alphabet);
         rate--;
@@ -5910,11 +5910,11 @@ void main()
     int count;
     write(" %5d: %s\n", count, parent);
     while (parent != target)
-    {  
+    {
         string child = mutate(parent, 2);
         count++;
         if (fitness(child, target) > fitness(parent, target))
-        {  
+        {
             write(" %5d: %s\n", count, child);
             parent = child;
         }
@@ -5971,7 +5971,7 @@ actor Main
   let _min_mutate_rate: F64 = 0.09
   let _perfect_fitness: USize = _target.size()
   var _parent: String = ""
-  
+
   new create(env: Env) =>
     _env = env
     _parent = mutate(_target, 1.0)
@@ -6240,7 +6240,7 @@ Output:
 172 :1 - METHINKS IT I  LIKE A WEASEL
 173 :0 - METHINKS IT IS LIKE A WEASEL
 % 810,429 inferences, 0.125 CPU in 0.190 seconds (66% CPU, 6493780 Lips)
-true 
+true
 ```
 
 
@@ -6254,11 +6254,11 @@ Define.s target$ = "METHINKS IT IS LIKE A WEASEL"
 Define.s charSet$ = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
 
 Procedure.i fitness(Array aspirant.c(1), Array target.c(1))
-  Protected i, len, fit 
+  Protected i, len, fit
   len = ArraySize(aspirant())
   For i = 0 To len
     If aspirant(i) = target(i): fit +1: EndIf
-  Next 
+  Next
   ProcedureReturn fit
 EndProcedure
 
@@ -6269,20 +6269,20 @@ Procedure mutatae(Array parent.c(1), Array child.c(1), Array charSetA.c(1), rate
   For i = 0 To L
     If Random(100) < rate
       child(i) = charSetA(Random(maxC))
-    Else 
+    Else
       child(i) = parent(i)
-    EndIf   
+    EndIf
   Next
 EndProcedure
 
 Procedure.s cArray2string(Array A.c(1))
   Protected S.s, len
-  len = ArraySize(A())+1 : S = Space(len) 
+  len = ArraySize(A())+1 : S = Space(len)
   CopyMemory(@A(0), @S, len * SizeOf(Character))
   ProcedureReturn S
 EndProcedure
 
-Define mutationRate, maxChar, target_len, i, maxfit, gen, fit, bestfit 
+Define mutationRate, maxChar, target_len, i, maxfit, gen, fit, bestfit
 Dim targetA.c(Len(target$) - 1)
 CopyMemory(@target$, @targetA(0), StringByteLength(target$))
 
@@ -6313,11 +6313,11 @@ While bestfit <> maxfit
     fit = fitness (child(), targetA())
     If fit > bestfit
       bestfit = fit: CopyArray(child(), Bestchild())
-    EndIf   
+    EndIf
   Next
   CopyArray(Bestchild(), parent())
-  PrintN(Str(gen) + ": " + cArray2string(parent()) + ": Fitness= " + Str(bestfit) + "/" + Str(maxfit)) 
-Wend 
+  PrintN(Str(gen) + ": " + cArray2string(parent()) + ": Fitness= " + Str(bestfit) + "/" + Str(maxfit))
+Wend
 
 PrintN("Press any key to exit"): Repeat: Until Inkey() <> ""
 ```
@@ -6331,26 +6331,26 @@ Using lists instead of strings for easier manipulation, and a mutation rate that
 ```python
 from string import letters
 from random import choice, random
- 
+
 target  = list("METHINKS IT IS LIKE A WEASEL")
 charset = letters + ' '
 parent  = [choice(charset) for _ in range(len(target))]
 minmutaterate  = .09
 C = range(100)
- 
+
 perfectfitness = float(len(target))
-    
+
 def fitness(trial):
     'Sum of matching chars by position'
     return sum(t==h for t,h in zip(trial, target))
- 
+
 def mutaterate():
     'Less mutation the closer the fit of the parent'
     return 1-((perfectfitness - fitness(parent)) / perfectfitness * (1 - minmutaterate))
- 
+
 def mutate(parent, rate):
     return [(ch if random() <= rate else choice(charset)) for ch in parent]
- 
+
 def que():
     '(from the favourite saying of Manuel in Fawlty Towers)'
     print ("#%-4i, fitness: %4.1f%%, '%s'" %
@@ -6362,7 +6362,7 @@ def mate(a, b):
         place = choice(xrange(len(target)))
     else:
         return a, b
-    
+
     return a, b, a[:place] + b[place:], b[:place] + a[place:]
 
 iterations = 0
@@ -6482,12 +6482,12 @@ output:
 
 ```txt
 
-  0 0.00 DQQQXRAGRNSOHYHWHHFGIIEBFVOY 
- 20 0.36 MQQQXBAS TTOHSHLHKF I ABFSOY 
- 40 0.71 MQTHINKS TTXHSHLIKE A WBFSEY 
- 60 0.82 METHINKS IT HSHLIKE A WBFSEY 
- 80 0.93 METHINKS IT HS LIKE A WEFSEL 
- 99 1.00 METHINKS IT IS LIKE A WEASEL 
+  0 0.00 DQQQXRAGRNSOHYHWHHFGIIEBFVOY
+ 20 0.36 MQQQXBAS TTOHSHLHKF I ABFSOY
+ 40 0.71 MQTHINKS TTXHSHLIKE A WBFSEY
+ 60 0.82 METHINKS IT HSHLIKE A WBFSEY
+ 80 0.93 METHINKS IT HS LIKE A WEFSEL
+ 99 1.00 METHINKS IT IS LIKE A WEASEL
 
 ```
 
@@ -6542,8 +6542,8 @@ output:
 
 ```txt
 
-YEHWROTERTMEZGMZ DMPYD ZCNKY 
-... 
+YEHWROTERTMEZGMZ DMPYD ZCNKY
+...
 METHINKS IT IS LIKE A WEASEL
 
 ```
@@ -6607,9 +6607,9 @@ This REXX version:
 ::*   allows random seed for repeatability of runs
 ::*   allows mutation rate to be expressed as a percentage (%)
 ::*   echoes specification(s) and target string
-::*   columnar alignment of output 
+::*   columnar alignment of output
 ::*   optimized for speed (only one random number/mutation)
-::*   supports an alphabet with lowercase letters and other letters and/or punctuation. 
+::*   supports an alphabet with lowercase letters and other letters and/or punctuation.
 
 ```rexx
 /*REXX program  demonstrates  an  evolutionary algorithm  (by using mutation).          */
@@ -6647,7 +6647,7 @@ mutate:  parse arg x,rate;  $=                   /*set  X  to 1st argument, RATE
          return $
 ```
 
-'''output'''   when using the following input:   <tt> 20   4%   11 </tt> 
+'''output'''   when using the following input:   <tt> 20   4%   11 </tt>
 
 ```txt
 
@@ -6688,7 +6688,7 @@ METHINKS IT IS LIKE A WEASEL        28        170
 ===optimized, stemmed arrays===
 This REXX version uses stemmed arrays for the character-by-character comparison   ['''T.n''']   as well as
 
-generating a random character   ['''@.n''']   during mutation,   thus making it slightly faster,   especially for a 
+generating a random character   ['''@.n''']   during mutation,   thus making it slightly faster,   especially for a
 
 longer string and/or a low mutation rate.
 
@@ -6754,7 +6754,7 @@ target = "METHINKS IT IS LIKE A WEASEL"
 parent = "IU RFSGJABGOLYWF XSMFXNIABKT"
 num = 0
 mutationrate = 0.5
-children = len(target) 
+children = len(target)
 child = list(children)
 while parent != target
         bestfitness = 0
@@ -6762,18 +6762,18 @@ while parent != target
         for index = 1 to children
              child[index] = mutate(parent, mutationrate)
              fitness = fitness(target, child[index])
-             if fitness > bestfitness 
+             if fitness > bestfitness
                 bestfitness = fitness
                 bestindex = index
              ok
-        next 
+        next
         if bestindex > 0
            parent = child[bestindex]
            num = num + 1
            see "" + num + ": " + parent + nl
         ok
-end 
- 
+end
+
 func fitness(text, ref)
        f = 0
        for i = 1 to len(text)
@@ -6782,7 +6782,7 @@ func fitness(text, ref)
             ok
        next
        return (f / len(text))
- 
+
 func mutate(text, rate)
         rnd = randomf()
         if rate > rnd
@@ -7260,7 +7260,7 @@ evolve(0,initial)
 
 ;; return a random character in given range
 (define (random-char)
-  (string-ref "ABCDEFGHIJKLMNOPQRSTUVWXYZ " 
+  (string-ref "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
               (random-integer 27)))
 
 ;; compute distance of given string from target
@@ -7272,13 +7272,13 @@ evolve(0,initial)
 
 ;; mutate given parent string, returning a new string
 (define (mutate str)
-  (string-map (lambda (c) 
+  (string-map (lambda (c)
                 (if (< (random-real) p)
                   (random-char)
                   c))
               str))
 
-;; create a population by mutating parent, 
+;; create a population by mutating parent,
 ;; returning a list of variations
 (define (make-population parent)
   (do ((pop '() (cons (mutate parent) pop)))
@@ -7368,7 +7368,7 @@ const proc: main is func
           best := unfit;
           bestIndex := index;
         end if;
-      end for; 
+      end for;
       if bestIndex <> 0 then
         parent := children[bestIndex];
       end if;
@@ -7398,12 +7398,12 @@ Fitness(target(1), current(1)) :=
 		fit[i] := true when target[i] = current[i];
 	in
 		size(fit);
-		
-Mutate(letter(0), rate(0), randRate(0), randChar(0)) := 
+
+Mutate(letter(0), rate(0), randRate(0), randChar(0)) :=
 		letter when randRate > rate
 	else
 		AllowedChars[randChar];
-        
+
 evolve(target(1), parent(1), C(0), P(0), rateRands(2), charRands(2)) :=
 	let
 		mutations[i] := Mutate(parent, P, rateRands[i], charRands[i]) foreach i within 1 ... C;
@@ -7416,8 +7416,8 @@ evolve(target(1), parent(1), C(0), P(0), rateRands(2), charRands(2)) :=
 '''C++ Driver Code:'''
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <time.h>
 #include "SL_Generated.h"
 
@@ -8386,13 +8386,13 @@ Private Sub Main()
    Dim bestindex
    Dim Index
    Dim fitness
-      
+
       Target = "METHINKS IT IS LIKE A WEASEL"
       Parent = "IU RFSGJABGOLYWF XSMFXNIABKT"
       mutation_rate = 0.5
        children = 10
       ReDim child(children)
-    
+
       Do
         bestfitness = 0
         bestindex = 0
@@ -8404,19 +8404,19 @@ Private Sub Main()
             bestindex = Index
           End If
         Next Index
- 
+
         Parent = child(bestindex)
         Debug.Print Parent
       Loop Until Parent = Target
       End
- 
-   
+
+
 End Sub
 
 Function FNmutate(Text, Rate, ref)
    Dim C As Integer
    Dim Aux As Integer
-     
+
      If Rate > Rnd(1) Then
         C = 63 + 27 * Rnd() + 1
         If C = 64 Then C = 32
@@ -8424,7 +8424,7 @@ Function FNmutate(Text, Rate, ref)
         If Mid(Text, Aux, 1) <> Mid(ref, Aux, 1) Then
             Text = Left(Text, Aux - 1) & Chr(C) & Mid(Text, Aux + 1)
         End If
-          
+
      End If
       FNmutate = Text
 End Function
@@ -8510,7 +8510,7 @@ int     I;
 B(I):= 0;               \terminate string
 ];      \Mutate
 
- 
+
 int     I, BestI, Diffs, Best, Iter;
 def     SizeOfTarget = 28;
 char    Specimen(Copies, SizeOfTarget+1);
@@ -8525,7 +8525,7 @@ ISpecimen:= Specimen;   \integer accesses pointers rather than bytes
 for I:= 0 to SizeOfTarget-1 do
         Specimen(0,I):= AlphaTbl(Ran(SizeOfAlpha));
 Specimen(0,I):= 0;      \terminate string
- 
+
 Iter:= 0;
 repeat  for I:= 1 to Copies-1 do Mutate(ISpecimen(0), ISpecimen(I));
 
@@ -8581,7 +8581,7 @@ const A2ZS = ["A".."Z"].walk().append(" ").concat();
 fcn fitness(s){ Utils.zipWith('!=,target,s).sum(0) } // bigger is worser
 fcn rnd{ A2ZS[(0).random(27)] }
 fcn mutate(s){ s.apply(fcn(c){ if((0.0).random(1) < P) rnd() else c }) }
- 
+
 parent := target.len().pump(String,rnd);  // random string of "A..Z "
 gen:=0; do{  // mutate C copies of parent and pick the fittest
    parent = (0).pump(C,List,T(Void,parent),mutate)

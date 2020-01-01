@@ -17,9 +17,9 @@ tags = []
 
 Show how to create a user-defined exception   and   show how to catch an exception raised from several nested calls away.
 
-:#   Create two user-defined exceptions,   '''U0'''   and   '''U1'''. 
+:#   Create two user-defined exceptions,   '''U0'''   and   '''U1'''.
 :#   Have function   '''foo'''   call function   '''bar'''   twice.
-:#   Have function   '''bar'''   call function   '''baz'''. 
+:#   Have function   '''bar'''   call function   '''baz'''.
 :#   Arrange for function   '''baz'''   to raise, or throw exception   '''U0'''   on its first call, then exception   '''U1'''   on its second.
 :#   Function   '''foo'''   should catch only exception   '''U0''',   not   '''U1'''.
 
@@ -117,8 +117,8 @@ raised EXCEPTIONS_FROM_NESTED_CALLS.U1 : exceptions_from_nested_calls.adb:13
 
 ```
 
-An unhandled exception leads to termination of the corresponding [[task]]. 
-When the task is the main task of the program as in the example, the whole program is terminated. In the example the exception back tracing message is compiler-specific 
+An unhandled exception leads to termination of the corresponding [[task]].
+When the task is the main task of the program as in the example, the whole program is terminated. In the example the exception back tracing message is compiler-specific
 (in this case it is [[GNAT]] and further depends on the compiler options.
 
 
@@ -188,8 +188,8 @@ Exception U0 is caught, exception U1 is caught and re-thrown.  Program execution
 {{works with|ALGOL 68|Standard - no extensions to language used}}
 {{works with|ALGOL 68G|Any - tested with release mk15-0.8b.fc9.i386}}
 {{works with|ELLA ALGOL 68|Any (with appropriate job cards) - tested with release 1.8.8d.fc9.i386}}
-The following example follows the method used by ALGOL 68 for handling events 
-in the language's ''transput'' prelude.   Note that in the ''transput'', then exception 
+The following example follows the method used by ALGOL 68 for handling events
+in the language's ''transput'' prelude.   Note that in the ''transput'', then exception
 is effectively bound to the '''file''' handle, hence different '''file''' events can be caught
 by event handler associated to that particular '''file'''.  Similarly the following example
 has bound two unique exceptions - ''u0'' & ''u1'' - to each unique instance of '''object'''.
@@ -265,18 +265,18 @@ OBJ Exception not caught - stop
 ```
 
 Note: when an event occurs there are three possible responses.
-# return '''false''' - in which case the default action takes place. 
+# return '''false''' - in which case the default action takes place.
 # ''mend'' the '''object''' and return '''true''' - date is ''mended'' and the program can continue from the point the event was raised.
 # jump to an appropriately named ''label'' - effectively abandoning the offending section of code.
 
-In the case of parallel processing, if the ''label'' is outside of the 
-'''par''' clause, then all parallel the threads are terminated and the 
+In the case of parallel processing, if the ''label'' is outside of the
+'''par''' clause, then all parallel the threads are terminated and the
 program continues in the parent thread. <!-- example needed -->
 
 ## AutoHotkey
 
 
-###  True exceptions 
+###  True exceptions
 
 {{works with|AutoHotkey_L}}
 {{incorrect|Autohotkey|All calls to bar should be equivalent , with test on returned exception}}
@@ -319,13 +319,13 @@ Error:  Second Exception
 	019: calls := 0
 	001: U0 := Exception("First Exception")
 --->	002: U1 := Exception("Second Exception")
-	004: foo()  
+	004: foo()
 	006: {
 	007: Try
-	008: bar()  
+	008: bar()
 	009: Catch,e
 	010: MsgBox,"An exception was raised: " e.Message
-	011: bar()  
+	011: bar()
 
 The thread has exited.
 ```
@@ -333,8 +333,8 @@ The thread has exited.
 
 === ErrorLevel-based exceptions ===
 [[AutoHotkey_Basic]] has very simple support for error tracking.
-The global ErrorLevel keeps track of the last error. 
-Here is one way to keep track of nested errors: 
+The global ErrorLevel keeps track of the last error.
+Here is one way to keep track of nested errors:
 
 ```AutoHotkey
 foo()
@@ -379,21 +379,21 @@ baz(i)
       REM Allocate error numbers:
       U0& = 123
       U1& = 124
-      
+
       PROCfoo
       END
-      
+
       DEF PROCfoo
       ON ERROR LOCAL IF ERR = U0& THEN PRINT "Exception U0 caught in foo" ELSE \
       \              RESTORE ERROR : ERROR ERR, REPORT$
       PROCbar
       PROCbar
       ENDPROC
-      
+
       DEF PROCbar
       PROCbaz
       ENDPROC
-      
+
       DEF PROCbaz
       PRIVATE called%
       called% += 1
@@ -419,7 +419,7 @@ Exception U1 thrown
 
 
 C doesn't have an exception handling mechanism, so we have to
-decide what we want from an exception. 
+decide what we want from an exception.
 
 1. Return from a function with an error added to exception context.
 2. Detect that a exception was thrown by checking the context after a function call.
@@ -434,8 +434,8 @@ ideas for their own code.
 U0 and U1 are boring for debugging purposes. Added something to help with that.
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct exception {
@@ -578,28 +578,28 @@ Bar door is closed.
 
 ## C++
 
-First exception will be caught and message will be displayed, 
-second will be caught by the default exception handler, 
-which as required by the C++ Standard, will call terminate(), 
+First exception will be caught and message will be displayed,
+second will be caught by the default exception handler,
+which as required by the C++ Standard, will call terminate(),
 aborting the task, typically with an error message.
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 class U0 {};
 class U1 {};
- 
+
 void baz(int i)
 {
     if (!i) throw U0();
     else throw U1();
 }
 void bar(int i) { baz(i); }
- 
+
 void foo()
 {
     for (int i = 0; i < 2; i++)
-    {   
+    {
         try {
             bar(i);
         } catch(U0 e) {
@@ -607,7 +607,7 @@ void foo()
         }
     }
 }
- 
+
 int main() {
     foo();
     std::cout<< "Should never get here!\n";
@@ -695,9 +695,9 @@ Unhandled Exception: Exceptions+U1: Exception of type 'Exceptions+U1' was thrown
 
 (defn foo []
   (dotimes [x 2]
-    (try 
+    (try
       (bar x)
-      (catch clojure.lang.ExceptionInfo e 
+      (catch clojure.lang.ExceptionInfo e
         (if (= e U0)
           (println "foo caught U0")
           (throw e))))))
@@ -766,13 +766,13 @@ foo: Caught: Condition USER-CONDITION-1 was signalled.
 ```
 
 
-At this point, the debugger (if any) is invoked 
+At this point, the debugger (if any) is invoked
 with the unhandled condition of type USER-CONDITION-2.
 
 
 ## D
 
-First exception will be caught and message will be displayed, 
+First exception will be caught and message will be displayed,
 second will be caught by default exception handler.
 
 ```d
@@ -1005,7 +1005,7 @@ Stack trace: ...
 
 
 (foo) →
-    "U0 raised"     catched    
+    "U0 raised"     catched
     👓 error: U1 not catched
 
 ```
@@ -1156,18 +1156,18 @@ ELENA 4.1 :
 
 ```elena
 import extensions;
- 
+
 class U0 : Exception;
- 
+
 class U1 : Exception;
- 
+
 singleton Exceptions
 {
     static int i;
- 
+
     bar()
         <= baz();
- 
+
     baz()
     {
         if (i == 0)
@@ -1179,7 +1179,7 @@ singleton Exceptions
             U1.new().raise()
         }
     }
- 
+
     foo()
     {
         for(i := 0, i < 2, i += 1)
@@ -1193,9 +1193,9 @@ singleton Exceptions
                 console.printLine("U0 Caught")
             }
         }
-    }    
+    }
 }
- 
+
 public program()
 {
     Exceptions.foo()
@@ -1239,9 +1239,9 @@ defmodule ExceptionsTest do
       end
     end)
   end
-  
+
   def bar(i), do: baz(i)
-  
+
   def baz(0), do: raise U0
   def baz(1), do: raise U1
 end
@@ -1386,9 +1386,9 @@ class Main
   Void baz ()
   {
     bazCalls += 1
-    if (bazCalls == 1) 
+    if (bazCalls == 1)
       throw U0()
-    else 
+    else
       throw U1()
   }
 
@@ -1448,8 +1448,8 @@ nestedexceptions_0::U1: U1
 ```
 
 
-The output shows the first exception is caught and handled.  
-The second exception is not handled, and results in the program finishing 
+The output shows the first exception is caught and handled.
+The second exception is not handled, and results in the program finishing
 and printing a stack trace.
 
 
@@ -1473,7 +1473,7 @@ Function errorName(ex As ErrorTypes) As String
       Return "U1"
   End Select
 End Function
-       
+
 Sub catchError(ex As ErrorTypes)
    Dim e As Integer = Err '' cache the error number
    If e = ex Then
@@ -1488,17 +1488,17 @@ Sub baz()
     err = U0
   Else
     err = U1
-  End if 
+  End if
 End Sub
-  
+
 Sub bar()
   baz
 End Sub
 
 Sub foo()
-  bar 
+  bar
   catchError(U0) '' not interested in U1, assumed non-fatal
-  bar 
+  bar
   catchError(U0)
 End Sub
 
@@ -1523,13 +1523,13 @@ Error U0, number 1000 caught
 
 Not strictly conforming to task description as foo does not directly call bar.
 
-The panic/recover mechanism of Go is missing (by design) 
-some elements of exception handling needed for this task.  
-Specifically, a function that recovers a panic cannot resume 
-execution of the remainder of the function.  
-If foo recovers a panic in the first call to bar, there is no way for it 
-to make the second call to bar.  
-The solution here is to define a wrapper, or proxy function, called try.  
+The panic/recover mechanism of Go is missing (by design)
+some elements of exception handling needed for this task.
+Specifically, a function that recovers a panic cannot resume
+execution of the remainder of the function.
+If foo recovers a panic in the first call to bar, there is no way for it
+to make the second call to bar.
+The solution here is to define a wrapper, or proxy function, called try.
 Function foo calls bar indirectly through try.
 
 ```go
@@ -1773,7 +1773,7 @@ instance Error MyError where
   strMsg _ = Other
 
 -- Throwing and catching exceptions implies that we are working in a monad. In
--- this case, we use ErrorT to support our user-defined exceptions, wrapping 
+-- this case, we use ErrorT to support our user-defined exceptions, wrapping
 -- IO to be able to report the happenings. ('lift' converts ErrorT e IO a
 -- actions into IO a actions.)
 
@@ -1784,7 +1784,7 @@ foo = do lift (putStrLn "foo")
                                  case caught of U0 -> lift (putStrLn "foo caught U0")
                                                 _  -> throwError caught)
                [U0, U1]                                      -- the two exceptions to throw
-           
+
 
 bar toThrow = do lift (putStrLn " bar")
                  baz toThrow
@@ -1819,10 +1819,10 @@ main = do result <- runErrorT foo
 
 ==Icon and {{header|Unicon}}==
 
-The following Unicon example makes use of support for exceptions found 
-in the [http://tapestry.tucson.az.us/unilib/ The Unicon Code Library].  
-<i>Since exception support is not built into Unicon, 
-but rather implemented as Unicon code, there are limitations 
+The following Unicon example makes use of support for exceptions found
+in the [http://tapestry.tucson.az.us/unilib/ The Unicon Code Library].
+<i>Since exception support is not built into Unicon,
+but rather implemented as Unicon code, there are limitations
 not found in languages that natively support exceptions.</i>
 
 
@@ -1892,7 +1892,7 @@ U1: Second exception:
 ```
 
 
-Note: it may be possible to implement exceptions in Icon; however, 
+Note: it may be possible to implement exceptions in Icon; however,
 it would require a major rework and would likely be inelegant.
 
 
@@ -1948,7 +1948,7 @@ J leaves most of the implementation of exceptions to the programmer, so:
 main=: monad define
   smoutput 'main'
   try. foo ''
-  catcht. smoutput 'main caught ',type_jthrow_ 
+  catcht. smoutput 'main caught ',type_jthrow_
   end.
 )
 
@@ -1988,10 +1988,10 @@ main caught U1
 
 ## Java
 
-Methods that may throw an exception (or that call a method 
-that may throw an exception that it does not catch) 
-must explicitly declare that they can throw such an exception 
-(or a superclass thereof), unless they are unchecked exceptions 
+Methods that may throw an exception (or that call a method
+that may throw an exception that it does not catch)
+must explicitly declare that they can throw such an exception
+(or a superclass thereof), unless they are unchecked exceptions
 (subclasses of <code>RuntimeException</code> or <code>Error</code>):
 
 ```java
@@ -2039,12 +2039,12 @@ Exception in thread "main" U1
 
 ```
 
-The first line of the output is generated from catching the U0 exception 
-in function foo. 
+The first line of the output is generated from catching the U0 exception
+in function foo.
 
-Uncaught exceptions give information showing where the exception 
-originated through the nested function calls together with the name 
-of the uncaught exception, (U1) to stderr, 
+Uncaught exceptions give information showing where the exception
+originated through the nested function calls together with the name
+of the uncaught exception, (U1) to stderr,
 then quit the running program.
 
 
@@ -2063,13 +2063,13 @@ The <code>callee.name</code> property, and the <code>catch(e if ...)</code> stat
 function U() {}
 U.prototype.toString = function(){return this.className;}
 
-function U0() { 
-    this.className = arguments.callee.name; 
+function U0() {
+    this.className = arguments.callee.name;
 }
 U0.prototype = new U();
 
 function U1() {
-    this.className = arguments.callee.name; 
+    this.className = arguments.callee.name;
 }
 U1.prototype = new U();
 
@@ -2280,7 +2280,7 @@ general: U1 (.baz)
 
 ## Lasso
 
-Lasso currently does not currently have a try mechanic — 
+Lasso currently does not currently have a try mechanic —
 but we can easily add one like so.
 
 
@@ -2288,19 +2288,19 @@ but we can easily add one like so.
 define try(exception) => {
     local(
         gb = givenblock,
-        error 
+        error
     )
     handle => {
         // Only relay error if it's not the specified exception
         if(#error) => {
             if(#error->get(2) == #exception) => {
                 stdoutnl('Handled exception: '+#error->get(2))
-            else    
+            else
                 stdoutnl('Throwing exception: '+#error->get(2))
                 fail(:#error)
             }
         }
-    } 
+    }
     protect => {
         handle_error => {
             #error = (:error_code,error_msg,error_stack)
@@ -2376,13 +2376,13 @@ function bar()
 end
 
 function foo()
-  function callbar() 
+  function callbar()
     local no_err,result = pcall(bar)
     --pcall is a protected call which catches errors.
     if not no_err then
       --If there are no errors, pcall returns true.
       if not result:match("U0") then
-        --If the error is not a U0 error, rethrow it. 
+        --If the error is not a U0 error, rethrow it.
         error(result,2)
         --2 is the distance down the call stack to send
         --the error. We want it to go back to the callbar() call.
@@ -2471,7 +2471,7 @@ function exceptionsCatchNestedCall()
 
     end
 
-    function bar(i) 
+    function bar(i)
         baz(i);
     end
 
@@ -2532,7 +2532,7 @@ namespace NestedExceptions
         Foo () : void
         {
             mutable call = 0;
-            
+
             repeat(2) {
                 try {
                     Bar(call);
@@ -2545,18 +2545,18 @@ namespace NestedExceptions
                 }
             }
         }
-        
+
         Bar (call : int) : void
         {
             Baz(call)
         }
-        
+
         Baz (call : int) : void // throw U0() on first call, U1() on second
         {
             unless (call > 0) throw U0();
             when (call > 0) throw U1();
         }
-        
+
         Main () : void
         {
             Foo()
@@ -2717,10 +2717,10 @@ Exception: U1.
 ```Oforth
 Exception Class new: U0
 Exception Class new: U1
- 
+
 : baz  ifZero: [ "First call" U0 throw ] else: [ "Second call" U1 throw ] ;
 : bar  baz ;
- 
+
 : foo
 | e |
    try: e [ 0 bar ] when: [ e isKindOf(U0) ifTrue: [ "Catched" .cr ] else: [ e throw ] ]
@@ -2910,7 +2910,7 @@ U1
 
 ## Phix
 
-Phix does not have "exception classes" as such, instead you can just throw any string (on it's own) or any integer, optionally 
+Phix does not have "exception classes" as such, instead you can just throw any string (on it's own) or any integer, optionally
 with any (deeply nested) user_data that you like. All exceptions are always caught, however rethrowing is trivial.
 
 As per the discussion for Go, I should say that "bar(); bar();" cannot work - if you catch an exception from the first call,
@@ -3084,7 +3084,7 @@ IBM0400I  ONCODE=0500  The CONDITION condition was raised
 
 ## Python
 
-There is no extra syntax to add to functions and/or methods such as ''bar'', 
+There is no extra syntax to add to functions and/or methods such as ''bar'',
 to say what exceptions they may raise or pass through them:
 
 ```python
@@ -3126,24 +3126,24 @@ U1
 
 ```
 
-The first line of the output is generated from catching the U0 exception 
-in function foo. 
+The first line of the output is generated from catching the U0 exception
+in function foo.
 
-Uncaught exceptions give information showing where the exception originated 
-through the nested function calls together with the name of the 
+Uncaught exceptions give information showing where the exception originated
+through the nested function calls together with the name of the
 uncaught exception, (U1) to stderr, then quit the running program.
 
 
 ## R
 
-The counter for the number of calls to baz is kept in 
-the global environment for simplicity, but you could hide it 
-in your own environment.  
+The counter for the number of calls to baz is kept in
+the global environment for simplicity, but you could hide it
+in your own environment.
 See ?new.env and ?get.
 
 ```r
 
-number_of_calls_to_baz <- 0     
+number_of_calls_to_baz <- 0
 
 foo <- function()
 {
@@ -3152,10 +3152,10 @@ foo <- function()
 
 bar <- function() baz()
 
-baz <- function() 
-{ 
+baz <- function()
+{
    e <- simpleError(ifelse(number_of_calls_to_baz > 0, "U1", "U0"))
-   assign("number_of_calls_to_baz", number_of_calls_to_baz + 1, envir=globalenv())   
+   assign("number_of_calls_to_baz", number_of_calls_to_baz + 1, envir=globalenv())
    stop(e)
 }
 
@@ -3207,7 +3207,7 @@ traceback()
   (if (= i 0)
       (raise (make-exn:U0 "failed 0" (current-continuation-marks)))
       (raise (make-exn:U1 "failed 1" (current-continuation-marks)))))
- 
+
 (foo)
 
 ```
@@ -3227,8 +3227,8 @@ Function foo caught exception U0
 
 While the REXX language doesn't have a ''throw'' capability ''pe se'', it does have the ability to catch exceptions (by label).
 
-This type of exception handling (in REXX) has its limitation   
-(the label is known global to the program, but not to external subroutines). 
+This type of exception handling (in REXX) has its limitation
+(the label is known global to the program, but not to external subroutines).
 
 ```rexx
 /*REXX program  creates  two exceptions and demonstrates how to  handle  (catch)  them. */
@@ -3295,8 +3295,8 @@ class U1 < StandardError; end
 foo
 ```
 
-The first call to foo causes the U0 exception. It gets rescued. 
-The second call results in a U1 exception which is not rescued, 
+The first call to foo causes the U0 exception. It gets rescued.
+The second call results in a U1 exception which is not rescued,
 so the program dumps a stacktrace and exits.
 {{out}}
 
@@ -3388,14 +3388,14 @@ object ExceptionsTest extends App {
 
 ```
 
-Exception U0 is caught, exception U1 is caught and re-thrown. 
-Program execution is terminated as the U1 exception is not caught 
+Exception U0 is caught, exception U1 is caught and re-thrown.
+Program execution is terminated as the U1 exception is not caught
 when thrown the second time.
 
 
 ## Seed7
 
-When an [http://seed7.sourceforge.net/manual/errors.htm#Exceptions exception] 
+When an [http://seed7.sourceforge.net/manual/errors.htm#Exceptions exception]
 is not [http://seed7.sourceforge.net/manual/errors.htm#Handlers handled]
 the program is terminated and a [http://seed7.sourceforge.net/manual/errors.htm#Stack_trace stack trace] is written.
 
@@ -3622,7 +3622,7 @@ proc foo {} {
     set code [catch {bar} ex options]
     if {$code == 1} {
         switch -exact -- $ex {
-            U0      {puts "caught exception U0"} 
+            U0      {puts "caught exception U0"}
             default {return -options $options $ex ;# re-raise exception}
         }
     }
@@ -3702,7 +3702,7 @@ caught u0: @arg
 {{out|Run}}
 
 ```txt
-$ txr except.txr 
+$ txr except.txr
 caught u0: text0
 txr: unhandled exception of type u1:
 txr: text1
@@ -3716,14 +3716,14 @@ $ echo $?
 
 ## Ursala
 
-Foo calls bar, and bar calls baz. Normal termination of bar is bypassed 
-if baz raises an exception. 
+Foo calls bar, and bar calls baz. Normal termination of bar is bypassed
+if baz raises an exception.
 The exception is caught or not by foo.
 
 ```Ursala
 #import std
 
-baz = 
+baz =
 
 ~&?(
    ~&h?(
@@ -3735,7 +3735,7 @@ bar = :/'bar received this result from normal termination of baz:'+ baz
 
 #executable&
 
-foo = 
+foo =
 
 guard(
    :/'foo received this result from normal termination of bar:'+ bar,
@@ -3853,9 +3853,9 @@ Unhandled Exception: U1: Exception of type 'U1' was thrown.
 
 ```zkl
 class U0(Exception.Exception){fcn init{Exception.init("U0")}}
-class U1(Exception.Exception){fcn init{Exception.init("U1")}} 
+class U1(Exception.Exception){fcn init{Exception.init("U1")}}
 
-fcn foo{try{bar(U0)}catch(U0){} bar(U1)} 
+fcn foo{try{bar(U0)}catch(U0){} bar(U1)}
 fcn bar(e){baz(e)}
 fcn baz(e){throw(e)}
 foo()
@@ -3866,18 +3866,18 @@ foo()
 ```txt
 
 Stack trace for VM#1 ():
-   Cmd.baz addr:2  args(1) reg(0) 
+   Cmd.baz addr:2  args(1) reg(0)
    Cmd.bar addr:6  args(1) reg(0) R
    Cmd.foo addr:34  args(0) reg(0) R
    Cmd.__constructor@foo addr:5  args(0) reg(0) R
    startup.__constructor addr:2242  args(0) reg(1) ER
-   startup.__constructor addr:2178  args(0) reg(22) 
+   startup.__constructor addr:2178  args(0) reg(22)
 Exception thrown: U1(An Exception)
 
 ```
 
-foo catches exception U0 and ignores it. 
-It calls bar with the exception to throw. bar in turn calls baz 
-with that exception, which it throws. 
-A stack trace is printed when an uncaught exception bubbles up to the VM 
+foo catches exception U0 and ignores it.
+It calls bar with the exception to throw. bar in turn calls baz
+with that exception, which it throws.
+A stack trace is printed when an uncaught exception bubbles up to the VM
 (which handles all catchable exceptions).

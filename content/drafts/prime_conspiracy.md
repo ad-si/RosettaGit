@@ -14,27 +14,27 @@ tags = []
 
 A recent discovery, quoted from   [https://www.quantamagazine.org/20160313-mathematicians-discover-prime-conspiracy/ Quantamagazine]   (March 13, 2016):
      '' Two mathematicians have uncovered a simple, previously unnoticed property of ''
-     '' prime numbers — those numbers that are divisible only by 1 and themselves.   ''  
-     '' Prime numbers, it seems, have decided preferences about the final digits of  ''  
-     '' the primes that immediately follow them.  
+     '' prime numbers — those numbers that are divisible only by 1 and themselves.   ''
+     '' Prime numbers, it seems, have decided preferences about the final digits of  ''
+     '' the primes that immediately follow them.
 and
      '' This conspiracy among prime numbers seems, at first glance, to violate a     ''
      '' longstanding assumption in number theory:  that prime numbers behave much    ''
-     '' like random numbers. 
- 
+     '' like random numbers.
+
      ''                        ─── (original authors from Stanford University):      ''
      ''                        ─── Kannan Soundararajan  and  Robert Lemke Oliver    ''
 
 
-The task is to check this assertion, modulo 10. 
+The task is to check this assertion, modulo 10.
 
 Lets call   <big><code> i -> j </code></big>   a transition if   <big><code> i </code></big>   is the last decimal digit of a prime, and   <big><code> j </code></big>   the last decimal digit of the following prime.
 
 
 ;Task:
-Considering the first one million primes.   Count, for any pair of successive primes, the number of transitions   <big><code> i -> j </code></big>   and print them along with their relative frequency, sorted by   <big><code> i </code>.</big> 
+Considering the first one million primes.   Count, for any pair of successive primes, the number of transitions   <big><code> i -> j </code></big>   and print them along with their relative frequency, sorted by   <big><code> i </code>.</big>
 
-You can see that, for a given   <big><code> i </code>,</big>   frequencies are not evenly distributed. 
+You can see that, for a given   <big><code> i </code>,</big>   frequencies are not evenly distributed.
 
 
 ;Observation:
@@ -68,7 +68,7 @@ Do the same for one hundred million primes.
 9 → 1 count:        935 frequency: 9.35 %
 9 → 3 count:        635 frequency: 6.35 %
 9 → 7 count:        541 frequency: 5.41 %
-9 → 9 count:        379 frequency: 3.79 % 
+9 → 9 count:        379 frequency: 3.79 %
 
 ```
 
@@ -197,8 +197,8 @@ OD
 
 {{trans|C++}}
 
-```c>#include <assert.h
-
+```c
+#include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -351,8 +351,8 @@ int main() {
 ## C++
 
 
-```Cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <iostream>
 #include <cmath>
 #include <utility>
@@ -373,7 +373,7 @@ public :
    }
 
    bool operator( ) ( const std::pair<int , int> & a , const std::pair<int, int> & b ) {
-      if ( a.first != b.first ) 
+      if ( a.first != b.first )
 	 return a.first < b.first ;
       else
 	 return a.second < b.second ;
@@ -384,7 +384,7 @@ int main( ) {
    std::vector<int> primes {2} ;
    int current = 3 ;
    while ( primes.size( ) < 1000000 ) {
-      if ( isPrime( current ) ) 
+      if ( isPrime( current ) )
 	 primes.push_back( current ) ;
       current += 2 ;
    }
@@ -614,7 +614,7 @@ First 1,000,000 primes. Transitions prime % 10 -> next-prime % 10.
 	(define s (// (apply + (vector->list trans)) 100))
 	(for ((i (* m m)) (t trans))
 	#:continue (<= t 1) ;; get rid of 2,5 primes
-	(printf  " %d → %d   count: %10d frequency:   %d %%  " 
+	(printf  " %d → %d   count: %10d frequency:   %d %%  "
               (quotient i m)  (% i m) t  (// t s) )))
 
 ;; can apply to any modulo m
@@ -648,7 +648,7 @@ First 1,000,000 primes. Transitions prime % 10 -> next-prime % 10.
 9 → 1 count:      84596 frequency: 8.4596 %
 9 → 3 count:      64371 frequency: 6.4371 %
 9 → 7 count:      58130 frequency: 5.813 %
-9 → 9 count:      42843 frequency: 4.2843 % 
+9 → 9 count:      42843 frequency: 4.2843 %
 
 ```
 
@@ -671,7 +671,7 @@ defmodule Prime do
          IO.puts "#{a} → #{b} count:#{sv} frequency:#{sf} %"
        end)
   end
-  
+
   def prime(n) do
     max = n * :math.log(n * :math.log(n)) |> trunc      # from Rosser's theorem
     Enum.to_list(2..max)
@@ -771,13 +771,13 @@ IN: rosetta-code.prime-conspiracy
 
 : print-trans ( transition -- )
     t-values "%d -> %d  count: %5d  frequency: %5.2f%%\n" printf ;
-    
+
 : header ( n -- )
     "First %d primes. Transitions prime %% 10 -> next-prime %% 10.\n" printf ;
-    
+
 : main ( -- )
     1,000,000 dup header transitions [ print-trans ] each ;
-    
+
 MAIN: main
 ```
 
@@ -812,7 +812,7 @@ First 1000000 primes. Transitions prime % 10 -> next-prime % 10.
 
 ## Fortran
 
-Avoiding base ten chauvinism, here are results for bases two to thirteen. The source file relies on the [[Extensible_prime_generator]] project for its collection of primes. The bitbag file being in place, execution takes about two minutes for a hundred million primes, approaching the thirty-two bit limit. 
+Avoiding base ten chauvinism, here are results for bases two to thirteen. The source file relies on the [[Extensible_prime_generator]] project for its collection of primes. The bitbag file being in place, execution takes about two minutes for a hundred million primes, approaching the thirty-two bit limit.
 ```Fortran
       PROGRAM INHERIT	!Last digit persistence in successive prime numbers.
       USE PRIMEBAG	!Inherit this also.
@@ -861,7 +861,7 @@ Cast forth the results.
 ```
 
 
-Results: just the counts - with the total number being a power of ten, percentages are deducible by eye. Though one could add row and column percentages as a further feature. 
+Results: just the counts - with the total number being a power of ten, percentages are deducible by eye. Though one could add row and column percentages as a further feature.
 
 ```txt
 
@@ -1091,25 +1091,25 @@ For base 13
 
 
 ```freebasic
-' version 13-04-2017 
+' version 13-04-2017
 ' updated 09-08-2018 Using bit-sieve of odd numbers
-' compile with: fbc -s console  
+' compile with: fbc -s console
 ' compile with: fbc -s console -Wc -O2 ->more than 2x faster(20.2-> 8,7s)
 
 const max = 2040*1000*1000  ' enough for 100,000,000 primes
-const max2 = (max -1) \ 2 
+const max2 = (max -1) \ 2
 Dim As uByte _bit(7)
 Dim shared As uByte sieve(max2 \ 8 + 1)
 Dim shared As ULong end_digit(1 To 9, 1 To 9)
-Dim As ULong i, j, x, i1, j1, x1, c, c1  
+Dim As ULong i, j, x, i1, j1, x1, c, c1
 Dim As String frmt_str = " # " + Chr(26) + " # count:######## frequency:##.##%"
 
-' bit Mask 
+' bit Mask
 For i = 0 To 7
   _bit(i) = 1 shl i
 Next
 ' sieving
-For i = 1 To  (sqr(max) -1) / 2 
+For i = 1 To  (sqr(max) -1) / 2
   x = 2*i+1
   If (sieve(i Shr 3) And _bit(i And 7)) = 0 Then
     For j = (2*i+2)*i To max2 Step x
@@ -1132,7 +1132,7 @@ For i = 1 To max2
             For i1 = 1 To 9
                 For j1 = 1 To 9
                     x1 = end_digit(i1, j1)
-                    If x1 <> 0 Then 
+                    If x1 <> 0 Then
                          Print Using frmt_str; i1; j1; x1; (x1 / c1)
                     End If
                 Next
@@ -1142,7 +1142,7 @@ For i = 1 To max2
         End If
     End If
 Next
- 
+
 ' empty keyboard buffer
 While Inkey <> "" : Wend
 Print : Print "hit any key to end program"
@@ -1155,7 +1155,7 @@ End
 Output is shown side by side
 
 ```txt
-first 1000000 primes                       first 100000000 primes 
+first 1000000 primes                       first 100000000 primes
  1 → 1 count:   42853 frequency: 4.29%      1 → 1 count: 4623041 frequency: 4.62%
  1 → 3 count:   77475 frequency: 7.75%      1 → 3 count: 7429438 frequency: 7.43%
  1 → 7 count:   79453 frequency: 7.95%      1 → 7 count: 7504612 frequency: 7.50%
@@ -1682,7 +1682,7 @@ function isPrime (n)
     end
     return true
 end
- 
+
 -- Return table of frequencies for final digits of consecutive primes
 function primeCon (limit)
     local count, x, last, ending = 2, 3, 3
@@ -1709,7 +1709,7 @@ function primeCon (limit)
     until count == limit
     return freqList
 end
- 
+
 -- Main procedure
 local limit = 10^6
 local t = primeCon(limit)
@@ -2203,7 +2203,7 @@ getOutput <- function(transition) {
 	cat(first,"->",second,"count:", sprintf("%6d",result[transition]), "frequency:",
             sprintf("%5.2f%%\n",result[transition]*100/limit))
 }
-	
+
 while (count <= limit) {
 	count <- count + 1
 	next_prime <- nextprime(prev_prime)
@@ -2810,7 +2810,7 @@ const CNT  =0d1_000_000;
 sieve     :=Import("sieve.zkl",False,False,False).postponed_sieve;
 conspiracy:=Dictionary();
 Utils.Generator(sieve).reduce(CNT,'wrap(digit,p){
-   d:=p%10; 
+   d:=p%10;
    conspiracy.incV("%d → %d count:".fmt(digit,d));
    d
 });

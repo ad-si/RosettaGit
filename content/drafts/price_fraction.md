@@ -256,7 +256,7 @@ PriceFraction( p_Input )
 
 ## ALGOL 68
 
-{{trans|C}} - note: This specimen retains the original [[Price Fraction#C|C]] coding style. 
+{{trans|C}} - note: This specimen retains the original [[Price Fraction#C|C]] coding style.
 
 {{works with|ALGOL 68|Revision 1 - no extensions to language used}}
 
@@ -420,7 +420,7 @@ END FUNCTION
 ```bbcbasic
       PRINT FNpricefraction(0.5)
       END
-      
+
       DEF FNpricefraction(p)
       IF p < 0.06 THEN = 0.10
       IF p < 0.11 THEN = 0.18
@@ -452,7 +452,7 @@ Bracmat has no native support for floating point variables nor for the fixed poi
 
 ```bracmat
 ( ( convert
-  =   
+  =
     .         ("0.06"."0.10")
               ("0.11"."0.18")
               ("0.16"."0.26")
@@ -537,8 +537,8 @@ Bracmat has no native support for floating point variables nor for the fixed poi
 ## C
 
 
-```c>#include<stdio.h
-
+```c
+#include <stdio.h>
 
 double table[][2] = {
 	{0.06, 0.10}, {0.11, 0.18}, {0.16, 0.26}, {0.21, 0.32},
@@ -600,16 +600,16 @@ namespace ConsoleApplication1
         {
             if (inValue > 1) return 1;
 
-            double[] Splitters = new double[] { 
-                   0.00 , 0.06 , 0.11 , 0.16 , 0.21 , 
-                   0.26 , 0.31 , 0.36 , 0.41 , 0.46 , 
-                   0.51 , 0.56 , 0.61 , 0.66 , 0.71 , 
+            double[] Splitters = new double[] {
+                   0.00 , 0.06 , 0.11 , 0.16 , 0.21 ,
+                   0.26 , 0.31 , 0.36 , 0.41 , 0.46 ,
+                   0.51 , 0.56 , 0.61 , 0.66 , 0.71 ,
                    0.76 , 0.81 , 0.86 , 0.91 , 0.96 };
 
-            double[] replacements = new double[] { 
+            double[] replacements = new double[] {
                     0.10 , 0.18 , 0.26 , 0.32 , 0.38 ,
-                    0.44 , 0.50 , 0.54 , 0.58 , 0.62 , 
-                    0.66 , 0.70 , 0.74 , 0.78 , 0.82 , 
+                    0.44 , 0.50 , 0.54 , 0.58 , 0.62 ,
+                    0.66 , 0.70 , 0.74 , 0.78 , 0.82 ,
                     0.86 , 0.90 , 0.94 , 0.98 , 1.00 };
 
             for (int x = 0; x < Splitters.Length - 1; x++)
@@ -632,12 +632,12 @@ namespace ConsoleApplication1
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <cmath>
 
 int main( ) {
-   double froms[ ] = { 0.00 , 0.06 , 0.11 , 0.16 , 0.21 , 0.26 , 
+   double froms[ ] = { 0.00 , 0.06 , 0.11 , 0.16 , 0.21 , 0.26 ,
        0.31 , 0.36 , 0.41 , 0.46 , 0.51 , 0.56 , 0.61 , 0.66 ,
        0.71 , 0.76 , 0.81 , 0.86 , 0.91 , 0.96 } ;
    double tos[ ] = { 0.06 , 0.11 , 0.16 , 0.21 , 0.26 , 0.31 ,
@@ -655,7 +655,7 @@ int main( ) {
 	 return 1 ;
       }
       int n = 0 ;
-      while ( ! ( number >= froms[ n ] && number < tos[ n ] ) ) 
+      while ( ! ( number >= froms[ n ] && number < tos[ n ] ) )
 	 n++ ;
       std::cout << "-->" << replacements[ n ] << '\n' ;
       std::cout << "Enter a fractional number ( 0 to end )!\n" ;
@@ -827,7 +827,7 @@ Return nResult
 ```clojure
 (def values [10 18 26 32 38 44 50 54 58 62 66 70 74 78 82 86 90 94 98 100])
 
-(defn price [v] 
+(defn price [v]
   (format "%.2f" (double (/ (values (int (/ (- (* v 100) 1) 5))) 100))))
 ```
 
@@ -844,24 +844,24 @@ user=> (price 0.50)
 "0.62"
 user=> (let [k (map #(double (/ % 100)) (range 101))] (sort (zipmap k (map #(price %) k))))
 ([0.0 "0.10"] [0.01 "0.10"] [0.02 "0.10"] [0.03 "0.10"] [0.04 "0.10"] [0.05 "0.10"]
- [0.06 "0.18"] [0.07 "0.18"] [0.08 "0.18"] [0.09 "0.18"] [0.1 "0.18"] 
- [0.11 "0.26"] [0.12 "0.26"] [0.13 "0.26"] [0.14 "0.26"] [0.15 "0.26"] 
- [0.16 "0.32"] [0.17 "0.32"] [0.18 "0.32"] [0.19 "0.32"] [0.2 "0.32"] 
+ [0.06 "0.18"] [0.07 "0.18"] [0.08 "0.18"] [0.09 "0.18"] [0.1 "0.18"]
+ [0.11 "0.26"] [0.12 "0.26"] [0.13 "0.26"] [0.14 "0.26"] [0.15 "0.26"]
+ [0.16 "0.32"] [0.17 "0.32"] [0.18 "0.32"] [0.19 "0.32"] [0.2 "0.32"]
  [0.21 "0.38"] [0.22 "0.38"] [0.23 "0.38"] [0.24 "0.38"] [0.25 "0.38"]
  [0.26 "0.44"] [0.27 "0.44"] [0.28 "0.44"] [0.29 "0.44"] [0.3 "0.44"]
- [0.31 "0.50"] [0.32 "0.50"] [0.33 "0.50"] [0.34 "0.50"] [0.35 "0.50"] 
- [0.36 "0.54"] [0.37 "0.54"] [0.38 "0.54"] [0.39 "0.54"] [0.4 "0.54"] 
- [0.41 "0.58"] [0.42 "0.58"] [0.43 "0.58"] [0.44 "0.58"] [0.45 "0.58"] 
- [0.46 "0.62"] [0.47 "0.62"] [0.48 "0.62"] [0.49 "0.62"] [0.5 "0.62"] 
- [0.51 "0.66"] [0.52 "0.66"] [0.53 "0.66"] [0.54 "0.66"] [0.55 "0.66"] 
- [0.56 "0.70"] [0.57 "0.70"] [0.58 "0.70"] [0.59 "0.70"] [0.6 "0.70"] 
- [0.61 "0.74"] [0.62 "0.74"] [0.63 "0.74"] [0.64 "0.74"] [0.65 "0.74"] 
- [0.66 "0.78"] [0.67 "0.78"] [0.68 "0.78"] [0.69 "0.78"] [0.7 "0.78"] 
- [0.71 "0.82"] [0.72 "0.82"] [0.73 "0.82"] [0.74 "0.82"] [0.75 "0.82"] 
- [0.76 "0.86"] [0.77 "0.86"] [0.78 "0.86"] [0.79 "0.86"] [0.8 "0.86"] 
- [0.81 "0.90"] [0.82 "0.90"] [0.83 "0.90"] [0.84 "0.90"] [0.85 "0.90"] 
- [0.86 "0.94"] [0.87 "0.94"] [0.88 "0.94"] [0.89 "0.94"] [0.9 "0.94"] 
- [0.91 "0.98"] [0.92 "0.98"] [0.93 "0.98"] [0.94 "0.98"] [0.95 "0.98"] 
+ [0.31 "0.50"] [0.32 "0.50"] [0.33 "0.50"] [0.34 "0.50"] [0.35 "0.50"]
+ [0.36 "0.54"] [0.37 "0.54"] [0.38 "0.54"] [0.39 "0.54"] [0.4 "0.54"]
+ [0.41 "0.58"] [0.42 "0.58"] [0.43 "0.58"] [0.44 "0.58"] [0.45 "0.58"]
+ [0.46 "0.62"] [0.47 "0.62"] [0.48 "0.62"] [0.49 "0.62"] [0.5 "0.62"]
+ [0.51 "0.66"] [0.52 "0.66"] [0.53 "0.66"] [0.54 "0.66"] [0.55 "0.66"]
+ [0.56 "0.70"] [0.57 "0.70"] [0.58 "0.70"] [0.59 "0.70"] [0.6 "0.70"]
+ [0.61 "0.74"] [0.62 "0.74"] [0.63 "0.74"] [0.64 "0.74"] [0.65 "0.74"]
+ [0.66 "0.78"] [0.67 "0.78"] [0.68 "0.78"] [0.69 "0.78"] [0.7 "0.78"]
+ [0.71 "0.82"] [0.72 "0.82"] [0.73 "0.82"] [0.74 "0.82"] [0.75 "0.82"]
+ [0.76 "0.86"] [0.77 "0.86"] [0.78 "0.86"] [0.79 "0.86"] [0.8 "0.86"]
+ [0.81 "0.90"] [0.82 "0.90"] [0.83 "0.90"] [0.84 "0.90"] [0.85 "0.90"]
+ [0.86 "0.94"] [0.87 "0.94"] [0.88 "0.94"] [0.89 "0.94"] [0.9 "0.94"]
+ [0.91 "0.98"] [0.92 "0.98"] [0.93 "0.98"] [0.94 "0.98"] [0.95 "0.98"]
  [0.96 "1.00"] [0.97 "1.00"] [0.98 "1.00"] [0.99 "1.00"] [1.0 "1.00"])
 ```
 
@@ -1057,7 +1057,7 @@ defmodule Price do
            {0.31, 0.44}, {0.36, 0.50}, {0.41, 0.54}, {0.46, 0.58}, {0.51, 0.62},
            {0.56, 0.66}, {0.61, 0.70}, {0.66, 0.74}, {0.71, 0.78}, {0.76, 0.82},
            {0.81, 0.86}, {0.86, 0.90}, {0.91, 0.94}, {0.96, 0.98}, {1.01, 1.00} ]
-  
+
   def fraction(value) when value in 0..1 do
     {_, standard_value} = Enum.find(@table, fn {upper_limit, _} -> value < upper_limit end)
     standard_value
@@ -1166,12 +1166,12 @@ let cin = [ 0.06m .. 0.05m ..1.01m ]
 let cout = [0.1m; 0.18m] @ [0.26m .. 0.06m .. 0.44m] @ [0.50m .. 0.04m .. 0.98m] @ [1.m]
 
 let priceadjuster p =
-    let rec bisect lo hi = 
+    let rec bisect lo hi =
         if lo < hi then
             let mid = (lo+hi)/2.
             let left = p < cin.[int mid]
             bisect (if left then lo else mid+1.) (if left then mid else hi)
-        else lo    
+        else lo
 
     if p < 0.m || 1.m < p then p
     else cout.[int (bisect 0. (float cin.Length))]
@@ -1258,7 +1258,7 @@ class PriceConverter
     Float result := price
     defns.each |Defn defn|
     {
-      if (price >= defn.low && price < defn.high) 
+      if (price >= defn.low && price < defn.high)
         result = defn.value
     }
     return result
@@ -1291,7 +1291,7 @@ class Main
               >=  0.96  <  1.01  :=  1.00"
     converter := PriceConverter (table)
     10.times  // simple test with random values
-    { 
+    {
       price := (0..100).random.toFloat / 100
       echo ("$price -> ${converter.convert (price)}")
     }
@@ -1405,7 +1405,7 @@ For i As Integer = 1 To 100
   Print Using "#.##"; rescale(d);
   Print "  ";
   If i Mod 5 = 0 Then Print
-Next 
+Next
 
 Print
 Print "Press any key to quit"
@@ -1460,7 +1460,7 @@ For byCount = 0 To 100
   If byCount Mod 5 = 0 Then Print
 Next
 
-End 
+End
 ```
 
 Output:
@@ -1742,7 +1742,7 @@ record Bounds(low,high,new)
 
 # rescale given value according to a list of bounds
 procedure rescale (i, bounds)
-  every bound := !bounds do 
+  every bound := !bounds do
     if bound.low <= i < bound.high
       then return bound.new
   return fail # could not find i in bounds
@@ -1863,7 +1863,7 @@ priceFraction =:  out {~ le I. -
 '''Example:'''
 
 ```j
-   priceFraction 0.34 0.070145 0.06 0.05 0.50214 0.56 1 0.99 0   
+   priceFraction 0.34 0.070145 0.06 0.05 0.50214 0.56 1 0.99 0
 0.5 0.18 0.18 0.1 0.62 0.7 1 1 0.1
 ```
 
@@ -1930,7 +1930,7 @@ public class Main {
 ## JavaScript
 
 
-In the task definition, the first step is 0.06, the rest are 0.05 
+In the task definition, the first step is 0.06, the rest are 0.05
 so a re-factoring can subtract 0.01 from the value and divide by 0.05 to get the step.
 
 Working with decimal numbers in JavaScript has issues, e.g. 0.06 - 0.01 = 0.049999999999999996 due to using IEEE 754 double precision numbers that can't accurately represent all decimals. So values are multiplied by 100 and integer arithmetic is used.
@@ -2091,7 +2091,7 @@ pf:{out@_bin[le;-x]}'
 ```scala
 // version 1.0.6
 
-fun rescale(price: Double): Double = 
+fun rescale(price: Double): Double =
     when {
         price < 0.06 ->  0.10
         price < 0.11 ->  0.18
@@ -2121,7 +2121,7 @@ fun main(args: Array<String>) {
         d = i / 100.0
         print(String.format("%4.2f -> %4.2f  ", d, rescale(d)))
         if (i % 5 == 0) println()
-    }  
+    }
 }
 ```
 
@@ -2199,7 +2199,7 @@ scaleTable = {
     {0.66, 0.74}, {0.71, 0.78}, {0.76, 0.82}, {0.81, 0.86},
     {0.86, 0.90}, {0.91, 0.94}, {0.96, 0.98}, {1.01, 1.00}
 }
-    
+
 function rescale (price)
     if price < 0 or price > 1 then return "Out of range!" end
     for k, v in pairs(scaleTable) do
@@ -2277,9 +2277,9 @@ end do;
 
 
 ```Mathematica
-PriceFraction[x_]:=Piecewise[{{.1, 0 <= x < 0.06}, {.18, x < .11}, {.26,x < 0.16}, 
-{.32, x < .21}, {.38, x < .26}, {.44, x < 0.31}, {.5, x < .36}, 
-{.54, x < .41}, {.58, x < .46}, {.62, x < .51}, {.66, x < .56}, 
+PriceFraction[x_]:=Piecewise[{{.1, 0 <= x < 0.06}, {.18, x < .11}, {.26,x < 0.16},
+{.32, x < .21}, {.38, x < .26}, {.44, x < 0.31}, {.5, x < .36},
+{.54, x < .41}, {.58, x < .46}, {.62, x < .51}, {.66, x < .56},
 {.70, x < .61}, {.74, x < .66}, {.78, x < .71}, {.82, x < .76},
 {.86, x < .81}, {.90, x < .86}, {.94, x < .91}, {.98, x < .96}}, 1]
 ```
@@ -2290,19 +2290,19 @@ PriceFraction[x_]:=Piecewise[{{.1, 0 <= x < 0.06}, {.18, x < .11}, {.26,x < 0.16
 
 
 ```Matlab
-  function y = rescale(x) 
-	 
+  function y = rescale(x)
+
      L = [0,.06:.05:1.02];
      V = [.1,.18,.26,.32,.38,.44,.50,.54,.58,.62,.66,.70,.74,.78,.82,.86,.9,.94,.98,1];
 
-     y = x; 
-     for k=1:numel(x); 
+     y = x;
+     for k=1:numel(x);
         y(k) = V(sum(L<=x(k)));
      end;
   end;
 
    t=0:0.001:1;
-   plot(t,rescale(t)); 
+   plot(t,rescale(t));
 ```
 
 
@@ -2394,7 +2394,7 @@ USER>W $$PRICFRAC^ROSETTA(.06)
 USER>W $$PRICFRAC^ROSETTA(.40)
 .54
 USER>W $$PRICFRAC^ROSETTA(1.40)
- 
+
 USER>W $$PRICFRAC^ROSETTA(.81)
 .90
 ```
@@ -2489,8 +2489,8 @@ import strutils, math
 const
   pricemap: array[0 .. 19, int] = [10,18,26,32,38,44,50,54,58,62,66,70,74,78,82,86,90,94,98,100]
 
-# outputs an int (=>float*100)  
-proc floatToPrice100(f: float): int = 
+# outputs an int (=>float*100)
+proc floatToPrice100(f: float): int =
     # indx: 0.1-0.05->0, 0.06-0.10->1, 0.11-0.15->2, .....
     var valu: int = toInt(f*100)
     if valu == 0:
@@ -2501,8 +2501,8 @@ proc floatToPrice100(f: float): int =
         var indx: int = 2*int(valu/10)+int((valu%%10)/5)
         result = pricemap[indx]
 
-# str representation of an int (that is a representation of a float price)             
-proc price100ToStr(p: int): string = 
+# str representation of an int (that is a representation of a float price)
+proc price100ToStr(p: int): string =
     if p < 10:
        result = "0.0" & $p
     if p < 100:
@@ -2556,16 +2556,16 @@ class PriceFraction {
       return 1;
     };
 
-    splitters := [  
-      0.00 , 0.06 , 0.11 , 0.16 , 0.21 , 
-      0.26 , 0.31 , 0.36 , 0.41 , 0.46 , 
-      0.51 , 0.56 , 0.61 , 0.66 , 0.71 , 
+    splitters := [
+      0.00 , 0.06 , 0.11 , 0.16 , 0.21 ,
+      0.26 , 0.31 , 0.36 , 0.41 , 0.46 ,
+      0.51 , 0.56 , 0.61 , 0.66 , 0.71 ,
       0.76 , 0.81 , 0.86 , 0.91 , 0.96 ];
 
-    replacements := [ 
+    replacements := [
       0.10 , 0.18 , 0.26 , 0.32 , 0.38 ,
-      0.44 , 0.50 , 0.54 , 0.58 , 0.62 , 
-      0.66 , 0.70 , 0.74 , 0.78 , 0.82 , 
+      0.44 , 0.50 , 0.54 , 0.58 , 0.62 ,
+      0.66 , 0.70 , 0.74 , 0.78 , 0.82 ,
       0.86 , 0.90 , 0.94 , 0.98 , 1.00 ];
 
     for(x := 0; x < splitters->Size() - 1; x+=1;) {
@@ -2669,8 +2669,8 @@ let () =
 
 ## Oz
 
-Using a for-loop with return and a default value for values >= 1.01. 
-For out-of-range input, a "failed value" is returned, 
+Using a for-loop with return and a default value for values >= 1.01.
+For out-of-range input, a "failed value" is returned,
 i.e. a value that throws an exception when it is accessed.
 
 
@@ -2687,7 +2687,7 @@ in
       return:Return
       default:OutOfRange
    do
-      if X < Limit then {Return Result} end 
+      if X < Limit then {Return Result} end
    end
 end
 ```
@@ -2718,10 +2718,10 @@ pf(x)={
 Program PriceFraction(output);
 
 const
-  limit: array [1..20] of real = 
+  limit: array [1..20] of real =
            (0.06, 0.11, 0.16, 0.21, 0.26, 0.31, 0.36, 0.41, 0.46, 0.51,
             0.56, 0.61, 0.66, 0.71, 0.76, 0.81, 0.86, 0.91, 0.96, 1.01);
-  price: array [1..20] of real = 
+  price: array [1..20] of real =
            (0.10, 0.18, 0.26, 0.32, 0.38, 0.44, 0.50, 0.54, 0.58, 0.62,
             0.66, 0.70, 0.74, 0.78, 0.81, 0.86, 0.90, 0.94, 0.98, 1.00);
 
@@ -2963,7 +2963,7 @@ function price_fix(atom p)
     end for
     return -1
 end function
- 
+
 for i=-1 to 101 do
     printf(1, "%5.2f %5.2f\n", {i/100,price_fix(i/100)})
 end for
@@ -3051,10 +3051,10 @@ loop:
 
 ### version 2
 
-{{trans|REXX version2}} 
- 
+{{trans|REXX version2}}
+
 ```PL/I
-cpt: Proc Options(main); 
+cpt: Proc Options(main);
  Dcl x Dec Fixed(4,2);
  Do x=0 To 1 By 0.01;
    Put Edit(x,' -> ',cp(x))(Skip,f(4,2),a,f(4,2));
@@ -3152,7 +3152,7 @@ $0.10
 
 ```PureBasic
 Procedure.f PriceFraction(price.f)
-  ;returns price unchanged if value is invalid 
+  ;returns price unchanged if value is invalid
   Protected fraction
   Select price * 100
     Case 0 To 5
@@ -3198,18 +3198,18 @@ Procedure.f PriceFraction(price.f)
     Default
       ProcedureReturn price
   EndSelect
-  
+
   ProcedureReturn fraction / 100
 EndProcedure
 
 If OpenConsole()
   Define x.f, i
-  
+
   For i = 1 To 10
     x = Random(10000)/10000
     PrintN(StrF(x, 4) + " -> " + StrF(PriceFraction(x), 2))
   Next
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit")
   Input()
   CloseConsole()
@@ -3582,7 +3582,7 @@ adjprice2: Procedure Expose r.
 ```ring
 
 see pricefraction(0.5)
- 
+
 func pricefraction n
      if n < 0.06 return 0.10 ok
      if n < 0.11 return 0.18 ok
@@ -3601,10 +3601,10 @@ func pricefraction n
      if n < 0.76 return 0.82 ok
      if n < 0.81 return 0.86 ok
      if n < 0.86 return 0.90 ok
-     if n < 0.91 return 0.94 ok 
+     if n < 0.91 return 0.94 ok
      if n < 0.96 return 0.98 ok
      return 1
- 
+
 
 ```
 
@@ -3644,7 +3644,7 @@ end
 
 Or, where we can cut and paste the textual table in one place
 
-{{works with|Ruby|1.8.7+}} for the <code>String#lines</code> method.  
+{{works with|Ruby|1.8.7+}} for the <code>String#lines</code> method.
 For Ruby 1.8.6, use <code>String#each_line</code>
 
 
@@ -3676,15 +3676,15 @@ class Price
   RE = %r{ ([<>=]+) \s* (\d\.\d\d) \s* ([<>=]+) \s* (\d\.\d\d) \D+ (\d\.\d\d) }x
 
   # extract the comparison operators and numbers from the table
-  CONVERSION_TABLE = ConversionTable.lines.inject([]) do |table, line| 
-    m = line.match(RE) 
+  CONVERSION_TABLE = ConversionTable.lines.inject([]) do |table, line|
+    m = line.match(RE)
     if not m.nil? and m.length == 6
-      table << [m[1], m[2].to_f, m[3], m[4].to_f, m[5].to_f] 
+      table << [m[1], m[2].to_f, m[3], m[4].to_f, m[5].to_f]
     end
     table
   end
 
-  MIN_COMP, MIN = CONVERSION_TABLE[0][0..1] 
+  MIN_COMP, MIN = CONVERSION_TABLE[0][0..1]
   MAX_COMP, MAX = CONVERSION_TABLE[-1][2..3]
 
   def initialize(value)
@@ -3720,11 +3720,11 @@ class PriceFractionTests < Test::Unit::TestCase
   @@bad_tests = [1.02, -3]
 
   def test_ok
-    @@ok_tests.each do |val, exp| 
+    @@ok_tests.each do |val, exp|
       assert_equal(exp, rescale_price_fraction(val))
       assert_equal(exp, Price.new(val).standard_value)
     end
-    @@bad_tests.each do |val| 
+    @@bad_tests.each do |val|
       assert_raise(ArgumentError) {rescale_price_fraction(val)}
       assert_raise(ArgumentError) {Price.new(val).standard_value}
     end
@@ -3751,7 +3751,7 @@ Finished in 0.001000 seconds.
 
 ```runbasic
 data .06, .1,.11,.18,.16,.26,.21,.32,.26,.38,.31,.44,.36,.50,.41,.54,.46,.58,.51,.62
-data .56,.66,.61,.70,.66,.74,.71,.78,.76,.82,.81,.86,.86,.90,.91,.94,.96,.98 
+data .56,.66,.61,.70,.66,.74,.71,.78,.76,.82,.81,.86,.86,.90,.91,.94,.96,.98
 
 dim od(100)
 dim nd(100)
@@ -4082,13 +4082,13 @@ Object subclass: PriceRescale [
       ((aPrice >= (v1 x)) & (aPrice < (v2 x)))
         ifTrue: [ ^ v1 y ]
     ].
-    (aPrice < ((v1:=(table first)) x)) ifTrue: [ ^ v1 y ]. 
+    (aPrice < ((v1:=(table first)) x)) ifTrue: [ ^ v1 y ].
     (aPrice >= ((v1:=(table last)) x)) ifTrue: [ ^ v1 y ]
   ]
 ].
 
 |pr|
-pr := PriceRescale 
+pr := PriceRescale
          new: {  0.00@0.10 .
                  0.06@0.18 .
                  0.11@0.26 .
@@ -4200,7 +4200,7 @@ foreach example {.7388727 .8593103 .826687 .3444635 .0491907} {
 
 
 ```Ursala
-#import flo                     
+#import flo
 
 le  = <0.06,.11,.16,.21,.26,.31,.36,.41,.46,.51,.56,.61,.66,.71,.76,.81,.86,.91,.96,1.01>
 out = <0.10,.18,.26,.32,.38,.44,.50,.54,.58,.62,.66,.70,.74,.78,.82,.86,.90,.94,.98,1.>
@@ -4289,45 +4289,45 @@ End Function
 ```vb
 
 Function pf(p)
-    If p < 0.06 Then 
+    If p < 0.06 Then
         pf = 0.10
-    ElseIf p < 0.11 Then 
+    ElseIf p < 0.11 Then
     	pf = 0.18
-    ElseIf p < 0.16 Then 
+    ElseIf p < 0.16 Then
     	pf = 0.26
-    ElseIf p < 0.21 Then 
+    ElseIf p < 0.21 Then
     	pf = 0.32
-    ElseIf p < 0.26 Then 
+    ElseIf p < 0.26 Then
     	pf = 0.38
-    ElseIf p < 0.31 Then 
+    ElseIf p < 0.31 Then
     	pf = 0.44
-    ElseIf p < 0.36 Then 
+    ElseIf p < 0.36 Then
     	pf = 0.50
-    ElseIf p < 0.41 Then 
+    ElseIf p < 0.41 Then
     	pf = 0.54
-    ElseIf p < 0.46 Then 
+    ElseIf p < 0.46 Then
     	pf = 0.58
-    ElseIf p < 0.51 Then 
+    ElseIf p < 0.51 Then
     	pf = 0.62
-    ElseIf p < 0.56 Then 
+    ElseIf p < 0.56 Then
     	pf = 0.66
-    ElseIf p < 0.61 Then 
+    ElseIf p < 0.61 Then
     	pf = 0.70
-    ElseIf p < 0.66 Then 
+    ElseIf p < 0.66 Then
     	pf = 0.74
-    ElseIf p < 0.71 Then 
+    ElseIf p < 0.71 Then
     	pf = 0.78
-    ElseIf p < 0.76 Then 
+    ElseIf p < 0.76 Then
     	pf = 0.82
-    ElseIf p < 0.81 Then 
+    ElseIf p < 0.81 Then
     	pf = 0.86
-    ElseIf p < 0.86 Then 
+    ElseIf p < 0.86 Then
     	pf = 0.90
-    ElseIf p < 0.91 Then 
+    ElseIf p < 0.91 Then
     	pf = 0.94
-    ElseIf p < 0.96 Then 
+    ElseIf p < 0.96 Then
     	pf = 0.98
-    Else 
+    Else
     	pf = 1.00
     End If
 End Function
@@ -4418,14 +4418,14 @@ fcn convert(price){ // float --> float
 	       T(0.66, 0.74), T(0.71, 0.78), T(0.76, 0.82),
 	       T(0.81, 0.86), T(0.86, 0.90), T(0.91, 0.94),
 	       T(0.96, 0.98), T(1.01, 1.00), );
-   vert.filter1('wrap([(a,_)]){ price<a })[1] 
+   vert.filter1('wrap([(a,_)]){ price<a })[1]
 }
 ```
 
 
 ```zkl
 fcn convert2(price){  // shifting the fractional part to the integer portion
-   var vert=T(0.10, 0.18, 0.26, 0.32, 0.38, 0.44, 0.50, 0.54, 0.58, 0.62, 
+   var vert=T(0.10, 0.18, 0.26, 0.32, 0.38, 0.44, 0.50, 0.54, 0.58, 0.62,
               0.66, 0.70, 0.74, 0.78, 0.82, 0.86, 0.90, 0.94, 0.98, 1.00);
     vert[(price*100-1)/005];
 }

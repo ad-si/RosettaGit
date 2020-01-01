@@ -13,11 +13,11 @@ tags = []
 {{task|Basic language learning}}
 
 ;Task:
-Write a generic swap function or operator which exchanges the values of two variables (or, more generally, any two storage places that can be assigned), regardless of their types. 
+Write a generic swap function or operator which exchanges the values of two variables (or, more generally, any two storage places that can be assigned), regardless of their types.
 
 If your solution language is statically typed please describe the way your language provides genericity.
 
-If variables are typed in the given language, it is permissible that the two variables be constrained to having a mutually compatible type, such that each is permitted to hold the value previously stored in the other without a type violation. 
+If variables are typed in the given language, it is permissible that the two variables be constrained to having a mutually compatible type, such that each is permitted to hold the value previously stored in the other without a type violation.
 That is to say, solutions do not have to be capable of exchanging, say, a string and integer value, if the underlying storage locations are not attributed with types that permit such an exchange.
 
 Generic swap is a task which brings together a few separate issues in programming language semantics.
@@ -26,7 +26,7 @@ Dynamically typed languages deal with values in a generic way quite readily, but
 
 Functional languages, whether static or dynamic, do not necessarily allow a destructive operation such as swapping two variables regardless of their generic capabilities.
 
-Some static languages have difficulties with generic programming due to a lack of support for ([[Parametric Polymorphism]]). 
+Some static languages have difficulties with generic programming due to a lack of support for ([[Parametric Polymorphism]]).
 
 Do your best!
 
@@ -40,26 +40,26 @@ Three consecutive exclusive OR's swap variable contents
 
 ```360 Assembly
 
-SWAP     CSECT ,                   control section start 
-         BAKR  14,0                stack caller's registers 
-         LR    12,15               entry point address to reg.12 
-         USING SWAP,12             use as base 
-         MVC   A,=C'5678____'      init field A 
-         MVC   B,=C'____1234'      init field B 
-         LA    2,L                 address of length field in reg.2 
-         WTO   TEXT=(2)            Write To Operator, results in: 
-*                                  +5678________1234 
-         XC    A,B                 XOR A,B 
-         XC    B,A                 XOR B,A 
-         XC    A,B                 XOR A,B. A holds B, B holds A 
-         WTO   TEXT=(2)            Write To Operator, results in: 
-*                                  +____12345678____ 
-         PR    ,                   return to caller 
-         LTORG ,                   literals displacement 
-L        DC    H'16'               halfword containg decimal 16 
-A        DS    CL8                 field A, 8 bytes 
-B        DS    CL8                 field B, 8 bytes 
-         END   SWAP                program end 
+SWAP     CSECT ,                   control section start
+         BAKR  14,0                stack caller's registers
+         LR    12,15               entry point address to reg.12
+         USING SWAP,12             use as base
+         MVC   A,=C'5678____'      init field A
+         MVC   B,=C'____1234'      init field B
+         LA    2,L                 address of length field in reg.2
+         WTO   TEXT=(2)            Write To Operator, results in:
+*                                  +5678________1234
+         XC    A,B                 XOR A,B
+         XC    B,A                 XOR B,A
+         XC    A,B                 XOR A,B. A holds B, B holds A
+         WTO   TEXT=(2)            Write To Operator, results in:
+*                                  +____12345678____
+         PR    ,                   return to caller
+         LTORG ,                   literals displacement
+L        DC    H'16'               halfword containg decimal 16
+A        DS    CL8                 field A, 8 bytes
+B        DS    CL8                 field B, 8 bytes
+         END   SWAP                program end
 
 ```
 
@@ -363,7 +363,7 @@ goto :eof
       a = 1.23 : b = 4.56
       SWAP a,b
       PRINT a,b
-      
+
       a$ = "Hello " : b$ = "world!"
       SWAP a$,b$
       PRINT a$,b$
@@ -377,12 +377,12 @@ goto :eof
       a = 1.23 : b = 4.56
       PROCswap(^a,^b, 5)
       PRINT a,b
-      
+
       a$ = "Hello " : b$ = "world!"
       PROCswap(^a$,^b$, 6)
       PRINT a$,b$
       END
-      
+
       DEF PROCswap(a%, b%, s%)
       LOCAL i%
       FOR i% = 0 TO s%-1
@@ -454,8 +454,8 @@ If you have gcc, you can write a preprocessor macro with <tt>__typeof__</tt>.
 Usage examples are:
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define Swap(X,Y)  do{ __typeof__ (X) _T = X; X = Y; Y = _T; }while(0)
 
@@ -470,19 +470,19 @@ int main()
   struct test t = { 1, 2, 3 };
   struct test h = { 4, 5, 6 };
   double alfa = 0.45, omega = 9.98;
-  
+
   struct test *pt = &t;
   struct test *th = &h;
-  
+
   printf("%d %d %d\n", t.a, t.b, t.c );
   Swap(t, h);
   printf("%d %d %d\n", t.a, t.b, t.c );
   printf("%d %d %d\n", h.a, h.b, h.c );
-  
+
   printf("%lf\n", alfa);
   Swap(alfa, omega);
   printf("%lf\n", alfa);
-  
+
   printf("%d\n", pt->a);
   Swap(pt, th);
   printf("%d\n", pt->a);
@@ -502,8 +502,10 @@ While the standard allows to separate declaration and definition of templates in
 The implementation of the swap function template is straightforward:
 
 
-```cpp>template<typename T
- void swap(T& left, T& right)
+```cpp
+template<typename T>
+
+void swap(T& left, T& right)
 {
   T tmp(left);
   left = right;
@@ -529,7 +531,8 @@ It will work with any types.
 
 C++11 adds move constructors which can be more efficient than copy constructors.
 
-```cpp>template<class T
+```cpp
+template<class T>
 
 void swap(T &lhs, T &rhs){
   T tmp = std::move(lhs);
@@ -545,7 +548,7 @@ void swap(T &lhs, T &rhs){
 
 {{works with|C sharp|C#|2.0+}}
 
-C# 2.0 introduced the concept of generics to the language. Generics are outwardly 
+C# 2.0 introduced the concept of generics to the language. Generics are outwardly
 similar to C++ templates, but are implemented quite differently: generics are
 maintained generically at runtime rather than being substitued with definite types
 by the compiler. Generics are intended to promote reusable, efficient, type-safe
@@ -600,7 +603,7 @@ and supports swapping directly via tuples and destructuring:
 (a, b) = (b, a)
 ```
 
-Both variables must be of the same type. 
+Both variables must be of the same type.
 The [[Fibonacci sequence#Chapel|Fibonnacci implementation]] contains an example.
 
 
@@ -645,7 +648,7 @@ message(STATUS ${y})  # -- 42
 
 Because of limitations in CMake, there are a few specific situations where swap() will fail to swap the variables.
 
-# When ''_SWAP_TEMPORARY'' is the name of the second variable: 
+# When ''_SWAP_TEMPORARY'' is the name of the second variable:
 ```cmake
 set(x 42)
 set(_SWAP_TEMPORARY "string")
@@ -654,7 +657,7 @@ message(STATUS ${x})                # -- 42
 message(STATUS ${_SWAP_TEMPORARY})  # -- 42
 ```
  Inside swap(), its local variable ''_SWAP_TEMPORARY'' shadows the original ''_SWAP_TEMPORARY'' from the parent scope, preventing access to the original value.
-# When value of either variable is "CACHE" or "PARENT_SCOPE": 
+# When value of either variable is "CACHE" or "PARENT_SCOPE":
 ```cmake
 string(TOUPPER CACHE x)
 set(y "string")
@@ -836,7 +839,7 @@ end;
 
 var
   a, b : integer;
-  
+
 begin
   a := 5;
   b := 3;
@@ -892,7 +895,7 @@ def swap([left, right]) {
 A → "simon"
 B → 666
 
-;; 2) 
+;; 2)
 ;; The list-swap! function allows to swap two items inside a list, regardless of their types
 ;; This physically alters the list
 
@@ -909,7 +912,7 @@ ELENA 4.1 :
 
 ```elena
 import extensions;
- 
+
 swap(ref object v1, ref object v2)
 {
     var tmp := v1;
@@ -917,16 +920,16 @@ swap(ref object v1, ref object v2)
     v1 := v2;
     v2 := tmp
 }
- 
+
 public program()
 {
     var n := 2;
     var s := "abc";
- 
+
     console.printLine(n," ",s);
- 
+
     swap(ref n, ref s);
- 
+
     console.printLine(n," ",s)
 }
 ```
@@ -1236,14 +1239,14 @@ var
 begin
   writeln(a:6,b:6);
   swap<string>(a,b);
-  writeln(a:6,b:6);  
+  writeln(a:6,b:6);
 end.
 ```
 
 
 ```txt
 
-Output:  
+Output:
     Test    me
     me  Test
 ```
@@ -1464,13 +1467,13 @@ func main() {
 ```txt
 
 a b: 3 cats
-swap args are different types: int and string 
+swap args are different types: int and string
 
 c d: 3 4
-swap args must be pointers 
+swap args must be pointers
 
 e f: 3 4
-e f: 4 3 
+e f: 4 3
 
 g h: {3 cats} {4 dogs}
 g h: {4 dogs} {3 cats}
@@ -1573,7 +1576,7 @@ assert list == [2,8,6,4]
 ## Haskell
 
 
-###  Pure swap 
+###  Pure swap
 
 Usually Haskellers prefer to work with immutable data. The following function doesn't mutate anything, but simply returns a new pair with the order of the elements switched.
 
@@ -1588,14 +1591,14 @@ swap (x, y) = (y, x)
 This <code>swap</code> function is available in the <code>Data.Tuple</code> standard library module in GHC 7.0+
 
 
-###  Swap mutable variables 
+###  Swap mutable variables
 
 The following function swaps the contents of two mutable references. Again the type signature is optional.
 
 ```haskell
 import Control.Monad.Ref
 swap :: MonadRef r m => r a -> r a -> m ()
-swap xRef yRef = do 
+swap xRef yRef = do
    x<-readRef xRef
    y<-readRef yRef
    writeRef xRef y
@@ -1637,7 +1640,7 @@ end
 =={{header|IS-BASIC}}==
 <lang IS-BASIC>100 DEF SWAP(REF A,REF B)
 110   LET T=A:LET A=B:LET B=T
-120 END DEF 
+120 END DEF
 130 LET A=1:LET B=2
 140 PRINT A,B
 150 CALL SWAP(A,B)
@@ -2246,10 +2249,10 @@ The assignment operator in Maple can swap values, since the right hand side is e
                                  "foo"
 
 > a, b := b, a: # SWAP
-> a;           
+> a;
                                  "foo"
 
-> b;           
+> b;
                                    2
 
 ```
@@ -2511,7 +2514,7 @@ Swap[T, U] (a : T, b : U) : U * T
 ## NetRexx
 
 Values stored in the '''default''' <tt>Rexx</tt> data type are treated as typeless data; context is based on the contents.
-Swapping the contents of variables stored in <tt>Rexx</tt> object can be achieved via the <tt>PARSE</tt> instruction.  
+Swapping the contents of variables stored in <tt>Rexx</tt> object can be achieved via the <tt>PARSE</tt> instruction.
 
 ```NetRexx
 /* NetRexx */
@@ -2704,7 +2707,7 @@ procedure Proc1(var a, b: integer);
 
 var
   S, T: integer;
-  SwapInt: specialize TSwap<integer>; 
+  SwapInt: specialize TSwap<integer>;
 
 begin
   S := 4;
@@ -2741,9 +2744,9 @@ begin
   L := R;
   R := Tmp;
 end;
-  
+
 var
-  I, J: Integer; 
+  I, J: Integer;
 begin
   I := 100;
   J := 11;
@@ -2980,7 +2983,7 @@ F1=   -1044200508;
 ===Or, using "Like"===
 The key problem is that a temporary storage area is needed (there alas being no compiler-recognised "swap" statement), and the waystation variable must have the correct type, nor can there be reliance on a suitable "t" variable being available for use. Devising a different Swap for each type of parameter would be tedious and tiresome to use, however one could employ the "generic" facility as above demonstrated, and use the pre-processor to generate a collection of Swap routines by it employing a template and stepping through a list of accommodated types.
 
-Instead, the first example can be generalised via two steps. Firstly, it is possible to declare a variable to be of a type "like" some named variable (otherwise a third parameter naming the type could be supplied), and secondly, placing the in-line code between Begin ... End; means that any declaration is local to within that block only. Further, this bracketing allows a Swap to be invoked via an if-statement, as in <code>If ... then Swap(x,y);</code> - otherwise there would be a mess. Thus: 
+Instead, the first example can be generalised via two steps. Firstly, it is possible to declare a variable to be of a type "like" some named variable (otherwise a third parameter naming the type could be supplied), and secondly, placing the in-line code between Begin ... End; means that any declaration is local to within that block only. Further, this bracketing allows a Swap to be invoked via an if-statement, as in <code>If ... then Swap(x,y);</code> - otherwise there would be a mess. Thus:
 
 ```pli
 
@@ -2990,7 +2993,7 @@ Instead, the first example can be generalised via two steps. Firstly, it is poss
 %End Swap;
 ```
 
-Whereupon a Swap(this,that); would generate a rather longer text of in-line source code. This and other text expansions caused odd difficulties, because the 1980s compiler replaced the invocation by the expansion and then reformatted the result into lines of 71 characters (not 72) as necessary, and then, since any additional lines were given the same source sequence number as the original line, added 100000 as needed to generate strictly increasing sequence numbers. If many lines overflowed, eventually the sequence field (eight digits) overflowed, and all following source lines thereby acquired the same source sequence number. For this and other reasons, one approach was two-stage compilation: the output from the pre-processor stage could be saved and further compilation cancelled. That file could then be resequenced and fed to the pl/i compiler afresh.  
+Whereupon a Swap(this,that); would generate a rather longer text of in-line source code. This and other text expansions caused odd difficulties, because the 1980s compiler replaced the invocation by the expansion and then reformatted the result into lines of 71 characters (not 72) as necessary, and then, since any additional lines were given the same source sequence number as the original line, added 100000 as needed to generate strictly increasing sequence numbers. If many lines overflowed, eventually the sequence field (eight digits) overflowed, and all following source lines thereby acquired the same source sequence number. For this and other reasons, one approach was two-stage compilation: the output from the pre-processor stage could be saved and further compilation cancelled. That file could then be resequenced and fed to the pl/i compiler afresh.
 
 Such a file would have the expansion of Swap(this,that) as follows (but with added layout here):
 
@@ -3073,7 +3076,7 @@ Y = 1.
 
 
 ## PureBasic
- 
+
 Built in function:
 
 ```PureBasic
@@ -3183,8 +3186,8 @@ swap: func [
 	"Swap contents of variables."
 	a [word!] b [word!] /local x
 ][
-	x: get a  
-	set a get b  
+	x: get a
+	set a get b
 	set b x
 ]
 
@@ -3223,9 +3226,9 @@ REXX has no primitive for swapping, but it can easily be performed using a tempo
 a = 'I see you.'
 b = -6
 
-_temp_ = a                           /*swap ···     */   
+_temp_ = a                           /*swap ···     */
      a = b                           /*     A ···   */
-     b = _temp_                      /*  and  B     */ 
+     b = _temp_                      /*  and  B     */
 ```
 
 
@@ -3245,10 +3248,10 @@ a=value('b', a)                      /*swap A and B */
 
 ### using PARSE
 
-If it's known that there are 
-::* no blanks 
+If it's known that there are
+::* no blanks
 ::* no null values
-::* (maybe) no whitespace (such as tabs) 
+::* (maybe) no whitespace (such as tabs)
 in the values, the following method can be used:
 
 (This is the fastest of the three versions.)
@@ -3260,7 +3263,7 @@ b = 12.
 parse value  a  b    with    b  a    /*swap A and B */
 ```
 
-Note that some REXX interpreters handle whitespace differently, some honor whitespace other than blanks, 
+Note that some REXX interpreters handle whitespace differently, some honor whitespace other than blanks,
 
 others don't   (particularly the older versions).
 
@@ -3286,7 +3289,7 @@ see "b = " + b + nl
 
 RLaB does not have a built-in function for swapping the content of two variables. However, there is a workaround which comes from the fact that the global variable space $$ contains all the variables ''var1'', ''var2'' and so forth as $$.var1, ...
 
-Let we want to swap the content of two variables, which names are ''a'' and ''b'', 
+Let we want to swap the content of two variables, which names are ''a'' and ''b'',
 then the following function would do the trick
 
 ```RLaB
@@ -3338,7 +3341,7 @@ end
 ```
 
 
-This method does not swap the original variables, because Ruby passes parameters by value. 
+This method does not swap the original variables, because Ruby passes parameters by value.
 Instead, this method returns simply a new array with the order of the elements switched. The caller may assign the original variables with the return value:
 
 
@@ -3420,7 +3423,7 @@ The swap example is about as simple as such things can be, with no variance or h
 type parameters.
 
 The return type need not be declared in the example below, but it is shown for clarity. However,
-as Scala does not pass parameters by reference, it cannot swap values in-place. 
+as Scala does not pass parameters by reference, it cannot swap values in-place.
 To make up for that, it receives two values, and returns a tuple with the values inverted.
 
 
@@ -3859,13 +3862,13 @@ Print a,b
 
 ```bash
 $ swap() { typeset -n var1=$1 var2=$2; set -- "$var1" "$var2"; var1=$2; var2=$1; }
-$ a=1 b=2                                                                         
+$ a=1 b=2
 $ echo $a $b
 1 2
-$ swap a b                                                                        
-$ echo $a $b                                                                      
+$ swap a b
+$ echo $a $b
 2 1
-$ swap a b  
+$ swap a b
 $ echo $a $b
 1 2
 ```
@@ -3947,7 +3950,7 @@ end sub
 Usage:
 
 ```vb
-dim a 
+dim a
 a = "woof"
 dim b
 b = now()
@@ -3973,7 +3976,7 @@ woof
 ```verbexx
 // user-defined swap verb -- parms are passed by alias, not value, so they can be updated:
 
-'<==> [_a] @FN [_b] { _a _b = _b _a } by_alias: ; 
+'<==> [_a] @FN [_b] { _a _b = _b _a } by_alias: ;
 
 
 // test out swap verb
@@ -3983,8 +3986,8 @@ woof
 
 @SAY "a=" a "   b=" b;
 
-\b <==> \a;                    // "\" verb prevents evaluation of a and b here, 
-                               // so they can be passed by alias to <==>    
+\b <==> \a;                    // "\" verb prevents evaluation of a and b here,
+                               // so they can be passed by alias to <==>
 @SAY "a=" a "   b=" b;
 
 a b = b a;                     // swap them back, just using the usual  =  verb
@@ -4029,7 +4032,7 @@ Swap(a, b)
 ## Visual FoxPro
 
  Since Visual FoxPro is not strongly typed, this will work with any data types.
- 
+
 ```vfp
 
  *!* Swap two variables
@@ -4047,16 +4050,16 @@ dum = v1
 v1 = v2
 v2 = dum
 ENDPROC
- 
+
 ```
 
  {{out}}
- 
+
 ```txt
 
  1 Hallo
  Hallo 1
- 
+
 ```
 
 
@@ -4116,7 +4119,7 @@ RlOut(0, X);  RlOut(0, Y);  CrLf(0);
 
 ## Yorick
 
-Yorick has a built-in function ''swap'' for exchanging the contents of two variables without requiring a temporary copy. 
+Yorick has a built-in function ''swap'' for exchanging the contents of two variables without requiring a temporary copy.
 Example of use:
 
 ```txt
@@ -4130,8 +4133,8 @@ Example of use:
 ```
 
 
-Swapping elements in an array can be accomplished using index lists. 
-Arbitrary permutations of swaps are also straightforward. 
+Swapping elements in an array can be accomplished using index lists.
+Arbitrary permutations of swaps are also straightforward.
 Example:
 
 ```txt
@@ -4148,7 +4151,7 @@ Example:
 
 ## zkl
 
-As a general case, no. Here a fake around for two known classes 
+As a general case, no. Here a fake around for two known classes
 (which are the same for ease of example):
 
 ```zkl
@@ -4156,7 +4159,7 @@ class C{var v; fcn init(n){v=n}}
 var c1=C(1), c2=C(2);
 println(c1.v," : ",c2.v);
 fcn swap(ca,cb,name){
-   tmp:=ca.resove(name); 
+   tmp:=ca.resove(name);
    ca.setVar(name,cb.resolve(name)); cb.setVar(name,tmp)
 }
 swap(c1,c2,"v");

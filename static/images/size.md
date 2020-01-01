@@ -47,20 +47,20 @@ o_("/Cygwin.ico".stat(ST_SIZE), "\n");
 
 ## ALGOL 68
 
-There is no build in way to find the size of an arbitrary file, especially of the file is a 
-special channel, e.g. a tape device.  
+There is no build in way to find the size of an arbitrary file, especially of the file is a
+special channel, e.g. a tape device.
 
-Conceptually the procedure 
+Conceptually the procedure
 ```algol68
-PROC set = (REF FILE file,  INT page, line, character)VOID: ~ 
+PROC set = (REF FILE file,  INT page, line, character)VOID: ~
 ```
 
-could be used to do a binary search find the last page's page number.  And if it is known 
+could be used to do a binary search find the last page's page number.  And if it is known
 that every page has the same number of lines, and every line has the same number of '''char'''[s],
-and the character set is not ''compressible'', then the size could be quickly calculated.  
+and the character set is not ''compressible'', then the size could be quickly calculated.
 Otherwise every page, and every line would have to be tallied.
 
-It is probably much easier to use some an operating system library.  This library is not part of 
+It is probably much easier to use some an operating system library.  This library is not part of
 the standard ALGOL 68 language definition.
 
 
@@ -103,7 +103,7 @@ MsgBox, Size of \input.txt is %FileSize% Kbytes
 ```awk
 @load "filefuncs"
 function filesize(name         ,fd) {
-    if ( stat(name, fd) == -1) 
+    if ( stat(name, fd) == -1)
       return -1  # doesn't exist
     else
       return fd["size"]
@@ -236,7 +236,7 @@ pause>nul
         PRINT "File size = " ; EXT#file%
         CLOSE #file%
       ENDIF
-      
+
       file% = OPENIN("\input.txt")
       IF file% THEN
         PRINT "File size = " ; EXT#file%
@@ -274,8 +274,8 @@ getFileSize$"c:\\boot.ini"
 ## C
 
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 
 long getFileSize(const char *filename)
@@ -299,8 +299,8 @@ int main(void)
 
 {{works with|POSIX}}
 
-```c>#include <stdlib.h
-
+```cpp
+#include <iostream>
 #include <stdio.h>
 #include <sys/stat.h>
 
@@ -320,8 +320,8 @@ int main(void)
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <fstream>
 
 std::ios::off_type getFileSize(const char *filename) {
@@ -342,8 +342,8 @@ int main() {
 
 '''optimized '''
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <fstream>
 
 int main()
@@ -438,7 +438,7 @@ Start world = fileSize "input.txt" world
        main.
            move "input.txt" to file-name
            perform file-info
-           
+
            move "\input.txt" to file-name
            perform file-info
 
@@ -446,7 +446,7 @@ Start world = fileSize "input.txt" world
            .
 
        file-info.
-           call "CBL_CHECK_FILE_EXIST" 
+           call "CBL_CHECK_FILE_EXIST"
               using file-name, file-details
               returning return-code
            if return-code = 0
@@ -487,7 +487,7 @@ Start world = fileSize "input.txt" world
                  :direction :input
                  :if-does-not-exist nil)
   (print (if stream (file-length stream) 0)))
-  
+
 (with-open-file (stream (make-pathname :directory '(:absolute "") :name "input.txt")
                  :direction :input
                  :if-does-not-exist nil)
@@ -617,11 +617,11 @@ ELENA 4.x :
 ```elena
 import system'io;
 import extensions;
- 
+
 public program()
 {
     console.printLine(File.assign("input.txt").Length);
- 
+
     console.printLine(File.assign("\input.txt").Length)
 }
 ```
@@ -771,7 +771,7 @@ The following previous example pertains to FORTRAN 77 and is now superceded.
        write(*,*)'size of file '//trim(filename(i))//' is ',file_size * FILE_STORAGE_SIZE /8,' bytes'
     enddo
     end
-   
+
 ```
 
 
@@ -923,7 +923,7 @@ main = mapM_ printFileSize ["input.txt", "/input.txt"]
 
 ```hicest
 READ(FILE="input.txt", LENgth=bytes) ! bytes = -1 if not existent
-READ(FILE="C:\input.txt", LENgth=bytes) ! bytes = -1 if not existent 
+READ(FILE="C:\input.txt", LENgth=bytes) ! bytes = -1 if not existent
 ```
 
 
@@ -932,7 +932,7 @@ Icon doesn't support 'stat'; however, information can be obtained by use of the 
 
 ```Unicon
 every dir := !["./","/"] do {
-   write("Size of ",f := dir || "input.txt"," = ",stat(f).size)  |stop("failure for to stat ",f) 
+   write("Size of ",f := dir || "input.txt"," = ",stat(f).size)  |stop("failure for to stat ",f)
    }
 ```
 
@@ -1043,7 +1043,7 @@ import java.io.File
 
 fun main(args: Array<String>) {
     val paths = arrayOf("input.txt", "c:\\input.txt")
-    for (path in paths) 
+    for (path in paths)
         println("Length of $path is ${File(path).length()} bytes")
 }
 ```
@@ -1126,7 +1126,7 @@ delete last item of tPath
 set the defaultfolder to tPath
 repeat for each line fline in (the detailed files)
     if item 1 of fline is "input.txt" then
-        put item 2 of fline 
+        put item 2 of fline
         exit repeat
     end if
 end repeat
@@ -1140,8 +1140,8 @@ end repeat
 ```Lua
 function GetFileSize( filename )
     local fp = io.open( filename )
-    if fp == nil then 
- 	return nil 
+    if fp == nil then
+ 	return nil
     end
     local filesize = fp:seek( "end" )
     fp:close()
@@ -1506,7 +1506,7 @@ object d = dir(file_name)
     if atom(d) or length(d)!=1 then return -1 end if
     return d[1][D_SIZE]
 end function
- 
+
 procedure test(sequence file_name)
 integer size = file_size(file_name)
     if size<0 then
@@ -1515,7 +1515,7 @@ integer size = file_size(file_name)
         printf(1,"%s size is %d.\n",{file_name,size})
     end if
 end procedure
- 
+
 test("input.txt") -- in the current working directory
 test("/input.txt") -- in the file system root
 ```
@@ -1549,7 +1549,7 @@ echo filesize('/input.txt'), "\n";
 
 ```pike
 import Stdio;
- 
+
 int main(){
    write(file_size("input.txt") + "\n");
    write(file_size("/input.txt") + "\n");
@@ -1798,11 +1798,11 @@ with files'
 
 This REXX example was executed on a Windows/XP and also a Windows 7 system (in a DOS ''window''),   and
 
-it reports the file's size (in bytes) for both of the required files. 
+it reports the file's size (in bytes) for both of the required files.
 
 Various REXXes were used for testing:   '''Regina,   PERSONAL REXX,   PC/REXX,'''   and   '''R4'''.
 
-Note that some operating systems don't have a concept of a   ''current directory''   or a   ''file system root''. 
+Note that some operating systems don't have a concept of a   ''current directory''   or a   ''file system root''.
 
 ```rexx
 /*REXX program determines a file's size (by reading all the data) in current dir & root.*/
@@ -1864,7 +1864,7 @@ size of FILESIZ.DAT:
 
 Note that CMS hasn't a concept of a ''root''.
 
-Also note that the CMS system doesn't normally support the use of periods ('''.''');   it uses blanks instead. 
+Also note that the CMS system doesn't normally support the use of periods ('''.''');   it uses blanks instead.
 
 ```rexx
 /*REXX program determines a file's size (by reading all the data)  on the default mDisk.*/
@@ -1969,7 +1969,7 @@ object FileSize extends App {
   (call-with-input-file filename (lambda (port)
     (let loop ((c (read-char port))
                (count 0))
-      (if (eof-object? c) 
+      (if (eof-object? c)
           count
           (loop (read-char port) (+ 1 count)))))))
 
@@ -2175,20 +2175,20 @@ size2=$(ls -l /input.txt | tr -s ' ' | cut -d ' ' -f 5)
 ```
 
 
-''ls -l'' reports the size in 5th field, with spaces between fields. 
-''tr'' squeezes spaces (because ''cut'' needs one single space between fields), 
+''ls -l'' reports the size in 5th field, with spaces between fields.
+''tr'' squeezes spaces (because ''cut'' needs one single space between fields),
 and ''cut'' extracts 5th field.
 
 
 ```bash
 
-echo "# ls:" 
+echo "# ls:"
 ls  -la  input.txt
 
-echo "# stat:" 
+echo "# stat:"
 stat input.txt
 
-echo "# Size:" 
+echo "# Size:"
 size1=$(ls -l input.txt | tr -s ' ' | cut -d ' ' -f 5)
 size2=$(wc -c < input.txt | tr -d ' ')
 echo $size1, $size2
@@ -2387,7 +2387,7 @@ _start:
   mov rdx, 0
   syscall
   push rax
-  
+
   mov rdi, rax ; file descriptior
   mov rsi, 0 ; offset
   mov rdx, 2 ; whence
@@ -2397,7 +2397,7 @@ _start:
   ; compare result to actual size
   cmp rax, 11
   jne fail
-  
+
   ; close the file
   pop rdi
   mov rax, 3

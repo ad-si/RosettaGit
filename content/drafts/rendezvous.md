@@ -125,10 +125,10 @@ procedure Rendezvous is
 
    Reserve : aliased Printer (2, null);
    Main    : Printer (1, Reserve'Access);
-   
+
    task Humpty_Dumpty;
    task Mother_Goose;
-   
+
    task body Humpty_Dumpty is
    begin
       Main.Print ("Humpty Dumpty sat on a wall.");
@@ -156,7 +156,7 @@ procedure Rendezvous is
    end Mother_Goose;
 
 begin
-   null;   
+   null;
 end Rendezvous;
 ```
 
@@ -204,15 +204,15 @@ print2:
   print("All the king's horses and all the king's men")
   print("Couldn't put Humpty together again.")
 Return
-  
+
 print(message)
 {
   Static StringToSend
   StringToSend := message
   Gui +LastFound
-  VarSetCapacity(CopyDataStruct, 12, 0) 
+  VarSetCapacity(CopyDataStruct, 12, 0)
   NumPut(StrLen(StringToSend) + 1, CopyDataStruct, 4)
-  NumPut(&StringToSend, CopyDataStruct, 8) 
+  NumPut(&StringToSend, CopyDataStruct, 8)
   SendMessage, 0x4a, 0, &CopyDataStruct
   If ErrorLevel
     MsgBox out of ink
@@ -227,10 +227,10 @@ PrintMonitor(wParam, lParam, msg)
   Critical
   If ink
   {
-    StringAddress := NumGet(lParam + 8)   
+    StringAddress := NumGet(lParam + 8)
     StringLength := DllCall("lstrlen", UInt, StringAddress)
     VarSetCapacity(CopyOfData, StringLength)
-    DllCall("lstrcpy", "str", CopyOfData, "uint", StringAddress)   
+    DllCall("lstrcpy", "str", CopyOfData, "uint", StringAddress)
     printed .= "primaryprinter: " . CopyOfData . "`n"
     ToolTip, primary printer`n: %printed%
     ink--
@@ -249,10 +249,10 @@ Reserve(wParam, lParam, msg)
   Critical
   If ink
   {
-    StringAddress := NumGet(lParam + 8)   
+    StringAddress := NumGet(lParam + 8)
     StringLength := DllCall("lstrlen", UInt, StringAddress)
     VarSetCapacity(CopyOfData, StringLength)
-    DllCall("lstrcpy", "str", CopyOfData, "uint", StringAddress)   
+    DllCall("lstrcpy", "str", CopyOfData, "uint", StringAddress)
     printed .= "reserveprinter: " . CopyOfData . "`n"
     ToolTip, Reserve printer`n: %printed%
     ink--
@@ -267,8 +267,8 @@ Reserve(wParam, lParam, msg)
 
 Basically just synched threads doing printing: since task didn't ask for service type or resource enumeration, and "message passing is stupid" (c.f. talk), the guarding thread is no more than a glorified mutex, hence completely cut out, leaving the threads directly check ink and do print.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <unistd.h>
 #include <omp.h>
 
@@ -586,16 +586,16 @@ The first printouts are there to show the identity of the processes that print. 
 53> rendezvous:task().
 Print <0.251.0> started
 Print <0.252.0> started
-1: Humpty Dumpty sat on a wall.    
-1: Old Mother Goose,    
-1: Humpty Dumpty had a great fall.    
-1: When she wanted to wander,    
-1: All the king's horses and all the king's men,    
-2: Would ride through the air,    
-2: Couldn't put Humpty together again.    
-2: On a very fine gander.    
-2: Jack's mother came in,    
-2: And caught the goose soon,    
+1: Humpty Dumpty sat on a wall.
+1: Old Mother Goose,
+1: Humpty Dumpty had a great fall.
+1: When she wanted to wander,
+1: All the king's horses and all the king's men,
+2: Would ride through the air,
+2: Couldn't put Humpty together again.
+2: On a very fine gander.
+2: Jack's mother came in,
+2: And caught the goose soon,
 
 =ERROR REPORT==== 22-Sep-2013::12:09:56 ===
 Error in process <0.252.0> with exit value: {{nocatch,out_of_ink},[{rendezvous,print_line_done,0,[{file,"rendezvous.erl"},{line,48}]},{rendezvous,print,3,[{file,"rendezvous.erl"},{line,35}]}]}
@@ -605,7 +605,7 @@ Error in process <0.252.0> with exit value: {{nocatch,out_of_ink},[{rendezvous,p
 
 =={{header|F_Sharp|F#}}==
 
-The rendezvous mechanism is realized by using F#'s mailbox processors to implement active objects. 
+The rendezvous mechanism is realized by using F#'s mailbox processors to implement active objects.
 
 It is possible to extract the boilerplate code into a reusable helper class which should be considered when using active objects a lot.
 
@@ -623,13 +623,13 @@ exception OutOfInk
 
 type Printer(id, ?backup:Printer) =
    let mutable ink = 5
-   
+
    // the actual printing logic as a private function
    let print line =
       if ink > 0 then
          printf "%d: " id
          Seq.iter (printf "%c") line
-         printf "\n" 
+         printf "\n"
          ink <- ink - 1
       else
          match backup with
@@ -652,7 +652,7 @@ type Printer(id, ?backup:Printer) =
 
    // public printing method:
    // send Print command and propagate exception if one occurs
-   member x.Print line = 
+   member x.Print line =
       match agent.PostAndReply( fun replyChannel -> Message (Print line, replyChannel) ) with
       | None -> ()
       | Some ex -> raise ex
@@ -663,7 +663,7 @@ open System.Threading
 do
   let main = new Printer(id=1, backup=new Printer(id=2))
 
-  (new Thread(fun () -> 
+  (new Thread(fun () ->
       try
         main.Print "Humpty Dumpty sat on a wall."
         main.Print "Humpty Dumpty had a great fall."
@@ -673,7 +673,7 @@ do
         | OutOfInk -> printfn "      Humpty Dumpty out of ink!"
   )).Start()
 
-  (new Thread(fun () -> 
+  (new Thread(fun () ->
       try
         main.Print "Old Mother Goose"
         main.Print "Would ride through the air"
@@ -822,7 +822,7 @@ func monitor(hardPrint printer, entry, reserve *rSync) {
             // Requeue to "entry point" of reserve printer monitor.
             // Caller stays blocked, and now this goroutine blocks until
             // it gets a response from the reserve printer monitor.
-            // It then transparently relays the response to the caller. 
+            // It then transparently relays the response to the caller.
             entry.response <- reserve.print(data)
 
         default:
@@ -939,7 +939,7 @@ function schedulework(poems)
         while isready(p.errorpath)
             println(take!(p.errorpath))
         end
-        printerclose(p) 
+        printerclose(p)
     end
 end
 
@@ -990,14 +990,14 @@ First a simple printer class whose definition is completely orthogonal to multit
 declare
   class Printer
      attr ink:5
-  
+
      feat id backup
-  
+
      meth init(id:ID backup:Backup<=unit)
         self.id = ID
         self.backup = Backup
      end
-  
+
      meth print(Line)=Msg
         if @ink == 0 then
            if self.backup == unit then
@@ -1137,7 +1137,7 @@ class Printer {
     has Int      $.ink = 5;
     has Lock     $!lock .= new;
     has ::?CLASS $.fallback;
-    
+
     method print ($line) {
         $!lock.protect: {
             if    $!ink      { say "$!id: $line"; $!ink-- }
@@ -1398,14 +1398,14 @@ Output:
 ;;;   - raises exception               (if no ink and no backup)
 (define (printer id ink backup)
   (define (on-line-received line)
-    (cond 
+    (cond
       [(and (= ink 0) (not backup)) (raise 'out-of-ink)]
       [(= ink 0)                    (send backup line)]
       [else                         (display (~a id ":"))
                                     (for ([c line]) (display c))
                                     (newline)]))
   (define ch (make-channel))
-  (thread 
+  (thread
    (λ ()
     (let loop ()
       (receive ch on-line-received)

@@ -44,7 +44,7 @@ BEGIN
             OD;
             count
          END # count divisors # ;
- 
+
     INT max = 15;
     [ max ]INT seq;FOR i TO max DO seq[ i ] := 0 OD;
     INT found := 0;
@@ -65,7 +65,7 @@ BEGIN
         print( ( whole( seq( i ), 0 ), " " ) )
     OD;
     print( ( newline ) )
-    
+
 END
 ```
 
@@ -130,8 +130,8 @@ first 15 terms: 1 2 4 6 16 12 64 24 36 48 1024 60 4096 192 144
 
 {{trans|Go}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define MAX 15
 
@@ -171,7 +171,7 @@ int main() {
 ```txt
 
 The first 15 terms of the sequence are:
-1 2 4 6 16 12 64 24 36 48 1024 60 4096 192 144 
+1 2 4 6 16 12 64 24 36 48 1024 60 4096 192 144
 
 ```
 
@@ -181,8 +181,8 @@ The first 15 terms of the sequence are:
 
 {{trans|C}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 #define MAX 15
 
@@ -224,7 +224,7 @@ int main() {
 ```txt
 
 The first 15 terms of the sequence are:
-1 2 4 6 16 12 64 24 36 48 1024 60 0 192 144 
+1 2 4 6 16 12 64 24 36 48 1024 60 0 192 144
 
 ```
 
@@ -234,7 +234,7 @@ This task uses [http://www.rosettacode.org/wiki/Extensible_prime_generator#The_f
 ```fsharp
 
 // Find Antı-Primes plus. Nigel Galloway: April 9th., 2019
-// Increasing the value 14 will increase the number of anti-primes plus found 
+// Increasing the value 14 will increase the number of anti-primes plus found
 let fI=primes|>Seq.take 14|>Seq.map bigint|>List.ofSeq
 let N=Seq.reduce(*) fI
 let fG g=Seq.unfold(fun ((n,i,e) as z)->Some(z,(n+1,i+1,(e*g)))) (1,2,g)
@@ -414,7 +414,7 @@ public class OEIS_A005179 {
         System.out.printf("The first %d terms of the sequence are:\n", max);
         for (int i = 1, n = 0; n < max; ++i) {
             int k = count_divisors(i);
-            if (k <= max && seq[k - 1] == 0) {        
+            if (k <= max && seq[k - 1] == 0) {
                 seq[k- 1] = i;
                 n++;
             }
@@ -636,8 +636,8 @@ for i=1 to limit do
 end for
 ```
 
-Note: the f[2]>2 test should really be something more like >log(get_primes(-(lf-1))[$])/log(2), 
-apparently, but everything seems ok within the IEEE 754 53/64 bit limits this imposes. 
+Note: the f[2]>2 test should really be something more like >log(get_primes(-(lf-1))[$])/log(2),
+apparently, but everything seems ok within the IEEE 754 53/64 bit limits this imposes.
 It takes longer, afaict, to print the answers than it did to calculate them, tee hee!
 {{out}}
 64-bit (as shown) manages 8 more answers than 32-bit, which as per limit halts on 58: on 32 bit the accuracy limit is 2^53, hence the result for 59, which is 2^58, would get printed wrong since the first /10 needed to print it rounds to the nearest 16 or so. It is quite probably perfectly accurate internally up to much higher limits, but proving/showing that is a bit of a problem, which would in turn probably be easiest to solve by simply rewriting this to use gmp/mpir.
@@ -1032,9 +1032,9 @@ exit                                             /*stick a fork in it,  we're al
 
 ```ruby
 require 'prime'
- 
+
 def num_divisors(n)
-  n.prime_division.inject(1){|prod, (_p,n)| prod *= (n + 1) } 
+  n.prime_division.inject(1){|prod, (_p,n)| prod *= (n + 1) }
 end
 
 def first_with_num_divs(n)
@@ -1086,7 +1086,7 @@ fcn countDivisors(n)
 A005179w:=(1).walker(*).tweak(fcn(n){
    var N=0,cache=Dictionary();
    if(cache.find(n)) return(cache.pop(n));	// prune
-   while(1){ 
+   while(1){
       if(n == (d:=countDivisors(N+=1))) return(N);
       if(n<d and not cache.find(d)) cache[d]=N;
    }

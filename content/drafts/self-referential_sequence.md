@@ -18,20 +18,20 @@ The terms generated grow in length geometrically and never converge.
 Another way to generate a self-referential sequence is to summarize the previous term.
 
 Count how many of each alike digit there is, then concatenate the sum and digit for each of the sorted enumerated digits. Note that the first five terms are the same as for the previous sequence.
-        0, 10, 1110, 3110, 132110, 13123110, 23124110 ... 
+        0, 10, 1110, 3110, 132110, 13123110, 23124110 ...
 Sort the digits largest to smallest. Do not include counts of digits that do not appear in the previous term.
 
 Depending on the seed value, series generated this way always either converge to a stable value or to a short cyclical pattern. (For our purposes, I'll use converge to mean an element matches a previously seen element.) The sequence shown, with a seed value of 0, converges to a stable value of 1433223110 after 11 iterations. The seed value that converges most quickly is 22. It goes stable after the first element. (The next element is 22, which has been seen before.)
 
 
 ;Task:
-Find all the positive integer seed values under 1000000, for the above convergent self-referential sequence, that takes the largest number of iterations before converging. Then print out the number of iterations and the sequence they return. Note that different permutations of the digits of the seed will yield the same sequence. For this task, assume leading zeros are not permitted.  
+Find all the positive integer seed values under 1000000, for the above convergent self-referential sequence, that takes the largest number of iterations before converging. Then print out the number of iterations and the sequence they return. Note that different permutations of the digits of the seed will yield the same sequence. For this task, assume leading zeros are not permitted.
 
 
 ```txt
 Seed Value(s): 9009 9090 9900
 
-Iterations: 21 
+Iterations: 21
 
 Sequence: (same for all three seeds except for first element)
 9009
@@ -374,7 +374,7 @@ CountSubstring(fullstring, substring){
 Output:
 
 ```txt
-Seeds: 9009 9090 9900 
+Seeds: 9009 9090 9900
 Iterations: 21
 Sequence:
 
@@ -437,7 +437,7 @@ Sequence:
         number$ = FNseq(number$)
       NEXT
       END
-      
+
       DEF FNseq(n$)
       LOCAL I%, o$, d%()
       DIM d%(9)
@@ -556,7 +556,7 @@ Sequence:
                   !seqs
               : ?seqs
           )
-      | 
+      |
       )
     )
 & out$("Iterations:" !max !seqs)
@@ -600,8 +600,8 @@ Output:
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -955,7 +955,7 @@ sequence = (n) ->
     if s in seq
       break
     seq.push s
-  
+
     new_cnts = {}
     for digit, cnt of cnts
       incr new_cnts, cnt
@@ -966,13 +966,13 @@ sequence = (n) ->
 incr = (h, k) ->
   h[k] ?= 0
   h[k] += 1
-  
+
 descending = (n) ->
   return true if n < 10
   tens = n / 10
   return false if n % 10 > tens % 10
   descending(tens)
-  
+
 max_len = 0
 for i in [1..1000000]
   if descending(i)
@@ -990,9 +990,9 @@ console.log max_i, max_seq
 
 
 ```txt
- 9900 ["2920", "192210", "19222110", "19323110", "1923123110", "1923224110", "191413323110", 
+ 9900 ["2920", "192210", "19222110", "19323110", "1923123110", "1923224110", "191413323110",
 "191433125110", "19151423125110", "19251413226110", "1916151413325110", "1916251423127110", "1
-91716151413326110", "191726151423128110", "19181716151413327110", "19182716151423129110", 
+91716151413326110", "191726151423128110", "19181716151413327110", "19182716151423129110",
 "29181716151413328110", "19281716151423228110", "19281716151413427110", "19182716152413228110"]
 ```
 
@@ -1031,7 +1031,7 @@ console.log max_i, max_seq
       (conj cur-seq ds))))
 
 (defn candidate-seq
-  "only try an already sorted digit sequence, so we only try equivalent seeds once; 
+  "only try an already sorted digit sequence, so we only try equivalent seeds once;
    e.g. 23 => []; 32 => (convergent-sequence [3 2])"
   [n]
   (let [ds (digits n)]
@@ -1570,7 +1570,7 @@ Extra credit: searching up to 1e+10 does not find a longer sequence.
 ;; generate 'normalized' starter vectors  D[i] = number of digits 'i' (0 <=i < 10)
 ;; reduce graph size : 9009, 9900 ..  will be generated once : vector #(2 0 0 0 0 0 0 0 0 2)
 
-(define (generate D dstart ndigits (sd 0)) 
+(define (generate D dstart ndigits (sd 0))
 (when (> ndigits 0)
 	(set! sd (vector-ref D dstart)) ;; save before recurse
 	(for ((i (in-range 0 (1+ ndigits))))
@@ -1580,7 +1580,7 @@ Extra credit: searching up to 1e+10 does not find a longer sequence.
 		(for ((j (in-range (1+ dstart) 10)))
 		(generate D j  (- ndigits i))))
 	(vector-set! D dstart sd))) ;; restore
-	
+
 
 ;; compute follower of D (at most 99 same digits)
 (define (dnext D (dd 0))
@@ -1592,12 +1592,12 @@ Extra credit: searching up to 1e+10 does not find a longer sequence.
 		(vector-set! N d (1+ (vector-ref N d))) ;; d < 9
 		(begin
 		(set! dd (modulo d 10))
-		(vector-set! N dd (1+ (vector-ref N dd))) 
+		(vector-set! N dd (1+ (vector-ref N dd)))
 		(set! dd (quotient d 10))
-		(vector-set! N dd (1+ (vector-ref N dd))))))  
+		(vector-set! N dd (1+ (vector-ref N dd))))))
 		N)
-		
-		
+
+
 ;; update all nodes in same sequence
 ;; seq-length (next D) = 1 - seq-length(D)
 (define (sequence D)
@@ -1605,63 +1605,63 @@ Extra credit: searching up to 1e+10 does not find a longer sequence.
 	(unless (hash-ref H D)
 		  (hash-set H  D d)
 		  (dists (dnext D ) (1- d))))
-		  
+
 		(unless  (hash-ref H D)
-				 (dists D (sequence-length D))))		
-		
+				 (dists D (sequence-length D))))
+
 ;; sequence length from D
 ;; stops on loop found (node N)
 (define (sequence-length D )
-(define (looper N looplg depth) ;; looper 2 : a b a 
+(define (looper N looplg depth) ;; looper 2 : a b a
 	(when ( > depth 0)
 			(hash-set H N looplg)
 			(looper (dnext N)  looplg (1- depth))))
-			
+
 		(define followers (make-hash))
 		(define N (dnext D))
 		(define seqlg 0)
 		(define looplg 0)
-		
+
 		(hash-set followers D 0)
-		
+
 	(set! seqlg
 		(for ((lg (in-naturals 1 )))
 			 #:break (hash-ref H N) =>  (+ lg (hash-ref H N)) ;; already known
 			 #:break (hash-ref followers N) => lg ;; loop found
 			 (hash-set followers N lg)
 			 (set! N (dnext N))))
-			 
+
 ;; update nodes in loop : same seq-length
 		(when (hash-ref followers N) ;; loop found
 			(set! looplg  ( - seqlg  (hash-ref followers N)))
 			(looper N looplg looplg))
-		
+
 		seqlg )
-		
+
 ;; O U T P U T
-;; backwards from D - normalized vector - to numbers (as strings) 
+;; backwards from D - normalized vector - to numbers (as strings)
 (define (starters D)
 (define (not-leading-zero list) (!zero? (first list)))
-	(map list->string 
+	(map list->string
 	(filter not-leading-zero (make-set (permutations (for/fold (acc null) ((d D) (i 10))
 		#:continue (zero? d)
 		(append acc   (for/list ((j d)) i))))))))
-	
-		
+
+
 ;; printing one node
 (define (D-print D)
 	 (set! D (reverse (vector->list D)))
 	 (for/string ( (d D) (i (in-range 9 -1 -1)))
 		#:continue (zero? d)
 		(string-append d i)))
-			
+
 ;; print graph contents
 (define (print-sequence D)
 		(writeln 1 (starters D))
 		(writeln 2 (D-print D ))
 		(for ((i (in-range 1 (hash-ref H D))))
 			(writeln (+ i 2)  (D-print (setv! D (dnext D))))))
-	
+
 
 ;; TA S K
 (define (task (n 6)  (verbose #t))
@@ -1672,7 +1672,7 @@ Extra credit: searching up to 1e+10 does not find a longer sequence.
 		(print-sequence (first kv))))
 
 	(writeln (expt 10 n) '--> 'max-sequence= (1+ seqmax)  'nodes= (length (hash-values H))))
-	
+
 
 ```
 
@@ -1681,37 +1681,37 @@ Extra credit: searching up to 1e+10 does not find a longer sequence.
 ```scheme
 
 (task 6)
-1     (9009 9090 9900)    
-2     2920    
-3     192210    
-4     19222110    
-5     19323110    
-6     1923123110    
-7     1923224110    
-8     191413323110    
-9     191433125110    
-10     19151423125110    
-11     19251413226110    
-12     1916151413325110    
-13     1916251423127110    
-14     191716151413326110    
-15     191726151423128110    
-16     19181716151413327110    
-17     19182716151423129110    
-18     29181716151413328110    
-19     19281716151423228110    
-20     19281716151413427110    
-21     19182716152413228110    
-1000000     -->     max-sequence=     21     nodes=     10926    
+1     (9009 9090 9900)
+2     2920
+3     192210
+4     19222110
+5     19323110
+6     1923123110
+7     1923224110
+8     191413323110
+9     191433125110
+10     19151423125110
+11     19251413226110
+12     1916151413325110
+13     1916251423127110
+14     191716151413326110
+15     191726151423128110
+16     19181716151413327110
+17     19182716151423129110
+18     29181716151413328110
+19     19281716151423228110
+20     19281716151413427110
+21     19182716152413228110
+1000000     -->     max-sequence=     21     nodes=     10926
 
 (task 7 #f)
-10000000     -->     max-sequence=     21     nodes=     23432    
+10000000     -->     max-sequence=     21     nodes=     23432
 (task 8 #f)
-100000000     -->     max-sequence=     21     nodes=     47359    
+100000000     -->     max-sequence=     21     nodes=     47359
 (task 9 #f)
-1000000000     -->     max-sequence=     21     nodes=     97455    
+1000000000     -->     max-sequence=     21     nodes=     97455
 (task 10 #f)
-10000000000     -->     max-sequence=     21     nodes=     188493    
+10000000000     -->     max-sequence=     21     nodes=     188493
 
 
 ```
@@ -1933,7 +1933,7 @@ Maximal length: 21
 Seed Value:
 9009
 9090
-9900 
+9900
 Sequence:
 9009
 2920
@@ -2282,21 +2282,21 @@ main = mapM_ (mapM_ print) $ -- Print out all the numbers
 =={{header|Icon}} and {{header|Unicon}}==
 
 ```Icon
-link printf 
+link printf
 
 procedure main()
-every L := !longestselfrefseq(1000000) do 
+every L := !longestselfrefseq(1000000) do
    every printf(" %i : %i\n",i := 1 to *L,L[i])
 end
 
 
 procedure longestselfrefseq(N)    #: find longest sequences from 1 to N
 
-mlen := 0 
+mlen := 0
 every L := selfrefseq(n := 1 to N) do {
-   if mlen <:= *L then 
-      ML := [L] 
-   else if mlen = *L then 
+   if mlen <:= *L then
+      ML := [L]
+   else if mlen = *L then
       put(ML,L)
    }
 
@@ -2306,8 +2306,8 @@ end
 procedure selfrefseq(n) #: return list of sequence oeis:A036058 for seed n
 S := set()
 L := []
-every p := seq(1) do 
-   if member(S,n) then return L   # ends at a repeat 
+every p := seq(1) do
+   if member(S,n) then return L   # ends at a repeat
    else {
       insert(S,n)
       put(L,n)
@@ -2318,13 +2318,13 @@ end
 procedure nextselfrefseq(n)  #: return next element of sequence oeis:A036058
 every (Counts := table(0))[integer(!n)] +:= 1              # count digits
 every (n := "") ||:= (0 < Counts[i := 9 to 0 by -1]) || i  # assemble counts
-return integer(n)                                           
+return integer(n)
 end
 ```
 
 
-{{libheader|Icon Programming Library}}  
-[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf, sprintf, fprintf, etc.] 
+{{libheader|Icon Programming Library}}
+[http://www.cs.arizona.edu/icon/library/src/procs/printf.icn printf.icn provides printf, sprintf, fprintf, etc.]
 
 Sample of Output:
 ```txt
@@ -2379,14 +2379,14 @@ procedure main(A)
         }
     dumpSequences(mT)
 end
-    
+
 procedure sequence(n)                   # produce sequence of SDS with seed n
     every (repeats := [], iter := seq(), put(repeats, n)) do
         if (n := nElem(n)) == !repeats then return repeats   # Converged
 end
 
 procedure nElem(n)	                # given n, produce its self-description
-    every (n1 := "", c := !cset(n)) do 
+    every (n1 := "", c := !cset(n)) do
         (every (d := 0) +:= (upto(c, n),1)) | (n1 := d||c||n1)
     return n1
 end
@@ -2403,7 +2403,7 @@ Output with <tt>limit = 1000000</tt>:
 
 ```txt
 
-Seeds: 9009 9090 9900 
+Seeds: 9009 9090 9900
 
 Iterations: 21
 
@@ -2443,7 +2443,7 @@ digits=: 10&#.inv"0 :. ([: ".@; (<'x'),~":&.>)
 summar=: (#/.~ ,@,. ~.)@\:~&.digits
 sequen=: ~.@(, summar@{:)^:_
 values=: ~. \:~&.digits i.1e6
-allvar=: [:(#~(=&<.&(10&^.) >./))@~.({~ perm@#)&.(digits"1) 
+allvar=: [:(#~(=&<.&(10&^.) >./))@~.({~ perm@#)&.(digits"1)
 ```
 
 
@@ -2635,7 +2635,7 @@ Sequence:
 def runs:
   reduce .[] as $item
     ( [];
-      if . == [] then [ [ $item, 1] ] 
+      if . == [] then [ [ $item, 1] ]
       else  .[length-1] as $last
             | if $last[0] == $item
               then (.[0:length-1] + [ [$item, $last[1] + 1] ] )
@@ -2644,16 +2644,16 @@ def runs:
       end ) ;
 
 # string to string
-def next_self_referential: 
-  def runs2integer: # input is an array as produced by runs, 
+def next_self_referential:
+  def runs2integer: # input is an array as produced by runs,
     # i.e. an array of [count, n] pairs, where count is an int,
     # and n is an "exploded" digit
     reduce .[] as $pair
       (""; . + ($pair[1] | tostring) + ([$pair[0]]|implode) ) ;
-    
+
   explode | sort | reverse | runs | runs2integer;
 
-# Given an integer as a string, 
+# Given an integer as a string,
 # compute the entire sequence (of strings) to convergence:
 def sequence_of_self_referentials:
   def seq:
@@ -2667,7 +2667,7 @@ def sequence_of_self_referentials:
 def maximals(n):
   def interesting:
     tostring | (. == (explode | sort | reverse | implode));
-  
+
   reduce range(0;n) as $i
     ([[], 0];  # maximalseeds, length
       if ($i | interesting) then
@@ -2754,12 +2754,12 @@ function findnextterm(prevterm)
                 push!(reversed, '0'); push!(reversed, '1')
             else
                 push!(reversed, Char(UInt8(counts[c]) + UInt8('0')))
-            end 
+            end
         end
     end
     reverse(reversed)
 end
- 
+
 function findsequence(seedterm)
     term = seedterm
     sequence = Vector{Vector{Char}}()
@@ -2799,7 +2799,7 @@ end
 selfseq(1000000)
 
 ```
- {{output}} 
+ {{output}}
 ```txt
 
 The longest sequence length is 21.
@@ -2891,9 +2891,9 @@ fun selfRefSeq(s: String): String {
     sb.setLength(0)  // faster than using a local StringBuilder object
     for (d in '9' downTo '0') {
         if (d !in s) continue
-        val count = s.count { it == d }      
+        val count = s.count { it == d }
         sb.append("$count$d")
-    } 
+    }
     return sb.toString()
 }
 
@@ -2916,7 +2916,7 @@ fun main(args: Array<String>) {
     val elements = mutableListOf<String>()
     for (n in 1 until LIMIT) {
         if (sieve[n] > 0) continue
-        elements.clear()  
+        elements.clear()
         var next = n.toString()
         elements.add(next)
         while (true) {
@@ -2931,7 +2931,7 @@ fun main(args: Array<String>) {
                         val k = perm.joinToString("").toInt()
                         sieve[k] = size
                     }
-                }    
+                }
                 break
             }
             elements.add(next)
@@ -2947,7 +2947,7 @@ fun main(args: Array<String>) {
             next = selfRefSeq(next)
         }
         println()
-    } 
+    }
 }
 ```
 
@@ -3127,7 +3127,7 @@ Sample sequence:
 
 ```Mathematica
 selfRefSequence[ x_ ] := FromDigits@Flatten@Reverse@Cases[Transpose@{RotateRight[DigitCount@x,1], Range[0,9]},Except[{0,_}]]
-DisplaySequence[ x_ ] := NestWhileList[selfRefSequence,x,UnsameQ[##]&,4] 
+DisplaySequence[ x_ ] := NestWhileList[selfRefSequence,x,UnsameQ[##]&,4]
 data= {#, Length@DisplaySequence[#]}&/@Range[1000000];
 Print["Values: ", Select[data  ,#[[2]] == Max@data[[;;,2]]&][[1,;;]]]
 Print["Iterations: ", Length@DisplaySequence[#]&/@Select[data  ,#[[2]] == Max@data[[;;,2]]&][[1,;;]]]
@@ -3351,7 +3351,7 @@ integer cycle = 1
         end for
         if find(next,seen) then exit end if
         seen = append(seen,next)
-        this = next             
+        this = next
         cycle += 1
     end while
     if cycle>maxcycle then
@@ -3499,7 +3499,7 @@ def A036058_length(numberstring='0', printit=False):
         queue_index +=1
         queue_index %=3
     return iterations
-    
+
 def max_A036058_length( start_range=range(11) ):
     already_done = set()
     max_len = (-1, [])
@@ -3655,7 +3655,7 @@ Length: 21
 
 ## REXX
 
-The REXX language supports   '''sparse'''   (stemmed) arrays, so this program utilizes REXX's hashing of 
+The REXX language supports   '''sparse'''   (stemmed) arrays, so this program utilizes REXX's hashing of
 
 array elements to speed up the checking to see if a sequence has been generated before.
 
@@ -3803,7 +3803,7 @@ limit = 1_000_000
 max_len = 0
 max_vals = []
 
-1.upto(limit - 1) do |n| 
+1.upto(limit - 1) do |n|
   seq = selfReferentialSequence_cached(n)
   if seq.length > max_len
     max_len = seq.length
@@ -3816,7 +3816,7 @@ end
 puts "values: #{max_vals.inspect}"
 puts "iterations: #{max_len}"
 puts "sequence:"
-selfReferentialSequence_cached(max_vals[0]).each_with_index do |val, idx| 
+selfReferentialSequence_cached(max_vals[0]).each_with_index do |val, idx|
   puts "%2d %d" % [idx + 1, val]
 end
 ```
@@ -3869,13 +3869,13 @@ object SelfReferentialSequence {
     val nums = ParVector.range(1, 1000001).map(SafeLong(_))
     val seqs = nums.map{ n => val seq = genSeq(n); (n, seq, seq.length) }.toVector.sortWith((a, b) => a._3 > b._3)
     val maxes = seqs.takeWhile(t => t._3 == seqs.head._3)
-    
+
     println(s"Seeds: ${maxes.map(_._1).mkString(", ")}\nIterations: ${maxes.head._3}")
     for(e <- maxes.distinctBy(a => nextTerm(a._1.toString))){
       println(s"\nSeed: ${e._1}\n${e._2.mkString("\n")}")
     }
   }
-  
+
   def genSeq(seed: SafeLong): Vector[String] = {
     @tailrec
     def gTrec(seq: Vector[String], n: String): Vector[String] = {
@@ -3884,7 +3884,7 @@ object SelfReferentialSequence {
     }
     gTrec(Vector[String](), seed.toString)
   }
-  
+
   def nextTerm(num: String): String = {
     @tailrec
     def dTrec(digits: Vector[(Int, Int)], src: String): String = src.headOption match{
@@ -4276,8 +4276,8 @@ fcn decending(str) //--> True if digits are in descending (or equal) order
    { (not str.walker().zipWith('<,str[1,*]).filter1()) }
 
 szs:=List.createLong(25); max:=0;
-foreach seed in (N){ 
-   z:=seed.toString(); 
+foreach seed in (N){
+   z:=seed.toString();
    if(decending(z)){ // 321 generates same sequence as 312,132,123,213
       len:=sequence(z).len();
       if(len>max) szs.clear();

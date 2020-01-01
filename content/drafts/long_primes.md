@@ -71,8 +71,8 @@ include wording/verbiage for bases other than ten.
 
 {{trans|Go}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 
 #define TRUE 1
@@ -261,7 +261,7 @@ primes |> Seq.skip 3 |> Seq.takeWhile(fun n->n<500) |> Seq.filter isLongPrime |>
 
 ```txt
 
-7 17 19 23 29 47 59 61 97 109 113 131 149 167 179 181 193 223 229 233 257 263 269 313 337 367 379 383 389 419 433 461 487 491 499 
+7 17 19 23 29 47 59 61 97 109 113 131 149 167 179 181 193 223 229 233 257 263 269 313 337 367 379 383 389 419 433 461 487 491 499
 
 ```
 
@@ -485,7 +485,7 @@ MAIN: long-primes-demo
 ```txt
 
 Long primes <= 500:
-7 17 19 23 29 47 59 61 97 109 113 131 149 167 179 181 193 223 229 233 257 263 269 313 337 367 379 383 389 419 433 461 487 491 499 
+7 17 19 23 29 47 59 61 97 109 113 131 149 167 179 181 193 223 229 233 257 263 269 313 337 367 379 383 389 419 433 461 487 491 499
 
 35   long primes <= 500
 60   long primes <= 1000
@@ -686,10 +686,10 @@ func main() {
 
 ```txt
 
-The long primes up to 500 are: 
+The long primes up to 500 are:
 [7 17 19 23 29 47 59 61 97 109 113 131 149 167 179 181 193 223 229 233 257 263 269 313 337 367 379 383 389 419 433 461 487 491 499]
 
-The number of long primes up to: 
+The number of long primes up to:
     500 is 35
    1000 is 60
    2000 is 116
@@ -714,7 +714,7 @@ The number of long primes up to:
    NB. 0 is false, 1 is true.
 
    long =: ( <:@:[ = #@~.@( [: }. ( | 10&* )^:( <@[ ) ) )&1&>
-   
+
 
    NB. demonstration of the long verb
    NB. long applied to integers 3 through 9 inclusively
@@ -723,13 +723,13 @@ The number of long primes up to:
 3 4 5 6 7 8 9
 0 0 0 0 1 0 0
 
- 
+
    NB. find the number of primes through 64000
 
   [ N =: p:^:_1 ] 64000
 6413
 
- 
+
    NB. copy the long primes, excluding 2, the first.
 
    LONG_PRIMES =: (#~ long) p: >: i. N
@@ -770,7 +770,7 @@ function divisors(n)
     end
     return length(f) == 1 ? [one(n), n] : sort!(f)
 end
- 
+
 function islongprime(p)
     for i in divisors(p-1)
         if powermod(10, i, p) == 1
@@ -779,7 +779,7 @@ function islongprime(p)
     end
     false
 end
- 
+
 println("Long primes ≤ 500: ")
 for i in 2:500
     if islongprime(i)
@@ -787,7 +787,7 @@ for i in 2:500
     end
 end
 print("\n\n")
- 
+
 for i in [500, 1000, 2000, 4000, 8000, 16000, 32000, 64000]
     println("Number of long primes ≤ $i: $(sum(map(x->islongprime(x), 1:i)))")
 end
@@ -969,7 +969,7 @@ Module LongPrimes {
       i=500
       Print "The number of long primes up to:"
       print i," is ";acc
-      stp++     
+      stp++
       m=each(stops,1,-2)
       while m
             for i=array(m)+1 to array(m,m^+1)
@@ -980,7 +980,7 @@ Module LongPrimes {
                   if empty then exit for
             next i
             print array(m,m^+1)," is ";acc
-      end While      
+      end While
 }
 LongPrimes
 
@@ -991,10 +991,10 @@ LongPrimes
 
 ```txt
 
-The long primes up to 500 are: 
+The long primes up to 500 are:
 [7 17 19 23 29 47 59 61 97 109 113 131 149 167 179 181 193 223 229 233 257 263 269 313 337 367 379 383 389 419 433 461 487 491 499]
 
-The number of long primes up to: 
+The number of long primes up to:
     500 is 35
    1000 is 60
    2000 is 116
@@ -1008,7 +1008,7 @@ The number of long primes up to:
 
 ## Pascal
 
-first post.old program modified. Using Euler Phi 
+first post.old program modified. Using Euler Phi
    www . arndt-bruenner.de/mathe/scripts/periodenlaenge.htm
 
 
@@ -1018,7 +1018,7 @@ PROGRAM Periode;
 
 {$IFDEF FPC}
   {$MODE Delphi}
-  
+
   {$OPTIMIZATION ON}
   {$OPTIMIZATION Regvar}
   {$OPTIMIZATION Peephole}
@@ -1026,14 +1026,14 @@ PROGRAM Periode;
   {$OPTIMIZATION asmcse}
 {$else}
   {$Apptype Console}
-{$ENDIF}  
+{$ENDIF}
 
-uses  
+uses
   sysutils;
-  
+
 const
   cBASIS = 10;
-  PRIMFELDOBERGRENZE = 6542; 
+  PRIMFELDOBERGRENZE = 6542;
   {Das sind alle Primzahlen bis 2^16}
   {Das reicht fuer al8le Primzahlen bis 2^32}
   TESTZAHL = 500;//429496709;//High(Dword) DIV cBasis;
@@ -1044,7 +1044,7 @@ type
                      Potenz  : DWord;
                    end;
    //2*3*5*7*11*13*17*19*23  *29 > DWord also maximal 9 Faktoren
-   tFaktorFeld =  array [1..9] of TFaktorPotenz;//DWord                           
+   tFaktorFeld =  array [1..9] of TFaktorPotenz;//DWord
 // tFaktorFeld =  array [1..15] of TFaktorPotenz;//QWord
    tFaktorisieren = class(TObject)
                       private
@@ -1064,37 +1064,37 @@ type
                         procedure Fakteinfuegen(var Zahl:Dword;inFak:Dword);
                         function  BasisPeriodeExtrahieren(var inZahl:Dword):DWord;
                         procedure NachkommaPeriode(var OutText: String);
-                      public 
-                        constructor create; overload;       
-                        function  Prim(inZahl:Dword):Boolean;        
+                      public
+                        constructor create; overload;
+                        function  Prim(inZahl:Dword):Boolean;
                         procedure AusgabeFaktorfeld(n : DWord);
                         procedure Faktorisierung (inZahl: DWord);
-                        procedure TeilerErmitteln; 
+                        procedure TeilerErmitteln;
                         procedure PeriodeErmitteln(inZahl:Dword);
-                        function  BasExpMod( b, e, m : Dword) : DWord; 
-                                               
-                     property 
+                        function  BasExpMod( b, e, m : Dword) : DWord;
+
+                     property
                         EulerPhi : Dword read fEulerPhi;
-                     property    
+                     property
                         PeriodenLaenge: DWord read fPeriodenLaenge ;
-                     property    
+                     property
                         StartPeriode: DWord read fStartPeriode ;
-                    end;  
-                    
+                    end;
+
 constructor tFaktorisieren.create;
-begin  
+begin
   inherited;
   PrimFeldAufbauen;
-  
-  fFakZahl  := 0;  
+
+  fFakZahl  := 0;
   fFakBasis := cBASIS;
   Faktorisierung(fFakBasis);
-  fBasFakt := fFaktoren;  
+  fBasFakt := fFaktoren;
 
-  fFakZahl := 0;  
+  fFakZahl := 0;
   fEulerPhi := 1;
   fPeriodenLaenge :=0;
-  fFakZahl := 0;  
+  fFakZahl := 0;
   fFakAnzahl := 0;
   fAnzahlMoeglicherTeiler := 0;
 end;
@@ -1110,11 +1110,11 @@ Begin
     result := (fAnzahlMoeglicherTeiler = 2);
     exit;
     end;
-  result := false;  
+  result := false;
   if inZahl >1 then
     begin
-    result := true;    
-    Pos := 1;  
+    result := true;
+    Pos := 1;
     Wurzel:= trunc(sqrt(inZahl));
     While fPrimFeld[Pos] <= Wurzel do
       begin
@@ -1127,7 +1127,7 @@ Begin
       IF Pos > High(fPrimFeld) then
         break;
       end;
-    end;  
+    end;
 end;
 
 Procedure tFaktorisieren.PrimFeldAufbauen;
@@ -1137,7 +1137,7 @@ const
 var
   TestaufPrim,
   Zaehler,delta : Dword;
-  
+
 begin
 Zaehler := 1;
 fPrimFeld[Zaehler] := 2;
@@ -1187,8 +1187,8 @@ var
 begin
 if fFakZahl = inZahl then
   exit;
-  
-fPeriodenLaenge := 0;  
+
+fPeriodenLaenge := 0;
 fFakZahl   := inZahl;
 fEulerPhi  := 1;
 fFakAnzahl := 0;
@@ -1210,14 +1210,14 @@ If inZahl>1 then
   Fakteinfuegen(inZahl,inZahl);
 TeilerErmitteln;
 end; {Faktorisierung}
-  
+
 procedure tFaktorisieren.AusgabeFaktorfeld(n : DWord);
 var
   i :integer;
 begin
   if fFakZahl <> n then
     Faktorisierung(n);
-  write(fAnzahlMoeglicherTeiler:5,' Faktoren ');      
+  write(fAnzahlMoeglicherTeiler:5,' Faktoren ');
 
   For i := 1 to fFakAnzahl-1 do
     with fFaktoren[i] do
@@ -1231,7 +1231,7 @@ begin
     else
       write(Faktor);
 
-  writeln('  Euler Phi: ',fEulerPhi:12,PeriodenLaenge:12);      
+  writeln('  Euler Phi: ',fEulerPhi:12,PeriodenLaenge:12);
 end;
 
 procedure tFaktorisieren.TeilerErmitteln;
@@ -1243,21 +1243,21 @@ var
     i,
     Pot : DWord;
   begin
-    Pot := 1;  
+    Pot := 1;
     i := 0;
     repeat
       IF n > Low(fFaktoren) then
         FaktorAufbauen(Pot*Faktor,n-1)
-      else  
+      else
         begin
         FTeiler[Position] := Pot*Faktor;
         inc(Position);
         end;
-      Pot := Pot*fFaktoren[n].Faktor;   
+      Pot := Pot*fFaktoren[n].Faktor;
       inc(i);
     until  i > fFaktoren[n].Potenz;
   end;
-  
+
 begin
   Position:= 0;
   setlength(FTeiler,fAnzahlMoeglicherTeiler);
@@ -1270,7 +1270,7 @@ begin
       begin
       Position := fTeiler[j];
       fTeiler[j] := fTeiler[j+1];
-      fTeiler[j+1]:= Position;    
+      fTeiler[j+1]:= Position;
       dec(j);
       end;
     end;
@@ -1285,16 +1285,16 @@ begin
   result := 0;
   For i := Low(fBasFakt) to High(fBasFakt) do
     begin
-    with fBasFakt[i] do 
+    with fBasFakt[i] do
       begin
       IF Faktor = 0 then
         BREAK;
       Teiler := Faktor;
       For cnt := 2 to Potenz do
         Teiler := Teiler*Faktor;
-      end;   
-    cnt := 0;  
-    while (inZahl<> 0) AND (inZahl mod Teiler = 0) do 
+      end;
+    cnt := 0;
+    while (inZahl<> 0) AND (inZahl mod Teiler = 0) do
       begin
       inZahl := inZahl div Teiler;
       inc(cnt);
@@ -1338,56 +1338,56 @@ begin
 
   Faktorisierung(inZahl);
   fPeriodenlaenge := TempPer;
-  fStartPeriode   := TempBasPer;  
+  fStartPeriode   := TempBasPer;
 end;
 
 procedure tFaktorisieren.NachkommaPeriode(var OutText: String);
 var
   i,
   limit : integer;
-  
+
   Rest,
   Rest1,
   Divi,
   basis: DWord;
   pText : pChar;
-  
+
   procedure Ziffernfolge(Ende: longint);
-  var 
+  var
     j : longint;
   begin
     j := i-Ende;
-    
+
     while j < 0 do
       begin
-      Rest := Rest *Basis;      
+      Rest := Rest *Basis;
       Rest1:= Rest Div Divi;
-      Rest := Rest-Rest1*Divi;//== Rest1 Mod Divi     
-    
+      Rest := Rest-Rest1*Divi;//== Rest1 Mod Divi
+
       pText^ := chr(Rest1+Ord('0'));
       inc(pText);
 
       inc(j);
 	  end;
-	
+
 	i := Ende;
   end;
-  
+
 begin
   limit:= fStartPeriode+fPeriodenlaenge;
-    
+
   setlength(OutText,limit+2+2+5);
   OutText[1]:='0';
   OutText[2]:='.';
   pText := @OutText[3];
 
   Rest := 1;
-  Divi := fFakZahl; 
+  Divi := fFakZahl;
   Basis := fFakBasis;
-  
+
   i := 0;
   Ziffernfolge(fStartPeriode);
-  if fPeriodenlaenge = 0 then 
+  if fPeriodenlaenge = 0 then
     begin
     setlength(OutText,fStartPeriode+2);
     EXIT;
@@ -1398,33 +1398,33 @@ begin
   pText^ := '_'; inc(pText);
 
   Ziffernfolge(limit+5);
-end;  
+end;
 
-type 
+type
    tZahl   = integer;
    tRestFeld = array[0..31] of integer;
 
 VAR
     F : tFaktorisieren;
-  
-function tFaktorisieren.BasExpMod( b, e, m : Dword) : DWord; 
-begin 
-  Result := 1; 
+
+function tFaktorisieren.BasExpMod( b, e, m : Dword) : DWord;
+begin
+  Result := 1;
   IF m = 0 then
     exit;
-  Result := 1; 
-  while ( e > 0 ) do 
-    begin 
-    if (e AND 1) <> 0 then 
-      Result :=  (Result * int64(b)) mod m; 
-    b := (int64(b) * b ) mod m; 
-    e := e shr 1; 
-    end; 
+  Result := 1;
+  while ( e > 0 ) do
+    begin
+    if (e AND 1) <> 0 then
+      Result :=  (Result * int64(b)) mod m;
+    b := (int64(b) * b ) mod m;
+    e := e shr 1;
+    end;
 end;
 
 procedure start;
 VAR
-    Limit,    
+    Limit,
     Testzahl : DWord;
     longPrimCount  : int64;
     t1,t0: TDateTime;
@@ -1437,7 +1437,7 @@ BEGIN
 
   repeat
     write(Limit:8,': ');
-    repeat 
+    repeat
       if F.Prim(Testzahl) then
       begin
         F.PeriodeErmitteln(Testzahl);
@@ -1446,7 +1446,7 @@ BEGIN
           inc(longPrimCount);
           IF Limit = 500 then
             write(TestZahl,',');
-        end    
+        end
       end;
       inc(Testzahl);
     until TestZahl = Limit;
@@ -1455,14 +1455,14 @@ BEGIN
     t1:= time;
     If (t1-t0)>1/864000 then
        write(FormatDateTime('HH:NN:SS.ZZZ',t1-T0));
-    writeln;   
+    writeln;
  until Limit > 10*1000*1000;
-    
+
 t1 := time;
 writeln;
 writeln('count of long primes ',longPrimCount);
 writeln('Benoetigte Zeit ',FormatDateTime('HH:NN:SS.ZZZ',T1-T0));
- 
+
 END;
 
 BEGIN
@@ -1470,7 +1470,7 @@ BEGIN
   writeln('Start');
   start;
   writeln('Fertig.');
-  F.free;  
+  F.free;
   readln;
 end.
 ```
@@ -1480,15 +1480,15 @@ end.
 ```txt
 sh-4.4# ./Periode
 Start
-     500: 7,17,19,23,29,47,59,61,97,109,113,131,149,167,179,181,193,223,229,233,257,263,269,313,337,367,379,383,389,419,433,461,487,491,499,  .. count       35 
-    1000:   .. count       60 
-    2000:   .. count      116 
-    4000:   .. count      218 
-    8000:   .. count      390 
-   16000:   .. count      716 
-   32000:   .. count     1300 
-   64000:   .. count     2430 
-  128000:   .. count     4498 
+     500: 7,17,19,23,29,47,59,61,97,109,113,131,149,167,179,181,193,223,229,233,257,263,269,313,337,367,379,383,389,419,433,461,487,491,499,  .. count       35
+    1000:   .. count       60
+    2000:   .. count      116
+    4000:   .. count      218
+    8000:   .. count      390
+   16000:   .. count      716
+   32000:   .. count     1300
+   64000:   .. count     2430
+  128000:   .. count     4498
   256000:   .. count     8434 00:00:00.100
   512000:   .. count    15920 00:00:00.220
  1024000:   .. count    30171 00:00:00.494
@@ -1547,7 +1547,7 @@ Number of long primes ≤ 64000: 2430
 
 
 
-###  Using znorder 
+###  Using znorder
 
 
 Faster due to going directly over primes and using znorder.  Takes one second to count to 8,192,000.
@@ -1692,7 +1692,7 @@ integer maxN = 500*power(2,14)--8)
         if is_long_prime(prime) then
             if prime<500 then
                 long_primes &= prime
-            end if      
+            end if
             if prime>n then
                 if n=500 then
                     printf(1,"The long primes up to 500 are:\n")
@@ -1889,11 +1889,11 @@ The number of long primes up to:
 
 ## REXX
 
-<!--   The three versions of REXX programs have been re-run and they produce the correct results.  
-       I had re-wrote the   .len   function to use a faster method, and the re-write was correct; 
+<!--   The three versions of REXX programs have been re-run and they produce the correct results.
+       I had re-wrote the   .len   function to use a faster method, and the re-write was correct;
        the older function had returned incorrect results where the (smaller) precision  (decimal
-       digits)  was yielding incorrect results for integers greater than a certain amount,  and I 
-       didn't update the corrected output for 32,000.   !-->  
+       digits)  was yielding incorrect results for integers greater than a certain amount,  and I
+       didn't update the corrected output for 32,000.   !-->
 For every   '''doubling'''   of the limit, it takes about roughly   '''5'''   times longer to compute the long primes.
 
 ### uses odd numbers
@@ -2037,7 +2037,7 @@ genP: @.=0; @.2=1; @.3=1; @.5=1; @.7=1; @.11=1;   !.=0; !.1=2; !.2=3; !.3=5; !.4
       return p
 ```
 
-{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}} 
+{{out|output|text=  is identical to the 1<sup>st</sup> REXX version.}}
 
 
 
@@ -2059,7 +2059,7 @@ def find_period(n)
   r, period = 1, 0
   (1...n).each {r = (10 * r) % n}
   rr = r
-  loop do 
+  loop do
     r = (10 * r) % n
     period += 1
     break if r == rr
@@ -2126,7 +2126,7 @@ Prime.each(batas).each do |prime|
       i-=1
       cek.slice!(-2, 2) # Shortening checked string to reduce checking process load
     end
-    
+
     until i == 0
       break if cek[0, (cek.size/i)*i].scan(/.{#{i}}/).uniq.length == 1
       i-=1

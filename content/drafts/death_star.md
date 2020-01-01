@@ -23,7 +23,7 @@ tags = []
 [[File:Deathstar-tcl.gif|400px|thumb]]
 
 ;Task:
-Display a region that consists of a large sphere with part of a smaller sphere removed from it as a result of geometric subtraction. 
+Display a region that consists of a large sphere with part of a smaller sphere removed from it as a result of geometric subtraction.
 
 (This will basically produce a shape like a "death star".)
 
@@ -161,8 +161,8 @@ rt
 
 Primitive ray tracing.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 #include <unistd.h>
 
@@ -408,29 +408,29 @@ const cShades = '.:!*oe&#%@';
 type TVector = array [0..2] of Float;
 
 var light : TVector = [-50.0, 30, 50];
- 
+
 procedure Normalize(var v : TVector);
 begin
    var len := Sqrt(v[0]*v[0] + v[1]*v[1] + v[2]*v[2]);
    v[0] /= len; v[1] /= len; v[2] /= len;
 end;
- 
+
 function Dot(x, y : TVector) : Float;
 begin
    var d :=x[0]*y[0] + x[1]*y[1] + x[2]*y[2];
-   if d<0 then 
-      Result:=-d 
+   if d<0 then
+      Result:=-d
    else Result:=0;
 end;
- 
-type 
+
+type
    TSphere = record
       cx, cy, cz, r : Float;
    end;
-   
+
 const big : TSphere = (cx: 20; cy: 20; cz: 0; r: 20);
 const small : TSphere = (cx: 7; cy: 7; cz: -10; r: 15);
- 
+
 function HitSphere(sph : TSphere; x, y : Float; var z1, z2 : Float) : Boolean;
 begin
    x -= sph.cx;
@@ -442,7 +442,7 @@ begin
    z2 := sph.cz + zsq;
    Result:=True;
 end;
- 
+
 procedure DrawSphere(k, ambient : Float);
 var
    i, j, intensity : Integer;
@@ -454,7 +454,7 @@ begin
       y := i + 0.5;
       for j := Trunc(big.cx-2*big.r) to Trunc(big.cx+2*big.r) do begin
          x := (j-big.cx)/2 + 0.5 + big.cx;
- 
+
          if not HitSphere(big, x, y, zb1, zb2) then begin
             Print(' ');
             continue;
@@ -484,7 +484,7 @@ begin
                vec[2] := zb1 - big.cz;
             end;
          end;
- 
+
          Normalize(vec);
          b := Power(Dot(light, vec), k) + ambient;
          intensity := Round((1 - b) * Length(cShades));
@@ -493,9 +493,9 @@ begin
       PrintLn('');
    end;
 end;
- 
+
 Normalize(light);
- 
+
 DrawSphere(2, 0.3);
 ```
 
@@ -644,7 +644,7 @@ getvec =: 4 :0 "1
     end.
   end.
 )
-    
+
 
 NB. (k;ambient;light) draw_sphere (pos;posr;neg;negr)
 draw_sphere =: 4 :0
@@ -698,7 +698,7 @@ public class DeathStar extends Application {
 		a.setRotationAxis(Rotate.Y_AXIS);
 		Scene scene = new Scene(new Group(a));
 //		uncomment if you want to move the other sphere
-		
+
 //		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 //			Point3D sphere = otherSphere;
 //
@@ -774,7 +774,7 @@ public class DeathStar extends Application {
 					points[pPos + 0] = (float) transform.getX();
 					points[pPos + 1] = (float) transform.getY();
 					points[pPos + 2] = (float) transform.getZ();
-					
+
 				}
 				tPoints[tPos + 0] = 1 - rDiv * i;
 				tPoints[tPos + 1] = ty;
@@ -918,7 +918,7 @@ Layer circles and gradients to achieve result similar to that of the Wikipedia p
     ctx.beginPath();
     ctx.arc(125,125,105,0,2*Math.PI);
     ctx.fill();
-    
+
     // Create linear gradient for small inner circle
     var grd = ctx.createLinearGradient(75,90,102,90);
     grd.addColorStop(0,"black");
@@ -928,13 +928,13 @@ Layer circles and gradients to achieve result similar to that of the Wikipedia p
     ctx.beginPath();
     ctx.arc(90,90,30,0,2*Math.PI);
     ctx.fill();
-    
+
     //Add another small circle on top of the previous one to enhance the "shadow"
     ctx.fillStyle = "black";
     ctx.beginPath();
     ctx.arc(80,90,17,0,2*Math.PI);
     ctx.fill();
-  </script> 
+  </script>
 </body>
 </html>
 
@@ -1011,8 +1011,8 @@ axes = none, scaling = constrained, color = gray)
 =={{header|Mathematica}} / {{header|Wolfram Language}}==
 
 ```Mathematica
-RegionPlot3D[x^2 + y^2 + z^2 < 1 && (x + 1.7)^2 + y^2 + z^2 > 1, 
-{x, -1, 1}, {y, -1, 1}, {z, -1, 1}, 
+RegionPlot3D[x^2 + y^2 + z^2 < 1 && (x + 1.7)^2 + y^2 + z^2 > 1,
+{x, -1, 1}, {y, -1, 1}, {z, -1, 1},
 Boxed -> False, Mesh -> False, Axes -> False, Background -> Black, PlotPoints -> 100]
 ```
 
@@ -1264,7 +1264,7 @@ function hit(sequence s, atom x, y, atom r)
     end if
     return {0, 0, false}
 end function
- 
+
 procedure deathStar(integer width, height, atom k, atom amb, sequence direction)
 integer lum
 sequence vec
@@ -1295,11 +1295,11 @@ sequence pos = {0,0,0},
         end for
     end for
 end procedure
- 
+
 function redraw_cb(Ihandle /*ih*/, integer /*posx*/, integer /*posy*/)
 integer {width, height} = IupGetIntInt(canvas, "DRAWSIZE")
     cdCanvasActivate(cddbuffer)
-    cdCanvasClear(cddbuffer) 
+    cdCanvasClear(cddbuffer)
     deathStar(width, height, 1.5, 0.2, normalize({20, -40, -10}))
     cdCanvasFlush(cddbuffer)
     return IUP_DEFAULT
@@ -1343,7 +1343,7 @@ main()
 =={{header|POV-Ray}}==
 <lang POV-Ray>camera { perspective location  <0.0 , .8 ,-3.0> look_at 0
          aperture .1 blur_samples 20 variance 1/100000 focal_point 0}
-                            
+
 light_source{< 3,3,-3> color rgb 1}
 
 sky_sphere { pigment{ color rgb <0,.2,.5>}}
@@ -1353,11 +1353,11 @@ plane {y,-5 pigment {color rgb .54} normal {hexagon} }
 difference {
  sphere { 0,1 }
  sphere { <-1,1,-1>,1 }
-  texture { 
-    pigment{ granite } 
+  texture {
+    pigment{ granite }
     finish { phong 1 reflection {0.10 metallic 0.5} }
-  } 
-}  
+  }
+}
 ```
 
 [[image:PovRay-deathstar.jpg]]
@@ -1480,7 +1480,7 @@ f2i4:{[x] r:x;
 
 / compose and write a file
 
-writebmp:{[w;h;fcn;fn] 
+writebmp:{[w;h;fcn;fn]
     fn 1: (genheader[h;w],genbitmap[w;h;fcn])};
 
 / / usage example:
@@ -1954,46 +1954,46 @@ Output:
 
 ```txt
 
-                                #######&eeeeeeeee                                 
-                         ee&&&&&&########%eeoooooooooooe                          
-                     **oooee&&&&&&########%ooooo**********oo                      
-                  !!!***oooee&&&&&&########%********!!!!!!!!***                   
-               !!!!!!!****ooee&&&&&&#######%*****!!!!!!!!!!!!!!!**                
-             ::::!!!!!!***oooee&&&&&&######***!!!!!!!::::::::::::!!*              
-           :::::::!!!!!!***ooeee&&&&&&#####**!!!!!!:::::::::::::::::!*            
-         ::::::::::!!!!!***oooee&&&&&&####*!!!!!!::::::::.........::::!*          
-        ::::::::::!!!!!!***oooeee&&&&&&###!!!!!!:::::::..............:::!         
-      ..:::::::::!!!!!!****oooeee&&&&&&##!!!!!!::::::..................::!*       
-     ...::::::::!!!!!!****ooooeee&&&&&&!!!!!!:::::::....................::!*      
-    ....::::::!!!!!!*****ooooeeee&&&&&!!!!!!:::::::......................::!*     
-   ....::::::!!!!!*****oooooeeeee&&&&!!!!!!::::::::.......................::!*    
-   ...::::::!!!!!*****oooooeeeee&&&!!!!!!:::::::::.........................::!    
-  ...:::::!!!!!*****oooooeeeeee&&!!!!!!!:::::::::..........................::!*   
-  ..:::::!!!!!****oooooeeeeee&&&!!!!!!!::::::::::..........................::!!   
- .::::::!!!!*****ooooeeeeee&&*!!!!!!!::::::::::::.........................:::!!*  
- :::::!!!!!****oooooeeeee&&**!!!!!!!::::::::::::::.......................::::!!*  
- !!!!!!!!****oooooeeeee&****!!!!!!!::::::::::::::::::..................::::::!!*  
- #!!!******oooooeeeeeoo*****!!!!!!!:::::::::::::::::::::::::::::::::::::::::!!!*  
- ##oooooooooooeeeeeeoooo****!!!!!!!:::::::::::::::::::::::::::::::::::::::!!!!**  
- %#####eeee&&&&&&&eeeooo****!!!!!!!!:::::::::::::::::::::::::::::::::::!!!!!!**o  
- %#########&&&&&&&&eeeooo****!!!!!!!!!::::::::::::::::::!!!!!!!!!!!!!!!!!!!****o  
- %##########&&&&&&&&eeeooo****!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!****ooe  
-  %##########&&&&&&&&eeeooo*****!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**********ooo   
-  %%##########&&&&&&&&eeeoooo*****!!!!!!!!!!!!!!!!!!!*********************ooooe   
-   %%##########&&&&&&&&eeeoooo***************************************oooooooee    
-   @%###########&&&&&&&&&eeeooooo*************************ooooooooooooooooeee&    
-    @%###########&&&&&&&&&eeeeoooooo*************ooooooooooooooooooooooeeeee&     
-     @%%##########&&&&&&&&&&eeeeoooooooooooooooooooooooooooooooeeeeeeeeeee&&      
-      @%%###########&&&&&&&&&&eeeeeoooooooooooooooooooeeeeeeeeeeeeeeeeee&&&       
-        %%############&&&&&&&&&&eeeeeeeeeeooeeeeeeeeeeeeeeeeeeeeeeee&&&&&         
-         @%%###########&&&&&&&&&&&&eeeeeeeeeeeeeeeeeeeeeeeeee&&&&&&&&&&&          
-           %%############&&&&&&&&&&&&&&eeeeeeeeeeeeeee&&&&&&&&&&&&&&&&            
-             %%############&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&              
-               %%#############&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&                
-                  %%#############&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&                   
-                     %##############&&&&&&&&&&&&&&&&&&&&&&&&                      
-                         %##############&&&&&&&&&&&&&&&&                          
-                                #################                                 
+                                #######&eeeeeeeee
+                         ee&&&&&&########%eeoooooooooooe
+                     **oooee&&&&&&########%ooooo**********oo
+                  !!!***oooee&&&&&&########%********!!!!!!!!***
+               !!!!!!!****ooee&&&&&&#######%*****!!!!!!!!!!!!!!!**
+             ::::!!!!!!***oooee&&&&&&######***!!!!!!!::::::::::::!!*
+           :::::::!!!!!!***ooeee&&&&&&#####**!!!!!!:::::::::::::::::!*
+         ::::::::::!!!!!***oooee&&&&&&####*!!!!!!::::::::.........::::!*
+        ::::::::::!!!!!!***oooeee&&&&&&###!!!!!!:::::::..............:::!
+      ..:::::::::!!!!!!****oooeee&&&&&&##!!!!!!::::::..................::!*
+     ...::::::::!!!!!!****ooooeee&&&&&&!!!!!!:::::::....................::!*
+    ....::::::!!!!!!*****ooooeeee&&&&&!!!!!!:::::::......................::!*
+   ....::::::!!!!!*****oooooeeeee&&&&!!!!!!::::::::.......................::!*
+   ...::::::!!!!!*****oooooeeeee&&&!!!!!!:::::::::.........................::!
+  ...:::::!!!!!*****oooooeeeeee&&!!!!!!!:::::::::..........................::!*
+  ..:::::!!!!!****oooooeeeeee&&&!!!!!!!::::::::::..........................::!!
+ .::::::!!!!*****ooooeeeeee&&*!!!!!!!::::::::::::.........................:::!!*
+ :::::!!!!!****oooooeeeee&&**!!!!!!!::::::::::::::.......................::::!!*
+ !!!!!!!!****oooooeeeee&****!!!!!!!::::::::::::::::::..................::::::!!*
+ #!!!******oooooeeeeeoo*****!!!!!!!:::::::::::::::::::::::::::::::::::::::::!!!*
+ ##oooooooooooeeeeeeoooo****!!!!!!!:::::::::::::::::::::::::::::::::::::::!!!!**
+ %#####eeee&&&&&&&eeeooo****!!!!!!!!:::::::::::::::::::::::::::::::::::!!!!!!**o
+ %#########&&&&&&&&eeeooo****!!!!!!!!!::::::::::::::::::!!!!!!!!!!!!!!!!!!!****o
+ %##########&&&&&&&&eeeooo****!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!****ooe
+  %##########&&&&&&&&eeeooo*****!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**********ooo
+  %%##########&&&&&&&&eeeoooo*****!!!!!!!!!!!!!!!!!!!*********************ooooe
+   %%##########&&&&&&&&eeeoooo***************************************oooooooee
+   @%###########&&&&&&&&&eeeooooo*************************ooooooooooooooooeee&
+    @%###########&&&&&&&&&eeeeoooooo*************ooooooooooooooooooooooeeeee&
+     @%%##########&&&&&&&&&&eeeeoooooooooooooooooooooooooooooooeeeeeeeeeee&&
+      @%%###########&&&&&&&&&&eeeeeoooooooooooooooooooeeeeeeeeeeeeeeeeee&&&
+        %%############&&&&&&&&&&eeeeeeeeeeooeeeeeeeeeeeeeeeeeeeeeeee&&&&&
+         @%%###########&&&&&&&&&&&&eeeeeeeeeeeeeeeeeeeeeeeeee&&&&&&&&&&&
+           %%############&&&&&&&&&&&&&&eeeeeeeeeeeeeee&&&&&&&&&&&&&&&&
+             %%############&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+               %%#############&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                  %%#############&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                     %##############&&&&&&&&&&&&&&&&&&&&&&&&
+                         %##############&&&&&&&&&&&&&&&&
+                                #################
 
 ```
 
@@ -2051,17 +2051,17 @@ light(2) = -50
 
 sub normalize(v())
     local long
-	
+
     long = sqrt(v(0)*v(0) + v(1)*v(1) + v(2)*v(2))
     v(0) = v(0) / long
     v(1) = v(1) / long
     v(2) = v(2) / long
 end sub
 
- 
+
 sub punto(x(), y())
     local d
-        
+
     d = x(0)*y(0) + x(1)*y(1) + x(2)*y(2)
     if d < 0 then
     	return -d
@@ -2090,7 +2090,7 @@ neg(3) = 15
 
 sub hit_sphere(sph(), x, y)
 	local zsq
-	
+
 	x = x - sph(0)
 	y = y - sph(1)
 	zsq = sph(3) * sph(3) - (x * x + y * y)
@@ -2101,10 +2101,10 @@ sub hit_sphere(sph(), x, y)
 	end if
 end sub
 
- 
+
 sub draw_sphere(k, ambient)
     local i, j, intensity, hit_result, result, b, vec(3), x, y, zb1, zb2, zs1, zs2, ini1, fin1, ini2, fin2
-	
+
     ini1 = int(pos(1) - pos(3))
     fin1 = int(pos(1) + pos(3) + .5)
     for i = ini1 to fin1
@@ -2113,10 +2113,10 @@ sub draw_sphere(k, ambient)
         fin2 = int(pos(0) + 2 * pos(3) + .5)
         for j = ini2 to fin2
             x = (j - pos(0)) / 2 + .5 + pos(0)
-            
+
             // ray lands in blank space, draw bg
             result = hit_sphere(pos(), x, y)
-            
+
             if not result then
 		hit_result = 0
 
@@ -2141,7 +2141,7 @@ sub draw_sphere(k, ambient)
 		    end if
 		end if
 	    end if
-	  
+
   	    if not hit_result then
   	        color 0,0,0
   	        dot x, y
@@ -2157,7 +2157,7 @@ sub draw_sphere(k, ambient)
 		    vec(1) = neg(1) - y
 		    vec(2) = neg(2) - zs2
 	        end switch
-				
+
                 normalize(vec())
                 b = (punto(light(), vec())^k) + ambient
                 intensity = (1 - b) * tonos
@@ -2169,10 +2169,10 @@ sub draw_sphere(k, ambient)
         next j
     next i
 end sub
- 
- 
+
+
 ang = 0
- 
+
 while(true)
 	//clear window
 	light(1) = cos(ang * 2)

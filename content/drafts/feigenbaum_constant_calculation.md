@@ -14,7 +14,7 @@ tags = []
 
 
 ;Task:
-Calculate the Feigenbaum constant. 
+Calculate the Feigenbaum constant.
 
 
 ;See:
@@ -31,7 +31,7 @@ Calculate the Feigenbaum constant.
 
 ```algol68
 # Calculate the Feigenbaum constant #
- 
+
 print( ( "Feigenbaum constant calculation:", newline ) );
 INT max it   = 13;
 INT max it j = 10;
@@ -46,7 +46,7 @@ FOR i FROM 2 TO max it DO
           REAL y := 0;
           FOR k TO 2 ^ i DO
                y := 1 - 2 * y * x;
-               x := a - x * x 
+               x := a - x * x
           OD;
           a := a - x / y
      OD;
@@ -145,8 +145,8 @@ BEGIN {
 
 {{trans|Ring}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 void feigenbaum() {
     int i, j, k, max_it = 13, max_it_j = 10;
@@ -204,8 +204,8 @@ int main() {
 
 {{trans|C}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 
 int main() {
     const int max_it = 13;
@@ -372,7 +372,7 @@ void main() {
 open System
 
 [<EntryPoint>]
-let main _ = 
+let main _ =
     let maxIt = 13
     let maxItJ = 10
     let mutable a1 = 1.0
@@ -972,7 +972,7 @@ print " i         δ\n";
 for my $i (2..13) {
     my $a = $a1 + ($a1 - $a2)/$d1;
     for (1..10) {
-        my $x = 0; 
+        my $x = 0;
         my $y = 0;
         for (1 .. 2**$i) {
             $y = 1 - 2 * $y * $x;
@@ -1073,7 +1073,7 @@ for i=2 to maxIt do
           atom x = 0, y = 0
           for k=1 to power(2,i) do
                y = 1 - 2*y*x
-               x = a - x*x 
+               x = a - x*x
           end for
           a = a - x/y
      end for
@@ -1166,7 +1166,7 @@ for i in range(2, max_it + 1):
   (displayln " i       d" (current-error-port))
   (define-values (_a _a1 d)
     (for/fold ((a 1) (a1 0) (d 3.2))
-              ((i (in-range 2 (add1 max-it))))      
+              ((i (in-range 2 (add1 max-it))))
       (let* ((a′ (for/fold ((a (+ a (/ (- a a1) d))))
                            ((j (in-range max-it-j)))
                    (let-values (([x y] (for/fold ((x 0) (y 0))
@@ -1298,8 +1298,8 @@ for i = 2 to maxIt
           y = 0
           for k = 1 to pow(2,i)
                y = 1 - 2 * y * x
-               x = a - x * x 
-          next   
+               x = a - x * x
+          next
           a = a - x / y
      next
      d = (a1 - a2) / (a - a1)

@@ -12,13 +12,13 @@ tags = []
 
 {{task}}
 
-Two or more words are said to be [[Anagrams|anagrams]] if they have the same characters, but in a different order. 
+Two or more words are said to be [[Anagrams|anagrams]] if they have the same characters, but in a different order.
 
 By analogy with [[Permutations/Derangements|derangements]] we define a  ''deranged anagram'' as two words with the same characters, but in which the same character does ''not'' appear in the same position in both words.
 
 {{task heading}}
 
-Use the word list at [http://wiki.puzzlers.org/pub/wordlists/unixdict.txt unixdict] to find and display the longest deranged anagram. 
+Use the word list at [http://wiki.puzzlers.org/pub/wordlists/unixdict.txt unixdict] to find and display the longest deranged anagram.
 
 {{task heading|Related tasks}}
 
@@ -168,7 +168,7 @@ OP   SORT = ( STRING text )STRING:
             BOOL swapped := FALSE;
             FOR pos FROM LWB sorted TO end pos DO
                 IF sorted[ pos ] > sorted[ pos + 1 ]
-                THEN              
+                THEN
                     CHAR  t           := sorted[ pos     ];
                     sorted[ pos     ] := sorted[ pos + 1 ];
                     sorted[ pos + 1 ] := t;
@@ -239,7 +239,7 @@ ELSE
                         longest derangement := word length;
                         longest word        := word;
                         longest anagram     := anagram
-                    FI;            
+                    FI;
                     list pos +:= word length + 1
                 OD
             FI;
@@ -375,7 +375,7 @@ function deranged(worda, wordb,  a,b,i,n,len){
 
 # field separator null makes gawk split input record character by character.
 # the split function works the same way
-{ 
+{
   wordcount = wordcount + 1
   fullword[wordcount]=$0
   bylength[length($0)]=bylength[length($0)]  wordcount "|"
@@ -383,7 +383,7 @@ function deranged(worda, wordb,  a,b,i,n,len){
 }
 
 END{
- for (len=maxlength; len>1; len--){ 
+ for (len=maxlength; len>1; len--){
   numwords=split(bylength[len],words,"|")
   split("",hashed)
  split("",anagrams)
@@ -404,16 +404,16 @@ END{
  if (length(found) > 0 ) print "deranged: " found
   if (length(found) > 0) exit
  }
-} 
+}
 
 ```
 
-On my system, this awk-file is located at /usr/local/bin/deranged, 
+On my system, this awk-file is located at /usr/local/bin/deranged,
 so it can be invoked with:
 
 ```txt
 
-deranged /tmp/unixdict.txt 
+deranged /tmp/unixdict.txt
 
 ```
 
@@ -422,7 +422,7 @@ Regular invocation would be:
 
 ```txt
 
-gawk -f deranged.awk /tmp/unixdict.txt 
+gawk -f deranged.awk /tmp/unixdict.txt
 
 ```
 
@@ -493,9 +493,9 @@ Total time: 75 msecs.
 ```bbcbasic
       INSTALL @lib$+"SORTLIB"
       Sort% = FN_sortinit(0,0)
-      
+
       DIM dict$(26000), sort$(26000), indx%(26000)
-      
+
       REM Load the dictionary:
       dict% = OPENIN("C:\unixdict.txt")
       IF dict%=0 ERROR 100, "No dictionary file"
@@ -507,17 +507,17 @@ Total time: 75 msecs.
       UNTIL EOF#dict%
       CLOSE #dict%
       Total% = index%
-      
+
       TIME = 0
       REM Sort the letters in each word:
       FOR index% = 1 TO Total%
         sort$(index%) = FNsortstring(dict$(index%))
       NEXT
-      
+
       REM Sort the sorted words:
       C% = Total%
       CALL Sort%, sort$(1), indx%(1)
-      
+
       REM Find anagrams and deranged anagrams:
       maxlen% = 0
       maxidx% = 0
@@ -531,12 +531,12 @@ Total time: 75 msecs.
           IF c%>LEN(One$) IF c%>maxlen% maxlen% = c% : maxidx% = index%
         ENDIF
       NEXT
-      
+
       PRINT "The longest deranged anagrams are '" dict$(indx%(maxidx%));
       PRINT "' and '" dict$(indx%(maxidx%+1)) "'"
       PRINT "(taking " ; TIME/100 " seconds)"
       END
-      
+
       DEF FNsortstring(A$)
       LOCAL C%, a&()
       C% = LEN(A$)
@@ -559,24 +559,24 @@ The longest deranged anagrams are 'excitation' and 'intoxicate'
 
 ## Bracmat
 
-The file is read into a single string, <code>wordList</code>. 
-Then, in a while loop, each line is read and, in a nested loop, atomised into single letters. 
-The letters are added together to create a sorted list that is the letter sum, the 'anagram fingerprint', of the word. 
-To make sure that even single letter words create a sum of at least two terms, the sum is initialised with the empty string rather than zero. 
+The file is read into a single string, <code>wordList</code>.
+Then, in a while loop, each line is read and, in a nested loop, atomised into single letters.
+The letters are added together to create a sorted list that is the letter sum, the 'anagram fingerprint', of the word.
+To make sure that even single letter words create a sum of at least two terms, the sum is initialised with the empty string rather than zero.
 (Otherwise the words <i>a</i> and <i>aaa</i> later on would get the same fingerprint, the factors <code>1</code> and <code>3</code> being factored out.)
 
-For the word <i>bizarre</i> the letter sum is <code>(+a+b+e+2*r+z+i)</code>. 
-The letter sum, with the word as the exponent (<code>(+a+b+e+2*r+z+i)^bizarre</code>) is prepended to a list <code>unsorted</code>. 
-Somewhat later the word <i>brazier</i> also is prepended to the <code>unsorted</code> list. 
-This word happens to have the same letter sum as <i>bizarre</i>, so these two words must be anagrams of each other. The program brings these two elements together by merge sorting the <code>unsorted</code> list, using Bracmat's Computer Algebra powers to normalise sums and products by sorting and combining like terms or factors. 
-During the sort, all elements in the the <code>unsorted</code> list are multiplied together, combining factors with the same letter sums by adding their exponents together. So at some stage during sorting, the two elements <code>(+a+b+e+2*r+z+i)^bizarre</code> and <code>(+a+b+e+2*r+z+i)^brazier</code> are brought together in a product <code>(+a+b+e+2*r+z+i)^bizarre*(+a+b+e+2*r+z+i)^brazier</code> which immediately is transformed to the single factor <code>(+a+b+e+2*r+z+i)^(bizarre+brazier)</code>. 
-In the product of all elements the anagrams are to be found in the exponents consisting of a sum of at least two terms. 
-To find the longest deranged anagrams, we traverse the product list to find all exponents with multiple words, check that the length of the first word is at least as long as the length of the longest deranged anagram up to now, and check each pair of words for being deranged. 
+For the word <i>bizarre</i> the letter sum is <code>(+a+b+e+2*r+z+i)</code>.
+The letter sum, with the word as the exponent (<code>(+a+b+e+2*r+z+i)^bizarre</code>) is prepended to a list <code>unsorted</code>.
+Somewhat later the word <i>brazier</i> also is prepended to the <code>unsorted</code> list.
+This word happens to have the same letter sum as <i>bizarre</i>, so these two words must be anagrams of each other. The program brings these two elements together by merge sorting the <code>unsorted</code> list, using Bracmat's Computer Algebra powers to normalise sums and products by sorting and combining like terms or factors.
+During the sort, all elements in the the <code>unsorted</code> list are multiplied together, combining factors with the same letter sums by adding their exponents together. So at some stage during sorting, the two elements <code>(+a+b+e+2*r+z+i)^bizarre</code> and <code>(+a+b+e+2*r+z+i)^brazier</code> are brought together in a product <code>(+a+b+e+2*r+z+i)^bizarre*(+a+b+e+2*r+z+i)^brazier</code> which immediately is transformed to the single factor <code>(+a+b+e+2*r+z+i)^(bizarre+brazier)</code>.
+In the product of all elements the anagrams are to be found in the exponents consisting of a sum of at least two terms.
+To find the longest deranged anagrams, we traverse the product list to find all exponents with multiple words, check that the length of the first word is at least as long as the length of the longest deranged anagram up to now, and check each pair of words for being deranged.
 If a pair of deranged anagrams is found with more letters than previously found deranged anagrams, the earlier finds are forgotten. If the new anagrams are the same length, however, they are added to the output.
 
-The Bracmat solution to the similar task [[Anagrams|anagrams]] skips the explicit merge sort and instead prepends new factors directly to the product one by one. 
-Bracmat shuffles each new factor into place to keep the growing product normalized before continuing with the next word from the list. 
-The result is exactly the same, but the running time becomes much longer.  
+The Bracmat solution to the similar task [[Anagrams|anagrams]] skips the explicit merge sort and instead prepends new factors directly to the product one by one.
+Bracmat shuffles each new factor into place to keep the growing product normalized before continuing with the next word from the list.
+The result is exactly the same, but the running time becomes much longer.
 
 ```bracmat
   get$("unixdict.txt",STR):?wordList
@@ -632,7 +632,7 @@ The result is exactly the same, but the running time becomes much longer.
               & deranged$(!anagramA.!anagramB)
               &     (!anagramA.!anagramB)
                     (   !maxLength:>!oldMaxLength:?oldMaxLength
-                      & 
+                      &
                     | !derangedAnagrams
                     )
                 : ?derangedAnagrams
@@ -655,8 +655,8 @@ excitation.intoxicate
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -781,8 +781,8 @@ longest derangement: intoxicate excitation
 ## C++
 
 
-```cpp>#include <algorithm
-
+```cpp
+#include <algorithm>
 #include <fstream>
 #include <functional>
 #include <iostream>
@@ -863,9 +863,9 @@ public static void Main()
         select deranged[0] + " " + deranged[1];
     Console.WriteLine(query.FirstOrDefault());
 }
-	
+
 static string AnagramKey(string word) => new string(word.OrderBy(c => c).ToArray());
-	
+
 static string[] FindDeranged(IEnumerable<string> anagrams) => (
     from first in anagrams
     from second in anagrams
@@ -891,13 +891,13 @@ excitation intoxicate
 
 ```Clojure
 
-(->> (slurp "unixdict.txt") ; words 
+(->> (slurp "unixdict.txt") ; words
      (re-seq #"\w+")        ; |
      (group-by sort)        ; anagrams
      vals                   ; |
      (filter second)        ; |
      (remove #(some true? (apply map = %))) ; deranged
-     (sort-by #(count (first %))) 
+     (sort-by #(count (first %)))
      last
      prn)
 ```
@@ -926,7 +926,7 @@ is_derangement = (word1, word2) ->
 show_longest_derangement = (word_lst) ->
   anagrams = {}
   max_len = 0
-  
+
   for word in word_lst
     continue if word.length < max_len
     key = word.split('').sort().join('')
@@ -938,14 +938,14 @@ show_longest_derangement = (word_lst) ->
     else
       anagrams[key] = []
     anagrams[key].push word
-    
+
   console.log "Longest derangement: #{result.join ' '}"
 
 get_word_list = (process) ->
   options =
     host: "www.puzzlers.org"
     path: "/pub/wordlists/unixdict.txt"
-  
+
   req = http.request options, (res) ->
     s = ''
     res.on 'data', (chunk) ->
@@ -953,7 +953,7 @@ get_word_list = (process) ->
     res.on 'end', ->
       process s.split '\n'
   req.end()
-  
+
 get_word_list show_longest_derangement
 ```
 
@@ -961,7 +961,7 @@ get_word_list show_longest_derangement
 
 ```txt
 
-> coffee anagrams.coffee 
+> coffee anagrams.coffee
 Longest derangement: excitation intoxicate
 
 ```
@@ -975,7 +975,7 @@ Longest derangement: excitation intoxicate
 (defun read-words (file)
   (with-open-file (stream file)
     (loop with w = "" while w collect (setf w (read-line stream nil)))))
- 
+
 (defun deranged (a b)
   (loop for ac across a for bc across b always (char/= ac bc)))
 
@@ -1117,7 +1117,7 @@ For a change, we use the french dictionary  included in EchoLisp package.
 	#:continue (member name twins)
 	#:when  (or (null? twins)  (for/or ((anagram twins)) (deranged name anagram)))
 	(hash-set H normal (cons name twins))))
-		
+
 
 (define (task (lmin 8))
 (anagrams)
@@ -1143,10 +1143,10 @@ For a change, we use the french dictionary  included in EchoLisp package.
 13 saintsimonien inseminations
 14 tergiversation interrogatives
 14 suralimenterai mineralisateur
-14 transoceaniens reconnaissante 
+14 transoceaniens reconnaissante
 
 (lib 'dico.en ) ;;  235886 words
-(task) 
+(task)
 
 [...]
 
@@ -1155,7 +1155,7 @@ For a change, we use the french dictionary  included in EchoLisp package.
 12 unaccumulate acutenaculum
 14 charlatanistic antarchistical
 15 megachiropteran cinematographer
-17 misconstitutional constitutionalism 
+17 misconstitutional constitutionalism
 
 ```
 
@@ -1319,15 +1319,15 @@ defmodule Anagrams do
     |> Enum.sort_by(fn {key,_} -> -length(key) end)
     |> Enum.find(fn {_,words} -> find_derangements(words) end)
   end
-  
+
   defp find_derangements(words) do
     comb(words,2) |> Enum.find(fn [a,b] -> deranged?(a,b) end)
   end
-  
+
   defp deranged?(a,b) do
     Enum.zip(a, b) |> Enum.all?(fn {chr_a,chr_b} -> chr_a != chr_b end)
   end
-  
+
   defp comb(_, 0), do: [[]]
   defp comb([], _), do: []
   defp comb([h|t], m) do
@@ -1425,7 +1425,7 @@ let rec pairs acc l = function
 | x::rtail ->
     pairs (acc @ List.fold (fun acc y -> (y, x)::acc) [] l) (x::l) rtail
 
- 
+
 [<EntryPoint>]
 let main args =
     System.IO.File.ReadAllLines("unixdict.txt")
@@ -1464,9 +1464,9 @@ IN: rosettacode.deranged-anagrams
     2 [ first2 derangement? ] filter-combinations ;
 
 : parse-dict-file ( path -- hash )
-    utf8 file-lines 
+    utf8 file-lines
     H{ } clone [
-        '[ 
+        '[
             [ natural-sort >string ] keep
             _ [ swap suffix  ] with change-at
         ] each
@@ -1512,10 +1512,10 @@ End Sub
 ' quicksort for sorting whole dictionary of IndexedWord instances by sorted word
 Sub quicksort(a() As IndexedWord, first As Integer, last As Integer)
   Dim As Integer length = last - first + 1
-  If length < 2 Then Return 
+  If length < 2 Then Return
   Dim pivot As String = a(first + length\ 2).word
-  Dim lft As Integer = first 
-  Dim rgt As Integer = last 
+  Dim lft As Integer = first
+  Dim rgt As Integer = last
   While lft <= rgt
     While a(lft).word < pivot
       lft +=1
@@ -1527,7 +1527,7 @@ Sub quicksort(a() As IndexedWord, first As Integer, last As Integer)
        Swap a(lft), a(rgt)
        lft += 1
        rgt -= 1
-    End If 
+    End If
   Wend
   quicksort(a(), first, rgt)
   quicksort(a(), lft, last)
@@ -1538,7 +1538,7 @@ Function isDeranged(s1 As String, s2 As String) As Boolean
     If s1[i] = s2[i] Then Return False
   Next
   Return True
-End Function 
+End Function
 
 Dim t As Double = timer
 Dim As String w()  '' array to hold actual words
@@ -1551,13 +1551,13 @@ While Not Eof(1)
 Wend
 Close #1
 
-Dim As IndexedWord iw(1 To count) '' array to hold sorted words and their index into w() 
+Dim As IndexedWord iw(1 To count) '' array to hold sorted words and their index into w()
 Dim word As String
 For i As Integer = 1 To count
   word = w(i)
   sortWord(word)
   iw(i).word = word
-  iw(i).index = i 
+  iw(i).index = i
 Next
 quickSort iw(), 1, count  '' sort the IndexedWord array by sorted word
 
@@ -1568,37 +1568,37 @@ maxLength = 0
 
 For i As Integer = 2 To count
   If iWord.word = iw(i).word Then
-    If isDeranged(w(iword.index), w(iw(i).index)) Then       
+    If isDeranged(w(iword.index), w(iw(i).index)) Then
       If startIndex + 1 < i Then Swap iw(i), iw(startIndex + 1)
-      If Len(iWord.word) > maxLength Then      
+      If Len(iWord.word) > maxLength Then
         maxLength = Len(iWord.word)
         Erase maxIndex
         ub = 1
         Redim maxIndex(1 To ub)
         maxIndex(ub) = startIndex
-        startIndex += 2 
+        startIndex += 2
         i = startIndex
         iWord = iw(i)
       ElseIf Len(iWord.word) = maxLength Then
         ub += 1
         Redim Preserve maxIndex(1 To ub)
-        maxIndex(ub) = startIndex 
+        maxIndex(ub) = startIndex
         startIndex += 2
         i = startIndex
         iWord = iw(i)
-      End If      
-    End If   
+      End If
+    End If
   ElseIf i = count Then
     Exit For
-  Else 
+  Else
     For j As Integer = i To count - 1
       iWord = iw(j)
       If Len(iWord.word) >= maxLength Then
-        startIndex = j 
+        startIndex = j
         i = startIndex
         Exit For
       End If
-    Next      
+    Next
   End If
 Next
 
@@ -1610,16 +1610,16 @@ For i As Integer = 1 To UBound(maxIndex)
   For j As Integer = maxIndex(i) To maxIndex(i) + 1
     iws(j - maxIndex(i) + 1) = iw(j)
   Next j
-  If iws(1).index > iws(2).index Then swap iws(1), iws(2) '' ensure pair is in correct order 
-  For j As Integer = 1 To 2 
+  If iws(1).index > iws(2).index Then swap iws(1), iws(2) '' ensure pair is in correct order
+  For j As Integer = 1 To 2
     Print w(iws(j).index); " ";
   Next j
   Print
 Next i
 
 Print
-Print "Took "; 
-Print Using "#.###"; timer - t; 
+Print "Took ";
+Print Using "#.###"; timer - t;
 Print " seconds on i3 @ 2.13 GHz"
 
 Print
@@ -1780,7 +1780,7 @@ def result = map.findResult { negasize, normMap ->
 }
 
 if (result) {
-    println "Longest deranged anagram pair: ${result}"    
+    println "Longest deranged anagram pair: ${result}"
 } else {
     println 'Deranged anagrams are a MYTH!'
 }
@@ -1847,7 +1847,7 @@ Longest deranged anagrams: excitation and intoxicate
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-This solution (which works in both languages) does a strict interpretation of the problem and ignores the fact that there may be multiple derangements that are the same length (including ignoring multiple derangements arising from the same set of words that are all anagrams).  
+This solution (which works in both languages) does a strict interpretation of the problem and ignores the fact that there may be multiple derangements that are the same length (including ignoring multiple derangements arising from the same set of words that are all anagrams).
 
 ```unicon
 link strings     # for csort() procedure
@@ -1861,8 +1861,8 @@ procedure main()
         }
 
     longest := 1                            # find a longest derangement
-    every *(aList := !anagrams) > 1 do     
-        if derangement := derange(aList) then 
+    every *(aList := !anagrams) > 1 do
+        if derangement := derange(aList) then
             if longest <:= *derangement[1] then long := derangement
 
     every writes((!\long||" ")|"\n")        # show longest
@@ -1882,7 +1882,7 @@ end
 
 ```txt
 ->dra <unixdict.txt
-excitation intoxicate 
+excitation intoxicate
 ->
 ```
 
@@ -1928,14 +1928,14 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
- 
+
 public class DerangedAnagrams {
- 
+
     public static void main(String[] args) throws IOException {
         List<String> words = Files.readAllLines(new File("unixdict.txt").toPath());
         printLongestDerangedAnagram(words);
     }
- 
+
     private static void printLongestDerangedAnagram(List<String> words) {
         words.sort(Comparator.comparingInt(String::length).reversed().thenComparing(String::toString));
 
@@ -1980,10 +1980,10 @@ excitation intoxicate
 
 
 
-###  Spidermonkey 
+###  Spidermonkey
 
 
-This example is a little long because 
+This example is a little long because
 it tries to emphasize generality and clarity over
 brevity.
 
@@ -1997,7 +1997,7 @@ function main() {
     var derangedAnagrams = findDerangedAnagrams(anagrams);
     var longestPair = findLongestDerangedPair(derangedAnagrams);
     print(longestPair.join(' '));
-    
+
 }
 
 function findLongestDerangedPair(danas) {
@@ -2014,7 +2014,7 @@ function findLongestDerangedPair(danas) {
 
 function findDerangedAnagrams(anagrams) {
     var deranged = [];
-    
+
     function isDeranged(w1, w2) {
         for (var c = 0; c < w1.length; c++) {
             if (w1[c] == w2[c]) {
@@ -2029,19 +2029,19 @@ function findDerangedAnagrams(anagrams) {
             for (var b = a + 1; b < anas.length; b++) {
                 if (isDeranged(anas[a], anas[b])) {
                     deranged.push([anas[a], anas[b]]);
-                }   
+                }
             }
         }
     }
-    
+
     for (var a in anagrams) {
         var anas = anagrams[a];
         findDeranged(anas);
     }
-    
+
     return deranged;
 }
-    
+
 function findAnagrams(wordList) {
     var anagrams = {};
 
@@ -2073,7 +2073,7 @@ main();
  excitation intoxicate
 
 
-###  Gecko 
+###  Gecko
 
 Word file is saved locally because browser won't fetch it cross-site.  Tested on Gecko.
 
@@ -2160,12 +2160,12 @@ def deranged(y):
   explode as $x                             # explode is fast
   | (y | explode) as $y
   | all( range(0;length); $x[.] != $y[.] );
-  
+
 # The task: loop through the anagrams,
-# retaining only the best set of deranged anagrams so far. 
-split("\n") | select(length>0)              # read all the words as an array          
+# retaining only the best set of deranged anagrams so far.
+split("\n") | select(length>0)              # read all the words as an array
 | reduce anagrams as $words ([];            # loop through all the anagrams
-    reduce $words[] as $v (.;   
+    reduce $words[] as $v (.;
       reduce ($words - [$v])[] as $w (.;    # $v and $w are distinct members of $words
         if $v|deranged($w)
         then if length == 0 then [$v,$w]
@@ -2182,7 +2182,7 @@ split("\n") | select(length>0)              # read all the words as an array
 '''Invocation and output'''
 
 ```txt
-    $ jq -M -s -c -R -f program.jq unixdict.txt 
+    $ jq -M -s -c -R -f program.jq unixdict.txt
     ["excitation","intoxicate"]
 ```
 
@@ -2253,7 +2253,7 @@ The longest deranged anagrams are excitation and intoxicate
 ```K
    / anagram clusters
    a:{x g@&1<#:'g:={x@<x}'x}@0:"unixdict.txt";
- 
+
    / derangements in these clusters
    b@&c=|/c:{#x[0]}'b:a@&{0=+//{x=y}':x}'a
 ("excitation"
@@ -2488,14 +2488,14 @@ First@Flatten[Function[ws,Select[Join@@Outer[List,ws,ws,1],anagramDegrangement@@
 ```
 
 
-A similar approach using Mathematica 10: 
+A similar approach using Mathematica 10:
 
 ```Mathematica
 
 list = Import["http://www.puzzlers.org/pub/wordlists/unixdict.txt","Lines"];
 MaximalBy[
- Select[GatherBy[list, Sort@*Characters], 
-  Length@# > 1 && And @@ MapThread[UnsameQ, Characters /@ #] &], 
+ Select[GatherBy[list, Sort@*Characters],
+  Length@# > 1 && And @@ MapThread[UnsameQ, Characters /@ #] &],
  StringLength@*First]
 
 ```
@@ -2555,7 +2555,7 @@ let () =
     let key = sort_chars word in
     let l =
       try Hashtbl.find h key
-      with Not_found -> [] 
+      with Not_found -> []
     in
     Hashtbl.replace h key (word::l);
   done with End_of_file ->
@@ -2709,7 +2709,7 @@ sub deranged {                          # only anagrams ever get here
         return 1
 }
 
-sub find_deranged {     
+sub find_deranged {
         for my $i ( 0 .. $#_ ) {
                 for my $j ( $i+1 .. $#_ ) {
                         next unless deranged $_[$i], $_[$j];
@@ -2820,7 +2820,7 @@ integer maxlen = 1
             anagrams = append(anagrams,{0,word})
         end if
     end for
-     
+
     anagrams = sort(anagrams)
     puts(1,"\nLongest deranged anagrams:\n")
     for i=length(anagrams) to 1 by -1 do
@@ -2958,11 +2958,11 @@ function Test-Deranged ([string[]]$Strings)
     $array1 = $Strings[0].ToCharArray()
 
     for ($i = 1; $i -lt $Strings.Count; $i++)
-    { 
+    {
         $array2 = $Strings[$i].ToCharArray()
 
         for ($i = 0; $i -lt $array1.Count; $i++)
-        { 
+        {
             if ($array1[$i] -match $array2[$i])
             {
                 return $false
@@ -2993,8 +2993,8 @@ Get-Content -Path ".\unixdict.txt" |
 
 ```txt
 
-Length Words                   
------- -----                   
+Length Words
+------ -----
     10 {excitation, intoxicate}
 
 ```
@@ -3070,7 +3070,7 @@ read_file(In, L, L1) :-
 
 ```txt
  ?- longest_deranged_anagram.
-Longest deranged anagrams : excitation intoxicate 
+Longest deranged anagrams : excitation intoxicate
 true.
 
 ```
@@ -3085,14 +3085,14 @@ Structure anagram
   word.s
   letters.s
 EndStructure
- 
+
 Structure  wordList
   List words.anagram()
 EndStructure
- 
+
 #True = 1
 #False = 0
- 
+
 Procedure.s sortLetters(*word.Character, wordLength)
   ;returns a string with the letters of a word sorted
   Protected Dim letters.c(wordLength)
@@ -3101,28 +3101,28 @@ Procedure.s sortLetters(*word.Character, wordLength)
   SortArray(letters(), #PB_Sort_Ascending, 0, wordLength - 1)
   ProcedureReturn PeekS(@letters(), wordLength)
 EndProcedure
- 
+
 ;Compare a list of anagrams for derangement.
-Procedure isDeranged(List anagram.s()) 
+Procedure isDeranged(List anagram.s())
   ;If a pair of deranged anagrams is found return #True
   ;and and modify the list to include the pair of deranged anagrams.
   Protected i, length, word.s, *ptrAnagram, isDeranged
   Protected NewList deranged.s()
   FirstElement(anagram())
   length = Len(anagram())
-  Repeat 
+  Repeat
     word = anagram()
     *ptrAnagram = @anagram()
-    
+
     While NextElement(anagram())
       isDeranged = #True
       For i = 1 To length
         If Mid(word, i, 1) = Mid(anagram(), i, 1)
           isDeranged = #False
           Break ;exit for/next
-        EndIf 
-      Next 
-      
+        EndIf
+      Next
+
       If isDeranged
         AddElement(deranged())
         deranged() = anagram()
@@ -3130,21 +3130,21 @@ Procedure isDeranged(List anagram.s())
         deranged() = word
         CopyList(deranged(), anagram())
         ProcedureReturn #True ;deranged anagram found
-      EndIf 
+      EndIf
     Wend
     ChangeCurrentElement(anagram(), *ptrAnagram)
   Until Not NextElement(anagram())
-  
+
   ProcedureReturn #False ;deranged anagram not found
 EndProcedure
- 
+
 If OpenConsole()
   ;word file is assumed to be in the same directory
-  If Not ReadFile(0,"unixdict.txt"): End: EndIf 
-  
+  If Not ReadFile(0,"unixdict.txt"): End: EndIf
+
   Define maxWordSize = 0, word.s, length
   Dim wordlists.wordList(maxWordSize)
-  
+
   ;Read word file and create separate lists of anagrams and their original
   ;words by length.
   While Not Eof(0)
@@ -3153,66 +3153,66 @@ If OpenConsole()
     If length > maxWordSize
       maxWordSize = length
       Redim wordlists.wordList(maxWordSize)
-    EndIf 
+    EndIf
     AddElement(wordlists(length)\words())
     wordlists(length)\words()\word = word
     wordlists(length)\words()\letters = sortLetters(@word, length)
   Wend
   CloseFile(0)
-  
+
   Define offset = OffsetOf(anagram\letters), option = #PB_Sort_Ascending
   Define sortType = #PB_Sort_String
   Define letters.s, foundDeranged
   NewList anagram.s()
   ;start search from largest to smallest
   For length = maxWordSize To 2 Step -1
-    
+
     If FirstElement(wordlists(length)\words()) ;only examine lists with words
       ;sort words to place anagrams next to each other
       SortStructuredList(wordlists(length)\words(), option, offset, sortType)
-      
+
       With wordlists(length)\words()
         letters = \letters
         AddElement(anagram()): anagram() = \word
-        
+
         ;Compose sets of anagrams and check for derangement with remaining
         ;words in current list.
         While NextElement(wordlists(length)\words())
           ;Check for end of a set of anagrams?
           If letters <> \letters
-            
+
             ;if more than one word in a set of anagrams check for derangement
             If ListSize(anagram()) > 1
               If isDeranged(anagram())
                 foundDeranged = #True ;found deranged anagrams, stop processing
                 Break 2 ;exit while/wend and for/next
-              EndIf 
-            EndIf 
-            
+              EndIf
+            EndIf
+
             letters = \letters ;setup for next set of anagrams
             ClearList(anagram())
-          EndIf 
-          
+          EndIf
+
           AddElement(anagram()): anagram() = \word
         Wend
       EndWith
-      
-    EndIf 
-    
+
+    EndIf
+
     ClearList(anagram())
-  Next   
-  
+  Next
+
   ;report results
   If foundDeranged
     Print("Largest 'Deranged' anagrams found are of length ")
     PrintN(Str(length) + ":" + #CRLF$)
     ForEach anagram()
       PrintN("  " + anagram())
-    Next 
+    Next
   Else
     PrintN("No 'Deranged' anagrams were found." + #CRLF$)
-  EndIf 
-  
+  EndIf
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -3278,7 +3278,7 @@ if __name__ == '__main__':
 
 ```txt
 Word count: 25104
-Anagram count: 1303 
+Anagram count: 1303
 
 Longest anagrams with no characters in the same position:
   excitation, intoxicate
@@ -3400,7 +3400,7 @@ longest.deranged.anagram <- function(dict=puzzlers.dict) {
     grouped <- grouped[sapply(grouped, length) > 1]
     grouped[order(-nchar(names(grouped)))]
   }
-  
+
   derangements <- function(anagram.group) {
     pairs <- expand.grid(a = anagram.group, b = anagram.group,
                          stringsAsFactors=FALSE)
@@ -3459,9 +3459,9 @@ longest.deranged.anagram <- function(dict=puzzlers.dict) {
     (define (first-underanged-char? hd tl)
       (for/first
           (((c h) (in-parallel hd tl))
-           #:when (char=? c h)) c))  
+           #:when (char=? c h)) c))
     (not (first-underanged-char? hd tl)))
-  
+
   (if (null? l) acc
       (let ((hd (car l)) (tl (cdr l)))
         (deranged-anagram-pairs
@@ -3557,7 +3557,7 @@ fn1 = "unixdict.txt"
 
 fp = fopen(fn1,"r")
 str = fread(fp, getFileSize(fp))
-fclose(fp) 
+fclose(fp)
 strlist = str2list(str)
 anagram = newlist(len(strlist), 5)
 anag = list(len(strlist))
@@ -3636,7 +3636,7 @@ Output:
 
 ```txt
 
-excitation intoxicate 
+excitation intoxicate
 
 ```
 
@@ -3719,7 +3719,7 @@ for i = 1 to n
 	for k = 1 to len(theWord$(i))
 	  if mid$(theWord$(i),k,1) = mid$(theWord$(j),k,1) then cnt = cnt + 1
 	next k
-	if cnt = 0 then 
+	if cnt = 0 then
 	  maxLen = len(theWord$(i))
 	  maxPtrI = i
 	  maxPtrJ = j
@@ -3818,7 +3818,7 @@ fn main() {
             }
         },
         Err(e) => panic!("Could not read words: {}",e)
-    } 
+    }
 }
 
 
@@ -3839,36 +3839,36 @@ excitation intoxicate
 ```scala
 object DerangedAnagrams {
 
-  /** Returns a map of anagrams keyed by the sorted characters */ 
+  /** Returns a map of anagrams keyed by the sorted characters */
   def groupAnagrams(words: Iterable[String]): Map[String, Set[String]] =
     words.foldLeft (Map[String, Set[String]]()) { (map, word) =>
       val sorted = word.sorted
       val entry = map.getOrElse(sorted, Set.empty)
       map + (sorted -> (entry + word))
     }
-    
+
   /* Returns true if the pair of strings has no positions with the same
    * characters */
-  def isDeranged(ss: (String, String)): Boolean = 
+  def isDeranged(ss: (String, String)): Boolean =
     ss._1 zip ss._2 forall { case (c1, c2) => c1 != c2 }
-    
+
   /* Returns pairwise combination of all Strings in the argument Iterable */
   def pairWords(as: Iterable[String]): Iterable[(String, String)] =
     if (as.size < 2) Seq() else (as.tail map (as.head -> _)) ++ pairWords(as.tail)
-    
+
   /* Returns the contents of the argument URL as an Iterable[String], each
    * String is one line in the file */
-  def readLines(url: String): Iterable[String] = 
+  def readLines(url: String): Iterable[String] =
     io.Source.fromURL(url).getLines().toIterable
-    
+
   val wordsURL = "http://www.puzzlers.org/pub/wordlists/unixdict.txt"
-    
+
   def main(args: Array[String]): Unit = {
     val anagramMap = groupAnagrams(readLines(wordsURL))
     val derangedPairs = anagramMap.values flatMap (pairWords) filter (isDeranged)
     val (w1, w2) = derangedPairs maxBy (pair => pair._1.length)
     println("Longest deranged pair: "+w1+" and "+w2)
-  }   
+  }
 
 }
 ```
@@ -3902,15 +3902,15 @@ Longest deranged pair: excitation and intoxicate
     (lambda ()
       (do ((line (read-line) (read-line))
            (words '() (cons line words)))
-        ((eof-object? line) 
+        ((eof-object? line)
          (list-sort (lambda (a b) (> (string-length a) (string-length b)))
                     words))))))
 
 (define (find-deranged-words word-list)
   (define (search words)
     (let loop ((word-chars (let ((chars (map string->list words)))
-                             (zip chars 
-                                  (map (lambda (word) (list-sort char<? word)) 
+                             (zip chars
+                                  (map (lambda (word) (list-sort char<? word))
                                        chars)))))
       (if (< (length word-chars) 2)
         #f ; failed to find any
@@ -4300,7 +4300,7 @@ function get_words {
     typeset host=www.puzzlers.org
     typeset page=/pub/wordlists/unixdict.txt
     exec 7<>/dev/tcp/$host/80
-    print -e -u7 "GET $page HTTP/1.1\r\nhost: $host\r\nConnection: close\r\n\r\n" 
+    print -e -u7 "GET $page HTTP/1.1\r\nhost: $host\r\nConnection: close\r\n\r\n"
     # remove the http header and save the word list
     sed 's/\r$//; 1,/^$/d' <&7 >"$1"
     exec 7<&-
@@ -4316,7 +4316,7 @@ function is_deranged {
 
 function word2key {
     typeset -a chars=( $(
-        for ((i=0; i<${#word}; i++)); do 
+        for ((i=0; i<${#word}; i++)); do
             echo "${word:i:1}"
         done | sort
     ) )
@@ -4342,7 +4342,7 @@ while IFS= read -r word; do
         fi
     fi
 done <word.list
-echo $max - ${max_deranged[@]} 
+echo $max - ${max_deranged[@]}
 ```
 
 {{out}}
@@ -4380,7 +4380,7 @@ We can speed it up by about another factor of 5 by starting from the group of lo
 ```Ursala
 #import std
 
-longest_deranged_anagram = 
+longest_deranged_anagram =
 
 @NSiXSlK2rSS leql-<x&h; @NiX ~&lZrB->l ^\~&rt @rh -+
    ~&a^& ~&plrEkZ?ah/~&ah ~&fatPR,

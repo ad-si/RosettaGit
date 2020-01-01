@@ -36,8 +36,8 @@ The computation time for an efficient algorithm should be <math>O(n)</math>, but
 
 {{trans|D}}
 
-```cpp>#include <functional
-
+```cpp
+#include <functional>
 #include <iostream>
 #include <vector>
 
@@ -265,7 +265,7 @@ void main() {
 {{out}}
 
 ```txt
-┐ 
+┐
 ├─╴ banana$
 ├─┐ a
 │ ├─┐ na
@@ -377,7 +377,7 @@ func vis(t tree) {
 
 ```txt
 
-┐ 
+┐
 ├─╴ banana$
 ├─┐ a
 │ ├─┐ na
@@ -421,7 +421,7 @@ build_tree=:3 :0
     end.
   end.
 )
- 
+
 suffix_tree=:3 :0
   assert. -.({:e.}:)y
   tree=. B=:|:build_tree <\. y
@@ -458,13 +458,13 @@ Visualizing, using [[Visualize_a_tree#J|showtree]] and prefixing the substring l
 fmttree=: ;@(1&{) showtree~ {: (,~ }.`('[','] ',~":)@.(_>|))each {.
 
    fmttree suffix_tree 'banana$'
-    ┌─ [1] banana$                    
+    ┌─ [1] banana$
     │                       ┌─ [2] na$
-    │             ┌─ na ────┴─ [4] $  
-────┼─ a ─────────┴─ [6] $            
-    │             ┌─ [3] na$          
-    ├─ na ────────┴─ [5] $            
-    └─ [7] $                          
+    │             ┌─ na ────┴─ [4] $
+────┼─ a ─────────┴─ [6] $
+    │             ┌─ [3] na$
+    ├─ na ────────┴─ [5] $
+    └─ [7] $
 
 ```
 
@@ -574,7 +574,7 @@ public class SuffixTreeProblem {
 {{out}}
 
 ```txt
-┐ 
+┐
 ├─- banana$
 ├─┐ a
 │ ├─┐ na
@@ -687,7 +687,7 @@ fun main(args: Array<String>) {
 
 ```txt
 
-┐ 
+┐
 ├─╴ banana$
 ├─┐ a
 │ ├─┐ na
@@ -711,7 +711,7 @@ fun main(args: Array<String>) {
 use strict;
 use warnings;
 use Data::Dumper;
- 
+
 sub classify {
     my $h = {};
     for (@_) { push @{$h->{substr($_,0,1)}}, $_ }
@@ -884,7 +884,7 @@ function SuffixTree(string s)
     end for
     return t
 end function
- 
+
 procedure visualize(sequence t, integer n=1, string pre="")
     if length(t)=0 then
         printf(1,"<empty>\n");
@@ -1049,7 +1049,7 @@ by Danny Yoo for more information on how to use suffix trees in Racket.
 {{out}}
 
 ```txt
--+ 
+-+
  |-- $
  |-+ a
  | |-- $
@@ -1074,7 +1074,7 @@ func suffix_tree(Str t) {
 }
 
 func suffix_tree(a {.len == 1}) {
-    Hash(a[0] => nil) 
+    Hash(a[0] => nil)
 }
 
 func suffix_tree(Arr a) {

@@ -11,15 +11,15 @@ tags = []
 +++
 
 {{task|Basic language learning}}
-[[Category: String manipulation]] 
+[[Category: String manipulation]]
 [[Category:Simple]]
 {{omit from|bc}}
 
-This task is about copying a string. 
+This task is about copying a string.
 
 
 ;Task:
-Where it is relevant, distinguish between copying the contents of a string 
+Where it is relevant, distinguish between copying the contents of a string
 versus making an additional reference to an existing string.
 
 
@@ -98,10 +98,10 @@ var str2:String = str1;
 
 ## Ada
 
-Ada provides three different kinds of strings. 
-The String type is a fixed length string. 
-The Bounded_String type is a string with variable length up to a specified maximum size. 
-The Unbounded_String type is a variable length string with no specified maximum size. 
+Ada provides three different kinds of strings.
+The String type is a fixed length string.
+The Bounded_String type is a string with variable length up to a specified maximum size.
+The Unbounded_String type is a variable length string with no specified maximum size.
 The Bounded_String type behaves a lot like C strings, while the Unbounded_String type behaves a lot like the C++ String class.
 
 
@@ -124,7 +124,7 @@ Dest2 : String := Src(9..13); -- Assigns "Stone" to Dest2
 
 
 ### Bounded Length String Copying
- 
+
 
 ```ada
 -- Instantiate the generic package Ada.Strings.Bounded.Generic_Bounded_Length with a maximum length of 80 characters
@@ -151,8 +151,8 @@ Dest : Unbounded_String := Src;
 
 ## Aime
 
-The intrinsic text type is immediate, immutable 
-and cannot be referred more than once. 
+The intrinsic text type is immediate, immutable
+and cannot be referred more than once.
 
 Copying an intrinsic string:
 
@@ -211,7 +211,7 @@ end.
 
 ```txt
 
-new value some text 
+new value some text
 
 ```
 
@@ -260,18 +260,18 @@ set dst to src
 szString: .asciz "ABCDEFGHIJKLMNOPQRSTUVWXYZ\n"
 
 /* UnInitialized data */
-.bss 
+.bss
 .align 4
 iPtString:   .skip 4
 szString1:    .skip 80
 
 /*  code section */
 .text
-.global main 
+.global main
 main:                /* entry of program  */
     push {fp,lr}    /* saves 2 registers */
 
-    @ display start string 
+    @ display start string
     ldr r0,iAdrszString
     bl affichageMess
     @ copy pointer string
@@ -283,13 +283,13 @@ main:                /* entry of program  */
     ldr r0,[r1]
     bl affichageMess
     @ copy string
-    ldr r0,iAdrszString    
+    ldr r0,iAdrszString
     ldr r1,iAdrszString1
 1:
     ldrb r2,[r0],#1   @ read one byte and increment pointer one byte
     strb r2,[r1],#1   @ store one byte and increment pointer one byte
     cmp r2,#0          @ end of string ?
-    bne 1b            @ no -> loop 
+    bne 1b            @ no -> loop
     @ control
     ldr r0,iAdrszString1
     bl affichageMess
@@ -304,11 +304,11 @@ iAdriPtString:		.int iPtString
 iAdrszString1:		.int szString1
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {fp,lr}    			/* save  registres */ 
+    push {fp,lr}    			/* save  registres */
     push {r0,r1,r2,r7}    		/* save others registers */
     mov r2,#0   				/* counter length */
 1:      	/* loop length calculation */
@@ -322,7 +322,7 @@ affichageMess:
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
     pop {r0,r1,r2,r7}     		/* restaur others registers */
-    pop {fp,lr}    				/* restaur des  2 registres */ 
+    pop {fp,lr}    				/* restaur des  2 registres */
     bx lr	        			/* return  */
 
 
@@ -513,7 +513,7 @@ BECAUSE I DO NOT HOPE TO TURN
 
 ## Batch File
 
-Since the only variables are environment variables, 
+Since the only variables are environment variables,
 creating a string copy is fairly straightforward:
 
 ```dos
@@ -529,11 +529,11 @@ set dst=%src%
 
 ```bbcbasic
       source$ = "Hello, world!"
-      
+
       REM Copy the contents of a string:
       copy$ = source$
       PRINT copy$
-      
+
       REM Make an additional reference to a string:
       !^same$ = !^source$
       ?(^same$+4) = ?(^source$+4)
@@ -545,11 +545,11 @@ set dst=%src%
 
 ## Bracmat
 
-Because in Bracmat strings are unalterable, you never want to copy a string. 
-Still, you will obtain a copy of a string by overflowing the reference counter of the string. 
-(Currently, reference counters on strings and on most operators are 10 bits wide. 
-The <code>=</code> operator has a much wider 'inexhaustible' reference counter, because it anchors alterable objects.) 
-Still, you won't be able to test whether you got the original or a copy other than by looking at overall memory usage of the Bracmat program at the OS-level or by closely timing comparison operations. 
+Because in Bracmat strings are unalterable, you never want to copy a string.
+Still, you will obtain a copy of a string by overflowing the reference counter of the string.
+(Currently, reference counters on strings and on most operators are 10 bits wide.
+The <code>=</code> operator has a much wider 'inexhaustible' reference counter, because it anchors alterable objects.)
+Still, you won't be able to test whether you got the original or a copy other than by looking at overall memory usage of the Bracmat program at the OS-level or by closely timing comparison operations.
 You obtain a new reference to a string or a copy of the string by simple assignment using the <code>=</code> or the <code>:</code> operator:
 
 ```bracmat
@@ -569,8 +569,8 @@ c=abcdef;
 ## C
 
 
-```c>#include <stdlib.h
-	/* exit(), free() */
+```cpp
+#include <iostream>	/* exit(), free() */
 #include <stdio.h>	/* fputs(), perror(), printf() */
 #include <string.h>
 
@@ -635,8 +635,8 @@ main()
 
 ==={{libheader|BSD libc}}===
 
-```c>#include <stdlib.h
-	/* exit() */
+```cpp
+#include <iostream>	/* exit() */
 #include <stdio.h>	/* fputs(), printf() */
 #include <string.h>
 
@@ -665,8 +665,8 @@ main()
 ## C++
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <string>
 
 int main( ) {
@@ -713,8 +713,8 @@ MOVE src TO dst
 
 ## ColdFusion
 
-In ColdFusion, only complex data types (structs, objects, etc.) 
-are passed by reference.  
+In ColdFusion, only complex data types (structs, objects, etc.)
+are passed by reference.
 Hence, any string copy operations are by value.
 
 
@@ -736,9 +736,9 @@ Hence, any string copy operations are by value.
   (assert (eq s1 s1-ref))      ; same object
   (assert (not (eq s1 s2)))    ; different object
   (assert (equal s1 s2))       ; same contents
-                              
+
   (fill s2 #\!)                ; overwrite s2
-  (princ s1)                  
+  (princ s1)
   (princ s2))                  ; will print "Hello!!!!!"
 ```
 
@@ -890,10 +890,10 @@ Goodbye, World!
 
 
 =={{header|Déjà Vu}}==
-In Déjà Vu, strings are immutable, 
-so there really isn't a good reason to copy them. 
-As such, no standard way of doing so is provided. 
-However, one can still create a copy of a string 
+In Déjà Vu, strings are immutable,
+so there really isn't a good reason to copy them.
+As such, no standard way of doing so is provided.
+However, one can still create a copy of a string
 by concatenating it with an empty string.
 
 ```dejavu
@@ -912,12 +912,12 @@ local :scopy concat( original "" )
 
 ## DWScript
 
-DWScript strings are value-type, from the language point of view, 
-you can't have a reference to a String, 
-no more than you can have a reference to an Integer or a Float 
+DWScript strings are value-type, from the language point of view,
+you can't have a reference to a String,
+no more than you can have a reference to an Integer or a Float
 (unless you wrap in an object of course).
 
-Internally they're transparently implemented 
+Internally they're transparently implemented
 via either immutable reference or copy-on-write.
 
 
@@ -937,8 +937,8 @@ var dst = src
 ## E
 
 
-E is a [[pass-references-by-value]] object-oriented language, and strings are immutable, so there is never a need for or benefit from copying a string. 
-Various operations, such as taking the substring (run) from the beginning to the end (<code><var>someString</var>.run(0)</code>) might create a copy, 
+E is a [[pass-references-by-value]] object-oriented language, and strings are immutable, so there is never a need for or benefit from copying a string.
+Various operations, such as taking the substring (run) from the beginning to the end (<code><var>someString</var>.run(0)</code>) might create a copy,
 but this is not guaranteed.
 
 
@@ -974,7 +974,7 @@ Expects the final character of a string to be marked with a 1 in the least signi
 
 ```edsac
 [ Copy a string
-  
+
 ### =======
 
 
@@ -1055,7 +1055,7 @@ ROSETTA CODE
 
 var src := "Hello";
 var dst := src;          //  copying the reference
-var copy := src.clone(); //  copying the content 
+var copy := src.clone(); //  copying the content
 
 ```
 
@@ -1096,14 +1096,14 @@ Dst = Src.
 ## Euphoria
 
 {{works with|Euphoria|4.0.3, 4.0.0 RC1 and later}}
-Arrays in many languages are constrained to have a fixed number of elements, 
-and those elements must all be of the same type. 
-Euphoria eliminates both of those restrictions by defining all arrays (sequences) as a list of zero or more Euphoria objects whose element count can be changed at any time. 
-When you retrieve a sequence element, it is not guaranteed to be of any type. 
+Arrays in many languages are constrained to have a fixed number of elements,
+and those elements must all be of the same type.
+Euphoria eliminates both of those restrictions by defining all arrays (sequences) as a list of zero or more Euphoria objects whose element count can be changed at any time.
+When you retrieve a sequence element, it is not guaranteed to be of any type.
 You, as a programmer, need to check that the retrieved data is of the type
-you'd expect, Euphoria will not. 
-The only thing it will check is whether an assignment is legal. 
-For example, if you try to assign a sequence to an integer variable, 
+you'd expect, Euphoria will not.
+The only thing it will check is whether an assignment is legal.
+For example, if you try to assign a sequence to an integer variable,
 Euphoria will complain at the time your code does the assignment.
 
 
@@ -1114,7 +1114,7 @@ sequence newOne = first
 
 
 =={{header|F Sharp|F#}}==
-.NET strings are immutable, so it is usually not useful to make a deep copy. 
+.NET strings are immutable, so it is usually not useful to make a deep copy.
 However if needed, it is possible using a static method of the <code>System.String</code> type:
 
 ```fsharp
@@ -1131,7 +1131,7 @@ printfn "%b" <| System.Object.ReferenceEquals( str, deepCopy )            // pri
 ## Factor
 
 
-Factor strings are mutable but not growable. 
+Factor strings are mutable but not growable.
 Strings will be immutable in a future release.
 
 
@@ -1165,9 +1165,9 @@ SBUF" I'll be a string someday." >string .
 ## Forth
 
 
-Forth strings are generally stored in memory as prefix counted string, 
-where the first byte contains the string length.  
-However, on the stack they are most often represented as <addr cnt> pairs. 
+Forth strings are generally stored in memory as prefix counted string,
+where the first byte contains the string length.
+However, on the stack they are most often represented as <addr cnt> pairs.
 Thus the way you copy a string depends on where the source string comes from:
 
 
@@ -1326,17 +1326,17 @@ src := "Hello"
 dst := src
 ```
 
-Strings in Go are immutable.  Because of this, there is no need to distinguish between copying the contents and making an additional reference.  
-Technically, Go strings are immutable byte slices.  
-A slice is an object that contains a reference to an underlying array.  
-In the assignment shown above, a new slice object is created for dst.  
-Its internal reference is likely to point to the same underlying array as src, 
+Strings in Go are immutable.  Because of this, there is no need to distinguish between copying the contents and making an additional reference.
+Technically, Go strings are immutable byte slices.
+A slice is an object that contains a reference to an underlying array.
+In the assignment shown above, a new slice object is created for dst.
+Its internal reference is likely to point to the same underlying array as src,
 but the language does not specify this behavior or make any guarantees about it.
 
 
 ## Groovy
 
-The dynamics of references and object creation are very much the same as in [[#Java|Java]]. 
+The dynamics of references and object creation are very much the same as in [[#Java|Java]].
 However, the meaning of the equality (==) operator is different in Groovy, so we show those differences here, even though they are not relevant to the actual copying.
 
 Example and counter-example:
@@ -1376,7 +1376,7 @@ Menu,Edit,Copy,Menu,Edit,Paste
 ## Haskell
 
 
-In Haskell, every value is immutable, including ''String''s. 
+In Haskell, every value is immutable, including ''String''s.
 So one never needs to copy them; references are shared.
 
 
@@ -1398,9 +1398,9 @@ dst = src
 software {
 	a = "Hello World"
 	b = a //This copies the string.
-	
+
 	a += "s"
-	
+
 	print(a)
 	print(b)
 }
@@ -1421,13 +1421,13 @@ end
 ```
 
 
-Under the covers 'b' is created as a reference to the same string as 'a'; 
-the sub-string assignment creates a new copy of the string. 
-However, there is no way to tell this in the language.  
-While most of the time this is transparent, programs that create very long strings through repeated concatenation need to avoid generating intermediate strings.  
+Under the covers 'b' is created as a reference to the same string as 'a';
+the sub-string assignment creates a new copy of the string.
+However, there is no way to tell this in the language.
+While most of the time this is transparent, programs that create very long strings through repeated concatenation need to avoid generating intermediate strings.
 Instead using a list and concatenating at the last minute can perform much better.
 
-Note that strings are indicated using double quotes.  
+Note that strings are indicated using double quotes.
 However, single quotes are another type called character sets or csets.
 
 
@@ -1440,7 +1440,7 @@ dest =: src
 ```
 
 
-J has copy-on-write semantics.  
+J has copy-on-write semantics.
 So both <code>src</code> and <code>dest</code> are references to the same memory, until <code>src</code> changes, at which time <code>dest</code> retains a copy of the original value of <code>src</code>.
 
 
@@ -1469,7 +1469,7 @@ StringBuffer srcCopy = new StringBuffer("Hello");
 
 ## JavaScript
 
-Objects can be copied in JavaScript via simple reassignment. 
+Objects can be copied in JavaScript via simple reassignment.
 Changes to the properties of one will be reflected in the other:
 
 ```javascript
@@ -1590,7 +1590,7 @@ In LabVIEW, one can simply wire an input to more than one output.<br/>
 
 ## Lasso
 
-While other datatypes like arrays require ->asCopy & ->asCopyDeep methods, 
+While other datatypes like arrays require ->asCopy & ->asCopyDeep methods,
 assigning strings creates a copy, not a reference, as is seen below.
 
 ```Lasso
@@ -1659,7 +1659,7 @@ What, has this thing appeared again tonight?
 
 ```lisp
 (let* ((a '"data assigned to a")
-       (b a)) 
+       (b a))
   (: io format '"Contents of 'b': ~s~n" (list b)))
 ```
 
@@ -1749,7 +1749,7 @@ STRING_CONSTANT is immutable, STRING is not.
 ```C
 string a = "A string";
 string b = a;
-a =~ s/$/\./; 
+a =~ s/$/\./;
 puts(a);
 puts(b);
 ```
@@ -1918,23 +1918,23 @@ print copy
 This does a full copy of the string, not just copying the pointer to the string's contents.
 
 ```mips
-.data 
+.data
 	ex_msg_og: .asciiz "Original string:\n"
 	ex_msg_cpy: .asciiz "\nCopied string:\n"
 	string: .asciiz "Nice string you got there!\n"
 
-.text 
+.text
 	main:
 		la $v1,string #load addr of string into $v0
 		la $t1,($v1)  #copy addr into $t0 for later access
 		lb $a1,($v1)  #load byte from string addr
-	strlen_loop:	
+	strlen_loop:
 		beqz $a1,alloc_mem
 		addi $a0,$a0,1 #increment strlen_counter
 		addi $v1,$v1,1 #increment ptr
-		lb $a1,($v1)   #load the byte 
+		lb $a1,($v1)   #load the byte
 		j strlen_loop
-		
+
 	alloc_mem:
 		li $v0,9 #alloc memory, $a0 is arg for how many bytes to allocate
 		         #result is stored in $v0
@@ -1951,24 +1951,24 @@ This does a full copy of the string, not just copying the pointer to the string'
 		addi $t1,$t1,1          #decrement source ptr
 		lb $a1,($t1)            #load next byte from source ptr
 		j strcopy_loop
-		
-		
+
+
 	exit_procedure:
 		la $a1,($v0) #store our string at $v0 so it doesn't get overwritten
 		li $v0,4 #set syscall to PRINT
-		
+
 		la $a0,ex_msg_og  #PRINT("original string:")
 		syscall
-		
+
 		la $a0,($v1)      #PRINT(original string)
 		syscall
-		
+
 		la $a0,ex_msg_cpy #PRINT("copied string:")
 		syscall
-		
+
 		la $a0,($a1)      #PRINT(strcopy)
 		syscall
-		
+
 		li $v0,10         #EXIT(0)
 		syscall
 
@@ -2129,7 +2129,7 @@ var
 
 ```oberon2
 MODULE CopyString;
-TYPE 
+TYPE
 	String = ARRAY 128 OF CHAR;
 VAR
 	a,b: String;
@@ -2220,10 +2220,10 @@ To make a copy of the reference, just dup the string
 ```
 
 
-There is no need to copy a string content as strings are immutable. If really needed : 
+There is no need to copy a string content as strings are immutable. If really needed :
 
 ```Oforth
-StringBuffer new "abcde" << 
+StringBuffer new "abcde" <<
 ```
 
 
@@ -2303,7 +2303,7 @@ GEN string_ref = string;
 program in,out;
 
 type
-    
+
    pString = ^string;
 
 var
@@ -2537,8 +2537,8 @@ In PostScript,
 
 ## Prolog
 
-Values in Prolog are immutable so unifying with a variable that already has the value of a string will effectively copy that string. 
-You cannot reassign a value once it has been unified, it is not logical to have a value equal more than one thing. 
+Values in Prolog are immutable so unifying with a variable that already has the value of a string will effectively copy that string.
+You cannot reassign a value once it has been unified, it is not logical to have a value equal more than one thing.
 
 ```prolog
 ?- A = "A test string", A = B.
@@ -2580,7 +2580,7 @@ dst$ = src$
 editvar /newvar /value=a /userinput=1 /title=Enter a string to be copied:
 editvar /newvar /value=b /userinput=1 /title=Enter current directory of the string:
 editvar /newvar /value=c /userinput=1 /title=Enter file to copy to:
-copy -a- from -b- to -c- 
+copy -a- from -b- to -c-
 ```
 
 
@@ -2701,7 +2701,7 @@ print ["x copied to y, then modified:" mold x "," mold y]
 y: copy/part x 7 ; Copy only the first part of y to x.
 print ["Partial copy:" mold x "," mold y]
 
-y: copy/part  skip x 2  3 
+y: copy/part  skip x 2  3
 print ["Partial copy from offset:" mold x "," mold y]
 ```
 
@@ -2749,9 +2749,9 @@ The example shows how to copy the contents of one string into another string.
 
 Note that delimiters for literal strings, REXX accepts either of:
 ::*   ''' <big>'</big> '''     (an apostrophe)
-::*   ''' <big>"</big> '''     (a double quote) 
+::*   ''' <big>"</big> '''     (a double quote)
 
-Also note that   ''all''   REXX values (variables) are 
+Also note that   ''all''   REXX values (variables) are
 stored as (varying length)   ''character strings''.
 
 ```rexx
@@ -2883,7 +2883,7 @@ end;
   // That is not a problem because String is immutable
   // In fact its a feature
   val des = src
-  assert(src eq des) // Proves the same reference is used. 
+  assert(src eq des) // Proves the same reference is used.
   // To make a real copy makes no sense.
   // Actually its hard to make a copy, the compiler is too smart.
   // mkString, toString makes also not a real copy
@@ -2940,7 +2940,7 @@ var copy2 = original+'';              # ==//==
 
 ## Slate
 
- 
+
 
 ```slate
 [ | :s | s == s copy] applyTo: {'hello'}. "returns False"
@@ -3036,8 +3036,8 @@ set src "Rosetta Code"
 set dst $src
 ```
 
-Tcl copies strings internally when needed. 
-To be exact, it uses a basic value model based on simple objects that are immutable when shared (i.e., when they have more than one effective reference to them); when unshared, they can be changed because the only holder of a reference has to be the code requesting the change. 
+Tcl copies strings internally when needed.
+To be exact, it uses a basic value model based on simple objects that are immutable when shared (i.e., when they have more than one effective reference to them); when unshared, they can be changed because the only holder of a reference has to be the code requesting the change.
 At the script level, this looks like Tcl is making a copy when the variable is assigned as above, but is more efficient in the common case where a value is not actually modified.
 
 =={{header|TI-83 BASIC}}==
@@ -3069,7 +3069,7 @@ a string.clone is-data b
 
 ## Trith
 
-Strings are immutable character sequences, 
+Strings are immutable character sequences,
 so copying a string just means duplicating the reference at the top of the stack:
 
 ```trith
@@ -3113,7 +3113,7 @@ set b a
 
 ## V
 
-dup really makes a reference, but the language is functional, 
+dup really makes a reference, but the language is functional,
 so the string is immutable.
 
 
@@ -3160,7 +3160,7 @@ echo "String 2:" str2
 {{Out}}
 
 ```txt
-String 1: new string                                                            
+String 1: new string
 String 2: original string
 ```
 
@@ -3197,8 +3197,8 @@ Dim b As String = String.Copy(a) ' New string
 ## XPL0
 
 The default method of terminating strings is to set the most significant
-bit of the last character. 
-An alternative is to use the 'string 0' command to specify zero-terminated strings. 
+bit of the last character.
+An alternative is to use the 'string 0' command to specify zero-terminated strings.
 The string copy routine from the standard library is shown.
 
 

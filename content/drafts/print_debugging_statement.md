@@ -19,7 +19,7 @@ Print debugging (or tracing) is the act of watching (live or recorded) trace sta
 </blockquote>
 
 ;Task:
-* Show the print debugging statements in the language. 
+* Show the print debugging statements in the language.
 * Demonstrate their ability to track provenance by displaying information about source code (e.g., code fragment, line and column number).
 
 
@@ -32,8 +32,8 @@ Print debugging (or tracing) is the act of watching (live or recorded) trace sta
 C doesn't have a built-in print debugging statement. However, it can be defined by users as a macro.
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 #define DEBUG_INT(x) printf( #x " at line %d\nresult: %d\n\n", __LINE__, x)
 
@@ -75,9 +75,9 @@ result: 10
 
 ## Go
 
-Go doesn't have a built-in print debugging statement as such. Nor does it have macros. 
+Go doesn't have a built-in print debugging statement as such. Nor does it have macros.
 
-However, as the following example shows, it is easy enough to mimic a C-like approach by writing a short 'debug' function which can show the value of an expression and its type at the appropriate line number in the program's source code. 
+However, as the following example shows, it is easy enough to mimic a C-like approach by writing a short 'debug' function which can show the value of an expression and its type at the appropriate line number in the program's source code.
 
 Note that a label for the expression (whether it's a simple variable or not) must be passed to the 'debug' function as there is no way to deduce it otherwise.
 
@@ -334,17 +334,17 @@ from file: debug.p6, sub: beta, line: 28
 The ? statement is used as a quick shorthand to dump variable contents and expression results.
 
 For provenance, the following was added to builtins/reflections.e (for now/not an autoinclude, 0.8.1+), and throw()
-was also tweaked to convert supplied addresses, which it previously did not. It proved to be quite an easy enhancement 
+was also tweaked to convert supplied addresses, which it previously did not. It proved to be quite an easy enhancement
 to the language, albeit as yet undocumented.
 
 ```Phix
 function _debug_info()
--- use throw to convert a return address and routine number 
+-- use throw to convert a return address and routine number
 -- from the call stack into a proper line number, etc.
 -- (private, not called direct/from outside this file)
 integer rtn
 atom ret_addr
- 
+
     #ilASM{
         [32]
             mov edx,[ebp+20]    -- prev_ebp
@@ -398,9 +398,9 @@ This can be used as follows (0.8.1+)
 
 ```Phix
 include builtins/reflections.e
- 
-?debug_info() 
-?debug_line() 
+
+?debug_info()
+?debug_line()
 procedure test()
     ?debug_info()
     ?debug_line()
@@ -439,7 +439,7 @@ Pyret has the [https://www.pyret.org/docs/latest/s_spies.html <code>spy</code> e
 ```pyret
 fun add(x, y):
   result = x + y
-  spy "in add": 
+  spy "in add":
     x,
     y,
     result,
@@ -471,7 +471,7 @@ Spying "in add" (at file:///spies.arr:3:2-8:5)
 ## Racket
 
 
-Racket doesn't have a built-in print debugging statement. However, it can be defined by users as a macro. 
+Racket doesn't have a built-in print debugging statement. However, it can be defined by users as a macro.
 
 
 ```racket
@@ -483,7 +483,7 @@ Racket doesn't have a built-in print debugging statement. However, it can be def
   ;; if label exists, use it instead of the code fragment
   (printf "~a at line ~a column ~a\n" (or label code) line col)
   (printf "result: ~a\n\n" val)
-  ;; return the value itself, so that we can wrap macro around an expression 
+  ;; return the value itself, so that we can wrap macro around an expression
   ;; without restructuring any code
   val)
 
@@ -531,11 +531,11 @@ result: 9
 
 ## REXX
 
-Since REXX is an interpretive language, it is easy to add judicious use of the   '''say'''   which is an easy 
+Since REXX is an interpretive language, it is easy to add judicious use of the   '''say'''   which is an easy
 
 way to visually examine the values of any variable throughout the program's execution.
 
-When that might not prove feasible   (maybe because of copious output before the problem occurs),   
+When that might not prove feasible   (maybe because of copious output before the problem occurs),
 
 using the   '''trace'''   instruction might be a better choice.
 
@@ -545,22 +545,22 @@ Some of the options for the   '''trace'''   instruction are to display:
 :*    result of clauses
 :*    what commands are being executed
 :*    the (name of) labels being executed
-:*    command errors 
-:*    command failures 
+:*    command errors
+:*    command failures
 :*    commands executed that have a negative return code
 :*    an interactive mode that pauses and lets the programmer display values of variables
 
 
-One of the options that shows the detailed information is the   <big>''' ''i'' '''</big>   option which 
-is the most informative and 
+One of the options that shows the detailed information is the   <big>''' ''i'' '''</big>   option which
+is the most informative and
 
-shows intermediate results within a REXX statement as it's being evaluated.  
+shows intermediate results within a REXX statement as it's being evaluated.
 
 The first number    (for the   '''trace'''   output)   is the line number for the REXX program.
 
 (Blank lines are not   ''traced''.)
 
-The following output is from the Regina REXX interpreter. 
+The following output is from the Regina REXX interpreter.
 
 ```rexx
 /*REXX program to demonstrate  debugging  (TRACE)  information while executing a program*/
@@ -626,7 +626,7 @@ Error 42.3: Arithmetic overflow; divisor must not be zero
 
 ```
 
-Programming note:   this error occurred because when the   '''random'''   BIF is invoked 
+Programming note:   this error occurred because when the   '''random'''   BIF is invoked
 with   ''one''   argument (as is here),   the
 
 range of random numbers generated are integers from zero to the value of the argument (inclusive).
@@ -634,15 +634,15 @@ range of random numbers generated are integers from zero to the value of the arg
 
 ## zkl
 
-Print debugging is similar to C. The _debug_ keyword conditionally compiles 
+Print debugging is similar to C. The _debug_ keyword conditionally compiles
 code (ie the debug code isn't compiled unless debugging is turned on).
 
 ```zkl
-fcn ds(line=__LINE__){ 
+fcn ds(line=__LINE__){
    println("This is line %d of file %s compiled on %s"
            .fmt(line,__FILE__,__DATE__));
 }();
-_debug_{ 
+_debug_{
    ds(__LINE__); println("Debug level is ",__DEBUG__);
    vm.stackTrace().println();
 }
@@ -658,7 +658,7 @@ $ zkl rs
 This is line 39 of file rs.zkl compiled on 2019-08-28
 
 Run with debugging turned on:
-Due to some brain deadness, we need to set the debug level (-d), compile the 
+Due to some brain deadness, we need to set the debug level (-d), compile the
 file (-c) then run it and quit out of the REPL:
 
 $ zkl -dc rs --run --quit
@@ -667,7 +667,7 @@ This is line 44 of file rs.zkl compiled on 2019-08-28
 This is line 49 of file rs.zkl compiled on 2019-08-28
 Debug level is 1
 Stack trace for VM#1 ():
-   rs.__constructor@stackTrace addr:25  args(0) reg(0) 
+   rs.__constructor@stackTrace addr:25  args(0) reg(0)
    startup.__constructor@__constructor addr:1767  args(0) reg(22) R
 
 ```

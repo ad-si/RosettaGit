@@ -127,8 +127,8 @@ Output:
 /* Initialized data              */
 /*********************************/
 .data
-szMessEndpgm:      .asciz "Normal end of program.\n" 
-szFileName:        .asciz "file1.xml" 
+szMessEndpgm:      .asciz "Normal end of program.\n"
+szFileName:        .asciz "file1.xml"
 szFileMode:        .asciz "w"
 szMessError:       .asciz "Error detected !!!!. \n"
 
@@ -140,15 +140,15 @@ szCarriageReturn:  .asciz "\n"
 /*********************************/
 /* UnInitialized data            */
 /*********************************/
-.bss 
+.bss
 .align 4
 
 /*********************************/
 /*  code section                 */
 /*********************************/
 .text
-.global main 
-main:                                     @ entry of program 
+.global main
+main:                                     @ entry of program
     ldr r0,iAdrszVersDoc
     bl xmlNewDoc                          @ create doc
     mov r9,r0                             @ doc address
@@ -196,8 +196,8 @@ main:                                     @ entry of program
 99:
     @ error
     ldr r0,iAdrszMessError
-    bl affichageMess       
-100:                                       @ standard end of the program 
+    bl affichageMess
+100:                                       @ standard end of the program
     mov r0, #0                             @ return code
     mov r7, #EXIT                          @ request to exit program
     svc #0                                 @ perform the system call
@@ -213,44 +213,44 @@ iAdrszFileMode:           .int szFileMode
 iAdrszCarriageReturn:     .int szCarriageReturn
 
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
     push {r0,r1,r2,r7,lr}                   @ save  registres
-    mov r2,#0                               @ counter length 
-1:                                          @ loop length calculation 
-    ldrb r1,[r0,r2]                         @ read octet start position + index 
-    cmp r1,#0                               @ if 0 its over 
-    addne r2,r2,#1                          @ else add 1 in the length 
-    bne 1b                                  @ and loop 
-                                            @ so here r2 contains the length of the message 
-    mov r1,r0                               @ address message in r1 
-    mov r0,#STDOUT                          @ code to write to the standard output Linux 
-    mov r7, #WRITE                          @ code call system "write" 
-    svc #0                                  @ call systeme 
-    pop {r0,r1,r2,r7,lr}                    @ restaur registers */ 
-    bx lr                                   @ return  
+    mov r2,#0                               @ counter length
+1:                                          @ loop length calculation
+    ldrb r1,[r0,r2]                         @ read octet start position + index
+    cmp r1,#0                               @ if 0 its over
+    addne r2,r2,#1                          @ else add 1 in the length
+    bne 1b                                  @ and loop
+                                            @ so here r2 contains the length of the message
+    mov r1,r0                               @ address message in r1
+    mov r0,#STDOUT                          @ code to write to the standard output Linux
+    mov r7, #WRITE                          @ code call system "write"
+    svc #0                                  @ call systeme
+    pop {r0,r1,r2,r7,lr}                    @ restaur registers */
+    bx lr                                   @ return
 /******************************************************************/
-/*     Converting a register to a decimal                                 */ 
+/*     Converting a register to a decimal                                 */
 /******************************************************************/
 /* r0 contains value and r1 address area   */
 .equ LGZONECAL,   10
 conversion10:
-    push {r1-r4,lr}                         @ save registers 
+    push {r1-r4,lr}                         @ save registers
     mov r3,r1
     mov r2,#LGZONECAL
 1:                                          @ start loop
     bl divisionpar10                        @ r0 <- dividende. quotient ->r0 reste -> r1
     add r1,#48                              @ digit
     strb r1,[r3,r2]                         @ store digit on area
-    cmp r0,#0                               @ stop if quotient = 0 
-    subne r2,#1                               @ previous position    
+    cmp r0,#0                               @ stop if quotient = 0
+    subne r2,#1                               @ previous position
     bne 1b                                  @ else loop
                                             @ end replaces digit in front of area
     mov r4,#0
 2:
-    ldrb r1,[r3,r2] 
+    ldrb r1,[r3,r2]
     strb r1,[r3,r4]                         @ store in area begin
     add r4,#1
     add r2,#1                               @ previous position
@@ -263,11 +263,11 @@ conversion10:
     cmp r4,#LGZONECAL                       @ end
     ble 3b
 100:
-    pop {r1-r4,lr}                          @ restaur registres 
+    pop {r1-r4,lr}                          @ restaur registres
     bx lr                                   @return
 /***************************************************/
 /*   division par 10   signé                       */
-/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*  
+/* Thanks to http://thinkingeek.com/arm-assembler-raspberry-pi/*
 /* and   http://www.hackersdelight.org/            */
 /***************************************************/
 /* r0 dividende   */
@@ -276,18 +276,18 @@ conversion10:
 divisionpar10:
   /* r0 contains the argument to be divided by 10 */
     push {r2-r4}                           @ save registers  */
-    mov r4,r0  
+    mov r4,r0
     mov r3,#0x6667                         @ r3 <- magic_number  lower
     movt r3,#0x6666                        @ r3 <- magic_number  upper
-    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0) 
+    smull r1, r2, r3, r0                   @ r1 <- Lower32Bits(r1*r0). r2 <- Upper32Bits(r1*r0)
     mov r2, r2, ASR #2                     @ r2 <- r2 >> 2
     mov r1, r0, LSR #31                    @ r1 <- r0 >> 31
-    add r0, r2, r1                         @ r0 <- r2 + r1 
-    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5 
+    add r0, r2, r1                         @ r0 <- r2 + r1
+    add r2,r0,r0, lsl #2                   @ r2 <- r0 * 5
     sub r1,r4,r2, lsl #1                   @ r1 <- r4 - (r2 * 2)  = r4 - (r0 * 10)
     pop {r2-r4}
     bx lr                                  @ return
-    
+
 
 ```
 
@@ -366,13 +366,13 @@ If we do not care about indentation:
 
 {{libheader|libxml}}
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <libxml/parser.h>
 #include <libxml/tree.h>
-  
+
 int main()
 {
   const char **next;
@@ -390,10 +390,10 @@ int main()
   outFile = fopen("myfile.xml", "w");
   xmlElemDump(outFile, doc, root);
   fclose(outFile);
- 
+
   xmlFreeDoc(doc);
   xmlCleanupParser();
- 
+
   return EXIT_SUCCESS;
 }
 ```
@@ -621,7 +621,7 @@ Output
 ```fantom
 
 using xml
- 
+
 class XmlDom
 {
   public static Void main ()
@@ -629,11 +629,11 @@ class XmlDom
     doc := XDoc()
     root := XElem("root")
     doc.add (root)
- 
+
     child := XElem("element")
     child.add(XText("Some text here"))
     root.add (child)
- 
+
     doc.write(Env.cur.out)
   }
 }
@@ -741,7 +741,7 @@ import groovy.xml.MarkupBuilder
 def writer = new StringWriter() << '<?xml version="1.0" ?>\n'
 def xml = new MarkupBuilder(writer)
 xml.root() {
-    element('Some text here' ) 
+    element('Some text here' )
 }
 println writer
 ```
@@ -985,7 +985,7 @@ E4X — with processing instruction
 
 ```javascript
 XML.ignoreProcessingInstructions = false;
-var xml = <?xml version="1.0"?>  
+var xml = <?xml version="1.0"?>
 <root>
   <element>Some text here</element>
 </root>;
@@ -1034,9 +1034,9 @@ println(xdoc)
 
 This is the closest I could get to the required output.
 
-There appears to be no satisfactory way to prevent the default encoding and standalone attributes from appearing in the XML declaration using the standard JDK DOM implementation. If you set the standalone attribute to true - using doc.setXmlStandalone(true) - then this removes it from the declaration but unfortunately there is then no carriage return before the <root> tag! 
+There appears to be no satisfactory way to prevent the default encoding and standalone attributes from appearing in the XML declaration using the standard JDK DOM implementation. If you set the standalone attribute to true - using doc.setXmlStandalone(true) - then this removes it from the declaration but unfortunately there is then no carriage return before the <root> tag!
 
-So I've decided to leave it as it is.  
+So I've decided to leave it as it is.
 
 ```scala
 // version 1.1.3
@@ -1065,10 +1065,10 @@ fun main(args: Array<String>) {
     val tFactory = TransformerFactory.newInstance()
     tFactory.newTransformer().apply {
         setOutputProperty("indent", "yes")
-        setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4") 
+        setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4")
         transform(source, result)
     }
-    println(sw)            
+    println(sw)
 }
 ```
 
@@ -1108,7 +1108,7 @@ Code based on Flash Xtra (comes with Director, i.e. "built-in") that allows to u
 -- create an XML document
 doc = newObject("XML", "<?xml version='1.0' ?>")
 
-root = doc.createElement("root")  
+root = doc.createElement("root")
 doc.appendChild(root)
 
 element = doc.createElement("element")
@@ -1176,7 +1176,7 @@ Output:
 ```MATLAB
 docNode = com.mathworks.xml.XMLUtils.createDocument('root');
 docRootNode = docNode.getDocumentElement;
-thisElement = docNode.createElement('element'); 
+thisElement = docNode.createElement('element');
 thisElement.appendChild(docNode.createTextNode('Some text here'));
 docRootNode.appendChild(thisElement);
 
@@ -1236,11 +1236,11 @@ method buildDOMDocument() inheritable
 
     domDoc.appendChild(elmt1)
     elmt1.appendChild(elmt2)
-  
+
   catch exPC = ParserConfigurationException
     exPC.printStackTrace
   end
-  
+
   return
 
 method serializeXML() inheritable
@@ -1254,12 +1254,12 @@ method serializeXML() inheritable
     txformer.setOutputProperty(OutputKeys.INDENT, "yes")
     txformer.setOutputProperty(OutputKeys.STANDALONE, "yes")
     txformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2")
-  
+
     sw = StringWriter()
     sr = StreamResult(sw)
-  
+
     txformer.transform(domSrc, sr)
-  
+
     say sw.toString
 
   catch exTC = TransformerConfigurationException
@@ -1342,7 +1342,7 @@ bundle Default {
 
 ## OpenEdge/Progress
 
-The following example uses the X-DOCUMENT, for faster processing SAX can be used. 
+The following example uses the X-DOCUMENT, for faster processing SAX can be used.
 
 ```progress
 
@@ -1616,7 +1616,7 @@ object make_xml_node(array|string in, void|int level)
         return Parser.XML.Tree.SimpleNode(Parser.XML.Tree.XML_TEXT, "", ([]), in);
     else
     {
-        object node = Parser.XML.Tree.SimpleNode(Parser.XML.Tree.XML_ELEMENT, in[0], in[1], ""); 
+        object node = Parser.XML.Tree.SimpleNode(Parser.XML.Tree.XML_ELEMENT, in[0], in[1], "");
         foreach(in[2..];; array|string child)
         {
             node->add_child(make_xml_node(child, level));
@@ -1644,21 +1644,21 @@ to render the output with indenting as specified in the task, this function adds
 ```Pike
 object indent_xml(object parent, void|int indent_text, void|int level)
 {
-    int subnodes = false; 
+    int subnodes = false;
     foreach(parent->get_children();; object child)
     {
-        if (child->get_node_type() == Parser.XML.Tree.XML_ELEMENT || 
+        if (child->get_node_type() == Parser.XML.Tree.XML_ELEMENT ||
             (child->get_node_type() == Parser.XML.Tree.XML_TEXT && indent_text))
         {
-            subnodes = true; 
-            parent->add_child_before(Parser.XML.Tree.SimpleNode(Parser.XML.Tree.XML_TEXT, "", ([]), "\r\n"+"    "*level), child); 
+            subnodes = true;
+            parent->add_child_before(Parser.XML.Tree.SimpleNode(Parser.XML.Tree.XML_TEXT, "", ([]), "\r\n"+"    "*level), child);
             indent_xml(child, indent_text, level+1);
         }
     }
     if (subnodes && level)
         parent->add_child(Parser.XML.Tree.SimpleNode(Parser.XML.Tree.XML_TEXT, "", ([]), "\r\n"+"    "*(level-1)));
     return parent;
-} 
+}
 
 
 indent_xml(make_xml_tree(input))->render_xml();
@@ -1771,7 +1771,7 @@ root = doc.add_element('root')
 element = root.add_element('element')
 element.add_text('Some text here')
 
-# save to a string 
+# save to a string
 # (the first argument to write() needs an object that understands "<<")
 serialized = String.new
 doc.write(serialized, 4)

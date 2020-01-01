@@ -70,7 +70,7 @@ Axiom provides Legendre polynomials and related solvers.
  NonNegativeInteger
 RECORD ==> Record(x : List Fraction Integer, w : List Fraction Integer)
 
-gaussCoefficients(n : NNI, eps : Fraction Integer) : RECORD == 
+gaussCoefficients(n : NNI, eps : Fraction Integer) : RECORD ==
   p := legendreP(n,z)
   q := n/2*D(p, z)*legendreP(subtractIfCan(n,1)::NNI, z)
   x := map(rhs,solve(p,eps))
@@ -105,8 +105,8 @@ gaussIntegrate(4/(1+x^2), x=0..1, 20)
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <math.h>
 
 #define N 5
@@ -223,7 +223,7 @@ compred to actual
     (cond ((= n 0) pa)
           ((= n 1) pb)
           (t (loop for i from 2 to n do
-                  (setf pn (- (* (/ (- (* 2 i) 1) i) x pb) 
+                  (setf pn (- (* (/ (- (* 2 i) 1) i) x pb)
                               (* (/ (- i 1) i) pa)))
                   (setf pa pb)
                   (setf pb pn)
@@ -240,7 +240,7 @@ compred to actual
   (let ((x (make-array n :initial-element 0.0d0)))
     (loop for i from 0 to (- n 1) do
          (let ((val (guess n (+ i 1))) ;Nullstellen-Schätzwert.
-               (itermax 5))     
+               (itermax 5))
            (dotimes (j itermax)
              (setf val (- val
                           (/ (legpoly n val)
@@ -250,7 +250,7 @@ compred to actual
 
 ;; Computes the weight for an n-order polynomial at the point (node) x.
 (defun legwts (n x)
-  (/ 2 
+  (/ 2
      (* (- 1 (* x x))
         (expt (legdiff n x) 2))))
 
@@ -318,7 +318,7 @@ namespace Rosetta {
     /*! Implementation of Gauss-Legendre quadrature
     *  http://en.wikipedia.org/wiki/Gaussian_quadrature
     *  http://rosettacode.org/wiki/Numerical_integration/Gauss-Legendre_Quadrature
-    * 
+    *
     */
     template <int N>
     class GaussLegendreQuadrature {
@@ -342,7 +342,7 @@ namespace Rosetta {
             for (int i = 1; i <= eDEGREE; ++i) {
                 sum += legpoly.weight(i) * f(p * legpoly.root(i) + q);
             }
-        
+
             return p * sum;
         }
 
@@ -405,7 +405,7 @@ namespace Rosetta {
                     double vsub1 = x;
                     double vsub2 = 1;
                     double f     = 1 / (x * x - 1);
-                
+
                     for (int i = 2; i <= eDEGREE; ++i) {
                         this->_v = ((2 * i - 1) * x * vsub1 - (i - 1) * vsub2) / i;
                         this->_d = i * f * (x * this->_v - vsub1);
@@ -442,12 +442,12 @@ double RosettaExp(double x) {
 
 int main() {
     Rosetta::GaussLegendreQuadrature<5> gl5;
-    
+
     std::cout << std::setprecision(10);
 
     gl5.print_roots_and_weights(std::cout);
     std::cout << "Integrating Exp(X) over [-3, 3]: " << gl5.integrate(-3., 3., RosettaExp) << '\n';
-    std::cout << "Actual value:                    " << RosettaExp(3) - RosettaExp(-3) << '\n'; 
+    std::cout << "Actual value:                    " << RosettaExp(3) - RosettaExp(-3) << '\n';
 }
 
 ```
@@ -676,7 +676,7 @@ Compred to actual:               20.035749854820
 
 
 ```Fortran
-! Works with gfortran but needs the option 
+! Works with gfortran but needs the option
 !   -assume realloc_lhs
 ! when compiled with Intel Fortran.
 
@@ -693,8 +693,8 @@ program gauss
     exact = exp(3.0_p)-exp(-3.0_p)
     print "(i0,1x,g0,1x,g10.2)",n, z, z-exact
   end do
-  
-  contains 
+
+  contains
 
   function gaussquad(n) result(r)
   integer                 :: n
@@ -702,10 +702,10 @@ program gauss
   real(kind=p)            :: r(2, n), x, f, df, dx
   integer                 :: i,  iter
   real(kind = p), allocatable :: p0(:), p1(:), tmp(:)
-  
+
   p0 = [1._p]
   p1 = [1._p, 0._p]
-  
+
   do k = 2, n
      tmp = ((2*k-1)*[p1,0._p]-(k-1)*[0._p, 0._p,p0])/k
      p0 = p1; p1 = tmp
@@ -736,9 +736,9 @@ end program
 
 n numerical integral                       error
 --------------------------------------------------
-1 6.00000000000000000000000000000000   -14.    
-2 17.4874646410555689643606840462449   -2.5    
-3 19.8536919968055821921309108927158   -.18    
+1 6.00000000000000000000000000000000   -14.
+2 17.4874646410555689643606840462449   -2.5
+3 19.8536919968055821921309108927158   -.18
 4 20.0286883952907008527738054439858   -.71E-02
 5 20.0355777183855621539285357252751   -.17E-03
 6 20.0357469750923438830654575585499   -.29E-05
@@ -868,8 +868,8 @@ func newtonRaphson(f, df cFunc, x0 float64) float64 {
 
 ```txt
 
-   nodes:  0.90618  0.53847  0.00000 -0.53847 -0.90618 
- weights:  0.23693  0.47863  0.56889  0.47863  0.23693 
+   nodes:  0.90618  0.53847  0.00000 -0.53847 -0.90618
+ weights:  0.23693  0.47863  0.56889  0.47863  0.23693
 integral: 20.035577718385564
 
 ```
@@ -930,7 +930,7 @@ integrate f (m:ms) = sum $ zipWith (gaussLegendre 5 f) (m:ms) ms
   λ> gaussLegendre 10 exp (-3) 3
   20.035749854819695
 
-Analytical solution 
+Analytical solution
   λ> exp 3 - exp (-3)
   20.035749854819805
 
@@ -1199,15 +1199,15 @@ end
 
 local function getLegendreRoots()
     local y, y1
-	
+
     for index = 1, order do
         y = math.cos(math.pi * (index - 0.25) / (order + 0.5))
-		
+
         repeat
             y1 = y
             y = y - (legendre(order, y) / legendreDerivative(order, y))
         until y == y1
-		
+
         table.insert(legendreRoots, y)
     end
 end
@@ -1221,20 +1221,20 @@ end
 
 function gaussLegendreQuadrature(f, lowerLimit, upperLimit, n)
     order = n
-	
+
     do
         getLegendreRoots()
         getLegendreWeights()
     end
-	
+
     local c1 = (upperLimit - lowerLimit) / 2
     local c2 = (upperLimit + lowerLimit) / 2
     local sum = 0
-	
+
     for i = 1, order do
         sum = sum + legendreWeights[i] * f(c1 * legendreRoots[i] + c2)
     end
-	
+
     return c1 * sum
 end
 
@@ -1260,7 +1260,7 @@ Block[{nodes, x, weights},
  nodes = Cases[NSolve[LegendreP[degree, x] == 0, x], _?NumericQ, Infinity];
  weights = 2 (1 - nodes^2)/(degree LegendreP[degree - 1, nodes])^2;
  (b - a)/2 weights.func[(b - a)/2 nodes + (b + a)/2]]
-   
+
 gaussLegendreQuadrature[Exp, {-3, 3}]
 ```
 
@@ -1372,7 +1372,7 @@ gauss_coeff(n) := block([p, q, v, w],
    v: map(rhs, bfallroots(p)),
    w: map(lambda([z], 1/subst([x = z], q)), v),
    [map(bfloat, v), map(bfloat, w)])$
- 
+
 gauss_int(f, a, b, n) := block([u, x, w, c, h],
    u: gauss_coeff(n),
    x: u[1],
@@ -1380,21 +1380,21 @@ gauss_int(f, a, b, n) := block([u, x, w, c, h],
    c: bfloat((a + b)/2),
    h: bfloat((b - a)/2),
    h*sum(w[i]*bfloat(f(c + x[i]*h)), i, 1, n))$
- 
- 
+
+
 fpprec: 40$
- 
- 
+
+
 gauss_int(lambda([x], 4/(1 + x^2)), 0, 1, 20);
 /* 3.141592653589793238462643379852215927697b0 */
- 
+
 % - bfloat(%pi);
 /* -3.427286956499858315999116083264403489053b-27 */
- 
- 
+
+
 gauss_int(exp, -3, 3, 5);
 /* 2.003557771838556215392853572527509393154b1 */
- 
+
 % - bfloat(integrate(exp(x), x, -3, 3));
 /* -1.721364342416440206515136565621888185351b-4 */
 ```
@@ -1834,37 +1834,37 @@ multi legendre-pair(Int $n, $x) {
     my \u = 1 - 1 / $n;
     (1 + u) * $x * $m1 - u * $m2, $m1;
 }
- 
+
 multi legendre(    0 , $ ) { 1 }
 multi legendre(Int $n, $x) { legendre-pair($n, $x)[0] }
- 
+
 multi legendre-prime(    0 , $ ) { 0 }
 multi legendre-prime(    1 , $ ) { 1 }
 multi legendre-prime(Int $n, $x) {
     my ($m0, $m1) = legendre-pair($n, $x);
     ($m1 - $x * $m0) * $n / (1 - $x**2);
 }
- 
+
 sub approximate-legendre-root(Int $n, Int $k) {
     # Approximation due to Francesco Tricomi
     my \t = (4*$k - 1) / (4*$n + 2);
     (1 - ($n - 1) / (8 * $n**3)) * cos(pi * t);
 }
- 
+
 sub newton-raphson(&f, &f-prime, $r is copy, :$eps = 2e-16) {
     while abs(my \dr = - f($r) / f-prime($r)) >= $eps {
         $r += dr;
     }
     $r;
 }
- 
+
 sub legendre-root(Int $n, Int $k) {
     newton-raphson(&legendre.assuming($n), &legendre-prime.assuming($n),
                    approximate-legendre-root($n, $k));
 }
- 
+
 sub weight(Int $n, $r) { 2 / ((1 - $r**2) * legendre-prime($n, $r)**2) }
- 
+
 sub nodes(Int $n) {
     flat gather {
         take 0 => weight($n, 0) if $n !%% 2;
@@ -1875,12 +1875,12 @@ sub nodes(Int $n) {
         }
     }
 }
- 
+
 sub quadrature(Int $n, &f, $a, $b, :@nodes = nodes($n)) {
     sub scale($x) { ($x * ($b - $a) + $a + $b) / 2 }
     ($b - $a) / 2 * [+] @nodes.map: { .value * f(scale(.key)) }
 }
- 
+
 say "Gauss-Legendre $_.fmt('%2d')-point quadrature ∫₋₃⁺³ exp(x) dx ≈ ",
          quadrature($_, &exp, -3, +3) for flat 5 .. 10, 20;
 ```
@@ -1906,10 +1906,10 @@ Gauss-Legendre 20-point quadrature ∫₋₃⁺³ exp(x) dx ≈ 20.0357498548198
 
 ```Phix
 integer order = 0
- 
+
 sequence legendreRoots = {},
          legendreWeights = {}
- 
+
 function legendre(integer term, atom z)
     if term=0 then
         return 1
@@ -1919,7 +1919,7 @@ function legendre(integer term, atom z)
         return ((2*term-1)*z*legendre(term-1,z)-(term-1)*legendre(term-2,z))/term
     end if
 end function
- 
+
 function legendreDerivative(integer term, atom z)
     if term=0
     or term=1 then
@@ -1927,7 +1927,7 @@ function legendreDerivative(integer term, atom z)
     end if
     return (term*(z*legendre(term,z)-legendre(term-1,z)))/(z*z-1)
 end function
- 
+
 procedure getLegendreRoots()
     legendreRoots = {}
     for index=1 to order do
@@ -1940,7 +1940,7 @@ procedure getLegendreRoots()
         legendreRoots &= y
     end for
 end procedure
- 
+
 procedure getLegendreWeights()
     legendreWeights = {}
     for index=1 to order do
@@ -1950,27 +1950,27 @@ procedure getLegendreWeights()
         legendreWeights &= weight
     end for
 end procedure
- 
+
 function gaussLegendreQuadrature(integer f, lowerLimit, upperLimit, n)
     order = n
- 
+
     getLegendreRoots()
     getLegendreWeights()
- 
+
     atom c1 = (upperLimit - lowerLimit) / 2
     atom c2 = (upperLimit + lowerLimit) / 2
     atom s = 0
- 
+
     for i = 1 to order do
         s += legendreWeights[i] * call_func(f,{c1 * legendreRoots[i] + c2})
     end for
- 
+
     return c1 * s
 end function
 
 include pmaths.e    -- exp()
 constant r_exp = routine_id("exp")
- 
+
 string fmt = iff(machine_bits()=32?"%.13f":"%.14f")
 string res
 for i=5 to 11 by 6 do
@@ -2030,10 +2030,10 @@ gaussquad: procedure(n, r);
   declare (x, f, df, dx) float (18);
   declare (i, iter, L) fixed binary;
   declare (p0(*), p1(*), tmp(*), tmp2(*)) float (18) controlled;
-  
+
   allocate p0(1) initial (1);
   allocate p1(2) initial (1, 0);
-  
+
   do k = 2 to n;
      allocate tmp(hbound(p1)+1); do L = 1 to hbound(p1); tmp(L) = p1(L); end; tmp(L) = 0;
      allocate tmp2(hbound(p0)+2); tmp2(1), tmp2(2) = 0;
@@ -2091,7 +2091,7 @@ end Integration_Gauss;
 
 ```txt
  program gave me an error message:
-D:\ig.pli(19:2) : IBM1937I S Extents for parameters must be asterisks or restricted expressions with computational type.       
+D:\ig.pli(19:2) : IBM1937I S Extents for parameters must be asterisks or restricted expressions with computational type.
 I tried to correct that. ok?
 
 ```
@@ -2104,7 +2104,7 @@ I tried to correct that. ok?
 
 ```Python
 from numpy import *
- 
+
 ##################################################################
 # Recursive generation of the Legendre polynomial of order n
 def Legendre(n,x):
@@ -2115,7 +2115,7 @@ def Legendre(n,x):
 		return x
 	else:
 		return ((2.0*n-1.0)*x*Legendre(n-1,x)-(n-1)*Legendre(n-2,x))/n
- 
+
 ##################################################################
 # Derivative of the Legendre polynomials
 def DLegendre(n,x):
@@ -2133,7 +2133,7 @@ def LegendreRoots(polyorder,tolerance=1e-20):
 		err=1 # bad polyorder no roots can be found
 	else:
 		roots=[]
-		# The polynomials are alternately even and odd functions. So we evaluate only half the number of roots. 
+		# The polynomials are alternately even and odd functions. So we evaluate only half the number of roots.
 		for i in range(1,int(polyorder)/2 +1):
 			x=cos(pi*(i-0.25)/(polyorder+0.5))
 			error=10*tolerance
@@ -2164,7 +2164,7 @@ def GaussLegendreWeights(polyorder):
 		err=1 # could not determine roots - so no weights
 	return [W, xis, err]
 ##################################################################
-# The integral value 
+# The integral value
 # func 		: the integrand
 # a, b 		: lower and upper limits of the integral
 # polyorder 	: order of the Legendre polynomial to be used
@@ -2173,7 +2173,7 @@ def GaussLegendreQuadrature(func, polyorder, a, b):
 	[Ws,xs, err]= GaussLegendreWeights(polyorder)
 	if err==0:
 		ans=(b-a)*0.5*sum( Ws*func( (b-a)*0.5*xs+ (b+a)*0.5 ) )
-	else: 
+	else:
 		# (in case of error)
 		err=1
 		ans=None
@@ -2183,8 +2183,8 @@ def GaussLegendreQuadrature(func, polyorder, a, b):
 def func(x):
 	return exp(x)
 ##################################################################
-# 
- 
+#
+
 order=5
 [Ws,xs,err]=GaussLegendreWeights(order)
 if err==0:
@@ -2193,7 +2193,7 @@ if err==0:
 	print "Weights  : ", Ws
 else:
 	print "Roots/Weights evaluation failed"
- 
+
 # Integrating the function
 [ans,err]=GaussLegendreQuadrature(func , order, -3,3)
 if err==0:
@@ -2369,7 +2369,7 @@ Do n = 1 To 20
   Say right(n,2) format(z,2,40) format(z-exact,2,4,,0)
   End
   Say  '  ' exact '(exact)'
-  say '... and took' format(time('E'),,2) "seconds"   
+  say '... and took' format(time('E'),,2) "seconds"
   Exit
 
  gaussquad:
@@ -2496,7 +2496,7 @@ Output:
 
 This REXX version (an optimized version of version 1)   and uses:
 :::*   a faster   '''cos'''   function   (with full precision)
-:::*   a faster   '''exp'''   function   (with full precision) 
+:::*   a faster   '''exp'''   function   (with full precision)
 :::*   some simple variables instead of stemmed arrays
 :::*   some static variables instead of repeated expressions
 :::*   calculations using full (specified) precision (''numeric digits'')
@@ -2511,19 +2511,19 @@ This REXX version (an optimized version of version 1)   and uses:
 [GLQ ≡ Gauss─Legendre quadrature.]
 
 
-The execution speed of this REXX program is largely dependent on the number of decimal digits in   '''pi'''. 
+The execution speed of this REXX program is largely dependent on the number of decimal digits in   '''pi'''.
 
 If faster speed is desired,   the number of the decimal digits of   '''pi'''   can be reduced.
 
 Each iteration yields around three more (fractional) decimal digits   (past the decimal point).
 
-The use of "vertical bars" is one of the very few times to use leading comments, as there isn't that many 
+The use of "vertical bars" is one of the very few times to use leading comments, as there isn't that many
 
-situations where there exists nested     '''do'''     loops with different (grouped) sizable indentations,   and 
+situations where there exists nested     '''do'''     loops with different (grouped) sizable indentations,   and
 
 where there's practically no space on the right side of the REXX source statements.   It presents a good
 
-visual indication of what's what,   but it's the dickens to pay when updating the source code. 
+visual indication of what's what,   but it's the dickens to pay when updating the source code.
 
 ```rexx
 /*REXX program does numerical integration using an N-point Gauss─Legendre quadrature rule.   */
@@ -2580,7 +2580,7 @@ exp: procedure; parse arg x;  ix= x % 1;               if abs(x-ix) > .5  then i
                 return z * e()**ix
 ```
 
-{{out|output|text=  when using the default inputs:}} 
+{{out|output|text=  when using the default inputs:}}
 
 ```txt
 
@@ -2629,7 +2629,7 @@ Using  82  digit precision,  the N-point Gauss─Legendre quadrature (GLQ) had a
 ===version 3, more precision===
 This REXX version is almost an exact copy of REXX version 2, but with more decimal digits of   '''pi'''.
 
-It is about twice as slow as version 2,   due to the increased number of decimal digits   (precision). 
+It is about twice as slow as version 2,   due to the increased number of decimal digits   (precision).
 
 ```rexx
 /*REXX program does numerical integration using an N-point Gauss─Legendre quadrature rule.   */
@@ -2689,7 +2689,7 @@ exp: procedure; parse arg x;  ix= x % 1;               if abs(x-ix) > .5  then i
                 return z * e()**ix
 ```
 
-{{out|output|text=  when using the default inputs:}} 
+{{out|output|text=  when using the default inputs:}}
 
 (Shown at about two-thirds size.)
 <pre style="font-size:67%">
@@ -3022,7 +3022,7 @@ nodes = # takes precision and order (p,n) to a list of nodes and weights <(x_1,w
       mp..div^|/mp..pi@NiC mp..add/5E-1+ ..nat2mp,
       @r mp..bus/*2.5E-1+ ..nat2mp*+ nrange/1)+-
 
-integral = # takes precision and order (p,n) to a function taking a function and interval (f,(a,b)) 
+integral = # takes precision and order (p,n) to a function taking a function and interval (f,(a,b))
 
 ("p","n"). -+
    mp..shrink^/~& difference\"p"+ mp..prec,
@@ -3034,7 +3034,7 @@ demonstration program:
 ```Ursala
 #show+
 
-demo = 
+demo =
 
 ~&lNrCT (
    ^|lNrCT(:/'nodes:',:/'weights:')@lSrSX ..mp2str~~* nodes/160 5,

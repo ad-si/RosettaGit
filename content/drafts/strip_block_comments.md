@@ -17,9 +17,9 @@ A block comment begins with a   ''beginning delimiter''   and ends with a   ''en
 
 
 ;Task:
-Strip block comments from program text (of a programming language much like classic [[C]]). 
+Strip block comments from program text (of a programming language much like classic [[C]]).
 
-Your demos should at least handle simple, non-nested and multi-line block comment delimiters.  
+Your demos should at least handle simple, non-nested and multi-line block comment delimiters.
 
 The block comment delimiters are the two-character sequence:
 :::*     <big><big> '''/*''' </big></big>     (beginning delimiter)
@@ -34,7 +34,7 @@ Sample text for stripping:
    * Some comments
    * longer comments here that we can parse.
    *
-   * Rahoo 
+   * Rahoo
    */
    function subroutine() {
     a = /* inline comment */ b + c ;
@@ -164,7 +164,7 @@ end Strip;
 output:
 
 ```txt
-  
+
 
 
 
@@ -173,9 +173,9 @@ output:
    function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
 
 
     function something() {
@@ -314,22 +314,22 @@ end.
 
 ```txt
 
-     
-                  
-                                            
-    
-          
-     
+
+
+
+
+
+
    function subroutine() {
     a =                      b + c ;
    }
-                             
-       
-                      
-      
+
+
+
+
     function something() {
     }
- 
+
 
 ```
 
@@ -345,7 +345,7 @@ code =
    * Some comments
    * longer comments here that we can parse.
    *
-   * Rahoo 
+   * Rahoo
    */
    function subroutine() {
     a = /* inline comment */ b + c ;
@@ -375,9 +375,9 @@ code =
    function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
     function something() {
     }
 ```
@@ -391,18 +391,18 @@ code =
 ```bbcbasic
       infile$ = "C:\sample.c"
       outfile$ = "C:\stripped.c"
-      
+
       PROCstripblockcomments(infile$, outfile$, "/*", "*/")
       END
-      
+
       DEF PROCstripblockcomments(infile$, outfile$, start$, finish$)
       LOCAL infile%, outfile%, comment%, test%, A$
-      
+
       infile% = OPENIN(infile$)
       IF infile%=0 ERROR 100, "Could not open input file"
       outfile% = OPENOUT(outfile$)
       IF outfile%=0 ERROR 100, "Could not open output file"
-      
+
       WHILE NOT EOF#infile%
         A$ = GET$#infile% TO 10
         REPEAT
@@ -423,7 +423,7 @@ code =
         UNTIL test%=0
         IF NOT comment% BPUT#outfile%, A$
       ENDWHILE
-      
+
       CLOSE #infile%
       CLOSE #outfile%
       ENDPROC
@@ -433,13 +433,13 @@ Output file:
 
 ```txt
 
-  
+
    function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
     function something() {
     }
 
@@ -450,8 +450,8 @@ Output file:
 ## C
 
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -530,9 +530,9 @@ Specify an input file via the first command line argument, and optionally specif
 ## C++
 
 
-```cpp>#include <string
-
-#include <iostream> 
+```cpp
+#include <string>
+#include <iostream>
 #include <iterator>
 #include <fstream>
 #include <boost/regex.hpp>
@@ -566,9 +566,9 @@ Code unstripped:
    function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
     function something() {
     }
 
@@ -608,7 +608,7 @@ using System;
   (let [args (conj {:delim ["/*" "*/"]} (apply hash-map args)) ; This is the standard way of doing keyword/optional arguments in Clojure
 	[opener closer] (:delim args)]
     (loop [out "", txt txt, delim-count 0] ; delim-count is needed to handle nested comments
-      (let [[hdtxt resttxt] (split-at (count opener) txt)] ; This splits "/* blah blah */" into hdtxt="/*" and restxt="blah blah */"	
+      (let [[hdtxt resttxt] (split-at (count opener) txt)] ; This splits "/* blah blah */" into hdtxt="/*" and restxt="blah blah */"
 	(printf "hdtxt=%8s resttxt=%8s out=%8s txt=%16s delim-count=%s\n" (apply str hdtxt) (apply str resttxt) out (apply str txt) delim-count)
 	(cond
 	 (empty? hdtxt)    (str out (apply str txt))
@@ -784,13 +784,13 @@ apples, pears; and bananas ";  // test for line comment
 
 
 ===Text without comments:
-  
+
    function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
     function something() {
     }
 
@@ -808,16 +808,16 @@ apples, pears; and bananas ";  // test for line comment
 
 ===Original text:
 apples, pears # and bananas
-apples, pears; and bananas 
+apples, pears; and bananas
 
 
 ===Text without comments:
-apples, pears 
+apples, pears
 apples, pears
 
 
 ===The stripped comments:
-# and bananas; and bananas 
+# and bananas; and bananas
 ```
 
 
@@ -943,7 +943,7 @@ Output: the report is "16 read, 8 written." And in the output file appears...
 ```
 
 Where for expository purposes the > ... < mark the bounds of the surviving text, thus showing surviving spaces.
- 
+
 Once one has an axe in one's hands, everything looks like a tree. A slight variation produces the following stump:
 
 ```txt
@@ -982,7 +982,7 @@ let balancedComments opening closing =
 {0}                       # An outer opening delimiter
     (?>                   # efficiency: no backtracking here
         {0} (?<LEVEL>)    # An opening delimiter, one level down
-        | 
+        |
         {1} (?<-LEVEL>)   # A closing delimiter, one level up
         |
         (?! {0} | {1} ) . # With negative lookahead: Anything but delimiters
@@ -999,7 +999,7 @@ let main args =
     * Some comments
     * longer comments here that we can parse.
     *
-    * Rahoo 
+    * Rahoo
     */
     function subroutine() {
     a = /* inline comment */ b + c ;
@@ -1163,9 +1163,9 @@ Output:
    function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
     function something() {
     }
 
@@ -1187,7 +1187,7 @@ procedure stripBlockComment(s1,s2,s3)  #: strip comments between s2-s3 from s1
    s1 ? {
       while result ||:= tab(find(s2)) do {
          move(*s2)
-         tab(find(s3)|0)   # or end of string 
+         tab(find(s3)|0)   # or end of string
          move(*s3)
          }
       return result || tab(0)
@@ -1201,11 +1201,11 @@ Otherwise, the following handles an arbitrary length input:
 procedure main()
    every writes(stripBlockComment(!&input,"/*","*/"))
 end
- 
+
 procedure stripBlockComment(s,s2,s3)
     static inC          # non-null when inside comment
     (s||"\n") ?  while not pos(0) do {
-            if /inC then 
+            if /inC then
                 if inC := 1(tab(find(s2))\1, move(*s2)) then suspend inC
                 else return tab(0)
             else if (tab(find(s3))\1,move(*s3)) then inC := &null
@@ -1236,7 +1236,7 @@ example=: 0 :0
    * Some comments
    * longer comments here that we can parse.
    *
-   * Rahoo 
+   * Rahoo
    */
    function subroutine() {
     a = /* inline comment */ b + c ;
@@ -1255,13 +1255,13 @@ Example use:
 
 ```j
    strip example
-  
+
    function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
     function something() {
     }
 ```
@@ -1340,14 +1340,14 @@ public class StripBlockComments{
 
 ## jq
 
-''Note: A version of jq with <tt>gsub/3</tt> is required to compile the function defined in this section.'' 
+''Note: A version of jq with <tt>gsub/3</tt> is required to compile the function defined in this section.''
 
 The filter <tt>strip_block_comments/2</tt> as defined here does not attempt to recognize comments-within-comments.
 
 ```jq
 def strip_block_comments(open; close):
   def deregex:
-    reduce ("\\\\", "\\*", "\\^", "\\?", "\\+", "\\.", 
+    reduce ("\\\\", "\\*", "\\^", "\\?", "\\+", "\\.",
             "\\!", "\\{", "\\}", "\\[", "\\]", "\\$", "\\|" ) as $c
       (.; gsub($c; $c));
   # "?" => reluctant, "m" => multiline
@@ -1481,7 +1481,7 @@ val sample = """
    * Some comments
    * longer comments here that we can parse.
    *
-   * Rahoo 
+   * Rahoo
    */
    function subroutine() {
     a = /* inline comment */ b + c ;
@@ -1500,7 +1500,7 @@ val sample2 = """
    ` Some comments
    ` longer comments here that we can parse.
    `
-   ` Rahoo 
+   ` Rahoo
    ``}
    function subroutine2() {
     d = ``{ inline comment ``} e + f ;
@@ -1517,7 +1517,7 @@ val sample2 = """
 fun stripBlockComments(text: String, del1: String = "/*", del2: String = "*/"): String {
     val d1 = Regex.escape(del1)
     val d2 = Regex.escape(del2)
-    val r = Regex("""(?s)$d1.*?$d2""") 
+    val r = Regex("""(?s)$d1.*?$d2""")
     return text.replace(r, "")
 }
 
@@ -1536,9 +1536,9 @@ fun main(args: Array<String>) {
    function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
     function something() {
     }
 
@@ -1547,9 +1547,9 @@ fun main(args: Array<String>) {
    function subroutine2() {
     d =  e + f ;
    }
-   
 
-   
+
+
     function something2() {
     }
 
@@ -1628,7 +1628,7 @@ a = b + c ;
 function something() {
 }
 
- 
+
 
 ```
 
@@ -1657,13 +1657,13 @@ print( stripped )
 ```Mathematica
 StringReplace[a,"/*"~~Shortest[___]~~"*/" -> ""]
 
--> 
+->
    function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
     function something() {
     }
 ```
@@ -1672,18 +1672,18 @@ StringReplace[a,"/*"~~Shortest[___]~~"*/" -> ""]
 =={{header|MATLAB}} / {{header|Octave}}==
 
 ```Matlab
-function str = stripblockcomment(str,startmarker,endmarker) 
-   while(1) 
+function str = stripblockcomment(str,startmarker,endmarker)
+   while(1)
       ix1 = strfind(str, startmarker);
       if isempty(ix1) return; end;
       ix2 = strfind(str(ix1+length(startmarker):end),endmarker);
-      if isempty(ix2) 
+      if isempty(ix2)
          str = str(1:ix1(1)-1);
          return;
       else
          str = [str(1:ix1(1)-1),str(ix1(1)+ix2(1)+length(endmarker)+1:end)];
-      end; 
-   end;	
+      end;
+   end;
 end;
 ```
 
@@ -1701,7 +1701,7 @@ Output:
    * Some comments
    * longer comments here that we can parse.
    *
-   * Rahoo 
+   * Rahoo
    */
    function subroutine() {
     a = /* inline comment */ b + c ;
@@ -1716,13 +1716,13 @@ Output:
 
 ### =========
 
-  
+
    function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
     function something() {
     }
 
@@ -1755,13 +1755,13 @@ echo commentStripper("""/**
    * Some comments
    * longer comments here that we can parse.
    *
-   * Rahoo 
+   * Rahoo
    */
    function subroutine() {
     a = /* inline comment */ b + c ;
    }
    /*/ <-- tricky comments */
- 
+
    /**
     * Another comment.
     */
@@ -1773,7 +1773,7 @@ echo commentStripper("""  /**
    * Some comments
    * longer comments here that we can parse.
    *
-   * Rahoo 
+   * Rahoo
    *//*
    function subroutine() {
     a = /* inline comment */ b + c ;
@@ -1795,15 +1795,15 @@ NON-NESTED BLOCK COMMENT EXAMPLE:
    function subroutine() {
     a =  b + c ;
    }
-   
- 
-   
+
+
+
     function something() {
     }
 
 NESTED BLOCK COMMENT EXAMPLE:
-  
-   
+
+
     function something() {
     }
 ```
@@ -1814,7 +1814,7 @@ NESTED BLOCK COMMENT EXAMPLE:
 
 
 ```Perl
-#!/usr/bin/perl -w 
+#!/usr/bin/perl -w
 use strict ;
 use warnings ;
 
@@ -1836,9 +1836,9 @@ Output:
 function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
     function something() {
     }
 
@@ -1875,13 +1875,13 @@ sub sample {
 Output:
 
 ```txt
-   
+
     function subroutine() {
      a =  b + c ;
     }
-    
 
-    
+
+
     function something() {
     }
 
@@ -1898,7 +1898,7 @@ constant test = """
    * Some comments
    * longer comments here that we can parse.
    *
-   * Rahoo 
+   * Rahoo
    */
    function subroutine() {
     a = /* inline comment */ b + c ;
@@ -1962,7 +1962,7 @@ echo "Result: '" . strip_block_comments( "
  * Some comments
  * longer comments here that we can parse.
  *
- * Rahoo 
+ * Rahoo
  */
  function subroutine() {
   a = /* inline comment */ b + c ;
@@ -2016,9 +2016,9 @@ Output:
    function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
     function something() {
     }
 ```
@@ -2081,7 +2081,7 @@ Procedure.s escapeChars(text.s)
       output + "\" + nextChar
     Else
       output + nextChar
-    EndIf 
+    EndIf
   Next
   ProcedureReturn output
 EndProcedure
@@ -2119,7 +2119,7 @@ If OpenConsole()
   PrintN(stripBlocks(source, "/*", "*/"))
   PrintN("--- source with block comments between '*' and '*' removed ---")
   PrintN(stripBlocks(source, "*", "*"))
-   
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2178,7 +2178,7 @@ The code has comment delimeters as an argument and will also strip ''nested'' bl
 ```python
 def _commentstripper(txt, delim):
     'Strips first nest of block comments'
-    
+
     deliml, delimr = delim
     out = ''
     if deliml in txt:
@@ -2195,7 +2195,7 @@ def _commentstripper(txt, delim):
 
 def commentstripper(txt, delim=('/*', '*/')):
     'Strips nests of block comments'
-    
+
     deliml, delimr = delim
     while deliml in txt:
         txt = _commentstripper(txt, delim)
@@ -2211,7 +2211,7 @@ def test():
    * Some comments
    * longer comments here that we can parse.
    *
-   * Rahoo 
+   * Rahoo
    */
    function subroutine() {
     a = /* inline comment */ b + c ;
@@ -2230,7 +2230,7 @@ def test():
    * Some comments
    * longer comments here that we can parse.
    *
-   * Rahoo 
+   * Rahoo
    *//*
    function subroutine() {
     a = /* inline comment */ b + c ;
@@ -2243,7 +2243,7 @@ def test():
     function something() {
     }'''
     print(commentstripper(sample))
-    
+
 if __name__ == '__main__':
     test()
 ```
@@ -2253,19 +2253,19 @@ if __name__ == '__main__':
 ```txt
 
 NON-NESTED BLOCK COMMENT EXAMPLE:
-  
+
    function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
     function something() {
     }
 
 NESTED BLOCK COMMENT EXAMPLE:
-  
-   
+
+
     function something() {
     }
 ```
@@ -2487,7 +2487,7 @@ Comments:
     * Another comment.
     */
 
-       
+
 
 ```
 
@@ -2500,14 +2500,14 @@ Comments:
 ```ring
 
 example = "123/*456*/abc/*def*/789"
-  
+
 example2 = example
 nr = 1
 while nr = 1
       n1 = substr(example2,"/*")
-      n2 = substr(example2,"*/") 
+      n2 = substr(example2,"*/")
       if n1 > 0 and n2 > 0
-         example3 = substr(example2,n1,n2-n1+2) 
+         example3 = substr(example2,n1,n2-n1+2)
          example2 = substr(example2,example3,"")
       else nr = 0 ok
 end
@@ -2522,9 +2522,9 @@ see example2 + nl
 
 ```ruby
 def remove_comments!(str, comment_start='/*', comment_end='*/')
-  while start_idx = str.index(comment_start) 
+  while start_idx = str.index(comment_start)
     end_idx = str.index(comment_end, start_idx + comment_start.length) + comment_end.length - 1
-    str[start_idx .. end_idx] = "" 
+    str[start_idx .. end_idx] = ""
   end
   str
 end
@@ -2538,7 +2538,7 @@ example = <<END_OF_STRING
    * Some comments
    * longer comments here that we can parse.
    *
-   * Rahoo 
+   * Rahoo
    */
    function subroutine() {
     a = /* inline comment */ b + c ;
@@ -2558,13 +2558,13 @@ puts remove_comments example
 outputs
 
 ```txt
-  
+
    function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
     function something() {
     }
 ```
@@ -2639,13 +2639,13 @@ Output:
 
 ```txt
 
-   
+
    function subroutine() {
     a =   b + c ;
    }
-    
 
-    
+
+
     function something() {
     }
 
@@ -2689,7 +2689,7 @@ puts [stripBlockComment "  /**
    * Some comments
    * longer comments here that we can parse.
    *
-   * Rahoo 
+   * Rahoo
    */
    function subroutine() {
     a = /* inline comment */ b + c ;
@@ -2708,13 +2708,13 @@ Output:
 
 ```txt
 
-  
+
    function subroutine() {
     a =  b + c ;
    }
-   
 
-   
+
+
     function something() {
     }
 
@@ -2973,9 +2973,9 @@ The input (from the task description) is in a file because I'm too lazy to type 
  function subroutine() {
   a =  b + c ;
  }
- 
 
- 
+
+
   function something() {
   }
 

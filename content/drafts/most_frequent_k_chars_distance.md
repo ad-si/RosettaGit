@@ -15,7 +15,7 @@ tags = []
 In [[wp:information theory|information theory]], the '''MostFreqKDistance''' is a [[wp:String metric|string metric]] for quickly estimating how [[wp:Similarity measure|similar]] two [[wp:Order theory|ordered sets]] or [[wp:String (computer science)|strings]] are. The scheme was invented by Sadi Evren SEKER,<ref name="mfkc"/> and initially used in [[wp:text mining|text mining]] applications like [[wp:author recognition|author recognition]].<ref name="mfkc">{{citation
  | last1 = SEKER | first1 = Sadi E. | author1-link = Sadi Evren SEKER
  | last2 = Altun | first2 = Oguz
- | last3 = Ayan | first3 = Ugur 
+ | last3 = Ayan | first3 = Ugur
  | last4 = Mert | first4 = Cihan
  | contribution = A Novel String Distance Function based on Most Frequent K Characters
  | volume = 4
@@ -39,7 +39,7 @@ This method is originally based on a hashing function, MaxFreqKChars<ref name="h
  | year = 2013}}.</ref>
 classical [[wp:author recognition|author recognition]] problem and idea first came out while studying [[wp:data stream mining|data stream mining]].<ref name="author">{{citation
  | last1 = Seker | first1 = Sadi E. | author1-link = Sadi Evren SEKER
- | last2 = Al-Naami | first2 = Khaled 
+ | last2 = Al-Naami | first2 = Khaled
  | last3 = Khan | first3 = Latifur
  | contribution = Author attribution on streaming data
  | doi = 10.1109/IRI.2013.6642511
@@ -48,10 +48,10 @@ classical [[wp:author recognition|author recognition]] problem and idea first ca
  | publisher = [[wp:IEEE]]
  | title = Information Reuse and Integration (IRI), 2013 IEEE 14th International Conference on, San Fransisco, USA, Aug 14-16, 2013
  | year = 2013}}.</ref>
-The string distance 
+The string distance
 
 ;Definition
-Method has two steps. 
+Method has two steps.
 * [[wp:Hash function|Hash]] input strings str1 and str2 separately using MostFreqKHashing and output hstr1 and hstr2 respectively
 * Calculate string distance (or string similarity coefficient) of two hash outputs, hstr1 and hstr2 and output an integer value
 
@@ -59,9 +59,9 @@ Method has two steps.
 The first step of algorithm is calculating the hashing based on the most frequent k characters. The hashing algorithm has below steps:
  '''string function''' ''MostFreqKHashing'' ('''string''' inputString, '''int''' K)
      '''def string''' outputString
-     '''for each''' distinct characters 
+     '''for each''' distinct characters
          '''count''' occurrence of each character
-     '''for''' i '''from''' 0 '''to''' K 
+     '''for''' i '''from''' 0 '''to''' K
          '''char''' c = '''next''' most frequent ''i''<sup>th</sup> character  (if two chars have same frequency than get the first occurrence in inputString)
          '''int''' count = number of occurrence of the character
          '''append''' to ''outputString'', c and count
@@ -76,7 +76,7 @@ Aim of 'Most Frequent K Hashing' function is calculating the most count of each 
 Similar to the most of [[wp:hashing function|hashing functions]], ''Most Frequent K Hashing'' is also a [[wp:one way function]].
 
 ;Most Frequent K Distance
-Distance calculation between two strings is based on the hash outputs of two strings. 
+Distance calculation between two strings is based on the hash outputs of two strings.
  '''int function''' ''MostFreqKSimilarity'' ('''string''' inputStr1, '''string''' inputStr2)
      '''def int''' similarity
      '''for each''' c = '''next''' character '''from''' inputStr1
@@ -84,12 +84,12 @@ Distance calculation between two strings is based on the hash outputs of two str
          '''if''' c '''is not null'''
              similarity '''+=''' frequency of c in inputStr1 + frequency of c in inputStr2
      '''return''' similarity
-Above function, simply gets two input strings, previously outputted from the MostFreqKHashing function. From the most frequent k hashing function, the characters and their frequencies are returned. So, the similarity function calculates the similarity based on characters and their frequencies by checking if the same character appears on both strings and if their frequencies are equal. 
+Above function, simply gets two input strings, previously outputted from the MostFreqKHashing function. From the most frequent k hashing function, the characters and their frequencies are returned. So, the similarity function calculates the similarity based on characters and their frequencies by checking if the same character appears on both strings and if their frequencies are equal.
 
-In some implementations, the distance metric is required instead of similarity coefficient. In order to convert the output of above similarity coefficient to distance metric, the output can be subtracted from any constant value (like the maximum possible output value). For the case, it is also possible to implement a [[wp:wrapper function]] over above two functions. 
+In some implementations, the distance metric is required instead of similarity coefficient. In order to convert the output of above similarity coefficient to distance metric, the output can be subtracted from any constant value (like the maximum possible output value). For the case, it is also possible to implement a [[wp:wrapper function]] over above two functions.
 
 ;;String Distance Wrapper Function
-In order to calculate the distance between two strings, below function can be implemented 
+In order to calculate the distance between two strings, below function can be implemented
  '''int function''' MostFreqKSDF ('''string''' inputStr1, '''string''' inputStr2, '''int''' K, '''int''' maxDistance)
      '''return''' maxDistance - MostFreqKSimilarity(MostFreqKHashing(inputStr1,K), MostFreqKHashing(inputStr2,K))
 
@@ -102,13 +102,13 @@ Let's consider maximum 2 frequent hashing over two strings ‘research’ and �
 MostFreqKHashing('research',2) = 'r2e2'
 ```
 
-because we have 2 'r' and 2 'e' characters with the highest frequency and we return in the order they appear in the string. 
+because we have 2 'r' and 2 'e' characters with the highest frequency and we return in the order they appear in the string.
 
 ```javascript
 MostFreqKHashing('seeking',2) = 'e2s1'
 ```
 
-Again we have character 'e' with highest frequency and rest of the characters have same frequency of 1, so we return the first character of equal frequencies, which is 's'. 
+Again we have character 'e' with highest frequency and rest of the characters have same frequency of 1, so we return the first character of equal frequencies, which is 's'.
 Finally we make the comparison:
 
 ```javascript
@@ -129,13 +129,13 @@ Below table holds some sample runs between example inputs for K=2:
 !Inputs
 !Hash Outputs
 !SDF Output (max from 10)
-|- 
+|-
 |'night'
 'nacht'
 |n1i1
 n1a1
 |9
-|- 
+|-
 |'my'
 'a'
 |m1y1
@@ -143,21 +143,21 @@ a1NULL0
 |10
 |-
 |‘research’
-‘research’	
+‘research’
 |r2e2
-r2e2	
+r2e2
 |8
 |-
 |‘aaaaabbbb’
-‘ababababa’	
+‘ababababa’
 |a5b4
-a5b4	
+a5b4
 |1
 |-
 |‘significant’
-‘capabilities’	
+‘capabilities’
 |i3n2
-i3a2	
+i3a2
 |5
 |}
 
@@ -179,8 +179,8 @@ MostFreqKSDF(str1,str2,2,100) = 83
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <vector>
 #include <map>
 #include <iostream>
@@ -196,7 +196,7 @@ std::string mostFreqKHashing ( const std::string & input , int k ) {
    }
    std::vector<std::pair<char , int>> letters ( frequencies.begin( ) , frequencies.end( ) ) ;
    std::sort ( letters.begin( ) , letters.end( ) , [input] ( std::pair<char, int> a ,
-	         std::pair<char, int> b ) { char fc = std::get<0>( a ) ; char fs = std::get<0>( b ) ; 
+	         std::pair<char, int> b ) { char fc = std::get<0>( a ) ; char fs = std::get<0>( b ) ;
 	         int o = std::get<1>( a ) ; int p = std::get<1>( b ) ; if ( o != p ) { return o > p ; }
 	         else { return input.find_first_of( fc ) < input.find_first_of ( fs ) ; } } ) ;
    for ( int i = 0 ; i < letters.size( ) ; i++ ) {
@@ -216,9 +216,9 @@ int mostFreqKSimilarity ( const std::string & first , const std::string & second
    int i = 0 ;
    while ( i < first.length( ) - 1  ) {
       auto found = second.find_first_of( first.substr( i , 2 ) ) ;
-      if ( found != std::string::npos ) 
+      if ( found != std::string::npos )
 	 return std::stoi ( first.substr( i , 2 )) ;
-      else 
+      else
 	 i += 2 ;
    }
    return 0 ;
@@ -435,14 +435,14 @@ SDF(input1, input2, 2, 100) = 88
 
 
 ```Haskell
-module MostFrequentK 
+module MostFrequentK
    where
 import Data.List ( nub , sortBy )
-import qualified Data.Set as S 
+import qualified Data.Set as S
 
 count :: Eq a => [a] -> a -> Int
-count [] x = 0 
-count ( x:xs ) k 
+count [] x = 0
+count ( x:xs ) k
    |x == k = 1 + count xs k
    |otherwise = count xs k
 
@@ -450,7 +450,7 @@ orderedStatistics :: String -> [(Char , Int)]
 orderedStatistics s = sortBy myCriterion $ nub $ zip s ( map (\c -> count s c ) s )
    where
       myCriterion :: (Char , Int) -> (Char , Int) -> Ordering
-      myCriterion (c1 , n1) (c2, n2) 
+      myCriterion (c1 , n1) (c2, n2)
 	 |n1 > n2 = LT
 	 |n1 < n2 = GT
 	 |n1 == n2 = compare ( found c1 s ) ( found c2 s )
@@ -471,7 +471,7 @@ mostFreqKSimilarity s t = snd $ head $ S.toList $ S.fromList ( doublets s ) `S.i
       toPair s = ( head s , fromEnum ( head $ tail s ) - 48 )
       doublets :: String -> [(Char , Int)]
       doublets str = map toPair [take 2 $ drop start str | start <- [0 , 2 ..length str - 2]]
-                           
+
 mostFreqKSDF :: String -> String -> Int ->Int
 mostFreqKSDF s t n = mostFreqKSimilarity ( mostFreqKHashing s n ) (mostFreqKHashing t n )
 
@@ -497,16 +497,16 @@ NB. String Distance Wrapper Function
 mfksDF     =: {:@:[ - (mfks@:(mfkh&.>)~ {.)~
 
 NB. Most Frequent K Distance
-mfks       =:  score@:(charMap@:[ {"1 charVals@:])/@:kHashes 
+mfks       =:  score@:(charMap@:[ {"1 charVals@:])/@:kHashes
   score    =.  ([ +/ .* =)/                  NB. (+ +/ .* *.&:*)/  for sum += freq_in_left + freq_in_right
   charMap  =.  (,&< i.&> <@:~.@:,)&;/
   charVals =.  (; , 0:)"1
   kHashes  =.  0 1 |: ({.&>~ [: <./ #&>)
-  
+
 NB. Most Frequent K Hashing
 mfkh       =:   _&$: : (takeK freqHash)      NB. Default LHA of _ means "return complete frequency table"
   takeK    =.  (<.#) {. ]
-  freqHash =.  ~. (] \:~ ,.&:(<"0)) #/.~ 
+  freqHash =.  ~. (] \:~ ,.&:(<"0)) #/.~
 
 NB. No need to fix mfksDF
 mfkh =: mfkh f.
@@ -585,14 +585,14 @@ public class SDF {
 
         return countMap;
     }
-    
+
     /**
      * Sorts the counted numbers of characters (keys, values) by java Collection List
      * @param HashMap (with key as character, value as number of occurrences)
      * @return sorted HashMap
      */
     private static <K, V extends Comparable<? super V>>
-            HashMap<K, V> descendingSortByValues(HashMap<K, V> map) { 
+            HashMap<K, V> descendingSortByValues(HashMap<K, V> map) {
 	List<Map.Entry<K, V>> list = new ArrayList<Map.Entry<K, V>>(map.entrySet());
 	// Defined Custom Comparator here
 	Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
@@ -606,19 +606,19 @@ public class SDF {
 	HashMap<K, V> sortedHashMap = new LinkedHashMap<K, V>();
 	for (Map.Entry<K, V> entry : list) {
 	    sortedHashMap.put(entry.getKey(), entry.getValue());
-	} 
+	}
 	return sortedHashMap;
     }
     /**
      * get most frequent k characters
      * @param array of characters
      * @param limit of k
-     * @return hashed String 
+     * @return hashed String
      */
     public static String mostOcurrencesElement(char[] array, int k) {
         HashMap<Character, Integer> countMap = countElementOcurrences(array);
         System.out.println(countMap);
-        Map<Character, Integer> map = descendingSortByValues(countMap); 
+        Map<Character, Integer> map = descendingSortByValues(countMap);
         System.out.println(map);
         int i = 0;
         String output = "";
@@ -633,7 +633,7 @@ public class SDF {
      * Calculates the similarity between two input strings
      * @param input string 1
      * @param input string 2
-     * @param maximum possible limit value 
+     * @param maximum possible limit value
      * @return distance as integer
      */
     public static int getDiff(String str1, String str2, int limit) {
@@ -643,34 +643,34 @@ public class SDF {
 	    k ++;
 	    if (Character.isLetter(str1.charAt(i))) {
 		int pos = str2.indexOf(str1.charAt(i));
-				
-		if (pos >= 0) {	
+
+		if (pos >= 0) {
 		    String digitStr1 = "";
 		    while ( k < str1.length() && !Character.isLetter(str1.charAt(k))) {
 			digitStr1 += str1.charAt(k);
 			k++;
 		    }
-					
+
 		    int k2 = pos+1;
 		    String digitStr2 = "";
 		    while (k2 < str2.length() && !Character.isLetter(str2.charAt(k2)) ) {
 			digitStr2 += str2.charAt(k2);
 			k2++;
 		    }
-					
+
 		    similarity += Integer.parseInt(digitStr2)
 			+ Integer.parseInt(digitStr1);
-					
-		} 
+
+		}
 	    }
 	}
 	return Math.abs(limit - similarity);
     }
     /**
-     * Wrapper function 
+     * Wrapper function
      * @param input string 1
      * @param input string 2
-     * @param maximum possible limit value 
+     * @param maximum possible limit value
      * @return distance as integer
      */
     public static int SDFfunc(String str1, String str2, int limit) {
@@ -691,7 +691,7 @@ public class SDF {
 
 ## Kotlin
 
-The code for the MostFreqKSimilarity function differs in this task from that in the associated Wikipedia article. Also the description is inconsistent with the code in both cases. 
+The code for the MostFreqKSimilarity function differs in this task from that in the associated Wikipedia article. Also the description is inconsistent with the code in both cases.
 
 What I've decided to assume is that the frequency for commonly occurring characters must be the same in both strings for it to be added to the 'similarity' variable which seems to be the implication of both descriptions. This gives the same results as the Wikipedia article for all except the last example where it gives 100 rather than 83.
 
@@ -702,7 +702,7 @@ I have no idea what NULL0 is supposed to mean so I've ignored that.
 ```scala
 // version 1.1.51
 
-fun mostFreqKHashing(input: String, k: Int): String = 
+fun mostFreqKHashing(input: String, k: Int): String =
     input.groupBy { it }.map { Pair(it.key, it.value.size) }
                         .sortedByDescending { it.second } // preserves original order when equal
                         .take(k)
@@ -817,7 +817,7 @@ SDF(input1, input2, 2, 100) = 88
 
 
 ```Perl
-#!/usr/bin/perl 
+#!/usr/bin/perl
 use strict ;
 use warnings ;
 
@@ -925,7 +925,7 @@ my @test-words = <
     inversion involution justinian kidnapping kingpin lineprinter liniment
     livingston mainline mcginnis minion minneapolis minnie pigmentation
     pincushion pinion quinine quintessential resignation ruination seminarian
-    triennial wilkinson wilmington wilsonian wineskin winnie winnipeg  
+    triennial wilkinson wilmington wilsonian wineskin winnie winnipeg
 >;
 
 say @test-words.map( { join '', mfkh($_)».kv } ).Bag;
@@ -966,7 +966,7 @@ function mostFreqKHashing(string input, integer k)
     end for
     return acc
 end function
- 
+
 function mostFreqKSimilarity(sequence input1, input2)
     integer similarity := 0
     for i=1 to length(input1) by 2 do
@@ -987,7 +987,7 @@ function flat(sequence s)
     string res = ""
     for i=1 to length(s) by 2 do
         res &= sprintf("%c%d",s[i..i+1])
-    end for 
+    end for
     return res
 end function
 
@@ -1001,7 +1001,7 @@ procedure mostFreqKSDF(string input1, input2, integer k, maxDistance)
     integer result := maxDistance - mostFreqKSimilarity(s1, s2)
     printf(1,"SDF(input1, input2, %d, %d) = %d\n\n", {k, maxDistance, result})
 end procedure
- 
+
 constant tests = {{"research", "seeking"},
                   {"night", "nacht"},
                   {"my", "a"},
@@ -1012,7 +1012,7 @@ for i=1 to length(tests) do
     string {t1,t2} = tests[i]
     mostFreqKSDF(t1, t2, 2, 10)
 end for
- 
+
 string s1 := "LCLYTHIGRNIYYGSYLYSETWNTGIMLLLITMATAFMGYVLPWGQMSFWGATVITNLFSAIPYIGTNLV",
        s2 := "EWIWGGFSVDKATLNRFFAFHFILPFTMVALAGVHLTFLHETGSNNPLGLTSDSDKIPFHPYYTIKDFLG"
 mostFreqKSDF(s1, s2, 2, 100)
@@ -1037,7 +1037,7 @@ def MostFreqKHashing(inputString, K):
         occuDict[c] += 1
     occuList = sorted(occuDict.items(), key = lambda x: x[1], reverse = True)
     outputStr = ''.join(c + str(cnt) for c, cnt in occuList[:K])
-    return outputStr 
+    return outputStr
 
 #If number of occurrence of the character is not more than 9
 def MostFreqKSimilarity(inputStr1, inputStr2):
@@ -1070,13 +1070,13 @@ def MostFreqKHashing(inputString, K):
     occuList = sorted(occuDict.items(), key = lambda x: x[1], reverse = True)
     outputDict = collections.OrderedDict(occuList[:K])
     #Return OrdredDict instead of string for faster lookup.
-    return outputDict 
+    return outputDict
 
 def MostFreqKSimilarity(inputStr1, inputStr2):
     similarity = 0
     for c, cnt1 in inputStr1.items():
         #Reduce the time complexity of lookup operation to about O(1).
-        if c in inputStr2: 
+        if c in inputStr2:
             cnt2 = inputStr2[c]
             similarity += cnt1 + cnt2
     return similarity
@@ -1192,7 +1192,7 @@ func count(cString,dString)
 func sortsecond(alist)
         aList = sort(alist,2)
         for n=1 to len(alist)-1
-             for m=n to len(aList)-1 
+             for m=n to len(aList)-1
                    if alist[m+1][2] = alist[m][2] and alist[m+1][1] < alist[m][1]
                       temp = alist[m+1]
                       alist[m+1] = alist[m]

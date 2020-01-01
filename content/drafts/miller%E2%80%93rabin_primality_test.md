@@ -47,13 +47,13 @@ The pseudocode, from [[wp:Miller-Rabin primality test#Algorithm_and_running_time
 ### ordinary integers
 
 
-It's easy to get overflows doing exponential calculations. 
+It's easy to get overflows doing exponential calculations.
 Therefore I implemented my own function for that.
 
 For Number types >= 2**64 you may have to use an external library -- see below.
 
-First, a package Miller_Rabin is specified. 
-The same package is used elsewhere in Rosetta Code, 
+First, a package Miller_Rabin is specified.
+The same package is used elsewhere in Rosetta Code,
 such as for the [[Carmichael 3 strong pseudoprimes]] the [[Extensible prime generator]], and the [[Emirp primes]].
 
 
@@ -178,7 +178,7 @@ What is it? COMPOSITE
 ### using an external library to handle big integers
 
 
-Using the big integer implementation from a cryptographic library [https://github.com/cforler/Ada-Crypto-Library/]. 
+Using the big integer implementation from a cryptographic library [https://github.com/cforler/Ada-Crypto-Library/].
 
 
 ```Ada
@@ -355,7 +355,7 @@ PROC miller rabin = (LINT n, LOOPINT k)BOOL: (
         return false: FALSE
     FI
 );
-    
+
 FOR i FROM 937 TO 1000 DO
   IF miller rabin(i, 10) THEN
     print((" ",whole(i,0)))
@@ -420,7 +420,7 @@ PowMod(x,n,m) { ; x**n mod m
    Return y
 }
 ```
- 
+
 
 
 ## bc
@@ -508,7 +508,7 @@ quit
 ```bracmat
 ( 1:?seed
 & ( rand
-  =   
+  =
     .   mod$(!seed*1103515245+12345.4294967296):?seed
       & mod$(div$(!seed.65536).32768)
   )
@@ -570,7 +570,7 @@ quit
   ' ( 1+!i:<1000:?i
     & (   miller-rabin-test$(!i,10):1
         & !primes !i:?primes
-      | 
+      |
       )
     )
 & !primes:? [-11 ?last
@@ -601,11 +601,11 @@ bool miller_rabin_test(mpz_t n, int j);
 
 '''miller-rabin.c'''
 {{trans|Fortran}}
-For <code>decompose</code> (and header <tt>primedecompose.h</tt>), 
+For <code>decompose</code> (and header <tt>primedecompose.h</tt>),
 see [[Prime decomposition#C|Prime decomposition]].
 
-```c>#include <stdbool.h
-
+```c
+#include <stdbool.h>
 #include <gmp.h>
 #include "primedecompose.h"
 
@@ -638,7 +638,7 @@ bool miller_rabin_test(mpz_t n, int j)
     mpz_set_ui(s, 0);
     mpz_set_ui(d, 1);
     for(k=0; k < l; k++) {
-      if ( mpz_cmp_ui(f[k], 2) == 0 ) 
+      if ( mpz_cmp_ui(f[k], 2) == 0 )
 	mpz_add_ui(s, s, 1);
       else
 	mpz_mul(d, d, f[k]);
@@ -672,8 +672,8 @@ flush:
 
 '''Testing'''
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <gmp.h>
@@ -688,7 +688,7 @@ int main()
 
   mpz_init(num);
   mpz_set_ui(num, 1);
-  
+
   while ( mpz_cmp_ui(num, TOP) < 0 ) {
     if ( miller_rabin_test(num, PREC) ) {
       gmp_printf("%Zd maybe prime\n", num);
@@ -1201,7 +1201,7 @@ module Primes
       end
       true
     end
-    
+
     # Compute b**e mod m
     private def powmod(b, e, m)
       r = 1.to_big_i; b = b.to_big_i % m
@@ -1444,7 +1444,7 @@ EchoLisp natively implement the '''prime?''' function = Miller-Rabin tests for b
 		(set! x (powmod x 2 n))
 		#:break (= x 1) => #t
 		#:break (= x (1- n)) =>  #f
-		#t 
+		#t
 		))
 	 #:break composite => #f )
  (not composite))
@@ -1695,7 +1695,7 @@ contains
     logical :: res
     integer(huge), intent(in) :: n
     integer, intent(in) :: k
-    
+
     integer(huge), dimension(max_decompose) :: f
     integer(huge)                     :: s, d, i, a, x, r
 
@@ -1714,7 +1714,7 @@ contains
     loop:  do i = 1, k
        a = int_rrand(2_huge, n-2)
        x = mod(a ** d, n)
-       
+
        if ( x == 1 ) cycle
        do r = 0, s-1
           if ( x == ( n - 1 ) ) cycle loop
@@ -1749,13 +1749,13 @@ contains
     integer(huge), dimension(:), intent(in) :: a
 
     integer               :: i
-    
+
     do i = 1, size(a,1)
        print *, a(i), miller_rabin_test(a(i), prec)
     end do
 
   end subroutine do_test
-  
+
 end program TestMiller
 ```
 
@@ -1764,7 +1764,7 @@ end program TestMiller
 
 ### With some avoidance of overflow
 
-Integer overflow is a severe risk, and even 64-bit integers won't get you far when the formulae are translated as <code>MOD(A**D,N)</code> - what is needed is a method for raising to a power that incorporates the modulus along the way. There is no library routine for that, so... 
+Integer overflow is a severe risk, and even 64-bit integers won't get you far when the formulae are translated as <code>MOD(A**D,N)</code> - what is needed is a method for raising to a power that incorporates the modulus along the way. There is no library routine for that, so...
 ```Fortran
       MODULE MRTEST	!Try the Miller-Rabin primality test.
        CONTAINS		!Working only with in-built integers.
@@ -2083,7 +2083,7 @@ End
 9223372036854775291         9223372036854775337         9223372036854775351
 9223372036854775399         9223372036854775417         9223372036854775421
 9223372036854775433         9223372036854775507         9223372036854775549
-9223372036854775643         9223372036854775783         
+9223372036854775643         9223372036854775783
 
  23 primes between 9223372036854774808 and 9223372036854775808
 ```
@@ -2421,13 +2421,13 @@ isMillerRabinPrime k n
     (evens,odds) = span even (iterate (`div` 2) (pred n))
 
 test :: Integral nat => nat -> nat -> [nat] -> nat -> nat -> Bool
-test n n_1 evens d a = x `elem` [1,n_1] || n_1 `elem` powers 
+test n n_1 evens d a = x `elem` [1,n_1] || n_1 `elem` powers
   where
     x = powerMod n a d
     powers = map (powerMod n a) evens
 
 witnesses :: (Num a, Ord a, Random a) => Int -> a -> IO [a]
-witnesses k n 
+witnesses k n
   | n < 9080191         = return [31,73]
   | n < 4759123141      = return [2,7,61]
   | n < 3474749660383   = return [2,3,5,7,11,13]
@@ -2440,9 +2440,9 @@ primesTo100 = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,
 
 -- powerMod m x n = x^n `mod` m
 powerMod :: Integral nat => nat -> nat -> nat -> nat
-powerMod m x n  = f (n - 1) x x `rem` m 
+powerMod m x n  = f (n - 1) x x `rem` m
   where
-  f d a y = if d==0 then y else g d a y 
+  f d a y = if d==0 then y else g d a y
   g i b y | even i    = g (i `quot` 2) (b*b `rem` m) y
           | otherwise = f (i-1) b (b*y `rem` m)
 
@@ -2465,12 +2465,12 @@ False
 
 
 
-'''Perhaps a slightly clearer (less monadic) version. Transcription of pseudocode.''' 
+'''Perhaps a slightly clearer (less monadic) version. Transcription of pseudocode.'''
 * The code above likely has better complexity.
 
 
 ```Haskell
- 
+
 import Control.Monad (liftM)
 import Data.Bits (Bits, testBit, shiftR)
 import System.Random (Random, getStdGen, randomRs)
@@ -2487,7 +2487,7 @@ even = not . odd
 modPow :: (Integral a, Bits a) => a -> a -> a -> a
 modPow _ 0 _ = 1
 modPow base ex m = let term
-                         | testBit ex 0 = base `mod` m 
+                         | testBit ex 0 = base `mod` m
                          | otherwise    = 1
                    in (term * modPow (base^2 `mod` m) (ex `shiftR` 1) m) `mod` m
 
@@ -2511,7 +2511,7 @@ isPrime n k
         witness k (a:rands)
             | x == 1 || x == n - 1 = witness (k - 1) rands
             | otherwise            = check x (r - 1)
-            where 
+            where
                 x = modPow a d n
 
                 check _ 0 = False
@@ -3181,7 +3181,7 @@ End Function
 
 
 ## Mathematica
- 
+
 
 ```Mathematica
 MillerRabin[n_,k_]:=Module[{d=n-1,s=0,test=True},While[Mod[d,2]==0 ,d/=2 ;s++]
@@ -3198,7 +3198,7 @@ Print[test] ]
 {{out|Example output (not using the PrimeQ builtin)}}
 
 ```mathematica
-MillerRabin[17388,10] 
+MillerRabin[17388,10]
 ->False
 ```
 
@@ -3219,7 +3219,7 @@ facpow(n, p) := block(
    while mod(n, p) = 0 do (s: s + 1, n: quotient(n, p)),
    [s, n]
 )$
-   
+
 /* check whether n is a strong pseudoprime to base a; s and d are given by facpow(n - 1, 2) */
 
 sppp(n, a, s, d) := block(
@@ -3237,7 +3237,7 @@ sppp(n, a, s, d) := block(
    for larger n, the number of bases tested is given by the option variable
    primep_number_of_tests, which is used by Maxima in primep. The bound for deterministic
    test is also the same as in primep. */
-   
+
 miller_rabin(n) := block(
    [v: [2, 3, 5, 7, 11, 13, 17], s, d, q: true, a],
    if n < 19 then member(n, v) else (
@@ -3303,7 +3303,7 @@ found with instructions for use in Github.
         %    and -integer(1) if fails.
 
 % :- pred is_prime(integer::in, integer::out) is multi.
-	
+
 is_prime(N, P) :-
 	N < integer(2), P = integer(0).
 is_prime(N, P) :-
@@ -3311,7 +3311,7 @@ is_prime(N, P) :-
 is_prime(N, P) :-
 	N = integer(3), P = integer(1).
 is_prime(N, P) :-      %% even numbers > 3: false
-	N > integer(3), 
+	N > integer(3),
 	(N mod integer(2)) = integer(0),
 	P = integer(0).
 		%%-------------deterministic--------
@@ -3331,11 +3331,11 @@ is_prime(N, P) :-      %% 3.415e+14 =< odd number
 	is_mr_prime(N, RList, R),
 	P = R.
 is_prime(_N, P) :- P = -integer(1).
-	
+
 %----------------------------------------------------------------------%
 % returns list of deterministic witnesses
 
-:- pred deterministic_witnesses(integer::in, 
+:- pred deterministic_witnesses(integer::in,
         list(integer)::out) is multi.
 
 deterministic_witnesses(N, L) :- N < integer(1373653),
@@ -3361,11 +3361,11 @@ deterministic_witnesses(N, L) :- N < integer(341550071728321),
 deterministic_witnesses(_N, L) :- L = [].     %% signals failure
 
 %----------------------------------------------------------------------%
-	%% random_witnesses/3 receives an integer, X, an int, K, and 
+	%% random_witnesses/3 receives an integer, X, an int, K, and
 	%%   returns a list, P, of K pseudo-random integers in a range
 	%%   1 to X-1.
-	
-:- pred random_witnesses(integer::in, int::in, 
+
+:- pred random_witnesses(integer::in, int::in,
         list(integer)::out) is det.
 
 random_witnesses(X, K, P) :-
@@ -3373,10 +3373,10 @@ random_witnesses(X, K, P) :-
 	B = integer(1442695040888963407),
 	C = X - integer(2),
 	rw_loop(X, A, B, C, K, [], P).
-	
+
 :- pred rw_loop(integer::in, integer::in, integer::in, integer::in,
         int::in, list(integer)::in, list(integer)::out) is det.
-					
+
 rw_loop(X, A, B, C, K, L, P) :-
 	X1 = (((X * A) + B) mod C) + integer(1),
 	( if K = 0 then P = L
@@ -3386,7 +3386,7 @@ rw_loop(X, A, B, C, K, L, P) :-
 %----------------------------------------------------------------------%
 	% is_mr_prime/2 receives integer N and list As and returns true if
 	%    N is probably prime, and false otherwise
-	
+
 :- pred is_mr_prime(integer::in, list(integer)::in, integer::out) is nondet.
 
 is_mr_prime(N, As, R) :-
@@ -3395,9 +3395,9 @@ is_mr_prime(N, As, R) :-
     T = [S|_],
     outer_loop(N, As, D, S, R).
 
-:- pred outer_loop(integer::in, list(integer)::in, integer::in, 
+:- pred outer_loop(integer::in, list(integer)::in, integer::in,
         integer::in, integer::out) is nondet.
-							
+
 outer_loop(N, As, D, S, R) :-
     As = [A|At],
     Base = powm(A, D, N),   %% = A^D mod N
@@ -3407,10 +3407,10 @@ outer_loop(N, As, D, S, R) :-
                     else            outer_loop(N, At, D, S, R)
                   )
 	).
-    
+
 :- pred inner_loop(integer::in, integer::in, integer::in,
         integer::in, integer::out) is multi.
-							
+
 inner_loop(Base, N, Loop, S, U) :-
     Next_Base = (Base * Base) mod N,
     Next_Loop = Loop + integer(1),
@@ -3426,9 +3426,9 @@ inner_loop(Base, N, Loop, S, U) :-
 	).
 
 %----------------------------------------------------------------------%
-	% find_ds/2 receives odd integer N 
+	% find_ds/2 receives odd integer N
 	%    and returns [D, S] such that N-1 = 2^S * D
-	
+
 :- pred find_ds(integer::in, list(integer)::out) is multi.
 
 find_ds(N, L) :-
@@ -3442,18 +3442,18 @@ find_ds1(D, S, L) :-
 	P = D div integer(2),
 	Q = S + integer(1),
 	find_ds1(P, Q, L).
-find_ds1(D, S, L) :- 
+find_ds1(D, S, L) :-
 	L = [D, S].
-	
+
 %----------------------------------------------------------------------%
 :- func powm(integer, integer, integer) = integer.
 
 	% computes A^D mod N
 
-powm(A, D, N) =			
+powm(A, D, N) =
         ( if   D = integer(0) then integer(1)
           else ( if  (D mod integer(2)) = integer(0) then
-                       (integer.pow(powm(A, (D div integer(2)), N), 
+                       (integer.pow(powm(A, (D div integer(2)), N),
                             integer(2))) mod N
                     else (A * powm(A, D - integer(1), N)) mod N
                  )
@@ -3483,7 +3483,7 @@ powm(A, D, N) =
             % TEST THE IS_PRIME PREDICATE
             % $ ./test_is_prime <integer>
        %---------------------------------------------%
-  
+
 main(!IO) :-
     command_line_arguments(Args, !IO),
     filter(is_all_digits, Args, CleanArgs),
@@ -3493,12 +3493,12 @@ main(!IO) :-
 	io.format("   is_prime(%s) = ", [s(integer.to_string(M))], !IO),
 	( if      P = integer(0) then io.write_string("false.\n", !IO)
 	  else if P = integer(1) then io.write_string("true.\n", !IO)
-	  else if P = -integer(1) then 
+	  else if P = -integer(1) then
                              io.write_string("N fails all tests.\n", !IO)
-	  else io.write_string("Has reported neither true nor false 
+	  else io.write_string("Has reported neither true nor false
                             nor any error condition.\n", !IO)
 	).
-	
+
 %----------------------------------------------------------------------%
 :- end_module test_is_prime.
 
@@ -3546,7 +3546,7 @@ proc isPrime*(n: uint32): bool =
         x = x * p mod n
       p = p * p mod n
       dr = dr shr 1
-    
+
     if x == 1 or x.uint32 == nm1:
       continue
 
@@ -3560,7 +3560,7 @@ proc isPrime*(n: uint32): bool =
       if x.uint32 == nm1:
         break
       r += 1
-  
+
   return true
 
 proc isPrime*(n: int32): bool =
@@ -3578,7 +3578,7 @@ when isMainModule:
         break
       numberPrimes += 1
     i += 1
-  
+
   assert i == primeNumber1000
   assert isPrime(2u32)
   assert isPrime(31u32)
@@ -3634,7 +3634,7 @@ proc expmod*[T: SomeInteger](base, exponent, modulus: T): T =
     if (e and 1) == 1: result = mulmod(result, b, modulus)
     e = e shr 1
     b = mulmod(b, b, modulus)
-  
+
 # Returns true if +self+ passes Miller-Rabin Test on witnesses +b+
 proc miller_rabin_test[T: SomeInteger](num: T, witnesses: seq[uint64]): bool =
   var d = num - 1
@@ -3667,7 +3667,7 @@ proc selectWitnesses[T: SomeInteger](num: T): seq[uint64] =
   elif num < 585_226_005_592_931_977u:
     result = @[2u64, 123635709730000u64, 9233062284813009u64, 43835965440333360u64, 761179012939631437u64, 1263739024124850375u64]
   elif num.uint64 < 18_446_744_073_709_551_615u64:
-    result = @[2u64, 325, 9375, 28178, 450775, 9780504, 1795265022]  
+    result = @[2u64, 325, 9375, 28178, 450775, 9780504, 1795265022]
   else:
     result = @[2u64, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 
@@ -3732,7 +3732,7 @@ let num = 5_000_000u        # => 348_513 primes
 var primes: seq[uint] = @[]
 echo("find primes < ", num)
 te = epochTime()
-for n in 0u..num: 
+for n in 0u..num:
   if n.primemr: primes.add(n)
   stdout.write("\r",((float64(n) / float64(num))*100).formatFloat(ffDecimal, 1), "%")
 echo("\nnumber of primes < ",num, " are ", primes.len)
@@ -3804,7 +3804,7 @@ fun {RWloop N A B C K L}
 end
 %--------------------------------------------------------------------------%
 
-fun {IsMRprime N As}	% the Miller-Rabin algorithm	
+fun {IsMRprime N As}	% the Miller-Rabin algorithm
 	local D S T Ts in
 	{FindDS N} = D|S
 	{OuterLoop N As D S}
@@ -3816,13 +3816,13 @@ fun {OuterLoop N As D S}
 	As = A|At
 	Base = {Powm A D N}
 	C = {InnerLoop Base N 0 S}
-	if {Not C} then false 
-	elseif {And C (At == nil)} then true 
-	else {OuterLoop N At D S} 
+	if {Not C} then false
+	elseif {And C (At == nil)} then true
+	else {OuterLoop N At D S}
 	end
 	end
 end
-							
+
 fun {InnerLoop Base N Loop S}
 	local NextBase NextLoop in
 	NextBase = (Base * Base) mod N
@@ -3830,7 +3830,7 @@ fun {InnerLoop Base N Loop S}
 	   if {And (Loop == 0) (Base == 1)} then true
 	   elseif Base == (N - 1) then true
 	   elseif NextLoop == S then false
-	   else {InnerLoop NextBase N NextLoop S}    
+	   else {InnerLoop NextBase N NextLoop S}
 	   end
 	end
 end
@@ -3846,14 +3846,14 @@ fun {FindDS1 D S}
 	end
 end
 %--------------------------------------------------------------------------%
-	
+
 fun {Powm A D N} 		% returns (A ^ D) mod N
 	if D == 0 then 1
 	elseif (D mod 2) == 0 then {Pow {Powm A (D div 2) N} 2} mod N
 	else (A * {Powm A (D - 1) N}) mod N
 	end
 end
-%--------------------------------------------------------------------------%	
+%--------------------------------------------------------------------------%
 % end_module Primality
 
 
@@ -4048,7 +4048,7 @@ my Bool multi sub is_prime(PrimeCandidate $n, Int $k) {
 	return True;
 }
 
-say (1..1000).grep({ is_prime($_, 10) }).join(", "); 
+say (1..1000).grep({ is_prime($_, 10) }).join(", ");
 ```
 
 
@@ -4073,7 +4073,7 @@ function powermod(atom a, atom n, atom m)
     end while
     return res
 end function
- 
+
 function witness(atom n, atom s, atom d, sequence a)
 -- n-1 = 2^s * d with d odd by factoring powers of 2 from n-1
     for i=1 to length(a) do
@@ -4092,10 +4092,10 @@ function witness(atom n, atom s, atom d, sequence a)
     end for
     return true;
 end function
- 
+
 function is_prime_mr(atom n)
-    if (mod(n,2)==0 and n!=2) 
-    or (n<2) 
+    if (mod(n,2)==0 and n!=2)
+    or (n<2)
     or (mod(n,3)==0 and n!=3) then
         return false
     elsif n<=3 then
@@ -4107,7 +4107,7 @@ function is_prime_mr(atom n)
         d /= 2
         s += 1
     end while
- 
+
     sequence a
     if n < 1373653 then
         a = {2, 3}
@@ -4146,7 +4146,7 @@ end for
 
 
 
-###  gmp version 
+###  gmp version
 
 {{libheader|mpfr}}
 completes near-instantly
@@ -4449,9 +4449,9 @@ from the Erlang version on this page.
 is_prime(1, Ret) :- Ret = false, !.          % 1 is non-prime
 is_prime(2, Ret) :- Ret = true, !.           % 2 is prime
 is_prime(3, Ret) :- Ret = true, !.           % 3 is prime
-is_prime(N, Ret) :- 
+is_prime(N, Ret) :-
 	N > 3, (N mod 2 =:= 0), Ret = false, !.  % even number > 3 is composite
-is_prime(N, Ret) :- 
+is_prime(N, Ret) :-
 	N > 3, (N mod 2 =:= 1),                  % odd number > 3
 	N < 341550071728321,
 	deterministic_witnesses(N, L),
@@ -4515,7 +4515,7 @@ outer_loop(N, As, D, S, Ret) :-
 	;  Result == true, At == []  -> Ret = true
 	;  outer_loop(N, At, D, S, Ret)
 	).
-    
+
 inner_loop(Base, N, Loop, S, Result) :-
     Next_Base is (Base * Base) mod N,
     Next_Loop is Loop + 1,
@@ -4532,11 +4532,11 @@ inner_loop(Base, N, Loop, S, Result) :-
 
 
 ```PureBasic
-Enumeration 
+Enumeration
   #Composite
   #Probably_prime
 EndEnumeration
- 
+
 Procedure Miller_Rabin(n, k)
   Protected d=n-1, s, x, r
   If n=2
@@ -4557,7 +4557,7 @@ Procedure Miller_Rabin(n, k)
       If x=1: ProcedureReturn #Composite: EndIf
       If x=n-1: Break: EndIf
     Next
-    If x<>n-1: ProcedureReturn #Composite: EndIf 
+    If x<>n-1: ProcedureReturn #Composite: EndIf
   Wend
   ProcedureReturn #Probably_prime
 EndProcedure
@@ -4593,7 +4593,7 @@ def is_Prime(n):
     #Miller-Rabin test for prime
     if n==0 or n==1 or n==4 or n==6 or n==8 or n==9:
         return False
-        
+
     if n==2 or n==3 or n==5 or n==7:
         return True
     s = 0
@@ -4602,28 +4602,28 @@ def is_Prime(n):
         d>>=1
         s+=1
     assert(2**s * d == n-1)
-  
+
     def trial_composite(a):
         if pow(a, d, n) == 1:
             return False
         for i in range(s):
             if pow(a, 2**i * d, n) == n-1:
                 return False
-        return True  
- 
-    for i in range(8):#number of trials 
+        return True
+
+    for i in range(8):#number of trials
         a = random.randrange(2, n)
         if trial_composite(a):
             return False
- 
-    return True  
+
+    return True
 ```
 
 
 
 ### Python: Proved correct up to large N
 
-This versions will give correct answers for <code>n</code> less than 341550071728321 and then reverting to the probabilistic form of the first solution. By selecting [http://primes.utm.edu/prove/prove2_3.html predetermined values] for the <code>a</code> values to use instead of random values, the results can be shown to be deterministically correct below certain thresholds. 
+This versions will give correct answers for <code>n</code> less than 341550071728321 and then reverting to the probabilistic form of the first solution. By selecting [http://primes.utm.edu/prove/prove2_3.html predetermined values] for the <code>a</code> values to use instead of random values, the results can be shown to be deterministically correct below certain thresholds.
 
 For 341550071728321 and beyond, I have followed the pattern in choosing <code>a</code> from the set of prime numbers.
 While this uses the best sets known in 1993, there are [http://miller-rabin.appspot.com/ better sets known], and at most 7 are needed for 64-bit numbers.
@@ -4647,22 +4647,22 @@ def is_prime(n, _precision_for_huge_n=16):
     while not d % 2:
         d, s = d >> 1, s + 1
     # Returns exact according to http://primes.utm.edu/prove/prove2_3.html
-    if n < 1373653: 
+    if n < 1373653:
         return not any(_try_composite(a, d, n, s) for a in (2, 3))
-    if n < 25326001: 
+    if n < 25326001:
         return not any(_try_composite(a, d, n, s) for a in (2, 3, 5))
-    if n < 118670087467: 
-        if n == 3215031751: 
+    if n < 118670087467:
+        if n == 3215031751:
             return False
         return not any(_try_composite(a, d, n, s) for a in (2, 3, 5, 7))
-    if n < 2152302898747: 
+    if n < 2152302898747:
         return not any(_try_composite(a, d, n, s) for a in (2, 3, 5, 7, 11))
-    if n < 3474749660383: 
+    if n < 3474749660383:
         return not any(_try_composite(a, d, n, s) for a in (2, 3, 5, 7, 11, 13))
-    if n < 341550071728321: 
+    if n < 341550071728321:
         return not any(_try_composite(a, d, n, s) for a in (2, 3, 5, 7, 11, 13, 17))
     # otherwise
-    return not any(_try_composite(a, d, n, s) 
+    return not any(_try_composite(a, d, n, s)
                    for a in _known_primes[:_precision_for_huge_n])
 
 _known_primes = [2, 3]
@@ -4684,7 +4684,7 @@ False
 True
 >>> is_prime(743808006803554439230129854961492699151386107534013432918073439524138264842370630061369715394739134090922937332590384720397133335969549256322620979036686633213903952966175107096769180017646161851573147596390153)
 False
->>> 
+>>>
 ```
 
 
@@ -4693,7 +4693,7 @@ False
 
 
 ```Racket
-#lang racket  
+#lang racket
 (define (miller-rabin-expmod base exp m)
   (define (squaremod-with-check x)
     (define (check-nontrivial-sqrt1 x square)
@@ -4736,7 +4736,7 @@ With a   '''K'''    of   '''1''',   there seems to be a not uncommon number of f
 ::: with a   '''K ≥ 2''',   the failures are seldom,
 ::: with a   '''K ≥ 3''',   the failures are rare as hen's teeth.
 
-This would be in the same vein as:  
+This would be in the same vein as:
 3 is prime,  5 is prime,  7 is prime,  all odd numbers are prime.
 
 The   '''K'''   (above) is signified by the REXX variable   '''times'''   in the REXX program below.
@@ -4836,44 +4836,44 @@ see "Input a number: " give n
 see "Input test: " give k
 
 test =  millerrabin(n,k)
-if test = 0  
+if test = 0
    see "Probably Prime" + nl
 else
    see "Composite" + nl
 ok
- 
+
 func millerrabin(n, k)
-       if n = 2 
-          millerRabin = 0 
+       if n = 2
+          millerRabin = 0
           return millerRabin
-       ok 
-       if n % 2 = 0 or n < 2 
-          millerRabin = 1 
+       ok
+       if n % 2 = 0 or n < 2
+          millerRabin = 1
           return millerRabin
-       ok 
+       ok
        d = n - 1
        s = 0
        while d % 2 = 0
                d = d / 2
                s = s + 1
-       end 
+       end
        while k > 0
                k = k - 1
                base = 2 + floor((random(10)/10)*(n-3))
                x = pow(base, d) % n
-               if x != 1 and x != n-1 
+               if x != 1 and x != n-1
                   for r=1 to s-1
                       x = (x * x) % n
-                      if x = 1 
-                         millerRabin = 1  
+                      if x = 1
+                         millerRabin = 1
                          return millerRabin
                       ok
-                      if x = n-1 
+                      if x = n-1
                          exit
                       ok
-                  next 
-                  if x != n-1 
-                     millerRabin = 1 
+                  next
+                  if x != n-1
+                     millerRabin = 1
                      return millerRabin
                   ok
                 ok
@@ -4958,14 +4958,14 @@ class Integer
     def primemr?
       primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
       return primes.include? self if self <= primes.last
-      modp47 = 614_889_782_588_491_410      # => primes.reduce(:*), largest < 2^64 
+      modp47 = 614_889_782_588_491_410      # => primes.reduce(:*), largest < 2^64
       return false if self.gcd(modp47) != 1 # eliminates 86.2% of all integers
       # Choose witness bases for input; wits = [range, [wit_bases]] or nil
       wits = WITNESS_RANGES.find {|range, wits| range > self}
       witnesses = wits && wits[1] || primes
       miller_rabin_test(witnesses)
     end
- 
+
     private
     # Returns true if +self+ passes Miller-Rabin Test with witness bases +b+
     def miller_rabin_test(witnesses)    # use witness list to test with
@@ -4977,14 +4977,14 @@ class Integer
         s = d
         y = b.pow(d, self)    # y = (b**d) mod self
         until s == n || y == 1 || y == neg_one_mod
-          y = y.pow(2, self)        # y = (y**2) mod self 
+          y = y.pow(2, self)        # y = (y**2) mod self
           s <<= 1
         end
         return false unless y == neg_one_mod || s.odd?
       end
       true
     end
- 
+
     # Best known deterministic witnesses for given range and set of bases
     # https://miller-rabin.appspot.com/
     # https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
@@ -4993,9 +4993,9 @@ class Integer
       1_050_535_501 => [336781006125, 9639812373923155],
       350_269_456_337 => [4230279247111683200, 14694767155120705706, 16641139526367750375],
       55_245_642_489_451 => [2, 141889084524735, 1199124725622454117, 11096072698276303650],
-      7_999_252_175_582_851 => [2, 4130806001517, 149795463772692060, 186635894390467037, 
+      7_999_252_175_582_851 => [2, 4130806001517, 149795463772692060, 186635894390467037,
                                 3967304179347715805],
-      585_226_005_592_931_977 => [2, 123635709730000, 9233062284813009, 43835965440333360, 
+      585_226_005_592_931_977 => [2, 123635709730000, 9233062284813009, 43835965440333360,
                                   761179012939631437, 1263739024124850375],
       18_446_744_073_709_551_615 => [2, 325, 9375, 28178, 450775, 9780504, 1795265022],
       318_665_857_834_031_151_167_461 => [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37],
@@ -5004,7 +5004,7 @@ class Integer
 end
 
 def tm; t = Time.now; yield; Time.now - t end
-    
+
 # 10 digit primes
 n = 2147483647
 print "\n number = #{n} is prime? "; print " in ", tm{ print n.primemr? }, " secs"
@@ -5019,7 +5019,7 @@ puts
 n = 9241386435364257883
 print "\n number = #{n} is prime? "; print " in ", tm{ print n.primemr? }, " secs"
 puts
-    
+
 # 20 digit primes; largest < 2^64
 n = 18446744073709551533
 print "\n number = #{n} is prime? "; print " in ", tm{ print n.primemr? }, " secs"
@@ -5093,7 +5093,7 @@ input "Input a number:";n
 input "Input test:";k
 
 test =  millerRabin(n,k)
-if test = 0 then 
+if test = 0 then
   print "Probably Prime"
  else
   print "Composite"
@@ -5101,7 +5101,7 @@ end if
 wait
 
 ' ----------------------------------------
-' Returns 
+' Returns
 '  Composite     = 1
 '  Probably Prime = 0
 ' ----------------------------------------
@@ -5121,7 +5121,7 @@ while d mod 2 = 0
   d = d / 2
   s = s + 1
 wend
-  
+
 while k > 0
   k = k - 1
   base = 2 + int(rnd(1)*(n-3))
@@ -5130,14 +5130,14 @@ while k > 0
     for r=1 To s-1
       x =(x * x) mod n
       if x=1 then
-       millerRabin = 1 ' composite 
+       millerRabin = 1 ' composite
        goto [funEnd]
       end if
       if x = n-1 then exit for
     next r
-    
+
     if x<>n-1 then
-      millerRabin =  1 ' composite 
+      millerRabin =  1 ' composite
       goto [funEnd]
     end if
   end if
@@ -5157,11 +5157,11 @@ END FUNCTION
 num = "0.2.0"
 rand = "0.6.5"
 */
- 
+
 use num::bigint::BigInt;
 use num::bigint::ToBigInt;
- 
- 
+
+
 // The modular_exponentiation() function takes three identical types
 // (which get cast to BigInt), and returns a BigInt:
 fn modular_exponentiation<T: ToBigInt>(n: &T, e: &T, m: &T) -> BigInt {
@@ -5169,32 +5169,32 @@ fn modular_exponentiation<T: ToBigInt>(n: &T, e: &T, m: &T) -> BigInt {
     let n = n.to_bigint().unwrap();
     let e = e.to_bigint().unwrap();
     let m = m.to_bigint().unwrap();
- 
+
     // Sanity check:  Verify that the exponent is not negative:
     assert!(e >= Zero::zero());
- 
+
     use num::traits::{Zero, One};
- 
+
     // As most modular exponentiations do, return 1 if the exponent is 0:
     if e == Zero::zero() {
         return One::one()
     }
- 
+
     // Now do the modular exponentiation algorithm:
     let mut result: BigInt = One::one();
     let mut base = n % &m;
     let mut exp = e;
- 
+
     loop {  // Loop until we can return our result.
         if &exp % 2 == One::one() {
             result *= &base;
             result %= &m;
         }
- 
+
         if exp == One::one() {
             return result
         }
- 
+
         exp /= 2;
         base *= base.clone();
         base %= &m;
@@ -5210,7 +5210,7 @@ fn is_prime<T: ToBigInt>(n: &T) -> bool {
     if n.clone() < 2.to_bigint().unwrap() {
         return false
     }
-    
+
     let small_primes = vec![2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43,
                             47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101,
                             103, 107, 109, 113, 127, 131, 137, 139, 149, 151,
@@ -5242,7 +5242,7 @@ fn is_prime<T: ToBigInt>(n: &T) -> bool {
             return false
         }
     }
-    
+
     is_rabin_miller_prime(&n, None)
 }
 
@@ -5254,11 +5254,11 @@ fn get_random_bigint(low: &BigInt, high: &BigInt) -> BigInt {
     if low == high {  // base case
         return low.clone()
     }
-    
+
     let middle = (low.clone() + high) / 2.to_bigint().unwrap();
-    
+
     let go_low: bool = rand::random();
-    
+
     if go_low {
         return get_random_bigint(low, &middle)
     } else {
@@ -5333,11 +5333,11 @@ fn main() {
     let n = 1234687;
     let result = is_prime(&n);
     println!("Q: Is {} prime?  A: {}", n, result);
- 
+
     let n = 1234689;
     let result = is_prime(&n);
     println!("Q: Is {} prime?  A: {}", n, result);
- 
+
     let n = BigInt::parse_bytes("123123423463".as_bytes(), 10).unwrap();
     let result = is_prime(&n);
     println!("Q: Is {} prime?  A: {}", n, result);
@@ -5486,7 +5486,7 @@ object MillerRabin {
 ```seed7
 $ include "seed7_05.s7i";
   include "bigint.s7i";
- 
+
 const func boolean: millerRabin (in bigInteger: n, in integer: k) is func
   result
     var boolean: probablyPrime is TRUE;
@@ -5577,7 +5577,7 @@ Smalltalk handles big numbers naturally and trasparently (the parent class <tt>I
 ```smalltalk
 Integer extend [
   millerRabinTest: kl [ |k| k := kl.
-    self <= 3 
+    self <= 3
       ifTrue: [ ^true ]
       ifFalse: [
          (self even)
@@ -5606,14 +5606,14 @@ Integer extend [
                  ].
               ^true
            ]
-      ]        
-  ] 
+      ]
+  ]
 ].
 ```
 
 
 ```smalltalk
-1 to: 1000 do: [ :n | 
+1 to: 1000 do: [ :n |
    (n millerRabinTest: 10) ifTrue: [ n printNl ]
 ].
 ```
@@ -5650,13 +5650,13 @@ fun rand n =
                    else r mod n
   in step 0 1 end;
 
-fun miller_rabin n = 
+fun miller_rabin n =
   let fun trial n 0 = true
         | trial n t = let val a = 1+rand(n-1)
                       in (expmod a (n-1) n) = 1
                          andalso trial n (t-1)
                       end
-  in trial n mr_iterations end; 
+  in trial n mr_iterations end;
 
 fun trylist label lst = (label, ListPair.zip (lst, map miller_rabin lst));
 
@@ -5760,7 +5760,7 @@ package require Tcl 8.5
 proc miller_rabin {n k} {
     if {$n <= 3} {return true}
     if {$n % 2 == 0} {return false}
- 
+
     # write n - 1 as 2^s·d with d odd by factoring powers of 2 from n − 1
     set d [expr {$n - 1}]
     set s 0
@@ -5768,7 +5768,7 @@ proc miller_rabin {n k} {
         set d [expr {$d / 2}]
         incr s
     }
- 
+
     while {$k > 0} {
         incr k -1
         set a [expr {2 + int(rand()*($n - 4))}]

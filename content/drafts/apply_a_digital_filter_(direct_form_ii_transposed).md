@@ -25,11 +25,10 @@ The signal that needs filtering is the following vector: [-0.917843918645, 0.141
 
 Given the number of values a coefficient or signal vector can have and the number of digits, this implementation reads data from a file and prints it to the console if no output file is specified or writes to the specified output file. Usage printed on incorrect invocation.
 
-```C
-
-#include<stdlib.h>
-#include<string.h>
-#include<stdio.h>
+```c
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 #define MAX_LEN 1000
 
@@ -42,24 +41,24 @@ vector extractVector(char* str){
 	vector coeff;
 	int i=0,count = 1;
 	char* token;
-	
+
 	while(str[i]!=00){
 		if(str[i++]==' ')
 			count++;
 	}
-	
+
 	coeff.values = (float*)malloc(count*sizeof(float));
 	coeff.size = count;
-	
+
 	token = strtok(str," ");
-	
+
 	i = 0;
-	
+
 	while(token!=NULL){
 		coeff.values[i++] = atof(token);
 		token = strtok(NULL," ");
 	}
-	
+
 	return coeff;
 }
 
@@ -68,53 +67,53 @@ vector processSignalFile(char* fileName){
 	float sum;
 	char str[MAX_LEN];
 	vector coeff1,coeff2,signal,filteredSignal;
-	
+
 	FILE* fp = fopen(fileName,"r");
-	
+
 	fgets(str,MAX_LEN,fp);
 	coeff1 = extractVector(str);
-	
+
 	fgets(str,MAX_LEN,fp);
 	coeff2 = extractVector(str);
-	
+
 	fgets(str,MAX_LEN,fp);
 	signal = extractVector(str);
 
         fclose(fp);
-	
+
 	filteredSignal.values = (float*)calloc(signal.size,sizeof(float));
 	filteredSignal.size = signal.size;
-	
+
 	for(i=0;i<signal.size;i++){
 		sum = 0;
-		
+
 		for(j=0;j<coeff2.size;j++){
 			if(i-j>=0)
 				sum += coeff2.values[j]*signal.values[i-j];
 		}
-		
+
 		for(j=0;j<coeff1.size;j++){
 			if(i-j>=0)
 				sum -= coeff1.values[j]*filteredSignal.values[i-j];
 		}
-		
+
 		sum /= coeff1.values[0];
 		filteredSignal.values[i] = sum;
 	}
-	
+
 	return filteredSignal;
 }
 
 void printVector(vector v, char* outputFile){
 	int i;
-	
+
 	if(outputFile==NULL){
 		printf("[");
 		for(i=0;i<v.size;i++)
 			printf("%.12f, ",v.values[i]);
 		printf("\b\b]");
 	}
-	
+
 	else{
 		FILE* fp = fopen(outputFile,"w");
 		for(i=0;i<v.size-1;i++)
@@ -122,7 +121,7 @@ void printVector(vector v, char* outputFile){
 		fprintf(fp,"%.12f",v.values[i]);
 		fclose(fp);
 	}
-	
+
 }
 
 int main(int argC,char* argV[])
@@ -178,8 +177,8 @@ Output file :
 This uses the C++11 method of initializing vectors. In g++, use the -std=c++0x compiler switch.
 
 
-```cpp>#include <vector
-
+```cpp
+#include <vector>
 #include <iostream>
 using namespace std;
 
@@ -205,7 +204,7 @@ void Filter(const vector<float> &b, const vector<float> &a, const vector<float> 
 			if(i - j < 0) continue;
 			tmp -= a[j]*out[i-j];
 		}
-		
+
 		tmp /= a[0];
 		out[i] = tmp;
 	}
@@ -221,13 +220,13 @@ int main()
 	//Constants for a Butterworth filter (order 3, low pass)
 	vector<float> a = {1.00000000, -2.77555756e-16, 3.33333333e-01, -1.85037171e-17};
 	vector<float> b = {0.16666667, 0.5, 0.5, 0.16666667};
-	
+
 	vector<float> result;
 	Filter(b, a, sig, result);
 
 	for(size_t i=0;i<result.size();i++)
 		cout << result[i] << ",";
-	cout << endl;			
+	cout << endl;
 
 	return 0;
 }
@@ -306,9 +305,9 @@ namespace ApplyDigitalFilter {
 ```lisp
 (defparameter a #(1.00000000L0 -2.77555756L-16 3.33333333L-01 -1.85037171L-17))
 (defparameter b #(0.16666667L0 0.50000000L0 0.50000000L0 0.16666667L0))
-(defparameter s #(-0.917843918645 0.141984778794  1.20536903482   0.190286794412 -0.662370894973 
+(defparameter s #(-0.917843918645 0.141984778794  1.20536903482   0.190286794412 -0.662370894973
                   -1.00700480494 -0.404707073677  0.800482325044  0.743500089861  1.01090520172
-                   0.741527555207 0.277841675195  0.400833448236 -0.2085993586   -0.172842103641 
+                   0.741527555207 0.277841675195  0.400833448236 -0.2085993586   -0.172842103641
                   -0.134316096293 0.0259303398477 0.490105989562  0.549391221511  0.9047198589))
 
 (loop with out = (make-array (length s) :initial-element 0.0D0)
@@ -835,7 +834,7 @@ use List::AllUtils 'natatime';
 
 sub TDF_II_filter {
     our(@signal,@a,@b);
-    local(*signal,*a,*b) = (shift, shift, shift);    
+    local(*signal,*a,*b) = (shift, shift, shift);
     my @out = (0) x $#signal;
     for my $i (0..@signal-1) {
         my $this;
@@ -936,7 +935,7 @@ function direct_form_II_transposed_filter(sequence a, b, signal)
     end for
     return result
 end function
- 
+
 constant acoef = {1.00000000, -2.77555756e-16, 3.33333333e-01, -1.85037171e-17},
          bcoef = {0.16666667, 0.5, 0.5, 0.16666667}
          signal = {-0.917843918645,0.141984778794,1.20536903482,0.190286794412,-0.662370894973,
@@ -1094,7 +1093,7 @@ Do i=1 To s.0
   Say format(i,2) format(ret.i,2,12)
   End
 ```
- 
+
 {{out|output}}
 
 ```txt
@@ -1348,7 +1347,7 @@ say "]"
 ```Yabasic
 sub filter(a(), b(), signal(), result())
     local i, j, tmp
- 
+
     for i = 0 to arraysize(signal(), 1)
         tmp = 0
         for j = 0 to arraysize(b(), 1)
@@ -1363,7 +1362,7 @@ sub filter(a(), b(), signal(), result())
         result(i) = tmp
     next
 end sub
- 
+
 dim a(4), b(4), signal(20), result(20)
 
 // a()
@@ -1380,7 +1379,7 @@ data 0.0259303398477, 0.490105989562, 0.549391221511, 0.9047198589
 for i = 0 to 3 : read a(i) : next
 for i = 0 to 3 : read b(i) : next
 for i = 0 to 19 : read signal(i) : next
- 
+
 filter(a(),b(),signal(),result())
 
 for i = 0 to 19

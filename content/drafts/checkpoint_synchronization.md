@@ -205,7 +205,7 @@ F ends shift
 D ends shift
 
 ```
- 
+
 
 
 ## BBC BASIC
@@ -216,23 +216,23 @@ D ends shift
       INSTALL @lib$+"TIMERLIB"
       nWorkers% = 3
       DIM tID%(nWorkers%)
-      
+
       tID%(1) = FN_ontimer(10, PROCworker1, 1)
       tID%(2) = FN_ontimer(11, PROCworker2, 1)
       tID%(3) = FN_ontimer(12, PROCworker3, 1)
-      
+
       DEF PROCworker1 : PROCtask(1) : ENDPROC
       DEF PROCworker2 : PROCtask(2) : ENDPROC
       DEF PROCworker3 : PROCtask(3) : ENDPROC
-      
+
       ON ERROR PROCcleanup : REPORT : PRINT : END
       ON CLOSE PROCcleanup : QUIT
-      
+
       REPEAT
         WAIT 0
       UNTIL FALSE
       END
-      
+
       DEF PROCtask(worker%)
       PRIVATE cnt%()
       DIM cnt%(nWorkers%)
@@ -251,7 +251,7 @@ D ends shift
           ENDIF
       ENDCASE
       ENDPROC
-      
+
       DEF PROCcheckpoint
       PRIVATE checked%, sync%
       IF checked% = 0 sync% = FALSE
@@ -265,7 +265,7 @@ D ends shift
       ENDWHILE
       checked% -= 1
       ENDPROC
-      
+
       DEF PROCcleanup
       LOCAL I%
       FOR I% = 1 TO nWorkers%
@@ -304,8 +304,8 @@ Worker 2 starting (5 ticks)
 
 Using OpenMP.  Compiled with <code>gcc -Wall -fopenmp</code>.
 
-```C>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <omp.h>
@@ -345,8 +345,8 @@ int main()
 
 {{works with|C++11}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <chrono>
 #include <atomic>
 #include <mutex>
@@ -576,7 +576,7 @@ def makeFlagSet() {
       def flag {
         /** Get the value of this flag. */
         to get() :boolean {
-          
+
         }
         /** Set the value of this flag. */
         to put(v :boolean) {
@@ -611,21 +611,21 @@ def makeFlagSet() {
 def makeCheckpoint() {
   def [var continueSignal, var continueRes] := Ref.promise()
   def readies := makeFlagSet()
-  
+
   /** Check whether all tasks have reached the checkpoint, and if so send the
     * signal and go to the next round. */
   def check() {
     if (readies.allTrue()) {
       readies.setAll(false)
-      
+
       continueRes.resolve(null)    # send the continue signal
-      
+
       def [p, r] := Ref.promise()  # prepare a new continue signal
       continueSignal := p
       continueRes := r
     }
   }
-  
+
   return def checkpoint {
     to join() {
       def &flag := readies.join()
@@ -759,7 +759,7 @@ This first solution is a simple interpretation of the task, starting a goroutine
 
 ```go
 package main
-  
+
 import (
     "log"
     "math/rand"
@@ -1319,7 +1319,7 @@ removeWorker w i = do
     (working, done, count) <- takeMVar w
     putStrLn $ "Worker " ++ show i ++ " has left the group."
     putMVar w (working, done, count - 1)
-    
+
 -- increase the number of workers doing something.
 -- optionally, print a message using the thread's ID
 startWork :: Workshop -> ThreadId -> IO ()
@@ -1364,27 +1364,27 @@ shop w actions = do
 main = do
     -- make a workshop
     w <- newWorkshop
-    
+
     -- the workers won't be doing anything special, just wait for n
     -- regular intervals. pids gathers the ID's of the threads
-    
+
     -- this are the first workers joining the workshop
     pids1 <- shop w
         [replicate 5 $ threadDelay 1300000
         ,replicate 10 $ threadDelay 759191
         ,replicate 7 $ threadDelay 965300]
-        
+
     -- wait for 5 secs before the next workers join
     threadDelay 5000000
-    
+
     -- these are other workers that join the workshop later
     pids2 <- shop w
         [replicate 6 $ threadDelay 380000
         ,replicate 4 $ threadDelay 250000]
-    
+
     -- wait for a key press
     getChar
-    
+
     -- kill all worker threads before exit, if they're still running
     forM_ (pids1 ++ pids2) killThread
 ```
@@ -1495,7 +1495,7 @@ procedure main(A)
     every put(workers := [], worker(!nWorkers))
     every wait(!workers)
 end
-    
+
 procedure worker(n)
     return thread every !3 do {       # Union limits each worker to 3 pieces
         write(n," is working")
@@ -1573,7 +1573,7 @@ public class CheckpointSync{
 		System.out.print("Enter number of tasks to complete:");
 		runTasks(in.nextInt());
 	}
-	
+
 	/*
 	 * Informs that workers started working on the task and
 	 * starts running threads. Prior to proceeding with next
@@ -1586,7 +1586,7 @@ public class CheckpointSync{
 			Worker.checkpoint();
 		}
 	}
-	
+
 	/*
 	 * Creates a thread for each worker and runs it.
 	 */
@@ -1595,7 +1595,7 @@ public class CheckpointSync{
 			new Thread(new Worker(i+1)).start();
 		}
 	}
-	
+
 	/*
 	 * Worker inner static class.
 	 */
@@ -1606,7 +1606,7 @@ public class CheckpointSync{
 		public void run(){
 			work();
 		}
-		
+
 		/*
 		 *  Notifies that thread started running for 100 to 1000 msec.
 		 *  Once finished increments static counter 'nFinished'
@@ -1624,7 +1624,7 @@ public class CheckpointSync{
 				e.printStackTrace();
 			}
 		}
-		
+
 		/*
 		 * Used to synchronize Worker threads using 'nFinished' static integer.
 		 * Waits (with step of 10 msec) until 'nFinished' equals to 'nWorkers'.
@@ -1641,10 +1641,10 @@ public class CheckpointSync{
 			}
 			nFinished = 0;
 		}
-	
+
 		/* inner class instance variables */
 		private int threadID;
-		
+
 		/* static variables */
 		private static Random rgen = new Random();
 		private static int nFinished = 0;
@@ -1958,7 +1958,7 @@ class Worker(private val threadID: Int) : Runnable {
                 }
             }
             nFinished = 0  // reset
-        } 
+        }
     }
 }
 
@@ -2133,13 +2133,13 @@ yes
 
 ## Oforth
 
-Checkpoint is implemented as a task. It :  
+Checkpoint is implemented as a task. It :
 
 - Receives n "jobDone" events from n tasks into a "jobs" channel.
 
 - Then sends $allDone event to all tasks so they can work again.
 
-Each task : 
+Each task :
 
 - Sleeps randomly between 1 and 1000 milliseconds, simulating its job.
 
@@ -2165,10 +2165,10 @@ Each task :
       channels apply(#[ send($allDone) drop ])
       ] ;
 
-: testCheckPoint(n) 
+: testCheckPoint(n)
 | jobs channels i |
-   ListBuffer init(n, #[ Channel new ]) dup freeze ->channels   
-   Channel new ->jobs 
+   ListBuffer init(n, #[ Channel new ]) dup freeze ->channels
+   Channel new ->jobs
 
    #[ checkPoint(n, jobs, channels) ] &
    n loop: i [ #[ task(i, jobs, channels at(i)) ] & ] ;
@@ -2259,11 +2259,11 @@ A sample run:
 
 ```txt
 
-msl@64Lucid:~/perl$ ./checkpoint 
+msl@64Lucid:~/perl$ ./checkpoint
 A1
 B2
 C3
-msl@64Lucid:~/perl$ 
+msl@64Lucid:~/perl$
 
 ```
 
@@ -2379,7 +2379,7 @@ procedure worker(string name)
         checkpoint(task_self())
         if rnd()>0.95 then exit end if
         task_delay(rnd())
-    end while   
+    end while
     printf(1,"worker %s leaves\n",{name})
     workers -= 1
 end procedure
@@ -2595,7 +2595,7 @@ Procedure CheckPoint()
           PrintN("A new Worker joined the force.")
           Worker_count+1: SignalSemaphore(\Semaphore_Release)
         ElseIf Worker_count=0
-          ProcedureReturn 
+          ProcedureReturn
         EndIf
       Next i
     EndWith
@@ -2644,7 +2644,7 @@ If OpenConsole()
   Next
   PrintN("Work started, "+Str(j)+" workers has been called.")
   CheckPoint()
-  Print("Press ENTER to exit"): Input()  
+  Print("Press ENTER to exit"): Input()
 EndIf
 ```
 
@@ -2861,12 +2861,12 @@ The method can be found on page 41 of the delightful book
       (set! count (+ count 1)) ; we have arrived
       (when (= count t) ; are we the last to arrive?
         (semaphore-wait turnstile2)
-        (semaphore-post turnstile))      
+        (semaphore-post turnstile))
       (semaphore-post mutex)
       ; avoid deadlock problem:
       (semaphore-wait turnstile)
       (semaphore-post turnstile)
-      ; critical point 
+      ; critical point
       (channel-put ch n) ; send result to controller
       ; leave properly
       (semaphore-wait mutex)
@@ -2875,10 +2875,10 @@ The method can be found on page 41 of the delightful book
         (semaphore-wait turnstile)
         (semaphore-post turnstile2))
       (semaphore-post mutex)
-      
+
       (semaphore-wait turnstile2)
       (semaphore-post turnstile2)
-      
+
       (loop (+ n t)))))
 
 ; start t workers:
@@ -3064,7 +3064,7 @@ end
 end
 
 6.times do |i|
-  # Do one cycle of work, and print the result. 
+  # Do one cycle of work, and print the result.
   pp shop.work(i)
 
   # Remove a worker.
@@ -3088,7 +3088,7 @@ pp shop.work(6)
 ```
 
 
-Example of output: 
+Example of output:
 ```txt
 {23187=>[0, 1346269],
  17293=>[0, 1346269],
@@ -3391,7 +3391,7 @@ D is ready
 ## zkl
 
 Simulate a pool of workers, each making one part, waiting for the part to be requested and then putting the part on a conveyor belt to be sent to the station that assembles all parts into a product. After shipping the part, it turns off the request flag.
-The consumer requests a part it doesn't have, waits for a part and puts the received part (which might not be the requested one (if buggy code)) in a bin and assembles the parts into a product. 
+The consumer requests a part it doesn't have, waits for a part and puts the received part (which might not be the requested one (if buggy code)) in a bin and assembles the parts into a product.
 Repeat until all requested products are made.
 
 ```zkl

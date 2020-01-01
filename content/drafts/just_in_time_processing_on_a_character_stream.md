@@ -28,8 +28,8 @@ This task was inspired by the movie "[[wp:National_Treasure_%28film%29|National 
 
 {{trans|C++}}
 
-```c>#include <stdbool.h
-
+```c
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -289,7 +289,7 @@ private:
                 if( *i == '!' )  return false;
                 std::cout << *i; return true;
             }
-            if( *i == '\n' )      { l++; t = c = 0; }  
+            if( *i == '\n' )      { l++; t = c = 0; }
             else if( *i == '\t' ) { t++; c = 0; }
             else if( *i == '\f' ) { p++; l = t = c = 0; }
             else                  { c++;}
@@ -1067,7 +1067,7 @@ function decode(integer fn, sequence ui)
     end while
     return false
 end function
- 
+
 include builtins\libcurl.e
 
 procedure decodeFile(string filename, url, sequence code)
@@ -1080,8 +1080,8 @@ procedure decodeFile(string filename, url, sequence code)
                 error &= " [CURLE_COULDNT_RESOLVE_HOST]"
             end if
             crash("Error %s downloading file\n", {error})
-        end if  
-    end if  
+        end if
+    end if
     integer fn = open(filename, "r")
     if fn=-1 then crash("could not open %s",{filename}) end if
     for i=1 to length(code) do
@@ -1090,7 +1090,7 @@ procedure decodeFile(string filename, url, sequence code)
     end for
     printf(1,"\n\n");
 end procedure
- 
+
 constant code = {{0,18,0,0},
                  {0,68,0,1},
                  {0,100,0,32},
@@ -1245,7 +1245,7 @@ Silence-Dogood.
 
 ## REXX
 
-The input file used by this REXX program only contains one page;   it has no   ''FF''   (''formfeed'')   characters in it), 
+The input file used by this REXX program only contains one page;   it has no   ''FF''   (''formfeed'')   characters in it),
 
 and the injection of   ''FF''   characters into the file would be like putting pencil marks into a holy book.   <big><big><big> ☺ </big></big></big>
 
@@ -1287,7 +1287,7 @@ pag=1;    lin=1;    FF= 'c'x                     /*assume start of  page 1,  lin
 say '═════►'   ?                                 /*stick a fork in it,  we're all done. */
 ```
 
-{{out|input|text=  supplied to the console (terminal) by the user in response to the prompts,   (the commas are optional):}}  
+{{out|input|text=  supplied to the console (terminal) by the user in response to the prompts,   (the commas are optional):}}
 
 ```txt
 
@@ -1308,16 +1308,16 @@ say '═════►'   ?                                 /*stick a fork in i
 ```txt
 
 ──────────enter four parameters  (all positive integers)   or   QUIT
-  1,   133,   4,   5                            ◄■■■■■■■■■ user input (first reponse).     
+  1,   133,   4,   5                            ◄■■■■■■■■■ user input (first reponse).
                                s ◄─── a letter
 
     ∙
-    ∙                                           (some prompts and reponses elided.)  
+    ∙                                           (some prompts and reponses elided.)
     ∙
 
 ──────────enter four parameters  (all positive integers)   or   QUIT
-  1,   571,   4,  12                            ◄■■■■■■■■■ user input (ninth reponse). 
-═════► so─true. 
+  1,   571,   4,  12                            ◄■■■■■■■■■ user input (ninth reponse).
+═════► so─true.
 
 ```
 

@@ -13,9 +13,9 @@ tags = []
 {{task|File handling}} {{selection|Short Circuit|Console Program Basics}} [[Category:Simple]]
 
 ;Task:
-Create a file called   "output.txt",   and place in it the contents of the file   "input.txt",   ''via an intermediate variable''. 
+Create a file called   "output.txt",   and place in it the contents of the file   "input.txt",   ''via an intermediate variable''.
 
-In other words, your program will demonstrate: 
+In other words, your program will demonstrate:
 ::#   how to read from a file into a variable
 ::#   how to write a variable's contents into a file
 
@@ -85,7 +85,7 @@ Assuming everything is fine and no error handling is required, this solution is 
 
 ```ada
 with Ada.Text_IO; use Ada.Text_IO;
- 
+
 procedure Read_And_Write_File_Line_By_Line is
    Input, Output : File_Type;
 begin
@@ -107,10 +107,10 @@ begin
    Close (Output);
 exception
    when End_Error =>
-      if Is_Open(Input) then 
+      if Is_Open(Input) then
          Close (Input);
       end if;
-      if Is_Open(Output) then 
+      if Is_Open(Output) then
          Close (Output);
       end if;
 end Read_And_Write_File_Line_By_Line;
@@ -122,11 +122,11 @@ Expanded with proper error handling and reporting it reads:
 
 ```ada
 with Ada.Command_Line, Ada.Text_IO; use Ada.Command_Line, Ada.Text_IO;
- 
+
 procedure Read_And_Write_File_Line_By_Line is
    Read_From : constant String := "input.txt";
    Write_To  : constant String := "output.txt";
- 
+
    Input, Output : File_Type;
 begin
    begin
@@ -140,7 +140,7 @@ begin
          Set_Exit_Status (Failure);
          return;
    end;
- 
+
    begin
       Create (File => Output,
               Mode => Out_File,
@@ -152,7 +152,7 @@ begin
          Set_Exit_Status (Failure);
          return;
    end;
- 
+
    loop
       declare
          Line : String := Get_Line (Input);
@@ -165,10 +165,10 @@ begin
    Close (Output);
 exception
    when End_Error =>
-      if Is_Open(Input) then 
+      if Is_Open(Input) then
          Close (Input);
       end if;
-      if Is_Open(Output) then 
+      if Is_Open(Output) then
          Close (Output);
       end if;
 end Read_And_Write_File_Line_By_Line;
@@ -217,9 +217,9 @@ The following solution uses stream I/O. Any file of Ada.Text_IO can be used to o
 
 
 ```ada
-with Ada.Text_IO;               use Ada.Text_IO; 
+with Ada.Text_IO;               use Ada.Text_IO;
 with Ada.Text_IO.Text_Streams;  use Ada.Text_IO.Text_Streams;
- 
+
 procedure Using_Text_Streams is
    Input, Output : File_Type;
    Buffer        : Character;
@@ -360,7 +360,7 @@ copyFile from ":input.txt" into ":output.txt"
 .equ CLOSE,  6
 .equ CREATE,  8
 /*  file */
-.equ O_RDWR,	0x0002		@ open for reading and writing 
+.equ O_RDWR,	0x0002		@ open for reading and writing
 
 .equ TAILLEBUF,  1000
 /*********************************/
@@ -382,94 +382,94 @@ szNameFileOutput:	.asciz "output.txt"
 
 /*******************************************/
 /* DONNEES NON INITIALISEES                */
-/*******************************************/ 
+/*******************************************/
 .bss
-sBuffer:  .skip TAILLEBUF 
+sBuffer:  .skip TAILLEBUF
 
 /**********************************************/
 /* -- Code section                            */
 /**********************************************/
-.text            
-.global main    
+.text
+.global main
 main:
     push {fp,lr}    /* save registers */
 
     ldr r0,iAdrszNameFileInput   @ file name
-    mov r1,#O_RDWR                   @  flags   
-    mov r2,#0                         @ mode 
+    mov r1,#O_RDWR                   @  flags
+    mov r2,#0                         @ mode
     mov r7,#OPEN                     @ call system OPEN
-    swi #0 
+    swi #0
     cmp r0,#0        @ open error ?
     ble erreur
     mov r8,r0               @ save File Descriptor
-    ldr r1,iAdrsBuffer   @ buffer address 
+    ldr r1,iAdrsBuffer   @ buffer address
     mov r2,#TAILLEBUF     @ buffer size
     mov r7, #READ          @ call system  READ
-    swi 0 
+    swi 0
     cmp r0,#0            @ read error ?
     ble erreur2
     mov r2,r0            @ length read characters
 
     /* close imput file */
-    mov r0,r8     @ Fd  
+    mov r0,r8     @ Fd
     mov r7, #CLOSE      @ call system CLOSE
-    swi 0 
+    swi 0
     cmp r0,#0            @ close error ?
     blt erreur1
 
-    @ create output file 
+    @ create output file
     ldr r0,iAdrszNameFileOutput   @ file name
-    ldr r1,iFicMask1                 @ flags 
+    ldr r1,iFicMask1                 @ flags
     mov r7, #CREATE                  @ call system create file
-    swi 0 
+    swi 0
     cmp r0,#0                         @ create error ?
     ble erreur4
     mov r0,r8                       @ file descriptor
     ldr r1,iAdrsBuffer
-    @ et r2 contains the length to write 
+    @ et r2 contains the length to write
     mov r7, #WRITE                 @ select system call 'write'
-    swi #0                        @ perform the system call 
+    swi #0                        @ perform the system call
     cmp r0,#0                      @ error write ?
     blt erreur3
 
-    @ close output file 
-    mov r0,r8    @ Fd  fichier 
+    @ close output file
+    mov r0,r8    @ Fd  fichier
     mov r7, #CLOSE    @  call system CLOSE
-    swi #0 
+    swi #0
     cmp r0,#0      @ error close ?
     blt erreur1
     mov r0,#0     @ return code OK
     b 100f
 erreur:
-    ldr r1,iAdrszMessErreur 
-    bl   afficheerreur   
+    ldr r1,iAdrszMessErreur
+    bl   afficheerreur
     mov r0,#1       @ error return code
     b 100f
-erreur1:	
-    ldr r1,iAdrszMessErreur1   
-    bl   afficheerreur  
+erreur1:
+    ldr r1,iAdrszMessErreur1
+    bl   afficheerreur
     mov r0,#1       @ error return code
     b 100f
 erreur2:
-    ldr r1,iAdrszMessErreur2   
-    bl   afficheerreur  
+    ldr r1,iAdrszMessErreur2
+    bl   afficheerreur
     mov r0,#1       @ error return code
     b 100f
 erreur3:
-    ldr r1,iAdrszMessErreur3   
-    bl   afficheerreur  
+    ldr r1,iAdrszMessErreur3
+    bl   afficheerreur
     mov r0,#1       @ error return code
     b 100f
 erreur4:
     ldr r1,iAdrszMessErreur4
-    bl   afficheerreur   
+    bl   afficheerreur
     mov r0,#1       @ error return code
     b 100f
 
 100:		@ end program
     pop {fp,lr}   /* restaur des  2 registres */
     mov r7, #EXIT /* appel fonction systeme pour terminer */
-    swi 0 
+    swi 0
 iAdrszNameFileInput:	.int szNameFileInput
 iAdrszNameFileOutput:	.int szNameFileOutput
 iAdrszMessErreur:		.int szMessErreur
@@ -480,11 +480,11 @@ iAdrszMessErreur4:		.int szMessErreur4
 iAdrsBuffer:				.int sBuffer
 iFicMask1: 				.octa 0644
 /******************************************************************/
-/*     display text with size calculation                         */ 
+/*     display text with size calculation                         */
 /******************************************************************/
 /* r0 contains the address of the message */
 affichageMess:
-    push {r0,r1,r2,r7,lr}    			/* save  registres */ 
+    push {r0,r1,r2,r7,lr}    			/* save  registres */
     mov r2,#0   				/* counter length */
 1:      /* loop length calculation */
     ldrb r1,[r0,r2]  			/* read octet start position + index */
@@ -496,7 +496,7 @@ affichageMess:
     mov r0,#STDOUT      		/* code to write to the standard output Linux */
     mov r7, #WRITE             /* code call system "write" */
     swi #0                      /* call systeme */
-    pop {r0,r1,r2,r7,lr}    	/* restaur des  2 registres */ 
+    pop {r0,r1,r2,r7,lr}    	/* restaur des  2 registres */
     bx lr	        			/* return  */
 /***************************************************/
 /*   display error message                         */
@@ -512,7 +512,7 @@ afficheerreur:
     bl conversion10S
     ldr r0,iAdrszMessErr @ display error code
     bl affichageMess
-    pop {r1-r2,lr}    @ restaur registers 
+    pop {r1-r2,lr}    @ restaur registers
     bx lr              @ return function
 iAdrszMessErr:   .int szMessErr
 iAdrsDeci:		.int sDeci
@@ -525,31 +525,31 @@ conversion10S:
     push {r0-r4,lr}    @ save registers
     mov r2,r1       /* debut zone stockage */
     mov r3,#'+'     /* par defaut le signe est + */
-    cmp r0,#0       @ negative number ? 
+    cmp r0,#0       @ negative number ?
     movlt r3,#'-'   @ yes
     mvnlt r0,r0     @ number inversion
-    addlt r0,#1   
+    addlt r0,#1
     mov r4,#10       @ length area
 1:  @ start loop
-    bl divisionPar10R 
+    bl divisionPar10R
     add r1,#48   @ digit
     strb r1,[r2,r4]  @ store digit on area
     sub r4,r4,#1      @ previous position
     cmp r0,#0          @ stop if quotient = 0
-    bne 1b	
+    bne 1b
 
-    strb r3,[r2,r4]  @ store signe 
+    strb r3,[r2,r4]  @ store signe
     subs r4,r4,#1    @ previous position
     blt  100f        @ if r4 < 0 -> end
 
-    mov r1,#' '   @ space	
+    mov r1,#' '   @ space
 2:
     strb r1,[r2,r4]  @store byte space
     subs r4,r4,#1    @ previous position
     bge 2b           @ loop if r4 > 0
-100: 
+100:
     pop {r0-r4,lr}   @ restaur registers
-    bx lr  
+    bx lr
 
 /***************************************************/
 /*   division for 10 fast unsigned                 */
@@ -559,7 +559,7 @@ conversion10S:
 @ r1 retourne le reste
 divisionPar10R:
     push {r2,lr}         @ save  registers
-    sub r1, r0, #10        @ calcul de r0 - 10 
+    sub r1, r0, #10        @ calcul de r0 - 10
     sub r0, r0, r0, lsr #2  @ calcul de r0 - (r0 /4)
     add r0, r0, r0, lsr #4  @ calcul de (r0-(r0/4))+ ((r0-(r0/4))/16
     add r0, r0, r0, lsr #8  @ etc ...
@@ -655,9 +655,9 @@ The spirit of Babel is to manipulate things on the stack whenever feasible. In t
 I showed how to save it into a symbolic variable (foo) but this step would not be necessary
 for many simple file-processing tasks, such as splitting on newlines or spaces.
 
-Also note that the >>> (slurp) and <<< (spit) operators only handle "small" files - the limit is 
-configurable but the default limit is 100MB. If you want to open very large files or if you need 
-to perform a lot of interactive file I/O, Babel provides operators that wrap the C standard library 
+Also note that the >>> (slurp) and <<< (spit) operators only handle "small" files - the limit is
+configurable but the default limit is 100MB. If you want to open very large files or if you need
+to perform a lot of interactive file I/O, Babel provides operators that wrap the C standard library
 fopen()/fclose() functions.
 
 
@@ -693,7 +693,7 @@ This is only meant to copy a sequential text file. It is very unlikely that this
 160 PRINT D$"DELETE"O$
 170 PRINT D$"OPEN"O$
 180 PRINT D$"OPEN"I$
- 
+
 190 PRINT D$"READ"I$
 200 ONERR GOTO 280
 210 GET C$
@@ -703,7 +703,7 @@ This is only meant to copy a sequential text file. It is very unlikely that this
 250 P = 2 - (C$ <> M$)
 260 PRINT MID$(C$, P)
 270 GOTO 190
- 
+
 280 POKE 216,0
 290 EOF = PEEK(222) = 5
 300 IF NOT EOF THEN RESUME
@@ -818,8 +818,8 @@ put$(get$"input.txt","output.txt",NEW)
 ## C
 
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 
 int main(int argc, char **argv) {
   FILE *in, *out;
@@ -857,8 +857,8 @@ The following example addresses those issues. To avoid buffered I/O, it uses ''o
 
 {{works with|POSIX}}
 
-```c>#include <unistd.h
-
+```c
+#include <unistd.h>
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -958,8 +958,8 @@ File.WriteAllText("output.txt", text);
 
 {{works with|g++|3.4.2}}
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <fstream>
 #include <string>
 
@@ -969,7 +969,7 @@ int main() {
     string line;
     ifstream input ( "input.txt" );
     ofstream output ("output.txt");
-    
+
     if (output.is_open()) {
         if (input.is_open()){
             while (getline (input,line)) {
@@ -993,8 +993,8 @@ int main() {
 Simpler version:
 
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <fstream>
 #include <cstdlib>
 
@@ -1006,21 +1006,21 @@ int main()
     std::cerr << "could not open input.txt for reading.\n";
     return EXIT_FAILURE;
   }
-  
+
   std::ofstream output("output.txt");
   if (!output.is_open())
   {
     std::cerr << "could not open output.txt for writing.\n";
     return EXIT_FAILURE;
   }
-  
+
   output << input.rdbuf();
   if (!output)
   {
     std::cerr << "error copying the data.\n";
     return EXIT_FAILURE;
   }
-  
+
   return EXIT_SUCCESS;
 }
 ```
@@ -1029,8 +1029,8 @@ int main()
 Using istream- and ostream- iterators:
 
 
-```cpp># include <algorithm
-
+```cpp
+# include <algorithm>
 # include <fstream>
 
 int main() {
@@ -1046,8 +1046,8 @@ int main() {
 Even simpler way:
 
 
-```cpp>#include <fstream
-
+```cpp
+#include <fstream>
 
 int main()
 {
@@ -1170,7 +1170,7 @@ Flags used for Micro Focus COBOL:
                set eof to true
            end-read
            .
-       end program copyfile. 
+       end program copyfile.
 ```
 
 
@@ -1187,7 +1187,7 @@ Flags used for Micro Focus COBOL:
        FILE-CONTROL.
            SELECT in-file ASSIGN "input.txt"
                ORGANIZATION LINE SEQUENTIAL.
-             
+
            SELECT OPTIONAL out-file ASSIGN "output.txt"
                ORGANIZATION LINE SEQUENTIAL.
 
@@ -1198,7 +1198,7 @@ Flags used for Micro Focus COBOL:
 
        FD  out-file.
        01  out-line                PIC X(256).
-       
+
        PROCEDURE DIVISION.
        DECLARATIVES.
        in-file-error SECTION.
@@ -1283,7 +1283,7 @@ By arbitrary blocks and for possibly-binary files:
 
 (with-open-file (in #p"input.txt" :direction :input
                                 :element-type '(unsigned-byte 8))
-  (with-open-file (out #p"output.txt" 
+  (with-open-file (out #p"output.txt"
                    :direction :output
                    :element-type (stream-element-type in))
     (loop with buffer = (make-array +buffer-size+
@@ -1425,7 +1425,7 @@ Rewrite(f)
 
 Creates a new file and opens it for I/O. If the files exists is is overwritten.
 
-Delphi implemented Streams of which a variant is TFileStream and are very closely related to the Windows API for file handling. 
+Delphi implemented Streams of which a variant is TFileStream and are very closely related to the Windows API for file handling.
 
 '''- Text File I/O -'''
 
@@ -1439,7 +1439,7 @@ begin
   Reset(f);
   writeln(f,s);
   Reset(f);
-  ReadLn(F,S);  
+  ReadLn(F,S);
   CloseFile(
 end;
 ```
@@ -1457,9 +1457,9 @@ var
   buff      : array[1.1024] of byte ;
   BytesRead : Integer ;
 begin
-  AssignFile(f,fully qualified file name);  
+  AssignFile(f,fully qualified file name);
   Reset(f,1);
-  Blockread(f,Buff,SizeOf(Buff),BytesRead); 
+  Blockread(f,Buff,SizeOf(Buff),BytesRead);
   CloseFile(f);
 end;
 ```
@@ -1471,7 +1471,7 @@ Typed file I/O is very useful when reading and writing structures. An Address Li
 
 
 ```delphi
-type 
+type
 
   tAddressBook = Record
                   FName   : string[20];
@@ -1490,7 +1490,7 @@ var
   v     : tAddressBook ;
   bytes : integer ;
 begin
-  AssignFile(f,fully qualified file name);  
+  AssignFile(f,fully qualified file name);
   Reset(f);
   Blockread(f,V,1,Bytes);
   Edit(v);
@@ -1518,7 +1518,7 @@ end;
 
 
 
-```eiffel 
+```eiffel
 class
     APPLICATION
 
@@ -1561,11 +1561,11 @@ ELENA 4.x :
 
 ```elena
 import system'io;
- 
+
 public program()
 {
     var text := File.assign("input.txt").readContent();
- 
+
     File.assign("output.txt").saveContent(text);
 }
 ```
@@ -1585,13 +1585,13 @@ defmodule FileReadWrite do
         # Can replace with :write! to generate an error upon failure
         File.write(new_path,body)
       # If not successful, raise an error
-      {:error,reason} -> 
+      {:error,reason} ->
         # Using Erlang's format_error to generate error string
         :file.format_error(reason)
     end
   end
 end
- 
+
 FileReadWrite.copy("input.txt","output.txt")
 ```
 
@@ -1736,11 +1736,11 @@ Also, abort" can be used instead of throw if desired.
 A good practice is to ask the user the file name he wants to create like in this short example
 <lang>: INPUT$ ( text -- n n )
   pad swap accept pad swap ;
-cr ." Enter file name : " 20 INPUT$ w/o create-file throw Value fd-out 
+cr ." Enter file name : " 20 INPUT$ w/o create-file throw Value fd-out
 : get-content cr ." Enter your nickname : " 20 INPUT$ fd-out write-file cr ;
-: close-output ( -- )  fd-out close-file throw ; 
+: close-output ( -- )  fd-out close-file throw ;
 get-content
-\ Inject a carriage return at end of file 
+\ Inject a carriage return at end of file
 s\" \n" fd-out write-file
 close-output
 bye
@@ -1787,7 +1787,7 @@ end program FileIO
 ' FB 1.05.0 Win64
 
 /'
-input.txt contains:  
+input.txt contains:
 
 The quick brown fox jumps over the lazy dog.
 Empty vessels make most noise.
@@ -1813,7 +1813,7 @@ Close #1
 
 ```txt
 
-output.txt contains:  
+output.txt contains:
 
 The quick brown fox jumps over the lazy dog.
 Empty vessels make most noise.
@@ -1850,7 +1850,7 @@ File.Save(User.Home &/ "output.txt", sOutput)
 File.Save(User.Home &/ "input.txt", sOutput & sInput)
 
 Print "'input.txt' contains - " & sOutput & sInput
-Print "'output.txt' contains - " & sOutput 
+Print "'output.txt' contains - " & sOutput
 
 End
 ```
@@ -2085,7 +2085,7 @@ WRITE(FIle=output, CLoSe=1) c END
 software {
 	file = load("input.txt")
 	open("output.txt").write(file)
-} 
+}
 ```
 
 
@@ -2114,7 +2114,7 @@ openr,unit2,'input.txt',/get
 fs = fstat(unit2)
 ; make buffer
 buff = bytarr(fs.size)
-; transfer content  
+; transfer content
 readu,unit2,buff
 writeu,unit1,buff
 ; that's all
@@ -2310,7 +2310,7 @@ var ForReading = 1, ForWriting = 2;
 var f_in = fso.OpenTextFile('input.txt', ForReading);
 var f_out = fso.OpenTextFile('output.txt', ForWriting, true);
 
-// for small files: 
+// for small files:
 // f_out.Write( f_in.ReadAll() );
 
 while ( ! f_in.AtEndOfStream) {
@@ -2323,7 +2323,7 @@ f_out.Close();
 ```
 
 
- 
+
 {{works with|Node.js}}
 
 ```javascript
@@ -2337,7 +2337,7 @@ require('util').pump(fs.createReadStream('input.txt', {flags:'r'}), fs.createWri
 
 ## jq
 
-If the input file consists of ordinary lines of text, then the lines can be copied verbatim, one by one, as follows: 
+If the input file consists of ordinary lines of text, then the lines can be copied verbatim, one by one, as follows:
 
 ```jq
 jq -M --raw-input --raw-output '. as $line | $line' input.txt > output.txt
@@ -2549,10 +2549,10 @@ Section Public
 {{works with|UCB Logo}}
 
 ```logo
-to copy :from :to 
+to copy :from :to
   openread :from
   openwrite :to
-  setread :from   
+  setread :from
   setwrite :to
   until [eof?] [print readrawline]
   closeall
@@ -2569,7 +2569,7 @@ copy "input.txt "output.txt
 
 inFile  = io.open("input.txt", "r")
 data = inFile:read("*all") -- may be abbreviated to "*a";
-                           -- other options are "*line", 
+                           -- other options are "*line",
                            -- or the number of characters to read.
 inFile:close()
 
@@ -2612,7 +2612,7 @@ Module FileInputOutput {
       Save.Doc Doc$, "Output.txt"
       Edit "Output.txt"
 }
-FileInputOutput 
+FileInputOutput
 
 ```
 
@@ -2762,7 +2762,7 @@ VAR
   infile: Rd.T;
   outfile: Wr.T;
   txt: TEXT;
-  
+
 BEGIN
   infile := IO.OpenRead("input.txt");
   outfile := IO.OpenWrite("output.txt");
@@ -2966,7 +2966,7 @@ For a more object oriented style one can use a TFilestream:
 uses
   classes;
 begin
-  with TFileStream.Create('input.txt', fmOpenRead) do 
+  with TFileStream.Create('input.txt', fmOpenRead) do
   try
     SaveToFile('output.txt');
   finally
@@ -3065,13 +3065,13 @@ end
 | f g |
    File newMode(in,  File.BINARY) dup open(File.READ) ->f
    File newMode(out, File.BINARY) dup open(File.WRITE) ->g
- 
-   while(f >> dup notNull) [ g addChar ] drop 
+
+   while(f >> dup notNull) [ g addChar ] drop
    f close g close ;
 ```
 
 
-Usage : 
+Usage :
 
 ```Oforth
 fcopy("input.txt", "output.txt")
@@ -3123,7 +3123,7 @@ write("filename.out", f);
 
 ## Pascal
 
-The [http://wiki.freepascal.org/File_Handling_In_Pascal | FreePascal wiki] gives a detailed description. 
+The [http://wiki.freepascal.org/File_Handling_In_Pascal | FreePascal wiki] gives a detailed description.
 For procedureal code see the [[File_IO#Delphi | Delphi]] examples. The [[File_IO#Object_Pascal | ObjectPascal]] example is more OO coding style.
 
 
@@ -3256,7 +3256,7 @@ fclose($in);
 ?>
 ```
 
-  
+
 {{works with|PHP|5}}
 
 ```php
@@ -3385,8 +3385,8 @@ If in
   If out
     Define MyLine$
     While Not Eof(in)
-      MyLine$ = ReadString(in) 
-      WriteString(out,MyLine$) 
+      MyLine$ = ReadString(in)
+      WriteString(out,MyLine$)
     Wend
     CloseFile(out)
   EndIf
@@ -3396,14 +3396,14 @@ EndIf
 
 
 
-Reading & writing the complete file in one pass 
+Reading & writing the complete file in one pass
 
 ```PureBasic
 If ReadFile(0,"input.txt")
   Define MyLine$, *Buffer, length
   length=FileSize("input.txt")
   *Buffer = AllocateMemory(length)
-  If *Buffer   
+  If *Buffer
     If OpenFile(1,"output.txt")
       ReadData(0, *Buffer, length)
       WriteData(1, *Buffer, length)
@@ -3512,7 +3512,7 @@ src <- file("input.txt", "rb")
 dest <- file("output.txt", "wb")
 
 while( length(v <- readBin(src, "raw")) > 0 ) {
-  writeBin(v, dest) 
+  writeBin(v, dest)
 }
 close(src); close(dest)
 ```
@@ -3673,9 +3673,9 @@ The two   ''optional''   REXX statements are only needed if there is another REX
 
 (which may have invoked this program)   that already has one of the input and/or output files open.
 
-The two   ''best programming practice''   REXX statements are only needed if there is another calling program in the invocation chain 
+The two   ''best programming practice''   REXX statements are only needed if there is another calling program in the invocation chain
 
-(which may want to (re-)use the two files just used. 
+(which may want to (re-)use the two files just used.
 
 ```rexx
 /*REXX program reads a file and copies the contents into an output file  (on a line by line basis).*/
@@ -3701,7 +3701,7 @@ Note that this version is limited to files less than one million bytes (and/or p
 ```rexx
 /*REXX program to read a file and write contents to an output file*****
 * 03.09.2012 Walter Pachl (without erase string would be appended)
-**********************************************************************/                                              
+**********************************************************************/
 ifid='input.txt'                        /*name of the  input file.   */
 ofid='output.txt'                       /*name of the output file.   */
 'erase' ofid                            /* avoid appending           */
@@ -3721,7 +3721,7 @@ fn2 = "ReadMe2.txt"
 
 fp = fopen(fn1,"r")
 str = fread(fp, getFileSize(fp))
-fclose(fp) 
+fclose(fp)
 
 fp = fopen(fn2,"w")
 fwrite(fp, str)
@@ -3783,7 +3783,7 @@ close #in
 
 open "output.txt" for output as #out
 print #out, fileData$               'write entire fie
-close #out 
+close #out
 end
 
 ' or directly with no intermediate fileData$
@@ -3966,10 +3966,10 @@ let: w 'output.txt' rwfile @wq $1 write;
 
 'input.txt' rfile read 0 $1 {{
   $ @q $1 push
-  len + 
+  len +
   @w &break _for
 } when} for
-    
+
 @q +? {@w &_ for} when
 
 ```
@@ -4142,7 +4142,7 @@ And a much simpler way for plain text files, making use of file.slurp:
 
 
 ```toka
-[ ( source dest -- ) 
+[ ( source dest -- )
   swap file.slurp dup 0 <>
   [ >r "W" file.open dup r> string.getLength file.write drop file.close ] ifTrue
 ] is copy-file
@@ -4321,7 +4321,7 @@ To read a file into edit buffer, simply open the file. The file contents can the
 ```vedit
 File_Open("input.txt")
 File_Save_As("output.txt", NOMSG)
-Buf_Close(NOMSG) 
+Buf_Close(NOMSG)
 ```
 
 
@@ -4335,13 +4335,13 @@ Buf_Close(NOMSG)
 'byte copy
 My.Computer.FileSystem.WriteAllBytes("output.txt", _
   My.Computer.FileSystem.ReadAllBytes("input.txt"), False)
- 
+
 'text copy
 Using input = IO.File.OpenText("input.txt"), _
       output As New IO.StreamWriter(IO.File.OpenWrite("output.txt"))
   output.Write(input.ReadToEnd)
 End Using
- 
+
 'Line by line text copy
 Using input = IO.File.OpenText("input.txt"), _
       output As New IO.StreamWriter(IO.File.OpenWrite("output.txt"))

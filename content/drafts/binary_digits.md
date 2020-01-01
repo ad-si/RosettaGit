@@ -1158,8 +1158,8 @@ blsq ) {5 50 9000}{2B!}m[uN
 
 Converts int to a string.
 
-```c>#include <math.h
-
+```c
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -1219,8 +1219,8 @@ char *bin(uint32_t x)
 ## C++
 
 
-```cpp>#include <bitset
-
+```cpp
+#include <bitset>
 #include <iostream>
 #include <limits>
 #include <string>
@@ -1258,8 +1258,8 @@ int main() {
 
 Shorter version using bitset
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 #include <bitset>
 void printBits(int n) {                     // Use int like most programming languages.
   int iExp = 0;                             // Bit-length
@@ -1277,8 +1277,8 @@ int main(int argc, char* argv[]) {
 
 Using >> operator. (1st example is 2.75x longer. Matter of taste.)
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 int main(int argc, char* argv[]) {
   unsigned int in[] = {5, 50, 9000};        // Use int like most programming languages
   for (int i = 0; i < 3; i++)               // Use all inputs
@@ -1291,8 +1291,8 @@ int main(int argc, char* argv[]) {
 
 To be fair comparison with languages that doesn't declare a function like C++ main(). 3.14x shorter than 1st example.
 
-```cpp>#include <iostream
-
+```cpp
+#include <iostream>
 int main(int argc, char* argv[]) {                        // Usage: program.exe 5 50 9000
   for (int i = 1; i < argc; i++)                          // argv[0] is program name
     for (int at = 31; at >= 0; at--)                      // reverse iteration from the max bit-length to 0, because msb is at the end

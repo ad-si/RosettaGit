@@ -11,7 +11,7 @@ tags = []
 +++
 
 {{task}}[[Category:String manipulation]]
-The task is to demonstrate how to remove the first and last characters from a string. 
+The task is to demonstrate how to remove the first and last characters from a string.
 
 The solution should demonstrate how to obtain the following results:
 
@@ -21,9 +21,9 @@ The solution should demonstrate how to obtain the following results:
 
 
 
-If the program uses UTF-8 or UTF-16, it must work on any valid Unicode code point, whether in the Basic Multilingual Plane or above it. 
+If the program uses UTF-8 or UTF-16, it must work on any valid Unicode code point, whether in the Basic Multilingual Plane or above it.
 
-The program must reference logical characters (code points), not 8-bit code units for UTF-8 or 16-bit code units for UTF-16. 
+The program must reference logical characters (code points), not 8-bit code units for UTF-8 or 16-bit code units for UTF-16.
 
 Programs for other encodings (such as 8-bit ASCII, or EUC-JP) are not required to handle all Unicode characters.
 
@@ -52,7 +52,7 @@ SUBSTRTT CSECT
          XPRNT  S7,L'S7            print s7
          MVC    S6,S8+1            s6=substr(s8,2,6)
          XPRNT  S6,L'S6            print s6
-*         
+*
          L      R13,4(0,R13)       epilog
          LM     R14,R12,12(R13)    restore previous context
          XR     R15,R15            rc=0
@@ -142,16 +142,16 @@ is
    use Ada.Text_IO;
    use Ada.Strings.UTF_Encoding;
    use Ada.Strings.UTF_Encoding.Wide_Strings;
-   
+
    S : String := "upraisers";
    U : Wide_String := Decode (UTF_8_String'(S));
-   
+
    function To_String (X : Wide_String)return String
    is
    begin
       return String (UTF_8_String'(Encode (X)));
    end To_String;
-   
+
 begin
    Put_Line
      (To_String
@@ -318,7 +318,7 @@ BEGIN {
 20 PRINT FN L$("SOCKS"): REM STRIP THE LAST LETTER
 30 PRINT FN B$("BROOMS"): REM STRIP BOTH THE FIRST AND LAST LETTER
 100 END
- 
+
 9000 DEF FN F$(A$)=RIGHT$(A$,LEN(A$)-1)
 9010 DEF FN L$(A$)=LEFT$(A$,LEN(A$)-1)
 9020 DEF FN B$(A$)=FN L$(FN F$(A$))
@@ -463,8 +463,8 @@ blsq ) "RosettaCode"~-
 ## C
 
 
-```c>#include <string.h
-
+```c
+#include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -507,8 +507,8 @@ ANSI C provides little functionality for text manipulation outside of string.h. 
 ## C++
 
 
-```cpp>#include <string
-
+```cpp
+#include <string>
 #include <iostream>
 
 int main( ) {
@@ -699,11 +699,11 @@ int main()
 
     s = 'socks'
     Log( '%@', s[0 .. s.length-2] )  // strip last character
-   
-    s = 'brooms'   
+
+    s = 'brooms'
     Log( '%@', s[1 .. s.length-2] )  // strip both first and last characters
 
-    s = 'Δημοτική'   
+    s = 'Δημοτική'
     Log( '%@', s[1 .. s.length-2] )  // strip both first and last characters
 
   return 0
@@ -726,11 +726,11 @@ ELENA 4.x :
 
 ```elena
 import extensions;
- 
+
 public program()
 {
     var testString := "test";
- 
+
     console.printLine(testString.Substring(1));
     console.printLine(testString.Substring(0, testString.Length - 1));
     console.printLine(testString.Substring(1, testString.Length - 2))
@@ -770,7 +770,7 @@ iex(4)> String.slice(str, 1..-2)
 
 ```Emacs Lisp
 
-(progn 
+(progn
   (setq string "top and tail")
   (insert (format "%s\n" string) )
   (setq len (length string) )
@@ -882,7 +882,7 @@ In Forth, strings typically take up two cells on the stack, diagrammed ( c-addr 
 
 ```forth
 : hello ( -- c-addr u )
-  s" Hello" ;  
+  s" Hello" ;
 
 hello 1 /string type     \ => ello
 
@@ -903,7 +903,7 @@ program substring
 
   character(len=5) :: string
   string = "Hello"
-  
+
   write (*,*) string
   write (*,*) string(2:)
   write (*,*) string( :len(string)-1)
@@ -1056,7 +1056,7 @@ remBoth  _     = ""
 
 main :: IO ()
 main = do
-  let s = "Some string."  
+  let s = "Some string."
   mapM_ (\f -> putStrLn . f $ s) [remFirst, remLast, remBoth]
 ```
 
@@ -1102,7 +1102,7 @@ main = mapM_ print $ [tail, init, init . tail] <*> ["knights"]
 
 
 =={{header|Icon}} and {{header|Unicon}}==
-The task is accomplished by sub-stringing.  
+The task is accomplished by sub-stringing.
 
 ```Icon
 procedure main()
@@ -1152,7 +1152,7 @@ public class RM_chars {
     System.out.println( "brooms".substring( 1, 5 ) );
       // first, do this by selecting a specific substring
       // to exclude the first and last characters
-    
+
     System.out.println( "knight".replaceAll( "^.", "" ) );
     System.out.println( "socks".replaceAll( ".$", "" ) );
     System.out.println( "brooms".replaceAll( "^.|.$", "" ) );
@@ -1404,7 +1404,7 @@ print butfirst butlast :s
 
 ## Logtalk
 
-Using atoms for representing strings: 
+Using atoms for representing strings:
 
 ```logtalk
 
@@ -1484,7 +1484,7 @@ Furthermore, there is a slightly different version in the "StringTools" package:
  use StringTools in
 >     SubString( s, 2 .. -1 );
 >     SubString( s, 1 .. -1 );
->     SubString( s, 2 .. -2 ) 
+>     SubString( s, 2 .. -2 )
 > end use;
                               "ome string"
 
@@ -1513,12 +1513,12 @@ StringTake["input string",{2,-2}]
 The following case will not handle UTF-8. However, Matlab supports conversion of utf-8 to utf-16 using native2unicode().
 
 ```MATLAB
- 
+
     % String with first character removed
 	str(2:end)
     % String with last character removed
 	str(1:end-1)
-    % String with both the first and last characters removed 
+    % String with both the first and last characters removed
 	str(2:end-1)
 
 ```
@@ -1552,7 +1552,7 @@ his thin
 
 Neko strings are mutable, fixed length buffers.  The '''$ssize''' builtin uses the allocated size, not any internal sentinel terminator byte.  With literals, the allocated size is the size of the data between quotes, i.e. no NUL byte appended.
 
-'''$ssub''' ''sub-string'' takes string, position (zero-relative), length arguments. 
+'''$ssub''' ''sub-string'' takes string, position (zero-relative), length arguments.
 
 ```ActionScript
 /**
@@ -1597,7 +1597,7 @@ module RemoveChars
         def end = str.Remove(str.Length - 1);  // from pos to end
         def beg = str.Remove(0, 1);            // start pos, # of chars to remove
         def both = str.Trim(array['*']);       // with Trim() you need to know what char's you're removing
-        
+
         WriteLine($"$str -> $beg -> $end -> $both");
     }
 }
@@ -1648,7 +1648,7 @@ var s = "The quick μ brown fox"
 echo(s.substr(1))
 echo(s.substr(0,s.len-2))
 echo(s.substr(1,s.len-2))
-# using slices 
+# using slices
 echo(s[1 .. -2])
 ```
 
@@ -1777,7 +1777,7 @@ print $string;      # ouc    # See we really did chop the last letter off
 ## Perl 6
 
 
-Perl 6 provides both functional and method forms of substr. Note that, unlike in Perl 5, offsets from the end do not use negative numbers, but instead require a function expressing the negative offset relative to the length parameter, which is supplied by the operator.  The form <tt>*-1</tt> is just a simple way to write such a function. 
+Perl 6 provides both functional and method forms of substr. Note that, unlike in Perl 5, offsets from the end do not use negative numbers, but instead require a function expressing the negative offset relative to the length parameter, which is supplied by the operator.  The form <tt>*-1</tt> is just a simple way to write such a function.
 
 We use musical sharps and flats to illustrate that Perl is comfortable with characters from any Unicode plane.
 
@@ -1813,12 +1813,12 @@ Original:
 Remove first character:
 ♯♮♭𝄫
 ♯♮♭𝄫
- 
+
 Remove last character:
 𝄪♯♮♭
 𝄪♯♮♭
 𝄪♯♮♭
- 
+
 Remove first and last characters:
 ♯♮♭
 ♯♮♭
@@ -1898,8 +1898,8 @@ OUTPUT:
 ```txt
 
 First character removed=ow is the time to come to the aid of the party
-Last character removed=now is the time to come to the aid of the part 
-One character from each end removed=ow is the time to come to the aid of the part 
+Last character removed=now is the time to come to the aid of the part
+One character from each end removed=ow is the time to come to the aid of the part
 
 ```
 
@@ -1987,11 +1987,11 @@ true.
 
 
 ```PureBasic
-If OpenConsole()  
+If OpenConsole()
   PrintN(Right("knight", Len("knight") - 1))  ;strip the first letter
   PrintN(Left("socks", Len("socks")- 1))      ;strip the last letter
   PrintN(Mid("brooms", 2, Len("brooms") - 2)) ;strip both the first and last letter
-  
+
   Print(#CRLF$ + #CRLF$ + "Press ENTER to exit"): Input()
   CloseConsole()
 EndIf
@@ -2155,7 +2155,7 @@ $str offTheTop  offTheTail  println
 
 ### error prone
 
-This REXX version is error prone in that if the string is less than two characters, then the   '''left'''   and/or   '''substr'''   BIFs will fail   (because of an invalid length specified).  
+This REXX version is error prone in that if the string is less than two characters, then the   '''left'''   and/or   '''substr'''   BIFs will fail   (because of an invalid length specified).
 
 ```rexx
 /*REXX program demonstrates removal of  1st/last/1st-and-last  characters from a string.*/
@@ -2231,7 +2231,7 @@ if n==0  then z=                                /*handle special case of a lengt
 say 'string first & last character removed =' z /*stick a fork in it,  we're all done. */
 ```
 
-'''output'''   is the same as the 1<sup>st</sup> REXX version. 
+'''output'''   is the same as the 1<sup>st</sup> REXX version.
 
 
 
@@ -2371,9 +2371,9 @@ These all use built-in collection methods that will work with any kind of ordere
 ```smalltalk
 
 s := 'upraisers'.
-Transcript show: 'Top: ', s allButLast; nl.	
-Transcript show: 'Tail: ', s allButFirst; nl.	
-Transcript show: 'Without both: ', s allButFirst allButLast; nl.	
+Transcript show: 'Top: ', s allButLast; nl.
+Transcript show: 'Tail: ', s allButFirst; nl.
+Transcript show: 'Without both: ', s allButFirst allButLast; nl.
 Transcript show: 'Without both using substring method: ', (s copyFrom: 2 to: s size - 1); nl.
 
 ```
@@ -2382,10 +2382,10 @@ Transcript show: 'Without both using substring method: ', (s copyFrom: 2 to: s s
 
 ```txt
 
-Top: upraiser                                                                                                                           
-Tail: praisers                                                                                                                          
-Without both: praiser                                                                                                                   
-Without both using substring method: praiser 
+Top: upraiser
+Tail: praisers
+Without both: praiser
+Without both using substring method: praiser
 ```
 
 
@@ -2419,7 +2419,7 @@ val it = "bcd" : string
 
 ## Swift
 
-Swift strings are native Unicode strings and do not index through the code points. Swift's <code>String.Index</code> refers to true Unicode characters (Unicode grapheme clusters). Swift standard library has generic functionality that not only works with strings, but also with any type that conforms to relevant protocols. The first method presented here uses generic functions from Swift standard library: 
+Swift strings are native Unicode strings and do not index through the code points. Swift's <code>String.Index</code> refers to true Unicode characters (Unicode grapheme clusters). Swift standard library has generic functionality that not only works with strings, but also with any type that conforms to relevant protocols. The first method presented here uses generic functions from Swift standard library:
 
 
 ```swift
@@ -2467,53 +2467,53 @@ You can also extend String type and define BASIC-style functions:
 
 ```swift
 extension String {
-    
+
     /// Ensure positive indexes
-    
+
     private func positive(index: Int) -> Int {
-        
+
         if index >= 0 { return index }
-        
+
         return count(self) + index
     }
-    
+
     /// Unicode character by zero-based integer (character) `index`
     /// Supports negative character index to count from end. (-1 returns character before last)
-    
+
     subscript(index: Int) -> Character {
-        
+
         return self[advance(startIndex, positive(index))]
     }
-    
+
     /// String slice by character index
-    
+
     subscript(range: Range<Int>) -> String {
-        
+
         return self[advance(startIndex, range.startIndex) ..<
                     advance(startIndex, range.endIndex, endIndex)]
     }
-    
+
     /// Left portion of text to `index`
-    
+
     func left(index : Int) -> String {
-        
+
         return self[0 ..< positive(index)]
     }
-    
+
     /// Right portion of text from `index`
-    
+
     func right(index : Int) -> String{
-        
+
         return self[positive(index) ..< count(self)]
     }
-    
+
     /// From `start` index until `end` index
-    
+
     func mid(start: Int, _ end: Int) -> String {
-        
+
         return self[positive(start) ..< positive(end)]
     }
-    
+
 }
 
 let txt = "0123456789"
@@ -2582,7 +2582,7 @@ Output:
 upraisers
 praisers
 upraiser
-upraiser 
+upraiser
 
 ```
 
@@ -2604,19 +2604,19 @@ echo "${str%?}"   # Remove last char
 First ''and'' last character:
 
 : Only zsh supports nested string manipulation.
-: 
+:
 ```bash
 echo ${${str#?}%?}   # Remove first & last chars
 ```
 
 : bash and ksh, use substring expansion, from character index 1 for length of (string length) minus 2
-: 
+:
 ```bash
 echo "${s:1:${#s}-2}"
 ```
 
 : POSIX shells like dash, need a temp variable
-: 
+:
 ```bash
 tmp=${s#?}; tmp=${tmp%?}; echo "$tmp"
 ```
@@ -2728,7 +2728,7 @@ negative number means from the end.
 
 9000 DEF FN f$(a$)=a$(2 TO LEN(a$))
 9010 DEF FN l$(a$)=a$(1 TO LEN(a$)-(1 AND (LEN(a$)>=1)))
-9020 DEF FN b$(a$)=FN l$(FN f$(a$)) 
+9020 DEF FN b$(a$)=FN l$(FN f$(a$))
 ```
 
 

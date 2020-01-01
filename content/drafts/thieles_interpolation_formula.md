@@ -28,7 +28,7 @@ tags = []
 :: <big><big><math>\rho_n(x_0,x_1,\ldots,x_n)=\frac{x_0-x_n}{\rho_{n-1}(x_0,x_1,\ldots,x_{n-1})-\rho_{n-1}(x_1,x_2,\ldots,x_n)}+\rho_{n-2}(x_1,\ldots,x_{n-1})</math></big></big>
 
 Demonstrate Thiele's interpolation function by:
-# Building a   '''32'''   row ''trig table'' of values   for   <big><big><math> x </math></big></big>   from   '''0'''   by   '''0.05'''   to   '''1.55'''   of the trig functions: 
+# Building a   '''32'''   row ''trig table'' of values   for   <big><big><math> x </math></big></big>   from   '''0'''   by   '''0.05'''   to   '''1.55'''   of the trig functions:
 #*   '''sin'''
 #*   '''cos'''
 #*   '''tan'''
@@ -36,7 +36,7 @@ Demonstrate Thiele's interpolation function by:
 # Finally: demonstrate the following well known trigonometric identities:
 #*   <big><big> 6 &times; sin<sup>-1</sup> &frac12; = <math>\pi</math></big></big>
 #*   <big><big> 3 &times; cos<sup>-1</sup> &frac12; = <math>\pi</math></big></big>
-#*   <big><big> 4 &times; tan<sup>-1</sup> 1        = <math>\pi</math></big></big> 
+#*   <big><big> 4 &times; tan<sup>-1</sup> 1        = <math>\pi</math></big></big>
 
 
 
@@ -227,13 +227,13 @@ END;
 test:(
   FORMAT real fmt = $g(0,real width-2)$;
 
-  REAL lwb x=0, upb x=1.55, delta x = 0.05; 
+  REAL lwb x=0, upb x=1.55, delta x = 0.05;
 
   [0:ENTIER ((upb x-lwb x)/delta x)]STRUCT(REAL x, sin x, cos x, tan x) trig table;
 
-  PROC init trig table = VOID: 
-    FOR i FROM LWB trig table TO UPB trig table DO 
-      REAL x = lwb x+i*delta x; 
+  PROC init trig table = VOID:
+    FOR i FROM LWB trig table TO UPB trig table DO
+      REAL x = lwb x+i*delta x;
       trig table[i]:=(x, sin(x), cos(x), tan(x))
     OD;
 
@@ -244,7 +244,7 @@ test:(
                   inv cos = thiele(cos x OF trig table, x OF trig table,),
                   inv tan = thiele(tan x OF trig table, x OF trig table,);
 
-  printf(($"pi estimate using "g" interpolation: "f(real fmt)l$, 
+  printf(($"pi estimate using "g" interpolation: "f(real fmt)l$,
     "sin", 6*inv sin(1/2),
     "cos", 3*inv cos(1/2),
     "tan", 4*inv tan(1)
@@ -266,13 +266,13 @@ pi estimate using tan interpolation: 3.1415926535898
 
 ## C
 
-The recursive relations of <math>\rho</math>s can be made clearer: Given <math>N+1</math> sampled points <math>x_0, x_1, \cdots x_N</math>, rewrite the symbol <math>\rho</math> as 
+The recursive relations of <math>\rho</math>s can be made clearer: Given <math>N+1</math> sampled points <math>x_0, x_1, \cdots x_N</math>, rewrite the symbol <math>\rho</math> as
 
 :<math>\rho_{n,i} = \rho_n(x_i, x_{i+1}, \cdots x_{i+n})</math> where <math>1 \leq n \leq N</math>,
 
 with suplements
 
-:<math>\rho_{0, i} = f(x_i)\qquad\text{and}\qquad\rho_{n, i} = 0\quad\text{for}\quad n < 0</math>. 
+:<math>\rho_{0, i} = f(x_i)\qquad\text{and}\qquad\rho_{n, i} = 0\quad\text{for}\quad n < 0</math>.
 
 Now the recursive relation is simply
 
@@ -286,8 +286,8 @@ with the termination <math>F_N(x) = 1</math>, and the interpolation formula is n
 
 Note that each <math>\rho_n</math> needs to look up <math>\rho_{n-1}</math> twice, so the total look ups go up as <math>O(2^N)</math> while there are only <math>O(N^2)</math> values.  This is a text book situation for memoization.
 
-```c>#include <stdio.h
-
+```c
+#include <stdio.h>
 #include <string.h>
 #include <math.h>
 
@@ -389,7 +389,7 @@ Using the notations from above the C code instead of task desc.
 	    (cond ((zerop n) (aref yv i))
 		  ((minusp n) 0)
 		  (t (+ (rho yv xv (- n 2) (1+ i))
-			(/  (- (aref xv i) 
+			(/  (- (aref xv i)
 			       (aref xv (+ i n)))
 			    (- (rho yv xv (1- n) i)
 			       (rho yv xv (1- n) (1+ i)))))))))))
@@ -840,17 +840,17 @@ const rcos_cache = Dict{Float64, Float64}()
 const rtan_cache = Dict{Float64, Float64}()
 
 function rho(x, y, rhocache, i, n)
-    if n < 0 
+    if n < 0
         return 0.0
-    elseif n == 0 
+    elseif n == 0
         return y[i+1]
     end
     idx = (N - 1 - n) * div(N - n, 2) + i
     if !haskey(rhocache, idx)
-        rhocache[idx] = (x[i+1] - x[i + n+1]) / (rho(x, y, rhocache, i, n - 1) - 
+        rhocache[idx] = (x[i+1] - x[i + n+1]) / (rho(x, y, rhocache, i, n - 1) -
             rho(x, y, rhocache, i + 1, n - 1)) + rho(x, y, rhocache, i + 1, n - 2)
     end
-    rhocache[idx] 
+    rhocache[idx]
 end
 
 function thiele(x, y, r, xin, n)
@@ -910,16 +910,16 @@ fun rho(x: DoubleArray, y: DoubleArray, r: DoubleArray, i: Int, n: Int): Double 
     if (n == 0) return y[i]
     val idx = (N - 1 - n) * (N - n) / 2 + i
     if (r[idx].isNaN()) {
-        r[idx] = (x[i] - x[i + n]) / 
+        r[idx] = (x[i] - x[i + n]) /
                  (rho(x, y, r, i, n - 1) - rho(x, y, r, i + 1, n - 1)) +
                   rho(x, y, r, i + 1, n - 2)
     }
-    return r[idx] 
+    return r[idx]
 }
 
-fun thiele(x: DoubleArray, y: DoubleArray, r: DoubleArray, xin: Double, n: Int): Double { 
+fun thiele(x: DoubleArray, y: DoubleArray, r: DoubleArray, xin: Double, n: Int): Double {
     if (n > N - 1) return 1.0
-    return rho(x, y, r, 0, n) - rho(x, y, r, 0, n - 2) + 
+    return rho(x, y, r, 0, n) - rho(x, y, r, 0, n - 2) +
            (xin - x[n]) / thiele(x, y, r, xin, n + 1)
 }
 
@@ -974,7 +974,7 @@ proc rho(x, y: openArray[float], r: var openArray[float], i, n: int): float =
     return 0
   if n == 0:
     return y[i]
-  
+
   let idx = (N - 1 - n) * (N - n) div 2 + i
   if r[idx] != r[idx]:
     r[idx] = (x[i] - x[i + n]) /
@@ -998,7 +998,7 @@ for i in 0..<N2:
   rsin[i] = NaN
   rcos[i] = NaN
   rtan[i] = NaN
-  
+
 echo fmt"{6 * thiele(tsin, xval, rsin, 0.5, 0):16.14}"
 echo fmt"{3 * thiele(tcos, xval, rcos, 0.5, 0):16.14}"
 echo fmt"{4 * thiele(ttan, xval, rtan, 1.0, 0):16.14}"
@@ -1098,30 +1098,30 @@ multi sub ρ(&f, @x where * > 1) {
     - ρ(&f, @x[1..^@x]) )       # - ρ[n-1](x[1], ..., x[n]) )
     + ρ(&f, @x[1..^(@x - 1)]);  # + ρ[n-2](x[1], ..., x[n-1])
 }
- 
+
 # Thiele:
 multi sub thiele($x, %f, $ord where { $ord == +%f }) { 1 } # Identity
 multi sub thiele($x, %f, $ord) {
   my &f = {%f{$^a}};                # f(x) as a table lookup
- 
+
   # must sort hash keys to maintain order between invocations
   my $a = ρ(&f, %f.keys.sort[^($ord +1)]);
   my $b = ρ(&f, %f.keys.sort[^($ord -1)]);
- 
+
   my $num = $x - %f.keys.sort[$ord];
   my $cont = thiele($x, %f, $ord +1);
- 
+
   # Thiele always takes this form:
   return $a - $b + ( $num / $cont );
 }
- 
+
 ## Demo
 sub mk-inv(&fn, $d, $lim) {
   my %h;
   for 0..$lim { %h{ &fn($_ * $d) } = $_ * $d }
   return %h;
 }
- 
+
 sub MAIN($tblsz = 12) {
 
   my ($sin_pi, $cos_pi, $tan_pi);
@@ -1129,7 +1129,7 @@ sub MAIN($tblsz = 12) {
   my $p2 = Promise.start( { my %invcos = mk-inv(&cos, 0.05, $tblsz); $cos_pi = 3 * thiele(0.5, %invcos, 0) } );
   my $p3 = Promise.start( { my %invtan = mk-inv(&tan, 0.05, $tblsz); $tan_pi = 4 * thiele(1.0, %invtan, 0) } );
   await $p1, $p2, $p3;
- 
+
   say "pi = {pi}";
   say "estimations using a table of $tblsz elements:";
   say "sin interpolation: $sin_pi";
@@ -1164,7 +1164,7 @@ constant N = 32,
 
 constant inf = 1e300*1e300,
          nan = -(inf/inf)
- 
+
 sequence {xval, t_sin, t_cos, t_tan} @= repeat(0,N)
 
 for i=1 to N do
@@ -1173,7 +1173,7 @@ for i=1 to N do
     t_cos[i] = cos(xval[i])
     t_tan[i] = t_sin[i] / t_cos[i]
 end for
- 
+
 enum R_SIN, R_COS, R_TAN, R_TRIG=$
 
 sequence rhot = repeat(repeat(nan,N2),R_TRIG)
@@ -1181,7 +1181,7 @@ sequence rhot = repeat(repeat(nan,N2),R_TRIG)
 function rho(sequence x, y, integer rdx, int i, int n)
     if n<0 then return 0 end if
     if n=0 then return y[i+1] end if
- 
+
     integer idx = (N - 1 - n) * (N - n) / 2 + i + 1;
     if rhot[rdx][idx]=nan then -- value not computed yet
         rhot[rdx][idx] = (x[i+1] - x[i+1 + n])
@@ -1190,13 +1190,13 @@ function rho(sequence x, y, integer rdx, int i, int n)
     end if
     return rhot[rdx][idx]
 end function
- 
+
 function thiele(sequence x, y, integer rdx, atom xin, integer n)
     if n>N-1 then return 1 end if
     return rho(x, y, rdx, 0, n) - rho(x, y, rdx, 0, n-2)
             + (xin-x[n+1]) / thiele(x, y, rdx, xin, n+1)
 end function
- 
+
 constant fmt = iff(machine_bits()=32?"%32s : %.14f\n"
                                     :"%32s : %.17f\n")
 printf(1,fmt,{"PI",PI})
@@ -1343,7 +1343,7 @@ Function Thiele-Interpolation ( [Double[][]] $function )
     if($funcl -gt 1)
     {
         $rho = Reciprocal-Difference $function
-        ($funcl-1)..0 | ForEach-Object { 
+        ($funcl-1)..0 | ForEach-Object {
             $invoke += "`t"
             $invoke += '$x{0} = {1} - {2}' -f $_, @($rho[$_+2])[0], @($rho[$_])[0]
             if($_ -lt ($funcl-1))
@@ -1442,9 +1442,9 @@ print('{:16.14f}'.format(4*iTan(1)))
 (define xs (for/vector ([x (in-range 0.0 1.6 0.05)]) x))
 (define (x i) (vector-ref xs i))
 
-(define-syntax define-table 
+(define-syntax define-table
   (syntax-rules ()
-    [(_ f tf rf if) 
+    [(_ f tf rf if)
      (begin (define tab (for/vector ([x xs]) (f x)))
             (define (tf n) (vector-ref tab n))
             (define cache (make-vector (/ (* 32 31) 2) #f))
@@ -1467,16 +1467,16 @@ print('{:16.14f}'.format(4*iTan(1)))
              (λ() (+ (/ (- (x i) (x (+ i n)))
                         (- (rho x y r i (- n 1)) (rho x y r (+ i 1) (- n 1))))
                      (rho x y r (+ i 1) (- n 2)))))]))
-     
+
 (define (thiele x y r xin n)
   (cond
     [(> n 31) 1]
-    [(+ (rho x y r 0 n) (- (rho x y r 0 (- n 2))) 
+    [(+ (rho x y r 0 n) (- (rho x y r 0 (- n 2)))
         (/ (- xin (x n)) (thiele x y r xin (+ n 1))))]))
 
-(* 6 (isin 0.5)) 
-(* 3 (icos 0.5)) 
-(* 4 (itan 1.))  
+(* 6 (isin 0.5))
+(* 3 (icos 0.5))
+(* 4 (itan 1.))
 
 ```
 
@@ -1646,7 +1646,7 @@ const N=32, N2=(N * (N - 1) / 2), STEP=0.05;
 fcn rho(xs,ys,rs, i,n){
    if (n < 0) return(0.0);
    if (not n) return(ys[i]);
- 
+
    idx := (N - 1 - n) * (N - n) / 2 + i;
    if (Void==rs[idx])
       rs[idx] = (xs[i] - xs[i + n])
@@ -1654,7 +1654,7 @@ fcn rho(xs,ys,rs, i,n){
 		+ rho(xs, ys, rs, i + 1, n - 2);
    return(rs[idx]);
 }
- 
+
 fcn thiele(xs,ys,rs, xin, n){
    if (n > N - 1) return(1.0);
    rho(xs, ys, rs, 0, n) - rho(xs, ys, rs, 0, n - 2)
@@ -1662,14 +1662,14 @@ fcn thiele(xs,ys,rs, xin, n){
 }
 
 ///////////
- 
+
 reg t_sin=L(), t_cos=L(), t_tan=L(),
     r_sin=L(), r_cos=L(), r_tan=L(),  xval=L();
-               
+
 i_sin := thiele.fpM("11101",t_sin, xval, r_sin, 0);
 i_cos := thiele.fpM("11101",t_cos, xval, r_cos, 0);
 i_tan := thiele.fpM("11101",t_tan, xval, r_tan, 0);
- 
+
 foreach i in (N){
    xval.append(x:=STEP*i);
    t_sin.append(x.sin());
@@ -1677,7 +1677,7 @@ foreach i in (N){
    t_tan.append(t_sin[i] / t_cos[i]);
 }
 foreach i in (N2){ r_sin+Void; r_cos+Void; r_tan+Void; }
- 
+
 print("%16.14f\n".fmt( 6.0 * i_sin(0.5)));
 print("%16.14f\n".fmt( 3.0 * i_cos(0.5)));
 print("%16.14f\n".fmt( 4.0 * i_tan(1.0)));
